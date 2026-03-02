@@ -18764,7 +18764,7 @@ class VoiceCloneRequest(AbstractModel):
         :type SdkAppId: int
         :param _VoiceName: 声音克隆的名称, 只允许使用数字、字母、下划线，不能超过36位
         :type VoiceName: str
-        :param _PromptAudio: 声音克隆的参考音频，必须为16k单声道的wav的base64字符串， 长度在10秒～180秒之间
+        :param _PromptAudio: 声音克隆的参考音频，必须为16k单声道的wav的base64字符串， 长度在6秒～180秒之间
         :type PromptAudio: str
         :param _APIKey: TTS的API密钥
         :type APIKey: str
@@ -18807,7 +18807,7 @@ class VoiceCloneRequest(AbstractModel):
 
     @property
     def PromptAudio(self):
-        r"""声音克隆的参考音频，必须为16k单声道的wav的base64字符串， 长度在10秒～180秒之间
+        r"""声音克隆的参考音频，必须为16k单声道的wav的base64字符串， 长度在6秒～180秒之间
         :rtype: str
         """
         return self._PromptAudio
@@ -18818,6 +18818,8 @@ class VoiceCloneRequest(AbstractModel):
 
     @property
     def APIKey(self):
+        warnings.warn("parameter `APIKey` is deprecated", DeprecationWarning) 
+
         r"""TTS的API密钥
         :rtype: str
         """
@@ -18825,6 +18827,8 @@ class VoiceCloneRequest(AbstractModel):
 
     @APIKey.setter
     def APIKey(self, APIKey):
+        warnings.warn("parameter `APIKey` is deprecated", DeprecationWarning) 
+
         self._APIKey = APIKey
 
     @property

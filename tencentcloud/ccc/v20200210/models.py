@@ -11312,11 +11312,11 @@ class DescribeSessionDetailResponse(AbstractModel):
         :type QueuedSkillGroupId: int
         :param _QueuedSkillGroupName: 排队技能组名称
         :type QueuedSkillGroupName: str
-        :param _RecordURL: 录音链接，带鉴权和有效期，获取之后请在短时间内拉取，不要持久化此链接
+        :param _RecordURL: 录音链接，带鉴权和有效期，获取之后请在24 小时内拉取，不要持久化此链接。如此链接已过期，请重新调用此接口获取新的链接
         :type RecordURL: str
         :param _CustomRecordURL: 录音转存第三方 COS 链接
         :type CustomRecordURL: str
-        :param _AsrURL: 录音文本信息链接，带鉴权和有效期，获取之后请在短时间内拉取，不要持久化此链接
+        :param _AsrURL: 录音文本信息链接，带鉴权和有效期，获取之后请在24 小时拉取，不要持久化此链接。如此链接已过期，请重新调用此接口获取新的链接
         :type AsrURL: str
         :param _VoicemailRecordURL: 语音留言录音链接
         :type VoicemailRecordURL: list of str
@@ -11496,7 +11496,7 @@ class DescribeSessionDetailResponse(AbstractModel):
 
     @property
     def RecordURL(self):
-        r"""录音链接，带鉴权和有效期，获取之后请在短时间内拉取，不要持久化此链接
+        r"""录音链接，带鉴权和有效期，获取之后请在24 小时内拉取，不要持久化此链接。如此链接已过期，请重新调用此接口获取新的链接
         :rtype: str
         """
         return self._RecordURL
@@ -11518,7 +11518,7 @@ class DescribeSessionDetailResponse(AbstractModel):
 
     @property
     def AsrURL(self):
-        r"""录音文本信息链接，带鉴权和有效期，获取之后请在短时间内拉取，不要持久化此链接
+        r"""录音文本信息链接，带鉴权和有效期，获取之后请在24 小时拉取，不要持久化此链接。如此链接已过期，请重新调用此接口获取新的链接
         :rtype: str
         """
         return self._AsrURL

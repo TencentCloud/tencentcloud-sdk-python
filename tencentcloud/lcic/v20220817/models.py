@@ -6162,12 +6162,15 @@ class DescribePlaybackListRequest(AbstractModel):
         r"""
         :param _SdkAppId: <p>低代码平台的SdkAppId。</p>
         :type SdkAppId: int
+        :param _RoomId: <p>房间ID</p>
+        :type RoomId: int
         :param _Page: <p>分页查询当前页数，从1开始递增</p>
         :type Page: int
         :param _Limit: <p>默认10条，最大上限为100条</p>
         :type Limit: int
         """
         self._SdkAppId = None
+        self._RoomId = None
         self._Page = None
         self._Limit = None
 
@@ -6181,6 +6184,17 @@ class DescribePlaybackListRequest(AbstractModel):
     @SdkAppId.setter
     def SdkAppId(self, SdkAppId):
         self._SdkAppId = SdkAppId
+
+    @property
+    def RoomId(self):
+        r"""<p>房间ID</p>
+        :rtype: int
+        """
+        return self._RoomId
+
+    @RoomId.setter
+    def RoomId(self, RoomId):
+        self._RoomId = RoomId
 
     @property
     def Page(self):
@@ -6207,6 +6221,7 @@ class DescribePlaybackListRequest(AbstractModel):
 
     def _deserialize(self, params):
         self._SdkAppId = params.get("SdkAppId")
+        self._RoomId = params.get("RoomId")
         self._Page = params.get("Page")
         self._Limit = params.get("Limit")
         memeber_set = set(params.keys())

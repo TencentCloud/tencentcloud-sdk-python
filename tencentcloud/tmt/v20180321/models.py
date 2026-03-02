@@ -658,32 +658,11 @@ class ImageTranslateLLMRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 图片数据的Base64字符串，经Base64编码后不超过 9M，分辨率建议600*800以上，支持PNG、JPG、JPEG格式。
+        :param _Data: <p>图片数据的Base64字符串，经Base64编码后不超过 9M，分辨率建议600*800以上，支持PNG、JPG、JPEG格式。</p>
         :type Data: str
-        :param _Target: 目标语言，支持语言列表：
-
-- 中文：zh
-- 繁体（中国台湾）：zh-TW
-- 繁体（中国香港）：zh-HK
-- 英文：en
-- 日语：ja
-- 韩语：ko
-- 泰语：th
-- 越南语：vi
-- 俄语：ru
-- 德语：de
-- 法语：fr
-- 阿拉伯语：ar
-- 西班牙语：es
-- 意大利语：it
-- 印度尼西亚语：id
-- 马来西亚语：ms
-- 葡萄牙语：pt
-- 土耳其语：tr
-- 
+        :param _Target: <p>目标语言，支持语言列表：</p><ul><li>中文：zh</li><li>繁体（中国台湾）：zh-TW</li><li>繁体（中国香港）：zh-HK</li><li>英文：en</li><li>日语：ja</li><li>韩语：ko</li><li>泰语：th</li><li>越南语：vi</li><li>俄语：ru</li><li>德语：de</li><li>法语：fr</li><li>阿拉伯语：ar</li><li>西班牙语：es</li><li>意大利语：it</li><li>印度尼西亚语：id</li><li>马来西亚语：ms</li><li>葡萄牙语：pt</li><li>土耳其语：tr<br>-</li></ul>
         :type Target: str
-        :param _Url: 输入图 Url。 使用Url的时候，Data参数需要传入""。 图片限制：小于 10MB，分辨率建议600*800以上，格式支持 jpg、jpeg、png。
-
+        :param _Url: <p>输入图 Url。 使用Url的时候，Data参数需要传入&quot;&quot;。 图片限制：小于 10MB，分辨率建议600*800以上，格式支持 jpg、jpeg、png。</p>
         :type Url: str
         """
         self._Data = None
@@ -692,7 +671,7 @@ class ImageTranslateLLMRequest(AbstractModel):
 
     @property
     def Data(self):
-        r"""图片数据的Base64字符串，经Base64编码后不超过 9M，分辨率建议600*800以上，支持PNG、JPG、JPEG格式。
+        r"""<p>图片数据的Base64字符串，经Base64编码后不超过 9M，分辨率建议600*800以上，支持PNG、JPG、JPEG格式。</p>
         :rtype: str
         """
         return self._Data
@@ -703,27 +682,7 @@ class ImageTranslateLLMRequest(AbstractModel):
 
     @property
     def Target(self):
-        r"""目标语言，支持语言列表：
-
-- 中文：zh
-- 繁体（中国台湾）：zh-TW
-- 繁体（中国香港）：zh-HK
-- 英文：en
-- 日语：ja
-- 韩语：ko
-- 泰语：th
-- 越南语：vi
-- 俄语：ru
-- 德语：de
-- 法语：fr
-- 阿拉伯语：ar
-- 西班牙语：es
-- 意大利语：it
-- 印度尼西亚语：id
-- 马来西亚语：ms
-- 葡萄牙语：pt
-- 土耳其语：tr
-- 
+        r"""<p>目标语言，支持语言列表：</p><ul><li>中文：zh</li><li>繁体（中国台湾）：zh-TW</li><li>繁体（中国香港）：zh-HK</li><li>英文：en</li><li>日语：ja</li><li>韩语：ko</li><li>泰语：th</li><li>越南语：vi</li><li>俄语：ru</li><li>德语：de</li><li>法语：fr</li><li>阿拉伯语：ar</li><li>西班牙语：es</li><li>意大利语：it</li><li>印度尼西亚语：id</li><li>马来西亚语：ms</li><li>葡萄牙语：pt</li><li>土耳其语：tr<br>-</li></ul>
         :rtype: str
         """
         return self._Target
@@ -734,8 +693,7 @@ class ImageTranslateLLMRequest(AbstractModel):
 
     @property
     def Url(self):
-        r"""输入图 Url。 使用Url的时候，Data参数需要传入""。 图片限制：小于 10MB，分辨率建议600*800以上，格式支持 jpg、jpeg、png。
-
+        r"""<p>输入图 Url。 使用Url的时候，Data参数需要传入&quot;&quot;。 图片限制：小于 10MB，分辨率建议600*800以上，格式支持 jpg、jpeg、png。</p>
         :rtype: str
         """
         return self._Url
@@ -766,20 +724,19 @@ class ImageTranslateLLMResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 图片数据的Base64字符串，输出格式为JPG。
-
+        :param _Data: <p>图片数据的Base64字符串，输出格式为JPG。</p>
         :type Data: str
-        :param _Source: 原文本主要源语言。
+        :param _Source: <p>原文本主要源语言。</p>
         :type Source: str
-        :param _Target: 目标翻译语言。
+        :param _Target: <p>目标翻译语言。</p>
         :type Target: str
-        :param _SourceText: 图片中的全部原文本。
+        :param _SourceText: <p>图片中的全部原文本。</p>
         :type SourceText: str
-        :param _TargetText: 图片中全部译文。
+        :param _TargetText: <p>图片中全部译文。</p>
         :type TargetText: str
-        :param _Angle: 逆时针图片角度，取值范围为0-359
+        :param _Angle: <p>逆时针图片角度，取值范围为0-359</p>
         :type Angle: float
-        :param _TransDetails: 翻译详情信息
+        :param _TransDetails: <p>翻译详情信息</p>
         :type TransDetails: list of TransDetail
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -795,8 +752,7 @@ class ImageTranslateLLMResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""图片数据的Base64字符串，输出格式为JPG。
-
+        r"""<p>图片数据的Base64字符串，输出格式为JPG。</p>
         :rtype: str
         """
         return self._Data
@@ -807,7 +763,7 @@ class ImageTranslateLLMResponse(AbstractModel):
 
     @property
     def Source(self):
-        r"""原文本主要源语言。
+        r"""<p>原文本主要源语言。</p>
         :rtype: str
         """
         return self._Source
@@ -818,7 +774,7 @@ class ImageTranslateLLMResponse(AbstractModel):
 
     @property
     def Target(self):
-        r"""目标翻译语言。
+        r"""<p>目标翻译语言。</p>
         :rtype: str
         """
         return self._Target
@@ -829,7 +785,7 @@ class ImageTranslateLLMResponse(AbstractModel):
 
     @property
     def SourceText(self):
-        r"""图片中的全部原文本。
+        r"""<p>图片中的全部原文本。</p>
         :rtype: str
         """
         return self._SourceText
@@ -840,7 +796,7 @@ class ImageTranslateLLMResponse(AbstractModel):
 
     @property
     def TargetText(self):
-        r"""图片中全部译文。
+        r"""<p>图片中全部译文。</p>
         :rtype: str
         """
         return self._TargetText
@@ -851,7 +807,7 @@ class ImageTranslateLLMResponse(AbstractModel):
 
     @property
     def Angle(self):
-        r"""逆时针图片角度，取值范围为0-359
+        r"""<p>逆时针图片角度，取值范围为0-359</p>
         :rtype: float
         """
         return self._Angle
@@ -862,7 +818,7 @@ class ImageTranslateLLMResponse(AbstractModel):
 
     @property
     def TransDetails(self):
-        r"""翻译详情信息
+        r"""<p>翻译详情信息</p>
         :rtype: list of TransDetail
         """
         return self._TransDetails

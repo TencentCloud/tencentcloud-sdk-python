@@ -11104,28 +11104,31 @@ class AigcImageTask(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务 ID。
+        :param _TaskId: <p>任务 ID。</p>
         :type TaskId: str
-        :param _Status: 任务状态，取值：<li>PROCESSING：处理中；</li><li>FINISH：已完成。</li>
+        :param _Status: <p>任务状态，取值：<li>PROCESSING：处理中；</li><li>FINISH：已完成。</li></p>
         :type Status: str
-        :param _ErrCode: 错误码。源异常时返回非0错误码，返回0时请使用各个具体任务的 ErrCode。
+        :param _ErrCode: <p>错误码。源异常时返回非0错误码，返回0时请使用各个具体任务的 ErrCode。</p>
         :type ErrCode: int
-        :param _Message: 错误信息。
+        :param _ErrCodeExt: <p>扩展错误码。空字符串表示成功，其它值表示失败。</p><p>枚举值：</p><ul><li>RequestLimitExceeded： 模型调用超出并发限制。</li><li>InvalidParameter.VoilationContent： 输入 prompt 违反内容安全策略。</li><li>InvalidParameterValue： 参数错误。</li><li>FailedOperation： 模型任务堆积。</li><li>InternalError： 内部错误。</li></ul>
+        :type ErrCodeExt: str
+        :param _Message: <p>错误信息。</p>
         :type Message: str
-        :param _Progress: 任务进度，取值范围 [0-100] 。
+        :param _Progress: <p>任务进度，取值范围 [0-100] 。</p>
         :type Progress: int
-        :param _Input: AIGC 生图任务的输入信息。
+        :param _Input: <p>AIGC 生图任务的输入信息。</p>
         :type Input: :class:`tencentcloud.vod.v20180717.models.AigcImageTaskInput`
-        :param _Output: AIGC 生图任务的输出信息。
+        :param _Output: <p>AIGC 生图任务的输出信息。</p>
         :type Output: :class:`tencentcloud.vod.v20180717.models.AigcImageTaskOutput`
-        :param _SessionId: 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+        :param _SessionId: <p>用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。</p>
         :type SessionId: str
-        :param _SessionContext: 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+        :param _SessionContext: <p>来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。</p>
         :type SessionContext: str
         """
         self._TaskId = None
         self._Status = None
         self._ErrCode = None
+        self._ErrCodeExt = None
         self._Message = None
         self._Progress = None
         self._Input = None
@@ -11135,7 +11138,7 @@ class AigcImageTask(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""任务 ID。
+        r"""<p>任务 ID。</p>
         :rtype: str
         """
         return self._TaskId
@@ -11146,7 +11149,7 @@ class AigcImageTask(AbstractModel):
 
     @property
     def Status(self):
-        r"""任务状态，取值：<li>PROCESSING：处理中；</li><li>FINISH：已完成。</li>
+        r"""<p>任务状态，取值：<li>PROCESSING：处理中；</li><li>FINISH：已完成。</li></p>
         :rtype: str
         """
         return self._Status
@@ -11157,7 +11160,7 @@ class AigcImageTask(AbstractModel):
 
     @property
     def ErrCode(self):
-        r"""错误码。源异常时返回非0错误码，返回0时请使用各个具体任务的 ErrCode。
+        r"""<p>错误码。源异常时返回非0错误码，返回0时请使用各个具体任务的 ErrCode。</p>
         :rtype: int
         """
         return self._ErrCode
@@ -11167,8 +11170,19 @@ class AigcImageTask(AbstractModel):
         self._ErrCode = ErrCode
 
     @property
+    def ErrCodeExt(self):
+        r"""<p>扩展错误码。空字符串表示成功，其它值表示失败。</p><p>枚举值：</p><ul><li>RequestLimitExceeded： 模型调用超出并发限制。</li><li>InvalidParameter.VoilationContent： 输入 prompt 违反内容安全策略。</li><li>InvalidParameterValue： 参数错误。</li><li>FailedOperation： 模型任务堆积。</li><li>InternalError： 内部错误。</li></ul>
+        :rtype: str
+        """
+        return self._ErrCodeExt
+
+    @ErrCodeExt.setter
+    def ErrCodeExt(self, ErrCodeExt):
+        self._ErrCodeExt = ErrCodeExt
+
+    @property
     def Message(self):
-        r"""错误信息。
+        r"""<p>错误信息。</p>
         :rtype: str
         """
         return self._Message
@@ -11179,7 +11193,7 @@ class AigcImageTask(AbstractModel):
 
     @property
     def Progress(self):
-        r"""任务进度，取值范围 [0-100] 。
+        r"""<p>任务进度，取值范围 [0-100] 。</p>
         :rtype: int
         """
         return self._Progress
@@ -11190,7 +11204,7 @@ class AigcImageTask(AbstractModel):
 
     @property
     def Input(self):
-        r"""AIGC 生图任务的输入信息。
+        r"""<p>AIGC 生图任务的输入信息。</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.AigcImageTaskInput`
         """
         return self._Input
@@ -11201,7 +11215,7 @@ class AigcImageTask(AbstractModel):
 
     @property
     def Output(self):
-        r"""AIGC 生图任务的输出信息。
+        r"""<p>AIGC 生图任务的输出信息。</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.AigcImageTaskOutput`
         """
         return self._Output
@@ -11212,7 +11226,7 @@ class AigcImageTask(AbstractModel):
 
     @property
     def SessionId(self):
-        r"""用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+        r"""<p>用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。</p>
         :rtype: str
         """
         return self._SessionId
@@ -11223,7 +11237,7 @@ class AigcImageTask(AbstractModel):
 
     @property
     def SessionContext(self):
-        r"""来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+        r"""<p>来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。</p>
         :rtype: str
         """
         return self._SessionContext
@@ -11237,6 +11251,7 @@ class AigcImageTask(AbstractModel):
         self._TaskId = params.get("TaskId")
         self._Status = params.get("Status")
         self._ErrCode = params.get("ErrCode")
+        self._ErrCodeExt = params.get("ErrCodeExt")
         self._Message = params.get("Message")
         self._Progress = params.get("Progress")
         if params.get("Input") is not None:
@@ -11693,78 +11708,9 @@ class AigcUsageDataItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Specification: AIGC规格。
-取值有：
-<li>Qwen2.0</li>
-<li>Hunyuan3.0_1K</li>
-<li>Hunyuan3.0_2K</li>
-<li>Hunyuan3.0_4K</li>
-<li>Mingmou1.0_1K</li>
-<li>Mingmou1.0_2K</li>
-<li>Mingmou1.0_4K</li>
-<li>ViduQ2_T2i_1080P</li>
-<li>ViduQ2_T2i_2K</li>
-<li>ViduQ2_T2i_4K</li>
-<li>ViduQ2_I2i_1080P</li>
-<li>ViduQ2_I2i_2K</li>
-<li>ViduQ2_I2i_4K</li>
-<li>ViduQ2_Refer2i_1080P</li>
-<li>ViduQ2_Refer2i_2K</li>
-<li>ViduQ2_Refer2i_4K</li>
-<li>Kling2.1_T2i_1K2K</li>
-<li>Kling2.1_T2i_4K</li>
-<li>Kling2.1_Refer2i_1K</li>
-<li>Kling2.1_Refer2i_2K</li>
-<li>Kling2.1_Refer2i_4K</li>
-<li>Veo3.1Standard</li>
-<li>Veo3.1Fast</li>
-<li>Kling2.0&2.1std_720P</li>
-<li>Kling2.0&2.1pro_1080P</li>
-<li>Kling2.5pro_720P</li>
-<li>Kling2.5pro_1080P</li>
-<li>KlingO1_720P</li>
-<li>KlingO1_1080P</li>
-<li>KlingO1_NoVideo_720P</li>
-<li>KlingO1_NoVideo_1080P</li>
-<li>Kling2.6</li>
-<li>Kling2.6Sound</li>
-<li>Kling2.6MotionControl_720P</li>
-<li>Kling2.6MotionControl_1080P</li>
-<li>Kling_Avatar_I2v_720P</li>
-<li>Kling_Avatar_I2v_1080P</li>
-<li>Kling_Identifyface</li>
-<li>Hailuo02&2.3_768P</li>
-<li>Hailuo02&2.3_1080P</li>
-<li>Hailuo2.3fast_768P</li>
-<li>Hailuo2.3fast_1080P</li>
-<li>ViduQ2_720P</li>
-<li>ViduQ2_720P_OffPeak</li>
-<li>ViduQ2_1080P</li>
-<li>ViduQ2_1080P_OffPeak</li>
-<li>ViduQ2pro_720P</li>
-<li>ViduQ2pro_720P_OffPeak</li>
-<li>ViduQ2pro_1080P</li>
-<li>ViduQ2pro_1080P_OffPeak</li>
-<li>ViduQ2turbo_720P</li>
-<li>ViduQ2turbo_720P_OffPeak</li>
-<li>ViduQ2turbo_1080P</li>
-<li>ViduQ2turbo_1080P_OffPeak</li>
-<li>ViduQ3pro_720P</li>
-<li>ViduQ3pro_720P_OffPeak</li>
-<li>ViduQ3pro_1080P</li>
-<li>ViduQ3pro_1080P_OffPeak</li>
-<li>Vidu_TemplateEffect</li>
-<li>Hunyuan1.5_720P</li>
-<li>Hunyuan1.5_1080P</li>
-<li>Mingmou1.0_720P</li>
-<li>Mingmou1.0_1080P</li>
-<li>ImageProductImage</li>
-<li>ImageChangeClothes</li>
-<li>VideoProductShowcase</li>
-<li>ImageOutPainting</li>
-<li>unknown</li>
+        :param _Specification: <p>AIGC规格。<br>取值有：</p><li>Qwen2.0</li><li>Hunyuan3.0_1K</li><li>Hunyuan3.0_2K</li><li>Hunyuan3.0_4K</li><li>Mingmou1.0_1K</li><li>Mingmou1.0_2K</li><li>Mingmou1.0_4K</li><li>ViduQ2_T2i_1080P</li><li>ViduQ2_T2i_2K</li><li>ViduQ2_T2i_4K</li><li>ViduQ2_I2i_1080P</li><li>ViduQ2_I2i_2K</li><li>ViduQ2_I2i_4K</li><li>ViduQ2_Refer2i_1080P</li><li>ViduQ2_Refer2i_2K</li><li>ViduQ2_Refer2i_4K</li><li>Kling2.1_T2i_1K2K</li><li>Kling2.1_T2i_4K</li><li>Kling2.1_Refer2i_1K</li><li>Kling2.1_Refer2i_2K</li><li>Kling2.1_Refer2i_4K</li><li>Veo3.1Standard</li><li>Veo3.1Fast</li><li>Kling2.0&amp;2.1std_720P</li><li>Kling2.0&amp;2.1pro_1080P</li><li>Kling2.5pro_720P</li><li>Kling2.5pro_1080P</li><li>KlingO1_720P</li><li>KlingO1_1080P</li><li>KlingO1_NoVideo_720P</li><li>KlingO1_NoVideo_1080P</li><li>Kling2.6</li><li>Kling2.6Sound</li><li>Kling2.6MotionControl_720P</li><li>Kling2.6MotionControl_1080P</li><li>Kling_Avatar_I2v_720P</li><li>Kling_Avatar_I2v_1080P</li><li>Kling_Identifyface</li><li>Hailuo02&amp;2.3_768P</li><li>Hailuo02&amp;2.3_1080P</li><li>Hailuo2.3fast_768P</li><li>Hailuo2.3fast_1080P</li><li>ViduQ2_720P</li><li>ViduQ2_720P_OffPeak</li><li>ViduQ2_1080P</li><li>ViduQ2_1080P_OffPeak</li><li>ViduQ2_Refer_540P_OffPeak</li><li>ViduQ2_Refer_720P</li><li>ViduQ2_Refer_720P_OffPeak</li><li>ViduQ2_Refer_1080P</li><li>ViduQ2_Refer_1080P_OffPeak</li><li>ViduQ2pro_720P</li><li>ViduQ2pro_720P_OffPeak</li><li>ViduQ2pro_1080P</li><li>ViduQ2pro_1080P_OffPeak</li><li>ViduQ2pro_Refer_720P</li><li>ViduQ2pro_Refer_720P_OffPeak</li><li>ViduQ2pro_Refer_720P</li><li>ViduQ2pro_Refer_720P_OffPeak</li><li>ViduQ2pro_Refer_1080P</li><li>ViduQ2pro_Refer_1080P_OffPeak</li><li>ViduQ2turbo_720P</li><li>ViduQ2turbo_720P_OffPeak</li><li>ViduQ2turbo_1080P</li><li>ViduQ2turbo_1080P_OffPeak</li><li>ViduQ3pro_540P</li><li>ViduQ3pro_540P_OffPeak</li><li>ViduQ3pro_720P</li><li>ViduQ3pro_720P_OffPeak</li><li>ViduQ3pro_1080P</li><li>ViduQ3pro_1080P_OffPeak</li><li>Vidu_TemplateEffect</li><li>Hunyuan1.5_720P</li><li>Hunyuan1.5_1080P</li><li>Mingmou1.0_720P</li><li>Mingmou1.0_1080P</li><li>ImageProductImage</li><li>ImageChangeClothes</li><li>VideoProductShowcase</li><li>ImageOutPainting</li><li>unknown</li>
         :type Specification: str
-        :param _DataSet: 用量数据。
+        :param _DataSet: <p>用量数据。</p>
         :type DataSet: list of TaskStatDataItem
         """
         self._Specification = None
@@ -11772,76 +11718,7 @@ class AigcUsageDataItem(AbstractModel):
 
     @property
     def Specification(self):
-        r"""AIGC规格。
-取值有：
-<li>Qwen2.0</li>
-<li>Hunyuan3.0_1K</li>
-<li>Hunyuan3.0_2K</li>
-<li>Hunyuan3.0_4K</li>
-<li>Mingmou1.0_1K</li>
-<li>Mingmou1.0_2K</li>
-<li>Mingmou1.0_4K</li>
-<li>ViduQ2_T2i_1080P</li>
-<li>ViduQ2_T2i_2K</li>
-<li>ViduQ2_T2i_4K</li>
-<li>ViduQ2_I2i_1080P</li>
-<li>ViduQ2_I2i_2K</li>
-<li>ViduQ2_I2i_4K</li>
-<li>ViduQ2_Refer2i_1080P</li>
-<li>ViduQ2_Refer2i_2K</li>
-<li>ViduQ2_Refer2i_4K</li>
-<li>Kling2.1_T2i_1K2K</li>
-<li>Kling2.1_T2i_4K</li>
-<li>Kling2.1_Refer2i_1K</li>
-<li>Kling2.1_Refer2i_2K</li>
-<li>Kling2.1_Refer2i_4K</li>
-<li>Veo3.1Standard</li>
-<li>Veo3.1Fast</li>
-<li>Kling2.0&2.1std_720P</li>
-<li>Kling2.0&2.1pro_1080P</li>
-<li>Kling2.5pro_720P</li>
-<li>Kling2.5pro_1080P</li>
-<li>KlingO1_720P</li>
-<li>KlingO1_1080P</li>
-<li>KlingO1_NoVideo_720P</li>
-<li>KlingO1_NoVideo_1080P</li>
-<li>Kling2.6</li>
-<li>Kling2.6Sound</li>
-<li>Kling2.6MotionControl_720P</li>
-<li>Kling2.6MotionControl_1080P</li>
-<li>Kling_Avatar_I2v_720P</li>
-<li>Kling_Avatar_I2v_1080P</li>
-<li>Kling_Identifyface</li>
-<li>Hailuo02&2.3_768P</li>
-<li>Hailuo02&2.3_1080P</li>
-<li>Hailuo2.3fast_768P</li>
-<li>Hailuo2.3fast_1080P</li>
-<li>ViduQ2_720P</li>
-<li>ViduQ2_720P_OffPeak</li>
-<li>ViduQ2_1080P</li>
-<li>ViduQ2_1080P_OffPeak</li>
-<li>ViduQ2pro_720P</li>
-<li>ViduQ2pro_720P_OffPeak</li>
-<li>ViduQ2pro_1080P</li>
-<li>ViduQ2pro_1080P_OffPeak</li>
-<li>ViduQ2turbo_720P</li>
-<li>ViduQ2turbo_720P_OffPeak</li>
-<li>ViduQ2turbo_1080P</li>
-<li>ViduQ2turbo_1080P_OffPeak</li>
-<li>ViduQ3pro_720P</li>
-<li>ViduQ3pro_720P_OffPeak</li>
-<li>ViduQ3pro_1080P</li>
-<li>ViduQ3pro_1080P_OffPeak</li>
-<li>Vidu_TemplateEffect</li>
-<li>Hunyuan1.5_720P</li>
-<li>Hunyuan1.5_1080P</li>
-<li>Mingmou1.0_720P</li>
-<li>Mingmou1.0_1080P</li>
-<li>ImageProductImage</li>
-<li>ImageChangeClothes</li>
-<li>VideoProductShowcase</li>
-<li>ImageOutPainting</li>
-<li>unknown</li>
+        r"""<p>AIGC规格。<br>取值有：</p><li>Qwen2.0</li><li>Hunyuan3.0_1K</li><li>Hunyuan3.0_2K</li><li>Hunyuan3.0_4K</li><li>Mingmou1.0_1K</li><li>Mingmou1.0_2K</li><li>Mingmou1.0_4K</li><li>ViduQ2_T2i_1080P</li><li>ViduQ2_T2i_2K</li><li>ViduQ2_T2i_4K</li><li>ViduQ2_I2i_1080P</li><li>ViduQ2_I2i_2K</li><li>ViduQ2_I2i_4K</li><li>ViduQ2_Refer2i_1080P</li><li>ViduQ2_Refer2i_2K</li><li>ViduQ2_Refer2i_4K</li><li>Kling2.1_T2i_1K2K</li><li>Kling2.1_T2i_4K</li><li>Kling2.1_Refer2i_1K</li><li>Kling2.1_Refer2i_2K</li><li>Kling2.1_Refer2i_4K</li><li>Veo3.1Standard</li><li>Veo3.1Fast</li><li>Kling2.0&amp;2.1std_720P</li><li>Kling2.0&amp;2.1pro_1080P</li><li>Kling2.5pro_720P</li><li>Kling2.5pro_1080P</li><li>KlingO1_720P</li><li>KlingO1_1080P</li><li>KlingO1_NoVideo_720P</li><li>KlingO1_NoVideo_1080P</li><li>Kling2.6</li><li>Kling2.6Sound</li><li>Kling2.6MotionControl_720P</li><li>Kling2.6MotionControl_1080P</li><li>Kling_Avatar_I2v_720P</li><li>Kling_Avatar_I2v_1080P</li><li>Kling_Identifyface</li><li>Hailuo02&amp;2.3_768P</li><li>Hailuo02&amp;2.3_1080P</li><li>Hailuo2.3fast_768P</li><li>Hailuo2.3fast_1080P</li><li>ViduQ2_720P</li><li>ViduQ2_720P_OffPeak</li><li>ViduQ2_1080P</li><li>ViduQ2_1080P_OffPeak</li><li>ViduQ2_Refer_540P_OffPeak</li><li>ViduQ2_Refer_720P</li><li>ViduQ2_Refer_720P_OffPeak</li><li>ViduQ2_Refer_1080P</li><li>ViduQ2_Refer_1080P_OffPeak</li><li>ViduQ2pro_720P</li><li>ViduQ2pro_720P_OffPeak</li><li>ViduQ2pro_1080P</li><li>ViduQ2pro_1080P_OffPeak</li><li>ViduQ2pro_Refer_720P</li><li>ViduQ2pro_Refer_720P_OffPeak</li><li>ViduQ2pro_Refer_720P</li><li>ViduQ2pro_Refer_720P_OffPeak</li><li>ViduQ2pro_Refer_1080P</li><li>ViduQ2pro_Refer_1080P_OffPeak</li><li>ViduQ2turbo_720P</li><li>ViduQ2turbo_720P_OffPeak</li><li>ViduQ2turbo_1080P</li><li>ViduQ2turbo_1080P_OffPeak</li><li>ViduQ3pro_540P</li><li>ViduQ3pro_540P_OffPeak</li><li>ViduQ3pro_720P</li><li>ViduQ3pro_720P_OffPeak</li><li>ViduQ3pro_1080P</li><li>ViduQ3pro_1080P_OffPeak</li><li>Vidu_TemplateEffect</li><li>Hunyuan1.5_720P</li><li>Hunyuan1.5_1080P</li><li>Mingmou1.0_720P</li><li>Mingmou1.0_1080P</li><li>ImageProductImage</li><li>ImageChangeClothes</li><li>VideoProductShowcase</li><li>ImageOutPainting</li><li>unknown</li>
         :rtype: str
         """
         return self._Specification
@@ -11852,7 +11729,7 @@ class AigcUsageDataItem(AbstractModel):
 
     @property
     def DataSet(self):
-        r"""用量数据。
+        r"""<p>用量数据。</p>
         :rtype: list of TaskStatDataItem
         """
         return self._DataSet
@@ -12207,28 +12084,31 @@ class AigcVideoTask(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务 ID。
+        :param _TaskId: <p>任务 ID。</p>
         :type TaskId: str
-        :param _Status: 任务状态，取值：<li>PROCESSING：处理中；</li><li>FINISH：已完成。</li>
+        :param _Status: <p>任务状态，取值：<li>PROCESSING：处理中；</li><li>FINISH：已完成。</li></p>
         :type Status: str
-        :param _ErrCode: 错误码。源异常时返回非0错误码，返回0时请使用各个具体任务的 ErrCode。
+        :param _ErrCode: <p>错误码。源异常时返回非0错误码，返回0时请使用各个具体任务的 ErrCode。</p>
         :type ErrCode: int
-        :param _Message: 错误信息。
+        :param _ErrCodeExt: <p>扩展错误码。</p><p>枚举值：</p><ul><li>RequestLimitExceeded： 调用超出并发限制。</li><li>InvalidParameter.VoilationContent： 输入 prompt 违反内容安全策略。</li><li>InvalidParameterValue： 参数错误。</li><li>FailedOperation： 模型任务堆积。</li><li>InternalError： 内部错误。</li></ul>
+        :type ErrCodeExt: str
+        :param _Message: <p>错误信息。</p>
         :type Message: str
-        :param _Progress: 任务进度，取值范围 [0-100] 。
+        :param _Progress: <p>任务进度，取值范围 [0-100] 。</p>
         :type Progress: int
-        :param _Input: AIGC 生视频任务的输入信息。
+        :param _Input: <p>AIGC 生视频任务的输入信息。</p>
         :type Input: :class:`tencentcloud.vod.v20180717.models.AigcVideoTaskInput`
-        :param _Output: AIGC 生视频任务的输出信息。
+        :param _Output: <p>AIGC 生视频任务的输出信息。</p>
         :type Output: :class:`tencentcloud.vod.v20180717.models.AigcVideoTaskOutput`
-        :param _SessionId: 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+        :param _SessionId: <p>用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。</p>
         :type SessionId: str
-        :param _SessionContext: 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+        :param _SessionContext: <p>来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。</p>
         :type SessionContext: str
         """
         self._TaskId = None
         self._Status = None
         self._ErrCode = None
+        self._ErrCodeExt = None
         self._Message = None
         self._Progress = None
         self._Input = None
@@ -12238,7 +12118,7 @@ class AigcVideoTask(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""任务 ID。
+        r"""<p>任务 ID。</p>
         :rtype: str
         """
         return self._TaskId
@@ -12249,7 +12129,7 @@ class AigcVideoTask(AbstractModel):
 
     @property
     def Status(self):
-        r"""任务状态，取值：<li>PROCESSING：处理中；</li><li>FINISH：已完成。</li>
+        r"""<p>任务状态，取值：<li>PROCESSING：处理中；</li><li>FINISH：已完成。</li></p>
         :rtype: str
         """
         return self._Status
@@ -12260,7 +12140,7 @@ class AigcVideoTask(AbstractModel):
 
     @property
     def ErrCode(self):
-        r"""错误码。源异常时返回非0错误码，返回0时请使用各个具体任务的 ErrCode。
+        r"""<p>错误码。源异常时返回非0错误码，返回0时请使用各个具体任务的 ErrCode。</p>
         :rtype: int
         """
         return self._ErrCode
@@ -12270,8 +12150,19 @@ class AigcVideoTask(AbstractModel):
         self._ErrCode = ErrCode
 
     @property
+    def ErrCodeExt(self):
+        r"""<p>扩展错误码。</p><p>枚举值：</p><ul><li>RequestLimitExceeded： 调用超出并发限制。</li><li>InvalidParameter.VoilationContent： 输入 prompt 违反内容安全策略。</li><li>InvalidParameterValue： 参数错误。</li><li>FailedOperation： 模型任务堆积。</li><li>InternalError： 内部错误。</li></ul>
+        :rtype: str
+        """
+        return self._ErrCodeExt
+
+    @ErrCodeExt.setter
+    def ErrCodeExt(self, ErrCodeExt):
+        self._ErrCodeExt = ErrCodeExt
+
+    @property
     def Message(self):
-        r"""错误信息。
+        r"""<p>错误信息。</p>
         :rtype: str
         """
         return self._Message
@@ -12282,7 +12173,7 @@ class AigcVideoTask(AbstractModel):
 
     @property
     def Progress(self):
-        r"""任务进度，取值范围 [0-100] 。
+        r"""<p>任务进度，取值范围 [0-100] 。</p>
         :rtype: int
         """
         return self._Progress
@@ -12293,7 +12184,7 @@ class AigcVideoTask(AbstractModel):
 
     @property
     def Input(self):
-        r"""AIGC 生视频任务的输入信息。
+        r"""<p>AIGC 生视频任务的输入信息。</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.AigcVideoTaskInput`
         """
         return self._Input
@@ -12304,7 +12195,7 @@ class AigcVideoTask(AbstractModel):
 
     @property
     def Output(self):
-        r"""AIGC 生视频任务的输出信息。
+        r"""<p>AIGC 生视频任务的输出信息。</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.AigcVideoTaskOutput`
         """
         return self._Output
@@ -12315,7 +12206,7 @@ class AigcVideoTask(AbstractModel):
 
     @property
     def SessionId(self):
-        r"""用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+        r"""<p>用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。</p>
         :rtype: str
         """
         return self._SessionId
@@ -12326,7 +12217,7 @@ class AigcVideoTask(AbstractModel):
 
     @property
     def SessionContext(self):
-        r"""来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+        r"""<p>来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。</p>
         :rtype: str
         """
         return self._SessionContext
@@ -12340,6 +12231,7 @@ class AigcVideoTask(AbstractModel):
         self._TaskId = params.get("TaskId")
         self._Status = params.get("Status")
         self._ErrCode = params.get("ErrCode")
+        self._ErrCodeExt = params.get("ErrCodeExt")
         self._Message = params.get("Message")
         self._Progress = params.get("Progress")
         if params.get("Input") is not None:
@@ -20043,9 +19935,9 @@ class CreateAigcImageTaskRequest(AbstractModel):
         r"""
         :param _SubAppId: <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
         :type SubAppId: int
-        :param _ModelName: <p>模型名称。取值：</p><li>GEM：Gemini；</li><li>Qwen：千问。</li><li>Hunyuan：混元。</li><li>Vidu：生数。</li><li>Kling：可灵。</li>
+        :param _ModelName: <p>模型名称。取值：</p><li>Qwen：千问。</li><li>Hunyuan：混元。</li><li>Vidu：生数。</li><li>Kling：可灵。</li>
         :type ModelName: str
-        :param _ModelVersion: <p>模型版本。取值：<li>当 ModelName 是 GEM，可选值为 2.5；</li><li>当 ModelName 是 Qwen，可选值为 0925；</li><li>当 ModelName 是 Hunyuan，可选值为 3.0；</li><li>当 ModelName 是 Vidu，可选值为 q2；</li><li>当 ModelName 是 Kling，可选值为 2.1；</li></p>
+        :param _ModelVersion: <p>模型版本。取值：<li>当 ModelName 是 Qwen，可选值为 0925；</li><li>当 ModelName 是 Hunyuan，可选值为 3.0；</li><li>当 ModelName 是 Vidu，可选值为 q2；</li><li>当 ModelName 是 Kling，可选值为 2.1；</li></p>
         :type ModelVersion: str
         :param _FileInfos: <p>AIGC 生图任务的输入图片的文件信息。默认只支持指定1个。下列模型可传多张参考图：<li>GEM 2.5：0～3张图片；</li><li>Vidu q2：0～7张图片，图片支持 png、jpeg、jpg、webp格式，图片像素不能小于 128x128，且比例需要小于1:4或4:1；</li></p>
         :type FileInfos: list of AigcImageTaskInputFileInfo
@@ -20095,7 +19987,7 @@ class CreateAigcImageTaskRequest(AbstractModel):
 
     @property
     def ModelName(self):
-        r"""<p>模型名称。取值：</p><li>GEM：Gemini；</li><li>Qwen：千问。</li><li>Hunyuan：混元。</li><li>Vidu：生数。</li><li>Kling：可灵。</li>
+        r"""<p>模型名称。取值：</p><li>Qwen：千问。</li><li>Hunyuan：混元。</li><li>Vidu：生数。</li><li>Kling：可灵。</li>
         :rtype: str
         """
         return self._ModelName
@@ -20106,7 +19998,7 @@ class CreateAigcImageTaskRequest(AbstractModel):
 
     @property
     def ModelVersion(self):
-        r"""<p>模型版本。取值：<li>当 ModelName 是 GEM，可选值为 2.5；</li><li>当 ModelName 是 Qwen，可选值为 0925；</li><li>当 ModelName 是 Hunyuan，可选值为 3.0；</li><li>当 ModelName 是 Vidu，可选值为 q2；</li><li>当 ModelName 是 Kling，可选值为 2.1；</li></p>
+        r"""<p>模型版本。取值：<li>当 ModelName 是 Qwen，可选值为 0925；</li><li>当 ModelName 是 Hunyuan，可选值为 3.0；</li><li>当 ModelName 是 Vidu，可选值为 q2；</li><li>当 ModelName 是 Kling，可选值为 2.1；</li></p>
         :rtype: str
         """
         return self._ModelVersion
@@ -66543,25 +66435,28 @@ class ProcessImageAsyncRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        :param _SubAppId: <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
         :type SubAppId: int
-        :param _FileId: 需要进行图片处理的FileId。
+        :param _FileId: <p>需要进行图片处理的FileId。不能与Url同时输入。</p>
         :type FileId: str
-        :param _ImageTaskInput: 图片处理参数。
+        :param _Url: <p>需要进行图片处理的Url。不能与FileId同时输入。</p>
+        :type Url: str
+        :param _ImageTaskInput: <p>图片处理参数。</p>
         :type ImageTaskInput: :class:`tencentcloud.vod.v20180717.models.ProcessImageAsyncTaskInput`
-        :param _OutputConfig: 图片处理任务的输出媒体文件配置。
+        :param _OutputConfig: <p>图片处理任务的输出媒体文件配置。</p>
         :type OutputConfig: :class:`tencentcloud.vod.v20180717.models.ProcessImageAsyncOutputConfig`
-        :param _SessionId: 用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+        :param _SessionId: <p>用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。</p>
         :type SessionId: str
-        :param _SessionContext: 来源上下文，用于透传用户请求信息，音画质重生完成回调将返回该字段值，最长 1000 个字符。
+        :param _SessionContext: <p>来源上下文，用于透传用户请求信息，音画质重生完成回调将返回该字段值，最长 1000 个字符。</p>
         :type SessionContext: str
-        :param _TasksPriority: 任务的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。
+        :param _TasksPriority: <p>任务的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。</p>
         :type TasksPriority: int
-        :param _ExtInfo: 保留字段，特殊用途时使用。
+        :param _ExtInfo: <p>保留字段，特殊用途时使用。</p>
         :type ExtInfo: str
         """
         self._SubAppId = None
         self._FileId = None
+        self._Url = None
         self._ImageTaskInput = None
         self._OutputConfig = None
         self._SessionId = None
@@ -66571,7 +66466,7 @@ class ProcessImageAsyncRequest(AbstractModel):
 
     @property
     def SubAppId(self):
-        r"""<b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        r"""<p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
         :rtype: int
         """
         return self._SubAppId
@@ -66582,7 +66477,7 @@ class ProcessImageAsyncRequest(AbstractModel):
 
     @property
     def FileId(self):
-        r"""需要进行图片处理的FileId。
+        r"""<p>需要进行图片处理的FileId。不能与Url同时输入。</p>
         :rtype: str
         """
         return self._FileId
@@ -66592,8 +66487,19 @@ class ProcessImageAsyncRequest(AbstractModel):
         self._FileId = FileId
 
     @property
+    def Url(self):
+        r"""<p>需要进行图片处理的Url。不能与FileId同时输入。</p>
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
     def ImageTaskInput(self):
-        r"""图片处理参数。
+        r"""<p>图片处理参数。</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.ProcessImageAsyncTaskInput`
         """
         return self._ImageTaskInput
@@ -66604,7 +66510,7 @@ class ProcessImageAsyncRequest(AbstractModel):
 
     @property
     def OutputConfig(self):
-        r"""图片处理任务的输出媒体文件配置。
+        r"""<p>图片处理任务的输出媒体文件配置。</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.ProcessImageAsyncOutputConfig`
         """
         return self._OutputConfig
@@ -66615,7 +66521,7 @@ class ProcessImageAsyncRequest(AbstractModel):
 
     @property
     def SessionId(self):
-        r"""用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+        r"""<p>用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。</p>
         :rtype: str
         """
         return self._SessionId
@@ -66626,7 +66532,7 @@ class ProcessImageAsyncRequest(AbstractModel):
 
     @property
     def SessionContext(self):
-        r"""来源上下文，用于透传用户请求信息，音画质重生完成回调将返回该字段值，最长 1000 个字符。
+        r"""<p>来源上下文，用于透传用户请求信息，音画质重生完成回调将返回该字段值，最长 1000 个字符。</p>
         :rtype: str
         """
         return self._SessionContext
@@ -66637,7 +66543,7 @@ class ProcessImageAsyncRequest(AbstractModel):
 
     @property
     def TasksPriority(self):
-        r"""任务的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。
+        r"""<p>任务的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。</p>
         :rtype: int
         """
         return self._TasksPriority
@@ -66648,7 +66554,7 @@ class ProcessImageAsyncRequest(AbstractModel):
 
     @property
     def ExtInfo(self):
-        r"""保留字段，特殊用途时使用。
+        r"""<p>保留字段，特殊用途时使用。</p>
         :rtype: str
         """
         return self._ExtInfo
@@ -66661,6 +66567,7 @@ class ProcessImageAsyncRequest(AbstractModel):
     def _deserialize(self, params):
         self._SubAppId = params.get("SubAppId")
         self._FileId = params.get("FileId")
+        self._Url = params.get("Url")
         if params.get("ImageTaskInput") is not None:
             self._ImageTaskInput = ProcessImageAsyncTaskInput()
             self._ImageTaskInput._deserialize(params.get("ImageTaskInput"))
@@ -66688,7 +66595,7 @@ class ProcessImageAsyncResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务 ID。
+        :param _TaskId: <p>任务 ID。</p>
         :type TaskId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -66698,7 +66605,7 @@ class ProcessImageAsyncResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""任务 ID。
+        r"""<p>任务 ID。</p>
         :rtype: str
         """
         return self._TaskId

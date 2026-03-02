@@ -966,7 +966,7 @@ class CccClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeSessionDetailResponse:
         """
-        获取通话详情
+        此接口用于在通话结束后，通过 session id 和时间戳，查询单一通话的通话详情。包括：主被叫信息、录音等。
         """
         
         kwargs = {}

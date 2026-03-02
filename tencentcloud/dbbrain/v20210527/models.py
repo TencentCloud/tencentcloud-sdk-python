@@ -11808,26 +11808,32 @@ class DescribeSlowLogUserHostStatsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID。
+        :param _InstanceId: 实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
         :type InstanceId: str
-        :param _StartTime: 查询范围的开始时间，时间格式如：2019-09-10 12:13:14。
+        :param _StartTime: 查询范围的开始时间，格式: "yyyy-MM-dd'T'HH:mm:ssXXX"。
         :type StartTime: str
-        :param _EndTime: 查询范围的结束时间，时间格式如：2019-09-10 12:13:14。
+        :param _EndTime: 查询范围的结束时间，格式: "yyyy-MM-dd'T'HH:mm:ssXXX"。
         :type EndTime: str
         :param _Product: 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，默认为"mysql"。
         :type Product: str
         :param _Md5: SQL模板的MD5值
         :type Md5: str
+        :param _InstanceProxyId: 仅Redis产品使用；实例Proxy ID。
+        :type InstanceProxyId: str
+        :param _Cmd: 仅Redis产品使用；命令。
+        :type Cmd: str
         """
         self._InstanceId = None
         self._StartTime = None
         self._EndTime = None
         self._Product = None
         self._Md5 = None
+        self._InstanceProxyId = None
+        self._Cmd = None
 
     @property
     def InstanceId(self):
-        r"""实例ID。
+        r"""实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
         :rtype: str
         """
         return self._InstanceId
@@ -11838,7 +11844,7 @@ class DescribeSlowLogUserHostStatsRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""查询范围的开始时间，时间格式如：2019-09-10 12:13:14。
+        r"""查询范围的开始时间，格式: "yyyy-MM-dd'T'HH:mm:ssXXX"。
         :rtype: str
         """
         return self._StartTime
@@ -11849,7 +11855,7 @@ class DescribeSlowLogUserHostStatsRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""查询范围的结束时间，时间格式如：2019-09-10 12:13:14。
+        r"""查询范围的结束时间，格式: "yyyy-MM-dd'T'HH:mm:ssXXX"。
         :rtype: str
         """
         return self._EndTime
@@ -11880,6 +11886,28 @@ class DescribeSlowLogUserHostStatsRequest(AbstractModel):
     def Md5(self, Md5):
         self._Md5 = Md5
 
+    @property
+    def InstanceProxyId(self):
+        r"""仅Redis产品使用；实例Proxy ID。
+        :rtype: str
+        """
+        return self._InstanceProxyId
+
+    @InstanceProxyId.setter
+    def InstanceProxyId(self, InstanceProxyId):
+        self._InstanceProxyId = InstanceProxyId
+
+    @property
+    def Cmd(self):
+        r"""仅Redis产品使用；命令。
+        :rtype: str
+        """
+        return self._Cmd
+
+    @Cmd.setter
+    def Cmd(self, Cmd):
+        self._Cmd = Cmd
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -11887,6 +11915,8 @@ class DescribeSlowLogUserHostStatsRequest(AbstractModel):
         self._EndTime = params.get("EndTime")
         self._Product = params.get("Product")
         self._Md5 = params.get("Md5")
+        self._InstanceProxyId = params.get("InstanceProxyId")
+        self._Cmd = params.get("Cmd")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

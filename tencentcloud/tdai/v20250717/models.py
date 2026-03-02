@@ -31,6 +31,8 @@ class Agent(AbstractModel):
         :type AgentName: str
         :param _AgentInternalName: 智能体类型
         :type AgentInternalName: str
+        :param _DeployPlace: 架构：共享版-intranet，企业版-userVpc
+        :type DeployPlace: str
         :param _AgentStatus: 智能体状态
         :type AgentStatus: str
         :param _DefaultVersion: 默认版本
@@ -51,6 +53,7 @@ class Agent(AbstractModel):
         self._AgentId = None
         self._AgentName = None
         self._AgentInternalName = None
+        self._DeployPlace = None
         self._AgentStatus = None
         self._DefaultVersion = None
         self._AgentType = None
@@ -92,6 +95,17 @@ class Agent(AbstractModel):
     @AgentInternalName.setter
     def AgentInternalName(self, AgentInternalName):
         self._AgentInternalName = AgentInternalName
+
+    @property
+    def DeployPlace(self):
+        r"""架构：共享版-intranet，企业版-userVpc
+        :rtype: str
+        """
+        return self._DeployPlace
+
+    @DeployPlace.setter
+    def DeployPlace(self, DeployPlace):
+        self._DeployPlace = DeployPlace
 
     @property
     def AgentStatus(self):
@@ -186,6 +200,7 @@ class Agent(AbstractModel):
         self._AgentId = params.get("AgentId")
         self._AgentName = params.get("AgentName")
         self._AgentInternalName = params.get("AgentInternalName")
+        self._DeployPlace = params.get("DeployPlace")
         self._AgentStatus = params.get("AgentStatus")
         self._DefaultVersion = params.get("DefaultVersion")
         self._AgentType = params.get("AgentType")
@@ -972,15 +987,15 @@ class CreateAgentInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AgentId: 智能体ID
+        :param _AgentId: <p>智能体ID</p>
         :type AgentId: str
-        :param _AgentVersion: 智能体版本
+        :param _AgentVersion: <p>智能体版本</p>
         :type AgentVersion: str
-        :param _InstanceName: 实例名
+        :param _InstanceName: <p>实例名</p>
         :type InstanceName: str
-        :param _Parameters: 智能体实例的参数列表
+        :param _Parameters: <p>智能体实例的参数列表</p>
         :type Parameters: list of Parameter
-        :param _Tags: 资源的标签信息
+        :param _Tags: <p>资源的标签信息</p>
         :type Tags: list of TagItem
         """
         self._AgentId = None
@@ -991,7 +1006,7 @@ class CreateAgentInstanceRequest(AbstractModel):
 
     @property
     def AgentId(self):
-        r"""智能体ID
+        r"""<p>智能体ID</p>
         :rtype: str
         """
         return self._AgentId
@@ -1002,7 +1017,7 @@ class CreateAgentInstanceRequest(AbstractModel):
 
     @property
     def AgentVersion(self):
-        r"""智能体版本
+        r"""<p>智能体版本</p>
         :rtype: str
         """
         return self._AgentVersion
@@ -1013,7 +1028,7 @@ class CreateAgentInstanceRequest(AbstractModel):
 
     @property
     def InstanceName(self):
-        r"""实例名
+        r"""<p>实例名</p>
         :rtype: str
         """
         return self._InstanceName
@@ -1024,7 +1039,7 @@ class CreateAgentInstanceRequest(AbstractModel):
 
     @property
     def Parameters(self):
-        r"""智能体实例的参数列表
+        r"""<p>智能体实例的参数列表</p>
         :rtype: list of Parameter
         """
         return self._Parameters
@@ -1035,7 +1050,7 @@ class CreateAgentInstanceRequest(AbstractModel):
 
     @property
     def Tags(self):
-        r"""资源的标签信息
+        r"""<p>资源的标签信息</p>
         :rtype: list of TagItem
         """
         return self._Tags
@@ -1078,9 +1093,9 @@ class CreateAgentInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 智能体实例ID
+        :param _InstanceId: <p>智能体实例ID</p>
         :type InstanceId: str
-        :param _InstanceName: 智能体实例名称
+        :param _InstanceName: <p>智能体实例名称</p>
         :type InstanceName: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1091,7 +1106,7 @@ class CreateAgentInstanceResponse(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""智能体实例ID
+        r"""<p>智能体实例ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -1102,7 +1117,7 @@ class CreateAgentInstanceResponse(AbstractModel):
 
     @property
     def InstanceName(self):
-        r"""智能体实例名称
+        r"""<p>智能体实例名称</p>
         :rtype: str
         """
         return self._InstanceName
@@ -2020,6 +2035,8 @@ class DescribeAgentsRequest(AbstractModel):
         :type AgentInternalName: str
         :param _AgentStatus: 智能体状态，为空时查询所有，如果填写则会根据AgentStatus筛选
         :type AgentStatus: str
+        :param _DeployPlace: 架构，共享版-intranet，企业版-userVpc
+        :type DeployPlace: str
         """
         self._Offset = None
         self._Limit = None
@@ -2027,6 +2044,7 @@ class DescribeAgentsRequest(AbstractModel):
         self._AgentName = None
         self._AgentInternalName = None
         self._AgentStatus = None
+        self._DeployPlace = None
 
     @property
     def Offset(self):
@@ -2094,6 +2112,17 @@ class DescribeAgentsRequest(AbstractModel):
     def AgentStatus(self, AgentStatus):
         self._AgentStatus = AgentStatus
 
+    @property
+    def DeployPlace(self):
+        r"""架构，共享版-intranet，企业版-userVpc
+        :rtype: str
+        """
+        return self._DeployPlace
+
+    @DeployPlace.setter
+    def DeployPlace(self, DeployPlace):
+        self._DeployPlace = DeployPlace
+
 
     def _deserialize(self, params):
         self._Offset = params.get("Offset")
@@ -2102,6 +2131,7 @@ class DescribeAgentsRequest(AbstractModel):
         self._AgentName = params.get("AgentName")
         self._AgentInternalName = params.get("AgentInternalName")
         self._AgentStatus = params.get("AgentStatus")
+        self._DeployPlace = params.get("DeployPlace")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

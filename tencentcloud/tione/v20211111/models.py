@@ -8079,7 +8079,7 @@ class DescribeLogsRequest(AbstractModel):
         :type StartTime: str
         :param _EndTime: 日志查询结束时间（RFC3339格式的时间字符串），默认值为当前时间
         :type EndTime: str
-        :param _Limit: 日志查询条数，默认值100，最大值100
+        :param _Limit: 日志查询条数，默认值100，最大值1000
         :type Limit: int
         :param _ServiceId: 服务ID，和Service参数对应，不同Service的服务ID获取方式不同，具体如下：
 - Service类型为TRAIN：
@@ -8114,6 +8114,8 @@ class DescribeLogsRequest(AbstractModel):
 2. Filter.Values：表示过滤日志的关键字；Values为多个的时候表示同时满足
 3. Filter. Negative和Filter. Fuzzy没有使用
         :type Filters: list of Filter
+        :param _Offset: 使用OFFSET分页查询时，指定返回的数据偏移量，默认为0
+        :type Offset: int
         """
         self._Service = None
         self._StartTime = None
@@ -8125,6 +8127,7 @@ class DescribeLogsRequest(AbstractModel):
         self._OrderField = None
         self._Context = None
         self._Filters = None
+        self._Offset = None
 
     @property
     def Service(self):
@@ -8166,7 +8169,7 @@ class DescribeLogsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""日志查询条数，默认值100，最大值100
+        r"""日志查询条数，默认值100，最大值1000
         :rtype: int
         """
         return self._Limit
@@ -8262,6 +8265,17 @@ class DescribeLogsRequest(AbstractModel):
     def Filters(self, Filters):
         self._Filters = Filters
 
+    @property
+    def Offset(self):
+        r"""使用OFFSET分页查询时，指定返回的数据偏移量，默认为0
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
 
     def _deserialize(self, params):
         self._Service = params.get("Service")
@@ -8279,6 +8293,7 @@ class DescribeLogsRequest(AbstractModel):
                 obj = Filter()
                 obj._deserialize(item)
                 self._Filters.append(obj)
+        self._Offset = params.get("Offset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25587,7 +25602,7 @@ class WeightEntry(AbstractModel):
         r"""
         :param _ServiceId: 服务id
         :type ServiceId: str
-        :param _Weight: 流量权重值，同 ServiceGroup 下 总和应为 100
+        :param _Weight: 流量权重值，ServiceGroup 下，不同服务版本根据权重比例分配流量
         :type Weight: int
         """
         self._ServiceId = None
@@ -25606,7 +25621,7 @@ class WeightEntry(AbstractModel):
 
     @property
     def Weight(self):
-        r"""流量权重值，同 ServiceGroup 下 总和应为 100
+        r"""流量权重值，ServiceGroup 下，不同服务版本根据权重比例分配流量
         :rtype: int
         """
         return self._Weight

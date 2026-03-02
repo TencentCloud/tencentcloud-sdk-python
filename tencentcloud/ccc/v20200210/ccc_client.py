@@ -1217,7 +1217,7 @@ class CccClient(AbstractClient):
 
 
     def DescribeSessionDetail(self, request):
-        r"""获取通话详情
+        r"""此接口用于在通话结束后，通过 session id 和时间戳，查询单一通话的通话详情。包括：主被叫信息、录音等。
 
         :param request: Request instance for DescribeSessionDetail.
         :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeSessionDetailRequest`

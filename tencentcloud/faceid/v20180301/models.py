@@ -3750,19 +3750,19 @@ class Encryption(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EncryptList: 在使用加密服务时，填入要被加密的字段。本接口中可填入加密后的一个或多个字段
+        :param _EncryptList: <p>在使用加密服务时，填入要被加密的字段。本接口中可填入加密后的一个或多个字段</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type EncryptList: list of str
-        :param _CiphertextBlob: 加密后的对称密钥，关于密钥的生成和使用请查阅<a href="https://cloud.tencent.com/document/product/1007/47180">数据加密</a> 文档。
+        :param _CiphertextBlob: <p>加密后的对称密钥，关于密钥的生成和使用请查阅<a href="https://www.tencentcloud.com/document/product/1061/77849">数据加密</a> 文档。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CiphertextBlob: str
-        :param _Iv: 有加密需求的用户，传入CBC加密的初始向量（客户自定义字符串，长度16字符）。
+        :param _Iv: <p>有加密需求的用户，传入CBC加密的初始向量（客户自定义字符串，长度16字符）。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Iv: str
-        :param _Algorithm: 加密使用的算法（支持'AES-256-CBC'、'SM4-GCM'），不传默认为'AES-256-CBC'
+        :param _Algorithm: <p>加密使用的算法（支持&#39;AES-256-CBC&#39;、&#39;SM4-GCM&#39;），不传默认为&#39;AES-256-CBC&#39;</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Algorithm: str
-        :param _TagList: SM4-GCM算法生成的消息摘要（校验消息完整性时使用）
+        :param _TagList: <p>SM4-GCM算法生成的消息摘要（校验消息完整性时使用）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TagList: list of str
         """
@@ -3774,7 +3774,7 @@ class Encryption(AbstractModel):
 
     @property
     def EncryptList(self):
-        r"""在使用加密服务时，填入要被加密的字段。本接口中可填入加密后的一个或多个字段
+        r"""<p>在使用加密服务时，填入要被加密的字段。本接口中可填入加密后的一个或多个字段</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -3786,7 +3786,7 @@ class Encryption(AbstractModel):
 
     @property
     def CiphertextBlob(self):
-        r"""加密后的对称密钥，关于密钥的生成和使用请查阅<a href="https://cloud.tencent.com/document/product/1007/47180">数据加密</a> 文档。
+        r"""<p>加密后的对称密钥，关于密钥的生成和使用请查阅<a href="https://www.tencentcloud.com/document/product/1061/77849">数据加密</a> 文档。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3798,7 +3798,7 @@ class Encryption(AbstractModel):
 
     @property
     def Iv(self):
-        r"""有加密需求的用户，传入CBC加密的初始向量（客户自定义字符串，长度16字符）。
+        r"""<p>有加密需求的用户，传入CBC加密的初始向量（客户自定义字符串，长度16字符）。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3810,7 +3810,7 @@ class Encryption(AbstractModel):
 
     @property
     def Algorithm(self):
-        r"""加密使用的算法（支持'AES-256-CBC'、'SM4-GCM'），不传默认为'AES-256-CBC'
+        r"""<p>加密使用的算法（支持&#39;AES-256-CBC&#39;、&#39;SM4-GCM&#39;），不传默认为&#39;AES-256-CBC&#39;</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3822,7 +3822,7 @@ class Encryption(AbstractModel):
 
     @property
     def TagList(self):
-        r"""SM4-GCM算法生成的消息摘要（校验消息完整性时使用）
+        r"""<p>SM4-GCM算法生成的消息摘要（校验消息完整性时使用）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """

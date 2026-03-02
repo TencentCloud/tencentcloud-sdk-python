@@ -4329,6 +4329,7 @@ class CreateDataSourceRequest(AbstractModel):
 - TDENGINE
 - TDSQLC
 - FileSystem
+- TCLake
 
         :type Type: str
         :param _ProdConProperties: 数据源的配置信息，以JSON KV存储，根据每个数据源类型不同，而KV存储信息不同
@@ -4550,6 +4551,7 @@ cos:
 - TDENGINE
 - TDSQLC
 - FileSystem
+- TCLake
 
         :rtype: str
         """
