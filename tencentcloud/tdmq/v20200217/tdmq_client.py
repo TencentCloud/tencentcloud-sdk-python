@@ -95,29 +95,6 @@ class TdmqClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def CreateCluster(self, request):
-        r"""创建用户的集群
-
-        :param request: Request instance for CreateCluster.
-        :type request: :class:`tencentcloud.tdmq.v20200217.models.CreateClusterRequest`
-        :rtype: :class:`tencentcloud.tdmq.v20200217.models.CreateClusterResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("CreateCluster", params, headers=headers)
-            response = json.loads(body)
-            model = models.CreateClusterResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def CreateCmqQueue(self, request):
         r"""创建cmq队列接口
 

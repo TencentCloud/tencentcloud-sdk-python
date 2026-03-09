@@ -23487,20 +23487,20 @@ class CreateLLMComprehendTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Level: 解析级别，可选值为：
-- Audio: 音频级解析
-- Video: 视频级解析
+        :param _Level: <p>解析级别，可选值为：</p><ul><li>Audio: 音频级解析</li><li>Video: 视频级解析</li></ul>
         :type Level: str
-        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        :param _SubAppId: <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
         :type SubAppId: int
-        :param _Name: 大模型解析模板名称，长度限制：64 个字符。
+        :param _Name: <p>大模型解析模板名称，长度限制：64 个字符。</p>
         :type Name: str
-        :param _Comment: 大模型解析模板描述信息，长度限制：256 个字符。
+        :param _Comment: <p>大模型解析模板描述信息，长度限制：256 个字符。</p>
         :type Comment: str
-        :param _Summary: 分段摘要解析配置
+        :param _Summary: <p>分段摘要解析配置</p>
         :type Summary: :class:`tencentcloud.vod.v20180717.models.LLMComprehendSummary`
-        :param _Asr: 文本转录解析配置
+        :param _Asr: <p>文本转录解析配置</p>
         :type Asr: :class:`tencentcloud.vod.v20180717.models.LLMComprehendAsr`
+        :param _FaceRecognition: <p>人脸识别配置</p>
+        :type FaceRecognition: :class:`tencentcloud.vod.v20180717.models.LLMComprehendFaceRecognition`
         """
         self._Level = None
         self._SubAppId = None
@@ -23508,12 +23508,11 @@ class CreateLLMComprehendTemplateRequest(AbstractModel):
         self._Comment = None
         self._Summary = None
         self._Asr = None
+        self._FaceRecognition = None
 
     @property
     def Level(self):
-        r"""解析级别，可选值为：
-- Audio: 音频级解析
-- Video: 视频级解析
+        r"""<p>解析级别，可选值为：</p><ul><li>Audio: 音频级解析</li><li>Video: 视频级解析</li></ul>
         :rtype: str
         """
         return self._Level
@@ -23524,7 +23523,7 @@ class CreateLLMComprehendTemplateRequest(AbstractModel):
 
     @property
     def SubAppId(self):
-        r"""<b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        r"""<p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
         :rtype: int
         """
         return self._SubAppId
@@ -23535,7 +23534,7 @@ class CreateLLMComprehendTemplateRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""大模型解析模板名称，长度限制：64 个字符。
+        r"""<p>大模型解析模板名称，长度限制：64 个字符。</p>
         :rtype: str
         """
         return self._Name
@@ -23546,7 +23545,7 @@ class CreateLLMComprehendTemplateRequest(AbstractModel):
 
     @property
     def Comment(self):
-        r"""大模型解析模板描述信息，长度限制：256 个字符。
+        r"""<p>大模型解析模板描述信息，长度限制：256 个字符。</p>
         :rtype: str
         """
         return self._Comment
@@ -23557,7 +23556,7 @@ class CreateLLMComprehendTemplateRequest(AbstractModel):
 
     @property
     def Summary(self):
-        r"""分段摘要解析配置
+        r"""<p>分段摘要解析配置</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.LLMComprehendSummary`
         """
         return self._Summary
@@ -23568,7 +23567,7 @@ class CreateLLMComprehendTemplateRequest(AbstractModel):
 
     @property
     def Asr(self):
-        r"""文本转录解析配置
+        r"""<p>文本转录解析配置</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.LLMComprehendAsr`
         """
         return self._Asr
@@ -23576,6 +23575,17 @@ class CreateLLMComprehendTemplateRequest(AbstractModel):
     @Asr.setter
     def Asr(self, Asr):
         self._Asr = Asr
+
+    @property
+    def FaceRecognition(self):
+        r"""<p>人脸识别配置</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.LLMComprehendFaceRecognition`
+        """
+        return self._FaceRecognition
+
+    @FaceRecognition.setter
+    def FaceRecognition(self, FaceRecognition):
+        self._FaceRecognition = FaceRecognition
 
 
     def _deserialize(self, params):
@@ -23589,6 +23599,9 @@ class CreateLLMComprehendTemplateRequest(AbstractModel):
         if params.get("Asr") is not None:
             self._Asr = LLMComprehendAsr()
             self._Asr._deserialize(params.get("Asr"))
+        if params.get("FaceRecognition") is not None:
+            self._FaceRecognition = LLMComprehendFaceRecognition()
+            self._FaceRecognition._deserialize(params.get("FaceRecognition"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -23606,7 +23619,7 @@ class CreateLLMComprehendTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: 大模型理解模板的唯一标识
+        :param _Definition: <p>大模型理解模板的唯一标识</p>
         :type Definition: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -23616,7 +23629,7 @@ class CreateLLMComprehendTemplateResponse(AbstractModel):
 
     @property
     def Definition(self):
-        r"""大模型理解模板的唯一标识
+        r"""<p>大模型理解模板的唯一标识</p>
         :rtype: int
         """
         return self._Definition
@@ -49116,6 +49129,198 @@ class LLMComprehendAsrForUpdate(AbstractModel):
         
 
 
+class LLMComprehendFaceRecognition(AbstractModel):
+    r"""大模型解析人脸识别配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: 
+        :type Switch: str
+        :param _Score: 
+        :type Score: float
+        :param _DefaultLibraryLabelSet: 
+        :type DefaultLibraryLabelSet: list of str
+        :param _UserDefineLibraryLabelSet: 
+        :type UserDefineLibraryLabelSet: list of str
+        :param _FaceLibrary: 
+        :type FaceLibrary: str
+        """
+        self._Switch = None
+        self._Score = None
+        self._DefaultLibraryLabelSet = None
+        self._UserDefineLibraryLabelSet = None
+        self._FaceLibrary = None
+
+    @property
+    def Switch(self):
+        r"""
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def Score(self):
+        r"""
+        :rtype: float
+        """
+        return self._Score
+
+    @Score.setter
+    def Score(self, Score):
+        self._Score = Score
+
+    @property
+    def DefaultLibraryLabelSet(self):
+        r"""
+        :rtype: list of str
+        """
+        return self._DefaultLibraryLabelSet
+
+    @DefaultLibraryLabelSet.setter
+    def DefaultLibraryLabelSet(self, DefaultLibraryLabelSet):
+        self._DefaultLibraryLabelSet = DefaultLibraryLabelSet
+
+    @property
+    def UserDefineLibraryLabelSet(self):
+        r"""
+        :rtype: list of str
+        """
+        return self._UserDefineLibraryLabelSet
+
+    @UserDefineLibraryLabelSet.setter
+    def UserDefineLibraryLabelSet(self, UserDefineLibraryLabelSet):
+        self._UserDefineLibraryLabelSet = UserDefineLibraryLabelSet
+
+    @property
+    def FaceLibrary(self):
+        r"""
+        :rtype: str
+        """
+        return self._FaceLibrary
+
+    @FaceLibrary.setter
+    def FaceLibrary(self, FaceLibrary):
+        self._FaceLibrary = FaceLibrary
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._Score = params.get("Score")
+        self._DefaultLibraryLabelSet = params.get("DefaultLibraryLabelSet")
+        self._UserDefineLibraryLabelSet = params.get("UserDefineLibraryLabelSet")
+        self._FaceLibrary = params.get("FaceLibrary")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LLMComprehendFaceRecognitionForUpdate(AbstractModel):
+    r"""大模型解析人脸识别配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: 
+        :type Switch: str
+        :param _Score: 
+        :type Score: float
+        :param _DefaultLibraryLabelSet: 
+        :type DefaultLibraryLabelSet: list of str
+        :param _UserDefineLibraryLabelSet: 
+        :type UserDefineLibraryLabelSet: list of str
+        :param _FaceLibrary: 
+        :type FaceLibrary: str
+        """
+        self._Switch = None
+        self._Score = None
+        self._DefaultLibraryLabelSet = None
+        self._UserDefineLibraryLabelSet = None
+        self._FaceLibrary = None
+
+    @property
+    def Switch(self):
+        r"""
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def Score(self):
+        r"""
+        :rtype: float
+        """
+        return self._Score
+
+    @Score.setter
+    def Score(self, Score):
+        self._Score = Score
+
+    @property
+    def DefaultLibraryLabelSet(self):
+        r"""
+        :rtype: list of str
+        """
+        return self._DefaultLibraryLabelSet
+
+    @DefaultLibraryLabelSet.setter
+    def DefaultLibraryLabelSet(self, DefaultLibraryLabelSet):
+        self._DefaultLibraryLabelSet = DefaultLibraryLabelSet
+
+    @property
+    def UserDefineLibraryLabelSet(self):
+        r"""
+        :rtype: list of str
+        """
+        return self._UserDefineLibraryLabelSet
+
+    @UserDefineLibraryLabelSet.setter
+    def UserDefineLibraryLabelSet(self, UserDefineLibraryLabelSet):
+        self._UserDefineLibraryLabelSet = UserDefineLibraryLabelSet
+
+    @property
+    def FaceLibrary(self):
+        r"""
+        :rtype: str
+        """
+        return self._FaceLibrary
+
+    @FaceLibrary.setter
+    def FaceLibrary(self, FaceLibrary):
+        self._FaceLibrary = FaceLibrary
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._Score = params.get("Score")
+        self._DefaultLibraryLabelSet = params.get("DefaultLibraryLabelSet")
+        self._UserDefineLibraryLabelSet = params.get("UserDefineLibraryLabelSet")
+        self._FaceLibrary = params.get("FaceLibrary")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class LLMComprehendSummary(AbstractModel):
     r"""大模型解析分段摘要解析配置
 
@@ -59598,22 +59803,22 @@ class ModifyLLMComprehendTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: 大模型理解模板的唯一标识
+        :param _Definition: <p>大模型理解模板的唯一标识</p>
         :type Definition: int
-        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        :param _SubAppId: <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
         :type SubAppId: int
-        :param _Name: 大模型解析模板名称，长度限制：64 个字符。
+        :param _Name: <p>大模型解析模板名称，长度限制：64 个字符。</p>
         :type Name: str
-        :param _Comment: 大模型解析模板描述信息，长度限制：256 个字符。
+        :param _Comment: <p>大模型解析模板描述信息，长度限制：256 个字符。</p>
         :type Comment: str
-        :param _Model: 解析模型，可选值为：
-- Basic: 基础模型
-- Pro: 优化模型
+        :param _Model: <p>解析模型，可选值为：</p><ul><li>Basic: 基础模型</li><li>Pro: 优化模型</li></ul>
         :type Model: str
-        :param _Summary: 分段摘要解析配置
+        :param _Summary: <p>分段摘要解析配置</p>
         :type Summary: :class:`tencentcloud.vod.v20180717.models.LLMComprehendSummaryForUpdate`
-        :param _Asr: 文本转录解析配置
+        :param _Asr: <p>文本转录解析配置</p>
         :type Asr: :class:`tencentcloud.vod.v20180717.models.LLMComprehendAsrForUpdate`
+        :param _FaceRecognition: <p>人脸识别配置</p>
+        :type FaceRecognition: :class:`tencentcloud.vod.v20180717.models.LLMComprehendFaceRecognitionForUpdate`
         """
         self._Definition = None
         self._SubAppId = None
@@ -59622,10 +59827,11 @@ class ModifyLLMComprehendTemplateRequest(AbstractModel):
         self._Model = None
         self._Summary = None
         self._Asr = None
+        self._FaceRecognition = None
 
     @property
     def Definition(self):
-        r"""大模型理解模板的唯一标识
+        r"""<p>大模型理解模板的唯一标识</p>
         :rtype: int
         """
         return self._Definition
@@ -59636,7 +59842,7 @@ class ModifyLLMComprehendTemplateRequest(AbstractModel):
 
     @property
     def SubAppId(self):
-        r"""<b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        r"""<p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
         :rtype: int
         """
         return self._SubAppId
@@ -59647,7 +59853,7 @@ class ModifyLLMComprehendTemplateRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""大模型解析模板名称，长度限制：64 个字符。
+        r"""<p>大模型解析模板名称，长度限制：64 个字符。</p>
         :rtype: str
         """
         return self._Name
@@ -59658,7 +59864,7 @@ class ModifyLLMComprehendTemplateRequest(AbstractModel):
 
     @property
     def Comment(self):
-        r"""大模型解析模板描述信息，长度限制：256 个字符。
+        r"""<p>大模型解析模板描述信息，长度限制：256 个字符。</p>
         :rtype: str
         """
         return self._Comment
@@ -59669,9 +59875,7 @@ class ModifyLLMComprehendTemplateRequest(AbstractModel):
 
     @property
     def Model(self):
-        r"""解析模型，可选值为：
-- Basic: 基础模型
-- Pro: 优化模型
+        r"""<p>解析模型，可选值为：</p><ul><li>Basic: 基础模型</li><li>Pro: 优化模型</li></ul>
         :rtype: str
         """
         return self._Model
@@ -59682,7 +59886,7 @@ class ModifyLLMComprehendTemplateRequest(AbstractModel):
 
     @property
     def Summary(self):
-        r"""分段摘要解析配置
+        r"""<p>分段摘要解析配置</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.LLMComprehendSummaryForUpdate`
         """
         return self._Summary
@@ -59693,7 +59897,7 @@ class ModifyLLMComprehendTemplateRequest(AbstractModel):
 
     @property
     def Asr(self):
-        r"""文本转录解析配置
+        r"""<p>文本转录解析配置</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.LLMComprehendAsrForUpdate`
         """
         return self._Asr
@@ -59701,6 +59905,17 @@ class ModifyLLMComprehendTemplateRequest(AbstractModel):
     @Asr.setter
     def Asr(self, Asr):
         self._Asr = Asr
+
+    @property
+    def FaceRecognition(self):
+        r"""<p>人脸识别配置</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.LLMComprehendFaceRecognitionForUpdate`
+        """
+        return self._FaceRecognition
+
+    @FaceRecognition.setter
+    def FaceRecognition(self, FaceRecognition):
+        self._FaceRecognition = FaceRecognition
 
 
     def _deserialize(self, params):
@@ -59715,6 +59930,9 @@ class ModifyLLMComprehendTemplateRequest(AbstractModel):
         if params.get("Asr") is not None:
             self._Asr = LLMComprehendAsrForUpdate()
             self._Asr._deserialize(params.get("Asr"))
+        if params.get("FaceRecognition") is not None:
+            self._FaceRecognition = LLMComprehendFaceRecognitionForUpdate()
+            self._FaceRecognition._deserialize(params.get("FaceRecognition"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -79410,19 +79628,19 @@ class SearchMediaBySemanticsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        :param _SubAppId: <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
         :type SubAppId: int
-        :param _Text: 需要进行搜索的内容
+        :param _Text: <p>需要进行搜索的内容</p>
         :type Text: str
-        :param _Limit: 返回的记录条数，默认值：20。
+        :param _Limit: <p>返回的记录条数，默认值：20。</p><p>取值范围：[1, 100]</p>
         :type Limit: int
-        :param _Categories: 文件类型。匹配集合中的任意元素： <li>Video: 视频文件</li> <li>Audio: 音频文件</li> <li>Image: 图片文件</li>
+        :param _Categories: <p>文件类型。匹配集合中的任意元素： <li>Video: 视频文件</li> <li>Audio: 音频文件</li> <li>Image: 图片文件</li></p>
         :type Categories: list of str
-        :param _Tags: 标签集合，匹配集合中任意元素。 <li>单个标签长度限制：32个字符。</li> <li>数组长度限制：16。</li>
+        :param _Tags: <p>标签集合，匹配集合中任意元素。</p><p>入参限制：单个标签长度限制：32个字符。数组长度限制：16。</p>
         :type Tags: list of str
-        :param _TaskTypes: 搜索的任务类型，可选值有： 
-- AiAnalysis.DescriptionTask 
-- SmartSubtitle.AsrFullTextTask
+        :param _Persons: <p>人物集合，匹配出现了所有传入人物的片段</p><p>入参限制：数组长度限制：16</p>
+        :type Persons: list of str
+        :param _TaskTypes: <p>搜索的任务类型，可选值有： </p><ul><li>AiAnalysis.DescriptionTask </li><li>SmartSubtitle.AsrFullTextTask</li></ul>
         :type TaskTypes: list of str
         """
         self._SubAppId = None
@@ -79430,11 +79648,12 @@ class SearchMediaBySemanticsRequest(AbstractModel):
         self._Limit = None
         self._Categories = None
         self._Tags = None
+        self._Persons = None
         self._TaskTypes = None
 
     @property
     def SubAppId(self):
-        r"""<b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        r"""<p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
         :rtype: int
         """
         return self._SubAppId
@@ -79445,7 +79664,7 @@ class SearchMediaBySemanticsRequest(AbstractModel):
 
     @property
     def Text(self):
-        r"""需要进行搜索的内容
+        r"""<p>需要进行搜索的内容</p>
         :rtype: str
         """
         return self._Text
@@ -79456,7 +79675,7 @@ class SearchMediaBySemanticsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""返回的记录条数，默认值：20。
+        r"""<p>返回的记录条数，默认值：20。</p><p>取值范围：[1, 100]</p>
         :rtype: int
         """
         return self._Limit
@@ -79467,7 +79686,7 @@ class SearchMediaBySemanticsRequest(AbstractModel):
 
     @property
     def Categories(self):
-        r"""文件类型。匹配集合中的任意元素： <li>Video: 视频文件</li> <li>Audio: 音频文件</li> <li>Image: 图片文件</li>
+        r"""<p>文件类型。匹配集合中的任意元素： <li>Video: 视频文件</li> <li>Audio: 音频文件</li> <li>Image: 图片文件</li></p>
         :rtype: list of str
         """
         return self._Categories
@@ -79478,7 +79697,7 @@ class SearchMediaBySemanticsRequest(AbstractModel):
 
     @property
     def Tags(self):
-        r"""标签集合，匹配集合中任意元素。 <li>单个标签长度限制：32个字符。</li> <li>数组长度限制：16。</li>
+        r"""<p>标签集合，匹配集合中任意元素。</p><p>入参限制：单个标签长度限制：32个字符。数组长度限制：16。</p>
         :rtype: list of str
         """
         return self._Tags
@@ -79488,10 +79707,19 @@ class SearchMediaBySemanticsRequest(AbstractModel):
         self._Tags = Tags
 
     @property
+    def Persons(self):
+        r"""<p>人物集合，匹配出现了所有传入人物的片段</p><p>入参限制：数组长度限制：16</p>
+        :rtype: list of str
+        """
+        return self._Persons
+
+    @Persons.setter
+    def Persons(self, Persons):
+        self._Persons = Persons
+
+    @property
     def TaskTypes(self):
-        r"""搜索的任务类型，可选值有： 
-- AiAnalysis.DescriptionTask 
-- SmartSubtitle.AsrFullTextTask
+        r"""<p>搜索的任务类型，可选值有： </p><ul><li>AiAnalysis.DescriptionTask </li><li>SmartSubtitle.AsrFullTextTask</li></ul>
         :rtype: list of str
         """
         return self._TaskTypes
@@ -79507,6 +79735,7 @@ class SearchMediaBySemanticsRequest(AbstractModel):
         self._Limit = params.get("Limit")
         self._Categories = params.get("Categories")
         self._Tags = params.get("Tags")
+        self._Persons = params.get("Persons")
         self._TaskTypes = params.get("TaskTypes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -79525,7 +79754,7 @@ class SearchMediaBySemanticsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SearchResults: 媒体列表。
+        :param _SearchResults: <p>媒体列表。</p>
         :type SearchResults: list of SemanticsSearchResult
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -79535,7 +79764,7 @@ class SearchMediaBySemanticsResponse(AbstractModel):
 
     @property
     def SearchResults(self):
-        r"""媒体列表。
+        r"""<p>媒体列表。</p>
         :rtype: list of SemanticsSearchResult
         """
         return self._SearchResults

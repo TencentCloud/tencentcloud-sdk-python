@@ -1954,9 +1954,9 @@ class PlaybackPolicy(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LicenseDurationSeconds: 播放许可证的有效期
+        :param _LicenseDurationSeconds: <p>播放许可证的有效期</p><p>单位：秒</p>
         :type LicenseDurationSeconds: int
-        :param _PlaybackDurationSeconds: 开始播放后，允许最长播放时间
+        :param _PlaybackDurationSeconds: <p>开始播放后，允许最长播放时间</p><p>单位：秒</p>
         :type PlaybackDurationSeconds: int
         """
         self._LicenseDurationSeconds = None
@@ -1964,7 +1964,7 @@ class PlaybackPolicy(AbstractModel):
 
     @property
     def LicenseDurationSeconds(self):
-        r"""播放许可证的有效期
+        r"""<p>播放许可证的有效期</p><p>单位：秒</p>
         :rtype: int
         """
         return self._LicenseDurationSeconds
@@ -1975,7 +1975,7 @@ class PlaybackPolicy(AbstractModel):
 
     @property
     def PlaybackDurationSeconds(self):
-        r"""开始播放后，允许最长播放时间
+        r"""<p>开始播放后，允许最长播放时间</p><p>单位：秒</p>
         :rtype: int
         """
         return self._PlaybackDurationSeconds

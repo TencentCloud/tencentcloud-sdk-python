@@ -4996,6 +4996,8 @@ class ModifyClusterMachineRequest(AbstractModel):
         :type DisplayName: str
         :param _SystemDisk: 系统盘的信息
         :type SystemDisk: :class:`tencentcloud.tke.v20220501.models.Disk`
+        :param _SecurityGroupIDs: 安全组列表
+        :type SecurityGroupIDs: list of str
         :param _InstanceChargePrepaid: 节点预付费信息
         :type InstanceChargePrepaid: :class:`tencentcloud.tke.v20220501.models.InstanceChargePrepaid`
         """
@@ -5003,6 +5005,7 @@ class ModifyClusterMachineRequest(AbstractModel):
         self._MachineNames = None
         self._DisplayName = None
         self._SystemDisk = None
+        self._SecurityGroupIDs = None
         self._InstanceChargePrepaid = None
 
     @property
@@ -5050,6 +5053,17 @@ class ModifyClusterMachineRequest(AbstractModel):
         self._SystemDisk = SystemDisk
 
     @property
+    def SecurityGroupIDs(self):
+        r"""安全组列表
+        :rtype: list of str
+        """
+        return self._SecurityGroupIDs
+
+    @SecurityGroupIDs.setter
+    def SecurityGroupIDs(self, SecurityGroupIDs):
+        self._SecurityGroupIDs = SecurityGroupIDs
+
+    @property
     def InstanceChargePrepaid(self):
         r"""节点预付费信息
         :rtype: :class:`tencentcloud.tke.v20220501.models.InstanceChargePrepaid`
@@ -5068,6 +5082,7 @@ class ModifyClusterMachineRequest(AbstractModel):
         if params.get("SystemDisk") is not None:
             self._SystemDisk = Disk()
             self._SystemDisk._deserialize(params.get("SystemDisk"))
+        self._SecurityGroupIDs = params.get("SecurityGroupIDs")
         if params.get("InstanceChargePrepaid") is not None:
             self._InstanceChargePrepaid = InstanceChargePrepaid()
             self._InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
@@ -7930,10 +7945,14 @@ class UpdateNativeNodePoolParam(AbstractModel):
         :type InstanceTypes: list of str
         :param _Replicas: 期望节点数
         :type Replicas: int
-        :param _UpdateExistedNode: 是否更新存量节点
+        :param _UpdateExistedNode: 是否更新存量节点MetaData(包括： metadata、annotation、label)
         :type UpdateExistedNode: bool
         :param _DataDisks: 数据盘列表
         :type DataDisks: list of DataDisk
+        :param _UpdateMachineManagement: 节点management参数存量更新开关，有enable（打开）、disable（关闭）两个状态可选
+
+management包括：nameserver、host、kubelet、kernel参数
+        :type UpdateMachineManagement: str
         :param _KeyIds: ssh公钥id数组
         :type KeyIds: list of str
         :param _DeletePolicy: 节点移出策略，有Random（随机）、Newest（优先移出最新实例）、Oldest（优先移出最旧实例）三种可选，默认是Newest
@@ -7964,6 +7983,7 @@ class UpdateNativeNodePoolParam(AbstractModel):
         self._Replicas = None
         self._UpdateExistedNode = None
         self._DataDisks = None
+        self._UpdateMachineManagement = None
         self._KeyIds = None
         self._DeletePolicy = None
         self._GPUConfigs = None
@@ -8162,7 +8182,7 @@ class UpdateNativeNodePoolParam(AbstractModel):
 
     @property
     def UpdateExistedNode(self):
-        r"""是否更新存量节点
+        r"""是否更新存量节点MetaData(包括： metadata、annotation、label)
         :rtype: bool
         """
         return self._UpdateExistedNode
@@ -8181,6 +8201,19 @@ class UpdateNativeNodePoolParam(AbstractModel):
     @DataDisks.setter
     def DataDisks(self, DataDisks):
         self._DataDisks = DataDisks
+
+    @property
+    def UpdateMachineManagement(self):
+        r"""节点management参数存量更新开关，有enable（打开）、disable（关闭）两个状态可选
+
+management包括：nameserver、host、kubelet、kernel参数
+        :rtype: str
+        """
+        return self._UpdateMachineManagement
+
+    @UpdateMachineManagement.setter
+    def UpdateMachineManagement(self, UpdateMachineManagement):
+        self._UpdateMachineManagement = UpdateMachineManagement
 
     @property
     def KeyIds(self):
@@ -8275,6 +8308,7 @@ class UpdateNativeNodePoolParam(AbstractModel):
                 obj = DataDisk()
                 obj._deserialize(item)
                 self._DataDisks.append(obj)
+        self._UpdateMachineManagement = params.get("UpdateMachineManagement")
         self._KeyIds = params.get("KeyIds")
         self._DeletePolicy = params.get("DeletePolicy")
         if params.get("GPUConfigs") is not None:

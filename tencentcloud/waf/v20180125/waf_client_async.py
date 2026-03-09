@@ -925,6 +925,24 @@ class WafClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeApiSecSensitiveRuleList(
+            self,
+            request: models.DescribeApiSecSensitiveRuleListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeApiSecSensitiveRuleListResponse:
+        """
+        获取api安全敏感规则列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeApiSecSensitiveRuleList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeApiSecSensitiveRuleListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeAreaBanAreas(
             self,
             request: models.DescribeAreaBanAreasRequest,

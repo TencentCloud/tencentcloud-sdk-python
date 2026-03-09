@@ -79,24 +79,6 @@ class TdmqClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def CreateCluster(
-            self,
-            request: models.CreateClusterRequest,
-            opts: Dict = None,
-    ) -> models.CreateClusterResponse:
-        """
-        创建用户的集群
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "CreateCluster"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.CreateClusterResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def CreateCmqQueue(
             self,
             request: models.CreateCmqQueueRequest,

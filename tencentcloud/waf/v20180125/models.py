@@ -4901,6 +4901,134 @@ class ApiSecSceneRuleEntry(AbstractModel):
         
 
 
+class ApiSecSensitiveRule(AbstractModel):
+    r"""api安全敏感规则列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleName: 身份证号，唯一主键
+        :type RuleName: str
+        :param _Source: 表示OS系统内置，"custom"表示客户自定义
+        :type Source: str
+        :param _Status: 开关状态，0：表示关，1表示开
+        :type Status: int
+        :param _Level: 风险等级，100，200,300表示低中高三个等级
+        :type Level: str
+        :param _Timestamp: 修改时间，默认0，表示没有进行修改
+        :type Timestamp: int
+        :param _CustomRule: 自定义规则部分
+        :type CustomRule: :class:`tencentcloud.waf.v20180125.models.ApiSecCustomSensitiveRule`
+        :param _IsPan: 是否泛化 0:不泛化，1:泛化
+        :type IsPan: int
+        """
+        self._RuleName = None
+        self._Source = None
+        self._Status = None
+        self._Level = None
+        self._Timestamp = None
+        self._CustomRule = None
+        self._IsPan = None
+
+    @property
+    def RuleName(self):
+        r"""身份证号，唯一主键
+        :rtype: str
+        """
+        return self._RuleName
+
+    @RuleName.setter
+    def RuleName(self, RuleName):
+        self._RuleName = RuleName
+
+    @property
+    def Source(self):
+        r"""表示OS系统内置，"custom"表示客户自定义
+        :rtype: str
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def Status(self):
+        r"""开关状态，0：表示关，1表示开
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Level(self):
+        r"""风险等级，100，200,300表示低中高三个等级
+        :rtype: str
+        """
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
+
+    @property
+    def Timestamp(self):
+        r"""修改时间，默认0，表示没有进行修改
+        :rtype: int
+        """
+        return self._Timestamp
+
+    @Timestamp.setter
+    def Timestamp(self, Timestamp):
+        self._Timestamp = Timestamp
+
+    @property
+    def CustomRule(self):
+        r"""自定义规则部分
+        :rtype: :class:`tencentcloud.waf.v20180125.models.ApiSecCustomSensitiveRule`
+        """
+        return self._CustomRule
+
+    @CustomRule.setter
+    def CustomRule(self, CustomRule):
+        self._CustomRule = CustomRule
+
+    @property
+    def IsPan(self):
+        r"""是否泛化 0:不泛化，1:泛化
+        :rtype: int
+        """
+        return self._IsPan
+
+    @IsPan.setter
+    def IsPan(self, IsPan):
+        self._IsPan = IsPan
+
+
+    def _deserialize(self, params):
+        self._RuleName = params.get("RuleName")
+        self._Source = params.get("Source")
+        self._Status = params.get("Status")
+        self._Level = params.get("Level")
+        self._Timestamp = params.get("Timestamp")
+        if params.get("CustomRule") is not None:
+            self._CustomRule = ApiSecCustomSensitiveRule()
+            self._CustomRule._deserialize(params.get("CustomRule"))
+        self._IsPan = params.get("IsPan")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Area(AbstractModel):
     r"""地域信息
 
@@ -17057,6 +17185,341 @@ class DescribeApiListVersionTwoResponse(AbstractModel):
                 obj._deserialize(item)
                 self._Data.append(obj)
         self._Total = params.get("Total")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeApiSecSensitiveRuleListRequest(AbstractModel):
+    r"""DescribeApiSecSensitiveRuleList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 域名
+        :type Domain: str
+        :param _IsQueryApiExtractRule: 是否查询api提取规则策略，true表示查询
+        :type IsQueryApiExtractRule: bool
+        :param _IsQueryApiPrivilegeRule: 是否查询api鉴权规则
+        :type IsQueryApiPrivilegeRule: bool
+        :param _IsQueryApiSceneRule: 是否查询api场景规则
+        :type IsQueryApiSceneRule: bool
+        :param _RuleName: 查询鉴权配置的时候，该rule只返回鉴权配置的规则
+        :type RuleName: str
+        :param _IsQueryApiCustomEventRule: 是否查询api自定义事件规则
+        :type IsQueryApiCustomEventRule: bool
+        :param _IsQueryApiExcludeRule: 是否查询无效api排除策略
+        :type IsQueryApiExcludeRule: bool
+        """
+        self._Domain = None
+        self._IsQueryApiExtractRule = None
+        self._IsQueryApiPrivilegeRule = None
+        self._IsQueryApiSceneRule = None
+        self._RuleName = None
+        self._IsQueryApiCustomEventRule = None
+        self._IsQueryApiExcludeRule = None
+
+    @property
+    def Domain(self):
+        r"""域名
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def IsQueryApiExtractRule(self):
+        r"""是否查询api提取规则策略，true表示查询
+        :rtype: bool
+        """
+        return self._IsQueryApiExtractRule
+
+    @IsQueryApiExtractRule.setter
+    def IsQueryApiExtractRule(self, IsQueryApiExtractRule):
+        self._IsQueryApiExtractRule = IsQueryApiExtractRule
+
+    @property
+    def IsQueryApiPrivilegeRule(self):
+        r"""是否查询api鉴权规则
+        :rtype: bool
+        """
+        return self._IsQueryApiPrivilegeRule
+
+    @IsQueryApiPrivilegeRule.setter
+    def IsQueryApiPrivilegeRule(self, IsQueryApiPrivilegeRule):
+        self._IsQueryApiPrivilegeRule = IsQueryApiPrivilegeRule
+
+    @property
+    def IsQueryApiSceneRule(self):
+        r"""是否查询api场景规则
+        :rtype: bool
+        """
+        return self._IsQueryApiSceneRule
+
+    @IsQueryApiSceneRule.setter
+    def IsQueryApiSceneRule(self, IsQueryApiSceneRule):
+        self._IsQueryApiSceneRule = IsQueryApiSceneRule
+
+    @property
+    def RuleName(self):
+        r"""查询鉴权配置的时候，该rule只返回鉴权配置的规则
+        :rtype: str
+        """
+        return self._RuleName
+
+    @RuleName.setter
+    def RuleName(self, RuleName):
+        self._RuleName = RuleName
+
+    @property
+    def IsQueryApiCustomEventRule(self):
+        r"""是否查询api自定义事件规则
+        :rtype: bool
+        """
+        return self._IsQueryApiCustomEventRule
+
+    @IsQueryApiCustomEventRule.setter
+    def IsQueryApiCustomEventRule(self, IsQueryApiCustomEventRule):
+        self._IsQueryApiCustomEventRule = IsQueryApiCustomEventRule
+
+    @property
+    def IsQueryApiExcludeRule(self):
+        r"""是否查询无效api排除策略
+        :rtype: bool
+        """
+        return self._IsQueryApiExcludeRule
+
+    @IsQueryApiExcludeRule.setter
+    def IsQueryApiExcludeRule(self, IsQueryApiExcludeRule):
+        self._IsQueryApiExcludeRule = IsQueryApiExcludeRule
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._IsQueryApiExtractRule = params.get("IsQueryApiExtractRule")
+        self._IsQueryApiPrivilegeRule = params.get("IsQueryApiPrivilegeRule")
+        self._IsQueryApiSceneRule = params.get("IsQueryApiSceneRule")
+        self._RuleName = params.get("RuleName")
+        self._IsQueryApiCustomEventRule = params.get("IsQueryApiCustomEventRule")
+        self._IsQueryApiExcludeRule = params.get("IsQueryApiExcludeRule")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeApiSecSensitiveRuleListResponse(AbstractModel):
+    r"""DescribeApiSecSensitiveRuleList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: api敏感规则列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: list of ApiSecSensitiveRule
+        :param _Total: 规则数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: int
+        :param _Status: 自定义敏感检测规则总开关
+        :type Status: int
+        :param _RuleNameList: 非内置规则的rulename列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleNameList: list of str
+        :param _ApiExtractRule: api提取规则列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApiExtractRule: list of ApiSecExtractRule
+        :param _ApiSecPrivilegeRule: api鉴权规则列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApiSecPrivilegeRule: list of ApiSecPrivilegeRule
+        :param _ApiSecSceneRule: api场景规则列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApiSecSceneRule: list of ApiSecSceneRule
+        :param _ApiSecCustomEventRule: 自定义事件规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApiSecCustomEventRule: list of ApiSecCustomEventRule
+        :param _ApiExcludeRule: 无效api排除规则列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApiExcludeRule: list of ApiSecExcludeRule
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._Total = None
+        self._Status = None
+        self._RuleNameList = None
+        self._ApiExtractRule = None
+        self._ApiSecPrivilegeRule = None
+        self._ApiSecSceneRule = None
+        self._ApiSecCustomEventRule = None
+        self._ApiExcludeRule = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""api敏感规则列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ApiSecSensitiveRule
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Total(self):
+        r"""规则数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Status(self):
+        r"""自定义敏感检测规则总开关
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RuleNameList(self):
+        r"""非内置规则的rulename列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._RuleNameList
+
+    @RuleNameList.setter
+    def RuleNameList(self, RuleNameList):
+        self._RuleNameList = RuleNameList
+
+    @property
+    def ApiExtractRule(self):
+        r"""api提取规则列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ApiSecExtractRule
+        """
+        return self._ApiExtractRule
+
+    @ApiExtractRule.setter
+    def ApiExtractRule(self, ApiExtractRule):
+        self._ApiExtractRule = ApiExtractRule
+
+    @property
+    def ApiSecPrivilegeRule(self):
+        r"""api鉴权规则列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ApiSecPrivilegeRule
+        """
+        return self._ApiSecPrivilegeRule
+
+    @ApiSecPrivilegeRule.setter
+    def ApiSecPrivilegeRule(self, ApiSecPrivilegeRule):
+        self._ApiSecPrivilegeRule = ApiSecPrivilegeRule
+
+    @property
+    def ApiSecSceneRule(self):
+        r"""api场景规则列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ApiSecSceneRule
+        """
+        return self._ApiSecSceneRule
+
+    @ApiSecSceneRule.setter
+    def ApiSecSceneRule(self, ApiSecSceneRule):
+        self._ApiSecSceneRule = ApiSecSceneRule
+
+    @property
+    def ApiSecCustomEventRule(self):
+        r"""自定义事件规则
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ApiSecCustomEventRule
+        """
+        return self._ApiSecCustomEventRule
+
+    @ApiSecCustomEventRule.setter
+    def ApiSecCustomEventRule(self, ApiSecCustomEventRule):
+        self._ApiSecCustomEventRule = ApiSecCustomEventRule
+
+    @property
+    def ApiExcludeRule(self):
+        r"""无效api排除规则列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ApiSecExcludeRule
+        """
+        return self._ApiExcludeRule
+
+    @ApiExcludeRule.setter
+    def ApiExcludeRule(self, ApiExcludeRule):
+        self._ApiExcludeRule = ApiExcludeRule
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = ApiSecSensitiveRule()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._Total = params.get("Total")
+        self._Status = params.get("Status")
+        self._RuleNameList = params.get("RuleNameList")
+        if params.get("ApiExtractRule") is not None:
+            self._ApiExtractRule = []
+            for item in params.get("ApiExtractRule"):
+                obj = ApiSecExtractRule()
+                obj._deserialize(item)
+                self._ApiExtractRule.append(obj)
+        if params.get("ApiSecPrivilegeRule") is not None:
+            self._ApiSecPrivilegeRule = []
+            for item in params.get("ApiSecPrivilegeRule"):
+                obj = ApiSecPrivilegeRule()
+                obj._deserialize(item)
+                self._ApiSecPrivilegeRule.append(obj)
+        if params.get("ApiSecSceneRule") is not None:
+            self._ApiSecSceneRule = []
+            for item in params.get("ApiSecSceneRule"):
+                obj = ApiSecSceneRule()
+                obj._deserialize(item)
+                self._ApiSecSceneRule.append(obj)
+        if params.get("ApiSecCustomEventRule") is not None:
+            self._ApiSecCustomEventRule = []
+            for item in params.get("ApiSecCustomEventRule"):
+                obj = ApiSecCustomEventRule()
+                obj._deserialize(item)
+                self._ApiSecCustomEventRule.append(obj)
+        if params.get("ApiExcludeRule") is not None:
+            self._ApiExcludeRule = []
+            for item in params.get("ApiExcludeRule"):
+                obj = ApiSecExcludeRule()
+                obj._deserialize(item)
+                self._ApiExcludeRule.append(obj)
         self._RequestId = params.get("RequestId")
 
 

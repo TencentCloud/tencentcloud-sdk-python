@@ -182,12 +182,15 @@ class AuthTokenBase(AbstractModel):
         :type CreateTime: str
         :param _Status: token状态
         :type Status: str
+        :param _Id: token的唯一id，与value一一对应，重置后id也会一并变化
+        :type Id: str
         """
         self._Value = None
         self._Name = None
         self._Description = None
         self._CreateTime = None
         self._Status = None
+        self._Id = None
 
     @property
     def Value(self):
@@ -244,6 +247,17 @@ class AuthTokenBase(AbstractModel):
     def Status(self, Status):
         self._Status = Status
 
+    @property
+    def Id(self):
+        r"""token的唯一id，与value一一对应，重置后id也会一并变化
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
 
     def _deserialize(self, params):
         self._Value = params.get("Value")
@@ -251,6 +265,7 @@ class AuthTokenBase(AbstractModel):
         self._Description = params.get("Description")
         self._CreateTime = params.get("CreateTime")
         self._Status = params.get("Status")
+        self._Id = params.get("Id")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2601,6 +2616,8 @@ GooseFSx：GooseFSx存储
         :type SSHConfig: :class:`tencentcloud.tione.v20211111.models.SSHConfig`
         :param _VolumeSourceGooseFS: GooseFS存储配置
         :type VolumeSourceGooseFS: :class:`tencentcloud.tione.v20211111.models.GooseFS`
+        :param _Description: 描述
+        :type Description: str
         """
         self._Name = None
         self._ChargeType = None
@@ -2626,6 +2643,7 @@ GooseFSx：GooseFSx存储
         self._ImageType = None
         self._SSHConfig = None
         self._VolumeSourceGooseFS = None
+        self._Description = None
 
     @property
     def Name(self):
@@ -2899,6 +2917,17 @@ GooseFSx：GooseFSx存储
     def VolumeSourceGooseFS(self, VolumeSourceGooseFS):
         self._VolumeSourceGooseFS = VolumeSourceGooseFS
 
+    @property
+    def Description(self):
+        r"""描述
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -2947,6 +2976,7 @@ GooseFSx：GooseFSx存储
         if params.get("VolumeSourceGooseFS") is not None:
             self._VolumeSourceGooseFS = GooseFS()
             self._VolumeSourceGooseFS._deserialize(params.get("VolumeSourceGooseFS"))
+        self._Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10235,8 +10265,11 @@ class DescribeTrainingTaskRequest(AbstractModel):
         r"""
         :param _Id: 训练任务ID
         :type Id: str
+        :param _InstanceId: 训练任务实例ID
+        :type InstanceId: str
         """
         self._Id = None
+        self._InstanceId = None
 
     @property
     def Id(self):
@@ -10249,9 +10282,21 @@ class DescribeTrainingTaskRequest(AbstractModel):
     def Id(self, Id):
         self._Id = Id
 
+    @property
+    def InstanceId(self):
+        r"""训练任务实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
+        self._InstanceId = params.get("InstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15541,6 +15586,8 @@ POSTPAID_BY_HOUR：按小时后付费
         :type SSHConfig: :class:`tencentcloud.tione.v20211111.models.SSHConfig`
         :param _Envs: 自定义环境变量
         :type Envs: list of EnvVar
+        :param _Description: 描述
+        :type Description: str
         """
         self._Id = None
         self._Name = None
@@ -15567,6 +15614,7 @@ POSTPAID_BY_HOUR：按小时后付费
         self._ImageType = None
         self._SSHConfig = None
         self._Envs = None
+        self._Description = None
 
     @property
     def Id(self):
@@ -15849,6 +15897,17 @@ POSTPAID_BY_HOUR：按小时后付费
     def Envs(self, Envs):
         self._Envs = Envs
 
+    @property
+    def Description(self):
+        r"""描述
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -15901,6 +15960,7 @@ POSTPAID_BY_HOUR：按小时后付费
                 obj = EnvVar()
                 obj._deserialize(item)
                 self._Envs.append(obj)
+        self._Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16321,6 +16381,9 @@ class NotebookDetail(AbstractModel):
         :param _AppId: Appid
 注意：此字段可能返回 null，表示取不到有效值。
         :type AppId: str
+        :param _Description: 描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
         """
         self._Id = None
         self._Name = None
@@ -16366,6 +16429,7 @@ class NotebookDetail(AbstractModel):
         self._SubUinName = None
         self._JobCreateTime = None
         self._AppId = None
+        self._Description = None
 
     @property
     def Id(self):
@@ -16883,6 +16947,18 @@ class NotebookDetail(AbstractModel):
     def AppId(self, AppId):
         self._AppId = AppId
 
+    @property
+    def Description(self):
+        r"""描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -16951,6 +17027,7 @@ class NotebookDetail(AbstractModel):
         self._SubUinName = params.get("SubUinName")
         self._JobCreateTime = params.get("JobCreateTime")
         self._AppId = params.get("AppId")
+        self._Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17055,6 +17132,9 @@ class NotebookSetItem(AbstractModel):
         :type AppId: str
         :param _ExposePortConfig: 容器服务暴露端口配置
         :type ExposePortConfig: :class:`tencentcloud.tione.v20211111.models.ExposePortConfig`
+        :param _Description: 描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
         """
         self._Id = None
         self._Name = None
@@ -17087,6 +17167,7 @@ class NotebookSetItem(AbstractModel):
         self._SubUinName = None
         self._AppId = None
         self._ExposePortConfig = None
+        self._Description = None
 
     @property
     def Id(self):
@@ -17454,6 +17535,18 @@ class NotebookSetItem(AbstractModel):
     def ExposePortConfig(self, ExposePortConfig):
         self._ExposePortConfig = ExposePortConfig
 
+    @property
+    def Description(self):
+        r"""描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -17502,6 +17595,7 @@ class NotebookSetItem(AbstractModel):
         if params.get("ExposePortConfig") is not None:
             self._ExposePortConfig = ExposePortConfig()
             self._ExposePortConfig._deserialize(params.get("ExposePortConfig"))
+        self._Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

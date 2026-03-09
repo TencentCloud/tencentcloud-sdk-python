@@ -76,27 +76,26 @@ class AbnormalProcessChildRuleInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuleMode: 策略模式，   RULE_MODE_RELEASE: 放行
-   RULE_MODE_ALERT: 告警
-   RULE_MODE_HOLDUP:拦截
+        :param _RuleMode: <p>策略模式，   RULE_MODE_RELEASE: 放行<br>   RULE_MODE_ALERT: 告警<br>   RULE_MODE_HOLDUP:拦截</p>
         :type RuleMode: str
-        :param _ProcessPath: 进程路径
+        :param _ProcessPath: <p>进程路径</p>
         :type ProcessPath: str
-        :param _RuleId: 子策略id
+        :param _RuleId: <p>子策略id</p>
         :type RuleId: str
-        :param _RuleLevel: 威胁等级，HIGH:高，MIDDLE:中，LOW:低
+        :param _RuleLevel: <p>威胁等级，HIGH:高，MIDDLE:中，LOW:低</p>
         :type RuleLevel: str
+        :param _CmdLine: <p>命令行参数</p>
+        :type CmdLine: str
         """
         self._RuleMode = None
         self._ProcessPath = None
         self._RuleId = None
         self._RuleLevel = None
+        self._CmdLine = None
 
     @property
     def RuleMode(self):
-        r"""策略模式，   RULE_MODE_RELEASE: 放行
-   RULE_MODE_ALERT: 告警
-   RULE_MODE_HOLDUP:拦截
+        r"""<p>策略模式，   RULE_MODE_RELEASE: 放行<br>   RULE_MODE_ALERT: 告警<br>   RULE_MODE_HOLDUP:拦截</p>
         :rtype: str
         """
         return self._RuleMode
@@ -107,7 +106,7 @@ class AbnormalProcessChildRuleInfo(AbstractModel):
 
     @property
     def ProcessPath(self):
-        r"""进程路径
+        r"""<p>进程路径</p>
         :rtype: str
         """
         return self._ProcessPath
@@ -118,7 +117,7 @@ class AbnormalProcessChildRuleInfo(AbstractModel):
 
     @property
     def RuleId(self):
-        r"""子策略id
+        r"""<p>子策略id</p>
         :rtype: str
         """
         return self._RuleId
@@ -129,7 +128,7 @@ class AbnormalProcessChildRuleInfo(AbstractModel):
 
     @property
     def RuleLevel(self):
-        r"""威胁等级，HIGH:高，MIDDLE:中，LOW:低
+        r"""<p>威胁等级，HIGH:高，MIDDLE:中，LOW:低</p>
         :rtype: str
         """
         return self._RuleLevel
@@ -138,12 +137,24 @@ class AbnormalProcessChildRuleInfo(AbstractModel):
     def RuleLevel(self, RuleLevel):
         self._RuleLevel = RuleLevel
 
+    @property
+    def CmdLine(self):
+        r"""<p>命令行参数</p>
+        :rtype: str
+        """
+        return self._CmdLine
+
+    @CmdLine.setter
+    def CmdLine(self, CmdLine):
+        self._CmdLine = CmdLine
+
 
     def _deserialize(self, params):
         self._RuleMode = params.get("RuleMode")
         self._ProcessPath = params.get("ProcessPath")
         self._RuleId = params.get("RuleId")
         self._RuleLevel = params.get("RuleLevel")
+        self._CmdLine = params.get("CmdLine")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -304,109 +315,82 @@ class AbnormalProcessEventInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProcessPath: 进程目录
+        :param _ProcessPath: <p>进程目录</p>
         :type ProcessPath: str
-        :param _EventType: 事件类型，MALICE_PROCESS_START:恶意进程启动
+        :param _EventType: <p>事件类型，MALICE_PROCESS_START:恶意进程启动</p>
         :type EventType: str
-        :param _MatchRuleName: 命中规则名称，PROXY_TOOL：代理软件，TRANSFER_CONTROL：横向渗透，ATTACK_CMD：恶意命令，REVERSE_SHELL：反弹shell，FILELESS：无文件程序执行，RISK_CMD：高危命令，ABNORMAL_CHILD_PROC：敏感服务异常子进程启动，USER_DEFINED_RULE：用户自定义规则
+        :param _MatchRuleName: <p>命中规则名称，PROXY_TOOL：代理软件，TRANSFER_CONTROL：横向渗透，ATTACK_CMD：恶意命令，REVERSE_SHELL：反弹shell，FILELESS：无文件程序执行，RISK_CMD：高危命令，ABNORMAL_CHILD_PROC：敏感服务异常子进程启动，USER_DEFINED_RULE：用户自定义规则</p>
         :type MatchRuleName: str
-        :param _FoundTime: 生成时间
+        :param _FoundTime: <p>生成时间</p>
         :type FoundTime: str
-        :param _ContainerName: 容器名
+        :param _ContainerName: <p>容器名</p>
         :type ContainerName: str
-        :param _ImageName: 镜像名
+        :param _ImageName: <p>镜像名</p>
         :type ImageName: str
-        :param _Behavior: 动作执行结果，    BEHAVIOR_NONE: 无
-    BEHAVIOR_ALERT: 告警
-    BEHAVIOR_RELEASE：放行
-    BEHAVIOR_HOLDUP_FAILED:拦截失败
-    BEHAVIOR_HOLDUP_SUCCESSED：拦截失败
+        :param _Behavior: <p>动作执行结果，    BEHAVIOR_NONE: 无<br>    BEHAVIOR_ALERT: 告警<br>    BEHAVIOR_RELEASE：放行<br>    BEHAVIOR_HOLDUP_FAILED:拦截失败<br>    BEHAVIOR_HOLDUP_SUCCESSED：拦截失败</p>
         :type Behavior: str
-        :param _Status: 状态，EVENT_UNDEAL:事件未处理
-    EVENT_DEALED:事件已经处理
-    EVENT_INGNORE：事件已经忽略
+        :param _Status: <p>状态，EVENT_UNDEAL:事件未处理<br>    EVENT_DEALED:事件已经处理<br>    EVENT_INGNORE：事件已经忽略</p>
         :type Status: str
-        :param _Id: 事件记录的唯一id
+        :param _Id: <p>事件记录的唯一id</p>
         :type Id: str
-        :param _ImageId: 镜像id，用于跳转
+        :param _ImageId: <p>镜像id，用于跳转</p>
         :type ImageId: str
-        :param _ContainerId: 容器id，用于跳转
+        :param _ContainerId: <p>容器id，用于跳转</p>
         :type ContainerId: str
-        :param _Solution: 事件解决方案
+        :param _Solution: <p>事件解决方案</p>
         :type Solution: str
-        :param _Description: 事件详细描述
+        :param _Description: <p>事件详细描述</p>
         :type Description: str
-        :param _MatchRuleId: 命中策略id
+        :param _MatchRuleId: <p>命中策略id</p>
         :type MatchRuleId: str
-        :param _MatchAction: 命中规则行为：
-RULE_MODE_RELEASE 放行
-RULE_MODE_ALERT  告警
-RULE_MODE_HOLDUP 拦截
+        :param _MatchAction: <p>命中规则行为：<br>RULE_MODE_RELEASE 放行<br>RULE_MODE_ALERT  告警<br>RULE_MODE_HOLDUP 拦截</p>
         :type MatchAction: str
-        :param _MatchProcessPath: 命中规则进程信息
+        :param _MatchProcessPath: <p>命中规则进程信息</p>
         :type MatchProcessPath: str
-        :param _RuleExist: 规则是否存在
+        :param _RuleExist: <p>规则是否存在</p>
         :type RuleExist: bool
-        :param _EventCount: 事件数量
+        :param _EventCount: <p>事件数量</p>
         :type EventCount: int
-        :param _LatestFoundTime: 最近生成时间
+        :param _LatestFoundTime: <p>最近生成时间</p>
         :type LatestFoundTime: str
-        :param _RuleId: 规则组Id
+        :param _RuleId: <p>规则组Id</p>
         :type RuleId: str
-        :param _MatchGroupName: 命中策略名称：SYSTEM_DEFINED_RULE （系统策略）或  用户自定义的策略名字
+        :param _MatchGroupName: <p>命中策略名称：SYSTEM_DEFINED_RULE （系统策略）或  用户自定义的策略名字</p>
         :type MatchGroupName: str
-        :param _MatchRuleLevel: 命中规则等级，HIGH：高危，MIDDLE：中危，LOW：低危。
+        :param _MatchRuleLevel: <p>命中规则等级，HIGH：高危，MIDDLE：中危，LOW：低危。</p>
         :type MatchRuleLevel: str
-        :param _ContainerNetStatus: 网络状态
-未隔离  	NORMAL
-已隔离		ISOLATED
-隔离中		ISOLATING
-隔离失败	ISOLATE_FAILED
-解除隔离中  RESTORING
-解除隔离失败 RESTORE_FAILED
+        :param _ContainerNetStatus: <p>网络状态<br>未隔离      NORMAL<br>已隔离        ISOLATED<br>隔离中        ISOLATING<br>隔离失败    ISOLATE_FAILED<br>解除隔离中  RESTORING<br>解除隔离失败 RESTORE_FAILED</p>
         :type ContainerNetStatus: str
-        :param _ContainerNetSubStatus: 容器子状态
-"AGENT_OFFLINE"       //Agent离线
-"NODE_DESTROYED"      //节点已销毁
-"CONTAINER_EXITED"    //容器已退出
-"CONTAINER_DESTROYED" //容器已销毁
-"SHARED_HOST"         // 容器与主机共享网络
-"RESOURCE_LIMIT"      //隔离操作资源超限
-"UNKNOW"              // 原因未知
+        :param _ContainerNetSubStatus: <p>容器子状态<br>&quot;AGENT_OFFLINE&quot;       //Agent离线<br>&quot;NODE_DESTROYED&quot;      //节点已销毁<br>&quot;CONTAINER_EXITED&quot;    //容器已退出<br>&quot;CONTAINER_DESTROYED&quot; //容器已销毁<br>&quot;SHARED_HOST&quot;         // 容器与主机共享网络<br>&quot;RESOURCE_LIMIT&quot;      //隔离操作资源超限<br>&quot;UNKNOW&quot;              // 原因未知</p>
         :type ContainerNetSubStatus: str
-        :param _ContainerIsolateOperationSrc: 容器隔离操作来源
+        :param _ContainerIsolateOperationSrc: <p>容器隔离操作来源</p>
         :type ContainerIsolateOperationSrc: str
-        :param _ContainerStatus: 容器状态
-正在运行: RUNNING
-暂停: PAUSED
-停止: STOPPED
-已经创建: CREATED
-已经销毁: DESTROYED
-正在重启中: RESTARTING
-迁移中: REMOVING
+        :param _ContainerStatus: <p>容器状态<br>正在运行: RUNNING<br>暂停: PAUSED<br>停止: STOPPED<br>已经创建: CREATED<br>已经销毁: DESTROYED<br>正在重启中: RESTARTING<br>迁移中: REMOVING</p>
         :type ContainerStatus: str
-        :param _ClusterID: 集群ID
+        :param _ClusterID: <p>集群ID</p>
         :type ClusterID: str
-        :param _NodeType: 节点类型：NORMAL普通节点、SUPER超级节点
+        :param _NodeType: <p>节点类型：NORMAL普通节点、SUPER超级节点</p>
         :type NodeType: str
-        :param _PodName: pod 名称
+        :param _PodName: <p>pod 名称</p>
         :type PodName: str
-        :param _PodIP: pod ip
+        :param _PodIP: <p>pod ip</p>
         :type PodIP: str
-        :param _NodeUniqueID: 集群id
+        :param _NodeUniqueID: <p>集群id</p>
         :type NodeUniqueID: str
-        :param _PublicIP: 节点公网ip
+        :param _PublicIP: <p>节点公网ip</p>
         :type PublicIP: str
-        :param _NodeName: 节点名称
+        :param _NodeName: <p>节点名称</p>
         :type NodeName: str
-        :param _NodeID: 节点id
+        :param _NodeID: <p>节点id</p>
         :type NodeID: str
-        :param _HostID: uuid
+        :param _HostID: <p>uuid</p>
         :type HostID: str
-        :param _HostIP: 节点内网ip
+        :param _HostIP: <p>节点内网ip</p>
         :type HostIP: str
-        :param _ClusterName: 集群名称
+        :param _ClusterName: <p>集群名称</p>
         :type ClusterName: str
+        :param _CmdLine: <p>命令行参数</p>
+        :type CmdLine: str
         """
         self._ProcessPath = None
         self._EventType = None
@@ -445,10 +429,11 @@ RULE_MODE_HOLDUP 拦截
         self._HostID = None
         self._HostIP = None
         self._ClusterName = None
+        self._CmdLine = None
 
     @property
     def ProcessPath(self):
-        r"""进程目录
+        r"""<p>进程目录</p>
         :rtype: str
         """
         return self._ProcessPath
@@ -459,7 +444,7 @@ RULE_MODE_HOLDUP 拦截
 
     @property
     def EventType(self):
-        r"""事件类型，MALICE_PROCESS_START:恶意进程启动
+        r"""<p>事件类型，MALICE_PROCESS_START:恶意进程启动</p>
         :rtype: str
         """
         return self._EventType
@@ -470,7 +455,7 @@ RULE_MODE_HOLDUP 拦截
 
     @property
     def MatchRuleName(self):
-        r"""命中规则名称，PROXY_TOOL：代理软件，TRANSFER_CONTROL：横向渗透，ATTACK_CMD：恶意命令，REVERSE_SHELL：反弹shell，FILELESS：无文件程序执行，RISK_CMD：高危命令，ABNORMAL_CHILD_PROC：敏感服务异常子进程启动，USER_DEFINED_RULE：用户自定义规则
+        r"""<p>命中规则名称，PROXY_TOOL：代理软件，TRANSFER_CONTROL：横向渗透，ATTACK_CMD：恶意命令，REVERSE_SHELL：反弹shell，FILELESS：无文件程序执行，RISK_CMD：高危命令，ABNORMAL_CHILD_PROC：敏感服务异常子进程启动，USER_DEFINED_RULE：用户自定义规则</p>
         :rtype: str
         """
         return self._MatchRuleName
@@ -481,7 +466,7 @@ RULE_MODE_HOLDUP 拦截
 
     @property
     def FoundTime(self):
-        r"""生成时间
+        r"""<p>生成时间</p>
         :rtype: str
         """
         return self._FoundTime
@@ -492,7 +477,7 @@ RULE_MODE_HOLDUP 拦截
 
     @property
     def ContainerName(self):
-        r"""容器名
+        r"""<p>容器名</p>
         :rtype: str
         """
         return self._ContainerName
@@ -503,7 +488,7 @@ RULE_MODE_HOLDUP 拦截
 
     @property
     def ImageName(self):
-        r"""镜像名
+        r"""<p>镜像名</p>
         :rtype: str
         """
         return self._ImageName
@@ -514,11 +499,7 @@ RULE_MODE_HOLDUP 拦截
 
     @property
     def Behavior(self):
-        r"""动作执行结果，    BEHAVIOR_NONE: 无
-    BEHAVIOR_ALERT: 告警
-    BEHAVIOR_RELEASE：放行
-    BEHAVIOR_HOLDUP_FAILED:拦截失败
-    BEHAVIOR_HOLDUP_SUCCESSED：拦截失败
+        r"""<p>动作执行结果，    BEHAVIOR_NONE: 无<br>    BEHAVIOR_ALERT: 告警<br>    BEHAVIOR_RELEASE：放行<br>    BEHAVIOR_HOLDUP_FAILED:拦截失败<br>    BEHAVIOR_HOLDUP_SUCCESSED：拦截失败</p>
         :rtype: str
         """
         return self._Behavior
@@ -529,9 +510,7 @@ RULE_MODE_HOLDUP 拦截
 
     @property
     def Status(self):
-        r"""状态，EVENT_UNDEAL:事件未处理
-    EVENT_DEALED:事件已经处理
-    EVENT_INGNORE：事件已经忽略
+        r"""<p>状态，EVENT_UNDEAL:事件未处理<br>    EVENT_DEALED:事件已经处理<br>    EVENT_INGNORE：事件已经忽略</p>
         :rtype: str
         """
         return self._Status
@@ -542,7 +521,7 @@ RULE_MODE_HOLDUP 拦截
 
     @property
     def Id(self):
-        r"""事件记录的唯一id
+        r"""<p>事件记录的唯一id</p>
         :rtype: str
         """
         return self._Id
@@ -553,7 +532,7 @@ RULE_MODE_HOLDUP 拦截
 
     @property
     def ImageId(self):
-        r"""镜像id，用于跳转
+        r"""<p>镜像id，用于跳转</p>
         :rtype: str
         """
         return self._ImageId
@@ -564,7 +543,7 @@ RULE_MODE_HOLDUP 拦截
 
     @property
     def ContainerId(self):
-        r"""容器id，用于跳转
+        r"""<p>容器id，用于跳转</p>
         :rtype: str
         """
         return self._ContainerId
@@ -575,7 +554,7 @@ RULE_MODE_HOLDUP 拦截
 
     @property
     def Solution(self):
-        r"""事件解决方案
+        r"""<p>事件解决方案</p>
         :rtype: str
         """
         return self._Solution
@@ -586,7 +565,7 @@ RULE_MODE_HOLDUP 拦截
 
     @property
     def Description(self):
-        r"""事件详细描述
+        r"""<p>事件详细描述</p>
         :rtype: str
         """
         return self._Description
@@ -597,7 +576,7 @@ RULE_MODE_HOLDUP 拦截
 
     @property
     def MatchRuleId(self):
-        r"""命中策略id
+        r"""<p>命中策略id</p>
         :rtype: str
         """
         return self._MatchRuleId
@@ -608,10 +587,7 @@ RULE_MODE_HOLDUP 拦截
 
     @property
     def MatchAction(self):
-        r"""命中规则行为：
-RULE_MODE_RELEASE 放行
-RULE_MODE_ALERT  告警
-RULE_MODE_HOLDUP 拦截
+        r"""<p>命中规则行为：<br>RULE_MODE_RELEASE 放行<br>RULE_MODE_ALERT  告警<br>RULE_MODE_HOLDUP 拦截</p>
         :rtype: str
         """
         return self._MatchAction
@@ -622,7 +598,7 @@ RULE_MODE_HOLDUP 拦截
 
     @property
     def MatchProcessPath(self):
-        r"""命中规则进程信息
+        r"""<p>命中规则进程信息</p>
         :rtype: str
         """
         return self._MatchProcessPath
@@ -633,7 +609,7 @@ RULE_MODE_HOLDUP 拦截
 
     @property
     def RuleExist(self):
-        r"""规则是否存在
+        r"""<p>规则是否存在</p>
         :rtype: bool
         """
         return self._RuleExist
@@ -644,7 +620,7 @@ RULE_MODE_HOLDUP 拦截
 
     @property
     def EventCount(self):
-        r"""事件数量
+        r"""<p>事件数量</p>
         :rtype: int
         """
         return self._EventCount
@@ -655,7 +631,7 @@ RULE_MODE_HOLDUP 拦截
 
     @property
     def LatestFoundTime(self):
-        r"""最近生成时间
+        r"""<p>最近生成时间</p>
         :rtype: str
         """
         return self._LatestFoundTime
@@ -666,7 +642,7 @@ RULE_MODE_HOLDUP 拦截
 
     @property
     def RuleId(self):
-        r"""规则组Id
+        r"""<p>规则组Id</p>
         :rtype: str
         """
         return self._RuleId
@@ -677,7 +653,7 @@ RULE_MODE_HOLDUP 拦截
 
     @property
     def MatchGroupName(self):
-        r"""命中策略名称：SYSTEM_DEFINED_RULE （系统策略）或  用户自定义的策略名字
+        r"""<p>命中策略名称：SYSTEM_DEFINED_RULE （系统策略）或  用户自定义的策略名字</p>
         :rtype: str
         """
         return self._MatchGroupName
@@ -688,7 +664,7 @@ RULE_MODE_HOLDUP 拦截
 
     @property
     def MatchRuleLevel(self):
-        r"""命中规则等级，HIGH：高危，MIDDLE：中危，LOW：低危。
+        r"""<p>命中规则等级，HIGH：高危，MIDDLE：中危，LOW：低危。</p>
         :rtype: str
         """
         return self._MatchRuleLevel
@@ -699,13 +675,7 @@ RULE_MODE_HOLDUP 拦截
 
     @property
     def ContainerNetStatus(self):
-        r"""网络状态
-未隔离  	NORMAL
-已隔离		ISOLATED
-隔离中		ISOLATING
-隔离失败	ISOLATE_FAILED
-解除隔离中  RESTORING
-解除隔离失败 RESTORE_FAILED
+        r"""<p>网络状态<br>未隔离      NORMAL<br>已隔离        ISOLATED<br>隔离中        ISOLATING<br>隔离失败    ISOLATE_FAILED<br>解除隔离中  RESTORING<br>解除隔离失败 RESTORE_FAILED</p>
         :rtype: str
         """
         return self._ContainerNetStatus
@@ -716,14 +686,7 @@ RULE_MODE_HOLDUP 拦截
 
     @property
     def ContainerNetSubStatus(self):
-        r"""容器子状态
-"AGENT_OFFLINE"       //Agent离线
-"NODE_DESTROYED"      //节点已销毁
-"CONTAINER_EXITED"    //容器已退出
-"CONTAINER_DESTROYED" //容器已销毁
-"SHARED_HOST"         // 容器与主机共享网络
-"RESOURCE_LIMIT"      //隔离操作资源超限
-"UNKNOW"              // 原因未知
+        r"""<p>容器子状态<br>&quot;AGENT_OFFLINE&quot;       //Agent离线<br>&quot;NODE_DESTROYED&quot;      //节点已销毁<br>&quot;CONTAINER_EXITED&quot;    //容器已退出<br>&quot;CONTAINER_DESTROYED&quot; //容器已销毁<br>&quot;SHARED_HOST&quot;         // 容器与主机共享网络<br>&quot;RESOURCE_LIMIT&quot;      //隔离操作资源超限<br>&quot;UNKNOW&quot;              // 原因未知</p>
         :rtype: str
         """
         return self._ContainerNetSubStatus
@@ -734,7 +697,7 @@ RULE_MODE_HOLDUP 拦截
 
     @property
     def ContainerIsolateOperationSrc(self):
-        r"""容器隔离操作来源
+        r"""<p>容器隔离操作来源</p>
         :rtype: str
         """
         return self._ContainerIsolateOperationSrc
@@ -745,14 +708,7 @@ RULE_MODE_HOLDUP 拦截
 
     @property
     def ContainerStatus(self):
-        r"""容器状态
-正在运行: RUNNING
-暂停: PAUSED
-停止: STOPPED
-已经创建: CREATED
-已经销毁: DESTROYED
-正在重启中: RESTARTING
-迁移中: REMOVING
+        r"""<p>容器状态<br>正在运行: RUNNING<br>暂停: PAUSED<br>停止: STOPPED<br>已经创建: CREATED<br>已经销毁: DESTROYED<br>正在重启中: RESTARTING<br>迁移中: REMOVING</p>
         :rtype: str
         """
         return self._ContainerStatus
@@ -763,7 +719,7 @@ RULE_MODE_HOLDUP 拦截
 
     @property
     def ClusterID(self):
-        r"""集群ID
+        r"""<p>集群ID</p>
         :rtype: str
         """
         return self._ClusterID
@@ -774,7 +730,7 @@ RULE_MODE_HOLDUP 拦截
 
     @property
     def NodeType(self):
-        r"""节点类型：NORMAL普通节点、SUPER超级节点
+        r"""<p>节点类型：NORMAL普通节点、SUPER超级节点</p>
         :rtype: str
         """
         return self._NodeType
@@ -785,7 +741,7 @@ RULE_MODE_HOLDUP 拦截
 
     @property
     def PodName(self):
-        r"""pod 名称
+        r"""<p>pod 名称</p>
         :rtype: str
         """
         return self._PodName
@@ -796,7 +752,7 @@ RULE_MODE_HOLDUP 拦截
 
     @property
     def PodIP(self):
-        r"""pod ip
+        r"""<p>pod ip</p>
         :rtype: str
         """
         return self._PodIP
@@ -807,7 +763,7 @@ RULE_MODE_HOLDUP 拦截
 
     @property
     def NodeUniqueID(self):
-        r"""集群id
+        r"""<p>集群id</p>
         :rtype: str
         """
         return self._NodeUniqueID
@@ -818,7 +774,7 @@ RULE_MODE_HOLDUP 拦截
 
     @property
     def PublicIP(self):
-        r"""节点公网ip
+        r"""<p>节点公网ip</p>
         :rtype: str
         """
         return self._PublicIP
@@ -829,7 +785,7 @@ RULE_MODE_HOLDUP 拦截
 
     @property
     def NodeName(self):
-        r"""节点名称
+        r"""<p>节点名称</p>
         :rtype: str
         """
         return self._NodeName
@@ -840,7 +796,7 @@ RULE_MODE_HOLDUP 拦截
 
     @property
     def NodeID(self):
-        r"""节点id
+        r"""<p>节点id</p>
         :rtype: str
         """
         return self._NodeID
@@ -851,7 +807,7 @@ RULE_MODE_HOLDUP 拦截
 
     @property
     def HostID(self):
-        r"""uuid
+        r"""<p>uuid</p>
         :rtype: str
         """
         return self._HostID
@@ -862,7 +818,7 @@ RULE_MODE_HOLDUP 拦截
 
     @property
     def HostIP(self):
-        r"""节点内网ip
+        r"""<p>节点内网ip</p>
         :rtype: str
         """
         return self._HostIP
@@ -873,7 +829,7 @@ RULE_MODE_HOLDUP 拦截
 
     @property
     def ClusterName(self):
-        r"""集群名称
+        r"""<p>集群名称</p>
         :rtype: str
         """
         return self._ClusterName
@@ -881,6 +837,17 @@ RULE_MODE_HOLDUP 拦截
     @ClusterName.setter
     def ClusterName(self, ClusterName):
         self._ClusterName = ClusterName
+
+    @property
+    def CmdLine(self):
+        r"""<p>命令行参数</p>
+        :rtype: str
+        """
+        return self._CmdLine
+
+    @CmdLine.setter
+    def CmdLine(self, CmdLine):
+        self._CmdLine = CmdLine
 
 
     def _deserialize(self, params):
@@ -921,6 +888,7 @@ RULE_MODE_HOLDUP 拦截
         self._HostID = params.get("HostID")
         self._HostIP = params.get("HostIP")
         self._ClusterName = params.get("ClusterName")
+        self._CmdLine = params.get("CmdLine")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1344,27 +1312,26 @@ class AccessControlChildRuleInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuleMode: 策略模式,  RULE_MODE_RELEASE: 放行
-   RULE_MODE_ALERT: 告警
-   RULE_MODE_HOLDUP:拦截
+        :param _RuleMode: <p>策略模式,  RULE_MODE_RELEASE: 放行<br>   RULE_MODE_ALERT: 告警<br>   RULE_MODE_HOLDUP:拦截</p>
         :type RuleMode: str
-        :param _ProcessPath: 进程路径
+        :param _ProcessPath: <p>进程路径</p>
         :type ProcessPath: str
-        :param _TargetFilePath: 被访问文件路径，仅仅在访问控制生效
+        :param _TargetFilePath: <p>被访问文件路径，仅仅在访问控制生效</p>
         :type TargetFilePath: str
-        :param _RuleId: 子策略id
+        :param _RuleId: <p>子策略id</p>
         :type RuleId: str
+        :param _CmdLine: <p>命令行参数</p>
+        :type CmdLine: str
         """
         self._RuleMode = None
         self._ProcessPath = None
         self._TargetFilePath = None
         self._RuleId = None
+        self._CmdLine = None
 
     @property
     def RuleMode(self):
-        r"""策略模式,  RULE_MODE_RELEASE: 放行
-   RULE_MODE_ALERT: 告警
-   RULE_MODE_HOLDUP:拦截
+        r"""<p>策略模式,  RULE_MODE_RELEASE: 放行<br>   RULE_MODE_ALERT: 告警<br>   RULE_MODE_HOLDUP:拦截</p>
         :rtype: str
         """
         return self._RuleMode
@@ -1375,7 +1342,7 @@ class AccessControlChildRuleInfo(AbstractModel):
 
     @property
     def ProcessPath(self):
-        r"""进程路径
+        r"""<p>进程路径</p>
         :rtype: str
         """
         return self._ProcessPath
@@ -1386,7 +1353,7 @@ class AccessControlChildRuleInfo(AbstractModel):
 
     @property
     def TargetFilePath(self):
-        r"""被访问文件路径，仅仅在访问控制生效
+        r"""<p>被访问文件路径，仅仅在访问控制生效</p>
         :rtype: str
         """
         return self._TargetFilePath
@@ -1397,7 +1364,7 @@ class AccessControlChildRuleInfo(AbstractModel):
 
     @property
     def RuleId(self):
-        r"""子策略id
+        r"""<p>子策略id</p>
         :rtype: str
         """
         return self._RuleId
@@ -1406,12 +1373,24 @@ class AccessControlChildRuleInfo(AbstractModel):
     def RuleId(self, RuleId):
         self._RuleId = RuleId
 
+    @property
+    def CmdLine(self):
+        r"""<p>命令行参数</p>
+        :rtype: str
+        """
+        return self._CmdLine
+
+    @CmdLine.setter
+    def CmdLine(self, CmdLine):
+        self._CmdLine = CmdLine
+
 
     def _deserialize(self, params):
         self._RuleMode = params.get("RuleMode")
         self._ProcessPath = params.get("ProcessPath")
         self._TargetFilePath = params.get("TargetFilePath")
         self._RuleId = params.get("RuleId")
+        self._CmdLine = params.get("CmdLine")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1557,111 +1536,84 @@ class AccessControlEventInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProcessName: 进程名称
+        :param _ProcessName: <p>进程名称</p>
         :type ProcessName: str
-        :param _MatchRuleName: 命中规则名称
+        :param _MatchRuleName: <p>命中规则名称</p>
         :type MatchRuleName: str
-        :param _FoundTime: 生成时间
+        :param _FoundTime: <p>生成时间</p>
         :type FoundTime: str
-        :param _ContainerName: 容器名
+        :param _ContainerName: <p>容器名</p>
         :type ContainerName: str
-        :param _ImageName: 镜像名
+        :param _ImageName: <p>镜像名</p>
         :type ImageName: str
-        :param _Behavior: 动作执行结果，   BEHAVIOR_NONE: 无
-    BEHAVIOR_ALERT: 告警
-    BEHAVIOR_RELEASE：放行
-    BEHAVIOR_HOLDUP_FAILED:拦截失败
-    BEHAVIOR_HOLDUP_SUCCESSED：拦截失败
+        :param _Behavior: <p>动作执行结果，   BEHAVIOR_NONE: 无<br>    BEHAVIOR_ALERT: 告警<br>    BEHAVIOR_RELEASE：放行<br>    BEHAVIOR_HOLDUP_FAILED:拦截失败<br>    BEHAVIOR_HOLDUP_SUCCESSED：拦截失败</p>
         :type Behavior: str
-        :param _Status: 状态0:未处理  “EVENT_UNDEAL”:事件未处理
-    "EVENT_DEALED":事件已经处理
-    "EVENT_INGNORE"：事件已经忽略
+        :param _Status: <p>状态0:未处理  “EVENT_UNDEAL”:事件未处理<br>    &quot;EVENT_DEALED&quot;:事件已经处理<br>    &quot;EVENT_INGNORE&quot;：事件已经忽略</p>
         :type Status: str
-        :param _Id: 事件记录的唯一id
+        :param _Id: <p>事件记录的唯一id</p>
         :type Id: str
-        :param _FileName: 文件名称
+        :param _FileName: <p>文件名称</p>
         :type FileName: str
-        :param _EventType: 事件类型， FILE_ABNORMAL_READ:文件异常读取
+        :param _EventType: <p>事件类型， FILE_ABNORMAL_READ:文件异常读取</p>
         :type EventType: str
-        :param _ImageId: 镜像id, 用于跳转
+        :param _ImageId: <p>镜像id, 用于跳转</p>
         :type ImageId: str
-        :param _ContainerId: 容器id, 用于跳转
+        :param _ContainerId: <p>容器id, 用于跳转</p>
         :type ContainerId: str
-        :param _Solution: 事件解决方案
+        :param _Solution: <p>事件解决方案</p>
         :type Solution: str
-        :param _Description: 事件详细描述
+        :param _Description: <p>事件详细描述</p>
         :type Description: str
-        :param _MatchRuleId: 命中策略id
+        :param _MatchRuleId: <p>命中策略id</p>
         :type MatchRuleId: str
-        :param _MatchAction: 命中规则行为：
-RULE_MODE_RELEASE 放行
-RULE_MODE_ALERT  告警
-RULE_MODE_HOLDUP 拦截
+        :param _MatchAction: <p>命中规则行为：<br>RULE_MODE_RELEASE 放行<br>RULE_MODE_ALERT  告警<br>RULE_MODE_HOLDUP 拦截</p>
         :type MatchAction: str
-        :param _MatchProcessPath: 命中规则进程信息
+        :param _MatchProcessPath: <p>命中规则进程信息</p>
         :type MatchProcessPath: str
-        :param _MatchFilePath: 命中规则文件信息
+        :param _MatchFilePath: <p>命中规则文件信息</p>
         :type MatchFilePath: str
-        :param _FilePath: 文件路径，包含名字
+        :param _FilePath: <p>文件路径，包含名字</p>
         :type FilePath: str
-        :param _RuleExist: 规则是否存在
+        :param _RuleExist: <p>规则是否存在</p>
         :type RuleExist: bool
-        :param _EventCount: 事件数量
+        :param _EventCount: <p>事件数量</p>
         :type EventCount: int
-        :param _LatestFoundTime: 最近生成时间
+        :param _LatestFoundTime: <p>最近生成时间</p>
         :type LatestFoundTime: str
-        :param _RuleId: 规则组id
+        :param _RuleId: <p>规则组id</p>
         :type RuleId: str
-        :param _ContainerNetStatus: 网络状态
-未隔离  	NORMAL
-已隔离		ISOLATED
-隔离中		ISOLATING
-隔离失败	ISOLATE_FAILED
-解除隔离中  RESTORING
-解除隔离失败 RESTORE_FAILED
+        :param _ContainerNetStatus: <p>网络状态<br>未隔离      NORMAL<br>已隔离        ISOLATED<br>隔离中        ISOLATING<br>隔离失败    ISOLATE_FAILED<br>解除隔离中  RESTORING<br>解除隔离失败 RESTORE_FAILED</p>
         :type ContainerNetStatus: str
-        :param _ContainerNetSubStatus: 容器子状态
-"AGENT_OFFLINE"       //Agent离线
-"NODE_DESTROYED"      //节点已销毁
-"CONTAINER_EXITED"    //容器已退出
-"CONTAINER_DESTROYED" //容器已销毁
-"SHARED_HOST"         // 容器与主机共享网络
-"RESOURCE_LIMIT"      //隔离操作资源超限
-"UNKNOW"              // 原因未知
+        :param _ContainerNetSubStatus: <p>容器子状态<br>&quot;AGENT_OFFLINE&quot;       //Agent离线<br>&quot;NODE_DESTROYED&quot;      //节点已销毁<br>&quot;CONTAINER_EXITED&quot;    //容器已退出<br>&quot;CONTAINER_DESTROYED&quot; //容器已销毁<br>&quot;SHARED_HOST&quot;         // 容器与主机共享网络<br>&quot;RESOURCE_LIMIT&quot;      //隔离操作资源超限<br>&quot;UNKNOW&quot;              // 原因未知</p>
         :type ContainerNetSubStatus: str
-        :param _ContainerIsolateOperationSrc: 容器隔离操作来源
+        :param _ContainerIsolateOperationSrc: <p>容器隔离操作来源</p>
         :type ContainerIsolateOperationSrc: str
-        :param _ContainerStatus: 容器状态
-正在运行: RUNNING
-暂停: PAUSED
-停止: STOPPED
-已经创建: CREATED
-已经销毁: DESTROYED
-正在重启中: RESTARTING
-迁移中: REMOVING
+        :param _ContainerStatus: <p>容器状态<br>正在运行: RUNNING<br>暂停: PAUSED<br>停止: STOPPED<br>已经创建: CREATED<br>已经销毁: DESTROYED<br>正在重启中: RESTARTING<br>迁移中: REMOVING</p>
         :type ContainerStatus: str
-        :param _NodeName: 节点名称：如果是超级节点，展示的实质上是它的node_id
+        :param _NodeName: <p>节点名称：如果是超级节点，展示的实质上是它的node_id</p>
         :type NodeName: str
-        :param _PodName: pod名称
+        :param _PodName: <p>pod名称</p>
         :type PodName: str
-        :param _PodIP: pod ip
+        :param _PodIP: <p>pod ip</p>
         :type PodIP: str
-        :param _NodeType: 节点类型：NORMAL普通节点、SUPER超级节点
+        :param _NodeType: <p>节点类型：NORMAL普通节点、SUPER超级节点</p>
         :type NodeType: str
-        :param _ClusterID: 集群id
+        :param _ClusterID: <p>集群id</p>
         :type ClusterID: str
-        :param _NodeUniqueID: 节点的唯一id，主要是超级节点使用
+        :param _NodeUniqueID: <p>节点的唯一id，主要是超级节点使用</p>
         :type NodeUniqueID: str
-        :param _PublicIP: 节点公网IP
+        :param _PublicIP: <p>节点公网IP</p>
         :type PublicIP: str
-        :param _NodeID: 节点id
+        :param _NodeID: <p>节点id</p>
         :type NodeID: str
-        :param _HostID: uuid
+        :param _HostID: <p>uuid</p>
         :type HostID: str
-        :param _HostIP: 节点内网ip
+        :param _HostIP: <p>节点内网ip</p>
         :type HostIP: str
-        :param _ClusterName: 集群名称
+        :param _ClusterName: <p>集群名称</p>
         :type ClusterName: str
+        :param _CmdLine: <p>命令行参数</p>
+        :type CmdLine: str
         """
         self._ProcessName = None
         self._MatchRuleName = None
@@ -1701,10 +1653,11 @@ RULE_MODE_HOLDUP 拦截
         self._HostID = None
         self._HostIP = None
         self._ClusterName = None
+        self._CmdLine = None
 
     @property
     def ProcessName(self):
-        r"""进程名称
+        r"""<p>进程名称</p>
         :rtype: str
         """
         return self._ProcessName
@@ -1715,7 +1668,7 @@ RULE_MODE_HOLDUP 拦截
 
     @property
     def MatchRuleName(self):
-        r"""命中规则名称
+        r"""<p>命中规则名称</p>
         :rtype: str
         """
         return self._MatchRuleName
@@ -1726,7 +1679,7 @@ RULE_MODE_HOLDUP 拦截
 
     @property
     def FoundTime(self):
-        r"""生成时间
+        r"""<p>生成时间</p>
         :rtype: str
         """
         return self._FoundTime
@@ -1737,7 +1690,7 @@ RULE_MODE_HOLDUP 拦截
 
     @property
     def ContainerName(self):
-        r"""容器名
+        r"""<p>容器名</p>
         :rtype: str
         """
         return self._ContainerName
@@ -1748,7 +1701,7 @@ RULE_MODE_HOLDUP 拦截
 
     @property
     def ImageName(self):
-        r"""镜像名
+        r"""<p>镜像名</p>
         :rtype: str
         """
         return self._ImageName
@@ -1759,11 +1712,7 @@ RULE_MODE_HOLDUP 拦截
 
     @property
     def Behavior(self):
-        r"""动作执行结果，   BEHAVIOR_NONE: 无
-    BEHAVIOR_ALERT: 告警
-    BEHAVIOR_RELEASE：放行
-    BEHAVIOR_HOLDUP_FAILED:拦截失败
-    BEHAVIOR_HOLDUP_SUCCESSED：拦截失败
+        r"""<p>动作执行结果，   BEHAVIOR_NONE: 无<br>    BEHAVIOR_ALERT: 告警<br>    BEHAVIOR_RELEASE：放行<br>    BEHAVIOR_HOLDUP_FAILED:拦截失败<br>    BEHAVIOR_HOLDUP_SUCCESSED：拦截失败</p>
         :rtype: str
         """
         return self._Behavior
@@ -1774,9 +1723,7 @@ RULE_MODE_HOLDUP 拦截
 
     @property
     def Status(self):
-        r"""状态0:未处理  “EVENT_UNDEAL”:事件未处理
-    "EVENT_DEALED":事件已经处理
-    "EVENT_INGNORE"：事件已经忽略
+        r"""<p>状态0:未处理  “EVENT_UNDEAL”:事件未处理<br>    &quot;EVENT_DEALED&quot;:事件已经处理<br>    &quot;EVENT_INGNORE&quot;：事件已经忽略</p>
         :rtype: str
         """
         return self._Status
@@ -1787,7 +1734,7 @@ RULE_MODE_HOLDUP 拦截
 
     @property
     def Id(self):
-        r"""事件记录的唯一id
+        r"""<p>事件记录的唯一id</p>
         :rtype: str
         """
         return self._Id
@@ -1798,7 +1745,7 @@ RULE_MODE_HOLDUP 拦截
 
     @property
     def FileName(self):
-        r"""文件名称
+        r"""<p>文件名称</p>
         :rtype: str
         """
         return self._FileName
@@ -1809,7 +1756,7 @@ RULE_MODE_HOLDUP 拦截
 
     @property
     def EventType(self):
-        r"""事件类型， FILE_ABNORMAL_READ:文件异常读取
+        r"""<p>事件类型， FILE_ABNORMAL_READ:文件异常读取</p>
         :rtype: str
         """
         return self._EventType
@@ -1820,7 +1767,7 @@ RULE_MODE_HOLDUP 拦截
 
     @property
     def ImageId(self):
-        r"""镜像id, 用于跳转
+        r"""<p>镜像id, 用于跳转</p>
         :rtype: str
         """
         return self._ImageId
@@ -1831,7 +1778,7 @@ RULE_MODE_HOLDUP 拦截
 
     @property
     def ContainerId(self):
-        r"""容器id, 用于跳转
+        r"""<p>容器id, 用于跳转</p>
         :rtype: str
         """
         return self._ContainerId
@@ -1842,7 +1789,7 @@ RULE_MODE_HOLDUP 拦截
 
     @property
     def Solution(self):
-        r"""事件解决方案
+        r"""<p>事件解决方案</p>
         :rtype: str
         """
         return self._Solution
@@ -1853,7 +1800,7 @@ RULE_MODE_HOLDUP 拦截
 
     @property
     def Description(self):
-        r"""事件详细描述
+        r"""<p>事件详细描述</p>
         :rtype: str
         """
         return self._Description
@@ -1864,7 +1811,7 @@ RULE_MODE_HOLDUP 拦截
 
     @property
     def MatchRuleId(self):
-        r"""命中策略id
+        r"""<p>命中策略id</p>
         :rtype: str
         """
         return self._MatchRuleId
@@ -1875,10 +1822,7 @@ RULE_MODE_HOLDUP 拦截
 
     @property
     def MatchAction(self):
-        r"""命中规则行为：
-RULE_MODE_RELEASE 放行
-RULE_MODE_ALERT  告警
-RULE_MODE_HOLDUP 拦截
+        r"""<p>命中规则行为：<br>RULE_MODE_RELEASE 放行<br>RULE_MODE_ALERT  告警<br>RULE_MODE_HOLDUP 拦截</p>
         :rtype: str
         """
         return self._MatchAction
@@ -1889,7 +1833,7 @@ RULE_MODE_HOLDUP 拦截
 
     @property
     def MatchProcessPath(self):
-        r"""命中规则进程信息
+        r"""<p>命中规则进程信息</p>
         :rtype: str
         """
         return self._MatchProcessPath
@@ -1900,7 +1844,7 @@ RULE_MODE_HOLDUP 拦截
 
     @property
     def MatchFilePath(self):
-        r"""命中规则文件信息
+        r"""<p>命中规则文件信息</p>
         :rtype: str
         """
         return self._MatchFilePath
@@ -1911,7 +1855,7 @@ RULE_MODE_HOLDUP 拦截
 
     @property
     def FilePath(self):
-        r"""文件路径，包含名字
+        r"""<p>文件路径，包含名字</p>
         :rtype: str
         """
         return self._FilePath
@@ -1922,7 +1866,7 @@ RULE_MODE_HOLDUP 拦截
 
     @property
     def RuleExist(self):
-        r"""规则是否存在
+        r"""<p>规则是否存在</p>
         :rtype: bool
         """
         return self._RuleExist
@@ -1933,7 +1877,7 @@ RULE_MODE_HOLDUP 拦截
 
     @property
     def EventCount(self):
-        r"""事件数量
+        r"""<p>事件数量</p>
         :rtype: int
         """
         return self._EventCount
@@ -1944,7 +1888,7 @@ RULE_MODE_HOLDUP 拦截
 
     @property
     def LatestFoundTime(self):
-        r"""最近生成时间
+        r"""<p>最近生成时间</p>
         :rtype: str
         """
         return self._LatestFoundTime
@@ -1955,7 +1899,7 @@ RULE_MODE_HOLDUP 拦截
 
     @property
     def RuleId(self):
-        r"""规则组id
+        r"""<p>规则组id</p>
         :rtype: str
         """
         return self._RuleId
@@ -1966,13 +1910,7 @@ RULE_MODE_HOLDUP 拦截
 
     @property
     def ContainerNetStatus(self):
-        r"""网络状态
-未隔离  	NORMAL
-已隔离		ISOLATED
-隔离中		ISOLATING
-隔离失败	ISOLATE_FAILED
-解除隔离中  RESTORING
-解除隔离失败 RESTORE_FAILED
+        r"""<p>网络状态<br>未隔离      NORMAL<br>已隔离        ISOLATED<br>隔离中        ISOLATING<br>隔离失败    ISOLATE_FAILED<br>解除隔离中  RESTORING<br>解除隔离失败 RESTORE_FAILED</p>
         :rtype: str
         """
         return self._ContainerNetStatus
@@ -1983,14 +1921,7 @@ RULE_MODE_HOLDUP 拦截
 
     @property
     def ContainerNetSubStatus(self):
-        r"""容器子状态
-"AGENT_OFFLINE"       //Agent离线
-"NODE_DESTROYED"      //节点已销毁
-"CONTAINER_EXITED"    //容器已退出
-"CONTAINER_DESTROYED" //容器已销毁
-"SHARED_HOST"         // 容器与主机共享网络
-"RESOURCE_LIMIT"      //隔离操作资源超限
-"UNKNOW"              // 原因未知
+        r"""<p>容器子状态<br>&quot;AGENT_OFFLINE&quot;       //Agent离线<br>&quot;NODE_DESTROYED&quot;      //节点已销毁<br>&quot;CONTAINER_EXITED&quot;    //容器已退出<br>&quot;CONTAINER_DESTROYED&quot; //容器已销毁<br>&quot;SHARED_HOST&quot;         // 容器与主机共享网络<br>&quot;RESOURCE_LIMIT&quot;      //隔离操作资源超限<br>&quot;UNKNOW&quot;              // 原因未知</p>
         :rtype: str
         """
         return self._ContainerNetSubStatus
@@ -2001,7 +1932,7 @@ RULE_MODE_HOLDUP 拦截
 
     @property
     def ContainerIsolateOperationSrc(self):
-        r"""容器隔离操作来源
+        r"""<p>容器隔离操作来源</p>
         :rtype: str
         """
         return self._ContainerIsolateOperationSrc
@@ -2012,14 +1943,7 @@ RULE_MODE_HOLDUP 拦截
 
     @property
     def ContainerStatus(self):
-        r"""容器状态
-正在运行: RUNNING
-暂停: PAUSED
-停止: STOPPED
-已经创建: CREATED
-已经销毁: DESTROYED
-正在重启中: RESTARTING
-迁移中: REMOVING
+        r"""<p>容器状态<br>正在运行: RUNNING<br>暂停: PAUSED<br>停止: STOPPED<br>已经创建: CREATED<br>已经销毁: DESTROYED<br>正在重启中: RESTARTING<br>迁移中: REMOVING</p>
         :rtype: str
         """
         return self._ContainerStatus
@@ -2030,7 +1954,7 @@ RULE_MODE_HOLDUP 拦截
 
     @property
     def NodeName(self):
-        r"""节点名称：如果是超级节点，展示的实质上是它的node_id
+        r"""<p>节点名称：如果是超级节点，展示的实质上是它的node_id</p>
         :rtype: str
         """
         return self._NodeName
@@ -2041,7 +1965,7 @@ RULE_MODE_HOLDUP 拦截
 
     @property
     def PodName(self):
-        r"""pod名称
+        r"""<p>pod名称</p>
         :rtype: str
         """
         return self._PodName
@@ -2052,7 +1976,7 @@ RULE_MODE_HOLDUP 拦截
 
     @property
     def PodIP(self):
-        r"""pod ip
+        r"""<p>pod ip</p>
         :rtype: str
         """
         return self._PodIP
@@ -2063,7 +1987,7 @@ RULE_MODE_HOLDUP 拦截
 
     @property
     def NodeType(self):
-        r"""节点类型：NORMAL普通节点、SUPER超级节点
+        r"""<p>节点类型：NORMAL普通节点、SUPER超级节点</p>
         :rtype: str
         """
         return self._NodeType
@@ -2074,7 +1998,7 @@ RULE_MODE_HOLDUP 拦截
 
     @property
     def ClusterID(self):
-        r"""集群id
+        r"""<p>集群id</p>
         :rtype: str
         """
         return self._ClusterID
@@ -2085,7 +2009,7 @@ RULE_MODE_HOLDUP 拦截
 
     @property
     def NodeUniqueID(self):
-        r"""节点的唯一id，主要是超级节点使用
+        r"""<p>节点的唯一id，主要是超级节点使用</p>
         :rtype: str
         """
         return self._NodeUniqueID
@@ -2096,7 +2020,7 @@ RULE_MODE_HOLDUP 拦截
 
     @property
     def PublicIP(self):
-        r"""节点公网IP
+        r"""<p>节点公网IP</p>
         :rtype: str
         """
         return self._PublicIP
@@ -2107,7 +2031,7 @@ RULE_MODE_HOLDUP 拦截
 
     @property
     def NodeID(self):
-        r"""节点id
+        r"""<p>节点id</p>
         :rtype: str
         """
         return self._NodeID
@@ -2118,7 +2042,7 @@ RULE_MODE_HOLDUP 拦截
 
     @property
     def HostID(self):
-        r"""uuid
+        r"""<p>uuid</p>
         :rtype: str
         """
         return self._HostID
@@ -2129,7 +2053,7 @@ RULE_MODE_HOLDUP 拦截
 
     @property
     def HostIP(self):
-        r"""节点内网ip
+        r"""<p>节点内网ip</p>
         :rtype: str
         """
         return self._HostIP
@@ -2140,7 +2064,7 @@ RULE_MODE_HOLDUP 拦截
 
     @property
     def ClusterName(self):
-        r"""集群名称
+        r"""<p>集群名称</p>
         :rtype: str
         """
         return self._ClusterName
@@ -2148,6 +2072,17 @@ RULE_MODE_HOLDUP 拦截
     @ClusterName.setter
     def ClusterName(self, ClusterName):
         self._ClusterName = ClusterName
+
+    @property
+    def CmdLine(self):
+        r"""<p>命令行参数</p>
+        :rtype: str
+        """
+        return self._CmdLine
+
+    @CmdLine.setter
+    def CmdLine(self, CmdLine):
+        self._CmdLine = CmdLine
 
 
     def _deserialize(self, params):
@@ -2189,6 +2124,7 @@ RULE_MODE_HOLDUP 拦截
         self._HostID = params.get("HostID")
         self._HostIP = params.get("HostIP")
         self._ClusterName = params.get("ClusterName")
+        self._CmdLine = params.get("CmdLine")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -45149,10 +45085,13 @@ class DescribeSecLogJoinTypeListResponse(AbstractModel):
         r"""
         :param _List: 接入日志列表
         :type List: list of SecLogJoinInfo
+        :param _MsgLanguage: 语言类型
+        :type MsgLanguage: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._List = None
+        self._MsgLanguage = None
         self._RequestId = None
 
     @property
@@ -45165,6 +45104,17 @@ class DescribeSecLogJoinTypeListResponse(AbstractModel):
     @List.setter
     def List(self, List):
         self._List = List
+
+    @property
+    def MsgLanguage(self):
+        r"""语言类型
+        :rtype: str
+        """
+        return self._MsgLanguage
+
+    @MsgLanguage.setter
+    def MsgLanguage(self, MsgLanguage):
+        self._MsgLanguage = MsgLanguage
 
     @property
     def RequestId(self):
@@ -45185,6 +45135,7 @@ class DescribeSecLogJoinTypeListResponse(AbstractModel):
                 obj = SecLogJoinInfo()
                 obj._deserialize(item)
                 self._List.append(obj)
+        self._MsgLanguage = params.get("MsgLanguage")
         self._RequestId = params.get("RequestId")
 
 

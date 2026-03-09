@@ -11885,17 +11885,17 @@ class DescribeStaffInfoListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkAppId: 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :param _SdkAppId: <p>应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc</p>
         :type SdkAppId: int
-        :param _PageSize: 分页尺寸，上限 9999
+        :param _PageSize: <p>分页尺寸，上限 9999</p>
         :type PageSize: int
-        :param _PageNumber: 分页页码，从 0 开始
+        :param _PageNumber: <p>分页页码，从 0 开始</p>
         :type PageNumber: int
-        :param _StaffMail: 坐席账号，查询单个坐席时使用
+        :param _StaffMail: <p>坐席账号，查询单个坐席时使用</p>
         :type StaffMail: str
-        :param _ModifiedTime: 查询修改时间大于等于ModifiedTime的坐席时使用
+        :param _ModifiedTime: <p>查询修改时间大于等于ModifiedTime的坐席时使用</p>
         :type ModifiedTime: int
-        :param _SkillGroupId: 技能组ID
+        :param _SkillGroupId: <p>技能组ID</p>
         :type SkillGroupId: int
         """
         self._SdkAppId = None
@@ -11907,7 +11907,7 @@ class DescribeStaffInfoListRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        r"""应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        r"""<p>应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc</p>
         :rtype: int
         """
         return self._SdkAppId
@@ -11918,7 +11918,7 @@ class DescribeStaffInfoListRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        r"""分页尺寸，上限 9999
+        r"""<p>分页尺寸，上限 9999</p>
         :rtype: int
         """
         return self._PageSize
@@ -11929,7 +11929,7 @@ class DescribeStaffInfoListRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        r"""分页页码，从 0 开始
+        r"""<p>分页页码，从 0 开始</p>
         :rtype: int
         """
         return self._PageNumber
@@ -11940,7 +11940,7 @@ class DescribeStaffInfoListRequest(AbstractModel):
 
     @property
     def StaffMail(self):
-        r"""坐席账号，查询单个坐席时使用
+        r"""<p>坐席账号，查询单个坐席时使用</p>
         :rtype: str
         """
         return self._StaffMail
@@ -11951,7 +11951,7 @@ class DescribeStaffInfoListRequest(AbstractModel):
 
     @property
     def ModifiedTime(self):
-        r"""查询修改时间大于等于ModifiedTime的坐席时使用
+        r"""<p>查询修改时间大于等于ModifiedTime的坐席时使用</p>
         :rtype: int
         """
         return self._ModifiedTime
@@ -11962,7 +11962,7 @@ class DescribeStaffInfoListRequest(AbstractModel):
 
     @property
     def SkillGroupId(self):
-        r"""技能组ID
+        r"""<p>技能组ID</p>
         :rtype: int
         """
         return self._SkillGroupId
@@ -11996,9 +11996,9 @@ class DescribeStaffInfoListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 坐席用户总数
+        :param _TotalCount: <p>坐席用户总数</p>
         :type TotalCount: int
-        :param _StaffList: 坐席用户信息列表
+        :param _StaffList: <p>坐席用户信息列表</p>
         :type StaffList: list of StaffInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -12009,7 +12009,7 @@ class DescribeStaffInfoListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""坐席用户总数
+        r"""<p>坐席用户总数</p>
         :rtype: int
         """
         return self._TotalCount
@@ -12020,7 +12020,7 @@ class DescribeStaffInfoListResponse(AbstractModel):
 
     @property
     def StaffList(self):
-        r"""坐席用户信息列表
+        r"""<p>坐席用户信息列表</p>
         :rtype: list of StaffInfo
         """
         return self._StaffList
@@ -12347,11 +12347,11 @@ class DescribeTelCallInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StartTimeStamp: 起始时间戳，Unix 时间戳(查询维度仅支持天，例如查询5月1日应该传startTime:"2023-05-01 00:00:00","endTime":"2023-05-01 23:59:59"的时间戳,查5月1日和5月2日的应该传startTime:"2023-05-01 00:00:00","endTime":"2023-05-02 23:59:59"的时间戳)
+        :param _StartTimeStamp: <p>起始时间戳，Unix 时间戳(查询维度仅支持天，例如查询5月1日应该传startTime:&quot;2023-05-01 00:00:00&quot;,&quot;endTime&quot;:&quot;2023-05-01 23:59:59&quot;的时间戳,查5月1日和5月2日的应该传startTime:&quot;2023-05-01 00:00:00&quot;,&quot;endTime&quot;:&quot;2023-05-02 23:59:59&quot;的时间戳)</p>
         :type StartTimeStamp: int
-        :param _EndTimeStamp: 结束时间戳，Unix 时间戳，查询时间范围最大为90天(查询维度仅支持天，例如查询5月1日应该传startTime:"2023-05-01 00:00:00","endTime":"2023-05-01 23:59:59"的时间戳,查5月1日和5月2日的应该传startTime:"2023-05-01 00:00:00","endTime":"2023-05-02 23:59:59"的时间戳)
+        :param _EndTimeStamp: <p>结束时间戳，Unix 时间戳，查询时间范围最大为90天(查询维度仅支持天，例如查询5月1日应该传startTime:&quot;2023-05-01 00:00:00&quot;,&quot;endTime&quot;:&quot;2023-05-01 23:59:59&quot;的时间戳,查5月1日和5月2日的应该传startTime:&quot;2023-05-01 00:00:00&quot;,&quot;endTime&quot;:&quot;2023-05-02 23:59:59&quot;的时间戳)</p>
         :type EndTimeStamp: int
-        :param _SdkAppIdList: 应用ID列表，多个ID时，返回值为多个ID使用总和
+        :param _SdkAppIdList: <p>应用ID列表，多个ID时，返回值为多个ID使用总和</p>
         :type SdkAppIdList: list of int
         """
         self._StartTimeStamp = None
@@ -12360,7 +12360,7 @@ class DescribeTelCallInfoRequest(AbstractModel):
 
     @property
     def StartTimeStamp(self):
-        r"""起始时间戳，Unix 时间戳(查询维度仅支持天，例如查询5月1日应该传startTime:"2023-05-01 00:00:00","endTime":"2023-05-01 23:59:59"的时间戳,查5月1日和5月2日的应该传startTime:"2023-05-01 00:00:00","endTime":"2023-05-02 23:59:59"的时间戳)
+        r"""<p>起始时间戳，Unix 时间戳(查询维度仅支持天，例如查询5月1日应该传startTime:&quot;2023-05-01 00:00:00&quot;,&quot;endTime&quot;:&quot;2023-05-01 23:59:59&quot;的时间戳,查5月1日和5月2日的应该传startTime:&quot;2023-05-01 00:00:00&quot;,&quot;endTime&quot;:&quot;2023-05-02 23:59:59&quot;的时间戳)</p>
         :rtype: int
         """
         return self._StartTimeStamp
@@ -12371,7 +12371,7 @@ class DescribeTelCallInfoRequest(AbstractModel):
 
     @property
     def EndTimeStamp(self):
-        r"""结束时间戳，Unix 时间戳，查询时间范围最大为90天(查询维度仅支持天，例如查询5月1日应该传startTime:"2023-05-01 00:00:00","endTime":"2023-05-01 23:59:59"的时间戳,查5月1日和5月2日的应该传startTime:"2023-05-01 00:00:00","endTime":"2023-05-02 23:59:59"的时间戳)
+        r"""<p>结束时间戳，Unix 时间戳，查询时间范围最大为90天(查询维度仅支持天，例如查询5月1日应该传startTime:&quot;2023-05-01 00:00:00&quot;,&quot;endTime&quot;:&quot;2023-05-01 23:59:59&quot;的时间戳,查5月1日和5月2日的应该传startTime:&quot;2023-05-01 00:00:00&quot;,&quot;endTime&quot;:&quot;2023-05-02 23:59:59&quot;的时间戳)</p>
         :rtype: int
         """
         return self._EndTimeStamp
@@ -12382,7 +12382,7 @@ class DescribeTelCallInfoRequest(AbstractModel):
 
     @property
     def SdkAppIdList(self):
-        r"""应用ID列表，多个ID时，返回值为多个ID使用总和
+        r"""<p>应用ID列表，多个ID时，返回值为多个ID使用总和</p>
         :rtype: list of int
         """
         return self._SdkAppIdList
@@ -12413,19 +12413,19 @@ class DescribeTelCallInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TelCallOutCount: 呼出套餐包消耗分钟数
+        :param _TelCallOutCount: <p>呼出套餐包消耗分钟数</p>
         :type TelCallOutCount: int
-        :param _TelCallInCount: 呼入套餐包消耗分钟数
+        :param _TelCallInCount: <p>呼入套餐包消耗分钟数</p>
         :type TelCallInCount: int
-        :param _SeatUsedCount: 坐席使用统计个数
+        :param _SeatUsedCount: <p>坐席使用统计个数</p>
         :type SeatUsedCount: int
-        :param _VoipCallInCount: 音频套餐包消耗分钟数
+        :param _VoipCallInCount: <p>音频套餐包消耗分钟数</p>
         :type VoipCallInCount: int
-        :param _VOIPCallInCount: 音频套餐包消耗分钟数
+        :param _VOIPCallInCount: <p>音频套餐包消耗分钟数</p>
         :type VOIPCallInCount: int
-        :param _AsrOfflineCount: 离线语音转文字套餐包消耗分钟数
+        :param _AsrOfflineCount: <p>离线语音转文字套餐包消耗分钟数</p>
         :type AsrOfflineCount: int
-        :param _AsrRealtimeCount: 实时语音转文字套餐包消耗分钟数
+        :param _AsrRealtimeCount: <p>实时语音转文字套餐包消耗分钟数</p>
         :type AsrRealtimeCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -12441,7 +12441,7 @@ class DescribeTelCallInfoResponse(AbstractModel):
 
     @property
     def TelCallOutCount(self):
-        r"""呼出套餐包消耗分钟数
+        r"""<p>呼出套餐包消耗分钟数</p>
         :rtype: int
         """
         return self._TelCallOutCount
@@ -12452,7 +12452,7 @@ class DescribeTelCallInfoResponse(AbstractModel):
 
     @property
     def TelCallInCount(self):
-        r"""呼入套餐包消耗分钟数
+        r"""<p>呼入套餐包消耗分钟数</p>
         :rtype: int
         """
         return self._TelCallInCount
@@ -12463,7 +12463,7 @@ class DescribeTelCallInfoResponse(AbstractModel):
 
     @property
     def SeatUsedCount(self):
-        r"""坐席使用统计个数
+        r"""<p>坐席使用统计个数</p>
         :rtype: int
         """
         return self._SeatUsedCount
@@ -12476,7 +12476,7 @@ class DescribeTelCallInfoResponse(AbstractModel):
     def VoipCallInCount(self):
         warnings.warn("parameter `VoipCallInCount` is deprecated", DeprecationWarning) 
 
-        r"""音频套餐包消耗分钟数
+        r"""<p>音频套餐包消耗分钟数</p>
         :rtype: int
         """
         return self._VoipCallInCount
@@ -12489,7 +12489,7 @@ class DescribeTelCallInfoResponse(AbstractModel):
 
     @property
     def VOIPCallInCount(self):
-        r"""音频套餐包消耗分钟数
+        r"""<p>音频套餐包消耗分钟数</p>
         :rtype: int
         """
         return self._VOIPCallInCount
@@ -12500,7 +12500,7 @@ class DescribeTelCallInfoResponse(AbstractModel):
 
     @property
     def AsrOfflineCount(self):
-        r"""离线语音转文字套餐包消耗分钟数
+        r"""<p>离线语音转文字套餐包消耗分钟数</p>
         :rtype: int
         """
         return self._AsrOfflineCount
@@ -12511,7 +12511,7 @@ class DescribeTelCallInfoResponse(AbstractModel):
 
     @property
     def AsrRealtimeCount(self):
-        r"""实时语音转文字套餐包消耗分钟数
+        r"""<p>实时语音转文字套餐包消耗分钟数</p>
         :rtype: int
         """
         return self._AsrRealtimeCount

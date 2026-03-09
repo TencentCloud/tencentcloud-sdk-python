@@ -1176,6 +1176,29 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeApiSecSensitiveRuleList(self, request):
+        r"""获取api安全敏感规则列表
+
+        :param request: Request instance for DescribeApiSecSensitiveRuleList.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeApiSecSensitiveRuleListRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeApiSecSensitiveRuleListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeApiSecSensitiveRuleList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeApiSecSensitiveRuleListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeAreaBanAreas(self, request):
         r"""获取地域封禁配置包括地域封禁开关，设置封禁的地区信息
 

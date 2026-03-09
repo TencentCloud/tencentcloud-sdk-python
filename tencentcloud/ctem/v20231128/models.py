@@ -4123,8 +4123,10 @@ class DescribeApiSecsRequest(AbstractModel):
         :type EnterpriseUidList: list of str
         :param _Filters: 查询数组
         :type Filters: list of Filter
-        :param _CustomerId: 企业ID
+        :param _CustomerId: <p>企业ID</p>
         :type CustomerId: int
+        :param _OrderBy: <p>排序方式</p>
+        :type OrderBy: str
         """
         self._IsAggregation = None
         self._Offset = None
@@ -4140,6 +4142,7 @@ class DescribeApiSecsRequest(AbstractModel):
         self._EnterpriseUidList = None
         self._Filters = None
         self._CustomerId = None
+        self._OrderBy = None
 
     @property
     def IsAggregation(self):
@@ -4286,7 +4289,7 @@ class DescribeApiSecsRequest(AbstractModel):
 
     @property
     def CustomerId(self):
-        r"""企业ID
+        r"""<p>企业ID</p>
         :rtype: int
         """
         return self._CustomerId
@@ -4294,6 +4297,17 @@ class DescribeApiSecsRequest(AbstractModel):
     @CustomerId.setter
     def CustomerId(self, CustomerId):
         self._CustomerId = CustomerId
+
+    @property
+    def OrderBy(self):
+        r"""<p>排序方式</p>
+        :rtype: str
+        """
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
 
 
     def _deserialize(self, params):
@@ -4316,6 +4330,7 @@ class DescribeApiSecsRequest(AbstractModel):
                 obj._deserialize(item)
                 self._Filters.append(obj)
         self._CustomerId = params.get("CustomerId")
+        self._OrderBy = params.get("OrderBy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4333,9 +4348,9 @@ class DescribeApiSecsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Total: 总数
+        :param _Total: <p>总数</p>
         :type Total: int
-        :param _List: API安全数组
+        :param _List: <p>API安全数组</p>
         :type List: list of DisplayApiSec
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4346,7 +4361,7 @@ class DescribeApiSecsResponse(AbstractModel):
 
     @property
     def Total(self):
-        r"""总数
+        r"""<p>总数</p>
         :rtype: int
         """
         return self._Total
@@ -4357,7 +4372,7 @@ class DescribeApiSecsResponse(AbstractModel):
 
     @property
     def List(self):
-        r"""API安全数组
+        r"""<p>API安全数组</p>
         :rtype: list of DisplayApiSec
         """
         return self._List

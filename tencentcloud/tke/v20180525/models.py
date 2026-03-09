@@ -53159,7 +53159,13 @@ class UpgradePlan(AbstractModel):
         :type UpgradeStartAt: str
         :param _UpgradeEndAt: 升级结束时间
         :type UpgradeEndAt: str
-        :param _Status: 升级状态
+        :param _Status: 升级状态，包括以下状态值：
+- Pending：等待中
+- Processing：升级配置处理中
+- Running：升级中
+- Succeed：升级成功
+- Failed：升级失败
+- Cancelled：已取消
         :type Status: str
         :param _Reason: 原因
         :type Reason: str
@@ -53253,7 +53259,13 @@ class UpgradePlan(AbstractModel):
 
     @property
     def Status(self):
-        r"""升级状态
+        r"""升级状态，包括以下状态值：
+- Pending：等待中
+- Processing：升级配置处理中
+- Running：升级中
+- Succeed：升级成功
+- Failed：升级失败
+- Cancelled：已取消
         :rtype: str
         """
         return self._Status

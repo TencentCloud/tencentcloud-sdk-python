@@ -41903,6 +41903,8 @@ class DescribeLogStorageConfigResponse(AbstractModel):
         :type PeriodModifyCount: int
         :param _Granularity: 日志存储时长单位，年year/月month/天day
         :type Granularity: str
+        :param _MsgLanguage: 语言类型
+        :type MsgLanguage: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -41910,6 +41912,7 @@ class DescribeLogStorageConfigResponse(AbstractModel):
         self._Period = None
         self._PeriodModifyCount = None
         self._Granularity = None
+        self._MsgLanguage = None
         self._RequestId = None
 
     @property
@@ -41957,6 +41960,17 @@ class DescribeLogStorageConfigResponse(AbstractModel):
         self._Granularity = Granularity
 
     @property
+    def MsgLanguage(self):
+        r"""语言类型
+        :rtype: str
+        """
+        return self._MsgLanguage
+
+    @MsgLanguage.setter
+    def MsgLanguage(self, MsgLanguage):
+        self._MsgLanguage = MsgLanguage
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -41973,6 +41987,7 @@ class DescribeLogStorageConfigResponse(AbstractModel):
         self._Period = params.get("Period")
         self._PeriodModifyCount = params.get("PeriodModifyCount")
         self._Granularity = params.get("Granularity")
+        self._MsgLanguage = params.get("MsgLanguage")
         self._RequestId = params.get("RequestId")
 
 
@@ -83009,11 +83024,14 @@ class ModifyLogStorageConfigRequest(AbstractModel):
         :type Period: int
         :param _Granularity: 日志存储时长单位，年year/月month/天day
         :type Granularity: str
+        :param _MsgLanguage: 语言类型
+        :type MsgLanguage: str
         """
         self._IsModifyPeriod = None
         self._Type = None
         self._Period = None
         self._Granularity = None
+        self._MsgLanguage = None
 
     @property
     def IsModifyPeriod(self):
@@ -83059,12 +83077,24 @@ class ModifyLogStorageConfigRequest(AbstractModel):
     def Granularity(self, Granularity):
         self._Granularity = Granularity
 
+    @property
+    def MsgLanguage(self):
+        r"""语言类型
+        :rtype: str
+        """
+        return self._MsgLanguage
+
+    @MsgLanguage.setter
+    def MsgLanguage(self, MsgLanguage):
+        self._MsgLanguage = MsgLanguage
+
 
     def _deserialize(self, params):
         self._IsModifyPeriod = params.get("IsModifyPeriod")
         self._Type = params.get("Type")
         self._Period = params.get("Period")
         self._Granularity = params.get("Granularity")
+        self._MsgLanguage = params.get("MsgLanguage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

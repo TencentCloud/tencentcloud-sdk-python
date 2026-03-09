@@ -7720,13 +7720,11 @@ class DescribeClassesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Zone: 可用区名称。可以通过接口[DescribeZones](https://cloud.tencent.com/document/product/409/16769)获取。
+        :param _Zone: <p>可用区名称。可以通过接口<a href="https://cloud.tencent.com/document/product/409/16769">DescribeZones</a>获取。</p>
         :type Zone: str
-        :param _DBEngine: 数据库引擎，支持：
-1、postgresql（云数据库PostgreSQL）；
-2、mssql_compatible（MSSQL兼容-云数据库PostgreSQL）；
+        :param _DBEngine: <p>数据库引擎，支持：<br>1、postgresql（云数据库PostgreSQL）；<br>2、mssql_compatible（MSSQL兼容-云数据库PostgreSQL）；</p>
         :type DBEngine: str
-        :param _DBMajorVersion: 数据库主版本号。例如12，13，可以通过接口[DescribeDBVersions](https://cloud.tencent.com/document/product/409/89018)获取。
+        :param _DBMajorVersion: <p>数据库主版本号。例如12，13，可以通过接口<a href="https://cloud.tencent.com/document/product/409/89018">DescribeDBVersions</a>获取。</p>
         :type DBMajorVersion: str
         """
         self._Zone = None
@@ -7735,7 +7733,7 @@ class DescribeClassesRequest(AbstractModel):
 
     @property
     def Zone(self):
-        r"""可用区名称。可以通过接口[DescribeZones](https://cloud.tencent.com/document/product/409/16769)获取。
+        r"""<p>可用区名称。可以通过接口<a href="https://cloud.tencent.com/document/product/409/16769">DescribeZones</a>获取。</p>
         :rtype: str
         """
         return self._Zone
@@ -7746,9 +7744,7 @@ class DescribeClassesRequest(AbstractModel):
 
     @property
     def DBEngine(self):
-        r"""数据库引擎，支持：
-1、postgresql（云数据库PostgreSQL）；
-2、mssql_compatible（MSSQL兼容-云数据库PostgreSQL）；
+        r"""<p>数据库引擎，支持：<br>1、postgresql（云数据库PostgreSQL）；<br>2、mssql_compatible（MSSQL兼容-云数据库PostgreSQL）；</p>
         :rtype: str
         """
         return self._DBEngine
@@ -7759,7 +7755,7 @@ class DescribeClassesRequest(AbstractModel):
 
     @property
     def DBMajorVersion(self):
-        r"""数据库主版本号。例如12，13，可以通过接口[DescribeDBVersions](https://cloud.tencent.com/document/product/409/89018)获取。
+        r"""<p>数据库主版本号。例如12，13，可以通过接口<a href="https://cloud.tencent.com/document/product/409/89018">DescribeDBVersions</a>获取。</p>
         :rtype: str
         """
         return self._DBMajorVersion
@@ -7790,7 +7786,7 @@ class DescribeClassesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClassInfoSet: 数据库规格列表
+        :param _ClassInfoSet: <p>数据库规格列表</p>
         :type ClassInfoSet: list of ClassInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7800,7 +7796,7 @@ class DescribeClassesResponse(AbstractModel):
 
     @property
     def ClassInfoSet(self):
-        r"""数据库规格列表
+        r"""<p>数据库规格列表</p>
         :rtype: list of ClassInfo
         """
         return self._ClassInfoSet
@@ -9081,7 +9077,7 @@ class DescribeDBVersionsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _VersionSet: 数据库版本号信息列表
+        :param _VersionSet: <p>数据库版本号信息列表</p>
         :type VersionSet: list of Version
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -9091,7 +9087,7 @@ class DescribeDBVersionsResponse(AbstractModel):
 
     @property
     def VersionSet(self):
-        r"""数据库版本号信息列表
+        r"""<p>数据库版本号信息列表</p>
         :rtype: list of Version
         """
         return self._VersionSet
@@ -10795,12 +10791,9 @@ class DescribeProductConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Zone: 可用区名称
+        :param _Zone: <p>可用区名称</p>
         :type Zone: str
-        :param _DBEngine: 数据库引擎，支持：
-1、postgresql（云数据库PostgreSQL）；
-2、mssql_compatible（MSSQL兼容-云数据库PostgreSQL）；
-如不指定默认使用postgresql。
+        :param _DBEngine: <p>数据库引擎，支持：<br>1、postgresql（云数据库PostgreSQL）；<br>2、mssql_compatible（MSSQL兼容-云数据库PostgreSQL）；<br>如不指定默认使用postgresql。</p>
         :type DBEngine: str
         """
         self._Zone = None
@@ -10808,7 +10801,7 @@ class DescribeProductConfigRequest(AbstractModel):
 
     @property
     def Zone(self):
-        r"""可用区名称
+        r"""<p>可用区名称</p>
         :rtype: str
         """
         return self._Zone
@@ -10819,10 +10812,7 @@ class DescribeProductConfigRequest(AbstractModel):
 
     @property
     def DBEngine(self):
-        r"""数据库引擎，支持：
-1、postgresql（云数据库PostgreSQL）；
-2、mssql_compatible（MSSQL兼容-云数据库PostgreSQL）；
-如不指定默认使用postgresql。
+        r"""<p>数据库引擎，支持：<br>1、postgresql（云数据库PostgreSQL）；<br>2、mssql_compatible（MSSQL兼容-云数据库PostgreSQL）；<br>如不指定默认使用postgresql。</p>
         :rtype: str
         """
         return self._DBEngine
@@ -10852,7 +10842,7 @@ class DescribeProductConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SpecInfoList: 售卖规格列表。
+        :param _SpecInfoList: <p>售卖规格列表。</p>
         :type SpecInfoList: list of SpecInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -10862,7 +10852,7 @@ class DescribeProductConfigResponse(AbstractModel):
 
     @property
     def SpecInfoList(self):
-        r"""售卖规格列表。
+        r"""<p>售卖规格列表。</p>
         :rtype: list of SpecInfo
         """
         return self._SpecInfoList
@@ -16097,9 +16087,9 @@ class ModifySwitchTimePeriodRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DBInstanceId: 处于等待切换状态中的实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
+        :param _DBInstanceId: <p>处于等待切换状态中的实例ID。可通过<a href="https://cloud.tencent.com/document/api/409/16773">DescribeDBInstances</a>接口获取</p>
         :type DBInstanceId: str
-        :param _SwitchTag: 入参取值为 0 ，代表立即切换。
+        :param _SwitchTag: <p>入参取值为 0 ，代表立即切换。</p>
         :type SwitchTag: int
         """
         self._DBInstanceId = None
@@ -16107,7 +16097,7 @@ class ModifySwitchTimePeriodRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        r"""处于等待切换状态中的实例ID。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
+        r"""<p>处于等待切换状态中的实例ID。可通过<a href="https://cloud.tencent.com/document/api/409/16773">DescribeDBInstances</a>接口获取</p>
         :rtype: str
         """
         return self._DBInstanceId
@@ -16118,7 +16108,7 @@ class ModifySwitchTimePeriodRequest(AbstractModel):
 
     @property
     def SwitchTag(self):
-        r"""入参取值为 0 ，代表立即切换。
+        r"""<p>入参取值为 0 ，代表立即切换。</p>
         :rtype: int
         """
         return self._SwitchTag

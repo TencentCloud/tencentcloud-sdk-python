@@ -31,6 +31,8 @@ class WavClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateChannelCodeResponse:
         """
+        产品已经EOL
+
         新增渠道活码接口
         """
         
@@ -69,6 +71,8 @@ class WavClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateLeadResponse:
         """
+        产品已经EOL
+
         线索回收接口
         """
         
@@ -87,6 +91,8 @@ class WavClient(AbstractClient):
             opts: Dict = None,
     ) -> models.QueryActivityJoinListResponse:
         """
+        产品已经EOL
+
         根据游标拉取活动参与列表信息
         """
         
@@ -105,6 +111,8 @@ class WavClient(AbstractClient):
             opts: Dict = None,
     ) -> models.QueryActivityListResponse:
         """
+        产品已经EOL
+
         根据游标拉取活动列表信息
         """
         
@@ -123,6 +131,8 @@ class WavClient(AbstractClient):
             opts: Dict = None,
     ) -> models.QueryActivityLiveCodeListResponse:
         """
+        产品已经EOL
+
         根据游标拉取活动活码列表信息
         """
         
@@ -141,6 +151,8 @@ class WavClient(AbstractClient):
             opts: Dict = None,
     ) -> models.QueryArrivalListResponse:
         """
+        产品已经EOL
+
         查询指定时间范围内发生过到店的潜客到店信息
         """
         
@@ -159,6 +171,8 @@ class WavClient(AbstractClient):
             opts: Dict = None,
     ) -> models.QueryChannelCodeListResponse:
         """
+        产品已经EOL
+
         根据游标拉取渠道活码列表信息
         """
         
@@ -177,6 +191,8 @@ class WavClient(AbstractClient):
             opts: Dict = None,
     ) -> models.QueryChatArchivingListResponse:
         """
+        产品已经EOL
+
         根据游标拉取会话存档列表信息
         """
         
@@ -195,6 +211,8 @@ class WavClient(AbstractClient):
             opts: Dict = None,
     ) -> models.QueryClueInfoListResponse:
         """
+        产品已经EOL
+
         企业可通过此接口获取线索列表。
         """
         
@@ -213,6 +231,8 @@ class WavClient(AbstractClient):
             opts: Dict = None,
     ) -> models.QueryCrmStatisticsResponse:
         """
+        产品已经EOL
+
         通过接口拉取租户/指定成员/部门在指定日期范围内的CRM跟进统计数据
         """
         
@@ -231,6 +251,8 @@ class WavClient(AbstractClient):
             opts: Dict = None,
     ) -> models.QueryCustomerEventDetailStatisticsResponse:
         """
+        产品已经EOL
+
         通过接口拉取SaaS内C端外部联系人在指定时间范围内的行为事件明细。此接口提供的数据以天为维度，查询的时间范围为[start_time,end_time]，即前后均为闭区间，支持的最大查询跨度为365天。
         """
         
@@ -249,6 +271,8 @@ class WavClient(AbstractClient):
             opts: Dict = None,
     ) -> models.QueryCustomerProfileListResponse:
         """
+        产品已经EOL
+
         通过接口拉取租户已有潜客客户档案列表信息
         """
         
@@ -267,6 +291,8 @@ class WavClient(AbstractClient):
             opts: Dict = None,
     ) -> models.QueryDealerInfoListResponse:
         """
+        产品已经EOL
+
         企业可通过此接口获取录入在企微SaaS平台上的经销商信息。
         """
         
@@ -285,6 +311,8 @@ class WavClient(AbstractClient):
             opts: Dict = None,
     ) -> models.QueryExternalContactDetailResponse:
         """
+        产品已经EOL
+
         企业可通过此接口，根据外部联系人的userid，拉取外部联系人详情
         """
         
@@ -303,6 +331,8 @@ class WavClient(AbstractClient):
             opts: Dict = None,
     ) -> models.QueryExternalContactDetailByDateResponse:
         """
+        产品已经EOL
+
         企业可通过传入起始和结束时间，获取该时间段的外部联系人详情列表
         """
         
@@ -321,6 +351,8 @@ class WavClient(AbstractClient):
             opts: Dict = None,
     ) -> models.QueryExternalContactListResponse:
         """
+        产品已经EOL
+
         企业可通过此接口基于外部联系人获取指定成员添加的客户列表。客户是指配置了客户联系功能的成员所添加的外部联系人。没有配置客户联系功能的成员，所添加的外部联系人将不会作为客户返回。
         """
         
@@ -339,6 +371,8 @@ class WavClient(AbstractClient):
             opts: Dict = None,
     ) -> models.QueryExternalUserEventListResponse:
         """
+        产品已经EOL
+
         通过接口拉取租户在指定时间范围内的外部联系人添加/删除明细，此接口提供的数据以天为维度，查询的时间范围为[StarTime, EndTime]，即前后均为闭区间，支持的最大查询跨度为365天；
         """
         
@@ -357,6 +391,8 @@ class WavClient(AbstractClient):
             opts: Dict = None,
     ) -> models.QueryExternalUserMappingInfoResponse:
         """
+        产品已经EOL
+
         企业可通过此接口将企业主体对应的外部联系人id转换为乐销车应用主体对应的外部联系人。
         """
         
@@ -375,6 +411,8 @@ class WavClient(AbstractClient):
             opts: Dict = None,
     ) -> models.QueryFollowListResponse:
         """
+        产品已经EOL
+
         查询指定时间范围内发生过跟进的潜客信息
         """
         
@@ -393,6 +431,8 @@ class WavClient(AbstractClient):
             opts: Dict = None,
     ) -> models.QueryLicenseInfoResponse:
         """
+        产品已经EOL
+
         该接口获取license对应的详细信息
         """
         
@@ -411,6 +451,8 @@ class WavClient(AbstractClient):
             opts: Dict = None,
     ) -> models.QueryMaterialListResponse:
         """
+        产品已经EOL
+
         通过接口按类型拉取租户当前的素材列表及关键信息
         """
         
@@ -429,6 +471,8 @@ class WavClient(AbstractClient):
             opts: Dict = None,
     ) -> models.QueryMiniAppCodeListResponse:
         """
+        产品已经EOL
+
         查询小程序码列表接口
         """
         
@@ -447,6 +491,8 @@ class WavClient(AbstractClient):
             opts: Dict = None,
     ) -> models.QueryStaffEventDetailStatisticsResponse:
         """
+        产品已经EOL
+
         通过接口拉取SaaS内企业成员在指定时间范围内的行为事件明细。此接口提供的数据以天为维度，查询的时间范围为[start_time,end_time]，即前后均为闭区间，支持的最大查询跨度为365天。
         """
         
@@ -465,6 +511,8 @@ class WavClient(AbstractClient):
             opts: Dict = None,
     ) -> models.QueryUserInfoListResponse:
         """
+        产品已经EOL
+
         查询企业成员信息列表接口
         """
         
@@ -483,6 +531,8 @@ class WavClient(AbstractClient):
             opts: Dict = None,
     ) -> models.QueryVehicleInfoListResponse:
         """
+        产品已经EOL
+
         企业可通过此接口获取企微SaaS平台上的车系车型信息。
         """
         
