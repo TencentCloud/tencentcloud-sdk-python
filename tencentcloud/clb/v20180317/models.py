@@ -2144,41 +2144,41 @@ class ClassicalListener(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ListenerId: 负载均衡监听器ID
+        :param _ListenerId: <p>负载均衡监听器ID</p>
         :type ListenerId: str
-        :param _ListenerPort: 负载均衡监听器端口
+        :param _ListenerPort: <p>负载均衡监听器端口</p>
         :type ListenerPort: int
-        :param _InstancePort: 监听器后端转发端口
+        :param _InstancePort: <p>监听器后端转发端口</p>
         :type InstancePort: int
-        :param _ListenerName: 监听器名称
+        :param _ListenerName: <p>监听器名称</p>
         :type ListenerName: str
-        :param _Protocol: 监听器协议类型
+        :param _Protocol: <p>监听器协议类型</p>
         :type Protocol: str
-        :param _SessionExpire: 会话保持时间
+        :param _SessionExpire: <p>会话保持时间</p>
         :type SessionExpire: int
-        :param _HealthSwitch: 是否开启了健康检查：1（开启）、0（关闭）
+        :param _HealthSwitch: <p>是否开启了健康检查：1（开启）、0（关闭）</p>
         :type HealthSwitch: int
-        :param _TimeOut: 响应超时时间
+        :param _TimeOut: <p>响应超时时间</p><p>单位：秒</p>
         :type TimeOut: int
-        :param _IntervalTime: 检查间隔
+        :param _IntervalTime: <p>检查间隔</p><p>单位：秒</p>
         :type IntervalTime: int
-        :param _HealthNum: 健康阈值
+        :param _HealthNum: <p>健康阈值</p>
         :type HealthNum: int
-        :param _UnhealthNum: 不健康阈值
+        :param _UnhealthNum: <p>不健康阈值</p>
         :type UnhealthNum: int
-        :param _HttpHash: 传统型公网负载均衡 监听器的请求均衡方法。空字符串或wrr 表示按权重轮询，ip_hash 表示根据访问的源 IP 进行一致性哈希方式来分发，least_conn表示按最小连接数。
+        :param _HttpHash: <p>传统型公网负载均衡 监听器的请求均衡方法。空字符串或wrr 表示按权重轮询，ip_hash 表示根据访问的源 IP 进行一致性哈希方式来分发，least_conn表示按最小连接数。</p>
         :type HttpHash: str
-        :param _HttpCode: 传统型公网负载均衡的 HTTP、HTTPS 监听器的健康检查返回码。具体可参考创建监听器中对该字段的解释
+        :param _HttpCode: <p>传统型公网负载均衡的 HTTP、HTTPS 监听器的健康检查返回码。具体可参考创建监听器中对该字段的解释</p>
         :type HttpCode: int
-        :param _HttpCheckPath: 传统型公网负载均衡的 HTTP、HTTPS 监听器的健康检查路径
+        :param _HttpCheckPath: <p>传统型公网负载均衡的 HTTP、HTTPS 监听器的健康检查路径</p>
         :type HttpCheckPath: str
-        :param _SSLMode: 传统型公网负载均衡的 HTTPS 监听器的认证方式
+        :param _SSLMode: <p>传统型公网负载均衡的 HTTPS 监听器的认证方式</p>
         :type SSLMode: str
-        :param _CertId: 传统型公网负载均衡的 HTTPS 监听器的服务端证书 ID
+        :param _CertId: <p>传统型公网负载均衡的 HTTPS 监听器的服务端证书 ID</p>
         :type CertId: str
-        :param _CertCaId: 传统型公网负载均衡的 HTTPS 监听器的客户端证书 ID
+        :param _CertCaId: <p>传统型公网负载均衡的 HTTPS 监听器的客户端证书 ID</p>
         :type CertCaId: str
-        :param _Status: 监听器的状态，0 表示创建中，1 表示运行中
+        :param _Status: <p>监听器的状态，0 表示创建中，1 表示运行中</p>
         :type Status: int
         """
         self._ListenerId = None
@@ -2202,7 +2202,7 @@ class ClassicalListener(AbstractModel):
 
     @property
     def ListenerId(self):
-        r"""负载均衡监听器ID
+        r"""<p>负载均衡监听器ID</p>
         :rtype: str
         """
         return self._ListenerId
@@ -2213,7 +2213,7 @@ class ClassicalListener(AbstractModel):
 
     @property
     def ListenerPort(self):
-        r"""负载均衡监听器端口
+        r"""<p>负载均衡监听器端口</p>
         :rtype: int
         """
         return self._ListenerPort
@@ -2224,7 +2224,7 @@ class ClassicalListener(AbstractModel):
 
     @property
     def InstancePort(self):
-        r"""监听器后端转发端口
+        r"""<p>监听器后端转发端口</p>
         :rtype: int
         """
         return self._InstancePort
@@ -2235,7 +2235,7 @@ class ClassicalListener(AbstractModel):
 
     @property
     def ListenerName(self):
-        r"""监听器名称
+        r"""<p>监听器名称</p>
         :rtype: str
         """
         return self._ListenerName
@@ -2246,7 +2246,7 @@ class ClassicalListener(AbstractModel):
 
     @property
     def Protocol(self):
-        r"""监听器协议类型
+        r"""<p>监听器协议类型</p>
         :rtype: str
         """
         return self._Protocol
@@ -2257,7 +2257,7 @@ class ClassicalListener(AbstractModel):
 
     @property
     def SessionExpire(self):
-        r"""会话保持时间
+        r"""<p>会话保持时间</p>
         :rtype: int
         """
         return self._SessionExpire
@@ -2268,7 +2268,7 @@ class ClassicalListener(AbstractModel):
 
     @property
     def HealthSwitch(self):
-        r"""是否开启了健康检查：1（开启）、0（关闭）
+        r"""<p>是否开启了健康检查：1（开启）、0（关闭）</p>
         :rtype: int
         """
         return self._HealthSwitch
@@ -2279,7 +2279,7 @@ class ClassicalListener(AbstractModel):
 
     @property
     def TimeOut(self):
-        r"""响应超时时间
+        r"""<p>响应超时时间</p><p>单位：秒</p>
         :rtype: int
         """
         return self._TimeOut
@@ -2290,7 +2290,7 @@ class ClassicalListener(AbstractModel):
 
     @property
     def IntervalTime(self):
-        r"""检查间隔
+        r"""<p>检查间隔</p><p>单位：秒</p>
         :rtype: int
         """
         return self._IntervalTime
@@ -2301,7 +2301,7 @@ class ClassicalListener(AbstractModel):
 
     @property
     def HealthNum(self):
-        r"""健康阈值
+        r"""<p>健康阈值</p>
         :rtype: int
         """
         return self._HealthNum
@@ -2312,7 +2312,7 @@ class ClassicalListener(AbstractModel):
 
     @property
     def UnhealthNum(self):
-        r"""不健康阈值
+        r"""<p>不健康阈值</p>
         :rtype: int
         """
         return self._UnhealthNum
@@ -2323,7 +2323,7 @@ class ClassicalListener(AbstractModel):
 
     @property
     def HttpHash(self):
-        r"""传统型公网负载均衡 监听器的请求均衡方法。空字符串或wrr 表示按权重轮询，ip_hash 表示根据访问的源 IP 进行一致性哈希方式来分发，least_conn表示按最小连接数。
+        r"""<p>传统型公网负载均衡 监听器的请求均衡方法。空字符串或wrr 表示按权重轮询，ip_hash 表示根据访问的源 IP 进行一致性哈希方式来分发，least_conn表示按最小连接数。</p>
         :rtype: str
         """
         return self._HttpHash
@@ -2334,7 +2334,7 @@ class ClassicalListener(AbstractModel):
 
     @property
     def HttpCode(self):
-        r"""传统型公网负载均衡的 HTTP、HTTPS 监听器的健康检查返回码。具体可参考创建监听器中对该字段的解释
+        r"""<p>传统型公网负载均衡的 HTTP、HTTPS 监听器的健康检查返回码。具体可参考创建监听器中对该字段的解释</p>
         :rtype: int
         """
         return self._HttpCode
@@ -2345,7 +2345,7 @@ class ClassicalListener(AbstractModel):
 
     @property
     def HttpCheckPath(self):
-        r"""传统型公网负载均衡的 HTTP、HTTPS 监听器的健康检查路径
+        r"""<p>传统型公网负载均衡的 HTTP、HTTPS 监听器的健康检查路径</p>
         :rtype: str
         """
         return self._HttpCheckPath
@@ -2356,7 +2356,7 @@ class ClassicalListener(AbstractModel):
 
     @property
     def SSLMode(self):
-        r"""传统型公网负载均衡的 HTTPS 监听器的认证方式
+        r"""<p>传统型公网负载均衡的 HTTPS 监听器的认证方式</p>
         :rtype: str
         """
         return self._SSLMode
@@ -2367,7 +2367,7 @@ class ClassicalListener(AbstractModel):
 
     @property
     def CertId(self):
-        r"""传统型公网负载均衡的 HTTPS 监听器的服务端证书 ID
+        r"""<p>传统型公网负载均衡的 HTTPS 监听器的服务端证书 ID</p>
         :rtype: str
         """
         return self._CertId
@@ -2378,7 +2378,7 @@ class ClassicalListener(AbstractModel):
 
     @property
     def CertCaId(self):
-        r"""传统型公网负载均衡的 HTTPS 监听器的客户端证书 ID
+        r"""<p>传统型公网负载均衡的 HTTPS 监听器的客户端证书 ID</p>
         :rtype: str
         """
         return self._CertCaId
@@ -2389,7 +2389,7 @@ class ClassicalListener(AbstractModel):
 
     @property
     def Status(self):
-        r"""监听器的状态，0 表示创建中，1 表示运行中
+        r"""<p>监听器的状态，0 表示创建中，1 表示运行中</p>
         :rtype: int
         """
         return self._Status
@@ -13146,67 +13146,67 @@ class Listener(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ListenerId: 负载均衡监听器 ID
+        :param _ListenerId: <p>负载均衡监听器 ID</p>
         :type ListenerId: str
-        :param _Protocol: 监听器协议，可选值：TCP、UDP、HTTP、HTTPS、TCP_SSL、QUIC
+        :param _Protocol: <p>监听器协议，可选值：TCP、UDP、HTTP、HTTPS、TCP_SSL、QUIC</p>
         :type Protocol: str
-        :param _Port: 监听器端口，端口范围：1-65535
+        :param _Port: <p>监听器端口，端口范围：1-65535</p>
         :type Port: int
-        :param _Certificate: 监听器绑定的证书信息
+        :param _Certificate: <p>监听器绑定的证书信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Certificate: :class:`tencentcloud.clb.v20180317.models.CertificateOutput`
-        :param _HealthCheck: 监听器的健康检查信息
+        :param _HealthCheck: <p>监听器的健康检查信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type HealthCheck: :class:`tencentcloud.clb.v20180317.models.HealthCheck`
-        :param _Scheduler: 请求的调度方式。 WRR、LEAST_CONN、IP_HASH分别表示按权重轮询、最小连接数、IP Hash。
+        :param _Scheduler: <p>请求的调度方式。 WRR、LEAST_CONN、IP_HASH分别表示按权重轮询、最小连接数、IP Hash。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Scheduler: str
-        :param _SessionExpireTime: 会话保持时间，单位：秒。可选值：30~3600，默认 0，默认不开启。此参数仅适用于TCP/UDP监听器。
+        :param _SessionExpireTime: <p>会话保持时间，单位：秒。可选值：30~3600，默认 0，默认不开启。此参数仅适用于TCP/UDP监听器。</p><p>单位：秒</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SessionExpireTime: int
-        :param _SniSwitch: 是否开启SNI特性，1：表示开启，0：表示不开启（本参数仅对于HTTPS监听器有意义）
+        :param _SniSwitch: <p>是否开启SNI特性，1：表示开启，0：表示不开启（本参数仅对于HTTPS监听器有意义）</p>
         :type SniSwitch: int
-        :param _Rules: 监听器下的全部转发规则（本参数仅对于HTTP/HTTPS监听器有意义）
+        :param _Rules: <p>监听器下的全部转发规则（本参数仅对于HTTP/HTTPS监听器有意义）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Rules: list of RuleOutput
-        :param _ListenerName: 监听器的名称
+        :param _ListenerName: <p>监听器的名称</p>
         :type ListenerName: str
-        :param _CreateTime: 监听器的创建时间。
+        :param _CreateTime: <p>监听器的创建时间。</p>
         :type CreateTime: str
-        :param _EndPort: 端口段结束端口，端口范围：2-65535
+        :param _EndPort: <p>端口段结束端口，端口范围：2-65535</p>
         :type EndPort: int
-        :param _TargetType: 后端服务器类型，可选值：NODE、POLARIS、TARGETGROUP、TARGETGROUP-V2
+        :param _TargetType: <p>后端服务器类型，可选值：NODE、POLARIS、TARGETGROUP、TARGETGROUP-V2</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TargetType: str
-        :param _TargetGroup: 绑定的目标组基本信息；当监听器绑定目标组时，会返回该字段
+        :param _TargetGroup: <p>绑定的目标组基本信息；当监听器绑定目标组时，会返回该字段</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TargetGroup: :class:`tencentcloud.clb.v20180317.models.BasicTargetGroupInfo`
-        :param _SessionType: 会话保持类型。NORMAL表示默认会话保持类型。QUIC_CID 表示根据Quic Connection ID做会话保持。
+        :param _SessionType: <p>会话保持类型。NORMAL表示默认会话保持类型。QUIC_CID 表示根据Quic Connection ID做会话保持。</p>
         :type SessionType: str
-        :param _KeepaliveEnable: 是否开启长连接，1开启，0关闭，（本参数仅对于HTTP/HTTPS监听器有意义）
+        :param _KeepaliveEnable: <p>是否开启长连接，1开启，0关闭，（本参数仅对于HTTP/HTTPS监听器有意义）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type KeepaliveEnable: int
-        :param _Toa: 仅支持Nat64 CLB TCP监听器
+        :param _Toa: <p>仅支持Nat64 CLB TCP监听器</p>
         :type Toa: bool
-        :param _DeregisterTargetRst: 重新调度功能，解绑后端服务开关，打开此开关，当解绑后端服务时触发重新调度。仅TCP/UDP监听器支持。
+        :param _DeregisterTargetRst: <p>重新调度功能，解绑后端服务开关，打开此开关，当解绑后端服务时触发重新调度。仅TCP/UDP监听器支持。</p>
         :type DeregisterTargetRst: bool
-        :param _AttrFlags: 监听器的属性
+        :param _AttrFlags: <p>监听器的属性</p>
         :type AttrFlags: list of str
-        :param _TargetGroupList: 绑定的目标组列表
+        :param _TargetGroupList: <p>绑定的目标组列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TargetGroupList: list of BasicTargetGroupInfo
-        :param _MaxConn: 监听器最大连接数，-1表示监听器维度不限速。
+        :param _MaxConn: <p>监听器最大连接数，-1表示监听器维度不限速。</p>
         :type MaxConn: int
-        :param _MaxCps: 监听器最大新增连接数，-1表示监听器维度不限速。
+        :param _MaxCps: <p>监听器最大新增连接数，-1表示监听器维度不限速。</p>
         :type MaxCps: int
-        :param _IdleConnectTimeout: 空闲连接超时时间，仅支持TCP监听器。默认值:900；共享型实例和独占型实例取值范围：300～900，性能容量型实例取值范围:300～1980。
+        :param _IdleConnectTimeout: <p>空闲连接超时时间，仅支持TCP监听器。默认值:900；共享型实例和独占型实例取值范围：300～900，性能容量型实例取值范围:300～1980。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IdleConnectTimeout: int
-        :param _RescheduleInterval: 重新调度触发持续时间，取值0~3600s。仅TCP/UDP监听器支持。触发重新调度后，长连接将会在设置的调度时间内断开并完成重新分配。
+        :param _RescheduleInterval: <p>重新调度触发持续时间，取值0~3600s。仅TCP/UDP监听器支持。触发重新调度后，长连接将会在设置的调度时间内断开并完成重新分配。</p><p>单位：秒</p>
         :type RescheduleInterval: int
-        :param _DataCompressMode: 数据压缩模式
+        :param _DataCompressMode: <p>数据压缩模式</p>
         :type DataCompressMode: str
-        :param _RescheduleStartTime: 重新调度启动时间，配置了重新调度启动时间后，会在启动时间到达时触发重新调度。
+        :param _RescheduleStartTime: <p>重新调度启动时间，配置了重新调度启动时间后，会在启动时间到达时触发重新调度。</p>
         :type RescheduleStartTime: int
         """
         self._ListenerId = None
@@ -13238,7 +13238,7 @@ class Listener(AbstractModel):
 
     @property
     def ListenerId(self):
-        r"""负载均衡监听器 ID
+        r"""<p>负载均衡监听器 ID</p>
         :rtype: str
         """
         return self._ListenerId
@@ -13249,7 +13249,7 @@ class Listener(AbstractModel):
 
     @property
     def Protocol(self):
-        r"""监听器协议，可选值：TCP、UDP、HTTP、HTTPS、TCP_SSL、QUIC
+        r"""<p>监听器协议，可选值：TCP、UDP、HTTP、HTTPS、TCP_SSL、QUIC</p>
         :rtype: str
         """
         return self._Protocol
@@ -13260,7 +13260,7 @@ class Listener(AbstractModel):
 
     @property
     def Port(self):
-        r"""监听器端口，端口范围：1-65535
+        r"""<p>监听器端口，端口范围：1-65535</p>
         :rtype: int
         """
         return self._Port
@@ -13271,7 +13271,7 @@ class Listener(AbstractModel):
 
     @property
     def Certificate(self):
-        r"""监听器绑定的证书信息
+        r"""<p>监听器绑定的证书信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.clb.v20180317.models.CertificateOutput`
         """
@@ -13283,7 +13283,7 @@ class Listener(AbstractModel):
 
     @property
     def HealthCheck(self):
-        r"""监听器的健康检查信息
+        r"""<p>监听器的健康检查信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.clb.v20180317.models.HealthCheck`
         """
@@ -13295,7 +13295,7 @@ class Listener(AbstractModel):
 
     @property
     def Scheduler(self):
-        r"""请求的调度方式。 WRR、LEAST_CONN、IP_HASH分别表示按权重轮询、最小连接数、IP Hash。
+        r"""<p>请求的调度方式。 WRR、LEAST_CONN、IP_HASH分别表示按权重轮询、最小连接数、IP Hash。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -13307,7 +13307,7 @@ class Listener(AbstractModel):
 
     @property
     def SessionExpireTime(self):
-        r"""会话保持时间，单位：秒。可选值：30~3600，默认 0，默认不开启。此参数仅适用于TCP/UDP监听器。
+        r"""<p>会话保持时间，单位：秒。可选值：30~3600，默认 0，默认不开启。此参数仅适用于TCP/UDP监听器。</p><p>单位：秒</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -13319,7 +13319,7 @@ class Listener(AbstractModel):
 
     @property
     def SniSwitch(self):
-        r"""是否开启SNI特性，1：表示开启，0：表示不开启（本参数仅对于HTTPS监听器有意义）
+        r"""<p>是否开启SNI特性，1：表示开启，0：表示不开启（本参数仅对于HTTPS监听器有意义）</p>
         :rtype: int
         """
         return self._SniSwitch
@@ -13330,7 +13330,7 @@ class Listener(AbstractModel):
 
     @property
     def Rules(self):
-        r"""监听器下的全部转发规则（本参数仅对于HTTP/HTTPS监听器有意义）
+        r"""<p>监听器下的全部转发规则（本参数仅对于HTTP/HTTPS监听器有意义）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of RuleOutput
         """
@@ -13342,7 +13342,7 @@ class Listener(AbstractModel):
 
     @property
     def ListenerName(self):
-        r"""监听器的名称
+        r"""<p>监听器的名称</p>
         :rtype: str
         """
         return self._ListenerName
@@ -13353,7 +13353,7 @@ class Listener(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""监听器的创建时间。
+        r"""<p>监听器的创建时间。</p>
         :rtype: str
         """
         return self._CreateTime
@@ -13364,7 +13364,7 @@ class Listener(AbstractModel):
 
     @property
     def EndPort(self):
-        r"""端口段结束端口，端口范围：2-65535
+        r"""<p>端口段结束端口，端口范围：2-65535</p>
         :rtype: int
         """
         return self._EndPort
@@ -13375,7 +13375,7 @@ class Listener(AbstractModel):
 
     @property
     def TargetType(self):
-        r"""后端服务器类型，可选值：NODE、POLARIS、TARGETGROUP、TARGETGROUP-V2
+        r"""<p>后端服务器类型，可选值：NODE、POLARIS、TARGETGROUP、TARGETGROUP-V2</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -13387,7 +13387,7 @@ class Listener(AbstractModel):
 
     @property
     def TargetGroup(self):
-        r"""绑定的目标组基本信息；当监听器绑定目标组时，会返回该字段
+        r"""<p>绑定的目标组基本信息；当监听器绑定目标组时，会返回该字段</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.clb.v20180317.models.BasicTargetGroupInfo`
         """
@@ -13399,7 +13399,7 @@ class Listener(AbstractModel):
 
     @property
     def SessionType(self):
-        r"""会话保持类型。NORMAL表示默认会话保持类型。QUIC_CID 表示根据Quic Connection ID做会话保持。
+        r"""<p>会话保持类型。NORMAL表示默认会话保持类型。QUIC_CID 表示根据Quic Connection ID做会话保持。</p>
         :rtype: str
         """
         return self._SessionType
@@ -13410,7 +13410,7 @@ class Listener(AbstractModel):
 
     @property
     def KeepaliveEnable(self):
-        r"""是否开启长连接，1开启，0关闭，（本参数仅对于HTTP/HTTPS监听器有意义）
+        r"""<p>是否开启长连接，1开启，0关闭，（本参数仅对于HTTP/HTTPS监听器有意义）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -13422,7 +13422,7 @@ class Listener(AbstractModel):
 
     @property
     def Toa(self):
-        r"""仅支持Nat64 CLB TCP监听器
+        r"""<p>仅支持Nat64 CLB TCP监听器</p>
         :rtype: bool
         """
         return self._Toa
@@ -13433,7 +13433,7 @@ class Listener(AbstractModel):
 
     @property
     def DeregisterTargetRst(self):
-        r"""重新调度功能，解绑后端服务开关，打开此开关，当解绑后端服务时触发重新调度。仅TCP/UDP监听器支持。
+        r"""<p>重新调度功能，解绑后端服务开关，打开此开关，当解绑后端服务时触发重新调度。仅TCP/UDP监听器支持。</p>
         :rtype: bool
         """
         return self._DeregisterTargetRst
@@ -13444,7 +13444,7 @@ class Listener(AbstractModel):
 
     @property
     def AttrFlags(self):
-        r"""监听器的属性
+        r"""<p>监听器的属性</p>
         :rtype: list of str
         """
         return self._AttrFlags
@@ -13455,7 +13455,7 @@ class Listener(AbstractModel):
 
     @property
     def TargetGroupList(self):
-        r"""绑定的目标组列表
+        r"""<p>绑定的目标组列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of BasicTargetGroupInfo
         """
@@ -13467,7 +13467,7 @@ class Listener(AbstractModel):
 
     @property
     def MaxConn(self):
-        r"""监听器最大连接数，-1表示监听器维度不限速。
+        r"""<p>监听器最大连接数，-1表示监听器维度不限速。</p>
         :rtype: int
         """
         return self._MaxConn
@@ -13478,7 +13478,7 @@ class Listener(AbstractModel):
 
     @property
     def MaxCps(self):
-        r"""监听器最大新增连接数，-1表示监听器维度不限速。
+        r"""<p>监听器最大新增连接数，-1表示监听器维度不限速。</p>
         :rtype: int
         """
         return self._MaxCps
@@ -13489,7 +13489,7 @@ class Listener(AbstractModel):
 
     @property
     def IdleConnectTimeout(self):
-        r"""空闲连接超时时间，仅支持TCP监听器。默认值:900；共享型实例和独占型实例取值范围：300～900，性能容量型实例取值范围:300～1980。
+        r"""<p>空闲连接超时时间，仅支持TCP监听器。默认值:900；共享型实例和独占型实例取值范围：300～900，性能容量型实例取值范围:300～1980。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -13501,7 +13501,7 @@ class Listener(AbstractModel):
 
     @property
     def RescheduleInterval(self):
-        r"""重新调度触发持续时间，取值0~3600s。仅TCP/UDP监听器支持。触发重新调度后，长连接将会在设置的调度时间内断开并完成重新分配。
+        r"""<p>重新调度触发持续时间，取值0~3600s。仅TCP/UDP监听器支持。触发重新调度后，长连接将会在设置的调度时间内断开并完成重新分配。</p><p>单位：秒</p>
         :rtype: int
         """
         return self._RescheduleInterval
@@ -13512,7 +13512,7 @@ class Listener(AbstractModel):
 
     @property
     def DataCompressMode(self):
-        r"""数据压缩模式
+        r"""<p>数据压缩模式</p>
         :rtype: str
         """
         return self._DataCompressMode
@@ -13523,7 +13523,7 @@ class Listener(AbstractModel):
 
     @property
     def RescheduleStartTime(self):
-        r"""重新调度启动时间，配置了重新调度启动时间后，会在启动时间到达时触发重新调度。
+        r"""<p>重新调度启动时间，配置了重新调度启动时间后，会在启动时间到达时触发重新调度。</p>
         :rtype: int
         """
         return self._RescheduleStartTime
@@ -16804,7 +16804,7 @@ class ModifyListenerRequest(AbstractModel):
         :type ProxyProtocol: bool
         :param _SnatEnable: <p>是否开启SNAT（源IP替换），True（开启）、False（关闭）。默认为关闭。注意：SnatEnable开启时会替换客户端源IP，此时<code>透传客户端源IP</code>选项关闭，反之亦然。</p>
         :type SnatEnable: bool
-        :param _DataCompressMode: <p>数据压缩模式</p>
+        :param _DataCompressMode: <p>数据压缩模式</p><p>枚举值：</p><ul><li>transparent： 透明模式（默认值）</li><li>compatibility： 兼容模式（开启 gzip 兼容压缩配置）</li></ul>
         :type DataCompressMode: str
         :param _RescheduleTargetZeroWeight: <p>重新调度功能，权重调为0开关，打开此开关，后端服务器权重调为0时触发重新调度。仅TCP/UDP监听器支持。</p>
         :type RescheduleTargetZeroWeight: bool
@@ -17042,7 +17042,7 @@ class ModifyListenerRequest(AbstractModel):
 
     @property
     def DataCompressMode(self):
-        r"""<p>数据压缩模式</p>
+        r"""<p>数据压缩模式</p><p>枚举值：</p><ul><li>transparent： 透明模式（默认值）</li><li>compatibility： 兼容模式（开启 gzip 兼容压缩配置）</li></ul>
         :rtype: str
         """
         return self._DataCompressMode

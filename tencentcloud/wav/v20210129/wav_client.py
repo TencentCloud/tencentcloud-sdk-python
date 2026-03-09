@@ -50,7 +50,9 @@ class WavClient(AbstractClient):
 
 
     def CreateCorpTag(self, request):
-        r"""该接口用户设置标签库, 每个企业最多可配置3000个企业标签。
+        r"""产品已EOL
+
+        该接口用户设置标签库, 每个企业最多可配置3000个企业标签。
 
         :param request: Request instance for CreateCorpTag.
         :type request: :class:`tencentcloud.wav.v20210129.models.CreateCorpTagRequest`

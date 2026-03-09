@@ -3384,12 +3384,25 @@ class ComparisonDetail(AbstractModel):
         :type OriginText: str
         :param _DiffText: 对比文本。
         :type DiffText: str
+        :param _FormatType: 合同文本的格式类型。
+类型如下：
+<ul><li> **0**：段落（正文）</li>
+<li> **1**：标点符号</li>
+<li> **2**：页眉页脚</li>
+<li> **3**：目录</li>
+<li> **4**：印章</li>
+<li> **5**：序号</li>
+<li> **6**：水印</li>
+<li> **7**：下划线内容（填写区）</li>
+</ul>
+        :type FormatType: int
         """
         self._ComparisonPointId = None
         self._ComparisonType = None
         self._ContentType = None
         self._OriginText = None
         self._DiffText = None
+        self._FormatType = None
 
     @property
     def ComparisonPointId(self):
@@ -3454,6 +3467,27 @@ class ComparisonDetail(AbstractModel):
     def DiffText(self, DiffText):
         self._DiffText = DiffText
 
+    @property
+    def FormatType(self):
+        r"""合同文本的格式类型。
+类型如下：
+<ul><li> **0**：段落（正文）</li>
+<li> **1**：标点符号</li>
+<li> **2**：页眉页脚</li>
+<li> **3**：目录</li>
+<li> **4**：印章</li>
+<li> **5**：序号</li>
+<li> **6**：水印</li>
+<li> **7**：下划线内容（填写区）</li>
+</ul>
+        :rtype: int
+        """
+        return self._FormatType
+
+    @FormatType.setter
+    def FormatType(self, FormatType):
+        self._FormatType = FormatType
+
 
     def _deserialize(self, params):
         self._ComparisonPointId = params.get("ComparisonPointId")
@@ -3461,6 +3495,7 @@ class ComparisonDetail(AbstractModel):
         self._ContentType = params.get("ContentType")
         self._OriginText = params.get("OriginText")
         self._DiffText = params.get("DiffText")
+        self._FormatType = params.get("FormatType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -23159,10 +23194,27 @@ class DescribeContractComparisonTaskRequest(AbstractModel):
         :param _ShowDetail: 是否返回详细的对比结果。为 true时，响应中将包含详细的对比信息，如相似度、文本差异具体内容等；为 false时，仅返回任务基本状态信息。
 注：`详细结果数据量可能较大，请按需开启。`
         :type ShowDetail: bool
+        :param _Filters: 搜索条件，具体参考Filter结构体。本接口取值：
+
+1. **format-type：**
+按照【 合同文本格式类型 】进行过滤；
+类型：String；
+是否必填项：否；
+类型如下：
+<ul><li> **0**：段落（正文）</li>
+<li> **1**：标点符号</li>
+<li> **2**：页眉页脚</li>
+<li> **3**：目录</li>
+<li> **4**：印章</li>
+<li> **5**：序号</li>
+<li> **7**：下划线内容（填写区）</li>
+</ul>
+        :type Filters: list of Filter
         """
         self._Operator = None
         self._TaskId = None
         self._ShowDetail = None
+        self._Filters = None
 
     @property
     def Operator(self):
@@ -23199,6 +23251,31 @@ class DescribeContractComparisonTaskRequest(AbstractModel):
     def ShowDetail(self, ShowDetail):
         self._ShowDetail = ShowDetail
 
+    @property
+    def Filters(self):
+        r"""搜索条件，具体参考Filter结构体。本接口取值：
+
+1. **format-type：**
+按照【 合同文本格式类型 】进行过滤；
+类型：String；
+是否必填项：否；
+类型如下：
+<ul><li> **0**：段落（正文）</li>
+<li> **1**：标点符号</li>
+<li> **2**：页眉页脚</li>
+<li> **3**：目录</li>
+<li> **4**：印章</li>
+<li> **5**：序号</li>
+<li> **7**：下划线内容（填写区）</li>
+</ul>
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
@@ -23206,6 +23283,12 @@ class DescribeContractComparisonTaskRequest(AbstractModel):
             self._Operator._deserialize(params.get("Operator"))
         self._TaskId = params.get("TaskId")
         self._ShowDetail = params.get("ShowDetail")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -30166,8 +30249,15 @@ class ExtendScene(AbstractModel):
     def __init__(self):
         r"""
         :param _GenerateType: 印章来源类型
+印章来源类型包括下面几种：
+<ul>
+<li>CREATE-客户上传图片创建</li>
+<li>GENERATE-系统模版印章生成</li>
+<li>SIST_SEAL-深圳电子印章</li>
+</ul>
         :type GenerateType: str
         :param _GenerateTypeDesc: 印章来源类型描述
+
         :type GenerateTypeDesc: str
         :param _GenerateTypeLogo: 印章来源logo
         :type GenerateTypeLogo: str
@@ -30179,6 +30269,12 @@ class ExtendScene(AbstractModel):
     @property
     def GenerateType(self):
         r"""印章来源类型
+印章来源类型包括下面几种：
+<ul>
+<li>CREATE-客户上传图片创建</li>
+<li>GENERATE-系统模版印章生成</li>
+<li>SIST_SEAL-深圳电子印章</li>
+</ul>
         :rtype: str
         """
         return self._GenerateType
@@ -30190,6 +30286,7 @@ class ExtendScene(AbstractModel):
     @property
     def GenerateTypeDesc(self):
         r"""印章来源类型描述
+
         :rtype: str
         """
         return self._GenerateTypeDesc
@@ -40016,13 +40113,13 @@ class PositionInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _X: PDF文件页X坐标位置,以PDF单页左上角为坐标原点
+        :param _X: PDF文件页X坐标位置,以PDF单页左上角为坐标原点，单位是 “点”（Point，简称 pt）
         :type X: float
-        :param _Y: PDF文件页Y坐标位置,以PDF单页左上角为坐标原点
+        :param _Y: PDF文件页Y坐标位置,以PDF单页左上角为坐标原点，单位是 “点”（Point，简称 pt）
         :type Y: float
-        :param _Width: 距离X坐标的宽度，用于在PDF文件进行画框。
+        :param _Width: 距离X坐标的宽度，用于在PDF文件进行画框，单位是 “点”（Point，简称 pt）
         :type Width: float
-        :param _Height: 距离Y坐标的高度，用于在PDF文件进行画框。
+        :param _Height: 距离Y坐标的高度，用于在PDF文件进行画框，单位是 “点”（Point，简称 pt）
         :type Height: float
         :param _PageIndex: PDF文件页码索引，此值加1就是对应PDF文件的页码。
         :type PageIndex: int
@@ -40047,7 +40144,7 @@ class PositionInfo(AbstractModel):
 
     @property
     def X(self):
-        r"""PDF文件页X坐标位置,以PDF单页左上角为坐标原点
+        r"""PDF文件页X坐标位置,以PDF单页左上角为坐标原点，单位是 “点”（Point，简称 pt）
         :rtype: float
         """
         return self._X
@@ -40058,7 +40155,7 @@ class PositionInfo(AbstractModel):
 
     @property
     def Y(self):
-        r"""PDF文件页Y坐标位置,以PDF单页左上角为坐标原点
+        r"""PDF文件页Y坐标位置,以PDF单页左上角为坐标原点，单位是 “点”（Point，简称 pt）
         :rtype: float
         """
         return self._Y
@@ -40069,7 +40166,7 @@ class PositionInfo(AbstractModel):
 
     @property
     def Width(self):
-        r"""距离X坐标的宽度，用于在PDF文件进行画框。
+        r"""距离X坐标的宽度，用于在PDF文件进行画框，单位是 “点”（Point，简称 pt）
         :rtype: float
         """
         return self._Width
@@ -40080,7 +40177,7 @@ class PositionInfo(AbstractModel):
 
     @property
     def Height(self):
-        r"""距离Y坐标的高度，用于在PDF文件进行画框。
+        r"""距离Y坐标的高度，用于在PDF文件进行画框，单位是 “点”（Point，简称 pt）
         :rtype: float
         """
         return self._Height

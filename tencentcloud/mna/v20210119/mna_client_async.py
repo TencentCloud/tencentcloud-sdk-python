@@ -43,6 +43,24 @@ class MnaClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def AddApplication(
+            self,
+            request: models.AddApplicationRequest,
+            opts: Dict = None,
+    ) -> models.AddApplicationResponse:
+        """
+        新建应用
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "AddApplication"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.AddApplicationResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def AddDevice(
             self,
             request: models.AddDeviceRequest,
@@ -133,6 +151,24 @@ class MnaClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteApplication(
+            self,
+            request: models.DeleteApplicationRequest,
+            opts: Dict = None,
+    ) -> models.DeleteApplicationResponse:
+        """
+        删除应用
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteApplication"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteApplicationResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteDevice(
             self,
             request: models.DeleteDeviceRequest,
@@ -218,6 +254,24 @@ class MnaClient(AbstractClient):
         kwargs["action"] = "GetActiveDeviceCount"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.GetActiveDeviceCountResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetApplication(
+            self,
+            request: models.GetApplicationRequest,
+            opts: Dict = None,
+    ) -> models.GetApplicationResponse:
+        """
+        应用查询
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetApplication"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetApplicationResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -740,6 +794,42 @@ class MnaClient(AbstractClient):
         kwargs["action"] = "SetNotifyUrl"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.SetNotifyUrlResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UpdateApplicationInfo(
+            self,
+            request: models.UpdateApplicationInfoRequest,
+            opts: Dict = None,
+    ) -> models.UpdateApplicationInfoResponse:
+        """
+        更新应用信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpdateApplicationInfo"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpdateApplicationInfoResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UpdateApplicationKey(
+            self,
+            request: models.UpdateApplicationKeyRequest,
+            opts: Dict = None,
+    ) -> models.UpdateApplicationKeyResponse:
+        """
+        更新应用密钥
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpdateApplicationKey"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpdateApplicationKeyResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

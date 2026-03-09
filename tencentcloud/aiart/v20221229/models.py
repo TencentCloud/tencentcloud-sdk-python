@@ -3777,10 +3777,6 @@ class SubmitTextToImageJobRequest(AbstractModel):
         :type Prompt: str
         :param _Images: <p>垫图url列表，base64后大小不超过10MB，支持 jpg jpeg png webp格式，最多3张图</p>
         :type Images: list of str
-        :param _SkillType: <p>选择适配的生图能力类型。</p><p>枚举值：</p><ul><li>default： 通用生图</li><li>cover： 文章封面</li><li>ppt： 幻灯片PPT</li><li>poster： 创意海报</li></ul><p>默认值：default</p>
-        :type SkillType: str
-        :param _GeneratedImageCount: <p>生成的结果图片数量<br>取值范围： </p><ul><li>default：通用生图任务（1）</li><li>cover:：封面（1）</li><li>ppt：幻灯片页数（1～20）</li><li>poster：生成图片张数（1）</li></ul><p>默认值：1</p>
-        :type GeneratedImageCount: int
         :param _Resolution: <p>生成图分辨率，默认1024:1024：</p><ul><li>宽高维度均在 [512, 2048] 像素范围内;</li><li>宽高乘积（即图像面积）不超过 1024×1024 像素;</li></ul>
         :type Resolution: str
         :param _Seed: <p>随机种子，默认随机。<br>不传：随机种子生成。<br>正数：固定种子生成。<br>扩写开启时固定种子不生效，将保持随机。</p>
@@ -3794,8 +3790,6 @@ class SubmitTextToImageJobRequest(AbstractModel):
         """
         self._Prompt = None
         self._Images = None
-        self._SkillType = None
-        self._GeneratedImageCount = None
         self._Resolution = None
         self._Seed = None
         self._LogoAdd = None
@@ -3823,28 +3817,6 @@ class SubmitTextToImageJobRequest(AbstractModel):
     @Images.setter
     def Images(self, Images):
         self._Images = Images
-
-    @property
-    def SkillType(self):
-        r"""<p>选择适配的生图能力类型。</p><p>枚举值：</p><ul><li>default： 通用生图</li><li>cover： 文章封面</li><li>ppt： 幻灯片PPT</li><li>poster： 创意海报</li></ul><p>默认值：default</p>
-        :rtype: str
-        """
-        return self._SkillType
-
-    @SkillType.setter
-    def SkillType(self, SkillType):
-        self._SkillType = SkillType
-
-    @property
-    def GeneratedImageCount(self):
-        r"""<p>生成的结果图片数量<br>取值范围： </p><ul><li>default：通用生图任务（1）</li><li>cover:：封面（1）</li><li>ppt：幻灯片页数（1～20）</li><li>poster：生成图片张数（1）</li></ul><p>默认值：1</p>
-        :rtype: int
-        """
-        return self._GeneratedImageCount
-
-    @GeneratedImageCount.setter
-    def GeneratedImageCount(self, GeneratedImageCount):
-        self._GeneratedImageCount = GeneratedImageCount
 
     @property
     def Resolution(self):
@@ -3905,8 +3877,6 @@ class SubmitTextToImageJobRequest(AbstractModel):
     def _deserialize(self, params):
         self._Prompt = params.get("Prompt")
         self._Images = params.get("Images")
-        self._SkillType = params.get("SkillType")
-        self._GeneratedImageCount = params.get("GeneratedImageCount")
         self._Resolution = params.get("Resolution")
         self._Seed = params.get("Seed")
         self._LogoAdd = params.get("LogoAdd")

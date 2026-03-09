@@ -10296,7 +10296,7 @@ class CreateCcnPolicyBasedRoutingNextHopRequest(AbstractModel):
         :type State: str
         :param _Description: 描述
         :type Description: str
-        :param _NextHopResourceType: 下一跳资源类型[HAVIP, GWLB_ENDPOINT]]
+        :param _NextHopResourceType: 下一跳资源类型[HAVIP, GWLB_ENDPOINT]
         :type NextHopResourceType: str
         :param _NextHopResourceId: 下一跳资源ID
         :type NextHopResourceId: str
@@ -10390,7 +10390,7 @@ class CreateCcnPolicyBasedRoutingNextHopRequest(AbstractModel):
 
     @property
     def NextHopResourceType(self):
-        r"""下一跳资源类型[HAVIP, GWLB_ENDPOINT]]
+        r"""下一跳资源类型[HAVIP, GWLB_ENDPOINT]
         :rtype: str
         """
         return self._NextHopResourceType
@@ -10588,7 +10588,7 @@ class CreateCcnRequest(AbstractModel):
         :type QosLevel: str
         :param _InstanceChargeType: 计费模式，`PREPAID`：表示预付费，即包年包月，`POSTPAID`：表示后付费，即按量计费。默认：`POSTPAID`。
         :type InstanceChargeType: str
-        :param _InstanceMeteringType: 计量模式
+        :param _InstanceMeteringType: 计量模式,`BANDWIDTH`：表示带宽,即带宽计量模式，`TRAFFIC`：表示流量,即流量计量模式。
         :type InstanceMeteringType: str
         :param _BandwidthLimitType: 限速类型，`OUTER_REGION_LIMIT`表示地域出口限速，`INTER_REGION_LIMIT`为地域间限速，默认为`OUTER_REGION_LIMIT`。预付费模式仅支持地域间限速，后付费模式支持地域间限速和地域出口限速。
         :type BandwidthLimitType: str
@@ -10649,7 +10649,7 @@ class CreateCcnRequest(AbstractModel):
 
     @property
     def InstanceMeteringType(self):
-        r"""计量模式
+        r"""计量模式,`BANDWIDTH`：表示带宽,即带宽计量模式，`TRAFFIC`：表示流量,即流量计量模式。
         :rtype: str
         """
         return self._InstanceMeteringType
@@ -18478,6 +18478,8 @@ class CreateVpnGatewaySslServerRequest(AbstractModel):
         :type SamlData: str
         :param _Tags: 指定绑定的标签列表
         :type Tags: list of Tag
+        :param _DnsServers: DNS Server 地址
+        :type DnsServers: :class:`tencentcloud.vpc.v20170312.models.DnsServers`
         """
         self._VpnGatewayId = None
         self._SslVpnServerName = None
@@ -18492,6 +18494,7 @@ class CreateVpnGatewaySslServerRequest(AbstractModel):
         self._AccessPolicyEnabled = None
         self._SamlData = None
         self._Tags = None
+        self._DnsServers = None
 
     @property
     def VpnGatewayId(self):
@@ -18636,6 +18639,17 @@ class CreateVpnGatewaySslServerRequest(AbstractModel):
     def Tags(self, Tags):
         self._Tags = Tags
 
+    @property
+    def DnsServers(self):
+        r"""DNS Server 地址
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DnsServers`
+        """
+        return self._DnsServers
+
+    @DnsServers.setter
+    def DnsServers(self, DnsServers):
+        self._DnsServers = DnsServers
+
 
     def _deserialize(self, params):
         self._VpnGatewayId = params.get("VpnGatewayId")
@@ -18656,6 +18670,9 @@ class CreateVpnGatewaySslServerRequest(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        if params.get("DnsServers") is not None:
+            self._DnsServers = DnsServers()
+            self._DnsServers._deserialize(params.get("DnsServers"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -28063,6 +28080,75 @@ class DescribeCustomerGatewaysResponse(AbstractModel):
                 obj._deserialize(item)
                 self._CustomerGatewaySet.append(obj)
         self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDesignatedZonesRequest(AbstractModel):
+    r"""DescribeDesignatedZones请求参数结构体
+
+    """
+
+
+class DescribeDesignatedZonesResponse(AbstractModel):
+    r"""DescribeDesignatedZones返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 用户可选的可用区总数
+        :type TotalCount: int
+        :param _DesignatedZoneInfo: 用户可选的可用区详细信息
+        :type DesignatedZoneInfo: list of DesignatedZoneInfoDict
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._DesignatedZoneInfo = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""用户可选的可用区总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def DesignatedZoneInfo(self):
+        r"""用户可选的可用区详细信息
+        :rtype: list of DesignatedZoneInfoDict
+        """
+        return self._DesignatedZoneInfo
+
+    @DesignatedZoneInfo.setter
+    def DesignatedZoneInfo(self, DesignatedZoneInfo):
+        self._DesignatedZoneInfo = DesignatedZoneInfo
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("DesignatedZoneInfo") is not None:
+            self._DesignatedZoneInfo = []
+            for item in params.get("DesignatedZoneInfo"):
+                obj = DesignatedZoneInfoDict()
+                obj._deserialize(item)
+                self._DesignatedZoneInfo.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -41399,6 +41485,72 @@ class DescribeVpnGatewaysResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DesignatedZoneInfoDict(AbstractModel):
+    r"""用户可选的可用区信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DesignatedZone: 可用区Id
+        :type DesignatedZone: str
+        :param _DesignatedZoneName: 可用区名称
+        :type DesignatedZoneName: str
+        :param _DesignatedZoneType: 可用区类型
+        :type DesignatedZoneType: str
+        """
+        self._DesignatedZone = None
+        self._DesignatedZoneName = None
+        self._DesignatedZoneType = None
+
+    @property
+    def DesignatedZone(self):
+        r"""可用区Id
+        :rtype: str
+        """
+        return self._DesignatedZone
+
+    @DesignatedZone.setter
+    def DesignatedZone(self, DesignatedZone):
+        self._DesignatedZone = DesignatedZone
+
+    @property
+    def DesignatedZoneName(self):
+        r"""可用区名称
+        :rtype: str
+        """
+        return self._DesignatedZoneName
+
+    @DesignatedZoneName.setter
+    def DesignatedZoneName(self, DesignatedZoneName):
+        self._DesignatedZoneName = DesignatedZoneName
+
+    @property
+    def DesignatedZoneType(self):
+        r"""可用区类型
+        :rtype: str
+        """
+        return self._DesignatedZoneType
+
+    @DesignatedZoneType.setter
+    def DesignatedZoneType(self, DesignatedZoneType):
+        self._DesignatedZoneType = DesignatedZoneType
+
+
+    def _deserialize(self, params):
+        self._DesignatedZone = params.get("DesignatedZone")
+        self._DesignatedZoneName = params.get("DesignatedZoneName")
+        self._DesignatedZoneType = params.get("DesignatedZoneType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DestinationIpPortTranslationNatRule(AbstractModel):
     r"""NAT网关的端口转发规则
 
@@ -43964,6 +44116,57 @@ class DisassociateVpcEndPointSecurityGroupsResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class DnsServers(AbstractModel):
+    r"""SSL VPN Server DnsServers
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PrimaryDns: 主DNS配置
+        :type PrimaryDns: str
+        :param _SecondaryDns: 备DNS配置
+        :type SecondaryDns: str
+        """
+        self._PrimaryDns = None
+        self._SecondaryDns = None
+
+    @property
+    def PrimaryDns(self):
+        r"""主DNS配置
+        :rtype: str
+        """
+        return self._PrimaryDns
+
+    @PrimaryDns.setter
+    def PrimaryDns(self, PrimaryDns):
+        self._PrimaryDns = PrimaryDns
+
+    @property
+    def SecondaryDns(self):
+        r"""备DNS配置
+        :rtype: str
+        """
+        return self._SecondaryDns
+
+    @SecondaryDns.setter
+    def SecondaryDns(self, SecondaryDns):
+        self._SecondaryDns = SecondaryDns
+
+
+    def _deserialize(self, params):
+        self._PrimaryDns = params.get("PrimaryDns")
+        self._SecondaryDns = params.get("SecondaryDns")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DownloadCustomerGatewayConfigurationRequest(AbstractModel):
@@ -58140,6 +58343,8 @@ class ModifyVpnGatewaySslServerRequest(AbstractModel):
         :type SsoEnabled: bool
         :param _SamlData: SAML-DATA
         :type SamlData: str
+        :param _DnsServers: DNS Server地址
+        :type DnsServers: :class:`tencentcloud.vpc.v20170312.models.DnsServers`
         """
         self._SslVpnServerId = None
         self._SslVpnServerName = None
@@ -58152,6 +58357,7 @@ class ModifyVpnGatewaySslServerRequest(AbstractModel):
         self._Compress = None
         self._SsoEnabled = None
         self._SamlData = None
+        self._DnsServers = None
 
     @property
     def SslVpnServerId(self):
@@ -58274,6 +58480,17 @@ class ModifyVpnGatewaySslServerRequest(AbstractModel):
     def SamlData(self, SamlData):
         self._SamlData = SamlData
 
+    @property
+    def DnsServers(self):
+        r"""DNS Server地址
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DnsServers`
+        """
+        return self._DnsServers
+
+    @DnsServers.setter
+    def DnsServers(self, DnsServers):
+        self._DnsServers = DnsServers
+
 
     def _deserialize(self, params):
         self._SslVpnServerId = params.get("SslVpnServerId")
@@ -58287,6 +58504,9 @@ class ModifyVpnGatewaySslServerRequest(AbstractModel):
         self._Compress = params.get("Compress")
         self._SsoEnabled = params.get("SsoEnabled")
         self._SamlData = params.get("SamlData")
+        if params.get("DnsServers") is not None:
+            self._DnsServers = DnsServers()
+            self._DnsServers._deserialize(params.get("DnsServers"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -59287,6 +59507,36 @@ class NatRegionInfoWithArea(AbstractModel):
     r"""NAT地域地区对象
 
     """
+
+    def __init__(self):
+        r"""
+        :param _Region: 地域ID，如：ap-guangzhou。
+        :type Region: str
+        """
+        self._Region = None
+
+    @property
+    def Region(self):
+        r"""地域ID，如：ap-guangzhou。
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+
+    def _deserialize(self, params):
+        self._Region = params.get("Region")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class NatZoneInfo(AbstractModel):
@@ -70086,6 +70336,8 @@ class SslVpnSever(AbstractModel):
         :type AccessPolicy: list of AccessPolicy
         :param _SpName: CAM服务提供商Name
         :type SpName: str
+        :param _DnsServers: DNS Server地址
+        :type DnsServers: :class:`tencentcloud.vpc.v20170312.models.DnsServers`
         """
         self._VpcId = None
         self._SslVpnServerId = None
@@ -70107,6 +70359,7 @@ class SslVpnSever(AbstractModel):
         self._AccessPolicyEnabled = None
         self._AccessPolicy = None
         self._SpName = None
+        self._DnsServers = None
 
     @property
     def VpcId(self):
@@ -70336,6 +70589,17 @@ class SslVpnSever(AbstractModel):
     def SpName(self, SpName):
         self._SpName = SpName
 
+    @property
+    def DnsServers(self):
+        r"""DNS Server地址
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DnsServers`
+        """
+        return self._DnsServers
+
+    @DnsServers.setter
+    def DnsServers(self, DnsServers):
+        self._DnsServers = DnsServers
+
 
     def _deserialize(self, params):
         self._VpcId = params.get("VpcId")
@@ -70363,6 +70627,9 @@ class SslVpnSever(AbstractModel):
                 obj._deserialize(item)
                 self._AccessPolicy.append(obj)
         self._SpName = params.get("SpName")
+        if params.get("DnsServers") is not None:
+            self._DnsServers = DnsServers()
+            self._DnsServers._deserialize(params.get("DnsServers"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

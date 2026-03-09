@@ -11410,6 +11410,115 @@ class CreateMetricSubscribeResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateNetworkApplicationRequest(AbstractModel):
+    r"""CreateNetworkApplication请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>网络应用名称：长度不超过64字符，名称不能重复。</p><ul><li>只能包含以下字符：<ul><li>英文字母（大小写）</li><li>数字</li><li>下划线</li><li>连字符（减号）</li><li>汉字</li></ul></li><li>至少包含一个字符</li><li>不能包含空格</li><li>不能包含其他特殊字符（如 @、#、$、% 等）</li></ul>
+        :type Name: str
+        :param _LogsetId: <p>日志集ID</p><ul><li>通过<a href="https://cloud.tencent.com/document/product/614/58624">获取日志集列表</a>获取日志集Id。</li></ul>
+        :type LogsetId: str
+        :param _TopicName: <p>主题名称。名称限制如下：</p><ul><li>不能为空字符串</li><li>不能包含字符&#39;|&#39;</li><li>不能使用以下名称[&quot;cls_service_log&quot;,&quot;loglistener_status&quot;,&quot;loglistener_alarm&quot;,&quot;loglistener_business&quot;,&quot;cls_service_metric&quot;]</li></ul>
+        :type TopicName: str
+        """
+        self._Name = None
+        self._LogsetId = None
+        self._TopicName = None
+
+    @property
+    def Name(self):
+        r"""<p>网络应用名称：长度不超过64字符，名称不能重复。</p><ul><li>只能包含以下字符：<ul><li>英文字母（大小写）</li><li>数字</li><li>下划线</li><li>连字符（减号）</li><li>汉字</li></ul></li><li>至少包含一个字符</li><li>不能包含空格</li><li>不能包含其他特殊字符（如 @、#、$、% 等）</li></ul>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def LogsetId(self):
+        r"""<p>日志集ID</p><ul><li>通过<a href="https://cloud.tencent.com/document/product/614/58624">获取日志集列表</a>获取日志集Id。</li></ul>
+        :rtype: str
+        """
+        return self._LogsetId
+
+    @LogsetId.setter
+    def LogsetId(self, LogsetId):
+        self._LogsetId = LogsetId
+
+    @property
+    def TopicName(self):
+        r"""<p>主题名称。名称限制如下：</p><ul><li>不能为空字符串</li><li>不能包含字符&#39;|&#39;</li><li>不能使用以下名称[&quot;cls_service_log&quot;,&quot;loglistener_status&quot;,&quot;loglistener_alarm&quot;,&quot;loglistener_business&quot;,&quot;cls_service_metric&quot;]</li></ul>
+        :rtype: str
+        """
+        return self._TopicName
+
+    @TopicName.setter
+    def TopicName(self, TopicName):
+        self._TopicName = TopicName
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._LogsetId = params.get("LogsetId")
+        self._TopicName = params.get("TopicName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateNetworkApplicationResponse(AbstractModel):
+    r"""CreateNetworkApplication返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NetworkAppId: <p>网络应用id</p>
+        :type NetworkAppId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._NetworkAppId = None
+        self._RequestId = None
+
+    @property
+    def NetworkAppId(self):
+        r"""<p>网络应用id</p>
+        :rtype: str
+        """
+        return self._NetworkAppId
+
+    @NetworkAppId.setter
+    def NetworkAppId(self, NetworkAppId):
+        self._NetworkAppId = NetworkAppId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._NetworkAppId = params.get("NetworkAppId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateNoticeContentRequest(AbstractModel):
     r"""CreateNoticeContent请求参数结构体
 
@@ -16495,6 +16604,70 @@ class DeleteMetricSubscribeRequest(AbstractModel):
 
 class DeleteMetricSubscribeResponse(AbstractModel):
     r"""DeleteMetricSubscribe返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteNetworkApplicationRequest(AbstractModel):
+    r"""DeleteNetworkApplication请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NetworkAppId: <p>网络应用id。</p>
+        :type NetworkAppId: str
+        """
+        self._NetworkAppId = None
+
+    @property
+    def NetworkAppId(self):
+        r"""<p>网络应用id。</p>
+        :rtype: str
+        """
+        return self._NetworkAppId
+
+    @NetworkAppId.setter
+    def NetworkAppId(self, NetworkAppId):
+        self._NetworkAppId = NetworkAppId
+
+
+    def _deserialize(self, params):
+        self._NetworkAppId = params.get("NetworkAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteNetworkApplicationResponse(AbstractModel):
+    r"""DeleteNetworkApplication返回参数结构体
 
     """
 
@@ -23359,6 +23532,221 @@ class DescribeMetricSubscribesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeNetworkApplicationDetailRequest(AbstractModel):
+    r"""DescribeNetworkApplicationDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NetworkAppId: <p>网络应用id</p>
+        :type NetworkAppId: str
+        """
+        self._NetworkAppId = None
+
+    @property
+    def NetworkAppId(self):
+        r"""<p>网络应用id</p>
+        :rtype: str
+        """
+        return self._NetworkAppId
+
+    @NetworkAppId.setter
+    def NetworkAppId(self, NetworkAppId):
+        self._NetworkAppId = NetworkAppId
+
+
+    def _deserialize(self, params):
+        self._NetworkAppId = params.get("NetworkAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeNetworkApplicationDetailResponse(AbstractModel):
+    r"""DescribeNetworkApplicationDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Info: <p>查询指定的网络应用详情</p>
+        :type Info: :class:`tencentcloud.cls.v20201016.models.NetworkApplicationDetail`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Info = None
+        self._RequestId = None
+
+    @property
+    def Info(self):
+        r"""<p>查询指定的网络应用详情</p>
+        :rtype: :class:`tencentcloud.cls.v20201016.models.NetworkApplicationDetail`
+        """
+        return self._Info
+
+    @Info.setter
+    def Info(self, Info):
+        self._Info = Info
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Info") is not None:
+            self._Info = NetworkApplicationDetail()
+            self._Info._deserialize(params.get("Info"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeNetworkApplicationsRequest(AbstractModel):
+    r"""DescribeNetworkApplications请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filters: <p>过滤项</p><ul><li><p>name<br>按照【任务名称】进行过滤。模糊匹配方式查询。<br>类型：String<br>必选：否</p></li><li><p>networkAppId<br>按照【网络应用id】进行过滤。<br>类型：String<br>必选：否</p></li></ul><p>每次请求的Filters的上限为10，Filter.Values的上限为10。</p>
+        :type Filters: list of Filter
+        :param _Offset: <p>分页的偏移量，默认值为0。</p>
+        :type Offset: int
+        :param _Limit: <p>分页单页限制数目，默认值为20，最大值100。</p>
+        :type Limit: int
+        """
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def Filters(self):
+        r"""<p>过滤项</p><ul><li><p>name<br>按照【任务名称】进行过滤。模糊匹配方式查询。<br>类型：String<br>必选：否</p></li><li><p>networkAppId<br>按照【网络应用id】进行过滤。<br>类型：String<br>必选：否</p></li></ul><p>每次请求的Filters的上限为10，Filter.Values的上限为10。</p>
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        r"""<p>分页的偏移量，默认值为0。</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>分页单页限制数目，默认值为20，最大值100。</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeNetworkApplicationsResponse(AbstractModel):
+    r"""DescribeNetworkApplications返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Infos: <p>符合查询条件的大模型性能剖析任务列表</p>
+        :type Infos: list of NetworkApplicationInfo
+        :param _Total: <p>符合查询条件的任务总数。</p>
+        :type Total: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Infos = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def Infos(self):
+        r"""<p>符合查询条件的大模型性能剖析任务列表</p>
+        :rtype: list of NetworkApplicationInfo
+        """
+        return self._Infos
+
+    @Infos.setter
+    def Infos(self, Infos):
+        self._Infos = Infos
+
+    @property
+    def Total(self):
+        r"""<p>符合查询条件的任务总数。</p>
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Infos") is not None:
+            self._Infos = []
+            for item in params.get("Infos"):
+                obj = NetworkApplicationInfo()
+                obj._deserialize(item)
+                self._Infos.append(obj)
+        self._Total = params.get("Total")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeNoticeContentsRequest(AbstractModel):
     r"""DescribeNoticeContents请求参数结构体
 
@@ -25492,15 +25880,15 @@ class DlcFiledInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClsField: cls日志中的字段名
+        :param _ClsField: <p>cls日志中的字段名</p>
         :type ClsField: str
-        :param _DlcField: 数据湖计算服务表的列名
+        :param _DlcField: <p>数据湖计算服务表的列名</p>
         :type DlcField: str
-        :param _DlcFieldType: 数据湖计算服务字段类型
+        :param _DlcFieldType: <p>数据湖计算服务字段类型</p><p>枚举值：</p><ul><li>int|string|struct等： 参考 <a href="https://cloud.tencent.com/document/product/1342/53778#Column">DLC  cloumn中的Type 定义 </a></li></ul>
         :type DlcFieldType: str
-        :param _FillField: 解析失败填充字段
+        :param _FillField: <p>解析失败填充字段</p>
         :type FillField: str
-        :param _Disable: 是否禁用
+        :param _Disable: <p>是否禁用</p>
         :type Disable: bool
         """
         self._ClsField = None
@@ -25511,7 +25899,7 @@ class DlcFiledInfo(AbstractModel):
 
     @property
     def ClsField(self):
-        r"""cls日志中的字段名
+        r"""<p>cls日志中的字段名</p>
         :rtype: str
         """
         return self._ClsField
@@ -25522,7 +25910,7 @@ class DlcFiledInfo(AbstractModel):
 
     @property
     def DlcField(self):
-        r"""数据湖计算服务表的列名
+        r"""<p>数据湖计算服务表的列名</p>
         :rtype: str
         """
         return self._DlcField
@@ -25533,7 +25921,7 @@ class DlcFiledInfo(AbstractModel):
 
     @property
     def DlcFieldType(self):
-        r"""数据湖计算服务字段类型
+        r"""<p>数据湖计算服务字段类型</p><p>枚举值：</p><ul><li>int|string|struct等： 参考 <a href="https://cloud.tencent.com/document/product/1342/53778#Column">DLC  cloumn中的Type 定义 </a></li></ul>
         :rtype: str
         """
         return self._DlcFieldType
@@ -25544,7 +25932,7 @@ class DlcFiledInfo(AbstractModel):
 
     @property
     def FillField(self):
-        r"""解析失败填充字段
+        r"""<p>解析失败填充字段</p>
         :rtype: str
         """
         return self._FillField
@@ -25555,7 +25943,7 @@ class DlcFiledInfo(AbstractModel):
 
     @property
     def Disable(self):
-        r"""是否禁用
+        r"""<p>是否禁用</p>
         :rtype: bool
         """
         return self._Disable
@@ -25734,11 +26122,11 @@ class DlcPartitionInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClsField: cls日志中的字段名
+        :param _ClsField: <p>cls日志中的字段名</p>
         :type ClsField: str
-        :param _DlcField: dlc表的列名
+        :param _DlcField: <p>dlc表的列名</p>
         :type DlcField: str
-        :param _DlcFieldType: dlc字段类型
+        :param _DlcFieldType: <p>请参考 <a href="https://cloud.tencent.com/document/product/1342/53778#Column">DLC  cloumn中的Type 定义 </a></p><p>枚举值：</p><ul><li>int|string|array等： 请参考 <a href="https://cloud.tencent.com/document/product/1342/53778#Column">DLC  cloumn中的Type 定义 </a></li></ul>
         :type DlcFieldType: str
         """
         self._ClsField = None
@@ -25747,7 +26135,7 @@ class DlcPartitionInfo(AbstractModel):
 
     @property
     def ClsField(self):
-        r"""cls日志中的字段名
+        r"""<p>cls日志中的字段名</p>
         :rtype: str
         """
         return self._ClsField
@@ -25758,7 +26146,7 @@ class DlcPartitionInfo(AbstractModel):
 
     @property
     def DlcField(self):
-        r"""dlc表的列名
+        r"""<p>dlc表的列名</p>
         :rtype: str
         """
         return self._DlcField
@@ -25769,7 +26157,7 @@ class DlcPartitionInfo(AbstractModel):
 
     @property
     def DlcFieldType(self):
-        r"""dlc字段类型
+        r"""<p>请参考 <a href="https://cloud.tencent.com/document/product/1342/53778#Column">DLC  cloumn中的Type 定义 </a></p><p>枚举值：</p><ul><li>int|string|array等： 请参考 <a href="https://cloud.tencent.com/document/product/1342/53778#Column">DLC  cloumn中的Type 定义 </a></li></ul>
         :rtype: str
         """
         return self._DlcFieldType
@@ -26989,37 +27377,35 @@ class ExportInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TopicId: 日志主题ID
+        :param _TopicId: <p>日志主题ID</p>
         :type TopicId: str
-        :param _ExportId: 日志导出任务ID
+        :param _ExportId: <p>日志导出任务ID</p>
         :type ExportId: str
-        :param _Query: 日志导出查询语句
+        :param _Query: <p>日志导出查询语句</p>
         :type Query: str
-        :param _FileName: 日志导出文件名
+        :param _FileName: <p>日志导出文件名</p>
         :type FileName: str
-        :param _FileSize: 日志文件大小
+        :param _FileSize: <p>日志文件大小</p><p>单位：Byte</p>
         :type FileSize: int
-        :param _Order: 日志导出时间排序
+        :param _Order: <p>日志导出时间排序</p>
         :type Order: str
-        :param _Format: 日志导出格式
+        :param _Format: <p>日志导出格式</p>
         :type Format: str
-        :param _Count: 日志导出数量
+        :param _Count: <p>日志导出数量</p>
         :type Count: int
-        :param _Status: 日志下载状态。Processing:导出正在进行中，Completed:导出完成，Failed:导出失败，Expired:日志导出已过期(三天有效期), Queuing 排队中
+        :param _Status: <p>日志下载状态。Processing:导出正在进行中，Completed:导出完成，Failed:导出失败，Expired:日志导出已过期(三天有效期), Queuing 排队中</p>
         :type Status: str
-        :param _From: 日志导出起始时间，毫秒时间戳
+        :param _From: <p>日志导出起始时间，毫秒时间戳</p>
         :type From: int
-        :param _To: 日志导出结束时间，毫秒时间戳
+        :param _To: <p>日志导出结束时间，毫秒时间戳</p>
         :type To: int
-        :param _CosPath: 日志导出路径,有效期一个小时，请尽快使用该路径下载。
+        :param _CosPath: <p>日志导出路径,有效期一个小时，请尽快使用该路径下载。</p>
         :type CosPath: str
-        :param _CreateTime: 日志导出创建时间
-时间格式：yyyy-MM-dd HH:mm:ss
+        :param _CreateTime: <p>日志导出创建时间<br>时间格式：yyyy-MM-dd HH:mm:ss</p>
         :type CreateTime: str
-        :param _SyntaxRule: 语法规则。 默认值为0。
-0：Lucene语法，1：CQL语法。
+        :param _SyntaxRule: <p>语法规则。 默认值为0。<br>0：Lucene语法，1：CQL语法。</p>
         :type SyntaxRule: int
-        :param _DerivedFields: 导出字段
+        :param _DerivedFields: <p>导出字段</p>
         :type DerivedFields: list of str
         """
         self._TopicId = None
@@ -27040,7 +27426,7 @@ class ExportInfo(AbstractModel):
 
     @property
     def TopicId(self):
-        r"""日志主题ID
+        r"""<p>日志主题ID</p>
         :rtype: str
         """
         return self._TopicId
@@ -27051,7 +27437,7 @@ class ExportInfo(AbstractModel):
 
     @property
     def ExportId(self):
-        r"""日志导出任务ID
+        r"""<p>日志导出任务ID</p>
         :rtype: str
         """
         return self._ExportId
@@ -27062,7 +27448,7 @@ class ExportInfo(AbstractModel):
 
     @property
     def Query(self):
-        r"""日志导出查询语句
+        r"""<p>日志导出查询语句</p>
         :rtype: str
         """
         return self._Query
@@ -27073,7 +27459,7 @@ class ExportInfo(AbstractModel):
 
     @property
     def FileName(self):
-        r"""日志导出文件名
+        r"""<p>日志导出文件名</p>
         :rtype: str
         """
         return self._FileName
@@ -27084,7 +27470,7 @@ class ExportInfo(AbstractModel):
 
     @property
     def FileSize(self):
-        r"""日志文件大小
+        r"""<p>日志文件大小</p><p>单位：Byte</p>
         :rtype: int
         """
         return self._FileSize
@@ -27095,7 +27481,7 @@ class ExportInfo(AbstractModel):
 
     @property
     def Order(self):
-        r"""日志导出时间排序
+        r"""<p>日志导出时间排序</p>
         :rtype: str
         """
         return self._Order
@@ -27106,7 +27492,7 @@ class ExportInfo(AbstractModel):
 
     @property
     def Format(self):
-        r"""日志导出格式
+        r"""<p>日志导出格式</p>
         :rtype: str
         """
         return self._Format
@@ -27117,7 +27503,7 @@ class ExportInfo(AbstractModel):
 
     @property
     def Count(self):
-        r"""日志导出数量
+        r"""<p>日志导出数量</p>
         :rtype: int
         """
         return self._Count
@@ -27128,7 +27514,7 @@ class ExportInfo(AbstractModel):
 
     @property
     def Status(self):
-        r"""日志下载状态。Processing:导出正在进行中，Completed:导出完成，Failed:导出失败，Expired:日志导出已过期(三天有效期), Queuing 排队中
+        r"""<p>日志下载状态。Processing:导出正在进行中，Completed:导出完成，Failed:导出失败，Expired:日志导出已过期(三天有效期), Queuing 排队中</p>
         :rtype: str
         """
         return self._Status
@@ -27139,7 +27525,7 @@ class ExportInfo(AbstractModel):
 
     @property
     def From(self):
-        r"""日志导出起始时间，毫秒时间戳
+        r"""<p>日志导出起始时间，毫秒时间戳</p>
         :rtype: int
         """
         return self._From
@@ -27150,7 +27536,7 @@ class ExportInfo(AbstractModel):
 
     @property
     def To(self):
-        r"""日志导出结束时间，毫秒时间戳
+        r"""<p>日志导出结束时间，毫秒时间戳</p>
         :rtype: int
         """
         return self._To
@@ -27161,7 +27547,7 @@ class ExportInfo(AbstractModel):
 
     @property
     def CosPath(self):
-        r"""日志导出路径,有效期一个小时，请尽快使用该路径下载。
+        r"""<p>日志导出路径,有效期一个小时，请尽快使用该路径下载。</p>
         :rtype: str
         """
         return self._CosPath
@@ -27172,8 +27558,7 @@ class ExportInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""日志导出创建时间
-时间格式：yyyy-MM-dd HH:mm:ss
+        r"""<p>日志导出创建时间<br>时间格式：yyyy-MM-dd HH:mm:ss</p>
         :rtype: str
         """
         return self._CreateTime
@@ -27184,8 +27569,7 @@ class ExportInfo(AbstractModel):
 
     @property
     def SyntaxRule(self):
-        r"""语法规则。 默认值为0。
-0：Lucene语法，1：CQL语法。
+        r"""<p>语法规则。 默认值为0。<br>0：Lucene语法，1：CQL语法。</p>
         :rtype: int
         """
         return self._SyntaxRule
@@ -27196,7 +27580,7 @@ class ExportInfo(AbstractModel):
 
     @property
     def DerivedFields(self):
-        r"""导出字段
+        r"""<p>导出字段</p>
         :rtype: list of str
         """
         return self._DerivedFields
@@ -28305,6 +28689,96 @@ class GetMetricLabelValuesRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _TopicId: <p>时序主题id</p>
+        :type TopicId: str
+        :param _LabelName: <p>时序label名称</p>
+        :type LabelName: str
+        :param _Start: <p>起始时间</p>
+        :type Start: int
+        :param _End: <p>结束时间</p>
+        :type End: int
+        :param _Match: <p>Label匹配规则</p>
+        :type Match: list of str
+        """
+        self._TopicId = None
+        self._LabelName = None
+        self._Start = None
+        self._End = None
+        self._Match = None
+
+    @property
+    def TopicId(self):
+        r"""<p>时序主题id</p>
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def LabelName(self):
+        r"""<p>时序label名称</p>
+        :rtype: str
+        """
+        return self._LabelName
+
+    @LabelName.setter
+    def LabelName(self, LabelName):
+        self._LabelName = LabelName
+
+    @property
+    def Start(self):
+        r"""<p>起始时间</p>
+        :rtype: int
+        """
+        return self._Start
+
+    @Start.setter
+    def Start(self, Start):
+        self._Start = Start
+
+    @property
+    def End(self):
+        r"""<p>结束时间</p>
+        :rtype: int
+        """
+        return self._End
+
+    @End.setter
+    def End(self, End):
+        self._End = End
+
+    @property
+    def Match(self):
+        r"""<p>Label匹配规则</p>
+        :rtype: list of str
+        """
+        return self._Match
+
+    @Match.setter
+    def Match(self, Match):
+        self._Match = Match
+
+
+    def _deserialize(self, params):
+        self._TopicId = params.get("TopicId")
+        self._LabelName = params.get("LabelName")
+        self._Start = params.get("Start")
+        self._End = params.get("End")
+        self._Match = params.get("Match")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class GetMetricLabelValuesResponse(AbstractModel):
     r"""GetMetricLabelValues返回参数结构体
@@ -28313,7 +28787,7 @@ class GetMetricLabelValuesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Values: 时序metric label values
+        :param _Values: <p>时序metric label values</p>
         :type Values: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -28323,7 +28797,7 @@ class GetMetricLabelValuesResponse(AbstractModel):
 
     @property
     def Values(self):
-        r"""时序metric label values
+        r"""<p>时序metric label values</p>
         :rtype: list of str
         """
         return self._Values
@@ -35348,28 +35822,27 @@ class ModifyDlcDeliverRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TopicId: 日志主题id。
-- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+        :param _TopicId: <p>日志主题id。</p><ul><li>通过<a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a>获取日志主题Id。</li></ul>
         :type TopicId: str
-        :param _TaskId: 任务id。
+        :param _TaskId: <p>任务id。</p>
         :type TaskId: str
-        :param _Name: 名称：长度不超过64字符，以字母开头，接受0-9,a-z,A-Z, _,-,中文字符。
+        :param _Name: <p>名称：长度不超过64字符，以字母开头，接受0-9,a-z,A-Z, _,-,中文字符。</p>
         :type Name: str
-        :param _DeliverType: 投递类型。0:批投递,1:实时投递
+        :param _DeliverType: <p>投递类型。0:批投递,1:实时投递</p>
         :type DeliverType: int
-        :param _StartTime: 投递时间范围的开始时间
+        :param _StartTime: <p>投递时间范围的开始时间</p>
         :type StartTime: int
-        :param _EndTime: 投递时间范围的结束时间。 如果为空，则表示不限时
+        :param _EndTime: <p>投递时间范围的结束时间。 如果为空，则表示不限时</p>
         :type EndTime: int
-        :param _MaxSize: 投递文件大小,单位MB。 DeliverType=0时必填，范围 5<= MaxSize <= 256。
+        :param _MaxSize: <p>投递文件大小,单位MB。 DeliverType=0时必填，范围 5&lt;= MaxSize &lt;= 256。</p>
         :type MaxSize: int
-        :param _Interval: 投递间隔，单位秒。 DeliverType=0时必填，范围 300<= Interval <=900。
+        :param _Interval: <p>投递间隔，单位秒。 DeliverType=0时必填，范围 300&lt;= Interval &lt;=900。</p>
         :type Interval: int
-        :param _DlcInfo: dlc配置信息
+        :param _DlcInfo: <p>dlc配置信息</p>
         :type DlcInfo: :class:`tencentcloud.cls.v20201016.models.DlcInfo`
-        :param _HasServicesLog: 是否开启投递服务日志。1关闭，2开启。默认开启
+        :param _HasServicesLog: <p>是否开启投递服务日志。1关闭，2开启。默认开启</p>
         :type HasServicesLog: int
-        :param _Status: 任务状态。
+        :param _Status: <p>任务状态。</p><p>枚举值：</p><ul><li>1： 运行</li><li>2： 停止</li></ul>
         :type Status: int
         """
         self._TopicId = None
@@ -35386,8 +35859,7 @@ class ModifyDlcDeliverRequest(AbstractModel):
 
     @property
     def TopicId(self):
-        r"""日志主题id。
-- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+        r"""<p>日志主题id。</p><ul><li>通过<a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a>获取日志主题Id。</li></ul>
         :rtype: str
         """
         return self._TopicId
@@ -35398,7 +35870,7 @@ class ModifyDlcDeliverRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""任务id。
+        r"""<p>任务id。</p>
         :rtype: str
         """
         return self._TaskId
@@ -35409,7 +35881,7 @@ class ModifyDlcDeliverRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""名称：长度不超过64字符，以字母开头，接受0-9,a-z,A-Z, _,-,中文字符。
+        r"""<p>名称：长度不超过64字符，以字母开头，接受0-9,a-z,A-Z, _,-,中文字符。</p>
         :rtype: str
         """
         return self._Name
@@ -35420,7 +35892,7 @@ class ModifyDlcDeliverRequest(AbstractModel):
 
     @property
     def DeliverType(self):
-        r"""投递类型。0:批投递,1:实时投递
+        r"""<p>投递类型。0:批投递,1:实时投递</p>
         :rtype: int
         """
         return self._DeliverType
@@ -35431,7 +35903,7 @@ class ModifyDlcDeliverRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""投递时间范围的开始时间
+        r"""<p>投递时间范围的开始时间</p>
         :rtype: int
         """
         return self._StartTime
@@ -35442,7 +35914,7 @@ class ModifyDlcDeliverRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""投递时间范围的结束时间。 如果为空，则表示不限时
+        r"""<p>投递时间范围的结束时间。 如果为空，则表示不限时</p>
         :rtype: int
         """
         return self._EndTime
@@ -35453,7 +35925,7 @@ class ModifyDlcDeliverRequest(AbstractModel):
 
     @property
     def MaxSize(self):
-        r"""投递文件大小,单位MB。 DeliverType=0时必填，范围 5<= MaxSize <= 256。
+        r"""<p>投递文件大小,单位MB。 DeliverType=0时必填，范围 5&lt;= MaxSize &lt;= 256。</p>
         :rtype: int
         """
         return self._MaxSize
@@ -35464,7 +35936,7 @@ class ModifyDlcDeliverRequest(AbstractModel):
 
     @property
     def Interval(self):
-        r"""投递间隔，单位秒。 DeliverType=0时必填，范围 300<= Interval <=900。
+        r"""<p>投递间隔，单位秒。 DeliverType=0时必填，范围 300&lt;= Interval &lt;=900。</p>
         :rtype: int
         """
         return self._Interval
@@ -35475,7 +35947,7 @@ class ModifyDlcDeliverRequest(AbstractModel):
 
     @property
     def DlcInfo(self):
-        r"""dlc配置信息
+        r"""<p>dlc配置信息</p>
         :rtype: :class:`tencentcloud.cls.v20201016.models.DlcInfo`
         """
         return self._DlcInfo
@@ -35486,7 +35958,7 @@ class ModifyDlcDeliverRequest(AbstractModel):
 
     @property
     def HasServicesLog(self):
-        r"""是否开启投递服务日志。1关闭，2开启。默认开启
+        r"""<p>是否开启投递服务日志。1关闭，2开启。默认开启</p>
         :rtype: int
         """
         return self._HasServicesLog
@@ -35497,7 +35969,7 @@ class ModifyDlcDeliverRequest(AbstractModel):
 
     @property
     def Status(self):
-        r"""任务状态。
+        r"""<p>任务状态。</p><p>枚举值：</p><ul><li>1： 运行</li><li>2： 停止</li></ul>
         :rtype: int
         """
         return self._Status
@@ -37242,6 +37714,85 @@ class ModifyMetricSubscribeRequest(AbstractModel):
 
 class ModifyMetricSubscribeResponse(AbstractModel):
     r"""ModifyMetricSubscribe返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyNetworkApplicationRequest(AbstractModel):
+    r"""ModifyNetworkApplication请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NetworkAppId: <p>网络应用id</p>
+        :type NetworkAppId: str
+        :param _Name: <p>网络应用名称：长度不超过64字符，名称不能重复。</p><ul><li>只能包含以下字符：<ul><li>英文字母（大小写）</li><li>数字</li><li>下划线</li><li>连字符（减号）</li><li>汉字</li></ul></li><li>至少包含一个字符</li><li>不能包含空格</li><li>不能包含其他特殊字符（如 @、#、$、% 等）</li></ul>
+        :type Name: str
+        """
+        self._NetworkAppId = None
+        self._Name = None
+
+    @property
+    def NetworkAppId(self):
+        r"""<p>网络应用id</p>
+        :rtype: str
+        """
+        return self._NetworkAppId
+
+    @NetworkAppId.setter
+    def NetworkAppId(self, NetworkAppId):
+        self._NetworkAppId = NetworkAppId
+
+    @property
+    def Name(self):
+        r"""<p>网络应用名称：长度不超过64字符，名称不能重复。</p><ul><li>只能包含以下字符：<ul><li>英文字母（大小写）</li><li>数字</li><li>下划线</li><li>连字符（减号）</li><li>汉字</li></ul></li><li>至少包含一个字符</li><li>不能包含空格</li><li>不能包含其他特殊字符（如 @、#、$、% 等）</li></ul>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+
+    def _deserialize(self, params):
+        self._NetworkAppId = params.get("NetworkAppId")
+        self._Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyNetworkApplicationResponse(AbstractModel):
+    r"""ModifyNetworkApplication返回参数结构体
 
     """
 
@@ -39061,6 +39612,333 @@ class NetInfo(AbstractModel):
         self._VpcId = params.get("VpcId")
         self._VirtualGatewayType = params.get("VirtualGatewayType")
         self._IsSSL = params.get("IsSSL")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NetworkApplicationDetail(AbstractModel):
+    r"""网络应用任务详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NetworkAppId: 网络应用Id
+        :type NetworkAppId: str
+        :param _Name: 网络应用名称
+        :type Name: str
+        :param _Region: 地域code
+        :type Region: str
+        :param _TopicId: 日志主题id
+        :type TopicId: str
+        :param _LogsetId: 日志集id
+        :type LogsetId: str
+        :param _Token: 应用token
+        :type Token: str
+        :param _Uin: 主账号id
+        :type Uin: int
+        :param _SubUin: 子账号id
+        :type SubUin: int
+        :param _CreateTime: 创建时间，秒级时间戳
+        :type CreateTime: int
+        :param _UpdateTime: 更新时间，秒级时间戳
+        :type UpdateTime: int
+        """
+        self._NetworkAppId = None
+        self._Name = None
+        self._Region = None
+        self._TopicId = None
+        self._LogsetId = None
+        self._Token = None
+        self._Uin = None
+        self._SubUin = None
+        self._CreateTime = None
+        self._UpdateTime = None
+
+    @property
+    def NetworkAppId(self):
+        r"""网络应用Id
+        :rtype: str
+        """
+        return self._NetworkAppId
+
+    @NetworkAppId.setter
+    def NetworkAppId(self, NetworkAppId):
+        self._NetworkAppId = NetworkAppId
+
+    @property
+    def Name(self):
+        r"""网络应用名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Region(self):
+        r"""地域code
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def TopicId(self):
+        r"""日志主题id
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def LogsetId(self):
+        r"""日志集id
+        :rtype: str
+        """
+        return self._LogsetId
+
+    @LogsetId.setter
+    def LogsetId(self, LogsetId):
+        self._LogsetId = LogsetId
+
+    @property
+    def Token(self):
+        r"""应用token
+        :rtype: str
+        """
+        return self._Token
+
+    @Token.setter
+    def Token(self, Token):
+        self._Token = Token
+
+    @property
+    def Uin(self):
+        r"""主账号id
+        :rtype: int
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def SubUin(self):
+        r"""子账号id
+        :rtype: int
+        """
+        return self._SubUin
+
+    @SubUin.setter
+    def SubUin(self, SubUin):
+        self._SubUin = SubUin
+
+    @property
+    def CreateTime(self):
+        r"""创建时间，秒级时间戳
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""更新时间，秒级时间戳
+        :rtype: int
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._NetworkAppId = params.get("NetworkAppId")
+        self._Name = params.get("Name")
+        self._Region = params.get("Region")
+        self._TopicId = params.get("TopicId")
+        self._LogsetId = params.get("LogsetId")
+        self._Token = params.get("Token")
+        self._Uin = params.get("Uin")
+        self._SubUin = params.get("SubUin")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NetworkApplicationInfo(AbstractModel):
+    r"""网络应用任务信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NetworkAppId: 网络应用Id
+        :type NetworkAppId: str
+        :param _Name: 网络应用名称
+        :type Name: str
+        :param _Region: 地域code
+        :type Region: str
+        :param _TopicId: 日志主题id
+        :type TopicId: str
+        :param _LogsetId: 日志集id
+        :type LogsetId: str
+        :param _Uin: 主账号id
+        :type Uin: int
+        :param _SubUin: 子账号id
+        :type SubUin: int
+        :param _CreateTime: 创建时间，秒级时间戳
+        :type CreateTime: int
+        :param _UpdateTime: 更新时间，秒级时间戳
+        :type UpdateTime: int
+        """
+        self._NetworkAppId = None
+        self._Name = None
+        self._Region = None
+        self._TopicId = None
+        self._LogsetId = None
+        self._Uin = None
+        self._SubUin = None
+        self._CreateTime = None
+        self._UpdateTime = None
+
+    @property
+    def NetworkAppId(self):
+        r"""网络应用Id
+        :rtype: str
+        """
+        return self._NetworkAppId
+
+    @NetworkAppId.setter
+    def NetworkAppId(self, NetworkAppId):
+        self._NetworkAppId = NetworkAppId
+
+    @property
+    def Name(self):
+        r"""网络应用名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Region(self):
+        r"""地域code
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def TopicId(self):
+        r"""日志主题id
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def LogsetId(self):
+        r"""日志集id
+        :rtype: str
+        """
+        return self._LogsetId
+
+    @LogsetId.setter
+    def LogsetId(self, LogsetId):
+        self._LogsetId = LogsetId
+
+    @property
+    def Uin(self):
+        r"""主账号id
+        :rtype: int
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def SubUin(self):
+        r"""子账号id
+        :rtype: int
+        """
+        return self._SubUin
+
+    @SubUin.setter
+    def SubUin(self, SubUin):
+        self._SubUin = SubUin
+
+    @property
+    def CreateTime(self):
+        r"""创建时间，秒级时间戳
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""更新时间，秒级时间戳
+        :rtype: int
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._NetworkAppId = params.get("NetworkAppId")
+        self._Name = params.get("Name")
+        self._Region = params.get("Region")
+        self._TopicId = params.get("TopicId")
+        self._LogsetId = params.get("LogsetId")
+        self._Uin = params.get("Uin")
+        self._SubUin = params.get("SubUin")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

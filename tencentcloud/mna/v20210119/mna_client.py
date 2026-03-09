@@ -49,6 +49,29 @@ class MnaClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def AddApplication(self, request):
+        r"""新建应用
+
+        :param request: Request instance for AddApplication.
+        :type request: :class:`tencentcloud.mna.v20210119.models.AddApplicationRequest`
+        :rtype: :class:`tencentcloud.mna.v20210119.models.AddApplicationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AddApplication", params, headers=headers)
+            response = json.loads(body)
+            model = models.AddApplicationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def AddDevice(self, request):
         r"""新建设备记录
 
@@ -164,6 +187,29 @@ class MnaClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteApplication(self, request):
+        r"""删除应用
+
+        :param request: Request instance for DeleteApplication.
+        :type request: :class:`tencentcloud.mna.v20210119.models.DeleteApplicationRequest`
+        :rtype: :class:`tencentcloud.mna.v20210119.models.DeleteApplicationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteApplication", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteApplicationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteDevice(self, request):
         r"""删除设备信息
 
@@ -270,6 +316,29 @@ class MnaClient(AbstractClient):
             body = self.call("GetActiveDeviceCount", params, headers=headers)
             response = json.loads(body)
             model = models.GetActiveDeviceCountResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GetApplication(self, request):
+        r"""应用查询
+
+        :param request: Request instance for GetApplication.
+        :type request: :class:`tencentcloud.mna.v20210119.models.GetApplicationRequest`
+        :rtype: :class:`tencentcloud.mna.v20210119.models.GetApplicationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetApplication", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetApplicationResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -937,6 +1006,52 @@ class MnaClient(AbstractClient):
             body = self.call("SetNotifyUrl", params, headers=headers)
             response = json.loads(body)
             model = models.SetNotifyUrlResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateApplicationInfo(self, request):
+        r"""更新应用信息
+
+        :param request: Request instance for UpdateApplicationInfo.
+        :type request: :class:`tencentcloud.mna.v20210119.models.UpdateApplicationInfoRequest`
+        :rtype: :class:`tencentcloud.mna.v20210119.models.UpdateApplicationInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateApplicationInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateApplicationInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateApplicationKey(self, request):
+        r"""更新应用密钥
+
+        :param request: Request instance for UpdateApplicationKey.
+        :type request: :class:`tencentcloud.mna.v20210119.models.UpdateApplicationKeyRequest`
+        :rtype: :class:`tencentcloud.mna.v20210119.models.UpdateApplicationKeyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateApplicationKey", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateApplicationKeyResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

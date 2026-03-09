@@ -4478,6 +4478,29 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDesignatedZones(self, request):
+        r"""用于查询用户创建带宽包时可指定的可用区信息
+
+        :param request: Request instance for DescribeDesignatedZones.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeDesignatedZonesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeDesignatedZonesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDesignatedZones", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDesignatedZonesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDhcpIps(self, request):
         r"""本接口（DescribeDhcpIps）用于查询DhcpIp列表
 

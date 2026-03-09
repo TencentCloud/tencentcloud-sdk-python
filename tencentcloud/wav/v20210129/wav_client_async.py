@@ -49,6 +49,8 @@ class WavClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateCorpTagResponse:
         """
+        产品已EOL
+
         该接口用户设置标签库, 每个企业最多可配置3000个企业标签。
         """
         

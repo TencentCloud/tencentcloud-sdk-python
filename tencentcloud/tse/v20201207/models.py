@@ -201,6 +201,152 @@ class ApolloEnvParam(AbstractModel):
         
 
 
+class Argument(AbstractModel):
+    r"""路由规则来源服务的请求规则配置详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param _Key: key值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Key: str
+        :param _Value: 匹配条件参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: :class:`tencentcloud.tse.v20201207.models.ArgumentValue`
+        """
+        self._Type = None
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Type(self):
+        r"""类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Key(self):
+        r"""key值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        r"""匹配条件参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tse.v20201207.models.ArgumentValue`
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Key = params.get("Key")
+        if params.get("Value") is not None:
+            self._Value = ArgumentValue()
+            self._Value._deserialize(params.get("Value"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ArgumentValue(AbstractModel):
+    r"""被调服务配置表达式
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 表达式类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param _Value: 匹配值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        :param _ValueType: 值类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ValueType: str
+        """
+        self._Type = None
+        self._Value = None
+        self._ValueType = None
+
+    @property
+    def Type(self):
+        r"""表达式类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Value(self):
+        r"""匹配值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def ValueType(self):
+        r"""值类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ValueType
+
+    @ValueType.setter
+    def ValueType(self, ValueType):
+        self._ValueType = ValueType
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Value = params.get("Value")
+        self._ValueType = params.get("ValueType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AutoScalerBehavior(AbstractModel):
     r"""指标伸缩行为
 
@@ -7738,6 +7884,105 @@ class CreateGovernanceInstancesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateGovernanceLaneGroupsRequest(AbstractModel):
+    r"""CreateGovernanceLaneGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 引擎实例ID
+        :type InstanceId: str
+        :param _LaneGroups: 泳道组规则列表
+        :type LaneGroups: list of GovernanceLaneGroup
+        """
+        self._InstanceId = None
+        self._LaneGroups = None
+
+    @property
+    def InstanceId(self):
+        r"""引擎实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def LaneGroups(self):
+        r"""泳道组规则列表
+        :rtype: list of GovernanceLaneGroup
+        """
+        return self._LaneGroups
+
+    @LaneGroups.setter
+    def LaneGroups(self, LaneGroups):
+        self._LaneGroups = LaneGroups
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        if params.get("LaneGroups") is not None:
+            self._LaneGroups = []
+            for item in params.get("LaneGroups"):
+                obj = GovernanceLaneGroup()
+                obj._deserialize(item)
+                self._LaneGroups.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateGovernanceLaneGroupsResponse(AbstractModel):
+    r"""CreateGovernanceLaneGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 是否创建成功
+        :type Result: bool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""是否创建成功
+        :rtype: bool
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateGovernanceNamespacesRequest(AbstractModel):
     r"""CreateGovernanceNamespaces请求参数结构体
 
@@ -10368,6 +10613,311 @@ class DeleteGovernanceInstancesResponse(AbstractModel):
     @property
     def Result(self):
         r"""操作是否成功。
+        :rtype: bool
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteGovernanceLaneGroup(AbstractModel):
+    r"""泳道组
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 泳道名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _ID: 泳道组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ID: str
+        :param _TrafficEntries: 泳道入口服务列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TrafficEntries: list of LaneTrafficEntry
+        :param _Destinations: 泳道服务列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Destinations: list of GovernanceServiceDestination
+        :param _Description: 泳道组描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param _Revision: 规则内容摘要
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Revision: str
+        :param _CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _ModifyTime: 修改时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModifyTime: str
+        :param _Consistency: 规则一致性状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Consistency: str
+        :param _Rules: 泳道规则列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Rules: list of GovernanceLaneRule
+        """
+        self._Name = None
+        self._ID = None
+        self._TrafficEntries = None
+        self._Destinations = None
+        self._Description = None
+        self._Revision = None
+        self._CreateTime = None
+        self._ModifyTime = None
+        self._Consistency = None
+        self._Rules = None
+
+    @property
+    def Name(self):
+        r"""泳道名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ID(self):
+        r"""泳道组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def TrafficEntries(self):
+        r"""泳道入口服务列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of LaneTrafficEntry
+        """
+        return self._TrafficEntries
+
+    @TrafficEntries.setter
+    def TrafficEntries(self, TrafficEntries):
+        self._TrafficEntries = TrafficEntries
+
+    @property
+    def Destinations(self):
+        r"""泳道服务列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of GovernanceServiceDestination
+        """
+        return self._Destinations
+
+    @Destinations.setter
+    def Destinations(self, Destinations):
+        self._Destinations = Destinations
+
+    @property
+    def Description(self):
+        r"""泳道组描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Revision(self):
+        r"""规则内容摘要
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Revision
+
+    @Revision.setter
+    def Revision(self, Revision):
+        self._Revision = Revision
+
+    @property
+    def CreateTime(self):
+        r"""创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ModifyTime(self):
+        r"""修改时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ModifyTime
+
+    @ModifyTime.setter
+    def ModifyTime(self, ModifyTime):
+        self._ModifyTime = ModifyTime
+
+    @property
+    def Consistency(self):
+        r"""规则一致性状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Consistency
+
+    @Consistency.setter
+    def Consistency(self, Consistency):
+        self._Consistency = Consistency
+
+    @property
+    def Rules(self):
+        r"""泳道规则列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of GovernanceLaneRule
+        """
+        return self._Rules
+
+    @Rules.setter
+    def Rules(self, Rules):
+        self._Rules = Rules
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._ID = params.get("ID")
+        if params.get("TrafficEntries") is not None:
+            self._TrafficEntries = []
+            for item in params.get("TrafficEntries"):
+                obj = LaneTrafficEntry()
+                obj._deserialize(item)
+                self._TrafficEntries.append(obj)
+        if params.get("Destinations") is not None:
+            self._Destinations = []
+            for item in params.get("Destinations"):
+                obj = GovernanceServiceDestination()
+                obj._deserialize(item)
+                self._Destinations.append(obj)
+        self._Description = params.get("Description")
+        self._Revision = params.get("Revision")
+        self._CreateTime = params.get("CreateTime")
+        self._ModifyTime = params.get("ModifyTime")
+        self._Consistency = params.get("Consistency")
+        if params.get("Rules") is not None:
+            self._Rules = []
+            for item in params.get("Rules"):
+                obj = GovernanceLaneRule()
+                obj._deserialize(item)
+                self._Rules.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteGovernanceLaneGroupsRequest(AbstractModel):
+    r"""DeleteGovernanceLaneGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 引擎实例ID
+        :type InstanceId: str
+        :param _LaneGroups: 泳道组规则列表
+        :type LaneGroups: list of DeleteGovernanceLaneGroup
+        """
+        self._InstanceId = None
+        self._LaneGroups = None
+
+    @property
+    def InstanceId(self):
+        r"""引擎实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def LaneGroups(self):
+        r"""泳道组规则列表
+        :rtype: list of DeleteGovernanceLaneGroup
+        """
+        return self._LaneGroups
+
+    @LaneGroups.setter
+    def LaneGroups(self, LaneGroups):
+        self._LaneGroups = LaneGroups
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        if params.get("LaneGroups") is not None:
+            self._LaneGroups = []
+            for item in params.get("LaneGroups"):
+                obj = DeleteGovernanceLaneGroup()
+                obj._deserialize(item)
+                self._LaneGroups.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteGovernanceLaneGroupsResponse(AbstractModel):
+    r"""DeleteGovernanceLaneGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 是否创建成功
+        :type Result: bool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""是否创建成功
         :rtype: bool
         """
         return self._Result
@@ -15627,6 +16177,180 @@ class DescribeGovernanceInstancesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeGovernanceLaneGroupsRequest(AbstractModel):
+    r"""DescribeGovernanceLaneGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 引擎实例ID
+        :type InstanceId: str
+        :param _Offset: 分页查询偏移量
+        :type Offset: int
+        :param _Limit: 分页条数
+        :type Limit: int
+        :param _Name: 泳道名称
+        :type Name: str
+        :param _GroupID: 泳道ID
+        :type GroupID: str
+        :param _Brief: 是否展示泳道规则列表
+        :type Brief: bool
+        """
+        self._InstanceId = None
+        self._Offset = None
+        self._Limit = None
+        self._Name = None
+        self._GroupID = None
+        self._Brief = None
+
+    @property
+    def InstanceId(self):
+        r"""引擎实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Offset(self):
+        r"""分页查询偏移量
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""分页条数
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Name(self):
+        r"""泳道名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def GroupID(self):
+        r"""泳道ID
+        :rtype: str
+        """
+        return self._GroupID
+
+    @GroupID.setter
+    def GroupID(self, GroupID):
+        self._GroupID = GroupID
+
+    @property
+    def Brief(self):
+        r"""是否展示泳道规则列表
+        :rtype: bool
+        """
+        return self._Brief
+
+    @Brief.setter
+    def Brief(self, Brief):
+        self._Brief = Brief
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._Name = params.get("Name")
+        self._GroupID = params.get("GroupID")
+        self._Brief = params.get("Brief")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeGovernanceLaneGroupsResponse(AbstractModel):
+    r"""DescribeGovernanceLaneGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: 总数
+        :type Total: int
+        :param _LaneGroups: 泳道规则列表
+        :type LaneGroups: list of GovernanceLaneGroup
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._LaneGroups = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        r"""总数
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def LaneGroups(self):
+        r"""泳道规则列表
+        :rtype: list of GovernanceLaneGroup
+        """
+        return self._LaneGroups
+
+    @LaneGroups.setter
+    def LaneGroups(self, LaneGroups):
+        self._LaneGroups = LaneGroups
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("LaneGroups") is not None:
+            self._LaneGroups = []
+            for item in params.get("LaneGroups"):
+                obj = GovernanceLaneGroup()
+                obj._deserialize(item)
+                self._LaneGroups.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeGovernanceNamespacesRequest(AbstractModel):
     r"""DescribeGovernanceNamespaces请求参数结构体
 
@@ -20816,6 +21540,501 @@ class GovernanceInterfaceDescription(AbstractModel):
         
 
 
+class GovernanceLaneGroup(AbstractModel):
+    r"""泳道组
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 泳道名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _ID: 泳道组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ID: str
+        :param _TrafficEntries: 泳道入口服务列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TrafficEntries: list of LaneTrafficEntry
+        :param _Destinations: 泳道服务列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Destinations: list of GovernanceServiceDestination
+        :param _Description: 泳道组描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param _Rules: 该泳道组下的所有泳道规则列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Rules: list of GovernanceLaneRule
+        :param _Revision: 规则内容摘要
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Revision: str
+        :param _CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _ModifyTime: 修改时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModifyTime: str
+        :param _Consistency: 规则一致性状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Consistency: str
+        """
+        self._Name = None
+        self._ID = None
+        self._TrafficEntries = None
+        self._Destinations = None
+        self._Description = None
+        self._Rules = None
+        self._Revision = None
+        self._CreateTime = None
+        self._ModifyTime = None
+        self._Consistency = None
+
+    @property
+    def Name(self):
+        r"""泳道名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ID(self):
+        r"""泳道组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def TrafficEntries(self):
+        r"""泳道入口服务列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of LaneTrafficEntry
+        """
+        return self._TrafficEntries
+
+    @TrafficEntries.setter
+    def TrafficEntries(self, TrafficEntries):
+        self._TrafficEntries = TrafficEntries
+
+    @property
+    def Destinations(self):
+        r"""泳道服务列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of GovernanceServiceDestination
+        """
+        return self._Destinations
+
+    @Destinations.setter
+    def Destinations(self, Destinations):
+        self._Destinations = Destinations
+
+    @property
+    def Description(self):
+        r"""泳道组描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Rules(self):
+        r"""该泳道组下的所有泳道规则列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of GovernanceLaneRule
+        """
+        return self._Rules
+
+    @Rules.setter
+    def Rules(self, Rules):
+        self._Rules = Rules
+
+    @property
+    def Revision(self):
+        r"""规则内容摘要
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Revision
+
+    @Revision.setter
+    def Revision(self, Revision):
+        self._Revision = Revision
+
+    @property
+    def CreateTime(self):
+        r"""创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ModifyTime(self):
+        r"""修改时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ModifyTime
+
+    @ModifyTime.setter
+    def ModifyTime(self, ModifyTime):
+        self._ModifyTime = ModifyTime
+
+    @property
+    def Consistency(self):
+        r"""规则一致性状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Consistency
+
+    @Consistency.setter
+    def Consistency(self, Consistency):
+        self._Consistency = Consistency
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._ID = params.get("ID")
+        if params.get("TrafficEntries") is not None:
+            self._TrafficEntries = []
+            for item in params.get("TrafficEntries"):
+                obj = LaneTrafficEntry()
+                obj._deserialize(item)
+                self._TrafficEntries.append(obj)
+        if params.get("Destinations") is not None:
+            self._Destinations = []
+            for item in params.get("Destinations"):
+                obj = GovernanceServiceDestination()
+                obj._deserialize(item)
+                self._Destinations.append(obj)
+        self._Description = params.get("Description")
+        if params.get("Rules") is not None:
+            self._Rules = []
+            for item in params.get("Rules"):
+                obj = GovernanceLaneRule()
+                obj._deserialize(item)
+                self._Rules.append(obj)
+        self._Revision = params.get("Revision")
+        self._CreateTime = params.get("CreateTime")
+        self._ModifyTime = params.get("ModifyTime")
+        self._Consistency = params.get("Consistency")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GovernanceLaneRule(AbstractModel):
+    r"""泳道规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: 泳道规则ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ID: str
+        :param _Name: 泳道名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _LaneGroup: 泳道所属泳道组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LaneGroup: str
+        :param _Enable: 泳道规则启用状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Enable: bool
+        :param _TrafficLabels: 流量标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TrafficLabels: list of Argument
+        :param _TrafficMatchMode: 多个流量标签匹配方式
+AND：与
+OR：或
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TrafficMatchMode: str
+        :param _LaneMatchMode: 泳道匹配方式
+STRICT：严格匹配
+PERMISSIVE：宽松匹配
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LaneMatchMode: str
+        :param _TrafficGray: 泳道灰度规则
+        :type TrafficGray: :class:`tencentcloud.tse.v20201207.models.TrafficGray`
+        :param _Description: 泳道规则描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param _LaneLabelValue: 泳道标签内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LaneLabelValue: str
+        :param _CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _EnableTime: 启用时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnableTime: str
+        :param _ModifyTime: 修改时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModifyTime: str
+        :param _Priority: 泳道规则优先级
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Priority: int
+        :param _Revision: 规则摘要
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Revision: str
+        """
+        self._ID = None
+        self._Name = None
+        self._LaneGroup = None
+        self._Enable = None
+        self._TrafficLabels = None
+        self._TrafficMatchMode = None
+        self._LaneMatchMode = None
+        self._TrafficGray = None
+        self._Description = None
+        self._LaneLabelValue = None
+        self._CreateTime = None
+        self._EnableTime = None
+        self._ModifyTime = None
+        self._Priority = None
+        self._Revision = None
+
+    @property
+    def ID(self):
+        r"""泳道规则ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def Name(self):
+        r"""泳道名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def LaneGroup(self):
+        r"""泳道所属泳道组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._LaneGroup
+
+    @LaneGroup.setter
+    def LaneGroup(self, LaneGroup):
+        self._LaneGroup = LaneGroup
+
+    @property
+    def Enable(self):
+        r"""泳道规则启用状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+    @property
+    def TrafficLabels(self):
+        r"""流量标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Argument
+        """
+        return self._TrafficLabels
+
+    @TrafficLabels.setter
+    def TrafficLabels(self, TrafficLabels):
+        self._TrafficLabels = TrafficLabels
+
+    @property
+    def TrafficMatchMode(self):
+        r"""多个流量标签匹配方式
+AND：与
+OR：或
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TrafficMatchMode
+
+    @TrafficMatchMode.setter
+    def TrafficMatchMode(self, TrafficMatchMode):
+        self._TrafficMatchMode = TrafficMatchMode
+
+    @property
+    def LaneMatchMode(self):
+        r"""泳道匹配方式
+STRICT：严格匹配
+PERMISSIVE：宽松匹配
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._LaneMatchMode
+
+    @LaneMatchMode.setter
+    def LaneMatchMode(self, LaneMatchMode):
+        self._LaneMatchMode = LaneMatchMode
+
+    @property
+    def TrafficGray(self):
+        r"""泳道灰度规则
+        :rtype: :class:`tencentcloud.tse.v20201207.models.TrafficGray`
+        """
+        return self._TrafficGray
+
+    @TrafficGray.setter
+    def TrafficGray(self, TrafficGray):
+        self._TrafficGray = TrafficGray
+
+    @property
+    def Description(self):
+        r"""泳道规则描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def LaneLabelValue(self):
+        r"""泳道标签内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._LaneLabelValue
+
+    @LaneLabelValue.setter
+    def LaneLabelValue(self, LaneLabelValue):
+        self._LaneLabelValue = LaneLabelValue
+
+    @property
+    def CreateTime(self):
+        r"""创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def EnableTime(self):
+        r"""启用时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._EnableTime
+
+    @EnableTime.setter
+    def EnableTime(self, EnableTime):
+        self._EnableTime = EnableTime
+
+    @property
+    def ModifyTime(self):
+        r"""修改时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ModifyTime
+
+    @ModifyTime.setter
+    def ModifyTime(self, ModifyTime):
+        self._ModifyTime = ModifyTime
+
+    @property
+    def Priority(self):
+        r"""泳道规则优先级
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+    @property
+    def Revision(self):
+        r"""规则摘要
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Revision
+
+    @Revision.setter
+    def Revision(self, Revision):
+        self._Revision = Revision
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        self._Name = params.get("Name")
+        self._LaneGroup = params.get("LaneGroup")
+        self._Enable = params.get("Enable")
+        if params.get("TrafficLabels") is not None:
+            self._TrafficLabels = []
+            for item in params.get("TrafficLabels"):
+                obj = Argument()
+                obj._deserialize(item)
+                self._TrafficLabels.append(obj)
+        self._TrafficMatchMode = params.get("TrafficMatchMode")
+        self._LaneMatchMode = params.get("LaneMatchMode")
+        if params.get("TrafficGray") is not None:
+            self._TrafficGray = TrafficGray()
+            self._TrafficGray._deserialize(params.get("TrafficGray"))
+        self._Description = params.get("Description")
+        self._LaneLabelValue = params.get("LaneLabelValue")
+        self._CreateTime = params.get("CreateTime")
+        self._EnableTime = params.get("EnableTime")
+        self._ModifyTime = params.get("ModifyTime")
+        self._Priority = params.get("Priority")
+        self._Revision = params.get("Revision")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class GovernanceNamespace(AbstractModel):
     r"""治理中心命名空间
 
@@ -21837,6 +23056,83 @@ class GovernanceServiceContractVersion(AbstractModel):
         self._Version = params.get("Version")
         self._Name = params.get("Name")
         self._Key = params.get("Key")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GovernanceServiceDestination(AbstractModel):
+    r"""服务实例组
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Namespace: 命名空间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Namespace: str
+        :param _Service: 服务
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Service: str
+        :param _Labels: 实例标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Labels: list of RoutingDestinationRuleLabel
+        """
+        self._Namespace = None
+        self._Service = None
+        self._Labels = None
+
+    @property
+    def Namespace(self):
+        r"""命名空间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def Service(self):
+        r"""服务
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Service
+
+    @Service.setter
+    def Service(self, Service):
+        self._Service = Service
+
+    @property
+    def Labels(self):
+        r"""实例标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of RoutingDestinationRuleLabel
+        """
+        return self._Labels
+
+    @Labels.setter
+    def Labels(self, Labels):
+        self._Labels = Labels
+
+
+    def _deserialize(self, params):
+        self._Namespace = params.get("Namespace")
+        self._Service = params.get("Service")
+        if params.get("Labels") is not None:
+            self._Labels = []
+            for item in params.get("Labels"):
+                obj = RoutingDestinationRuleLabel()
+                obj._deserialize(item)
+                self._Labels.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -24461,6 +25757,156 @@ class KongUpstreamPreview(AbstractModel):
         
 
 
+class Label(AbstractModel):
+    r"""标签
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 标签键名称
+        :type Key: str
+        :param _Value: 标签值
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        r"""标签键名称
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        r"""标签值
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LaneTrafficEntry(AbstractModel):
+    r"""泳道入口信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EntryType:    // type == "polarismesh.cn/gateway/tse-gateway, 则 selector 为 TSEGatewaySelector
+   // type == "polarismesh.cn/gateway/spring-cloud-gateway", 则 selector 为 ServiceGatewaySelector
+   // type == "polarismesh.cn/service, 则 selector 为 ServiceSelector
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EntryType: str
+        :param _TSEGatewaySelector: TSE云原生网关选择器
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TSEGatewaySelector: :class:`tencentcloud.tse.v20201207.models.TSEGatewaySelector`
+        :param _ServiceGatewaySelector: 微服务网关选择器
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceGatewaySelector: :class:`tencentcloud.tse.v20201207.models.ServiceGatewaySelector`
+        :param _ServiceSelector: 普通微服务选择器
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceSelector: :class:`tencentcloud.tse.v20201207.models.ServiceSelector`
+        """
+        self._EntryType = None
+        self._TSEGatewaySelector = None
+        self._ServiceGatewaySelector = None
+        self._ServiceSelector = None
+
+    @property
+    def EntryType(self):
+        r"""   // type == "polarismesh.cn/gateway/tse-gateway, 则 selector 为 TSEGatewaySelector
+   // type == "polarismesh.cn/gateway/spring-cloud-gateway", 则 selector 为 ServiceGatewaySelector
+   // type == "polarismesh.cn/service, 则 selector 为 ServiceSelector
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._EntryType
+
+    @EntryType.setter
+    def EntryType(self, EntryType):
+        self._EntryType = EntryType
+
+    @property
+    def TSEGatewaySelector(self):
+        r"""TSE云原生网关选择器
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tse.v20201207.models.TSEGatewaySelector`
+        """
+        return self._TSEGatewaySelector
+
+    @TSEGatewaySelector.setter
+    def TSEGatewaySelector(self, TSEGatewaySelector):
+        self._TSEGatewaySelector = TSEGatewaySelector
+
+    @property
+    def ServiceGatewaySelector(self):
+        r"""微服务网关选择器
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tse.v20201207.models.ServiceGatewaySelector`
+        """
+        return self._ServiceGatewaySelector
+
+    @ServiceGatewaySelector.setter
+    def ServiceGatewaySelector(self, ServiceGatewaySelector):
+        self._ServiceGatewaySelector = ServiceGatewaySelector
+
+    @property
+    def ServiceSelector(self):
+        r"""普通微服务选择器
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tse.v20201207.models.ServiceSelector`
+        """
+        return self._ServiceSelector
+
+    @ServiceSelector.setter
+    def ServiceSelector(self, ServiceSelector):
+        self._ServiceSelector = ServiceSelector
+
+
+    def _deserialize(self, params):
+        self._EntryType = params.get("EntryType")
+        if params.get("TSEGatewaySelector") is not None:
+            self._TSEGatewaySelector = TSEGatewaySelector()
+            self._TSEGatewaySelector._deserialize(params.get("TSEGatewaySelector"))
+        if params.get("ServiceGatewaySelector") is not None:
+            self._ServiceGatewaySelector = ServiceGatewaySelector()
+            self._ServiceGatewaySelector._deserialize(params.get("ServiceGatewaySelector"))
+        if params.get("ServiceSelector") is not None:
+            self._ServiceSelector = ServiceSelector()
+            self._ServiceSelector._deserialize(params.get("ServiceSelector"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class LimitRule(AbstractModel):
     r"""参数限流的规则
 
@@ -26835,6 +28281,105 @@ class ModifyGovernanceInstancesResponse(AbstractModel):
     @property
     def Result(self):
         r"""修改是否成功。
+        :rtype: bool
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyGovernanceLaneGroupsRequest(AbstractModel):
+    r"""ModifyGovernanceLaneGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 引擎实例ID
+        :type InstanceId: str
+        :param _LaneGroups: 泳道组规则列表
+        :type LaneGroups: list of GovernanceLaneGroup
+        """
+        self._InstanceId = None
+        self._LaneGroups = None
+
+    @property
+    def InstanceId(self):
+        r"""引擎实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def LaneGroups(self):
+        r"""泳道组规则列表
+        :rtype: list of GovernanceLaneGroup
+        """
+        return self._LaneGroups
+
+    @LaneGroups.setter
+    def LaneGroups(self, LaneGroups):
+        self._LaneGroups = LaneGroups
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        if params.get("LaneGroups") is not None:
+            self._LaneGroups = []
+            for item in params.get("LaneGroups"):
+                obj = GovernanceLaneGroup()
+                obj._deserialize(item)
+                self._LaneGroups.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyGovernanceLaneGroupsResponse(AbstractModel):
+    r"""ModifyGovernanceLaneGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 是否创建成功
+        :type Result: bool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""是否创建成功
         :rtype: bool
         """
         return self._Result
@@ -29444,6 +30989,95 @@ class RouteWafStatus(AbstractModel):
         
 
 
+class RoutingDestinationRuleLabel(AbstractModel):
+    r"""目标服务实例实例标签信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LabelKey: 标签键
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LabelKey: str
+        :param _LabelValue: 标签值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LabelValue: str
+        :param _LabelType: 表达式类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LabelType: str
+        :param _LabelValueType: 值类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LabelValueType: str
+        """
+        self._LabelKey = None
+        self._LabelValue = None
+        self._LabelType = None
+        self._LabelValueType = None
+
+    @property
+    def LabelKey(self):
+        r"""标签键
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._LabelKey
+
+    @LabelKey.setter
+    def LabelKey(self, LabelKey):
+        self._LabelKey = LabelKey
+
+    @property
+    def LabelValue(self):
+        r"""标签值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._LabelValue
+
+    @LabelValue.setter
+    def LabelValue(self, LabelValue):
+        self._LabelValue = LabelValue
+
+    @property
+    def LabelType(self):
+        r"""表达式类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._LabelType
+
+    @LabelType.setter
+    def LabelType(self, LabelType):
+        self._LabelType = LabelType
+
+    @property
+    def LabelValueType(self):
+        r"""值类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._LabelValueType
+
+    @LabelValueType.setter
+    def LabelValueType(self, LabelValueType):
+        self._LabelValueType = LabelValueType
+
+
+    def _deserialize(self, params):
+        self._LabelKey = params.get("LabelKey")
+        self._LabelValue = params.get("LabelValue")
+        self._LabelType = params.get("LabelType")
+        self._LabelValueType = params.get("LabelValueType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RuleFilter(AbstractModel):
     r"""限流规则的Filter
 
@@ -30178,6 +31812,83 @@ class SREInstance(AbstractModel):
         
 
 
+class ServiceGatewaySelector(AbstractModel):
+    r"""微服务网关选择器
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Namespace: 命名空间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Namespace: str
+        :param _Service: 服务
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Service: str
+        :param _Labels: 实例标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Labels: list of Label
+        """
+        self._Namespace = None
+        self._Service = None
+        self._Labels = None
+
+    @property
+    def Namespace(self):
+        r"""命名空间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def Service(self):
+        r"""服务
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Service
+
+    @Service.setter
+    def Service(self, Service):
+        self._Service = Service
+
+    @property
+    def Labels(self):
+        r"""实例标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Label
+        """
+        return self._Labels
+
+    @Labels.setter
+    def Labels(self, Labels):
+        self._Labels = Labels
+
+
+    def _deserialize(self, params):
+        self._Namespace = params.get("Namespace")
+        self._Service = params.get("Service")
+        if params.get("Labels") is not None:
+            self._Labels = []
+            for item in params.get("Labels"):
+                obj = Label()
+                obj._deserialize(item)
+                self._Labels.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ServiceGovernanceInfo(AbstractModel):
     r"""服务治理相关的信息
 
@@ -30364,6 +32075,83 @@ class ServiceGovernanceInfo(AbstractModel):
                 obj._deserialize(item)
                 self._CLSTopics.append(obj)
         self._SubPassword = params.get("SubPassword")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ServiceSelector(AbstractModel):
+    r"""普通服务选择器
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Namespace: 命名空间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Namespace: str
+        :param _Service: 服务
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Service: str
+        :param _Labels: 实例标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Labels: list of Label
+        """
+        self._Namespace = None
+        self._Service = None
+        self._Labels = None
+
+    @property
+    def Namespace(self):
+        r"""命名空间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def Service(self):
+        r"""服务
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Service
+
+    @Service.setter
+    def Service(self, Service):
+        self._Service = Service
+
+    @property
+    def Labels(self):
+        r"""实例标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Label
+        """
+        return self._Labels
+
+    @Labels.setter
+    def Labels(self, Labels):
+        self._Labels = Labels
+
+
+    def _deserialize(self, params):
+        self._Namespace = params.get("Namespace")
+        self._Service = params.get("Service")
+        if params.get("Labels") is not None:
+            self._Labels = []
+            for item in params.get("Labels"):
+                obj = Label()
+                obj._deserialize(item)
+                self._Labels.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -30698,6 +32486,142 @@ class StorageOption(AbstractModel):
         self._Name = params.get("Name")
         self._Type = params.get("Type")
         self._Capacity = params.get("Capacity")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TSEGatewaySelector(AbstractModel):
+    r"""网关服务信息匹配条件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: 网关引擎实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GatewayId: str
+        :param _Services: 网关服务
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Services: list of str
+        """
+        self._GatewayId = None
+        self._Services = None
+
+    @property
+    def GatewayId(self):
+        r"""网关引擎实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def Services(self):
+        r"""网关服务
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._Services
+
+    @Services.setter
+    def Services(self, Services):
+        self._Services = Services
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._Services = params.get("Services")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TrafficGray(AbstractModel):
+    r"""泳道流量灰度规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Mode: 流量灰度规则，按比例灰度或预热方式
+        :type Mode: str
+        :param _Percent: 按比例灰度的百分比值1-100
+        :type Percent: int
+        :param _IntervalSecond: 预热的间隔
+        :type IntervalSecond: int
+        :param _Curvature: 预热的曲度
+        :type Curvature: int
+        """
+        self._Mode = None
+        self._Percent = None
+        self._IntervalSecond = None
+        self._Curvature = None
+
+    @property
+    def Mode(self):
+        r"""流量灰度规则，按比例灰度或预热方式
+        :rtype: str
+        """
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
+    @property
+    def Percent(self):
+        r"""按比例灰度的百分比值1-100
+        :rtype: int
+        """
+        return self._Percent
+
+    @Percent.setter
+    def Percent(self, Percent):
+        self._Percent = Percent
+
+    @property
+    def IntervalSecond(self):
+        r"""预热的间隔
+        :rtype: int
+        """
+        return self._IntervalSecond
+
+    @IntervalSecond.setter
+    def IntervalSecond(self, IntervalSecond):
+        self._IntervalSecond = IntervalSecond
+
+    @property
+    def Curvature(self):
+        r"""预热的曲度
+        :rtype: int
+        """
+        return self._Curvature
+
+    @Curvature.setter
+    def Curvature(self, Curvature):
+        self._Curvature = Curvature
+
+
+    def _deserialize(self, params):
+        self._Mode = params.get("Mode")
+        self._Percent = params.get("Percent")
+        self._IntervalSecond = params.get("IntervalSecond")
+        self._Curvature = params.get("Curvature")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

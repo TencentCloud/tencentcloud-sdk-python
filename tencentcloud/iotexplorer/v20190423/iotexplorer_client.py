@@ -3431,7 +3431,7 @@ class IotexplorerClient(AbstractClient):
 
 
     def InvokeTWeSeeRecognitionTaskWithFile(self, request):
-        r"""同步执行 TWeSee 语义理解任务
+        r"""上传文件并同步执行 TWeSee 语义理解任务
 
         :param request: Request instance for InvokeTWeSeeRecognitionTaskWithFile.
         :type request: :class:`tencentcloud.iotexplorer.v20190423.models.InvokeTWeSeeRecognitionTaskWithFileRequest`

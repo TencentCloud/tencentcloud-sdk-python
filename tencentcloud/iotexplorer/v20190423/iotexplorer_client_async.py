@@ -2695,7 +2695,7 @@ class IotexplorerClient(AbstractClient):
             opts: Dict = None,
     ) -> models.InvokeTWeSeeRecognitionTaskWithFileResponse:
         """
-        同步执行 TWeSee 语义理解任务
+        上传文件并同步执行 TWeSee 语义理解任务
         """
         
         kwargs = {}

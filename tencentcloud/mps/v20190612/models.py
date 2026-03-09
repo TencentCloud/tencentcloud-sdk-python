@@ -38904,29 +38904,26 @@ class EditMediaRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FileInfos: 输入的视频文件信息。
+        :param _FileInfos: <p>输入的视频文件信息。</p>
         :type FileInfos: list of EditMediaFileInfo
-        :param _OutputStorage: 媒体处理输出文件的目标存储。
+        :param _OutputStorage: <p>媒体处理输出文件的目标存储。</p>
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
-        :param _OutputObjectPath: 媒体处理输出文件的目标路径。
-
-注意：对于复杂合成任务，路径中的文件名只可为数字、字母、-、_ 的组合，最长 64 个字符。
-
+        :param _OutputObjectPath: <p>媒体处理输出文件的目标路径。</p><p>注意：对于复杂合成任务，路径中的文件名只可为数字、字母、-、_ 的组合，最长 64 个字符。</p>
         :type OutputObjectPath: str
-        :param _OutputConfig: 【剪辑】任务生成的文件配置。
+        :param _OutputConfig: <p>【剪辑】任务生成的文件配置。</p>
         :type OutputConfig: :class:`tencentcloud.mps.v20190612.models.EditMediaOutputConfig`
-        :param _ComposeConfig: 【合成】任务配置。
-
-注意：当其不为空时，认为是合成任务，否则按剪辑任务处理。
+        :param _ComposeConfig: <p>【合成】任务配置。</p><p>注意：当其不为空时，认为是合成任务，否则按剪辑任务处理。</p>
         :type ComposeConfig: :class:`tencentcloud.mps.v20190612.models.ComposeMediaConfig`
-        :param _TaskNotifyConfig: 任务的事件通知信息，不填代表不获取事件通知。
+        :param _TaskNotifyConfig: <p>任务的事件通知信息，不填代表不获取事件通知。</p>
         :type TaskNotifyConfig: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
-        :param _TasksPriority: 任务优先级，数值越大优先级越高，取值范围是-10到 10，不填代表0。
+        :param _TasksPriority: <p>任务优先级，数值越大优先级越高，取值范围是-10到 10，不填代表0。</p>
         :type TasksPriority: int
-        :param _SessionId: 用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+        :param _SessionId: <p>用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。</p>
         :type SessionId: str
-        :param _SessionContext: 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+        :param _SessionContext: <p>来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。</p>
         :type SessionContext: str
+        :param _ResourceId: <p>资源ID，需要保证对应资源是开启状态。默认为帐号主资源ID。</p>
+        :type ResourceId: str
         """
         self._FileInfos = None
         self._OutputStorage = None
@@ -38937,10 +38934,11 @@ class EditMediaRequest(AbstractModel):
         self._TasksPriority = None
         self._SessionId = None
         self._SessionContext = None
+        self._ResourceId = None
 
     @property
     def FileInfos(self):
-        r"""输入的视频文件信息。
+        r"""<p>输入的视频文件信息。</p>
         :rtype: list of EditMediaFileInfo
         """
         return self._FileInfos
@@ -38951,7 +38949,7 @@ class EditMediaRequest(AbstractModel):
 
     @property
     def OutputStorage(self):
-        r"""媒体处理输出文件的目标存储。
+        r"""<p>媒体处理输出文件的目标存储。</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
         return self._OutputStorage
@@ -38962,10 +38960,7 @@ class EditMediaRequest(AbstractModel):
 
     @property
     def OutputObjectPath(self):
-        r"""媒体处理输出文件的目标路径。
-
-注意：对于复杂合成任务，路径中的文件名只可为数字、字母、-、_ 的组合，最长 64 个字符。
-
+        r"""<p>媒体处理输出文件的目标路径。</p><p>注意：对于复杂合成任务，路径中的文件名只可为数字、字母、-、_ 的组合，最长 64 个字符。</p>
         :rtype: str
         """
         return self._OutputObjectPath
@@ -38976,7 +38971,7 @@ class EditMediaRequest(AbstractModel):
 
     @property
     def OutputConfig(self):
-        r"""【剪辑】任务生成的文件配置。
+        r"""<p>【剪辑】任务生成的文件配置。</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.EditMediaOutputConfig`
         """
         return self._OutputConfig
@@ -38987,9 +38982,7 @@ class EditMediaRequest(AbstractModel):
 
     @property
     def ComposeConfig(self):
-        r"""【合成】任务配置。
-
-注意：当其不为空时，认为是合成任务，否则按剪辑任务处理。
+        r"""<p>【合成】任务配置。</p><p>注意：当其不为空时，认为是合成任务，否则按剪辑任务处理。</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.ComposeMediaConfig`
         """
         return self._ComposeConfig
@@ -39000,7 +38993,7 @@ class EditMediaRequest(AbstractModel):
 
     @property
     def TaskNotifyConfig(self):
-        r"""任务的事件通知信息，不填代表不获取事件通知。
+        r"""<p>任务的事件通知信息，不填代表不获取事件通知。</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
         """
         return self._TaskNotifyConfig
@@ -39011,7 +39004,7 @@ class EditMediaRequest(AbstractModel):
 
     @property
     def TasksPriority(self):
-        r"""任务优先级，数值越大优先级越高，取值范围是-10到 10，不填代表0。
+        r"""<p>任务优先级，数值越大优先级越高，取值范围是-10到 10，不填代表0。</p>
         :rtype: int
         """
         return self._TasksPriority
@@ -39022,7 +39015,7 @@ class EditMediaRequest(AbstractModel):
 
     @property
     def SessionId(self):
-        r"""用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+        r"""<p>用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。</p>
         :rtype: str
         """
         return self._SessionId
@@ -39033,7 +39026,7 @@ class EditMediaRequest(AbstractModel):
 
     @property
     def SessionContext(self):
-        r"""来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+        r"""<p>来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。</p>
         :rtype: str
         """
         return self._SessionContext
@@ -39041,6 +39034,17 @@ class EditMediaRequest(AbstractModel):
     @SessionContext.setter
     def SessionContext(self, SessionContext):
         self._SessionContext = SessionContext
+
+    @property
+    def ResourceId(self):
+        r"""<p>资源ID，需要保证对应资源是开启状态。默认为帐号主资源ID。</p>
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
 
 
     def _deserialize(self, params):
@@ -39066,6 +39070,7 @@ class EditMediaRequest(AbstractModel):
         self._TasksPriority = params.get("TasksPriority")
         self._SessionId = params.get("SessionId")
         self._SessionContext = params.get("SessionContext")
+        self._ResourceId = params.get("ResourceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -39083,7 +39088,7 @@ class EditMediaResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 编辑视频的任务 ID，可以通过该 ID 查询编辑任务的状态。
+        :param _TaskId: <p>编辑视频的任务 ID，可以通过该 ID 查询编辑任务的状态。</p>
         :type TaskId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -39093,7 +39098,7 @@ class EditMediaResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""编辑视频的任务 ID，可以通过该 ID 查询编辑任务的状态。
+        r"""<p>编辑视频的任务 ID，可以通过该 ID 查询编辑任务的状态。</p>
         :rtype: str
         """
         return self._TaskId
@@ -61599,46 +61604,32 @@ class ProcessLiveStreamRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Url: 直播流 URL（必须是直播流地址，支持 rtmp，hls 和 flv, trtc,webrtc,srt等）。
-trtc地址如下：
- trtc: //trtc.rtc.qq.com/mps/`<roomid>`?sdkappid=`<sdkappid>`&userid=`<userid>`&usersig=<`usersig>`
-`<roomid>` 为trtc的房间号id, 为数字
-`<sdkappid>` 为trtc的sdk app id
-`<userid>` 为服务进入房间的用户id,可以区分谁是机器人
-<`usersig>` 为trtc 用户的签名
-
-webrtc 支持[LEB](https://cloud.tencent.com/product/leb)的直播流，地址获取请[参考](https://cloud.tencent.com/document/product/267/32720)
-
-srt支持地址请[参考](https://ffmpeg.org/ffmpeg-protocols.html#srt)
-
-
+        :param _Url: <p>直播流 URL（必须是直播流地址，支持 rtmp，hls 和 flv, trtc,webrtc,srt等）。<br>trtc地址如下：<br> trtc: //trtc.rtc.qq.com/mps/<code>&lt;roomid&gt;</code>?sdkappid=<code>&lt;sdkappid&gt;</code>&amp;userid=<code>&lt;userid&gt;</code>&amp;usersig=&lt;<code>usersig&gt;</code><br><code>&lt;roomid&gt;</code> 为trtc的房间号id, 为数字<br><code>&lt;sdkappid&gt;</code> 为trtc的sdk app id<br><code>&lt;userid&gt;</code> 为服务进入房间的用户id,可以区分谁是机器人<br>&lt;<code>usersig&gt;</code> 为trtc 用户的签名</p><p>webrtc 支持<a href="https://cloud.tencent.com/product/leb">LEB</a>的直播流，地址获取请<a href="https://cloud.tencent.com/document/product/267/32720">参考</a></p><p>srt支持地址请<a href="https://ffmpeg.org/ffmpeg-protocols.html#srt">参考</a></p>
         :type Url: str
-        :param _TaskNotifyConfig: 任务的事件通知信息，用于指定直播流处理的结果。
+        :param _TaskNotifyConfig: <p>任务的事件通知信息，用于指定直播流处理的结果。</p>
         :type TaskNotifyConfig: :class:`tencentcloud.mps.v20190612.models.LiveStreamTaskNotifyConfig`
-        :param _OutputStorage: 直播流处理输出文件的目标存储。如处理有文件输出，该参数为必填项。
+        :param _OutputStorage: <p>直播流处理输出文件的目标存储。如处理有文件输出，该参数为必填项。</p>
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
-        :param _OutputDir: 直播流处理生成的文件输出的目标目录，如`/movie/201909/`，如果不填为 `/` 目录。
+        :param _OutputDir: <p>直播流处理生成的文件输出的目标目录，如<code>/movie/201909/</code>，如果不填为 <code>/</code> 目录。</p>
         :type OutputDir: str
-        :param _AiContentReviewTask: 视频内容审核类型任务参数。
+        :param _AiContentReviewTask: <p>视频内容审核类型任务参数。</p>
         :type AiContentReviewTask: :class:`tencentcloud.mps.v20190612.models.AiContentReviewTaskInput`
-        :param _AiRecognitionTask: 视频内容识别类型任务参数。
+        :param _AiRecognitionTask: <p>视频内容识别类型任务参数。</p>
         :type AiRecognitionTask: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskInput`
-        :param _AiAnalysisTask: 视频内容分析类型任务参数。
+        :param _AiAnalysisTask: <p>视频内容分析类型任务参数。</p>
         :type AiAnalysisTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskInput`
-        :param _AiQualityControlTask: 媒体质检类型任务参数。
+        :param _AiQualityControlTask: <p>媒体质检类型任务参数。</p>
         :type AiQualityControlTask: :class:`tencentcloud.mps.v20190612.models.AiQualityControlTaskInput`
-        :param _SmartSubtitlesTask: 智能字幕任务参数。
+        :param _SmartSubtitlesTask: <p>智能字幕任务参数。</p>
         :type SmartSubtitlesTask: :class:`tencentcloud.mps.v20190612.models.LiveSmartSubtitlesTaskInput`
-        :param _SessionId: 用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+        :param _SessionId: <p>用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。</p>
         :type SessionId: str
-        :param _SessionContext: 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+        :param _SessionContext: <p>来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。</p>
         :type SessionContext: str
-        :param _ScheduleId: 直播编排ID。
-注意1：对于OutputStorage、OutputDir参数：
-<li>当服务编排中子任务节点配置了OutputStorage、OutputDir时，该子任务节点中配置的输出作为子任务的输出。</li>
-<li>当服务编排中子任务节点没有配置OutputStorage、OutputDir时，若对直播流发起处理（ProcessLiveStream）有输出，将覆盖原有编排的默认输出。</li>
-注意2：对于TaskNotifyConfig参数，若创建任务接口（ProcessLiveStream）有设置，将覆盖原有编排的默认回调。
+        :param _ScheduleId: <p>直播编排ID。<br>注意1：对于OutputStorage、OutputDir参数：</p><li>当服务编排中子任务节点配置了OutputStorage、OutputDir时，该子任务节点中配置的输出作为子任务的输出。</li><li>当服务编排中子任务节点没有配置OutputStorage、OutputDir时，若对直播流发起处理（ProcessLiveStream）有输出，将覆盖原有编排的默认输出。</li>注意2：对于TaskNotifyConfig参数，若创建任务接口（ProcessLiveStream）有设置，将覆盖原有编排的默认回调。
         :type ScheduleId: int
+        :param _ResourceId: <p>资源ID，需要保证对应资源是开启状态。默认为帐号主资源ID。</p>
+        :type ResourceId: str
         """
         self._Url = None
         self._TaskNotifyConfig = None
@@ -61652,22 +61643,11 @@ srt支持地址请[参考](https://ffmpeg.org/ffmpeg-protocols.html#srt)
         self._SessionId = None
         self._SessionContext = None
         self._ScheduleId = None
+        self._ResourceId = None
 
     @property
     def Url(self):
-        r"""直播流 URL（必须是直播流地址，支持 rtmp，hls 和 flv, trtc,webrtc,srt等）。
-trtc地址如下：
- trtc: //trtc.rtc.qq.com/mps/`<roomid>`?sdkappid=`<sdkappid>`&userid=`<userid>`&usersig=<`usersig>`
-`<roomid>` 为trtc的房间号id, 为数字
-`<sdkappid>` 为trtc的sdk app id
-`<userid>` 为服务进入房间的用户id,可以区分谁是机器人
-<`usersig>` 为trtc 用户的签名
-
-webrtc 支持[LEB](https://cloud.tencent.com/product/leb)的直播流，地址获取请[参考](https://cloud.tencent.com/document/product/267/32720)
-
-srt支持地址请[参考](https://ffmpeg.org/ffmpeg-protocols.html#srt)
-
-
+        r"""<p>直播流 URL（必须是直播流地址，支持 rtmp，hls 和 flv, trtc,webrtc,srt等）。<br>trtc地址如下：<br> trtc: //trtc.rtc.qq.com/mps/<code>&lt;roomid&gt;</code>?sdkappid=<code>&lt;sdkappid&gt;</code>&amp;userid=<code>&lt;userid&gt;</code>&amp;usersig=&lt;<code>usersig&gt;</code><br><code>&lt;roomid&gt;</code> 为trtc的房间号id, 为数字<br><code>&lt;sdkappid&gt;</code> 为trtc的sdk app id<br><code>&lt;userid&gt;</code> 为服务进入房间的用户id,可以区分谁是机器人<br>&lt;<code>usersig&gt;</code> 为trtc 用户的签名</p><p>webrtc 支持<a href="https://cloud.tencent.com/product/leb">LEB</a>的直播流，地址获取请<a href="https://cloud.tencent.com/document/product/267/32720">参考</a></p><p>srt支持地址请<a href="https://ffmpeg.org/ffmpeg-protocols.html#srt">参考</a></p>
         :rtype: str
         """
         return self._Url
@@ -61678,7 +61658,7 @@ srt支持地址请[参考](https://ffmpeg.org/ffmpeg-protocols.html#srt)
 
     @property
     def TaskNotifyConfig(self):
-        r"""任务的事件通知信息，用于指定直播流处理的结果。
+        r"""<p>任务的事件通知信息，用于指定直播流处理的结果。</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.LiveStreamTaskNotifyConfig`
         """
         return self._TaskNotifyConfig
@@ -61689,7 +61669,7 @@ srt支持地址请[参考](https://ffmpeg.org/ffmpeg-protocols.html#srt)
 
     @property
     def OutputStorage(self):
-        r"""直播流处理输出文件的目标存储。如处理有文件输出，该参数为必填项。
+        r"""<p>直播流处理输出文件的目标存储。如处理有文件输出，该参数为必填项。</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
         return self._OutputStorage
@@ -61700,7 +61680,7 @@ srt支持地址请[参考](https://ffmpeg.org/ffmpeg-protocols.html#srt)
 
     @property
     def OutputDir(self):
-        r"""直播流处理生成的文件输出的目标目录，如`/movie/201909/`，如果不填为 `/` 目录。
+        r"""<p>直播流处理生成的文件输出的目标目录，如<code>/movie/201909/</code>，如果不填为 <code>/</code> 目录。</p>
         :rtype: str
         """
         return self._OutputDir
@@ -61711,7 +61691,7 @@ srt支持地址请[参考](https://ffmpeg.org/ffmpeg-protocols.html#srt)
 
     @property
     def AiContentReviewTask(self):
-        r"""视频内容审核类型任务参数。
+        r"""<p>视频内容审核类型任务参数。</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiContentReviewTaskInput`
         """
         return self._AiContentReviewTask
@@ -61722,7 +61702,7 @@ srt支持地址请[参考](https://ffmpeg.org/ffmpeg-protocols.html#srt)
 
     @property
     def AiRecognitionTask(self):
-        r"""视频内容识别类型任务参数。
+        r"""<p>视频内容识别类型任务参数。</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskInput`
         """
         return self._AiRecognitionTask
@@ -61733,7 +61713,7 @@ srt支持地址请[参考](https://ffmpeg.org/ffmpeg-protocols.html#srt)
 
     @property
     def AiAnalysisTask(self):
-        r"""视频内容分析类型任务参数。
+        r"""<p>视频内容分析类型任务参数。</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskInput`
         """
         return self._AiAnalysisTask
@@ -61744,7 +61724,7 @@ srt支持地址请[参考](https://ffmpeg.org/ffmpeg-protocols.html#srt)
 
     @property
     def AiQualityControlTask(self):
-        r"""媒体质检类型任务参数。
+        r"""<p>媒体质检类型任务参数。</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiQualityControlTaskInput`
         """
         return self._AiQualityControlTask
@@ -61755,7 +61735,7 @@ srt支持地址请[参考](https://ffmpeg.org/ffmpeg-protocols.html#srt)
 
     @property
     def SmartSubtitlesTask(self):
-        r"""智能字幕任务参数。
+        r"""<p>智能字幕任务参数。</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.LiveSmartSubtitlesTaskInput`
         """
         return self._SmartSubtitlesTask
@@ -61766,7 +61746,7 @@ srt支持地址请[参考](https://ffmpeg.org/ffmpeg-protocols.html#srt)
 
     @property
     def SessionId(self):
-        r"""用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+        r"""<p>用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。</p>
         :rtype: str
         """
         return self._SessionId
@@ -61777,7 +61757,7 @@ srt支持地址请[参考](https://ffmpeg.org/ffmpeg-protocols.html#srt)
 
     @property
     def SessionContext(self):
-        r"""来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+        r"""<p>来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。</p>
         :rtype: str
         """
         return self._SessionContext
@@ -61788,11 +61768,7 @@ srt支持地址请[参考](https://ffmpeg.org/ffmpeg-protocols.html#srt)
 
     @property
     def ScheduleId(self):
-        r"""直播编排ID。
-注意1：对于OutputStorage、OutputDir参数：
-<li>当服务编排中子任务节点配置了OutputStorage、OutputDir时，该子任务节点中配置的输出作为子任务的输出。</li>
-<li>当服务编排中子任务节点没有配置OutputStorage、OutputDir时，若对直播流发起处理（ProcessLiveStream）有输出，将覆盖原有编排的默认输出。</li>
-注意2：对于TaskNotifyConfig参数，若创建任务接口（ProcessLiveStream）有设置，将覆盖原有编排的默认回调。
+        r"""<p>直播编排ID。<br>注意1：对于OutputStorage、OutputDir参数：</p><li>当服务编排中子任务节点配置了OutputStorage、OutputDir时，该子任务节点中配置的输出作为子任务的输出。</li><li>当服务编排中子任务节点没有配置OutputStorage、OutputDir时，若对直播流发起处理（ProcessLiveStream）有输出，将覆盖原有编排的默认输出。</li>注意2：对于TaskNotifyConfig参数，若创建任务接口（ProcessLiveStream）有设置，将覆盖原有编排的默认回调。
         :rtype: int
         """
         return self._ScheduleId
@@ -61800,6 +61776,17 @@ srt支持地址请[参考](https://ffmpeg.org/ffmpeg-protocols.html#srt)
     @ScheduleId.setter
     def ScheduleId(self, ScheduleId):
         self._ScheduleId = ScheduleId
+
+    @property
+    def ResourceId(self):
+        r"""<p>资源ID，需要保证对应资源是开启状态。默认为帐号主资源ID。</p>
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
 
 
     def _deserialize(self, params):
@@ -61829,6 +61816,7 @@ srt支持地址请[参考](https://ffmpeg.org/ffmpeg-protocols.html#srt)
         self._SessionId = params.get("SessionId")
         self._SessionContext = params.get("SessionContext")
         self._ScheduleId = params.get("ScheduleId")
+        self._ResourceId = params.get("ResourceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -61846,7 +61834,7 @@ class ProcessLiveStreamResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务 ID
+        :param _TaskId: <p>任务 ID</p>
         :type TaskId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -61856,7 +61844,7 @@ class ProcessLiveStreamResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""任务 ID
+        r"""<p>任务 ID</p>
         :rtype: str
         """
         return self._TaskId

@@ -3547,6 +3547,24 @@ class VpcClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeDesignatedZones(
+            self,
+            request: models.DescribeDesignatedZonesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDesignatedZonesResponse:
+        """
+        用于查询用户创建带宽包时可指定的可用区信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDesignatedZones"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDesignatedZonesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeDhcpIps(
             self,
             request: models.DescribeDhcpIpsRequest,

@@ -10532,15 +10532,15 @@ class MediaImageSpriteInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Height: 雪碧图小图的高度。
+        :param _Height: <p>雪碧图小图的高度。</p>
         :type Height: int
-        :param _Width: 雪碧图小图的宽度。
+        :param _Width: <p>雪碧图小图的宽度。</p>
         :type Width: int
-        :param _TotalCount: 雪碧图小图的总数量。
+        :param _TotalCount: <p>雪碧图小图的总数量。</p>
         :type TotalCount: int
-        :param _ImageUrlSet: 截取雪碧图输出的地址。
+        :param _ImageUrlSet: <p>截取雪碧图输出的地址。</p>
         :type ImageUrlSet: list of str
-        :param _WebVttUrl: 雪碧图子图位置与时间关系的 WebVtt 文件地址。WebVtt 文件表明了各个雪碧图小图对应的时间点，以及在雪碧大图里的坐标位置，一般被播放器用于实现预览。
+        :param _WebVttUrl: <p>雪碧图子图位置与时间关系的 WebVtt 文件地址。WebVtt 文件表明了各个雪碧图小图对应的时间点，以及在雪碧大图里的坐标位置，一般被播放器用于实现预览。</p>
         :type WebVttUrl: str
         """
         self._Height = None
@@ -10551,7 +10551,7 @@ class MediaImageSpriteInfo(AbstractModel):
 
     @property
     def Height(self):
-        r"""雪碧图小图的高度。
+        r"""<p>雪碧图小图的高度。</p>
         :rtype: int
         """
         return self._Height
@@ -10562,7 +10562,7 @@ class MediaImageSpriteInfo(AbstractModel):
 
     @property
     def Width(self):
-        r"""雪碧图小图的宽度。
+        r"""<p>雪碧图小图的宽度。</p>
         :rtype: int
         """
         return self._Width
@@ -10573,7 +10573,7 @@ class MediaImageSpriteInfo(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""雪碧图小图的总数量。
+        r"""<p>雪碧图小图的总数量。</p>
         :rtype: int
         """
         return self._TotalCount
@@ -10584,7 +10584,7 @@ class MediaImageSpriteInfo(AbstractModel):
 
     @property
     def ImageUrlSet(self):
-        r"""截取雪碧图输出的地址。
+        r"""<p>截取雪碧图输出的地址。</p>
         :rtype: list of str
         """
         return self._ImageUrlSet
@@ -10595,7 +10595,7 @@ class MediaImageSpriteInfo(AbstractModel):
 
     @property
     def WebVttUrl(self):
-        r"""雪碧图子图位置与时间关系的 WebVtt 文件地址。WebVtt 文件表明了各个雪碧图小图对应的时间点，以及在雪碧大图里的坐标位置，一般被播放器用于实现预览。
+        r"""<p>雪碧图子图位置与时间关系的 WebVtt 文件地址。WebVtt 文件表明了各个雪碧图小图对应的时间点，以及在雪碧大图里的坐标位置，一般被播放器用于实现预览。</p>
         :rtype: str
         """
         return self._WebVttUrl
@@ -10628,23 +10628,23 @@ class MediaMetaData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Size: 大小。
+        :param _Size: <p>大小。</p>
         :type Size: int
-        :param _Container: 容器类型。
+        :param _Container: <p>容器类型。</p>
         :type Container: str
-        :param _Bitrate: 视频流码率平均值与音频流码率平均值之和，单位：bps。
+        :param _Bitrate: <p>视频流码率平均值与音频流码率平均值之和，单位：bps。</p>
         :type Bitrate: int
-        :param _Height: 视频流高度的最大值，单位：px。
+        :param _Height: <p>视频流高度的最大值，单位：px。</p>
         :type Height: int
-        :param _Width: 视频流宽度的最大值，单位：px。
+        :param _Width: <p>视频流宽度的最大值，单位：px。</p>
         :type Width: int
-        :param _Duration: 时长，单位：秒。
+        :param _Duration: <p>时长，单位：秒。</p>
         :type Duration: float
-        :param _Rotate: 视频拍摄时的选择角度，单位：度
+        :param _Rotate: <p>视频拍摄时的选择角度，单位：度</p>
         :type Rotate: int
-        :param _VideoStreamInfoSet: 视频流信息。
+        :param _VideoStreamInfoSet: <p>视频流信息。</p>
         :type VideoStreamInfoSet: list of VideoStreamInfo
-        :param _AudioStreamInfoSet: 音频流信息。
+        :param _AudioStreamInfoSet: <p>音频流信息。</p>
         :type AudioStreamInfoSet: list of AudioStreamInfo
         """
         self._Size = None
@@ -10659,7 +10659,7 @@ class MediaMetaData(AbstractModel):
 
     @property
     def Size(self):
-        r"""大小。
+        r"""<p>大小。</p>
         :rtype: int
         """
         return self._Size
@@ -10670,7 +10670,7 @@ class MediaMetaData(AbstractModel):
 
     @property
     def Container(self):
-        r"""容器类型。
+        r"""<p>容器类型。</p>
         :rtype: str
         """
         return self._Container
@@ -10681,7 +10681,7 @@ class MediaMetaData(AbstractModel):
 
     @property
     def Bitrate(self):
-        r"""视频流码率平均值与音频流码率平均值之和，单位：bps。
+        r"""<p>视频流码率平均值与音频流码率平均值之和，单位：bps。</p>
         :rtype: int
         """
         return self._Bitrate
@@ -10692,7 +10692,7 @@ class MediaMetaData(AbstractModel):
 
     @property
     def Height(self):
-        r"""视频流高度的最大值，单位：px。
+        r"""<p>视频流高度的最大值，单位：px。</p>
         :rtype: int
         """
         return self._Height
@@ -10703,7 +10703,7 @@ class MediaMetaData(AbstractModel):
 
     @property
     def Width(self):
-        r"""视频流宽度的最大值，单位：px。
+        r"""<p>视频流宽度的最大值，单位：px。</p>
         :rtype: int
         """
         return self._Width
@@ -10714,7 +10714,7 @@ class MediaMetaData(AbstractModel):
 
     @property
     def Duration(self):
-        r"""时长，单位：秒。
+        r"""<p>时长，单位：秒。</p>
         :rtype: float
         """
         return self._Duration
@@ -10725,7 +10725,7 @@ class MediaMetaData(AbstractModel):
 
     @property
     def Rotate(self):
-        r"""视频拍摄时的选择角度，单位：度
+        r"""<p>视频拍摄时的选择角度，单位：度</p>
         :rtype: int
         """
         return self._Rotate
@@ -10736,7 +10736,7 @@ class MediaMetaData(AbstractModel):
 
     @property
     def VideoStreamInfoSet(self):
-        r"""视频流信息。
+        r"""<p>视频流信息。</p>
         :rtype: list of VideoStreamInfo
         """
         return self._VideoStreamInfoSet
@@ -10747,7 +10747,7 @@ class MediaMetaData(AbstractModel):
 
     @property
     def AudioStreamInfoSet(self):
-        r"""音频流信息。
+        r"""<p>音频流信息。</p>
         :rtype: list of AudioStreamInfo
         """
         return self._AudioStreamInfoSet
@@ -16395,36 +16395,21 @@ class VideoExportExtensionArgs(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Container: 封装格式，可选值：
-<li>mp4 </li>
-<li>mov </li>
-不填则使用视频导出编码配置。
+        :param _Container: <p>封装格式，可选值：</p><li>mp4 </li><li>mov </li>不填则使用视频导出编码配置。
         :type Container: str
-        :param _ShortEdge: 视频短边尺寸，取值范围： [128, 4096]，单位：px。
-视频最后的分辨率，根据短边尺寸和宽高比进行计算。
-例如：项目的宽高比是 16：9 ：
-<li>短边尺寸为 1080，则导出视频的分辨率为 1920 * 1080。</li>
-<li>短边尺寸为 720，则导出视频的分辨率为 1280 * 720</li>
-不填则使用视频导出编码配置。
+        :param _ShortEdge: <p>视频短边尺寸，取值范围： [128, 4096]，单位：px。<br>视频最后的分辨率，根据短边尺寸和宽高比进行计算。<br>例如：项目的宽高比是 16：9 ：</p><li>短边尺寸为 1080，则导出视频的分辨率为 1920 * 1080。</li><li>短边尺寸为 720，则导出视频的分辨率为 1280 * 720</li>不填则使用视频导出编码配置。
         :type ShortEdge: int
-        :param _VideoBitrate: 指定码率，单位 bps。当该参数为 0 时则不强制限定码率。
-不填则使用视频导出编码配置。
+        :param _VideoBitrate: <p>指定码率，单位 bps。当该参数为 0 时则不强制限定码率。<br>不填则使用视频导出编码配置。</p>
         :type VideoBitrate: int
-        :param _FrameRate: 帧率。取值范围：[15, 60]，不填默认值为 25。
+        :param _FrameRate: <p>帧率。取值范围：[15, 60]，不填默认值为 25。</p><p>单位：帧</p>
         :type FrameRate: float
-        :param _RemoveVideo: 是否去除视频数据，可选值：
-<li>0：保留；</li>
-<li>1：去除。</li>
-不填则使用视频导出编码配置。
+        :param _RemoveVideo: <p>是否去除视频数据，可选值：</p><li>0：保留；</li><li>1：去除。</li>不填则使用视频导出编码配置。
         :type RemoveVideo: int
-        :param _RemoveAudio: 是否去除音频数据，可选值：
-<li>0：保留；</li>
-<li>1：去除。</li>
-不填则使用视频导出编码配置。
+        :param _RemoveAudio: <p>是否去除音频数据，可选值：</p><li>0：保留；</li><li>1：去除。</li>不填则使用视频导出编码配置。
         :type RemoveAudio: int
-        :param _StartTime: 片段起始时间，单位：毫秒。
+        :param _StartTime: <p>片段起始时间，单位：毫秒。</p>
         :type StartTime: int
-        :param _EndTime: 片段结束时间，单位：毫秒。
+        :param _EndTime: <p>片段结束时间，单位：毫秒。</p>
         :type EndTime: int
         """
         self._Container = None
@@ -16438,10 +16423,7 @@ class VideoExportExtensionArgs(AbstractModel):
 
     @property
     def Container(self):
-        r"""封装格式，可选值：
-<li>mp4 </li>
-<li>mov </li>
-不填则使用视频导出编码配置。
+        r"""<p>封装格式，可选值：</p><li>mp4 </li><li>mov </li>不填则使用视频导出编码配置。
         :rtype: str
         """
         return self._Container
@@ -16452,12 +16434,7 @@ class VideoExportExtensionArgs(AbstractModel):
 
     @property
     def ShortEdge(self):
-        r"""视频短边尺寸，取值范围： [128, 4096]，单位：px。
-视频最后的分辨率，根据短边尺寸和宽高比进行计算。
-例如：项目的宽高比是 16：9 ：
-<li>短边尺寸为 1080，则导出视频的分辨率为 1920 * 1080。</li>
-<li>短边尺寸为 720，则导出视频的分辨率为 1280 * 720</li>
-不填则使用视频导出编码配置。
+        r"""<p>视频短边尺寸，取值范围： [128, 4096]，单位：px。<br>视频最后的分辨率，根据短边尺寸和宽高比进行计算。<br>例如：项目的宽高比是 16：9 ：</p><li>短边尺寸为 1080，则导出视频的分辨率为 1920 * 1080。</li><li>短边尺寸为 720，则导出视频的分辨率为 1280 * 720</li>不填则使用视频导出编码配置。
         :rtype: int
         """
         return self._ShortEdge
@@ -16468,8 +16445,7 @@ class VideoExportExtensionArgs(AbstractModel):
 
     @property
     def VideoBitrate(self):
-        r"""指定码率，单位 bps。当该参数为 0 时则不强制限定码率。
-不填则使用视频导出编码配置。
+        r"""<p>指定码率，单位 bps。当该参数为 0 时则不强制限定码率。<br>不填则使用视频导出编码配置。</p>
         :rtype: int
         """
         return self._VideoBitrate
@@ -16480,7 +16456,7 @@ class VideoExportExtensionArgs(AbstractModel):
 
     @property
     def FrameRate(self):
-        r"""帧率。取值范围：[15, 60]，不填默认值为 25。
+        r"""<p>帧率。取值范围：[15, 60]，不填默认值为 25。</p><p>单位：帧</p>
         :rtype: float
         """
         return self._FrameRate
@@ -16491,10 +16467,7 @@ class VideoExportExtensionArgs(AbstractModel):
 
     @property
     def RemoveVideo(self):
-        r"""是否去除视频数据，可选值：
-<li>0：保留；</li>
-<li>1：去除。</li>
-不填则使用视频导出编码配置。
+        r"""<p>是否去除视频数据，可选值：</p><li>0：保留；</li><li>1：去除。</li>不填则使用视频导出编码配置。
         :rtype: int
         """
         return self._RemoveVideo
@@ -16505,10 +16478,7 @@ class VideoExportExtensionArgs(AbstractModel):
 
     @property
     def RemoveAudio(self):
-        r"""是否去除音频数据，可选值：
-<li>0：保留；</li>
-<li>1：去除。</li>
-不填则使用视频导出编码配置。
+        r"""<p>是否去除音频数据，可选值：</p><li>0：保留；</li><li>1：去除。</li>不填则使用视频导出编码配置。
         :rtype: int
         """
         return self._RemoveAudio
@@ -16519,7 +16489,7 @@ class VideoExportExtensionArgs(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""片段起始时间，单位：毫秒。
+        r"""<p>片段起始时间，单位：毫秒。</p>
         :rtype: int
         """
         return self._StartTime
@@ -16530,7 +16500,7 @@ class VideoExportExtensionArgs(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""片段结束时间，单位：毫秒。
+        r"""<p>片段结束时间，单位：毫秒。</p>
         :rtype: int
         """
         return self._EndTime

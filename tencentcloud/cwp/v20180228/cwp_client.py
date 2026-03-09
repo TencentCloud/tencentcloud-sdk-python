@@ -5549,6 +5549,52 @@ class CwpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribePatchEffectHostList(self, request):
+        r"""查询补丁影响的主机信息列表
+
+        :param request: Request instance for DescribePatchEffectHostList.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribePatchEffectHostListRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribePatchEffectHostListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePatchEffectHostList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePatchEffectHostListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribePatchInfo(self, request):
+        r"""补丁详情
+
+        :param request: Request instance for DescribePatchInfo.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribePatchInfoRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribePatchInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePatchInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePatchInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribePrivilegeEventInfo(self, request):
         r"""本地提权信息详情
 
@@ -8033,6 +8079,29 @@ class CwpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeWindowsPatchList(self, request):
+        r"""获取补丁信息列表
+
+        :param request: Request instance for DescribeWindowsPatchList.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeWindowsPatchListRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeWindowsPatchListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeWindowsPatchList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeWindowsPatchListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DestroyOrder(self, request):
         r"""DestroyOrder  该接口可以对资源销毁.
 
@@ -9091,6 +9160,29 @@ class CwpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ExportPatchEffectHostList(self, request):
+        r"""导出补丁影响主机列表
+
+        :param request: Request instance for ExportPatchEffectHostList.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.ExportPatchEffectHostListRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.ExportPatchEffectHostListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ExportPatchEffectHostList", params, headers=headers)
+            response = json.loads(body)
+            model = models.ExportPatchEffectHostListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ExportPrivilegeEvents(self, request):
         r"""导出本地提权事件
 
@@ -9611,6 +9703,29 @@ class CwpClient(AbstractClient):
             body = self.call("ExportWebPageEventList", params, headers=headers)
             response = json.loads(body)
             model = models.ExportWebPageEventListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ExportWindowsPatchList(self, request):
+        r"""导出Windows补丁列表
+
+        :param request: Request instance for ExportWindowsPatchList.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.ExportWindowsPatchListRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.ExportWindowsPatchListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ExportWindowsPatchList", params, headers=headers)
+            response = json.loads(body)
+            model = models.ExportWindowsPatchListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

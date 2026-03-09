@@ -590,6 +590,24 @@ class ClsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateNetworkApplication(
+            self,
+            request: models.CreateNetworkApplicationRequest,
+            opts: Dict = None,
+    ) -> models.CreateNetworkApplicationResponse:
+        """
+        创建网络应用
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateNetworkApplication"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateNetworkApplicationResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateNoticeContent(
             self,
             request: models.CreateNoticeContentRequest,
@@ -1167,6 +1185,24 @@ class ClsClient(AbstractClient):
         kwargs["action"] = "DeleteMetricSubscribe"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteMetricSubscribeResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteNetworkApplication(
+            self,
+            request: models.DeleteNetworkApplicationRequest,
+            opts: Dict = None,
+    ) -> models.DeleteNetworkApplicationResponse:
+        """
+        删除网络应用
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteNetworkApplication"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteNetworkApplicationResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2019,6 +2055,42 @@ class ClsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeNetworkApplicationDetail(
+            self,
+            request: models.DescribeNetworkApplicationDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribeNetworkApplicationDetailResponse:
+        """
+        获取网络应用详情
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeNetworkApplicationDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeNetworkApplicationDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeNetworkApplications(
+            self,
+            request: models.DescribeNetworkApplicationsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeNetworkApplicationsResponse:
+        """
+        获取网络应用列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeNetworkApplications"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeNetworkApplicationsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeNoticeContents(
             self,
             request: models.DescribeNoticeContentsRequest,
@@ -2735,6 +2807,24 @@ class ClsClient(AbstractClient):
         kwargs["action"] = "ModifyMetricSubscribe"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyMetricSubscribeResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyNetworkApplication(
+            self,
+            request: models.ModifyNetworkApplicationRequest,
+            opts: Dict = None,
+    ) -> models.ModifyNetworkApplicationResponse:
+        """
+        修改网络应用
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyNetworkApplication"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyNetworkApplicationResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

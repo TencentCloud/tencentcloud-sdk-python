@@ -746,6 +746,29 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateNetworkApplication(self, request):
+        r"""创建网络应用
+
+        :param request: Request instance for CreateNetworkApplication.
+        :type request: :class:`tencentcloud.cls.v20201016.models.CreateNetworkApplicationRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.CreateNetworkApplicationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateNetworkApplication", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateNetworkApplicationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateNoticeContent(self, request):
         r"""该接口用于创建通知内容。
 
@@ -1479,6 +1502,29 @@ class ClsClient(AbstractClient):
             body = self.call("DeleteMetricSubscribe", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteMetricSubscribeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteNetworkApplication(self, request):
+        r"""删除网络应用
+
+        :param request: Request instance for DeleteNetworkApplication.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DeleteNetworkApplicationRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DeleteNetworkApplicationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteNetworkApplication", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteNetworkApplicationResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2570,6 +2616,52 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeNetworkApplicationDetail(self, request):
+        r"""获取网络应用详情
+
+        :param request: Request instance for DescribeNetworkApplicationDetail.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DescribeNetworkApplicationDetailRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DescribeNetworkApplicationDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeNetworkApplicationDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeNetworkApplicationDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeNetworkApplications(self, request):
+        r"""获取网络应用列表
+
+        :param request: Request instance for DescribeNetworkApplications.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DescribeNetworkApplicationsRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DescribeNetworkApplicationsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeNetworkApplications", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeNetworkApplicationsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeNoticeContents(self, request):
         r"""获取通知内容列表
 
@@ -3482,6 +3574,29 @@ class ClsClient(AbstractClient):
             body = self.call("ModifyMetricSubscribe", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyMetricSubscribeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyNetworkApplication(self, request):
+        r"""修改网络应用
+
+        :param request: Request instance for ModifyNetworkApplication.
+        :type request: :class:`tencentcloud.cls.v20201016.models.ModifyNetworkApplicationRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.ModifyNetworkApplicationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyNetworkApplication", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyNetworkApplicationResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

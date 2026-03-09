@@ -310,145 +310,151 @@ class ApmAppConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceKey: 实例ID
+        :param _InstanceKey: <p>实例ID</p>
         :type InstanceKey: str
-        :param _ServiceName: 服务名
+        :param _ServiceName: <p>服务名</p>
         :type ServiceName: str
-        :param _UrlConvergenceSwitch: URL收敛开关
+        :param _UrlConvergenceSwitch: <p>URL收敛开关</p>
         :type UrlConvergenceSwitch: int
-        :param _UrlConvergenceThreshold: URL收敛阈值
+        :param _UrlConvergenceThreshold: <p>URL收敛阈值</p>
         :type UrlConvergenceThreshold: int
-        :param _UrlConvergence: URL收敛正则
+        :param _UrlConvergence: <p>URL收敛正则</p>
         :type UrlConvergence: str
-        :param _ExceptionFilter: 异常过滤正则
+        :param _ExceptionFilter: <p>异常过滤正则</p>
         :type ExceptionFilter: str
-        :param _ErrorCodeFilter: 错误码过滤
+        :param _ErrorCodeFilter: <p>错误码过滤</p>
         :type ErrorCodeFilter: str
-        :param _Components: 服务组件类型
+        :param _Components: <p>服务组件类型</p>
         :type Components: str
-        :param _UrlExclude: URL排除正则
+        :param _UrlExclude: <p>URL排除正则</p>
         :type UrlExclude: str
-        :param _LogSource: 日志来源
+        :param _LogSource: <p>日志来源</p>
         :type LogSource: str
-        :param _LogRegion: 日志所在地域
+        :param _LogRegion: <p>日志所在地域</p>
         :type LogRegion: str
-        :param _IsRelatedLog: 是否开启日志 0 关 1 开
+        :param _IsRelatedLog: <p>是否开启日志 0 关 1 开</p>
         :type IsRelatedLog: int
-        :param _LogTopicID: 日志主题ID
+        :param _LogTopicID: <p>日志主题ID</p>
         :type LogTopicID: str
-        :param _IgnoreOperationName: 需过滤的接口名
+        :param _IgnoreOperationName: <p>需过滤的接口名</p>
         :type IgnoreOperationName: str
-        :param _LogSet: CLS日志集 | ES集群ID
+        :param _LogSet: <p>CLS日志集 | ES集群ID</p>
         :type LogSet: str
-        :param _TraceRateLimit: 探针每秒上报trace数
+        :param _TraceRateLimit: <p>探针每秒上报trace数</p>
         :type TraceRateLimit: int
-        :param _EnableSnapshot: 是否开启线程剖析
+        :param _EnableSnapshot: <p>是否开启线程剖析</p>
         :type EnableSnapshot: bool
-        :param _SnapshotTimeout: 线程剖析超时阈值
+        :param _SnapshotTimeout: <p>线程剖析超时阈值</p>
         :type SnapshotTimeout: int
-        :param _AgentEnable: 是否开启agent
+        :param _AgentEnable: <p>是否开启agent</p>
         :type AgentEnable: bool
-        :param _InstrumentList: 组件列表
+        :param _InstrumentList: <p>组件列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstrumentList: list of Instrument
-        :param _TraceSquash: 是否开启链路压缩
+        :param _TraceSquash: <p>是否开启链路压缩</p>
         :type TraceSquash: bool
-        :param _EventEnable: 是否开启应用诊断开关
+        :param _EventEnable: <p>是否开启应用诊断开关</p>
         :type EventEnable: bool
-        :param _AgentOperationConfigView: 探针接口相关配置
+        :param _AgentOperationConfigView: <p>探针接口相关配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AgentOperationConfigView: :class:`tencentcloud.apm.v20210622.models.AgentOperationConfigView`
-        :param _EnableLogConfig: 是否开启应用日志配置
+        :param _EnableLogConfig: <p>是否开启应用日志配置</p>
         :type EnableLogConfig: bool
-        :param _ServiceID: 应用ID
+        :param _ServiceID: <p>应用ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceID: str
-        :param _EnableDashboardConfig: 应用是否开启dashboard配置： false 关（与业务系统保持一致）/true 开（应用级配置）
+        :param _EnableDashboardConfig: <p>应用是否开启dashboard配置： false 关（与业务系统保持一致）/true 开（应用级配置）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type EnableDashboardConfig: bool
-        :param _IsRelatedDashboard: 是否关联dashboard： 0 关 1 开
+        :param _IsRelatedDashboard: <p>是否关联dashboard： 0 关 1 开</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsRelatedDashboard: int
-        :param _DashboardTopicID: dashboard ID
+        :param _DashboardTopicID: <p>dashboard ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DashboardTopicID: str
-        :param _EnableSecurityConfig: 是否开启应用级别配置
+        :param _EnableSecurityConfig: <p>是否开启应用级别配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type EnableSecurityConfig: bool
-        :param _IsInstrumentationVulnerabilityScan: 是否开启组件漏洞检测
+        :param _IsInstrumentationVulnerabilityScan: <p>是否开启组件漏洞检测</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsInstrumentationVulnerabilityScan: int
-        :param _IsSqlInjectionAnalysis: 是否开启SQL注入分析
+        :param _IsSqlInjectionAnalysis: <p>是否开启SQL注入分析</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsSqlInjectionAnalysis: int
-        :param _IsRemoteCommandExecutionAnalysis: 是否开启远程命令执行分析
+        :param _IsRemoteCommandExecutionAnalysis: <p>是否开启远程命令执行分析</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsRemoteCommandExecutionAnalysis: int
-        :param _IsMemoryHijackingAnalysis: 是否开启内存马检测分析
+        :param _IsMemoryHijackingAnalysis: <p>是否开启内存马检测分析</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsMemoryHijackingAnalysis: int
-        :param _LogIndexType: CLS索引类型(0=全文索引，1=键值索引)
+        :param _LogIndexType: <p>CLS索引类型(0=全文索引，1=键值索引)</p>
         :type LogIndexType: int
-        :param _LogTraceIdKey: traceId的索引key: 当CLS索引类型为键值索引时生效
+        :param _LogTraceIdKey: <p>traceId的索引key: 当CLS索引类型为键值索引时生效</p>
         :type LogTraceIdKey: str
-        :param _IsDeleteAnyFileAnalysis: 是否开启删除任意文件检测（0-关闭，1-开启）
+        :param _IsDeleteAnyFileAnalysis: <p>是否开启删除任意文件检测（0-关闭，1-开启）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsDeleteAnyFileAnalysis: int
-        :param _IsReadAnyFileAnalysis: 是否开启读取任意文件检测（0-关闭，1-开启）
+        :param _IsReadAnyFileAnalysis: <p>是否开启读取任意文件检测（0-关闭，1-开启）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsReadAnyFileAnalysis: int
-        :param _IsUploadAnyFileAnalysis: 是否开启上传任意文件检测（0-关闭，1-开启）
+        :param _IsUploadAnyFileAnalysis: <p>是否开启上传任意文件检测（0-关闭，1-开启）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsUploadAnyFileAnalysis: int
-        :param _IsIncludeAnyFileAnalysis: 是否开启包含任意文件检测（0-关闭，1-开启）
+        :param _IsIncludeAnyFileAnalysis: <p>是否开启包含任意文件检测（0-关闭，1-开启）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsIncludeAnyFileAnalysis: int
-        :param _IsDirectoryTraversalAnalysis: 是否开启目录遍历检测（0-关闭，1-开启）
+        :param _IsDirectoryTraversalAnalysis: <p>是否开启目录遍历检测（0-关闭，1-开启）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsDirectoryTraversalAnalysis: int
-        :param _IsTemplateEngineInjectionAnalysis: 是否开启模板引擎注入检测（0-关闭，1-开启）
+        :param _IsTemplateEngineInjectionAnalysis: <p>是否开启模板引擎注入检测（0-关闭，1-开启）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsTemplateEngineInjectionAnalysis: int
-        :param _IsScriptEngineInjectionAnalysis: 是否开启脚本引擎注入检测（0-关闭，1-开启）
+        :param _IsScriptEngineInjectionAnalysis: <p>是否开启脚本引擎注入检测（0-关闭，1-开启）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsScriptEngineInjectionAnalysis: int
-        :param _IsExpressionInjectionAnalysis: 是否开启表达式注入检测（0-关闭，1-开启）
+        :param _IsExpressionInjectionAnalysis: <p>是否开启表达式注入检测（0-关闭，1-开启）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsExpressionInjectionAnalysis: int
-        :param _IsJNDIInjectionAnalysis: 是否开启JNDI注入检测（0-关闭，1-开启）
+        :param _IsJNDIInjectionAnalysis: <p>是否开启JNDI注入检测（0-关闭，1-开启）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsJNDIInjectionAnalysis: int
-        :param _IsJNIInjectionAnalysis: 是否开启JNI注入检测（0-关闭，1-开启）
+        :param _IsJNIInjectionAnalysis: <p>是否开启JNI注入检测（0-关闭，1-开启）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsJNIInjectionAnalysis: int
-        :param _IsWebshellBackdoorAnalysis: 是否开启Webshell后门检测（0-关闭，1-开启）
+        :param _IsWebshellBackdoorAnalysis: <p>是否开启Webshell后门检测（0-关闭，1-开启）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsWebshellBackdoorAnalysis: int
-        :param _IsDeserializationAnalysis: 是否开启反序列化检测（0-关闭，1-开启）
+        :param _IsDeserializationAnalysis: <p>是否开启反序列化检测（0-关闭，1-开启）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsDeserializationAnalysis: int
-        :param _UrlAutoConvergenceEnable: 接口名称自动收敛开关（0-关闭，1-开启）
+        :param _UrlAutoConvergenceEnable: <p>接口名称自动收敛开关（0-关闭，1-开启）</p>
         :type UrlAutoConvergenceEnable: bool
-        :param _UrlLongSegmentThreshold: URL长分段收敛阈值
+        :param _UrlLongSegmentThreshold: <p>URL长分段收敛阈值</p>
         :type UrlLongSegmentThreshold: int
-        :param _UrlNumberSegmentThreshold: URL数字分段收敛阈值
+        :param _UrlNumberSegmentThreshold: <p>URL数字分段收敛阈值</p>
         :type UrlNumberSegmentThreshold: int
-        :param _DisableMemoryUsed: 探针熔断内存阈值
+        :param _DisableMemoryUsed: <p>探针熔断内存阈值</p>
         :type DisableMemoryUsed: int
-        :param _DisableCpuUsed: 探针熔断CPU阈值
+        :param _DisableCpuUsed: <p>探针熔断CPU阈值</p>
         :type DisableCpuUsed: int
-        :param _DbStatementParametersEnabled: 是否开启SQL参数获取
+        :param _DbStatementParametersEnabled: <p>是否开启SQL参数获取</p>
         :type DbStatementParametersEnabled: bool
-        :param _SlowSQLThresholds: 慢SQL阈值
+        :param _SlowSQLThresholds: <p>慢SQL阈值</p>
         :type SlowSQLThresholds: list of ApmTag
-        :param _EnableDesensitizationRule: 是否开启脱敏规则
+        :param _EnableDesensitizationRule: <p>是否开启脱敏规则</p>
         :type EnableDesensitizationRule: int
-        :param _DesensitizationRule: 脱敏规则
+        :param _DesensitizationRule: <p>脱敏规则</p>
         :type DesensitizationRule: str
-        :param _LogSpanIdKey: spanId的索引key: 当CLS索引类型为键值索引时生效
+        :param _LogSpanIdKey: <p>spanId的索引key: 当CLS索引类型为键值索引时生效</p>
         :type LogSpanIdKey: str
-        :param _AutoProfilingConfig: 自动性能剖析配置
+        :param _AutoProfilingConfig: <p>自动性能剖析配置</p>
         :type AutoProfilingConfig: :class:`tencentcloud.apm.v20210622.models.AutoProfilingConfig`
+        :param _EnableThresholdConfig: <p>阈值配置开关。true 表示使用应用级阈值；false 表示使用业务系统级阈值</p>
+        :type EnableThresholdConfig: bool
+        :param _ErrRateThreshold: <p>错误率阈值（%），用于判断应用健康状态为&quot;红色&quot;</p>
+        :type ErrRateThreshold: int
+        :param _ResponseDurationWarningThreshold: <p>响应时间预警阈值（ms），用于判断应用健康状态为&quot;黄色&quot;</p>
+        :type ResponseDurationWarningThreshold: int
         """
         self._InstanceKey = None
         self._ServiceName = None
@@ -508,10 +514,13 @@ class ApmAppConfig(AbstractModel):
         self._DesensitizationRule = None
         self._LogSpanIdKey = None
         self._AutoProfilingConfig = None
+        self._EnableThresholdConfig = None
+        self._ErrRateThreshold = None
+        self._ResponseDurationWarningThreshold = None
 
     @property
     def InstanceKey(self):
-        r"""实例ID
+        r"""<p>实例ID</p>
         :rtype: str
         """
         return self._InstanceKey
@@ -522,7 +531,7 @@ class ApmAppConfig(AbstractModel):
 
     @property
     def ServiceName(self):
-        r"""服务名
+        r"""<p>服务名</p>
         :rtype: str
         """
         return self._ServiceName
@@ -533,7 +542,7 @@ class ApmAppConfig(AbstractModel):
 
     @property
     def UrlConvergenceSwitch(self):
-        r"""URL收敛开关
+        r"""<p>URL收敛开关</p>
         :rtype: int
         """
         return self._UrlConvergenceSwitch
@@ -544,7 +553,7 @@ class ApmAppConfig(AbstractModel):
 
     @property
     def UrlConvergenceThreshold(self):
-        r"""URL收敛阈值
+        r"""<p>URL收敛阈值</p>
         :rtype: int
         """
         return self._UrlConvergenceThreshold
@@ -555,7 +564,7 @@ class ApmAppConfig(AbstractModel):
 
     @property
     def UrlConvergence(self):
-        r"""URL收敛正则
+        r"""<p>URL收敛正则</p>
         :rtype: str
         """
         return self._UrlConvergence
@@ -566,7 +575,7 @@ class ApmAppConfig(AbstractModel):
 
     @property
     def ExceptionFilter(self):
-        r"""异常过滤正则
+        r"""<p>异常过滤正则</p>
         :rtype: str
         """
         return self._ExceptionFilter
@@ -577,7 +586,7 @@ class ApmAppConfig(AbstractModel):
 
     @property
     def ErrorCodeFilter(self):
-        r"""错误码过滤
+        r"""<p>错误码过滤</p>
         :rtype: str
         """
         return self._ErrorCodeFilter
@@ -588,7 +597,7 @@ class ApmAppConfig(AbstractModel):
 
     @property
     def Components(self):
-        r"""服务组件类型
+        r"""<p>服务组件类型</p>
         :rtype: str
         """
         return self._Components
@@ -599,7 +608,7 @@ class ApmAppConfig(AbstractModel):
 
     @property
     def UrlExclude(self):
-        r"""URL排除正则
+        r"""<p>URL排除正则</p>
         :rtype: str
         """
         return self._UrlExclude
@@ -610,7 +619,7 @@ class ApmAppConfig(AbstractModel):
 
     @property
     def LogSource(self):
-        r"""日志来源
+        r"""<p>日志来源</p>
         :rtype: str
         """
         return self._LogSource
@@ -621,7 +630,7 @@ class ApmAppConfig(AbstractModel):
 
     @property
     def LogRegion(self):
-        r"""日志所在地域
+        r"""<p>日志所在地域</p>
         :rtype: str
         """
         return self._LogRegion
@@ -632,7 +641,7 @@ class ApmAppConfig(AbstractModel):
 
     @property
     def IsRelatedLog(self):
-        r"""是否开启日志 0 关 1 开
+        r"""<p>是否开启日志 0 关 1 开</p>
         :rtype: int
         """
         return self._IsRelatedLog
@@ -643,7 +652,7 @@ class ApmAppConfig(AbstractModel):
 
     @property
     def LogTopicID(self):
-        r"""日志主题ID
+        r"""<p>日志主题ID</p>
         :rtype: str
         """
         return self._LogTopicID
@@ -654,7 +663,7 @@ class ApmAppConfig(AbstractModel):
 
     @property
     def IgnoreOperationName(self):
-        r"""需过滤的接口名
+        r"""<p>需过滤的接口名</p>
         :rtype: str
         """
         return self._IgnoreOperationName
@@ -665,7 +674,7 @@ class ApmAppConfig(AbstractModel):
 
     @property
     def LogSet(self):
-        r"""CLS日志集 | ES集群ID
+        r"""<p>CLS日志集 | ES集群ID</p>
         :rtype: str
         """
         return self._LogSet
@@ -676,7 +685,7 @@ class ApmAppConfig(AbstractModel):
 
     @property
     def TraceRateLimit(self):
-        r"""探针每秒上报trace数
+        r"""<p>探针每秒上报trace数</p>
         :rtype: int
         """
         return self._TraceRateLimit
@@ -687,7 +696,7 @@ class ApmAppConfig(AbstractModel):
 
     @property
     def EnableSnapshot(self):
-        r"""是否开启线程剖析
+        r"""<p>是否开启线程剖析</p>
         :rtype: bool
         """
         return self._EnableSnapshot
@@ -698,7 +707,7 @@ class ApmAppConfig(AbstractModel):
 
     @property
     def SnapshotTimeout(self):
-        r"""线程剖析超时阈值
+        r"""<p>线程剖析超时阈值</p>
         :rtype: int
         """
         return self._SnapshotTimeout
@@ -709,7 +718,7 @@ class ApmAppConfig(AbstractModel):
 
     @property
     def AgentEnable(self):
-        r"""是否开启agent
+        r"""<p>是否开启agent</p>
         :rtype: bool
         """
         return self._AgentEnable
@@ -720,7 +729,7 @@ class ApmAppConfig(AbstractModel):
 
     @property
     def InstrumentList(self):
-        r"""组件列表
+        r"""<p>组件列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Instrument
         """
@@ -732,7 +741,7 @@ class ApmAppConfig(AbstractModel):
 
     @property
     def TraceSquash(self):
-        r"""是否开启链路压缩
+        r"""<p>是否开启链路压缩</p>
         :rtype: bool
         """
         return self._TraceSquash
@@ -743,7 +752,7 @@ class ApmAppConfig(AbstractModel):
 
     @property
     def EventEnable(self):
-        r"""是否开启应用诊断开关
+        r"""<p>是否开启应用诊断开关</p>
         :rtype: bool
         """
         return self._EventEnable
@@ -754,7 +763,7 @@ class ApmAppConfig(AbstractModel):
 
     @property
     def AgentOperationConfigView(self):
-        r"""探针接口相关配置
+        r"""<p>探针接口相关配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.apm.v20210622.models.AgentOperationConfigView`
         """
@@ -766,7 +775,7 @@ class ApmAppConfig(AbstractModel):
 
     @property
     def EnableLogConfig(self):
-        r"""是否开启应用日志配置
+        r"""<p>是否开启应用日志配置</p>
         :rtype: bool
         """
         return self._EnableLogConfig
@@ -777,7 +786,7 @@ class ApmAppConfig(AbstractModel):
 
     @property
     def ServiceID(self):
-        r"""应用ID
+        r"""<p>应用ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -789,7 +798,7 @@ class ApmAppConfig(AbstractModel):
 
     @property
     def EnableDashboardConfig(self):
-        r"""应用是否开启dashboard配置： false 关（与业务系统保持一致）/true 开（应用级配置）
+        r"""<p>应用是否开启dashboard配置： false 关（与业务系统保持一致）/true 开（应用级配置）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -801,7 +810,7 @@ class ApmAppConfig(AbstractModel):
 
     @property
     def IsRelatedDashboard(self):
-        r"""是否关联dashboard： 0 关 1 开
+        r"""<p>是否关联dashboard： 0 关 1 开</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -813,7 +822,7 @@ class ApmAppConfig(AbstractModel):
 
     @property
     def DashboardTopicID(self):
-        r"""dashboard ID
+        r"""<p>dashboard ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -825,7 +834,7 @@ class ApmAppConfig(AbstractModel):
 
     @property
     def EnableSecurityConfig(self):
-        r"""是否开启应用级别配置
+        r"""<p>是否开启应用级别配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -837,7 +846,7 @@ class ApmAppConfig(AbstractModel):
 
     @property
     def IsInstrumentationVulnerabilityScan(self):
-        r"""是否开启组件漏洞检测
+        r"""<p>是否开启组件漏洞检测</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -849,7 +858,7 @@ class ApmAppConfig(AbstractModel):
 
     @property
     def IsSqlInjectionAnalysis(self):
-        r"""是否开启SQL注入分析
+        r"""<p>是否开启SQL注入分析</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -861,7 +870,7 @@ class ApmAppConfig(AbstractModel):
 
     @property
     def IsRemoteCommandExecutionAnalysis(self):
-        r"""是否开启远程命令执行分析
+        r"""<p>是否开启远程命令执行分析</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -873,7 +882,7 @@ class ApmAppConfig(AbstractModel):
 
     @property
     def IsMemoryHijackingAnalysis(self):
-        r"""是否开启内存马检测分析
+        r"""<p>是否开启内存马检测分析</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -885,7 +894,7 @@ class ApmAppConfig(AbstractModel):
 
     @property
     def LogIndexType(self):
-        r"""CLS索引类型(0=全文索引，1=键值索引)
+        r"""<p>CLS索引类型(0=全文索引，1=键值索引)</p>
         :rtype: int
         """
         return self._LogIndexType
@@ -896,7 +905,7 @@ class ApmAppConfig(AbstractModel):
 
     @property
     def LogTraceIdKey(self):
-        r"""traceId的索引key: 当CLS索引类型为键值索引时生效
+        r"""<p>traceId的索引key: 当CLS索引类型为键值索引时生效</p>
         :rtype: str
         """
         return self._LogTraceIdKey
@@ -907,7 +916,7 @@ class ApmAppConfig(AbstractModel):
 
     @property
     def IsDeleteAnyFileAnalysis(self):
-        r"""是否开启删除任意文件检测（0-关闭，1-开启）
+        r"""<p>是否开启删除任意文件检测（0-关闭，1-开启）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -919,7 +928,7 @@ class ApmAppConfig(AbstractModel):
 
     @property
     def IsReadAnyFileAnalysis(self):
-        r"""是否开启读取任意文件检测（0-关闭，1-开启）
+        r"""<p>是否开启读取任意文件检测（0-关闭，1-开启）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -931,7 +940,7 @@ class ApmAppConfig(AbstractModel):
 
     @property
     def IsUploadAnyFileAnalysis(self):
-        r"""是否开启上传任意文件检测（0-关闭，1-开启）
+        r"""<p>是否开启上传任意文件检测（0-关闭，1-开启）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -943,7 +952,7 @@ class ApmAppConfig(AbstractModel):
 
     @property
     def IsIncludeAnyFileAnalysis(self):
-        r"""是否开启包含任意文件检测（0-关闭，1-开启）
+        r"""<p>是否开启包含任意文件检测（0-关闭，1-开启）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -955,7 +964,7 @@ class ApmAppConfig(AbstractModel):
 
     @property
     def IsDirectoryTraversalAnalysis(self):
-        r"""是否开启目录遍历检测（0-关闭，1-开启）
+        r"""<p>是否开启目录遍历检测（0-关闭，1-开启）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -967,7 +976,7 @@ class ApmAppConfig(AbstractModel):
 
     @property
     def IsTemplateEngineInjectionAnalysis(self):
-        r"""是否开启模板引擎注入检测（0-关闭，1-开启）
+        r"""<p>是否开启模板引擎注入检测（0-关闭，1-开启）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -979,7 +988,7 @@ class ApmAppConfig(AbstractModel):
 
     @property
     def IsScriptEngineInjectionAnalysis(self):
-        r"""是否开启脚本引擎注入检测（0-关闭，1-开启）
+        r"""<p>是否开启脚本引擎注入检测（0-关闭，1-开启）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -991,7 +1000,7 @@ class ApmAppConfig(AbstractModel):
 
     @property
     def IsExpressionInjectionAnalysis(self):
-        r"""是否开启表达式注入检测（0-关闭，1-开启）
+        r"""<p>是否开启表达式注入检测（0-关闭，1-开启）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -1003,7 +1012,7 @@ class ApmAppConfig(AbstractModel):
 
     @property
     def IsJNDIInjectionAnalysis(self):
-        r"""是否开启JNDI注入检测（0-关闭，1-开启）
+        r"""<p>是否开启JNDI注入检测（0-关闭，1-开启）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -1015,7 +1024,7 @@ class ApmAppConfig(AbstractModel):
 
     @property
     def IsJNIInjectionAnalysis(self):
-        r"""是否开启JNI注入检测（0-关闭，1-开启）
+        r"""<p>是否开启JNI注入检测（0-关闭，1-开启）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -1027,7 +1036,7 @@ class ApmAppConfig(AbstractModel):
 
     @property
     def IsWebshellBackdoorAnalysis(self):
-        r"""是否开启Webshell后门检测（0-关闭，1-开启）
+        r"""<p>是否开启Webshell后门检测（0-关闭，1-开启）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -1039,7 +1048,7 @@ class ApmAppConfig(AbstractModel):
 
     @property
     def IsDeserializationAnalysis(self):
-        r"""是否开启反序列化检测（0-关闭，1-开启）
+        r"""<p>是否开启反序列化检测（0-关闭，1-开启）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -1051,7 +1060,7 @@ class ApmAppConfig(AbstractModel):
 
     @property
     def UrlAutoConvergenceEnable(self):
-        r"""接口名称自动收敛开关（0-关闭，1-开启）
+        r"""<p>接口名称自动收敛开关（0-关闭，1-开启）</p>
         :rtype: bool
         """
         return self._UrlAutoConvergenceEnable
@@ -1062,7 +1071,7 @@ class ApmAppConfig(AbstractModel):
 
     @property
     def UrlLongSegmentThreshold(self):
-        r"""URL长分段收敛阈值
+        r"""<p>URL长分段收敛阈值</p>
         :rtype: int
         """
         return self._UrlLongSegmentThreshold
@@ -1073,7 +1082,7 @@ class ApmAppConfig(AbstractModel):
 
     @property
     def UrlNumberSegmentThreshold(self):
-        r"""URL数字分段收敛阈值
+        r"""<p>URL数字分段收敛阈值</p>
         :rtype: int
         """
         return self._UrlNumberSegmentThreshold
@@ -1084,7 +1093,7 @@ class ApmAppConfig(AbstractModel):
 
     @property
     def DisableMemoryUsed(self):
-        r"""探针熔断内存阈值
+        r"""<p>探针熔断内存阈值</p>
         :rtype: int
         """
         return self._DisableMemoryUsed
@@ -1095,7 +1104,7 @@ class ApmAppConfig(AbstractModel):
 
     @property
     def DisableCpuUsed(self):
-        r"""探针熔断CPU阈值
+        r"""<p>探针熔断CPU阈值</p>
         :rtype: int
         """
         return self._DisableCpuUsed
@@ -1106,7 +1115,7 @@ class ApmAppConfig(AbstractModel):
 
     @property
     def DbStatementParametersEnabled(self):
-        r"""是否开启SQL参数获取
+        r"""<p>是否开启SQL参数获取</p>
         :rtype: bool
         """
         return self._DbStatementParametersEnabled
@@ -1117,7 +1126,7 @@ class ApmAppConfig(AbstractModel):
 
     @property
     def SlowSQLThresholds(self):
-        r"""慢SQL阈值
+        r"""<p>慢SQL阈值</p>
         :rtype: list of ApmTag
         """
         return self._SlowSQLThresholds
@@ -1128,7 +1137,7 @@ class ApmAppConfig(AbstractModel):
 
     @property
     def EnableDesensitizationRule(self):
-        r"""是否开启脱敏规则
+        r"""<p>是否开启脱敏规则</p>
         :rtype: int
         """
         return self._EnableDesensitizationRule
@@ -1139,7 +1148,7 @@ class ApmAppConfig(AbstractModel):
 
     @property
     def DesensitizationRule(self):
-        r"""脱敏规则
+        r"""<p>脱敏规则</p>
         :rtype: str
         """
         return self._DesensitizationRule
@@ -1150,7 +1159,7 @@ class ApmAppConfig(AbstractModel):
 
     @property
     def LogSpanIdKey(self):
-        r"""spanId的索引key: 当CLS索引类型为键值索引时生效
+        r"""<p>spanId的索引key: 当CLS索引类型为键值索引时生效</p>
         :rtype: str
         """
         return self._LogSpanIdKey
@@ -1161,7 +1170,7 @@ class ApmAppConfig(AbstractModel):
 
     @property
     def AutoProfilingConfig(self):
-        r"""自动性能剖析配置
+        r"""<p>自动性能剖析配置</p>
         :rtype: :class:`tencentcloud.apm.v20210622.models.AutoProfilingConfig`
         """
         return self._AutoProfilingConfig
@@ -1169,6 +1178,39 @@ class ApmAppConfig(AbstractModel):
     @AutoProfilingConfig.setter
     def AutoProfilingConfig(self, AutoProfilingConfig):
         self._AutoProfilingConfig = AutoProfilingConfig
+
+    @property
+    def EnableThresholdConfig(self):
+        r"""<p>阈值配置开关。true 表示使用应用级阈值；false 表示使用业务系统级阈值</p>
+        :rtype: bool
+        """
+        return self._EnableThresholdConfig
+
+    @EnableThresholdConfig.setter
+    def EnableThresholdConfig(self, EnableThresholdConfig):
+        self._EnableThresholdConfig = EnableThresholdConfig
+
+    @property
+    def ErrRateThreshold(self):
+        r"""<p>错误率阈值（%），用于判断应用健康状态为&quot;红色&quot;</p>
+        :rtype: int
+        """
+        return self._ErrRateThreshold
+
+    @ErrRateThreshold.setter
+    def ErrRateThreshold(self, ErrRateThreshold):
+        self._ErrRateThreshold = ErrRateThreshold
+
+    @property
+    def ResponseDurationWarningThreshold(self):
+        r"""<p>响应时间预警阈值（ms），用于判断应用健康状态为&quot;黄色&quot;</p>
+        :rtype: int
+        """
+        return self._ResponseDurationWarningThreshold
+
+    @ResponseDurationWarningThreshold.setter
+    def ResponseDurationWarningThreshold(self, ResponseDurationWarningThreshold):
+        self._ResponseDurationWarningThreshold = ResponseDurationWarningThreshold
 
 
     def _deserialize(self, params):
@@ -1244,6 +1286,9 @@ class ApmAppConfig(AbstractModel):
         if params.get("AutoProfilingConfig") is not None:
             self._AutoProfilingConfig = AutoProfilingConfig()
             self._AutoProfilingConfig._deserialize(params.get("AutoProfilingConfig"))
+        self._EnableThresholdConfig = params.get("EnableThresholdConfig")
+        self._ErrRateThreshold = params.get("ErrRateThreshold")
+        self._ResponseDurationWarningThreshold = params.get("ResponseDurationWarningThreshold")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1261,58 +1306,106 @@ class ApmApplicationConfigView(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceKey: 业务系统 ID
+        :param _InstanceKey: <p>业务系统 ID</p>
         :type InstanceKey: str
-        :param _ServiceName: 应用名	
+        :param _ServiceName: <p>应用名</p>
         :type ServiceName: str
-        :param _OperationNameFilter: 接口过滤
+        :param _OperationNameFilter: <p>接口过滤</p>
         :type OperationNameFilter: str
-        :param _ExceptionFilter: 错误类型过滤
+        :param _ExceptionFilter: <p>错误类型过滤</p>
         :type ExceptionFilter: str
-        :param _ErrorCodeFilter: HTTP 状态码过滤
+        :param _ErrorCodeFilter: <p>HTTP 状态码过滤</p>
         :type ErrorCodeFilter: str
-        :param _EventEnable: 应用诊断开关（已废弃）
+        :param _EventEnable: <p>应用诊断开关（已废弃）</p>
         :type EventEnable: bool
-        :param _UrlConvergenceSwitch: URL 收敛开关 0 关 1 开
+        :param _UrlConvergenceSwitch: <p>URL 收敛开关 0 关 1 开</p>
         :type UrlConvergenceSwitch: int
-        :param _UrlConvergenceThreshold: URL 收敛阈值	
+        :param _UrlConvergenceThreshold: <p>URL 收敛阈值</p>
         :type UrlConvergenceThreshold: int
-        :param _UrlConvergence: URL 收敛规则正则	
+        :param _UrlConvergence: <p>URL 收敛规则正则</p>
         :type UrlConvergence: str
-        :param _UrlExclude: URL 排除规则正则
+        :param _UrlExclude: <p>URL 排除规则正则</p>
         :type UrlExclude: str
-        :param _IsRelatedLog: 是否开启日志 0 关 1 开
+        :param _IsRelatedLog: <p>是否开启日志 0 关 1 开</p>
         :type IsRelatedLog: int
-        :param _LogSource: 日志源	
+        :param _LogSource: <p>日志源</p>
         :type LogSource: str
-        :param _LogSet: 日志集 
+        :param _LogSet: <p>日志集</p>
         :type LogSet: str
-        :param _LogTopicID: 日志主题
+        :param _LogTopicID: <p>日志主题</p>
         :type LogTopicID: str
-        :param _SnapshotEnable: 方法栈快照开关 true 开启 false 关闭
+        :param _SnapshotEnable: <p>方法栈快照开关 true 开启 false 关闭</p>
         :type SnapshotEnable: bool
-        :param _SnapshotTimeout: 慢调用监听触发阈值
+        :param _SnapshotTimeout: <p>慢调用监听触发阈值</p>
         :type SnapshotTimeout: int
-        :param _AgentEnable: 探针总开关
+        :param _AgentEnable: <p>探针总开关</p>
         :type AgentEnable: bool
-        :param _InstrumentList: 组件列表开关（已废弃）
+        :param _InstrumentList: <p>组件列表开关（已废弃）</p>
         :type InstrumentList: list of Instrument
-        :param _TraceSquash: 链路压缩开关（已废弃）
+        :param _TraceSquash: <p>链路压缩开关（已废弃）</p>
         :type TraceSquash: bool
-        :param _DisableMemoryUsed: 探针熔断内存阈值
+        :param _AgentIgnoreOperation: <p>链路过滤配置</p>
+        :type AgentIgnoreOperation: str
+        :param _EnableSecurityConfig: <p>开启应用安全开关</p>
+        :type EnableSecurityConfig: bool
+        :param _IsSqlInjectionAnalysis: <p>是否开启SQL注入检测</p>
+        :type IsSqlInjectionAnalysis: int
+        :param _IsInstrumentationVulnerabilityScan: <p>是否开启组件漏洞检测</p>
+        :type IsInstrumentationVulnerabilityScan: int
+        :param _IsRemoteCommandExecutionAnalysis: <p>是否开启远程命令执行检测</p>
+        :type IsRemoteCommandExecutionAnalysis: int
+        :param _IsMemoryHijackingAnalysis: <p>是否开启内存泄漏检测</p>
+        :type IsMemoryHijackingAnalysis: int
+        :param _IsDeleteAnyFileAnalysis: <p>是否开启删除任意文件检测</p>
+        :type IsDeleteAnyFileAnalysis: int
+        :param _IsReadAnyFileAnalysis: <p>是否开启读取任意文件检测</p>
+        :type IsReadAnyFileAnalysis: int
+        :param _IsUploadAnyFileAnalysis: <p>是否开启上传任意文件检测</p>
+        :type IsUploadAnyFileAnalysis: int
+        :param _IsIncludeAnyFileAnalysis: <p>是否开启包含任意文件检测</p>
+        :type IsIncludeAnyFileAnalysis: int
+        :param _IsDirectoryTraversalAnalysis: <p>是否开启目录遍历检测</p>
+        :type IsDirectoryTraversalAnalysis: int
+        :param _IsTemplateEngineInjectionAnalysis: <p>是否开启模板引擎注入检测</p>
+        :type IsTemplateEngineInjectionAnalysis: int
+        :param _IsScriptEngineInjectionAnalysis: <p>是否开启脚本引擎注入检测</p>
+        :type IsScriptEngineInjectionAnalysis: int
+        :param _IsExpressionInjectionAnalysis: <p>是否开启表达式注入检测</p>
+        :type IsExpressionInjectionAnalysis: int
+        :param _IsJndiInjectionAnalysis: <p>是否开启JNDI注入检测</p>
+        :type IsJndiInjectionAnalysis: int
+        :param _IsJniInjectionAnalysis: <p>是否开启JNI注入检测</p>
+        :type IsJniInjectionAnalysis: int
+        :param _IsWebshellBackdoorAnalysis: <p>是否开启Webshell后门检测</p>
+        :type IsWebshellBackdoorAnalysis: int
+        :param _IsDeserializationAnalysis: <p>是否开启反序列化检测</p>
+        :type IsDeserializationAnalysis: int
+        :param _EnableDashboardConfig: <p>是否开启控制台开关</p>
+        :type EnableDashboardConfig: bool
+        :param _IsRelatedDashboard: <p>是否关联Dashboard</p>
+        :type IsRelatedDashboard: int
+        :param _DashboardTopicID: <p>Dashboard topic</p>
+        :type DashboardTopicID: str
+        :param _DisableMemoryUsed: <p>探针熔断内存阈值</p>
         :type DisableMemoryUsed: int
-        :param _DisableCpuUsed: 探针熔断CPU阈值
+        :param _DisableCpuUsed: <p>探针熔断CPU阈值</p>
         :type DisableCpuUsed: int
-        :param _DbStatementParametersEnabled: 是否开启SQL参数获取
+        :param _DbStatementParametersEnabled: <p>是否开启SQL参数获取</p>
         :type DbStatementParametersEnabled: bool
-        :param _SlowSQLThresholds: 慢SQL阈值
+        :param _SlowSQLThresholds: <p>慢SQL阈值</p>
         :type SlowSQLThresholds: list of ApmTag
-        :param _EnableDesensitizationRule: 是否开启脱敏规则
+        :param _EnableDesensitizationRule: <p>是否开启脱敏规则</p>
         :type EnableDesensitizationRule: int
-        :param _DesensitizationRule: 脱敏规则
+        :param _DesensitizationRule: <p>脱敏规则</p>
         :type DesensitizationRule: str
-        :param _AutoProfilingConfig: 自动性能剖析任务配置
+        :param _AutoProfilingConfig: <p>自动性能剖析任务配置</p>
         :type AutoProfilingConfig: :class:`tencentcloud.apm.v20210622.models.AutoProfilingConfig`
+        :param _EnableThresholdConfig: <p>阈值配置开关</p>
+        :type EnableThresholdConfig: bool
+        :param _ErrRateThreshold: <p>错误率阈值</p><p>单位：%</p>
+        :type ErrRateThreshold: int
+        :param _ResponseDurationWarningThreshold: <p>响应时间预警阈值</p><p>单位：ms</p>
+        :type ResponseDurationWarningThreshold: int
         """
         self._InstanceKey = None
         self._ServiceName = None
@@ -1333,6 +1426,27 @@ class ApmApplicationConfigView(AbstractModel):
         self._AgentEnable = None
         self._InstrumentList = None
         self._TraceSquash = None
+        self._AgentIgnoreOperation = None
+        self._EnableSecurityConfig = None
+        self._IsSqlInjectionAnalysis = None
+        self._IsInstrumentationVulnerabilityScan = None
+        self._IsRemoteCommandExecutionAnalysis = None
+        self._IsMemoryHijackingAnalysis = None
+        self._IsDeleteAnyFileAnalysis = None
+        self._IsReadAnyFileAnalysis = None
+        self._IsUploadAnyFileAnalysis = None
+        self._IsIncludeAnyFileAnalysis = None
+        self._IsDirectoryTraversalAnalysis = None
+        self._IsTemplateEngineInjectionAnalysis = None
+        self._IsScriptEngineInjectionAnalysis = None
+        self._IsExpressionInjectionAnalysis = None
+        self._IsJndiInjectionAnalysis = None
+        self._IsJniInjectionAnalysis = None
+        self._IsWebshellBackdoorAnalysis = None
+        self._IsDeserializationAnalysis = None
+        self._EnableDashboardConfig = None
+        self._IsRelatedDashboard = None
+        self._DashboardTopicID = None
         self._DisableMemoryUsed = None
         self._DisableCpuUsed = None
         self._DbStatementParametersEnabled = None
@@ -1340,10 +1454,13 @@ class ApmApplicationConfigView(AbstractModel):
         self._EnableDesensitizationRule = None
         self._DesensitizationRule = None
         self._AutoProfilingConfig = None
+        self._EnableThresholdConfig = None
+        self._ErrRateThreshold = None
+        self._ResponseDurationWarningThreshold = None
 
     @property
     def InstanceKey(self):
-        r"""业务系统 ID
+        r"""<p>业务系统 ID</p>
         :rtype: str
         """
         return self._InstanceKey
@@ -1354,7 +1471,7 @@ class ApmApplicationConfigView(AbstractModel):
 
     @property
     def ServiceName(self):
-        r"""应用名	
+        r"""<p>应用名</p>
         :rtype: str
         """
         return self._ServiceName
@@ -1365,7 +1482,7 @@ class ApmApplicationConfigView(AbstractModel):
 
     @property
     def OperationNameFilter(self):
-        r"""接口过滤
+        r"""<p>接口过滤</p>
         :rtype: str
         """
         return self._OperationNameFilter
@@ -1376,7 +1493,7 @@ class ApmApplicationConfigView(AbstractModel):
 
     @property
     def ExceptionFilter(self):
-        r"""错误类型过滤
+        r"""<p>错误类型过滤</p>
         :rtype: str
         """
         return self._ExceptionFilter
@@ -1387,7 +1504,7 @@ class ApmApplicationConfigView(AbstractModel):
 
     @property
     def ErrorCodeFilter(self):
-        r"""HTTP 状态码过滤
+        r"""<p>HTTP 状态码过滤</p>
         :rtype: str
         """
         return self._ErrorCodeFilter
@@ -1398,7 +1515,7 @@ class ApmApplicationConfigView(AbstractModel):
 
     @property
     def EventEnable(self):
-        r"""应用诊断开关（已废弃）
+        r"""<p>应用诊断开关（已废弃）</p>
         :rtype: bool
         """
         return self._EventEnable
@@ -1409,7 +1526,7 @@ class ApmApplicationConfigView(AbstractModel):
 
     @property
     def UrlConvergenceSwitch(self):
-        r"""URL 收敛开关 0 关 1 开
+        r"""<p>URL 收敛开关 0 关 1 开</p>
         :rtype: int
         """
         return self._UrlConvergenceSwitch
@@ -1420,7 +1537,7 @@ class ApmApplicationConfigView(AbstractModel):
 
     @property
     def UrlConvergenceThreshold(self):
-        r"""URL 收敛阈值	
+        r"""<p>URL 收敛阈值</p>
         :rtype: int
         """
         return self._UrlConvergenceThreshold
@@ -1431,7 +1548,7 @@ class ApmApplicationConfigView(AbstractModel):
 
     @property
     def UrlConvergence(self):
-        r"""URL 收敛规则正则	
+        r"""<p>URL 收敛规则正则</p>
         :rtype: str
         """
         return self._UrlConvergence
@@ -1442,7 +1559,7 @@ class ApmApplicationConfigView(AbstractModel):
 
     @property
     def UrlExclude(self):
-        r"""URL 排除规则正则
+        r"""<p>URL 排除规则正则</p>
         :rtype: str
         """
         return self._UrlExclude
@@ -1453,7 +1570,7 @@ class ApmApplicationConfigView(AbstractModel):
 
     @property
     def IsRelatedLog(self):
-        r"""是否开启日志 0 关 1 开
+        r"""<p>是否开启日志 0 关 1 开</p>
         :rtype: int
         """
         return self._IsRelatedLog
@@ -1464,7 +1581,7 @@ class ApmApplicationConfigView(AbstractModel):
 
     @property
     def LogSource(self):
-        r"""日志源	
+        r"""<p>日志源</p>
         :rtype: str
         """
         return self._LogSource
@@ -1475,7 +1592,7 @@ class ApmApplicationConfigView(AbstractModel):
 
     @property
     def LogSet(self):
-        r"""日志集 
+        r"""<p>日志集</p>
         :rtype: str
         """
         return self._LogSet
@@ -1486,7 +1603,7 @@ class ApmApplicationConfigView(AbstractModel):
 
     @property
     def LogTopicID(self):
-        r"""日志主题
+        r"""<p>日志主题</p>
         :rtype: str
         """
         return self._LogTopicID
@@ -1497,7 +1614,7 @@ class ApmApplicationConfigView(AbstractModel):
 
     @property
     def SnapshotEnable(self):
-        r"""方法栈快照开关 true 开启 false 关闭
+        r"""<p>方法栈快照开关 true 开启 false 关闭</p>
         :rtype: bool
         """
         return self._SnapshotEnable
@@ -1508,7 +1625,7 @@ class ApmApplicationConfigView(AbstractModel):
 
     @property
     def SnapshotTimeout(self):
-        r"""慢调用监听触发阈值
+        r"""<p>慢调用监听触发阈值</p>
         :rtype: int
         """
         return self._SnapshotTimeout
@@ -1519,7 +1636,7 @@ class ApmApplicationConfigView(AbstractModel):
 
     @property
     def AgentEnable(self):
-        r"""探针总开关
+        r"""<p>探针总开关</p>
         :rtype: bool
         """
         return self._AgentEnable
@@ -1530,7 +1647,7 @@ class ApmApplicationConfigView(AbstractModel):
 
     @property
     def InstrumentList(self):
-        r"""组件列表开关（已废弃）
+        r"""<p>组件列表开关（已废弃）</p>
         :rtype: list of Instrument
         """
         return self._InstrumentList
@@ -1541,7 +1658,7 @@ class ApmApplicationConfigView(AbstractModel):
 
     @property
     def TraceSquash(self):
-        r"""链路压缩开关（已废弃）
+        r"""<p>链路压缩开关（已废弃）</p>
         :rtype: bool
         """
         return self._TraceSquash
@@ -1551,8 +1668,239 @@ class ApmApplicationConfigView(AbstractModel):
         self._TraceSquash = TraceSquash
 
     @property
+    def AgentIgnoreOperation(self):
+        r"""<p>链路过滤配置</p>
+        :rtype: str
+        """
+        return self._AgentIgnoreOperation
+
+    @AgentIgnoreOperation.setter
+    def AgentIgnoreOperation(self, AgentIgnoreOperation):
+        self._AgentIgnoreOperation = AgentIgnoreOperation
+
+    @property
+    def EnableSecurityConfig(self):
+        r"""<p>开启应用安全开关</p>
+        :rtype: bool
+        """
+        return self._EnableSecurityConfig
+
+    @EnableSecurityConfig.setter
+    def EnableSecurityConfig(self, EnableSecurityConfig):
+        self._EnableSecurityConfig = EnableSecurityConfig
+
+    @property
+    def IsSqlInjectionAnalysis(self):
+        r"""<p>是否开启SQL注入检测</p>
+        :rtype: int
+        """
+        return self._IsSqlInjectionAnalysis
+
+    @IsSqlInjectionAnalysis.setter
+    def IsSqlInjectionAnalysis(self, IsSqlInjectionAnalysis):
+        self._IsSqlInjectionAnalysis = IsSqlInjectionAnalysis
+
+    @property
+    def IsInstrumentationVulnerabilityScan(self):
+        r"""<p>是否开启组件漏洞检测</p>
+        :rtype: int
+        """
+        return self._IsInstrumentationVulnerabilityScan
+
+    @IsInstrumentationVulnerabilityScan.setter
+    def IsInstrumentationVulnerabilityScan(self, IsInstrumentationVulnerabilityScan):
+        self._IsInstrumentationVulnerabilityScan = IsInstrumentationVulnerabilityScan
+
+    @property
+    def IsRemoteCommandExecutionAnalysis(self):
+        r"""<p>是否开启远程命令执行检测</p>
+        :rtype: int
+        """
+        return self._IsRemoteCommandExecutionAnalysis
+
+    @IsRemoteCommandExecutionAnalysis.setter
+    def IsRemoteCommandExecutionAnalysis(self, IsRemoteCommandExecutionAnalysis):
+        self._IsRemoteCommandExecutionAnalysis = IsRemoteCommandExecutionAnalysis
+
+    @property
+    def IsMemoryHijackingAnalysis(self):
+        r"""<p>是否开启内存泄漏检测</p>
+        :rtype: int
+        """
+        return self._IsMemoryHijackingAnalysis
+
+    @IsMemoryHijackingAnalysis.setter
+    def IsMemoryHijackingAnalysis(self, IsMemoryHijackingAnalysis):
+        self._IsMemoryHijackingAnalysis = IsMemoryHijackingAnalysis
+
+    @property
+    def IsDeleteAnyFileAnalysis(self):
+        r"""<p>是否开启删除任意文件检测</p>
+        :rtype: int
+        """
+        return self._IsDeleteAnyFileAnalysis
+
+    @IsDeleteAnyFileAnalysis.setter
+    def IsDeleteAnyFileAnalysis(self, IsDeleteAnyFileAnalysis):
+        self._IsDeleteAnyFileAnalysis = IsDeleteAnyFileAnalysis
+
+    @property
+    def IsReadAnyFileAnalysis(self):
+        r"""<p>是否开启读取任意文件检测</p>
+        :rtype: int
+        """
+        return self._IsReadAnyFileAnalysis
+
+    @IsReadAnyFileAnalysis.setter
+    def IsReadAnyFileAnalysis(self, IsReadAnyFileAnalysis):
+        self._IsReadAnyFileAnalysis = IsReadAnyFileAnalysis
+
+    @property
+    def IsUploadAnyFileAnalysis(self):
+        r"""<p>是否开启上传任意文件检测</p>
+        :rtype: int
+        """
+        return self._IsUploadAnyFileAnalysis
+
+    @IsUploadAnyFileAnalysis.setter
+    def IsUploadAnyFileAnalysis(self, IsUploadAnyFileAnalysis):
+        self._IsUploadAnyFileAnalysis = IsUploadAnyFileAnalysis
+
+    @property
+    def IsIncludeAnyFileAnalysis(self):
+        r"""<p>是否开启包含任意文件检测</p>
+        :rtype: int
+        """
+        return self._IsIncludeAnyFileAnalysis
+
+    @IsIncludeAnyFileAnalysis.setter
+    def IsIncludeAnyFileAnalysis(self, IsIncludeAnyFileAnalysis):
+        self._IsIncludeAnyFileAnalysis = IsIncludeAnyFileAnalysis
+
+    @property
+    def IsDirectoryTraversalAnalysis(self):
+        r"""<p>是否开启目录遍历检测</p>
+        :rtype: int
+        """
+        return self._IsDirectoryTraversalAnalysis
+
+    @IsDirectoryTraversalAnalysis.setter
+    def IsDirectoryTraversalAnalysis(self, IsDirectoryTraversalAnalysis):
+        self._IsDirectoryTraversalAnalysis = IsDirectoryTraversalAnalysis
+
+    @property
+    def IsTemplateEngineInjectionAnalysis(self):
+        r"""<p>是否开启模板引擎注入检测</p>
+        :rtype: int
+        """
+        return self._IsTemplateEngineInjectionAnalysis
+
+    @IsTemplateEngineInjectionAnalysis.setter
+    def IsTemplateEngineInjectionAnalysis(self, IsTemplateEngineInjectionAnalysis):
+        self._IsTemplateEngineInjectionAnalysis = IsTemplateEngineInjectionAnalysis
+
+    @property
+    def IsScriptEngineInjectionAnalysis(self):
+        r"""<p>是否开启脚本引擎注入检测</p>
+        :rtype: int
+        """
+        return self._IsScriptEngineInjectionAnalysis
+
+    @IsScriptEngineInjectionAnalysis.setter
+    def IsScriptEngineInjectionAnalysis(self, IsScriptEngineInjectionAnalysis):
+        self._IsScriptEngineInjectionAnalysis = IsScriptEngineInjectionAnalysis
+
+    @property
+    def IsExpressionInjectionAnalysis(self):
+        r"""<p>是否开启表达式注入检测</p>
+        :rtype: int
+        """
+        return self._IsExpressionInjectionAnalysis
+
+    @IsExpressionInjectionAnalysis.setter
+    def IsExpressionInjectionAnalysis(self, IsExpressionInjectionAnalysis):
+        self._IsExpressionInjectionAnalysis = IsExpressionInjectionAnalysis
+
+    @property
+    def IsJndiInjectionAnalysis(self):
+        r"""<p>是否开启JNDI注入检测</p>
+        :rtype: int
+        """
+        return self._IsJndiInjectionAnalysis
+
+    @IsJndiInjectionAnalysis.setter
+    def IsJndiInjectionAnalysis(self, IsJndiInjectionAnalysis):
+        self._IsJndiInjectionAnalysis = IsJndiInjectionAnalysis
+
+    @property
+    def IsJniInjectionAnalysis(self):
+        r"""<p>是否开启JNI注入检测</p>
+        :rtype: int
+        """
+        return self._IsJniInjectionAnalysis
+
+    @IsJniInjectionAnalysis.setter
+    def IsJniInjectionAnalysis(self, IsJniInjectionAnalysis):
+        self._IsJniInjectionAnalysis = IsJniInjectionAnalysis
+
+    @property
+    def IsWebshellBackdoorAnalysis(self):
+        r"""<p>是否开启Webshell后门检测</p>
+        :rtype: int
+        """
+        return self._IsWebshellBackdoorAnalysis
+
+    @IsWebshellBackdoorAnalysis.setter
+    def IsWebshellBackdoorAnalysis(self, IsWebshellBackdoorAnalysis):
+        self._IsWebshellBackdoorAnalysis = IsWebshellBackdoorAnalysis
+
+    @property
+    def IsDeserializationAnalysis(self):
+        r"""<p>是否开启反序列化检测</p>
+        :rtype: int
+        """
+        return self._IsDeserializationAnalysis
+
+    @IsDeserializationAnalysis.setter
+    def IsDeserializationAnalysis(self, IsDeserializationAnalysis):
+        self._IsDeserializationAnalysis = IsDeserializationAnalysis
+
+    @property
+    def EnableDashboardConfig(self):
+        r"""<p>是否开启控制台开关</p>
+        :rtype: bool
+        """
+        return self._EnableDashboardConfig
+
+    @EnableDashboardConfig.setter
+    def EnableDashboardConfig(self, EnableDashboardConfig):
+        self._EnableDashboardConfig = EnableDashboardConfig
+
+    @property
+    def IsRelatedDashboard(self):
+        r"""<p>是否关联Dashboard</p>
+        :rtype: int
+        """
+        return self._IsRelatedDashboard
+
+    @IsRelatedDashboard.setter
+    def IsRelatedDashboard(self, IsRelatedDashboard):
+        self._IsRelatedDashboard = IsRelatedDashboard
+
+    @property
+    def DashboardTopicID(self):
+        r"""<p>Dashboard topic</p>
+        :rtype: str
+        """
+        return self._DashboardTopicID
+
+    @DashboardTopicID.setter
+    def DashboardTopicID(self, DashboardTopicID):
+        self._DashboardTopicID = DashboardTopicID
+
+    @property
     def DisableMemoryUsed(self):
-        r"""探针熔断内存阈值
+        r"""<p>探针熔断内存阈值</p>
         :rtype: int
         """
         return self._DisableMemoryUsed
@@ -1563,7 +1911,7 @@ class ApmApplicationConfigView(AbstractModel):
 
     @property
     def DisableCpuUsed(self):
-        r"""探针熔断CPU阈值
+        r"""<p>探针熔断CPU阈值</p>
         :rtype: int
         """
         return self._DisableCpuUsed
@@ -1574,7 +1922,7 @@ class ApmApplicationConfigView(AbstractModel):
 
     @property
     def DbStatementParametersEnabled(self):
-        r"""是否开启SQL参数获取
+        r"""<p>是否开启SQL参数获取</p>
         :rtype: bool
         """
         return self._DbStatementParametersEnabled
@@ -1585,7 +1933,7 @@ class ApmApplicationConfigView(AbstractModel):
 
     @property
     def SlowSQLThresholds(self):
-        r"""慢SQL阈值
+        r"""<p>慢SQL阈值</p>
         :rtype: list of ApmTag
         """
         return self._SlowSQLThresholds
@@ -1596,7 +1944,7 @@ class ApmApplicationConfigView(AbstractModel):
 
     @property
     def EnableDesensitizationRule(self):
-        r"""是否开启脱敏规则
+        r"""<p>是否开启脱敏规则</p>
         :rtype: int
         """
         return self._EnableDesensitizationRule
@@ -1607,7 +1955,7 @@ class ApmApplicationConfigView(AbstractModel):
 
     @property
     def DesensitizationRule(self):
-        r"""脱敏规则
+        r"""<p>脱敏规则</p>
         :rtype: str
         """
         return self._DesensitizationRule
@@ -1618,7 +1966,7 @@ class ApmApplicationConfigView(AbstractModel):
 
     @property
     def AutoProfilingConfig(self):
-        r"""自动性能剖析任务配置
+        r"""<p>自动性能剖析任务配置</p>
         :rtype: :class:`tencentcloud.apm.v20210622.models.AutoProfilingConfig`
         """
         return self._AutoProfilingConfig
@@ -1626,6 +1974,39 @@ class ApmApplicationConfigView(AbstractModel):
     @AutoProfilingConfig.setter
     def AutoProfilingConfig(self, AutoProfilingConfig):
         self._AutoProfilingConfig = AutoProfilingConfig
+
+    @property
+    def EnableThresholdConfig(self):
+        r"""<p>阈值配置开关</p>
+        :rtype: bool
+        """
+        return self._EnableThresholdConfig
+
+    @EnableThresholdConfig.setter
+    def EnableThresholdConfig(self, EnableThresholdConfig):
+        self._EnableThresholdConfig = EnableThresholdConfig
+
+    @property
+    def ErrRateThreshold(self):
+        r"""<p>错误率阈值</p><p>单位：%</p>
+        :rtype: int
+        """
+        return self._ErrRateThreshold
+
+    @ErrRateThreshold.setter
+    def ErrRateThreshold(self, ErrRateThreshold):
+        self._ErrRateThreshold = ErrRateThreshold
+
+    @property
+    def ResponseDurationWarningThreshold(self):
+        r"""<p>响应时间预警阈值</p><p>单位：ms</p>
+        :rtype: int
+        """
+        return self._ResponseDurationWarningThreshold
+
+    @ResponseDurationWarningThreshold.setter
+    def ResponseDurationWarningThreshold(self, ResponseDurationWarningThreshold):
+        self._ResponseDurationWarningThreshold = ResponseDurationWarningThreshold
 
 
     def _deserialize(self, params):
@@ -1653,6 +2034,27 @@ class ApmApplicationConfigView(AbstractModel):
                 obj._deserialize(item)
                 self._InstrumentList.append(obj)
         self._TraceSquash = params.get("TraceSquash")
+        self._AgentIgnoreOperation = params.get("AgentIgnoreOperation")
+        self._EnableSecurityConfig = params.get("EnableSecurityConfig")
+        self._IsSqlInjectionAnalysis = params.get("IsSqlInjectionAnalysis")
+        self._IsInstrumentationVulnerabilityScan = params.get("IsInstrumentationVulnerabilityScan")
+        self._IsRemoteCommandExecutionAnalysis = params.get("IsRemoteCommandExecutionAnalysis")
+        self._IsMemoryHijackingAnalysis = params.get("IsMemoryHijackingAnalysis")
+        self._IsDeleteAnyFileAnalysis = params.get("IsDeleteAnyFileAnalysis")
+        self._IsReadAnyFileAnalysis = params.get("IsReadAnyFileAnalysis")
+        self._IsUploadAnyFileAnalysis = params.get("IsUploadAnyFileAnalysis")
+        self._IsIncludeAnyFileAnalysis = params.get("IsIncludeAnyFileAnalysis")
+        self._IsDirectoryTraversalAnalysis = params.get("IsDirectoryTraversalAnalysis")
+        self._IsTemplateEngineInjectionAnalysis = params.get("IsTemplateEngineInjectionAnalysis")
+        self._IsScriptEngineInjectionAnalysis = params.get("IsScriptEngineInjectionAnalysis")
+        self._IsExpressionInjectionAnalysis = params.get("IsExpressionInjectionAnalysis")
+        self._IsJndiInjectionAnalysis = params.get("IsJndiInjectionAnalysis")
+        self._IsJniInjectionAnalysis = params.get("IsJniInjectionAnalysis")
+        self._IsWebshellBackdoorAnalysis = params.get("IsWebshellBackdoorAnalysis")
+        self._IsDeserializationAnalysis = params.get("IsDeserializationAnalysis")
+        self._EnableDashboardConfig = params.get("EnableDashboardConfig")
+        self._IsRelatedDashboard = params.get("IsRelatedDashboard")
+        self._DashboardTopicID = params.get("DashboardTopicID")
         self._DisableMemoryUsed = params.get("DisableMemoryUsed")
         self._DisableCpuUsed = params.get("DisableCpuUsed")
         self._DbStatementParametersEnabled = params.get("DbStatementParametersEnabled")
@@ -1667,6 +2069,9 @@ class ApmApplicationConfigView(AbstractModel):
         if params.get("AutoProfilingConfig") is not None:
             self._AutoProfilingConfig = AutoProfilingConfig()
             self._AutoProfilingConfig._deserialize(params.get("AutoProfilingConfig"))
+        self._EnableThresholdConfig = params.get("EnableThresholdConfig")
+        self._ErrRateThreshold = params.get("ErrRateThreshold")
+        self._ResponseDurationWarningThreshold = params.get("ResponseDurationWarningThreshold")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8497,116 +8902,122 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 业务系统 ID
+        :param _InstanceId: <p>业务系统 ID</p>
         :type InstanceId: str
-        :param _ServiceName: 应用名
+        :param _ServiceName: <p>应用名</p>
         :type ServiceName: str
-        :param _UrlConvergenceSwitch: URL收敛开关,0 关 | 1 开
+        :param _UrlConvergenceSwitch: <p>URL收敛开关,0 关 | 1 开</p>
         :type UrlConvergenceSwitch: int
-        :param _UrlConvergenceThreshold: URL收敛阈值
+        :param _UrlConvergenceThreshold: <p>URL收敛阈值</p>
         :type UrlConvergenceThreshold: int
-        :param _ExceptionFilter: 异常过滤正则规则，逗号分隔
+        :param _ExceptionFilter: <p>异常过滤正则规则，逗号分隔</p>
         :type ExceptionFilter: str
-        :param _UrlConvergence: URL收敛正则规则，逗号分隔
+        :param _UrlConvergence: <p>URL收敛正则规则，逗号分隔</p>
         :type UrlConvergence: str
-        :param _ErrorCodeFilter: 错误码过滤，逗号分隔
+        :param _ErrorCodeFilter: <p>错误码过滤，逗号分隔</p>
         :type ErrorCodeFilter: str
-        :param _UrlExclude: URL排除正则规则，逗号分隔
+        :param _UrlExclude: <p>URL排除正则规则，逗号分隔</p>
         :type UrlExclude: str
-        :param _IsRelatedLog: 日志开关 0 关 1 开
+        :param _IsRelatedLog: <p>日志开关 0 关 1 开</p>
         :type IsRelatedLog: int
-        :param _LogRegion: 日志地域
+        :param _LogRegion: <p>日志地域</p>
         :type LogRegion: str
-        :param _LogTopicID: 日志主题ID
+        :param _LogTopicID: <p>日志主题ID</p>
         :type LogTopicID: str
-        :param _LogSet: CLS 日志集 | ES 集群ID
+        :param _LogSet: <p>CLS 日志集 | ES 集群ID</p>
         :type LogSet: str
-        :param _LogSource: 日志来源 CLS | ES
+        :param _LogSource: <p>日志来源 CLS | ES</p>
         :type LogSource: str
-        :param _IgnoreOperationName: 需过滤的接口
+        :param _IgnoreOperationName: <p>需过滤的接口</p>
         :type IgnoreOperationName: str
-        :param _EnableSnapshot: 是否开启线程剖析
+        :param _EnableSnapshot: <p>是否开启线程剖析</p>
         :type EnableSnapshot: bool
-        :param _SnapshotTimeout: 线程剖析超时阈值
+        :param _SnapshotTimeout: <p>线程剖析超时阈值</p>
         :type SnapshotTimeout: int
-        :param _AgentEnable: 是否开启agent
+        :param _AgentEnable: <p>是否开启agent</p>
         :type AgentEnable: bool
-        :param _TraceSquash: 是否开启链路压缩
+        :param _TraceSquash: <p>是否开启链路压缩</p>
         :type TraceSquash: bool
-        :param _EventEnable: 是否开启应用诊断的开关
+        :param _EventEnable: <p>是否开启应用诊断的开关</p>
         :type EventEnable: bool
-        :param _InstrumentList: 组件列表
+        :param _InstrumentList: <p>组件列表</p>
         :type InstrumentList: list of Instrument
-        :param _AgentOperationConfigView: 探针接口相关配置
+        :param _AgentOperationConfigView: <p>探针接口相关配置</p>
         :type AgentOperationConfigView: :class:`tencentcloud.apm.v20210622.models.AgentOperationConfigView`
-        :param _EnableLogConfig: 是否开启应用日志配置
+        :param _EnableLogConfig: <p>是否开启应用日志配置</p>
         :type EnableLogConfig: bool
-        :param _EnableDashboardConfig: 应用是否开启dashboard配置： false 关（与业务系统保持一致）/true 开（应用级配置）
+        :param _EnableDashboardConfig: <p>应用是否开启dashboard配置： false 关（与业务系统保持一致）/true 开（应用级配置）</p>
         :type EnableDashboardConfig: bool
-        :param _IsRelatedDashboard: 是否关联dashboard： 0 关 1 开
+        :param _IsRelatedDashboard: <p>是否关联dashboard： 0 关 1 开</p>
         :type IsRelatedDashboard: int
-        :param _DashboardTopicID: dashboard ID
+        :param _DashboardTopicID: <p>dashboard ID</p>
         :type DashboardTopicID: str
-        :param _LogIndexType: CLS索引类型(0=全文索引，1=键值索引)
+        :param _LogIndexType: <p>CLS索引类型(0=全文索引，1=键值索引)</p>
         :type LogIndexType: int
-        :param _LogTraceIdKey: traceId的索引key: 当CLS索引类型为键值索引时生效
+        :param _LogTraceIdKey: <p>traceId的索引key: 当CLS索引类型为键值索引时生效</p>
         :type LogTraceIdKey: str
-        :param _EnableSecurityConfig: 是否开启应用安全配置
+        :param _EnableSecurityConfig: <p>是否开启应用安全配置</p>
         :type EnableSecurityConfig: bool
-        :param _IsSqlInjectionAnalysis: 是否开启SQL注入分析
+        :param _IsSqlInjectionAnalysis: <p>是否开启SQL注入分析</p>
         :type IsSqlInjectionAnalysis: int
-        :param _IsInstrumentationVulnerabilityScan: 是否开启组件漏洞检测
+        :param _IsInstrumentationVulnerabilityScan: <p>是否开启组件漏洞检测</p>
         :type IsInstrumentationVulnerabilityScan: int
-        :param _IsRemoteCommandExecutionAnalysis: 是否开启远程命令检测
+        :param _IsRemoteCommandExecutionAnalysis: <p>是否开启远程命令检测</p>
         :type IsRemoteCommandExecutionAnalysis: int
-        :param _IsMemoryHijackingAnalysis: 是否开启内存马检测
+        :param _IsMemoryHijackingAnalysis: <p>是否开启内存马检测</p>
         :type IsMemoryHijackingAnalysis: int
-        :param _IsDeleteAnyFileAnalysis: 是否开启删除任意文件检测（0-关闭，1-开启）
+        :param _IsDeleteAnyFileAnalysis: <p>是否开启删除任意文件检测（0-关闭，1-开启）</p>
         :type IsDeleteAnyFileAnalysis: int
-        :param _IsReadAnyFileAnalysis: 是否开启读取任意文件检测（0-关闭，1-开启）
+        :param _IsReadAnyFileAnalysis: <p>是否开启读取任意文件检测（0-关闭，1-开启）</p>
         :type IsReadAnyFileAnalysis: int
-        :param _IsUploadAnyFileAnalysis: 是否开启上传任意文件检测（0-关闭，1-开启）
+        :param _IsUploadAnyFileAnalysis: <p>是否开启上传任意文件检测（0-关闭，1-开启）</p>
         :type IsUploadAnyFileAnalysis: int
-        :param _IsIncludeAnyFileAnalysis: 是否开启包含任意文件检测（0-关闭，1-开启）
+        :param _IsIncludeAnyFileAnalysis: <p>是否开启包含任意文件检测（0-关闭，1-开启）</p>
         :type IsIncludeAnyFileAnalysis: int
-        :param _IsDirectoryTraversalAnalysis: 是否开启目录遍历检测（0-关闭，1-开启）
+        :param _IsDirectoryTraversalAnalysis: <p>是否开启目录遍历检测（0-关闭，1-开启）</p>
         :type IsDirectoryTraversalAnalysis: int
-        :param _IsTemplateEngineInjectionAnalysis: 是否开启模板引擎注入检测（0-关闭，1-开启）
+        :param _IsTemplateEngineInjectionAnalysis: <p>是否开启模板引擎注入检测（0-关闭，1-开启）</p>
         :type IsTemplateEngineInjectionAnalysis: int
-        :param _IsScriptEngineInjectionAnalysis: 是否开启脚本引擎注入检测（0-关闭，1-开启）
+        :param _IsScriptEngineInjectionAnalysis: <p>是否开启脚本引擎注入检测（0-关闭，1-开启）</p>
         :type IsScriptEngineInjectionAnalysis: int
-        :param _IsExpressionInjectionAnalysis: 是否开启表达式注入检测（0-关闭，1-开启）
+        :param _IsExpressionInjectionAnalysis: <p>是否开启表达式注入检测（0-关闭，1-开启）</p>
         :type IsExpressionInjectionAnalysis: int
-        :param _IsJNDIInjectionAnalysis: 是否开启JNDI注入检测（0-关闭，1-开启）
+        :param _IsJNDIInjectionAnalysis: <p>是否开启JNDI注入检测（0-关闭，1-开启）</p>
         :type IsJNDIInjectionAnalysis: int
-        :param _IsJNIInjectionAnalysis: 是否开启JNI注入检测（0-关闭，1-开启）
+        :param _IsJNIInjectionAnalysis: <p>是否开启JNI注入检测（0-关闭，1-开启）</p>
         :type IsJNIInjectionAnalysis: int
-        :param _IsWebshellBackdoorAnalysis: 是否开启Webshell后门检测（0-关闭，1-开启）
+        :param _IsWebshellBackdoorAnalysis: <p>是否开启Webshell后门检测（0-关闭，1-开启）</p>
         :type IsWebshellBackdoorAnalysis: int
-        :param _IsDeserializationAnalysis: 是否开启反序列化检测（0-关闭，1-开启）
+        :param _IsDeserializationAnalysis: <p>是否开启反序列化检测（0-关闭，1-开启）</p>
         :type IsDeserializationAnalysis: int
-        :param _UrlAutoConvergenceEnable: 接口自动收敛开关,0 关 | 1 开
+        :param _UrlAutoConvergenceEnable: <p>接口自动收敛开关,0 关 | 1 开</p>
         :type UrlAutoConvergenceEnable: bool
-        :param _UrlLongSegmentThreshold: URL长分段收敛阈值
+        :param _UrlLongSegmentThreshold: <p>URL长分段收敛阈值</p>
         :type UrlLongSegmentThreshold: int
-        :param _UrlNumberSegmentThreshold: URL数字分段收敛阈值
+        :param _UrlNumberSegmentThreshold: <p>URL数字分段收敛阈值</p>
         :type UrlNumberSegmentThreshold: int
-        :param _DisableMemoryUsed: 探针熔断内存阈值
+        :param _DisableMemoryUsed: <p>探针熔断内存阈值</p>
         :type DisableMemoryUsed: int
-        :param _DisableCpuUsed: 探针熔断CPU阈值
+        :param _DisableCpuUsed: <p>探针熔断CPU阈值</p>
         :type DisableCpuUsed: int
-        :param _DbStatementParametersEnabled: 是否开启SQL参数获取
+        :param _DbStatementParametersEnabled: <p>是否开启SQL参数获取</p>
         :type DbStatementParametersEnabled: bool
-        :param _SlowSQLThresholds: 慢SQL阈值
+        :param _SlowSQLThresholds: <p>慢SQL阈值</p>
         :type SlowSQLThresholds: list of ApmTag
-        :param _EnableDesensitizationRule: 是否开启脱敏规则
+        :param _EnableDesensitizationRule: <p>是否开启脱敏规则</p>
         :type EnableDesensitizationRule: int
-        :param _DesensitizationRule: 脱敏规则
+        :param _DesensitizationRule: <p>脱敏规则</p>
         :type DesensitizationRule: str
-        :param _LogSpanIdKey: spanId的索引key: 当CLS索引类型为键值索引时生效
+        :param _LogSpanIdKey: <p>spanId的索引key: 当CLS索引类型为键值索引时生效</p>
         :type LogSpanIdKey: str
-        :param _AutoProfilingConfig: 自动性能剖析任务配置
+        :param _AutoProfilingConfig: <p>自动性能剖析任务配置</p>
         :type AutoProfilingConfig: :class:`tencentcloud.apm.v20210622.models.AutoProfilingConfig`
+        :param _EnableThresholdConfig: <p>阈值配置开关。true 表示使用应用级阈值；false 表示使用业务系统级阈值</p>
+        :type EnableThresholdConfig: bool
+        :param _ErrRateThreshold: <p>错误率阈值（%），用于判断应用健康状态为&quot;红色&quot;</p>
+        :type ErrRateThreshold: int
+        :param _ResponseDurationWarningThreshold: <p>响应时间预警阈值（ms），用于判断应用健康状态为&quot;黄色&quot;</p>
+        :type ResponseDurationWarningThreshold: int
         """
         self._InstanceId = None
         self._ServiceName = None
@@ -8663,10 +9074,13 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
         self._DesensitizationRule = None
         self._LogSpanIdKey = None
         self._AutoProfilingConfig = None
+        self._EnableThresholdConfig = None
+        self._ErrRateThreshold = None
+        self._ResponseDurationWarningThreshold = None
 
     @property
     def InstanceId(self):
-        r"""业务系统 ID
+        r"""<p>业务系统 ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -8677,7 +9091,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def ServiceName(self):
-        r"""应用名
+        r"""<p>应用名</p>
         :rtype: str
         """
         return self._ServiceName
@@ -8688,7 +9102,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def UrlConvergenceSwitch(self):
-        r"""URL收敛开关,0 关 | 1 开
+        r"""<p>URL收敛开关,0 关 | 1 开</p>
         :rtype: int
         """
         return self._UrlConvergenceSwitch
@@ -8699,7 +9113,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def UrlConvergenceThreshold(self):
-        r"""URL收敛阈值
+        r"""<p>URL收敛阈值</p>
         :rtype: int
         """
         return self._UrlConvergenceThreshold
@@ -8710,7 +9124,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def ExceptionFilter(self):
-        r"""异常过滤正则规则，逗号分隔
+        r"""<p>异常过滤正则规则，逗号分隔</p>
         :rtype: str
         """
         return self._ExceptionFilter
@@ -8721,7 +9135,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def UrlConvergence(self):
-        r"""URL收敛正则规则，逗号分隔
+        r"""<p>URL收敛正则规则，逗号分隔</p>
         :rtype: str
         """
         return self._UrlConvergence
@@ -8732,7 +9146,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def ErrorCodeFilter(self):
-        r"""错误码过滤，逗号分隔
+        r"""<p>错误码过滤，逗号分隔</p>
         :rtype: str
         """
         return self._ErrorCodeFilter
@@ -8743,7 +9157,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def UrlExclude(self):
-        r"""URL排除正则规则，逗号分隔
+        r"""<p>URL排除正则规则，逗号分隔</p>
         :rtype: str
         """
         return self._UrlExclude
@@ -8754,7 +9168,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def IsRelatedLog(self):
-        r"""日志开关 0 关 1 开
+        r"""<p>日志开关 0 关 1 开</p>
         :rtype: int
         """
         return self._IsRelatedLog
@@ -8765,7 +9179,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def LogRegion(self):
-        r"""日志地域
+        r"""<p>日志地域</p>
         :rtype: str
         """
         return self._LogRegion
@@ -8776,7 +9190,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def LogTopicID(self):
-        r"""日志主题ID
+        r"""<p>日志主题ID</p>
         :rtype: str
         """
         return self._LogTopicID
@@ -8787,7 +9201,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def LogSet(self):
-        r"""CLS 日志集 | ES 集群ID
+        r"""<p>CLS 日志集 | ES 集群ID</p>
         :rtype: str
         """
         return self._LogSet
@@ -8798,7 +9212,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def LogSource(self):
-        r"""日志来源 CLS | ES
+        r"""<p>日志来源 CLS | ES</p>
         :rtype: str
         """
         return self._LogSource
@@ -8809,7 +9223,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def IgnoreOperationName(self):
-        r"""需过滤的接口
+        r"""<p>需过滤的接口</p>
         :rtype: str
         """
         return self._IgnoreOperationName
@@ -8820,7 +9234,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def EnableSnapshot(self):
-        r"""是否开启线程剖析
+        r"""<p>是否开启线程剖析</p>
         :rtype: bool
         """
         return self._EnableSnapshot
@@ -8831,7 +9245,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def SnapshotTimeout(self):
-        r"""线程剖析超时阈值
+        r"""<p>线程剖析超时阈值</p>
         :rtype: int
         """
         return self._SnapshotTimeout
@@ -8842,7 +9256,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def AgentEnable(self):
-        r"""是否开启agent
+        r"""<p>是否开启agent</p>
         :rtype: bool
         """
         return self._AgentEnable
@@ -8853,7 +9267,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def TraceSquash(self):
-        r"""是否开启链路压缩
+        r"""<p>是否开启链路压缩</p>
         :rtype: bool
         """
         return self._TraceSquash
@@ -8864,7 +9278,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def EventEnable(self):
-        r"""是否开启应用诊断的开关
+        r"""<p>是否开启应用诊断的开关</p>
         :rtype: bool
         """
         return self._EventEnable
@@ -8875,7 +9289,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def InstrumentList(self):
-        r"""组件列表
+        r"""<p>组件列表</p>
         :rtype: list of Instrument
         """
         return self._InstrumentList
@@ -8886,7 +9300,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def AgentOperationConfigView(self):
-        r"""探针接口相关配置
+        r"""<p>探针接口相关配置</p>
         :rtype: :class:`tencentcloud.apm.v20210622.models.AgentOperationConfigView`
         """
         return self._AgentOperationConfigView
@@ -8897,7 +9311,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def EnableLogConfig(self):
-        r"""是否开启应用日志配置
+        r"""<p>是否开启应用日志配置</p>
         :rtype: bool
         """
         return self._EnableLogConfig
@@ -8908,7 +9322,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def EnableDashboardConfig(self):
-        r"""应用是否开启dashboard配置： false 关（与业务系统保持一致）/true 开（应用级配置）
+        r"""<p>应用是否开启dashboard配置： false 关（与业务系统保持一致）/true 开（应用级配置）</p>
         :rtype: bool
         """
         return self._EnableDashboardConfig
@@ -8919,7 +9333,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def IsRelatedDashboard(self):
-        r"""是否关联dashboard： 0 关 1 开
+        r"""<p>是否关联dashboard： 0 关 1 开</p>
         :rtype: int
         """
         return self._IsRelatedDashboard
@@ -8930,7 +9344,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def DashboardTopicID(self):
-        r"""dashboard ID
+        r"""<p>dashboard ID</p>
         :rtype: str
         """
         return self._DashboardTopicID
@@ -8941,7 +9355,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def LogIndexType(self):
-        r"""CLS索引类型(0=全文索引，1=键值索引)
+        r"""<p>CLS索引类型(0=全文索引，1=键值索引)</p>
         :rtype: int
         """
         return self._LogIndexType
@@ -8952,7 +9366,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def LogTraceIdKey(self):
-        r"""traceId的索引key: 当CLS索引类型为键值索引时生效
+        r"""<p>traceId的索引key: 当CLS索引类型为键值索引时生效</p>
         :rtype: str
         """
         return self._LogTraceIdKey
@@ -8963,7 +9377,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def EnableSecurityConfig(self):
-        r"""是否开启应用安全配置
+        r"""<p>是否开启应用安全配置</p>
         :rtype: bool
         """
         return self._EnableSecurityConfig
@@ -8974,7 +9388,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def IsSqlInjectionAnalysis(self):
-        r"""是否开启SQL注入分析
+        r"""<p>是否开启SQL注入分析</p>
         :rtype: int
         """
         return self._IsSqlInjectionAnalysis
@@ -8985,7 +9399,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def IsInstrumentationVulnerabilityScan(self):
-        r"""是否开启组件漏洞检测
+        r"""<p>是否开启组件漏洞检测</p>
         :rtype: int
         """
         return self._IsInstrumentationVulnerabilityScan
@@ -8996,7 +9410,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def IsRemoteCommandExecutionAnalysis(self):
-        r"""是否开启远程命令检测
+        r"""<p>是否开启远程命令检测</p>
         :rtype: int
         """
         return self._IsRemoteCommandExecutionAnalysis
@@ -9007,7 +9421,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def IsMemoryHijackingAnalysis(self):
-        r"""是否开启内存马检测
+        r"""<p>是否开启内存马检测</p>
         :rtype: int
         """
         return self._IsMemoryHijackingAnalysis
@@ -9018,7 +9432,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def IsDeleteAnyFileAnalysis(self):
-        r"""是否开启删除任意文件检测（0-关闭，1-开启）
+        r"""<p>是否开启删除任意文件检测（0-关闭，1-开启）</p>
         :rtype: int
         """
         return self._IsDeleteAnyFileAnalysis
@@ -9029,7 +9443,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def IsReadAnyFileAnalysis(self):
-        r"""是否开启读取任意文件检测（0-关闭，1-开启）
+        r"""<p>是否开启读取任意文件检测（0-关闭，1-开启）</p>
         :rtype: int
         """
         return self._IsReadAnyFileAnalysis
@@ -9040,7 +9454,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def IsUploadAnyFileAnalysis(self):
-        r"""是否开启上传任意文件检测（0-关闭，1-开启）
+        r"""<p>是否开启上传任意文件检测（0-关闭，1-开启）</p>
         :rtype: int
         """
         return self._IsUploadAnyFileAnalysis
@@ -9051,7 +9465,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def IsIncludeAnyFileAnalysis(self):
-        r"""是否开启包含任意文件检测（0-关闭，1-开启）
+        r"""<p>是否开启包含任意文件检测（0-关闭，1-开启）</p>
         :rtype: int
         """
         return self._IsIncludeAnyFileAnalysis
@@ -9062,7 +9476,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def IsDirectoryTraversalAnalysis(self):
-        r"""是否开启目录遍历检测（0-关闭，1-开启）
+        r"""<p>是否开启目录遍历检测（0-关闭，1-开启）</p>
         :rtype: int
         """
         return self._IsDirectoryTraversalAnalysis
@@ -9073,7 +9487,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def IsTemplateEngineInjectionAnalysis(self):
-        r"""是否开启模板引擎注入检测（0-关闭，1-开启）
+        r"""<p>是否开启模板引擎注入检测（0-关闭，1-开启）</p>
         :rtype: int
         """
         return self._IsTemplateEngineInjectionAnalysis
@@ -9084,7 +9498,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def IsScriptEngineInjectionAnalysis(self):
-        r"""是否开启脚本引擎注入检测（0-关闭，1-开启）
+        r"""<p>是否开启脚本引擎注入检测（0-关闭，1-开启）</p>
         :rtype: int
         """
         return self._IsScriptEngineInjectionAnalysis
@@ -9095,7 +9509,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def IsExpressionInjectionAnalysis(self):
-        r"""是否开启表达式注入检测（0-关闭，1-开启）
+        r"""<p>是否开启表达式注入检测（0-关闭，1-开启）</p>
         :rtype: int
         """
         return self._IsExpressionInjectionAnalysis
@@ -9106,7 +9520,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def IsJNDIInjectionAnalysis(self):
-        r"""是否开启JNDI注入检测（0-关闭，1-开启）
+        r"""<p>是否开启JNDI注入检测（0-关闭，1-开启）</p>
         :rtype: int
         """
         return self._IsJNDIInjectionAnalysis
@@ -9117,7 +9531,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def IsJNIInjectionAnalysis(self):
-        r"""是否开启JNI注入检测（0-关闭，1-开启）
+        r"""<p>是否开启JNI注入检测（0-关闭，1-开启）</p>
         :rtype: int
         """
         return self._IsJNIInjectionAnalysis
@@ -9128,7 +9542,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def IsWebshellBackdoorAnalysis(self):
-        r"""是否开启Webshell后门检测（0-关闭，1-开启）
+        r"""<p>是否开启Webshell后门检测（0-关闭，1-开启）</p>
         :rtype: int
         """
         return self._IsWebshellBackdoorAnalysis
@@ -9139,7 +9553,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def IsDeserializationAnalysis(self):
-        r"""是否开启反序列化检测（0-关闭，1-开启）
+        r"""<p>是否开启反序列化检测（0-关闭，1-开启）</p>
         :rtype: int
         """
         return self._IsDeserializationAnalysis
@@ -9150,7 +9564,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def UrlAutoConvergenceEnable(self):
-        r"""接口自动收敛开关,0 关 | 1 开
+        r"""<p>接口自动收敛开关,0 关 | 1 开</p>
         :rtype: bool
         """
         return self._UrlAutoConvergenceEnable
@@ -9161,7 +9575,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def UrlLongSegmentThreshold(self):
-        r"""URL长分段收敛阈值
+        r"""<p>URL长分段收敛阈值</p>
         :rtype: int
         """
         return self._UrlLongSegmentThreshold
@@ -9172,7 +9586,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def UrlNumberSegmentThreshold(self):
-        r"""URL数字分段收敛阈值
+        r"""<p>URL数字分段收敛阈值</p>
         :rtype: int
         """
         return self._UrlNumberSegmentThreshold
@@ -9183,7 +9597,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def DisableMemoryUsed(self):
-        r"""探针熔断内存阈值
+        r"""<p>探针熔断内存阈值</p>
         :rtype: int
         """
         return self._DisableMemoryUsed
@@ -9194,7 +9608,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def DisableCpuUsed(self):
-        r"""探针熔断CPU阈值
+        r"""<p>探针熔断CPU阈值</p>
         :rtype: int
         """
         return self._DisableCpuUsed
@@ -9205,7 +9619,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def DbStatementParametersEnabled(self):
-        r"""是否开启SQL参数获取
+        r"""<p>是否开启SQL参数获取</p>
         :rtype: bool
         """
         return self._DbStatementParametersEnabled
@@ -9216,7 +9630,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def SlowSQLThresholds(self):
-        r"""慢SQL阈值
+        r"""<p>慢SQL阈值</p>
         :rtype: list of ApmTag
         """
         return self._SlowSQLThresholds
@@ -9227,7 +9641,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def EnableDesensitizationRule(self):
-        r"""是否开启脱敏规则
+        r"""<p>是否开启脱敏规则</p>
         :rtype: int
         """
         return self._EnableDesensitizationRule
@@ -9238,7 +9652,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def DesensitizationRule(self):
-        r"""脱敏规则
+        r"""<p>脱敏规则</p>
         :rtype: str
         """
         return self._DesensitizationRule
@@ -9249,7 +9663,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def LogSpanIdKey(self):
-        r"""spanId的索引key: 当CLS索引类型为键值索引时生效
+        r"""<p>spanId的索引key: 当CLS索引类型为键值索引时生效</p>
         :rtype: str
         """
         return self._LogSpanIdKey
@@ -9260,7 +9674,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def AutoProfilingConfig(self):
-        r"""自动性能剖析任务配置
+        r"""<p>自动性能剖析任务配置</p>
         :rtype: :class:`tencentcloud.apm.v20210622.models.AutoProfilingConfig`
         """
         return self._AutoProfilingConfig
@@ -9268,6 +9682,39 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
     @AutoProfilingConfig.setter
     def AutoProfilingConfig(self, AutoProfilingConfig):
         self._AutoProfilingConfig = AutoProfilingConfig
+
+    @property
+    def EnableThresholdConfig(self):
+        r"""<p>阈值配置开关。true 表示使用应用级阈值；false 表示使用业务系统级阈值</p>
+        :rtype: bool
+        """
+        return self._EnableThresholdConfig
+
+    @EnableThresholdConfig.setter
+    def EnableThresholdConfig(self, EnableThresholdConfig):
+        self._EnableThresholdConfig = EnableThresholdConfig
+
+    @property
+    def ErrRateThreshold(self):
+        r"""<p>错误率阈值（%），用于判断应用健康状态为&quot;红色&quot;</p>
+        :rtype: int
+        """
+        return self._ErrRateThreshold
+
+    @ErrRateThreshold.setter
+    def ErrRateThreshold(self, ErrRateThreshold):
+        self._ErrRateThreshold = ErrRateThreshold
+
+    @property
+    def ResponseDurationWarningThreshold(self):
+        r"""<p>响应时间预警阈值（ms），用于判断应用健康状态为&quot;黄色&quot;</p>
+        :rtype: int
+        """
+        return self._ResponseDurationWarningThreshold
+
+    @ResponseDurationWarningThreshold.setter
+    def ResponseDurationWarningThreshold(self, ResponseDurationWarningThreshold):
+        self._ResponseDurationWarningThreshold = ResponseDurationWarningThreshold
 
 
     def _deserialize(self, params):
@@ -9340,6 +9787,9 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
         if params.get("AutoProfilingConfig") is not None:
             self._AutoProfilingConfig = AutoProfilingConfig()
             self._AutoProfilingConfig._deserialize(params.get("AutoProfilingConfig"))
+        self._EnableThresholdConfig = params.get("EnableThresholdConfig")
+        self._ErrRateThreshold = params.get("ErrRateThreshold")
+        self._ResponseDurationWarningThreshold = params.get("ResponseDurationWarningThreshold")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

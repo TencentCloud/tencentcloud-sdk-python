@@ -46958,6 +46958,358 @@ class DescribeOverviewStatisticsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribePatchEffectHostListRequest(AbstractModel):
+    r"""DescribePatchEffectHostList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _KbId: 补丁id
+        :type KbId: int
+        :param _Limit: 分页limit 最大100
+        :type Limit: int
+        :param _Offset: 分页偏移量
+        :type Offset: int
+        :param _Filters: 过滤条件：  
+<li>HostVersion : uint64类型 非必填 版本信息 : 0-基础版 1-专业版 2-旗舰版 3-轻量版 </li>
+<li>InstanceState : string类型 非必填 主机状态 : "PENDING"-创建中 "LAUNCH_FAILED"-创建失败 "RUNNING"-运行中 "STOPPED"-关机 "STARTING"-开机中 "STOPPING"-关机中 "REBOOTING"-重启中 "SHUTDOWN"-待销毁 "TERMINATING"-销毁中 "UNKNOWN"-未知（针对非腾讯云机器，且客户端离线的场景）</li>
+<li>Status : uint64类型 非必填 处理状态 0表示待处理，1表示忽略，3表示已修复</li>
+<li>HostName : string类型 非必填 主机名称</li>
+<li>InstanceID : string类型 非必填 主机id</li>
+<li>IpAddress : string类型 非必填 主机的ip地址</li>
+<li>Uuid : string类型 非必填 主机uuid</li>
+        :type Filters: list of Filter
+        """
+        self._KbId = None
+        self._Limit = None
+        self._Offset = None
+        self._Filters = None
+
+    @property
+    def KbId(self):
+        r"""补丁id
+        :rtype: int
+        """
+        return self._KbId
+
+    @KbId.setter
+    def KbId(self, KbId):
+        self._KbId = KbId
+
+    @property
+    def Limit(self):
+        r"""分页limit 最大100
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""分页偏移量
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Filters(self):
+        r"""过滤条件：  
+<li>HostVersion : uint64类型 非必填 版本信息 : 0-基础版 1-专业版 2-旗舰版 3-轻量版 </li>
+<li>InstanceState : string类型 非必填 主机状态 : "PENDING"-创建中 "LAUNCH_FAILED"-创建失败 "RUNNING"-运行中 "STOPPED"-关机 "STARTING"-开机中 "STOPPING"-关机中 "REBOOTING"-重启中 "SHUTDOWN"-待销毁 "TERMINATING"-销毁中 "UNKNOWN"-未知（针对非腾讯云机器，且客户端离线的场景）</li>
+<li>Status : uint64类型 非必填 处理状态 0表示待处理，1表示忽略，3表示已修复</li>
+<li>HostName : string类型 非必填 主机名称</li>
+<li>InstanceID : string类型 非必填 主机id</li>
+<li>IpAddress : string类型 非必填 主机的ip地址</li>
+<li>Uuid : string类型 非必填 主机uuid</li>
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._KbId = params.get("KbId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePatchEffectHostListResponse(AbstractModel):
+    r"""DescribePatchEffectHostList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 影响主机总数
+        :type TotalCount: int
+        :param _PatchEffectHostList: 补丁影响主机列表
+        :type PatchEffectHostList: list of PatchEffectHostList
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._PatchEffectHostList = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""影响主机总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def PatchEffectHostList(self):
+        r"""补丁影响主机列表
+        :rtype: list of PatchEffectHostList
+        """
+        return self._PatchEffectHostList
+
+    @PatchEffectHostList.setter
+    def PatchEffectHostList(self, PatchEffectHostList):
+        self._PatchEffectHostList = PatchEffectHostList
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("PatchEffectHostList") is not None:
+            self._PatchEffectHostList = []
+            for item in params.get("PatchEffectHostList"):
+                obj = PatchEffectHostList()
+                obj._deserialize(item)
+                self._PatchEffectHostList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribePatchInfoRequest(AbstractModel):
+    r"""DescribePatchInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _KbId: 补丁id
+        :type KbId: int
+        """
+        self._KbId = None
+
+    @property
+    def KbId(self):
+        r"""补丁id
+        :rtype: int
+        """
+        return self._KbId
+
+    @KbId.setter
+    def KbId(self, KbId):
+        self._KbId = KbId
+
+
+    def _deserialize(self, params):
+        self._KbId = params.get("KbId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePatchInfoResponse(AbstractModel):
+    r"""DescribePatchInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _KbNo: kb编号
+        :type KbNo: str
+        :param _PatchName: kb名称
+        :type PatchName: str
+        :param _PublishTime: kb 发布日期
+        :type PublishTime: str
+        :param _ReferUrl: 参考链接
+        :type ReferUrl: str
+        :param _VulCount: 包含漏洞数
+        :type VulCount: int
+        :param _RelateVulInfoList: 补丁关联的漏洞详情列表
+        :type RelateVulInfoList: list of RelateVulInfo
+        :param _KbId: 补丁id
+        :type KbId: int
+        :param _RelateVulCveId: 关联的漏洞CveId，多个id由","分隔
+        :type RelateVulCveId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._KbNo = None
+        self._PatchName = None
+        self._PublishTime = None
+        self._ReferUrl = None
+        self._VulCount = None
+        self._RelateVulInfoList = None
+        self._KbId = None
+        self._RelateVulCveId = None
+        self._RequestId = None
+
+    @property
+    def KbNo(self):
+        r"""kb编号
+        :rtype: str
+        """
+        return self._KbNo
+
+    @KbNo.setter
+    def KbNo(self, KbNo):
+        self._KbNo = KbNo
+
+    @property
+    def PatchName(self):
+        r"""kb名称
+        :rtype: str
+        """
+        return self._PatchName
+
+    @PatchName.setter
+    def PatchName(self, PatchName):
+        self._PatchName = PatchName
+
+    @property
+    def PublishTime(self):
+        r"""kb 发布日期
+        :rtype: str
+        """
+        return self._PublishTime
+
+    @PublishTime.setter
+    def PublishTime(self, PublishTime):
+        self._PublishTime = PublishTime
+
+    @property
+    def ReferUrl(self):
+        r"""参考链接
+        :rtype: str
+        """
+        return self._ReferUrl
+
+    @ReferUrl.setter
+    def ReferUrl(self, ReferUrl):
+        self._ReferUrl = ReferUrl
+
+    @property
+    def VulCount(self):
+        r"""包含漏洞数
+        :rtype: int
+        """
+        return self._VulCount
+
+    @VulCount.setter
+    def VulCount(self, VulCount):
+        self._VulCount = VulCount
+
+    @property
+    def RelateVulInfoList(self):
+        r"""补丁关联的漏洞详情列表
+        :rtype: list of RelateVulInfo
+        """
+        return self._RelateVulInfoList
+
+    @RelateVulInfoList.setter
+    def RelateVulInfoList(self, RelateVulInfoList):
+        self._RelateVulInfoList = RelateVulInfoList
+
+    @property
+    def KbId(self):
+        r"""补丁id
+        :rtype: int
+        """
+        return self._KbId
+
+    @KbId.setter
+    def KbId(self, KbId):
+        self._KbId = KbId
+
+    @property
+    def RelateVulCveId(self):
+        r"""关联的漏洞CveId，多个id由","分隔
+        :rtype: str
+        """
+        return self._RelateVulCveId
+
+    @RelateVulCveId.setter
+    def RelateVulCveId(self, RelateVulCveId):
+        self._RelateVulCveId = RelateVulCveId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._KbNo = params.get("KbNo")
+        self._PatchName = params.get("PatchName")
+        self._PublishTime = params.get("PublishTime")
+        self._ReferUrl = params.get("ReferUrl")
+        self._VulCount = params.get("VulCount")
+        if params.get("RelateVulInfoList") is not None:
+            self._RelateVulInfoList = []
+            for item in params.get("RelateVulInfoList"):
+                obj = RelateVulInfo()
+                obj._deserialize(item)
+                self._RelateVulInfoList.append(obj)
+        self._KbId = params.get("KbId")
+        self._RelateVulCveId = params.get("RelateVulCveId")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribePrivilegeEventInfoRequest(AbstractModel):
     r"""DescribePrivilegeEventInfo请求参数结构体
 
@@ -60928,6 +61280,176 @@ class DescribeWebPageServiceInfoResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeWindowsPatchListRequest(AbstractModel):
+    r"""DescribeWindowsPatchList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Limit: 分页参数
+        :type Limit: int
+        :param _Order: 排序顺序：desc 默认asc
+        :type Order: str
+        :param _By: 可选排序字段
+<li>PublishTime</li>
+<li>LastScanTime</li>
+<li>HostCount</li>
+        :type By: str
+        :param _Offset: 偏移量，默认为0
+        :type Offset: int
+        :param _Filters: 过滤条件。  <li>Status : string类型 非必填 处理状态 0待处理,1忽略,3修复</li><li>ShowNew : int类型 非必填 展示最新版本 1-开启 0-关闭</li><li>Name : string类型 非必填 补丁名称</li><li>KbNo : string类型 非必填 补丁编号</li><li>VulName : string类型 非必填 漏洞名称</li><li>CVEId : string类型 非必填 漏洞CVE编号</li><li>Uuid : string类型 非必填 主机uuid</li>
+        :type Filters: list of Filters
+        """
+        self._Limit = None
+        self._Order = None
+        self._By = None
+        self._Offset = None
+        self._Filters = None
+
+    @property
+    def Limit(self):
+        r"""分页参数
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Order(self):
+        r"""排序顺序：desc 默认asc
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def By(self):
+        r"""可选排序字段
+<li>PublishTime</li>
+<li>LastScanTime</li>
+<li>HostCount</li>
+        :rtype: str
+        """
+        return self._By
+
+    @By.setter
+    def By(self, By):
+        self._By = By
+
+    @property
+    def Offset(self):
+        r"""偏移量，默认为0
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Filters(self):
+        r"""过滤条件。  <li>Status : string类型 非必填 处理状态 0待处理,1忽略,3修复</li><li>ShowNew : int类型 非必填 展示最新版本 1-开启 0-关闭</li><li>Name : string类型 非必填 补丁名称</li><li>KbNo : string类型 非必填 补丁编号</li><li>VulName : string类型 非必填 漏洞名称</li><li>CVEId : string类型 非必填 漏洞CVE编号</li><li>Uuid : string类型 非必填 主机uuid</li>
+        :rtype: list of Filters
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._Limit = params.get("Limit")
+        self._Order = params.get("Order")
+        self._By = params.get("By")
+        self._Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filters()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeWindowsPatchListResponse(AbstractModel):
+    r"""DescribeWindowsPatchList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 补丁和漏洞的总数
+        :type TotalCount: int
+        :param _PatchInfoList: Windows补丁信息列表
+        :type PatchInfoList: list of EventPatchInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._PatchInfoList = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""补丁和漏洞的总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def PatchInfoList(self):
+        r"""Windows补丁信息列表
+        :rtype: list of EventPatchInfo
+        """
+        return self._PatchInfoList
+
+    @PatchInfoList.setter
+    def PatchInfoList(self, PatchInfoList):
+        self._PatchInfoList = PatchInfoList
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("PatchInfoList") is not None:
+            self._PatchInfoList = []
+            for item in params.get("PatchInfoList"):
+                obj = EventPatchInfo()
+                obj._deserialize(item)
+                self._PatchInfoList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DestroyOrderRequest(AbstractModel):
     r"""DestroyOrder请求参数结构体
 
@@ -62243,6 +62765,222 @@ class EmergencyVul(AbstractModel):
         self._Method = params.get("Method")
         self._AttackLevel = params.get("AttackLevel")
         self._DefenseState = params.get("DefenseState")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EventPatchInfo(AbstractModel):
+    r"""补丁详细信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 补丁名
+        :type Name: str
+        :param _KbNo: 补丁编号
+        :type KbNo: str
+        :param _PublishTime: 披露时间
+        :type PublishTime: str
+        :param _EffectHostCount: 影响主机数量
+        :type EffectHostCount: int
+        :param _RelateVulCount: 关联的漏洞数
+        :type RelateVulCount: int
+        :param _RelateVulList: 关联的漏洞编号数组
+        :type RelateVulList: list of str
+        :param _IsNew: 是否为最新披露，0否，1是，默认为否
+        :type IsNew: int
+        :param _LastScanTime: 最后扫描时间
+        :type LastScanTime: str
+        :param _Status: 0待处理,1忽略,3修复
+        :type Status: int
+        :param _KbPreCondition: 安装该kb的前置条件，一般为其他kb，且可能有多个，kb之间用", "分隔
+        :type KbPreCondition: str
+        :param _RelatedProduct: 该kb关联的windows product名称
+        :type RelatedProduct: str
+        :param _KbId: 补丁id
+        :type KbId: int
+        :param _Ids: 相关kb事件的id集合
+        :type Ids: str
+        """
+        self._Name = None
+        self._KbNo = None
+        self._PublishTime = None
+        self._EffectHostCount = None
+        self._RelateVulCount = None
+        self._RelateVulList = None
+        self._IsNew = None
+        self._LastScanTime = None
+        self._Status = None
+        self._KbPreCondition = None
+        self._RelatedProduct = None
+        self._KbId = None
+        self._Ids = None
+
+    @property
+    def Name(self):
+        r"""补丁名
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def KbNo(self):
+        r"""补丁编号
+        :rtype: str
+        """
+        return self._KbNo
+
+    @KbNo.setter
+    def KbNo(self, KbNo):
+        self._KbNo = KbNo
+
+    @property
+    def PublishTime(self):
+        r"""披露时间
+        :rtype: str
+        """
+        return self._PublishTime
+
+    @PublishTime.setter
+    def PublishTime(self, PublishTime):
+        self._PublishTime = PublishTime
+
+    @property
+    def EffectHostCount(self):
+        r"""影响主机数量
+        :rtype: int
+        """
+        return self._EffectHostCount
+
+    @EffectHostCount.setter
+    def EffectHostCount(self, EffectHostCount):
+        self._EffectHostCount = EffectHostCount
+
+    @property
+    def RelateVulCount(self):
+        r"""关联的漏洞数
+        :rtype: int
+        """
+        return self._RelateVulCount
+
+    @RelateVulCount.setter
+    def RelateVulCount(self, RelateVulCount):
+        self._RelateVulCount = RelateVulCount
+
+    @property
+    def RelateVulList(self):
+        r"""关联的漏洞编号数组
+        :rtype: list of str
+        """
+        return self._RelateVulList
+
+    @RelateVulList.setter
+    def RelateVulList(self, RelateVulList):
+        self._RelateVulList = RelateVulList
+
+    @property
+    def IsNew(self):
+        r"""是否为最新披露，0否，1是，默认为否
+        :rtype: int
+        """
+        return self._IsNew
+
+    @IsNew.setter
+    def IsNew(self, IsNew):
+        self._IsNew = IsNew
+
+    @property
+    def LastScanTime(self):
+        r"""最后扫描时间
+        :rtype: str
+        """
+        return self._LastScanTime
+
+    @LastScanTime.setter
+    def LastScanTime(self, LastScanTime):
+        self._LastScanTime = LastScanTime
+
+    @property
+    def Status(self):
+        r"""0待处理,1忽略,3修复
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def KbPreCondition(self):
+        r"""安装该kb的前置条件，一般为其他kb，且可能有多个，kb之间用", "分隔
+        :rtype: str
+        """
+        return self._KbPreCondition
+
+    @KbPreCondition.setter
+    def KbPreCondition(self, KbPreCondition):
+        self._KbPreCondition = KbPreCondition
+
+    @property
+    def RelatedProduct(self):
+        r"""该kb关联的windows product名称
+        :rtype: str
+        """
+        return self._RelatedProduct
+
+    @RelatedProduct.setter
+    def RelatedProduct(self, RelatedProduct):
+        self._RelatedProduct = RelatedProduct
+
+    @property
+    def KbId(self):
+        r"""补丁id
+        :rtype: int
+        """
+        return self._KbId
+
+    @KbId.setter
+    def KbId(self, KbId):
+        self._KbId = KbId
+
+    @property
+    def Ids(self):
+        r"""相关kb事件的id集合
+        :rtype: str
+        """
+        return self._Ids
+
+    @Ids.setter
+    def Ids(self, Ids):
+        self._Ids = Ids
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._KbNo = params.get("KbNo")
+        self._PublishTime = params.get("PublishTime")
+        self._EffectHostCount = params.get("EffectHostCount")
+        self._RelateVulCount = params.get("RelateVulCount")
+        self._RelateVulList = params.get("RelateVulList")
+        self._IsNew = params.get("IsNew")
+        self._LastScanTime = params.get("LastScanTime")
+        self._Status = params.get("Status")
+        self._KbPreCondition = params.get("KbPreCondition")
+        self._RelatedProduct = params.get("RelatedProduct")
+        self._KbId = params.get("KbId")
+        self._Ids = params.get("Ids")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -67717,6 +68455,119 @@ class ExportNonlocalLoginPlacesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ExportPatchEffectHostListRequest(AbstractModel):
+    r"""ExportPatchEffectHostList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _KbId: 补丁id
+        :type KbId: int
+        :param _Filters: 过滤条件：  
+<li>ProtectType : uint64类型 非必填 防护版本类型  0表示BASIC_VERSION，1表示Flagship </li>
+<li>InstanceState : string类型 非必填 主机状态 : "PENDING"-创建中 "LAUNCH_FAILED"-创建失败 "RUNNING"-运行中 "STOPPED"-关机 "STARTING"-开机中 "STOPPING"-关机中 "REBOOTING"-重启中 "SHUTDOWN"-待销毁 "TERMINATING"-销毁中 "UNKNOWN"-未知（针对非腾讯云机器，且客户端离线的场景） </li>
+<li>Status : uint64类型 非必填 处理状态 0表示待处理，1表示忽略，3表示已修复</li>
+<li>HostName : string类型 非必填 主机名称 </li>
+<li>InstanceID : string类型 非必填 主机id </li>
+<li>IpAddress : string类型 非必填 主机的ip地址 </li>
+<li>Uuid : string类型 非必填 主机uuid</li>
+        :type Filters: list of Filter
+        """
+        self._KbId = None
+        self._Filters = None
+
+    @property
+    def KbId(self):
+        r"""补丁id
+        :rtype: int
+        """
+        return self._KbId
+
+    @KbId.setter
+    def KbId(self, KbId):
+        self._KbId = KbId
+
+    @property
+    def Filters(self):
+        r"""过滤条件：  
+<li>ProtectType : uint64类型 非必填 防护版本类型  0表示BASIC_VERSION，1表示Flagship </li>
+<li>InstanceState : string类型 非必填 主机状态 : "PENDING"-创建中 "LAUNCH_FAILED"-创建失败 "RUNNING"-运行中 "STOPPED"-关机 "STARTING"-开机中 "STOPPING"-关机中 "REBOOTING"-重启中 "SHUTDOWN"-待销毁 "TERMINATING"-销毁中 "UNKNOWN"-未知（针对非腾讯云机器，且客户端离线的场景） </li>
+<li>Status : uint64类型 非必填 处理状态 0表示待处理，1表示忽略，3表示已修复</li>
+<li>HostName : string类型 非必填 主机名称 </li>
+<li>InstanceID : string类型 非必填 主机id </li>
+<li>IpAddress : string类型 非必填 主机的ip地址 </li>
+<li>Uuid : string类型 非必填 主机uuid</li>
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._KbId = params.get("KbId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExportPatchEffectHostListResponse(AbstractModel):
+    r"""ExportPatchEffectHostList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 导出任务Id , 可通过ExportTasks 接口下载
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""导出任务Id , 可通过ExportTasks 接口下载
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class ExportPrivilegeEventsRequest(AbstractModel):
     r"""ExportPrivilegeEvents请求参数结构体
 
@@ -70326,6 +71177,102 @@ class ExportWebPageEventListResponse(AbstractModel):
     @property
     def TaskId(self):
         r"""任务id 可通过 ExportTasks接口下载
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class ExportWindowsPatchListRequest(AbstractModel):
+    r"""ExportWindowsPatchList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filters: 过滤条件。  
+<li>Status : String类型 非必填 处理状态 0待处理,1忽略,3修复</li>
+<li>ShowNew : int类型 非必填 展示最新版本 0-开启 1-关闭</li>
+<li>Name : string类型 非必填 补丁名称 </li>
+<li>KbNo : string类型 非必填 补丁编号 </li>
+<li>Uuid : string类型 非必填 主机uuid</li>
+
+        :type Filters: list of Filter
+        """
+        self._Filters = None
+
+    @property
+    def Filters(self):
+        r"""过滤条件。  
+<li>Status : String类型 非必填 处理状态 0待处理,1忽略,3修复</li>
+<li>ShowNew : int类型 非必填 展示最新版本 0-开启 1-关闭</li>
+<li>Name : string类型 非必填 补丁名称 </li>
+<li>KbNo : string类型 非必填 补丁编号 </li>
+<li>Uuid : string类型 非必填 主机uuid</li>
+
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExportWindowsPatchListResponse(AbstractModel):
+    r"""ExportWindowsPatchList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 导出文件Id 可通过ExportTasks接口下载
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""导出文件Id 可通过ExportTasks接口下载
         :rtype: str
         """
         return self._TaskId
@@ -87315,6 +88262,269 @@ class OsName(AbstractModel):
         
 
 
+class PatchEffectHostList(AbstractModel):
+    r"""补丁影响主机列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HostVersion: 版本信息：0-基础版 1-专业版 2-旗舰版 3-轻量版
+        :type HostVersion: int
+        :param _InstanceState: 实例状态: "PENDING"-创建中 "LAUNCH_FAILED"-创建失败 "RUNNING"-运行中 "STOPPED"-关机 "STARTING"-表示开机中 "STOPPING"-表示关机中 "REBOOTING"-重启中 "SHUTDOWN"-表示停止待销毁 "TERMINATING"-表示销毁中 
+        :type InstanceState: str
+        :param _FirstScanTime: 首次扫描时间
+        :type FirstScanTime: str
+        :param _LatestScanTime: 最近扫描时间
+        :type LatestScanTime: str
+        :param _FixStatus: 修复状态：0-未进行修复；1-修复中；2-修复失败；3-修复成功；4-修复超时
+        :type FixStatus: int
+        :param _MachineExtraInfo: 主机基础信息
+        :type MachineExtraInfo: :class:`tencentcloud.cwp.v20180228.models.MachineExtraInfo`
+        :param _Uuid: 主机安全Uuid
+        :type Uuid: str
+        :param _Quuid: CVM或BM机器唯一Uuid
+        :type Quuid: str
+        :param _Id: 事件id
+        :type Id: int
+        :param _Status: 状态：0: 待处理 1:忽略  3:已修复  5:检测中 6:修复中 7: 回滚中 8:修复失败
+        :type Status: int
+        :param _LatestFixTime: 修复时间
+        :type LatestFixTime: str
+        :param _KbId: KB id
+        :type KbId: int
+        :param _RestartRequired: 是否需要重启 0不需要，1需要
+        :type RestartRequired: int
+        :param _RegionId: 可用区ID	
+        :type RegionId: int
+        :param _MachineType: 机器类型信息
+        :type MachineType: str
+        :param _HasSnapshot: 修复任务是否创建了快照： 0-未创建，其他-已创建
+        :type HasSnapshot: int
+        """
+        self._HostVersion = None
+        self._InstanceState = None
+        self._FirstScanTime = None
+        self._LatestScanTime = None
+        self._FixStatus = None
+        self._MachineExtraInfo = None
+        self._Uuid = None
+        self._Quuid = None
+        self._Id = None
+        self._Status = None
+        self._LatestFixTime = None
+        self._KbId = None
+        self._RestartRequired = None
+        self._RegionId = None
+        self._MachineType = None
+        self._HasSnapshot = None
+
+    @property
+    def HostVersion(self):
+        r"""版本信息：0-基础版 1-专业版 2-旗舰版 3-轻量版
+        :rtype: int
+        """
+        return self._HostVersion
+
+    @HostVersion.setter
+    def HostVersion(self, HostVersion):
+        self._HostVersion = HostVersion
+
+    @property
+    def InstanceState(self):
+        r"""实例状态: "PENDING"-创建中 "LAUNCH_FAILED"-创建失败 "RUNNING"-运行中 "STOPPED"-关机 "STARTING"-表示开机中 "STOPPING"-表示关机中 "REBOOTING"-重启中 "SHUTDOWN"-表示停止待销毁 "TERMINATING"-表示销毁中 
+        :rtype: str
+        """
+        return self._InstanceState
+
+    @InstanceState.setter
+    def InstanceState(self, InstanceState):
+        self._InstanceState = InstanceState
+
+    @property
+    def FirstScanTime(self):
+        r"""首次扫描时间
+        :rtype: str
+        """
+        return self._FirstScanTime
+
+    @FirstScanTime.setter
+    def FirstScanTime(self, FirstScanTime):
+        self._FirstScanTime = FirstScanTime
+
+    @property
+    def LatestScanTime(self):
+        r"""最近扫描时间
+        :rtype: str
+        """
+        return self._LatestScanTime
+
+    @LatestScanTime.setter
+    def LatestScanTime(self, LatestScanTime):
+        self._LatestScanTime = LatestScanTime
+
+    @property
+    def FixStatus(self):
+        r"""修复状态：0-未进行修复；1-修复中；2-修复失败；3-修复成功；4-修复超时
+        :rtype: int
+        """
+        return self._FixStatus
+
+    @FixStatus.setter
+    def FixStatus(self, FixStatus):
+        self._FixStatus = FixStatus
+
+    @property
+    def MachineExtraInfo(self):
+        r"""主机基础信息
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.MachineExtraInfo`
+        """
+        return self._MachineExtraInfo
+
+    @MachineExtraInfo.setter
+    def MachineExtraInfo(self, MachineExtraInfo):
+        self._MachineExtraInfo = MachineExtraInfo
+
+    @property
+    def Uuid(self):
+        r"""主机安全Uuid
+        :rtype: str
+        """
+        return self._Uuid
+
+    @Uuid.setter
+    def Uuid(self, Uuid):
+        self._Uuid = Uuid
+
+    @property
+    def Quuid(self):
+        r"""CVM或BM机器唯一Uuid
+        :rtype: str
+        """
+        return self._Quuid
+
+    @Quuid.setter
+    def Quuid(self, Quuid):
+        self._Quuid = Quuid
+
+    @property
+    def Id(self):
+        r"""事件id
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Status(self):
+        r"""状态：0: 待处理 1:忽略  3:已修复  5:检测中 6:修复中 7: 回滚中 8:修复失败
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def LatestFixTime(self):
+        r"""修复时间
+        :rtype: str
+        """
+        return self._LatestFixTime
+
+    @LatestFixTime.setter
+    def LatestFixTime(self, LatestFixTime):
+        self._LatestFixTime = LatestFixTime
+
+    @property
+    def KbId(self):
+        r"""KB id
+        :rtype: int
+        """
+        return self._KbId
+
+    @KbId.setter
+    def KbId(self, KbId):
+        self._KbId = KbId
+
+    @property
+    def RestartRequired(self):
+        r"""是否需要重启 0不需要，1需要
+        :rtype: int
+        """
+        return self._RestartRequired
+
+    @RestartRequired.setter
+    def RestartRequired(self, RestartRequired):
+        self._RestartRequired = RestartRequired
+
+    @property
+    def RegionId(self):
+        r"""可用区ID	
+        :rtype: int
+        """
+        return self._RegionId
+
+    @RegionId.setter
+    def RegionId(self, RegionId):
+        self._RegionId = RegionId
+
+    @property
+    def MachineType(self):
+        r"""机器类型信息
+        :rtype: str
+        """
+        return self._MachineType
+
+    @MachineType.setter
+    def MachineType(self, MachineType):
+        self._MachineType = MachineType
+
+    @property
+    def HasSnapshot(self):
+        r"""修复任务是否创建了快照： 0-未创建，其他-已创建
+        :rtype: int
+        """
+        return self._HasSnapshot
+
+    @HasSnapshot.setter
+    def HasSnapshot(self, HasSnapshot):
+        self._HasSnapshot = HasSnapshot
+
+
+    def _deserialize(self, params):
+        self._HostVersion = params.get("HostVersion")
+        self._InstanceState = params.get("InstanceState")
+        self._FirstScanTime = params.get("FirstScanTime")
+        self._LatestScanTime = params.get("LatestScanTime")
+        self._FixStatus = params.get("FixStatus")
+        if params.get("MachineExtraInfo") is not None:
+            self._MachineExtraInfo = MachineExtraInfo()
+            self._MachineExtraInfo._deserialize(params.get("MachineExtraInfo"))
+        self._Uuid = params.get("Uuid")
+        self._Quuid = params.get("Quuid")
+        self._Id = params.get("Id")
+        self._Status = params.get("Status")
+        self._LatestFixTime = params.get("LatestFixTime")
+        self._KbId = params.get("KbId")
+        self._RestartRequired = params.get("RestartRequired")
+        self._RegionId = params.get("RegionId")
+        self._MachineType = params.get("MachineType")
+        self._HasSnapshot = params.get("HasSnapshot")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PatchInfoDetail(AbstractModel):
     r"""补丁信息详情
 
@@ -92230,6 +93440,132 @@ class RegionSet(AbstractModel):
                 obj = ZoneInfo()
                 obj._deserialize(item)
                 self._ZoneSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RelateVulInfo(AbstractModel):
+    r"""Windows补丁关联的漏洞信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CveId: CVEid
+        :type CveId: str
+        :param _Name: 漏洞名
+        :type Name: str
+        :param _Label: 漏洞标签
+        :type Label: str
+        :param _Level: 漏洞等级
+        :type Level: int
+        :param _CVSS: CVSS评分
+        :type CVSS: float
+        :param _PublishTime: 漏洞披露时间
+        :type PublishTime: str
+        :param _Id: 漏洞id
+        :type Id: int
+        """
+        self._CveId = None
+        self._Name = None
+        self._Label = None
+        self._Level = None
+        self._CVSS = None
+        self._PublishTime = None
+        self._Id = None
+
+    @property
+    def CveId(self):
+        r"""CVEid
+        :rtype: str
+        """
+        return self._CveId
+
+    @CveId.setter
+    def CveId(self, CveId):
+        self._CveId = CveId
+
+    @property
+    def Name(self):
+        r"""漏洞名
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Label(self):
+        r"""漏洞标签
+        :rtype: str
+        """
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
+
+    @property
+    def Level(self):
+        r"""漏洞等级
+        :rtype: int
+        """
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
+
+    @property
+    def CVSS(self):
+        r"""CVSS评分
+        :rtype: float
+        """
+        return self._CVSS
+
+    @CVSS.setter
+    def CVSS(self, CVSS):
+        self._CVSS = CVSS
+
+    @property
+    def PublishTime(self):
+        r"""漏洞披露时间
+        :rtype: str
+        """
+        return self._PublishTime
+
+    @PublishTime.setter
+    def PublishTime(self, PublishTime):
+        self._PublishTime = PublishTime
+
+    @property
+    def Id(self):
+        r"""漏洞id
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+
+    def _deserialize(self, params):
+        self._CveId = params.get("CveId")
+        self._Name = params.get("Name")
+        self._Label = params.get("Label")
+        self._Level = params.get("Level")
+        self._CVSS = params.get("CVSS")
+        self._PublishTime = params.get("PublishTime")
+        self._Id = params.get("Id")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

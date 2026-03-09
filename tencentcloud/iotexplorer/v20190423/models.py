@@ -7275,6 +7275,12 @@ class CreateTWeTalkAIBotRequest(AbstractModel):
         :type InstanceId: str
         :param _CustomTools: 自定义工具配置，最多可创建10个
         :type CustomTools: str
+        :param _WebhookTools: WebHook工具配置(JSON字符串格式)
+        :type WebhookTools: str
+        :param _BotType: 智能体模板类型
+        :type BotType: str
+        :param _RAGConfig: 知识库相关配置(JSON字符串格式)
+        :type RAGConfig: str
         """
         self._Name = None
         self._Description = None
@@ -7285,6 +7291,9 @@ class CreateTWeTalkAIBotRequest(AbstractModel):
         self._AgentConfig = None
         self._InstanceId = None
         self._CustomTools = None
+        self._WebhookTools = None
+        self._BotType = None
+        self._RAGConfig = None
 
     @property
     def Name(self):
@@ -7385,6 +7394,39 @@ class CreateTWeTalkAIBotRequest(AbstractModel):
     def CustomTools(self, CustomTools):
         self._CustomTools = CustomTools
 
+    @property
+    def WebhookTools(self):
+        r"""WebHook工具配置(JSON字符串格式)
+        :rtype: str
+        """
+        return self._WebhookTools
+
+    @WebhookTools.setter
+    def WebhookTools(self, WebhookTools):
+        self._WebhookTools = WebhookTools
+
+    @property
+    def BotType(self):
+        r"""智能体模板类型
+        :rtype: str
+        """
+        return self._BotType
+
+    @BotType.setter
+    def BotType(self, BotType):
+        self._BotType = BotType
+
+    @property
+    def RAGConfig(self):
+        r"""知识库相关配置(JSON字符串格式)
+        :rtype: str
+        """
+        return self._RAGConfig
+
+    @RAGConfig.setter
+    def RAGConfig(self, RAGConfig):
+        self._RAGConfig = RAGConfig
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -7404,6 +7446,9 @@ class CreateTWeTalkAIBotRequest(AbstractModel):
             self._AgentConfig._deserialize(params.get("AgentConfig"))
         self._InstanceId = params.get("InstanceId")
         self._CustomTools = params.get("CustomTools")
+        self._WebhookTools = params.get("WebhookTools")
+        self._BotType = params.get("BotType")
+        self._RAGConfig = params.get("RAGConfig")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -29801,6 +29846,12 @@ class ModifyTWeTalkAIBotRequest(AbstractModel):
         :type AgentConfig: :class:`tencentcloud.iotexplorer.v20190423.models.TalkAgentConfigInfo`
         :param _CustomTools: 自定义工具配置，最多可创建10个
         :type CustomTools: str
+        :param _WebhookTools: WebHook工具配置(JSON字符串格式)
+        :type WebhookTools: str
+        :param _BotType: 智能体模板类型
+        :type BotType: str
+        :param _RAGConfig: 知识库相关配置(JSON字符串格式)
+        :type RAGConfig: str
         """
         self._BotId = None
         self._Name = None
@@ -29811,6 +29862,9 @@ class ModifyTWeTalkAIBotRequest(AbstractModel):
         self._TTSConfig = None
         self._AgentConfig = None
         self._CustomTools = None
+        self._WebhookTools = None
+        self._BotType = None
+        self._RAGConfig = None
 
     @property
     def BotId(self):
@@ -29911,6 +29965,39 @@ class ModifyTWeTalkAIBotRequest(AbstractModel):
     def CustomTools(self, CustomTools):
         self._CustomTools = CustomTools
 
+    @property
+    def WebhookTools(self):
+        r"""WebHook工具配置(JSON字符串格式)
+        :rtype: str
+        """
+        return self._WebhookTools
+
+    @WebhookTools.setter
+    def WebhookTools(self, WebhookTools):
+        self._WebhookTools = WebhookTools
+
+    @property
+    def BotType(self):
+        r"""智能体模板类型
+        :rtype: str
+        """
+        return self._BotType
+
+    @BotType.setter
+    def BotType(self, BotType):
+        self._BotType = BotType
+
+    @property
+    def RAGConfig(self):
+        r"""知识库相关配置(JSON字符串格式)
+        :rtype: str
+        """
+        return self._RAGConfig
+
+    @RAGConfig.setter
+    def RAGConfig(self, RAGConfig):
+        self._RAGConfig = RAGConfig
+
 
     def _deserialize(self, params):
         self._BotId = params.get("BotId")
@@ -29930,6 +30017,9 @@ class ModifyTWeTalkAIBotRequest(AbstractModel):
             self._AgentConfig = TalkAgentConfigInfo()
             self._AgentConfig._deserialize(params.get("AgentConfig"))
         self._CustomTools = params.get("CustomTools")
+        self._WebhookTools = params.get("WebhookTools")
+        self._BotType = params.get("BotType")
+        self._RAGConfig = params.get("RAGConfig")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -34448,6 +34538,12 @@ class TalkAIBotInfo(AbstractModel):
         :type BoundProducts: list of TalkProductInfo
         :param _CustomTools: 自定义工具列表，最多可创建10个
         :type CustomTools: str
+        :param _WebhookTools: WebHook工具配置(JSON字符串格式)
+        :type WebhookTools: str
+        :param _BotType: 智能体模板类型
+        :type BotType: str
+        :param _RAGConfig: 知识库相关配置(JSON字符串格式)
+        :type RAGConfig: str
         """
         self._Uin = None
         self._AppId = None
@@ -34465,6 +34561,9 @@ class TalkAIBotInfo(AbstractModel):
         self._UpdateTime = None
         self._BoundProducts = None
         self._CustomTools = None
+        self._WebhookTools = None
+        self._BotType = None
+        self._RAGConfig = None
 
     @property
     def Uin(self):
@@ -34646,6 +34745,39 @@ class TalkAIBotInfo(AbstractModel):
     def CustomTools(self, CustomTools):
         self._CustomTools = CustomTools
 
+    @property
+    def WebhookTools(self):
+        r"""WebHook工具配置(JSON字符串格式)
+        :rtype: str
+        """
+        return self._WebhookTools
+
+    @WebhookTools.setter
+    def WebhookTools(self, WebhookTools):
+        self._WebhookTools = WebhookTools
+
+    @property
+    def BotType(self):
+        r"""智能体模板类型
+        :rtype: str
+        """
+        return self._BotType
+
+    @BotType.setter
+    def BotType(self, BotType):
+        self._BotType = BotType
+
+    @property
+    def RAGConfig(self):
+        r"""知识库相关配置(JSON字符串格式)
+        :rtype: str
+        """
+        return self._RAGConfig
+
+    @RAGConfig.setter
+    def RAGConfig(self, RAGConfig):
+        self._RAGConfig = RAGConfig
+
 
     def _deserialize(self, params):
         self._Uin = params.get("Uin")
@@ -34679,6 +34811,9 @@ class TalkAIBotInfo(AbstractModel):
                 obj._deserialize(item)
                 self._BoundProducts.append(obj)
         self._CustomTools = params.get("CustomTools")
+        self._WebhookTools = params.get("WebhookTools")
+        self._BotType = params.get("BotType")
+        self._RAGConfig = params.get("RAGConfig")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -34724,6 +34859,12 @@ class TalkAgentConfigInfo(AbstractModel):
         :type DefaultVoiceType: int
         :param _FastVoiceType: 复刻音色
         :type FastVoiceType: str
+        :param _SubtitleCallbackUrl: 实时字幕回调地址，支持HTTP/HTTPS
+        :type SubtitleCallbackUrl: str
+        :param _SubtitleCallbackSignKey: 回调签名密钥，最大32字符，用于HMAC SHA256签名
+        :type SubtitleCallbackSignKey: str
+        :param _SubtitleCallbackTimeout: 字幕推送超时时间（秒），参考TRTC规范
+        :type SubtitleCallbackTimeout: int
         """
         self._SessionTimeout = None
         self._InterruptionEnabled = None
@@ -34739,6 +34880,9 @@ class TalkAgentConfigInfo(AbstractModel):
         self._GreetingMessage = None
         self._DefaultVoiceType = None
         self._FastVoiceType = None
+        self._SubtitleCallbackUrl = None
+        self._SubtitleCallbackSignKey = None
+        self._SubtitleCallbackTimeout = None
 
     @property
     def SessionTimeout(self):
@@ -34894,6 +35038,39 @@ class TalkAgentConfigInfo(AbstractModel):
     def FastVoiceType(self, FastVoiceType):
         self._FastVoiceType = FastVoiceType
 
+    @property
+    def SubtitleCallbackUrl(self):
+        r"""实时字幕回调地址，支持HTTP/HTTPS
+        :rtype: str
+        """
+        return self._SubtitleCallbackUrl
+
+    @SubtitleCallbackUrl.setter
+    def SubtitleCallbackUrl(self, SubtitleCallbackUrl):
+        self._SubtitleCallbackUrl = SubtitleCallbackUrl
+
+    @property
+    def SubtitleCallbackSignKey(self):
+        r"""回调签名密钥，最大32字符，用于HMAC SHA256签名
+        :rtype: str
+        """
+        return self._SubtitleCallbackSignKey
+
+    @SubtitleCallbackSignKey.setter
+    def SubtitleCallbackSignKey(self, SubtitleCallbackSignKey):
+        self._SubtitleCallbackSignKey = SubtitleCallbackSignKey
+
+    @property
+    def SubtitleCallbackTimeout(self):
+        r"""字幕推送超时时间（秒），参考TRTC规范
+        :rtype: int
+        """
+        return self._SubtitleCallbackTimeout
+
+    @SubtitleCallbackTimeout.setter
+    def SubtitleCallbackTimeout(self, SubtitleCallbackTimeout):
+        self._SubtitleCallbackTimeout = SubtitleCallbackTimeout
+
 
     def _deserialize(self, params):
         self._SessionTimeout = params.get("SessionTimeout")
@@ -34912,6 +35089,9 @@ class TalkAgentConfigInfo(AbstractModel):
         self._GreetingMessage = params.get("GreetingMessage")
         self._DefaultVoiceType = params.get("DefaultVoiceType")
         self._FastVoiceType = params.get("FastVoiceType")
+        self._SubtitleCallbackUrl = params.get("SubtitleCallbackUrl")
+        self._SubtitleCallbackSignKey = params.get("SubtitleCallbackSignKey")
+        self._SubtitleCallbackTimeout = params.get("SubtitleCallbackTimeout")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

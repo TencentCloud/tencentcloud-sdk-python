@@ -61,24 +61,6 @@ class TcbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def BindEnvGateway(
-            self,
-            request: models.BindEnvGatewayRequest,
-            opts: Dict = None,
-    ) -> models.BindEnvGatewayResponse:
-        """
-        绑定另外一个环境下的网关，callContainer请求可以访问到该网关
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "BindEnvGateway"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.BindEnvGatewayResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def CheckTcbService(
             self,
             request: models.CheckTcbServiceRequest,
@@ -92,42 +74,6 @@ class TcbClient(AbstractClient):
         kwargs["action"] = "CheckTcbService"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CheckTcbServiceResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def CommonServiceAPI(
-            self,
-            request: models.CommonServiceAPIRequest,
-            opts: Dict = None,
-    ) -> models.CommonServiceAPIResponse:
-        """
-        TCB云API统一入口
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "CommonServiceAPI"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.CommonServiceAPIResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def CreateAndDeployCloudBaseProject(
-            self,
-            request: models.CreateAndDeployCloudBaseProjectRequest,
-            opts: Dict = None,
-    ) -> models.CreateAndDeployCloudBaseProjectResponse:
-        """
-        创建云开发项目
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "CreateAndDeployCloudBaseProject"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.CreateAndDeployCloudBaseProjectResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -200,42 +146,6 @@ class TcbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def CreateCloudBaseRunResource(
-            self,
-            request: models.CreateCloudBaseRunResourceRequest,
-            opts: Dict = None,
-    ) -> models.CreateCloudBaseRunResourceResponse:
-        """
-        开通容器托管的资源，包括集群创建，VPC配置，异步任务创建，镜像托管，Coding等，查看创建结果需要根据DescribeCloudBaseRunResource接口来查看
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "CreateCloudBaseRunResource"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.CreateCloudBaseRunResourceResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def CreateCloudBaseRunServerVersion(
-            self,
-            request: models.CreateCloudBaseRunServerVersionRequest,
-            opts: Dict = None,
-    ) -> models.CreateCloudBaseRunServerVersionResponse:
-        """
-        创建服务版本
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "CreateCloudBaseRunServerVersion"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.CreateCloudBaseRunServerVersionResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def CreateEnv(
             self,
             request: models.CreateEnvRequest,
@@ -283,30 +193,14 @@ class TcbClient(AbstractClient):
     ) -> models.CreateMySQLResponse:
         """
         开通Mysql
+
+        开通后，可通过 [DescribeCreateMySQLResult ](https://cloud.tencent.com/document/api/876/128185) 查询开通结果
         """
         
         kwargs = {}
         kwargs["action"] = "CreateMySQL"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreateMySQLResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def CreatePostpayPackage(
-            self,
-            request: models.CreatePostpayPackageRequest,
-            opts: Dict = None,
-    ) -> models.CreatePostpayPackageResponse:
-        """
-        开通后付费资源
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "CreatePostpayPackage"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.CreatePostpayPackageResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -366,6 +260,29 @@ class TcbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteAuthDomain(
+            self,
+            request: models.DeleteAuthDomainRequest,
+            opts: Dict = None,
+    ) -> models.DeleteAuthDomainResponse:
+        """
+        删除合法域名。
+        云开发会校验网页应用请求的来源域名，您需要将来源域名加入到WEB安全域名列表中。
+        可以通过接口 [DescribeAuthDomains](https://cloud.tencent.com/document/product/876/42151) 获取当前已绑定生效的安全域名。
+
+        注意⚠️
+        安全域名被删除之后，可能会引起跨域问题，请谨慎操作。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteAuthDomain"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteAuthDomainResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteCloudBaseGWAPI(
             self,
             request: models.DeleteCloudBaseGWAPIRequest,
@@ -397,60 +314,6 @@ class TcbClient(AbstractClient):
         kwargs["action"] = "DeleteCloudBaseGWDomain"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteCloudBaseGWDomainResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DeleteCloudBaseProjectLatestVersion(
-            self,
-            request: models.DeleteCloudBaseProjectLatestVersionRequest,
-            opts: Dict = None,
-    ) -> models.DeleteCloudBaseProjectLatestVersionResponse:
-        """
-        删除云项目
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DeleteCloudBaseProjectLatestVersion"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DeleteCloudBaseProjectLatestVersionResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DeleteCloudBaseRunServerVersion(
-            self,
-            request: models.DeleteCloudBaseRunServerVersionRequest,
-            opts: Dict = None,
-    ) -> models.DeleteCloudBaseRunServerVersionResponse:
-        """
-        删除服务版本
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DeleteCloudBaseRunServerVersion"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DeleteCloudBaseRunServerVersionResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DeleteGatewayVersion(
-            self,
-            request: models.DeleteGatewayVersionRequest,
-            opts: Dict = None,
-    ) -> models.DeleteGatewayVersionResponse:
-        """
-        删除网关某版本
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DeleteGatewayVersion"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DeleteGatewayVersionResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -492,42 +355,6 @@ class TcbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def DeleteWxGatewayRoute(
-            self,
-            request: models.DeleteWxGatewayRouteRequest,
-            opts: Dict = None,
-    ) -> models.DeleteWxGatewayRouteResponse:
-        """
-        删除安全网关路由
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DeleteWxGatewayRoute"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DeleteWxGatewayRouteResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DescribeActivityRecord(
-            self,
-            request: models.DescribeActivityRecordRequest,
-            opts: Dict = None,
-    ) -> models.DescribeActivityRecordResponse:
-        """
-        查询活动记录信息
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeActivityRecord"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeActivityRecordResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def DescribeAuthDomains(
             self,
             request: models.DescribeAuthDomainsRequest,
@@ -561,42 +388,6 @@ class TcbClient(AbstractClient):
         kwargs["action"] = "DescribeBaasPackageList"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeBaasPackageListResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DescribeBillingInfo(
-            self,
-            request: models.DescribeBillingInfoRequest,
-            opts: Dict = None,
-    ) -> models.DescribeBillingInfoResponse:
-        """
-        获取计费相关信息
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeBillingInfo"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeBillingInfoResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DescribeCbrServerVersion(
-            self,
-            request: models.DescribeCbrServerVersionRequest,
-            opts: Dict = None,
-    ) -> models.DescribeCbrServerVersionResponse:
-        """
-        查询服务版本的详情
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeCbrServerVersion"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeCbrServerVersionResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -656,181 +447,20 @@ class TcbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def DescribeCloudBaseProjectLatestVersionList(
-            self,
-            request: models.DescribeCloudBaseProjectLatestVersionListRequest,
-            opts: Dict = None,
-    ) -> models.DescribeCloudBaseProjectLatestVersionListResponse:
-        """
-        获取云开发项目列表
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeCloudBaseProjectLatestVersionList"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeCloudBaseProjectLatestVersionListResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DescribeCloudBaseProjectVersionList(
-            self,
-            request: models.DescribeCloudBaseProjectVersionListRequest,
-            opts: Dict = None,
-    ) -> models.DescribeCloudBaseProjectVersionListResponse:
-        """
-        云项目部署列表
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeCloudBaseProjectVersionList"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeCloudBaseProjectVersionListResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DescribeCloudBaseRunResource(
-            self,
-            request: models.DescribeCloudBaseRunResourceRequest,
-            opts: Dict = None,
-    ) -> models.DescribeCloudBaseRunResourceResponse:
-        """
-        查看容器托管的集群状态
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeCloudBaseRunResource"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeCloudBaseRunResourceResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DescribeCloudBaseRunResourceForExtend(
-            self,
-            request: models.DescribeCloudBaseRunResourceForExtendRequest,
-            opts: Dict = None,
-    ) -> models.DescribeCloudBaseRunResourceForExtendResponse:
-        """
-        查看容器托管的集群状态扩展使用
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeCloudBaseRunResourceForExtend"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeCloudBaseRunResourceForExtendResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DescribeCloudBaseRunServer(
-            self,
-            request: models.DescribeCloudBaseRunServerRequest,
-            opts: Dict = None,
-    ) -> models.DescribeCloudBaseRunServerResponse:
-        """
-        查询单个服务的详情，版本以及详情
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeCloudBaseRunServer"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeCloudBaseRunServerResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DescribeCloudBaseRunServerVersion(
-            self,
-            request: models.DescribeCloudBaseRunServerVersionRequest,
-            opts: Dict = None,
-    ) -> models.DescribeCloudBaseRunServerVersionResponse:
-        """
-        查询服务版本的详情，CPU和MEM  请使用CPUSize和MemSize
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeCloudBaseRunServerVersion"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeCloudBaseRunServerVersionResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DescribeCloudBaseRunVersion(
-            self,
-            request: models.DescribeCloudBaseRunVersionRequest,
-            opts: Dict = None,
-    ) -> models.DescribeCloudBaseRunVersionResponse:
-        """
-        查询服务版本详情(新)
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeCloudBaseRunVersion"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeCloudBaseRunVersionResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DescribeCloudBaseRunVersionSnapshot(
-            self,
-            request: models.DescribeCloudBaseRunVersionSnapshotRequest,
-            opts: Dict = None,
-    ) -> models.DescribeCloudBaseRunVersionSnapshotResponse:
-        """
-        查询版本历史
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeCloudBaseRunVersionSnapshot"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeCloudBaseRunVersionSnapshotResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def DescribeCreateMySQLResult(
             self,
             request: models.DescribeCreateMySQLResultRequest,
             opts: Dict = None,
     ) -> models.DescribeCreateMySQLResultResponse:
         """
-        查询开通Mysql结果，Mysql开通成功后，可通过接口设置数据库账号相关功能包括但不限于【创建账号、删除账号、查询可授权权限列表、查询账号已有权限、修改主机、修改配置、修改账号库表权限】、集群操作相关【查询集群参数、修改集群参数】，连接设置相关【关闭外网、开通外网、查询集群信息】，备份回档相关【创建手动回档、删除手动回档、修改自动备份配置信息、查询备份文件列表、集群回档、查询任务列表、获取table列表、获取集群数据库列表、查询备份下载地址】，相关功能接口文档：[TDSQL-C MySQL API文档](https://cloud.tencent.com/document/product/1003/48106)
+        查询开通Mysql结果，`Response.Data.Status = "notexist"` 表示未开通，如果未开通，可以调用 [CreateMySQL](https://cloud.tencent.com/document/api/876/128186) 来开通
+         `Response.Data. Status = "success"` 表示开通成功，Mysql开通成功后，可通过接口设置数据库账号相关功能包括但不限于【创建账号、删除账号、查询可授权权限列表、查询账号已有权限、修改主机、修改配置、修改账号库表权限】、集群操作相关【查询集群参数、修改集群参数】，连接设置相关【关闭外网、开通外网、查询集群信息】，备份回档相关【创建手动回档、删除手动回档、修改自动备份配置信息、查询备份文件列表、集群回档、查询任务列表、获取table列表、获取集群数据库列表、查询备份下载地址】，相关功能接口文档：[TDSQL-C MySQL API文档](https://cloud.tencent.com/document/product/1003/48106)
         """
         
         kwargs = {}
         kwargs["action"] = "DescribeCreateMySQLResult"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeCreateMySQLResultResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DescribeCurveData(
-            self,
-            request: models.DescribeCurveDataRequest,
-            opts: Dict = None,
-    ) -> models.DescribeCurveDataResponse:
-        """
-        根据用户传入的指标, 拉取一段时间内的监控数据。
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeCurveData"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeCurveDataResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -849,24 +479,6 @@ class TcbClient(AbstractClient):
         kwargs["action"] = "DescribeDatabaseACL"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeDatabaseACLResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DescribeDownloadFile(
-            self,
-            request: models.DescribeDownloadFileRequest,
-            opts: Dict = None,
-    ) -> models.DescribeDownloadFileResponse:
-        """
-        获取下载文件信息
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeDownloadFile"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeDownloadFileResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -899,42 +511,6 @@ class TcbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def DescribeEnvDealRegion(
-            self,
-            request: models.DescribeEnvDealRegionRequest,
-            opts: Dict = None,
-    ) -> models.DescribeEnvDealRegionResponse:
-        """
-        获取环境下单地域
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeEnvDealRegion"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeEnvDealRegionResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DescribeEnvFreeQuota(
-            self,
-            request: models.DescribeEnvFreeQuotaRequest,
-            opts: Dict = None,
-    ) -> models.DescribeEnvFreeQuotaResponse:
-        """
-        查询后付费免费配额信息
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeEnvFreeQuota"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeEnvFreeQuotaResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def DescribeEnvLimit(
             self,
             request: models.DescribeEnvLimitRequest,
@@ -953,24 +529,6 @@ class TcbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def DescribeEnvPostpaidDeduct(
-            self,
-            request: models.DescribeEnvPostpaidDeductRequest,
-            opts: Dict = None,
-    ) -> models.DescribeEnvPostpaidDeductResponse:
-        """
-        查询环境后付费计费详情
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeEnvPostpaidDeduct"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeEnvPostpaidDeductResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def DescribeEnvs(
             self,
             request: models.DescribeEnvsRequest,
@@ -984,97 +542,6 @@ class TcbClient(AbstractClient):
         kwargs["action"] = "DescribeEnvs"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeEnvsResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DescribeExtensionUploadInfo(
-            self,
-            request: models.DescribeExtensionUploadInfoRequest,
-            opts: Dict = None,
-    ) -> models.DescribeExtensionUploadInfoResponse:
-        """
-        描述扩展上传文件信息
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeExtensionUploadInfo"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeExtensionUploadInfoResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DescribeExtraPkgBillingInfo(
-            self,
-            request: models.DescribeExtraPkgBillingInfoRequest,
-            opts: Dict = None,
-    ) -> models.DescribeExtraPkgBillingInfoResponse:
-        """
-        获取增值包计费相关信息
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeExtraPkgBillingInfo"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeExtraPkgBillingInfoResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DescribeGatewayCurveData(
-            self,
-            request: models.DescribeGatewayCurveDataRequest,
-            opts: Dict = None,
-    ) -> models.DescribeGatewayCurveDataResponse:
-        """
-        查询网关监控数据
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeGatewayCurveData"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeGatewayCurveDataResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DescribeGatewayVersions(
-            self,
-            request: models.DescribeGatewayVersionsRequest,
-            opts: Dict = None,
-    ) -> models.DescribeGatewayVersionsResponse:
-        """
-        查询网关版本信息
-        暂不鉴权
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeGatewayVersions"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeGatewayVersionsResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DescribeGraphData(
-            self,
-            request: models.DescribeGraphDataRequest,
-            opts: Dict = None,
-    ) -> models.DescribeGraphDataResponse:
-        """
-        根据用户传入的指标, 拉取一段时间内的监控数据。
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeGraphData"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeGraphDataResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1104,7 +571,9 @@ class TcbClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeMySQLClusterDetailResponse:
         """
-        销毁Mysql
+        查询Mysql集群信息
+
+        调用该接口前需要先查询Mysql是否开通，可通过 [DescribeCreateMySQLResult ](https://cloud.tencent.com/document/api/876/128185) 查询，只有已开通的才能查到集群信息
         """
         
         kwargs = {}
@@ -1129,42 +598,6 @@ class TcbClient(AbstractClient):
         kwargs["action"] = "DescribeMySQLTaskStatus"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeMySQLTaskStatusResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DescribePostpayFreeQuotas(
-            self,
-            request: models.DescribePostpayFreeQuotasRequest,
-            opts: Dict = None,
-    ) -> models.DescribePostpayFreeQuotasResponse:
-        """
-        查询后付费资源免费量
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribePostpayFreeQuotas"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribePostpayFreeQuotasResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DescribePostpayPackageFreeQuotas(
-            self,
-            request: models.DescribePostpayPackageFreeQuotasRequest,
-            opts: Dict = None,
-    ) -> models.DescribePostpayPackageFreeQuotasResponse:
-        """
-        获取后付费免费额度
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribePostpayPackageFreeQuotas"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribePostpayPackageFreeQuotasResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1202,45 +635,6 @@ class TcbClient(AbstractClient):
         kwargs["action"] = "DescribeSafeRule"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeSafeRuleResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DescribeSmsQuotas(
-            self,
-            request: models.DescribeSmsQuotasRequest,
-            opts: Dict = None,
-    ) -> models.DescribeSmsQuotasResponse:
-        """
-        查询后付费短信资源量
-        1 有免费包的返回SmsFreeQuota结构所有字段
-        2 没有免费包，有付费包，付费返回复用SmsFreeQuota结构，其中只有 TodayUsedQuota 字段有效
-        3 都没有返回为空数组
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeSmsQuotas"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeSmsQuotasResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DescribeSpecialCostItems(
-            self,
-            request: models.DescribeSpecialCostItemsRequest,
-            opts: Dict = None,
-    ) -> models.DescribeSpecialCostItemsResponse:
-        """
-        查询环境1分钱抵扣信息
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeSpecialCostItems"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeSpecialCostItemsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1300,24 +694,6 @@ class TcbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def DescribeUserActivityInfo(
-            self,
-            request: models.DescribeUserActivityInfoRequest,
-            opts: Dict = None,
-    ) -> models.DescribeUserActivityInfoResponse:
-        """
-        查询用户活动信息
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeUserActivityInfo"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeUserActivityInfoResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def DescribeUserList(
             self,
             request: models.DescribeUserListRequest,
@@ -1331,42 +707,6 @@ class TcbClient(AbstractClient):
         kwargs["action"] = "DescribeUserList"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeUserListResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DescribeWxGatewayRoutes(
-            self,
-            request: models.DescribeWxGatewayRoutesRequest,
-            opts: Dict = None,
-    ) -> models.DescribeWxGatewayRoutesResponse:
-        """
-        查看安全网关路由
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeWxGatewayRoutes"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeWxGatewayRoutesResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DescribeWxGateways(
-            self,
-            request: models.DescribeWxGatewaysRequest,
-            opts: Dict = None,
-    ) -> models.DescribeWxGatewaysResponse:
-        """
-        查看安全网关
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeWxGateways"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeWxGatewaysResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1406,6 +746,8 @@ class TcbClient(AbstractClient):
     ) -> models.DestroyMySQLResponse:
         """
         销毁Mysql
+
+        销毁后可以通过 [DescribeMySQLTaskStatus](https://cloud.tencent.com/document/api/876/128183) 接口查询销毁结果，如果 `Response.Data. Status = FAILED ` 表示销毁失败，可以重新调用销毁接口重试
         """
         
         kwargs = {}
@@ -1453,60 +795,6 @@ class TcbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def EstablishCloudBaseRunServer(
-            self,
-            request: models.EstablishCloudBaseRunServerRequest,
-            opts: Dict = None,
-    ) -> models.EstablishCloudBaseRunServerResponse:
-        """
-        创建云应用服务
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "EstablishCloudBaseRunServer"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.EstablishCloudBaseRunServerResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def EstablishWxGatewayRoute(
-            self,
-            request: models.EstablishWxGatewayRouteRequest,
-            opts: Dict = None,
-    ) -> models.EstablishWxGatewayRouteResponse:
-        """
-        创建或修改安全网关路由
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "EstablishWxGatewayRoute"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.EstablishWxGatewayRouteResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def FreezeCloudBaseRunServers(
-            self,
-            request: models.FreezeCloudBaseRunServersRequest,
-            opts: Dict = None,
-    ) -> models.FreezeCloudBaseRunServersResponse:
-        """
-        批量冻结
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "FreezeCloudBaseRunServers"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.FreezeCloudBaseRunServersResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def ListTables(
             self,
             request: models.ListTablesRequest,
@@ -1538,42 +826,6 @@ class TcbClient(AbstractClient):
         kwargs["action"] = "ModifyCloudBaseGWAPI"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyCloudBaseGWAPIResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def ModifyCloudBaseRunServerFlowConf(
-            self,
-            request: models.ModifyCloudBaseRunServerFlowConfRequest,
-            opts: Dict = None,
-    ) -> models.ModifyCloudBaseRunServerFlowConfResponse:
-        """
-        修改容器内的版本流量配置
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "ModifyCloudBaseRunServerFlowConf"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.ModifyCloudBaseRunServerFlowConfResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def ModifyCloudBaseRunServerVersion(
-            self,
-            request: models.ModifyCloudBaseRunServerVersionRequest,
-            opts: Dict = None,
-    ) -> models.ModifyCloudBaseRunServerVersionResponse:
-        """
-        修改服务版本的副本数，环境变量
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "ModifyCloudBaseRunServerVersion"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.ModifyCloudBaseRunServerVersionResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1653,19 +905,20 @@ class TcbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def ModifyGatewayVersionTraffic(
+    async def ModifySafeRule(
             self,
-            request: models.ModifyGatewayVersionTrafficRequest,
+            request: models.ModifySafeRuleRequest,
             opts: Dict = None,
-    ) -> models.ModifyGatewayVersionTrafficResponse:
+    ) -> models.ModifySafeRuleResponse:
         """
-        设置网关版本的流量比例
+        设置数据库安全规则。
+        安全规则，用于控制C端用户的访问权限。详见 [安全规则介绍 ](https://cloud.tencent.com/document/product/876/123478)。
         """
         
         kwargs = {}
-        kwargs["action"] = "ModifyGatewayVersionTraffic"
+        kwargs["action"] = "ModifySafeRule"
         kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.ModifyGatewayVersionTrafficResponse
+        kwargs["resp_cls"] = models.ModifySafeRuleResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1727,19 +980,19 @@ class TcbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def ReplaceActivityRecord(
+    async def RunCommands(
             self,
-            request: models.ReplaceActivityRecordRequest,
+            request: models.RunCommandsRequest,
             opts: Dict = None,
-    ) -> models.ReplaceActivityRecordResponse:
+    ) -> models.RunCommandsResponse:
         """
-        更新活动详情
+        本接口用于执行数据库命令
         """
         
         kwargs = {}
-        kwargs["action"] = "ReplaceActivityRecord"
+        kwargs["action"] = "RunCommands"
         kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.ReplaceActivityRecordResponse
+        kwargs["resp_cls"] = models.RunCommandsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1752,6 +1005,8 @@ class TcbClient(AbstractClient):
     ) -> models.RunSqlResponse:
         """
         执行SQL语句
+
+        调用该接口前需要先查询Mysql是否开通，可通过 [DescribeCreateMySQLResult ](https://cloud.tencent.com/document/api/876/128185) 查询，只有开通成功才能操作
         """
         
         kwargs = {}
@@ -1776,24 +1031,6 @@ class TcbClient(AbstractClient):
         kwargs["action"] = "SearchClsLog"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.SearchClsLogResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def UnfreezeCloudBaseRunServers(
-            self,
-            request: models.UnfreezeCloudBaseRunServersRequest,
-            opts: Dict = None,
-    ) -> models.UnfreezeCloudBaseRunServersResponse:
-        """
-        批量解冻服务
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "UnfreezeCloudBaseRunServers"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.UnfreezeCloudBaseRunServersResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

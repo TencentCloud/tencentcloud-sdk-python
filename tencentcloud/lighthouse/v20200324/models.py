@@ -3329,17 +3329,17 @@ class DataDiskPrice(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DiskId: 云硬盘ID。
+        :param _DiskId: <p>云硬盘ID。</p>
         :type DiskId: str
-        :param _OriginalDiskPrice: 云硬盘单价。
+        :param _OriginalDiskPrice: <p>云硬盘单价。</p><p>单位：元</p>
         :type OriginalDiskPrice: float
-        :param _OriginalPrice: 云硬盘总价。
+        :param _OriginalPrice: <p>云硬盘总价。</p><p>单位：元</p>
         :type OriginalPrice: float
-        :param _Discount: 折扣。
+        :param _Discount: <p>折扣。</p>
         :type Discount: float
-        :param _DiscountPrice: 折后总价。
+        :param _DiscountPrice: <p>折后总价。</p><p>单位：元</p>
         :type DiscountPrice: float
-        :param _InstanceId: 数据盘挂载的实例ID。
+        :param _InstanceId: <p>数据盘挂载的实例ID。</p>
         :type InstanceId: str
         """
         self._DiskId = None
@@ -3351,7 +3351,7 @@ class DataDiskPrice(AbstractModel):
 
     @property
     def DiskId(self):
-        r"""云硬盘ID。
+        r"""<p>云硬盘ID。</p>
         :rtype: str
         """
         return self._DiskId
@@ -3362,7 +3362,7 @@ class DataDiskPrice(AbstractModel):
 
     @property
     def OriginalDiskPrice(self):
-        r"""云硬盘单价。
+        r"""<p>云硬盘单价。</p><p>单位：元</p>
         :rtype: float
         """
         return self._OriginalDiskPrice
@@ -3373,7 +3373,7 @@ class DataDiskPrice(AbstractModel):
 
     @property
     def OriginalPrice(self):
-        r"""云硬盘总价。
+        r"""<p>云硬盘总价。</p><p>单位：元</p>
         :rtype: float
         """
         return self._OriginalPrice
@@ -3384,7 +3384,7 @@ class DataDiskPrice(AbstractModel):
 
     @property
     def Discount(self):
-        r"""折扣。
+        r"""<p>折扣。</p>
         :rtype: float
         """
         return self._Discount
@@ -3395,7 +3395,7 @@ class DataDiskPrice(AbstractModel):
 
     @property
     def DiscountPrice(self):
-        r"""折后总价。
+        r"""<p>折后总价。</p><p>单位：元</p>
         :rtype: float
         """
         return self._DiscountPrice
@@ -3406,7 +3406,7 @@ class DataDiskPrice(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""数据盘挂载的实例ID。
+        r"""<p>数据盘挂载的实例ID。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -9819,19 +9819,15 @@ class DetailPrice(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PriceName: 描述计费项目名称，目前取值
-<li>"DiskSpace"代表云硬盘空间收费项。</li>
-<li>"DiskBackupQuota"代表数据盘备份点配额收费项。</li>
-<li>"Instance"代表实例收费项。</li>
-<li>"SystemDiskBackupQuota"代表系统盘备份点配额收费项。</li>
+        :param _PriceName: <p>描述计费项目名称，目前取值</p><li>"DiskSpace"代表云硬盘空间收费项。</li><li>"DiskBackupQuota"代表数据盘备份点配额收费项。</li><li>"Instance"代表实例收费项。</li><li>"SystemDiskBackupQuota"代表系统盘备份点配额收费项。</li>
         :type PriceName: str
-        :param _OriginUnitPrice: 计费项维度单价。
+        :param _OriginUnitPrice: <p>计费项维度单价。</p><p>单位：元</p>
         :type OriginUnitPrice: float
-        :param _OriginalPrice: 计费项维度总价。
+        :param _OriginalPrice: <p>计费项维度总价。</p><p>单位：元</p>
         :type OriginalPrice: float
-        :param _Discount: 计费项维度折扣。
+        :param _Discount: <p>计费项维度折扣。</p>
         :type Discount: float
-        :param _DiscountPrice: 计费项维度折后总价。
+        :param _DiscountPrice: <p>计费项维度折后总价。</p><p>单位：元</p>
         :type DiscountPrice: float
         """
         self._PriceName = None
@@ -9842,11 +9838,7 @@ class DetailPrice(AbstractModel):
 
     @property
     def PriceName(self):
-        r"""描述计费项目名称，目前取值
-<li>"DiskSpace"代表云硬盘空间收费项。</li>
-<li>"DiskBackupQuota"代表数据盘备份点配额收费项。</li>
-<li>"Instance"代表实例收费项。</li>
-<li>"SystemDiskBackupQuota"代表系统盘备份点配额收费项。</li>
+        r"""<p>描述计费项目名称，目前取值</p><li>"DiskSpace"代表云硬盘空间收费项。</li><li>"DiskBackupQuota"代表数据盘备份点配额收费项。</li><li>"Instance"代表实例收费项。</li><li>"SystemDiskBackupQuota"代表系统盘备份点配额收费项。</li>
         :rtype: str
         """
         return self._PriceName
@@ -9857,7 +9849,7 @@ class DetailPrice(AbstractModel):
 
     @property
     def OriginUnitPrice(self):
-        r"""计费项维度单价。
+        r"""<p>计费项维度单价。</p><p>单位：元</p>
         :rtype: float
         """
         return self._OriginUnitPrice
@@ -9868,7 +9860,7 @@ class DetailPrice(AbstractModel):
 
     @property
     def OriginalPrice(self):
-        r"""计费项维度总价。
+        r"""<p>计费项维度总价。</p><p>单位：元</p>
         :rtype: float
         """
         return self._OriginalPrice
@@ -9879,7 +9871,7 @@ class DetailPrice(AbstractModel):
 
     @property
     def Discount(self):
-        r"""计费项维度折扣。
+        r"""<p>计费项维度折扣。</p>
         :rtype: float
         """
         return self._Discount
@@ -9890,7 +9882,7 @@ class DetailPrice(AbstractModel):
 
     @property
     def DiscountPrice(self):
-        r"""计费项维度折后总价。
+        r"""<p>计费项维度折后总价。</p><p>单位：元</p>
         :rtype: float
         """
         return self._DiscountPrice
@@ -10002,20 +9994,17 @@ class DiscountDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TimeSpan: 计费时长。
+        :param _TimeSpan: <p>计费时长。</p>
         :type TimeSpan: int
-        :param _TimeUnit: 时间单位。
-取值为：
-- m - 月
-- d - 日
+        :param _TimeUnit: <p>时间单位。<br>取值为：</p><ul><li>m - 月</li><li>d - 日</li></ul>
         :type TimeUnit: str
-        :param _TotalCost: 总价。
+        :param _TotalCost: <p>总价。</p><p>单位：元</p>
         :type TotalCost: float
-        :param _RealTotalCost: 折后总价。
+        :param _RealTotalCost: <p>折后总价。</p><p>单位：元</p>
         :type RealTotalCost: float
-        :param _Discount: 折扣。
+        :param _Discount: <p>折扣。</p>
         :type Discount: float
-        :param _PolicyDetail: 具体折扣详情。
+        :param _PolicyDetail: <p>具体折扣详情。</p>
         :type PolicyDetail: :class:`tencentcloud.lighthouse.v20200324.models.PolicyDetail`
         """
         self._TimeSpan = None
@@ -10027,7 +10016,7 @@ class DiscountDetail(AbstractModel):
 
     @property
     def TimeSpan(self):
-        r"""计费时长。
+        r"""<p>计费时长。</p>
         :rtype: int
         """
         return self._TimeSpan
@@ -10038,10 +10027,7 @@ class DiscountDetail(AbstractModel):
 
     @property
     def TimeUnit(self):
-        r"""时间单位。
-取值为：
-- m - 月
-- d - 日
+        r"""<p>时间单位。<br>取值为：</p><ul><li>m - 月</li><li>d - 日</li></ul>
         :rtype: str
         """
         return self._TimeUnit
@@ -10052,7 +10038,7 @@ class DiscountDetail(AbstractModel):
 
     @property
     def TotalCost(self):
-        r"""总价。
+        r"""<p>总价。</p><p>单位：元</p>
         :rtype: float
         """
         return self._TotalCost
@@ -10063,7 +10049,7 @@ class DiscountDetail(AbstractModel):
 
     @property
     def RealTotalCost(self):
-        r"""折后总价。
+        r"""<p>折后总价。</p><p>单位：元</p>
         :rtype: float
         """
         return self._RealTotalCost
@@ -10074,7 +10060,7 @@ class DiscountDetail(AbstractModel):
 
     @property
     def Discount(self):
-        r"""折扣。
+        r"""<p>折扣。</p>
         :rtype: float
         """
         return self._Discount
@@ -10085,7 +10071,7 @@ class DiscountDetail(AbstractModel):
 
     @property
     def PolicyDetail(self):
-        r"""具体折扣详情。
+        r"""<p>具体折扣详情。</p>
         :rtype: :class:`tencentcloud.lighthouse.v20200324.models.PolicyDetail`
         """
         return self._PolicyDetail
@@ -10868,21 +10854,17 @@ class DiskConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Zone: 可用区。
+        :param _Zone: <p>可用区。</p>
         :type Zone: str
-        :param _DiskType: 云硬盘类型。枚举值如下：
-
-<li>CLOUD_BASIC：普通云硬盘</li>
-<li>CLOUD_PREMIUM：高性能云硬盘</li>
-<li>CLOUD_SSD：SSD云硬盘</li>
+        :param _DiskType: <p>云硬盘类型。枚举值如下：</p><li>CLOUD_BASIC：普通云硬盘</li><li>CLOUD_PREMIUM：高性能云硬盘</li><li>CLOUD_SSD：SSD云硬盘</li>
         :type DiskType: str
-        :param _DiskSalesState: 云硬盘可售卖状态。
+        :param _DiskSalesState: <p>云硬盘可售卖状态。</p>
         :type DiskSalesState: str
-        :param _MaxDiskSize: 最大云硬盘大小。
+        :param _MaxDiskSize: <p>最大云硬盘大小。</p><p>单位：GB</p>
         :type MaxDiskSize: int
-        :param _MinDiskSize: 最小云硬盘大小。
+        :param _MinDiskSize: <p>最小云硬盘大小。</p><p>单位：GB</p>
         :type MinDiskSize: int
-        :param _DiskStepSize: 云硬盘步长。
+        :param _DiskStepSize: <p>云硬盘步长。</p><p>单位：GB</p>
         :type DiskStepSize: int
         """
         self._Zone = None
@@ -10894,7 +10876,7 @@ class DiskConfig(AbstractModel):
 
     @property
     def Zone(self):
-        r"""可用区。
+        r"""<p>可用区。</p>
         :rtype: str
         """
         return self._Zone
@@ -10905,11 +10887,7 @@ class DiskConfig(AbstractModel):
 
     @property
     def DiskType(self):
-        r"""云硬盘类型。枚举值如下：
-
-<li>CLOUD_BASIC：普通云硬盘</li>
-<li>CLOUD_PREMIUM：高性能云硬盘</li>
-<li>CLOUD_SSD：SSD云硬盘</li>
+        r"""<p>云硬盘类型。枚举值如下：</p><li>CLOUD_BASIC：普通云硬盘</li><li>CLOUD_PREMIUM：高性能云硬盘</li><li>CLOUD_SSD：SSD云硬盘</li>
         :rtype: str
         """
         return self._DiskType
@@ -10920,7 +10898,7 @@ class DiskConfig(AbstractModel):
 
     @property
     def DiskSalesState(self):
-        r"""云硬盘可售卖状态。
+        r"""<p>云硬盘可售卖状态。</p>
         :rtype: str
         """
         return self._DiskSalesState
@@ -10931,7 +10909,7 @@ class DiskConfig(AbstractModel):
 
     @property
     def MaxDiskSize(self):
-        r"""最大云硬盘大小。
+        r"""<p>最大云硬盘大小。</p><p>单位：GB</p>
         :rtype: int
         """
         return self._MaxDiskSize
@@ -10942,7 +10920,7 @@ class DiskConfig(AbstractModel):
 
     @property
     def MinDiskSize(self):
-        r"""最小云硬盘大小。
+        r"""<p>最小云硬盘大小。</p><p>单位：GB</p>
         :rtype: int
         """
         return self._MinDiskSize
@@ -10953,7 +10931,7 @@ class DiskConfig(AbstractModel):
 
     @property
     def DiskStepSize(self):
-        r"""云硬盘步长。
+        r"""<p>云硬盘步长。</p><p>单位：GB</p>
         :rtype: int
         """
         return self._DiskStepSize
@@ -14359,17 +14337,17 @@ class InstancePrice(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _OriginalBundlePrice: 套餐单价原价。
+        :param _OriginalBundlePrice: <p>套餐单价原价。</p><p>单位：元</p>
         :type OriginalBundlePrice: float
-        :param _OriginalPrice: 原价。
+        :param _OriginalPrice: <p>原价。</p><p>单位：元</p>
         :type OriginalPrice: float
-        :param _Discount: 折扣。
+        :param _Discount: <p>折扣。</p>
         :type Discount: float
-        :param _DiscountPrice: 折后价。
+        :param _DiscountPrice: <p>折后价。</p><p>单位：元</p>
         :type DiscountPrice: float
-        :param _Currency: 价格货币单位。取值范围CNY:人民币。USD:美元。
+        :param _Currency: <p>价格货币单位。取值范围CNY:人民币。USD:美元。</p>
         :type Currency: str
-        :param _DetailPrices: 计费项目明细。
+        :param _DetailPrices: <p>计费项目明细。</p>
         :type DetailPrices: list of DetailPrice
         """
         self._OriginalBundlePrice = None
@@ -14381,7 +14359,7 @@ class InstancePrice(AbstractModel):
 
     @property
     def OriginalBundlePrice(self):
-        r"""套餐单价原价。
+        r"""<p>套餐单价原价。</p><p>单位：元</p>
         :rtype: float
         """
         return self._OriginalBundlePrice
@@ -14392,7 +14370,7 @@ class InstancePrice(AbstractModel):
 
     @property
     def OriginalPrice(self):
-        r"""原价。
+        r"""<p>原价。</p><p>单位：元</p>
         :rtype: float
         """
         return self._OriginalPrice
@@ -14403,7 +14381,7 @@ class InstancePrice(AbstractModel):
 
     @property
     def Discount(self):
-        r"""折扣。
+        r"""<p>折扣。</p>
         :rtype: float
         """
         return self._Discount
@@ -14414,7 +14392,7 @@ class InstancePrice(AbstractModel):
 
     @property
     def DiscountPrice(self):
-        r"""折后价。
+        r"""<p>折后价。</p><p>单位：元</p>
         :rtype: float
         """
         return self._DiscountPrice
@@ -14425,7 +14403,7 @@ class InstancePrice(AbstractModel):
 
     @property
     def Currency(self):
-        r"""价格货币单位。取值范围CNY:人民币。USD:美元。
+        r"""<p>价格货币单位。取值范围CNY:人民币。USD:美元。</p>
         :rtype: str
         """
         return self._Currency
@@ -14436,7 +14414,7 @@ class InstancePrice(AbstractModel):
 
     @property
     def DetailPrices(self):
-        r"""计费项目明细。
+        r"""<p>计费项目明细。</p>
         :rtype: list of DetailPrice
         """
         return self._DetailPrices
@@ -20885,9 +20863,9 @@ class TotalPrice(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _OriginalPrice: 原始总计价格。
+        :param _OriginalPrice: <p>原始总计价格。</p><p>单位：元</p>
         :type OriginalPrice: float
-        :param _DiscountPrice: 折扣总计价格。
+        :param _DiscountPrice: <p>折扣总计价格。</p><p>单位：元</p>
         :type DiscountPrice: float
         """
         self._OriginalPrice = None
@@ -20895,7 +20873,7 @@ class TotalPrice(AbstractModel):
 
     @property
     def OriginalPrice(self):
-        r"""原始总计价格。
+        r"""<p>原始总计价格。</p><p>单位：元</p>
         :rtype: float
         """
         return self._OriginalPrice
@@ -20906,7 +20884,7 @@ class TotalPrice(AbstractModel):
 
     @property
     def DiscountPrice(self):
-        r"""折扣总计价格。
+        r"""<p>折扣总计价格。</p><p>单位：元</p>
         :rtype: float
         """
         return self._DiscountPrice

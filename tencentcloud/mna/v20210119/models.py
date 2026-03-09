@@ -354,6 +354,160 @@ class ActiveDeviceList(AbstractModel):
         
 
 
+class AddApplicationRequest(AbstractModel):
+    r"""AddApplication请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MpApplicationName: 新建应用的应用名
+        :type MpApplicationName: str
+        :param _Remark: 新建设备的备注
+        :type Remark: str
+        :param _MpApplicationKey: 新建应用的base64密钥字符串，非必选，如果不填写则由系统自动生成
+        :type MpApplicationKey: str
+        :param _AccessScope: 接入环境。0：公有云网关；1：自有网关；2：公有云网关和自有网关。不填默认公有云网关。 具体含义： 公有云网关：即该设备只能接入公有云网关（就近接入） 自有网关：即该设备只能接入已经注册上线的自有网关（就近接入或固定ip接入） 公有云网关和自有网关：即该设备同时可以接入公有云网关和已经注册上线的自有网关（就近接入或固定ip接入）
+        :type AccessScope: int
+        """
+        self._MpApplicationName = None
+        self._Remark = None
+        self._MpApplicationKey = None
+        self._AccessScope = None
+
+    @property
+    def MpApplicationName(self):
+        r"""新建应用的应用名
+        :rtype: str
+        """
+        return self._MpApplicationName
+
+    @MpApplicationName.setter
+    def MpApplicationName(self, MpApplicationName):
+        self._MpApplicationName = MpApplicationName
+
+    @property
+    def Remark(self):
+        r"""新建设备的备注
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def MpApplicationKey(self):
+        r"""新建应用的base64密钥字符串，非必选，如果不填写则由系统自动生成
+        :rtype: str
+        """
+        return self._MpApplicationKey
+
+    @MpApplicationKey.setter
+    def MpApplicationKey(self, MpApplicationKey):
+        self._MpApplicationKey = MpApplicationKey
+
+    @property
+    def AccessScope(self):
+        r"""接入环境。0：公有云网关；1：自有网关；2：公有云网关和自有网关。不填默认公有云网关。 具体含义： 公有云网关：即该设备只能接入公有云网关（就近接入） 自有网关：即该设备只能接入已经注册上线的自有网关（就近接入或固定ip接入） 公有云网关和自有网关：即该设备同时可以接入公有云网关和已经注册上线的自有网关（就近接入或固定ip接入）
+        :rtype: int
+        """
+        return self._AccessScope
+
+    @AccessScope.setter
+    def AccessScope(self, AccessScope):
+        self._AccessScope = AccessScope
+
+
+    def _deserialize(self, params):
+        self._MpApplicationName = params.get("MpApplicationName")
+        self._Remark = params.get("Remark")
+        self._MpApplicationKey = params.get("MpApplicationKey")
+        self._AccessScope = params.get("AccessScope")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AddApplicationResponse(AbstractModel):
+    r"""AddApplication返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MpApplicationId: 应用ID
+        :type MpApplicationId: str
+        :param _MpApplicationKey: 经过加密算法加密后的base64格式密钥
+        :type MpApplicationKey: str
+        :param _MpApplicationName: 应用名
+        :type MpApplicationName: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._MpApplicationId = None
+        self._MpApplicationKey = None
+        self._MpApplicationName = None
+        self._RequestId = None
+
+    @property
+    def MpApplicationId(self):
+        r"""应用ID
+        :rtype: str
+        """
+        return self._MpApplicationId
+
+    @MpApplicationId.setter
+    def MpApplicationId(self, MpApplicationId):
+        self._MpApplicationId = MpApplicationId
+
+    @property
+    def MpApplicationKey(self):
+        r"""经过加密算法加密后的base64格式密钥
+        :rtype: str
+        """
+        return self._MpApplicationKey
+
+    @MpApplicationKey.setter
+    def MpApplicationKey(self, MpApplicationKey):
+        self._MpApplicationKey = MpApplicationKey
+
+    @property
+    def MpApplicationName(self):
+        r"""应用名
+        :rtype: str
+        """
+        return self._MpApplicationName
+
+    @MpApplicationName.setter
+    def MpApplicationName(self, MpApplicationName):
+        self._MpApplicationName = MpApplicationName
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._MpApplicationId = params.get("MpApplicationId")
+        self._MpApplicationKey = params.get("MpApplicationKey")
+        self._MpApplicationName = params.get("MpApplicationName")
+        self._RequestId = params.get("RequestId")
+
+
 class AddDeviceRequest(AbstractModel):
     r"""AddDevice请求参数结构体
 
@@ -969,6 +1123,111 @@ class CreateEncryptedKeyResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._EncryptedKey = params.get("EncryptedKey")
+        self._RequestId = params.get("RequestId")
+
+
+class DelApplicationList(AbstractModel):
+    r"""应用id列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MpApplicationId: 应用id
+        :type MpApplicationId: str
+        """
+        self._MpApplicationId = None
+
+    @property
+    def MpApplicationId(self):
+        r"""应用id
+        :rtype: str
+        """
+        return self._MpApplicationId
+
+    @MpApplicationId.setter
+    def MpApplicationId(self, MpApplicationId):
+        self._MpApplicationId = MpApplicationId
+
+
+    def _deserialize(self, params):
+        self._MpApplicationId = params.get("MpApplicationId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteApplicationRequest(AbstractModel):
+    r"""DeleteApplication请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MpApplicationIdList: 应用id列表
+        :type MpApplicationIdList: list of DelApplicationList
+        """
+        self._MpApplicationIdList = None
+
+    @property
+    def MpApplicationIdList(self):
+        r"""应用id列表
+        :rtype: list of DelApplicationList
+        """
+        return self._MpApplicationIdList
+
+    @MpApplicationIdList.setter
+    def MpApplicationIdList(self, MpApplicationIdList):
+        self._MpApplicationIdList = MpApplicationIdList
+
+
+    def _deserialize(self, params):
+        if params.get("MpApplicationIdList") is not None:
+            self._MpApplicationIdList = []
+            for item in params.get("MpApplicationIdList"):
+                obj = DelApplicationList()
+                obj._deserialize(item)
+                self._MpApplicationIdList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteApplicationResponse(AbstractModel):
+    r"""DeleteApplication返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -2649,6 +2908,145 @@ class GetActiveDeviceCountResponse(AbstractModel):
         self._DevGroup = params.get("DevGroup")
         self._LicenseType = params.get("LicenseType")
         self._AppId = params.get("AppId")
+        self._RequestId = params.get("RequestId")
+
+
+class GetApplicationRequest(AbstractModel):
+    r"""GetApplication请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MpApplicationId: 应用id
+        :type MpApplicationId: str
+        """
+        self._MpApplicationId = None
+
+    @property
+    def MpApplicationId(self):
+        r"""应用id
+        :rtype: str
+        """
+        return self._MpApplicationId
+
+    @MpApplicationId.setter
+    def MpApplicationId(self, MpApplicationId):
+        self._MpApplicationId = MpApplicationId
+
+
+    def _deserialize(self, params):
+        self._MpApplicationId = params.get("MpApplicationId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetApplicationResponse(AbstractModel):
+    r"""GetApplication返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MpApplicationId: 应用ID
+        :type MpApplicationId: str
+        :param _MpApplicationKey: 经过加密算法加密后的base64格式密钥
+        :type MpApplicationKey: str
+        :param _MpApplicationName: 应用名
+        :type MpApplicationName: str
+        :param _Remark: 设备的备注
+        :type Remark: str
+        :param _AccessScope: 接入环境。0：公有云网关；1：自有网关；2：公有云网关和自有网关。不填默认公有云网关。 具体含义： 公有云网关：即该设备只能接入公有云网关（就近接入） 自有网关：即该设备只能接入已经注册上线的自有网关（就近接入或固定ip接入） 公有云网关和自有网关：即该设备同时可以接入公有云网关和已经注册上线的自有网关（就近接入或固定ip接入）
+        :type AccessScope: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._MpApplicationId = None
+        self._MpApplicationKey = None
+        self._MpApplicationName = None
+        self._Remark = None
+        self._AccessScope = None
+        self._RequestId = None
+
+    @property
+    def MpApplicationId(self):
+        r"""应用ID
+        :rtype: str
+        """
+        return self._MpApplicationId
+
+    @MpApplicationId.setter
+    def MpApplicationId(self, MpApplicationId):
+        self._MpApplicationId = MpApplicationId
+
+    @property
+    def MpApplicationKey(self):
+        r"""经过加密算法加密后的base64格式密钥
+        :rtype: str
+        """
+        return self._MpApplicationKey
+
+    @MpApplicationKey.setter
+    def MpApplicationKey(self, MpApplicationKey):
+        self._MpApplicationKey = MpApplicationKey
+
+    @property
+    def MpApplicationName(self):
+        r"""应用名
+        :rtype: str
+        """
+        return self._MpApplicationName
+
+    @MpApplicationName.setter
+    def MpApplicationName(self, MpApplicationName):
+        self._MpApplicationName = MpApplicationName
+
+    @property
+    def Remark(self):
+        r"""设备的备注
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def AccessScope(self):
+        r"""接入环境。0：公有云网关；1：自有网关；2：公有云网关和自有网关。不填默认公有云网关。 具体含义： 公有云网关：即该设备只能接入公有云网关（就近接入） 自有网关：即该设备只能接入已经注册上线的自有网关（就近接入或固定ip接入） 公有云网关和自有网关：即该设备同时可以接入公有云网关和已经注册上线的自有网关（就近接入或固定ip接入）
+        :rtype: int
+        """
+        return self._AccessScope
+
+    @AccessScope.setter
+    def AccessScope(self, AccessScope):
+        self._AccessScope = AccessScope
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._MpApplicationId = params.get("MpApplicationId")
+        self._MpApplicationKey = params.get("MpApplicationKey")
+        self._MpApplicationName = params.get("MpApplicationName")
+        self._Remark = params.get("Remark")
+        self._AccessScope = params.get("AccessScope")
         self._RequestId = params.get("RequestId")
 
 
@@ -7820,6 +8218,194 @@ class SlotNetInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class UpdateApplicationInfoRequest(AbstractModel):
+    r"""UpdateApplicationInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MpApplicationId: 应用ID
+        :type MpApplicationId: str
+        :param _MpApplicationName: 新建应用的应用名
+        :type MpApplicationName: str
+        :param _Remark: 新建设备的备注
+        :type Remark: str
+        :param _AccessScope: 接入环境。0：公有云网关；1：自有网关；2：公有云网关和自有网关。不填默认公有云网关。 具体含义： 公有云网关：即该设备只能接入公有云网关（就近接入） 自有网关：即该设备只能接入已经注册上线的自有网关（就近接入或固定ip接入） 公有云网关和自有网关：即该设备同时可以接入公有云网关和已经注册上线的自有网关（就近接入或固定ip接入）
+        :type AccessScope: int
+        """
+        self._MpApplicationId = None
+        self._MpApplicationName = None
+        self._Remark = None
+        self._AccessScope = None
+
+    @property
+    def MpApplicationId(self):
+        r"""应用ID
+        :rtype: str
+        """
+        return self._MpApplicationId
+
+    @MpApplicationId.setter
+    def MpApplicationId(self, MpApplicationId):
+        self._MpApplicationId = MpApplicationId
+
+    @property
+    def MpApplicationName(self):
+        r"""新建应用的应用名
+        :rtype: str
+        """
+        return self._MpApplicationName
+
+    @MpApplicationName.setter
+    def MpApplicationName(self, MpApplicationName):
+        self._MpApplicationName = MpApplicationName
+
+    @property
+    def Remark(self):
+        r"""新建设备的备注
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def AccessScope(self):
+        r"""接入环境。0：公有云网关；1：自有网关；2：公有云网关和自有网关。不填默认公有云网关。 具体含义： 公有云网关：即该设备只能接入公有云网关（就近接入） 自有网关：即该设备只能接入已经注册上线的自有网关（就近接入或固定ip接入） 公有云网关和自有网关：即该设备同时可以接入公有云网关和已经注册上线的自有网关（就近接入或固定ip接入）
+        :rtype: int
+        """
+        return self._AccessScope
+
+    @AccessScope.setter
+    def AccessScope(self, AccessScope):
+        self._AccessScope = AccessScope
+
+
+    def _deserialize(self, params):
+        self._MpApplicationId = params.get("MpApplicationId")
+        self._MpApplicationName = params.get("MpApplicationName")
+        self._Remark = params.get("Remark")
+        self._AccessScope = params.get("AccessScope")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateApplicationInfoResponse(AbstractModel):
+    r"""UpdateApplicationInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateApplicationKeyRequest(AbstractModel):
+    r"""UpdateApplicationKey请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MpApplicationKey: 应用的base64密钥字符串
+        :type MpApplicationKey: str
+        :param _MpApplicationId: 应用ID
+        :type MpApplicationId: str
+        """
+        self._MpApplicationKey = None
+        self._MpApplicationId = None
+
+    @property
+    def MpApplicationKey(self):
+        r"""应用的base64密钥字符串
+        :rtype: str
+        """
+        return self._MpApplicationKey
+
+    @MpApplicationKey.setter
+    def MpApplicationKey(self, MpApplicationKey):
+        self._MpApplicationKey = MpApplicationKey
+
+    @property
+    def MpApplicationId(self):
+        r"""应用ID
+        :rtype: str
+        """
+        return self._MpApplicationId
+
+    @MpApplicationId.setter
+    def MpApplicationId(self, MpApplicationId):
+        self._MpApplicationId = MpApplicationId
+
+
+    def _deserialize(self, params):
+        self._MpApplicationKey = params.get("MpApplicationKey")
+        self._MpApplicationId = params.get("MpApplicationId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateApplicationKeyResponse(AbstractModel):
+    r"""UpdateApplicationKey返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class UpdateDeviceRequest(AbstractModel):

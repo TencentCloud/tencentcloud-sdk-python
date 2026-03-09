@@ -205,6 +205,8 @@ class AddExistedInstancesRequest(AbstractModel):
         :type InstanceAdvancedSettingsOverrides: list of InstanceAdvancedSettings
         :param _ImageId: 节点镜像
         :type ImageId: str
+        :param _NodeType: 直接添加为原生节点
+        :type NodeType: str
         """
         self._ClusterId = None
         self._InstanceIds = None
@@ -217,6 +219,7 @@ class AddExistedInstancesRequest(AbstractModel):
         self._SkipValidateOptions = None
         self._InstanceAdvancedSettingsOverrides = None
         self._ImageId = None
+        self._NodeType = None
 
     @property
     def ClusterId(self):
@@ -339,6 +342,17 @@ class AddExistedInstancesRequest(AbstractModel):
     def ImageId(self, ImageId):
         self._ImageId = ImageId
 
+    @property
+    def NodeType(self):
+        r"""直接添加为原生节点
+        :rtype: str
+        """
+        return self._NodeType
+
+    @NodeType.setter
+    def NodeType(self, NodeType):
+        self._NodeType = NodeType
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -365,6 +379,7 @@ class AddExistedInstancesRequest(AbstractModel):
                 obj._deserialize(item)
                 self._InstanceAdvancedSettingsOverrides.append(obj)
         self._ImageId = params.get("ImageId")
+        self._NodeType = params.get("NodeType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7773,7 +7788,7 @@ class CreateECMInstancesRequest(AbstractModel):
         :type ZoneInstanceCountISPSet: list of ECMZoneInstanceCountISP
         :param _Password: 密码
         :type Password: str
-        :param _InternetMaxBandwidthOut: 公网带宽
+        :param _InternetMaxBandwidthOut: 公网带宽，单位为Mbps
         :type InternetMaxBandwidthOut: int
         :param _ImageId: 镜像id
         :type ImageId: str
@@ -7849,7 +7864,7 @@ class CreateECMInstancesRequest(AbstractModel):
 
     @property
     def InternetMaxBandwidthOut(self):
-        r"""公网带宽
+        r"""公网带宽，单位为Mbps
         :rtype: int
         """
         return self._InternetMaxBandwidthOut
@@ -38688,7 +38703,7 @@ class ModifyNodePoolDesiredCapacityAboutAsgRequest(AbstractModel):
         :type ClusterId: str
         :param _NodePoolId: 节点池id
         :type NodePoolId: str
-        :param _DesiredCapacity: 节点池所关联的伸缩组的期望实例数
+        :param _DesiredCapacity: 节点池所关联的伸缩组的期望实例数，单位个
         :type DesiredCapacity: int
         """
         self._ClusterId = None
@@ -38719,7 +38734,7 @@ class ModifyNodePoolDesiredCapacityAboutAsgRequest(AbstractModel):
 
     @property
     def DesiredCapacity(self):
-        r"""节点池所关联的伸缩组的期望实例数
+        r"""节点池所关联的伸缩组的期望实例数，单位个
         :rtype: int
         """
         return self._DesiredCapacity

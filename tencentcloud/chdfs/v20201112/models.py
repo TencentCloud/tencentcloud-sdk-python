@@ -3297,11 +3297,11 @@ class ModifyMountPointRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MountPointId: 挂载点ID
+        :param _MountPointId: <p>挂载点ID</p>
         :type MountPointId: str
-        :param _MountPointName: 挂载点名称
+        :param _MountPointName: <p>挂载点名称</p>
         :type MountPointName: str
-        :param _MountPointStatus: 挂载点状态
+        :param _MountPointStatus: <p>挂载点状态</p><p>枚举值：</p><ul><li>1： 打开</li><li>2： 关闭</li></ul>
         :type MountPointStatus: int
         """
         self._MountPointId = None
@@ -3310,7 +3310,7 @@ class ModifyMountPointRequest(AbstractModel):
 
     @property
     def MountPointId(self):
-        r"""挂载点ID
+        r"""<p>挂载点ID</p>
         :rtype: str
         """
         return self._MountPointId
@@ -3321,7 +3321,7 @@ class ModifyMountPointRequest(AbstractModel):
 
     @property
     def MountPointName(self):
-        r"""挂载点名称
+        r"""<p>挂载点名称</p>
         :rtype: str
         """
         return self._MountPointName
@@ -3332,7 +3332,7 @@ class ModifyMountPointRequest(AbstractModel):
 
     @property
     def MountPointStatus(self):
-        r"""挂载点状态
+        r"""<p>挂载点状态</p><p>枚举值：</p><ul><li>1： 打开</li><li>2： 关闭</li></ul>
         :rtype: int
         """
         return self._MountPointStatus

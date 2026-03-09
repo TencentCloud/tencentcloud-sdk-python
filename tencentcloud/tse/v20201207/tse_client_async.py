@@ -313,6 +313,24 @@ class TseClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateGovernanceLaneGroups(
+            self,
+            request: models.CreateGovernanceLaneGroupsRequest,
+            opts: Dict = None,
+    ) -> models.CreateGovernanceLaneGroupsResponse:
+        """
+        创建泳道组
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateGovernanceLaneGroups"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateGovernanceLaneGroupsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateGovernanceNamespaces(
             self,
             request: models.CreateGovernanceNamespacesRequest,
@@ -740,6 +758,24 @@ class TseClient(AbstractClient):
         kwargs["action"] = "DeleteGovernanceInstancesByHost"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteGovernanceInstancesByHostResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteGovernanceLaneGroups(
+            self,
+            request: models.DeleteGovernanceLaneGroupsRequest,
+            opts: Dict = None,
+    ) -> models.DeleteGovernanceLaneGroupsResponse:
+        """
+        删除泳道组
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteGovernanceLaneGroups"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteGovernanceLaneGroupsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1357,6 +1393,24 @@ class TseClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeGovernanceLaneGroups(
+            self,
+            request: models.DescribeGovernanceLaneGroupsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeGovernanceLaneGroupsResponse:
+        """
+        查询泳道组列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeGovernanceLaneGroups"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeGovernanceLaneGroupsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeGovernanceNamespaces(
             self,
             request: models.DescribeGovernanceNamespacesRequest,
@@ -1928,6 +1982,24 @@ class TseClient(AbstractClient):
         kwargs["action"] = "ModifyGovernanceInstances"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyGovernanceInstancesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyGovernanceLaneGroups(
+            self,
+            request: models.ModifyGovernanceLaneGroupsRequest,
+            opts: Dict = None,
+    ) -> models.ModifyGovernanceLaneGroupsResponse:
+        """
+        创建泳道组
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyGovernanceLaneGroups"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyGovernanceLaneGroupsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

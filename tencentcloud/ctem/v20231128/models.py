@@ -8081,11 +8081,11 @@ class DescribeJobRecordDetailsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Module: 数据类型，包括：enterprise(企业架构)，domain(主域名)，sub_domain(子域名)，asset(主机资产)，port(端口服务)，http(网站资产)，vul(漏洞信息)，app(APP)，wechat_applet(微信小程序)，wechat_official_account(微信公众号)，github(Github泄露)，manage(后台识别)，config(目录爆破)，dark_web(暗网泄露)，net_disk(文库网盘泄露)，social_engineering(员工信息)，supply_chain(供应链信息)，weak_password(弱口令)，sensitive_info(敏感信息泄露)，suspicious_asset(影子资产)
+        :param _Module: <p>数据类型，包括：enterprise(企业架构)，domain(主域名)，sub_domain(子域名)，asset(主机资产)，port(端口服务)，http(网站资产)，vul(漏洞信息)，app(APP)，wechat_applet(微信小程序)，wechat_official_account(微信公众号)，github(Github泄露)，manage(后台识别)，config(目录爆破)，dark_web(暗网泄露)，net_disk(文库网盘泄露)，social_engineering(员工信息)，supply_chain(供应链信息)，weak_password(弱口令)，sensitive_info(敏感信息泄露)，suspicious_asset(影子资产)</p>
         :type Module: str
-        :param _Id: 结果id
+        :param _Id: <p>结果id</p>
         :type Id: int
-        :param _JobRecordId: 任务id
+        :param _JobRecordId: <p>任务id</p>
         :type JobRecordId: int
         """
         self._Module = None
@@ -8094,7 +8094,7 @@ class DescribeJobRecordDetailsRequest(AbstractModel):
 
     @property
     def Module(self):
-        r"""数据类型，包括：enterprise(企业架构)，domain(主域名)，sub_domain(子域名)，asset(主机资产)，port(端口服务)，http(网站资产)，vul(漏洞信息)，app(APP)，wechat_applet(微信小程序)，wechat_official_account(微信公众号)，github(Github泄露)，manage(后台识别)，config(目录爆破)，dark_web(暗网泄露)，net_disk(文库网盘泄露)，social_engineering(员工信息)，supply_chain(供应链信息)，weak_password(弱口令)，sensitive_info(敏感信息泄露)，suspicious_asset(影子资产)
+        r"""<p>数据类型，包括：enterprise(企业架构)，domain(主域名)，sub_domain(子域名)，asset(主机资产)，port(端口服务)，http(网站资产)，vul(漏洞信息)，app(APP)，wechat_applet(微信小程序)，wechat_official_account(微信公众号)，github(Github泄露)，manage(后台识别)，config(目录爆破)，dark_web(暗网泄露)，net_disk(文库网盘泄露)，social_engineering(员工信息)，supply_chain(供应链信息)，weak_password(弱口令)，sensitive_info(敏感信息泄露)，suspicious_asset(影子资产)</p>
         :rtype: str
         """
         return self._Module
@@ -8105,7 +8105,7 @@ class DescribeJobRecordDetailsRequest(AbstractModel):
 
     @property
     def Id(self):
-        r"""结果id
+        r"""<p>结果id</p>
         :rtype: int
         """
         return self._Id
@@ -8116,7 +8116,7 @@ class DescribeJobRecordDetailsRequest(AbstractModel):
 
     @property
     def JobRecordId(self):
-        r"""任务id
+        r"""<p>任务id</p>
         :rtype: int
         """
         return self._JobRecordId
@@ -8147,20 +8147,23 @@ class DescribeJobRecordDetailsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Total: 总数
+        :param _Total: <p>总数</p>
         :type Total: int
-        :param _List: 数组
+        :param _List: <p>数组</p>
         :type List: list of DisplayJobRecordDetail
+        :param _EnterpriseEquityPath: <p>持股路径</p>
+        :type EnterpriseEquityPath: list of Equity
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Total = None
         self._List = None
+        self._EnterpriseEquityPath = None
         self._RequestId = None
 
     @property
     def Total(self):
-        r"""总数
+        r"""<p>总数</p>
         :rtype: int
         """
         return self._Total
@@ -8171,7 +8174,7 @@ class DescribeJobRecordDetailsResponse(AbstractModel):
 
     @property
     def List(self):
-        r"""数组
+        r"""<p>数组</p>
         :rtype: list of DisplayJobRecordDetail
         """
         return self._List
@@ -8179,6 +8182,17 @@ class DescribeJobRecordDetailsResponse(AbstractModel):
     @List.setter
     def List(self, List):
         self._List = List
+
+    @property
+    def EnterpriseEquityPath(self):
+        r"""<p>持股路径</p>
+        :rtype: list of Equity
+        """
+        return self._EnterpriseEquityPath
+
+    @EnterpriseEquityPath.setter
+    def EnterpriseEquityPath(self, EnterpriseEquityPath):
+        self._EnterpriseEquityPath = EnterpriseEquityPath
 
     @property
     def RequestId(self):
@@ -8200,6 +8214,12 @@ class DescribeJobRecordDetailsResponse(AbstractModel):
                 obj = DisplayJobRecordDetail()
                 obj._deserialize(item)
                 self._List.append(obj)
+        if params.get("EnterpriseEquityPath") is not None:
+            self._EnterpriseEquityPath = []
+            for item in params.get("EnterpriseEquityPath"):
+                obj = Equity()
+                obj._deserialize(item)
+                self._EnterpriseEquityPath.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -18062,6 +18082,72 @@ class DisplayWechatOfficialAccount(AbstractModel):
         self._QrCode = params.get("QrCode")
         self._Description = params.get("Description")
         self._RecordSubject = params.get("RecordSubject")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Equity(AbstractModel):
+    r"""股权路径
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnterpriseUid: <p>企业ID</p>
+        :type EnterpriseUid: str
+        :param _Name: <p>名称</p>
+        :type Name: str
+        :param _ShareholdingRatio: <p>持股比例</p>
+        :type ShareholdingRatio: str
+        """
+        self._EnterpriseUid = None
+        self._Name = None
+        self._ShareholdingRatio = None
+
+    @property
+    def EnterpriseUid(self):
+        r"""<p>企业ID</p>
+        :rtype: str
+        """
+        return self._EnterpriseUid
+
+    @EnterpriseUid.setter
+    def EnterpriseUid(self, EnterpriseUid):
+        self._EnterpriseUid = EnterpriseUid
+
+    @property
+    def Name(self):
+        r"""<p>名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ShareholdingRatio(self):
+        r"""<p>持股比例</p>
+        :rtype: str
+        """
+        return self._ShareholdingRatio
+
+    @ShareholdingRatio.setter
+    def ShareholdingRatio(self, ShareholdingRatio):
+        self._ShareholdingRatio = ShareholdingRatio
+
+
+    def _deserialize(self, params):
+        self._EnterpriseUid = params.get("EnterpriseUid")
+        self._Name = params.get("Name")
+        self._ShareholdingRatio = params.get("ShareholdingRatio")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

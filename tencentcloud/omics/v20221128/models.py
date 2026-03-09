@@ -219,9 +219,9 @@ class CVMOption(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Zone: 云服务器可用区。
+        :param _Zone: <p>云服务器可用区。</p>
         :type Zone: str
-        :param _InstanceType: 云服务器实例规格。
+        :param _InstanceType: <p>云服务器实例规格。详情参见<a href="https://cloud.tencent.com/document/product/213/11518">实例规格</a>描述</p>
         :type InstanceType: str
         """
         self._Zone = None
@@ -229,7 +229,7 @@ class CVMOption(AbstractModel):
 
     @property
     def Zone(self):
-        r"""云服务器可用区。
+        r"""<p>云服务器可用区。</p>
         :rtype: str
         """
         return self._Zone
@@ -240,7 +240,7 @@ class CVMOption(AbstractModel):
 
     @property
     def InstanceType(self):
-        r"""云服务器实例规格。
+        r"""<p>云服务器实例规格。详情参见<a href="https://cloud.tencent.com/document/product/213/11518">实例规格</a>描述</p>
         :rtype: str
         """
         return self._InstanceType
@@ -336,22 +336,21 @@ class ClusterOption(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Zone: 计算集群可用区。
+        :param _Zone: <p>计算集群可用区。</p>
         :type Zone: str
-        :param _Type: 计算集群类型，取值范围：
-- KUBERNETES
+        :param _Type: <p>计算集群类型，取值范围：</p><ul><li>KUBERNETES</li></ul>
         :type Type: str
-        :param _ServiceCidr: 计算集群Service CIDR，不能与VPC网段重合。
+        :param _ServiceCidr: <p>计算集群Service CIDR，不能与VPC网段重合。</p>
         :type ServiceCidr: str
-        :param _ResourceQuota: 资源配额。
+        :param _ResourceQuota: <p>资源配额。</p>
         :type ResourceQuota: :class:`tencentcloud.omics.v20221128.models.ResourceQuota`
-        :param _LimitRange: 限制范围。
+        :param _LimitRange: <p>限制范围。</p>
         :type LimitRange: :class:`tencentcloud.omics.v20221128.models.LimitRange`
-        :param _SystemNodeInstanceType: 系统节点池实例规格。
+        :param _SystemNodeInstanceType: <p>系统节点池实例规格。详情参见<a href="https://cloud.tencent.com/document/product/213/11518">实例规格</a>描述</p>
         :type SystemNodeInstanceType: str
-        :param _SystemNodeCount: 系统节点池实例数量。
+        :param _SystemNodeCount: <p>系统节点池实例数量。</p>
         :type SystemNodeCount: int
-        :param _AutoUpgradeClusterLevel: 纳管环境自动升配
+        :param _AutoUpgradeClusterLevel: <p>纳管环境自动升配</p>
         :type AutoUpgradeClusterLevel: bool
         """
         self._Zone = None
@@ -365,7 +364,7 @@ class ClusterOption(AbstractModel):
 
     @property
     def Zone(self):
-        r"""计算集群可用区。
+        r"""<p>计算集群可用区。</p>
         :rtype: str
         """
         return self._Zone
@@ -376,8 +375,7 @@ class ClusterOption(AbstractModel):
 
     @property
     def Type(self):
-        r"""计算集群类型，取值范围：
-- KUBERNETES
+        r"""<p>计算集群类型，取值范围：</p><ul><li>KUBERNETES</li></ul>
         :rtype: str
         """
         return self._Type
@@ -388,7 +386,7 @@ class ClusterOption(AbstractModel):
 
     @property
     def ServiceCidr(self):
-        r"""计算集群Service CIDR，不能与VPC网段重合。
+        r"""<p>计算集群Service CIDR，不能与VPC网段重合。</p>
         :rtype: str
         """
         return self._ServiceCidr
@@ -399,7 +397,7 @@ class ClusterOption(AbstractModel):
 
     @property
     def ResourceQuota(self):
-        r"""资源配额。
+        r"""<p>资源配额。</p>
         :rtype: :class:`tencentcloud.omics.v20221128.models.ResourceQuota`
         """
         return self._ResourceQuota
@@ -410,7 +408,7 @@ class ClusterOption(AbstractModel):
 
     @property
     def LimitRange(self):
-        r"""限制范围。
+        r"""<p>限制范围。</p>
         :rtype: :class:`tencentcloud.omics.v20221128.models.LimitRange`
         """
         return self._LimitRange
@@ -421,7 +419,7 @@ class ClusterOption(AbstractModel):
 
     @property
     def SystemNodeInstanceType(self):
-        r"""系统节点池实例规格。
+        r"""<p>系统节点池实例规格。详情参见<a href="https://cloud.tencent.com/document/product/213/11518">实例规格</a>描述</p>
         :rtype: str
         """
         return self._SystemNodeInstanceType
@@ -432,7 +430,7 @@ class ClusterOption(AbstractModel):
 
     @property
     def SystemNodeCount(self):
-        r"""系统节点池实例数量。
+        r"""<p>系统节点池实例数量。</p>
         :rtype: int
         """
         return self._SystemNodeCount
@@ -443,7 +441,7 @@ class ClusterOption(AbstractModel):
 
     @property
     def AutoUpgradeClusterLevel(self):
-        r"""纳管环境自动升配
+        r"""<p>纳管环境自动升配</p>
         :rtype: bool
         """
         return self._AutoUpgradeClusterLevel

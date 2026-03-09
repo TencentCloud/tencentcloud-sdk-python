@@ -2788,7 +2788,7 @@ class Disk(AbstractModel):
         r"""
         :param _DiskType: 云盘类型
         :type DiskType: str
-        :param _DiskSize: 云盘大小(G）
+        :param _DiskSize: 云盘大小 (G）
         :type DiskSize: int
         :param _AutoFormatAndMount: 是否自动化格式盘并挂载
         :type AutoFormatAndMount: bool
@@ -2799,6 +2799,12 @@ class Disk(AbstractModel):
         :param _DiskId: 云盘ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type DiskId: str
+        :param _Encrypt: 加密系统盘
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Encrypt: str
+        :param _KmsKeyId: 自定义 KMS ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KmsKeyId: str
         """
         self._DiskType = None
         self._DiskSize = None
@@ -2806,6 +2812,8 @@ class Disk(AbstractModel):
         self._FileSystem = None
         self._MountTarget = None
         self._DiskId = None
+        self._Encrypt = None
+        self._KmsKeyId = None
 
     @property
     def DiskType(self):
@@ -2820,7 +2828,7 @@ class Disk(AbstractModel):
 
     @property
     def DiskSize(self):
-        r"""云盘大小(G）
+        r"""云盘大小 (G）
         :rtype: int
         """
         return self._DiskSize
@@ -2874,6 +2882,30 @@ class Disk(AbstractModel):
     def DiskId(self, DiskId):
         self._DiskId = DiskId
 
+    @property
+    def Encrypt(self):
+        r"""加密系统盘
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Encrypt
+
+    @Encrypt.setter
+    def Encrypt(self, Encrypt):
+        self._Encrypt = Encrypt
+
+    @property
+    def KmsKeyId(self):
+        r"""自定义 KMS ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._KmsKeyId
+
+    @KmsKeyId.setter
+    def KmsKeyId(self, KmsKeyId):
+        self._KmsKeyId = KmsKeyId
+
 
     def _deserialize(self, params):
         self._DiskType = params.get("DiskType")
@@ -2882,6 +2914,8 @@ class Disk(AbstractModel):
         self._FileSystem = params.get("FileSystem")
         self._MountTarget = params.get("MountTarget")
         self._DiskId = params.get("DiskId")
+        self._Encrypt = params.get("Encrypt")
+        self._KmsKeyId = params.get("KmsKeyId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4154,7 +4188,7 @@ class InternetAccessible(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MaxBandwidthOut: 带宽
+        :param _MaxBandwidthOut: 带宽，单位为Mbps
         :type MaxBandwidthOut: int
         :param _ChargeType: 网络计费方式
         :type ChargeType: str
@@ -4167,7 +4201,7 @@ class InternetAccessible(AbstractModel):
 
     @property
     def MaxBandwidthOut(self):
-        r"""带宽
+        r"""带宽，单位为Mbps
         :rtype: int
         """
         return self._MaxBandwidthOut

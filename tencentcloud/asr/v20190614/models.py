@@ -3227,46 +3227,49 @@ class SentenceDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FinalSentence: 单句最终识别结果
+        :param _FinalSentence: <p>单句最终识别结果</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FinalSentence: str
-        :param _SliceSentence: 单句中间识别结果，使用空格拆分为多个词
+        :param _SliceSentence: <p>单句中间识别结果，使用空格拆分为多个词</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SliceSentence: str
-        :param _WrittenText: 口语转书面语结果，开启改功能才有值
+        :param _WrittenText: <p>口语转书面语结果，开启该功能才有值</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WrittenText: str
-        :param _StartMs: 单句开始时间（毫秒）
+        :param _StartMs: <p>单句开始时间（毫秒）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type StartMs: int
-        :param _EndMs: 单句结束时间（毫秒）
+        :param _EndMs: <p>单句结束时间（毫秒）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type EndMs: int
-        :param _WordsNum: 单句中词个数
+        :param _WordsNum: <p>单句中词个数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WordsNum: int
-        :param _Words: 单句中词详情
+        :param _Words: <p>单句中词详情</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Words: list of SentenceWords
-        :param _SpeechSpeed: 单句语速，单位：字数/秒
+        :param _SpeechSpeed: <p>单句语速，单位：字数/秒</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SpeechSpeed: float
-        :param _SpeakerId: 声道或说话人 Id（请求中如果设置了 speaker_diarization或者ChannelNum为双声道，可区分说话人或声道）
-单声道话者分离时不同的值代表不同的说话人； 8k双声道话者分离时speakerId的值为0代表左声道，值为1代表右声道。
+        :param _SpeakerId: <p>声道或说话人 Id（请求中如果设置了 speaker_diarization或者ChannelNum为双声道，可区分说话人或声道）<br>单声道话者分离时不同的值代表不同的说话人； 8k双声道话者分离时speakerId的值为0代表左声道，值为1代表右声道。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SpeakerId: int
-        :param _EmotionalEnergy: 情绪能量值，取值为音量分贝值/10。取值范围：[1,10]。值越高情绪越强烈。
+        :param _EmotionalEnergy: <p>情绪能量值，取值为音量分贝值/10。取值范围：[1,10]。值越高情绪越强烈。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type EmotionalEnergy: float
-        :param _SilenceTime: 本句与上一句之间的静音时长
+        :param _SilenceTime: <p>本句与上一句之间的静音时长</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SilenceTime: int
-        :param _EmotionType: 情绪类型（可能为空，有2种情况 1、没有对应资源包；2、情绪跟语音效果相关，如果情绪不够强烈时可能无法识别）
+        :param _EmotionType: <p>情绪类型（可能为空，有2种情况 1、没有对应资源包；2、情绪跟语音效果相关，如果情绪不够强烈时可能无法识别）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type EmotionType: list of str
-        :param _KeyWordResults: 关键词识别结果列表
+        :param _KeyWordResults: <p>关键词识别结果列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type KeyWordResults: list of KeyWordResult
+        :param _LangType: <p>多语言识别类型</p><ul><li>中文    chinese</li><li>英语    english</li><li>日语    japanese</li><li>韩语    korean</li><li>阿拉伯语    arabic</li><li>菲律宾语    filipino</li><li>法语    french</li><li>印地语    hindi</li><li>印尼语    indonesian</li><li>马来语    malay</li><li>葡萄牙语    portugal</li><li>西班牙语    spanish</li><li>泰语    thai</li><li>土耳其语    turkish</li><li>越南语    vietnam</li><li>德语    german</li></ul>
+        :type LangType: str
+        :param _SpeakerRoleName: <p>说话人角色名称</p>
+        :type SpeakerRoleName: str
         """
         self._FinalSentence = None
         self._SliceSentence = None
@@ -3281,10 +3284,12 @@ class SentenceDetail(AbstractModel):
         self._SilenceTime = None
         self._EmotionType = None
         self._KeyWordResults = None
+        self._LangType = None
+        self._SpeakerRoleName = None
 
     @property
     def FinalSentence(self):
-        r"""单句最终识别结果
+        r"""<p>单句最终识别结果</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3296,7 +3301,7 @@ class SentenceDetail(AbstractModel):
 
     @property
     def SliceSentence(self):
-        r"""单句中间识别结果，使用空格拆分为多个词
+        r"""<p>单句中间识别结果，使用空格拆分为多个词</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3308,7 +3313,7 @@ class SentenceDetail(AbstractModel):
 
     @property
     def WrittenText(self):
-        r"""口语转书面语结果，开启改功能才有值
+        r"""<p>口语转书面语结果，开启该功能才有值</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3320,7 +3325,7 @@ class SentenceDetail(AbstractModel):
 
     @property
     def StartMs(self):
-        r"""单句开始时间（毫秒）
+        r"""<p>单句开始时间（毫秒）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -3332,7 +3337,7 @@ class SentenceDetail(AbstractModel):
 
     @property
     def EndMs(self):
-        r"""单句结束时间（毫秒）
+        r"""<p>单句结束时间（毫秒）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -3344,7 +3349,7 @@ class SentenceDetail(AbstractModel):
 
     @property
     def WordsNum(self):
-        r"""单句中词个数
+        r"""<p>单句中词个数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -3356,7 +3361,7 @@ class SentenceDetail(AbstractModel):
 
     @property
     def Words(self):
-        r"""单句中词详情
+        r"""<p>单句中词详情</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SentenceWords
         """
@@ -3368,7 +3373,7 @@ class SentenceDetail(AbstractModel):
 
     @property
     def SpeechSpeed(self):
-        r"""单句语速，单位：字数/秒
+        r"""<p>单句语速，单位：字数/秒</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -3380,8 +3385,7 @@ class SentenceDetail(AbstractModel):
 
     @property
     def SpeakerId(self):
-        r"""声道或说话人 Id（请求中如果设置了 speaker_diarization或者ChannelNum为双声道，可区分说话人或声道）
-单声道话者分离时不同的值代表不同的说话人； 8k双声道话者分离时speakerId的值为0代表左声道，值为1代表右声道。
+        r"""<p>声道或说话人 Id（请求中如果设置了 speaker_diarization或者ChannelNum为双声道，可区分说话人或声道）<br>单声道话者分离时不同的值代表不同的说话人； 8k双声道话者分离时speakerId的值为0代表左声道，值为1代表右声道。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -3393,7 +3397,7 @@ class SentenceDetail(AbstractModel):
 
     @property
     def EmotionalEnergy(self):
-        r"""情绪能量值，取值为音量分贝值/10。取值范围：[1,10]。值越高情绪越强烈。
+        r"""<p>情绪能量值，取值为音量分贝值/10。取值范围：[1,10]。值越高情绪越强烈。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -3405,7 +3409,7 @@ class SentenceDetail(AbstractModel):
 
     @property
     def SilenceTime(self):
-        r"""本句与上一句之间的静音时长
+        r"""<p>本句与上一句之间的静音时长</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -3417,7 +3421,7 @@ class SentenceDetail(AbstractModel):
 
     @property
     def EmotionType(self):
-        r"""情绪类型（可能为空，有2种情况 1、没有对应资源包；2、情绪跟语音效果相关，如果情绪不够强烈时可能无法识别）
+        r"""<p>情绪类型（可能为空，有2种情况 1、没有对应资源包；2、情绪跟语音效果相关，如果情绪不够强烈时可能无法识别）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -3429,7 +3433,7 @@ class SentenceDetail(AbstractModel):
 
     @property
     def KeyWordResults(self):
-        r"""关键词识别结果列表
+        r"""<p>关键词识别结果列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of KeyWordResult
         """
@@ -3438,6 +3442,28 @@ class SentenceDetail(AbstractModel):
     @KeyWordResults.setter
     def KeyWordResults(self, KeyWordResults):
         self._KeyWordResults = KeyWordResults
+
+    @property
+    def LangType(self):
+        r"""<p>多语言识别类型</p><ul><li>中文    chinese</li><li>英语    english</li><li>日语    japanese</li><li>韩语    korean</li><li>阿拉伯语    arabic</li><li>菲律宾语    filipino</li><li>法语    french</li><li>印地语    hindi</li><li>印尼语    indonesian</li><li>马来语    malay</li><li>葡萄牙语    portugal</li><li>西班牙语    spanish</li><li>泰语    thai</li><li>土耳其语    turkish</li><li>越南语    vietnam</li><li>德语    german</li></ul>
+        :rtype: str
+        """
+        return self._LangType
+
+    @LangType.setter
+    def LangType(self, LangType):
+        self._LangType = LangType
+
+    @property
+    def SpeakerRoleName(self):
+        r"""<p>说话人角色名称</p>
+        :rtype: str
+        """
+        return self._SpeakerRoleName
+
+    @SpeakerRoleName.setter
+    def SpeakerRoleName(self, SpeakerRoleName):
+        self._SpeakerRoleName = SpeakerRoleName
 
 
     def _deserialize(self, params):
@@ -3464,6 +3490,8 @@ class SentenceDetail(AbstractModel):
                 obj = KeyWordResult()
                 obj._deserialize(item)
                 self._KeyWordResults.append(obj)
+        self._LangType = params.get("LangType")
+        self._SpeakerRoleName = params.get("SpeakerRoleName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

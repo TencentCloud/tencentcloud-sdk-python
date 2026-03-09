@@ -223,6 +223,24 @@ class DbbrainClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateMongoDBKillTask(
+            self,
+            request: models.CreateMongoDBKillTaskRequest,
+            opts: Dict = None,
+    ) -> models.CreateMongoDBKillTaskResponse:
+        """
+        创建中断会话的任务。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateMongoDBKillTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateMongoDBKillTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateProxySessionKillTask(
             self,
             request: models.CreateProxySessionKillTaskRequest,

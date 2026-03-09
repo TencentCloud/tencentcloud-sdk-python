@@ -3753,7 +3753,7 @@ class Encryption(AbstractModel):
         :param _EncryptList: <p>在使用加密服务时，填入要被加密的字段。本接口中可填入加密后的一个或多个字段</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type EncryptList: list of str
-        :param _CiphertextBlob: <p>加密后的对称密钥，关于密钥的生成和使用请查阅<a href="https://www.tencentcloud.com/document/product/1061/77849">数据加密</a> 文档。</p>
+        :param _CiphertextBlob: <p>加密后的对称密钥，关于密钥的生成和使用请查阅<a href="https://cloud.tencent.com/document/product/1007/47180">数据加密</a> 文档。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CiphertextBlob: str
         :param _Iv: <p>有加密需求的用户，传入CBC加密的初始向量（客户自定义字符串，长度16字符）。</p>
@@ -3786,7 +3786,7 @@ class Encryption(AbstractModel):
 
     @property
     def CiphertextBlob(self):
-        r"""<p>加密后的对称密钥，关于密钥的生成和使用请查阅<a href="https://www.tencentcloud.com/document/product/1061/77849">数据加密</a> 文档。</p>
+        r"""<p>加密后的对称密钥，关于密钥的生成和使用请查阅<a href="https://cloud.tencent.com/document/product/1007/47180">数据加密</a> 文档。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """

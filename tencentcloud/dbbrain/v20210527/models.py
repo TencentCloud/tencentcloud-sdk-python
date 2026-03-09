@@ -3167,6 +3167,192 @@ class CreateMailProfileResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateMongoDBKillTaskRequest(AbstractModel):
+    r"""CreateMongoDBKillTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: kill会话任务的关联实例ID。
+        :type InstanceId: str
+        :param _Duration: 任务持续时间，单位秒，手动关闭任务传-1。
+        :type Duration: int
+        :param _Product: 服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
+        :type Product: str
+        :param _Host: 任务过滤条件，客户端IP。
+        :type Host: str
+        :param _DB: 命名空间
+        :type DB: list of str
+        :param _Type: update,insert,query,getmore,remove,killcursors,command,compressed,none
+        :type Type: str
+        :param _Time: kill任务过滤条件，会话持续时长，单位秒。
+        :type Time: int
+        """
+        self._InstanceId = None
+        self._Duration = None
+        self._Product = None
+        self._Host = None
+        self._DB = None
+        self._Type = None
+        self._Time = None
+
+    @property
+    def InstanceId(self):
+        r"""kill会话任务的关联实例ID。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Duration(self):
+        r"""任务持续时间，单位秒，手动关闭任务传-1。
+        :rtype: int
+        """
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def Product(self):
+        r"""服务产品类型，支持值包括： "mysql" - 云数据库 MySQL， "cynosdb" - 云数据库 CynosDB  for MySQL，默认为"mysql"。
+        :rtype: str
+        """
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def Host(self):
+        r"""任务过滤条件，客户端IP。
+        :rtype: str
+        """
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+    @property
+    def DB(self):
+        r"""命名空间
+        :rtype: list of str
+        """
+        return self._DB
+
+    @DB.setter
+    def DB(self, DB):
+        self._DB = DB
+
+    @property
+    def Type(self):
+        r"""update,insert,query,getmore,remove,killcursors,command,compressed,none
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Time(self):
+        r"""kill任务过滤条件，会话持续时长，单位秒。
+        :rtype: int
+        """
+        return self._Time
+
+    @Time.setter
+    def Time(self, Time):
+        self._Time = Time
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Duration = params.get("Duration")
+        self._Product = params.get("Product")
+        self._Host = params.get("Host")
+        self._DB = params.get("DB")
+        self._Type = params.get("Type")
+        self._Time = params.get("Time")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateMongoDBKillTaskResponse(AbstractModel):
+    r"""CreateMongoDBKillTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: kill会话任务创建成功返回1
+        :type Status: int
+        :param _ErrorMsg: 异常信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorMsg: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Status = None
+        self._ErrorMsg = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        r"""kill会话任务创建成功返回1
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrorMsg(self):
+        r"""异常信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateProxySessionKillTaskRequest(AbstractModel):
     r"""CreateProxySessionKillTask请求参数结构体
 

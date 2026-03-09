@@ -9297,23 +9297,23 @@ class DescribeFlashSMSListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkAppId: 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :param _SdkAppId: <p>应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc</p>
         :type SdkAppId: int
-        :param _StartTimestamp: 起始时间戳，Unix 秒级时间戳，最大支持近180天。
+        :param _StartTimestamp: <p>起始时间戳，Unix 秒级时间戳，最大支持近180天。</p>
         :type StartTimestamp: int
-        :param _EndTimestamp: 结束时间戳，Unix 秒级时间戳，结束时间与开始时间的区间范围小于90天。
+        :param _EndTimestamp: <p>结束时间戳，Unix 秒级时间戳，结束时间与开始时间的区间范围小于90天。</p>
         :type EndTimestamp: int
-        :param _DeliveryNumber: 闪信投递号码（被叫号码）
+        :param _DeliveryNumber: <p>闪信投递号码（被叫号码）</p>
         :type DeliveryNumber: str
-        :param _ServingNumber: 呼叫关联的系统号码
+        :param _ServingNumber: <p>呼叫关联的系统号码</p>
         :type ServingNumber: str
-        :param _SessionId: 会话 ID
+        :param _SessionId: <p>会话 ID</p>
         :type SessionId: str
-        :param _DeliveryStatus: 投递结果 1 为成功，其他为失败
+        :param _DeliveryStatus: <p>投递结果 1 为成功，其他为失败</p>
         :type DeliveryStatus: int
-        :param _PageSize: 分页大小，默认 20，最大 100
+        :param _PageSize: <p>分页大小，默认 20，最大 1000</p><p>取值范围：[20, 1000]</p><p>单位：条</p><p>默认值：20</p>
         :type PageSize: int
-        :param _PageNumber: 分页页码，从 0 开始
+        :param _PageNumber: <p>分页页码，从 0 开始</p>
         :type PageNumber: int
         """
         self._SdkAppId = None
@@ -9328,7 +9328,7 @@ class DescribeFlashSMSListRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        r"""应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        r"""<p>应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc</p>
         :rtype: int
         """
         return self._SdkAppId
@@ -9339,7 +9339,7 @@ class DescribeFlashSMSListRequest(AbstractModel):
 
     @property
     def StartTimestamp(self):
-        r"""起始时间戳，Unix 秒级时间戳，最大支持近180天。
+        r"""<p>起始时间戳，Unix 秒级时间戳，最大支持近180天。</p>
         :rtype: int
         """
         return self._StartTimestamp
@@ -9350,7 +9350,7 @@ class DescribeFlashSMSListRequest(AbstractModel):
 
     @property
     def EndTimestamp(self):
-        r"""结束时间戳，Unix 秒级时间戳，结束时间与开始时间的区间范围小于90天。
+        r"""<p>结束时间戳，Unix 秒级时间戳，结束时间与开始时间的区间范围小于90天。</p>
         :rtype: int
         """
         return self._EndTimestamp
@@ -9361,7 +9361,7 @@ class DescribeFlashSMSListRequest(AbstractModel):
 
     @property
     def DeliveryNumber(self):
-        r"""闪信投递号码（被叫号码）
+        r"""<p>闪信投递号码（被叫号码）</p>
         :rtype: str
         """
         return self._DeliveryNumber
@@ -9372,7 +9372,7 @@ class DescribeFlashSMSListRequest(AbstractModel):
 
     @property
     def ServingNumber(self):
-        r"""呼叫关联的系统号码
+        r"""<p>呼叫关联的系统号码</p>
         :rtype: str
         """
         return self._ServingNumber
@@ -9383,7 +9383,7 @@ class DescribeFlashSMSListRequest(AbstractModel):
 
     @property
     def SessionId(self):
-        r"""会话 ID
+        r"""<p>会话 ID</p>
         :rtype: str
         """
         return self._SessionId
@@ -9394,7 +9394,7 @@ class DescribeFlashSMSListRequest(AbstractModel):
 
     @property
     def DeliveryStatus(self):
-        r"""投递结果 1 为成功，其他为失败
+        r"""<p>投递结果 1 为成功，其他为失败</p>
         :rtype: int
         """
         return self._DeliveryStatus
@@ -9405,7 +9405,7 @@ class DescribeFlashSMSListRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        r"""分页大小，默认 20，最大 100
+        r"""<p>分页大小，默认 20，最大 1000</p><p>取值范围：[20, 1000]</p><p>单位：条</p><p>默认值：20</p>
         :rtype: int
         """
         return self._PageSize
@@ -9416,7 +9416,7 @@ class DescribeFlashSMSListRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        r"""分页页码，从 0 开始
+        r"""<p>分页页码，从 0 开始</p>
         :rtype: int
         """
         return self._PageNumber
@@ -9453,9 +9453,9 @@ class DescribeFlashSMSListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Total: 记录总数
+        :param _Total: <p>记录总数</p>
         :type Total: int
-        :param _FlashSMSList: 闪信记录列表
+        :param _FlashSMSList: <p>闪信记录列表</p>
         :type FlashSMSList: list of FlashSMSRecord
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -9466,7 +9466,7 @@ class DescribeFlashSMSListResponse(AbstractModel):
 
     @property
     def Total(self):
-        r"""记录总数
+        r"""<p>记录总数</p>
         :rtype: int
         """
         return self._Total
@@ -9477,7 +9477,7 @@ class DescribeFlashSMSListResponse(AbstractModel):
 
     @property
     def FlashSMSList(self):
-        r"""闪信记录列表
+        r"""<p>闪信记录列表</p>
         :rtype: list of FlashSMSRecord
         """
         return self._FlashSMSList
@@ -11207,13 +11207,13 @@ class DescribeSessionDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkAppId: 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :param _SdkAppId: <p>应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc</p>
         :type SdkAppId: int
-        :param _SessionId: 通话的 session id
+        :param _SessionId: <p>通话的 session id</p>
         :type SessionId: str
-        :param _StartTimestamp: 起始时间戳，Unix 秒级时间戳，最大支持近180天。
+        :param _StartTimestamp: <p>起始时间戳，Unix 秒级时间戳，最大支持近180天。</p>
         :type StartTimestamp: int
-        :param _EndTimestamp: 结束时间戳，Unix 秒级时间戳，结束时间与开始时间的区间范围小于90天。
+        :param _EndTimestamp: <p>结束时间戳，Unix 秒级时间戳，结束时间与开始时间的区间范围小于90天。</p>
         :type EndTimestamp: int
         """
         self._SdkAppId = None
@@ -11223,7 +11223,7 @@ class DescribeSessionDetailRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        r"""应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        r"""<p>应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc</p>
         :rtype: int
         """
         return self._SdkAppId
@@ -11234,7 +11234,7 @@ class DescribeSessionDetailRequest(AbstractModel):
 
     @property
     def SessionId(self):
-        r"""通话的 session id
+        r"""<p>通话的 session id</p>
         :rtype: str
         """
         return self._SessionId
@@ -11245,7 +11245,7 @@ class DescribeSessionDetailRequest(AbstractModel):
 
     @property
     def StartTimestamp(self):
-        r"""起始时间戳，Unix 秒级时间戳，最大支持近180天。
+        r"""<p>起始时间戳，Unix 秒级时间戳，最大支持近180天。</p>
         :rtype: int
         """
         return self._StartTimestamp
@@ -11256,7 +11256,7 @@ class DescribeSessionDetailRequest(AbstractModel):
 
     @property
     def EndTimestamp(self):
-        r"""结束时间戳，Unix 秒级时间戳，结束时间与开始时间的区间范围小于90天。
+        r"""<p>结束时间戳，Unix 秒级时间戳，结束时间与开始时间的区间范围小于90天。</p>
         :rtype: int
         """
         return self._EndTimestamp
@@ -11288,52 +11288,56 @@ class DescribeSessionDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Caller: 主叫号码
+        :param _Caller: <p>主叫号码</p>
         :type Caller: str
-        :param _Callee: 被叫号码
+        :param _Callee: <p>被叫号码</p>
         :type Callee: str
-        :param _CallType: 通话类型 1 呼出 2 呼入 3 音频呼入 5 预测式外呼 6 内线呼叫
+        :param _CallType: <p>通话类型 1 呼出 2 呼入 3 音频呼入 5 预测式外呼 6 内线呼叫</p>
         :type CallType: int
-        :param _StartTimeStamp: 开始时间戳，Unix 秒级时间戳
+        :param _StartTimeStamp: <p>开始时间戳，Unix 秒级时间戳</p>
         :type StartTimeStamp: int
-        :param _RingTimestamp: 振铃时间戳，UNIX 秒级时间戳
+        :param _RingTimestamp: <p>振铃时间戳，UNIX 秒级时间戳</p>
         :type RingTimestamp: int
-        :param _AcceptTimestamp: 接听时间戳，UNIX 秒级时间戳
+        :param _AcceptTimestamp: <p>接听时间戳，UNIX 秒级时间戳</p>
         :type AcceptTimestamp: int
-        :param _EndedTimestamp: 结束时间戳，UNIX 秒级时间戳
+        :param _EndedTimestamp: <p>结束时间戳，UNIX 秒级时间戳</p>
         :type EndedTimestamp: int
-        :param _QueuedTimestamp: 进入排队时间，Unix 秒级时间戳
+        :param _QueuedTimestamp: <p>进入排队时间，Unix 秒级时间戳</p>
         :type QueuedTimestamp: int
-        :param _StaffUserId: 座席账号
+        :param _StaffUserId: <p>座席账号</p>
         :type StaffUserId: str
-        :param _EndStatus: 参考 DescribeTelCdr 接口 EndStatus 字段
+        :param _EndStatus: <p>参考 DescribeTelCdr 接口 EndStatus 字段</p>
         :type EndStatus: int
-        :param _QueuedSkillGroupId: 排队技能组 ID
+        :param _QueuedSkillGroupId: <p>排队技能组 ID</p>
         :type QueuedSkillGroupId: int
-        :param _QueuedSkillGroupName: 排队技能组名称
+        :param _QueuedSkillGroupName: <p>排队技能组名称</p>
         :type QueuedSkillGroupName: str
-        :param _RecordURL: 录音链接，带鉴权和有效期，获取之后请在24 小时内拉取，不要持久化此链接。如此链接已过期，请重新调用此接口获取新的链接
+        :param _RecordURL: <p>录音链接，带鉴权和有效期，获取之后请在24 小时内拉取，不要持久化此链接。如此链接已过期，请重新调用此接口获取新的链接</p>
         :type RecordURL: str
-        :param _CustomRecordURL: 录音转存第三方 COS 链接
+        :param _CustomRecordURL: <p>录音转存第三方 COS 链接</p>
         :type CustomRecordURL: str
-        :param _AsrURL: 录音文本信息链接，带鉴权和有效期，获取之后请在24 小时拉取，不要持久化此链接。如此链接已过期，请重新调用此接口获取新的链接
+        :param _AsrURL: <p>录音文本信息链接，带鉴权和有效期，获取之后请在24 小时拉取，不要持久化此链接。如此链接已过期，请重新调用此接口获取新的链接</p>
         :type AsrURL: str
-        :param _VoicemailRecordURL: 语音留言录音链接
+        :param _VoicemailRecordURL: <p>语音留言录音链接</p>
         :type VoicemailRecordURL: list of str
-        :param _VoicemailAsrURL: 语音留言录音文本信息链接，需在控制台购买离线语音识别套餐包并开启离线语音识别开关
+        :param _VoicemailAsrURL: <p>语音留言录音文本信息链接，需在控制台购买离线语音识别套餐包并开启离线语音识别开关</p>
         :type VoicemailAsrURL: list of str
-        :param _IVRKeyPressed: IVR 按键信息
+        :param _IVRKeyPressed: <p>IVR 按键信息</p>
         :type IVRKeyPressed: list of IVRKeyPressedElement
-        :param _PostIVRKeyPressed: 满意度按键信息
+        :param _PostIVRKeyPressed: <p>满意度按键信息</p>
         :type PostIVRKeyPressed: list of IVRKeyPressedElement
-        :param _HungUpSide: 挂机方 seat 座席 user 用户 system 系统
+        :param _HungUpSide: <p>挂机方 seat 座席 user 用户 system 系统</p>
         :type HungUpSide: str
-        :param _UUI: 客户自定义数据（User-to-User Interface）
+        :param _UUI: <p>客户自定义数据（User-to-User Interface）</p>
         :type UUI: str
-        :param _Events: 通话中的事件列表
+        :param _Events: <p>通话中的事件列表</p>
         :type Events: list of SessionEvent
-        :param _ServeParticipants: 服务参与者列表
+        :param _ServeParticipants: <p>服务参与者列表</p>
         :type ServeParticipants: list of ServeParticipant
+        :param _SysHangupReason: <p>接通后系统挂断原因状态码</p><p><a href="https://cloud.tencent.com/document/product/679/123938">详见</a></p>
+        :type SysHangupReason: int
+        :param _SysHangupReasonString: <p>接通后系统挂断原因</p><p><a href="https://cloud.tencent.com/document/product/679/123938">详见</a></p>
+        :type SysHangupReasonString: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -11360,11 +11364,13 @@ class DescribeSessionDetailResponse(AbstractModel):
         self._UUI = None
         self._Events = None
         self._ServeParticipants = None
+        self._SysHangupReason = None
+        self._SysHangupReasonString = None
         self._RequestId = None
 
     @property
     def Caller(self):
-        r"""主叫号码
+        r"""<p>主叫号码</p>
         :rtype: str
         """
         return self._Caller
@@ -11375,7 +11381,7 @@ class DescribeSessionDetailResponse(AbstractModel):
 
     @property
     def Callee(self):
-        r"""被叫号码
+        r"""<p>被叫号码</p>
         :rtype: str
         """
         return self._Callee
@@ -11386,7 +11392,7 @@ class DescribeSessionDetailResponse(AbstractModel):
 
     @property
     def CallType(self):
-        r"""通话类型 1 呼出 2 呼入 3 音频呼入 5 预测式外呼 6 内线呼叫
+        r"""<p>通话类型 1 呼出 2 呼入 3 音频呼入 5 预测式外呼 6 内线呼叫</p>
         :rtype: int
         """
         return self._CallType
@@ -11397,7 +11403,7 @@ class DescribeSessionDetailResponse(AbstractModel):
 
     @property
     def StartTimeStamp(self):
-        r"""开始时间戳，Unix 秒级时间戳
+        r"""<p>开始时间戳，Unix 秒级时间戳</p>
         :rtype: int
         """
         return self._StartTimeStamp
@@ -11408,7 +11414,7 @@ class DescribeSessionDetailResponse(AbstractModel):
 
     @property
     def RingTimestamp(self):
-        r"""振铃时间戳，UNIX 秒级时间戳
+        r"""<p>振铃时间戳，UNIX 秒级时间戳</p>
         :rtype: int
         """
         return self._RingTimestamp
@@ -11419,7 +11425,7 @@ class DescribeSessionDetailResponse(AbstractModel):
 
     @property
     def AcceptTimestamp(self):
-        r"""接听时间戳，UNIX 秒级时间戳
+        r"""<p>接听时间戳，UNIX 秒级时间戳</p>
         :rtype: int
         """
         return self._AcceptTimestamp
@@ -11430,7 +11436,7 @@ class DescribeSessionDetailResponse(AbstractModel):
 
     @property
     def EndedTimestamp(self):
-        r"""结束时间戳，UNIX 秒级时间戳
+        r"""<p>结束时间戳，UNIX 秒级时间戳</p>
         :rtype: int
         """
         return self._EndedTimestamp
@@ -11441,7 +11447,7 @@ class DescribeSessionDetailResponse(AbstractModel):
 
     @property
     def QueuedTimestamp(self):
-        r"""进入排队时间，Unix 秒级时间戳
+        r"""<p>进入排队时间，Unix 秒级时间戳</p>
         :rtype: int
         """
         return self._QueuedTimestamp
@@ -11452,7 +11458,7 @@ class DescribeSessionDetailResponse(AbstractModel):
 
     @property
     def StaffUserId(self):
-        r"""座席账号
+        r"""<p>座席账号</p>
         :rtype: str
         """
         return self._StaffUserId
@@ -11463,7 +11469,7 @@ class DescribeSessionDetailResponse(AbstractModel):
 
     @property
     def EndStatus(self):
-        r"""参考 DescribeTelCdr 接口 EndStatus 字段
+        r"""<p>参考 DescribeTelCdr 接口 EndStatus 字段</p>
         :rtype: int
         """
         return self._EndStatus
@@ -11474,7 +11480,7 @@ class DescribeSessionDetailResponse(AbstractModel):
 
     @property
     def QueuedSkillGroupId(self):
-        r"""排队技能组 ID
+        r"""<p>排队技能组 ID</p>
         :rtype: int
         """
         return self._QueuedSkillGroupId
@@ -11485,7 +11491,7 @@ class DescribeSessionDetailResponse(AbstractModel):
 
     @property
     def QueuedSkillGroupName(self):
-        r"""排队技能组名称
+        r"""<p>排队技能组名称</p>
         :rtype: str
         """
         return self._QueuedSkillGroupName
@@ -11496,7 +11502,7 @@ class DescribeSessionDetailResponse(AbstractModel):
 
     @property
     def RecordURL(self):
-        r"""录音链接，带鉴权和有效期，获取之后请在24 小时内拉取，不要持久化此链接。如此链接已过期，请重新调用此接口获取新的链接
+        r"""<p>录音链接，带鉴权和有效期，获取之后请在24 小时内拉取，不要持久化此链接。如此链接已过期，请重新调用此接口获取新的链接</p>
         :rtype: str
         """
         return self._RecordURL
@@ -11507,7 +11513,7 @@ class DescribeSessionDetailResponse(AbstractModel):
 
     @property
     def CustomRecordURL(self):
-        r"""录音转存第三方 COS 链接
+        r"""<p>录音转存第三方 COS 链接</p>
         :rtype: str
         """
         return self._CustomRecordURL
@@ -11518,7 +11524,7 @@ class DescribeSessionDetailResponse(AbstractModel):
 
     @property
     def AsrURL(self):
-        r"""录音文本信息链接，带鉴权和有效期，获取之后请在24 小时拉取，不要持久化此链接。如此链接已过期，请重新调用此接口获取新的链接
+        r"""<p>录音文本信息链接，带鉴权和有效期，获取之后请在24 小时拉取，不要持久化此链接。如此链接已过期，请重新调用此接口获取新的链接</p>
         :rtype: str
         """
         return self._AsrURL
@@ -11529,7 +11535,7 @@ class DescribeSessionDetailResponse(AbstractModel):
 
     @property
     def VoicemailRecordURL(self):
-        r"""语音留言录音链接
+        r"""<p>语音留言录音链接</p>
         :rtype: list of str
         """
         return self._VoicemailRecordURL
@@ -11540,7 +11546,7 @@ class DescribeSessionDetailResponse(AbstractModel):
 
     @property
     def VoicemailAsrURL(self):
-        r"""语音留言录音文本信息链接，需在控制台购买离线语音识别套餐包并开启离线语音识别开关
+        r"""<p>语音留言录音文本信息链接，需在控制台购买离线语音识别套餐包并开启离线语音识别开关</p>
         :rtype: list of str
         """
         return self._VoicemailAsrURL
@@ -11551,7 +11557,7 @@ class DescribeSessionDetailResponse(AbstractModel):
 
     @property
     def IVRKeyPressed(self):
-        r"""IVR 按键信息
+        r"""<p>IVR 按键信息</p>
         :rtype: list of IVRKeyPressedElement
         """
         return self._IVRKeyPressed
@@ -11562,7 +11568,7 @@ class DescribeSessionDetailResponse(AbstractModel):
 
     @property
     def PostIVRKeyPressed(self):
-        r"""满意度按键信息
+        r"""<p>满意度按键信息</p>
         :rtype: list of IVRKeyPressedElement
         """
         return self._PostIVRKeyPressed
@@ -11573,7 +11579,7 @@ class DescribeSessionDetailResponse(AbstractModel):
 
     @property
     def HungUpSide(self):
-        r"""挂机方 seat 座席 user 用户 system 系统
+        r"""<p>挂机方 seat 座席 user 用户 system 系统</p>
         :rtype: str
         """
         return self._HungUpSide
@@ -11584,7 +11590,7 @@ class DescribeSessionDetailResponse(AbstractModel):
 
     @property
     def UUI(self):
-        r"""客户自定义数据（User-to-User Interface）
+        r"""<p>客户自定义数据（User-to-User Interface）</p>
         :rtype: str
         """
         return self._UUI
@@ -11595,7 +11601,7 @@ class DescribeSessionDetailResponse(AbstractModel):
 
     @property
     def Events(self):
-        r"""通话中的事件列表
+        r"""<p>通话中的事件列表</p>
         :rtype: list of SessionEvent
         """
         return self._Events
@@ -11606,7 +11612,7 @@ class DescribeSessionDetailResponse(AbstractModel):
 
     @property
     def ServeParticipants(self):
-        r"""服务参与者列表
+        r"""<p>服务参与者列表</p>
         :rtype: list of ServeParticipant
         """
         return self._ServeParticipants
@@ -11614,6 +11620,28 @@ class DescribeSessionDetailResponse(AbstractModel):
     @ServeParticipants.setter
     def ServeParticipants(self, ServeParticipants):
         self._ServeParticipants = ServeParticipants
+
+    @property
+    def SysHangupReason(self):
+        r"""<p>接通后系统挂断原因状态码</p><p><a href="https://cloud.tencent.com/document/product/679/123938">详见</a></p>
+        :rtype: int
+        """
+        return self._SysHangupReason
+
+    @SysHangupReason.setter
+    def SysHangupReason(self, SysHangupReason):
+        self._SysHangupReason = SysHangupReason
+
+    @property
+    def SysHangupReasonString(self):
+        r"""<p>接通后系统挂断原因</p><p><a href="https://cloud.tencent.com/document/product/679/123938">详见</a></p>
+        :rtype: str
+        """
+        return self._SysHangupReasonString
+
+    @SysHangupReasonString.setter
+    def SysHangupReasonString(self, SysHangupReasonString):
+        self._SysHangupReasonString = SysHangupReasonString
 
     @property
     def RequestId(self):
@@ -11671,6 +11699,8 @@ class DescribeSessionDetailResponse(AbstractModel):
                 obj = ServeParticipant()
                 obj._deserialize(item)
                 self._ServeParticipants.append(obj)
+        self._SysHangupReason = params.get("SysHangupReason")
+        self._SysHangupReasonString = params.get("SysHangupReasonString")
         self._RequestId = params.get("RequestId")
 
 

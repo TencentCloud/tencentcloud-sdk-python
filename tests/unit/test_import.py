@@ -284,6 +284,11 @@ def test_import_cdz_v20221123():
     from tencentcloud.cdz.v20221123 import models
 
 
+def test_import_cetcd_v20220325():
+    from tencentcloud.cetcd.v20220325 import cetcd_client
+    from tencentcloud.cetcd.v20220325 import models
+
+
 def test_import_cfg_v20210820():
     from tencentcloud.cfg.v20210820 import cfg_client
     from tencentcloud.cfg.v20210820 import models

@@ -449,27 +449,27 @@ class CaptchaStatisticObj(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ActionTotal: 请求总量
+        :param _ActionTotal: <p>请求总量</p>
         :type ActionTotal: int
-        :param _VerifyTotal: 验证总量
+        :param _VerifyTotal: <p>验证总量</p>
         :type VerifyTotal: int
-        :param _VerifyThroughTotal: 验证通过总量
+        :param _VerifyThroughTotal: <p>验证通过总量</p>
         :type VerifyThroughTotal: int
-        :param _VerifyInterceptTotal: 验证拦截总量
+        :param _VerifyInterceptTotal: <p>验证拦截总量</p>
         :type VerifyInterceptTotal: int
-        :param _TicketTotal: 票据校验总量
+        :param _TicketTotal: <p>票据校验总量</p>
         :type TicketTotal: int
-        :param _TicketThroughTotal: 票据通过总量
+        :param _TicketThroughTotal: <p>票据通过总量</p>
         :type TicketThroughTotal: int
-        :param _TicketInterceptTotal: 票据拦截总量
+        :param _TicketInterceptTotal: <p>票据拦截总量</p>
         :type TicketInterceptTotal: int
-        :param _RequestTrend: 请求趋势图
+        :param _RequestTrend: <p>请求趋势图</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RequestTrend: list of RequestTrendObj
-        :param _InterceptPerTrend: 拦截率趋势图
+        :param _InterceptPerTrend: <p>拦截率趋势图</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type InterceptPerTrend: list of InterceptPerTrendObj
-        :param _TicketCheckTrend: 票据校验趋势图
+        :param _TicketCheckTrend: <p>票据校验趋势图</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TicketCheckTrend: list of TicketCheckTrendObj
         """
@@ -486,7 +486,7 @@ class CaptchaStatisticObj(AbstractModel):
 
     @property
     def ActionTotal(self):
-        r"""请求总量
+        r"""<p>请求总量</p>
         :rtype: int
         """
         return self._ActionTotal
@@ -497,7 +497,7 @@ class CaptchaStatisticObj(AbstractModel):
 
     @property
     def VerifyTotal(self):
-        r"""验证总量
+        r"""<p>验证总量</p>
         :rtype: int
         """
         return self._VerifyTotal
@@ -508,7 +508,7 @@ class CaptchaStatisticObj(AbstractModel):
 
     @property
     def VerifyThroughTotal(self):
-        r"""验证通过总量
+        r"""<p>验证通过总量</p>
         :rtype: int
         """
         return self._VerifyThroughTotal
@@ -519,7 +519,7 @@ class CaptchaStatisticObj(AbstractModel):
 
     @property
     def VerifyInterceptTotal(self):
-        r"""验证拦截总量
+        r"""<p>验证拦截总量</p>
         :rtype: int
         """
         return self._VerifyInterceptTotal
@@ -530,7 +530,7 @@ class CaptchaStatisticObj(AbstractModel):
 
     @property
     def TicketTotal(self):
-        r"""票据校验总量
+        r"""<p>票据校验总量</p>
         :rtype: int
         """
         return self._TicketTotal
@@ -541,7 +541,7 @@ class CaptchaStatisticObj(AbstractModel):
 
     @property
     def TicketThroughTotal(self):
-        r"""票据通过总量
+        r"""<p>票据通过总量</p>
         :rtype: int
         """
         return self._TicketThroughTotal
@@ -552,7 +552,7 @@ class CaptchaStatisticObj(AbstractModel):
 
     @property
     def TicketInterceptTotal(self):
-        r"""票据拦截总量
+        r"""<p>票据拦截总量</p>
         :rtype: int
         """
         return self._TicketInterceptTotal
@@ -563,7 +563,7 @@ class CaptchaStatisticObj(AbstractModel):
 
     @property
     def RequestTrend(self):
-        r"""请求趋势图
+        r"""<p>请求趋势图</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of RequestTrendObj
         """
@@ -575,7 +575,7 @@ class CaptchaStatisticObj(AbstractModel):
 
     @property
     def InterceptPerTrend(self):
-        r"""拦截率趋势图
+        r"""<p>拦截率趋势图</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of InterceptPerTrendObj
         """
@@ -587,7 +587,7 @@ class CaptchaStatisticObj(AbstractModel):
 
     @property
     def TicketCheckTrend(self):
-        r"""票据校验趋势图
+        r"""<p>票据校验趋势图</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TicketCheckTrendObj
         """
@@ -3636,13 +3636,13 @@ class GetRequestStatisticsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CaptchaAppId: 验证码AppId
+        :param _CaptchaAppId: <p>验证码AppId</p>
         :type CaptchaAppId: str
-        :param _StartTimeStr: 开始时间字符串
+        :param _StartTimeStr: <p>开始时间字符串</p>
         :type StartTimeStr: str
-        :param _EndTimeStr: 结束时间字符串
+        :param _EndTimeStr: <p>结束时间字符串</p>
         :type EndTimeStr: str
-        :param _Dimension: 查询粒度
+        :param _Dimension: <p>查询粒度</p>
         :type Dimension: str
         """
         self._CaptchaAppId = None
@@ -3652,7 +3652,7 @@ class GetRequestStatisticsRequest(AbstractModel):
 
     @property
     def CaptchaAppId(self):
-        r"""验证码AppId
+        r"""<p>验证码AppId</p>
         :rtype: str
         """
         return self._CaptchaAppId
@@ -3663,7 +3663,7 @@ class GetRequestStatisticsRequest(AbstractModel):
 
     @property
     def StartTimeStr(self):
-        r"""开始时间字符串
+        r"""<p>开始时间字符串</p>
         :rtype: str
         """
         return self._StartTimeStr
@@ -3674,7 +3674,7 @@ class GetRequestStatisticsRequest(AbstractModel):
 
     @property
     def EndTimeStr(self):
-        r"""结束时间字符串
+        r"""<p>结束时间字符串</p>
         :rtype: str
         """
         return self._EndTimeStr
@@ -3685,7 +3685,7 @@ class GetRequestStatisticsRequest(AbstractModel):
 
     @property
     def Dimension(self):
-        r"""查询粒度
+        r"""<p>查询粒度</p>
         :rtype: str
         """
         return self._Dimension
@@ -3717,12 +3717,12 @@ class GetRequestStatisticsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 查询后数据块
+        :param _Data: <p>查询后数据块</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.captcha.v20190722.models.CaptchaStatisticObj`
-        :param _CaptchaCode: 验证码返回码
+        :param _CaptchaCode: <p>验证码返回码</p>
         :type CaptchaCode: int
-        :param _CaptchaMsg: 验证码返回信息
+        :param _CaptchaMsg: <p>验证码返回信息</p>
         :type CaptchaMsg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3734,7 +3734,7 @@ class GetRequestStatisticsResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""查询后数据块
+        r"""<p>查询后数据块</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.captcha.v20190722.models.CaptchaStatisticObj`
         """
@@ -3746,7 +3746,7 @@ class GetRequestStatisticsResponse(AbstractModel):
 
     @property
     def CaptchaCode(self):
-        r"""验证码返回码
+        r"""<p>验证码返回码</p>
         :rtype: int
         """
         return self._CaptchaCode
@@ -3757,7 +3757,7 @@ class GetRequestStatisticsResponse(AbstractModel):
 
     @property
     def CaptchaMsg(self):
-        r"""验证码返回信息
+        r"""<p>验证码返回信息</p>
         :rtype: str
         """
         return self._CaptchaMsg
@@ -3952,11 +3952,11 @@ class GetTotalRequestStatisticsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StartTimeStr: 开始时间字符串
+        :param _StartTimeStr: <p>开始时间字符串</p>
         :type StartTimeStr: str
-        :param _EndTimeStr: 结束时间字符串
+        :param _EndTimeStr: <p>结束时间字符串</p>
         :type EndTimeStr: str
-        :param _Dimension: 查询粒度
+        :param _Dimension: <p>查询粒度</p>
         :type Dimension: str
         """
         self._StartTimeStr = None
@@ -3965,7 +3965,7 @@ class GetTotalRequestStatisticsRequest(AbstractModel):
 
     @property
     def StartTimeStr(self):
-        r"""开始时间字符串
+        r"""<p>开始时间字符串</p>
         :rtype: str
         """
         return self._StartTimeStr
@@ -3976,7 +3976,7 @@ class GetTotalRequestStatisticsRequest(AbstractModel):
 
     @property
     def EndTimeStr(self):
-        r"""结束时间字符串
+        r"""<p>结束时间字符串</p>
         :rtype: str
         """
         return self._EndTimeStr
@@ -3987,7 +3987,7 @@ class GetTotalRequestStatisticsRequest(AbstractModel):
 
     @property
     def Dimension(self):
-        r"""查询粒度
+        r"""<p>查询粒度</p>
         :rtype: str
         """
         return self._Dimension
@@ -4018,12 +4018,12 @@ class GetTotalRequestStatisticsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 查询后数据块
+        :param _Data: <p>查询后数据块</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.captcha.v20190722.models.CaptchaStatisticObj`
-        :param _CaptchaCode: 验证码返回码
+        :param _CaptchaCode: <p>验证码返回码</p>
         :type CaptchaCode: int
-        :param _CaptchaMsg: 验证码返回信息
+        :param _CaptchaMsg: <p>验证码返回信息</p>
         :type CaptchaMsg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4035,7 +4035,7 @@ class GetTotalRequestStatisticsResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""查询后数据块
+        r"""<p>查询后数据块</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.captcha.v20190722.models.CaptchaStatisticObj`
         """
@@ -4047,7 +4047,7 @@ class GetTotalRequestStatisticsResponse(AbstractModel):
 
     @property
     def CaptchaCode(self):
-        r"""验证码返回码
+        r"""<p>验证码返回码</p>
         :rtype: int
         """
         return self._CaptchaCode
@@ -4058,7 +4058,7 @@ class GetTotalRequestStatisticsResponse(AbstractModel):
 
     @property
     def CaptchaMsg(self):
-        r"""验证码返回信息
+        r"""<p>验证码返回信息</p>
         :rtype: str
         """
         return self._CaptchaMsg
@@ -4095,14 +4095,11 @@ class GetTotalTicketStatisticsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StartTimeStr: 开始时间
+        :param _StartTimeStr: <p>开始时间</p>
         :type StartTimeStr: str
-        :param _EndTimeStr: 结束时间
+        :param _EndTimeStr: <p>结束时间</p>
         :type EndTimeStr: str
-        :param _Dimension: 查询粒度
-分钟：“1”
-小时：“2”
-天：“3”
+        :param _Dimension: <p>查询粒度<br>分钟：“1”<br>小时：“2”<br>天：“3”</p>
         :type Dimension: str
         """
         self._StartTimeStr = None
@@ -4111,7 +4108,7 @@ class GetTotalTicketStatisticsRequest(AbstractModel):
 
     @property
     def StartTimeStr(self):
-        r"""开始时间
+        r"""<p>开始时间</p>
         :rtype: str
         """
         return self._StartTimeStr
@@ -4122,7 +4119,7 @@ class GetTotalTicketStatisticsRequest(AbstractModel):
 
     @property
     def EndTimeStr(self):
-        r"""结束时间
+        r"""<p>结束时间</p>
         :rtype: str
         """
         return self._EndTimeStr
@@ -4133,10 +4130,7 @@ class GetTotalTicketStatisticsRequest(AbstractModel):
 
     @property
     def Dimension(self):
-        r"""查询粒度
-分钟：“1”
-小时：“2”
-天：“3”
+        r"""<p>查询粒度<br>分钟：“1”<br>小时：“2”<br>天：“3”</p>
         :rtype: str
         """
         return self._Dimension
@@ -4167,12 +4161,12 @@ class GetTotalTicketStatisticsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 返回数据
+        :param _Data: <p>返回数据</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.captcha.v20190722.models.CaptchaStatisticObj`
-        :param _CaptchaCode: 返回码
+        :param _CaptchaCode: <p>返回码</p>
         :type CaptchaCode: int
-        :param _CaptchaMsg: 返回信息
+        :param _CaptchaMsg: <p>返回信息</p>
         :type CaptchaMsg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4184,7 +4178,7 @@ class GetTotalTicketStatisticsResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""返回数据
+        r"""<p>返回数据</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.captcha.v20190722.models.CaptchaStatisticObj`
         """
@@ -4196,7 +4190,7 @@ class GetTotalTicketStatisticsResponse(AbstractModel):
 
     @property
     def CaptchaCode(self):
-        r"""返回码
+        r"""<p>返回码</p>
         :rtype: int
         """
         return self._CaptchaCode
@@ -4207,7 +4201,7 @@ class GetTotalTicketStatisticsResponse(AbstractModel):
 
     @property
     def CaptchaMsg(self):
-        r"""返回信息
+        r"""<p>返回信息</p>
         :rtype: str
         """
         return self._CaptchaMsg

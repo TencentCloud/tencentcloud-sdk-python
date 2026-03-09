@@ -9423,7 +9423,7 @@ class ScaleUpFileSystemRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FileSystemId: 文件系统Id,该参数通过查询文件系统列表接口获取
+        :param _FileSystemId: 文件系统ID，通过查询文件系统列表获取；[DescribeCfsFileSystems](https://cloud.tencent.com/document/product/582/38170)
         :type FileSystemId: str
         :param _TargetCapacity: 扩容的目标容量（单位GiB）
         :type TargetCapacity: int
@@ -9433,7 +9433,7 @@ class ScaleUpFileSystemRequest(AbstractModel):
 
     @property
     def FileSystemId(self):
-        r"""文件系统Id,该参数通过查询文件系统列表接口获取
+        r"""文件系统ID，通过查询文件系统列表获取；[DescribeCfsFileSystems](https://cloud.tencent.com/document/product/582/38170)
         :rtype: str
         """
         return self._FileSystemId
@@ -9735,36 +9735,36 @@ class SnapshotInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CreationTime: 创建快照时间
+        :param _CreationTime: <p>创建快照时间</p>
         :type CreationTime: str
-        :param _SnapshotName: 快照名称
+        :param _SnapshotName: <p>快照名称</p>
         :type SnapshotName: str
-        :param _SnapshotId: 快照ID
+        :param _SnapshotId: <p>快照ID</p>
         :type SnapshotId: str
-        :param _Status: 快照状态，creating-创建中；available-运行中；deleting-删除中；rollbacking-new 创建新文件系统中；create-failed 创建失败
+        :param _Status: <p>快照状态，creating-创建中；available-运行中；deleting-删除中；rollbacking-new 创建新文件系统中；create-failed 创建失败</p>
         :type Status: str
-        :param _RegionName: 地域名称
+        :param _RegionName: <p>地域名称</p>
         :type RegionName: str
-        :param _FileSystemId: 文件系统ID
+        :param _FileSystemId: <p>文件系统ID</p>
         :type FileSystemId: str
-        :param _Size: 快照大小
+        :param _Size: <p>快照大小</p><p>单位：MiB</p>
         :type Size: int
-        :param _AliveDay: 保留时长天
+        :param _AliveDay: <p>保留时长天</p>
         :type AliveDay: int
-        :param _Percent: 快照进度百分比，1表示1% 范围1-100
+        :param _Percent: <p>快照进度百分比，1表示1% 范围1-100</p>
         :type Percent: int
-        :param _AppId: 账号ID
+        :param _AppId: <p>账号ID</p>
         :type AppId: int
-        :param _DeleteTime: 快照删除时间
+        :param _DeleteTime: <p>快照删除时间</p>
         :type DeleteTime: str
-        :param _FsName: 文件系统名称
+        :param _FsName: <p>文件系统名称</p>
         :type FsName: str
-        :param _Tags: 快照标签
+        :param _Tags: <p>快照标签</p>
         :type Tags: list of TagInfo
-        :param _SnapshotType: 快照类型，general为通用系列快照，turbo为Turbo系列快照
+        :param _SnapshotType: <p>快照类型，general为通用系列快照，turbo为Turbo系列快照</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SnapshotType: str
-        :param _SnapshotTime: 实际快照时间，反映快照对应文件系统某个时刻的数据。
+        :param _SnapshotTime: <p>实际快照时间，反映快照对应文件系统某个时刻的数据。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SnapshotTime: str
         """
@@ -9786,7 +9786,7 @@ class SnapshotInfo(AbstractModel):
 
     @property
     def CreationTime(self):
-        r"""创建快照时间
+        r"""<p>创建快照时间</p>
         :rtype: str
         """
         return self._CreationTime
@@ -9797,7 +9797,7 @@ class SnapshotInfo(AbstractModel):
 
     @property
     def SnapshotName(self):
-        r"""快照名称
+        r"""<p>快照名称</p>
         :rtype: str
         """
         return self._SnapshotName
@@ -9808,7 +9808,7 @@ class SnapshotInfo(AbstractModel):
 
     @property
     def SnapshotId(self):
-        r"""快照ID
+        r"""<p>快照ID</p>
         :rtype: str
         """
         return self._SnapshotId
@@ -9819,7 +9819,7 @@ class SnapshotInfo(AbstractModel):
 
     @property
     def Status(self):
-        r"""快照状态，creating-创建中；available-运行中；deleting-删除中；rollbacking-new 创建新文件系统中；create-failed 创建失败
+        r"""<p>快照状态，creating-创建中；available-运行中；deleting-删除中；rollbacking-new 创建新文件系统中；create-failed 创建失败</p>
         :rtype: str
         """
         return self._Status
@@ -9830,7 +9830,7 @@ class SnapshotInfo(AbstractModel):
 
     @property
     def RegionName(self):
-        r"""地域名称
+        r"""<p>地域名称</p>
         :rtype: str
         """
         return self._RegionName
@@ -9841,7 +9841,7 @@ class SnapshotInfo(AbstractModel):
 
     @property
     def FileSystemId(self):
-        r"""文件系统ID
+        r"""<p>文件系统ID</p>
         :rtype: str
         """
         return self._FileSystemId
@@ -9852,7 +9852,7 @@ class SnapshotInfo(AbstractModel):
 
     @property
     def Size(self):
-        r"""快照大小
+        r"""<p>快照大小</p><p>单位：MiB</p>
         :rtype: int
         """
         return self._Size
@@ -9863,7 +9863,7 @@ class SnapshotInfo(AbstractModel):
 
     @property
     def AliveDay(self):
-        r"""保留时长天
+        r"""<p>保留时长天</p>
         :rtype: int
         """
         return self._AliveDay
@@ -9874,7 +9874,7 @@ class SnapshotInfo(AbstractModel):
 
     @property
     def Percent(self):
-        r"""快照进度百分比，1表示1% 范围1-100
+        r"""<p>快照进度百分比，1表示1% 范围1-100</p>
         :rtype: int
         """
         return self._Percent
@@ -9885,7 +9885,7 @@ class SnapshotInfo(AbstractModel):
 
     @property
     def AppId(self):
-        r"""账号ID
+        r"""<p>账号ID</p>
         :rtype: int
         """
         return self._AppId
@@ -9896,7 +9896,7 @@ class SnapshotInfo(AbstractModel):
 
     @property
     def DeleteTime(self):
-        r"""快照删除时间
+        r"""<p>快照删除时间</p>
         :rtype: str
         """
         return self._DeleteTime
@@ -9907,7 +9907,7 @@ class SnapshotInfo(AbstractModel):
 
     @property
     def FsName(self):
-        r"""文件系统名称
+        r"""<p>文件系统名称</p>
         :rtype: str
         """
         return self._FsName
@@ -9918,7 +9918,7 @@ class SnapshotInfo(AbstractModel):
 
     @property
     def Tags(self):
-        r"""快照标签
+        r"""<p>快照标签</p>
         :rtype: list of TagInfo
         """
         return self._Tags
@@ -9929,7 +9929,7 @@ class SnapshotInfo(AbstractModel):
 
     @property
     def SnapshotType(self):
-        r"""快照类型，general为通用系列快照，turbo为Turbo系列快照
+        r"""<p>快照类型，general为通用系列快照，turbo为Turbo系列快照</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9941,7 +9941,7 @@ class SnapshotInfo(AbstractModel):
 
     @property
     def SnapshotTime(self):
-        r"""实际快照时间，反映快照对应文件系统某个时刻的数据。
+        r"""<p>实际快照时间，反映快照对应文件系统某个时刻的数据。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -10377,9 +10377,9 @@ class TieringDetailInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TieringSizeInBytes: 低频存储容量
+        :param _TieringSizeInBytes: <p>低频存储容量</p><p>单位：Byte, B, 字节</p>
         :type TieringSizeInBytes: int
-        :param _SecondaryTieringSizeInBytes: 冷存储容量
+        :param _SecondaryTieringSizeInBytes: <p>冷存储容量</p><p>单位：Byte, B, 字节</p>
         :type SecondaryTieringSizeInBytes: int
         """
         self._TieringSizeInBytes = None
@@ -10387,7 +10387,7 @@ class TieringDetailInfo(AbstractModel):
 
     @property
     def TieringSizeInBytes(self):
-        r"""低频存储容量
+        r"""<p>低频存储容量</p><p>单位：Byte, B, 字节</p>
         :rtype: int
         """
         return self._TieringSizeInBytes
@@ -10398,7 +10398,7 @@ class TieringDetailInfo(AbstractModel):
 
     @property
     def SecondaryTieringSizeInBytes(self):
-        r"""冷存储容量
+        r"""<p>冷存储容量</p><p>单位：Byte, B, 字节</p>
         :rtype: int
         """
         return self._SecondaryTieringSizeInBytes

@@ -394,6 +394,29 @@ class TseClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateGovernanceLaneGroups(self, request):
+        r"""创建泳道组
+
+        :param request: Request instance for CreateGovernanceLaneGroups.
+        :type request: :class:`tencentcloud.tse.v20201207.models.CreateGovernanceLaneGroupsRequest`
+        :rtype: :class:`tencentcloud.tse.v20201207.models.CreateGovernanceLaneGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateGovernanceLaneGroups", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateGovernanceLaneGroupsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateGovernanceNamespaces(self, request):
         r"""创建治理中心命名空间
 
@@ -937,6 +960,29 @@ class TseClient(AbstractClient):
             body = self.call("DeleteGovernanceInstancesByHost", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteGovernanceInstancesByHostResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteGovernanceLaneGroups(self, request):
+        r"""删除泳道组
+
+        :param request: Request instance for DeleteGovernanceLaneGroups.
+        :type request: :class:`tencentcloud.tse.v20201207.models.DeleteGovernanceLaneGroupsRequest`
+        :rtype: :class:`tencentcloud.tse.v20201207.models.DeleteGovernanceLaneGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteGovernanceLaneGroups", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteGovernanceLaneGroupsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1728,6 +1774,29 @@ class TseClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeGovernanceLaneGroups(self, request):
+        r"""查询泳道组列表
+
+        :param request: Request instance for DescribeGovernanceLaneGroups.
+        :type request: :class:`tencentcloud.tse.v20201207.models.DescribeGovernanceLaneGroupsRequest`
+        :rtype: :class:`tencentcloud.tse.v20201207.models.DescribeGovernanceLaneGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeGovernanceLaneGroups", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeGovernanceLaneGroupsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeGovernanceNamespaces(self, request):
         r"""查询服务治理中心命名空间列表
 
@@ -2455,6 +2524,29 @@ class TseClient(AbstractClient):
             body = self.call("ModifyGovernanceInstances", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyGovernanceInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyGovernanceLaneGroups(self, request):
+        r"""创建泳道组
+
+        :param request: Request instance for ModifyGovernanceLaneGroups.
+        :type request: :class:`tencentcloud.tse.v20201207.models.ModifyGovernanceLaneGroupsRequest`
+        :rtype: :class:`tencentcloud.tse.v20201207.models.ModifyGovernanceLaneGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyGovernanceLaneGroups", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyGovernanceLaneGroupsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

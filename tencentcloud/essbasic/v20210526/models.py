@@ -23800,31 +23800,31 @@ class FlowFileInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FileIds: 签署文件资源Id列表，目前仅支持单个文件
+        :param _FileIds: <p>签署文件资源Id列表，目前仅支持单个文件</p>
         :type FileIds: list of str
-        :param _FlowName: 签署流程名称，长度不超过200个字符
+        :param _FlowName: <p>签署流程名称，长度不超过200个字符</p>
         :type FlowName: str
-        :param _FlowApprovers: 签署流程签约方列表，最多不超过5个参与方
+        :param _FlowApprovers: <p>签署流程签约方列表，最多不超过5个参与方</p>
         :type FlowApprovers: list of FlowApproverInfo
-        :param _Deadline: 签署流程截止时间，十位数时间戳，最大值为33162419560，即3020年
+        :param _Deadline: <p>签署流程截止时间，十位数时间戳，最大值为33162419560，即3020年</p>
         :type Deadline: int
-        :param _FlowDescription: 签署流程的描述，长度不超过1000个字符
+        :param _FlowDescription: <p>签署流程的描述，长度不超过1000个字符</p>
         :type FlowDescription: str
-        :param _FlowType: 签署流程的类型，长度不超过255个字符
+        :param _FlowType: <p>签署流程的类型，长度不超过255个字符</p><p>枚举值：</p><ul><li>入职合同： 入职合同</li><li>劳动合同： 劳动合同</li></ul>
         :type FlowType: str
-        :param _CallbackUrl: 已废弃，请使用【应用号配置】中的回调地址统一接收消息
+        :param _CallbackUrl: <p>已废弃，请使用【应用号配置】中的回调地址统一接收消息</p>
         :type CallbackUrl: str
-        :param _CustomerData: 第三方应用的业务信息，最大长度1000个字符。
+        :param _CustomerData: <p>第三方应用的业务信息，最大长度1000个字符。</p>
         :type CustomerData: str
-        :param _Unordered: 合同签署顺序类型(无序签,顺序签)，默认为false，即有序签署
+        :param _Unordered: <p>合同签署顺序类型(无序签,顺序签)，默认为false，即有序签署</p>
         :type Unordered: bool
-        :param _Components: 签署文件中的发起方的填写控件，需要在发起的时候进行填充
+        :param _Components: <p>签署文件中的发起方的填写控件，需要在发起的时候进行填充</p>
         :type Components: list of Component
-        :param _CustomShowMap: 合同显示的页卡模板，说明：只支持{合同名称}, {发起方企业}, {发起方姓名}, {签署方N企业}, {签署方N姓名}，且N不能超过签署人的数量，N从1开始
+        :param _CustomShowMap: <p>合同显示的页卡模板，说明：只支持{合同名称}, {发起方企业}, {发起方姓名}, {签署方N企业}, {签署方N姓名}，且N不能超过签署人的数量，N从1开始</p>
         :type CustomShowMap: str
-        :param _NeedSignReview: 本企业(发起方企业)是否需要签署审批
+        :param _NeedSignReview: <p>本企业(发起方企业)是否需要签署审批</p>
         :type NeedSignReview: bool
-        :param _FlowDisplayType: 在短信通知、填写、签署流程中，若标题、按钮、合同详情等地方存在“合同”字样时，可根据此配置指定文案，可选文案如下：  <ul><li> <b>0</b> :合同（默认值）</li> <li> <b>1</b> :文件</li> <li> <b>2</b> :协议</li><li> <b>3</b> :文书</li></ul>效果如下:![FlowDisplayType](https://qcloudimg.tencent-cloud.cn/raw/e4a2c4d638717cc901d3dbd5137c9bbc.png)
+        :param _FlowDisplayType: <p>在短信通知、填写、签署流程中，若标题、按钮、合同详情等地方存在“合同”字样时，可根据此配置指定文案，可选文案如下：  <ul><li> <b>0</b> :合同（默认值）</li> <li> <b>1</b> :文件</li> <li> <b>2</b> :协议</li><li> <b>3</b> :文书</li></ul>效果如下:<img src="https://qcloudimg.tencent-cloud.cn/raw/e4a2c4d638717cc901d3dbd5137c9bbc.png" alt="FlowDisplayType"></p>
         :type FlowDisplayType: int
         """
         self._FileIds = None
@@ -23843,7 +23843,7 @@ class FlowFileInfo(AbstractModel):
 
     @property
     def FileIds(self):
-        r"""签署文件资源Id列表，目前仅支持单个文件
+        r"""<p>签署文件资源Id列表，目前仅支持单个文件</p>
         :rtype: list of str
         """
         return self._FileIds
@@ -23854,7 +23854,7 @@ class FlowFileInfo(AbstractModel):
 
     @property
     def FlowName(self):
-        r"""签署流程名称，长度不超过200个字符
+        r"""<p>签署流程名称，长度不超过200个字符</p>
         :rtype: str
         """
         return self._FlowName
@@ -23865,7 +23865,7 @@ class FlowFileInfo(AbstractModel):
 
     @property
     def FlowApprovers(self):
-        r"""签署流程签约方列表，最多不超过5个参与方
+        r"""<p>签署流程签约方列表，最多不超过5个参与方</p>
         :rtype: list of FlowApproverInfo
         """
         return self._FlowApprovers
@@ -23876,7 +23876,7 @@ class FlowFileInfo(AbstractModel):
 
     @property
     def Deadline(self):
-        r"""签署流程截止时间，十位数时间戳，最大值为33162419560，即3020年
+        r"""<p>签署流程截止时间，十位数时间戳，最大值为33162419560，即3020年</p>
         :rtype: int
         """
         return self._Deadline
@@ -23887,7 +23887,7 @@ class FlowFileInfo(AbstractModel):
 
     @property
     def FlowDescription(self):
-        r"""签署流程的描述，长度不超过1000个字符
+        r"""<p>签署流程的描述，长度不超过1000个字符</p>
         :rtype: str
         """
         return self._FlowDescription
@@ -23898,7 +23898,7 @@ class FlowFileInfo(AbstractModel):
 
     @property
     def FlowType(self):
-        r"""签署流程的类型，长度不超过255个字符
+        r"""<p>签署流程的类型，长度不超过255个字符</p><p>枚举值：</p><ul><li>入职合同： 入职合同</li><li>劳动合同： 劳动合同</li></ul>
         :rtype: str
         """
         return self._FlowType
@@ -23911,7 +23911,7 @@ class FlowFileInfo(AbstractModel):
     def CallbackUrl(self):
         warnings.warn("parameter `CallbackUrl` is deprecated", DeprecationWarning) 
 
-        r"""已废弃，请使用【应用号配置】中的回调地址统一接收消息
+        r"""<p>已废弃，请使用【应用号配置】中的回调地址统一接收消息</p>
         :rtype: str
         """
         return self._CallbackUrl
@@ -23924,7 +23924,7 @@ class FlowFileInfo(AbstractModel):
 
     @property
     def CustomerData(self):
-        r"""第三方应用的业务信息，最大长度1000个字符。
+        r"""<p>第三方应用的业务信息，最大长度1000个字符。</p>
         :rtype: str
         """
         return self._CustomerData
@@ -23935,7 +23935,7 @@ class FlowFileInfo(AbstractModel):
 
     @property
     def Unordered(self):
-        r"""合同签署顺序类型(无序签,顺序签)，默认为false，即有序签署
+        r"""<p>合同签署顺序类型(无序签,顺序签)，默认为false，即有序签署</p>
         :rtype: bool
         """
         return self._Unordered
@@ -23946,7 +23946,7 @@ class FlowFileInfo(AbstractModel):
 
     @property
     def Components(self):
-        r"""签署文件中的发起方的填写控件，需要在发起的时候进行填充
+        r"""<p>签署文件中的发起方的填写控件，需要在发起的时候进行填充</p>
         :rtype: list of Component
         """
         return self._Components
@@ -23957,7 +23957,7 @@ class FlowFileInfo(AbstractModel):
 
     @property
     def CustomShowMap(self):
-        r"""合同显示的页卡模板，说明：只支持{合同名称}, {发起方企业}, {发起方姓名}, {签署方N企业}, {签署方N姓名}，且N不能超过签署人的数量，N从1开始
+        r"""<p>合同显示的页卡模板，说明：只支持{合同名称}, {发起方企业}, {发起方姓名}, {签署方N企业}, {签署方N姓名}，且N不能超过签署人的数量，N从1开始</p>
         :rtype: str
         """
         return self._CustomShowMap
@@ -23968,7 +23968,7 @@ class FlowFileInfo(AbstractModel):
 
     @property
     def NeedSignReview(self):
-        r"""本企业(发起方企业)是否需要签署审批
+        r"""<p>本企业(发起方企业)是否需要签署审批</p>
         :rtype: bool
         """
         return self._NeedSignReview
@@ -23979,7 +23979,7 @@ class FlowFileInfo(AbstractModel):
 
     @property
     def FlowDisplayType(self):
-        r"""在短信通知、填写、签署流程中，若标题、按钮、合同详情等地方存在“合同”字样时，可根据此配置指定文案，可选文案如下：  <ul><li> <b>0</b> :合同（默认值）</li> <li> <b>1</b> :文件</li> <li> <b>2</b> :协议</li><li> <b>3</b> :文书</li></ul>效果如下:![FlowDisplayType](https://qcloudimg.tencent-cloud.cn/raw/e4a2c4d638717cc901d3dbd5137c9bbc.png)
+        r"""<p>在短信通知、填写、签署流程中，若标题、按钮、合同详情等地方存在“合同”字样时，可根据此配置指定文案，可选文案如下：  <ul><li> <b>0</b> :合同（默认值）</li> <li> <b>1</b> :文件</li> <li> <b>2</b> :协议</li><li> <b>3</b> :文书</li></ul>效果如下:<img src="https://qcloudimg.tencent-cloud.cn/raw/e4a2c4d638717cc901d3dbd5137c9bbc.png" alt="FlowDisplayType"></p>
         :rtype: int
         """
         return self._FlowDisplayType
@@ -27763,39 +27763,31 @@ class OrganizationCommonInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _OrganizationName: 组织机构名称。
-请确认该名称与企业营业执照中注册的名称一致。
-如果名称中包含英文括号()，请使用中文括号（）代替。
+        :param _OrganizationName: <p>组织机构名称。<br>请确认该名称与企业营业执照中注册的名称一致。<br>如果名称中包含英文括号()，请使用中文括号（）代替。</p>
         :type OrganizationName: str
-        :param _UniformSocialCreditCode: 组织机构企业统一社会信用代码。
-请确认该企业统一社会信用代码与企业营业执照中注册的统一社会信用代码一致。
+        :param _UniformSocialCreditCode: <p>组织机构企业统一社会信用代码。<br>请确认该企业统一社会信用代码与企业营业执照中注册的统一社会信用代码一致。</p>
         :type UniformSocialCreditCode: str
-        :param _LegalName: 组织机构法人的姓名。
-请确认该企业统一社会信用代码与企业营业执照中注册的法人姓名一致。
+        :param _LegalName: <p>组织机构法人的姓名。<br>请确认该企业统一社会信用代码与企业营业执照中注册的法人姓名一致。</p>
         :type LegalName: str
-        :param _LegalIdCardType: 组织机构法人的证件类型
+        :param _LegalIdCardType: <p>组织机构法人的证件类型</p><p>枚举值：</p><ul><li>居民身份证： 中国大陆居民身份证</li></ul>
         :type LegalIdCardType: str
-        :param _LegalIdCardNumber: 组织机构法人的证件号码
+        :param _LegalIdCardNumber: <p>组织机构法人的证件号码</p>
         :type LegalIdCardNumber: str
-        :param _AdminName: 组织机构超管姓名。
-
+        :param _AdminName: <p>组织机构超管姓名。</p>
         :type AdminName: str
-        :param _AdminMobile: 组织机构超管手机号。
-
+        :param _AdminMobile: <p>组织机构超管手机号。</p>
         :type AdminMobile: str
-        :param _AdminIdCardType: 组织机构超管证件类型
-
+        :param _AdminIdCardType: <p>组织机构超管证件类型</p><p>枚举值：</p><ul><li>居民身份证： 中国大陆居民身份证</li></ul>
         :type AdminIdCardType: str
-        :param _AdminIdCardNumber: 组织机构超管证件号码
-
+        :param _AdminIdCardNumber: <p>组织机构超管证件号码</p>
         :type AdminIdCardNumber: str
-        :param _OldAdminName: 原超管姓名
+        :param _OldAdminName: <p>原超管姓名</p>
         :type OldAdminName: str
-        :param _OldAdminMobile: 原超管手机号
+        :param _OldAdminMobile: <p>原超管手机号</p>
         :type OldAdminMobile: str
-        :param _OldAdminIdCardType: 原超管证件类型
+        :param _OldAdminIdCardType: <p>原超管证件类型</p><p>枚举值：</p><ul><li>居民身份证： 中国大陆居民身份证</li></ul>
         :type OldAdminIdCardType: str
-        :param _OldAdminIdCardNumber: 原超管证件号码
+        :param _OldAdminIdCardNumber: <p>原超管证件号码</p>
         :type OldAdminIdCardNumber: str
         """
         self._OrganizationName = None
@@ -27814,9 +27806,7 @@ class OrganizationCommonInfo(AbstractModel):
 
     @property
     def OrganizationName(self):
-        r"""组织机构名称。
-请确认该名称与企业营业执照中注册的名称一致。
-如果名称中包含英文括号()，请使用中文括号（）代替。
+        r"""<p>组织机构名称。<br>请确认该名称与企业营业执照中注册的名称一致。<br>如果名称中包含英文括号()，请使用中文括号（）代替。</p>
         :rtype: str
         """
         return self._OrganizationName
@@ -27827,8 +27817,7 @@ class OrganizationCommonInfo(AbstractModel):
 
     @property
     def UniformSocialCreditCode(self):
-        r"""组织机构企业统一社会信用代码。
-请确认该企业统一社会信用代码与企业营业执照中注册的统一社会信用代码一致。
+        r"""<p>组织机构企业统一社会信用代码。<br>请确认该企业统一社会信用代码与企业营业执照中注册的统一社会信用代码一致。</p>
         :rtype: str
         """
         return self._UniformSocialCreditCode
@@ -27839,8 +27828,7 @@ class OrganizationCommonInfo(AbstractModel):
 
     @property
     def LegalName(self):
-        r"""组织机构法人的姓名。
-请确认该企业统一社会信用代码与企业营业执照中注册的法人姓名一致。
+        r"""<p>组织机构法人的姓名。<br>请确认该企业统一社会信用代码与企业营业执照中注册的法人姓名一致。</p>
         :rtype: str
         """
         return self._LegalName
@@ -27851,7 +27839,7 @@ class OrganizationCommonInfo(AbstractModel):
 
     @property
     def LegalIdCardType(self):
-        r"""组织机构法人的证件类型
+        r"""<p>组织机构法人的证件类型</p><p>枚举值：</p><ul><li>居民身份证： 中国大陆居民身份证</li></ul>
         :rtype: str
         """
         return self._LegalIdCardType
@@ -27862,7 +27850,7 @@ class OrganizationCommonInfo(AbstractModel):
 
     @property
     def LegalIdCardNumber(self):
-        r"""组织机构法人的证件号码
+        r"""<p>组织机构法人的证件号码</p>
         :rtype: str
         """
         return self._LegalIdCardNumber
@@ -27873,8 +27861,7 @@ class OrganizationCommonInfo(AbstractModel):
 
     @property
     def AdminName(self):
-        r"""组织机构超管姓名。
-
+        r"""<p>组织机构超管姓名。</p>
         :rtype: str
         """
         return self._AdminName
@@ -27885,8 +27872,7 @@ class OrganizationCommonInfo(AbstractModel):
 
     @property
     def AdminMobile(self):
-        r"""组织机构超管手机号。
-
+        r"""<p>组织机构超管手机号。</p>
         :rtype: str
         """
         return self._AdminMobile
@@ -27897,8 +27883,7 @@ class OrganizationCommonInfo(AbstractModel):
 
     @property
     def AdminIdCardType(self):
-        r"""组织机构超管证件类型
-
+        r"""<p>组织机构超管证件类型</p><p>枚举值：</p><ul><li>居民身份证： 中国大陆居民身份证</li></ul>
         :rtype: str
         """
         return self._AdminIdCardType
@@ -27909,8 +27894,7 @@ class OrganizationCommonInfo(AbstractModel):
 
     @property
     def AdminIdCardNumber(self):
-        r"""组织机构超管证件号码
-
+        r"""<p>组织机构超管证件号码</p>
         :rtype: str
         """
         return self._AdminIdCardNumber
@@ -27921,7 +27905,7 @@ class OrganizationCommonInfo(AbstractModel):
 
     @property
     def OldAdminName(self):
-        r"""原超管姓名
+        r"""<p>原超管姓名</p>
         :rtype: str
         """
         return self._OldAdminName
@@ -27932,7 +27916,7 @@ class OrganizationCommonInfo(AbstractModel):
 
     @property
     def OldAdminMobile(self):
-        r"""原超管手机号
+        r"""<p>原超管手机号</p>
         :rtype: str
         """
         return self._OldAdminMobile
@@ -27943,7 +27927,7 @@ class OrganizationCommonInfo(AbstractModel):
 
     @property
     def OldAdminIdCardType(self):
-        r"""原超管证件类型
+        r"""<p>原超管证件类型</p><p>枚举值：</p><ul><li>居民身份证： 中国大陆居民身份证</li></ul>
         :rtype: str
         """
         return self._OldAdminIdCardType
@@ -27954,7 +27938,7 @@ class OrganizationCommonInfo(AbstractModel):
 
     @property
     def OldAdminIdCardNumber(self):
-        r"""原超管证件号码
+        r"""<p>原超管证件号码</p>
         :rtype: str
         """
         return self._OldAdminIdCardNumber
@@ -28990,49 +28974,29 @@ class Recipient(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RecipientId: 合同参与方的角色ID
+        :param _RecipientId: <p>合同参与方的角色ID</p>
         :type RecipientId: str
-        :param _RecipientType: 参与者类型, 可以选择的类型如下:
-<ul><li> **ENTERPRISE** :此角色为企业参与方</li>
-<li> **INDIVIDUAL** :此角色为个人参与方</li>
-<li> **PROMOTER** :此角色是发起方</li></ul>
+        :param _RecipientType: <p>参与者类型, 可以选择的类型如下:</p><ul><li> **ENTERPRISE** :此角色为企业参与方</li><li> **INDIVIDUAL** :此角色为个人参与方</li><li> **PROMOTER** :此角色是发起方</li></ul>
         :type RecipientType: str
-        :param _Description: 合同参与方的角色描述，长度不能超过100，只能由中文、字母、数字和下划线组成。
+        :param _Description: <p>合同参与方的角色描述，长度不能超过100，只能由中文、字母、数字和下划线组成。</p>
         :type Description: str
-        :param _RoleName: 合同参与方的角色名字，长度不能超过20，只能由中文、字母、数字和下划线组成。
+        :param _RoleName: <p>合同参与方的角色名字，长度不能超过20，只能由中文、字母、数字和下划线组成。</p>
         :type RoleName: str
-        :param _RequireValidation: 是否需要校验，
-true-是，
-false-否
+        :param _RequireValidation: <p>是否需要校验，<br>true-是，<br>false-否</p>
         :type RequireValidation: bool
-        :param _RequireSign: 是否必须填写，
-true-是，
-false-否
+        :param _RequireSign: <p>是否必须填写，<br>true-是，<br>false-否</p>
         :type RequireSign: bool
-        :param _SignType: 内部字段，签署类型
+        :param _SignType: <p>内部字段，签署类型</p><p>枚举值：</p><ul><li>0： 人脸</li></ul>
         :type SignType: int
-        :param _RoutingOrder: 签署顺序：数字越小优先级越高
+        :param _RoutingOrder: <p>签署顺序：数字越小优先级越高</p>
         :type RoutingOrder: int
-        :param _IsPromoter: 是否是发起方，
-true-是 
-false-否
+        :param _IsPromoter: <p>是否是发起方，<br>true-是<br>false-否</p>
         :type IsPromoter: bool
-        :param _ApproverVerifyTypes: 签署人查看合同校验方式, 支持的类型如下:
-<ul><li> 1 :实名认证查看</li>
-<li> 2 :手机号校验查看</li></ul>
+        :param _ApproverVerifyTypes: <p>签署人查看合同校验方式, 支持的类型如下:</p><ul><li> 1 :实名认证查看</li><li> 2 :手机号校验查看</li></ul>
         :type ApproverVerifyTypes: list of int
-        :param _ApproverSignTypes: 签署人进行合同签署时的认证方式，支持的类型如下:
-<ul><li> 1 :人脸认证</li>
-<li> 2 :签署密码</li>
-<li> 3 :运营商三要素认证</li>
-<li> 4 :UKey认证</li>
-<li> 5 :设备指纹识别</li>
-<li> 6 :设备面容识别</li></ul>
+        :param _ApproverSignTypes: <p>签署人进行合同签署时的认证方式，支持的类型如下:</p><ul><li> 1 :人脸认证</li><li> 2 :签署密码</li><li> 3 :运营商三要素认证</li><li> 4 :UKey认证</li><li> 5 :设备指纹识别</li><li> 6 :设备面容识别</li></ul>
         :type ApproverSignTypes: list of int
-        :param _NoTransfer: 签署方是否可以转他人处理
-
-<ul><li> **false** : ( 默认)可以转他人处理</li>
-<li> **true** :不可以转他人处理</li></ul>
+        :param _NoTransfer: <p>签署方是否可以转他人处理</p><ul><li> **false** : ( 默认)可以转他人处理</li><li> **true** :不可以转他人处理</li></ul>
         :type NoTransfer: bool
         """
         self._RecipientId = None
@@ -29050,7 +29014,7 @@ false-否
 
     @property
     def RecipientId(self):
-        r"""合同参与方的角色ID
+        r"""<p>合同参与方的角色ID</p>
         :rtype: str
         """
         return self._RecipientId
@@ -29061,10 +29025,7 @@ false-否
 
     @property
     def RecipientType(self):
-        r"""参与者类型, 可以选择的类型如下:
-<ul><li> **ENTERPRISE** :此角色为企业参与方</li>
-<li> **INDIVIDUAL** :此角色为个人参与方</li>
-<li> **PROMOTER** :此角色是发起方</li></ul>
+        r"""<p>参与者类型, 可以选择的类型如下:</p><ul><li> **ENTERPRISE** :此角色为企业参与方</li><li> **INDIVIDUAL** :此角色为个人参与方</li><li> **PROMOTER** :此角色是发起方</li></ul>
         :rtype: str
         """
         return self._RecipientType
@@ -29075,7 +29036,7 @@ false-否
 
     @property
     def Description(self):
-        r"""合同参与方的角色描述，长度不能超过100，只能由中文、字母、数字和下划线组成。
+        r"""<p>合同参与方的角色描述，长度不能超过100，只能由中文、字母、数字和下划线组成。</p>
         :rtype: str
         """
         return self._Description
@@ -29086,7 +29047,7 @@ false-否
 
     @property
     def RoleName(self):
-        r"""合同参与方的角色名字，长度不能超过20，只能由中文、字母、数字和下划线组成。
+        r"""<p>合同参与方的角色名字，长度不能超过20，只能由中文、字母、数字和下划线组成。</p>
         :rtype: str
         """
         return self._RoleName
@@ -29097,9 +29058,7 @@ false-否
 
     @property
     def RequireValidation(self):
-        r"""是否需要校验，
-true-是，
-false-否
+        r"""<p>是否需要校验，<br>true-是，<br>false-否</p>
         :rtype: bool
         """
         return self._RequireValidation
@@ -29110,9 +29069,7 @@ false-否
 
     @property
     def RequireSign(self):
-        r"""是否必须填写，
-true-是，
-false-否
+        r"""<p>是否必须填写，<br>true-是，<br>false-否</p>
         :rtype: bool
         """
         return self._RequireSign
@@ -29123,7 +29080,7 @@ false-否
 
     @property
     def SignType(self):
-        r"""内部字段，签署类型
+        r"""<p>内部字段，签署类型</p><p>枚举值：</p><ul><li>0： 人脸</li></ul>
         :rtype: int
         """
         return self._SignType
@@ -29134,7 +29091,7 @@ false-否
 
     @property
     def RoutingOrder(self):
-        r"""签署顺序：数字越小优先级越高
+        r"""<p>签署顺序：数字越小优先级越高</p>
         :rtype: int
         """
         return self._RoutingOrder
@@ -29145,9 +29102,7 @@ false-否
 
     @property
     def IsPromoter(self):
-        r"""是否是发起方，
-true-是 
-false-否
+        r"""<p>是否是发起方，<br>true-是<br>false-否</p>
         :rtype: bool
         """
         return self._IsPromoter
@@ -29158,9 +29113,7 @@ false-否
 
     @property
     def ApproverVerifyTypes(self):
-        r"""签署人查看合同校验方式, 支持的类型如下:
-<ul><li> 1 :实名认证查看</li>
-<li> 2 :手机号校验查看</li></ul>
+        r"""<p>签署人查看合同校验方式, 支持的类型如下:</p><ul><li> 1 :实名认证查看</li><li> 2 :手机号校验查看</li></ul>
         :rtype: list of int
         """
         return self._ApproverVerifyTypes
@@ -29171,13 +29124,7 @@ false-否
 
     @property
     def ApproverSignTypes(self):
-        r"""签署人进行合同签署时的认证方式，支持的类型如下:
-<ul><li> 1 :人脸认证</li>
-<li> 2 :签署密码</li>
-<li> 3 :运营商三要素认证</li>
-<li> 4 :UKey认证</li>
-<li> 5 :设备指纹识别</li>
-<li> 6 :设备面容识别</li></ul>
+        r"""<p>签署人进行合同签署时的认证方式，支持的类型如下:</p><ul><li> 1 :人脸认证</li><li> 2 :签署密码</li><li> 3 :运营商三要素认证</li><li> 4 :UKey认证</li><li> 5 :设备指纹识别</li><li> 6 :设备面容识别</li></ul>
         :rtype: list of int
         """
         return self._ApproverSignTypes
@@ -29188,10 +29135,7 @@ false-否
 
     @property
     def NoTransfer(self):
-        r"""签署方是否可以转他人处理
-
-<ul><li> **false** : ( 默认)可以转他人处理</li>
-<li> **true** :不可以转他人处理</li></ul>
+        r"""<p>签署方是否可以转他人处理</p><ul><li> **false** : ( 默认)可以转他人处理</li><li> **true** :不可以转他人处理</li></ul>
         :rtype: bool
         """
         return self._NoTransfer

@@ -4348,6 +4348,42 @@ class CwpClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribePatchEffectHostList(
+            self,
+            request: models.DescribePatchEffectHostListRequest,
+            opts: Dict = None,
+    ) -> models.DescribePatchEffectHostListResponse:
+        """
+        查询补丁影响的主机信息列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribePatchEffectHostList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribePatchEffectHostListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribePatchInfo(
+            self,
+            request: models.DescribePatchInfoRequest,
+            opts: Dict = None,
+    ) -> models.DescribePatchInfoResponse:
+        """
+        补丁详情
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribePatchInfo"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribePatchInfoResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribePrivilegeEventInfo(
             self,
             request: models.DescribePrivilegeEventInfoRequest,
@@ -6292,6 +6328,24 @@ class CwpClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeWindowsPatchList(
+            self,
+            request: models.DescribeWindowsPatchListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeWindowsPatchListResponse:
+        """
+        获取补丁信息列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeWindowsPatchList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeWindowsPatchListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DestroyOrder(
             self,
             request: models.DestroyOrderRequest,
@@ -7120,6 +7174,24 @@ class CwpClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ExportPatchEffectHostList(
+            self,
+            request: models.ExportPatchEffectHostListRequest,
+            opts: Dict = None,
+    ) -> models.ExportPatchEffectHostListResponse:
+        """
+        导出补丁影响主机列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ExportPatchEffectHostList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ExportPatchEffectHostListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ExportPrivilegeEvents(
             self,
             request: models.ExportPrivilegeEventsRequest,
@@ -7529,6 +7601,24 @@ class CwpClient(AbstractClient):
         kwargs["action"] = "ExportWebPageEventList"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ExportWebPageEventListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ExportWindowsPatchList(
+            self,
+            request: models.ExportWindowsPatchListRequest,
+            opts: Dict = None,
+    ) -> models.ExportWindowsPatchListResponse:
+        """
+        导出Windows补丁列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ExportWindowsPatchList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ExportWindowsPatchListResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

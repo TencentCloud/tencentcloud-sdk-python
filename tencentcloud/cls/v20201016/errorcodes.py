@@ -305,6 +305,9 @@ RESOURCENOTFOUND_ALARMNOTEXIST = 'ResourceNotFound.AlarmNotExist'
 # 告警策略通知模板不存在。
 RESOURCENOTFOUND_ALARMNOTICENOTEXIST = 'ResourceNotFound.AlarmNoticeNotExist'
 
+# 集群id不存在
+RESOURCENOTFOUND_CLUSTERNOTFOUND = 'ResourceNotFound.ClusterNotFound'
+
 # 指定的采集规则配置不存在。
 RESOURCENOTFOUND_CONFIGNOTEXIST = 'ResourceNotFound.ConfigNotExist'
 

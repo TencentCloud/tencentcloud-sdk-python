@@ -279,6 +279,29 @@ class DbbrainClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateMongoDBKillTask(self, request):
+        r"""创建中断会话的任务。
+
+        :param request: Request instance for CreateMongoDBKillTask.
+        :type request: :class:`tencentcloud.dbbrain.v20210527.models.CreateMongoDBKillTaskRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.CreateMongoDBKillTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateMongoDBKillTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateMongoDBKillTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateProxySessionKillTask(self, request):
         r"""创建中止所有代理节点连接会话的异步任务。当前仅支持 Redis。得到的返回值为异步任务 id，可以作为参数传入接口 DescribeProxySessionKillTasks 查询kill会话任务执行状态。
 

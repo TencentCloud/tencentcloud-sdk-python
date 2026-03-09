@@ -16255,6 +16255,10 @@ ANY:表示所有
         :type CreateTime: str
         :param _UpdateTime: 规则最近更新时间
         :type UpdateTime: str
+        :param _RulePartition: 规则分区，1最前分区，2中间分区，3最后分区
+        :type RulePartition: int
+        :param _Scope: 规则生效范围，SG安全组，LH轻量服务器
+        :type Scope: str
         """
         self._OrderIndex = None
         self._RuleUuid = None
@@ -16289,6 +16293,8 @@ ANY:表示所有
         self._DnsParseCount = None
         self._CreateTime = None
         self._UpdateTime = None
+        self._RulePartition = None
+        self._Scope = None
 
     @property
     def OrderIndex(self):
@@ -16691,6 +16697,28 @@ ANY:表示所有
     def UpdateTime(self, UpdateTime):
         self._UpdateTime = UpdateTime
 
+    @property
+    def RulePartition(self):
+        r"""规则分区，1最前分区，2中间分区，3最后分区
+        :rtype: int
+        """
+        return self._RulePartition
+
+    @RulePartition.setter
+    def RulePartition(self, RulePartition):
+        self._RulePartition = RulePartition
+
+    @property
+    def Scope(self):
+        r"""规则生效范围，SG安全组，LH轻量服务器
+        :rtype: str
+        """
+        return self._Scope
+
+    @Scope.setter
+    def Scope(self, Scope):
+        self._Scope = Scope
+
 
     def _deserialize(self, params):
         self._OrderIndex = params.get("OrderIndex")
@@ -16733,6 +16761,8 @@ ANY:表示所有
             self._DnsParseCount._deserialize(params.get("DnsParseCount"))
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
+        self._RulePartition = params.get("RulePartition")
+        self._Scope = params.get("Scope")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -26534,6 +26564,8 @@ drop：拒绝
         :type Enable: str
         :param _Uid: 规则对应的唯一内部id
         :type Uid: str
+        :param _Scope: 规则生效范围，SG安全组，LH轻量服务器
+        :type Scope: str
         """
         self._SourceContent = None
         self._SourceType = None
@@ -26548,6 +26580,7 @@ drop：拒绝
         self._Id = None
         self._Enable = None
         self._Uid = None
+        self._Scope = None
 
     @property
     def SourceContent(self):
@@ -26709,6 +26742,17 @@ drop：拒绝
     def Uid(self, Uid):
         self._Uid = Uid
 
+    @property
+    def Scope(self):
+        r"""规则生效范围，SG安全组，LH轻量服务器
+        :rtype: str
+        """
+        return self._Scope
+
+    @Scope.setter
+    def Scope(self, Scope):
+        self._Scope = Scope
+
 
     def _deserialize(self, params):
         self._SourceContent = params.get("SourceContent")
@@ -26724,6 +26768,7 @@ drop：拒绝
         self._Id = params.get("Id")
         self._Enable = params.get("Enable")
         self._Uid = params.get("Uid")
+        self._Scope = params.get("Scope")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -26765,6 +26810,8 @@ region：地域(ap-gaungzhou)
         :type RuleUuid: int
         :param _Sequence: 规则序号
         :type Sequence: int
+        :param _Scope: 规则生效范围，SG安全组，LH轻量服务器
+        :type Scope: str
         """
         self._SourceContent = None
         self._DestContent = None
@@ -26772,6 +26819,7 @@ region：地域(ap-gaungzhou)
         self._Description = None
         self._RuleUuid = None
         self._Sequence = None
+        self._Scope = None
 
     @property
     def SourceContent(self):
@@ -26851,6 +26899,17 @@ region：地域(ap-gaungzhou)
     def Sequence(self, Sequence):
         self._Sequence = Sequence
 
+    @property
+    def Scope(self):
+        r"""规则生效范围，SG安全组，LH轻量服务器
+        :rtype: str
+        """
+        return self._Scope
+
+    @Scope.setter
+    def Scope(self, Scope):
+        self._Scope = Scope
+
 
     def _deserialize(self, params):
         self._SourceContent = params.get("SourceContent")
@@ -26859,6 +26918,7 @@ region：地域(ap-gaungzhou)
         self._Description = params.get("Description")
         self._RuleUuid = params.get("RuleUuid")
         self._Sequence = params.get("Sequence")
+        self._Scope = params.get("Scope")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

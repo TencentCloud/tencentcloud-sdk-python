@@ -277,7 +277,7 @@ class OcrClient(AbstractClient):
 
 
     def DescribeExtractDocAgentJob(self, request):
-        r"""用于查询文档处理任务。文档处理领域里常见的通用Agent 如抽取、比对之类的，目前我们提供的抽取，但未来可以根据实际情况和客户需求扩展。
+        r"""模型参数更大，速度更慢。推荐场景：可以接受异步（超过30s返回），样本输入输出token大于2000，长文本类文档建议用异步模型。需要 SubmitExtractDocAgentJob（提交任务）、DescribeExtractDocAgentJob（查询任务）两个接口配套使用，计费发生在提交任务后。【备注：1.固定价格不限抽取字段数，2.自适应价格抽取字段大于10记两次费用，小于等于10记一次费用】
 
         :param request: Request instance for DescribeExtractDocAgentJob.
         :type request: :class:`tencentcloud.ocr.v20181119.models.DescribeExtractDocAgentJobRequest`
@@ -509,7 +509,7 @@ class OcrClient(AbstractClient):
 
 
     def ExtractDocAgent(self, request):
-        r"""用于查询文档处理任务。文档处理领域里常见的通用Agent 如抽取、比对之类的，目前我们提供的抽取，但未来可以根据实际情况和客户需求扩展。
+        r"""模型参数更小，速度更快。推荐场景：实时性要求高（30s以内）并且样本输入输出token2000以内，建议用实时模型。【备注：1.固定价格不限抽取字段数，2.自适应价格抽取字段大于10记两次费用，小于等于10记一次费用】
 
         :param request: Request instance for ExtractDocAgent.
         :type request: :class:`tencentcloud.ocr.v20181119.models.ExtractDocAgentRequest`
@@ -2112,31 +2112,6 @@ class OcrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def RecognizeTableMultiOCR(self, request):
-        r"""基于MLLM(多模态大语言模型)的表格识别能力，针对复杂表格的算法识别效果更佳，适配财务报表识别场景，并可输出直接对接业务系统的Excel数据。
-
-        默认接口请求频率限制：1次/秒。
-
-        :param request: Request instance for RecognizeTableMultiOCR.
-        :type request: :class:`tencentcloud.ocr.v20181119.models.RecognizeTableMultiOCRRequest`
-        :rtype: :class:`tencentcloud.ocr.v20181119.models.RecognizeTableMultiOCRResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("RecognizeTableMultiOCR", params, headers=headers)
-            response = json.loads(body)
-            model = models.RecognizeTableMultiOCRResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def RecognizeTableOCR(self, request):
         r"""本接口支持中英文图片/ PDF内常规表格、无线表格、多表格的检测和识别，支持日文有线表格识别，返回每个单元格的文字内容，支持旋转的表格图片识别，且支持将识别结果保存为 Excel 格式。
 
@@ -2394,7 +2369,7 @@ class OcrClient(AbstractClient):
 
 
     def SubmitExtractDocAgentJob(self, request):
-        r"""文档处理领域里常见的通用Agent 如抽取、比对之类的，目前我们提供的抽取，但未来可以根据实际情况和客户需求扩展。
+        r"""模型参数更大，速度更慢。推荐场景：可以接受异步（超过30s返回），样本输入输出token大于2000，长文本类文档建议用异步模型。需要 SubmitExtractDocAgentJob（提交任务）、DescribeExtractDocAgentJob（查询任务）两个接口配套使用，计费发生在提交任务后。【备注：1.固定价格不限抽取字段数，2.自适应价格抽取字段大于10记两次费用，小于等于10记一次费用】
 
         :param request: Request instance for SubmitExtractDocAgentJob.
         :type request: :class:`tencentcloud.ocr.v20181119.models.SubmitExtractDocAgentJobRequest`

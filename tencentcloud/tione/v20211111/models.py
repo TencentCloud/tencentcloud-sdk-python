@@ -1836,6 +1836,8 @@ HYBRID_PAID:
         :type VolumeMounts: list of VolumeMount
         :param _SchedulingStrategy: 调度策略 [binpack] 优先占满整机，尽量避免碎卡（默认值）[spread] 优先分散在各个节点，确保服务高可用
         :type SchedulingStrategy: str
+        :param _GatewayLogConfig: 网关日志投递相关配置
+        :type GatewayLogConfig: :class:`tencentcloud.tione.v20211111.models.LogConfig`
         """
         self._ServiceGroupId = None
         self._ServiceGroupName = None
@@ -1880,6 +1882,7 @@ HYBRID_PAID:
         self._Sidecar = None
         self._VolumeMounts = None
         self._SchedulingStrategy = None
+        self._GatewayLogConfig = None
 
     @property
     def ServiceGroupId(self):
@@ -2377,6 +2380,17 @@ HYBRID_PAID:
     def SchedulingStrategy(self, SchedulingStrategy):
         self._SchedulingStrategy = SchedulingStrategy
 
+    @property
+    def GatewayLogConfig(self):
+        r"""网关日志投递相关配置
+        :rtype: :class:`tencentcloud.tione.v20211111.models.LogConfig`
+        """
+        return self._GatewayLogConfig
+
+    @GatewayLogConfig.setter
+    def GatewayLogConfig(self, GatewayLogConfig):
+        self._GatewayLogConfig = GatewayLogConfig
+
 
     def _deserialize(self, params):
         self._ServiceGroupId = params.get("ServiceGroupId")
@@ -2466,6 +2480,9 @@ HYBRID_PAID:
                 obj._deserialize(item)
                 self._VolumeMounts.append(obj)
         self._SchedulingStrategy = params.get("SchedulingStrategy")
+        if params.get("GatewayLogConfig") is not None:
+            self._GatewayLogConfig = LogConfig()
+            self._GatewayLogConfig._deserialize(params.get("GatewayLogConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21229,6 +21246,8 @@ UPDATING 更新中
         :type MonitorSource: str
         :param _SubUinName: 子用户的 nickname
         :type SubUinName: str
+        :param _GatewayLogConfig: 网关日志投递相关配置
+        :type GatewayLogConfig: :class:`tencentcloud.tione.v20211111.models.LogConfig`
         """
         self._ServiceGroupId = None
         self._ServiceGroupName = None
@@ -21254,6 +21273,7 @@ UPDATING 更新中
         self._AuthTokens = None
         self._MonitorSource = None
         self._SubUinName = None
+        self._GatewayLogConfig = None
 
     @property
     def ServiceGroupId(self):
@@ -21548,6 +21568,17 @@ UPDATING 更新中
     def SubUinName(self, SubUinName):
         self._SubUinName = SubUinName
 
+    @property
+    def GatewayLogConfig(self):
+        r"""网关日志投递相关配置
+        :rtype: :class:`tencentcloud.tione.v20211111.models.LogConfig`
+        """
+        return self._GatewayLogConfig
+
+    @GatewayLogConfig.setter
+    def GatewayLogConfig(self, GatewayLogConfig):
+        self._GatewayLogConfig = GatewayLogConfig
+
 
     def _deserialize(self, params):
         self._ServiceGroupId = params.get("ServiceGroupId")
@@ -21589,6 +21620,9 @@ UPDATING 更新中
                 self._AuthTokens.append(obj)
         self._MonitorSource = params.get("MonitorSource")
         self._SubUinName = params.get("SubUinName")
+        if params.get("GatewayLogConfig") is not None:
+            self._GatewayLogConfig = LogConfig()
+            self._GatewayLogConfig._deserialize(params.get("GatewayLogConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
