@@ -743,6 +743,12 @@ class CreateDatasourceCloudRequest(AbstractModel):
         :param _ServiceType: 后端提供字典：域类型，1、腾讯云，2、本地
         :type ServiceType: str
         :param _DbType: 驱动
+取值范围：
+MYSQL：MySQL数据库
+PRESTO：PRESTO数据库
+POSTGRE：PostgreSQL数据库
+DLC：DLC数据库
+MSSQL：微软SQL Server数据库
         :type DbType: str
         :param _Charset: 数据库编码
         :type Charset: str
@@ -822,6 +828,12 @@ class CreateDatasourceCloudRequest(AbstractModel):
     @property
     def DbType(self):
         r"""驱动
+取值范围：
+MYSQL：MySQL数据库
+PRESTO：PRESTO数据库
+POSTGRE：PostgreSQL数据库
+DLC：DLC数据库
+MSSQL：微软SQL Server数据库
         :rtype: str
         """
         return self._DbType
@@ -1198,6 +1210,12 @@ class CreateDatasourceRequest(AbstractModel):
         :param _ServiceType: 后端提供字典：域类型，1、腾讯云，2、本地
         :type ServiceType: str
         :param _DbType: 驱动
+取值范围：
+MYSQL：MySQL数据库
+PRESTO：PRESTO数据库
+POSTGRE：PostgreSQL数据库
+DLC：DLC数据库
+MSSQL：微软SQL Server数据库
         :type DbType: str
         :param _Charset: 数据库编码
         :type Charset: str
@@ -1301,6 +1319,12 @@ class CreateDatasourceRequest(AbstractModel):
     @property
     def DbType(self):
         r"""驱动
+取值范围：
+MYSQL：MySQL数据库
+PRESTO：PRESTO数据库
+POSTGRE：PostgreSQL数据库
+DLC：DLC数据库
+MSSQL：微软SQL Server数据库
         :rtype: str
         """
         return self._DbType
@@ -2072,17 +2096,45 @@ class CreatePermissionRanksRequest(AbstractModel):
         r"""
         :param _TableId: 页数
         :type TableId: int
-        :param _Mode: 条数
+        :param _Mode: 模式。
+取值范围：
+- ALL：全部
+- Specify：指定
+- TAG：标签
+
+默认值：ALL
+示例值：ALL
         :type Mode: str
-        :param _RoleType: 角色类型
+        :param _RoleType: 角色类型。
+取值范围：
+
+- ROLES：按角色
+- Others：其它
+
+默认值：Others
+示例值：Others
         :type RoleType: str
         :param _RoleId: 所有页码
         :type RoleId: int
         :param _RulerInfo: 规则信息
         :type RulerInfo: str
-        :param _Type: 类型
+        :param _Type: 类型。
+取值范围：
+
+- ROW：行权限
+- COLUMN：列权限
+
+默认值：ROW
+示例值：ROW
         :type Type: str
-        :param _OpenStatus: 状态
+        :param _OpenStatus: 开启状态。
+取值范围：
+
+- Open：开启
+- Close：关闭
+
+默认值：Close
+示例值：Close
         :type OpenStatus: str
         :param _ProjectId: 项目id
         :type ProjectId: int
@@ -2112,7 +2164,14 @@ class CreatePermissionRanksRequest(AbstractModel):
 
     @property
     def Mode(self):
-        r"""条数
+        r"""模式。
+取值范围：
+- ALL：全部
+- Specify：指定
+- TAG：标签
+
+默认值：ALL
+示例值：ALL
         :rtype: str
         """
         return self._Mode
@@ -2123,7 +2182,14 @@ class CreatePermissionRanksRequest(AbstractModel):
 
     @property
     def RoleType(self):
-        r"""角色类型
+        r"""角色类型。
+取值范围：
+
+- ROLES：按角色
+- Others：其它
+
+默认值：Others
+示例值：Others
         :rtype: str
         """
         return self._RoleType
@@ -2156,7 +2222,14 @@ class CreatePermissionRanksRequest(AbstractModel):
 
     @property
     def Type(self):
-        r"""类型
+        r"""类型。
+取值范围：
+
+- ROW：行权限
+- COLUMN：列权限
+
+默认值：ROW
+示例值：ROW
         :rtype: str
         """
         return self._Type
@@ -2167,7 +2240,14 @@ class CreatePermissionRanksRequest(AbstractModel):
 
     @property
     def OpenStatus(self):
-        r"""状态
+        r"""开启状态。
+取值范围：
+
+- Open：开启
+- Close：关闭
+
+默认值：Close
+示例值：Close
         :rtype: str
         """
         return self._OpenStatus
@@ -2340,6 +2420,9 @@ class CreateProjectRequest(AbstractModel):
         :param _IsApply: 是否允许用户申请
         :type IsApply: bool
         :param _DefaultPanelType: 默认看板
+取值范围：
+1：项目看板 
+2：我的看板
         :type DefaultPanelType: int
         :param _ManagePlatform: 管理平台
         :type ManagePlatform: str
@@ -2410,6 +2493,9 @@ class CreateProjectRequest(AbstractModel):
     @property
     def DefaultPanelType(self):
         r"""默认看板
+取值范围：
+1：项目看板 
+2：我的看板
         :rtype: int
         """
         return self._DefaultPanelType
@@ -3962,6 +4048,9 @@ class DeleteProjectRequest(AbstractModel):
         :param _Seed: 随机数
         :type Seed: str
         :param _DefaultPanelType: 默认看板
+取值范围：
+1：项目看板 
+2：我的看板
         :type DefaultPanelType: int
         """
         self._Id = None
@@ -3993,6 +4082,9 @@ class DeleteProjectRequest(AbstractModel):
     @property
     def DefaultPanelType(self):
         r"""默认看板
+取值范围：
+1：项目看板 
+2：我的看板
         :rtype: int
         """
         return self._DefaultPanelType
@@ -4777,13 +4869,35 @@ class DescribePermissionRanksInfoRequest(AbstractModel):
         r"""
         :param _TableId: 页数
         :type TableId: int
-        :param _Mode: 条数
+        :param _Mode: 模式。
+取值范围：
+
+- ALL：全部
+- Specify：指定
+- TAG：标签
+
+默认值：ALL
+示例值：ALL
         :type Mode: str
-        :param _RoleType: 角色类型
+        :param _RoleType: 角色类型。
+取值范围：
+
+- ROLES：按角色
+- Others：其它
+
+默认值：Others
+示例值：Others
         :type RoleType: str
         :param _RoleId: 所有页码
         :type RoleId: int
-        :param _Type: 类型
+        :param _Type: 类型。
+取值范围：
+
+- ROW：行权限
+- COLUMN：列权限
+
+默认值：ROW
+示例值：ROW
         :type Type: str
         :param _ProjectId: 项目id
         :type ProjectId: int
@@ -4808,7 +4922,15 @@ class DescribePermissionRanksInfoRequest(AbstractModel):
 
     @property
     def Mode(self):
-        r"""条数
+        r"""模式。
+取值范围：
+
+- ALL：全部
+- Specify：指定
+- TAG：标签
+
+默认值：ALL
+示例值：ALL
         :rtype: str
         """
         return self._Mode
@@ -4819,7 +4941,14 @@ class DescribePermissionRanksInfoRequest(AbstractModel):
 
     @property
     def RoleType(self):
-        r"""角色类型
+        r"""角色类型。
+取值范围：
+
+- ROLES：按角色
+- Others：其它
+
+默认值：Others
+示例值：Others
         :rtype: str
         """
         return self._RoleType
@@ -4841,7 +4970,14 @@ class DescribePermissionRanksInfoRequest(AbstractModel):
 
     @property
     def Type(self):
-        r"""类型
+        r"""类型。
+取值范围：
+
+- ROW：行权限
+- COLUMN：列权限
+
+默认值：ROW
+示例值：ROW
         :rtype: str
         """
         return self._Type
@@ -5172,7 +5308,14 @@ class DescribePermissionStatusInfoRequest(AbstractModel):
         r"""
         :param _TableId: 页数
         :type TableId: int
-        :param _Type: 类型
+        :param _Type: 类型。
+取值范围：
+
+- ROW：行权限
+- COLUMN：列权限
+
+默认值：ROW
+示例值：ROW
         :type Type: str
         :param _ProjectId: 1
         :type ProjectId: str
@@ -5194,7 +5337,14 @@ class DescribePermissionStatusInfoRequest(AbstractModel):
 
     @property
     def Type(self):
-        r"""类型
+        r"""类型。
+取值范围：
+
+- ROW：行权限
+- COLUMN：列权限
+
+默认值：ROW
+示例值：ROW
         :rtype: str
         """
         return self._Type
@@ -5339,6 +5489,9 @@ class DescribeProjectInfoRequest(AbstractModel):
         :param _Id: 项目Id
         :type Id: int
         :param _DefaultPanelType: 默认看板
+取值范围：
+1：项目看板 
+2：我的看板
         :type DefaultPanelType: int
         """
         self._Id = None
@@ -5358,6 +5511,9 @@ class DescribeProjectInfoRequest(AbstractModel):
     @property
     def DefaultPanelType(self):
         r"""默认看板
+取值范围：
+1：项目看板 
+2：我的看板
         :rtype: int
         """
         return self._DefaultPanelType
@@ -7124,6 +7280,10 @@ class IdDTO(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type TranId: str
         :param _TranStatus: 事务状态
+取值范围：
+1: 处理中
+2: 处理成功
+3: 处理失败
 注意：此字段可能返回 null，表示取不到有效值。
         :type TranStatus: int
         """
@@ -7184,6 +7344,10 @@ class IdDTO(AbstractModel):
     @property
     def TranStatus(self):
         r"""事务状态
+取值范围：
+1: 处理中
+2: 处理成功
+3: 处理失败
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -7220,6 +7384,12 @@ class ModifyDatasourceCloudRequest(AbstractModel):
         :param _ServiceType: 后端提供字典：域类型，1、腾讯云，2、本地
         :type ServiceType: str
         :param _DbType: 驱动
+取值范围：
+MYSQL：MySQL数据库
+PRESTO：PRESTO数据库
+POSTGRE：PostgreSQL数据库
+DLC：DLC数据库
+MSSQL：微软SQL Server数据库
         :type DbType: str
         :param _Charset: 数据库编码
         :type Charset: str
@@ -7302,6 +7472,12 @@ class ModifyDatasourceCloudRequest(AbstractModel):
     @property
     def DbType(self):
         r"""驱动
+取值范围：
+MYSQL：MySQL数据库
+PRESTO：PRESTO数据库
+POSTGRE：PostgreSQL数据库
+DLC：DLC数据库
+MSSQL：微软SQL Server数据库
         :rtype: str
         """
         return self._DbType
@@ -7688,6 +7864,12 @@ class ModifyDatasourceRequest(AbstractModel):
         :param _ServiceType: 后端提供字典：域类型，1、腾讯云，2、本地
         :type ServiceType: str
         :param _DbType: 驱动
+取值范围：
+MYSQL：MySQL数据库
+PRESTO：PRESTO数据库
+POSTGRE：PostgreSQL数据库
+DLC：DLC数据库
+MSSQL：微软SQL Server数据库
         :type DbType: str
         :param _Charset: 数据库编码
         :type Charset: str
@@ -7791,6 +7973,12 @@ class ModifyDatasourceRequest(AbstractModel):
     @property
     def DbType(self):
         r"""驱动
+取值范围：
+MYSQL：MySQL数据库
+PRESTO：PRESTO数据库
+POSTGRE：PostgreSQL数据库
+DLC：DLC数据库
+MSSQL：微软SQL Server数据库
         :rtype: str
         """
         return self._DbType
@@ -8175,6 +8363,9 @@ class ModifyProjectRequest(AbstractModel):
         :param _Seed: 种子
         :type Seed: str
         :param _DefaultPanelType: 默认看板
+取值范围：
+1：项目看板 
+2：我的看板
         :type DefaultPanelType: int
         :param _PanelScope: 2
         :type PanelScope: str
@@ -8272,6 +8463,9 @@ class ModifyProjectRequest(AbstractModel):
     @property
     def DefaultPanelType(self):
         r"""默认看板
+取值范围：
+1：项目看板 
+2：我的看板
         :rtype: int
         """
         return self._DefaultPanelType
@@ -9076,7 +9270,16 @@ class PermissionComponent(AbstractModel):
         :param _ModuleId: 权限值
 注意：此字段可能返回 null，表示取不到有效值。
         :type ModuleId: str
-        :param _IncludeType: 可见/可用
+        :param _IncludeType: 可用性。
+取值范围：
+
+- usable：可用
+- visible：可见
+- disabled：不可用
+- hidden：隐藏
+
+默认值：disabled
+示例值：disabled
 注意：此字段可能返回 null，表示取不到有效值。
         :type IncludeType: str
         :param _UpgradeVersionType: 目标升级版本
@@ -9109,7 +9312,16 @@ class PermissionComponent(AbstractModel):
 
     @property
     def IncludeType(self):
-        r"""可见/可用
+        r"""可用性。
+取值范围：
+
+- usable：可用
+- visible：可见
+- disabled：不可用
+- hidden：隐藏
+
+默认值：disabled
+示例值：disabled
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9802,7 +10014,16 @@ class ProjectConfigResult(AbstractModel):
         :param _ModuleId: 配置名称
 注意：此字段可能返回 null，表示取不到有效值。
         :type ModuleId: str
-        :param _IncludeType: 配置方式
+        :param _IncludeType: 配置方式。
+取值范围：
+
+- usable：可用
+- visible：可见
+- disabled：不可用
+- hidden：隐藏
+
+默认值：disabled
+示例值：disabled
 注意：此字段可能返回 null，表示取不到有效值。
         :type IncludeType: str
         :param _Params: 额外参数
@@ -9827,7 +10048,16 @@ class ProjectConfigResult(AbstractModel):
 
     @property
     def IncludeType(self):
-        r"""配置方式
+        r"""配置方式。
+取值范围：
+
+- usable：可用
+- visible：可见
+- disabled：不可用
+- hidden：隐藏
+
+默认值：disabled
+示例值：disabled
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -10731,7 +10961,14 @@ class UserIdAndUserName(AbstractModel):
         :param _LastLogin: 最后一次登录时间
 注意：此字段可能返回 null，表示取不到有效值。
         :type LastLogin: str
-        :param _Status: 停启用状态
+        :param _Status: 用户状态。
+取值范围：
+
+- 1：启用
+- 0：停用
+
+默认值：1
+示例值：1
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param _FirstModify: 首次登录是否修改密码
@@ -10870,7 +11107,14 @@ class UserIdAndUserName(AbstractModel):
 
     @property
     def Status(self):
-        r"""停启用状态
+        r"""用户状态。
+取值范围：
+
+- 1：启用
+- 0：停用
+
+默认值：1
+示例值：1
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """

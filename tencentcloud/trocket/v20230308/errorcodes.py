@@ -29,9 +29,6 @@ OPERATIONDENIED = 'OperationDenied'
 # 资源被占用。
 RESOURCEINUSE = 'ResourceInUse'
 
-# 客户端不存在。
-RESOURCENOTFOUND_CLIENT = 'ResourceNotFound.Client'
-
 # 接入点不存在。
 RESOURCENOTFOUND_ENDPOINT = 'ResourceNotFound.Endpoint'
 

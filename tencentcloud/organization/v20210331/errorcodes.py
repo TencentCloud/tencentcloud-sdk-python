@@ -344,6 +344,9 @@ FAILEDOPERATION_SHAREMEMBERNOTEXIST = 'FailedOperation.ShareMemberNotExist'
 # 部门在共享单元中。
 FAILEDOPERATION_SHARENODEEXISTED = 'FailedOperation.ShareNodeExisted'
 
+# 共享部门不存在。
+FAILEDOPERATION_SHARENODENOTEXIST = 'FailedOperation.ShareNodeNotExist'
+
 # 成员正在使用共享资源。
 FAILEDOPERATION_SHARERESOURCEMEMBERINUSE = 'FailedOperation.ShareResourceMemberInUse'
 
@@ -709,6 +712,9 @@ LIMITEXCEEDED_SENDEMAILWITHINONEHOURLIMIT = 'LimitExceeded.SendEmailWithinOneHou
 
 # 当次操作的共享成员超过上限。
 LIMITEXCEEDED_SHAREUNITMEMBEROVERLIMIT = 'LimitExceeded.ShareUnitMemberOverLimit'
+
+# 共享单元部门超过上限。
+LIMITEXCEEDED_SHAREUNITNODEOVERLIMIT = 'LimitExceeded.ShareUnitNodeOverLimit'
 
 # 当次操作的共享资源超过上限。
 LIMITEXCEEDED_SHAREUNITRESOURCEOVERLIMIT = 'LimitExceeded.ShareUnitResourceOverLimit'

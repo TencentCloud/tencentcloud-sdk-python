@@ -687,6 +687,85 @@ class AddShareUnitMembersResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class AddShareUnitNodeRequest(AbstractModel):
+    r"""AddShareUnitNode请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UnitId: <p>共享单元ID。</p>
+        :type UnitId: str
+        :param _NodeId: <p>共享部门ID。</p>
+        :type NodeId: int
+        """
+        self._UnitId = None
+        self._NodeId = None
+
+    @property
+    def UnitId(self):
+        r"""<p>共享单元ID。</p>
+        :rtype: str
+        """
+        return self._UnitId
+
+    @UnitId.setter
+    def UnitId(self, UnitId):
+        self._UnitId = UnitId
+
+    @property
+    def NodeId(self):
+        r"""<p>共享部门ID。</p>
+        :rtype: int
+        """
+        return self._NodeId
+
+    @NodeId.setter
+    def NodeId(self, NodeId):
+        self._NodeId = NodeId
+
+
+    def _deserialize(self, params):
+        self._UnitId = params.get("UnitId")
+        self._NodeId = params.get("NodeId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AddShareUnitNodeResponse(AbstractModel):
+    r"""AddShareUnitNode返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class AddShareUnitRequest(AbstractModel):
     r"""AddShareUnit请求参数结构体
 
@@ -4747,6 +4826,85 @@ class DeleteShareUnitMembersResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteShareUnitNodeRequest(AbstractModel):
+    r"""DeleteShareUnitNode请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UnitId: <p>共享单元ID。</p>
+        :type UnitId: str
+        :param _NodeId: <p>部门ID。</p>
+        :type NodeId: int
+        """
+        self._UnitId = None
+        self._NodeId = None
+
+    @property
+    def UnitId(self):
+        r"""<p>共享单元ID。</p>
+        :rtype: str
+        """
+        return self._UnitId
+
+    @UnitId.setter
+    def UnitId(self, UnitId):
+        self._UnitId = UnitId
+
+    @property
+    def NodeId(self):
+        r"""<p>部门ID。</p>
+        :rtype: int
+        """
+        return self._NodeId
+
+    @NodeId.setter
+    def NodeId(self, NodeId):
+        self._NodeId = NodeId
+
+
+    def _deserialize(self, params):
+        self._UnitId = params.get("UnitId")
+        self._NodeId = params.get("NodeId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteShareUnitNodeResponse(AbstractModel):
+    r"""DeleteShareUnitNode返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteShareUnitRequest(AbstractModel):
     r"""DeleteShareUnit请求参数结构体
 
@@ -8126,6 +8284,150 @@ class DescribeShareUnitMembersResponse(AbstractModel):
             self._Items = []
             for item in params.get("Items"):
                 obj = ShareUnitMember()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeShareUnitNodesRequest(AbstractModel):
+    r"""DescribeShareUnitNodes请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UnitId: <p>共享单元ID。</p>
+        :type UnitId: str
+        :param _Offset: <p>偏移量。取值是limit的整数倍，默认值 : 0</p>
+        :type Offset: int
+        :param _Limit: <p>限制数目。取值范围：1~50。</p>
+        :type Limit: int
+        :param _SearchKey: <p>搜索关键字。支持部门ID搜索。</p>
+        :type SearchKey: str
+        """
+        self._UnitId = None
+        self._Offset = None
+        self._Limit = None
+        self._SearchKey = None
+
+    @property
+    def UnitId(self):
+        r"""<p>共享单元ID。</p>
+        :rtype: str
+        """
+        return self._UnitId
+
+    @UnitId.setter
+    def UnitId(self, UnitId):
+        self._UnitId = UnitId
+
+    @property
+    def Offset(self):
+        r"""<p>偏移量。取值是limit的整数倍，默认值 : 0</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>限制数目。取值范围：1~50。</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def SearchKey(self):
+        r"""<p>搜索关键字。支持部门ID搜索。</p>
+        :rtype: str
+        """
+        return self._SearchKey
+
+    @SearchKey.setter
+    def SearchKey(self, SearchKey):
+        self._SearchKey = SearchKey
+
+
+    def _deserialize(self, params):
+        self._UnitId = params.get("UnitId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._SearchKey = params.get("SearchKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeShareUnitNodesResponse(AbstractModel):
+    r"""DescribeShareUnitNodes返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: <p>总数目。</p>
+        :type Total: int
+        :param _Items: <p>共享单元部门列表。</p>
+        :type Items: list of ShareUnitNode
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._Items = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        r"""<p>总数目。</p>
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Items(self):
+        r"""<p>共享单元部门列表。</p>
+        :rtype: list of ShareUnitNode
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = ShareUnitNode()
                 obj._deserialize(item)
                 self._Items.append(obj)
         self._RequestId = params.get("RequestId")
@@ -19638,6 +19940,57 @@ class ShareUnitMember(AbstractModel):
 
     def _deserialize(self, params):
         self._ShareMemberUin = params.get("ShareMemberUin")
+        self._CreateTime = params.get("CreateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ShareUnitNode(AbstractModel):
+    r"""共享单元部门
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ShareNodeId: <p>共享部门ID。</p>
+        :type ShareNodeId: int
+        :param _CreateTime: <p>创建时间。</p>
+        :type CreateTime: str
+        """
+        self._ShareNodeId = None
+        self._CreateTime = None
+
+    @property
+    def ShareNodeId(self):
+        r"""<p>共享部门ID。</p>
+        :rtype: int
+        """
+        return self._ShareNodeId
+
+    @ShareNodeId.setter
+    def ShareNodeId(self, ShareNodeId):
+        self._ShareNodeId = ShareNodeId
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间。</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+
+    def _deserialize(self, params):
+        self._ShareNodeId = params.get("ShareNodeId")
         self._CreateTime = params.get("CreateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

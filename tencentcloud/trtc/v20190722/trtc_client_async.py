@@ -138,6 +138,25 @@ class TrtcClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateCloudTranscription(
+            self,
+            request: models.CreateCloudTranscriptionRequest,
+            opts: Dict = None,
+    ) -> models.CreateCloudTranscriptionResponse:
+        """
+        接口说明：
+        启动云端转录功能。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateCloudTranscription"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateCloudTranscriptionResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreatePicture(
             self,
             request: models.CreatePictureRequest,
@@ -223,6 +242,24 @@ class TrtcClient(AbstractClient):
         kwargs["action"] = "DeleteCloudSliceTask"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteCloudSliceTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteCloudTranscription(
+            self,
+            request: models.DeleteCloudTranscriptionRequest,
+            opts: Dict = None,
+    ) -> models.DeleteCloudTranscriptionResponse:
+        """
+        成功开启转录后，可以使用此接口来停止转录任务。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteCloudTranscription"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteCloudTranscriptionResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -373,6 +410,24 @@ class TrtcClient(AbstractClient):
         kwargs["action"] = "DescribeCloudSliceTask"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeCloudSliceTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCloudTranscription(
+            self,
+            request: models.DescribeCloudTranscriptionRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCloudTranscriptionResponse:
+        """
+        成功开启转录后，可以使用此接口来查询录制状态。仅在转录任务进行时有效，转录退出后查询将会返回错误。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCloudTranscription"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCloudTranscriptionResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

@@ -6398,73 +6398,52 @@ class CreateAlarmRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 告警策略名称。最大支持255个字节。 不支持 '|'。
+        :param _Name: <p>告警策略名称。最大支持255个字节。 不支持 &#39;|&#39;。</p>
         :type Name: str
-        :param _AlarmTargets: 监控对象列表。
+        :param _AlarmTargets: <p>监控对象列表。</p>
         :type AlarmTargets: list of AlarmTarget
-        :param _MonitorTime: 监控任务运行时间点。
+        :param _MonitorTime: <p>监控任务运行时间点。</p>
         :type MonitorTime: :class:`tencentcloud.cls.v20201016.models.MonitorTime`
-        :param _TriggerCount: 持续周期。持续满足触发条件TriggerCount个周期后，再进行告警；最小值为1，最大值为2000。
+        :param _TriggerCount: <p>持续周期。持续满足触发条件TriggerCount个周期后，再进行告警；最小值为1，最大值为2000。</p>
         :type TriggerCount: int
-        :param _AlarmPeriod: 告警重复的周期，单位是分钟。取值范围是0~1440。
+        :param _AlarmPeriod: <p>告警重复的周期，单位是分钟。取值范围是0~1440。</p>
         :type AlarmPeriod: int
-        :param _AlarmNoticeIds: 关联的告警通知渠道组列表。-通过[获取通知渠道组列表](https://cloud.tencent.com/document/product/614/56462)获取关联的告警通知渠道组列表，和MonitorNotice互斥
-        :type AlarmNoticeIds: list of str
-        :param _Condition: 告警发送通知的触发条件
- 注意:  
-- Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。
-
+        :param _Condition: <p>告警发送通知的触发条件<br> 注意:  </p><ul><li>Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。</li></ul>
         :type Condition: str
-        :param _AlarmLevel: 告警级别
-0:警告(Warn); 1:提醒(Info); 2:紧急 (Critical)。
-注意:  
-- 不填则默认为0。
-- Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。
+        :param _AlarmLevel: <p>告警级别<br>0:警告(Warn); 1:提醒(Info); 2:紧急 (Critical)。<br>注意:  </p><ul><li>不填则默认为0。</li><li>Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。</li></ul>
         :type AlarmLevel: int
-        :param _MultiConditions: 多触发条件
- 注意:  
-- Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。
-
-
-
+        :param _MultiConditions: <p>多触发条件<br> 注意:  </p><ul><li>Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。</li></ul>
         :type MultiConditions: list of MultiCondition
-        :param _Status: 是否开启告警策略。
-默认值为true
+        :param _Status: <p>是否开启告警策略。<br>默认值为true</p>
         :type Status: bool
-        :param _Enable: 请使用Status参数控制是否开启告警策略。
+        :param _Enable: <p>请使用Status参数控制是否开启告警策略。</p>
         :type Enable: bool
-        :param _MessageTemplate: 用户自定义告警内容
+        :param _MessageTemplate: <p>用户自定义告警内容</p>
         :type MessageTemplate: str
-        :param _CallBack: 用户自定义回调
+        :param _CallBack: <p>用户自定义回调</p>
         :type CallBack: :class:`tencentcloud.cls.v20201016.models.CallBackInfo`
-        :param _Analysis: 多维分析
+        :param _Analysis: <p>多维分析</p>
         :type Analysis: list of AnalysisDimensional
-        :param _GroupTriggerStatus: 分组触发状态。
-默认值false
+        :param _GroupTriggerStatus: <p>分组触发状态。<br>默认值false</p>
         :type GroupTriggerStatus: bool
-        :param _GroupTriggerCondition: 分组触发条件。
+        :param _GroupTriggerCondition: <p>分组触发条件。</p>
         :type GroupTriggerCondition: list of str
-        :param _Tags: 标签描述列表，通过指定该参数可以同时绑定标签到相应的告警策略。
-
-最大支持10个标签键值对，并且不能有重复的键值对。
+        :param _Tags: <p>标签描述列表，通过指定该参数可以同时绑定标签到相应的告警策略。</p><p>最大支持10个标签键值对，并且不能有重复的键值对。</p>
         :type Tags: list of Tag
-        :param _MonitorObjectType: 监控对象类型。0:执行语句共用监控对象; 1:每个执行语句单独选择监控对象。 
-不填则默认为0。
-当值为1时，AlarmTargets元素个数不能超过10个，AlarmTargets中的Number必须是从1开始的连续正整数，不能重复。
-
+        :param _MonitorObjectType: <p>监控对象类型。0:执行语句共用监控对象; 1:每个执行语句单独选择监控对象。<br>不填则默认为0。<br>当值为1时，AlarmTargets元素个数不能超过10个，AlarmTargets中的Number必须是从1开始的连续正整数，不能重复。</p>
         :type MonitorObjectType: int
-        :param _Classifications: 告警附加分类信息列表。
-Classifications元素个数不能超过20个。
-Classifications元素的Key不能为空，不能重复，长度不能超过50个字符，符合正则 `^[a-z]([a-z0-9_]{0,49})$`。
-Classifications元素的Value长度不能超过200个字符。
+        :param _Classifications: <p>告警附加分类信息列表。<br>Classifications元素个数不能超过20个。<br>Classifications元素的Key不能为空，不能重复，长度不能超过50个字符，符合正则 <code>^[a-z]([a-z0-9_]{0,49})$</code>。<br>Classifications元素的Value长度不能超过200个字符。</p>
         :type Classifications: list of AlarmClassification
+        :param _AlarmNoticeIds: <p>关联的日志服务告警通知渠道组列表。-通过<a href="https://cloud.tencent.com/document/product/614/56462">获取通知渠道组列表</a>获取关联的告警通知渠道组列表，和MonitorNotice互斥</p>
+        :type AlarmNoticeIds: list of str
+        :param _MonitorNotice: <p>关联的可观测平台通知模板，与 AlarmNoticeIds 参数互斥，不能同时使用</p>
+        :type MonitorNotice: :class:`tencentcloud.cls.v20201016.models.MonitorNotice`
         """
         self._Name = None
         self._AlarmTargets = None
         self._MonitorTime = None
         self._TriggerCount = None
         self._AlarmPeriod = None
-        self._AlarmNoticeIds = None
         self._Condition = None
         self._AlarmLevel = None
         self._MultiConditions = None
@@ -6478,10 +6457,12 @@ Classifications元素的Value长度不能超过200个字符。
         self._Tags = None
         self._MonitorObjectType = None
         self._Classifications = None
+        self._AlarmNoticeIds = None
+        self._MonitorNotice = None
 
     @property
     def Name(self):
-        r"""告警策略名称。最大支持255个字节。 不支持 '|'。
+        r"""<p>告警策略名称。最大支持255个字节。 不支持 &#39;|&#39;。</p>
         :rtype: str
         """
         return self._Name
@@ -6492,7 +6473,7 @@ Classifications元素的Value长度不能超过200个字符。
 
     @property
     def AlarmTargets(self):
-        r"""监控对象列表。
+        r"""<p>监控对象列表。</p>
         :rtype: list of AlarmTarget
         """
         return self._AlarmTargets
@@ -6503,7 +6484,7 @@ Classifications元素的Value长度不能超过200个字符。
 
     @property
     def MonitorTime(self):
-        r"""监控任务运行时间点。
+        r"""<p>监控任务运行时间点。</p>
         :rtype: :class:`tencentcloud.cls.v20201016.models.MonitorTime`
         """
         return self._MonitorTime
@@ -6514,7 +6495,7 @@ Classifications元素的Value长度不能超过200个字符。
 
     @property
     def TriggerCount(self):
-        r"""持续周期。持续满足触发条件TriggerCount个周期后，再进行告警；最小值为1，最大值为2000。
+        r"""<p>持续周期。持续满足触发条件TriggerCount个周期后，再进行告警；最小值为1，最大值为2000。</p>
         :rtype: int
         """
         return self._TriggerCount
@@ -6525,7 +6506,7 @@ Classifications元素的Value长度不能超过200个字符。
 
     @property
     def AlarmPeriod(self):
-        r"""告警重复的周期，单位是分钟。取值范围是0~1440。
+        r"""<p>告警重复的周期，单位是分钟。取值范围是0~1440。</p>
         :rtype: int
         """
         return self._AlarmPeriod
@@ -6535,22 +6516,8 @@ Classifications元素的Value长度不能超过200个字符。
         self._AlarmPeriod = AlarmPeriod
 
     @property
-    def AlarmNoticeIds(self):
-        r"""关联的告警通知渠道组列表。-通过[获取通知渠道组列表](https://cloud.tencent.com/document/product/614/56462)获取关联的告警通知渠道组列表，和MonitorNotice互斥
-        :rtype: list of str
-        """
-        return self._AlarmNoticeIds
-
-    @AlarmNoticeIds.setter
-    def AlarmNoticeIds(self, AlarmNoticeIds):
-        self._AlarmNoticeIds = AlarmNoticeIds
-
-    @property
     def Condition(self):
-        r"""告警发送通知的触发条件
- 注意:  
-- Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。
-
+        r"""<p>告警发送通知的触发条件<br> 注意:  </p><ul><li>Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。</li></ul>
         :rtype: str
         """
         return self._Condition
@@ -6561,11 +6528,7 @@ Classifications元素的Value长度不能超过200个字符。
 
     @property
     def AlarmLevel(self):
-        r"""告警级别
-0:警告(Warn); 1:提醒(Info); 2:紧急 (Critical)。
-注意:  
-- 不填则默认为0。
-- Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。
+        r"""<p>告警级别<br>0:警告(Warn); 1:提醒(Info); 2:紧急 (Critical)。<br>注意:  </p><ul><li>不填则默认为0。</li><li>Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。</li></ul>
         :rtype: int
         """
         return self._AlarmLevel
@@ -6576,12 +6539,7 @@ Classifications元素的Value长度不能超过200个字符。
 
     @property
     def MultiConditions(self):
-        r"""多触发条件
- 注意:  
-- Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。
-
-
-
+        r"""<p>多触发条件<br> 注意:  </p><ul><li>Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。</li></ul>
         :rtype: list of MultiCondition
         """
         return self._MultiConditions
@@ -6592,8 +6550,7 @@ Classifications元素的Value长度不能超过200个字符。
 
     @property
     def Status(self):
-        r"""是否开启告警策略。
-默认值为true
+        r"""<p>是否开启告警策略。<br>默认值为true</p>
         :rtype: bool
         """
         return self._Status
@@ -6606,7 +6563,7 @@ Classifications元素的Value长度不能超过200个字符。
     def Enable(self):
         warnings.warn("parameter `Enable` is deprecated", DeprecationWarning) 
 
-        r"""请使用Status参数控制是否开启告警策略。
+        r"""<p>请使用Status参数控制是否开启告警策略。</p>
         :rtype: bool
         """
         return self._Enable
@@ -6619,7 +6576,7 @@ Classifications元素的Value长度不能超过200个字符。
 
     @property
     def MessageTemplate(self):
-        r"""用户自定义告警内容
+        r"""<p>用户自定义告警内容</p>
         :rtype: str
         """
         return self._MessageTemplate
@@ -6630,7 +6587,7 @@ Classifications元素的Value长度不能超过200个字符。
 
     @property
     def CallBack(self):
-        r"""用户自定义回调
+        r"""<p>用户自定义回调</p>
         :rtype: :class:`tencentcloud.cls.v20201016.models.CallBackInfo`
         """
         return self._CallBack
@@ -6641,7 +6598,7 @@ Classifications元素的Value长度不能超过200个字符。
 
     @property
     def Analysis(self):
-        r"""多维分析
+        r"""<p>多维分析</p>
         :rtype: list of AnalysisDimensional
         """
         return self._Analysis
@@ -6652,8 +6609,7 @@ Classifications元素的Value长度不能超过200个字符。
 
     @property
     def GroupTriggerStatus(self):
-        r"""分组触发状态。
-默认值false
+        r"""<p>分组触发状态。<br>默认值false</p>
         :rtype: bool
         """
         return self._GroupTriggerStatus
@@ -6664,7 +6620,7 @@ Classifications元素的Value长度不能超过200个字符。
 
     @property
     def GroupTriggerCondition(self):
-        r"""分组触发条件。
+        r"""<p>分组触发条件。</p>
         :rtype: list of str
         """
         return self._GroupTriggerCondition
@@ -6675,9 +6631,7 @@ Classifications元素的Value长度不能超过200个字符。
 
     @property
     def Tags(self):
-        r"""标签描述列表，通过指定该参数可以同时绑定标签到相应的告警策略。
-
-最大支持10个标签键值对，并且不能有重复的键值对。
+        r"""<p>标签描述列表，通过指定该参数可以同时绑定标签到相应的告警策略。</p><p>最大支持10个标签键值对，并且不能有重复的键值对。</p>
         :rtype: list of Tag
         """
         return self._Tags
@@ -6688,10 +6642,7 @@ Classifications元素的Value长度不能超过200个字符。
 
     @property
     def MonitorObjectType(self):
-        r"""监控对象类型。0:执行语句共用监控对象; 1:每个执行语句单独选择监控对象。 
-不填则默认为0。
-当值为1时，AlarmTargets元素个数不能超过10个，AlarmTargets中的Number必须是从1开始的连续正整数，不能重复。
-
+        r"""<p>监控对象类型。0:执行语句共用监控对象; 1:每个执行语句单独选择监控对象。<br>不填则默认为0。<br>当值为1时，AlarmTargets元素个数不能超过10个，AlarmTargets中的Number必须是从1开始的连续正整数，不能重复。</p>
         :rtype: int
         """
         return self._MonitorObjectType
@@ -6702,10 +6653,7 @@ Classifications元素的Value长度不能超过200个字符。
 
     @property
     def Classifications(self):
-        r"""告警附加分类信息列表。
-Classifications元素个数不能超过20个。
-Classifications元素的Key不能为空，不能重复，长度不能超过50个字符，符合正则 `^[a-z]([a-z0-9_]{0,49})$`。
-Classifications元素的Value长度不能超过200个字符。
+        r"""<p>告警附加分类信息列表。<br>Classifications元素个数不能超过20个。<br>Classifications元素的Key不能为空，不能重复，长度不能超过50个字符，符合正则 <code>^[a-z]([a-z0-9_]{0,49})$</code>。<br>Classifications元素的Value长度不能超过200个字符。</p>
         :rtype: list of AlarmClassification
         """
         return self._Classifications
@@ -6713,6 +6661,28 @@ Classifications元素的Value长度不能超过200个字符。
     @Classifications.setter
     def Classifications(self, Classifications):
         self._Classifications = Classifications
+
+    @property
+    def AlarmNoticeIds(self):
+        r"""<p>关联的日志服务告警通知渠道组列表。-通过<a href="https://cloud.tencent.com/document/product/614/56462">获取通知渠道组列表</a>获取关联的告警通知渠道组列表，和MonitorNotice互斥</p>
+        :rtype: list of str
+        """
+        return self._AlarmNoticeIds
+
+    @AlarmNoticeIds.setter
+    def AlarmNoticeIds(self, AlarmNoticeIds):
+        self._AlarmNoticeIds = AlarmNoticeIds
+
+    @property
+    def MonitorNotice(self):
+        r"""<p>关联的可观测平台通知模板，与 AlarmNoticeIds 参数互斥，不能同时使用</p>
+        :rtype: :class:`tencentcloud.cls.v20201016.models.MonitorNotice`
+        """
+        return self._MonitorNotice
+
+    @MonitorNotice.setter
+    def MonitorNotice(self, MonitorNotice):
+        self._MonitorNotice = MonitorNotice
 
 
     def _deserialize(self, params):
@@ -6728,7 +6698,6 @@ Classifications元素的Value长度不能超过200个字符。
             self._MonitorTime._deserialize(params.get("MonitorTime"))
         self._TriggerCount = params.get("TriggerCount")
         self._AlarmPeriod = params.get("AlarmPeriod")
-        self._AlarmNoticeIds = params.get("AlarmNoticeIds")
         self._Condition = params.get("Condition")
         self._AlarmLevel = params.get("AlarmLevel")
         if params.get("MultiConditions") is not None:
@@ -6764,6 +6733,10 @@ Classifications元素的Value长度不能超过200个字符。
                 obj = AlarmClassification()
                 obj._deserialize(item)
                 self._Classifications.append(obj)
+        self._AlarmNoticeIds = params.get("AlarmNoticeIds")
+        if params.get("MonitorNotice") is not None:
+            self._MonitorNotice = MonitorNotice()
+            self._MonitorNotice._deserialize(params.get("MonitorNotice"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6781,7 +6754,7 @@ class CreateAlarmResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AlarmId: 告警策略ID。
+        :param _AlarmId: <p>告警策略ID。</p>
         :type AlarmId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6791,7 +6764,7 @@ class CreateAlarmResponse(AbstractModel):
 
     @property
     def AlarmId(self):
-        r"""告警策略ID。
+        r"""<p>告警策略ID。</p>
         :rtype: str
         """
         return self._AlarmId
@@ -8871,7 +8844,7 @@ class CreateDataTransformRequest(AbstractModel):
 名称限制
 - 不能为空字符串
 - 不能包含字符'|'
-- 最长 255 个字符
+- 最长128 个字符
         :type Name: str
         :param _EtlContent: 加工语句。 当FuncType为2时，EtlContent必须使用[log_auto_output](https://cloud.tencent.com/document/product/614/70733#b3c58797-4825-4807-bef4-68106e25024f) 
 
@@ -8970,7 +8943,7 @@ true：丢弃日志数据。
 名称限制
 - 不能为空字符串
 - 不能包含字符'|'
-- 最长 255 个字符
+- 最长128 个字符
         :rtype: str
         """
         return self._Name
@@ -14154,20 +14127,32 @@ class DataTransformResouceInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TopicId: 日志主题ID
-- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+        :param _TopicId: <p>日志主题ID</p><ul><li>通过<a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a>获取日志主题Id。</li></ul>
         :type TopicId: str
-        :param _Alias: 别名
-限制：不能包含字符 |。
+        :param _Alias: <p>别名<br>限制：不能包含字符 |。</p>
         :type Alias: str
+        :param _IsCrossAccount: <p>是否是跨账号主题，false不是跨账号主题，true是跨账号主题</p><p>默认值：false</p>
+        :type IsCrossAccount: bool
+        :param _RoleARN: <p>跨账号场景下，被投递账号给投递账号创建的角色ARN值，在被投递账号的角色里查找</p>
+        :type RoleARN: str
+        :param _ExternalId: <p>外部ID值，可以在被投递账号的角色-载体里找到该值</p>
+        :type ExternalId: str
+        :param _TopicName: <p>topic名称</p>
+        :type TopicName: str
+        :param _LogsetName: <p>日志集的名称</p>
+        :type LogsetName: str
         """
         self._TopicId = None
         self._Alias = None
+        self._IsCrossAccount = None
+        self._RoleARN = None
+        self._ExternalId = None
+        self._TopicName = None
+        self._LogsetName = None
 
     @property
     def TopicId(self):
-        r"""日志主题ID
-- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+        r"""<p>日志主题ID</p><ul><li>通过<a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a>获取日志主题Id。</li></ul>
         :rtype: str
         """
         return self._TopicId
@@ -14178,8 +14163,7 @@ class DataTransformResouceInfo(AbstractModel):
 
     @property
     def Alias(self):
-        r"""别名
-限制：不能包含字符 |。
+        r"""<p>别名<br>限制：不能包含字符 |。</p>
         :rtype: str
         """
         return self._Alias
@@ -14188,10 +14172,70 @@ class DataTransformResouceInfo(AbstractModel):
     def Alias(self, Alias):
         self._Alias = Alias
 
+    @property
+    def IsCrossAccount(self):
+        r"""<p>是否是跨账号主题，false不是跨账号主题，true是跨账号主题</p><p>默认值：false</p>
+        :rtype: bool
+        """
+        return self._IsCrossAccount
+
+    @IsCrossAccount.setter
+    def IsCrossAccount(self, IsCrossAccount):
+        self._IsCrossAccount = IsCrossAccount
+
+    @property
+    def RoleARN(self):
+        r"""<p>跨账号场景下，被投递账号给投递账号创建的角色ARN值，在被投递账号的角色里查找</p>
+        :rtype: str
+        """
+        return self._RoleARN
+
+    @RoleARN.setter
+    def RoleARN(self, RoleARN):
+        self._RoleARN = RoleARN
+
+    @property
+    def ExternalId(self):
+        r"""<p>外部ID值，可以在被投递账号的角色-载体里找到该值</p>
+        :rtype: str
+        """
+        return self._ExternalId
+
+    @ExternalId.setter
+    def ExternalId(self, ExternalId):
+        self._ExternalId = ExternalId
+
+    @property
+    def TopicName(self):
+        r"""<p>topic名称</p>
+        :rtype: str
+        """
+        return self._TopicName
+
+    @TopicName.setter
+    def TopicName(self, TopicName):
+        self._TopicName = TopicName
+
+    @property
+    def LogsetName(self):
+        r"""<p>日志集的名称</p>
+        :rtype: str
+        """
+        return self._LogsetName
+
+    @LogsetName.setter
+    def LogsetName(self, LogsetName):
+        self._LogsetName = LogsetName
+
 
     def _deserialize(self, params):
         self._TopicId = params.get("TopicId")
         self._Alias = params.get("Alias")
+        self._IsCrossAccount = params.get("IsCrossAccount")
+        self._RoleARN = params.get("RoleARN")
+        self._ExternalId = params.get("ExternalId")
+        self._TopicName = params.get("TopicName")
+        self._LogsetName = params.get("LogsetName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -33315,62 +33359,48 @@ class ModifyAlarmRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AlarmId: 告警策略ID。-通过[获取告警策略列表](https://cloud.tencent.com/document/product/614/56461)获取告警策略ID
+        :param _AlarmId: <p>告警策略ID。-通过<a href="https://cloud.tencent.com/document/product/614/56461">获取告警策略列表</a>获取告警策略ID</p>
         :type AlarmId: str
-        :param _Name: 告警策略名称。最大支持255个字节，不支持 '|'。
+        :param _Name: <p>告警策略名称。最大支持255个字节，不支持 &#39;|&#39;。</p>
         :type Name: str
-        :param _MonitorTime: 监控任务运行时间点。
+        :param _MonitorTime: <p>监控任务运行时间点。</p>
         :type MonitorTime: :class:`tencentcloud.cls.v20201016.models.MonitorTime`
-        :param _Condition: 告警信息发送的触发条件。
-
-注意:  
-- Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。
+        :param _Condition: <p>告警信息发送的触发条件。</p><p>注意:  </p><ul><li>Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。</li></ul>
         :type Condition: str
-        :param _AlarmLevel: 告警级别。
-
-0:警告(Warn);1:提醒(Info);2:紧急 (Critical)
-
-注意:  
-- Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。
+        :param _AlarmLevel: <p>告警级别。</p><p>0:警告(Warn);1:提醒(Info);2:紧急 (Critical)</p><p>注意:  </p><ul><li>Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。</li></ul>
         :type AlarmLevel: int
-        :param _MultiConditions: 多触发条件。 
-
-注意:  
-- Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。
+        :param _MultiConditions: <p>多触发条件。 </p><p>注意:  </p><ul><li>Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。</li></ul>
         :type MultiConditions: list of MultiCondition
-        :param _TriggerCount: 持续周期。持续满足触发条件TriggerCount个周期后，再进行告警；最小值为1，最大值为2000。
+        :param _TriggerCount: <p>持续周期。持续满足触发条件TriggerCount个周期后，再进行告警；最小值为1，最大值为2000。</p>
         :type TriggerCount: int
-        :param _AlarmPeriod: 告警重复的周期。单位是分钟。取值范围是0~1440。
+        :param _AlarmPeriod: <p>告警重复的周期。单位是分钟。取值范围是0~1440。</p>
         :type AlarmPeriod: int
-        :param _AlarmNoticeIds: 关联的告警通知渠道组列表。-通过[获取通知渠道组列表](https://cloud.tencent.com/document/product/614/56462)获取关联的告警通知渠道组列表，和MonitorNotice互斥
-        :type AlarmNoticeIds: list of str
-        :param _AlarmTargets: 监控对象列表。
+        :param _AlarmTargets: <p>监控对象列表。</p>
         :type AlarmTargets: list of AlarmTarget
-        :param _Status: 是否开启告警策略。
+        :param _Status: <p>是否开启告警策略。</p>
         :type Status: bool
-        :param _Enable: 该参数已废弃，请使用Status参数控制是否开启告警策略。
+        :param _Enable: <p>该参数已废弃，请使用Status参数控制是否开启告警策略。</p>
         :type Enable: bool
-        :param _MessageTemplate: 用户自定义告警内容
+        :param _MessageTemplate: <p>用户自定义告警内容</p>
         :type MessageTemplate: str
-        :param _CallBack: 用户自定义回调
+        :param _CallBack: <p>用户自定义回调</p>
         :type CallBack: :class:`tencentcloud.cls.v20201016.models.CallBackInfo`
-        :param _Analysis: 多维分析
+        :param _Analysis: <p>多维分析</p>
         :type Analysis: list of AnalysisDimensional
-        :param _GroupTriggerStatus: 分组触发状态。true：开启，false：关闭（默认）
+        :param _GroupTriggerStatus: <p>分组触发状态。true：开启，false：关闭（默认）</p>
         :type GroupTriggerStatus: bool
-        :param _GroupTriggerCondition: 分组触发条件。
+        :param _GroupTriggerCondition: <p>分组触发条件。</p>
         :type GroupTriggerCondition: list of str
-        :param _Tags: 标签描述列表，通过指定该参数可以同时绑定标签到相应的告警策略。最大支持10个标签键值对，并且不能有重复的键值对。
+        :param _Tags: <p>标签描述列表，通过指定该参数可以同时绑定标签到相应的告警策略。最大支持10个标签键值对，并且不能有重复的键值对。</p>
         :type Tags: list of Tag
-        :param _MonitorObjectType: 监控对象类型。0:执行语句共用监控对象; 1:每个执行语句单独选择监控对象。 
-当值为1时，AlarmTargets元素个数不能超过10个，AlarmTargets中的Number必须是从1开始的连续正整数，不能重复。
-
+        :param _MonitorObjectType: <p>监控对象类型。0:执行语句共用监控对象; 1:每个执行语句单独选择监控对象。<br>当值为1时，AlarmTargets元素个数不能超过10个，AlarmTargets中的Number必须是从1开始的连续正整数，不能重复。</p>
         :type MonitorObjectType: int
-        :param _Classifications: 告警附加分类信息列表。
-Classifications元素个数不能超过20个。
-Classifications元素的Key不能为空，不能重复，长度不能超过50个字符，符合正则 `^[a-z]([a-z0-9_]{0,49})$`。
-Classifications元素的Value长度不能超过200个字符。
+        :param _Classifications: <p>告警附加分类信息列表。<br>Classifications元素个数不能超过20个。<br>Classifications元素的Key不能为空，不能重复，长度不能超过50个字符，符合正则 <code>^[a-z]([a-z0-9_]{0,49})$</code>。<br>Classifications元素的Value长度不能超过200个字符。</p>
         :type Classifications: list of AlarmClassification
+        :param _AlarmNoticeIds: <p>关联的日志服务告警通知渠道组列表。-通过<a href="https://cloud.tencent.com/document/product/614/56462">获取通知渠道组列表</a>获取关联的告警通知渠道组列表，和MonitorNotice互斥</p>
+        :type AlarmNoticeIds: list of str
+        :param _MonitorNotice: <p>关联的可观测平台通知模板，与 AlarmNoticeIds 参数互斥，不能同时使用</p>
+        :type MonitorNotice: :class:`tencentcloud.cls.v20201016.models.MonitorNotice`
         """
         self._AlarmId = None
         self._Name = None
@@ -33380,7 +33410,6 @@ Classifications元素的Value长度不能超过200个字符。
         self._MultiConditions = None
         self._TriggerCount = None
         self._AlarmPeriod = None
-        self._AlarmNoticeIds = None
         self._AlarmTargets = None
         self._Status = None
         self._Enable = None
@@ -33392,10 +33421,12 @@ Classifications元素的Value长度不能超过200个字符。
         self._Tags = None
         self._MonitorObjectType = None
         self._Classifications = None
+        self._AlarmNoticeIds = None
+        self._MonitorNotice = None
 
     @property
     def AlarmId(self):
-        r"""告警策略ID。-通过[获取告警策略列表](https://cloud.tencent.com/document/product/614/56461)获取告警策略ID
+        r"""<p>告警策略ID。-通过<a href="https://cloud.tencent.com/document/product/614/56461">获取告警策略列表</a>获取告警策略ID</p>
         :rtype: str
         """
         return self._AlarmId
@@ -33406,7 +33437,7 @@ Classifications元素的Value长度不能超过200个字符。
 
     @property
     def Name(self):
-        r"""告警策略名称。最大支持255个字节，不支持 '|'。
+        r"""<p>告警策略名称。最大支持255个字节，不支持 &#39;|&#39;。</p>
         :rtype: str
         """
         return self._Name
@@ -33417,7 +33448,7 @@ Classifications元素的Value长度不能超过200个字符。
 
     @property
     def MonitorTime(self):
-        r"""监控任务运行时间点。
+        r"""<p>监控任务运行时间点。</p>
         :rtype: :class:`tencentcloud.cls.v20201016.models.MonitorTime`
         """
         return self._MonitorTime
@@ -33428,10 +33459,7 @@ Classifications元素的Value长度不能超过200个字符。
 
     @property
     def Condition(self):
-        r"""告警信息发送的触发条件。
-
-注意:  
-- Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。
+        r"""<p>告警信息发送的触发条件。</p><p>注意:  </p><ul><li>Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。</li></ul>
         :rtype: str
         """
         return self._Condition
@@ -33442,12 +33470,7 @@ Classifications元素的Value长度不能超过200个字符。
 
     @property
     def AlarmLevel(self):
-        r"""告警级别。
-
-0:警告(Warn);1:提醒(Info);2:紧急 (Critical)
-
-注意:  
-- Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。
+        r"""<p>告警级别。</p><p>0:警告(Warn);1:提醒(Info);2:紧急 (Critical)</p><p>注意:  </p><ul><li>Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。</li></ul>
         :rtype: int
         """
         return self._AlarmLevel
@@ -33458,10 +33481,7 @@ Classifications元素的Value长度不能超过200个字符。
 
     @property
     def MultiConditions(self):
-        r"""多触发条件。 
-
-注意:  
-- Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。
+        r"""<p>多触发条件。 </p><p>注意:  </p><ul><li>Condition和AlarmLevel是一组配置，MultiConditions是另一组配置，2组配置互斥。</li></ul>
         :rtype: list of MultiCondition
         """
         return self._MultiConditions
@@ -33472,7 +33492,7 @@ Classifications元素的Value长度不能超过200个字符。
 
     @property
     def TriggerCount(self):
-        r"""持续周期。持续满足触发条件TriggerCount个周期后，再进行告警；最小值为1，最大值为2000。
+        r"""<p>持续周期。持续满足触发条件TriggerCount个周期后，再进行告警；最小值为1，最大值为2000。</p>
         :rtype: int
         """
         return self._TriggerCount
@@ -33483,7 +33503,7 @@ Classifications元素的Value长度不能超过200个字符。
 
     @property
     def AlarmPeriod(self):
-        r"""告警重复的周期。单位是分钟。取值范围是0~1440。
+        r"""<p>告警重复的周期。单位是分钟。取值范围是0~1440。</p>
         :rtype: int
         """
         return self._AlarmPeriod
@@ -33493,19 +33513,8 @@ Classifications元素的Value长度不能超过200个字符。
         self._AlarmPeriod = AlarmPeriod
 
     @property
-    def AlarmNoticeIds(self):
-        r"""关联的告警通知渠道组列表。-通过[获取通知渠道组列表](https://cloud.tencent.com/document/product/614/56462)获取关联的告警通知渠道组列表，和MonitorNotice互斥
-        :rtype: list of str
-        """
-        return self._AlarmNoticeIds
-
-    @AlarmNoticeIds.setter
-    def AlarmNoticeIds(self, AlarmNoticeIds):
-        self._AlarmNoticeIds = AlarmNoticeIds
-
-    @property
     def AlarmTargets(self):
-        r"""监控对象列表。
+        r"""<p>监控对象列表。</p>
         :rtype: list of AlarmTarget
         """
         return self._AlarmTargets
@@ -33516,7 +33525,7 @@ Classifications元素的Value长度不能超过200个字符。
 
     @property
     def Status(self):
-        r"""是否开启告警策略。
+        r"""<p>是否开启告警策略。</p>
         :rtype: bool
         """
         return self._Status
@@ -33529,7 +33538,7 @@ Classifications元素的Value长度不能超过200个字符。
     def Enable(self):
         warnings.warn("parameter `Enable` is deprecated", DeprecationWarning) 
 
-        r"""该参数已废弃，请使用Status参数控制是否开启告警策略。
+        r"""<p>该参数已废弃，请使用Status参数控制是否开启告警策略。</p>
         :rtype: bool
         """
         return self._Enable
@@ -33542,7 +33551,7 @@ Classifications元素的Value长度不能超过200个字符。
 
     @property
     def MessageTemplate(self):
-        r"""用户自定义告警内容
+        r"""<p>用户自定义告警内容</p>
         :rtype: str
         """
         return self._MessageTemplate
@@ -33553,7 +33562,7 @@ Classifications元素的Value长度不能超过200个字符。
 
     @property
     def CallBack(self):
-        r"""用户自定义回调
+        r"""<p>用户自定义回调</p>
         :rtype: :class:`tencentcloud.cls.v20201016.models.CallBackInfo`
         """
         return self._CallBack
@@ -33564,7 +33573,7 @@ Classifications元素的Value长度不能超过200个字符。
 
     @property
     def Analysis(self):
-        r"""多维分析
+        r"""<p>多维分析</p>
         :rtype: list of AnalysisDimensional
         """
         return self._Analysis
@@ -33575,7 +33584,7 @@ Classifications元素的Value长度不能超过200个字符。
 
     @property
     def GroupTriggerStatus(self):
-        r"""分组触发状态。true：开启，false：关闭（默认）
+        r"""<p>分组触发状态。true：开启，false：关闭（默认）</p>
         :rtype: bool
         """
         return self._GroupTriggerStatus
@@ -33586,7 +33595,7 @@ Classifications元素的Value长度不能超过200个字符。
 
     @property
     def GroupTriggerCondition(self):
-        r"""分组触发条件。
+        r"""<p>分组触发条件。</p>
         :rtype: list of str
         """
         return self._GroupTriggerCondition
@@ -33597,7 +33606,7 @@ Classifications元素的Value长度不能超过200个字符。
 
     @property
     def Tags(self):
-        r"""标签描述列表，通过指定该参数可以同时绑定标签到相应的告警策略。最大支持10个标签键值对，并且不能有重复的键值对。
+        r"""<p>标签描述列表，通过指定该参数可以同时绑定标签到相应的告警策略。最大支持10个标签键值对，并且不能有重复的键值对。</p>
         :rtype: list of Tag
         """
         return self._Tags
@@ -33608,9 +33617,7 @@ Classifications元素的Value长度不能超过200个字符。
 
     @property
     def MonitorObjectType(self):
-        r"""监控对象类型。0:执行语句共用监控对象; 1:每个执行语句单独选择监控对象。 
-当值为1时，AlarmTargets元素个数不能超过10个，AlarmTargets中的Number必须是从1开始的连续正整数，不能重复。
-
+        r"""<p>监控对象类型。0:执行语句共用监控对象; 1:每个执行语句单独选择监控对象。<br>当值为1时，AlarmTargets元素个数不能超过10个，AlarmTargets中的Number必须是从1开始的连续正整数，不能重复。</p>
         :rtype: int
         """
         return self._MonitorObjectType
@@ -33621,10 +33628,7 @@ Classifications元素的Value长度不能超过200个字符。
 
     @property
     def Classifications(self):
-        r"""告警附加分类信息列表。
-Classifications元素个数不能超过20个。
-Classifications元素的Key不能为空，不能重复，长度不能超过50个字符，符合正则 `^[a-z]([a-z0-9_]{0,49})$`。
-Classifications元素的Value长度不能超过200个字符。
+        r"""<p>告警附加分类信息列表。<br>Classifications元素个数不能超过20个。<br>Classifications元素的Key不能为空，不能重复，长度不能超过50个字符，符合正则 <code>^[a-z]([a-z0-9_]{0,49})$</code>。<br>Classifications元素的Value长度不能超过200个字符。</p>
         :rtype: list of AlarmClassification
         """
         return self._Classifications
@@ -33632,6 +33636,28 @@ Classifications元素的Value长度不能超过200个字符。
     @Classifications.setter
     def Classifications(self, Classifications):
         self._Classifications = Classifications
+
+    @property
+    def AlarmNoticeIds(self):
+        r"""<p>关联的日志服务告警通知渠道组列表。-通过<a href="https://cloud.tencent.com/document/product/614/56462">获取通知渠道组列表</a>获取关联的告警通知渠道组列表，和MonitorNotice互斥</p>
+        :rtype: list of str
+        """
+        return self._AlarmNoticeIds
+
+    @AlarmNoticeIds.setter
+    def AlarmNoticeIds(self, AlarmNoticeIds):
+        self._AlarmNoticeIds = AlarmNoticeIds
+
+    @property
+    def MonitorNotice(self):
+        r"""<p>关联的可观测平台通知模板，与 AlarmNoticeIds 参数互斥，不能同时使用</p>
+        :rtype: :class:`tencentcloud.cls.v20201016.models.MonitorNotice`
+        """
+        return self._MonitorNotice
+
+    @MonitorNotice.setter
+    def MonitorNotice(self, MonitorNotice):
+        self._MonitorNotice = MonitorNotice
 
 
     def _deserialize(self, params):
@@ -33650,7 +33676,6 @@ Classifications元素的Value长度不能超过200个字符。
                 self._MultiConditions.append(obj)
         self._TriggerCount = params.get("TriggerCount")
         self._AlarmPeriod = params.get("AlarmPeriod")
-        self._AlarmNoticeIds = params.get("AlarmNoticeIds")
         if params.get("AlarmTargets") is not None:
             self._AlarmTargets = []
             for item in params.get("AlarmTargets"):
@@ -33684,6 +33709,10 @@ Classifications元素的Value长度不能超过200个字符。
                 obj = AlarmClassification()
                 obj._deserialize(item)
                 self._Classifications.append(obj)
+        self._AlarmNoticeIds = params.get("AlarmNoticeIds")
+        if params.get("MonitorNotice") is not None:
+            self._MonitorNotice = MonitorNotice()
+            self._MonitorNotice._deserialize(params.get("MonitorNotice"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -39243,12 +39272,12 @@ class MonitorNoticeRule(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NoticeId: 腾讯云可观测平台通知模板 ID
+        :param _NoticeId: <p>腾讯云可观测平台通知模板 ID</p>
         :type NoticeId: str
-        :param _ContentTmplId: 腾讯云可观测平台内容模板ID，不传默认内容模板
+        :param _ContentTmplId: <p>腾讯云可观测平台内容模板ID，为空时使用默认内容模板</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ContentTmplId: str
-        :param _AlarmLevels: 告警级别,0:警告(Warn); 1:提醒(Info); 2:紧急 (Critical)
+        :param _AlarmLevels: <p>告警级别,0:警告(Warn); 1:提醒(Info); 2:紧急 (Critical)</p>
         :type AlarmLevels: list of int non-negative
         """
         self._NoticeId = None
@@ -39257,7 +39286,7 @@ class MonitorNoticeRule(AbstractModel):
 
     @property
     def NoticeId(self):
-        r"""腾讯云可观测平台通知模板 ID
+        r"""<p>腾讯云可观测平台通知模板 ID</p>
         :rtype: str
         """
         return self._NoticeId
@@ -39268,7 +39297,7 @@ class MonitorNoticeRule(AbstractModel):
 
     @property
     def ContentTmplId(self):
-        r"""腾讯云可观测平台内容模板ID，不传默认内容模板
+        r"""<p>腾讯云可观测平台内容模板ID，为空时使用默认内容模板</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -39280,7 +39309,7 @@ class MonitorNoticeRule(AbstractModel):
 
     @property
     def AlarmLevels(self):
-        r"""告警级别,0:警告(Warn); 1:提醒(Info); 2:紧急 (Critical)
+        r"""<p>告警级别,0:警告(Warn); 1:提醒(Info); 2:紧急 (Critical)</p>
         :rtype: list of int non-negative
         """
         return self._AlarmLevels

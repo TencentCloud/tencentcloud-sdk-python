@@ -164,6 +164,30 @@ class TrtcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateCloudTranscription(self, request):
+        r"""接口说明：
+        启动云端转录功能。
+
+        :param request: Request instance for CreateCloudTranscription.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.CreateCloudTranscriptionRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.CreateCloudTranscriptionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCloudTranscription", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateCloudTranscriptionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreatePicture(self, request):
         r"""如果您需要在 [云端混流转码](https://cloud.tencent.com/document/product/647/16827) 时频繁新增自定义背景图或水印，可通过此接口上传新的图片素材。无需频繁新增图片的场景，建议直接在 [控制台 > 应用管理 > 素材管理](https://cloud.tencent.com/document/product/647/50769) 中操作。
 
@@ -270,6 +294,29 @@ class TrtcClient(AbstractClient):
             body = self.call("DeleteCloudSliceTask", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteCloudSliceTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteCloudTranscription(self, request):
+        r"""成功开启转录后，可以使用此接口来停止转录任务。
+
+        :param request: Request instance for DeleteCloudTranscription.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.DeleteCloudTranscriptionRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.DeleteCloudTranscriptionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteCloudTranscription", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteCloudTranscriptionResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -460,6 +507,29 @@ class TrtcClient(AbstractClient):
             body = self.call("DescribeCloudSliceTask", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeCloudSliceTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCloudTranscription(self, request):
+        r"""成功开启转录后，可以使用此接口来查询录制状态。仅在转录任务进行时有效，转录退出后查询将会返回错误。
+
+        :param request: Request instance for DescribeCloudTranscription.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeCloudTranscriptionRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.DescribeCloudTranscriptionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCloudTranscription", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCloudTranscriptionResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

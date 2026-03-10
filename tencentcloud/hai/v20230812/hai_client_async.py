@@ -187,6 +187,24 @@ class HaiClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeServices(
+            self,
+            request: models.DescribeServicesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeServicesResponse:
+        """
+        本接口 (DescribeServices) 用于查询一个或多个服务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeServices"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeServicesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def InquirePriceRunInstances(
             self,
             request: models.InquirePriceRunInstancesRequest,

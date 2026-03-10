@@ -29975,7 +29975,7 @@ class ExportContractReviewResultRequest(AbstractModel):
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         :param _TaskId: 合同审查任务ID
         :type TaskId: str
-        :param _FileType: 导出文件类型。1  = 带风险批注文件; 2 = 审查结果＆摘要（.xIsx）
+        :param _FileType: 导出文件类型。1  = 带风险批注文件; 2 = 审查结果＆摘要（.xIsx）; 3 = 不带批注文件
         :type FileType: int
         :param _Agent: 代理企业和员工的信息。
 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
@@ -30011,7 +30011,7 @@ class ExportContractReviewResultRequest(AbstractModel):
 
     @property
     def FileType(self):
-        r"""导出文件类型。1  = 带风险批注文件; 2 = 审查结果＆摘要（.xIsx）
+        r"""导出文件类型。1  = 带风险批注文件; 2 = 审查结果＆摘要（.xIsx）; 3 = 不带批注文件
         :rtype: int
         """
         return self._FileType

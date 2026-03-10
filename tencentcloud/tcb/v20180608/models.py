@@ -6848,12 +6848,15 @@ class DescribeTablesRequest(AbstractModel):
         :type EnvId: str
         :param _MongoConnector: MongoConnector
         :type MongoConnector: :class:`tencentcloud.tcb.v20180608.models.MongoConnector`
+        :param _TableNames: 指定表名过滤，为空时返回所有表
+        :type TableNames: list of str
         """
         self._MgoLimit = None
         self._Tag = None
         self._MgoOffset = None
         self._EnvId = None
         self._MongoConnector = None
+        self._TableNames = None
 
     @property
     def MgoLimit(self):
@@ -6910,6 +6913,17 @@ class DescribeTablesRequest(AbstractModel):
     def MongoConnector(self, MongoConnector):
         self._MongoConnector = MongoConnector
 
+    @property
+    def TableNames(self):
+        r"""指定表名过滤，为空时返回所有表
+        :rtype: list of str
+        """
+        return self._TableNames
+
+    @TableNames.setter
+    def TableNames(self, TableNames):
+        self._TableNames = TableNames
+
 
     def _deserialize(self, params):
         self._MgoLimit = params.get("MgoLimit")
@@ -6919,6 +6933,7 @@ class DescribeTablesRequest(AbstractModel):
         if params.get("MongoConnector") is not None:
             self._MongoConnector = MongoConnector()
             self._MongoConnector._deserialize(params.get("MongoConnector"))
+        self._TableNames = params.get("TableNames")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -20689,24 +20689,23 @@ class DescribeBillAdjustInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Month: 格式：yyyy-MM
-账单月份，month和timeFrom&timeTo必传一个，如果有传timeFrom&timeTo则month字段无效
+        :param _Month: <p>格式：yyyy-MM<br>账单月份，month和timeFrom&amp;timeTo必传一个，如果有传timeFrom&amp;timeTo则month字段无效</p>
         :type Month: str
-        :param _TimeFrom: 格式：yyyy-MM-dd
-开始时间，month和timeFrom&timeTo必传一个，如果有该字段则month字段无效。timeFrom和timeTo必须一起传，且为相同月份，不支持跨月查询，查询结果是整月数据
+        :param _TimeFrom: <p>格式：yyyy-MM-dd<br>开始时间，month和timeFrom&amp;timeTo必传一个，如果有该字段则month字段无效。timeFrom和timeTo必须一起传，且为相同月份，不支持跨月查询，查询结果是整月数据</p>
         :type TimeFrom: str
-        :param _TimeTo: 格式：yyyy-MM-dd
-截止时间，month和timeFrom&timeTo必传一个，如果有该字段则month字段无效。timeFrom和timeTo必须一起传，且为相同月份，不支持跨月查询，查询结果是整月数据
+        :param _TimeTo: <p>格式：yyyy-MM-dd<br>截止时间，month和timeFrom&amp;timeTo必传一个，如果有该字段则month字段无效。timeFrom和timeTo必须一起传，且为相同月份，不支持跨月查询，查询结果是整月数据</p>
         :type TimeTo: str
+        :param _PayerUin: <p>支付者的账号 ID（账号 ID 是用户在腾讯云的唯一账号标识），默认查询本账号账单，如集团管理账号需查询成员账号自付的账单，该字段需入参成员账号UIN</p>
+        :type PayerUin: str
         """
         self._Month = None
         self._TimeFrom = None
         self._TimeTo = None
+        self._PayerUin = None
 
     @property
     def Month(self):
-        r"""格式：yyyy-MM
-账单月份，month和timeFrom&timeTo必传一个，如果有传timeFrom&timeTo则month字段无效
+        r"""<p>格式：yyyy-MM<br>账单月份，month和timeFrom&amp;timeTo必传一个，如果有传timeFrom&amp;timeTo则month字段无效</p>
         :rtype: str
         """
         return self._Month
@@ -20717,8 +20716,7 @@ class DescribeBillAdjustInfoRequest(AbstractModel):
 
     @property
     def TimeFrom(self):
-        r"""格式：yyyy-MM-dd
-开始时间，month和timeFrom&timeTo必传一个，如果有该字段则month字段无效。timeFrom和timeTo必须一起传，且为相同月份，不支持跨月查询，查询结果是整月数据
+        r"""<p>格式：yyyy-MM-dd<br>开始时间，month和timeFrom&amp;timeTo必传一个，如果有该字段则month字段无效。timeFrom和timeTo必须一起传，且为相同月份，不支持跨月查询，查询结果是整月数据</p>
         :rtype: str
         """
         return self._TimeFrom
@@ -20729,8 +20727,7 @@ class DescribeBillAdjustInfoRequest(AbstractModel):
 
     @property
     def TimeTo(self):
-        r"""格式：yyyy-MM-dd
-截止时间，month和timeFrom&timeTo必传一个，如果有该字段则month字段无效。timeFrom和timeTo必须一起传，且为相同月份，不支持跨月查询，查询结果是整月数据
+        r"""<p>格式：yyyy-MM-dd<br>截止时间，month和timeFrom&amp;timeTo必传一个，如果有该字段则month字段无效。timeFrom和timeTo必须一起传，且为相同月份，不支持跨月查询，查询结果是整月数据</p>
         :rtype: str
         """
         return self._TimeTo
@@ -20739,11 +20736,23 @@ class DescribeBillAdjustInfoRequest(AbstractModel):
     def TimeTo(self, TimeTo):
         self._TimeTo = TimeTo
 
+    @property
+    def PayerUin(self):
+        r"""<p>支付者的账号 ID（账号 ID 是用户在腾讯云的唯一账号标识），默认查询本账号账单，如集团管理账号需查询成员账号自付的账单，该字段需入参成员账号UIN</p>
+        :rtype: str
+        """
+        return self._PayerUin
+
+    @PayerUin.setter
+    def PayerUin(self, PayerUin):
+        self._PayerUin = PayerUin
+
 
     def _deserialize(self, params):
         self._Month = params.get("Month")
         self._TimeFrom = params.get("TimeFrom")
         self._TimeTo = params.get("TimeTo")
+        self._PayerUin = params.get("PayerUin")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20761,9 +20770,9 @@ class DescribeBillAdjustInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Total: 数据总量
+        :param _Total: <p>数据总量</p>
         :type Total: int
-        :param _Data: 明细数据
+        :param _Data: <p>明细数据</p>
         :type Data: list of AdjustInfoDetail
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -20774,7 +20783,7 @@ class DescribeBillAdjustInfoResponse(AbstractModel):
 
     @property
     def Total(self):
-        r"""数据总量
+        r"""<p>数据总量</p>
         :rtype: int
         """
         return self._Total
@@ -20785,7 +20794,7 @@ class DescribeBillAdjustInfoResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""明细数据
+        r"""<p>明细数据</p>
         :rtype: list of AdjustInfoDetail
         """
         return self._Data
@@ -23627,23 +23636,26 @@ class DescribeBillSummaryRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Month: 账单月份，格式为2023-04
+        :param _Month: <p>账单月份，格式为2023-04</p>
         :type Month: str
-        :param _GroupType: 账单维度类型，枚举值如下：business、project、region、payMode、tag
+        :param _GroupType: <p>账单维度类型，枚举值如下：business、project、region、payMode、tag</p>
         :type GroupType: str
-        :param _TagKey: 标签键，GroupType=tag获取标签维度账单时传
+        :param _TagKey: <p>标签键，GroupType=tag获取标签维度账单时传</p>
         :type TagKey: list of str
-        :param _OperateUin: 操作者UIN：操作者账号 ID（预付费资源下单或后付费操作开通资源账号的 ID 或者角色 ID ）
+        :param _OperateUin: <p>操作者UIN：操作者账号 ID（预付费资源下单或后付费操作开通资源账号的 ID 或者角色 ID ）</p>
         :type OperateUin: str
+        :param _PayerUin: <p>支付者的账号 ID（账号 ID 是用户在腾讯云的唯一账号标识），默认查询本账号账单，如集团管理账号需查询成员账号自付的账单，该字段需入参成员账号UIN</p>
+        :type PayerUin: str
         """
         self._Month = None
         self._GroupType = None
         self._TagKey = None
         self._OperateUin = None
+        self._PayerUin = None
 
     @property
     def Month(self):
-        r"""账单月份，格式为2023-04
+        r"""<p>账单月份，格式为2023-04</p>
         :rtype: str
         """
         return self._Month
@@ -23654,7 +23666,7 @@ class DescribeBillSummaryRequest(AbstractModel):
 
     @property
     def GroupType(self):
-        r"""账单维度类型，枚举值如下：business、project、region、payMode、tag
+        r"""<p>账单维度类型，枚举值如下：business、project、region、payMode、tag</p>
         :rtype: str
         """
         return self._GroupType
@@ -23665,7 +23677,7 @@ class DescribeBillSummaryRequest(AbstractModel):
 
     @property
     def TagKey(self):
-        r"""标签键，GroupType=tag获取标签维度账单时传
+        r"""<p>标签键，GroupType=tag获取标签维度账单时传</p>
         :rtype: list of str
         """
         return self._TagKey
@@ -23676,7 +23688,7 @@ class DescribeBillSummaryRequest(AbstractModel):
 
     @property
     def OperateUin(self):
-        r"""操作者UIN：操作者账号 ID（预付费资源下单或后付费操作开通资源账号的 ID 或者角色 ID ）
+        r"""<p>操作者UIN：操作者账号 ID（预付费资源下单或后付费操作开通资源账号的 ID 或者角色 ID ）</p>
         :rtype: str
         """
         return self._OperateUin
@@ -23685,12 +23697,24 @@ class DescribeBillSummaryRequest(AbstractModel):
     def OperateUin(self, OperateUin):
         self._OperateUin = OperateUin
 
+    @property
+    def PayerUin(self):
+        r"""<p>支付者的账号 ID（账号 ID 是用户在腾讯云的唯一账号标识），默认查询本账号账单，如集团管理账号需查询成员账号自付的账单，该字段需入参成员账号UIN</p>
+        :rtype: str
+        """
+        return self._PayerUin
+
+    @PayerUin.setter
+    def PayerUin(self, PayerUin):
+        self._PayerUin = PayerUin
+
 
     def _deserialize(self, params):
         self._Month = params.get("Month")
         self._GroupType = params.get("GroupType")
         self._TagKey = params.get("TagKey")
         self._OperateUin = params.get("OperateUin")
+        self._PayerUin = params.get("PayerUin")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -23708,9 +23732,9 @@ class DescribeBillSummaryResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Ready: 数据是否准备好，0准备中，1已就绪。（Ready=0，为当前UIN首次进行初始化出账，预计需要5~10分钟出账，请于10分钟后重试即可）
+        :param _Ready: <p>数据是否准备好，0准备中，1已就绪。（Ready=0，为当前UIN首次进行初始化出账，预计需要5~10分钟出账，请于10分钟后重试即可）</p>
         :type Ready: int
-        :param _SummaryDetail: 账单多维度汇总消费详情
+        :param _SummaryDetail: <p>账单多维度汇总消费详情</p>
         :type SummaryDetail: list of SummaryDetail
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -23721,7 +23745,7 @@ class DescribeBillSummaryResponse(AbstractModel):
 
     @property
     def Ready(self):
-        r"""数据是否准备好，0准备中，1已就绪。（Ready=0，为当前UIN首次进行初始化出账，预计需要5~10分钟出账，请于10分钟后重试即可）
+        r"""<p>数据是否准备好，0准备中，1已就绪。（Ready=0，为当前UIN首次进行初始化出账，预计需要5~10分钟出账，请于10分钟后重试即可）</p>
         :rtype: int
         """
         return self._Ready
@@ -23732,7 +23756,7 @@ class DescribeBillSummaryResponse(AbstractModel):
 
     @property
     def SummaryDetail(self):
-        r"""账单多维度汇总消费详情
+        r"""<p>账单多维度汇总消费详情</p>
         :rtype: list of SummaryDetail
         """
         return self._SummaryDetail

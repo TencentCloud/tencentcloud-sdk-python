@@ -151,6 +151,24 @@ class OrganizationClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def AddShareUnitNode(
+            self,
+            request: models.AddShareUnitNodeRequest,
+            opts: Dict = None,
+    ) -> models.AddShareUnitNodeResponse:
+        """
+        添加共享单元部门
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "AddShareUnitNode"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.AddShareUnitNodeResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def AddShareUnitResources(
             self,
             request: models.AddShareUnitResourcesRequest,
@@ -835,6 +853,24 @@ class OrganizationClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteShareUnitNode(
+            self,
+            request: models.DeleteShareUnitNodeRequest,
+            opts: Dict = None,
+    ) -> models.DeleteShareUnitNodeResponse:
+        """
+        删除共享单元部门
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteShareUnitNode"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteShareUnitNodeResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteShareUnitResources(
             self,
             request: models.DeleteShareUnitResourcesRequest,
@@ -1226,6 +1262,24 @@ class OrganizationClient(AbstractClient):
         kwargs["action"] = "DescribeShareUnitMembers"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeShareUnitMembersResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeShareUnitNodes(
+            self,
+            request: models.DescribeShareUnitNodesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeShareUnitNodesResponse:
+        """
+        获取共享单元部门列表。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeShareUnitNodes"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeShareUnitNodesResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

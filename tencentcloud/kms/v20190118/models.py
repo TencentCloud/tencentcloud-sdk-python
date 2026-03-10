@@ -78,8 +78,11 @@ class ArchiveKeyRequest(AbstractModel):
         r"""
         :param _KeyId: CMK唯一标识符
         :type KeyId: str
+        :param _MemberAccount: 可信服务成员账号信息,当前账号时管理员或者委派管理员时有效。
+        :type MemberAccount: :class:`tencentcloud.kms.v20190118.models.MemberAccount`
         """
         self._KeyId = None
+        self._MemberAccount = None
 
     @property
     def KeyId(self):
@@ -92,9 +95,23 @@ class ArchiveKeyRequest(AbstractModel):
     def KeyId(self, KeyId):
         self._KeyId = KeyId
 
+    @property
+    def MemberAccount(self):
+        r"""可信服务成员账号信息,当前账号时管理员或者委派管理员时有效。
+        :rtype: :class:`tencentcloud.kms.v20190118.models.MemberAccount`
+        """
+        return self._MemberAccount
+
+    @MemberAccount.setter
+    def MemberAccount(self, MemberAccount):
+        self._MemberAccount = MemberAccount
+
 
     def _deserialize(self, params):
         self._KeyId = params.get("KeyId")
+        if params.get("MemberAccount") is not None:
+            self._MemberAccount = MemberAccount()
+            self._MemberAccount._deserialize(params.get("MemberAccount"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -469,8 +486,11 @@ class CancelDataKeyDeletionRequest(AbstractModel):
         r"""
         :param _DataKeyId: 数据密钥的唯一标志符
         :type DataKeyId: str
+        :param _MemberAccount: 可信服务成员账号信息,当前账号时管理员或者委派管理员时有效。
+        :type MemberAccount: :class:`tencentcloud.kms.v20190118.models.MemberAccount`
         """
         self._DataKeyId = None
+        self._MemberAccount = None
 
     @property
     def DataKeyId(self):
@@ -483,9 +503,23 @@ class CancelDataKeyDeletionRequest(AbstractModel):
     def DataKeyId(self, DataKeyId):
         self._DataKeyId = DataKeyId
 
+    @property
+    def MemberAccount(self):
+        r"""可信服务成员账号信息,当前账号时管理员或者委派管理员时有效。
+        :rtype: :class:`tencentcloud.kms.v20190118.models.MemberAccount`
+        """
+        return self._MemberAccount
+
+    @MemberAccount.setter
+    def MemberAccount(self, MemberAccount):
+        self._MemberAccount = MemberAccount
+
 
     def _deserialize(self, params):
         self._DataKeyId = params.get("DataKeyId")
+        if params.get("MemberAccount") is not None:
+            self._MemberAccount = MemberAccount()
+            self._MemberAccount._deserialize(params.get("MemberAccount"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -548,8 +582,11 @@ class CancelKeyArchiveRequest(AbstractModel):
         r"""
         :param _KeyId: CMK唯一标识符
         :type KeyId: str
+        :param _MemberAccount: 可信服务成员账号信息,当前账号时管理员或者委派管理员时有效。
+        :type MemberAccount: :class:`tencentcloud.kms.v20190118.models.MemberAccount`
         """
         self._KeyId = None
+        self._MemberAccount = None
 
     @property
     def KeyId(self):
@@ -562,9 +599,23 @@ class CancelKeyArchiveRequest(AbstractModel):
     def KeyId(self, KeyId):
         self._KeyId = KeyId
 
+    @property
+    def MemberAccount(self):
+        r"""可信服务成员账号信息,当前账号时管理员或者委派管理员时有效。
+        :rtype: :class:`tencentcloud.kms.v20190118.models.MemberAccount`
+        """
+        return self._MemberAccount
+
+    @MemberAccount.setter
+    def MemberAccount(self, MemberAccount):
+        self._MemberAccount = MemberAccount
+
 
     def _deserialize(self, params):
         self._KeyId = params.get("KeyId")
+        if params.get("MemberAccount") is not None:
+            self._MemberAccount = MemberAccount()
+            self._MemberAccount._deserialize(params.get("MemberAccount"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -612,8 +663,11 @@ class CancelKeyDeletionRequest(AbstractModel):
         r"""
         :param _KeyId: 需要被取消删除的CMK的唯一标志
         :type KeyId: str
+        :param _MemberAccount: 可信服务成员账号信息,当前账号时管理员或者委派管理员时有效。
+        :type MemberAccount: :class:`tencentcloud.kms.v20190118.models.MemberAccount`
         """
         self._KeyId = None
+        self._MemberAccount = None
 
     @property
     def KeyId(self):
@@ -626,9 +680,23 @@ class CancelKeyDeletionRequest(AbstractModel):
     def KeyId(self, KeyId):
         self._KeyId = KeyId
 
+    @property
+    def MemberAccount(self):
+        r"""可信服务成员账号信息,当前账号时管理员或者委派管理员时有效。
+        :rtype: :class:`tencentcloud.kms.v20190118.models.MemberAccount`
+        """
+        return self._MemberAccount
+
+    @MemberAccount.setter
+    def MemberAccount(self, MemberAccount):
+        self._MemberAccount = MemberAccount
+
 
     def _deserialize(self, params):
         self._KeyId = params.get("KeyId")
+        if params.get("MemberAccount") is not None:
+            self._MemberAccount = MemberAccount()
+            self._MemberAccount._deserialize(params.get("MemberAccount"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1235,6 +1303,12 @@ class DataKeyMetadata(AbstractModel):
         :type SyncEndTime: int
         :param _SourceHsmClusterId: 同步的原始集群，如果为空，是公有云公共集群
         :type SourceHsmClusterId: str
+        :param _AccountAppId: 成员账号appId
+        :type AccountAppId: int
+        :param _AccountUin: 成员账号uin
+        :type AccountUin: int
+        :param _AccountName: 成员账号名称
+        :type AccountName: str
         """
         self._DataKeyId = None
         self._KeyId = None
@@ -1257,6 +1331,9 @@ class DataKeyMetadata(AbstractModel):
         self._SyncStartTime = None
         self._SyncEndTime = None
         self._SourceHsmClusterId = None
+        self._AccountAppId = None
+        self._AccountUin = None
+        self._AccountName = None
 
     @property
     def DataKeyId(self):
@@ -1489,6 +1566,39 @@ class DataKeyMetadata(AbstractModel):
     def SourceHsmClusterId(self, SourceHsmClusterId):
         self._SourceHsmClusterId = SourceHsmClusterId
 
+    @property
+    def AccountAppId(self):
+        r"""成员账号appId
+        :rtype: int
+        """
+        return self._AccountAppId
+
+    @AccountAppId.setter
+    def AccountAppId(self, AccountAppId):
+        self._AccountAppId = AccountAppId
+
+    @property
+    def AccountUin(self):
+        r"""成员账号uin
+        :rtype: int
+        """
+        return self._AccountUin
+
+    @AccountUin.setter
+    def AccountUin(self, AccountUin):
+        self._AccountUin = AccountUin
+
+    @property
+    def AccountName(self):
+        r"""成员账号名称
+        :rtype: str
+        """
+        return self._AccountName
+
+    @AccountName.setter
+    def AccountName(self, AccountName):
+        self._AccountName = AccountName
+
 
     def _deserialize(self, params):
         self._DataKeyId = params.get("DataKeyId")
@@ -1512,6 +1622,9 @@ class DataKeyMetadata(AbstractModel):
         self._SyncStartTime = params.get("SyncStartTime")
         self._SyncEndTime = params.get("SyncEndTime")
         self._SourceHsmClusterId = params.get("SourceHsmClusterId")
+        self._AccountAppId = params.get("AccountAppId")
+        self._AccountUin = params.get("AccountUin")
+        self._AccountName = params.get("AccountName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1800,8 +1913,11 @@ class DescribeDataKeyRequest(AbstractModel):
         r"""
         :param _DataKeyId: 数据密钥全局唯一标识符
         :type DataKeyId: str
+        :param _MemberAccount: 可信服务成员账号信息,当前账号时管理员或者委派管理员时有效。
+        :type MemberAccount: :class:`tencentcloud.kms.v20190118.models.MemberAccount`
         """
         self._DataKeyId = None
+        self._MemberAccount = None
 
     @property
     def DataKeyId(self):
@@ -1814,9 +1930,23 @@ class DescribeDataKeyRequest(AbstractModel):
     def DataKeyId(self, DataKeyId):
         self._DataKeyId = DataKeyId
 
+    @property
+    def MemberAccount(self):
+        r"""可信服务成员账号信息,当前账号时管理员或者委派管理员时有效。
+        :rtype: :class:`tencentcloud.kms.v20190118.models.MemberAccount`
+        """
+        return self._MemberAccount
+
+    @MemberAccount.setter
+    def MemberAccount(self, MemberAccount):
+        self._MemberAccount = MemberAccount
+
 
     def _deserialize(self, params):
         self._DataKeyId = params.get("DataKeyId")
+        if params.get("MemberAccount") is not None:
+            self._MemberAccount = MemberAccount()
+            self._MemberAccount._deserialize(params.get("MemberAccount"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1881,8 +2011,11 @@ class DescribeDataKeysRequest(AbstractModel):
         r"""
         :param _DataKeyIds: 查询DataKey的ID列表，批量查询一次最多支持100个DataKeyId
         :type DataKeyIds: list of str
+        :param _MemberAccount: 可信服务成员账号信息,当前账号时管理员或者委派管理员时有效。
+        :type MemberAccount: :class:`tencentcloud.kms.v20190118.models.MemberAccount`
         """
         self._DataKeyIds = None
+        self._MemberAccount = None
 
     @property
     def DataKeyIds(self):
@@ -1895,9 +2028,23 @@ class DescribeDataKeysRequest(AbstractModel):
     def DataKeyIds(self, DataKeyIds):
         self._DataKeyIds = DataKeyIds
 
+    @property
+    def MemberAccount(self):
+        r"""可信服务成员账号信息,当前账号时管理员或者委派管理员时有效。
+        :rtype: :class:`tencentcloud.kms.v20190118.models.MemberAccount`
+        """
+        return self._MemberAccount
+
+    @MemberAccount.setter
+    def MemberAccount(self, MemberAccount):
+        self._MemberAccount = MemberAccount
+
 
     def _deserialize(self, params):
         self._DataKeyIds = params.get("DataKeyIds")
+        if params.get("MemberAccount") is not None:
+            self._MemberAccount = MemberAccount()
+            self._MemberAccount._deserialize(params.get("MemberAccount"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1965,8 +2112,11 @@ class DescribeKeyRequest(AbstractModel):
         r"""
         :param _KeyId: CMK全局唯一标识符
         :type KeyId: str
+        :param _MemberAccount: 可信服务成员账号信息
+        :type MemberAccount: :class:`tencentcloud.kms.v20190118.models.MemberAccount`
         """
         self._KeyId = None
+        self._MemberAccount = None
 
     @property
     def KeyId(self):
@@ -1979,9 +2129,23 @@ class DescribeKeyRequest(AbstractModel):
     def KeyId(self, KeyId):
         self._KeyId = KeyId
 
+    @property
+    def MemberAccount(self):
+        r"""可信服务成员账号信息
+        :rtype: :class:`tencentcloud.kms.v20190118.models.MemberAccount`
+        """
+        return self._MemberAccount
+
+    @MemberAccount.setter
+    def MemberAccount(self, MemberAccount):
+        self._MemberAccount = MemberAccount
+
 
     def _deserialize(self, params):
         self._KeyId = params.get("KeyId")
+        if params.get("MemberAccount") is not None:
+            self._MemberAccount = MemberAccount()
+            self._MemberAccount._deserialize(params.get("MemberAccount"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2046,8 +2210,11 @@ class DescribeKeysRequest(AbstractModel):
         r"""
         :param _KeyIds: 查询CMK的ID列表，批量查询一次最多支持100个KeyId
         :type KeyIds: list of str
+        :param _MemberAccount: 可信服务成员账号信息,当前账号时管理员或者委派管理员时有效。
+        :type MemberAccount: :class:`tencentcloud.kms.v20190118.models.MemberAccount`
         """
         self._KeyIds = None
+        self._MemberAccount = None
 
     @property
     def KeyIds(self):
@@ -2060,9 +2227,23 @@ class DescribeKeysRequest(AbstractModel):
     def KeyIds(self, KeyIds):
         self._KeyIds = KeyIds
 
+    @property
+    def MemberAccount(self):
+        r"""可信服务成员账号信息,当前账号时管理员或者委派管理员时有效。
+        :rtype: :class:`tencentcloud.kms.v20190118.models.MemberAccount`
+        """
+        return self._MemberAccount
+
+    @MemberAccount.setter
+    def MemberAccount(self, MemberAccount):
+        self._MemberAccount = MemberAccount
+
 
     def _deserialize(self, params):
         self._KeyIds = params.get("KeyIds")
+        if params.get("MemberAccount") is not None:
+            self._MemberAccount = MemberAccount()
+            self._MemberAccount._deserialize(params.get("MemberAccount"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2674,8 +2855,11 @@ class DisableDataKeyRequest(AbstractModel):
         r"""
         :param _DataKeyId: 数据密钥唯一标识符
         :type DataKeyId: str
+        :param _MemberAccount: 可信服务成员账号信息,当前账号时管理员或者委派管理员时有效。
+        :type MemberAccount: :class:`tencentcloud.kms.v20190118.models.MemberAccount`
         """
         self._DataKeyId = None
+        self._MemberAccount = None
 
     @property
     def DataKeyId(self):
@@ -2688,9 +2872,23 @@ class DisableDataKeyRequest(AbstractModel):
     def DataKeyId(self, DataKeyId):
         self._DataKeyId = DataKeyId
 
+    @property
+    def MemberAccount(self):
+        r"""可信服务成员账号信息,当前账号时管理员或者委派管理员时有效。
+        :rtype: :class:`tencentcloud.kms.v20190118.models.MemberAccount`
+        """
+        return self._MemberAccount
+
+    @MemberAccount.setter
+    def MemberAccount(self, MemberAccount):
+        self._MemberAccount = MemberAccount
+
 
     def _deserialize(self, params):
         self._DataKeyId = params.get("DataKeyId")
+        if params.get("MemberAccount") is not None:
+            self._MemberAccount = MemberAccount()
+            self._MemberAccount._deserialize(params.get("MemberAccount"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2738,8 +2936,11 @@ class DisableDataKeysRequest(AbstractModel):
         r"""
         :param _DataKeyIds: 需要批量禁用的DataKey Id 列表，数据密钥数量最大支持100
         :type DataKeyIds: list of str
+        :param _MemberAccount: 可信服务成员账号信息,当前账号时管理员或者委派管理员时有效。
+        :type MemberAccount: :class:`tencentcloud.kms.v20190118.models.MemberAccount`
         """
         self._DataKeyIds = None
+        self._MemberAccount = None
 
     @property
     def DataKeyIds(self):
@@ -2752,9 +2953,23 @@ class DisableDataKeysRequest(AbstractModel):
     def DataKeyIds(self, DataKeyIds):
         self._DataKeyIds = DataKeyIds
 
+    @property
+    def MemberAccount(self):
+        r"""可信服务成员账号信息,当前账号时管理员或者委派管理员时有效。
+        :rtype: :class:`tencentcloud.kms.v20190118.models.MemberAccount`
+        """
+        return self._MemberAccount
+
+    @MemberAccount.setter
+    def MemberAccount(self, MemberAccount):
+        self._MemberAccount = MemberAccount
+
 
     def _deserialize(self, params):
         self._DataKeyIds = params.get("DataKeyIds")
+        if params.get("MemberAccount") is not None:
+            self._MemberAccount = MemberAccount()
+            self._MemberAccount._deserialize(params.get("MemberAccount"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2802,8 +3017,11 @@ class DisableKeyRequest(AbstractModel):
         r"""
         :param _KeyId: CMK唯一标识符
         :type KeyId: str
+        :param _MemberAccount: 可信服务成员账号信息,当前账号时管理员或者委派管理员时有效。
+        :type MemberAccount: :class:`tencentcloud.kms.v20190118.models.MemberAccount`
         """
         self._KeyId = None
+        self._MemberAccount = None
 
     @property
     def KeyId(self):
@@ -2816,9 +3034,23 @@ class DisableKeyRequest(AbstractModel):
     def KeyId(self, KeyId):
         self._KeyId = KeyId
 
+    @property
+    def MemberAccount(self):
+        r"""可信服务成员账号信息,当前账号时管理员或者委派管理员时有效。
+        :rtype: :class:`tencentcloud.kms.v20190118.models.MemberAccount`
+        """
+        return self._MemberAccount
+
+    @MemberAccount.setter
+    def MemberAccount(self, MemberAccount):
+        self._MemberAccount = MemberAccount
+
 
     def _deserialize(self, params):
         self._KeyId = params.get("KeyId")
+        if params.get("MemberAccount") is not None:
+            self._MemberAccount = MemberAccount()
+            self._MemberAccount._deserialize(params.get("MemberAccount"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2866,8 +3098,11 @@ class DisableKeyRotationRequest(AbstractModel):
         r"""
         :param _KeyId: CMK唯一标识符
         :type KeyId: str
+        :param _MemberAccount: 可信服务成员账号信息,当前账号时管理员或者委派管理员时有效。
+        :type MemberAccount: :class:`tencentcloud.kms.v20190118.models.MemberAccount`
         """
         self._KeyId = None
+        self._MemberAccount = None
 
     @property
     def KeyId(self):
@@ -2880,9 +3115,23 @@ class DisableKeyRotationRequest(AbstractModel):
     def KeyId(self, KeyId):
         self._KeyId = KeyId
 
+    @property
+    def MemberAccount(self):
+        r"""可信服务成员账号信息,当前账号时管理员或者委派管理员时有效。
+        :rtype: :class:`tencentcloud.kms.v20190118.models.MemberAccount`
+        """
+        return self._MemberAccount
+
+    @MemberAccount.setter
+    def MemberAccount(self, MemberAccount):
+        self._MemberAccount = MemberAccount
+
 
     def _deserialize(self, params):
         self._KeyId = params.get("KeyId")
+        if params.get("MemberAccount") is not None:
+            self._MemberAccount = MemberAccount()
+            self._MemberAccount._deserialize(params.get("MemberAccount"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2930,8 +3179,11 @@ class DisableKeysRequest(AbstractModel):
         r"""
         :param _KeyIds: 需要批量禁用的CMK Id 列表，CMK数量最大支持100
         :type KeyIds: list of str
+        :param _MemberAccount: 可信服务成员账号信息,当前账号时管理员或者委派管理员时有效。
+        :type MemberAccount: :class:`tencentcloud.kms.v20190118.models.MemberAccount`
         """
         self._KeyIds = None
+        self._MemberAccount = None
 
     @property
     def KeyIds(self):
@@ -2944,9 +3196,23 @@ class DisableKeysRequest(AbstractModel):
     def KeyIds(self, KeyIds):
         self._KeyIds = KeyIds
 
+    @property
+    def MemberAccount(self):
+        r"""可信服务成员账号信息,当前账号时管理员或者委派管理员时有效。
+        :rtype: :class:`tencentcloud.kms.v20190118.models.MemberAccount`
+        """
+        return self._MemberAccount
+
+    @MemberAccount.setter
+    def MemberAccount(self, MemberAccount):
+        self._MemberAccount = MemberAccount
+
 
     def _deserialize(self, params):
         self._KeyIds = params.get("KeyIds")
+        if params.get("MemberAccount") is not None:
+            self._MemberAccount = MemberAccount()
+            self._MemberAccount._deserialize(params.get("MemberAccount"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3122,8 +3388,11 @@ class EnableDataKeyRequest(AbstractModel):
         r"""
         :param _DataKeyId: 数据密钥唯一标识符
         :type DataKeyId: str
+        :param _MemberAccount: 可信服务成员账号信息,当前账号时管理员或者委派管理员时有效。
+        :type MemberAccount: :class:`tencentcloud.kms.v20190118.models.MemberAccount`
         """
         self._DataKeyId = None
+        self._MemberAccount = None
 
     @property
     def DataKeyId(self):
@@ -3136,9 +3405,23 @@ class EnableDataKeyRequest(AbstractModel):
     def DataKeyId(self, DataKeyId):
         self._DataKeyId = DataKeyId
 
+    @property
+    def MemberAccount(self):
+        r"""可信服务成员账号信息,当前账号时管理员或者委派管理员时有效。
+        :rtype: :class:`tencentcloud.kms.v20190118.models.MemberAccount`
+        """
+        return self._MemberAccount
+
+    @MemberAccount.setter
+    def MemberAccount(self, MemberAccount):
+        self._MemberAccount = MemberAccount
+
 
     def _deserialize(self, params):
         self._DataKeyId = params.get("DataKeyId")
+        if params.get("MemberAccount") is not None:
+            self._MemberAccount = MemberAccount()
+            self._MemberAccount._deserialize(params.get("MemberAccount"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3186,8 +3469,11 @@ class EnableDataKeysRequest(AbstractModel):
         r"""
         :param _DataKeyIds: 需要批量启用的DataKey Id 列表， 数据密钥数量最大支持100
         :type DataKeyIds: list of str
+        :param _MemberAccount: 可信服务成员账号信息,当前账号时管理员或者委派管理员时有效。
+        :type MemberAccount: :class:`tencentcloud.kms.v20190118.models.MemberAccount`
         """
         self._DataKeyIds = None
+        self._MemberAccount = None
 
     @property
     def DataKeyIds(self):
@@ -3200,9 +3486,23 @@ class EnableDataKeysRequest(AbstractModel):
     def DataKeyIds(self, DataKeyIds):
         self._DataKeyIds = DataKeyIds
 
+    @property
+    def MemberAccount(self):
+        r"""可信服务成员账号信息,当前账号时管理员或者委派管理员时有效。
+        :rtype: :class:`tencentcloud.kms.v20190118.models.MemberAccount`
+        """
+        return self._MemberAccount
+
+    @MemberAccount.setter
+    def MemberAccount(self, MemberAccount):
+        self._MemberAccount = MemberAccount
+
 
     def _deserialize(self, params):
         self._DataKeyIds = params.get("DataKeyIds")
+        if params.get("MemberAccount") is not None:
+            self._MemberAccount = MemberAccount()
+            self._MemberAccount._deserialize(params.get("MemberAccount"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3250,8 +3550,11 @@ class EnableKeyRequest(AbstractModel):
         r"""
         :param _KeyId: CMK唯一标识符
         :type KeyId: str
+        :param _MemberAccount: 可信服务成员账号信息,当前账号时管理员或者委派管理员时有效。
+        :type MemberAccount: :class:`tencentcloud.kms.v20190118.models.MemberAccount`
         """
         self._KeyId = None
+        self._MemberAccount = None
 
     @property
     def KeyId(self):
@@ -3264,9 +3567,23 @@ class EnableKeyRequest(AbstractModel):
     def KeyId(self, KeyId):
         self._KeyId = KeyId
 
+    @property
+    def MemberAccount(self):
+        r"""可信服务成员账号信息,当前账号时管理员或者委派管理员时有效。
+        :rtype: :class:`tencentcloud.kms.v20190118.models.MemberAccount`
+        """
+        return self._MemberAccount
+
+    @MemberAccount.setter
+    def MemberAccount(self, MemberAccount):
+        self._MemberAccount = MemberAccount
+
 
     def _deserialize(self, params):
         self._KeyId = params.get("KeyId")
+        if params.get("MemberAccount") is not None:
+            self._MemberAccount = MemberAccount()
+            self._MemberAccount._deserialize(params.get("MemberAccount"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3316,9 +3633,12 @@ class EnableKeyRotationRequest(AbstractModel):
         :type KeyId: str
         :param _RotateDays: 密钥轮转周期，单位天，允许范围 7 ~ 365，默认值 365。
         :type RotateDays: int
+        :param _MemberAccount: 可信服务成员账号信息,当前账号时管理员或者委派管理员时有效。
+        :type MemberAccount: :class:`tencentcloud.kms.v20190118.models.MemberAccount`
         """
         self._KeyId = None
         self._RotateDays = None
+        self._MemberAccount = None
 
     @property
     def KeyId(self):
@@ -3342,10 +3662,24 @@ class EnableKeyRotationRequest(AbstractModel):
     def RotateDays(self, RotateDays):
         self._RotateDays = RotateDays
 
+    @property
+    def MemberAccount(self):
+        r"""可信服务成员账号信息,当前账号时管理员或者委派管理员时有效。
+        :rtype: :class:`tencentcloud.kms.v20190118.models.MemberAccount`
+        """
+        return self._MemberAccount
+
+    @MemberAccount.setter
+    def MemberAccount(self, MemberAccount):
+        self._MemberAccount = MemberAccount
+
 
     def _deserialize(self, params):
         self._KeyId = params.get("KeyId")
         self._RotateDays = params.get("RotateDays")
+        if params.get("MemberAccount") is not None:
+            self._MemberAccount = MemberAccount()
+            self._MemberAccount._deserialize(params.get("MemberAccount"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3393,8 +3727,11 @@ class EnableKeysRequest(AbstractModel):
         r"""
         :param _KeyIds: 需要批量启用的CMK Id 列表， CMK数量最大支持100
         :type KeyIds: list of str
+        :param _MemberAccount: 可信服务成员账号信息,当前账号时管理员或者委派管理员时有效。
+        :type MemberAccount: :class:`tencentcloud.kms.v20190118.models.MemberAccount`
         """
         self._KeyIds = None
+        self._MemberAccount = None
 
     @property
     def KeyIds(self):
@@ -3407,9 +3744,23 @@ class EnableKeysRequest(AbstractModel):
     def KeyIds(self, KeyIds):
         self._KeyIds = KeyIds
 
+    @property
+    def MemberAccount(self):
+        r"""可信服务成员账号信息,当前账号时管理员或者委派管理员时有效。
+        :rtype: :class:`tencentcloud.kms.v20190118.models.MemberAccount`
+        """
+        return self._MemberAccount
+
+    @MemberAccount.setter
+    def MemberAccount(self, MemberAccount):
+        self._MemberAccount = MemberAccount
+
 
     def _deserialize(self, params):
         self._KeyIds = params.get("KeyIds")
+        if params.get("MemberAccount") is not None:
+            self._MemberAccount = MemberAccount()
+            self._MemberAccount._deserialize(params.get("MemberAccount"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4274,8 +4625,11 @@ class GetDataKeyCiphertextBlobRequest(AbstractModel):
         r"""
         :param _DataKeyId: 数据密钥的唯一标志符
         :type DataKeyId: str
+        :param _MemberAccount: 可信服务成员账号信息,当前账号时管理员或者委派管理员时有效。
+        :type MemberAccount: :class:`tencentcloud.kms.v20190118.models.MemberAccount`
         """
         self._DataKeyId = None
+        self._MemberAccount = None
 
     @property
     def DataKeyId(self):
@@ -4288,9 +4642,23 @@ class GetDataKeyCiphertextBlobRequest(AbstractModel):
     def DataKeyId(self, DataKeyId):
         self._DataKeyId = DataKeyId
 
+    @property
+    def MemberAccount(self):
+        r"""可信服务成员账号信息,当前账号时管理员或者委派管理员时有效。
+        :rtype: :class:`tencentcloud.kms.v20190118.models.MemberAccount`
+        """
+        return self._MemberAccount
+
+    @MemberAccount.setter
+    def MemberAccount(self, MemberAccount):
+        self._MemberAccount = MemberAccount
+
 
     def _deserialize(self, params):
         self._DataKeyId = params.get("DataKeyId")
+        if params.get("MemberAccount") is not None:
+            self._MemberAccount = MemberAccount()
+            self._MemberAccount._deserialize(params.get("MemberAccount"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4462,8 +4830,11 @@ class GetKeyRotationStatusRequest(AbstractModel):
         r"""
         :param _KeyId: CMK唯一标识符
         :type KeyId: str
+        :param _MemberAccount: 可信服务成员账号信息,当前账号时管理员或者委派管理员时有效。
+        :type MemberAccount: :class:`tencentcloud.kms.v20190118.models.MemberAccount`
         """
         self._KeyId = None
+        self._MemberAccount = None
 
     @property
     def KeyId(self):
@@ -4476,9 +4847,23 @@ class GetKeyRotationStatusRequest(AbstractModel):
     def KeyId(self, KeyId):
         self._KeyId = KeyId
 
+    @property
+    def MemberAccount(self):
+        r"""可信服务成员账号信息,当前账号时管理员或者委派管理员时有效。
+        :rtype: :class:`tencentcloud.kms.v20190118.models.MemberAccount`
+        """
+        return self._MemberAccount
+
+    @MemberAccount.setter
+    def MemberAccount(self, MemberAccount):
+        self._MemberAccount = MemberAccount
+
 
     def _deserialize(self, params):
         self._KeyId = params.get("KeyId")
+        if params.get("MemberAccount") is not None:
+            self._MemberAccount = MemberAccount()
+            self._MemberAccount._deserialize(params.get("MemberAccount"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5581,6 +5966,12 @@ class KeyMetadata(AbstractModel):
         :type SyncEndTime: int
         :param _SourceHsmClusterId: 同步的原始集群，如果为空，是公有云公共集群
         :type SourceHsmClusterId: str
+        :param _AccountAppId: 成员账号appId
+        :type AccountAppId: int
+        :param _AccountUin: 成员账号uin
+        :type AccountUin: int
+        :param _AccountName: 成员账号名称
+        :type AccountName: str
         """
         self._KeyId = None
         self._Alias = None
@@ -5607,6 +5998,9 @@ class KeyMetadata(AbstractModel):
         self._SyncStartTime = None
         self._SyncEndTime = None
         self._SourceHsmClusterId = None
+        self._AccountAppId = None
+        self._AccountUin = None
+        self._AccountName = None
 
     @property
     def KeyId(self):
@@ -5883,6 +6277,39 @@ class KeyMetadata(AbstractModel):
     def SourceHsmClusterId(self, SourceHsmClusterId):
         self._SourceHsmClusterId = SourceHsmClusterId
 
+    @property
+    def AccountAppId(self):
+        r"""成员账号appId
+        :rtype: int
+        """
+        return self._AccountAppId
+
+    @AccountAppId.setter
+    def AccountAppId(self, AccountAppId):
+        self._AccountAppId = AccountAppId
+
+    @property
+    def AccountUin(self):
+        r"""成员账号uin
+        :rtype: int
+        """
+        return self._AccountUin
+
+    @AccountUin.setter
+    def AccountUin(self, AccountUin):
+        self._AccountUin = AccountUin
+
+    @property
+    def AccountName(self):
+        r"""成员账号名称
+        :rtype: str
+        """
+        return self._AccountName
+
+    @AccountName.setter
+    def AccountName(self, AccountName):
+        self._AccountName = AccountName
+
 
     def _deserialize(self, params):
         self._KeyId = params.get("KeyId")
@@ -5910,6 +6337,9 @@ class KeyMetadata(AbstractModel):
         self._SyncStartTime = params.get("SyncStartTime")
         self._SyncEndTime = params.get("SyncEndTime")
         self._SourceHsmClusterId = params.get("SourceHsmClusterId")
+        self._AccountAppId = params.get("AccountAppId")
+        self._AccountUin = params.get("AccountUin")
+        self._AccountName = params.get("AccountName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6043,6 +6473,8 @@ class ListDataKeyDetailRequest(AbstractModel):
         :type DataKeyLen: int
         :param _TagFilters: 标签过滤条件
         :type TagFilters: list of TagFilter
+        :param _MemberAccounts: 成员账号信息数组
+        :type MemberAccounts: list of MemberAccount
         """
         self._Offset = None
         self._Limit = None
@@ -6055,6 +6487,7 @@ class ListDataKeyDetailRequest(AbstractModel):
         self._KeyId = None
         self._DataKeyLen = None
         self._TagFilters = None
+        self._MemberAccounts = None
 
     @property
     def Offset(self):
@@ -6177,6 +6610,17 @@ class ListDataKeyDetailRequest(AbstractModel):
     def TagFilters(self, TagFilters):
         self._TagFilters = TagFilters
 
+    @property
+    def MemberAccounts(self):
+        r"""成员账号信息数组
+        :rtype: list of MemberAccount
+        """
+        return self._MemberAccounts
+
+    @MemberAccounts.setter
+    def MemberAccounts(self, MemberAccounts):
+        self._MemberAccounts = MemberAccounts
+
 
     def _deserialize(self, params):
         self._Offset = params.get("Offset")
@@ -6195,6 +6639,12 @@ class ListDataKeyDetailRequest(AbstractModel):
                 obj = TagFilter()
                 obj._deserialize(item)
                 self._TagFilters.append(obj)
+        if params.get("MemberAccounts") is not None:
+            self._MemberAccounts = []
+            for item in params.get("MemberAccounts"):
+                obj = MemberAccount()
+                obj._deserialize(item)
+                self._MemberAccounts.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6439,6 +6889,8 @@ class ListKeyDetailRequest(AbstractModel):
         :type TagFilters: list of TagFilter
         :param _HsmClusterId: KMS 高级版对应的 HSM 集群 ID（仅对 KMS 独占版/托管版服务实例有效）。
         :type HsmClusterId: str
+        :param _MemberAccounts: 可信服务成员账号信息数组
+        :type MemberAccounts: list of MemberAccount
         """
         self._Offset = None
         self._Limit = None
@@ -6450,6 +6902,7 @@ class ListKeyDetailRequest(AbstractModel):
         self._KeyUsage = None
         self._TagFilters = None
         self._HsmClusterId = None
+        self._MemberAccounts = None
 
     @property
     def Offset(self):
@@ -6561,6 +7014,17 @@ class ListKeyDetailRequest(AbstractModel):
     def HsmClusterId(self, HsmClusterId):
         self._HsmClusterId = HsmClusterId
 
+    @property
+    def MemberAccounts(self):
+        r"""可信服务成员账号信息数组
+        :rtype: list of MemberAccount
+        """
+        return self._MemberAccounts
+
+    @MemberAccounts.setter
+    def MemberAccounts(self, MemberAccounts):
+        self._MemberAccounts = MemberAccounts
+
 
     def _deserialize(self, params):
         self._Offset = params.get("Offset")
@@ -6578,6 +7042,12 @@ class ListKeyDetailRequest(AbstractModel):
                 obj._deserialize(item)
                 self._TagFilters.append(obj)
         self._HsmClusterId = params.get("HsmClusterId")
+        if params.get("MemberAccounts") is not None:
+            self._MemberAccounts = []
+            for item in params.get("MemberAccounts"):
+                obj = MemberAccount()
+                obj._deserialize(item)
+                self._MemberAccounts.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6793,6 +7263,59 @@ class ListKeysResponse(AbstractModel):
                 self._Keys.append(obj)
         self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
+
+
+class MemberAccount(AbstractModel):
+    r"""共享成员账号信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberAppId: 成员账号appid
+
+        :type MemberAppId: int
+        :param _MemberUin: 成员账号uin
+        :type MemberUin: int
+        """
+        self._MemberAppId = None
+        self._MemberUin = None
+
+    @property
+    def MemberAppId(self):
+        r"""成员账号appid
+
+        :rtype: int
+        """
+        return self._MemberAppId
+
+    @MemberAppId.setter
+    def MemberAppId(self, MemberAppId):
+        self._MemberAppId = MemberAppId
+
+    @property
+    def MemberUin(self):
+        r"""成员账号uin
+        :rtype: int
+        """
+        return self._MemberUin
+
+    @MemberUin.setter
+    def MemberUin(self, MemberUin):
+        self._MemberUin = MemberUin
+
+
+    def _deserialize(self, params):
+        self._MemberAppId = params.get("MemberAppId")
+        self._MemberUin = params.get("MemberUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class OverwriteWhiteBoxDeviceFingerprintsRequest(AbstractModel):
@@ -7497,9 +8020,12 @@ class ScheduleDataKeyDeletionRequest(AbstractModel):
         :type DataKeyId: str
         :param _PendingWindowInDays: 计划删除时间区间[7,30]
         :type PendingWindowInDays: int
+        :param _MemberAccount: 可信服务成员账号信息,当前账号时管理员或者委派管理员时有效。
+        :type MemberAccount: :class:`tencentcloud.kms.v20190118.models.MemberAccount`
         """
         self._DataKeyId = None
         self._PendingWindowInDays = None
+        self._MemberAccount = None
 
     @property
     def DataKeyId(self):
@@ -7523,10 +8049,24 @@ class ScheduleDataKeyDeletionRequest(AbstractModel):
     def PendingWindowInDays(self, PendingWindowInDays):
         self._PendingWindowInDays = PendingWindowInDays
 
+    @property
+    def MemberAccount(self):
+        r"""可信服务成员账号信息,当前账号时管理员或者委派管理员时有效。
+        :rtype: :class:`tencentcloud.kms.v20190118.models.MemberAccount`
+        """
+        return self._MemberAccount
+
+    @MemberAccount.setter
+    def MemberAccount(self, MemberAccount):
+        self._MemberAccount = MemberAccount
+
 
     def _deserialize(self, params):
         self._DataKeyId = params.get("DataKeyId")
         self._PendingWindowInDays = params.get("PendingWindowInDays")
+        if params.get("MemberAccount") is not None:
+            self._MemberAccount = MemberAccount()
+            self._MemberAccount._deserialize(params.get("MemberAccount"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7606,9 +8146,12 @@ class ScheduleKeyDeletionRequest(AbstractModel):
         :type KeyId: str
         :param _PendingWindowInDays: 计划删除时间区间[7,30]
         :type PendingWindowInDays: int
+        :param _MemberAccount: 可信服务成员账号信息,当前账号时管理员或者委派管理员时有效。
+        :type MemberAccount: :class:`tencentcloud.kms.v20190118.models.MemberAccount`
         """
         self._KeyId = None
         self._PendingWindowInDays = None
+        self._MemberAccount = None
 
     @property
     def KeyId(self):
@@ -7632,10 +8175,24 @@ class ScheduleKeyDeletionRequest(AbstractModel):
     def PendingWindowInDays(self, PendingWindowInDays):
         self._PendingWindowInDays = PendingWindowInDays
 
+    @property
+    def MemberAccount(self):
+        r"""可信服务成员账号信息,当前账号时管理员或者委派管理员时有效。
+        :rtype: :class:`tencentcloud.kms.v20190118.models.MemberAccount`
+        """
+        return self._MemberAccount
+
+    @MemberAccount.setter
+    def MemberAccount(self, MemberAccount):
+        self._MemberAccount = MemberAccount
+
 
     def _deserialize(self, params):
         self._KeyId = params.get("KeyId")
         self._PendingWindowInDays = params.get("PendingWindowInDays")
+        if params.get("MemberAccount") is not None:
+            self._MemberAccount = MemberAccount()
+            self._MemberAccount._deserialize(params.get("MemberAccount"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8035,9 +8592,12 @@ class UpdateAliasRequest(AbstractModel):
         :type Alias: str
         :param _KeyId: CMK的全局唯一标识符
         :type KeyId: str
+        :param _MemberAccount: 可信服务成员账号信息,当前账号时管理员或者委派管理员时有效。
+        :type MemberAccount: :class:`tencentcloud.kms.v20190118.models.MemberAccount`
         """
         self._Alias = None
         self._KeyId = None
+        self._MemberAccount = None
 
     @property
     def Alias(self):
@@ -8061,10 +8621,24 @@ class UpdateAliasRequest(AbstractModel):
     def KeyId(self, KeyId):
         self._KeyId = KeyId
 
+    @property
+    def MemberAccount(self):
+        r"""可信服务成员账号信息,当前账号时管理员或者委派管理员时有效。
+        :rtype: :class:`tencentcloud.kms.v20190118.models.MemberAccount`
+        """
+        return self._MemberAccount
+
+    @MemberAccount.setter
+    def MemberAccount(self, MemberAccount):
+        self._MemberAccount = MemberAccount
+
 
     def _deserialize(self, params):
         self._Alias = params.get("Alias")
         self._KeyId = params.get("KeyId")
+        if params.get("MemberAccount") is not None:
+            self._MemberAccount = MemberAccount()
+            self._MemberAccount._deserialize(params.get("MemberAccount"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8114,9 +8688,12 @@ class UpdateDataKeyDescriptionRequest(AbstractModel):
         :type DataKeyId: str
         :param _Description: 数据密钥 的描述，最大100字节
         :type Description: str
+        :param _MemberAccount: 可信服务成员账号信息,当前账号时管理员或者委派管理员时有效。
+        :type MemberAccount: :class:`tencentcloud.kms.v20190118.models.MemberAccount`
         """
         self._DataKeyId = None
         self._Description = None
+        self._MemberAccount = None
 
     @property
     def DataKeyId(self):
@@ -8140,10 +8717,24 @@ class UpdateDataKeyDescriptionRequest(AbstractModel):
     def Description(self, Description):
         self._Description = Description
 
+    @property
+    def MemberAccount(self):
+        r"""可信服务成员账号信息,当前账号时管理员或者委派管理员时有效。
+        :rtype: :class:`tencentcloud.kms.v20190118.models.MemberAccount`
+        """
+        return self._MemberAccount
+
+    @MemberAccount.setter
+    def MemberAccount(self, MemberAccount):
+        self._MemberAccount = MemberAccount
+
 
     def _deserialize(self, params):
         self._DataKeyId = params.get("DataKeyId")
         self._Description = params.get("Description")
+        if params.get("MemberAccount") is not None:
+            self._MemberAccount = MemberAccount()
+            self._MemberAccount._deserialize(params.get("MemberAccount"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8193,9 +8784,12 @@ class UpdateDataKeyNameRequest(AbstractModel):
         :type DataKeyId: str
         :param _DataKeyName: 数据密钥的名称
         :type DataKeyName: str
+        :param _MemberAccount: 可信服务成员账号信息,当前账号时管理员或者委派管理员时有效。
+        :type MemberAccount: :class:`tencentcloud.kms.v20190118.models.MemberAccount`
         """
         self._DataKeyId = None
         self._DataKeyName = None
+        self._MemberAccount = None
 
     @property
     def DataKeyId(self):
@@ -8219,10 +8813,24 @@ class UpdateDataKeyNameRequest(AbstractModel):
     def DataKeyName(self, DataKeyName):
         self._DataKeyName = DataKeyName
 
+    @property
+    def MemberAccount(self):
+        r"""可信服务成员账号信息,当前账号时管理员或者委派管理员时有效。
+        :rtype: :class:`tencentcloud.kms.v20190118.models.MemberAccount`
+        """
+        return self._MemberAccount
+
+    @MemberAccount.setter
+    def MemberAccount(self, MemberAccount):
+        self._MemberAccount = MemberAccount
+
 
     def _deserialize(self, params):
         self._DataKeyId = params.get("DataKeyId")
         self._DataKeyName = params.get("DataKeyName")
+        if params.get("MemberAccount") is not None:
+            self._MemberAccount = MemberAccount()
+            self._MemberAccount._deserialize(params.get("MemberAccount"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8272,9 +8880,12 @@ class UpdateKeyDescriptionRequest(AbstractModel):
         :type Description: str
         :param _KeyId: 需要修改描述信息的CMK ID
         :type KeyId: str
+        :param _MemberAccount: 可信服务成员账号信息,当前账号时管理员或者委派管理员时有效。
+        :type MemberAccount: :class:`tencentcloud.kms.v20190118.models.MemberAccount`
         """
         self._Description = None
         self._KeyId = None
+        self._MemberAccount = None
 
     @property
     def Description(self):
@@ -8298,10 +8909,24 @@ class UpdateKeyDescriptionRequest(AbstractModel):
     def KeyId(self, KeyId):
         self._KeyId = KeyId
 
+    @property
+    def MemberAccount(self):
+        r"""可信服务成员账号信息,当前账号时管理员或者委派管理员时有效。
+        :rtype: :class:`tencentcloud.kms.v20190118.models.MemberAccount`
+        """
+        return self._MemberAccount
+
+    @MemberAccount.setter
+    def MemberAccount(self, MemberAccount):
+        self._MemberAccount = MemberAccount
+
 
     def _deserialize(self, params):
         self._Description = params.get("Description")
         self._KeyId = params.get("KeyId")
+        if params.get("MemberAccount") is not None:
+            self._MemberAccount = MemberAccount()
+            self._MemberAccount._deserialize(params.get("MemberAccount"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

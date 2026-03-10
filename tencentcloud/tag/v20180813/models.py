@@ -2443,15 +2443,15 @@ class DescribeTagValuesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TagKeys: 标签键列表
+        :param _TagKeys: <p>标签键列表</p>
         :type TagKeys: list of str
-        :param _CreateUin: 创建者用户 Uin，不传或为空只将 Uin 作为条件查询
+        :param _CreateUin: <p>创建者用户 Uin，不传或为空只将 Uin 作为条件查询</p>
         :type CreateUin: int
-        :param _Offset: 数据偏移量，默认为 0, 必须为Limit参数的整数倍
+        :param _Offset: <p>数据偏移量，默认为 0, 必须为Limit参数的整数倍</p>
         :type Offset: int
-        :param _Limit: 每页大小，默认为 15
+        :param _Limit: <p>每页大小，默认为 15，最大1000</p>
         :type Limit: int
-        :param _Category: 标签类型。取值： Custom：自定义标签。 System：系统标签。 All：全部标签。 默认值：All。
+        :param _Category: <p>标签类型。取值： Custom：自定义标签。 System：系统标签。 All：全部标签。 默认值：All。</p>
         :type Category: str
         """
         self._TagKeys = None
@@ -2462,7 +2462,7 @@ class DescribeTagValuesRequest(AbstractModel):
 
     @property
     def TagKeys(self):
-        r"""标签键列表
+        r"""<p>标签键列表</p>
         :rtype: list of str
         """
         return self._TagKeys
@@ -2473,7 +2473,7 @@ class DescribeTagValuesRequest(AbstractModel):
 
     @property
     def CreateUin(self):
-        r"""创建者用户 Uin，不传或为空只将 Uin 作为条件查询
+        r"""<p>创建者用户 Uin，不传或为空只将 Uin 作为条件查询</p>
         :rtype: int
         """
         return self._CreateUin
@@ -2484,7 +2484,7 @@ class DescribeTagValuesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""数据偏移量，默认为 0, 必须为Limit参数的整数倍
+        r"""<p>数据偏移量，默认为 0, 必须为Limit参数的整数倍</p>
         :rtype: int
         """
         return self._Offset
@@ -2495,7 +2495,7 @@ class DescribeTagValuesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""每页大小，默认为 15
+        r"""<p>每页大小，默认为 15，最大1000</p>
         :rtype: int
         """
         return self._Limit
@@ -2506,7 +2506,7 @@ class DescribeTagValuesRequest(AbstractModel):
 
     @property
     def Category(self):
-        r"""标签类型。取值： Custom：自定义标签。 System：系统标签。 All：全部标签。 默认值：All。
+        r"""<p>标签类型。取值： Custom：自定义标签。 System：系统标签。 All：全部标签。 默认值：All。</p>
         :rtype: str
         """
         return self._Category
@@ -2539,13 +2539,13 @@ class DescribeTagValuesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 结果总数
+        :param _TotalCount: <p>结果总数</p>
         :type TotalCount: int
-        :param _Offset: 数据位移偏量
+        :param _Offset: <p>数据位移偏量</p>
         :type Offset: int
-        :param _Limit: 每页大小
+        :param _Limit: <p>每页大小</p>
         :type Limit: int
-        :param _Tags: 标签列表
+        :param _Tags: <p>标签列表</p>
         :type Tags: list of Tag
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2558,7 +2558,7 @@ class DescribeTagValuesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""结果总数
+        r"""<p>结果总数</p>
         :rtype: int
         """
         return self._TotalCount
@@ -2569,7 +2569,7 @@ class DescribeTagValuesResponse(AbstractModel):
 
     @property
     def Offset(self):
-        r"""数据位移偏量
+        r"""<p>数据位移偏量</p>
         :rtype: int
         """
         return self._Offset
@@ -2580,7 +2580,7 @@ class DescribeTagValuesResponse(AbstractModel):
 
     @property
     def Limit(self):
-        r"""每页大小
+        r"""<p>每页大小</p>
         :rtype: int
         """
         return self._Limit
@@ -2591,7 +2591,7 @@ class DescribeTagValuesResponse(AbstractModel):
 
     @property
     def Tags(self):
-        r"""标签列表
+        r"""<p>标签列表</p>
         :rtype: list of Tag
         """
         return self._Tags
@@ -2806,19 +2806,19 @@ class DescribeTagsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TagKey: 标签键,与标签值同时存在或同时不存在，不存在时表示查询该用户所有标签
+        :param _TagKey: <p>标签键,与标签值同时存在或同时不存在，不存在时表示查询该用户所有标签</p>
         :type TagKey: str
-        :param _TagValue: 标签值,与标签键同时存在或同时不存在，不存在时表示查询该用户所有标签
+        :param _TagValue: <p>标签值,与标签键同时存在或同时不存在，不存在时表示查询该用户所有标签</p>
         :type TagValue: str
-        :param _Offset: 数据偏移量，默认为 0, 必须为Limit参数的整数倍
+        :param _Offset: <p>数据偏移量，默认为 0, 必须为Limit参数的整数倍</p>
         :type Offset: int
-        :param _Limit: 每页大小，默认为 15
+        :param _Limit: <p>每页大小，默认为 15，最大1000</p>
         :type Limit: int
-        :param _CreateUin: 创建者用户 Uin，不传或为空只将 Uin 作为条件查询
+        :param _CreateUin: <p>创建者用户 Uin，不传或为空只将 Uin 作为条件查询</p>
         :type CreateUin: int
-        :param _TagKeys: 标签键数组,与标签值同时存在或同时不存在，不存在时表示查询该用户所有标签,当与TagKey同时传递时只取本值
+        :param _TagKeys: <p>标签键数组,与标签值同时存在或同时不存在，不存在时表示查询该用户所有标签,当与TagKey同时传递时只取本值</p>
         :type TagKeys: list of str
-        :param _ShowProject: 是否展现项目标签。1:展示  0:不展示
+        :param _ShowProject: <p>是否展现项目标签。1:展示  0:不展示</p>
         :type ShowProject: int
         """
         self._TagKey = None
@@ -2831,7 +2831,7 @@ class DescribeTagsRequest(AbstractModel):
 
     @property
     def TagKey(self):
-        r"""标签键,与标签值同时存在或同时不存在，不存在时表示查询该用户所有标签
+        r"""<p>标签键,与标签值同时存在或同时不存在，不存在时表示查询该用户所有标签</p>
         :rtype: str
         """
         return self._TagKey
@@ -2842,7 +2842,7 @@ class DescribeTagsRequest(AbstractModel):
 
     @property
     def TagValue(self):
-        r"""标签值,与标签键同时存在或同时不存在，不存在时表示查询该用户所有标签
+        r"""<p>标签值,与标签键同时存在或同时不存在，不存在时表示查询该用户所有标签</p>
         :rtype: str
         """
         return self._TagValue
@@ -2853,7 +2853,7 @@ class DescribeTagsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""数据偏移量，默认为 0, 必须为Limit参数的整数倍
+        r"""<p>数据偏移量，默认为 0, 必须为Limit参数的整数倍</p>
         :rtype: int
         """
         return self._Offset
@@ -2864,7 +2864,7 @@ class DescribeTagsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""每页大小，默认为 15
+        r"""<p>每页大小，默认为 15，最大1000</p>
         :rtype: int
         """
         return self._Limit
@@ -2875,7 +2875,7 @@ class DescribeTagsRequest(AbstractModel):
 
     @property
     def CreateUin(self):
-        r"""创建者用户 Uin，不传或为空只将 Uin 作为条件查询
+        r"""<p>创建者用户 Uin，不传或为空只将 Uin 作为条件查询</p>
         :rtype: int
         """
         return self._CreateUin
@@ -2886,7 +2886,7 @@ class DescribeTagsRequest(AbstractModel):
 
     @property
     def TagKeys(self):
-        r"""标签键数组,与标签值同时存在或同时不存在，不存在时表示查询该用户所有标签,当与TagKey同时传递时只取本值
+        r"""<p>标签键数组,与标签值同时存在或同时不存在，不存在时表示查询该用户所有标签,当与TagKey同时传递时只取本值</p>
         :rtype: list of str
         """
         return self._TagKeys
@@ -2897,7 +2897,7 @@ class DescribeTagsRequest(AbstractModel):
 
     @property
     def ShowProject(self):
-        r"""是否展现项目标签。1:展示  0:不展示
+        r"""<p>是否展现项目标签。1:展示  0:不展示</p>
         :rtype: int
         """
         return self._ShowProject
@@ -2932,13 +2932,13 @@ class DescribeTagsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 结果总数
+        :param _TotalCount: <p>结果总数</p>
         :type TotalCount: int
-        :param _Offset: 数据位移偏量
+        :param _Offset: <p>数据位移偏量</p>
         :type Offset: int
-        :param _Limit: 每页大小
+        :param _Limit: <p>每页大小</p>
         :type Limit: int
-        :param _Tags: 标签列表
+        :param _Tags: <p>标签列表</p>
         :type Tags: list of TagWithDelete
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2951,7 +2951,7 @@ class DescribeTagsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""结果总数
+        r"""<p>结果总数</p>
         :rtype: int
         """
         return self._TotalCount
@@ -2962,7 +2962,7 @@ class DescribeTagsResponse(AbstractModel):
 
     @property
     def Offset(self):
-        r"""数据位移偏量
+        r"""<p>数据位移偏量</p>
         :rtype: int
         """
         return self._Offset
@@ -2973,7 +2973,7 @@ class DescribeTagsResponse(AbstractModel):
 
     @property
     def Limit(self):
-        r"""每页大小
+        r"""<p>每页大小</p>
         :rtype: int
         """
         return self._Limit
@@ -2984,7 +2984,7 @@ class DescribeTagsResponse(AbstractModel):
 
     @property
     def Tags(self):
-        r"""标签列表
+        r"""<p>标签列表</p>
         :rtype: list of TagWithDelete
         """
         return self._Tags

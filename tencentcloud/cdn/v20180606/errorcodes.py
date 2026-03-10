@@ -29,6 +29,9 @@ FAILEDOPERATION_CDNCONFIGERROR = 'FailedOperation.CdnConfigError'
 # 数据查询错误，请联系腾讯云工程师进一步排查。
 FAILEDOPERATION_DATASYSTEMERROR = 'FailedOperation.DataSystemError'
 
+# SSL无法获取订单，请稍后重试
+FAILEDOPERATION_SSLCERTCANNOTGETORDER = 'FailedOperation.SslCertCannotGetOrder'
+
 # 证书不存在
 FAILEDOPERATION_SSLCERTNOTFOUND = 'FailedOperation.SslCertNotFound'
 
@@ -263,6 +266,15 @@ INVALIDPARAMETER_REMOTEAUTHINVALIDPLATFORM = 'InvalidParameter.RemoteAuthInvalid
 # 域名所在平台不支持使用https协议访问远程鉴权地址。
 INVALIDPARAMETER_REMOTEAUTHINVALIDPROTOCOL = 'InvalidParameter.RemoteAuthInvalidProtocol'
 
+# SSL证书链错误，请检查证书链后重试
+INVALIDPARAMETER_SSLCERTCHAINERROR = 'InvalidParameter.SslCertChainError'
+
+# SSL证书与私钥不匹配，请检查后重试
+INVALIDPARAMETER_SSLCERTMATCHERROR = 'InvalidParameter.SslCertMatchError'
+
+# SSL证书解析错误，请检查证书格式后重试
+INVALIDPARAMETER_SSLCERTPARSEERROR = 'InvalidParameter.SslCertParseError'
+
 # 参数取值错误。
 INVALIDPARAMETERVALUE = 'InvalidParameterValue'
 
@@ -337,6 +349,9 @@ LIMITEXCEEDED_CLSLOGSETEXCEED = 'LimitExceeded.ClsLogsetExceed'
 
 # 主题超限。
 LIMITEXCEEDED_CLSTOPICEXCEED = 'LimitExceeded.ClsTopicExceed'
+
+# SSL请求频率超限，请稍后重试
+LIMITEXCEEDED_SSLCERTREQUESTLIMITEXCEEDED = 'LimitExceeded.SslCertRequestLimitExceeded'
 
 # 缺少参数错误。
 MISSINGPARAMETER = 'MissingParameter'

@@ -180,6 +180,276 @@ class ApplicationInfo(AbstractModel):
         
 
 
+class COSStorage(AbstractModel):
+    r"""cos挂载信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _URI: cos桶uri
+        :type URI: str
+        """
+        self._URI = None
+
+    @property
+    def URI(self):
+        r"""cos桶uri
+        :rtype: str
+        """
+        return self._URI
+
+    @URI.setter
+    def URI(self, URI):
+        self._URI = URI
+
+
+    def _deserialize(self, params):
+        self._URI = params.get("URI")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ComputeDetail(AbstractModel):
+    r"""算力详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BundleType: 算力套餐ID
+        :type BundleType: str
+        :param _Count: 节点数量
+        :type Count: int
+        :param _GPUCount: 显卡数量
+        :type GPUCount: str
+        :param _GPUMemory: 显存
+        :type GPUMemory: str
+        :param _GPUPerformance: 算力
+        :type GPUPerformance: str
+        :param _CPU: CPU核数
+        :type CPU: str
+        :param _Memory: 内存
+        :type Memory: str
+        """
+        self._BundleType = None
+        self._Count = None
+        self._GPUCount = None
+        self._GPUMemory = None
+        self._GPUPerformance = None
+        self._CPU = None
+        self._Memory = None
+
+    @property
+    def BundleType(self):
+        r"""算力套餐ID
+        :rtype: str
+        """
+        return self._BundleType
+
+    @BundleType.setter
+    def BundleType(self, BundleType):
+        self._BundleType = BundleType
+
+    @property
+    def Count(self):
+        r"""节点数量
+        :rtype: int
+        """
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+    @property
+    def GPUCount(self):
+        r"""显卡数量
+        :rtype: str
+        """
+        return self._GPUCount
+
+    @GPUCount.setter
+    def GPUCount(self, GPUCount):
+        self._GPUCount = GPUCount
+
+    @property
+    def GPUMemory(self):
+        r"""显存
+        :rtype: str
+        """
+        return self._GPUMemory
+
+    @GPUMemory.setter
+    def GPUMemory(self, GPUMemory):
+        self._GPUMemory = GPUMemory
+
+    @property
+    def GPUPerformance(self):
+        r"""算力
+        :rtype: str
+        """
+        return self._GPUPerformance
+
+    @GPUPerformance.setter
+    def GPUPerformance(self, GPUPerformance):
+        self._GPUPerformance = GPUPerformance
+
+    @property
+    def CPU(self):
+        r"""CPU核数
+        :rtype: str
+        """
+        return self._CPU
+
+    @CPU.setter
+    def CPU(self, CPU):
+        self._CPU = CPU
+
+    @property
+    def Memory(self):
+        r"""内存
+        :rtype: str
+        """
+        return self._Memory
+
+    @Memory.setter
+    def Memory(self, Memory):
+        self._Memory = Memory
+
+
+    def _deserialize(self, params):
+        self._BundleType = params.get("BundleType")
+        self._Count = params.get("Count")
+        self._GPUCount = params.get("GPUCount")
+        self._GPUMemory = params.get("GPUMemory")
+        self._GPUPerformance = params.get("GPUPerformance")
+        self._CPU = params.get("CPU")
+        self._Memory = params.get("Memory")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ContainerInfo(AbstractModel):
+    r"""容器信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Image: 镜像相关信息
+        :type Image: :class:`tencentcloud.hai.v20230812.models.ImageInfo`
+        :param _Port: 服务监听端口
+        :type Port: str
+        :param _Scripts: 启动命令
+        :type Scripts: list of str
+        :param _Envs: 环境变量列表
+        :type Envs: list of EnvParam
+        :param _Storages: 存储挂载配置
+        :type Storages: list of StorageInfo
+        """
+        self._Image = None
+        self._Port = None
+        self._Scripts = None
+        self._Envs = None
+        self._Storages = None
+
+    @property
+    def Image(self):
+        r"""镜像相关信息
+        :rtype: :class:`tencentcloud.hai.v20230812.models.ImageInfo`
+        """
+        return self._Image
+
+    @Image.setter
+    def Image(self, Image):
+        self._Image = Image
+
+    @property
+    def Port(self):
+        r"""服务监听端口
+        :rtype: str
+        """
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+    @property
+    def Scripts(self):
+        r"""启动命令
+        :rtype: list of str
+        """
+        return self._Scripts
+
+    @Scripts.setter
+    def Scripts(self, Scripts):
+        self._Scripts = Scripts
+
+    @property
+    def Envs(self):
+        r"""环境变量列表
+        :rtype: list of EnvParam
+        """
+        return self._Envs
+
+    @Envs.setter
+    def Envs(self, Envs):
+        self._Envs = Envs
+
+    @property
+    def Storages(self):
+        r"""存储挂载配置
+        :rtype: list of StorageInfo
+        """
+        return self._Storages
+
+    @Storages.setter
+    def Storages(self, Storages):
+        self._Storages = Storages
+
+
+    def _deserialize(self, params):
+        if params.get("Image") is not None:
+            self._Image = ImageInfo()
+            self._Image._deserialize(params.get("Image"))
+        self._Port = params.get("Port")
+        self._Scripts = params.get("Scripts")
+        if params.get("Envs") is not None:
+            self._Envs = []
+            for item in params.get("Envs"):
+                obj = EnvParam()
+                obj._deserialize(item)
+                self._Envs.append(obj)
+        if params.get("Storages") is not None:
+            self._Storages = []
+            for item in params.get("Storages"):
+                obj = StorageInfo()
+                obj._deserialize(item)
+                self._Storages.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateApplicationRequest(AbstractModel):
     r"""CreateApplication请求参数结构体
 
@@ -396,6 +666,59 @@ class CreateMuskPromptResponse(AbstractModel):
     def _deserialize(self, params):
         self._PromptId = params.get("PromptId")
         self._RequestId = params.get("RequestId")
+
+
+class DeploymentConfig(AbstractModel):
+    r"""服务部署信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Container: 容器配置
+        :type Container: :class:`tencentcloud.hai.v20230812.models.ContainerInfo`
+        :param _ContainerCount: 容器数量
+        :type ContainerCount: int
+        """
+        self._Container = None
+        self._ContainerCount = None
+
+    @property
+    def Container(self):
+        r"""容器配置
+        :rtype: :class:`tencentcloud.hai.v20230812.models.ContainerInfo`
+        """
+        return self._Container
+
+    @Container.setter
+    def Container(self, Container):
+        self._Container = Container
+
+    @property
+    def ContainerCount(self):
+        r"""容器数量
+        :rtype: int
+        """
+        return self._ContainerCount
+
+    @ContainerCount.setter
+    def ContainerCount(self, ContainerCount):
+        self._ContainerCount = ContainerCount
+
+
+    def _deserialize(self, params):
+        if params.get("Container") is not None:
+            self._Container = ContainerInfo()
+            self._Container._deserialize(params.get("Container"))
+        self._ContainerCount = params.get("ContainerCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DescribeApplicationsRequest(AbstractModel):
@@ -1230,6 +1553,186 @@ class DescribeServiceLoginSettingsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeServicesRequest(AbstractModel):
+    r"""DescribeServices请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ServiceIds: 服务列表
+        :type ServiceIds: list of str
+        :param _Limit: 分页大小
+        :type Limit: int
+        :param _Offset: 偏移量
+        :type Offset: int
+        """
+        self._ServiceIds = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def ServiceIds(self):
+        r"""服务列表
+        :rtype: list of str
+        """
+        return self._ServiceIds
+
+    @ServiceIds.setter
+    def ServiceIds(self, ServiceIds):
+        self._ServiceIds = ServiceIds
+
+    @property
+    def Limit(self):
+        r"""分页大小
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""偏移量
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._ServiceIds = params.get("ServiceIds")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeServicesResponse(AbstractModel):
+    r"""DescribeServices返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 总数
+        :type TotalCount: int
+        :param _ServiceInfoSet: 服务列表
+        :type ServiceInfoSet: list of ServiceDetail
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._ServiceInfoSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def ServiceInfoSet(self):
+        r"""服务列表
+        :rtype: list of ServiceDetail
+        """
+        return self._ServiceInfoSet
+
+    @ServiceInfoSet.setter
+    def ServiceInfoSet(self, ServiceInfoSet):
+        self._ServiceInfoSet = ServiceInfoSet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("ServiceInfoSet") is not None:
+            self._ServiceInfoSet = []
+            for item in params.get("ServiceInfoSet"):
+                obj = ServiceDetail()
+                obj._deserialize(item)
+                self._ServiceInfoSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class EnvParam(AbstractModel):
+    r"""环境变量键值对
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 环境变量名
+        :type Name: str
+        :param _Value: 环境变量值
+        :type Value: str
+        """
+        self._Name = None
+        self._Value = None
+
+    @property
+    def Name(self):
+        r"""环境变量名
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Value(self):
+        r"""环境变量值
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Filter(AbstractModel):
     r"""描述键值对过滤器，用于条件过滤查询。例如过滤ID、名称、状态等
 
@@ -1274,6 +1777,116 @@ class Filter(AbstractModel):
     def _deserialize(self, params):
         self._Name = params.get("Name")
         self._Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HiCacheInfo(AbstractModel):
+    r"""HiCache信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HiCacheLevel: HiCache缓存等级
+        :type HiCacheLevel: str
+        """
+        self._HiCacheLevel = None
+
+    @property
+    def HiCacheLevel(self):
+        r"""HiCache缓存等级
+        :rtype: str
+        """
+        return self._HiCacheLevel
+
+    @HiCacheLevel.setter
+    def HiCacheLevel(self, HiCacheLevel):
+        self._HiCacheLevel = HiCacheLevel
+
+
+    def _deserialize(self, params):
+        self._HiCacheLevel = params.get("HiCacheLevel")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HyperParam(AbstractModel):
+    r"""描述了服务的超参数配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HiCache: HiCache缓存
+        :type HiCache: :class:`tencentcloud.hai.v20230812.models.HiCacheInfo`
+        """
+        self._HiCache = None
+
+    @property
+    def HiCache(self):
+        r"""HiCache缓存
+        :rtype: :class:`tencentcloud.hai.v20230812.models.HiCacheInfo`
+        """
+        return self._HiCache
+
+    @HiCache.setter
+    def HiCache(self, HiCache):
+        self._HiCache = HiCache
+
+
+    def _deserialize(self, params):
+        if params.get("HiCache") is not None:
+            self._HiCache = HiCacheInfo()
+            self._HiCache._deserialize(params.get("HiCache"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ImageInfo(AbstractModel):
+    r"""镜像相关配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImageRegistryUrl: tcr仓库地址
+        :type ImageRegistryUrl: str
+        """
+        self._ImageRegistryUrl = None
+
+    @property
+    def ImageRegistryUrl(self):
+        r"""tcr仓库地址
+        :rtype: str
+        """
+        return self._ImageRegistryUrl
+
+    @ImageRegistryUrl.setter
+    def ImageRegistryUrl(self, ImageRegistryUrl):
+        self._ImageRegistryUrl = ImageRegistryUrl
+
+
+    def _deserialize(self, params):
+        self._ImageRegistryUrl = params.get("ImageRegistryUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3146,6 +3759,189 @@ class SceneInfo(AbstractModel):
         
 
 
+class ServiceDetail(AbstractModel):
+    r"""服务详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ServiceId: 服务id
+        :type ServiceId: str
+        :param _ServiceName: 服务名称
+        :type ServiceName: str
+        :param _ServiceState: 服务状态
+        :type ServiceState: str
+        :param _RunningReplicas: 运行中的副本数
+        :type RunningReplicas: int
+        :param _TotalReplicas: 期望的副本总数
+        :type TotalReplicas: int
+        :param _CreateTime: 创建时间
+        :type CreateTime: str
+        :param _ComputeSet: 算力套餐详情
+        :type ComputeSet: list of ComputeDetail
+        :param _ModelName: 模型名称
+        :type ModelName: str
+        :param _DeploymentConfigs: 服务部署信息
+        :type DeploymentConfigs: list of DeploymentConfig
+        :param _HyperParam: 服务超参数配置
+        :type HyperParam: :class:`tencentcloud.hai.v20230812.models.HyperParam`
+        """
+        self._ServiceId = None
+        self._ServiceName = None
+        self._ServiceState = None
+        self._RunningReplicas = None
+        self._TotalReplicas = None
+        self._CreateTime = None
+        self._ComputeSet = None
+        self._ModelName = None
+        self._DeploymentConfigs = None
+        self._HyperParam = None
+
+    @property
+    def ServiceId(self):
+        r"""服务id
+        :rtype: str
+        """
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def ServiceName(self):
+        r"""服务名称
+        :rtype: str
+        """
+        return self._ServiceName
+
+    @ServiceName.setter
+    def ServiceName(self, ServiceName):
+        self._ServiceName = ServiceName
+
+    @property
+    def ServiceState(self):
+        r"""服务状态
+        :rtype: str
+        """
+        return self._ServiceState
+
+    @ServiceState.setter
+    def ServiceState(self, ServiceState):
+        self._ServiceState = ServiceState
+
+    @property
+    def RunningReplicas(self):
+        r"""运行中的副本数
+        :rtype: int
+        """
+        return self._RunningReplicas
+
+    @RunningReplicas.setter
+    def RunningReplicas(self, RunningReplicas):
+        self._RunningReplicas = RunningReplicas
+
+    @property
+    def TotalReplicas(self):
+        r"""期望的副本总数
+        :rtype: int
+        """
+        return self._TotalReplicas
+
+    @TotalReplicas.setter
+    def TotalReplicas(self, TotalReplicas):
+        self._TotalReplicas = TotalReplicas
+
+    @property
+    def CreateTime(self):
+        r"""创建时间
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ComputeSet(self):
+        r"""算力套餐详情
+        :rtype: list of ComputeDetail
+        """
+        return self._ComputeSet
+
+    @ComputeSet.setter
+    def ComputeSet(self, ComputeSet):
+        self._ComputeSet = ComputeSet
+
+    @property
+    def ModelName(self):
+        r"""模型名称
+        :rtype: str
+        """
+        return self._ModelName
+
+    @ModelName.setter
+    def ModelName(self, ModelName):
+        self._ModelName = ModelName
+
+    @property
+    def DeploymentConfigs(self):
+        r"""服务部署信息
+        :rtype: list of DeploymentConfig
+        """
+        return self._DeploymentConfigs
+
+    @DeploymentConfigs.setter
+    def DeploymentConfigs(self, DeploymentConfigs):
+        self._DeploymentConfigs = DeploymentConfigs
+
+    @property
+    def HyperParam(self):
+        r"""服务超参数配置
+        :rtype: :class:`tencentcloud.hai.v20230812.models.HyperParam`
+        """
+        return self._HyperParam
+
+    @HyperParam.setter
+    def HyperParam(self, HyperParam):
+        self._HyperParam = HyperParam
+
+
+    def _deserialize(self, params):
+        self._ServiceId = params.get("ServiceId")
+        self._ServiceName = params.get("ServiceName")
+        self._ServiceState = params.get("ServiceState")
+        self._RunningReplicas = params.get("RunningReplicas")
+        self._TotalReplicas = params.get("TotalReplicas")
+        self._CreateTime = params.get("CreateTime")
+        if params.get("ComputeSet") is not None:
+            self._ComputeSet = []
+            for item in params.get("ComputeSet"):
+                obj = ComputeDetail()
+                obj._deserialize(item)
+                self._ComputeSet.append(obj)
+        self._ModelName = params.get("ModelName")
+        if params.get("DeploymentConfigs") is not None:
+            self._DeploymentConfigs = []
+            for item in params.get("DeploymentConfigs"):
+                obj = DeploymentConfig()
+                obj._deserialize(item)
+                self._DeploymentConfigs.append(obj)
+        if params.get("HyperParam") is not None:
+            self._HyperParam = HyperParam()
+            self._HyperParam._deserialize(params.get("HyperParam"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ServicePriceDetail(AbstractModel):
     r"""推理集群费用数据结构体
 
@@ -3389,6 +4185,59 @@ class StopInstanceResponse(AbstractModel):
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
+
+
+class StorageInfo(AbstractModel):
+    r"""存储信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MountPath: 挂载路径
+        :type MountPath: str
+        :param _COSStorage: cos挂载信息
+        :type COSStorage: :class:`tencentcloud.hai.v20230812.models.COSStorage`
+        """
+        self._MountPath = None
+        self._COSStorage = None
+
+    @property
+    def MountPath(self):
+        r"""挂载路径
+        :rtype: str
+        """
+        return self._MountPath
+
+    @MountPath.setter
+    def MountPath(self, MountPath):
+        self._MountPath = MountPath
+
+    @property
+    def COSStorage(self):
+        r"""cos挂载信息
+        :rtype: :class:`tencentcloud.hai.v20230812.models.COSStorage`
+        """
+        return self._COSStorage
+
+    @COSStorage.setter
+    def COSStorage(self, COSStorage):
+        self._COSStorage = COSStorage
+
+
+    def _deserialize(self, params):
+        self._MountPath = params.get("MountPath")
+        if params.get("COSStorage") is not None:
+            self._COSStorage = COSStorage()
+            self._COSStorage._deserialize(params.get("COSStorage"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class SystemDisk(AbstractModel):

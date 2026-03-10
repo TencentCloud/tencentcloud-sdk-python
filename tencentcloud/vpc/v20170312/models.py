@@ -74763,7 +74763,7 @@ class VpnGateway(AbstractModel):
         :type RenewFlag: str
         :param _InstanceChargeType: 网关付费类型：POSTPAID_BY_HOUR：按量计费，PREPAID：包年包月预付费。
         :type InstanceChargeType: str
-        :param _InternetMaxBandwidthOut: 网关出带宽。
+        :param _InternetMaxBandwidthOut: 网关出带宽，单位：Mbps。
         :type InternetMaxBandwidthOut: int
         :param _CreatedTime: 创建时间。
         :type CreatedTime: str
@@ -74902,7 +74902,7 @@ class VpnGateway(AbstractModel):
 
     @property
     def InternetMaxBandwidthOut(self):
-        r"""网关出带宽。
+        r"""网关出带宽，单位：Mbps。
         :rtype: int
         """
         return self._InternetMaxBandwidthOut
@@ -75088,7 +75088,7 @@ class VpnGatewayQuota(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Bandwidth: 带宽配额
+        :param _Bandwidth: 带宽配额，单位：Mbps。
         :type Bandwidth: int
         :param _Cname: 配额中文名称
         :type Cname: str
@@ -75101,7 +75101,7 @@ class VpnGatewayQuota(AbstractModel):
 
     @property
     def Bandwidth(self):
-        r"""带宽配额
+        r"""带宽配额，单位：Mbps。
         :rtype: int
         """
         return self._Bandwidth

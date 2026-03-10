@@ -565,14 +565,14 @@ class DescribeWorkspacesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 工作空间名称过滤条件
+        :param _Name: <p>工作空间名称过滤条件</p>
         :type Name: str
         """
         self._Name = None
 
     @property
     def Name(self):
-        r"""工作空间名称过滤条件
+        r"""<p>工作空间名称过滤条件</p>
         :rtype: str
         """
         return self._Name
@@ -601,7 +601,7 @@ class DescribeWorkspacesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 工作空间列表
+        :param _Data: <p>工作空间列表</p>
         :type Data: list of WorkspaceStatusInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -611,7 +611,7 @@ class DescribeWorkspacesResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""工作空间列表
+        r"""<p>工作空间列表</p>
         :rtype: list of WorkspaceStatusInfo
         """
         return self._Data

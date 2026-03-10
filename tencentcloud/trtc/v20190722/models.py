@@ -580,6 +580,186 @@ class AmbientSound(AbstractModel):
         
 
 
+class AsrParam(AbstractModel):
+    r"""语音识别使用的参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Lang: 转录服务使用的模型类型。示例值"16k_zh_en"。语音转文本不同套餐版本支持的语言如下：
+
+基础语言引擎：
+- "zh": 8k 采样率中文识别模型，主要用于电话音频。
+
+标准语言引擎：
+- "8k_zh_large": 8k 中文大模型引擎，针对电话音频支持较好。
+- "16k_zh_large": 16k 大模型引擎，同时支持中文、英文、多种中文方言口音等语言的识别。
+- "16k_zh_en": 最新 16k 中英大模型引擎，同时支持中文、英语、多种中文方言口音的识别，对中英混说场景识别更优。
+
+高级语言引擎：
+- "zh-yue": 中文粤语
+- "vi": 越南语
+- "ja": 日语
+- "ko": 韩语
+- "id": 印度尼西亚语
+- "th": 泰语
+- "pt": 葡萄牙语
+- "tr": 土耳其语
+- "ar": 阿拉伯语
+- "es": 西班牙语
+- "hi": 印地语
+- "fr": 法语
+- "ms": 马来语
+- "fil": 菲律宾语
+- "de": 德语
+- "it": 意大利语
+- "ru": 俄语
+- "sv": 瑞典语
+- "da": 丹麦语
+- "no": 挪威语
+
+注意：
+如果缺少满足您需求的语言，请联系我们技术人员。
+        :type Lang: str
+        :param _VadSilenceTime: 语音识别vad的时间，范围为240-2000，默认为1000，单位为ms。更小的值会让语音识别分句更快。
+示例值：1000
+        :type VadSilenceTime: int
+        :param _HotWordList: 临时热词表：该参数用于提升识别准确率。
+- 单个热词限制："热词|权重"，单个热词不超过30个字符（最多10个汉字），权重[1-11]或者100，如："腾讯云|5" 或 "ASR|11"。
+- 临时热词表限制：多个热词用英文逗号分割，最多支持128个热词，如："腾讯云|10,语音识别|5,ASR|11"。
+注意：
+热词权重设置为11时，当前热词将升级为超级热词，建议仅将重要且必须生效的热词设置到11，设置过多权重为11的热词将影响整体字准率。
+热词权重设置为100时，当前热词开启热词增强同音同调替换功能，举例：热词配置"蜜制|100"时，与"蜜制"同拼音（mizhi）的"秘制"的识别结果会被强制替换成"蜜制"。因此建议客户根据自己的实际情况开启该功能。建议仅将重要且必须生效的热词设置到100，设置过多权重为100的热词将影响整体字准率。
+热词不能包含空格，如：ASR 腾讯云
+示例值：语音助理|10
+        :type HotWordList: str
+        :param _AlternativeLanguage: 发起模糊识别为高级版能力,默认按照高级版收费,仅支持填写除"zh-dialect"和"zh-yue"以外的高级版语言。注意：最多只能填写4种语言。
+
+        :type AlternativeLanguage: list of str
+        :param _VadLevel: vad的远场人声抑制能力（不会对asr识别效果造成影响），范围为[0, 3]，默认为0。推荐设置为2，有较好的远场人声抑制能力。
+        :type VadLevel: int
+        """
+        self._Lang = None
+        self._VadSilenceTime = None
+        self._HotWordList = None
+        self._AlternativeLanguage = None
+        self._VadLevel = None
+
+    @property
+    def Lang(self):
+        r"""转录服务使用的模型类型。示例值"16k_zh_en"。语音转文本不同套餐版本支持的语言如下：
+
+基础语言引擎：
+- "zh": 8k 采样率中文识别模型，主要用于电话音频。
+
+标准语言引擎：
+- "8k_zh_large": 8k 中文大模型引擎，针对电话音频支持较好。
+- "16k_zh_large": 16k 大模型引擎，同时支持中文、英文、多种中文方言口音等语言的识别。
+- "16k_zh_en": 最新 16k 中英大模型引擎，同时支持中文、英语、多种中文方言口音的识别，对中英混说场景识别更优。
+
+高级语言引擎：
+- "zh-yue": 中文粤语
+- "vi": 越南语
+- "ja": 日语
+- "ko": 韩语
+- "id": 印度尼西亚语
+- "th": 泰语
+- "pt": 葡萄牙语
+- "tr": 土耳其语
+- "ar": 阿拉伯语
+- "es": 西班牙语
+- "hi": 印地语
+- "fr": 法语
+- "ms": 马来语
+- "fil": 菲律宾语
+- "de": 德语
+- "it": 意大利语
+- "ru": 俄语
+- "sv": 瑞典语
+- "da": 丹麦语
+- "no": 挪威语
+
+注意：
+如果缺少满足您需求的语言，请联系我们技术人员。
+        :rtype: str
+        """
+        return self._Lang
+
+    @Lang.setter
+    def Lang(self, Lang):
+        self._Lang = Lang
+
+    @property
+    def VadSilenceTime(self):
+        r"""语音识别vad的时间，范围为240-2000，默认为1000，单位为ms。更小的值会让语音识别分句更快。
+示例值：1000
+        :rtype: int
+        """
+        return self._VadSilenceTime
+
+    @VadSilenceTime.setter
+    def VadSilenceTime(self, VadSilenceTime):
+        self._VadSilenceTime = VadSilenceTime
+
+    @property
+    def HotWordList(self):
+        r"""临时热词表：该参数用于提升识别准确率。
+- 单个热词限制："热词|权重"，单个热词不超过30个字符（最多10个汉字），权重[1-11]或者100，如："腾讯云|5" 或 "ASR|11"。
+- 临时热词表限制：多个热词用英文逗号分割，最多支持128个热词，如："腾讯云|10,语音识别|5,ASR|11"。
+注意：
+热词权重设置为11时，当前热词将升级为超级热词，建议仅将重要且必须生效的热词设置到11，设置过多权重为11的热词将影响整体字准率。
+热词权重设置为100时，当前热词开启热词增强同音同调替换功能，举例：热词配置"蜜制|100"时，与"蜜制"同拼音（mizhi）的"秘制"的识别结果会被强制替换成"蜜制"。因此建议客户根据自己的实际情况开启该功能。建议仅将重要且必须生效的热词设置到100，设置过多权重为100的热词将影响整体字准率。
+热词不能包含空格，如：ASR 腾讯云
+示例值：语音助理|10
+        :rtype: str
+        """
+        return self._HotWordList
+
+    @HotWordList.setter
+    def HotWordList(self, HotWordList):
+        self._HotWordList = HotWordList
+
+    @property
+    def AlternativeLanguage(self):
+        r"""发起模糊识别为高级版能力,默认按照高级版收费,仅支持填写除"zh-dialect"和"zh-yue"以外的高级版语言。注意：最多只能填写4种语言。
+
+        :rtype: list of str
+        """
+        return self._AlternativeLanguage
+
+    @AlternativeLanguage.setter
+    def AlternativeLanguage(self, AlternativeLanguage):
+        self._AlternativeLanguage = AlternativeLanguage
+
+    @property
+    def VadLevel(self):
+        r"""vad的远场人声抑制能力（不会对asr识别效果造成影响），范围为[0, 3]，默认为0。推荐设置为2，有较好的远场人声抑制能力。
+        :rtype: int
+        """
+        return self._VadLevel
+
+    @VadLevel.setter
+    def VadLevel(self, VadLevel):
+        self._VadLevel = VadLevel
+
+
+    def _deserialize(self, params):
+        self._Lang = params.get("Lang")
+        self._VadSilenceTime = params.get("VadSilenceTime")
+        self._HotWordList = params.get("HotWordList")
+        self._AlternativeLanguage = params.get("AlternativeLanguage")
+        self._VadLevel = params.get("VadLevel")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AudioEncode(AbstractModel):
     r"""音频编码参数。
 
@@ -2410,6 +2590,166 @@ class CreateCloudSliceTaskResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateCloudTranscriptionRequest(AbstractModel):
+    r"""CreateCloudTranscription请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: TRTC的[SdkAppId](https://cloud.tencent.com/document/product/647/46351#sdkappid)，和转录的房间所对应的SdkAppId相同。
+        :type SdkAppId: int
+        :param _RoomId: TRTC的[RoomId](https://cloud.tencent.com/document/product/647/46351#roomid)，转录的TRTC房间所对应的RoomId。注：房间号类型默认为整型，若房间号类型为字符串，请通过RoomIdType指定。
+        :type RoomId: str
+        :param _RoomIdType: 房间信息RoomType，必须和转录的房间所对应的RoomId类型相同，0为整型房间号，1为字符串房间号。
+        :type RoomIdType: int
+        :param _TranscriptionParam: 转录服务加入TRTC房间的参数。
+        :type TranscriptionParam: :class:`tencentcloud.trtc.v20190722.models.TranscriptionParam`
+        :param _AsrParam: 转录服务ASR使用的参数。
+        :type AsrParam: :class:`tencentcloud.trtc.v20190722.models.AsrParam`
+        :param _TranslationParam: 转录服务翻译使用的参数。
+        :type TranslationParam: :class:`tencentcloud.trtc.v20190722.models.TranslationParam`
+        """
+        self._SdkAppId = None
+        self._RoomId = None
+        self._RoomIdType = None
+        self._TranscriptionParam = None
+        self._AsrParam = None
+        self._TranslationParam = None
+
+    @property
+    def SdkAppId(self):
+        r"""TRTC的[SdkAppId](https://cloud.tencent.com/document/product/647/46351#sdkappid)，和转录的房间所对应的SdkAppId相同。
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def RoomId(self):
+        r"""TRTC的[RoomId](https://cloud.tencent.com/document/product/647/46351#roomid)，转录的TRTC房间所对应的RoomId。注：房间号类型默认为整型，若房间号类型为字符串，请通过RoomIdType指定。
+        :rtype: str
+        """
+        return self._RoomId
+
+    @RoomId.setter
+    def RoomId(self, RoomId):
+        self._RoomId = RoomId
+
+    @property
+    def RoomIdType(self):
+        r"""房间信息RoomType，必须和转录的房间所对应的RoomId类型相同，0为整型房间号，1为字符串房间号。
+        :rtype: int
+        """
+        return self._RoomIdType
+
+    @RoomIdType.setter
+    def RoomIdType(self, RoomIdType):
+        self._RoomIdType = RoomIdType
+
+    @property
+    def TranscriptionParam(self):
+        r"""转录服务加入TRTC房间的参数。
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.TranscriptionParam`
+        """
+        return self._TranscriptionParam
+
+    @TranscriptionParam.setter
+    def TranscriptionParam(self, TranscriptionParam):
+        self._TranscriptionParam = TranscriptionParam
+
+    @property
+    def AsrParam(self):
+        r"""转录服务ASR使用的参数。
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.AsrParam`
+        """
+        return self._AsrParam
+
+    @AsrParam.setter
+    def AsrParam(self, AsrParam):
+        self._AsrParam = AsrParam
+
+    @property
+    def TranslationParam(self):
+        r"""转录服务翻译使用的参数。
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.TranslationParam`
+        """
+        return self._TranslationParam
+
+    @TranslationParam.setter
+    def TranslationParam(self, TranslationParam):
+        self._TranslationParam = TranslationParam
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._RoomId = params.get("RoomId")
+        self._RoomIdType = params.get("RoomIdType")
+        if params.get("TranscriptionParam") is not None:
+            self._TranscriptionParam = TranscriptionParam()
+            self._TranscriptionParam._deserialize(params.get("TranscriptionParam"))
+        if params.get("AsrParam") is not None:
+            self._AsrParam = AsrParam()
+            self._AsrParam._deserialize(params.get("AsrParam"))
+        if params.get("TranslationParam") is not None:
+            self._TranslationParam = TranslationParam()
+            self._TranslationParam._deserialize(params.get("TranslationParam"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCloudTranscriptionResponse(AbstractModel):
+    r"""CreateCloudTranscription返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 用于唯一标识转录任务，由腾讯云服务端生成，后续查询和停止请求都需要携带TaskID参数。
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""用于唯一标识转录任务，由腾讯云服务端生成，后续查询和停止请求都需要携带TaskID参数。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreatePictureRequest(AbstractModel):
     r"""CreatePicture请求参数结构体
 
@@ -2930,6 +3270,100 @@ class DeleteCloudSliceTaskResponse(AbstractModel):
     @property
     def TaskId(self):
         r"""切片任务的唯一Id，在启动切片任务成功后会返回。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteCloudTranscriptionRequest(AbstractModel):
+    r"""DeleteCloudTranscription请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: TRTC的SDKAppId，和转录的房间所对应的SDKAppId相同。
+        :type SdkAppId: int
+        :param _TaskId: 转录任务的唯一Id，在启动转录成功后会返回。
+        :type TaskId: str
+        """
+        self._SdkAppId = None
+        self._TaskId = None
+
+    @property
+    def SdkAppId(self):
+        r"""TRTC的SDKAppId，和转录的房间所对应的SDKAppId相同。
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def TaskId(self):
+        r"""转录任务的唯一Id，在启动转录成功后会返回。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteCloudTranscriptionResponse(AbstractModel):
+    r"""DeleteCloudTranscription返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 转录服务分配的任务 ID。任务 ID 是对一次转录生命周期过程的唯一标识，结束转录时会失去意义。
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""转录服务分配的任务 ID。任务 ID 是对一次转录生命周期过程的唯一标识，结束转录时会失去意义。
         :rtype: str
         """
         return self._TaskId
@@ -4089,6 +4523,130 @@ class DescribeCloudSliceTaskResponse(AbstractModel):
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
         self._Status = params.get("Status")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCloudTranscriptionRequest(AbstractModel):
+    r"""DescribeCloudTranscription请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: TRTC的SDKAppId，和转录的房间所对应的SDKAppId相同。
+        :type SdkAppId: int
+        :param _TaskId: 转录任务的唯一Id，在启动转录成功后会返回。
+        :type TaskId: str
+        """
+        self._SdkAppId = None
+        self._TaskId = None
+
+    @property
+    def SdkAppId(self):
+        r"""TRTC的SDKAppId，和转录的房间所对应的SDKAppId相同。
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def TaskId(self):
+        r"""转录任务的唯一Id，在启动转录成功后会返回。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCloudTranscriptionResponse(AbstractModel):
+    r"""DescribeCloudTranscription返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: 任务开始时间。
+        :type StartTime: int
+        :param _Status: 转录任务状态。Idle：表示当前转录任务空闲中 InProgress：表示当前转录任务正在进行中。 Exited：表示当前转录任务正在退出的过程中。
+        :type Status: str
+        :param _TaskId: 转录任务的唯一Id。
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._StartTime = None
+        self._Status = None
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def StartTime(self):
+        r"""任务开始时间。
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def Status(self):
+        r"""转录任务状态。Idle：表示当前转录任务空闲中 InProgress：表示当前转录任务正在进行中。 Exited：表示当前转录任务正在退出的过程中。
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def TaskId(self):
+        r"""转录任务的唯一Id。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._Status = params.get("Status")
+        self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
 
 
@@ -7592,9 +8150,12 @@ class InvokeLLM(AbstractModel):
         :type Content: str
         :param _Interrupt: 是否允许该文本打断机器人说话
         :type Interrupt: bool
+        :param _ExperimentalParams: 实验性参数,联系后台使用
+        :type ExperimentalParams: str
         """
         self._Content = None
         self._Interrupt = None
+        self._ExperimentalParams = None
 
     @property
     def Content(self):
@@ -7618,10 +8179,22 @@ class InvokeLLM(AbstractModel):
     def Interrupt(self, Interrupt):
         self._Interrupt = Interrupt
 
+    @property
+    def ExperimentalParams(self):
+        r"""实验性参数,联系后台使用
+        :rtype: str
+        """
+        return self._ExperimentalParams
+
+    @ExperimentalParams.setter
+    def ExperimentalParams(self, ExperimentalParams):
+        self._ExperimentalParams = ExperimentalParams
+
 
     def _deserialize(self, params):
         self._Content = params.get("Content")
         self._Interrupt = params.get("Interrupt")
+        self._ExperimentalParams = params.get("ExperimentalParams")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17111,6 +17684,131 @@ class TimeValue(AbstractModel):
         
 
 
+class TranscriptionParam(AbstractModel):
+    r"""转录服务加入TRTC房间的参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UserId: 转录服务在TRTC房间使用的[UserId](https://cloud.tencent.com/document/product/647/46351#userid)，注意这个userId不能与其他TRTC或者转录服务等已经使用的UserId重复，建议可以把房间ID作为userId的标识的一部分。
+        :type UserId: str
+        :param _UserSig: 转录服务加入TRTC房间的用户签名，当前 UserId 对应的验证签名，相当于登录密码，具体计算方法请参考TRTC计算[UserSig](https://cloud.tencent.com/document/product/647/45910#UserSig)的方案。
+        :type UserSig: str
+        :param _SubscribeList: 转录用户白名单，开始服务时，为空或不填表示转录所有主播音频，填具体值表示转录指定主播音频。
+使用黑白名单时，同一个用户同时在黑白名单时，以黑名单为主。
+        :type SubscribeList: list of TranscriptionUserInfoParams
+        :param _UnSubscribeList: 转录用户黑名单，为空或不填表示无黑名单，填具体值表示不转录指定主播音频。
+同一个用户同时在黑白名单时，以黑名单为主。
+        :type UnSubscribeList: list of TranscriptionUserInfoParams
+        :param _MaxIdleTime: 所有参与转录的主播持续离开TRTC房间或切换成观众超过MaxIdleTime的时长，自动停止转录任务，单位：秒。默认值为 30 秒，该值需大于等于 5秒，且小于等于 86400秒(24小时)。
+        :type MaxIdleTime: int
+        :param _SendCustomMode: 自定义通道：支持自定义信息，只可以填0-2， 0表示不开启自定义通道，1表示开启自定义数据，2表示开启自定义消息。不填默认不开启自定义通道。注意：填1自定义数据只对 SDK版本 >= 5.15.0生效。
+        :type SendCustomMode: int
+        """
+        self._UserId = None
+        self._UserSig = None
+        self._SubscribeList = None
+        self._UnSubscribeList = None
+        self._MaxIdleTime = None
+        self._SendCustomMode = None
+
+    @property
+    def UserId(self):
+        r"""转录服务在TRTC房间使用的[UserId](https://cloud.tencent.com/document/product/647/46351#userid)，注意这个userId不能与其他TRTC或者转录服务等已经使用的UserId重复，建议可以把房间ID作为userId的标识的一部分。
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def UserSig(self):
+        r"""转录服务加入TRTC房间的用户签名，当前 UserId 对应的验证签名，相当于登录密码，具体计算方法请参考TRTC计算[UserSig](https://cloud.tencent.com/document/product/647/45910#UserSig)的方案。
+        :rtype: str
+        """
+        return self._UserSig
+
+    @UserSig.setter
+    def UserSig(self, UserSig):
+        self._UserSig = UserSig
+
+    @property
+    def SubscribeList(self):
+        r"""转录用户白名单，开始服务时，为空或不填表示转录所有主播音频，填具体值表示转录指定主播音频。
+使用黑白名单时，同一个用户同时在黑白名单时，以黑名单为主。
+        :rtype: list of TranscriptionUserInfoParams
+        """
+        return self._SubscribeList
+
+    @SubscribeList.setter
+    def SubscribeList(self, SubscribeList):
+        self._SubscribeList = SubscribeList
+
+    @property
+    def UnSubscribeList(self):
+        r"""转录用户黑名单，为空或不填表示无黑名单，填具体值表示不转录指定主播音频。
+同一个用户同时在黑白名单时，以黑名单为主。
+        :rtype: list of TranscriptionUserInfoParams
+        """
+        return self._UnSubscribeList
+
+    @UnSubscribeList.setter
+    def UnSubscribeList(self, UnSubscribeList):
+        self._UnSubscribeList = UnSubscribeList
+
+    @property
+    def MaxIdleTime(self):
+        r"""所有参与转录的主播持续离开TRTC房间或切换成观众超过MaxIdleTime的时长，自动停止转录任务，单位：秒。默认值为 30 秒，该值需大于等于 5秒，且小于等于 86400秒(24小时)。
+        :rtype: int
+        """
+        return self._MaxIdleTime
+
+    @MaxIdleTime.setter
+    def MaxIdleTime(self, MaxIdleTime):
+        self._MaxIdleTime = MaxIdleTime
+
+    @property
+    def SendCustomMode(self):
+        r"""自定义通道：支持自定义信息，只可以填0-2， 0表示不开启自定义通道，1表示开启自定义数据，2表示开启自定义消息。不填默认不开启自定义通道。注意：填1自定义数据只对 SDK版本 >= 5.15.0生效。
+        :rtype: int
+        """
+        return self._SendCustomMode
+
+    @SendCustomMode.setter
+    def SendCustomMode(self, SendCustomMode):
+        self._SendCustomMode = SendCustomMode
+
+
+    def _deserialize(self, params):
+        self._UserId = params.get("UserId")
+        self._UserSig = params.get("UserSig")
+        if params.get("SubscribeList") is not None:
+            self._SubscribeList = []
+            for item in params.get("SubscribeList"):
+                obj = TranscriptionUserInfoParams()
+                obj._deserialize(item)
+                self._SubscribeList.append(obj)
+        if params.get("UnSubscribeList") is not None:
+            self._UnSubscribeList = []
+            for item in params.get("UnSubscribeList"):
+                obj = TranscriptionUserInfoParams()
+                obj._deserialize(item)
+                self._UnSubscribeList.append(obj)
+        self._MaxIdleTime = params.get("MaxIdleTime")
+        self._SendCustomMode = params.get("SendCustomMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TranscriptionParams(AbstractModel):
     r"""AI转录参数
 
@@ -17298,6 +17996,42 @@ https://cloud.tencent.com/document/product/269/31999#app-.E7.AE.A1.E7.90.86.E5.9
         
 
 
+class TranscriptionUserInfoParams(AbstractModel):
+    r"""转录用户信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UserId: 用户ID。
+        :type UserId: str
+        """
+        self._UserId = None
+
+    @property
+    def UserId(self):
+        r"""用户ID。
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+
+    def _deserialize(self, params):
+        self._UserId = params.get("UserId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TranslationConfig(AbstractModel):
     r"""翻译相关配置
 
@@ -17380,6 +18114,42 @@ class TranslationConfig(AbstractModel):
                 obj = Terminology()
                 obj._deserialize(item)
                 self._Terminology.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TranslationParam(AbstractModel):
+    r"""翻译相关的参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TargetLang: 翻译的目标语言，示例值["en", "ja"]。目标语种列表[中文 "zh"，英语 "en"，越南语 "vi"，日语 "ja"，韩语 "ko"，印度尼西亚语 "id"，泰语 "th"，葡萄牙语 "pt"，阿拉伯语 "ar"，西班牙语 "es"，法语 "fr"，马来语 "ms"，德语 "de"，意大利语 "it"，俄语 "ru"]。
+        :type TargetLang: list of str
+        """
+        self._TargetLang = None
+
+    @property
+    def TargetLang(self):
+        r"""翻译的目标语言，示例值["en", "ja"]。目标语种列表[中文 "zh"，英语 "en"，越南语 "vi"，日语 "ja"，韩语 "ko"，印度尼西亚语 "id"，泰语 "th"，葡萄牙语 "pt"，阿拉伯语 "ar"，西班牙语 "es"，法语 "fr"，马来语 "ms"，德语 "de"，意大利语 "it"，俄语 "ru"]。
+        :rtype: list of str
+        """
+        return self._TargetLang
+
+    @TargetLang.setter
+    def TargetLang(self, TargetLang):
+        self._TargetLang = TargetLang
+
+
+    def _deserialize(self, params):
+        self._TargetLang = params.get("TargetLang")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

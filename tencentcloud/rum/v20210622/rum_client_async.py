@@ -295,6 +295,24 @@ class RumClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeDataBridgeUrlV2(
+            self,
+            request: models.DescribeDataBridgeUrlV2Request,
+            opts: Dict = None,
+    ) -> models.DescribeDataBridgeUrlV2Response:
+        """
+        获取DescribeDataBridgeUrl信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDataBridgeUrlV2"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDataBridgeUrlV2Response
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeDataCustomUrl(
             self,
             request: models.DescribeDataCustomUrlRequest,
@@ -313,6 +331,24 @@ class RumClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeDataCustomUrlV2(
+            self,
+            request: models.DescribeDataCustomUrlV2Request,
+            opts: Dict = None,
+    ) -> models.DescribeDataCustomUrlV2Response:
+        """
+        获取DescribeDataCustomUrl信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDataCustomUrlV2"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDataCustomUrlV2Response
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeDataEventUrl(
             self,
             request: models.DescribeDataEventUrlRequest,
@@ -326,6 +362,24 @@ class RumClient(AbstractClient):
         kwargs["action"] = "DescribeDataEventUrl"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeDataEventUrlResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeDataEventUrlV2(
+            self,
+            request: models.DescribeDataEventUrlV2Request,
+            opts: Dict = None,
+    ) -> models.DescribeDataEventUrlV2Response:
+        """
+        获取DescribeDataEventUrl信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDataEventUrlV2"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDataEventUrlV2Response
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -385,6 +439,24 @@ class RumClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeDataFetchUrlV2(
+            self,
+            request: models.DescribeDataFetchUrlV2Request,
+            opts: Dict = None,
+    ) -> models.DescribeDataFetchUrlV2Response:
+        """
+        获取DescribeDataFetchUrl信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDataFetchUrlV2"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDataFetchUrlV2Response
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeDataLogUrlInfo(
             self,
             request: models.DescribeDataLogUrlInfoRequest,
@@ -421,6 +493,24 @@ class RumClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeDataLogUrlStatisticsV2(
+            self,
+            request: models.DescribeDataLogUrlStatisticsV2Request,
+            opts: Dict = None,
+    ) -> models.DescribeDataLogUrlStatisticsV2Response:
+        """
+        获取LogUrlStatistics信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDataLogUrlStatisticsV2"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDataLogUrlStatisticsV2Response
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeDataPerformancePage(
             self,
             request: models.DescribeDataPerformancePageRequest,
@@ -434,6 +524,24 @@ class RumClient(AbstractClient):
         kwargs["action"] = "DescribeDataPerformancePage"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeDataPerformancePageResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeDataPerformancePageV2(
+            self,
+            request: models.DescribeDataPerformancePageV2Request,
+            opts: Dict = None,
+    ) -> models.DescribeDataPerformancePageV2Response:
+        """
+        获取PerformancePage信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDataPerformancePageV2"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDataPerformancePageV2Response
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -547,6 +655,24 @@ class RumClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeDataSetUrlStatisticsV2(
+            self,
+            request: models.DescribeDataSetUrlStatisticsV2Request,
+            opts: Dict = None,
+    ) -> models.DescribeDataSetUrlStatisticsV2Response:
+        """
+        获取DescribeDataSetUrlStatistics信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDataSetUrlStatisticsV2"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDataSetUrlStatisticsV2Response
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeDataStaticProject(
             self,
             request: models.DescribeDataStaticProjectRequest,
@@ -560,6 +686,24 @@ class RumClient(AbstractClient):
         kwargs["action"] = "DescribeDataStaticProject"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeDataStaticProjectResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeDataStaticProjectV2(
+            self,
+            request: models.DescribeDataStaticProjectV2Request,
+            opts: Dict = None,
+    ) -> models.DescribeDataStaticProjectV2Response:
+        """
+        获取DescribeDataStaticProject信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDataStaticProjectV2"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDataStaticProjectV2Response
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -583,6 +727,24 @@ class RumClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeDataStaticResourceV2(
+            self,
+            request: models.DescribeDataStaticResourceV2Request,
+            opts: Dict = None,
+    ) -> models.DescribeDataStaticResourceV2Response:
+        """
+        获取DescribeDataStaticResource信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDataStaticResourceV2"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDataStaticResourceV2Response
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeDataStaticUrl(
             self,
             request: models.DescribeDataStaticUrlRequest,
@@ -596,6 +758,24 @@ class RumClient(AbstractClient):
         kwargs["action"] = "DescribeDataStaticUrl"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeDataStaticUrlResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeDataStaticUrlV2(
+            self,
+            request: models.DescribeDataStaticUrlV2Request,
+            opts: Dict = None,
+    ) -> models.DescribeDataStaticUrlV2Response:
+        """
+        获取DescribeDataStaticUrl信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDataStaticUrlV2"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDataStaticUrlV2Response
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -615,6 +795,25 @@ class RumClient(AbstractClient):
         kwargs["action"] = "DescribeDataWebVitalsPage"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeDataWebVitalsPageResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeDataWebVitalsPageV2(
+            self,
+            request: models.DescribeDataWebVitalsPageV2Request,
+            opts: Dict = None,
+    ) -> models.DescribeDataWebVitalsPageV2Response:
+        """
+        获取DescribeDataWebVitalsPage信息，用户核心活动信息
+        页面加载性能之Web Vitals。性能关键点
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDataWebVitalsPageV2"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDataWebVitalsPageV2Response
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -831,6 +1030,24 @@ class RumClient(AbstractClient):
         kwargs["action"] = "DescribeScores"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeScoresResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeScoresV2(
+            self,
+            request: models.DescribeScoresV2Request,
+            opts: Dict = None,
+    ) -> models.DescribeScoresV2Response:
+        """
+        获取首页分数列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeScoresV2"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeScoresV2Response
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
