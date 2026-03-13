@@ -8848,6 +8848,207 @@ class CreateTriggerWorkflowResult(AbstractModel):
         
 
 
+class CreateTriggerWorkflowRunRequest(AbstractModel):
+    r"""CreateTriggerWorkflowRun请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目ID
+        :type ProjectId: str
+        :param _WorkflowId: 工作流ID
+        :type WorkflowId: str
+        :param _AdvancedParams: 自定义运行参数，如果为空或者null则使用工作流最新配置
+        :type AdvancedParams: list of SchedulingParameter
+        :param _TaskIds: 本次需要运行指定的任务ID集合，如果为null或为空则运行全部
+        :type TaskIds: list of str
+        :param _SchedulingResourceGroupId: 指定的调度资源组id，为空默认原资源组
+        :type SchedulingResourceGroupId: str
+        :param _IntegrationResourceGroupId: 指定的集成资源组id，为空默认原资源组
+        :type IntegrationResourceGroupId: str
+        """
+        self._ProjectId = None
+        self._WorkflowId = None
+        self._AdvancedParams = None
+        self._TaskIds = None
+        self._SchedulingResourceGroupId = None
+        self._IntegrationResourceGroupId = None
+
+    @property
+    def ProjectId(self):
+        r"""项目ID
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def WorkflowId(self):
+        r"""工作流ID
+        :rtype: str
+        """
+        return self._WorkflowId
+
+    @WorkflowId.setter
+    def WorkflowId(self, WorkflowId):
+        self._WorkflowId = WorkflowId
+
+    @property
+    def AdvancedParams(self):
+        r"""自定义运行参数，如果为空或者null则使用工作流最新配置
+        :rtype: list of SchedulingParameter
+        """
+        return self._AdvancedParams
+
+    @AdvancedParams.setter
+    def AdvancedParams(self, AdvancedParams):
+        self._AdvancedParams = AdvancedParams
+
+    @property
+    def TaskIds(self):
+        r"""本次需要运行指定的任务ID集合，如果为null或为空则运行全部
+        :rtype: list of str
+        """
+        return self._TaskIds
+
+    @TaskIds.setter
+    def TaskIds(self, TaskIds):
+        self._TaskIds = TaskIds
+
+    @property
+    def SchedulingResourceGroupId(self):
+        r"""指定的调度资源组id，为空默认原资源组
+        :rtype: str
+        """
+        return self._SchedulingResourceGroupId
+
+    @SchedulingResourceGroupId.setter
+    def SchedulingResourceGroupId(self, SchedulingResourceGroupId):
+        self._SchedulingResourceGroupId = SchedulingResourceGroupId
+
+    @property
+    def IntegrationResourceGroupId(self):
+        r"""指定的集成资源组id，为空默认原资源组
+        :rtype: str
+        """
+        return self._IntegrationResourceGroupId
+
+    @IntegrationResourceGroupId.setter
+    def IntegrationResourceGroupId(self, IntegrationResourceGroupId):
+        self._IntegrationResourceGroupId = IntegrationResourceGroupId
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._WorkflowId = params.get("WorkflowId")
+        if params.get("AdvancedParams") is not None:
+            self._AdvancedParams = []
+            for item in params.get("AdvancedParams"):
+                obj = SchedulingParameter()
+                obj._deserialize(item)
+                self._AdvancedParams.append(obj)
+        self._TaskIds = params.get("TaskIds")
+        self._SchedulingResourceGroupId = params.get("SchedulingResourceGroupId")
+        self._IntegrationResourceGroupId = params.get("IntegrationResourceGroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateTriggerWorkflowRunResponse(AbstractModel):
+    r"""CreateTriggerWorkflowRun返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 操作结果信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.wedata.v20250806.models.CreateTriggerWorkflowRunResult`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""操作结果信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.CreateTriggerWorkflowRunResult`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = CreateTriggerWorkflowRunResult()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class CreateTriggerWorkflowRunResult(AbstractModel):
+    r"""工作流调度模式下，工作流触发运行结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WorkflowExecutionId: 工作流执行id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkflowExecutionId: str
+        """
+        self._WorkflowExecutionId = None
+
+    @property
+    def WorkflowExecutionId(self):
+        r"""工作流执行id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._WorkflowExecutionId
+
+    @WorkflowExecutionId.setter
+    def WorkflowExecutionId(self, WorkflowExecutionId):
+        self._WorkflowExecutionId = WorkflowExecutionId
+
+
+    def _deserialize(self, params):
+        self._WorkflowExecutionId = params.get("WorkflowExecutionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateWorkflowFolderRequest(AbstractModel):
     r"""CreateWorkflowFolder请求参数结构体
 

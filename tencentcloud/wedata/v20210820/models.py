@@ -3727,6 +3727,78 @@ class AssetDim(AbstractModel):
         
 
 
+class AssetDimSimpleVO(AbstractModel):
+    r"""维度简化对象
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: int
+        :param _DimName: 名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DimName: str
+        :param _DimCode: 编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DimCode: str
+        """
+        self._Id = None
+        self._DimName = None
+        self._DimCode = None
+
+    @property
+    def Id(self):
+        r"""ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def DimName(self):
+        r"""名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DimName
+
+    @DimName.setter
+    def DimName(self, DimName):
+        self._DimName = DimName
+
+    @property
+    def DimCode(self):
+        r"""编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DimCode
+
+    @DimCode.setter
+    def DimCode(self, DimCode):
+        self._DimCode = DimCode
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._DimName = params.get("DimName")
+        self._DimCode = params.get("DimCode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AssetDimTableColumn(AbstractModel):
     r"""资产维度关联数据表字段结构定义
 
@@ -8874,6 +8946,146 @@ class CandidateDsDTo(AbstractModel):
     def _deserialize(self, params):
         self._Value = params.get("Value")
         self._ValueDesc = params.get("ValueDesc")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChangeLog(AbstractModel):
+    r"""变更日志
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ChangeType: 变更类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChangeType: str
+        :param _OldValue: 修改前的值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OldValue: str
+        :param _NewValue: 修改后的值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NewValue: str
+        :param _ModifiedAccount: 修改人
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModifiedAccount: str
+        :param _ModifiedTime: 修改时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModifiedTime: str
+        :param _ChangeReason: 修改原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChangeReason: str
+        :param _ModifiedAccountName: 修改人名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModifiedAccountName: str
+        """
+        self._ChangeType = None
+        self._OldValue = None
+        self._NewValue = None
+        self._ModifiedAccount = None
+        self._ModifiedTime = None
+        self._ChangeReason = None
+        self._ModifiedAccountName = None
+
+    @property
+    def ChangeType(self):
+        r"""变更类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ChangeType
+
+    @ChangeType.setter
+    def ChangeType(self, ChangeType):
+        self._ChangeType = ChangeType
+
+    @property
+    def OldValue(self):
+        r"""修改前的值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._OldValue
+
+    @OldValue.setter
+    def OldValue(self, OldValue):
+        self._OldValue = OldValue
+
+    @property
+    def NewValue(self):
+        r"""修改后的值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._NewValue
+
+    @NewValue.setter
+    def NewValue(self, NewValue):
+        self._NewValue = NewValue
+
+    @property
+    def ModifiedAccount(self):
+        r"""修改人
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ModifiedAccount
+
+    @ModifiedAccount.setter
+    def ModifiedAccount(self, ModifiedAccount):
+        self._ModifiedAccount = ModifiedAccount
+
+    @property
+    def ModifiedTime(self):
+        r"""修改时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ModifiedTime
+
+    @ModifiedTime.setter
+    def ModifiedTime(self, ModifiedTime):
+        self._ModifiedTime = ModifiedTime
+
+    @property
+    def ChangeReason(self):
+        r"""修改原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ChangeReason
+
+    @ChangeReason.setter
+    def ChangeReason(self, ChangeReason):
+        self._ChangeReason = ChangeReason
+
+    @property
+    def ModifiedAccountName(self):
+        r"""修改人名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ModifiedAccountName
+
+    @ModifiedAccountName.setter
+    def ModifiedAccountName(self, ModifiedAccountName):
+        self._ModifiedAccountName = ModifiedAccountName
+
+
+    def _deserialize(self, params):
+        self._ChangeType = params.get("ChangeType")
+        self._OldValue = params.get("OldValue")
+        self._NewValue = params.get("NewValue")
+        self._ModifiedAccount = params.get("ModifiedAccount")
+        self._ModifiedTime = params.get("ModifiedTime")
+        self._ChangeReason = params.get("ChangeReason")
+        self._ModifiedAccountName = params.get("ModifiedAccountName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18104,6 +18316,154 @@ class DailyScoreInfo(AbstractModel):
         
 
 
+class DataAssetOption(AbstractModel):
+    r"""数据资产操作标记
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HasPermission: 是否拥有权限
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HasPermission: bool
+        :param _HasFavorite: 是否已收藏
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HasFavorite: bool
+        :param _OtherOperate: 其他的操作类型:
+取值：
+ProjectIdNull -当前表未设置归属项目；
+NotCluster - 非系统源不支持权限申请；
+ProjectDisabled - 当前项目已被禁用；
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OtherOperate: str
+        :param _FavoriteCount: 被收藏数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FavoriteCount: int
+        :param _HasBizPermission: 是否有修改业务权限
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HasBizPermission: bool
+        :param _HasProjectPermission: 是否有修改归属项目权限
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HasProjectPermission: bool
+        :param _ErrorTips: 用户无映射账户，请先完成账户映射后再来申请。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorTips: str
+        """
+        self._HasPermission = None
+        self._HasFavorite = None
+        self._OtherOperate = None
+        self._FavoriteCount = None
+        self._HasBizPermission = None
+        self._HasProjectPermission = None
+        self._ErrorTips = None
+
+    @property
+    def HasPermission(self):
+        r"""是否拥有权限
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._HasPermission
+
+    @HasPermission.setter
+    def HasPermission(self, HasPermission):
+        self._HasPermission = HasPermission
+
+    @property
+    def HasFavorite(self):
+        r"""是否已收藏
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._HasFavorite
+
+    @HasFavorite.setter
+    def HasFavorite(self, HasFavorite):
+        self._HasFavorite = HasFavorite
+
+    @property
+    def OtherOperate(self):
+        r"""其他的操作类型:
+取值：
+ProjectIdNull -当前表未设置归属项目；
+NotCluster - 非系统源不支持权限申请；
+ProjectDisabled - 当前项目已被禁用；
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._OtherOperate
+
+    @OtherOperate.setter
+    def OtherOperate(self, OtherOperate):
+        self._OtherOperate = OtherOperate
+
+    @property
+    def FavoriteCount(self):
+        r"""被收藏数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._FavoriteCount
+
+    @FavoriteCount.setter
+    def FavoriteCount(self, FavoriteCount):
+        self._FavoriteCount = FavoriteCount
+
+    @property
+    def HasBizPermission(self):
+        r"""是否有修改业务权限
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._HasBizPermission
+
+    @HasBizPermission.setter
+    def HasBizPermission(self, HasBizPermission):
+        self._HasBizPermission = HasBizPermission
+
+    @property
+    def HasProjectPermission(self):
+        r"""是否有修改归属项目权限
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._HasProjectPermission
+
+    @HasProjectPermission.setter
+    def HasProjectPermission(self, HasProjectPermission):
+        self._HasProjectPermission = HasProjectPermission
+
+    @property
+    def ErrorTips(self):
+        r"""用户无映射账户，请先完成账户映射后再来申请。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ErrorTips
+
+    @ErrorTips.setter
+    def ErrorTips(self, ErrorTips):
+        self._ErrorTips = ErrorTips
+
+
+    def _deserialize(self, params):
+        self._HasPermission = params.get("HasPermission")
+        self._HasFavorite = params.get("HasFavorite")
+        self._OtherOperate = params.get("OtherOperate")
+        self._FavoriteCount = params.get("FavoriteCount")
+        self._HasBizPermission = params.get("HasBizPermission")
+        self._HasProjectPermission = params.get("HasProjectPermission")
+        self._ErrorTips = params.get("ErrorTips")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DataCheckStat(AbstractModel):
     r"""数据监测情况结果
 
@@ -18402,6 +18762,9 @@ class DataServiceRequestParam(AbstractModel):
         :param _Description: 参数描述
 注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
+        :param _StdCode: 关联标准编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StdCode: str
         """
         self._ParamName = None
         self._BindField = None
@@ -18412,6 +18775,7 @@ class DataServiceRequestParam(AbstractModel):
         self._DefaultValue = None
         self._ExampleValue = None
         self._Description = None
+        self._StdCode = None
 
     @property
     def ParamName(self):
@@ -18521,6 +18885,18 @@ class DataServiceRequestParam(AbstractModel):
     def Description(self, Description):
         self._Description = Description
 
+    @property
+    def StdCode(self):
+        r"""关联标准编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._StdCode
+
+    @StdCode.setter
+    def StdCode(self, StdCode):
+        self._StdCode = StdCode
+
 
     def _deserialize(self, params):
         self._ParamName = params.get("ParamName")
@@ -18532,6 +18908,7 @@ class DataServiceRequestParam(AbstractModel):
         self._DefaultValue = params.get("DefaultValue")
         self._ExampleValue = params.get("ExampleValue")
         self._Description = params.get("Description")
+        self._StdCode = params.get("StdCode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18638,6 +19015,1204 @@ class DataServiceResponseParam(AbstractModel):
         self._ParamType = params.get("ParamType")
         self._ExampleValue = params.get("ExampleValue")
         self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DataSetRecord(AbstractModel):
+    r"""数据资产结构
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AssetId: 资产 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssetId: str
+        :param _DatasourceName: 数据源名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatasourceName: str
+        :param _DatabaseName: 数据库名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatabaseName: str
+        :param _TableName: 表名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableName: str
+        :param _TableNameCn: 数据资产名称展示名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableNameCn: str
+        :param _TableNameEn: 数据资产名称展示名称EN
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableNameEn: str
+        :param _Description: 资产描述信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param _HeatValue: 资产热度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HeatValue: float
+        :param _LabelNames: 标签列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LabelNames: list of str
+        :param _InCharge: 负责人
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InCharge: str
+        :param _MetaCrawlType: 元数据采集类型：Table View Index
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MetaCrawlType: str
+        :param _ProjectId: 数据资产归属的项目ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectId: str
+        :param _LifeTime: 生命周期
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LifeTime: int
+        :param _IsPartitionTable: 判断是否是分区表1 是 0否
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsPartitionTable: int
+        :param _TableRecordFieldSet: 表字段集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableRecordFieldSet: list of SearchColumnDocVO
+        :param _TablePropertyScore: 表属性评分
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TablePropertyScore: :class:`tencentcloud.wedata.v20210820.models.TablePropertyScore`
+        :param _MsType: 数据源类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MsType: str
+        :param _StorageSize: 数据存储大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StorageSize: int
+        :param _AssetLevel: 数据资产等级
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssetLevel: int
+        :param _AssetStatus: 数据资产状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssetStatus: int
+        :param _BizCatalogIds: 数据目录ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BizCatalogIds: list of str
+        :param _BizCatalogNames: 数据目录名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BizCatalogNames: list of str
+        :param _DatasourceId: 数据源 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatasourceId: int
+        :param _DatabaseId: 数据库 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatabaseId: str
+        :param _CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _TableId: 表 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableId: str
+        :param _OperateOption: 数据资产操作选项
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OperateOption: :class:`tencentcloud.wedata.v20210820.models.DataAssetOption`
+        :param _Schema: 数据库模式
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Schema: str
+        :param _Environment: 环境，取值 prod或者 dev
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Environment: str
+        :param _IsView: 是否为视图
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsView: bool
+        :param _TechnologyType: 数据来源技术类型
+取值： HIVE/MYSQL/HBASE/KAFKA等
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TechnologyType: str
+        :param _ProjectName: 项目名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectName: str
+        :param _ProjectDisplayName: 项目展示名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectDisplayName: str
+        :param _ClusterId: 集群 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterId: str
+        :param _StorageSizeWithUnit: 存储大小，已转为如9.31TB:
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StorageSizeWithUnit: str
+        :param _CollectDatasourceList: 多数据源信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CollectDatasourceList: list of GovDatasourceInfo
+        :param _ClusterName: 集群名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterName: str
+        :param _DataSourceCategory: 数据源Category: 系统源-CLUSTER, DB-自定义源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataSourceCategory: str
+        :param _CollectId: 采集任务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CollectId: int
+        :param _Urn: 采集唯一性urn
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Urn: str
+        :param _AssetName: 数据资产名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssetName: str
+        :param _AssetRunningStatus: 资产运行状态： 任务运行状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssetRunningStatus: str
+        :param _TaskTypeId: 任务类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskTypeId: int
+        :param _ExecuteTime: 资产运行时间， 任务最近执行时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecuteTime: str
+        :param _AssetLog: 资产日志，任务资产取 自动转交日志
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssetLog: str
+        :param _AssetType: 资产类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssetType: str
+        :param _JobName: 任务 Job名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type JobName: str
+        :param _ExpireTime: 资产失效时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExpireTime: str
+        :param _LevelRank: 安全等级值范围1-10
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LevelRank: int
+        :param _LevelName: 安全等级名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LevelName: str
+        :param _AssetCode: 资产编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssetCode: str
+        :param _OwnerAccount: 责任人 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OwnerAccount: int
+        :param _ModifyTime: 更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModifyTime: str
+        :param _LastAccessTime: 最近访问时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastAccessTime: str
+        :param _OwnerByEngine: 引擎侧创建人
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OwnerByEngine: str
+        :param _DataLayerUuid: 数仓分层 UUID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataLayerUuid: str
+        :param _DataLayerName: 数仓分层名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataLayerName: str
+        :param _ColumnCount: 字段数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ColumnCount: int
+        :param _SearchHitColumns: 关键字搜索命中的表字段列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SearchHitColumns: list of SearchColumnDocVO
+        :param _LabelTagList: 标签对象集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LabelTagList: list of LabelTag
+        :param _Aliases: 模型别名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Aliases: list of RegisteredModelAlias
+        :param _IsDeployed: 是否已经部署服务
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsDeployed: bool
+        :param _Tags: 模型标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of RegisteredModelTag
+        :param _ModelType: 模型类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModelType: str
+        :param _FullName: 资产全称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FullName: str
+        :param _Namespace: Catalog名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Namespace: str
+        :param _MetaFrom: Catalog来源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MetaFrom: str
+        """
+        self._AssetId = None
+        self._DatasourceName = None
+        self._DatabaseName = None
+        self._TableName = None
+        self._TableNameCn = None
+        self._TableNameEn = None
+        self._Description = None
+        self._HeatValue = None
+        self._LabelNames = None
+        self._InCharge = None
+        self._MetaCrawlType = None
+        self._ProjectId = None
+        self._LifeTime = None
+        self._IsPartitionTable = None
+        self._TableRecordFieldSet = None
+        self._TablePropertyScore = None
+        self._MsType = None
+        self._StorageSize = None
+        self._AssetLevel = None
+        self._AssetStatus = None
+        self._BizCatalogIds = None
+        self._BizCatalogNames = None
+        self._DatasourceId = None
+        self._DatabaseId = None
+        self._CreateTime = None
+        self._TableId = None
+        self._OperateOption = None
+        self._Schema = None
+        self._Environment = None
+        self._IsView = None
+        self._TechnologyType = None
+        self._ProjectName = None
+        self._ProjectDisplayName = None
+        self._ClusterId = None
+        self._StorageSizeWithUnit = None
+        self._CollectDatasourceList = None
+        self._ClusterName = None
+        self._DataSourceCategory = None
+        self._CollectId = None
+        self._Urn = None
+        self._AssetName = None
+        self._AssetRunningStatus = None
+        self._TaskTypeId = None
+        self._ExecuteTime = None
+        self._AssetLog = None
+        self._AssetType = None
+        self._JobName = None
+        self._ExpireTime = None
+        self._LevelRank = None
+        self._LevelName = None
+        self._AssetCode = None
+        self._OwnerAccount = None
+        self._ModifyTime = None
+        self._LastAccessTime = None
+        self._OwnerByEngine = None
+        self._DataLayerUuid = None
+        self._DataLayerName = None
+        self._ColumnCount = None
+        self._SearchHitColumns = None
+        self._LabelTagList = None
+        self._Aliases = None
+        self._IsDeployed = None
+        self._Tags = None
+        self._ModelType = None
+        self._FullName = None
+        self._Namespace = None
+        self._MetaFrom = None
+
+    @property
+    def AssetId(self):
+        r"""资产 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AssetId
+
+    @AssetId.setter
+    def AssetId(self, AssetId):
+        self._AssetId = AssetId
+
+    @property
+    def DatasourceName(self):
+        r"""数据源名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DatasourceName
+
+    @DatasourceName.setter
+    def DatasourceName(self, DatasourceName):
+        self._DatasourceName = DatasourceName
+
+    @property
+    def DatabaseName(self):
+        r"""数据库名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DatabaseName
+
+    @DatabaseName.setter
+    def DatabaseName(self, DatabaseName):
+        self._DatabaseName = DatabaseName
+
+    @property
+    def TableName(self):
+        r"""表名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def TableNameCn(self):
+        r"""数据资产名称展示名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TableNameCn
+
+    @TableNameCn.setter
+    def TableNameCn(self, TableNameCn):
+        self._TableNameCn = TableNameCn
+
+    @property
+    def TableNameEn(self):
+        r"""数据资产名称展示名称EN
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TableNameEn
+
+    @TableNameEn.setter
+    def TableNameEn(self, TableNameEn):
+        self._TableNameEn = TableNameEn
+
+    @property
+    def Description(self):
+        r"""资产描述信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def HeatValue(self):
+        r"""资产热度
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._HeatValue
+
+    @HeatValue.setter
+    def HeatValue(self, HeatValue):
+        self._HeatValue = HeatValue
+
+    @property
+    def LabelNames(self):
+        r"""标签列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._LabelNames
+
+    @LabelNames.setter
+    def LabelNames(self, LabelNames):
+        self._LabelNames = LabelNames
+
+    @property
+    def InCharge(self):
+        r"""负责人
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._InCharge
+
+    @InCharge.setter
+    def InCharge(self, InCharge):
+        self._InCharge = InCharge
+
+    @property
+    def MetaCrawlType(self):
+        r"""元数据采集类型：Table View Index
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._MetaCrawlType
+
+    @MetaCrawlType.setter
+    def MetaCrawlType(self, MetaCrawlType):
+        self._MetaCrawlType = MetaCrawlType
+
+    @property
+    def ProjectId(self):
+        r"""数据资产归属的项目ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def LifeTime(self):
+        r"""生命周期
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._LifeTime
+
+    @LifeTime.setter
+    def LifeTime(self, LifeTime):
+        self._LifeTime = LifeTime
+
+    @property
+    def IsPartitionTable(self):
+        r"""判断是否是分区表1 是 0否
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._IsPartitionTable
+
+    @IsPartitionTable.setter
+    def IsPartitionTable(self, IsPartitionTable):
+        self._IsPartitionTable = IsPartitionTable
+
+    @property
+    def TableRecordFieldSet(self):
+        r"""表字段集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of SearchColumnDocVO
+        """
+        return self._TableRecordFieldSet
+
+    @TableRecordFieldSet.setter
+    def TableRecordFieldSet(self, TableRecordFieldSet):
+        self._TableRecordFieldSet = TableRecordFieldSet
+
+    @property
+    def TablePropertyScore(self):
+        r"""表属性评分
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.TablePropertyScore`
+        """
+        return self._TablePropertyScore
+
+    @TablePropertyScore.setter
+    def TablePropertyScore(self, TablePropertyScore):
+        self._TablePropertyScore = TablePropertyScore
+
+    @property
+    def MsType(self):
+        r"""数据源类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._MsType
+
+    @MsType.setter
+    def MsType(self, MsType):
+        self._MsType = MsType
+
+    @property
+    def StorageSize(self):
+        r"""数据存储大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._StorageSize
+
+    @StorageSize.setter
+    def StorageSize(self, StorageSize):
+        self._StorageSize = StorageSize
+
+    @property
+    def AssetLevel(self):
+        r"""数据资产等级
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._AssetLevel
+
+    @AssetLevel.setter
+    def AssetLevel(self, AssetLevel):
+        self._AssetLevel = AssetLevel
+
+    @property
+    def AssetStatus(self):
+        r"""数据资产状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._AssetStatus
+
+    @AssetStatus.setter
+    def AssetStatus(self, AssetStatus):
+        self._AssetStatus = AssetStatus
+
+    @property
+    def BizCatalogIds(self):
+        r"""数据目录ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._BizCatalogIds
+
+    @BizCatalogIds.setter
+    def BizCatalogIds(self, BizCatalogIds):
+        self._BizCatalogIds = BizCatalogIds
+
+    @property
+    def BizCatalogNames(self):
+        r"""数据目录名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._BizCatalogNames
+
+    @BizCatalogNames.setter
+    def BizCatalogNames(self, BizCatalogNames):
+        self._BizCatalogNames = BizCatalogNames
+
+    @property
+    def DatasourceId(self):
+        r"""数据源 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._DatasourceId
+
+    @DatasourceId.setter
+    def DatasourceId(self, DatasourceId):
+        self._DatasourceId = DatasourceId
+
+    @property
+    def DatabaseId(self):
+        r"""数据库 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DatabaseId
+
+    @DatabaseId.setter
+    def DatabaseId(self, DatabaseId):
+        self._DatabaseId = DatabaseId
+
+    @property
+    def CreateTime(self):
+        r"""创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def TableId(self):
+        r"""表 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TableId
+
+    @TableId.setter
+    def TableId(self, TableId):
+        self._TableId = TableId
+
+    @property
+    def OperateOption(self):
+        r"""数据资产操作选项
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DataAssetOption`
+        """
+        return self._OperateOption
+
+    @OperateOption.setter
+    def OperateOption(self, OperateOption):
+        self._OperateOption = OperateOption
+
+    @property
+    def Schema(self):
+        r"""数据库模式
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Schema
+
+    @Schema.setter
+    def Schema(self, Schema):
+        self._Schema = Schema
+
+    @property
+    def Environment(self):
+        r"""环境，取值 prod或者 dev
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Environment
+
+    @Environment.setter
+    def Environment(self, Environment):
+        self._Environment = Environment
+
+    @property
+    def IsView(self):
+        r"""是否为视图
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._IsView
+
+    @IsView.setter
+    def IsView(self, IsView):
+        self._IsView = IsView
+
+    @property
+    def TechnologyType(self):
+        r"""数据来源技术类型
+取值： HIVE/MYSQL/HBASE/KAFKA等
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TechnologyType
+
+    @TechnologyType.setter
+    def TechnologyType(self, TechnologyType):
+        self._TechnologyType = TechnologyType
+
+    @property
+    def ProjectName(self):
+        r"""项目名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ProjectName
+
+    @ProjectName.setter
+    def ProjectName(self, ProjectName):
+        self._ProjectName = ProjectName
+
+    @property
+    def ProjectDisplayName(self):
+        r"""项目展示名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ProjectDisplayName
+
+    @ProjectDisplayName.setter
+    def ProjectDisplayName(self, ProjectDisplayName):
+        self._ProjectDisplayName = ProjectDisplayName
+
+    @property
+    def ClusterId(self):
+        r"""集群 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def StorageSizeWithUnit(self):
+        r"""存储大小，已转为如9.31TB:
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._StorageSizeWithUnit
+
+    @StorageSizeWithUnit.setter
+    def StorageSizeWithUnit(self, StorageSizeWithUnit):
+        self._StorageSizeWithUnit = StorageSizeWithUnit
+
+    @property
+    def CollectDatasourceList(self):
+        r"""多数据源信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of GovDatasourceInfo
+        """
+        return self._CollectDatasourceList
+
+    @CollectDatasourceList.setter
+    def CollectDatasourceList(self, CollectDatasourceList):
+        self._CollectDatasourceList = CollectDatasourceList
+
+    @property
+    def ClusterName(self):
+        r"""集群名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+    @property
+    def DataSourceCategory(self):
+        r"""数据源Category: 系统源-CLUSTER, DB-自定义源
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DataSourceCategory
+
+    @DataSourceCategory.setter
+    def DataSourceCategory(self, DataSourceCategory):
+        self._DataSourceCategory = DataSourceCategory
+
+    @property
+    def CollectId(self):
+        r"""采集任务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._CollectId
+
+    @CollectId.setter
+    def CollectId(self, CollectId):
+        self._CollectId = CollectId
+
+    @property
+    def Urn(self):
+        r"""采集唯一性urn
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Urn
+
+    @Urn.setter
+    def Urn(self, Urn):
+        self._Urn = Urn
+
+    @property
+    def AssetName(self):
+        r"""数据资产名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AssetName
+
+    @AssetName.setter
+    def AssetName(self, AssetName):
+        self._AssetName = AssetName
+
+    @property
+    def AssetRunningStatus(self):
+        r"""资产运行状态： 任务运行状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AssetRunningStatus
+
+    @AssetRunningStatus.setter
+    def AssetRunningStatus(self, AssetRunningStatus):
+        self._AssetRunningStatus = AssetRunningStatus
+
+    @property
+    def TaskTypeId(self):
+        r"""任务类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TaskTypeId
+
+    @TaskTypeId.setter
+    def TaskTypeId(self, TaskTypeId):
+        self._TaskTypeId = TaskTypeId
+
+    @property
+    def ExecuteTime(self):
+        r"""资产运行时间， 任务最近执行时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExecuteTime
+
+    @ExecuteTime.setter
+    def ExecuteTime(self, ExecuteTime):
+        self._ExecuteTime = ExecuteTime
+
+    @property
+    def AssetLog(self):
+        r"""资产日志，任务资产取 自动转交日志
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AssetLog
+
+    @AssetLog.setter
+    def AssetLog(self, AssetLog):
+        self._AssetLog = AssetLog
+
+    @property
+    def AssetType(self):
+        r"""资产类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AssetType
+
+    @AssetType.setter
+    def AssetType(self, AssetType):
+        self._AssetType = AssetType
+
+    @property
+    def JobName(self):
+        r"""任务 Job名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._JobName
+
+    @JobName.setter
+    def JobName(self, JobName):
+        self._JobName = JobName
+
+    @property
+    def ExpireTime(self):
+        r"""资产失效时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def LevelRank(self):
+        r"""安全等级值范围1-10
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._LevelRank
+
+    @LevelRank.setter
+    def LevelRank(self, LevelRank):
+        self._LevelRank = LevelRank
+
+    @property
+    def LevelName(self):
+        r"""安全等级名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._LevelName
+
+    @LevelName.setter
+    def LevelName(self, LevelName):
+        self._LevelName = LevelName
+
+    @property
+    def AssetCode(self):
+        r"""资产编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AssetCode
+
+    @AssetCode.setter
+    def AssetCode(self, AssetCode):
+        self._AssetCode = AssetCode
+
+    @property
+    def OwnerAccount(self):
+        r"""责任人 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._OwnerAccount
+
+    @OwnerAccount.setter
+    def OwnerAccount(self, OwnerAccount):
+        self._OwnerAccount = OwnerAccount
+
+    @property
+    def ModifyTime(self):
+        r"""更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ModifyTime
+
+    @ModifyTime.setter
+    def ModifyTime(self, ModifyTime):
+        self._ModifyTime = ModifyTime
+
+    @property
+    def LastAccessTime(self):
+        r"""最近访问时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._LastAccessTime
+
+    @LastAccessTime.setter
+    def LastAccessTime(self, LastAccessTime):
+        self._LastAccessTime = LastAccessTime
+
+    @property
+    def OwnerByEngine(self):
+        r"""引擎侧创建人
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._OwnerByEngine
+
+    @OwnerByEngine.setter
+    def OwnerByEngine(self, OwnerByEngine):
+        self._OwnerByEngine = OwnerByEngine
+
+    @property
+    def DataLayerUuid(self):
+        r"""数仓分层 UUID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DataLayerUuid
+
+    @DataLayerUuid.setter
+    def DataLayerUuid(self, DataLayerUuid):
+        self._DataLayerUuid = DataLayerUuid
+
+    @property
+    def DataLayerName(self):
+        r"""数仓分层名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DataLayerName
+
+    @DataLayerName.setter
+    def DataLayerName(self, DataLayerName):
+        self._DataLayerName = DataLayerName
+
+    @property
+    def ColumnCount(self):
+        r"""字段数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ColumnCount
+
+    @ColumnCount.setter
+    def ColumnCount(self, ColumnCount):
+        self._ColumnCount = ColumnCount
+
+    @property
+    def SearchHitColumns(self):
+        r"""关键字搜索命中的表字段列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of SearchColumnDocVO
+        """
+        return self._SearchHitColumns
+
+    @SearchHitColumns.setter
+    def SearchHitColumns(self, SearchHitColumns):
+        self._SearchHitColumns = SearchHitColumns
+
+    @property
+    def LabelTagList(self):
+        r"""标签对象集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of LabelTag
+        """
+        return self._LabelTagList
+
+    @LabelTagList.setter
+    def LabelTagList(self, LabelTagList):
+        self._LabelTagList = LabelTagList
+
+    @property
+    def Aliases(self):
+        r"""模型别名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of RegisteredModelAlias
+        """
+        return self._Aliases
+
+    @Aliases.setter
+    def Aliases(self, Aliases):
+        self._Aliases = Aliases
+
+    @property
+    def IsDeployed(self):
+        r"""是否已经部署服务
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._IsDeployed
+
+    @IsDeployed.setter
+    def IsDeployed(self, IsDeployed):
+        self._IsDeployed = IsDeployed
+
+    @property
+    def Tags(self):
+        r"""模型标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of RegisteredModelTag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def ModelType(self):
+        r"""模型类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ModelType
+
+    @ModelType.setter
+    def ModelType(self, ModelType):
+        self._ModelType = ModelType
+
+    @property
+    def FullName(self):
+        r"""资产全称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FullName
+
+    @FullName.setter
+    def FullName(self, FullName):
+        self._FullName = FullName
+
+    @property
+    def Namespace(self):
+        r"""Catalog名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def MetaFrom(self):
+        r"""Catalog来源
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._MetaFrom
+
+    @MetaFrom.setter
+    def MetaFrom(self, MetaFrom):
+        self._MetaFrom = MetaFrom
+
+
+    def _deserialize(self, params):
+        self._AssetId = params.get("AssetId")
+        self._DatasourceName = params.get("DatasourceName")
+        self._DatabaseName = params.get("DatabaseName")
+        self._TableName = params.get("TableName")
+        self._TableNameCn = params.get("TableNameCn")
+        self._TableNameEn = params.get("TableNameEn")
+        self._Description = params.get("Description")
+        self._HeatValue = params.get("HeatValue")
+        self._LabelNames = params.get("LabelNames")
+        self._InCharge = params.get("InCharge")
+        self._MetaCrawlType = params.get("MetaCrawlType")
+        self._ProjectId = params.get("ProjectId")
+        self._LifeTime = params.get("LifeTime")
+        self._IsPartitionTable = params.get("IsPartitionTable")
+        if params.get("TableRecordFieldSet") is not None:
+            self._TableRecordFieldSet = []
+            for item in params.get("TableRecordFieldSet"):
+                obj = SearchColumnDocVO()
+                obj._deserialize(item)
+                self._TableRecordFieldSet.append(obj)
+        if params.get("TablePropertyScore") is not None:
+            self._TablePropertyScore = TablePropertyScore()
+            self._TablePropertyScore._deserialize(params.get("TablePropertyScore"))
+        self._MsType = params.get("MsType")
+        self._StorageSize = params.get("StorageSize")
+        self._AssetLevel = params.get("AssetLevel")
+        self._AssetStatus = params.get("AssetStatus")
+        self._BizCatalogIds = params.get("BizCatalogIds")
+        self._BizCatalogNames = params.get("BizCatalogNames")
+        self._DatasourceId = params.get("DatasourceId")
+        self._DatabaseId = params.get("DatabaseId")
+        self._CreateTime = params.get("CreateTime")
+        self._TableId = params.get("TableId")
+        if params.get("OperateOption") is not None:
+            self._OperateOption = DataAssetOption()
+            self._OperateOption._deserialize(params.get("OperateOption"))
+        self._Schema = params.get("Schema")
+        self._Environment = params.get("Environment")
+        self._IsView = params.get("IsView")
+        self._TechnologyType = params.get("TechnologyType")
+        self._ProjectName = params.get("ProjectName")
+        self._ProjectDisplayName = params.get("ProjectDisplayName")
+        self._ClusterId = params.get("ClusterId")
+        self._StorageSizeWithUnit = params.get("StorageSizeWithUnit")
+        if params.get("CollectDatasourceList") is not None:
+            self._CollectDatasourceList = []
+            for item in params.get("CollectDatasourceList"):
+                obj = GovDatasourceInfo()
+                obj._deserialize(item)
+                self._CollectDatasourceList.append(obj)
+        self._ClusterName = params.get("ClusterName")
+        self._DataSourceCategory = params.get("DataSourceCategory")
+        self._CollectId = params.get("CollectId")
+        self._Urn = params.get("Urn")
+        self._AssetName = params.get("AssetName")
+        self._AssetRunningStatus = params.get("AssetRunningStatus")
+        self._TaskTypeId = params.get("TaskTypeId")
+        self._ExecuteTime = params.get("ExecuteTime")
+        self._AssetLog = params.get("AssetLog")
+        self._AssetType = params.get("AssetType")
+        self._JobName = params.get("JobName")
+        self._ExpireTime = params.get("ExpireTime")
+        self._LevelRank = params.get("LevelRank")
+        self._LevelName = params.get("LevelName")
+        self._AssetCode = params.get("AssetCode")
+        self._OwnerAccount = params.get("OwnerAccount")
+        self._ModifyTime = params.get("ModifyTime")
+        self._LastAccessTime = params.get("LastAccessTime")
+        self._OwnerByEngine = params.get("OwnerByEngine")
+        self._DataLayerUuid = params.get("DataLayerUuid")
+        self._DataLayerName = params.get("DataLayerName")
+        self._ColumnCount = params.get("ColumnCount")
+        if params.get("SearchHitColumns") is not None:
+            self._SearchHitColumns = []
+            for item in params.get("SearchHitColumns"):
+                obj = SearchColumnDocVO()
+                obj._deserialize(item)
+                self._SearchHitColumns.append(obj)
+        if params.get("LabelTagList") is not None:
+            self._LabelTagList = []
+            for item in params.get("LabelTagList"):
+                obj = LabelTag()
+                obj._deserialize(item)
+                self._LabelTagList.append(obj)
+        if params.get("Aliases") is not None:
+            self._Aliases = []
+            for item in params.get("Aliases"):
+                obj = RegisteredModelAlias()
+                obj._deserialize(item)
+                self._Aliases.append(obj)
+        self._IsDeployed = params.get("IsDeployed")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = RegisteredModelTag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._ModelType = params.get("ModelType")
+        self._FullName = params.get("FullName")
+        self._Namespace = params.get("Namespace")
+        self._MetaFrom = params.get("MetaFrom")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -26480,6 +28055,271 @@ class DescribeColumnsMetaResponse(AbstractModel):
                 obj._deserialize(item)
                 self._ColumnMetaSet.append(obj)
         self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDataAssetsRequest(AbstractModel):
+    r"""DescribeDataAssets请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestFromSource: 请求来源，WEB 前端；CLIENT 客户端
+        :type RequestFromSource: str
+        :param _Filters: 过滤字段名称
+Name 取值如下
+      keyword 搜索关键字
+      bizCatalogIds 表示目录分类取值
+      DataAssetType 数据资产类型枚举取值：ALL-全部类型、TABLE-数据表
+      DatasourceType 数据源类型
+      datasourceIds 数据源ID列表
+      DatabaseName 数据库名称
+      InCharge 负责人
+      ProjectId 项目ID
+      Label 标签
+      ProjectId 数据资产归属的项目ID
+      AssetLevel 等级 取值：ALL-全部，40-核心，30-重要，20-一般，10-临时
+      OwnerMe 我负责的
+      PermissionMe 我有权限的
+      MyFavorite 我收藏的
+        :type Filters: list of Filter
+        :param _OrderFields: 排序字段列表
+取值：
+     Name： Table-按表名，LikeCount-按热度
+     Direction： ASC, DESC
+        :type OrderFields: list of OrderField
+        :param _PageNumber: 页码，配合pageSize使用
+        :type PageNumber: int
+        :param _PageSize: 每页数目，配合pageNumber使用
+        :type PageSize: int
+        """
+        self._RequestFromSource = None
+        self._Filters = None
+        self._OrderFields = None
+        self._PageNumber = None
+        self._PageSize = None
+
+    @property
+    def RequestFromSource(self):
+        r"""请求来源，WEB 前端；CLIENT 客户端
+        :rtype: str
+        """
+        return self._RequestFromSource
+
+    @RequestFromSource.setter
+    def RequestFromSource(self, RequestFromSource):
+        self._RequestFromSource = RequestFromSource
+
+    @property
+    def Filters(self):
+        r"""过滤字段名称
+Name 取值如下
+      keyword 搜索关键字
+      bizCatalogIds 表示目录分类取值
+      DataAssetType 数据资产类型枚举取值：ALL-全部类型、TABLE-数据表
+      DatasourceType 数据源类型
+      datasourceIds 数据源ID列表
+      DatabaseName 数据库名称
+      InCharge 负责人
+      ProjectId 项目ID
+      Label 标签
+      ProjectId 数据资产归属的项目ID
+      AssetLevel 等级 取值：ALL-全部，40-核心，30-重要，20-一般，10-临时
+      OwnerMe 我负责的
+      PermissionMe 我有权限的
+      MyFavorite 我收藏的
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def OrderFields(self):
+        r"""排序字段列表
+取值：
+     Name： Table-按表名，LikeCount-按热度
+     Direction： ASC, DESC
+        :rtype: list of OrderField
+        """
+        return self._OrderFields
+
+    @OrderFields.setter
+    def OrderFields(self, OrderFields):
+        self._OrderFields = OrderFields
+
+    @property
+    def PageNumber(self):
+        r"""页码，配合pageSize使用
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        r"""每页数目，配合pageNumber使用
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+
+    def _deserialize(self, params):
+        self._RequestFromSource = params.get("RequestFromSource")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        if params.get("OrderFields") is not None:
+            self._OrderFields = []
+            for item in params.get("OrderFields"):
+                obj = OrderField()
+                obj._deserialize(item)
+                self._OrderFields.append(obj)
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDataAssetsResponse(AbstractModel):
+    r"""DescribeDataAssets返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataSetRecords: 数据资产记录列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataSetRecords: list of DataSetRecord
+        :param _TotalCount: 总数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _PageNumber: 页码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PageNumber: int
+        :param _PageSize: 每页数目
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PageSize: int
+        :param _IndicatorRecords: 指标列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IndicatorRecords: list of IndicatorBaseInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DataSetRecords = None
+        self._TotalCount = None
+        self._PageNumber = None
+        self._PageSize = None
+        self._IndicatorRecords = None
+        self._RequestId = None
+
+    @property
+    def DataSetRecords(self):
+        r"""数据资产记录列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DataSetRecord
+        """
+        return self._DataSetRecords
+
+    @DataSetRecords.setter
+    def DataSetRecords(self, DataSetRecords):
+        self._DataSetRecords = DataSetRecords
+
+    @property
+    def TotalCount(self):
+        r"""总数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def PageNumber(self):
+        r"""页码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        r"""每页数目
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def IndicatorRecords(self):
+        r"""指标列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of IndicatorBaseInfo
+        """
+        return self._IndicatorRecords
+
+    @IndicatorRecords.setter
+    def IndicatorRecords(self, IndicatorRecords):
+        self._IndicatorRecords = IndicatorRecords
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("DataSetRecords") is not None:
+            self._DataSetRecords = []
+            for item in params.get("DataSetRecords"):
+                obj = DataSetRecord()
+                obj._deserialize(item)
+                self._DataSetRecords.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        if params.get("IndicatorRecords") is not None:
+            self._IndicatorRecords = []
+            for item in params.get("IndicatorRecords"):
+                obj = IndicatorBaseInfo()
+                obj._deserialize(item)
+                self._IndicatorRecords.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -43822,7 +45662,7 @@ class DescribeTableMetaResponse(AbstractModel):
         :type LifecycleInfo: :class:`tencentcloud.wedata.v20210820.models.LifecycleInfo`
         :param _TagVoteSumList: 标签
 注意：此字段可能返回 null，表示取不到有效值。
-        :type TagVoteSumList: :class:`tencentcloud.wedata.v20210820.models.TagVoteSum`
+        :type TagVoteSumList: list of TagVoteSum
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -43859,7 +45699,7 @@ class DescribeTableMetaResponse(AbstractModel):
     def TagVoteSumList(self):
         r"""标签
 注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: :class:`tencentcloud.wedata.v20210820.models.TagVoteSum`
+        :rtype: list of TagVoteSum
         """
         return self._TagVoteSumList
 
@@ -43887,8 +45727,11 @@ class DescribeTableMetaResponse(AbstractModel):
             self._LifecycleInfo = LifecycleInfo()
             self._LifecycleInfo._deserialize(params.get("LifecycleInfo"))
         if params.get("TagVoteSumList") is not None:
-            self._TagVoteSumList = TagVoteSum()
-            self._TagVoteSumList._deserialize(params.get("TagVoteSumList"))
+            self._TagVoteSumList = []
+            for item in params.get("TagVoteSumList"):
+                obj = TagVoteSum()
+                obj._deserialize(item)
+                self._TagVoteSumList.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -58911,6 +60754,792 @@ class GovDatasourceInfo(AbstractModel):
         
 
 
+class IndicatorBaseInfo(AbstractModel):
+    r"""指标查询出参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _IndicatorCode: 指标编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IndicatorCode: str
+        :param _IndicatorType: 指标类型（1-原子指标 2-衍生指标 3-复合指标）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IndicatorType: int
+        :param _BizOwner: 业务负责人
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BizOwner: str
+        :param _TechOwner: 技术负责人
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TechOwner: str
+        :param _BizCaliber: 业务口径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BizCaliber: str
+        :param _Description: 指标描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param _Level: 等级：40-L4核心 30-L3重要 20-L2一般 10-L1临时
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Level: int
+        :param _CalLogic: 计算逻辑
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CalLogic: str
+        :param _CalFreq: 计算频次
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CalFreq: str
+        :param _MeasureUnit: 度量单位
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MeasureUnit: int
+        :param _Accuracy: 精度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Accuracy: int
+        :param _SourceIndicatorIds: 关联指标
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceIndicatorIds: list of IndicatorBaseSimpleInfo
+        :param _Id: ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: int
+        :param _DimensionIds: 维度列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DimensionIds: list of AssetDimSimpleVO
+        :param _FolderId: 文件夹ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FolderId: int
+        :param _Status: 状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param _BizOwnerName: 业务负责人名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BizOwnerName: str
+        :param _TechOwnerName: 技术负责人名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TechOwnerName: str
+        :param _PublishTime: 发布时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PublishTime: str
+        :param _PublishAccount: 发布人
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PublishAccount: str
+        :param _PublishAccountName: 发布人名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PublishAccountName: str
+        :param _LastModifyTime: 最后修订时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastModifyTime: str
+        :param _LastModifyAccount: 最后修订人ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastModifyAccount: str
+        :param _LastModifyAccountName: 最后修订人名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastModifyAccountName: str
+        :param _ChangeLogList: 变更日志
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChangeLogList: list of ChangeLog
+        :param _TableColumns: 字段列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableColumns: list of AssetDimTableColumn
+        :param _AllSourceIndicatorIds: 关联指标(包含多层级关联指标)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AllSourceIndicatorIds: list of IndicatorBaseInfo
+        :param _AssetId: 资产guid
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssetId: str
+        :param _AssetType: 类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssetType: str
+        :param _AssetCode: 资产编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssetCode: str
+        :param _RelatedIndicatorIds: 被关联的指标
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RelatedIndicatorIds: list of IndicatorBaseInfo
+        :param _BizCatalogIds: 数据目录ID列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BizCatalogIds: list of int
+        :param _BizCatalogNames: 数据目录名称列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BizCatalogNames: list of str
+        :param _AssetLevel: 资产等级
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssetLevel: int
+        :param _AssetStatus: 资产发布状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssetStatus: int
+        :param _AssetPublishTime: 资产发布时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssetPublishTime: str
+        :param _AssetPublishAccount: 资产发布人
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssetPublishAccount: str
+        :param _AssetPublishAccountName: 资产发布人名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssetPublishAccountName: str
+        :param _IndicatorPermission: 指标权限
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IndicatorPermission: :class:`tencentcloud.wedata.v20210820.models.PermissionStatus`
+        :param _OperateOption: 资产权限
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OperateOption: :class:`tencentcloud.wedata.v20210820.models.DataAssetOption`
+        :param _ProjectId: 项目 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectId: str
+        :param _ProjectName: 项目名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectName: str
+        """
+        self._Name = None
+        self._IndicatorCode = None
+        self._IndicatorType = None
+        self._BizOwner = None
+        self._TechOwner = None
+        self._BizCaliber = None
+        self._Description = None
+        self._Level = None
+        self._CalLogic = None
+        self._CalFreq = None
+        self._MeasureUnit = None
+        self._Accuracy = None
+        self._SourceIndicatorIds = None
+        self._Id = None
+        self._DimensionIds = None
+        self._FolderId = None
+        self._Status = None
+        self._BizOwnerName = None
+        self._TechOwnerName = None
+        self._PublishTime = None
+        self._PublishAccount = None
+        self._PublishAccountName = None
+        self._LastModifyTime = None
+        self._LastModifyAccount = None
+        self._LastModifyAccountName = None
+        self._ChangeLogList = None
+        self._TableColumns = None
+        self._AllSourceIndicatorIds = None
+        self._AssetId = None
+        self._AssetType = None
+        self._AssetCode = None
+        self._RelatedIndicatorIds = None
+        self._BizCatalogIds = None
+        self._BizCatalogNames = None
+        self._AssetLevel = None
+        self._AssetStatus = None
+        self._AssetPublishTime = None
+        self._AssetPublishAccount = None
+        self._AssetPublishAccountName = None
+        self._IndicatorPermission = None
+        self._OperateOption = None
+        self._ProjectId = None
+        self._ProjectName = None
+
+    @property
+    def Name(self):
+        r"""名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def IndicatorCode(self):
+        r"""指标编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._IndicatorCode
+
+    @IndicatorCode.setter
+    def IndicatorCode(self, IndicatorCode):
+        self._IndicatorCode = IndicatorCode
+
+    @property
+    def IndicatorType(self):
+        r"""指标类型（1-原子指标 2-衍生指标 3-复合指标）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._IndicatorType
+
+    @IndicatorType.setter
+    def IndicatorType(self, IndicatorType):
+        self._IndicatorType = IndicatorType
+
+    @property
+    def BizOwner(self):
+        r"""业务负责人
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BizOwner
+
+    @BizOwner.setter
+    def BizOwner(self, BizOwner):
+        self._BizOwner = BizOwner
+
+    @property
+    def TechOwner(self):
+        r"""技术负责人
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TechOwner
+
+    @TechOwner.setter
+    def TechOwner(self, TechOwner):
+        self._TechOwner = TechOwner
+
+    @property
+    def BizCaliber(self):
+        r"""业务口径
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BizCaliber
+
+    @BizCaliber.setter
+    def BizCaliber(self, BizCaliber):
+        self._BizCaliber = BizCaliber
+
+    @property
+    def Description(self):
+        r"""指标描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Level(self):
+        r"""等级：40-L4核心 30-L3重要 20-L2一般 10-L1临时
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
+
+    @property
+    def CalLogic(self):
+        r"""计算逻辑
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CalLogic
+
+    @CalLogic.setter
+    def CalLogic(self, CalLogic):
+        self._CalLogic = CalLogic
+
+    @property
+    def CalFreq(self):
+        r"""计算频次
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CalFreq
+
+    @CalFreq.setter
+    def CalFreq(self, CalFreq):
+        self._CalFreq = CalFreq
+
+    @property
+    def MeasureUnit(self):
+        r"""度量单位
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._MeasureUnit
+
+    @MeasureUnit.setter
+    def MeasureUnit(self, MeasureUnit):
+        self._MeasureUnit = MeasureUnit
+
+    @property
+    def Accuracy(self):
+        r"""精度
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Accuracy
+
+    @Accuracy.setter
+    def Accuracy(self, Accuracy):
+        self._Accuracy = Accuracy
+
+    @property
+    def SourceIndicatorIds(self):
+        r"""关联指标
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of IndicatorBaseSimpleInfo
+        """
+        return self._SourceIndicatorIds
+
+    @SourceIndicatorIds.setter
+    def SourceIndicatorIds(self, SourceIndicatorIds):
+        self._SourceIndicatorIds = SourceIndicatorIds
+
+    @property
+    def Id(self):
+        r"""ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def DimensionIds(self):
+        r"""维度列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of AssetDimSimpleVO
+        """
+        return self._DimensionIds
+
+    @DimensionIds.setter
+    def DimensionIds(self, DimensionIds):
+        self._DimensionIds = DimensionIds
+
+    @property
+    def FolderId(self):
+        r"""文件夹ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._FolderId
+
+    @FolderId.setter
+    def FolderId(self, FolderId):
+        self._FolderId = FolderId
+
+    @property
+    def Status(self):
+        r"""状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def BizOwnerName(self):
+        r"""业务负责人名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BizOwnerName
+
+    @BizOwnerName.setter
+    def BizOwnerName(self, BizOwnerName):
+        self._BizOwnerName = BizOwnerName
+
+    @property
+    def TechOwnerName(self):
+        r"""技术负责人名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TechOwnerName
+
+    @TechOwnerName.setter
+    def TechOwnerName(self, TechOwnerName):
+        self._TechOwnerName = TechOwnerName
+
+    @property
+    def PublishTime(self):
+        r"""发布时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._PublishTime
+
+    @PublishTime.setter
+    def PublishTime(self, PublishTime):
+        self._PublishTime = PublishTime
+
+    @property
+    def PublishAccount(self):
+        r"""发布人
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._PublishAccount
+
+    @PublishAccount.setter
+    def PublishAccount(self, PublishAccount):
+        self._PublishAccount = PublishAccount
+
+    @property
+    def PublishAccountName(self):
+        r"""发布人名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._PublishAccountName
+
+    @PublishAccountName.setter
+    def PublishAccountName(self, PublishAccountName):
+        self._PublishAccountName = PublishAccountName
+
+    @property
+    def LastModifyTime(self):
+        r"""最后修订时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._LastModifyTime
+
+    @LastModifyTime.setter
+    def LastModifyTime(self, LastModifyTime):
+        self._LastModifyTime = LastModifyTime
+
+    @property
+    def LastModifyAccount(self):
+        r"""最后修订人ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._LastModifyAccount
+
+    @LastModifyAccount.setter
+    def LastModifyAccount(self, LastModifyAccount):
+        self._LastModifyAccount = LastModifyAccount
+
+    @property
+    def LastModifyAccountName(self):
+        r"""最后修订人名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._LastModifyAccountName
+
+    @LastModifyAccountName.setter
+    def LastModifyAccountName(self, LastModifyAccountName):
+        self._LastModifyAccountName = LastModifyAccountName
+
+    @property
+    def ChangeLogList(self):
+        r"""变更日志
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ChangeLog
+        """
+        return self._ChangeLogList
+
+    @ChangeLogList.setter
+    def ChangeLogList(self, ChangeLogList):
+        self._ChangeLogList = ChangeLogList
+
+    @property
+    def TableColumns(self):
+        r"""字段列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of AssetDimTableColumn
+        """
+        return self._TableColumns
+
+    @TableColumns.setter
+    def TableColumns(self, TableColumns):
+        self._TableColumns = TableColumns
+
+    @property
+    def AllSourceIndicatorIds(self):
+        r"""关联指标(包含多层级关联指标)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of IndicatorBaseInfo
+        """
+        return self._AllSourceIndicatorIds
+
+    @AllSourceIndicatorIds.setter
+    def AllSourceIndicatorIds(self, AllSourceIndicatorIds):
+        self._AllSourceIndicatorIds = AllSourceIndicatorIds
+
+    @property
+    def AssetId(self):
+        r"""资产guid
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AssetId
+
+    @AssetId.setter
+    def AssetId(self, AssetId):
+        self._AssetId = AssetId
+
+    @property
+    def AssetType(self):
+        r"""类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AssetType
+
+    @AssetType.setter
+    def AssetType(self, AssetType):
+        self._AssetType = AssetType
+
+    @property
+    def AssetCode(self):
+        r"""资产编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AssetCode
+
+    @AssetCode.setter
+    def AssetCode(self, AssetCode):
+        self._AssetCode = AssetCode
+
+    @property
+    def RelatedIndicatorIds(self):
+        r"""被关联的指标
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of IndicatorBaseInfo
+        """
+        return self._RelatedIndicatorIds
+
+    @RelatedIndicatorIds.setter
+    def RelatedIndicatorIds(self, RelatedIndicatorIds):
+        self._RelatedIndicatorIds = RelatedIndicatorIds
+
+    @property
+    def BizCatalogIds(self):
+        r"""数据目录ID列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int
+        """
+        return self._BizCatalogIds
+
+    @BizCatalogIds.setter
+    def BizCatalogIds(self, BizCatalogIds):
+        self._BizCatalogIds = BizCatalogIds
+
+    @property
+    def BizCatalogNames(self):
+        r"""数据目录名称列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._BizCatalogNames
+
+    @BizCatalogNames.setter
+    def BizCatalogNames(self, BizCatalogNames):
+        self._BizCatalogNames = BizCatalogNames
+
+    @property
+    def AssetLevel(self):
+        r"""资产等级
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._AssetLevel
+
+    @AssetLevel.setter
+    def AssetLevel(self, AssetLevel):
+        self._AssetLevel = AssetLevel
+
+    @property
+    def AssetStatus(self):
+        r"""资产发布状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._AssetStatus
+
+    @AssetStatus.setter
+    def AssetStatus(self, AssetStatus):
+        self._AssetStatus = AssetStatus
+
+    @property
+    def AssetPublishTime(self):
+        r"""资产发布时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AssetPublishTime
+
+    @AssetPublishTime.setter
+    def AssetPublishTime(self, AssetPublishTime):
+        self._AssetPublishTime = AssetPublishTime
+
+    @property
+    def AssetPublishAccount(self):
+        r"""资产发布人
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AssetPublishAccount
+
+    @AssetPublishAccount.setter
+    def AssetPublishAccount(self, AssetPublishAccount):
+        self._AssetPublishAccount = AssetPublishAccount
+
+    @property
+    def AssetPublishAccountName(self):
+        r"""资产发布人名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AssetPublishAccountName
+
+    @AssetPublishAccountName.setter
+    def AssetPublishAccountName(self, AssetPublishAccountName):
+        self._AssetPublishAccountName = AssetPublishAccountName
+
+    @property
+    def IndicatorPermission(self):
+        r"""指标权限
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.PermissionStatus`
+        """
+        return self._IndicatorPermission
+
+    @IndicatorPermission.setter
+    def IndicatorPermission(self, IndicatorPermission):
+        self._IndicatorPermission = IndicatorPermission
+
+    @property
+    def OperateOption(self):
+        r"""资产权限
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DataAssetOption`
+        """
+        return self._OperateOption
+
+    @OperateOption.setter
+    def OperateOption(self, OperateOption):
+        self._OperateOption = OperateOption
+
+    @property
+    def ProjectId(self):
+        r"""项目 ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def ProjectName(self):
+        r"""项目名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ProjectName
+
+    @ProjectName.setter
+    def ProjectName(self, ProjectName):
+        self._ProjectName = ProjectName
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._IndicatorCode = params.get("IndicatorCode")
+        self._IndicatorType = params.get("IndicatorType")
+        self._BizOwner = params.get("BizOwner")
+        self._TechOwner = params.get("TechOwner")
+        self._BizCaliber = params.get("BizCaliber")
+        self._Description = params.get("Description")
+        self._Level = params.get("Level")
+        self._CalLogic = params.get("CalLogic")
+        self._CalFreq = params.get("CalFreq")
+        self._MeasureUnit = params.get("MeasureUnit")
+        self._Accuracy = params.get("Accuracy")
+        if params.get("SourceIndicatorIds") is not None:
+            self._SourceIndicatorIds = []
+            for item in params.get("SourceIndicatorIds"):
+                obj = IndicatorBaseSimpleInfo()
+                obj._deserialize(item)
+                self._SourceIndicatorIds.append(obj)
+        self._Id = params.get("Id")
+        if params.get("DimensionIds") is not None:
+            self._DimensionIds = []
+            for item in params.get("DimensionIds"):
+                obj = AssetDimSimpleVO()
+                obj._deserialize(item)
+                self._DimensionIds.append(obj)
+        self._FolderId = params.get("FolderId")
+        self._Status = params.get("Status")
+        self._BizOwnerName = params.get("BizOwnerName")
+        self._TechOwnerName = params.get("TechOwnerName")
+        self._PublishTime = params.get("PublishTime")
+        self._PublishAccount = params.get("PublishAccount")
+        self._PublishAccountName = params.get("PublishAccountName")
+        self._LastModifyTime = params.get("LastModifyTime")
+        self._LastModifyAccount = params.get("LastModifyAccount")
+        self._LastModifyAccountName = params.get("LastModifyAccountName")
+        if params.get("ChangeLogList") is not None:
+            self._ChangeLogList = []
+            for item in params.get("ChangeLogList"):
+                obj = ChangeLog()
+                obj._deserialize(item)
+                self._ChangeLogList.append(obj)
+        if params.get("TableColumns") is not None:
+            self._TableColumns = []
+            for item in params.get("TableColumns"):
+                obj = AssetDimTableColumn()
+                obj._deserialize(item)
+                self._TableColumns.append(obj)
+        if params.get("AllSourceIndicatorIds") is not None:
+            self._AllSourceIndicatorIds = []
+            for item in params.get("AllSourceIndicatorIds"):
+                obj = IndicatorBaseInfo()
+                obj._deserialize(item)
+                self._AllSourceIndicatorIds.append(obj)
+        self._AssetId = params.get("AssetId")
+        self._AssetType = params.get("AssetType")
+        self._AssetCode = params.get("AssetCode")
+        if params.get("RelatedIndicatorIds") is not None:
+            self._RelatedIndicatorIds = []
+            for item in params.get("RelatedIndicatorIds"):
+                obj = IndicatorBaseInfo()
+                obj._deserialize(item)
+                self._RelatedIndicatorIds.append(obj)
+        self._BizCatalogIds = params.get("BizCatalogIds")
+        self._BizCatalogNames = params.get("BizCatalogNames")
+        self._AssetLevel = params.get("AssetLevel")
+        self._AssetStatus = params.get("AssetStatus")
+        self._AssetPublishTime = params.get("AssetPublishTime")
+        self._AssetPublishAccount = params.get("AssetPublishAccount")
+        self._AssetPublishAccountName = params.get("AssetPublishAccountName")
+        if params.get("IndicatorPermission") is not None:
+            self._IndicatorPermission = PermissionStatus()
+            self._IndicatorPermission._deserialize(params.get("IndicatorPermission"))
+        if params.get("OperateOption") is not None:
+            self._OperateOption = DataAssetOption()
+            self._OperateOption._deserialize(params.get("OperateOption"))
+        self._ProjectId = params.get("ProjectId")
+        self._ProjectName = params.get("ProjectName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class IndicatorBaseSimpleInfo(AbstractModel):
     r"""指标列表简单结构
 
@@ -66009,6 +68638,18 @@ class IntegrationTaskInfo(AbstractModel):
         :param _ErrorMessage: 错误信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorMessage: str
+        :param _TaskSubType: 任务子状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskSubType: int
+        :param _NotExistsCheckPoint: 是否存在SavePoint, 0-存在, 1-不存在, null 为未知
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NotExistsCheckPoint: int
+        :param _SavePointId: savepiontPath
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SavePointId: str
+        :param _SavePointPath: savepiontId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SavePointPath: str
         """
         self._TaskName = None
         self._Description = None
@@ -66064,6 +68705,10 @@ class IntegrationTaskInfo(AbstractModel):
         self._CurrentSyncPosition = None
         self._TagList = None
         self._ErrorMessage = None
+        self._TaskSubType = None
+        self._NotExistsCheckPoint = None
+        self._SavePointId = None
+        self._SavePointPath = None
 
     @property
     def TaskName(self):
@@ -66710,6 +69355,54 @@ class IntegrationTaskInfo(AbstractModel):
     def ErrorMessage(self, ErrorMessage):
         self._ErrorMessage = ErrorMessage
 
+    @property
+    def TaskSubType(self):
+        r"""任务子状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TaskSubType
+
+    @TaskSubType.setter
+    def TaskSubType(self, TaskSubType):
+        self._TaskSubType = TaskSubType
+
+    @property
+    def NotExistsCheckPoint(self):
+        r"""是否存在SavePoint, 0-存在, 1-不存在, null 为未知
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._NotExistsCheckPoint
+
+    @NotExistsCheckPoint.setter
+    def NotExistsCheckPoint(self, NotExistsCheckPoint):
+        self._NotExistsCheckPoint = NotExistsCheckPoint
+
+    @property
+    def SavePointId(self):
+        r"""savepiontPath
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SavePointId
+
+    @SavePointId.setter
+    def SavePointId(self, SavePointId):
+        self._SavePointId = SavePointId
+
+    @property
+    def SavePointPath(self):
+        r"""savepiontId
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SavePointPath
+
+    @SavePointPath.setter
+    def SavePointPath(self, SavePointPath):
+        self._SavePointPath = SavePointPath
+
 
     def _deserialize(self, params):
         self._TaskName = params.get("TaskName")
@@ -66800,6 +69493,10 @@ class IntegrationTaskInfo(AbstractModel):
                 obj._deserialize(item)
                 self._TagList.append(obj)
         self._ErrorMessage = params.get("ErrorMessage")
+        self._TaskSubType = params.get("TaskSubType")
+        self._NotExistsCheckPoint = params.get("NotExistsCheckPoint")
+        self._SavePointId = params.get("SavePointId")
+        self._SavePointPath = params.get("SavePointPath")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -83534,6 +86231,108 @@ class RegisterEventResponse(AbstractModel):
             self._Data = BatchReturn()
             self._Data._deserialize(params.get("Data"))
         self._RequestId = params.get("RequestId")
+
+
+class RegisteredModelAlias(AbstractModel):
+    r"""注册模型别名
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Alias: 别名的名称
+        :type Alias: str
+        :param _Version: 别名指向的模型版本号
+        :type Version: str
+        """
+        self._Alias = None
+        self._Version = None
+
+    @property
+    def Alias(self):
+        r"""别名的名称
+        :rtype: str
+        """
+        return self._Alias
+
+    @Alias.setter
+    def Alias(self, Alias):
+        self._Alias = Alias
+
+    @property
+    def Version(self):
+        r"""别名指向的模型版本号
+        :rtype: str
+        """
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+
+    def _deserialize(self, params):
+        self._Alias = params.get("Alias")
+        self._Version = params.get("Version")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RegisteredModelTag(AbstractModel):
+    r"""注册模型标签
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: tag key
+        :type Key: str
+        :param _Value: tag value
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        r"""tag key
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        r"""tag value
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class RelatedTask(AbstractModel):
@@ -104397,6 +107196,15 @@ class TaskDataRegistryDTO(AbstractModel):
         :param _TablePhysicalId: 表物理唯一id
 注意：此字段可能返回 null，表示取不到有效值。
         :type TablePhysicalId: str
+        :param _CatalogName: Catalog名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CatalogName: str
+        :param _DatasourceName: 数据源名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatasourceName: str
+        :param _QualifiedName: Catalog(如有).数据库(如有).表名名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QualifiedName: str
         """
         self._TaskId = None
         self._TaskName = None
@@ -104415,6 +107223,9 @@ class TaskDataRegistryDTO(AbstractModel):
         self._OwnerUin = None
         self._Ext = None
         self._TablePhysicalId = None
+        self._CatalogName = None
+        self._DatasourceName = None
+        self._QualifiedName = None
 
     @property
     def TaskId(self):
@@ -104624,6 +107435,42 @@ class TaskDataRegistryDTO(AbstractModel):
     def TablePhysicalId(self, TablePhysicalId):
         self._TablePhysicalId = TablePhysicalId
 
+    @property
+    def CatalogName(self):
+        r"""Catalog名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CatalogName
+
+    @CatalogName.setter
+    def CatalogName(self, CatalogName):
+        self._CatalogName = CatalogName
+
+    @property
+    def DatasourceName(self):
+        r"""数据源名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DatasourceName
+
+    @DatasourceName.setter
+    def DatasourceName(self, DatasourceName):
+        self._DatasourceName = DatasourceName
+
+    @property
+    def QualifiedName(self):
+        r"""Catalog(如有).数据库(如有).表名名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._QualifiedName
+
+    @QualifiedName.setter
+    def QualifiedName(self, QualifiedName):
+        self._QualifiedName = QualifiedName
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
@@ -104643,6 +107490,9 @@ class TaskDataRegistryDTO(AbstractModel):
         self._OwnerUin = params.get("OwnerUin")
         self._Ext = params.get("Ext")
         self._TablePhysicalId = params.get("TablePhysicalId")
+        self._CatalogName = params.get("CatalogName")
+        self._DatasourceName = params.get("DatasourceName")
+        self._QualifiedName = params.get("QualifiedName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -104990,6 +107840,24 @@ CI/CD工程生成的bundle唯一标识
         :param _BundleInfo: bundle信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type BundleInfo: str
+        :param _AllowDownstreamDependency: 是否允许下游依赖 0 不允许 1 允许
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AllowDownstreamDependency: int
+        :param _DependencyTriggerPolicy: - 任务依赖运行条件，默认为ALL_SUCCESS，暂时只支持工作流调度项目下配置
+- ALL_SUCCESS： 全部成功：所有上游依赖任务都达到终态时，进行依赖判断，如果上游全部都成功，则依赖判断成功，否则如果上游有一个跳过运行，则标记为跳过运行，其余情况标记为上游失败
+- ALL_FAILED：全部失败：所有上游依赖任务都达到终态时，进行依赖判断，如果上游状态都是失败或者上游失败，则依赖判断成功，否则就标记为跳过运行
+- ALL_DONE：全部完成：所有上游依赖任务都达到终态时，进行依赖判断，直接是依赖判断成功
+- ALL_DONE_AT_LEAST_ONE_SUCCESS：上游全部完成至少一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个成功，则依赖判断成功，否则就是跳过运行
+- ALL_SKIPPED：上游全部都跳过: 所有上游依赖任务都达到终态时，进行依赖判断，所有的上游都是跳过状态才算依赖判断成功，否则当前节点就是跳过运行
+- ONE_FAILED：至少一个失败: 上游只要有一个失败了，就进行依赖判断，且依赖判断成功，如果上游全部完成但是没有失败，则跳过运行
+- ONE_SUCCESS：至少一个成功：上游只要有一个成功，就进行依赖判断，且依赖判断成功，如果上游全部完成但是没有成功，则跳过运行
+- ONE_DONE：至少一个完成：上游只要有一个完成了，就进行依赖判断，且依赖判断成功，否则还是等待上游
+- NONE_FAILED：上游全部完成，没有失败: 所有上游依赖任务都达到终态时，进行依赖判断，如果上游都是成功或者跳过运行，则依赖判断成功，否则标记为上游失败
+- ALL_DONE_NONE_FAILED_AT_LEAST_ONE_SUCCESS：上游全部完成，没有失败，至少有一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，上游没有一个失败且至少有一个成功的情况下，依赖判断成功，否则就是跳过运行
+- NONE_SKIPPED：上游全部完成，没有跳过运行: 所有上游依赖任务都达到终态时，进行依赖判断, 如果上游状态全部都是成功、失败、上游失败状态，则依赖判断成功，否则为跳过运行
+- ALL_DONE_AT_LEAST_ONE_FAILED：上游全部完成至少一个失败: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个失败，则依赖判断成功，否则就是跳过运行
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DependencyTriggerPolicy: str
         """
         self._TaskId = None
         self._VirtualTaskId = None
@@ -105094,6 +107962,8 @@ CI/CD工程生成的bundle唯一标识
         self._AllowRedoType = None
         self._BundleId = None
         self._BundleInfo = None
+        self._AllowDownstreamDependency = None
+        self._DependencyTriggerPolicy = None
 
     @property
     def TaskId(self):
@@ -106352,6 +109222,42 @@ CI/CD工程生成的bundle唯一标识
     def BundleInfo(self, BundleInfo):
         self._BundleInfo = BundleInfo
 
+    @property
+    def AllowDownstreamDependency(self):
+        r"""是否允许下游依赖 0 不允许 1 允许
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._AllowDownstreamDependency
+
+    @AllowDownstreamDependency.setter
+    def AllowDownstreamDependency(self, AllowDownstreamDependency):
+        self._AllowDownstreamDependency = AllowDownstreamDependency
+
+    @property
+    def DependencyTriggerPolicy(self):
+        r"""- 任务依赖运行条件，默认为ALL_SUCCESS，暂时只支持工作流调度项目下配置
+- ALL_SUCCESS： 全部成功：所有上游依赖任务都达到终态时，进行依赖判断，如果上游全部都成功，则依赖判断成功，否则如果上游有一个跳过运行，则标记为跳过运行，其余情况标记为上游失败
+- ALL_FAILED：全部失败：所有上游依赖任务都达到终态时，进行依赖判断，如果上游状态都是失败或者上游失败，则依赖判断成功，否则就标记为跳过运行
+- ALL_DONE：全部完成：所有上游依赖任务都达到终态时，进行依赖判断，直接是依赖判断成功
+- ALL_DONE_AT_LEAST_ONE_SUCCESS：上游全部完成至少一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个成功，则依赖判断成功，否则就是跳过运行
+- ALL_SKIPPED：上游全部都跳过: 所有上游依赖任务都达到终态时，进行依赖判断，所有的上游都是跳过状态才算依赖判断成功，否则当前节点就是跳过运行
+- ONE_FAILED：至少一个失败: 上游只要有一个失败了，就进行依赖判断，且依赖判断成功，如果上游全部完成但是没有失败，则跳过运行
+- ONE_SUCCESS：至少一个成功：上游只要有一个成功，就进行依赖判断，且依赖判断成功，如果上游全部完成但是没有成功，则跳过运行
+- ONE_DONE：至少一个完成：上游只要有一个完成了，就进行依赖判断，且依赖判断成功，否则还是等待上游
+- NONE_FAILED：上游全部完成，没有失败: 所有上游依赖任务都达到终态时，进行依赖判断，如果上游都是成功或者跳过运行，则依赖判断成功，否则标记为上游失败
+- ALL_DONE_NONE_FAILED_AT_LEAST_ONE_SUCCESS：上游全部完成，没有失败，至少有一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，上游没有一个失败且至少有一个成功的情况下，依赖判断成功，否则就是跳过运行
+- NONE_SKIPPED：上游全部完成，没有跳过运行: 所有上游依赖任务都达到终态时，进行依赖判断, 如果上游状态全部都是成功、失败、上游失败状态，则依赖判断成功，否则为跳过运行
+- ALL_DONE_AT_LEAST_ONE_FAILED：上游全部完成至少一个失败: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个失败，则依赖判断成功，否则就是跳过运行
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DependencyTriggerPolicy
+
+    @DependencyTriggerPolicy.setter
+    def DependencyTriggerPolicy(self, DependencyTriggerPolicy):
+        self._DependencyTriggerPolicy = DependencyTriggerPolicy
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
@@ -106506,6 +109412,8 @@ CI/CD工程生成的bundle唯一标识
         self._AllowRedoType = params.get("AllowRedoType")
         self._BundleId = params.get("BundleId")
         self._BundleInfo = params.get("BundleInfo")
+        self._AllowDownstreamDependency = params.get("AllowDownstreamDependency")
+        self._DependencyTriggerPolicy = params.get("DependencyTriggerPolicy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -107000,6 +109908,9 @@ class TaskImportInfo(AbstractModel):
         :param _TaskNameExistMode: 重名任务处理策略, 0:跳过,不导入; 1: 重命名
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskNameExistMode: int
+        :param _WorkFlowFolderPath: 工作流所属目录路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkFlowFolderPath: str
         """
         self._IsImport = None
         self._IsNewWorkFlow = None
@@ -107008,6 +109919,7 @@ class TaskImportInfo(AbstractModel):
         self._WorkFlowId = None
         self._WorkFlowName = None
         self._TaskNameExistMode = None
+        self._WorkFlowFolderPath = None
 
     @property
     def IsImport(self):
@@ -107093,6 +110005,18 @@ class TaskImportInfo(AbstractModel):
     def TaskNameExistMode(self, TaskNameExistMode):
         self._TaskNameExistMode = TaskNameExistMode
 
+    @property
+    def WorkFlowFolderPath(self):
+        r"""工作流所属目录路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._WorkFlowFolderPath
+
+    @WorkFlowFolderPath.setter
+    def WorkFlowFolderPath(self, WorkFlowFolderPath):
+        self._WorkFlowFolderPath = WorkFlowFolderPath
+
 
     def _deserialize(self, params):
         self._IsImport = params.get("IsImport")
@@ -107102,6 +110026,7 @@ class TaskImportInfo(AbstractModel):
         self._WorkFlowId = params.get("WorkFlowId")
         self._WorkFlowName = params.get("WorkFlowName")
         self._TaskNameExistMode = params.get("TaskNameExistMode")
+        self._WorkFlowFolderPath = params.get("WorkFlowFolderPath")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

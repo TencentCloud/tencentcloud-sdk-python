@@ -32,6 +32,9 @@ INTERNALERROR = 'InternalError'
 # 缺少参数或参数不合法
 INTERNALERROR_INVALIDPARAMETER = 'InternalError.InvalidParameter'
 
+# 未知错误
+INTERNALERROR_UNKNOWNERROR = 'InternalError.UnknownError'
+
 # 参数错误。
 INVALIDPARAMETER = 'InvalidParameter'
 
@@ -67,6 +70,9 @@ INVALIDPARAMETER_WORKSPACENOTEXIST = 'InvalidParameter.WorkspaceNotExist'
 
 # 参数取值错误。
 INVALIDPARAMETERVALUE = 'InvalidParameterValue'
+
+# 参数非法
+INVALIDPARAMETERVALUE_PARAMILLEGALERROR = 'InvalidParameterValue.ParamIllegalError'
 
 # 告警规则名称重复
 INVALIDPARAMETERVALUE_RULENAMEREPEATED = 'InvalidParameterValue.RuleNameRepeated'

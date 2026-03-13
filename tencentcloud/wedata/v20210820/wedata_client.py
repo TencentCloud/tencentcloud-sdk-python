@@ -1866,6 +1866,29 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDataAssets(self, request):
+        r"""查询数据资产列表
+
+        :param request: Request instance for DescribeDataAssets.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeDataAssetsRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeDataAssetsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDataAssets", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDataAssetsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDataCheckStat(self, request):
         r"""数据质量的概览页面数据监测情况接口
 

@@ -485,23 +485,23 @@ class CallbackStatusStatistics(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CallbackCount: 短信回执量统计。
+        :param _CallbackCount: <p>短信回执量统计。</p><p>单位：数</p>
         :type CallbackCount: int
-        :param _RequestSuccessCount: 短信提交成功量统计。
+        :param _RequestSuccessCount: <p>短信提交成功量统计。</p><p>单位：数</p>
         :type RequestSuccessCount: int
-        :param _CallbackFailCount: 短信回执失败量统计。
+        :param _CallbackFailCount: <p>短信回执失败量统计。</p><p>单位：数</p>
         :type CallbackFailCount: int
-        :param _CallbackSuccessCount: 短信回执成功量统计。
+        :param _CallbackSuccessCount: <p>短信回执成功量统计。</p><p>单位：数</p>
         :type CallbackSuccessCount: int
-        :param _InternalErrorCount: 运营商内部错误统计。
+        :param _InternalErrorCount: <p>运营商内部错误统计。</p><p>单位：数</p>
         :type InternalErrorCount: int
-        :param _InvalidNumberCount: 号码无效或空号统计。
+        :param _InvalidNumberCount: <p>号码无效或空号统计。</p><p>单位：数</p>
         :type InvalidNumberCount: int
-        :param _ShutdownErrorCount: 停机、关机等错误统计。
+        :param _ShutdownErrorCount: <p>停机、关机等错误统计。</p><p>单位：数</p>
         :type ShutdownErrorCount: int
-        :param _BlackListCount: 号码拉入黑名单统计。
+        :param _BlackListCount: <p>号码拉入免打扰名单统计。</p><p>单位：数</p>
         :type BlackListCount: int
-        :param _FrequencyLimitCount: 运营商频率限制统计。
+        :param _FrequencyLimitCount: <p>运营商频率限制统计。</p><p>单位：数</p>
         :type FrequencyLimitCount: int
         """
         self._CallbackCount = None
@@ -516,7 +516,7 @@ class CallbackStatusStatistics(AbstractModel):
 
     @property
     def CallbackCount(self):
-        r"""短信回执量统计。
+        r"""<p>短信回执量统计。</p><p>单位：数</p>
         :rtype: int
         """
         return self._CallbackCount
@@ -527,7 +527,7 @@ class CallbackStatusStatistics(AbstractModel):
 
     @property
     def RequestSuccessCount(self):
-        r"""短信提交成功量统计。
+        r"""<p>短信提交成功量统计。</p><p>单位：数</p>
         :rtype: int
         """
         return self._RequestSuccessCount
@@ -538,7 +538,7 @@ class CallbackStatusStatistics(AbstractModel):
 
     @property
     def CallbackFailCount(self):
-        r"""短信回执失败量统计。
+        r"""<p>短信回执失败量统计。</p><p>单位：数</p>
         :rtype: int
         """
         return self._CallbackFailCount
@@ -549,7 +549,7 @@ class CallbackStatusStatistics(AbstractModel):
 
     @property
     def CallbackSuccessCount(self):
-        r"""短信回执成功量统计。
+        r"""<p>短信回执成功量统计。</p><p>单位：数</p>
         :rtype: int
         """
         return self._CallbackSuccessCount
@@ -560,7 +560,7 @@ class CallbackStatusStatistics(AbstractModel):
 
     @property
     def InternalErrorCount(self):
-        r"""运营商内部错误统计。
+        r"""<p>运营商内部错误统计。</p><p>单位：数</p>
         :rtype: int
         """
         return self._InternalErrorCount
@@ -571,7 +571,7 @@ class CallbackStatusStatistics(AbstractModel):
 
     @property
     def InvalidNumberCount(self):
-        r"""号码无效或空号统计。
+        r"""<p>号码无效或空号统计。</p><p>单位：数</p>
         :rtype: int
         """
         return self._InvalidNumberCount
@@ -582,7 +582,7 @@ class CallbackStatusStatistics(AbstractModel):
 
     @property
     def ShutdownErrorCount(self):
-        r"""停机、关机等错误统计。
+        r"""<p>停机、关机等错误统计。</p><p>单位：数</p>
         :rtype: int
         """
         return self._ShutdownErrorCount
@@ -593,7 +593,7 @@ class CallbackStatusStatistics(AbstractModel):
 
     @property
     def BlackListCount(self):
-        r"""号码拉入黑名单统计。
+        r"""<p>号码拉入免打扰名单统计。</p><p>单位：数</p>
         :rtype: int
         """
         return self._BlackListCount
@@ -604,7 +604,7 @@ class CallbackStatusStatistics(AbstractModel):
 
     @property
     def FrequencyLimitCount(self):
-        r"""运营商频率限制统计。
+        r"""<p>运营商频率限制统计。</p><p>单位：数</p>
         :rtype: int
         """
         return self._FrequencyLimitCount
@@ -788,9 +788,9 @@ class DeleteSignStatus(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DeleteStatus: 删除状态信息。
+        :param _DeleteStatus: <p>删除状态信息。</p>
         :type DeleteStatus: str
-        :param _DeleteTime: 删除时间，UNIX 时间戳（单位：秒）。
+        :param _DeleteTime: <p>删除时间，UNIX 时间戳（单位：秒）。</p>
         :type DeleteTime: int
         """
         self._DeleteStatus = None
@@ -798,7 +798,7 @@ class DeleteSignStatus(AbstractModel):
 
     @property
     def DeleteStatus(self):
-        r"""删除状态信息。
+        r"""<p>删除状态信息。</p>
         :rtype: str
         """
         return self._DeleteStatus
@@ -809,7 +809,7 @@ class DeleteSignStatus(AbstractModel):
 
     @property
     def DeleteTime(self):
-        r"""删除时间，UNIX 时间戳（单位：秒）。
+        r"""<p>删除时间，UNIX 时间戳（单位：秒）。</p>
         :rtype: int
         """
         return self._DeleteTime
@@ -3789,19 +3789,19 @@ class SmsPackagesStatistics(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PackageCreateTime: 套餐包创建时间，UNIX 时间戳（单位：秒）。
+        :param _PackageCreateTime: <p>套餐包创建时间，UNIX 时间戳。</p><p>单位：秒</p>
         :type PackageCreateTime: int
-        :param _PackageEffectiveTime: 套餐包生效时间，UNIX 时间戳（单位：秒）。
+        :param _PackageEffectiveTime: <p>套餐包生效时间，UNIX 时间戳。</p><p>单位：秒</p>
         :type PackageEffectiveTime: int
-        :param _PackageExpiredTime: 套餐包过期时间，UNIX 时间戳（单位：秒）。
+        :param _PackageExpiredTime: <p>套餐包过期时间，UNIX 时间戳。</p><p>单位：秒</p>
         :type PackageExpiredTime: int
-        :param _PackageAmount: 套餐包条数。
+        :param _PackageAmount: <p>套餐包条数。</p><p>单位：条</p>
         :type PackageAmount: int
-        :param _PackageType: 套餐包类别，0表示赠送套餐包，1表示购买套餐包。
+        :param _PackageType: <p>套餐包类别。</p><p>枚举值：</p><ul><li>0： 赠送套餐</li><li>1： 购买套餐包</li></ul>
         :type PackageType: int
-        :param _PackageId: 套餐包 ID。
+        :param _PackageId: <p>套餐包 ID。</p>
         :type PackageId: int
-        :param _CurrentUsage: 当前使用套餐包条数。
+        :param _CurrentUsage: <p>当前使用套餐包条数。</p><p>单位：条</p>
         :type CurrentUsage: int
         """
         self._PackageCreateTime = None
@@ -3814,7 +3814,7 @@ class SmsPackagesStatistics(AbstractModel):
 
     @property
     def PackageCreateTime(self):
-        r"""套餐包创建时间，UNIX 时间戳（单位：秒）。
+        r"""<p>套餐包创建时间，UNIX 时间戳。</p><p>单位：秒</p>
         :rtype: int
         """
         return self._PackageCreateTime
@@ -3825,7 +3825,7 @@ class SmsPackagesStatistics(AbstractModel):
 
     @property
     def PackageEffectiveTime(self):
-        r"""套餐包生效时间，UNIX 时间戳（单位：秒）。
+        r"""<p>套餐包生效时间，UNIX 时间戳。</p><p>单位：秒</p>
         :rtype: int
         """
         return self._PackageEffectiveTime
@@ -3836,7 +3836,7 @@ class SmsPackagesStatistics(AbstractModel):
 
     @property
     def PackageExpiredTime(self):
-        r"""套餐包过期时间，UNIX 时间戳（单位：秒）。
+        r"""<p>套餐包过期时间，UNIX 时间戳。</p><p>单位：秒</p>
         :rtype: int
         """
         return self._PackageExpiredTime
@@ -3847,7 +3847,7 @@ class SmsPackagesStatistics(AbstractModel):
 
     @property
     def PackageAmount(self):
-        r"""套餐包条数。
+        r"""<p>套餐包条数。</p><p>单位：条</p>
         :rtype: int
         """
         return self._PackageAmount
@@ -3858,7 +3858,7 @@ class SmsPackagesStatistics(AbstractModel):
 
     @property
     def PackageType(self):
-        r"""套餐包类别，0表示赠送套餐包，1表示购买套餐包。
+        r"""<p>套餐包类别。</p><p>枚举值：</p><ul><li>0： 赠送套餐</li><li>1： 购买套餐包</li></ul>
         :rtype: int
         """
         return self._PackageType
@@ -3869,7 +3869,7 @@ class SmsPackagesStatistics(AbstractModel):
 
     @property
     def PackageId(self):
-        r"""套餐包 ID。
+        r"""<p>套餐包 ID。</p>
         :rtype: int
         """
         return self._PackageId
@@ -3880,7 +3880,7 @@ class SmsPackagesStatistics(AbstractModel):
 
     @property
     def CurrentUsage(self):
-        r"""当前使用套餐包条数。
+        r"""<p>当前使用套餐包条数。</p><p>单位：条</p>
         :rtype: int
         """
         return self._CurrentUsage

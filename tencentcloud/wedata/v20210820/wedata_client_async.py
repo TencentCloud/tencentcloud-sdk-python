@@ -1465,6 +1465,24 @@ class WedataClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeDataAssets(
+            self,
+            request: models.DescribeDataAssetsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDataAssetsResponse:
+        """
+        查询数据资产列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDataAssets"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDataAssetsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeDataCheckStat(
             self,
             request: models.DescribeDataCheckStatRequest,
