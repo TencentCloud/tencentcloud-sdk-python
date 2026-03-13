@@ -34687,38 +34687,37 @@ class RoGroup(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RoGroupMode: 只读组模式，可选值为：alone-系统自动分配只读组；allinone-新建只读组；join-使用现有只读组。
+        :param _RoGroupMode: <p>只读组模式，可选值为：alone-系统自动分配只读组；allinone-新建只读组；join-使用现有只读组。</p>
         :type RoGroupMode: str
-        :param _RoGroupId: 只读组 ID。
-说明：若此数据结构在购买实例操作中被使用，则当只读组模式选择 join 时，此项为必填。
+        :param _RoGroupId: <p>只读组 ID。<br>说明：若此数据结构在购买实例操作中被使用，则当只读组模式选择 join 时，此项为必填。</p>
         :type RoGroupId: str
-        :param _RoGroupName: 只读组名称。
+        :param _RoGroupName: <p>只读组名称。</p>
         :type RoGroupName: str
-        :param _RoOfflineDelay: 是否启用延迟超限剔除功能，启用该功能后，只读实例与主实例的延迟超过延迟阈值，只读实例将被隔离。可选值：1-启用；0-不启用。
+        :param _RoOfflineDelay: <p>是否启用延迟超限剔除功能，启用该功能后，只读实例与主实例的延迟超过延迟阈值，只读实例将被隔离。可选值：1-启用；0-不启用。</p>
         :type RoOfflineDelay: int
-        :param _RoMaxDelayTime: 延迟阈值。单位：秒。值范围：1-10000，整数。
+        :param _RoMaxDelayTime: <p>延迟阈值。单位：秒。值范围：1-10000，整数。</p>
         :type RoMaxDelayTime: int
-        :param _MinRoInGroup: 最少实例保留个数，若购买只读实例数量小于设置数量将不做剔除。
+        :param _MinRoInGroup: <p>最少实例保留个数，若购买只读实例数量小于设置数量将不做剔除。</p>
         :type MinRoInGroup: int
-        :param _WeightMode: 读写权重分配模式，可选值：system-系统自动分配；custom-自定义。
+        :param _WeightMode: <p>读写权重分配模式，可选值：system-系统自动分配；custom-自定义。</p>
         :type WeightMode: str
-        :param _Weight: 该字段已经废弃，无意义。查看只读实例的权重，请查看 RoInstances 字段里的 Weight 值。
+        :param _Weight: <p>该字段已经废弃，无意义。查看只读实例的权重，请查看 RoInstances 字段里的 Weight 值。</p>
         :type Weight: int
-        :param _RoInstances: 只读组中的只读实例详情。
+        :param _RoInstances: <p>只读组中的只读实例详情。</p>
         :type RoInstances: list of RoInstanceInfo
-        :param _Vip: 只读组的内网 IP。
+        :param _Vip: <p>只读组的内网 IP。</p>
         :type Vip: str
-        :param _Vport: 只读组的内网端口号。
+        :param _Vport: <p>只读组的内网端口号。</p>
         :type Vport: int
-        :param _UniqVpcId: 私有网络 ID。
+        :param _UniqVpcId: <p>私有网络 ID。</p>
         :type UniqVpcId: str
-        :param _UniqSubnetId: 子网 ID。
+        :param _UniqSubnetId: <p>子网 ID。</p>
         :type UniqSubnetId: str
-        :param _RoGroupRegion: 只读组所在的地域。
+        :param _RoGroupRegion: <p>只读组所在的地域。</p>
         :type RoGroupRegion: str
-        :param _RoGroupZone: 只读组所在的可用区。
+        :param _RoGroupZone: <p>只读组所在的可用区。</p>
         :type RoGroupZone: str
-        :param _DelayReplicationTime: 延迟复制时间。单位：秒。值范围：1-259200，整数。
+        :param _DelayReplicationTime: <p>延迟复制时间。单位：秒。值范围：1-259200，整数。</p>
         :type DelayReplicationTime: int
         """
         self._RoGroupMode = None
@@ -34740,7 +34739,7 @@ class RoGroup(AbstractModel):
 
     @property
     def RoGroupMode(self):
-        r"""只读组模式，可选值为：alone-系统自动分配只读组；allinone-新建只读组；join-使用现有只读组。
+        r"""<p>只读组模式，可选值为：alone-系统自动分配只读组；allinone-新建只读组；join-使用现有只读组。</p>
         :rtype: str
         """
         return self._RoGroupMode
@@ -34751,8 +34750,7 @@ class RoGroup(AbstractModel):
 
     @property
     def RoGroupId(self):
-        r"""只读组 ID。
-说明：若此数据结构在购买实例操作中被使用，则当只读组模式选择 join 时，此项为必填。
+        r"""<p>只读组 ID。<br>说明：若此数据结构在购买实例操作中被使用，则当只读组模式选择 join 时，此项为必填。</p>
         :rtype: str
         """
         return self._RoGroupId
@@ -34763,7 +34761,7 @@ class RoGroup(AbstractModel):
 
     @property
     def RoGroupName(self):
-        r"""只读组名称。
+        r"""<p>只读组名称。</p>
         :rtype: str
         """
         return self._RoGroupName
@@ -34774,7 +34772,7 @@ class RoGroup(AbstractModel):
 
     @property
     def RoOfflineDelay(self):
-        r"""是否启用延迟超限剔除功能，启用该功能后，只读实例与主实例的延迟超过延迟阈值，只读实例将被隔离。可选值：1-启用；0-不启用。
+        r"""<p>是否启用延迟超限剔除功能，启用该功能后，只读实例与主实例的延迟超过延迟阈值，只读实例将被隔离。可选值：1-启用；0-不启用。</p>
         :rtype: int
         """
         return self._RoOfflineDelay
@@ -34785,7 +34783,7 @@ class RoGroup(AbstractModel):
 
     @property
     def RoMaxDelayTime(self):
-        r"""延迟阈值。单位：秒。值范围：1-10000，整数。
+        r"""<p>延迟阈值。单位：秒。值范围：1-10000，整数。</p>
         :rtype: int
         """
         return self._RoMaxDelayTime
@@ -34796,7 +34794,7 @@ class RoGroup(AbstractModel):
 
     @property
     def MinRoInGroup(self):
-        r"""最少实例保留个数，若购买只读实例数量小于设置数量将不做剔除。
+        r"""<p>最少实例保留个数，若购买只读实例数量小于设置数量将不做剔除。</p>
         :rtype: int
         """
         return self._MinRoInGroup
@@ -34807,7 +34805,7 @@ class RoGroup(AbstractModel):
 
     @property
     def WeightMode(self):
-        r"""读写权重分配模式，可选值：system-系统自动分配；custom-自定义。
+        r"""<p>读写权重分配模式，可选值：system-系统自动分配；custom-自定义。</p>
         :rtype: str
         """
         return self._WeightMode
@@ -34818,7 +34816,7 @@ class RoGroup(AbstractModel):
 
     @property
     def Weight(self):
-        r"""该字段已经废弃，无意义。查看只读实例的权重，请查看 RoInstances 字段里的 Weight 值。
+        r"""<p>该字段已经废弃，无意义。查看只读实例的权重，请查看 RoInstances 字段里的 Weight 值。</p>
         :rtype: int
         """
         return self._Weight
@@ -34829,7 +34827,7 @@ class RoGroup(AbstractModel):
 
     @property
     def RoInstances(self):
-        r"""只读组中的只读实例详情。
+        r"""<p>只读组中的只读实例详情。</p>
         :rtype: list of RoInstanceInfo
         """
         return self._RoInstances
@@ -34840,7 +34838,7 @@ class RoGroup(AbstractModel):
 
     @property
     def Vip(self):
-        r"""只读组的内网 IP。
+        r"""<p>只读组的内网 IP。</p>
         :rtype: str
         """
         return self._Vip
@@ -34851,7 +34849,7 @@ class RoGroup(AbstractModel):
 
     @property
     def Vport(self):
-        r"""只读组的内网端口号。
+        r"""<p>只读组的内网端口号。</p>
         :rtype: int
         """
         return self._Vport
@@ -34862,7 +34860,7 @@ class RoGroup(AbstractModel):
 
     @property
     def UniqVpcId(self):
-        r"""私有网络 ID。
+        r"""<p>私有网络 ID。</p>
         :rtype: str
         """
         return self._UniqVpcId
@@ -34873,7 +34871,7 @@ class RoGroup(AbstractModel):
 
     @property
     def UniqSubnetId(self):
-        r"""子网 ID。
+        r"""<p>子网 ID。</p>
         :rtype: str
         """
         return self._UniqSubnetId
@@ -34884,7 +34882,7 @@ class RoGroup(AbstractModel):
 
     @property
     def RoGroupRegion(self):
-        r"""只读组所在的地域。
+        r"""<p>只读组所在的地域。</p>
         :rtype: str
         """
         return self._RoGroupRegion
@@ -34895,7 +34893,7 @@ class RoGroup(AbstractModel):
 
     @property
     def RoGroupZone(self):
-        r"""只读组所在的可用区。
+        r"""<p>只读组所在的可用区。</p>
         :rtype: str
         """
         return self._RoGroupZone
@@ -34906,7 +34904,7 @@ class RoGroup(AbstractModel):
 
     @property
     def DelayReplicationTime(self):
-        r"""延迟复制时间。单位：秒。值范围：1-259200，整数。
+        r"""<p>延迟复制时间。单位：秒。值范围：1-259200，整数。</p>
         :rtype: int
         """
         return self._DelayReplicationTime

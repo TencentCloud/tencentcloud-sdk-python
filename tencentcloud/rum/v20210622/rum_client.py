@@ -26,29 +26,6 @@ class RumClient(AbstractClient):
     _service = 'rum'
 
 
-    def CreateProject(self, request):
-        r"""创建 RUM 应用（归属于某个团队）
-
-        :param request: Request instance for CreateProject.
-        :type request: :class:`tencentcloud.rum.v20210622.models.CreateProjectRequest`
-        :rtype: :class:`tencentcloud.rum.v20210622.models.CreateProjectResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("CreateProject", params, headers=headers)
-            response = json.loads(body)
-            model = models.CreateProjectResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def CreateReleaseFile(self, request):
         r"""创建对应项目的文件记录
 
@@ -86,29 +63,6 @@ class RumClient(AbstractClient):
             body = self.call("CreateStarProject", params, headers=headers)
             response = json.loads(body)
             model = models.CreateStarProjectResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def CreateTawInstance(self, request):
-        r"""创建 RUM 业务系统
-
-        :param request: Request instance for CreateTawInstance.
-        :type request: :class:`tencentcloud.rum.v20210622.models.CreateTawInstanceRequest`
-        :rtype: :class:`tencentcloud.rum.v20210622.models.CreateTawInstanceResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("CreateTawInstance", params, headers=headers)
-            response = json.loads(body)
-            model = models.CreateTawInstanceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

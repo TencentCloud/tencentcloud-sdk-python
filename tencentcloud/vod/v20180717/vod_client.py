@@ -225,6 +225,29 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateAigcAdvancedCustomElement(self, request):
+        r"""该接口用于创建 AIGC 高级自定义主体。
+
+        :param request: Request instance for CreateAigcAdvancedCustomElement.
+        :type request: :class:`tencentcloud.vod.v20180717.models.CreateAigcAdvancedCustomElementRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.CreateAigcAdvancedCustomElementResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAigcAdvancedCustomElement", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateAigcAdvancedCustomElementResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateAigcApiToken(self, request):
         r"""创建AIGC调用API的Token。创建后数据同步有延时，约30秒后可查询或删除。
 
@@ -262,6 +285,29 @@ class VodClient(AbstractClient):
             body = self.call("CreateAigcCustomElement", params, headers=headers)
             response = json.loads(body)
             model = models.CreateAigcCustomElementResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateAigcCustomVoice(self, request):
+        r"""该接口用于创建 AIGC 自定义音色。
+
+        :param request: Request instance for CreateAigcCustomVoice.
+        :type request: :class:`tencentcloud.vod.v20180717.models.CreateAigcCustomVoiceRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.CreateAigcCustomVoiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAigcCustomVoice", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateAigcCustomVoiceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

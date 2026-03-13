@@ -25,24 +25,6 @@ class RumClient(AbstractClient):
     _endpoint = 'rum.tencentcloudapi.com'
     _service = 'rum'
 
-    async def CreateProject(
-            self,
-            request: models.CreateProjectRequest,
-            opts: Dict = None,
-    ) -> models.CreateProjectResponse:
-        """
-        创建 RUM 应用（归属于某个团队）
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "CreateProject"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.CreateProjectResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def CreateReleaseFile(
             self,
             request: models.CreateReleaseFileRequest,
@@ -74,24 +56,6 @@ class RumClient(AbstractClient):
         kwargs["action"] = "CreateStarProject"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreateStarProjectResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def CreateTawInstance(
-            self,
-            request: models.CreateTawInstanceRequest,
-            opts: Dict = None,
-    ) -> models.CreateTawInstanceResponse:
-        """
-        创建 RUM 业务系统
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "CreateTawInstance"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.CreateTawInstanceResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

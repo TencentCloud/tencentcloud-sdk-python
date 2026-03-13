@@ -19926,6 +19926,235 @@ class CreateAigcAdvancedCustomElementOutput(AbstractModel):
         
 
 
+class CreateAigcAdvancedCustomElementRequest(AbstractModel):
+    r"""CreateAigcAdvancedCustomElement请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubAppId: <p><b>点播<a href="https://cloud.tencent.com/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
+        :type SubAppId: int
+        :param _ElementName: <p>主体名称，不能超过20个字符。</p>
+        :type ElementName: str
+        :param _ElementDescription: <p>主体描述，不能超过100个字符。</p>
+        :type ElementDescription: str
+        :param _ReferenceType: <p>主体参考方式。通过视频定制的主体和通过图片定制的主体的可用范围不同。</p><p>枚举值：</p><ul><li>video_refer： 视频角色主体，此时将参考element_video_list定义主体外表。</li><li>image_refer： 多图主体，此时将参考element_image_list定义主体外表。</li></ul>
+        :type ReferenceType: str
+        :param _ElementVoiceId: <p>主体音色，可绑定音色库中已有音色。</p><ul><li>当前参数为空时，当前主体不绑定音色。</li><li>仅视频定制的主体支持绑定音色。</li></ul>
+        :type ElementVoiceId: str
+        :param _ElementVideoList: <p>主体参考视频，可通过视频设定主体及其细节。</p><ul><li>可上传有声视频，有声视频包含人声则触发音色定制（定制+入音色库+与主体绑定）</li><li>参考视频时当前参数必填，参考图片时当前参数无效</li><li>用key:value承载，如下：<br><pre><code>{  &quot;refer_videos&quot;:[    {      &quot;video_url&quot;:&quot;video_url_1&quot;    }  ]}</code></pre>● 视频格式仅支持MP4/MOV<br>● 仅支持时长介于3s～8s之间、宽高比例需为16:9或9:16的1080P视频<br>● 至多仅支持上传1段视频，视频大小不超过200MB<br>● video_url参数值不得为空</li></ul>
+        :type ElementVideoList: str
+        :param _ElementImageList: <p>主体参考图，可通过多张图片设定主体及其细节。</p><ul><li>包括正面参考图和其他角度或特写参考图，其中：<ul><li>至少包括1张正面参考图，由frontal_image参数定义。</li><li>需包括1～3张其他参考图，需与正面参考图有差异，由image_url参数定义。</li></ul></li><li>用key:value承载，如下：<br><pre><code>{  &quot;frontal_image&quot;:&quot;image_url_0&quot;,  &quot;refer_images&quot;:[    {      &quot;image_url&quot;:&quot;image_url_1&quot;    },    {      &quot;image_url&quot;:&quot;image_url_2&quot;    },    {      &quot;image_url&quot;:&quot;image_url_3&quot;    }  ]}</code></pre></li></ul>
+        :type ElementImageList: str
+        :param _TagList: <p>为主体配置标签，一个主体可以配置多个标签。</p><ul><li>用key:value承载，其中具体如下：</li></ul><p><pre><code>[  {        &quot;tag_id&quot;: &quot;o_101&quot;  }, {        &quot;tag_id&quot;: &quot;o_102&quot;    }]</code></pre></p>
+        :type TagList: str
+        :param _SessionId: <p>用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。</p>
+        :type SessionId: str
+        :param _SessionContext: <p>来源上下文，用于透传用户请求信息，任务完成回调将返回该字段值，最长 1000 个字符。</p>
+        :type SessionContext: str
+        :param _TasksPriority: <p>任务的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。</p>
+        :type TasksPriority: int
+        """
+        self._SubAppId = None
+        self._ElementName = None
+        self._ElementDescription = None
+        self._ReferenceType = None
+        self._ElementVoiceId = None
+        self._ElementVideoList = None
+        self._ElementImageList = None
+        self._TagList = None
+        self._SessionId = None
+        self._SessionContext = None
+        self._TasksPriority = None
+
+    @property
+    def SubAppId(self):
+        r"""<p><b>点播<a href="https://cloud.tencent.com/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
+        :rtype: int
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def ElementName(self):
+        r"""<p>主体名称，不能超过20个字符。</p>
+        :rtype: str
+        """
+        return self._ElementName
+
+    @ElementName.setter
+    def ElementName(self, ElementName):
+        self._ElementName = ElementName
+
+    @property
+    def ElementDescription(self):
+        r"""<p>主体描述，不能超过100个字符。</p>
+        :rtype: str
+        """
+        return self._ElementDescription
+
+    @ElementDescription.setter
+    def ElementDescription(self, ElementDescription):
+        self._ElementDescription = ElementDescription
+
+    @property
+    def ReferenceType(self):
+        r"""<p>主体参考方式。通过视频定制的主体和通过图片定制的主体的可用范围不同。</p><p>枚举值：</p><ul><li>video_refer： 视频角色主体，此时将参考element_video_list定义主体外表。</li><li>image_refer： 多图主体，此时将参考element_image_list定义主体外表。</li></ul>
+        :rtype: str
+        """
+        return self._ReferenceType
+
+    @ReferenceType.setter
+    def ReferenceType(self, ReferenceType):
+        self._ReferenceType = ReferenceType
+
+    @property
+    def ElementVoiceId(self):
+        r"""<p>主体音色，可绑定音色库中已有音色。</p><ul><li>当前参数为空时，当前主体不绑定音色。</li><li>仅视频定制的主体支持绑定音色。</li></ul>
+        :rtype: str
+        """
+        return self._ElementVoiceId
+
+    @ElementVoiceId.setter
+    def ElementVoiceId(self, ElementVoiceId):
+        self._ElementVoiceId = ElementVoiceId
+
+    @property
+    def ElementVideoList(self):
+        r"""<p>主体参考视频，可通过视频设定主体及其细节。</p><ul><li>可上传有声视频，有声视频包含人声则触发音色定制（定制+入音色库+与主体绑定）</li><li>参考视频时当前参数必填，参考图片时当前参数无效</li><li>用key:value承载，如下：<br><pre><code>{  &quot;refer_videos&quot;:[    {      &quot;video_url&quot;:&quot;video_url_1&quot;    }  ]}</code></pre>● 视频格式仅支持MP4/MOV<br>● 仅支持时长介于3s～8s之间、宽高比例需为16:9或9:16的1080P视频<br>● 至多仅支持上传1段视频，视频大小不超过200MB<br>● video_url参数值不得为空</li></ul>
+        :rtype: str
+        """
+        return self._ElementVideoList
+
+    @ElementVideoList.setter
+    def ElementVideoList(self, ElementVideoList):
+        self._ElementVideoList = ElementVideoList
+
+    @property
+    def ElementImageList(self):
+        r"""<p>主体参考图，可通过多张图片设定主体及其细节。</p><ul><li>包括正面参考图和其他角度或特写参考图，其中：<ul><li>至少包括1张正面参考图，由frontal_image参数定义。</li><li>需包括1～3张其他参考图，需与正面参考图有差异，由image_url参数定义。</li></ul></li><li>用key:value承载，如下：<br><pre><code>{  &quot;frontal_image&quot;:&quot;image_url_0&quot;,  &quot;refer_images&quot;:[    {      &quot;image_url&quot;:&quot;image_url_1&quot;    },    {      &quot;image_url&quot;:&quot;image_url_2&quot;    },    {      &quot;image_url&quot;:&quot;image_url_3&quot;    }  ]}</code></pre></li></ul>
+        :rtype: str
+        """
+        return self._ElementImageList
+
+    @ElementImageList.setter
+    def ElementImageList(self, ElementImageList):
+        self._ElementImageList = ElementImageList
+
+    @property
+    def TagList(self):
+        r"""<p>为主体配置标签，一个主体可以配置多个标签。</p><ul><li>用key:value承载，其中具体如下：</li></ul><p><pre><code>[  {        &quot;tag_id&quot;: &quot;o_101&quot;  }, {        &quot;tag_id&quot;: &quot;o_102&quot;    }]</code></pre></p>
+        :rtype: str
+        """
+        return self._TagList
+
+    @TagList.setter
+    def TagList(self, TagList):
+        self._TagList = TagList
+
+    @property
+    def SessionId(self):
+        r"""<p>用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。</p>
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def SessionContext(self):
+        r"""<p>来源上下文，用于透传用户请求信息，任务完成回调将返回该字段值，最长 1000 个字符。</p>
+        :rtype: str
+        """
+        return self._SessionContext
+
+    @SessionContext.setter
+    def SessionContext(self, SessionContext):
+        self._SessionContext = SessionContext
+
+    @property
+    def TasksPriority(self):
+        r"""<p>任务的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。</p>
+        :rtype: int
+        """
+        return self._TasksPriority
+
+    @TasksPriority.setter
+    def TasksPriority(self, TasksPriority):
+        self._TasksPriority = TasksPriority
+
+
+    def _deserialize(self, params):
+        self._SubAppId = params.get("SubAppId")
+        self._ElementName = params.get("ElementName")
+        self._ElementDescription = params.get("ElementDescription")
+        self._ReferenceType = params.get("ReferenceType")
+        self._ElementVoiceId = params.get("ElementVoiceId")
+        self._ElementVideoList = params.get("ElementVideoList")
+        self._ElementImageList = params.get("ElementImageList")
+        self._TagList = params.get("TagList")
+        self._SessionId = params.get("SessionId")
+        self._SessionContext = params.get("SessionContext")
+        self._TasksPriority = params.get("TasksPriority")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAigcAdvancedCustomElementResponse(AbstractModel):
+    r"""CreateAigcAdvancedCustomElement返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务 ID。</p>
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务 ID。</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateAigcAdvancedCustomElementTask(AbstractModel):
     r"""创建自定义主体任务信息。
 
@@ -20424,6 +20653,175 @@ class CreateAigcCustomVoiceOutput(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class CreateAigcCustomVoiceRequest(AbstractModel):
+    r"""CreateAigcCustomVoice请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubAppId: <p><b>点播<a href="https://cloud.tencent.com/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
+        :type SubAppId: int
+        :param _VoiceName: <p>音色名称，文本内容最大长度 20 个字符</p>
+        :type VoiceName: str
+        :param _VoiceUrl: <p>音色数据文件获取链接，支持 .mp3 / .wav / .mp4 / .mov 格式的音视频文件。音频中人声需干净无杂音，有且只能有一种人声，时长不短于 5 秒且不长于 30 秒。</p>
+        :type VoiceUrl: str
+        :param _VideoId: <p>历史作品 ID，可通过引用历史作品提供音频素材。</p>
+        :type VideoId: str
+        :param _SessionId: <p>用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。</p>
+        :type SessionId: str
+        :param _SessionContext: <p>来源上下文，用于透传用户请求信息，任务完成回调将返回该字段值，最长 1000 个字符。</p>
+        :type SessionContext: str
+        :param _TasksPriority: <p>任务的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。</p>
+        :type TasksPriority: int
+        """
+        self._SubAppId = None
+        self._VoiceName = None
+        self._VoiceUrl = None
+        self._VideoId = None
+        self._SessionId = None
+        self._SessionContext = None
+        self._TasksPriority = None
+
+    @property
+    def SubAppId(self):
+        r"""<p><b>点播<a href="https://cloud.tencent.com/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
+        :rtype: int
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def VoiceName(self):
+        r"""<p>音色名称，文本内容最大长度 20 个字符</p>
+        :rtype: str
+        """
+        return self._VoiceName
+
+    @VoiceName.setter
+    def VoiceName(self, VoiceName):
+        self._VoiceName = VoiceName
+
+    @property
+    def VoiceUrl(self):
+        r"""<p>音色数据文件获取链接，支持 .mp3 / .wav / .mp4 / .mov 格式的音视频文件。音频中人声需干净无杂音，有且只能有一种人声，时长不短于 5 秒且不长于 30 秒。</p>
+        :rtype: str
+        """
+        return self._VoiceUrl
+
+    @VoiceUrl.setter
+    def VoiceUrl(self, VoiceUrl):
+        self._VoiceUrl = VoiceUrl
+
+    @property
+    def VideoId(self):
+        r"""<p>历史作品 ID，可通过引用历史作品提供音频素材。</p>
+        :rtype: str
+        """
+        return self._VideoId
+
+    @VideoId.setter
+    def VideoId(self, VideoId):
+        self._VideoId = VideoId
+
+    @property
+    def SessionId(self):
+        r"""<p>用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。</p>
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def SessionContext(self):
+        r"""<p>来源上下文，用于透传用户请求信息，任务完成回调将返回该字段值，最长 1000 个字符。</p>
+        :rtype: str
+        """
+        return self._SessionContext
+
+    @SessionContext.setter
+    def SessionContext(self, SessionContext):
+        self._SessionContext = SessionContext
+
+    @property
+    def TasksPriority(self):
+        r"""<p>任务的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。</p>
+        :rtype: int
+        """
+        return self._TasksPriority
+
+    @TasksPriority.setter
+    def TasksPriority(self, TasksPriority):
+        self._TasksPriority = TasksPriority
+
+
+    def _deserialize(self, params):
+        self._SubAppId = params.get("SubAppId")
+        self._VoiceName = params.get("VoiceName")
+        self._VoiceUrl = params.get("VoiceUrl")
+        self._VideoId = params.get("VideoId")
+        self._SessionId = params.get("SessionId")
+        self._SessionContext = params.get("SessionContext")
+        self._TasksPriority = params.get("TasksPriority")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAigcCustomVoiceResponse(AbstractModel):
+    r"""CreateAigcCustomVoice返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务 ID。</p>
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务 ID。</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateAigcCustomVoiceTask(AbstractModel):

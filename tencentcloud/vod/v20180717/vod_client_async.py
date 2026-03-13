@@ -184,6 +184,24 @@ class VodClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateAigcAdvancedCustomElement(
+            self,
+            request: models.CreateAigcAdvancedCustomElementRequest,
+            opts: Dict = None,
+    ) -> models.CreateAigcAdvancedCustomElementResponse:
+        """
+        该接口用于创建 AIGC 高级自定义主体。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateAigcAdvancedCustomElement"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateAigcAdvancedCustomElementResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateAigcApiToken(
             self,
             request: models.CreateAigcApiTokenRequest,
@@ -215,6 +233,24 @@ class VodClient(AbstractClient):
         kwargs["action"] = "CreateAigcCustomElement"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreateAigcCustomElementResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateAigcCustomVoice(
+            self,
+            request: models.CreateAigcCustomVoiceRequest,
+            opts: Dict = None,
+    ) -> models.CreateAigcCustomVoiceResponse:
+        """
+        该接口用于创建 AIGC 自定义音色。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateAigcCustomVoice"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateAigcCustomVoiceResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

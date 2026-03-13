@@ -735,20 +735,20 @@ class AttachNodesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群id
+        :param _ClusterId: <p>集群id</p>
         :type ClusterId: str
-        :param _ResourceSet: 节点的实例id列表
+        :param _ResourceSet: <p>节点的实例id列表</p>
         :type ResourceSet: list of str
-        :param _QueueName: 队列名称。不指定则为默认队列：
-SLURM默认队列为：compute。 
-
+        :param _QueueName: <p>队列名称。不指定则为默认队列：<br>SLURM默认队列为：compute。</p>
         :type QueueName: str
-        :param _ImageId: 指定有效的镜像ID，格式形如img-xxx。目前仅支持公有镜像和特定自定义镜像。如不指定，则该字段是默认镜像。
+        :param _ImageId: <p>指定有效的镜像ID，格式形如img-xxx。目前仅支持公有镜像和特定自定义镜像。如不指定，则该字段是默认镜像。</p>
         :type ImageId: str
-        :param _ResourceType: 要新增节点的资源类型。<li>CVM：CVM实例类型资源</li><li>WORKSPACE：工作空间类型实例资源</li>默认值：CVM。
+        :param _ResourceType: <p>要新增节点的资源类型。<li>CVM：CVM实例类型资源</li><li>WORKSPACE：工作空间类型实例资源</li>默认值：CVM。</p>
         :type ResourceType: str
-        :param _UserData: 提供给实例使用的用户数据，需要以 base64 方式编码，支持的最大数据大小为 16KB。关于获取此参数的详细介绍，请参阅[Windows](https://cloud.tencent.com/document/product/213/17526)和[Linux](https://cloud.tencent.com/document/product/213/17525)启动时运行命令。
+        :param _UserData: <p>提供给实例使用的用户数据，需要以 base64 方式编码，支持的最大数据大小为 16KB。关于获取此参数的详细介绍，请参阅<a href="https://cloud.tencent.com/document/product/213/17526">Windows</a>和<a href="https://cloud.tencent.com/document/product/213/17525">Linux</a>启动时运行命令。</p>
         :type UserData: str
+        :param _SkipResetInstance: <p>控制实例加入集群是否跳过重装系统</p><p>默认值：False</p>
+        :type SkipResetInstance: bool
         """
         self._ClusterId = None
         self._ResourceSet = None
@@ -756,10 +756,11 @@ SLURM默认队列为：compute。
         self._ImageId = None
         self._ResourceType = None
         self._UserData = None
+        self._SkipResetInstance = None
 
     @property
     def ClusterId(self):
-        r"""集群id
+        r"""<p>集群id</p>
         :rtype: str
         """
         return self._ClusterId
@@ -770,7 +771,7 @@ SLURM默认队列为：compute。
 
     @property
     def ResourceSet(self):
-        r"""节点的实例id列表
+        r"""<p>节点的实例id列表</p>
         :rtype: list of str
         """
         return self._ResourceSet
@@ -781,9 +782,7 @@ SLURM默认队列为：compute。
 
     @property
     def QueueName(self):
-        r"""队列名称。不指定则为默认队列：
-SLURM默认队列为：compute。 
-
+        r"""<p>队列名称。不指定则为默认队列：<br>SLURM默认队列为：compute。</p>
         :rtype: str
         """
         return self._QueueName
@@ -794,7 +793,7 @@ SLURM默认队列为：compute。
 
     @property
     def ImageId(self):
-        r"""指定有效的镜像ID，格式形如img-xxx。目前仅支持公有镜像和特定自定义镜像。如不指定，则该字段是默认镜像。
+        r"""<p>指定有效的镜像ID，格式形如img-xxx。目前仅支持公有镜像和特定自定义镜像。如不指定，则该字段是默认镜像。</p>
         :rtype: str
         """
         return self._ImageId
@@ -805,7 +804,7 @@ SLURM默认队列为：compute。
 
     @property
     def ResourceType(self):
-        r"""要新增节点的资源类型。<li>CVM：CVM实例类型资源</li><li>WORKSPACE：工作空间类型实例资源</li>默认值：CVM。
+        r"""<p>要新增节点的资源类型。<li>CVM：CVM实例类型资源</li><li>WORKSPACE：工作空间类型实例资源</li>默认值：CVM。</p>
         :rtype: str
         """
         return self._ResourceType
@@ -816,7 +815,7 @@ SLURM默认队列为：compute。
 
     @property
     def UserData(self):
-        r"""提供给实例使用的用户数据，需要以 base64 方式编码，支持的最大数据大小为 16KB。关于获取此参数的详细介绍，请参阅[Windows](https://cloud.tencent.com/document/product/213/17526)和[Linux](https://cloud.tencent.com/document/product/213/17525)启动时运行命令。
+        r"""<p>提供给实例使用的用户数据，需要以 base64 方式编码，支持的最大数据大小为 16KB。关于获取此参数的详细介绍，请参阅<a href="https://cloud.tencent.com/document/product/213/17526">Windows</a>和<a href="https://cloud.tencent.com/document/product/213/17525">Linux</a>启动时运行命令。</p>
         :rtype: str
         """
         return self._UserData
@@ -824,6 +823,17 @@ SLURM默认队列为：compute。
     @UserData.setter
     def UserData(self, UserData):
         self._UserData = UserData
+
+    @property
+    def SkipResetInstance(self):
+        r"""<p>控制实例加入集群是否跳过重装系统</p><p>默认值：False</p>
+        :rtype: bool
+        """
+        return self._SkipResetInstance
+
+    @SkipResetInstance.setter
+    def SkipResetInstance(self, SkipResetInstance):
+        self._SkipResetInstance = SkipResetInstance
 
 
     def _deserialize(self, params):
@@ -833,6 +843,7 @@ SLURM默认队列为：compute。
         self._ImageId = params.get("ImageId")
         self._ResourceType = params.get("ResourceType")
         self._UserData = params.get("UserData")
+        self._SkipResetInstance = params.get("SkipResetInstance")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

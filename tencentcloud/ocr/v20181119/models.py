@@ -14770,7 +14770,7 @@ class IDCardOCRResponse(AbstractModel):
         :type Authority: str
         :param _ValidDate: <p>证件有效期（国徽面）</p>
         :type ValidDate: str
-        :param _AdvancedInfo: <p>扩展信息，不请求则不返回，具体输入参考示例3和示例4。<br>IdCard，裁剪后身份证照片的base64编码，请求 Config.CropIdCard 时返回；<br>Portrait，身份证头像照片的base64编码，请求 Config.CropPortrait 时返回；<br>Quality，图片质量分数，请求 Config.Quality 时返回（取值范围：0 ~ 100，分数越低越模糊，建议阈值≥50）;<br>BorderCodeValue，身份证边框不完整告警阈值分数，请求 Config.BorderCheckWarn时返回（取值范围：0 ~ 100，分数越低边框遮挡可能性越低，建议阈值≤50）;<br>WarnInfos，告警信息，Code 告警码列表和释义：<br>-9100 身份证有效日期不合法告警，<br>-9101 身份证边框不完整告警，<br>-9102 身份证复印件告警（黑白及彩色复印件）,<br>-9108 身份证复印件告警（仅黑白复印件），<br>-9103 身份证翻拍告警，<br>-9105 身份证框内遮挡告警，<br>-9104 临时身份证告警，<br>-9106 身份证疑似存在PS痕迹告警，<br>-9107 身份证反光告警，<br>-9110 电子身份证告警，<br>-9111 水印告警（仅CardWarnType参数为Advanced时）</p>
+        :param _AdvancedInfo: <p>扩展信息，不请求则不返回，具体输入参考示例3和示例4。<br>IdCard，裁剪后身份证照片的base64编码，请求 Config.CropIdCard 时返回；<br>Portrait，身份证头像照片的base64编码，请求 Config.CropPortrait 时返回；<br>Quality，图片质量分数，请求 Config.Quality 时返回（取值范围：0 ~ 100，分数越低越模糊，建议阈值≥50）;<br>BorderCodeValue，身份证边框不完整告警阈值分数，请求 Config.BorderCheckWarn时返回（取值范围：0 ~ 100，分数越低边框遮挡可能性越低，建议阈值≤50）;<br>WarnInfos，告警信息，Code 告警码列表和释义：<br>-9109 身份证有效日期不合法告警，<br>-9101 身份证边框不完整告警，<br>-9102 身份证复印件告警（黑白及彩色复印件）,<br>-9108 身份证复印件告警（仅黑白复印件），<br>-9103 身份证翻拍告警，<br>-9105 身份证框内遮挡告警，<br>-9104 临时身份证告警，<br>-9106 身份证疑似存在PS痕迹告警，<br>-9107 身份证反光告警，<br>-9110 电子身份证告警，<br>-9111 水印告警（仅CardWarnType参数为Advanced时）</p>
         :type AdvancedInfo: str
         :param _ReflectDetailInfos: <p>反光点覆盖区域详情结果，具体内容请点击左侧链接</p>
         :type ReflectDetailInfos: list of ReflectDetailInfo
@@ -14879,7 +14879,7 @@ class IDCardOCRResponse(AbstractModel):
 
     @property
     def AdvancedInfo(self):
-        r"""<p>扩展信息，不请求则不返回，具体输入参考示例3和示例4。<br>IdCard，裁剪后身份证照片的base64编码，请求 Config.CropIdCard 时返回；<br>Portrait，身份证头像照片的base64编码，请求 Config.CropPortrait 时返回；<br>Quality，图片质量分数，请求 Config.Quality 时返回（取值范围：0 ~ 100，分数越低越模糊，建议阈值≥50）;<br>BorderCodeValue，身份证边框不完整告警阈值分数，请求 Config.BorderCheckWarn时返回（取值范围：0 ~ 100，分数越低边框遮挡可能性越低，建议阈值≤50）;<br>WarnInfos，告警信息，Code 告警码列表和释义：<br>-9100 身份证有效日期不合法告警，<br>-9101 身份证边框不完整告警，<br>-9102 身份证复印件告警（黑白及彩色复印件）,<br>-9108 身份证复印件告警（仅黑白复印件），<br>-9103 身份证翻拍告警，<br>-9105 身份证框内遮挡告警，<br>-9104 临时身份证告警，<br>-9106 身份证疑似存在PS痕迹告警，<br>-9107 身份证反光告警，<br>-9110 电子身份证告警，<br>-9111 水印告警（仅CardWarnType参数为Advanced时）</p>
+        r"""<p>扩展信息，不请求则不返回，具体输入参考示例3和示例4。<br>IdCard，裁剪后身份证照片的base64编码，请求 Config.CropIdCard 时返回；<br>Portrait，身份证头像照片的base64编码，请求 Config.CropPortrait 时返回；<br>Quality，图片质量分数，请求 Config.Quality 时返回（取值范围：0 ~ 100，分数越低越模糊，建议阈值≥50）;<br>BorderCodeValue，身份证边框不完整告警阈值分数，请求 Config.BorderCheckWarn时返回（取值范围：0 ~ 100，分数越低边框遮挡可能性越低，建议阈值≤50）;<br>WarnInfos，告警信息，Code 告警码列表和释义：<br>-9109 身份证有效日期不合法告警，<br>-9101 身份证边框不完整告警，<br>-9102 身份证复印件告警（黑白及彩色复印件）,<br>-9108 身份证复印件告警（仅黑白复印件），<br>-9103 身份证翻拍告警，<br>-9105 身份证框内遮挡告警，<br>-9104 临时身份证告警，<br>-9106 身份证疑似存在PS痕迹告警，<br>-9107 身份证反光告警，<br>-9110 电子身份证告警，<br>-9111 水印告警（仅CardWarnType参数为Advanced时）</p>
         :rtype: str
         """
         return self._AdvancedInfo
@@ -26576,20 +26576,23 @@ class RecognizeTableAccurateOCRRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ImageBase64: 图片/PDF的 Base64 值。要求图片/PDF经Base64编码后不超过 10M，分辨率建议600*800以上，且长宽比小于3（短边分辨率大于600, 长边分辨率小于等于短边分辨率的三倍）。支持PNG、JPG、JPEG、BMP、PDF格式。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :param _ImageBase64: <p>图片/PDF的 Base64 值。要求图片/PDF经Base64编码后不超过 10M，分辨率建议600*800以上，且长宽比小于3（短边分辨率大于600, 长边分辨率小于等于短边分辨率的三倍）。支持PNG、JPG、JPEG、BMP、PDF格式。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。</p>
         :type ImageBase64: str
-        :param _ImageUrl: 图片/PDF的 Url 地址。要求图片/PDF经Base64编码后不超过 10M，分辨率建议600*800以上，且长宽比小于3（短边分辨率大于600, 长边分辨率小于等于短边分辨率的三倍）。支持PNG、JPG、JPEG、BMP、PDF格式。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        :param _ImageUrl: <p>图片/PDF的 Url 地址。要求图片/PDF经Base64编码后不超过 10M，分辨率建议600*800以上，且长宽比小于3（短边分辨率大于600, 长边分辨率小于等于短边分辨率的三倍）。支持PNG、JPG、JPEG、BMP、PDF格式。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。</p>
         :type ImageUrl: str
-        :param _PdfPageNumber: 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF有效，默认值为1。
+        :param _PdfPageNumber: <p>需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF有效，默认值为1。</p>
         :type PdfPageNumber: int
+        :param _UseNewModel: <p>是否使用新模型</p><p>枚举值：</p><ul><li>false： 使用当前默认模型，耗时短且支持坐标返回</li><li>true： 使用新模型，复杂表格识别效果更好，耗时稍长</li></ul><p>默认值：false</p>
+        :type UseNewModel: bool
         """
         self._ImageBase64 = None
         self._ImageUrl = None
         self._PdfPageNumber = None
+        self._UseNewModel = None
 
     @property
     def ImageBase64(self):
-        r"""图片/PDF的 Base64 值。要求图片/PDF经Base64编码后不超过 10M，分辨率建议600*800以上，且长宽比小于3（短边分辨率大于600, 长边分辨率小于等于短边分辨率的三倍）。支持PNG、JPG、JPEG、BMP、PDF格式。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        r"""<p>图片/PDF的 Base64 值。要求图片/PDF经Base64编码后不超过 10M，分辨率建议600*800以上，且长宽比小于3（短边分辨率大于600, 长边分辨率小于等于短边分辨率的三倍）。支持PNG、JPG、JPEG、BMP、PDF格式。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。</p>
         :rtype: str
         """
         return self._ImageBase64
@@ -26600,7 +26603,7 @@ class RecognizeTableAccurateOCRRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        r"""图片/PDF的 Url 地址。要求图片/PDF经Base64编码后不超过 10M，分辨率建议600*800以上，且长宽比小于3（短边分辨率大于600, 长边分辨率小于等于短边分辨率的三倍）。支持PNG、JPG、JPEG、BMP、PDF格式。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        r"""<p>图片/PDF的 Url 地址。要求图片/PDF经Base64编码后不超过 10M，分辨率建议600*800以上，且长宽比小于3（短边分辨率大于600, 长边分辨率小于等于短边分辨率的三倍）。支持PNG、JPG、JPEG、BMP、PDF格式。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。</p>
         :rtype: str
         """
         return self._ImageUrl
@@ -26611,7 +26614,7 @@ class RecognizeTableAccurateOCRRequest(AbstractModel):
 
     @property
     def PdfPageNumber(self):
-        r"""需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF有效，默认值为1。
+        r"""<p>需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF有效，默认值为1。</p>
         :rtype: int
         """
         return self._PdfPageNumber
@@ -26620,11 +26623,23 @@ class RecognizeTableAccurateOCRRequest(AbstractModel):
     def PdfPageNumber(self, PdfPageNumber):
         self._PdfPageNumber = PdfPageNumber
 
+    @property
+    def UseNewModel(self):
+        r"""<p>是否使用新模型</p><p>枚举值：</p><ul><li>false： 使用当前默认模型，耗时短且支持坐标返回</li><li>true： 使用新模型，复杂表格识别效果更好，耗时稍长</li></ul><p>默认值：false</p>
+        :rtype: bool
+        """
+        return self._UseNewModel
+
+    @UseNewModel.setter
+    def UseNewModel(self, UseNewModel):
+        self._UseNewModel = UseNewModel
+
 
     def _deserialize(self, params):
         self._ImageBase64 = params.get("ImageBase64")
         self._ImageUrl = params.get("ImageUrl")
         self._PdfPageNumber = params.get("PdfPageNumber")
+        self._UseNewModel = params.get("UseNewModel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -26642,15 +26657,15 @@ class RecognizeTableAccurateOCRResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TableDetections: 检测到的文本信息，具体内容请点击左侧链接。
+        :param _TableDetections: <p>检测到的文本信息，具体内容请点击左侧链接。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TableDetections: list of TableInfo
-        :param _Data: Base64 编码后的 Excel 数据。
+        :param _Data: <p>Base64 编码后的 Excel 数据。</p>
         :type Data: str
-        :param _PdfPageSize: 图片为PDF时，返回PDF的总页数，默认为0
+        :param _PdfPageSize: <p>图片为PDF时，返回PDF的总页数，默认为0</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type PdfPageSize: int
-        :param _Angle: 图片旋转角度（角度制），文本的水平方向为0°。
+        :param _Angle: <p>图片旋转角度（角度制），文本的水平方向为0°。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Angle: float
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -26664,7 +26679,7 @@ class RecognizeTableAccurateOCRResponse(AbstractModel):
 
     @property
     def TableDetections(self):
-        r"""检测到的文本信息，具体内容请点击左侧链接。
+        r"""<p>检测到的文本信息，具体内容请点击左侧链接。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TableInfo
         """
@@ -26676,7 +26691,7 @@ class RecognizeTableAccurateOCRResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""Base64 编码后的 Excel 数据。
+        r"""<p>Base64 编码后的 Excel 数据。</p>
         :rtype: str
         """
         return self._Data
@@ -26687,7 +26702,7 @@ class RecognizeTableAccurateOCRResponse(AbstractModel):
 
     @property
     def PdfPageSize(self):
-        r"""图片为PDF时，返回PDF的总页数，默认为0
+        r"""<p>图片为PDF时，返回PDF的总页数，默认为0</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -26699,7 +26714,7 @@ class RecognizeTableAccurateOCRResponse(AbstractModel):
 
     @property
     def Angle(self):
-        r"""图片旋转角度（角度制），文本的水平方向为0°。
+        r"""<p>图片旋转角度（角度制），文本的水平方向为0°。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -42232,6 +42247,235 @@ class VehicleRegCertOCRResponse(AbstractModel):
                 obj = VehicleRegCertInfo()
                 obj._deserialize(item)
                 self._VehicleRegCertInfos.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class VerifyBizLicenseEnterprise4Request(AbstractModel):
+    r"""VerifyBizLicenseEnterprise4请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CreditCode: <p>统一社会信用代码</p>
+        :type CreditCode: str
+        :param _EntName: <p>企业名称</p>
+        :type EntName: str
+        :param _LrName: <p>法人代表</p>
+        :type LrName: str
+        :param _IdNum: <p>注册登记证件号码</p>
+        :type IdNum: str
+        """
+        self._CreditCode = None
+        self._EntName = None
+        self._LrName = None
+        self._IdNum = None
+
+    @property
+    def CreditCode(self):
+        r"""<p>统一社会信用代码</p>
+        :rtype: str
+        """
+        return self._CreditCode
+
+    @CreditCode.setter
+    def CreditCode(self, CreditCode):
+        self._CreditCode = CreditCode
+
+    @property
+    def EntName(self):
+        r"""<p>企业名称</p>
+        :rtype: str
+        """
+        return self._EntName
+
+    @EntName.setter
+    def EntName(self, EntName):
+        self._EntName = EntName
+
+    @property
+    def LrName(self):
+        r"""<p>法人代表</p>
+        :rtype: str
+        """
+        return self._LrName
+
+    @LrName.setter
+    def LrName(self, LrName):
+        self._LrName = LrName
+
+    @property
+    def IdNum(self):
+        r"""<p>注册登记证件号码</p>
+        :rtype: str
+        """
+        return self._IdNum
+
+    @IdNum.setter
+    def IdNum(self, IdNum):
+        self._IdNum = IdNum
+
+
+    def _deserialize(self, params):
+        self._CreditCode = params.get("CreditCode")
+        self._EntName = params.get("EntName")
+        self._LrName = params.get("LrName")
+        self._IdNum = params.get("IdNum")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VerifyBizLicenseEnterprise4Response(AbstractModel):
+    r"""VerifyBizLicenseEnterprise4返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StatusCode: <p>请求状态</p><p>枚举值：</p><ul><li>0： 成功，计费</li><li>1： 系统异常，不计费</li></ul>
+        :type StatusCode: int
+        :param _VerifyResult: <p>验证结果<br>1：四要素完全匹配<br>0：四要素不完全匹配<br>仅StatusCode为0时返回</p>
+        :type VerifyResult: int
+        :param _IsCreditCodeConsistent: <p>统一社会信用代码是否一致<br>仅StatusCode为0时返回</p>
+        :type IsCreditCodeConsistent: bool
+        :param _IsEntNameConsistent: <p>企业名称是否一致<br>仅StatusCode为0时返回</p>
+        :type IsEntNameConsistent: bool
+        :param _IsLrNameConsistent: <p>法人代表是否一致<br>仅StatusCode为0时返回，企业名称与统一社会信用代码均未查得时，固定返回false</p>
+        :type IsLrNameConsistent: bool
+        :param _IsIdNumConsistent: <p>注册登记证件号码是否一致<br>仅StatusCode为0时返回，企业名称与统一社会信用代码均未查得时，固定返回false</p>
+        :type IsIdNumConsistent: bool
+        :param _OperatingStatus: <p>经营状态</p><p>枚举值：</p><ul><li>1： 开业（在营）</li><li>2： 迁出</li><li>3： 注销</li><li>4： 吊销</li><li>5： 撤销</li><li>6： 停业</li><li>0： 其他</li><li>-10002： 企业信息不正确，无法查询</li></ul>
+        :type OperatingStatus: str
+        :param _OperatingPeriod: <p>营业期限：一般包括营业开始时间和结束时间</p><p>参数格式：yyyy-MM-dd/yyyy-MM-dd</p><p>无固定期限的格式为：yyyy-MM-dd/<br>部分企业历史数据可能为空，将返回：/<br>企业信息不正确，无法查询，将返回：-10002</p>
+        :type OperatingPeriod: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._StatusCode = None
+        self._VerifyResult = None
+        self._IsCreditCodeConsistent = None
+        self._IsEntNameConsistent = None
+        self._IsLrNameConsistent = None
+        self._IsIdNumConsistent = None
+        self._OperatingStatus = None
+        self._OperatingPeriod = None
+        self._RequestId = None
+
+    @property
+    def StatusCode(self):
+        r"""<p>请求状态</p><p>枚举值：</p><ul><li>0： 成功，计费</li><li>1： 系统异常，不计费</li></ul>
+        :rtype: int
+        """
+        return self._StatusCode
+
+    @StatusCode.setter
+    def StatusCode(self, StatusCode):
+        self._StatusCode = StatusCode
+
+    @property
+    def VerifyResult(self):
+        r"""<p>验证结果<br>1：四要素完全匹配<br>0：四要素不完全匹配<br>仅StatusCode为0时返回</p>
+        :rtype: int
+        """
+        return self._VerifyResult
+
+    @VerifyResult.setter
+    def VerifyResult(self, VerifyResult):
+        self._VerifyResult = VerifyResult
+
+    @property
+    def IsCreditCodeConsistent(self):
+        r"""<p>统一社会信用代码是否一致<br>仅StatusCode为0时返回</p>
+        :rtype: bool
+        """
+        return self._IsCreditCodeConsistent
+
+    @IsCreditCodeConsistent.setter
+    def IsCreditCodeConsistent(self, IsCreditCodeConsistent):
+        self._IsCreditCodeConsistent = IsCreditCodeConsistent
+
+    @property
+    def IsEntNameConsistent(self):
+        r"""<p>企业名称是否一致<br>仅StatusCode为0时返回</p>
+        :rtype: bool
+        """
+        return self._IsEntNameConsistent
+
+    @IsEntNameConsistent.setter
+    def IsEntNameConsistent(self, IsEntNameConsistent):
+        self._IsEntNameConsistent = IsEntNameConsistent
+
+    @property
+    def IsLrNameConsistent(self):
+        r"""<p>法人代表是否一致<br>仅StatusCode为0时返回，企业名称与统一社会信用代码均未查得时，固定返回false</p>
+        :rtype: bool
+        """
+        return self._IsLrNameConsistent
+
+    @IsLrNameConsistent.setter
+    def IsLrNameConsistent(self, IsLrNameConsistent):
+        self._IsLrNameConsistent = IsLrNameConsistent
+
+    @property
+    def IsIdNumConsistent(self):
+        r"""<p>注册登记证件号码是否一致<br>仅StatusCode为0时返回，企业名称与统一社会信用代码均未查得时，固定返回false</p>
+        :rtype: bool
+        """
+        return self._IsIdNumConsistent
+
+    @IsIdNumConsistent.setter
+    def IsIdNumConsistent(self, IsIdNumConsistent):
+        self._IsIdNumConsistent = IsIdNumConsistent
+
+    @property
+    def OperatingStatus(self):
+        r"""<p>经营状态</p><p>枚举值：</p><ul><li>1： 开业（在营）</li><li>2： 迁出</li><li>3： 注销</li><li>4： 吊销</li><li>5： 撤销</li><li>6： 停业</li><li>0： 其他</li><li>-10002： 企业信息不正确，无法查询</li></ul>
+        :rtype: str
+        """
+        return self._OperatingStatus
+
+    @OperatingStatus.setter
+    def OperatingStatus(self, OperatingStatus):
+        self._OperatingStatus = OperatingStatus
+
+    @property
+    def OperatingPeriod(self):
+        r"""<p>营业期限：一般包括营业开始时间和结束时间</p><p>参数格式：yyyy-MM-dd/yyyy-MM-dd</p><p>无固定期限的格式为：yyyy-MM-dd/<br>部分企业历史数据可能为空，将返回：/<br>企业信息不正确，无法查询，将返回：-10002</p>
+        :rtype: str
+        """
+        return self._OperatingPeriod
+
+    @OperatingPeriod.setter
+    def OperatingPeriod(self, OperatingPeriod):
+        self._OperatingPeriod = OperatingPeriod
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._StatusCode = params.get("StatusCode")
+        self._VerifyResult = params.get("VerifyResult")
+        self._IsCreditCodeConsistent = params.get("IsCreditCodeConsistent")
+        self._IsEntNameConsistent = params.get("IsEntNameConsistent")
+        self._IsLrNameConsistent = params.get("IsLrNameConsistent")
+        self._IsIdNumConsistent = params.get("IsIdNumConsistent")
+        self._OperatingStatus = params.get("OperatingStatus")
+        self._OperatingPeriod = params.get("OperatingPeriod")
         self._RequestId = params.get("RequestId")
 
 

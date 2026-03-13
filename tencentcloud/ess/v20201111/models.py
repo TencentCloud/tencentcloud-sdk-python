@@ -9908,6 +9908,8 @@ class CreateFlowByFilesRequest(AbstractModel):
         :type FlowDisplayType: int
         :param _OpenDynamicSignFlow: 是否开启动态签署合同：<ul><li> **true**：开启动态签署合同，可在发起时可以不传签署人，在签署过程中追加签署人（必须满足：1，发起方企业开启了模块化计费能力；2，发起方企业在企业应用管理中开启了动态签署人2.0能力）    。</li><li> **false**：不开启动态签署合同。</li></ul>
         :type OpenDynamicSignFlow: bool
+        :param _Workflow: 是否开启发起合同审批，默认：false（不开启），开启后，发起合同（StartFlow），会提交电子签内置的审批流
+        :type Workflow: bool
         """
         self._Operator = None
         self._FlowName = None
@@ -9932,6 +9934,7 @@ class CreateFlowByFilesRequest(AbstractModel):
         self._NeedSignReview = None
         self._FlowDisplayType = None
         self._OpenDynamicSignFlow = None
+        self._Workflow = None
 
     @property
     def Operator(self):
@@ -10256,6 +10259,17 @@ class CreateFlowByFilesRequest(AbstractModel):
     def OpenDynamicSignFlow(self, OpenDynamicSignFlow):
         self._OpenDynamicSignFlow = OpenDynamicSignFlow
 
+    @property
+    def Workflow(self):
+        r"""是否开启发起合同审批，默认：false（不开启），开启后，发起合同（StartFlow），会提交电子签内置的审批流
+        :rtype: bool
+        """
+        return self._Workflow
+
+    @Workflow.setter
+    def Workflow(self, Workflow):
+        self._Workflow = Workflow
+
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
@@ -10300,6 +10314,7 @@ class CreateFlowByFilesRequest(AbstractModel):
         self._NeedSignReview = params.get("NeedSignReview")
         self._FlowDisplayType = params.get("FlowDisplayType")
         self._OpenDynamicSignFlow = params.get("OpenDynamicSignFlow")
+        self._Workflow = params.get("Workflow")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10330,12 +10345,15 @@ class CreateFlowByFilesResponse(AbstractModel):
         :type PreviewUrl: str
         :param _Approvers: 签署方信息，如角色ID、角色名称等
         :type Approvers: list of ApproverItem
+        :param _WorkflowInstanceId: 发起审批流id，仅在CreateFlowByFiles时指定了WorkFlow=true时返回
+        :type WorkflowInstanceId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._FlowId = None
         self._PreviewUrl = None
         self._Approvers = None
+        self._WorkflowInstanceId = None
         self._RequestId = None
 
     @property
@@ -10379,6 +10397,17 @@ class CreateFlowByFilesResponse(AbstractModel):
         self._Approvers = Approvers
 
     @property
+    def WorkflowInstanceId(self):
+        r"""发起审批流id，仅在CreateFlowByFiles时指定了WorkFlow=true时返回
+        :rtype: str
+        """
+        return self._WorkflowInstanceId
+
+    @WorkflowInstanceId.setter
+    def WorkflowInstanceId(self, WorkflowInstanceId):
+        self._WorkflowInstanceId = WorkflowInstanceId
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -10399,6 +10428,7 @@ class CreateFlowByFilesResponse(AbstractModel):
                 obj = ApproverItem()
                 obj._deserialize(item)
                 self._Approvers.append(obj)
+        self._WorkflowInstanceId = params.get("WorkflowInstanceId")
         self._RequestId = params.get("RequestId")
 
 
@@ -10937,12 +10967,15 @@ class CreateFlowGroupByFilesResponse(AbstractModel):
         :type FlowIds: list of str
         :param _Approvers: 合同组签署方信息。
         :type Approvers: list of FlowGroupApprovers
+        :param _WorkflowInstanceId: 发起审批流id，仅在发起时指定FlowGroupOptions.FlowGroupNeedWorkflow=true时返回
+        :type WorkflowInstanceId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._FlowGroupId = None
         self._FlowIds = None
         self._Approvers = None
+        self._WorkflowInstanceId = None
         self._RequestId = None
 
     @property
@@ -10979,6 +11012,17 @@ class CreateFlowGroupByFilesResponse(AbstractModel):
         self._Approvers = Approvers
 
     @property
+    def WorkflowInstanceId(self):
+        r"""发起审批流id，仅在发起时指定FlowGroupOptions.FlowGroupNeedWorkflow=true时返回
+        :rtype: str
+        """
+        return self._WorkflowInstanceId
+
+    @WorkflowInstanceId.setter
+    def WorkflowInstanceId(self, WorkflowInstanceId):
+        self._WorkflowInstanceId = WorkflowInstanceId
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -10999,6 +11043,7 @@ class CreateFlowGroupByFilesResponse(AbstractModel):
                 obj = FlowGroupApprovers()
                 obj._deserialize(item)
                 self._Approvers.append(obj)
+        self._WorkflowInstanceId = params.get("WorkflowInstanceId")
         self._RequestId = params.get("RequestId")
 
 
@@ -11159,12 +11204,15 @@ class CreateFlowGroupByTemplatesResponse(AbstractModel):
         :type FlowIds: list of str
         :param _Approvers: 合同组签署人信息。
         :type Approvers: list of FlowGroupApprovers
+        :param _WorkflowInstanceId: FlowGroupNeedWorkflow
+        :type WorkflowInstanceId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._FlowGroupId = None
         self._FlowIds = None
         self._Approvers = None
+        self._WorkflowInstanceId = None
         self._RequestId = None
 
     @property
@@ -11201,6 +11249,17 @@ class CreateFlowGroupByTemplatesResponse(AbstractModel):
         self._Approvers = Approvers
 
     @property
+    def WorkflowInstanceId(self):
+        r"""FlowGroupNeedWorkflow
+        :rtype: str
+        """
+        return self._WorkflowInstanceId
+
+    @WorkflowInstanceId.setter
+    def WorkflowInstanceId(self, WorkflowInstanceId):
+        self._WorkflowInstanceId = WorkflowInstanceId
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -11221,6 +11280,7 @@ class CreateFlowGroupByTemplatesResponse(AbstractModel):
                 obj = FlowGroupApprovers()
                 obj._deserialize(item)
                 self._Approvers.append(obj)
+        self._WorkflowInstanceId = params.get("WorkflowInstanceId")
         self._RequestId = params.get("RequestId")
 
 
@@ -12210,6 +12270,8 @@ class CreateFlowRequest(AbstractModel):
 效果如下:
 ![FlowDisplayType](https://qcloudimg.tencent-cloud.cn/raw/e4a2c4d638717cc901d3dbd5137c9bbc.png)
         :type FlowDisplayType: int
+        :param _Workflow: 是否开启发起合同审批，默认：false（不开启），开启后，发起合同（StartFlow），会提交电子签内置的审批流
+        :type Workflow: bool
         """
         self._Operator = None
         self._FlowName = None
@@ -12229,6 +12291,7 @@ class CreateFlowRequest(AbstractModel):
         self._RelatedFlowId = None
         self._CallbackUrl = None
         self._FlowDisplayType = None
+        self._Workflow = None
 
     @property
     def Operator(self):
@@ -12488,6 +12551,17 @@ class CreateFlowRequest(AbstractModel):
     def FlowDisplayType(self, FlowDisplayType):
         self._FlowDisplayType = FlowDisplayType
 
+    @property
+    def Workflow(self):
+        r"""是否开启发起合同审批，默认：false（不开启），开启后，发起合同（StartFlow），会提交电子签内置的审批流
+        :rtype: bool
+        """
+        return self._Workflow
+
+    @Workflow.setter
+    def Workflow(self, Workflow):
+        self._Workflow = Workflow
+
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
@@ -12522,6 +12596,7 @@ class CreateFlowRequest(AbstractModel):
         self._RelatedFlowId = params.get("RelatedFlowId")
         self._CallbackUrl = params.get("CallbackUrl")
         self._FlowDisplayType = params.get("FlowDisplayType")
+        self._Workflow = params.get("Workflow")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17025,12 +17100,15 @@ class CreatePrepareFlowGroupRequest(AbstractModel):
         :param _Agent: 代理企业和员工的信息。
 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
+        :param _FlowGroupOptions: 合同组发起控制参数，当前仅支持FlowGroupNeedWorkflow，表示开启嵌入式合同组发起审批
+        :type FlowGroupOptions: :class:`tencentcloud.ess.v20201111.models.FlowGroupOptions`
         """
         self._Operator = None
         self._FlowGroupName = None
         self._FlowGroupInfos = None
         self._ResourceType = None
         self._Agent = None
+        self._FlowGroupOptions = None
 
     @property
     def Operator(self):
@@ -17089,6 +17167,17 @@ class CreatePrepareFlowGroupRequest(AbstractModel):
     def Agent(self, Agent):
         self._Agent = Agent
 
+    @property
+    def FlowGroupOptions(self):
+        r"""合同组发起控制参数，当前仅支持FlowGroupNeedWorkflow，表示开启嵌入式合同组发起审批
+        :rtype: :class:`tencentcloud.ess.v20201111.models.FlowGroupOptions`
+        """
+        return self._FlowGroupOptions
+
+    @FlowGroupOptions.setter
+    def FlowGroupOptions(self, FlowGroupOptions):
+        self._FlowGroupOptions = FlowGroupOptions
+
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
@@ -17105,6 +17194,9 @@ class CreatePrepareFlowGroupRequest(AbstractModel):
         if params.get("Agent") is not None:
             self._Agent = Agent()
             self._Agent._deserialize(params.get("Agent"))
+        if params.get("FlowGroupOptions") is not None:
+            self._FlowGroupOptions = FlowGroupOptions()
+            self._FlowGroupOptions._deserialize(params.get("FlowGroupOptions"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17275,6 +17367,8 @@ class CreatePrepareFlowRequest(AbstractModel):
 
 - 签署控件 是否默认展示日期.
         :type SignComponentConfig: :class:`tencentcloud.ess.v20201111.models.SignComponentConfig`
+        :param _Workflow: 是否开启嵌入式合同发起时，提交发起审批流，默认：false（不开启），开启后，嵌入式合同发起后，会提交电子签内置审批流
+        :type Workflow: bool
         """
         self._Operator = None
         self._ResourceId = None
@@ -17297,6 +17391,7 @@ class CreatePrepareFlowRequest(AbstractModel):
         self._InitiatorComponents = None
         self._FlowDisplayType = None
         self._SignComponentConfig = None
+        self._Workflow = None
 
     @property
     def Operator(self):
@@ -17586,6 +17681,17 @@ class CreatePrepareFlowRequest(AbstractModel):
 
         self._SignComponentConfig = SignComponentConfig
 
+    @property
+    def Workflow(self):
+        r"""是否开启嵌入式合同发起时，提交发起审批流，默认：false（不开启），开启后，嵌入式合同发起后，会提交电子签内置审批流
+        :rtype: bool
+        """
+        return self._Workflow
+
+    @Workflow.setter
+    def Workflow(self, Workflow):
+        self._Workflow = Workflow
+
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
@@ -17634,6 +17740,7 @@ class CreatePrepareFlowRequest(AbstractModel):
         if params.get("SignComponentConfig") is not None:
             self._SignComponentConfig = SignComponentConfig()
             self._SignComponentConfig._deserialize(params.get("SignComponentConfig"))
+        self._Workflow = params.get("Workflow")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -30252,7 +30359,7 @@ class ExtendScene(AbstractModel):
 印章来源类型包括下面几种：
 <ul>
 <li>CREATE-客户上传图片创建</li>
-<li>GENERATE-系统模版印章生成</li>
+<li>GENERATE-系统模板印章生成</li>
 <li>SIST_SEAL-深圳电子印章</li>
 </ul>
         :type GenerateType: str
@@ -30272,7 +30379,7 @@ class ExtendScene(AbstractModel):
 印章来源类型包括下面几种：
 <ul>
 <li>CREATE-客户上传图片创建</li>
-<li>GENERATE-系统模版印章生成</li>
+<li>GENERATE-系统模板印章生成</li>
 <li>SIST_SEAL-深圳电子印章</li>
 </ul>
         :rtype: str
@@ -33949,10 +34056,13 @@ class FlowGroupOptions(AbstractModel):
 签署通知类型，支持以下类型
 <ul><li>sms : 短信 (默认值)</li><li>none : 不通知</li></ul>
         :type OtherApproverNotifyType: str
+        :param _FlowGroupNeedWorkflow: 是否开启发起合同组的发起审批，默认：false(不开启)，开启后，发起合同组会提交电子签内置审批流
+        :type FlowGroupNeedWorkflow: bool
         """
         self._ApproverVerifyType = None
         self._SelfOrganizationApproverNotifyType = None
         self._OtherApproverNotifyType = None
+        self._FlowGroupNeedWorkflow = None
 
     @property
     def ApproverVerifyType(self):
@@ -33994,11 +34104,23 @@ class FlowGroupOptions(AbstractModel):
     def OtherApproverNotifyType(self, OtherApproverNotifyType):
         self._OtherApproverNotifyType = OtherApproverNotifyType
 
+    @property
+    def FlowGroupNeedWorkflow(self):
+        r"""是否开启发起合同组的发起审批，默认：false(不开启)，开启后，发起合同组会提交电子签内置审批流
+        :rtype: bool
+        """
+        return self._FlowGroupNeedWorkflow
+
+    @FlowGroupNeedWorkflow.setter
+    def FlowGroupNeedWorkflow(self, FlowGroupNeedWorkflow):
+        self._FlowGroupNeedWorkflow = FlowGroupNeedWorkflow
+
 
     def _deserialize(self, params):
         self._ApproverVerifyType = params.get("ApproverVerifyType")
         self._SelfOrganizationApproverNotifyType = params.get("SelfOrganizationApproverNotifyType")
         self._OtherApproverNotifyType = params.get("OtherApproverNotifyType")
+        self._FlowGroupNeedWorkflow = params.get("FlowGroupNeedWorkflow")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -42939,10 +43061,13 @@ class StartFlowResponse(AbstractModel):
 <li> **REVIEW** : 提交审核成功, 合同需要发起审核, 发起方企业通过接口审核通过后合同才进入签署环境  `白名单功能，使用前请联系对接的客户经理沟通。`</li>
 <li> **EXECUTING** : 已提交发起任务且PDF合同正在合成中, 等PDF合同合成成功后进入签署环节</li></ul>
         :type Status: str
+        :param _WorkflowInstanceId: 发起审批流id，仅在CreateFlow时指定了WorkFlow=true时返回
+        :type WorkflowInstanceId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Status = None
+        self._WorkflowInstanceId = None
         self._RequestId = None
 
     @property
@@ -42960,6 +43085,17 @@ class StartFlowResponse(AbstractModel):
         self._Status = Status
 
     @property
+    def WorkflowInstanceId(self):
+        r"""发起审批流id，仅在CreateFlow时指定了WorkFlow=true时返回
+        :rtype: str
+        """
+        return self._WorkflowInstanceId
+
+    @WorkflowInstanceId.setter
+    def WorkflowInstanceId(self, WorkflowInstanceId):
+        self._WorkflowInstanceId = WorkflowInstanceId
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -42973,6 +43109,7 @@ class StartFlowResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._Status = params.get("Status")
+        self._WorkflowInstanceId = params.get("WorkflowInstanceId")
         self._RequestId = params.get("RequestId")
 
 

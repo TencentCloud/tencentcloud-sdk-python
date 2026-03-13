@@ -4292,6 +4292,9 @@ class DataConfig(AbstractModel):
         :type CBSSource: :class:`tencentcloud.tione.v20211111.models.CBSConfig`
         :param _HostPathSource: 主机路径信息
         :type HostPathSource: :class:`tencentcloud.tione.v20211111.models.HostPath`
+        :param _PublicDataSource: 公有云数据源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PublicDataSource: :class:`tencentcloud.tione.v20211111.models.PublicDataSourceFS`
         """
         self._MappingPath = None
         self._DataSourceUsage = None
@@ -4305,6 +4308,7 @@ class DataConfig(AbstractModel):
         self._LocalDiskSource = None
         self._CBSSource = None
         self._HostPathSource = None
+        self._PublicDataSource = None
 
     @property
     def MappingPath(self):
@@ -4449,6 +4453,18 @@ class DataConfig(AbstractModel):
     def HostPathSource(self, HostPathSource):
         self._HostPathSource = HostPathSource
 
+    @property
+    def PublicDataSource(self):
+        r"""公有云数据源
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.PublicDataSourceFS`
+        """
+        return self._PublicDataSource
+
+    @PublicDataSource.setter
+    def PublicDataSource(self, PublicDataSource):
+        self._PublicDataSource = PublicDataSource
+
 
     def _deserialize(self, params):
         self._MappingPath = params.get("MappingPath")
@@ -4481,6 +4497,9 @@ class DataConfig(AbstractModel):
         if params.get("HostPathSource") is not None:
             self._HostPathSource = HostPath()
             self._HostPathSource._deserialize(params.get("HostPathSource"))
+        if params.get("PublicDataSource") is not None:
+            self._PublicDataSource = PublicDataSourceFS()
+            self._PublicDataSource._deserialize(params.get("PublicDataSource"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -19207,36 +19207,25 @@ class CreateAigcImageTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ModelName: 模型名称。
-当前支持的模型列表：
-Hunyuan,
-GEM，
-Qwen。
+        :param _ModelName: <p>模型名称。<br>当前支持的模型列表：<br>Hunyuan,<br>GEM，<br>Qwen。</p>
         :type ModelName: str
-        :param _ModelVersion: 指定模型特定版本号。默认使用系统当前所支持的模型稳定版本。
-
-1. GEM， 可选[2.5,3.0]。
+        :param _ModelVersion: <p>指定模型特定版本号。默认使用系统当前所支持的模型稳定版本。</p><ol><li>GEM， 可选[2.5,3.0]。</li></ol>
         :type ModelVersion: str
-        :param _Prompt: 生成图片的描述。(注：最大支持1000字符)。当未传入参考图片时，此参数必填。
+        :param _Prompt: <p>生成图片的描述。(注：最大支持1000字符)。当未传入参考图片时，此参数必填。</p>
         :type Prompt: str
-        :param _NegativePrompt: 用于描述您想要阻止模型生成的内容。 注意：部分模型支持。 例如： 顶部照明、明亮的色彩 人物、动物 多辆汽车、风。
+        :param _NegativePrompt: <p>用于描述您想要阻止模型生成的内容。 注意：部分模型支持。 例如： 顶部照明、明亮的色彩 人物、动物 多辆汽车、风。</p>
         :type NegativePrompt: str
-        :param _EnhancePrompt: 默认取值为False，模型会严格地遵循指令。如果需要更精细的prompt获得最佳效果，可将此参数设置为True，将自动优化传入的prompt，以提升生成质量。
+        :param _EnhancePrompt: <p>默认取值为False，模型会严格地遵循指令。如果需要更精细的prompt获得最佳效果，可将此参数设置为True，将自动优化传入的prompt，以提升生成质量。</p>
         :type EnhancePrompt: bool
-        :param _ImageInfos: 用于传入参考的资源图片信息，默认支持传入一张图片。
-
-支持多图输入的模型：
-1. GEM，可支持最多3张图片输入作为资源图。
-
-注意：
-1. 推荐图片小于7M，各模型限制不同。
-2. 图片格式支持：jpeg, png, webp。
+        :param _ImageInfos: <p>用于传入参考的资源图片信息，默认支持传入一张图片。</p><p>支持多图输入的模型：</p><ol><li>GEM，可支持最多3张图片输入作为资源图。</li></ol><p>注意：</p><ol><li>推荐图片小于7M，各模型限制不同。</li><li>图片格式支持：jpeg, png, webp。</li></ol>
         :type ImageInfos: list of AigcImageInfo
-        :param _ExtraParameters: 用于传入模型要求的额外参数。
+        :param _ExtraParameters: <p>用于传入模型要求的额外参数。</p>
         :type ExtraParameters: :class:`tencentcloud.mps.v20190612.models.AigcImageExtraParam`
-        :param _StoreCosParam: 文件结果指定存储Cos桶信息。 注意：需开通Cos，创建并授权MPS_QcsRole角色。
+        :param _AdditionalParameters: <p>用于传入一些模型需要的特殊场景参数，Json格式序列化成字符串。 示例： {"size":"2048x2048"}</p>
+        :type AdditionalParameters: str
+        :param _StoreCosParam: <p>文件结果指定存储Cos桶信息。 注意：需开通Cos，创建并授权MPS_QcsRole角色。</p>
         :type StoreCosParam: :class:`tencentcloud.mps.v20190612.models.AigcStoreCosParam`
-        :param _Operator: 接口操作者名称。
+        :param _Operator: <p>接口操作者名称。</p>
         :type Operator: str
         """
         self._ModelName = None
@@ -19246,16 +19235,13 @@ Qwen。
         self._EnhancePrompt = None
         self._ImageInfos = None
         self._ExtraParameters = None
+        self._AdditionalParameters = None
         self._StoreCosParam = None
         self._Operator = None
 
     @property
     def ModelName(self):
-        r"""模型名称。
-当前支持的模型列表：
-Hunyuan,
-GEM，
-Qwen。
+        r"""<p>模型名称。<br>当前支持的模型列表：<br>Hunyuan,<br>GEM，<br>Qwen。</p>
         :rtype: str
         """
         return self._ModelName
@@ -19266,9 +19252,7 @@ Qwen。
 
     @property
     def ModelVersion(self):
-        r"""指定模型特定版本号。默认使用系统当前所支持的模型稳定版本。
-
-1. GEM， 可选[2.5,3.0]。
+        r"""<p>指定模型特定版本号。默认使用系统当前所支持的模型稳定版本。</p><ol><li>GEM， 可选[2.5,3.0]。</li></ol>
         :rtype: str
         """
         return self._ModelVersion
@@ -19279,7 +19263,7 @@ Qwen。
 
     @property
     def Prompt(self):
-        r"""生成图片的描述。(注：最大支持1000字符)。当未传入参考图片时，此参数必填。
+        r"""<p>生成图片的描述。(注：最大支持1000字符)。当未传入参考图片时，此参数必填。</p>
         :rtype: str
         """
         return self._Prompt
@@ -19290,7 +19274,7 @@ Qwen。
 
     @property
     def NegativePrompt(self):
-        r"""用于描述您想要阻止模型生成的内容。 注意：部分模型支持。 例如： 顶部照明、明亮的色彩 人物、动物 多辆汽车、风。
+        r"""<p>用于描述您想要阻止模型生成的内容。 注意：部分模型支持。 例如： 顶部照明、明亮的色彩 人物、动物 多辆汽车、风。</p>
         :rtype: str
         """
         return self._NegativePrompt
@@ -19301,7 +19285,7 @@ Qwen。
 
     @property
     def EnhancePrompt(self):
-        r"""默认取值为False，模型会严格地遵循指令。如果需要更精细的prompt获得最佳效果，可将此参数设置为True，将自动优化传入的prompt，以提升生成质量。
+        r"""<p>默认取值为False，模型会严格地遵循指令。如果需要更精细的prompt获得最佳效果，可将此参数设置为True，将自动优化传入的prompt，以提升生成质量。</p>
         :rtype: bool
         """
         return self._EnhancePrompt
@@ -19312,14 +19296,7 @@ Qwen。
 
     @property
     def ImageInfos(self):
-        r"""用于传入参考的资源图片信息，默认支持传入一张图片。
-
-支持多图输入的模型：
-1. GEM，可支持最多3张图片输入作为资源图。
-
-注意：
-1. 推荐图片小于7M，各模型限制不同。
-2. 图片格式支持：jpeg, png, webp。
+        r"""<p>用于传入参考的资源图片信息，默认支持传入一张图片。</p><p>支持多图输入的模型：</p><ol><li>GEM，可支持最多3张图片输入作为资源图。</li></ol><p>注意：</p><ol><li>推荐图片小于7M，各模型限制不同。</li><li>图片格式支持：jpeg, png, webp。</li></ol>
         :rtype: list of AigcImageInfo
         """
         return self._ImageInfos
@@ -19330,7 +19307,7 @@ Qwen。
 
     @property
     def ExtraParameters(self):
-        r"""用于传入模型要求的额外参数。
+        r"""<p>用于传入模型要求的额外参数。</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.AigcImageExtraParam`
         """
         return self._ExtraParameters
@@ -19340,8 +19317,19 @@ Qwen。
         self._ExtraParameters = ExtraParameters
 
     @property
+    def AdditionalParameters(self):
+        r"""<p>用于传入一些模型需要的特殊场景参数，Json格式序列化成字符串。 示例： {"size":"2048x2048"}</p>
+        :rtype: str
+        """
+        return self._AdditionalParameters
+
+    @AdditionalParameters.setter
+    def AdditionalParameters(self, AdditionalParameters):
+        self._AdditionalParameters = AdditionalParameters
+
+    @property
     def StoreCosParam(self):
-        r"""文件结果指定存储Cos桶信息。 注意：需开通Cos，创建并授权MPS_QcsRole角色。
+        r"""<p>文件结果指定存储Cos桶信息。 注意：需开通Cos，创建并授权MPS_QcsRole角色。</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.AigcStoreCosParam`
         """
         return self._StoreCosParam
@@ -19352,7 +19340,7 @@ Qwen。
 
     @property
     def Operator(self):
-        r"""接口操作者名称。
+        r"""<p>接口操作者名称。</p>
         :rtype: str
         """
         return self._Operator
@@ -19377,6 +19365,7 @@ Qwen。
         if params.get("ExtraParameters") is not None:
             self._ExtraParameters = AigcImageExtraParam()
             self._ExtraParameters._deserialize(params.get("ExtraParameters"))
+        self._AdditionalParameters = params.get("AdditionalParameters")
         if params.get("StoreCosParam") is not None:
             self._StoreCosParam = AigcStoreCosParam()
             self._StoreCosParam._deserialize(params.get("StoreCosParam"))
@@ -19398,7 +19387,7 @@ class CreateAigcImageTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 返回的任务ID。
+        :param _TaskId: <p>返回的任务ID。</p>
         :type TaskId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -19408,7 +19397,7 @@ class CreateAigcImageTaskResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""返回的任务ID。
+        r"""<p>返回的任务ID。</p>
         :rtype: str
         """
         return self._TaskId

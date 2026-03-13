@@ -327,7 +327,7 @@ class OcrClient(AbstractClient):
     def DescribeQuestionMarkAgentJob(self, request):
         r"""用于试题批改Agent查询任务。主要面向K12的试题批改产品，支持整卷/单题端到端（试卷切题+题目批改+手写坐标回显）处理，主要聚焦的场景包括试题批改（含手写答案）、试题解析（不含手写答案），其中低年级算式批改效果比线上[数学作业批改](https://cloud.tencent.com/document/product/1004)效果更好。精准输出题目、正误判定、答案对比、错误及知识点等结构化评估结果。
 
-        默认接口请求并发限制：10题/分钟。
+        默认接口请求并发限制：10张/分钟。
 
         :param request: Request instance for DescribeQuestionMarkAgentJob.
         :type request: :class:`tencentcloud.ocr.v20181119.models.DescribeQuestionMarkAgentJobRequest`
@@ -2419,7 +2419,7 @@ class OcrClient(AbstractClient):
     def SubmitQuestionMarkAgentJob(self, request):
         r"""用于试题批改Agent提交任务。主要面向K12的试题批改产品，支持整卷/单题端到端（试卷切题+题目批改+手写坐标回显）处理，主要聚焦的场景包括试题批改（含手写答案）、试题解析（不含手写答案），其中低年级算式批改效果比线上[数学作业批改](https://cloud.tencent.com/document/product/1004)效果更好。精准输出题目、正误判定、答案对比、错误及知识点等结构化评估结果。
 
-        默认接口请求并发限制：10题/分钟。
+        默认接口请求并发限制：10张/分钟。
 
         :param request: Request instance for SubmitQuestionMarkAgentJob.
         :type request: :class:`tencentcloud.ocr.v20181119.models.SubmitQuestionMarkAgentJobRequest`
@@ -2692,6 +2692,32 @@ class OcrClient(AbstractClient):
             body = self.call("VehicleRegCertOCR", params, headers=headers)
             response = json.loads(body)
             model = models.VehicleRegCertOCRResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def VerifyBizLicenseEnterprise4(self, request):
+        r"""提供比对校验企业名称、统一社会信用代码、法人姓名、注册登记证件号码一致性的服务，助力快速核验企业资质。
+        注意：
+        存在个别特殊情况下核验结果不准确，请选用前知悉；
+        按周更新企业信息变更情况，如遇到未及时更新的情况，可联系在线客服转产品团队进行人工处理。
+
+        :param request: Request instance for VerifyBizLicenseEnterprise4.
+        :type request: :class:`tencentcloud.ocr.v20181119.models.VerifyBizLicenseEnterprise4Request`
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.VerifyBizLicenseEnterprise4Response`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("VerifyBizLicenseEnterprise4", params, headers=headers)
+            response = json.loads(body)
+            model = models.VerifyBizLicenseEnterprise4Response()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
