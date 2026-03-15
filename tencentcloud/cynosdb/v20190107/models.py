@@ -2483,8 +2483,10 @@ no-关闭
         :param _CrossRegions: 跨地域备份地域
 注意：此字段可能返回 null，表示取不到有效值。
         :type CrossRegions: list of str
-        :param _BackupTriggerStrategy: 动数据备份触发策略，periodically:自动周期备份,frequent:高频备份
+        :param _BackupTriggerStrategy: 自动数据备份触发策略，periodically:自动周期备份,frequent:高频备份
         :type BackupTriggerStrategy: str
+        :param _AutoCopyVaults: 备份投递关系
+        :type AutoCopyVaults: list of CreateBackupVaultItem
         """
         self._BackupCustomAutoTime = None
         self._BackupTimeBeg = None
@@ -2495,6 +2497,7 @@ no-关闭
         self._CrossRegionsEnable = None
         self._CrossRegions = None
         self._BackupTriggerStrategy = None
+        self._AutoCopyVaults = None
 
     @property
     def BackupCustomAutoTime(self):
@@ -2590,7 +2593,7 @@ no-关闭
 
     @property
     def BackupTriggerStrategy(self):
-        r"""动数据备份触发策略，periodically:自动周期备份,frequent:高频备份
+        r"""自动数据备份触发策略，periodically:自动周期备份,frequent:高频备份
         :rtype: str
         """
         return self._BackupTriggerStrategy
@@ -2598,6 +2601,17 @@ no-关闭
     @BackupTriggerStrategy.setter
     def BackupTriggerStrategy(self, BackupTriggerStrategy):
         self._BackupTriggerStrategy = BackupTriggerStrategy
+
+    @property
+    def AutoCopyVaults(self):
+        r"""备份投递关系
+        :rtype: list of CreateBackupVaultItem
+        """
+        return self._AutoCopyVaults
+
+    @AutoCopyVaults.setter
+    def AutoCopyVaults(self, AutoCopyVaults):
+        self._AutoCopyVaults = AutoCopyVaults
 
 
     def _deserialize(self, params):
@@ -2610,6 +2624,12 @@ no-关闭
         self._CrossRegionsEnable = params.get("CrossRegionsEnable")
         self._CrossRegions = params.get("CrossRegions")
         self._BackupTriggerStrategy = params.get("BackupTriggerStrategy")
+        if params.get("AutoCopyVaults") is not None:
+            self._AutoCopyVaults = []
+            for item in params.get("AutoCopyVaults"):
+                obj = CreateBackupVaultItem()
+                obj._deserialize(item)
+                self._AutoCopyVaults.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2651,6 +2671,14 @@ class BackupFileInfo(AbstractModel):
         :type SnapShotType: str
         :param _BackupName: 备份文件备注
         :type BackupName: str
+        :param _CopyStatus: 投递状态
+        :type CopyStatus: str
+        :param _EncryptKeyId: 秘钥id
+        :type EncryptKeyId: str
+        :param _EncryptRegion: 秘钥地域
+        :type EncryptRegion: str
+        :param _VaultInfos: 保险箱信息
+        :type VaultInfos: list of VaultInfo
         """
         self._SnapshotId = None
         self._FileName = None
@@ -2664,6 +2692,10 @@ class BackupFileInfo(AbstractModel):
         self._BackupId = None
         self._SnapShotType = None
         self._BackupName = None
+        self._CopyStatus = None
+        self._EncryptKeyId = None
+        self._EncryptRegion = None
+        self._VaultInfos = None
 
     @property
     def SnapshotId(self):
@@ -2797,6 +2829,50 @@ class BackupFileInfo(AbstractModel):
     def BackupName(self, BackupName):
         self._BackupName = BackupName
 
+    @property
+    def CopyStatus(self):
+        r"""投递状态
+        :rtype: str
+        """
+        return self._CopyStatus
+
+    @CopyStatus.setter
+    def CopyStatus(self, CopyStatus):
+        self._CopyStatus = CopyStatus
+
+    @property
+    def EncryptKeyId(self):
+        r"""秘钥id
+        :rtype: str
+        """
+        return self._EncryptKeyId
+
+    @EncryptKeyId.setter
+    def EncryptKeyId(self, EncryptKeyId):
+        self._EncryptKeyId = EncryptKeyId
+
+    @property
+    def EncryptRegion(self):
+        r"""秘钥地域
+        :rtype: str
+        """
+        return self._EncryptRegion
+
+    @EncryptRegion.setter
+    def EncryptRegion(self, EncryptRegion):
+        self._EncryptRegion = EncryptRegion
+
+    @property
+    def VaultInfos(self):
+        r"""保险箱信息
+        :rtype: list of VaultInfo
+        """
+        return self._VaultInfos
+
+    @VaultInfos.setter
+    def VaultInfos(self, VaultInfos):
+        self._VaultInfos = VaultInfos
+
 
     def _deserialize(self, params):
         self._SnapshotId = params.get("SnapshotId")
@@ -2811,6 +2887,15 @@ class BackupFileInfo(AbstractModel):
         self._BackupId = params.get("BackupId")
         self._SnapShotType = params.get("SnapShotType")
         self._BackupName = params.get("BackupName")
+        self._CopyStatus = params.get("CopyStatus")
+        self._EncryptKeyId = params.get("EncryptKeyId")
+        self._EncryptRegion = params.get("EncryptRegion")
+        if params.get("VaultInfos") is not None:
+            self._VaultInfos = []
+            for item in params.get("VaultInfos"):
+                obj = VaultInfo()
+                obj._deserialize(item)
+                self._VaultInfos.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3321,10 +3406,13 @@ class BinlogConfigInfo(AbstractModel):
         :param _BinlogCrossRegions: binlog异地地域
 注意：此字段可能返回 null，表示取不到有效值。
         :type BinlogCrossRegions: list of str
+        :param _AutoCopyVaults: 保险箱信息
+        :type AutoCopyVaults: list of CreateBackupVaultItem
         """
         self._BinlogSaveDays = None
         self._BinlogCrossRegionsEnable = None
         self._BinlogCrossRegions = None
+        self._AutoCopyVaults = None
 
     @property
     def BinlogSaveDays(self):
@@ -3360,11 +3448,28 @@ class BinlogConfigInfo(AbstractModel):
     def BinlogCrossRegions(self, BinlogCrossRegions):
         self._BinlogCrossRegions = BinlogCrossRegions
 
+    @property
+    def AutoCopyVaults(self):
+        r"""保险箱信息
+        :rtype: list of CreateBackupVaultItem
+        """
+        return self._AutoCopyVaults
+
+    @AutoCopyVaults.setter
+    def AutoCopyVaults(self, AutoCopyVaults):
+        self._AutoCopyVaults = AutoCopyVaults
+
 
     def _deserialize(self, params):
         self._BinlogSaveDays = params.get("BinlogSaveDays")
         self._BinlogCrossRegionsEnable = params.get("BinlogCrossRegionsEnable")
         self._BinlogCrossRegions = params.get("BinlogCrossRegions")
+        if params.get("AutoCopyVaults") is not None:
+            self._AutoCopyVaults = []
+            for item in params.get("AutoCopyVaults"):
+                obj = CreateBackupVaultItem()
+                obj._deserialize(item)
+                self._AutoCopyVaults.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3394,6 +3499,14 @@ class BinlogItem(AbstractModel):
         :type BinlogId: int
         :param _CrossRegions: binlog所跨地域
         :type CrossRegions: list of str
+        :param _CopyStatus: 备份投递状态
+        :type CopyStatus: str
+        :param _VaultInfos: 保险箱信息
+        :type VaultInfos: list of VaultInfo
+        :param _EncryptKeyId: 加密秘钥key
+        :type EncryptKeyId: str
+        :param _EncryptRegion: 加密秘钥地域
+        :type EncryptRegion: str
         """
         self._FileName = None
         self._FileSize = None
@@ -3401,6 +3514,10 @@ class BinlogItem(AbstractModel):
         self._FinishTime = None
         self._BinlogId = None
         self._CrossRegions = None
+        self._CopyStatus = None
+        self._VaultInfos = None
+        self._EncryptKeyId = None
+        self._EncryptRegion = None
 
     @property
     def FileName(self):
@@ -3468,6 +3585,50 @@ class BinlogItem(AbstractModel):
     def CrossRegions(self, CrossRegions):
         self._CrossRegions = CrossRegions
 
+    @property
+    def CopyStatus(self):
+        r"""备份投递状态
+        :rtype: str
+        """
+        return self._CopyStatus
+
+    @CopyStatus.setter
+    def CopyStatus(self, CopyStatus):
+        self._CopyStatus = CopyStatus
+
+    @property
+    def VaultInfos(self):
+        r"""保险箱信息
+        :rtype: list of VaultInfo
+        """
+        return self._VaultInfos
+
+    @VaultInfos.setter
+    def VaultInfos(self, VaultInfos):
+        self._VaultInfos = VaultInfos
+
+    @property
+    def EncryptKeyId(self):
+        r"""加密秘钥key
+        :rtype: str
+        """
+        return self._EncryptKeyId
+
+    @EncryptKeyId.setter
+    def EncryptKeyId(self, EncryptKeyId):
+        self._EncryptKeyId = EncryptKeyId
+
+    @property
+    def EncryptRegion(self):
+        r"""加密秘钥地域
+        :rtype: str
+        """
+        return self._EncryptRegion
+
+    @EncryptRegion.setter
+    def EncryptRegion(self, EncryptRegion):
+        self._EncryptRegion = EncryptRegion
+
 
     def _deserialize(self, params):
         self._FileName = params.get("FileName")
@@ -3476,6 +3637,15 @@ class BinlogItem(AbstractModel):
         self._FinishTime = params.get("FinishTime")
         self._BinlogId = params.get("BinlogId")
         self._CrossRegions = params.get("CrossRegions")
+        self._CopyStatus = params.get("CopyStatus")
+        if params.get("VaultInfos") is not None:
+            self._VaultInfos = []
+            for item in params.get("VaultInfos"):
+                obj = VaultInfo()
+                obj._deserialize(item)
+                self._VaultInfos.append(obj)
+        self._EncryptKeyId = params.get("EncryptKeyId")
+        self._EncryptRegion = params.get("EncryptRegion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3574,6 +3744,10 @@ class BizTaskInfo(AbstractModel):
         :type TaskProgressInfo: :class:`tencentcloud.cynosdb.v20190107.models.TaskProgressInfo`
         :param _GdnTaskInfo: 全球数据库网络任务
         :type GdnTaskInfo: :class:`tencentcloud.cynosdb.v20190107.models.GdnTaskInfo`
+        :param _VaultId: 保险箱id
+        :type VaultId: str
+        :param _VaultName: 保险箱名称
+        :type VaultName: str
         """
         self._ID = None
         self._AppId = None
@@ -3613,6 +3787,8 @@ class BizTaskInfo(AbstractModel):
         self._InstanceCLSDeliveryInfos = None
         self._TaskProgressInfo = None
         self._GdnTaskInfo = None
+        self._VaultId = None
+        self._VaultName = None
 
     @property
     def ID(self):
@@ -4045,6 +4221,28 @@ class BizTaskInfo(AbstractModel):
     def GdnTaskInfo(self, GdnTaskInfo):
         self._GdnTaskInfo = GdnTaskInfo
 
+    @property
+    def VaultId(self):
+        r"""保险箱id
+        :rtype: str
+        """
+        return self._VaultId
+
+    @VaultId.setter
+    def VaultId(self, VaultId):
+        self._VaultId = VaultId
+
+    @property
+    def VaultName(self):
+        r"""保险箱名称
+        :rtype: str
+        """
+        return self._VaultName
+
+    @VaultName.setter
+    def VaultName(self, VaultName):
+        self._VaultName = VaultName
+
 
     def _deserialize(self, params):
         self._ID = params.get("ID")
@@ -4117,6 +4315,8 @@ class BizTaskInfo(AbstractModel):
         if params.get("GdnTaskInfo") is not None:
             self._GdnTaskInfo = GdnTaskInfo()
             self._GdnTaskInfo._deserialize(params.get("GdnTaskInfo"))
+        self._VaultId = params.get("VaultId")
+        self._VaultName = params.get("VaultName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6539,6 +6739,61 @@ class CreateBackupResponse(AbstractModel):
     def _deserialize(self, params):
         self._FlowId = params.get("FlowId")
         self._RequestId = params.get("RequestId")
+
+
+class CreateBackupVaultItem(AbstractModel):
+    r"""保险箱信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VaultId: 保险箱id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VaultId: str
+        :param _VaultRegion: 保险箱地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VaultRegion: str
+        """
+        self._VaultId = None
+        self._VaultRegion = None
+
+    @property
+    def VaultId(self):
+        r"""保险箱id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._VaultId
+
+    @VaultId.setter
+    def VaultId(self, VaultId):
+        self._VaultId = VaultId
+
+    @property
+    def VaultRegion(self):
+        r"""保险箱地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._VaultRegion
+
+    @VaultRegion.setter
+    def VaultRegion(self, VaultRegion):
+        self._VaultRegion = VaultRegion
+
+
+    def _deserialize(self, params):
+        self._VaultId = params.get("VaultId")
+        self._VaultRegion = params.get("VaultRegion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class CreateCLSDeliveryRequest(AbstractModel):
@@ -34213,6 +34468,8 @@ class LogicBackupConfigInfo(AbstractModel):
         :param _LogicCrossRegions: 逻辑备份所跨地域
 注意：此字段可能返回 null，表示取不到有效值。
         :type LogicCrossRegions: list of str
+        :param _AutoCopyVaults: 备份投递关系
+        :type AutoCopyVaults: list of CreateBackupVaultItem
         """
         self._LogicBackupEnable = None
         self._LogicBackupTimeBeg = None
@@ -34220,6 +34477,7 @@ class LogicBackupConfigInfo(AbstractModel):
         self._LogicReserveDuration = None
         self._LogicCrossRegionsEnable = None
         self._LogicCrossRegions = None
+        self._AutoCopyVaults = None
 
     @property
     def LogicBackupEnable(self):
@@ -34290,6 +34548,17 @@ class LogicBackupConfigInfo(AbstractModel):
     def LogicCrossRegions(self, LogicCrossRegions):
         self._LogicCrossRegions = LogicCrossRegions
 
+    @property
+    def AutoCopyVaults(self):
+        r"""备份投递关系
+        :rtype: list of CreateBackupVaultItem
+        """
+        return self._AutoCopyVaults
+
+    @AutoCopyVaults.setter
+    def AutoCopyVaults(self, AutoCopyVaults):
+        self._AutoCopyVaults = AutoCopyVaults
+
 
     def _deserialize(self, params):
         self._LogicBackupEnable = params.get("LogicBackupEnable")
@@ -34298,6 +34567,12 @@ class LogicBackupConfigInfo(AbstractModel):
         self._LogicReserveDuration = params.get("LogicReserveDuration")
         self._LogicCrossRegionsEnable = params.get("LogicCrossRegionsEnable")
         self._LogicCrossRegions = params.get("LogicCrossRegions")
+        if params.get("AutoCopyVaults") is not None:
+            self._AutoCopyVaults = []
+            for item in params.get("AutoCopyVaults"):
+                obj = CreateBackupVaultItem()
+                obj._deserialize(item)
+                self._AutoCopyVaults.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -39829,6 +40104,8 @@ class ModifyServerlessStrategyRequest(AbstractModel):
         :type AutoArchive: str
         :param _UpgradeType: 升级类型。 默认值：upgradeImmediate。 可选值： upgradeImmediate：立即完成修改 upgradeInMaintain：在维护时间窗口内完成修改
         :type UpgradeType: str
+        :param _SecurityGroupIdsForNewRo: 新增的只读实例需要绑定的安全组列表。仅仅针对于在这次调整策略过程中新产生的只读实例绑定安全组，存量的实例不绑定。
+        :type SecurityGroupIdsForNewRo: list of str
         """
         self._ClusterId = None
         self._AutoPause = None
@@ -39843,6 +40120,7 @@ class ModifyServerlessStrategyRequest(AbstractModel):
         self._MaxRoCount = None
         self._AutoArchive = None
         self._UpgradeType = None
+        self._SecurityGroupIdsForNewRo = None
 
     @property
     def ClusterId(self):
@@ -39989,6 +40267,17 @@ class ModifyServerlessStrategyRequest(AbstractModel):
     def UpgradeType(self, UpgradeType):
         self._UpgradeType = UpgradeType
 
+    @property
+    def SecurityGroupIdsForNewRo(self):
+        r"""新增的只读实例需要绑定的安全组列表。仅仅针对于在这次调整策略过程中新产生的只读实例绑定安全组，存量的实例不绑定。
+        :rtype: list of str
+        """
+        return self._SecurityGroupIdsForNewRo
+
+    @SecurityGroupIdsForNewRo.setter
+    def SecurityGroupIdsForNewRo(self, SecurityGroupIdsForNewRo):
+        self._SecurityGroupIdsForNewRo = SecurityGroupIdsForNewRo
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -40004,6 +40293,7 @@ class ModifyServerlessStrategyRequest(AbstractModel):
         self._MaxRoCount = params.get("MaxRoCount")
         self._AutoArchive = params.get("AutoArchive")
         self._UpgradeType = params.get("UpgradeType")
+        self._SecurityGroupIdsForNewRo = params.get("SecurityGroupIdsForNewRo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -45430,6 +45720,14 @@ class RedoLogItem(AbstractModel):
         :type StartTime: str
         :param _FinishTime: 完成时间
         :type FinishTime: str
+        :param _VaultInfos: 保险箱信息
+        :type VaultInfos: list of VaultInfo
+        :param _CopyStatus: 备份投递状态
+        :type CopyStatus: str
+        :param _EncryptKeyId: 加密秘钥key
+        :type EncryptKeyId: str
+        :param _EncryptRegion: 加密秘钥地域
+        :type EncryptRegion: str
         """
         self._FileName = None
         self._FileSize = None
@@ -45439,6 +45737,10 @@ class RedoLogItem(AbstractModel):
         self._Status = None
         self._StartTime = None
         self._FinishTime = None
+        self._VaultInfos = None
+        self._CopyStatus = None
+        self._EncryptKeyId = None
+        self._EncryptRegion = None
 
     @property
     def FileName(self):
@@ -45528,6 +45830,50 @@ class RedoLogItem(AbstractModel):
     def FinishTime(self, FinishTime):
         self._FinishTime = FinishTime
 
+    @property
+    def VaultInfos(self):
+        r"""保险箱信息
+        :rtype: list of VaultInfo
+        """
+        return self._VaultInfos
+
+    @VaultInfos.setter
+    def VaultInfos(self, VaultInfos):
+        self._VaultInfos = VaultInfos
+
+    @property
+    def CopyStatus(self):
+        r"""备份投递状态
+        :rtype: str
+        """
+        return self._CopyStatus
+
+    @CopyStatus.setter
+    def CopyStatus(self, CopyStatus):
+        self._CopyStatus = CopyStatus
+
+    @property
+    def EncryptKeyId(self):
+        r"""加密秘钥key
+        :rtype: str
+        """
+        return self._EncryptKeyId
+
+    @EncryptKeyId.setter
+    def EncryptKeyId(self, EncryptKeyId):
+        self._EncryptKeyId = EncryptKeyId
+
+    @property
+    def EncryptRegion(self):
+        r"""加密秘钥地域
+        :rtype: str
+        """
+        return self._EncryptRegion
+
+    @EncryptRegion.setter
+    def EncryptRegion(self, EncryptRegion):
+        self._EncryptRegion = EncryptRegion
+
 
     def _deserialize(self, params):
         self._FileName = params.get("FileName")
@@ -45543,6 +45889,15 @@ class RedoLogItem(AbstractModel):
         self._Status = params.get("Status")
         self._StartTime = params.get("StartTime")
         self._FinishTime = params.get("FinishTime")
+        if params.get("VaultInfos") is not None:
+            self._VaultInfos = []
+            for item in params.get("VaultInfos"):
+                obj = VaultInfo()
+                obj._deserialize(item)
+                self._VaultInfos.append(obj)
+        self._CopyStatus = params.get("CopyStatus")
+        self._EncryptKeyId = params.get("EncryptKeyId")
+        self._EncryptRegion = params.get("EncryptRegion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -51106,6 +51461,8 @@ class SnapshotBackupConfig(AbstractModel):
         :type ReserveDuration: int
         :param _BackupTriggerStrategy: 自动数据备份触发策略，periodically:自动周期备份,frequent:高频备份
         :type BackupTriggerStrategy: str
+        :param _AutoCopyVaults: 保险箱信息
+        :type AutoCopyVaults: list of CreateBackupVaultItem
         """
         self._BackupCustomAutoTime = None
         self._BackupTimeBeg = None
@@ -51114,6 +51471,7 @@ class SnapshotBackupConfig(AbstractModel):
         self._BackupIntervalTime = None
         self._ReserveDuration = None
         self._BackupTriggerStrategy = None
+        self._AutoCopyVaults = None
 
     @property
     def BackupCustomAutoTime(self):
@@ -51192,6 +51550,17 @@ class SnapshotBackupConfig(AbstractModel):
     def BackupTriggerStrategy(self, BackupTriggerStrategy):
         self._BackupTriggerStrategy = BackupTriggerStrategy
 
+    @property
+    def AutoCopyVaults(self):
+        r"""保险箱信息
+        :rtype: list of CreateBackupVaultItem
+        """
+        return self._AutoCopyVaults
+
+    @AutoCopyVaults.setter
+    def AutoCopyVaults(self, AutoCopyVaults):
+        self._AutoCopyVaults = AutoCopyVaults
+
 
     def _deserialize(self, params):
         self._BackupCustomAutoTime = params.get("BackupCustomAutoTime")
@@ -51201,6 +51570,12 @@ class SnapshotBackupConfig(AbstractModel):
         self._BackupIntervalTime = params.get("BackupIntervalTime")
         self._ReserveDuration = params.get("ReserveDuration")
         self._BackupTriggerStrategy = params.get("BackupTriggerStrategy")
+        if params.get("AutoCopyVaults") is not None:
+            self._AutoCopyVaults = []
+            for item in params.get("AutoCopyVaults"):
+                obj = CreateBackupVaultItem()
+                obj._deserialize(item)
+                self._AutoCopyVaults.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -53610,6 +53985,102 @@ class UserHostPrivilege(AbstractModel):
         self._DbUserName = params.get("DbUserName")
         self._DbHost = params.get("DbHost")
         self._DbPrivilege = params.get("DbPrivilege")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VaultInfo(AbstractModel):
+    r"""保险箱信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VaultId: 保险箱id
+        :type VaultId: str
+        :param _VaultName: 保险箱name
+        :type VaultName: str
+        :param _VaultRegion: 保险箱地域
+        :type VaultRegion: str
+        :param _VaultStatus: 保险箱状态
+        :type VaultStatus: str
+        :param _BackupSaveSeconds: 备份保留时间
+        :type BackupSaveSeconds: int
+        """
+        self._VaultId = None
+        self._VaultName = None
+        self._VaultRegion = None
+        self._VaultStatus = None
+        self._BackupSaveSeconds = None
+
+    @property
+    def VaultId(self):
+        r"""保险箱id
+        :rtype: str
+        """
+        return self._VaultId
+
+    @VaultId.setter
+    def VaultId(self, VaultId):
+        self._VaultId = VaultId
+
+    @property
+    def VaultName(self):
+        r"""保险箱name
+        :rtype: str
+        """
+        return self._VaultName
+
+    @VaultName.setter
+    def VaultName(self, VaultName):
+        self._VaultName = VaultName
+
+    @property
+    def VaultRegion(self):
+        r"""保险箱地域
+        :rtype: str
+        """
+        return self._VaultRegion
+
+    @VaultRegion.setter
+    def VaultRegion(self, VaultRegion):
+        self._VaultRegion = VaultRegion
+
+    @property
+    def VaultStatus(self):
+        r"""保险箱状态
+        :rtype: str
+        """
+        return self._VaultStatus
+
+    @VaultStatus.setter
+    def VaultStatus(self, VaultStatus):
+        self._VaultStatus = VaultStatus
+
+    @property
+    def BackupSaveSeconds(self):
+        r"""备份保留时间
+        :rtype: int
+        """
+        return self._BackupSaveSeconds
+
+    @BackupSaveSeconds.setter
+    def BackupSaveSeconds(self, BackupSaveSeconds):
+        self._BackupSaveSeconds = BackupSaveSeconds
+
+
+    def _deserialize(self, params):
+        self._VaultId = params.get("VaultId")
+        self._VaultName = params.get("VaultName")
+        self._VaultRegion = params.get("VaultRegion")
+        self._VaultStatus = params.get("VaultStatus")
+        self._BackupSaveSeconds = params.get("BackupSaveSeconds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

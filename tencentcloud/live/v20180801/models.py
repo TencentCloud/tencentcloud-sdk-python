@@ -33284,49 +33284,19 @@ class ModifyPullStreamConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ConfigId: 配置 ID。
-获取来源：
-1. 创建拉流配置接口CreatePullStreamConfig返回的配置 ID。
-2. 通过查询接口DescribePullStreamConfigs获取配置 ID。
+        :param _ConfigId: <p>配置 ID。<br>获取来源：</p><ol><li>创建拉流配置接口CreatePullStreamConfig返回的配置 ID。</li><li>通过查询接口DescribePullStreamConfigs获取配置 ID。</li></ol>
         :type ConfigId: str
-        :param _FromUrl: 源 URL，用于拉流的地址。目前可支持直播流及点播文件。
-注意：
-1. 多个点播 URL 之间使用空格拼接。
-2. 目前上限支持10个 URL。
-3. 支持拉流文件格式：FLV，RTMP，HLS，MP4。
-4. 使用标准三层样式，如：http://test.com/live/stream.flv。
+        :param _FromUrl: <p>源 URL，用于拉流的地址。目前可支持直播流及点播文件。<br>注意：</p><ol><li>多个点播 URL 之间使用空格拼接。</li><li>目前上限支持10个 URL。</li><li>支持拉流文件格式：FLV，RTMP，HLS，MP4。</li><li>使用标准三层样式，如：http://test.com/live/stream.flv。</li></ol>
         :type FromUrl: str
-        :param _ToUrl: 目的 URL，用于推流的地址，目前限制该目标地址为腾讯域名。
-1. 仅支持 RTMP 协议。
-2. 使用标准三层样式，如：http://test.com/live/stream.flv。
+        :param _ToUrl: <p>目的 URL，用于推流的地址，目前限制该目标地址为腾讯域名。</p><ol><li>仅支持 RTMP 协议。</li><li>使用标准三层样式，如：http://test.com/live/stream.flv。</li></ol>
         :type ToUrl: str
-        :param _AreaId: 区域 ID：
-1-深圳。
-2-上海。
-3-天津。
-4-中国香港。
-如有改动，需同时传入IspId。
+        :param _AreaId: <p>区域 ID：<br>1-深圳。<br>2-上海。<br>3-天津。<br>4-中国香港。<br>如有改动，需同时传入IspId。</p>
         :type AreaId: int
-        :param _IspId: 运营商 ID，
-1：电信。
-2：移动。
-3：联通。
-4：其他。
-AreaId为4的时候，IspId只能为其他。如有改动，需同时传入AreaId。
+        :param _IspId: <p>运营商 ID，<br>1：电信。<br>2：移动。<br>3：联通。<br>4：其他。<br>AreaId为4的时候，IspId只能为其他。如有改动，需同时传入AreaId。</p>
         :type IspId: int
-        :param _StartTime: 开始时间。
-使用UTC格式时间，
-例如：2019-01-08T10:00:00Z。
-注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
+        :param _StartTime: <p>开始时间。<br>使用UTC格式时间，<br>例如：2019-01-08T10:00:00Z。<br>注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式说明</a>。</p>
         :type StartTime: str
-        :param _EndTime: 结束时间，注意：
-1. 结束时间必须大于开始时间；
-2. 结束时间和开始时间必须大于当前时间；
-3. 结束时间 和 开始时间 间隔必须小于七天。
-
-使用UTC格式时间，
-例如：2019-01-08T10:00:00Z。
-注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
+        :param _EndTime: <p>结束时间，注意：</p><ol><li>结束时间必须大于开始时间；</li><li>结束时间和开始时间必须大于当前时间；</li><li>结束时间 和 开始时间 间隔必须小于七天。</li></ol><p>使用UTC格式时间，<br>例如：2019-01-08T10:00:00Z。<br>注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式说明</a>。</p>
         :type EndTime: str
         """
         self._ConfigId = None
@@ -33339,10 +33309,7 @@ AreaId为4的时候，IspId只能为其他。如有改动，需同时传入AreaI
 
     @property
     def ConfigId(self):
-        r"""配置 ID。
-获取来源：
-1. 创建拉流配置接口CreatePullStreamConfig返回的配置 ID。
-2. 通过查询接口DescribePullStreamConfigs获取配置 ID。
+        r"""<p>配置 ID。<br>获取来源：</p><ol><li>创建拉流配置接口CreatePullStreamConfig返回的配置 ID。</li><li>通过查询接口DescribePullStreamConfigs获取配置 ID。</li></ol>
         :rtype: str
         """
         return self._ConfigId
@@ -33353,12 +33320,7 @@ AreaId为4的时候，IspId只能为其他。如有改动，需同时传入AreaI
 
     @property
     def FromUrl(self):
-        r"""源 URL，用于拉流的地址。目前可支持直播流及点播文件。
-注意：
-1. 多个点播 URL 之间使用空格拼接。
-2. 目前上限支持10个 URL。
-3. 支持拉流文件格式：FLV，RTMP，HLS，MP4。
-4. 使用标准三层样式，如：http://test.com/live/stream.flv。
+        r"""<p>源 URL，用于拉流的地址。目前可支持直播流及点播文件。<br>注意：</p><ol><li>多个点播 URL 之间使用空格拼接。</li><li>目前上限支持10个 URL。</li><li>支持拉流文件格式：FLV，RTMP，HLS，MP4。</li><li>使用标准三层样式，如：http://test.com/live/stream.flv。</li></ol>
         :rtype: str
         """
         return self._FromUrl
@@ -33369,9 +33331,7 @@ AreaId为4的时候，IspId只能为其他。如有改动，需同时传入AreaI
 
     @property
     def ToUrl(self):
-        r"""目的 URL，用于推流的地址，目前限制该目标地址为腾讯域名。
-1. 仅支持 RTMP 协议。
-2. 使用标准三层样式，如：http://test.com/live/stream.flv。
+        r"""<p>目的 URL，用于推流的地址，目前限制该目标地址为腾讯域名。</p><ol><li>仅支持 RTMP 协议。</li><li>使用标准三层样式，如：http://test.com/live/stream.flv。</li></ol>
         :rtype: str
         """
         return self._ToUrl
@@ -33382,12 +33342,7 @@ AreaId为4的时候，IspId只能为其他。如有改动，需同时传入AreaI
 
     @property
     def AreaId(self):
-        r"""区域 ID：
-1-深圳。
-2-上海。
-3-天津。
-4-中国香港。
-如有改动，需同时传入IspId。
+        r"""<p>区域 ID：<br>1-深圳。<br>2-上海。<br>3-天津。<br>4-中国香港。<br>如有改动，需同时传入IspId。</p>
         :rtype: int
         """
         return self._AreaId
@@ -33398,12 +33353,7 @@ AreaId为4的时候，IspId只能为其他。如有改动，需同时传入AreaI
 
     @property
     def IspId(self):
-        r"""运营商 ID，
-1：电信。
-2：移动。
-3：联通。
-4：其他。
-AreaId为4的时候，IspId只能为其他。如有改动，需同时传入AreaId。
+        r"""<p>运营商 ID，<br>1：电信。<br>2：移动。<br>3：联通。<br>4：其他。<br>AreaId为4的时候，IspId只能为其他。如有改动，需同时传入AreaId。</p>
         :rtype: int
         """
         return self._IspId
@@ -33414,10 +33364,7 @@ AreaId为4的时候，IspId只能为其他。如有改动，需同时传入AreaI
 
     @property
     def StartTime(self):
-        r"""开始时间。
-使用UTC格式时间，
-例如：2019-01-08T10:00:00Z。
-注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
+        r"""<p>开始时间。<br>使用UTC格式时间，<br>例如：2019-01-08T10:00:00Z。<br>注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式说明</a>。</p>
         :rtype: str
         """
         return self._StartTime
@@ -33428,14 +33375,7 @@ AreaId为4的时候，IspId只能为其他。如有改动，需同时传入AreaI
 
     @property
     def EndTime(self):
-        r"""结束时间，注意：
-1. 结束时间必须大于开始时间；
-2. 结束时间和开始时间必须大于当前时间；
-3. 结束时间 和 开始时间 间隔必须小于七天。
-
-使用UTC格式时间，
-例如：2019-01-08T10:00:00Z。
-注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
+        r"""<p>结束时间，注意：</p><ol><li>结束时间必须大于开始时间；</li><li>结束时间和开始时间必须大于当前时间；</li><li>结束时间 和 开始时间 间隔必须小于七天。</li></ol><p>使用UTC格式时间，<br>例如：2019-01-08T10:00:00Z。<br>注意：北京时间值为 UTC 时间值 + 8 小时，格式按照 ISO 8601 标准表示，详见 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式说明</a>。</p>
         :rtype: str
         """
         return self._EndTime

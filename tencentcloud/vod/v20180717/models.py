@@ -12310,37 +12310,37 @@ class AigcVideoTaskInput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ModelName: 模型名称。
+        :param _ModelName: <p>模型名称。</p>
         :type ModelName: str
-        :param _ModelVersion: 模型版本。
+        :param _ModelVersion: <p>模型版本。</p>
         :type ModelVersion: str
-        :param _FileInfos: AIGC生图任务输入文件信息。
+        :param _FileInfos: <p>AIGC 生视频任务输入文件信息。</p>
         :type FileInfos: list of AigcVideoTaskInputFileInfo
-        :param _LastFrameFileId: 用于作为尾帧画面来生成视频的媒体文件 ID。该文件在云点播上的全局唯一标识符，在上传成功后由云点播后台分配。可以在 [视频上传完成事件通知](/document/product/266/7830) 或 [云点播控制台](https://console.cloud.tencent.com/vod/media) 获取该字段。
+        :param _SubjectInfos: <p>AIGC 任务固定主体输入信息。</p>
+        :type SubjectInfos: list of AigcVideoTaskInputSubjectInfo
+        :param _LastFrameFileId: <p>用于作为尾帧画面来生成视频的媒体文件 ID。该文件在云点播上的全局唯一标识符，在上传成功后由云点播后台分配。可以在 <a href="/document/product/266/7830">视频上传完成事件通知</a> 或 <a href="https://console.cloud.tencent.com/vod/media">云点播控制台</a> 获取该字段。</p>
         :type LastFrameFileId: str
-        :param _LastFrameUrl: 用于作为尾帧画面来生成视频的媒体文件 URL。说明：
-1. 只支持模型 GV 、Kling、Vidu，其他模型暂不支持。当 ModelName 为 GV 时，如果指定该参数，则需同时指定 FileInfos 作为待生成视频的首帧。当 ModelName 为 Kling 、ModelVersion 为 2.1 并且指定输出分辨率 Resolution 为 1080P 时，才能指定该参数。当 ModelName 为 Vidu、ModelVersion 为 q2-pro、q2-turbo 时，才能指定该参数。
-2. 图片大小需小于5M。
-3. 3. 图片格式的取值为：jpeg，jpg, png, webp。
+        :param _LastFrameUrl: <p>用于作为尾帧画面来生成视频的媒体文件 URL。说明：</p><ol><li>只支持模型 GV 、Kling、Vidu，其他模型暂不支持。当 ModelName 为 GV 时，如果指定该参数，则需同时指定 FileInfos 作为待生成视频的首帧。当 ModelName 为 Kling 、ModelVersion 为 2.1 并且指定输出分辨率 Resolution 为 1080P 时，才能指定该参数。当 ModelName 为 Vidu、ModelVersion 为 q2-pro、q2-turbo 时，才能指定该参数。</li><li>图片大小需小于5M。</li><li><ol start="3"><li>图片格式的取值为：jpeg，jpg, png, webp。</li></ol></li></ol>
         :type LastFrameUrl: str
-        :param _Prompt: 生成视频的提示词。最大支持1000字符，当 FileInfos 为空时，此参数必填。
+        :param _Prompt: <p>生成视频的提示词。最大支持1000字符，当 FileInfos 为空时，此参数必填。</p>
         :type Prompt: str
-        :param _NegativePrompt: 要阻止模型生成视频的提示词。最大支持1000字符。
+        :param _NegativePrompt: <p>要阻止模型生成视频的提示词。最大支持1000字符。</p>
         :type NegativePrompt: str
-        :param _EnhancePrompt: 是否自动优化提示词。开启时将自动优化传入的Prompt，以提升生成质量。取值有： <li>Enabled：开启；</li> <li>Disabled：关闭；</li> 
+        :param _EnhancePrompt: <p>是否自动优化提示词。开启时将自动优化传入的Prompt，以提升生成质量。取值有： <li>Enabled：开启；</li> <li>Disabled：关闭；</li></p>
         :type EnhancePrompt: str
-        :param _GenerationMode: 生成模式。取值有： <li>Standard：标准模式；</li> <li>Professional：高品质模式；</li> 
+        :param _GenerationMode: <p>生成模式。取值有： <li>Standard：标准模式；</li> <li>Professional：高品质模式；</li></p>
         :type GenerationMode: str
-        :param _OutputConfig: AIGC 生图输出结果文件输出。
+        :param _OutputConfig: <p>AIGC 生图输出结果文件输出。</p>
         :type OutputConfig: :class:`tencentcloud.vod.v20180717.models.AigcVideoOutputConfig`
-        :param _InputRegion: 输入文件的区域信息。当文件url是国外地址时候，可选Oversea。默认Mainland。
+        :param _InputRegion: <p>输入文件的区域信息。当文件url是国外地址时候，可选Oversea。默认Mainland。</p>
         :type InputRegion: str
-        :param _SceneType: 场景类型。取值如下：<li>当 ModelName 为 Kling 时，取值 motion_control 表示动作控制；</li><li>其他 ModelName 暂不支持。</li>
+        :param _SceneType: <p>场景类型。取值如下：<li>当 ModelName 为 Kling 时，取值 motion_control 表示动作控制；</li><li>其他 ModelName 暂不支持。</li></p>
         :type SceneType: str
         """
         self._ModelName = None
         self._ModelVersion = None
         self._FileInfos = None
+        self._SubjectInfos = None
         self._LastFrameFileId = None
         self._LastFrameUrl = None
         self._Prompt = None
@@ -12353,7 +12353,7 @@ class AigcVideoTaskInput(AbstractModel):
 
     @property
     def ModelName(self):
-        r"""模型名称。
+        r"""<p>模型名称。</p>
         :rtype: str
         """
         return self._ModelName
@@ -12364,7 +12364,7 @@ class AigcVideoTaskInput(AbstractModel):
 
     @property
     def ModelVersion(self):
-        r"""模型版本。
+        r"""<p>模型版本。</p>
         :rtype: str
         """
         return self._ModelVersion
@@ -12375,7 +12375,7 @@ class AigcVideoTaskInput(AbstractModel):
 
     @property
     def FileInfos(self):
-        r"""AIGC生图任务输入文件信息。
+        r"""<p>AIGC 生视频任务输入文件信息。</p>
         :rtype: list of AigcVideoTaskInputFileInfo
         """
         return self._FileInfos
@@ -12385,8 +12385,19 @@ class AigcVideoTaskInput(AbstractModel):
         self._FileInfos = FileInfos
 
     @property
+    def SubjectInfos(self):
+        r"""<p>AIGC 任务固定主体输入信息。</p>
+        :rtype: list of AigcVideoTaskInputSubjectInfo
+        """
+        return self._SubjectInfos
+
+    @SubjectInfos.setter
+    def SubjectInfos(self, SubjectInfos):
+        self._SubjectInfos = SubjectInfos
+
+    @property
     def LastFrameFileId(self):
-        r"""用于作为尾帧画面来生成视频的媒体文件 ID。该文件在云点播上的全局唯一标识符，在上传成功后由云点播后台分配。可以在 [视频上传完成事件通知](/document/product/266/7830) 或 [云点播控制台](https://console.cloud.tencent.com/vod/media) 获取该字段。
+        r"""<p>用于作为尾帧画面来生成视频的媒体文件 ID。该文件在云点播上的全局唯一标识符，在上传成功后由云点播后台分配。可以在 <a href="/document/product/266/7830">视频上传完成事件通知</a> 或 <a href="https://console.cloud.tencent.com/vod/media">云点播控制台</a> 获取该字段。</p>
         :rtype: str
         """
         return self._LastFrameFileId
@@ -12397,10 +12408,7 @@ class AigcVideoTaskInput(AbstractModel):
 
     @property
     def LastFrameUrl(self):
-        r"""用于作为尾帧画面来生成视频的媒体文件 URL。说明：
-1. 只支持模型 GV 、Kling、Vidu，其他模型暂不支持。当 ModelName 为 GV 时，如果指定该参数，则需同时指定 FileInfos 作为待生成视频的首帧。当 ModelName 为 Kling 、ModelVersion 为 2.1 并且指定输出分辨率 Resolution 为 1080P 时，才能指定该参数。当 ModelName 为 Vidu、ModelVersion 为 q2-pro、q2-turbo 时，才能指定该参数。
-2. 图片大小需小于5M。
-3. 3. 图片格式的取值为：jpeg，jpg, png, webp。
+        r"""<p>用于作为尾帧画面来生成视频的媒体文件 URL。说明：</p><ol><li>只支持模型 GV 、Kling、Vidu，其他模型暂不支持。当 ModelName 为 GV 时，如果指定该参数，则需同时指定 FileInfos 作为待生成视频的首帧。当 ModelName 为 Kling 、ModelVersion 为 2.1 并且指定输出分辨率 Resolution 为 1080P 时，才能指定该参数。当 ModelName 为 Vidu、ModelVersion 为 q2-pro、q2-turbo 时，才能指定该参数。</li><li>图片大小需小于5M。</li><li><ol start="3"><li>图片格式的取值为：jpeg，jpg, png, webp。</li></ol></li></ol>
         :rtype: str
         """
         return self._LastFrameUrl
@@ -12411,7 +12419,7 @@ class AigcVideoTaskInput(AbstractModel):
 
     @property
     def Prompt(self):
-        r"""生成视频的提示词。最大支持1000字符，当 FileInfos 为空时，此参数必填。
+        r"""<p>生成视频的提示词。最大支持1000字符，当 FileInfos 为空时，此参数必填。</p>
         :rtype: str
         """
         return self._Prompt
@@ -12422,7 +12430,7 @@ class AigcVideoTaskInput(AbstractModel):
 
     @property
     def NegativePrompt(self):
-        r"""要阻止模型生成视频的提示词。最大支持1000字符。
+        r"""<p>要阻止模型生成视频的提示词。最大支持1000字符。</p>
         :rtype: str
         """
         return self._NegativePrompt
@@ -12433,7 +12441,7 @@ class AigcVideoTaskInput(AbstractModel):
 
     @property
     def EnhancePrompt(self):
-        r"""是否自动优化提示词。开启时将自动优化传入的Prompt，以提升生成质量。取值有： <li>Enabled：开启；</li> <li>Disabled：关闭；</li> 
+        r"""<p>是否自动优化提示词。开启时将自动优化传入的Prompt，以提升生成质量。取值有： <li>Enabled：开启；</li> <li>Disabled：关闭；</li></p>
         :rtype: str
         """
         return self._EnhancePrompt
@@ -12444,7 +12452,7 @@ class AigcVideoTaskInput(AbstractModel):
 
     @property
     def GenerationMode(self):
-        r"""生成模式。取值有： <li>Standard：标准模式；</li> <li>Professional：高品质模式；</li> 
+        r"""<p>生成模式。取值有： <li>Standard：标准模式；</li> <li>Professional：高品质模式；</li></p>
         :rtype: str
         """
         return self._GenerationMode
@@ -12455,7 +12463,7 @@ class AigcVideoTaskInput(AbstractModel):
 
     @property
     def OutputConfig(self):
-        r"""AIGC 生图输出结果文件输出。
+        r"""<p>AIGC 生图输出结果文件输出。</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.AigcVideoOutputConfig`
         """
         return self._OutputConfig
@@ -12466,7 +12474,7 @@ class AigcVideoTaskInput(AbstractModel):
 
     @property
     def InputRegion(self):
-        r"""输入文件的区域信息。当文件url是国外地址时候，可选Oversea。默认Mainland。
+        r"""<p>输入文件的区域信息。当文件url是国外地址时候，可选Oversea。默认Mainland。</p>
         :rtype: str
         """
         return self._InputRegion
@@ -12477,7 +12485,7 @@ class AigcVideoTaskInput(AbstractModel):
 
     @property
     def SceneType(self):
-        r"""场景类型。取值如下：<li>当 ModelName 为 Kling 时，取值 motion_control 表示动作控制；</li><li>其他 ModelName 暂不支持。</li>
+        r"""<p>场景类型。取值如下：<li>当 ModelName 为 Kling 时，取值 motion_control 表示动作控制；</li><li>其他 ModelName 暂不支持。</li></p>
         :rtype: str
         """
         return self._SceneType
@@ -12496,6 +12504,12 @@ class AigcVideoTaskInput(AbstractModel):
                 obj = AigcVideoTaskInputFileInfo()
                 obj._deserialize(item)
                 self._FileInfos.append(obj)
+        if params.get("SubjectInfos") is not None:
+            self._SubjectInfos = []
+            for item in params.get("SubjectInfos"):
+                obj = AigcVideoTaskInputSubjectInfo()
+                obj._deserialize(item)
+                self._SubjectInfos.append(obj)
         self._LastFrameFileId = params.get("LastFrameFileId")
         self._LastFrameUrl = params.get("LastFrameUrl")
         self._Prompt = params.get("Prompt")
@@ -12678,6 +12692,57 @@ class AigcVideoTaskInputFileInfo(AbstractModel):
         self._ObjectId = params.get("ObjectId")
         self._VoiceId = params.get("VoiceId")
         self._KeepOriginalSound = params.get("KeepOriginalSound")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AigcVideoTaskInputSubjectInfo(AbstractModel):
+    r"""AIGC 固定主体输入信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>固定主体Id。</p><ul><li>Kling主体<strong>必选</strong>；</li><li>Vidu主体可选。</li></ul>
+        :type Id: str
+        :param _Name: <p>固定名称。</p><ul><li>Vidu主体<strong>必选</strong>；</li><li>Kling主体可选。</li></ul>
+        :type Name: str
+        """
+        self._Id = None
+        self._Name = None
+
+    @property
+    def Id(self):
+        r"""<p>固定主体Id。</p><ul><li>Kling主体<strong>必选</strong>；</li><li>Vidu主体可选。</li></ul>
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        r"""<p>固定名称。</p><ul><li>Vidu主体<strong>必选</strong>；</li><li>Kling主体可选。</li></ul>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21265,6 +21330,482 @@ class CreateAigcImageTaskResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateAigcSubjectInput(AbstractModel):
+    r"""创建主体输入信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubjectName: <p>主体名称。</p>
+        :type SubjectName: str
+        :param _SubjectImages: <p>主体图片。</p>
+        :type SubjectImages: list of str
+        :param _SubjectVideos: <p>主体视频。</p>
+        :type SubjectVideos: list of str
+        :param _VoiceId: <p>主体音色ID。</p>
+        :type VoiceId: str
+        """
+        self._SubjectName = None
+        self._SubjectImages = None
+        self._SubjectVideos = None
+        self._VoiceId = None
+
+    @property
+    def SubjectName(self):
+        r"""<p>主体名称。</p>
+        :rtype: str
+        """
+        return self._SubjectName
+
+    @SubjectName.setter
+    def SubjectName(self, SubjectName):
+        self._SubjectName = SubjectName
+
+    @property
+    def SubjectImages(self):
+        r"""<p>主体图片。</p>
+        :rtype: list of str
+        """
+        return self._SubjectImages
+
+    @SubjectImages.setter
+    def SubjectImages(self, SubjectImages):
+        self._SubjectImages = SubjectImages
+
+    @property
+    def SubjectVideos(self):
+        r"""<p>主体视频。</p>
+        :rtype: list of str
+        """
+        return self._SubjectVideos
+
+    @SubjectVideos.setter
+    def SubjectVideos(self, SubjectVideos):
+        self._SubjectVideos = SubjectVideos
+
+    @property
+    def VoiceId(self):
+        r"""<p>主体音色ID。</p>
+        :rtype: str
+        """
+        return self._VoiceId
+
+    @VoiceId.setter
+    def VoiceId(self, VoiceId):
+        self._VoiceId = VoiceId
+
+
+    def _deserialize(self, params):
+        self._SubjectName = params.get("SubjectName")
+        self._SubjectImages = params.get("SubjectImages")
+        self._SubjectVideos = params.get("SubjectVideos")
+        self._VoiceId = params.get("VoiceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAigcSubjectOutput(AbstractModel):
+    r"""创建主体输出信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubjectId: <p>主体ID。</p>
+        :type SubjectId: str
+        :param _SubjectInfo: <p>主体信息。</p>
+        :type SubjectInfo: str
+        """
+        self._SubjectId = None
+        self._SubjectInfo = None
+
+    @property
+    def SubjectId(self):
+        r"""<p>主体ID。</p>
+        :rtype: str
+        """
+        return self._SubjectId
+
+    @SubjectId.setter
+    def SubjectId(self, SubjectId):
+        self._SubjectId = SubjectId
+
+    @property
+    def SubjectInfo(self):
+        r"""<p>主体信息。</p>
+        :rtype: str
+        """
+        return self._SubjectInfo
+
+    @SubjectInfo.setter
+    def SubjectInfo(self, SubjectInfo):
+        self._SubjectInfo = SubjectInfo
+
+
+    def _deserialize(self, params):
+        self._SubjectId = params.get("SubjectId")
+        self._SubjectInfo = params.get("SubjectInfo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAigcSubjectRequest(AbstractModel):
+    r"""CreateAigcSubject请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubAppId: <p><b>点播<a href="https://cloud.tencent.com/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
+        :type SubAppId: int
+        :param _SubjectName: <p>主体名称。</p>
+        :type SubjectName: str
+        :param _SubjectImages: <p>主体图片，至少上传 1 张主体图片。</p><ul><li>注1：支持传入图片 Base64 编码或图片URL（确保可访问）；</li><li>注2：最多支持输入 3 张图；</li><li>注3：图片支持 png、jpeg、jpg、webp格式；</li><li>注4：图片比例需要小于 1:4 或者 4:1 ；</li><li>注5：图片大小不超过 50 MB；</li></ul>
+        :type SubjectImages: list of str
+        :param _SubjectVideos: <p>视频参考支持上传 1 个主体视频</p><ul><li>注1：仅参考生viduq2-pro模型支持使用视频主体</li><li>注2：最多支持上传 1个5秒 的视频</li><li>注3：视频支持 mp4、avi、mov格式</li><li>注4：视频像素不能小于 128*128，且比例需要小于1:4或者4:1，且大小不超过100M。</li></ul>
+        :type SubjectVideos: list of str
+        :param _VoiceId: <p>主体音色Id，该信息仅在创建音视频直出任务时使用</p><ul><li>注1：不传音色id 生成音视频直出任务时，系统会自动推荐音色</li><li>注2：q2-pro不支持使用音色id</li></ul>
+        :type VoiceId: str
+        :param _SessionId: <p>用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。</p>
+        :type SessionId: str
+        :param _SessionContext: <p>来源上下文，用于透传用户请求信息，任务完成回调将返回该字段值，最长 1000 个字符。</p>
+        :type SessionContext: str
+        :param _TasksPriority: <p>任务的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。</p>
+        :type TasksPriority: int
+        """
+        self._SubAppId = None
+        self._SubjectName = None
+        self._SubjectImages = None
+        self._SubjectVideos = None
+        self._VoiceId = None
+        self._SessionId = None
+        self._SessionContext = None
+        self._TasksPriority = None
+
+    @property
+    def SubAppId(self):
+        r"""<p><b>点播<a href="https://cloud.tencent.com/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
+        :rtype: int
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def SubjectName(self):
+        r"""<p>主体名称。</p>
+        :rtype: str
+        """
+        return self._SubjectName
+
+    @SubjectName.setter
+    def SubjectName(self, SubjectName):
+        self._SubjectName = SubjectName
+
+    @property
+    def SubjectImages(self):
+        r"""<p>主体图片，至少上传 1 张主体图片。</p><ul><li>注1：支持传入图片 Base64 编码或图片URL（确保可访问）；</li><li>注2：最多支持输入 3 张图；</li><li>注3：图片支持 png、jpeg、jpg、webp格式；</li><li>注4：图片比例需要小于 1:4 或者 4:1 ；</li><li>注5：图片大小不超过 50 MB；</li></ul>
+        :rtype: list of str
+        """
+        return self._SubjectImages
+
+    @SubjectImages.setter
+    def SubjectImages(self, SubjectImages):
+        self._SubjectImages = SubjectImages
+
+    @property
+    def SubjectVideos(self):
+        r"""<p>视频参考支持上传 1 个主体视频</p><ul><li>注1：仅参考生viduq2-pro模型支持使用视频主体</li><li>注2：最多支持上传 1个5秒 的视频</li><li>注3：视频支持 mp4、avi、mov格式</li><li>注4：视频像素不能小于 128*128，且比例需要小于1:4或者4:1，且大小不超过100M。</li></ul>
+        :rtype: list of str
+        """
+        return self._SubjectVideos
+
+    @SubjectVideos.setter
+    def SubjectVideos(self, SubjectVideos):
+        self._SubjectVideos = SubjectVideos
+
+    @property
+    def VoiceId(self):
+        r"""<p>主体音色Id，该信息仅在创建音视频直出任务时使用</p><ul><li>注1：不传音色id 生成音视频直出任务时，系统会自动推荐音色</li><li>注2：q2-pro不支持使用音色id</li></ul>
+        :rtype: str
+        """
+        return self._VoiceId
+
+    @VoiceId.setter
+    def VoiceId(self, VoiceId):
+        self._VoiceId = VoiceId
+
+    @property
+    def SessionId(self):
+        r"""<p>用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。</p>
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def SessionContext(self):
+        r"""<p>来源上下文，用于透传用户请求信息，任务完成回调将返回该字段值，最长 1000 个字符。</p>
+        :rtype: str
+        """
+        return self._SessionContext
+
+    @SessionContext.setter
+    def SessionContext(self, SessionContext):
+        self._SessionContext = SessionContext
+
+    @property
+    def TasksPriority(self):
+        r"""<p>任务的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。</p>
+        :rtype: int
+        """
+        return self._TasksPriority
+
+    @TasksPriority.setter
+    def TasksPriority(self, TasksPriority):
+        self._TasksPriority = TasksPriority
+
+
+    def _deserialize(self, params):
+        self._SubAppId = params.get("SubAppId")
+        self._SubjectName = params.get("SubjectName")
+        self._SubjectImages = params.get("SubjectImages")
+        self._SubjectVideos = params.get("SubjectVideos")
+        self._VoiceId = params.get("VoiceId")
+        self._SessionId = params.get("SessionId")
+        self._SessionContext = params.get("SessionContext")
+        self._TasksPriority = params.get("TasksPriority")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAigcSubjectResponse(AbstractModel):
+    r"""CreateAigcSubject返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务ID。</p>
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务ID。</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateAigcSubjectTask(AbstractModel):
+    r"""创建主体任务信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务ID。</p>
+        :type TaskId: str
+        :param _Status: <p>任务状态。</p><p>枚举值：</p><ul><li>PROCESSING： 处理中</li><li>FINISH： 已完成</li></ul>
+        :type Status: str
+        :param _ErrCode: <p>错误码。源异常时返回非0错误码，返回0时请使用各个具体任务的 ErrCode。</p>
+        :type ErrCode: int
+        :param _ErrCodeExt: <p>扩展错误码。空字符串表示成功，其它值表示失败。</p>
+        :type ErrCodeExt: str
+        :param _Message: <p>错误信息。</p>
+        :type Message: str
+        :param _Input: <p>创建 AIGC 主体输入信息。</p>
+        :type Input: :class:`tencentcloud.vod.v20180717.models.CreateAigcSubjectInput`
+        :param _Output: <p>创建 AIGC 主体输出信息。</p>
+        :type Output: :class:`tencentcloud.vod.v20180717.models.CreateAigcSubjectOutput`
+        :param _SessionId: <p>用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。</p>
+        :type SessionId: str
+        :param _SessionContext: <p>来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。</p>
+        :type SessionContext: str
+        """
+        self._TaskId = None
+        self._Status = None
+        self._ErrCode = None
+        self._ErrCodeExt = None
+        self._Message = None
+        self._Input = None
+        self._Output = None
+        self._SessionId = None
+        self._SessionContext = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务ID。</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Status(self):
+        r"""<p>任务状态。</p><p>枚举值：</p><ul><li>PROCESSING： 处理中</li><li>FINISH： 已完成</li></ul>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrCode(self):
+        r"""<p>错误码。源异常时返回非0错误码，返回0时请使用各个具体任务的 ErrCode。</p>
+        :rtype: int
+        """
+        return self._ErrCode
+
+    @ErrCode.setter
+    def ErrCode(self, ErrCode):
+        self._ErrCode = ErrCode
+
+    @property
+    def ErrCodeExt(self):
+        r"""<p>扩展错误码。空字符串表示成功，其它值表示失败。</p>
+        :rtype: str
+        """
+        return self._ErrCodeExt
+
+    @ErrCodeExt.setter
+    def ErrCodeExt(self, ErrCodeExt):
+        self._ErrCodeExt = ErrCodeExt
+
+    @property
+    def Message(self):
+        r"""<p>错误信息。</p>
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Input(self):
+        r"""<p>创建 AIGC 主体输入信息。</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.CreateAigcSubjectInput`
+        """
+        return self._Input
+
+    @Input.setter
+    def Input(self, Input):
+        self._Input = Input
+
+    @property
+    def Output(self):
+        r"""<p>创建 AIGC 主体输出信息。</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.CreateAigcSubjectOutput`
+        """
+        return self._Output
+
+    @Output.setter
+    def Output(self, Output):
+        self._Output = Output
+
+    @property
+    def SessionId(self):
+        r"""<p>用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。</p>
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def SessionContext(self):
+        r"""<p>来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。</p>
+        :rtype: str
+        """
+        return self._SessionContext
+
+    @SessionContext.setter
+    def SessionContext(self, SessionContext):
+        self._SessionContext = SessionContext
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._Status = params.get("Status")
+        self._ErrCode = params.get("ErrCode")
+        self._ErrCodeExt = params.get("ErrCodeExt")
+        self._Message = params.get("Message")
+        if params.get("Input") is not None:
+            self._Input = CreateAigcSubjectInput()
+            self._Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self._Output = CreateAigcSubjectOutput()
+            self._Output._deserialize(params.get("Output"))
+        self._SessionId = params.get("SessionId")
+        self._SessionContext = params.get("SessionContext")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateAigcVideoTaskRequest(AbstractModel):
     r"""CreateAigcVideoTask请求参数结构体
 
@@ -21272,68 +21813,46 @@ class CreateAigcVideoTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        :param _SubAppId: <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
         :type SubAppId: int
-        :param _ModelName: 模型名称。取值：<li>Hailuo：海螺；</li><li>Kling：可灵；</li><li> Jimeng：即梦；</li><li>Vidu；</li><li>Hunyuan：混元；</li><li>Mingmou：明眸；</li>
+        :param _ModelName: <p>模型名称。取值：<li>Hailuo：海螺；</li><li>Kling：可灵；</li><li> Jimeng：即梦；</li><li>Vidu；</li><li>Hunyuan：混元；</li><li>Mingmou：明眸；</li></p>
         :type ModelName: str
-        :param _ModelVersion: 模型版本。取值：<li>当 ModelName 是 Hailuo，可选值为 02、2.3、2.3-fast；</li><li>当 ModelName 是 Kling，可选值为 1.6、2.0、2.1、2.5、O1；</li><li>当 ModelName 是 Jimeng，可选值为 3.0pro；</li><li>当 ModelName 是 Vidu，可选值为 q2、q2-pro、q2-turbo；</li><li>当 ModelName 是 GV，可选值为 3.1、3.1-fast；</li><li>当 ModelName 是 OS，可选值为 2.0；</li><li>当 ModelName 是 Hunyuan，可选值为 1.5；</li><li>当 ModelName 是 Mingmou，可选值为 1.0；</li>
+        :param _ModelVersion: <p>模型版本。取值：<li>当 ModelName 是 Hailuo，可选值为 02、2.3、2.3-fast；</li><li>当 ModelName 是 Kling，可选值为 1.6、2.0、2.1、2.5、O1；</li><li>当 ModelName 是 Jimeng，可选值为 3.0pro；</li><li>当 ModelName 是 Vidu，可选值为 q2、q2-pro、q2-turbo、q3-pro、q3-turbo；</li><li>当 ModelName 是 GV，可选值为 3.1、3.1-fast；</li><li>当 ModelName 是 OS，可选值为 2.0；</li><li>当 ModelName 是 Hunyuan，可选值为 1.5；</li><li>当 ModelName 是 Mingmou，可选值为 1.0；</li></p>
         :type ModelVersion: str
-        :param _FileInfos: 最多包含三张素材资源文件的列表，用于描述模型在生成视频时要使用的资源文件。
-
-首尾帧视频生成：用 FileInfos 第一张表示首帧（此时 FileInfos 最多包含一张图片），LastFrameFileId 或者 LastFrameUrl 表示尾帧。
-
-支持多图输入的模型：
-1. GV，使用多图输入时，不可使用 LastFrameFileId 和 LastFrameUrl。
-2. Vidu，支持多图参考生视频。q2 模型1-7张图片，可通过 FileInfos 里面的 ObjectId 作为主体 id 来传入。
-
-注意：
-1. 图片大小不超过10M。
-2. 支持的图片格式：jpeg、png。
+        :param _FileInfos: <p>最多包含三张素材资源文件的列表，用于描述模型在生成视频时要使用的资源文件。</p><p>首尾帧视频生成：用 FileInfos 第一张表示首帧（此时 FileInfos 最多包含一张图片），LastFrameFileId 或者 LastFrameUrl 表示尾帧。</p><p>支持多图输入的模型：</p><ol><li>GV，使用多图输入时，不可使用 LastFrameFileId 和 LastFrameUrl。</li><li>Vidu，支持多图参考生视频。q2 模型1-7张图片，可通过 FileInfos 里面的 ObjectId 作为主体 id 来传入。</li></ol><p>注意：</p><ol><li>图片大小不超过10M。</li><li>支持的图片格式：jpeg、png。</li></ol>
         :type FileInfos: list of AigcVideoTaskInputFileInfo
-        :param _LastFrameFileId: 用于作为尾帧画面来生成视频的媒体文件 ID。该文件在云点播上的全局唯一标识符，在上传成功后由云点播后台分配。可以在 [视频上传完成事件通知](/document/product/266/7830) 或 [云点播控制台](https://console.cloud.tencent.com/vod/media) 获取该字段。说明：
-1. 只支持模型 GV 、Kling、Vidu，其他模型暂不支持。当 ModelName 为 GV 时，如果指定该参数，则需同时指定 FileInfos 作为待生成视频的首帧。当 ModelName 为 Kling 、ModelVersion 为 2.1 并且指定输出分辨率 Resolution 为 1080P 时，才能指定该参数。当 ModelName 为 Vidu、ModelVersion 为 q2-pro、q2-turbo 时，才能指定该参数。
-2. 图片大小需小于5M。
-3. 图片格式的取值为：jpeg，jpg, png, webp。
+        :param _SubjectInfos: <p>固定主体输入信息。</p>
+        :type SubjectInfos: list of AigcVideoTaskInputSubjectInfo
+        :param _LastFrameFileId: <p>用于作为尾帧画面来生成视频的媒体文件 ID。该文件在云点播上的全局唯一标识符，在上传成功后由云点播后台分配。可以在 <a href="/document/product/266/7830">视频上传完成事件通知</a> 或 <a href="https://console.cloud.tencent.com/vod/media">云点播控制台</a> 获取该字段。说明：</p><ol><li>只支持模型 GV 、Kling、Vidu，其他模型暂不支持。当 ModelName 为 GV 时，如果指定该参数，则需同时指定 FileInfos 作为待生成视频的首帧。当 ModelName 为 Kling 、ModelVersion 为 2.1 并且指定输出分辨率 Resolution 为 1080P 时，才能指定该参数。当 ModelName 为 Vidu、ModelVersion 为 q2-pro、q2-turbo 时，才能指定该参数。</li><li>图片大小需小于5M。</li><li>图片格式的取值为：jpeg，jpg, png, webp。</li></ol>
         :type LastFrameFileId: str
-        :param _LastFrameUrl: 用于作为尾帧画面来生成视频的媒体文件 URL。说明：
-1. 只支持模型 GV 、Kling、Vidu，其他模型暂不支持。当 ModelName 为 GV 时，如果指定该参数，则需同时指定 FileInfos 作为待生成视频的首帧。当 ModelName 为 Kling 、ModelVersion 为 2.1 并且指定输出分辨率 Resolution 为 1080P 时，才能指定该参数。当 ModelName 为 Vidu、ModelVersion 为 q2-pro、q2-turbo 时，才能指定该参数。
-2. 图片大小需小于5M。
-3. 3. 图片格式的取值为：jpeg，jpg, png, webp。
+        :param _LastFrameUrl: <p>用于作为尾帧画面来生成视频的媒体文件 URL。说明：</p><ol><li>只支持模型 GV 、Kling、Vidu，其他模型暂不支持。当 ModelName 为 GV 时，如果指定该参数，则需同时指定 FileInfos 作为待生成视频的首帧。当 ModelName 为 Kling 、ModelVersion 为 2.1 并且指定输出分辨率 Resolution 为 1080P 时，才能指定该参数。当 ModelName 为 Vidu、ModelVersion 为 q2-pro、q2-turbo 时，才能指定该参数。</li><li>图片大小需小于5M。</li><li><ol start="3"><li>图片格式的取值为：jpeg，jpg, png, webp。</li></ol></li></ol>
         :type LastFrameUrl: str
-        :param _Prompt: 生成视频的提示词。当 FileInfos 为空时，此参数必填。
-示例值：move the picture
+        :param _Prompt: <p>生成视频的提示词。当 FileInfos 为空时，此参数必填。<br>示例值：move the picture</p>
         :type Prompt: str
-        :param _NegativePrompt: 要阻止模型生成视频的提示词。
+        :param _NegativePrompt: <p>要阻止模型生成视频的提示词。</p>
         :type NegativePrompt: str
-        :param _EnhancePrompt: 是否自动优化提示词。开启时将自动优化传入的 Prompt，以提升生成质量。取值有： <li>Enabled：开启；</li> <li>Disabled：关闭；</li> 
+        :param _EnhancePrompt: <p>是否自动优化提示词。开启时将自动优化传入的 Prompt，以提升生成质量。取值有： <li>Enabled：开启；</li> <li>Disabled：关闭；</li></p>
         :type EnhancePrompt: str
-        :param _OutputConfig: 生视频任务的输出媒体文件配置。
+        :param _OutputConfig: <p>生视频任务的输出媒体文件配置。</p>
         :type OutputConfig: :class:`tencentcloud.vod.v20180717.models.AigcVideoOutputConfig`
-        :param _InputRegion: 输入文件的区域信息。当文件url是国外地址时候，可选Oversea。默认Mainland。
+        :param _InputRegion: <p>输入文件的区域信息。当文件url是国外地址时候，可选Oversea。默认Mainland。</p>
         :type InputRegion: str
-        :param _SceneType: 场景类型。取值如下：
-<li>当 ModelName 为 Kling 时：
-    motion_control 表示动作控制；
-    avatar_i2v 表示数字人；
-    lip_sync 表示对口型；</li>
-<li>当 ModelName 为 Vidu 时：
-    template_effect 表示特效模板；
-</li>
-<li>其他 ModelName 暂不支持。</li>
+        :param _SceneType: <p>场景类型。取值如下：</p><li>当 ModelName 为 Kling 时：    motion_control 表示动作控制；    avatar_i2v 表示数字人；    lip_sync 表示对口型；</li><li>当 ModelName 为 Vidu 时：    template_effect 表示特效模板；</li><li>其他 ModelName 暂不支持。</li>
         :type SceneType: str
-        :param _SessionId: 用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+        :param _SessionId: <p>用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。</p>
         :type SessionId: str
-        :param _SessionContext: 来源上下文，用于透传用户请求信息，音画质重生完成回调将返回该字段值，最长 1000 个字符。
+        :param _SessionContext: <p>来源上下文，用于透传用户请求信息，音画质重生完成回调将返回该字段值，最长 1000 个字符。</p>
         :type SessionContext: str
-        :param _TasksPriority: 任务的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。
+        :param _TasksPriority: <p>任务的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。</p>
         :type TasksPriority: int
-        :param _ExtInfo: 保留字段，特殊用途时使用。
+        :param _ExtInfo: <p>保留字段，特殊用途时使用。</p>
         :type ExtInfo: str
         """
         self._SubAppId = None
         self._ModelName = None
         self._ModelVersion = None
         self._FileInfos = None
+        self._SubjectInfos = None
         self._LastFrameFileId = None
         self._LastFrameUrl = None
         self._Prompt = None
@@ -21349,7 +21868,7 @@ class CreateAigcVideoTaskRequest(AbstractModel):
 
     @property
     def SubAppId(self):
-        r"""<b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        r"""<p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
         :rtype: int
         """
         return self._SubAppId
@@ -21360,7 +21879,7 @@ class CreateAigcVideoTaskRequest(AbstractModel):
 
     @property
     def ModelName(self):
-        r"""模型名称。取值：<li>Hailuo：海螺；</li><li>Kling：可灵；</li><li> Jimeng：即梦；</li><li>Vidu；</li><li>Hunyuan：混元；</li><li>Mingmou：明眸；</li>
+        r"""<p>模型名称。取值：<li>Hailuo：海螺；</li><li>Kling：可灵；</li><li> Jimeng：即梦；</li><li>Vidu；</li><li>Hunyuan：混元；</li><li>Mingmou：明眸；</li></p>
         :rtype: str
         """
         return self._ModelName
@@ -21371,7 +21890,7 @@ class CreateAigcVideoTaskRequest(AbstractModel):
 
     @property
     def ModelVersion(self):
-        r"""模型版本。取值：<li>当 ModelName 是 Hailuo，可选值为 02、2.3、2.3-fast；</li><li>当 ModelName 是 Kling，可选值为 1.6、2.0、2.1、2.5、O1；</li><li>当 ModelName 是 Jimeng，可选值为 3.0pro；</li><li>当 ModelName 是 Vidu，可选值为 q2、q2-pro、q2-turbo；</li><li>当 ModelName 是 GV，可选值为 3.1、3.1-fast；</li><li>当 ModelName 是 OS，可选值为 2.0；</li><li>当 ModelName 是 Hunyuan，可选值为 1.5；</li><li>当 ModelName 是 Mingmou，可选值为 1.0；</li>
+        r"""<p>模型版本。取值：<li>当 ModelName 是 Hailuo，可选值为 02、2.3、2.3-fast；</li><li>当 ModelName 是 Kling，可选值为 1.6、2.0、2.1、2.5、O1；</li><li>当 ModelName 是 Jimeng，可选值为 3.0pro；</li><li>当 ModelName 是 Vidu，可选值为 q2、q2-pro、q2-turbo、q3-pro、q3-turbo；</li><li>当 ModelName 是 GV，可选值为 3.1、3.1-fast；</li><li>当 ModelName 是 OS，可选值为 2.0；</li><li>当 ModelName 是 Hunyuan，可选值为 1.5；</li><li>当 ModelName 是 Mingmou，可选值为 1.0；</li></p>
         :rtype: str
         """
         return self._ModelVersion
@@ -21382,17 +21901,7 @@ class CreateAigcVideoTaskRequest(AbstractModel):
 
     @property
     def FileInfos(self):
-        r"""最多包含三张素材资源文件的列表，用于描述模型在生成视频时要使用的资源文件。
-
-首尾帧视频生成：用 FileInfos 第一张表示首帧（此时 FileInfos 最多包含一张图片），LastFrameFileId 或者 LastFrameUrl 表示尾帧。
-
-支持多图输入的模型：
-1. GV，使用多图输入时，不可使用 LastFrameFileId 和 LastFrameUrl。
-2. Vidu，支持多图参考生视频。q2 模型1-7张图片，可通过 FileInfos 里面的 ObjectId 作为主体 id 来传入。
-
-注意：
-1. 图片大小不超过10M。
-2. 支持的图片格式：jpeg、png。
+        r"""<p>最多包含三张素材资源文件的列表，用于描述模型在生成视频时要使用的资源文件。</p><p>首尾帧视频生成：用 FileInfos 第一张表示首帧（此时 FileInfos 最多包含一张图片），LastFrameFileId 或者 LastFrameUrl 表示尾帧。</p><p>支持多图输入的模型：</p><ol><li>GV，使用多图输入时，不可使用 LastFrameFileId 和 LastFrameUrl。</li><li>Vidu，支持多图参考生视频。q2 模型1-7张图片，可通过 FileInfos 里面的 ObjectId 作为主体 id 来传入。</li></ol><p>注意：</p><ol><li>图片大小不超过10M。</li><li>支持的图片格式：jpeg、png。</li></ol>
         :rtype: list of AigcVideoTaskInputFileInfo
         """
         return self._FileInfos
@@ -21402,11 +21911,19 @@ class CreateAigcVideoTaskRequest(AbstractModel):
         self._FileInfos = FileInfos
 
     @property
+    def SubjectInfos(self):
+        r"""<p>固定主体输入信息。</p>
+        :rtype: list of AigcVideoTaskInputSubjectInfo
+        """
+        return self._SubjectInfos
+
+    @SubjectInfos.setter
+    def SubjectInfos(self, SubjectInfos):
+        self._SubjectInfos = SubjectInfos
+
+    @property
     def LastFrameFileId(self):
-        r"""用于作为尾帧画面来生成视频的媒体文件 ID。该文件在云点播上的全局唯一标识符，在上传成功后由云点播后台分配。可以在 [视频上传完成事件通知](/document/product/266/7830) 或 [云点播控制台](https://console.cloud.tencent.com/vod/media) 获取该字段。说明：
-1. 只支持模型 GV 、Kling、Vidu，其他模型暂不支持。当 ModelName 为 GV 时，如果指定该参数，则需同时指定 FileInfos 作为待生成视频的首帧。当 ModelName 为 Kling 、ModelVersion 为 2.1 并且指定输出分辨率 Resolution 为 1080P 时，才能指定该参数。当 ModelName 为 Vidu、ModelVersion 为 q2-pro、q2-turbo 时，才能指定该参数。
-2. 图片大小需小于5M。
-3. 图片格式的取值为：jpeg，jpg, png, webp。
+        r"""<p>用于作为尾帧画面来生成视频的媒体文件 ID。该文件在云点播上的全局唯一标识符，在上传成功后由云点播后台分配。可以在 <a href="/document/product/266/7830">视频上传完成事件通知</a> 或 <a href="https://console.cloud.tencent.com/vod/media">云点播控制台</a> 获取该字段。说明：</p><ol><li>只支持模型 GV 、Kling、Vidu，其他模型暂不支持。当 ModelName 为 GV 时，如果指定该参数，则需同时指定 FileInfos 作为待生成视频的首帧。当 ModelName 为 Kling 、ModelVersion 为 2.1 并且指定输出分辨率 Resolution 为 1080P 时，才能指定该参数。当 ModelName 为 Vidu、ModelVersion 为 q2-pro、q2-turbo 时，才能指定该参数。</li><li>图片大小需小于5M。</li><li>图片格式的取值为：jpeg，jpg, png, webp。</li></ol>
         :rtype: str
         """
         return self._LastFrameFileId
@@ -21417,10 +21934,7 @@ class CreateAigcVideoTaskRequest(AbstractModel):
 
     @property
     def LastFrameUrl(self):
-        r"""用于作为尾帧画面来生成视频的媒体文件 URL。说明：
-1. 只支持模型 GV 、Kling、Vidu，其他模型暂不支持。当 ModelName 为 GV 时，如果指定该参数，则需同时指定 FileInfos 作为待生成视频的首帧。当 ModelName 为 Kling 、ModelVersion 为 2.1 并且指定输出分辨率 Resolution 为 1080P 时，才能指定该参数。当 ModelName 为 Vidu、ModelVersion 为 q2-pro、q2-turbo 时，才能指定该参数。
-2. 图片大小需小于5M。
-3. 3. 图片格式的取值为：jpeg，jpg, png, webp。
+        r"""<p>用于作为尾帧画面来生成视频的媒体文件 URL。说明：</p><ol><li>只支持模型 GV 、Kling、Vidu，其他模型暂不支持。当 ModelName 为 GV 时，如果指定该参数，则需同时指定 FileInfos 作为待生成视频的首帧。当 ModelName 为 Kling 、ModelVersion 为 2.1 并且指定输出分辨率 Resolution 为 1080P 时，才能指定该参数。当 ModelName 为 Vidu、ModelVersion 为 q2-pro、q2-turbo 时，才能指定该参数。</li><li>图片大小需小于5M。</li><li><ol start="3"><li>图片格式的取值为：jpeg，jpg, png, webp。</li></ol></li></ol>
         :rtype: str
         """
         return self._LastFrameUrl
@@ -21431,8 +21945,7 @@ class CreateAigcVideoTaskRequest(AbstractModel):
 
     @property
     def Prompt(self):
-        r"""生成视频的提示词。当 FileInfos 为空时，此参数必填。
-示例值：move the picture
+        r"""<p>生成视频的提示词。当 FileInfos 为空时，此参数必填。<br>示例值：move the picture</p>
         :rtype: str
         """
         return self._Prompt
@@ -21443,7 +21956,7 @@ class CreateAigcVideoTaskRequest(AbstractModel):
 
     @property
     def NegativePrompt(self):
-        r"""要阻止模型生成视频的提示词。
+        r"""<p>要阻止模型生成视频的提示词。</p>
         :rtype: str
         """
         return self._NegativePrompt
@@ -21454,7 +21967,7 @@ class CreateAigcVideoTaskRequest(AbstractModel):
 
     @property
     def EnhancePrompt(self):
-        r"""是否自动优化提示词。开启时将自动优化传入的 Prompt，以提升生成质量。取值有： <li>Enabled：开启；</li> <li>Disabled：关闭；</li> 
+        r"""<p>是否自动优化提示词。开启时将自动优化传入的 Prompt，以提升生成质量。取值有： <li>Enabled：开启；</li> <li>Disabled：关闭；</li></p>
         :rtype: str
         """
         return self._EnhancePrompt
@@ -21465,7 +21978,7 @@ class CreateAigcVideoTaskRequest(AbstractModel):
 
     @property
     def OutputConfig(self):
-        r"""生视频任务的输出媒体文件配置。
+        r"""<p>生视频任务的输出媒体文件配置。</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.AigcVideoOutputConfig`
         """
         return self._OutputConfig
@@ -21476,7 +21989,7 @@ class CreateAigcVideoTaskRequest(AbstractModel):
 
     @property
     def InputRegion(self):
-        r"""输入文件的区域信息。当文件url是国外地址时候，可选Oversea。默认Mainland。
+        r"""<p>输入文件的区域信息。当文件url是国外地址时候，可选Oversea。默认Mainland。</p>
         :rtype: str
         """
         return self._InputRegion
@@ -21487,15 +22000,7 @@ class CreateAigcVideoTaskRequest(AbstractModel):
 
     @property
     def SceneType(self):
-        r"""场景类型。取值如下：
-<li>当 ModelName 为 Kling 时：
-    motion_control 表示动作控制；
-    avatar_i2v 表示数字人；
-    lip_sync 表示对口型；</li>
-<li>当 ModelName 为 Vidu 时：
-    template_effect 表示特效模板；
-</li>
-<li>其他 ModelName 暂不支持。</li>
+        r"""<p>场景类型。取值如下：</p><li>当 ModelName 为 Kling 时：    motion_control 表示动作控制；    avatar_i2v 表示数字人；    lip_sync 表示对口型；</li><li>当 ModelName 为 Vidu 时：    template_effect 表示特效模板；</li><li>其他 ModelName 暂不支持。</li>
         :rtype: str
         """
         return self._SceneType
@@ -21506,7 +22011,7 @@ class CreateAigcVideoTaskRequest(AbstractModel):
 
     @property
     def SessionId(self):
-        r"""用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+        r"""<p>用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。</p>
         :rtype: str
         """
         return self._SessionId
@@ -21517,7 +22022,7 @@ class CreateAigcVideoTaskRequest(AbstractModel):
 
     @property
     def SessionContext(self):
-        r"""来源上下文，用于透传用户请求信息，音画质重生完成回调将返回该字段值，最长 1000 个字符。
+        r"""<p>来源上下文，用于透传用户请求信息，音画质重生完成回调将返回该字段值，最长 1000 个字符。</p>
         :rtype: str
         """
         return self._SessionContext
@@ -21528,7 +22033,7 @@ class CreateAigcVideoTaskRequest(AbstractModel):
 
     @property
     def TasksPriority(self):
-        r"""任务的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。
+        r"""<p>任务的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。</p>
         :rtype: int
         """
         return self._TasksPriority
@@ -21539,7 +22044,7 @@ class CreateAigcVideoTaskRequest(AbstractModel):
 
     @property
     def ExtInfo(self):
-        r"""保留字段，特殊用途时使用。
+        r"""<p>保留字段，特殊用途时使用。</p>
         :rtype: str
         """
         return self._ExtInfo
@@ -21559,6 +22064,12 @@ class CreateAigcVideoTaskRequest(AbstractModel):
                 obj = AigcVideoTaskInputFileInfo()
                 obj._deserialize(item)
                 self._FileInfos.append(obj)
+        if params.get("SubjectInfos") is not None:
+            self._SubjectInfos = []
+            for item in params.get("SubjectInfos"):
+                obj = AigcVideoTaskInputSubjectInfo()
+                obj._deserialize(item)
+                self._SubjectInfos.append(obj)
         self._LastFrameFileId = params.get("LastFrameFileId")
         self._LastFrameUrl = params.get("LastFrameUrl")
         self._Prompt = params.get("Prompt")
@@ -21590,7 +22101,7 @@ class CreateAigcVideoTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务 ID。
+        :param _TaskId: <p>任务 ID。</p>
         :type TaskId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -21600,7 +22111,7 @@ class CreateAigcVideoTaskResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""任务 ID。
+        r"""<p>任务 ID。</p>
         :rtype: str
         """
         return self._TaskId
@@ -38770,7 +39281,7 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskType: <p>任务类型，取值：<li>Procedure：视频处理任务；</li><li>EditMedia：视频编辑任务；</li><li>SplitMedia：视频拆条任务；</li><li>ComposeMedia：制作媒体文件任务；</li><li>WechatPublish：微信发布任务；</li><li>WechatMiniProgramPublish：微信小程序视频发布任务；</li><li>PullUpload：拉取上传媒体文件任务；</li><li>FastClipMedia：快速剪辑任务；</li><li>RemoveWatermarkTask：智能去除水印任务；</li><li>DescribeFileAttributesTask：获取文件属性任务；</li><li>RebuildMedia：音画质重生任务（不推荐使用）；</li><li>ReviewAudioVideo：音视频审核任务；</li><li>ExtractTraceWatermark：提取溯源水印任务；</li><li>ExtractCopyRightWatermark：提取版权水印任务；</li><li>QualityInspect：音画质检测任务；</li><li>QualityEnhance：音画质重生任务；</li><li>ComplexAdaptiveDynamicStreaming：复杂自适应码流任务；</li><li>ProcessMediaByMPS：MPS 视频处理任务；</li><li>AigcImageTask：AIGC 生图任务；</li><li>SceneAigcImageTask：场景化 AIGC 生图任务；</li><li>AigcVideoTask：AIGC 生视频任务；</li><li>ImportMediaKnowledge：导入媒体知识任务。</li><li>SceneAigcVideoTask：场景化 AIGC 生视频任务；</li><li> ExtractBlindWatermark：提取数字水印任务。</li></p>
+        :param _TaskType: <p>任务类型，取值：<li>Procedure：视频处理任务；</li><li>EditMedia：视频编辑任务；</li><li>SplitMedia：视频拆条任务；</li><li>ComposeMedia：制作媒体文件任务；</li><li>WechatPublish：微信发布任务；</li><li>WechatMiniProgramPublish：微信小程序视频发布任务；</li><li>PullUpload：拉取上传媒体文件任务；</li><li>FastClipMedia：快速剪辑任务；</li><li>RemoveWatermarkTask：智能去除水印任务；</li><li>DescribeFileAttributesTask：获取文件属性任务；</li><li>RebuildMedia：音画质重生任务（不推荐使用）；</li><li>ReviewAudioVideo：音视频审核任务；</li><li>ExtractTraceWatermark：提取溯源水印任务；</li><li>ExtractCopyRightWatermark：提取版权水印任务；</li><li>QualityInspect：音画质检测任务；</li><li>QualityEnhance：音画质重生任务；</li><li>ComplexAdaptiveDynamicStreaming：复杂自适应码流任务；</li><li>ProcessMediaByMPS：MPS 视频处理任务；</li><li>AigcImageTask：AIGC 生图任务；</li><li>SceneAigcImageTask：场景化 AIGC 生图任务；</li><li>AigcVideoTask：AIGC 生视频任务；</li><li>ImportMediaKnowledge：导入媒体知识任务。</li><li>SceneAigcVideoTask：场景化 AIGC 生视频任务；</li><li> ExtractBlindWatermark：提取数字水印任务。</li><li> ExtractBlindWatermark：提取数字水印任务。</li><li> CreateAigcAdvancedCustomElementTask：创建自定义主体任务</li><li>CreateAigcCustomVoiceTask：创建自定义音色任务</li><li>CreateAigcSubjectTask：创建主体任务</li></p>
         :type TaskType: str
         :param _Status: <p>任务状态，取值：</p><li>WAITING：等待中；</li><li>PROCESSING：处理中；</li><li>FINISH：已完成；</li><li>ABORTED：已终止。</li>
         :type Status: str
@@ -38866,6 +39377,8 @@ class DescribeTaskDetailResponse(AbstractModel):
         :type CreateAigcAdvancedCustomElementTask: :class:`tencentcloud.vod.v20180717.models.CreateAigcAdvancedCustomElementTask`
         :param _CreateAigcCustomVoiceTask: <p>创建自定义音色信息，仅当 TaskType 为 CreateAigcCustomVoice，该字段有值。</p>
         :type CreateAigcCustomVoiceTask: :class:`tencentcloud.vod.v20180717.models.CreateAigcCustomVoiceTask`
+        :param _CreateAigcSubjectTask: <p>创建主体信息，仅当 TaskType 为 CreateAigcSubject，该字段有值。</p>
+        :type CreateAigcSubjectTask: :class:`tencentcloud.vod.v20180717.models.CreateAigcSubjectTask`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -38906,11 +39419,12 @@ class DescribeTaskDetailResponse(AbstractModel):
         self._ExtractBlindWatermarkTask = None
         self._CreateAigcAdvancedCustomElementTask = None
         self._CreateAigcCustomVoiceTask = None
+        self._CreateAigcSubjectTask = None
         self._RequestId = None
 
     @property
     def TaskType(self):
-        r"""<p>任务类型，取值：<li>Procedure：视频处理任务；</li><li>EditMedia：视频编辑任务；</li><li>SplitMedia：视频拆条任务；</li><li>ComposeMedia：制作媒体文件任务；</li><li>WechatPublish：微信发布任务；</li><li>WechatMiniProgramPublish：微信小程序视频发布任务；</li><li>PullUpload：拉取上传媒体文件任务；</li><li>FastClipMedia：快速剪辑任务；</li><li>RemoveWatermarkTask：智能去除水印任务；</li><li>DescribeFileAttributesTask：获取文件属性任务；</li><li>RebuildMedia：音画质重生任务（不推荐使用）；</li><li>ReviewAudioVideo：音视频审核任务；</li><li>ExtractTraceWatermark：提取溯源水印任务；</li><li>ExtractCopyRightWatermark：提取版权水印任务；</li><li>QualityInspect：音画质检测任务；</li><li>QualityEnhance：音画质重生任务；</li><li>ComplexAdaptiveDynamicStreaming：复杂自适应码流任务；</li><li>ProcessMediaByMPS：MPS 视频处理任务；</li><li>AigcImageTask：AIGC 生图任务；</li><li>SceneAigcImageTask：场景化 AIGC 生图任务；</li><li>AigcVideoTask：AIGC 生视频任务；</li><li>ImportMediaKnowledge：导入媒体知识任务。</li><li>SceneAigcVideoTask：场景化 AIGC 生视频任务；</li><li> ExtractBlindWatermark：提取数字水印任务。</li></p>
+        r"""<p>任务类型，取值：<li>Procedure：视频处理任务；</li><li>EditMedia：视频编辑任务；</li><li>SplitMedia：视频拆条任务；</li><li>ComposeMedia：制作媒体文件任务；</li><li>WechatPublish：微信发布任务；</li><li>WechatMiniProgramPublish：微信小程序视频发布任务；</li><li>PullUpload：拉取上传媒体文件任务；</li><li>FastClipMedia：快速剪辑任务；</li><li>RemoveWatermarkTask：智能去除水印任务；</li><li>DescribeFileAttributesTask：获取文件属性任务；</li><li>RebuildMedia：音画质重生任务（不推荐使用）；</li><li>ReviewAudioVideo：音视频审核任务；</li><li>ExtractTraceWatermark：提取溯源水印任务；</li><li>ExtractCopyRightWatermark：提取版权水印任务；</li><li>QualityInspect：音画质检测任务；</li><li>QualityEnhance：音画质重生任务；</li><li>ComplexAdaptiveDynamicStreaming：复杂自适应码流任务；</li><li>ProcessMediaByMPS：MPS 视频处理任务；</li><li>AigcImageTask：AIGC 生图任务；</li><li>SceneAigcImageTask：场景化 AIGC 生图任务；</li><li>AigcVideoTask：AIGC 生视频任务；</li><li>ImportMediaKnowledge：导入媒体知识任务。</li><li>SceneAigcVideoTask：场景化 AIGC 生视频任务；</li><li> ExtractBlindWatermark：提取数字水印任务。</li><li> ExtractBlindWatermark：提取数字水印任务。</li><li> CreateAigcAdvancedCustomElementTask：创建自定义主体任务</li><li>CreateAigcCustomVoiceTask：创建自定义音色任务</li><li>CreateAigcSubjectTask：创建主体任务</li></p>
         :rtype: str
         """
         return self._TaskType
@@ -39338,6 +39852,17 @@ class DescribeTaskDetailResponse(AbstractModel):
         self._CreateAigcCustomVoiceTask = CreateAigcCustomVoiceTask
 
     @property
+    def CreateAigcSubjectTask(self):
+        r"""<p>创建主体信息，仅当 TaskType 为 CreateAigcSubject，该字段有值。</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.CreateAigcSubjectTask`
+        """
+        return self._CreateAigcSubjectTask
+
+    @CreateAigcSubjectTask.setter
+    def CreateAigcSubjectTask(self, CreateAigcSubjectTask):
+        self._CreateAigcSubjectTask = CreateAigcSubjectTask
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -39451,6 +39976,9 @@ class DescribeTaskDetailResponse(AbstractModel):
         if params.get("CreateAigcCustomVoiceTask") is not None:
             self._CreateAigcCustomVoiceTask = CreateAigcCustomVoiceTask()
             self._CreateAigcCustomVoiceTask._deserialize(params.get("CreateAigcCustomVoiceTask"))
+        if params.get("CreateAigcSubjectTask") is not None:
+            self._CreateAigcSubjectTask = CreateAigcSubjectTask()
+            self._CreateAigcSubjectTask._deserialize(params.get("CreateAigcSubjectTask"))
         self._RequestId = params.get("RequestId")
 
 
@@ -67839,6 +68367,8 @@ class ProcessImageAsyncRequest(AbstractModel):
         :type FileId: str
         :param _Url: <p>需要进行图片处理的Url。不能与FileId同时输入。</p>
         :type Url: str
+        :param _Base64: <p>需要进行图片处理的Base64，要求图片文件小于4MB。使用 Base64 时，请不要添加任何前缀如 <code>data:image/png;base64,</code>，只需提供 Base64 编码字符串本身。</p>
+        :type Base64: str
         :param _ImageTaskInput: <p>图片处理参数。</p>
         :type ImageTaskInput: :class:`tencentcloud.vod.v20180717.models.ProcessImageAsyncTaskInput`
         :param _OutputConfig: <p>图片处理任务的输出媒体文件配置。</p>
@@ -67855,6 +68385,7 @@ class ProcessImageAsyncRequest(AbstractModel):
         self._SubAppId = None
         self._FileId = None
         self._Url = None
+        self._Base64 = None
         self._ImageTaskInput = None
         self._OutputConfig = None
         self._SessionId = None
@@ -67894,6 +68425,17 @@ class ProcessImageAsyncRequest(AbstractModel):
     @Url.setter
     def Url(self, Url):
         self._Url = Url
+
+    @property
+    def Base64(self):
+        r"""<p>需要进行图片处理的Base64，要求图片文件小于4MB。使用 Base64 时，请不要添加任何前缀如 <code>data:image/png;base64,</code>，只需提供 Base64 编码字符串本身。</p>
+        :rtype: str
+        """
+        return self._Base64
+
+    @Base64.setter
+    def Base64(self, Base64):
+        self._Base64 = Base64
 
     @property
     def ImageTaskInput(self):
@@ -67966,6 +68508,7 @@ class ProcessImageAsyncRequest(AbstractModel):
         self._SubAppId = params.get("SubAppId")
         self._FileId = params.get("FileId")
         self._Url = params.get("Url")
+        self._Base64 = params.get("Base64")
         if params.get("ImageTaskInput") is not None:
             self._ImageTaskInput = ProcessImageAsyncTaskInput()
             self._ImageTaskInput._deserialize(params.get("ImageTaskInput"))

@@ -460,23 +460,23 @@ class CallbackStatusStatistics(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CallbackCount: <p>短信回执量统计。</p><p>单位：数</p>
+        :param _CallbackCount: <p>短信回执量统计。</p><p>单位：个</p>
         :type CallbackCount: int
-        :param _RequestSuccessCount: <p>短信提交成功量统计。</p><p>单位：数</p>
+        :param _RequestSuccessCount: <p>短信提交成功量统计。</p><p>单位：个</p>
         :type RequestSuccessCount: int
-        :param _CallbackFailCount: <p>短信回执失败量统计。</p><p>单位：数</p>
+        :param _CallbackFailCount: <p>短信回执失败量统计。</p><p>单位：个</p>
         :type CallbackFailCount: int
-        :param _CallbackSuccessCount: <p>短信回执成功量统计。</p><p>单位：数</p>
+        :param _CallbackSuccessCount: <p>短信回执成功量统计。</p><p>单位：个</p>
         :type CallbackSuccessCount: int
-        :param _InternalErrorCount: <p>运营商内部错误统计。</p><p>单位：数</p>
+        :param _InternalErrorCount: <p>运营商内部错误统计。</p><p>单位：个</p>
         :type InternalErrorCount: int
-        :param _InvalidNumberCount: <p>号码无效或空号统计。</p><p>单位：数</p>
+        :param _InvalidNumberCount: <p>号码无效或空号统计。</p><p>单位：个</p>
         :type InvalidNumberCount: int
-        :param _ShutdownErrorCount: <p>停机、关机等错误统计。</p><p>单位：数</p>
+        :param _ShutdownErrorCount: <p>停机、关机等错误统计。</p><p>单位：个</p>
         :type ShutdownErrorCount: int
-        :param _BlackListCount: <p>号码拉入黑名单统计。</p><p>单位：数</p>
+        :param _BlackListCount: <p>号码拉入黑名单统计。</p><p>单位：个</p>
         :type BlackListCount: int
-        :param _FrequencyLimitCount: <p>运营商频率限制数</p><p>单位：数</p>
+        :param _FrequencyLimitCount: <p>运营商频率限制数</p><p>单位：个</p>
         :type FrequencyLimitCount: int
         """
         self._CallbackCount = None
@@ -491,7 +491,7 @@ class CallbackStatusStatistics(AbstractModel):
 
     @property
     def CallbackCount(self):
-        r"""<p>短信回执量统计。</p><p>单位：数</p>
+        r"""<p>短信回执量统计。</p><p>单位：个</p>
         :rtype: int
         """
         return self._CallbackCount
@@ -502,7 +502,7 @@ class CallbackStatusStatistics(AbstractModel):
 
     @property
     def RequestSuccessCount(self):
-        r"""<p>短信提交成功量统计。</p><p>单位：数</p>
+        r"""<p>短信提交成功量统计。</p><p>单位：个</p>
         :rtype: int
         """
         return self._RequestSuccessCount
@@ -513,7 +513,7 @@ class CallbackStatusStatistics(AbstractModel):
 
     @property
     def CallbackFailCount(self):
-        r"""<p>短信回执失败量统计。</p><p>单位：数</p>
+        r"""<p>短信回执失败量统计。</p><p>单位：个</p>
         :rtype: int
         """
         return self._CallbackFailCount
@@ -524,7 +524,7 @@ class CallbackStatusStatistics(AbstractModel):
 
     @property
     def CallbackSuccessCount(self):
-        r"""<p>短信回执成功量统计。</p><p>单位：数</p>
+        r"""<p>短信回执成功量统计。</p><p>单位：个</p>
         :rtype: int
         """
         return self._CallbackSuccessCount
@@ -535,7 +535,7 @@ class CallbackStatusStatistics(AbstractModel):
 
     @property
     def InternalErrorCount(self):
-        r"""<p>运营商内部错误统计。</p><p>单位：数</p>
+        r"""<p>运营商内部错误统计。</p><p>单位：个</p>
         :rtype: int
         """
         return self._InternalErrorCount
@@ -546,7 +546,7 @@ class CallbackStatusStatistics(AbstractModel):
 
     @property
     def InvalidNumberCount(self):
-        r"""<p>号码无效或空号统计。</p><p>单位：数</p>
+        r"""<p>号码无效或空号统计。</p><p>单位：个</p>
         :rtype: int
         """
         return self._InvalidNumberCount
@@ -557,7 +557,7 @@ class CallbackStatusStatistics(AbstractModel):
 
     @property
     def ShutdownErrorCount(self):
-        r"""<p>停机、关机等错误统计。</p><p>单位：数</p>
+        r"""<p>停机、关机等错误统计。</p><p>单位：个</p>
         :rtype: int
         """
         return self._ShutdownErrorCount
@@ -568,7 +568,7 @@ class CallbackStatusStatistics(AbstractModel):
 
     @property
     def BlackListCount(self):
-        r"""<p>号码拉入黑名单统计。</p><p>单位：数</p>
+        r"""<p>号码拉入黑名单统计。</p><p>单位：个</p>
         :rtype: int
         """
         return self._BlackListCount
@@ -579,7 +579,7 @@ class CallbackStatusStatistics(AbstractModel):
 
     @property
     def FrequencyLimitCount(self):
-        r"""<p>运营商频率限制数</p><p>单位：数</p>
+        r"""<p>运营商频率限制数</p><p>单位：个</p>
         :rtype: int
         """
         return self._FrequencyLimitCount

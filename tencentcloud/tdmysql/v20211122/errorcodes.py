@@ -146,9 +146,6 @@ INVALIDPARAMETERVALUE_CHECKINSTANCEVERSIONERROR = 'InvalidParameterValue.CheckIn
 # 名称校验失败。
 INVALIDPARAMETERVALUE_CHECKNAMEERROR = 'InvalidParameterValue.CheckNameError'
 
-# 实例规格校验错误。
-INVALIDPARAMETERVALUE_CHECKSPECERROR = 'InvalidParameterValue.CheckSpecError'
-
 # 参数错误。
 INVALIDPARAMETERVALUE_INVALIDPARAMETERVALUEERROR = 'InvalidParameterValue.InvalidParameterValueError'
 

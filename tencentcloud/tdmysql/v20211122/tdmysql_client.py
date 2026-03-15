@@ -95,31 +95,6 @@ class TdmysqlClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribeBillingEnable(self, request):
-        r"""已无地方调用
-
-        本接口（DescribeBillingEnable）用于查询计费是否开启
-
-        :param request: Request instance for DescribeBillingEnable.
-        :type request: :class:`tencentcloud.tdmysql.v20211122.models.DescribeBillingEnableRequest`
-        :rtype: :class:`tencentcloud.tdmysql.v20211122.models.DescribeBillingEnableResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeBillingEnable", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeBillingEnableResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DescribeDBParameters(self, request):
         r"""本接口（DescribeDBParameters）用于获取实例的当前参数设置。
 
@@ -235,31 +210,6 @@ class TdmysqlClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribeDatabaseTable(self, request):
-        r"""冗余接口，无人调用
-
-        本接口（DescribeDatabaseTable）用于查询云数据库实例的表信息。
-
-        :param request: Request instance for DescribeDatabaseTable.
-        :type request: :class:`tencentcloud.tdmysql.v20211122.models.DescribeDatabaseTableRequest`
-        :rtype: :class:`tencentcloud.tdmysql.v20211122.models.DescribeDatabaseTableResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeDatabaseTable", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeDatabaseTableResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DescribeFlow(self, request):
         r"""本接口（DescribeFlow）用于查询异步任务流程状态
 
@@ -343,31 +293,6 @@ class TdmysqlClient(AbstractClient):
             body = self.call("ModifyAutoRenewFlag", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyAutoRenewFlagResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def ModifyBinlogStatus(self, request):
-        r"""接口功能已被 ModifyInstanceCdc 完全覆盖
-
-        修改binlog状态
-
-        :param request: Request instance for ModifyBinlogStatus.
-        :type request: :class:`tencentcloud.tdmysql.v20211122.models.ModifyBinlogStatusRequest`
-        :rtype: :class:`tencentcloud.tdmysql.v20211122.models.ModifyBinlogStatusResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("ModifyBinlogStatus", params, headers=headers)
-            response = json.loads(body)
-            model = models.ModifyBinlogStatusResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

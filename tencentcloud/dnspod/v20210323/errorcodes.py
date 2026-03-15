@@ -230,7 +230,7 @@ INVALIDPARAMETER_COPIEDLINEGROUPDUPLICATED = 'InvalidParameter.CopiedLineGroupDu
 # 自定义错误信息。
 INVALIDPARAMETER_CUSTOMMESSAGE = 'InvalidParameter.CustomMessage'
 
-# 您的帐户下没有 企业II 或 企业III 的VIP套餐，不能开启D令牌。
+# 您的账户下没有 企业II 或 企业III 的VIP套餐，不能开启D令牌。
 INVALIDPARAMETER_DTOKENNOTSUPPORT = 'InvalidParameter.DTokenNotSupport'
 
 # 数据过期,请重新提交。
@@ -524,7 +524,7 @@ INVALIDPARAMETER_PERMISSIONDENIED = 'InvalidParameter.PermissionDenied'
 # 无效的 IP 地址。
 INVALIDPARAMETER_PTRINVALIDPUBLICIP = 'InvalidParameter.PtrInvalidPublicIp'
 
-# 你不是该 IP 的所有者，无法进行此操作。
+# 您不是该 IP 的所有者，无法进行此操作。
 INVALIDPARAMETER_PTRIPNOTOWNER = 'InvalidParameter.PtrIpNotOwner'
 
 # 用户UIN无效。

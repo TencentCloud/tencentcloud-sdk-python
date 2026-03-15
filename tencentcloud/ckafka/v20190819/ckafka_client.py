@@ -1338,7 +1338,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DescribeRegion(self, request):
-        r"""枚举地域,只支持广州地域
+        r"""枚举地域信息
 
         :param request: Request instance for DescribeRegion.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.DescribeRegionRequest`

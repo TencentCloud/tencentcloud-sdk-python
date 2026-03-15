@@ -21154,16 +21154,14 @@ class DescribeIndexRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TopicId: 日志主题Id。
-- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+        :param _TopicId: <p>日志主题Id。</p><ul><li>通过<a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a>获取日志主题Id。</li></ul>
         :type TopicId: str
         """
         self._TopicId = None
 
     @property
     def TopicId(self):
-        r"""日志主题Id。
-- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+        r"""<p>日志主题Id。</p><ul><li>通过<a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a>获取日志主题Id。</li></ul>
         :rtype: str
         """
         return self._TopicId
@@ -21192,26 +21190,20 @@ class DescribeIndexResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TopicId: 日志主题Id
+        :param _TopicId: <p>日志主题Id</p>
         :type TopicId: str
-        :param _Status: 索引状态。true：开启状态，false：关闭状态
-开启后可对日志进行检索分析，将产生索引流量、索引存储及相应费用。[费用详情](https://cloud.tencent.com/document/product/614/45802#.E8.AE.A1.E8.B4.B9.E9.A1.B9)
+        :param _Status: <p>索引状态。true：开启状态，false：关闭状态<br>开启后可对日志进行检索分析，将产生索引流量、索引存储及相应费用。<a href="https://cloud.tencent.com/document/product/614/45802#.E8.AE.A1.E8.B4.B9.E9.A1.B9">费用详情</a></p>
         :type Status: bool
-        :param _Rule: 索引配置信息
+        :param _Rule: <p>索引配置信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Rule: :class:`tencentcloud.cls.v20201016.models.RuleInfo`
-        :param _ModifyTime: 索引修改时间，初始值为索引创建时间。格式 `YYYY-MM-DD HH:MM:SS`
+        :param _ModifyTime: <p>索引修改时间，初始值为索引创建时间。格式 <code>YYYY-MM-DD HH:MM:SS</code></p>
         :type ModifyTime: str
-        :param _IncludeInternalFields: 内置保留字段（`__FILENAME__`，`__HOSTNAME__`及`__SOURCE__`）是否包含至全文索引
-* false:不包含
-* true:包含
+        :param _IncludeInternalFields: <p>内置保留字段（<code>__FILENAME__</code>，<code>__HOSTNAME__</code>及<code>__SOURCE__</code>）是否包含至全文索引</p><ul><li>false:不包含</li><li>true:包含</li></ul>
         :type IncludeInternalFields: bool
-        :param _MetadataFlag: 元数据字段（前缀为`__TAG__`的字段）是否包含至全文索引
-* 0:仅包含开启键值索引的元数据字段
-* 1:包含所有元数据字段
-* 2:不包含任何元数据字段
+        :param _MetadataFlag: <p>元数据字段（前缀为<code>__TAG__</code>的字段）是否包含至全文索引</p><ul><li>0:仅包含开启键值索引的元数据字段</li><li>1:包含所有元数据字段</li><li>2:不包含任何元数据字段</li></ul>
         :type MetadataFlag: int
-        :param _CoverageField: 自定义日志解析异常存储字段。
+        :param _CoverageField: <p>自定义日志解析异常存储字段。</p>
         :type CoverageField: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -21227,7 +21219,7 @@ class DescribeIndexResponse(AbstractModel):
 
     @property
     def TopicId(self):
-        r"""日志主题Id
+        r"""<p>日志主题Id</p>
         :rtype: str
         """
         return self._TopicId
@@ -21238,8 +21230,7 @@ class DescribeIndexResponse(AbstractModel):
 
     @property
     def Status(self):
-        r"""索引状态。true：开启状态，false：关闭状态
-开启后可对日志进行检索分析，将产生索引流量、索引存储及相应费用。[费用详情](https://cloud.tencent.com/document/product/614/45802#.E8.AE.A1.E8.B4.B9.E9.A1.B9)
+        r"""<p>索引状态。true：开启状态，false：关闭状态<br>开启后可对日志进行检索分析，将产生索引流量、索引存储及相应费用。<a href="https://cloud.tencent.com/document/product/614/45802#.E8.AE.A1.E8.B4.B9.E9.A1.B9">费用详情</a></p>
         :rtype: bool
         """
         return self._Status
@@ -21250,7 +21241,7 @@ class DescribeIndexResponse(AbstractModel):
 
     @property
     def Rule(self):
-        r"""索引配置信息
+        r"""<p>索引配置信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cls.v20201016.models.RuleInfo`
         """
@@ -21262,7 +21253,7 @@ class DescribeIndexResponse(AbstractModel):
 
     @property
     def ModifyTime(self):
-        r"""索引修改时间，初始值为索引创建时间。格式 `YYYY-MM-DD HH:MM:SS`
+        r"""<p>索引修改时间，初始值为索引创建时间。格式 <code>YYYY-MM-DD HH:MM:SS</code></p>
         :rtype: str
         """
         return self._ModifyTime
@@ -21273,9 +21264,7 @@ class DescribeIndexResponse(AbstractModel):
 
     @property
     def IncludeInternalFields(self):
-        r"""内置保留字段（`__FILENAME__`，`__HOSTNAME__`及`__SOURCE__`）是否包含至全文索引
-* false:不包含
-* true:包含
+        r"""<p>内置保留字段（<code>__FILENAME__</code>，<code>__HOSTNAME__</code>及<code>__SOURCE__</code>）是否包含至全文索引</p><ul><li>false:不包含</li><li>true:包含</li></ul>
         :rtype: bool
         """
         return self._IncludeInternalFields
@@ -21286,10 +21275,7 @@ class DescribeIndexResponse(AbstractModel):
 
     @property
     def MetadataFlag(self):
-        r"""元数据字段（前缀为`__TAG__`的字段）是否包含至全文索引
-* 0:仅包含开启键值索引的元数据字段
-* 1:包含所有元数据字段
-* 2:不包含任何元数据字段
+        r"""<p>元数据字段（前缀为<code>__TAG__</code>的字段）是否包含至全文索引</p><ul><li>0:仅包含开启键值索引的元数据字段</li><li>1:包含所有元数据字段</li><li>2:不包含任何元数据字段</li></ul>
         :rtype: int
         """
         return self._MetadataFlag
@@ -21300,7 +21286,7 @@ class DescribeIndexResponse(AbstractModel):
 
     @property
     def CoverageField(self):
-        r"""自定义日志解析异常存储字段。
+        r"""<p>自定义日志解析异常存储字段。</p>
         :rtype: str
         """
         return self._CoverageField

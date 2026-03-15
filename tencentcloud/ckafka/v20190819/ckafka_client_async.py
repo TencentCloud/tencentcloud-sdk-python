@@ -1057,7 +1057,7 @@ class CkafkaClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeRegionResponse:
         """
-        枚举地域,只支持广州地域
+        枚举地域信息
         """
         
         kwargs = {}

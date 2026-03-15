@@ -1140,40 +1140,6 @@ class DeleteDBSBackupSetsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
-class DescribeBillingEnableRequest(AbstractModel):
-    r"""DescribeBillingEnable请求参数结构体
-
-    """
-
-
-class DescribeBillingEnableResponse(AbstractModel):
-    r"""DescribeBillingEnable返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._RequestId = None
-
-    @property
-    def RequestId(self):
-        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._RequestId = params.get("RequestId")
-
-
 class DescribeDBParametersRequest(AbstractModel):
     r"""DescribeDBParameters请求参数结构体
 
@@ -1944,169 +1910,6 @@ class DescribeDatabaseObjectsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
-class DescribeDatabaseTableRequest(AbstractModel):
-    r"""DescribeDatabaseTable请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _InstanceId: 实例 ID，形如：tdsql3-ow7t8lmc。
-        :type InstanceId: str
-        :param _DbName: 数据库名称，通过 DescribeDatabases 接口获取。
-        :type DbName: str
-        :param _Table: 表名称，通过 DescribeDatabaseObjects 接口获取。
-        :type Table: str
-        """
-        self._InstanceId = None
-        self._DbName = None
-        self._Table = None
-
-    @property
-    def InstanceId(self):
-        r"""实例 ID，形如：tdsql3-ow7t8lmc。
-        :rtype: str
-        """
-        return self._InstanceId
-
-    @InstanceId.setter
-    def InstanceId(self, InstanceId):
-        self._InstanceId = InstanceId
-
-    @property
-    def DbName(self):
-        r"""数据库名称，通过 DescribeDatabases 接口获取。
-        :rtype: str
-        """
-        return self._DbName
-
-    @DbName.setter
-    def DbName(self, DbName):
-        self._DbName = DbName
-
-    @property
-    def Table(self):
-        r"""表名称，通过 DescribeDatabaseObjects 接口获取。
-        :rtype: str
-        """
-        return self._Table
-
-    @Table.setter
-    def Table(self, Table):
-        self._Table = Table
-
-
-    def _deserialize(self, params):
-        self._InstanceId = params.get("InstanceId")
-        self._DbName = params.get("DbName")
-        self._Table = params.get("Table")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeDatabaseTableResponse(AbstractModel):
-    r"""DescribeDatabaseTable返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _InstanceId: 实例名称。
-        :type InstanceId: str
-        :param _DbName: 数据库名称。
-        :type DbName: str
-        :param _Table: 表名称。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Table: str
-        :param _Cols: 列信息。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Cols: list of TableColumn
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._InstanceId = None
-        self._DbName = None
-        self._Table = None
-        self._Cols = None
-        self._RequestId = None
-
-    @property
-    def InstanceId(self):
-        r"""实例名称。
-        :rtype: str
-        """
-        return self._InstanceId
-
-    @InstanceId.setter
-    def InstanceId(self, InstanceId):
-        self._InstanceId = InstanceId
-
-    @property
-    def DbName(self):
-        r"""数据库名称。
-        :rtype: str
-        """
-        return self._DbName
-
-    @DbName.setter
-    def DbName(self, DbName):
-        self._DbName = DbName
-
-    @property
-    def Table(self):
-        r"""表名称。
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: str
-        """
-        return self._Table
-
-    @Table.setter
-    def Table(self, Table):
-        self._Table = Table
-
-    @property
-    def Cols(self):
-        r"""列信息。
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: list of TableColumn
-        """
-        return self._Cols
-
-    @Cols.setter
-    def Cols(self, Cols):
-        self._Cols = Cols
-
-    @property
-    def RequestId(self):
-        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._InstanceId = params.get("InstanceId")
-        self._DbName = params.get("DbName")
-        self._Table = params.get("Table")
-        if params.get("Cols") is not None:
-            self._Cols = []
-            for item in params.get("Cols"):
-                obj = TableColumn()
-                obj._deserialize(item)
-                self._Cols.append(obj)
-        self._RequestId = params.get("RequestId")
-
-
 class DescribeFlowRequest(AbstractModel):
     r"""DescribeFlow请求参数结构体
 
@@ -2336,9 +2139,9 @@ class ModifyAutoRenewFlagRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceIds: 需要修改的实例列表
+        :param _InstanceIds: <p>需要修改的实例列表</p>
         :type InstanceIds: list of str
-        :param _AutoRenewFlag: 1表示开启自动续费，0为关闭自动续费
+        :param _AutoRenewFlag: <p>1表示开启自动续费，0为关闭自动续费</p>
         :type AutoRenewFlag: int
         """
         self._InstanceIds = None
@@ -2346,7 +2149,7 @@ class ModifyAutoRenewFlagRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        r"""需要修改的实例列表
+        r"""<p>需要修改的实例列表</p>
         :rtype: list of str
         """
         return self._InstanceIds
@@ -2357,7 +2160,7 @@ class ModifyAutoRenewFlagRequest(AbstractModel):
 
     @property
     def AutoRenewFlag(self):
-        r"""1表示开启自动续费，0为关闭自动续费
+        r"""<p>1表示开启自动续费，0为关闭自动续费</p>
         :rtype: int
         """
         return self._AutoRenewFlag
@@ -2405,100 +2208,6 @@ class ModifyAutoRenewFlagResponse(AbstractModel):
 
 
     def _deserialize(self, params):
-        self._RequestId = params.get("RequestId")
-
-
-class ModifyBinlogStatusRequest(AbstractModel):
-    r"""ModifyBinlogStatus请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _InstanceId: 实例id
-        :type InstanceId: str
-        :param _Status: 1打开0关闭
-        :type Status: int
-        """
-        self._InstanceId = None
-        self._Status = None
-
-    @property
-    def InstanceId(self):
-        r"""实例id
-        :rtype: str
-        """
-        return self._InstanceId
-
-    @InstanceId.setter
-    def InstanceId(self, InstanceId):
-        self._InstanceId = InstanceId
-
-    @property
-    def Status(self):
-        r"""1打开0关闭
-        :rtype: int
-        """
-        return self._Status
-
-    @Status.setter
-    def Status(self, Status):
-        self._Status = Status
-
-
-    def _deserialize(self, params):
-        self._InstanceId = params.get("InstanceId")
-        self._Status = params.get("Status")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class ModifyBinlogStatusResponse(AbstractModel):
-    r"""ModifyBinlogStatus返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _FlowId: flow的流程id
-        :type FlowId: int
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._FlowId = None
-        self._RequestId = None
-
-    @property
-    def FlowId(self):
-        r"""flow的流程id
-        :rtype: int
-        """
-        return self._FlowId
-
-    @FlowId.setter
-    def FlowId(self, FlowId):
-        self._FlowId = FlowId
-
-    @property
-    def RequestId(self):
-        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._FlowId = params.get("FlowId")
         self._RequestId = params.get("RequestId")
 
 
@@ -3439,57 +3148,6 @@ class SecurityGroupBound(AbstractModel):
         self._Action = params.get("Action")
         self._PortRange = params.get("PortRange")
         self._IpProtocol = params.get("IpProtocol")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class TableColumn(AbstractModel):
-    r"""数据库列信息
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Col: 列名称
-        :type Col: str
-        :param _Type: 列类型
-        :type Type: str
-        """
-        self._Col = None
-        self._Type = None
-
-    @property
-    def Col(self):
-        r"""列名称
-        :rtype: str
-        """
-        return self._Col
-
-    @Col.setter
-    def Col(self, Col):
-        self._Col = Col
-
-    @property
-    def Type(self):
-        r"""列类型
-        :rtype: str
-        """
-        return self._Type
-
-    @Type.setter
-    def Type(self, Type):
-        self._Type = Type
-
-
-    def _deserialize(self, params):
-        self._Col = params.get("Col")
-        self._Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

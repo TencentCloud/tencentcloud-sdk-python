@@ -30284,24 +30284,34 @@ class EnableOriginACLRequest(AbstractModel):
         r"""
         :param _ZoneId: 站点 ID。
         :type ZoneId: str
-        :param _L7EnableMode: 七层加速域名开启源站防护的模式。
-<li>all：针对站点下的所有七层加速域名开启。</li>
-<li>specific：针对站点下指定的七层加速域名开启。</li>当参数为空时，默认为 specific。
+        :param _L7EnableMode: 站点首次开启源站防护时，为七层加速域名配置特定回源 IP 网段的模式。
+<li>all：针对当前站点下的所有七层加速域名开启，当域名数量超过 200 时，请先通过 specific 模式启用 200 个域名，剩余资源通过 ModifyOriginACL 接口启用。</li>
+<li>specific：针对站点下指定的七层加速域名开启。</li>注意：当参数为空时，默认为 specific。后续新增七层加速域名/四层代理实例均请通过 ModifyOriginACL 接口配置。
         :type L7EnableMode: str
         :param _L7Hosts: 开启源站防护的七层加速域名列表，仅当参数 L7EnableMode 为 specific 时生效。L7EnableMode 为 all 时，请保留此参数为空。单次最大仅支持填写 200 个七层加速域名。
         :type L7Hosts: list of str
-        :param _L4EnableMode: 四层代理实例开启源站防护的模式。
-<li>all：针对站点下的所有四层代理实例开启。</li>
-<li>specific：针对站点下指定的四层代理实例开启。</li>当参数为空时，默认为 specific。
+        :param _L4EnableMode: 站点首次开启源站防护时，为四层代理实例配置特定回源 IP 网段的模式。
+<li>all：针对当前站点下的所有四层代理实例开启，当实例数量超过 100 时，请先通过 specific 模式启用 100 个域名，剩余资源通过 ModifyOriginACL 接口启用。</li>
+<li>specific：针对站点下指定的四层代理实例开启。</li>注意：当参数为空时，默认为 specific。后续新增七层加速域名/四层代理实例均请通过 ModifyOriginACL 接口配置。
         :type L4EnableMode: str
         :param _L4ProxyIds: 开启源站防护的四层代理实例列表，仅当参数 L4EnableMode 为 specific 时生效。L4EnableMode 为 all 时，请保留此参数为空。单次最大仅支持填写 100 个四层代理实例。
         :type L4ProxyIds: list of str
+        :param _OriginACLFamily: 源站防护回源ACL控制域，不填则默认用标准全球控制域；可用控制域信息可以通过DescribeAvailableOriginACLFamily接口查询获得。
+具体取值说明如下：
+<li>gaz：标准全球可用区控制域；</li>
+<li>mlc：标准中国大陆可用区控制域；</li>
+<li>emc：标准全球(不含中国大陆)可用区控制域；</li>
+<li>plat-gaz：精简全球可用区控制域；</li>
+<li>plat-mlc：精简中国大陆可用区控制域；</li>
+<li>plat-emc：精简全球(不含中国大陆)可用区控制域；</li>
+        :type OriginACLFamily: str
         """
         self._ZoneId = None
         self._L7EnableMode = None
         self._L7Hosts = None
         self._L4EnableMode = None
         self._L4ProxyIds = None
+        self._OriginACLFamily = None
 
     @property
     def ZoneId(self):
@@ -30316,9 +30326,9 @@ class EnableOriginACLRequest(AbstractModel):
 
     @property
     def L7EnableMode(self):
-        r"""七层加速域名开启源站防护的模式。
-<li>all：针对站点下的所有七层加速域名开启。</li>
-<li>specific：针对站点下指定的七层加速域名开启。</li>当参数为空时，默认为 specific。
+        r"""站点首次开启源站防护时，为七层加速域名配置特定回源 IP 网段的模式。
+<li>all：针对当前站点下的所有七层加速域名开启，当域名数量超过 200 时，请先通过 specific 模式启用 200 个域名，剩余资源通过 ModifyOriginACL 接口启用。</li>
+<li>specific：针对站点下指定的七层加速域名开启。</li>注意：当参数为空时，默认为 specific。后续新增七层加速域名/四层代理实例均请通过 ModifyOriginACL 接口配置。
         :rtype: str
         """
         return self._L7EnableMode
@@ -30340,9 +30350,9 @@ class EnableOriginACLRequest(AbstractModel):
 
     @property
     def L4EnableMode(self):
-        r"""四层代理实例开启源站防护的模式。
-<li>all：针对站点下的所有四层代理实例开启。</li>
-<li>specific：针对站点下指定的四层代理实例开启。</li>当参数为空时，默认为 specific。
+        r"""站点首次开启源站防护时，为四层代理实例配置特定回源 IP 网段的模式。
+<li>all：针对当前站点下的所有四层代理实例开启，当实例数量超过 100 时，请先通过 specific 模式启用 100 个域名，剩余资源通过 ModifyOriginACL 接口启用。</li>
+<li>specific：针对站点下指定的四层代理实例开启。</li>注意：当参数为空时，默认为 specific。后续新增七层加速域名/四层代理实例均请通过 ModifyOriginACL 接口配置。
         :rtype: str
         """
         return self._L4EnableMode
@@ -30362,6 +30372,24 @@ class EnableOriginACLRequest(AbstractModel):
     def L4ProxyIds(self, L4ProxyIds):
         self._L4ProxyIds = L4ProxyIds
 
+    @property
+    def OriginACLFamily(self):
+        r"""源站防护回源ACL控制域，不填则默认用标准全球控制域；可用控制域信息可以通过DescribeAvailableOriginACLFamily接口查询获得。
+具体取值说明如下：
+<li>gaz：标准全球可用区控制域；</li>
+<li>mlc：标准中国大陆可用区控制域；</li>
+<li>emc：标准全球(不含中国大陆)可用区控制域；</li>
+<li>plat-gaz：精简全球可用区控制域；</li>
+<li>plat-mlc：精简中国大陆可用区控制域；</li>
+<li>plat-emc：精简全球(不含中国大陆)可用区控制域；</li>
+        :rtype: str
+        """
+        return self._OriginACLFamily
+
+    @OriginACLFamily.setter
+    def OriginACLFamily(self, OriginACLFamily):
+        self._OriginACLFamily = OriginACLFamily
+
 
     def _deserialize(self, params):
         self._ZoneId = params.get("ZoneId")
@@ -30369,6 +30397,7 @@ class EnableOriginACLRequest(AbstractModel):
         self._L7Hosts = params.get("L7Hosts")
         self._L4EnableMode = params.get("L4EnableMode")
         self._L4ProxyIds = params.get("L4ProxyIds")
+        self._OriginACLFamily = params.get("OriginACLFamily")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -41330,9 +41359,19 @@ class ModifyOriginACLRequest(AbstractModel):
         :type ZoneId: str
         :param _OriginACLEntities: 需要启用/关闭特定回源 IP 网段回源的实例。
         :type OriginACLEntities: list of OriginACLEntity
+        :param _OriginACLFamily: 源站防护回源ACL控制域，不填则默认不变；控制域信息可以通过DescribeAvailableOriginACLFamily接口查询获得。
+具体取值说明如下：
+<li>gaz：标准全球可用区控制域；</li>
+<li>mlc：标准中国大陆可用区控制域；</li>
+<li>emc：标准全球(不含中国大陆)可用区控制域；</li>
+<li>plat-gaz：精简全球可用区控制域；</li>
+<li>plat-mlc：精简中国大陆可用区控制域；</li>
+<li>plat-emc：精简全球(不含中国大陆)可用区控制域；</li>
+        :type OriginACLFamily: str
         """
         self._ZoneId = None
         self._OriginACLEntities = None
+        self._OriginACLFamily = None
 
     @property
     def ZoneId(self):
@@ -41356,6 +41395,24 @@ class ModifyOriginACLRequest(AbstractModel):
     def OriginACLEntities(self, OriginACLEntities):
         self._OriginACLEntities = OriginACLEntities
 
+    @property
+    def OriginACLFamily(self):
+        r"""源站防护回源ACL控制域，不填则默认不变；控制域信息可以通过DescribeAvailableOriginACLFamily接口查询获得。
+具体取值说明如下：
+<li>gaz：标准全球可用区控制域；</li>
+<li>mlc：标准中国大陆可用区控制域；</li>
+<li>emc：标准全球(不含中国大陆)可用区控制域；</li>
+<li>plat-gaz：精简全球可用区控制域；</li>
+<li>plat-mlc：精简中国大陆可用区控制域；</li>
+<li>plat-emc：精简全球(不含中国大陆)可用区控制域；</li>
+        :rtype: str
+        """
+        return self._OriginACLFamily
+
+    @OriginACLFamily.setter
+    def OriginACLFamily(self, OriginACLFamily):
+        self._OriginACLFamily = OriginACLFamily
+
 
     def _deserialize(self, params):
         self._ZoneId = params.get("ZoneId")
@@ -41365,6 +41422,7 @@ class ModifyOriginACLRequest(AbstractModel):
                 obj = OriginACLEntity()
                 obj._deserialize(item)
                 self._OriginACLEntities.append(obj)
+        self._OriginACLFamily = params.get("OriginACLFamily")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -45258,7 +45316,7 @@ class OriginACLEntity(AbstractModel):
 
 
 class OriginACLInfo(AbstractModel):
-    r"""七层加速域名/四层代理实例与回源 IP 网段的绑定关系，以及回源 IP 网段详情。
+    r"""七层加速域名/四层代理实例与回源 IP 网段的绑定关系，同时包含回源 IP 网段详情和选择可切换的回源 IP 网段列表。
 
     """
 
@@ -45279,12 +45337,15 @@ class OriginACLInfo(AbstractModel):
 <li>offline：已停用；</li>
 <li>updating: 配置部署中。</li>
         :type Status: str
+        :param _OriginACLFamily: 源站防护回源ACL控制域。
+        :type OriginACLFamily: str
         """
         self._L7Hosts = None
         self._L4ProxyIds = None
         self._CurrentOriginACL = None
         self._NextOriginACL = None
         self._Status = None
+        self._OriginACLFamily = None
 
     @property
     def L7Hosts(self):
@@ -45346,6 +45407,17 @@ class OriginACLInfo(AbstractModel):
     def Status(self, Status):
         self._Status = Status
 
+    @property
+    def OriginACLFamily(self):
+        r"""源站防护回源ACL控制域。
+        :rtype: str
+        """
+        return self._OriginACLFamily
+
+    @OriginACLFamily.setter
+    def OriginACLFamily(self, OriginACLFamily):
+        self._OriginACLFamily = OriginACLFamily
+
 
     def _deserialize(self, params):
         self._L7Hosts = params.get("L7Hosts")
@@ -45357,6 +45429,7 @@ class OriginACLInfo(AbstractModel):
             self._NextOriginACL = NextOriginACL()
             self._NextOriginACL._deserialize(params.get("NextOriginACL"))
         self._Status = params.get("Status")
+        self._OriginACLFamily = params.get("OriginACLFamily")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

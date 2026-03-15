@@ -79,26 +79,6 @@ class TdmysqlClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def DescribeBillingEnable(
-            self,
-            request: models.DescribeBillingEnableRequest,
-            opts: Dict = None,
-    ) -> models.DescribeBillingEnableResponse:
-        """
-        已无地方调用
-
-        本接口（DescribeBillingEnable）用于查询计费是否开启
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeBillingEnable"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeBillingEnableResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def DescribeDBParameters(
             self,
             request: models.DescribeDBParametersRequest,
@@ -189,26 +169,6 @@ class TdmysqlClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def DescribeDatabaseTable(
-            self,
-            request: models.DescribeDatabaseTableRequest,
-            opts: Dict = None,
-    ) -> models.DescribeDatabaseTableResponse:
-        """
-        冗余接口，无人调用
-
-        本接口（DescribeDatabaseTable）用于查询云数据库实例的表信息。
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeDatabaseTable"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeDatabaseTableResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def DescribeFlow(
             self,
             request: models.DescribeFlowRequest,
@@ -276,26 +236,6 @@ class TdmysqlClient(AbstractClient):
         kwargs["action"] = "ModifyAutoRenewFlag"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyAutoRenewFlagResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def ModifyBinlogStatus(
-            self,
-            request: models.ModifyBinlogStatusRequest,
-            opts: Dict = None,
-    ) -> models.ModifyBinlogStatusResponse:
-        """
-        接口功能已被 ModifyInstanceCdc 完全覆盖
-
-        修改binlog状态
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "ModifyBinlogStatus"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.ModifyBinlogStatusResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

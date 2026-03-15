@@ -115,6 +115,24 @@ class GoosefsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def BuildCustomerCluster(
+            self,
+            request: models.BuildCustomerClusterRequest,
+            opts: Dict = None,
+    ) -> models.BuildCustomerClusterResponse:
+        """
+        构建客户端集群
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "BuildCustomerCluster"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.BuildCustomerClusterResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CancelLoadTask(
             self,
             request: models.CancelLoadTaskRequest,
@@ -223,6 +241,24 @@ class GoosefsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteCustomerCluster(
+            self,
+            request: models.DeleteCustomerClusterRequest,
+            opts: Dict = None,
+    ) -> models.DeleteCustomerClusterResponse:
+        """
+        删除客户端集群
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteCustomerCluster"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteCustomerClusterResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteFileSystem(
             self,
             request: models.DeleteFileSystemRequest,
@@ -308,6 +344,24 @@ class GoosefsClient(AbstractClient):
         kwargs["action"] = "DescribeClusterRoleToken"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeClusterRoleTokenResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCustomerCluster(
+            self,
+            request: models.DescribeCustomerClusterRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCustomerClusterResponse:
+        """
+        查询客户端集群
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCustomerCluster"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCustomerClusterResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -488,6 +542,42 @@ class GoosefsClient(AbstractClient):
         kwargs["action"] = "ModifyDataRepositoryBandwidth"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyDataRepositoryBandwidthResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def MountMultipleStorageFileSystem(
+            self,
+            request: models.MountMultipleStorageFileSystemRequest,
+            opts: Dict = None,
+    ) -> models.MountMultipleStorageFileSystemResponse:
+        """
+        客户端集群挂载存储集群
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "MountMultipleStorageFileSystem"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.MountMultipleStorageFileSystemResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def QueryClientNodeMountCommand(
+            self,
+            request: models.QueryClientNodeMountCommandRequest,
+            opts: Dict = None,
+    ) -> models.QueryClientNodeMountCommandResponse:
+        """
+        生成客户端的挂载命令
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "QueryClientNodeMountCommand"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.QueryClientNodeMountCommandResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
