@@ -46,6 +46,24 @@ class TioneClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateDataSource(
+            self,
+            request: models.CreateDataSourceRequest,
+            opts: Dict = None,
+    ) -> models.CreateDataSourceResponse:
+        """
+        创建数据源
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateDataSource"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateDataSourceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateDataset(
             self,
             request: models.CreateDatasetRequest,
@@ -118,6 +136,24 @@ class TioneClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateMountLimit(
+            self,
+            request: models.CreateMountLimitRequest,
+            opts: Dict = None,
+    ) -> models.CreateMountLimitResponse:
+        """
+        创建挂载限制
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateMountLimit"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateMountLimitResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateNotebook(
             self,
             request: models.CreateNotebookRequest,
@@ -185,6 +221,24 @@ class TioneClient(AbstractClient):
         kwargs["action"] = "CreateTrainingTask"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreateTrainingTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteDataSource(
+            self,
+            request: models.DeleteDataSourceRequest,
+            opts: Dict = None,
+    ) -> models.DeleteDataSourceResponse:
+        """
+        删除数据源
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteDataSource"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteDataSourceResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -275,6 +329,24 @@ class TioneClient(AbstractClient):
         kwargs["action"] = "DeleteModelServiceGroup"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteModelServiceGroupResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteMountLimit(
+            self,
+            request: models.DeleteMountLimitRequest,
+            opts: Dict = None,
+    ) -> models.DeleteMountLimitResponse:
+        """
+        删除挂载限制。注意：删除挂载限制后，该存储对应的所有数据源也会被删除
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteMountLimit"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteMountLimitResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -455,6 +527,42 @@ class TioneClient(AbstractClient):
         kwargs["action"] = "DescribeBuildInImages"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeBuildInImagesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeDataSource(
+            self,
+            request: models.DescribeDataSourceRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDataSourceResponse:
+        """
+        获取数据源详情
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDataSource"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDataSourceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeDataSources(
+            self,
+            request: models.DescribeDataSourcesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDataSourcesResponse:
+        """
+        获取数据源列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDataSources"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDataSourcesResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -673,6 +781,60 @@ class TioneClient(AbstractClient):
         kwargs["action"] = "DescribeModelServiceHotUpdated"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeModelServiceHotUpdatedResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeMountInstance(
+            self,
+            request: models.DescribeMountInstanceRequest,
+            opts: Dict = None,
+    ) -> models.DescribeMountInstanceResponse:
+        """
+        DescribeMountInstance
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeMountInstance"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeMountInstanceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeMountInstances(
+            self,
+            request: models.DescribeMountInstancesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeMountInstancesResponse:
+        """
+        非数据源挂载时获取实例列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeMountInstances"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeMountInstancesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeMountLimits(
+            self,
+            request: models.DescribeMountLimitsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeMountLimitsResponse:
+        """
+        获取挂载限制列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeMountLimits"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeMountLimitsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1051,6 +1213,42 @@ class TioneClient(AbstractClient):
         kwargs["action"] = "StopTrainingTask"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.StopTrainingTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UpdateDataSource(
+            self,
+            request: models.UpdateDataSourceRequest,
+            opts: Dict = None,
+    ) -> models.UpdateDataSourceResponse:
+        """
+        更新数据源
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpdateDataSource"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpdateDataSourceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UpdateMountLimit(
+            self,
+            request: models.UpdateMountLimitRequest,
+            opts: Dict = None,
+    ) -> models.UpdateMountLimitResponse:
+        """
+        创建挂载限制
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpdateMountLimit"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpdateMountLimitResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

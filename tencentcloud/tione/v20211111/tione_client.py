@@ -52,6 +52,29 @@ class TioneClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateDataSource(self, request):
+        r"""创建数据源
+
+        :param request: Request instance for CreateDataSource.
+        :type request: :class:`tencentcloud.tione.v20211111.models.CreateDataSourceRequest`
+        :rtype: :class:`tencentcloud.tione.v20211111.models.CreateDataSourceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateDataSource", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateDataSourceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateDataset(self, request):
         r"""创建数据集
 
@@ -144,6 +167,29 @@ class TioneClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateMountLimit(self, request):
+        r"""创建挂载限制
+
+        :param request: Request instance for CreateMountLimit.
+        :type request: :class:`tencentcloud.tione.v20211111.models.CreateMountLimitRequest`
+        :rtype: :class:`tencentcloud.tione.v20211111.models.CreateMountLimitResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateMountLimit", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateMountLimitResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateNotebook(self, request):
         r"""创建Notebook
 
@@ -227,6 +273,29 @@ class TioneClient(AbstractClient):
             body = self.call("CreateTrainingTask", params, headers=headers)
             response = json.loads(body)
             model = models.CreateTrainingTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteDataSource(self, request):
+        r"""删除数据源
+
+        :param request: Request instance for DeleteDataSource.
+        :type request: :class:`tencentcloud.tione.v20211111.models.DeleteDataSourceRequest`
+        :rtype: :class:`tencentcloud.tione.v20211111.models.DeleteDataSourceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteDataSource", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteDataSourceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -342,6 +411,29 @@ class TioneClient(AbstractClient):
             body = self.call("DeleteModelServiceGroup", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteModelServiceGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteMountLimit(self, request):
+        r"""删除挂载限制。注意：删除挂载限制后，该存储对应的所有数据源也会被删除
+
+        :param request: Request instance for DeleteMountLimit.
+        :type request: :class:`tencentcloud.tione.v20211111.models.DeleteMountLimitRequest`
+        :rtype: :class:`tencentcloud.tione.v20211111.models.DeleteMountLimitResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteMountLimit", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteMountLimitResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -572,6 +664,52 @@ class TioneClient(AbstractClient):
             body = self.call("DescribeBuildInImages", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeBuildInImagesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDataSource(self, request):
+        r"""获取数据源详情
+
+        :param request: Request instance for DescribeDataSource.
+        :type request: :class:`tencentcloud.tione.v20211111.models.DescribeDataSourceRequest`
+        :rtype: :class:`tencentcloud.tione.v20211111.models.DescribeDataSourceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDataSource", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDataSourceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDataSources(self, request):
+        r"""获取数据源列表
+
+        :param request: Request instance for DescribeDataSources.
+        :type request: :class:`tencentcloud.tione.v20211111.models.DescribeDataSourcesRequest`
+        :rtype: :class:`tencentcloud.tione.v20211111.models.DescribeDataSourcesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDataSources", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDataSourcesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -850,6 +988,75 @@ class TioneClient(AbstractClient):
             body = self.call("DescribeModelServiceHotUpdated", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeModelServiceHotUpdatedResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeMountInstance(self, request):
+        r"""DescribeMountInstance
+
+        :param request: Request instance for DescribeMountInstance.
+        :type request: :class:`tencentcloud.tione.v20211111.models.DescribeMountInstanceRequest`
+        :rtype: :class:`tencentcloud.tione.v20211111.models.DescribeMountInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMountInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMountInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeMountInstances(self, request):
+        r"""非数据源挂载时获取实例列表
+
+        :param request: Request instance for DescribeMountInstances.
+        :type request: :class:`tencentcloud.tione.v20211111.models.DescribeMountInstancesRequest`
+        :rtype: :class:`tencentcloud.tione.v20211111.models.DescribeMountInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMountInstances", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMountInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeMountLimits(self, request):
+        r"""获取挂载限制列表
+
+        :param request: Request instance for DescribeMountLimits.
+        :type request: :class:`tencentcloud.tione.v20211111.models.DescribeMountLimitsRequest`
+        :rtype: :class:`tencentcloud.tione.v20211111.models.DescribeMountLimitsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMountLimits", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMountLimitsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1333,6 +1540,52 @@ class TioneClient(AbstractClient):
             body = self.call("StopTrainingTask", params, headers=headers)
             response = json.loads(body)
             model = models.StopTrainingTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateDataSource(self, request):
+        r"""更新数据源
+
+        :param request: Request instance for UpdateDataSource.
+        :type request: :class:`tencentcloud.tione.v20211111.models.UpdateDataSourceRequest`
+        :rtype: :class:`tencentcloud.tione.v20211111.models.UpdateDataSourceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateDataSource", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateDataSourceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateMountLimit(self, request):
+        r"""创建挂载限制
+
+        :param request: Request instance for UpdateMountLimit.
+        :type request: :class:`tencentcloud.tione.v20211111.models.UpdateMountLimitRequest`
+        :rtype: :class:`tencentcloud.tione.v20211111.models.UpdateMountLimitResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateMountLimit", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateMountLimitResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

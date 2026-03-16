@@ -589,95 +589,29 @@ class CreateTranscodeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkAppId: 客户的SdkAppId
+        :param _SdkAppId: <p>客户的SdkAppId</p>
         :type SdkAppId: int
-        :param _Url: 经过URL编码后的转码文件地址。URL 编码会将字符转换为可通过因特网传输的格式，比如文档地址为http://example.com/测试.pdf，经过URL编码之后为http://example.com/%E6%B5%8B%E8%AF%95.pdf。为了提高URL解析的成功率，请对URL进行编码。
+        :param _Url: <p>经过URL编码后的转码文件地址。URL 编码会将字符转换为可通过因特网传输的格式，比如文档地址为http://example.com/测试.pdf，经过URL编码之后为http://example.com/%E6%B5%8B%E8%AF%95.pdf。为了提高URL解析的成功率，请对URL进行编码。</p>
         :type Url: str
-        :param _IsStaticPPT: 是否为静态PPT，默认为False；
-如果IsStaticPPT为False，后缀名为.ppt或.pptx的文档会动态转码成HTML5页面，其他格式的文档会静态转码成图片；如果IsStaticPPT为True，所有格式的文档会静态转码成图片；
+        :param _IsStaticPPT: <p>是否为静态PPT，默认为False；<br>如果IsStaticPPT为False，后缀名为.ppt或.pptx的文档会动态转码成HTML5页面，其他格式的文档会静态转码成图片；如果IsStaticPPT为True，所有格式的文档会静态转码成图片；</p>
         :type IsStaticPPT: bool
-        :param _MinResolution: 注意: 该参数已废弃, 请使用最新的 [云API SDK](https://cloud.tencent.com/document/api/1137/40060#SDK) ，使用 MinScaleResolution字段传递分辨率
-
-转码后文档的最小分辨率，不传、传空字符串或分辨率格式错误则使用文档原分辨率
-
-示例：1280x720，注意分辨率宽高中间为英文字母"xyz"的"x"
+        :param _MinResolution: <p>注意: 该参数已废弃, 请使用最新的 <a href="https://cloud.tencent.com/document/api/1137/40060#SDK">云API SDK</a> ，使用 MinScaleResolution字段传递分辨率</p><p>转码后文档的最小分辨率，不传、传空字符串或分辨率格式错误则使用文档原分辨率</p><p>示例：1280x720，注意分辨率宽高中间为英文字母&quot;xyz&quot;的&quot;x&quot;</p>
         :type MinResolution: str
-        :param _ThumbnailResolution: 动态PPT转码可以为文件生成该分辨率的缩略图，不传、传空字符串或分辨率格式错误则不生成缩略图，分辨率格式同MinResolution
+        :param _ThumbnailResolution: <p>动态PPT转码可以为文件生成该分辨率的缩略图，不传、传空字符串或分辨率格式错误则不生成缩略图，分辨率格式同MinResolution</p>
         :type ThumbnailResolution: str
-        :param _CompressFileType: 转码文件压缩格式，不传、传空字符串或不是指定的格式则不生成压缩文件，目前支持如下压缩格式：
-
-zip： 生成`.zip`压缩包
-tar.gz： 生成`.tar.gz`压缩包
+        :param _CompressFileType: <p>转码文件压缩格式，不传、传空字符串或不是指定的格式则不生成压缩文件，目前支持如下压缩格式：</p><p>zip： 生成<code>.zip</code>压缩包<br>tar.gz： 生成<code>.tar.gz</code>压缩包</p>
         :type CompressFileType: str
-        :param _ExtraData: 内部参数
+        :param _ExtraData: <p>内部参数</p>
         :type ExtraData: str
-        :param _Priority: 文档转码优先级， 只有对于PPT动态转码生效，支持填入以下值：<br/>
-- low: 低优先级转码，对于动态转码，能支持500MB（下载超时时间10分钟）以及2000页文档，但资源有限可能会有比较长时间的排队，请酌情使用该功能。<br/>
-- 不填表示正常优先级转码，支持200MB文件（下载超时时间2分钟），500页以内的文档进行转码
-<br/>
-注意：对于PDF等静态文件转码，无论是正常优先级或者低优先级，最大只能支持200MB
+        :param _Priority: <p>文档转码优先级， 只有对于PPT动态转码生效，支持填入以下值：<br></p><ul><li>low: 低优先级转码，对于动态转码，能支持500MB（下载超时时间10分钟）以及2000页文档，但资源有限可能会有比较长时间的排队，请酌情使用该功能。<br></li><li>不填表示正常优先级转码，支持200MB文件（下载超时时间2分钟），500页以内的文档进行转码<br>注意：对于PDF等静态文件转码，无论是正常优先级或者低优先级，最大只能支持200MB</li></ul>
         :type Priority: str
-        :param _MinScaleResolution: 转码后文档的最小分辨率，不传、传空字符串或分辨率格式错误则使用文档原分辨率。
-分辨率越高，效果越清晰，转出来的图片资源体积会越大，课件加载耗时会变长，请根据实际使用场景配置此参数。
-
-示例：1280x720，注意分辨率宽高中间为英文字母"xyz"的"x"
+        :param _MinScaleResolution: <p>转码后文档的最小分辨率，不传、传空字符串或分辨率格式错误则使用文档原分辨率。<br>分辨率越高，效果越清晰，转出来的图片资源体积会越大，课件加载耗时会变长，请根据实际使用场景配置此参数。</p><p>示例：1280x720，注意分辨率宽高中间为英文字母&quot;xyz&quot;的&quot;x&quot;</p>
         :type MinScaleResolution: str
-        :param _AutoHandleUnsupportedElement: 此参数仅对动态转码生效。
-
-是否对不支持元素开启自动处理的功能，默认不开启。
-true -- 开启
-false -- 不开启
-
-当设置为`true`时，可配合`AutoHandleUnsupportedElementTypes`参数使用，具体有哪些不兼容元素类型，可参考`AutoHandleUnsupportedElementTypes`参数的说明。
+        :param _AutoHandleUnsupportedElement: <p>此参数仅对动态转码生效。</p><p>是否对不支持元素开启自动处理的功能，默认不开启。<br>true -- 开启<br>false -- 不开启</p><p>当设置为<code>true</code>时，可配合<code>AutoHandleUnsupportedElementTypes</code>参数使用，具体有哪些不兼容元素类型，可参考<code>AutoHandleUnsupportedElementTypes</code>参数的说明。</p>
         :type AutoHandleUnsupportedElement: bool
-        :param _AutoHandleUnsupportedElementTypes: 此参数仅在`AutoHandleUnsupportedElement`参数为`true`的情况下有效。
-
-指定需要自动处理的不兼容元素类型，默认对所有不兼容的元素进行自动处理。
-
-目前支持检测的不兼容元素类型及对应的自动处理方式如下：
-0: 不支持的墨迹类型
--- 自动处理方式：移除墨迹
-
-1: 自动翻页
--- 自动处理方式：移除自动翻页设置，并修改为单击切换
-
-2: 已损坏音视频
--- 自动处理方式：移除对损坏音视频的引用
-
-3: 不可访问资源
--- 自动处理方式：移除对不可访问的资源的引用
-
-4: 只读文件
--- 自动处理方式：移除只读设置
-
-5: 不支持的元素编辑锁定状态
--- 自动处理方式：移除锁定状态
-
-6: 可能有兼容问题的字体
--- 自动处理方式： 不支持处理
-
-7: 设置了柔化边缘的GIF图片
--- 自动处理方式：移除柔化边缘设置
-
-8: 存在不兼容的空格下划线
--- 自动处理方式：通过调整空格下划线前后文本的字体语言体系，保证空格下划线表现正常
-
-9: 存在设置了分段动画的数学公式和文本混合内容
--- 自动处理方式： 不支持处理
-
-10: 存在设置了分段动画的渐变色文本
--- 自动处理方式： 不支持处理
-
-11: 存在不兼容的分散对齐方式
--- 自动处理方式： 不支持处理
-
-12: 存在不兼容的多倍行距设置
--- 自动处理方式： 不支持处理
-
-13: 存在带有特殊符号内容的datetime类型的a:fld标签元素
--- 自动处理方式： a:fld标签替换为普通文本
+        :param _AutoHandleUnsupportedElementTypes: <p>此参数仅在<code>AutoHandleUnsupportedElement</code>参数为<code>true</code>的情况下有效。</p><p>指定需要自动处理的不兼容元素类型，默认对所有不兼容的元素进行自动处理。</p><p>目前支持检测的不兼容元素类型及对应的自动处理方式如下：<br>0: 不支持的墨迹类型<br>-- 自动处理方式：移除墨迹</p><p>1: 自动翻页<br>-- 自动处理方式：移除自动翻页设置，并修改为单击切换</p><p>2: 已损坏音视频<br>-- 自动处理方式：移除对损坏音视频的引用</p><p>3: 不可访问资源<br>-- 自动处理方式：移除对不可访问的资源的引用</p><p>4: 只读文件<br>-- 自动处理方式：移除只读设置</p><p>5: 不支持的元素编辑锁定状态<br>-- 自动处理方式：移除锁定状态</p><p>6: 可能有兼容问题的字体<br>-- 自动处理方式： 不支持处理</p><p>7: 设置了柔化边缘的GIF图片<br>-- 自动处理方式：移除柔化边缘设置</p><p>8: 存在不兼容的空格下划线<br>-- 自动处理方式：通过调整空格下划线前后文本的字体语言体系，保证空格下划线表现正常</p><p>9: 存在设置了分段动画的数学公式和文本混合内容<br>-- 自动处理方式： 不支持处理</p><p>10: 存在设置了分段动画的渐变色文本<br>-- 自动处理方式： 不支持处理</p><p>11: 存在不兼容的分散对齐方式<br>-- 自动处理方式： 不支持处理</p><p>12: 存在不兼容的多倍行距设置<br>-- 自动处理方式： 不支持处理</p><p>13: 存在带有特殊符号内容的datetime类型的a:fld标签元素<br>-- 自动处理方式： a:fld标签替换为普通文本</p>
         :type AutoHandleUnsupportedElementTypes: list of int
-        :param _ExcelParam: Excel表格转码参数，可设置转码时表格纸张大小及纸张方向等参数（仅对转码文件为Excel表格文件的静态转码任务生效）
+        :param _ExcelParam: <p>Excel表格转码参数，可设置转码时表格纸张大小及纸张方向等参数（仅对转码文件为Excel表格文件的静态转码任务生效）</p>
         :type ExcelParam: :class:`tencentcloud.tiw.v20190919.models.ExcelParam`
         """
         self._SdkAppId = None
@@ -695,7 +629,7 @@ false -- 不开启
 
     @property
     def SdkAppId(self):
-        r"""客户的SdkAppId
+        r"""<p>客户的SdkAppId</p>
         :rtype: int
         """
         return self._SdkAppId
@@ -706,7 +640,7 @@ false -- 不开启
 
     @property
     def Url(self):
-        r"""经过URL编码后的转码文件地址。URL 编码会将字符转换为可通过因特网传输的格式，比如文档地址为http://example.com/测试.pdf，经过URL编码之后为http://example.com/%E6%B5%8B%E8%AF%95.pdf。为了提高URL解析的成功率，请对URL进行编码。
+        r"""<p>经过URL编码后的转码文件地址。URL 编码会将字符转换为可通过因特网传输的格式，比如文档地址为http://example.com/测试.pdf，经过URL编码之后为http://example.com/%E6%B5%8B%E8%AF%95.pdf。为了提高URL解析的成功率，请对URL进行编码。</p>
         :rtype: str
         """
         return self._Url
@@ -717,8 +651,7 @@ false -- 不开启
 
     @property
     def IsStaticPPT(self):
-        r"""是否为静态PPT，默认为False；
-如果IsStaticPPT为False，后缀名为.ppt或.pptx的文档会动态转码成HTML5页面，其他格式的文档会静态转码成图片；如果IsStaticPPT为True，所有格式的文档会静态转码成图片；
+        r"""<p>是否为静态PPT，默认为False；<br>如果IsStaticPPT为False，后缀名为.ppt或.pptx的文档会动态转码成HTML5页面，其他格式的文档会静态转码成图片；如果IsStaticPPT为True，所有格式的文档会静态转码成图片；</p>
         :rtype: bool
         """
         return self._IsStaticPPT
@@ -729,11 +662,7 @@ false -- 不开启
 
     @property
     def MinResolution(self):
-        r"""注意: 该参数已废弃, 请使用最新的 [云API SDK](https://cloud.tencent.com/document/api/1137/40060#SDK) ，使用 MinScaleResolution字段传递分辨率
-
-转码后文档的最小分辨率，不传、传空字符串或分辨率格式错误则使用文档原分辨率
-
-示例：1280x720，注意分辨率宽高中间为英文字母"xyz"的"x"
+        r"""<p>注意: 该参数已废弃, 请使用最新的 <a href="https://cloud.tencent.com/document/api/1137/40060#SDK">云API SDK</a> ，使用 MinScaleResolution字段传递分辨率</p><p>转码后文档的最小分辨率，不传、传空字符串或分辨率格式错误则使用文档原分辨率</p><p>示例：1280x720，注意分辨率宽高中间为英文字母&quot;xyz&quot;的&quot;x&quot;</p>
         :rtype: str
         """
         return self._MinResolution
@@ -744,7 +673,7 @@ false -- 不开启
 
     @property
     def ThumbnailResolution(self):
-        r"""动态PPT转码可以为文件生成该分辨率的缩略图，不传、传空字符串或分辨率格式错误则不生成缩略图，分辨率格式同MinResolution
+        r"""<p>动态PPT转码可以为文件生成该分辨率的缩略图，不传、传空字符串或分辨率格式错误则不生成缩略图，分辨率格式同MinResolution</p>
         :rtype: str
         """
         return self._ThumbnailResolution
@@ -755,10 +684,7 @@ false -- 不开启
 
     @property
     def CompressFileType(self):
-        r"""转码文件压缩格式，不传、传空字符串或不是指定的格式则不生成压缩文件，目前支持如下压缩格式：
-
-zip： 生成`.zip`压缩包
-tar.gz： 生成`.tar.gz`压缩包
+        r"""<p>转码文件压缩格式，不传、传空字符串或不是指定的格式则不生成压缩文件，目前支持如下压缩格式：</p><p>zip： 生成<code>.zip</code>压缩包<br>tar.gz： 生成<code>.tar.gz</code>压缩包</p>
         :rtype: str
         """
         return self._CompressFileType
@@ -769,7 +695,7 @@ tar.gz： 生成`.tar.gz`压缩包
 
     @property
     def ExtraData(self):
-        r"""内部参数
+        r"""<p>内部参数</p>
         :rtype: str
         """
         return self._ExtraData
@@ -780,11 +706,7 @@ tar.gz： 生成`.tar.gz`压缩包
 
     @property
     def Priority(self):
-        r"""文档转码优先级， 只有对于PPT动态转码生效，支持填入以下值：<br/>
-- low: 低优先级转码，对于动态转码，能支持500MB（下载超时时间10分钟）以及2000页文档，但资源有限可能会有比较长时间的排队，请酌情使用该功能。<br/>
-- 不填表示正常优先级转码，支持200MB文件（下载超时时间2分钟），500页以内的文档进行转码
-<br/>
-注意：对于PDF等静态文件转码，无论是正常优先级或者低优先级，最大只能支持200MB
+        r"""<p>文档转码优先级， 只有对于PPT动态转码生效，支持填入以下值：<br></p><ul><li>low: 低优先级转码，对于动态转码，能支持500MB（下载超时时间10分钟）以及2000页文档，但资源有限可能会有比较长时间的排队，请酌情使用该功能。<br></li><li>不填表示正常优先级转码，支持200MB文件（下载超时时间2分钟），500页以内的文档进行转码<br>注意：对于PDF等静态文件转码，无论是正常优先级或者低优先级，最大只能支持200MB</li></ul>
         :rtype: str
         """
         return self._Priority
@@ -795,10 +717,7 @@ tar.gz： 生成`.tar.gz`压缩包
 
     @property
     def MinScaleResolution(self):
-        r"""转码后文档的最小分辨率，不传、传空字符串或分辨率格式错误则使用文档原分辨率。
-分辨率越高，效果越清晰，转出来的图片资源体积会越大，课件加载耗时会变长，请根据实际使用场景配置此参数。
-
-示例：1280x720，注意分辨率宽高中间为英文字母"xyz"的"x"
+        r"""<p>转码后文档的最小分辨率，不传、传空字符串或分辨率格式错误则使用文档原分辨率。<br>分辨率越高，效果越清晰，转出来的图片资源体积会越大，课件加载耗时会变长，请根据实际使用场景配置此参数。</p><p>示例：1280x720，注意分辨率宽高中间为英文字母&quot;xyz&quot;的&quot;x&quot;</p>
         :rtype: str
         """
         return self._MinScaleResolution
@@ -809,13 +728,7 @@ tar.gz： 生成`.tar.gz`压缩包
 
     @property
     def AutoHandleUnsupportedElement(self):
-        r"""此参数仅对动态转码生效。
-
-是否对不支持元素开启自动处理的功能，默认不开启。
-true -- 开启
-false -- 不开启
-
-当设置为`true`时，可配合`AutoHandleUnsupportedElementTypes`参数使用，具体有哪些不兼容元素类型，可参考`AutoHandleUnsupportedElementTypes`参数的说明。
+        r"""<p>此参数仅对动态转码生效。</p><p>是否对不支持元素开启自动处理的功能，默认不开启。<br>true -- 开启<br>false -- 不开启</p><p>当设置为<code>true</code>时，可配合<code>AutoHandleUnsupportedElementTypes</code>参数使用，具体有哪些不兼容元素类型，可参考<code>AutoHandleUnsupportedElementTypes</code>参数的说明。</p>
         :rtype: bool
         """
         return self._AutoHandleUnsupportedElement
@@ -826,52 +739,7 @@ false -- 不开启
 
     @property
     def AutoHandleUnsupportedElementTypes(self):
-        r"""此参数仅在`AutoHandleUnsupportedElement`参数为`true`的情况下有效。
-
-指定需要自动处理的不兼容元素类型，默认对所有不兼容的元素进行自动处理。
-
-目前支持检测的不兼容元素类型及对应的自动处理方式如下：
-0: 不支持的墨迹类型
--- 自动处理方式：移除墨迹
-
-1: 自动翻页
--- 自动处理方式：移除自动翻页设置，并修改为单击切换
-
-2: 已损坏音视频
--- 自动处理方式：移除对损坏音视频的引用
-
-3: 不可访问资源
--- 自动处理方式：移除对不可访问的资源的引用
-
-4: 只读文件
--- 自动处理方式：移除只读设置
-
-5: 不支持的元素编辑锁定状态
--- 自动处理方式：移除锁定状态
-
-6: 可能有兼容问题的字体
--- 自动处理方式： 不支持处理
-
-7: 设置了柔化边缘的GIF图片
--- 自动处理方式：移除柔化边缘设置
-
-8: 存在不兼容的空格下划线
--- 自动处理方式：通过调整空格下划线前后文本的字体语言体系，保证空格下划线表现正常
-
-9: 存在设置了分段动画的数学公式和文本混合内容
--- 自动处理方式： 不支持处理
-
-10: 存在设置了分段动画的渐变色文本
--- 自动处理方式： 不支持处理
-
-11: 存在不兼容的分散对齐方式
--- 自动处理方式： 不支持处理
-
-12: 存在不兼容的多倍行距设置
--- 自动处理方式： 不支持处理
-
-13: 存在带有特殊符号内容的datetime类型的a:fld标签元素
--- 自动处理方式： a:fld标签替换为普通文本
+        r"""<p>此参数仅在<code>AutoHandleUnsupportedElement</code>参数为<code>true</code>的情况下有效。</p><p>指定需要自动处理的不兼容元素类型，默认对所有不兼容的元素进行自动处理。</p><p>目前支持检测的不兼容元素类型及对应的自动处理方式如下：<br>0: 不支持的墨迹类型<br>-- 自动处理方式：移除墨迹</p><p>1: 自动翻页<br>-- 自动处理方式：移除自动翻页设置，并修改为单击切换</p><p>2: 已损坏音视频<br>-- 自动处理方式：移除对损坏音视频的引用</p><p>3: 不可访问资源<br>-- 自动处理方式：移除对不可访问的资源的引用</p><p>4: 只读文件<br>-- 自动处理方式：移除只读设置</p><p>5: 不支持的元素编辑锁定状态<br>-- 自动处理方式：移除锁定状态</p><p>6: 可能有兼容问题的字体<br>-- 自动处理方式： 不支持处理</p><p>7: 设置了柔化边缘的GIF图片<br>-- 自动处理方式：移除柔化边缘设置</p><p>8: 存在不兼容的空格下划线<br>-- 自动处理方式：通过调整空格下划线前后文本的字体语言体系，保证空格下划线表现正常</p><p>9: 存在设置了分段动画的数学公式和文本混合内容<br>-- 自动处理方式： 不支持处理</p><p>10: 存在设置了分段动画的渐变色文本<br>-- 自动处理方式： 不支持处理</p><p>11: 存在不兼容的分散对齐方式<br>-- 自动处理方式： 不支持处理</p><p>12: 存在不兼容的多倍行距设置<br>-- 自动处理方式： 不支持处理</p><p>13: 存在带有特殊符号内容的datetime类型的a:fld标签元素<br>-- 自动处理方式： a:fld标签替换为普通文本</p>
         :rtype: list of int
         """
         return self._AutoHandleUnsupportedElementTypes
@@ -882,7 +750,7 @@ false -- 不开启
 
     @property
     def ExcelParam(self):
-        r"""Excel表格转码参数，可设置转码时表格纸张大小及纸张方向等参数（仅对转码文件为Excel表格文件的静态转码任务生效）
+        r"""<p>Excel表格转码参数，可设置转码时表格纸张大小及纸张方向等参数（仅对转码文件为Excel表格文件的静态转码任务生效）</p>
         :rtype: :class:`tencentcloud.tiw.v20190919.models.ExcelParam`
         """
         return self._ExcelParam
@@ -924,7 +792,7 @@ class CreateTranscodeResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 文档转码任务的唯一标识Id，用于查询该任务的进度以及转码结果
+        :param _TaskId: <p>文档转码任务的唯一标识Id，用于查询该任务的进度以及转码结果</p>
         :type TaskId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -934,7 +802,7 @@ class CreateTranscodeResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""文档转码任务的唯一标识Id，用于查询该任务的进度以及转码结果
+        r"""<p>文档转码任务的唯一标识Id，用于查询该任务的进度以及转码结果</p>
         :rtype: str
         """
         return self._TaskId

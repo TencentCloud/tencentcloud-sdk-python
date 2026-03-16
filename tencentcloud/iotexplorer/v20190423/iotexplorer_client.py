@@ -49,6 +49,29 @@ class IotexplorerClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ActivateTWeTalk(self, request):
+        r"""TWeTalk设备激活接口。
+
+        :param request: Request instance for ActivateTWeTalk.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.ActivateTWeTalkRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.ActivateTWeTalkResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ActivateTWeTalk", params, headers=headers)
+            response = json.loads(body)
+            model = models.ActivateTWeTalkResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def BatchCreateTWeSeeRecognitionTask(self, request):
         r"""批量同步执行 TWeSee 语义理解任务
 
@@ -3214,6 +3237,52 @@ class IotexplorerClient(AbstractClient):
             body = self.call("GetTWeTalkAIBotList", params, headers=headers)
             response = json.loads(body)
             model = models.GetTWeTalkAIBotListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GetTWeTalkActiveRecordList(self, request):
+        r"""TWeTalk消耗账单明细。
+
+        :param request: Request instance for GetTWeTalkActiveRecordList.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.GetTWeTalkActiveRecordListRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.GetTWeTalkActiveRecordListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetTWeTalkActiveRecordList", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetTWeTalkActiveRecordListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GetTWeTalkActiveStatus(self, request):
+        r"""查询TWeTalk设备激活状态。
+
+        :param request: Request instance for GetTWeTalkActiveStatus.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.GetTWeTalkActiveStatusRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.GetTWeTalkActiveStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetTWeTalkActiveStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetTWeTalkActiveStatusResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

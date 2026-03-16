@@ -79364,30 +79364,24 @@ class SceneAigcImageOutputConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StorageMode: 存储模式。取值有： <li>Permanent：永久存储，生成的图片文件将存储到云点播，可在事件通知中获取到 FileId；</li> <li>Temporary：临时存储，生成的图片文件不会存储到云点播，可在事件通知中获取到临时访问的 URL；</li>
-默认值：Temporary
+        :param _StorageMode: <p>存储模式。取值有： <li>Permanent：永久存储，生成的图片文件将存储到云点播，可在事件通知中获取到 FileId；</li> <li>Temporary：临时存储，生成的图片文件不会存储到云点播，可在事件通知中获取到临时访问的 URL；</li><br>默认值：Temporary</p>
         :type StorageMode: str
-        :param _MediaName: 输出文件名，最长 64 个字符。缺省由系统指定生成文件名。
+        :param _MediaName: <p>输出文件名，最长 64 个字符。缺省由系统指定生成文件名。</p>
         :type MediaName: str
-        :param _ClassId: 分类ID，用于对媒体进行分类管理，可通过 [创建分类](/document/product/266/7812) 接口，创建分类，获得分类 ID。
-<li>默认值：0，表示其他分类。</li>
+        :param _ClassId: <p>分类ID，用于对媒体进行分类管理，可通过 <a href="/document/product/266/7812">创建分类</a> 接口，创建分类，获得分类 ID。</p><li>默认值：0，表示其他分类。</li>
         :type ClassId: int
-        :param _ExpireTime: 输出文件的过期时间，超过该时间文件将被删除，默认为永久不过期，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
+        :param _ExpireTime: <p>输出文件的过期时间，超过该时间文件将被删除，默认为永久不过期，格式按照 ISO 8601标准表示，详见 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式说明</a>。</p>
         :type ExpireTime: str
-        :param _AspectRatio: 指定所生成图片的宽高比。输入格式为 W:H。
-本字段在以下场景有效：
-* 生商品图场景，可选值为：1:1、3:2、2:3、3:4、4:3、4:5、5:4、16:9、9:16、21:9
-* AI扩图场景。可选值为：1:1、3:2、2:3、3:4、4:3、4:5、5:4、9:16、16:9、21:9，可以配合 ImageWidth 和 ImageHeight 使用，规则如下： 
-    1. 仅指定 AspectRatio 时，根据原图输入进行自适应调整。
-    2. 指定 AspectRatio 和 ImageWidth 时，ImageHeight  由两者计算得出，反亦是如此。
-    3. 当AspectRatio、ImageWidth、ImageHeight 同时指定的时候，优先使用ImageWidth、ImageHeight。
+        :param _AspectRatio: <p>指定所生成图片的宽高比。输入格式为 W:H。<br>本字段在以下场景有效：</p><ul><li>生商品图场景，可选值为：1:1、3:2、2:3、3:4、4:3、4:5、5:4、16:9、9:16、21:9</li><li>AI扩图场景。可选值为：1:1、3:2、2:3、3:4、4:3、4:5、5:4、9:16、16:9、21:9，可以配合 ImageWidth 和 ImageHeight 使用，规则如下： <ol><li>仅指定 AspectRatio 时，根据原图输入进行自适应调整。</li><li>指定 AspectRatio 和 ImageWidth 时，ImageHeight  由两者计算得出，反亦是如此。</li><li>当AspectRatio、ImageWidth、ImageHeight 同时指定的时候，优先使用ImageWidth、ImageHeight。</li></ol></li></ul>
         :type AspectRatio: str
-        :param _EncodeConfig: 输出图片编码格式参数。**仅AI换衣场景有效。**
+        :param _EncodeConfig: <p>输出图片编码格式参数。<strong>仅AI换衣场景有效。</strong></p>
         :type EncodeConfig: :class:`tencentcloud.vod.v20180717.models.ImageSceneAigcEncodeConfig`
-        :param _ImageWidth: 输出图像宽度，**仅AI扩图场景有效**。
+        :param _ImageWidth: <p>输出图像宽度，<strong>仅AI扩图场景有效</strong>。</p>
         :type ImageWidth: int
-        :param _ImageHeight: 输出图像高度，**仅AI扩图场景有效**。
+        :param _ImageHeight: <p>输出图像高度，<strong>仅AI扩图场景有效</strong>。</p>
         :type ImageHeight: int
+        :param _Resolution: <p>输出分辨率。仅change_clothes、change_clothes_under场景有效。可选值：1K、2K、4K。</p>
+        :type Resolution: str
         """
         self._StorageMode = None
         self._MediaName = None
@@ -79397,11 +79391,11 @@ class SceneAigcImageOutputConfig(AbstractModel):
         self._EncodeConfig = None
         self._ImageWidth = None
         self._ImageHeight = None
+        self._Resolution = None
 
     @property
     def StorageMode(self):
-        r"""存储模式。取值有： <li>Permanent：永久存储，生成的图片文件将存储到云点播，可在事件通知中获取到 FileId；</li> <li>Temporary：临时存储，生成的图片文件不会存储到云点播，可在事件通知中获取到临时访问的 URL；</li>
-默认值：Temporary
+        r"""<p>存储模式。取值有： <li>Permanent：永久存储，生成的图片文件将存储到云点播，可在事件通知中获取到 FileId；</li> <li>Temporary：临时存储，生成的图片文件不会存储到云点播，可在事件通知中获取到临时访问的 URL；</li><br>默认值：Temporary</p>
         :rtype: str
         """
         return self._StorageMode
@@ -79412,7 +79406,7 @@ class SceneAigcImageOutputConfig(AbstractModel):
 
     @property
     def MediaName(self):
-        r"""输出文件名，最长 64 个字符。缺省由系统指定生成文件名。
+        r"""<p>输出文件名，最长 64 个字符。缺省由系统指定生成文件名。</p>
         :rtype: str
         """
         return self._MediaName
@@ -79423,8 +79417,7 @@ class SceneAigcImageOutputConfig(AbstractModel):
 
     @property
     def ClassId(self):
-        r"""分类ID，用于对媒体进行分类管理，可通过 [创建分类](/document/product/266/7812) 接口，创建分类，获得分类 ID。
-<li>默认值：0，表示其他分类。</li>
+        r"""<p>分类ID，用于对媒体进行分类管理，可通过 <a href="/document/product/266/7812">创建分类</a> 接口，创建分类，获得分类 ID。</p><li>默认值：0，表示其他分类。</li>
         :rtype: int
         """
         return self._ClassId
@@ -79435,7 +79428,7 @@ class SceneAigcImageOutputConfig(AbstractModel):
 
     @property
     def ExpireTime(self):
-        r"""输出文件的过期时间，超过该时间文件将被删除，默认为永久不过期，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
+        r"""<p>输出文件的过期时间，超过该时间文件将被删除，默认为永久不过期，格式按照 ISO 8601标准表示，详见 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式说明</a>。</p>
         :rtype: str
         """
         return self._ExpireTime
@@ -79446,13 +79439,7 @@ class SceneAigcImageOutputConfig(AbstractModel):
 
     @property
     def AspectRatio(self):
-        r"""指定所生成图片的宽高比。输入格式为 W:H。
-本字段在以下场景有效：
-* 生商品图场景，可选值为：1:1、3:2、2:3、3:4、4:3、4:5、5:4、16:9、9:16、21:9
-* AI扩图场景。可选值为：1:1、3:2、2:3、3:4、4:3、4:5、5:4、9:16、16:9、21:9，可以配合 ImageWidth 和 ImageHeight 使用，规则如下： 
-    1. 仅指定 AspectRatio 时，根据原图输入进行自适应调整。
-    2. 指定 AspectRatio 和 ImageWidth 时，ImageHeight  由两者计算得出，反亦是如此。
-    3. 当AspectRatio、ImageWidth、ImageHeight 同时指定的时候，优先使用ImageWidth、ImageHeight。
+        r"""<p>指定所生成图片的宽高比。输入格式为 W:H。<br>本字段在以下场景有效：</p><ul><li>生商品图场景，可选值为：1:1、3:2、2:3、3:4、4:3、4:5、5:4、16:9、9:16、21:9</li><li>AI扩图场景。可选值为：1:1、3:2、2:3、3:4、4:3、4:5、5:4、9:16、16:9、21:9，可以配合 ImageWidth 和 ImageHeight 使用，规则如下： <ol><li>仅指定 AspectRatio 时，根据原图输入进行自适应调整。</li><li>指定 AspectRatio 和 ImageWidth 时，ImageHeight  由两者计算得出，反亦是如此。</li><li>当AspectRatio、ImageWidth、ImageHeight 同时指定的时候，优先使用ImageWidth、ImageHeight。</li></ol></li></ul>
         :rtype: str
         """
         return self._AspectRatio
@@ -79463,7 +79450,7 @@ class SceneAigcImageOutputConfig(AbstractModel):
 
     @property
     def EncodeConfig(self):
-        r"""输出图片编码格式参数。**仅AI换衣场景有效。**
+        r"""<p>输出图片编码格式参数。<strong>仅AI换衣场景有效。</strong></p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.ImageSceneAigcEncodeConfig`
         """
         return self._EncodeConfig
@@ -79474,7 +79461,7 @@ class SceneAigcImageOutputConfig(AbstractModel):
 
     @property
     def ImageWidth(self):
-        r"""输出图像宽度，**仅AI扩图场景有效**。
+        r"""<p>输出图像宽度，<strong>仅AI扩图场景有效</strong>。</p>
         :rtype: int
         """
         return self._ImageWidth
@@ -79485,7 +79472,7 @@ class SceneAigcImageOutputConfig(AbstractModel):
 
     @property
     def ImageHeight(self):
-        r"""输出图像高度，**仅AI扩图场景有效**。
+        r"""<p>输出图像高度，<strong>仅AI扩图场景有效</strong>。</p>
         :rtype: int
         """
         return self._ImageHeight
@@ -79493,6 +79480,17 @@ class SceneAigcImageOutputConfig(AbstractModel):
     @ImageHeight.setter
     def ImageHeight(self, ImageHeight):
         self._ImageHeight = ImageHeight
+
+    @property
+    def Resolution(self):
+        r"""<p>输出分辨率。仅change_clothes、change_clothes_under场景有效。可选值：1K、2K、4K。</p>
+        :rtype: str
+        """
+        return self._Resolution
+
+    @Resolution.setter
+    def Resolution(self, Resolution):
+        self._Resolution = Resolution
 
 
     def _deserialize(self, params):
@@ -79506,6 +79504,7 @@ class SceneAigcImageOutputConfig(AbstractModel):
             self._EncodeConfig._deserialize(params.get("EncodeConfig"))
         self._ImageWidth = params.get("ImageWidth")
         self._ImageHeight = params.get("ImageHeight")
+        self._Resolution = params.get("Resolution")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

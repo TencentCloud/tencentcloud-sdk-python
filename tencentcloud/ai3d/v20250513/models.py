@@ -932,14 +932,14 @@ class QueryHunyuanTo3DProJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 任务ID。
+        :param _JobId: <p>任务ID。</p>
         :type JobId: str
         """
         self._JobId = None
 
     @property
     def JobId(self):
-        r"""任务ID。
+        r"""<p>任务ID。</p>
         :rtype: str
         """
         return self._JobId
@@ -968,14 +968,18 @@ class QueryHunyuanTo3DProJobResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Status: 任务状态。WAIT：等待中，RUN：执行中，FAIL：任务失败，DONE：任务成功
+        :param _Status: <p>任务状态。WAIT：等待中，RUN：执行中，FAIL：任务失败，DONE：任务成功</p>
         :type Status: str
-        :param _ErrorCode: 错误码
+        :param _ErrorCode: <p>错误码</p>
         :type ErrorCode: str
-        :param _ErrorMessage: 错误信息
+        :param _ErrorMessage: <p>错误信息</p>
         :type ErrorMessage: str
-        :param _ResultFile3Ds: 生成的3D文件数组。
+        :param _ResultFile3Ds: <p>生成的3D文件数组。</p>
         :type ResultFile3Ds: list of File3D
+        :param _ResultCreditDetails: <p>接口任务功能参数及积分详情，返回形式为字符串。Generate参数返回对应模式及消耗积分，如：Generate-Normal：20<br>附加参数返回参数名称及消耗积分，如：MultiViewImages：10</p>
+        :type ResultCreditDetails: str
+        :param _ResultCreditConsumed: <p>任务总消耗积分。</p>
+        :type ResultCreditConsumed: float
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -983,11 +987,13 @@ class QueryHunyuanTo3DProJobResponse(AbstractModel):
         self._ErrorCode = None
         self._ErrorMessage = None
         self._ResultFile3Ds = None
+        self._ResultCreditDetails = None
+        self._ResultCreditConsumed = None
         self._RequestId = None
 
     @property
     def Status(self):
-        r"""任务状态。WAIT：等待中，RUN：执行中，FAIL：任务失败，DONE：任务成功
+        r"""<p>任务状态。WAIT：等待中，RUN：执行中，FAIL：任务失败，DONE：任务成功</p>
         :rtype: str
         """
         return self._Status
@@ -998,7 +1004,7 @@ class QueryHunyuanTo3DProJobResponse(AbstractModel):
 
     @property
     def ErrorCode(self):
-        r"""错误码
+        r"""<p>错误码</p>
         :rtype: str
         """
         return self._ErrorCode
@@ -1009,7 +1015,7 @@ class QueryHunyuanTo3DProJobResponse(AbstractModel):
 
     @property
     def ErrorMessage(self):
-        r"""错误信息
+        r"""<p>错误信息</p>
         :rtype: str
         """
         return self._ErrorMessage
@@ -1020,7 +1026,7 @@ class QueryHunyuanTo3DProJobResponse(AbstractModel):
 
     @property
     def ResultFile3Ds(self):
-        r"""生成的3D文件数组。
+        r"""<p>生成的3D文件数组。</p>
         :rtype: list of File3D
         """
         return self._ResultFile3Ds
@@ -1028,6 +1034,28 @@ class QueryHunyuanTo3DProJobResponse(AbstractModel):
     @ResultFile3Ds.setter
     def ResultFile3Ds(self, ResultFile3Ds):
         self._ResultFile3Ds = ResultFile3Ds
+
+    @property
+    def ResultCreditDetails(self):
+        r"""<p>接口任务功能参数及积分详情，返回形式为字符串。Generate参数返回对应模式及消耗积分，如：Generate-Normal：20<br>附加参数返回参数名称及消耗积分，如：MultiViewImages：10</p>
+        :rtype: str
+        """
+        return self._ResultCreditDetails
+
+    @ResultCreditDetails.setter
+    def ResultCreditDetails(self, ResultCreditDetails):
+        self._ResultCreditDetails = ResultCreditDetails
+
+    @property
+    def ResultCreditConsumed(self):
+        r"""<p>任务总消耗积分。</p>
+        :rtype: float
+        """
+        return self._ResultCreditConsumed
+
+    @ResultCreditConsumed.setter
+    def ResultCreditConsumed(self, ResultCreditConsumed):
+        self._ResultCreditConsumed = ResultCreditConsumed
 
     @property
     def RequestId(self):
@@ -1051,6 +1079,8 @@ class QueryHunyuanTo3DProJobResponse(AbstractModel):
                 obj = File3D()
                 obj._deserialize(item)
                 self._ResultFile3Ds.append(obj)
+        self._ResultCreditDetails = params.get("ResultCreditDetails")
+        self._ResultCreditConsumed = params.get("ResultCreditConsumed")
         self._RequestId = params.get("RequestId")
 
 
@@ -1300,7 +1330,7 @@ class SubmitHunyuanTo3DProJobRequest(AbstractModel):
         :type EnablePBR: bool
         :param _FaceCount: <p>生成3D模型的面数，默认值为500000。可支持生成面数范围，参考值：3000-1500000。GenerateType中选择LowPoly时，此参数不生效。</p><p>取值范围：[3000, 1500000]</p>
         :type FaceCount: int
-        :param _GenerateType: <p>生成任务类型，默认Normal，参考值：<br>Normal：可生成带纹理的几何模型。<br>LowPoly：可生成智能拓扑后的模型，FaceCount参数不生效。<br>Geometry：可生成不带纹理的几何模型（白模），EnablePBR参数不生效。<br>Sketch：可输入草图或线稿图生成模型，此模式下prompt和ImageUrl/ImageBase64可一起输入。</p><p>枚举值：</p><ul><li>Normal： 可生成带纹理的几何模型</li><li>LowPoly： 可生成智能拓扑后的模型，FaceCount参数不生效。</li><li>Geometry： 可生成不带纹理的几何模型（白模），EnablePBR参数不生效。</li><li>Sketch： 可输入草图或线稿图生成模型，此模式下prompt和ImageUrl/ImageBase64可一起输入。</li></ul>
+        :param _GenerateType: <p>生成任务类型，默认Normal</p><p>枚举值：</p><ul><li>Normal： 可生成带纹理的几何模型</li><li>LowPoly： 可生成智能拓扑后的模型，FaceCount参数不生效。</li><li>Geometry： 可生成不带纹理的几何模型（白模），EnablePBR参数不生效。</li><li>Sketch： 可输入草图或线稿图生成模型，此模式下prompt和ImageUrl/ImageBase64可一起输入。</li></ul>
         :type GenerateType: str
         :param _PolygonType: <p>该参数仅在GenerateType中选择LowPoly模式可生效。</p><p>多边形类型，表示模型的表面由几边形网格构成，默认为triangle,参考值:<br>triangle: 三角形面。<br>quadrilateral: 四边形面与三角形面混合生成。</p>
         :type PolygonType: str
@@ -1397,7 +1427,7 @@ class SubmitHunyuanTo3DProJobRequest(AbstractModel):
 
     @property
     def GenerateType(self):
-        r"""<p>生成任务类型，默认Normal，参考值：<br>Normal：可生成带纹理的几何模型。<br>LowPoly：可生成智能拓扑后的模型，FaceCount参数不生效。<br>Geometry：可生成不带纹理的几何模型（白模），EnablePBR参数不生效。<br>Sketch：可输入草图或线稿图生成模型，此模式下prompt和ImageUrl/ImageBase64可一起输入。</p><p>枚举值：</p><ul><li>Normal： 可生成带纹理的几何模型</li><li>LowPoly： 可生成智能拓扑后的模型，FaceCount参数不生效。</li><li>Geometry： 可生成不带纹理的几何模型（白模），EnablePBR参数不生效。</li><li>Sketch： 可输入草图或线稿图生成模型，此模式下prompt和ImageUrl/ImageBase64可一起输入。</li></ul>
+        r"""<p>生成任务类型，默认Normal</p><p>枚举值：</p><ul><li>Normal： 可生成带纹理的几何模型</li><li>LowPoly： 可生成智能拓扑后的模型，FaceCount参数不生效。</li><li>Geometry： 可生成不带纹理的几何模型（白模），EnablePBR参数不生效。</li><li>Sketch： 可输入草图或线稿图生成模型，此模式下prompt和ImageUrl/ImageBase64可一起输入。</li></ul>
         :rtype: str
         """
         return self._GenerateType
@@ -2059,18 +2089,13 @@ class SubmitTextureTo3DJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _File3D: 源3D模型文件。
-Type可选值：OBJ，GLB
+        :param _File3D: <p>源3D模型文件。<br>Type可选值：OBJ，GLB</p>
         :type File3D: :class:`tencentcloud.ai3d.v20250513.models.File3D`
-        :param _Prompt: 文生3D，3D内容的描述，中文正向提示词。
-最多支持200个 utf-8 字符。
-文生3D, image、image_url和 prompt必填其一，且prompt和image/image_url不能同时存在。
+        :param _Prompt: <p>文生3D，3D内容的描述，中文正向提示词。<br>最多支持200个 utf-8 字符。<br>文生3D, image、image_url和 prompt必填其一，且prompt和image/image_url不能同时存在。</p>
         :type Prompt: str
-        :param _Image: 3D模型纹理参考图 Base64 数据和参考图图 Url。
-- Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
-- 图片限制：单边分辨率小于4096且大于128，转成 Base64 字符串后小于 10MB，格式支持 jpg、jpeg、png。
+        :param _Image: <p>3D模型纹理参考图 Base64 数据和参考图 Url。</p><ul><li>Base64 和 Url 必须提供一个，如果都提供以 Url 为准。</li><li>图片限制：单边分辨率小于4096且大于128，转成 Base64 字符串后小于 10MB，格式支持 jpg、jpeg、png。</li></ul>
         :type Image: :class:`tencentcloud.ai3d.v20250513.models.Image`
-        :param _EnablePBR: 是否开启 PBR材质生成，默认 false。
+        :param _EnablePBR: <p>是否开启 PBR材质生成，默认 false。</p>
         :type EnablePBR: bool
         """
         self._File3D = None
@@ -2080,8 +2105,7 @@ Type可选值：OBJ，GLB
 
     @property
     def File3D(self):
-        r"""源3D模型文件。
-Type可选值：OBJ，GLB
+        r"""<p>源3D模型文件。<br>Type可选值：OBJ，GLB</p>
         :rtype: :class:`tencentcloud.ai3d.v20250513.models.File3D`
         """
         return self._File3D
@@ -2092,9 +2116,7 @@ Type可选值：OBJ，GLB
 
     @property
     def Prompt(self):
-        r"""文生3D，3D内容的描述，中文正向提示词。
-最多支持200个 utf-8 字符。
-文生3D, image、image_url和 prompt必填其一，且prompt和image/image_url不能同时存在。
+        r"""<p>文生3D，3D内容的描述，中文正向提示词。<br>最多支持200个 utf-8 字符。<br>文生3D, image、image_url和 prompt必填其一，且prompt和image/image_url不能同时存在。</p>
         :rtype: str
         """
         return self._Prompt
@@ -2105,9 +2127,7 @@ Type可选值：OBJ，GLB
 
     @property
     def Image(self):
-        r"""3D模型纹理参考图 Base64 数据和参考图图 Url。
-- Base64 和 Url 必须提供一个，如果都提供以 Url 为准。
-- 图片限制：单边分辨率小于4096且大于128，转成 Base64 字符串后小于 10MB，格式支持 jpg、jpeg、png。
+        r"""<p>3D模型纹理参考图 Base64 数据和参考图 Url。</p><ul><li>Base64 和 Url 必须提供一个，如果都提供以 Url 为准。</li><li>图片限制：单边分辨率小于4096且大于128，转成 Base64 字符串后小于 10MB，格式支持 jpg、jpeg、png。</li></ul>
         :rtype: :class:`tencentcloud.ai3d.v20250513.models.Image`
         """
         return self._Image
@@ -2118,7 +2138,7 @@ Type可选值：OBJ，GLB
 
     @property
     def EnablePBR(self):
-        r"""是否开启 PBR材质生成，默认 false。
+        r"""<p>是否开启 PBR材质生成，默认 false。</p>
         :rtype: bool
         """
         return self._EnablePBR
@@ -2154,7 +2174,7 @@ class SubmitTextureTo3DJobResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 任务ID（有效期24小时）
+        :param _JobId: <p>任务ID（有效期24小时）</p>
         :type JobId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2164,7 +2184,7 @@ class SubmitTextureTo3DJobResponse(AbstractModel):
 
     @property
     def JobId(self):
-        r"""任务ID（有效期24小时）
+        r"""<p>任务ID（有效期24小时）</p>
         :rtype: str
         """
         return self._JobId

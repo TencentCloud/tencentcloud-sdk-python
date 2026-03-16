@@ -257,7 +257,7 @@ class TiwClient(AbstractClient):
 
 
     def DescribeTranscode(self, request):
-        r"""查询文档转码任务的执行进度与转码结果
+        r"""查询文档转码任务的执行进度与转码结果，支持查询最近半年内的任务结果
 
         :param request: Request instance for DescribeTranscode.
         :type request: :class:`tencentcloud.tiw.v20190919.models.DescribeTranscodeRequest`

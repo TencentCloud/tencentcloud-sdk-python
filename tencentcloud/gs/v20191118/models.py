@@ -2730,8 +2730,11 @@ class CreateAndroidInstanceADBRequest(AbstractModel):
         r"""
         :param _AndroidInstanceId: 安卓实例 ID
         :type AndroidInstanceId: str
+        :param _ExpiredTime: 过期时间。默认 1 小时，最长 30 天。格式为 2025-07-02T10:15:36Z
+        :type ExpiredTime: str
         """
         self._AndroidInstanceId = None
+        self._ExpiredTime = None
 
     @property
     def AndroidInstanceId(self):
@@ -2744,9 +2747,21 @@ class CreateAndroidInstanceADBRequest(AbstractModel):
     def AndroidInstanceId(self, AndroidInstanceId):
         self._AndroidInstanceId = AndroidInstanceId
 
+    @property
+    def ExpiredTime(self):
+        r"""过期时间。默认 1 小时，最长 30 天。格式为 2025-07-02T10:15:36Z
+        :rtype: str
+        """
+        return self._ExpiredTime
+
+    @ExpiredTime.setter
+    def ExpiredTime(self, ExpiredTime):
+        self._ExpiredTime = ExpiredTime
+
 
     def _deserialize(self, params):
         self._AndroidInstanceId = params.get("AndroidInstanceId")
+        self._ExpiredTime = params.get("ExpiredTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

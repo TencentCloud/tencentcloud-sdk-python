@@ -211,7 +211,7 @@ class TiwClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeTranscodeResponse:
         """
-        查询文档转码任务的执行进度与转码结果
+        查询文档转码任务的执行进度与转码结果，支持查询最近半年内的任务结果
         """
         
         kwargs = {}

@@ -103714,6 +103714,9 @@ TABLE, VIEW, MANAGED_TABLE(Hive管理表), EXTERNAL_TABLE(Hive外部表), VIRTUA
         :param _EngineCreator: 引擎侧创建者
 注意：此字段可能返回 null，表示取不到有效值。
         :type EngineCreator: str
+        :param _ProjectStatus: 项目状态：0：禁用，1：启用，-3:禁用中，2：启用中
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectStatus: int
         """
         self._TableId = None
         self._TableName = None
@@ -103796,6 +103799,7 @@ TABLE, VIEW, MANAGED_TABLE(Hive管理表), EXTERNAL_TABLE(Hive外部表), VIRTUA
         self._Namespace = None
         self._MetaFrom = None
         self._EngineCreator = None
+        self._ProjectStatus = None
 
     @property
     def TableId(self):
@@ -104770,6 +104774,18 @@ TABLE, VIEW, MANAGED_TABLE(Hive管理表), EXTERNAL_TABLE(Hive外部表), VIRTUA
     def EngineCreator(self, EngineCreator):
         self._EngineCreator = EngineCreator
 
+    @property
+    def ProjectStatus(self):
+        r"""项目状态：0：禁用，1：启用，-3:禁用中，2：启用中
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ProjectStatus
+
+    @ProjectStatus.setter
+    def ProjectStatus(self, ProjectStatus):
+        self._ProjectStatus = ProjectStatus
+
 
     def _deserialize(self, params):
         self._TableId = params.get("TableId")
@@ -104884,6 +104900,7 @@ TABLE, VIEW, MANAGED_TABLE(Hive管理表), EXTERNAL_TABLE(Hive外部表), VIRTUA
         self._Namespace = params.get("Namespace")
         self._MetaFrom = params.get("MetaFrom")
         self._EngineCreator = params.get("EngineCreator")
+        self._ProjectStatus = params.get("ProjectStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

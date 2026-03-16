@@ -4456,6 +4456,90 @@ class DescribeBaasPackageListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeBillingInfoRequest(AbstractModel):
+    r"""DescribeBillingInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: 环境ID
+        :type EnvId: str
+        """
+        self._EnvId = None
+
+    @property
+    def EnvId(self):
+        r"""环境ID
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBillingInfoResponse(AbstractModel):
+    r"""DescribeBillingInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvBillingInfoList: 环境计费信息列表
+        :type EnvBillingInfoList: list of EnvBillingInfoItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._EnvBillingInfoList = None
+        self._RequestId = None
+
+    @property
+    def EnvBillingInfoList(self):
+        r"""环境计费信息列表
+        :rtype: list of EnvBillingInfoItem
+        """
+        return self._EnvBillingInfoList
+
+    @EnvBillingInfoList.setter
+    def EnvBillingInfoList(self, EnvBillingInfoList):
+        self._EnvBillingInfoList = EnvBillingInfoList
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("EnvBillingInfoList") is not None:
+            self._EnvBillingInfoList = []
+            for item in params.get("EnvBillingInfoList"):
+                obj = EnvBillingInfoItem()
+                obj._deserialize(item)
+                self._EnvBillingInfoList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeCloudBaseBuildServiceRequest(AbstractModel):
     r"""DescribeCloudBaseBuildService请求参数结构体
 
@@ -5223,6 +5307,698 @@ class DescribeCloudBaseGWServiceResponse(AbstractModel):
         self._CustomRoutingRules = params.get("CustomRoutingRules")
         self._AccessFlag = params.get("AccessFlag")
         self._OriginDomain = params.get("OriginDomain")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCloudBaseRunServerVersionRequest(AbstractModel):
+    r"""DescribeCloudBaseRunServerVersion请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: 环境ID
+        :type EnvId: str
+        :param _ServerName: 服务名称
+        :type ServerName: str
+        :param _VersionName: 版本名称
+        :type VersionName: str
+        """
+        self._EnvId = None
+        self._ServerName = None
+        self._VersionName = None
+
+    @property
+    def EnvId(self):
+        r"""环境ID
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def ServerName(self):
+        r"""服务名称
+        :rtype: str
+        """
+        return self._ServerName
+
+    @ServerName.setter
+    def ServerName(self, ServerName):
+        self._ServerName = ServerName
+
+    @property
+    def VersionName(self):
+        r"""版本名称
+        :rtype: str
+        """
+        return self._VersionName
+
+    @VersionName.setter
+    def VersionName(self, VersionName):
+        self._VersionName = VersionName
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        self._ServerName = params.get("ServerName")
+        self._VersionName = params.get("VersionName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCloudBaseRunServerVersionResponse(AbstractModel):
+    r"""DescribeCloudBaseRunServerVersion返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VersionName: 版本名称
+        :type VersionName: str
+        :param _Remark: 备注
+        :type Remark: str
+        :param _DockerfilePath: Dockerfile的路径
+        :type DockerfilePath: str
+        :param _BuildDir: DockerBuild的目录
+        :type BuildDir: str
+        :param _Cpu: 请使用CPUSize
+        :type Cpu: float
+        :param _Mem: 请使用MemSize
+        :type Mem: float
+        :param _MinNum: 副本最小值
+        :type MinNum: int
+        :param _MaxNum: 副本最大值
+        :type MaxNum: int
+        :param _PolicyType: 策略类型
+        :type PolicyType: str
+        :param _PolicyThreshold: 策略阈值
+        :type PolicyThreshold: float
+        :param _EnvParams: 环境变量
+        :type EnvParams: str
+        :param _CreatedTime: 创建时间
+        :type CreatedTime: str
+        :param _UpdatedTime: 更新时间
+        :type UpdatedTime: str
+        :param _VersionIP: 版本的IP
+        :type VersionIP: str
+        :param _VersionPort: 版本的端口号
+        :type VersionPort: int
+        :param _Status: 版本状态
+        :type Status: str
+        :param _PackageName: 代码包的名字
+        :type PackageName: str
+        :param _PackageVersion: 代码版本的名字
+        :type PackageVersion: str
+        :param _UploadType: 枚举（package/repository/image)
+        :type UploadType: str
+        :param _RepoType: Repo的类型(gitlab/github/coding)
+        :type RepoType: str
+        :param _Repo: 地址
+        :type Repo: str
+        :param _Branch: 分支
+        :type Branch: str
+        :param _ServerName: 服务名字
+        :type ServerName: str
+        :param _IsPublic: 是否对于外网开放
+        :type IsPublic: bool
+        :param _VpcId: vpc id
+        :type VpcId: str
+        :param _SubnetIds: 子网实例id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubnetIds: list of str
+        :param _CustomLogs: 日志采集路径
+        :type CustomLogs: str
+        :param _ContainerPort: 监听端口
+        :type ContainerPort: int
+        :param _InitialDelaySeconds: 延迟多长时间开始健康检查（单位s）
+        :type InitialDelaySeconds: int
+        :param _ImageUrl: 镜像地址
+        :type ImageUrl: str
+        :param _CpuSize: CPU 大小
+        :type CpuSize: float
+        :param _MemSize: MEM 大小
+        :type MemSize: float
+        :param _HasDockerfile: 是否有Dockerfile：0-default has, 1-has, 2-has not
+        :type HasDockerfile: int
+        :param _BaseImage: 基础镜像
+        :type BaseImage: str
+        :param _EntryPoint: 容器启动入口命令
+        :type EntryPoint: str
+        :param _RepoLanguage: 仓库语言
+        :type RepoLanguage: str
+        :param _PolicyDetail: 自动扩缩容策略组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PolicyDetail: list of HpaPolicy
+        :param _TkeClusterInfo: Tke集群信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TkeClusterInfo: :class:`tencentcloud.tcb.v20180608.models.TkeClusterInfo`
+        :param _TkeWorkloadType: 版本工作负载类型；deployment/deamonset
+        :type TkeWorkloadType: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._VersionName = None
+        self._Remark = None
+        self._DockerfilePath = None
+        self._BuildDir = None
+        self._Cpu = None
+        self._Mem = None
+        self._MinNum = None
+        self._MaxNum = None
+        self._PolicyType = None
+        self._PolicyThreshold = None
+        self._EnvParams = None
+        self._CreatedTime = None
+        self._UpdatedTime = None
+        self._VersionIP = None
+        self._VersionPort = None
+        self._Status = None
+        self._PackageName = None
+        self._PackageVersion = None
+        self._UploadType = None
+        self._RepoType = None
+        self._Repo = None
+        self._Branch = None
+        self._ServerName = None
+        self._IsPublic = None
+        self._VpcId = None
+        self._SubnetIds = None
+        self._CustomLogs = None
+        self._ContainerPort = None
+        self._InitialDelaySeconds = None
+        self._ImageUrl = None
+        self._CpuSize = None
+        self._MemSize = None
+        self._HasDockerfile = None
+        self._BaseImage = None
+        self._EntryPoint = None
+        self._RepoLanguage = None
+        self._PolicyDetail = None
+        self._TkeClusterInfo = None
+        self._TkeWorkloadType = None
+        self._RequestId = None
+
+    @property
+    def VersionName(self):
+        r"""版本名称
+        :rtype: str
+        """
+        return self._VersionName
+
+    @VersionName.setter
+    def VersionName(self, VersionName):
+        self._VersionName = VersionName
+
+    @property
+    def Remark(self):
+        r"""备注
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def DockerfilePath(self):
+        r"""Dockerfile的路径
+        :rtype: str
+        """
+        return self._DockerfilePath
+
+    @DockerfilePath.setter
+    def DockerfilePath(self, DockerfilePath):
+        self._DockerfilePath = DockerfilePath
+
+    @property
+    def BuildDir(self):
+        r"""DockerBuild的目录
+        :rtype: str
+        """
+        return self._BuildDir
+
+    @BuildDir.setter
+    def BuildDir(self, BuildDir):
+        self._BuildDir = BuildDir
+
+    @property
+    def Cpu(self):
+        r"""请使用CPUSize
+        :rtype: float
+        """
+        return self._Cpu
+
+    @Cpu.setter
+    def Cpu(self, Cpu):
+        self._Cpu = Cpu
+
+    @property
+    def Mem(self):
+        r"""请使用MemSize
+        :rtype: float
+        """
+        return self._Mem
+
+    @Mem.setter
+    def Mem(self, Mem):
+        self._Mem = Mem
+
+    @property
+    def MinNum(self):
+        r"""副本最小值
+        :rtype: int
+        """
+        return self._MinNum
+
+    @MinNum.setter
+    def MinNum(self, MinNum):
+        self._MinNum = MinNum
+
+    @property
+    def MaxNum(self):
+        r"""副本最大值
+        :rtype: int
+        """
+        return self._MaxNum
+
+    @MaxNum.setter
+    def MaxNum(self, MaxNum):
+        self._MaxNum = MaxNum
+
+    @property
+    def PolicyType(self):
+        r"""策略类型
+        :rtype: str
+        """
+        return self._PolicyType
+
+    @PolicyType.setter
+    def PolicyType(self, PolicyType):
+        self._PolicyType = PolicyType
+
+    @property
+    def PolicyThreshold(self):
+        r"""策略阈值
+        :rtype: float
+        """
+        return self._PolicyThreshold
+
+    @PolicyThreshold.setter
+    def PolicyThreshold(self, PolicyThreshold):
+        self._PolicyThreshold = PolicyThreshold
+
+    @property
+    def EnvParams(self):
+        r"""环境变量
+        :rtype: str
+        """
+        return self._EnvParams
+
+    @EnvParams.setter
+    def EnvParams(self, EnvParams):
+        self._EnvParams = EnvParams
+
+    @property
+    def CreatedTime(self):
+        r"""创建时间
+        :rtype: str
+        """
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+    @property
+    def UpdatedTime(self):
+        r"""更新时间
+        :rtype: str
+        """
+        return self._UpdatedTime
+
+    @UpdatedTime.setter
+    def UpdatedTime(self, UpdatedTime):
+        self._UpdatedTime = UpdatedTime
+
+    @property
+    def VersionIP(self):
+        r"""版本的IP
+        :rtype: str
+        """
+        return self._VersionIP
+
+    @VersionIP.setter
+    def VersionIP(self, VersionIP):
+        self._VersionIP = VersionIP
+
+    @property
+    def VersionPort(self):
+        r"""版本的端口号
+        :rtype: int
+        """
+        return self._VersionPort
+
+    @VersionPort.setter
+    def VersionPort(self, VersionPort):
+        self._VersionPort = VersionPort
+
+    @property
+    def Status(self):
+        r"""版本状态
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def PackageName(self):
+        r"""代码包的名字
+        :rtype: str
+        """
+        return self._PackageName
+
+    @PackageName.setter
+    def PackageName(self, PackageName):
+        self._PackageName = PackageName
+
+    @property
+    def PackageVersion(self):
+        r"""代码版本的名字
+        :rtype: str
+        """
+        return self._PackageVersion
+
+    @PackageVersion.setter
+    def PackageVersion(self, PackageVersion):
+        self._PackageVersion = PackageVersion
+
+    @property
+    def UploadType(self):
+        r"""枚举（package/repository/image)
+        :rtype: str
+        """
+        return self._UploadType
+
+    @UploadType.setter
+    def UploadType(self, UploadType):
+        self._UploadType = UploadType
+
+    @property
+    def RepoType(self):
+        r"""Repo的类型(gitlab/github/coding)
+        :rtype: str
+        """
+        return self._RepoType
+
+    @RepoType.setter
+    def RepoType(self, RepoType):
+        self._RepoType = RepoType
+
+    @property
+    def Repo(self):
+        r"""地址
+        :rtype: str
+        """
+        return self._Repo
+
+    @Repo.setter
+    def Repo(self, Repo):
+        self._Repo = Repo
+
+    @property
+    def Branch(self):
+        r"""分支
+        :rtype: str
+        """
+        return self._Branch
+
+    @Branch.setter
+    def Branch(self, Branch):
+        self._Branch = Branch
+
+    @property
+    def ServerName(self):
+        r"""服务名字
+        :rtype: str
+        """
+        return self._ServerName
+
+    @ServerName.setter
+    def ServerName(self, ServerName):
+        self._ServerName = ServerName
+
+    @property
+    def IsPublic(self):
+        r"""是否对于外网开放
+        :rtype: bool
+        """
+        return self._IsPublic
+
+    @IsPublic.setter
+    def IsPublic(self, IsPublic):
+        self._IsPublic = IsPublic
+
+    @property
+    def VpcId(self):
+        r"""vpc id
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetIds(self):
+        r"""子网实例id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._SubnetIds
+
+    @SubnetIds.setter
+    def SubnetIds(self, SubnetIds):
+        self._SubnetIds = SubnetIds
+
+    @property
+    def CustomLogs(self):
+        r"""日志采集路径
+        :rtype: str
+        """
+        return self._CustomLogs
+
+    @CustomLogs.setter
+    def CustomLogs(self, CustomLogs):
+        self._CustomLogs = CustomLogs
+
+    @property
+    def ContainerPort(self):
+        r"""监听端口
+        :rtype: int
+        """
+        return self._ContainerPort
+
+    @ContainerPort.setter
+    def ContainerPort(self, ContainerPort):
+        self._ContainerPort = ContainerPort
+
+    @property
+    def InitialDelaySeconds(self):
+        r"""延迟多长时间开始健康检查（单位s）
+        :rtype: int
+        """
+        return self._InitialDelaySeconds
+
+    @InitialDelaySeconds.setter
+    def InitialDelaySeconds(self, InitialDelaySeconds):
+        self._InitialDelaySeconds = InitialDelaySeconds
+
+    @property
+    def ImageUrl(self):
+        r"""镜像地址
+        :rtype: str
+        """
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
+
+    @property
+    def CpuSize(self):
+        r"""CPU 大小
+        :rtype: float
+        """
+        return self._CpuSize
+
+    @CpuSize.setter
+    def CpuSize(self, CpuSize):
+        self._CpuSize = CpuSize
+
+    @property
+    def MemSize(self):
+        r"""MEM 大小
+        :rtype: float
+        """
+        return self._MemSize
+
+    @MemSize.setter
+    def MemSize(self, MemSize):
+        self._MemSize = MemSize
+
+    @property
+    def HasDockerfile(self):
+        r"""是否有Dockerfile：0-default has, 1-has, 2-has not
+        :rtype: int
+        """
+        return self._HasDockerfile
+
+    @HasDockerfile.setter
+    def HasDockerfile(self, HasDockerfile):
+        self._HasDockerfile = HasDockerfile
+
+    @property
+    def BaseImage(self):
+        r"""基础镜像
+        :rtype: str
+        """
+        return self._BaseImage
+
+    @BaseImage.setter
+    def BaseImage(self, BaseImage):
+        self._BaseImage = BaseImage
+
+    @property
+    def EntryPoint(self):
+        r"""容器启动入口命令
+        :rtype: str
+        """
+        return self._EntryPoint
+
+    @EntryPoint.setter
+    def EntryPoint(self, EntryPoint):
+        self._EntryPoint = EntryPoint
+
+    @property
+    def RepoLanguage(self):
+        r"""仓库语言
+        :rtype: str
+        """
+        return self._RepoLanguage
+
+    @RepoLanguage.setter
+    def RepoLanguage(self, RepoLanguage):
+        self._RepoLanguage = RepoLanguage
+
+    @property
+    def PolicyDetail(self):
+        r"""自动扩缩容策略组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of HpaPolicy
+        """
+        return self._PolicyDetail
+
+    @PolicyDetail.setter
+    def PolicyDetail(self, PolicyDetail):
+        self._PolicyDetail = PolicyDetail
+
+    @property
+    def TkeClusterInfo(self):
+        r"""Tke集群信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.TkeClusterInfo`
+        """
+        return self._TkeClusterInfo
+
+    @TkeClusterInfo.setter
+    def TkeClusterInfo(self, TkeClusterInfo):
+        self._TkeClusterInfo = TkeClusterInfo
+
+    @property
+    def TkeWorkloadType(self):
+        r"""版本工作负载类型；deployment/deamonset
+        :rtype: str
+        """
+        return self._TkeWorkloadType
+
+    @TkeWorkloadType.setter
+    def TkeWorkloadType(self, TkeWorkloadType):
+        self._TkeWorkloadType = TkeWorkloadType
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._VersionName = params.get("VersionName")
+        self._Remark = params.get("Remark")
+        self._DockerfilePath = params.get("DockerfilePath")
+        self._BuildDir = params.get("BuildDir")
+        self._Cpu = params.get("Cpu")
+        self._Mem = params.get("Mem")
+        self._MinNum = params.get("MinNum")
+        self._MaxNum = params.get("MaxNum")
+        self._PolicyType = params.get("PolicyType")
+        self._PolicyThreshold = params.get("PolicyThreshold")
+        self._EnvParams = params.get("EnvParams")
+        self._CreatedTime = params.get("CreatedTime")
+        self._UpdatedTime = params.get("UpdatedTime")
+        self._VersionIP = params.get("VersionIP")
+        self._VersionPort = params.get("VersionPort")
+        self._Status = params.get("Status")
+        self._PackageName = params.get("PackageName")
+        self._PackageVersion = params.get("PackageVersion")
+        self._UploadType = params.get("UploadType")
+        self._RepoType = params.get("RepoType")
+        self._Repo = params.get("Repo")
+        self._Branch = params.get("Branch")
+        self._ServerName = params.get("ServerName")
+        self._IsPublic = params.get("IsPublic")
+        self._VpcId = params.get("VpcId")
+        self._SubnetIds = params.get("SubnetIds")
+        self._CustomLogs = params.get("CustomLogs")
+        self._ContainerPort = params.get("ContainerPort")
+        self._InitialDelaySeconds = params.get("InitialDelaySeconds")
+        self._ImageUrl = params.get("ImageUrl")
+        self._CpuSize = params.get("CpuSize")
+        self._MemSize = params.get("MemSize")
+        self._HasDockerfile = params.get("HasDockerfile")
+        self._BaseImage = params.get("BaseImage")
+        self._EntryPoint = params.get("EntryPoint")
+        self._RepoLanguage = params.get("RepoLanguage")
+        if params.get("PolicyDetail") is not None:
+            self._PolicyDetail = []
+            for item in params.get("PolicyDetail"):
+                obj = HpaPolicy()
+                obj._deserialize(item)
+                self._PolicyDetail.append(obj)
+        if params.get("TkeClusterInfo") is not None:
+            self._TkeClusterInfo = TkeClusterInfo()
+            self._TkeClusterInfo._deserialize(params.get("TkeClusterInfo"))
+        self._TkeWorkloadType = params.get("TkeWorkloadType")
         self._RequestId = params.get("RequestId")
 
 
@@ -7720,6 +8496,298 @@ class EditAuthConfigResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class EnvBillingInfoItem(AbstractModel):
+    r"""环境计费信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: 环境ID
+        :type EnvId: str
+        :param _PackageId: tcb产品套餐ID，参考DescribePackages接口的返回值。
+        :type PackageId: str
+        :param _IsAutoRenew: 自动续费标记
+        :type IsAutoRenew: bool
+        :param _Status: 状态。包含以下取值：
+<li> 空字符串：初始化中</li>
+<li> NORMAL：正常</li>
+<li> ISOLATE：隔离</li>
+        :type Status: str
+        :param _PayMode: 支付方式。包含以下取值：
+<li> PREPAYMENT：预付费</li>
+<li> POSTPAID：后付费</li>
+        :type PayMode: str
+        :param _IsolatedTime: 隔离时间，最近一次隔离的时间
+        :type IsolatedTime: str
+        :param _ExpireTime: 过期时间，套餐即将到期的时间
+        :type ExpireTime: str
+        :param _CreateTime: 创建时间，第一次接入计费方案的时间。
+        :type CreateTime: str
+        :param _UpdateTime: 更新时间，计费信息最近一次更新的时间。
+        :type UpdateTime: str
+        :param _IsAlwaysFree: true表示从未升级过付费版。
+        :type IsAlwaysFree: bool
+        :param _PaymentChannel: 付费渠道。
+<li> miniapp：小程序</li>
+<li> qcloud：腾讯云</li>
+        :type PaymentChannel: str
+        :param _OrderInfo: 最新的订单信息
+        :type OrderInfo: :class:`tencentcloud.tcb.v20180608.models.OrderInfo`
+        :param _FreeQuota: 免费配额信息。
+        :type FreeQuota: str
+        :param _EnableOverrun: 是否开启 `超过套餐额度部分转按量付费`
+        :type EnableOverrun: bool
+        :param _ExtPackageType: 环境套餐类型
+        :type ExtPackageType: str
+        :param _EnvCharged: 是否付费期环境，可取值：yes/no。
+        :type EnvCharged: str
+        :param _EnvActivated: 是否已激活，可取值：yes/no。
+        :type EnvActivated: str
+        """
+        self._EnvId = None
+        self._PackageId = None
+        self._IsAutoRenew = None
+        self._Status = None
+        self._PayMode = None
+        self._IsolatedTime = None
+        self._ExpireTime = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._IsAlwaysFree = None
+        self._PaymentChannel = None
+        self._OrderInfo = None
+        self._FreeQuota = None
+        self._EnableOverrun = None
+        self._ExtPackageType = None
+        self._EnvCharged = None
+        self._EnvActivated = None
+
+    @property
+    def EnvId(self):
+        r"""环境ID
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def PackageId(self):
+        r"""tcb产品套餐ID，参考DescribePackages接口的返回值。
+        :rtype: str
+        """
+        return self._PackageId
+
+    @PackageId.setter
+    def PackageId(self, PackageId):
+        self._PackageId = PackageId
+
+    @property
+    def IsAutoRenew(self):
+        r"""自动续费标记
+        :rtype: bool
+        """
+        return self._IsAutoRenew
+
+    @IsAutoRenew.setter
+    def IsAutoRenew(self, IsAutoRenew):
+        self._IsAutoRenew = IsAutoRenew
+
+    @property
+    def Status(self):
+        r"""状态。包含以下取值：
+<li> 空字符串：初始化中</li>
+<li> NORMAL：正常</li>
+<li> ISOLATE：隔离</li>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def PayMode(self):
+        r"""支付方式。包含以下取值：
+<li> PREPAYMENT：预付费</li>
+<li> POSTPAID：后付费</li>
+        :rtype: str
+        """
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def IsolatedTime(self):
+        r"""隔离时间，最近一次隔离的时间
+        :rtype: str
+        """
+        return self._IsolatedTime
+
+    @IsolatedTime.setter
+    def IsolatedTime(self, IsolatedTime):
+        self._IsolatedTime = IsolatedTime
+
+    @property
+    def ExpireTime(self):
+        r"""过期时间，套餐即将到期的时间
+        :rtype: str
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def CreateTime(self):
+        r"""创建时间，第一次接入计费方案的时间。
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""更新时间，计费信息最近一次更新的时间。
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def IsAlwaysFree(self):
+        r"""true表示从未升级过付费版。
+        :rtype: bool
+        """
+        return self._IsAlwaysFree
+
+    @IsAlwaysFree.setter
+    def IsAlwaysFree(self, IsAlwaysFree):
+        self._IsAlwaysFree = IsAlwaysFree
+
+    @property
+    def PaymentChannel(self):
+        r"""付费渠道。
+<li> miniapp：小程序</li>
+<li> qcloud：腾讯云</li>
+        :rtype: str
+        """
+        return self._PaymentChannel
+
+    @PaymentChannel.setter
+    def PaymentChannel(self, PaymentChannel):
+        self._PaymentChannel = PaymentChannel
+
+    @property
+    def OrderInfo(self):
+        r"""最新的订单信息
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.OrderInfo`
+        """
+        return self._OrderInfo
+
+    @OrderInfo.setter
+    def OrderInfo(self, OrderInfo):
+        self._OrderInfo = OrderInfo
+
+    @property
+    def FreeQuota(self):
+        r"""免费配额信息。
+        :rtype: str
+        """
+        return self._FreeQuota
+
+    @FreeQuota.setter
+    def FreeQuota(self, FreeQuota):
+        self._FreeQuota = FreeQuota
+
+    @property
+    def EnableOverrun(self):
+        r"""是否开启 `超过套餐额度部分转按量付费`
+        :rtype: bool
+        """
+        return self._EnableOverrun
+
+    @EnableOverrun.setter
+    def EnableOverrun(self, EnableOverrun):
+        self._EnableOverrun = EnableOverrun
+
+    @property
+    def ExtPackageType(self):
+        r"""环境套餐类型
+        :rtype: str
+        """
+        return self._ExtPackageType
+
+    @ExtPackageType.setter
+    def ExtPackageType(self, ExtPackageType):
+        self._ExtPackageType = ExtPackageType
+
+    @property
+    def EnvCharged(self):
+        r"""是否付费期环境，可取值：yes/no。
+        :rtype: str
+        """
+        return self._EnvCharged
+
+    @EnvCharged.setter
+    def EnvCharged(self, EnvCharged):
+        self._EnvCharged = EnvCharged
+
+    @property
+    def EnvActivated(self):
+        r"""是否已激活，可取值：yes/no。
+        :rtype: str
+        """
+        return self._EnvActivated
+
+    @EnvActivated.setter
+    def EnvActivated(self, EnvActivated):
+        self._EnvActivated = EnvActivated
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        self._PackageId = params.get("PackageId")
+        self._IsAutoRenew = params.get("IsAutoRenew")
+        self._Status = params.get("Status")
+        self._PayMode = params.get("PayMode")
+        self._IsolatedTime = params.get("IsolatedTime")
+        self._ExpireTime = params.get("ExpireTime")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._IsAlwaysFree = params.get("IsAlwaysFree")
+        self._PaymentChannel = params.get("PaymentChannel")
+        if params.get("OrderInfo") is not None:
+            self._OrderInfo = OrderInfo()
+            self._OrderInfo._deserialize(params.get("OrderInfo"))
+        self._FreeQuota = params.get("FreeQuota")
+        self._EnableOverrun = params.get("EnableOverrun")
+        self._ExtPackageType = params.get("ExtPackageType")
+        self._EnvCharged = params.get("EnvCharged")
+        self._EnvActivated = params.get("EnvActivated")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class EnvInfo(AbstractModel):
     r"""环境信息
 
@@ -8206,6 +9274,57 @@ class FunctionInfo(AbstractModel):
     def _deserialize(self, params):
         self._Namespace = params.get("Namespace")
         self._Region = params.get("Region")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HpaPolicy(AbstractModel):
+    r"""扩缩容策略
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PolicyType: 策略类型
+        :type PolicyType: str
+        :param _PolicyThreshold: 策略阈值
+        :type PolicyThreshold: int
+        """
+        self._PolicyType = None
+        self._PolicyThreshold = None
+
+    @property
+    def PolicyType(self):
+        r"""策略类型
+        :rtype: str
+        """
+        return self._PolicyType
+
+    @PolicyType.setter
+    def PolicyType(self, PolicyType):
+        self._PolicyType = PolicyType
+
+    @property
+    def PolicyThreshold(self):
+        r"""策略阈值
+        :rtype: int
+        """
+        return self._PolicyThreshold
+
+    @PolicyThreshold.setter
+    def PolicyThreshold(self, PolicyThreshold):
+        self._PolicyThreshold = PolicyThreshold
+
+
+    def _deserialize(self, params):
+        self._PolicyType = params.get("PolicyType")
+        self._PolicyThreshold = params.get("PolicyThreshold")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10360,6 +11479,222 @@ class MySQLTaskStatus(AbstractModel):
         
 
 
+class OrderInfo(AbstractModel):
+    r"""订单信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TranId: 订单号
+        :type TranId: str
+        :param _PackageId: 订单要切换的套餐ID
+        :type PackageId: str
+        :param _TranType: 订单类型
+<li>1 购买</li>
+<li>2 续费</li>
+<li>3 变配</li>
+        :type TranType: str
+        :param _TranStatus: 订单状态。
+<li>1未支付</li>
+<li>2 支付中</li>
+<li>3 发货中</li>
+<li>4 发货成功</li>
+<li>5 发货失败</li>
+<li>6 已退款</li>
+<li>7 已取消</li>
+<li>100 已删除</li>
+        :type TranStatus: str
+        :param _UpdateTime: 订单更新时间
+        :type UpdateTime: str
+        :param _CreateTime: 订单创建时间
+        :type CreateTime: str
+        :param _PayMode: 付费模式.
+<li>prepayment 预付费</li>
+<li>postpaid 后付费</li>
+        :type PayMode: str
+        :param _ExtensionId: 订单绑定的扩展ID
+        :type ExtensionId: str
+        :param _ResourceReady: 资源初始化结果(仅当ExtensionId不为空时有效): successful(初始化成功), failed(初始化失败), doing(初始化进行中), init(准备初始化)
+        :type ResourceReady: str
+        :param _Flag: 安装标记。建议使用方统一转大小写之后再判断。
+<li>QuickStart：快速启动来源</li>
+<li>Activity：活动来源</li>
+        :type Flag: str
+        :param _ReqBody: 下单时的参数
+        :type ReqBody: str
+        """
+        self._TranId = None
+        self._PackageId = None
+        self._TranType = None
+        self._TranStatus = None
+        self._UpdateTime = None
+        self._CreateTime = None
+        self._PayMode = None
+        self._ExtensionId = None
+        self._ResourceReady = None
+        self._Flag = None
+        self._ReqBody = None
+
+    @property
+    def TranId(self):
+        r"""订单号
+        :rtype: str
+        """
+        return self._TranId
+
+    @TranId.setter
+    def TranId(self, TranId):
+        self._TranId = TranId
+
+    @property
+    def PackageId(self):
+        r"""订单要切换的套餐ID
+        :rtype: str
+        """
+        return self._PackageId
+
+    @PackageId.setter
+    def PackageId(self, PackageId):
+        self._PackageId = PackageId
+
+    @property
+    def TranType(self):
+        r"""订单类型
+<li>1 购买</li>
+<li>2 续费</li>
+<li>3 变配</li>
+        :rtype: str
+        """
+        return self._TranType
+
+    @TranType.setter
+    def TranType(self, TranType):
+        self._TranType = TranType
+
+    @property
+    def TranStatus(self):
+        r"""订单状态。
+<li>1未支付</li>
+<li>2 支付中</li>
+<li>3 发货中</li>
+<li>4 发货成功</li>
+<li>5 发货失败</li>
+<li>6 已退款</li>
+<li>7 已取消</li>
+<li>100 已删除</li>
+        :rtype: str
+        """
+        return self._TranStatus
+
+    @TranStatus.setter
+    def TranStatus(self, TranStatus):
+        self._TranStatus = TranStatus
+
+    @property
+    def UpdateTime(self):
+        r"""订单更新时间
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def CreateTime(self):
+        r"""订单创建时间
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def PayMode(self):
+        r"""付费模式.
+<li>prepayment 预付费</li>
+<li>postpaid 后付费</li>
+        :rtype: str
+        """
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def ExtensionId(self):
+        r"""订单绑定的扩展ID
+        :rtype: str
+        """
+        return self._ExtensionId
+
+    @ExtensionId.setter
+    def ExtensionId(self, ExtensionId):
+        self._ExtensionId = ExtensionId
+
+    @property
+    def ResourceReady(self):
+        r"""资源初始化结果(仅当ExtensionId不为空时有效): successful(初始化成功), failed(初始化失败), doing(初始化进行中), init(准备初始化)
+        :rtype: str
+        """
+        return self._ResourceReady
+
+    @ResourceReady.setter
+    def ResourceReady(self, ResourceReady):
+        self._ResourceReady = ResourceReady
+
+    @property
+    def Flag(self):
+        r"""安装标记。建议使用方统一转大小写之后再判断。
+<li>QuickStart：快速启动来源</li>
+<li>Activity：活动来源</li>
+        :rtype: str
+        """
+        return self._Flag
+
+    @Flag.setter
+    def Flag(self, Flag):
+        self._Flag = Flag
+
+    @property
+    def ReqBody(self):
+        r"""下单时的参数
+        :rtype: str
+        """
+        return self._ReqBody
+
+    @ReqBody.setter
+    def ReqBody(self, ReqBody):
+        self._ReqBody = ReqBody
+
+
+    def _deserialize(self, params):
+        self._TranId = params.get("TranId")
+        self._PackageId = params.get("PackageId")
+        self._TranType = params.get("TranType")
+        self._TranStatus = params.get("TranStatus")
+        self._UpdateTime = params.get("UpdateTime")
+        self._CreateTime = params.get("CreateTime")
+        self._PayMode = params.get("PayMode")
+        self._ExtensionId = params.get("ExtensionId")
+        self._ResourceReady = params.get("ResourceReady")
+        self._Flag = params.get("Flag")
+        self._ReqBody = params.get("ReqBody")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Pager(AbstractModel):
     r"""分页信息
 
@@ -11594,6 +12929,72 @@ class Tag(AbstractModel):
     def _deserialize(self, params):
         self._Key = params.get("Key")
         self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TkeClusterInfo(AbstractModel):
+    r"""tke集群信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群ID
+        :type ClusterId: str
+        :param _VpcId: 集群的vpcId
+        :type VpcId: str
+        :param _VersionClbSubnetId: 版本内网CLB所在子网Id
+        :type VersionClbSubnetId: str
+        """
+        self._ClusterId = None
+        self._VpcId = None
+        self._VersionClbSubnetId = None
+
+    @property
+    def ClusterId(self):
+        r"""集群ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def VpcId(self):
+        r"""集群的vpcId
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def VersionClbSubnetId(self):
+        r"""版本内网CLB所在子网Id
+        :rtype: str
+        """
+        return self._VersionClbSubnetId
+
+    @VersionClbSubnetId.setter
+    def VersionClbSubnetId(self, VersionClbSubnetId):
+        self._VersionClbSubnetId = VersionClbSubnetId
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._VpcId = params.get("VpcId")
+        self._VersionClbSubnetId = params.get("VersionClbSubnetId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

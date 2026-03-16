@@ -1779,21 +1779,21 @@ class DescribeRabbitMQServerlessBindingsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例Id
+        :param _InstanceId: <p>实例Id</p>
         :type InstanceId: str
-        :param _VirtualHost: Vhost参数
+        :param _VirtualHost: <p>Vhost参数</p>
         :type VirtualHost: str
-        :param _Offset: 分页offset
+        :param _Offset: <p>分页offset</p>
         :type Offset: int
-        :param _Limit: 分页limit
+        :param _Limit: <p>分页limit</p>
         :type Limit: int
-        :param _SearchWord: 搜索关键词，根据源exchange名称/目标资源名称/绑定key进行模糊搜索
+        :param _SearchWord: <p>搜索关键词，根据源exchange名称/目标资源名称进行模糊搜索</p>
         :type SearchWord: str
-        :param _SourceExchange: 根据源Exchange精准搜索过滤
+        :param _SourceExchange: <p>根据源Exchange精准搜索过滤</p>
         :type SourceExchange: str
-        :param _QueueName: 根据目标QueueName精准搜索过滤，和DestinationExchange过滤不可同时设置
+        :param _QueueName: <p>根据目标QueueName精准搜索过滤，和DestinationExchange过滤不可同时设置</p>
         :type QueueName: str
-        :param _DestinationExchange: 根据目标Exchange精准搜索过滤，和QueueName过滤不可同时设置
+        :param _DestinationExchange: <p>根据目标Exchange精准搜索过滤，和QueueName过滤不可同时设置</p>
         :type DestinationExchange: str
         """
         self._InstanceId = None
@@ -1807,7 +1807,7 @@ class DescribeRabbitMQServerlessBindingsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例Id
+        r"""<p>实例Id</p>
         :rtype: str
         """
         return self._InstanceId
@@ -1818,7 +1818,7 @@ class DescribeRabbitMQServerlessBindingsRequest(AbstractModel):
 
     @property
     def VirtualHost(self):
-        r"""Vhost参数
+        r"""<p>Vhost参数</p>
         :rtype: str
         """
         return self._VirtualHost
@@ -1829,7 +1829,7 @@ class DescribeRabbitMQServerlessBindingsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""分页offset
+        r"""<p>分页offset</p>
         :rtype: int
         """
         return self._Offset
@@ -1840,7 +1840,7 @@ class DescribeRabbitMQServerlessBindingsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""分页limit
+        r"""<p>分页limit</p>
         :rtype: int
         """
         return self._Limit
@@ -1851,7 +1851,7 @@ class DescribeRabbitMQServerlessBindingsRequest(AbstractModel):
 
     @property
     def SearchWord(self):
-        r"""搜索关键词，根据源exchange名称/目标资源名称/绑定key进行模糊搜索
+        r"""<p>搜索关键词，根据源exchange名称/目标资源名称进行模糊搜索</p>
         :rtype: str
         """
         return self._SearchWord
@@ -1862,7 +1862,7 @@ class DescribeRabbitMQServerlessBindingsRequest(AbstractModel):
 
     @property
     def SourceExchange(self):
-        r"""根据源Exchange精准搜索过滤
+        r"""<p>根据源Exchange精准搜索过滤</p>
         :rtype: str
         """
         return self._SourceExchange
@@ -1873,7 +1873,7 @@ class DescribeRabbitMQServerlessBindingsRequest(AbstractModel):
 
     @property
     def QueueName(self):
-        r"""根据目标QueueName精准搜索过滤，和DestinationExchange过滤不可同时设置
+        r"""<p>根据目标QueueName精准搜索过滤，和DestinationExchange过滤不可同时设置</p>
         :rtype: str
         """
         return self._QueueName
@@ -1884,7 +1884,7 @@ class DescribeRabbitMQServerlessBindingsRequest(AbstractModel):
 
     @property
     def DestinationExchange(self):
-        r"""根据目标Exchange精准搜索过滤，和QueueName过滤不可同时设置
+        r"""<p>根据目标Exchange精准搜索过滤，和QueueName过滤不可同时设置</p>
         :rtype: str
         """
         return self._DestinationExchange
@@ -1920,9 +1920,9 @@ class DescribeRabbitMQServerlessBindingsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BindingInfoList: 路由关系列表
+        :param _BindingInfoList: <p>路由关系列表</p>
         :type BindingInfoList: list of RabbitMQBindingListInfo
-        :param _TotalCount: 数量
+        :param _TotalCount: <p>数量</p>
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1933,7 +1933,7 @@ class DescribeRabbitMQServerlessBindingsResponse(AbstractModel):
 
     @property
     def BindingInfoList(self):
-        r"""路由关系列表
+        r"""<p>路由关系列表</p>
         :rtype: list of RabbitMQBindingListInfo
         """
         return self._BindingInfoList
@@ -1944,7 +1944,7 @@ class DescribeRabbitMQServerlessBindingsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""数量
+        r"""<p>数量</p>
         :rtype: int
         """
         return self._TotalCount
@@ -4579,11 +4579,14 @@ class ModifyRabbitMQServerlessExchangeRequest(AbstractModel):
         :type ExchangeName: str
         :param _Remark: 备注信息
         :type Remark: str
+        :param _AlternateExchange: 备用交换机
+        :type AlternateExchange: str
         """
         self._InstanceId = None
         self._VirtualHost = None
         self._ExchangeName = None
         self._Remark = None
+        self._AlternateExchange = None
 
     @property
     def InstanceId(self):
@@ -4629,12 +4632,24 @@ class ModifyRabbitMQServerlessExchangeRequest(AbstractModel):
     def Remark(self, Remark):
         self._Remark = Remark
 
+    @property
+    def AlternateExchange(self):
+        r"""备用交换机
+        :rtype: str
+        """
+        return self._AlternateExchange
+
+    @AlternateExchange.setter
+    def AlternateExchange(self, AlternateExchange):
+        self._AlternateExchange = AlternateExchange
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._VirtualHost = params.get("VirtualHost")
         self._ExchangeName = params.get("ExchangeName")
         self._Remark = params.get("Remark")
+        self._AlternateExchange = params.get("AlternateExchange")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5647,62 +5662,70 @@ class RabbitMQClusterInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群ID
+        :param _ClusterId: <p>集群ID</p>
         :type ClusterId: str
-        :param _ClusterName: 集群名称
+        :param _ClusterName: <p>集群名称</p>
         :type ClusterName: str
-        :param _Region: 地域信息
+        :param _Region: <p>地域信息</p>
         :type Region: str
-        :param _CreateTime: 创建时间，毫秒为单位
+        :param _CreateTime: <p>创建时间，毫秒为单位</p>
         :type CreateTime: int
-        :param _Remark: 集群说明信息
+        :param _Remark: <p>集群说明信息</p>
         :type Remark: str
-        :param _Vpcs: VPC及网络信息
+        :param _Vpcs: <p>VPC及网络信息</p>
         :type Vpcs: list of VpcEndpointInfo
-        :param _ZoneIds: 可用区信息
+        :param _ZoneIds: <p>可用区信息</p>
         :type ZoneIds: list of int
-        :param _VirtualHostNumber: 虚拟主机数量
+        :param _VirtualHostNumber: <p>虚拟主机数量</p>
         :type VirtualHostNumber: int
-        :param _QueueNumber: 队列数量
+        :param _QueueNumber: <p>队列数量</p>
         :type QueueNumber: int
-        :param _MessagePublishRate: 每秒生产消息数 单位：条/秒
+        :param _MessagePublishRate: <p>每秒生产消息数 单位：条/秒</p>
         :type MessagePublishRate: float
-        :param _MessageStackNumber: 堆积消息数 单位：条
+        :param _MessageStackNumber: <p>堆积消息数 单位：条</p>
         :type MessageStackNumber: int
-        :param _ExpireTime: 过期时间
+        :param _ExpireTime: <p>过期时间</p>
         :type ExpireTime: int
-        :param _ChannelNumber: Channel数量
+        :param _ChannelNumber: <p>Channel数量</p>
         :type ChannelNumber: int
-        :param _ConnectionNumber: Connection数量
+        :param _ConnectionNumber: <p>Connection数量</p>
         :type ConnectionNumber: int
-        :param _ConsumerNumber: Consumer数量
+        :param _ConsumerNumber: <p>Consumer数量</p>
         :type ConsumerNumber: int
-        :param _ExchangeNumber: Exchang数量
+        :param _ExchangeNumber: <p>Exchang数量</p>
         :type ExchangeNumber: int
-        :param _ExceptionInformation: 集群异常信息
+        :param _ExceptionInformation: <p>集群异常信息</p>
         :type ExceptionInformation: str
-        :param _ClusterStatus: 实例状态，0表示创建中，1表示正常，2表示隔离中，3表示已销毁，4 - 异常, 5 - 发货失败
+        :param _ClusterStatus: <p>实例状态，0表示创建中，1表示正常，2表示隔离中，3表示已销毁，4 - 异常, 5 - 发货失败</p>
         :type ClusterStatus: int
-        :param _AutoRenewFlag: 自动续费标记，0表示默认状态(用户未设置，即初始状态即手动续费)， 1表示自动续费，2表示明确不自动续费(用户设置)
+        :param _AutoRenewFlag: <p>自动续费标记，0表示默认状态(用户未设置，即初始状态即手动续费)， 1表示自动续费，2表示明确不自动续费(用户设置)</p>
         :type AutoRenewFlag: int
-        :param _MirrorQueuePolicyFlag: 是否开启镜像队列策略。1表示开启，0表示没开启。
+        :param _MirrorQueuePolicyFlag: <p>是否开启镜像队列策略。1表示开启，0表示没开启。</p>
         :type MirrorQueuePolicyFlag: int
-        :param _MessageConsumeRate: 每秒消费消息数 单位：条/秒
+        :param _MessageConsumeRate: <p>每秒消费消息数 单位：条/秒</p>
         :type MessageConsumeRate: float
-        :param _ClusterVersion: 集群版本信息
+        :param _ClusterVersion: <p>集群版本信息</p>
         :type ClusterVersion: str
-        :param _PayMode: 计费模式，0-后付费，1-预付费
+        :param _PayMode: <p>计费模式，0-后付费，1-预付费</p>
         :type PayMode: int
-        :param _InstanceType: 集群类型
+        :param _InstanceType: <p>集群类型</p>
         :type InstanceType: int
-        :param _MessageRetainTime: 消息保留时间，单位小时
+        :param _MessageRetainTime: <p>消息保留时间，单位小时</p>
         :type MessageRetainTime: int
-        :param _SendReceiveRatio: 发送消息流量比例
+        :param _SendReceiveRatio: <p>发送消息流量比例</p>
         :type SendReceiveRatio: float
-        :param _TraceTime: 消息轨迹保留时间，单位小时
+        :param _TraceTime: <p>消息轨迹保留时间，单位小时</p>
         :type TraceTime: int
-        :param _Tags: 实例标签列表
+        :param _Tags: <p>实例标签列表</p>
         :type Tags: list of RabbitMQServerlessTag
+        :param _ElasticTpsFlag: <p>是否开启弹性tps</p>
+        :type ElasticTpsFlag: bool
+        :param _ElasticTpsRatio: <p>弹性tps倍数，默认弹1倍</p>
+        :type ElasticTpsRatio: float
+        :param _MaxRedeliverCount: <p>最大重投次数</p>
+        :type MaxRedeliverCount: int
+        :param _ConsumerTimeout: <p>消费超时时间，单位min</p>
+        :type ConsumerTimeout: int
         """
         self._ClusterId = None
         self._ClusterName = None
@@ -5732,10 +5755,14 @@ class RabbitMQClusterInfo(AbstractModel):
         self._SendReceiveRatio = None
         self._TraceTime = None
         self._Tags = None
+        self._ElasticTpsFlag = None
+        self._ElasticTpsRatio = None
+        self._MaxRedeliverCount = None
+        self._ConsumerTimeout = None
 
     @property
     def ClusterId(self):
-        r"""集群ID
+        r"""<p>集群ID</p>
         :rtype: str
         """
         return self._ClusterId
@@ -5746,7 +5773,7 @@ class RabbitMQClusterInfo(AbstractModel):
 
     @property
     def ClusterName(self):
-        r"""集群名称
+        r"""<p>集群名称</p>
         :rtype: str
         """
         return self._ClusterName
@@ -5757,7 +5784,7 @@ class RabbitMQClusterInfo(AbstractModel):
 
     @property
     def Region(self):
-        r"""地域信息
+        r"""<p>地域信息</p>
         :rtype: str
         """
         return self._Region
@@ -5768,7 +5795,7 @@ class RabbitMQClusterInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""创建时间，毫秒为单位
+        r"""<p>创建时间，毫秒为单位</p>
         :rtype: int
         """
         return self._CreateTime
@@ -5779,7 +5806,7 @@ class RabbitMQClusterInfo(AbstractModel):
 
     @property
     def Remark(self):
-        r"""集群说明信息
+        r"""<p>集群说明信息</p>
         :rtype: str
         """
         return self._Remark
@@ -5790,7 +5817,7 @@ class RabbitMQClusterInfo(AbstractModel):
 
     @property
     def Vpcs(self):
-        r"""VPC及网络信息
+        r"""<p>VPC及网络信息</p>
         :rtype: list of VpcEndpointInfo
         """
         return self._Vpcs
@@ -5801,7 +5828,7 @@ class RabbitMQClusterInfo(AbstractModel):
 
     @property
     def ZoneIds(self):
-        r"""可用区信息
+        r"""<p>可用区信息</p>
         :rtype: list of int
         """
         return self._ZoneIds
@@ -5812,7 +5839,7 @@ class RabbitMQClusterInfo(AbstractModel):
 
     @property
     def VirtualHostNumber(self):
-        r"""虚拟主机数量
+        r"""<p>虚拟主机数量</p>
         :rtype: int
         """
         return self._VirtualHostNumber
@@ -5823,7 +5850,7 @@ class RabbitMQClusterInfo(AbstractModel):
 
     @property
     def QueueNumber(self):
-        r"""队列数量
+        r"""<p>队列数量</p>
         :rtype: int
         """
         return self._QueueNumber
@@ -5834,7 +5861,7 @@ class RabbitMQClusterInfo(AbstractModel):
 
     @property
     def MessagePublishRate(self):
-        r"""每秒生产消息数 单位：条/秒
+        r"""<p>每秒生产消息数 单位：条/秒</p>
         :rtype: float
         """
         return self._MessagePublishRate
@@ -5845,7 +5872,7 @@ class RabbitMQClusterInfo(AbstractModel):
 
     @property
     def MessageStackNumber(self):
-        r"""堆积消息数 单位：条
+        r"""<p>堆积消息数 单位：条</p>
         :rtype: int
         """
         return self._MessageStackNumber
@@ -5856,7 +5883,7 @@ class RabbitMQClusterInfo(AbstractModel):
 
     @property
     def ExpireTime(self):
-        r"""过期时间
+        r"""<p>过期时间</p>
         :rtype: int
         """
         return self._ExpireTime
@@ -5867,7 +5894,7 @@ class RabbitMQClusterInfo(AbstractModel):
 
     @property
     def ChannelNumber(self):
-        r"""Channel数量
+        r"""<p>Channel数量</p>
         :rtype: int
         """
         return self._ChannelNumber
@@ -5878,7 +5905,7 @@ class RabbitMQClusterInfo(AbstractModel):
 
     @property
     def ConnectionNumber(self):
-        r"""Connection数量
+        r"""<p>Connection数量</p>
         :rtype: int
         """
         return self._ConnectionNumber
@@ -5889,7 +5916,7 @@ class RabbitMQClusterInfo(AbstractModel):
 
     @property
     def ConsumerNumber(self):
-        r"""Consumer数量
+        r"""<p>Consumer数量</p>
         :rtype: int
         """
         return self._ConsumerNumber
@@ -5900,7 +5927,7 @@ class RabbitMQClusterInfo(AbstractModel):
 
     @property
     def ExchangeNumber(self):
-        r"""Exchang数量
+        r"""<p>Exchang数量</p>
         :rtype: int
         """
         return self._ExchangeNumber
@@ -5911,7 +5938,7 @@ class RabbitMQClusterInfo(AbstractModel):
 
     @property
     def ExceptionInformation(self):
-        r"""集群异常信息
+        r"""<p>集群异常信息</p>
         :rtype: str
         """
         return self._ExceptionInformation
@@ -5922,7 +5949,7 @@ class RabbitMQClusterInfo(AbstractModel):
 
     @property
     def ClusterStatus(self):
-        r"""实例状态，0表示创建中，1表示正常，2表示隔离中，3表示已销毁，4 - 异常, 5 - 发货失败
+        r"""<p>实例状态，0表示创建中，1表示正常，2表示隔离中，3表示已销毁，4 - 异常, 5 - 发货失败</p>
         :rtype: int
         """
         return self._ClusterStatus
@@ -5933,7 +5960,7 @@ class RabbitMQClusterInfo(AbstractModel):
 
     @property
     def AutoRenewFlag(self):
-        r"""自动续费标记，0表示默认状态(用户未设置，即初始状态即手动续费)， 1表示自动续费，2表示明确不自动续费(用户设置)
+        r"""<p>自动续费标记，0表示默认状态(用户未设置，即初始状态即手动续费)， 1表示自动续费，2表示明确不自动续费(用户设置)</p>
         :rtype: int
         """
         return self._AutoRenewFlag
@@ -5944,7 +5971,7 @@ class RabbitMQClusterInfo(AbstractModel):
 
     @property
     def MirrorQueuePolicyFlag(self):
-        r"""是否开启镜像队列策略。1表示开启，0表示没开启。
+        r"""<p>是否开启镜像队列策略。1表示开启，0表示没开启。</p>
         :rtype: int
         """
         return self._MirrorQueuePolicyFlag
@@ -5955,7 +5982,7 @@ class RabbitMQClusterInfo(AbstractModel):
 
     @property
     def MessageConsumeRate(self):
-        r"""每秒消费消息数 单位：条/秒
+        r"""<p>每秒消费消息数 单位：条/秒</p>
         :rtype: float
         """
         return self._MessageConsumeRate
@@ -5966,7 +5993,7 @@ class RabbitMQClusterInfo(AbstractModel):
 
     @property
     def ClusterVersion(self):
-        r"""集群版本信息
+        r"""<p>集群版本信息</p>
         :rtype: str
         """
         return self._ClusterVersion
@@ -5977,7 +6004,7 @@ class RabbitMQClusterInfo(AbstractModel):
 
     @property
     def PayMode(self):
-        r"""计费模式，0-后付费，1-预付费
+        r"""<p>计费模式，0-后付费，1-预付费</p>
         :rtype: int
         """
         return self._PayMode
@@ -5988,7 +6015,7 @@ class RabbitMQClusterInfo(AbstractModel):
 
     @property
     def InstanceType(self):
-        r"""集群类型
+        r"""<p>集群类型</p>
         :rtype: int
         """
         return self._InstanceType
@@ -5999,7 +6026,7 @@ class RabbitMQClusterInfo(AbstractModel):
 
     @property
     def MessageRetainTime(self):
-        r"""消息保留时间，单位小时
+        r"""<p>消息保留时间，单位小时</p>
         :rtype: int
         """
         return self._MessageRetainTime
@@ -6010,7 +6037,7 @@ class RabbitMQClusterInfo(AbstractModel):
 
     @property
     def SendReceiveRatio(self):
-        r"""发送消息流量比例
+        r"""<p>发送消息流量比例</p>
         :rtype: float
         """
         return self._SendReceiveRatio
@@ -6021,7 +6048,7 @@ class RabbitMQClusterInfo(AbstractModel):
 
     @property
     def TraceTime(self):
-        r"""消息轨迹保留时间，单位小时
+        r"""<p>消息轨迹保留时间，单位小时</p>
         :rtype: int
         """
         return self._TraceTime
@@ -6032,7 +6059,7 @@ class RabbitMQClusterInfo(AbstractModel):
 
     @property
     def Tags(self):
-        r"""实例标签列表
+        r"""<p>实例标签列表</p>
         :rtype: list of RabbitMQServerlessTag
         """
         return self._Tags
@@ -6040,6 +6067,50 @@ class RabbitMQClusterInfo(AbstractModel):
     @Tags.setter
     def Tags(self, Tags):
         self._Tags = Tags
+
+    @property
+    def ElasticTpsFlag(self):
+        r"""<p>是否开启弹性tps</p>
+        :rtype: bool
+        """
+        return self._ElasticTpsFlag
+
+    @ElasticTpsFlag.setter
+    def ElasticTpsFlag(self, ElasticTpsFlag):
+        self._ElasticTpsFlag = ElasticTpsFlag
+
+    @property
+    def ElasticTpsRatio(self):
+        r"""<p>弹性tps倍数，默认弹1倍</p>
+        :rtype: float
+        """
+        return self._ElasticTpsRatio
+
+    @ElasticTpsRatio.setter
+    def ElasticTpsRatio(self, ElasticTpsRatio):
+        self._ElasticTpsRatio = ElasticTpsRatio
+
+    @property
+    def MaxRedeliverCount(self):
+        r"""<p>最大重投次数</p>
+        :rtype: int
+        """
+        return self._MaxRedeliverCount
+
+    @MaxRedeliverCount.setter
+    def MaxRedeliverCount(self, MaxRedeliverCount):
+        self._MaxRedeliverCount = MaxRedeliverCount
+
+    @property
+    def ConsumerTimeout(self):
+        r"""<p>消费超时时间，单位min</p>
+        :rtype: int
+        """
+        return self._ConsumerTimeout
+
+    @ConsumerTimeout.setter
+    def ConsumerTimeout(self, ConsumerTimeout):
+        self._ConsumerTimeout = ConsumerTimeout
 
 
     def _deserialize(self, params):
@@ -6081,6 +6152,10 @@ class RabbitMQClusterInfo(AbstractModel):
                 obj = RabbitMQServerlessTag()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        self._ElasticTpsFlag = params.get("ElasticTpsFlag")
+        self._ElasticTpsRatio = params.get("ElasticTpsRatio")
+        self._MaxRedeliverCount = params.get("MaxRedeliverCount")
+        self._ConsumerTimeout = params.get("ConsumerTimeout")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

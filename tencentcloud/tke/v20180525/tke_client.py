@@ -670,6 +670,29 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateExternalNodePool(self, request):
+        r"""创建第三方节点池
+
+        :param request: Request instance for CreateExternalNodePool.
+        :type request: :class:`tencentcloud.tke.v20180525.models.CreateExternalNodePoolRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.CreateExternalNodePoolResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateExternalNodePool", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateExternalNodePoolResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateGlobalMaintenanceWindowAndExclusions(self, request):
         r"""创建全局维护时间窗口和排除项
 
@@ -1397,6 +1420,52 @@ class TkeClient(AbstractClient):
             body = self.call("DeleteEdgeClusterInstances", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteEdgeClusterInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteExternalNode(self, request):
+        r"""删除第三方节点
+
+        :param request: Request instance for DeleteExternalNode.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DeleteExternalNodeRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DeleteExternalNodeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteExternalNode", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteExternalNodeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteExternalNodePool(self, request):
+        r"""删除第三方节点池
+
+        :param request: Request instance for DeleteExternalNodePool.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DeleteExternalNodePoolRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DeleteExternalNodePoolResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteExternalNodePool", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteExternalNodePoolResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2993,6 +3062,75 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeExternalNode(self, request):
+        r"""查看第三方节点列表
+
+        :param request: Request instance for DescribeExternalNode.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeExternalNodeRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeExternalNodeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeExternalNode", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeExternalNodeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeExternalNodePools(self, request):
+        r"""查看第三方节点池列表
+
+        :param request: Request instance for DescribeExternalNodePools.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeExternalNodePoolsRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeExternalNodePoolsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeExternalNodePools", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeExternalNodePoolsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeExternalNodeScript(self, request):
+        r"""获取第三方节点添加脚本
+
+        :param request: Request instance for DescribeExternalNodeScript.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeExternalNodeScriptRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeExternalNodeScriptResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeExternalNodeScript", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeExternalNodeScriptResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeExternalNodeSupportConfig(self, request):
         r"""查看开启第三方节点池配置信息
 
@@ -4350,6 +4488,29 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DrainExternalNode(self, request):
+        r"""驱逐第三方节点
+
+        :param request: Request instance for DrainExternalNode.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DrainExternalNodeRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DrainExternalNodeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DrainExternalNode", params, headers=headers)
+            response = json.loads(body)
+            model = models.DrainExternalNodeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def EnableClusterAudit(self, request):
         r"""开启集群审计
 
@@ -4479,6 +4640,29 @@ class TkeClient(AbstractClient):
             body = self.call("EnableEventPersistence", params, headers=headers)
             response = json.loads(body)
             model = models.EnableEventPersistenceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def EnableExternalNodeSupport(self, request):
+        r"""开启第三方节点池支持
+
+        :param request: Request instance for EnableExternalNodeSupport.
+        :type request: :class:`tencentcloud.tke.v20180525.models.EnableExternalNodeSupportRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.EnableExternalNodeSupportResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("EnableExternalNodeSupport", params, headers=headers)
+            response = json.loads(body)
+            model = models.EnableExternalNodeSupportResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -5077,6 +5261,29 @@ class TkeClient(AbstractClient):
             body = self.call("ModifyClusterVirtualNodePool", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyClusterVirtualNodePoolResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyExternalNodePool(self, request):
+        r"""修改第三方节点池
+
+        :param request: Request instance for ModifyExternalNodePool.
+        :type request: :class:`tencentcloud.tke.v20180525.models.ModifyExternalNodePoolRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.ModifyExternalNodePoolResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyExternalNodePool", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyExternalNodePoolResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

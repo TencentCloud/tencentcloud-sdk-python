@@ -2578,7 +2578,7 @@ class DescribeDataCustomUrlV2Request(AbstractModel):
         r"""
         :param _StartTime: 开始时间
         :type StartTime: int
-        :param _Type: top：资源top视图，allcount：性能视图，day：14天数据，condition：条件列表，pagepv：性能视图，area：请求速度分布，nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/：网络平台视图/Version视图/设备视图/ISP视图/地区视图/浏览器视图/ext1视图等等
+        :param _Type: top：资源top视图，allcount：性能视图，day：14天数据，condition：条件列表，pagepv：性能视图，area：请求速度分布，nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/：网络平台视图/Version视图/设备视图/ISP视图/地区视图/浏览器视图/ext1视图等
         :type Type: str
         :param _EndTime: 结束时间
         :type EndTime: int
@@ -2684,7 +2684,7 @@ class DescribeDataCustomUrlV2Request(AbstractModel):
 
     @property
     def Type(self):
-        r"""top：资源top视图，allcount：性能视图，day：14天数据，condition：条件列表，pagepv：性能视图，area：请求速度分布，nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/：网络平台视图/Version视图/设备视图/ISP视图/地区视图/浏览器视图/ext1视图等等
+        r"""top：资源top视图，allcount：性能视图，day：14天数据，condition：条件列表，pagepv：性能视图，area：请求速度分布，nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/：网络平台视图/Version视图/设备视图/ISP视图/地区视图/浏览器视图/ext1视图等
         :rtype: str
         """
         return self._Type
@@ -3503,7 +3503,7 @@ class DescribeDataEventUrlV2Request(AbstractModel):
         r"""
         :param _StartTime: 开始时间
         :type StartTime: int
-        :param _Type: allcount：性能视图，day：14天数据，condition：条件列表，ckuv：获取uv趋势，ckpv：获取pv趋势，nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/：网络平台视图/Version视图/设备视图/ISP视图/地区视图/浏览器视图/ext1视图等等
+        :param _Type: allcount：性能视图，day：14天数据，condition：条件列表，ckuv：获取uv趋势，ckpv：获取pv趋势，nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/：网络平台视图/Version视图/设备视图/ISP视图/地区视图/浏览器视图/ext1视图等
         :type Type: str
         :param _EndTime: 结束时间
         :type EndTime: int
@@ -3606,7 +3606,7 @@ class DescribeDataEventUrlV2Request(AbstractModel):
 
     @property
     def Type(self):
-        r"""allcount：性能视图，day：14天数据，condition：条件列表，ckuv：获取uv趋势，ckpv：获取pv趋势，nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/：网络平台视图/Version视图/设备视图/ISP视图/地区视图/浏览器视图/ext1视图等等
+        r"""allcount：性能视图，day：14天数据，condition：条件列表，ckuv：获取uv趋势，ckpv：获取pv趋势，nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/：网络平台视图/Version视图/设备视图/ISP视图/地区视图/浏览器视图/ext1视图等
         :rtype: str
         """
         return self._Type
@@ -4456,7 +4456,8 @@ class DescribeDataFetchUrlInfoRequest(AbstractModel):
         r"""
         :param _StartTime: 开始时间
         :type StartTime: int
-        :param _Type: 类型
+        :param _Type: Type	是	String	无枚举值。此接口不使用 Type 做分支判断，SQL 固定 group by "url"，Type 字段传任何值不影响查询。
+
         :type Type: str
         :param _EndTime: 结束时间
         :type EndTime: int
@@ -4538,7 +4539,8 @@ class DescribeDataFetchUrlInfoRequest(AbstractModel):
 
     @property
     def Type(self):
-        r"""类型
+        r"""Type	是	String	无枚举值。此接口不使用 Type 做分支判断，SQL 固定 group by "url"，Type 字段传任何值不影响查询。
+
         :rtype: str
         """
         return self._Type
@@ -4913,7 +4915,7 @@ class DescribeDataFetchUrlRequest(AbstractModel):
         :type Status: str
         :param _Ret: retcode
         :type Ret: str
-        :param _NetStatus: 网络状态
+        :param _NetStatus: 网络状态(tag 值):用于过滤/聚合字段 netStatus；枚举值：0(正常)、1(弱网)、2(断网)、3(其他)。
         :type NetStatus: str
         """
         self._StartTime = None
@@ -5220,7 +5222,7 @@ class DescribeDataFetchUrlRequest(AbstractModel):
 
     @property
     def NetStatus(self):
-        r"""网络状态
+        r"""网络状态(tag 值):用于过滤/聚合字段 netStatus；枚举值：0(正常)、1(弱网)、2(断网)、3(其他)。
         :rtype: str
         """
         return self._NetStatus
@@ -5319,7 +5321,7 @@ class DescribeDataFetchUrlV2Request(AbstractModel):
         r"""
         :param _StartTime: 开始时间
         :type StartTime: int
-        :param _Type: allcount：性能视图，pagepv：pv视图，day：14天数据，count40x：40X视图，count50x：50X视图，count5xand4x：40∑50视图，top：资源top视图，nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/：网络平台视图/Version视图/设备视图/ISP视图/地区视图/浏览器视图/ext1视图等等
+        :param _Type: allcount：性能视图，pagepv：pv视图，day：14天数据，count40x：40X视图，count50x：50X视图，count5xand4x：40∑50视图，top：资源top视图，nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/：网络平台视图/Version视图/设备视图/ISP视图/地区视图/浏览器视图/ext1视图等
         :type Type: str
         :param _EndTime: 结束时间
         :type EndTime: int
@@ -5434,7 +5436,7 @@ class DescribeDataFetchUrlV2Request(AbstractModel):
 
     @property
     def Type(self):
-        r"""allcount：性能视图，pagepv：pv视图，day：14天数据，count40x：40X视图，count50x：50X视图，count5xand4x：40∑50视图，top：资源top视图，nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/：网络平台视图/Version视图/设备视图/ISP视图/地区视图/浏览器视图/ext1视图等等
+        r"""allcount：性能视图，pagepv：pv视图，day：14天数据，count40x：40X视图，count50x：50X视图，count5xand4x：40∑50视图，top：资源top视图，nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/：网络平台视图/Version视图/设备视图/ISP视图/地区视图/浏览器视图/ext1视图等
         :rtype: str
         """
         return self._Type
@@ -6396,7 +6398,7 @@ class DescribeDataLogUrlStatisticsV2Request(AbstractModel):
         r"""
         :param _StartTime: 开始时间
         :type StartTime: int
-        :param _Type: analysis：异常分析，compare：异常列表对比，allcount：性能视图，condition：条件列表，nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/：网络平台视图/Version视图/设备视图/ISP视图/地区视图/浏览器视图/ext1视图等等
+        :param _Type: analysis：异常分析，compare：异常列表对比，allcount：性能视图，condition：条件列表，nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/：网络平台视图/Version视图/设备视图/ISP视图/地区视图/浏览器视图/ext1视图等
         :type Type: str
         :param _EndTime: 结束时间
         :type EndTime: int
@@ -6499,7 +6501,7 @@ class DescribeDataLogUrlStatisticsV2Request(AbstractModel):
 
     @property
     def Type(self):
-        r"""analysis：异常分析，compare：异常列表对比，allcount：性能视图，condition：条件列表，nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/：网络平台视图/Version视图/设备视图/ISP视图/地区视图/浏览器视图/ext1视图等等
+        r"""analysis：异常分析，compare：异常列表对比，allcount：性能视图，condition：条件列表，nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/：网络平台视图/Version视图/设备视图/ISP视图/地区视图/浏览器视图/ext1视图等
         :rtype: str
         """
         return self._Type
@@ -8670,7 +8672,7 @@ class DescribeDataPvUrlStatisticsV2Request(AbstractModel):
         r"""
         :param _StartTime: 开始时间
         :type StartTime: int
-        :param _Type: allcount：性能视图，day：14天数据，vp：性能，ckuv：uv，ckpv：pv，condition：条件列表，nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/：网络平台视图/Version视图/设备视图/ISP视图/地区视图/浏览器视图/ext1视图等等
+        :param _Type: allcount：性能视图，day：14天数据，vp：性能，ckuv：uv，ckpv：pv，condition：条件列表，nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/：网络平台视图/Version视图/设备视图/ISP视图/地区视图/浏览器视图/ext1视图等
         :type Type: str
         :param _EndTime: 结束时间
         :type EndTime: int
@@ -8778,7 +8780,7 @@ class DescribeDataPvUrlStatisticsV2Request(AbstractModel):
 
     @property
     def Type(self):
-        r"""allcount：性能视图，day：14天数据，vp：性能，ckuv：uv，ckpv：pv，condition：条件列表，nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/：网络平台视图/Version视图/设备视图/ISP视图/地区视图/浏览器视图/ext1视图等等
+        r"""allcount：性能视图，day：14天数据，vp：性能，ckuv：uv，ckpv：pv，condition：条件列表，nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/：网络平台视图/Version视图/设备视图/ISP视图/地区视图/浏览器视图/ext1视图等
         :rtype: str
         """
         return self._Type
@@ -10922,7 +10924,7 @@ class DescribeDataStaticProjectV2Request(AbstractModel):
         r"""
         :param _StartTime: 开始时间
         :type StartTime: int
-        :param _Type: allcount：性能视图，day：14天数据，condition：条件列表，area：请求速度分布，nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/：网络平台视图/Version视图/设备视图/ISP视图/地区视图/浏览器视图/ext1视图等等
+        :param _Type: allcount：性能视图，day：14天数据，condition：条件列表，area：请求速度分布，nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/：网络平台视图/Version视图/设备视图/ISP视图/地区视图/浏览器视图/ext1视图等
         :type Type: str
         :param _EndTime: 结束时间
         :type EndTime: int
@@ -11028,7 +11030,7 @@ class DescribeDataStaticProjectV2Request(AbstractModel):
 
     @property
     def Type(self):
-        r"""allcount：性能视图，day：14天数据，condition：条件列表，area：请求速度分布，nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/：网络平台视图/Version视图/设备视图/ISP视图/地区视图/浏览器视图/ext1视图等等
+        r"""allcount：性能视图，day：14天数据，condition：条件列表，area：请求速度分布，nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/：网络平台视图/Version视图/设备视图/ISP视图/地区视图/浏览器视图/ext1视图等
         :rtype: str
         """
         return self._Type
@@ -11860,7 +11862,7 @@ class DescribeDataStaticResourceV2Request(AbstractModel):
         r"""
         :param _StartTime: 开始时间
         :type StartTime: int
-        :param _Type: top：资源top视图，count40x：40X视图，nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/：网络平台视图/Version视图/设备视图/ISP视图/地区视图/浏览器视图//ext1视图等等
+        :param _Type: top：资源top视图，count40x：40X视图，nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/：网络平台视图/Version视图/设备视图/ISP视图/地区视图/浏览器视图//ext1视图等
         :type Type: str
         :param _EndTime: 结束时间
         :type EndTime: int
@@ -11966,7 +11968,7 @@ class DescribeDataStaticResourceV2Request(AbstractModel):
 
     @property
     def Type(self):
-        r"""top：资源top视图，count40x：40X视图，nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/：网络平台视图/Version视图/设备视图/ISP视图/地区视图/浏览器视图//ext1视图等等
+        r"""top：资源top视图，count40x：40X视图，nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/：网络平台视图/Version视图/设备视图/ISP视图/地区视图/浏览器视图//ext1视图等
         :rtype: str
         """
         return self._Type
@@ -12798,7 +12800,7 @@ class DescribeDataStaticUrlV2Request(AbstractModel):
         r"""
         :param _StartTime: 开始时间
         :type StartTime: int
-        :param _Type: pagepv：性能视图，nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/：网络平台视图/Version视图/设备视图/ISP视图/地区视图/浏览器视图//ext1视图等等
+        :param _Type: pagepv：性能视图，nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/：网络平台视图/Version视图/设备视图/ISP视图/地区视图/浏览器视图//ext1视图等
         :type Type: str
         :param _EndTime: 结束时间
         :type EndTime: int
@@ -12904,7 +12906,7 @@ class DescribeDataStaticUrlV2Request(AbstractModel):
 
     @property
     def Type(self):
-        r"""pagepv：性能视图，nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/：网络平台视图/Version视图/设备视图/ISP视图/地区视图/浏览器视图//ext1视图等等
+        r"""pagepv：性能视图，nettype/version/platform/isp/region/device/browser/ext1/ext2/ext3/ret/status/from/url/env/：网络平台视图/Version视图/设备视图/ISP视图/地区视图/浏览器视图//ext1视图等
         :rtype: str
         """
         return self._Type
@@ -13341,7 +13343,7 @@ class DescribeDataWebVitalsPageRequest(AbstractModel):
         :type From: str
         :param _Level: 日志等级
         :type Level: str
-        :param _Type: 类型暂无
+        :param _Type: 按页面来源分组（group by from），返回每个页面的 LCP/FID/CLS/FCP
         :type Type: str
         :param _Brand: 品牌
         :type Brand: str
@@ -13483,7 +13485,7 @@ class DescribeDataWebVitalsPageRequest(AbstractModel):
 
     @property
     def Type(self):
-        r"""类型暂无
+        r"""按页面来源分组（group by from），返回每个页面的 LCP/FID/CLS/FCP
         :rtype: str
         """
         return self._Type

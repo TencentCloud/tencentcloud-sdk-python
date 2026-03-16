@@ -529,6 +529,24 @@ class TkeClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateExternalNodePool(
+            self,
+            request: models.CreateExternalNodePoolRequest,
+            opts: Dict = None,
+    ) -> models.CreateExternalNodePoolResponse:
+        """
+        创建第三方节点池
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateExternalNodePool"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateExternalNodePoolResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateGlobalMaintenanceWindowAndExclusions(
             self,
             request: models.CreateGlobalMaintenanceWindowAndExclusionsRequest,
@@ -1100,6 +1118,42 @@ class TkeClient(AbstractClient):
         kwargs["action"] = "DeleteEdgeClusterInstances"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteEdgeClusterInstancesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteExternalNode(
+            self,
+            request: models.DeleteExternalNodeRequest,
+            opts: Dict = None,
+    ) -> models.DeleteExternalNodeResponse:
+        """
+        删除第三方节点
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteExternalNode"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteExternalNodeResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteExternalNodePool(
+            self,
+            request: models.DeleteExternalNodePoolRequest,
+            opts: Dict = None,
+    ) -> models.DeleteExternalNodePoolResponse:
+        """
+        删除第三方节点池
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteExternalNodePool"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteExternalNodePoolResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2347,6 +2401,60 @@ class TkeClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeExternalNode(
+            self,
+            request: models.DescribeExternalNodeRequest,
+            opts: Dict = None,
+    ) -> models.DescribeExternalNodeResponse:
+        """
+        查看第三方节点列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeExternalNode"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeExternalNodeResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeExternalNodePools(
+            self,
+            request: models.DescribeExternalNodePoolsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeExternalNodePoolsResponse:
+        """
+        查看第三方节点池列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeExternalNodePools"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeExternalNodePoolsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeExternalNodeScript(
+            self,
+            request: models.DescribeExternalNodeScriptRequest,
+            opts: Dict = None,
+    ) -> models.DescribeExternalNodeScriptResponse:
+        """
+        获取第三方节点添加脚本
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeExternalNodeScript"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeExternalNodeScriptResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeExternalNodeSupportConfig(
             self,
             request: models.DescribeExternalNodeSupportConfigRequest,
@@ -3409,6 +3517,24 @@ class TkeClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DrainExternalNode(
+            self,
+            request: models.DrainExternalNodeRequest,
+            opts: Dict = None,
+    ) -> models.DrainExternalNodeResponse:
+        """
+        驱逐第三方节点
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DrainExternalNode"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DrainExternalNodeResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def EnableClusterAudit(
             self,
             request: models.EnableClusterAuditRequest,
@@ -3512,6 +3638,24 @@ class TkeClient(AbstractClient):
         kwargs["action"] = "EnableEventPersistence"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.EnableEventPersistenceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def EnableExternalNodeSupport(
+            self,
+            request: models.EnableExternalNodeSupportRequest,
+            opts: Dict = None,
+    ) -> models.EnableExternalNodeSupportResponse:
+        """
+        开启第三方节点池支持
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "EnableExternalNodeSupport"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.EnableExternalNodeSupportResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -3980,6 +4124,24 @@ class TkeClient(AbstractClient):
         kwargs["action"] = "ModifyClusterVirtualNodePool"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyClusterVirtualNodePoolResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyExternalNodePool(
+            self,
+            request: models.ModifyExternalNodePoolRequest,
+            opts: Dict = None,
+    ) -> models.ModifyExternalNodePoolResponse:
+        """
+        修改第三方节点池
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyExternalNodePool"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyExternalNodePoolResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

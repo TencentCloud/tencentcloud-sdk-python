@@ -1091,6 +1091,167 @@ class CosPathInfo(AbstractModel):
         
 
 
+class CreateDataSourceRequest(AbstractModel):
+    r"""CreateDataSource请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 数据源名称
+        :type Name: str
+        :param _Type: 数据源类型英文名
+        :type Type: str
+        :param _Permission: 数据源权限，取值有RW RO
+        :type Permission: str
+        :param _StorageId: 存储实例ID
+        :type StorageId: str
+        :param _MountConfigure: 数据源挂载配置
+        :type MountConfigure: :class:`tencentcloud.tione.v20211111.models.MountConfigureInfo`
+        :param _Tags: 标签配置
+        :type Tags: list of Tag
+        """
+        self._Name = None
+        self._Type = None
+        self._Permission = None
+        self._StorageId = None
+        self._MountConfigure = None
+        self._Tags = None
+
+    @property
+    def Name(self):
+        r"""数据源名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        r"""数据源类型英文名
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Permission(self):
+        r"""数据源权限，取值有RW RO
+        :rtype: str
+        """
+        return self._Permission
+
+    @Permission.setter
+    def Permission(self, Permission):
+        self._Permission = Permission
+
+    @property
+    def StorageId(self):
+        r"""存储实例ID
+        :rtype: str
+        """
+        return self._StorageId
+
+    @StorageId.setter
+    def StorageId(self, StorageId):
+        self._StorageId = StorageId
+
+    @property
+    def MountConfigure(self):
+        r"""数据源挂载配置
+        :rtype: :class:`tencentcloud.tione.v20211111.models.MountConfigureInfo`
+        """
+        return self._MountConfigure
+
+    @MountConfigure.setter
+    def MountConfigure(self, MountConfigure):
+        self._MountConfigure = MountConfigure
+
+    @property
+    def Tags(self):
+        r"""标签配置
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        self._Permission = params.get("Permission")
+        self._StorageId = params.get("StorageId")
+        if params.get("MountConfigure") is not None:
+            self._MountConfigure = MountConfigureInfo()
+            self._MountConfigure._deserialize(params.get("MountConfigure"))
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDataSourceResponse(AbstractModel):
+    r"""CreateDataSource返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 数据源ID
+        :type Id: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Id = None
+        self._RequestId = None
+
+    @property
+    def Id(self):
+        r"""数据源ID
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateDatasetRequest(AbstractModel):
     r"""CreateDataset请求参数结构体
 
@@ -1853,6 +2014,8 @@ HYBRID_PAID:
         :type SchedulingStrategy: str
         :param _GatewayLogConfig: 网关日志投递相关配置
         :type GatewayLogConfig: :class:`tencentcloud.tione.v20211111.models.LogConfig`
+        :param _GatewayConfig: 网关相关配置
+        :type GatewayConfig: :class:`tencentcloud.tione.v20211111.models.GatewayConfig`
         """
         self._ServiceGroupId = None
         self._ServiceGroupName = None
@@ -1898,6 +2061,7 @@ HYBRID_PAID:
         self._VolumeMounts = None
         self._SchedulingStrategy = None
         self._GatewayLogConfig = None
+        self._GatewayConfig = None
 
     @property
     def ServiceGroupId(self):
@@ -2406,6 +2570,17 @@ HYBRID_PAID:
     def GatewayLogConfig(self, GatewayLogConfig):
         self._GatewayLogConfig = GatewayLogConfig
 
+    @property
+    def GatewayConfig(self):
+        r"""网关相关配置
+        :rtype: :class:`tencentcloud.tione.v20211111.models.GatewayConfig`
+        """
+        return self._GatewayConfig
+
+    @GatewayConfig.setter
+    def GatewayConfig(self, GatewayConfig):
+        self._GatewayConfig = GatewayConfig
+
 
     def _deserialize(self, params):
         self._ServiceGroupId = params.get("ServiceGroupId")
@@ -2498,6 +2673,9 @@ HYBRID_PAID:
         if params.get("GatewayLogConfig") is not None:
             self._GatewayLogConfig = LogConfig()
             self._GatewayLogConfig._deserialize(params.get("GatewayLogConfig"))
+        if params.get("GatewayConfig") is not None:
+            self._GatewayConfig = GatewayConfig()
+            self._GatewayConfig._deserialize(params.get("GatewayConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2550,6 +2728,100 @@ class CreateModelServiceResponse(AbstractModel):
         if params.get("Service") is not None:
             self._Service = Service()
             self._Service._deserialize(params.get("Service"))
+        self._RequestId = params.get("RequestId")
+
+
+class CreateMountLimitRequest(AbstractModel):
+    r"""CreateMountLimit请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 数据源类型英文名
+        :type Type: str
+        :param _StorageId: 存储实例ID
+        :type StorageId: str
+        :param _LimitMount: 限制开关是否开启，只有开启时才有限制，默认关闭
+        :type LimitMount: bool
+        """
+        self._Type = None
+        self._StorageId = None
+        self._LimitMount = None
+
+    @property
+    def Type(self):
+        r"""数据源类型英文名
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def StorageId(self):
+        r"""存储实例ID
+        :rtype: str
+        """
+        return self._StorageId
+
+    @StorageId.setter
+    def StorageId(self, StorageId):
+        self._StorageId = StorageId
+
+    @property
+    def LimitMount(self):
+        r"""限制开关是否开启，只有开启时才有限制，默认关闭
+        :rtype: bool
+        """
+        return self._LimitMount
+
+    @LimitMount.setter
+    def LimitMount(self, LimitMount):
+        self._LimitMount = LimitMount
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._StorageId = params.get("StorageId")
+        self._LimitMount = params.get("LimitMount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateMountLimitResponse(AbstractModel):
+    r"""CreateMountLimit返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -4597,6 +4869,248 @@ class DataSetConfig(AbstractModel):
         
 
 
+class DataSourceInfo(AbstractModel):
+    r"""数据源信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 数据源ID
+        :type Id: str
+        :param _Name: 数据源名称
+        :type Name: str
+        :param _Creator: 创建者uin
+        :type Creator: str
+        :param _CreatorName: 创建者名称
+        :type CreatorName: str
+        :param _Type: 数据源类型英文名
+        :type Type: str
+        :param _Permission: 数据源权限，取值有RW RO
+        :type Permission: str
+        :param _StorageId: 数据源所属存储实例ID
+        :type StorageId: str
+        :param _StorageName: 数据源所属存储实例名称
+        :type StorageName: str
+        :param _MountConfigure: 数据源挂载配置
+        :type MountConfigure: :class:`tencentcloud.tione.v20211111.models.MountConfigureInfo`
+        :param _CreateTime: 创建时间, 格式为yyyy-mm-ddThh:mm:ssZ
+        :type CreateTime: str
+        :param _UpdateTime: 更新时间, 格式为yyyy-mm-ddThh:mm:ssZ
+        :type UpdateTime: str
+        :param _LimitMount: 限制开关是否开启，只有开启时才有限制
+        :type LimitMount: bool
+        :param _Tags: 标签配置
+        :type Tags: list of Tag
+        :param _ExtraConf: 额外配置,对应存储实例的额外配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExtraConf: :class:`tencentcloud.tione.v20211111.models.StorageExtraConf`
+        """
+        self._Id = None
+        self._Name = None
+        self._Creator = None
+        self._CreatorName = None
+        self._Type = None
+        self._Permission = None
+        self._StorageId = None
+        self._StorageName = None
+        self._MountConfigure = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._LimitMount = None
+        self._Tags = None
+        self._ExtraConf = None
+
+    @property
+    def Id(self):
+        r"""数据源ID
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        r"""数据源名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Creator(self):
+        r"""创建者uin
+        :rtype: str
+        """
+        return self._Creator
+
+    @Creator.setter
+    def Creator(self, Creator):
+        self._Creator = Creator
+
+    @property
+    def CreatorName(self):
+        r"""创建者名称
+        :rtype: str
+        """
+        return self._CreatorName
+
+    @CreatorName.setter
+    def CreatorName(self, CreatorName):
+        self._CreatorName = CreatorName
+
+    @property
+    def Type(self):
+        r"""数据源类型英文名
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Permission(self):
+        r"""数据源权限，取值有RW RO
+        :rtype: str
+        """
+        return self._Permission
+
+    @Permission.setter
+    def Permission(self, Permission):
+        self._Permission = Permission
+
+    @property
+    def StorageId(self):
+        r"""数据源所属存储实例ID
+        :rtype: str
+        """
+        return self._StorageId
+
+    @StorageId.setter
+    def StorageId(self, StorageId):
+        self._StorageId = StorageId
+
+    @property
+    def StorageName(self):
+        r"""数据源所属存储实例名称
+        :rtype: str
+        """
+        return self._StorageName
+
+    @StorageName.setter
+    def StorageName(self, StorageName):
+        self._StorageName = StorageName
+
+    @property
+    def MountConfigure(self):
+        r"""数据源挂载配置
+        :rtype: :class:`tencentcloud.tione.v20211111.models.MountConfigureInfo`
+        """
+        return self._MountConfigure
+
+    @MountConfigure.setter
+    def MountConfigure(self, MountConfigure):
+        self._MountConfigure = MountConfigure
+
+    @property
+    def CreateTime(self):
+        r"""创建时间, 格式为yyyy-mm-ddThh:mm:ssZ
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""更新时间, 格式为yyyy-mm-ddThh:mm:ssZ
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def LimitMount(self):
+        r"""限制开关是否开启，只有开启时才有限制
+        :rtype: bool
+        """
+        return self._LimitMount
+
+    @LimitMount.setter
+    def LimitMount(self, LimitMount):
+        self._LimitMount = LimitMount
+
+    @property
+    def Tags(self):
+        r"""标签配置
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def ExtraConf(self):
+        r"""额外配置,对应存储实例的额外配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.StorageExtraConf`
+        """
+        return self._ExtraConf
+
+    @ExtraConf.setter
+    def ExtraConf(self, ExtraConf):
+        self._ExtraConf = ExtraConf
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._Creator = params.get("Creator")
+        self._CreatorName = params.get("CreatorName")
+        self._Type = params.get("Type")
+        self._Permission = params.get("Permission")
+        self._StorageId = params.get("StorageId")
+        self._StorageName = params.get("StorageName")
+        if params.get("MountConfigure") is not None:
+            self._MountConfigure = MountConfigureInfo()
+            self._MountConfigure._deserialize(params.get("MountConfigure"))
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._LimitMount = params.get("LimitMount")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        if params.get("ExtraConf") is not None:
+            self._ExtraConf = StorageExtraConf()
+            self._ExtraConf._deserialize(params.get("ExtraConf"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DatasetGroup(AbstractModel):
     r"""数据集组
 
@@ -5898,6 +6412,70 @@ class DefaultNginxGatewayCallInfo(AbstractModel):
         
 
 
+class DeleteDataSourceRequest(AbstractModel):
+    r"""DeleteDataSource请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 数据源ID
+        :type Id: str
+        """
+        self._Id = None
+
+    @property
+    def Id(self):
+        r"""数据源ID
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteDataSourceResponse(AbstractModel):
+    r"""DeleteDataSource返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteDatasetRequest(AbstractModel):
     r"""DeleteDataset请求参数结构体
 
@@ -6256,6 +6834,85 @@ class DeleteModelServiceRequest(AbstractModel):
 
 class DeleteModelServiceResponse(AbstractModel):
     r"""DeleteModelService返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteMountLimitRequest(AbstractModel):
+    r"""DeleteMountLimit请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 数据源类型英文名
+        :type Type: str
+        :param _StorageId: 存储实例ID
+        :type StorageId: str
+        """
+        self._Type = None
+        self._StorageId = None
+
+    @property
+    def Type(self):
+        r"""数据源类型英文名
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def StorageId(self):
+        r"""存储实例ID
+        :rtype: str
+        """
+        return self._StorageId
+
+    @StorageId.setter
+    def StorageId(self, StorageId):
+        self._StorageId = StorageId
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._StorageId = params.get("StorageId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteMountLimitResponse(AbstractModel):
+    r"""DeleteMountLimit返回参数结构体
 
     """
 
@@ -7377,6 +8034,271 @@ class DescribeBuildInImagesResponse(AbstractModel):
                 obj = ImageInfo()
                 obj._deserialize(item)
                 self._BuildInImageInfos.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDataSourceRequest(AbstractModel):
+    r"""DescribeDataSource请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 数据源id
+        :type Id: str
+        """
+        self._Id = None
+
+    @property
+    def Id(self):
+        r"""数据源id
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDataSourceResponse(AbstractModel):
+    r"""DescribeDataSource返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataSourceInfo: 数据源信息
+        :type DataSourceInfo: :class:`tencentcloud.tione.v20211111.models.DataSourceInfo`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DataSourceInfo = None
+        self._RequestId = None
+
+    @property
+    def DataSourceInfo(self):
+        r"""数据源信息
+        :rtype: :class:`tencentcloud.tione.v20211111.models.DataSourceInfo`
+        """
+        return self._DataSourceInfo
+
+    @DataSourceInfo.setter
+    def DataSourceInfo(self, DataSourceInfo):
+        self._DataSourceInfo = DataSourceInfo
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("DataSourceInfo") is not None:
+            self._DataSourceInfo = DataSourceInfo()
+            self._DataSourceInfo._deserialize(params.get("DataSourceInfo"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDataSourcesRequest(AbstractModel):
+    r"""DescribeDataSources请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filters: 过滤条件
+        :type Filters: list of Filter
+        :param _TagFilters: 标签过滤条件
+        :type TagFilters: list of TagFilter
+        :param _Offset: 偏移量
+        :type Offset: int
+        :param _Limit: 分页大小
+        :type Limit: int
+        :param _OrderField: 排序的依据字段
+        :type OrderField: str
+        :param _Order: 输出列表的排列顺序。取值范围：ASC：升序排列 DESC：降序排列
+        :type Order: str
+        """
+        self._Filters = None
+        self._TagFilters = None
+        self._Offset = None
+        self._Limit = None
+        self._OrderField = None
+        self._Order = None
+
+    @property
+    def Filters(self):
+        r"""过滤条件
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def TagFilters(self):
+        r"""标签过滤条件
+        :rtype: list of TagFilter
+        """
+        return self._TagFilters
+
+    @TagFilters.setter
+    def TagFilters(self, TagFilters):
+        self._TagFilters = TagFilters
+
+    @property
+    def Offset(self):
+        r"""偏移量
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""分页大小
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def OrderField(self):
+        r"""排序的依据字段
+        :rtype: str
+        """
+        return self._OrderField
+
+    @OrderField.setter
+    def OrderField(self, OrderField):
+        self._OrderField = OrderField
+
+    @property
+    def Order(self):
+        r"""输出列表的排列顺序。取值范围：ASC：升序排列 DESC：降序排列
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        if params.get("TagFilters") is not None:
+            self._TagFilters = []
+            for item in params.get("TagFilters"):
+                obj = TagFilter()
+                obj._deserialize(item)
+                self._TagFilters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._OrderField = params.get("OrderField")
+        self._Order = params.get("Order")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDataSourcesResponse(AbstractModel):
+    r"""DescribeDataSources返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataSourceInfos: 数据源列表
+        :type DataSourceInfos: list of DataSourceInfo
+        :param _TotalCount: 总条数
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DataSourceInfos = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def DataSourceInfos(self):
+        r"""数据源列表
+        :rtype: list of DataSourceInfo
+        """
+        return self._DataSourceInfos
+
+    @DataSourceInfos.setter
+    def DataSourceInfos(self, DataSourceInfos):
+        self._DataSourceInfos = DataSourceInfos
+
+    @property
+    def TotalCount(self):
+        r"""总条数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("DataSourceInfos") is not None:
+            self._DataSourceInfos = []
+            for item in params.get("DataSourceInfos"):
+                obj = DataSourceInfo()
+                obj._deserialize(item)
+                self._DataSourceInfos.append(obj)
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -9485,6 +10407,395 @@ class DescribeModelServiceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeMountInstanceRequest(AbstractModel):
+    r"""DescribeMountInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 数据源类型英文名
+        :type Type: str
+        :param _StorageId: 存储实例ID
+        :type StorageId: str
+        """
+        self._Type = None
+        self._StorageId = None
+
+    @property
+    def Type(self):
+        r"""数据源类型英文名
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def StorageId(self):
+        r"""存储实例ID
+        :rtype: str
+        """
+        return self._StorageId
+
+    @StorageId.setter
+    def StorageId(self, StorageId):
+        self._StorageId = StorageId
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._StorageId = params.get("StorageId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeMountInstanceResponse(AbstractModel):
+    r"""DescribeMountInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MountInstance: 挂载的实例详情
+        :type MountInstance: :class:`tencentcloud.tione.v20211111.models.MountInstanceInfo`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._MountInstance = None
+        self._RequestId = None
+
+    @property
+    def MountInstance(self):
+        r"""挂载的实例详情
+        :rtype: :class:`tencentcloud.tione.v20211111.models.MountInstanceInfo`
+        """
+        return self._MountInstance
+
+    @MountInstance.setter
+    def MountInstance(self, MountInstance):
+        self._MountInstance = MountInstance
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("MountInstance") is not None:
+            self._MountInstance = MountInstanceInfo()
+            self._MountInstance._deserialize(params.get("MountInstance"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeMountInstancesRequest(AbstractModel):
+    r"""DescribeMountInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 数据源类型英文名
+        :type Type: str
+        :param _Offset: 偏移量
+        :type Offset: int
+        :param _Limit: 分页大小
+        :type Limit: int
+        """
+        self._Type = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def Type(self):
+        r"""数据源类型英文名
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Offset(self):
+        r"""偏移量
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""分页大小
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeMountInstancesResponse(AbstractModel):
+    r"""DescribeMountInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MountInstances: 挂载的实例列表
+        :type MountInstances: list of MountInstanceInfo
+        :param _TotalCount: 总条数
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._MountInstances = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def MountInstances(self):
+        r"""挂载的实例列表
+        :rtype: list of MountInstanceInfo
+        """
+        return self._MountInstances
+
+    @MountInstances.setter
+    def MountInstances(self, MountInstances):
+        self._MountInstances = MountInstances
+
+    @property
+    def TotalCount(self):
+        r"""总条数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("MountInstances") is not None:
+            self._MountInstances = []
+            for item in params.get("MountInstances"):
+                obj = MountInstanceInfo()
+                obj._deserialize(item)
+                self._MountInstances.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeMountLimitsRequest(AbstractModel):
+    r"""DescribeMountLimits请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filters: 过滤条件
+        :type Filters: list of Filter
+        :param _Offset: 偏移量
+        :type Offset: int
+        :param _Limit: 分页大小
+        :type Limit: int
+        :param _Order: 输出列表的排列顺序。取值范围：ASC：升序排列 DESC：降序排列
+        :type Order: str
+        :param _OrderField: 排序的依据字段
+        :type OrderField: str
+        """
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+        self._Order = None
+        self._OrderField = None
+
+    @property
+    def Filters(self):
+        r"""过滤条件
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        r"""偏移量
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""分页大小
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Order(self):
+        r"""输出列表的排列顺序。取值范围：ASC：升序排列 DESC：降序排列
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def OrderField(self):
+        r"""排序的依据字段
+        :rtype: str
+        """
+        return self._OrderField
+
+    @OrderField.setter
+    def OrderField(self, OrderField):
+        self._OrderField = OrderField
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._Order = params.get("Order")
+        self._OrderField = params.get("OrderField")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeMountLimitsResponse(AbstractModel):
+    r"""DescribeMountLimits返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MountLimits: 挂载限制列表
+        :type MountLimits: list of MountLimitInfo
+        :param _TotalCount: 总数
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._MountLimits = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def MountLimits(self):
+        r"""挂载限制列表
+        :rtype: list of MountLimitInfo
+        """
+        return self._MountLimits
+
+    @MountLimits.setter
+    def MountLimits(self, MountLimits):
+        self._MountLimits = MountLimits
+
+    @property
+    def TotalCount(self):
+        r"""总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("MountLimits") is not None:
+            self._MountLimits = []
+            for item in params.get("MountLimits"):
+                obj = MountLimitInfo()
+                obj._deserialize(item)
+                self._MountLimits.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeNotebookRequest(AbstractModel):
     r"""DescribeNotebook请求参数结构体
 
@@ -11072,6 +12383,72 @@ class Filter(AbstractModel):
         self._Values = params.get("Values")
         self._Negative = params.get("Negative")
         self._Fuzzy = params.get("Fuzzy")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GatewayConfig(AbstractModel):
+    r"""描述网关相关配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayType: 网关类型
+        :type GatewayType: str
+        :param _SchedulingAlgorithm: 网关调度算法：轮询、一致性哈希等
+        :type SchedulingAlgorithm: str
+        :param _HashHeaderKey: 一致性哈希使用的Header字段名
+        :type HashHeaderKey: str
+        """
+        self._GatewayType = None
+        self._SchedulingAlgorithm = None
+        self._HashHeaderKey = None
+
+    @property
+    def GatewayType(self):
+        r"""网关类型
+        :rtype: str
+        """
+        return self._GatewayType
+
+    @GatewayType.setter
+    def GatewayType(self, GatewayType):
+        self._GatewayType = GatewayType
+
+    @property
+    def SchedulingAlgorithm(self):
+        r"""网关调度算法：轮询、一致性哈希等
+        :rtype: str
+        """
+        return self._SchedulingAlgorithm
+
+    @SchedulingAlgorithm.setter
+    def SchedulingAlgorithm(self, SchedulingAlgorithm):
+        self._SchedulingAlgorithm = SchedulingAlgorithm
+
+    @property
+    def HashHeaderKey(self):
+        r"""一致性哈希使用的Header字段名
+        :rtype: str
+        """
+        return self._HashHeaderKey
+
+    @HashHeaderKey.setter
+    def HashHeaderKey(self, HashHeaderKey):
+        self._HashHeaderKey = HashHeaderKey
+
+
+    def _deserialize(self, params):
+        self._GatewayType = params.get("GatewayType")
+        self._SchedulingAlgorithm = params.get("SchedulingAlgorithm")
+        self._HashHeaderKey = params.get("HashHeaderKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14964,6 +16341,8 @@ HYBRID_PAID:
         :type VolumeMounts: list of VolumeMount
         :param _SchedulingStrategy: 调度策略 [binpack] 优先占满整机，尽量避免碎卡（默认值）[spread] 优先分散在各个节点，确保服务高可用
         :type SchedulingStrategy: str
+        :param _TargetProjectId: 目标工作空间，不为0则进行迁移，源服务只允许在默认空间
+        :type TargetProjectId: int
         """
         self._ServiceId = None
         self._ModelInfo = None
@@ -15000,6 +16379,7 @@ HYBRID_PAID:
         self._ResourceGroupId = None
         self._VolumeMounts = None
         self._SchedulingStrategy = None
+        self._TargetProjectId = None
 
     @property
     def ServiceId(self):
@@ -15409,6 +16789,17 @@ HYBRID_PAID:
     def SchedulingStrategy(self, SchedulingStrategy):
         self._SchedulingStrategy = SchedulingStrategy
 
+    @property
+    def TargetProjectId(self):
+        r"""目标工作空间，不为0则进行迁移，源服务只允许在默认空间
+        :rtype: int
+        """
+        return self._TargetProjectId
+
+    @TargetProjectId.setter
+    def TargetProjectId(self, TargetProjectId):
+        self._TargetProjectId = TargetProjectId
+
 
     def _deserialize(self, params):
         self._ServiceId = params.get("ServiceId")
@@ -15485,6 +16876,7 @@ HYBRID_PAID:
                 obj._deserialize(item)
                 self._VolumeMounts.append(obj)
         self._SchedulingStrategy = params.get("SchedulingStrategy")
+        self._TargetProjectId = params.get("TargetProjectId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16203,6 +17595,302 @@ class ModifyServiceGroupWeightsResponse(AbstractModel):
             self._ServiceGroup = ServiceGroup()
             self._ServiceGroup._deserialize(params.get("ServiceGroup"))
         self._RequestId = params.get("RequestId")
+
+
+class MountConfigureInfo(AbstractModel):
+    r"""数据源挂载配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WorkDir: 数据源的相对路径，支持<@subaccount>这样的占位符
+        :type WorkDir: str
+        """
+        self._WorkDir = None
+
+    @property
+    def WorkDir(self):
+        r"""数据源的相对路径，支持<@subaccount>这样的占位符
+        :rtype: str
+        """
+        return self._WorkDir
+
+    @WorkDir.setter
+    def WorkDir(self, WorkDir):
+        self._WorkDir = WorkDir
+
+
+    def _deserialize(self, params):
+        self._WorkDir = params.get("WorkDir")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MountInstanceInfo(AbstractModel):
+    r"""挂载的实例列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 类型英文名
+        :type Type: str
+        :param _StorageId: 存储实例ID
+        :type StorageId: str
+        :param _StorageName: 存储实例名称
+        :type StorageName: str
+        :param _Status: 状态，0可挂载 1不可挂载(挂载限制)
+        :type Status: int
+        :param _ExtraConf: 额外配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExtraConf: :class:`tencentcloud.tione.v20211111.models.StorageExtraConf`
+        """
+        self._Type = None
+        self._StorageId = None
+        self._StorageName = None
+        self._Status = None
+        self._ExtraConf = None
+
+    @property
+    def Type(self):
+        r"""类型英文名
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def StorageId(self):
+        r"""存储实例ID
+        :rtype: str
+        """
+        return self._StorageId
+
+    @StorageId.setter
+    def StorageId(self, StorageId):
+        self._StorageId = StorageId
+
+    @property
+    def StorageName(self):
+        r"""存储实例名称
+        :rtype: str
+        """
+        return self._StorageName
+
+    @StorageName.setter
+    def StorageName(self, StorageName):
+        self._StorageName = StorageName
+
+    @property
+    def Status(self):
+        r"""状态，0可挂载 1不可挂载(挂载限制)
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ExtraConf(self):
+        r"""额外配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.StorageExtraConf`
+        """
+        return self._ExtraConf
+
+    @ExtraConf.setter
+    def ExtraConf(self, ExtraConf):
+        self._ExtraConf = ExtraConf
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._StorageId = params.get("StorageId")
+        self._StorageName = params.get("StorageName")
+        self._Status = params.get("Status")
+        if params.get("ExtraConf") is not None:
+            self._ExtraConf = StorageExtraConf()
+            self._ExtraConf._deserialize(params.get("ExtraConf"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MountLimitInfo(AbstractModel):
+    r"""挂载限制
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 数据源类型英文名
+        :type Type: str
+        :param _StorageId: 数据源所属存储实例ID
+        :type StorageId: str
+        :param _StorageName: 数据源所属存储实例名称
+        :type StorageName: str
+        :param _LimitMount: 限制开关是否开启，只有开启时才有限制
+        :type LimitMount: bool
+        :param _Creator: 创建者uin
+        :type Creator: str
+        :param _CreatorName: 创建者名称
+        :type CreatorName: str
+        :param _CreateTime: 创建时间, 格式为yyyy-mm-ddThh:mm:ssZ
+        :type CreateTime: str
+        :param _UpdateTime: 更新时间, 格式为yyyy-mm-ddThh:mm:ssZ
+        :type UpdateTime: str
+        :param _ExtraConf: 额外配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExtraConf: :class:`tencentcloud.tione.v20211111.models.StorageExtraConf`
+        """
+        self._Type = None
+        self._StorageId = None
+        self._StorageName = None
+        self._LimitMount = None
+        self._Creator = None
+        self._CreatorName = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._ExtraConf = None
+
+    @property
+    def Type(self):
+        r"""数据源类型英文名
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def StorageId(self):
+        r"""数据源所属存储实例ID
+        :rtype: str
+        """
+        return self._StorageId
+
+    @StorageId.setter
+    def StorageId(self, StorageId):
+        self._StorageId = StorageId
+
+    @property
+    def StorageName(self):
+        r"""数据源所属存储实例名称
+        :rtype: str
+        """
+        return self._StorageName
+
+    @StorageName.setter
+    def StorageName(self, StorageName):
+        self._StorageName = StorageName
+
+    @property
+    def LimitMount(self):
+        r"""限制开关是否开启，只有开启时才有限制
+        :rtype: bool
+        """
+        return self._LimitMount
+
+    @LimitMount.setter
+    def LimitMount(self, LimitMount):
+        self._LimitMount = LimitMount
+
+    @property
+    def Creator(self):
+        r"""创建者uin
+        :rtype: str
+        """
+        return self._Creator
+
+    @Creator.setter
+    def Creator(self, Creator):
+        self._Creator = Creator
+
+    @property
+    def CreatorName(self):
+        r"""创建者名称
+        :rtype: str
+        """
+        return self._CreatorName
+
+    @CreatorName.setter
+    def CreatorName(self, CreatorName):
+        self._CreatorName = CreatorName
+
+    @property
+    def CreateTime(self):
+        r"""创建时间, 格式为yyyy-mm-ddThh:mm:ssZ
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""更新时间, 格式为yyyy-mm-ddThh:mm:ssZ
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def ExtraConf(self):
+        r"""额外配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.StorageExtraConf`
+        """
+        return self._ExtraConf
+
+    @ExtraConf.setter
+    def ExtraConf(self, ExtraConf):
+        self._ExtraConf = ExtraConf
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._StorageId = params.get("StorageId")
+        self._StorageName = params.get("StorageName")
+        self._LimitMount = params.get("LimitMount")
+        self._Creator = params.get("Creator")
+        self._CreatorName = params.get("CreatorName")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        if params.get("ExtraConf") is not None:
+            self._ExtraConf = StorageExtraConf()
+            self._ExtraConf._deserialize(params.get("ExtraConf"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class MultiModalContent(AbstractModel):
@@ -21017,6 +22705,8 @@ class ServiceCallInfoV2(AbstractModel):
         :type EnableLimit: bool
         :param _GrpcHost: 访问grpc时需携带的虚拟Host
         :type GrpcHost: str
+        :param _GatewayConfig: 网关相关配置
+        :type GatewayConfig: :class:`tencentcloud.tione.v20211111.models.GatewayConfig`
         """
         self._ServiceGroupId = None
         self._InternetEndpoint = None
@@ -21025,6 +22715,7 @@ class ServiceCallInfoV2(AbstractModel):
         self._AuthTokens = None
         self._EnableLimit = None
         self._GrpcHost = None
+        self._GatewayConfig = None
 
     @property
     def ServiceGroupId(self):
@@ -21107,6 +22798,17 @@ class ServiceCallInfoV2(AbstractModel):
     def GrpcHost(self, GrpcHost):
         self._GrpcHost = GrpcHost
 
+    @property
+    def GatewayConfig(self):
+        r"""网关相关配置
+        :rtype: :class:`tencentcloud.tione.v20211111.models.GatewayConfig`
+        """
+        return self._GatewayConfig
+
+    @GatewayConfig.setter
+    def GatewayConfig(self, GatewayConfig):
+        self._GatewayConfig = GatewayConfig
+
 
     def _deserialize(self, params):
         self._ServiceGroupId = params.get("ServiceGroupId")
@@ -21121,6 +22823,9 @@ class ServiceCallInfoV2(AbstractModel):
                 self._AuthTokens.append(obj)
         self._EnableLimit = params.get("EnableLimit")
         self._GrpcHost = params.get("GrpcHost")
+        if params.get("GatewayConfig") is not None:
+            self._GatewayConfig = GatewayConfig()
+            self._GatewayConfig._deserialize(params.get("GatewayConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21361,6 +23066,8 @@ UPDATING 更新中
         :type SubUinName: str
         :param _GatewayLogConfig: 网关日志投递相关配置
         :type GatewayLogConfig: :class:`tencentcloud.tione.v20211111.models.LogConfig`
+        :param _GatewayConfig: 网关路由相关配置
+        :type GatewayConfig: :class:`tencentcloud.tione.v20211111.models.GatewayConfig`
         """
         self._ServiceGroupId = None
         self._ServiceGroupName = None
@@ -21387,6 +23094,7 @@ UPDATING 更新中
         self._MonitorSource = None
         self._SubUinName = None
         self._GatewayLogConfig = None
+        self._GatewayConfig = None
 
     @property
     def ServiceGroupId(self):
@@ -21692,6 +23400,17 @@ UPDATING 更新中
     def GatewayLogConfig(self, GatewayLogConfig):
         self._GatewayLogConfig = GatewayLogConfig
 
+    @property
+    def GatewayConfig(self):
+        r"""网关路由相关配置
+        :rtype: :class:`tencentcloud.tione.v20211111.models.GatewayConfig`
+        """
+        return self._GatewayConfig
+
+    @GatewayConfig.setter
+    def GatewayConfig(self, GatewayConfig):
+        self._GatewayConfig = GatewayConfig
+
 
     def _deserialize(self, params):
         self._ServiceGroupId = params.get("ServiceGroupId")
@@ -21736,6 +23455,9 @@ UPDATING 更新中
         if params.get("GatewayLogConfig") is not None:
             self._GatewayLogConfig = LogConfig()
             self._GatewayLogConfig._deserialize(params.get("GatewayLogConfig"))
+        if params.get("GatewayConfig") is not None:
+            self._GatewayConfig = GatewayConfig()
+            self._GatewayConfig._deserialize(params.get("GatewayConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -23462,6 +25184,67 @@ class StopTrainingTaskResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class StorageExtraConf(AbstractModel):
+    r"""存储额外配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CFSStorageType: cfs的存储类型
+  // HP:通用性能型
+  // SD:通用标准型
+  // TP:turbo性能型
+  // TB:turbo标准型
+  // THP:吞吐型
+        :type CFSStorageType: str
+        :param _CFSProtocol: cfs的协议
+        :type CFSProtocol: str
+        """
+        self._CFSStorageType = None
+        self._CFSProtocol = None
+
+    @property
+    def CFSStorageType(self):
+        r"""cfs的存储类型
+  // HP:通用性能型
+  // SD:通用标准型
+  // TP:turbo性能型
+  // TB:turbo标准型
+  // THP:吞吐型
+        :rtype: str
+        """
+        return self._CFSStorageType
+
+    @CFSStorageType.setter
+    def CFSStorageType(self, CFSStorageType):
+        self._CFSStorageType = CFSStorageType
+
+    @property
+    def CFSProtocol(self):
+        r"""cfs的协议
+        :rtype: str
+        """
+        return self._CFSProtocol
+
+    @CFSProtocol.setter
+    def CFSProtocol(self, CFSProtocol):
+        self._CFSProtocol = CFSProtocol
+
+
+    def _deserialize(self, params):
+        self._CFSStorageType = params.get("CFSStorageType")
+        self._CFSProtocol = params.get("CFSProtocol")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class SubAccountInfo(AbstractModel):
@@ -25516,6 +27299,211 @@ STARTING启动中、RUNNING运行中、STOPPING停止中、STOPPED已停止、FA
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class UpdateDataSourceRequest(AbstractModel):
+    r"""UpdateDataSource请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 数据源ID
+        :type Id: str
+        :param _Name: 数据源名称
+        :type Name: str
+        :param _Permission: 数据源权限，取值有RW RO
+        :type Permission: str
+        :param _MountConfigure: 数据源挂载配置
+        :type MountConfigure: :class:`tencentcloud.tione.v20211111.models.MountConfigureInfo`
+        """
+        self._Id = None
+        self._Name = None
+        self._Permission = None
+        self._MountConfigure = None
+
+    @property
+    def Id(self):
+        r"""数据源ID
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        r"""数据源名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Permission(self):
+        r"""数据源权限，取值有RW RO
+        :rtype: str
+        """
+        return self._Permission
+
+    @Permission.setter
+    def Permission(self, Permission):
+        self._Permission = Permission
+
+    @property
+    def MountConfigure(self):
+        r"""数据源挂载配置
+        :rtype: :class:`tencentcloud.tione.v20211111.models.MountConfigureInfo`
+        """
+        return self._MountConfigure
+
+    @MountConfigure.setter
+    def MountConfigure(self, MountConfigure):
+        self._MountConfigure = MountConfigure
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._Permission = params.get("Permission")
+        if params.get("MountConfigure") is not None:
+            self._MountConfigure = MountConfigureInfo()
+            self._MountConfigure._deserialize(params.get("MountConfigure"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateDataSourceResponse(AbstractModel):
+    r"""UpdateDataSource返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateMountLimitRequest(AbstractModel):
+    r"""UpdateMountLimit请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 数据源类型英文名
+        :type Type: str
+        :param _StorageId: 存储实例ID
+        :type StorageId: str
+        :param _LimitMount: 限制开关是否开启，只有开启时才有限制，默认关闭
+        :type LimitMount: bool
+        """
+        self._Type = None
+        self._StorageId = None
+        self._LimitMount = None
+
+    @property
+    def Type(self):
+        r"""数据源类型英文名
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def StorageId(self):
+        r"""存储实例ID
+        :rtype: str
+        """
+        return self._StorageId
+
+    @StorageId.setter
+    def StorageId(self, StorageId):
+        self._StorageId = StorageId
+
+    @property
+    def LimitMount(self):
+        r"""限制开关是否开启，只有开启时才有限制，默认关闭
+        :rtype: bool
+        """
+        return self._LimitMount
+
+    @LimitMount.setter
+    def LimitMount(self, LimitMount):
+        self._LimitMount = LimitMount
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._StorageId = params.get("StorageId")
+        self._LimitMount = params.get("LimitMount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateMountLimitResponse(AbstractModel):
+    r"""UpdateMountLimit返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class UpdateSubAccountLinuxUserInfoRequest(AbstractModel):

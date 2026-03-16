@@ -4899,7 +4899,7 @@ class WedataClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ReportTableResponse:
         """
-        上报table元数据
+        上报table元数据,当前列数量限制在300
         """
         
         kwargs = {}

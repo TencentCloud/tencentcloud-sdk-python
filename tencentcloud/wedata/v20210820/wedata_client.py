@@ -6245,7 +6245,7 @@ class WedataClient(AbstractClient):
 
 
     def ReportTable(self, request):
-        r"""上报table元数据
+        r"""上报table元数据,当前列数量限制在300
 
         :param request: Request instance for ReportTable.
         :type request: :class:`tencentcloud.wedata.v20210820.models.ReportTableRequest`

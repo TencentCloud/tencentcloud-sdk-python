@@ -16619,6 +16619,215 @@ class CreateOrganizationInfoChangeUrlResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreatePartnerAuthorizationLinkRequest(AbstractModel):
+    r"""CreatePartnerAuthorizationLink请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Operator: 执行本接口操作的员工信息。<br/>注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param _BusinessId: 腾讯电子签平台给生态集成方分配的**生态集成业务标识**，
+<font color="red">**此生态集成业务标识需要提前联系产品经理配置**。</font>
+        :type BusinessId: str
+        :param _PartnerOrganizationId: 合作方企业在腾讯电子签注册企业后生成的企业id，需要合作方企业登录
+<a href="https://qian.tencent.com/console/company-settings/company-center" target="_blank">电子签控制台</a>获取
+
+![image](https://qcloudimg.tencent-cloud.cn/raw/20ce774cf8118b9f3742b8519ef935db.png)
+
+        :type PartnerOrganizationId: str
+        :param _ApplicationInfo: 第三方应用的配置信息。
+其中包括 回调地址，加密KEY等信息。
+        :type ApplicationInfo: :class:`tencentcloud.ess.v20201111.models.CallbackInfo`
+        :param _ProxyOrganizationInfo: 第三方应用下企业用户信息。
+其中包括企业的OrganizationOpenId和超管的UserOpenId。
+具体含义请参考结构体解释
+        :type ProxyOrganizationInfo: :class:`tencentcloud.ess.v20201111.models.ProxyOrganizationInfo`
+        :param _PartnerApplicationId: 若未填写，则会创建一个生态集成应用。
+若填写， 则必须是生态集成企业给合作方企业通过此接口**CreatePartnerAuthorizationLink**创建的应用号。
+应用号可以从下图位置获取。
+![image](https://qcloudimg.tencent-cloud.cn/raw/9bc4ee2bd5972035d12033608df157c9.png)
+        :type PartnerApplicationId: str
+        """
+        self._Operator = None
+        self._BusinessId = None
+        self._PartnerOrganizationId = None
+        self._ApplicationInfo = None
+        self._ProxyOrganizationInfo = None
+        self._PartnerApplicationId = None
+
+    @property
+    def Operator(self):
+        r"""执行本接口操作的员工信息。<br/>注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def BusinessId(self):
+        r"""腾讯电子签平台给生态集成方分配的**生态集成业务标识**，
+<font color="red">**此生态集成业务标识需要提前联系产品经理配置**。</font>
+        :rtype: str
+        """
+        return self._BusinessId
+
+    @BusinessId.setter
+    def BusinessId(self, BusinessId):
+        self._BusinessId = BusinessId
+
+    @property
+    def PartnerOrganizationId(self):
+        r"""合作方企业在腾讯电子签注册企业后生成的企业id，需要合作方企业登录
+<a href="https://qian.tencent.com/console/company-settings/company-center" target="_blank">电子签控制台</a>获取
+
+![image](https://qcloudimg.tencent-cloud.cn/raw/20ce774cf8118b9f3742b8519ef935db.png)
+
+        :rtype: str
+        """
+        return self._PartnerOrganizationId
+
+    @PartnerOrganizationId.setter
+    def PartnerOrganizationId(self, PartnerOrganizationId):
+        self._PartnerOrganizationId = PartnerOrganizationId
+
+    @property
+    def ApplicationInfo(self):
+        r"""第三方应用的配置信息。
+其中包括 回调地址，加密KEY等信息。
+        :rtype: :class:`tencentcloud.ess.v20201111.models.CallbackInfo`
+        """
+        return self._ApplicationInfo
+
+    @ApplicationInfo.setter
+    def ApplicationInfo(self, ApplicationInfo):
+        self._ApplicationInfo = ApplicationInfo
+
+    @property
+    def ProxyOrganizationInfo(self):
+        r"""第三方应用下企业用户信息。
+其中包括企业的OrganizationOpenId和超管的UserOpenId。
+具体含义请参考结构体解释
+        :rtype: :class:`tencentcloud.ess.v20201111.models.ProxyOrganizationInfo`
+        """
+        return self._ProxyOrganizationInfo
+
+    @ProxyOrganizationInfo.setter
+    def ProxyOrganizationInfo(self, ProxyOrganizationInfo):
+        self._ProxyOrganizationInfo = ProxyOrganizationInfo
+
+    @property
+    def PartnerApplicationId(self):
+        r"""若未填写，则会创建一个生态集成应用。
+若填写， 则必须是生态集成企业给合作方企业通过此接口**CreatePartnerAuthorizationLink**创建的应用号。
+应用号可以从下图位置获取。
+![image](https://qcloudimg.tencent-cloud.cn/raw/9bc4ee2bd5972035d12033608df157c9.png)
+        :rtype: str
+        """
+        return self._PartnerApplicationId
+
+    @PartnerApplicationId.setter
+    def PartnerApplicationId(self, PartnerApplicationId):
+        self._PartnerApplicationId = PartnerApplicationId
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._BusinessId = params.get("BusinessId")
+        self._PartnerOrganizationId = params.get("PartnerOrganizationId")
+        if params.get("ApplicationInfo") is not None:
+            self._ApplicationInfo = CallbackInfo()
+            self._ApplicationInfo._deserialize(params.get("ApplicationInfo"))
+        if params.get("ProxyOrganizationInfo") is not None:
+            self._ProxyOrganizationInfo = ProxyOrganizationInfo()
+            self._ProxyOrganizationInfo._deserialize(params.get("ProxyOrganizationInfo"))
+        self._PartnerApplicationId = params.get("PartnerApplicationId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreatePartnerAuthorizationLinkResponse(AbstractModel):
+    r"""CreatePartnerAuthorizationLink返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Link: 授权链接，以短链形式返回。短链的有效期参考回参中的 ExpiredTime。
+
+注：
+
+1. 非小程序和APP集成使用
+
+2. 生成的链路后面不能再增加参数（会出现覆盖链接中已有参数导致错误）
+        :type Link: str
+        :param _ExpireTime: 链接过期时间以 Unix 时间戳格式表示，从生成链接时间起，往后7天有效期。过期后短链将失效，无法打开。
+        :type ExpireTime: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Link = None
+        self._ExpireTime = None
+        self._RequestId = None
+
+    @property
+    def Link(self):
+        r"""授权链接，以短链形式返回。短链的有效期参考回参中的 ExpiredTime。
+
+注：
+
+1. 非小程序和APP集成使用
+
+2. 生成的链路后面不能再增加参数（会出现覆盖链接中已有参数导致错误）
+        :rtype: str
+        """
+        return self._Link
+
+    @Link.setter
+    def Link(self, Link):
+        self._Link = Link
+
+    @property
+    def ExpireTime(self):
+        r"""链接过期时间以 Unix 时间戳格式表示，从生成链接时间起，往后7天有效期。过期后短链将失效，无法打开。
+        :rtype: int
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Link = params.get("Link")
+        self._ExpireTime = params.get("ExpireTime")
+        self._RequestId = params.get("RequestId")
+
+
 class CreatePartnerAutoSignAuthUrlRequest(AbstractModel):
     r"""CreatePartnerAutoSignAuthUrl请求参数结构体
 
@@ -37611,6 +37820,125 @@ class ModifyIntegrationRoleResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyPartnerAuthorizationRequest(AbstractModel):
+    r"""ModifyPartnerAuthorization请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Operator: 执行本接口操作的员工信息。<br/>注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param _BusinessId: 腾讯电子签平台分配的生态集成业务的**业务标识**，**需要联系接入产品经理提供**。
+        :type BusinessId: str
+        :param _PartnerApplicationId: 合作方企业通过集成方创建的应用id, 必须与业务标记（Business）保持对应。
+![image](https://qcloudimg.tencent-cloud.cn/raw/9bc4ee2bd5972035d12033608df157c9.png)
+
+        :type PartnerApplicationId: str
+        :param _ApplicationInfo: 第三方应用的配置信息。其中包括 回调地址，加密KEY等信息。
+执行成功后会覆盖掉对应的第三方应用的回调相关配置。
+        :type ApplicationInfo: :class:`tencentcloud.ess.v20201111.models.CallbackInfo`
+        """
+        self._Operator = None
+        self._BusinessId = None
+        self._PartnerApplicationId = None
+        self._ApplicationInfo = None
+
+    @property
+    def Operator(self):
+        r"""执行本接口操作的员工信息。<br/>注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def BusinessId(self):
+        r"""腾讯电子签平台分配的生态集成业务的**业务标识**，**需要联系接入产品经理提供**。
+        :rtype: str
+        """
+        return self._BusinessId
+
+    @BusinessId.setter
+    def BusinessId(self, BusinessId):
+        self._BusinessId = BusinessId
+
+    @property
+    def PartnerApplicationId(self):
+        r"""合作方企业通过集成方创建的应用id, 必须与业务标记（Business）保持对应。
+![image](https://qcloudimg.tencent-cloud.cn/raw/9bc4ee2bd5972035d12033608df157c9.png)
+
+        :rtype: str
+        """
+        return self._PartnerApplicationId
+
+    @PartnerApplicationId.setter
+    def PartnerApplicationId(self, PartnerApplicationId):
+        self._PartnerApplicationId = PartnerApplicationId
+
+    @property
+    def ApplicationInfo(self):
+        r"""第三方应用的配置信息。其中包括 回调地址，加密KEY等信息。
+执行成功后会覆盖掉对应的第三方应用的回调相关配置。
+        :rtype: :class:`tencentcloud.ess.v20201111.models.CallbackInfo`
+        """
+        return self._ApplicationInfo
+
+    @ApplicationInfo.setter
+    def ApplicationInfo(self, ApplicationInfo):
+        self._ApplicationInfo = ApplicationInfo
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._BusinessId = params.get("BusinessId")
+        self._PartnerApplicationId = params.get("PartnerApplicationId")
+        if params.get("ApplicationInfo") is not None:
+            self._ApplicationInfo = CallbackInfo()
+            self._ApplicationInfo._deserialize(params.get("ApplicationInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyPartnerAuthorizationResponse(AbstractModel):
+    r"""ModifyPartnerAuthorization返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyPartnerAutoSignAuthUrlRequest(AbstractModel):
     r"""ModifyPartnerAutoSignAuthUrl请求参数结构体
 
@@ -40467,6 +40795,71 @@ class PresetApproverInfo(AbstractModel):
         self._Mobile = params.get("Mobile")
         self._IdCardNumber = params.get("IdCardNumber")
         self._IdCardType = params.get("IdCardType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProxyOrganizationInfo(AbstractModel):
+    r"""第三方应用下企业用户信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OrganizationOpenId: 第三方应用平台自定义，对应第三方平台子客企业的唯一标识。一个第三方平台子客企业主体与子客企业ProxyOrganizationOpenId是一一对应的，不可更改，不可重复使用。（例如，可以使用企业名称的hash值，或者社会统一信用代码的hash值，或者随机hash值，需要第三方应用平台保存），最大64位字符串
+        :type OrganizationOpenId: str
+        :param _OperatorOpenId: 第三方应用平台自定义，对应第三方平台子客企业超管的唯一标识。
+
+
+注意:
+1. OpenId在子客企业对应一个真实员工，**本应用唯一, 不可重复使用**，最大64位字符串
+2. 可使用用户在贵方企业系统中的Userid或者hash值作为子客企业的员工OpenId
+3. **员工加入企业后**, 可以通过<a href="https://qian.tencent.com/developers/partnerApis/accounts/CreateConsoleLoginUrl" target="_blank">生成子客登录链接</a>登录子客控制台后, 在**组织架构**模块查看员工们的OpenId, 样式如下图
+![image](https://qcloudimg.tencent-cloud.cn/raw/bb67fb66c926759df3a0af5838fdafd5.png)
+        :type OperatorOpenId: str
+        """
+        self._OrganizationOpenId = None
+        self._OperatorOpenId = None
+
+    @property
+    def OrganizationOpenId(self):
+        r"""第三方应用平台自定义，对应第三方平台子客企业的唯一标识。一个第三方平台子客企业主体与子客企业ProxyOrganizationOpenId是一一对应的，不可更改，不可重复使用。（例如，可以使用企业名称的hash值，或者社会统一信用代码的hash值，或者随机hash值，需要第三方应用平台保存），最大64位字符串
+        :rtype: str
+        """
+        return self._OrganizationOpenId
+
+    @OrganizationOpenId.setter
+    def OrganizationOpenId(self, OrganizationOpenId):
+        self._OrganizationOpenId = OrganizationOpenId
+
+    @property
+    def OperatorOpenId(self):
+        r"""第三方应用平台自定义，对应第三方平台子客企业超管的唯一标识。
+
+
+注意:
+1. OpenId在子客企业对应一个真实员工，**本应用唯一, 不可重复使用**，最大64位字符串
+2. 可使用用户在贵方企业系统中的Userid或者hash值作为子客企业的员工OpenId
+3. **员工加入企业后**, 可以通过<a href="https://qian.tencent.com/developers/partnerApis/accounts/CreateConsoleLoginUrl" target="_blank">生成子客登录链接</a>登录子客控制台后, 在**组织架构**模块查看员工们的OpenId, 样式如下图
+![image](https://qcloudimg.tencent-cloud.cn/raw/bb67fb66c926759df3a0af5838fdafd5.png)
+        :rtype: str
+        """
+        return self._OperatorOpenId
+
+    @OperatorOpenId.setter
+    def OperatorOpenId(self, OperatorOpenId):
+        self._OperatorOpenId = OperatorOpenId
+
+
+    def _deserialize(self, params):
+        self._OrganizationOpenId = params.get("OrganizationOpenId")
+        self._OperatorOpenId = params.get("OperatorOpenId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -358,6 +358,125 @@ class ActivateTWeCallLicenseResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ActivateTWeTalkRequest(AbstractModel):
+    r"""ActivateTWeTalk请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ServiceType: TWeTalk类型：1-基础版；2-高级版；3-多模态；
+        :type ServiceType: int
+        :param _DeviceIds: 设备列表, 产品ID_设备名；
+        :type DeviceIds: list of str
+        """
+        self._ServiceType = None
+        self._DeviceIds = None
+
+    @property
+    def ServiceType(self):
+        r"""TWeTalk类型：1-基础版；2-高级版；3-多模态；
+        :rtype: int
+        """
+        return self._ServiceType
+
+    @ServiceType.setter
+    def ServiceType(self, ServiceType):
+        self._ServiceType = ServiceType
+
+    @property
+    def DeviceIds(self):
+        r"""设备列表, 产品ID_设备名；
+        :rtype: list of str
+        """
+        return self._DeviceIds
+
+    @DeviceIds.setter
+    def DeviceIds(self, DeviceIds):
+        self._DeviceIds = DeviceIds
+
+
+    def _deserialize(self, params):
+        self._ServiceType = params.get("ServiceType")
+        self._DeviceIds = params.get("DeviceIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ActivateTWeTalkResponse(AbstractModel):
+    r"""ActivateTWeTalk返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FailureRecords: 设备激活失败返回数据
+        :type FailureRecords: list of TalkActivationInfo
+        :param _SuccessRecords: 设备激活成功返回数据
+        :type SuccessRecords: list of TalkActivationInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FailureRecords = None
+        self._SuccessRecords = None
+        self._RequestId = None
+
+    @property
+    def FailureRecords(self):
+        r"""设备激活失败返回数据
+        :rtype: list of TalkActivationInfo
+        """
+        return self._FailureRecords
+
+    @FailureRecords.setter
+    def FailureRecords(self, FailureRecords):
+        self._FailureRecords = FailureRecords
+
+    @property
+    def SuccessRecords(self):
+        r"""设备激活成功返回数据
+        :rtype: list of TalkActivationInfo
+        """
+        return self._SuccessRecords
+
+    @SuccessRecords.setter
+    def SuccessRecords(self, SuccessRecords):
+        self._SuccessRecords = SuccessRecords
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("FailureRecords") is not None:
+            self._FailureRecords = []
+            for item in params.get("FailureRecords"):
+                obj = TalkActivationInfo()
+                obj._deserialize(item)
+                self._FailureRecords.append(obj)
+        if params.get("SuccessRecords") is not None:
+            self._SuccessRecords = []
+            for item in params.get("SuccessRecords"):
+                obj = TalkActivationInfo()
+                obj._deserialize(item)
+                self._SuccessRecords.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class AppDeviceInfo(AbstractModel):
     r"""云api直接绑定设备出参
 
@@ -23468,6 +23587,283 @@ class GetTWeTalkAIBotListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class GetTWeTalkActiveRecordListRequest(AbstractModel):
+    r"""GetTWeTalkActiveRecordList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: 最早的时间。
+        :type StartTime: int
+        :param _EndTime: 查询的最晚时间。
+跟StartTime形成时间段，用于查询时间段中的记录。
+        :type EndTime: int
+        :param _Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param _Limit: 分页的大小。
+默认为10，最大不超过500。
+        :type Limit: int
+        :param _ProductId: 产品ID
+        :type ProductId: str
+        :param _DeviceName: 设备名称
+        :type DeviceName: str
+        :param _ServiceType: TWeTalk类型：1-基础版；2-高级版；3-多模态；
+        :type ServiceType: list of int
+        """
+        self._StartTime = None
+        self._EndTime = None
+        self._Offset = None
+        self._Limit = None
+        self._ProductId = None
+        self._DeviceName = None
+        self._ServiceType = None
+
+    @property
+    def StartTime(self):
+        r"""最早的时间。
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""查询的最晚时间。
+跟StartTime形成时间段，用于查询时间段中的记录。
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Offset(self):
+        r"""偏移量，默认为0。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""分页的大小。
+默认为10，最大不超过500。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def ProductId(self):
+        r"""产品ID
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def DeviceName(self):
+        r"""设备名称
+        :rtype: str
+        """
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def ServiceType(self):
+        r"""TWeTalk类型：1-基础版；2-高级版；3-多模态；
+        :rtype: list of int
+        """
+        return self._ServiceType
+
+    @ServiceType.setter
+    def ServiceType(self, ServiceType):
+        self._ServiceType = ServiceType
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._ProductId = params.get("ProductId")
+        self._DeviceName = params.get("DeviceName")
+        self._ServiceType = params.get("ServiceType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetTWeTalkActiveRecordListResponse(AbstractModel):
+    r"""GetTWeTalkActiveRecordList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ActiveRecords: 设备激活记录列表。
+        :type ActiveRecords: list of TalkActivateRecordLogInfo
+        :param _Total: 数据总数量。
+        :type Total: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ActiveRecords = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def ActiveRecords(self):
+        r"""设备激活记录列表。
+        :rtype: list of TalkActivateRecordLogInfo
+        """
+        return self._ActiveRecords
+
+    @ActiveRecords.setter
+    def ActiveRecords(self, ActiveRecords):
+        self._ActiveRecords = ActiveRecords
+
+    @property
+    def Total(self):
+        r"""数据总数量。
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ActiveRecords") is not None:
+            self._ActiveRecords = []
+            for item in params.get("ActiveRecords"):
+                obj = TalkActivateRecordLogInfo()
+                obj._deserialize(item)
+                self._ActiveRecords.append(obj)
+        self._Total = params.get("Total")
+        self._RequestId = params.get("RequestId")
+
+
+class GetTWeTalkActiveStatusRequest(AbstractModel):
+    r"""GetTWeTalkActiveStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeviceIds: 设备列表， 产品ID_设备名称
+        :type DeviceIds: list of str
+        """
+        self._DeviceIds = None
+
+    @property
+    def DeviceIds(self):
+        r"""设备列表， 产品ID_设备名称
+        :rtype: list of str
+        """
+        return self._DeviceIds
+
+    @DeviceIds.setter
+    def DeviceIds(self, DeviceIds):
+        self._DeviceIds = DeviceIds
+
+
+    def _deserialize(self, params):
+        self._DeviceIds = params.get("DeviceIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetTWeTalkActiveStatusResponse(AbstractModel):
+    r"""GetTWeTalkActiveStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TalkActivationRecords: 激活状态
+        :type TalkActivationRecords: list of TalkActivationStatusInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TalkActivationRecords = None
+        self._RequestId = None
+
+    @property
+    def TalkActivationRecords(self):
+        r"""激活状态
+        :rtype: list of TalkActivationStatusInfo
+        """
+        return self._TalkActivationRecords
+
+    @TalkActivationRecords.setter
+    def TalkActivationRecords(self, TalkActivationRecords):
+        self._TalkActivationRecords = TalkActivationRecords
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("TalkActivationRecords") is not None:
+            self._TalkActivationRecords = []
+            for item in params.get("TalkActivationRecords"):
+                obj = TalkActivationStatusInfo()
+                obj._deserialize(item)
+                self._TalkActivationRecords.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class GetTWeTalkProductConfigListRequest(AbstractModel):
     r"""GetTWeTalkProductConfigList请求参数结构体
 
@@ -34814,6 +35210,279 @@ class TalkAIBotInfo(AbstractModel):
         self._WebhookTools = params.get("WebhookTools")
         self._BotType = params.get("BotType")
         self._RAGConfig = params.get("RAGConfig")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TalkActivateRecordLogInfo(AbstractModel):
+    r"""Talk激活审计信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: 产品ID
+        :type ProductId: str
+        :param _DeviceName: 设备名称
+        :type DeviceName: str
+        :param _ActiveTime: 激活时间，秒级时间戳
+        :type ActiveTime: int
+        :param _ExpireTime: 过期时间，秒级时间戳
+        :type ExpireTime: int
+        :param _ServiceType: TWeTalk类型：1-基础版；2-高级版；3-多模态；
+        :type ServiceType: int
+        :param _Status: 状态: 0-未激活, 1-已激活, 2-已过期, 3-已作废
+        :type Status: int
+        :param _ErrorMsg: 错误信息
+        :type ErrorMsg: str
+        """
+        self._ProductId = None
+        self._DeviceName = None
+        self._ActiveTime = None
+        self._ExpireTime = None
+        self._ServiceType = None
+        self._Status = None
+        self._ErrorMsg = None
+
+    @property
+    def ProductId(self):
+        r"""产品ID
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def DeviceName(self):
+        r"""设备名称
+        :rtype: str
+        """
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def ActiveTime(self):
+        r"""激活时间，秒级时间戳
+        :rtype: int
+        """
+        return self._ActiveTime
+
+    @ActiveTime.setter
+    def ActiveTime(self, ActiveTime):
+        self._ActiveTime = ActiveTime
+
+    @property
+    def ExpireTime(self):
+        r"""过期时间，秒级时间戳
+        :rtype: int
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def ServiceType(self):
+        r"""TWeTalk类型：1-基础版；2-高级版；3-多模态；
+        :rtype: int
+        """
+        return self._ServiceType
+
+    @ServiceType.setter
+    def ServiceType(self, ServiceType):
+        self._ServiceType = ServiceType
+
+    @property
+    def Status(self):
+        r"""状态: 0-未激活, 1-已激活, 2-已过期, 3-已作废
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrorMsg(self):
+        r"""错误信息
+        :rtype: str
+        """
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        self._DeviceName = params.get("DeviceName")
+        self._ActiveTime = params.get("ActiveTime")
+        self._ExpireTime = params.get("ExpireTime")
+        self._ServiceType = params.get("ServiceType")
+        self._Status = params.get("Status")
+        self._ErrorMsg = params.get("ErrorMsg")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TalkActivationInfo(AbstractModel):
+    r"""Talk设备激活信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeviceId: 设备ID，产品ID_设备名称
+        :type DeviceId: str
+        :param _ErrCode: 设备激活状态，0：激活成功；60001：激活码类型不匹配；60002：激活码数量不足；60003：设备不存在；60004：产品不存在；60005：权限不足；60006：设备已激活；60007：无效的参数；60008：系统错误；60009：产品不是码音视频类型
+        :type ErrCode: int
+        :param _ErrMessage: 激活错误信息
+        :type ErrMessage: str
+        :param _ExpireTime: 过期时间，秒级时间戳
+        :type ExpireTime: int
+        """
+        self._DeviceId = None
+        self._ErrCode = None
+        self._ErrMessage = None
+        self._ExpireTime = None
+
+    @property
+    def DeviceId(self):
+        r"""设备ID，产品ID_设备名称
+        :rtype: str
+        """
+        return self._DeviceId
+
+    @DeviceId.setter
+    def DeviceId(self, DeviceId):
+        self._DeviceId = DeviceId
+
+    @property
+    def ErrCode(self):
+        r"""设备激活状态，0：激活成功；60001：激活码类型不匹配；60002：激活码数量不足；60003：设备不存在；60004：产品不存在；60005：权限不足；60006：设备已激活；60007：无效的参数；60008：系统错误；60009：产品不是码音视频类型
+        :rtype: int
+        """
+        return self._ErrCode
+
+    @ErrCode.setter
+    def ErrCode(self, ErrCode):
+        self._ErrCode = ErrCode
+
+    @property
+    def ErrMessage(self):
+        r"""激活错误信息
+        :rtype: str
+        """
+        return self._ErrMessage
+
+    @ErrMessage.setter
+    def ErrMessage(self, ErrMessage):
+        self._ErrMessage = ErrMessage
+
+    @property
+    def ExpireTime(self):
+        r"""过期时间，秒级时间戳
+        :rtype: int
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+
+    def _deserialize(self, params):
+        self._DeviceId = params.get("DeviceId")
+        self._ErrCode = params.get("ErrCode")
+        self._ErrMessage = params.get("ErrMessage")
+        self._ExpireTime = params.get("ExpireTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TalkActivationStatusInfo(AbstractModel):
+    r"""Talk激活状态响应定义。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeviceId: 设备ID，产品ID_设备名称
+        :type DeviceId: str
+        :param _ExpireTime: 过期时间，秒级时间戳
+        :type ExpireTime: int
+        :param _ServiceType: TWeTalk类型：1-基础版；2-高级版；3-多模态；
+        :type ServiceType: int
+        """
+        self._DeviceId = None
+        self._ExpireTime = None
+        self._ServiceType = None
+
+    @property
+    def DeviceId(self):
+        r"""设备ID，产品ID_设备名称
+        :rtype: str
+        """
+        return self._DeviceId
+
+    @DeviceId.setter
+    def DeviceId(self, DeviceId):
+        self._DeviceId = DeviceId
+
+    @property
+    def ExpireTime(self):
+        r"""过期时间，秒级时间戳
+        :rtype: int
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def ServiceType(self):
+        r"""TWeTalk类型：1-基础版；2-高级版；3-多模态；
+        :rtype: int
+        """
+        return self._ServiceType
+
+    @ServiceType.setter
+    def ServiceType(self, ServiceType):
+        self._ServiceType = ServiceType
+
+
+    def _deserialize(self, params):
+        self._DeviceId = params.get("DeviceId")
+        self._ExpireTime = params.get("ExpireTime")
+        self._ServiceType = params.get("ServiceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

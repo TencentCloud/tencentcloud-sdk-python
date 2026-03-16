@@ -43,6 +43,24 @@ class IotexplorerClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ActivateTWeTalk(
+            self,
+            request: models.ActivateTWeTalkRequest,
+            opts: Dict = None,
+    ) -> models.ActivateTWeTalkResponse:
+        """
+        TWeTalk设备激活接口。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ActivateTWeTalk"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ActivateTWeTalkResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def BatchCreateTWeSeeRecognitionTask(
             self,
             request: models.BatchCreateTWeSeeRecognitionTaskRequest,
@@ -2522,6 +2540,42 @@ class IotexplorerClient(AbstractClient):
         kwargs["action"] = "GetTWeTalkAIBotList"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.GetTWeTalkAIBotListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetTWeTalkActiveRecordList(
+            self,
+            request: models.GetTWeTalkActiveRecordListRequest,
+            opts: Dict = None,
+    ) -> models.GetTWeTalkActiveRecordListResponse:
+        """
+        TWeTalk消耗账单明细。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetTWeTalkActiveRecordList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetTWeTalkActiveRecordListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetTWeTalkActiveStatus(
+            self,
+            request: models.GetTWeTalkActiveStatusRequest,
+            opts: Dict = None,
+    ) -> models.GetTWeTalkActiveStatusResponse:
+        """
+        查询TWeTalk设备激活状态。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetTWeTalkActiveStatus"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetTWeTalkActiveStatusResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

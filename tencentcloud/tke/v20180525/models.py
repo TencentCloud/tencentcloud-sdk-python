@@ -3823,6 +3823,89 @@ class ClusterCredential(AbstractModel):
         
 
 
+class ClusterExternalConfig(AbstractModel):
+    r"""开启第三方节点池支持配置信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NetworkType: 集群网络插件类型，支持：Flannel、CiliumBGP、CiliumVXLan
+        :type NetworkType: str
+        :param _SubnetId: 子网ID
+        :type SubnetId: str
+        :param _ClusterCIDR: Pod CIDR
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterCIDR: str
+        :param _Enabled: 是否开启第三方节点池支持
+        :type Enabled: bool
+        """
+        self._NetworkType = None
+        self._SubnetId = None
+        self._ClusterCIDR = None
+        self._Enabled = None
+
+    @property
+    def NetworkType(self):
+        r"""集群网络插件类型，支持：Flannel、CiliumBGP、CiliumVXLan
+        :rtype: str
+        """
+        return self._NetworkType
+
+    @NetworkType.setter
+    def NetworkType(self, NetworkType):
+        self._NetworkType = NetworkType
+
+    @property
+    def SubnetId(self):
+        r"""子网ID
+        :rtype: str
+        """
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def ClusterCIDR(self):
+        r"""Pod CIDR
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ClusterCIDR
+
+    @ClusterCIDR.setter
+    def ClusterCIDR(self, ClusterCIDR):
+        self._ClusterCIDR = ClusterCIDR
+
+    @property
+    def Enabled(self):
+        r"""是否开启第三方节点池支持
+        :rtype: bool
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+
+    def _deserialize(self, params):
+        self._NetworkType = params.get("NetworkType")
+        self._SubnetId = params.get("SubnetId")
+        self._ClusterCIDR = params.get("ClusterCIDR")
+        self._Enabled = params.get("Enabled")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ClusterExtraArgs(AbstractModel):
     r"""集群master自定义参数
 
@@ -9047,6 +9130,217 @@ class CreateEksLogConfigResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateExternalNodePoolRequest(AbstractModel):
+    r"""CreateExternalNodePool请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群Id
+        :type ClusterId: str
+        :param _Name: 节点池名称
+        :type Name: str
+        :param _ContainerRuntime: 运行时
+        :type ContainerRuntime: str
+        :param _RuntimeVersion: 运行时版本
+        :type RuntimeVersion: str
+        :param _Labels: 第三方节点label
+        :type Labels: list of Label
+        :param _Taints: 第三方节点taint
+        :type Taints: list of Taint
+        :param _InstanceAdvancedSettings: 第三方节点高级设置
+        :type InstanceAdvancedSettings: :class:`tencentcloud.tke.v20180525.models.InstanceAdvancedSettings`
+        :param _DeletionProtection: 删除保护开关
+        :type DeletionProtection: bool
+        :param _NodeType: 节点类型
+        :type NodeType: str
+        """
+        self._ClusterId = None
+        self._Name = None
+        self._ContainerRuntime = None
+        self._RuntimeVersion = None
+        self._Labels = None
+        self._Taints = None
+        self._InstanceAdvancedSettings = None
+        self._DeletionProtection = None
+        self._NodeType = None
+
+    @property
+    def ClusterId(self):
+        r"""集群Id
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def Name(self):
+        r"""节点池名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ContainerRuntime(self):
+        r"""运行时
+        :rtype: str
+        """
+        return self._ContainerRuntime
+
+    @ContainerRuntime.setter
+    def ContainerRuntime(self, ContainerRuntime):
+        self._ContainerRuntime = ContainerRuntime
+
+    @property
+    def RuntimeVersion(self):
+        r"""运行时版本
+        :rtype: str
+        """
+        return self._RuntimeVersion
+
+    @RuntimeVersion.setter
+    def RuntimeVersion(self, RuntimeVersion):
+        self._RuntimeVersion = RuntimeVersion
+
+    @property
+    def Labels(self):
+        r"""第三方节点label
+        :rtype: list of Label
+        """
+        return self._Labels
+
+    @Labels.setter
+    def Labels(self, Labels):
+        self._Labels = Labels
+
+    @property
+    def Taints(self):
+        r"""第三方节点taint
+        :rtype: list of Taint
+        """
+        return self._Taints
+
+    @Taints.setter
+    def Taints(self, Taints):
+        self._Taints = Taints
+
+    @property
+    def InstanceAdvancedSettings(self):
+        r"""第三方节点高级设置
+        :rtype: :class:`tencentcloud.tke.v20180525.models.InstanceAdvancedSettings`
+        """
+        return self._InstanceAdvancedSettings
+
+    @InstanceAdvancedSettings.setter
+    def InstanceAdvancedSettings(self, InstanceAdvancedSettings):
+        self._InstanceAdvancedSettings = InstanceAdvancedSettings
+
+    @property
+    def DeletionProtection(self):
+        r"""删除保护开关
+        :rtype: bool
+        """
+        return self._DeletionProtection
+
+    @DeletionProtection.setter
+    def DeletionProtection(self, DeletionProtection):
+        self._DeletionProtection = DeletionProtection
+
+    @property
+    def NodeType(self):
+        r"""节点类型
+        :rtype: str
+        """
+        return self._NodeType
+
+    @NodeType.setter
+    def NodeType(self, NodeType):
+        self._NodeType = NodeType
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._Name = params.get("Name")
+        self._ContainerRuntime = params.get("ContainerRuntime")
+        self._RuntimeVersion = params.get("RuntimeVersion")
+        if params.get("Labels") is not None:
+            self._Labels = []
+            for item in params.get("Labels"):
+                obj = Label()
+                obj._deserialize(item)
+                self._Labels.append(obj)
+        if params.get("Taints") is not None:
+            self._Taints = []
+            for item in params.get("Taints"):
+                obj = Taint()
+                obj._deserialize(item)
+                self._Taints.append(obj)
+        if params.get("InstanceAdvancedSettings") is not None:
+            self._InstanceAdvancedSettings = InstanceAdvancedSettings()
+            self._InstanceAdvancedSettings._deserialize(params.get("InstanceAdvancedSettings"))
+        self._DeletionProtection = params.get("DeletionProtection")
+        self._NodeType = params.get("NodeType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateExternalNodePoolResponse(AbstractModel):
+    r"""CreateExternalNodePool返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NodePoolId: 节点池ID
+        :type NodePoolId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._NodePoolId = None
+        self._RequestId = None
+
+    @property
+    def NodePoolId(self):
+        r"""节点池ID
+        :rtype: str
+        """
+        return self._NodePoolId
+
+    @NodePoolId.setter
+    def NodePoolId(self, NodePoolId):
+        self._NodePoolId = NodePoolId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._NodePoolId = params.get("NodePoolId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateGlobalMaintenanceWindowAndExclusionsRequest(AbstractModel):
     r"""CreateGlobalMaintenanceWindowAndExclusions请求参数结构体
 
@@ -12725,6 +13019,194 @@ class DeleteEdgeClusterInstancesRequest(AbstractModel):
 
 class DeleteEdgeClusterInstancesResponse(AbstractModel):
     r"""DeleteEdgeClusterInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteExternalNodePoolRequest(AbstractModel):
+    r"""DeleteExternalNodePool请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群ID
+        :type ClusterId: str
+        :param _NodePoolIds: 第三方节点池ID列表
+        :type NodePoolIds: list of str
+        :param _Force: 是否强制删除，在第三方节点上有pod的情况下，如果选择非强制删除，则删除会失败
+        :type Force: bool
+        """
+        self._ClusterId = None
+        self._NodePoolIds = None
+        self._Force = None
+
+    @property
+    def ClusterId(self):
+        r"""集群ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def NodePoolIds(self):
+        r"""第三方节点池ID列表
+        :rtype: list of str
+        """
+        return self._NodePoolIds
+
+    @NodePoolIds.setter
+    def NodePoolIds(self, NodePoolIds):
+        self._NodePoolIds = NodePoolIds
+
+    @property
+    def Force(self):
+        r"""是否强制删除，在第三方节点上有pod的情况下，如果选择非强制删除，则删除会失败
+        :rtype: bool
+        """
+        return self._Force
+
+    @Force.setter
+    def Force(self, Force):
+        self._Force = Force
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._NodePoolIds = params.get("NodePoolIds")
+        self._Force = params.get("Force")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteExternalNodePoolResponse(AbstractModel):
+    r"""DeleteExternalNodePool返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteExternalNodeRequest(AbstractModel):
+    r"""DeleteExternalNode请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群ID
+        :type ClusterId: str
+        :param _Names: 第三方节点列表
+        :type Names: list of str
+        :param _Force: 是否强制删除：如果第三方节点上有运行中Pod，则非强制删除状态下不会进行删除
+        :type Force: bool
+        """
+        self._ClusterId = None
+        self._Names = None
+        self._Force = None
+
+    @property
+    def ClusterId(self):
+        r"""集群ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def Names(self):
+        r"""第三方节点列表
+        :rtype: list of str
+        """
+        return self._Names
+
+    @Names.setter
+    def Names(self, Names):
+        self._Names = Names
+
+    @property
+    def Force(self):
+        r"""是否强制删除：如果第三方节点上有运行中Pod，则非强制删除状态下不会进行删除
+        :rtype: bool
+        """
+        return self._Force
+
+    @Force.setter
+    def Force(self, Force):
+        self._Force = Force
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._Names = params.get("Names")
+        self._Force = params.get("Force")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteExternalNodeResponse(AbstractModel):
+    r"""DeleteExternalNode返回参数结构体
 
     """
 
@@ -20800,6 +21282,411 @@ class DescribeExistedInstancesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeExternalNodePoolsRequest(AbstractModel):
+    r"""DescribeExternalNodePools请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群ID
+        :type ClusterId: str
+        """
+        self._ClusterId = None
+
+    @property
+    def ClusterId(self):
+        r"""集群ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeExternalNodePoolsResponse(AbstractModel):
+    r"""DescribeExternalNodePools返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 节点池总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _NodePoolSet: 第三方节点池列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NodePoolSet: list of ExternalNodePool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._NodePoolSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""节点池总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def NodePoolSet(self):
+        r"""第三方节点池列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ExternalNodePool
+        """
+        return self._NodePoolSet
+
+    @NodePoolSet.setter
+    def NodePoolSet(self, NodePoolSet):
+        self._NodePoolSet = NodePoolSet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("NodePoolSet") is not None:
+            self._NodePoolSet = []
+            for item in params.get("NodePoolSet"):
+                obj = ExternalNodePool()
+                obj._deserialize(item)
+                self._NodePoolSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeExternalNodeRequest(AbstractModel):
+    r"""DescribeExternalNode请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群ID
+        :type ClusterId: str
+        :param _NodePoolId: 节点池ID
+        :type NodePoolId: str
+        :param _Names: 节点名称
+        :type Names: list of str
+        """
+        self._ClusterId = None
+        self._NodePoolId = None
+        self._Names = None
+
+    @property
+    def ClusterId(self):
+        r"""集群ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def NodePoolId(self):
+        r"""节点池ID
+        :rtype: str
+        """
+        return self._NodePoolId
+
+    @NodePoolId.setter
+    def NodePoolId(self, NodePoolId):
+        self._NodePoolId = NodePoolId
+
+    @property
+    def Names(self):
+        r"""节点名称
+        :rtype: list of str
+        """
+        return self._Names
+
+    @Names.setter
+    def Names(self, Names):
+        self._Names = Names
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._NodePoolId = params.get("NodePoolId")
+        self._Names = params.get("Names")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeExternalNodeResponse(AbstractModel):
+    r"""DescribeExternalNode返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Nodes: 节点列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Nodes: list of ExternalNode
+        :param _TotalCount: 节点总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Nodes = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Nodes(self):
+        r"""节点列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ExternalNode
+        """
+        return self._Nodes
+
+    @Nodes.setter
+    def Nodes(self, Nodes):
+        self._Nodes = Nodes
+
+    @property
+    def TotalCount(self):
+        r"""节点总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Nodes") is not None:
+            self._Nodes = []
+            for item in params.get("Nodes"):
+                obj = ExternalNode()
+                obj._deserialize(item)
+                self._Nodes.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeExternalNodeScriptRequest(AbstractModel):
+    r"""DescribeExternalNodeScript请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群ID
+        :type ClusterId: str
+        :param _NodePoolId: 节点池ID
+        :type NodePoolId: str
+        :param _Interface: 网卡名
+        :type Interface: str
+        :param _Name: 节点名称
+        :type Name: str
+        :param _Internal: 是否内网获取节点初始化脚本
+        :type Internal: bool
+        """
+        self._ClusterId = None
+        self._NodePoolId = None
+        self._Interface = None
+        self._Name = None
+        self._Internal = None
+
+    @property
+    def ClusterId(self):
+        r"""集群ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def NodePoolId(self):
+        r"""节点池ID
+        :rtype: str
+        """
+        return self._NodePoolId
+
+    @NodePoolId.setter
+    def NodePoolId(self, NodePoolId):
+        self._NodePoolId = NodePoolId
+
+    @property
+    def Interface(self):
+        r"""网卡名
+        :rtype: str
+        """
+        return self._Interface
+
+    @Interface.setter
+    def Interface(self, Interface):
+        self._Interface = Interface
+
+    @property
+    def Name(self):
+        r"""节点名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Internal(self):
+        r"""是否内网获取节点初始化脚本
+        :rtype: bool
+        """
+        return self._Internal
+
+    @Internal.setter
+    def Internal(self, Internal):
+        self._Internal = Internal
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._NodePoolId = params.get("NodePoolId")
+        self._Interface = params.get("Interface")
+        self._Name = params.get("Name")
+        self._Internal = params.get("Internal")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeExternalNodeScriptResponse(AbstractModel):
+    r"""DescribeExternalNodeScript返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Link: 添加脚本cos下载链接
+        :type Link: str
+        :param _Token: cos临时密钥
+        :type Token: str
+        :param _Command: 添加脚本下载命令
+        :type Command: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Link = None
+        self._Token = None
+        self._Command = None
+        self._RequestId = None
+
+    @property
+    def Link(self):
+        r"""添加脚本cos下载链接
+        :rtype: str
+        """
+        return self._Link
+
+    @Link.setter
+    def Link(self, Link):
+        self._Link = Link
+
+    @property
+    def Token(self):
+        r"""cos临时密钥
+        :rtype: str
+        """
+        return self._Token
+
+    @Token.setter
+    def Token(self, Token):
+        self._Token = Token
+
+    @property
+    def Command(self):
+        r"""添加脚本下载命令
+        :rtype: str
+        """
+        return self._Command
+
+    @Command.setter
+    def Command(self, Command):
+        self._Command = Command
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Link = params.get("Link")
+        self._Token = params.get("Token")
+        self._Command = params.get("Command")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeExternalNodeSupportConfigRequest(AbstractModel):
     r"""DescribeExternalNodeSupportConfig请求参数结构体
 
@@ -28481,6 +29368,85 @@ class DrainClusterVirtualNodeResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DrainExternalNodeRequest(AbstractModel):
+    r"""DrainExternalNode请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群ID
+        :type ClusterId: str
+        :param _Name: 节点名
+        :type Name: str
+        """
+        self._ClusterId = None
+        self._Name = None
+
+    @property
+    def ClusterId(self):
+        r"""集群ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def Name(self):
+        r"""节点名
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DrainExternalNodeResponse(AbstractModel):
+    r"""DrainExternalNode返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DriverVersion(AbstractModel):
     r"""GPU驱动和CUDA的版本信息
 
@@ -30865,6 +31831,87 @@ class EnableEventPersistenceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class EnableExternalNodeSupportRequest(AbstractModel):
+    r"""EnableExternalNodeSupport请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群Id
+        :type ClusterId: str
+        :param _ClusterExternalConfig: 开启第三方节点池支持配置信息
+        :type ClusterExternalConfig: :class:`tencentcloud.tke.v20180525.models.ClusterExternalConfig`
+        """
+        self._ClusterId = None
+        self._ClusterExternalConfig = None
+
+    @property
+    def ClusterId(self):
+        r"""集群Id
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def ClusterExternalConfig(self):
+        r"""开启第三方节点池支持配置信息
+        :rtype: :class:`tencentcloud.tke.v20180525.models.ClusterExternalConfig`
+        """
+        return self._ClusterExternalConfig
+
+    @ClusterExternalConfig.setter
+    def ClusterExternalConfig(self, ClusterExternalConfig):
+        self._ClusterExternalConfig = ClusterExternalConfig
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        if params.get("ClusterExternalConfig") is not None:
+            self._ClusterExternalConfig = ClusterExternalConfig()
+            self._ClusterExternalConfig._deserialize(params.get("ClusterExternalConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EnableExternalNodeSupportResponse(AbstractModel):
+    r"""EnableExternalNodeSupport返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class EnableVpcCniNetworkTypeRequest(AbstractModel):
     r"""EnableVpcCniNetworkType请求参数结构体
 
@@ -31826,6 +32873,348 @@ class ExtensionAddon(AbstractModel):
     def _deserialize(self, params):
         self._AddonName = params.get("AddonName")
         self._AddonParam = params.get("AddonParam")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExternalNode(AbstractModel):
+    r"""第三方节点
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 第三方节点名称
+        :type Name: str
+        :param _NodePoolId: 第三方节点所属节点池
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NodePoolId: str
+        :param _IP: 第三方IP地址
+        :type IP: str
+        :param _Location: 第三方地域
+        :type Location: str
+        :param _Status: 第三方节点状态
+        :type Status: str
+        :param _CreatedTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatedTime: str
+        :param _Reason: 异常原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Reason: str
+        :param _Unschedulable: 是否封锁。true表示已封锁，false表示未封锁
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Unschedulable: bool
+        """
+        self._Name = None
+        self._NodePoolId = None
+        self._IP = None
+        self._Location = None
+        self._Status = None
+        self._CreatedTime = None
+        self._Reason = None
+        self._Unschedulable = None
+
+    @property
+    def Name(self):
+        r"""第三方节点名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def NodePoolId(self):
+        r"""第三方节点所属节点池
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._NodePoolId
+
+    @NodePoolId.setter
+    def NodePoolId(self, NodePoolId):
+        self._NodePoolId = NodePoolId
+
+    @property
+    def IP(self):
+        r"""第三方IP地址
+        :rtype: str
+        """
+        return self._IP
+
+    @IP.setter
+    def IP(self, IP):
+        self._IP = IP
+
+    @property
+    def Location(self):
+        r"""第三方地域
+        :rtype: str
+        """
+        return self._Location
+
+    @Location.setter
+    def Location(self, Location):
+        self._Location = Location
+
+    @property
+    def Status(self):
+        r"""第三方节点状态
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreatedTime(self):
+        r"""创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+    @property
+    def Reason(self):
+        r"""异常原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
+
+    @property
+    def Unschedulable(self):
+        r"""是否封锁。true表示已封锁，false表示未封锁
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._Unschedulable
+
+    @Unschedulable.setter
+    def Unschedulable(self, Unschedulable):
+        self._Unschedulable = Unschedulable
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._NodePoolId = params.get("NodePoolId")
+        self._IP = params.get("IP")
+        self._Location = params.get("Location")
+        self._Status = params.get("Status")
+        self._CreatedTime = params.get("CreatedTime")
+        self._Reason = params.get("Reason")
+        self._Unschedulable = params.get("Unschedulable")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExternalNodePool(AbstractModel):
+    r"""第三方节点池信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NodePoolId: 第三方节点池ID
+        :type NodePoolId: str
+        :param _Name: 第三方节点池名称
+        :type Name: str
+        :param _LifeState: 节点池生命周期
+        :type LifeState: str
+        :param _ClusterCIDR: 集群CIDR
+        :type ClusterCIDR: str
+        :param _NetworkType: 集群网络插件类型
+        :type NetworkType: str
+        :param _RuntimeConfig: 第三方节点Runtime配置
+        :type RuntimeConfig: :class:`tencentcloud.tke.v20180525.models.RuntimeConfig`
+        :param _Labels: 第三方节点label
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Labels: list of Label
+        :param _Taints: 第三方节点taint
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Taints: list of Taint
+        :param _InstanceAdvancedSettings: 第三方节点高级设置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceAdvancedSettings: :class:`tencentcloud.tke.v20180525.models.InstanceAdvancedSettings`
+        :param _DeletionProtection: 删除保护开关
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeletionProtection: bool
+        """
+        self._NodePoolId = None
+        self._Name = None
+        self._LifeState = None
+        self._ClusterCIDR = None
+        self._NetworkType = None
+        self._RuntimeConfig = None
+        self._Labels = None
+        self._Taints = None
+        self._InstanceAdvancedSettings = None
+        self._DeletionProtection = None
+
+    @property
+    def NodePoolId(self):
+        r"""第三方节点池ID
+        :rtype: str
+        """
+        return self._NodePoolId
+
+    @NodePoolId.setter
+    def NodePoolId(self, NodePoolId):
+        self._NodePoolId = NodePoolId
+
+    @property
+    def Name(self):
+        r"""第三方节点池名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def LifeState(self):
+        r"""节点池生命周期
+        :rtype: str
+        """
+        return self._LifeState
+
+    @LifeState.setter
+    def LifeState(self, LifeState):
+        self._LifeState = LifeState
+
+    @property
+    def ClusterCIDR(self):
+        r"""集群CIDR
+        :rtype: str
+        """
+        return self._ClusterCIDR
+
+    @ClusterCIDR.setter
+    def ClusterCIDR(self, ClusterCIDR):
+        self._ClusterCIDR = ClusterCIDR
+
+    @property
+    def NetworkType(self):
+        r"""集群网络插件类型
+        :rtype: str
+        """
+        return self._NetworkType
+
+    @NetworkType.setter
+    def NetworkType(self, NetworkType):
+        self._NetworkType = NetworkType
+
+    @property
+    def RuntimeConfig(self):
+        r"""第三方节点Runtime配置
+        :rtype: :class:`tencentcloud.tke.v20180525.models.RuntimeConfig`
+        """
+        return self._RuntimeConfig
+
+    @RuntimeConfig.setter
+    def RuntimeConfig(self, RuntimeConfig):
+        self._RuntimeConfig = RuntimeConfig
+
+    @property
+    def Labels(self):
+        r"""第三方节点label
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Label
+        """
+        return self._Labels
+
+    @Labels.setter
+    def Labels(self, Labels):
+        self._Labels = Labels
+
+    @property
+    def Taints(self):
+        r"""第三方节点taint
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Taint
+        """
+        return self._Taints
+
+    @Taints.setter
+    def Taints(self, Taints):
+        self._Taints = Taints
+
+    @property
+    def InstanceAdvancedSettings(self):
+        r"""第三方节点高级设置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tke.v20180525.models.InstanceAdvancedSettings`
+        """
+        return self._InstanceAdvancedSettings
+
+    @InstanceAdvancedSettings.setter
+    def InstanceAdvancedSettings(self, InstanceAdvancedSettings):
+        self._InstanceAdvancedSettings = InstanceAdvancedSettings
+
+    @property
+    def DeletionProtection(self):
+        r"""删除保护开关
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._DeletionProtection
+
+    @DeletionProtection.setter
+    def DeletionProtection(self, DeletionProtection):
+        self._DeletionProtection = DeletionProtection
+
+
+    def _deserialize(self, params):
+        self._NodePoolId = params.get("NodePoolId")
+        self._Name = params.get("Name")
+        self._LifeState = params.get("LifeState")
+        self._ClusterCIDR = params.get("ClusterCIDR")
+        self._NetworkType = params.get("NetworkType")
+        if params.get("RuntimeConfig") is not None:
+            self._RuntimeConfig = RuntimeConfig()
+            self._RuntimeConfig._deserialize(params.get("RuntimeConfig"))
+        if params.get("Labels") is not None:
+            self._Labels = []
+            for item in params.get("Labels"):
+                obj = Label()
+                obj._deserialize(item)
+                self._Labels.append(obj)
+        if params.get("Taints") is not None:
+            self._Taints = []
+            for item in params.get("Taints"):
+                obj = Taint()
+                obj._deserialize(item)
+                self._Taints.append(obj)
+        if params.get("InstanceAdvancedSettings") is not None:
+            self._InstanceAdvancedSettings = InstanceAdvancedSettings()
+            self._InstanceAdvancedSettings._deserialize(params.get("InstanceAdvancedSettings"))
+        self._DeletionProtection = params.get("DeletionProtection")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -38413,6 +39802,170 @@ class ModifyClusterVirtualNodePoolRequest(AbstractModel):
 
 class ModifyClusterVirtualNodePoolResponse(AbstractModel):
     r"""ModifyClusterVirtualNodePool返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyExternalNodePoolRequest(AbstractModel):
+    r"""ModifyExternalNodePool请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群ID
+        :type ClusterId: str
+        :param _NodePoolId: 节点池ID
+        :type NodePoolId: str
+        :param _Name: 节点池名称
+        :type Name: str
+        :param _Labels: 第三方节点label
+        :type Labels: list of Label
+        :param _Taints: 第三方节点taint
+        :type Taints: list of Taint
+        :param _DeletionProtection: 删除保护开关
+        :type DeletionProtection: bool
+        :param _UserScript: base64 编码的用户脚本, 此脚本会在 k8s 组件运行后执行, 需要用户保证脚本的可重入及重试逻辑, 脚本及其生成的日志文件可在节点的 /data/ccs_userscript/ 路径查看
+        :type UserScript: str
+        """
+        self._ClusterId = None
+        self._NodePoolId = None
+        self._Name = None
+        self._Labels = None
+        self._Taints = None
+        self._DeletionProtection = None
+        self._UserScript = None
+
+    @property
+    def ClusterId(self):
+        r"""集群ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def NodePoolId(self):
+        r"""节点池ID
+        :rtype: str
+        """
+        return self._NodePoolId
+
+    @NodePoolId.setter
+    def NodePoolId(self, NodePoolId):
+        self._NodePoolId = NodePoolId
+
+    @property
+    def Name(self):
+        r"""节点池名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Labels(self):
+        r"""第三方节点label
+        :rtype: list of Label
+        """
+        return self._Labels
+
+    @Labels.setter
+    def Labels(self, Labels):
+        self._Labels = Labels
+
+    @property
+    def Taints(self):
+        r"""第三方节点taint
+        :rtype: list of Taint
+        """
+        return self._Taints
+
+    @Taints.setter
+    def Taints(self, Taints):
+        self._Taints = Taints
+
+    @property
+    def DeletionProtection(self):
+        r"""删除保护开关
+        :rtype: bool
+        """
+        return self._DeletionProtection
+
+    @DeletionProtection.setter
+    def DeletionProtection(self, DeletionProtection):
+        self._DeletionProtection = DeletionProtection
+
+    @property
+    def UserScript(self):
+        r"""base64 编码的用户脚本, 此脚本会在 k8s 组件运行后执行, 需要用户保证脚本的可重入及重试逻辑, 脚本及其生成的日志文件可在节点的 /data/ccs_userscript/ 路径查看
+        :rtype: str
+        """
+        return self._UserScript
+
+    @UserScript.setter
+    def UserScript(self, UserScript):
+        self._UserScript = UserScript
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._NodePoolId = params.get("NodePoolId")
+        self._Name = params.get("Name")
+        if params.get("Labels") is not None:
+            self._Labels = []
+            for item in params.get("Labels"):
+                obj = Label()
+                obj._deserialize(item)
+                self._Labels.append(obj)
+        if params.get("Taints") is not None:
+            self._Taints = []
+            for item in params.get("Taints"):
+                obj = Taint()
+                obj._deserialize(item)
+                self._Taints.append(obj)
+        self._DeletionProtection = params.get("DeletionProtection")
+        self._UserScript = params.get("UserScript")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyExternalNodePoolResponse(AbstractModel):
+    r"""ModifyExternalNodePool返回参数结构体
 
     """
 
