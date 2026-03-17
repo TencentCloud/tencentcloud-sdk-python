@@ -1000,3 +1000,21 @@ class TrpClient(AbstractClient):
         kwargs["opts"] = opts or {}
         
         return await self.call_and_deserialize(**kwargs)
+        
+    async def ReportScanDetail(
+            self,
+            request: models.ReportScanDetailRequest,
+            opts: Dict = None,
+    ) -> models.ReportScanDetailResponse:
+        """
+        扫码数据上报
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ReportScanDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ReportScanDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)

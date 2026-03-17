@@ -1573,6 +1573,24 @@ class WedataClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeDatabaseByName(
+            self,
+            request: models.DescribeDatabaseByNameRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDatabaseByNameResponse:
+        """
+        根据数据库名称和数据源id获取数据库信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDatabaseByName"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDatabaseByNameResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeDatabaseInfoList(
             self,
             request: models.DescribeDatabaseInfoListRequest,
@@ -1586,6 +1604,24 @@ class WedataClient(AbstractClient):
         kwargs["action"] = "DescribeDatabaseInfoList"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeDatabaseInfoListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeDatabaseMeta(
+            self,
+            request: models.DescribeDatabaseMetaRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDatabaseMetaResponse:
+        """
+        根据数据库Id查询数据库元数据，带有数据源和项目信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDatabaseMeta"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDatabaseMetaResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2275,6 +2311,24 @@ class WedataClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeLineageColumns(
+            self,
+            request: models.DescribeLineageColumnsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeLineageColumnsResponse:
+        """
+        列出血缘中心字段信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeLineageColumns"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeLineageColumnsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeLineageInfo(
             self,
             request: models.DescribeLineageInfoRequest,
@@ -2612,6 +2666,24 @@ class WedataClient(AbstractClient):
         kwargs["action"] = "DescribeRealTimeTaskSpeed"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeRealTimeTaskSpeedResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeRealViewDatabasePage(
+            self,
+            request: models.DescribeRealViewDatabasePageRequest,
+            opts: Dict = None,
+    ) -> models.DescribeRealViewDatabasePageResponse:
+        """
+        离线通过表名称获取表信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeRealViewDatabasePage"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeRealViewDatabasePageResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -3196,6 +3268,42 @@ class WedataClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeTableContentPreview(
+            self,
+            request: models.DescribeTableContentPreviewRequest,
+            opts: Dict = None,
+    ) -> models.DescribeTableContentPreviewResponse:
+        """
+        查询表的数据预览
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeTableContentPreview"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeTableContentPreviewResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeTableDdl(
+            self,
+            request: models.DescribeTableDdlRequest,
+            opts: Dict = None,
+    ) -> models.DescribeTableDdlResponse:
+        """
+        查询表的DDL
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeTableDdl"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeTableDdlResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeTableInfoList(
             self,
             request: models.DescribeTableInfoListRequest,
@@ -3353,6 +3461,24 @@ class WedataClient(AbstractClient):
         kwargs["action"] = "DescribeTableScoreTrend"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeTableScoreTrendResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeTableSelect(
+            self,
+            request: models.DescribeTableSelectRequest,
+            opts: Dict = None,
+    ) -> models.DescribeTableSelectResponse:
+        """
+        查询表的select语句
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeTableSelect"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeTableSelectResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

@@ -1463,12 +1463,11 @@ class DescribeCloudRunEnvsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EnvId: 环境ID，如果传了这个参数则只返回该环境的相关信息
+        :param _EnvId: <p>环境ID，如果传了这个参数则只返回该环境的相关信息</p>
         :type EnvId: str
-        :param _IsVisible: 指定Channels字段为可见渠道列表或不可见渠道列表
-如只想获取渠道A的环境 就填写IsVisible= true,Channels = ["A"], 过滤渠道A拉取其他渠道环境时填写IsVisible= false,Channels = ["A"]
+        :param _IsVisible: <p>指定Channels字段为可见渠道列表或不可见渠道列表<br>如只想获取渠道A的环境 就填写IsVisible= true,Channels = [&quot;A&quot;], 过滤渠道A拉取其他渠道环境时填写IsVisible= false,Channels = [&quot;A&quot;]</p>
         :type IsVisible: bool
-        :param _Channels: 渠道列表，代表可见或不可见渠道由IsVisible参数指定
+        :param _Channels: <p>渠道列表，代表可见或不可见渠道由IsVisible参数指定</p>
         :type Channels: list of str
         """
         self._EnvId = None
@@ -1477,7 +1476,7 @@ class DescribeCloudRunEnvsRequest(AbstractModel):
 
     @property
     def EnvId(self):
-        r"""环境ID，如果传了这个参数则只返回该环境的相关信息
+        r"""<p>环境ID，如果传了这个参数则只返回该环境的相关信息</p>
         :rtype: str
         """
         return self._EnvId
@@ -1488,8 +1487,7 @@ class DescribeCloudRunEnvsRequest(AbstractModel):
 
     @property
     def IsVisible(self):
-        r"""指定Channels字段为可见渠道列表或不可见渠道列表
-如只想获取渠道A的环境 就填写IsVisible= true,Channels = ["A"], 过滤渠道A拉取其他渠道环境时填写IsVisible= false,Channels = ["A"]
+        r"""<p>指定Channels字段为可见渠道列表或不可见渠道列表<br>如只想获取渠道A的环境 就填写IsVisible= true,Channels = [&quot;A&quot;], 过滤渠道A拉取其他渠道环境时填写IsVisible= false,Channels = [&quot;A&quot;]</p>
         :rtype: bool
         """
         return self._IsVisible
@@ -1500,7 +1498,7 @@ class DescribeCloudRunEnvsRequest(AbstractModel):
 
     @property
     def Channels(self):
-        r"""渠道列表，代表可见或不可见渠道由IsVisible参数指定
+        r"""<p>渠道列表，代表可见或不可见渠道由IsVisible参数指定</p>
         :rtype: list of str
         """
         return self._Channels
@@ -1531,7 +1529,7 @@ class DescribeCloudRunEnvsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EnvList: 环境信息列表
+        :param _EnvList: <p>环境信息列表</p>
         :type EnvList: list of EnvInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1541,7 +1539,7 @@ class DescribeCloudRunEnvsResponse(AbstractModel):
 
     @property
     def EnvList(self):
-        r"""环境信息列表
+        r"""<p>环境信息列表</p>
         :rtype: list of EnvInfo
         """
         return self._EnvList

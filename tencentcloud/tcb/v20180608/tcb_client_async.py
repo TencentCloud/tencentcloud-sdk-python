@@ -506,6 +506,24 @@ class TcbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeCurveData(
+            self,
+            request: models.DescribeCurveDataRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCurveDataResponse:
+        """
+        根据指定指标名称，查询某环境在指定时间范围内的监控数据，返回按统计粒度聚合后的时序数据。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCurveData"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCurveDataResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeDatabaseACL(
             self,
             request: models.DescribeDatabaseACLRequest,

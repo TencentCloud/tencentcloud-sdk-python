@@ -2242,6 +2242,24 @@ class CwpClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeAttackType(
+            self,
+            request: models.DescribeAttackTypeRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAttackTypeResponse:
+        """
+        查询应用防护白名单攻击类型列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAttackType"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAttackTypeResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeAttackVulTypeList(
             self,
             request: models.DescribeAttackVulTypeListRequest,
@@ -3466,6 +3484,24 @@ class CwpClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeInjectRiskyServiceSwitch(
+            self,
+            request: models.DescribeInjectRiskyServiceSwitchRequest,
+            opts: Dict = None,
+    ) -> models.DescribeInjectRiskyServiceSwitchResponse:
+        """
+        查询java内存马和rasp的是否注入风险服务配置
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeInjectRiskyServiceSwitch"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeInjectRiskyServiceSwitchResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeJavaMemShellInfo(
             self,
             request: models.DescribeJavaMemShellInfoRequest,
@@ -3803,6 +3839,42 @@ class CwpClient(AbstractClient):
         kwargs["action"] = "DescribeLogType"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeLogTypeResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeLoginTypeGlobalConf(
+            self,
+            request: models.DescribeLoginTypeGlobalConfRequest,
+            opts: Dict = None,
+    ) -> models.DescribeLoginTypeGlobalConfResponse:
+        """
+        获取防卸载全局配置
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeLoginTypeGlobalConf"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeLoginTypeGlobalConfResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeLoginTypeHost(
+            self,
+            request: models.DescribeLoginTypeHostRequest,
+            opts: Dict = None,
+    ) -> models.DescribeLoginTypeHostResponse:
+        """
+        获取扫码登录主机列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeLoginTypeHost"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeLoginTypeHostResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -4276,6 +4348,24 @@ class CwpClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeMemShellRules(
+            self,
+            request: models.DescribeMemShellRulesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeMemShellRulesResponse:
+        """
+        获取反弹Shell规则列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeMemShellRules"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeMemShellRulesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeNetAttackSetting(
             self,
             request: models.DescribeNetAttackSettingRequest,
@@ -4744,6 +4834,96 @@ class CwpClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeRaspEventCWP(
+            self,
+            request: models.DescribeRaspEventCWPRequest,
+            opts: Dict = None,
+    ) -> models.DescribeRaspEventCWPResponse:
+        """
+        应用防护事件列表接口
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeRaspEventCWP"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeRaspEventCWPResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeRaspEventDetailCWP(
+            self,
+            request: models.DescribeRaspEventDetailCWPRequest,
+            opts: Dict = None,
+    ) -> models.DescribeRaspEventDetailCWPResponse:
+        """
+        应用防御事件详情
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeRaspEventDetailCWP"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeRaspEventDetailCWPResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeRaspEventDetailTCSS(
+            self,
+            request: models.DescribeRaspEventDetailTCSSRequest,
+            opts: Dict = None,
+    ) -> models.DescribeRaspEventDetailTCSSResponse:
+        """
+        应用防御事件详情
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeRaspEventDetailTCSS"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeRaspEventDetailTCSSResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeRaspEventTCSS(
+            self,
+            request: models.DescribeRaspEventTCSSRequest,
+            opts: Dict = None,
+    ) -> models.DescribeRaspEventTCSSResponse:
+        """
+        应用防护事件列表接口
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeRaspEventTCSS"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeRaspEventTCSSResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeRaspLicenseList(
+            self,
+            request: models.DescribeRaspLicenseListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeRaspLicenseListResponse:
+        """
+        查询应用防护授权列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeRaspLicenseList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeRaspLicenseListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeRaspMaxCpu(
             self,
             request: models.DescribeRaspMaxCpuRequest,
@@ -4757,6 +4937,60 @@ class CwpClient(AbstractClient):
         kwargs["action"] = "DescribeRaspMaxCpu"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeRaspMaxCpuResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeRaspMemShellDetailTCSS(
+            self,
+            request: models.DescribeRaspMemShellDetailTCSSRequest,
+            opts: Dict = None,
+    ) -> models.DescribeRaspMemShellDetailTCSSResponse:
+        """
+        获取容器视角应用防护内存马扫描事件详情
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeRaspMemShellDetailTCSS"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeRaspMemShellDetailTCSSResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeRaspMemShellListTCSS(
+            self,
+            request: models.DescribeRaspMemShellListTCSSRequest,
+            opts: Dict = None,
+    ) -> models.DescribeRaspMemShellListTCSSResponse:
+        """
+        获取容器视角内存马扫描事件列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeRaspMemShellListTCSS"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeRaspMemShellListTCSSResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeRaspPluginList(
+            self,
+            request: models.DescribeRaspPluginListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeRaspPluginListResponse:
+        """
+        重保防护授权插件详情列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeRaspPluginList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeRaspPluginListResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -4865,6 +5099,42 @@ class CwpClient(AbstractClient):
         kwargs["action"] = "DescribeReverseShellRules"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeReverseShellRulesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeReverseShellRulesAggregation(
+            self,
+            request: models.DescribeReverseShellRulesAggregationRequest,
+            opts: Dict = None,
+    ) -> models.DescribeReverseShellRulesAggregationResponse:
+        """
+        获取反弹Shell规则列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeReverseShellRulesAggregation"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeReverseShellRulesAggregationResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeReverseShellSystemPolicyConfig(
+            self,
+            request: models.DescribeReverseShellSystemPolicyConfigRequest,
+            opts: Dict = None,
+    ) -> models.DescribeReverseShellSystemPolicyConfigResponse:
+        """
+        查询反弹shell系统策略配置
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeReverseShellSystemPolicyConfig"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeReverseShellSystemPolicyConfigResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -5518,6 +5788,24 @@ class CwpClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeShellPolicyList(
+            self,
+            request: models.DescribeShellPolicyListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeShellPolicyListResponse:
+        """
+        查询反弹shell策略列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeShellPolicyList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeShellPolicyListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeStrategyExist(
             self,
             request: models.DescribeStrategyExistRequest,
@@ -5806,6 +6094,24 @@ class CwpClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeVulDefenceOverviewCount(
+            self,
+            request: models.DescribeVulDefenceOverviewCountRequest,
+            opts: Dict = None,
+    ) -> models.DescribeVulDefenceOverviewCountResponse:
+        """
+        获取漏洞防御策略和事件统计
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeVulDefenceOverviewCount"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeVulDefenceOverviewCountResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeVulDefencePluginDetail(
             self,
             request: models.DescribeVulDefencePluginDetailRequest,
@@ -5873,6 +6179,24 @@ class CwpClient(AbstractClient):
         kwargs["action"] = "DescribeVulDefenceSetting"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeVulDefenceSettingResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeVulDefenceSettingList(
+            self,
+            request: models.DescribeVulDefenceSettingListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeVulDefenceSettingListResponse:
+        """
+        查询漏洞防御设置列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeVulDefenceSettingList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeVulDefenceSettingListResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -6341,6 +6665,24 @@ class CwpClient(AbstractClient):
         kwargs["action"] = "DescribeWindowsPatchList"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeWindowsPatchListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeYDRaspBlackWhite(
+            self,
+            request: models.DescribeYDRaspBlackWhiteRequest,
+            opts: Dict = None,
+    ) -> models.DescribeYDRaspBlackWhiteResponse:
+        """
+        查询应用防护白名单规则
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeYDRaspBlackWhite"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeYDRaspBlackWhiteResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -8702,6 +9044,24 @@ class CwpClient(AbstractClient):
         kwargs["action"] = "RansomDefenseRollback"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.RansomDefenseRollbackResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def RaspEventOverview(
+            self,
+            request: models.RaspEventOverviewRequest,
+            opts: Dict = None,
+    ) -> models.RaspEventOverviewResponse:
+        """
+        获取漏洞防御概览信息，包括事件趋势及插件开启情况
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "RaspEventOverview"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.RaspEventOverviewResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

@@ -2227,6 +2227,107 @@ class DescribeClustersResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeGPUInfoRequest(AbstractModel):
+    r"""DescribeGPUInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceType: 实例机型名称，默认值""
+        :type InstanceType: str
+        :param _OsName: 操作系统oskey，默认值""
+        :type OsName: str
+        """
+        self._InstanceType = None
+        self._OsName = None
+
+    @property
+    def InstanceType(self):
+        r"""实例机型名称，默认值""
+        :rtype: str
+        """
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def OsName(self):
+        r"""操作系统oskey，默认值""
+        :rtype: str
+        """
+        return self._OsName
+
+    @OsName.setter
+    def OsName(self, OsName):
+        self._OsName = OsName
+
+
+    def _deserialize(self, params):
+        self._InstanceType = params.get("InstanceType")
+        self._OsName = params.get("OsName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeGPUInfoResponse(AbstractModel):
+    r"""DescribeGPUInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GPUParams: GPU相关配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GPUParams: list of GPUParams
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._GPUParams = None
+        self._RequestId = None
+
+    @property
+    def GPUParams(self):
+        r"""GPU相关配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of GPUParams
+        """
+        return self._GPUParams
+
+    @GPUParams.setter
+    def GPUParams(self, GPUParams):
+        self._GPUParams = GPUParams
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("GPUParams") is not None:
+            self._GPUParams = []
+            for item in params.get("GPUParams"):
+                obj = GPUParams()
+                obj._deserialize(item)
+                self._GPUParams.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeHealthCheckPoliciesRequest(AbstractModel):
     r"""DescribeHealthCheckPolicies请求参数结构体
 
@@ -2776,6 +2877,75 @@ class DescribeNodePoolsResponse(AbstractModel):
                 obj._deserialize(item)
                 self._NodePools.append(obj)
         self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeZoneInstanceConfigInfosRequest(AbstractModel):
+    r"""DescribeZoneInstanceConfigInfos请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filters: 机型过滤设置
+        :type Filters: list of Filter
+        """
+        self._Filters = None
+
+    @property
+    def Filters(self):
+        r"""机型过滤设置
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeZoneInstanceConfigInfosResponse(AbstractModel):
+    r"""DescribeZoneInstanceConfigInfos返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 

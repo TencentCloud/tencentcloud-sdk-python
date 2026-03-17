@@ -3986,6 +3986,144 @@ class TcssClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeImageDenyEventDetail(self, request):
+        r"""查询镜像拦截事件详情
+
+        :param request: Request instance for DescribeImageDenyEventDetail.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeImageDenyEventDetailRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeImageDenyEventDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeImageDenyEventDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeImageDenyEventDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeImageDenyEventList(self, request):
+        r"""查询镜像拦截事件列表
+
+        :param request: Request instance for DescribeImageDenyEventList.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeImageDenyEventListRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeImageDenyEventListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeImageDenyEventList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeImageDenyEventListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeImageDenyEventTendency(self, request):
+        r"""查询镜像拦截事件趋势
+
+        :param request: Request instance for DescribeImageDenyEventTendency.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeImageDenyEventTendencyRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeImageDenyEventTendencyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeImageDenyEventTendency", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeImageDenyEventTendencyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeImageDenyRuleDetail(self, request):
+        r"""查询镜像拦截规则详情
+
+        :param request: Request instance for DescribeImageDenyRuleDetail.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeImageDenyRuleDetailRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeImageDenyRuleDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeImageDenyRuleDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeImageDenyRuleDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeImageDenyRuleList(self, request):
+        r"""查询镜像拦截规则列表
+
+        :param request: Request instance for DescribeImageDenyRuleList.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeImageDenyRuleListRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeImageDenyRuleListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeImageDenyRuleList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeImageDenyRuleListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeImageDenyRuleSummary(self, request):
+        r"""查询镜像拦截规则统计
+
+        :param request: Request instance for DescribeImageDenyRuleSummary.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeImageDenyRuleSummaryRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeImageDenyRuleSummaryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeImageDenyRuleSummary", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeImageDenyRuleSummaryResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeImageRegistryNamespaceList(self, request):
         r"""查询用户镜像仓库下的命令空间列表
 
@@ -4322,6 +4460,52 @@ class TcssClient(AbstractClient):
             body = self.call("DescribeLogStorageStatistic", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeLogStorageStatisticResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeMaliciousConnectionBlackList(self, request):
+        r"""查询恶意外连黑名单
+
+        :param request: Request instance for DescribeMaliciousConnectionBlackList.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeMaliciousConnectionBlackListRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeMaliciousConnectionBlackListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMaliciousConnectionBlackList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMaliciousConnectionBlackListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeMaliciousConnectionWhiteList(self, request):
+        r"""查询恶意外连白名单
+
+        :param request: Request instance for DescribeMaliciousConnectionWhiteList.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeMaliciousConnectionWhiteListRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeMaliciousConnectionWhiteListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMaliciousConnectionWhiteList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMaliciousConnectionWhiteListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -4873,6 +5057,52 @@ class TcssClient(AbstractClient):
             body = self.call("DescribeReverseShellEventsExport", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeReverseShellEventsExportResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeReverseShellRegexpWhiteList(self, request):
+        r"""查询反弹shell正则白名单列表
+
+        :param request: Request instance for DescribeReverseShellRegexpWhiteList.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeReverseShellRegexpWhiteListRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeReverseShellRegexpWhiteListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeReverseShellRegexpWhiteList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeReverseShellRegexpWhiteListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeReverseShellRegexpWhiteListInfo(self, request):
+        r"""查询反弹shell正则白名单详情
+
+        :param request: Request instance for DescribeReverseShellRegexpWhiteListInfo.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeReverseShellRegexpWhiteListInfoRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeReverseShellRegexpWhiteListInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeReverseShellRegexpWhiteListInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeReverseShellRegexpWhiteListInfoResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -1270,3 +1270,26 @@ class TrpClient(AbstractClient):
                 raise
             else:
                 raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ReportScanDetail(self, request):
+        r"""扫码数据上报
+
+        :param request: Request instance for ReportScanDetail.
+        :type request: :class:`tencentcloud.trp.v20210515.models.ReportScanDetailRequest`
+        :rtype: :class:`tencentcloud.trp.v20210515.models.ReportScanDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ReportScanDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.ReportScanDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))

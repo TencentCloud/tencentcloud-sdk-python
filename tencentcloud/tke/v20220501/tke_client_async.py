@@ -169,6 +169,24 @@ class TkeClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeGPUInfo(
+            self,
+            request: models.DescribeGPUInfoRequest,
+            opts: Dict = None,
+    ) -> models.DescribeGPUInfoResponse:
+        """
+        请求该接口，会返回所有适配该机型和操作系统组合的gpu驱动版本
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeGPUInfo"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeGPUInfoResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeHealthCheckPolicies(
             self,
             request: models.DescribeHealthCheckPoliciesRequest,
@@ -236,6 +254,24 @@ class TkeClient(AbstractClient):
         kwargs["action"] = "DescribeNodePools"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeNodePoolsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeZoneInstanceConfigInfos(
+            self,
+            request: models.DescribeZoneInstanceConfigInfosRequest,
+            opts: Dict = None,
+    ) -> models.DescribeZoneInstanceConfigInfosResponse:
+        """
+        查询原生节点机型配置
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeZoneInstanceConfigInfos"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeZoneInstanceConfigInfosResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

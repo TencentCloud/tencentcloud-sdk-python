@@ -1612,26 +1612,23 @@ class ListAggregateConfigRulesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Limit: 每页限制
+        :param _Limit: <p>每页限制</p>
         :type Limit: int
-        :param _Offset: 偏移量
+        :param _Offset: <p>偏移量</p>
         :type Offset: int
-        :param _AccountGroupId: 账号组ID
+        :param _AccountGroupId: <p>账号组ID</p>
         :type AccountGroupId: str
-        :param _OrderType: 排序类型, 倒序：desc，顺序：asc
+        :param _OrderType: <p>排序类型, 倒序：desc，顺序：asc</p>
         :type OrderType: str
-        :param _RiskLevel: 风险等级
-1：高风险。
-2：中风险。
-3：低风险。
+        :param _RiskLevel: <p>风险等级<br>1：高风险。<br>2：中风险。<br>3：低风险。</p>
         :type RiskLevel: list of int non-negative
-        :param _State: 规则状态
+        :param _State: <p>规则状态</p>
         :type State: str
-        :param _ComplianceResult: 评估结果
+        :param _ComplianceResult: <p>评估结果</p>
         :type ComplianceResult: list of str
-        :param _RuleName: 规则名
+        :param _RuleName: <p>规则名</p>
         :type RuleName: str
-        :param _RuleOwnerId: 规则所属账号ID
+        :param _RuleOwnerId: <p>规则所属账号ID</p>
         :type RuleOwnerId: int
         """
         self._Limit = None
@@ -1646,7 +1643,7 @@ class ListAggregateConfigRulesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""每页限制
+        r"""<p>每页限制</p>
         :rtype: int
         """
         return self._Limit
@@ -1657,7 +1654,7 @@ class ListAggregateConfigRulesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""偏移量
+        r"""<p>偏移量</p>
         :rtype: int
         """
         return self._Offset
@@ -1668,7 +1665,7 @@ class ListAggregateConfigRulesRequest(AbstractModel):
 
     @property
     def AccountGroupId(self):
-        r"""账号组ID
+        r"""<p>账号组ID</p>
         :rtype: str
         """
         return self._AccountGroupId
@@ -1679,7 +1676,7 @@ class ListAggregateConfigRulesRequest(AbstractModel):
 
     @property
     def OrderType(self):
-        r"""排序类型, 倒序：desc，顺序：asc
+        r"""<p>排序类型, 倒序：desc，顺序：asc</p>
         :rtype: str
         """
         return self._OrderType
@@ -1690,10 +1687,7 @@ class ListAggregateConfigRulesRequest(AbstractModel):
 
     @property
     def RiskLevel(self):
-        r"""风险等级
-1：高风险。
-2：中风险。
-3：低风险。
+        r"""<p>风险等级<br>1：高风险。<br>2：中风险。<br>3：低风险。</p>
         :rtype: list of int non-negative
         """
         return self._RiskLevel
@@ -1704,7 +1698,7 @@ class ListAggregateConfigRulesRequest(AbstractModel):
 
     @property
     def State(self):
-        r"""规则状态
+        r"""<p>规则状态</p>
         :rtype: str
         """
         return self._State
@@ -1715,7 +1709,7 @@ class ListAggregateConfigRulesRequest(AbstractModel):
 
     @property
     def ComplianceResult(self):
-        r"""评估结果
+        r"""<p>评估结果</p>
         :rtype: list of str
         """
         return self._ComplianceResult
@@ -1726,7 +1720,7 @@ class ListAggregateConfigRulesRequest(AbstractModel):
 
     @property
     def RuleName(self):
-        r"""规则名
+        r"""<p>规则名</p>
         :rtype: str
         """
         return self._RuleName
@@ -1737,7 +1731,7 @@ class ListAggregateConfigRulesRequest(AbstractModel):
 
     @property
     def RuleOwnerId(self):
-        r"""规则所属账号ID
+        r"""<p>规则所属账号ID</p>
         :rtype: int
         """
         return self._RuleOwnerId
@@ -1774,9 +1768,9 @@ class ListAggregateConfigRulesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Total: 总数
+        :param _Total: <p>总数</p>
         :type Total: int
-        :param _Items: 详情
+        :param _Items: <p>详情</p>
         :type Items: list of ConfigRule
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1787,7 +1781,7 @@ class ListAggregateConfigRulesResponse(AbstractModel):
 
     @property
     def Total(self):
-        r"""总数
+        r"""<p>总数</p>
         :rtype: int
         """
         return self._Total
@@ -1798,7 +1792,7 @@ class ListAggregateConfigRulesResponse(AbstractModel):
 
     @property
     def Items(self):
-        r"""详情
+        r"""<p>详情</p>
         :rtype: list of ConfigRule
         """
         return self._Items

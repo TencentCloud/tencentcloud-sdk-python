@@ -840,6 +840,8 @@ class Acl(AbstractModel):
         :type TicketId: str
         :param _TicketName: 权限所属工单名称
         :type TicketName: str
+        :param _MaxAccessCredentialDuration: 访问串有效期最大时长，秒数，允许使用访问串时需大于0且必须为86400整数倍
+        :type MaxAccessCredentialDuration: int
         """
         self._Id = None
         self._Name = None
@@ -876,6 +878,7 @@ class Acl(AbstractModel):
         self._AclType = None
         self._TicketId = None
         self._TicketName = None
+        self._MaxAccessCredentialDuration = None
 
     @property
     def Id(self):
@@ -1264,6 +1267,17 @@ class Acl(AbstractModel):
     def TicketName(self, TicketName):
         self._TicketName = TicketName
 
+    @property
+    def MaxAccessCredentialDuration(self):
+        r"""访问串有效期最大时长，秒数，允许使用访问串时需大于0且必须为86400整数倍
+        :rtype: int
+        """
+        return self._MaxAccessCredentialDuration
+
+    @MaxAccessCredentialDuration.setter
+    def MaxAccessCredentialDuration(self, MaxAccessCredentialDuration):
+        self._MaxAccessCredentialDuration = MaxAccessCredentialDuration
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -1338,6 +1352,7 @@ class Acl(AbstractModel):
         self._AclType = params.get("AclType")
         self._TicketId = params.get("TicketId")
         self._TicketName = params.get("TicketName")
+        self._MaxAccessCredentialDuration = params.get("MaxAccessCredentialDuration")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3555,6 +3570,8 @@ class CreateAclRequest(AbstractModel):
         :type AllowAccessCredential: bool
         :param _AllowKeyboardLogger: 是否允许键盘记录
         :type AllowKeyboardLogger: bool
+        :param _MaxAccessCredentialDuration: 访问串有效期最大时长，秒数，允许使用访问串时需大于0且必须为86400整数倍
+        :type MaxAccessCredentialDuration: int
         """
         self._Name = None
         self._AllowDiskRedirect = None
@@ -3585,6 +3602,7 @@ class CreateAclRequest(AbstractModel):
         self._DepartmentId = None
         self._AllowAccessCredential = None
         self._AllowKeyboardLogger = None
+        self._MaxAccessCredentialDuration = None
 
     @property
     def Name(self):
@@ -3907,6 +3925,17 @@ class CreateAclRequest(AbstractModel):
     def AllowKeyboardLogger(self, AllowKeyboardLogger):
         self._AllowKeyboardLogger = AllowKeyboardLogger
 
+    @property
+    def MaxAccessCredentialDuration(self):
+        r"""访问串有效期最大时长，秒数，允许使用访问串时需大于0且必须为86400整数倍
+        :rtype: int
+        """
+        return self._MaxAccessCredentialDuration
+
+    @MaxAccessCredentialDuration.setter
+    def MaxAccessCredentialDuration(self, MaxAccessCredentialDuration):
+        self._MaxAccessCredentialDuration = MaxAccessCredentialDuration
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -3938,6 +3967,7 @@ class CreateAclRequest(AbstractModel):
         self._DepartmentId = params.get("DepartmentId")
         self._AllowAccessCredential = params.get("AllowAccessCredential")
         self._AllowKeyboardLogger = params.get("AllowKeyboardLogger")
+        self._MaxAccessCredentialDuration = params.get("MaxAccessCredentialDuration")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9645,7 +9675,7 @@ class DescribeLoginEventRequest(AbstractModel):
         :type ResultSet: list of int non-negative
         :param _Offset: 分页偏移位置，默认值为0
         :type Offset: int
-        :param _Limit: 分页每页记录数，默认20
+        :param _Limit: 分页每页记录数，默认20，最大200
         :type Limit: int
         """
         self._UserName = None
@@ -9772,7 +9802,7 @@ class DescribeLoginEventRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""分页每页记录数，默认20
+        r"""分页每页记录数，默认20，最大200
         :rtype: int
         """
         return self._Limit
@@ -9894,7 +9924,7 @@ class DescribeOperationEventRequest(AbstractModel):
         :type ResultSet: list of int non-negative
         :param _Offset: 分页偏移位置，默认值为0
         :type Offset: int
-        :param _Limit: 分页每页记录数，默认20
+        :param _Limit: 分页每页记录数，默认20，最大200
         :type Limit: int
         """
         self._UserName = None
@@ -10021,7 +10051,7 @@ class DescribeOperationEventRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""分页每页记录数，默认20
+        r"""分页每页记录数，默认20，最大200
         :rtype: int
         """
         return self._Limit
@@ -13931,6 +13961,8 @@ class ModifyAclRequest(AbstractModel):
         :type AllowAccessCredential: bool
         :param _AllowKeyboardLogger: 是否允许键盘记录
         :type AllowKeyboardLogger: bool
+        :param _MaxAccessCredentialDuration: 访问串有效期最大时长，秒数，允许使用访问串时需大于0且必须为86400整数倍
+        :type MaxAccessCredentialDuration: int
         """
         self._Name = None
         self._AllowDiskRedirect = None
@@ -13962,6 +13994,7 @@ class ModifyAclRequest(AbstractModel):
         self._DepartmentId = None
         self._AllowAccessCredential = None
         self._AllowKeyboardLogger = None
+        self._MaxAccessCredentialDuration = None
 
     @property
     def Name(self):
@@ -14295,6 +14328,17 @@ class ModifyAclRequest(AbstractModel):
     def AllowKeyboardLogger(self, AllowKeyboardLogger):
         self._AllowKeyboardLogger = AllowKeyboardLogger
 
+    @property
+    def MaxAccessCredentialDuration(self):
+        r"""访问串有效期最大时长，秒数，允许使用访问串时需大于0且必须为86400整数倍
+        :rtype: int
+        """
+        return self._MaxAccessCredentialDuration
+
+    @MaxAccessCredentialDuration.setter
+    def MaxAccessCredentialDuration(self, MaxAccessCredentialDuration):
+        self._MaxAccessCredentialDuration = MaxAccessCredentialDuration
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -14327,6 +14371,7 @@ class ModifyAclRequest(AbstractModel):
         self._DepartmentId = params.get("DepartmentId")
         self._AllowAccessCredential = params.get("AllowAccessCredential")
         self._AllowKeyboardLogger = params.get("AllowKeyboardLogger")
+        self._MaxAccessCredentialDuration = params.get("MaxAccessCredentialDuration")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17611,6 +17656,14 @@ class Resource(AbstractModel):
         :type PackageIOABandwidth: int
         :param _IOAResourceId: 堡垒机实例对应的零信任实例id
         :type IOAResourceId: str
+        :param _ResourceEdition: 资源类型 免费版/标准版/专业版 /国密版 free/standard/pro/gm
+        :type ResourceEdition: str
+        :param _TimeUnit: 计费周期 年：y，月：m，日：d，时：h，分：M，秒：s，一次性购买：p
+        :type TimeUnit: str
+        :param _TimeSpan: 计费时长
+        :type TimeSpan: int
+        :param _PayMode: 计费模式 0后付费，1预付费
+        :type PayMode: int
         """
         self._ResourceId = None
         self._ApCode = None
@@ -17666,6 +17719,10 @@ class Resource(AbstractModel):
         self._PackageIOAUserCount = None
         self._PackageIOABandwidth = None
         self._IOAResourceId = None
+        self._ResourceEdition = None
+        self._TimeUnit = None
+        self._TimeSpan = None
+        self._PayMode = None
 
     @property
     def ResourceId(self):
@@ -18261,6 +18318,50 @@ class Resource(AbstractModel):
     def IOAResourceId(self, IOAResourceId):
         self._IOAResourceId = IOAResourceId
 
+    @property
+    def ResourceEdition(self):
+        r"""资源类型 免费版/标准版/专业版 /国密版 free/standard/pro/gm
+        :rtype: str
+        """
+        return self._ResourceEdition
+
+    @ResourceEdition.setter
+    def ResourceEdition(self, ResourceEdition):
+        self._ResourceEdition = ResourceEdition
+
+    @property
+    def TimeUnit(self):
+        r"""计费周期 年：y，月：m，日：d，时：h，分：M，秒：s，一次性购买：p
+        :rtype: str
+        """
+        return self._TimeUnit
+
+    @TimeUnit.setter
+    def TimeUnit(self, TimeUnit):
+        self._TimeUnit = TimeUnit
+
+    @property
+    def TimeSpan(self):
+        r"""计费时长
+        :rtype: int
+        """
+        return self._TimeSpan
+
+    @TimeSpan.setter
+    def TimeSpan(self, TimeSpan):
+        self._TimeSpan = TimeSpan
+
+    @property
+    def PayMode(self):
+        r"""计费模式 0后付费，1预付费
+        :rtype: int
+        """
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
 
     def _deserialize(self, params):
         self._ResourceId = params.get("ResourceId")
@@ -18322,6 +18423,10 @@ class Resource(AbstractModel):
         self._PackageIOAUserCount = params.get("PackageIOAUserCount")
         self._PackageIOABandwidth = params.get("PackageIOABandwidth")
         self._IOAResourceId = params.get("IOAResourceId")
+        self._ResourceEdition = params.get("ResourceEdition")
+        self._TimeUnit = params.get("TimeUnit")
+        self._TimeSpan = params.get("TimeSpan")
+        self._PayMode = params.get("PayMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

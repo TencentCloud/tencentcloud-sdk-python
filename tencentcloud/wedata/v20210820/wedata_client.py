@@ -2004,6 +2004,29 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDatabaseByName(self, request):
+        r"""根据数据库名称和数据源id获取数据库信息
+
+        :param request: Request instance for DescribeDatabaseByName.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeDatabaseByNameRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeDatabaseByNameResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDatabaseByName", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDatabaseByNameResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDatabaseInfoList(self, request):
         r"""获取数据库信息
 
@@ -2018,6 +2041,29 @@ class WedataClient(AbstractClient):
             body = self.call("DescribeDatabaseInfoList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeDatabaseInfoListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDatabaseMeta(self, request):
+        r"""根据数据库Id查询数据库元数据，带有数据源和项目信息
+
+        :param request: Request instance for DescribeDatabaseMeta.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeDatabaseMetaRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeDatabaseMetaResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDatabaseMeta", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDatabaseMetaResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2901,6 +2947,29 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeLineageColumns(self, request):
+        r"""列出血缘中心字段信息
+
+        :param request: Request instance for DescribeLineageColumns.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeLineageColumnsRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeLineageColumnsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLineageColumns", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLineageColumnsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeLineageInfo(self, request):
         r"""通用血缘查询接口
 
@@ -3329,6 +3398,29 @@ class WedataClient(AbstractClient):
             body = self.call("DescribeRealTimeTaskSpeed", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeRealTimeTaskSpeedResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeRealViewDatabasePage(self, request):
+        r"""离线通过表名称获取表信息
+
+        :param request: Request instance for DescribeRealViewDatabasePage.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeRealViewDatabasePageRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeRealViewDatabasePageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRealViewDatabasePage", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRealViewDatabasePageResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -4077,6 +4169,52 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeTableContentPreview(self, request):
+        r"""查询表的数据预览
+
+        :param request: Request instance for DescribeTableContentPreview.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeTableContentPreviewRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeTableContentPreviewResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTableContentPreview", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTableContentPreviewResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeTableDdl(self, request):
+        r"""查询表的DDL
+
+        :param request: Request instance for DescribeTableDdl.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeTableDdlRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeTableDdlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTableDdl", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTableDdlResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeTableInfoList(self, request):
         r"""获取数据表信息
 
@@ -4275,6 +4413,29 @@ class WedataClient(AbstractClient):
             body = self.call("DescribeTableScoreTrend", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeTableScoreTrendResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeTableSelect(self, request):
+        r"""查询表的select语句
+
+        :param request: Request instance for DescribeTableSelect.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeTableSelectRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeTableSelectResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTableSelect", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTableSelectResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

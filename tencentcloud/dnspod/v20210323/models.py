@@ -3966,17 +3966,20 @@ class Deals(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DealId: 子订单ID
+        :param _DealId: <p>子订单ID</p>
         :type DealId: str
-        :param _DealName: 子订单号
+        :param _DealName: <p>子订单号</p>
         :type DealName: str
+        :param _ResourceId: <p>资源ID</p>
+        :type ResourceId: str
         """
         self._DealId = None
         self._DealName = None
+        self._ResourceId = None
 
     @property
     def DealId(self):
-        r"""子订单ID
+        r"""<p>子订单ID</p>
         :rtype: str
         """
         return self._DealId
@@ -3987,7 +3990,7 @@ class Deals(AbstractModel):
 
     @property
     def DealName(self):
-        r"""子订单号
+        r"""<p>子订单号</p>
         :rtype: str
         """
         return self._DealName
@@ -3996,10 +3999,22 @@ class Deals(AbstractModel):
     def DealName(self, DealName):
         self._DealName = DealName
 
+    @property
+    def ResourceId(self):
+        r"""<p>资源ID</p>
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
 
     def _deserialize(self, params):
         self._DealId = params.get("DealId")
         self._DealName = params.get("DealName")
+        self._ResourceId = params.get("ResourceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6095,50 +6110,37 @@ class DescribeDomainFilterListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: 根据域名分组类型获取域名。可取值为 ALL，MINE，SHARE，RECENT。
-ALL：全部
-MINE：我的域名
-SHARE：共享给我的域名
-RECENT：最近操作过的域名
+        :param _Type: <p>根据域名分组类型获取域名。可取值为 ALL，MINE，SHARE，RECENT。<br>ALL：全部<br>MINE：我的域名<br>SHARE：共享给我的域名<br>RECENT：最近操作过的域名</p>
         :type Type: str
-        :param _Offset: 记录开始的偏移, 第一条记录为 0, 依次类推。默认值为 0。
+        :param _Offset: <p>记录开始的偏移, 第一条记录为 0, 依次类推。默认值为 0。</p>
         :type Offset: int
-        :param _Limit: 要获取的域名数量, 比如获取 20 个, 则为 20。默认值为 5000。如果账户中的域名数量超过了 5000, 将会强制分页并且只返回前 5000 条, 这时需要通过 Offset 和 Limit 参数去获取其它域名。
+        :param _Limit: <p>要获取的域名数量, 比如获取 20 个, 则为 20。默认值为 5000。如果账户中的域名数量超过了 5000, 将会强制分页并且只返回前 5000 条, 这时需要通过 Offset 和 Limit 参数去获取其它域名。</p>
         :type Limit: int
-        :param _GroupId: 根据域名分组 id 获取域名
+        :param _GroupId: <p>根据域名分组 id 获取域名</p><p>取值参考：<a href="https://cloud.tencent.com/document/api/1427/56172">DescribeDomainList</a></p>
         :type GroupId: list of int
-        :param _Keyword: 根据关键字获取域名。
+        :param _Keyword: <p>根据关键字获取域名。</p>
         :type Keyword: str
-        :param _SortField: 排序字段。可取值为 NAME，STATUS，RECORDS，GRADE，UPDATED_ON。
-NAME：域名名称
-STATUS：域名状态
-RECORDS：记录数量
-GRADE：套餐等级
-UPDATED_ON：更新时间
+        :param _SortField: <p>排序字段。可取值为 NAME，STATUS，RECORDS，GRADE，UPDATED_ON。<br>NAME：域名名称<br>STATUS：域名状态<br>RECORDS：记录数量<br>GRADE：套餐等级<br>UPDATED_ON：更新时间</p>
         :type SortField: str
-        :param _SortType: 排序类型，升序：ASC，降序：DESC。
+        :param _SortType: <p>排序类型，升序：ASC，降序：DESC。</p>
         :type SortType: str
-        :param _Status: 根据域名状态获取域名。可取值为 ENABLE，LOCK，PAUSE，SPAM。
-ENABLE：正常
-LOCK：锁定
-PAUSE：暂停
-SPAM：封禁
+        :param _Status: <p>根据域名状态获取域名。可取值为 ENABLE，LOCK，PAUSE，SPAM。<br>ENABLE：正常<br>LOCK：锁定<br>PAUSE：暂停<br>SPAM：封禁</p>
         :type Status: list of str
-        :param _Package: 根据套餐获取域名，可通过 DescribeDomain 或 DescribeDomainList 接口 Grade 字段获取。
+        :param _Package: <p>根据套餐获取域名，可通过 DescribeDomain 或 DescribeDomainList 接口 Grade 字段获取。</p>
         :type Package: list of str
-        :param _Remark: 根据备注信息获取域名。
+        :param _Remark: <p>根据备注信息获取域名。</p>
         :type Remark: str
-        :param _UpdatedAtBegin: 要获取域名的更新时间起始时间点，如 '2021-05-01 03:00:00'。
+        :param _UpdatedAtBegin: <p>要获取域名的更新时间起始时间点，如 &#39;2021-05-01 03:00:00&#39;。</p>
         :type UpdatedAtBegin: str
-        :param _UpdatedAtEnd: 要获取域名的更新时间终止时间点，如 '2021-05-10 20:00:00'。
+        :param _UpdatedAtEnd: <p>要获取域名的更新时间终止时间点，如 &#39;2021-05-10 20:00:00&#39;。</p>
         :type UpdatedAtEnd: str
-        :param _RecordCountBegin: 要获取域名的记录数查询区间起点。
+        :param _RecordCountBegin: <p>要获取域名的记录数查询区间起点。</p>
         :type RecordCountBegin: int
-        :param _RecordCountEnd: 要获取域名的记录数查询区间终点。
+        :param _RecordCountEnd: <p>要获取域名的记录数查询区间终点。</p>
         :type RecordCountEnd: int
-        :param _ProjectId: 项目ID，"帐号中心-项目管理"拿到项目ID
+        :param _ProjectId: <p>项目ID，&quot;账号中心-项目管理&quot;拿到项目ID</p>
         :type ProjectId: int
-        :param _Tags: 标签过滤
+        :param _Tags: <p>标签过滤</p>
         :type Tags: list of TagItemFilter
         """
         self._Type = None
@@ -6160,11 +6162,7 @@ SPAM：封禁
 
     @property
     def Type(self):
-        r"""根据域名分组类型获取域名。可取值为 ALL，MINE，SHARE，RECENT。
-ALL：全部
-MINE：我的域名
-SHARE：共享给我的域名
-RECENT：最近操作过的域名
+        r"""<p>根据域名分组类型获取域名。可取值为 ALL，MINE，SHARE，RECENT。<br>ALL：全部<br>MINE：我的域名<br>SHARE：共享给我的域名<br>RECENT：最近操作过的域名</p>
         :rtype: str
         """
         return self._Type
@@ -6175,7 +6173,7 @@ RECENT：最近操作过的域名
 
     @property
     def Offset(self):
-        r"""记录开始的偏移, 第一条记录为 0, 依次类推。默认值为 0。
+        r"""<p>记录开始的偏移, 第一条记录为 0, 依次类推。默认值为 0。</p>
         :rtype: int
         """
         return self._Offset
@@ -6186,7 +6184,7 @@ RECENT：最近操作过的域名
 
     @property
     def Limit(self):
-        r"""要获取的域名数量, 比如获取 20 个, 则为 20。默认值为 5000。如果账户中的域名数量超过了 5000, 将会强制分页并且只返回前 5000 条, 这时需要通过 Offset 和 Limit 参数去获取其它域名。
+        r"""<p>要获取的域名数量, 比如获取 20 个, 则为 20。默认值为 5000。如果账户中的域名数量超过了 5000, 将会强制分页并且只返回前 5000 条, 这时需要通过 Offset 和 Limit 参数去获取其它域名。</p>
         :rtype: int
         """
         return self._Limit
@@ -6197,7 +6195,7 @@ RECENT：最近操作过的域名
 
     @property
     def GroupId(self):
-        r"""根据域名分组 id 获取域名
+        r"""<p>根据域名分组 id 获取域名</p><p>取值参考：<a href="https://cloud.tencent.com/document/api/1427/56172">DescribeDomainList</a></p>
         :rtype: list of int
         """
         return self._GroupId
@@ -6208,7 +6206,7 @@ RECENT：最近操作过的域名
 
     @property
     def Keyword(self):
-        r"""根据关键字获取域名。
+        r"""<p>根据关键字获取域名。</p>
         :rtype: str
         """
         return self._Keyword
@@ -6219,12 +6217,7 @@ RECENT：最近操作过的域名
 
     @property
     def SortField(self):
-        r"""排序字段。可取值为 NAME，STATUS，RECORDS，GRADE，UPDATED_ON。
-NAME：域名名称
-STATUS：域名状态
-RECORDS：记录数量
-GRADE：套餐等级
-UPDATED_ON：更新时间
+        r"""<p>排序字段。可取值为 NAME，STATUS，RECORDS，GRADE，UPDATED_ON。<br>NAME：域名名称<br>STATUS：域名状态<br>RECORDS：记录数量<br>GRADE：套餐等级<br>UPDATED_ON：更新时间</p>
         :rtype: str
         """
         return self._SortField
@@ -6235,7 +6228,7 @@ UPDATED_ON：更新时间
 
     @property
     def SortType(self):
-        r"""排序类型，升序：ASC，降序：DESC。
+        r"""<p>排序类型，升序：ASC，降序：DESC。</p>
         :rtype: str
         """
         return self._SortType
@@ -6246,11 +6239,7 @@ UPDATED_ON：更新时间
 
     @property
     def Status(self):
-        r"""根据域名状态获取域名。可取值为 ENABLE，LOCK，PAUSE，SPAM。
-ENABLE：正常
-LOCK：锁定
-PAUSE：暂停
-SPAM：封禁
+        r"""<p>根据域名状态获取域名。可取值为 ENABLE，LOCK，PAUSE，SPAM。<br>ENABLE：正常<br>LOCK：锁定<br>PAUSE：暂停<br>SPAM：封禁</p>
         :rtype: list of str
         """
         return self._Status
@@ -6261,7 +6250,7 @@ SPAM：封禁
 
     @property
     def Package(self):
-        r"""根据套餐获取域名，可通过 DescribeDomain 或 DescribeDomainList 接口 Grade 字段获取。
+        r"""<p>根据套餐获取域名，可通过 DescribeDomain 或 DescribeDomainList 接口 Grade 字段获取。</p>
         :rtype: list of str
         """
         return self._Package
@@ -6272,7 +6261,7 @@ SPAM：封禁
 
     @property
     def Remark(self):
-        r"""根据备注信息获取域名。
+        r"""<p>根据备注信息获取域名。</p>
         :rtype: str
         """
         return self._Remark
@@ -6283,7 +6272,7 @@ SPAM：封禁
 
     @property
     def UpdatedAtBegin(self):
-        r"""要获取域名的更新时间起始时间点，如 '2021-05-01 03:00:00'。
+        r"""<p>要获取域名的更新时间起始时间点，如 &#39;2021-05-01 03:00:00&#39;。</p>
         :rtype: str
         """
         return self._UpdatedAtBegin
@@ -6294,7 +6283,7 @@ SPAM：封禁
 
     @property
     def UpdatedAtEnd(self):
-        r"""要获取域名的更新时间终止时间点，如 '2021-05-10 20:00:00'。
+        r"""<p>要获取域名的更新时间终止时间点，如 &#39;2021-05-10 20:00:00&#39;。</p>
         :rtype: str
         """
         return self._UpdatedAtEnd
@@ -6305,7 +6294,7 @@ SPAM：封禁
 
     @property
     def RecordCountBegin(self):
-        r"""要获取域名的记录数查询区间起点。
+        r"""<p>要获取域名的记录数查询区间起点。</p>
         :rtype: int
         """
         return self._RecordCountBegin
@@ -6316,7 +6305,7 @@ SPAM：封禁
 
     @property
     def RecordCountEnd(self):
-        r"""要获取域名的记录数查询区间终点。
+        r"""<p>要获取域名的记录数查询区间终点。</p>
         :rtype: int
         """
         return self._RecordCountEnd
@@ -6327,7 +6316,7 @@ SPAM：封禁
 
     @property
     def ProjectId(self):
-        r"""项目ID，"帐号中心-项目管理"拿到项目ID
+        r"""<p>项目ID，&quot;账号中心-项目管理&quot;拿到项目ID</p>
         :rtype: int
         """
         return self._ProjectId
@@ -6338,7 +6327,7 @@ SPAM：封禁
 
     @property
     def Tags(self):
-        r"""标签过滤
+        r"""<p>标签过滤</p>
         :rtype: list of TagItemFilter
         """
         return self._Tags
@@ -6387,9 +6376,9 @@ class DescribeDomainFilterListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DomainCountInfo: 列表页统计信息
+        :param _DomainCountInfo: <p>列表页统计信息</p>
         :type DomainCountInfo: :class:`tencentcloud.dnspod.v20210323.models.DomainCountInfo`
-        :param _DomainList: 域名列表
+        :param _DomainList: <p>域名列表</p>
         :type DomainList: list of DomainListItem
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6400,7 +6389,7 @@ class DescribeDomainFilterListResponse(AbstractModel):
 
     @property
     def DomainCountInfo(self):
-        r"""列表页统计信息
+        r"""<p>列表页统计信息</p>
         :rtype: :class:`tencentcloud.dnspod.v20210323.models.DomainCountInfo`
         """
         return self._DomainCountInfo
@@ -6411,7 +6400,7 @@ class DescribeDomainFilterListResponse(AbstractModel):
 
     @property
     def DomainList(self):
-        r"""域名列表
+        r"""<p>域名列表</p>
         :rtype: list of DomainListItem
         """
         return self._DomainList
@@ -8835,30 +8824,32 @@ class DescribeRecordListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Domain: 域名
+        :param _Domain: <p>域名</p>
         :type Domain: str
-        :param _DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
+        :param _DomainId: <p>域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId</p>
         :type DomainId: int
-        :param _Subdomain: 解析记录的主机头，如果传了此参数，则只会返回此主机头对应的解析记录
+        :param _Subdomain: <p>解析记录的主机头，如果传了此参数，则只会返回此主机头对应的解析记录</p>
         :type Subdomain: str
-        :param _RecordType: 获取某种类型的解析记录，如 A，CNAME，NS，AAAA，显性URL，隐性URL，CAA，SPF等
+        :param _RecordType: <p>获取某种类型的解析记录，如 A，CNAME，NS，AAAA，显性URL，隐性URL，CAA，SPF等</p>
         :type RecordType: str
-        :param _RecordLine: 获取某条线路名称的解析记录。可以通过接口DescribeRecordLineList查看当前域名允许的线路信息
+        :param _RecordLine: <p>获取某条线路名称的解析记录。可以通过接口DescribeRecordLineList查看当前域名允许的线路信息</p>
         :type RecordLine: str
-        :param _RecordLineId: 获取某个线路Id对应的解析记录，如果传RecordLineId，系统会忽略RecordLine参数。可以通过接口DescribeRecordLineList查看当前域名允许的线路信息
+        :param _RecordLineId: <p>获取某个线路Id对应的解析记录，如果传RecordLineId，系统会忽略RecordLine参数。可以通过接口DescribeRecordLineList查看当前域名允许的线路信息</p>
         :type RecordLineId: str
-        :param _GroupId: 获取某个分组下的解析记录时，传这个分组Id。可通过DescribeRecordGroupList接口获取所有分组
+        :param _GroupId: <p>获取某个分组下的解析记录时，传这个分组Id。可通过DescribeRecordGroupList接口获取所有分组</p>
         :type GroupId: int
-        :param _Keyword: 通过关键字搜索解析记录，当前支持搜索主机头和记录值
+        :param _Keyword: <p>通过关键字搜索解析记录，当前支持搜索主机头和记录值</p>
         :type Keyword: str
-        :param _SortField: 排序字段，支持 name,line,type,value,weight,mx,ttl,updated_on 几个字段。
+        :param _SortField: <p>排序字段，支持 name,line,type,value,weight,mx,ttl,updated_on 几个字段。</p>
         :type SortField: str
-        :param _SortType: 排序方式，正序：ASC，逆序：DESC。默认值为ASC。
+        :param _SortType: <p>排序方式，正序：ASC，逆序：DESC。默认值为ASC。</p>
         :type SortType: str
-        :param _Offset: 偏移量，默认值为0。
+        :param _Offset: <p>偏移量，默认值为0。</p>
         :type Offset: int
-        :param _Limit: 限制数量，当前Limit最大支持3000。默认值为100。
+        :param _Limit: <p>限制数量，当前Limit最大支持3000。默认值为100。</p>
         :type Limit: int
+        :param _ErrorOnEmpty: <p>查询不到数据时是否报错</p>枚举值：<ul><li> yes： 报错</li><li> no： 不报错，返回空列表</li></ul>默认值：yes
+        :type ErrorOnEmpty: str
         """
         self._Domain = None
         self._DomainId = None
@@ -8872,10 +8863,11 @@ class DescribeRecordListRequest(AbstractModel):
         self._SortType = None
         self._Offset = None
         self._Limit = None
+        self._ErrorOnEmpty = None
 
     @property
     def Domain(self):
-        r"""域名
+        r"""<p>域名</p>
         :rtype: str
         """
         return self._Domain
@@ -8886,7 +8878,7 @@ class DescribeRecordListRequest(AbstractModel):
 
     @property
     def DomainId(self):
-        r"""域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
+        r"""<p>域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId</p>
         :rtype: int
         """
         return self._DomainId
@@ -8897,7 +8889,7 @@ class DescribeRecordListRequest(AbstractModel):
 
     @property
     def Subdomain(self):
-        r"""解析记录的主机头，如果传了此参数，则只会返回此主机头对应的解析记录
+        r"""<p>解析记录的主机头，如果传了此参数，则只会返回此主机头对应的解析记录</p>
         :rtype: str
         """
         return self._Subdomain
@@ -8908,7 +8900,7 @@ class DescribeRecordListRequest(AbstractModel):
 
     @property
     def RecordType(self):
-        r"""获取某种类型的解析记录，如 A，CNAME，NS，AAAA，显性URL，隐性URL，CAA，SPF等
+        r"""<p>获取某种类型的解析记录，如 A，CNAME，NS，AAAA，显性URL，隐性URL，CAA，SPF等</p>
         :rtype: str
         """
         return self._RecordType
@@ -8919,7 +8911,7 @@ class DescribeRecordListRequest(AbstractModel):
 
     @property
     def RecordLine(self):
-        r"""获取某条线路名称的解析记录。可以通过接口DescribeRecordLineList查看当前域名允许的线路信息
+        r"""<p>获取某条线路名称的解析记录。可以通过接口DescribeRecordLineList查看当前域名允许的线路信息</p>
         :rtype: str
         """
         return self._RecordLine
@@ -8930,7 +8922,7 @@ class DescribeRecordListRequest(AbstractModel):
 
     @property
     def RecordLineId(self):
-        r"""获取某个线路Id对应的解析记录，如果传RecordLineId，系统会忽略RecordLine参数。可以通过接口DescribeRecordLineList查看当前域名允许的线路信息
+        r"""<p>获取某个线路Id对应的解析记录，如果传RecordLineId，系统会忽略RecordLine参数。可以通过接口DescribeRecordLineList查看当前域名允许的线路信息</p>
         :rtype: str
         """
         return self._RecordLineId
@@ -8941,7 +8933,7 @@ class DescribeRecordListRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        r"""获取某个分组下的解析记录时，传这个分组Id。可通过DescribeRecordGroupList接口获取所有分组
+        r"""<p>获取某个分组下的解析记录时，传这个分组Id。可通过DescribeRecordGroupList接口获取所有分组</p>
         :rtype: int
         """
         return self._GroupId
@@ -8952,7 +8944,7 @@ class DescribeRecordListRequest(AbstractModel):
 
     @property
     def Keyword(self):
-        r"""通过关键字搜索解析记录，当前支持搜索主机头和记录值
+        r"""<p>通过关键字搜索解析记录，当前支持搜索主机头和记录值</p>
         :rtype: str
         """
         return self._Keyword
@@ -8963,7 +8955,7 @@ class DescribeRecordListRequest(AbstractModel):
 
     @property
     def SortField(self):
-        r"""排序字段，支持 name,line,type,value,weight,mx,ttl,updated_on 几个字段。
+        r"""<p>排序字段，支持 name,line,type,value,weight,mx,ttl,updated_on 几个字段。</p>
         :rtype: str
         """
         return self._SortField
@@ -8974,7 +8966,7 @@ class DescribeRecordListRequest(AbstractModel):
 
     @property
     def SortType(self):
-        r"""排序方式，正序：ASC，逆序：DESC。默认值为ASC。
+        r"""<p>排序方式，正序：ASC，逆序：DESC。默认值为ASC。</p>
         :rtype: str
         """
         return self._SortType
@@ -8985,7 +8977,7 @@ class DescribeRecordListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""偏移量，默认值为0。
+        r"""<p>偏移量，默认值为0。</p>
         :rtype: int
         """
         return self._Offset
@@ -8996,7 +8988,7 @@ class DescribeRecordListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""限制数量，当前Limit最大支持3000。默认值为100。
+        r"""<p>限制数量，当前Limit最大支持3000。默认值为100。</p>
         :rtype: int
         """
         return self._Limit
@@ -9004,6 +8996,17 @@ class DescribeRecordListRequest(AbstractModel):
     @Limit.setter
     def Limit(self, Limit):
         self._Limit = Limit
+
+    @property
+    def ErrorOnEmpty(self):
+        r"""<p>查询不到数据时是否报错</p>枚举值：<ul><li> yes： 报错</li><li> no： 不报错，返回空列表</li></ul>默认值：yes
+        :rtype: str
+        """
+        return self._ErrorOnEmpty
+
+    @ErrorOnEmpty.setter
+    def ErrorOnEmpty(self, ErrorOnEmpty):
+        self._ErrorOnEmpty = ErrorOnEmpty
 
 
     def _deserialize(self, params):
@@ -9019,6 +9022,7 @@ class DescribeRecordListRequest(AbstractModel):
         self._SortType = params.get("SortType")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
+        self._ErrorOnEmpty = params.get("ErrorOnEmpty")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9036,9 +9040,9 @@ class DescribeRecordListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RecordCountInfo: 记录的数量统计信息
+        :param _RecordCountInfo: <p>记录的数量统计信息</p>
         :type RecordCountInfo: :class:`tencentcloud.dnspod.v20210323.models.RecordCountInfo`
-        :param _RecordList: 获取的记录列表
+        :param _RecordList: <p>获取的记录列表</p>
         :type RecordList: list of RecordListItem
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -9049,7 +9053,7 @@ class DescribeRecordListResponse(AbstractModel):
 
     @property
     def RecordCountInfo(self):
-        r"""记录的数量统计信息
+        r"""<p>记录的数量统计信息</p>
         :rtype: :class:`tencentcloud.dnspod.v20210323.models.RecordCountInfo`
         """
         return self._RecordCountInfo
@@ -9060,7 +9064,7 @@ class DescribeRecordListResponse(AbstractModel):
 
     @property
     def RecordList(self):
-        r"""获取的记录列表
+        r"""<p>获取的记录列表</p>
         :rtype: list of RecordListItem
         """
         return self._RecordList

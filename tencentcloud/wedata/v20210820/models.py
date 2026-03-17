@@ -8824,6 +8824,95 @@ class BizCatalogsInfo(AbstractModel):
         
 
 
+class BizParams(AbstractModel):
+    r"""业务额外属性
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NameCn: 字段中文名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NameCn: str
+        :param _NameEn: 字段英文名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NameEn: str
+        :param _HasAdvancedConfig: iceberg表是否启用高级配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HasAdvancedConfig: str
+        :param _BizStandCode: 标注编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BizStandCode: str
+        """
+        self._NameCn = None
+        self._NameEn = None
+        self._HasAdvancedConfig = None
+        self._BizStandCode = None
+
+    @property
+    def NameCn(self):
+        r"""字段中文名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._NameCn
+
+    @NameCn.setter
+    def NameCn(self, NameCn):
+        self._NameCn = NameCn
+
+    @property
+    def NameEn(self):
+        r"""字段英文名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._NameEn
+
+    @NameEn.setter
+    def NameEn(self, NameEn):
+        self._NameEn = NameEn
+
+    @property
+    def HasAdvancedConfig(self):
+        r"""iceberg表是否启用高级配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._HasAdvancedConfig
+
+    @HasAdvancedConfig.setter
+    def HasAdvancedConfig(self, HasAdvancedConfig):
+        self._HasAdvancedConfig = HasAdvancedConfig
+
+    @property
+    def BizStandCode(self):
+        r"""标注编码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BizStandCode
+
+    @BizStandCode.setter
+    def BizStandCode(self, BizStandCode):
+        self._BizStandCode = BizStandCode
+
+
+    def _deserialize(self, params):
+        self._NameCn = params.get("NameCn")
+        self._NameEn = params.get("NameEn")
+        self._HasAdvancedConfig = params.get("HasAdvancedConfig")
+        self._BizStandCode = params.get("BizStandCode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BytesSpeed(AbstractModel):
     r"""实时任务同步速度 字节/s
 
@@ -22152,6 +22241,378 @@ class DatabaseMeta(AbstractModel):
         
 
 
+class DatabaseRealViewVO(AbstractModel):
+    r"""实时获取数据库列表信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CatalogName: CatalogName: 如dlc数据默认为DataLakeCatalog
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CatalogName: str
+        :param _DataSourceId: 数据源ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataSourceId: int
+        :param _DataSourceName: 数据源名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataSourceName: str
+        :param _DataSourceInstance: 数据源实例
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataSourceInstance: str
+        :param _DataSourceType: 数据源类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DataSourceType: str
+        :param _DatabaseName: 数据库名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatabaseName: str
+        :param _Description: 描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param _Owner: 责任人
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Owner: str
+        :param _OwnerAccount: 责任人账号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OwnerAccount: int
+        :param _CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: int
+        :param _ModifiedTime: 修改时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModifiedTime: int
+        :param _Location: 数据库地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Location: str
+        :param _BizParams: 业务额外属性
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BizParams: :class:`tencentcloud.wedata.v20210820.models.BizParams`
+        :param _NextLevel: 下一级元数据:CATALOG,DATABASE,SCHEMA,TABLE
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NextLevel: str
+        """
+        self._CatalogName = None
+        self._DataSourceId = None
+        self._DataSourceName = None
+        self._DataSourceInstance = None
+        self._DataSourceType = None
+        self._DatabaseName = None
+        self._Description = None
+        self._Owner = None
+        self._OwnerAccount = None
+        self._CreateTime = None
+        self._ModifiedTime = None
+        self._Location = None
+        self._BizParams = None
+        self._NextLevel = None
+
+    @property
+    def CatalogName(self):
+        r"""CatalogName: 如dlc数据默认为DataLakeCatalog
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CatalogName
+
+    @CatalogName.setter
+    def CatalogName(self, CatalogName):
+        self._CatalogName = CatalogName
+
+    @property
+    def DataSourceId(self):
+        r"""数据源ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._DataSourceId
+
+    @DataSourceId.setter
+    def DataSourceId(self, DataSourceId):
+        self._DataSourceId = DataSourceId
+
+    @property
+    def DataSourceName(self):
+        r"""数据源名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DataSourceName
+
+    @DataSourceName.setter
+    def DataSourceName(self, DataSourceName):
+        self._DataSourceName = DataSourceName
+
+    @property
+    def DataSourceInstance(self):
+        r"""数据源实例
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DataSourceInstance
+
+    @DataSourceInstance.setter
+    def DataSourceInstance(self, DataSourceInstance):
+        self._DataSourceInstance = DataSourceInstance
+
+    @property
+    def DataSourceType(self):
+        r"""数据源类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DataSourceType
+
+    @DataSourceType.setter
+    def DataSourceType(self, DataSourceType):
+        self._DataSourceType = DataSourceType
+
+    @property
+    def DatabaseName(self):
+        r"""数据库名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DatabaseName
+
+    @DatabaseName.setter
+    def DatabaseName(self, DatabaseName):
+        self._DatabaseName = DatabaseName
+
+    @property
+    def Description(self):
+        r"""描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Owner(self):
+        r"""责任人
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Owner
+
+    @Owner.setter
+    def Owner(self, Owner):
+        self._Owner = Owner
+
+    @property
+    def OwnerAccount(self):
+        r"""责任人账号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._OwnerAccount
+
+    @OwnerAccount.setter
+    def OwnerAccount(self, OwnerAccount):
+        self._OwnerAccount = OwnerAccount
+
+    @property
+    def CreateTime(self):
+        r"""创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ModifiedTime(self):
+        r"""修改时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ModifiedTime
+
+    @ModifiedTime.setter
+    def ModifiedTime(self, ModifiedTime):
+        self._ModifiedTime = ModifiedTime
+
+    @property
+    def Location(self):
+        r"""数据库地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Location
+
+    @Location.setter
+    def Location(self, Location):
+        self._Location = Location
+
+    @property
+    def BizParams(self):
+        r"""业务额外属性
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.BizParams`
+        """
+        return self._BizParams
+
+    @BizParams.setter
+    def BizParams(self, BizParams):
+        self._BizParams = BizParams
+
+    @property
+    def NextLevel(self):
+        r"""下一级元数据:CATALOG,DATABASE,SCHEMA,TABLE
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._NextLevel
+
+    @NextLevel.setter
+    def NextLevel(self, NextLevel):
+        self._NextLevel = NextLevel
+
+
+    def _deserialize(self, params):
+        self._CatalogName = params.get("CatalogName")
+        self._DataSourceId = params.get("DataSourceId")
+        self._DataSourceName = params.get("DataSourceName")
+        self._DataSourceInstance = params.get("DataSourceInstance")
+        self._DataSourceType = params.get("DataSourceType")
+        self._DatabaseName = params.get("DatabaseName")
+        self._Description = params.get("Description")
+        self._Owner = params.get("Owner")
+        self._OwnerAccount = params.get("OwnerAccount")
+        self._CreateTime = params.get("CreateTime")
+        self._ModifiedTime = params.get("ModifiedTime")
+        self._Location = params.get("Location")
+        if params.get("BizParams") is not None:
+            self._BizParams = BizParams()
+            self._BizParams._deserialize(params.get("BizParams"))
+        self._NextLevel = params.get("NextLevel")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DatabaseRealViewVOPageVO(AbstractModel):
+    r"""实时获取数据库列表 分页参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PageNumber: 分页页码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PageNumber: int
+        :param _PageSize: 分页大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PageSize: int
+        :param _TotalCount: 总个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _TotalPageNumber: 总分页页码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalPageNumber: int
+        :param _Rows: 记录
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Rows: list of DatabaseRealViewVO
+        """
+        self._PageNumber = None
+        self._PageSize = None
+        self._TotalCount = None
+        self._TotalPageNumber = None
+        self._Rows = None
+
+    @property
+    def PageNumber(self):
+        r"""分页页码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        r"""分页大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def TotalCount(self):
+        r"""总个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def TotalPageNumber(self):
+        r"""总分页页码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TotalPageNumber
+
+    @TotalPageNumber.setter
+    def TotalPageNumber(self, TotalPageNumber):
+        self._TotalPageNumber = TotalPageNumber
+
+    @property
+    def Rows(self):
+        r"""记录
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DatabaseRealViewVO
+        """
+        return self._Rows
+
+    @Rows.setter
+    def Rows(self, Rows):
+        self._Rows = Rows
+
+
+    def _deserialize(self, params):
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        self._TotalCount = params.get("TotalCount")
+        self._TotalPageNumber = params.get("TotalPageNumber")
+        if params.get("Rows") is not None:
+            self._Rows = []
+            for item in params.get("Rows"):
+                obj = DatabaseRealViewVO()
+                obj._deserialize(item)
+                self._Rows.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DatabaseSchemaIInfo(AbstractModel):
     r"""数据库Schema信息
 
@@ -29540,6 +30001,134 @@ class DescribeDataSourceListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeDatabaseByNameRequest(AbstractModel):
+    r"""DescribeDatabaseByName请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DatabaseName: 数据库名称
+        :type DatabaseName: str
+        :param _DatasourceId: 数据源id
+        :type DatasourceId: int
+        :param _SchemaName: schema名称
+        :type SchemaName: str
+        :param _ClusterId: 集群id
+        :type ClusterId: str
+        """
+        self._DatabaseName = None
+        self._DatasourceId = None
+        self._SchemaName = None
+        self._ClusterId = None
+
+    @property
+    def DatabaseName(self):
+        r"""数据库名称
+        :rtype: str
+        """
+        return self._DatabaseName
+
+    @DatabaseName.setter
+    def DatabaseName(self, DatabaseName):
+        self._DatabaseName = DatabaseName
+
+    @property
+    def DatasourceId(self):
+        r"""数据源id
+        :rtype: int
+        """
+        return self._DatasourceId
+
+    @DatasourceId.setter
+    def DatasourceId(self, DatasourceId):
+        self._DatasourceId = DatasourceId
+
+    @property
+    def SchemaName(self):
+        r"""schema名称
+        :rtype: str
+        """
+        return self._SchemaName
+
+    @SchemaName.setter
+    def SchemaName(self, SchemaName):
+        self._SchemaName = SchemaName
+
+    @property
+    def ClusterId(self):
+        r"""集群id
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+
+    def _deserialize(self, params):
+        self._DatabaseName = params.get("DatabaseName")
+        self._DatasourceId = params.get("DatasourceId")
+        self._SchemaName = params.get("SchemaName")
+        self._ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDatabaseByNameResponse(AbstractModel):
+    r"""DescribeDatabaseByName返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DatabaseMeta: 数据库信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatabaseMeta: :class:`tencentcloud.wedata.v20210820.models.DatabaseMeta`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DatabaseMeta = None
+        self._RequestId = None
+
+    @property
+    def DatabaseMeta(self):
+        r"""数据库信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DatabaseMeta`
+        """
+        return self._DatabaseMeta
+
+    @DatabaseMeta.setter
+    def DatabaseMeta(self, DatabaseMeta):
+        self._DatabaseMeta = DatabaseMeta
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("DatabaseMeta") is not None:
+            self._DatabaseMeta = DatabaseMeta()
+            self._DatabaseMeta._deserialize(params.get("DatabaseMeta"))
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeDatabaseInfoListRequest(AbstractModel):
     r"""DescribeDatabaseInfoList请求参数结构体
 
@@ -29643,6 +30232,89 @@ class DescribeDatabaseInfoListResponse(AbstractModel):
                 obj = DatabaseInfo()
                 obj._deserialize(item)
                 self._DatabaseInfo.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDatabaseMetaRequest(AbstractModel):
+    r"""DescribeDatabaseMeta请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DatabaseId: 数据源唯一Id
+        :type DatabaseId: str
+        """
+        self._DatabaseId = None
+
+    @property
+    def DatabaseId(self):
+        r"""数据源唯一Id
+        :rtype: str
+        """
+        return self._DatabaseId
+
+    @DatabaseId.setter
+    def DatabaseId(self, DatabaseId):
+        self._DatabaseId = DatabaseId
+
+
+    def _deserialize(self, params):
+        self._DatabaseId = params.get("DatabaseId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDatabaseMetaResponse(AbstractModel):
+    r"""DescribeDatabaseMeta返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DatabaseMeta: 数据库元数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatabaseMeta: :class:`tencentcloud.wedata.v20210820.models.DatabaseMeta`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DatabaseMeta = None
+        self._RequestId = None
+
+    @property
+    def DatabaseMeta(self):
+        r"""数据库元数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DatabaseMeta`
+        """
+        return self._DatabaseMeta
+
+    @DatabaseMeta.setter
+    def DatabaseMeta(self, DatabaseMeta):
+        self._DatabaseMeta = DatabaseMeta
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("DatabaseMeta") is not None:
+            self._DatabaseMeta = DatabaseMeta()
+            self._DatabaseMeta._deserialize(params.get("DatabaseMeta"))
         self._RequestId = params.get("RequestId")
 
 
@@ -35900,6 +36572,143 @@ class DescribeIntegrationVersionNodesInfoResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeLineageColumnsRequest(AbstractModel):
+    r"""DescribeLineageColumns请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TableId: 表id
+        :type TableId: str
+        """
+        self._TableId = None
+
+    @property
+    def TableId(self):
+        r"""表id
+        :rtype: str
+        """
+        return self._TableId
+
+    @TableId.setter
+    def TableId(self, TableId):
+        self._TableId = TableId
+
+
+    def _deserialize(self, params):
+        self._TableId = params.get("TableId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLineageColumnsResponse(AbstractModel):
+    r"""DescribeLineageColumns返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MetastoreType: 元数据类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MetastoreType: list of str
+        :param _MetastoreTypeName: 元数据类型名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MetastoreTypeName: str
+        :param _TableName: 表名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableName: str
+        :param _ColumnSet: 字段列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ColumnSet: list of ColumnLineageInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._MetastoreType = None
+        self._MetastoreTypeName = None
+        self._TableName = None
+        self._ColumnSet = None
+        self._RequestId = None
+
+    @property
+    def MetastoreType(self):
+        r"""元数据类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._MetastoreType
+
+    @MetastoreType.setter
+    def MetastoreType(self, MetastoreType):
+        self._MetastoreType = MetastoreType
+
+    @property
+    def MetastoreTypeName(self):
+        r"""元数据类型名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._MetastoreTypeName
+
+    @MetastoreTypeName.setter
+    def MetastoreTypeName(self, MetastoreTypeName):
+        self._MetastoreTypeName = MetastoreTypeName
+
+    @property
+    def TableName(self):
+        r"""表名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def ColumnSet(self):
+        r"""字段列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ColumnLineageInfo
+        """
+        return self._ColumnSet
+
+    @ColumnSet.setter
+    def ColumnSet(self, ColumnSet):
+        self._ColumnSet = ColumnSet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._MetastoreType = params.get("MetastoreType")
+        self._MetastoreTypeName = params.get("MetastoreTypeName")
+        self._TableName = params.get("TableName")
+        if params.get("ColumnSet") is not None:
+            self._ColumnSet = []
+            for item in params.get("ColumnSet"):
+                obj = ColumnLineageInfo()
+                obj._deserialize(item)
+                self._ColumnSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeLineageInfoRequest(AbstractModel):
     r"""DescribeLineageInfo请求参数结构体
 
@@ -39743,6 +40552,239 @@ class DescribeRealTimeTaskSpeedResponse(AbstractModel):
                 self._BytesSpeedList.append(obj)
         if params.get("Data") is not None:
             self._Data = RealTimeTaskSpeed()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeRealViewDatabasePageRequest(AbstractModel):
+    r"""DescribeRealViewDatabasePage请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DatasourceId: 数据源ID
+        :type DatasourceId: int
+        :param _ProjectId: 项目Id
+        :type ProjectId: str
+        :param _Asc: 排序字段类型：ASC/DESC
+        :type Asc: bool
+        :param _ConnectionType: 指定数据源链接方式，如hive jdbc或者metastore client
+        :type ConnectionType: str
+        :param _Keyword: Keyword过滤
+        :type Keyword: str
+        :param _PageNumber: 【分页参数】页码
+        :type PageNumber: int
+        :param _PageSize: 【分页参数】分页大小
+        :type PageSize: int
+        :param _ResourceGroupId: 资源组ID
+        :type ResourceGroupId: str
+        :param _ResourceType: 资源组类型
+        :type ResourceType: int
+        :param _Sort: Sort
+        :type Sort: str
+        :param _CatalogName: catalog名称
+        :type CatalogName: str
+        """
+        self._DatasourceId = None
+        self._ProjectId = None
+        self._Asc = None
+        self._ConnectionType = None
+        self._Keyword = None
+        self._PageNumber = None
+        self._PageSize = None
+        self._ResourceGroupId = None
+        self._ResourceType = None
+        self._Sort = None
+        self._CatalogName = None
+
+    @property
+    def DatasourceId(self):
+        r"""数据源ID
+        :rtype: int
+        """
+        return self._DatasourceId
+
+    @DatasourceId.setter
+    def DatasourceId(self, DatasourceId):
+        self._DatasourceId = DatasourceId
+
+    @property
+    def ProjectId(self):
+        r"""项目Id
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def Asc(self):
+        r"""排序字段类型：ASC/DESC
+        :rtype: bool
+        """
+        return self._Asc
+
+    @Asc.setter
+    def Asc(self, Asc):
+        self._Asc = Asc
+
+    @property
+    def ConnectionType(self):
+        r"""指定数据源链接方式，如hive jdbc或者metastore client
+        :rtype: str
+        """
+        return self._ConnectionType
+
+    @ConnectionType.setter
+    def ConnectionType(self, ConnectionType):
+        self._ConnectionType = ConnectionType
+
+    @property
+    def Keyword(self):
+        r"""Keyword过滤
+        :rtype: str
+        """
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
+
+    @property
+    def PageNumber(self):
+        r"""【分页参数】页码
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        r"""【分页参数】分页大小
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def ResourceGroupId(self):
+        r"""资源组ID
+        :rtype: str
+        """
+        return self._ResourceGroupId
+
+    @ResourceGroupId.setter
+    def ResourceGroupId(self, ResourceGroupId):
+        self._ResourceGroupId = ResourceGroupId
+
+    @property
+    def ResourceType(self):
+        r"""资源组类型
+        :rtype: int
+        """
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def Sort(self):
+        r"""Sort
+        :rtype: str
+        """
+        return self._Sort
+
+    @Sort.setter
+    def Sort(self, Sort):
+        self._Sort = Sort
+
+    @property
+    def CatalogName(self):
+        r"""catalog名称
+        :rtype: str
+        """
+        return self._CatalogName
+
+    @CatalogName.setter
+    def CatalogName(self, CatalogName):
+        self._CatalogName = CatalogName
+
+
+    def _deserialize(self, params):
+        self._DatasourceId = params.get("DatasourceId")
+        self._ProjectId = params.get("ProjectId")
+        self._Asc = params.get("Asc")
+        self._ConnectionType = params.get("ConnectionType")
+        self._Keyword = params.get("Keyword")
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        self._ResourceGroupId = params.get("ResourceGroupId")
+        self._ResourceType = params.get("ResourceType")
+        self._Sort = params.get("Sort")
+        self._CatalogName = params.get("CatalogName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRealViewDatabasePageResponse(AbstractModel):
+    r"""DescribeRealViewDatabasePage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 离线获取数据库列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.wedata.v20210820.models.DatabaseRealViewVOPageVO`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""离线获取数据库列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DatabaseRealViewVOPageVO`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = DatabaseRealViewVOPageVO()
             self._Data._deserialize(params.get("Data"))
         self._RequestId = params.get("RequestId")
 
@@ -45075,6 +46117,357 @@ class DescribeTableBasicInfoResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeTableContentPreviewRequest(AbstractModel):
+    r"""DescribeTableContentPreview请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TableId: 表ID
+        :type TableId: str
+        :param _TechnologyType: 组件类型枚举值，支持的值有 HDFS/HBASE/HIVE/KAFKA
+        :type TechnologyType: str
+        :param _ClusterId: 集群id
+        :type ClusterId: str
+        :param _ResourceType: 资源类型枚举值，支持的值有TOPIC/PATH/TABLE/DATABASE
+        :type ResourceType: str
+        :param _TableName: 表名
+        :type TableName: str
+        :param _ProjectId: 项目id
+        :type ProjectId: str
+        :param _RowNum: 预览的行数，默认10行
+        :type RowNum: int
+        :param _DatabaseName: 数据库名，kafka或其他无数据库概念的不填
+        :type DatabaseName: str
+        :param _TaskId: 异步查询预览结果时填写
+        :type TaskId: str
+        :param _PartitionName: 分区信息
+        :type PartitionName: str
+        """
+        self._TableId = None
+        self._TechnologyType = None
+        self._ClusterId = None
+        self._ResourceType = None
+        self._TableName = None
+        self._ProjectId = None
+        self._RowNum = None
+        self._DatabaseName = None
+        self._TaskId = None
+        self._PartitionName = None
+
+    @property
+    def TableId(self):
+        r"""表ID
+        :rtype: str
+        """
+        return self._TableId
+
+    @TableId.setter
+    def TableId(self, TableId):
+        self._TableId = TableId
+
+    @property
+    def TechnologyType(self):
+        r"""组件类型枚举值，支持的值有 HDFS/HBASE/HIVE/KAFKA
+        :rtype: str
+        """
+        return self._TechnologyType
+
+    @TechnologyType.setter
+    def TechnologyType(self, TechnologyType):
+        self._TechnologyType = TechnologyType
+
+    @property
+    def ClusterId(self):
+        r"""集群id
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def ResourceType(self):
+        r"""资源类型枚举值，支持的值有TOPIC/PATH/TABLE/DATABASE
+        :rtype: str
+        """
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def TableName(self):
+        r"""表名
+        :rtype: str
+        """
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def ProjectId(self):
+        r"""项目id
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def RowNum(self):
+        r"""预览的行数，默认10行
+        :rtype: int
+        """
+        return self._RowNum
+
+    @RowNum.setter
+    def RowNum(self, RowNum):
+        self._RowNum = RowNum
+
+    @property
+    def DatabaseName(self):
+        r"""数据库名，kafka或其他无数据库概念的不填
+        :rtype: str
+        """
+        return self._DatabaseName
+
+    @DatabaseName.setter
+    def DatabaseName(self, DatabaseName):
+        self._DatabaseName = DatabaseName
+
+    @property
+    def TaskId(self):
+        r"""异步查询预览结果时填写
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def PartitionName(self):
+        r"""分区信息
+        :rtype: str
+        """
+        return self._PartitionName
+
+    @PartitionName.setter
+    def PartitionName(self, PartitionName):
+        self._PartitionName = PartitionName
+
+
+    def _deserialize(self, params):
+        self._TableId = params.get("TableId")
+        self._TechnologyType = params.get("TechnologyType")
+        self._ClusterId = params.get("ClusterId")
+        self._ResourceType = params.get("ResourceType")
+        self._TableName = params.get("TableName")
+        self._ProjectId = params.get("ProjectId")
+        self._RowNum = params.get("RowNum")
+        self._DatabaseName = params.get("DatabaseName")
+        self._TaskId = params.get("TaskId")
+        self._PartitionName = params.get("PartitionName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTableContentPreviewResponse(AbstractModel):
+    r"""DescribeTableContentPreview返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ColumnNames: 表的列名列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ColumnNames: list of str
+        :param _TableRecordSet: 表的行数据列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableRecordSet: list of TableRecord
+        :param _TaskId: 异步预览任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: str
+        :param _AsyncState: 异步预览结果状态: 0 初始化， 1 执行中， 2 执行成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AsyncState: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ColumnNames = None
+        self._TableRecordSet = None
+        self._TaskId = None
+        self._AsyncState = None
+        self._RequestId = None
+
+    @property
+    def ColumnNames(self):
+        r"""表的列名列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._ColumnNames
+
+    @ColumnNames.setter
+    def ColumnNames(self, ColumnNames):
+        self._ColumnNames = ColumnNames
+
+    @property
+    def TableRecordSet(self):
+        r"""表的行数据列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TableRecord
+        """
+        return self._TableRecordSet
+
+    @TableRecordSet.setter
+    def TableRecordSet(self, TableRecordSet):
+        self._TableRecordSet = TableRecordSet
+
+    @property
+    def TaskId(self):
+        r"""异步预览任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def AsyncState(self):
+        r"""异步预览结果状态: 0 初始化， 1 执行中， 2 执行成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._AsyncState
+
+    @AsyncState.setter
+    def AsyncState(self, AsyncState):
+        self._AsyncState = AsyncState
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ColumnNames = params.get("ColumnNames")
+        if params.get("TableRecordSet") is not None:
+            self._TableRecordSet = []
+            for item in params.get("TableRecordSet"):
+                obj = TableRecord()
+                obj._deserialize(item)
+                self._TableRecordSet.append(obj)
+        self._TaskId = params.get("TaskId")
+        self._AsyncState = params.get("AsyncState")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeTableDdlRequest(AbstractModel):
+    r"""DescribeTableDdl请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TableId: 表ID
+        :type TableId: str
+        """
+        self._TableId = None
+
+    @property
+    def TableId(self):
+        r"""表ID
+        :rtype: str
+        """
+        return self._TableId
+
+    @TableId.setter
+    def TableId(self, TableId):
+        self._TableId = TableId
+
+
+    def _deserialize(self, params):
+        self._TableId = params.get("TableId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTableDdlResponse(AbstractModel):
+    r"""DescribeTableDdl返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Ddl: 表的DDL
+        :type Ddl: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Ddl = None
+        self._RequestId = None
+
+    @property
+    def Ddl(self):
+        r"""表的DDL
+        :rtype: str
+        """
+        return self._Ddl
+
+    @Ddl.setter
+    def Ddl(self, Ddl):
+        self._Ddl = Ddl
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Ddl = params.get("Ddl")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeTableInfoListRequest(AbstractModel):
     r"""DescribeTableInfoList请求参数结构体
 
@@ -46829,6 +48222,87 @@ class DescribeTableScoreTrendResponse(AbstractModel):
         if params.get("Data") is not None:
             self._Data = QualityScoreTrend()
             self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeTableSelectRequest(AbstractModel):
+    r"""DescribeTableSelect请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TableId: 表ID
+        :type TableId: str
+        """
+        self._TableId = None
+
+    @property
+    def TableId(self):
+        r"""表ID
+        :rtype: str
+        """
+        return self._TableId
+
+    @TableId.setter
+    def TableId(self, TableId):
+        self._TableId = TableId
+
+
+    def _deserialize(self, params):
+        self._TableId = params.get("TableId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTableSelectResponse(AbstractModel):
+    r"""DescribeTableSelect返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Select: 表的select语句
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Select: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Select = None
+        self._RequestId = None
+
+    @property
+    def Select(self):
+        r"""表的select语句
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Select
+
+    @Select.setter
+    def Select(self, Select):
+        self._Select = Select
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Select = params.get("Select")
         self._RequestId = params.get("RequestId")
 
 
@@ -105640,6 +107114,98 @@ class TableQualityDetailPage(AbstractModel):
                 obj = TableQualityDetail()
                 obj._deserialize(item)
                 self._Items.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TableRecord(AbstractModel):
+    r"""表一行数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TableRecordFieldSet: 表一行数据，包含多个Field
+        :type TableRecordFieldSet: list of TableRecordField
+        """
+        self._TableRecordFieldSet = None
+
+    @property
+    def TableRecordFieldSet(self):
+        r"""表一行数据，包含多个Field
+        :rtype: list of TableRecordField
+        """
+        return self._TableRecordFieldSet
+
+    @TableRecordFieldSet.setter
+    def TableRecordFieldSet(self, TableRecordFieldSet):
+        self._TableRecordFieldSet = TableRecordFieldSet
+
+
+    def _deserialize(self, params):
+        if params.get("TableRecordFieldSet") is not None:
+            self._TableRecordFieldSet = []
+            for item in params.get("TableRecordFieldSet"):
+                obj = TableRecordField()
+                obj._deserialize(item)
+                self._TableRecordFieldSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TableRecordField(AbstractModel):
+    r"""表的单行记录中的字段名和值
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 字段名称
+        :type Name: str
+        :param _Value: 字段值
+        :type Value: str
+        """
+        self._Name = None
+        self._Value = None
+
+    @property
+    def Name(self):
+        r"""字段名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Value(self):
+        r"""字段值
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

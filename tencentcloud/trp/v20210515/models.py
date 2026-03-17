@@ -10975,6 +10975,284 @@ class ReportBatchCallbackStatusResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ReportScanDetailRequest(AbstractModel):
+    r"""ReportScanDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ScanDetails: <p>请求参数</p>
+        :type ScanDetails: list of ScanDetailItem
+        """
+        self._ScanDetails = None
+
+    @property
+    def ScanDetails(self):
+        r"""<p>请求参数</p>
+        :rtype: list of ScanDetailItem
+        """
+        return self._ScanDetails
+
+    @ScanDetails.setter
+    def ScanDetails(self, ScanDetails):
+        self._ScanDetails = ScanDetails
+
+
+    def _deserialize(self, params):
+        if params.get("ScanDetails") is not None:
+            self._ScanDetails = []
+            for item in params.get("ScanDetails"):
+                obj = ScanDetailItem()
+                obj._deserialize(item)
+                self._ScanDetails.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReportScanDetailResponse(AbstractModel):
+    r"""ReportScanDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>结果返回，成功数</p>
+        :type Data: :class:`tencentcloud.trp.v20210515.models.ReportScanDetailResult`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>结果返回，成功数</p>
+        :rtype: :class:`tencentcloud.trp.v20210515.models.ReportScanDetailResult`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = ReportScanDetailResult()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class ReportScanDetailResult(AbstractModel):
+    r"""扫码明细上报响应，成功数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Count: <p>成功数量</p>
+        :type Count: int
+        """
+        self._Count = None
+
+    @property
+    def Count(self):
+        r"""<p>成功数量</p>
+        :rtype: int
+        """
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+
+    def _deserialize(self, params):
+        self._Count = params.get("Count")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ScanDetailItem(AbstractModel):
+    r"""扫码信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Uid: <p>用户ID，也可以为手机号</p>
+        :type Uid: str
+        :param _Time: <p>时间</p><p>参数格式：YYYYMMDDHHMMSS</p>
+        :type Time: str
+        :param _ProvinceName: <p>省</p>
+        :type ProvinceName: str
+        :param _CityName: <p>市</p>
+        :type CityName: str
+        :param _RegionName: <p>区</p>
+        :type RegionName: str
+        :param _BrandName: <p>品牌</p>
+        :type BrandName: str
+        :param _SpecName: <p>品规</p>
+        :type SpecName: str
+        :param _IP: <p>IP，可选，需符合IP格式</p>
+        :type IP: str
+        :param _Code: <p>码</p>
+        :type Code: str
+        """
+        self._Uid = None
+        self._Time = None
+        self._ProvinceName = None
+        self._CityName = None
+        self._RegionName = None
+        self._BrandName = None
+        self._SpecName = None
+        self._IP = None
+        self._Code = None
+
+    @property
+    def Uid(self):
+        r"""<p>用户ID，也可以为手机号</p>
+        :rtype: str
+        """
+        return self._Uid
+
+    @Uid.setter
+    def Uid(self, Uid):
+        self._Uid = Uid
+
+    @property
+    def Time(self):
+        r"""<p>时间</p><p>参数格式：YYYYMMDDHHMMSS</p>
+        :rtype: str
+        """
+        return self._Time
+
+    @Time.setter
+    def Time(self, Time):
+        self._Time = Time
+
+    @property
+    def ProvinceName(self):
+        r"""<p>省</p>
+        :rtype: str
+        """
+        return self._ProvinceName
+
+    @ProvinceName.setter
+    def ProvinceName(self, ProvinceName):
+        self._ProvinceName = ProvinceName
+
+    @property
+    def CityName(self):
+        r"""<p>市</p>
+        :rtype: str
+        """
+        return self._CityName
+
+    @CityName.setter
+    def CityName(self, CityName):
+        self._CityName = CityName
+
+    @property
+    def RegionName(self):
+        r"""<p>区</p>
+        :rtype: str
+        """
+        return self._RegionName
+
+    @RegionName.setter
+    def RegionName(self, RegionName):
+        self._RegionName = RegionName
+
+    @property
+    def BrandName(self):
+        r"""<p>品牌</p>
+        :rtype: str
+        """
+        return self._BrandName
+
+    @BrandName.setter
+    def BrandName(self, BrandName):
+        self._BrandName = BrandName
+
+    @property
+    def SpecName(self):
+        r"""<p>品规</p>
+        :rtype: str
+        """
+        return self._SpecName
+
+    @SpecName.setter
+    def SpecName(self, SpecName):
+        self._SpecName = SpecName
+
+    @property
+    def IP(self):
+        r"""<p>IP，可选，需符合IP格式</p>
+        :rtype: str
+        """
+        return self._IP
+
+    @IP.setter
+    def IP(self, IP):
+        self._IP = IP
+
+    @property
+    def Code(self):
+        r"""<p>码</p>
+        :rtype: str
+        """
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+
+    def _deserialize(self, params):
+        self._Uid = params.get("Uid")
+        self._Time = params.get("Time")
+        self._ProvinceName = params.get("ProvinceName")
+        self._CityName = params.get("CityName")
+        self._RegionName = params.get("RegionName")
+        self._BrandName = params.get("BrandName")
+        self._SpecName = params.get("SpecName")
+        self._IP = params.get("IP")
+        self._Code = params.get("Code")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ScanLog(AbstractModel):
     r"""扫码明细
 

@@ -35998,6 +35998,1686 @@ class DescribeImageComponentListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeImageDenyEventDetailRequest(AbstractModel):
+    r"""DescribeImageDenyEventDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EventID: 事件ID
+        :type EventID: int
+        """
+        self._EventID = None
+
+    @property
+    def EventID(self):
+        r"""事件ID
+        :rtype: int
+        """
+        return self._EventID
+
+    @EventID.setter
+    def EventID(self, EventID):
+        self._EventID = EventID
+
+
+    def _deserialize(self, params):
+        self._EventID = params.get("EventID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeImageDenyEventDetailResponse(AbstractModel):
+    r"""DescribeImageDenyEventDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EventID: 事件ID
+        :type EventID: int
+        :param _EventType: 事件类型 EVENT_RISK:风险事件类型，EVENT_PRIVILEGE:特权
+        :type EventType: str
+        :param _RuleName: 规则名称
+        :type RuleName: str
+        :param _RuleID: 规则RuleID
+        :type RuleID: str
+        :param _RuleType: 规则类型
+        :type RuleType: str
+        :param _RuleStatus: 规则启用状态 0:开启，1:关闭
+        :type RuleStatus: int
+        :param _RuleEffectStatus: 规则策略状态 IN_THE_TEST ：观察中，IN_EFFECT：生效中
+        :type RuleEffectStatus: str
+        :param _RuleInfo: 规则内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleInfo: list of str
+        :param _RuleDescription: 规则描述
+        :type RuleDescription: str
+        :param _ImageID: 镜像ID
+        :type ImageID: str
+        :param _ImageName: 镜像名称
+        :type ImageName: str
+        :param _NodeName: 节点名称
+        :type NodeName: str
+        :param _NodeIP: 内网IP
+        :type NodeIP: str
+        :param _PublicIP: 外网IP
+        :type PublicIP: str
+        :param _QUUID: 主机Quuid
+        :type QUUID: str
+        :param _FoundTime: 首次生成时间
+        :type FoundTime: str
+        :param _LatestFoundTime: 最近生成时间
+        :type LatestFoundTime: str
+        :param _EventCount: 事件数量
+        :type EventCount: int
+        :param _DealBehavior: 执行动作:
+BEHAVIOR_ALERT:告警，
+BEHAVIOR_HOLDUP_SUCCESSED:拦截
+        :type DealBehavior: str
+        :param _PodName: Pod名称
+        :type PodName: str
+        :param _RuleEffectTime: 规则开始拦截时间
+        :type RuleEffectTime: str
+        :param _Description: 事件描述
+        :type Description: str
+        :param _StartParam: 镜像启动参数
+        :type StartParam: str
+        :param _Solution: 解决方案
+        :type Solution: str
+        :param _PodIP: pod ip
+        :type PodIP: str
+        :param _PodStatus:  pod状态
+        :type PodStatus: str
+        :param _ClusterID: 集群id
+        :type ClusterID: str
+        :param _NodeType: 节点类型
+        :type NodeType: str
+        :param _NodeID: 节点id
+        :type NodeID: str
+        :param _NodeUniqueID: 节点唯一id
+        :type NodeUniqueID: str
+        :param _NodeSubNetID: 节点子网id
+        :type NodeSubNetID: str
+        :param _NodeSubNetName: 节点子网名称
+        :type NodeSubNetName: str
+        :param _NodeSubNetCIDR: 节点子网cidr
+        :type NodeSubNetCIDR: str
+        :param _ClusterName: 集群名称
+        :type ClusterName: str
+        :param _ImageRegistryInfo: 镜像仓库信息
+        :type ImageRegistryInfo: :class:`tencentcloud.tcss.v20201101.models.ImageRegistryInfo`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._EventID = None
+        self._EventType = None
+        self._RuleName = None
+        self._RuleID = None
+        self._RuleType = None
+        self._RuleStatus = None
+        self._RuleEffectStatus = None
+        self._RuleInfo = None
+        self._RuleDescription = None
+        self._ImageID = None
+        self._ImageName = None
+        self._NodeName = None
+        self._NodeIP = None
+        self._PublicIP = None
+        self._QUUID = None
+        self._FoundTime = None
+        self._LatestFoundTime = None
+        self._EventCount = None
+        self._DealBehavior = None
+        self._PodName = None
+        self._RuleEffectTime = None
+        self._Description = None
+        self._StartParam = None
+        self._Solution = None
+        self._PodIP = None
+        self._PodStatus = None
+        self._ClusterID = None
+        self._NodeType = None
+        self._NodeID = None
+        self._NodeUniqueID = None
+        self._NodeSubNetID = None
+        self._NodeSubNetName = None
+        self._NodeSubNetCIDR = None
+        self._ClusterName = None
+        self._ImageRegistryInfo = None
+        self._RequestId = None
+
+    @property
+    def EventID(self):
+        r"""事件ID
+        :rtype: int
+        """
+        return self._EventID
+
+    @EventID.setter
+    def EventID(self, EventID):
+        self._EventID = EventID
+
+    @property
+    def EventType(self):
+        r"""事件类型 EVENT_RISK:风险事件类型，EVENT_PRIVILEGE:特权
+        :rtype: str
+        """
+        return self._EventType
+
+    @EventType.setter
+    def EventType(self, EventType):
+        self._EventType = EventType
+
+    @property
+    def RuleName(self):
+        r"""规则名称
+        :rtype: str
+        """
+        return self._RuleName
+
+    @RuleName.setter
+    def RuleName(self, RuleName):
+        self._RuleName = RuleName
+
+    @property
+    def RuleID(self):
+        r"""规则RuleID
+        :rtype: str
+        """
+        return self._RuleID
+
+    @RuleID.setter
+    def RuleID(self, RuleID):
+        self._RuleID = RuleID
+
+    @property
+    def RuleType(self):
+        r"""规则类型
+        :rtype: str
+        """
+        return self._RuleType
+
+    @RuleType.setter
+    def RuleType(self, RuleType):
+        self._RuleType = RuleType
+
+    @property
+    def RuleStatus(self):
+        r"""规则启用状态 0:开启，1:关闭
+        :rtype: int
+        """
+        return self._RuleStatus
+
+    @RuleStatus.setter
+    def RuleStatus(self, RuleStatus):
+        self._RuleStatus = RuleStatus
+
+    @property
+    def RuleEffectStatus(self):
+        r"""规则策略状态 IN_THE_TEST ：观察中，IN_EFFECT：生效中
+        :rtype: str
+        """
+        return self._RuleEffectStatus
+
+    @RuleEffectStatus.setter
+    def RuleEffectStatus(self, RuleEffectStatus):
+        self._RuleEffectStatus = RuleEffectStatus
+
+    @property
+    def RuleInfo(self):
+        r"""规则内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._RuleInfo
+
+    @RuleInfo.setter
+    def RuleInfo(self, RuleInfo):
+        self._RuleInfo = RuleInfo
+
+    @property
+    def RuleDescription(self):
+        r"""规则描述
+        :rtype: str
+        """
+        return self._RuleDescription
+
+    @RuleDescription.setter
+    def RuleDescription(self, RuleDescription):
+        self._RuleDescription = RuleDescription
+
+    @property
+    def ImageID(self):
+        r"""镜像ID
+        :rtype: str
+        """
+        return self._ImageID
+
+    @ImageID.setter
+    def ImageID(self, ImageID):
+        self._ImageID = ImageID
+
+    @property
+    def ImageName(self):
+        r"""镜像名称
+        :rtype: str
+        """
+        return self._ImageName
+
+    @ImageName.setter
+    def ImageName(self, ImageName):
+        self._ImageName = ImageName
+
+    @property
+    def NodeName(self):
+        r"""节点名称
+        :rtype: str
+        """
+        return self._NodeName
+
+    @NodeName.setter
+    def NodeName(self, NodeName):
+        self._NodeName = NodeName
+
+    @property
+    def NodeIP(self):
+        r"""内网IP
+        :rtype: str
+        """
+        return self._NodeIP
+
+    @NodeIP.setter
+    def NodeIP(self, NodeIP):
+        self._NodeIP = NodeIP
+
+    @property
+    def PublicIP(self):
+        r"""外网IP
+        :rtype: str
+        """
+        return self._PublicIP
+
+    @PublicIP.setter
+    def PublicIP(self, PublicIP):
+        self._PublicIP = PublicIP
+
+    @property
+    def QUUID(self):
+        r"""主机Quuid
+        :rtype: str
+        """
+        return self._QUUID
+
+    @QUUID.setter
+    def QUUID(self, QUUID):
+        self._QUUID = QUUID
+
+    @property
+    def FoundTime(self):
+        r"""首次生成时间
+        :rtype: str
+        """
+        return self._FoundTime
+
+    @FoundTime.setter
+    def FoundTime(self, FoundTime):
+        self._FoundTime = FoundTime
+
+    @property
+    def LatestFoundTime(self):
+        r"""最近生成时间
+        :rtype: str
+        """
+        return self._LatestFoundTime
+
+    @LatestFoundTime.setter
+    def LatestFoundTime(self, LatestFoundTime):
+        self._LatestFoundTime = LatestFoundTime
+
+    @property
+    def EventCount(self):
+        r"""事件数量
+        :rtype: int
+        """
+        return self._EventCount
+
+    @EventCount.setter
+    def EventCount(self, EventCount):
+        self._EventCount = EventCount
+
+    @property
+    def DealBehavior(self):
+        r"""执行动作:
+BEHAVIOR_ALERT:告警，
+BEHAVIOR_HOLDUP_SUCCESSED:拦截
+        :rtype: str
+        """
+        return self._DealBehavior
+
+    @DealBehavior.setter
+    def DealBehavior(self, DealBehavior):
+        self._DealBehavior = DealBehavior
+
+    @property
+    def PodName(self):
+        r"""Pod名称
+        :rtype: str
+        """
+        return self._PodName
+
+    @PodName.setter
+    def PodName(self, PodName):
+        self._PodName = PodName
+
+    @property
+    def RuleEffectTime(self):
+        r"""规则开始拦截时间
+        :rtype: str
+        """
+        return self._RuleEffectTime
+
+    @RuleEffectTime.setter
+    def RuleEffectTime(self, RuleEffectTime):
+        self._RuleEffectTime = RuleEffectTime
+
+    @property
+    def Description(self):
+        r"""事件描述
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def StartParam(self):
+        r"""镜像启动参数
+        :rtype: str
+        """
+        return self._StartParam
+
+    @StartParam.setter
+    def StartParam(self, StartParam):
+        self._StartParam = StartParam
+
+    @property
+    def Solution(self):
+        r"""解决方案
+        :rtype: str
+        """
+        return self._Solution
+
+    @Solution.setter
+    def Solution(self, Solution):
+        self._Solution = Solution
+
+    @property
+    def PodIP(self):
+        r"""pod ip
+        :rtype: str
+        """
+        return self._PodIP
+
+    @PodIP.setter
+    def PodIP(self, PodIP):
+        self._PodIP = PodIP
+
+    @property
+    def PodStatus(self):
+        r""" pod状态
+        :rtype: str
+        """
+        return self._PodStatus
+
+    @PodStatus.setter
+    def PodStatus(self, PodStatus):
+        self._PodStatus = PodStatus
+
+    @property
+    def ClusterID(self):
+        r"""集群id
+        :rtype: str
+        """
+        return self._ClusterID
+
+    @ClusterID.setter
+    def ClusterID(self, ClusterID):
+        self._ClusterID = ClusterID
+
+    @property
+    def NodeType(self):
+        r"""节点类型
+        :rtype: str
+        """
+        return self._NodeType
+
+    @NodeType.setter
+    def NodeType(self, NodeType):
+        self._NodeType = NodeType
+
+    @property
+    def NodeID(self):
+        r"""节点id
+        :rtype: str
+        """
+        return self._NodeID
+
+    @NodeID.setter
+    def NodeID(self, NodeID):
+        self._NodeID = NodeID
+
+    @property
+    def NodeUniqueID(self):
+        r"""节点唯一id
+        :rtype: str
+        """
+        return self._NodeUniqueID
+
+    @NodeUniqueID.setter
+    def NodeUniqueID(self, NodeUniqueID):
+        self._NodeUniqueID = NodeUniqueID
+
+    @property
+    def NodeSubNetID(self):
+        r"""节点子网id
+        :rtype: str
+        """
+        return self._NodeSubNetID
+
+    @NodeSubNetID.setter
+    def NodeSubNetID(self, NodeSubNetID):
+        self._NodeSubNetID = NodeSubNetID
+
+    @property
+    def NodeSubNetName(self):
+        r"""节点子网名称
+        :rtype: str
+        """
+        return self._NodeSubNetName
+
+    @NodeSubNetName.setter
+    def NodeSubNetName(self, NodeSubNetName):
+        self._NodeSubNetName = NodeSubNetName
+
+    @property
+    def NodeSubNetCIDR(self):
+        r"""节点子网cidr
+        :rtype: str
+        """
+        return self._NodeSubNetCIDR
+
+    @NodeSubNetCIDR.setter
+    def NodeSubNetCIDR(self, NodeSubNetCIDR):
+        self._NodeSubNetCIDR = NodeSubNetCIDR
+
+    @property
+    def ClusterName(self):
+        r"""集群名称
+        :rtype: str
+        """
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+    @property
+    def ImageRegistryInfo(self):
+        r"""镜像仓库信息
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.ImageRegistryInfo`
+        """
+        return self._ImageRegistryInfo
+
+    @ImageRegistryInfo.setter
+    def ImageRegistryInfo(self, ImageRegistryInfo):
+        self._ImageRegistryInfo = ImageRegistryInfo
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._EventID = params.get("EventID")
+        self._EventType = params.get("EventType")
+        self._RuleName = params.get("RuleName")
+        self._RuleID = params.get("RuleID")
+        self._RuleType = params.get("RuleType")
+        self._RuleStatus = params.get("RuleStatus")
+        self._RuleEffectStatus = params.get("RuleEffectStatus")
+        self._RuleInfo = params.get("RuleInfo")
+        self._RuleDescription = params.get("RuleDescription")
+        self._ImageID = params.get("ImageID")
+        self._ImageName = params.get("ImageName")
+        self._NodeName = params.get("NodeName")
+        self._NodeIP = params.get("NodeIP")
+        self._PublicIP = params.get("PublicIP")
+        self._QUUID = params.get("QUUID")
+        self._FoundTime = params.get("FoundTime")
+        self._LatestFoundTime = params.get("LatestFoundTime")
+        self._EventCount = params.get("EventCount")
+        self._DealBehavior = params.get("DealBehavior")
+        self._PodName = params.get("PodName")
+        self._RuleEffectTime = params.get("RuleEffectTime")
+        self._Description = params.get("Description")
+        self._StartParam = params.get("StartParam")
+        self._Solution = params.get("Solution")
+        self._PodIP = params.get("PodIP")
+        self._PodStatus = params.get("PodStatus")
+        self._ClusterID = params.get("ClusterID")
+        self._NodeType = params.get("NodeType")
+        self._NodeID = params.get("NodeID")
+        self._NodeUniqueID = params.get("NodeUniqueID")
+        self._NodeSubNetID = params.get("NodeSubNetID")
+        self._NodeSubNetName = params.get("NodeSubNetName")
+        self._NodeSubNetCIDR = params.get("NodeSubNetCIDR")
+        self._ClusterName = params.get("ClusterName")
+        if params.get("ImageRegistryInfo") is not None:
+            self._ImageRegistryInfo = ImageRegistryInfo()
+            self._ImageRegistryInfo._deserialize(params.get("ImageRegistryInfo"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeImageDenyEventListRequest(AbstractModel):
+    r"""DescribeImageDenyEventList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filters: 过滤条件。
+<li>EventType- String - 是否必填：否 -事件类型 EVENT_RISK:风险事件类型，EVENT_PRIVILEGE:特权。</li>
+<li>DealBehavior- String - 是否必填：否 - 执行动作,BEHAVIOR_ALERT:告警，BEHAVIOR_HOLDUP_SUCCESSED:拦截。</li>
+<li>RuleName- string - 是否必填：否 - 规则名称。</li>
+<li>NodeName- string - 是否必填：否 - 节点名称。</li>
+<li>NodeIP- string - 是否必填：否 - 内外IP。</li>
+<li>PublicIP- string - 是否必填：否 - 外网IP。</li>
+<li>ImageName- string - 是否必填：否 - 镜像名称。</li>
+<li>ImageID- string - 是否必填：否 - 镜像ID。</li>
+<li>TimeRange- String -是否必填: 否 -  时间范围，第一个值表示开始时间，第二个值表示结束时间 </li>
+        :type Filters: list of RunTimeFilters
+        :param _Limit: 需要返回的数量，默认为10，最大值为100
+        :type Limit: int
+        :param _Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param _Order: 排序方式：asc/desc
+        :type Order: str
+        :param _By: 排序字段：告警数量：EventCount，最近生成时间：LatestFoundTime
+        :type By: str
+        """
+        self._Filters = None
+        self._Limit = None
+        self._Offset = None
+        self._Order = None
+        self._By = None
+
+    @property
+    def Filters(self):
+        r"""过滤条件。
+<li>EventType- String - 是否必填：否 -事件类型 EVENT_RISK:风险事件类型，EVENT_PRIVILEGE:特权。</li>
+<li>DealBehavior- String - 是否必填：否 - 执行动作,BEHAVIOR_ALERT:告警，BEHAVIOR_HOLDUP_SUCCESSED:拦截。</li>
+<li>RuleName- string - 是否必填：否 - 规则名称。</li>
+<li>NodeName- string - 是否必填：否 - 节点名称。</li>
+<li>NodeIP- string - 是否必填：否 - 内外IP。</li>
+<li>PublicIP- string - 是否必填：否 - 外网IP。</li>
+<li>ImageName- string - 是否必填：否 - 镜像名称。</li>
+<li>ImageID- string - 是否必填：否 - 镜像ID。</li>
+<li>TimeRange- String -是否必填: 否 -  时间范围，第一个值表示开始时间，第二个值表示结束时间 </li>
+        :rtype: list of RunTimeFilters
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Limit(self):
+        r"""需要返回的数量，默认为10，最大值为100
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""偏移量，默认为0。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Order(self):
+        r"""排序方式：asc/desc
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def By(self):
+        r"""排序字段：告警数量：EventCount，最近生成时间：LatestFoundTime
+        :rtype: str
+        """
+        return self._By
+
+    @By.setter
+    def By(self, By):
+        self._By = By
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = RunTimeFilters()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._Order = params.get("Order")
+        self._By = params.get("By")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeImageDenyEventListResponse(AbstractModel):
+    r"""DescribeImageDenyEventList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _List: 镜像拦截列表
+        :type List: list of ImageDenyEvent
+        :param _TotalCount: 总数量
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._List = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def List(self):
+        r"""镜像拦截列表
+        :rtype: list of ImageDenyEvent
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def TotalCount(self):
+        r"""总数量
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = ImageDenyEvent()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeImageDenyEventTendencyRequest(AbstractModel):
+    r"""DescribeImageDenyEventTendency请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: 开始时间
+        :type StartTime: str
+        :param _EndTime: 结束时间
+        :type EndTime: str
+        """
+        self._StartTime = None
+        self._EndTime = None
+
+    @property
+    def StartTime(self):
+        r"""开始时间
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""结束时间
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeImageDenyEventTendencyResponse(AbstractModel):
+    r"""DescribeImageDenyEventTendency返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DenyList: 镜像拦截成功事件趋势
+        :type DenyList: list of ImageDenyEventTendency
+        :param _AlarmList: 镜像拦截告警事件趋势
+        :type AlarmList: list of ImageDenyEventTendency
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DenyList = None
+        self._AlarmList = None
+        self._RequestId = None
+
+    @property
+    def DenyList(self):
+        r"""镜像拦截成功事件趋势
+        :rtype: list of ImageDenyEventTendency
+        """
+        return self._DenyList
+
+    @DenyList.setter
+    def DenyList(self, DenyList):
+        self._DenyList = DenyList
+
+    @property
+    def AlarmList(self):
+        r"""镜像拦截告警事件趋势
+        :rtype: list of ImageDenyEventTendency
+        """
+        return self._AlarmList
+
+    @AlarmList.setter
+    def AlarmList(self, AlarmList):
+        self._AlarmList = AlarmList
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("DenyList") is not None:
+            self._DenyList = []
+            for item in params.get("DenyList"):
+                obj = ImageDenyEventTendency()
+                obj._deserialize(item)
+                self._DenyList.append(obj)
+        if params.get("AlarmList") is not None:
+            self._AlarmList = []
+            for item in params.get("AlarmList"):
+                obj = ImageDenyEventTendency()
+                obj._deserialize(item)
+                self._AlarmList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeImageDenyRuleDetailRequest(AbstractModel):
+    r"""DescribeImageDenyRuleDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleID: 规则RuleID
+        :type RuleID: str
+        """
+        self._RuleID = None
+
+    @property
+    def RuleID(self):
+        r"""规则RuleID
+        :rtype: str
+        """
+        return self._RuleID
+
+    @RuleID.setter
+    def RuleID(self, RuleID):
+        self._RuleID = RuleID
+
+
+    def _deserialize(self, params):
+        self._RuleID = params.get("RuleID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeImageDenyRuleDetailResponse(AbstractModel):
+    r"""DescribeImageDenyRuleDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: 规则ID
+        :type ID: int
+        :param _RuleName: 规则名称
+        :type RuleName: str
+        :param _RuleType: 规则类型 RULE_RISK：风险， RULE_PRIVILEGE：特权
+        :type RuleType: str
+        :param _EffectImageCount: 生效的镜像数量
+        :type EffectImageCount: int
+        :param _IsEffectAllImage: 是否对全部扫描镜像生效。0:全选镜像，1:自选镜像
+        :type IsEffectAllImage: int
+        :param _EffectTime: 规则开始生效时间
+        :type EffectTime: str
+        :param _UpdateTime: 更新时间
+        :type UpdateTime: str
+        :param _OperationUin: 操作用户
+        :type OperationUin: str
+        :param _EffectStatus: 生效状态 IN_THE_TEST ：观察中，IN_EFFECT：生效中
+        :type EffectStatus: str
+        :param _RuleDescription: 规则描述
+        :type RuleDescription: str
+        :param _Status: 启用状态 0:开启，1:关闭
+        :type Status: int
+        :param _Vul: 漏洞，0:未选中，1:选中
+        :type Vul: int
+        :param _CVEIDSet: cve编号
+        :type CVEIDSet: list of str
+        :param _ComponentSet: 组件编号
+        :type ComponentSet: list of str
+        :param _VulClassSet: 漏洞分类
+        :type VulClassSet: list of str
+        :param _VulLevelSet: 漏洞等级
+        :type VulLevelSet: list of str
+        :param _VulLabelSet: 漏洞标签
+        :type VulLabelSet: list of str
+        :param _Virus: 木马，0:未选中，1:选中
+        :type Virus: int
+        :param _VirusMD5Set: 木马md5列表
+        :type VirusMD5Set: list of str
+        :param _VirusLevelSet: 木马等级
+        :type VirusLevelSet: list of str
+        :param _VirusName: 病毒名
+        :type VirusName: list of str
+        :param _Risk: 敏感信息，0:未选中，1:选中
+        :type Risk: int
+        :param _RiskLevelSet: 敏感等级
+        :type RiskLevelSet: list of str
+        :param _RiskType: 敏感信息分类
+        :type RiskType: list of str
+        :param _PrivilegeRun: 特权启动 0:不允许，1:允许
+        :type PrivilegeRun: int
+        :param _PrivilegeDetail: 特权类型,
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PrivilegeDetail: list of str
+        :param _EffectImageSet: 镜像ID列表
+        :type EffectImageSet: list of str
+        :param _EffectDay: 多少天后生效
+        :type EffectDay: int
+        :param _RuleID: 规则RuelD
+        :type RuleID: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ID = None
+        self._RuleName = None
+        self._RuleType = None
+        self._EffectImageCount = None
+        self._IsEffectAllImage = None
+        self._EffectTime = None
+        self._UpdateTime = None
+        self._OperationUin = None
+        self._EffectStatus = None
+        self._RuleDescription = None
+        self._Status = None
+        self._Vul = None
+        self._CVEIDSet = None
+        self._ComponentSet = None
+        self._VulClassSet = None
+        self._VulLevelSet = None
+        self._VulLabelSet = None
+        self._Virus = None
+        self._VirusMD5Set = None
+        self._VirusLevelSet = None
+        self._VirusName = None
+        self._Risk = None
+        self._RiskLevelSet = None
+        self._RiskType = None
+        self._PrivilegeRun = None
+        self._PrivilegeDetail = None
+        self._EffectImageSet = None
+        self._EffectDay = None
+        self._RuleID = None
+        self._RequestId = None
+
+    @property
+    def ID(self):
+        r"""规则ID
+        :rtype: int
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def RuleName(self):
+        r"""规则名称
+        :rtype: str
+        """
+        return self._RuleName
+
+    @RuleName.setter
+    def RuleName(self, RuleName):
+        self._RuleName = RuleName
+
+    @property
+    def RuleType(self):
+        r"""规则类型 RULE_RISK：风险， RULE_PRIVILEGE：特权
+        :rtype: str
+        """
+        return self._RuleType
+
+    @RuleType.setter
+    def RuleType(self, RuleType):
+        self._RuleType = RuleType
+
+    @property
+    def EffectImageCount(self):
+        r"""生效的镜像数量
+        :rtype: int
+        """
+        return self._EffectImageCount
+
+    @EffectImageCount.setter
+    def EffectImageCount(self, EffectImageCount):
+        self._EffectImageCount = EffectImageCount
+
+    @property
+    def IsEffectAllImage(self):
+        r"""是否对全部扫描镜像生效。0:全选镜像，1:自选镜像
+        :rtype: int
+        """
+        return self._IsEffectAllImage
+
+    @IsEffectAllImage.setter
+    def IsEffectAllImage(self, IsEffectAllImage):
+        self._IsEffectAllImage = IsEffectAllImage
+
+    @property
+    def EffectTime(self):
+        r"""规则开始生效时间
+        :rtype: str
+        """
+        return self._EffectTime
+
+    @EffectTime.setter
+    def EffectTime(self, EffectTime):
+        self._EffectTime = EffectTime
+
+    @property
+    def UpdateTime(self):
+        r"""更新时间
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def OperationUin(self):
+        r"""操作用户
+        :rtype: str
+        """
+        return self._OperationUin
+
+    @OperationUin.setter
+    def OperationUin(self, OperationUin):
+        self._OperationUin = OperationUin
+
+    @property
+    def EffectStatus(self):
+        r"""生效状态 IN_THE_TEST ：观察中，IN_EFFECT：生效中
+        :rtype: str
+        """
+        return self._EffectStatus
+
+    @EffectStatus.setter
+    def EffectStatus(self, EffectStatus):
+        self._EffectStatus = EffectStatus
+
+    @property
+    def RuleDescription(self):
+        r"""规则描述
+        :rtype: str
+        """
+        return self._RuleDescription
+
+    @RuleDescription.setter
+    def RuleDescription(self, RuleDescription):
+        self._RuleDescription = RuleDescription
+
+    @property
+    def Status(self):
+        r"""启用状态 0:开启，1:关闭
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Vul(self):
+        r"""漏洞，0:未选中，1:选中
+        :rtype: int
+        """
+        return self._Vul
+
+    @Vul.setter
+    def Vul(self, Vul):
+        self._Vul = Vul
+
+    @property
+    def CVEIDSet(self):
+        r"""cve编号
+        :rtype: list of str
+        """
+        return self._CVEIDSet
+
+    @CVEIDSet.setter
+    def CVEIDSet(self, CVEIDSet):
+        self._CVEIDSet = CVEIDSet
+
+    @property
+    def ComponentSet(self):
+        r"""组件编号
+        :rtype: list of str
+        """
+        return self._ComponentSet
+
+    @ComponentSet.setter
+    def ComponentSet(self, ComponentSet):
+        self._ComponentSet = ComponentSet
+
+    @property
+    def VulClassSet(self):
+        r"""漏洞分类
+        :rtype: list of str
+        """
+        return self._VulClassSet
+
+    @VulClassSet.setter
+    def VulClassSet(self, VulClassSet):
+        self._VulClassSet = VulClassSet
+
+    @property
+    def VulLevelSet(self):
+        r"""漏洞等级
+        :rtype: list of str
+        """
+        return self._VulLevelSet
+
+    @VulLevelSet.setter
+    def VulLevelSet(self, VulLevelSet):
+        self._VulLevelSet = VulLevelSet
+
+    @property
+    def VulLabelSet(self):
+        r"""漏洞标签
+        :rtype: list of str
+        """
+        return self._VulLabelSet
+
+    @VulLabelSet.setter
+    def VulLabelSet(self, VulLabelSet):
+        self._VulLabelSet = VulLabelSet
+
+    @property
+    def Virus(self):
+        r"""木马，0:未选中，1:选中
+        :rtype: int
+        """
+        return self._Virus
+
+    @Virus.setter
+    def Virus(self, Virus):
+        self._Virus = Virus
+
+    @property
+    def VirusMD5Set(self):
+        r"""木马md5列表
+        :rtype: list of str
+        """
+        return self._VirusMD5Set
+
+    @VirusMD5Set.setter
+    def VirusMD5Set(self, VirusMD5Set):
+        self._VirusMD5Set = VirusMD5Set
+
+    @property
+    def VirusLevelSet(self):
+        r"""木马等级
+        :rtype: list of str
+        """
+        return self._VirusLevelSet
+
+    @VirusLevelSet.setter
+    def VirusLevelSet(self, VirusLevelSet):
+        self._VirusLevelSet = VirusLevelSet
+
+    @property
+    def VirusName(self):
+        r"""病毒名
+        :rtype: list of str
+        """
+        return self._VirusName
+
+    @VirusName.setter
+    def VirusName(self, VirusName):
+        self._VirusName = VirusName
+
+    @property
+    def Risk(self):
+        r"""敏感信息，0:未选中，1:选中
+        :rtype: int
+        """
+        return self._Risk
+
+    @Risk.setter
+    def Risk(self, Risk):
+        self._Risk = Risk
+
+    @property
+    def RiskLevelSet(self):
+        r"""敏感等级
+        :rtype: list of str
+        """
+        return self._RiskLevelSet
+
+    @RiskLevelSet.setter
+    def RiskLevelSet(self, RiskLevelSet):
+        self._RiskLevelSet = RiskLevelSet
+
+    @property
+    def RiskType(self):
+        r"""敏感信息分类
+        :rtype: list of str
+        """
+        return self._RiskType
+
+    @RiskType.setter
+    def RiskType(self, RiskType):
+        self._RiskType = RiskType
+
+    @property
+    def PrivilegeRun(self):
+        r"""特权启动 0:不允许，1:允许
+        :rtype: int
+        """
+        return self._PrivilegeRun
+
+    @PrivilegeRun.setter
+    def PrivilegeRun(self, PrivilegeRun):
+        self._PrivilegeRun = PrivilegeRun
+
+    @property
+    def PrivilegeDetail(self):
+        r"""特权类型,
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._PrivilegeDetail
+
+    @PrivilegeDetail.setter
+    def PrivilegeDetail(self, PrivilegeDetail):
+        self._PrivilegeDetail = PrivilegeDetail
+
+    @property
+    def EffectImageSet(self):
+        r"""镜像ID列表
+        :rtype: list of str
+        """
+        return self._EffectImageSet
+
+    @EffectImageSet.setter
+    def EffectImageSet(self, EffectImageSet):
+        self._EffectImageSet = EffectImageSet
+
+    @property
+    def EffectDay(self):
+        r"""多少天后生效
+        :rtype: int
+        """
+        return self._EffectDay
+
+    @EffectDay.setter
+    def EffectDay(self, EffectDay):
+        self._EffectDay = EffectDay
+
+    @property
+    def RuleID(self):
+        r"""规则RuelD
+        :rtype: str
+        """
+        return self._RuleID
+
+    @RuleID.setter
+    def RuleID(self, RuleID):
+        self._RuleID = RuleID
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        self._RuleName = params.get("RuleName")
+        self._RuleType = params.get("RuleType")
+        self._EffectImageCount = params.get("EffectImageCount")
+        self._IsEffectAllImage = params.get("IsEffectAllImage")
+        self._EffectTime = params.get("EffectTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._OperationUin = params.get("OperationUin")
+        self._EffectStatus = params.get("EffectStatus")
+        self._RuleDescription = params.get("RuleDescription")
+        self._Status = params.get("Status")
+        self._Vul = params.get("Vul")
+        self._CVEIDSet = params.get("CVEIDSet")
+        self._ComponentSet = params.get("ComponentSet")
+        self._VulClassSet = params.get("VulClassSet")
+        self._VulLevelSet = params.get("VulLevelSet")
+        self._VulLabelSet = params.get("VulLabelSet")
+        self._Virus = params.get("Virus")
+        self._VirusMD5Set = params.get("VirusMD5Set")
+        self._VirusLevelSet = params.get("VirusLevelSet")
+        self._VirusName = params.get("VirusName")
+        self._Risk = params.get("Risk")
+        self._RiskLevelSet = params.get("RiskLevelSet")
+        self._RiskType = params.get("RiskType")
+        self._PrivilegeRun = params.get("PrivilegeRun")
+        self._PrivilegeDetail = params.get("PrivilegeDetail")
+        self._EffectImageSet = params.get("EffectImageSet")
+        self._EffectDay = params.get("EffectDay")
+        self._RuleID = params.get("RuleID")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeImageDenyRuleListRequest(AbstractModel):
+    r"""DescribeImageDenyRuleList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filters: 过滤条件。
+<li>RuleType- String - 是否必填：否 -规则类型 RULE_RISK：风险， RULE_PRIVILEGE：特权</li>
+<li>EffectStatus- String - 是否必填：否 - 生效状态 IN_THE_TEST ：观察中，IN_EFFECT：生效中。</li>
+<li>RuleName- string - 是否必填：否 - 规则名称。</li>
+<li>Status- string - 是否必填：否 - 开启状态 0：开启，1：关闭。</li>
+        :type Filters: list of RunTimeFilters
+        :param _Limit: 需要返回的数量，默认为10，最大值为100
+        :type Limit: int
+        :param _Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param _Order: 排序方式：asc/desc
+        :type Order: str
+        :param _By: 排序字段：生效时间：EffectTime，更新时间：UpdateTime
+        :type By: str
+        :param _TopTurnOn: 置顶已开启规则 true：是 ，否：false
+        :type TopTurnOn: bool
+        """
+        self._Filters = None
+        self._Limit = None
+        self._Offset = None
+        self._Order = None
+        self._By = None
+        self._TopTurnOn = None
+
+    @property
+    def Filters(self):
+        r"""过滤条件。
+<li>RuleType- String - 是否必填：否 -规则类型 RULE_RISK：风险， RULE_PRIVILEGE：特权</li>
+<li>EffectStatus- String - 是否必填：否 - 生效状态 IN_THE_TEST ：观察中，IN_EFFECT：生效中。</li>
+<li>RuleName- string - 是否必填：否 - 规则名称。</li>
+<li>Status- string - 是否必填：否 - 开启状态 0：开启，1：关闭。</li>
+        :rtype: list of RunTimeFilters
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Limit(self):
+        r"""需要返回的数量，默认为10，最大值为100
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""偏移量，默认为0。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Order(self):
+        r"""排序方式：asc/desc
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def By(self):
+        r"""排序字段：生效时间：EffectTime，更新时间：UpdateTime
+        :rtype: str
+        """
+        return self._By
+
+    @By.setter
+    def By(self, By):
+        self._By = By
+
+    @property
+    def TopTurnOn(self):
+        r"""置顶已开启规则 true：是 ，否：false
+        :rtype: bool
+        """
+        return self._TopTurnOn
+
+    @TopTurnOn.setter
+    def TopTurnOn(self, TopTurnOn):
+        self._TopTurnOn = TopTurnOn
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = RunTimeFilters()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._Order = params.get("Order")
+        self._By = params.get("By")
+        self._TopTurnOn = params.get("TopTurnOn")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeImageDenyRuleListResponse(AbstractModel):
+    r"""DescribeImageDenyRuleList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _List: 规则列表
+        :type List: list of ImageDenyRule
+        :param _TotalCount: 规则总数量
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._List = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def List(self):
+        r"""规则列表
+        :rtype: list of ImageDenyRule
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def TotalCount(self):
+        r"""规则总数量
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = ImageDenyRule()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeImageDenyRuleSummaryRequest(AbstractModel):
+    r"""DescribeImageDenyRuleSummary请求参数结构体
+
+    """
+
+
+class DescribeImageDenyRuleSummaryResponse(AbstractModel):
+    r"""DescribeImageDenyRuleSummary返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleTotalCount: 镜像拦截规则总数(含关闭的和开启的)
+        :type RuleTotalCount: int
+        :param _EnabledRuleCount: 开启的镜像拦截规则数
+        :type EnabledRuleCount: int
+        :param _ObservedRuleCount: 观察期中的镜像拦截规则数
+        :type ObservedRuleCount: int
+        :param _EffectiveRuleCount: 已生效的镜像拦截规则数
+        :type EffectiveRuleCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RuleTotalCount = None
+        self._EnabledRuleCount = None
+        self._ObservedRuleCount = None
+        self._EffectiveRuleCount = None
+        self._RequestId = None
+
+    @property
+    def RuleTotalCount(self):
+        r"""镜像拦截规则总数(含关闭的和开启的)
+        :rtype: int
+        """
+        return self._RuleTotalCount
+
+    @RuleTotalCount.setter
+    def RuleTotalCount(self, RuleTotalCount):
+        self._RuleTotalCount = RuleTotalCount
+
+    @property
+    def EnabledRuleCount(self):
+        r"""开启的镜像拦截规则数
+        :rtype: int
+        """
+        return self._EnabledRuleCount
+
+    @EnabledRuleCount.setter
+    def EnabledRuleCount(self, EnabledRuleCount):
+        self._EnabledRuleCount = EnabledRuleCount
+
+    @property
+    def ObservedRuleCount(self):
+        r"""观察期中的镜像拦截规则数
+        :rtype: int
+        """
+        return self._ObservedRuleCount
+
+    @ObservedRuleCount.setter
+    def ObservedRuleCount(self, ObservedRuleCount):
+        self._ObservedRuleCount = ObservedRuleCount
+
+    @property
+    def EffectiveRuleCount(self):
+        r"""已生效的镜像拦截规则数
+        :rtype: int
+        """
+        return self._EffectiveRuleCount
+
+    @EffectiveRuleCount.setter
+    def EffectiveRuleCount(self, EffectiveRuleCount):
+        self._EffectiveRuleCount = EffectiveRuleCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RuleTotalCount = params.get("RuleTotalCount")
+        self._EnabledRuleCount = params.get("EnabledRuleCount")
+        self._ObservedRuleCount = params.get("ObservedRuleCount")
+        self._EffectiveRuleCount = params.get("EffectiveRuleCount")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeImageRegistryNamespaceListRequest(AbstractModel):
     r"""DescribeImageRegistryNamespaceList请求参数结构体
 
@@ -37825,6 +39505,346 @@ class DescribeLogStorageStatisticResponse(AbstractModel):
     def _deserialize(self, params):
         self._TotalSize = params.get("TotalSize")
         self._UsedSize = params.get("UsedSize")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeMaliciousConnectionBlackListRequest(AbstractModel):
+    r"""DescribeMaliciousConnectionBlackList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Limit: 需要返回的数量，默认为10，最大值为100
+        :type Limit: int
+        :param _Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param _Filters: 过滤条件。
+<li>RequestType- string - 是否必填：否 - 请求类型，全部请求类型：ALL；域名：DOMAIN；IP: IP</li>
+<li>BlackDomain- string - 是否必填：否 - 自定义黑域名</li>
+<li>BlackIP- string - 是否必填：否 - 自定义黑IP</li>
+        :type Filters: list of RunTimeFilters
+        :param _Order: 排序方式
+        :type Order: str
+        :param _By: 排序字段
+        :type By: str
+        """
+        self._Limit = None
+        self._Offset = None
+        self._Filters = None
+        self._Order = None
+        self._By = None
+
+    @property
+    def Limit(self):
+        r"""需要返回的数量，默认为10，最大值为100
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""偏移量，默认为0。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Filters(self):
+        r"""过滤条件。
+<li>RequestType- string - 是否必填：否 - 请求类型，全部请求类型：ALL；域名：DOMAIN；IP: IP</li>
+<li>BlackDomain- string - 是否必填：否 - 自定义黑域名</li>
+<li>BlackIP- string - 是否必填：否 - 自定义黑IP</li>
+        :rtype: list of RunTimeFilters
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Order(self):
+        r"""排序方式
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def By(self):
+        r"""排序字段
+        :rtype: str
+        """
+        return self._By
+
+    @By.setter
+    def By(self, By):
+        self._By = By
+
+
+    def _deserialize(self, params):
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = RunTimeFilters()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Order = params.get("Order")
+        self._By = params.get("By")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeMaliciousConnectionBlackListResponse(AbstractModel):
+    r"""DescribeMaliciousConnectionBlackList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 恶意请求白名单总数
+        :type TotalCount: int
+        :param _List: 恶意请求白名单列表
+        :type List: list of MaliciousConnectionRuleInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._List = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""恶意请求白名单总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def List(self):
+        r"""恶意请求白名单列表
+        :rtype: list of MaliciousConnectionRuleInfo
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = MaliciousConnectionRuleInfo()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeMaliciousConnectionWhiteListRequest(AbstractModel):
+    r"""DescribeMaliciousConnectionWhiteList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Limit: 需要返回的数量，默认为10，最大值为100
+        :type Limit: int
+        :param _Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param _Filters: 过滤条件。
+<li>RequestType- string - 是否必填：是 - 请求类型，全部请求类型：ALL；域名：DOMAIN；IP: IP</li>
+<li>WhiteDomain- string - 是否必填：否 - 自定义白域名</li>
+<li>WhiteIP- string - 是否必填：否 - 自定义白名单IP</li>
+        :type Filters: list of RunTimeFilters
+        :param _Order: 排序方式
+        :type Order: str
+        :param _By: 排序字段
+        :type By: str
+        """
+        self._Limit = None
+        self._Offset = None
+        self._Filters = None
+        self._Order = None
+        self._By = None
+
+    @property
+    def Limit(self):
+        r"""需要返回的数量，默认为10，最大值为100
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""偏移量，默认为0。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Filters(self):
+        r"""过滤条件。
+<li>RequestType- string - 是否必填：是 - 请求类型，全部请求类型：ALL；域名：DOMAIN；IP: IP</li>
+<li>WhiteDomain- string - 是否必填：否 - 自定义白域名</li>
+<li>WhiteIP- string - 是否必填：否 - 自定义白名单IP</li>
+        :rtype: list of RunTimeFilters
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Order(self):
+        r"""排序方式
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def By(self):
+        r"""排序字段
+        :rtype: str
+        """
+        return self._By
+
+    @By.setter
+    def By(self, By):
+        self._By = By
+
+
+    def _deserialize(self, params):
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = RunTimeFilters()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Order = params.get("Order")
+        self._By = params.get("By")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeMaliciousConnectionWhiteListResponse(AbstractModel):
+    r"""DescribeMaliciousConnectionWhiteList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 恶意请求白名单总数
+        :type TotalCount: int
+        :param _List: 恶意请求白名单列表
+        :type List: list of MaliciousConnectionRuleInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._List = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""恶意请求白名单总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def List(self):
+        r"""恶意请求白名单列表
+        :rtype: list of MaliciousConnectionRuleInfo
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = MaliciousConnectionRuleInfo()
+                obj._deserialize(item)
+                self._List.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -41371,6 +43391,255 @@ class DescribeReverseShellEventsResponse(AbstractModel):
                 obj = ReverseShellEventInfo()
                 obj._deserialize(item)
                 self._EventSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeReverseShellRegexpWhiteListInfoRequest(AbstractModel):
+    r"""DescribeReverseShellRegexpWhiteListInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleID: 规则ID
+        :type RuleID: str
+        """
+        self._RuleID = None
+
+    @property
+    def RuleID(self):
+        r"""规则ID
+        :rtype: str
+        """
+        return self._RuleID
+
+    @RuleID.setter
+    def RuleID(self, RuleID):
+        self._RuleID = RuleID
+
+
+    def _deserialize(self, params):
+        self._RuleID = params.get("RuleID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeReverseShellRegexpWhiteListInfoResponse(AbstractModel):
+    r"""DescribeReverseShellRegexpWhiteListInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleInfo: 规则详情
+        :type RuleInfo: :class:`tencentcloud.tcss.v20201101.models.RegexpRuleInfo`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RuleInfo = None
+        self._RequestId = None
+
+    @property
+    def RuleInfo(self):
+        r"""规则详情
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.RegexpRuleInfo`
+        """
+        return self._RuleInfo
+
+    @RuleInfo.setter
+    def RuleInfo(self, RuleInfo):
+        self._RuleInfo = RuleInfo
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("RuleInfo") is not None:
+            self._RuleInfo = RegexpRuleInfo()
+            self._RuleInfo._deserialize(params.get("RuleInfo"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeReverseShellRegexpWhiteListRequest(AbstractModel):
+    r"""DescribeReverseShellRegexpWhiteList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filters: 过滤条件。
+
+RuleName- String - 是否必填：否 - 规则名称
+        :type Filters: list of RunTimeFilters
+        :param _Limit: 需要返回的数量，默认为10，最大值为100
+        :type Limit: int
+        :param _Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param _By: 排序字段
+        :type By: str
+        :param _Order: 排序方式
+        :type Order: str
+        """
+        self._Filters = None
+        self._Limit = None
+        self._Offset = None
+        self._By = None
+        self._Order = None
+
+    @property
+    def Filters(self):
+        r"""过滤条件。
+
+RuleName- String - 是否必填：否 - 规则名称
+        :rtype: list of RunTimeFilters
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Limit(self):
+        r"""需要返回的数量，默认为10，最大值为100
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""偏移量，默认为0。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def By(self):
+        r"""排序字段
+        :rtype: str
+        """
+        return self._By
+
+    @By.setter
+    def By(self, By):
+        self._By = By
+
+    @property
+    def Order(self):
+        r"""排序方式
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = RunTimeFilters()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._By = params.get("By")
+        self._Order = params.get("Order")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeReverseShellRegexpWhiteListResponse(AbstractModel):
+    r"""DescribeReverseShellRegexpWhiteList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 总数
+        :type TotalCount: int
+        :param _List: 列表
+        :type List: list of RegexpRuleListItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._List = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def List(self):
+        r"""列表
+        :rtype: list of RegexpRuleListItem
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = RegexpRuleListItem()
+                obj._deserialize(item)
+                self._List.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -56107,6 +58376,675 @@ class ImageComponent(AbstractModel):
         
 
 
+class ImageDenyEvent(AbstractModel):
+    r"""镜像拦截事件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EventType: 事件类型 EVENT_RISK:风险事件类型，EVENT_PRIVILEGE:特权
+        :type EventType: str
+        :param _RuleName: 规则名称
+        :type RuleName: str
+        :param _RuleID: 规则RuleID
+        :type RuleID: str
+        :param _RuleType: 规则类型
+        :type RuleType: str
+        :param _RuleStatus: 规则启用状态 0:开启，1:关闭
+        :type RuleStatus: int
+        :param _RuleEffectStatus: 规则策略状态 IN_THE_TEST ：观察中，IN_EFFECT：生效中
+        :type RuleEffectStatus: str
+        :param _RuleInfo: 规则内容
+        :type RuleInfo: list of str
+        :param _RuleDescription: 规则描述
+        :type RuleDescription: str
+        :param _ImageID: 镜像ID
+        :type ImageID: str
+        :param _ImageName: 镜像名称
+        :type ImageName: str
+        :param _NodeName: 节点名称
+        :type NodeName: str
+        :param _NodeIP: 内网IP
+        :type NodeIP: str
+        :param _QUUID: 主机Quuid
+        :type QUUID: str
+        :param _FoundTime: 首次生成时间
+        :type FoundTime: str
+        :param _LatestFoundTime: 最近生成时间
+        :type LatestFoundTime: str
+        :param _EventCount: 事件数量
+        :type EventCount: int
+        :param _DealBehavior: 执行动作:
+BEHAVIOR_ALERT:告警，
+BEHAVIOR_HOLDUP_SUCCESSED:拦截
+        :type DealBehavior: str
+        :param _EventID: 事件ID
+        :type EventID: int
+        :param _PublicIP: 外网IP
+        :type PublicIP: str
+        :param _NodeID: 节点ID
+        :type NodeID: str
+        :param _ClusterID: 集群ID
+        :type ClusterID: str
+        :param _NodeType: 节点类型
+        :type NodeType: str
+        :param _NodeUniqueID: 超级节点唯一id
+        :type NodeUniqueID: str
+        :param _PodIP: pod ip
+        :type PodIP: str
+        :param _PodName: pod name
+        :type PodName: str
+        :param _ClusterName: 集群名称
+        :type ClusterName: str
+        :param _ImageRegistryInfo: 镜像仓库信息
+        :type ImageRegistryInfo: :class:`tencentcloud.tcss.v20201101.models.ImageRegistryInfo`
+        """
+        self._EventType = None
+        self._RuleName = None
+        self._RuleID = None
+        self._RuleType = None
+        self._RuleStatus = None
+        self._RuleEffectStatus = None
+        self._RuleInfo = None
+        self._RuleDescription = None
+        self._ImageID = None
+        self._ImageName = None
+        self._NodeName = None
+        self._NodeIP = None
+        self._QUUID = None
+        self._FoundTime = None
+        self._LatestFoundTime = None
+        self._EventCount = None
+        self._DealBehavior = None
+        self._EventID = None
+        self._PublicIP = None
+        self._NodeID = None
+        self._ClusterID = None
+        self._NodeType = None
+        self._NodeUniqueID = None
+        self._PodIP = None
+        self._PodName = None
+        self._ClusterName = None
+        self._ImageRegistryInfo = None
+
+    @property
+    def EventType(self):
+        r"""事件类型 EVENT_RISK:风险事件类型，EVENT_PRIVILEGE:特权
+        :rtype: str
+        """
+        return self._EventType
+
+    @EventType.setter
+    def EventType(self, EventType):
+        self._EventType = EventType
+
+    @property
+    def RuleName(self):
+        r"""规则名称
+        :rtype: str
+        """
+        return self._RuleName
+
+    @RuleName.setter
+    def RuleName(self, RuleName):
+        self._RuleName = RuleName
+
+    @property
+    def RuleID(self):
+        r"""规则RuleID
+        :rtype: str
+        """
+        return self._RuleID
+
+    @RuleID.setter
+    def RuleID(self, RuleID):
+        self._RuleID = RuleID
+
+    @property
+    def RuleType(self):
+        r"""规则类型
+        :rtype: str
+        """
+        return self._RuleType
+
+    @RuleType.setter
+    def RuleType(self, RuleType):
+        self._RuleType = RuleType
+
+    @property
+    def RuleStatus(self):
+        r"""规则启用状态 0:开启，1:关闭
+        :rtype: int
+        """
+        return self._RuleStatus
+
+    @RuleStatus.setter
+    def RuleStatus(self, RuleStatus):
+        self._RuleStatus = RuleStatus
+
+    @property
+    def RuleEffectStatus(self):
+        r"""规则策略状态 IN_THE_TEST ：观察中，IN_EFFECT：生效中
+        :rtype: str
+        """
+        return self._RuleEffectStatus
+
+    @RuleEffectStatus.setter
+    def RuleEffectStatus(self, RuleEffectStatus):
+        self._RuleEffectStatus = RuleEffectStatus
+
+    @property
+    def RuleInfo(self):
+        r"""规则内容
+        :rtype: list of str
+        """
+        return self._RuleInfo
+
+    @RuleInfo.setter
+    def RuleInfo(self, RuleInfo):
+        self._RuleInfo = RuleInfo
+
+    @property
+    def RuleDescription(self):
+        r"""规则描述
+        :rtype: str
+        """
+        return self._RuleDescription
+
+    @RuleDescription.setter
+    def RuleDescription(self, RuleDescription):
+        self._RuleDescription = RuleDescription
+
+    @property
+    def ImageID(self):
+        r"""镜像ID
+        :rtype: str
+        """
+        return self._ImageID
+
+    @ImageID.setter
+    def ImageID(self, ImageID):
+        self._ImageID = ImageID
+
+    @property
+    def ImageName(self):
+        r"""镜像名称
+        :rtype: str
+        """
+        return self._ImageName
+
+    @ImageName.setter
+    def ImageName(self, ImageName):
+        self._ImageName = ImageName
+
+    @property
+    def NodeName(self):
+        r"""节点名称
+        :rtype: str
+        """
+        return self._NodeName
+
+    @NodeName.setter
+    def NodeName(self, NodeName):
+        self._NodeName = NodeName
+
+    @property
+    def NodeIP(self):
+        r"""内网IP
+        :rtype: str
+        """
+        return self._NodeIP
+
+    @NodeIP.setter
+    def NodeIP(self, NodeIP):
+        self._NodeIP = NodeIP
+
+    @property
+    def QUUID(self):
+        r"""主机Quuid
+        :rtype: str
+        """
+        return self._QUUID
+
+    @QUUID.setter
+    def QUUID(self, QUUID):
+        self._QUUID = QUUID
+
+    @property
+    def FoundTime(self):
+        r"""首次生成时间
+        :rtype: str
+        """
+        return self._FoundTime
+
+    @FoundTime.setter
+    def FoundTime(self, FoundTime):
+        self._FoundTime = FoundTime
+
+    @property
+    def LatestFoundTime(self):
+        r"""最近生成时间
+        :rtype: str
+        """
+        return self._LatestFoundTime
+
+    @LatestFoundTime.setter
+    def LatestFoundTime(self, LatestFoundTime):
+        self._LatestFoundTime = LatestFoundTime
+
+    @property
+    def EventCount(self):
+        r"""事件数量
+        :rtype: int
+        """
+        return self._EventCount
+
+    @EventCount.setter
+    def EventCount(self, EventCount):
+        self._EventCount = EventCount
+
+    @property
+    def DealBehavior(self):
+        r"""执行动作:
+BEHAVIOR_ALERT:告警，
+BEHAVIOR_HOLDUP_SUCCESSED:拦截
+        :rtype: str
+        """
+        return self._DealBehavior
+
+    @DealBehavior.setter
+    def DealBehavior(self, DealBehavior):
+        self._DealBehavior = DealBehavior
+
+    @property
+    def EventID(self):
+        r"""事件ID
+        :rtype: int
+        """
+        return self._EventID
+
+    @EventID.setter
+    def EventID(self, EventID):
+        self._EventID = EventID
+
+    @property
+    def PublicIP(self):
+        r"""外网IP
+        :rtype: str
+        """
+        return self._PublicIP
+
+    @PublicIP.setter
+    def PublicIP(self, PublicIP):
+        self._PublicIP = PublicIP
+
+    @property
+    def NodeID(self):
+        r"""节点ID
+        :rtype: str
+        """
+        return self._NodeID
+
+    @NodeID.setter
+    def NodeID(self, NodeID):
+        self._NodeID = NodeID
+
+    @property
+    def ClusterID(self):
+        r"""集群ID
+        :rtype: str
+        """
+        return self._ClusterID
+
+    @ClusterID.setter
+    def ClusterID(self, ClusterID):
+        self._ClusterID = ClusterID
+
+    @property
+    def NodeType(self):
+        r"""节点类型
+        :rtype: str
+        """
+        return self._NodeType
+
+    @NodeType.setter
+    def NodeType(self, NodeType):
+        self._NodeType = NodeType
+
+    @property
+    def NodeUniqueID(self):
+        r"""超级节点唯一id
+        :rtype: str
+        """
+        return self._NodeUniqueID
+
+    @NodeUniqueID.setter
+    def NodeUniqueID(self, NodeUniqueID):
+        self._NodeUniqueID = NodeUniqueID
+
+    @property
+    def PodIP(self):
+        r"""pod ip
+        :rtype: str
+        """
+        return self._PodIP
+
+    @PodIP.setter
+    def PodIP(self, PodIP):
+        self._PodIP = PodIP
+
+    @property
+    def PodName(self):
+        r"""pod name
+        :rtype: str
+        """
+        return self._PodName
+
+    @PodName.setter
+    def PodName(self, PodName):
+        self._PodName = PodName
+
+    @property
+    def ClusterName(self):
+        r"""集群名称
+        :rtype: str
+        """
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+    @property
+    def ImageRegistryInfo(self):
+        r"""镜像仓库信息
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.ImageRegistryInfo`
+        """
+        return self._ImageRegistryInfo
+
+    @ImageRegistryInfo.setter
+    def ImageRegistryInfo(self, ImageRegistryInfo):
+        self._ImageRegistryInfo = ImageRegistryInfo
+
+
+    def _deserialize(self, params):
+        self._EventType = params.get("EventType")
+        self._RuleName = params.get("RuleName")
+        self._RuleID = params.get("RuleID")
+        self._RuleType = params.get("RuleType")
+        self._RuleStatus = params.get("RuleStatus")
+        self._RuleEffectStatus = params.get("RuleEffectStatus")
+        self._RuleInfo = params.get("RuleInfo")
+        self._RuleDescription = params.get("RuleDescription")
+        self._ImageID = params.get("ImageID")
+        self._ImageName = params.get("ImageName")
+        self._NodeName = params.get("NodeName")
+        self._NodeIP = params.get("NodeIP")
+        self._QUUID = params.get("QUUID")
+        self._FoundTime = params.get("FoundTime")
+        self._LatestFoundTime = params.get("LatestFoundTime")
+        self._EventCount = params.get("EventCount")
+        self._DealBehavior = params.get("DealBehavior")
+        self._EventID = params.get("EventID")
+        self._PublicIP = params.get("PublicIP")
+        self._NodeID = params.get("NodeID")
+        self._ClusterID = params.get("ClusterID")
+        self._NodeType = params.get("NodeType")
+        self._NodeUniqueID = params.get("NodeUniqueID")
+        self._PodIP = params.get("PodIP")
+        self._PodName = params.get("PodName")
+        self._ClusterName = params.get("ClusterName")
+        if params.get("ImageRegistryInfo") is not None:
+            self._ImageRegistryInfo = ImageRegistryInfo()
+            self._ImageRegistryInfo._deserialize(params.get("ImageRegistryInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ImageDenyEventTendency(AbstractModel):
+    r"""镜像拦截事件趋势
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Date: 日期
+        :type Date: str
+        :param _EventCount: 事件数量
+        :type EventCount: int
+        """
+        self._Date = None
+        self._EventCount = None
+
+    @property
+    def Date(self):
+        r"""日期
+        :rtype: str
+        """
+        return self._Date
+
+    @Date.setter
+    def Date(self, Date):
+        self._Date = Date
+
+    @property
+    def EventCount(self):
+        r"""事件数量
+        :rtype: int
+        """
+        return self._EventCount
+
+    @EventCount.setter
+    def EventCount(self, EventCount):
+        self._EventCount = EventCount
+
+
+    def _deserialize(self, params):
+        self._Date = params.get("Date")
+        self._EventCount = params.get("EventCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ImageDenyRule(AbstractModel):
+    r"""镜像拦截规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleID: 规则RuleID
+        :type RuleID: str
+        :param _RuleName: 规则名称
+        :type RuleName: str
+        :param _RuleType: 规则类型 RULE_RISK：风险， RULE_PRIVILEGE：特权
+        :type RuleType: str
+        :param _EffectImageCount: 生效的镜像数量
+        :type EffectImageCount: int
+        :param _IsEffectAllImage: 是否对全部扫描镜像生效。0:全选镜像，1:自选镜像
+        :type IsEffectAllImage: int
+        :param _EffectTime: 规则开始生效时间
+        :type EffectTime: str
+        :param _UpdateTime: 更新时间
+        :type UpdateTime: str
+        :param _OperationUin: 操作用户
+        :type OperationUin: str
+        :param _Status: 启用状态
+        :type Status: int
+        :param _EffectStatus: 生效状态 IN_THE_TEST ：观察中，IN_EFFECT：生效中
+        :type EffectStatus: str
+        :param _ID: 规则ID
+        :type ID: int
+        """
+        self._RuleID = None
+        self._RuleName = None
+        self._RuleType = None
+        self._EffectImageCount = None
+        self._IsEffectAllImage = None
+        self._EffectTime = None
+        self._UpdateTime = None
+        self._OperationUin = None
+        self._Status = None
+        self._EffectStatus = None
+        self._ID = None
+
+    @property
+    def RuleID(self):
+        r"""规则RuleID
+        :rtype: str
+        """
+        return self._RuleID
+
+    @RuleID.setter
+    def RuleID(self, RuleID):
+        self._RuleID = RuleID
+
+    @property
+    def RuleName(self):
+        r"""规则名称
+        :rtype: str
+        """
+        return self._RuleName
+
+    @RuleName.setter
+    def RuleName(self, RuleName):
+        self._RuleName = RuleName
+
+    @property
+    def RuleType(self):
+        r"""规则类型 RULE_RISK：风险， RULE_PRIVILEGE：特权
+        :rtype: str
+        """
+        return self._RuleType
+
+    @RuleType.setter
+    def RuleType(self, RuleType):
+        self._RuleType = RuleType
+
+    @property
+    def EffectImageCount(self):
+        r"""生效的镜像数量
+        :rtype: int
+        """
+        return self._EffectImageCount
+
+    @EffectImageCount.setter
+    def EffectImageCount(self, EffectImageCount):
+        self._EffectImageCount = EffectImageCount
+
+    @property
+    def IsEffectAllImage(self):
+        r"""是否对全部扫描镜像生效。0:全选镜像，1:自选镜像
+        :rtype: int
+        """
+        return self._IsEffectAllImage
+
+    @IsEffectAllImage.setter
+    def IsEffectAllImage(self, IsEffectAllImage):
+        self._IsEffectAllImage = IsEffectAllImage
+
+    @property
+    def EffectTime(self):
+        r"""规则开始生效时间
+        :rtype: str
+        """
+        return self._EffectTime
+
+    @EffectTime.setter
+    def EffectTime(self, EffectTime):
+        self._EffectTime = EffectTime
+
+    @property
+    def UpdateTime(self):
+        r"""更新时间
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def OperationUin(self):
+        r"""操作用户
+        :rtype: str
+        """
+        return self._OperationUin
+
+    @OperationUin.setter
+    def OperationUin(self, OperationUin):
+        self._OperationUin = OperationUin
+
+    @property
+    def Status(self):
+        r"""启用状态
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def EffectStatus(self):
+        r"""生效状态 IN_THE_TEST ：观察中，IN_EFFECT：生效中
+        :rtype: str
+        """
+        return self._EffectStatus
+
+    @EffectStatus.setter
+    def EffectStatus(self, EffectStatus):
+        self._EffectStatus = EffectStatus
+
+    @property
+    def ID(self):
+        r"""规则ID
+        :rtype: int
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+
+    def _deserialize(self, params):
+        self._RuleID = params.get("RuleID")
+        self._RuleName = params.get("RuleName")
+        self._RuleType = params.get("RuleType")
+        self._EffectImageCount = params.get("EffectImageCount")
+        self._IsEffectAllImage = params.get("IsEffectAllImage")
+        self._EffectTime = params.get("EffectTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._OperationUin = params.get("OperationUin")
+        self._Status = params.get("Status")
+        self._EffectStatus = params.get("EffectStatus")
+        self._ID = params.get("ID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ImageHost(AbstractModel):
     r"""容器安全 主机镜像关联列表
 
@@ -61038,6 +63976,121 @@ class K8sApiAbnormalTendencyItem(AbstractModel):
         self._UserDefinedRuleCount = params.get("UserDefinedRuleCount")
         self._AnonymousAccessCount = params.get("AnonymousAccessCount")
         self._PrivilegeContainerCount = params.get("PrivilegeContainerCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MaliciousConnectionRuleInfo(AbstractModel):
+    r"""恶意外连黑白名单信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleType: 枚举：
+IP: 表示ipv4或者ipv6
+DOMAIN: 表示域名
+        :type RuleType: str
+        :param _Address: 自定义黑白名单的域名/IP
+        :type Address: str
+        :param _CreatedTime: 创建时间
+        :type CreatedTime: str
+        :param _UpdateTime: 更新时间
+        :type UpdateTime: str
+        :param _Remark: 备注
+        :type Remark: str
+        :param _RuleID: 规则ID
+        :type RuleID: int
+        """
+        self._RuleType = None
+        self._Address = None
+        self._CreatedTime = None
+        self._UpdateTime = None
+        self._Remark = None
+        self._RuleID = None
+
+    @property
+    def RuleType(self):
+        r"""枚举：
+IP: 表示ipv4或者ipv6
+DOMAIN: 表示域名
+        :rtype: str
+        """
+        return self._RuleType
+
+    @RuleType.setter
+    def RuleType(self, RuleType):
+        self._RuleType = RuleType
+
+    @property
+    def Address(self):
+        r"""自定义黑白名单的域名/IP
+        :rtype: str
+        """
+        return self._Address
+
+    @Address.setter
+    def Address(self, Address):
+        self._Address = Address
+
+    @property
+    def CreatedTime(self):
+        r"""创建时间
+        :rtype: str
+        """
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+    @property
+    def UpdateTime(self):
+        r"""更新时间
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def Remark(self):
+        r"""备注
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def RuleID(self):
+        r"""规则ID
+        :rtype: int
+        """
+        return self._RuleID
+
+    @RuleID.setter
+    def RuleID(self, RuleID):
+        self._RuleID = RuleID
+
+
+    def _deserialize(self, params):
+        self._RuleType = params.get("RuleType")
+        self._Address = params.get("Address")
+        self._CreatedTime = params.get("CreatedTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._Remark = params.get("Remark")
+        self._RuleID = params.get("RuleID")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -67746,6 +70799,257 @@ class RaspRuleVul(AbstractModel):
         self._VulVulsName = params.get("VulVulsName")
         self._CveID = params.get("CveID")
         self._SupportDefense = params.get("SupportDefense")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RegexpRuleInfo(AbstractModel):
+    r"""正则规则详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleName: 规则名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleName: str
+        :param _Status: 启用状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: bool
+        :param _ExpressionList: 正则表达式列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExpressionList: list of WhiteListRegexpExpressionInfo
+        :param _RuleID: 规则ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleID: str
+        :param _UpdateTime: 最近更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        :param _OperatorUIN: 最近操作账号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OperatorUIN: str
+        """
+        self._RuleName = None
+        self._Status = None
+        self._ExpressionList = None
+        self._RuleID = None
+        self._UpdateTime = None
+        self._OperatorUIN = None
+
+    @property
+    def RuleName(self):
+        r"""规则名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RuleName
+
+    @RuleName.setter
+    def RuleName(self, RuleName):
+        self._RuleName = RuleName
+
+    @property
+    def Status(self):
+        r"""启用状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ExpressionList(self):
+        r"""正则表达式列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of WhiteListRegexpExpressionInfo
+        """
+        return self._ExpressionList
+
+    @ExpressionList.setter
+    def ExpressionList(self, ExpressionList):
+        self._ExpressionList = ExpressionList
+
+    @property
+    def RuleID(self):
+        r"""规则ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RuleID
+
+    @RuleID.setter
+    def RuleID(self, RuleID):
+        self._RuleID = RuleID
+
+    @property
+    def UpdateTime(self):
+        r"""最近更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def OperatorUIN(self):
+        r"""最近操作账号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._OperatorUIN
+
+    @OperatorUIN.setter
+    def OperatorUIN(self, OperatorUIN):
+        self._OperatorUIN = OperatorUIN
+
+
+    def _deserialize(self, params):
+        self._RuleName = params.get("RuleName")
+        self._Status = params.get("Status")
+        if params.get("ExpressionList") is not None:
+            self._ExpressionList = []
+            for item in params.get("ExpressionList"):
+                obj = WhiteListRegexpExpressionInfo()
+                obj._deserialize(item)
+                self._ExpressionList.append(obj)
+        self._RuleID = params.get("RuleID")
+        self._UpdateTime = params.get("UpdateTime")
+        self._OperatorUIN = params.get("OperatorUIN")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RegexpRuleListItem(AbstractModel):
+    r"""正则规则列表Item
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleID: 规则ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleID: str
+        :param _RuleName: 规则名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleName: str
+        :param _EffectiveExpression: 生效表达式个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EffectiveExpression: int
+        :param _UpdateTime: 最新编辑时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        :param _OperatorUin: 最近编辑账号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OperatorUin: str
+        :param _Status: 启用状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: bool
+        """
+        self._RuleID = None
+        self._RuleName = None
+        self._EffectiveExpression = None
+        self._UpdateTime = None
+        self._OperatorUin = None
+        self._Status = None
+
+    @property
+    def RuleID(self):
+        r"""规则ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RuleID
+
+    @RuleID.setter
+    def RuleID(self, RuleID):
+        self._RuleID = RuleID
+
+    @property
+    def RuleName(self):
+        r"""规则名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RuleName
+
+    @RuleName.setter
+    def RuleName(self, RuleName):
+        self._RuleName = RuleName
+
+    @property
+    def EffectiveExpression(self):
+        r"""生效表达式个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._EffectiveExpression
+
+    @EffectiveExpression.setter
+    def EffectiveExpression(self, EffectiveExpression):
+        self._EffectiveExpression = EffectiveExpression
+
+    @property
+    def UpdateTime(self):
+        r"""最新编辑时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def OperatorUin(self):
+        r"""最近编辑账号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._OperatorUin
+
+    @OperatorUin.setter
+    def OperatorUin(self, OperatorUin):
+        self._OperatorUin = OperatorUin
+
+    @property
+    def Status(self):
+        r"""启用状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._RuleID = params.get("RuleID")
+        self._RuleName = params.get("RuleName")
+        self._EffectiveExpression = params.get("EffectiveExpression")
+        self._UpdateTime = params.get("UpdateTime")
+        self._OperatorUin = params.get("OperatorUin")
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -80716,6 +84020,78 @@ class WarningRule(AbstractModel):
         self._BeginTime = params.get("BeginTime")
         self._EndTime = params.get("EndTime")
         self._ControlBits = params.get("ControlBits")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WhiteListRegexpExpressionInfo(AbstractModel):
+    r"""白名单正则表达式信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LogicSymbol: 逻辑符号
+与 (AND)
+或 (OR)
+非 (NOT)
+        :type LogicSymbol: str
+        :param _MatchField: 匹配字段
+        :type MatchField: str
+        :param _MatchContent: 匹配内容
+        :type MatchContent: str
+        """
+        self._LogicSymbol = None
+        self._MatchField = None
+        self._MatchContent = None
+
+    @property
+    def LogicSymbol(self):
+        r"""逻辑符号
+与 (AND)
+或 (OR)
+非 (NOT)
+        :rtype: str
+        """
+        return self._LogicSymbol
+
+    @LogicSymbol.setter
+    def LogicSymbol(self, LogicSymbol):
+        self._LogicSymbol = LogicSymbol
+
+    @property
+    def MatchField(self):
+        r"""匹配字段
+        :rtype: str
+        """
+        return self._MatchField
+
+    @MatchField.setter
+    def MatchField(self, MatchField):
+        self._MatchField = MatchField
+
+    @property
+    def MatchContent(self):
+        r"""匹配内容
+        :rtype: str
+        """
+        return self._MatchContent
+
+    @MatchContent.setter
+    def MatchContent(self, MatchContent):
+        self._MatchContent = MatchContent
+
+
+    def _deserialize(self, params):
+        self._LogicSymbol = params.get("LogicSymbol")
+        self._MatchField = params.get("MatchField")
+        self._MatchContent = params.get("MatchContent")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

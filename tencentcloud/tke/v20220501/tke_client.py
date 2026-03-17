@@ -210,6 +210,29 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeGPUInfo(self, request):
+        r"""请求该接口，会返回所有适配该机型和操作系统组合的gpu驱动版本
+
+        :param request: Request instance for DescribeGPUInfo.
+        :type request: :class:`tencentcloud.tke.v20220501.models.DescribeGPUInfoRequest`
+        :rtype: :class:`tencentcloud.tke.v20220501.models.DescribeGPUInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeGPUInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeGPUInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeHealthCheckPolicies(self, request):
         r"""查询健康检测策略
 
@@ -293,6 +316,29 @@ class TkeClient(AbstractClient):
             body = self.call("DescribeNodePools", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeNodePoolsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeZoneInstanceConfigInfos(self, request):
+        r"""查询原生节点机型配置
+
+        :param request: Request instance for DescribeZoneInstanceConfigInfos.
+        :type request: :class:`tencentcloud.tke.v20220501.models.DescribeZoneInstanceConfigInfosRequest`
+        :rtype: :class:`tencentcloud.tke.v20220501.models.DescribeZoneInstanceConfigInfosResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeZoneInstanceConfigInfos", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeZoneInstanceConfigInfosResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

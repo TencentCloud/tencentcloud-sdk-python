@@ -3130,6 +3130,114 @@ class TcssClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeImageDenyEventDetail(
+            self,
+            request: models.DescribeImageDenyEventDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribeImageDenyEventDetailResponse:
+        """
+        查询镜像拦截事件详情
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeImageDenyEventDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeImageDenyEventDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeImageDenyEventList(
+            self,
+            request: models.DescribeImageDenyEventListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeImageDenyEventListResponse:
+        """
+        查询镜像拦截事件列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeImageDenyEventList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeImageDenyEventListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeImageDenyEventTendency(
+            self,
+            request: models.DescribeImageDenyEventTendencyRequest,
+            opts: Dict = None,
+    ) -> models.DescribeImageDenyEventTendencyResponse:
+        """
+        查询镜像拦截事件趋势
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeImageDenyEventTendency"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeImageDenyEventTendencyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeImageDenyRuleDetail(
+            self,
+            request: models.DescribeImageDenyRuleDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribeImageDenyRuleDetailResponse:
+        """
+        查询镜像拦截规则详情
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeImageDenyRuleDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeImageDenyRuleDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeImageDenyRuleList(
+            self,
+            request: models.DescribeImageDenyRuleListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeImageDenyRuleListResponse:
+        """
+        查询镜像拦截规则列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeImageDenyRuleList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeImageDenyRuleListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeImageDenyRuleSummary(
+            self,
+            request: models.DescribeImageDenyRuleSummaryRequest,
+            opts: Dict = None,
+    ) -> models.DescribeImageDenyRuleSummaryResponse:
+        """
+        查询镜像拦截规则统计
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeImageDenyRuleSummary"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeImageDenyRuleSummaryResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeImageRegistryNamespaceList(
             self,
             request: models.DescribeImageRegistryNamespaceListRequest,
@@ -3395,6 +3503,42 @@ class TcssClient(AbstractClient):
         kwargs["action"] = "DescribeLogStorageStatistic"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeLogStorageStatisticResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeMaliciousConnectionBlackList(
+            self,
+            request: models.DescribeMaliciousConnectionBlackListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeMaliciousConnectionBlackListResponse:
+        """
+        查询恶意外连黑名单
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeMaliciousConnectionBlackList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeMaliciousConnectionBlackListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeMaliciousConnectionWhiteList(
+            self,
+            request: models.DescribeMaliciousConnectionWhiteListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeMaliciousConnectionWhiteListResponse:
+        """
+        查询恶意外连白名单
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeMaliciousConnectionWhiteList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeMaliciousConnectionWhiteListResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -3831,6 +3975,42 @@ class TcssClient(AbstractClient):
         kwargs["action"] = "DescribeReverseShellEventsExport"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeReverseShellEventsExportResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeReverseShellRegexpWhiteList(
+            self,
+            request: models.DescribeReverseShellRegexpWhiteListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeReverseShellRegexpWhiteListResponse:
+        """
+        查询反弹shell正则白名单列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeReverseShellRegexpWhiteList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeReverseShellRegexpWhiteListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeReverseShellRegexpWhiteListInfo(
+            self,
+            request: models.DescribeReverseShellRegexpWhiteListInfoRequest,
+            opts: Dict = None,
+    ) -> models.DescribeReverseShellRegexpWhiteListInfoResponse:
+        """
+        查询反弹shell正则白名单详情
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeReverseShellRegexpWhiteListInfo"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeReverseShellRegexpWhiteListInfoResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

@@ -5310,9 +5310,9 @@ class CreateBatchContractReviewTaskRequest(AbstractModel):
         :param _Operator: 执行合同审查任务的员工信息。
 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param _ResourceIds: 合同审查的PDF文件资源编号列表，通过[UploadFiles](https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles)接口获取PDF文件资源编号。 
+        :param _ResourceIds: 合同审查的PDF、WORD文件资源编号列表，通过[UploadFiles](https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles)接口获取PDF、WORD文件资源编号。 
 
-注:  `目前，此接口仅支持5个文件发起。每个文件限制在10M以下，文件必须是PDF格式`
+注:  `目前，此接口仅支持5个文件发起。每个文件限制在10M以下，文件必须是PDF、WORD格式`
         :type ResourceIds: list of str
         :param _PolicyType: 合同审查的审查尺度。默认为`0`严格尺度
 
@@ -5323,11 +5323,14 @@ class CreateBatchContractReviewTaskRequest(AbstractModel):
     <li>**2** - 【宽松】以促成交易为核心，对合同条款的修改要求较为宽松，倾向于接受对方提出的条款，以尽快达成合作。</li>  
 </ul>
         :type PolicyType: int
-        :param _Role: 合同审查中的角色信息，通过明确入参角色的名称和描述，可以提高合同审查的效率和准确性。用户不做配置时大模型会根据合同内容推荐出风险识别角色的名称和描述信息。
+        :param _Role: 合同审查中的角色信息，通过明确入参角色的名称和描述，可以提高合同审查的效率和准确性。用户不做配置时大模型会根据合同内容推荐出风险识别角色的名称和描述信息。(Depricated)
         :type Role: :class:`tencentcloud.ess.v20201111.models.RiskIdentificationRoleInfo`
-        :param _ChecklistId: 用户配置的审查清单ID，基于此清单ID批量创建合同审查任务，为32位字符串。
-[点击查看审查清单ID在控制台上的位置](https://qcloudimg.tencent-cloud.cn/raw/2c6588549e28ca49bd8bb7f4a072b19e.png)。如果用户不做此配置大模型会根据合同内容在当前企业下的审查清单和系统默认的清单中选择一个清单进行审查。
+        :param _Roles: 合同审查中的角色信息，通过明确入参角色的名称和描述，可以提高合同审查的效率和准确性。用户不做配置时大模型会根据合同内容推荐出风险识别角色的名称和描述信息。
+        :type Roles: list of RiskIdentificationRoleInfo
+        :param _ChecklistId: 用户配置的审查清单ID，基于此清单ID批量创建合同审查任务，为32位字符串。[点击查看审查清单ID在控制台上的位置](https://qcloudimg.tencent-cloud.cn/raw/2c6588549e28ca49bd8bb7f4a072b19e.png)。如果用户不做此配置大模型会根据合同内容在当前企业下的审查清单和系统默认的清单中选择一个清单进行审查。(Depricated)
         :type ChecklistId: str
+        :param _ChecklistIds: 用户配置的审查清单ID，基于此清单ID批量创建合同审查任务，为32位字符串。[点击查看审查清单ID在控制台上的位置](https://qcloudimg.tencent-cloud.cn/raw/2c6588549e28ca49bd8bb7f4a072b19e.png)。如果用户不做此配置大模型会根据合同内容在当前企业下的审查清单和系统默认的清单中选择一个清单进行审查。
+        :type ChecklistIds: list of str
         :param _Agent: 代理企业和员工的信息。
 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
@@ -5348,7 +5351,9 @@ class CreateBatchContractReviewTaskRequest(AbstractModel):
         self._ResourceIds = None
         self._PolicyType = None
         self._Role = None
+        self._Roles = None
         self._ChecklistId = None
+        self._ChecklistIds = None
         self._Agent = None
         self._Comment = None
         self._UserData = None
@@ -5368,9 +5373,9 @@ class CreateBatchContractReviewTaskRequest(AbstractModel):
 
     @property
     def ResourceIds(self):
-        r"""合同审查的PDF文件资源编号列表，通过[UploadFiles](https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles)接口获取PDF文件资源编号。 
+        r"""合同审查的PDF、WORD文件资源编号列表，通过[UploadFiles](https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles)接口获取PDF、WORD文件资源编号。 
 
-注:  `目前，此接口仅支持5个文件发起。每个文件限制在10M以下，文件必须是PDF格式`
+注:  `目前，此接口仅支持5个文件发起。每个文件限制在10M以下，文件必须是PDF、WORD格式`
         :rtype: list of str
         """
         return self._ResourceIds
@@ -5399,7 +5404,7 @@ class CreateBatchContractReviewTaskRequest(AbstractModel):
 
     @property
     def Role(self):
-        r"""合同审查中的角色信息，通过明确入参角色的名称和描述，可以提高合同审查的效率和准确性。用户不做配置时大模型会根据合同内容推荐出风险识别角色的名称和描述信息。
+        r"""合同审查中的角色信息，通过明确入参角色的名称和描述，可以提高合同审查的效率和准确性。用户不做配置时大模型会根据合同内容推荐出风险识别角色的名称和描述信息。(Depricated)
         :rtype: :class:`tencentcloud.ess.v20201111.models.RiskIdentificationRoleInfo`
         """
         return self._Role
@@ -5409,9 +5414,19 @@ class CreateBatchContractReviewTaskRequest(AbstractModel):
         self._Role = Role
 
     @property
+    def Roles(self):
+        r"""合同审查中的角色信息，通过明确入参角色的名称和描述，可以提高合同审查的效率和准确性。用户不做配置时大模型会根据合同内容推荐出风险识别角色的名称和描述信息。
+        :rtype: list of RiskIdentificationRoleInfo
+        """
+        return self._Roles
+
+    @Roles.setter
+    def Roles(self, Roles):
+        self._Roles = Roles
+
+    @property
     def ChecklistId(self):
-        r"""用户配置的审查清单ID，基于此清单ID批量创建合同审查任务，为32位字符串。
-[点击查看审查清单ID在控制台上的位置](https://qcloudimg.tencent-cloud.cn/raw/2c6588549e28ca49bd8bb7f4a072b19e.png)。如果用户不做此配置大模型会根据合同内容在当前企业下的审查清单和系统默认的清单中选择一个清单进行审查。
+        r"""用户配置的审查清单ID，基于此清单ID批量创建合同审查任务，为32位字符串。[点击查看审查清单ID在控制台上的位置](https://qcloudimg.tencent-cloud.cn/raw/2c6588549e28ca49bd8bb7f4a072b19e.png)。如果用户不做此配置大模型会根据合同内容在当前企业下的审查清单和系统默认的清单中选择一个清单进行审查。(Depricated)
         :rtype: str
         """
         return self._ChecklistId
@@ -5419,6 +5434,17 @@ class CreateBatchContractReviewTaskRequest(AbstractModel):
     @ChecklistId.setter
     def ChecklistId(self, ChecklistId):
         self._ChecklistId = ChecklistId
+
+    @property
+    def ChecklistIds(self):
+        r"""用户配置的审查清单ID，基于此清单ID批量创建合同审查任务，为32位字符串。[点击查看审查清单ID在控制台上的位置](https://qcloudimg.tencent-cloud.cn/raw/2c6588549e28ca49bd8bb7f4a072b19e.png)。如果用户不做此配置大模型会根据合同内容在当前企业下的审查清单和系统默认的清单中选择一个清单进行审查。
+        :rtype: list of str
+        """
+        return self._ChecklistIds
+
+    @ChecklistIds.setter
+    def ChecklistIds(self, ChecklistIds):
+        self._ChecklistIds = ChecklistIds
 
     @property
     def Agent(self):
@@ -5481,7 +5507,14 @@ class CreateBatchContractReviewTaskRequest(AbstractModel):
         if params.get("Role") is not None:
             self._Role = RiskIdentificationRoleInfo()
             self._Role._deserialize(params.get("Role"))
+        if params.get("Roles") is not None:
+            self._Roles = []
+            for item in params.get("Roles"):
+                obj = RiskIdentificationRoleInfo()
+                obj._deserialize(item)
+                self._Roles.append(obj)
         self._ChecklistId = params.get("ChecklistId")
+        self._ChecklistIds = params.get("ChecklistIds")
         if params.get("Agent") is not None:
             self._Agent = Agent()
             self._Agent._deserialize(params.get("Agent"))
@@ -9910,6 +9943,8 @@ class CreateFlowByFilesRequest(AbstractModel):
         :type OpenDynamicSignFlow: bool
         :param _Workflow: 是否开启发起合同审批，默认：false（不开启），开启后，发起合同（StartFlow），会提交电子签内置的审批流
         :type Workflow: bool
+        :param _FlowOperateLimit: 发起合同流程时对合同流程的部分操作加以限制的配置。
+        :type FlowOperateLimit: :class:`tencentcloud.ess.v20201111.models.FlowOperateLimit`
         """
         self._Operator = None
         self._FlowName = None
@@ -9935,6 +9970,7 @@ class CreateFlowByFilesRequest(AbstractModel):
         self._FlowDisplayType = None
         self._OpenDynamicSignFlow = None
         self._Workflow = None
+        self._FlowOperateLimit = None
 
     @property
     def Operator(self):
@@ -10270,6 +10306,17 @@ class CreateFlowByFilesRequest(AbstractModel):
     def Workflow(self, Workflow):
         self._Workflow = Workflow
 
+    @property
+    def FlowOperateLimit(self):
+        r"""发起合同流程时对合同流程的部分操作加以限制的配置。
+        :rtype: :class:`tencentcloud.ess.v20201111.models.FlowOperateLimit`
+        """
+        return self._FlowOperateLimit
+
+    @FlowOperateLimit.setter
+    def FlowOperateLimit(self, FlowOperateLimit):
+        self._FlowOperateLimit = FlowOperateLimit
+
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
@@ -10315,6 +10362,9 @@ class CreateFlowByFilesRequest(AbstractModel):
         self._FlowDisplayType = params.get("FlowDisplayType")
         self._OpenDynamicSignFlow = params.get("OpenDynamicSignFlow")
         self._Workflow = params.get("Workflow")
+        if params.get("FlowOperateLimit") is not None:
+            self._FlowOperateLimit = FlowOperateLimit()
+            self._FlowOperateLimit._deserialize(params.get("FlowOperateLimit"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12272,6 +12322,8 @@ class CreateFlowRequest(AbstractModel):
         :type FlowDisplayType: int
         :param _Workflow: 是否开启发起合同审批，默认：false（不开启），开启后，发起合同（StartFlow），会提交电子签内置的审批流
         :type Workflow: bool
+        :param _FlowOperateLimit: 发起合同流程时对合同流程的部分操作加以限制的配置。
+        :type FlowOperateLimit: :class:`tencentcloud.ess.v20201111.models.FlowOperateLimit`
         """
         self._Operator = None
         self._FlowName = None
@@ -12292,6 +12344,7 @@ class CreateFlowRequest(AbstractModel):
         self._CallbackUrl = None
         self._FlowDisplayType = None
         self._Workflow = None
+        self._FlowOperateLimit = None
 
     @property
     def Operator(self):
@@ -12562,6 +12615,17 @@ class CreateFlowRequest(AbstractModel):
     def Workflow(self, Workflow):
         self._Workflow = Workflow
 
+    @property
+    def FlowOperateLimit(self):
+        r"""发起合同流程时对合同流程的部分操作加以限制的配置。
+        :rtype: :class:`tencentcloud.ess.v20201111.models.FlowOperateLimit`
+        """
+        return self._FlowOperateLimit
+
+    @FlowOperateLimit.setter
+    def FlowOperateLimit(self, FlowOperateLimit):
+        self._FlowOperateLimit = FlowOperateLimit
+
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
@@ -12597,6 +12661,9 @@ class CreateFlowRequest(AbstractModel):
         self._CallbackUrl = params.get("CallbackUrl")
         self._FlowDisplayType = params.get("FlowDisplayType")
         self._Workflow = params.get("Workflow")
+        if params.get("FlowOperateLimit") is not None:
+            self._FlowOperateLimit = FlowOperateLimit()
+            self._FlowOperateLimit._deserialize(params.get("FlowOperateLimit"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -24340,8 +24407,10 @@ class DescribeContractReviewTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ChecklistId: 用于审查任务的审查清单ID。注意：如果用户没有配置清单时此值可能为空，需要等大模型根据合同内容推荐出可以使用的审查清单。
+        :param _ChecklistId: 用于审查任务的审查清单ID（Depricated）。注意：如果用户没有配置清单时此值可能为空，需要等大模型根据合同内容推荐出可以使用的审查清单。
         :type ChecklistId: str
+        :param _ChecklistIds: 用于审查任务的审查清单ID。注意：如果用户没有配置清单时此值可能为空，需要等大模型根据合同内容推荐出可以使用的审查清单。
+        :type ChecklistIds: list of str
         :param _CreatedOn: 合同审查任务创建时间。
         :type CreatedOn: int
         :param _FinishedOn: 合同审查任务完成时间。
@@ -24355,15 +24424,17 @@ class DescribeContractReviewTaskResponse(AbstractModel):
     <li>**2** - 【宽松】以促成交易为核心，对合同条款的修改要求较为宽松，倾向于接受对方提出的条款，以尽快达成合作。</li>  
 </ul>
         :type PolicyType: int
-        :param _ResourceId: 合同审查的PDF文件资源ID。
+        :param _ResourceId: 合同审查的PDF、WORD文件资源ID。
         :type ResourceId: str
         :param _Risks: 合同审查识别出的PDF文件风险信息，如果是空数组表示无风险。
 
 注意：`审查结果由AI生成，仅供参考。请结合相关法律法规和公司制度要求综合判断。`
         :type Risks: list of OutputRisk
-        :param _Role: 合同审查中的角色信息。注意： `如果用户没有配置审查角色时此值可能为null，需要等大模型根据合同内容推荐出审查角色信息。`
+        :param _Role: 合同审查中的角色信息（Depricated）。注意： `如果用户没有配置审查角色时此值可能为null，需要等大模型根据合同内容推荐出审查角色信息。`
 注意：此字段可能返回 null，表示取不到有效值。
         :type Role: :class:`tencentcloud.ess.v20201111.models.RiskIdentificationRoleInfo`
+        :param _Roles: 合同审查中的角色信息。注意： `如果用户没有配置审查角色时此值可能为null，需要等大模型根据合同内容推荐出审查角色信息。`
+        :type Roles: list of RiskIdentificationRoleInfo
         :param _Status: 合同审查任务状态。
 状态如下：
 <ul>
@@ -24395,12 +24466,14 @@ class DescribeContractReviewTaskResponse(AbstractModel):
         :type RequestId: str
         """
         self._ChecklistId = None
+        self._ChecklistIds = None
         self._CreatedOn = None
         self._FinishedOn = None
         self._PolicyType = None
         self._ResourceId = None
         self._Risks = None
         self._Role = None
+        self._Roles = None
         self._Status = None
         self._TaskId = None
         self._Comment = None
@@ -24413,7 +24486,7 @@ class DescribeContractReviewTaskResponse(AbstractModel):
 
     @property
     def ChecklistId(self):
-        r"""用于审查任务的审查清单ID。注意：如果用户没有配置清单时此值可能为空，需要等大模型根据合同内容推荐出可以使用的审查清单。
+        r"""用于审查任务的审查清单ID（Depricated）。注意：如果用户没有配置清单时此值可能为空，需要等大模型根据合同内容推荐出可以使用的审查清单。
         :rtype: str
         """
         return self._ChecklistId
@@ -24421,6 +24494,17 @@ class DescribeContractReviewTaskResponse(AbstractModel):
     @ChecklistId.setter
     def ChecklistId(self, ChecklistId):
         self._ChecklistId = ChecklistId
+
+    @property
+    def ChecklistIds(self):
+        r"""用于审查任务的审查清单ID。注意：如果用户没有配置清单时此值可能为空，需要等大模型根据合同内容推荐出可以使用的审查清单。
+        :rtype: list of str
+        """
+        return self._ChecklistIds
+
+    @ChecklistIds.setter
+    def ChecklistIds(self, ChecklistIds):
+        self._ChecklistIds = ChecklistIds
 
     @property
     def CreatedOn(self):
@@ -24464,7 +24548,7 @@ class DescribeContractReviewTaskResponse(AbstractModel):
 
     @property
     def ResourceId(self):
-        r"""合同审查的PDF文件资源ID。
+        r"""合同审查的PDF、WORD文件资源ID。
         :rtype: str
         """
         return self._ResourceId
@@ -24488,7 +24572,7 @@ class DescribeContractReviewTaskResponse(AbstractModel):
 
     @property
     def Role(self):
-        r"""合同审查中的角色信息。注意： `如果用户没有配置审查角色时此值可能为null，需要等大模型根据合同内容推荐出审查角色信息。`
+        r"""合同审查中的角色信息（Depricated）。注意： `如果用户没有配置审查角色时此值可能为null，需要等大模型根据合同内容推荐出审查角色信息。`
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ess.v20201111.models.RiskIdentificationRoleInfo`
         """
@@ -24497,6 +24581,17 @@ class DescribeContractReviewTaskResponse(AbstractModel):
     @Role.setter
     def Role(self, Role):
         self._Role = Role
+
+    @property
+    def Roles(self):
+        r"""合同审查中的角色信息。注意： `如果用户没有配置审查角色时此值可能为null，需要等大模型根据合同内容推荐出审查角色信息。`
+        :rtype: list of RiskIdentificationRoleInfo
+        """
+        return self._Roles
+
+    @Roles.setter
+    def Roles(self, Roles):
+        self._Roles = Roles
 
     @property
     def Status(self):
@@ -24611,6 +24706,7 @@ class DescribeContractReviewTaskResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._ChecklistId = params.get("ChecklistId")
+        self._ChecklistIds = params.get("ChecklistIds")
         self._CreatedOn = params.get("CreatedOn")
         self._FinishedOn = params.get("FinishedOn")
         self._PolicyType = params.get("PolicyType")
@@ -24624,6 +24720,12 @@ class DescribeContractReviewTaskResponse(AbstractModel):
         if params.get("Role") is not None:
             self._Role = RiskIdentificationRoleInfo()
             self._Role._deserialize(params.get("Role"))
+        if params.get("Roles") is not None:
+            self._Roles = []
+            for item in params.get("Roles"):
+                obj = RiskIdentificationRoleInfo()
+                obj._deserialize(item)
+                self._Roles.append(obj)
         self._Status = params.get("Status")
         self._TaskId = params.get("TaskId")
         self._Comment = params.get("Comment")
@@ -34371,6 +34473,42 @@ class FlowGroupUrlInfo(AbstractModel):
                 obj = FlowGroupApproverInfo()
                 obj._deserialize(item)
                 self._FlowGroupApproverInfos.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FlowOperateLimit(AbstractModel):
+    r"""发起合同流程时对合同流程的部分操作加以限制的配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NoRelease: 发起合同流程时，对签署完成后是否能发起对应的解除合同加以限制：<ul><li><b>false（默认值）</b>: 合同流程完成签署后，支持发起对应的解除协议。</li><li><b>true </b>: 合同流程完成签署后，<b>不支持</b>发起对应的解除协议。</li></ul>
+        :type NoRelease: bool
+        """
+        self._NoRelease = None
+
+    @property
+    def NoRelease(self):
+        r"""发起合同流程时，对签署完成后是否能发起对应的解除合同加以限制：<ul><li><b>false（默认值）</b>: 合同流程完成签署后，支持发起对应的解除协议。</li><li><b>true </b>: 合同流程完成签署后，<b>不支持</b>发起对应的解除协议。</li></ul>
+        :rtype: bool
+        """
+        return self._NoRelease
+
+    @NoRelease.setter
+    def NoRelease(self, NoRelease):
+        self._NoRelease = NoRelease
+
+
+    def _deserialize(self, params):
+        self._NoRelease = params.get("NoRelease")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

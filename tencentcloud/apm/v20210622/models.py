@@ -11447,32 +11447,41 @@ class ServiceDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ServiceID: 应用ID
+        :param _ServiceID: <p>应用ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceID: str
-        :param _InstanceKey: 业务系统ID
+        :param _InstanceKey: <p>业务系统ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceKey: str
-        :param _AppID: 用户appid
+        :param _AppID: <p>用户appid</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AppID: int
-        :param _CreateUIN: 主账号uin
+        :param _CreateUIN: <p>主账号uin</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateUIN: str
-        :param _ServiceName: 应用名
+        :param _ServiceName: <p>应用名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceName: str
-        :param _ServiceDescription: 应用描述
+        :param _ServiceDescription: <p>应用描述</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceDescription: str
-        :param _Region: 地域
+        :param _Region: <p>地域</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Region: str
-        :param _Tags: 标签
+        :param _Tags: <p>标签</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of ApmTag
-        :param _InstanceName: 业务系统名称
+        :param _InstanceName: <p>业务系统名称</p>
         :type InstanceName: str
+        :param _EnableThresholdConfig: <p>阈值配置开关。true 表示使用应用级阈值；false 表示使用业务系统级阈值</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnableThresholdConfig: bool
+        :param _ErrRateThreshold: <p>错误率阈值（%），用于判断应用健康状态为&quot;红色&quot;</p><p>单位：%</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrRateThreshold: int
+        :param _ResponseDurationWarningThreshold: <p>响应时间预警阈值（ms），用于判断应用健康状态为&quot;黄色&quot;</p><p>单位：ms</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResponseDurationWarningThreshold: int
         """
         self._ServiceID = None
         self._InstanceKey = None
@@ -11483,10 +11492,13 @@ class ServiceDetail(AbstractModel):
         self._Region = None
         self._Tags = None
         self._InstanceName = None
+        self._EnableThresholdConfig = None
+        self._ErrRateThreshold = None
+        self._ResponseDurationWarningThreshold = None
 
     @property
     def ServiceID(self):
-        r"""应用ID
+        r"""<p>应用ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11498,7 +11510,7 @@ class ServiceDetail(AbstractModel):
 
     @property
     def InstanceKey(self):
-        r"""业务系统ID
+        r"""<p>业务系统ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11510,7 +11522,7 @@ class ServiceDetail(AbstractModel):
 
     @property
     def AppID(self):
-        r"""用户appid
+        r"""<p>用户appid</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -11522,7 +11534,7 @@ class ServiceDetail(AbstractModel):
 
     @property
     def CreateUIN(self):
-        r"""主账号uin
+        r"""<p>主账号uin</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11534,7 +11546,7 @@ class ServiceDetail(AbstractModel):
 
     @property
     def ServiceName(self):
-        r"""应用名
+        r"""<p>应用名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11546,7 +11558,7 @@ class ServiceDetail(AbstractModel):
 
     @property
     def ServiceDescription(self):
-        r"""应用描述
+        r"""<p>应用描述</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11558,7 +11570,7 @@ class ServiceDetail(AbstractModel):
 
     @property
     def Region(self):
-        r"""地域
+        r"""<p>地域</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11570,7 +11582,7 @@ class ServiceDetail(AbstractModel):
 
     @property
     def Tags(self):
-        r"""标签
+        r"""<p>标签</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ApmTag
         """
@@ -11582,7 +11594,7 @@ class ServiceDetail(AbstractModel):
 
     @property
     def InstanceName(self):
-        r"""业务系统名称
+        r"""<p>业务系统名称</p>
         :rtype: str
         """
         return self._InstanceName
@@ -11590,6 +11602,42 @@ class ServiceDetail(AbstractModel):
     @InstanceName.setter
     def InstanceName(self, InstanceName):
         self._InstanceName = InstanceName
+
+    @property
+    def EnableThresholdConfig(self):
+        r"""<p>阈值配置开关。true 表示使用应用级阈值；false 表示使用业务系统级阈值</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._EnableThresholdConfig
+
+    @EnableThresholdConfig.setter
+    def EnableThresholdConfig(self, EnableThresholdConfig):
+        self._EnableThresholdConfig = EnableThresholdConfig
+
+    @property
+    def ErrRateThreshold(self):
+        r"""<p>错误率阈值（%），用于判断应用健康状态为&quot;红色&quot;</p><p>单位：%</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ErrRateThreshold
+
+    @ErrRateThreshold.setter
+    def ErrRateThreshold(self, ErrRateThreshold):
+        self._ErrRateThreshold = ErrRateThreshold
+
+    @property
+    def ResponseDurationWarningThreshold(self):
+        r"""<p>响应时间预警阈值（ms），用于判断应用健康状态为&quot;黄色&quot;</p><p>单位：ms</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ResponseDurationWarningThreshold
+
+    @ResponseDurationWarningThreshold.setter
+    def ResponseDurationWarningThreshold(self, ResponseDurationWarningThreshold):
+        self._ResponseDurationWarningThreshold = ResponseDurationWarningThreshold
 
 
     def _deserialize(self, params):
@@ -11607,6 +11655,9 @@ class ServiceDetail(AbstractModel):
                 obj._deserialize(item)
                 self._Tags.append(obj)
         self._InstanceName = params.get("InstanceName")
+        self._EnableThresholdConfig = params.get("EnableThresholdConfig")
+        self._ErrRateThreshold = params.get("ErrRateThreshold")
+        self._ResponseDurationWarningThreshold = params.get("ResponseDurationWarningThreshold")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -632,6 +632,29 @@ class TcbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeCurveData(self, request):
+        r"""根据指定指标名称，查询某环境在指定时间范围内的监控数据，返回按统计粒度聚合后的时序数据。
+
+        :param request: Request instance for DescribeCurveData.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeCurveDataRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DescribeCurveDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCurveData", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCurveDataResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDatabaseACL(self, request):
         r"""本接口（DescribeDatabaseACL）获取文档型数据库权限。
 

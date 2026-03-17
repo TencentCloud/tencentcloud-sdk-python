@@ -8389,17 +8389,20 @@ class DeleteDBRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID，形如mssql-rljoi3bf
+        :param _InstanceId: <p>实例ID，形如mssql-rljoi3bf</p>
         :type InstanceId: str
-        :param _Names: 数据库名数组
+        :param _Names: <p>数据库名数组</p>
         :type Names: list of str
+        :param _NoDoBackup: <p>删除数据库前是否创建备份。</p><p>取值范围：[0, 1]</p><p>默认值：0</p>
+        :type NoDoBackup: int
         """
         self._InstanceId = None
         self._Names = None
+        self._NoDoBackup = None
 
     @property
     def InstanceId(self):
-        r"""实例ID，形如mssql-rljoi3bf
+        r"""<p>实例ID，形如mssql-rljoi3bf</p>
         :rtype: str
         """
         return self._InstanceId
@@ -8410,7 +8413,7 @@ class DeleteDBRequest(AbstractModel):
 
     @property
     def Names(self):
-        r"""数据库名数组
+        r"""<p>数据库名数组</p>
         :rtype: list of str
         """
         return self._Names
@@ -8419,10 +8422,22 @@ class DeleteDBRequest(AbstractModel):
     def Names(self, Names):
         self._Names = Names
 
+    @property
+    def NoDoBackup(self):
+        r"""<p>删除数据库前是否创建备份。</p><p>取值范围：[0, 1]</p><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._NoDoBackup
+
+    @NoDoBackup.setter
+    def NoDoBackup(self, NoDoBackup):
+        self._NoDoBackup = NoDoBackup
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._Names = params.get("Names")
+        self._NoDoBackup = params.get("NoDoBackup")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8440,7 +8455,7 @@ class DeleteDBResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowId: 任务流ID
+        :param _FlowId: <p>任务流ID</p>
         :type FlowId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -8450,7 +8465,7 @@ class DeleteDBResponse(AbstractModel):
 
     @property
     def FlowId(self):
-        r"""任务流ID
+        r"""<p>任务流ID</p>
         :rtype: int
         """
         return self._FlowId

@@ -6614,12 +6614,15 @@ class CreateBackupRequest(AbstractModel):
         :type BackupTables: list of DatabaseTables
         :param _BackupName: 备注名
         :type BackupName: str
+        :param _Vaults: 	投递到保险箱的信息
+        :type Vaults: list of CreateBackupVaultItem
         """
         self._ClusterId = None
         self._BackupType = None
         self._BackupDatabases = None
         self._BackupTables = None
         self._BackupName = None
+        self._Vaults = None
 
     @property
     def ClusterId(self):
@@ -6676,6 +6679,17 @@ class CreateBackupRequest(AbstractModel):
     def BackupName(self, BackupName):
         self._BackupName = BackupName
 
+    @property
+    def Vaults(self):
+        r"""	投递到保险箱的信息
+        :rtype: list of CreateBackupVaultItem
+        """
+        return self._Vaults
+
+    @Vaults.setter
+    def Vaults(self, Vaults):
+        self._Vaults = Vaults
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -6688,6 +6702,12 @@ class CreateBackupRequest(AbstractModel):
                 obj._deserialize(item)
                 self._BackupTables.append(obj)
         self._BackupName = params.get("BackupName")
+        if params.get("Vaults") is not None:
+            self._Vaults = []
+            for item in params.get("Vaults"):
+                obj = CreateBackupVaultItem()
+                obj._deserialize(item)
+                self._Vaults.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -26115,8 +26135,14 @@ class DescribeRollbackTimeRangeRequest(AbstractModel):
         r"""
         :param _ClusterId: 集群ID
         :type ClusterId: str
+        :param _VaultId: 保险箱id
+        :type VaultId: str
+        :param _VaultRegion: 保险箱地域
+        :type VaultRegion: str
         """
         self._ClusterId = None
+        self._VaultId = None
+        self._VaultRegion = None
 
     @property
     def ClusterId(self):
@@ -26129,9 +26155,33 @@ class DescribeRollbackTimeRangeRequest(AbstractModel):
     def ClusterId(self, ClusterId):
         self._ClusterId = ClusterId
 
+    @property
+    def VaultId(self):
+        r"""保险箱id
+        :rtype: str
+        """
+        return self._VaultId
+
+    @VaultId.setter
+    def VaultId(self, VaultId):
+        self._VaultId = VaultId
+
+    @property
+    def VaultRegion(self):
+        r"""保险箱地域
+        :rtype: str
+        """
+        return self._VaultRegion
+
+    @VaultRegion.setter
+    def VaultRegion(self, VaultRegion):
+        self._VaultRegion = VaultRegion
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
+        self._VaultId = params.get("VaultId")
+        self._VaultRegion = params.get("VaultRegion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -47780,6 +47830,8 @@ class RollBackClusterRequest(AbstractModel):
         :type RollbackTables: list of RollbackTable
         :param _RollbackMode: 按时间点回档模式，full: 普通; db: 快速; table: 极速  （默认是普通）
         :type RollbackMode: str
+        :param _VaultId: 保险箱id
+        :type VaultId: str
         """
         self._ClusterId = None
         self._RollbackStrategy = None
@@ -47789,6 +47841,7 @@ class RollBackClusterRequest(AbstractModel):
         self._RollbackDatabases = None
         self._RollbackTables = None
         self._RollbackMode = None
+        self._VaultId = None
 
     @property
     def ClusterId(self):
@@ -47880,6 +47933,17 @@ class RollBackClusterRequest(AbstractModel):
     def RollbackMode(self, RollbackMode):
         self._RollbackMode = RollbackMode
 
+    @property
+    def VaultId(self):
+        r"""保险箱id
+        :rtype: str
+        """
+        return self._VaultId
+
+    @VaultId.setter
+    def VaultId(self, VaultId):
+        self._VaultId = VaultId
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -47900,6 +47964,7 @@ class RollBackClusterRequest(AbstractModel):
                 obj._deserialize(item)
                 self._RollbackTables.append(obj)
         self._RollbackMode = params.get("RollbackMode")
+        self._VaultId = params.get("VaultId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
