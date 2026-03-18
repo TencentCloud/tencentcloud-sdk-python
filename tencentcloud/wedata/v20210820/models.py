@@ -448,6 +448,21 @@ class AiOpsEventListenerDTO(AbstractModel):
         :param _EventBroadcastType: 事件广播类型
 注意：此字段可能返回 null，表示取不到有效值。
         :type EventBroadcastType: str
+        :param _ProducerTaskId: 事件生产者任务Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProducerTaskId: str
+        :param _Dimension: 事件维度
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Dimension: str
+        :param _Status: 事件状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param _EventTriggerTs: 事件触发时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EventTriggerTs: str
+        :param _CaseId: 事件ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CaseId: str
         """
         self._EventName = None
         self._CreateTime = None
@@ -456,6 +471,11 @@ class AiOpsEventListenerDTO(AbstractModel):
         self._ProjectId = None
         self._PropertiesList = None
         self._EventBroadcastType = None
+        self._ProducerTaskId = None
+        self._Dimension = None
+        self._Status = None
+        self._EventTriggerTs = None
+        self._CaseId = None
 
     @property
     def EventName(self):
@@ -541,6 +561,66 @@ class AiOpsEventListenerDTO(AbstractModel):
     def EventBroadcastType(self, EventBroadcastType):
         self._EventBroadcastType = EventBroadcastType
 
+    @property
+    def ProducerTaskId(self):
+        r"""事件生产者任务Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ProducerTaskId
+
+    @ProducerTaskId.setter
+    def ProducerTaskId(self, ProducerTaskId):
+        self._ProducerTaskId = ProducerTaskId
+
+    @property
+    def Dimension(self):
+        r"""事件维度
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Dimension
+
+    @Dimension.setter
+    def Dimension(self, Dimension):
+        self._Dimension = Dimension
+
+    @property
+    def Status(self):
+        r"""事件状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def EventTriggerTs(self):
+        r"""事件触发时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._EventTriggerTs
+
+    @EventTriggerTs.setter
+    def EventTriggerTs(self, EventTriggerTs):
+        self._EventTriggerTs = EventTriggerTs
+
+    @property
+    def CaseId(self):
+        r"""事件ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CaseId
+
+    @CaseId.setter
+    def CaseId(self, CaseId):
+        self._CaseId = CaseId
+
 
     def _deserialize(self, params):
         self._EventName = params.get("EventName")
@@ -555,6 +635,11 @@ class AiOpsEventListenerDTO(AbstractModel):
                 obj._deserialize(item)
                 self._PropertiesList.append(obj)
         self._EventBroadcastType = params.get("EventBroadcastType")
+        self._ProducerTaskId = params.get("ProducerTaskId")
+        self._Dimension = params.get("Dimension")
+        self._Status = params.get("Status")
+        self._EventTriggerTs = params.get("EventTriggerTs")
+        self._CaseId = params.get("CaseId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5511,6 +5596,8 @@ class BatchCreateTaskVersionAsyncRequest(AbstractModel):
         :type NeedCheckParentSubmitted: bool
         :param _EnableMakeUp: 是否需要补录中间实例
         :type EnableMakeUp: bool
+        :param _AssignApprovalList: 指定审批人列表
+        :type AssignApprovalList: list of str
         """
         self._Tasks = None
         self._ProjectId = None
@@ -5519,6 +5606,7 @@ class BatchCreateTaskVersionAsyncRequest(AbstractModel):
         self._AlarmRecipientTypes = None
         self._NeedCheckParentSubmitted = None
         self._EnableMakeUp = None
+        self._AssignApprovalList = None
 
     @property
     def Tasks(self):
@@ -5597,6 +5685,17 @@ class BatchCreateTaskVersionAsyncRequest(AbstractModel):
     def EnableMakeUp(self, EnableMakeUp):
         self._EnableMakeUp = EnableMakeUp
 
+    @property
+    def AssignApprovalList(self):
+        r"""指定审批人列表
+        :rtype: list of str
+        """
+        return self._AssignApprovalList
+
+    @AssignApprovalList.setter
+    def AssignApprovalList(self, AssignApprovalList):
+        self._AssignApprovalList = AssignApprovalList
+
 
     def _deserialize(self, params):
         if params.get("Tasks") is not None:
@@ -5611,6 +5710,7 @@ class BatchCreateTaskVersionAsyncRequest(AbstractModel):
         self._AlarmRecipientTypes = params.get("AlarmRecipientTypes")
         self._NeedCheckParentSubmitted = params.get("NeedCheckParentSubmitted")
         self._EnableMakeUp = params.get("EnableMakeUp")
+        self._AssignApprovalList = params.get("AssignApprovalList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13771,6 +13871,8 @@ class CreateCodeTemplateVersionRequest(AbstractModel):
         :param _NeedSubmitScheduleForTemplate: true表示：针对新建、已下线状态的任务仅生成开发态保存版本，您可在任务中自行提交到生产。针对调度中、已暂停、已失效的任务生成开发态保存版本并提交到生产（即本次代码模板的改动在调度中生效）； 
 false表示：针对所有状态的任务均仅生成开发态保存版本。
         :type NeedSubmitScheduleForTemplate: bool
+        :param _AssignApprovalList: 指定审批人列表
+        :type AssignApprovalList: list of str
         """
         self._CodeTemplateId = None
         self._ProjectId = None
@@ -13778,6 +13880,7 @@ false表示：针对所有状态的任务均仅生成开发态保存版本。
         self._OriginalParams = None
         self._VersionRemark = None
         self._NeedSubmitScheduleForTemplate = None
+        self._AssignApprovalList = None
 
     @property
     def CodeTemplateId(self):
@@ -13846,6 +13949,17 @@ false表示：针对所有状态的任务均仅生成开发态保存版本。
     def NeedSubmitScheduleForTemplate(self, NeedSubmitScheduleForTemplate):
         self._NeedSubmitScheduleForTemplate = NeedSubmitScheduleForTemplate
 
+    @property
+    def AssignApprovalList(self):
+        r"""指定审批人列表
+        :rtype: list of str
+        """
+        return self._AssignApprovalList
+
+    @AssignApprovalList.setter
+    def AssignApprovalList(self, AssignApprovalList):
+        self._AssignApprovalList = AssignApprovalList
+
 
     def _deserialize(self, params):
         self._CodeTemplateId = params.get("CodeTemplateId")
@@ -13859,6 +13973,7 @@ false表示：针对所有状态的任务均仅生成开发态保存版本。
         self._OriginalParams = params.get("OriginalParams")
         self._VersionRemark = params.get("VersionRemark")
         self._NeedSubmitScheduleForTemplate = params.get("NeedSubmitScheduleForTemplate")
+        self._AssignApprovalList = params.get("AssignApprovalList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17680,6 +17795,8 @@ class CreateTaskVersionDsRequest(AbstractModel):
         :type EnableCheckTaskCycleLink: bool
         :param _EnableMakeUp: 是否需要补录中间实例
         :type EnableMakeUp: bool
+        :param _AssignApprovalList: 指定审批人列表
+        :type AssignApprovalList: list of str
         """
         self._Task = None
         self._NeedCheckParentSubmitted = None
@@ -17690,6 +17807,7 @@ class CreateTaskVersionDsRequest(AbstractModel):
         self._AlarmRecipientTypes = None
         self._EnableCheckTaskCycleLink = None
         self._EnableMakeUp = None
+        self._AssignApprovalList = None
 
     @property
     def Task(self):
@@ -17790,6 +17908,17 @@ class CreateTaskVersionDsRequest(AbstractModel):
     def EnableMakeUp(self, EnableMakeUp):
         self._EnableMakeUp = EnableMakeUp
 
+    @property
+    def AssignApprovalList(self):
+        r"""指定审批人列表
+        :rtype: list of str
+        """
+        return self._AssignApprovalList
+
+    @AssignApprovalList.setter
+    def AssignApprovalList(self, AssignApprovalList):
+        self._AssignApprovalList = AssignApprovalList
+
 
     def _deserialize(self, params):
         if params.get("Task") is not None:
@@ -17803,6 +17932,7 @@ class CreateTaskVersionDsRequest(AbstractModel):
         self._AlarmRecipientTypes = params.get("AlarmRecipientTypes")
         self._EnableCheckTaskCycleLink = params.get("EnableCheckTaskCycleLink")
         self._EnableMakeUp = params.get("EnableMakeUp")
+        self._AssignApprovalList = params.get("AssignApprovalList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -55098,6 +55228,9 @@ class EventCaseAuditLogOptDto(AbstractModel):
         :param _Description: 事件实例描述
 注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
+        :param _ConsumeCount: 消费次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConsumeCount: int
         """
         self._CaseId = None
         self._EventName = None
@@ -55111,6 +55244,7 @@ class EventCaseAuditLogOptDto(AbstractModel):
         self._EventTriggerTimestamp = None
         self._LogTimestamp = None
         self._Description = None
+        self._ConsumeCount = None
 
     @property
     def CaseId(self):
@@ -55256,6 +55390,18 @@ class EventCaseAuditLogOptDto(AbstractModel):
     def Description(self, Description):
         self._Description = Description
 
+    @property
+    def ConsumeCount(self):
+        r"""消费次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ConsumeCount
+
+    @ConsumeCount.setter
+    def ConsumeCount(self, ConsumeCount):
+        self._ConsumeCount = ConsumeCount
+
 
     def _deserialize(self, params):
         self._CaseId = params.get("CaseId")
@@ -55270,6 +55416,7 @@ class EventCaseAuditLogOptDto(AbstractModel):
         self._EventTriggerTimestamp = params.get("EventTriggerTimestamp")
         self._LogTimestamp = params.get("LogTimestamp")
         self._Description = params.get("Description")
+        self._ConsumeCount = params.get("ConsumeCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -66932,6 +67079,9 @@ class InstanceOpsDto(AbstractModel):
         :param _Ext: 扩展属性
 注意：此字段可能返回 null，表示取不到有效值。
         :type Ext: :class:`tencentcloud.wedata.v20210820.models.StrToStrMap`
+        :param _RelatedEventList: 事件列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RelatedEventList: list of EventCaseAuditLogOptDto
         """
         self._TaskId = None
         self._TaskName = None
@@ -67005,6 +67155,7 @@ class InstanceOpsDto(AbstractModel):
         self._DlcTaskId = None
         self._DlcSparkJobId = None
         self._Ext = None
+        self._RelatedEventList = None
 
     @property
     def TaskId(self):
@@ -67866,6 +68017,18 @@ class InstanceOpsDto(AbstractModel):
     def Ext(self, Ext):
         self._Ext = Ext
 
+    @property
+    def RelatedEventList(self):
+        r"""事件列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of EventCaseAuditLogOptDto
+        """
+        return self._RelatedEventList
+
+    @RelatedEventList.setter
+    def RelatedEventList(self, RelatedEventList):
+        self._RelatedEventList = RelatedEventList
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
@@ -67956,6 +68119,12 @@ class InstanceOpsDto(AbstractModel):
         if params.get("Ext") is not None:
             self._Ext = StrToStrMap()
             self._Ext._deserialize(params.get("Ext"))
+        if params.get("RelatedEventList") is not None:
+            self._RelatedEventList = []
+            for item in params.get("RelatedEventList"):
+                obj = EventCaseAuditLogOptDto()
+                obj._deserialize(item)
+                self._RelatedEventList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -74600,6 +74769,9 @@ class MakePlanOpsDto(AbstractModel):
         :param _MapParamList: 补录实例自定义参数
 注意：此字段可能返回 null，表示取不到有效值。
         :type MapParamList: list of StrToStrMap
+        :param _MakeExtList: 补录扩展属性
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MakeExtList: list of StrToStrMap
         :param _CreatorId: 创建人ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreatorId: str
@@ -74691,6 +74863,7 @@ DATA_TIME：实例数据时间；SCHEDULE_TIME 计划调度时间
         self._TargetTaskCycle = None
         self._TargetTaskAction = None
         self._MapParamList = None
+        self._MakeExtList = None
         self._CreatorId = None
         self._Creator = None
         self._CreateTime = None
@@ -74849,6 +75022,18 @@ DATA_TIME：实例数据时间；SCHEDULE_TIME 计划调度时间
     @MapParamList.setter
     def MapParamList(self, MapParamList):
         self._MapParamList = MapParamList
+
+    @property
+    def MakeExtList(self):
+        r"""补录扩展属性
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of StrToStrMap
+        """
+        return self._MakeExtList
+
+    @MakeExtList.setter
+    def MakeExtList(self, MakeExtList):
+        self._MakeExtList = MakeExtList
 
     @property
     def CreatorId(self):
@@ -75181,6 +75366,12 @@ DATA_TIME：实例数据时间；SCHEDULE_TIME 计划调度时间
                 obj = StrToStrMap()
                 obj._deserialize(item)
                 self._MapParamList.append(obj)
+        if params.get("MakeExtList") is not None:
+            self._MakeExtList = []
+            for item in params.get("MakeExtList"):
+                obj = StrToStrMap()
+                obj._deserialize(item)
+                self._MakeExtList.append(obj)
         self._CreatorId = params.get("CreatorId")
         self._Creator = params.get("Creator")
         self._CreateTime = params.get("CreateTime")
@@ -111302,6 +111493,9 @@ class TaskFormParams(AbstractModel):
         :param _LatestSavedVersionId: 保存版本ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type LatestSavedVersionId: str
+        :param _Status: 任务状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
         """
         self._TaskId = None
         self._MapParamList = None
@@ -111313,6 +111507,7 @@ class TaskFormParams(AbstractModel):
         self._ProductName = None
         self._LatestSavedVersion = None
         self._LatestSavedVersionId = None
+        self._Status = None
 
     @property
     def TaskId(self):
@@ -111436,6 +111631,18 @@ class TaskFormParams(AbstractModel):
     def LatestSavedVersionId(self, LatestSavedVersionId):
         self._LatestSavedVersionId = LatestSavedVersionId
 
+    @property
+    def Status(self):
+        r"""任务状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
@@ -111453,6 +111660,7 @@ class TaskFormParams(AbstractModel):
         self._ProductName = params.get("ProductName")
         self._LatestSavedVersion = params.get("LatestSavedVersion")
         self._LatestSavedVersionId = params.get("LatestSavedVersionId")
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -113378,6 +113586,9 @@ CAN_MANAGE : 有权限管理操作
         :param _TaskExtDTO: 任务扩展信息
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskExtDTO: :class:`tencentcloud.wedata.v20210820.models.TaskExtOpsDto`
+        :param _ScheduleTimeZone: 任务时区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScheduleTimeZone: str
         """
         self._TaskId = None
         self._VirtualTaskId = None
@@ -113476,6 +113687,7 @@ CAN_MANAGE : 有权限管理操作
         self._BundleInfo = None
         self._WorkflowType = None
         self._TaskExtDTO = None
+        self._ScheduleTimeZone = None
 
     @property
     def TaskId(self):
@@ -114642,6 +114854,18 @@ CAN_MANAGE : 有权限管理操作
     def TaskExtDTO(self, TaskExtDTO):
         self._TaskExtDTO = TaskExtDTO
 
+    @property
+    def ScheduleTimeZone(self):
+        r"""任务时区
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ScheduleTimeZone
+
+    @ScheduleTimeZone.setter
+    def ScheduleTimeZone(self, ScheduleTimeZone):
+        self._ScheduleTimeZone = ScheduleTimeZone
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
@@ -114765,6 +114989,7 @@ CAN_MANAGE : 有权限管理操作
         if params.get("TaskExtDTO") is not None:
             self._TaskExtDTO = TaskExtOpsDto()
             self._TaskExtDTO._deserialize(params.get("TaskExtDTO"))
+        self._ScheduleTimeZone = params.get("ScheduleTimeZone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

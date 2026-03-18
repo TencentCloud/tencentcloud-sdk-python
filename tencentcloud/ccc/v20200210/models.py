@@ -341,13 +341,13 @@ class AICallExtractResultInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Text: 提取的类型是文本
+        :param _Text: <p>提取的类型是文本</p>
         :type Text: str
-        :param _Chosen: 提取的内型是选项
+        :param _Chosen: <p>提取的类型是选项</p>
         :type Chosen: list of str
-        :param _Boolean: 提取类型是布尔值
+        :param _Boolean: <p>提取类型是布尔值</p>
         :type Boolean: bool
-        :param _Number: 提取类型是数字
+        :param _Number: <p>提取类型是数字</p>
         :type Number: float
         """
         self._Text = None
@@ -357,7 +357,7 @@ class AICallExtractResultInfo(AbstractModel):
 
     @property
     def Text(self):
-        r"""提取的类型是文本
+        r"""<p>提取的类型是文本</p>
         :rtype: str
         """
         return self._Text
@@ -368,7 +368,7 @@ class AICallExtractResultInfo(AbstractModel):
 
     @property
     def Chosen(self):
-        r"""提取的内型是选项
+        r"""<p>提取的类型是选项</p>
         :rtype: list of str
         """
         return self._Chosen
@@ -379,7 +379,7 @@ class AICallExtractResultInfo(AbstractModel):
 
     @property
     def Boolean(self):
-        r"""提取类型是布尔值
+        r"""<p>提取类型是布尔值</p>
         :rtype: bool
         """
         return self._Boolean
@@ -390,7 +390,7 @@ class AICallExtractResultInfo(AbstractModel):
 
     @property
     def Number(self):
-        r"""提取类型是数字
+        r"""<p>提取类型是数字</p>
         :rtype: float
         """
         return self._Number
@@ -6790,9 +6790,9 @@ class DeleteStaffRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkAppId: 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :param _SdkAppId: <p>应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc</p>
         :type SdkAppId: int
-        :param _StaffList: 待删除客服邮箱列表，一次最大支持200个。
+        :param _StaffList: <p>待删除客服邮箱列表，一次最大支持200个。</p>
         :type StaffList: list of str
         """
         self._SdkAppId = None
@@ -6800,7 +6800,7 @@ class DeleteStaffRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        r"""应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        r"""<p>应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc</p>
         :rtype: int
         """
         return self._SdkAppId
@@ -6811,7 +6811,7 @@ class DeleteStaffRequest(AbstractModel):
 
     @property
     def StaffList(self):
-        r"""待删除客服邮箱列表，一次最大支持200个。
+        r"""<p>待删除客服邮箱列表，一次最大支持200个。</p>
         :rtype: list of str
         """
         return self._StaffList
@@ -6841,17 +6841,20 @@ class DeleteStaffResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _OnlineStaffList: 无法删除的状态为在线的客服列表
+        :param _OnlineStaffList: <p>无法删除的状态为在线的客服列表</p>
         :type OnlineStaffList: list of str
+        :param _DeleteStatusInfo: <p>坐席删除详情</p>
+        :type DeleteStatusInfo: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._OnlineStaffList = None
+        self._DeleteStatusInfo = None
         self._RequestId = None
 
     @property
     def OnlineStaffList(self):
-        r"""无法删除的状态为在线的客服列表
+        r"""<p>无法删除的状态为在线的客服列表</p>
         :rtype: list of str
         """
         return self._OnlineStaffList
@@ -6859,6 +6862,17 @@ class DeleteStaffResponse(AbstractModel):
     @OnlineStaffList.setter
     def OnlineStaffList(self, OnlineStaffList):
         self._OnlineStaffList = OnlineStaffList
+
+    @property
+    def DeleteStatusInfo(self):
+        r"""<p>坐席删除详情</p>
+        :rtype: str
+        """
+        return self._DeleteStatusInfo
+
+    @DeleteStatusInfo.setter
+    def DeleteStatusInfo(self, DeleteStatusInfo):
+        self._DeleteStatusInfo = DeleteStatusInfo
 
     @property
     def RequestId(self):
@@ -6874,6 +6888,7 @@ class DeleteStaffResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._OnlineStaffList = params.get("OnlineStaffList")
+        self._DeleteStatusInfo = params.get("DeleteStatusInfo")
         self._RequestId = params.get("RequestId")
 
 
@@ -10083,11 +10098,11 @@ class DescribeNumbersRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkAppId: 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :param _SdkAppId: <p>应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc</p>
         :type SdkAppId: int
-        :param _PageNumber: 页数，从0开始
+        :param _PageNumber: <p>页数，从0开始</p>
         :type PageNumber: int
-        :param _PageSize: 分页大小，默认20
+        :param _PageSize: <p>分页大小，默认20</p>
         :type PageSize: int
         """
         self._SdkAppId = None
@@ -10096,7 +10111,7 @@ class DescribeNumbersRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        r"""应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        r"""<p>应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc</p>
         :rtype: int
         """
         return self._SdkAppId
@@ -10107,7 +10122,7 @@ class DescribeNumbersRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        r"""页数，从0开始
+        r"""<p>页数，从0开始</p>
         :rtype: int
         """
         return self._PageNumber
@@ -10118,7 +10133,7 @@ class DescribeNumbersRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        r"""分页大小，默认20
+        r"""<p>分页大小，默认20</p>
         :rtype: int
         """
         return self._PageSize
@@ -10149,9 +10164,9 @@ class DescribeNumbersResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 总数量
+        :param _TotalCount: <p>总数量</p>
         :type TotalCount: int
-        :param _Numbers: 号码列表
+        :param _Numbers: <p>号码列表</p>
         :type Numbers: list of NumberInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -10162,7 +10177,7 @@ class DescribeNumbersResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""总数量
+        r"""<p>总数量</p>
         :rtype: int
         """
         return self._TotalCount
@@ -10173,7 +10188,7 @@ class DescribeNumbersResponse(AbstractModel):
 
     @property
     def Numbers(self):
-        r"""号码列表
+        r"""<p>号码列表</p>
         :rtype: list of NumberInfo
         """
         return self._Numbers
@@ -15182,20 +15197,23 @@ class NumberInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Number: 号码
+        :param _Number: <p>号码</p>
         :type Number: str
-        :param _CallOutSkillGroupIds: 绑定的外呼技能组
+        :param _CallOutSkillGroupIds: <p>绑定的外呼技能组</p>
         :type CallOutSkillGroupIds: list of int non-negative
-        :param _State: 号码状态，1-正常，2-欠费停用，4-管理员停用，5-违规停用
+        :param _State: <p>号码状态，1-正常，2-欠费停用，4-管理员停用，5-违规停用</p>
         :type State: int
+        :param _CostType: <p>是否自携号码</p><p>枚举值：</p><ul><li>0： 非自携</li><li>1： 自携</li></ul>
+        :type CostType: int
         """
         self._Number = None
         self._CallOutSkillGroupIds = None
         self._State = None
+        self._CostType = None
 
     @property
     def Number(self):
-        r"""号码
+        r"""<p>号码</p>
         :rtype: str
         """
         return self._Number
@@ -15206,7 +15224,7 @@ class NumberInfo(AbstractModel):
 
     @property
     def CallOutSkillGroupIds(self):
-        r"""绑定的外呼技能组
+        r"""<p>绑定的外呼技能组</p>
         :rtype: list of int non-negative
         """
         return self._CallOutSkillGroupIds
@@ -15217,7 +15235,7 @@ class NumberInfo(AbstractModel):
 
     @property
     def State(self):
-        r"""号码状态，1-正常，2-欠费停用，4-管理员停用，5-违规停用
+        r"""<p>号码状态，1-正常，2-欠费停用，4-管理员停用，5-违规停用</p>
         :rtype: int
         """
         return self._State
@@ -15226,11 +15244,23 @@ class NumberInfo(AbstractModel):
     def State(self, State):
         self._State = State
 
+    @property
+    def CostType(self):
+        r"""<p>是否自携号码</p><p>枚举值：</p><ul><li>0： 非自携</li><li>1： 自携</li></ul>
+        :rtype: int
+        """
+        return self._CostType
+
+    @CostType.setter
+    def CostType(self, CostType):
+        self._CostType = CostType
+
 
     def _deserialize(self, params):
         self._Number = params.get("Number")
         self._CallOutSkillGroupIds = params.get("CallOutSkillGroupIds")
         self._State = params.get("State")
+        self._CostType = params.get("CostType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

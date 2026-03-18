@@ -2360,6 +2360,87 @@ class AuditRuleTemplateInfo(AbstractModel):
         
 
 
+class AutoCopyConfig(AbstractModel):
+    r"""保险箱自动投递关系
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群id
+        :type ClusterId: str
+        :param _VaultId: 保险箱ID
+        :type VaultId: str
+        :param _VaultRegion: 保险箱地域
+        :type VaultRegion: str
+        :param _CopyType: 投递类型：binlog, redolog, snapshot, logic
+        :type CopyType: str
+        """
+        self._ClusterId = None
+        self._VaultId = None
+        self._VaultRegion = None
+        self._CopyType = None
+
+    @property
+    def ClusterId(self):
+        r"""集群id
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def VaultId(self):
+        r"""保险箱ID
+        :rtype: str
+        """
+        return self._VaultId
+
+    @VaultId.setter
+    def VaultId(self, VaultId):
+        self._VaultId = VaultId
+
+    @property
+    def VaultRegion(self):
+        r"""保险箱地域
+        :rtype: str
+        """
+        return self._VaultRegion
+
+    @VaultRegion.setter
+    def VaultRegion(self, VaultRegion):
+        self._VaultRegion = VaultRegion
+
+    @property
+    def CopyType(self):
+        r"""投递类型：binlog, redolog, snapshot, logic
+        :rtype: str
+        """
+        return self._CopyType
+
+    @CopyType.setter
+    def CopyType(self, CopyType):
+        self._CopyType = CopyType
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._VaultId = params.get("VaultId")
+        self._VaultRegion = params.get("VaultRegion")
+        self._CopyType = params.get("CopyType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AutoMapRule(AbstractModel):
     r"""高级映射，自动映射规则
 
@@ -4597,6 +4678,250 @@ reuse:使用已有日志集，使用GroupId指定日志集。
         
 
 
+class CalculateBackupSaveSecExpiresRequest(AbstractModel):
+    r"""CalculateBackupSaveSecExpires请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VaultId: 备份保险箱ID
+        :type VaultId: str
+        :param _BackupSaveSeconds: 备份保留时长（秒），必须大于0
+        :type BackupSaveSeconds: int
+        :param _Limit: 每页数量，范围(0,100]，默认10
+        :type Limit: int
+        :param _Offset: 偏移量，范围[0,INF)，默认0
+        :type Offset: int
+        :param _OrderBy: 排序字段，可选值：VaultId,VaultName,BackupSaveSeconds,LockedTime,CreateTime,UpdateTime，默认endTime
+        :type OrderBy: str
+        :param _OrderByType: 排序方式，可选值：desc,asc,DESC,ASC，默认desc
+        :type OrderByType: str
+        """
+        self._VaultId = None
+        self._BackupSaveSeconds = None
+        self._Limit = None
+        self._Offset = None
+        self._OrderBy = None
+        self._OrderByType = None
+
+    @property
+    def VaultId(self):
+        r"""备份保险箱ID
+        :rtype: str
+        """
+        return self._VaultId
+
+    @VaultId.setter
+    def VaultId(self, VaultId):
+        self._VaultId = VaultId
+
+    @property
+    def BackupSaveSeconds(self):
+        r"""备份保留时长（秒），必须大于0
+        :rtype: int
+        """
+        return self._BackupSaveSeconds
+
+    @BackupSaveSeconds.setter
+    def BackupSaveSeconds(self, BackupSaveSeconds):
+        self._BackupSaveSeconds = BackupSaveSeconds
+
+    @property
+    def Limit(self):
+        r"""每页数量，范围(0,100]，默认10
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""偏移量，范围[0,INF)，默认0
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def OrderBy(self):
+        r"""排序字段，可选值：VaultId,VaultName,BackupSaveSeconds,LockedTime,CreateTime,UpdateTime，默认endTime
+        :rtype: str
+        """
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
+
+    @property
+    def OrderByType(self):
+        r"""排序方式，可选值：desc,asc,DESC,ASC，默认desc
+        :rtype: str
+        """
+        return self._OrderByType
+
+    @OrderByType.setter
+    def OrderByType(self, OrderByType):
+        self._OrderByType = OrderByType
+
+
+    def _deserialize(self, params):
+        self._VaultId = params.get("VaultId")
+        self._BackupSaveSeconds = params.get("BackupSaveSeconds")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._OrderBy = params.get("OrderBy")
+        self._OrderByType = params.get("OrderByType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CalculateBackupSaveSecExpiresResponse(AbstractModel):
+    r"""CalculateBackupSaveSecExpires返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WillDeleteBackupFileCount: 将被删除的备份文件总数
+        :type WillDeleteBackupFileCount: int
+        :param _WillDeleteBackupFiles: 将被删除的备份文件列表
+        :type WillDeleteBackupFiles: list of WillDeleteItem
+        :param _WillDeleteBinlogFileCount: 将被删除的Binlog文件总数
+        :type WillDeleteBinlogFileCount: int
+        :param _WillDeleteBinlogFiles: 将被删除的Binlog文件列表
+        :type WillDeleteBinlogFiles: list of WillDeleteItem
+        :param _WillDeleteRedoLogFileCount: 将被删除的Redolog文件总数
+        :type WillDeleteRedoLogFileCount: int
+        :param _WillDeleteRedoLogFiles: 将被删除的Redolog文件列表
+        :type WillDeleteRedoLogFiles: list of WillDeleteItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._WillDeleteBackupFileCount = None
+        self._WillDeleteBackupFiles = None
+        self._WillDeleteBinlogFileCount = None
+        self._WillDeleteBinlogFiles = None
+        self._WillDeleteRedoLogFileCount = None
+        self._WillDeleteRedoLogFiles = None
+        self._RequestId = None
+
+    @property
+    def WillDeleteBackupFileCount(self):
+        r"""将被删除的备份文件总数
+        :rtype: int
+        """
+        return self._WillDeleteBackupFileCount
+
+    @WillDeleteBackupFileCount.setter
+    def WillDeleteBackupFileCount(self, WillDeleteBackupFileCount):
+        self._WillDeleteBackupFileCount = WillDeleteBackupFileCount
+
+    @property
+    def WillDeleteBackupFiles(self):
+        r"""将被删除的备份文件列表
+        :rtype: list of WillDeleteItem
+        """
+        return self._WillDeleteBackupFiles
+
+    @WillDeleteBackupFiles.setter
+    def WillDeleteBackupFiles(self, WillDeleteBackupFiles):
+        self._WillDeleteBackupFiles = WillDeleteBackupFiles
+
+    @property
+    def WillDeleteBinlogFileCount(self):
+        r"""将被删除的Binlog文件总数
+        :rtype: int
+        """
+        return self._WillDeleteBinlogFileCount
+
+    @WillDeleteBinlogFileCount.setter
+    def WillDeleteBinlogFileCount(self, WillDeleteBinlogFileCount):
+        self._WillDeleteBinlogFileCount = WillDeleteBinlogFileCount
+
+    @property
+    def WillDeleteBinlogFiles(self):
+        r"""将被删除的Binlog文件列表
+        :rtype: list of WillDeleteItem
+        """
+        return self._WillDeleteBinlogFiles
+
+    @WillDeleteBinlogFiles.setter
+    def WillDeleteBinlogFiles(self, WillDeleteBinlogFiles):
+        self._WillDeleteBinlogFiles = WillDeleteBinlogFiles
+
+    @property
+    def WillDeleteRedoLogFileCount(self):
+        r"""将被删除的Redolog文件总数
+        :rtype: int
+        """
+        return self._WillDeleteRedoLogFileCount
+
+    @WillDeleteRedoLogFileCount.setter
+    def WillDeleteRedoLogFileCount(self, WillDeleteRedoLogFileCount):
+        self._WillDeleteRedoLogFileCount = WillDeleteRedoLogFileCount
+
+    @property
+    def WillDeleteRedoLogFiles(self):
+        r"""将被删除的Redolog文件列表
+        :rtype: list of WillDeleteItem
+        """
+        return self._WillDeleteRedoLogFiles
+
+    @WillDeleteRedoLogFiles.setter
+    def WillDeleteRedoLogFiles(self, WillDeleteRedoLogFiles):
+        self._WillDeleteRedoLogFiles = WillDeleteRedoLogFiles
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._WillDeleteBackupFileCount = params.get("WillDeleteBackupFileCount")
+        if params.get("WillDeleteBackupFiles") is not None:
+            self._WillDeleteBackupFiles = []
+            for item in params.get("WillDeleteBackupFiles"):
+                obj = WillDeleteItem()
+                obj._deserialize(item)
+                self._WillDeleteBackupFiles.append(obj)
+        self._WillDeleteBinlogFileCount = params.get("WillDeleteBinlogFileCount")
+        if params.get("WillDeleteBinlogFiles") is not None:
+            self._WillDeleteBinlogFiles = []
+            for item in params.get("WillDeleteBinlogFiles"):
+                obj = WillDeleteItem()
+                obj._deserialize(item)
+                self._WillDeleteBinlogFiles.append(obj)
+        self._WillDeleteRedoLogFileCount = params.get("WillDeleteRedoLogFileCount")
+        if params.get("WillDeleteRedoLogFiles") is not None:
+            self._WillDeleteRedoLogFiles = []
+            for item in params.get("WillDeleteRedoLogFiles"):
+                obj = WillDeleteItem()
+                obj._deserialize(item)
+                self._WillDeleteRedoLogFiles.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class CheckCreateLibraDBInstanceRequest(AbstractModel):
     r"""CheckCreateLibraDBInstance请求参数结构体
 
@@ -4802,6 +5127,135 @@ class CheckItem(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class CheckTransferClusterZoneRequest(AbstractModel):
+    r"""CheckTransferClusterZone请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 源集群Id
+        :type ClusterId: str
+        :param _DstZone: 目标可用区
+        :type DstZone: str
+        :param _ProxyZones: proxy迁移的目标可用区信息
+        :type ProxyZones: list of ProxyZone
+        """
+        self._ClusterId = None
+        self._DstZone = None
+        self._ProxyZones = None
+
+    @property
+    def ClusterId(self):
+        r"""源集群Id
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def DstZone(self):
+        r"""目标可用区
+        :rtype: str
+        """
+        return self._DstZone
+
+    @DstZone.setter
+    def DstZone(self, DstZone):
+        self._DstZone = DstZone
+
+    @property
+    def ProxyZones(self):
+        r"""proxy迁移的目标可用区信息
+        :rtype: list of ProxyZone
+        """
+        return self._ProxyZones
+
+    @ProxyZones.setter
+    def ProxyZones(self, ProxyZones):
+        self._ProxyZones = ProxyZones
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._DstZone = params.get("DstZone")
+        if params.get("ProxyZones") is not None:
+            self._ProxyZones = []
+            for item in params.get("ProxyZones"):
+                obj = ProxyZone()
+                obj._deserialize(item)
+                self._ProxyZones.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CheckTransferClusterZoneResponse(AbstractModel):
+    r"""CheckTransferClusterZone返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CheckStatus: 是否check成功
+        :type CheckStatus: bool
+        :param _CheckMsg: check失败的原因
+        :type CheckMsg: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._CheckStatus = None
+        self._CheckMsg = None
+        self._RequestId = None
+
+    @property
+    def CheckStatus(self):
+        r"""是否check成功
+        :rtype: bool
+        """
+        return self._CheckStatus
+
+    @CheckStatus.setter
+    def CheckStatus(self, CheckStatus):
+        self._CheckStatus = CheckStatus
+
+    @property
+    def CheckMsg(self):
+        r"""check失败的原因
+        :rtype: str
+        """
+        return self._CheckMsg
+
+    @CheckMsg.setter
+    def CheckMsg(self, CheckMsg):
+        self._CheckMsg = CheckMsg
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._CheckStatus = params.get("CheckStatus")
+        self._CheckMsg = params.get("CheckMsg")
+        self._RequestId = params.get("RequestId")
 
 
 class CloseAuditServiceRequest(AbstractModel):
@@ -6072,6 +6526,100 @@ class ClusterTaskId(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class CopyBackupToVaultRequest(AbstractModel):
+    r"""CopyBackupToVault请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VaultId: 目标保险箱ID，备份文件将复制到此保险箱
+        :type VaultId: str
+        :param _BackupIds: 备份文件ID列表，支持批量复制多个备份文件
+        :type BackupIds: list of int
+        """
+        self._VaultId = None
+        self._BackupIds = None
+
+    @property
+    def VaultId(self):
+        r"""目标保险箱ID，备份文件将复制到此保险箱
+        :rtype: str
+        """
+        return self._VaultId
+
+    @VaultId.setter
+    def VaultId(self, VaultId):
+        self._VaultId = VaultId
+
+    @property
+    def BackupIds(self):
+        r"""备份文件ID列表，支持批量复制多个备份文件
+        :rtype: list of int
+        """
+        return self._BackupIds
+
+    @BackupIds.setter
+    def BackupIds(self, BackupIds):
+        self._BackupIds = BackupIds
+
+
+    def _deserialize(self, params):
+        self._VaultId = params.get("VaultId")
+        self._BackupIds = params.get("BackupIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CopyBackupToVaultResponse(AbstractModel):
+    r"""CopyBackupToVault返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务ID
+        :type TaskId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""任务ID
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
 
 
 class CopyClusterPasswordComplexityRequest(AbstractModel):
@@ -10232,6 +10780,175 @@ class CreateResourcePackageResponse(AbstractModel):
     def _deserialize(self, params):
         self._BigDealIds = params.get("BigDealIds")
         self._DealNames = params.get("DealNames")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateVaultRequest(AbstractModel):
+    r"""CreateVault请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VaultName: 保险箱名称，长度必须大于0
+        :type VaultName: str
+        :param _BackupSaveSeconds: 备份保留时长（秒），必须大于0
+        :type BackupSaveSeconds: int
+        :param _VaultDescribe: 保险箱描述
+        :type VaultDescribe: str
+        :param _KeyId: KMS密钥ID，长度0-36字符
+        :type KeyId: str
+        :param _KeyType: 密钥类型，可选值：cloud（云托管密钥）、custom（自定义密钥）
+        :type KeyType: str
+        :param _KeyRegion: 密钥所在地域，长度0-32字符
+        :type KeyRegion: str
+        :param _LockedTime: 锁定时间，格式：YYYY-MM-DD HH:mm:ss
+        :type LockedTime: str
+        """
+        self._VaultName = None
+        self._BackupSaveSeconds = None
+        self._VaultDescribe = None
+        self._KeyId = None
+        self._KeyType = None
+        self._KeyRegion = None
+        self._LockedTime = None
+
+    @property
+    def VaultName(self):
+        r"""保险箱名称，长度必须大于0
+        :rtype: str
+        """
+        return self._VaultName
+
+    @VaultName.setter
+    def VaultName(self, VaultName):
+        self._VaultName = VaultName
+
+    @property
+    def BackupSaveSeconds(self):
+        r"""备份保留时长（秒），必须大于0
+        :rtype: int
+        """
+        return self._BackupSaveSeconds
+
+    @BackupSaveSeconds.setter
+    def BackupSaveSeconds(self, BackupSaveSeconds):
+        self._BackupSaveSeconds = BackupSaveSeconds
+
+    @property
+    def VaultDescribe(self):
+        r"""保险箱描述
+        :rtype: str
+        """
+        return self._VaultDescribe
+
+    @VaultDescribe.setter
+    def VaultDescribe(self, VaultDescribe):
+        self._VaultDescribe = VaultDescribe
+
+    @property
+    def KeyId(self):
+        r"""KMS密钥ID，长度0-36字符
+        :rtype: str
+        """
+        return self._KeyId
+
+    @KeyId.setter
+    def KeyId(self, KeyId):
+        self._KeyId = KeyId
+
+    @property
+    def KeyType(self):
+        r"""密钥类型，可选值：cloud（云托管密钥）、custom（自定义密钥）
+        :rtype: str
+        """
+        return self._KeyType
+
+    @KeyType.setter
+    def KeyType(self, KeyType):
+        self._KeyType = KeyType
+
+    @property
+    def KeyRegion(self):
+        r"""密钥所在地域，长度0-32字符
+        :rtype: str
+        """
+        return self._KeyRegion
+
+    @KeyRegion.setter
+    def KeyRegion(self, KeyRegion):
+        self._KeyRegion = KeyRegion
+
+    @property
+    def LockedTime(self):
+        r"""锁定时间，格式：YYYY-MM-DD HH:mm:ss
+        :rtype: str
+        """
+        return self._LockedTime
+
+    @LockedTime.setter
+    def LockedTime(self, LockedTime):
+        self._LockedTime = LockedTime
+
+
+    def _deserialize(self, params):
+        self._VaultName = params.get("VaultName")
+        self._BackupSaveSeconds = params.get("BackupSaveSeconds")
+        self._VaultDescribe = params.get("VaultDescribe")
+        self._KeyId = params.get("KeyId")
+        self._KeyType = params.get("KeyType")
+        self._KeyRegion = params.get("KeyRegion")
+        self._LockedTime = params.get("LockedTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateVaultResponse(AbstractModel):
+    r"""CreateVault返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务ID，用于查询任务执行状态
+        :type TaskId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""任务ID，用于查询任务执行状态
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
 
 
@@ -15123,6 +15840,100 @@ class DeleteBackupResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteBackupVaultRequest(AbstractModel):
+    r"""DeleteBackupVault请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VaultId: 备份保险箱ID，长度必须大于0
+        :type VaultId: str
+        :param _BackupIds: 待删除的备份文件ID列表，不能为空
+        :type BackupIds: list of int
+        """
+        self._VaultId = None
+        self._BackupIds = None
+
+    @property
+    def VaultId(self):
+        r"""备份保险箱ID，长度必须大于0
+        :rtype: str
+        """
+        return self._VaultId
+
+    @VaultId.setter
+    def VaultId(self, VaultId):
+        self._VaultId = VaultId
+
+    @property
+    def BackupIds(self):
+        r"""待删除的备份文件ID列表，不能为空
+        :rtype: list of int
+        """
+        return self._BackupIds
+
+    @BackupIds.setter
+    def BackupIds(self, BackupIds):
+        self._BackupIds = BackupIds
+
+
+    def _deserialize(self, params):
+        self._VaultId = params.get("VaultId")
+        self._BackupIds = params.get("BackupIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteBackupVaultResponse(AbstractModel):
+    r"""DeleteBackupVault返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务ID，用于查询任务执行状态
+        :type TaskId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""任务ID，用于查询任务执行状态
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteCLSDeliveryRequest(AbstractModel):
     r"""DeleteCLSDelivery请求参数结构体
 
@@ -15646,6 +16457,141 @@ class DeleteParamTemplateResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteVaultTask(AbstractModel):
+    r"""删除保险箱任务信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VaultId: 保险箱ID
+        :type VaultId: str
+        :param _TaskId: 任务ID
+        :type TaskId: int
+        """
+        self._VaultId = None
+        self._TaskId = None
+
+    @property
+    def VaultId(self):
+        r"""保险箱ID
+        :rtype: str
+        """
+        return self._VaultId
+
+    @VaultId.setter
+    def VaultId(self, VaultId):
+        self._VaultId = VaultId
+
+    @property
+    def TaskId(self):
+        r"""任务ID
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._VaultId = params.get("VaultId")
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteVaultsRequest(AbstractModel):
+    r"""DeleteVaults请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VaultIds: 待删除的备份保险箱ID列表，不能为空，保险箱内必须已清空所有文件
+        :type VaultIds: list of str
+        """
+        self._VaultIds = None
+
+    @property
+    def VaultIds(self):
+        r"""待删除的备份保险箱ID列表，不能为空，保险箱内必须已清空所有文件
+        :rtype: list of str
+        """
+        return self._VaultIds
+
+    @VaultIds.setter
+    def VaultIds(self, VaultIds):
+        self._VaultIds = VaultIds
+
+
+    def _deserialize(self, params):
+        self._VaultIds = params.get("VaultIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteVaultsResponse(AbstractModel):
+    r"""DeleteVaults返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VaultTask: 删除任务列表，每个保险箱对应一个任务
+        :type VaultTask: list of DeleteVaultTask
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._VaultTask = None
+        self._RequestId = None
+
+    @property
+    def VaultTask(self):
+        r"""删除任务列表，每个保险箱对应一个任务
+        :rtype: list of DeleteVaultTask
+        """
+        return self._VaultTask
+
+    @VaultTask.setter
+    def VaultTask(self, VaultTask):
+        self._VaultTask = VaultTask
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("VaultTask") is not None:
+            self._VaultTask = []
+            for item in params.get("VaultTask"):
+                obj = DeleteVaultTask()
+                obj._deserialize(item)
+                self._VaultTask.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -17571,6 +18517,308 @@ class DescribeBackupDownloadUserRestrictionResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeBackupListByVaultItem(AbstractModel):
+    r"""DescribeBackupListByVaultItem
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群id
+        :type ClusterId: str
+        :param _ClusterName: 集群name
+        :type ClusterName: str
+        :param _BackupFileInfo: 备份信息
+        :type BackupFileInfo: :class:`tencentcloud.cynosdb.v20190107.models.BackupFileInfo`
+        """
+        self._ClusterId = None
+        self._ClusterName = None
+        self._BackupFileInfo = None
+
+    @property
+    def ClusterId(self):
+        r"""集群id
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def ClusterName(self):
+        r"""集群name
+        :rtype: str
+        """
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+    @property
+    def BackupFileInfo(self):
+        r"""备份信息
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.BackupFileInfo`
+        """
+        return self._BackupFileInfo
+
+    @BackupFileInfo.setter
+    def BackupFileInfo(self, BackupFileInfo):
+        self._BackupFileInfo = BackupFileInfo
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._ClusterName = params.get("ClusterName")
+        if params.get("BackupFileInfo") is not None:
+            self._BackupFileInfo = BackupFileInfo()
+            self._BackupFileInfo._deserialize(params.get("BackupFileInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBackupListByVaultRequest(AbstractModel):
+    r"""DescribeBackupListByVault请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VaultId: 保险箱ID，长度必须大于0
+        :type VaultId: str
+        :param _BackupIds: 备份文件ID列表，用于筛选特定备份
+        :type BackupIds: list of int
+        :param _ClusterId: 集群ID，用于筛选特定集群的备份
+        :type ClusterId: str
+        :param _BackupNames: 备份名称列表，用于精确匹配筛选
+        :type BackupNames: list of str
+        :param _FileNames: 文件名称列表，用于精确匹配筛选
+        :type FileNames: list of str
+        :param _Limit: 分页数量，取值范围：(0, 100]，默认100
+        :type Limit: int
+        :param _Offset: 分页偏移量，取值范围：[0, INF)，默认0
+        :type Offset: int
+        :param _OrderBy: 排序字段，可选值：VaultId, VaultName, BackupSaveSeconds, LockedTime, CreateTime, UpdateTime，默认createTime
+        :type OrderBy: str
+        :param _OrderByType: 排序方式，可选值：desc, asc, DESC, ASC，默认desc
+        :type OrderByType: str
+        :param _Status: 状态
+        :type Status: str
+        """
+        self._VaultId = None
+        self._BackupIds = None
+        self._ClusterId = None
+        self._BackupNames = None
+        self._FileNames = None
+        self._Limit = None
+        self._Offset = None
+        self._OrderBy = None
+        self._OrderByType = None
+        self._Status = None
+
+    @property
+    def VaultId(self):
+        r"""保险箱ID，长度必须大于0
+        :rtype: str
+        """
+        return self._VaultId
+
+    @VaultId.setter
+    def VaultId(self, VaultId):
+        self._VaultId = VaultId
+
+    @property
+    def BackupIds(self):
+        r"""备份文件ID列表，用于筛选特定备份
+        :rtype: list of int
+        """
+        return self._BackupIds
+
+    @BackupIds.setter
+    def BackupIds(self, BackupIds):
+        self._BackupIds = BackupIds
+
+    @property
+    def ClusterId(self):
+        r"""集群ID，用于筛选特定集群的备份
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def BackupNames(self):
+        r"""备份名称列表，用于精确匹配筛选
+        :rtype: list of str
+        """
+        return self._BackupNames
+
+    @BackupNames.setter
+    def BackupNames(self, BackupNames):
+        self._BackupNames = BackupNames
+
+    @property
+    def FileNames(self):
+        r"""文件名称列表，用于精确匹配筛选
+        :rtype: list of str
+        """
+        return self._FileNames
+
+    @FileNames.setter
+    def FileNames(self, FileNames):
+        self._FileNames = FileNames
+
+    @property
+    def Limit(self):
+        r"""分页数量，取值范围：(0, 100]，默认100
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""分页偏移量，取值范围：[0, INF)，默认0
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def OrderBy(self):
+        r"""排序字段，可选值：VaultId, VaultName, BackupSaveSeconds, LockedTime, CreateTime, UpdateTime，默认createTime
+        :rtype: str
+        """
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
+
+    @property
+    def OrderByType(self):
+        r"""排序方式，可选值：desc, asc, DESC, ASC，默认desc
+        :rtype: str
+        """
+        return self._OrderByType
+
+    @OrderByType.setter
+    def OrderByType(self, OrderByType):
+        self._OrderByType = OrderByType
+
+    @property
+    def Status(self):
+        r"""状态
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._VaultId = params.get("VaultId")
+        self._BackupIds = params.get("BackupIds")
+        self._ClusterId = params.get("ClusterId")
+        self._BackupNames = params.get("BackupNames")
+        self._FileNames = params.get("FileNames")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._OrderBy = params.get("OrderBy")
+        self._OrderByType = params.get("OrderByType")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBackupListByVaultResponse(AbstractModel):
+    r"""DescribeBackupListByVault返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 符合条件的备份文件总数
+        :type TotalCount: int
+        :param _BackupList: 备份文件列表
+        :type BackupList: list of DescribeBackupListByVaultItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._BackupList = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""符合条件的备份文件总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def BackupList(self):
+        r"""备份文件列表
+        :rtype: list of DescribeBackupListByVaultItem
+        """
+        return self._BackupList
+
+    @BackupList.setter
+    def BackupList(self, BackupList):
+        self._BackupList = BackupList
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("BackupList") is not None:
+            self._BackupList = []
+            for item in params.get("BackupList"):
+                obj = DescribeBackupListByVaultItem()
+                obj._deserialize(item)
+                self._BackupList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeBackupListRequest(AbstractModel):
     r"""DescribeBackupList请求参数结构体
 
@@ -17609,6 +18857,8 @@ class DescribeBackupListRequest(AbstractModel):
         :type BackupRegion: str
         :param _IsCrossRegionsBackup: 是否跨地域备份
         :type IsCrossRegionsBackup: str
+        :param _BackupStatus: 需要查询的状态
+        :type BackupStatus: list of str
         """
         self._ClusterId = None
         self._Limit = None
@@ -17625,6 +18875,7 @@ class DescribeBackupListRequest(AbstractModel):
         self._SnapshotIdList = None
         self._BackupRegion = None
         self._IsCrossRegionsBackup = None
+        self._BackupStatus = None
 
     @property
     def ClusterId(self):
@@ -17792,6 +19043,17 @@ class DescribeBackupListRequest(AbstractModel):
     def IsCrossRegionsBackup(self, IsCrossRegionsBackup):
         self._IsCrossRegionsBackup = IsCrossRegionsBackup
 
+    @property
+    def BackupStatus(self):
+        r"""需要查询的状态
+        :rtype: list of str
+        """
+        return self._BackupStatus
+
+    @BackupStatus.setter
+    def BackupStatus(self, BackupStatus):
+        self._BackupStatus = BackupStatus
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -17809,6 +19071,7 @@ class DescribeBackupListRequest(AbstractModel):
         self._SnapshotIdList = params.get("SnapshotIdList")
         self._BackupRegion = params.get("BackupRegion")
         self._IsCrossRegionsBackup = params.get("IsCrossRegionsBackup")
+        self._BackupStatus = params.get("BackupStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18086,6 +19349,308 @@ class DescribeBinlogDownloadUrlResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._DownloadUrl = params.get("DownloadUrl")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeBinlogListByVaultItem(AbstractModel):
+    r"""binlog备份信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群ID
+        :type ClusterId: str
+        :param _ClusterName: 集群名称
+        :type ClusterName: str
+        :param _BinlogFileInfo: Binlog文件信息
+        :type BinlogFileInfo: :class:`tencentcloud.cynosdb.v20190107.models.BinlogItem`
+        """
+        self._ClusterId = None
+        self._ClusterName = None
+        self._BinlogFileInfo = None
+
+    @property
+    def ClusterId(self):
+        r"""集群ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def ClusterName(self):
+        r"""集群名称
+        :rtype: str
+        """
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+    @property
+    def BinlogFileInfo(self):
+        r"""Binlog文件信息
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.BinlogItem`
+        """
+        return self._BinlogFileInfo
+
+    @BinlogFileInfo.setter
+    def BinlogFileInfo(self, BinlogFileInfo):
+        self._BinlogFileInfo = BinlogFileInfo
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._ClusterName = params.get("ClusterName")
+        if params.get("BinlogFileInfo") is not None:
+            self._BinlogFileInfo = BinlogItem()
+            self._BinlogFileInfo._deserialize(params.get("BinlogFileInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBinlogListByVaultRequest(AbstractModel):
+    r"""DescribeBinlogListByVault请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VaultId: 保险箱ID
+        :type VaultId: str
+        :param _ClusterId: 集群ID
+        :type ClusterId: str
+        :param _BackupIds: 备份ID列表
+        :type BackupIds: list of int
+        :param _BackupNames: 备份名称列表
+        :type BackupNames: list of str
+        :param _FileNames: 文件名列表
+        :type FileNames: list of str
+        :param _Limit: 返回数量，范围: (0, 100]，默认100
+        :type Limit: int
+        :param _Offset: 偏移量，范围: [0, INF)，默认0
+        :type Offset: int
+        :param _OrderBy: 排序字段，可选值: VaultId, VaultName, BackupSaveSeconds, LockedTime, CreateTime, UpdateTime，默认createTime
+        :type OrderBy: str
+        :param _OrderByType: 排序方式，可选值: desc, asc, DESC, ASC，默认desc
+        :type OrderByType: str
+        :param _Status: 状态
+        :type Status: str
+        """
+        self._VaultId = None
+        self._ClusterId = None
+        self._BackupIds = None
+        self._BackupNames = None
+        self._FileNames = None
+        self._Limit = None
+        self._Offset = None
+        self._OrderBy = None
+        self._OrderByType = None
+        self._Status = None
+
+    @property
+    def VaultId(self):
+        r"""保险箱ID
+        :rtype: str
+        """
+        return self._VaultId
+
+    @VaultId.setter
+    def VaultId(self, VaultId):
+        self._VaultId = VaultId
+
+    @property
+    def ClusterId(self):
+        r"""集群ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def BackupIds(self):
+        r"""备份ID列表
+        :rtype: list of int
+        """
+        return self._BackupIds
+
+    @BackupIds.setter
+    def BackupIds(self, BackupIds):
+        self._BackupIds = BackupIds
+
+    @property
+    def BackupNames(self):
+        r"""备份名称列表
+        :rtype: list of str
+        """
+        return self._BackupNames
+
+    @BackupNames.setter
+    def BackupNames(self, BackupNames):
+        self._BackupNames = BackupNames
+
+    @property
+    def FileNames(self):
+        r"""文件名列表
+        :rtype: list of str
+        """
+        return self._FileNames
+
+    @FileNames.setter
+    def FileNames(self, FileNames):
+        self._FileNames = FileNames
+
+    @property
+    def Limit(self):
+        r"""返回数量，范围: (0, 100]，默认100
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""偏移量，范围: [0, INF)，默认0
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def OrderBy(self):
+        r"""排序字段，可选值: VaultId, VaultName, BackupSaveSeconds, LockedTime, CreateTime, UpdateTime，默认createTime
+        :rtype: str
+        """
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
+
+    @property
+    def OrderByType(self):
+        r"""排序方式，可选值: desc, asc, DESC, ASC，默认desc
+        :rtype: str
+        """
+        return self._OrderByType
+
+    @OrderByType.setter
+    def OrderByType(self, OrderByType):
+        self._OrderByType = OrderByType
+
+    @property
+    def Status(self):
+        r"""状态
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._VaultId = params.get("VaultId")
+        self._ClusterId = params.get("ClusterId")
+        self._BackupIds = params.get("BackupIds")
+        self._BackupNames = params.get("BackupNames")
+        self._FileNames = params.get("FileNames")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._OrderBy = params.get("OrderBy")
+        self._OrderByType = params.get("OrderByType")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBinlogListByVaultResponse(AbstractModel):
+    r"""DescribeBinlogListByVault返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 总数量
+        :type TotalCount: int
+        :param _BinlogList: Binlog文件列表
+        :type BinlogList: list of DescribeBinlogListByVaultItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._BinlogList = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""总数量
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def BinlogList(self):
+        r"""Binlog文件列表
+        :rtype: list of DescribeBinlogListByVaultItem
+        """
+        return self._BinlogList
+
+    @BinlogList.setter
+    def BinlogList(self, BinlogList):
+        self._BinlogList = BinlogList
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("BinlogList") is not None:
+            self._BinlogList = []
+            for item in params.get("BinlogList"):
+                obj = DescribeBinlogListByVaultItem()
+                obj._deserialize(item)
+                self._BinlogList.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -25256,6 +26821,308 @@ class DescribeProxySpecsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeRedoLogListByVaultItem(AbstractModel):
+    r"""redolog信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群ID
+        :type ClusterId: str
+        :param _ClusterName: 集群名称
+        :type ClusterName: str
+        :param _RedoFileInfo: RedoLog文件信息
+        :type RedoFileInfo: :class:`tencentcloud.cynosdb.v20190107.models.RedoLogItem`
+        """
+        self._ClusterId = None
+        self._ClusterName = None
+        self._RedoFileInfo = None
+
+    @property
+    def ClusterId(self):
+        r"""集群ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def ClusterName(self):
+        r"""集群名称
+        :rtype: str
+        """
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+    @property
+    def RedoFileInfo(self):
+        r"""RedoLog文件信息
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.RedoLogItem`
+        """
+        return self._RedoFileInfo
+
+    @RedoFileInfo.setter
+    def RedoFileInfo(self, RedoFileInfo):
+        self._RedoFileInfo = RedoFileInfo
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._ClusterName = params.get("ClusterName")
+        if params.get("RedoFileInfo") is not None:
+            self._RedoFileInfo = RedoLogItem()
+            self._RedoFileInfo._deserialize(params.get("RedoFileInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRedoLogListByVaultRequest(AbstractModel):
+    r"""DescribeRedoLogListByVault请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VaultId: 保险箱ID
+        :type VaultId: str
+        :param _BackupIds: 备份ID列表
+        :type BackupIds: list of int
+        :param _ClusterId: 集群ID
+        :type ClusterId: str
+        :param _BackupNames: 备份名称列表
+        :type BackupNames: list of str
+        :param _FileNames: 文件名称列表
+        :type FileNames: list of str
+        :param _Limit: 每页数量，范围(0,100]，默认100
+        :type Limit: int
+        :param _Offset: 偏移量，范围[0,INF)，默认0
+        :type Offset: int
+        :param _OrderBy: 排序字段，可选值：VaultId,VaultName,BackupSaveSeconds,LockedTime,CreateTime,UpdateTime，默认createTime
+        :type OrderBy: str
+        :param _OrderByType: 排序方式，可选值：desc,asc,DESC,ASC，默认desc
+        :type OrderByType: str
+        :param _Status: 状态
+        :type Status: str
+        """
+        self._VaultId = None
+        self._BackupIds = None
+        self._ClusterId = None
+        self._BackupNames = None
+        self._FileNames = None
+        self._Limit = None
+        self._Offset = None
+        self._OrderBy = None
+        self._OrderByType = None
+        self._Status = None
+
+    @property
+    def VaultId(self):
+        r"""保险箱ID
+        :rtype: str
+        """
+        return self._VaultId
+
+    @VaultId.setter
+    def VaultId(self, VaultId):
+        self._VaultId = VaultId
+
+    @property
+    def BackupIds(self):
+        r"""备份ID列表
+        :rtype: list of int
+        """
+        return self._BackupIds
+
+    @BackupIds.setter
+    def BackupIds(self, BackupIds):
+        self._BackupIds = BackupIds
+
+    @property
+    def ClusterId(self):
+        r"""集群ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def BackupNames(self):
+        r"""备份名称列表
+        :rtype: list of str
+        """
+        return self._BackupNames
+
+    @BackupNames.setter
+    def BackupNames(self, BackupNames):
+        self._BackupNames = BackupNames
+
+    @property
+    def FileNames(self):
+        r"""文件名称列表
+        :rtype: list of str
+        """
+        return self._FileNames
+
+    @FileNames.setter
+    def FileNames(self, FileNames):
+        self._FileNames = FileNames
+
+    @property
+    def Limit(self):
+        r"""每页数量，范围(0,100]，默认100
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""偏移量，范围[0,INF)，默认0
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def OrderBy(self):
+        r"""排序字段，可选值：VaultId,VaultName,BackupSaveSeconds,LockedTime,CreateTime,UpdateTime，默认createTime
+        :rtype: str
+        """
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
+
+    @property
+    def OrderByType(self):
+        r"""排序方式，可选值：desc,asc,DESC,ASC，默认desc
+        :rtype: str
+        """
+        return self._OrderByType
+
+    @OrderByType.setter
+    def OrderByType(self, OrderByType):
+        self._OrderByType = OrderByType
+
+    @property
+    def Status(self):
+        r"""状态
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._VaultId = params.get("VaultId")
+        self._BackupIds = params.get("BackupIds")
+        self._ClusterId = params.get("ClusterId")
+        self._BackupNames = params.get("BackupNames")
+        self._FileNames = params.get("FileNames")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._OrderBy = params.get("OrderBy")
+        self._OrderByType = params.get("OrderByType")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRedoLogListByVaultResponse(AbstractModel):
+    r"""DescribeRedoLogListByVault返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 符合条件的RedoLog文件总数
+        :type TotalCount: int
+        :param _RedoLogList: RedoLog文件列表
+        :type RedoLogList: list of DescribeRedoLogListByVaultItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._RedoLogList = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""符合条件的RedoLog文件总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RedoLogList(self):
+        r"""RedoLog文件列表
+        :rtype: list of DescribeRedoLogListByVaultItem
+        """
+        return self._RedoLogList
+
+    @RedoLogList.setter
+    def RedoLogList(self, RedoLogList):
+        self._RedoLogList = RedoLogList
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("RedoLogList") is not None:
+            self._RedoLogList = []
+            for item in params.get("RedoLogList"):
+                obj = DescribeRedoLogListByVaultItem()
+                obj._deserialize(item)
+                self._RedoLogList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeRedoLogsRequest(AbstractModel):
     r"""DescribeRedoLogs请求参数结构体
 
@@ -27154,6 +29021,676 @@ class DescribeTasksResponse(AbstractModel):
                 obj = BizTaskInfo()
                 obj._deserialize(item)
                 self._TaskList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeVaultBackupClusterInfo(AbstractModel):
+    r"""集群信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群ID
+        :type ClusterId: str
+        :param _ClusterName: 集群名称
+        :type ClusterName: str
+        :param _ClusterStatus: 集群状态
+        :type ClusterStatus: str
+        :param _ClusterRegion: 集群所在地域
+        :type ClusterRegion: str
+        :param _ClusterZone: 集群所在可用区
+        :type ClusterZone: str
+        """
+        self._ClusterId = None
+        self._ClusterName = None
+        self._ClusterStatus = None
+        self._ClusterRegion = None
+        self._ClusterZone = None
+
+    @property
+    def ClusterId(self):
+        r"""集群ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def ClusterName(self):
+        r"""集群名称
+        :rtype: str
+        """
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+    @property
+    def ClusterStatus(self):
+        r"""集群状态
+        :rtype: str
+        """
+        return self._ClusterStatus
+
+    @ClusterStatus.setter
+    def ClusterStatus(self, ClusterStatus):
+        self._ClusterStatus = ClusterStatus
+
+    @property
+    def ClusterRegion(self):
+        r"""集群所在地域
+        :rtype: str
+        """
+        return self._ClusterRegion
+
+    @ClusterRegion.setter
+    def ClusterRegion(self, ClusterRegion):
+        self._ClusterRegion = ClusterRegion
+
+    @property
+    def ClusterZone(self):
+        r"""集群所在可用区
+        :rtype: str
+        """
+        return self._ClusterZone
+
+    @ClusterZone.setter
+    def ClusterZone(self, ClusterZone):
+        self._ClusterZone = ClusterZone
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._ClusterName = params.get("ClusterName")
+        self._ClusterStatus = params.get("ClusterStatus")
+        self._ClusterRegion = params.get("ClusterRegion")
+        self._ClusterZone = params.get("ClusterZone")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVaultBackupClusterInfoRequest(AbstractModel):
+    r"""DescribeVaultBackupClusterInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VaultId: 备份保险箱ID
+        :type VaultId: str
+        """
+        self._VaultId = None
+
+    @property
+    def VaultId(self):
+        r"""备份保险箱ID
+        :rtype: str
+        """
+        return self._VaultId
+
+    @VaultId.setter
+    def VaultId(self, VaultId):
+        self._VaultId = VaultId
+
+
+    def _deserialize(self, params):
+        self._VaultId = params.get("VaultId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVaultBackupClusterInfoResponse(AbstractModel):
+    r"""DescribeVaultBackupClusterInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterInfos: 保险箱信息
+        :type ClusterInfos: list of DescribeVaultBackupClusterInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ClusterInfos = None
+        self._RequestId = None
+
+    @property
+    def ClusterInfos(self):
+        r"""保险箱信息
+        :rtype: list of DescribeVaultBackupClusterInfo
+        """
+        return self._ClusterInfos
+
+    @ClusterInfos.setter
+    def ClusterInfos(self, ClusterInfos):
+        self._ClusterInfos = ClusterInfos
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ClusterInfos") is not None:
+            self._ClusterInfos = []
+            for item in params.get("ClusterInfos"):
+                obj = DescribeVaultBackupClusterInfo()
+                obj._deserialize(item)
+                self._ClusterInfos.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeVaultsItem(AbstractModel):
+    r"""保险箱信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VaultId: 保险箱ID
+        :type VaultId: str
+        :param _VaultName: 保险箱名称
+        :type VaultName: str
+        :param _VaultDescribe: 保险箱描述
+        :type VaultDescribe: str
+        :param _KeyId: 加密密钥ID
+        :type KeyId: str
+        :param _KeyRegion: 密钥所在地域
+        :type KeyRegion: str
+        :param _KeyType: 密钥类型
+        :type KeyType: str
+        :param _BackupFileCount: 备份文件数量
+        :type BackupFileCount: int
+        :param _BackupFileSize: 备份文件总大小（字节）
+        :type BackupFileSize: int
+        :param _BinlogFileCount: Binlog文件数量
+        :type BinlogFileCount: int
+        :param _BinlogFileSize: Binlog文件总大小（字节）
+        :type BinlogFileSize: int
+        :param _RedoLogFileCount: RedoLog文件数量
+        :type RedoLogFileCount: int
+        :param _RedoLogFileSize: RedoLog文件总大小（字节）
+        :type RedoLogFileSize: int
+        :param _Status: 保险箱状态
+        :type Status: str
+        :param _BackupSaveSeconds: 备份保留时长（秒）
+        :type BackupSaveSeconds: int
+        :param _LockedTime: 锁定时间
+        :type LockedTime: str
+        :param _Tasks: 关联任务列表
+        :type Tasks: list of ObjectTask
+        :param _VaultRegion: 保险箱所在地域
+        :type VaultRegion: str
+        :param _AutoCopyConfigs: 自动投递关系
+        :type AutoCopyConfigs: list of AutoCopyConfig
+        """
+        self._VaultId = None
+        self._VaultName = None
+        self._VaultDescribe = None
+        self._KeyId = None
+        self._KeyRegion = None
+        self._KeyType = None
+        self._BackupFileCount = None
+        self._BackupFileSize = None
+        self._BinlogFileCount = None
+        self._BinlogFileSize = None
+        self._RedoLogFileCount = None
+        self._RedoLogFileSize = None
+        self._Status = None
+        self._BackupSaveSeconds = None
+        self._LockedTime = None
+        self._Tasks = None
+        self._VaultRegion = None
+        self._AutoCopyConfigs = None
+
+    @property
+    def VaultId(self):
+        r"""保险箱ID
+        :rtype: str
+        """
+        return self._VaultId
+
+    @VaultId.setter
+    def VaultId(self, VaultId):
+        self._VaultId = VaultId
+
+    @property
+    def VaultName(self):
+        r"""保险箱名称
+        :rtype: str
+        """
+        return self._VaultName
+
+    @VaultName.setter
+    def VaultName(self, VaultName):
+        self._VaultName = VaultName
+
+    @property
+    def VaultDescribe(self):
+        r"""保险箱描述
+        :rtype: str
+        """
+        return self._VaultDescribe
+
+    @VaultDescribe.setter
+    def VaultDescribe(self, VaultDescribe):
+        self._VaultDescribe = VaultDescribe
+
+    @property
+    def KeyId(self):
+        r"""加密密钥ID
+        :rtype: str
+        """
+        return self._KeyId
+
+    @KeyId.setter
+    def KeyId(self, KeyId):
+        self._KeyId = KeyId
+
+    @property
+    def KeyRegion(self):
+        r"""密钥所在地域
+        :rtype: str
+        """
+        return self._KeyRegion
+
+    @KeyRegion.setter
+    def KeyRegion(self, KeyRegion):
+        self._KeyRegion = KeyRegion
+
+    @property
+    def KeyType(self):
+        r"""密钥类型
+        :rtype: str
+        """
+        return self._KeyType
+
+    @KeyType.setter
+    def KeyType(self, KeyType):
+        self._KeyType = KeyType
+
+    @property
+    def BackupFileCount(self):
+        r"""备份文件数量
+        :rtype: int
+        """
+        return self._BackupFileCount
+
+    @BackupFileCount.setter
+    def BackupFileCount(self, BackupFileCount):
+        self._BackupFileCount = BackupFileCount
+
+    @property
+    def BackupFileSize(self):
+        r"""备份文件总大小（字节）
+        :rtype: int
+        """
+        return self._BackupFileSize
+
+    @BackupFileSize.setter
+    def BackupFileSize(self, BackupFileSize):
+        self._BackupFileSize = BackupFileSize
+
+    @property
+    def BinlogFileCount(self):
+        r"""Binlog文件数量
+        :rtype: int
+        """
+        return self._BinlogFileCount
+
+    @BinlogFileCount.setter
+    def BinlogFileCount(self, BinlogFileCount):
+        self._BinlogFileCount = BinlogFileCount
+
+    @property
+    def BinlogFileSize(self):
+        r"""Binlog文件总大小（字节）
+        :rtype: int
+        """
+        return self._BinlogFileSize
+
+    @BinlogFileSize.setter
+    def BinlogFileSize(self, BinlogFileSize):
+        self._BinlogFileSize = BinlogFileSize
+
+    @property
+    def RedoLogFileCount(self):
+        r"""RedoLog文件数量
+        :rtype: int
+        """
+        return self._RedoLogFileCount
+
+    @RedoLogFileCount.setter
+    def RedoLogFileCount(self, RedoLogFileCount):
+        self._RedoLogFileCount = RedoLogFileCount
+
+    @property
+    def RedoLogFileSize(self):
+        r"""RedoLog文件总大小（字节）
+        :rtype: int
+        """
+        return self._RedoLogFileSize
+
+    @RedoLogFileSize.setter
+    def RedoLogFileSize(self, RedoLogFileSize):
+        self._RedoLogFileSize = RedoLogFileSize
+
+    @property
+    def Status(self):
+        r"""保险箱状态
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def BackupSaveSeconds(self):
+        r"""备份保留时长（秒）
+        :rtype: int
+        """
+        return self._BackupSaveSeconds
+
+    @BackupSaveSeconds.setter
+    def BackupSaveSeconds(self, BackupSaveSeconds):
+        self._BackupSaveSeconds = BackupSaveSeconds
+
+    @property
+    def LockedTime(self):
+        r"""锁定时间
+        :rtype: str
+        """
+        return self._LockedTime
+
+    @LockedTime.setter
+    def LockedTime(self, LockedTime):
+        self._LockedTime = LockedTime
+
+    @property
+    def Tasks(self):
+        r"""关联任务列表
+        :rtype: list of ObjectTask
+        """
+        return self._Tasks
+
+    @Tasks.setter
+    def Tasks(self, Tasks):
+        self._Tasks = Tasks
+
+    @property
+    def VaultRegion(self):
+        r"""保险箱所在地域
+        :rtype: str
+        """
+        return self._VaultRegion
+
+    @VaultRegion.setter
+    def VaultRegion(self, VaultRegion):
+        self._VaultRegion = VaultRegion
+
+    @property
+    def AutoCopyConfigs(self):
+        r"""自动投递关系
+        :rtype: list of AutoCopyConfig
+        """
+        return self._AutoCopyConfigs
+
+    @AutoCopyConfigs.setter
+    def AutoCopyConfigs(self, AutoCopyConfigs):
+        self._AutoCopyConfigs = AutoCopyConfigs
+
+
+    def _deserialize(self, params):
+        self._VaultId = params.get("VaultId")
+        self._VaultName = params.get("VaultName")
+        self._VaultDescribe = params.get("VaultDescribe")
+        self._KeyId = params.get("KeyId")
+        self._KeyRegion = params.get("KeyRegion")
+        self._KeyType = params.get("KeyType")
+        self._BackupFileCount = params.get("BackupFileCount")
+        self._BackupFileSize = params.get("BackupFileSize")
+        self._BinlogFileCount = params.get("BinlogFileCount")
+        self._BinlogFileSize = params.get("BinlogFileSize")
+        self._RedoLogFileCount = params.get("RedoLogFileCount")
+        self._RedoLogFileSize = params.get("RedoLogFileSize")
+        self._Status = params.get("Status")
+        self._BackupSaveSeconds = params.get("BackupSaveSeconds")
+        self._LockedTime = params.get("LockedTime")
+        if params.get("Tasks") is not None:
+            self._Tasks = []
+            for item in params.get("Tasks"):
+                obj = ObjectTask()
+                obj._deserialize(item)
+                self._Tasks.append(obj)
+        self._VaultRegion = params.get("VaultRegion")
+        if params.get("AutoCopyConfigs") is not None:
+            self._AutoCopyConfigs = []
+            for item in params.get("AutoCopyConfigs"):
+                obj = AutoCopyConfig()
+                obj._deserialize(item)
+                self._AutoCopyConfigs.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVaultsRequest(AbstractModel):
+    r"""DescribeVaults请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VaultIds: 保险箱ID列表，用于精确筛选
+        :type VaultIds: list of str
+        :param _VaultName: 保险箱名称，用于模糊筛选
+        :type VaultName: str
+        :param _Status: 保险箱状态列表，用于筛选
+        :type Status: list of str
+        :param _Limit: 每页数量，范围(0,100]，默认100
+        :type Limit: int
+        :param _Offset: 偏移量，范围[0,+∞)，默认0
+        :type Offset: int
+        :param _OrderBy: 排序字段，可选值：VaultId, VaultName, BackupSaveSeconds, LockedTime, CreateTime, UpdateTime
+        :type OrderBy: str
+        :param _OrderByType: 排序方式，可选值：desc, asc, DESC, ASC
+        :type OrderByType: str
+        """
+        self._VaultIds = None
+        self._VaultName = None
+        self._Status = None
+        self._Limit = None
+        self._Offset = None
+        self._OrderBy = None
+        self._OrderByType = None
+
+    @property
+    def VaultIds(self):
+        r"""保险箱ID列表，用于精确筛选
+        :rtype: list of str
+        """
+        return self._VaultIds
+
+    @VaultIds.setter
+    def VaultIds(self, VaultIds):
+        self._VaultIds = VaultIds
+
+    @property
+    def VaultName(self):
+        r"""保险箱名称，用于模糊筛选
+        :rtype: str
+        """
+        return self._VaultName
+
+    @VaultName.setter
+    def VaultName(self, VaultName):
+        self._VaultName = VaultName
+
+    @property
+    def Status(self):
+        r"""保险箱状态列表，用于筛选
+        :rtype: list of str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Limit(self):
+        r"""每页数量，范围(0,100]，默认100
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""偏移量，范围[0,+∞)，默认0
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def OrderBy(self):
+        r"""排序字段，可选值：VaultId, VaultName, BackupSaveSeconds, LockedTime, CreateTime, UpdateTime
+        :rtype: str
+        """
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
+
+    @property
+    def OrderByType(self):
+        r"""排序方式，可选值：desc, asc, DESC, ASC
+        :rtype: str
+        """
+        return self._OrderByType
+
+    @OrderByType.setter
+    def OrderByType(self, OrderByType):
+        self._OrderByType = OrderByType
+
+
+    def _deserialize(self, params):
+        self._VaultIds = params.get("VaultIds")
+        self._VaultName = params.get("VaultName")
+        self._Status = params.get("Status")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._OrderBy = params.get("OrderBy")
+        self._OrderByType = params.get("OrderByType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVaultsResponse(AbstractModel):
+    r"""DescribeVaults返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Vaults: 保险箱列表
+        :type Vaults: list of DescribeVaultsItem
+        :param _TotalCount: 总数量
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Vaults = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Vaults(self):
+        r"""保险箱列表
+        :rtype: list of DescribeVaultsItem
+        """
+        return self._Vaults
+
+    @Vaults.setter
+    def Vaults(self, Vaults):
+        self._Vaults = Vaults
+
+    @property
+    def TotalCount(self):
+        r"""总数量
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Vaults") is not None:
+            self._Vaults = []
+            for item in params.get("Vaults"):
+                obj = DescribeVaultsItem()
+                obj._deserialize(item)
+                self._Vaults.append(obj)
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -36415,6 +38952,105 @@ class ModifyBinlogSaveDaysResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyClusterBinlogRedoLogAutoCopyVaultRequest(AbstractModel):
+    r"""ModifyClusterBinlogRedoLogAutoCopyVault请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群ID
+        :type ClusterId: str
+        :param _AutoCopyVaults: 自动拷贝保险箱配置列表
+        :type AutoCopyVaults: list of CreateBackupVaultItem
+        """
+        self._ClusterId = None
+        self._AutoCopyVaults = None
+
+    @property
+    def ClusterId(self):
+        r"""集群ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def AutoCopyVaults(self):
+        r"""自动拷贝保险箱配置列表
+        :rtype: list of CreateBackupVaultItem
+        """
+        return self._AutoCopyVaults
+
+    @AutoCopyVaults.setter
+    def AutoCopyVaults(self, AutoCopyVaults):
+        self._AutoCopyVaults = AutoCopyVaults
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        if params.get("AutoCopyVaults") is not None:
+            self._AutoCopyVaults = []
+            for item in params.get("AutoCopyVaults"):
+                obj = CreateBackupVaultItem()
+                obj._deserialize(item)
+                self._AutoCopyVaults.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyClusterBinlogRedoLogAutoCopyVaultResponse(AbstractModel):
+    r"""ModifyClusterBinlogRedoLogAutoCopyVault返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务ID
+        :type TaskId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""任务ID
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyClusterDatabaseRequest(AbstractModel):
     r"""ModifyClusterDatabase请求参数结构体
 
@@ -40500,6 +43136,220 @@ class ModifySnapBackupCrossRegionConfigResponse(AbstractModel):
     @property
     def TaskId(self):
         r"""任务id
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyVaultRequest(AbstractModel):
+    r"""ModifyVault请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VaultId: 保险箱ID
+        :type VaultId: str
+        :param _VaultName: 保险箱名称，最大255字符
+        :type VaultName: str
+        :param _VaultDescribe: 保险箱描述，最大1024字符
+        :type VaultDescribe: str
+        :param _BackupSaveSeconds: 备份保留时长（秒），范围: (0, 632448000]
+        :type BackupSaveSeconds: int
+        :param _KeyId: 加密密钥ID，最大36字符
+        :type KeyId: str
+        :param _KeyType: 密钥类型，可选值: cloud、custom
+        :type KeyType: str
+        :param _KeyRegion: 密钥所在地域，最大32字符
+        :type KeyRegion: str
+        :param _IsLock: 是否锁定保险箱
+        :type IsLock: bool
+        :param _LockedTime: 锁定到期时间，格式: 2006-01-02 15:04:05，锁定时间距当前最多15天
+        :type LockedTime: str
+        :param _IsEncryption: 是否加密
+        :type IsEncryption: bool
+        """
+        self._VaultId = None
+        self._VaultName = None
+        self._VaultDescribe = None
+        self._BackupSaveSeconds = None
+        self._KeyId = None
+        self._KeyType = None
+        self._KeyRegion = None
+        self._IsLock = None
+        self._LockedTime = None
+        self._IsEncryption = None
+
+    @property
+    def VaultId(self):
+        r"""保险箱ID
+        :rtype: str
+        """
+        return self._VaultId
+
+    @VaultId.setter
+    def VaultId(self, VaultId):
+        self._VaultId = VaultId
+
+    @property
+    def VaultName(self):
+        r"""保险箱名称，最大255字符
+        :rtype: str
+        """
+        return self._VaultName
+
+    @VaultName.setter
+    def VaultName(self, VaultName):
+        self._VaultName = VaultName
+
+    @property
+    def VaultDescribe(self):
+        r"""保险箱描述，最大1024字符
+        :rtype: str
+        """
+        return self._VaultDescribe
+
+    @VaultDescribe.setter
+    def VaultDescribe(self, VaultDescribe):
+        self._VaultDescribe = VaultDescribe
+
+    @property
+    def BackupSaveSeconds(self):
+        r"""备份保留时长（秒），范围: (0, 632448000]
+        :rtype: int
+        """
+        return self._BackupSaveSeconds
+
+    @BackupSaveSeconds.setter
+    def BackupSaveSeconds(self, BackupSaveSeconds):
+        self._BackupSaveSeconds = BackupSaveSeconds
+
+    @property
+    def KeyId(self):
+        r"""加密密钥ID，最大36字符
+        :rtype: str
+        """
+        return self._KeyId
+
+    @KeyId.setter
+    def KeyId(self, KeyId):
+        self._KeyId = KeyId
+
+    @property
+    def KeyType(self):
+        r"""密钥类型，可选值: cloud、custom
+        :rtype: str
+        """
+        return self._KeyType
+
+    @KeyType.setter
+    def KeyType(self, KeyType):
+        self._KeyType = KeyType
+
+    @property
+    def KeyRegion(self):
+        r"""密钥所在地域，最大32字符
+        :rtype: str
+        """
+        return self._KeyRegion
+
+    @KeyRegion.setter
+    def KeyRegion(self, KeyRegion):
+        self._KeyRegion = KeyRegion
+
+    @property
+    def IsLock(self):
+        r"""是否锁定保险箱
+        :rtype: bool
+        """
+        return self._IsLock
+
+    @IsLock.setter
+    def IsLock(self, IsLock):
+        self._IsLock = IsLock
+
+    @property
+    def LockedTime(self):
+        r"""锁定到期时间，格式: 2006-01-02 15:04:05，锁定时间距当前最多15天
+        :rtype: str
+        """
+        return self._LockedTime
+
+    @LockedTime.setter
+    def LockedTime(self, LockedTime):
+        self._LockedTime = LockedTime
+
+    @property
+    def IsEncryption(self):
+        r"""是否加密
+        :rtype: bool
+        """
+        return self._IsEncryption
+
+    @IsEncryption.setter
+    def IsEncryption(self, IsEncryption):
+        self._IsEncryption = IsEncryption
+
+
+    def _deserialize(self, params):
+        self._VaultId = params.get("VaultId")
+        self._VaultName = params.get("VaultName")
+        self._VaultDescribe = params.get("VaultDescribe")
+        self._BackupSaveSeconds = params.get("BackupSaveSeconds")
+        self._KeyId = params.get("KeyId")
+        self._KeyType = params.get("KeyType")
+        self._KeyRegion = params.get("KeyRegion")
+        self._IsLock = params.get("IsLock")
+        self._LockedTime = params.get("LockedTime")
+        self._IsEncryption = params.get("IsEncryption")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyVaultResponse(AbstractModel):
+    r"""ModifyVault返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务ID
+        :type TaskId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""任务ID
         :rtype: int
         """
         return self._TaskId
@@ -53071,6 +55921,165 @@ class TradePrice(AbstractModel):
         
 
 
+class TransferClusterZoneRequest(AbstractModel):
+    r"""TransferClusterZone请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 源集群Id
+        :type ClusterId: str
+        :param _DstZone: 目标可用区
+        :type DstZone: str
+        :param _MaxLag: 跨可用区迁移主从数据延迟校验阈值，单位毫秒(ms)
+        :type MaxLag: int
+        :param _TransferType: Immediate:立即执行，InMaintain:时间窗口执行
+        :type TransferType: str
+        :param _DstSlaveZone: 多可用区备区
+        :type DstSlaveZone: str
+        :param _ProxyZones: proxy迁移的目标可用区信息
+        :type ProxyZones: list of ProxyZone
+        """
+        self._ClusterId = None
+        self._DstZone = None
+        self._MaxLag = None
+        self._TransferType = None
+        self._DstSlaveZone = None
+        self._ProxyZones = None
+
+    @property
+    def ClusterId(self):
+        r"""源集群Id
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def DstZone(self):
+        r"""目标可用区
+        :rtype: str
+        """
+        return self._DstZone
+
+    @DstZone.setter
+    def DstZone(self, DstZone):
+        self._DstZone = DstZone
+
+    @property
+    def MaxLag(self):
+        r"""跨可用区迁移主从数据延迟校验阈值，单位毫秒(ms)
+        :rtype: int
+        """
+        return self._MaxLag
+
+    @MaxLag.setter
+    def MaxLag(self, MaxLag):
+        self._MaxLag = MaxLag
+
+    @property
+    def TransferType(self):
+        r"""Immediate:立即执行，InMaintain:时间窗口执行
+        :rtype: str
+        """
+        return self._TransferType
+
+    @TransferType.setter
+    def TransferType(self, TransferType):
+        self._TransferType = TransferType
+
+    @property
+    def DstSlaveZone(self):
+        r"""多可用区备区
+        :rtype: str
+        """
+        return self._DstSlaveZone
+
+    @DstSlaveZone.setter
+    def DstSlaveZone(self, DstSlaveZone):
+        self._DstSlaveZone = DstSlaveZone
+
+    @property
+    def ProxyZones(self):
+        r"""proxy迁移的目标可用区信息
+        :rtype: list of ProxyZone
+        """
+        return self._ProxyZones
+
+    @ProxyZones.setter
+    def ProxyZones(self, ProxyZones):
+        self._ProxyZones = ProxyZones
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._DstZone = params.get("DstZone")
+        self._MaxLag = params.get("MaxLag")
+        self._TransferType = params.get("TransferType")
+        self._DstSlaveZone = params.get("DstSlaveZone")
+        if params.get("ProxyZones") is not None:
+            self._ProxyZones = []
+            for item in params.get("ProxyZones"):
+                obj = ProxyZone()
+                obj._deserialize(item)
+                self._ProxyZones.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TransferClusterZoneResponse(AbstractModel):
+    r"""TransferClusterZone返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 异步任务id
+        :type TaskId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""异步任务id
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class UnbindClusterResourcePackagesRequest(AbstractModel):
     r"""UnbindClusterResourcePackages请求参数结构体
 
@@ -54146,6 +57155,57 @@ class VaultInfo(AbstractModel):
         self._VaultRegion = params.get("VaultRegion")
         self._VaultStatus = params.get("VaultStatus")
         self._BackupSaveSeconds = params.get("BackupSaveSeconds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WillDeleteItem(AbstractModel):
+    r"""将被删除的备份文件列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BackupId: 备份文件ID
+        :type BackupId: int
+        :param _BackupName: 备份文件名称
+        :type BackupName: str
+        """
+        self._BackupId = None
+        self._BackupName = None
+
+    @property
+    def BackupId(self):
+        r"""备份文件ID
+        :rtype: int
+        """
+        return self._BackupId
+
+    @BackupId.setter
+    def BackupId(self, BackupId):
+        self._BackupId = BackupId
+
+    @property
+    def BackupName(self):
+        r"""备份文件名称
+        :rtype: str
+        """
+        return self._BackupName
+
+    @BackupName.setter
+    def BackupName(self, BackupName):
+        self._BackupName = BackupName
+
+
+    def _deserialize(self, params):
+        self._BackupId = params.get("BackupId")
+        self._BackupName = params.get("BackupName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

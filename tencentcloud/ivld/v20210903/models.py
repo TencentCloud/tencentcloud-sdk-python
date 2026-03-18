@@ -3689,19 +3689,19 @@ class ImageMetadata(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FileSize: 媒资图片文件大小，单位为Byte
+        :param _FileSize: <p>媒资图片文件大小，单位为Byte</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FileSize: int
-        :param _MD5: 媒资图片文件MD5
+        :param _MD5: <p>媒资图片文件MD5</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type MD5: str
-        :param _Width: 媒资图片文件宽度
+        :param _Width: <p>媒资图片文件宽度</p><p>单位：像素（px）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Width: int
-        :param _Height: 媒资图片文件高度
+        :param _Height: <p>媒资图片文件高度</p><p>单位：像素（px）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Height: int
-        :param _Format: 媒资图片文件格式
+        :param _Format: <p>媒资图片文件格式</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Format: str
         """
@@ -3713,7 +3713,7 @@ class ImageMetadata(AbstractModel):
 
     @property
     def FileSize(self):
-        r"""媒资图片文件大小，单位为Byte
+        r"""<p>媒资图片文件大小，单位为Byte</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -3725,7 +3725,7 @@ class ImageMetadata(AbstractModel):
 
     @property
     def MD5(self):
-        r"""媒资图片文件MD5
+        r"""<p>媒资图片文件MD5</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3737,7 +3737,7 @@ class ImageMetadata(AbstractModel):
 
     @property
     def Width(self):
-        r"""媒资图片文件宽度
+        r"""<p>媒资图片文件宽度</p><p>单位：像素（px）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -3749,7 +3749,7 @@ class ImageMetadata(AbstractModel):
 
     @property
     def Height(self):
-        r"""媒资图片文件高度
+        r"""<p>媒资图片文件高度</p><p>单位：像素（px）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -3761,7 +3761,7 @@ class ImageMetadata(AbstractModel):
 
     @property
     def Format(self):
-        r"""媒资图片文件格式
+        r"""<p>媒资图片文件格式</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5419,16 +5419,16 @@ class Rectf(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _X: 矩形框左上角水平座标
+        :param _X: <p>矩形框左上角水平座标</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type X: float
-        :param _Y: 矩形框左上角竖直座标
+        :param _Y: <p>矩形框左上角竖直座标</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Y: float
-        :param _Width: 矩形框宽度
+        :param _Width: <p>矩形框宽度</p><p>单位：像素（px）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Width: float
-        :param _Height: 矩形框长度
+        :param _Height: <p>矩形框长度</p><p>单位：像素（px）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Height: float
         """
@@ -5439,7 +5439,7 @@ class Rectf(AbstractModel):
 
     @property
     def X(self):
-        r"""矩形框左上角水平座标
+        r"""<p>矩形框左上角水平座标</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -5451,7 +5451,7 @@ class Rectf(AbstractModel):
 
     @property
     def Y(self):
-        r"""矩形框左上角竖直座标
+        r"""<p>矩形框左上角竖直座标</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -5463,7 +5463,7 @@ class Rectf(AbstractModel):
 
     @property
     def Width(self):
-        r"""矩形框宽度
+        r"""<p>矩形框宽度</p><p>单位：像素（px）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -5475,7 +5475,7 @@ class Rectf(AbstractModel):
 
     @property
     def Height(self):
-        r"""矩形框长度
+        r"""<p>矩形框长度</p><p>单位：像素（px）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -6208,50 +6208,50 @@ class TaskInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务ID
+        :param _TaskId: <p>任务ID</p>
         :type TaskId: str
-        :param _TaskName: 描述任务名称，指定后可根据名称筛选
+        :param _TaskName: <p>描述任务名称，指定后可根据名称筛选</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskName: str
-        :param _MediaId: 媒资文件ID
+        :param _MediaId: <p>媒资文件ID</p>
         :type MediaId: str
-        :param _TaskStatus: 任务执行状态
+        :param _TaskStatus: <p>任务执行状态</p>
         :type TaskStatus: int
-        :param _TaskProgress: 任务进度，范围为[0，100]
+        :param _TaskProgress: <p>任务进度，范围为[0，100]</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskProgress: float
-        :param _TaskTimeCost: 任务执行时间
+        :param _TaskTimeCost: <p>任务执行时间</p><p>单位：秒</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskTimeCost: int
-        :param _TaskCreateTime: 任务创建时间
+        :param _TaskCreateTime: <p>任务创建时间</p>
         :type TaskCreateTime: str
-        :param _TaskStartTime: 任务开始执行时间
+        :param _TaskStartTime: <p>任务开始执行时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskStartTime: str
-        :param _FailedReason: 任务失败原因
+        :param _FailedReason: <p>任务失败原因</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FailedReason: str
-        :param _MediaPreknownInfo: 任务执行时指定的先验知识
+        :param _MediaPreknownInfo: <p>任务执行时指定的先验知识</p>
         :type MediaPreknownInfo: :class:`tencentcloud.ivld.v20210903.models.MediaPreknownInfo`
-        :param _MediaName: 媒资文件名称
+        :param _MediaName: <p>媒资文件名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type MediaName: str
-        :param _Label: 媒资自定义标签
+        :param _Label: <p>媒资自定义标签</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Label: str
-        :param _CallbackURL: 任务分析完成后的后调地址
+        :param _CallbackURL: <p>任务分析完成后的后调地址</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CallbackURL: str
-        :param _AudioMetadata: 任务对应的媒资文件元信息，仅在MediaType为Audio时有效
+        :param _AudioMetadata: <p>任务对应的媒资文件元信息，仅在MediaType为Audio时有效</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AudioMetadata: :class:`tencentcloud.ivld.v20210903.models.AudioMetadata`
-        :param _ImageMetadata: 任务对应的媒资文件元信息，仅在MediaType为Audio时有效
+        :param _ImageMetadata: <p>任务对应的媒资文件元信息，仅在MediaType为Audio时有效</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ImageMetadata: :class:`tencentcloud.ivld.v20210903.models.ImageMetadata`
-        :param _TextMetadata: 任务对应的媒资文件元信息，仅在MediaType为Text时有效
+        :param _TextMetadata: <p>任务对应的媒资文件元信息，仅在MediaType为Text时有效</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TextMetadata: :class:`tencentcloud.ivld.v20210903.models.TextMetadata`
-        :param _Metadata: 任务对应的媒资文件元信息，仅在MediaType为Video时有效
+        :param _Metadata: <p>任务对应的媒资文件元信息，仅在MediaType为Video时有效</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Metadata: :class:`tencentcloud.ivld.v20210903.models.MediaMetadata`
         """
@@ -6275,7 +6275,7 @@ class TaskInfo(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""任务ID
+        r"""<p>任务ID</p>
         :rtype: str
         """
         return self._TaskId
@@ -6286,7 +6286,7 @@ class TaskInfo(AbstractModel):
 
     @property
     def TaskName(self):
-        r"""描述任务名称，指定后可根据名称筛选
+        r"""<p>描述任务名称，指定后可根据名称筛选</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6298,7 +6298,7 @@ class TaskInfo(AbstractModel):
 
     @property
     def MediaId(self):
-        r"""媒资文件ID
+        r"""<p>媒资文件ID</p>
         :rtype: str
         """
         return self._MediaId
@@ -6309,7 +6309,7 @@ class TaskInfo(AbstractModel):
 
     @property
     def TaskStatus(self):
-        r"""任务执行状态
+        r"""<p>任务执行状态</p>
         :rtype: int
         """
         return self._TaskStatus
@@ -6320,7 +6320,7 @@ class TaskInfo(AbstractModel):
 
     @property
     def TaskProgress(self):
-        r"""任务进度，范围为[0，100]
+        r"""<p>任务进度，范围为[0，100]</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -6332,7 +6332,7 @@ class TaskInfo(AbstractModel):
 
     @property
     def TaskTimeCost(self):
-        r"""任务执行时间
+        r"""<p>任务执行时间</p><p>单位：秒</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -6344,7 +6344,7 @@ class TaskInfo(AbstractModel):
 
     @property
     def TaskCreateTime(self):
-        r"""任务创建时间
+        r"""<p>任务创建时间</p>
         :rtype: str
         """
         return self._TaskCreateTime
@@ -6355,7 +6355,7 @@ class TaskInfo(AbstractModel):
 
     @property
     def TaskStartTime(self):
-        r"""任务开始执行时间
+        r"""<p>任务开始执行时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6367,7 +6367,7 @@ class TaskInfo(AbstractModel):
 
     @property
     def FailedReason(self):
-        r"""任务失败原因
+        r"""<p>任务失败原因</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6379,7 +6379,7 @@ class TaskInfo(AbstractModel):
 
     @property
     def MediaPreknownInfo(self):
-        r"""任务执行时指定的先验知识
+        r"""<p>任务执行时指定的先验知识</p>
         :rtype: :class:`tencentcloud.ivld.v20210903.models.MediaPreknownInfo`
         """
         return self._MediaPreknownInfo
@@ -6390,7 +6390,7 @@ class TaskInfo(AbstractModel):
 
     @property
     def MediaName(self):
-        r"""媒资文件名称
+        r"""<p>媒资文件名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6402,7 +6402,7 @@ class TaskInfo(AbstractModel):
 
     @property
     def Label(self):
-        r"""媒资自定义标签
+        r"""<p>媒资自定义标签</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6414,7 +6414,7 @@ class TaskInfo(AbstractModel):
 
     @property
     def CallbackURL(self):
-        r"""任务分析完成后的后调地址
+        r"""<p>任务分析完成后的后调地址</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6426,7 +6426,7 @@ class TaskInfo(AbstractModel):
 
     @property
     def AudioMetadata(self):
-        r"""任务对应的媒资文件元信息，仅在MediaType为Audio时有效
+        r"""<p>任务对应的媒资文件元信息，仅在MediaType为Audio时有效</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ivld.v20210903.models.AudioMetadata`
         """
@@ -6438,7 +6438,7 @@ class TaskInfo(AbstractModel):
 
     @property
     def ImageMetadata(self):
-        r"""任务对应的媒资文件元信息，仅在MediaType为Audio时有效
+        r"""<p>任务对应的媒资文件元信息，仅在MediaType为Audio时有效</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ivld.v20210903.models.ImageMetadata`
         """
@@ -6450,7 +6450,7 @@ class TaskInfo(AbstractModel):
 
     @property
     def TextMetadata(self):
-        r"""任务对应的媒资文件元信息，仅在MediaType为Text时有效
+        r"""<p>任务对应的媒资文件元信息，仅在MediaType为Text时有效</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ivld.v20210903.models.TextMetadata`
         """
@@ -6462,7 +6462,7 @@ class TaskInfo(AbstractModel):
 
     @property
     def Metadata(self):
-        r"""任务对应的媒资文件元信息，仅在MediaType为Video时有效
+        r"""<p>任务对应的媒资文件元信息，仅在MediaType为Video时有效</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ivld.v20210903.models.MediaMetadata`
         """
@@ -6758,19 +6758,19 @@ class TextMetadata(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FileSize: 媒资文本文件大小，单位为字节
+        :param _FileSize: <p>媒资文本文件大小，单位为字节</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FileSize: int
-        :param _MD5: 媒资文本文件MD5
+        :param _MD5: <p>媒资文本文件MD5</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type MD5: str
-        :param _Length: 媒资文本文件字符数
+        :param _Length: <p>媒资文本文件字符数</p><p>单位：字符</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Length: int
-        :param _Format: 媒资文本文件格式
+        :param _Format: <p>媒资文本文件格式</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Format: str
-        :param _ShortFormat: 封装格式短后缀
+        :param _ShortFormat: <p>封装格式短后缀</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ShortFormat: str
         """
@@ -6782,7 +6782,7 @@ class TextMetadata(AbstractModel):
 
     @property
     def FileSize(self):
-        r"""媒资文本文件大小，单位为字节
+        r"""<p>媒资文本文件大小，单位为字节</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -6794,7 +6794,7 @@ class TextMetadata(AbstractModel):
 
     @property
     def MD5(self):
-        r"""媒资文本文件MD5
+        r"""<p>媒资文本文件MD5</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6806,7 +6806,7 @@ class TextMetadata(AbstractModel):
 
     @property
     def Length(self):
-        r"""媒资文本文件字符数
+        r"""<p>媒资文本文件字符数</p><p>单位：字符</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -6818,7 +6818,7 @@ class TextMetadata(AbstractModel):
 
     @property
     def Format(self):
-        r"""媒资文本文件格式
+        r"""<p>媒资文本文件格式</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6830,7 +6830,7 @@ class TextMetadata(AbstractModel):
 
     @property
     def ShortFormat(self):
-        r"""封装格式短后缀
+        r"""<p>封装格式短后缀</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """

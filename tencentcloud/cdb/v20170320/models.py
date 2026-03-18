@@ -39211,20 +39211,19 @@ class UpgradeDBInstanceEngineVersionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID，格式如：cdb-c1nl9rpv 或者 cdbro-c1nl9rpv。与云数据库控制台页面中显示的实例 ID 相同，可使用 [查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口获取，其值为输出参数中字段 InstanceId 的值。
+        :param _InstanceId: <p>实例 ID，格式如：cdb-c1nl9rpv 或者 cdbro-c1nl9rpv。与云数据库控制台页面中显示的实例 ID 相同，可使用 <a href="https://cloud.tencent.com/document/api/236/15872">查询实例列表</a> 接口获取，其值为输出参数中字段 InstanceId 的值。</p>
         :type InstanceId: str
-        :param _EngineVersion: 主实例数据库引擎版本，支持值包括：5.6、5.7、8.0。
-说明：不支持越级升级，升级后不支持降级。
+        :param _EngineVersion: <p>主实例数据库引擎版本，支持值包括：5.6、5.7、8.0。<br>说明：不支持越级升级，升级后不支持降级。</p>
         :type EngineVersion: str
-        :param _WaitSwitch: 切换访问新实例的方式，默认为 0。支持值包括：0 - 立刻切换，1 - 时间窗切换；当该值为 1 时，升级过程中，切换访问新实例的流程将会在时间窗内进行，或者用户主动调用接口 [切换访问新实例](https://cloud.tencent.com/document/product/236/15864) 触发该流程。
+        :param _WaitSwitch: <p>切换访问新实例的方式，默认为 0。支持值包括：0 - 立刻切换，1 - 时间窗切换；当该值为 1 时，升级过程中，切换访问新实例的流程将会在时间窗内进行，或者用户主动调用接口 <a href="https://cloud.tencent.com/document/product/236/15864">切换访问新实例</a> 触发该流程。</p>
         :type WaitSwitch: int
-        :param _UpgradeSubversion: 是否是内核子版本升级，支持的值：1 - 升级内核子版本；0 - 升级数据库引擎版本。无默认值，请指定要升级的版本类型。
+        :param _UpgradeSubversion: <p>是否是内核子版本升级，支持的值：1 - 升级内核子版本；0 - 升级数据库引擎版本。无默认值，请指定要升级的版本类型。</p>
         :type UpgradeSubversion: int
-        :param _MaxDelayTime: 延迟阈值。取值范围：1 - 10。无默认值，不传此参数时，延迟阈值为0，表示延迟阈值不做设置。
+        :param _MaxDelayTime: <p>延迟阈值。取值范围：1 - 10。无默认值，不传此参数时，延迟阈值为0，表示延迟阈值不做设置。</p>
         :type MaxDelayTime: int
-        :param _IgnoreErrKeyword: 5.7升级8.0是否忽略关键字错误，取值范围[0,1]，1表示忽略，0表示不忽略。无默认值，不传此参数表示不做处理。
+        :param _IgnoreErrKeyword: <p>5.7升级8.0是否忽略关键字错误，取值范围[0,1]，1表示忽略，0表示不忽略。无默认值，不传此参数表示不做处理。</p>
         :type IgnoreErrKeyword: int
-        :param _ParamList: 版本升级支持指定参数
+        :param _ParamList: <p>版本升级支持指定参数</p>
         :type ParamList: list of UpgradeEngineVersionParams
         """
         self._InstanceId = None
@@ -39237,7 +39236,7 @@ class UpgradeDBInstanceEngineVersionRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例 ID，格式如：cdb-c1nl9rpv 或者 cdbro-c1nl9rpv。与云数据库控制台页面中显示的实例 ID 相同，可使用 [查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口获取，其值为输出参数中字段 InstanceId 的值。
+        r"""<p>实例 ID，格式如：cdb-c1nl9rpv 或者 cdbro-c1nl9rpv。与云数据库控制台页面中显示的实例 ID 相同，可使用 <a href="https://cloud.tencent.com/document/api/236/15872">查询实例列表</a> 接口获取，其值为输出参数中字段 InstanceId 的值。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -39248,8 +39247,7 @@ class UpgradeDBInstanceEngineVersionRequest(AbstractModel):
 
     @property
     def EngineVersion(self):
-        r"""主实例数据库引擎版本，支持值包括：5.6、5.7、8.0。
-说明：不支持越级升级，升级后不支持降级。
+        r"""<p>主实例数据库引擎版本，支持值包括：5.6、5.7、8.0。<br>说明：不支持越级升级，升级后不支持降级。</p>
         :rtype: str
         """
         return self._EngineVersion
@@ -39260,7 +39258,7 @@ class UpgradeDBInstanceEngineVersionRequest(AbstractModel):
 
     @property
     def WaitSwitch(self):
-        r"""切换访问新实例的方式，默认为 0。支持值包括：0 - 立刻切换，1 - 时间窗切换；当该值为 1 时，升级过程中，切换访问新实例的流程将会在时间窗内进行，或者用户主动调用接口 [切换访问新实例](https://cloud.tencent.com/document/product/236/15864) 触发该流程。
+        r"""<p>切换访问新实例的方式，默认为 0。支持值包括：0 - 立刻切换，1 - 时间窗切换；当该值为 1 时，升级过程中，切换访问新实例的流程将会在时间窗内进行，或者用户主动调用接口 <a href="https://cloud.tencent.com/document/product/236/15864">切换访问新实例</a> 触发该流程。</p>
         :rtype: int
         """
         return self._WaitSwitch
@@ -39271,7 +39269,7 @@ class UpgradeDBInstanceEngineVersionRequest(AbstractModel):
 
     @property
     def UpgradeSubversion(self):
-        r"""是否是内核子版本升级，支持的值：1 - 升级内核子版本；0 - 升级数据库引擎版本。无默认值，请指定要升级的版本类型。
+        r"""<p>是否是内核子版本升级，支持的值：1 - 升级内核子版本；0 - 升级数据库引擎版本。无默认值，请指定要升级的版本类型。</p>
         :rtype: int
         """
         return self._UpgradeSubversion
@@ -39282,7 +39280,7 @@ class UpgradeDBInstanceEngineVersionRequest(AbstractModel):
 
     @property
     def MaxDelayTime(self):
-        r"""延迟阈值。取值范围：1 - 10。无默认值，不传此参数时，延迟阈值为0，表示延迟阈值不做设置。
+        r"""<p>延迟阈值。取值范围：1 - 10。无默认值，不传此参数时，延迟阈值为0，表示延迟阈值不做设置。</p>
         :rtype: int
         """
         return self._MaxDelayTime
@@ -39293,7 +39291,7 @@ class UpgradeDBInstanceEngineVersionRequest(AbstractModel):
 
     @property
     def IgnoreErrKeyword(self):
-        r"""5.7升级8.0是否忽略关键字错误，取值范围[0,1]，1表示忽略，0表示不忽略。无默认值，不传此参数表示不做处理。
+        r"""<p>5.7升级8.0是否忽略关键字错误，取值范围[0,1]，1表示忽略，0表示不忽略。无默认值，不传此参数表示不做处理。</p>
         :rtype: int
         """
         return self._IgnoreErrKeyword
@@ -39304,7 +39302,7 @@ class UpgradeDBInstanceEngineVersionRequest(AbstractModel):
 
     @property
     def ParamList(self):
-        r"""版本升级支持指定参数
+        r"""<p>版本升级支持指定参数</p>
         :rtype: list of UpgradeEngineVersionParams
         """
         return self._ParamList
@@ -39344,7 +39342,7 @@ class UpgradeDBInstanceEngineVersionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AsyncRequestId: 异步任务 ID，可使用 [查询异步任务的执行结果](https://cloud.tencent.com/document/api/236/20410) 获取其执行情况。
+        :param _AsyncRequestId: <p>异步任务 ID，可使用 <a href="https://cloud.tencent.com/document/api/236/20410">查询异步任务的执行结果</a> 获取其执行情况。</p>
         :type AsyncRequestId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -39354,7 +39352,7 @@ class UpgradeDBInstanceEngineVersionResponse(AbstractModel):
 
     @property
     def AsyncRequestId(self):
-        r"""异步任务 ID，可使用 [查询异步任务的执行结果](https://cloud.tencent.com/document/api/236/20410) 获取其执行情况。
+        r"""<p>异步任务 ID，可使用 <a href="https://cloud.tencent.com/document/api/236/20410">查询异步任务的执行结果</a> 获取其执行情况。</p>
         :rtype: str
         """
         return self._AsyncRequestId

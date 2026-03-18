@@ -88856,57 +88856,27 @@ class VideoTemplateInfoForUpdate(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Codec: 视频流的编码格式，可选值：
-<li>libx264：H.264 编码；</li>
-<li>libx265：H.265 编码；</li>
-<li>av1：AOMedia Video 1 编码；</li>
-<li>H.266：H.266 编码。</li>
-<font color=red>注意：</font>
-<li> av1，H.266 编码容器目前只支持 mp4 ；</li>
-<li> H.266 目前只支持恒定 CRF 码率控制方式。 </li>
+        :param _Codec: <p>视频流的编码格式，可选值：</p><li>libx264：H.264 编码；</li><li>libx265：H.265 编码；</li><li>av1：AOMedia Video 1 编码；</li><li>H.266：H.266 编码。</li><font color="red">注意：</font><li> av1，H.266 编码容器目前只支持 mp4 ；</li><li> H.266 目前只支持恒定 CRF 码率控制方式。 </li>
         :type Codec: str
-        :param _Fps: 视频帧率，取值范围：[0, 100]，单位：Hz。
-当取值为 0，表示帧率和原始视频保持一致。
+        :param _Fps: <p>视频帧率，取值范围：[0, 100]，单位：Hz。<br>当取值为 0，表示帧率和原始视频保持一致。</p>
         :type Fps: int
-        :param _Bitrate: 视频流的码率，取值范围：0 和 [128, 100000]，单位：kbps。
-当取值为 0，表示由云点播自动设置码率。
+        :param _Bitrate: <p>视频流的码率，取值范围：0 和 [128, 100000]，单位：kbps。<br>当取值为 0，表示由云点播自动设置码率。</p>
         :type Bitrate: int
-        :param _ResolutionAdaptive: 分辨率自适应，可选值：
-<li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
-<li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
+        :param _ResolutionAdaptive: <p>分辨率自适应，可选值：</p><li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li><li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
         :type ResolutionAdaptive: str
-        :param _Width: 视频流宽度（或长边）的最大值，取值范围：0 和 [128, 8192]，单位：px。
-<li>当 Width、Height 均为 0，则分辨率同源；</li>
-<li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
-<li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
-<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+        :param _Width: <p>视频流宽度（或长边）的最大值，取值范围：0 和 [128, 8192]，单位：px。</p><li>当 Width、Height 均为 0，则分辨率同源；</li><li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li><li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li><li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
         :type Width: int
-        :param _Height: 视频流高度（或短边）的最大值，取值范围：0 和 [128, 8192]，单位：px。
+        :param _Height: <p>视频流高度（或短边）的最大值，取值范围：0 和 [128, 8192]，单位：px。</p>
         :type Height: int
-        :param _FillType: 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
-<li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
-<li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
-<li>white：留白，保持视频宽高比不变，边缘剩余部分使用白色填充。</li>
-<li>gauss：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊填充。</li>
+        :param _FillType: <p>填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：</p><li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li><li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li><li>white：留白，保持视频宽高比不变，边缘剩余部分使用白色填充。</li><li>gauss：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊填充。</li>
         :type FillType: str
-        :param _Vcrf: 视频恒定码率控制因子，取值范围为[1, 51]，填 0 表示禁用该参数。
-
-<font color=red>注意：</font>
-<li>如果指定该参数，将使用 CRF 的码率控制方式做转码（视频码率将不再生效）；</li>
-<li>当指定视频流编码格式为 H.266 时，该字段必填，推荐值为 28；</li>
-<li>如果没有特殊需求，不建议指定该参数。</li>
+        :param _Vcrf: <p>视频恒定码率控制因子，取值范围为[1, 51]，填 0 表示禁用该参数。</p><p><font color="red">注意：</font></p><li>如果指定该参数，将使用 CRF 的码率控制方式做转码（视频码率将不再生效）；</li><li>当指定视频流编码格式为 H.266 时，该字段必填，推荐值为 28；</li><li>如果没有特殊需求，不建议指定该参数。</li>
         :type Vcrf: int
-        :param _Gop: 关键帧 I 帧之间的间隔，取值范围：0 和 [1, 100000]，单位：帧数。
-当填 0 或不填时，系统将自动设置 gop 长度。
+        :param _Gop: <p>关键帧 I 帧之间的间隔，取值范围：0 和 [1, 100000]，单位：帧数。<br>当填 0 或不填时，系统将自动设置 gop 长度。</p>
         :type Gop: int
-        :param _PreserveHDRSwitch: 当原始视频为 HDR（High Dynamic Range）时，转码输出是否依然保持 HDR。取值范围：
-<li>ON: 如果原始文件是 HDR，则转码输出保持 HDR；否则转码输出为 SDR （Standard Dynamic Range）。</li>
-<li>OFF: 无论原始文件是 HDR 还是 SDR，转码输出均为 SDR。</li>
+        :param _PreserveHDRSwitch: <p>当原始视频为 HDR（High Dynamic Range）时，转码输出是否依然保持 HDR。取值范围：</p><li>ON: 如果原始文件是 HDR，则转码输出保持 HDR；否则转码输出为 SDR （Standard Dynamic Range）。</li><li>OFF: 无论原始文件是 HDR 还是 SDR，转码输出均为 SDR。</li>
         :type PreserveHDRSwitch: str
-        :param _CodecTag: 编码标签，仅当视频流的编码格式为 H.265 编码时有效，可选值：
-<li>hvc1 表示 hvc1 标签；</li>
-<li>hev1 表示 hev1 标签。 </li>
-默认值：hvc1。
+        :param _CodecTag: <p>编码标签，仅当视频流的编码格式为 H.265 编码时有效，可选值：</p><li>hvc1 表示 hvc1 标签；</li><li>hev1 表示 hev1 标签。 </li>默认值：hvc1。
         :type CodecTag: str
         """
         self._Codec = None
@@ -88923,14 +88893,7 @@ class VideoTemplateInfoForUpdate(AbstractModel):
 
     @property
     def Codec(self):
-        r"""视频流的编码格式，可选值：
-<li>libx264：H.264 编码；</li>
-<li>libx265：H.265 编码；</li>
-<li>av1：AOMedia Video 1 编码；</li>
-<li>H.266：H.266 编码。</li>
-<font color=red>注意：</font>
-<li> av1，H.266 编码容器目前只支持 mp4 ；</li>
-<li> H.266 目前只支持恒定 CRF 码率控制方式。 </li>
+        r"""<p>视频流的编码格式，可选值：</p><li>libx264：H.264 编码；</li><li>libx265：H.265 编码；</li><li>av1：AOMedia Video 1 编码；</li><li>H.266：H.266 编码。</li><font color="red">注意：</font><li> av1，H.266 编码容器目前只支持 mp4 ；</li><li> H.266 目前只支持恒定 CRF 码率控制方式。 </li>
         :rtype: str
         """
         return self._Codec
@@ -88941,8 +88904,7 @@ class VideoTemplateInfoForUpdate(AbstractModel):
 
     @property
     def Fps(self):
-        r"""视频帧率，取值范围：[0, 100]，单位：Hz。
-当取值为 0，表示帧率和原始视频保持一致。
+        r"""<p>视频帧率，取值范围：[0, 100]，单位：Hz。<br>当取值为 0，表示帧率和原始视频保持一致。</p>
         :rtype: int
         """
         return self._Fps
@@ -88953,8 +88915,7 @@ class VideoTemplateInfoForUpdate(AbstractModel):
 
     @property
     def Bitrate(self):
-        r"""视频流的码率，取值范围：0 和 [128, 100000]，单位：kbps。
-当取值为 0，表示由云点播自动设置码率。
+        r"""<p>视频流的码率，取值范围：0 和 [128, 100000]，单位：kbps。<br>当取值为 0，表示由云点播自动设置码率。</p>
         :rtype: int
         """
         return self._Bitrate
@@ -88965,9 +88926,7 @@ class VideoTemplateInfoForUpdate(AbstractModel):
 
     @property
     def ResolutionAdaptive(self):
-        r"""分辨率自适应，可选值：
-<li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
-<li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
+        r"""<p>分辨率自适应，可选值：</p><li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li><li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
         :rtype: str
         """
         return self._ResolutionAdaptive
@@ -88978,11 +88937,7 @@ class VideoTemplateInfoForUpdate(AbstractModel):
 
     @property
     def Width(self):
-        r"""视频流宽度（或长边）的最大值，取值范围：0 和 [128, 8192]，单位：px。
-<li>当 Width、Height 均为 0，则分辨率同源；</li>
-<li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
-<li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
-<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
+        r"""<p>视频流宽度（或长边）的最大值，取值范围：0 和 [128, 8192]，单位：px。</p><li>当 Width、Height 均为 0，则分辨率同源；</li><li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li><li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li><li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
         :rtype: int
         """
         return self._Width
@@ -88993,7 +88948,7 @@ class VideoTemplateInfoForUpdate(AbstractModel):
 
     @property
     def Height(self):
-        r"""视频流高度（或短边）的最大值，取值范围：0 和 [128, 8192]，单位：px。
+        r"""<p>视频流高度（或短边）的最大值，取值范围：0 和 [128, 8192]，单位：px。</p>
         :rtype: int
         """
         return self._Height
@@ -89004,11 +88959,7 @@ class VideoTemplateInfoForUpdate(AbstractModel):
 
     @property
     def FillType(self):
-        r"""填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
-<li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
-<li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
-<li>white：留白，保持视频宽高比不变，边缘剩余部分使用白色填充。</li>
-<li>gauss：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊填充。</li>
+        r"""<p>填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：</p><li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li><li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li><li>white：留白，保持视频宽高比不变，边缘剩余部分使用白色填充。</li><li>gauss：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊填充。</li>
         :rtype: str
         """
         return self._FillType
@@ -89019,12 +88970,7 @@ class VideoTemplateInfoForUpdate(AbstractModel):
 
     @property
     def Vcrf(self):
-        r"""视频恒定码率控制因子，取值范围为[1, 51]，填 0 表示禁用该参数。
-
-<font color=red>注意：</font>
-<li>如果指定该参数，将使用 CRF 的码率控制方式做转码（视频码率将不再生效）；</li>
-<li>当指定视频流编码格式为 H.266 时，该字段必填，推荐值为 28；</li>
-<li>如果没有特殊需求，不建议指定该参数。</li>
+        r"""<p>视频恒定码率控制因子，取值范围为[1, 51]，填 0 表示禁用该参数。</p><p><font color="red">注意：</font></p><li>如果指定该参数，将使用 CRF 的码率控制方式做转码（视频码率将不再生效）；</li><li>当指定视频流编码格式为 H.266 时，该字段必填，推荐值为 28；</li><li>如果没有特殊需求，不建议指定该参数。</li>
         :rtype: int
         """
         return self._Vcrf
@@ -89035,8 +88981,7 @@ class VideoTemplateInfoForUpdate(AbstractModel):
 
     @property
     def Gop(self):
-        r"""关键帧 I 帧之间的间隔，取值范围：0 和 [1, 100000]，单位：帧数。
-当填 0 或不填时，系统将自动设置 gop 长度。
+        r"""<p>关键帧 I 帧之间的间隔，取值范围：0 和 [1, 100000]，单位：帧数。<br>当填 0 或不填时，系统将自动设置 gop 长度。</p>
         :rtype: int
         """
         return self._Gop
@@ -89047,9 +88992,7 @@ class VideoTemplateInfoForUpdate(AbstractModel):
 
     @property
     def PreserveHDRSwitch(self):
-        r"""当原始视频为 HDR（High Dynamic Range）时，转码输出是否依然保持 HDR。取值范围：
-<li>ON: 如果原始文件是 HDR，则转码输出保持 HDR；否则转码输出为 SDR （Standard Dynamic Range）。</li>
-<li>OFF: 无论原始文件是 HDR 还是 SDR，转码输出均为 SDR。</li>
+        r"""<p>当原始视频为 HDR（High Dynamic Range）时，转码输出是否依然保持 HDR。取值范围：</p><li>ON: 如果原始文件是 HDR，则转码输出保持 HDR；否则转码输出为 SDR （Standard Dynamic Range）。</li><li>OFF: 无论原始文件是 HDR 还是 SDR，转码输出均为 SDR。</li>
         :rtype: str
         """
         return self._PreserveHDRSwitch
@@ -89060,10 +89003,7 @@ class VideoTemplateInfoForUpdate(AbstractModel):
 
     @property
     def CodecTag(self):
-        r"""编码标签，仅当视频流的编码格式为 H.265 编码时有效，可选值：
-<li>hvc1 表示 hvc1 标签；</li>
-<li>hev1 表示 hev1 标签。 </li>
-默认值：hvc1。
+        r"""<p>编码标签，仅当视频流的编码格式为 H.265 编码时有效，可选值：</p><li>hvc1 表示 hvc1 标签；</li><li>hev1 表示 hev1 标签。 </li>默认值：hvc1。
         :rtype: str
         """
         return self._CodecTag

@@ -151,6 +151,24 @@ class CynosdbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CalculateBackupSaveSecExpires(
+            self,
+            request: models.CalculateBackupSaveSecExpiresRequest,
+            opts: Dict = None,
+    ) -> models.CalculateBackupSaveSecExpiresResponse:
+        """
+        计算修改备份保留时长后将会过期删除的备份文件列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CalculateBackupSaveSecExpires"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CalculateBackupSaveSecExpiresResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CheckCreateLibraDBInstance(
             self,
             request: models.CheckCreateLibraDBInstanceRequest,
@@ -164,6 +182,24 @@ class CynosdbClient(AbstractClient):
         kwargs["action"] = "CheckCreateLibraDBInstance"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CheckCreateLibraDBInstanceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CheckTransferClusterZone(
+            self,
+            request: models.CheckTransferClusterZoneRequest,
+            opts: Dict = None,
+    ) -> models.CheckTransferClusterZoneResponse:
+        """
+        本接口（CheckTransferClusterZone）用于检查是否可以发起跨可用区迁移。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CheckTransferClusterZone"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CheckTransferClusterZoneResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -272,6 +308,24 @@ class CynosdbClient(AbstractClient):
         kwargs["action"] = "CloseWan"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CloseWanResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CopyBackupToVault(
+            self,
+            request: models.CopyBackupToVaultRequest,
+            opts: Dict = None,
+    ) -> models.CopyBackupToVaultResponse:
+        """
+        将备份文件复制到指定的备份保险箱
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CopyBackupToVault"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CopyBackupToVaultResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -547,6 +601,24 @@ class CynosdbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateVault(
+            self,
+            request: models.CreateVaultRequest,
+            opts: Dict = None,
+    ) -> models.CreateVaultResponse:
+        """
+        创建备份保险箱
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateVault"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateVaultResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteAccounts(
             self,
             request: models.DeleteAccountsRequest,
@@ -614,6 +686,24 @@ class CynosdbClient(AbstractClient):
         kwargs["action"] = "DeleteBackup"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteBackupResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteBackupVault(
+            self,
+            request: models.DeleteBackupVaultRequest,
+            opts: Dict = None,
+    ) -> models.DeleteBackupVaultResponse:
+        """
+        从备份保险箱中删除指定的备份文件
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteBackupVault"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteBackupVaultResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -722,6 +812,24 @@ class CynosdbClient(AbstractClient):
         kwargs["action"] = "DeleteParamTemplate"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteParamTemplateResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteVaults(
+            self,
+            request: models.DeleteVaultsRequest,
+            opts: Dict = None,
+    ) -> models.DeleteVaultsResponse:
+        """
+        批量删除备份保险箱
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteVaults"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteVaultsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -961,6 +1069,24 @@ class CynosdbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeBackupListByVault(
+            self,
+            request: models.DescribeBackupListByVaultRequest,
+            opts: Dict = None,
+    ) -> models.DescribeBackupListByVaultResponse:
+        """
+        根据保险箱ID查询备份文件列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeBackupListByVault"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeBackupListByVaultResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeBinlogConfig(
             self,
             request: models.DescribeBinlogConfigRequest,
@@ -992,6 +1118,24 @@ class CynosdbClient(AbstractClient):
         kwargs["action"] = "DescribeBinlogDownloadUrl"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeBinlogDownloadUrlResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeBinlogListByVault(
+            self,
+            request: models.DescribeBinlogListByVaultRequest,
+            opts: Dict = None,
+    ) -> models.DescribeBinlogListByVaultResponse:
+        """
+        查询保险箱内binlog备份
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeBinlogListByVault"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeBinlogListByVaultResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1843,6 +1987,24 @@ class CynosdbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeRedoLogListByVault(
+            self,
+            request: models.DescribeRedoLogListByVaultRequest,
+            opts: Dict = None,
+    ) -> models.DescribeRedoLogListByVaultResponse:
+        """
+        查询RedoLog备份
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeRedoLogListByVault"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeRedoLogListByVaultResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeRedoLogs(
             self,
             request: models.DescribeRedoLogsRequest,
@@ -2072,6 +2234,42 @@ class CynosdbClient(AbstractClient):
         kwargs["action"] = "DescribeTasks"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeTasksResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeVaultBackupClusterInfo(
+            self,
+            request: models.DescribeVaultBackupClusterInfoRequest,
+            opts: Dict = None,
+    ) -> models.DescribeVaultBackupClusterInfoResponse:
+        """
+        查询备份保险箱关联的集群信息列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeVaultBackupClusterInfo"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeVaultBackupClusterInfoResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeVaults(
+            self,
+            request: models.DescribeVaultsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeVaultsResponse:
+        """
+        查询备份保险箱列表，支持分页、筛选和排序
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeVaults"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeVaultsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2558,6 +2756,24 @@ class CynosdbClient(AbstractClient):
         kwargs["action"] = "ModifyBinlogSaveDays"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyBinlogSaveDaysResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyClusterBinlogRedoLogAutoCopyVault(
+            self,
+            request: models.ModifyClusterBinlogRedoLogAutoCopyVaultRequest,
+            opts: Dict = None,
+    ) -> models.ModifyClusterBinlogRedoLogAutoCopyVaultResponse:
+        """
+        修改集群Binlog和RedoLog自动拷贝到保险箱的配置
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyClusterBinlogRedoLogAutoCopyVault"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyClusterBinlogRedoLogAutoCopyVaultResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -3080,6 +3296,24 @@ class CynosdbClient(AbstractClient):
         kwargs["action"] = "ModifySnapBackupCrossRegionConfig"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifySnapBackupCrossRegionConfigResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyVault(
+            self,
+            request: models.ModifyVaultRequest,
+            opts: Dict = None,
+    ) -> models.ModifyVaultResponse:
+        """
+        修改备份保险箱配置，包括名称、描述、保留时长、加密密钥、锁定时间等
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyVault"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyVaultResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -3728,6 +3962,24 @@ class CynosdbClient(AbstractClient):
         kwargs["action"] = "SwitchProxyVpc"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.SwitchProxyVpcResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def TransferClusterZone(
+            self,
+            request: models.TransferClusterZoneRequest,
+            opts: Dict = None,
+    ) -> models.TransferClusterZoneResponse:
+        """
+        本接口（TransferClusterZone）用于发起跨可用区迁移。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "TransferClusterZone"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.TransferClusterZoneResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

@@ -601,27 +601,27 @@ class CreateSandboxToolRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ToolName: 沙箱工具名称，长度 1-50 字符，支持英文、数字、下划线和连接线。同一 AppId 下沙箱工具名称必须唯一
+        :param _ToolName: <p>沙箱工具名称，长度 1-50 字符，支持英文、数字、下划线和连接线。同一 AppId 下沙箱工具名称必须唯一</p>
         :type ToolName: str
-        :param _ToolType: 沙箱工具类型，目前支持：browser、code-interpreter、custom
+        :param _ToolType: <p>沙箱工具类型，目前支持：browser、code-interpreter、custom</p>
         :type ToolType: str
-        :param _NetworkConfiguration: 网络配置
+        :param _NetworkConfiguration: <p>网络配置</p>
         :type NetworkConfiguration: :class:`tencentcloud.ags.v20250920.models.NetworkConfiguration`
-        :param _Description: 沙箱工具描述，最大长度 200 字符
+        :param _Description: <p>沙箱工具描述，最大长度 200 字符</p>
         :type Description: str
-        :param _DefaultTimeout: 默认超时时间，支持格式：5m、300s、1h 等，不指定则使用系统默认值（5 分钟）。最大 24 小时
+        :param _DefaultTimeout: <p>默认超时时间，支持格式：5m、300s、1h 等，不指定则使用系统默认值（5 分钟）。最大 24 小时</p>
         :type DefaultTimeout: str
-        :param _Tags: 标签规格，为沙箱工具绑定标签，支持多种资源类型的标签绑定
+        :param _Tags: <p>标签规格，为沙箱工具绑定标签，支持多种资源类型的标签绑定</p>
         :type Tags: list of Tag
-        :param _ClientToken: 幂等性 Token，长度不超过 64 字符
+        :param _ClientToken: <p>幂等性 Token，长度不超过 64 字符</p>
         :type ClientToken: str
-        :param _RoleArn: 角色ARN
+        :param _RoleArn: <p>角色ARN</p>
         :type RoleArn: str
-        :param _StorageMounts: 沙箱工具存储配置
+        :param _StorageMounts: <p>沙箱工具存储配置</p>
         :type StorageMounts: list of StorageMount
-        :param _CustomConfiguration: 沙箱工具自定义配置
+        :param _CustomConfiguration: <p>沙箱工具自定义配置</p>
         :type CustomConfiguration: :class:`tencentcloud.ags.v20250920.models.CustomConfiguration`
-        :param _LogConfiguration: 沙箱工具日志推送相关配置
+        :param _LogConfiguration: <p>沙箱工具日志推送相关配置</p>
         :type LogConfiguration: :class:`tencentcloud.ags.v20250920.models.LogConfiguration`
         """
         self._ToolName = None
@@ -638,7 +638,7 @@ class CreateSandboxToolRequest(AbstractModel):
 
     @property
     def ToolName(self):
-        r"""沙箱工具名称，长度 1-50 字符，支持英文、数字、下划线和连接线。同一 AppId 下沙箱工具名称必须唯一
+        r"""<p>沙箱工具名称，长度 1-50 字符，支持英文、数字、下划线和连接线。同一 AppId 下沙箱工具名称必须唯一</p>
         :rtype: str
         """
         return self._ToolName
@@ -649,7 +649,7 @@ class CreateSandboxToolRequest(AbstractModel):
 
     @property
     def ToolType(self):
-        r"""沙箱工具类型，目前支持：browser、code-interpreter、custom
+        r"""<p>沙箱工具类型，目前支持：browser、code-interpreter、custom</p>
         :rtype: str
         """
         return self._ToolType
@@ -660,7 +660,7 @@ class CreateSandboxToolRequest(AbstractModel):
 
     @property
     def NetworkConfiguration(self):
-        r"""网络配置
+        r"""<p>网络配置</p>
         :rtype: :class:`tencentcloud.ags.v20250920.models.NetworkConfiguration`
         """
         return self._NetworkConfiguration
@@ -671,7 +671,7 @@ class CreateSandboxToolRequest(AbstractModel):
 
     @property
     def Description(self):
-        r"""沙箱工具描述，最大长度 200 字符
+        r"""<p>沙箱工具描述，最大长度 200 字符</p>
         :rtype: str
         """
         return self._Description
@@ -682,7 +682,7 @@ class CreateSandboxToolRequest(AbstractModel):
 
     @property
     def DefaultTimeout(self):
-        r"""默认超时时间，支持格式：5m、300s、1h 等，不指定则使用系统默认值（5 分钟）。最大 24 小时
+        r"""<p>默认超时时间，支持格式：5m、300s、1h 等，不指定则使用系统默认值（5 分钟）。最大 24 小时</p>
         :rtype: str
         """
         return self._DefaultTimeout
@@ -693,7 +693,7 @@ class CreateSandboxToolRequest(AbstractModel):
 
     @property
     def Tags(self):
-        r"""标签规格，为沙箱工具绑定标签，支持多种资源类型的标签绑定
+        r"""<p>标签规格，为沙箱工具绑定标签，支持多种资源类型的标签绑定</p>
         :rtype: list of Tag
         """
         return self._Tags
@@ -704,7 +704,7 @@ class CreateSandboxToolRequest(AbstractModel):
 
     @property
     def ClientToken(self):
-        r"""幂等性 Token，长度不超过 64 字符
+        r"""<p>幂等性 Token，长度不超过 64 字符</p>
         :rtype: str
         """
         return self._ClientToken
@@ -715,7 +715,7 @@ class CreateSandboxToolRequest(AbstractModel):
 
     @property
     def RoleArn(self):
-        r"""角色ARN
+        r"""<p>角色ARN</p>
         :rtype: str
         """
         return self._RoleArn
@@ -726,7 +726,7 @@ class CreateSandboxToolRequest(AbstractModel):
 
     @property
     def StorageMounts(self):
-        r"""沙箱工具存储配置
+        r"""<p>沙箱工具存储配置</p>
         :rtype: list of StorageMount
         """
         return self._StorageMounts
@@ -737,7 +737,7 @@ class CreateSandboxToolRequest(AbstractModel):
 
     @property
     def CustomConfiguration(self):
-        r"""沙箱工具自定义配置
+        r"""<p>沙箱工具自定义配置</p>
         :rtype: :class:`tencentcloud.ags.v20250920.models.CustomConfiguration`
         """
         return self._CustomConfiguration
@@ -748,7 +748,7 @@ class CreateSandboxToolRequest(AbstractModel):
 
     @property
     def LogConfiguration(self):
-        r"""沙箱工具日志推送相关配置
+        r"""<p>沙箱工具日志推送相关配置</p>
         :rtype: :class:`tencentcloud.ags.v20250920.models.LogConfiguration`
         """
         return self._LogConfiguration
@@ -803,7 +803,7 @@ class CreateSandboxToolResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ToolId: 创建的沙箱工具 ID
+        :param _ToolId: <p>创建的沙箱工具 ID</p>
         :type ToolId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -813,7 +813,7 @@ class CreateSandboxToolResponse(AbstractModel):
 
     @property
     def ToolId(self):
-        r"""创建的沙箱工具 ID
+        r"""<p>创建的沙箱工具 ID</p>
         :rtype: str
         """
         return self._ToolId
@@ -2629,27 +2629,27 @@ class SandboxInstance(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 沙箱实例唯一标识符
+        :param _InstanceId: <p>沙箱实例唯一标识符</p>
         :type InstanceId: str
-        :param _ToolId: 所属沙箱工具 ID
+        :param _ToolId: <p>所属沙箱工具 ID</p>
         :type ToolId: str
-        :param _ToolName: 所属沙箱工具名称
+        :param _ToolName: <p>所属沙箱工具名称</p>
         :type ToolName: str
-        :param _Status: 实例状态：STARTING（启动中）、RUNNING（运行中）、STOPPING（停止中）、STOPPED（已停止）、STOP_FAILED（停止失败）、FAILED（失败状态）
+        :param _Status: <p>实例状态：STARTING（启动中）、RUNNING（运行中）、STOPPING（停止中）、STOPPED（已停止）、STOP_FAILED（停止失败）、FAILED（失败状态）</p>
         :type Status: str
-        :param _TimeoutSeconds: 超时时间（秒），null 表示无超时设置
+        :param _TimeoutSeconds: <p>超时时间（秒），null 表示无超时设置</p>
         :type TimeoutSeconds: int
-        :param _ExpiresAt: 过期时间（ISO 8601 格式），null 表示无过期时间
+        :param _ExpiresAt: <p>过期时间（ISO 8601 格式），null 表示无过期时间</p>
         :type ExpiresAt: str
-        :param _StopReason: 停止原因：manual（手动）、timeout（超时）、error（错误）、system（系统），仅在状态为 STOPPED、STOP_FAILED 或 FAILED 时有值。当 provider 停止失败时，状态为 STOP_FAILED，原因为 error
+        :param _StopReason: <p>停止原因：manual（手动）、timeout（超时）、error（错误）、system（系统），仅在状态为 STOPPED、STOP_FAILED 或 FAILED 时有值。当 provider 停止失败时，状态为 STOP_FAILED，原因为 error</p>
         :type StopReason: str
-        :param _CreateTime: 创建时间（ISO 8601 格式）
+        :param _CreateTime: <p>创建时间（ISO 8601 格式）</p>
         :type CreateTime: str
-        :param _UpdateTime: 更新时间（ISO 8601 格式）
+        :param _UpdateTime: <p>更新时间（ISO 8601 格式）</p>
         :type UpdateTime: str
-        :param _MountOptions: 存储挂载选项
+        :param _MountOptions: <p>存储挂载选项</p>
         :type MountOptions: list of MountOption
-        :param _CustomConfiguration: 沙箱实例自定义配置
+        :param _CustomConfiguration: <p>沙箱实例自定义配置</p>
         :type CustomConfiguration: :class:`tencentcloud.ags.v20250920.models.CustomConfigurationDetail`
         """
         self._InstanceId = None
@@ -2666,7 +2666,7 @@ class SandboxInstance(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""沙箱实例唯一标识符
+        r"""<p>沙箱实例唯一标识符</p>
         :rtype: str
         """
         return self._InstanceId
@@ -2677,7 +2677,7 @@ class SandboxInstance(AbstractModel):
 
     @property
     def ToolId(self):
-        r"""所属沙箱工具 ID
+        r"""<p>所属沙箱工具 ID</p>
         :rtype: str
         """
         return self._ToolId
@@ -2688,7 +2688,7 @@ class SandboxInstance(AbstractModel):
 
     @property
     def ToolName(self):
-        r"""所属沙箱工具名称
+        r"""<p>所属沙箱工具名称</p>
         :rtype: str
         """
         return self._ToolName
@@ -2699,7 +2699,7 @@ class SandboxInstance(AbstractModel):
 
     @property
     def Status(self):
-        r"""实例状态：STARTING（启动中）、RUNNING（运行中）、STOPPING（停止中）、STOPPED（已停止）、STOP_FAILED（停止失败）、FAILED（失败状态）
+        r"""<p>实例状态：STARTING（启动中）、RUNNING（运行中）、STOPPING（停止中）、STOPPED（已停止）、STOP_FAILED（停止失败）、FAILED（失败状态）</p>
         :rtype: str
         """
         return self._Status
@@ -2710,7 +2710,7 @@ class SandboxInstance(AbstractModel):
 
     @property
     def TimeoutSeconds(self):
-        r"""超时时间（秒），null 表示无超时设置
+        r"""<p>超时时间（秒），null 表示无超时设置</p>
         :rtype: int
         """
         return self._TimeoutSeconds
@@ -2721,7 +2721,7 @@ class SandboxInstance(AbstractModel):
 
     @property
     def ExpiresAt(self):
-        r"""过期时间（ISO 8601 格式），null 表示无过期时间
+        r"""<p>过期时间（ISO 8601 格式），null 表示无过期时间</p>
         :rtype: str
         """
         return self._ExpiresAt
@@ -2732,7 +2732,7 @@ class SandboxInstance(AbstractModel):
 
     @property
     def StopReason(self):
-        r"""停止原因：manual（手动）、timeout（超时）、error（错误）、system（系统），仅在状态为 STOPPED、STOP_FAILED 或 FAILED 时有值。当 provider 停止失败时，状态为 STOP_FAILED，原因为 error
+        r"""<p>停止原因：manual（手动）、timeout（超时）、error（错误）、system（系统），仅在状态为 STOPPED、STOP_FAILED 或 FAILED 时有值。当 provider 停止失败时，状态为 STOP_FAILED，原因为 error</p>
         :rtype: str
         """
         return self._StopReason
@@ -2743,7 +2743,7 @@ class SandboxInstance(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""创建时间（ISO 8601 格式）
+        r"""<p>创建时间（ISO 8601 格式）</p>
         :rtype: str
         """
         return self._CreateTime
@@ -2754,7 +2754,7 @@ class SandboxInstance(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""更新时间（ISO 8601 格式）
+        r"""<p>更新时间（ISO 8601 格式）</p>
         :rtype: str
         """
         return self._UpdateTime
@@ -2765,7 +2765,7 @@ class SandboxInstance(AbstractModel):
 
     @property
     def MountOptions(self):
-        r"""存储挂载选项
+        r"""<p>存储挂载选项</p>
         :rtype: list of MountOption
         """
         return self._MountOptions
@@ -2776,7 +2776,7 @@ class SandboxInstance(AbstractModel):
 
     @property
     def CustomConfiguration(self):
-        r"""沙箱实例自定义配置
+        r"""<p>沙箱实例自定义配置</p>
         :rtype: :class:`tencentcloud.ags.v20250920.models.CustomConfigurationDetail`
         """
         return self._CustomConfiguration
@@ -3394,11 +3394,11 @@ class StorageSource(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Cos: 对象存储桶配置
+        :param _Cos: <p>对象存储桶配置</p>
         :type Cos: :class:`tencentcloud.ags.v20250920.models.CosStorageSource`
-        :param _Image: 镜像卷配置
+        :param _Image: <p>镜像卷配置</p>
         :type Image: :class:`tencentcloud.ags.v20250920.models.ImageStorageSource`
-        :param _Cfs: 文件存储配置
+        :param _Cfs: <p>文件存储配置</p>
         :type Cfs: :class:`tencentcloud.ags.v20250920.models.CfsStorageSource`
         """
         self._Cos = None
@@ -3407,7 +3407,7 @@ class StorageSource(AbstractModel):
 
     @property
     def Cos(self):
-        r"""对象存储桶配置
+        r"""<p>对象存储桶配置</p>
         :rtype: :class:`tencentcloud.ags.v20250920.models.CosStorageSource`
         """
         return self._Cos
@@ -3418,7 +3418,7 @@ class StorageSource(AbstractModel):
 
     @property
     def Image(self):
-        r"""镜像卷配置
+        r"""<p>镜像卷配置</p>
         :rtype: :class:`tencentcloud.ags.v20250920.models.ImageStorageSource`
         """
         return self._Image
@@ -3429,7 +3429,7 @@ class StorageSource(AbstractModel):
 
     @property
     def Cfs(self):
-        r"""文件存储配置
+        r"""<p>文件存储配置</p>
         :rtype: :class:`tencentcloud.ags.v20250920.models.CfsStorageSource`
         """
         return self._Cfs

@@ -1696,11 +1696,15 @@ class AuthRecord(AbstractModel):
 <li> **4**：AI识别中</li>
 <li> **5**：客户确认AI信息</li></ul>
         :type AuditStatus: int
+        :param _Reason: 审核失败原因，
+当 AuditStatus 返回2时，则会返回具体的原因。
+        :type Reason: str
         """
         self._OperatorName = None
         self._OperatorMobile = None
         self._AuthType = None
         self._AuditStatus = None
+        self._Reason = None
 
     @property
     def OperatorName(self):
@@ -1756,12 +1760,25 @@ class AuthRecord(AbstractModel):
     def AuditStatus(self, AuditStatus):
         self._AuditStatus = AuditStatus
 
+    @property
+    def Reason(self):
+        r"""审核失败原因，
+当 AuditStatus 返回2时，则会返回具体的原因。
+        :rtype: str
+        """
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
+
 
     def _deserialize(self, params):
         self._OperatorName = params.get("OperatorName")
         self._OperatorMobile = params.get("OperatorMobile")
         self._AuthType = params.get("AuthType")
         self._AuditStatus = params.get("AuditStatus")
+        self._Reason = params.get("Reason")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2051,10 +2068,13 @@ class BatchOrganizationRegistrationTasksDetails(AbstractModel):
         :type Status: str
         :param _ErrorMessage: 如果任务失败,会返回错误信息
         :type ErrorMessage: str
+        :param _AuthorizationInfoId: 认证流 Id 是指在企业认证过程中，当前操作人的认证流程的唯一标识。每个企业在认证过程中只能有一条认证流认证成功。这意味着在同一认证过程内，一个企业只能有一个认证流程处于成功状态，以确保认证的唯一性和有效性。认证流 Id可以通过回调[授权书认证审核结果回调](https://qian.tencent.com/developers/company/callback_types_staffs/#%E5%8D%81%E5%85%AD-%E6%8E%88%E6%9D%83%E4%B9%A6%E8%AE%A4%E8%AF%81%E5%AE%A1%E6%A0%B8%E7%BB%93%E6%9E%9C%E5%9B%9E%E8%B0%83)
+        :type AuthorizationInfoId: str
         """
         self._TaskId = None
         self._Status = None
         self._ErrorMessage = None
+        self._AuthorizationInfoId = None
 
     @property
     def TaskId(self):
@@ -2114,11 +2134,23 @@ class BatchOrganizationRegistrationTasksDetails(AbstractModel):
     def ErrorMessage(self, ErrorMessage):
         self._ErrorMessage = ErrorMessage
 
+    @property
+    def AuthorizationInfoId(self):
+        r"""认证流 Id 是指在企业认证过程中，当前操作人的认证流程的唯一标识。每个企业在认证过程中只能有一条认证流认证成功。这意味着在同一认证过程内，一个企业只能有一个认证流程处于成功状态，以确保认证的唯一性和有效性。认证流 Id可以通过回调[授权书认证审核结果回调](https://qian.tencent.com/developers/company/callback_types_staffs/#%E5%8D%81%E5%85%AD-%E6%8E%88%E6%9D%83%E4%B9%A6%E8%AE%A4%E8%AF%81%E5%AE%A1%E6%A0%B8%E7%BB%93%E6%9E%9C%E5%9B%9E%E8%B0%83)
+        :rtype: str
+        """
+        return self._AuthorizationInfoId
+
+    @AuthorizationInfoId.setter
+    def AuthorizationInfoId(self, AuthorizationInfoId):
+        self._AuthorizationInfoId = AuthorizationInfoId
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
         self._Status = params.get("Status")
         self._ErrorMessage = params.get("ErrorMessage")
+        self._AuthorizationInfoId = params.get("AuthorizationInfoId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5323,11 +5355,13 @@ class CreateBatchContractReviewTaskRequest(AbstractModel):
     <li>**2** - 【宽松】以促成交易为核心，对合同条款的修改要求较为宽松，倾向于接受对方提出的条款，以尽快达成合作。</li>  
 </ul>
         :type PolicyType: int
-        :param _Role: 合同审查中的角色信息，通过明确入参角色的名称和描述，可以提高合同审查的效率和准确性。用户不做配置时大模型会根据合同内容推荐出风险识别角色的名称和描述信息。(Depricated)
+        :param _Role: 该字段已不再使用！
+合同审查中的角色信息，通过明确入参角色的名称和描述，可以提高合同审查的效率和准确性。用户不做配置时大模型会根据合同内容推荐出风险识别角色的名称和描述信息。
         :type Role: :class:`tencentcloud.ess.v20201111.models.RiskIdentificationRoleInfo`
         :param _Roles: 合同审查中的角色信息，通过明确入参角色的名称和描述，可以提高合同审查的效率和准确性。用户不做配置时大模型会根据合同内容推荐出风险识别角色的名称和描述信息。
         :type Roles: list of RiskIdentificationRoleInfo
-        :param _ChecklistId: 用户配置的审查清单ID，基于此清单ID批量创建合同审查任务，为32位字符串。[点击查看审查清单ID在控制台上的位置](https://qcloudimg.tencent-cloud.cn/raw/2c6588549e28ca49bd8bb7f4a072b19e.png)。如果用户不做此配置大模型会根据合同内容在当前企业下的审查清单和系统默认的清单中选择一个清单进行审查。(Depricated)
+        :param _ChecklistId: 该字段已不再使用！
+用户配置的审查清单ID，基于此清单ID批量创建合同审查任务，为32位字符串。[点击查看审查清单ID在控制台上的位置](https://qcloudimg.tencent-cloud.cn/raw/2c6588549e28ca49bd8bb7f4a072b19e.png)。如果用户不做此配置大模型会根据合同内容在当前企业下的审查清单和系统默认的清单中选择一个清单进行审查。
         :type ChecklistId: str
         :param _ChecklistIds: 用户配置的审查清单ID，基于此清单ID批量创建合同审查任务，为32位字符串。[点击查看审查清单ID在控制台上的位置](https://qcloudimg.tencent-cloud.cn/raw/2c6588549e28ca49bd8bb7f4a072b19e.png)。如果用户不做此配置大模型会根据合同内容在当前企业下的审查清单和系统默认的清单中选择一个清单进行审查。
         :type ChecklistIds: list of str
@@ -5404,7 +5438,8 @@ class CreateBatchContractReviewTaskRequest(AbstractModel):
 
     @property
     def Role(self):
-        r"""合同审查中的角色信息，通过明确入参角色的名称和描述，可以提高合同审查的效率和准确性。用户不做配置时大模型会根据合同内容推荐出风险识别角色的名称和描述信息。(Depricated)
+        r"""该字段已不再使用！
+合同审查中的角色信息，通过明确入参角色的名称和描述，可以提高合同审查的效率和准确性。用户不做配置时大模型会根据合同内容推荐出风险识别角色的名称和描述信息。
         :rtype: :class:`tencentcloud.ess.v20201111.models.RiskIdentificationRoleInfo`
         """
         return self._Role
@@ -5426,7 +5461,8 @@ class CreateBatchContractReviewTaskRequest(AbstractModel):
 
     @property
     def ChecklistId(self):
-        r"""用户配置的审查清单ID，基于此清单ID批量创建合同审查任务，为32位字符串。[点击查看审查清单ID在控制台上的位置](https://qcloudimg.tencent-cloud.cn/raw/2c6588549e28ca49bd8bb7f4a072b19e.png)。如果用户不做此配置大模型会根据合同内容在当前企业下的审查清单和系统默认的清单中选择一个清单进行审查。(Depricated)
+        r"""该字段已不再使用！
+用户配置的审查清单ID，基于此清单ID批量创建合同审查任务，为32位字符串。[点击查看审查清单ID在控制台上的位置](https://qcloudimg.tencent-cloud.cn/raw/2c6588549e28ca49bd8bb7f4a072b19e.png)。如果用户不做此配置大模型会根据合同内容在当前企业下的审查清单和系统默认的清单中选择一个清单进行审查。
         :rtype: str
         """
         return self._ChecklistId
@@ -18933,6 +18969,8 @@ class CreateSchemeUrlRequest(AbstractModel):
         :type UrlUseEnv: str
         :param _PickUpAfterJoined: 在动态签署人场景预设了“企业名称”时，可通过该参数控制“已认证身份才可领取”，即在加入了预设的企业后才可领取。默认值：false，无须先加入企业。
         :type PickUpAfterJoined: bool
+        :param _CanSkipReadFlow: 是否允许此链接中签署方批量确认已读文件。 <ul><li>false (默认): 不允许批量确认已读文件。</li> <li>true : 允许批量确认已读文件。</li></ul> 注：`1. 此功能为白名单功能，使用前请联系对应客户经理进行开通。2. 使用此功能时，FlowIds参数必传。3. 对于企业签署方，如果对印章/签名控件有限制要求，需要保证所有印章/签名签署控件限制要求(印章id或印章/签名类型限制)一致，否则无法使用此功能。`
+        :type CanSkipReadFlow: bool
         """
         self._Operator = None
         self._OrganizationName = None
@@ -18951,6 +18989,7 @@ class CreateSchemeUrlRequest(AbstractModel):
         self._FlowGroupUrlInfo = None
         self._UrlUseEnv = None
         self._PickUpAfterJoined = None
+        self._CanSkipReadFlow = None
 
     @property
     def Operator(self):
@@ -19179,6 +19218,17 @@ class CreateSchemeUrlRequest(AbstractModel):
     def PickUpAfterJoined(self, PickUpAfterJoined):
         self._PickUpAfterJoined = PickUpAfterJoined
 
+    @property
+    def CanSkipReadFlow(self):
+        r"""是否允许此链接中签署方批量确认已读文件。 <ul><li>false (默认): 不允许批量确认已读文件。</li> <li>true : 允许批量确认已读文件。</li></ul> 注：`1. 此功能为白名单功能，使用前请联系对应客户经理进行开通。2. 使用此功能时，FlowIds参数必传。3. 对于企业签署方，如果对印章/签名控件有限制要求，需要保证所有印章/签名签署控件限制要求(印章id或印章/签名类型限制)一致，否则无法使用此功能。`
+        :rtype: bool
+        """
+        return self._CanSkipReadFlow
+
+    @CanSkipReadFlow.setter
+    def CanSkipReadFlow(self, CanSkipReadFlow):
+        self._CanSkipReadFlow = CanSkipReadFlow
+
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
@@ -19204,6 +19254,7 @@ class CreateSchemeUrlRequest(AbstractModel):
             self._FlowGroupUrlInfo._deserialize(params.get("FlowGroupUrlInfo"))
         self._UrlUseEnv = params.get("UrlUseEnv")
         self._PickUpAfterJoined = params.get("PickUpAfterJoined")
+        self._CanSkipReadFlow = params.get("CanSkipReadFlow")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -24407,7 +24458,8 @@ class DescribeContractReviewTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ChecklistId: 用于审查任务的审查清单ID（Depricated）。注意：如果用户没有配置清单时此值可能为空，需要等大模型根据合同内容推荐出可以使用的审查清单。
+        :param _ChecklistId: 该字段已不再使用！
+用于审查任务的审查清单ID。注意：如果用户没有配置清单时此值可能为空，需要等大模型根据合同内容推荐出可以使用的审查清单。
         :type ChecklistId: str
         :param _ChecklistIds: 用于审查任务的审查清单ID。注意：如果用户没有配置清单时此值可能为空，需要等大模型根据合同内容推荐出可以使用的审查清单。
         :type ChecklistIds: list of str
@@ -24430,7 +24482,8 @@ class DescribeContractReviewTaskResponse(AbstractModel):
 
 注意：`审查结果由AI生成，仅供参考。请结合相关法律法规和公司制度要求综合判断。`
         :type Risks: list of OutputRisk
-        :param _Role: 合同审查中的角色信息（Depricated）。注意： `如果用户没有配置审查角色时此值可能为null，需要等大模型根据合同内容推荐出审查角色信息。`
+        :param _Role: 该字段已不再使用！
+合同审查中的角色信息。注意： `如果用户没有配置审查角色时此值可能为null，需要等大模型根据合同内容推荐出审查角色信息。`
 注意：此字段可能返回 null，表示取不到有效值。
         :type Role: :class:`tencentcloud.ess.v20201111.models.RiskIdentificationRoleInfo`
         :param _Roles: 合同审查中的角色信息。注意： `如果用户没有配置审查角色时此值可能为null，需要等大模型根据合同内容推荐出审查角色信息。`
@@ -24486,7 +24539,8 @@ class DescribeContractReviewTaskResponse(AbstractModel):
 
     @property
     def ChecklistId(self):
-        r"""用于审查任务的审查清单ID（Depricated）。注意：如果用户没有配置清单时此值可能为空，需要等大模型根据合同内容推荐出可以使用的审查清单。
+        r"""该字段已不再使用！
+用于审查任务的审查清单ID。注意：如果用户没有配置清单时此值可能为空，需要等大模型根据合同内容推荐出可以使用的审查清单。
         :rtype: str
         """
         return self._ChecklistId
@@ -24572,7 +24626,8 @@ class DescribeContractReviewTaskResponse(AbstractModel):
 
     @property
     def Role(self):
-        r"""合同审查中的角色信息（Depricated）。注意： `如果用户没有配置审查角色时此值可能为null，需要等大模型根据合同内容推荐出审查角色信息。`
+        r"""该字段已不再使用！
+合同审查中的角色信息。注意： `如果用户没有配置审查角色时此值可能为null，需要等大模型根据合同内容推荐出审查角色信息。`
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ess.v20201111.models.RiskIdentificationRoleInfo`
         """
@@ -27752,11 +27807,21 @@ class DescribeOrganizationAuthStatusRequest(AbstractModel):
         :type UniformSocialCreditCode: str
         :param _LegalName: 法人姓名
         :type LegalName: str
+        :param _AuthorizationInfoId: 认证流 Id 是指在企业认证过程中，当前操作人的认证流程的唯一标识。每个企业在认证过程中只能有一条认证流认证成功。这意味着在同一认证过程内，一个企业只能有一个认证流程处于成功状态，以确保认证的唯一性和有效性。
+
+
+认证流 Id可以通过回调[授权书认证审核结果回调](https://qian.tencent.com/developers/company/callback_types_staffs/#%E5%8D%81%E5%85%AD-%E6%8E%88%E6%9D%83%E4%B9%A6%E8%AE%A4%E8%AF%81%E5%AE%A1%E6%A0%B8%E7%BB%93%E6%9E%9C%E5%9B%9E%E8%B0%83)获取
+
+注意：
+如果传递了认证流Id，则下面的参数 超管二要素不会生效
+示例值：yDCHHUUckpbdaiqbUxJVsHWy99WG6kTY
+        :type AuthorizationInfoId: str
         """
         self._Operator = None
         self._OrganizationName = None
         self._UniformSocialCreditCode = None
         self._LegalName = None
+        self._AuthorizationInfoId = None
 
     @property
     def Operator(self):
@@ -27803,6 +27868,24 @@ class DescribeOrganizationAuthStatusRequest(AbstractModel):
     def LegalName(self, LegalName):
         self._LegalName = LegalName
 
+    @property
+    def AuthorizationInfoId(self):
+        r"""认证流 Id 是指在企业认证过程中，当前操作人的认证流程的唯一标识。每个企业在认证过程中只能有一条认证流认证成功。这意味着在同一认证过程内，一个企业只能有一个认证流程处于成功状态，以确保认证的唯一性和有效性。
+
+
+认证流 Id可以通过回调[授权书认证审核结果回调](https://qian.tencent.com/developers/company/callback_types_staffs/#%E5%8D%81%E5%85%AD-%E6%8E%88%E6%9D%83%E4%B9%A6%E8%AE%A4%E8%AF%81%E5%AE%A1%E6%A0%B8%E7%BB%93%E6%9E%9C%E5%9B%9E%E8%B0%83)获取
+
+注意：
+如果传递了认证流Id，则下面的参数 超管二要素不会生效
+示例值：yDCHHUUckpbdaiqbUxJVsHWy99WG6kTY
+        :rtype: str
+        """
+        return self._AuthorizationInfoId
+
+    @AuthorizationInfoId.setter
+    def AuthorizationInfoId(self, AuthorizationInfoId):
+        self._AuthorizationInfoId = AuthorizationInfoId
+
 
     def _deserialize(self, params):
         if params.get("Operator") is not None:
@@ -27811,6 +27894,7 @@ class DescribeOrganizationAuthStatusRequest(AbstractModel):
         self._OrganizationName = params.get("OrganizationName")
         self._UniformSocialCreditCode = params.get("UniformSocialCreditCode")
         self._LegalName = params.get("LegalName")
+        self._AuthorizationInfoId = params.get("AuthorizationInfoId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

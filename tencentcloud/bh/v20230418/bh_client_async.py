@@ -1105,6 +1105,24 @@ class BhClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DisableClientTcpAccess(
+            self,
+            request: models.DisableClientTcpAccessRequest,
+            opts: Dict = None,
+    ) -> models.DisableClientTcpAccessResponse:
+        """
+        关闭客户端TCP访问堡垒机
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DisableClientTcpAccess"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DisableClientTcpAccessResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DisableExternalAccess(
             self,
             request: models.DisableExternalAccessRequest,
@@ -1141,6 +1159,42 @@ class BhClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DisableWebAccess(
+            self,
+            request: models.DisableWebAccessRequest,
+            opts: Dict = None,
+    ) -> models.DisableWebAccessResponse:
+        """
+        关闭web访问堡垒机
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DisableWebAccess"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DisableWebAccessResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def EnableClientTcpAccess(
+            self,
+            request: models.EnableClientTcpAccessRequest,
+            opts: Dict = None,
+    ) -> models.EnableClientTcpAccessResponse:
+        """
+        开启客户端TCP访问堡垒机
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "EnableClientTcpAccess"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.EnableClientTcpAccessResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def EnableExternalAccess(
             self,
             request: models.EnableExternalAccessRequest,
@@ -1172,6 +1226,24 @@ class BhClient(AbstractClient):
         kwargs["action"] = "EnableIntranetAccess"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.EnableIntranetAccessResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def EnableWebAccess(
+            self,
+            request: models.EnableWebAccessRequest,
+            opts: Dict = None,
+    ) -> models.EnableWebAccessResponse:
+        """
+        开启web访问堡垒机
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "EnableWebAccess"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.EnableWebAccessResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

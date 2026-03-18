@@ -187,6 +187,29 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CalculateBackupSaveSecExpires(self, request):
+        r"""计算修改备份保留时长后将会过期删除的备份文件列表
+
+        :param request: Request instance for CalculateBackupSaveSecExpires.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.CalculateBackupSaveSecExpiresRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.CalculateBackupSaveSecExpiresResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CalculateBackupSaveSecExpires", params, headers=headers)
+            response = json.loads(body)
+            model = models.CalculateBackupSaveSecExpiresResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CheckCreateLibraDBInstance(self, request):
         r"""本接口（CheckCreateLibraDBInstance）用于校验集群是否可以添加只读分析引擎实例
 
@@ -201,6 +224,29 @@ class CynosdbClient(AbstractClient):
             body = self.call("CheckCreateLibraDBInstance", params, headers=headers)
             response = json.loads(body)
             model = models.CheckCreateLibraDBInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CheckTransferClusterZone(self, request):
+        r"""本接口（CheckTransferClusterZone）用于检查是否可以发起跨可用区迁移。
+
+        :param request: Request instance for CheckTransferClusterZone.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.CheckTransferClusterZoneRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.CheckTransferClusterZoneResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CheckTransferClusterZone", params, headers=headers)
+            response = json.loads(body)
+            model = models.CheckTransferClusterZoneResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -339,6 +385,29 @@ class CynosdbClient(AbstractClient):
             body = self.call("CloseWan", params, headers=headers)
             response = json.loads(body)
             model = models.CloseWanResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CopyBackupToVault(self, request):
+        r"""将备份文件复制到指定的备份保险箱
+
+        :param request: Request instance for CopyBackupToVault.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.CopyBackupToVaultRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.CopyBackupToVaultResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CopyBackupToVault", params, headers=headers)
+            response = json.loads(body)
+            model = models.CopyBackupToVaultResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -693,6 +762,29 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateVault(self, request):
+        r"""创建备份保险箱
+
+        :param request: Request instance for CreateVault.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.CreateVaultRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.CreateVaultResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateVault", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateVaultResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteAccounts(self, request):
         r"""本接口（DeleteAccounts）用于删除用户账号。
 
@@ -776,6 +868,29 @@ class CynosdbClient(AbstractClient):
             body = self.call("DeleteBackup", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteBackupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteBackupVault(self, request):
+        r"""从备份保险箱中删除指定的备份文件
+
+        :param request: Request instance for DeleteBackupVault.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DeleteBackupVaultRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DeleteBackupVaultResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteBackupVault", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteBackupVaultResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -914,6 +1029,29 @@ class CynosdbClient(AbstractClient):
             body = self.call("DeleteParamTemplate", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteParamTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteVaults(self, request):
+        r"""批量删除备份保险箱
+
+        :param request: Request instance for DeleteVaults.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DeleteVaultsRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DeleteVaultsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteVaults", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteVaultsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1222,6 +1360,29 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeBackupListByVault(self, request):
+        r"""根据保险箱ID查询备份文件列表
+
+        :param request: Request instance for DescribeBackupListByVault.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeBackupListByVaultRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeBackupListByVaultResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBackupListByVault", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBackupListByVaultResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeBinlogConfig(self, request):
         r"""该接口（DescribeBinlogConfig）用于查询binlog配置
 
@@ -1259,6 +1420,29 @@ class CynosdbClient(AbstractClient):
             body = self.call("DescribeBinlogDownloadUrl", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeBinlogDownloadUrlResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeBinlogListByVault(self, request):
+        r"""查询保险箱内binlog备份
+
+        :param request: Request instance for DescribeBinlogListByVault.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeBinlogListByVaultRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeBinlogListByVaultResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBinlogListByVault", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBinlogListByVaultResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2349,6 +2533,29 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeRedoLogListByVault(self, request):
+        r"""查询RedoLog备份
+
+        :param request: Request instance for DescribeRedoLogListByVault.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeRedoLogListByVaultRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeRedoLogListByVaultResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRedoLogListByVault", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRedoLogListByVaultResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeRedoLogs(self, request):
         r"""本接口（DescribeRedoLogs）用于查询redo日志列表。
 
@@ -2639,6 +2846,52 @@ class CynosdbClient(AbstractClient):
             body = self.call("DescribeTasks", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeTasksResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeVaultBackupClusterInfo(self, request):
+        r"""查询备份保险箱关联的集群信息列表
+
+        :param request: Request instance for DescribeVaultBackupClusterInfo.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeVaultBackupClusterInfoRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeVaultBackupClusterInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVaultBackupClusterInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeVaultBackupClusterInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeVaults(self, request):
+        r"""查询备份保险箱列表，支持分页、筛选和排序
+
+        :param request: Request instance for DescribeVaults.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeVaultsRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeVaultsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVaults", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeVaultsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -3260,6 +3513,29 @@ class CynosdbClient(AbstractClient):
             body = self.call("ModifyBinlogSaveDays", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyBinlogSaveDaysResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyClusterBinlogRedoLogAutoCopyVault(self, request):
+        r"""修改集群Binlog和RedoLog自动拷贝到保险箱的配置
+
+        :param request: Request instance for ModifyClusterBinlogRedoLogAutoCopyVault.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.ModifyClusterBinlogRedoLogAutoCopyVaultRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ModifyClusterBinlogRedoLogAutoCopyVaultResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyClusterBinlogRedoLogAutoCopyVault", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyClusterBinlogRedoLogAutoCopyVaultResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -3927,6 +4203,29 @@ class CynosdbClient(AbstractClient):
             body = self.call("ModifySnapBackupCrossRegionConfig", params, headers=headers)
             response = json.loads(body)
             model = models.ModifySnapBackupCrossRegionConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyVault(self, request):
+        r"""修改备份保险箱配置，包括名称、描述、保留时长、加密密钥、锁定时间等
+
+        :param request: Request instance for ModifyVault.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.ModifyVaultRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ModifyVaultResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyVault", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyVaultResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -4755,6 +5054,29 @@ class CynosdbClient(AbstractClient):
             body = self.call("SwitchProxyVpc", params, headers=headers)
             response = json.loads(body)
             model = models.SwitchProxyVpcResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def TransferClusterZone(self, request):
+        r"""本接口（TransferClusterZone）用于发起跨可用区迁移。
+
+        :param request: Request instance for TransferClusterZone.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.TransferClusterZoneRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.TransferClusterZoneResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("TransferClusterZone", params, headers=headers)
+            response = json.loads(body)
+            model = models.TransferClusterZoneResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

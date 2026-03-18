@@ -5244,7 +5244,7 @@ class CreateTargetGroupRequest(AbstractModel):
         :type Protocol: str
         :param _HealthCheck: <p>健康检查。</p>
         :type HealthCheck: :class:`tencentcloud.clb.v20180317.models.TargetGroupHealthCheck`
-        :param _ScheduleAlgorithm: <p>调度算法，仅V2新版目标组，且后端转发协议为(HTTP|HTTPS|GRPC)时该参数有效。可选值：<br>&lt;ur&gt;<li>WRR:按权重轮询。</li><li>LEAST_CONN:最小连接数。</li><li>IP_HASH:按IP哈希。</li><li>默认为 WRR。</li>&lt;ur&gt;</p>
+        :param _ScheduleAlgorithm: <p>调度算法，仅V2新版目标组，且后端转发协议为(HTTP|HTTPS|GRPC)时该参数有效。可选值：</p><li>WRR:按权重轮询。</li><li>LEAST_CONN:最小连接数。</li><li>IP_HASH:按IP哈希。</li><li>默认为 WRR。</li>
         :type ScheduleAlgorithm: str
         :param _Tags: <p>标签。</p>
         :type Tags: list of TagInfo
@@ -5356,7 +5356,7 @@ class CreateTargetGroupRequest(AbstractModel):
 
     @property
     def ScheduleAlgorithm(self):
-        r"""<p>调度算法，仅V2新版目标组，且后端转发协议为(HTTP|HTTPS|GRPC)时该参数有效。可选值：<br>&lt;ur&gt;<li>WRR:按权重轮询。</li><li>LEAST_CONN:最小连接数。</li><li>IP_HASH:按IP哈希。</li><li>默认为 WRR。</li>&lt;ur&gt;</p>
+        r"""<p>调度算法，仅V2新版目标组，且后端转发协议为(HTTP|HTTPS|GRPC)时该参数有效。可选值：</p><li>WRR:按权重轮询。</li><li>LEAST_CONN:最小连接数。</li><li>IP_HASH:按IP哈希。</li><li>默认为 WRR。</li>
         :rtype: str
         """
         return self._ScheduleAlgorithm

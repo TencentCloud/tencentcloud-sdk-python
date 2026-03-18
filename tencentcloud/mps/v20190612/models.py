@@ -3861,14 +3861,13 @@ class AiAnalysisTaskDubbingOutput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _VideoPath: 译制视频路径。
+        :param _VideoPath: <p>译制视频路径。</p>
         :type VideoPath: str
-        :param _SpeakerPath: 标记文件路径
-
+        :param _SpeakerPath: <p>标记文件路径</p>
         :type SpeakerPath: str
-        :param _VoiceId: 音色id
+        :param _VoiceId: <p>音色id</p>
         :type VoiceId: str
-        :param _OutputStorage: 译制视频存储位置。
+        :param _OutputStorage: <p>译制视频存储位置。</p>
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
         self._VideoPath = None
@@ -3878,7 +3877,7 @@ class AiAnalysisTaskDubbingOutput(AbstractModel):
 
     @property
     def VideoPath(self):
-        r"""译制视频路径。
+        r"""<p>译制视频路径。</p>
         :rtype: str
         """
         return self._VideoPath
@@ -3889,8 +3888,7 @@ class AiAnalysisTaskDubbingOutput(AbstractModel):
 
     @property
     def SpeakerPath(self):
-        r"""标记文件路径
-
+        r"""<p>标记文件路径</p>
         :rtype: str
         """
         return self._SpeakerPath
@@ -3901,7 +3899,7 @@ class AiAnalysisTaskDubbingOutput(AbstractModel):
 
     @property
     def VoiceId(self):
-        r"""音色id
+        r"""<p>音色id</p>
         :rtype: str
         """
         return self._VoiceId
@@ -3912,7 +3910,7 @@ class AiAnalysisTaskDubbingOutput(AbstractModel):
 
     @property
     def OutputStorage(self):
-        r"""译制视频存储位置。
+        r"""<p>译制视频存储位置。</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
         return self._OutputStorage

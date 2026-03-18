@@ -894,6 +894,24 @@ class TioneClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribePublicAlgoVersionList(
+            self,
+            request: models.DescribePublicAlgoVersionListRequest,
+            opts: Dict = None,
+    ) -> models.DescribePublicAlgoVersionListResponse:
+        """
+        公共算法版本列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribePublicAlgoVersionList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribePublicAlgoVersionListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeSubAccountLinuxUserInfos(
             self,
             request: models.DescribeSubAccountLinuxUserInfosRequest,

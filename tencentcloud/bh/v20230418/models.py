@@ -12051,6 +12051,70 @@ class DeviceAccount(AbstractModel):
         
 
 
+class DisableClientTcpAccessRequest(AbstractModel):
+    r"""DisableClientTcpAccess请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceId: 堡垒机id
+        :type ResourceId: str
+        """
+        self._ResourceId = None
+
+    @property
+    def ResourceId(self):
+        r"""堡垒机id
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+
+    def _deserialize(self, params):
+        self._ResourceId = params.get("ResourceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DisableClientTcpAccessResponse(AbstractModel):
+    r"""DisableClientTcpAccess返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DisableExternalAccessRequest(AbstractModel):
     r"""DisableExternalAccess请求参数结构体
 
@@ -12153,6 +12217,70 @@ class DisableIntranetAccessRequest(AbstractModel):
 
 class DisableIntranetAccessResponse(AbstractModel):
     r"""DisableIntranetAccess返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DisableWebAccessRequest(AbstractModel):
+    r"""DisableWebAccess请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceId: 堡垒机id
+        :type ResourceId: str
+        """
+        self._ResourceId = None
+
+    @property
+    def ResourceId(self):
+        r"""堡垒机id
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+
+    def _deserialize(self, params):
+        self._ResourceId = params.get("ResourceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DisableWebAccessResponse(AbstractModel):
+    r"""DisableWebAccess返回参数结构体
 
     """
 
@@ -12335,6 +12463,70 @@ class Domain(AbstractModel):
         
 
 
+class EnableClientTcpAccessRequest(AbstractModel):
+    r"""EnableClientTcpAccess请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceId: 堡垒机id
+        :type ResourceId: str
+        """
+        self._ResourceId = None
+
+    @property
+    def ResourceId(self):
+        r"""堡垒机id
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+
+    def _deserialize(self, params):
+        self._ResourceId = params.get("ResourceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EnableClientTcpAccessResponse(AbstractModel):
+    r"""EnableClientTcpAccess返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class EnableExternalAccessRequest(AbstractModel):
     r"""EnableExternalAccess请求参数结构体
 
@@ -12497,6 +12689,70 @@ class EnableIntranetAccessRequest(AbstractModel):
 
 class EnableIntranetAccessResponse(AbstractModel):
     r"""EnableIntranetAccess返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class EnableWebAccessRequest(AbstractModel):
+    r"""EnableWebAccess请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceId: 堡垒机id
+        :type ResourceId: str
+        """
+        self._ResourceId = None
+
+    @property
+    def ResourceId(self):
+        r"""堡垒机id
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+
+    def _deserialize(self, params):
+        self._ResourceId = params.get("ResourceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EnableWebAccessResponse(AbstractModel):
+    r"""EnableWebAccess返回参数结构体
 
     """
 

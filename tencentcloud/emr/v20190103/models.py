@@ -6463,6 +6463,8 @@ class CreateSLInstanceRequest(AbstractModel):
         :type ClientToken: str
         :param _DeploymentMode: 部署模式
         :type DeploymentMode: str
+        :param _UserName: 服务用户名，对不需要用户名的服务不用传，8-16个字符，支持大写字母、小写字母、数字
+        :type UserName: str
         """
         self._InstanceName = None
         self._PayMode = None
@@ -6474,6 +6476,7 @@ class CreateSLInstanceRequest(AbstractModel):
         self._PrePaySetting = None
         self._ClientToken = None
         self._DeploymentMode = None
+        self._UserName = None
 
     @property
     def InstanceName(self):
@@ -6585,6 +6588,17 @@ class CreateSLInstanceRequest(AbstractModel):
     def DeploymentMode(self, DeploymentMode):
         self._DeploymentMode = DeploymentMode
 
+    @property
+    def UserName(self):
+        r"""服务用户名，对不需要用户名的服务不用传，8-16个字符，支持大写字母、小写字母、数字
+        :rtype: str
+        """
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
 
     def _deserialize(self, params):
         self._InstanceName = params.get("InstanceName")
@@ -6609,6 +6623,7 @@ class CreateSLInstanceRequest(AbstractModel):
             self._PrePaySetting._deserialize(params.get("PrePaySetting"))
         self._ClientToken = params.get("ClientToken")
         self._DeploymentMode = params.get("DeploymentMode")
+        self._UserName = params.get("UserName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -33503,8 +33518,12 @@ class SLInstanceInfo(AbstractModel):
         :type AppId: int
         :param _VpcId: 主可用区私有网络ID
         :type VpcId: int
+        :param _VpcName: 主可用区私有网络名
+        :type VpcName: str
         :param _SubnetId: 主可用区子网ID
         :type SubnetId: int
+        :param _SubnetName: 主可用区子网名
+        :type SubnetName: str
         :param _Status: 状态码
         :type Status: int
         :param _AddTime: 创建时间
@@ -33525,6 +33544,8 @@ class SLInstanceInfo(AbstractModel):
         :type ExpireTime: str
         :param _DeployRole: 主备部署角色
         :type DeployRole: str
+        :param _WebUIUrl: webui地址
+        :type WebUIUrl: str
         """
         self._ClusterId = None
         self._Id = None
@@ -33536,7 +33557,9 @@ class SLInstanceInfo(AbstractModel):
         self._Zone = None
         self._AppId = None
         self._VpcId = None
+        self._VpcName = None
         self._SubnetId = None
+        self._SubnetName = None
         self._Status = None
         self._AddTime = None
         self._PayMode = None
@@ -33546,6 +33569,7 @@ class SLInstanceInfo(AbstractModel):
         self._IsolateTime = None
         self._ExpireTime = None
         self._DeployRole = None
+        self._WebUIUrl = None
 
     @property
     def ClusterId(self):
@@ -33658,6 +33682,17 @@ class SLInstanceInfo(AbstractModel):
         self._VpcId = VpcId
 
     @property
+    def VpcName(self):
+        r"""主可用区私有网络名
+        :rtype: str
+        """
+        return self._VpcName
+
+    @VpcName.setter
+    def VpcName(self, VpcName):
+        self._VpcName = VpcName
+
+    @property
     def SubnetId(self):
         r"""主可用区子网ID
         :rtype: int
@@ -33667,6 +33702,17 @@ class SLInstanceInfo(AbstractModel):
     @SubnetId.setter
     def SubnetId(self, SubnetId):
         self._SubnetId = SubnetId
+
+    @property
+    def SubnetName(self):
+        r"""主可用区子网名
+        :rtype: str
+        """
+        return self._SubnetName
+
+    @SubnetName.setter
+    def SubnetName(self, SubnetName):
+        self._SubnetName = SubnetName
 
     @property
     def Status(self):
@@ -33769,6 +33815,17 @@ class SLInstanceInfo(AbstractModel):
     def DeployRole(self, DeployRole):
         self._DeployRole = DeployRole
 
+    @property
+    def WebUIUrl(self):
+        r"""webui地址
+        :rtype: str
+        """
+        return self._WebUIUrl
+
+    @WebUIUrl.setter
+    def WebUIUrl(self, WebUIUrl):
+        self._WebUIUrl = WebUIUrl
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -33781,7 +33838,9 @@ class SLInstanceInfo(AbstractModel):
         self._Zone = params.get("Zone")
         self._AppId = params.get("AppId")
         self._VpcId = params.get("VpcId")
+        self._VpcName = params.get("VpcName")
         self._SubnetId = params.get("SubnetId")
+        self._SubnetName = params.get("SubnetName")
         self._Status = params.get("Status")
         self._AddTime = params.get("AddTime")
         self._PayMode = params.get("PayMode")
@@ -33801,6 +33860,7 @@ class SLInstanceInfo(AbstractModel):
         self._IsolateTime = params.get("IsolateTime")
         self._ExpireTime = params.get("ExpireTime")
         self._DeployRole = params.get("DeployRole")
+        self._WebUIUrl = params.get("WebUIUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

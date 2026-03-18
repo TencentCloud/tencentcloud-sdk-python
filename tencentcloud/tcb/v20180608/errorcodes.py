@@ -176,6 +176,9 @@ MISSINGPARAMETER = 'MissingParameter'
 # 缺少必要参数。
 MISSINGPARAMETER_PARAM = 'MissingParameter.Param'
 
+# 操作被拒绝。
+OPERATIONDENIED = 'OperationDenied'
+
 # 免费套餐拒绝此操作
 OPERATIONDENIED_FREEPACKAGEDENIED = 'OperationDenied.FreePackageDenied'
 
@@ -190,6 +193,9 @@ RESOURCEINUSE_FSACLJOBUNDONE = 'ResourceInUse.FsACLJobUnDone'
 
 # ResourceInUse.IndexCreating
 RESOURCEINUSE_INDEXCREATING = 'ResourceInUse.IndexCreating'
+
+# 环境下日志资源已存在，无需重新开通日志资源
+RESOURCEINUSE_LOGEXIST = 'ResourceInUse.LogExist'
 
 # 资源不足。
 RESOURCEINSUFFICIENT = 'ResourceInsufficient'
@@ -257,8 +263,14 @@ RESOURCEUNAVAILABLE_RESOURCEISOLATED = 'ResourceUnavailable.ResourceIsolated'
 # 资源过期。
 RESOURCEUNAVAILABLE_RESOURCEOVERDUE = 'ResourceUnavailable.ResourceOverdue'
 
+# 资源售罄。
+RESOURCESSOLDOUT = 'ResourcesSoldOut'
+
 # 未授权操作。
 UNAUTHORIZEDOPERATION = 'UnauthorizedOperation'
+
+# 未知参数错误。
+UNKNOWNPARAMETER = 'UnknownParameter'
 
 # 操作不支持。
 UNSUPPORTEDOPERATION = 'UnsupportedOperation'

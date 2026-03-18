@@ -1135,6 +1135,29 @@ class TioneClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribePublicAlgoVersionList(self, request):
+        r"""公共算法版本列表
+
+        :param request: Request instance for DescribePublicAlgoVersionList.
+        :type request: :class:`tencentcloud.tione.v20211111.models.DescribePublicAlgoVersionListRequest`
+        :rtype: :class:`tencentcloud.tione.v20211111.models.DescribePublicAlgoVersionListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePublicAlgoVersionList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePublicAlgoVersionListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeSubAccountLinuxUserInfos(self, request):
         r"""批量查询子账号Linux用户信息
 

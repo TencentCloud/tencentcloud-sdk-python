@@ -25,13 +25,13 @@ class BoundingBox(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _X: 左上顶点x坐标
+        :param _X: <p>左上顶点x坐标</p>
         :type X: int
-        :param _Y: 左上顶点y坐标
+        :param _Y: <p>左上顶点y坐标</p>
         :type Y: int
-        :param _Width: 宽
+        :param _Width: <p>宽</p><p>单位：px</p>
         :type Width: int
-        :param _Height: 高
+        :param _Height: <p>高</p><p>单位：px</p>
         :type Height: int
         """
         self._X = None
@@ -41,7 +41,7 @@ class BoundingBox(AbstractModel):
 
     @property
     def X(self):
-        r"""左上顶点x坐标
+        r"""<p>左上顶点x坐标</p>
         :rtype: int
         """
         return self._X
@@ -52,7 +52,7 @@ class BoundingBox(AbstractModel):
 
     @property
     def Y(self):
-        r"""左上顶点y坐标
+        r"""<p>左上顶点y坐标</p>
         :rtype: int
         """
         return self._Y
@@ -63,7 +63,7 @@ class BoundingBox(AbstractModel):
 
     @property
     def Width(self):
-        r"""宽
+        r"""<p>宽</p><p>单位：px</p>
         :rtype: int
         """
         return self._Width
@@ -74,7 +74,7 @@ class BoundingBox(AbstractModel):
 
     @property
     def Height(self):
-        r"""高
+        r"""<p>高</p><p>单位：px</p>
         :rtype: int
         """
         return self._Height
@@ -722,19 +722,19 @@ class TransDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SourceLineText: 当前行的原文本
+        :param _SourceLineText: <p>当前行的原文本</p>
         :type SourceLineText: str
-        :param _TargetLineText: 当前行的译文
+        :param _TargetLineText: <p>当前行的译文</p>
         :type TargetLineText: str
-        :param _BoundingBox: 段落文本框位置
+        :param _BoundingBox: <p>段落文本框位置</p>
         :type BoundingBox: :class:`tencentcloud.tmt.v20180321.models.BoundingBox`
-        :param _LinesCount: 行数
+        :param _LinesCount: <p>行数</p>
         :type LinesCount: int
-        :param _LineHeight: 行高
+        :param _LineHeight: <p>行高</p><p>单位：px</p>
         :type LineHeight: int
-        :param _SpamCode: 正常段落spam_code字段为0；如果存在spam_code字段且值大于0（1: 命中垃圾检查；2: 命中安全策略；3: 其他。），则命中安全检查被过滤。
+        :param _SpamCode: <p>正常段落spam_code字段为0；如果存在spam_code字段且值大于0（1: 命中垃圾检查；2: 命中安全策略；3: 其他。），则命中安全检查被过滤。</p>
         :type SpamCode: int
-        :param _RotateParagraphRect: 段落文本旋转信息，只在valid为true时表示坐标有效
+        :param _RotateParagraphRect: <p>段落文本旋转信息，只在valid为true时表示坐标有效</p>
         :type RotateParagraphRect: :class:`tencentcloud.tmt.v20180321.models.RotateParagraphRect`
         """
         self._SourceLineText = None
@@ -747,7 +747,7 @@ class TransDetail(AbstractModel):
 
     @property
     def SourceLineText(self):
-        r"""当前行的原文本
+        r"""<p>当前行的原文本</p>
         :rtype: str
         """
         return self._SourceLineText
@@ -758,7 +758,7 @@ class TransDetail(AbstractModel):
 
     @property
     def TargetLineText(self):
-        r"""当前行的译文
+        r"""<p>当前行的译文</p>
         :rtype: str
         """
         return self._TargetLineText
@@ -769,7 +769,7 @@ class TransDetail(AbstractModel):
 
     @property
     def BoundingBox(self):
-        r"""段落文本框位置
+        r"""<p>段落文本框位置</p>
         :rtype: :class:`tencentcloud.tmt.v20180321.models.BoundingBox`
         """
         return self._BoundingBox
@@ -780,7 +780,7 @@ class TransDetail(AbstractModel):
 
     @property
     def LinesCount(self):
-        r"""行数
+        r"""<p>行数</p>
         :rtype: int
         """
         return self._LinesCount
@@ -791,7 +791,7 @@ class TransDetail(AbstractModel):
 
     @property
     def LineHeight(self):
-        r"""行高
+        r"""<p>行高</p><p>单位：px</p>
         :rtype: int
         """
         return self._LineHeight
@@ -802,7 +802,7 @@ class TransDetail(AbstractModel):
 
     @property
     def SpamCode(self):
-        r"""正常段落spam_code字段为0；如果存在spam_code字段且值大于0（1: 命中垃圾检查；2: 命中安全策略；3: 其他。），则命中安全检查被过滤。
+        r"""<p>正常段落spam_code字段为0；如果存在spam_code字段且值大于0（1: 命中垃圾检查；2: 命中安全策略；3: 其他。），则命中安全检查被过滤。</p>
         :rtype: int
         """
         return self._SpamCode
@@ -813,7 +813,7 @@ class TransDetail(AbstractModel):
 
     @property
     def RotateParagraphRect(self):
-        r"""段落文本旋转信息，只在valid为true时表示坐标有效
+        r"""<p>段落文本旋转信息，只在valid为true时表示坐标有效</p>
         :rtype: :class:`tencentcloud.tmt.v20180321.models.RotateParagraphRect`
         """
         return self._RotateParagraphRect

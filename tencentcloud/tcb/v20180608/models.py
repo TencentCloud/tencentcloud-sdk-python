@@ -18,6 +18,284 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AddProviderRequest(AbstractModel):
+    r"""AddProvider请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: 云开发环境 ID，用于唯一标识当前操作所属的云开发环境。
+        :type EnvId: str
+        :param _Name: 身份源的显示名称，支持国际化多语言配置。用户在登录页面看到的身份源名称将使用该字段，建议根据实际业务场景填写易于识别的名称，例如：企业微信、GitHub 等。
+        :type Name: :class:`tencentcloud.tcb.v20180608.models.LocalizedMessage`
+        :param _ProviderType: 身份源协议类型，决定该身份源使用何种认证协议与第三方平台对接。可选值：
+OAUTH：标准 OAuth 2.0 协议
+OIDC：OpenID Connect 协议
+SAML：SAML 2.0 协议
+WX_MICRO_APP：微信小程序登录
+WX_QRCODE_MICRO_APP：微信小程序扫码登录
+WX_CLOUDBASE_MICRO_APP：云开发托管小程序登录
+WX_MP：微信公众号网页授权登录
+WX_OPEN：微信开放平台扫码登录
+WX_WORK_INTERNAL：企业微信自建应用登录
+WX_WORK_AGENT：企业微信代开发应用登录
+WX_WORK_THIRD_PARTY：企业微信第三方应用登录
+WX_WORK_THIRD_PARTY_ASSOCIATION：企业微信第三方应用关联登录
+CUSTOM：自定义登录
+EMAIL：邮箱登录
+        :type ProviderType: str
+        :param _Id: 身份源的唯一标识符，用于在系统内区分不同的身份源。格式要求：2~32 位，仅支持小写英文字母和数字，不可包含空格或特殊字符。若不填写，系统将自动生成。例如：github、google。
+        :type Id: str
+        :param _Picture: 身份源图标的访问地址，将展示在登录页的身份源按钮上。建议使用 64×64 像素的 SVG 格式图片以保证清晰度，支持 HTTP/HTTPS 公网可访问的图片链接。
+        :type Picture: str
+        :param _Homepage: 身份源对应的官方主页地址。该信息将在用户查看自己的第三方账号绑定列表时展示，帮助用户识别已绑定的身份源来源。例如 GitHub 身份源可填写：https://github.com。
+        :type Homepage: str
+        :param _Config: 身份认证源协议连接配置，包含与第三方平台对接所需的核心参数，如 ClientId、ClientSecret、授权端点、Token 端点、回调地址、Scope、SAML Metadata、请求和响应参数映射等。不同 ProviderType 对应不同的配置项要求。
+        :type Config: :class:`tencentcloud.tcb.v20180608.models.ProviderConfig`
+        :param _TransparentMode: 是否开启透传登录模式。可选值：TRUE（开启）、FALSE（关闭）、UNSPECIFIED（默认为 FALSE，企业微信代开发应用 WX_WORK_AGENT 类型默认为 TRUE）。开启后，平台不会持久化存储用户数据，仅将第三方身份源返回的用户信息透传给业务方，适用于不希望平台留存用户数据的场景。注意：开启透传模式时，ReuseUserId 将自动设为 TRUE，AutoSignUpWithProviderUser 将自动设为 FALSE。
+        :type TransparentMode: str
+        :param _Description: 身份源的详细描述信息，支持国际化多语言配置。可用于向用户说明该身份源的用途或使用场景，例如：谷歌授权登录。
+        :type Description: :class:`tencentcloud.tcb.v20180608.models.LocalizedMessage`
+        :param _ReuseUserId: 是否直接复用第三方身份源的用户 ID 作为平台的用户 ID。可选值：TRUE（直接复用，适用于已有用户体系迁移场景）、FALSE（不复用，由平台生成独立用户 ID）、UNSPECIFIED（默认为 FALSE，但当 TransparentMode 为 TRUE 时自动设为 TRUE）。注意：开启后需确保第三方用户 ID 的唯一性，避免 ID 冲突。
+        :type ReuseUserId: str
+        :param _On: 身份源的启用状态。可选值：TRUE（启用，用户可通过该身份源登录）、FALSE（禁用，登录入口将被隐藏，已有绑定关系不受影响）、UNSPECIFIED（默认为 TRUE）。
+        :type On: str
+        :param _AutoSignInWhenEmailMatch: 是否开启邮箱自动关联登录。可选值：TRUE（开启）、FALSE（关闭）、UNSPECIFIED（默认为 FALSE）。开启后，若第三方身份源返回的邮箱与系统中已有用户的邮箱一致，则自动将该第三方账号与已有用户关联并完成登录，无需用户手动绑定。
+        :type AutoSignInWhenEmailMatch: str
+        :param _AutoSignInWhenPhoneNumberMatch: 是否开启手机号自动关联登录。可选值：TRUE（开启）、FALSE（关闭）、UNSPECIFIED（默认行为等同 TRUE）。开启后，若第三方身份源返回的手机号与系统中已有用户的手机号一致，则自动将该第三方账号与已有用户关联并完成登录，无需用户手动绑定。注意：该字段默认行为（UNSPECIFIED）与 AutoSignInWhenEmailMatch 不同，手机号匹配在未显式关闭时默认生效。
+        :type AutoSignInWhenPhoneNumberMatch: str
+        """
+        self._EnvId = None
+        self._Name = None
+        self._ProviderType = None
+        self._Id = None
+        self._Picture = None
+        self._Homepage = None
+        self._Config = None
+        self._TransparentMode = None
+        self._Description = None
+        self._ReuseUserId = None
+        self._On = None
+        self._AutoSignInWhenEmailMatch = None
+        self._AutoSignInWhenPhoneNumberMatch = None
+
+    @property
+    def EnvId(self):
+        r"""云开发环境 ID，用于唯一标识当前操作所属的云开发环境。
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def Name(self):
+        r"""身份源的显示名称，支持国际化多语言配置。用户在登录页面看到的身份源名称将使用该字段，建议根据实际业务场景填写易于识别的名称，例如：企业微信、GitHub 等。
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.LocalizedMessage`
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ProviderType(self):
+        r"""身份源协议类型，决定该身份源使用何种认证协议与第三方平台对接。可选值：
+OAUTH：标准 OAuth 2.0 协议
+OIDC：OpenID Connect 协议
+SAML：SAML 2.0 协议
+WX_MICRO_APP：微信小程序登录
+WX_QRCODE_MICRO_APP：微信小程序扫码登录
+WX_CLOUDBASE_MICRO_APP：云开发托管小程序登录
+WX_MP：微信公众号网页授权登录
+WX_OPEN：微信开放平台扫码登录
+WX_WORK_INTERNAL：企业微信自建应用登录
+WX_WORK_AGENT：企业微信代开发应用登录
+WX_WORK_THIRD_PARTY：企业微信第三方应用登录
+WX_WORK_THIRD_PARTY_ASSOCIATION：企业微信第三方应用关联登录
+CUSTOM：自定义登录
+EMAIL：邮箱登录
+        :rtype: str
+        """
+        return self._ProviderType
+
+    @ProviderType.setter
+    def ProviderType(self, ProviderType):
+        self._ProviderType = ProviderType
+
+    @property
+    def Id(self):
+        r"""身份源的唯一标识符，用于在系统内区分不同的身份源。格式要求：2~32 位，仅支持小写英文字母和数字，不可包含空格或特殊字符。若不填写，系统将自动生成。例如：github、google。
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Picture(self):
+        r"""身份源图标的访问地址，将展示在登录页的身份源按钮上。建议使用 64×64 像素的 SVG 格式图片以保证清晰度，支持 HTTP/HTTPS 公网可访问的图片链接。
+        :rtype: str
+        """
+        return self._Picture
+
+    @Picture.setter
+    def Picture(self, Picture):
+        self._Picture = Picture
+
+    @property
+    def Homepage(self):
+        r"""身份源对应的官方主页地址。该信息将在用户查看自己的第三方账号绑定列表时展示，帮助用户识别已绑定的身份源来源。例如 GitHub 身份源可填写：https://github.com。
+        :rtype: str
+        """
+        return self._Homepage
+
+    @Homepage.setter
+    def Homepage(self, Homepage):
+        self._Homepage = Homepage
+
+    @property
+    def Config(self):
+        r"""身份认证源协议连接配置，包含与第三方平台对接所需的核心参数，如 ClientId、ClientSecret、授权端点、Token 端点、回调地址、Scope、SAML Metadata、请求和响应参数映射等。不同 ProviderType 对应不同的配置项要求。
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.ProviderConfig`
+        """
+        return self._Config
+
+    @Config.setter
+    def Config(self, Config):
+        self._Config = Config
+
+    @property
+    def TransparentMode(self):
+        r"""是否开启透传登录模式。可选值：TRUE（开启）、FALSE（关闭）、UNSPECIFIED（默认为 FALSE，企业微信代开发应用 WX_WORK_AGENT 类型默认为 TRUE）。开启后，平台不会持久化存储用户数据，仅将第三方身份源返回的用户信息透传给业务方，适用于不希望平台留存用户数据的场景。注意：开启透传模式时，ReuseUserId 将自动设为 TRUE，AutoSignUpWithProviderUser 将自动设为 FALSE。
+        :rtype: str
+        """
+        return self._TransparentMode
+
+    @TransparentMode.setter
+    def TransparentMode(self, TransparentMode):
+        self._TransparentMode = TransparentMode
+
+    @property
+    def Description(self):
+        r"""身份源的详细描述信息，支持国际化多语言配置。可用于向用户说明该身份源的用途或使用场景，例如：谷歌授权登录。
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.LocalizedMessage`
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def ReuseUserId(self):
+        r"""是否直接复用第三方身份源的用户 ID 作为平台的用户 ID。可选值：TRUE（直接复用，适用于已有用户体系迁移场景）、FALSE（不复用，由平台生成独立用户 ID）、UNSPECIFIED（默认为 FALSE，但当 TransparentMode 为 TRUE 时自动设为 TRUE）。注意：开启后需确保第三方用户 ID 的唯一性，避免 ID 冲突。
+        :rtype: str
+        """
+        return self._ReuseUserId
+
+    @ReuseUserId.setter
+    def ReuseUserId(self, ReuseUserId):
+        self._ReuseUserId = ReuseUserId
+
+    @property
+    def On(self):
+        r"""身份源的启用状态。可选值：TRUE（启用，用户可通过该身份源登录）、FALSE（禁用，登录入口将被隐藏，已有绑定关系不受影响）、UNSPECIFIED（默认为 TRUE）。
+        :rtype: str
+        """
+        return self._On
+
+    @On.setter
+    def On(self, On):
+        self._On = On
+
+    @property
+    def AutoSignInWhenEmailMatch(self):
+        r"""是否开启邮箱自动关联登录。可选值：TRUE（开启）、FALSE（关闭）、UNSPECIFIED（默认为 FALSE）。开启后，若第三方身份源返回的邮箱与系统中已有用户的邮箱一致，则自动将该第三方账号与已有用户关联并完成登录，无需用户手动绑定。
+        :rtype: str
+        """
+        return self._AutoSignInWhenEmailMatch
+
+    @AutoSignInWhenEmailMatch.setter
+    def AutoSignInWhenEmailMatch(self, AutoSignInWhenEmailMatch):
+        self._AutoSignInWhenEmailMatch = AutoSignInWhenEmailMatch
+
+    @property
+    def AutoSignInWhenPhoneNumberMatch(self):
+        r"""是否开启手机号自动关联登录。可选值：TRUE（开启）、FALSE（关闭）、UNSPECIFIED（默认行为等同 TRUE）。开启后，若第三方身份源返回的手机号与系统中已有用户的手机号一致，则自动将该第三方账号与已有用户关联并完成登录，无需用户手动绑定。注意：该字段默认行为（UNSPECIFIED）与 AutoSignInWhenEmailMatch 不同，手机号匹配在未显式关闭时默认生效。
+        :rtype: str
+        """
+        return self._AutoSignInWhenPhoneNumberMatch
+
+    @AutoSignInWhenPhoneNumberMatch.setter
+    def AutoSignInWhenPhoneNumberMatch(self, AutoSignInWhenPhoneNumberMatch):
+        self._AutoSignInWhenPhoneNumberMatch = AutoSignInWhenPhoneNumberMatch
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        if params.get("Name") is not None:
+            self._Name = LocalizedMessage()
+            self._Name._deserialize(params.get("Name"))
+        self._ProviderType = params.get("ProviderType")
+        self._Id = params.get("Id")
+        self._Picture = params.get("Picture")
+        self._Homepage = params.get("Homepage")
+        if params.get("Config") is not None:
+            self._Config = ProviderConfig()
+            self._Config._deserialize(params.get("Config"))
+        self._TransparentMode = params.get("TransparentMode")
+        if params.get("Description") is not None:
+            self._Description = LocalizedMessage()
+            self._Description._deserialize(params.get("Description"))
+        self._ReuseUserId = params.get("ReuseUserId")
+        self._On = params.get("On")
+        self._AutoSignInWhenEmailMatch = params.get("AutoSignInWhenEmailMatch")
+        self._AutoSignInWhenPhoneNumberMatch = params.get("AutoSignInWhenPhoneNumberMatch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AddProviderResponse(AbstractModel):
+    r"""AddProvider返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class AuthDomain(AbstractModel):
     r"""合法域名
 
@@ -2528,6 +2806,85 @@ class CreateEnvRequest(AbstractModel):
         
 
 
+class CreateEnvResourceRequest(AbstractModel):
+    r"""CreateEnvResource请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: 环境ID
+        :type EnvId: str
+        :param _Resources: 资源类型。代表本次开通哪些资源。 可取值以及含义： - log : 表示日志资源，当前仅支持 log（日志资源类型），后续版本可能扩展，该数组不能为空，且每个元素必须为合法的资源类型值
+        :type Resources: list of str
+        """
+        self._EnvId = None
+        self._Resources = None
+
+    @property
+    def EnvId(self):
+        r"""环境ID
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def Resources(self):
+        r"""资源类型。代表本次开通哪些资源。 可取值以及含义： - log : 表示日志资源，当前仅支持 log（日志资源类型），后续版本可能扩展，该数组不能为空，且每个元素必须为合法的资源类型值
+        :rtype: list of str
+        """
+        return self._Resources
+
+    @Resources.setter
+    def Resources(self, Resources):
+        self._Resources = Resources
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        self._Resources = params.get("Resources")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateEnvResourceResponse(AbstractModel):
+    r"""CreateEnvResource返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CreateEnvResponse(AbstractModel):
     r"""CreateEnv返回参数结构体
 
@@ -3565,7 +3922,7 @@ class DeleteAuthDomainRequest(AbstractModel):
         r"""
         :param _EnvId: 开发者的环境ID
         :type EnvId: str
-        :param _DomainIds: 域名ID列表，支持批量
+        :param _DomainIds: 域名ID列表，支持批量传递
         :type DomainIds: list of str
         """
         self._EnvId = None
@@ -3584,7 +3941,7 @@ class DeleteAuthDomainRequest(AbstractModel):
 
     @property
     def DomainIds(self):
-        r"""域名ID列表，支持批量
+        r"""域名ID列表，支持批量传递
         :rtype: list of str
         """
         return self._DomainIds
@@ -3910,6 +4267,85 @@ class DeleteCloudBaseGWDomainResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._Count = params.get("Count")
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteProviderRequest(AbstractModel):
+    r"""DeleteProvider请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: 环境ID
+        :type EnvId: str
+        :param _Id: 认证源ID，比如：github, 格式必须为：2-32位小写英文字符串或数字
+        :type Id: str
+        """
+        self._EnvId = None
+        self._Id = None
+
+    @property
+    def EnvId(self):
+        r"""环境ID
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def Id(self):
+        r"""认证源ID，比如：github, 格式必须为：2-32位小写英文字符串或数字
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        self._Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteProviderResponse(AbstractModel):
+    r"""DeleteProvider返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -4537,6 +4973,185 @@ class DescribeBillingInfoResponse(AbstractModel):
                 obj = EnvBillingInfoItem()
                 obj._deserialize(item)
                 self._EnvBillingInfoList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeClientRequest(AbstractModel):
+    r"""DescribeClient请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: 环境ID
+        :type EnvId: str
+        :param _Id: 客户端的唯一标识符（Client ID），在 OAuth/OIDC 授权流程中作为 client_id 参数使用，创建后不可修改，一般使用环境id
+        :type Id: str
+        """
+        self._EnvId = None
+        self._Id = None
+
+    @property
+    def EnvId(self):
+        r"""环境ID
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def Id(self):
+        r"""客户端的唯一标识符（Client ID），在 OAuth/OIDC 授权流程中作为 client_id 参数使用，创建后不可修改，一般使用环境id
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        self._Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeClientResponse(AbstractModel):
+    r"""DescribeClient返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 客户端的唯一标识符（Client ID），在 OAuth/OIDC 授权流程中作为 client_id 参数使用。创建时仅可传入环境 ID 或留空：传入环境 ID 时将直接使用该值作为客户端 ID（一个环境仅允许一个）；留空时由系统自动生成与环境 ID 关联的唯一 ID。创建后不可修改。
+        :type Id: str
+        :param _CreatedAt: 客户端的创建时间，格式遵循 ISO 8601 标准（如：2024-01-01T00:00:00Z），由系统自动生成，不可手动修改。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatedAt: str
+        :param _UpdatedAt: 客户端信息的最后修改时间，格式遵循 ISO 8601 标准（如：2024-01-01T00:00:00Z），每次更新应用配置时由系统自动更新。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdatedAt: str
+        :param _RefreshTokenExpiresIn: Refresh Token 的有效期，单位为秒。超过该时间后 Refresh Token 将失效，用户需重新登录。取值范围：最小 1800 秒（30 分钟），最大 2592000 秒（30 天），超出上限将自动截断为 30 天。若不设置则默认为 30 天。当该值小于等于 7200 秒时，系统会自动将 AccessTokenExpiresIn 调整为 RefreshTokenExpiresIn - 660 秒。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RefreshTokenExpiresIn: int
+        :param _AccessTokenExpiresIn: Access Token 的有效期，单位为秒。超过该时间后 Access Token 将失效，需通过 Refresh Token 换取新的 Access Token。若不设置则默认为 7200 秒（2 小时）。设置值小于 1800 秒时将被忽略，使用系统默认值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccessTokenExpiresIn: int
+        :param _MaxDevice: 单个用户在该客户端下允许同时登录的最大会话数量。取值范围：-1 至 50。-1 表示不限制设备数量；0 或不填默认按 User-Agent 区分设备（相同 User-Agent 共享一个会话，不同 User-Agent 各独立一个会话）；1 表示单设备登录，新登录将踢出旧会话；大于 1 时按真实设备 ID 限制，超出限制后最早登录的会话将被自动踢出。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxDevice: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Id = None
+        self._CreatedAt = None
+        self._UpdatedAt = None
+        self._RefreshTokenExpiresIn = None
+        self._AccessTokenExpiresIn = None
+        self._MaxDevice = None
+        self._RequestId = None
+
+    @property
+    def Id(self):
+        r"""客户端的唯一标识符（Client ID），在 OAuth/OIDC 授权流程中作为 client_id 参数使用。创建时仅可传入环境 ID 或留空：传入环境 ID 时将直接使用该值作为客户端 ID（一个环境仅允许一个）；留空时由系统自动生成与环境 ID 关联的唯一 ID。创建后不可修改。
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def CreatedAt(self):
+        r"""客户端的创建时间，格式遵循 ISO 8601 标准（如：2024-01-01T00:00:00Z），由系统自动生成，不可手动修改。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreatedAt
+
+    @CreatedAt.setter
+    def CreatedAt(self, CreatedAt):
+        self._CreatedAt = CreatedAt
+
+    @property
+    def UpdatedAt(self):
+        r"""客户端信息的最后修改时间，格式遵循 ISO 8601 标准（如：2024-01-01T00:00:00Z），每次更新应用配置时由系统自动更新。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UpdatedAt
+
+    @UpdatedAt.setter
+    def UpdatedAt(self, UpdatedAt):
+        self._UpdatedAt = UpdatedAt
+
+    @property
+    def RefreshTokenExpiresIn(self):
+        r"""Refresh Token 的有效期，单位为秒。超过该时间后 Refresh Token 将失效，用户需重新登录。取值范围：最小 1800 秒（30 分钟），最大 2592000 秒（30 天），超出上限将自动截断为 30 天。若不设置则默认为 30 天。当该值小于等于 7200 秒时，系统会自动将 AccessTokenExpiresIn 调整为 RefreshTokenExpiresIn - 660 秒。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._RefreshTokenExpiresIn
+
+    @RefreshTokenExpiresIn.setter
+    def RefreshTokenExpiresIn(self, RefreshTokenExpiresIn):
+        self._RefreshTokenExpiresIn = RefreshTokenExpiresIn
+
+    @property
+    def AccessTokenExpiresIn(self):
+        r"""Access Token 的有效期，单位为秒。超过该时间后 Access Token 将失效，需通过 Refresh Token 换取新的 Access Token。若不设置则默认为 7200 秒（2 小时）。设置值小于 1800 秒时将被忽略，使用系统默认值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._AccessTokenExpiresIn
+
+    @AccessTokenExpiresIn.setter
+    def AccessTokenExpiresIn(self, AccessTokenExpiresIn):
+        self._AccessTokenExpiresIn = AccessTokenExpiresIn
+
+    @property
+    def MaxDevice(self):
+        r"""单个用户在该客户端下允许同时登录的最大会话数量。取值范围：-1 至 50。-1 表示不限制设备数量；0 或不填默认按 User-Agent 区分设备（相同 User-Agent 共享一个会话，不同 User-Agent 各独立一个会话）；1 表示单设备登录，新登录将踢出旧会话；大于 1 时按真实设备 ID 限制，超出限制后最早登录的会话将被自动踢出。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._MaxDevice
+
+    @MaxDevice.setter
+    def MaxDevice(self, MaxDevice):
+        self._MaxDevice = MaxDevice
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._CreatedAt = params.get("CreatedAt")
+        self._UpdatedAt = params.get("UpdatedAt")
+        self._RefreshTokenExpiresIn = params.get("RefreshTokenExpiresIn")
+        self._AccessTokenExpiresIn = params.get("AccessTokenExpiresIn")
+        self._MaxDevice = params.get("MaxDevice")
         self._RequestId = params.get("RequestId")
 
 
@@ -7300,6 +7915,185 @@ class DescribeHostingDomainTaskResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeLoginConfigRequest(AbstractModel):
+    r"""DescribeLoginConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: 环境id
+        :type EnvId: str
+        """
+        self._EnvId = None
+
+    @property
+    def EnvId(self):
+        r"""环境id
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLoginConfigResponse(AbstractModel):
+    r"""DescribeLoginConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EmailLogin: 是否开启邮箱登录方式。true 表示已开启，允许用户使用邮箱和密码进行登录；false 表示已关闭。
+        :type EmailLogin: bool
+        :param _AnonymousLogin: 是否开启匿名登录方式。true 表示已开启，允许用户无需注册即可以匿名身份登录；false 表示已关闭。
+        :type AnonymousLogin: bool
+        :param _UserNameLogin: 是否开启用户名密码登录方式。true 表示已开启，允许用户使用用户名和密码进行登录；false 表示已关闭。
+        :type UserNameLogin: bool
+        :param _SmsVerificationConfig: 短信验证码发送配置，包含短信发送通道类型、自定义 APIs 数据源、调用方法及每日发送限额等信息。
+        :type SmsVerificationConfig: :class:`tencentcloud.tcb.v20180608.models.VerificationConfig`
+        :param _PhoneNumberLogin: 是否开启手机号短信登录方式。true 表示已开启，允许用户使用手机号和短信验证码进行登录和注册；false 表示已关闭。
+        :type PhoneNumberLogin: bool
+        :param _MfaConfig: MFA 多因子认证登录配置，包含 MFA 开关及各验证方式（短信、邮箱、TOTP、强制绑定手机号）的启用状态。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MfaConfig: :class:`tencentcloud.tcb.v20180608.models.MFALoginConfig`
+        :param _PwdUpdateStrategy: 密码修改策略配置，包含首次登录强制修改密码开关及定期修改密码策略（周期和时间单位）。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PwdUpdateStrategy: :class:`tencentcloud.tcb.v20180608.models.PasswordUpdateLoginConfig`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._EmailLogin = None
+        self._AnonymousLogin = None
+        self._UserNameLogin = None
+        self._SmsVerificationConfig = None
+        self._PhoneNumberLogin = None
+        self._MfaConfig = None
+        self._PwdUpdateStrategy = None
+        self._RequestId = None
+
+    @property
+    def EmailLogin(self):
+        r"""是否开启邮箱登录方式。true 表示已开启，允许用户使用邮箱和密码进行登录；false 表示已关闭。
+        :rtype: bool
+        """
+        return self._EmailLogin
+
+    @EmailLogin.setter
+    def EmailLogin(self, EmailLogin):
+        self._EmailLogin = EmailLogin
+
+    @property
+    def AnonymousLogin(self):
+        r"""是否开启匿名登录方式。true 表示已开启，允许用户无需注册即可以匿名身份登录；false 表示已关闭。
+        :rtype: bool
+        """
+        return self._AnonymousLogin
+
+    @AnonymousLogin.setter
+    def AnonymousLogin(self, AnonymousLogin):
+        self._AnonymousLogin = AnonymousLogin
+
+    @property
+    def UserNameLogin(self):
+        r"""是否开启用户名密码登录方式。true 表示已开启，允许用户使用用户名和密码进行登录；false 表示已关闭。
+        :rtype: bool
+        """
+        return self._UserNameLogin
+
+    @UserNameLogin.setter
+    def UserNameLogin(self, UserNameLogin):
+        self._UserNameLogin = UserNameLogin
+
+    @property
+    def SmsVerificationConfig(self):
+        r"""短信验证码发送配置，包含短信发送通道类型、自定义 APIs 数据源、调用方法及每日发送限额等信息。
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.VerificationConfig`
+        """
+        return self._SmsVerificationConfig
+
+    @SmsVerificationConfig.setter
+    def SmsVerificationConfig(self, SmsVerificationConfig):
+        self._SmsVerificationConfig = SmsVerificationConfig
+
+    @property
+    def PhoneNumberLogin(self):
+        r"""是否开启手机号短信登录方式。true 表示已开启，允许用户使用手机号和短信验证码进行登录和注册；false 表示已关闭。
+        :rtype: bool
+        """
+        return self._PhoneNumberLogin
+
+    @PhoneNumberLogin.setter
+    def PhoneNumberLogin(self, PhoneNumberLogin):
+        self._PhoneNumberLogin = PhoneNumberLogin
+
+    @property
+    def MfaConfig(self):
+        r"""MFA 多因子认证登录配置，包含 MFA 开关及各验证方式（短信、邮箱、TOTP、强制绑定手机号）的启用状态。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.MFALoginConfig`
+        """
+        return self._MfaConfig
+
+    @MfaConfig.setter
+    def MfaConfig(self, MfaConfig):
+        self._MfaConfig = MfaConfig
+
+    @property
+    def PwdUpdateStrategy(self):
+        r"""密码修改策略配置，包含首次登录强制修改密码开关及定期修改密码策略（周期和时间单位）。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.PasswordUpdateLoginConfig`
+        """
+        return self._PwdUpdateStrategy
+
+    @PwdUpdateStrategy.setter
+    def PwdUpdateStrategy(self, PwdUpdateStrategy):
+        self._PwdUpdateStrategy = PwdUpdateStrategy
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._EmailLogin = params.get("EmailLogin")
+        self._AnonymousLogin = params.get("AnonymousLogin")
+        self._UserNameLogin = params.get("UserNameLogin")
+        if params.get("SmsVerificationConfig") is not None:
+            self._SmsVerificationConfig = VerificationConfig()
+            self._SmsVerificationConfig._deserialize(params.get("SmsVerificationConfig"))
+        self._PhoneNumberLogin = params.get("PhoneNumberLogin")
+        if params.get("MfaConfig") is not None:
+            self._MfaConfig = MFALoginConfig()
+            self._MfaConfig._deserialize(params.get("MfaConfig"))
+        if params.get("PwdUpdateStrategy") is not None:
+            self._PwdUpdateStrategy = PasswordUpdateLoginConfig()
+            self._PwdUpdateStrategy._deserialize(params.get("PwdUpdateStrategy"))
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeMySQLClusterDetailRequest(AbstractModel):
     r"""DescribeMySQLClusterDetail请求参数结构体
 
@@ -8470,6 +9264,94 @@ class DescribeUserListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeVmSpecRequest(AbstractModel):
+    r"""DescribeVmSpec请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 类型：
+LightHouse = 轻量云服务器
+CVM = 云服务器
+        :type Type: str
+        """
+        self._Type = None
+
+    @property
+    def Type(self):
+        r"""类型：
+LightHouse = 轻量云服务器
+CVM = 云服务器
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVmSpecResponse(AbstractModel):
+    r"""DescribeVmSpec返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SpecList: 规格列表
+        :type SpecList: list of VMSpec
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._SpecList = None
+        self._RequestId = None
+
+    @property
+    def SpecList(self):
+        r"""规格列表
+        :rtype: list of VMSpec
+        """
+        return self._SpecList
+
+    @SpecList.setter
+    def SpecList(self, SpecList):
+        self._SpecList = SpecList
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("SpecList") is not None:
+            self._SpecList = []
+            for item in params.get("SpecList"):
+                obj = VMSpec()
+                obj._deserialize(item)
+                self._SpecList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DestroyEnvRequest(AbstractModel):
     r"""DestroyEnv请求参数结构体
 
@@ -8948,6 +9830,170 @@ class EditAuthConfigResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class EmailProviderConfig(AbstractModel):
+    r"""邮箱登录配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SmtpConfig: smtp配置
+        :type SmtpConfig: :class:`tencentcloud.tcb.v20180608.models.EmailSmtpConfig`
+        :param _On: 可选：TRUE，FALSE，如果On为TRUE，则表示采用默认代发。
+        :type On: str
+        """
+        self._SmtpConfig = None
+        self._On = None
+
+    @property
+    def SmtpConfig(self):
+        r"""smtp配置
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.EmailSmtpConfig`
+        """
+        return self._SmtpConfig
+
+    @SmtpConfig.setter
+    def SmtpConfig(self, SmtpConfig):
+        self._SmtpConfig = SmtpConfig
+
+    @property
+    def On(self):
+        r"""可选：TRUE，FALSE，如果On为TRUE，则表示采用默认代发。
+        :rtype: str
+        """
+        return self._On
+
+    @On.setter
+    def On(self, On):
+        self._On = On
+
+
+    def _deserialize(self, params):
+        if params.get("SmtpConfig") is not None:
+            self._SmtpConfig = EmailSmtpConfig()
+            self._SmtpConfig._deserialize(params.get("SmtpConfig"))
+        self._On = params.get("On")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EmailSmtpConfig(AbstractModel):
+    r"""邮箱smtp配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SenderAddress: 邮件发送者的邮箱地址，即收件人看到的发件人地址。需为有效的邮箱格式，且须与 SMTP 服务器的授权账号一致，否则可能被邮件服务商拒绝发送。例如：abc@example.com
+        :type SenderAddress: str
+        :param _ServerHost: SMTP 邮件服务器的域名或 IP 地址，用于建立邮件发送连接。不同邮件服务商的 SMTP 地址不同，例如 QQ 邮箱为 smtp.qq.com，Gmail 为 smtp.gmail.com，请以实际服务商提供的地址为准。
+        :type ServerHost: str
+        :param _ServerPort: SMTP 邮件服务器的端口号，需与所选安全模式（SecurityMode）匹配。常用端口：465（SSL 加密）、587（STARTTLS 加密）、25（无加密，不推荐）。建议优先使用 465 或 587 以保障传输安全。
+        :type ServerPort: int
+        :param _AccountUsername: SMTP 服务器的登录账号，通常为发件人的完整邮箱地址。部分邮件服务商支持使用独立的 SMTP 授权账号，请以实际服务商的要求为准。
+        :type AccountUsername: str
+        :param _AccountPassword: SMTP 服务器的登录密码。注意：部分邮件服务商（如 QQ 邮箱、163 邮箱）不支持直接使用账号登录密码，需在邮箱设置中开启 SMTP 服务并生成专用的授权码，请以实际服务商的要求为准。
+        :type AccountPassword: str
+        :param _SecurityMode: SMTP 连接的加密模式，用于保障邮件传输安全。可选值：AUTO（自动选择，优先使用安全连接）、SSL（全程 SSL/TLS 加密，通常配合端口 465 使用）、STARTSSL（通过 STARTTLS 命令升级为加密连接，通常配合端口 587 使用）、NO_SSL（不使用加密，仅建议在内网或测试环境中使用）。推荐使用 AUTO 或 SSL 以确保传输安全。
+        :type SecurityMode: str
+        """
+        self._SenderAddress = None
+        self._ServerHost = None
+        self._ServerPort = None
+        self._AccountUsername = None
+        self._AccountPassword = None
+        self._SecurityMode = None
+
+    @property
+    def SenderAddress(self):
+        r"""邮件发送者的邮箱地址，即收件人看到的发件人地址。需为有效的邮箱格式，且须与 SMTP 服务器的授权账号一致，否则可能被邮件服务商拒绝发送。例如：abc@example.com
+        :rtype: str
+        """
+        return self._SenderAddress
+
+    @SenderAddress.setter
+    def SenderAddress(self, SenderAddress):
+        self._SenderAddress = SenderAddress
+
+    @property
+    def ServerHost(self):
+        r"""SMTP 邮件服务器的域名或 IP 地址，用于建立邮件发送连接。不同邮件服务商的 SMTP 地址不同，例如 QQ 邮箱为 smtp.qq.com，Gmail 为 smtp.gmail.com，请以实际服务商提供的地址为准。
+        :rtype: str
+        """
+        return self._ServerHost
+
+    @ServerHost.setter
+    def ServerHost(self, ServerHost):
+        self._ServerHost = ServerHost
+
+    @property
+    def ServerPort(self):
+        r"""SMTP 邮件服务器的端口号，需与所选安全模式（SecurityMode）匹配。常用端口：465（SSL 加密）、587（STARTTLS 加密）、25（无加密，不推荐）。建议优先使用 465 或 587 以保障传输安全。
+        :rtype: int
+        """
+        return self._ServerPort
+
+    @ServerPort.setter
+    def ServerPort(self, ServerPort):
+        self._ServerPort = ServerPort
+
+    @property
+    def AccountUsername(self):
+        r"""SMTP 服务器的登录账号，通常为发件人的完整邮箱地址。部分邮件服务商支持使用独立的 SMTP 授权账号，请以实际服务商的要求为准。
+        :rtype: str
+        """
+        return self._AccountUsername
+
+    @AccountUsername.setter
+    def AccountUsername(self, AccountUsername):
+        self._AccountUsername = AccountUsername
+
+    @property
+    def AccountPassword(self):
+        r"""SMTP 服务器的登录密码。注意：部分邮件服务商（如 QQ 邮箱、163 邮箱）不支持直接使用账号登录密码，需在邮箱设置中开启 SMTP 服务并生成专用的授权码，请以实际服务商的要求为准。
+        :rtype: str
+        """
+        return self._AccountPassword
+
+    @AccountPassword.setter
+    def AccountPassword(self, AccountPassword):
+        self._AccountPassword = AccountPassword
+
+    @property
+    def SecurityMode(self):
+        r"""SMTP 连接的加密模式，用于保障邮件传输安全。可选值：AUTO（自动选择，优先使用安全连接）、SSL（全程 SSL/TLS 加密，通常配合端口 465 使用）、STARTSSL（通过 STARTTLS 命令升级为加密连接，通常配合端口 587 使用）、NO_SSL（不使用加密，仅建议在内网或测试环境中使用）。推荐使用 AUTO 或 SSL 以确保传输安全。
+        :rtype: str
+        """
+        return self._SecurityMode
+
+    @SecurityMode.setter
+    def SecurityMode(self, SecurityMode):
+        self._SecurityMode = SecurityMode
+
+
+    def _deserialize(self, params):
+        self._SenderAddress = params.get("SenderAddress")
+        self._ServerHost = params.get("ServerHost")
+        self._ServerPort = params.get("ServerPort")
+        self._AccountUsername = params.get("AccountUsername")
+        self._AccountPassword = params.get("AccountPassword")
+        self._SecurityMode = params.get("SecurityMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class EnvBillingInfoItem(AbstractModel):
@@ -9738,6 +10784,109 @@ class FunctionInfo(AbstractModel):
         
 
 
+class GetProvidersRequest(AbstractModel):
+    r"""GetProviders请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: 环境 ID，用于指定需要查询配置第三方身份源的云开发环境。
+        :type EnvId: str
+        """
+        self._EnvId = None
+
+    @property
+    def EnvId(self):
+        r"""环境 ID，用于指定需要查询配置第三方身份源的云开发环境。
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetProvidersResponse(AbstractModel):
+    r"""GetProviders返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: 总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: int
+        :param _Data: 三方认证源列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: list of Provider
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        r"""总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Data(self):
+        r"""三方认证源列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Provider
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = Provider()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class HpaPolicy(AbstractModel):
     r"""扩缩容策略
 
@@ -10271,6 +11420,62 @@ class ListTablesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class LocalizedMessage(AbstractModel):
+    r"""可以为每种语言配置一个字符串。比如：name，中文展示为：名字，英文展示为 name，韩文展示为：이름
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Message: 默认展示的文本
+        :type Message: str
+        :param _Localized: 针对每种语言展示的文字
+        :type Localized: list of MessageLocalized
+        """
+        self._Message = None
+        self._Localized = None
+
+    @property
+    def Message(self):
+        r"""默认展示的文本
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Localized(self):
+        r"""针对每种语言展示的文字
+        :rtype: list of MessageLocalized
+        """
+        return self._Localized
+
+    @Localized.setter
+    def Localized(self, Localized):
+        self._Localized = Localized
+
+
+    def _deserialize(self, params):
+        self._Message = params.get("Message")
+        if params.get("Localized") is not None:
+            self._Localized = []
+            for item in params.get("Localized"):
+                obj = MessageLocalized()
+                obj._deserialize(item)
+                self._Localized.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class LogObject(AbstractModel):
     r"""CLS日志单条信息
 
@@ -10579,6 +11784,170 @@ class LogServiceInfo(AbstractModel):
         
 
 
+class MFALoginConfig(AbstractModel):
+    r"""多因子认证登录配置，用于管理 MFA（Multi-Factor Authentication）相关设置。包括 MFA 总开关、短信验证、邮箱验证、强制绑定手机号、TOTP 动态验证码等认证方式的独立开关配置。当 MFA 总开关（On）开启时，用户在登录后需完成额外的身份验证步骤。各子开关可独立控制具体的验证方式。不传则不修改当前配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _On: MFA 多因子认证开关。取值范围：
+TRUE：开启 MFA 多因子认证
+FALSE：关闭 MFA 多因子认证
+不传则不修改当前配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type On: str
+        :param _Sms: 短信验证开关，控制是否在 MFA 流程中启用短信验证码校验。取值范围：
+TRUE：开启短信验证
+FALSE：关闭短信验证
+不传则不修改当前配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Sms: str
+        :param _Email: 邮箱验证开关，控制是否在 MFA 流程中启用邮箱验证码校验。取值范围：
+TRUE：开启邮箱验证
+FALSE：关闭邮箱验证
+不传则不修改当前配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Email: str
+        :param _RequiredBindPhone: 强制绑定手机号开关，控制用户在完成 MFA 认证前是否必须绑定手机号。取值范围：
+TRUE：要求绑定手机号
+FALSE：不要求绑定手机号
+不传则不修改当前配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RequiredBindPhone: str
+        """
+        self._On = None
+        self._Sms = None
+        self._Email = None
+        self._RequiredBindPhone = None
+
+    @property
+    def On(self):
+        r"""MFA 多因子认证开关。取值范围：
+TRUE：开启 MFA 多因子认证
+FALSE：关闭 MFA 多因子认证
+不传则不修改当前配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._On
+
+    @On.setter
+    def On(self, On):
+        self._On = On
+
+    @property
+    def Sms(self):
+        r"""短信验证开关，控制是否在 MFA 流程中启用短信验证码校验。取值范围：
+TRUE：开启短信验证
+FALSE：关闭短信验证
+不传则不修改当前配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Sms
+
+    @Sms.setter
+    def Sms(self, Sms):
+        self._Sms = Sms
+
+    @property
+    def Email(self):
+        r"""邮箱验证开关，控制是否在 MFA 流程中启用邮箱验证码校验。取值范围：
+TRUE：开启邮箱验证
+FALSE：关闭邮箱验证
+不传则不修改当前配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Email
+
+    @Email.setter
+    def Email(self, Email):
+        self._Email = Email
+
+    @property
+    def RequiredBindPhone(self):
+        r"""强制绑定手机号开关，控制用户在完成 MFA 认证前是否必须绑定手机号。取值范围：
+TRUE：要求绑定手机号
+FALSE：不要求绑定手机号
+不传则不修改当前配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RequiredBindPhone
+
+    @RequiredBindPhone.setter
+    def RequiredBindPhone(self, RequiredBindPhone):
+        self._RequiredBindPhone = RequiredBindPhone
+
+
+    def _deserialize(self, params):
+        self._On = params.get("On")
+        self._Sms = params.get("Sms")
+        self._Email = params.get("Email")
+        self._RequiredBindPhone = params.get("RequiredBindPhone")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MessageLocalized(AbstractModel):
+    r"""多语言文字，在 Locale 中 展示的 Message
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Message: 字符串
+        :type Message: str
+        :param _Locale: 在该语言中
+        :type Locale: str
+        """
+        self._Message = None
+        self._Locale = None
+
+    @property
+    def Message(self):
+        r"""字符串
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Locale(self):
+        r"""在该语言中
+        :rtype: str
+        """
+        return self._Locale
+
+    @Locale.setter
+    def Locale(self, Locale):
+        self._Locale = Locale
+
+
+    def _deserialize(self, params):
+        self._Message = params.get("Message")
+        self._Locale = params.get("Locale")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class MgoCommandParam(AbstractModel):
     r"""待执行命令
 
@@ -10765,6 +12134,130 @@ class MgoKeySchema(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ModifyClientRequest(AbstractModel):
+    r"""ModifyClient请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: 客户端所属的云开发环境 ID，用于标识该应用归属的云开发环境。不同环境之间的应用数据相互隔离。
+        :type EnvId: str
+        :param _Id: 需要修改的客户端唯一标识符（Client ID），在 OAuth/OIDC 授权流程中作为 client_id 参数使用。该字段为定位参数，仅用于指定目标客户端，不可修改。
+        :type Id: str
+        :param _RefreshTokenExpiresIn: Refresh Token 的有效期，单位为秒。超过该时间后 Refresh Token 将失效，用户需重新登录。取值范围：1800~2592000（即 30 分钟至 30 天），超出上限将被截断为 2592000。默认值为 2592000（即 30 天）。注意：当该值 ≤ 7200 时，AccessTokenExpiresIn 将被自动设为该值减去 660 秒。
+        :type RefreshTokenExpiresIn: int
+        :param _MaxDevice: 单个用户在该应用下允许同时登录的最大会话数量。取值范围：-1~50。特殊值说明：-1 表示不限制设备数；0 表示按客户端 User-Agent 区分设备（相同 User-Agent 视为同一设备）；1~50 为精确的最大会话数限制，超出限制后最早登录的会话将被自动踢出。不传则保持原有配置不变。
+        :type MaxDevice: int
+        :param _AccessTokenExpiresIn: Access Token 的有效期，单位为秒。超过该时间后 Access Token 将失效，需使用 Refresh Token 重新换取。最小有效值为 1800 秒（小于 1800 将被忽略，使用默认值），默认值为 7200（即 2 小时）。该值应小于 RefreshTokenExpiresIn。
+        :type AccessTokenExpiresIn: int
+        """
+        self._EnvId = None
+        self._Id = None
+        self._RefreshTokenExpiresIn = None
+        self._MaxDevice = None
+        self._AccessTokenExpiresIn = None
+
+    @property
+    def EnvId(self):
+        r"""客户端所属的云开发环境 ID，用于标识该应用归属的云开发环境。不同环境之间的应用数据相互隔离。
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def Id(self):
+        r"""需要修改的客户端唯一标识符（Client ID），在 OAuth/OIDC 授权流程中作为 client_id 参数使用。该字段为定位参数，仅用于指定目标客户端，不可修改。
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def RefreshTokenExpiresIn(self):
+        r"""Refresh Token 的有效期，单位为秒。超过该时间后 Refresh Token 将失效，用户需重新登录。取值范围：1800~2592000（即 30 分钟至 30 天），超出上限将被截断为 2592000。默认值为 2592000（即 30 天）。注意：当该值 ≤ 7200 时，AccessTokenExpiresIn 将被自动设为该值减去 660 秒。
+        :rtype: int
+        """
+        return self._RefreshTokenExpiresIn
+
+    @RefreshTokenExpiresIn.setter
+    def RefreshTokenExpiresIn(self, RefreshTokenExpiresIn):
+        self._RefreshTokenExpiresIn = RefreshTokenExpiresIn
+
+    @property
+    def MaxDevice(self):
+        r"""单个用户在该应用下允许同时登录的最大会话数量。取值范围：-1~50。特殊值说明：-1 表示不限制设备数；0 表示按客户端 User-Agent 区分设备（相同 User-Agent 视为同一设备）；1~50 为精确的最大会话数限制，超出限制后最早登录的会话将被自动踢出。不传则保持原有配置不变。
+        :rtype: int
+        """
+        return self._MaxDevice
+
+    @MaxDevice.setter
+    def MaxDevice(self, MaxDevice):
+        self._MaxDevice = MaxDevice
+
+    @property
+    def AccessTokenExpiresIn(self):
+        r"""Access Token 的有效期，单位为秒。超过该时间后 Access Token 将失效，需使用 Refresh Token 重新换取。最小有效值为 1800 秒（小于 1800 将被忽略，使用默认值），默认值为 7200（即 2 小时）。该值应小于 RefreshTokenExpiresIn。
+        :rtype: int
+        """
+        return self._AccessTokenExpiresIn
+
+    @AccessTokenExpiresIn.setter
+    def AccessTokenExpiresIn(self, AccessTokenExpiresIn):
+        self._AccessTokenExpiresIn = AccessTokenExpiresIn
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        self._Id = params.get("Id")
+        self._RefreshTokenExpiresIn = params.get("RefreshTokenExpiresIn")
+        self._MaxDevice = params.get("MaxDevice")
+        self._AccessTokenExpiresIn = params.get("AccessTokenExpiresIn")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyClientResponse(AbstractModel):
+    r"""ModifyClient返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyCloudBaseGWAPIRequest(AbstractModel):
@@ -11196,6 +12689,476 @@ class ModifyEnvRequest(AbstractModel):
 
 class ModifyEnvResponse(AbstractModel):
     r"""ModifyEnv返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyLoginConfigRequest(AbstractModel):
+    r"""ModifyLoginConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: 环境 ID，用于指定需要修改登录策略的云开发环境。
+        :type EnvId: str
+        :param _PhoneNumberLogin: 手机号短信登录开关。设置为 true 开启手机号短信登录，允许用户使用手机号和短信验证码进行登录和注册；设置为 false 关闭手机号短信登录。
+        :type PhoneNumberLogin: bool
+        :param _EmailLogin: 邮箱登录开关。设置为 true 开启邮箱登录，允许用户使用邮箱和密码进行登录和注册；设置为 false 关闭邮箱登录。
+        :type EmailLogin: bool
+        :param _UserNameLogin: 用户名密码登录开关。设置为 true 开启用户名密码登录，允许用户使用用户名和密码进行登录和注册；设置为 false 关闭用户名密码登录。
+        :type UserNameLogin: bool
+        :param _AnonymousLogin: 匿名登录开关。设置为 true 开启匿名登录，允许用户无需注册即可以匿名身份访问应用；设置为 false 关闭匿名登录。
+        :type AnonymousLogin: bool
+        :param _SmsVerificationConfig: 短信验证码发送配置，用于设置短信验证码的发送通道类型和日发送限额。不传则不修改当前配置。
+        :type SmsVerificationConfig: :class:`tencentcloud.tcb.v20180608.models.VerificationConfig`
+        :param _MfaConfig: MFA 多因子认证登录配置，用于设置多因子认证开关及验证方式（短信、邮箱、TOTP、强制绑定手机号）。不传则不修改当前配置。
+        :type MfaConfig: :class:`tencentcloud.tcb.v20180608.models.MFALoginConfig`
+        :param _PwdUpdateStrategy: 密码更新策略配置，用于设置首次登录强制修改密码和定期强制修改密码策略。不传则不修改当前配置。
+        :type PwdUpdateStrategy: :class:`tencentcloud.tcb.v20180608.models.PasswordUpdateLoginConfig`
+        """
+        self._EnvId = None
+        self._PhoneNumberLogin = None
+        self._EmailLogin = None
+        self._UserNameLogin = None
+        self._AnonymousLogin = None
+        self._SmsVerificationConfig = None
+        self._MfaConfig = None
+        self._PwdUpdateStrategy = None
+
+    @property
+    def EnvId(self):
+        r"""环境 ID，用于指定需要修改登录策略的云开发环境。
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def PhoneNumberLogin(self):
+        r"""手机号短信登录开关。设置为 true 开启手机号短信登录，允许用户使用手机号和短信验证码进行登录和注册；设置为 false 关闭手机号短信登录。
+        :rtype: bool
+        """
+        return self._PhoneNumberLogin
+
+    @PhoneNumberLogin.setter
+    def PhoneNumberLogin(self, PhoneNumberLogin):
+        self._PhoneNumberLogin = PhoneNumberLogin
+
+    @property
+    def EmailLogin(self):
+        r"""邮箱登录开关。设置为 true 开启邮箱登录，允许用户使用邮箱和密码进行登录和注册；设置为 false 关闭邮箱登录。
+        :rtype: bool
+        """
+        return self._EmailLogin
+
+    @EmailLogin.setter
+    def EmailLogin(self, EmailLogin):
+        self._EmailLogin = EmailLogin
+
+    @property
+    def UserNameLogin(self):
+        r"""用户名密码登录开关。设置为 true 开启用户名密码登录，允许用户使用用户名和密码进行登录和注册；设置为 false 关闭用户名密码登录。
+        :rtype: bool
+        """
+        return self._UserNameLogin
+
+    @UserNameLogin.setter
+    def UserNameLogin(self, UserNameLogin):
+        self._UserNameLogin = UserNameLogin
+
+    @property
+    def AnonymousLogin(self):
+        r"""匿名登录开关。设置为 true 开启匿名登录，允许用户无需注册即可以匿名身份访问应用；设置为 false 关闭匿名登录。
+        :rtype: bool
+        """
+        return self._AnonymousLogin
+
+    @AnonymousLogin.setter
+    def AnonymousLogin(self, AnonymousLogin):
+        self._AnonymousLogin = AnonymousLogin
+
+    @property
+    def SmsVerificationConfig(self):
+        r"""短信验证码发送配置，用于设置短信验证码的发送通道类型和日发送限额。不传则不修改当前配置。
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.VerificationConfig`
+        """
+        return self._SmsVerificationConfig
+
+    @SmsVerificationConfig.setter
+    def SmsVerificationConfig(self, SmsVerificationConfig):
+        self._SmsVerificationConfig = SmsVerificationConfig
+
+    @property
+    def MfaConfig(self):
+        r"""MFA 多因子认证登录配置，用于设置多因子认证开关及验证方式（短信、邮箱、TOTP、强制绑定手机号）。不传则不修改当前配置。
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.MFALoginConfig`
+        """
+        return self._MfaConfig
+
+    @MfaConfig.setter
+    def MfaConfig(self, MfaConfig):
+        self._MfaConfig = MfaConfig
+
+    @property
+    def PwdUpdateStrategy(self):
+        r"""密码更新策略配置，用于设置首次登录强制修改密码和定期强制修改密码策略。不传则不修改当前配置。
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.PasswordUpdateLoginConfig`
+        """
+        return self._PwdUpdateStrategy
+
+    @PwdUpdateStrategy.setter
+    def PwdUpdateStrategy(self, PwdUpdateStrategy):
+        self._PwdUpdateStrategy = PwdUpdateStrategy
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        self._PhoneNumberLogin = params.get("PhoneNumberLogin")
+        self._EmailLogin = params.get("EmailLogin")
+        self._UserNameLogin = params.get("UserNameLogin")
+        self._AnonymousLogin = params.get("AnonymousLogin")
+        if params.get("SmsVerificationConfig") is not None:
+            self._SmsVerificationConfig = VerificationConfig()
+            self._SmsVerificationConfig._deserialize(params.get("SmsVerificationConfig"))
+        if params.get("MfaConfig") is not None:
+            self._MfaConfig = MFALoginConfig()
+            self._MfaConfig._deserialize(params.get("MfaConfig"))
+        if params.get("PwdUpdateStrategy") is not None:
+            self._PwdUpdateStrategy = PasswordUpdateLoginConfig()
+            self._PwdUpdateStrategy._deserialize(params.get("PwdUpdateStrategy"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyLoginConfigResponse(AbstractModel):
+    r"""ModifyLoginConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyProviderRequest(AbstractModel):
+    r"""ModifyProvider请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: 云开发环境 ID，用于唯一标识当前操作所属的云开发环境。
+        :type EnvId: str
+        :param _Id: 身份源的唯一标识符，用于指定需要修改的目标身份源。格式要求：2~32 位，仅支持小写英文字母和数字，不可包含空格或特殊字符。例如：github、google。
+        :type Id: str
+        :param _Name: 身份源的显示名称，支持国际化多语言配置。用户在登录页面看到的身份源名称将使用该字段，建议根据实际业务场景填写易于识别的名称，例如：GitHub、Google 等。
+        :type Name: :class:`tencentcloud.tcb.v20180608.models.LocalizedMessage`
+        :param _Picture: 身份源图标的访问地址，将展示在登录页的身份源按钮上。建议使用 64×64 像素的 SVG 格式图片以保证清晰度，支持 HTTP/HTTPS 公网可访问的图片链接。
+        :type Picture: str
+        :param _Homepage: 身份源对应的官方主页地址。该信息将在用户查看自己的第三方账号绑定列表时展示，帮助用户识别已绑定的身份源来源。例如 GitHub 身份源可填写：https://github.com。
+        :type Homepage: str
+        :param _ProviderType: 身份源协议类型，决定该身份源使用何种认证协议与第三方平台对接。可选值：
+OAUTH：标准 OAuth 2.0 协议
+OIDC：OpenID Connect 协议
+SAML：SAML 2.0 协议
+WX_MICRO_APP：微信小程序登录
+WX_QRCODE_MICRO_APP：微信小程序扫码登录
+WX_CLOUDBASE_MICRO_APP：云开发托管小程序登录
+WX_MP：微信公众号网页授权登录
+WX_OPEN：微信开放平台扫码登录
+WX_WORK_INTERNAL：企业微信自建应用登录
+WX_WORK_AGENT：企业微信代开发应用登录
+WX_WORK_THIRD_PARTY：企业微信第三方应用登录
+WX_WORK_THIRD_PARTY_ASSOCIATION：企业微信第三方应用关联登录
+CUSTOM：自定义登录
+EMAIL：邮箱登录
+        :type ProviderType: str
+        :param _Config: 身份认证源协议连接配置，包含与第三方平台对接所需的核心参数，如 ClientId、ClientSecret、授权端点、Token 端点、回调地址、Scope、SAML Metadata、请求和响应参数映射等。不同 ProviderType 对应不同的配置项要求。注意：CUSTOM 和 EMAIL 类型的身份源，其存储后端类型（StorageDb）不可修改。
+        :type Config: :class:`tencentcloud.tcb.v20180608.models.ProviderConfig`
+        :param _TransparentMode: 是否开启透传登录模式。可选值：TRUE（开启）、FALSE（关闭，默认值）。开启后，平台不会持久化存储用户数据，仅将第三方身份源返回的用户信息透传给业务方，适用于不希望平台留存用户数据的场景。注意：开启透传模式时，ReuseUserId 将被强制设为 TRUE，AutoSignUpWithProviderUser 将被强制设为 FALSE。
+        :type TransparentMode: str
+        :param _On: 身份源的启用状态。可选值：TRUE（启用，用户可通过该身份源登录）、FALSE（禁用，登录入口将被隐藏，已有绑定关系不受影响）、UNSPECIFIED（默认为 TRUE）。
+        :type On: str
+        :param _Description: 身份源的详细描述信息，支持国际化多语言配置。可用于向用户说明该身份源的用途或使用场景，例如：谷歌授权登录。
+        :type Description: :class:`tencentcloud.tcb.v20180608.models.LocalizedMessage`
+        :param _ReuseUserId: 是否直接复用第三方身份源的用户 ID 作为平台用户 ID。可选值：TRUE（开启，返回的用户 ID 将直接使用第三方身份源的用户 ID，适用于已有用户体系迁移场景）、FALSE（关闭，由平台生成独立用户 ID）、UNSPECIFIED（默认为 FALSE，但当 TransparentMode 为 TRUE 时将被强制设为 TRUE）。注意：开启后需确保第三方用户 ID 的全局唯一性，避免 ID 冲突。
+        :type ReuseUserId: str
+        :param _EmailConfig: 邮箱身份源的专项配置，包含邮件服务商、发件人地址、SMTP 配置等参数，用于支持通过邮箱验证码或邮箱密码方式进行身份认证。仅当身份源 ID 为 email 时有效。若该身份源不存在，系统将自动创建一个默认关闭的邮箱身份源。
+        :type EmailConfig: :class:`tencentcloud.tcb.v20180608.models.EmailProviderConfig`
+        :param _AutoSignInWhenEmailMatch: 是否开启邮箱自动关联登录。可选值：TRUE（开启）、FALSE（关闭）、UNSPECIFIED（默认为 FALSE）。开启后，若第三方身份源返回的邮箱与系统中已有用户的邮箱一致，则自动将该第三方账号与已有用户关联并完成登录，无需用户手动绑定。
+        :type AutoSignInWhenEmailMatch: str
+        :param _AutoSignInWhenPhoneNumberMatch: 是否开启手机号自动关联登录。可选值：TRUE（开启）、FALSE（关闭）、UNSPECIFIED（默认行为等同 TRUE）。开启后，若第三方身份源返回的手机号与系统中已有用户的手机号一致，则自动将该第三方账号与已有用户关联并完成登录，无需用户手动绑定。注意：该字段默认行为（UNSPECIFIED）与 AutoSignInWhenEmailMatch 不同，手机号匹配在未显式关闭时默认生效。
+        :type AutoSignInWhenPhoneNumberMatch: str
+        """
+        self._EnvId = None
+        self._Id = None
+        self._Name = None
+        self._Picture = None
+        self._Homepage = None
+        self._ProviderType = None
+        self._Config = None
+        self._TransparentMode = None
+        self._On = None
+        self._Description = None
+        self._ReuseUserId = None
+        self._EmailConfig = None
+        self._AutoSignInWhenEmailMatch = None
+        self._AutoSignInWhenPhoneNumberMatch = None
+
+    @property
+    def EnvId(self):
+        r"""云开发环境 ID，用于唯一标识当前操作所属的云开发环境。
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def Id(self):
+        r"""身份源的唯一标识符，用于指定需要修改的目标身份源。格式要求：2~32 位，仅支持小写英文字母和数字，不可包含空格或特殊字符。例如：github、google。
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        r"""身份源的显示名称，支持国际化多语言配置。用户在登录页面看到的身份源名称将使用该字段，建议根据实际业务场景填写易于识别的名称，例如：GitHub、Google 等。
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.LocalizedMessage`
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Picture(self):
+        r"""身份源图标的访问地址，将展示在登录页的身份源按钮上。建议使用 64×64 像素的 SVG 格式图片以保证清晰度，支持 HTTP/HTTPS 公网可访问的图片链接。
+        :rtype: str
+        """
+        return self._Picture
+
+    @Picture.setter
+    def Picture(self, Picture):
+        self._Picture = Picture
+
+    @property
+    def Homepage(self):
+        r"""身份源对应的官方主页地址。该信息将在用户查看自己的第三方账号绑定列表时展示，帮助用户识别已绑定的身份源来源。例如 GitHub 身份源可填写：https://github.com。
+        :rtype: str
+        """
+        return self._Homepage
+
+    @Homepage.setter
+    def Homepage(self, Homepage):
+        self._Homepage = Homepage
+
+    @property
+    def ProviderType(self):
+        r"""身份源协议类型，决定该身份源使用何种认证协议与第三方平台对接。可选值：
+OAUTH：标准 OAuth 2.0 协议
+OIDC：OpenID Connect 协议
+SAML：SAML 2.0 协议
+WX_MICRO_APP：微信小程序登录
+WX_QRCODE_MICRO_APP：微信小程序扫码登录
+WX_CLOUDBASE_MICRO_APP：云开发托管小程序登录
+WX_MP：微信公众号网页授权登录
+WX_OPEN：微信开放平台扫码登录
+WX_WORK_INTERNAL：企业微信自建应用登录
+WX_WORK_AGENT：企业微信代开发应用登录
+WX_WORK_THIRD_PARTY：企业微信第三方应用登录
+WX_WORK_THIRD_PARTY_ASSOCIATION：企业微信第三方应用关联登录
+CUSTOM：自定义登录
+EMAIL：邮箱登录
+        :rtype: str
+        """
+        return self._ProviderType
+
+    @ProviderType.setter
+    def ProviderType(self, ProviderType):
+        self._ProviderType = ProviderType
+
+    @property
+    def Config(self):
+        r"""身份认证源协议连接配置，包含与第三方平台对接所需的核心参数，如 ClientId、ClientSecret、授权端点、Token 端点、回调地址、Scope、SAML Metadata、请求和响应参数映射等。不同 ProviderType 对应不同的配置项要求。注意：CUSTOM 和 EMAIL 类型的身份源，其存储后端类型（StorageDb）不可修改。
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.ProviderConfig`
+        """
+        return self._Config
+
+    @Config.setter
+    def Config(self, Config):
+        self._Config = Config
+
+    @property
+    def TransparentMode(self):
+        r"""是否开启透传登录模式。可选值：TRUE（开启）、FALSE（关闭，默认值）。开启后，平台不会持久化存储用户数据，仅将第三方身份源返回的用户信息透传给业务方，适用于不希望平台留存用户数据的场景。注意：开启透传模式时，ReuseUserId 将被强制设为 TRUE，AutoSignUpWithProviderUser 将被强制设为 FALSE。
+        :rtype: str
+        """
+        return self._TransparentMode
+
+    @TransparentMode.setter
+    def TransparentMode(self, TransparentMode):
+        self._TransparentMode = TransparentMode
+
+    @property
+    def On(self):
+        r"""身份源的启用状态。可选值：TRUE（启用，用户可通过该身份源登录）、FALSE（禁用，登录入口将被隐藏，已有绑定关系不受影响）、UNSPECIFIED（默认为 TRUE）。
+        :rtype: str
+        """
+        return self._On
+
+    @On.setter
+    def On(self, On):
+        self._On = On
+
+    @property
+    def Description(self):
+        r"""身份源的详细描述信息，支持国际化多语言配置。可用于向用户说明该身份源的用途或使用场景，例如：谷歌授权登录。
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.LocalizedMessage`
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def ReuseUserId(self):
+        r"""是否直接复用第三方身份源的用户 ID 作为平台用户 ID。可选值：TRUE（开启，返回的用户 ID 将直接使用第三方身份源的用户 ID，适用于已有用户体系迁移场景）、FALSE（关闭，由平台生成独立用户 ID）、UNSPECIFIED（默认为 FALSE，但当 TransparentMode 为 TRUE 时将被强制设为 TRUE）。注意：开启后需确保第三方用户 ID 的全局唯一性，避免 ID 冲突。
+        :rtype: str
+        """
+        return self._ReuseUserId
+
+    @ReuseUserId.setter
+    def ReuseUserId(self, ReuseUserId):
+        self._ReuseUserId = ReuseUserId
+
+    @property
+    def EmailConfig(self):
+        r"""邮箱身份源的专项配置，包含邮件服务商、发件人地址、SMTP 配置等参数，用于支持通过邮箱验证码或邮箱密码方式进行身份认证。仅当身份源 ID 为 email 时有效。若该身份源不存在，系统将自动创建一个默认关闭的邮箱身份源。
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.EmailProviderConfig`
+        """
+        return self._EmailConfig
+
+    @EmailConfig.setter
+    def EmailConfig(self, EmailConfig):
+        self._EmailConfig = EmailConfig
+
+    @property
+    def AutoSignInWhenEmailMatch(self):
+        r"""是否开启邮箱自动关联登录。可选值：TRUE（开启）、FALSE（关闭）、UNSPECIFIED（默认为 FALSE）。开启后，若第三方身份源返回的邮箱与系统中已有用户的邮箱一致，则自动将该第三方账号与已有用户关联并完成登录，无需用户手动绑定。
+        :rtype: str
+        """
+        return self._AutoSignInWhenEmailMatch
+
+    @AutoSignInWhenEmailMatch.setter
+    def AutoSignInWhenEmailMatch(self, AutoSignInWhenEmailMatch):
+        self._AutoSignInWhenEmailMatch = AutoSignInWhenEmailMatch
+
+    @property
+    def AutoSignInWhenPhoneNumberMatch(self):
+        r"""是否开启手机号自动关联登录。可选值：TRUE（开启）、FALSE（关闭）、UNSPECIFIED（默认行为等同 TRUE）。开启后，若第三方身份源返回的手机号与系统中已有用户的手机号一致，则自动将该第三方账号与已有用户关联并完成登录，无需用户手动绑定。注意：该字段默认行为（UNSPECIFIED）与 AutoSignInWhenEmailMatch 不同，手机号匹配在未显式关闭时默认生效。
+        :rtype: str
+        """
+        return self._AutoSignInWhenPhoneNumberMatch
+
+    @AutoSignInWhenPhoneNumberMatch.setter
+    def AutoSignInWhenPhoneNumberMatch(self, AutoSignInWhenPhoneNumberMatch):
+        self._AutoSignInWhenPhoneNumberMatch = AutoSignInWhenPhoneNumberMatch
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        self._Id = params.get("Id")
+        if params.get("Name") is not None:
+            self._Name = LocalizedMessage()
+            self._Name._deserialize(params.get("Name"))
+        self._Picture = params.get("Picture")
+        self._Homepage = params.get("Homepage")
+        self._ProviderType = params.get("ProviderType")
+        if params.get("Config") is not None:
+            self._Config = ProviderConfig()
+            self._Config._deserialize(params.get("Config"))
+        self._TransparentMode = params.get("TransparentMode")
+        self._On = params.get("On")
+        if params.get("Description") is not None:
+            self._Description = LocalizedMessage()
+            self._Description._deserialize(params.get("Description"))
+        self._ReuseUserId = params.get("ReuseUserId")
+        if params.get("EmailConfig") is not None:
+            self._EmailConfig = EmailProviderConfig()
+            self._EmailConfig._deserialize(params.get("EmailConfig"))
+        self._AutoSignInWhenEmailMatch = params.get("AutoSignInWhenEmailMatch")
+        self._AutoSignInWhenPhoneNumberMatch = params.get("AutoSignInWhenPhoneNumberMatch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyProviderResponse(AbstractModel):
+    r"""ModifyProvider返回参数结构体
 
     """
 
@@ -12221,6 +14184,103 @@ class Pager(AbstractModel):
         
 
 
+class PasswordUpdateLoginConfig(AbstractModel):
+    r"""登录配置中密码更新配置策略，用于管理使用用户名密码登录方式时，密码的过期策略和更新策略。例如，首次登录需要更新密码、定期过期密码等策略。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FirstLoginUpdate: 首次登录强制修改密码开关。开启后，用户首次登录时将强制要求修改密码。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FirstLoginUpdate: bool
+        :param _PeriodUpdate: 定期强制修改密码开关。开启后，用户需按照 PeriodValue 和 PeriodType 指定的周期定期修改密码，超过周期未修改将在登录时强制要求修改。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PeriodUpdate: bool
+        :param _PeriodValue: 定期修改密码的周期数值，与 PeriodType 配合使用。例如 PeriodValue 为 6，PeriodType 为 MONTH，表示每 6 个月需修改一次密码。当 PeriodUpdate 为 true 时必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PeriodValue: int
+        :param _PeriodType: 定期修改密码的周期时间单位，与 PeriodValue 配合使用。取值范围：
+WEEK：周
+MONTH：月
+YEAR：年
+当 PeriodUpdate 为 true 时必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PeriodType: str
+        """
+        self._FirstLoginUpdate = None
+        self._PeriodUpdate = None
+        self._PeriodValue = None
+        self._PeriodType = None
+
+    @property
+    def FirstLoginUpdate(self):
+        r"""首次登录强制修改密码开关。开启后，用户首次登录时将强制要求修改密码。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._FirstLoginUpdate
+
+    @FirstLoginUpdate.setter
+    def FirstLoginUpdate(self, FirstLoginUpdate):
+        self._FirstLoginUpdate = FirstLoginUpdate
+
+    @property
+    def PeriodUpdate(self):
+        r"""定期强制修改密码开关。开启后，用户需按照 PeriodValue 和 PeriodType 指定的周期定期修改密码，超过周期未修改将在登录时强制要求修改。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._PeriodUpdate
+
+    @PeriodUpdate.setter
+    def PeriodUpdate(self, PeriodUpdate):
+        self._PeriodUpdate = PeriodUpdate
+
+    @property
+    def PeriodValue(self):
+        r"""定期修改密码的周期数值，与 PeriodType 配合使用。例如 PeriodValue 为 6，PeriodType 为 MONTH，表示每 6 个月需修改一次密码。当 PeriodUpdate 为 true 时必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._PeriodValue
+
+    @PeriodValue.setter
+    def PeriodValue(self, PeriodValue):
+        self._PeriodValue = PeriodValue
+
+    @property
+    def PeriodType(self):
+        r"""定期修改密码的周期时间单位，与 PeriodValue 配合使用。取值范围：
+WEEK：周
+MONTH：月
+YEAR：年
+当 PeriodUpdate 为 true 时必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._PeriodType
+
+    @PeriodType.setter
+    def PeriodType(self, PeriodType):
+        self._PeriodType = PeriodType
+
+
+    def _deserialize(self, params):
+        self._FirstLoginUpdate = params.get("FirstLoginUpdate")
+        self._PeriodUpdate = params.get("PeriodUpdate")
+        self._PeriodValue = params.get("PeriodValue")
+        self._PeriodType = params.get("PeriodType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PermissionInfo(AbstractModel):
     r"""FlexDB数据库权限信息
 
@@ -12285,6 +14345,887 @@ class PermissionInfo(AbstractModel):
         self._AclTag = params.get("AclTag")
         self._EnvId = params.get("EnvId")
         self._Rule = params.get("Rule")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Provider(AbstractModel):
+    r"""身份源配置信息。描述云开发环境下用户登录身份源的完整配置，定义了用户通过何种方式进入系统并完成身份认证。支持多种类型：包括标准协议身份源（OAuth 2.0、OIDC、SAML 2.0）、内置身份源（邮箱登录、自定义登录）以及通过插件机制扩展的身份源（如 CAS）。每个身份源包含认证配置、启用状态、用户自动注册策略、信息透传模式等核心属性，是登录认证流程的核心数据结构。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 身份源的唯一标识符，用于在系统内区分不同的身份源。格式要求：2~32 位，仅支持小写英文字母和数字，不可包含空格或特殊字符。创建后不可修改
+        :type Id: str
+        :param _Config: 身份源的安全认证配置，包含与第三方平台对接所需的核心参数，如 ClientId、ClientSecret、授权端点、Token 端点、回调地址、Scope 等。不同 ProviderType 对应不同的配置项。CUSTOM 类型无需手动配置（系统自动填充），OIDC 类型会根据 Issuer 自动补全端点信息，SAML 类型需提供 SamlMetadata（最大 10KB）
+        :type Config: :class:`tencentcloud.tcb.v20180608.models.ProviderConfig`
+        :param _Name: 身份源的显示名称，支持国际化多语言配置。用户在登录页面看到的身份源名称将使用该字段，建议根据实际业务场景填写易于识别的名称。未传入时默认使用 Id 值作为显示名称
+        :type Name: :class:`tencentcloud.tcb.v20180608.models.LocalizedMessage`
+        :param _Picture: 身份源图标的访问地址，将展示在登录页的身份源按钮上。建议使用 64×64 像素的 SVG 格式图片以保证清晰度，支持 HTTP/HTTPS 公网可访问的图片链接
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Picture: str
+        :param _Homepage: 身份源对应的官方主页地址。该信息将在用户查看自己的第三方账号绑定列表时展示，帮助用户识别已绑定的身份源来源。例如 GitHub 身份源可填写：https://github.com
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Homepage: str
+        :param _ProviderType: 身份源协议类型，决定该身份源使用何种认证协议与第三方平台对接。可选值：OAUTH（标准 OAuth 2.0 协议）、OIDC（OpenID Connect 协议）、SAML（SAML 2.0 协议）、CUSTOM（自定义登录，使用 RSA 密钥对签名验证）、EMAIL（邮箱登录，需配合 EmailConfig 使用）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProviderType: str
+        :param _AutoSignUpWithProviderUser: 控制第三方身份源登录时是否自动注册系统用户。可选值：TRUE（始终自动注册，无论第三方返回的用户信息是否包含手机号或邮箱）、FALSE（不自动注册，需用户手动绑定）、UNSPECIFIED（默认行为：仅当第三方身份源返回的用户信息中包含手机号或邮箱时才自动注册，否则登录完成后要求用户绑定手机号方可继续使用）。注意：企业微信类型（WX_WORK_AGENT/WX_WORK_INTERNAL/WX_WORK_THIRD_PARTY/WX_WORK_THIRD_PARTY_ASSOCIATION）和微信小程序类型（WX_MICRO_APP/WX_QRCODE_MICRO_APP/WX_OPEN）在 UNSPECIFIED 时会自动设为 TRUE。当 TransparentMode 为 TRUE 时，该字段将被强制设为 FALSE
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AutoSignUpWithProviderUser: str
+        :param _On: 身份源的启用状态。可选值：TRUE（启用，用户可通过该身份源登录）、FALSE（禁用，已有绑定关系不受影响）。未传入时默认为 TRUE（启用）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type On: str
+        :param _Description: 身份源的详细描述信息，支持国际化多语言配置。可用于向用户说明该身份源的用途或使用场景。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: :class:`tencentcloud.tcb.v20180608.models.LocalizedMessage`
+        :param _TransparentMode: 是否开启信息透传模式。可选值：TRUE（仅登录模式：平台不持久化存储用户数据，仅将第三方身份源返回的用户信息透传给业务方，适用于不希望平台留存用户数据的场景）、FALSE（登录且注册模式：平台正常注册并存储用户信息，默认值）。注意：开启透传模式时，AutoSignUpWithProviderUser 将被强制设为 FALSE；若 ReuseUserId 为 UNSPECIFIED，将被自动设为 TRUE。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TransparentMode: str
+        :param _ReuseUserId: 是否直接复用第三方身份源返回的用户标识（如 OpenID、UnionID 等）作为平台用户 ID。可选值：TRUE（开启，平台用户 ID 将直接使用第三方身份源返回的用户标识，适用于已有用户体系迁移场景）、FALSE（关闭，由平台生成独立用户 ID）。注意：开启后需确保第三方用户标识的全局唯一性，避免 ID 冲突。当 TransparentMode 为 TRUE 且该字段为 UNSPECIFIED 时，将被自动设为 TRUE
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReuseUserId: str
+        :param _EmailConfig: 邮箱身份源的专项配置，仅当 ProviderType 为 EMAIL 时有效且必填。包含邮件服务商、发件人地址、SMTP 配置等参数，用于支持通过邮箱验证码方式进行身份认证。支持两种模式：自有 SMTP 服务器（需填写完整的 SMTP 配置）和平台代发（EmailConfig.On 设为 TRUE 时由平台随机分配 SMTP 服务器）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EmailConfig: :class:`tencentcloud.tcb.v20180608.models.EmailProviderConfig`
+        :param _AutoSignInWhenEmailMatch: 是否开启邮箱自动关联登录。可选值：TRUE（开启）、FALSE（关闭）、UNSPECIFIED（默认为 FALSE）。开启后，若第三方身份源返回的邮箱与系统中已有用户的邮箱一致，则自动将该第三方账号与已有用户关联绑定并完成登录，无需用户手动绑定
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AutoSignInWhenEmailMatch: str
+        :param _AutoSignInWhenPhoneNumberMatch: 是否开启手机号自动关联登录。可选值：TRUE（开启）、FALSE（关闭）、UNSPECIFIED（默认行为等同于 TRUE，即默认开启）。开启后，若第三方身份源返回的手机号与系统中已有用户的手机号一致，则自动将该第三方账号与已有用户关联绑定并完成登录，无需用户手动绑定
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AutoSignInWhenPhoneNumberMatch: str
+        """
+        self._Id = None
+        self._Config = None
+        self._Name = None
+        self._Picture = None
+        self._Homepage = None
+        self._ProviderType = None
+        self._AutoSignUpWithProviderUser = None
+        self._On = None
+        self._Description = None
+        self._TransparentMode = None
+        self._ReuseUserId = None
+        self._EmailConfig = None
+        self._AutoSignInWhenEmailMatch = None
+        self._AutoSignInWhenPhoneNumberMatch = None
+
+    @property
+    def Id(self):
+        r"""身份源的唯一标识符，用于在系统内区分不同的身份源。格式要求：2~32 位，仅支持小写英文字母和数字，不可包含空格或特殊字符。创建后不可修改
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Config(self):
+        r"""身份源的安全认证配置，包含与第三方平台对接所需的核心参数，如 ClientId、ClientSecret、授权端点、Token 端点、回调地址、Scope 等。不同 ProviderType 对应不同的配置项。CUSTOM 类型无需手动配置（系统自动填充），OIDC 类型会根据 Issuer 自动补全端点信息，SAML 类型需提供 SamlMetadata（最大 10KB）
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.ProviderConfig`
+        """
+        return self._Config
+
+    @Config.setter
+    def Config(self, Config):
+        self._Config = Config
+
+    @property
+    def Name(self):
+        r"""身份源的显示名称，支持国际化多语言配置。用户在登录页面看到的身份源名称将使用该字段，建议根据实际业务场景填写易于识别的名称。未传入时默认使用 Id 值作为显示名称
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.LocalizedMessage`
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Picture(self):
+        r"""身份源图标的访问地址，将展示在登录页的身份源按钮上。建议使用 64×64 像素的 SVG 格式图片以保证清晰度，支持 HTTP/HTTPS 公网可访问的图片链接
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Picture
+
+    @Picture.setter
+    def Picture(self, Picture):
+        self._Picture = Picture
+
+    @property
+    def Homepage(self):
+        r"""身份源对应的官方主页地址。该信息将在用户查看自己的第三方账号绑定列表时展示，帮助用户识别已绑定的身份源来源。例如 GitHub 身份源可填写：https://github.com
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Homepage
+
+    @Homepage.setter
+    def Homepage(self, Homepage):
+        self._Homepage = Homepage
+
+    @property
+    def ProviderType(self):
+        r"""身份源协议类型，决定该身份源使用何种认证协议与第三方平台对接。可选值：OAUTH（标准 OAuth 2.0 协议）、OIDC（OpenID Connect 协议）、SAML（SAML 2.0 协议）、CUSTOM（自定义登录，使用 RSA 密钥对签名验证）、EMAIL（邮箱登录，需配合 EmailConfig 使用）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ProviderType
+
+    @ProviderType.setter
+    def ProviderType(self, ProviderType):
+        self._ProviderType = ProviderType
+
+    @property
+    def AutoSignUpWithProviderUser(self):
+        r"""控制第三方身份源登录时是否自动注册系统用户。可选值：TRUE（始终自动注册，无论第三方返回的用户信息是否包含手机号或邮箱）、FALSE（不自动注册，需用户手动绑定）、UNSPECIFIED（默认行为：仅当第三方身份源返回的用户信息中包含手机号或邮箱时才自动注册，否则登录完成后要求用户绑定手机号方可继续使用）。注意：企业微信类型（WX_WORK_AGENT/WX_WORK_INTERNAL/WX_WORK_THIRD_PARTY/WX_WORK_THIRD_PARTY_ASSOCIATION）和微信小程序类型（WX_MICRO_APP/WX_QRCODE_MICRO_APP/WX_OPEN）在 UNSPECIFIED 时会自动设为 TRUE。当 TransparentMode 为 TRUE 时，该字段将被强制设为 FALSE
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AutoSignUpWithProviderUser
+
+    @AutoSignUpWithProviderUser.setter
+    def AutoSignUpWithProviderUser(self, AutoSignUpWithProviderUser):
+        self._AutoSignUpWithProviderUser = AutoSignUpWithProviderUser
+
+    @property
+    def On(self):
+        r"""身份源的启用状态。可选值：TRUE（启用，用户可通过该身份源登录）、FALSE（禁用，已有绑定关系不受影响）。未传入时默认为 TRUE（启用）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._On
+
+    @On.setter
+    def On(self, On):
+        self._On = On
+
+    @property
+    def Description(self):
+        r"""身份源的详细描述信息，支持国际化多语言配置。可用于向用户说明该身份源的用途或使用场景。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.LocalizedMessage`
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def TransparentMode(self):
+        r"""是否开启信息透传模式。可选值：TRUE（仅登录模式：平台不持久化存储用户数据，仅将第三方身份源返回的用户信息透传给业务方，适用于不希望平台留存用户数据的场景）、FALSE（登录且注册模式：平台正常注册并存储用户信息，默认值）。注意：开启透传模式时，AutoSignUpWithProviderUser 将被强制设为 FALSE；若 ReuseUserId 为 UNSPECIFIED，将被自动设为 TRUE。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TransparentMode
+
+    @TransparentMode.setter
+    def TransparentMode(self, TransparentMode):
+        self._TransparentMode = TransparentMode
+
+    @property
+    def ReuseUserId(self):
+        r"""是否直接复用第三方身份源返回的用户标识（如 OpenID、UnionID 等）作为平台用户 ID。可选值：TRUE（开启，平台用户 ID 将直接使用第三方身份源返回的用户标识，适用于已有用户体系迁移场景）、FALSE（关闭，由平台生成独立用户 ID）。注意：开启后需确保第三方用户标识的全局唯一性，避免 ID 冲突。当 TransparentMode 为 TRUE 且该字段为 UNSPECIFIED 时，将被自动设为 TRUE
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ReuseUserId
+
+    @ReuseUserId.setter
+    def ReuseUserId(self, ReuseUserId):
+        self._ReuseUserId = ReuseUserId
+
+    @property
+    def EmailConfig(self):
+        r"""邮箱身份源的专项配置，仅当 ProviderType 为 EMAIL 时有效且必填。包含邮件服务商、发件人地址、SMTP 配置等参数，用于支持通过邮箱验证码方式进行身份认证。支持两种模式：自有 SMTP 服务器（需填写完整的 SMTP 配置）和平台代发（EmailConfig.On 设为 TRUE 时由平台随机分配 SMTP 服务器）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.EmailProviderConfig`
+        """
+        return self._EmailConfig
+
+    @EmailConfig.setter
+    def EmailConfig(self, EmailConfig):
+        self._EmailConfig = EmailConfig
+
+    @property
+    def AutoSignInWhenEmailMatch(self):
+        r"""是否开启邮箱自动关联登录。可选值：TRUE（开启）、FALSE（关闭）、UNSPECIFIED（默认为 FALSE）。开启后，若第三方身份源返回的邮箱与系统中已有用户的邮箱一致，则自动将该第三方账号与已有用户关联绑定并完成登录，无需用户手动绑定
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AutoSignInWhenEmailMatch
+
+    @AutoSignInWhenEmailMatch.setter
+    def AutoSignInWhenEmailMatch(self, AutoSignInWhenEmailMatch):
+        self._AutoSignInWhenEmailMatch = AutoSignInWhenEmailMatch
+
+    @property
+    def AutoSignInWhenPhoneNumberMatch(self):
+        r"""是否开启手机号自动关联登录。可选值：TRUE（开启）、FALSE（关闭）、UNSPECIFIED（默认行为等同于 TRUE，即默认开启）。开启后，若第三方身份源返回的手机号与系统中已有用户的手机号一致，则自动将该第三方账号与已有用户关联绑定并完成登录，无需用户手动绑定
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AutoSignInWhenPhoneNumberMatch
+
+    @AutoSignInWhenPhoneNumberMatch.setter
+    def AutoSignInWhenPhoneNumberMatch(self, AutoSignInWhenPhoneNumberMatch):
+        self._AutoSignInWhenPhoneNumberMatch = AutoSignInWhenPhoneNumberMatch
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        if params.get("Config") is not None:
+            self._Config = ProviderConfig()
+            self._Config._deserialize(params.get("Config"))
+        if params.get("Name") is not None:
+            self._Name = LocalizedMessage()
+            self._Name._deserialize(params.get("Name"))
+        self._Picture = params.get("Picture")
+        self._Homepage = params.get("Homepage")
+        self._ProviderType = params.get("ProviderType")
+        self._AutoSignUpWithProviderUser = params.get("AutoSignUpWithProviderUser")
+        self._On = params.get("On")
+        if params.get("Description") is not None:
+            self._Description = LocalizedMessage()
+            self._Description._deserialize(params.get("Description"))
+        self._TransparentMode = params.get("TransparentMode")
+        self._ReuseUserId = params.get("ReuseUserId")
+        if params.get("EmailConfig") is not None:
+            self._EmailConfig = EmailProviderConfig()
+            self._EmailConfig._deserialize(params.get("EmailConfig"))
+        self._AutoSignInWhenEmailMatch = params.get("AutoSignInWhenEmailMatch")
+        self._AutoSignInWhenPhoneNumberMatch = params.get("AutoSignInWhenPhoneNumberMatch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProviderConfig(AbstractModel):
+    r"""身份认证源协议连接配置。包含 OAuth 2.0 / OIDC 协议端点（授权端点、令牌端点、用户信息端点、JWKS 端点等）、客户端凭证（ClientId、ClientSecret）、SAML 元数据、请求与响应参数的字段映射等配置信息。OIDC 类型的认证源字段定义参考 https://openid.net/specs/openid-connect-discovery-1_0.html 规范。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Issuer: 身份提供方的唯一标识符（Issuer URL），用于验证 ID Token 中的 iss 字段。仅当 ProviderType 为 OIDC 时需要填写，值通常为第三方 OIDC 服务的根地址，例如：https://accounts.google.com。填写后平台将自动通过 /.well-known/openid-configuration 发现并填充 AuthorizationEndpoint、TokenEndpoint、UserinfoEndpoint、JwksUri 等端点地址。详情参考 OpenID Connect Discovery 标准。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Issuer: str
+        :param _JwksUri: 第三方身份提供方的 JSON Web Key Set 地址，用于获取公钥以验证 ID Token 签名。仅当 ProviderType 为 OIDC 时需要填写。若已填写 Issuer，该字段将通过 OpenID Connect Discovery 自动获取，无需手动填写。详情参考 OpenID Connect Discovery 标准。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type JwksUri: str
+        :param _ClientId: 在第三方身份提供方注册的应用客户端 ID，用于标识当前接入应用。当 ProviderType 为 OIDC 或 OAUTH 时必须填写，可在对应平台的开发者控制台中获取。详情参考 OAuth 2.0 标准。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClientId: str
+        :param _ClientSecret: 在第三方身份提供方注册的应用客户端密钥，与 ClientId 配合使用，用于在 Token 端点进行身份验证。当 ProviderType 为 OIDC 或 OAUTH 时必须填写，请妥善保管，避免泄露。详情参考 OAuth 2.0 标准。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClientSecret: str
+        :param _RedirectUri: OAuth 授权完成后第三方平台回调的地址，需与在第三方平台注册的回调地址完全一致，否则授权将失败。当 ProviderType 为 OIDC 或 OAUTH 时必须填写，并需在对应平台的开发者控制台中配置该地址为合法回调地址。详情参考 OAuth 2.0 标准。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RedirectUri: str
+        :param _Scope: 向第三方身份提供方申请的权限范围，多个 scope 之间用空格分隔。当 ProviderType 为 OIDC 或 OAUTH 时必须填写，OIDC 场景下通常至少包含 openid，如需获取用户邮箱或手机号可追加 email、phone 等。若已填写 Issuer 且未指定 Scope，将自动使用 OpenID Connect Discovery 返回的 scopes_supported。详情参考 OAuth 2.0 标准。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Scope: str
+        :param _AuthorizationEndpoint: 第三方身份提供方的授权端点地址，用于发起 OAuth/OIDC 授权请求，引导用户跳转至第三方登录页面。当 ProviderType 为 OIDC 或 OAUTH 时必须填写。若已填写 Issuer，该字段将通过 OpenID Connect Discovery 自动获取，无需手动填写。详情参考 OAuth 2.0 / OIDC 标准。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AuthorizationEndpoint: str
+        :param _TokenEndpoint: 第三方身份提供方的 Token 端点地址，用于通过授权码（code）换取 Access Token 和 ID Token。当 ProviderType 为 OIDC 或 OAUTH 时必须填写。若已填写 Issuer，该字段将通过 OpenID Connect Discovery 自动获取，无需手动填写。详情参考 OAuth 2.0 / OIDC 标准。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TokenEndpoint: str
+        :param _UserinfoEndpoint: 第三方身份提供方的用户信息端点地址，用于通过 Access Token 获取用户的基本信息（如昵称、头像、邮箱等）。当 ProviderType 为 OIDC 或 OAUTH 且需要获取用户详细信息时填写。若已填写 Issuer，该字段将通过 OpenID Connect Discovery 自动获取，无需手动填写。详情参考 OIDC 标准。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserinfoEndpoint: str
+        :param _ResponseType: OAuth/OIDC 授权请求的响应类型，决定授权端点返回的内容。可选值：code（授权码模式，推荐）、token（隐式模式，直接返回 Access Token）、id_token（直接返回 ID Token）。当 ProviderType 为 OIDC 时默认使用 id_token，其他类型默认使用 code。当 ProviderType 为 OIDC 或 OAUTH 时可选填写。详情参考 OAuth 2.0 / OIDC 标准。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResponseType: str
+        :param _SignoutEndpoint: 第三方身份提供方的单点退出端点地址。配置后，用户退出当前应用时将被跳转至该地址，使第三方 IDP 的登录态也一并失效，实现单点退出（SLO）。适用于 OIDC、OAUTH、SAML 等所有支持单点退出的身份源类型。不填则退出时仅清除本平台登录态。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SignoutEndpoint: str
+        :param _TokenEndpointAuthMethod: Token 端点的客户端身份验证方式，决定请求 Token 时如何传递 ClientId 和 ClientSecret。可选值：CLIENT_SECRET_POST（将凭证放在请求 Body 中传递）、CLIENT_SECRET_BASIC（将凭证通过 HTTP Basic Auth Header 传递）。当 ProviderType 为 OIDC 或 OAUTH 时可选填写，默认使用 CLIENT_SECRET_POST。详情参考 OIDC 标准。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TokenEndpointAuthMethod: str
+        :param _SamlMetadata: SAML 身份提供方的 Metadata XML 内容，包含 IDP 的实体 ID、SSO 端点地址、签名证书等关键信息，平台将据此完成 SAML 协议的对接配置。仅当 ProviderType 为 SAML 时可填写，通常可从第三方 IDP 的管理控制台中下载获取。详情参考 SAML 2.0 标准。
+        :type SamlMetadata: str
+        :param _RequestParametersMap: 请求参数映射配置，用于处理非标准 OAuth 协议的参数转换。默认情况下平台严格遵循 OAuth 2.0 标准进行参数传递，若对接的第三方平台（如微信、企业微信等）使用了非标准的参数名称或传参方式，可通过该字段配置自定义的参数映射规则，以确保请求参数与第三方平台的要求一致。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RequestParametersMap: :class:`tencentcloud.tcb.v20180608.models.ProviderRequestParametersMap`
+        :param _ResponseParametersMap: 响应参数映射配置，用于处理非标准 OAuth 协议的响应参数转换。默认情况下平台严格遵循 OAuth 2.0 标准解析响应参数，若对接的第三方平台（如微信、企业微信等）返回了非标准的字段名称或数据结构，可通过该字段配置自定义的响应参数映射规则，将第三方返回的字段映射为平台标准字段。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResponseParametersMap: :class:`tencentcloud.tcb.v20180608.models.ProviderResponseParametersMap`
+        """
+        self._Issuer = None
+        self._JwksUri = None
+        self._ClientId = None
+        self._ClientSecret = None
+        self._RedirectUri = None
+        self._Scope = None
+        self._AuthorizationEndpoint = None
+        self._TokenEndpoint = None
+        self._UserinfoEndpoint = None
+        self._ResponseType = None
+        self._SignoutEndpoint = None
+        self._TokenEndpointAuthMethod = None
+        self._SamlMetadata = None
+        self._RequestParametersMap = None
+        self._ResponseParametersMap = None
+
+    @property
+    def Issuer(self):
+        r"""身份提供方的唯一标识符（Issuer URL），用于验证 ID Token 中的 iss 字段。仅当 ProviderType 为 OIDC 时需要填写，值通常为第三方 OIDC 服务的根地址，例如：https://accounts.google.com。填写后平台将自动通过 /.well-known/openid-configuration 发现并填充 AuthorizationEndpoint、TokenEndpoint、UserinfoEndpoint、JwksUri 等端点地址。详情参考 OpenID Connect Discovery 标准。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Issuer
+
+    @Issuer.setter
+    def Issuer(self, Issuer):
+        self._Issuer = Issuer
+
+    @property
+    def JwksUri(self):
+        r"""第三方身份提供方的 JSON Web Key Set 地址，用于获取公钥以验证 ID Token 签名。仅当 ProviderType 为 OIDC 时需要填写。若已填写 Issuer，该字段将通过 OpenID Connect Discovery 自动获取，无需手动填写。详情参考 OpenID Connect Discovery 标准。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._JwksUri
+
+    @JwksUri.setter
+    def JwksUri(self, JwksUri):
+        self._JwksUri = JwksUri
+
+    @property
+    def ClientId(self):
+        r"""在第三方身份提供方注册的应用客户端 ID，用于标识当前接入应用。当 ProviderType 为 OIDC 或 OAUTH 时必须填写，可在对应平台的开发者控制台中获取。详情参考 OAuth 2.0 标准。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ClientId
+
+    @ClientId.setter
+    def ClientId(self, ClientId):
+        self._ClientId = ClientId
+
+    @property
+    def ClientSecret(self):
+        r"""在第三方身份提供方注册的应用客户端密钥，与 ClientId 配合使用，用于在 Token 端点进行身份验证。当 ProviderType 为 OIDC 或 OAUTH 时必须填写，请妥善保管，避免泄露。详情参考 OAuth 2.0 标准。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ClientSecret
+
+    @ClientSecret.setter
+    def ClientSecret(self, ClientSecret):
+        self._ClientSecret = ClientSecret
+
+    @property
+    def RedirectUri(self):
+        r"""OAuth 授权完成后第三方平台回调的地址，需与在第三方平台注册的回调地址完全一致，否则授权将失败。当 ProviderType 为 OIDC 或 OAUTH 时必须填写，并需在对应平台的开发者控制台中配置该地址为合法回调地址。详情参考 OAuth 2.0 标准。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RedirectUri
+
+    @RedirectUri.setter
+    def RedirectUri(self, RedirectUri):
+        self._RedirectUri = RedirectUri
+
+    @property
+    def Scope(self):
+        r"""向第三方身份提供方申请的权限范围，多个 scope 之间用空格分隔。当 ProviderType 为 OIDC 或 OAUTH 时必须填写，OIDC 场景下通常至少包含 openid，如需获取用户邮箱或手机号可追加 email、phone 等。若已填写 Issuer 且未指定 Scope，将自动使用 OpenID Connect Discovery 返回的 scopes_supported。详情参考 OAuth 2.0 标准。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Scope
+
+    @Scope.setter
+    def Scope(self, Scope):
+        self._Scope = Scope
+
+    @property
+    def AuthorizationEndpoint(self):
+        r"""第三方身份提供方的授权端点地址，用于发起 OAuth/OIDC 授权请求，引导用户跳转至第三方登录页面。当 ProviderType 为 OIDC 或 OAUTH 时必须填写。若已填写 Issuer，该字段将通过 OpenID Connect Discovery 自动获取，无需手动填写。详情参考 OAuth 2.0 / OIDC 标准。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AuthorizationEndpoint
+
+    @AuthorizationEndpoint.setter
+    def AuthorizationEndpoint(self, AuthorizationEndpoint):
+        self._AuthorizationEndpoint = AuthorizationEndpoint
+
+    @property
+    def TokenEndpoint(self):
+        r"""第三方身份提供方的 Token 端点地址，用于通过授权码（code）换取 Access Token 和 ID Token。当 ProviderType 为 OIDC 或 OAUTH 时必须填写。若已填写 Issuer，该字段将通过 OpenID Connect Discovery 自动获取，无需手动填写。详情参考 OAuth 2.0 / OIDC 标准。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TokenEndpoint
+
+    @TokenEndpoint.setter
+    def TokenEndpoint(self, TokenEndpoint):
+        self._TokenEndpoint = TokenEndpoint
+
+    @property
+    def UserinfoEndpoint(self):
+        r"""第三方身份提供方的用户信息端点地址，用于通过 Access Token 获取用户的基本信息（如昵称、头像、邮箱等）。当 ProviderType 为 OIDC 或 OAUTH 且需要获取用户详细信息时填写。若已填写 Issuer，该字段将通过 OpenID Connect Discovery 自动获取，无需手动填写。详情参考 OIDC 标准。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UserinfoEndpoint
+
+    @UserinfoEndpoint.setter
+    def UserinfoEndpoint(self, UserinfoEndpoint):
+        self._UserinfoEndpoint = UserinfoEndpoint
+
+    @property
+    def ResponseType(self):
+        r"""OAuth/OIDC 授权请求的响应类型，决定授权端点返回的内容。可选值：code（授权码模式，推荐）、token（隐式模式，直接返回 Access Token）、id_token（直接返回 ID Token）。当 ProviderType 为 OIDC 时默认使用 id_token，其他类型默认使用 code。当 ProviderType 为 OIDC 或 OAUTH 时可选填写。详情参考 OAuth 2.0 / OIDC 标准。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ResponseType
+
+    @ResponseType.setter
+    def ResponseType(self, ResponseType):
+        self._ResponseType = ResponseType
+
+    @property
+    def SignoutEndpoint(self):
+        r"""第三方身份提供方的单点退出端点地址。配置后，用户退出当前应用时将被跳转至该地址，使第三方 IDP 的登录态也一并失效，实现单点退出（SLO）。适用于 OIDC、OAUTH、SAML 等所有支持单点退出的身份源类型。不填则退出时仅清除本平台登录态。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SignoutEndpoint
+
+    @SignoutEndpoint.setter
+    def SignoutEndpoint(self, SignoutEndpoint):
+        self._SignoutEndpoint = SignoutEndpoint
+
+    @property
+    def TokenEndpointAuthMethod(self):
+        r"""Token 端点的客户端身份验证方式，决定请求 Token 时如何传递 ClientId 和 ClientSecret。可选值：CLIENT_SECRET_POST（将凭证放在请求 Body 中传递）、CLIENT_SECRET_BASIC（将凭证通过 HTTP Basic Auth Header 传递）。当 ProviderType 为 OIDC 或 OAUTH 时可选填写，默认使用 CLIENT_SECRET_POST。详情参考 OIDC 标准。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TokenEndpointAuthMethod
+
+    @TokenEndpointAuthMethod.setter
+    def TokenEndpointAuthMethod(self, TokenEndpointAuthMethod):
+        self._TokenEndpointAuthMethod = TokenEndpointAuthMethod
+
+    @property
+    def SamlMetadata(self):
+        r"""SAML 身份提供方的 Metadata XML 内容，包含 IDP 的实体 ID、SSO 端点地址、签名证书等关键信息，平台将据此完成 SAML 协议的对接配置。仅当 ProviderType 为 SAML 时可填写，通常可从第三方 IDP 的管理控制台中下载获取。详情参考 SAML 2.0 标准。
+        :rtype: str
+        """
+        return self._SamlMetadata
+
+    @SamlMetadata.setter
+    def SamlMetadata(self, SamlMetadata):
+        self._SamlMetadata = SamlMetadata
+
+    @property
+    def RequestParametersMap(self):
+        r"""请求参数映射配置，用于处理非标准 OAuth 协议的参数转换。默认情况下平台严格遵循 OAuth 2.0 标准进行参数传递，若对接的第三方平台（如微信、企业微信等）使用了非标准的参数名称或传参方式，可通过该字段配置自定义的参数映射规则，以确保请求参数与第三方平台的要求一致。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.ProviderRequestParametersMap`
+        """
+        return self._RequestParametersMap
+
+    @RequestParametersMap.setter
+    def RequestParametersMap(self, RequestParametersMap):
+        self._RequestParametersMap = RequestParametersMap
+
+    @property
+    def ResponseParametersMap(self):
+        r"""响应参数映射配置，用于处理非标准 OAuth 协议的响应参数转换。默认情况下平台严格遵循 OAuth 2.0 标准解析响应参数，若对接的第三方平台（如微信、企业微信等）返回了非标准的字段名称或数据结构，可通过该字段配置自定义的响应参数映射规则，将第三方返回的字段映射为平台标准字段。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.ProviderResponseParametersMap`
+        """
+        return self._ResponseParametersMap
+
+    @ResponseParametersMap.setter
+    def ResponseParametersMap(self, ResponseParametersMap):
+        self._ResponseParametersMap = ResponseParametersMap
+
+
+    def _deserialize(self, params):
+        self._Issuer = params.get("Issuer")
+        self._JwksUri = params.get("JwksUri")
+        self._ClientId = params.get("ClientId")
+        self._ClientSecret = params.get("ClientSecret")
+        self._RedirectUri = params.get("RedirectUri")
+        self._Scope = params.get("Scope")
+        self._AuthorizationEndpoint = params.get("AuthorizationEndpoint")
+        self._TokenEndpoint = params.get("TokenEndpoint")
+        self._UserinfoEndpoint = params.get("UserinfoEndpoint")
+        self._ResponseType = params.get("ResponseType")
+        self._SignoutEndpoint = params.get("SignoutEndpoint")
+        self._TokenEndpointAuthMethod = params.get("TokenEndpointAuthMethod")
+        self._SamlMetadata = params.get("SamlMetadata")
+        if params.get("RequestParametersMap") is not None:
+            self._RequestParametersMap = ProviderRequestParametersMap()
+            self._RequestParametersMap._deserialize(params.get("RequestParametersMap"))
+        if params.get("ResponseParametersMap") is not None:
+            self._ResponseParametersMap = ProviderResponseParametersMap()
+            self._ResponseParametersMap._deserialize(params.get("ResponseParametersMap"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProviderRequestParametersMap(AbstractModel):
+    r"""三方认证入参映射。如果您的对接方不标准，则可以使用这个参数。默认情况下，该参数可以为空。比如：github,google,apple 接入，这些参数为空，但是国内的腾讯，新浪等则需要配置该参数。原因主要是：腾讯等公司在实现oauth时，未能完全遵循oauth标准。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClientId: OAuth 标准协议中的 client_id。不同第三方平台的字段名称可能不同，例如微信平台对应 appid、新浪微博对应 app_id。
+        :type ClientId: str
+        :param _ClientSecret: OAuth 标准协议中的 client_secret，用于身份认证源的密钥鉴权。请妥善保管，避免泄露。
+        :type ClientSecret: str
+        :param _RedirectUri: OAuth 标准协议中的 redirect_uri，即授权回调地址。用户完成第三方认证后将重定向至该地址。
+        :type RedirectUri: str
+        :param _RegisterUserRoleId: 身份源注册用户时自动绑定的角色 ID。配置后，通过该身份源注册的新用户将自动关联指定角色。
+        :type RegisterUserRoleId: str
+        :param _RegisterUserAutoLicense: 身份源注册用户时是否自动授予许可证。取值范围：
+TRUE：自动授权许可证
+FALSE：不自动授权（默认值）
+        :type RegisterUserAutoLicense: str
+        :param _AuthPosition: OAuth 获取 Token 时认证信息的请求位置。取值范围：
+URL：将认证信息放在请求 URL 参数中
+Headers：将认证信息放在请求 Header 中
+Body：将认证信息放在请求 Body 中
+        :type AuthPosition: str
+        :param _GrantType: OAuth 授权模式匹配的参数字段名。用于指定获取 Token 请求中 grant_type 参数对应的字段名称。
+        :type GrantType: str
+        :param _ClientCredentials: OAuth 授权模式类型。用于指定 grant_type 的值，例如 client_credentials 表示客户端凭证模式。
+        :type ClientCredentials: str
+        :param _AccessToken: OAuth 返回中 access_token 的映射字段名。若第三方平台返回的 Token 字段名不是标准的 access_token，可通过此字段指定实际字段名。
+        :type AccessToken: str
+        :param _ExpiresIn: OAuth 返回中 Token 有效期的映射字段名。若第三方平台返回的有效期字段名不是标准的 expires_in，可通过此字段指定实际字段名。
+        :type ExpiresIn: str
+        :param _RegisterUserType: 身份源注册用户时的用户类型。取值范围：
+externalUser：外部用户
+internalUser：内部用户
+默认值为 externalUser。
+        :type RegisterUserType: str
+        """
+        self._ClientId = None
+        self._ClientSecret = None
+        self._RedirectUri = None
+        self._RegisterUserRoleId = None
+        self._RegisterUserAutoLicense = None
+        self._AuthPosition = None
+        self._GrantType = None
+        self._ClientCredentials = None
+        self._AccessToken = None
+        self._ExpiresIn = None
+        self._RegisterUserType = None
+
+    @property
+    def ClientId(self):
+        r"""OAuth 标准协议中的 client_id。不同第三方平台的字段名称可能不同，例如微信平台对应 appid、新浪微博对应 app_id。
+        :rtype: str
+        """
+        return self._ClientId
+
+    @ClientId.setter
+    def ClientId(self, ClientId):
+        self._ClientId = ClientId
+
+    @property
+    def ClientSecret(self):
+        r"""OAuth 标准协议中的 client_secret，用于身份认证源的密钥鉴权。请妥善保管，避免泄露。
+        :rtype: str
+        """
+        return self._ClientSecret
+
+    @ClientSecret.setter
+    def ClientSecret(self, ClientSecret):
+        self._ClientSecret = ClientSecret
+
+    @property
+    def RedirectUri(self):
+        r"""OAuth 标准协议中的 redirect_uri，即授权回调地址。用户完成第三方认证后将重定向至该地址。
+        :rtype: str
+        """
+        return self._RedirectUri
+
+    @RedirectUri.setter
+    def RedirectUri(self, RedirectUri):
+        self._RedirectUri = RedirectUri
+
+    @property
+    def RegisterUserRoleId(self):
+        r"""身份源注册用户时自动绑定的角色 ID。配置后，通过该身份源注册的新用户将自动关联指定角色。
+        :rtype: str
+        """
+        return self._RegisterUserRoleId
+
+    @RegisterUserRoleId.setter
+    def RegisterUserRoleId(self, RegisterUserRoleId):
+        self._RegisterUserRoleId = RegisterUserRoleId
+
+    @property
+    def RegisterUserAutoLicense(self):
+        r"""身份源注册用户时是否自动授予许可证。取值范围：
+TRUE：自动授权许可证
+FALSE：不自动授权（默认值）
+        :rtype: str
+        """
+        return self._RegisterUserAutoLicense
+
+    @RegisterUserAutoLicense.setter
+    def RegisterUserAutoLicense(self, RegisterUserAutoLicense):
+        self._RegisterUserAutoLicense = RegisterUserAutoLicense
+
+    @property
+    def AuthPosition(self):
+        r"""OAuth 获取 Token 时认证信息的请求位置。取值范围：
+URL：将认证信息放在请求 URL 参数中
+Headers：将认证信息放在请求 Header 中
+Body：将认证信息放在请求 Body 中
+        :rtype: str
+        """
+        return self._AuthPosition
+
+    @AuthPosition.setter
+    def AuthPosition(self, AuthPosition):
+        self._AuthPosition = AuthPosition
+
+    @property
+    def GrantType(self):
+        r"""OAuth 授权模式匹配的参数字段名。用于指定获取 Token 请求中 grant_type 参数对应的字段名称。
+        :rtype: str
+        """
+        return self._GrantType
+
+    @GrantType.setter
+    def GrantType(self, GrantType):
+        self._GrantType = GrantType
+
+    @property
+    def ClientCredentials(self):
+        r"""OAuth 授权模式类型。用于指定 grant_type 的值，例如 client_credentials 表示客户端凭证模式。
+        :rtype: str
+        """
+        return self._ClientCredentials
+
+    @ClientCredentials.setter
+    def ClientCredentials(self, ClientCredentials):
+        self._ClientCredentials = ClientCredentials
+
+    @property
+    def AccessToken(self):
+        r"""OAuth 返回中 access_token 的映射字段名。若第三方平台返回的 Token 字段名不是标准的 access_token，可通过此字段指定实际字段名。
+        :rtype: str
+        """
+        return self._AccessToken
+
+    @AccessToken.setter
+    def AccessToken(self, AccessToken):
+        self._AccessToken = AccessToken
+
+    @property
+    def ExpiresIn(self):
+        r"""OAuth 返回中 Token 有效期的映射字段名。若第三方平台返回的有效期字段名不是标准的 expires_in，可通过此字段指定实际字段名。
+        :rtype: str
+        """
+        return self._ExpiresIn
+
+    @ExpiresIn.setter
+    def ExpiresIn(self, ExpiresIn):
+        self._ExpiresIn = ExpiresIn
+
+    @property
+    def RegisterUserType(self):
+        r"""身份源注册用户时的用户类型。取值范围：
+externalUser：外部用户
+internalUser：内部用户
+默认值为 externalUser。
+        :rtype: str
+        """
+        return self._RegisterUserType
+
+    @RegisterUserType.setter
+    def RegisterUserType(self, RegisterUserType):
+        self._RegisterUserType = RegisterUserType
+
+
+    def _deserialize(self, params):
+        self._ClientId = params.get("ClientId")
+        self._ClientSecret = params.get("ClientSecret")
+        self._RedirectUri = params.get("RedirectUri")
+        self._RegisterUserRoleId = params.get("RegisterUserRoleId")
+        self._RegisterUserAutoLicense = params.get("RegisterUserAutoLicense")
+        self._AuthPosition = params.get("AuthPosition")
+        self._GrantType = params.get("GrantType")
+        self._ClientCredentials = params.get("ClientCredentials")
+        self._AccessToken = params.get("AccessToken")
+        self._ExpiresIn = params.get("ExpiresIn")
+        self._RegisterUserType = params.get("RegisterUserType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProviderResponseParametersMap(AbstractModel):
+    r"""三方认证出参映射。如果您的对接方不标准，则可以使用这个参数。默认情况下，该参数可以为空。比如：microsoft, github,google,apple 接入，这些参数为空，但是国内的腾讯，新浪等则需要配置该参数。原因主要是：腾讯等公司在实现oauth时，未能完全遵循oauth标准。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Sub: 用户唯一标识（sub）的映射字段名。对应 OIDC 标准中的 sub 字段，值为第三方平台返回的用户信息 JSON 中表示用户 ID 的字段路径。例如github平台填sub。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Sub: str
+        :param _Name: 用户名称（name）的映射字段名。对应 OIDC 标准中的 name 字段，值为第三方平台返回的用户信息 JSON 中表示用户昵称或姓名的字段路径。例如github平台填 name。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Picture: 用户头像（picture）的映射字段名。对应 OIDC 标准中的 picture 字段，值为第三方平台返回的用户信息 JSON 中表示用户头像 URL 的字段路径。需要公网可访问的url。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Picture: str
+        :param _Username: 用户登录名（username）的映射字段名。对应 OIDC 标准中的 preferred_username 字段，值为第三方平台返回的用户信息 JSON 中表示用户唯一登录名的字段, 例如可使用sub或email等唯一值的字段。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Username: str
+        :param _Email: 用户邮箱（email）的映射字段名。对应 OIDC 标准中的 email 字段，值为第三方平台返回的用户信息 JSON 中表示用户邮箱地址的字段。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Email: str
+        :param _PhoneNumber: 用户手机号（phone_number）的映射字段名。对应 OIDC 标准中的 phone_number 字段，值为第三方平台返回的用户信息 JSON 中表示用户手机号的字段。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PhoneNumber: str
+        :param _Groups: 用户角色/分组（groups）的映射字段名。对应 OIDC 标准中的 groups 字段，值为第三方平台返回的用户信息 JSON 中表示用户所属角色或分组的字段路径。支持字符串数组类型的返回值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Groups: str
+        """
+        self._Sub = None
+        self._Name = None
+        self._Picture = None
+        self._Username = None
+        self._Email = None
+        self._PhoneNumber = None
+        self._Groups = None
+
+    @property
+    def Sub(self):
+        r"""用户唯一标识（sub）的映射字段名。对应 OIDC 标准中的 sub 字段，值为第三方平台返回的用户信息 JSON 中表示用户 ID 的字段路径。例如github平台填sub。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Sub
+
+    @Sub.setter
+    def Sub(self, Sub):
+        self._Sub = Sub
+
+    @property
+    def Name(self):
+        r"""用户名称（name）的映射字段名。对应 OIDC 标准中的 name 字段，值为第三方平台返回的用户信息 JSON 中表示用户昵称或姓名的字段路径。例如github平台填 name。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Picture(self):
+        r"""用户头像（picture）的映射字段名。对应 OIDC 标准中的 picture 字段，值为第三方平台返回的用户信息 JSON 中表示用户头像 URL 的字段路径。需要公网可访问的url。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Picture
+
+    @Picture.setter
+    def Picture(self, Picture):
+        self._Picture = Picture
+
+    @property
+    def Username(self):
+        r"""用户登录名（username）的映射字段名。对应 OIDC 标准中的 preferred_username 字段，值为第三方平台返回的用户信息 JSON 中表示用户唯一登录名的字段, 例如可使用sub或email等唯一值的字段。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Username
+
+    @Username.setter
+    def Username(self, Username):
+        self._Username = Username
+
+    @property
+    def Email(self):
+        r"""用户邮箱（email）的映射字段名。对应 OIDC 标准中的 email 字段，值为第三方平台返回的用户信息 JSON 中表示用户邮箱地址的字段。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Email
+
+    @Email.setter
+    def Email(self, Email):
+        self._Email = Email
+
+    @property
+    def PhoneNumber(self):
+        r"""用户手机号（phone_number）的映射字段名。对应 OIDC 标准中的 phone_number 字段，值为第三方平台返回的用户信息 JSON 中表示用户手机号的字段。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._PhoneNumber
+
+    @PhoneNumber.setter
+    def PhoneNumber(self, PhoneNumber):
+        self._PhoneNumber = PhoneNumber
+
+    @property
+    def Groups(self):
+        r"""用户角色/分组（groups）的映射字段名。对应 OIDC 标准中的 groups 字段，值为第三方平台返回的用户信息 JSON 中表示用户所属角色或分组的字段路径。支持字符串数组类型的返回值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Groups
+
+    @Groups.setter
+    def Groups(self, Groups):
+        self._Groups = Groups
+
+
+    def _deserialize(self, params):
+        self._Sub = params.get("Sub")
+        self._Name = params.get("Name")
+        self._Picture = params.get("Picture")
+        self._Username = params.get("Username")
+        self._Email = params.get("Email")
+        self._PhoneNumber = params.get("PhoneNumber")
+        self._Groups = params.get("Groups")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13756,6 +16697,346 @@ class User(AbstractModel):
         self._Email = params.get("Email")
         self._AvatarUrl = params.get("AvatarUrl")
         self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VMPrice(AbstractModel):
+    r"""虚拟主机价格
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Currency: 价格货币单位。取值范围CNY:人民币。USD:美元。
+        :type Currency: str
+        :param _OriginalPrice: 原始价格
+        :type OriginalPrice: float
+        :param _Discount: 折扣率
+        :type Discount: float
+        :param _DiscountPrice: 折扣后的价格
+        :type DiscountPrice: float
+        :param _OriginalCredits: 折扣前每天资源点
+        :type OriginalCredits: float
+        :param _DiscountCredits: 折扣后每天所需资源点
+        :type DiscountCredits: float
+        """
+        self._Currency = None
+        self._OriginalPrice = None
+        self._Discount = None
+        self._DiscountPrice = None
+        self._OriginalCredits = None
+        self._DiscountCredits = None
+
+    @property
+    def Currency(self):
+        r"""价格货币单位。取值范围CNY:人民币。USD:美元。
+        :rtype: str
+        """
+        return self._Currency
+
+    @Currency.setter
+    def Currency(self, Currency):
+        self._Currency = Currency
+
+    @property
+    def OriginalPrice(self):
+        r"""原始价格
+        :rtype: float
+        """
+        return self._OriginalPrice
+
+    @OriginalPrice.setter
+    def OriginalPrice(self, OriginalPrice):
+        self._OriginalPrice = OriginalPrice
+
+    @property
+    def Discount(self):
+        r"""折扣率
+        :rtype: float
+        """
+        return self._Discount
+
+    @Discount.setter
+    def Discount(self, Discount):
+        self._Discount = Discount
+
+    @property
+    def DiscountPrice(self):
+        r"""折扣后的价格
+        :rtype: float
+        """
+        return self._DiscountPrice
+
+    @DiscountPrice.setter
+    def DiscountPrice(self, DiscountPrice):
+        self._DiscountPrice = DiscountPrice
+
+    @property
+    def OriginalCredits(self):
+        r"""折扣前每天资源点
+        :rtype: float
+        """
+        return self._OriginalCredits
+
+    @OriginalCredits.setter
+    def OriginalCredits(self, OriginalCredits):
+        self._OriginalCredits = OriginalCredits
+
+    @property
+    def DiscountCredits(self):
+        r"""折扣后每天所需资源点
+        :rtype: float
+        """
+        return self._DiscountCredits
+
+    @DiscountCredits.setter
+    def DiscountCredits(self, DiscountCredits):
+        self._DiscountCredits = DiscountCredits
+
+
+    def _deserialize(self, params):
+        self._Currency = params.get("Currency")
+        self._OriginalPrice = params.get("OriginalPrice")
+        self._Discount = params.get("Discount")
+        self._DiscountPrice = params.get("DiscountPrice")
+        self._OriginalCredits = params.get("OriginalCredits")
+        self._DiscountCredits = params.get("DiscountCredits")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VMSpec(AbstractModel):
+    r"""VM规格
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: LightHouse=轻量云服务器
+CVM=云服务器
+        :type Type: str
+        :param _LightHouseSpec: 轻量云服务器规格。
+当Type=LightHouse时有效
+        :type LightHouseSpec: :class:`tencentcloud.tcb.v20180608.models.VMSpecLightHouse`
+        :param _Price: 价格信息
+        :type Price: :class:`tencentcloud.tcb.v20180608.models.VMPrice`
+        """
+        self._Type = None
+        self._LightHouseSpec = None
+        self._Price = None
+
+    @property
+    def Type(self):
+        r"""LightHouse=轻量云服务器
+CVM=云服务器
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def LightHouseSpec(self):
+        r"""轻量云服务器规格。
+当Type=LightHouse时有效
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.VMSpecLightHouse`
+        """
+        return self._LightHouseSpec
+
+    @LightHouseSpec.setter
+    def LightHouseSpec(self, LightHouseSpec):
+        self._LightHouseSpec = LightHouseSpec
+
+    @property
+    def Price(self):
+        r"""价格信息
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.VMPrice`
+        """
+        return self._Price
+
+    @Price.setter
+    def Price(self, Price):
+        self._Price = Price
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        if params.get("LightHouseSpec") is not None:
+            self._LightHouseSpec = VMSpecLightHouse()
+            self._LightHouseSpec._deserialize(params.get("LightHouseSpec"))
+        if params.get("Price") is not None:
+            self._Price = VMPrice()
+            self._Price._deserialize(params.get("Price"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VMSpecLightHouse(AbstractModel):
+    r"""vm规格
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BundleId: LH主机的BundleId
+        :type BundleId: str
+        :param _BundleConfig: 主机配置详情json
+        :type BundleConfig: str
+        """
+        self._BundleId = None
+        self._BundleConfig = None
+
+    @property
+    def BundleId(self):
+        r"""LH主机的BundleId
+        :rtype: str
+        """
+        return self._BundleId
+
+    @BundleId.setter
+    def BundleId(self, BundleId):
+        self._BundleId = BundleId
+
+    @property
+    def BundleConfig(self):
+        r"""主机配置详情json
+        :rtype: str
+        """
+        return self._BundleConfig
+
+    @BundleConfig.setter
+    def BundleConfig(self, BundleConfig):
+        self._BundleConfig = BundleConfig
+
+
+    def _deserialize(self, params):
+        self._BundleId = params.get("BundleId")
+        self._BundleConfig = params.get("BundleConfig")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VerificationConfig(AbstractModel):
+    r"""登录短信验证码发送配置。用于管理登录时使用的短信验证码发送的通道相关设置，目前提供云开发默认短信包和客户自定义短信包，推荐使用云开发默认短信包。
+    如果使用自定义APIs发送短信，方法命名规则
+    方法名称：发送验证码
+    方法标识：SendVerificationCode
+    入参
+    Mobile：字符串（手机号，如：“+86 + 手机号”）
+    VerificationCode：字符串（验证码，如：“123456”）
+    返回值
+    ErrorCode：int（0 表示成功，非 0 表示失败）
+    ErrorMessage：字符串（ErrorCode 非 0 时，返回错误信息）
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 短信验证码发送通道类型。取值范围：
+default：使用默认云开发短信包发送短信。
+apis：使用云开发自定义 APIs 作为短信发送通道，需配合 Name 和 Method 参数使用。
+不传则不修改当前配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param _Name: 自定义 APIs 数据源唯一标识，当 Type 为 apis 时必填。用于定位微搭 APIs 中对应的数据源。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Method: 自定义 APIs 方法名，当 Type 为 apis 时必填。指定微搭 APIs 中用于发送验证码的方法。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Method: str
+        :param _SmsDayLimit: 单个手机号每日短信发送上限。默认值为 30，传 -1 表示不限制，如果设置为不限制，需要注意恶意攻击，导致短信套餐用量计费问题。仅支持正整数或 -1。不传则不修改当前配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SmsDayLimit: int
+        """
+        self._Type = None
+        self._Name = None
+        self._Method = None
+        self._SmsDayLimit = None
+
+    @property
+    def Type(self):
+        r"""短信验证码发送通道类型。取值范围：
+default：使用默认云开发短信包发送短信。
+apis：使用云开发自定义 APIs 作为短信发送通道，需配合 Name 和 Method 参数使用。
+不传则不修改当前配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Name(self):
+        r"""自定义 APIs 数据源唯一标识，当 Type 为 apis 时必填。用于定位微搭 APIs 中对应的数据源。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Method(self):
+        r"""自定义 APIs 方法名，当 Type 为 apis 时必填。指定微搭 APIs 中用于发送验证码的方法。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Method
+
+    @Method.setter
+    def Method(self, Method):
+        self._Method = Method
+
+    @property
+    def SmsDayLimit(self):
+        r"""单个手机号每日短信发送上限。默认值为 30，传 -1 表示不限制，如果设置为不限制，需要注意恶意攻击，导致短信套餐用量计费问题。仅支持正整数或 -1。不传则不修改当前配置。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._SmsDayLimit
+
+    @SmsDayLimit.setter
+    def SmsDayLimit(self, SmsDayLimit):
+        self._SmsDayLimit = SmsDayLimit
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Name = params.get("Name")
+        self._Method = params.get("Method")
+        self._SmsDayLimit = params.get("SmsDayLimit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

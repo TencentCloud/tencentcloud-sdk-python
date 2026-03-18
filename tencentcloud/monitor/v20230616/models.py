@@ -817,6 +817,97 @@ Trigger 告警触发; Recovery 告警恢复
         
 
 
+class GoogleChatRobotNoticeTmpl(AbstractModel):
+    r"""Google Chat 机器人内容模板配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ContentTmpl: 内容模板
+        :type ContentTmpl: str
+        """
+        self._ContentTmpl = None
+
+    @property
+    def ContentTmpl(self):
+        r"""内容模板
+        :rtype: str
+        """
+        return self._ContentTmpl
+
+    @ContentTmpl.setter
+    def ContentTmpl(self, ContentTmpl):
+        self._ContentTmpl = ContentTmpl
+
+
+    def _deserialize(self, params):
+        self._ContentTmpl = params.get("ContentTmpl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GoogleChatRobotNoticeTmplMatcher(AbstractModel):
+    r"""Google Chat 机器人通知模板的匹配器
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MatchingStatus: 匹配状态 Invalid;
+Trigger 告警触发; Recovery 告警恢复
+        :type MatchingStatus: list of str
+        :param _Template: 模板配置
+        :type Template: :class:`tencentcloud.monitor.v20230616.models.GoogleChatRobotNoticeTmpl`
+        """
+        self._MatchingStatus = None
+        self._Template = None
+
+    @property
+    def MatchingStatus(self):
+        r"""匹配状态 Invalid;
+Trigger 告警触发; Recovery 告警恢复
+        :rtype: list of str
+        """
+        return self._MatchingStatus
+
+    @MatchingStatus.setter
+    def MatchingStatus(self, MatchingStatus):
+        self._MatchingStatus = MatchingStatus
+
+    @property
+    def Template(self):
+        r"""模板配置
+        :rtype: :class:`tencentcloud.monitor.v20230616.models.GoogleChatRobotNoticeTmpl`
+        """
+        return self._Template
+
+    @Template.setter
+    def Template(self, Template):
+        self._Template = Template
+
+
+    def _deserialize(self, params):
+        self._MatchingStatus = params.get("MatchingStatus")
+        if params.get("Template") is not None:
+            self._Template = GoogleChatRobotNoticeTmpl()
+            self._Template._deserialize(params.get("Template"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ModifyNoticeContentTmplRequest(AbstractModel):
     r"""ModifyNoticeContentTmpl请求参数结构体
 
@@ -1164,6 +1255,8 @@ class NoticeContentTmplItem(AbstractModel):
         :param _PagerDutyRobot: PagerDutyRobot机器人通知渠道配置
 注意：此字段可能返回 null，表示取不到有效值。
         :type PagerDutyRobot: list of PagerDutyRobotNoticeTmplMatcher
+        :param _GoogleChatRobot: GoogleChat
+        :type GoogleChatRobot: list of GoogleChatRobotNoticeTmplMatcher
         """
         self._QCloudYehe = None
         self._WeWorkRobot = None
@@ -1172,6 +1265,7 @@ class NoticeContentTmplItem(AbstractModel):
         self._Webhook = None
         self._TeamsRobot = None
         self._PagerDutyRobot = None
+        self._GoogleChatRobot = None
 
     @property
     def QCloudYehe(self):
@@ -1257,6 +1351,17 @@ class NoticeContentTmplItem(AbstractModel):
     def PagerDutyRobot(self, PagerDutyRobot):
         self._PagerDutyRobot = PagerDutyRobot
 
+    @property
+    def GoogleChatRobot(self):
+        r"""GoogleChat
+        :rtype: list of GoogleChatRobotNoticeTmplMatcher
+        """
+        return self._GoogleChatRobot
+
+    @GoogleChatRobot.setter
+    def GoogleChatRobot(self, GoogleChatRobot):
+        self._GoogleChatRobot = GoogleChatRobot
+
 
     def _deserialize(self, params):
         if params.get("QCloudYehe") is not None:
@@ -1301,6 +1406,12 @@ class NoticeContentTmplItem(AbstractModel):
                 obj = PagerDutyRobotNoticeTmplMatcher()
                 obj._deserialize(item)
                 self._PagerDutyRobot.append(obj)
+        if params.get("GoogleChatRobot") is not None:
+            self._GoogleChatRobot = []
+            for item in params.get("GoogleChatRobot"):
+                obj = GoogleChatRobotNoticeTmplMatcher()
+                obj._deserialize(item)
+                self._GoogleChatRobot.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

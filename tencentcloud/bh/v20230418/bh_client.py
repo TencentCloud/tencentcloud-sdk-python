@@ -1406,6 +1406,29 @@ class BhClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DisableClientTcpAccess(self, request):
+        r"""关闭客户端TCP访问堡垒机
+
+        :param request: Request instance for DisableClientTcpAccess.
+        :type request: :class:`tencentcloud.bh.v20230418.models.DisableClientTcpAccessRequest`
+        :rtype: :class:`tencentcloud.bh.v20230418.models.DisableClientTcpAccessResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DisableClientTcpAccess", params, headers=headers)
+            response = json.loads(body)
+            model = models.DisableClientTcpAccessResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DisableExternalAccess(self, request):
         r"""关闭公网访问堡垒机
 
@@ -1452,6 +1475,52 @@ class BhClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DisableWebAccess(self, request):
+        r"""关闭web访问堡垒机
+
+        :param request: Request instance for DisableWebAccess.
+        :type request: :class:`tencentcloud.bh.v20230418.models.DisableWebAccessRequest`
+        :rtype: :class:`tencentcloud.bh.v20230418.models.DisableWebAccessResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DisableWebAccess", params, headers=headers)
+            response = json.loads(body)
+            model = models.DisableWebAccessResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def EnableClientTcpAccess(self, request):
+        r"""开启客户端TCP访问堡垒机
+
+        :param request: Request instance for EnableClientTcpAccess.
+        :type request: :class:`tencentcloud.bh.v20230418.models.EnableClientTcpAccessRequest`
+        :rtype: :class:`tencentcloud.bh.v20230418.models.EnableClientTcpAccessResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("EnableClientTcpAccess", params, headers=headers)
+            response = json.loads(body)
+            model = models.EnableClientTcpAccessResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def EnableExternalAccess(self, request):
         r"""开启公网访问堡垒机
 
@@ -1489,6 +1558,29 @@ class BhClient(AbstractClient):
             body = self.call("EnableIntranetAccess", params, headers=headers)
             response = json.loads(body)
             model = models.EnableIntranetAccessResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def EnableWebAccess(self, request):
+        r"""开启web访问堡垒机
+
+        :param request: Request instance for EnableWebAccess.
+        :type request: :class:`tencentcloud.bh.v20230418.models.EnableWebAccessRequest`
+        :rtype: :class:`tencentcloud.bh.v20230418.models.EnableWebAccessResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("EnableWebAccess", params, headers=headers)
+            response = json.loads(body)
+            model = models.EnableWebAccessResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

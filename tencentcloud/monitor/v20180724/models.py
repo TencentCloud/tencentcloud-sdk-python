@@ -32867,7 +32867,7 @@ class PrometheusAgentInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterType: 集群类型。可填入tke、eks、tkeedge、tdcc，分别代表标准集群、弹性集群、边缘集群、注册集群
+        :param _ClusterType: 集群类型。可填入tke、eks、tkeedge、tdcc、external，分别代表标准集群、弹性集群、边缘集群、注册集群、外部集群
         :type ClusterType: str
         :param _ClusterId: 集成容器服务中关联的集群ID
         :type ClusterId: str
@@ -32880,7 +32880,7 @@ class PrometheusAgentInfo(AbstractModel):
 
     @property
     def ClusterType(self):
-        r"""集群类型。可填入tke、eks、tkeedge、tdcc，分别代表标准集群、弹性集群、边缘集群、注册集群
+        r"""集群类型。可填入tke、eks、tkeedge、tdcc、external，分别代表标准集群、弹性集群、边缘集群、注册集群、外部集群
         :rtype: str
         """
         return self._ClusterType
@@ -34281,13 +34281,13 @@ class PrometheusClusterScrapeStatistics(AbstractModel):
         r"""
         :param _ClusterID: 集群ID
         :type ClusterID: str
-        :param _ScrapedRate: 被采集的点数
+        :param _ScrapedRate: 被采集的点个数
 注意：此字段可能返回 null，表示取不到有效值。
         :type ScrapedRate: float
         :param _Jobs: Job列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Jobs: list of PrometheusJobScrapeStatistics
-        :param _SamplesRate: 过滤前的指标采集速率
+        :param _SamplesRate: 每秒过滤前的指标采集速率
 注意：此字段可能返回 null，表示取不到有效值。
         :type SamplesRate: float
         """
@@ -34309,7 +34309,7 @@ class PrometheusClusterScrapeStatistics(AbstractModel):
 
     @property
     def ScrapedRate(self):
-        r"""被采集的点数
+        r"""被采集的点个数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -34333,7 +34333,7 @@ class PrometheusClusterScrapeStatistics(AbstractModel):
 
     @property
     def SamplesRate(self):
-        r"""过滤前的指标采集速率
+        r"""每秒过滤前的指标采集速率
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -34571,14 +34571,14 @@ class PrometheusInstanceScrapeStatistics(AbstractModel):
         r"""
         :param _InstanceId: 实例ID
         :type InstanceId: str
-        :param _ScrapedRate: 被采集的点数
+        :param _ScrapedRate: 每秒被采集的点数
         :type ScrapedRate: float
         :param _Clusters: 集群指标列表
         :type Clusters: list of PrometheusClusterScrapeStatistics
         :param _Global: 非容器指标列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Global: list of PrometheusClusterScrapeStatistics
-        :param _SamplesRate: 过滤前的指标采集速率
+        :param _SamplesRate: 过滤前的每秒指标采集速率
         :type SamplesRate: float
         """
         self._InstanceId = None
@@ -34600,7 +34600,7 @@ class PrometheusInstanceScrapeStatistics(AbstractModel):
 
     @property
     def ScrapedRate(self):
-        r"""被采集的点数
+        r"""每秒被采集的点数
         :rtype: float
         """
         return self._ScrapedRate
@@ -34634,7 +34634,7 @@ class PrometheusInstanceScrapeStatistics(AbstractModel):
 
     @property
     def SamplesRate(self):
-        r"""过滤前的指标采集速率
+        r"""过滤前的每秒指标采集速率
         :rtype: float
         """
         return self._SamplesRate
@@ -34686,10 +34686,10 @@ class PrometheusInstanceTenantUsage(AbstractModel):
         :param _Total: 总用量
 注意：此字段可能返回 null，表示取不到有效值。
         :type Total: float
-        :param _Basic: 基础指标用量
+        :param _Basic: 基础指标用量个数
 注意：此字段可能返回 null，表示取不到有效值。
         :type Basic: float
-        :param _Fee: 付费指标用量
+        :param _Fee: 付费指标用量个数
 注意：此字段可能返回 null，表示取不到有效值。
         :type Fee: float
         """
@@ -34737,7 +34737,7 @@ class PrometheusInstanceTenantUsage(AbstractModel):
 
     @property
     def Basic(self):
-        r"""基础指标用量
+        r"""基础指标用量个数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -34749,7 +34749,7 @@ class PrometheusInstanceTenantUsage(AbstractModel):
 
     @property
     def Fee(self):
-        r"""付费指标用量
+        r"""付费指标用量个数
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """

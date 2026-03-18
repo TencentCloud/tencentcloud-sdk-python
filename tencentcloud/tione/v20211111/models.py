@@ -18,6 +18,66 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AggregatePublicAlgoVersion(AbstractModel):
+    r"""聚合后的公共算法版本
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GroupName: 用于聚合的系列名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupName: str
+        :param _PublicAlgoVersions: 算法公共版本列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PublicAlgoVersions: list of PublicAlgoVersion
+        """
+        self._GroupName = None
+        self._PublicAlgoVersions = None
+
+    @property
+    def GroupName(self):
+        r"""用于聚合的系列名字
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def PublicAlgoVersions(self):
+        r"""算法公共版本列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of PublicAlgoVersion
+        """
+        return self._PublicAlgoVersions
+
+    @PublicAlgoVersions.setter
+    def PublicAlgoVersions(self, PublicAlgoVersions):
+        self._PublicAlgoVersions = PublicAlgoVersions
+
+
+    def _deserialize(self, params):
+        self._GroupName = params.get("GroupName")
+        if params.get("PublicAlgoVersions") is not None:
+            self._PublicAlgoVersions = []
+            for item in params.get("PublicAlgoVersions"):
+                obj = PublicAlgoVersion()
+                obj._deserialize(item)
+                self._PublicAlgoVersions.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Attribute(AbstractModel):
     r"""镜像属性
 
@@ -11217,6 +11277,181 @@ class DescribePlatformImagesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribePublicAlgoVersionListRequest(AbstractModel):
+    r"""DescribePublicAlgoVersionList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filters: 过滤器
+        :type Filters: list of Filter
+        :param _Offset: 偏移量
+        :type Offset: int
+        :param _Limit: 返回记录条数，默认10
+        :type Limit: int
+        :param _NeedsAggregate: 是否需要聚合
+        :type NeedsAggregate: bool
+        """
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+        self._NeedsAggregate = None
+
+    @property
+    def Filters(self):
+        r"""过滤器
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        r"""偏移量
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""返回记录条数，默认10
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def NeedsAggregate(self):
+        r"""是否需要聚合
+        :rtype: bool
+        """
+        return self._NeedsAggregate
+
+    @NeedsAggregate.setter
+    def NeedsAggregate(self, NeedsAggregate):
+        self._NeedsAggregate = NeedsAggregate
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._NeedsAggregate = params.get("NeedsAggregate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePublicAlgoVersionListResponse(AbstractModel):
+    r"""DescribePublicAlgoVersionList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 算法版本数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _PublicAlgoVersions: 公共算法版本列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PublicAlgoVersions: list of PublicAlgoVersion
+        :param _AggregatePublicAlgoVersions: 聚合后的公共算法版本列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AggregatePublicAlgoVersions: list of AggregatePublicAlgoVersion
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._PublicAlgoVersions = None
+        self._AggregatePublicAlgoVersions = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""算法版本数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def PublicAlgoVersions(self):
+        r"""公共算法版本列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of PublicAlgoVersion
+        """
+        return self._PublicAlgoVersions
+
+    @PublicAlgoVersions.setter
+    def PublicAlgoVersions(self, PublicAlgoVersions):
+        self._PublicAlgoVersions = PublicAlgoVersions
+
+    @property
+    def AggregatePublicAlgoVersions(self):
+        r"""聚合后的公共算法版本列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of AggregatePublicAlgoVersion
+        """
+        return self._AggregatePublicAlgoVersions
+
+    @AggregatePublicAlgoVersions.setter
+    def AggregatePublicAlgoVersions(self, AggregatePublicAlgoVersions):
+        self._AggregatePublicAlgoVersions = AggregatePublicAlgoVersions
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("PublicAlgoVersions") is not None:
+            self._PublicAlgoVersions = []
+            for item in params.get("PublicAlgoVersions"):
+                obj = PublicAlgoVersion()
+                obj._deserialize(item)
+                self._PublicAlgoVersions.append(obj)
+        if params.get("AggregatePublicAlgoVersions") is not None:
+            self._AggregatePublicAlgoVersions = []
+            for item in params.get("AggregatePublicAlgoVersions"):
+                obj = AggregatePublicAlgoVersion()
+                obj._deserialize(item)
+                self._AggregatePublicAlgoVersions.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeSubAccountLinuxUserInfosRequest(AbstractModel):
     r"""DescribeSubAccountLinuxUserInfos请求参数结构体
 
@@ -11882,6 +12117,120 @@ class DescribeTrainingTasksResponse(AbstractModel):
                 self._TrainingTaskSet.append(obj)
         self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
+
+
+class DeviceImageInfo(AbstractModel):
+    r"""设备对应的镜像信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeviceType: 设备类型, 支持GPU等
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeviceType: str
+        :param _ImageInfo: 镜像信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImageInfo: :class:`tencentcloud.tione.v20211111.models.ImageInfo`
+        """
+        self._DeviceType = None
+        self._ImageInfo = None
+
+    @property
+    def DeviceType(self):
+        r"""设备类型, 支持GPU等
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DeviceType
+
+    @DeviceType.setter
+    def DeviceType(self, DeviceType):
+        self._DeviceType = DeviceType
+
+    @property
+    def ImageInfo(self):
+        r"""镜像信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.ImageInfo`
+        """
+        return self._ImageInfo
+
+    @ImageInfo.setter
+    def ImageInfo(self, ImageInfo):
+        self._ImageInfo = ImageInfo
+
+
+    def _deserialize(self, params):
+        self._DeviceType = params.get("DeviceType")
+        if params.get("ImageInfo") is not None:
+            self._ImageInfo = ImageInfo()
+            self._ImageInfo._deserialize(params.get("ImageInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeviceMaterialInfo(AbstractModel):
+    r"""对应设备的物料信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeviceType: 设备信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeviceType: str
+        :param _MaterialInfo: 物料信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaterialInfo: :class:`tencentcloud.tione.v20211111.models.MaterialInfo`
+        """
+        self._DeviceType = None
+        self._MaterialInfo = None
+
+    @property
+    def DeviceType(self):
+        r"""设备信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DeviceType
+
+    @DeviceType.setter
+    def DeviceType(self, DeviceType):
+        self._DeviceType = DeviceType
+
+    @property
+    def MaterialInfo(self):
+        r"""物料信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.MaterialInfo`
+        """
+        return self._MaterialInfo
+
+    @MaterialInfo.setter
+    def MaterialInfo(self, MaterialInfo):
+        self._MaterialInfo = MaterialInfo
+
+
+    def _deserialize(self, params):
+        self._DeviceType = params.get("DeviceType")
+        if params.get("MaterialInfo") is not None:
+            self._MaterialInfo = MaterialInfo()
+            self._MaterialInfo._deserialize(params.get("MaterialInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class EncodedStartCmdInfo(AbstractModel):
@@ -14476,6 +14825,114 @@ class LogIdentity(AbstractModel):
         self._Message = params.get("Message")
         self._PodName = params.get("PodName")
         self._Timestamp = params.get("Timestamp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MaterialInfo(AbstractModel):
+    r"""物料信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StorageType: 存储类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StorageType: str
+        :param _CosPathInfo: Cos存储信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CosPathInfo: :class:`tencentcloud.tione.v20211111.models.CosPathInfo`
+        :param _MaterialName: 物料名，支持Code、Model
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaterialName: str
+        :param _MaterialType: 物料类型，支持PreSet(预置)、 Custom(自定义)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaterialType: str
+        :param _MountPath: 训练任务挂载路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MountPath: str
+        """
+        self._StorageType = None
+        self._CosPathInfo = None
+        self._MaterialName = None
+        self._MaterialType = None
+        self._MountPath = None
+
+    @property
+    def StorageType(self):
+        r"""存储类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._StorageType
+
+    @StorageType.setter
+    def StorageType(self, StorageType):
+        self._StorageType = StorageType
+
+    @property
+    def CosPathInfo(self):
+        r"""Cos存储信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.CosPathInfo`
+        """
+        return self._CosPathInfo
+
+    @CosPathInfo.setter
+    def CosPathInfo(self, CosPathInfo):
+        self._CosPathInfo = CosPathInfo
+
+    @property
+    def MaterialName(self):
+        r"""物料名，支持Code、Model
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._MaterialName
+
+    @MaterialName.setter
+    def MaterialName(self, MaterialName):
+        self._MaterialName = MaterialName
+
+    @property
+    def MaterialType(self):
+        r"""物料类型，支持PreSet(预置)、 Custom(自定义)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._MaterialType
+
+    @MaterialType.setter
+    def MaterialType(self, MaterialType):
+        self._MaterialType = MaterialType
+
+    @property
+    def MountPath(self):
+        r"""训练任务挂载路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._MountPath
+
+    @MountPath.setter
+    def MountPath(self, MountPath):
+        self._MountPath = MountPath
+
+
+    def _deserialize(self, params):
+        self._StorageType = params.get("StorageType")
+        if params.get("CosPathInfo") is not None:
+            self._CosPathInfo = CosPathInfo()
+            self._CosPathInfo._deserialize(params.get("CosPathInfo"))
+        self._MaterialName = params.get("MaterialName")
+        self._MaterialType = params.get("MaterialType")
+        self._MountPath = params.get("MountPath")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20517,6 +20974,504 @@ class ProbeAction(AbstractModel):
         
 
 
+class PublicAlgoVersion(AbstractModel):
+    r"""公共算法版本信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PublicAlgoVersionId: 公共算法版本Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PublicAlgoVersionId: str
+        :param _PublicAlgoGroupId: 对应的公共算法组Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PublicAlgoGroupId: str
+        :param _Version: 版本号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Version: str
+        :param _Introduction: 模型简介
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Introduction: str
+        :param _PreviewInfo: 预览信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PreviewInfo: str
+        :param _PresetTrainImageInfo: 预置训练镜像信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PresetTrainImageInfo: :class:`tencentcloud.tione.v20211111.models.ImageInfo`
+        :param _PresetTrainCodeInfo: 预置训练代码信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PresetTrainCodeInfo: :class:`tencentcloud.tione.v20211111.models.MaterialInfo`
+        :param _PresetModelInfo: 预置模型信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PresetModelInfo: :class:`tencentcloud.tione.v20211111.models.MaterialInfo`
+        :param _IsImported: 是否已经被导入到我的算法
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsImported: bool
+        :param _CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _UpdateTime: 更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        :param _DefaultResourceSpec: 默认训练资源规格
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DefaultResourceSpec: :class:`tencentcloud.tione.v20211111.models.ResourceSpec`
+        :param _DefaultInferenceResourceSpec: 默认推理资源规格
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DefaultInferenceResourceSpec: :class:`tencentcloud.tione.v20211111.models.ResourceSpec`
+        :param _SupportDeploy: 是否支持直接部署推理服务
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SupportDeploy: bool
+        :param _PresetTrainDataset: 内置训练数据集
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PresetTrainDataset: :class:`tencentcloud.tione.v20211111.models.MaterialInfo`
+        :param _TrainCodeDownloadUrl: 训练代码包下载路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TrainCodeDownloadUrl: str
+        :param _TrainDataDownloadUrl: 内置数据下载路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TrainDataDownloadUrl: str
+        :param _TrainParams: 训练参数列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TrainParams: list of TrainParam
+        :param _PresetTrainCodeStartCmd: 训练启动命令
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PresetTrainCodeStartCmd: str
+        :param _IsPrivateModel: 是否非公开模型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsPrivateModel: bool
+        :param _PresetTrainImageInfoList: 各种设备下的训练镜像
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PresetTrainImageInfoList: list of DeviceImageInfo
+        :param _PresetInferenceImageInfoList: 各种设备下的推理镜像
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PresetInferenceImageInfoList: list of DeviceImageInfo
+        :param _PresetTrainCodeInfoList: 各种设备下的训练代码信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PresetTrainCodeInfoList: list of DeviceMaterialInfo
+        :param _PresetModelInfoList: 各种设备下的内置模型信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PresetModelInfoList: list of DeviceMaterialInfo
+        :param _ModelCategory: 模型类别，比如LLM/MultiModal
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModelCategory: str
+        :param _PublicAlgoSeriesId: 公共算法Id
+        :type PublicAlgoSeriesId: str
+        """
+        self._PublicAlgoVersionId = None
+        self._PublicAlgoGroupId = None
+        self._Version = None
+        self._Introduction = None
+        self._PreviewInfo = None
+        self._PresetTrainImageInfo = None
+        self._PresetTrainCodeInfo = None
+        self._PresetModelInfo = None
+        self._IsImported = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._DefaultResourceSpec = None
+        self._DefaultInferenceResourceSpec = None
+        self._SupportDeploy = None
+        self._PresetTrainDataset = None
+        self._TrainCodeDownloadUrl = None
+        self._TrainDataDownloadUrl = None
+        self._TrainParams = None
+        self._PresetTrainCodeStartCmd = None
+        self._IsPrivateModel = None
+        self._PresetTrainImageInfoList = None
+        self._PresetInferenceImageInfoList = None
+        self._PresetTrainCodeInfoList = None
+        self._PresetModelInfoList = None
+        self._ModelCategory = None
+        self._PublicAlgoSeriesId = None
+
+    @property
+    def PublicAlgoVersionId(self):
+        r"""公共算法版本Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._PublicAlgoVersionId
+
+    @PublicAlgoVersionId.setter
+    def PublicAlgoVersionId(self, PublicAlgoVersionId):
+        self._PublicAlgoVersionId = PublicAlgoVersionId
+
+    @property
+    def PublicAlgoGroupId(self):
+        r"""对应的公共算法组Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._PublicAlgoGroupId
+
+    @PublicAlgoGroupId.setter
+    def PublicAlgoGroupId(self, PublicAlgoGroupId):
+        self._PublicAlgoGroupId = PublicAlgoGroupId
+
+    @property
+    def Version(self):
+        r"""版本号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+    @property
+    def Introduction(self):
+        r"""模型简介
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Introduction
+
+    @Introduction.setter
+    def Introduction(self, Introduction):
+        self._Introduction = Introduction
+
+    @property
+    def PreviewInfo(self):
+        r"""预览信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._PreviewInfo
+
+    @PreviewInfo.setter
+    def PreviewInfo(self, PreviewInfo):
+        self._PreviewInfo = PreviewInfo
+
+    @property
+    def PresetTrainImageInfo(self):
+        r"""预置训练镜像信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.ImageInfo`
+        """
+        return self._PresetTrainImageInfo
+
+    @PresetTrainImageInfo.setter
+    def PresetTrainImageInfo(self, PresetTrainImageInfo):
+        self._PresetTrainImageInfo = PresetTrainImageInfo
+
+    @property
+    def PresetTrainCodeInfo(self):
+        r"""预置训练代码信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.MaterialInfo`
+        """
+        return self._PresetTrainCodeInfo
+
+    @PresetTrainCodeInfo.setter
+    def PresetTrainCodeInfo(self, PresetTrainCodeInfo):
+        self._PresetTrainCodeInfo = PresetTrainCodeInfo
+
+    @property
+    def PresetModelInfo(self):
+        r"""预置模型信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.MaterialInfo`
+        """
+        return self._PresetModelInfo
+
+    @PresetModelInfo.setter
+    def PresetModelInfo(self, PresetModelInfo):
+        self._PresetModelInfo = PresetModelInfo
+
+    @property
+    def IsImported(self):
+        r"""是否已经被导入到我的算法
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._IsImported
+
+    @IsImported.setter
+    def IsImported(self, IsImported):
+        self._IsImported = IsImported
+
+    @property
+    def CreateTime(self):
+        r"""创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def DefaultResourceSpec(self):
+        r"""默认训练资源规格
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.ResourceSpec`
+        """
+        return self._DefaultResourceSpec
+
+    @DefaultResourceSpec.setter
+    def DefaultResourceSpec(self, DefaultResourceSpec):
+        self._DefaultResourceSpec = DefaultResourceSpec
+
+    @property
+    def DefaultInferenceResourceSpec(self):
+        r"""默认推理资源规格
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.ResourceSpec`
+        """
+        return self._DefaultInferenceResourceSpec
+
+    @DefaultInferenceResourceSpec.setter
+    def DefaultInferenceResourceSpec(self, DefaultInferenceResourceSpec):
+        self._DefaultInferenceResourceSpec = DefaultInferenceResourceSpec
+
+    @property
+    def SupportDeploy(self):
+        r"""是否支持直接部署推理服务
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._SupportDeploy
+
+    @SupportDeploy.setter
+    def SupportDeploy(self, SupportDeploy):
+        self._SupportDeploy = SupportDeploy
+
+    @property
+    def PresetTrainDataset(self):
+        r"""内置训练数据集
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.MaterialInfo`
+        """
+        return self._PresetTrainDataset
+
+    @PresetTrainDataset.setter
+    def PresetTrainDataset(self, PresetTrainDataset):
+        self._PresetTrainDataset = PresetTrainDataset
+
+    @property
+    def TrainCodeDownloadUrl(self):
+        r"""训练代码包下载路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TrainCodeDownloadUrl
+
+    @TrainCodeDownloadUrl.setter
+    def TrainCodeDownloadUrl(self, TrainCodeDownloadUrl):
+        self._TrainCodeDownloadUrl = TrainCodeDownloadUrl
+
+    @property
+    def TrainDataDownloadUrl(self):
+        r"""内置数据下载路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TrainDataDownloadUrl
+
+    @TrainDataDownloadUrl.setter
+    def TrainDataDownloadUrl(self, TrainDataDownloadUrl):
+        self._TrainDataDownloadUrl = TrainDataDownloadUrl
+
+    @property
+    def TrainParams(self):
+        r"""训练参数列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TrainParam
+        """
+        return self._TrainParams
+
+    @TrainParams.setter
+    def TrainParams(self, TrainParams):
+        self._TrainParams = TrainParams
+
+    @property
+    def PresetTrainCodeStartCmd(self):
+        r"""训练启动命令
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._PresetTrainCodeStartCmd
+
+    @PresetTrainCodeStartCmd.setter
+    def PresetTrainCodeStartCmd(self, PresetTrainCodeStartCmd):
+        self._PresetTrainCodeStartCmd = PresetTrainCodeStartCmd
+
+    @property
+    def IsPrivateModel(self):
+        r"""是否非公开模型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._IsPrivateModel
+
+    @IsPrivateModel.setter
+    def IsPrivateModel(self, IsPrivateModel):
+        self._IsPrivateModel = IsPrivateModel
+
+    @property
+    def PresetTrainImageInfoList(self):
+        r"""各种设备下的训练镜像
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DeviceImageInfo
+        """
+        return self._PresetTrainImageInfoList
+
+    @PresetTrainImageInfoList.setter
+    def PresetTrainImageInfoList(self, PresetTrainImageInfoList):
+        self._PresetTrainImageInfoList = PresetTrainImageInfoList
+
+    @property
+    def PresetInferenceImageInfoList(self):
+        r"""各种设备下的推理镜像
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DeviceImageInfo
+        """
+        return self._PresetInferenceImageInfoList
+
+    @PresetInferenceImageInfoList.setter
+    def PresetInferenceImageInfoList(self, PresetInferenceImageInfoList):
+        self._PresetInferenceImageInfoList = PresetInferenceImageInfoList
+
+    @property
+    def PresetTrainCodeInfoList(self):
+        r"""各种设备下的训练代码信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DeviceMaterialInfo
+        """
+        return self._PresetTrainCodeInfoList
+
+    @PresetTrainCodeInfoList.setter
+    def PresetTrainCodeInfoList(self, PresetTrainCodeInfoList):
+        self._PresetTrainCodeInfoList = PresetTrainCodeInfoList
+
+    @property
+    def PresetModelInfoList(self):
+        r"""各种设备下的内置模型信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DeviceMaterialInfo
+        """
+        return self._PresetModelInfoList
+
+    @PresetModelInfoList.setter
+    def PresetModelInfoList(self, PresetModelInfoList):
+        self._PresetModelInfoList = PresetModelInfoList
+
+    @property
+    def ModelCategory(self):
+        r"""模型类别，比如LLM/MultiModal
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ModelCategory
+
+    @ModelCategory.setter
+    def ModelCategory(self, ModelCategory):
+        self._ModelCategory = ModelCategory
+
+    @property
+    def PublicAlgoSeriesId(self):
+        r"""公共算法Id
+        :rtype: str
+        """
+        return self._PublicAlgoSeriesId
+
+    @PublicAlgoSeriesId.setter
+    def PublicAlgoSeriesId(self, PublicAlgoSeriesId):
+        self._PublicAlgoSeriesId = PublicAlgoSeriesId
+
+
+    def _deserialize(self, params):
+        self._PublicAlgoVersionId = params.get("PublicAlgoVersionId")
+        self._PublicAlgoGroupId = params.get("PublicAlgoGroupId")
+        self._Version = params.get("Version")
+        self._Introduction = params.get("Introduction")
+        self._PreviewInfo = params.get("PreviewInfo")
+        if params.get("PresetTrainImageInfo") is not None:
+            self._PresetTrainImageInfo = ImageInfo()
+            self._PresetTrainImageInfo._deserialize(params.get("PresetTrainImageInfo"))
+        if params.get("PresetTrainCodeInfo") is not None:
+            self._PresetTrainCodeInfo = MaterialInfo()
+            self._PresetTrainCodeInfo._deserialize(params.get("PresetTrainCodeInfo"))
+        if params.get("PresetModelInfo") is not None:
+            self._PresetModelInfo = MaterialInfo()
+            self._PresetModelInfo._deserialize(params.get("PresetModelInfo"))
+        self._IsImported = params.get("IsImported")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        if params.get("DefaultResourceSpec") is not None:
+            self._DefaultResourceSpec = ResourceSpec()
+            self._DefaultResourceSpec._deserialize(params.get("DefaultResourceSpec"))
+        if params.get("DefaultInferenceResourceSpec") is not None:
+            self._DefaultInferenceResourceSpec = ResourceSpec()
+            self._DefaultInferenceResourceSpec._deserialize(params.get("DefaultInferenceResourceSpec"))
+        self._SupportDeploy = params.get("SupportDeploy")
+        if params.get("PresetTrainDataset") is not None:
+            self._PresetTrainDataset = MaterialInfo()
+            self._PresetTrainDataset._deserialize(params.get("PresetTrainDataset"))
+        self._TrainCodeDownloadUrl = params.get("TrainCodeDownloadUrl")
+        self._TrainDataDownloadUrl = params.get("TrainDataDownloadUrl")
+        if params.get("TrainParams") is not None:
+            self._TrainParams = []
+            for item in params.get("TrainParams"):
+                obj = TrainParam()
+                obj._deserialize(item)
+                self._TrainParams.append(obj)
+        self._PresetTrainCodeStartCmd = params.get("PresetTrainCodeStartCmd")
+        self._IsPrivateModel = params.get("IsPrivateModel")
+        if params.get("PresetTrainImageInfoList") is not None:
+            self._PresetTrainImageInfoList = []
+            for item in params.get("PresetTrainImageInfoList"):
+                obj = DeviceImageInfo()
+                obj._deserialize(item)
+                self._PresetTrainImageInfoList.append(obj)
+        if params.get("PresetInferenceImageInfoList") is not None:
+            self._PresetInferenceImageInfoList = []
+            for item in params.get("PresetInferenceImageInfoList"):
+                obj = DeviceImageInfo()
+                obj._deserialize(item)
+                self._PresetInferenceImageInfoList.append(obj)
+        if params.get("PresetTrainCodeInfoList") is not None:
+            self._PresetTrainCodeInfoList = []
+            for item in params.get("PresetTrainCodeInfoList"):
+                obj = DeviceMaterialInfo()
+                obj._deserialize(item)
+                self._PresetTrainCodeInfoList.append(obj)
+        if params.get("PresetModelInfoList") is not None:
+            self._PresetModelInfoList = []
+            for item in params.get("PresetModelInfoList"):
+                obj = DeviceMaterialInfo()
+                obj._deserialize(item)
+                self._PresetModelInfoList.append(obj)
+        self._ModelCategory = params.get("ModelCategory")
+        self._PublicAlgoSeriesId = params.get("PublicAlgoSeriesId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PublicDataSourceFS(AbstractModel):
     r"""公有云数据源结构
 
@@ -21515,6 +22470,78 @@ class ResourceInstanceRunningJobInfo(AbstractModel):
         self._TaskType = params.get("TaskType")
         self._TaskId = params.get("TaskId")
         self._TaskName = params.get("TaskName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResourceSpec(AbstractModel):
+    r"""TI资源规格
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SpecAlias: 规格简称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SpecAlias: str
+        :param _SpecId: 规格Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SpecId: str
+        :param _SpecName: 规则名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SpecName: str
+        """
+        self._SpecAlias = None
+        self._SpecId = None
+        self._SpecName = None
+
+    @property
+    def SpecAlias(self):
+        r"""规格简称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SpecAlias
+
+    @SpecAlias.setter
+    def SpecAlias(self, SpecAlias):
+        self._SpecAlias = SpecAlias
+
+    @property
+    def SpecId(self):
+        r"""规格Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SpecId
+
+    @SpecId.setter
+    def SpecId(self, SpecId):
+        self._SpecId = SpecId
+
+    @property
+    def SpecName(self):
+        r"""规则名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SpecName
+
+    @SpecName.setter
+    def SpecName(self, SpecName):
+        self._SpecName = SpecName
+
+
+    def _deserialize(self, params):
+        self._SpecAlias = params.get("SpecAlias")
+        self._SpecId = params.get("SpecId")
+        self._SpecName = params.get("SpecName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25562,6 +26589,155 @@ class TagFilter(AbstractModel):
     def _deserialize(self, params):
         self._TagKey = params.get("TagKey")
         self._TagValues = params.get("TagValues")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TrainParam(AbstractModel):
+    r"""训练超参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 参数名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _DefaultValue: 默认参数值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DefaultValue: str
+        :param _Comment: 参数注释
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Comment: str
+        :param _Type: 参数类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param _Required: 是否必选
+        :type Required: bool
+        :param _Value: 参数值
+        :type Value: str
+        :param _Range: 参数范围
+        :type Range: list of str
+        :param _Enum: 参数选项
+        :type Enum: list of str
+        """
+        self._Name = None
+        self._DefaultValue = None
+        self._Comment = None
+        self._Type = None
+        self._Required = None
+        self._Value = None
+        self._Range = None
+        self._Enum = None
+
+    @property
+    def Name(self):
+        r"""参数名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def DefaultValue(self):
+        r"""默认参数值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DefaultValue
+
+    @DefaultValue.setter
+    def DefaultValue(self, DefaultValue):
+        self._DefaultValue = DefaultValue
+
+    @property
+    def Comment(self):
+        r"""参数注释
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def Type(self):
+        r"""参数类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Required(self):
+        r"""是否必选
+        :rtype: bool
+        """
+        return self._Required
+
+    @Required.setter
+    def Required(self, Required):
+        self._Required = Required
+
+    @property
+    def Value(self):
+        r"""参数值
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def Range(self):
+        r"""参数范围
+        :rtype: list of str
+        """
+        return self._Range
+
+    @Range.setter
+    def Range(self, Range):
+        self._Range = Range
+
+    @property
+    def Enum(self):
+        r"""参数选项
+        :rtype: list of str
+        """
+        return self._Enum
+
+    @Enum.setter
+    def Enum(self, Enum):
+        self._Enum = Enum
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._DefaultValue = params.get("DefaultValue")
+        self._Comment = params.get("Comment")
+        self._Type = params.get("Type")
+        self._Required = params.get("Required")
+        self._Value = params.get("Value")
+        self._Range = params.get("Range")
+        self._Enum = params.get("Enum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

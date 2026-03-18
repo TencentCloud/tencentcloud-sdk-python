@@ -60,6 +60,8 @@ class AggrCategorySoftDetailRow(AbstractModel):
         :type GenuineRate: float
         :param _UpgradableDeviceNum: 有新版本可升级的设备数量
         :type UpgradableDeviceNum: int
+        :param _UpgradeDeviceNum: 有新版本可升级的设备数量
+        :type UpgradeDeviceNum: int
         """
         self._ID = None
         self._Name = None
@@ -73,6 +75,7 @@ class AggrCategorySoftDetailRow(AbstractModel):
         self._AuthNum = None
         self._GenuineRate = None
         self._UpgradableDeviceNum = None
+        self._UpgradeDeviceNum = None
 
     @property
     def ID(self):
@@ -217,6 +220,17 @@ class AggrCategorySoftDetailRow(AbstractModel):
     def UpgradableDeviceNum(self, UpgradableDeviceNum):
         self._UpgradableDeviceNum = UpgradableDeviceNum
 
+    @property
+    def UpgradeDeviceNum(self):
+        r"""有新版本可升级的设备数量
+        :rtype: int
+        """
+        return self._UpgradeDeviceNum
+
+    @UpgradeDeviceNum.setter
+    def UpgradeDeviceNum(self, UpgradeDeviceNum):
+        self._UpgradeDeviceNum = UpgradeDeviceNum
+
 
     def _deserialize(self, params):
         self._ID = params.get("ID")
@@ -231,6 +245,7 @@ class AggrCategorySoftDetailRow(AbstractModel):
         self._AuthNum = params.get("AuthNum")
         self._GenuineRate = params.get("GenuineRate")
         self._UpgradableDeviceNum = params.get("UpgradableDeviceNum")
+        self._UpgradeDeviceNum = params.get("UpgradeDeviceNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10157,12 +10172,16 @@ class RulePayloadItem(AbstractModel):
         :param _RelateOption: RelateOption 关系操作符（and/or），用于根级别条件关系
 注意：此字段可能返回 null，表示取不到有效值。
         :type RelateOption: str
+        :param _ValueType: 值类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ValueType: str
         """
         self._FieldKey = None
         self._Option = None
         self._Value = None
         self._Groups = None
         self._RelateOption = None
+        self._ValueType = None
 
     @property
     def FieldKey(self):
@@ -10224,6 +10243,18 @@ class RulePayloadItem(AbstractModel):
     def RelateOption(self, RelateOption):
         self._RelateOption = RelateOption
 
+    @property
+    def ValueType(self):
+        r"""值类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ValueType
+
+    @ValueType.setter
+    def ValueType(self, ValueType):
+        self._ValueType = ValueType
+
 
     def _deserialize(self, params):
         self._FieldKey = params.get("FieldKey")
@@ -10236,6 +10267,7 @@ class RulePayloadItem(AbstractModel):
                 obj._deserialize(item)
                 self._Groups.append(obj)
         self._RelateOption = params.get("RelateOption")
+        self._ValueType = params.get("ValueType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
