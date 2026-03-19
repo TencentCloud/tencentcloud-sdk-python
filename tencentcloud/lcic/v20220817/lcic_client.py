@@ -900,6 +900,29 @@ class LcicClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeLiveRelayConfig(self, request):
+        r"""获取转推配置
+
+        :param request: Request instance for DescribeLiveRelayConfig.
+        :type request: :class:`tencentcloud.lcic.v20220817.models.DescribeLiveRelayConfigRequest`
+        :rtype: :class:`tencentcloud.lcic.v20220817.models.DescribeLiveRelayConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLiveRelayConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLiveRelayConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeMarquee(self, request):
         r"""查询跑马灯配置
 
@@ -1585,6 +1608,29 @@ class LcicClient(AbstractClient):
             body = self.call("ModifyGroup", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyLiveRelayConfig(self, request):
+        r"""修改转推配置
+
+        :param request: Request instance for ModifyLiveRelayConfig.
+        :type request: :class:`tencentcloud.lcic.v20220817.models.ModifyLiveRelayConfigRequest`
+        :rtype: :class:`tencentcloud.lcic.v20220817.models.ModifyLiveRelayConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyLiveRelayConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyLiveRelayConfigResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

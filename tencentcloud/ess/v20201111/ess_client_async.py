@@ -553,6 +553,24 @@ class EssClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateDigitalDataSign(
+            self,
+            request: models.CreateDigitalDataSignRequest,
+            opts: Dict = None,
+    ) -> models.CreateDigitalDataSignResponse:
+        """
+        创建数据加签请求
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateDigitalDataSign"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateDigitalDataSignResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateDocument(
             self,
             request: models.CreateDocumentRequest,
@@ -3641,6 +3659,24 @@ class EssClient(AbstractClient):
         kwargs["action"] = "VerifyDigitFile"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.VerifyDigitFileResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def VerifyDigitalDataSign(
+            self,
+            request: models.VerifyDigitalDataSignRequest,
+            opts: Dict = None,
+    ) -> models.VerifyDigitalDataSignResponse:
+        """
+        数据加签验签接口
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "VerifyDigitalDataSign"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.VerifyDigitalDataSignResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

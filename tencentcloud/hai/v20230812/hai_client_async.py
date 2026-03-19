@@ -43,6 +43,24 @@ class HaiClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateInferServiceByTemplate(
+            self,
+            request: models.CreateInferServiceByTemplateRequest,
+            opts: Dict = None,
+    ) -> models.CreateInferServiceByTemplateResponse:
+        """
+        本接口(CreateInferServiceByTemplate)用于根据模板创建服务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateInferServiceByTemplate"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateInferServiceByTemplateResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateMuskPrompt(
             self,
             request: models.CreateMuskPromptRequest,
@@ -61,6 +79,24 @@ class HaiClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeployInferService(
+            self,
+            request: models.DeployInferServiceRequest,
+            opts: Dict = None,
+    ) -> models.DeployInferServiceResponse:
+        """
+        本接口(DeployInferService)用于部署推理服务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeployInferService"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeployInferServiceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeApplications(
             self,
             request: models.DescribeApplicationsRequest,
@@ -74,6 +110,24 @@ class HaiClient(AbstractClient):
         kwargs["action"] = "DescribeApplications"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeApplicationsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeDeployTemplates(
+            self,
+            request: models.DescribeDeployTemplatesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDeployTemplatesResponse:
+        """
+        本接口(DescribeDeployTemplates)用于查询模型支持的部署模板
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDeployTemplates"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDeployTemplatesResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -110,6 +164,24 @@ class HaiClient(AbstractClient):
         kwargs["action"] = "DescribeInstances"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeInstancesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeModels(
+            self,
+            request: models.DescribeModelsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeModelsResponse:
+        """
+        本接口(DescribeModels)用于查询模型
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeModels"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeModelsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

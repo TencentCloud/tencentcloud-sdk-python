@@ -342,6 +342,113 @@ class ComputeDetail(AbstractModel):
         
 
 
+class ComputeInfo(AbstractModel):
+    r"""资源相关信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ComputeResources: 资源类型及数量
+        :type ComputeResources: list of ComputeResource
+        :param _Replicas: 副本数
+        :type Replicas: int
+        """
+        self._ComputeResources = None
+        self._Replicas = None
+
+    @property
+    def ComputeResources(self):
+        r"""资源类型及数量
+        :rtype: list of ComputeResource
+        """
+        return self._ComputeResources
+
+    @ComputeResources.setter
+    def ComputeResources(self, ComputeResources):
+        self._ComputeResources = ComputeResources
+
+    @property
+    def Replicas(self):
+        r"""副本数
+        :rtype: int
+        """
+        return self._Replicas
+
+    @Replicas.setter
+    def Replicas(self, Replicas):
+        self._Replicas = Replicas
+
+
+    def _deserialize(self, params):
+        if params.get("ComputeResources") is not None:
+            self._ComputeResources = []
+            for item in params.get("ComputeResources"):
+                obj = ComputeResource()
+                obj._deserialize(item)
+                self._ComputeResources.append(obj)
+        self._Replicas = params.get("Replicas")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ComputeResource(AbstractModel):
+    r"""推理服务的算力资源
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BundleType: 算力套餐的类型
+        :type BundleType: str
+        :param _Count: 节点数量
+        :type Count: int
+        """
+        self._BundleType = None
+        self._Count = None
+
+    @property
+    def BundleType(self):
+        r"""算力套餐的类型
+        :rtype: str
+        """
+        return self._BundleType
+
+    @BundleType.setter
+    def BundleType(self, BundleType):
+        self._BundleType = BundleType
+
+    @property
+    def Count(self):
+        r"""节点数量
+        :rtype: int
+        """
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+
+    def _deserialize(self, params):
+        self._BundleType = params.get("BundleType")
+        self._Count = params.get("Count")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ContainerInfo(AbstractModel):
     r"""容器信息
 
@@ -559,6 +666,164 @@ class CreateApplicationResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateInferServiceByTemplateRequest(AbstractModel):
+    r"""CreateInferServiceByTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TemplateId: 模版ID
+        :type TemplateId: str
+        :param _ServiceName: 服务名称
+        :type ServiceName: str
+        :param _Replicas: 副本数
+        :type Replicas: int
+        :param _ServiceChargeType: 付费方式，POSTPAID_BY_HOUR按量后付费
+        :type ServiceChargeType: str
+        :param _HyperParam: 描述了服务的超参数配置
+        :type HyperParam: :class:`tencentcloud.hai.v20230812.models.HyperParam`
+        :param _NetworkSetting: 网络设置
+        :type NetworkSetting: :class:`tencentcloud.hai.v20230812.models.NetworkSetting`
+        """
+        self._TemplateId = None
+        self._ServiceName = None
+        self._Replicas = None
+        self._ServiceChargeType = None
+        self._HyperParam = None
+        self._NetworkSetting = None
+
+    @property
+    def TemplateId(self):
+        r"""模版ID
+        :rtype: str
+        """
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def ServiceName(self):
+        r"""服务名称
+        :rtype: str
+        """
+        return self._ServiceName
+
+    @ServiceName.setter
+    def ServiceName(self, ServiceName):
+        self._ServiceName = ServiceName
+
+    @property
+    def Replicas(self):
+        r"""副本数
+        :rtype: int
+        """
+        return self._Replicas
+
+    @Replicas.setter
+    def Replicas(self, Replicas):
+        self._Replicas = Replicas
+
+    @property
+    def ServiceChargeType(self):
+        r"""付费方式，POSTPAID_BY_HOUR按量后付费
+        :rtype: str
+        """
+        return self._ServiceChargeType
+
+    @ServiceChargeType.setter
+    def ServiceChargeType(self, ServiceChargeType):
+        self._ServiceChargeType = ServiceChargeType
+
+    @property
+    def HyperParam(self):
+        r"""描述了服务的超参数配置
+        :rtype: :class:`tencentcloud.hai.v20230812.models.HyperParam`
+        """
+        return self._HyperParam
+
+    @HyperParam.setter
+    def HyperParam(self, HyperParam):
+        self._HyperParam = HyperParam
+
+    @property
+    def NetworkSetting(self):
+        r"""网络设置
+        :rtype: :class:`tencentcloud.hai.v20230812.models.NetworkSetting`
+        """
+        return self._NetworkSetting
+
+    @NetworkSetting.setter
+    def NetworkSetting(self, NetworkSetting):
+        self._NetworkSetting = NetworkSetting
+
+
+    def _deserialize(self, params):
+        self._TemplateId = params.get("TemplateId")
+        self._ServiceName = params.get("ServiceName")
+        self._Replicas = params.get("Replicas")
+        self._ServiceChargeType = params.get("ServiceChargeType")
+        if params.get("HyperParam") is not None:
+            self._HyperParam = HyperParam()
+            self._HyperParam._deserialize(params.get("HyperParam"))
+        if params.get("NetworkSetting") is not None:
+            self._NetworkSetting = NetworkSetting()
+            self._NetworkSetting._deserialize(params.get("NetworkSetting"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateInferServiceByTemplateResponse(AbstractModel):
+    r"""CreateInferServiceByTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ServiceId: 服务ID
+        :type ServiceId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ServiceId = None
+        self._RequestId = None
+
+    @property
+    def ServiceId(self):
+        r"""服务ID
+        :rtype: str
+        """
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ServiceId = params.get("ServiceId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateMuskPromptRequest(AbstractModel):
     r"""CreateMuskPrompt请求参数结构体
 
@@ -665,6 +930,158 @@ class CreateMuskPromptResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._PromptId = params.get("PromptId")
+        self._RequestId = params.get("RequestId")
+
+
+class DeployInferServiceRequest(AbstractModel):
+    r"""DeployInferService请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ServiceMetaData: 服务元数据信息，如服务名
+        :type ServiceMetaData: :class:`tencentcloud.hai.v20230812.models.ServiceMetaData`
+        :param _ComputeInfo: 资源相关信息
+        :type ComputeInfo: :class:`tencentcloud.hai.v20230812.models.ComputeInfo`
+        :param _DeploymentConfigs: 服务部署信息
+        :type DeploymentConfigs: list of DeploymentConfig
+        :param _HyperParam: 服务超参数配置
+        :type HyperParam: :class:`tencentcloud.hai.v20230812.models.HyperParam`
+        :param _NetworkSetting: 网络设置
+        :type NetworkSetting: :class:`tencentcloud.hai.v20230812.models.NetworkSetting`
+        """
+        self._ServiceMetaData = None
+        self._ComputeInfo = None
+        self._DeploymentConfigs = None
+        self._HyperParam = None
+        self._NetworkSetting = None
+
+    @property
+    def ServiceMetaData(self):
+        r"""服务元数据信息，如服务名
+        :rtype: :class:`tencentcloud.hai.v20230812.models.ServiceMetaData`
+        """
+        return self._ServiceMetaData
+
+    @ServiceMetaData.setter
+    def ServiceMetaData(self, ServiceMetaData):
+        self._ServiceMetaData = ServiceMetaData
+
+    @property
+    def ComputeInfo(self):
+        r"""资源相关信息
+        :rtype: :class:`tencentcloud.hai.v20230812.models.ComputeInfo`
+        """
+        return self._ComputeInfo
+
+    @ComputeInfo.setter
+    def ComputeInfo(self, ComputeInfo):
+        self._ComputeInfo = ComputeInfo
+
+    @property
+    def DeploymentConfigs(self):
+        r"""服务部署信息
+        :rtype: list of DeploymentConfig
+        """
+        return self._DeploymentConfigs
+
+    @DeploymentConfigs.setter
+    def DeploymentConfigs(self, DeploymentConfigs):
+        self._DeploymentConfigs = DeploymentConfigs
+
+    @property
+    def HyperParam(self):
+        r"""服务超参数配置
+        :rtype: :class:`tencentcloud.hai.v20230812.models.HyperParam`
+        """
+        return self._HyperParam
+
+    @HyperParam.setter
+    def HyperParam(self, HyperParam):
+        self._HyperParam = HyperParam
+
+    @property
+    def NetworkSetting(self):
+        r"""网络设置
+        :rtype: :class:`tencentcloud.hai.v20230812.models.NetworkSetting`
+        """
+        return self._NetworkSetting
+
+    @NetworkSetting.setter
+    def NetworkSetting(self, NetworkSetting):
+        self._NetworkSetting = NetworkSetting
+
+
+    def _deserialize(self, params):
+        if params.get("ServiceMetaData") is not None:
+            self._ServiceMetaData = ServiceMetaData()
+            self._ServiceMetaData._deserialize(params.get("ServiceMetaData"))
+        if params.get("ComputeInfo") is not None:
+            self._ComputeInfo = ComputeInfo()
+            self._ComputeInfo._deserialize(params.get("ComputeInfo"))
+        if params.get("DeploymentConfigs") is not None:
+            self._DeploymentConfigs = []
+            for item in params.get("DeploymentConfigs"):
+                obj = DeploymentConfig()
+                obj._deserialize(item)
+                self._DeploymentConfigs.append(obj)
+        if params.get("HyperParam") is not None:
+            self._HyperParam = HyperParam()
+            self._HyperParam._deserialize(params.get("HyperParam"))
+        if params.get("NetworkSetting") is not None:
+            self._NetworkSetting = NetworkSetting()
+            self._NetworkSetting._deserialize(params.get("NetworkSetting"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeployInferServiceResponse(AbstractModel):
+    r"""DeployInferService返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ServiceId: 服务ID
+        :type ServiceId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ServiceId = None
+        self._RequestId = None
+
+    @property
+    def ServiceId(self):
+        r"""服务ID
+        :rtype: str
+        """
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ServiceId = params.get("ServiceId")
         self._RequestId = params.get("RequestId")
 
 
@@ -897,6 +1314,105 @@ class DescribeApplicationsResponse(AbstractModel):
                 obj = ApplicationInfo()
                 obj._deserialize(item)
                 self._ApplicationSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDeployTemplatesRequest(AbstractModel):
+    r"""DescribeDeployTemplates请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModelId: 模型ID
+        :type ModelId: str
+        """
+        self._ModelId = None
+
+    @property
+    def ModelId(self):
+        r"""模型ID
+        :rtype: str
+        """
+        return self._ModelId
+
+    @ModelId.setter
+    def ModelId(self, ModelId):
+        self._ModelId = ModelId
+
+
+    def _deserialize(self, params):
+        self._ModelId = params.get("ModelId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDeployTemplatesResponse(AbstractModel):
+    r"""DescribeDeployTemplates返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TemplateSet: 模板列表
+        :type TemplateSet: list of TemplateDetail
+        :param _EngineTypes: 支持的推理引擎
+        :type EngineTypes: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TemplateSet = None
+        self._EngineTypes = None
+        self._RequestId = None
+
+    @property
+    def TemplateSet(self):
+        r"""模板列表
+        :rtype: list of TemplateDetail
+        """
+        return self._TemplateSet
+
+    @TemplateSet.setter
+    def TemplateSet(self, TemplateSet):
+        self._TemplateSet = TemplateSet
+
+    @property
+    def EngineTypes(self):
+        r"""支持的推理引擎
+        :rtype: list of str
+        """
+        return self._EngineTypes
+
+    @EngineTypes.setter
+    def EngineTypes(self, EngineTypes):
+        self._EngineTypes = EngineTypes
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("TemplateSet") is not None:
+            self._TemplateSet = []
+            for item in params.get("TemplateSet"):
+                obj = TemplateDetail()
+                obj._deserialize(item)
+                self._TemplateSet.append(obj)
+        self._EngineTypes = params.get("EngineTypes")
         self._RequestId = params.get("RequestId")
 
 
@@ -1149,6 +1665,155 @@ class DescribeInstancesResponse(AbstractModel):
                 obj = Instance()
                 obj._deserialize(item)
                 self._InstanceSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeModelsRequest(AbstractModel):
+    r"""DescribeModels请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModelIds: 模型id
+        :type ModelIds: list of str
+        :param _Filters: 过滤器。Name的可选值有scene-id
+        :type Filters: list of Filter
+        :param _Offset: 偏移量，不得小于0，默认为0
+        :type Offset: int
+        :param _Limit: 返回量，不得大于100，默认为20
+        :type Limit: int
+        """
+        self._ModelIds = None
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def ModelIds(self):
+        r"""模型id
+        :rtype: list of str
+        """
+        return self._ModelIds
+
+    @ModelIds.setter
+    def ModelIds(self, ModelIds):
+        self._ModelIds = ModelIds
+
+    @property
+    def Filters(self):
+        r"""过滤器。Name的可选值有scene-id
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        r"""偏移量，不得小于0，默认为0
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""返回量，不得大于100，默认为20
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._ModelIds = params.get("ModelIds")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeModelsResponse(AbstractModel):
+    r"""DescribeModels返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 模型总数
+        :type TotalCount: int
+        :param _ModelSet: 分页返回的模型列表
+        :type ModelSet: list of ModelDetail
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._ModelSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""模型总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def ModelSet(self):
+        r"""分页返回的模型列表
+        :rtype: list of ModelDetail
+        """
+        return self._ModelSet
+
+    @ModelSet.setter
+    def ModelSet(self, ModelSet):
+        self._ModelSet = ModelSet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("ModelSet") is not None:
+            self._ModelSet = []
+            for item in params.get("ModelSet"):
+                obj = ModelDetail()
+                obj._deserialize(item)
+                self._ModelSet.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -2921,6 +3586,147 @@ class LoginSetting(AbstractModel):
         
 
 
+class ModelDetail(AbstractModel):
+    r"""模型详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModelName: 模型名称
+        :type ModelName: str
+        :param _ModelId: 模型ID
+        :type ModelId: str
+        :param _Description: 应用描述	
+        :type Description: str
+        :param _CommunityUrl: 官方社区链接	
+        :type CommunityUrl: str
+        :param _GuideUrl: 最佳实践链接
+        :type GuideUrl: str
+        :param _ModelState: 模型状态
+        :type ModelState: str
+        :param _Tags: 应用对应的标签，如机器学习
+        :type Tags: list of str
+        :param _ConfigEnvironment: 配置环境
+        :type ConfigEnvironment: str
+        """
+        self._ModelName = None
+        self._ModelId = None
+        self._Description = None
+        self._CommunityUrl = None
+        self._GuideUrl = None
+        self._ModelState = None
+        self._Tags = None
+        self._ConfigEnvironment = None
+
+    @property
+    def ModelName(self):
+        r"""模型名称
+        :rtype: str
+        """
+        return self._ModelName
+
+    @ModelName.setter
+    def ModelName(self, ModelName):
+        self._ModelName = ModelName
+
+    @property
+    def ModelId(self):
+        r"""模型ID
+        :rtype: str
+        """
+        return self._ModelId
+
+    @ModelId.setter
+    def ModelId(self, ModelId):
+        self._ModelId = ModelId
+
+    @property
+    def Description(self):
+        r"""应用描述	
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def CommunityUrl(self):
+        r"""官方社区链接	
+        :rtype: str
+        """
+        return self._CommunityUrl
+
+    @CommunityUrl.setter
+    def CommunityUrl(self, CommunityUrl):
+        self._CommunityUrl = CommunityUrl
+
+    @property
+    def GuideUrl(self):
+        r"""最佳实践链接
+        :rtype: str
+        """
+        return self._GuideUrl
+
+    @GuideUrl.setter
+    def GuideUrl(self, GuideUrl):
+        self._GuideUrl = GuideUrl
+
+    @property
+    def ModelState(self):
+        r"""模型状态
+        :rtype: str
+        """
+        return self._ModelState
+
+    @ModelState.setter
+    def ModelState(self, ModelState):
+        self._ModelState = ModelState
+
+    @property
+    def Tags(self):
+        r"""应用对应的标签，如机器学习
+        :rtype: list of str
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def ConfigEnvironment(self):
+        r"""配置环境
+        :rtype: str
+        """
+        return self._ConfigEnvironment
+
+    @ConfigEnvironment.setter
+    def ConfigEnvironment(self, ConfigEnvironment):
+        self._ConfigEnvironment = ConfigEnvironment
+
+
+    def _deserialize(self, params):
+        self._ModelName = params.get("ModelName")
+        self._ModelId = params.get("ModelId")
+        self._Description = params.get("Description")
+        self._CommunityUrl = params.get("CommunityUrl")
+        self._GuideUrl = params.get("GuideUrl")
+        self._ModelState = params.get("ModelState")
+        self._Tags = params.get("Tags")
+        self._ConfigEnvironment = params.get("ConfigEnvironment")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class MuskPromptInfo(AbstractModel):
     r"""musk prompt详情
 
@@ -3073,6 +3879,87 @@ class MuskPromptInfo(AbstractModel):
         self._UpdateTime = params.get("UpdateTime")
         self._Cost = params.get("Cost")
         self._ErrorMessage = params.get("ErrorMessage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NetworkSetting(AbstractModel):
+    r"""推理集群的网络设置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PublicEndpointEnable: 公网访问
+        :type PublicEndpointEnable: bool
+        :param _VpcEndpointEnable: 内网访问
+        :type VpcEndpointEnable: bool
+        :param _VpcId: vpc内网ID
+        :type VpcId: str
+        :param _SubnetId: 子网ID
+        :type SubnetId: str
+        """
+        self._PublicEndpointEnable = None
+        self._VpcEndpointEnable = None
+        self._VpcId = None
+        self._SubnetId = None
+
+    @property
+    def PublicEndpointEnable(self):
+        r"""公网访问
+        :rtype: bool
+        """
+        return self._PublicEndpointEnable
+
+    @PublicEndpointEnable.setter
+    def PublicEndpointEnable(self, PublicEndpointEnable):
+        self._PublicEndpointEnable = PublicEndpointEnable
+
+    @property
+    def VpcEndpointEnable(self):
+        r"""内网访问
+        :rtype: bool
+        """
+        return self._VpcEndpointEnable
+
+    @VpcEndpointEnable.setter
+    def VpcEndpointEnable(self, VpcEndpointEnable):
+        self._VpcEndpointEnable = VpcEndpointEnable
+
+    @property
+    def VpcId(self):
+        r"""vpc内网ID
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetId(self):
+        r"""子网ID
+        :rtype: str
+        """
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+
+    def _deserialize(self, params):
+        self._PublicEndpointEnable = params.get("PublicEndpointEnable")
+        self._VpcEndpointEnable = params.get("VpcEndpointEnable")
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3942,6 +4829,57 @@ class ServiceDetail(AbstractModel):
         
 
 
+class ServiceMetaData(AbstractModel):
+    r"""服务元数据信息，如服务名
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ServiceName: 服务名称
+        :type ServiceName: str
+        :param _ServiceChargeType: 收费类型
+        :type ServiceChargeType: str
+        """
+        self._ServiceName = None
+        self._ServiceChargeType = None
+
+    @property
+    def ServiceName(self):
+        r"""服务名称
+        :rtype: str
+        """
+        return self._ServiceName
+
+    @ServiceName.setter
+    def ServiceName(self, ServiceName):
+        self._ServiceName = ServiceName
+
+    @property
+    def ServiceChargeType(self):
+        r"""收费类型
+        :rtype: str
+        """
+        return self._ServiceChargeType
+
+    @ServiceChargeType.setter
+    def ServiceChargeType(self, ServiceChargeType):
+        self._ServiceChargeType = ServiceChargeType
+
+
+    def _deserialize(self, params):
+        self._ServiceName = params.get("ServiceName")
+        self._ServiceChargeType = params.get("ServiceChargeType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ServicePriceDetail(AbstractModel):
     r"""推理集群费用数据结构体
 
@@ -4296,6 +5234,107 @@ class SystemDisk(AbstractModel):
         self._DiskType = params.get("DiskType")
         self._DiskSize = params.get("DiskSize")
         self._DiskName = params.get("DiskName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TemplateDetail(AbstractModel):
+    r"""模板详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TemplateId: 模板id
+        :type TemplateId: str
+        :param _DeployMode: 部署方式
+        :type DeployMode: str
+        :param _EngineType: 推理引擎
+        :type EngineType: str
+        :param _ComputeSet: 算力详情
+        :type ComputeSet: list of ComputeDetail
+        :param _SupportFunc: 当前部署模板所支持的增强功能
+        :type SupportFunc: list of str
+        """
+        self._TemplateId = None
+        self._DeployMode = None
+        self._EngineType = None
+        self._ComputeSet = None
+        self._SupportFunc = None
+
+    @property
+    def TemplateId(self):
+        r"""模板id
+        :rtype: str
+        """
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def DeployMode(self):
+        r"""部署方式
+        :rtype: str
+        """
+        return self._DeployMode
+
+    @DeployMode.setter
+    def DeployMode(self, DeployMode):
+        self._DeployMode = DeployMode
+
+    @property
+    def EngineType(self):
+        r"""推理引擎
+        :rtype: str
+        """
+        return self._EngineType
+
+    @EngineType.setter
+    def EngineType(self, EngineType):
+        self._EngineType = EngineType
+
+    @property
+    def ComputeSet(self):
+        r"""算力详情
+        :rtype: list of ComputeDetail
+        """
+        return self._ComputeSet
+
+    @ComputeSet.setter
+    def ComputeSet(self, ComputeSet):
+        self._ComputeSet = ComputeSet
+
+    @property
+    def SupportFunc(self):
+        r"""当前部署模板所支持的增强功能
+        :rtype: list of str
+        """
+        return self._SupportFunc
+
+    @SupportFunc.setter
+    def SupportFunc(self, SupportFunc):
+        self._SupportFunc = SupportFunc
+
+
+    def _deserialize(self, params):
+        self._TemplateId = params.get("TemplateId")
+        self._DeployMode = params.get("DeployMode")
+        self._EngineType = params.get("EngineType")
+        if params.get("ComputeSet") is not None:
+            self._ComputeSet = []
+            for item in params.get("ComputeSet"):
+                obj = ComputeDetail()
+                obj._deserialize(item)
+                self._ComputeSet.append(obj)
+        self._SupportFunc = params.get("SupportFunc")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

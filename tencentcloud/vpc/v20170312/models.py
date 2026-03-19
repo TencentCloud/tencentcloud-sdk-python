@@ -51977,6 +51977,8 @@ class ModifyCcnAttributeRequest(AbstractModel):
         :type RouteOverlapFlag: bool
         :param _TrafficMarkingPolicyFlag: 是否开启qos功能。`False` 不开启，`True` 开启。
         :type TrafficMarkingPolicyFlag: bool
+        :param _MixedBillingFlag: 是否切换为混合计费
+        :type MixedBillingFlag: bool
         """
         self._CcnId = None
         self._CcnName = None
@@ -51984,6 +51986,7 @@ class ModifyCcnAttributeRequest(AbstractModel):
         self._RouteECMPFlag = None
         self._RouteOverlapFlag = None
         self._TrafficMarkingPolicyFlag = None
+        self._MixedBillingFlag = None
 
     @property
     def CcnId(self):
@@ -52051,6 +52054,17 @@ class ModifyCcnAttributeRequest(AbstractModel):
     def TrafficMarkingPolicyFlag(self, TrafficMarkingPolicyFlag):
         self._TrafficMarkingPolicyFlag = TrafficMarkingPolicyFlag
 
+    @property
+    def MixedBillingFlag(self):
+        r"""是否切换为混合计费
+        :rtype: bool
+        """
+        return self._MixedBillingFlag
+
+    @MixedBillingFlag.setter
+    def MixedBillingFlag(self, MixedBillingFlag):
+        self._MixedBillingFlag = MixedBillingFlag
+
 
     def _deserialize(self, params):
         self._CcnId = params.get("CcnId")
@@ -52059,6 +52073,7 @@ class ModifyCcnAttributeRequest(AbstractModel):
         self._RouteECMPFlag = params.get("RouteECMPFlag")
         self._RouteOverlapFlag = params.get("RouteOverlapFlag")
         self._TrafficMarkingPolicyFlag = params.get("TrafficMarkingPolicyFlag")
+        self._MixedBillingFlag = params.get("MixedBillingFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

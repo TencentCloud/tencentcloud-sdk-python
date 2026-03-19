@@ -711,6 +711,29 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateSubtitleEmbedTemplate(self, request):
+        r"""创建自定义字幕压制模板
+
+        :param request: Request instance for CreateSubtitleEmbedTemplate.
+        :type request: :class:`tencentcloud.mps.v20190612.models.CreateSubtitleEmbedTemplateRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CreateSubtitleEmbedTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateSubtitleEmbedTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateSubtitleEmbedTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateTranscodeTemplate(self, request):
         r"""创建用户自定义转码模板，数量上限：1000
 
@@ -1337,6 +1360,29 @@ class MpsClient(AbstractClient):
             body = self.call("DeleteStreamLinkSecurityGroup", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteStreamLinkSecurityGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteSubtitleEmbedTemplate(self, request):
+        r"""删除用户自定义字幕压制模板。
+
+        :param request: Request instance for DeleteSubtitleEmbedTemplate.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DeleteSubtitleEmbedTemplateRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DeleteSubtitleEmbedTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteSubtitleEmbedTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteSubtitleEmbedTemplateResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2289,6 +2335,29 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeSubtitleEmbedTemplates(self, request):
+        r"""根据字幕压制模板唯一标识，获取字幕压制模板详情列表。返回结果包含符合条件的所有用户自定义字幕压制模板及系统预置字幕压制模板
+
+        :param request: Request instance for DescribeSubtitleEmbedTemplates.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DescribeSubtitleEmbedTemplatesRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeSubtitleEmbedTemplatesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSubtitleEmbedTemplates", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSubtitleEmbedTemplatesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeTaskDetail(self, request):
         r"""通过任务 ID 查询任务的执行状态和结果的详细信息（最多可以查询7天之内提交的任务）。
 
@@ -3218,6 +3287,29 @@ class MpsClient(AbstractClient):
             body = self.call("ModifyStreamLinkSecurityGroup", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyStreamLinkSecurityGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifySubtitleEmbedTemplate(self, request):
+        r"""修改用户自定义字幕压制模板。
+
+        :param request: Request instance for ModifySubtitleEmbedTemplate.
+        :type request: :class:`tencentcloud.mps.v20190612.models.ModifySubtitleEmbedTemplateRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ModifySubtitleEmbedTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifySubtitleEmbedTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifySubtitleEmbedTemplateResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

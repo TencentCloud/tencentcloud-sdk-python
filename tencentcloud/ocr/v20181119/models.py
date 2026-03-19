@@ -11689,10 +11689,6 @@ class GeneralAccurateOCRRequest(AbstractModel):
         :type EnableDetectText: bool
         :param _ConfigID: <p>配置ID支持： OCR -- 通用场景 MulOCR--多语种场景，默认值为OCR</p>
         :type ConfigID: str
-        :param _WordsType: <p>需要识别的文字类型，默认识别全部类型的文字。 0：自动识别全部类型文字 1：仅识别手写体文字 2：仅识别印刷体文字</p>
-        :type WordsType: str
-        :param _LanguageInfo: <p>支持输出单行文字的语种信息，开启后耗时会略有增加。</p>
-        :type LanguageInfo: bool
         """
         self._ImageBase64 = None
         self._ImageUrl = None
@@ -11702,8 +11698,6 @@ class GeneralAccurateOCRRequest(AbstractModel):
         self._PdfPageNumber = None
         self._EnableDetectText = None
         self._ConfigID = None
-        self._WordsType = None
-        self._LanguageInfo = None
 
     @property
     def ImageBase64(self):
@@ -11793,28 +11787,6 @@ class GeneralAccurateOCRRequest(AbstractModel):
     def ConfigID(self, ConfigID):
         self._ConfigID = ConfigID
 
-    @property
-    def WordsType(self):
-        r"""<p>需要识别的文字类型，默认识别全部类型的文字。 0：自动识别全部类型文字 1：仅识别手写体文字 2：仅识别印刷体文字</p>
-        :rtype: str
-        """
-        return self._WordsType
-
-    @WordsType.setter
-    def WordsType(self, WordsType):
-        self._WordsType = WordsType
-
-    @property
-    def LanguageInfo(self):
-        r"""<p>支持输出单行文字的语种信息，开启后耗时会略有增加。</p>
-        :rtype: bool
-        """
-        return self._LanguageInfo
-
-    @LanguageInfo.setter
-    def LanguageInfo(self, LanguageInfo):
-        self._LanguageInfo = LanguageInfo
-
 
     def _deserialize(self, params):
         self._ImageBase64 = params.get("ImageBase64")
@@ -11825,8 +11797,6 @@ class GeneralAccurateOCRRequest(AbstractModel):
         self._PdfPageNumber = params.get("PdfPageNumber")
         self._EnableDetectText = params.get("EnableDetectText")
         self._ConfigID = params.get("ConfigID")
-        self._WordsType = params.get("WordsType")
-        self._LanguageInfo = params.get("LanguageInfo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

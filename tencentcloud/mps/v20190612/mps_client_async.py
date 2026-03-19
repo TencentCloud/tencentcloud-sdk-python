@@ -565,6 +565,24 @@ class MpsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateSubtitleEmbedTemplate(
+            self,
+            request: models.CreateSubtitleEmbedTemplateRequest,
+            opts: Dict = None,
+    ) -> models.CreateSubtitleEmbedTemplateResponse:
+        """
+        创建自定义字幕压制模板
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateSubtitleEmbedTemplate"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateSubtitleEmbedTemplateResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateTranscodeTemplate(
             self,
             request: models.CreateTranscodeTemplateRequest,
@@ -1060,6 +1078,24 @@ class MpsClient(AbstractClient):
         kwargs["action"] = "DeleteStreamLinkSecurityGroup"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteStreamLinkSecurityGroupResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteSubtitleEmbedTemplate(
+            self,
+            request: models.DeleteSubtitleEmbedTemplateRequest,
+            opts: Dict = None,
+    ) -> models.DeleteSubtitleEmbedTemplateResponse:
+        """
+        删除用户自定义字幕压制模板。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteSubtitleEmbedTemplate"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteSubtitleEmbedTemplateResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1803,6 +1839,24 @@ class MpsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeSubtitleEmbedTemplates(
+            self,
+            request: models.DescribeSubtitleEmbedTemplatesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeSubtitleEmbedTemplatesResponse:
+        """
+        根据字幕压制模板唯一标识，获取字幕压制模板详情列表。返回结果包含符合条件的所有用户自定义字幕压制模板及系统预置字幕压制模板
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeSubtitleEmbedTemplates"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeSubtitleEmbedTemplatesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeTaskDetail(
             self,
             request: models.DescribeTaskDetailRequest,
@@ -2536,6 +2590,24 @@ class MpsClient(AbstractClient):
         kwargs["action"] = "ModifyStreamLinkSecurityGroup"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyStreamLinkSecurityGroupResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifySubtitleEmbedTemplate(
+            self,
+            request: models.ModifySubtitleEmbedTemplateRequest,
+            opts: Dict = None,
+    ) -> models.ModifySubtitleEmbedTemplateResponse:
+        """
+        修改用户自定义字幕压制模板。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifySubtitleEmbedTemplate"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifySubtitleEmbedTemplateResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

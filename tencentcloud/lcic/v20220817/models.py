@@ -5735,6 +5735,130 @@ class DescribeGroupResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeLiveRelayConfigRequest(AbstractModel):
+    r"""DescribeLiveRelayConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: <p>低代码互动课堂的SdkAppId</p>
+        :type SdkAppId: int
+        :param _RoomId: <p>房间ID</p>
+        :type RoomId: int
+        """
+        self._SdkAppId = None
+        self._RoomId = None
+
+    @property
+    def SdkAppId(self):
+        r"""<p>低代码互动课堂的SdkAppId</p>
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def RoomId(self):
+        r"""<p>房间ID</p>
+        :rtype: int
+        """
+        return self._RoomId
+
+    @RoomId.setter
+    def RoomId(self, RoomId):
+        self._RoomId = RoomId
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._RoomId = params.get("RoomId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLiveRelayConfigResponse(AbstractModel):
+    r"""DescribeLiveRelayConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RelayType: <p>转推类型</p><p>枚举值：</p><ul><li>0： 单流</li><li>1： 混流</li></ul>
+        :type RelayType: int
+        :param _Urls: <p>转推URL</p>
+        :type Urls: list of str
+        :param _IsTencentCdn: <p>是否是腾讯云CDN。</p><p>枚举值：</p><ul><li>0： 转推非腾讯云CDN</li><li>1： 转推腾讯CDN</li></ul>
+        :type IsTencentCdn: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RelayType = None
+        self._Urls = None
+        self._IsTencentCdn = None
+        self._RequestId = None
+
+    @property
+    def RelayType(self):
+        r"""<p>转推类型</p><p>枚举值：</p><ul><li>0： 单流</li><li>1： 混流</li></ul>
+        :rtype: int
+        """
+        return self._RelayType
+
+    @RelayType.setter
+    def RelayType(self, RelayType):
+        self._RelayType = RelayType
+
+    @property
+    def Urls(self):
+        r"""<p>转推URL</p>
+        :rtype: list of str
+        """
+        return self._Urls
+
+    @Urls.setter
+    def Urls(self, Urls):
+        self._Urls = Urls
+
+    @property
+    def IsTencentCdn(self):
+        r"""<p>是否是腾讯云CDN。</p><p>枚举值：</p><ul><li>0： 转推非腾讯云CDN</li><li>1： 转推腾讯CDN</li></ul>
+        :rtype: int
+        """
+        return self._IsTencentCdn
+
+    @IsTencentCdn.setter
+    def IsTencentCdn(self, IsTencentCdn):
+        self._IsTencentCdn = IsTencentCdn
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RelayType = params.get("RelayType")
+        self._Urls = params.get("Urls")
+        self._IsTencentCdn = params.get("IsTencentCdn")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeMarqueeRequest(AbstractModel):
     r"""DescribeMarquee请求参数结构体
 
@@ -11764,6 +11888,130 @@ class ModifyGroupResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyLiveRelayConfigRequest(AbstractModel):
+    r"""ModifyLiveRelayConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: <p>低代码互动课堂的SdkAppId</p>
+        :type SdkAppId: int
+        :param _RoomId: <p>房间ID</p>
+        :type RoomId: int
+        :param _RelayType: <p>转推类型</p><p>枚举值：</p><ul><li>0： 单流</li><li>1： 混流</li></ul>
+        :type RelayType: int
+        :param _Urls: <p>转推URL</p>
+        :type Urls: list of str
+        :param _IsTencentCdn: <p>是否是腾讯云CDN（默认为0）</p><p>枚举值：</p><ul><li>0： 转推非腾讯CDN</li><li>1： 转推腾讯CDN</li></ul>
+        :type IsTencentCdn: int
+        """
+        self._SdkAppId = None
+        self._RoomId = None
+        self._RelayType = None
+        self._Urls = None
+        self._IsTencentCdn = None
+
+    @property
+    def SdkAppId(self):
+        r"""<p>低代码互动课堂的SdkAppId</p>
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def RoomId(self):
+        r"""<p>房间ID</p>
+        :rtype: int
+        """
+        return self._RoomId
+
+    @RoomId.setter
+    def RoomId(self, RoomId):
+        self._RoomId = RoomId
+
+    @property
+    def RelayType(self):
+        r"""<p>转推类型</p><p>枚举值：</p><ul><li>0： 单流</li><li>1： 混流</li></ul>
+        :rtype: int
+        """
+        return self._RelayType
+
+    @RelayType.setter
+    def RelayType(self, RelayType):
+        self._RelayType = RelayType
+
+    @property
+    def Urls(self):
+        r"""<p>转推URL</p>
+        :rtype: list of str
+        """
+        return self._Urls
+
+    @Urls.setter
+    def Urls(self, Urls):
+        self._Urls = Urls
+
+    @property
+    def IsTencentCdn(self):
+        r"""<p>是否是腾讯云CDN（默认为0）</p><p>枚举值：</p><ul><li>0： 转推非腾讯CDN</li><li>1： 转推腾讯CDN</li></ul>
+        :rtype: int
+        """
+        return self._IsTencentCdn
+
+    @IsTencentCdn.setter
+    def IsTencentCdn(self, IsTencentCdn):
+        self._IsTencentCdn = IsTencentCdn
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._RoomId = params.get("RoomId")
+        self._RelayType = params.get("RelayType")
+        self._Urls = params.get("Urls")
+        self._IsTencentCdn = params.get("IsTencentCdn")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyLiveRelayConfigResponse(AbstractModel):
+    r"""ModifyLiveRelayConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyRoomRequest(AbstractModel):
     r"""ModifyRoom请求参数结构体
 
@@ -12665,11 +12913,14 @@ class PlaybackItem(AbstractModel):
         :type Duration: int
         :param _CreateTime: <p>录制开始时间</p>
         :type CreateTime: int
+        :param _FileSize: <p>文件大小。</p><p>单位：MB</p>
+        :type FileSize: float
         """
         self._RoomId = None
         self._PlaybackUrl = None
         self._Duration = None
         self._CreateTime = None
+        self._FileSize = None
 
     @property
     def RoomId(self):
@@ -12715,12 +12966,24 @@ class PlaybackItem(AbstractModel):
     def CreateTime(self, CreateTime):
         self._CreateTime = CreateTime
 
+    @property
+    def FileSize(self):
+        r"""<p>文件大小。</p><p>单位：MB</p>
+        :rtype: float
+        """
+        return self._FileSize
+
+    @FileSize.setter
+    def FileSize(self, FileSize):
+        self._FileSize = FileSize
+
 
     def _deserialize(self, params):
         self._RoomId = params.get("RoomId")
         self._PlaybackUrl = params.get("PlaybackUrl")
         self._Duration = params.get("Duration")
         self._CreateTime = params.get("CreateTime")
+        self._FileSize = params.get("FileSize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

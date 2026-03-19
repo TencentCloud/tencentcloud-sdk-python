@@ -8167,6 +8167,166 @@ class CreateConvertTaskApiResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateDigitalDataSignRequest(AbstractModel):
+    r"""CreateDigitalDataSign请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Operator: 执行本接口操作的员工信息。使用此接口时，必须填写userId。支持填入集团子公司经办人 userId 代发合同。注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param _Agent: 代理企业和员工的信息。在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
+        :param _PlainText: 数据加签的原文
+        :type PlainText: str
+        """
+        self._Operator = None
+        self._Agent = None
+        self._PlainText = None
+
+    @property
+    def Operator(self):
+        r"""执行本接口操作的员工信息。使用此接口时，必须填写userId。支持填入集团子公司经办人 userId 代发合同。注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def Agent(self):
+        r"""代理企业和员工的信息。在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        :rtype: :class:`tencentcloud.ess.v20201111.models.Agent`
+        """
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+    @property
+    def PlainText(self):
+        r"""数据加签的原文
+        :rtype: str
+        """
+        return self._PlainText
+
+    @PlainText.setter
+    def PlainText(self, PlainText):
+        self._PlainText = PlainText
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        self._PlainText = params.get("PlainText")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDigitalDataSignResponse(AbstractModel):
+    r"""CreateDigitalDataSign返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SignValue: 加签签名值
+        :type SignValue: str
+        :param _SignTimestamp: 加签时间戳
+        :type SignTimestamp: str
+        :param _Certificate: 签署证书信息
+        :type Certificate: :class:`tencentcloud.ess.v20201111.models.SignCertificate`
+        :param _SignAlgorithm: 签署算法
+        :type SignAlgorithm: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._SignValue = None
+        self._SignTimestamp = None
+        self._Certificate = None
+        self._SignAlgorithm = None
+        self._RequestId = None
+
+    @property
+    def SignValue(self):
+        r"""加签签名值
+        :rtype: str
+        """
+        return self._SignValue
+
+    @SignValue.setter
+    def SignValue(self, SignValue):
+        self._SignValue = SignValue
+
+    @property
+    def SignTimestamp(self):
+        r"""加签时间戳
+        :rtype: str
+        """
+        return self._SignTimestamp
+
+    @SignTimestamp.setter
+    def SignTimestamp(self, SignTimestamp):
+        self._SignTimestamp = SignTimestamp
+
+    @property
+    def Certificate(self):
+        r"""签署证书信息
+        :rtype: :class:`tencentcloud.ess.v20201111.models.SignCertificate`
+        """
+        return self._Certificate
+
+    @Certificate.setter
+    def Certificate(self, Certificate):
+        self._Certificate = Certificate
+
+    @property
+    def SignAlgorithm(self):
+        r"""签署算法
+        :rtype: str
+        """
+        return self._SignAlgorithm
+
+    @SignAlgorithm.setter
+    def SignAlgorithm(self, SignAlgorithm):
+        self._SignAlgorithm = SignAlgorithm
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._SignValue = params.get("SignValue")
+        self._SignTimestamp = params.get("SignTimestamp")
+        if params.get("Certificate") is not None:
+            self._Certificate = SignCertificate()
+            self._Certificate._deserialize(params.get("Certificate"))
+        self._SignAlgorithm = params.get("SignAlgorithm")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateDocumentRequest(AbstractModel):
     r"""CreateDocument请求参数结构体
 
@@ -42894,6 +43054,102 @@ CONTRACT：合同专用章
         
 
 
+class SignCertificate(AbstractModel):
+    r"""签署证书信息结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SerialNumber: 证书序列号
+        :type SerialNumber: str
+        :param _CommonName: 证书持有者名称
+        :type CommonName: str
+        :param _NotBefore: 证书生效时间
+        :type NotBefore: int
+        :param _NotAfter: 证书失效时间
+        :type NotAfter: int
+        :param _IssuerCommonName: 证书颁发者名称
+        :type IssuerCommonName: str
+        """
+        self._SerialNumber = None
+        self._CommonName = None
+        self._NotBefore = None
+        self._NotAfter = None
+        self._IssuerCommonName = None
+
+    @property
+    def SerialNumber(self):
+        r"""证书序列号
+        :rtype: str
+        """
+        return self._SerialNumber
+
+    @SerialNumber.setter
+    def SerialNumber(self, SerialNumber):
+        self._SerialNumber = SerialNumber
+
+    @property
+    def CommonName(self):
+        r"""证书持有者名称
+        :rtype: str
+        """
+        return self._CommonName
+
+    @CommonName.setter
+    def CommonName(self, CommonName):
+        self._CommonName = CommonName
+
+    @property
+    def NotBefore(self):
+        r"""证书生效时间
+        :rtype: int
+        """
+        return self._NotBefore
+
+    @NotBefore.setter
+    def NotBefore(self, NotBefore):
+        self._NotBefore = NotBefore
+
+    @property
+    def NotAfter(self):
+        r"""证书失效时间
+        :rtype: int
+        """
+        return self._NotAfter
+
+    @NotAfter.setter
+    def NotAfter(self, NotAfter):
+        self._NotAfter = NotAfter
+
+    @property
+    def IssuerCommonName(self):
+        r"""证书颁发者名称
+        :rtype: str
+        """
+        return self._IssuerCommonName
+
+    @IssuerCommonName.setter
+    def IssuerCommonName(self, IssuerCommonName):
+        self._IssuerCommonName = IssuerCommonName
+
+
+    def _deserialize(self, params):
+        self._SerialNumber = params.get("SerialNumber")
+        self._CommonName = params.get("CommonName")
+        self._NotBefore = params.get("NotBefore")
+        self._NotAfter = params.get("NotAfter")
+        self._IssuerCommonName = params.get("IssuerCommonName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SignComponentConfig(AbstractModel):
     r"""签署控件的配置信息，用在嵌入式发起的页面配置，包括
 
@@ -46053,6 +46309,151 @@ class VerifyDigitFileResult(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class VerifyDigitalDataSignRequest(AbstractModel):
+    r"""VerifyDigitalDataSign请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Agent: 代理企业和员工的信息。在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
+        :param _Operator: 执行本接口操作的员工信息。使用此接口时，必须填写userId。支持填入集团子公司经办人 userId 代发合同。注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param _PlainText: 加签原文
+        :type PlainText: str
+        :param _SignValue: 签名值
+        :type SignValue: str
+        """
+        self._Agent = None
+        self._Operator = None
+        self._PlainText = None
+        self._SignValue = None
+
+    @property
+    def Agent(self):
+        r"""代理企业和员工的信息。在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        :rtype: :class:`tencentcloud.ess.v20201111.models.Agent`
+        """
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+    @property
+    def Operator(self):
+        r"""执行本接口操作的员工信息。使用此接口时，必须填写userId。支持填入集团子公司经办人 userId 代发合同。注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def PlainText(self):
+        r"""加签原文
+        :rtype: str
+        """
+        return self._PlainText
+
+    @PlainText.setter
+    def PlainText(self, PlainText):
+        self._PlainText = PlainText
+
+    @property
+    def SignValue(self):
+        r"""签名值
+        :rtype: str
+        """
+        return self._SignValue
+
+    @SignValue.setter
+    def SignValue(self, SignValue):
+        self._SignValue = SignValue
+
+
+    def _deserialize(self, params):
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._PlainText = params.get("PlainText")
+        self._SignValue = params.get("SignValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VerifyDigitalDataSignResponse(AbstractModel):
+    r"""VerifyDigitalDataSign返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VerifyResult: 签名值验证结果；1-验证成功；2-验证失败
+        :type VerifyResult: int
+        :param _Certificate: 签名证书信息
+        :type Certificate: :class:`tencentcloud.ess.v20201111.models.SignCertificate`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._VerifyResult = None
+        self._Certificate = None
+        self._RequestId = None
+
+    @property
+    def VerifyResult(self):
+        r"""签名值验证结果；1-验证成功；2-验证失败
+        :rtype: int
+        """
+        return self._VerifyResult
+
+    @VerifyResult.setter
+    def VerifyResult(self, VerifyResult):
+        self._VerifyResult = VerifyResult
+
+    @property
+    def Certificate(self):
+        r"""签名证书信息
+        :rtype: :class:`tencentcloud.ess.v20201111.models.SignCertificate`
+        """
+        return self._Certificate
+
+    @Certificate.setter
+    def Certificate(self, Certificate):
+        self._Certificate = Certificate
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._VerifyResult = params.get("VerifyResult")
+        if params.get("Certificate") is not None:
+            self._Certificate = SignCertificate()
+            self._Certificate._deserialize(params.get("Certificate"))
+        self._RequestId = params.get("RequestId")
 
 
 class VerifyPdfRequest(AbstractModel):

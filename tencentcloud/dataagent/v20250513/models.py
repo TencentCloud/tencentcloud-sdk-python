@@ -1264,32 +1264,32 @@ class FileInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FileName: 文件名称
+        :param _FileName: <p>文件名称</p>
         :type FileName: str
-        :param _FileSize: 文件大小，字节
+        :param _FileSize: <p>文件大小，字节</p>
         :type FileSize: float
-        :param _Type: 文件类型,0=文本,1=表格，默认0
-
+        :param _Type: <p>文件类型,0=文本,1=表格，默认0</p>
         :type Type: int
-        :param _FileId: 文件ID
+        :param _FileId: <p>文件ID</p>
         :type FileId: str
-        :param _Status: 状态，0：数据处理中  1：可用 -1：错误
+        :param _Status: <p>状态，0：数据处理中  1：可用 -1：错误</p>
         :type Status: int
-        :param _CreateUser: 操作者
-
+        :param _CreateUser: <p>操作者</p>
         :type CreateUser: str
-        :param _CreateTime: 创建时间
+        :param _CreateTime: <p>创建时间</p>
         :type CreateTime: str
-        :param _ChunkConfig: 分片策略
+        :param _ChunkConfig: <p>分片策略</p>
         :type ChunkConfig: :class:`tencentcloud.dataagent.v20250513.models.KnowledgeTaskConfig`
-        :param _Source: 文件来源0=unknow,1=user_cos,2=local
+        :param _Source: <p>文件来源0=unknow,1=user_cos,2=local</p>
         :type Source: int
-        :param _FileUrl: 文件url
+        :param _FileUrl: <p>文件url</p>
         :type FileUrl: str
-        :param _IsShowCase: 是否官方示例，0=否，1=是
+        :param _IsShowCase: <p>是否官方示例，0=否，1=是</p>
         :type IsShowCase: int
-        :param _DocumentSummary: 文档摘要
+        :param _DocumentSummary: <p>文档摘要</p>
         :type DocumentSummary: str
+        :param _WebUrl: <p>网页地址</p>
+        :type WebUrl: str
         """
         self._FileName = None
         self._FileSize = None
@@ -1303,10 +1303,11 @@ class FileInfo(AbstractModel):
         self._FileUrl = None
         self._IsShowCase = None
         self._DocumentSummary = None
+        self._WebUrl = None
 
     @property
     def FileName(self):
-        r"""文件名称
+        r"""<p>文件名称</p>
         :rtype: str
         """
         return self._FileName
@@ -1317,7 +1318,7 @@ class FileInfo(AbstractModel):
 
     @property
     def FileSize(self):
-        r"""文件大小，字节
+        r"""<p>文件大小，字节</p>
         :rtype: float
         """
         return self._FileSize
@@ -1328,8 +1329,7 @@ class FileInfo(AbstractModel):
 
     @property
     def Type(self):
-        r"""文件类型,0=文本,1=表格，默认0
-
+        r"""<p>文件类型,0=文本,1=表格，默认0</p>
         :rtype: int
         """
         return self._Type
@@ -1340,7 +1340,7 @@ class FileInfo(AbstractModel):
 
     @property
     def FileId(self):
-        r"""文件ID
+        r"""<p>文件ID</p>
         :rtype: str
         """
         return self._FileId
@@ -1351,7 +1351,7 @@ class FileInfo(AbstractModel):
 
     @property
     def Status(self):
-        r"""状态，0：数据处理中  1：可用 -1：错误
+        r"""<p>状态，0：数据处理中  1：可用 -1：错误</p>
         :rtype: int
         """
         return self._Status
@@ -1362,8 +1362,7 @@ class FileInfo(AbstractModel):
 
     @property
     def CreateUser(self):
-        r"""操作者
-
+        r"""<p>操作者</p>
         :rtype: str
         """
         return self._CreateUser
@@ -1374,7 +1373,7 @@ class FileInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
         :rtype: str
         """
         return self._CreateTime
@@ -1385,7 +1384,7 @@ class FileInfo(AbstractModel):
 
     @property
     def ChunkConfig(self):
-        r"""分片策略
+        r"""<p>分片策略</p>
         :rtype: :class:`tencentcloud.dataagent.v20250513.models.KnowledgeTaskConfig`
         """
         return self._ChunkConfig
@@ -1396,7 +1395,7 @@ class FileInfo(AbstractModel):
 
     @property
     def Source(self):
-        r"""文件来源0=unknow,1=user_cos,2=local
+        r"""<p>文件来源0=unknow,1=user_cos,2=local</p>
         :rtype: int
         """
         return self._Source
@@ -1407,7 +1406,7 @@ class FileInfo(AbstractModel):
 
     @property
     def FileUrl(self):
-        r"""文件url
+        r"""<p>文件url</p>
         :rtype: str
         """
         return self._FileUrl
@@ -1418,7 +1417,7 @@ class FileInfo(AbstractModel):
 
     @property
     def IsShowCase(self):
-        r"""是否官方示例，0=否，1=是
+        r"""<p>是否官方示例，0=否，1=是</p>
         :rtype: int
         """
         return self._IsShowCase
@@ -1429,7 +1428,7 @@ class FileInfo(AbstractModel):
 
     @property
     def DocumentSummary(self):
-        r"""文档摘要
+        r"""<p>文档摘要</p>
         :rtype: str
         """
         return self._DocumentSummary
@@ -1437,6 +1436,17 @@ class FileInfo(AbstractModel):
     @DocumentSummary.setter
     def DocumentSummary(self, DocumentSummary):
         self._DocumentSummary = DocumentSummary
+
+    @property
+    def WebUrl(self):
+        r"""<p>网页地址</p>
+        :rtype: str
+        """
+        return self._WebUrl
+
+    @WebUrl.setter
+    def WebUrl(self, WebUrl):
+        self._WebUrl = WebUrl
 
 
     def _deserialize(self, params):
@@ -1454,6 +1464,7 @@ class FileInfo(AbstractModel):
         self._FileUrl = params.get("FileUrl")
         self._IsShowCase = params.get("IsShowCase")
         self._DocumentSummary = params.get("DocumentSummary")
+        self._WebUrl = params.get("WebUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

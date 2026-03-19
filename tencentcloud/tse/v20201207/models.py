@@ -6142,6 +6142,8 @@ class CreateCloudNativeAPIGatewayRouteRequest(AbstractModel):
         :type ResponseBuffering: bool
         :param _RegexPriority: 正则优先级
         :type RegexPriority: int
+        :param _QueryStringParameters: queryString参数
+        :type QueryStringParameters: list of KVMapping
         """
         self._GatewayId = None
         self._ServiceID = None
@@ -6159,6 +6161,7 @@ class CreateCloudNativeAPIGatewayRouteRequest(AbstractModel):
         self._RequestBuffering = None
         self._ResponseBuffering = None
         self._RegexPriority = None
+        self._QueryStringParameters = None
 
     @property
     def GatewayId(self):
@@ -6358,6 +6361,17 @@ class CreateCloudNativeAPIGatewayRouteRequest(AbstractModel):
     def RegexPriority(self, RegexPriority):
         self._RegexPriority = RegexPriority
 
+    @property
+    def QueryStringParameters(self):
+        r"""queryString参数
+        :rtype: list of KVMapping
+        """
+        return self._QueryStringParameters
+
+    @QueryStringParameters.setter
+    def QueryStringParameters(self, QueryStringParameters):
+        self._QueryStringParameters = QueryStringParameters
+
 
     def _deserialize(self, params):
         self._GatewayId = params.get("GatewayId")
@@ -6381,6 +6395,12 @@ class CreateCloudNativeAPIGatewayRouteRequest(AbstractModel):
         self._RequestBuffering = params.get("RequestBuffering")
         self._ResponseBuffering = params.get("ResponseBuffering")
         self._RegexPriority = params.get("RegexPriority")
+        if params.get("QueryStringParameters") is not None:
+            self._QueryStringParameters = []
+            for item in params.get("QueryStringParameters"):
+                obj = KVMapping()
+                obj._deserialize(item)
+                self._QueryStringParameters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12982,6 +13002,10 @@ class DescribeCloudNativeAPIGatewayResult(AbstractModel):
         :param _AvailableVersions: 表示可以升级的版本号
 注意：此字段可能返回 null，表示取不到有效值。
         :type AvailableVersions: list of str
+        :param _AvailableUpgradeVersions: 网关可以升级的版本号列表
+        :type AvailableUpgradeVersions: list of str
+        :param _AvailableUpgrade: 是否提示可升级
+        :type AvailableUpgrade: bool
         """
         self._GatewayId = None
         self._Status = None
@@ -13010,6 +13034,8 @@ class DescribeCloudNativeAPIGatewayResult(AbstractModel):
         self._PublicIpAddresses = None
         self._DeleteProtect = None
         self._AvailableVersions = None
+        self._AvailableUpgradeVersions = None
+        self._AvailableUpgrade = None
 
     @property
     def GatewayId(self):
@@ -13312,6 +13338,28 @@ class DescribeCloudNativeAPIGatewayResult(AbstractModel):
     def AvailableVersions(self, AvailableVersions):
         self._AvailableVersions = AvailableVersions
 
+    @property
+    def AvailableUpgradeVersions(self):
+        r"""网关可以升级的版本号列表
+        :rtype: list of str
+        """
+        return self._AvailableUpgradeVersions
+
+    @AvailableUpgradeVersions.setter
+    def AvailableUpgradeVersions(self, AvailableUpgradeVersions):
+        self._AvailableUpgradeVersions = AvailableUpgradeVersions
+
+    @property
+    def AvailableUpgrade(self):
+        r"""是否提示可升级
+        :rtype: bool
+        """
+        return self._AvailableUpgrade
+
+    @AvailableUpgrade.setter
+    def AvailableUpgrade(self, AvailableUpgrade):
+        self._AvailableUpgrade = AvailableUpgrade
+
 
     def _deserialize(self, params):
         self._GatewayId = params.get("GatewayId")
@@ -13352,6 +13400,8 @@ class DescribeCloudNativeAPIGatewayResult(AbstractModel):
         self._PublicIpAddresses = params.get("PublicIpAddresses")
         self._DeleteProtect = params.get("DeleteProtect")
         self._AvailableVersions = params.get("AvailableVersions")
+        self._AvailableUpgradeVersions = params.get("AvailableUpgradeVersions")
+        self._AvailableUpgrade = params.get("AvailableUpgrade")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -24246,6 +24296,8 @@ class KongRoutePreview(AbstractModel):
         :type ResponseBuffering: bool
         :param _RegexPriority: 正则优先级
         :type RegexPriority: int
+        :param _QueryStringParameters: querystring参数
+        :type QueryStringParameters: list of KVMapping
         """
         self._ID = None
         self._Name = None
@@ -24265,6 +24317,7 @@ class KongRoutePreview(AbstractModel):
         self._RequestBuffering = None
         self._ResponseBuffering = None
         self._RegexPriority = None
+        self._QueryStringParameters = None
 
     @property
     def ID(self):
@@ -24472,6 +24525,17 @@ class KongRoutePreview(AbstractModel):
     def RegexPriority(self, RegexPriority):
         self._RegexPriority = RegexPriority
 
+    @property
+    def QueryStringParameters(self):
+        r"""querystring参数
+        :rtype: list of KVMapping
+        """
+        return self._QueryStringParameters
+
+    @QueryStringParameters.setter
+    def QueryStringParameters(self, QueryStringParameters):
+        self._QueryStringParameters = QueryStringParameters
+
 
     def _deserialize(self, params):
         self._ID = params.get("ID")
@@ -24497,6 +24561,12 @@ class KongRoutePreview(AbstractModel):
         self._RequestBuffering = params.get("RequestBuffering")
         self._ResponseBuffering = params.get("ResponseBuffering")
         self._RegexPriority = params.get("RegexPriority")
+        if params.get("QueryStringParameters") is not None:
+            self._QueryStringParameters = []
+            for item in params.get("QueryStringParameters"):
+                obj = KVMapping()
+                obj._deserialize(item)
+                self._QueryStringParameters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -27152,6 +27222,8 @@ class ModifyCloudNativeAPIGatewayRouteRequest(AbstractModel):
         :type ResponseBuffering: bool
         :param _RegexPriority: 增加优先级
         :type RegexPriority: int
+        :param _QueryStringParameters: querysring参数
+        :type QueryStringParameters: list of KVMapping
         """
         self._GatewayId = None
         self._ServiceID = None
@@ -27170,6 +27242,7 @@ class ModifyCloudNativeAPIGatewayRouteRequest(AbstractModel):
         self._RequestBuffering = None
         self._ResponseBuffering = None
         self._RegexPriority = None
+        self._QueryStringParameters = None
 
     @property
     def GatewayId(self):
@@ -27380,6 +27453,17 @@ class ModifyCloudNativeAPIGatewayRouteRequest(AbstractModel):
     def RegexPriority(self, RegexPriority):
         self._RegexPriority = RegexPriority
 
+    @property
+    def QueryStringParameters(self):
+        r"""querysring参数
+        :rtype: list of KVMapping
+        """
+        return self._QueryStringParameters
+
+    @QueryStringParameters.setter
+    def QueryStringParameters(self, QueryStringParameters):
+        self._QueryStringParameters = QueryStringParameters
+
 
     def _deserialize(self, params):
         self._GatewayId = params.get("GatewayId")
@@ -27404,6 +27488,12 @@ class ModifyCloudNativeAPIGatewayRouteRequest(AbstractModel):
         self._RequestBuffering = params.get("RequestBuffering")
         self._ResponseBuffering = params.get("ResponseBuffering")
         self._RegexPriority = params.get("RegexPriority")
+        if params.get("QueryStringParameters") is not None:
+            self._QueryStringParameters = []
+            for item in params.get("QueryStringParameters"):
+                obj = KVMapping()
+                obj._deserialize(item)
+                self._QueryStringParameters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

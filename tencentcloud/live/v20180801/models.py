@@ -1307,6 +1307,940 @@ VerifyType 传 fileCheck 时，为文件内容。
         self._RequestId = params.get("RequestId")
 
 
+class AvatarAnchorInfo(AbstractModel):
+    r"""数字人主播信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AnchorName: 主播昵称。同一个主播可以存在多个数字人ID。
+        :type AnchorName: str
+        :param _AnchorId: 主播 ID。用于标识主播形象。同一个主播ID可存在竖屏和横屏两种数字人。
+        :type AnchorId: str
+        :param _AnchorGender: 主播性别。male-男性，femal-女性。
+        :type AnchorGender: str
+        :param _PoseImage: 形象图片。
+        :type PoseImage: str
+        :param _PoseImageResolution: 主播形象图片的分辨率。
+        :type PoseImageResolution: str
+        :param _ReferenceVideoSegmentUrl: 形象预览视频段。
+        :type ReferenceVideoSegmentUrl: str
+        :param _HorizontalAvatar: 横屏数字人信息。
+        :type HorizontalAvatar: :class:`tencentcloud.live.v20180801.models.AvatarImageInfo`
+        :param _VerticalAvatar: 竖屏数字人信息。
+        :type VerticalAvatar: :class:`tencentcloud.live.v20180801.models.AvatarImageInfo`
+        :param _SuggestTimbreKey: 推荐音色。
+        :type SuggestTimbreKey: str
+        """
+        self._AnchorName = None
+        self._AnchorId = None
+        self._AnchorGender = None
+        self._PoseImage = None
+        self._PoseImageResolution = None
+        self._ReferenceVideoSegmentUrl = None
+        self._HorizontalAvatar = None
+        self._VerticalAvatar = None
+        self._SuggestTimbreKey = None
+
+    @property
+    def AnchorName(self):
+        r"""主播昵称。同一个主播可以存在多个数字人ID。
+        :rtype: str
+        """
+        return self._AnchorName
+
+    @AnchorName.setter
+    def AnchorName(self, AnchorName):
+        self._AnchorName = AnchorName
+
+    @property
+    def AnchorId(self):
+        r"""主播 ID。用于标识主播形象。同一个主播ID可存在竖屏和横屏两种数字人。
+        :rtype: str
+        """
+        return self._AnchorId
+
+    @AnchorId.setter
+    def AnchorId(self, AnchorId):
+        self._AnchorId = AnchorId
+
+    @property
+    def AnchorGender(self):
+        r"""主播性别。male-男性，femal-女性。
+        :rtype: str
+        """
+        return self._AnchorGender
+
+    @AnchorGender.setter
+    def AnchorGender(self, AnchorGender):
+        self._AnchorGender = AnchorGender
+
+    @property
+    def PoseImage(self):
+        r"""形象图片。
+        :rtype: str
+        """
+        return self._PoseImage
+
+    @PoseImage.setter
+    def PoseImage(self, PoseImage):
+        self._PoseImage = PoseImage
+
+    @property
+    def PoseImageResolution(self):
+        r"""主播形象图片的分辨率。
+        :rtype: str
+        """
+        return self._PoseImageResolution
+
+    @PoseImageResolution.setter
+    def PoseImageResolution(self, PoseImageResolution):
+        self._PoseImageResolution = PoseImageResolution
+
+    @property
+    def ReferenceVideoSegmentUrl(self):
+        r"""形象预览视频段。
+        :rtype: str
+        """
+        return self._ReferenceVideoSegmentUrl
+
+    @ReferenceVideoSegmentUrl.setter
+    def ReferenceVideoSegmentUrl(self, ReferenceVideoSegmentUrl):
+        self._ReferenceVideoSegmentUrl = ReferenceVideoSegmentUrl
+
+    @property
+    def HorizontalAvatar(self):
+        r"""横屏数字人信息。
+        :rtype: :class:`tencentcloud.live.v20180801.models.AvatarImageInfo`
+        """
+        return self._HorizontalAvatar
+
+    @HorizontalAvatar.setter
+    def HorizontalAvatar(self, HorizontalAvatar):
+        self._HorizontalAvatar = HorizontalAvatar
+
+    @property
+    def VerticalAvatar(self):
+        r"""竖屏数字人信息。
+        :rtype: :class:`tencentcloud.live.v20180801.models.AvatarImageInfo`
+        """
+        return self._VerticalAvatar
+
+    @VerticalAvatar.setter
+    def VerticalAvatar(self, VerticalAvatar):
+        self._VerticalAvatar = VerticalAvatar
+
+    @property
+    def SuggestTimbreKey(self):
+        r"""推荐音色。
+        :rtype: str
+        """
+        return self._SuggestTimbreKey
+
+    @SuggestTimbreKey.setter
+    def SuggestTimbreKey(self, SuggestTimbreKey):
+        self._SuggestTimbreKey = SuggestTimbreKey
+
+
+    def _deserialize(self, params):
+        self._AnchorName = params.get("AnchorName")
+        self._AnchorId = params.get("AnchorId")
+        self._AnchorGender = params.get("AnchorGender")
+        self._PoseImage = params.get("PoseImage")
+        self._PoseImageResolution = params.get("PoseImageResolution")
+        self._ReferenceVideoSegmentUrl = params.get("ReferenceVideoSegmentUrl")
+        if params.get("HorizontalAvatar") is not None:
+            self._HorizontalAvatar = AvatarImageInfo()
+            self._HorizontalAvatar._deserialize(params.get("HorizontalAvatar"))
+        if params.get("VerticalAvatar") is not None:
+            self._VerticalAvatar = AvatarImageInfo()
+            self._VerticalAvatar._deserialize(params.get("VerticalAvatar"))
+        self._SuggestTimbreKey = params.get("SuggestTimbreKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AvatarBackgroundInfo(AbstractModel):
+    r"""数字人背景信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BackgroundId: 背景 ID。
+        :type BackgroundId: str
+        :param _Scene: 背景场景。如：带货，娱乐等。
+        :type Scene: str
+        :param _VerticalImageUrl: 竖屏背景图片 URL。
+        :type VerticalImageUrl: str
+        :param _HorizontalImageUrl: 横屏背景图片 URL。
+        :type HorizontalImageUrl: str
+        """
+        self._BackgroundId = None
+        self._Scene = None
+        self._VerticalImageUrl = None
+        self._HorizontalImageUrl = None
+
+    @property
+    def BackgroundId(self):
+        r"""背景 ID。
+        :rtype: str
+        """
+        return self._BackgroundId
+
+    @BackgroundId.setter
+    def BackgroundId(self, BackgroundId):
+        self._BackgroundId = BackgroundId
+
+    @property
+    def Scene(self):
+        r"""背景场景。如：带货，娱乐等。
+        :rtype: str
+        """
+        return self._Scene
+
+    @Scene.setter
+    def Scene(self, Scene):
+        self._Scene = Scene
+
+    @property
+    def VerticalImageUrl(self):
+        r"""竖屏背景图片 URL。
+        :rtype: str
+        """
+        return self._VerticalImageUrl
+
+    @VerticalImageUrl.setter
+    def VerticalImageUrl(self, VerticalImageUrl):
+        self._VerticalImageUrl = VerticalImageUrl
+
+    @property
+    def HorizontalImageUrl(self):
+        r"""横屏背景图片 URL。
+        :rtype: str
+        """
+        return self._HorizontalImageUrl
+
+    @HorizontalImageUrl.setter
+    def HorizontalImageUrl(self, HorizontalImageUrl):
+        self._HorizontalImageUrl = HorizontalImageUrl
+
+
+    def _deserialize(self, params):
+        self._BackgroundId = params.get("BackgroundId")
+        self._Scene = params.get("Scene")
+        self._VerticalImageUrl = params.get("VerticalImageUrl")
+        self._HorizontalImageUrl = params.get("HorizontalImageUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AvatarImageInfo(AbstractModel):
+    r"""数字人形象信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OriginZoom: 数字人原始缩放系数。数字人展示大小=原始大小*缩放系数。
+        :type OriginZoom: float
+        :param _AvatarKey: 数字人KEY。
+        :type AvatarKey: str
+        :param _Resolution: 分辨率。
+        :type Resolution: str
+        """
+        self._OriginZoom = None
+        self._AvatarKey = None
+        self._Resolution = None
+
+    @property
+    def OriginZoom(self):
+        r"""数字人原始缩放系数。数字人展示大小=原始大小*缩放系数。
+        :rtype: float
+        """
+        return self._OriginZoom
+
+    @OriginZoom.setter
+    def OriginZoom(self, OriginZoom):
+        self._OriginZoom = OriginZoom
+
+    @property
+    def AvatarKey(self):
+        r"""数字人KEY。
+        :rtype: str
+        """
+        return self._AvatarKey
+
+    @AvatarKey.setter
+    def AvatarKey(self, AvatarKey):
+        self._AvatarKey = AvatarKey
+
+    @property
+    def Resolution(self):
+        r"""分辨率。
+        :rtype: str
+        """
+        return self._Resolution
+
+    @Resolution.setter
+    def Resolution(self, Resolution):
+        self._Resolution = Resolution
+
+
+    def _deserialize(self, params):
+        self._OriginZoom = params.get("OriginZoom")
+        self._AvatarKey = params.get("AvatarKey")
+        self._Resolution = params.get("Resolution")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AvatarRoomInfo(AbstractModel):
+    r"""数字人直播间信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RoomId: 数字人直播间 ID。
+        :type RoomId: str
+        :param _Name: 数字人直播间名称。
+        :type Name: str
+        :param _Status: 数字人直播间状态，
+CLOSE - 未开播。
+OPEN - 直播中。
+
+        :type Status: str
+        :param _AvatarKey: 数字人形象 KEY。
+        :type AvatarKey: str
+        :param _TimbreKey: 音色 KEy。
+        :type TimbreKey: str
+        :param _AvatarImageUrl: 数字人形象图片 URL。
+        :type AvatarImageUrl: str
+        :param _BackgroundUrl: 背景图片 URL。
+        :type BackgroundUrl: str
+        :param _Comment: 推流目标描述。
+        :type Comment: str
+        :param _ToUrl: 目标推流地址。
+        :type ToUrl: str
+        :param _AnchorScale: 主播大小，默认1.00。 取值范围(0, 15.00]。
+        :type AnchorScale: float
+        :param _AnchorVerticalPos: 主播纵向位置。默认-1贴底部。
+        :type AnchorVerticalPos: int
+        :param _AnchorHorizontalPos: 主播横向位置。默认-1居中。
+        :type AnchorHorizontalPos: int
+        :param _SpeechSpeed: 语速（1.0为正常语速，范围[0.5-1.5]，值为0.5时播报语速最慢，值为1.5时播报语速最快。
+        :type SpeechSpeed: float
+        :param _SpeechVolume: 音量大小，范围[0，10]，对应音量大小。默认为0，代表正常音量，值越大音量越高。
+        :type SpeechVolume: int
+        :param _CreateTime: 直播间创建时间，UTC时间。
+注意：UTC时间和北京时间相差八小时。
+        :type CreateTime: str
+        :param _UpdateTime: 直播间最后更新时间，UTC时间。
+注意：UTC时间和北京时间相差八小时。
+        :type UpdateTime: str
+        """
+        self._RoomId = None
+        self._Name = None
+        self._Status = None
+        self._AvatarKey = None
+        self._TimbreKey = None
+        self._AvatarImageUrl = None
+        self._BackgroundUrl = None
+        self._Comment = None
+        self._ToUrl = None
+        self._AnchorScale = None
+        self._AnchorVerticalPos = None
+        self._AnchorHorizontalPos = None
+        self._SpeechSpeed = None
+        self._SpeechVolume = None
+        self._CreateTime = None
+        self._UpdateTime = None
+
+    @property
+    def RoomId(self):
+        r"""数字人直播间 ID。
+        :rtype: str
+        """
+        return self._RoomId
+
+    @RoomId.setter
+    def RoomId(self, RoomId):
+        self._RoomId = RoomId
+
+    @property
+    def Name(self):
+        r"""数字人直播间名称。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Status(self):
+        r"""数字人直播间状态，
+CLOSE - 未开播。
+OPEN - 直播中。
+
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def AvatarKey(self):
+        r"""数字人形象 KEY。
+        :rtype: str
+        """
+        return self._AvatarKey
+
+    @AvatarKey.setter
+    def AvatarKey(self, AvatarKey):
+        self._AvatarKey = AvatarKey
+
+    @property
+    def TimbreKey(self):
+        r"""音色 KEy。
+        :rtype: str
+        """
+        return self._TimbreKey
+
+    @TimbreKey.setter
+    def TimbreKey(self, TimbreKey):
+        self._TimbreKey = TimbreKey
+
+    @property
+    def AvatarImageUrl(self):
+        r"""数字人形象图片 URL。
+        :rtype: str
+        """
+        return self._AvatarImageUrl
+
+    @AvatarImageUrl.setter
+    def AvatarImageUrl(self, AvatarImageUrl):
+        self._AvatarImageUrl = AvatarImageUrl
+
+    @property
+    def BackgroundUrl(self):
+        r"""背景图片 URL。
+        :rtype: str
+        """
+        return self._BackgroundUrl
+
+    @BackgroundUrl.setter
+    def BackgroundUrl(self, BackgroundUrl):
+        self._BackgroundUrl = BackgroundUrl
+
+    @property
+    def Comment(self):
+        r"""推流目标描述。
+        :rtype: str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def ToUrl(self):
+        r"""目标推流地址。
+        :rtype: str
+        """
+        return self._ToUrl
+
+    @ToUrl.setter
+    def ToUrl(self, ToUrl):
+        self._ToUrl = ToUrl
+
+    @property
+    def AnchorScale(self):
+        r"""主播大小，默认1.00。 取值范围(0, 15.00]。
+        :rtype: float
+        """
+        return self._AnchorScale
+
+    @AnchorScale.setter
+    def AnchorScale(self, AnchorScale):
+        self._AnchorScale = AnchorScale
+
+    @property
+    def AnchorVerticalPos(self):
+        r"""主播纵向位置。默认-1贴底部。
+        :rtype: int
+        """
+        return self._AnchorVerticalPos
+
+    @AnchorVerticalPos.setter
+    def AnchorVerticalPos(self, AnchorVerticalPos):
+        self._AnchorVerticalPos = AnchorVerticalPos
+
+    @property
+    def AnchorHorizontalPos(self):
+        r"""主播横向位置。默认-1居中。
+        :rtype: int
+        """
+        return self._AnchorHorizontalPos
+
+    @AnchorHorizontalPos.setter
+    def AnchorHorizontalPos(self, AnchorHorizontalPos):
+        self._AnchorHorizontalPos = AnchorHorizontalPos
+
+    @property
+    def SpeechSpeed(self):
+        r"""语速（1.0为正常语速，范围[0.5-1.5]，值为0.5时播报语速最慢，值为1.5时播报语速最快。
+        :rtype: float
+        """
+        return self._SpeechSpeed
+
+    @SpeechSpeed.setter
+    def SpeechSpeed(self, SpeechSpeed):
+        self._SpeechSpeed = SpeechSpeed
+
+    @property
+    def SpeechVolume(self):
+        r"""音量大小，范围[0，10]，对应音量大小。默认为0，代表正常音量，值越大音量越高。
+        :rtype: int
+        """
+        return self._SpeechVolume
+
+    @SpeechVolume.setter
+    def SpeechVolume(self, SpeechVolume):
+        self._SpeechVolume = SpeechVolume
+
+    @property
+    def CreateTime(self):
+        r"""直播间创建时间，UTC时间。
+注意：UTC时间和北京时间相差八小时。
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""直播间最后更新时间，UTC时间。
+注意：UTC时间和北京时间相差八小时。
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._RoomId = params.get("RoomId")
+        self._Name = params.get("Name")
+        self._Status = params.get("Status")
+        self._AvatarKey = params.get("AvatarKey")
+        self._TimbreKey = params.get("TimbreKey")
+        self._AvatarImageUrl = params.get("AvatarImageUrl")
+        self._BackgroundUrl = params.get("BackgroundUrl")
+        self._Comment = params.get("Comment")
+        self._ToUrl = params.get("ToUrl")
+        self._AnchorScale = params.get("AnchorScale")
+        self._AnchorVerticalPos = params.get("AnchorVerticalPos")
+        self._AnchorHorizontalPos = params.get("AnchorHorizontalPos")
+        self._SpeechSpeed = params.get("SpeechSpeed")
+        self._SpeechVolume = params.get("SpeechVolume")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AvatarScriptInfo(AbstractModel):
+    r"""数字人直播间话术信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ScriptId: 数字人直播间话术 ID。
+        :type ScriptId: str
+        :param _Title: 话术标题。
+        :type Title: str
+        :param _Content: 话术内容。
+        :type Content: str
+        :param _Status: 话术状态。
+PENDING --未生成。
+PROCESSING --生成中。
+READY --已生成。
+        :type Status: str
+        :param _Duration: 时长。单位：毫秒。
+        :type Duration: int
+        :param _Position: 话术位置。
+        :type Position: int
+        :param _CreateTime: 话术创建时间，UTC时间。
+注意：UTC时间和北京时间相差八小时。
+        :type CreateTime: str
+        :param _UpdateTime: 话术最后更新时间，UTC时间。
+注意：UTC时间和北京时间相差八小时。
+        :type UpdateTime: str
+        """
+        self._ScriptId = None
+        self._Title = None
+        self._Content = None
+        self._Status = None
+        self._Duration = None
+        self._Position = None
+        self._CreateTime = None
+        self._UpdateTime = None
+
+    @property
+    def ScriptId(self):
+        r"""数字人直播间话术 ID。
+        :rtype: str
+        """
+        return self._ScriptId
+
+    @ScriptId.setter
+    def ScriptId(self, ScriptId):
+        self._ScriptId = ScriptId
+
+    @property
+    def Title(self):
+        r"""话术标题。
+        :rtype: str
+        """
+        return self._Title
+
+    @Title.setter
+    def Title(self, Title):
+        self._Title = Title
+
+    @property
+    def Content(self):
+        r"""话术内容。
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def Status(self):
+        r"""话术状态。
+PENDING --未生成。
+PROCESSING --生成中。
+READY --已生成。
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Duration(self):
+        r"""时长。单位：毫秒。
+        :rtype: int
+        """
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def Position(self):
+        r"""话术位置。
+        :rtype: int
+        """
+        return self._Position
+
+    @Position.setter
+    def Position(self, Position):
+        self._Position = Position
+
+    @property
+    def CreateTime(self):
+        r"""话术创建时间，UTC时间。
+注意：UTC时间和北京时间相差八小时。
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""话术最后更新时间，UTC时间。
+注意：UTC时间和北京时间相差八小时。
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._ScriptId = params.get("ScriptId")
+        self._Title = params.get("Title")
+        self._Content = params.get("Content")
+        self._Status = params.get("Status")
+        self._Duration = params.get("Duration")
+        self._Position = params.get("Position")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AvatarTemporaryScriptInfo(AbstractModel):
+    r"""数字人直播间临时话术信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Content: 话术内容。
+        :type Content: str
+        :param _CreateTime: 话术创建时间，UTC时间。
+注意：UTC时间和北京时间相差八小时。
+        :type CreateTime: str
+        """
+        self._Content = None
+        self._CreateTime = None
+
+    @property
+    def Content(self):
+        r"""话术内容。
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def CreateTime(self):
+        r"""话术创建时间，UTC时间。
+注意：UTC时间和北京时间相差八小时。
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+
+    def _deserialize(self, params):
+        self._Content = params.get("Content")
+        self._CreateTime = params.get("CreateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AvatarTimbreInfo(AbstractModel):
+    r"""数字人声音信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TimbreKey: 音色 Key。
+        :type TimbreKey: str
+        :param _TimbreName: 音色名称。
+        :type TimbreName: str
+        :param _TimbreDesc: 音色描述。
+        :type TimbreDesc: str
+        :param _TimbreSample: 音色试听样例 URL。
+        :type TimbreSample: str
+        :param _TimbreGender: 音色性别，male:男音，femal:女音。
+        :type TimbreGender: str
+        """
+        self._TimbreKey = None
+        self._TimbreName = None
+        self._TimbreDesc = None
+        self._TimbreSample = None
+        self._TimbreGender = None
+
+    @property
+    def TimbreKey(self):
+        r"""音色 Key。
+        :rtype: str
+        """
+        return self._TimbreKey
+
+    @TimbreKey.setter
+    def TimbreKey(self, TimbreKey):
+        self._TimbreKey = TimbreKey
+
+    @property
+    def TimbreName(self):
+        r"""音色名称。
+        :rtype: str
+        """
+        return self._TimbreName
+
+    @TimbreName.setter
+    def TimbreName(self, TimbreName):
+        self._TimbreName = TimbreName
+
+    @property
+    def TimbreDesc(self):
+        r"""音色描述。
+        :rtype: str
+        """
+        return self._TimbreDesc
+
+    @TimbreDesc.setter
+    def TimbreDesc(self, TimbreDesc):
+        self._TimbreDesc = TimbreDesc
+
+    @property
+    def TimbreSample(self):
+        r"""音色试听样例 URL。
+        :rtype: str
+        """
+        return self._TimbreSample
+
+    @TimbreSample.setter
+    def TimbreSample(self, TimbreSample):
+        self._TimbreSample = TimbreSample
+
+    @property
+    def TimbreGender(self):
+        r"""音色性别，male:男音，femal:女音。
+        :rtype: str
+        """
+        return self._TimbreGender
+
+    @TimbreGender.setter
+    def TimbreGender(self, TimbreGender):
+        self._TimbreGender = TimbreGender
+
+
+    def _deserialize(self, params):
+        self._TimbreKey = params.get("TimbreKey")
+        self._TimbreName = params.get("TimbreName")
+        self._TimbreDesc = params.get("TimbreDesc")
+        self._TimbreSample = params.get("TimbreSample")
+        self._TimbreGender = params.get("TimbreGender")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AvatarTimbreList(AbstractModel):
+    r"""数字人音色信息列表。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TimbreType: 音色 类型。
+        :type TimbreType: str
+        :param _TimbreInfoList: 音色信息列表。
+        :type TimbreInfoList: list of AvatarTimbreInfo
+        """
+        self._TimbreType = None
+        self._TimbreInfoList = None
+
+    @property
+    def TimbreType(self):
+        r"""音色 类型。
+        :rtype: str
+        """
+        return self._TimbreType
+
+    @TimbreType.setter
+    def TimbreType(self, TimbreType):
+        self._TimbreType = TimbreType
+
+    @property
+    def TimbreInfoList(self):
+        r"""音色信息列表。
+        :rtype: list of AvatarTimbreInfo
+        """
+        return self._TimbreInfoList
+
+    @TimbreInfoList.setter
+    def TimbreInfoList(self, TimbreInfoList):
+        self._TimbreInfoList = TimbreInfoList
+
+
+    def _deserialize(self, params):
+        self._TimbreType = params.get("TimbreType")
+        if params.get("TimbreInfoList") is not None:
+            self._TimbreInfoList = []
+            for item in params.get("TimbreInfoList"):
+                obj = AvatarTimbreInfo()
+                obj._deserialize(item)
+                self._TimbreInfoList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BackupStreamDetailData(AbstractModel):
     r"""主备流详细信息。
 
@@ -5711,6 +6645,130 @@ class CopyCasterResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CopyLiveAvatarRoomRequest(AbstractModel):
+    r"""CopyLiveAvatarRoom请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 新直播间名称。
+        :type Name: str
+        :param _SourceRoomId: 源数字人直播间 ID。
+        :type SourceRoomId: str
+        :param _IsCopyScript: 是否复制话术列表。默认：true。
+        :type IsCopyScript: bool
+        :param _Operator: 操作者。
+        :type Operator: str
+        """
+        self._Name = None
+        self._SourceRoomId = None
+        self._IsCopyScript = None
+        self._Operator = None
+
+    @property
+    def Name(self):
+        r"""新直播间名称。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def SourceRoomId(self):
+        r"""源数字人直播间 ID。
+        :rtype: str
+        """
+        return self._SourceRoomId
+
+    @SourceRoomId.setter
+    def SourceRoomId(self, SourceRoomId):
+        self._SourceRoomId = SourceRoomId
+
+    @property
+    def IsCopyScript(self):
+        r"""是否复制话术列表。默认：true。
+        :rtype: bool
+        """
+        return self._IsCopyScript
+
+    @IsCopyScript.setter
+    def IsCopyScript(self, IsCopyScript):
+        self._IsCopyScript = IsCopyScript
+
+    @property
+    def Operator(self):
+        r"""操作者。
+        :rtype: str
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._SourceRoomId = params.get("SourceRoomId")
+        self._IsCopyScript = params.get("IsCopyScript")
+        self._Operator = params.get("Operator")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CopyLiveAvatarRoomResponse(AbstractModel):
+    r"""CopyLiveAvatarRoom返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RoomId: 数字人直播间 ID。
+        :type RoomId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RoomId = None
+        self._RequestId = None
+
+    @property
+    def RoomId(self):
+        r"""数字人直播间 ID。
+        :rtype: str
+        """
+        return self._RoomId
+
+    @RoomId.setter
+    def RoomId(self, RoomId):
+        self._RoomId = RoomId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RoomId = params.get("RoomId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateAuditKeywordLibRequest(AbstractModel):
     r"""CreateAuditKeywordLib请求参数结构体
 
@@ -6867,6 +7925,243 @@ class CreateCommonMixStreamResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class CreateLiveAvatarRoomRequest(AbstractModel):
+    r"""CreateLiveAvatarRoom请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 直播间名称。
+        :type Name: str
+        :param _Operator: 操作者。
+        :type Operator: str
+        """
+        self._Name = None
+        self._Operator = None
+
+    @property
+    def Name(self):
+        r"""直播间名称。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Operator(self):
+        r"""操作者。
+        :rtype: str
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Operator = params.get("Operator")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateLiveAvatarRoomResponse(AbstractModel):
+    r"""CreateLiveAvatarRoom返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RoomId: 数字人直播间 ID。
+        :type RoomId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RoomId = None
+        self._RequestId = None
+
+    @property
+    def RoomId(self):
+        r"""数字人直播间 ID。
+        :rtype: str
+        """
+        return self._RoomId
+
+    @RoomId.setter
+    def RoomId(self, RoomId):
+        self._RoomId = RoomId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RoomId = params.get("RoomId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateLiveAvatarScriptRequest(AbstractModel):
+    r"""CreateLiveAvatarScript请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Title: 话术标题。限制500字节。
+        :type Title: str
+        :param _Content: 话术内容。中文最大支持150个汉字（全角标点符号算一个汉字）；英文最大支持500个字母（半角标点符号算一个字母）。
+        :type Content: str
+        :param _RoomId: 话术所属的数字人直播间 ID。
+        :type RoomId: str
+        :param _SpecifyPosition: 话术插入时，可根据已有话术位置，指定新话术插入位置。
+如已有三条话术100，200，300。
+新话术可选择150插入到第一条和第二条中间。
+        :type SpecifyPosition: int
+        :param _Operator: 操作者。
+        :type Operator: str
+        """
+        self._Title = None
+        self._Content = None
+        self._RoomId = None
+        self._SpecifyPosition = None
+        self._Operator = None
+
+    @property
+    def Title(self):
+        r"""话术标题。限制500字节。
+        :rtype: str
+        """
+        return self._Title
+
+    @Title.setter
+    def Title(self, Title):
+        self._Title = Title
+
+    @property
+    def Content(self):
+        r"""话术内容。中文最大支持150个汉字（全角标点符号算一个汉字）；英文最大支持500个字母（半角标点符号算一个字母）。
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def RoomId(self):
+        r"""话术所属的数字人直播间 ID。
+        :rtype: str
+        """
+        return self._RoomId
+
+    @RoomId.setter
+    def RoomId(self, RoomId):
+        self._RoomId = RoomId
+
+    @property
+    def SpecifyPosition(self):
+        r"""话术插入时，可根据已有话术位置，指定新话术插入位置。
+如已有三条话术100，200，300。
+新话术可选择150插入到第一条和第二条中间。
+        :rtype: int
+        """
+        return self._SpecifyPosition
+
+    @SpecifyPosition.setter
+    def SpecifyPosition(self, SpecifyPosition):
+        self._SpecifyPosition = SpecifyPosition
+
+    @property
+    def Operator(self):
+        r"""操作者。
+        :rtype: str
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+
+    def _deserialize(self, params):
+        self._Title = params.get("Title")
+        self._Content = params.get("Content")
+        self._RoomId = params.get("RoomId")
+        self._SpecifyPosition = params.get("SpecifyPosition")
+        self._Operator = params.get("Operator")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateLiveAvatarScriptResponse(AbstractModel):
+    r"""CreateLiveAvatarScript返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ScriptId: 话术 ID。
+        :type ScriptId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ScriptId = None
+        self._RequestId = None
+
+    @property
+    def ScriptId(self):
+        r"""话术 ID。
+        :rtype: str
+        """
+        return self._ScriptId
+
+    @ScriptId.setter
+    def ScriptId(self, ScriptId):
+        self._ScriptId = ScriptId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ScriptId = params.get("ScriptId")
         self._RequestId = params.get("RequestId")
 
 
@@ -12010,6 +13305,134 @@ class DeleteCasterResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteLiveAvatarRoomRequest(AbstractModel):
+    r"""DeleteLiveAvatarRoom请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RoomId: 直播间ID。
+        :type RoomId: str
+        """
+        self._RoomId = None
+
+    @property
+    def RoomId(self):
+        r"""直播间ID。
+        :rtype: str
+        """
+        return self._RoomId
+
+    @RoomId.setter
+    def RoomId(self, RoomId):
+        self._RoomId = RoomId
+
+
+    def _deserialize(self, params):
+        self._RoomId = params.get("RoomId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteLiveAvatarRoomResponse(AbstractModel):
+    r"""DeleteLiveAvatarRoom返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteLiveAvatarScriptRequest(AbstractModel):
+    r"""DeleteLiveAvatarScript请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ScriptId: 话术ID。
+        :type ScriptId: str
+        """
+        self._ScriptId = None
+
+    @property
+    def ScriptId(self):
+        r"""话术ID。
+        :rtype: str
+        """
+        return self._ScriptId
+
+    @ScriptId.setter
+    def ScriptId(self, ScriptId):
+        self._ScriptId = ScriptId
+
+
+    def _deserialize(self, params):
+        self._ScriptId = params.get("ScriptId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteLiveAvatarScriptResponse(AbstractModel):
+    r"""DeleteLiveAvatarScript返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteLiveCallbackRuleRequest(AbstractModel):
     r"""DeleteLiveCallbackRule请求参数结构体
 
@@ -16452,6 +17875,604 @@ class DescribeHttpStatusInfoListResponse(AbstractModel):
                 obj = HttpStatusData()
                 obj._deserialize(item)
                 self._DataInfoList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeLiveAvatarBackgroundListRequest(AbstractModel):
+    r"""DescribeLiveAvatarBackgroundList请求参数结构体
+
+    """
+
+
+class DescribeLiveAvatarBackgroundListResponse(AbstractModel):
+    r"""DescribeLiveAvatarBackgroundList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InfoList: 数字人背景图片信息列表。
+        :type InfoList: list of AvatarBackgroundInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._InfoList = None
+        self._RequestId = None
+
+    @property
+    def InfoList(self):
+        r"""数字人背景图片信息列表。
+        :rtype: list of AvatarBackgroundInfo
+        """
+        return self._InfoList
+
+    @InfoList.setter
+    def InfoList(self, InfoList):
+        self._InfoList = InfoList
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("InfoList") is not None:
+            self._InfoList = []
+            for item in params.get("InfoList"):
+                obj = AvatarBackgroundInfo()
+                obj._deserialize(item)
+                self._InfoList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeLiveAvatarImageListRequest(AbstractModel):
+    r"""DescribeLiveAvatarImageList请求参数结构体
+
+    """
+
+
+class DescribeLiveAvatarImageListResponse(AbstractModel):
+    r"""DescribeLiveAvatarImageList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImageInfoList: 数字人形象信息列表。
+        :type ImageInfoList: list of AvatarAnchorInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ImageInfoList = None
+        self._RequestId = None
+
+    @property
+    def ImageInfoList(self):
+        r"""数字人形象信息列表。
+        :rtype: list of AvatarAnchorInfo
+        """
+        return self._ImageInfoList
+
+    @ImageInfoList.setter
+    def ImageInfoList(self, ImageInfoList):
+        self._ImageInfoList = ImageInfoList
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ImageInfoList") is not None:
+            self._ImageInfoList = []
+            for item in params.get("ImageInfoList"):
+                obj = AvatarAnchorInfo()
+                obj._deserialize(item)
+                self._ImageInfoList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeLiveAvatarRoomsRequest(AbstractModel):
+    r"""DescribeLiveAvatarRooms请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RoomId: 数字人直播间 ID。
+        :type RoomId: str
+        :param _Name: 数字人直播间名称。
+        :type Name: str
+        :param _PageIndex: 分页查询的页数。
+        :type PageIndex: int
+        :param _PageSize: 分页查询的每页个数。
+        :type PageSize: int
+        """
+        self._RoomId = None
+        self._Name = None
+        self._PageIndex = None
+        self._PageSize = None
+
+    @property
+    def RoomId(self):
+        r"""数字人直播间 ID。
+        :rtype: str
+        """
+        return self._RoomId
+
+    @RoomId.setter
+    def RoomId(self, RoomId):
+        self._RoomId = RoomId
+
+    @property
+    def Name(self):
+        r"""数字人直播间名称。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def PageIndex(self):
+        r"""分页查询的页数。
+        :rtype: int
+        """
+        return self._PageIndex
+
+    @PageIndex.setter
+    def PageIndex(self, PageIndex):
+        self._PageIndex = PageIndex
+
+    @property
+    def PageSize(self):
+        r"""分页查询的每页个数。
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+
+    def _deserialize(self, params):
+        self._RoomId = params.get("RoomId")
+        self._Name = params.get("Name")
+        self._PageIndex = params.get("PageIndex")
+        self._PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLiveAvatarRoomsResponse(AbstractModel):
+    r"""DescribeLiveAvatarRooms返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InfoList: 数字人直播间信息列表。
+        :type InfoList: list of AvatarRoomInfo
+        :param _LimitCreateNum: 限制可创建的数字人直播间总数。
+        :type LimitCreateNum: int
+        :param _TotalNum: 当前数字人直播间总个数。
+        :type TotalNum: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._InfoList = None
+        self._LimitCreateNum = None
+        self._TotalNum = None
+        self._RequestId = None
+
+    @property
+    def InfoList(self):
+        r"""数字人直播间信息列表。
+        :rtype: list of AvatarRoomInfo
+        """
+        return self._InfoList
+
+    @InfoList.setter
+    def InfoList(self, InfoList):
+        self._InfoList = InfoList
+
+    @property
+    def LimitCreateNum(self):
+        r"""限制可创建的数字人直播间总数。
+        :rtype: int
+        """
+        return self._LimitCreateNum
+
+    @LimitCreateNum.setter
+    def LimitCreateNum(self, LimitCreateNum):
+        self._LimitCreateNum = LimitCreateNum
+
+    @property
+    def TotalNum(self):
+        r"""当前数字人直播间总个数。
+        :rtype: int
+        """
+        return self._TotalNum
+
+    @TotalNum.setter
+    def TotalNum(self, TotalNum):
+        self._TotalNum = TotalNum
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("InfoList") is not None:
+            self._InfoList = []
+            for item in params.get("InfoList"):
+                obj = AvatarRoomInfo()
+                obj._deserialize(item)
+                self._InfoList.append(obj)
+        self._LimitCreateNum = params.get("LimitCreateNum")
+        self._TotalNum = params.get("TotalNum")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeLiveAvatarScriptsRequest(AbstractModel):
+    r"""DescribeLiveAvatarScripts请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RoomId: 数字人直播间 ID。
+        :type RoomId: str
+        :param _ScriptId: 数字人直播间话术 ID。
+        :type ScriptId: str
+        :param _PageIndex: 分页查询的页数。
+        :type PageIndex: int
+        :param _PageSize: 分页查询的每页个数。
+        :type PageSize: int
+        """
+        self._RoomId = None
+        self._ScriptId = None
+        self._PageIndex = None
+        self._PageSize = None
+
+    @property
+    def RoomId(self):
+        r"""数字人直播间 ID。
+        :rtype: str
+        """
+        return self._RoomId
+
+    @RoomId.setter
+    def RoomId(self, RoomId):
+        self._RoomId = RoomId
+
+    @property
+    def ScriptId(self):
+        r"""数字人直播间话术 ID。
+        :rtype: str
+        """
+        return self._ScriptId
+
+    @ScriptId.setter
+    def ScriptId(self, ScriptId):
+        self._ScriptId = ScriptId
+
+    @property
+    def PageIndex(self):
+        r"""分页查询的页数。
+        :rtype: int
+        """
+        return self._PageIndex
+
+    @PageIndex.setter
+    def PageIndex(self, PageIndex):
+        self._PageIndex = PageIndex
+
+    @property
+    def PageSize(self):
+        r"""分页查询的每页个数。
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+
+    def _deserialize(self, params):
+        self._RoomId = params.get("RoomId")
+        self._ScriptId = params.get("ScriptId")
+        self._PageIndex = params.get("PageIndex")
+        self._PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLiveAvatarScriptsResponse(AbstractModel):
+    r"""DescribeLiveAvatarScripts返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InfoList: 数字人直播间话术信息列表。
+        :type InfoList: list of AvatarScriptInfo
+        :param _LimitCreateNum: 限制可创建的数字人直播间话术总条数。
+        :type LimitCreateNum: int
+        :param _TotalNum: 当前数字人直播间话术总条数。
+        :type TotalNum: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._InfoList = None
+        self._LimitCreateNum = None
+        self._TotalNum = None
+        self._RequestId = None
+
+    @property
+    def InfoList(self):
+        r"""数字人直播间话术信息列表。
+        :rtype: list of AvatarScriptInfo
+        """
+        return self._InfoList
+
+    @InfoList.setter
+    def InfoList(self, InfoList):
+        self._InfoList = InfoList
+
+    @property
+    def LimitCreateNum(self):
+        r"""限制可创建的数字人直播间话术总条数。
+        :rtype: int
+        """
+        return self._LimitCreateNum
+
+    @LimitCreateNum.setter
+    def LimitCreateNum(self, LimitCreateNum):
+        self._LimitCreateNum = LimitCreateNum
+
+    @property
+    def TotalNum(self):
+        r"""当前数字人直播间话术总条数。
+        :rtype: int
+        """
+        return self._TotalNum
+
+    @TotalNum.setter
+    def TotalNum(self, TotalNum):
+        self._TotalNum = TotalNum
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("InfoList") is not None:
+            self._InfoList = []
+            for item in params.get("InfoList"):
+                obj = AvatarScriptInfo()
+                obj._deserialize(item)
+                self._InfoList.append(obj)
+        self._LimitCreateNum = params.get("LimitCreateNum")
+        self._TotalNum = params.get("TotalNum")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeLiveAvatarTemporaryScriptListRequest(AbstractModel):
+    r"""DescribeLiveAvatarTemporaryScriptList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RoomId: 数字人直播间 ID。
+        :type RoomId: str
+        """
+        self._RoomId = None
+
+    @property
+    def RoomId(self):
+        r"""数字人直播间 ID。
+        :rtype: str
+        """
+        return self._RoomId
+
+    @RoomId.setter
+    def RoomId(self, RoomId):
+        self._RoomId = RoomId
+
+
+    def _deserialize(self, params):
+        self._RoomId = params.get("RoomId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLiveAvatarTemporaryScriptListResponse(AbstractModel):
+    r"""DescribeLiveAvatarTemporaryScriptList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InfoList: 临时话术列表。
+        :type InfoList: list of AvatarTemporaryScriptInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._InfoList = None
+        self._RequestId = None
+
+    @property
+    def InfoList(self):
+        r"""临时话术列表。
+        :rtype: list of AvatarTemporaryScriptInfo
+        """
+        return self._InfoList
+
+    @InfoList.setter
+    def InfoList(self, InfoList):
+        self._InfoList = InfoList
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("InfoList") is not None:
+            self._InfoList = []
+            for item in params.get("InfoList"):
+                obj = AvatarTemporaryScriptInfo()
+                obj._deserialize(item)
+                self._InfoList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeLiveAvatarTimbreListRequest(AbstractModel):
+    r"""DescribeLiveAvatarTimbreList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TimbreGender: 过滤音色性别。默认不过滤。
+male - 男性，
+female -女性。
+        :type TimbreGender: str
+        """
+        self._TimbreGender = None
+
+    @property
+    def TimbreGender(self):
+        r"""过滤音色性别。默认不过滤。
+male - 男性，
+female -女性。
+        :rtype: str
+        """
+        return self._TimbreGender
+
+    @TimbreGender.setter
+    def TimbreGender(self, TimbreGender):
+        self._TimbreGender = TimbreGender
+
+
+    def _deserialize(self, params):
+        self._TimbreGender = params.get("TimbreGender")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLiveAvatarTimbreListResponse(AbstractModel):
+    r"""DescribeLiveAvatarTimbreList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TimbreList: 数字人声音信息列表。
+        :type TimbreList: list of AvatarTimbreList
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TimbreList = None
+        self._RequestId = None
+
+    @property
+    def TimbreList(self):
+        r"""数字人声音信息列表。
+        :rtype: list of AvatarTimbreList
+        """
+        return self._TimbreList
+
+    @TimbreList.setter
+    def TimbreList(self, TimbreList):
+        self._TimbreList = TimbreList
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("TimbreList") is not None:
+            self._TimbreList = []
+            for item in params.get("TimbreList"):
+                obj = AvatarTimbreList()
+                obj._deserialize(item)
+                self._TimbreList.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -27716,6 +29737,145 @@ class ForbidLiveStreamResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class GenerateLiveAvatarScriptBroadcastRequest(AbstractModel):
+    r"""GenerateLiveAvatarScriptBroadcast请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RoomId: 数字人直播间 ID。
+        :type RoomId: str
+        :param _ScriptId: 话术 ID。
+        :type ScriptId: str
+        :param _TimbreKey: 音色 Key。如果不填，则默认使用数字人直播已经保存的音色。
+        :type TimbreKey: str
+        :param _SpeechSpeed: 语速（1.0为正常语速，范围[0.6-2.5]，值为0.6时播报语速最慢，值为2.5时播报语速最快。不传默认使用数字人直播间已设置的语速。
+        :type SpeechSpeed: float
+        :param _SpeechVolume: 音量大小，范围[0，10]，对应音量大小。默认为5，代表正常音量，值越大音量越高。不传使用数字人直播已设置的音量。
+        :type SpeechVolume: int
+        """
+        self._RoomId = None
+        self._ScriptId = None
+        self._TimbreKey = None
+        self._SpeechSpeed = None
+        self._SpeechVolume = None
+
+    @property
+    def RoomId(self):
+        r"""数字人直播间 ID。
+        :rtype: str
+        """
+        return self._RoomId
+
+    @RoomId.setter
+    def RoomId(self, RoomId):
+        self._RoomId = RoomId
+
+    @property
+    def ScriptId(self):
+        r"""话术 ID。
+        :rtype: str
+        """
+        return self._ScriptId
+
+    @ScriptId.setter
+    def ScriptId(self, ScriptId):
+        self._ScriptId = ScriptId
+
+    @property
+    def TimbreKey(self):
+        r"""音色 Key。如果不填，则默认使用数字人直播已经保存的音色。
+        :rtype: str
+        """
+        return self._TimbreKey
+
+    @TimbreKey.setter
+    def TimbreKey(self, TimbreKey):
+        self._TimbreKey = TimbreKey
+
+    @property
+    def SpeechSpeed(self):
+        r"""语速（1.0为正常语速，范围[0.6-2.5]，值为0.6时播报语速最慢，值为2.5时播报语速最快。不传默认使用数字人直播间已设置的语速。
+        :rtype: float
+        """
+        return self._SpeechSpeed
+
+    @SpeechSpeed.setter
+    def SpeechSpeed(self, SpeechSpeed):
+        self._SpeechSpeed = SpeechSpeed
+
+    @property
+    def SpeechVolume(self):
+        r"""音量大小，范围[0，10]，对应音量大小。默认为5，代表正常音量，值越大音量越高。不传使用数字人直播已设置的音量。
+        :rtype: int
+        """
+        return self._SpeechVolume
+
+    @SpeechVolume.setter
+    def SpeechVolume(self, SpeechVolume):
+        self._SpeechVolume = SpeechVolume
+
+
+    def _deserialize(self, params):
+        self._RoomId = params.get("RoomId")
+        self._ScriptId = params.get("ScriptId")
+        self._TimbreKey = params.get("TimbreKey")
+        self._SpeechSpeed = params.get("SpeechSpeed")
+        self._SpeechVolume = params.get("SpeechVolume")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GenerateLiveAvatarScriptBroadcastResponse(AbstractModel):
+    r"""GenerateLiveAvatarScriptBroadcast返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PreviewAudioUrl: 音频播报 URL。
+        :type PreviewAudioUrl: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._PreviewAudioUrl = None
+        self._RequestId = None
+
+    @property
+    def PreviewAudioUrl(self):
+        r"""音频播报 URL。
+        :rtype: str
+        """
+        return self._PreviewAudioUrl
+
+    @PreviewAudioUrl.setter
+    def PreviewAudioUrl(self, PreviewAudioUrl):
+        self._PreviewAudioUrl = PreviewAudioUrl
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._PreviewAudioUrl = params.get("PreviewAudioUrl")
+        self._RequestId = params.get("RequestId")
+
+
 class GroupProIspDataInfo(AbstractModel):
     r"""某省份某运营商在某段时间内的带宽，流量，请求数和并发数
 
@@ -30317,6 +32477,362 @@ class ModifyCasterRequest(AbstractModel):
 
 class ModifyCasterResponse(AbstractModel):
     r"""ModifyCaster返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyLiveAvatarRoomRequest(AbstractModel):
+    r"""ModifyLiveAvatarRoom请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RoomId: 数字人直播间 ID。
+        :type RoomId: str
+        :param _Name: 直播间名称。
+        :type Name: str
+        :param _AvatarKey: 数字人形象KEY。
+        :type AvatarKey: str
+        :param _TimbreKey: 音色KEY。
+        :type TimbreKey: str
+        :param _BackgroundUrl: 背景图片URL。
+        :type BackgroundUrl: str
+        :param _AnchorScale: 主播大小，默认1.00。
+取值范围(0, 15.00]。
+精度：使用小数点后两位。
+        :type AnchorScale: float
+        :param _AnchorVerticalPos: 主播纵向位置。默认-1贴底部。
+左上角为原点，形象顶部离屏幕顶部的距离，最大不能使形象底部超出屏幕。
+即该纵向位置最大为：数字人分辨率的高 - 形象高。
+        :type AnchorVerticalPos: int
+        :param _AnchorHorizontalPos: 主播横向位置。默认-1居中。
+左上角为原点，形象左侧离左侧屏幕的距离。最大值不可使形象右侧超出右侧屏幕。
+即最大值为：数字人分辨率的宽 - 形象宽。
+        :type AnchorHorizontalPos: int
+        :param _SpeechSpeed: 语速（1.0为正常语速，范围[0.6-2.5]，值为0.6时播报语速最慢，值为2.5时播报语速最快。
+        :type SpeechSpeed: float
+        :param _SpeechVolume: 音量大小，范围[0，10]，对应音量大小。默认为5，代表正常音量，值越大音量越高。
+        :type SpeechVolume: int
+        :param _Operator: 操作者。
+        :type Operator: str
+        """
+        self._RoomId = None
+        self._Name = None
+        self._AvatarKey = None
+        self._TimbreKey = None
+        self._BackgroundUrl = None
+        self._AnchorScale = None
+        self._AnchorVerticalPos = None
+        self._AnchorHorizontalPos = None
+        self._SpeechSpeed = None
+        self._SpeechVolume = None
+        self._Operator = None
+
+    @property
+    def RoomId(self):
+        r"""数字人直播间 ID。
+        :rtype: str
+        """
+        return self._RoomId
+
+    @RoomId.setter
+    def RoomId(self, RoomId):
+        self._RoomId = RoomId
+
+    @property
+    def Name(self):
+        r"""直播间名称。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def AvatarKey(self):
+        r"""数字人形象KEY。
+        :rtype: str
+        """
+        return self._AvatarKey
+
+    @AvatarKey.setter
+    def AvatarKey(self, AvatarKey):
+        self._AvatarKey = AvatarKey
+
+    @property
+    def TimbreKey(self):
+        r"""音色KEY。
+        :rtype: str
+        """
+        return self._TimbreKey
+
+    @TimbreKey.setter
+    def TimbreKey(self, TimbreKey):
+        self._TimbreKey = TimbreKey
+
+    @property
+    def BackgroundUrl(self):
+        r"""背景图片URL。
+        :rtype: str
+        """
+        return self._BackgroundUrl
+
+    @BackgroundUrl.setter
+    def BackgroundUrl(self, BackgroundUrl):
+        self._BackgroundUrl = BackgroundUrl
+
+    @property
+    def AnchorScale(self):
+        r"""主播大小，默认1.00。
+取值范围(0, 15.00]。
+精度：使用小数点后两位。
+        :rtype: float
+        """
+        return self._AnchorScale
+
+    @AnchorScale.setter
+    def AnchorScale(self, AnchorScale):
+        self._AnchorScale = AnchorScale
+
+    @property
+    def AnchorVerticalPos(self):
+        r"""主播纵向位置。默认-1贴底部。
+左上角为原点，形象顶部离屏幕顶部的距离，最大不能使形象底部超出屏幕。
+即该纵向位置最大为：数字人分辨率的高 - 形象高。
+        :rtype: int
+        """
+        return self._AnchorVerticalPos
+
+    @AnchorVerticalPos.setter
+    def AnchorVerticalPos(self, AnchorVerticalPos):
+        self._AnchorVerticalPos = AnchorVerticalPos
+
+    @property
+    def AnchorHorizontalPos(self):
+        r"""主播横向位置。默认-1居中。
+左上角为原点，形象左侧离左侧屏幕的距离。最大值不可使形象右侧超出右侧屏幕。
+即最大值为：数字人分辨率的宽 - 形象宽。
+        :rtype: int
+        """
+        return self._AnchorHorizontalPos
+
+    @AnchorHorizontalPos.setter
+    def AnchorHorizontalPos(self, AnchorHorizontalPos):
+        self._AnchorHorizontalPos = AnchorHorizontalPos
+
+    @property
+    def SpeechSpeed(self):
+        r"""语速（1.0为正常语速，范围[0.6-2.5]，值为0.6时播报语速最慢，值为2.5时播报语速最快。
+        :rtype: float
+        """
+        return self._SpeechSpeed
+
+    @SpeechSpeed.setter
+    def SpeechSpeed(self, SpeechSpeed):
+        self._SpeechSpeed = SpeechSpeed
+
+    @property
+    def SpeechVolume(self):
+        r"""音量大小，范围[0，10]，对应音量大小。默认为5，代表正常音量，值越大音量越高。
+        :rtype: int
+        """
+        return self._SpeechVolume
+
+    @SpeechVolume.setter
+    def SpeechVolume(self, SpeechVolume):
+        self._SpeechVolume = SpeechVolume
+
+    @property
+    def Operator(self):
+        r"""操作者。
+        :rtype: str
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+
+    def _deserialize(self, params):
+        self._RoomId = params.get("RoomId")
+        self._Name = params.get("Name")
+        self._AvatarKey = params.get("AvatarKey")
+        self._TimbreKey = params.get("TimbreKey")
+        self._BackgroundUrl = params.get("BackgroundUrl")
+        self._AnchorScale = params.get("AnchorScale")
+        self._AnchorVerticalPos = params.get("AnchorVerticalPos")
+        self._AnchorHorizontalPos = params.get("AnchorHorizontalPos")
+        self._SpeechSpeed = params.get("SpeechSpeed")
+        self._SpeechVolume = params.get("SpeechVolume")
+        self._Operator = params.get("Operator")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyLiveAvatarRoomResponse(AbstractModel):
+    r"""ModifyLiveAvatarRoom返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyLiveAvatarScriptRequest(AbstractModel):
+    r"""ModifyLiveAvatarScript请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ScriptId: 数字人直播间话术 ID。
+        :type ScriptId: str
+        :param _Title: 话术标题，限制500字节。
+        :type Title: str
+        :param _Content: 话术内容，限制1000字节。
+        :type Content: str
+        :param _SpecifyPosition: 修改已有话术的位置。
+比如已有话术三条，位置分别为100，200，300。
+可将第三条话术改到第一条和第二条中间，则可指定第三条话术的位置为 150。
+每次指定尽量取两条话术的中间位置，如50,150等，为后面顺序调整预留位置。
+        :type SpecifyPosition: int
+        :param _Operator: 操作者。
+        :type Operator: str
+        """
+        self._ScriptId = None
+        self._Title = None
+        self._Content = None
+        self._SpecifyPosition = None
+        self._Operator = None
+
+    @property
+    def ScriptId(self):
+        r"""数字人直播间话术 ID。
+        :rtype: str
+        """
+        return self._ScriptId
+
+    @ScriptId.setter
+    def ScriptId(self, ScriptId):
+        self._ScriptId = ScriptId
+
+    @property
+    def Title(self):
+        r"""话术标题，限制500字节。
+        :rtype: str
+        """
+        return self._Title
+
+    @Title.setter
+    def Title(self, Title):
+        self._Title = Title
+
+    @property
+    def Content(self):
+        r"""话术内容，限制1000字节。
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def SpecifyPosition(self):
+        r"""修改已有话术的位置。
+比如已有话术三条，位置分别为100，200，300。
+可将第三条话术改到第一条和第二条中间，则可指定第三条话术的位置为 150。
+每次指定尽量取两条话术的中间位置，如50,150等，为后面顺序调整预留位置。
+        :rtype: int
+        """
+        return self._SpecifyPosition
+
+    @SpecifyPosition.setter
+    def SpecifyPosition(self, SpecifyPosition):
+        self._SpecifyPosition = SpecifyPosition
+
+    @property
+    def Operator(self):
+        r"""操作者。
+        :rtype: str
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+
+    def _deserialize(self, params):
+        self._ScriptId = params.get("ScriptId")
+        self._Title = params.get("Title")
+        self._Content = params.get("Content")
+        self._SpecifyPosition = params.get("SpecifyPosition")
+        self._Operator = params.get("Operator")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyLiveAvatarScriptResponse(AbstractModel):
+    r"""ModifyLiveAvatarScript返回参数结构体
 
     """
 
@@ -37800,6 +40316,85 @@ class SendLiveCloudEffectResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class SendTemporaryScriptToAvatarRoomRequest(AbstractModel):
+    r"""SendTemporaryScriptToAvatarRoom请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RoomId: 数字人直播间 ID。
+        :type RoomId: str
+        :param _Content: 临时话术，最长不超过500字。
+        :type Content: str
+        """
+        self._RoomId = None
+        self._Content = None
+
+    @property
+    def RoomId(self):
+        r"""数字人直播间 ID。
+        :rtype: str
+        """
+        return self._RoomId
+
+    @RoomId.setter
+    def RoomId(self, RoomId):
+        self._RoomId = RoomId
+
+    @property
+    def Content(self):
+        r"""临时话术，最长不超过500字。
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+
+    def _deserialize(self, params):
+        self._RoomId = params.get("RoomId")
+        self._Content = params.get("Content")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SendTemporaryScriptToAvatarRoomResponse(AbstractModel):
+    r"""SendTemporaryScriptToAvatarRoom返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class SnapshotTemplateInfo(AbstractModel):
     r"""截图模板信息。
 
@@ -38007,6 +40602,115 @@ class SnapshotTemplateInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class StartLiveAvatarRoomRequest(AbstractModel):
+    r"""StartLiveAvatarRoom请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RoomId: 数字人直播间 ID。
+        :type RoomId: str
+        :param _Comment: 目标地址描述。
+        :type Comment: str
+        :param _ToUrl: 推流目标地址。
+        :type ToUrl: str
+        :param _Operator: 操作者。
+        :type Operator: str
+        """
+        self._RoomId = None
+        self._Comment = None
+        self._ToUrl = None
+        self._Operator = None
+
+    @property
+    def RoomId(self):
+        r"""数字人直播间 ID。
+        :rtype: str
+        """
+        return self._RoomId
+
+    @RoomId.setter
+    def RoomId(self, RoomId):
+        self._RoomId = RoomId
+
+    @property
+    def Comment(self):
+        r"""目标地址描述。
+        :rtype: str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def ToUrl(self):
+        r"""推流目标地址。
+        :rtype: str
+        """
+        return self._ToUrl
+
+    @ToUrl.setter
+    def ToUrl(self, ToUrl):
+        self._ToUrl = ToUrl
+
+    @property
+    def Operator(self):
+        r"""操作者。
+        :rtype: str
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+
+    def _deserialize(self, params):
+        self._RoomId = params.get("RoomId")
+        self._Comment = params.get("Comment")
+        self._ToUrl = params.get("ToUrl")
+        self._Operator = params.get("Operator")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StartLiveAvatarRoomResponse(AbstractModel):
+    r"""StartLiveAvatarRoom返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class StartLivePadStreamRequest(AbstractModel):
@@ -38303,6 +41007,85 @@ class StopCasterPvwRequest(AbstractModel):
 
 class StopCasterPvwResponse(AbstractModel):
     r"""StopCasterPvw返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class StopLiveAvatarRoomRequest(AbstractModel):
+    r"""StopLiveAvatarRoom请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RoomId: 数字人直播间 ID。
+        :type RoomId: str
+        :param _Operator: 操作者。
+        :type Operator: str
+        """
+        self._RoomId = None
+        self._Operator = None
+
+    @property
+    def RoomId(self):
+        r"""数字人直播间 ID。
+        :rtype: str
+        """
+        return self._RoomId
+
+    @RoomId.setter
+    def RoomId(self, RoomId):
+        self._RoomId = RoomId
+
+    @property
+    def Operator(self):
+        r"""操作者。
+        :rtype: str
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+
+    def _deserialize(self, params):
+        self._RoomId = params.get("RoomId")
+        self._Operator = params.get("Operator")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StopLiveAvatarRoomResponse(AbstractModel):
+    r"""StopLiveAvatarRoom返回参数结构体
 
     """
 

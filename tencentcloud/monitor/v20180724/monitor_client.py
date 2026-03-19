@@ -864,7 +864,9 @@ class MonitorClient(AbstractClient):
 
 
     def DeletePolicyGroup(self, request):
-        r"""删除告警策略组
+        r"""告警 1.0 API，不能再使用否则会导致后端数据不一致
+
+        删除告警策略组
 
         :param request: Request instance for DeletePolicyGroup.
         :type request: :class:`tencentcloud.monitor.v20180724.models.DeletePolicyGroupRequest`

@@ -49,6 +49,29 @@ class HaiClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateInferServiceByTemplate(self, request):
+        r"""本接口(CreateInferServiceByTemplate)用于根据模板创建服务
+
+        :param request: Request instance for CreateInferServiceByTemplate.
+        :type request: :class:`tencentcloud.hai.v20230812.models.CreateInferServiceByTemplateRequest`
+        :rtype: :class:`tencentcloud.hai.v20230812.models.CreateInferServiceByTemplateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateInferServiceByTemplate", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateInferServiceByTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateMuskPrompt(self, request):
         r"""创建musk prompt 任务
 
@@ -72,6 +95,29 @@ class HaiClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeployInferService(self, request):
+        r"""本接口(DeployInferService)用于部署推理服务
+
+        :param request: Request instance for DeployInferService.
+        :type request: :class:`tencentcloud.hai.v20230812.models.DeployInferServiceRequest`
+        :rtype: :class:`tencentcloud.hai.v20230812.models.DeployInferServiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeployInferService", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeployInferServiceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeApplications(self, request):
         r"""本接口（DescribeApplications）用于查询应用
 
@@ -86,6 +132,29 @@ class HaiClient(AbstractClient):
             body = self.call("DescribeApplications", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeApplicationsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDeployTemplates(self, request):
+        r"""本接口(DescribeDeployTemplates)用于查询模型支持的部署模板
+
+        :param request: Request instance for DescribeDeployTemplates.
+        :type request: :class:`tencentcloud.hai.v20230812.models.DescribeDeployTemplatesRequest`
+        :rtype: :class:`tencentcloud.hai.v20230812.models.DescribeDeployTemplatesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDeployTemplates", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDeployTemplatesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -132,6 +201,29 @@ class HaiClient(AbstractClient):
             body = self.call("DescribeInstances", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeModels(self, request):
+        r"""本接口(DescribeModels)用于查询模型
+
+        :param request: Request instance for DescribeModels.
+        :type request: :class:`tencentcloud.hai.v20230812.models.DescribeModelsRequest`
+        :rtype: :class:`tencentcloud.hai.v20230812.models.DescribeModelsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeModels", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeModelsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

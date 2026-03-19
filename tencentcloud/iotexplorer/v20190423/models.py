@@ -17648,12 +17648,18 @@ class DescribeTWeSeeConfigResponse(AbstractModel):
         :type EnableSearch: bool
         :param _Config: 配置参数
         :type Config: str
+        :param _SummaryConfig: 摘要配置参数
+        :type SummaryConfig: :class:`tencentcloud.iotexplorer.v20190423.models.VisionSummaryConfig`
+        :param _EventIdFilterConfig: 云存事件 ID 过滤规则配置项
+        :type EventIdFilterConfig: :class:`tencentcloud.iotexplorer.v20190423.models.SeeEventIdFilterConfig`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._EnableSummary = None
         self._EnableSearch = None
         self._Config = None
+        self._SummaryConfig = None
+        self._EventIdFilterConfig = None
         self._RequestId = None
 
     @property
@@ -17690,6 +17696,28 @@ class DescribeTWeSeeConfigResponse(AbstractModel):
         self._Config = Config
 
     @property
+    def SummaryConfig(self):
+        r"""摘要配置参数
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.VisionSummaryConfig`
+        """
+        return self._SummaryConfig
+
+    @SummaryConfig.setter
+    def SummaryConfig(self, SummaryConfig):
+        self._SummaryConfig = SummaryConfig
+
+    @property
+    def EventIdFilterConfig(self):
+        r"""云存事件 ID 过滤规则配置项
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.SeeEventIdFilterConfig`
+        """
+        return self._EventIdFilterConfig
+
+    @EventIdFilterConfig.setter
+    def EventIdFilterConfig(self, EventIdFilterConfig):
+        self._EventIdFilterConfig = EventIdFilterConfig
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -17705,6 +17733,12 @@ class DescribeTWeSeeConfigResponse(AbstractModel):
         self._EnableSummary = params.get("EnableSummary")
         self._EnableSearch = params.get("EnableSearch")
         self._Config = params.get("Config")
+        if params.get("SummaryConfig") is not None:
+            self._SummaryConfig = VisionSummaryConfig()
+            self._SummaryConfig._deserialize(params.get("SummaryConfig"))
+        if params.get("EventIdFilterConfig") is not None:
+            self._EventIdFilterConfig = SeeEventIdFilterConfig()
+            self._EventIdFilterConfig._deserialize(params.get("EventIdFilterConfig"))
         self._RequestId = params.get("RequestId")
 
 
@@ -30069,6 +30103,8 @@ class ModifyTWeSeeConfigRequest(AbstractModel):
         :type Config: str
         :param _SummaryConfig: 视频摘要配置参数，不传则不修改
         :type SummaryConfig: :class:`tencentcloud.iotexplorer.v20190423.models.VisionSummaryConfig`
+        :param _EventIdFilterConfig: 云存事件 ID 过滤规则配置，不传则不修改
+        :type EventIdFilterConfig: :class:`tencentcloud.iotexplorer.v20190423.models.SeeEventIdFilterConfig`
         """
         self._ProductId = None
         self._DeviceName = None
@@ -30078,6 +30114,7 @@ class ModifyTWeSeeConfigRequest(AbstractModel):
         self._EnableSearch = None
         self._Config = None
         self._SummaryConfig = None
+        self._EventIdFilterConfig = None
 
     @property
     def ProductId(self):
@@ -30167,6 +30204,17 @@ class ModifyTWeSeeConfigRequest(AbstractModel):
     def SummaryConfig(self, SummaryConfig):
         self._SummaryConfig = SummaryConfig
 
+    @property
+    def EventIdFilterConfig(self):
+        r"""云存事件 ID 过滤规则配置，不传则不修改
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.SeeEventIdFilterConfig`
+        """
+        return self._EventIdFilterConfig
+
+    @EventIdFilterConfig.setter
+    def EventIdFilterConfig(self, EventIdFilterConfig):
+        self._EventIdFilterConfig = EventIdFilterConfig
+
 
     def _deserialize(self, params):
         self._ProductId = params.get("ProductId")
@@ -30179,6 +30227,9 @@ class ModifyTWeSeeConfigRequest(AbstractModel):
         if params.get("SummaryConfig") is not None:
             self._SummaryConfig = VisionSummaryConfig()
             self._SummaryConfig._deserialize(params.get("SummaryConfig"))
+        if params.get("EventIdFilterConfig") is not None:
+            self._EventIdFilterConfig = SeeEventIdFilterConfig()
+            self._EventIdFilterConfig._deserialize(params.get("EventIdFilterConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -34530,6 +34581,57 @@ class SearchTopicRuleResponse(AbstractModel):
                 obj._deserialize(item)
                 self._Rules.append(obj)
         self._RequestId = params.get("RequestId")
+
+
+class SeeEventIdFilterConfig(AbstractModel):
+    r"""TWeSee 处理云存事件 EventId 的过滤规则配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IncludeOnly: 包含的云存事件 ID 集合
+        :type IncludeOnly: list of str
+        :param _Exclude: 排除的云存事件 ID 集合
+        :type Exclude: list of str
+        """
+        self._IncludeOnly = None
+        self._Exclude = None
+
+    @property
+    def IncludeOnly(self):
+        r"""包含的云存事件 ID 集合
+        :rtype: list of str
+        """
+        return self._IncludeOnly
+
+    @IncludeOnly.setter
+    def IncludeOnly(self, IncludeOnly):
+        self._IncludeOnly = IncludeOnly
+
+    @property
+    def Exclude(self):
+        r"""排除的云存事件 ID 集合
+        :rtype: list of str
+        """
+        return self._Exclude
+
+    @Exclude.setter
+    def Exclude(self, Exclude):
+        self._Exclude = Exclude
+
+
+    def _deserialize(self, params):
+        self._IncludeOnly = params.get("IncludeOnly")
+        self._Exclude = params.get("Exclude")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class SubscribedTopicItem(AbstractModel):

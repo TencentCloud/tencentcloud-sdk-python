@@ -654,6 +654,29 @@ class EssClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateDigitalDataSign(self, request):
+        r"""创建数据加签请求
+
+        :param request: Request instance for CreateDigitalDataSign.
+        :type request: :class:`tencentcloud.ess.v20201111.models.CreateDigitalDataSignRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.CreateDigitalDataSignResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateDigitalDataSign", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateDigitalDataSignResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateDocument(self, request):
         r"""创建签署流程电子文档<br />
 
@@ -4338,6 +4361,29 @@ class EssClient(AbstractClient):
             body = self.call("VerifyDigitFile", params, headers=headers)
             response = json.loads(body)
             model = models.VerifyDigitFileResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def VerifyDigitalDataSign(self, request):
+        r"""数据加签验签接口
+
+        :param request: Request instance for VerifyDigitalDataSign.
+        :type request: :class:`tencentcloud.ess.v20201111.models.VerifyDigitalDataSignRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.VerifyDigitalDataSignResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("VerifyDigitalDataSign", params, headers=headers)
+            response = json.loads(body)
+            model = models.VerifyDigitalDataSignResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -3408,21 +3408,21 @@ class AiAnalysisTaskDelLogoOutput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Path: 擦除后文件的路径。
+        :param _Path: <p>擦除后文件的路径。</p>
         :type Path: str
-        :param _OutputStorage: 擦除后文件的存储位置。
+        :param _OutputStorage: <p>擦除后文件的存储位置。</p>
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
-        :param _OriginSubtitlePath: 基于画面提取的字幕文件路径。
+        :param _OriginSubtitlePath: <p>基于画面提取的字幕文件路径。</p>
         :type OriginSubtitlePath: str
-        :param _TranslateSubtitlePath: 基于画面提取的字幕翻译文件路径。
+        :param _TranslateSubtitlePath: <p>基于画面提取的字幕翻译文件路径。</p>
         :type TranslateSubtitlePath: str
-        :param _SubtitlePos: 擦除的字幕位置。**注意**：仅对字幕提取且开启返回字幕位置时有效。
+        :param _SubtitlePos: <p>擦除的字幕位置。<strong>注意</strong>：仅对字幕提取且开启返回字幕位置时有效。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubtitlePos: :class:`tencentcloud.mps.v20190612.models.SubtitlePosition`
-        :param _VoiceClonedVideo: 音色克隆后的视频文件地址
+        :param _VoiceClonedVideo: <p>音色克隆后的视频文件地址</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type VoiceClonedVideo: str
-        :param _VoiceClonedMarkFile: 音色克隆的标注文件地址
+        :param _VoiceClonedMarkFile: <p>音色克隆的标注文件地址</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type VoiceClonedMarkFile: str
         """
@@ -3436,7 +3436,7 @@ class AiAnalysisTaskDelLogoOutput(AbstractModel):
 
     @property
     def Path(self):
-        r"""擦除后文件的路径。
+        r"""<p>擦除后文件的路径。</p>
         :rtype: str
         """
         return self._Path
@@ -3447,7 +3447,7 @@ class AiAnalysisTaskDelLogoOutput(AbstractModel):
 
     @property
     def OutputStorage(self):
-        r"""擦除后文件的存储位置。
+        r"""<p>擦除后文件的存储位置。</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
         return self._OutputStorage
@@ -3458,7 +3458,7 @@ class AiAnalysisTaskDelLogoOutput(AbstractModel):
 
     @property
     def OriginSubtitlePath(self):
-        r"""基于画面提取的字幕文件路径。
+        r"""<p>基于画面提取的字幕文件路径。</p>
         :rtype: str
         """
         return self._OriginSubtitlePath
@@ -3469,7 +3469,7 @@ class AiAnalysisTaskDelLogoOutput(AbstractModel):
 
     @property
     def TranslateSubtitlePath(self):
-        r"""基于画面提取的字幕翻译文件路径。
+        r"""<p>基于画面提取的字幕翻译文件路径。</p>
         :rtype: str
         """
         return self._TranslateSubtitlePath
@@ -3480,7 +3480,7 @@ class AiAnalysisTaskDelLogoOutput(AbstractModel):
 
     @property
     def SubtitlePos(self):
-        r"""擦除的字幕位置。**注意**：仅对字幕提取且开启返回字幕位置时有效。
+        r"""<p>擦除的字幕位置。<strong>注意</strong>：仅对字幕提取且开启返回字幕位置时有效。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.SubtitlePosition`
         """
@@ -3492,7 +3492,7 @@ class AiAnalysisTaskDelLogoOutput(AbstractModel):
 
     @property
     def VoiceClonedVideo(self):
-        r"""音色克隆后的视频文件地址
+        r"""<p>音色克隆后的视频文件地址</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3504,7 +3504,7 @@ class AiAnalysisTaskDelLogoOutput(AbstractModel):
 
     @property
     def VoiceClonedMarkFile(self):
-        r"""音色克隆的标注文件地址
+        r"""<p>音色克隆的标注文件地址</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -23388,20 +23388,17 @@ class CreateSmartEraseTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 智能擦除模板名称长度限制：64 个字符。
+        :param _Name: <p>智能擦除模板名称长度限制：64 个字符。</p>
         :type Name: str
-        :param _EraseType: 擦除类型
-- subtitle 去字幕
-- watermark 去水印
-- privacy 隐私保护
+        :param _EraseType: <p>擦除类型</p><ul><li>subtitle 去字幕</li><li>watermark 去水印</li><li>privacy 隐私保护</li></ul>
         :type EraseType: str
-        :param _Comment: 智能擦除模板描述信息长度限制：256 个字符。
+        :param _Comment: <p>智能擦除模板描述信息长度限制：256 个字符。</p>
         :type Comment: str
-        :param _EraseSubtitleConfig: 字幕擦除配置，EraseType取subtitle时必填且仅此时生效。
+        :param _EraseSubtitleConfig: <p>字幕擦除配置，EraseType取subtitle时必填且仅此时生效。</p>
         :type EraseSubtitleConfig: :class:`tencentcloud.mps.v20190612.models.SmartEraseSubtitleConfig`
-        :param _EraseWatermarkConfig: 水印擦除配置，EraseType取watermark时必填且仅此时生效。
+        :param _EraseWatermarkConfig: <p>水印擦除配置，EraseType取watermark时必填且仅此时生效。</p>
         :type EraseWatermarkConfig: :class:`tencentcloud.mps.v20190612.models.SmartEraseWatermarkConfig`
-        :param _ErasePrivacyConfig: 隐私保护配置，EraseType取privacy时必填且仅此时生效。
+        :param _ErasePrivacyConfig: <p>隐私保护配置，EraseType取privacy时必填且仅此时生效。</p>
         :type ErasePrivacyConfig: :class:`tencentcloud.mps.v20190612.models.SmartErasePrivacyConfig`
         """
         self._Name = None
@@ -23413,7 +23410,7 @@ class CreateSmartEraseTemplateRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""智能擦除模板名称长度限制：64 个字符。
+        r"""<p>智能擦除模板名称长度限制：64 个字符。</p>
         :rtype: str
         """
         return self._Name
@@ -23424,10 +23421,7 @@ class CreateSmartEraseTemplateRequest(AbstractModel):
 
     @property
     def EraseType(self):
-        r"""擦除类型
-- subtitle 去字幕
-- watermark 去水印
-- privacy 隐私保护
+        r"""<p>擦除类型</p><ul><li>subtitle 去字幕</li><li>watermark 去水印</li><li>privacy 隐私保护</li></ul>
         :rtype: str
         """
         return self._EraseType
@@ -23438,7 +23432,7 @@ class CreateSmartEraseTemplateRequest(AbstractModel):
 
     @property
     def Comment(self):
-        r"""智能擦除模板描述信息长度限制：256 个字符。
+        r"""<p>智能擦除模板描述信息长度限制：256 个字符。</p>
         :rtype: str
         """
         return self._Comment
@@ -23449,7 +23443,7 @@ class CreateSmartEraseTemplateRequest(AbstractModel):
 
     @property
     def EraseSubtitleConfig(self):
-        r"""字幕擦除配置，EraseType取subtitle时必填且仅此时生效。
+        r"""<p>字幕擦除配置，EraseType取subtitle时必填且仅此时生效。</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.SmartEraseSubtitleConfig`
         """
         return self._EraseSubtitleConfig
@@ -23460,7 +23454,7 @@ class CreateSmartEraseTemplateRequest(AbstractModel):
 
     @property
     def EraseWatermarkConfig(self):
-        r"""水印擦除配置，EraseType取watermark时必填且仅此时生效。
+        r"""<p>水印擦除配置，EraseType取watermark时必填且仅此时生效。</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.SmartEraseWatermarkConfig`
         """
         return self._EraseWatermarkConfig
@@ -23471,7 +23465,7 @@ class CreateSmartEraseTemplateRequest(AbstractModel):
 
     @property
     def ErasePrivacyConfig(self):
-        r"""隐私保护配置，EraseType取privacy时必填且仅此时生效。
+        r"""<p>隐私保护配置，EraseType取privacy时必填且仅此时生效。</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.SmartErasePrivacyConfig`
         """
         return self._ErasePrivacyConfig
@@ -23511,7 +23505,7 @@ class CreateSmartEraseTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: 智能擦除模板唯一标识
+        :param _Definition: <p>智能擦除模板唯一标识</p>
         :type Definition: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -23521,7 +23515,7 @@ class CreateSmartEraseTemplateResponse(AbstractModel):
 
     @property
     def Definition(self):
-        r"""智能擦除模板唯一标识
+        r"""<p>智能擦除模板唯一标识</p>
         :rtype: int
         """
         return self._Definition
@@ -23554,417 +23548,28 @@ class CreateSmartSubtitleTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 智能字幕模板名称
-长度限制：64 个字符。
+        :param _Name: <p>智能字幕模板名称<br>长度限制：64 个字符。</p>
         :type Name: str
-        :param _VideoSrcLanguage: 智能字幕视频源语言
-OCR识别仅支持以下语言：
-`zh_en`：中英
-`multi`：其他
-ASR识别和纯字幕翻译当前支持以下语言：
-`auto`：自动识别（仅在纯字幕翻译中支持）
-`zh`：简体中文
-`en`：英语
-`ja`：日语
-`ko`：韩语
-`zh-PY`：中英粤
-`zh_medical`：中文医疗
-`vi`：越南语
-`ms`：马来语
-`id`：印度尼西亚语
-`fil`：菲律宾语
-`th`：泰语
-`pt`：葡萄牙语
-`tr`：土耳其语
-`ar`：阿拉伯语
-`es`：西班牙语
-`hi`：印地语
-`fr`：法语
-`de`：德语
-`it`：意大利语
-`zh_dialect`：中文方言
-`zh_en`：中英
-`yue`：粤语
-`ru`：俄语
-`prime_zh`：中英方言
-`af-ZA`：南非荷兰语（南非）
-`sq-AL`：阿尔巴尼亚语（阿尔巴尼亚）
-`am-ET`：阿姆哈拉语（埃塞俄比亚）
-`ar-DZ`：阿拉伯语（阿尔及利亚）
-`ar-BH`：阿拉伯语（巴林）
-`ar-EG`：阿拉伯语（埃及）
-`ar-IQ`：阿拉伯语（伊拉克）
-`ar-IL`：阿拉伯语（以色列）
-`ar-JO`：阿拉伯语（约旦）
-`ar-KW`：阿拉伯语（科威特）
-`ar-LB`：阿拉伯语（黎巴嫩）
-`ar-MR`：阿拉伯语（毛里塔尼亚）
-`ar-MA`：阿拉伯语（摩洛哥）
-`ar-OM`：阿拉伯语（阿曼）
-`ar-QA`：阿拉伯语（卡塔尔）
-`ar-SA`：阿拉伯语（沙特阿拉伯）
-`ar-PS`：阿拉伯语（巴勒斯坦国）
-`ar-SY`：阿拉伯语（叙利亚）
-`ar-TN`：阿拉伯语（突尼斯）
-`ar-AE`：阿拉伯语（阿拉伯联合酋长国）
-`ar-YE`：阿拉伯语（也门）
-`hy-AM`：亚美尼亚语（亚美尼亚）
-`az-AZ`：阿塞拜疆语（阿塞拜疆）
-`eu-ES`：巴斯克语（西班牙）
-`bn-BD`：孟加拉语（孟加拉）
-`bn-IN`：孟加拉语（印度）
-`bs-BA`：波斯尼亚语（波斯尼亚和黑塞哥维那）
-`bg-BG`：保加利亚语（保加利亚）
-`my-MM`：缅甸语（缅甸）
-`ca-ES`：加泰罗尼亚语（西班牙）
-`hr-HR`：克罗地亚语（克罗地亚）
-`cs-CZ`：捷克语（捷克共和国）
-`da-DK`：丹麦语（丹麦）
-`nl-BE`：荷兰语（比利时）
-`nl-NL`：荷兰语（荷兰）
-`en-AU`：英语（澳大利亚）
-`en-CA`：英语（加拿大）
-`en-GH`：英语（加纳）
-`en-HK`：英语（中国香港）
-`en-IN`：英语（印度）
-`en-IE`：英语（爱尔兰）
-`en-KE`：英语（肯尼亚）
-`en-NZ`：英语（新西兰）
-`en-NG`：英语（尼日利亚）
-`en-PK`：英语（巴基斯坦）
-`en-PH`：英语（菲律宾）
-`en-SG`：英语（新加坡）
-`en-ZA`：英语（南非）
-`en-TZ`：英语（坦桑尼亚）
-`en-GB`：英语（英国）
-`en-US`：英语（美国）
-`et-EE`：爱沙尼亚语（爱沙尼亚）
-`fil-PH`：菲律宾语（菲律宾）
-`fi-FI`：芬兰语（芬兰）
-`fr-BE`：法语（比利时）
-`fr-CA`：法语（加拿大）
-`fr-FR`：法语（法国）
-`fr-CH`：法语（瑞士）
-`gl-ES`：加利西亚语（西班牙）
-`ka-GE`：格鲁吉亚语（格鲁吉亚）
-`el-GR`：希腊语（希腊）
-`gu-IN`：古吉拉特语（印度）
-`iw-IL`：希伯来语（以色列）
-`hi-IN`：印地语（印度）
-`hu-HU`：匈牙利语（匈牙利）
-`is-IS`：冰岛语（冰岛）
-`id-ID`：印度尼西亚语（印度尼西亚）
-`it-IT`：意大利语（意大利）
-`it-CH`：意大利语（瑞士）
-`ja-JP`：日语（日本）
-`jv-ID`：爪哇语（印度尼西亚）
-`kn-IN`：卡纳达语（印度）
-`kk-KZ`：哈萨克语（哈萨克斯坦）
-`km-KH`：高棉语（柬埔寨）
-`rw-RW`：卢旺达语（卢旺达）
-`ko-KR`：韩语（韩国）
-`lo-LA`：老挝语（老挝）
-`lv-LV`：拉脱维亚语（拉脱维亚）
-`lt-LT`：立陶宛语（立陶宛）
-`mk-MK`：马其顿语（北马其顿）
-`ms-MY`：马来语（马来西亚）
-`ml-IN`：马拉雅拉姆语（印度）
-`mr-IN`：马拉地语（印度）
-`mn-MN`：蒙古语（蒙古）
-`ne-NP`：尼泊尔语（尼泊尔）
-`no-NO`：博克马尔挪威语（挪威）
-`fa-IR`：波斯语（伊朗）
-`pl-PL`：波兰语（波兰）
-`pt-BR`：葡萄牙语（巴西）
-`pt-PT`：葡萄牙语（葡萄牙）
-`ro-RO`：罗马尼亚语（罗马尼亚）
-`ru-RU`：俄语（俄罗斯）
-`sr-RS`：塞尔维亚语（塞尔维亚）
-`si-LK`：僧伽罗语（斯里兰卡）
-`sk-SK`：斯洛伐克语（斯洛伐克）
-`sl-SI`：斯洛文尼亚语（斯洛文尼亚）
-`st-ZA`：南索托语（南非）
-`es-AR`：西班牙语（阿根廷）
-`es-BO`：西班牙语（玻利维亚）
-`es-CL`：西班牙语（智利）
-`es-CO`：西班牙语（哥伦比亚）
-`es-CR`：西班牙语（哥斯达黎加）
-`es-DO`：西班牙语（多米尼加共和国）
-`es-EC`：西班牙语（厄瓜多尔）
-`es-SV`：西班牙语（萨尔瓦多）
-`es-GT`：西班牙语（危地马拉）
-`es-HN`：西班牙语（洪都拉斯）
-`es-MX`：西班牙语（墨西哥）
-`es-NI`：西班牙语（尼加拉瓜）
-`es-PA`：西班牙语（巴拿马）
-`es-PY`：西班牙语（巴拉圭）
-`es-PE`：西班牙语（秘鲁）
-`es-PR`：西班牙语（波多黎各）
-`es-ES`：西班牙语（西班牙）
-`es-US`：西班牙语（美国）
-`es-UY`：西班牙语（乌拉圭）
-`es-VE`：西班牙语（委内瑞拉）
-`su-ID`：巽他语（印度尼西亚）
-`sw-KE`：斯瓦希里语（肯尼亚）
-`sw-TZ`：斯瓦希里语（坦桑尼亚）
-`sv-SE`：瑞典语（瑞典）
-`ta-IN`：泰米尔语（印度）
-`ta-MY`：泰米尔语（马来西亚）
-`ta-SG`：泰米尔语（新加坡）
-`ta-LK`：泰米尔语（斯里兰卡）
-`te-IN`：泰卢固语（印度）
-`th-TH`：泰语（泰国）
-`ts-ZA`：聪加语（南非）
-`tr-TR`：土耳其语（土耳其）
-`uk-UA`：乌克兰语（乌克兰）
-`ur-IN`：乌尔都语（印度）
-`ur-PK`：乌尔都语（巴基斯坦）
-`uz-UZ`：乌兹别克语（乌兹别克斯坦）
-`ve-ZA`：文达语（南非）
-`vi-VN`：越南语（越南）
-`xh-ZA`：科萨语（南非）
-`zu-ZA`：祖鲁语（南非）
-
+        :param _VideoSrcLanguage: <p>智能字幕视频源语言<br>OCR识别仅支持以下语言：<br><code>zh_en</code>：中英<br><code>multi</code>：其他<br>ASR识别和纯字幕翻译当前支持以下语言：<br><code>auto</code>：自动识别<br><code>zh</code>：简体中文<br><code>en</code>：英语<br><code>ja</code>：日语<br><code>ko</code>：韩语<br><code>zh-PY</code>：中英粤<br><code>zh_medical</code>：中文医疗<br><code>vi</code>：越南语<br><code>ms</code>：马来语<br><code>id</code>：印度尼西亚语<br><code>fil</code>：菲律宾语<br><code>th</code>：泰语<br><code>pt</code>：葡萄牙语<br><code>tr</code>：土耳其语<br><code>ar</code>：阿拉伯语<br><code>es</code>：西班牙语<br><code>hi</code>：印地语<br><code>fr</code>：法语<br><code>de</code>：德语<br><code>it</code>：意大利语<br><code>zh_dialect</code>：中文方言<br><code>zh_en</code>：中英<br><code>yue</code>：粤语<br><code>ru</code>：俄语<br><code>prime_zh</code>：中英方言<br><code>af-ZA</code>：南非荷兰语（南非）<br><code>sq-AL</code>：阿尔巴尼亚语（阿尔巴尼亚）<br><code>am-ET</code>：阿姆哈拉语（埃塞俄比亚）<br><code>ar-DZ</code>：阿拉伯语（阿尔及利亚）<br><code>ar-BH</code>：阿拉伯语（巴林）<br><code>ar-EG</code>：阿拉伯语（埃及）<br><code>ar-IQ</code>：阿拉伯语（伊拉克）<br><code>ar-IL</code>：阿拉伯语（以色列）<br><code>ar-JO</code>：阿拉伯语（约旦）<br><code>ar-KW</code>：阿拉伯语（科威特）<br><code>ar-LB</code>：阿拉伯语（黎巴嫩）<br><code>ar-MR</code>：阿拉伯语（毛里塔尼亚）<br><code>ar-MA</code>：阿拉伯语（摩洛哥）<br><code>ar-OM</code>：阿拉伯语（阿曼）<br><code>ar-QA</code>：阿拉伯语（卡塔尔）<br><code>ar-SA</code>：阿拉伯语（沙特阿拉伯）<br><code>ar-PS</code>：阿拉伯语（巴勒斯坦国）<br><code>ar-SY</code>：阿拉伯语（叙利亚）<br><code>ar-TN</code>：阿拉伯语（突尼斯）<br><code>ar-AE</code>：阿拉伯语（阿拉伯联合酋长国）<br><code>ar-YE</code>：阿拉伯语（也门）<br><code>hy-AM</code>：亚美尼亚语（亚美尼亚）<br><code>az-AZ</code>：阿塞拜疆语（阿塞拜疆）<br><code>eu-ES</code>：巴斯克语（西班牙）<br><code>bn-BD</code>：孟加拉语（孟加拉）<br><code>bn-IN</code>：孟加拉语（印度）<br><code>bs-BA</code>：波斯尼亚语（波斯尼亚和黑塞哥维那）<br><code>bg-BG</code>：保加利亚语（保加利亚）<br><code>my-MM</code>：缅甸语（缅甸）<br><code>ca-ES</code>：加泰罗尼亚语（西班牙）<br><code>hr-HR</code>：克罗地亚语（克罗地亚）<br><code>cs-CZ</code>：捷克语（捷克共和国）<br><code>da-DK</code>：丹麦语（丹麦）<br><code>nl-BE</code>：荷兰语（比利时）<br><code>nl-NL</code>：荷兰语（荷兰）<br><code>en-AU</code>：英语（澳大利亚）<br><code>en-CA</code>：英语（加拿大）<br><code>en-GH</code>：英语（加纳）<br><code>en-HK</code>：英语（中国香港）<br><code>en-IN</code>：英语（印度）<br><code>en-IE</code>：英语（爱尔兰）<br><code>en-KE</code>：英语（肯尼亚）<br><code>en-NZ</code>：英语（新西兰）<br><code>en-NG</code>：英语（尼日利亚）<br><code>en-PK</code>：英语（巴基斯坦）<br><code>en-PH</code>：英语（菲律宾）<br><code>en-SG</code>：英语（新加坡）<br><code>en-ZA</code>：英语（南非）<br><code>en-TZ</code>：英语（坦桑尼亚）<br><code>en-GB</code>：英语（英国）<br><code>en-US</code>：英语（美国）<br><code>et-EE</code>：爱沙尼亚语（爱沙尼亚）<br><code>fil-PH</code>：菲律宾语（菲律宾）<br><code>fi-FI</code>：芬兰语（芬兰）<br><code>fr-BE</code>：法语（比利时）<br><code>fr-CA</code>：法语（加拿大）<br><code>fr-FR</code>：法语（法国）<br><code>fr-CH</code>：法语（瑞士）<br><code>gl-ES</code>：加利西亚语（西班牙）<br><code>ka-GE</code>：格鲁吉亚语（格鲁吉亚）<br><code>el-GR</code>：希腊语（希腊）<br><code>gu-IN</code>：古吉拉特语（印度）<br><code>iw-IL</code>：希伯来语（以色列）<br><code>hi-IN</code>：印地语（印度）<br><code>hu-HU</code>：匈牙利语（匈牙利）<br><code>is-IS</code>：冰岛语（冰岛）<br><code>id-ID</code>：印度尼西亚语（印度尼西亚）<br><code>it-IT</code>：意大利语（意大利）<br><code>it-CH</code>：意大利语（瑞士）<br><code>ja-JP</code>：日语（日本）<br><code>jv-ID</code>：爪哇语（印度尼西亚）<br><code>kn-IN</code>：卡纳达语（印度）<br><code>kk-KZ</code>：哈萨克语（哈萨克斯坦）<br><code>km-KH</code>：高棉语（柬埔寨）<br><code>rw-RW</code>：卢旺达语（卢旺达）<br><code>ko-KR</code>：韩语（韩国）<br><code>lo-LA</code>：老挝语（老挝）<br><code>lv-LV</code>：拉脱维亚语（拉脱维亚）<br><code>lt-LT</code>：立陶宛语（立陶宛）<br><code>mk-MK</code>：马其顿语（北马其顿）<br><code>ms-MY</code>：马来语（马来西亚）<br><code>ml-IN</code>：马拉雅拉姆语（印度）<br><code>mr-IN</code>：马拉地语（印度）<br><code>mn-MN</code>：蒙古语（蒙古）<br><code>ne-NP</code>：尼泊尔语（尼泊尔）<br><code>no-NO</code>：博克马尔挪威语（挪威）<br><code>fa-IR</code>：波斯语（伊朗）<br><code>pl-PL</code>：波兰语（波兰）<br><code>pt-BR</code>：葡萄牙语（巴西）<br><code>pt-PT</code>：葡萄牙语（葡萄牙）<br><code>ro-RO</code>：罗马尼亚语（罗马尼亚）<br><code>ru-RU</code>：俄语（俄罗斯）<br><code>sr-RS</code>：塞尔维亚语（塞尔维亚）<br><code>si-LK</code>：僧伽罗语（斯里兰卡）<br><code>sk-SK</code>：斯洛伐克语（斯洛伐克）<br><code>sl-SI</code>：斯洛文尼亚语（斯洛文尼亚）<br><code>st-ZA</code>：南索托语（南非）<br><code>es-AR</code>：西班牙语（阿根廷）<br><code>es-BO</code>：西班牙语（玻利维亚）<br><code>es-CL</code>：西班牙语（智利）<br><code>es-CO</code>：西班牙语（哥伦比亚）<br><code>es-CR</code>：西班牙语（哥斯达黎加）<br><code>es-DO</code>：西班牙语（多米尼加共和国）<br><code>es-EC</code>：西班牙语（厄瓜多尔）<br><code>es-SV</code>：西班牙语（萨尔瓦多）<br><code>es-GT</code>：西班牙语（危地马拉）<br><code>es-HN</code>：西班牙语（洪都拉斯）<br><code>es-MX</code>：西班牙语（墨西哥）<br><code>es-NI</code>：西班牙语（尼加拉瓜）<br><code>es-PA</code>：西班牙语（巴拿马）<br><code>es-PY</code>：西班牙语（巴拉圭）<br><code>es-PE</code>：西班牙语（秘鲁）<br><code>es-PR</code>：西班牙语（波多黎各）<br><code>es-ES</code>：西班牙语（西班牙）<br><code>es-US</code>：西班牙语（美国）<br><code>es-UY</code>：西班牙语（乌拉圭）<br><code>es-VE</code>：西班牙语（委内瑞拉）<br><code>su-ID</code>：巽他语（印度尼西亚）<br><code>sw-KE</code>：斯瓦希里语（肯尼亚）<br><code>sw-TZ</code>：斯瓦希里语（坦桑尼亚）<br><code>sv-SE</code>：瑞典语（瑞典）<br><code>ta-IN</code>：泰米尔语（印度）<br><code>ta-MY</code>：泰米尔语（马来西亚）<br><code>ta-SG</code>：泰米尔语（新加坡）<br><code>ta-LK</code>：泰米尔语（斯里兰卡）<br><code>te-IN</code>：泰卢固语（印度）<br><code>th-TH</code>：泰语（泰国）<br><code>ts-ZA</code>：聪加语（南非）<br><code>tr-TR</code>：土耳其语（土耳其）<br><code>uk-UA</code>：乌克兰语（乌克兰）<br><code>ur-IN</code>：乌尔都语（印度）<br><code>ur-PK</code>：乌尔都语（巴基斯坦）<br><code>uz-UZ</code>：乌兹别克语（乌兹别克斯坦）<br><code>ve-ZA</code>：文达语（南非）<br><code>vi-VN</code>：越南语（越南）<br><code>xh-ZA</code>：科萨语（南非）<br><code>zu-ZA</code>：祖鲁语（南非）</p>
         :type VideoSrcLanguage: str
-        :param _SubtitleType: 智能字幕字幕语言类型
-0: 源语言
-1: 翻译语言
-2: 源语言+翻译语言
-当TranslateSwitch为OFF时仅支持取0
-当TranslateSwitch为ON时仅支持取1或2
+        :param _SubtitleType: <p>智能字幕字幕语言类型<br>0: 源语言<br>1: 翻译语言<br>2: 源语言+翻译语言<br>当TranslateSwitch为OFF时仅支持取0<br>当TranslateSwitch为ON时仅支持取1或2</p>
         :type SubtitleType: int
-        :param _Comment: 智能字幕模板描述信息
-长度限制：256 个字符。
+        :param _Comment: <p>智能字幕模板描述信息<br>长度限制：256 个字符。</p>
         :type Comment: str
-        :param _SubtitleFormat: 智能字幕文件格式:
-- ASR识别翻译处理类型下：
-     - vtt: WebVTT 格式字幕
-     - srt: SRT 格式字幕
-     - 不填或填空：不生成字幕文件
-- 纯字幕翻译处理类型下：
-    - original：与源文件一致
-    - vtt: WebVTT 格式字幕
-    - srt: SRT 格式字幕
-- OCR识别翻译处理类型下：
-     - vtt: WebVTT 格式字幕
-     - srt: SRT 格式字幕
-
-**注意**：
-- ASR识别方式下，翻译大于等于2种语言时不允许传空或不传；
-- 纯字幕翻译和OCR识别翻译方式下，不允许传空或不传
+        :param _SubtitleFormat: <p>智能字幕文件格式:</p><ul><li>ASR识别翻译处理类型下：<ul><li>vtt: WebVTT 格式字幕</li><li>srt: SRT 格式字幕</li><li>不填或填空：不生成字幕文件</li></ul></li><li>纯字幕翻译处理类型下：<ul><li>original：与源文件一致</li><li>vtt: WebVTT 格式字幕</li><li>srt: SRT 格式字幕</li></ul></li><li>OCR识别翻译处理类型下：<ul><li>vtt: WebVTT 格式字幕</li><li>srt: SRT 格式字幕</li></ul></li></ul><p><strong>注意</strong>：</p><ul><li>ASR识别方式下，翻译大于等于2种语言时不允许传空或不传；</li><li>纯字幕翻译方式下，不允许传空或不传</li><li>OCR类型的任务，在开启压制时，允许不传或传空</li></ul>
         :type SubtitleFormat: str
-        :param _AsrHotWordsConfigure: ASR热词库参数
+        :param _AsrHotWordsConfigure: <p>ASR热词库参数</p>
         :type AsrHotWordsConfigure: :class:`tencentcloud.mps.v20190612.models.AsrHotWordsConfigure`
-        :param _TranslateSwitch: 字幕翻译开关
-`ON`: 开启翻译
-`OFF`: 关闭翻译
-
-**注意**：纯字幕翻译方式下，不传默认是打开的，不允许传空或`OFF`；
+        :param _TranslateSwitch: <p>字幕翻译开关<br><code>ON</code>: 开启翻译<br><code>OFF</code>: 关闭翻译</p><p><strong>注意</strong>：纯字幕翻译方式下，不传默认是打开的，不允许传空或<code>OFF</code>；</p>
         :type TranslateSwitch: str
-        :param _TranslateDstLanguage: 字幕翻译目标语言
-当TranslateSwitch为ON的时候生效，翻译语言列表：
-`ab`：阿布哈兹语
-`ace`：亚齐语
-`ach`：阿乔利语
-`af`：南非荷兰语
-`ak`：契维语（阿坎语）
-`am`：Amharic
-`ar`：阿拉伯语
-`as`：阿萨姆语
-`ay`：艾马拉语
-`az`：阿塞拜疆语
-`ba`：巴什基尔语
-`ban`：巴厘语
-`bbc`：巴塔克托巴语
-`bem`：Bemba
-`bew`：Betawi
-`bg`：保加利亚语
-`bho`：博杰普尔语
-`bik`：Bikol
-`bm`：班巴拉语
-`bn`：孟加拉语
-`br`：布列塔尼语
-`bs`：波斯尼亚语
-`btx`：巴塔克卡罗语
-`bts`：巴塔克西马隆贡语
-`bua`：布里亚特语
-`ca`：加泰罗尼亚语
-`ceb`：宿务语
-`cgg`：Kiga
-`chm`：草原马里语
-`ckb`：库尔德语（索拉尼语）
-`cnh`：哈卡钦语
-`co`：科西嘉语
-`crh`：克里米亚鞑靼语
-`crs`：塞舌尔克里奥尔语
-`cs`：捷克语
-`cv`：楚瓦什语
-`cy`：威尔士语
-`da`：丹麦语
-`de`：德语
-`din`：Dinka
-`doi`：多格来语
-`dov`：敦贝语
-`dv`：第维埃语
-`dz`：宗卡语
-`ee`：Ewe
-`el`：希腊语
-`en`：英语
-`eo`：世界语
-`es`：西班牙语
-`et`：爱沙尼亚语
-`eu`：巴斯克语
-`fa`：波斯语
-`ff`：富拉语
-`fi`：芬兰语
-`fil`：菲律宾语（塔加拉语）
-`fj`：斐济语
-`fr`：法语
-`fr-CA`：法语（加拿大）
-`fr-FR`：法语（法国）
-`fy`：弗里斯兰语
-`ga`：爱尔兰语
-`gaa`：加 (Ga) 语
-`gd`：苏格兰盖尔语
-`gl`：加利西亚语
-`gn`：瓜拉尼语
-`gom`：贡根语
-`gu`：古吉拉特语
-`gv`：马恩岛语
-`ha`：Hausa
-`haw`：夏威夷语
-`he`：希伯来语
-`hi`：印地语
-`hil`：希利盖农语
-`hmn`：苗语
-`hr`：克罗地亚语
-`hrx`：洪斯吕克语
-`ht`：海地克里奥尔语
-`hu`：匈牙利语
-`hy`：亚美尼亚语
-`id`：印度尼西亚语
-`ig`：Igbo
-`ilo`：伊洛果语
-`is`：冰岛语
-`it`：意大利语
-`iw`：希伯来语
-`ja`：日语
-`jv`：爪哇语
-`ka`：格鲁吉亚语
-`kk`：哈萨克语
-`km`：高棉语
-`kn`：卡纳达语
-`ko`：韩语
-`kri`：Krio
-`ku`：库尔德语（库尔曼吉语）
-`ktu`：吉土巴语
-`ky`：吉尔吉斯语
-`la`：拉丁语
-`lb`：卢森堡语
-`lg`：干达语（卢干达语）
-`li`：林堡语
-`lij`：利古里亚语
-`lmo`：伦巴第语
-`ln`：林加拉语
-`lo`：老挝语
-`lt`：立陶宛语
-`ltg`：拉特加莱语
-`luo`：Luo
-`lus`：米佐语
-`lv`：拉脱维亚语
-`mai`：迈蒂利语
-`mak`：马卡萨
-`mg`：马尔加什语
-`mi`：毛利语
-`min`：米南语
-`mk`：马其顿语
-`ml`：马拉雅拉姆语
-`mn`：蒙古语
-`mr`：马拉地语
-`ms`：马来语
-`mt`：马耳他语
-`my`：缅甸语
-`ne`：尼泊尔语
-`new`：尼瓦尔语
-`nl`：荷兰语
-`no`：挪威语
-`nr`：恩德贝莱语（南部）
-`nso`：北索托语（塞佩蒂语）
-`nus`：努尔语
-`ny`：齐切瓦语（尼扬贾语）
-`oc`：奥克斯坦语
-`om`：Oromo
-`or`：奥里亚语
-`pa`：旁遮普语
-`pag`：邦阿西楠语
-`pam`：邦板牙语
-`pap`：Papiamento
-`pl`：波兰语
-`ps`：Pashto
-`pt`：葡萄牙语
-`pt-BR`：葡萄牙语（巴西）
-`pt-PT`：葡萄牙语（葡萄牙）
-`qu`：克丘亚语
-`ro`：罗马尼亚语
-`rom`：罗姆语
-`rn`：Rundi
-`ru`：俄语
-`rw`：卢旺达语
-`sa`：梵语
-`scn`：西西里语
-`sd`：信德语
-`sg`：Sango
-`shn`：掸语
-`si`：僧伽罗语
-`sk`：斯洛伐克语
-`sl`：斯洛文尼亚语
-`sm`：萨摩亚语
-`sn`：修纳语
-`so`：索马里语
-`sq`：阿尔巴尼亚语
-`sr`：塞尔维亚语
-`ss`：斯瓦特语
-`st`：塞索托语
-`su`：巽他语
-`sv`：瑞典语
-`sw`：斯瓦希里语
-`szl`：西里西亚语
-`ta`：泰米尔语
-`te`：泰卢固语
-`tet`：德顿语
-`tg`：塔吉克语
-`th`：泰语
-`ti`：提格里尼亚语
-`tk`：土库曼语
-`tn`：茨瓦纳语
-`tr`：土耳其语
-`ts`：聪加语
-`tt`：鞑靼语
-`ug`：维吾尔语
-`uk`：乌克兰语
-`ur`：乌尔都语
-`uz`：乌兹别克语
-`vi`：越南语
-`xh`：科萨语
-`yi`：意第绪语
-`yo`：约鲁巴语
-`yua`：尤卡坦玛雅语
-`yue`：粤语
-`zh`：简体中文
-`zh-TW`：中文（繁体）
-`zu`：祖鲁语
-
-**注意**：多语言方式，则使用 `/` 分割，如：`en/ja`，表示英语和日语。
+        :param _TranslateDstLanguage: <p>字幕翻译目标语言<br>当TranslateSwitch为ON的时候生效，翻译语言列表：<br><code>ab</code>：阿布哈兹语<br><code>ace</code>：亚齐语<br><code>ach</code>：阿乔利语<br><code>af</code>：南非荷兰语<br><code>ak</code>：契维语（阿坎语）<br><code>am</code>：Amharic<br><code>ar</code>：阿拉伯语<br><code>as</code>：阿萨姆语<br><code>ay</code>：艾马拉语<br><code>az</code>：阿塞拜疆语<br><code>ba</code>：巴什基尔语<br><code>ban</code>：巴厘语<br><code>bbc</code>：巴塔克托巴语<br><code>bem</code>：Bemba<br><code>bew</code>：Betawi<br><code>bg</code>：保加利亚语<br><code>bho</code>：博杰普尔语<br><code>bik</code>：Bikol<br><code>bm</code>：班巴拉语<br><code>bn</code>：孟加拉语<br><code>br</code>：布列塔尼语<br><code>bs</code>：波斯尼亚语<br><code>btx</code>：巴塔克卡罗语<br><code>bts</code>：巴塔克西马隆贡语<br><code>bua</code>：布里亚特语<br><code>ca</code>：加泰罗尼亚语<br><code>ceb</code>：宿务语<br><code>cgg</code>：Kiga<br><code>chm</code>：草原马里语<br><code>ckb</code>：库尔德语（索拉尼语）<br><code>cnh</code>：哈卡钦语<br><code>co</code>：科西嘉语<br><code>crh</code>：克里米亚鞑靼语<br><code>crs</code>：塞舌尔克里奥尔语<br><code>cs</code>：捷克语<br><code>cv</code>：楚瓦什语<br><code>cy</code>：威尔士语<br><code>da</code>：丹麦语<br><code>de</code>：德语<br><code>din</code>：Dinka<br><code>doi</code>：多格来语<br><code>dov</code>：敦贝语<br><code>dv</code>：第维埃语<br><code>dz</code>：宗卡语<br><code>ee</code>：Ewe<br><code>el</code>：希腊语<br><code>en</code>：英语<br><code>eo</code>：世界语<br><code>es</code>：西班牙语<br><code>et</code>：爱沙尼亚语<br><code>eu</code>：巴斯克语<br><code>fa</code>：波斯语<br><code>ff</code>：富拉语<br><code>fi</code>：芬兰语<br><code>fil</code>：菲律宾语（塔加拉语）<br><code>fj</code>：斐济语<br><code>fr</code>：法语<br><code>fr-CA</code>：法语（加拿大）<br><code>fr-FR</code>：法语（法国）<br><code>fy</code>：弗里斯兰语<br><code>ga</code>：爱尔兰语<br><code>gaa</code>：加 (Ga) 语<br><code>gd</code>：苏格兰盖尔语<br><code>gl</code>：加利西亚语<br><code>gn</code>：瓜拉尼语<br><code>gom</code>：贡根语<br><code>gu</code>：古吉拉特语<br><code>gv</code>：马恩岛语<br><code>ha</code>：Hausa<br><code>haw</code>：夏威夷语<br><code>he</code>：希伯来语<br><code>hi</code>：印地语<br><code>hil</code>：希利盖农语<br><code>hmn</code>：苗语<br><code>hr</code>：克罗地亚语<br><code>hrx</code>：洪斯吕克语<br><code>ht</code>：海地克里奥尔语<br><code>hu</code>：匈牙利语<br><code>hy</code>：亚美尼亚语<br><code>id</code>：印度尼西亚语<br><code>ig</code>：Igbo<br><code>ilo</code>：伊洛果语<br><code>is</code>：冰岛语<br><code>it</code>：意大利语<br><code>iw</code>：希伯来语<br><code>ja</code>：日语<br><code>jv</code>：爪哇语<br><code>ka</code>：格鲁吉亚语<br><code>kk</code>：哈萨克语<br><code>km</code>：高棉语<br><code>kn</code>：卡纳达语<br><code>ko</code>：韩语<br><code>kri</code>：Krio<br><code>ku</code>：库尔德语（库尔曼吉语）<br><code>ktu</code>：吉土巴语<br><code>ky</code>：吉尔吉斯语<br><code>la</code>：拉丁语<br><code>lb</code>：卢森堡语<br><code>lg</code>：干达语（卢干达语）<br><code>li</code>：林堡语<br><code>lij</code>：利古里亚语<br><code>lmo</code>：伦巴第语<br><code>ln</code>：林加拉语<br><code>lo</code>：老挝语<br><code>lt</code>：立陶宛语<br><code>ltg</code>：拉特加莱语<br><code>luo</code>：Luo<br><code>lus</code>：米佐语<br><code>lv</code>：拉脱维亚语<br><code>mai</code>：迈蒂利语<br><code>mak</code>：马卡萨<br><code>mg</code>：马尔加什语<br><code>mi</code>：毛利语<br><code>min</code>：米南语<br><code>mk</code>：马其顿语<br><code>ml</code>：马拉雅拉姆语<br><code>mn</code>：蒙古语<br><code>mr</code>：马拉地语<br><code>ms</code>：马来语<br><code>mt</code>：马耳他语<br><code>my</code>：缅甸语<br><code>ne</code>：尼泊尔语<br><code>new</code>：尼瓦尔语<br><code>nl</code>：荷兰语<br><code>no</code>：挪威语<br><code>nr</code>：恩德贝莱语（南部）<br><code>nso</code>：北索托语（塞佩蒂语）<br><code>nus</code>：努尔语<br><code>ny</code>：齐切瓦语（尼扬贾语）<br><code>oc</code>：奥克斯坦语<br><code>om</code>：Oromo<br><code>or</code>：奥里亚语<br><code>pa</code>：旁遮普语<br><code>pag</code>：邦阿西楠语<br><code>pam</code>：邦板牙语<br><code>pap</code>：Papiamento<br><code>pl</code>：波兰语<br><code>ps</code>：Pashto<br><code>pt</code>：葡萄牙语<br><code>pt-BR</code>：葡萄牙语（巴西）<br><code>pt-PT</code>：葡萄牙语（葡萄牙）<br><code>qu</code>：克丘亚语<br><code>ro</code>：罗马尼亚语<br><code>rom</code>：罗姆语<br><code>rn</code>：Rundi<br><code>ru</code>：俄语<br><code>rw</code>：卢旺达语<br><code>sa</code>：梵语<br><code>scn</code>：西西里语<br><code>sd</code>：信德语<br><code>sg</code>：Sango<br><code>shn</code>：掸语<br><code>si</code>：僧伽罗语<br><code>sk</code>：斯洛伐克语<br><code>sl</code>：斯洛文尼亚语<br><code>sm</code>：萨摩亚语<br><code>sn</code>：修纳语<br><code>so</code>：索马里语<br><code>sq</code>：阿尔巴尼亚语<br><code>sr</code>：塞尔维亚语<br><code>ss</code>：斯瓦特语<br><code>st</code>：塞索托语<br><code>su</code>：巽他语<br><code>sv</code>：瑞典语<br><code>sw</code>：斯瓦希里语<br><code>szl</code>：西里西亚语<br><code>ta</code>：泰米尔语<br><code>te</code>：泰卢固语<br><code>tet</code>：德顿语<br><code>tg</code>：塔吉克语<br><code>th</code>：泰语<br><code>ti</code>：提格里尼亚语<br><code>tk</code>：土库曼语<br><code>tn</code>：茨瓦纳语<br><code>tr</code>：土耳其语<br><code>ts</code>：聪加语<br><code>tt</code>：鞑靼语<br><code>ug</code>：维吾尔语<br><code>uk</code>：乌克兰语<br><code>ur</code>：乌尔都语<br><code>uz</code>：乌兹别克语<br><code>vi</code>：越南语<br><code>xh</code>：科萨语<br><code>yi</code>：意第绪语<br><code>yo</code>：约鲁巴语<br><code>yua</code>：尤卡坦玛雅语<br><code>yue</code>：粤语<br><code>zh</code>：简体中文<br><code>zh-TW</code>：中文（繁体）<br><code>zu</code>：祖鲁语</p><p><strong>注意</strong>：多语言方式，则使用 <code>/</code> 分割，如：<code>en/ja</code>，表示英语和日语。</p>
         :type TranslateDstLanguage: str
-        :param _ProcessType: 字幕处理类型：
-- 0：ASR识别字幕
-- 1：纯字幕翻译
-- 2：OCR识别字幕
-
-**注意**：不传的情况下默认类型为 ASR识别字幕
+        :param _ProcessType: <p>字幕处理类型：</p><ul><li>0：ASR识别字幕</li><li>1：纯字幕翻译</li><li>2：OCR识别字幕</li></ul><p><strong>注意</strong>：不传的情况下默认类型为 ASR识别字幕</p>
         :type ProcessType: int
-        :param _SelectingSubtitleAreasConfig: 字幕OCR提取框选区域配置
+        :param _SelectingSubtitleAreasConfig: <p>字幕OCR提取框选区域配置</p>
         :type SelectingSubtitleAreasConfig: :class:`tencentcloud.mps.v20190612.models.SelectingSubtitleAreasConfig`
+        :param _SubtitleEmbedId: <p>压制模板id，只有ProcessType为0或2（任务类型为ASR或OCR）时才允许填写。开启多个翻译语言时，不允许填写。</p>
+        :type SubtitleEmbedId: int
         """
         self._Name = None
         self._VideoSrcLanguage = None
@@ -23976,11 +23581,11 @@ ASR识别和纯字幕翻译当前支持以下语言：
         self._TranslateDstLanguage = None
         self._ProcessType = None
         self._SelectingSubtitleAreasConfig = None
+        self._SubtitleEmbedId = None
 
     @property
     def Name(self):
-        r"""智能字幕模板名称
-长度限制：64 个字符。
+        r"""<p>智能字幕模板名称<br>长度限制：64 个字符。</p>
         :rtype: str
         """
         return self._Name
@@ -23991,174 +23596,7 @@ ASR识别和纯字幕翻译当前支持以下语言：
 
     @property
     def VideoSrcLanguage(self):
-        r"""智能字幕视频源语言
-OCR识别仅支持以下语言：
-`zh_en`：中英
-`multi`：其他
-ASR识别和纯字幕翻译当前支持以下语言：
-`auto`：自动识别（仅在纯字幕翻译中支持）
-`zh`：简体中文
-`en`：英语
-`ja`：日语
-`ko`：韩语
-`zh-PY`：中英粤
-`zh_medical`：中文医疗
-`vi`：越南语
-`ms`：马来语
-`id`：印度尼西亚语
-`fil`：菲律宾语
-`th`：泰语
-`pt`：葡萄牙语
-`tr`：土耳其语
-`ar`：阿拉伯语
-`es`：西班牙语
-`hi`：印地语
-`fr`：法语
-`de`：德语
-`it`：意大利语
-`zh_dialect`：中文方言
-`zh_en`：中英
-`yue`：粤语
-`ru`：俄语
-`prime_zh`：中英方言
-`af-ZA`：南非荷兰语（南非）
-`sq-AL`：阿尔巴尼亚语（阿尔巴尼亚）
-`am-ET`：阿姆哈拉语（埃塞俄比亚）
-`ar-DZ`：阿拉伯语（阿尔及利亚）
-`ar-BH`：阿拉伯语（巴林）
-`ar-EG`：阿拉伯语（埃及）
-`ar-IQ`：阿拉伯语（伊拉克）
-`ar-IL`：阿拉伯语（以色列）
-`ar-JO`：阿拉伯语（约旦）
-`ar-KW`：阿拉伯语（科威特）
-`ar-LB`：阿拉伯语（黎巴嫩）
-`ar-MR`：阿拉伯语（毛里塔尼亚）
-`ar-MA`：阿拉伯语（摩洛哥）
-`ar-OM`：阿拉伯语（阿曼）
-`ar-QA`：阿拉伯语（卡塔尔）
-`ar-SA`：阿拉伯语（沙特阿拉伯）
-`ar-PS`：阿拉伯语（巴勒斯坦国）
-`ar-SY`：阿拉伯语（叙利亚）
-`ar-TN`：阿拉伯语（突尼斯）
-`ar-AE`：阿拉伯语（阿拉伯联合酋长国）
-`ar-YE`：阿拉伯语（也门）
-`hy-AM`：亚美尼亚语（亚美尼亚）
-`az-AZ`：阿塞拜疆语（阿塞拜疆）
-`eu-ES`：巴斯克语（西班牙）
-`bn-BD`：孟加拉语（孟加拉）
-`bn-IN`：孟加拉语（印度）
-`bs-BA`：波斯尼亚语（波斯尼亚和黑塞哥维那）
-`bg-BG`：保加利亚语（保加利亚）
-`my-MM`：缅甸语（缅甸）
-`ca-ES`：加泰罗尼亚语（西班牙）
-`hr-HR`：克罗地亚语（克罗地亚）
-`cs-CZ`：捷克语（捷克共和国）
-`da-DK`：丹麦语（丹麦）
-`nl-BE`：荷兰语（比利时）
-`nl-NL`：荷兰语（荷兰）
-`en-AU`：英语（澳大利亚）
-`en-CA`：英语（加拿大）
-`en-GH`：英语（加纳）
-`en-HK`：英语（中国香港）
-`en-IN`：英语（印度）
-`en-IE`：英语（爱尔兰）
-`en-KE`：英语（肯尼亚）
-`en-NZ`：英语（新西兰）
-`en-NG`：英语（尼日利亚）
-`en-PK`：英语（巴基斯坦）
-`en-PH`：英语（菲律宾）
-`en-SG`：英语（新加坡）
-`en-ZA`：英语（南非）
-`en-TZ`：英语（坦桑尼亚）
-`en-GB`：英语（英国）
-`en-US`：英语（美国）
-`et-EE`：爱沙尼亚语（爱沙尼亚）
-`fil-PH`：菲律宾语（菲律宾）
-`fi-FI`：芬兰语（芬兰）
-`fr-BE`：法语（比利时）
-`fr-CA`：法语（加拿大）
-`fr-FR`：法语（法国）
-`fr-CH`：法语（瑞士）
-`gl-ES`：加利西亚语（西班牙）
-`ka-GE`：格鲁吉亚语（格鲁吉亚）
-`el-GR`：希腊语（希腊）
-`gu-IN`：古吉拉特语（印度）
-`iw-IL`：希伯来语（以色列）
-`hi-IN`：印地语（印度）
-`hu-HU`：匈牙利语（匈牙利）
-`is-IS`：冰岛语（冰岛）
-`id-ID`：印度尼西亚语（印度尼西亚）
-`it-IT`：意大利语（意大利）
-`it-CH`：意大利语（瑞士）
-`ja-JP`：日语（日本）
-`jv-ID`：爪哇语（印度尼西亚）
-`kn-IN`：卡纳达语（印度）
-`kk-KZ`：哈萨克语（哈萨克斯坦）
-`km-KH`：高棉语（柬埔寨）
-`rw-RW`：卢旺达语（卢旺达）
-`ko-KR`：韩语（韩国）
-`lo-LA`：老挝语（老挝）
-`lv-LV`：拉脱维亚语（拉脱维亚）
-`lt-LT`：立陶宛语（立陶宛）
-`mk-MK`：马其顿语（北马其顿）
-`ms-MY`：马来语（马来西亚）
-`ml-IN`：马拉雅拉姆语（印度）
-`mr-IN`：马拉地语（印度）
-`mn-MN`：蒙古语（蒙古）
-`ne-NP`：尼泊尔语（尼泊尔）
-`no-NO`：博克马尔挪威语（挪威）
-`fa-IR`：波斯语（伊朗）
-`pl-PL`：波兰语（波兰）
-`pt-BR`：葡萄牙语（巴西）
-`pt-PT`：葡萄牙语（葡萄牙）
-`ro-RO`：罗马尼亚语（罗马尼亚）
-`ru-RU`：俄语（俄罗斯）
-`sr-RS`：塞尔维亚语（塞尔维亚）
-`si-LK`：僧伽罗语（斯里兰卡）
-`sk-SK`：斯洛伐克语（斯洛伐克）
-`sl-SI`：斯洛文尼亚语（斯洛文尼亚）
-`st-ZA`：南索托语（南非）
-`es-AR`：西班牙语（阿根廷）
-`es-BO`：西班牙语（玻利维亚）
-`es-CL`：西班牙语（智利）
-`es-CO`：西班牙语（哥伦比亚）
-`es-CR`：西班牙语（哥斯达黎加）
-`es-DO`：西班牙语（多米尼加共和国）
-`es-EC`：西班牙语（厄瓜多尔）
-`es-SV`：西班牙语（萨尔瓦多）
-`es-GT`：西班牙语（危地马拉）
-`es-HN`：西班牙语（洪都拉斯）
-`es-MX`：西班牙语（墨西哥）
-`es-NI`：西班牙语（尼加拉瓜）
-`es-PA`：西班牙语（巴拿马）
-`es-PY`：西班牙语（巴拉圭）
-`es-PE`：西班牙语（秘鲁）
-`es-PR`：西班牙语（波多黎各）
-`es-ES`：西班牙语（西班牙）
-`es-US`：西班牙语（美国）
-`es-UY`：西班牙语（乌拉圭）
-`es-VE`：西班牙语（委内瑞拉）
-`su-ID`：巽他语（印度尼西亚）
-`sw-KE`：斯瓦希里语（肯尼亚）
-`sw-TZ`：斯瓦希里语（坦桑尼亚）
-`sv-SE`：瑞典语（瑞典）
-`ta-IN`：泰米尔语（印度）
-`ta-MY`：泰米尔语（马来西亚）
-`ta-SG`：泰米尔语（新加坡）
-`ta-LK`：泰米尔语（斯里兰卡）
-`te-IN`：泰卢固语（印度）
-`th-TH`：泰语（泰国）
-`ts-ZA`：聪加语（南非）
-`tr-TR`：土耳其语（土耳其）
-`uk-UA`：乌克兰语（乌克兰）
-`ur-IN`：乌尔都语（印度）
-`ur-PK`：乌尔都语（巴基斯坦）
-`uz-UZ`：乌兹别克语（乌兹别克斯坦）
-`ve-ZA`：文达语（南非）
-`vi-VN`：越南语（越南）
-`xh-ZA`：科萨语（南非）
-`zu-ZA`：祖鲁语（南非）
-
+        r"""<p>智能字幕视频源语言<br>OCR识别仅支持以下语言：<br><code>zh_en</code>：中英<br><code>multi</code>：其他<br>ASR识别和纯字幕翻译当前支持以下语言：<br><code>auto</code>：自动识别<br><code>zh</code>：简体中文<br><code>en</code>：英语<br><code>ja</code>：日语<br><code>ko</code>：韩语<br><code>zh-PY</code>：中英粤<br><code>zh_medical</code>：中文医疗<br><code>vi</code>：越南语<br><code>ms</code>：马来语<br><code>id</code>：印度尼西亚语<br><code>fil</code>：菲律宾语<br><code>th</code>：泰语<br><code>pt</code>：葡萄牙语<br><code>tr</code>：土耳其语<br><code>ar</code>：阿拉伯语<br><code>es</code>：西班牙语<br><code>hi</code>：印地语<br><code>fr</code>：法语<br><code>de</code>：德语<br><code>it</code>：意大利语<br><code>zh_dialect</code>：中文方言<br><code>zh_en</code>：中英<br><code>yue</code>：粤语<br><code>ru</code>：俄语<br><code>prime_zh</code>：中英方言<br><code>af-ZA</code>：南非荷兰语（南非）<br><code>sq-AL</code>：阿尔巴尼亚语（阿尔巴尼亚）<br><code>am-ET</code>：阿姆哈拉语（埃塞俄比亚）<br><code>ar-DZ</code>：阿拉伯语（阿尔及利亚）<br><code>ar-BH</code>：阿拉伯语（巴林）<br><code>ar-EG</code>：阿拉伯语（埃及）<br><code>ar-IQ</code>：阿拉伯语（伊拉克）<br><code>ar-IL</code>：阿拉伯语（以色列）<br><code>ar-JO</code>：阿拉伯语（约旦）<br><code>ar-KW</code>：阿拉伯语（科威特）<br><code>ar-LB</code>：阿拉伯语（黎巴嫩）<br><code>ar-MR</code>：阿拉伯语（毛里塔尼亚）<br><code>ar-MA</code>：阿拉伯语（摩洛哥）<br><code>ar-OM</code>：阿拉伯语（阿曼）<br><code>ar-QA</code>：阿拉伯语（卡塔尔）<br><code>ar-SA</code>：阿拉伯语（沙特阿拉伯）<br><code>ar-PS</code>：阿拉伯语（巴勒斯坦国）<br><code>ar-SY</code>：阿拉伯语（叙利亚）<br><code>ar-TN</code>：阿拉伯语（突尼斯）<br><code>ar-AE</code>：阿拉伯语（阿拉伯联合酋长国）<br><code>ar-YE</code>：阿拉伯语（也门）<br><code>hy-AM</code>：亚美尼亚语（亚美尼亚）<br><code>az-AZ</code>：阿塞拜疆语（阿塞拜疆）<br><code>eu-ES</code>：巴斯克语（西班牙）<br><code>bn-BD</code>：孟加拉语（孟加拉）<br><code>bn-IN</code>：孟加拉语（印度）<br><code>bs-BA</code>：波斯尼亚语（波斯尼亚和黑塞哥维那）<br><code>bg-BG</code>：保加利亚语（保加利亚）<br><code>my-MM</code>：缅甸语（缅甸）<br><code>ca-ES</code>：加泰罗尼亚语（西班牙）<br><code>hr-HR</code>：克罗地亚语（克罗地亚）<br><code>cs-CZ</code>：捷克语（捷克共和国）<br><code>da-DK</code>：丹麦语（丹麦）<br><code>nl-BE</code>：荷兰语（比利时）<br><code>nl-NL</code>：荷兰语（荷兰）<br><code>en-AU</code>：英语（澳大利亚）<br><code>en-CA</code>：英语（加拿大）<br><code>en-GH</code>：英语（加纳）<br><code>en-HK</code>：英语（中国香港）<br><code>en-IN</code>：英语（印度）<br><code>en-IE</code>：英语（爱尔兰）<br><code>en-KE</code>：英语（肯尼亚）<br><code>en-NZ</code>：英语（新西兰）<br><code>en-NG</code>：英语（尼日利亚）<br><code>en-PK</code>：英语（巴基斯坦）<br><code>en-PH</code>：英语（菲律宾）<br><code>en-SG</code>：英语（新加坡）<br><code>en-ZA</code>：英语（南非）<br><code>en-TZ</code>：英语（坦桑尼亚）<br><code>en-GB</code>：英语（英国）<br><code>en-US</code>：英语（美国）<br><code>et-EE</code>：爱沙尼亚语（爱沙尼亚）<br><code>fil-PH</code>：菲律宾语（菲律宾）<br><code>fi-FI</code>：芬兰语（芬兰）<br><code>fr-BE</code>：法语（比利时）<br><code>fr-CA</code>：法语（加拿大）<br><code>fr-FR</code>：法语（法国）<br><code>fr-CH</code>：法语（瑞士）<br><code>gl-ES</code>：加利西亚语（西班牙）<br><code>ka-GE</code>：格鲁吉亚语（格鲁吉亚）<br><code>el-GR</code>：希腊语（希腊）<br><code>gu-IN</code>：古吉拉特语（印度）<br><code>iw-IL</code>：希伯来语（以色列）<br><code>hi-IN</code>：印地语（印度）<br><code>hu-HU</code>：匈牙利语（匈牙利）<br><code>is-IS</code>：冰岛语（冰岛）<br><code>id-ID</code>：印度尼西亚语（印度尼西亚）<br><code>it-IT</code>：意大利语（意大利）<br><code>it-CH</code>：意大利语（瑞士）<br><code>ja-JP</code>：日语（日本）<br><code>jv-ID</code>：爪哇语（印度尼西亚）<br><code>kn-IN</code>：卡纳达语（印度）<br><code>kk-KZ</code>：哈萨克语（哈萨克斯坦）<br><code>km-KH</code>：高棉语（柬埔寨）<br><code>rw-RW</code>：卢旺达语（卢旺达）<br><code>ko-KR</code>：韩语（韩国）<br><code>lo-LA</code>：老挝语（老挝）<br><code>lv-LV</code>：拉脱维亚语（拉脱维亚）<br><code>lt-LT</code>：立陶宛语（立陶宛）<br><code>mk-MK</code>：马其顿语（北马其顿）<br><code>ms-MY</code>：马来语（马来西亚）<br><code>ml-IN</code>：马拉雅拉姆语（印度）<br><code>mr-IN</code>：马拉地语（印度）<br><code>mn-MN</code>：蒙古语（蒙古）<br><code>ne-NP</code>：尼泊尔语（尼泊尔）<br><code>no-NO</code>：博克马尔挪威语（挪威）<br><code>fa-IR</code>：波斯语（伊朗）<br><code>pl-PL</code>：波兰语（波兰）<br><code>pt-BR</code>：葡萄牙语（巴西）<br><code>pt-PT</code>：葡萄牙语（葡萄牙）<br><code>ro-RO</code>：罗马尼亚语（罗马尼亚）<br><code>ru-RU</code>：俄语（俄罗斯）<br><code>sr-RS</code>：塞尔维亚语（塞尔维亚）<br><code>si-LK</code>：僧伽罗语（斯里兰卡）<br><code>sk-SK</code>：斯洛伐克语（斯洛伐克）<br><code>sl-SI</code>：斯洛文尼亚语（斯洛文尼亚）<br><code>st-ZA</code>：南索托语（南非）<br><code>es-AR</code>：西班牙语（阿根廷）<br><code>es-BO</code>：西班牙语（玻利维亚）<br><code>es-CL</code>：西班牙语（智利）<br><code>es-CO</code>：西班牙语（哥伦比亚）<br><code>es-CR</code>：西班牙语（哥斯达黎加）<br><code>es-DO</code>：西班牙语（多米尼加共和国）<br><code>es-EC</code>：西班牙语（厄瓜多尔）<br><code>es-SV</code>：西班牙语（萨尔瓦多）<br><code>es-GT</code>：西班牙语（危地马拉）<br><code>es-HN</code>：西班牙语（洪都拉斯）<br><code>es-MX</code>：西班牙语（墨西哥）<br><code>es-NI</code>：西班牙语（尼加拉瓜）<br><code>es-PA</code>：西班牙语（巴拿马）<br><code>es-PY</code>：西班牙语（巴拉圭）<br><code>es-PE</code>：西班牙语（秘鲁）<br><code>es-PR</code>：西班牙语（波多黎各）<br><code>es-ES</code>：西班牙语（西班牙）<br><code>es-US</code>：西班牙语（美国）<br><code>es-UY</code>：西班牙语（乌拉圭）<br><code>es-VE</code>：西班牙语（委内瑞拉）<br><code>su-ID</code>：巽他语（印度尼西亚）<br><code>sw-KE</code>：斯瓦希里语（肯尼亚）<br><code>sw-TZ</code>：斯瓦希里语（坦桑尼亚）<br><code>sv-SE</code>：瑞典语（瑞典）<br><code>ta-IN</code>：泰米尔语（印度）<br><code>ta-MY</code>：泰米尔语（马来西亚）<br><code>ta-SG</code>：泰米尔语（新加坡）<br><code>ta-LK</code>：泰米尔语（斯里兰卡）<br><code>te-IN</code>：泰卢固语（印度）<br><code>th-TH</code>：泰语（泰国）<br><code>ts-ZA</code>：聪加语（南非）<br><code>tr-TR</code>：土耳其语（土耳其）<br><code>uk-UA</code>：乌克兰语（乌克兰）<br><code>ur-IN</code>：乌尔都语（印度）<br><code>ur-PK</code>：乌尔都语（巴基斯坦）<br><code>uz-UZ</code>：乌兹别克语（乌兹别克斯坦）<br><code>ve-ZA</code>：文达语（南非）<br><code>vi-VN</code>：越南语（越南）<br><code>xh-ZA</code>：科萨语（南非）<br><code>zu-ZA</code>：祖鲁语（南非）</p>
         :rtype: str
         """
         return self._VideoSrcLanguage
@@ -24169,12 +23607,7 @@ ASR识别和纯字幕翻译当前支持以下语言：
 
     @property
     def SubtitleType(self):
-        r"""智能字幕字幕语言类型
-0: 源语言
-1: 翻译语言
-2: 源语言+翻译语言
-当TranslateSwitch为OFF时仅支持取0
-当TranslateSwitch为ON时仅支持取1或2
+        r"""<p>智能字幕字幕语言类型<br>0: 源语言<br>1: 翻译语言<br>2: 源语言+翻译语言<br>当TranslateSwitch为OFF时仅支持取0<br>当TranslateSwitch为ON时仅支持取1或2</p>
         :rtype: int
         """
         return self._SubtitleType
@@ -24185,8 +23618,7 @@ ASR识别和纯字幕翻译当前支持以下语言：
 
     @property
     def Comment(self):
-        r"""智能字幕模板描述信息
-长度限制：256 个字符。
+        r"""<p>智能字幕模板描述信息<br>长度限制：256 个字符。</p>
         :rtype: str
         """
         return self._Comment
@@ -24197,22 +23629,7 @@ ASR识别和纯字幕翻译当前支持以下语言：
 
     @property
     def SubtitleFormat(self):
-        r"""智能字幕文件格式:
-- ASR识别翻译处理类型下：
-     - vtt: WebVTT 格式字幕
-     - srt: SRT 格式字幕
-     - 不填或填空：不生成字幕文件
-- 纯字幕翻译处理类型下：
-    - original：与源文件一致
-    - vtt: WebVTT 格式字幕
-    - srt: SRT 格式字幕
-- OCR识别翻译处理类型下：
-     - vtt: WebVTT 格式字幕
-     - srt: SRT 格式字幕
-
-**注意**：
-- ASR识别方式下，翻译大于等于2种语言时不允许传空或不传；
-- 纯字幕翻译和OCR识别翻译方式下，不允许传空或不传
+        r"""<p>智能字幕文件格式:</p><ul><li>ASR识别翻译处理类型下：<ul><li>vtt: WebVTT 格式字幕</li><li>srt: SRT 格式字幕</li><li>不填或填空：不生成字幕文件</li></ul></li><li>纯字幕翻译处理类型下：<ul><li>original：与源文件一致</li><li>vtt: WebVTT 格式字幕</li><li>srt: SRT 格式字幕</li></ul></li><li>OCR识别翻译处理类型下：<ul><li>vtt: WebVTT 格式字幕</li><li>srt: SRT 格式字幕</li></ul></li></ul><p><strong>注意</strong>：</p><ul><li>ASR识别方式下，翻译大于等于2种语言时不允许传空或不传；</li><li>纯字幕翻译方式下，不允许传空或不传</li><li>OCR类型的任务，在开启压制时，允许不传或传空</li></ul>
         :rtype: str
         """
         return self._SubtitleFormat
@@ -24223,7 +23640,7 @@ ASR识别和纯字幕翻译当前支持以下语言：
 
     @property
     def AsrHotWordsConfigure(self):
-        r"""ASR热词库参数
+        r"""<p>ASR热词库参数</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.AsrHotWordsConfigure`
         """
         return self._AsrHotWordsConfigure
@@ -24234,11 +23651,7 @@ ASR识别和纯字幕翻译当前支持以下语言：
 
     @property
     def TranslateSwitch(self):
-        r"""字幕翻译开关
-`ON`: 开启翻译
-`OFF`: 关闭翻译
-
-**注意**：纯字幕翻译方式下，不传默认是打开的，不允许传空或`OFF`；
+        r"""<p>字幕翻译开关<br><code>ON</code>: 开启翻译<br><code>OFF</code>: 关闭翻译</p><p><strong>注意</strong>：纯字幕翻译方式下，不传默认是打开的，不允许传空或<code>OFF</code>；</p>
         :rtype: str
         """
         return self._TranslateSwitch
@@ -24249,200 +23662,7 @@ ASR识别和纯字幕翻译当前支持以下语言：
 
     @property
     def TranslateDstLanguage(self):
-        r"""字幕翻译目标语言
-当TranslateSwitch为ON的时候生效，翻译语言列表：
-`ab`：阿布哈兹语
-`ace`：亚齐语
-`ach`：阿乔利语
-`af`：南非荷兰语
-`ak`：契维语（阿坎语）
-`am`：Amharic
-`ar`：阿拉伯语
-`as`：阿萨姆语
-`ay`：艾马拉语
-`az`：阿塞拜疆语
-`ba`：巴什基尔语
-`ban`：巴厘语
-`bbc`：巴塔克托巴语
-`bem`：Bemba
-`bew`：Betawi
-`bg`：保加利亚语
-`bho`：博杰普尔语
-`bik`：Bikol
-`bm`：班巴拉语
-`bn`：孟加拉语
-`br`：布列塔尼语
-`bs`：波斯尼亚语
-`btx`：巴塔克卡罗语
-`bts`：巴塔克西马隆贡语
-`bua`：布里亚特语
-`ca`：加泰罗尼亚语
-`ceb`：宿务语
-`cgg`：Kiga
-`chm`：草原马里语
-`ckb`：库尔德语（索拉尼语）
-`cnh`：哈卡钦语
-`co`：科西嘉语
-`crh`：克里米亚鞑靼语
-`crs`：塞舌尔克里奥尔语
-`cs`：捷克语
-`cv`：楚瓦什语
-`cy`：威尔士语
-`da`：丹麦语
-`de`：德语
-`din`：Dinka
-`doi`：多格来语
-`dov`：敦贝语
-`dv`：第维埃语
-`dz`：宗卡语
-`ee`：Ewe
-`el`：希腊语
-`en`：英语
-`eo`：世界语
-`es`：西班牙语
-`et`：爱沙尼亚语
-`eu`：巴斯克语
-`fa`：波斯语
-`ff`：富拉语
-`fi`：芬兰语
-`fil`：菲律宾语（塔加拉语）
-`fj`：斐济语
-`fr`：法语
-`fr-CA`：法语（加拿大）
-`fr-FR`：法语（法国）
-`fy`：弗里斯兰语
-`ga`：爱尔兰语
-`gaa`：加 (Ga) 语
-`gd`：苏格兰盖尔语
-`gl`：加利西亚语
-`gn`：瓜拉尼语
-`gom`：贡根语
-`gu`：古吉拉特语
-`gv`：马恩岛语
-`ha`：Hausa
-`haw`：夏威夷语
-`he`：希伯来语
-`hi`：印地语
-`hil`：希利盖农语
-`hmn`：苗语
-`hr`：克罗地亚语
-`hrx`：洪斯吕克语
-`ht`：海地克里奥尔语
-`hu`：匈牙利语
-`hy`：亚美尼亚语
-`id`：印度尼西亚语
-`ig`：Igbo
-`ilo`：伊洛果语
-`is`：冰岛语
-`it`：意大利语
-`iw`：希伯来语
-`ja`：日语
-`jv`：爪哇语
-`ka`：格鲁吉亚语
-`kk`：哈萨克语
-`km`：高棉语
-`kn`：卡纳达语
-`ko`：韩语
-`kri`：Krio
-`ku`：库尔德语（库尔曼吉语）
-`ktu`：吉土巴语
-`ky`：吉尔吉斯语
-`la`：拉丁语
-`lb`：卢森堡语
-`lg`：干达语（卢干达语）
-`li`：林堡语
-`lij`：利古里亚语
-`lmo`：伦巴第语
-`ln`：林加拉语
-`lo`：老挝语
-`lt`：立陶宛语
-`ltg`：拉特加莱语
-`luo`：Luo
-`lus`：米佐语
-`lv`：拉脱维亚语
-`mai`：迈蒂利语
-`mak`：马卡萨
-`mg`：马尔加什语
-`mi`：毛利语
-`min`：米南语
-`mk`：马其顿语
-`ml`：马拉雅拉姆语
-`mn`：蒙古语
-`mr`：马拉地语
-`ms`：马来语
-`mt`：马耳他语
-`my`：缅甸语
-`ne`：尼泊尔语
-`new`：尼瓦尔语
-`nl`：荷兰语
-`no`：挪威语
-`nr`：恩德贝莱语（南部）
-`nso`：北索托语（塞佩蒂语）
-`nus`：努尔语
-`ny`：齐切瓦语（尼扬贾语）
-`oc`：奥克斯坦语
-`om`：Oromo
-`or`：奥里亚语
-`pa`：旁遮普语
-`pag`：邦阿西楠语
-`pam`：邦板牙语
-`pap`：Papiamento
-`pl`：波兰语
-`ps`：Pashto
-`pt`：葡萄牙语
-`pt-BR`：葡萄牙语（巴西）
-`pt-PT`：葡萄牙语（葡萄牙）
-`qu`：克丘亚语
-`ro`：罗马尼亚语
-`rom`：罗姆语
-`rn`：Rundi
-`ru`：俄语
-`rw`：卢旺达语
-`sa`：梵语
-`scn`：西西里语
-`sd`：信德语
-`sg`：Sango
-`shn`：掸语
-`si`：僧伽罗语
-`sk`：斯洛伐克语
-`sl`：斯洛文尼亚语
-`sm`：萨摩亚语
-`sn`：修纳语
-`so`：索马里语
-`sq`：阿尔巴尼亚语
-`sr`：塞尔维亚语
-`ss`：斯瓦特语
-`st`：塞索托语
-`su`：巽他语
-`sv`：瑞典语
-`sw`：斯瓦希里语
-`szl`：西里西亚语
-`ta`：泰米尔语
-`te`：泰卢固语
-`tet`：德顿语
-`tg`：塔吉克语
-`th`：泰语
-`ti`：提格里尼亚语
-`tk`：土库曼语
-`tn`：茨瓦纳语
-`tr`：土耳其语
-`ts`：聪加语
-`tt`：鞑靼语
-`ug`：维吾尔语
-`uk`：乌克兰语
-`ur`：乌尔都语
-`uz`：乌兹别克语
-`vi`：越南语
-`xh`：科萨语
-`yi`：意第绪语
-`yo`：约鲁巴语
-`yua`：尤卡坦玛雅语
-`yue`：粤语
-`zh`：简体中文
-`zh-TW`：中文（繁体）
-`zu`：祖鲁语
-
-**注意**：多语言方式，则使用 `/` 分割，如：`en/ja`，表示英语和日语。
+        r"""<p>字幕翻译目标语言<br>当TranslateSwitch为ON的时候生效，翻译语言列表：<br><code>ab</code>：阿布哈兹语<br><code>ace</code>：亚齐语<br><code>ach</code>：阿乔利语<br><code>af</code>：南非荷兰语<br><code>ak</code>：契维语（阿坎语）<br><code>am</code>：Amharic<br><code>ar</code>：阿拉伯语<br><code>as</code>：阿萨姆语<br><code>ay</code>：艾马拉语<br><code>az</code>：阿塞拜疆语<br><code>ba</code>：巴什基尔语<br><code>ban</code>：巴厘语<br><code>bbc</code>：巴塔克托巴语<br><code>bem</code>：Bemba<br><code>bew</code>：Betawi<br><code>bg</code>：保加利亚语<br><code>bho</code>：博杰普尔语<br><code>bik</code>：Bikol<br><code>bm</code>：班巴拉语<br><code>bn</code>：孟加拉语<br><code>br</code>：布列塔尼语<br><code>bs</code>：波斯尼亚语<br><code>btx</code>：巴塔克卡罗语<br><code>bts</code>：巴塔克西马隆贡语<br><code>bua</code>：布里亚特语<br><code>ca</code>：加泰罗尼亚语<br><code>ceb</code>：宿务语<br><code>cgg</code>：Kiga<br><code>chm</code>：草原马里语<br><code>ckb</code>：库尔德语（索拉尼语）<br><code>cnh</code>：哈卡钦语<br><code>co</code>：科西嘉语<br><code>crh</code>：克里米亚鞑靼语<br><code>crs</code>：塞舌尔克里奥尔语<br><code>cs</code>：捷克语<br><code>cv</code>：楚瓦什语<br><code>cy</code>：威尔士语<br><code>da</code>：丹麦语<br><code>de</code>：德语<br><code>din</code>：Dinka<br><code>doi</code>：多格来语<br><code>dov</code>：敦贝语<br><code>dv</code>：第维埃语<br><code>dz</code>：宗卡语<br><code>ee</code>：Ewe<br><code>el</code>：希腊语<br><code>en</code>：英语<br><code>eo</code>：世界语<br><code>es</code>：西班牙语<br><code>et</code>：爱沙尼亚语<br><code>eu</code>：巴斯克语<br><code>fa</code>：波斯语<br><code>ff</code>：富拉语<br><code>fi</code>：芬兰语<br><code>fil</code>：菲律宾语（塔加拉语）<br><code>fj</code>：斐济语<br><code>fr</code>：法语<br><code>fr-CA</code>：法语（加拿大）<br><code>fr-FR</code>：法语（法国）<br><code>fy</code>：弗里斯兰语<br><code>ga</code>：爱尔兰语<br><code>gaa</code>：加 (Ga) 语<br><code>gd</code>：苏格兰盖尔语<br><code>gl</code>：加利西亚语<br><code>gn</code>：瓜拉尼语<br><code>gom</code>：贡根语<br><code>gu</code>：古吉拉特语<br><code>gv</code>：马恩岛语<br><code>ha</code>：Hausa<br><code>haw</code>：夏威夷语<br><code>he</code>：希伯来语<br><code>hi</code>：印地语<br><code>hil</code>：希利盖农语<br><code>hmn</code>：苗语<br><code>hr</code>：克罗地亚语<br><code>hrx</code>：洪斯吕克语<br><code>ht</code>：海地克里奥尔语<br><code>hu</code>：匈牙利语<br><code>hy</code>：亚美尼亚语<br><code>id</code>：印度尼西亚语<br><code>ig</code>：Igbo<br><code>ilo</code>：伊洛果语<br><code>is</code>：冰岛语<br><code>it</code>：意大利语<br><code>iw</code>：希伯来语<br><code>ja</code>：日语<br><code>jv</code>：爪哇语<br><code>ka</code>：格鲁吉亚语<br><code>kk</code>：哈萨克语<br><code>km</code>：高棉语<br><code>kn</code>：卡纳达语<br><code>ko</code>：韩语<br><code>kri</code>：Krio<br><code>ku</code>：库尔德语（库尔曼吉语）<br><code>ktu</code>：吉土巴语<br><code>ky</code>：吉尔吉斯语<br><code>la</code>：拉丁语<br><code>lb</code>：卢森堡语<br><code>lg</code>：干达语（卢干达语）<br><code>li</code>：林堡语<br><code>lij</code>：利古里亚语<br><code>lmo</code>：伦巴第语<br><code>ln</code>：林加拉语<br><code>lo</code>：老挝语<br><code>lt</code>：立陶宛语<br><code>ltg</code>：拉特加莱语<br><code>luo</code>：Luo<br><code>lus</code>：米佐语<br><code>lv</code>：拉脱维亚语<br><code>mai</code>：迈蒂利语<br><code>mak</code>：马卡萨<br><code>mg</code>：马尔加什语<br><code>mi</code>：毛利语<br><code>min</code>：米南语<br><code>mk</code>：马其顿语<br><code>ml</code>：马拉雅拉姆语<br><code>mn</code>：蒙古语<br><code>mr</code>：马拉地语<br><code>ms</code>：马来语<br><code>mt</code>：马耳他语<br><code>my</code>：缅甸语<br><code>ne</code>：尼泊尔语<br><code>new</code>：尼瓦尔语<br><code>nl</code>：荷兰语<br><code>no</code>：挪威语<br><code>nr</code>：恩德贝莱语（南部）<br><code>nso</code>：北索托语（塞佩蒂语）<br><code>nus</code>：努尔语<br><code>ny</code>：齐切瓦语（尼扬贾语）<br><code>oc</code>：奥克斯坦语<br><code>om</code>：Oromo<br><code>or</code>：奥里亚语<br><code>pa</code>：旁遮普语<br><code>pag</code>：邦阿西楠语<br><code>pam</code>：邦板牙语<br><code>pap</code>：Papiamento<br><code>pl</code>：波兰语<br><code>ps</code>：Pashto<br><code>pt</code>：葡萄牙语<br><code>pt-BR</code>：葡萄牙语（巴西）<br><code>pt-PT</code>：葡萄牙语（葡萄牙）<br><code>qu</code>：克丘亚语<br><code>ro</code>：罗马尼亚语<br><code>rom</code>：罗姆语<br><code>rn</code>：Rundi<br><code>ru</code>：俄语<br><code>rw</code>：卢旺达语<br><code>sa</code>：梵语<br><code>scn</code>：西西里语<br><code>sd</code>：信德语<br><code>sg</code>：Sango<br><code>shn</code>：掸语<br><code>si</code>：僧伽罗语<br><code>sk</code>：斯洛伐克语<br><code>sl</code>：斯洛文尼亚语<br><code>sm</code>：萨摩亚语<br><code>sn</code>：修纳语<br><code>so</code>：索马里语<br><code>sq</code>：阿尔巴尼亚语<br><code>sr</code>：塞尔维亚语<br><code>ss</code>：斯瓦特语<br><code>st</code>：塞索托语<br><code>su</code>：巽他语<br><code>sv</code>：瑞典语<br><code>sw</code>：斯瓦希里语<br><code>szl</code>：西里西亚语<br><code>ta</code>：泰米尔语<br><code>te</code>：泰卢固语<br><code>tet</code>：德顿语<br><code>tg</code>：塔吉克语<br><code>th</code>：泰语<br><code>ti</code>：提格里尼亚语<br><code>tk</code>：土库曼语<br><code>tn</code>：茨瓦纳语<br><code>tr</code>：土耳其语<br><code>ts</code>：聪加语<br><code>tt</code>：鞑靼语<br><code>ug</code>：维吾尔语<br><code>uk</code>：乌克兰语<br><code>ur</code>：乌尔都语<br><code>uz</code>：乌兹别克语<br><code>vi</code>：越南语<br><code>xh</code>：科萨语<br><code>yi</code>：意第绪语<br><code>yo</code>：约鲁巴语<br><code>yua</code>：尤卡坦玛雅语<br><code>yue</code>：粤语<br><code>zh</code>：简体中文<br><code>zh-TW</code>：中文（繁体）<br><code>zu</code>：祖鲁语</p><p><strong>注意</strong>：多语言方式，则使用 <code>/</code> 分割，如：<code>en/ja</code>，表示英语和日语。</p>
         :rtype: str
         """
         return self._TranslateDstLanguage
@@ -24453,12 +23673,7 @@ ASR识别和纯字幕翻译当前支持以下语言：
 
     @property
     def ProcessType(self):
-        r"""字幕处理类型：
-- 0：ASR识别字幕
-- 1：纯字幕翻译
-- 2：OCR识别字幕
-
-**注意**：不传的情况下默认类型为 ASR识别字幕
+        r"""<p>字幕处理类型：</p><ul><li>0：ASR识别字幕</li><li>1：纯字幕翻译</li><li>2：OCR识别字幕</li></ul><p><strong>注意</strong>：不传的情况下默认类型为 ASR识别字幕</p>
         :rtype: int
         """
         return self._ProcessType
@@ -24469,7 +23684,7 @@ ASR识别和纯字幕翻译当前支持以下语言：
 
     @property
     def SelectingSubtitleAreasConfig(self):
-        r"""字幕OCR提取框选区域配置
+        r"""<p>字幕OCR提取框选区域配置</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.SelectingSubtitleAreasConfig`
         """
         return self._SelectingSubtitleAreasConfig
@@ -24477,6 +23692,17 @@ ASR识别和纯字幕翻译当前支持以下语言：
     @SelectingSubtitleAreasConfig.setter
     def SelectingSubtitleAreasConfig(self, SelectingSubtitleAreasConfig):
         self._SelectingSubtitleAreasConfig = SelectingSubtitleAreasConfig
+
+    @property
+    def SubtitleEmbedId(self):
+        r"""<p>压制模板id，只有ProcessType为0或2（任务类型为ASR或OCR）时才允许填写。开启多个翻译语言时，不允许填写。</p>
+        :rtype: int
+        """
+        return self._SubtitleEmbedId
+
+    @SubtitleEmbedId.setter
+    def SubtitleEmbedId(self, SubtitleEmbedId):
+        self._SubtitleEmbedId = SubtitleEmbedId
 
 
     def _deserialize(self, params):
@@ -24494,6 +23720,7 @@ ASR识别和纯字幕翻译当前支持以下语言：
         if params.get("SelectingSubtitleAreasConfig") is not None:
             self._SelectingSubtitleAreasConfig = SelectingSubtitleAreasConfig()
             self._SelectingSubtitleAreasConfig._deserialize(params.get("SelectingSubtitleAreasConfig"))
+        self._SubtitleEmbedId = params.get("SubtitleEmbedId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -24511,7 +23738,7 @@ class CreateSmartSubtitleTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: 智能字幕模板唯一标识。
+        :param _Definition: <p>智能字幕模板唯一标识。</p>
         :type Definition: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -24521,7 +23748,7 @@ class CreateSmartSubtitleTemplateResponse(AbstractModel):
 
     @property
     def Definition(self):
-        r"""智能字幕模板唯一标识。
+        r"""<p>智能字幕模板唯一标识。</p>
         :rtype: int
         """
         return self._Definition
@@ -25289,6 +24516,117 @@ class CreateStreamLinkSecurityGroupResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateSubtitleEmbedTemplateRequest(AbstractModel):
+    r"""CreateSubtitleEmbedTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>字幕压制模板名称<br>长度限制：64 个字符。</p>
+        :type Name: str
+        :param _Comment: <p>字幕压制模板描述信息<br>长度限制：256 个字符。</p>
+        :type Comment: str
+        :param _SubtitleEmbedConfig: <p>字幕压制相关配置</p>
+        :type SubtitleEmbedConfig: :class:`tencentcloud.mps.v20190612.models.SubtitleEmbedConfig`
+        """
+        self._Name = None
+        self._Comment = None
+        self._SubtitleEmbedConfig = None
+
+    @property
+    def Name(self):
+        r"""<p>字幕压制模板名称<br>长度限制：64 个字符。</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Comment(self):
+        r"""<p>字幕压制模板描述信息<br>长度限制：256 个字符。</p>
+        :rtype: str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def SubtitleEmbedConfig(self):
+        r"""<p>字幕压制相关配置</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SubtitleEmbedConfig`
+        """
+        return self._SubtitleEmbedConfig
+
+    @SubtitleEmbedConfig.setter
+    def SubtitleEmbedConfig(self, SubtitleEmbedConfig):
+        self._SubtitleEmbedConfig = SubtitleEmbedConfig
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Comment = params.get("Comment")
+        if params.get("SubtitleEmbedConfig") is not None:
+            self._SubtitleEmbedConfig = SubtitleEmbedConfig()
+            self._SubtitleEmbedConfig._deserialize(params.get("SubtitleEmbedConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateSubtitleEmbedTemplateResponse(AbstractModel):
+    r"""CreateSubtitleEmbedTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: <p>字幕压制模板唯一标识。</p>
+        :type Definition: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Definition = None
+        self._RequestId = None
+
+    @property
+    def Definition(self):
+        r"""<p>字幕压制模板唯一标识。</p>
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
         self._RequestId = params.get("RequestId")
 
 
@@ -27652,6 +26990,70 @@ class DeleteStreamLinkSecurityGroupRequest(AbstractModel):
 
 class DeleteStreamLinkSecurityGroupResponse(AbstractModel):
     r"""DeleteStreamLinkSecurityGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteSubtitleEmbedTemplateRequest(AbstractModel):
+    r"""DeleteSubtitleEmbedTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: <p>字幕压制模板唯一标识。</p>
+        :type Definition: int
+        """
+        self._Definition = None
+
+    @property
+    def Definition(self):
+        r"""<p>字幕压制模板唯一标识。</p>
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteSubtitleEmbedTemplateResponse(AbstractModel):
+    r"""DeleteSubtitleEmbedTemplate返回参数结构体
 
     """
 
@@ -36264,6 +35666,165 @@ class DescribeStreamLinkSecurityGroupsResponse(AbstractModel):
                 obj = SecurityGroupInfo()
                 obj._deserialize(item)
                 self._Infos.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeSubtitleEmbedTemplatesRequest(AbstractModel):
+    r"""DescribeSubtitleEmbedTemplates请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definitions: <p>智能字幕模板唯一标识过滤条件，数组长度限制：100。</p>
+        :type Definitions: list of int
+        :param _Offset: <p>分页偏移量，默认值：0。</p>
+        :type Offset: int
+        :param _Limit: <p>返回记录条数，默认值：10，最大值：100。</p>
+        :type Limit: int
+        :param _Type: <p>模板类型过滤条件，不填则返回所有，可选值：</p><ul><li>Preset：系统预置模板；</li><li>Custom：用户自定义模板。</li></ul>
+        :type Type: str
+        :param _Name: <p>字幕压制模板标识过滤条件，长度限制：64 个字符。</p>
+        :type Name: str
+        """
+        self._Definitions = None
+        self._Offset = None
+        self._Limit = None
+        self._Type = None
+        self._Name = None
+
+    @property
+    def Definitions(self):
+        r"""<p>智能字幕模板唯一标识过滤条件，数组长度限制：100。</p>
+        :rtype: list of int
+        """
+        return self._Definitions
+
+    @Definitions.setter
+    def Definitions(self, Definitions):
+        self._Definitions = Definitions
+
+    @property
+    def Offset(self):
+        r"""<p>分页偏移量，默认值：0。</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>返回记录条数，默认值：10，最大值：100。</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Type(self):
+        r"""<p>模板类型过滤条件，不填则返回所有，可选值：</p><ul><li>Preset：系统预置模板；</li><li>Custom：用户自定义模板。</li></ul>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Name(self):
+        r"""<p>字幕压制模板标识过滤条件，长度限制：64 个字符。</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+
+    def _deserialize(self, params):
+        self._Definitions = params.get("Definitions")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._Type = params.get("Type")
+        self._Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSubtitleEmbedTemplatesResponse(AbstractModel):
+    r"""DescribeSubtitleEmbedTemplates返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>符合过滤条件的记录总数。</p>
+        :type TotalCount: int
+        :param _SubtitleEmbedTemplateSet: <p>字幕压制模板详情列表。</p>
+        :type SubtitleEmbedTemplateSet: list of SubtitleEmbedTemplateItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._SubtitleEmbedTemplateSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>符合过滤条件的记录总数。</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def SubtitleEmbedTemplateSet(self):
+        r"""<p>字幕压制模板详情列表。</p>
+        :rtype: list of SubtitleEmbedTemplateItem
+        """
+        return self._SubtitleEmbedTemplateSet
+
+    @SubtitleEmbedTemplateSet.setter
+    def SubtitleEmbedTemplateSet(self, SubtitleEmbedTemplateSet):
+        self._SubtitleEmbedTemplateSet = SubtitleEmbedTemplateSet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("SubtitleEmbedTemplateSet") is not None:
+            self._SubtitleEmbedTemplateSet = []
+            for item in params.get("SubtitleEmbedTemplateSet"):
+                obj = SubtitleEmbedTemplateItem()
+                obj._deserialize(item)
+                self._SubtitleEmbedTemplateSet.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -56114,22 +55675,19 @@ class ModifySmartEraseTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: 智能擦除模板唯一标识
+        :param _Definition: <p>智能擦除模板唯一标识</p>
         :type Definition: int
-        :param _Name: 智能擦除模板名称长度限制：64 个字符。
+        :param _Name: <p>智能擦除模板名称长度限制：64 个字符。</p>
         :type Name: str
-        :param _Comment: 智能擦除模板描述信息长度限制：256 个字符。
+        :param _Comment: <p>智能擦除模板描述信息长度限制：256 个字符。</p>
         :type Comment: str
-        :param _EraseType: 擦除类型
-- subtitle 去字幕
-- watermark 去水印
-- privacy 隐私保护
+        :param _EraseType: <p>擦除类型</p><ul><li>subtitle 去字幕</li><li>watermark 去水印</li><li>privacy 隐私保护</li></ul>
         :type EraseType: str
-        :param _EraseSubtitleConfig: 字幕擦除配置，EraseType取subtitle或者EraseType不填，对应模板原EraseType为subtitle时生效。
+        :param _EraseSubtitleConfig: <p>字幕擦除配置，EraseType取subtitle或者EraseType不填，对应模板原EraseType为subtitle时生效。</p>
         :type EraseSubtitleConfig: :class:`tencentcloud.mps.v20190612.models.SmartEraseSubtitleConfig`
-        :param _EraseWatermarkConfig: 水印擦除配置，EraseType取watermark或者EraseType不填，对应模板原EraseType为watermark时生效。
+        :param _EraseWatermarkConfig: <p>水印擦除配置，EraseType取watermark或者EraseType不填，对应模板原EraseType为watermark时生效。</p>
         :type EraseWatermarkConfig: :class:`tencentcloud.mps.v20190612.models.SmartEraseWatermarkConfig`
-        :param _ErasePrivacyConfig: 隐私保护配置，EraseType取privacy或者EraseType不填，对应模板原EraseType为privacy时生效。
+        :param _ErasePrivacyConfig: <p>隐私保护配置，EraseType取privacy或者EraseType不填，对应模板原EraseType为privacy时生效。</p>
         :type ErasePrivacyConfig: :class:`tencentcloud.mps.v20190612.models.SmartErasePrivacyConfig`
         """
         self._Definition = None
@@ -56142,7 +55700,7 @@ class ModifySmartEraseTemplateRequest(AbstractModel):
 
     @property
     def Definition(self):
-        r"""智能擦除模板唯一标识
+        r"""<p>智能擦除模板唯一标识</p>
         :rtype: int
         """
         return self._Definition
@@ -56153,7 +55711,7 @@ class ModifySmartEraseTemplateRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""智能擦除模板名称长度限制：64 个字符。
+        r"""<p>智能擦除模板名称长度限制：64 个字符。</p>
         :rtype: str
         """
         return self._Name
@@ -56164,7 +55722,7 @@ class ModifySmartEraseTemplateRequest(AbstractModel):
 
     @property
     def Comment(self):
-        r"""智能擦除模板描述信息长度限制：256 个字符。
+        r"""<p>智能擦除模板描述信息长度限制：256 个字符。</p>
         :rtype: str
         """
         return self._Comment
@@ -56175,10 +55733,7 @@ class ModifySmartEraseTemplateRequest(AbstractModel):
 
     @property
     def EraseType(self):
-        r"""擦除类型
-- subtitle 去字幕
-- watermark 去水印
-- privacy 隐私保护
+        r"""<p>擦除类型</p><ul><li>subtitle 去字幕</li><li>watermark 去水印</li><li>privacy 隐私保护</li></ul>
         :rtype: str
         """
         return self._EraseType
@@ -56189,7 +55744,7 @@ class ModifySmartEraseTemplateRequest(AbstractModel):
 
     @property
     def EraseSubtitleConfig(self):
-        r"""字幕擦除配置，EraseType取subtitle或者EraseType不填，对应模板原EraseType为subtitle时生效。
+        r"""<p>字幕擦除配置，EraseType取subtitle或者EraseType不填，对应模板原EraseType为subtitle时生效。</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.SmartEraseSubtitleConfig`
         """
         return self._EraseSubtitleConfig
@@ -56200,7 +55755,7 @@ class ModifySmartEraseTemplateRequest(AbstractModel):
 
     @property
     def EraseWatermarkConfig(self):
-        r"""水印擦除配置，EraseType取watermark或者EraseType不填，对应模板原EraseType为watermark时生效。
+        r"""<p>水印擦除配置，EraseType取watermark或者EraseType不填，对应模板原EraseType为watermark时生效。</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.SmartEraseWatermarkConfig`
         """
         return self._EraseWatermarkConfig
@@ -56211,7 +55766,7 @@ class ModifySmartEraseTemplateRequest(AbstractModel):
 
     @property
     def ErasePrivacyConfig(self):
-        r"""隐私保护配置，EraseType取privacy或者EraseType不填，对应模板原EraseType为privacy时生效。
+        r"""<p>隐私保护配置，EraseType取privacy或者EraseType不填，对应模板原EraseType为privacy时生效。</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.SmartErasePrivacyConfig`
         """
         return self._ErasePrivacyConfig
@@ -56280,419 +55835,30 @@ class ModifySmartSubtitleTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: 智能字幕模板唯一标识
+        :param _Definition: <p>智能字幕模板唯一标识</p>
         :type Definition: int
-        :param _TranslateSwitch: 字幕翻译开关
-`ON`: 开启翻译
-`OFF`: 关闭翻译
-
-**注意**：纯字幕翻译方式下，不传默认是打开的，不允许传空或`OFF`；
+        :param _TranslateSwitch: <p>字幕翻译开关<br><code>ON</code>: 开启翻译<br><code>OFF</code>: 关闭翻译</p><p><strong>注意</strong>：纯字幕翻译方式下，不传默认是打开的，不允许传空或<code>OFF</code>；</p>
         :type TranslateSwitch: str
-        :param _Name: 智能字幕模板名称
-长度限制：64 个字符。
+        :param _Name: <p>智能字幕模板名称<br>长度限制：64 个字符。</p>
         :type Name: str
-        :param _Comment: 智能字幕模板描述信息
-长度限制：256 个字符。
+        :param _Comment: <p>智能字幕模板描述信息<br>长度限制：256 个字符。</p>
         :type Comment: str
-        :param _VideoSrcLanguage: 智能字幕视频源语言
-OCR识别仅支持以下语言：
-`zh_en`：中英
-`multi`：其他
-ASR识别和纯字幕翻译当前支持以下语言：
-`auto`：自动识别（仅在纯字幕翻译中支持）
-`zh`：简体中文
-`en`：英语
-`ja`：日语
-`ko`：韩语
-`zh-PY`：中英粤
-`zh_medical`：中文医疗
-`vi`：越南语
-`ms`：马来语
-`id`：印度尼西亚语
-`fil`：菲律宾语
-`th`：泰语
-`pt`：葡萄牙语
-`tr`：土耳其语
-`ar`：阿拉伯语
-`es`：西班牙语
-`hi`：印地语
-`fr`：法语
-`de`：德语
-`it`：意大利语
-`zh_dialect`：中文方言
-`zh_en`：中英
-`yue`：粤语
-`ru`：俄语
-`prime_zh`：中英方言
-`af-ZA`：南非荷兰语（南非）
-`sq-AL`：阿尔巴尼亚语（阿尔巴尼亚）
-`am-ET`：阿姆哈拉语（埃塞俄比亚）
-`ar-DZ`：阿拉伯语（阿尔及利亚）
-`ar-BH`：阿拉伯语（巴林）
-`ar-EG`：阿拉伯语（埃及）
-`ar-IQ`：阿拉伯语（伊拉克）
-`ar-IL`：阿拉伯语（以色列）
-`ar-JO`：阿拉伯语（约旦）
-`ar-KW`：阿拉伯语（科威特）
-`ar-LB`：阿拉伯语（黎巴嫩）
-`ar-MR`：阿拉伯语（毛里塔尼亚）
-`ar-MA`：阿拉伯语（摩洛哥）
-`ar-OM`：阿拉伯语（阿曼）
-`ar-QA`：阿拉伯语（卡塔尔）
-`ar-SA`：阿拉伯语（沙特阿拉伯）
-`ar-PS`：阿拉伯语（巴勒斯坦国）
-`ar-SY`：阿拉伯语（叙利亚）
-`ar-TN`：阿拉伯语（突尼斯）
-`ar-AE`：阿拉伯语（阿拉伯联合酋长国）
-`ar-YE`：阿拉伯语（也门）
-`hy-AM`：亚美尼亚语（亚美尼亚）
-`az-AZ`：阿塞拜疆语（阿塞拜疆）
-`eu-ES`：巴斯克语（西班牙）
-`bn-BD`：孟加拉语（孟加拉）
-`bn-IN`：孟加拉语（印度）
-`bs-BA`：波斯尼亚语（波斯尼亚和黑塞哥维那）
-`bg-BG`：保加利亚语（保加利亚）
-`my-MM`：缅甸语（缅甸）
-`ca-ES`：加泰罗尼亚语（西班牙）
-`hr-HR`：克罗地亚语（克罗地亚）
-`cs-CZ`：捷克语（捷克共和国）
-`da-DK`：丹麦语（丹麦）
-`nl-BE`：荷兰语（比利时）
-`nl-NL`：荷兰语（荷兰）
-`en-AU`：英语（澳大利亚）
-`en-CA`：英语（加拿大）
-`en-GH`：英语（加纳）
-`en-HK`：英语（中国香港）
-`en-IN`：英语（印度）
-`en-IE`：英语（爱尔兰）
-`en-KE`：英语（肯尼亚）
-`en-NZ`：英语（新西兰）
-`en-NG`：英语（尼日利亚）
-`en-PK`：英语（巴基斯坦）
-`en-PH`：英语（菲律宾）
-`en-SG`：英语（新加坡）
-`en-ZA`：英语（南非）
-`en-TZ`：英语（坦桑尼亚）
-`en-GB`：英语（英国）
-`en-US`：英语（美国）
-`et-EE`：爱沙尼亚语（爱沙尼亚）
-`fil-PH`：菲律宾语（菲律宾）
-`fi-FI`：芬兰语（芬兰）
-`fr-BE`：法语（比利时）
-`fr-CA`：法语（加拿大）
-`fr-FR`：法语（法国）
-`fr-CH`：法语（瑞士）
-`gl-ES`：加利西亚语（西班牙）
-`ka-GE`：格鲁吉亚语（格鲁吉亚）
-`el-GR`：希腊语（希腊）
-`gu-IN`：古吉拉特语（印度）
-`iw-IL`：希伯来语（以色列）
-`hi-IN`：印地语（印度）
-`hu-HU`：匈牙利语（匈牙利）
-`is-IS`：冰岛语（冰岛）
-`id-ID`：印度尼西亚语（印度尼西亚）
-`it-IT`：意大利语（意大利）
-`it-CH`：意大利语（瑞士）
-`ja-JP`：日语（日本）
-`jv-ID`：爪哇语（印度尼西亚）
-`kn-IN`：卡纳达语（印度）
-`kk-KZ`：哈萨克语（哈萨克斯坦）
-`km-KH`：高棉语（柬埔寨）
-`rw-RW`：卢旺达语（卢旺达）
-`ko-KR`：韩语（韩国）
-`lo-LA`：老挝语（老挝）
-`lv-LV`：拉脱维亚语（拉脱维亚）
-`lt-LT`：立陶宛语（立陶宛）
-`mk-MK`：马其顿语（北马其顿）
-`ms-MY`：马来语（马来西亚）
-`ml-IN`：马拉雅拉姆语（印度）
-`mr-IN`：马拉地语（印度）
-`mn-MN`：蒙古语（蒙古）
-`ne-NP`：尼泊尔语（尼泊尔）
-`no-NO`：博克马尔挪威语（挪威）
-`fa-IR`：波斯语（伊朗）
-`pl-PL`：波兰语（波兰）
-`pt-BR`：葡萄牙语（巴西）
-`pt-PT`：葡萄牙语（葡萄牙）
-`ro-RO`：罗马尼亚语（罗马尼亚）
-`ru-RU`：俄语（俄罗斯）
-`sr-RS`：塞尔维亚语（塞尔维亚）
-`si-LK`：僧伽罗语（斯里兰卡）
-`sk-SK`：斯洛伐克语（斯洛伐克）
-`sl-SI`：斯洛文尼亚语（斯洛文尼亚）
-`st-ZA`：南索托语（南非）
-`es-AR`：西班牙语（阿根廷）
-`es-BO`：西班牙语（玻利维亚）
-`es-CL`：西班牙语（智利）
-`es-CO`：西班牙语（哥伦比亚）
-`es-CR`：西班牙语（哥斯达黎加）
-`es-DO`：西班牙语（多米尼加共和国）
-`es-EC`：西班牙语（厄瓜多尔）
-`es-SV`：西班牙语（萨尔瓦多）
-`es-GT`：西班牙语（危地马拉）
-`es-HN`：西班牙语（洪都拉斯）
-`es-MX`：西班牙语（墨西哥）
-`es-NI`：西班牙语（尼加拉瓜）
-`es-PA`：西班牙语（巴拿马）
-`es-PY`：西班牙语（巴拉圭）
-`es-PE`：西班牙语（秘鲁）
-`es-PR`：西班牙语（波多黎各）
-`es-ES`：西班牙语（西班牙）
-`es-US`：西班牙语（美国）
-`es-UY`：西班牙语（乌拉圭）
-`es-VE`：西班牙语（委内瑞拉）
-`su-ID`：巽他语（印度尼西亚）
-`sw-KE`：斯瓦希里语（肯尼亚）
-`sw-TZ`：斯瓦希里语（坦桑尼亚）
-`sv-SE`：瑞典语（瑞典）
-`ta-IN`：泰米尔语（印度）
-`ta-MY`：泰米尔语（马来西亚）
-`ta-SG`：泰米尔语（新加坡）
-`ta-LK`：泰米尔语（斯里兰卡）
-`te-IN`：泰卢固语（印度）
-`th-TH`：泰语（泰国）
-`ts-ZA`：聪加语（南非）
-`tr-TR`：土耳其语（土耳其）
-`uk-UA`：乌克兰语（乌克兰）
-`ur-IN`：乌尔都语（印度）
-`ur-PK`：乌尔都语（巴基斯坦）
-`uz-UZ`：乌兹别克语（乌兹别克斯坦）
-`ve-ZA`：文达语（南非）
-`vi-VN`：越南语（越南）
-`xh-ZA`：科萨语（南非）
-`zu-ZA`：祖鲁语（南非）
-
+        :param _VideoSrcLanguage: <p>智能字幕视频源语言<br>OCR识别仅支持以下语言：<br><code>zh_en</code>：中英<br><code>multi</code>：其他<br>ASR识别和纯字幕翻译当前支持以下语言：<br><code>auto</code>：自动识别<br><code>zh</code>：简体中文<br><code>en</code>：英语<br><code>ja</code>：日语<br><code>ko</code>：韩语<br><code>zh-PY</code>：中英粤<br><code>zh_medical</code>：中文医疗<br><code>vi</code>：越南语<br><code>ms</code>：马来语<br><code>id</code>：印度尼西亚语<br><code>fil</code>：菲律宾语<br><code>th</code>：泰语<br><code>pt</code>：葡萄牙语<br><code>tr</code>：土耳其语<br><code>ar</code>：阿拉伯语<br><code>es</code>：西班牙语<br><code>hi</code>：印地语<br><code>fr</code>：法语<br><code>de</code>：德语<br><code>it</code>：意大利语<br><code>zh_dialect</code>：中文方言<br><code>zh_en</code>：中英<br><code>yue</code>：粤语<br><code>ru</code>：俄语<br><code>prime_zh</code>：中英方言<br><code>af-ZA</code>：南非荷兰语（南非）<br><code>sq-AL</code>：阿尔巴尼亚语（阿尔巴尼亚）<br><code>am-ET</code>：阿姆哈拉语（埃塞俄比亚）<br><code>ar-DZ</code>：阿拉伯语（阿尔及利亚）<br><code>ar-BH</code>：阿拉伯语（巴林）<br><code>ar-EG</code>：阿拉伯语（埃及）<br><code>ar-IQ</code>：阿拉伯语（伊拉克）<br><code>ar-IL</code>：阿拉伯语（以色列）<br><code>ar-JO</code>：阿拉伯语（约旦）<br><code>ar-KW</code>：阿拉伯语（科威特）<br><code>ar-LB</code>：阿拉伯语（黎巴嫩）<br><code>ar-MR</code>：阿拉伯语（毛里塔尼亚）<br><code>ar-MA</code>：阿拉伯语（摩洛哥）<br><code>ar-OM</code>：阿拉伯语（阿曼）<br><code>ar-QA</code>：阿拉伯语（卡塔尔）<br><code>ar-SA</code>：阿拉伯语（沙特阿拉伯）<br><code>ar-PS</code>：阿拉伯语（巴勒斯坦国）<br><code>ar-SY</code>：阿拉伯语（叙利亚）<br><code>ar-TN</code>：阿拉伯语（突尼斯）<br><code>ar-AE</code>：阿拉伯语（阿拉伯联合酋长国）<br><code>ar-YE</code>：阿拉伯语（也门）<br><code>hy-AM</code>：亚美尼亚语（亚美尼亚）<br><code>az-AZ</code>：阿塞拜疆语（阿塞拜疆）<br><code>eu-ES</code>：巴斯克语（西班牙）<br><code>bn-BD</code>：孟加拉语（孟加拉）<br><code>bn-IN</code>：孟加拉语（印度）<br><code>bs-BA</code>：波斯尼亚语（波斯尼亚和黑塞哥维那）<br><code>bg-BG</code>：保加利亚语（保加利亚）<br><code>my-MM</code>：缅甸语（缅甸）<br><code>ca-ES</code>：加泰罗尼亚语（西班牙）<br><code>hr-HR</code>：克罗地亚语（克罗地亚）<br><code>cs-CZ</code>：捷克语（捷克共和国）<br><code>da-DK</code>：丹麦语（丹麦）<br><code>nl-BE</code>：荷兰语（比利时）<br><code>nl-NL</code>：荷兰语（荷兰）<br><code>en-AU</code>：英语（澳大利亚）<br><code>en-CA</code>：英语（加拿大）<br><code>en-GH</code>：英语（加纳）<br><code>en-HK</code>：英语（中国香港）<br><code>en-IN</code>：英语（印度）<br><code>en-IE</code>：英语（爱尔兰）<br><code>en-KE</code>：英语（肯尼亚）<br><code>en-NZ</code>：英语（新西兰）<br><code>en-NG</code>：英语（尼日利亚）<br><code>en-PK</code>：英语（巴基斯坦）<br><code>en-PH</code>：英语（菲律宾）<br><code>en-SG</code>：英语（新加坡）<br><code>en-ZA</code>：英语（南非）<br><code>en-TZ</code>：英语（坦桑尼亚）<br><code>en-GB</code>：英语（英国）<br><code>en-US</code>：英语（美国）<br><code>et-EE</code>：爱沙尼亚语（爱沙尼亚）<br><code>fil-PH</code>：菲律宾语（菲律宾）<br><code>fi-FI</code>：芬兰语（芬兰）<br><code>fr-BE</code>：法语（比利时）<br><code>fr-CA</code>：法语（加拿大）<br><code>fr-FR</code>：法语（法国）<br><code>fr-CH</code>：法语（瑞士）<br><code>gl-ES</code>：加利西亚语（西班牙）<br><code>ka-GE</code>：格鲁吉亚语（格鲁吉亚）<br><code>el-GR</code>：希腊语（希腊）<br><code>gu-IN</code>：古吉拉特语（印度）<br><code>iw-IL</code>：希伯来语（以色列）<br><code>hi-IN</code>：印地语（印度）<br><code>hu-HU</code>：匈牙利语（匈牙利）<br><code>is-IS</code>：冰岛语（冰岛）<br><code>id-ID</code>：印度尼西亚语（印度尼西亚）<br><code>it-IT</code>：意大利语（意大利）<br><code>it-CH</code>：意大利语（瑞士）<br><code>ja-JP</code>：日语（日本）<br><code>jv-ID</code>：爪哇语（印度尼西亚）<br><code>kn-IN</code>：卡纳达语（印度）<br><code>kk-KZ</code>：哈萨克语（哈萨克斯坦）<br><code>km-KH</code>：高棉语（柬埔寨）<br><code>rw-RW</code>：卢旺达语（卢旺达）<br><code>ko-KR</code>：韩语（韩国）<br><code>lo-LA</code>：老挝语（老挝）<br><code>lv-LV</code>：拉脱维亚语（拉脱维亚）<br><code>lt-LT</code>：立陶宛语（立陶宛）<br><code>mk-MK</code>：马其顿语（北马其顿）<br><code>ms-MY</code>：马来语（马来西亚）<br><code>ml-IN</code>：马拉雅拉姆语（印度）<br><code>mr-IN</code>：马拉地语（印度）<br><code>mn-MN</code>：蒙古语（蒙古）<br><code>ne-NP</code>：尼泊尔语（尼泊尔）<br><code>no-NO</code>：博克马尔挪威语（挪威）<br><code>fa-IR</code>：波斯语（伊朗）<br><code>pl-PL</code>：波兰语（波兰）<br><code>pt-BR</code>：葡萄牙语（巴西）<br><code>pt-PT</code>：葡萄牙语（葡萄牙）<br><code>ro-RO</code>：罗马尼亚语（罗马尼亚）<br><code>ru-RU</code>：俄语（俄罗斯）<br><code>sr-RS</code>：塞尔维亚语（塞尔维亚）<br><code>si-LK</code>：僧伽罗语（斯里兰卡）<br><code>sk-SK</code>：斯洛伐克语（斯洛伐克）<br><code>sl-SI</code>：斯洛文尼亚语（斯洛文尼亚）<br><code>st-ZA</code>：南索托语（南非）<br><code>es-AR</code>：西班牙语（阿根廷）<br><code>es-BO</code>：西班牙语（玻利维亚）<br><code>es-CL</code>：西班牙语（智利）<br><code>es-CO</code>：西班牙语（哥伦比亚）<br><code>es-CR</code>：西班牙语（哥斯达黎加）<br><code>es-DO</code>：西班牙语（多米尼加共和国）<br><code>es-EC</code>：西班牙语（厄瓜多尔）<br><code>es-SV</code>：西班牙语（萨尔瓦多）<br><code>es-GT</code>：西班牙语（危地马拉）<br><code>es-HN</code>：西班牙语（洪都拉斯）<br><code>es-MX</code>：西班牙语（墨西哥）<br><code>es-NI</code>：西班牙语（尼加拉瓜）<br><code>es-PA</code>：西班牙语（巴拿马）<br><code>es-PY</code>：西班牙语（巴拉圭）<br><code>es-PE</code>：西班牙语（秘鲁）<br><code>es-PR</code>：西班牙语（波多黎各）<br><code>es-ES</code>：西班牙语（西班牙）<br><code>es-US</code>：西班牙语（美国）<br><code>es-UY</code>：西班牙语（乌拉圭）<br><code>es-VE</code>：西班牙语（委内瑞拉）<br><code>su-ID</code>：巽他语（印度尼西亚）<br><code>sw-KE</code>：斯瓦希里语（肯尼亚）<br><code>sw-TZ</code>：斯瓦希里语（坦桑尼亚）<br><code>sv-SE</code>：瑞典语（瑞典）<br><code>ta-IN</code>：泰米尔语（印度）<br><code>ta-MY</code>：泰米尔语（马来西亚）<br><code>ta-SG</code>：泰米尔语（新加坡）<br><code>ta-LK</code>：泰米尔语（斯里兰卡）<br><code>te-IN</code>：泰卢固语（印度）<br><code>th-TH</code>：泰语（泰国）<br><code>ts-ZA</code>：聪加语（南非）<br><code>tr-TR</code>：土耳其语（土耳其）<br><code>uk-UA</code>：乌克兰语（乌克兰）<br><code>ur-IN</code>：乌尔都语（印度）<br><code>ur-PK</code>：乌尔都语（巴基斯坦）<br><code>uz-UZ</code>：乌兹别克语（乌兹别克斯坦）<br><code>ve-ZA</code>：文达语（南非）<br><code>vi-VN</code>：越南语（越南）<br><code>xh-ZA</code>：科萨语（南非）<br><code>zu-ZA</code>：祖鲁语（南非）</p>
         :type VideoSrcLanguage: str
-        :param _SubtitleFormat: 智能字幕文件格式:
-- ASR识别翻译处理类型下：
-     - vtt: WebVTT 格式字幕
-     - srt: SRT 格式字幕
-     - 不填或填空：不生成字幕文件
-- 纯字幕翻译处理类型下：
-    - original：与源文件一致
-    - vtt: WebVTT 格式字幕
-    - srt: SRT 格式字幕
-- OCR识别翻译处理类型下：
-     - vtt: WebVTT 格式字幕
-     - srt: SRT 格式字幕
-
-**注意**：
-- ASR识别方式下，翻译大于等于2种语言时不允许传空或不传；
-- 纯字幕翻译和OCR识别翻译方式下，不允许传空或不传
+        :param _SubtitleFormat: <p>智能字幕文件格式:</p><ul><li>ASR识别翻译处理类型下：<ul><li>vtt: WebVTT 格式字幕</li><li>srt: SRT 格式字幕</li><li>不填或填空：不生成字幕文件</li></ul></li><li>纯字幕翻译处理类型下：<ul><li>original：与源文件一致</li><li>vtt: WebVTT 格式字幕</li><li>srt: SRT 格式字幕</li></ul></li><li>OCR识别翻译处理类型下：<ul><li>vtt: WebVTT 格式字幕</li><li>srt: SRT 格式字幕</li></ul></li></ul><p><strong>注意</strong>：</p><ul><li>ASR识别方式下，翻译大于等于2种语言时不允许传空或不传；</li><li>纯字幕翻译方式下，不允许传空或不传</li><li>OCR类型的任务，在开启压制时，允许不传或传空</li></ul>
         :type SubtitleFormat: str
-        :param _SubtitleType: 智能字幕字幕语言类型
-0: 源语言
-1: 翻译语言
-2: 源语言+翻译语言
-当TranslateSwitch为OFF时仅支持取0
-当TranslateSwitch为ON时仅支持取1或2
+        :param _SubtitleType: <p>智能字幕字幕语言类型<br>0: 源语言<br>1: 翻译语言<br>2: 源语言+翻译语言<br>当TranslateSwitch为OFF时仅支持取0<br>当TranslateSwitch为ON时仅支持取1或2</p>
         :type SubtitleType: int
-        :param _AsrHotWordsConfigure: ASR热词库参数
+        :param _AsrHotWordsConfigure: <p>ASR热词库参数</p>
         :type AsrHotWordsConfigure: :class:`tencentcloud.mps.v20190612.models.AsrHotWordsConfigure`
-        :param _TranslateDstLanguage: 字幕翻译目标语言
-当TranslateSwitch为ON的时候生效，翻译语言列表：
-`ab`：阿布哈兹语
-`ace`：亚齐语
-`ach`：阿乔利语
-`af`：南非荷兰语
-`ak`：契维语（阿坎语）
-`am`：Amharic
-`ar`：阿拉伯语
-`as`：阿萨姆语
-`ay`：艾马拉语
-`az`：阿塞拜疆语
-`ba`：巴什基尔语
-`ban`：巴厘语
-`bbc`：巴塔克托巴语
-`bem`：Bemba
-`bew`：Betawi
-`bg`：保加利亚语
-`bho`：博杰普尔语
-`bik`：Bikol
-`bm`：班巴拉语
-`bn`：孟加拉语
-`br`：布列塔尼语
-`bs`：波斯尼亚语
-`btx`：巴塔克卡罗语
-`bts`：巴塔克西马隆贡语
-`bua`：布里亚特语
-`ca`：加泰罗尼亚语
-`ceb`：宿务语
-`cgg`：Kiga
-`chm`：草原马里语
-`ckb`：库尔德语（索拉尼语）
-`cnh`：哈卡钦语
-`co`：科西嘉语
-`crh`：克里米亚鞑靼语
-`crs`：塞舌尔克里奥尔语
-`cs`：捷克语
-`cv`：楚瓦什语
-`cy`：威尔士语
-`da`：丹麦语
-`de`：德语
-`din`：Dinka
-`doi`：多格来语
-`dov`：敦贝语
-`dv`：第维埃语
-`dz`：宗卡语
-`ee`：Ewe
-`el`：希腊语
-`en`：英语
-`eo`：世界语
-`es`：西班牙语
-`et`：爱沙尼亚语
-`eu`：巴斯克语
-`fa`：波斯语
-`ff`：富拉语
-`fi`：芬兰语
-`fil`：菲律宾语（塔加拉语）
-`fj`：斐济语
-`fr`：法语
-`fr-CA`：法语（加拿大）
-`fr-FR`：法语（法国）
-`fy`：弗里斯兰语
-`ga`：爱尔兰语
-`gaa`：加 (Ga) 语
-`gd`：苏格兰盖尔语
-`gl`：加利西亚语
-`gn`：瓜拉尼语
-`gom`：贡根语
-`gu`：古吉拉特语
-`gv`：马恩岛语
-`ha`：Hausa
-`haw`：夏威夷语
-`he`：希伯来语
-`hi`：印地语
-`hil`：希利盖农语
-`hmn`：苗语
-`hr`：克罗地亚语
-`hrx`：洪斯吕克语
-`ht`：海地克里奥尔语
-`hu`：匈牙利语
-`hy`：亚美尼亚语
-`id`：印度尼西亚语
-`ig`：Igbo
-`ilo`：伊洛果语
-`is`：冰岛语
-`it`：意大利语
-`iw`：希伯来语
-`ja`：日语
-`jv`：爪哇语
-`ka`：格鲁吉亚语
-`kk`：哈萨克语
-`km`：高棉语
-`kn`：卡纳达语
-`ko`：韩语
-`kri`：Krio
-`ku`：库尔德语（库尔曼吉语）
-`ktu`：吉土巴语
-`ky`：吉尔吉斯语
-`la`：拉丁语
-`lb`：卢森堡语
-`lg`：干达语（卢干达语）
-`li`：林堡语
-`lij`：利古里亚语
-`lmo`：伦巴第语
-`ln`：林加拉语
-`lo`：老挝语
-`lt`：立陶宛语
-`ltg`：拉特加莱语
-`luo`：Luo
-`lus`：米佐语
-`lv`：拉脱维亚语
-`mai`：迈蒂利语
-`mak`：马卡萨
-`mg`：马尔加什语
-`mi`：毛利语
-`min`：米南语
-`mk`：马其顿语
-`ml`：马拉雅拉姆语
-`mn`：蒙古语
-`mr`：马拉地语
-`ms`：马来语
-`mt`：马耳他语
-`my`：缅甸语
-`ne`：尼泊尔语
-`new`：尼瓦尔语
-`nl`：荷兰语
-`no`：挪威语
-`nr`：恩德贝莱语（南部）
-`nso`：北索托语（塞佩蒂语）
-`nus`：努尔语
-`ny`：齐切瓦语（尼扬贾语）
-`oc`：奥克斯坦语
-`om`：Oromo
-`or`：奥里亚语
-`pa`：旁遮普语
-`pag`：邦阿西楠语
-`pam`：邦板牙语
-`pap`：Papiamento
-`pl`：波兰语
-`ps`：Pashto
-`pt`：葡萄牙语
-`pt-BR`：葡萄牙语（巴西）
-`pt-PT`：葡萄牙语（葡萄牙）
-`qu`：克丘亚语
-`ro`：罗马尼亚语
-`rom`：罗姆语
-`rn`：Rundi
-`ru`：俄语
-`rw`：卢旺达语
-`sa`：梵语
-`scn`：西西里语
-`sd`：信德语
-`sg`：Sango
-`shn`：掸语
-`si`：僧伽罗语
-`sk`：斯洛伐克语
-`sl`：斯洛文尼亚语
-`sm`：萨摩亚语
-`sn`：修纳语
-`so`：索马里语
-`sq`：阿尔巴尼亚语
-`sr`：塞尔维亚语
-`ss`：斯瓦特语
-`st`：塞索托语
-`su`：巽他语
-`sv`：瑞典语
-`sw`：斯瓦希里语
-`szl`：西里西亚语
-`ta`：泰米尔语
-`te`：泰卢固语
-`tet`：德顿语
-`tg`：塔吉克语
-`th`：泰语
-`ti`：提格里尼亚语
-`tk`：土库曼语
-`tn`：茨瓦纳语
-`tr`：土耳其语
-`ts`：聪加语
-`tt`：鞑靼语
-`ug`：维吾尔语
-`uk`：乌克兰语
-`ur`：乌尔都语
-`uz`：乌兹别克语
-`vi`：越南语
-`xh`：科萨语
-`yi`：意第绪语
-`yo`：约鲁巴语
-`yua`：尤卡坦玛雅语
-`yue`：粤语
-`zh`：简体中文
-`zh-TW`：中文（繁体）
-`zu`：祖鲁语
-
-**注意**：多语言方式，则使用 `/` 分割，如：`en/ja`，表示英语和日语。
+        :param _TranslateDstLanguage: <p>字幕翻译目标语言<br>当TranslateSwitch为ON的时候生效，翻译语言列表：<br><code>ab</code>：阿布哈兹语<br><code>ace</code>：亚齐语<br><code>ach</code>：阿乔利语<br><code>af</code>：南非荷兰语<br><code>ak</code>：契维语（阿坎语）<br><code>am</code>：Amharic<br><code>ar</code>：阿拉伯语<br><code>as</code>：阿萨姆语<br><code>ay</code>：艾马拉语<br><code>az</code>：阿塞拜疆语<br><code>ba</code>：巴什基尔语<br><code>ban</code>：巴厘语<br><code>bbc</code>：巴塔克托巴语<br><code>bem</code>：Bemba<br><code>bew</code>：Betawi<br><code>bg</code>：保加利亚语<br><code>bho</code>：博杰普尔语<br><code>bik</code>：Bikol<br><code>bm</code>：班巴拉语<br><code>bn</code>：孟加拉语<br><code>br</code>：布列塔尼语<br><code>bs</code>：波斯尼亚语<br><code>btx</code>：巴塔克卡罗语<br><code>bts</code>：巴塔克西马隆贡语<br><code>bua</code>：布里亚特语<br><code>ca</code>：加泰罗尼亚语<br><code>ceb</code>：宿务语<br><code>cgg</code>：Kiga<br><code>chm</code>：草原马里语<br><code>ckb</code>：库尔德语（索拉尼语）<br><code>cnh</code>：哈卡钦语<br><code>co</code>：科西嘉语<br><code>crh</code>：克里米亚鞑靼语<br><code>crs</code>：塞舌尔克里奥尔语<br><code>cs</code>：捷克语<br><code>cv</code>：楚瓦什语<br><code>cy</code>：威尔士语<br><code>da</code>：丹麦语<br><code>de</code>：德语<br><code>din</code>：Dinka<br><code>doi</code>：多格来语<br><code>dov</code>：敦贝语<br><code>dv</code>：第维埃语<br><code>dz</code>：宗卡语<br><code>ee</code>：Ewe<br><code>el</code>：希腊语<br><code>en</code>：英语<br><code>eo</code>：世界语<br><code>es</code>：西班牙语<br><code>et</code>：爱沙尼亚语<br><code>eu</code>：巴斯克语<br><code>fa</code>：波斯语<br><code>ff</code>：富拉语<br><code>fi</code>：芬兰语<br><code>fil</code>：菲律宾语（塔加拉语）<br><code>fj</code>：斐济语<br><code>fr</code>：法语<br><code>fr-CA</code>：法语（加拿大）<br><code>fr-FR</code>：法语（法国）<br><code>fy</code>：弗里斯兰语<br><code>ga</code>：爱尔兰语<br><code>gaa</code>：加 (Ga) 语<br><code>gd</code>：苏格兰盖尔语<br><code>gl</code>：加利西亚语<br><code>gn</code>：瓜拉尼语<br><code>gom</code>：贡根语<br><code>gu</code>：古吉拉特语<br><code>gv</code>：马恩岛语<br><code>ha</code>：Hausa<br><code>haw</code>：夏威夷语<br><code>he</code>：希伯来语<br><code>hi</code>：印地语<br><code>hil</code>：希利盖农语<br><code>hmn</code>：苗语<br><code>hr</code>：克罗地亚语<br><code>hrx</code>：洪斯吕克语<br><code>ht</code>：海地克里奥尔语<br><code>hu</code>：匈牙利语<br><code>hy</code>：亚美尼亚语<br><code>id</code>：印度尼西亚语<br><code>ig</code>：Igbo<br><code>ilo</code>：伊洛果语<br><code>is</code>：冰岛语<br><code>it</code>：意大利语<br><code>iw</code>：希伯来语<br><code>ja</code>：日语<br><code>jv</code>：爪哇语<br><code>ka</code>：格鲁吉亚语<br><code>kk</code>：哈萨克语<br><code>km</code>：高棉语<br><code>kn</code>：卡纳达语<br><code>ko</code>：韩语<br><code>kri</code>：Krio<br><code>ku</code>：库尔德语（库尔曼吉语）<br><code>ktu</code>：吉土巴语<br><code>ky</code>：吉尔吉斯语<br><code>la</code>：拉丁语<br><code>lb</code>：卢森堡语<br><code>lg</code>：干达语（卢干达语）<br><code>li</code>：林堡语<br><code>lij</code>：利古里亚语<br><code>lmo</code>：伦巴第语<br><code>ln</code>：林加拉语<br><code>lo</code>：老挝语<br><code>lt</code>：立陶宛语<br><code>ltg</code>：拉特加莱语<br><code>luo</code>：Luo<br><code>lus</code>：米佐语<br><code>lv</code>：拉脱维亚语<br><code>mai</code>：迈蒂利语<br><code>mak</code>：马卡萨<br><code>mg</code>：马尔加什语<br><code>mi</code>：毛利语<br><code>min</code>：米南语<br><code>mk</code>：马其顿语<br><code>ml</code>：马拉雅拉姆语<br><code>mn</code>：蒙古语<br><code>mr</code>：马拉地语<br><code>ms</code>：马来语<br><code>mt</code>：马耳他语<br><code>my</code>：缅甸语<br><code>ne</code>：尼泊尔语<br><code>new</code>：尼瓦尔语<br><code>nl</code>：荷兰语<br><code>no</code>：挪威语<br><code>nr</code>：恩德贝莱语（南部）<br><code>nso</code>：北索托语（塞佩蒂语）<br><code>nus</code>：努尔语<br><code>ny</code>：齐切瓦语（尼扬贾语）<br><code>oc</code>：奥克斯坦语<br><code>om</code>：Oromo<br><code>or</code>：奥里亚语<br><code>pa</code>：旁遮普语<br><code>pag</code>：邦阿西楠语<br><code>pam</code>：邦板牙语<br><code>pap</code>：Papiamento<br><code>pl</code>：波兰语<br><code>ps</code>：Pashto<br><code>pt</code>：葡萄牙语<br><code>pt-BR</code>：葡萄牙语（巴西）<br><code>pt-PT</code>：葡萄牙语（葡萄牙）<br><code>qu</code>：克丘亚语<br><code>ro</code>：罗马尼亚语<br><code>rom</code>：罗姆语<br><code>rn</code>：Rundi<br><code>ru</code>：俄语<br><code>rw</code>：卢旺达语<br><code>sa</code>：梵语<br><code>scn</code>：西西里语<br><code>sd</code>：信德语<br><code>sg</code>：Sango<br><code>shn</code>：掸语<br><code>si</code>：僧伽罗语<br><code>sk</code>：斯洛伐克语<br><code>sl</code>：斯洛文尼亚语<br><code>sm</code>：萨摩亚语<br><code>sn</code>：修纳语<br><code>so</code>：索马里语<br><code>sq</code>：阿尔巴尼亚语<br><code>sr</code>：塞尔维亚语<br><code>ss</code>：斯瓦特语<br><code>st</code>：塞索托语<br><code>su</code>：巽他语<br><code>sv</code>：瑞典语<br><code>sw</code>：斯瓦希里语<br><code>szl</code>：西里西亚语<br><code>ta</code>：泰米尔语<br><code>te</code>：泰卢固语<br><code>tet</code>：德顿语<br><code>tg</code>：塔吉克语<br><code>th</code>：泰语<br><code>ti</code>：提格里尼亚语<br><code>tk</code>：土库曼语<br><code>tn</code>：茨瓦纳语<br><code>tr</code>：土耳其语<br><code>ts</code>：聪加语<br><code>tt</code>：鞑靼语<br><code>ug</code>：维吾尔语<br><code>uk</code>：乌克兰语<br><code>ur</code>：乌尔都语<br><code>uz</code>：乌兹别克语<br><code>vi</code>：越南语<br><code>xh</code>：科萨语<br><code>yi</code>：意第绪语<br><code>yo</code>：约鲁巴语<br><code>yua</code>：尤卡坦玛雅语<br><code>yue</code>：粤语<br><code>zh</code>：简体中文<br><code>zh-TW</code>：中文（繁体）<br><code>zu</code>：祖鲁语</p><p><strong>注意</strong>：多语言方式，则使用 <code>/</code> 分割，如：<code>en/ja</code>，表示英语和日语。</p>
         :type TranslateDstLanguage: str
-        :param _ProcessType: 字幕处理类型：
-- 0：ASR识别字幕
-- 1：纯字幕翻译
-- 2：OCR识别字幕
-
-**注意**：不传的情况下，默认是ASR方式
+        :param _ProcessType: <p>字幕处理类型：</p><ul><li>0：ASR识别字幕</li><li>1：纯字幕翻译</li><li>2：OCR识别字幕</li></ul><p><strong>注意</strong>：不传的情况下，默认是ASR方式</p>
         :type ProcessType: int
-        :param _SelectingSubtitleAreasConfig: 字幕OCR提取框选区域配置
+        :param _SelectingSubtitleAreasConfig: <p>字幕OCR提取框选区域配置</p>
         :type SelectingSubtitleAreasConfig: :class:`tencentcloud.mps.v20190612.models.SelectingSubtitleAreasConfig`
+        :param _SubtitleEmbedId: <p>压制模板id，只有ProcessType为0或2（任务类型为ASR或OCR）时才允许填写。开启多个翻译语言时，不允许填写。</p>
+        :type SubtitleEmbedId: int
         """
         self._Definition = None
         self._TranslateSwitch = None
@@ -56705,10 +55871,11 @@ ASR识别和纯字幕翻译当前支持以下语言：
         self._TranslateDstLanguage = None
         self._ProcessType = None
         self._SelectingSubtitleAreasConfig = None
+        self._SubtitleEmbedId = None
 
     @property
     def Definition(self):
-        r"""智能字幕模板唯一标识
+        r"""<p>智能字幕模板唯一标识</p>
         :rtype: int
         """
         return self._Definition
@@ -56719,11 +55886,7 @@ ASR识别和纯字幕翻译当前支持以下语言：
 
     @property
     def TranslateSwitch(self):
-        r"""字幕翻译开关
-`ON`: 开启翻译
-`OFF`: 关闭翻译
-
-**注意**：纯字幕翻译方式下，不传默认是打开的，不允许传空或`OFF`；
+        r"""<p>字幕翻译开关<br><code>ON</code>: 开启翻译<br><code>OFF</code>: 关闭翻译</p><p><strong>注意</strong>：纯字幕翻译方式下，不传默认是打开的，不允许传空或<code>OFF</code>；</p>
         :rtype: str
         """
         return self._TranslateSwitch
@@ -56734,8 +55897,7 @@ ASR识别和纯字幕翻译当前支持以下语言：
 
     @property
     def Name(self):
-        r"""智能字幕模板名称
-长度限制：64 个字符。
+        r"""<p>智能字幕模板名称<br>长度限制：64 个字符。</p>
         :rtype: str
         """
         return self._Name
@@ -56746,8 +55908,7 @@ ASR识别和纯字幕翻译当前支持以下语言：
 
     @property
     def Comment(self):
-        r"""智能字幕模板描述信息
-长度限制：256 个字符。
+        r"""<p>智能字幕模板描述信息<br>长度限制：256 个字符。</p>
         :rtype: str
         """
         return self._Comment
@@ -56758,174 +55919,7 @@ ASR识别和纯字幕翻译当前支持以下语言：
 
     @property
     def VideoSrcLanguage(self):
-        r"""智能字幕视频源语言
-OCR识别仅支持以下语言：
-`zh_en`：中英
-`multi`：其他
-ASR识别和纯字幕翻译当前支持以下语言：
-`auto`：自动识别（仅在纯字幕翻译中支持）
-`zh`：简体中文
-`en`：英语
-`ja`：日语
-`ko`：韩语
-`zh-PY`：中英粤
-`zh_medical`：中文医疗
-`vi`：越南语
-`ms`：马来语
-`id`：印度尼西亚语
-`fil`：菲律宾语
-`th`：泰语
-`pt`：葡萄牙语
-`tr`：土耳其语
-`ar`：阿拉伯语
-`es`：西班牙语
-`hi`：印地语
-`fr`：法语
-`de`：德语
-`it`：意大利语
-`zh_dialect`：中文方言
-`zh_en`：中英
-`yue`：粤语
-`ru`：俄语
-`prime_zh`：中英方言
-`af-ZA`：南非荷兰语（南非）
-`sq-AL`：阿尔巴尼亚语（阿尔巴尼亚）
-`am-ET`：阿姆哈拉语（埃塞俄比亚）
-`ar-DZ`：阿拉伯语（阿尔及利亚）
-`ar-BH`：阿拉伯语（巴林）
-`ar-EG`：阿拉伯语（埃及）
-`ar-IQ`：阿拉伯语（伊拉克）
-`ar-IL`：阿拉伯语（以色列）
-`ar-JO`：阿拉伯语（约旦）
-`ar-KW`：阿拉伯语（科威特）
-`ar-LB`：阿拉伯语（黎巴嫩）
-`ar-MR`：阿拉伯语（毛里塔尼亚）
-`ar-MA`：阿拉伯语（摩洛哥）
-`ar-OM`：阿拉伯语（阿曼）
-`ar-QA`：阿拉伯语（卡塔尔）
-`ar-SA`：阿拉伯语（沙特阿拉伯）
-`ar-PS`：阿拉伯语（巴勒斯坦国）
-`ar-SY`：阿拉伯语（叙利亚）
-`ar-TN`：阿拉伯语（突尼斯）
-`ar-AE`：阿拉伯语（阿拉伯联合酋长国）
-`ar-YE`：阿拉伯语（也门）
-`hy-AM`：亚美尼亚语（亚美尼亚）
-`az-AZ`：阿塞拜疆语（阿塞拜疆）
-`eu-ES`：巴斯克语（西班牙）
-`bn-BD`：孟加拉语（孟加拉）
-`bn-IN`：孟加拉语（印度）
-`bs-BA`：波斯尼亚语（波斯尼亚和黑塞哥维那）
-`bg-BG`：保加利亚语（保加利亚）
-`my-MM`：缅甸语（缅甸）
-`ca-ES`：加泰罗尼亚语（西班牙）
-`hr-HR`：克罗地亚语（克罗地亚）
-`cs-CZ`：捷克语（捷克共和国）
-`da-DK`：丹麦语（丹麦）
-`nl-BE`：荷兰语（比利时）
-`nl-NL`：荷兰语（荷兰）
-`en-AU`：英语（澳大利亚）
-`en-CA`：英语（加拿大）
-`en-GH`：英语（加纳）
-`en-HK`：英语（中国香港）
-`en-IN`：英语（印度）
-`en-IE`：英语（爱尔兰）
-`en-KE`：英语（肯尼亚）
-`en-NZ`：英语（新西兰）
-`en-NG`：英语（尼日利亚）
-`en-PK`：英语（巴基斯坦）
-`en-PH`：英语（菲律宾）
-`en-SG`：英语（新加坡）
-`en-ZA`：英语（南非）
-`en-TZ`：英语（坦桑尼亚）
-`en-GB`：英语（英国）
-`en-US`：英语（美国）
-`et-EE`：爱沙尼亚语（爱沙尼亚）
-`fil-PH`：菲律宾语（菲律宾）
-`fi-FI`：芬兰语（芬兰）
-`fr-BE`：法语（比利时）
-`fr-CA`：法语（加拿大）
-`fr-FR`：法语（法国）
-`fr-CH`：法语（瑞士）
-`gl-ES`：加利西亚语（西班牙）
-`ka-GE`：格鲁吉亚语（格鲁吉亚）
-`el-GR`：希腊语（希腊）
-`gu-IN`：古吉拉特语（印度）
-`iw-IL`：希伯来语（以色列）
-`hi-IN`：印地语（印度）
-`hu-HU`：匈牙利语（匈牙利）
-`is-IS`：冰岛语（冰岛）
-`id-ID`：印度尼西亚语（印度尼西亚）
-`it-IT`：意大利语（意大利）
-`it-CH`：意大利语（瑞士）
-`ja-JP`：日语（日本）
-`jv-ID`：爪哇语（印度尼西亚）
-`kn-IN`：卡纳达语（印度）
-`kk-KZ`：哈萨克语（哈萨克斯坦）
-`km-KH`：高棉语（柬埔寨）
-`rw-RW`：卢旺达语（卢旺达）
-`ko-KR`：韩语（韩国）
-`lo-LA`：老挝语（老挝）
-`lv-LV`：拉脱维亚语（拉脱维亚）
-`lt-LT`：立陶宛语（立陶宛）
-`mk-MK`：马其顿语（北马其顿）
-`ms-MY`：马来语（马来西亚）
-`ml-IN`：马拉雅拉姆语（印度）
-`mr-IN`：马拉地语（印度）
-`mn-MN`：蒙古语（蒙古）
-`ne-NP`：尼泊尔语（尼泊尔）
-`no-NO`：博克马尔挪威语（挪威）
-`fa-IR`：波斯语（伊朗）
-`pl-PL`：波兰语（波兰）
-`pt-BR`：葡萄牙语（巴西）
-`pt-PT`：葡萄牙语（葡萄牙）
-`ro-RO`：罗马尼亚语（罗马尼亚）
-`ru-RU`：俄语（俄罗斯）
-`sr-RS`：塞尔维亚语（塞尔维亚）
-`si-LK`：僧伽罗语（斯里兰卡）
-`sk-SK`：斯洛伐克语（斯洛伐克）
-`sl-SI`：斯洛文尼亚语（斯洛文尼亚）
-`st-ZA`：南索托语（南非）
-`es-AR`：西班牙语（阿根廷）
-`es-BO`：西班牙语（玻利维亚）
-`es-CL`：西班牙语（智利）
-`es-CO`：西班牙语（哥伦比亚）
-`es-CR`：西班牙语（哥斯达黎加）
-`es-DO`：西班牙语（多米尼加共和国）
-`es-EC`：西班牙语（厄瓜多尔）
-`es-SV`：西班牙语（萨尔瓦多）
-`es-GT`：西班牙语（危地马拉）
-`es-HN`：西班牙语（洪都拉斯）
-`es-MX`：西班牙语（墨西哥）
-`es-NI`：西班牙语（尼加拉瓜）
-`es-PA`：西班牙语（巴拿马）
-`es-PY`：西班牙语（巴拉圭）
-`es-PE`：西班牙语（秘鲁）
-`es-PR`：西班牙语（波多黎各）
-`es-ES`：西班牙语（西班牙）
-`es-US`：西班牙语（美国）
-`es-UY`：西班牙语（乌拉圭）
-`es-VE`：西班牙语（委内瑞拉）
-`su-ID`：巽他语（印度尼西亚）
-`sw-KE`：斯瓦希里语（肯尼亚）
-`sw-TZ`：斯瓦希里语（坦桑尼亚）
-`sv-SE`：瑞典语（瑞典）
-`ta-IN`：泰米尔语（印度）
-`ta-MY`：泰米尔语（马来西亚）
-`ta-SG`：泰米尔语（新加坡）
-`ta-LK`：泰米尔语（斯里兰卡）
-`te-IN`：泰卢固语（印度）
-`th-TH`：泰语（泰国）
-`ts-ZA`：聪加语（南非）
-`tr-TR`：土耳其语（土耳其）
-`uk-UA`：乌克兰语（乌克兰）
-`ur-IN`：乌尔都语（印度）
-`ur-PK`：乌尔都语（巴基斯坦）
-`uz-UZ`：乌兹别克语（乌兹别克斯坦）
-`ve-ZA`：文达语（南非）
-`vi-VN`：越南语（越南）
-`xh-ZA`：科萨语（南非）
-`zu-ZA`：祖鲁语（南非）
-
+        r"""<p>智能字幕视频源语言<br>OCR识别仅支持以下语言：<br><code>zh_en</code>：中英<br><code>multi</code>：其他<br>ASR识别和纯字幕翻译当前支持以下语言：<br><code>auto</code>：自动识别<br><code>zh</code>：简体中文<br><code>en</code>：英语<br><code>ja</code>：日语<br><code>ko</code>：韩语<br><code>zh-PY</code>：中英粤<br><code>zh_medical</code>：中文医疗<br><code>vi</code>：越南语<br><code>ms</code>：马来语<br><code>id</code>：印度尼西亚语<br><code>fil</code>：菲律宾语<br><code>th</code>：泰语<br><code>pt</code>：葡萄牙语<br><code>tr</code>：土耳其语<br><code>ar</code>：阿拉伯语<br><code>es</code>：西班牙语<br><code>hi</code>：印地语<br><code>fr</code>：法语<br><code>de</code>：德语<br><code>it</code>：意大利语<br><code>zh_dialect</code>：中文方言<br><code>zh_en</code>：中英<br><code>yue</code>：粤语<br><code>ru</code>：俄语<br><code>prime_zh</code>：中英方言<br><code>af-ZA</code>：南非荷兰语（南非）<br><code>sq-AL</code>：阿尔巴尼亚语（阿尔巴尼亚）<br><code>am-ET</code>：阿姆哈拉语（埃塞俄比亚）<br><code>ar-DZ</code>：阿拉伯语（阿尔及利亚）<br><code>ar-BH</code>：阿拉伯语（巴林）<br><code>ar-EG</code>：阿拉伯语（埃及）<br><code>ar-IQ</code>：阿拉伯语（伊拉克）<br><code>ar-IL</code>：阿拉伯语（以色列）<br><code>ar-JO</code>：阿拉伯语（约旦）<br><code>ar-KW</code>：阿拉伯语（科威特）<br><code>ar-LB</code>：阿拉伯语（黎巴嫩）<br><code>ar-MR</code>：阿拉伯语（毛里塔尼亚）<br><code>ar-MA</code>：阿拉伯语（摩洛哥）<br><code>ar-OM</code>：阿拉伯语（阿曼）<br><code>ar-QA</code>：阿拉伯语（卡塔尔）<br><code>ar-SA</code>：阿拉伯语（沙特阿拉伯）<br><code>ar-PS</code>：阿拉伯语（巴勒斯坦国）<br><code>ar-SY</code>：阿拉伯语（叙利亚）<br><code>ar-TN</code>：阿拉伯语（突尼斯）<br><code>ar-AE</code>：阿拉伯语（阿拉伯联合酋长国）<br><code>ar-YE</code>：阿拉伯语（也门）<br><code>hy-AM</code>：亚美尼亚语（亚美尼亚）<br><code>az-AZ</code>：阿塞拜疆语（阿塞拜疆）<br><code>eu-ES</code>：巴斯克语（西班牙）<br><code>bn-BD</code>：孟加拉语（孟加拉）<br><code>bn-IN</code>：孟加拉语（印度）<br><code>bs-BA</code>：波斯尼亚语（波斯尼亚和黑塞哥维那）<br><code>bg-BG</code>：保加利亚语（保加利亚）<br><code>my-MM</code>：缅甸语（缅甸）<br><code>ca-ES</code>：加泰罗尼亚语（西班牙）<br><code>hr-HR</code>：克罗地亚语（克罗地亚）<br><code>cs-CZ</code>：捷克语（捷克共和国）<br><code>da-DK</code>：丹麦语（丹麦）<br><code>nl-BE</code>：荷兰语（比利时）<br><code>nl-NL</code>：荷兰语（荷兰）<br><code>en-AU</code>：英语（澳大利亚）<br><code>en-CA</code>：英语（加拿大）<br><code>en-GH</code>：英语（加纳）<br><code>en-HK</code>：英语（中国香港）<br><code>en-IN</code>：英语（印度）<br><code>en-IE</code>：英语（爱尔兰）<br><code>en-KE</code>：英语（肯尼亚）<br><code>en-NZ</code>：英语（新西兰）<br><code>en-NG</code>：英语（尼日利亚）<br><code>en-PK</code>：英语（巴基斯坦）<br><code>en-PH</code>：英语（菲律宾）<br><code>en-SG</code>：英语（新加坡）<br><code>en-ZA</code>：英语（南非）<br><code>en-TZ</code>：英语（坦桑尼亚）<br><code>en-GB</code>：英语（英国）<br><code>en-US</code>：英语（美国）<br><code>et-EE</code>：爱沙尼亚语（爱沙尼亚）<br><code>fil-PH</code>：菲律宾语（菲律宾）<br><code>fi-FI</code>：芬兰语（芬兰）<br><code>fr-BE</code>：法语（比利时）<br><code>fr-CA</code>：法语（加拿大）<br><code>fr-FR</code>：法语（法国）<br><code>fr-CH</code>：法语（瑞士）<br><code>gl-ES</code>：加利西亚语（西班牙）<br><code>ka-GE</code>：格鲁吉亚语（格鲁吉亚）<br><code>el-GR</code>：希腊语（希腊）<br><code>gu-IN</code>：古吉拉特语（印度）<br><code>iw-IL</code>：希伯来语（以色列）<br><code>hi-IN</code>：印地语（印度）<br><code>hu-HU</code>：匈牙利语（匈牙利）<br><code>is-IS</code>：冰岛语（冰岛）<br><code>id-ID</code>：印度尼西亚语（印度尼西亚）<br><code>it-IT</code>：意大利语（意大利）<br><code>it-CH</code>：意大利语（瑞士）<br><code>ja-JP</code>：日语（日本）<br><code>jv-ID</code>：爪哇语（印度尼西亚）<br><code>kn-IN</code>：卡纳达语（印度）<br><code>kk-KZ</code>：哈萨克语（哈萨克斯坦）<br><code>km-KH</code>：高棉语（柬埔寨）<br><code>rw-RW</code>：卢旺达语（卢旺达）<br><code>ko-KR</code>：韩语（韩国）<br><code>lo-LA</code>：老挝语（老挝）<br><code>lv-LV</code>：拉脱维亚语（拉脱维亚）<br><code>lt-LT</code>：立陶宛语（立陶宛）<br><code>mk-MK</code>：马其顿语（北马其顿）<br><code>ms-MY</code>：马来语（马来西亚）<br><code>ml-IN</code>：马拉雅拉姆语（印度）<br><code>mr-IN</code>：马拉地语（印度）<br><code>mn-MN</code>：蒙古语（蒙古）<br><code>ne-NP</code>：尼泊尔语（尼泊尔）<br><code>no-NO</code>：博克马尔挪威语（挪威）<br><code>fa-IR</code>：波斯语（伊朗）<br><code>pl-PL</code>：波兰语（波兰）<br><code>pt-BR</code>：葡萄牙语（巴西）<br><code>pt-PT</code>：葡萄牙语（葡萄牙）<br><code>ro-RO</code>：罗马尼亚语（罗马尼亚）<br><code>ru-RU</code>：俄语（俄罗斯）<br><code>sr-RS</code>：塞尔维亚语（塞尔维亚）<br><code>si-LK</code>：僧伽罗语（斯里兰卡）<br><code>sk-SK</code>：斯洛伐克语（斯洛伐克）<br><code>sl-SI</code>：斯洛文尼亚语（斯洛文尼亚）<br><code>st-ZA</code>：南索托语（南非）<br><code>es-AR</code>：西班牙语（阿根廷）<br><code>es-BO</code>：西班牙语（玻利维亚）<br><code>es-CL</code>：西班牙语（智利）<br><code>es-CO</code>：西班牙语（哥伦比亚）<br><code>es-CR</code>：西班牙语（哥斯达黎加）<br><code>es-DO</code>：西班牙语（多米尼加共和国）<br><code>es-EC</code>：西班牙语（厄瓜多尔）<br><code>es-SV</code>：西班牙语（萨尔瓦多）<br><code>es-GT</code>：西班牙语（危地马拉）<br><code>es-HN</code>：西班牙语（洪都拉斯）<br><code>es-MX</code>：西班牙语（墨西哥）<br><code>es-NI</code>：西班牙语（尼加拉瓜）<br><code>es-PA</code>：西班牙语（巴拿马）<br><code>es-PY</code>：西班牙语（巴拉圭）<br><code>es-PE</code>：西班牙语（秘鲁）<br><code>es-PR</code>：西班牙语（波多黎各）<br><code>es-ES</code>：西班牙语（西班牙）<br><code>es-US</code>：西班牙语（美国）<br><code>es-UY</code>：西班牙语（乌拉圭）<br><code>es-VE</code>：西班牙语（委内瑞拉）<br><code>su-ID</code>：巽他语（印度尼西亚）<br><code>sw-KE</code>：斯瓦希里语（肯尼亚）<br><code>sw-TZ</code>：斯瓦希里语（坦桑尼亚）<br><code>sv-SE</code>：瑞典语（瑞典）<br><code>ta-IN</code>：泰米尔语（印度）<br><code>ta-MY</code>：泰米尔语（马来西亚）<br><code>ta-SG</code>：泰米尔语（新加坡）<br><code>ta-LK</code>：泰米尔语（斯里兰卡）<br><code>te-IN</code>：泰卢固语（印度）<br><code>th-TH</code>：泰语（泰国）<br><code>ts-ZA</code>：聪加语（南非）<br><code>tr-TR</code>：土耳其语（土耳其）<br><code>uk-UA</code>：乌克兰语（乌克兰）<br><code>ur-IN</code>：乌尔都语（印度）<br><code>ur-PK</code>：乌尔都语（巴基斯坦）<br><code>uz-UZ</code>：乌兹别克语（乌兹别克斯坦）<br><code>ve-ZA</code>：文达语（南非）<br><code>vi-VN</code>：越南语（越南）<br><code>xh-ZA</code>：科萨语（南非）<br><code>zu-ZA</code>：祖鲁语（南非）</p>
         :rtype: str
         """
         return self._VideoSrcLanguage
@@ -56936,22 +55930,7 @@ ASR识别和纯字幕翻译当前支持以下语言：
 
     @property
     def SubtitleFormat(self):
-        r"""智能字幕文件格式:
-- ASR识别翻译处理类型下：
-     - vtt: WebVTT 格式字幕
-     - srt: SRT 格式字幕
-     - 不填或填空：不生成字幕文件
-- 纯字幕翻译处理类型下：
-    - original：与源文件一致
-    - vtt: WebVTT 格式字幕
-    - srt: SRT 格式字幕
-- OCR识别翻译处理类型下：
-     - vtt: WebVTT 格式字幕
-     - srt: SRT 格式字幕
-
-**注意**：
-- ASR识别方式下，翻译大于等于2种语言时不允许传空或不传；
-- 纯字幕翻译和OCR识别翻译方式下，不允许传空或不传
+        r"""<p>智能字幕文件格式:</p><ul><li>ASR识别翻译处理类型下：<ul><li>vtt: WebVTT 格式字幕</li><li>srt: SRT 格式字幕</li><li>不填或填空：不生成字幕文件</li></ul></li><li>纯字幕翻译处理类型下：<ul><li>original：与源文件一致</li><li>vtt: WebVTT 格式字幕</li><li>srt: SRT 格式字幕</li></ul></li><li>OCR识别翻译处理类型下：<ul><li>vtt: WebVTT 格式字幕</li><li>srt: SRT 格式字幕</li></ul></li></ul><p><strong>注意</strong>：</p><ul><li>ASR识别方式下，翻译大于等于2种语言时不允许传空或不传；</li><li>纯字幕翻译方式下，不允许传空或不传</li><li>OCR类型的任务，在开启压制时，允许不传或传空</li></ul>
         :rtype: str
         """
         return self._SubtitleFormat
@@ -56962,12 +55941,7 @@ ASR识别和纯字幕翻译当前支持以下语言：
 
     @property
     def SubtitleType(self):
-        r"""智能字幕字幕语言类型
-0: 源语言
-1: 翻译语言
-2: 源语言+翻译语言
-当TranslateSwitch为OFF时仅支持取0
-当TranslateSwitch为ON时仅支持取1或2
+        r"""<p>智能字幕字幕语言类型<br>0: 源语言<br>1: 翻译语言<br>2: 源语言+翻译语言<br>当TranslateSwitch为OFF时仅支持取0<br>当TranslateSwitch为ON时仅支持取1或2</p>
         :rtype: int
         """
         return self._SubtitleType
@@ -56978,7 +55952,7 @@ ASR识别和纯字幕翻译当前支持以下语言：
 
     @property
     def AsrHotWordsConfigure(self):
-        r"""ASR热词库参数
+        r"""<p>ASR热词库参数</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.AsrHotWordsConfigure`
         """
         return self._AsrHotWordsConfigure
@@ -56989,200 +55963,7 @@ ASR识别和纯字幕翻译当前支持以下语言：
 
     @property
     def TranslateDstLanguage(self):
-        r"""字幕翻译目标语言
-当TranslateSwitch为ON的时候生效，翻译语言列表：
-`ab`：阿布哈兹语
-`ace`：亚齐语
-`ach`：阿乔利语
-`af`：南非荷兰语
-`ak`：契维语（阿坎语）
-`am`：Amharic
-`ar`：阿拉伯语
-`as`：阿萨姆语
-`ay`：艾马拉语
-`az`：阿塞拜疆语
-`ba`：巴什基尔语
-`ban`：巴厘语
-`bbc`：巴塔克托巴语
-`bem`：Bemba
-`bew`：Betawi
-`bg`：保加利亚语
-`bho`：博杰普尔语
-`bik`：Bikol
-`bm`：班巴拉语
-`bn`：孟加拉语
-`br`：布列塔尼语
-`bs`：波斯尼亚语
-`btx`：巴塔克卡罗语
-`bts`：巴塔克西马隆贡语
-`bua`：布里亚特语
-`ca`：加泰罗尼亚语
-`ceb`：宿务语
-`cgg`：Kiga
-`chm`：草原马里语
-`ckb`：库尔德语（索拉尼语）
-`cnh`：哈卡钦语
-`co`：科西嘉语
-`crh`：克里米亚鞑靼语
-`crs`：塞舌尔克里奥尔语
-`cs`：捷克语
-`cv`：楚瓦什语
-`cy`：威尔士语
-`da`：丹麦语
-`de`：德语
-`din`：Dinka
-`doi`：多格来语
-`dov`：敦贝语
-`dv`：第维埃语
-`dz`：宗卡语
-`ee`：Ewe
-`el`：希腊语
-`en`：英语
-`eo`：世界语
-`es`：西班牙语
-`et`：爱沙尼亚语
-`eu`：巴斯克语
-`fa`：波斯语
-`ff`：富拉语
-`fi`：芬兰语
-`fil`：菲律宾语（塔加拉语）
-`fj`：斐济语
-`fr`：法语
-`fr-CA`：法语（加拿大）
-`fr-FR`：法语（法国）
-`fy`：弗里斯兰语
-`ga`：爱尔兰语
-`gaa`：加 (Ga) 语
-`gd`：苏格兰盖尔语
-`gl`：加利西亚语
-`gn`：瓜拉尼语
-`gom`：贡根语
-`gu`：古吉拉特语
-`gv`：马恩岛语
-`ha`：Hausa
-`haw`：夏威夷语
-`he`：希伯来语
-`hi`：印地语
-`hil`：希利盖农语
-`hmn`：苗语
-`hr`：克罗地亚语
-`hrx`：洪斯吕克语
-`ht`：海地克里奥尔语
-`hu`：匈牙利语
-`hy`：亚美尼亚语
-`id`：印度尼西亚语
-`ig`：Igbo
-`ilo`：伊洛果语
-`is`：冰岛语
-`it`：意大利语
-`iw`：希伯来语
-`ja`：日语
-`jv`：爪哇语
-`ka`：格鲁吉亚语
-`kk`：哈萨克语
-`km`：高棉语
-`kn`：卡纳达语
-`ko`：韩语
-`kri`：Krio
-`ku`：库尔德语（库尔曼吉语）
-`ktu`：吉土巴语
-`ky`：吉尔吉斯语
-`la`：拉丁语
-`lb`：卢森堡语
-`lg`：干达语（卢干达语）
-`li`：林堡语
-`lij`：利古里亚语
-`lmo`：伦巴第语
-`ln`：林加拉语
-`lo`：老挝语
-`lt`：立陶宛语
-`ltg`：拉特加莱语
-`luo`：Luo
-`lus`：米佐语
-`lv`：拉脱维亚语
-`mai`：迈蒂利语
-`mak`：马卡萨
-`mg`：马尔加什语
-`mi`：毛利语
-`min`：米南语
-`mk`：马其顿语
-`ml`：马拉雅拉姆语
-`mn`：蒙古语
-`mr`：马拉地语
-`ms`：马来语
-`mt`：马耳他语
-`my`：缅甸语
-`ne`：尼泊尔语
-`new`：尼瓦尔语
-`nl`：荷兰语
-`no`：挪威语
-`nr`：恩德贝莱语（南部）
-`nso`：北索托语（塞佩蒂语）
-`nus`：努尔语
-`ny`：齐切瓦语（尼扬贾语）
-`oc`：奥克斯坦语
-`om`：Oromo
-`or`：奥里亚语
-`pa`：旁遮普语
-`pag`：邦阿西楠语
-`pam`：邦板牙语
-`pap`：Papiamento
-`pl`：波兰语
-`ps`：Pashto
-`pt`：葡萄牙语
-`pt-BR`：葡萄牙语（巴西）
-`pt-PT`：葡萄牙语（葡萄牙）
-`qu`：克丘亚语
-`ro`：罗马尼亚语
-`rom`：罗姆语
-`rn`：Rundi
-`ru`：俄语
-`rw`：卢旺达语
-`sa`：梵语
-`scn`：西西里语
-`sd`：信德语
-`sg`：Sango
-`shn`：掸语
-`si`：僧伽罗语
-`sk`：斯洛伐克语
-`sl`：斯洛文尼亚语
-`sm`：萨摩亚语
-`sn`：修纳语
-`so`：索马里语
-`sq`：阿尔巴尼亚语
-`sr`：塞尔维亚语
-`ss`：斯瓦特语
-`st`：塞索托语
-`su`：巽他语
-`sv`：瑞典语
-`sw`：斯瓦希里语
-`szl`：西里西亚语
-`ta`：泰米尔语
-`te`：泰卢固语
-`tet`：德顿语
-`tg`：塔吉克语
-`th`：泰语
-`ti`：提格里尼亚语
-`tk`：土库曼语
-`tn`：茨瓦纳语
-`tr`：土耳其语
-`ts`：聪加语
-`tt`：鞑靼语
-`ug`：维吾尔语
-`uk`：乌克兰语
-`ur`：乌尔都语
-`uz`：乌兹别克语
-`vi`：越南语
-`xh`：科萨语
-`yi`：意第绪语
-`yo`：约鲁巴语
-`yua`：尤卡坦玛雅语
-`yue`：粤语
-`zh`：简体中文
-`zh-TW`：中文（繁体）
-`zu`：祖鲁语
-
-**注意**：多语言方式，则使用 `/` 分割，如：`en/ja`，表示英语和日语。
+        r"""<p>字幕翻译目标语言<br>当TranslateSwitch为ON的时候生效，翻译语言列表：<br><code>ab</code>：阿布哈兹语<br><code>ace</code>：亚齐语<br><code>ach</code>：阿乔利语<br><code>af</code>：南非荷兰语<br><code>ak</code>：契维语（阿坎语）<br><code>am</code>：Amharic<br><code>ar</code>：阿拉伯语<br><code>as</code>：阿萨姆语<br><code>ay</code>：艾马拉语<br><code>az</code>：阿塞拜疆语<br><code>ba</code>：巴什基尔语<br><code>ban</code>：巴厘语<br><code>bbc</code>：巴塔克托巴语<br><code>bem</code>：Bemba<br><code>bew</code>：Betawi<br><code>bg</code>：保加利亚语<br><code>bho</code>：博杰普尔语<br><code>bik</code>：Bikol<br><code>bm</code>：班巴拉语<br><code>bn</code>：孟加拉语<br><code>br</code>：布列塔尼语<br><code>bs</code>：波斯尼亚语<br><code>btx</code>：巴塔克卡罗语<br><code>bts</code>：巴塔克西马隆贡语<br><code>bua</code>：布里亚特语<br><code>ca</code>：加泰罗尼亚语<br><code>ceb</code>：宿务语<br><code>cgg</code>：Kiga<br><code>chm</code>：草原马里语<br><code>ckb</code>：库尔德语（索拉尼语）<br><code>cnh</code>：哈卡钦语<br><code>co</code>：科西嘉语<br><code>crh</code>：克里米亚鞑靼语<br><code>crs</code>：塞舌尔克里奥尔语<br><code>cs</code>：捷克语<br><code>cv</code>：楚瓦什语<br><code>cy</code>：威尔士语<br><code>da</code>：丹麦语<br><code>de</code>：德语<br><code>din</code>：Dinka<br><code>doi</code>：多格来语<br><code>dov</code>：敦贝语<br><code>dv</code>：第维埃语<br><code>dz</code>：宗卡语<br><code>ee</code>：Ewe<br><code>el</code>：希腊语<br><code>en</code>：英语<br><code>eo</code>：世界语<br><code>es</code>：西班牙语<br><code>et</code>：爱沙尼亚语<br><code>eu</code>：巴斯克语<br><code>fa</code>：波斯语<br><code>ff</code>：富拉语<br><code>fi</code>：芬兰语<br><code>fil</code>：菲律宾语（塔加拉语）<br><code>fj</code>：斐济语<br><code>fr</code>：法语<br><code>fr-CA</code>：法语（加拿大）<br><code>fr-FR</code>：法语（法国）<br><code>fy</code>：弗里斯兰语<br><code>ga</code>：爱尔兰语<br><code>gaa</code>：加 (Ga) 语<br><code>gd</code>：苏格兰盖尔语<br><code>gl</code>：加利西亚语<br><code>gn</code>：瓜拉尼语<br><code>gom</code>：贡根语<br><code>gu</code>：古吉拉特语<br><code>gv</code>：马恩岛语<br><code>ha</code>：Hausa<br><code>haw</code>：夏威夷语<br><code>he</code>：希伯来语<br><code>hi</code>：印地语<br><code>hil</code>：希利盖农语<br><code>hmn</code>：苗语<br><code>hr</code>：克罗地亚语<br><code>hrx</code>：洪斯吕克语<br><code>ht</code>：海地克里奥尔语<br><code>hu</code>：匈牙利语<br><code>hy</code>：亚美尼亚语<br><code>id</code>：印度尼西亚语<br><code>ig</code>：Igbo<br><code>ilo</code>：伊洛果语<br><code>is</code>：冰岛语<br><code>it</code>：意大利语<br><code>iw</code>：希伯来语<br><code>ja</code>：日语<br><code>jv</code>：爪哇语<br><code>ka</code>：格鲁吉亚语<br><code>kk</code>：哈萨克语<br><code>km</code>：高棉语<br><code>kn</code>：卡纳达语<br><code>ko</code>：韩语<br><code>kri</code>：Krio<br><code>ku</code>：库尔德语（库尔曼吉语）<br><code>ktu</code>：吉土巴语<br><code>ky</code>：吉尔吉斯语<br><code>la</code>：拉丁语<br><code>lb</code>：卢森堡语<br><code>lg</code>：干达语（卢干达语）<br><code>li</code>：林堡语<br><code>lij</code>：利古里亚语<br><code>lmo</code>：伦巴第语<br><code>ln</code>：林加拉语<br><code>lo</code>：老挝语<br><code>lt</code>：立陶宛语<br><code>ltg</code>：拉特加莱语<br><code>luo</code>：Luo<br><code>lus</code>：米佐语<br><code>lv</code>：拉脱维亚语<br><code>mai</code>：迈蒂利语<br><code>mak</code>：马卡萨<br><code>mg</code>：马尔加什语<br><code>mi</code>：毛利语<br><code>min</code>：米南语<br><code>mk</code>：马其顿语<br><code>ml</code>：马拉雅拉姆语<br><code>mn</code>：蒙古语<br><code>mr</code>：马拉地语<br><code>ms</code>：马来语<br><code>mt</code>：马耳他语<br><code>my</code>：缅甸语<br><code>ne</code>：尼泊尔语<br><code>new</code>：尼瓦尔语<br><code>nl</code>：荷兰语<br><code>no</code>：挪威语<br><code>nr</code>：恩德贝莱语（南部）<br><code>nso</code>：北索托语（塞佩蒂语）<br><code>nus</code>：努尔语<br><code>ny</code>：齐切瓦语（尼扬贾语）<br><code>oc</code>：奥克斯坦语<br><code>om</code>：Oromo<br><code>or</code>：奥里亚语<br><code>pa</code>：旁遮普语<br><code>pag</code>：邦阿西楠语<br><code>pam</code>：邦板牙语<br><code>pap</code>：Papiamento<br><code>pl</code>：波兰语<br><code>ps</code>：Pashto<br><code>pt</code>：葡萄牙语<br><code>pt-BR</code>：葡萄牙语（巴西）<br><code>pt-PT</code>：葡萄牙语（葡萄牙）<br><code>qu</code>：克丘亚语<br><code>ro</code>：罗马尼亚语<br><code>rom</code>：罗姆语<br><code>rn</code>：Rundi<br><code>ru</code>：俄语<br><code>rw</code>：卢旺达语<br><code>sa</code>：梵语<br><code>scn</code>：西西里语<br><code>sd</code>：信德语<br><code>sg</code>：Sango<br><code>shn</code>：掸语<br><code>si</code>：僧伽罗语<br><code>sk</code>：斯洛伐克语<br><code>sl</code>：斯洛文尼亚语<br><code>sm</code>：萨摩亚语<br><code>sn</code>：修纳语<br><code>so</code>：索马里语<br><code>sq</code>：阿尔巴尼亚语<br><code>sr</code>：塞尔维亚语<br><code>ss</code>：斯瓦特语<br><code>st</code>：塞索托语<br><code>su</code>：巽他语<br><code>sv</code>：瑞典语<br><code>sw</code>：斯瓦希里语<br><code>szl</code>：西里西亚语<br><code>ta</code>：泰米尔语<br><code>te</code>：泰卢固语<br><code>tet</code>：德顿语<br><code>tg</code>：塔吉克语<br><code>th</code>：泰语<br><code>ti</code>：提格里尼亚语<br><code>tk</code>：土库曼语<br><code>tn</code>：茨瓦纳语<br><code>tr</code>：土耳其语<br><code>ts</code>：聪加语<br><code>tt</code>：鞑靼语<br><code>ug</code>：维吾尔语<br><code>uk</code>：乌克兰语<br><code>ur</code>：乌尔都语<br><code>uz</code>：乌兹别克语<br><code>vi</code>：越南语<br><code>xh</code>：科萨语<br><code>yi</code>：意第绪语<br><code>yo</code>：约鲁巴语<br><code>yua</code>：尤卡坦玛雅语<br><code>yue</code>：粤语<br><code>zh</code>：简体中文<br><code>zh-TW</code>：中文（繁体）<br><code>zu</code>：祖鲁语</p><p><strong>注意</strong>：多语言方式，则使用 <code>/</code> 分割，如：<code>en/ja</code>，表示英语和日语。</p>
         :rtype: str
         """
         return self._TranslateDstLanguage
@@ -57193,12 +55974,7 @@ ASR识别和纯字幕翻译当前支持以下语言：
 
     @property
     def ProcessType(self):
-        r"""字幕处理类型：
-- 0：ASR识别字幕
-- 1：纯字幕翻译
-- 2：OCR识别字幕
-
-**注意**：不传的情况下，默认是ASR方式
+        r"""<p>字幕处理类型：</p><ul><li>0：ASR识别字幕</li><li>1：纯字幕翻译</li><li>2：OCR识别字幕</li></ul><p><strong>注意</strong>：不传的情况下，默认是ASR方式</p>
         :rtype: int
         """
         return self._ProcessType
@@ -57209,7 +55985,7 @@ ASR识别和纯字幕翻译当前支持以下语言：
 
     @property
     def SelectingSubtitleAreasConfig(self):
-        r"""字幕OCR提取框选区域配置
+        r"""<p>字幕OCR提取框选区域配置</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.SelectingSubtitleAreasConfig`
         """
         return self._SelectingSubtitleAreasConfig
@@ -57217,6 +55993,17 @@ ASR识别和纯字幕翻译当前支持以下语言：
     @SelectingSubtitleAreasConfig.setter
     def SelectingSubtitleAreasConfig(self, SelectingSubtitleAreasConfig):
         self._SelectingSubtitleAreasConfig = SelectingSubtitleAreasConfig
+
+    @property
+    def SubtitleEmbedId(self):
+        r"""<p>压制模板id，只有ProcessType为0或2（任务类型为ASR或OCR）时才允许填写。开启多个翻译语言时，不允许填写。</p>
+        :rtype: int
+        """
+        return self._SubtitleEmbedId
+
+    @SubtitleEmbedId.setter
+    def SubtitleEmbedId(self, SubtitleEmbedId):
+        self._SubtitleEmbedId = SubtitleEmbedId
 
 
     def _deserialize(self, params):
@@ -57235,6 +56022,7 @@ ASR识别和纯字幕翻译当前支持以下语言：
         if params.get("SelectingSubtitleAreasConfig") is not None:
             self._SelectingSubtitleAreasConfig = SelectingSubtitleAreasConfig()
             self._SelectingSubtitleAreasConfig._deserialize(params.get("SelectingSubtitleAreasConfig"))
+        self._SubtitleEmbedId = params.get("SubtitleEmbedId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -57915,6 +56703,117 @@ class ModifyStreamLinkSecurityGroupRequest(AbstractModel):
 
 class ModifyStreamLinkSecurityGroupResponse(AbstractModel):
     r"""ModifyStreamLinkSecurityGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifySubtitleEmbedTemplateRequest(AbstractModel):
+    r"""ModifySubtitleEmbedTemplate请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: <p>字幕压制模板唯一标识</p>
+        :type Definition: int
+        :param _Name: <p>字幕压制名称<br>长度限制：64 个字符。</p>
+        :type Name: str
+        :param _Comment: <p>字幕压制模板描述信息<br>长度限制：256 个字符。</p>
+        :type Comment: str
+        :param _SubtitleEmbedConfig: <p>字幕压制相关配置</p>
+        :type SubtitleEmbedConfig: :class:`tencentcloud.mps.v20190612.models.SubtitleEmbedConfig`
+        """
+        self._Definition = None
+        self._Name = None
+        self._Comment = None
+        self._SubtitleEmbedConfig = None
+
+    @property
+    def Definition(self):
+        r"""<p>字幕压制模板唯一标识</p>
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def Name(self):
+        r"""<p>字幕压制名称<br>长度限制：64 个字符。</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Comment(self):
+        r"""<p>字幕压制模板描述信息<br>长度限制：256 个字符。</p>
+        :rtype: str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def SubtitleEmbedConfig(self):
+        r"""<p>字幕压制相关配置</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SubtitleEmbedConfig`
+        """
+        return self._SubtitleEmbedConfig
+
+    @SubtitleEmbedConfig.setter
+    def SubtitleEmbedConfig(self, SubtitleEmbedConfig):
+        self._SubtitleEmbedConfig = SubtitleEmbedConfig
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        self._Name = params.get("Name")
+        self._Comment = params.get("Comment")
+        if params.get("SubtitleEmbedConfig") is not None:
+            self._SubtitleEmbedConfig = SubtitleEmbedConfig()
+            self._SubtitleEmbedConfig._deserialize(params.get("SubtitleEmbedConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifySubtitleEmbedTemplateResponse(AbstractModel):
+    r"""ModifySubtitleEmbedTemplate返回参数结构体
 
     """
 
@@ -59083,32 +57982,26 @@ class OverrideEraseParameter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EraseType: 擦除类型
-- subtitle 去字幕
-- watermark 去水印
-- privacy 隐私保护
+        :param _EraseType: <p>擦除类型</p><ul><li>subtitle 去字幕</li><li>watermark 去水印</li><li>privacy 隐私保护</li></ul>
         :type EraseType: str
-        :param _EraseSubtitleConfig: 字幕擦除配置；
-当EraseType值为：subtitle，此字段为必填参数
+        :param _EraseSubtitleConfig: <p>字幕擦除配置；<br>当EraseType值为：subtitle，此字段为必填参数</p>
         :type EraseSubtitleConfig: :class:`tencentcloud.mps.v20190612.models.UpdateSmartEraseSubtitleConfig`
-        :param _EraseWatermarkConfig: 水印擦除配置；
-当EraseType值为：watermark，此字段为必填参数
+        :param _EraseWatermarkConfig: <p>水印擦除配置；<br>当EraseType值为：watermark，此字段为必填参数</p>
         :type EraseWatermarkConfig: :class:`tencentcloud.mps.v20190612.models.UpdateSmartEraseWatermarkConfig`
-        :param _ErasePrivacyConfig: 隐私保护配置；
-当EraseType值为：privacy，此字段为必填参数
+        :param _ErasePrivacyConfig: <p>隐私保护配置；<br>当EraseType值为：privacy，此字段为必填参数</p>
         :type ErasePrivacyConfig: :class:`tencentcloud.mps.v20190612.models.UpdateSmartErasePrivacyConfig`
+        :param _SubtitleEmbedId: <p>擦除压制字幕模板id。</p>
+        :type SubtitleEmbedId: int
         """
         self._EraseType = None
         self._EraseSubtitleConfig = None
         self._EraseWatermarkConfig = None
         self._ErasePrivacyConfig = None
+        self._SubtitleEmbedId = None
 
     @property
     def EraseType(self):
-        r"""擦除类型
-- subtitle 去字幕
-- watermark 去水印
-- privacy 隐私保护
+        r"""<p>擦除类型</p><ul><li>subtitle 去字幕</li><li>watermark 去水印</li><li>privacy 隐私保护</li></ul>
         :rtype: str
         """
         return self._EraseType
@@ -59119,8 +58012,7 @@ class OverrideEraseParameter(AbstractModel):
 
     @property
     def EraseSubtitleConfig(self):
-        r"""字幕擦除配置；
-当EraseType值为：subtitle，此字段为必填参数
+        r"""<p>字幕擦除配置；<br>当EraseType值为：subtitle，此字段为必填参数</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.UpdateSmartEraseSubtitleConfig`
         """
         return self._EraseSubtitleConfig
@@ -59131,8 +58023,7 @@ class OverrideEraseParameter(AbstractModel):
 
     @property
     def EraseWatermarkConfig(self):
-        r"""水印擦除配置；
-当EraseType值为：watermark，此字段为必填参数
+        r"""<p>水印擦除配置；<br>当EraseType值为：watermark，此字段为必填参数</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.UpdateSmartEraseWatermarkConfig`
         """
         return self._EraseWatermarkConfig
@@ -59143,8 +58034,7 @@ class OverrideEraseParameter(AbstractModel):
 
     @property
     def ErasePrivacyConfig(self):
-        r"""隐私保护配置；
-当EraseType值为：privacy，此字段为必填参数
+        r"""<p>隐私保护配置；<br>当EraseType值为：privacy，此字段为必填参数</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.UpdateSmartErasePrivacyConfig`
         """
         return self._ErasePrivacyConfig
@@ -59152,6 +58042,17 @@ class OverrideEraseParameter(AbstractModel):
     @ErasePrivacyConfig.setter
     def ErasePrivacyConfig(self, ErasePrivacyConfig):
         self._ErasePrivacyConfig = ErasePrivacyConfig
+
+    @property
+    def SubtitleEmbedId(self):
+        r"""<p>擦除压制字幕模板id。</p>
+        :rtype: int
+        """
+        return self._SubtitleEmbedId
+
+    @SubtitleEmbedId.setter
+    def SubtitleEmbedId(self, SubtitleEmbedId):
+        self._SubtitleEmbedId = SubtitleEmbedId
 
 
     def _deserialize(self, params):
@@ -59165,6 +58066,7 @@ class OverrideEraseParameter(AbstractModel):
         if params.get("ErasePrivacyConfig") is not None:
             self._ErasePrivacyConfig = UpdateSmartErasePrivacyConfig()
             self._ErasePrivacyConfig._deserialize(params.get("ErasePrivacyConfig"))
+        self._SubtitleEmbedId = params.get("SubtitleEmbedId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -61591,7 +60493,7 @@ class ProcessLiveStreamRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Url: <p>直播流 URL（必须是直播流地址，支持 rtmp，hls 和 flv, trtc,webrtc,srt等）。<br>trtc地址如下：<br> trtc: //trtc.rtc.qq.com/mps/<code>&lt;roomid&gt;</code>?sdkappid=<code>&lt;sdkappid&gt;</code>&amp;userid=<code>&lt;userid&gt;</code>&amp;usersig=&lt;<code>usersig&gt;</code><br><code>&lt;roomid&gt;</code> 为trtc的房间号id, 为数字<br><code>&lt;sdkappid&gt;</code> 为trtc的sdk app id<br><code>&lt;userid&gt;</code> 为服务进入房间的用户id,可以区分谁是机器人<br>&lt;<code>usersig&gt;</code> 为trtc 用户的签名</p><p>webrtc 支持<a href="https://cloud.tencent.com/product/leb">LEB</a>的直播流，地址获取请<a href="https://cloud.tencent.com/document/product/267/32720">参考</a></p><p>srt支持地址请<a href="https://ffmpeg.org/ffmpeg-protocols.html#srt">参考</a></p>
+        :param _Url: <p>直播流 URL（必须是直播流地址，支持 rtmp，hls 和 flv, trtc,webrtc,srt等）。<br>trtc地址如下：<br> trtc://trtc.rtc.qq.com/mps/<code>&lt;roomid&gt;</code>?sdkappid=<code>&lt;sdkappid&gt;</code>&amp;userid=<code>&lt;userid&gt;</code>&amp;usersig=<code>&lt;usersig&gt;</code><br><code>&lt;roomid&gt;</code> 为trtc的房间号id, 为数字<br><code>&lt;sdkappid&gt;</code> 为trtc的sdk app id<br><code>&lt;userid&gt;</code> 为服务进入房间的用户id,可以区分谁是机器人<br><code>&lt;usersig&gt;</code> 为trtc 用户的签名</p><p>webrtc 支持<a href="https://cloud.tencent.com/product/leb">LEB</a>的直播流，地址获取请<a href="https://cloud.tencent.com/document/product/267/32720">参考</a></p><p>srt支持地址请<a href="https://ffmpeg.org/ffmpeg-protocols.html#srt">参考</a></p>
         :type Url: str
         :param _TaskNotifyConfig: <p>任务的事件通知信息，用于指定直播流处理的结果。</p>
         :type TaskNotifyConfig: :class:`tencentcloud.mps.v20190612.models.LiveStreamTaskNotifyConfig`
@@ -61634,7 +60536,7 @@ class ProcessLiveStreamRequest(AbstractModel):
 
     @property
     def Url(self):
-        r"""<p>直播流 URL（必须是直播流地址，支持 rtmp，hls 和 flv, trtc,webrtc,srt等）。<br>trtc地址如下：<br> trtc: //trtc.rtc.qq.com/mps/<code>&lt;roomid&gt;</code>?sdkappid=<code>&lt;sdkappid&gt;</code>&amp;userid=<code>&lt;userid&gt;</code>&amp;usersig=&lt;<code>usersig&gt;</code><br><code>&lt;roomid&gt;</code> 为trtc的房间号id, 为数字<br><code>&lt;sdkappid&gt;</code> 为trtc的sdk app id<br><code>&lt;userid&gt;</code> 为服务进入房间的用户id,可以区分谁是机器人<br>&lt;<code>usersig&gt;</code> 为trtc 用户的签名</p><p>webrtc 支持<a href="https://cloud.tencent.com/product/leb">LEB</a>的直播流，地址获取请<a href="https://cloud.tencent.com/document/product/267/32720">参考</a></p><p>srt支持地址请<a href="https://ffmpeg.org/ffmpeg-protocols.html#srt">参考</a></p>
+        r"""<p>直播流 URL（必须是直播流地址，支持 rtmp，hls 和 flv, trtc,webrtc,srt等）。<br>trtc地址如下：<br> trtc://trtc.rtc.qq.com/mps/<code>&lt;roomid&gt;</code>?sdkappid=<code>&lt;sdkappid&gt;</code>&amp;userid=<code>&lt;userid&gt;</code>&amp;usersig=<code>&lt;usersig&gt;</code><br><code>&lt;roomid&gt;</code> 为trtc的房间号id, 为数字<br><code>&lt;sdkappid&gt;</code> 为trtc的sdk app id<br><code>&lt;userid&gt;</code> 为服务进入房间的用户id,可以区分谁是机器人<br><code>&lt;usersig&gt;</code> 为trtc 用户的签名</p><p>webrtc 支持<a href="https://cloud.tencent.com/product/leb">LEB</a>的直播流，地址获取请<a href="https://cloud.tencent.com/document/product/267/32720">参考</a></p><p>srt支持地址请<a href="https://ffmpeg.org/ffmpeg-protocols.html#srt">参考</a></p>
         :rtype: str
         """
         return self._Url
@@ -63902,35 +62804,35 @@ class RawSmartEraseParameter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EraseType: 擦除类型
-- subtitle 去字幕
-- watermark 去水印
-- privacy 隐私保护
+        :param _EraseType: <p>擦除类型</p><ul><li>subtitle 去字幕</li><li>watermark 去水印</li><li>privacy 隐私保护</li></ul>
         :type EraseType: str
-        :param _EraseSubtitleConfig: 字幕擦除配置；
-当EraseType值为：subtitle，此字段为必填参数
+        :param _EraseSubtitleConfig: <p>字幕擦除配置；<br>当EraseType值为：subtitle，此字段为必填参数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type EraseSubtitleConfig: :class:`tencentcloud.mps.v20190612.models.SmartEraseSubtitleConfig`
-        :param _EraseWatermarkConfig: 水印擦除配置；
-当EraseType值为：watermark，此字段为必填参数
+        :param _EraseWatermarkConfig: <p>水印擦除配置；<br>当EraseType值为：watermark，此字段为必填参数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type EraseWatermarkConfig: :class:`tencentcloud.mps.v20190612.models.SmartEraseWatermarkConfig`
-        :param _ErasePrivacyConfig: 隐私保护配置；
-当EraseType值为：privacy，此字段为必填参数
+        :param _ErasePrivacyConfig: <p>隐私保护配置；<br>当EraseType值为：privacy，此字段为必填参数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErasePrivacyConfig: :class:`tencentcloud.mps.v20190612.models.SmartErasePrivacyConfig`
+        :param _SubtitleEmbedId: <p>擦除字幕压制模板id。</p>
+        :type SubtitleEmbedId: int
+        :param _UseOriginalPos: <p>压制配置，默认开启1, 把字幕压制回原字幕位置。</p>
+        :type UseOriginalPos: int
+        :param _UseOriginalSize: <p>压制配置，默认开启1, 开启后使用原字幕字号。</p>
+        :type UseOriginalSize: int
         """
         self._EraseType = None
         self._EraseSubtitleConfig = None
         self._EraseWatermarkConfig = None
         self._ErasePrivacyConfig = None
+        self._SubtitleEmbedId = None
+        self._UseOriginalPos = None
+        self._UseOriginalSize = None
 
     @property
     def EraseType(self):
-        r"""擦除类型
-- subtitle 去字幕
-- watermark 去水印
-- privacy 隐私保护
+        r"""<p>擦除类型</p><ul><li>subtitle 去字幕</li><li>watermark 去水印</li><li>privacy 隐私保护</li></ul>
         :rtype: str
         """
         return self._EraseType
@@ -63941,8 +62843,7 @@ class RawSmartEraseParameter(AbstractModel):
 
     @property
     def EraseSubtitleConfig(self):
-        r"""字幕擦除配置；
-当EraseType值为：subtitle，此字段为必填参数
+        r"""<p>字幕擦除配置；<br>当EraseType值为：subtitle，此字段为必填参数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.SmartEraseSubtitleConfig`
         """
@@ -63954,8 +62855,7 @@ class RawSmartEraseParameter(AbstractModel):
 
     @property
     def EraseWatermarkConfig(self):
-        r"""水印擦除配置；
-当EraseType值为：watermark，此字段为必填参数
+        r"""<p>水印擦除配置；<br>当EraseType值为：watermark，此字段为必填参数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.SmartEraseWatermarkConfig`
         """
@@ -63967,8 +62867,7 @@ class RawSmartEraseParameter(AbstractModel):
 
     @property
     def ErasePrivacyConfig(self):
-        r"""隐私保护配置；
-当EraseType值为：privacy，此字段为必填参数
+        r"""<p>隐私保护配置；<br>当EraseType值为：privacy，此字段为必填参数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.SmartErasePrivacyConfig`
         """
@@ -63977,6 +62876,39 @@ class RawSmartEraseParameter(AbstractModel):
     @ErasePrivacyConfig.setter
     def ErasePrivacyConfig(self, ErasePrivacyConfig):
         self._ErasePrivacyConfig = ErasePrivacyConfig
+
+    @property
+    def SubtitleEmbedId(self):
+        r"""<p>擦除字幕压制模板id。</p>
+        :rtype: int
+        """
+        return self._SubtitleEmbedId
+
+    @SubtitleEmbedId.setter
+    def SubtitleEmbedId(self, SubtitleEmbedId):
+        self._SubtitleEmbedId = SubtitleEmbedId
+
+    @property
+    def UseOriginalPos(self):
+        r"""<p>压制配置，默认开启1, 把字幕压制回原字幕位置。</p>
+        :rtype: int
+        """
+        return self._UseOriginalPos
+
+    @UseOriginalPos.setter
+    def UseOriginalPos(self, UseOriginalPos):
+        self._UseOriginalPos = UseOriginalPos
+
+    @property
+    def UseOriginalSize(self):
+        r"""<p>压制配置，默认开启1, 开启后使用原字幕字号。</p>
+        :rtype: int
+        """
+        return self._UseOriginalSize
+
+    @UseOriginalSize.setter
+    def UseOriginalSize(self, UseOriginalSize):
+        self._UseOriginalSize = UseOriginalSize
 
 
     def _deserialize(self, params):
@@ -63990,6 +62922,9 @@ class RawSmartEraseParameter(AbstractModel):
         if params.get("ErasePrivacyConfig") is not None:
             self._ErasePrivacyConfig = SmartErasePrivacyConfig()
             self._ErasePrivacyConfig._deserialize(params.get("ErasePrivacyConfig"))
+        self._SubtitleEmbedId = params.get("SubtitleEmbedId")
+        self._UseOriginalPos = params.get("UseOriginalPos")
+        self._UseOriginalSize = params.get("UseOriginalSize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -64007,418 +62942,31 @@ class RawSmartSubtitleParameter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubtitleType: 智能字幕字幕语言类型
-0: 源语言
-1: 翻译语言
-2: 源语言+翻译语言
-当TranslateSwitch为OFF时仅支持取0
-当TranslateSwitch为ON时仅支持取1或2
+        :param _SubtitleType: <p>智能字幕字幕语言类型<br>0: 源语言<br>1: 翻译语言<br>2: 源语言+翻译语言<br>当TranslateSwitch为OFF时仅支持取0<br>当TranslateSwitch为ON时仅支持取1或2</p>
         :type SubtitleType: int
-        :param _VideoSrcLanguage: 智能字幕视频源语言
-OCR识别仅支持以下语言：
-`zh_en`：中英
-`multi`：其他
-ASR识别和纯字幕翻译当前支持以下语言：
-`auto`：自动识别（仅在纯字幕翻译中支持）
-`zh`：简体中文
-`en`：英语
-`ja`：日语
-`ko`：韩语
-`zh-PY`：中英粤
-`zh_medical`：中文医疗
-`vi`：越南语
-`ms`：马来语
-`id`：印度尼西亚语
-`fil`：菲律宾语
-`th`：泰语
-`pt`：葡萄牙语
-`tr`：土耳其语
-`ar`：阿拉伯语
-`es`：西班牙语
-`hi`：印地语
-`fr`：法语
-`de`：德语
-`it`：意大利语
-`zh_dialect`：中文方言
-`zh_en`：中英
-`yue`：粤语
-`ru`：俄语
-`prime_zh`：中英方言
-`af-ZA`：南非荷兰语（南非）
-`sq-AL`：阿尔巴尼亚语（阿尔巴尼亚）
-`am-ET`：阿姆哈拉语（埃塞俄比亚）
-`ar-DZ`：阿拉伯语（阿尔及利亚）
-`ar-BH`：阿拉伯语（巴林）
-`ar-EG`：阿拉伯语（埃及）
-`ar-IQ`：阿拉伯语（伊拉克）
-`ar-IL`：阿拉伯语（以色列）
-`ar-JO`：阿拉伯语（约旦）
-`ar-KW`：阿拉伯语（科威特）
-`ar-LB`：阿拉伯语（黎巴嫩）
-`ar-MR`：阿拉伯语（毛里塔尼亚）
-`ar-MA`：阿拉伯语（摩洛哥）
-`ar-OM`：阿拉伯语（阿曼）
-`ar-QA`：阿拉伯语（卡塔尔）
-`ar-SA`：阿拉伯语（沙特阿拉伯）
-`ar-PS`：阿拉伯语（巴勒斯坦国）
-`ar-SY`：阿拉伯语（叙利亚）
-`ar-TN`：阿拉伯语（突尼斯）
-`ar-AE`：阿拉伯语（阿拉伯联合酋长国）
-`ar-YE`：阿拉伯语（也门）
-`hy-AM`：亚美尼亚语（亚美尼亚）
-`az-AZ`：阿塞拜疆语（阿塞拜疆）
-`eu-ES`：巴斯克语（西班牙）
-`bn-BD`：孟加拉语（孟加拉）
-`bn-IN`：孟加拉语（印度）
-`bs-BA`：波斯尼亚语（波斯尼亚和黑塞哥维那）
-`bg-BG`：保加利亚语（保加利亚）
-`my-MM`：缅甸语（缅甸）
-`ca-ES`：加泰罗尼亚语（西班牙）
-`hr-HR`：克罗地亚语（克罗地亚）
-`cs-CZ`：捷克语（捷克共和国）
-`da-DK`：丹麦语（丹麦）
-`nl-BE`：荷兰语（比利时）
-`nl-NL`：荷兰语（荷兰）
-`en-AU`：英语（澳大利亚）
-`en-CA`：英语（加拿大）
-`en-GH`：英语（加纳）
-`en-HK`：英语（中国香港）
-`en-IN`：英语（印度）
-`en-IE`：英语（爱尔兰）
-`en-KE`：英语（肯尼亚）
-`en-NZ`：英语（新西兰）
-`en-NG`：英语（尼日利亚）
-`en-PK`：英语（巴基斯坦）
-`en-PH`：英语（菲律宾）
-`en-SG`：英语（新加坡）
-`en-ZA`：英语（南非）
-`en-TZ`：英语（坦桑尼亚）
-`en-GB`：英语（英国）
-`en-US`：英语（美国）
-`et-EE`：爱沙尼亚语（爱沙尼亚）
-`fil-PH`：菲律宾语（菲律宾）
-`fi-FI`：芬兰语（芬兰）
-`fr-BE`：法语（比利时）
-`fr-CA`：法语（加拿大）
-`fr-FR`：法语（法国）
-`fr-CH`：法语（瑞士）
-`gl-ES`：加利西亚语（西班牙）
-`ka-GE`：格鲁吉亚语（格鲁吉亚）
-`el-GR`：希腊语（希腊）
-`gu-IN`：古吉拉特语（印度）
-`iw-IL`：希伯来语（以色列）
-`hi-IN`：印地语（印度）
-`hu-HU`：匈牙利语（匈牙利）
-`is-IS`：冰岛语（冰岛）
-`id-ID`：印度尼西亚语（印度尼西亚）
-`it-IT`：意大利语（意大利）
-`it-CH`：意大利语（瑞士）
-`ja-JP`：日语（日本）
-`jv-ID`：爪哇语（印度尼西亚）
-`kn-IN`：卡纳达语（印度）
-`kk-KZ`：哈萨克语（哈萨克斯坦）
-`km-KH`：高棉语（柬埔寨）
-`rw-RW`：卢旺达语（卢旺达）
-`ko-KR`：韩语（韩国）
-`lo-LA`：老挝语（老挝）
-`lv-LV`：拉脱维亚语（拉脱维亚）
-`lt-LT`：立陶宛语（立陶宛）
-`mk-MK`：马其顿语（北马其顿）
-`ms-MY`：马来语（马来西亚）
-`ml-IN`：马拉雅拉姆语（印度）
-`mr-IN`：马拉地语（印度）
-`mn-MN`：蒙古语（蒙古）
-`ne-NP`：尼泊尔语（尼泊尔）
-`no-NO`：博克马尔挪威语（挪威）
-`fa-IR`：波斯语（伊朗）
-`pl-PL`：波兰语（波兰）
-`pt-BR`：葡萄牙语（巴西）
-`pt-PT`：葡萄牙语（葡萄牙）
-`ro-RO`：罗马尼亚语（罗马尼亚）
-`ru-RU`：俄语（俄罗斯）
-`sr-RS`：塞尔维亚语（塞尔维亚）
-`si-LK`：僧伽罗语（斯里兰卡）
-`sk-SK`：斯洛伐克语（斯洛伐克）
-`sl-SI`：斯洛文尼亚语（斯洛文尼亚）
-`st-ZA`：南索托语（南非）
-`es-AR`：西班牙语（阿根廷）
-`es-BO`：西班牙语（玻利维亚）
-`es-CL`：西班牙语（智利）
-`es-CO`：西班牙语（哥伦比亚）
-`es-CR`：西班牙语（哥斯达黎加）
-`es-DO`：西班牙语（多米尼加共和国）
-`es-EC`：西班牙语（厄瓜多尔）
-`es-SV`：西班牙语（萨尔瓦多）
-`es-GT`：西班牙语（危地马拉）
-`es-HN`：西班牙语（洪都拉斯）
-`es-MX`：西班牙语（墨西哥）
-`es-NI`：西班牙语（尼加拉瓜）
-`es-PA`：西班牙语（巴拿马）
-`es-PY`：西班牙语（巴拉圭）
-`es-PE`：西班牙语（秘鲁）
-`es-PR`：西班牙语（波多黎各）
-`es-ES`：西班牙语（西班牙）
-`es-US`：西班牙语（美国）
-`es-UY`：西班牙语（乌拉圭）
-`es-VE`：西班牙语（委内瑞拉）
-`su-ID`：巽他语（印度尼西亚）
-`sw-KE`：斯瓦希里语（肯尼亚）
-`sw-TZ`：斯瓦希里语（坦桑尼亚）
-`sv-SE`：瑞典语（瑞典）
-`ta-IN`：泰米尔语（印度）
-`ta-MY`：泰米尔语（马来西亚）
-`ta-SG`：泰米尔语（新加坡）
-`ta-LK`：泰米尔语（斯里兰卡）
-`te-IN`：泰卢固语（印度）
-`th-TH`：泰语（泰国）
-`ts-ZA`：聪加语（南非）
-`tr-TR`：土耳其语（土耳其）
-`uk-UA`：乌克兰语（乌克兰）
-`ur-IN`：乌尔都语（印度）
-`ur-PK`：乌尔都语（巴基斯坦）
-`uz-UZ`：乌兹别克语（乌兹别克斯坦）
-`ve-ZA`：文达语（南非）
-`vi-VN`：越南语（越南）
-`xh-ZA`：科萨语（南非）
-`zu-ZA`：祖鲁语（南非）
-
+        :param _VideoSrcLanguage: <p>智能字幕视频源语言<br>OCR识别仅支持以下语言：<br><code>zh_en</code>：中英<br><code>multi</code>：其他<br>ASR识别和纯字幕翻译当前支持以下语言：<br><code>auto</code>：自动识别<br><code>zh</code>：简体中文<br><code>en</code>：英语<br><code>ja</code>：日语<br><code>ko</code>：韩语<br><code>zh-PY</code>：中英粤<br><code>zh_medical</code>：中文医疗<br><code>vi</code>：越南语<br><code>ms</code>：马来语<br><code>id</code>：印度尼西亚语<br><code>fil</code>：菲律宾语<br><code>th</code>：泰语<br><code>pt</code>：葡萄牙语<br><code>tr</code>：土耳其语<br><code>ar</code>：阿拉伯语<br><code>es</code>：西班牙语<br><code>hi</code>：印地语<br><code>fr</code>：法语<br><code>de</code>：德语<br><code>it</code>：意大利语<br><code>zh_dialect</code>：中文方言<br><code>zh_en</code>：中英<br><code>yue</code>：粤语<br><code>ru</code>：俄语<br><code>prime_zh</code>：中英方言<br><code>af-ZA</code>：南非荷兰语（南非）<br><code>sq-AL</code>：阿尔巴尼亚语（阿尔巴尼亚）<br><code>am-ET</code>：阿姆哈拉语（埃塞俄比亚）<br><code>ar-DZ</code>：阿拉伯语（阿尔及利亚）<br><code>ar-BH</code>：阿拉伯语（巴林）<br><code>ar-EG</code>：阿拉伯语（埃及）<br><code>ar-IQ</code>：阿拉伯语（伊拉克）<br><code>ar-IL</code>：阿拉伯语（以色列）<br><code>ar-JO</code>：阿拉伯语（约旦）<br><code>ar-KW</code>：阿拉伯语（科威特）<br><code>ar-LB</code>：阿拉伯语（黎巴嫩）<br><code>ar-MR</code>：阿拉伯语（毛里塔尼亚）<br><code>ar-MA</code>：阿拉伯语（摩洛哥）<br><code>ar-OM</code>：阿拉伯语（阿曼）<br><code>ar-QA</code>：阿拉伯语（卡塔尔）<br><code>ar-SA</code>：阿拉伯语（沙特阿拉伯）<br><code>ar-PS</code>：阿拉伯语（巴勒斯坦国）<br><code>ar-SY</code>：阿拉伯语（叙利亚）<br><code>ar-TN</code>：阿拉伯语（突尼斯）<br><code>ar-AE</code>：阿拉伯语（阿拉伯联合酋长国）<br><code>ar-YE</code>：阿拉伯语（也门）<br><code>hy-AM</code>：亚美尼亚语（亚美尼亚）<br><code>az-AZ</code>：阿塞拜疆语（阿塞拜疆）<br><code>eu-ES</code>：巴斯克语（西班牙）<br><code>bn-BD</code>：孟加拉语（孟加拉）<br><code>bn-IN</code>：孟加拉语（印度）<br><code>bs-BA</code>：波斯尼亚语（波斯尼亚和黑塞哥维那）<br><code>bg-BG</code>：保加利亚语（保加利亚）<br><code>my-MM</code>：缅甸语（缅甸）<br><code>ca-ES</code>：加泰罗尼亚语（西班牙）<br><code>hr-HR</code>：克罗地亚语（克罗地亚）<br><code>cs-CZ</code>：捷克语（捷克共和国）<br><code>da-DK</code>：丹麦语（丹麦）<br><code>nl-BE</code>：荷兰语（比利时）<br><code>nl-NL</code>：荷兰语（荷兰）<br><code>en-AU</code>：英语（澳大利亚）<br><code>en-CA</code>：英语（加拿大）<br><code>en-GH</code>：英语（加纳）<br><code>en-HK</code>：英语（中国香港）<br><code>en-IN</code>：英语（印度）<br><code>en-IE</code>：英语（爱尔兰）<br><code>en-KE</code>：英语（肯尼亚）<br><code>en-NZ</code>：英语（新西兰）<br><code>en-NG</code>：英语（尼日利亚）<br><code>en-PK</code>：英语（巴基斯坦）<br><code>en-PH</code>：英语（菲律宾）<br><code>en-SG</code>：英语（新加坡）<br><code>en-ZA</code>：英语（南非）<br><code>en-TZ</code>：英语（坦桑尼亚）<br><code>en-GB</code>：英语（英国）<br><code>en-US</code>：英语（美国）<br><code>et-EE</code>：爱沙尼亚语（爱沙尼亚）<br><code>fil-PH</code>：菲律宾语（菲律宾）<br><code>fi-FI</code>：芬兰语（芬兰）<br><code>fr-BE</code>：法语（比利时）<br><code>fr-CA</code>：法语（加拿大）<br><code>fr-FR</code>：法语（法国）<br><code>fr-CH</code>：法语（瑞士）<br><code>gl-ES</code>：加利西亚语（西班牙）<br><code>ka-GE</code>：格鲁吉亚语（格鲁吉亚）<br><code>el-GR</code>：希腊语（希腊）<br><code>gu-IN</code>：古吉拉特语（印度）<br><code>iw-IL</code>：希伯来语（以色列）<br><code>hi-IN</code>：印地语（印度）<br><code>hu-HU</code>：匈牙利语（匈牙利）<br><code>is-IS</code>：冰岛语（冰岛）<br><code>id-ID</code>：印度尼西亚语（印度尼西亚）<br><code>it-IT</code>：意大利语（意大利）<br><code>it-CH</code>：意大利语（瑞士）<br><code>ja-JP</code>：日语（日本）<br><code>jv-ID</code>：爪哇语（印度尼西亚）<br><code>kn-IN</code>：卡纳达语（印度）<br><code>kk-KZ</code>：哈萨克语（哈萨克斯坦）<br><code>km-KH</code>：高棉语（柬埔寨）<br><code>rw-RW</code>：卢旺达语（卢旺达）<br><code>ko-KR</code>：韩语（韩国）<br><code>lo-LA</code>：老挝语（老挝）<br><code>lv-LV</code>：拉脱维亚语（拉脱维亚）<br><code>lt-LT</code>：立陶宛语（立陶宛）<br><code>mk-MK</code>：马其顿语（北马其顿）<br><code>ms-MY</code>：马来语（马来西亚）<br><code>ml-IN</code>：马拉雅拉姆语（印度）<br><code>mr-IN</code>：马拉地语（印度）<br><code>mn-MN</code>：蒙古语（蒙古）<br><code>ne-NP</code>：尼泊尔语（尼泊尔）<br><code>no-NO</code>：博克马尔挪威语（挪威）<br><code>fa-IR</code>：波斯语（伊朗）<br><code>pl-PL</code>：波兰语（波兰）<br><code>pt-BR</code>：葡萄牙语（巴西）<br><code>pt-PT</code>：葡萄牙语（葡萄牙）<br><code>ro-RO</code>：罗马尼亚语（罗马尼亚）<br><code>ru-RU</code>：俄语（俄罗斯）<br><code>sr-RS</code>：塞尔维亚语（塞尔维亚）<br><code>si-LK</code>：僧伽罗语（斯里兰卡）<br><code>sk-SK</code>：斯洛伐克语（斯洛伐克）<br><code>sl-SI</code>：斯洛文尼亚语（斯洛文尼亚）<br><code>st-ZA</code>：南索托语（南非）<br><code>es-AR</code>：西班牙语（阿根廷）<br><code>es-BO</code>：西班牙语（玻利维亚）<br><code>es-CL</code>：西班牙语（智利）<br><code>es-CO</code>：西班牙语（哥伦比亚）<br><code>es-CR</code>：西班牙语（哥斯达黎加）<br><code>es-DO</code>：西班牙语（多米尼加共和国）<br><code>es-EC</code>：西班牙语（厄瓜多尔）<br><code>es-SV</code>：西班牙语（萨尔瓦多）<br><code>es-GT</code>：西班牙语（危地马拉）<br><code>es-HN</code>：西班牙语（洪都拉斯）<br><code>es-MX</code>：西班牙语（墨西哥）<br><code>es-NI</code>：西班牙语（尼加拉瓜）<br><code>es-PA</code>：西班牙语（巴拿马）<br><code>es-PY</code>：西班牙语（巴拉圭）<br><code>es-PE</code>：西班牙语（秘鲁）<br><code>es-PR</code>：西班牙语（波多黎各）<br><code>es-ES</code>：西班牙语（西班牙）<br><code>es-US</code>：西班牙语（美国）<br><code>es-UY</code>：西班牙语（乌拉圭）<br><code>es-VE</code>：西班牙语（委内瑞拉）<br><code>su-ID</code>：巽他语（印度尼西亚）<br><code>sw-KE</code>：斯瓦希里语（肯尼亚）<br><code>sw-TZ</code>：斯瓦希里语（坦桑尼亚）<br><code>sv-SE</code>：瑞典语（瑞典）<br><code>ta-IN</code>：泰米尔语（印度）<br><code>ta-MY</code>：泰米尔语（马来西亚）<br><code>ta-SG</code>：泰米尔语（新加坡）<br><code>ta-LK</code>：泰米尔语（斯里兰卡）<br><code>te-IN</code>：泰卢固语（印度）<br><code>th-TH</code>：泰语（泰国）<br><code>ts-ZA</code>：聪加语（南非）<br><code>tr-TR</code>：土耳其语（土耳其）<br><code>uk-UA</code>：乌克兰语（乌克兰）<br><code>ur-IN</code>：乌尔都语（印度）<br><code>ur-PK</code>：乌尔都语（巴基斯坦）<br><code>uz-UZ</code>：乌兹别克语（乌兹别克斯坦）<br><code>ve-ZA</code>：文达语（南非）<br><code>vi-VN</code>：越南语（越南）<br><code>xh-ZA</code>：科萨语（南非）<br><code>zu-ZA</code>：祖鲁语（南非）</p>
         :type VideoSrcLanguage: str
-        :param _SubtitleFormat: 智能字幕文件格式:
-- ASR识别翻译处理类型下：
-     - vtt: WebVTT 格式字幕
-     - srt: SRT 格式字幕
-     - 不填或填空：不生成字幕文件
-- 纯字幕翻译处理类型下：
-    - original：与源文件一致
-    - vtt: WebVTT 格式字幕
-    - srt: SRT 格式字幕
-- OCR识别翻译处理类型下：
-     - vtt: WebVTT 格式字幕
-     - srt: SRT 格式字幕
-
-**注意**：
-- ASR识别方式下，翻译大于等于2种语言时不允许传空或不传；
-- 纯字幕翻译和OCR识别翻译方式下，不允许传空或不传
+        :param _SubtitleFormat: <p>智能字幕文件格式:</p><ul><li>ASR识别翻译处理类型下：<ul><li>vtt: WebVTT 格式字幕</li><li>srt: SRT 格式字幕</li><li>不填或填空：不生成字幕文件</li></ul></li><li>纯字幕翻译处理类型下：<ul><li>original：与源文件一致</li><li>vtt: WebVTT 格式字幕</li><li>srt: SRT 格式字幕</li></ul></li><li>OCR识别翻译处理类型下：<ul><li>vtt: WebVTT 格式字幕</li><li>srt: SRT 格式字幕</li></ul></li></ul><p><strong>注意</strong>：</p><ul><li>ASR识别方式下，翻译大于等于2种语言时不允许传空或不传；</li><li>纯字幕翻译和OCR识别翻译方式下，不允许传空或不传</li><li>OCR类型的任务，在开启压制时，允许不传或传空</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubtitleFormat: str
-        :param _TranslateSwitch: 字幕翻译开关
-`ON`: 开启翻译
-`OFF`: 关闭翻译
-
-**注意**：纯字幕翻译方式下，不传默认是打开的，不允许传空或`OFF`；
+        :param _TranslateSwitch: <p>字幕翻译开关<br><code>ON</code>: 开启翻译<br><code>OFF</code>: 关闭翻译</p><p><strong>注意</strong>：纯字幕翻译方式下，不传默认是打开的，不允许传空或<code>OFF</code>；</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TranslateSwitch: str
-        :param _TranslateDstLanguage: 字幕翻译目标语言
-当TranslateSwitch为ON的时候生效，翻译语言列表：
-`ab`：阿布哈兹语
-`ace`：亚齐语
-`ach`：阿乔利语
-`af`：南非荷兰语
-`ak`：契维语（阿坎语）
-`am`：Amharic
-`ar`：阿拉伯语
-`as`：阿萨姆语
-`ay`：艾马拉语
-`az`：阿塞拜疆语
-`ba`：巴什基尔语
-`ban`：巴厘语
-`bbc`：巴塔克托巴语
-`bem`：Bemba
-`bew`：Betawi
-`bg`：保加利亚语
-`bho`：博杰普尔语
-`bik`：Bikol
-`bm`：班巴拉语
-`bn`：孟加拉语
-`br`：布列塔尼语
-`bs`：波斯尼亚语
-`btx`：巴塔克卡罗语
-`bts`：巴塔克西马隆贡语
-`bua`：布里亚特语
-`ca`：加泰罗尼亚语
-`ceb`：宿务语
-`cgg`：Kiga
-`chm`：草原马里语
-`ckb`：库尔德语（索拉尼语）
-`cnh`：哈卡钦语
-`co`：科西嘉语
-`crh`：克里米亚鞑靼语
-`crs`：塞舌尔克里奥尔语
-`cs`：捷克语
-`cv`：楚瓦什语
-`cy`：威尔士语
-`da`：丹麦语
-`de`：德语
-`din`：Dinka
-`doi`：多格来语
-`dov`：敦贝语
-`dv`：第维埃语
-`dz`：宗卡语
-`ee`：Ewe
-`el`：希腊语
-`en`：英语
-`eo`：世界语
-`es`：西班牙语
-`et`：爱沙尼亚语
-`eu`：巴斯克语
-`fa`：波斯语
-`ff`：富拉语
-`fi`：芬兰语
-`fil`：菲律宾语（塔加拉语）
-`fj`：斐济语
-`fr`：法语
-`fr-CA`：法语（加拿大）
-`fr-FR`：法语（法国）
-`fy`：弗里斯兰语
-`ga`：爱尔兰语
-`gaa`：加 (Ga) 语
-`gd`：苏格兰盖尔语
-`gl`：加利西亚语
-`gn`：瓜拉尼语
-`gom`：贡根语
-`gu`：古吉拉特语
-`gv`：马恩岛语
-`ha`：Hausa
-`haw`：夏威夷语
-`he`：希伯来语
-`hi`：印地语
-`hil`：希利盖农语
-`hmn`：苗语
-`hr`：克罗地亚语
-`hrx`：洪斯吕克语
-`ht`：海地克里奥尔语
-`hu`：匈牙利语
-`hy`：亚美尼亚语
-`id`：印度尼西亚语
-`ig`：Igbo
-`ilo`：伊洛果语
-`is`：冰岛语
-`it`：意大利语
-`iw`：希伯来语
-`ja`：日语
-`jv`：爪哇语
-`ka`：格鲁吉亚语
-`kk`：哈萨克语
-`km`：高棉语
-`kn`：卡纳达语
-`ko`：韩语
-`kri`：Krio
-`ku`：库尔德语（库尔曼吉语）
-`ktu`：吉土巴语
-`ky`：吉尔吉斯语
-`la`：拉丁语
-`lb`：卢森堡语
-`lg`：干达语（卢干达语）
-`li`：林堡语
-`lij`：利古里亚语
-`lmo`：伦巴第语
-`ln`：林加拉语
-`lo`：老挝语
-`lt`：立陶宛语
-`ltg`：拉特加莱语
-`luo`：Luo
-`lus`：米佐语
-`lv`：拉脱维亚语
-`mai`：迈蒂利语
-`mak`：马卡萨
-`mg`：马尔加什语
-`mi`：毛利语
-`min`：米南语
-`mk`：马其顿语
-`ml`：马拉雅拉姆语
-`mn`：蒙古语
-`mr`：马拉地语
-`ms`：马来语
-`mt`：马耳他语
-`my`：缅甸语
-`ne`：尼泊尔语
-`new`：尼瓦尔语
-`nl`：荷兰语
-`no`：挪威语
-`nr`：恩德贝莱语（南部）
-`nso`：北索托语（塞佩蒂语）
-`nus`：努尔语
-`ny`：齐切瓦语（尼扬贾语）
-`oc`：奥克斯坦语
-`om`：Oromo
-`or`：奥里亚语
-`pa`：旁遮普语
-`pag`：邦阿西楠语
-`pam`：邦板牙语
-`pap`：Papiamento
-`pl`：波兰语
-`ps`：Pashto
-`pt`：葡萄牙语
-`pt-BR`：葡萄牙语（巴西）
-`pt-PT`：葡萄牙语（葡萄牙）
-`qu`：克丘亚语
-`ro`：罗马尼亚语
-`rom`：罗姆语
-`rn`：Rundi
-`ru`：俄语
-`rw`：卢旺达语
-`sa`：梵语
-`scn`：西西里语
-`sd`：信德语
-`sg`：Sango
-`shn`：掸语
-`si`：僧伽罗语
-`sk`：斯洛伐克语
-`sl`：斯洛文尼亚语
-`sm`：萨摩亚语
-`sn`：修纳语
-`so`：索马里语
-`sq`：阿尔巴尼亚语
-`sr`：塞尔维亚语
-`ss`：斯瓦特语
-`st`：塞索托语
-`su`：巽他语
-`sv`：瑞典语
-`sw`：斯瓦希里语
-`szl`：西里西亚语
-`ta`：泰米尔语
-`te`：泰卢固语
-`tet`：德顿语
-`tg`：塔吉克语
-`th`：泰语
-`ti`：提格里尼亚语
-`tk`：土库曼语
-`tn`：茨瓦纳语
-`tr`：土耳其语
-`ts`：聪加语
-`tt`：鞑靼语
-`ug`：维吾尔语
-`uk`：乌克兰语
-`ur`：乌尔都语
-`uz`：乌兹别克语
-`vi`：越南语
-`xh`：科萨语
-`yi`：意第绪语
-`yo`：约鲁巴语
-`yua`：尤卡坦玛雅语
-`yue`：粤语
-`zh`：简体中文
-`zh-TW`：中文（繁体）
-`zu`：祖鲁语
-
-**注意**：多语言方式，则使用 `/` 分割，如：`en/ja`，表示英语和日语。
+        :param _TranslateDstLanguage: <p>字幕翻译目标语言<br>当TranslateSwitch为ON的时候生效，翻译语言列表：<br><code>ab</code>：阿布哈兹语<br><code>ace</code>：亚齐语<br><code>ach</code>：阿乔利语<br><code>af</code>：南非荷兰语<br><code>ak</code>：契维语（阿坎语）<br><code>am</code>：Amharic<br><code>ar</code>：阿拉伯语<br><code>as</code>：阿萨姆语<br><code>ay</code>：艾马拉语<br><code>az</code>：阿塞拜疆语<br><code>ba</code>：巴什基尔语<br><code>ban</code>：巴厘语<br><code>bbc</code>：巴塔克托巴语<br><code>bem</code>：Bemba<br><code>bew</code>：Betawi<br><code>bg</code>：保加利亚语<br><code>bho</code>：博杰普尔语<br><code>bik</code>：Bikol<br><code>bm</code>：班巴拉语<br><code>bn</code>：孟加拉语<br><code>br</code>：布列塔尼语<br><code>bs</code>：波斯尼亚语<br><code>btx</code>：巴塔克卡罗语<br><code>bts</code>：巴塔克西马隆贡语<br><code>bua</code>：布里亚特语<br><code>ca</code>：加泰罗尼亚语<br><code>ceb</code>：宿务语<br><code>cgg</code>：Kiga<br><code>chm</code>：草原马里语<br><code>ckb</code>：库尔德语（索拉尼语）<br><code>cnh</code>：哈卡钦语<br><code>co</code>：科西嘉语<br><code>crh</code>：克里米亚鞑靼语<br><code>crs</code>：塞舌尔克里奥尔语<br><code>cs</code>：捷克语<br><code>cv</code>：楚瓦什语<br><code>cy</code>：威尔士语<br><code>da</code>：丹麦语<br><code>de</code>：德语<br><code>din</code>：Dinka<br><code>doi</code>：多格来语<br><code>dov</code>：敦贝语<br><code>dv</code>：第维埃语<br><code>dz</code>：宗卡语<br><code>ee</code>：Ewe<br><code>el</code>：希腊语<br><code>en</code>：英语<br><code>eo</code>：世界语<br><code>es</code>：西班牙语<br><code>et</code>：爱沙尼亚语<br><code>eu</code>：巴斯克语<br><code>fa</code>：波斯语<br><code>ff</code>：富拉语<br><code>fi</code>：芬兰语<br><code>fil</code>：菲律宾语（塔加拉语）<br><code>fj</code>：斐济语<br><code>fr</code>：法语<br><code>fr-CA</code>：法语（加拿大）<br><code>fr-FR</code>：法语（法国）<br><code>fy</code>：弗里斯兰语<br><code>ga</code>：爱尔兰语<br><code>gaa</code>：加 (Ga) 语<br><code>gd</code>：苏格兰盖尔语<br><code>gl</code>：加利西亚语<br><code>gn</code>：瓜拉尼语<br><code>gom</code>：贡根语<br><code>gu</code>：古吉拉特语<br><code>gv</code>：马恩岛语<br><code>ha</code>：Hausa<br><code>haw</code>：夏威夷语<br><code>he</code>：希伯来语<br><code>hi</code>：印地语<br><code>hil</code>：希利盖农语<br><code>hmn</code>：苗语<br><code>hr</code>：克罗地亚语<br><code>hrx</code>：洪斯吕克语<br><code>ht</code>：海地克里奥尔语<br><code>hu</code>：匈牙利语<br><code>hy</code>：亚美尼亚语<br><code>id</code>：印度尼西亚语<br><code>ig</code>：Igbo<br><code>ilo</code>：伊洛果语<br><code>is</code>：冰岛语<br><code>it</code>：意大利语<br><code>iw</code>：希伯来语<br><code>ja</code>：日语<br><code>jv</code>：爪哇语<br><code>ka</code>：格鲁吉亚语<br><code>kk</code>：哈萨克语<br><code>km</code>：高棉语<br><code>kn</code>：卡纳达语<br><code>ko</code>：韩语<br><code>kri</code>：Krio<br><code>ku</code>：库尔德语（库尔曼吉语）<br><code>ktu</code>：吉土巴语<br><code>ky</code>：吉尔吉斯语<br><code>la</code>：拉丁语<br><code>lb</code>：卢森堡语<br><code>lg</code>：干达语（卢干达语）<br><code>li</code>：林堡语<br><code>lij</code>：利古里亚语<br><code>lmo</code>：伦巴第语<br><code>ln</code>：林加拉语<br><code>lo</code>：老挝语<br><code>lt</code>：立陶宛语<br><code>ltg</code>：拉特加莱语<br><code>luo</code>：Luo<br><code>lus</code>：米佐语<br><code>lv</code>：拉脱维亚语<br><code>mai</code>：迈蒂利语<br><code>mak</code>：马卡萨<br><code>mg</code>：马尔加什语<br><code>mi</code>：毛利语<br><code>min</code>：米南语<br><code>mk</code>：马其顿语<br><code>ml</code>：马拉雅拉姆语<br><code>mn</code>：蒙古语<br><code>mr</code>：马拉地语<br><code>ms</code>：马来语<br><code>mt</code>：马耳他语<br><code>my</code>：缅甸语<br><code>ne</code>：尼泊尔语<br><code>new</code>：尼瓦尔语<br><code>nl</code>：荷兰语<br><code>no</code>：挪威语<br><code>nr</code>：恩德贝莱语（南部）<br><code>nso</code>：北索托语（塞佩蒂语）<br><code>nus</code>：努尔语<br><code>ny</code>：齐切瓦语（尼扬贾语）<br><code>oc</code>：奥克斯坦语<br><code>om</code>：Oromo<br><code>or</code>：奥里亚语<br><code>pa</code>：旁遮普语<br><code>pag</code>：邦阿西楠语<br><code>pam</code>：邦板牙语<br><code>pap</code>：Papiamento<br><code>pl</code>：波兰语<br><code>ps</code>：Pashto<br><code>pt</code>：葡萄牙语<br><code>pt-BR</code>：葡萄牙语（巴西）<br><code>pt-PT</code>：葡萄牙语（葡萄牙）<br><code>qu</code>：克丘亚语<br><code>ro</code>：罗马尼亚语<br><code>rom</code>：罗姆语<br><code>rn</code>：Rundi<br><code>ru</code>：俄语<br><code>rw</code>：卢旺达语<br><code>sa</code>：梵语<br><code>scn</code>：西西里语<br><code>sd</code>：信德语<br><code>sg</code>：Sango<br><code>shn</code>：掸语<br><code>si</code>：僧伽罗语<br><code>sk</code>：斯洛伐克语<br><code>sl</code>：斯洛文尼亚语<br><code>sm</code>：萨摩亚语<br><code>sn</code>：修纳语<br><code>so</code>：索马里语<br><code>sq</code>：阿尔巴尼亚语<br><code>sr</code>：塞尔维亚语<br><code>ss</code>：斯瓦特语<br><code>st</code>：塞索托语<br><code>su</code>：巽他语<br><code>sv</code>：瑞典语<br><code>sw</code>：斯瓦希里语<br><code>szl</code>：西里西亚语<br><code>ta</code>：泰米尔语<br><code>te</code>：泰卢固语<br><code>tet</code>：德顿语<br><code>tg</code>：塔吉克语<br><code>th</code>：泰语<br><code>ti</code>：提格里尼亚语<br><code>tk</code>：土库曼语<br><code>tn</code>：茨瓦纳语<br><code>tr</code>：土耳其语<br><code>ts</code>：聪加语<br><code>tt</code>：鞑靼语<br><code>ug</code>：维吾尔语<br><code>uk</code>：乌克兰语<br><code>ur</code>：乌尔都语<br><code>uz</code>：乌兹别克语<br><code>vi</code>：越南语<br><code>xh</code>：科萨语<br><code>yi</code>：意第绪语<br><code>yo</code>：约鲁巴语<br><code>yua</code>：尤卡坦玛雅语<br><code>yue</code>：粤语<br><code>zh</code>：简体中文<br><code>zh-TW</code>：中文（繁体）<br><code>zu</code>：祖鲁语</p><p><strong>注意</strong>：多语言方式，则使用 <code>/</code> 分割，如：<code>en/ja</code>，表示英语和日语。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TranslateDstLanguage: str
-        :param _AsrHotWordsConfigure: ASR热词库参数
+        :param _AsrHotWordsConfigure: <p>ASR热词库参数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AsrHotWordsConfigure: :class:`tencentcloud.mps.v20190612.models.AsrHotWordsConfigure`
-        :param _ExtInfo: 自定义参数
+        :param _ExtInfo: <p>自定义参数</p>
         :type ExtInfo: str
-        :param _ProcessType: 字幕处理类型：
-- 0：ASR识别字幕
-- 1：纯字幕翻译
-- 2：OCR识别字幕
-
-**注意**：不传的情况下默认类型为 ASR识别字幕
+        :param _ProcessType: <p>字幕处理类型：</p><ul><li>0：ASR识别字幕</li><li>1：纯字幕翻译</li><li>2：OCR识别字幕</li></ul><p><strong>注意</strong>：不传的情况下默认类型为 ASR识别字幕</p>
         :type ProcessType: int
-        :param _SelectingSubtitleAreasConfig: 字幕OCR提取框选区域配置
+        :param _SelectingSubtitleAreasConfig: <p>字幕OCR提取框选区域配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SelectingSubtitleAreasConfig: :class:`tencentcloud.mps.v20190612.models.SelectingSubtitleAreasConfig`
+        :param _SubtitleEmbedId: <p>压制模板id，只有ProcessType为0或2（任务类型为ASR或OCR）时才允许填写</p>
+        :type SubtitleEmbedId: int
         """
         self._SubtitleType = None
         self._VideoSrcLanguage = None
@@ -64429,15 +62977,11 @@ ASR识别和纯字幕翻译当前支持以下语言：
         self._ExtInfo = None
         self._ProcessType = None
         self._SelectingSubtitleAreasConfig = None
+        self._SubtitleEmbedId = None
 
     @property
     def SubtitleType(self):
-        r"""智能字幕字幕语言类型
-0: 源语言
-1: 翻译语言
-2: 源语言+翻译语言
-当TranslateSwitch为OFF时仅支持取0
-当TranslateSwitch为ON时仅支持取1或2
+        r"""<p>智能字幕字幕语言类型<br>0: 源语言<br>1: 翻译语言<br>2: 源语言+翻译语言<br>当TranslateSwitch为OFF时仅支持取0<br>当TranslateSwitch为ON时仅支持取1或2</p>
         :rtype: int
         """
         return self._SubtitleType
@@ -64448,174 +62992,7 @@ ASR识别和纯字幕翻译当前支持以下语言：
 
     @property
     def VideoSrcLanguage(self):
-        r"""智能字幕视频源语言
-OCR识别仅支持以下语言：
-`zh_en`：中英
-`multi`：其他
-ASR识别和纯字幕翻译当前支持以下语言：
-`auto`：自动识别（仅在纯字幕翻译中支持）
-`zh`：简体中文
-`en`：英语
-`ja`：日语
-`ko`：韩语
-`zh-PY`：中英粤
-`zh_medical`：中文医疗
-`vi`：越南语
-`ms`：马来语
-`id`：印度尼西亚语
-`fil`：菲律宾语
-`th`：泰语
-`pt`：葡萄牙语
-`tr`：土耳其语
-`ar`：阿拉伯语
-`es`：西班牙语
-`hi`：印地语
-`fr`：法语
-`de`：德语
-`it`：意大利语
-`zh_dialect`：中文方言
-`zh_en`：中英
-`yue`：粤语
-`ru`：俄语
-`prime_zh`：中英方言
-`af-ZA`：南非荷兰语（南非）
-`sq-AL`：阿尔巴尼亚语（阿尔巴尼亚）
-`am-ET`：阿姆哈拉语（埃塞俄比亚）
-`ar-DZ`：阿拉伯语（阿尔及利亚）
-`ar-BH`：阿拉伯语（巴林）
-`ar-EG`：阿拉伯语（埃及）
-`ar-IQ`：阿拉伯语（伊拉克）
-`ar-IL`：阿拉伯语（以色列）
-`ar-JO`：阿拉伯语（约旦）
-`ar-KW`：阿拉伯语（科威特）
-`ar-LB`：阿拉伯语（黎巴嫩）
-`ar-MR`：阿拉伯语（毛里塔尼亚）
-`ar-MA`：阿拉伯语（摩洛哥）
-`ar-OM`：阿拉伯语（阿曼）
-`ar-QA`：阿拉伯语（卡塔尔）
-`ar-SA`：阿拉伯语（沙特阿拉伯）
-`ar-PS`：阿拉伯语（巴勒斯坦国）
-`ar-SY`：阿拉伯语（叙利亚）
-`ar-TN`：阿拉伯语（突尼斯）
-`ar-AE`：阿拉伯语（阿拉伯联合酋长国）
-`ar-YE`：阿拉伯语（也门）
-`hy-AM`：亚美尼亚语（亚美尼亚）
-`az-AZ`：阿塞拜疆语（阿塞拜疆）
-`eu-ES`：巴斯克语（西班牙）
-`bn-BD`：孟加拉语（孟加拉）
-`bn-IN`：孟加拉语（印度）
-`bs-BA`：波斯尼亚语（波斯尼亚和黑塞哥维那）
-`bg-BG`：保加利亚语（保加利亚）
-`my-MM`：缅甸语（缅甸）
-`ca-ES`：加泰罗尼亚语（西班牙）
-`hr-HR`：克罗地亚语（克罗地亚）
-`cs-CZ`：捷克语（捷克共和国）
-`da-DK`：丹麦语（丹麦）
-`nl-BE`：荷兰语（比利时）
-`nl-NL`：荷兰语（荷兰）
-`en-AU`：英语（澳大利亚）
-`en-CA`：英语（加拿大）
-`en-GH`：英语（加纳）
-`en-HK`：英语（中国香港）
-`en-IN`：英语（印度）
-`en-IE`：英语（爱尔兰）
-`en-KE`：英语（肯尼亚）
-`en-NZ`：英语（新西兰）
-`en-NG`：英语（尼日利亚）
-`en-PK`：英语（巴基斯坦）
-`en-PH`：英语（菲律宾）
-`en-SG`：英语（新加坡）
-`en-ZA`：英语（南非）
-`en-TZ`：英语（坦桑尼亚）
-`en-GB`：英语（英国）
-`en-US`：英语（美国）
-`et-EE`：爱沙尼亚语（爱沙尼亚）
-`fil-PH`：菲律宾语（菲律宾）
-`fi-FI`：芬兰语（芬兰）
-`fr-BE`：法语（比利时）
-`fr-CA`：法语（加拿大）
-`fr-FR`：法语（法国）
-`fr-CH`：法语（瑞士）
-`gl-ES`：加利西亚语（西班牙）
-`ka-GE`：格鲁吉亚语（格鲁吉亚）
-`el-GR`：希腊语（希腊）
-`gu-IN`：古吉拉特语（印度）
-`iw-IL`：希伯来语（以色列）
-`hi-IN`：印地语（印度）
-`hu-HU`：匈牙利语（匈牙利）
-`is-IS`：冰岛语（冰岛）
-`id-ID`：印度尼西亚语（印度尼西亚）
-`it-IT`：意大利语（意大利）
-`it-CH`：意大利语（瑞士）
-`ja-JP`：日语（日本）
-`jv-ID`：爪哇语（印度尼西亚）
-`kn-IN`：卡纳达语（印度）
-`kk-KZ`：哈萨克语（哈萨克斯坦）
-`km-KH`：高棉语（柬埔寨）
-`rw-RW`：卢旺达语（卢旺达）
-`ko-KR`：韩语（韩国）
-`lo-LA`：老挝语（老挝）
-`lv-LV`：拉脱维亚语（拉脱维亚）
-`lt-LT`：立陶宛语（立陶宛）
-`mk-MK`：马其顿语（北马其顿）
-`ms-MY`：马来语（马来西亚）
-`ml-IN`：马拉雅拉姆语（印度）
-`mr-IN`：马拉地语（印度）
-`mn-MN`：蒙古语（蒙古）
-`ne-NP`：尼泊尔语（尼泊尔）
-`no-NO`：博克马尔挪威语（挪威）
-`fa-IR`：波斯语（伊朗）
-`pl-PL`：波兰语（波兰）
-`pt-BR`：葡萄牙语（巴西）
-`pt-PT`：葡萄牙语（葡萄牙）
-`ro-RO`：罗马尼亚语（罗马尼亚）
-`ru-RU`：俄语（俄罗斯）
-`sr-RS`：塞尔维亚语（塞尔维亚）
-`si-LK`：僧伽罗语（斯里兰卡）
-`sk-SK`：斯洛伐克语（斯洛伐克）
-`sl-SI`：斯洛文尼亚语（斯洛文尼亚）
-`st-ZA`：南索托语（南非）
-`es-AR`：西班牙语（阿根廷）
-`es-BO`：西班牙语（玻利维亚）
-`es-CL`：西班牙语（智利）
-`es-CO`：西班牙语（哥伦比亚）
-`es-CR`：西班牙语（哥斯达黎加）
-`es-DO`：西班牙语（多米尼加共和国）
-`es-EC`：西班牙语（厄瓜多尔）
-`es-SV`：西班牙语（萨尔瓦多）
-`es-GT`：西班牙语（危地马拉）
-`es-HN`：西班牙语（洪都拉斯）
-`es-MX`：西班牙语（墨西哥）
-`es-NI`：西班牙语（尼加拉瓜）
-`es-PA`：西班牙语（巴拿马）
-`es-PY`：西班牙语（巴拉圭）
-`es-PE`：西班牙语（秘鲁）
-`es-PR`：西班牙语（波多黎各）
-`es-ES`：西班牙语（西班牙）
-`es-US`：西班牙语（美国）
-`es-UY`：西班牙语（乌拉圭）
-`es-VE`：西班牙语（委内瑞拉）
-`su-ID`：巽他语（印度尼西亚）
-`sw-KE`：斯瓦希里语（肯尼亚）
-`sw-TZ`：斯瓦希里语（坦桑尼亚）
-`sv-SE`：瑞典语（瑞典）
-`ta-IN`：泰米尔语（印度）
-`ta-MY`：泰米尔语（马来西亚）
-`ta-SG`：泰米尔语（新加坡）
-`ta-LK`：泰米尔语（斯里兰卡）
-`te-IN`：泰卢固语（印度）
-`th-TH`：泰语（泰国）
-`ts-ZA`：聪加语（南非）
-`tr-TR`：土耳其语（土耳其）
-`uk-UA`：乌克兰语（乌克兰）
-`ur-IN`：乌尔都语（印度）
-`ur-PK`：乌尔都语（巴基斯坦）
-`uz-UZ`：乌兹别克语（乌兹别克斯坦）
-`ve-ZA`：文达语（南非）
-`vi-VN`：越南语（越南）
-`xh-ZA`：科萨语（南非）
-`zu-ZA`：祖鲁语（南非）
-
+        r"""<p>智能字幕视频源语言<br>OCR识别仅支持以下语言：<br><code>zh_en</code>：中英<br><code>multi</code>：其他<br>ASR识别和纯字幕翻译当前支持以下语言：<br><code>auto</code>：自动识别<br><code>zh</code>：简体中文<br><code>en</code>：英语<br><code>ja</code>：日语<br><code>ko</code>：韩语<br><code>zh-PY</code>：中英粤<br><code>zh_medical</code>：中文医疗<br><code>vi</code>：越南语<br><code>ms</code>：马来语<br><code>id</code>：印度尼西亚语<br><code>fil</code>：菲律宾语<br><code>th</code>：泰语<br><code>pt</code>：葡萄牙语<br><code>tr</code>：土耳其语<br><code>ar</code>：阿拉伯语<br><code>es</code>：西班牙语<br><code>hi</code>：印地语<br><code>fr</code>：法语<br><code>de</code>：德语<br><code>it</code>：意大利语<br><code>zh_dialect</code>：中文方言<br><code>zh_en</code>：中英<br><code>yue</code>：粤语<br><code>ru</code>：俄语<br><code>prime_zh</code>：中英方言<br><code>af-ZA</code>：南非荷兰语（南非）<br><code>sq-AL</code>：阿尔巴尼亚语（阿尔巴尼亚）<br><code>am-ET</code>：阿姆哈拉语（埃塞俄比亚）<br><code>ar-DZ</code>：阿拉伯语（阿尔及利亚）<br><code>ar-BH</code>：阿拉伯语（巴林）<br><code>ar-EG</code>：阿拉伯语（埃及）<br><code>ar-IQ</code>：阿拉伯语（伊拉克）<br><code>ar-IL</code>：阿拉伯语（以色列）<br><code>ar-JO</code>：阿拉伯语（约旦）<br><code>ar-KW</code>：阿拉伯语（科威特）<br><code>ar-LB</code>：阿拉伯语（黎巴嫩）<br><code>ar-MR</code>：阿拉伯语（毛里塔尼亚）<br><code>ar-MA</code>：阿拉伯语（摩洛哥）<br><code>ar-OM</code>：阿拉伯语（阿曼）<br><code>ar-QA</code>：阿拉伯语（卡塔尔）<br><code>ar-SA</code>：阿拉伯语（沙特阿拉伯）<br><code>ar-PS</code>：阿拉伯语（巴勒斯坦国）<br><code>ar-SY</code>：阿拉伯语（叙利亚）<br><code>ar-TN</code>：阿拉伯语（突尼斯）<br><code>ar-AE</code>：阿拉伯语（阿拉伯联合酋长国）<br><code>ar-YE</code>：阿拉伯语（也门）<br><code>hy-AM</code>：亚美尼亚语（亚美尼亚）<br><code>az-AZ</code>：阿塞拜疆语（阿塞拜疆）<br><code>eu-ES</code>：巴斯克语（西班牙）<br><code>bn-BD</code>：孟加拉语（孟加拉）<br><code>bn-IN</code>：孟加拉语（印度）<br><code>bs-BA</code>：波斯尼亚语（波斯尼亚和黑塞哥维那）<br><code>bg-BG</code>：保加利亚语（保加利亚）<br><code>my-MM</code>：缅甸语（缅甸）<br><code>ca-ES</code>：加泰罗尼亚语（西班牙）<br><code>hr-HR</code>：克罗地亚语（克罗地亚）<br><code>cs-CZ</code>：捷克语（捷克共和国）<br><code>da-DK</code>：丹麦语（丹麦）<br><code>nl-BE</code>：荷兰语（比利时）<br><code>nl-NL</code>：荷兰语（荷兰）<br><code>en-AU</code>：英语（澳大利亚）<br><code>en-CA</code>：英语（加拿大）<br><code>en-GH</code>：英语（加纳）<br><code>en-HK</code>：英语（中国香港）<br><code>en-IN</code>：英语（印度）<br><code>en-IE</code>：英语（爱尔兰）<br><code>en-KE</code>：英语（肯尼亚）<br><code>en-NZ</code>：英语（新西兰）<br><code>en-NG</code>：英语（尼日利亚）<br><code>en-PK</code>：英语（巴基斯坦）<br><code>en-PH</code>：英语（菲律宾）<br><code>en-SG</code>：英语（新加坡）<br><code>en-ZA</code>：英语（南非）<br><code>en-TZ</code>：英语（坦桑尼亚）<br><code>en-GB</code>：英语（英国）<br><code>en-US</code>：英语（美国）<br><code>et-EE</code>：爱沙尼亚语（爱沙尼亚）<br><code>fil-PH</code>：菲律宾语（菲律宾）<br><code>fi-FI</code>：芬兰语（芬兰）<br><code>fr-BE</code>：法语（比利时）<br><code>fr-CA</code>：法语（加拿大）<br><code>fr-FR</code>：法语（法国）<br><code>fr-CH</code>：法语（瑞士）<br><code>gl-ES</code>：加利西亚语（西班牙）<br><code>ka-GE</code>：格鲁吉亚语（格鲁吉亚）<br><code>el-GR</code>：希腊语（希腊）<br><code>gu-IN</code>：古吉拉特语（印度）<br><code>iw-IL</code>：希伯来语（以色列）<br><code>hi-IN</code>：印地语（印度）<br><code>hu-HU</code>：匈牙利语（匈牙利）<br><code>is-IS</code>：冰岛语（冰岛）<br><code>id-ID</code>：印度尼西亚语（印度尼西亚）<br><code>it-IT</code>：意大利语（意大利）<br><code>it-CH</code>：意大利语（瑞士）<br><code>ja-JP</code>：日语（日本）<br><code>jv-ID</code>：爪哇语（印度尼西亚）<br><code>kn-IN</code>：卡纳达语（印度）<br><code>kk-KZ</code>：哈萨克语（哈萨克斯坦）<br><code>km-KH</code>：高棉语（柬埔寨）<br><code>rw-RW</code>：卢旺达语（卢旺达）<br><code>ko-KR</code>：韩语（韩国）<br><code>lo-LA</code>：老挝语（老挝）<br><code>lv-LV</code>：拉脱维亚语（拉脱维亚）<br><code>lt-LT</code>：立陶宛语（立陶宛）<br><code>mk-MK</code>：马其顿语（北马其顿）<br><code>ms-MY</code>：马来语（马来西亚）<br><code>ml-IN</code>：马拉雅拉姆语（印度）<br><code>mr-IN</code>：马拉地语（印度）<br><code>mn-MN</code>：蒙古语（蒙古）<br><code>ne-NP</code>：尼泊尔语（尼泊尔）<br><code>no-NO</code>：博克马尔挪威语（挪威）<br><code>fa-IR</code>：波斯语（伊朗）<br><code>pl-PL</code>：波兰语（波兰）<br><code>pt-BR</code>：葡萄牙语（巴西）<br><code>pt-PT</code>：葡萄牙语（葡萄牙）<br><code>ro-RO</code>：罗马尼亚语（罗马尼亚）<br><code>ru-RU</code>：俄语（俄罗斯）<br><code>sr-RS</code>：塞尔维亚语（塞尔维亚）<br><code>si-LK</code>：僧伽罗语（斯里兰卡）<br><code>sk-SK</code>：斯洛伐克语（斯洛伐克）<br><code>sl-SI</code>：斯洛文尼亚语（斯洛文尼亚）<br><code>st-ZA</code>：南索托语（南非）<br><code>es-AR</code>：西班牙语（阿根廷）<br><code>es-BO</code>：西班牙语（玻利维亚）<br><code>es-CL</code>：西班牙语（智利）<br><code>es-CO</code>：西班牙语（哥伦比亚）<br><code>es-CR</code>：西班牙语（哥斯达黎加）<br><code>es-DO</code>：西班牙语（多米尼加共和国）<br><code>es-EC</code>：西班牙语（厄瓜多尔）<br><code>es-SV</code>：西班牙语（萨尔瓦多）<br><code>es-GT</code>：西班牙语（危地马拉）<br><code>es-HN</code>：西班牙语（洪都拉斯）<br><code>es-MX</code>：西班牙语（墨西哥）<br><code>es-NI</code>：西班牙语（尼加拉瓜）<br><code>es-PA</code>：西班牙语（巴拿马）<br><code>es-PY</code>：西班牙语（巴拉圭）<br><code>es-PE</code>：西班牙语（秘鲁）<br><code>es-PR</code>：西班牙语（波多黎各）<br><code>es-ES</code>：西班牙语（西班牙）<br><code>es-US</code>：西班牙语（美国）<br><code>es-UY</code>：西班牙语（乌拉圭）<br><code>es-VE</code>：西班牙语（委内瑞拉）<br><code>su-ID</code>：巽他语（印度尼西亚）<br><code>sw-KE</code>：斯瓦希里语（肯尼亚）<br><code>sw-TZ</code>：斯瓦希里语（坦桑尼亚）<br><code>sv-SE</code>：瑞典语（瑞典）<br><code>ta-IN</code>：泰米尔语（印度）<br><code>ta-MY</code>：泰米尔语（马来西亚）<br><code>ta-SG</code>：泰米尔语（新加坡）<br><code>ta-LK</code>：泰米尔语（斯里兰卡）<br><code>te-IN</code>：泰卢固语（印度）<br><code>th-TH</code>：泰语（泰国）<br><code>ts-ZA</code>：聪加语（南非）<br><code>tr-TR</code>：土耳其语（土耳其）<br><code>uk-UA</code>：乌克兰语（乌克兰）<br><code>ur-IN</code>：乌尔都语（印度）<br><code>ur-PK</code>：乌尔都语（巴基斯坦）<br><code>uz-UZ</code>：乌兹别克语（乌兹别克斯坦）<br><code>ve-ZA</code>：文达语（南非）<br><code>vi-VN</code>：越南语（越南）<br><code>xh-ZA</code>：科萨语（南非）<br><code>zu-ZA</code>：祖鲁语（南非）</p>
         :rtype: str
         """
         return self._VideoSrcLanguage
@@ -64626,22 +63003,7 @@ ASR识别和纯字幕翻译当前支持以下语言：
 
     @property
     def SubtitleFormat(self):
-        r"""智能字幕文件格式:
-- ASR识别翻译处理类型下：
-     - vtt: WebVTT 格式字幕
-     - srt: SRT 格式字幕
-     - 不填或填空：不生成字幕文件
-- 纯字幕翻译处理类型下：
-    - original：与源文件一致
-    - vtt: WebVTT 格式字幕
-    - srt: SRT 格式字幕
-- OCR识别翻译处理类型下：
-     - vtt: WebVTT 格式字幕
-     - srt: SRT 格式字幕
-
-**注意**：
-- ASR识别方式下，翻译大于等于2种语言时不允许传空或不传；
-- 纯字幕翻译和OCR识别翻译方式下，不允许传空或不传
+        r"""<p>智能字幕文件格式:</p><ul><li>ASR识别翻译处理类型下：<ul><li>vtt: WebVTT 格式字幕</li><li>srt: SRT 格式字幕</li><li>不填或填空：不生成字幕文件</li></ul></li><li>纯字幕翻译处理类型下：<ul><li>original：与源文件一致</li><li>vtt: WebVTT 格式字幕</li><li>srt: SRT 格式字幕</li></ul></li><li>OCR识别翻译处理类型下：<ul><li>vtt: WebVTT 格式字幕</li><li>srt: SRT 格式字幕</li></ul></li></ul><p><strong>注意</strong>：</p><ul><li>ASR识别方式下，翻译大于等于2种语言时不允许传空或不传；</li><li>纯字幕翻译和OCR识别翻译方式下，不允许传空或不传</li><li>OCR类型的任务，在开启压制时，允许不传或传空</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -64653,11 +63015,7 @@ ASR识别和纯字幕翻译当前支持以下语言：
 
     @property
     def TranslateSwitch(self):
-        r"""字幕翻译开关
-`ON`: 开启翻译
-`OFF`: 关闭翻译
-
-**注意**：纯字幕翻译方式下，不传默认是打开的，不允许传空或`OFF`；
+        r"""<p>字幕翻译开关<br><code>ON</code>: 开启翻译<br><code>OFF</code>: 关闭翻译</p><p><strong>注意</strong>：纯字幕翻译方式下，不传默认是打开的，不允许传空或<code>OFF</code>；</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -64669,200 +63027,7 @@ ASR识别和纯字幕翻译当前支持以下语言：
 
     @property
     def TranslateDstLanguage(self):
-        r"""字幕翻译目标语言
-当TranslateSwitch为ON的时候生效，翻译语言列表：
-`ab`：阿布哈兹语
-`ace`：亚齐语
-`ach`：阿乔利语
-`af`：南非荷兰语
-`ak`：契维语（阿坎语）
-`am`：Amharic
-`ar`：阿拉伯语
-`as`：阿萨姆语
-`ay`：艾马拉语
-`az`：阿塞拜疆语
-`ba`：巴什基尔语
-`ban`：巴厘语
-`bbc`：巴塔克托巴语
-`bem`：Bemba
-`bew`：Betawi
-`bg`：保加利亚语
-`bho`：博杰普尔语
-`bik`：Bikol
-`bm`：班巴拉语
-`bn`：孟加拉语
-`br`：布列塔尼语
-`bs`：波斯尼亚语
-`btx`：巴塔克卡罗语
-`bts`：巴塔克西马隆贡语
-`bua`：布里亚特语
-`ca`：加泰罗尼亚语
-`ceb`：宿务语
-`cgg`：Kiga
-`chm`：草原马里语
-`ckb`：库尔德语（索拉尼语）
-`cnh`：哈卡钦语
-`co`：科西嘉语
-`crh`：克里米亚鞑靼语
-`crs`：塞舌尔克里奥尔语
-`cs`：捷克语
-`cv`：楚瓦什语
-`cy`：威尔士语
-`da`：丹麦语
-`de`：德语
-`din`：Dinka
-`doi`：多格来语
-`dov`：敦贝语
-`dv`：第维埃语
-`dz`：宗卡语
-`ee`：Ewe
-`el`：希腊语
-`en`：英语
-`eo`：世界语
-`es`：西班牙语
-`et`：爱沙尼亚语
-`eu`：巴斯克语
-`fa`：波斯语
-`ff`：富拉语
-`fi`：芬兰语
-`fil`：菲律宾语（塔加拉语）
-`fj`：斐济语
-`fr`：法语
-`fr-CA`：法语（加拿大）
-`fr-FR`：法语（法国）
-`fy`：弗里斯兰语
-`ga`：爱尔兰语
-`gaa`：加 (Ga) 语
-`gd`：苏格兰盖尔语
-`gl`：加利西亚语
-`gn`：瓜拉尼语
-`gom`：贡根语
-`gu`：古吉拉特语
-`gv`：马恩岛语
-`ha`：Hausa
-`haw`：夏威夷语
-`he`：希伯来语
-`hi`：印地语
-`hil`：希利盖农语
-`hmn`：苗语
-`hr`：克罗地亚语
-`hrx`：洪斯吕克语
-`ht`：海地克里奥尔语
-`hu`：匈牙利语
-`hy`：亚美尼亚语
-`id`：印度尼西亚语
-`ig`：Igbo
-`ilo`：伊洛果语
-`is`：冰岛语
-`it`：意大利语
-`iw`：希伯来语
-`ja`：日语
-`jv`：爪哇语
-`ka`：格鲁吉亚语
-`kk`：哈萨克语
-`km`：高棉语
-`kn`：卡纳达语
-`ko`：韩语
-`kri`：Krio
-`ku`：库尔德语（库尔曼吉语）
-`ktu`：吉土巴语
-`ky`：吉尔吉斯语
-`la`：拉丁语
-`lb`：卢森堡语
-`lg`：干达语（卢干达语）
-`li`：林堡语
-`lij`：利古里亚语
-`lmo`：伦巴第语
-`ln`：林加拉语
-`lo`：老挝语
-`lt`：立陶宛语
-`ltg`：拉特加莱语
-`luo`：Luo
-`lus`：米佐语
-`lv`：拉脱维亚语
-`mai`：迈蒂利语
-`mak`：马卡萨
-`mg`：马尔加什语
-`mi`：毛利语
-`min`：米南语
-`mk`：马其顿语
-`ml`：马拉雅拉姆语
-`mn`：蒙古语
-`mr`：马拉地语
-`ms`：马来语
-`mt`：马耳他语
-`my`：缅甸语
-`ne`：尼泊尔语
-`new`：尼瓦尔语
-`nl`：荷兰语
-`no`：挪威语
-`nr`：恩德贝莱语（南部）
-`nso`：北索托语（塞佩蒂语）
-`nus`：努尔语
-`ny`：齐切瓦语（尼扬贾语）
-`oc`：奥克斯坦语
-`om`：Oromo
-`or`：奥里亚语
-`pa`：旁遮普语
-`pag`：邦阿西楠语
-`pam`：邦板牙语
-`pap`：Papiamento
-`pl`：波兰语
-`ps`：Pashto
-`pt`：葡萄牙语
-`pt-BR`：葡萄牙语（巴西）
-`pt-PT`：葡萄牙语（葡萄牙）
-`qu`：克丘亚语
-`ro`：罗马尼亚语
-`rom`：罗姆语
-`rn`：Rundi
-`ru`：俄语
-`rw`：卢旺达语
-`sa`：梵语
-`scn`：西西里语
-`sd`：信德语
-`sg`：Sango
-`shn`：掸语
-`si`：僧伽罗语
-`sk`：斯洛伐克语
-`sl`：斯洛文尼亚语
-`sm`：萨摩亚语
-`sn`：修纳语
-`so`：索马里语
-`sq`：阿尔巴尼亚语
-`sr`：塞尔维亚语
-`ss`：斯瓦特语
-`st`：塞索托语
-`su`：巽他语
-`sv`：瑞典语
-`sw`：斯瓦希里语
-`szl`：西里西亚语
-`ta`：泰米尔语
-`te`：泰卢固语
-`tet`：德顿语
-`tg`：塔吉克语
-`th`：泰语
-`ti`：提格里尼亚语
-`tk`：土库曼语
-`tn`：茨瓦纳语
-`tr`：土耳其语
-`ts`：聪加语
-`tt`：鞑靼语
-`ug`：维吾尔语
-`uk`：乌克兰语
-`ur`：乌尔都语
-`uz`：乌兹别克语
-`vi`：越南语
-`xh`：科萨语
-`yi`：意第绪语
-`yo`：约鲁巴语
-`yua`：尤卡坦玛雅语
-`yue`：粤语
-`zh`：简体中文
-`zh-TW`：中文（繁体）
-`zu`：祖鲁语
-
-**注意**：多语言方式，则使用 `/` 分割，如：`en/ja`，表示英语和日语。
+        r"""<p>字幕翻译目标语言<br>当TranslateSwitch为ON的时候生效，翻译语言列表：<br><code>ab</code>：阿布哈兹语<br><code>ace</code>：亚齐语<br><code>ach</code>：阿乔利语<br><code>af</code>：南非荷兰语<br><code>ak</code>：契维语（阿坎语）<br><code>am</code>：Amharic<br><code>ar</code>：阿拉伯语<br><code>as</code>：阿萨姆语<br><code>ay</code>：艾马拉语<br><code>az</code>：阿塞拜疆语<br><code>ba</code>：巴什基尔语<br><code>ban</code>：巴厘语<br><code>bbc</code>：巴塔克托巴语<br><code>bem</code>：Bemba<br><code>bew</code>：Betawi<br><code>bg</code>：保加利亚语<br><code>bho</code>：博杰普尔语<br><code>bik</code>：Bikol<br><code>bm</code>：班巴拉语<br><code>bn</code>：孟加拉语<br><code>br</code>：布列塔尼语<br><code>bs</code>：波斯尼亚语<br><code>btx</code>：巴塔克卡罗语<br><code>bts</code>：巴塔克西马隆贡语<br><code>bua</code>：布里亚特语<br><code>ca</code>：加泰罗尼亚语<br><code>ceb</code>：宿务语<br><code>cgg</code>：Kiga<br><code>chm</code>：草原马里语<br><code>ckb</code>：库尔德语（索拉尼语）<br><code>cnh</code>：哈卡钦语<br><code>co</code>：科西嘉语<br><code>crh</code>：克里米亚鞑靼语<br><code>crs</code>：塞舌尔克里奥尔语<br><code>cs</code>：捷克语<br><code>cv</code>：楚瓦什语<br><code>cy</code>：威尔士语<br><code>da</code>：丹麦语<br><code>de</code>：德语<br><code>din</code>：Dinka<br><code>doi</code>：多格来语<br><code>dov</code>：敦贝语<br><code>dv</code>：第维埃语<br><code>dz</code>：宗卡语<br><code>ee</code>：Ewe<br><code>el</code>：希腊语<br><code>en</code>：英语<br><code>eo</code>：世界语<br><code>es</code>：西班牙语<br><code>et</code>：爱沙尼亚语<br><code>eu</code>：巴斯克语<br><code>fa</code>：波斯语<br><code>ff</code>：富拉语<br><code>fi</code>：芬兰语<br><code>fil</code>：菲律宾语（塔加拉语）<br><code>fj</code>：斐济语<br><code>fr</code>：法语<br><code>fr-CA</code>：法语（加拿大）<br><code>fr-FR</code>：法语（法国）<br><code>fy</code>：弗里斯兰语<br><code>ga</code>：爱尔兰语<br><code>gaa</code>：加 (Ga) 语<br><code>gd</code>：苏格兰盖尔语<br><code>gl</code>：加利西亚语<br><code>gn</code>：瓜拉尼语<br><code>gom</code>：贡根语<br><code>gu</code>：古吉拉特语<br><code>gv</code>：马恩岛语<br><code>ha</code>：Hausa<br><code>haw</code>：夏威夷语<br><code>he</code>：希伯来语<br><code>hi</code>：印地语<br><code>hil</code>：希利盖农语<br><code>hmn</code>：苗语<br><code>hr</code>：克罗地亚语<br><code>hrx</code>：洪斯吕克语<br><code>ht</code>：海地克里奥尔语<br><code>hu</code>：匈牙利语<br><code>hy</code>：亚美尼亚语<br><code>id</code>：印度尼西亚语<br><code>ig</code>：Igbo<br><code>ilo</code>：伊洛果语<br><code>is</code>：冰岛语<br><code>it</code>：意大利语<br><code>iw</code>：希伯来语<br><code>ja</code>：日语<br><code>jv</code>：爪哇语<br><code>ka</code>：格鲁吉亚语<br><code>kk</code>：哈萨克语<br><code>km</code>：高棉语<br><code>kn</code>：卡纳达语<br><code>ko</code>：韩语<br><code>kri</code>：Krio<br><code>ku</code>：库尔德语（库尔曼吉语）<br><code>ktu</code>：吉土巴语<br><code>ky</code>：吉尔吉斯语<br><code>la</code>：拉丁语<br><code>lb</code>：卢森堡语<br><code>lg</code>：干达语（卢干达语）<br><code>li</code>：林堡语<br><code>lij</code>：利古里亚语<br><code>lmo</code>：伦巴第语<br><code>ln</code>：林加拉语<br><code>lo</code>：老挝语<br><code>lt</code>：立陶宛语<br><code>ltg</code>：拉特加莱语<br><code>luo</code>：Luo<br><code>lus</code>：米佐语<br><code>lv</code>：拉脱维亚语<br><code>mai</code>：迈蒂利语<br><code>mak</code>：马卡萨<br><code>mg</code>：马尔加什语<br><code>mi</code>：毛利语<br><code>min</code>：米南语<br><code>mk</code>：马其顿语<br><code>ml</code>：马拉雅拉姆语<br><code>mn</code>：蒙古语<br><code>mr</code>：马拉地语<br><code>ms</code>：马来语<br><code>mt</code>：马耳他语<br><code>my</code>：缅甸语<br><code>ne</code>：尼泊尔语<br><code>new</code>：尼瓦尔语<br><code>nl</code>：荷兰语<br><code>no</code>：挪威语<br><code>nr</code>：恩德贝莱语（南部）<br><code>nso</code>：北索托语（塞佩蒂语）<br><code>nus</code>：努尔语<br><code>ny</code>：齐切瓦语（尼扬贾语）<br><code>oc</code>：奥克斯坦语<br><code>om</code>：Oromo<br><code>or</code>：奥里亚语<br><code>pa</code>：旁遮普语<br><code>pag</code>：邦阿西楠语<br><code>pam</code>：邦板牙语<br><code>pap</code>：Papiamento<br><code>pl</code>：波兰语<br><code>ps</code>：Pashto<br><code>pt</code>：葡萄牙语<br><code>pt-BR</code>：葡萄牙语（巴西）<br><code>pt-PT</code>：葡萄牙语（葡萄牙）<br><code>qu</code>：克丘亚语<br><code>ro</code>：罗马尼亚语<br><code>rom</code>：罗姆语<br><code>rn</code>：Rundi<br><code>ru</code>：俄语<br><code>rw</code>：卢旺达语<br><code>sa</code>：梵语<br><code>scn</code>：西西里语<br><code>sd</code>：信德语<br><code>sg</code>：Sango<br><code>shn</code>：掸语<br><code>si</code>：僧伽罗语<br><code>sk</code>：斯洛伐克语<br><code>sl</code>：斯洛文尼亚语<br><code>sm</code>：萨摩亚语<br><code>sn</code>：修纳语<br><code>so</code>：索马里语<br><code>sq</code>：阿尔巴尼亚语<br><code>sr</code>：塞尔维亚语<br><code>ss</code>：斯瓦特语<br><code>st</code>：塞索托语<br><code>su</code>：巽他语<br><code>sv</code>：瑞典语<br><code>sw</code>：斯瓦希里语<br><code>szl</code>：西里西亚语<br><code>ta</code>：泰米尔语<br><code>te</code>：泰卢固语<br><code>tet</code>：德顿语<br><code>tg</code>：塔吉克语<br><code>th</code>：泰语<br><code>ti</code>：提格里尼亚语<br><code>tk</code>：土库曼语<br><code>tn</code>：茨瓦纳语<br><code>tr</code>：土耳其语<br><code>ts</code>：聪加语<br><code>tt</code>：鞑靼语<br><code>ug</code>：维吾尔语<br><code>uk</code>：乌克兰语<br><code>ur</code>：乌尔都语<br><code>uz</code>：乌兹别克语<br><code>vi</code>：越南语<br><code>xh</code>：科萨语<br><code>yi</code>：意第绪语<br><code>yo</code>：约鲁巴语<br><code>yua</code>：尤卡坦玛雅语<br><code>yue</code>：粤语<br><code>zh</code>：简体中文<br><code>zh-TW</code>：中文（繁体）<br><code>zu</code>：祖鲁语</p><p><strong>注意</strong>：多语言方式，则使用 <code>/</code> 分割，如：<code>en/ja</code>，表示英语和日语。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -64874,7 +63039,7 @@ ASR识别和纯字幕翻译当前支持以下语言：
 
     @property
     def AsrHotWordsConfigure(self):
-        r"""ASR热词库参数
+        r"""<p>ASR热词库参数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.AsrHotWordsConfigure`
         """
@@ -64886,7 +63051,7 @@ ASR识别和纯字幕翻译当前支持以下语言：
 
     @property
     def ExtInfo(self):
-        r"""自定义参数
+        r"""<p>自定义参数</p>
         :rtype: str
         """
         return self._ExtInfo
@@ -64897,12 +63062,7 @@ ASR识别和纯字幕翻译当前支持以下语言：
 
     @property
     def ProcessType(self):
-        r"""字幕处理类型：
-- 0：ASR识别字幕
-- 1：纯字幕翻译
-- 2：OCR识别字幕
-
-**注意**：不传的情况下默认类型为 ASR识别字幕
+        r"""<p>字幕处理类型：</p><ul><li>0：ASR识别字幕</li><li>1：纯字幕翻译</li><li>2：OCR识别字幕</li></ul><p><strong>注意</strong>：不传的情况下默认类型为 ASR识别字幕</p>
         :rtype: int
         """
         return self._ProcessType
@@ -64913,7 +63073,7 @@ ASR识别和纯字幕翻译当前支持以下语言：
 
     @property
     def SelectingSubtitleAreasConfig(self):
-        r"""字幕OCR提取框选区域配置
+        r"""<p>字幕OCR提取框选区域配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.SelectingSubtitleAreasConfig`
         """
@@ -64922,6 +63082,17 @@ ASR识别和纯字幕翻译当前支持以下语言：
     @SelectingSubtitleAreasConfig.setter
     def SelectingSubtitleAreasConfig(self, SelectingSubtitleAreasConfig):
         self._SelectingSubtitleAreasConfig = SelectingSubtitleAreasConfig
+
+    @property
+    def SubtitleEmbedId(self):
+        r"""<p>压制模板id，只有ProcessType为0或2（任务类型为ASR或OCR）时才允许填写</p>
+        :rtype: int
+        """
+        return self._SubtitleEmbedId
+
+    @SubtitleEmbedId.setter
+    def SubtitleEmbedId(self, SubtitleEmbedId):
+        self._SubtitleEmbedId = SubtitleEmbedId
 
 
     def _deserialize(self, params):
@@ -64938,6 +63109,7 @@ ASR识别和纯字幕翻译当前支持以下语言：
         if params.get("SelectingSubtitleAreasConfig") is not None:
             self._SelectingSubtitleAreasConfig = SelectingSubtitleAreasConfig()
             self._SelectingSubtitleAreasConfig._deserialize(params.get("SelectingSubtitleAreasConfig"))
+        self._SubtitleEmbedId = params.get("SubtitleEmbedId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -69293,70 +67465,30 @@ class SmartEraseSubtitleConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubtitleEraseMethod: 字幕擦除方式。
-**自动擦除：**通过AI模型自动识别视频中的字幕文本内容，进行无痕化擦除，生成新的视频。但画面干扰、特殊字幕样式可能会带来一定漏擦误擦问题，可以通过指定区域擦除处理。
-当使用自动擦除时，若您不指定AutoAreas，将对默认区域（画面中下部）进行自动擦除；若指定AutoAreas，将改为对您指定的区域进行自动擦除。
-**指定区域擦除：**若您的字幕位置较固定，建议您直接指定擦除区域，最大程度减少漏擦的情况。
-当您选择指定区域擦除时，请在CustomAreas中至少传入一个指定区域。
-- auto 自动擦除
-- custom 指定区域擦除
-
+        :param _SubtitleEraseMethod: <p>字幕擦除方式。<br><strong>自动擦除：</strong>通过AI模型自动识别视频中的字幕文本内容，进行无痕化擦除，生成新的视频。但画面干扰、特殊字幕样式可能会带来一定漏擦误擦问题，可以通过指定区域擦除处理。<br>当使用自动擦除时，若您不指定AutoAreas，将对默认区域（画面中下部）进行自动擦除；若指定AutoAreas，将改为对您指定的区域进行自动擦除。<br><strong>指定区域擦除：</strong>若您的字幕位置较固定，建议您直接指定擦除区域，最大程度减少漏擦的情况。<br>当您选择指定区域擦除时，请在CustomAreas中至少传入一个指定区域。</p><ul><li>auto 自动擦除</li><li>custom 指定区域擦除</li></ul>
         :type SubtitleEraseMethod: str
-        :param _SubtitleModel: 字幕擦除模型。
-**标准版（推荐）：**若您的字幕样式标准，通常建议选择该版本，细节无痕化效果更好。
-**区域版：**若您的字幕存在花体、阴影、动效等特殊样式，建议选择区域版，擦除面积更大，但细节效果不如标准版。
-- standard 标准模型
-- area 区域模型
+        :param _SubtitleModel: <p>字幕擦除模型。<br><strong>标准版（推荐）：</strong>若您的字幕样式标准，通常建议选择该版本，细节无痕化效果更好。<br><strong>区域版：</strong>若您的字幕存在花体、阴影、动效等特殊样式，建议选择区域版，擦除面积更大，但细节效果不如标准版。</p><ul><li>standard 标准模型</li><li>area 区域模型</li></ul>
         :type SubtitleModel: str
-        :param _OcrSwitch: 是否开启OCR字幕提取，默认取OFF。
-当且仅当SubtitleEraseMethod取auto时支持开启OCR字幕提取，开启后将识别自动擦除区域内出现时间最长且最稳定的文字区域为字幕区域，对字幕区域中的文字进行提取和擦除。
-- ON 开启
-- OFF 关闭
+        :param _OcrSwitch: <p>是否开启OCR字幕提取，默认取OFF。<br>当且仅当SubtitleEraseMethod取auto时支持开启OCR字幕提取，开启后将识别自动擦除区域内出现时间最长且最稳定的文字区域为字幕区域，对字幕区域中的文字进行提取和擦除。</p><ul><li>ON 开启</li><li>OFF 关闭</li></ul>
         :type OcrSwitch: str
-        :param _SubtitleLang: 字幕语言，用于指导OCR识别，默认取zh_en；仅当OcrSwitch取"ON"时生效。
-- zh_en 中英文
-- multi 其他
-其他具体支持识别如下语言：
-中文、英文、日文、韩语、西班牙语、法语、德语、葡萄牙语、越南语、马来语、俄语、意大利语、荷兰语、瑞典语、芬兰语、丹麦语、挪威语、匈牙利语、泰语、印地语、阿拉伯语、印度-孟加拉语、印度-古吉拉特语、印度-卡纳达语 、印度-马拉亚拉姆语 、印度-泰米尔语、印度-泰卢固语、斯洛文尼亚语、波兰语、加泰罗尼亚语、波斯尼亚语、捷克语、爱沙尼亚语、克罗地亚语、旁遮普语、马拉地语、阿塞拜疆语、印尼语、卢森堡语 、立陶宛语、拉脱维亚语、马耳他语、斯洛伐克语、土耳其语、哈萨克语、希腊语、爱尔兰语、白俄罗斯语、高棉语、他加禄语、普什图语、波斯语、塔吉克斯坦语
-
-
+        :param _SubtitleLang: <p>字幕语言，用于指导OCR识别，默认取zh_en；仅当OcrSwitch取&quot;ON&quot;时生效。</p><ul><li>zh_en 中英文</li><li>multi 其他<br>其他具体支持识别如下语言：<br>中文、英文、日文、韩语、西班牙语、法语、德语、葡萄牙语、越南语、马来语、俄语、意大利语、荷兰语、瑞典语、芬兰语、丹麦语、挪威语、匈牙利语、泰语、印地语、阿拉伯语、印度-孟加拉语、印度-古吉拉特语、印度-卡纳达语 、印度-马拉亚拉姆语 、印度-泰米尔语、印度-泰卢固语、斯洛文尼亚语、波兰语、加泰罗尼亚语、波斯尼亚语、捷克语、爱沙尼亚语、克罗地亚语、旁遮普语、马拉地语、阿塞拜疆语、印尼语、卢森堡语 、立陶宛语、拉脱维亚语、马耳他语、斯洛伐克语、土耳其语、哈萨克语、希腊语、爱尔兰语、白俄罗斯语、高棉语、他加禄语、普什图语、波斯语、塔吉克斯坦语</li></ul>
         :type SubtitleLang: str
-        :param _SubtitleFormat: 字幕文件格式，默认取vtt；仅当OcrSwitch取"ON"时生效。
-- srt srt格式
-- vtt WebVTT格式
+        :param _SubtitleFormat: <p>字幕文件格式，默认取vtt；仅当OcrSwitch取&quot;ON&quot;时生效。</p><ul><li>srt srt格式</li><li>vtt WebVTT格式</li><li>当填写SubtitleEmbedId时可以取值空字符串，表示不输出字幕文件</li></ul>
         :type SubtitleFormat: str
-        :param _TransSwitch: 是否开启字幕翻译，默认取OFF；仅当OcrSwitch取"ON"时生效。
-- ON 开启
-- OFF 关闭
+        :param _TransSwitch: <p>是否开启字幕翻译，默认取OFF；仅当OcrSwitch取&quot;ON&quot;时生效。</p><ul><li>ON 开启</li><li>OFF 关闭</li></ul>
         :type TransSwitch: str
-        :param _TransDstLang: 字幕翻译目标语言，默认取en；仅当TransSwitch取"ON"时生效。
-当前支持以下语言：
-zh：简体中文
-en：英语
-ja：日语
-ko：韩语
-fr：法语
-es：西班牙语
-it：意大利语
-de：德语
-tr：土耳其语
-ru：俄语
-pt：葡萄牙语
-vi：越南语
-id：印度尼西亚语
-ms：马来语
-th：泰语
-ar：阿拉伯语
-hi：印地语
+        :param _TransDstLang: <p>字幕翻译目标语言，默认取en；仅当TransSwitch取&quot;ON&quot;时生效。<br>当前支持以下语言：<br>zh：简体中文<br>en：英语<br>ja：日语<br>ko：韩语<br>fr：法语<br>es：西班牙语<br>it：意大利语<br>de：德语<br>tr：土耳其语<br>ru：俄语<br>pt：葡萄牙语<br>vi：越南语<br>id：印度尼西亚语<br>ms：马来语<br>th：泰语<br>ar：阿拉伯语<br>hi：印地语</p>
         :type TransDstLang: str
-        :param _AutoAreas: 自动擦除自定义区域。
-对选定区域，利用AI模型自动检测其中存在的擦除目标并擦除。
-注意：当擦除方式选择custom时，此参数将不会生效；修改模板时，清除区域请传入[]，不传时将保持模板区域信息不变。
+        :param _AutoAreas: <p>自动擦除自定义区域。<br>对选定区域，利用AI模型自动检测其中存在的擦除目标并擦除。<br>注意：当擦除方式选择custom时，此参数将不会生效；修改模板时，清除区域请传入[]，不传时将保持模板区域信息不变。</p>
         :type AutoAreas: list of EraseArea
-        :param _CustomAreas: 指定擦除自定义区域。
-对选定区域，在选定时间段内不进行检测识别直接进行擦除。
-注意：修改模板时，清除区域请传入[]，不传时将保持模板区域信息不变。
+        :param _CustomAreas: <p>指定擦除自定义区域。<br>对选定区域，在选定时间段内不进行检测识别直接进行擦除。<br>注意：修改模板时，清除区域请传入[]，不传时将保持模板区域信息不变。</p>
         :type CustomAreas: list of EraseTimeArea
+        :param _SubtitleEmbedId: <p>字幕压制模板id，只有开启OCR翻译时可以填写</p>
+        :type SubtitleEmbedId: int
+        :param _UseOriginalPos: <p>压制配置，默认开启1, 把字幕压制回原字幕位置。只有开启OCR翻译时可以填写，取0时表示不开启压回原位</p>
+        :type UseOriginalPos: int
+        :param _UseOriginalSize: <p>压制配置，默认开启1, 开启后使用原字幕字号。只有开启OCR翻译时可以填写，取0时表示不使用原字号</p>
+        :type UseOriginalSize: int
         """
         self._SubtitleEraseMethod = None
         self._SubtitleModel = None
@@ -69367,17 +67499,13 @@ hi：印地语
         self._TransDstLang = None
         self._AutoAreas = None
         self._CustomAreas = None
+        self._SubtitleEmbedId = None
+        self._UseOriginalPos = None
+        self._UseOriginalSize = None
 
     @property
     def SubtitleEraseMethod(self):
-        r"""字幕擦除方式。
-**自动擦除：**通过AI模型自动识别视频中的字幕文本内容，进行无痕化擦除，生成新的视频。但画面干扰、特殊字幕样式可能会带来一定漏擦误擦问题，可以通过指定区域擦除处理。
-当使用自动擦除时，若您不指定AutoAreas，将对默认区域（画面中下部）进行自动擦除；若指定AutoAreas，将改为对您指定的区域进行自动擦除。
-**指定区域擦除：**若您的字幕位置较固定，建议您直接指定擦除区域，最大程度减少漏擦的情况。
-当您选择指定区域擦除时，请在CustomAreas中至少传入一个指定区域。
-- auto 自动擦除
-- custom 指定区域擦除
-
+        r"""<p>字幕擦除方式。<br><strong>自动擦除：</strong>通过AI模型自动识别视频中的字幕文本内容，进行无痕化擦除，生成新的视频。但画面干扰、特殊字幕样式可能会带来一定漏擦误擦问题，可以通过指定区域擦除处理。<br>当使用自动擦除时，若您不指定AutoAreas，将对默认区域（画面中下部）进行自动擦除；若指定AutoAreas，将改为对您指定的区域进行自动擦除。<br><strong>指定区域擦除：</strong>若您的字幕位置较固定，建议您直接指定擦除区域，最大程度减少漏擦的情况。<br>当您选择指定区域擦除时，请在CustomAreas中至少传入一个指定区域。</p><ul><li>auto 自动擦除</li><li>custom 指定区域擦除</li></ul>
         :rtype: str
         """
         return self._SubtitleEraseMethod
@@ -69388,11 +67516,7 @@ hi：印地语
 
     @property
     def SubtitleModel(self):
-        r"""字幕擦除模型。
-**标准版（推荐）：**若您的字幕样式标准，通常建议选择该版本，细节无痕化效果更好。
-**区域版：**若您的字幕存在花体、阴影、动效等特殊样式，建议选择区域版，擦除面积更大，但细节效果不如标准版。
-- standard 标准模型
-- area 区域模型
+        r"""<p>字幕擦除模型。<br><strong>标准版（推荐）：</strong>若您的字幕样式标准，通常建议选择该版本，细节无痕化效果更好。<br><strong>区域版：</strong>若您的字幕存在花体、阴影、动效等特殊样式，建议选择区域版，擦除面积更大，但细节效果不如标准版。</p><ul><li>standard 标准模型</li><li>area 区域模型</li></ul>
         :rtype: str
         """
         return self._SubtitleModel
@@ -69403,10 +67527,7 @@ hi：印地语
 
     @property
     def OcrSwitch(self):
-        r"""是否开启OCR字幕提取，默认取OFF。
-当且仅当SubtitleEraseMethod取auto时支持开启OCR字幕提取，开启后将识别自动擦除区域内出现时间最长且最稳定的文字区域为字幕区域，对字幕区域中的文字进行提取和擦除。
-- ON 开启
-- OFF 关闭
+        r"""<p>是否开启OCR字幕提取，默认取OFF。<br>当且仅当SubtitleEraseMethod取auto时支持开启OCR字幕提取，开启后将识别自动擦除区域内出现时间最长且最稳定的文字区域为字幕区域，对字幕区域中的文字进行提取和擦除。</p><ul><li>ON 开启</li><li>OFF 关闭</li></ul>
         :rtype: str
         """
         return self._OcrSwitch
@@ -69417,13 +67538,7 @@ hi：印地语
 
     @property
     def SubtitleLang(self):
-        r"""字幕语言，用于指导OCR识别，默认取zh_en；仅当OcrSwitch取"ON"时生效。
-- zh_en 中英文
-- multi 其他
-其他具体支持识别如下语言：
-中文、英文、日文、韩语、西班牙语、法语、德语、葡萄牙语、越南语、马来语、俄语、意大利语、荷兰语、瑞典语、芬兰语、丹麦语、挪威语、匈牙利语、泰语、印地语、阿拉伯语、印度-孟加拉语、印度-古吉拉特语、印度-卡纳达语 、印度-马拉亚拉姆语 、印度-泰米尔语、印度-泰卢固语、斯洛文尼亚语、波兰语、加泰罗尼亚语、波斯尼亚语、捷克语、爱沙尼亚语、克罗地亚语、旁遮普语、马拉地语、阿塞拜疆语、印尼语、卢森堡语 、立陶宛语、拉脱维亚语、马耳他语、斯洛伐克语、土耳其语、哈萨克语、希腊语、爱尔兰语、白俄罗斯语、高棉语、他加禄语、普什图语、波斯语、塔吉克斯坦语
-
-
+        r"""<p>字幕语言，用于指导OCR识别，默认取zh_en；仅当OcrSwitch取&quot;ON&quot;时生效。</p><ul><li>zh_en 中英文</li><li>multi 其他<br>其他具体支持识别如下语言：<br>中文、英文、日文、韩语、西班牙语、法语、德语、葡萄牙语、越南语、马来语、俄语、意大利语、荷兰语、瑞典语、芬兰语、丹麦语、挪威语、匈牙利语、泰语、印地语、阿拉伯语、印度-孟加拉语、印度-古吉拉特语、印度-卡纳达语 、印度-马拉亚拉姆语 、印度-泰米尔语、印度-泰卢固语、斯洛文尼亚语、波兰语、加泰罗尼亚语、波斯尼亚语、捷克语、爱沙尼亚语、克罗地亚语、旁遮普语、马拉地语、阿塞拜疆语、印尼语、卢森堡语 、立陶宛语、拉脱维亚语、马耳他语、斯洛伐克语、土耳其语、哈萨克语、希腊语、爱尔兰语、白俄罗斯语、高棉语、他加禄语、普什图语、波斯语、塔吉克斯坦语</li></ul>
         :rtype: str
         """
         return self._SubtitleLang
@@ -69434,9 +67549,7 @@ hi：印地语
 
     @property
     def SubtitleFormat(self):
-        r"""字幕文件格式，默认取vtt；仅当OcrSwitch取"ON"时生效。
-- srt srt格式
-- vtt WebVTT格式
+        r"""<p>字幕文件格式，默认取vtt；仅当OcrSwitch取&quot;ON&quot;时生效。</p><ul><li>srt srt格式</li><li>vtt WebVTT格式</li><li>当填写SubtitleEmbedId时可以取值空字符串，表示不输出字幕文件</li></ul>
         :rtype: str
         """
         return self._SubtitleFormat
@@ -69447,9 +67560,7 @@ hi：印地语
 
     @property
     def TransSwitch(self):
-        r"""是否开启字幕翻译，默认取OFF；仅当OcrSwitch取"ON"时生效。
-- ON 开启
-- OFF 关闭
+        r"""<p>是否开启字幕翻译，默认取OFF；仅当OcrSwitch取&quot;ON&quot;时生效。</p><ul><li>ON 开启</li><li>OFF 关闭</li></ul>
         :rtype: str
         """
         return self._TransSwitch
@@ -69460,25 +67571,7 @@ hi：印地语
 
     @property
     def TransDstLang(self):
-        r"""字幕翻译目标语言，默认取en；仅当TransSwitch取"ON"时生效。
-当前支持以下语言：
-zh：简体中文
-en：英语
-ja：日语
-ko：韩语
-fr：法语
-es：西班牙语
-it：意大利语
-de：德语
-tr：土耳其语
-ru：俄语
-pt：葡萄牙语
-vi：越南语
-id：印度尼西亚语
-ms：马来语
-th：泰语
-ar：阿拉伯语
-hi：印地语
+        r"""<p>字幕翻译目标语言，默认取en；仅当TransSwitch取&quot;ON&quot;时生效。<br>当前支持以下语言：<br>zh：简体中文<br>en：英语<br>ja：日语<br>ko：韩语<br>fr：法语<br>es：西班牙语<br>it：意大利语<br>de：德语<br>tr：土耳其语<br>ru：俄语<br>pt：葡萄牙语<br>vi：越南语<br>id：印度尼西亚语<br>ms：马来语<br>th：泰语<br>ar：阿拉伯语<br>hi：印地语</p>
         :rtype: str
         """
         return self._TransDstLang
@@ -69489,9 +67582,7 @@ hi：印地语
 
     @property
     def AutoAreas(self):
-        r"""自动擦除自定义区域。
-对选定区域，利用AI模型自动检测其中存在的擦除目标并擦除。
-注意：当擦除方式选择custom时，此参数将不会生效；修改模板时，清除区域请传入[]，不传时将保持模板区域信息不变。
+        r"""<p>自动擦除自定义区域。<br>对选定区域，利用AI模型自动检测其中存在的擦除目标并擦除。<br>注意：当擦除方式选择custom时，此参数将不会生效；修改模板时，清除区域请传入[]，不传时将保持模板区域信息不变。</p>
         :rtype: list of EraseArea
         """
         return self._AutoAreas
@@ -69502,9 +67593,7 @@ hi：印地语
 
     @property
     def CustomAreas(self):
-        r"""指定擦除自定义区域。
-对选定区域，在选定时间段内不进行检测识别直接进行擦除。
-注意：修改模板时，清除区域请传入[]，不传时将保持模板区域信息不变。
+        r"""<p>指定擦除自定义区域。<br>对选定区域，在选定时间段内不进行检测识别直接进行擦除。<br>注意：修改模板时，清除区域请传入[]，不传时将保持模板区域信息不变。</p>
         :rtype: list of EraseTimeArea
         """
         return self._CustomAreas
@@ -69512,6 +67601,39 @@ hi：印地语
     @CustomAreas.setter
     def CustomAreas(self, CustomAreas):
         self._CustomAreas = CustomAreas
+
+    @property
+    def SubtitleEmbedId(self):
+        r"""<p>字幕压制模板id，只有开启OCR翻译时可以填写</p>
+        :rtype: int
+        """
+        return self._SubtitleEmbedId
+
+    @SubtitleEmbedId.setter
+    def SubtitleEmbedId(self, SubtitleEmbedId):
+        self._SubtitleEmbedId = SubtitleEmbedId
+
+    @property
+    def UseOriginalPos(self):
+        r"""<p>压制配置，默认开启1, 把字幕压制回原字幕位置。只有开启OCR翻译时可以填写，取0时表示不开启压回原位</p>
+        :rtype: int
+        """
+        return self._UseOriginalPos
+
+    @UseOriginalPos.setter
+    def UseOriginalPos(self, UseOriginalPos):
+        self._UseOriginalPos = UseOriginalPos
+
+    @property
+    def UseOriginalSize(self):
+        r"""<p>压制配置，默认开启1, 开启后使用原字幕字号。只有开启OCR翻译时可以填写，取0时表示不使用原字号</p>
+        :rtype: int
+        """
+        return self._UseOriginalSize
+
+    @UseOriginalSize.setter
+    def UseOriginalSize(self, UseOriginalSize):
+        self._UseOriginalSize = UseOriginalSize
 
 
     def _deserialize(self, params):
@@ -69534,6 +67656,9 @@ hi：印地语
                 obj = EraseTimeArea()
                 obj._deserialize(item)
                 self._CustomAreas.append(obj)
+        self._SubtitleEmbedId = params.get("SubtitleEmbedId")
+        self._UseOriginalPos = params.get("UseOriginalPos")
+        self._UseOriginalSize = params.get("UseOriginalSize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -70287,24 +68412,27 @@ class SmartSubtitleTaskAsrFullTextResultOutput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SegmentSet: 语音全文识别片段列表。
+        :param _SegmentSet: <p>语音全文识别片段列表。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SegmentSet: list of SmartSubtitleTaskAsrFullTextSegmentItem
-        :param _Path: 字幕文件路径
+        :param _Path: <p>字幕文件路径</p>
         :type Path: str
-        :param _SubtitlePath: 字幕文件地址。
+        :param _SubtitlePath: <p>字幕文件地址。</p>
         :type SubtitlePath: str
-        :param _OutputStorage: 字幕文件存储位置。
+        :param _SubtitleInfo: <p>识别字幕结果信息。</p>
+        :type SubtitleInfo: :class:`tencentcloud.mps.v20190612.models.SubtitleResult`
+        :param _OutputStorage: <p>字幕文件存储位置。</p>
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
         self._SegmentSet = None
         self._Path = None
         self._SubtitlePath = None
+        self._SubtitleInfo = None
         self._OutputStorage = None
 
     @property
     def SegmentSet(self):
-        r"""语音全文识别片段列表。
+        r"""<p>语音全文识别片段列表。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SmartSubtitleTaskAsrFullTextSegmentItem
         """
@@ -70316,7 +68444,7 @@ class SmartSubtitleTaskAsrFullTextResultOutput(AbstractModel):
 
     @property
     def Path(self):
-        r"""字幕文件路径
+        r"""<p>字幕文件路径</p>
         :rtype: str
         """
         return self._Path
@@ -70327,7 +68455,7 @@ class SmartSubtitleTaskAsrFullTextResultOutput(AbstractModel):
 
     @property
     def SubtitlePath(self):
-        r"""字幕文件地址。
+        r"""<p>字幕文件地址。</p>
         :rtype: str
         """
         return self._SubtitlePath
@@ -70337,8 +68465,19 @@ class SmartSubtitleTaskAsrFullTextResultOutput(AbstractModel):
         self._SubtitlePath = SubtitlePath
 
     @property
+    def SubtitleInfo(self):
+        r"""<p>识别字幕结果信息。</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SubtitleResult`
+        """
+        return self._SubtitleInfo
+
+    @SubtitleInfo.setter
+    def SubtitleInfo(self, SubtitleInfo):
+        self._SubtitleInfo = SubtitleInfo
+
+    @property
     def OutputStorage(self):
-        r"""字幕文件存储位置。
+        r"""<p>字幕文件存储位置。</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
         return self._OutputStorage
@@ -70357,6 +68496,9 @@ class SmartSubtitleTaskAsrFullTextResultOutput(AbstractModel):
                 self._SegmentSet.append(obj)
         self._Path = params.get("Path")
         self._SubtitlePath = params.get("SubtitlePath")
+        if params.get("SubtitleInfo") is not None:
+            self._SubtitleInfo = SubtitleResult()
+            self._SubtitleInfo._deserialize(params.get("SubtitleInfo"))
         if params.get("OutputStorage") is not None:
             self._OutputStorage = TaskOutputStorage()
             self._OutputStorage._deserialize(params.get("OutputStorage"))
@@ -70807,13 +68949,13 @@ class SmartSubtitleTaskTextResultOutput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RecognizeSubtitleResult: 识别字幕结果
+        :param _RecognizeSubtitleResult: <p>识别字幕结果</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RecognizeSubtitleResult: list of SubtitleResult
-        :param _TransSubtitleResult: 翻译字幕结果
+        :param _TransSubtitleResult: <p>翻译字幕结果</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TransSubtitleResult: list of SubtitleResult
-        :param _OutputStorage: 字幕文件存储位置
+        :param _OutputStorage: <p>字幕文件存储位置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
@@ -70823,7 +68965,7 @@ class SmartSubtitleTaskTextResultOutput(AbstractModel):
 
     @property
     def RecognizeSubtitleResult(self):
-        r"""识别字幕结果
+        r"""<p>识别字幕结果</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SubtitleResult
         """
@@ -70835,7 +68977,7 @@ class SmartSubtitleTaskTextResultOutput(AbstractModel):
 
     @property
     def TransSubtitleResult(self):
-        r"""翻译字幕结果
+        r"""<p>翻译字幕结果</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SubtitleResult
         """
@@ -70847,7 +68989,7 @@ class SmartSubtitleTaskTextResultOutput(AbstractModel):
 
     @property
     def OutputStorage(self):
-        r"""字幕文件存储位置
+        r"""<p>字幕文件存储位置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
@@ -71027,16 +69169,16 @@ class SmartSubtitleTaskTransTextResultOutput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SegmentSet: 翻译片段列表。
+        :param _SegmentSet: <p>翻译片段列表。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SegmentSet: list of SmartSubtitleTaskTransTextSegmentItem
-        :param _SubtitlePath: 字幕文件地址。
+        :param _SubtitlePath: <p>字幕文件地址。</p>
         :type SubtitlePath: str
-        :param _OutputStorage: 字幕文件存储位置。
+        :param _OutputStorage: <p>智能字幕结果存储信息。</p>
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
-        :param _Path: 字幕文件地址
+        :param _Path: <p>字幕文件路径。</p>
         :type Path: str
-        :param _SubtitleResults: 多语言翻译时返回翻译结果。	
+        :param _SubtitleResults: <p>多语言翻译时返回翻译结果。</p>
         :type SubtitleResults: list of SubtitleTransResultItem
         """
         self._SegmentSet = None
@@ -71047,7 +69189,7 @@ class SmartSubtitleTaskTransTextResultOutput(AbstractModel):
 
     @property
     def SegmentSet(self):
-        r"""翻译片段列表。
+        r"""<p>翻译片段列表。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SmartSubtitleTaskTransTextSegmentItem
         """
@@ -71059,7 +69201,7 @@ class SmartSubtitleTaskTransTextResultOutput(AbstractModel):
 
     @property
     def SubtitlePath(self):
-        r"""字幕文件地址。
+        r"""<p>字幕文件地址。</p>
         :rtype: str
         """
         return self._SubtitlePath
@@ -71070,7 +69212,7 @@ class SmartSubtitleTaskTransTextResultOutput(AbstractModel):
 
     @property
     def OutputStorage(self):
-        r"""字幕文件存储位置。
+        r"""<p>智能字幕结果存储信息。</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
         return self._OutputStorage
@@ -71081,7 +69223,7 @@ class SmartSubtitleTaskTransTextResultOutput(AbstractModel):
 
     @property
     def Path(self):
-        r"""字幕文件地址
+        r"""<p>字幕文件路径。</p>
         :rtype: str
         """
         return self._Path
@@ -71092,7 +69234,7 @@ class SmartSubtitleTaskTransTextResultOutput(AbstractModel):
 
     @property
     def SubtitleResults(self):
-        r"""多语言翻译时返回翻译结果。	
+        r"""<p>多语言翻译时返回翻译结果。</p>
         :rtype: list of SubtitleTransResultItem
         """
         return self._SubtitleResults
@@ -71137,19 +69279,21 @@ class SmartSubtitleTaskTransTextSegmentItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Confidence: 识别片段置信度。取值：0~100。
+        :param _Confidence: <p>识别片段置信度。取值：0~100。</p>
         :type Confidence: float
-        :param _StartTimeOffset: 识别片段起始的偏移时间，单位：秒。
+        :param _StartTimeOffset: <p>识别片段起始的偏移时间，单位：秒。</p>
         :type StartTimeOffset: float
-        :param _EndTimeOffset: 识别片段终止的偏移时间，单位：秒。
+        :param _EndTimeOffset: <p>识别片段终止的偏移时间，单位：秒。</p>
         :type EndTimeOffset: float
-        :param _Text: 识别文本。
+        :param _Text: <p>识别文本。</p>
         :type Text: str
-        :param _Trans: 翻译文本。
+        :param _Trans: <p>翻译文本。</p>
         :type Trans: str
-        :param _Wordlist: 字词时间戳信息。
+        :param _Wordlist: <p>字词时间戳信息。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Wordlist: list of WordResult
+        :param _SpeakerId: <p>说话人ID（如启用说话人识别）</p>
+        :type SpeakerId: str
         """
         self._Confidence = None
         self._StartTimeOffset = None
@@ -71157,10 +69301,11 @@ class SmartSubtitleTaskTransTextSegmentItem(AbstractModel):
         self._Text = None
         self._Trans = None
         self._Wordlist = None
+        self._SpeakerId = None
 
     @property
     def Confidence(self):
-        r"""识别片段置信度。取值：0~100。
+        r"""<p>识别片段置信度。取值：0~100。</p>
         :rtype: float
         """
         return self._Confidence
@@ -71171,7 +69316,7 @@ class SmartSubtitleTaskTransTextSegmentItem(AbstractModel):
 
     @property
     def StartTimeOffset(self):
-        r"""识别片段起始的偏移时间，单位：秒。
+        r"""<p>识别片段起始的偏移时间，单位：秒。</p>
         :rtype: float
         """
         return self._StartTimeOffset
@@ -71182,7 +69327,7 @@ class SmartSubtitleTaskTransTextSegmentItem(AbstractModel):
 
     @property
     def EndTimeOffset(self):
-        r"""识别片段终止的偏移时间，单位：秒。
+        r"""<p>识别片段终止的偏移时间，单位：秒。</p>
         :rtype: float
         """
         return self._EndTimeOffset
@@ -71193,7 +69338,7 @@ class SmartSubtitleTaskTransTextSegmentItem(AbstractModel):
 
     @property
     def Text(self):
-        r"""识别文本。
+        r"""<p>识别文本。</p>
         :rtype: str
         """
         return self._Text
@@ -71204,7 +69349,7 @@ class SmartSubtitleTaskTransTextSegmentItem(AbstractModel):
 
     @property
     def Trans(self):
-        r"""翻译文本。
+        r"""<p>翻译文本。</p>
         :rtype: str
         """
         return self._Trans
@@ -71215,7 +69360,7 @@ class SmartSubtitleTaskTransTextSegmentItem(AbstractModel):
 
     @property
     def Wordlist(self):
-        r"""字词时间戳信息。
+        r"""<p>字词时间戳信息。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of WordResult
         """
@@ -71224,6 +69369,17 @@ class SmartSubtitleTaskTransTextSegmentItem(AbstractModel):
     @Wordlist.setter
     def Wordlist(self, Wordlist):
         self._Wordlist = Wordlist
+
+    @property
+    def SpeakerId(self):
+        r"""<p>说话人ID（如启用说话人识别）</p>
+        :rtype: str
+        """
+        return self._SpeakerId
+
+    @SpeakerId.setter
+    def SpeakerId(self, SpeakerId):
+        self._SpeakerId = SpeakerId
 
 
     def _deserialize(self, params):
@@ -71238,6 +69394,7 @@ class SmartSubtitleTaskTransTextSegmentItem(AbstractModel):
                 obj = WordResult()
                 obj._deserialize(item)
                 self._Wordlist.append(obj)
+        self._SpeakerId = params.get("SpeakerId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -72795,6 +70952,895 @@ class StreamUrlDetail(AbstractModel):
         
 
 
+class SubtitleBoardConfig(AbstractModel):
+    r"""字幕压制模块背景配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubtitleBoardConfigSwitch: 字幕压制模块背景配置开关，0关闭，1开启，默认0
+        :type SubtitleBoardConfigSwitch: int
+        :param _BoardX: 字幕背景底板的x轴坐标位置；支持像素和百分比格式：
+
+- 像素：Npx，N范围：[-4096,4096]。
+- 百分百：N%，N范围：[-100,100]；例如10%表示字幕背景底板x坐标=10%*源视频宽度。
+
+默认值：0px。
+注意：坐标轴原点位于源视频的中轴线底部，字幕底板的基准点在其中轴线底部，参考下图：
+![image](https://ie-mps-1258344699.cos.ap-nanjing.tencentcos.cn/common/cloud/mps-demo/102_ai_subtitle/subtitle_style.png)
+
+        :type BoardX: int
+        :param _BoardXUnit: BoardX单位, 0 像素，1百分比，默认为0，像素
+        :type BoardXUnit: int
+        :param _BoardY: 字幕背景底板的y轴坐标位置；支持像素和百分比格式：
+
+- 像素：Npx，N范围：[0,4096]。
+- 百分百：N%，N范围：[0,100]；例如10%表示字幕背景底板y坐标=10%*源视频高度。
+
+不传表示不开启字幕背景底板。
+注意：坐标轴原点位于源视频的中轴线底部，字幕背景底板的基准点在其中轴线底部，参考下图：
+![image](https://ie-mps-1258344699.cos.ap-nanjing.tencentcos.cn/common/cloud/mps-demo/102_ai_subtitle/subtitle_style.png)
+
+        :type BoardY: int
+        :param _BoardYUnit: BoardY单位, 0 像素，1百分比，默认为0，像素
+        :type BoardYUnit: int
+        :param _BoardWidth: 底板的宽度，正整数。
+- 代表像素时，取值范围：[0,4096]。
+- 代表百分数时，[0, 100]。
+开启底板且不填此值时，默认源视频宽像素的90%。
+
+        :type BoardWidth: int
+        :param _BoardWidthUnit: 底板的宽度单位，0 像素，1百分比，默认为0，像素
+
+        :type BoardWidthUnit: int
+        :param _BoardHeight: 底板的高度，正整数。
+- 代表像素时，取值范围：[0,4096]。
+- 代表百分数时，[0, 100]。
+开启底板且不填此值时，默认为源视频高像素的15%。
+
+        :type BoardHeight: int
+        :param _BoardHeightUnit: 底板的高度单位，0 像素，1百分比，默认为0，像素
+
+        :type BoardHeightUnit: int
+        :param _BoardColor: 底板颜色。格式：0xRRGGBB，
+默认值：0x000000（黑色）。
+        :type BoardColor: str
+        :param _BoardAlpha: 字幕背景板透明度，取值范围：[0, 1]
+<li>0：完全透明</li>
+<li>1：完全不透明</li>
+默认值：0.8。
+        :type BoardAlpha: float
+        """
+        self._SubtitleBoardConfigSwitch = None
+        self._BoardX = None
+        self._BoardXUnit = None
+        self._BoardY = None
+        self._BoardYUnit = None
+        self._BoardWidth = None
+        self._BoardWidthUnit = None
+        self._BoardHeight = None
+        self._BoardHeightUnit = None
+        self._BoardColor = None
+        self._BoardAlpha = None
+
+    @property
+    def SubtitleBoardConfigSwitch(self):
+        r"""字幕压制模块背景配置开关，0关闭，1开启，默认0
+        :rtype: int
+        """
+        return self._SubtitleBoardConfigSwitch
+
+    @SubtitleBoardConfigSwitch.setter
+    def SubtitleBoardConfigSwitch(self, SubtitleBoardConfigSwitch):
+        self._SubtitleBoardConfigSwitch = SubtitleBoardConfigSwitch
+
+    @property
+    def BoardX(self):
+        r"""字幕背景底板的x轴坐标位置；支持像素和百分比格式：
+
+- 像素：Npx，N范围：[-4096,4096]。
+- 百分百：N%，N范围：[-100,100]；例如10%表示字幕背景底板x坐标=10%*源视频宽度。
+
+默认值：0px。
+注意：坐标轴原点位于源视频的中轴线底部，字幕底板的基准点在其中轴线底部，参考下图：
+![image](https://ie-mps-1258344699.cos.ap-nanjing.tencentcos.cn/common/cloud/mps-demo/102_ai_subtitle/subtitle_style.png)
+
+        :rtype: int
+        """
+        return self._BoardX
+
+    @BoardX.setter
+    def BoardX(self, BoardX):
+        self._BoardX = BoardX
+
+    @property
+    def BoardXUnit(self):
+        r"""BoardX单位, 0 像素，1百分比，默认为0，像素
+        :rtype: int
+        """
+        return self._BoardXUnit
+
+    @BoardXUnit.setter
+    def BoardXUnit(self, BoardXUnit):
+        self._BoardXUnit = BoardXUnit
+
+    @property
+    def BoardY(self):
+        r"""字幕背景底板的y轴坐标位置；支持像素和百分比格式：
+
+- 像素：Npx，N范围：[0,4096]。
+- 百分百：N%，N范围：[0,100]；例如10%表示字幕背景底板y坐标=10%*源视频高度。
+
+不传表示不开启字幕背景底板。
+注意：坐标轴原点位于源视频的中轴线底部，字幕背景底板的基准点在其中轴线底部，参考下图：
+![image](https://ie-mps-1258344699.cos.ap-nanjing.tencentcos.cn/common/cloud/mps-demo/102_ai_subtitle/subtitle_style.png)
+
+        :rtype: int
+        """
+        return self._BoardY
+
+    @BoardY.setter
+    def BoardY(self, BoardY):
+        self._BoardY = BoardY
+
+    @property
+    def BoardYUnit(self):
+        r"""BoardY单位, 0 像素，1百分比，默认为0，像素
+        :rtype: int
+        """
+        return self._BoardYUnit
+
+    @BoardYUnit.setter
+    def BoardYUnit(self, BoardYUnit):
+        self._BoardYUnit = BoardYUnit
+
+    @property
+    def BoardWidth(self):
+        r"""底板的宽度，正整数。
+- 代表像素时，取值范围：[0,4096]。
+- 代表百分数时，[0, 100]。
+开启底板且不填此值时，默认源视频宽像素的90%。
+
+        :rtype: int
+        """
+        return self._BoardWidth
+
+    @BoardWidth.setter
+    def BoardWidth(self, BoardWidth):
+        self._BoardWidth = BoardWidth
+
+    @property
+    def BoardWidthUnit(self):
+        r"""底板的宽度单位，0 像素，1百分比，默认为0，像素
+
+        :rtype: int
+        """
+        return self._BoardWidthUnit
+
+    @BoardWidthUnit.setter
+    def BoardWidthUnit(self, BoardWidthUnit):
+        self._BoardWidthUnit = BoardWidthUnit
+
+    @property
+    def BoardHeight(self):
+        r"""底板的高度，正整数。
+- 代表像素时，取值范围：[0,4096]。
+- 代表百分数时，[0, 100]。
+开启底板且不填此值时，默认为源视频高像素的15%。
+
+        :rtype: int
+        """
+        return self._BoardHeight
+
+    @BoardHeight.setter
+    def BoardHeight(self, BoardHeight):
+        self._BoardHeight = BoardHeight
+
+    @property
+    def BoardHeightUnit(self):
+        r"""底板的高度单位，0 像素，1百分比，默认为0，像素
+
+        :rtype: int
+        """
+        return self._BoardHeightUnit
+
+    @BoardHeightUnit.setter
+    def BoardHeightUnit(self, BoardHeightUnit):
+        self._BoardHeightUnit = BoardHeightUnit
+
+    @property
+    def BoardColor(self):
+        r"""底板颜色。格式：0xRRGGBB，
+默认值：0x000000（黑色）。
+        :rtype: str
+        """
+        return self._BoardColor
+
+    @BoardColor.setter
+    def BoardColor(self, BoardColor):
+        self._BoardColor = BoardColor
+
+    @property
+    def BoardAlpha(self):
+        r"""字幕背景板透明度，取值范围：[0, 1]
+<li>0：完全透明</li>
+<li>1：完全不透明</li>
+默认值：0.8。
+        :rtype: float
+        """
+        return self._BoardAlpha
+
+    @BoardAlpha.setter
+    def BoardAlpha(self, BoardAlpha):
+        self._BoardAlpha = BoardAlpha
+
+
+    def _deserialize(self, params):
+        self._SubtitleBoardConfigSwitch = params.get("SubtitleBoardConfigSwitch")
+        self._BoardX = params.get("BoardX")
+        self._BoardXUnit = params.get("BoardXUnit")
+        self._BoardY = params.get("BoardY")
+        self._BoardYUnit = params.get("BoardYUnit")
+        self._BoardWidth = params.get("BoardWidth")
+        self._BoardWidthUnit = params.get("BoardWidthUnit")
+        self._BoardHeight = params.get("BoardHeight")
+        self._BoardHeightUnit = params.get("BoardHeightUnit")
+        self._BoardColor = params.get("BoardColor")
+        self._BoardAlpha = params.get("BoardAlpha")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SubtitleEmbedConfig(AbstractModel):
+    r"""字幕压制模块配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FontType: <p>字体类型，支持：</p><li>hei.ttf：黑体</li><li>song.ttf：宋体</li><li>kai.ttf（推荐）或 simkai.ttf：楷体</li><li>msyh.ttf：微软雅黑</li><li>msyhbd.ttf：微软雅黑加粗</li><li>hkjgt.ttf：华康金刚体</li><li>dhttx.ttf：典黑体特细</li><li>xqgdzt.ttf：喜鹊古字典体</li><li>qpcyt.ttf：巧拼超圆体</li><li>arial.ttf：仅支持英文</li><li>dinalternate.ttf：DIN Alternate Bold</li><li>helveticalt.ttf：Helvetica</li><li>helveticains.ttf：Helvetica Inserat</li><li>trajanpro.ttf：TrajanPro-Bold</li><li>korean.ttf：韩语</li><li>japanese.ttf：日语</li><li>thai.ttf：泰语</li><li>roboto.ttf：Roboto</li><li>notosans.ttf：NotoSans</li><li>notosansthai.ttf：泰语NotoSansThai</li><li>sarabun.ttf：泰语Sarabun</li><li>kanit.ttf：泰语Kanit</li><li>charmonman.ttf：泰语Charmonman</li><li>notonaskharabic.ttf：阿拉伯语NotoNaskhArabic</li><li>notosansdevanagari.ttf：印度语NotoSansDevanagari</li><li>notosanstc.ttf：粤语思源黑体NotoSansTC</li><li>notosanskr.ttf：韩语NotoSansKR</li><li>gothica1.ttf：韩语GothicA1</li><li>nanummyeongjo.ttf：韩语NanumMyeongjo</li><li>notosansjp.ttf：日语NotoSansJP</li><li>notoserifjp.ttf：日语NotoSerifJP</li><li>shipporimincho.ttf：日语ShipporiMincho</li>默认：hei.ttf 黑体。<br>注意：<li>楷体推荐使用kai.ttf</li><li>填了FontPath时FontPath优先</li>
+        :type FontType: str
+        :param _FontPath: <p>自定义字体文件url地址，和CosInputInfo二选一</p>
+        :type FontPath: str
+        :param _CosInputInfo: <p>自定义字体文件cos地址</p>
+        :type CosInputInfo: :class:`tencentcloud.mps.v20190612.models.CosInputInfo`
+        :param _FontSize: <p>字体大小，不指定则以字幕文件中为准。支持像素和百分比格式：</p><ul><li>像素：Npx，N范围：(0,4096]。</li><li>百分百：N%，N范围：(0,100]；例如10%表示字幕字体大小=10%*源视频高度。</li></ul><p>不填且字幕文件无设置时，默认源视频高度的5%。</p>
+        :type FontSize: int
+        :param _FontSizeUnit: <p>FontSize单位, 0 像素，1百分比，默认为0，像素</p>
+        :type FontSizeUnit: int
+        :param _FontColor: <p>字体颜色，格式：0xRRGGBB，默认值：0xFFFFFF（白色）。</p>
+        :type FontColor: str
+        :param _FontAlpha: <p>文字透明度，取值范围：(0, 1]</p><li>0：完全透明</li><li>1：完全不透明</li>默认值：1。
+        :type FontAlpha: float
+        :param _PosX: <p>字幕x轴坐标位置，指定此参数会忽略字幕文件自带坐标；支持像素和百分比格式：</p><ul><li>像素：Npx，N范围：[-4096,4096]。</li><li>百分百：N%，N范围：[-100,100]；例如10%表示字幕x坐标=10%*源视频宽度。</li></ul><p>默认值：0px。<br>注意：坐标轴原点在源视频中轴线底部，字幕基准点在字幕中轴线底部，参考下图：<br><img src="https://ie-mps-1258344699.cos.ap-nanjing.tencentcos.cn/common/cloud/mps-demo/102_ai_subtitle/subtitle_style.png" alt="image"></p>
+        :type PosX: int
+        :param _PosXUnit: <p>PosX单位, 0 像素，1百分比，默认为0，像素</p>
+        :type PosXUnit: int
+        :param _PosY: <p>字幕y轴坐标位置，指定此参数会忽略字幕文件自带坐标；支持像素和百分比格式：</p><ul><li>像素：Npx，N范围：[0,4096]。</li><li>百分百：N%，N范围：[0,100]；例如10%表示字幕y坐标=10%*源视频高度。</li></ul><p>默认值：源视频高度*4%。<br>注意：坐标轴原点在源视频中轴线底部，字幕基准点在字幕中轴线底部，参考下图：<br><img src="https://ie-mps-1258344699.cos.ap-nanjing.tencentcos.cn/common/cloud/mps-demo/102_ai_subtitle/subtitle_style.png" alt="image"></p>
+        :type PosY: int
+        :param _PosYUnit: <p>PosY单位, 0 像素，1百分比，默认为0，像素</p>
+        :type PosYUnit: int
+        :param _SubtitleBoardConfig: <p>背景配置</p>
+        :type SubtitleBoardConfig: :class:`tencentcloud.mps.v20190612.models.SubtitleBoardConfig`
+        :param _SubtitleLayoutConfig: <p>排列配置</p>
+        :type SubtitleLayoutConfig: :class:`tencentcloud.mps.v20190612.models.SubtitleLayoutConfig`
+        :param _SubtitleOutlineConfig: <p>文字描边配置</p>
+        :type SubtitleOutlineConfig: :class:`tencentcloud.mps.v20190612.models.SubtitleOutlineConfig`
+        :param _SubtitleShadowConfig: <p>文字阴影配置</p>
+        :type SubtitleShadowConfig: :class:`tencentcloud.mps.v20190612.models.SubtitleShadowConfig`
+        :param _SampleWidth: <p>源视频尺寸的宽，单位像素值</p>
+        :type SampleWidth: int
+        :param _SampleHeight: <p>源视频尺寸的高，单位像素值</p>
+        :type SampleHeight: int
+        """
+        self._FontType = None
+        self._FontPath = None
+        self._CosInputInfo = None
+        self._FontSize = None
+        self._FontSizeUnit = None
+        self._FontColor = None
+        self._FontAlpha = None
+        self._PosX = None
+        self._PosXUnit = None
+        self._PosY = None
+        self._PosYUnit = None
+        self._SubtitleBoardConfig = None
+        self._SubtitleLayoutConfig = None
+        self._SubtitleOutlineConfig = None
+        self._SubtitleShadowConfig = None
+        self._SampleWidth = None
+        self._SampleHeight = None
+
+    @property
+    def FontType(self):
+        r"""<p>字体类型，支持：</p><li>hei.ttf：黑体</li><li>song.ttf：宋体</li><li>kai.ttf（推荐）或 simkai.ttf：楷体</li><li>msyh.ttf：微软雅黑</li><li>msyhbd.ttf：微软雅黑加粗</li><li>hkjgt.ttf：华康金刚体</li><li>dhttx.ttf：典黑体特细</li><li>xqgdzt.ttf：喜鹊古字典体</li><li>qpcyt.ttf：巧拼超圆体</li><li>arial.ttf：仅支持英文</li><li>dinalternate.ttf：DIN Alternate Bold</li><li>helveticalt.ttf：Helvetica</li><li>helveticains.ttf：Helvetica Inserat</li><li>trajanpro.ttf：TrajanPro-Bold</li><li>korean.ttf：韩语</li><li>japanese.ttf：日语</li><li>thai.ttf：泰语</li><li>roboto.ttf：Roboto</li><li>notosans.ttf：NotoSans</li><li>notosansthai.ttf：泰语NotoSansThai</li><li>sarabun.ttf：泰语Sarabun</li><li>kanit.ttf：泰语Kanit</li><li>charmonman.ttf：泰语Charmonman</li><li>notonaskharabic.ttf：阿拉伯语NotoNaskhArabic</li><li>notosansdevanagari.ttf：印度语NotoSansDevanagari</li><li>notosanstc.ttf：粤语思源黑体NotoSansTC</li><li>notosanskr.ttf：韩语NotoSansKR</li><li>gothica1.ttf：韩语GothicA1</li><li>nanummyeongjo.ttf：韩语NanumMyeongjo</li><li>notosansjp.ttf：日语NotoSansJP</li><li>notoserifjp.ttf：日语NotoSerifJP</li><li>shipporimincho.ttf：日语ShipporiMincho</li>默认：hei.ttf 黑体。<br>注意：<li>楷体推荐使用kai.ttf</li><li>填了FontPath时FontPath优先</li>
+        :rtype: str
+        """
+        return self._FontType
+
+    @FontType.setter
+    def FontType(self, FontType):
+        self._FontType = FontType
+
+    @property
+    def FontPath(self):
+        r"""<p>自定义字体文件url地址，和CosInputInfo二选一</p>
+        :rtype: str
+        """
+        return self._FontPath
+
+    @FontPath.setter
+    def FontPath(self, FontPath):
+        self._FontPath = FontPath
+
+    @property
+    def CosInputInfo(self):
+        r"""<p>自定义字体文件cos地址</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CosInputInfo`
+        """
+        return self._CosInputInfo
+
+    @CosInputInfo.setter
+    def CosInputInfo(self, CosInputInfo):
+        self._CosInputInfo = CosInputInfo
+
+    @property
+    def FontSize(self):
+        r"""<p>字体大小，不指定则以字幕文件中为准。支持像素和百分比格式：</p><ul><li>像素：Npx，N范围：(0,4096]。</li><li>百分百：N%，N范围：(0,100]；例如10%表示字幕字体大小=10%*源视频高度。</li></ul><p>不填且字幕文件无设置时，默认源视频高度的5%。</p>
+        :rtype: int
+        """
+        return self._FontSize
+
+    @FontSize.setter
+    def FontSize(self, FontSize):
+        self._FontSize = FontSize
+
+    @property
+    def FontSizeUnit(self):
+        r"""<p>FontSize单位, 0 像素，1百分比，默认为0，像素</p>
+        :rtype: int
+        """
+        return self._FontSizeUnit
+
+    @FontSizeUnit.setter
+    def FontSizeUnit(self, FontSizeUnit):
+        self._FontSizeUnit = FontSizeUnit
+
+    @property
+    def FontColor(self):
+        r"""<p>字体颜色，格式：0xRRGGBB，默认值：0xFFFFFF（白色）。</p>
+        :rtype: str
+        """
+        return self._FontColor
+
+    @FontColor.setter
+    def FontColor(self, FontColor):
+        self._FontColor = FontColor
+
+    @property
+    def FontAlpha(self):
+        r"""<p>文字透明度，取值范围：(0, 1]</p><li>0：完全透明</li><li>1：完全不透明</li>默认值：1。
+        :rtype: float
+        """
+        return self._FontAlpha
+
+    @FontAlpha.setter
+    def FontAlpha(self, FontAlpha):
+        self._FontAlpha = FontAlpha
+
+    @property
+    def PosX(self):
+        r"""<p>字幕x轴坐标位置，指定此参数会忽略字幕文件自带坐标；支持像素和百分比格式：</p><ul><li>像素：Npx，N范围：[-4096,4096]。</li><li>百分百：N%，N范围：[-100,100]；例如10%表示字幕x坐标=10%*源视频宽度。</li></ul><p>默认值：0px。<br>注意：坐标轴原点在源视频中轴线底部，字幕基准点在字幕中轴线底部，参考下图：<br><img src="https://ie-mps-1258344699.cos.ap-nanjing.tencentcos.cn/common/cloud/mps-demo/102_ai_subtitle/subtitle_style.png" alt="image"></p>
+        :rtype: int
+        """
+        return self._PosX
+
+    @PosX.setter
+    def PosX(self, PosX):
+        self._PosX = PosX
+
+    @property
+    def PosXUnit(self):
+        r"""<p>PosX单位, 0 像素，1百分比，默认为0，像素</p>
+        :rtype: int
+        """
+        return self._PosXUnit
+
+    @PosXUnit.setter
+    def PosXUnit(self, PosXUnit):
+        self._PosXUnit = PosXUnit
+
+    @property
+    def PosY(self):
+        r"""<p>字幕y轴坐标位置，指定此参数会忽略字幕文件自带坐标；支持像素和百分比格式：</p><ul><li>像素：Npx，N范围：[0,4096]。</li><li>百分百：N%，N范围：[0,100]；例如10%表示字幕y坐标=10%*源视频高度。</li></ul><p>默认值：源视频高度*4%。<br>注意：坐标轴原点在源视频中轴线底部，字幕基准点在字幕中轴线底部，参考下图：<br><img src="https://ie-mps-1258344699.cos.ap-nanjing.tencentcos.cn/common/cloud/mps-demo/102_ai_subtitle/subtitle_style.png" alt="image"></p>
+        :rtype: int
+        """
+        return self._PosY
+
+    @PosY.setter
+    def PosY(self, PosY):
+        self._PosY = PosY
+
+    @property
+    def PosYUnit(self):
+        r"""<p>PosY单位, 0 像素，1百分比，默认为0，像素</p>
+        :rtype: int
+        """
+        return self._PosYUnit
+
+    @PosYUnit.setter
+    def PosYUnit(self, PosYUnit):
+        self._PosYUnit = PosYUnit
+
+    @property
+    def SubtitleBoardConfig(self):
+        r"""<p>背景配置</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SubtitleBoardConfig`
+        """
+        return self._SubtitleBoardConfig
+
+    @SubtitleBoardConfig.setter
+    def SubtitleBoardConfig(self, SubtitleBoardConfig):
+        self._SubtitleBoardConfig = SubtitleBoardConfig
+
+    @property
+    def SubtitleLayoutConfig(self):
+        r"""<p>排列配置</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SubtitleLayoutConfig`
+        """
+        return self._SubtitleLayoutConfig
+
+    @SubtitleLayoutConfig.setter
+    def SubtitleLayoutConfig(self, SubtitleLayoutConfig):
+        self._SubtitleLayoutConfig = SubtitleLayoutConfig
+
+    @property
+    def SubtitleOutlineConfig(self):
+        r"""<p>文字描边配置</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SubtitleOutlineConfig`
+        """
+        return self._SubtitleOutlineConfig
+
+    @SubtitleOutlineConfig.setter
+    def SubtitleOutlineConfig(self, SubtitleOutlineConfig):
+        self._SubtitleOutlineConfig = SubtitleOutlineConfig
+
+    @property
+    def SubtitleShadowConfig(self):
+        r"""<p>文字阴影配置</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SubtitleShadowConfig`
+        """
+        return self._SubtitleShadowConfig
+
+    @SubtitleShadowConfig.setter
+    def SubtitleShadowConfig(self, SubtitleShadowConfig):
+        self._SubtitleShadowConfig = SubtitleShadowConfig
+
+    @property
+    def SampleWidth(self):
+        r"""<p>源视频尺寸的宽，单位像素值</p>
+        :rtype: int
+        """
+        return self._SampleWidth
+
+    @SampleWidth.setter
+    def SampleWidth(self, SampleWidth):
+        self._SampleWidth = SampleWidth
+
+    @property
+    def SampleHeight(self):
+        r"""<p>源视频尺寸的高，单位像素值</p>
+        :rtype: int
+        """
+        return self._SampleHeight
+
+    @SampleHeight.setter
+    def SampleHeight(self, SampleHeight):
+        self._SampleHeight = SampleHeight
+
+
+    def _deserialize(self, params):
+        self._FontType = params.get("FontType")
+        self._FontPath = params.get("FontPath")
+        if params.get("CosInputInfo") is not None:
+            self._CosInputInfo = CosInputInfo()
+            self._CosInputInfo._deserialize(params.get("CosInputInfo"))
+        self._FontSize = params.get("FontSize")
+        self._FontSizeUnit = params.get("FontSizeUnit")
+        self._FontColor = params.get("FontColor")
+        self._FontAlpha = params.get("FontAlpha")
+        self._PosX = params.get("PosX")
+        self._PosXUnit = params.get("PosXUnit")
+        self._PosY = params.get("PosY")
+        self._PosYUnit = params.get("PosYUnit")
+        if params.get("SubtitleBoardConfig") is not None:
+            self._SubtitleBoardConfig = SubtitleBoardConfig()
+            self._SubtitleBoardConfig._deserialize(params.get("SubtitleBoardConfig"))
+        if params.get("SubtitleLayoutConfig") is not None:
+            self._SubtitleLayoutConfig = SubtitleLayoutConfig()
+            self._SubtitleLayoutConfig._deserialize(params.get("SubtitleLayoutConfig"))
+        if params.get("SubtitleOutlineConfig") is not None:
+            self._SubtitleOutlineConfig = SubtitleOutlineConfig()
+            self._SubtitleOutlineConfig._deserialize(params.get("SubtitleOutlineConfig"))
+        if params.get("SubtitleShadowConfig") is not None:
+            self._SubtitleShadowConfig = SubtitleShadowConfig()
+            self._SubtitleShadowConfig._deserialize(params.get("SubtitleShadowConfig"))
+        self._SampleWidth = params.get("SampleWidth")
+        self._SampleHeight = params.get("SampleHeight")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SubtitleEmbedTemplateItem(AbstractModel):
+    r"""字幕压制模板详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: 字幕压制模板唯一标识
+        :type Definition: int
+        :param _Name: 字幕压制模板名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Comment: 字幕压制模板描述信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Comment: str
+        :param _Type: 模板类型，取值范围：
+* Preset：系统预置模板；
+* Custom：用户自定义模板。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param _DeleteTag: 删除标记，0 未删除 1 删除
+        :type DeleteTag: int
+        :param _CreateTime: 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+        :type CreateTime: str
+        :param _UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+        :type UpdateTime: str
+        :param _SubtitleEmbedConfig: 字幕压制模块配置
+        :type SubtitleEmbedConfig: :class:`tencentcloud.mps.v20190612.models.SubtitleEmbedConfig`
+        :param _AliasName: 字幕压制模板英文名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AliasName: str
+        """
+        self._Definition = None
+        self._Name = None
+        self._Comment = None
+        self._Type = None
+        self._DeleteTag = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._SubtitleEmbedConfig = None
+        self._AliasName = None
+
+    @property
+    def Definition(self):
+        r"""字幕压制模板唯一标识
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def Name(self):
+        r"""字幕压制模板名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Comment(self):
+        r"""字幕压制模板描述信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def Type(self):
+        r"""模板类型，取值范围：
+* Preset：系统预置模板；
+* Custom：用户自定义模板。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def DeleteTag(self):
+        r"""删除标记，0 未删除 1 删除
+        :rtype: int
+        """
+        return self._DeleteTag
+
+    @DeleteTag.setter
+    def DeleteTag(self, DeleteTag):
+        self._DeleteTag = DeleteTag
+
+    @property
+    def CreateTime(self):
+        r"""模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def SubtitleEmbedConfig(self):
+        r"""字幕压制模块配置
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SubtitleEmbedConfig`
+        """
+        return self._SubtitleEmbedConfig
+
+    @SubtitleEmbedConfig.setter
+    def SubtitleEmbedConfig(self, SubtitleEmbedConfig):
+        self._SubtitleEmbedConfig = SubtitleEmbedConfig
+
+    @property
+    def AliasName(self):
+        r"""字幕压制模板英文名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AliasName
+
+    @AliasName.setter
+    def AliasName(self, AliasName):
+        self._AliasName = AliasName
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        self._Name = params.get("Name")
+        self._Comment = params.get("Comment")
+        self._Type = params.get("Type")
+        self._DeleteTag = params.get("DeleteTag")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        if params.get("SubtitleEmbedConfig") is not None:
+            self._SubtitleEmbedConfig = SubtitleEmbedConfig()
+            self._SubtitleEmbedConfig._deserialize(params.get("SubtitleEmbedConfig"))
+        self._AliasName = params.get("AliasName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SubtitleLayoutConfig(AbstractModel):
+    r"""字幕压制模块字幕排列配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubtitleLayoutConfigSwitch: 字幕排列配置开关，0关闭，1开启，默认0
+        :type SubtitleLayoutConfigSwitch: int
+        :param _LineSpacing: 行间距。正整数。
+- 代表像素值时， [0, 1000]。
+- 代表百分数时，[0, 100]。不填默认0。
+
+        :type LineSpacing: int
+        :param _LineSpacingUnit: LineSpacing单位，0 像素，1百分比，默认为0，像素
+
+        :type LineSpacingUnit: int
+        :param _Alignment: 对齐方式，取值：top: 顶部对齐，字幕顶部按位置固定，底部随行数变化。bottom: 底部对齐，字幕底部按位置固定，顶部随行数变化。不填默认底部对齐。
+
+        :type Alignment: str
+        """
+        self._SubtitleLayoutConfigSwitch = None
+        self._LineSpacing = None
+        self._LineSpacingUnit = None
+        self._Alignment = None
+
+    @property
+    def SubtitleLayoutConfigSwitch(self):
+        r"""字幕排列配置开关，0关闭，1开启，默认0
+        :rtype: int
+        """
+        return self._SubtitleLayoutConfigSwitch
+
+    @SubtitleLayoutConfigSwitch.setter
+    def SubtitleLayoutConfigSwitch(self, SubtitleLayoutConfigSwitch):
+        self._SubtitleLayoutConfigSwitch = SubtitleLayoutConfigSwitch
+
+    @property
+    def LineSpacing(self):
+        r"""行间距。正整数。
+- 代表像素值时， [0, 1000]。
+- 代表百分数时，[0, 100]。不填默认0。
+
+        :rtype: int
+        """
+        return self._LineSpacing
+
+    @LineSpacing.setter
+    def LineSpacing(self, LineSpacing):
+        self._LineSpacing = LineSpacing
+
+    @property
+    def LineSpacingUnit(self):
+        r"""LineSpacing单位，0 像素，1百分比，默认为0，像素
+
+        :rtype: int
+        """
+        return self._LineSpacingUnit
+
+    @LineSpacingUnit.setter
+    def LineSpacingUnit(self, LineSpacingUnit):
+        self._LineSpacingUnit = LineSpacingUnit
+
+    @property
+    def Alignment(self):
+        r"""对齐方式，取值：top: 顶部对齐，字幕顶部按位置固定，底部随行数变化。bottom: 底部对齐，字幕底部按位置固定，顶部随行数变化。不填默认底部对齐。
+
+        :rtype: str
+        """
+        return self._Alignment
+
+    @Alignment.setter
+    def Alignment(self, Alignment):
+        self._Alignment = Alignment
+
+
+    def _deserialize(self, params):
+        self._SubtitleLayoutConfigSwitch = params.get("SubtitleLayoutConfigSwitch")
+        self._LineSpacing = params.get("LineSpacing")
+        self._LineSpacingUnit = params.get("LineSpacingUnit")
+        self._Alignment = params.get("Alignment")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SubtitleOutlineConfig(AbstractModel):
+    r"""字幕压制模块文字描边配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubtitleOutlineConfigSwitch: <p>文字描边配置开关，0关闭，1开启，默认0</p>
+        :type SubtitleOutlineConfigSwitch: int
+        :param _OutlineWidth: <p>描边宽度，默认单位像素，底层默认值为源视频高度的0.3%</p>
+        :type OutlineWidth: float
+        :param _OutlineWidthUnit: <p>描边宽度单位，0 像素，1百分比，默认为0，像素</p>
+        :type OutlineWidthUnit: int
+        :param _OutlineColor: <p>描边颜色。6位16进制RGB。不填默认黑色。</p>
+        :type OutlineColor: str
+        :param _OutlineAlpha: <p>描边透明度。(0，1] 正浮点数。不填默认1，完全不透明</p>
+        :type OutlineAlpha: float
+        """
+        self._SubtitleOutlineConfigSwitch = None
+        self._OutlineWidth = None
+        self._OutlineWidthUnit = None
+        self._OutlineColor = None
+        self._OutlineAlpha = None
+
+    @property
+    def SubtitleOutlineConfigSwitch(self):
+        r"""<p>文字描边配置开关，0关闭，1开启，默认0</p>
+        :rtype: int
+        """
+        return self._SubtitleOutlineConfigSwitch
+
+    @SubtitleOutlineConfigSwitch.setter
+    def SubtitleOutlineConfigSwitch(self, SubtitleOutlineConfigSwitch):
+        self._SubtitleOutlineConfigSwitch = SubtitleOutlineConfigSwitch
+
+    @property
+    def OutlineWidth(self):
+        r"""<p>描边宽度，默认单位像素，底层默认值为源视频高度的0.3%</p>
+        :rtype: float
+        """
+        return self._OutlineWidth
+
+    @OutlineWidth.setter
+    def OutlineWidth(self, OutlineWidth):
+        self._OutlineWidth = OutlineWidth
+
+    @property
+    def OutlineWidthUnit(self):
+        r"""<p>描边宽度单位，0 像素，1百分比，默认为0，像素</p>
+        :rtype: int
+        """
+        return self._OutlineWidthUnit
+
+    @OutlineWidthUnit.setter
+    def OutlineWidthUnit(self, OutlineWidthUnit):
+        self._OutlineWidthUnit = OutlineWidthUnit
+
+    @property
+    def OutlineColor(self):
+        r"""<p>描边颜色。6位16进制RGB。不填默认黑色。</p>
+        :rtype: str
+        """
+        return self._OutlineColor
+
+    @OutlineColor.setter
+    def OutlineColor(self, OutlineColor):
+        self._OutlineColor = OutlineColor
+
+    @property
+    def OutlineAlpha(self):
+        r"""<p>描边透明度。(0，1] 正浮点数。不填默认1，完全不透明</p>
+        :rtype: float
+        """
+        return self._OutlineAlpha
+
+    @OutlineAlpha.setter
+    def OutlineAlpha(self, OutlineAlpha):
+        self._OutlineAlpha = OutlineAlpha
+
+
+    def _deserialize(self, params):
+        self._SubtitleOutlineConfigSwitch = params.get("SubtitleOutlineConfigSwitch")
+        self._OutlineWidth = params.get("OutlineWidth")
+        self._OutlineWidthUnit = params.get("OutlineWidthUnit")
+        self._OutlineColor = params.get("OutlineColor")
+        self._OutlineAlpha = params.get("OutlineAlpha")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SubtitlePosition(AbstractModel):
     r"""字幕位置信息
 
@@ -72838,20 +71884,23 @@ class SubtitleResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Language: 字幕文件语言
+        :param _Language: <p>字幕文件语言</p>
         :type Language: str
-        :param _Status: 处理是否成功
+        :param _Status: <p>处理是否成功</p>
         :type Status: str
-        :param _Path: 字幕文件地址
+        :param _Path: <p>字幕文件路径。</p>
         :type Path: str
+        :param _SubtitleEmbedPath: <p>字幕压制视频路径。</p>
+        :type SubtitleEmbedPath: str
         """
         self._Language = None
         self._Status = None
         self._Path = None
+        self._SubtitleEmbedPath = None
 
     @property
     def Language(self):
-        r"""字幕文件语言
+        r"""<p>字幕文件语言</p>
         :rtype: str
         """
         return self._Language
@@ -72862,7 +71911,7 @@ class SubtitleResult(AbstractModel):
 
     @property
     def Status(self):
-        r"""处理是否成功
+        r"""<p>处理是否成功</p>
         :rtype: str
         """
         return self._Status
@@ -72873,7 +71922,7 @@ class SubtitleResult(AbstractModel):
 
     @property
     def Path(self):
-        r"""字幕文件地址
+        r"""<p>字幕文件路径。</p>
         :rtype: str
         """
         return self._Path
@@ -72882,11 +71931,127 @@ class SubtitleResult(AbstractModel):
     def Path(self, Path):
         self._Path = Path
 
+    @property
+    def SubtitleEmbedPath(self):
+        r"""<p>字幕压制视频路径。</p>
+        :rtype: str
+        """
+        return self._SubtitleEmbedPath
+
+    @SubtitleEmbedPath.setter
+    def SubtitleEmbedPath(self, SubtitleEmbedPath):
+        self._SubtitleEmbedPath = SubtitleEmbedPath
+
 
     def _deserialize(self, params):
         self._Language = params.get("Language")
         self._Status = params.get("Status")
         self._Path = params.get("Path")
+        self._SubtitleEmbedPath = params.get("SubtitleEmbedPath")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SubtitleShadowConfig(AbstractModel):
+    r"""字幕压制模块文字阴影配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubtitleShadowConfigSwitch: 文字阴影配置开关，0关闭，1开启，默认0
+        :type SubtitleShadowConfigSwitch: int
+        :param _ShadowWidth: 阴影宽度，默认单位像素，底层默认值为0，无阴影
+
+        :type ShadowWidth: float
+        :param _ShadowWidthUnit: 阴影宽度单位， 0 像素，1百分比，默认为0，像素
+
+        :type ShadowWidthUnit: int
+        :param _ShadowColor: 阴影颜色。6位16进制RGB。不填默认黑色（有设置阴影的情况下）
+
+        :type ShadowColor: str
+        :param _ShadowAlpha: 阴影透明度。(0，1] 正浮点数。不填默认1，完全不透明（有设置阴影的情况下）
+
+        :type ShadowAlpha: float
+        """
+        self._SubtitleShadowConfigSwitch = None
+        self._ShadowWidth = None
+        self._ShadowWidthUnit = None
+        self._ShadowColor = None
+        self._ShadowAlpha = None
+
+    @property
+    def SubtitleShadowConfigSwitch(self):
+        r"""文字阴影配置开关，0关闭，1开启，默认0
+        :rtype: int
+        """
+        return self._SubtitleShadowConfigSwitch
+
+    @SubtitleShadowConfigSwitch.setter
+    def SubtitleShadowConfigSwitch(self, SubtitleShadowConfigSwitch):
+        self._SubtitleShadowConfigSwitch = SubtitleShadowConfigSwitch
+
+    @property
+    def ShadowWidth(self):
+        r"""阴影宽度，默认单位像素，底层默认值为0，无阴影
+
+        :rtype: float
+        """
+        return self._ShadowWidth
+
+    @ShadowWidth.setter
+    def ShadowWidth(self, ShadowWidth):
+        self._ShadowWidth = ShadowWidth
+
+    @property
+    def ShadowWidthUnit(self):
+        r"""阴影宽度单位， 0 像素，1百分比，默认为0，像素
+
+        :rtype: int
+        """
+        return self._ShadowWidthUnit
+
+    @ShadowWidthUnit.setter
+    def ShadowWidthUnit(self, ShadowWidthUnit):
+        self._ShadowWidthUnit = ShadowWidthUnit
+
+    @property
+    def ShadowColor(self):
+        r"""阴影颜色。6位16进制RGB。不填默认黑色（有设置阴影的情况下）
+
+        :rtype: str
+        """
+        return self._ShadowColor
+
+    @ShadowColor.setter
+    def ShadowColor(self, ShadowColor):
+        self._ShadowColor = ShadowColor
+
+    @property
+    def ShadowAlpha(self):
+        r"""阴影透明度。(0，1] 正浮点数。不填默认1，完全不透明（有设置阴影的情况下）
+
+        :rtype: float
+        """
+        return self._ShadowAlpha
+
+    @ShadowAlpha.setter
+    def ShadowAlpha(self, ShadowAlpha):
+        self._ShadowAlpha = ShadowAlpha
+
+
+    def _deserialize(self, params):
+        self._SubtitleShadowConfigSwitch = params.get("SubtitleShadowConfigSwitch")
+        self._ShadowWidth = params.get("ShadowWidth")
+        self._ShadowWidthUnit = params.get("ShadowWidthUnit")
+        self._ShadowColor = params.get("ShadowColor")
+        self._ShadowAlpha = params.get("ShadowAlpha")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -72938,6 +72103,21 @@ class SubtitleTemplate(AbstractModel):
 <li>korean.ttf：韩语</li>
 <li>japanese.ttf：日语</li>
 <li>thai.ttf：泰语</li>
+<li>roboto.ttf：Roboto</li>
+<li>notosans.ttf：NotoSans</li>
+<li>notosansthai.ttf：泰语NotoSansThai</li>
+<li>sarabun.ttf：泰语Sarabun</li>
+<li>kanit.ttf：泰语Kanit</li>
+<li>charmonman.ttf：泰语Charmonman</li>
+<li>notonaskharabic.ttf：阿拉伯语NotoNaskhArabic</li>
+<li>notosansdevanagari.ttf：印度语NotoSansDevanagari</li>
+<li>notosanstc.ttf：粤语思源黑体NotoSansTC</li>
+<li>notosanskr.ttf：韩语NotoSansKR</li>
+<li>gothica1.ttf：韩语GothicA1</li>
+<li>nanummyeongjo.ttf：韩语NanumMyeongjo</li>
+<li>notosansjp.ttf：日语NotoSansJP</li>
+<li>notoserifjp.ttf：日语NotoSerifJP</li>
+<li>shipporimincho.ttf：日语ShipporiMincho</li>
 默认：hei.ttf 黑体。
 <br>注意：
 <li>楷体推荐使用kai.ttf</li>
@@ -73157,6 +72337,21 @@ class SubtitleTemplate(AbstractModel):
 <li>korean.ttf：韩语</li>
 <li>japanese.ttf：日语</li>
 <li>thai.ttf：泰语</li>
+<li>roboto.ttf：Roboto</li>
+<li>notosans.ttf：NotoSans</li>
+<li>notosansthai.ttf：泰语NotoSansThai</li>
+<li>sarabun.ttf：泰语Sarabun</li>
+<li>kanit.ttf：泰语Kanit</li>
+<li>charmonman.ttf：泰语Charmonman</li>
+<li>notonaskharabic.ttf：阿拉伯语NotoNaskhArabic</li>
+<li>notosansdevanagari.ttf：印度语NotoSansDevanagari</li>
+<li>notosanstc.ttf：粤语思源黑体NotoSansTC</li>
+<li>notosanskr.ttf：韩语NotoSansKR</li>
+<li>gothica1.ttf：韩语GothicA1</li>
+<li>nanummyeongjo.ttf：韩语NanumMyeongjo</li>
+<li>notosansjp.ttf：日语NotoSansJP</li>
+<li>notoserifjp.ttf：日语NotoSerifJP</li>
+<li>shipporimincho.ttf：日语ShipporiMincho</li>
 默认：hei.ttf 黑体。
 <br>注意：
 <li>楷体推荐使用kai.ttf</li>
@@ -73530,27 +72725,26 @@ class SubtitleTransResultItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Status: 翻译标识：
-- Success
-- Error
+        :param _Status: <p>翻译标识：</p><ul><li>Success</li><li>Error</li></ul>
         :type Status: str
-        :param _TransSrc: 源语言（如"en"）
+        :param _TransSrc: <p>源语言（如&quot;en&quot;）</p>
         :type TransSrc: str
-        :param _TransDst: 目标语言（如"zh"）
+        :param _TransDst: <p>目标语言（如&quot;zh&quot;）</p>
         :type TransDst: str
-        :param _Path: 字幕文件地址
+        :param _Path: <p>字幕文件地址</p>
         :type Path: str
+        :param _SubtitleEmbedPath: <p>翻译字幕压制视频路径。</p>
+        :type SubtitleEmbedPath: str
         """
         self._Status = None
         self._TransSrc = None
         self._TransDst = None
         self._Path = None
+        self._SubtitleEmbedPath = None
 
     @property
     def Status(self):
-        r"""翻译标识：
-- Success
-- Error
+        r"""<p>翻译标识：</p><ul><li>Success</li><li>Error</li></ul>
         :rtype: str
         """
         return self._Status
@@ -73561,7 +72755,7 @@ class SubtitleTransResultItem(AbstractModel):
 
     @property
     def TransSrc(self):
-        r"""源语言（如"en"）
+        r"""<p>源语言（如&quot;en&quot;）</p>
         :rtype: str
         """
         return self._TransSrc
@@ -73572,7 +72766,7 @@ class SubtitleTransResultItem(AbstractModel):
 
     @property
     def TransDst(self):
-        r"""目标语言（如"zh"）
+        r"""<p>目标语言（如&quot;zh&quot;）</p>
         :rtype: str
         """
         return self._TransDst
@@ -73583,7 +72777,7 @@ class SubtitleTransResultItem(AbstractModel):
 
     @property
     def Path(self):
-        r"""字幕文件地址
+        r"""<p>字幕文件地址</p>
         :rtype: str
         """
         return self._Path
@@ -73592,12 +72786,24 @@ class SubtitleTransResultItem(AbstractModel):
     def Path(self, Path):
         self._Path = Path
 
+    @property
+    def SubtitleEmbedPath(self):
+        r"""<p>翻译字幕压制视频路径。</p>
+        :rtype: str
+        """
+        return self._SubtitleEmbedPath
+
+    @SubtitleEmbedPath.setter
+    def SubtitleEmbedPath(self, SubtitleEmbedPath):
+        self._SubtitleEmbedPath = SubtitleEmbedPath
+
 
     def _deserialize(self, params):
         self._Status = params.get("Status")
         self._TransSrc = params.get("TransSrc")
         self._TransDst = params.get("TransDst")
         self._Path = params.get("Path")
+        self._SubtitleEmbedPath = params.get("SubtitleEmbedPath")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

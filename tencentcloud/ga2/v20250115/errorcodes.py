@@ -1,5 +1,5 @@
-# -*- coding: utf-8 -*-
-# Copyright 1999-2018 Tencent Ltd.
+# -*- coding: utf8 -*-
+# Copyright (c) 2017-2025 Tencent. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,4 +14,8 @@
 # limitations under the License.
 
 
-__version__ = '3.1.60'
+# 请求中传入参数 `%(key)s` 必选再 `%(value)s` 范围内。
+INVALIDPARAMETER_INPUTOUTOFRANGE = 'InvalidParameter.InputOutOfRange'
+
+# 参数 `%(parameter)s` 值 `%(value)s` 是无效的。正确且完整的值形如 `%(template)s`。
+INVALIDPARAMETERVALUE_MALFORMED = 'InvalidParameterValue.Malformed'

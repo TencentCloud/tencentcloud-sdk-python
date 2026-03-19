@@ -4664,7 +4664,8 @@ class AttrLabelRefer(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Source: 标签来源，1：标签
+        :param _Source: 标签来源，1：标签。
+使用标签引用信息时，Source、AttributeBizId和LabelBizIds都需填写。
         :type Source: int
         :param _AttributeBizId: 标签ID
         :type AttributeBizId: str
@@ -4677,7 +4678,8 @@ class AttrLabelRefer(AbstractModel):
 
     @property
     def Source(self):
-        r"""标签来源，1：标签
+        r"""标签来源，1：标签。
+使用标签引用信息时，Source、AttributeBizId和LabelBizIds都需填写。
         :rtype: int
         """
         return self._Source
@@ -32300,6 +32302,10 @@ class ReleaseConfigs(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
         :param _Action: 状态
+2：待发布
+3：发布中
+4：已发布
+5：发布失败
 注意：此字段可能返回 null，表示取不到有效值。
         :type Action: int
         :param _Value: 变更后的内容
@@ -32350,6 +32356,10 @@ class ReleaseConfigs(AbstractModel):
     @property
     def Action(self):
         r"""状态
+2：待发布
+3：发布中
+4：已发布
+5：发布失败
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """

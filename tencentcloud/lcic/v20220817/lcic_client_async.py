@@ -714,6 +714,24 @@ class LcicClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeLiveRelayConfig(
+            self,
+            request: models.DescribeLiveRelayConfigRequest,
+            opts: Dict = None,
+    ) -> models.DescribeLiveRelayConfigResponse:
+        """
+        获取转推配置
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeLiveRelayConfig"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeLiveRelayConfigResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeMarquee(
             self,
             request: models.DescribeMarqueeRequest,
@@ -1253,6 +1271,24 @@ class LcicClient(AbstractClient):
         kwargs["action"] = "ModifyGroup"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyGroupResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyLiveRelayConfig(
+            self,
+            request: models.ModifyLiveRelayConfigRequest,
+            opts: Dict = None,
+    ) -> models.ModifyLiveRelayConfigResponse:
+        """
+        修改转推配置
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyLiveRelayConfig"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyLiveRelayConfigResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
