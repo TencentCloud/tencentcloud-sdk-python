@@ -4909,36 +4909,33 @@ class SendEmailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FromEmailAddress: 发件人邮箱地址。不使用别名时请直接填写发件人邮箱地址，例如：noreply@mail.qcloud.com如需填写发件人别名时，请按照如下方式（注意别名与邮箱地址之间必须使用一个空格隔开）：别名+一个空格+<邮箱地址>，别名中不能带有冒号(:)。
+        :param _FromEmailAddress: <p>发件人邮箱地址。不使用别名时请直接填写发件人邮箱地址，例如：noreply@mail.qcloud.com如需填写发件人别名时，请按照如下方式（注意别名与邮箱地址之间必须使用一个空格隔开）：别名+一个空格+&lt;邮箱地址&gt;，别名中不能带有冒号(:)。</p>
         :type FromEmailAddress: str
-        :param _Subject: 邮件主题
+        :param _Subject: <p>邮件主题</p>
         :type Subject: str
-        :param _Destination: 收信人邮箱地址，最多支持群发50人。注意：邮件内容会显示所有收件人地址，非群发邮件请多次调用API发送。
-Destination/Cc/Bcc三个参数必须至少存在一个。
+        :param _Destination: <p>收信人邮箱地址，最多支持群发50人。注意：邮件内容会显示所有收件人地址，非群发邮件请多次调用API发送。<br>Destination/Cc/Bcc三个参数必须至少存在一个。</p>
         :type Destination: list of str
-        :param _ReplyToAddresses: 邮件的“回复”电子邮件地址。可以填写您能收到邮件的邮箱地址，可以是个人邮箱。如果不填，收件人的回复邮件将会发送失败。
+        :param _ReplyToAddresses: <p>邮件的“回复”电子邮件地址。可以填写您能收到邮件的邮箱地址，可以是个人邮箱。如果不填，收件人的回复邮件将会发送失败。</p>
         :type ReplyToAddresses: str
-        :param _Cc: 抄送人邮箱地址，最多支持抄送20人。
+        :param _Cc: <p>抄送人邮箱地址，最多支持抄送20人。</p>
         :type Cc: list of str
-        :param _Bcc: 密送人邮箱地址，最多支持抄送20人,Bcc和Destination不能重复。
+        :param _Bcc: <p>密送人邮箱地址，最多支持抄送20人,Bcc和Destination不能重复。</p>
         :type Bcc: list of str
-        :param _Template: 使用模板发送时，填写模板相关参数。
-<dx-alert infotype="notice" title="注意"> 如您未申请过特殊配置，则该字段为必填 </dx-alert>
+        :param _Template: <p>使用模板发送时，填写模板相关参数。</p><blockquote class="rno-document-tips rno-document-tips-notice">    <div class="rno-document-tips-body">        <i class="rno-document-tip-icon"></i>        <div class="rno-document-tip-title">注意</div>        <div class="rno-document-tip-desc"><p>如您未申请过特殊配置，则该字段为必填</p></div>    </div></blockquote>
         :type Template: :class:`tencentcloud.ses.v20201002.models.Template`
-        :param _Simple: 已废弃
-<dx-alert infotype="notice" title="说明"> 仅部分历史上申请了特殊配置的客户需要使用。如您未申请过特殊配置，则不存在该字段。</dx-alert>
+        :param _Simple: <p>已废弃</p><blockquote class="rno-document-tips rno-document-tips-notice">    <div class="rno-document-tips-body">        <i class="rno-document-tip-icon"></i>        <div class="rno-document-tip-title">说明</div>        <div class="rno-document-tip-desc"><p>仅部分历史上申请了特殊配置的客户需要使用。如您未申请过特殊配置，则不存在该字段。</p></div>    </div></blockquote>
         :type Simple: :class:`tencentcloud.ses.v20201002.models.Simple`
-        :param _Attachments: 需要发送附件时，填写附件相关参数。腾讯云接口请求最大支持 8M 的请求包，附件内容经过 Base64 预期扩大1.5倍，应该控制所有附件的总大小最大在 4M 以内，整体请求超出 8M 时接口会返回错误
+        :param _Attachments: <p>需要发送附件时，填写附件相关参数。腾讯云接口请求最大支持 8M 的请求包，附件内容经过 Base64 预期扩大1.5倍，应该控制所有附件的总大小最大在 4M 以内，整体请求超出 8M 时接口会返回错误</p>
         :type Attachments: list of Attachment
-        :param _Unsubscribe: 退订链接选项 0: 不加入退订链接 1: 简体中文 2: 英文 3: 繁体中文 4: 西班牙语 5: 法语 6: 德语 7: 日语 8: 韩语 9: 阿拉伯语 10: 泰语
+        :param _Unsubscribe: <p>退订链接选项</p><p>枚举值：</p><ul><li>0： 不加入退订链接</li><li>1： 简体中文</li><li>2： 英文</li><li>3： 繁体中文</li><li>4： 西班牙语</li><li>5： 法语</li><li>6： 德语</li><li>7： 日语</li><li>8： 韩语</li><li>9： 阿拉伯语</li><li>10： 泰语</li><li>11： 印尼语</li></ul>
         :type Unsubscribe: str
-        :param _TriggerType: 邮件触发类型 0:非触发类，默认类型，营销类邮件、非即时类邮件等选择此类型  1:触发类，验证码等即时发送类邮件，若邮件超过一定大小，系统会自动选择非触发类型通道
+        :param _TriggerType: <p>邮件触发类型 0:非触发类，默认类型，营销类邮件、非即时类邮件等选择此类型  1:触发类，验证码等即时发送类邮件，若邮件超过一定大小，系统会自动选择非触发类型通道</p>
         :type TriggerType: int
-        :param _SmtpMessageId: smtp头中的Message-Id字段
+        :param _SmtpMessageId: <p>smtp头中的Message-Id字段</p>
         :type SmtpMessageId: str
-        :param _SmtpHeaders: smtp头中可以设置的其它字段
+        :param _SmtpHeaders: <p>smtp头中可以设置的其它字段</p>
         :type SmtpHeaders: str
-        :param _HeaderFrom: smtp头中的from字段，建议域名与FromEmailAddress保持一致
+        :param _HeaderFrom: <p>smtp头中的from字段，建议域名与FromEmailAddress保持一致</p>
         :type HeaderFrom: str
         """
         self._FromEmailAddress = None
@@ -4958,7 +4955,7 @@ Destination/Cc/Bcc三个参数必须至少存在一个。
 
     @property
     def FromEmailAddress(self):
-        r"""发件人邮箱地址。不使用别名时请直接填写发件人邮箱地址，例如：noreply@mail.qcloud.com如需填写发件人别名时，请按照如下方式（注意别名与邮箱地址之间必须使用一个空格隔开）：别名+一个空格+<邮箱地址>，别名中不能带有冒号(:)。
+        r"""<p>发件人邮箱地址。不使用别名时请直接填写发件人邮箱地址，例如：noreply@mail.qcloud.com如需填写发件人别名时，请按照如下方式（注意别名与邮箱地址之间必须使用一个空格隔开）：别名+一个空格+&lt;邮箱地址&gt;，别名中不能带有冒号(:)。</p>
         :rtype: str
         """
         return self._FromEmailAddress
@@ -4969,7 +4966,7 @@ Destination/Cc/Bcc三个参数必须至少存在一个。
 
     @property
     def Subject(self):
-        r"""邮件主题
+        r"""<p>邮件主题</p>
         :rtype: str
         """
         return self._Subject
@@ -4980,8 +4977,7 @@ Destination/Cc/Bcc三个参数必须至少存在一个。
 
     @property
     def Destination(self):
-        r"""收信人邮箱地址，最多支持群发50人。注意：邮件内容会显示所有收件人地址，非群发邮件请多次调用API发送。
-Destination/Cc/Bcc三个参数必须至少存在一个。
+        r"""<p>收信人邮箱地址，最多支持群发50人。注意：邮件内容会显示所有收件人地址，非群发邮件请多次调用API发送。<br>Destination/Cc/Bcc三个参数必须至少存在一个。</p>
         :rtype: list of str
         """
         return self._Destination
@@ -4992,7 +4988,7 @@ Destination/Cc/Bcc三个参数必须至少存在一个。
 
     @property
     def ReplyToAddresses(self):
-        r"""邮件的“回复”电子邮件地址。可以填写您能收到邮件的邮箱地址，可以是个人邮箱。如果不填，收件人的回复邮件将会发送失败。
+        r"""<p>邮件的“回复”电子邮件地址。可以填写您能收到邮件的邮箱地址，可以是个人邮箱。如果不填，收件人的回复邮件将会发送失败。</p>
         :rtype: str
         """
         return self._ReplyToAddresses
@@ -5003,7 +4999,7 @@ Destination/Cc/Bcc三个参数必须至少存在一个。
 
     @property
     def Cc(self):
-        r"""抄送人邮箱地址，最多支持抄送20人。
+        r"""<p>抄送人邮箱地址，最多支持抄送20人。</p>
         :rtype: list of str
         """
         return self._Cc
@@ -5014,7 +5010,7 @@ Destination/Cc/Bcc三个参数必须至少存在一个。
 
     @property
     def Bcc(self):
-        r"""密送人邮箱地址，最多支持抄送20人,Bcc和Destination不能重复。
+        r"""<p>密送人邮箱地址，最多支持抄送20人,Bcc和Destination不能重复。</p>
         :rtype: list of str
         """
         return self._Bcc
@@ -5025,8 +5021,7 @@ Destination/Cc/Bcc三个参数必须至少存在一个。
 
     @property
     def Template(self):
-        r"""使用模板发送时，填写模板相关参数。
-<dx-alert infotype="notice" title="注意"> 如您未申请过特殊配置，则该字段为必填 </dx-alert>
+        r"""<p>使用模板发送时，填写模板相关参数。</p><blockquote class="rno-document-tips rno-document-tips-notice">    <div class="rno-document-tips-body">        <i class="rno-document-tip-icon"></i>        <div class="rno-document-tip-title">注意</div>        <div class="rno-document-tip-desc"><p>如您未申请过特殊配置，则该字段为必填</p></div>    </div></blockquote>
         :rtype: :class:`tencentcloud.ses.v20201002.models.Template`
         """
         return self._Template
@@ -5037,8 +5032,7 @@ Destination/Cc/Bcc三个参数必须至少存在一个。
 
     @property
     def Simple(self):
-        r"""已废弃
-<dx-alert infotype="notice" title="说明"> 仅部分历史上申请了特殊配置的客户需要使用。如您未申请过特殊配置，则不存在该字段。</dx-alert>
+        r"""<p>已废弃</p><blockquote class="rno-document-tips rno-document-tips-notice">    <div class="rno-document-tips-body">        <i class="rno-document-tip-icon"></i>        <div class="rno-document-tip-title">说明</div>        <div class="rno-document-tip-desc"><p>仅部分历史上申请了特殊配置的客户需要使用。如您未申请过特殊配置，则不存在该字段。</p></div>    </div></blockquote>
         :rtype: :class:`tencentcloud.ses.v20201002.models.Simple`
         """
         return self._Simple
@@ -5049,7 +5043,7 @@ Destination/Cc/Bcc三个参数必须至少存在一个。
 
     @property
     def Attachments(self):
-        r"""需要发送附件时，填写附件相关参数。腾讯云接口请求最大支持 8M 的请求包，附件内容经过 Base64 预期扩大1.5倍，应该控制所有附件的总大小最大在 4M 以内，整体请求超出 8M 时接口会返回错误
+        r"""<p>需要发送附件时，填写附件相关参数。腾讯云接口请求最大支持 8M 的请求包，附件内容经过 Base64 预期扩大1.5倍，应该控制所有附件的总大小最大在 4M 以内，整体请求超出 8M 时接口会返回错误</p>
         :rtype: list of Attachment
         """
         return self._Attachments
@@ -5060,7 +5054,7 @@ Destination/Cc/Bcc三个参数必须至少存在一个。
 
     @property
     def Unsubscribe(self):
-        r"""退订链接选项 0: 不加入退订链接 1: 简体中文 2: 英文 3: 繁体中文 4: 西班牙语 5: 法语 6: 德语 7: 日语 8: 韩语 9: 阿拉伯语 10: 泰语
+        r"""<p>退订链接选项</p><p>枚举值：</p><ul><li>0： 不加入退订链接</li><li>1： 简体中文</li><li>2： 英文</li><li>3： 繁体中文</li><li>4： 西班牙语</li><li>5： 法语</li><li>6： 德语</li><li>7： 日语</li><li>8： 韩语</li><li>9： 阿拉伯语</li><li>10： 泰语</li><li>11： 印尼语</li></ul>
         :rtype: str
         """
         return self._Unsubscribe
@@ -5071,7 +5065,7 @@ Destination/Cc/Bcc三个参数必须至少存在一个。
 
     @property
     def TriggerType(self):
-        r"""邮件触发类型 0:非触发类，默认类型，营销类邮件、非即时类邮件等选择此类型  1:触发类，验证码等即时发送类邮件，若邮件超过一定大小，系统会自动选择非触发类型通道
+        r"""<p>邮件触发类型 0:非触发类，默认类型，营销类邮件、非即时类邮件等选择此类型  1:触发类，验证码等即时发送类邮件，若邮件超过一定大小，系统会自动选择非触发类型通道</p>
         :rtype: int
         """
         return self._TriggerType
@@ -5082,7 +5076,7 @@ Destination/Cc/Bcc三个参数必须至少存在一个。
 
     @property
     def SmtpMessageId(self):
-        r"""smtp头中的Message-Id字段
+        r"""<p>smtp头中的Message-Id字段</p>
         :rtype: str
         """
         return self._SmtpMessageId
@@ -5093,7 +5087,7 @@ Destination/Cc/Bcc三个参数必须至少存在一个。
 
     @property
     def SmtpHeaders(self):
-        r"""smtp头中可以设置的其它字段
+        r"""<p>smtp头中可以设置的其它字段</p>
         :rtype: str
         """
         return self._SmtpHeaders
@@ -5104,7 +5098,7 @@ Destination/Cc/Bcc三个参数必须至少存在一个。
 
     @property
     def HeaderFrom(self):
-        r"""smtp头中的from字段，建议域名与FromEmailAddress保持一致
+        r"""<p>smtp头中的from字段，建议域名与FromEmailAddress保持一致</p>
         :rtype: str
         """
         return self._HeaderFrom
@@ -5155,7 +5149,7 @@ class SendEmailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MessageId: 接受消息生成的唯一消息标识符。
+        :param _MessageId: <p>接受消息生成的唯一消息标识符。</p>
         :type MessageId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5165,7 +5159,7 @@ class SendEmailResponse(AbstractModel):
 
     @property
     def MessageId(self):
-        r"""接受消息生成的唯一消息标识符。
+        r"""<p>接受消息生成的唯一消息标识符。</p>
         :rtype: str
         """
         return self._MessageId

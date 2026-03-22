@@ -9294,7 +9294,8 @@ class DeleteDocRequest(AbstractModel):
         r"""
         :param _DocBizIds: 文档业务ID列表
         :type DocBizIds: list of str
-        :param _BotBizId: 应用ID
+        :param _BotBizId: 应用ID。
+删除知识库文档时，该参数填入知识库ID。
         :type BotBizId: str
         """
         self._DocBizIds = None
@@ -9313,7 +9314,8 @@ class DeleteDocRequest(AbstractModel):
 
     @property
     def BotBizId(self):
-        r"""应用ID
+        r"""应用ID。
+删除知识库文档时，该参数填入知识库ID。
         :rtype: str
         """
         return self._BotBizId
@@ -22657,7 +22659,8 @@ class ListDocRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BotBizId: 应用ID, 获取方式参看 [BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
+        :param _BotBizId: 应用ID, 获取方式参看 [BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)。
+查询知识库下文档时，该参数填入知识库ID。
         :type BotBizId: str
         :param _PageNumber: 页码(必须大于0)
         :type PageNumber: int
@@ -22697,7 +22700,8 @@ class ListDocRequest(AbstractModel):
 
     @property
     def BotBizId(self):
-        r"""应用ID, 获取方式参看 [BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
+        r"""应用ID, 获取方式参看 [BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)。
+查询知识库下文档时，该参数填入知识库ID。
         :rtype: str
         """
         return self._BotBizId
@@ -27768,6 +27772,7 @@ class ModifyDocRequest(AbstractModel):
     def __init__(self):
         r"""
         :param _BotBizId: 应用ID，获取方法参看[如何获取   BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
+修改知识库文档时，该参数填入知识库ID。
         :type BotBizId: str
         :param _DocBizId: 文档ID
         :type DocBizId: str
@@ -27825,6 +27830,7 @@ class ModifyDocRequest(AbstractModel):
     @property
     def BotBizId(self):
         r"""应用ID，获取方法参看[如何获取   BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
+修改知识库文档时，该参数填入知识库ID。
         :rtype: str
         """
         return self._BotBizId
@@ -33437,7 +33443,9 @@ class SaveDocRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BotBizId: 应用ID，获取方法参看[如何获取   BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
+        :param _BotBizId: 应用ID。应用ID 获取方法参看[如何获取   BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
+导入知识库文档时，该参数填入知识库 ID。
+
         :type BotBizId: str
         :param _FileName: 文件名，需要包含文件扩展名
         :type FileName: str
@@ -33602,7 +33610,9 @@ cos_hash为文档唯一性标识，与文件名无关 相同的cos_hash会被判
 
     @property
     def BotBizId(self):
-        r"""应用ID，获取方法参看[如何获取   BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
+        r"""应用ID。应用ID 获取方法参看[如何获取   BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
+导入知识库文档时，该参数填入知识库 ID。
+
         :rtype: str
         """
         return self._BotBizId

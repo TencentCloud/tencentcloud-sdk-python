@@ -40742,6 +40742,250 @@ class NoticeRule(AbstractModel):
         
 
 
+class OpenClawServiceRequest(AbstractModel):
+    r"""OpenClawService请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Tag: <p>标签类型</p><p>枚举值：</p><ul><li>OpenClaw： OpenClaw类型</li><li>ClawPro： ClawPro类型</li></ul>
+        :type Tag: str
+        """
+        self._Tag = None
+
+    @property
+    def Tag(self):
+        r"""<p>标签类型</p><p>枚举值：</p><ul><li>OpenClaw： OpenClaw类型</li><li>ClawPro： ClawPro类型</li></ul>
+        :rtype: str
+        """
+        return self._Tag
+
+    @Tag.setter
+    def Tag(self, Tag):
+        self._Tag = Tag
+
+
+    def _deserialize(self, params):
+        self._Tag = params.get("Tag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OpenClawServiceResponse(AbstractModel):
+    r"""OpenClawService返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LogsetId: <p>日志集id</p><p><a href="https://cloud.tencent.com/document/product/614/41034">日志集文档</a></p>
+        :type LogsetId: str
+        :param _LogsetName: <p>日志集名称</p>
+        :type LogsetName: str
+        :param _TopicId: <p>日志主题id</p><p><a href="https://cloud.tencent.com/document/product/614/41035">日志主题文档</a></p>
+        :type TopicId: str
+        :param _TopicName: <p>日志主题名称</p>
+        :type TopicName: str
+        :param _MetricTopicId: <p>指标主题id</p><p><a href="https://cloud.tencent.com/document/product/614/90328">指标主题文档</a></p>
+        :type MetricTopicId: str
+        :param _MetricTopicName: <p>指标主题名称</p>
+        :type MetricTopicName: str
+        :param _MachineGroupId: <p>机器组id</p><p><a href="https://cloud.tencent.com/document/product/614/17412">机器组文档</a></p>
+        :type MachineGroupId: str
+        :param _MachineGroupName: <p>机器组名称</p>
+        :type MachineGroupName: str
+        :param _AppLogConfigId: <p>采集配置id。应用日志</p><p><a href="https://cloud.tencent.com/document/product/614/33494">采集概述文档</a> - <a href="https://cloud.tencent.com/document/product/614/57497">LogListener 采集配置导入</a></p>
+        :type AppLogConfigId: str
+        :param _AppLogConfigName: <p>采集配置名称。应用日志</p>
+        :type AppLogConfigName: str
+        :param _SessionLogConfigId: <p>采集配置id。会话日志</p><p><a href="https://cloud.tencent.com/document/product/614/33494">采集概述文档</a> - <a href="https://cloud.tencent.com/document/product/614/57497">LogListener 采集配置导入</a></p>
+        :type SessionLogConfigId: str
+        :param _SessionLogConfigName: <p>采集配置名称。会话日志</p>
+        :type SessionLogConfigName: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._LogsetId = None
+        self._LogsetName = None
+        self._TopicId = None
+        self._TopicName = None
+        self._MetricTopicId = None
+        self._MetricTopicName = None
+        self._MachineGroupId = None
+        self._MachineGroupName = None
+        self._AppLogConfigId = None
+        self._AppLogConfigName = None
+        self._SessionLogConfigId = None
+        self._SessionLogConfigName = None
+        self._RequestId = None
+
+    @property
+    def LogsetId(self):
+        r"""<p>日志集id</p><p><a href="https://cloud.tencent.com/document/product/614/41034">日志集文档</a></p>
+        :rtype: str
+        """
+        return self._LogsetId
+
+    @LogsetId.setter
+    def LogsetId(self, LogsetId):
+        self._LogsetId = LogsetId
+
+    @property
+    def LogsetName(self):
+        r"""<p>日志集名称</p>
+        :rtype: str
+        """
+        return self._LogsetName
+
+    @LogsetName.setter
+    def LogsetName(self, LogsetName):
+        self._LogsetName = LogsetName
+
+    @property
+    def TopicId(self):
+        r"""<p>日志主题id</p><p><a href="https://cloud.tencent.com/document/product/614/41035">日志主题文档</a></p>
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def TopicName(self):
+        r"""<p>日志主题名称</p>
+        :rtype: str
+        """
+        return self._TopicName
+
+    @TopicName.setter
+    def TopicName(self, TopicName):
+        self._TopicName = TopicName
+
+    @property
+    def MetricTopicId(self):
+        r"""<p>指标主题id</p><p><a href="https://cloud.tencent.com/document/product/614/90328">指标主题文档</a></p>
+        :rtype: str
+        """
+        return self._MetricTopicId
+
+    @MetricTopicId.setter
+    def MetricTopicId(self, MetricTopicId):
+        self._MetricTopicId = MetricTopicId
+
+    @property
+    def MetricTopicName(self):
+        r"""<p>指标主题名称</p>
+        :rtype: str
+        """
+        return self._MetricTopicName
+
+    @MetricTopicName.setter
+    def MetricTopicName(self, MetricTopicName):
+        self._MetricTopicName = MetricTopicName
+
+    @property
+    def MachineGroupId(self):
+        r"""<p>机器组id</p><p><a href="https://cloud.tencent.com/document/product/614/17412">机器组文档</a></p>
+        :rtype: str
+        """
+        return self._MachineGroupId
+
+    @MachineGroupId.setter
+    def MachineGroupId(self, MachineGroupId):
+        self._MachineGroupId = MachineGroupId
+
+    @property
+    def MachineGroupName(self):
+        r"""<p>机器组名称</p>
+        :rtype: str
+        """
+        return self._MachineGroupName
+
+    @MachineGroupName.setter
+    def MachineGroupName(self, MachineGroupName):
+        self._MachineGroupName = MachineGroupName
+
+    @property
+    def AppLogConfigId(self):
+        r"""<p>采集配置id。应用日志</p><p><a href="https://cloud.tencent.com/document/product/614/33494">采集概述文档</a> - <a href="https://cloud.tencent.com/document/product/614/57497">LogListener 采集配置导入</a></p>
+        :rtype: str
+        """
+        return self._AppLogConfigId
+
+    @AppLogConfigId.setter
+    def AppLogConfigId(self, AppLogConfigId):
+        self._AppLogConfigId = AppLogConfigId
+
+    @property
+    def AppLogConfigName(self):
+        r"""<p>采集配置名称。应用日志</p>
+        :rtype: str
+        """
+        return self._AppLogConfigName
+
+    @AppLogConfigName.setter
+    def AppLogConfigName(self, AppLogConfigName):
+        self._AppLogConfigName = AppLogConfigName
+
+    @property
+    def SessionLogConfigId(self):
+        r"""<p>采集配置id。会话日志</p><p><a href="https://cloud.tencent.com/document/product/614/33494">采集概述文档</a> - <a href="https://cloud.tencent.com/document/product/614/57497">LogListener 采集配置导入</a></p>
+        :rtype: str
+        """
+        return self._SessionLogConfigId
+
+    @SessionLogConfigId.setter
+    def SessionLogConfigId(self, SessionLogConfigId):
+        self._SessionLogConfigId = SessionLogConfigId
+
+    @property
+    def SessionLogConfigName(self):
+        r"""<p>采集配置名称。会话日志</p>
+        :rtype: str
+        """
+        return self._SessionLogConfigName
+
+    @SessionLogConfigName.setter
+    def SessionLogConfigName(self, SessionLogConfigName):
+        self._SessionLogConfigName = SessionLogConfigName
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._LogsetId = params.get("LogsetId")
+        self._LogsetName = params.get("LogsetName")
+        self._TopicId = params.get("TopicId")
+        self._TopicName = params.get("TopicName")
+        self._MetricTopicId = params.get("MetricTopicId")
+        self._MetricTopicName = params.get("MetricTopicName")
+        self._MachineGroupId = params.get("MachineGroupId")
+        self._MachineGroupName = params.get("MachineGroupName")
+        self._AppLogConfigId = params.get("AppLogConfigId")
+        self._AppLogConfigName = params.get("AppLogConfigName")
+        self._SessionLogConfigId = params.get("SessionLogConfigId")
+        self._SessionLogConfigName = params.get("SessionLogConfigName")
+        self._RequestId = params.get("RequestId")
+
+
 class OpenKafkaConsumerRequest(AbstractModel):
     r"""OpenKafkaConsumer请求参数结构体
 

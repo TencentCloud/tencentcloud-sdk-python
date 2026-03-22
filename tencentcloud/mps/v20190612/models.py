@@ -73073,72 +73073,32 @@ class SyncDubbingRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Text: 合成文本，语音合成时必填，文本长度不超过2000字符
+        :param _Text: <p>合成文本，语音合成时必填，文本长度不超过2000字符</p>
         :type Text: str
-        :param _TextLang: 文本语言，不填默认中文。
-当前支持语言：
-zh	中文 (Chinese)
-en	英语 (English)
-ja	日语 (Japanese)
-de	德语 (German)
-fr	法语 (French)
-ko	韩语 (Korean)
-ru	俄语 (Russian)
-uk	乌克兰语 (Ukrainian)
-pt	葡萄牙语 (Portuguese)
-it	意大利语 (Italian)
-es	西班牙语 (Spanish)
-id	印度尼西亚语 (Indonesian)
-nl	荷兰语 (Dutch)
-tr	土耳其语 (Turkish)
-fil	菲律宾语 (Filipino)
-ms	马来语 (Malay)
-el	希腊语 (Greek)
-fi	芬兰语 (Finnish)
-hr	克罗地亚语 (Croatian)
-sk	斯洛伐克语 (Slovak)
-pl	波兰语 (Polish)
-sv	瑞典语 (Swedish)
-hi	印地语 (Hindi)
-bg	保加利亚语 (Bulgarian)
-ro	罗马尼亚语 (Romanian)
-ar	阿拉伯语 (Arabic)
-cs	捷克语 (Czech)
-da	丹麦语 (Danish)
-ta	泰米尔语 (Tamil)
-hun	匈牙利语（Hungarian）
-vi	越南语（Vietnamese）
-no	挪威语（Norwegian）
-yue	粤语（Cantonese）
-th	泰语（Thai）
-he	希伯来语（Hebrew）
-ca	加泰罗尼亚语（Catalan）
-nn	尼诺斯克语（Nynorsk）
-af	阿非利卡语（Afrikaans）
-fa	波斯语（Persian）
-sl	斯洛文尼亚语（Slovenian）
-
+        :param _TextLang: <p>文本语言，不填默认中文。<br>当前支持语言：<br>zh    中文 (Chinese)<br>en    英语 (English)<br>ja    日语 (Japanese)<br>de    德语 (German)<br>fr    法语 (French)<br>ko    韩语 (Korean)<br>ru    俄语 (Russian)<br>uk    乌克兰语 (Ukrainian)<br>pt    葡萄牙语 (Portuguese)<br>it    意大利语 (Italian)<br>es    西班牙语 (Spanish)<br>id    印度尼西亚语 (Indonesian)<br>nl    荷兰语 (Dutch)<br>tr    土耳其语 (Turkish)<br>fil    菲律宾语 (Filipino)<br>ms    马来语 (Malay)<br>el    希腊语 (Greek)<br>fi    芬兰语 (Finnish)<br>hr    克罗地亚语 (Croatian)<br>sk    斯洛伐克语 (Slovak)<br>pl    波兰语 (Polish)<br>sv    瑞典语 (Swedish)<br>hi    印地语 (Hindi)<br>bg    保加利亚语 (Bulgarian)<br>ro    罗马尼亚语 (Romanian)<br>ar    阿拉伯语 (Arabic)<br>cs    捷克语 (Czech)<br>da    丹麦语 (Danish)<br>ta    泰米尔语 (Tamil)<br>hun    匈牙利语（Hungarian）<br>vi    越南语（Vietnamese）<br>no    挪威语（Norwegian）<br>yue    粤语（Cantonese）<br>th    泰语（Thai）<br>he    希伯来语（Hebrew）<br>ca    加泰罗尼亚语（Catalan）<br>nn    尼诺斯克语（Nynorsk）<br>af    阿非利卡语（Afrikaans）<br>fa    波斯语（Persian）<br>sl    斯洛文尼亚语（Slovenian）</p>
         :type TextLang: str
-        :param _VoiceId: 音色Id，指定音色合成时填写，支持系统音色和克隆音色。
+        :param _VoiceId: <p>音色Id，指定音色合成时填写，支持系统音色和克隆音色。</p>
         :type VoiceId: str
-        :param _AudioData: 克隆音频base64编码。
+        :param _AudioData: <p>克隆音频base64编码。</p>
         :type AudioData: str
-        :param _AudioLang: 克隆音频语言，默认中文。
-当前支持语言同TextLang
+        :param _AudioUrl: <p>克隆音频Url，AudioData为空时有效</p>
+        :type AudioUrl: str
+        :param _AudioLang: <p>克隆音频语言，默认中文。<br>当前支持语言同TextLang</p>
         :type AudioLang: str
-        :param _ExtParam: 扩展参数，json字符串
+        :param _ExtParam: <p>扩展参数，json字符串</p><p>synExt    Object    语音合成扩展参数<br>    -duration    Float    合成音频时长，单位秒，示例：5.2<br>    -sampleRate    Integer    合成音频采样率，默认16000，支持[8000,16000,22050,32000,44100]<br>    -pitch    Integer    音调，默认0原音色输出，取值[-12, 12]<br>cloneExt    Object    音色克隆扩展参数<br>    -timeRanges    Float[][]    指定克隆音频时间范围，默认[[0, 20]]，示例[[5.2, 10], [45, 59.8]]</p>
         :type ExtParam: str
         """
         self._Text = None
         self._TextLang = None
         self._VoiceId = None
         self._AudioData = None
+        self._AudioUrl = None
         self._AudioLang = None
         self._ExtParam = None
 
     @property
     def Text(self):
-        r"""合成文本，语音合成时必填，文本长度不超过2000字符
+        r"""<p>合成文本，语音合成时必填，文本长度不超过2000字符</p>
         :rtype: str
         """
         return self._Text
@@ -73149,49 +73109,7 @@ sl	斯洛文尼亚语（Slovenian）
 
     @property
     def TextLang(self):
-        r"""文本语言，不填默认中文。
-当前支持语言：
-zh	中文 (Chinese)
-en	英语 (English)
-ja	日语 (Japanese)
-de	德语 (German)
-fr	法语 (French)
-ko	韩语 (Korean)
-ru	俄语 (Russian)
-uk	乌克兰语 (Ukrainian)
-pt	葡萄牙语 (Portuguese)
-it	意大利语 (Italian)
-es	西班牙语 (Spanish)
-id	印度尼西亚语 (Indonesian)
-nl	荷兰语 (Dutch)
-tr	土耳其语 (Turkish)
-fil	菲律宾语 (Filipino)
-ms	马来语 (Malay)
-el	希腊语 (Greek)
-fi	芬兰语 (Finnish)
-hr	克罗地亚语 (Croatian)
-sk	斯洛伐克语 (Slovak)
-pl	波兰语 (Polish)
-sv	瑞典语 (Swedish)
-hi	印地语 (Hindi)
-bg	保加利亚语 (Bulgarian)
-ro	罗马尼亚语 (Romanian)
-ar	阿拉伯语 (Arabic)
-cs	捷克语 (Czech)
-da	丹麦语 (Danish)
-ta	泰米尔语 (Tamil)
-hun	匈牙利语（Hungarian）
-vi	越南语（Vietnamese）
-no	挪威语（Norwegian）
-yue	粤语（Cantonese）
-th	泰语（Thai）
-he	希伯来语（Hebrew）
-ca	加泰罗尼亚语（Catalan）
-nn	尼诺斯克语（Nynorsk）
-af	阿非利卡语（Afrikaans）
-fa	波斯语（Persian）
-sl	斯洛文尼亚语（Slovenian）
-
+        r"""<p>文本语言，不填默认中文。<br>当前支持语言：<br>zh    中文 (Chinese)<br>en    英语 (English)<br>ja    日语 (Japanese)<br>de    德语 (German)<br>fr    法语 (French)<br>ko    韩语 (Korean)<br>ru    俄语 (Russian)<br>uk    乌克兰语 (Ukrainian)<br>pt    葡萄牙语 (Portuguese)<br>it    意大利语 (Italian)<br>es    西班牙语 (Spanish)<br>id    印度尼西亚语 (Indonesian)<br>nl    荷兰语 (Dutch)<br>tr    土耳其语 (Turkish)<br>fil    菲律宾语 (Filipino)<br>ms    马来语 (Malay)<br>el    希腊语 (Greek)<br>fi    芬兰语 (Finnish)<br>hr    克罗地亚语 (Croatian)<br>sk    斯洛伐克语 (Slovak)<br>pl    波兰语 (Polish)<br>sv    瑞典语 (Swedish)<br>hi    印地语 (Hindi)<br>bg    保加利亚语 (Bulgarian)<br>ro    罗马尼亚语 (Romanian)<br>ar    阿拉伯语 (Arabic)<br>cs    捷克语 (Czech)<br>da    丹麦语 (Danish)<br>ta    泰米尔语 (Tamil)<br>hun    匈牙利语（Hungarian）<br>vi    越南语（Vietnamese）<br>no    挪威语（Norwegian）<br>yue    粤语（Cantonese）<br>th    泰语（Thai）<br>he    希伯来语（Hebrew）<br>ca    加泰罗尼亚语（Catalan）<br>nn    尼诺斯克语（Nynorsk）<br>af    阿非利卡语（Afrikaans）<br>fa    波斯语（Persian）<br>sl    斯洛文尼亚语（Slovenian）</p>
         :rtype: str
         """
         return self._TextLang
@@ -73202,7 +73120,7 @@ sl	斯洛文尼亚语（Slovenian）
 
     @property
     def VoiceId(self):
-        r"""音色Id，指定音色合成时填写，支持系统音色和克隆音色。
+        r"""<p>音色Id，指定音色合成时填写，支持系统音色和克隆音色。</p>
         :rtype: str
         """
         return self._VoiceId
@@ -73213,7 +73131,7 @@ sl	斯洛文尼亚语（Slovenian）
 
     @property
     def AudioData(self):
-        r"""克隆音频base64编码。
+        r"""<p>克隆音频base64编码。</p>
         :rtype: str
         """
         return self._AudioData
@@ -73223,9 +73141,19 @@ sl	斯洛文尼亚语（Slovenian）
         self._AudioData = AudioData
 
     @property
+    def AudioUrl(self):
+        r"""<p>克隆音频Url，AudioData为空时有效</p>
+        :rtype: str
+        """
+        return self._AudioUrl
+
+    @AudioUrl.setter
+    def AudioUrl(self, AudioUrl):
+        self._AudioUrl = AudioUrl
+
+    @property
     def AudioLang(self):
-        r"""克隆音频语言，默认中文。
-当前支持语言同TextLang
+        r"""<p>克隆音频语言，默认中文。<br>当前支持语言同TextLang</p>
         :rtype: str
         """
         return self._AudioLang
@@ -73236,7 +73164,7 @@ sl	斯洛文尼亚语（Slovenian）
 
     @property
     def ExtParam(self):
-        r"""扩展参数，json字符串
+        r"""<p>扩展参数，json字符串</p><p>synExt    Object    语音合成扩展参数<br>    -duration    Float    合成音频时长，单位秒，示例：5.2<br>    -sampleRate    Integer    合成音频采样率，默认16000，支持[8000,16000,22050,32000,44100]<br>    -pitch    Integer    音调，默认0原音色输出，取值[-12, 12]<br>cloneExt    Object    音色克隆扩展参数<br>    -timeRanges    Float[][]    指定克隆音频时间范围，默认[[0, 20]]，示例[[5.2, 10], [45, 59.8]]</p>
         :rtype: str
         """
         return self._ExtParam
@@ -73251,6 +73179,7 @@ sl	斯洛文尼亚语（Slovenian）
         self._TextLang = params.get("TextLang")
         self._VoiceId = params.get("VoiceId")
         self._AudioData = params.get("AudioData")
+        self._AudioUrl = params.get("AudioUrl")
         self._AudioLang = params.get("AudioLang")
         self._ExtParam = params.get("ExtParam")
         memeber_set = set(params.keys())
@@ -73270,14 +73199,14 @@ class SyncDubbingResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ErrorCode: 错误码，成功时返回0
+        :param _ErrorCode: <p>错误码，成功时返回0</p>
         :type ErrorCode: int
-        :param _Msg: 错误信息，成功时返回success
+        :param _Msg: <p>错误信息，成功时返回success</p>
         :type Msg: str
-        :param _AudioData: 合成音频的base64编码，wav格式。
+        :param _AudioData: <p>合成音频的base64编码，wav格式。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AudioData: str
-        :param _VoiceId: 克隆的音色Id。
+        :param _VoiceId: <p>克隆的音色Id。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type VoiceId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -73291,7 +73220,7 @@ class SyncDubbingResponse(AbstractModel):
 
     @property
     def ErrorCode(self):
-        r"""错误码，成功时返回0
+        r"""<p>错误码，成功时返回0</p>
         :rtype: int
         """
         return self._ErrorCode
@@ -73302,7 +73231,7 @@ class SyncDubbingResponse(AbstractModel):
 
     @property
     def Msg(self):
-        r"""错误信息，成功时返回success
+        r"""<p>错误信息，成功时返回success</p>
         :rtype: str
         """
         return self._Msg
@@ -73313,7 +73242,7 @@ class SyncDubbingResponse(AbstractModel):
 
     @property
     def AudioData(self):
-        r"""合成音频的base64编码，wav格式。
+        r"""<p>合成音频的base64编码，wav格式。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -73325,7 +73254,7 @@ class SyncDubbingResponse(AbstractModel):
 
     @property
     def VoiceId(self):
-        r"""克隆的音色Id。
+        r"""<p>克隆的音色Id。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """

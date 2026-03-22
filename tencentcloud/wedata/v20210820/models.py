@@ -6047,11 +6047,14 @@ false:  不通知下游任务责任人
         :type EnableNotify: bool
         :param _ProjectId: 项目Id
         :type ProjectId: str
+        :param _DeleteScript: 删除任务时是否删除脚本文件
+        :type DeleteScript: bool
         """
         self._TaskIdList = None
         self._DeleteMode = None
         self._EnableNotify = None
         self._ProjectId = None
+        self._DeleteScript = None
 
     @property
     def TaskIdList(self):
@@ -6099,12 +6102,24 @@ false:  不通知下游任务责任人
     def ProjectId(self, ProjectId):
         self._ProjectId = ProjectId
 
+    @property
+    def DeleteScript(self):
+        r"""删除任务时是否删除脚本文件
+        :rtype: bool
+        """
+        return self._DeleteScript
+
+    @DeleteScript.setter
+    def DeleteScript(self, DeleteScript):
+        self._DeleteScript = DeleteScript
+
 
     def _deserialize(self, params):
         self._TaskIdList = params.get("TaskIdList")
         self._DeleteMode = params.get("DeleteMode")
         self._EnableNotify = params.get("EnableNotify")
         self._ProjectId = params.get("ProjectId")
+        self._DeleteScript = params.get("DeleteScript")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

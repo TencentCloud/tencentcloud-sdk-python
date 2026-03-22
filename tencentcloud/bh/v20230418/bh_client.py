@@ -1038,6 +1038,52 @@ class BhClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDeviceCount(self, request):
+        r"""查询用户导入的主机数
+
+        :param request: Request instance for DescribeDeviceCount.
+        :type request: :class:`tencentcloud.bh.v20230418.models.DescribeDeviceCountRequest`
+        :rtype: :class:`tencentcloud.bh.v20230418.models.DescribeDeviceCountResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDeviceCount", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDeviceCountResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDeviceCountSummary(self, request):
+        r"""查询用户导入的主机数
+
+        :param request: Request instance for DescribeDeviceCountSummary.
+        :type request: :class:`tencentcloud.bh.v20230418.models.DescribeDeviceCountSummaryRequest`
+        :rtype: :class:`tencentcloud.bh.v20230418.models.DescribeDeviceCountSummaryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDeviceCountSummary", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDeviceCountSummaryResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDeviceGroupMembers(self, request):
         r"""查询资产组成员列表
 

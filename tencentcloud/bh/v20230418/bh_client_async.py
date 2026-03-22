@@ -817,6 +817,42 @@ class BhClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeDeviceCount(
+            self,
+            request: models.DescribeDeviceCountRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDeviceCountResponse:
+        """
+        查询用户导入的主机数
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDeviceCount"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDeviceCountResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeDeviceCountSummary(
+            self,
+            request: models.DescribeDeviceCountSummaryRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDeviceCountSummaryResponse:
+        """
+        查询用户导入的主机数
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDeviceCountSummary"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDeviceCountSummaryResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeDeviceGroupMembers(
             self,
             request: models.DescribeDeviceGroupMembersRequest,

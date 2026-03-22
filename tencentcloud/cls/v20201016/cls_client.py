@@ -3744,6 +3744,29 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def OpenClawService(self, request):
+        r"""本接口用于创建OpenClaw依赖的资源与索引
+
+        :param request: Request instance for OpenClawService.
+        :type request: :class:`tencentcloud.cls.v20201016.models.OpenClawServiceRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.OpenClawServiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("OpenClawService", params, headers=headers)
+            response = json.loads(body)
+            model = models.OpenClawServiceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def OpenKafkaConsumer(self, request):
         r"""打开Kafka协议消费功能
 

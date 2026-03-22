@@ -8501,6 +8501,219 @@ class DescribeDeviceAccountsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeDeviceCountRequest(AbstractModel):
+    r"""DescribeDeviceCount请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ApCode: 地域码
+        :type ApCode: str
+        :param _VpcId: 用户VPC实例ID
+        :type VpcId: str
+        :param _ResourceId: 堡垒机服务ID
+        :type ResourceId: str
+        :param _Kind: 资产类型,1-Linux, 2-Windows,3-MySQL,4-SqlServer 不传-全部
+        :type Kind: int
+        :param _BindResource: 是否绑定服务,1-已绑定, 2-未绑定， 不传-全部
+        :type BindResource: int
+        """
+        self._ApCode = None
+        self._VpcId = None
+        self._ResourceId = None
+        self._Kind = None
+        self._BindResource = None
+
+    @property
+    def ApCode(self):
+        r"""地域码
+        :rtype: str
+        """
+        return self._ApCode
+
+    @ApCode.setter
+    def ApCode(self, ApCode):
+        self._ApCode = ApCode
+
+    @property
+    def VpcId(self):
+        r"""用户VPC实例ID
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def ResourceId(self):
+        r"""堡垒机服务ID
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def Kind(self):
+        r"""资产类型,1-Linux, 2-Windows,3-MySQL,4-SqlServer 不传-全部
+        :rtype: int
+        """
+        return self._Kind
+
+    @Kind.setter
+    def Kind(self, Kind):
+        self._Kind = Kind
+
+    @property
+    def BindResource(self):
+        r"""是否绑定服务,1-已绑定, 2-未绑定， 不传-全部
+        :rtype: int
+        """
+        return self._BindResource
+
+    @BindResource.setter
+    def BindResource(self, BindResource):
+        self._BindResource = BindResource
+
+
+    def _deserialize(self, params):
+        self._ApCode = params.get("ApCode")
+        self._VpcId = params.get("VpcId")
+        self._ResourceId = params.get("ResourceId")
+        self._Kind = params.get("Kind")
+        self._BindResource = params.get("BindResource")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDeviceCountResponse(AbstractModel):
+    r"""DescribeDeviceCount返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 主机总数
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""主机总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDeviceCountSummaryRequest(AbstractModel):
+    r"""DescribeDeviceCountSummary请求参数结构体
+
+    """
+
+
+class DescribeDeviceCountSummaryResponse(AbstractModel):
+    r"""DescribeDeviceCountSummary返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeviceCountSet: 各种类型的资产总数
+        :type DeviceCountSet: list of DeviceCount
+        :param _AppAssetCountSet: 各种类型应用资产总数
+        :type AppAssetCountSet: list of DeviceCount
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DeviceCountSet = None
+        self._AppAssetCountSet = None
+        self._RequestId = None
+
+    @property
+    def DeviceCountSet(self):
+        r"""各种类型的资产总数
+        :rtype: list of DeviceCount
+        """
+        return self._DeviceCountSet
+
+    @DeviceCountSet.setter
+    def DeviceCountSet(self, DeviceCountSet):
+        self._DeviceCountSet = DeviceCountSet
+
+    @property
+    def AppAssetCountSet(self):
+        r"""各种类型应用资产总数
+        :rtype: list of DeviceCount
+        """
+        return self._AppAssetCountSet
+
+    @AppAssetCountSet.setter
+    def AppAssetCountSet(self, AppAssetCountSet):
+        self._AppAssetCountSet = AppAssetCountSet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("DeviceCountSet") is not None:
+            self._DeviceCountSet = []
+            for item in params.get("DeviceCountSet"):
+                obj = DeviceCount()
+                obj._deserialize(item)
+                self._DeviceCountSet.append(obj)
+        if params.get("AppAssetCountSet") is not None:
+            self._AppAssetCountSet = []
+            for item in params.get("AppAssetCountSet"):
+                obj = DeviceCount()
+                obj._deserialize(item)
+                self._AppAssetCountSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeDeviceGroupMembersRequest(AbstractModel):
     r"""DescribeDeviceGroupMembers请求参数结构体
 
@@ -12041,6 +12254,57 @@ class DeviceAccount(AbstractModel):
         self._BoundPrivateKey = params.get("BoundPrivateKey")
         self._BoundKubeconfig = params.get("BoundKubeconfig")
         self._IsK8SManageAccount = params.get("IsK8SManageAccount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeviceCount(AbstractModel):
+    r"""资产数目
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Kind: 资产类型
+        :type Kind: int
+        :param _Count: 资产数目
+        :type Count: int
+        """
+        self._Kind = None
+        self._Count = None
+
+    @property
+    def Kind(self):
+        r"""资产类型
+        :rtype: int
+        """
+        return self._Kind
+
+    @Kind.setter
+    def Kind(self, Kind):
+        self._Kind = Kind
+
+    @property
+    def Count(self):
+        r"""资产数目
+        :rtype: int
+        """
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+
+    def _deserialize(self, params):
+        self._Kind = params.get("Kind")
+        self._Count = params.get("Count")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

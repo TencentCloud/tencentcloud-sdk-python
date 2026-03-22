@@ -2938,6 +2938,24 @@ class ClsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def OpenClawService(
+            self,
+            request: models.OpenClawServiceRequest,
+            opts: Dict = None,
+    ) -> models.OpenClawServiceResponse:
+        """
+        本接口用于创建OpenClaw依赖的资源与索引
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "OpenClawService"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.OpenClawServiceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def OpenKafkaConsumer(
             self,
             request: models.OpenKafkaConsumerRequest,

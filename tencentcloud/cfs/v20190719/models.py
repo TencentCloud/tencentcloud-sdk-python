@@ -639,20 +639,23 @@ class AvailableType(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Protocols: 协议与售卖详情
+        :param _Protocols: <p>协议与售卖详情</p>
         :type Protocols: list of AvailableProtoStatus
-        :param _Type: 存储类型。返回值中 SD 为通用标准型存储， HP为通用性能型存储， TB为Turbo标准型， TP 为Turbo性能型。
+        :param _Type: <p>存储类型。返回值中 SD 为通用标准型存储， HP为通用性能型存储， TB为Turbo标准型， TP 为Turbo性能型。</p>
         :type Type: str
-        :param _Prepayment: 是否支持预付费。返回值中 true 为支持、false 为不支持
+        :param _Prepayment: <p>是否支持预付费。返回值中 true 为支持、false 为不支持</p>
         :type Prepayment: bool
+        :param _Version: <p>文件系统版本</p><p>枚举值：</p><ul><li>v1.5： 通用系列</li><li>v3.1： 通用系列（增强型）</li><li>v4.0： Turbo系列</li></ul>
+        :type Version: str
         """
         self._Protocols = None
         self._Type = None
         self._Prepayment = None
+        self._Version = None
 
     @property
     def Protocols(self):
-        r"""协议与售卖详情
+        r"""<p>协议与售卖详情</p>
         :rtype: list of AvailableProtoStatus
         """
         return self._Protocols
@@ -663,7 +666,7 @@ class AvailableType(AbstractModel):
 
     @property
     def Type(self):
-        r"""存储类型。返回值中 SD 为通用标准型存储， HP为通用性能型存储， TB为Turbo标准型， TP 为Turbo性能型。
+        r"""<p>存储类型。返回值中 SD 为通用标准型存储， HP为通用性能型存储， TB为Turbo标准型， TP 为Turbo性能型。</p>
         :rtype: str
         """
         return self._Type
@@ -674,7 +677,7 @@ class AvailableType(AbstractModel):
 
     @property
     def Prepayment(self):
-        r"""是否支持预付费。返回值中 true 为支持、false 为不支持
+        r"""<p>是否支持预付费。返回值中 true 为支持、false 为不支持</p>
         :rtype: bool
         """
         return self._Prepayment
@@ -682,6 +685,17 @@ class AvailableType(AbstractModel):
     @Prepayment.setter
     def Prepayment(self, Prepayment):
         self._Prepayment = Prepayment
+
+    @property
+    def Version(self):
+        r"""<p>文件系统版本</p><p>枚举值：</p><ul><li>v1.5： 通用系列</li><li>v3.1： 通用系列（增强型）</li><li>v4.0： Turbo系列</li></ul>
+        :rtype: str
+        """
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
 
 
     def _deserialize(self, params):
@@ -693,6 +707,7 @@ class AvailableType(AbstractModel):
                 self._Protocols.append(obj)
         self._Type = params.get("Type")
         self._Prepayment = params.get("Prepayment")
+        self._Version = params.get("Version")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4396,7 +4411,7 @@ class DescribeAvailableZoneInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RegionZones: 各可用区的资源售卖情况以及支持的存储类型、存储协议等信息
+        :param _RegionZones: <p>各可用区的资源售卖情况以及支持的存储类型、存储协议等信息</p>
         :type RegionZones: list of AvailableRegion
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4406,7 +4421,7 @@ class DescribeAvailableZoneInfoResponse(AbstractModel):
 
     @property
     def RegionZones(self):
-        r"""各可用区的资源售卖情况以及支持的存储类型、存储协议等信息
+        r"""<p>各可用区的资源售卖情况以及支持的存储类型、存储协议等信息</p>
         :rtype: list of AvailableRegion
         """
         return self._RegionZones

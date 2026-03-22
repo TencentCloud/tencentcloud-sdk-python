@@ -24286,19 +24286,15 @@ class DescribeAssetImageListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Limit: 需要返回的数量，默认为10，最大值为100
+        :param _Limit: <p>需要返回的数量，默认为10，最大值为100</p>
         :type Limit: int
-        :param _Offset: 偏移量，默认为0。
+        :param _Offset: <p>偏移量，默认为0。</p>
         :type Offset: int
-        :param _Filters: 过滤条件。
-<li>ImageName- String - 是否必填：否 - 镜像名称筛选，</li>
-<li>ScanStatus - String - 是否必填：否 - 镜像扫描状态notScan，scanning，scanned，scanErr</li>
-<li>ImageID- String - 是否必填：否 - 镜像ID筛选，</li>
-<li>SecurityRisk- String - 是否必填：否 - 安全风险，VulCnt 、VirusCnt、RiskCnt、IsTrustImage</li>
+        :param _Filters: <p>过滤条件。</p><li>ImageName- String - 是否必填：否 - 镜像名称筛选，</li><li>ScanStatus - String - 是否必填：否 - 镜像扫描状态notScan，scanning，scanned，scanErr</li><li>ImageID- String - 是否必填：否 - 镜像ID筛选，</li><li>SecurityRisk- String - 是否必填：否 - 安全风险，VirusCnt、RiskCnt、IsTrustImage、CriticalLevelVul、HighLevelVul、MediumLevelVul、LowLevelVul</li>
         :type Filters: list of AssetFilters
-        :param _By: 排序字段
+        :param _By: <p>排序字段</p>
         :type By: str
-        :param _Order: 排序方式 asc,desc
+        :param _Order: <p>排序方式 asc,desc</p>
         :type Order: str
         """
         self._Limit = None
@@ -24309,7 +24305,7 @@ class DescribeAssetImageListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""需要返回的数量，默认为10，最大值为100
+        r"""<p>需要返回的数量，默认为10，最大值为100</p>
         :rtype: int
         """
         return self._Limit
@@ -24320,7 +24316,7 @@ class DescribeAssetImageListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""偏移量，默认为0。
+        r"""<p>偏移量，默认为0。</p>
         :rtype: int
         """
         return self._Offset
@@ -24331,11 +24327,7 @@ class DescribeAssetImageListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""过滤条件。
-<li>ImageName- String - 是否必填：否 - 镜像名称筛选，</li>
-<li>ScanStatus - String - 是否必填：否 - 镜像扫描状态notScan，scanning，scanned，scanErr</li>
-<li>ImageID- String - 是否必填：否 - 镜像ID筛选，</li>
-<li>SecurityRisk- String - 是否必填：否 - 安全风险，VulCnt 、VirusCnt、RiskCnt、IsTrustImage</li>
+        r"""<p>过滤条件。</p><li>ImageName- String - 是否必填：否 - 镜像名称筛选，</li><li>ScanStatus - String - 是否必填：否 - 镜像扫描状态notScan，scanning，scanned，scanErr</li><li>ImageID- String - 是否必填：否 - 镜像ID筛选，</li><li>SecurityRisk- String - 是否必填：否 - 安全风险，VirusCnt、RiskCnt、IsTrustImage、CriticalLevelVul、HighLevelVul、MediumLevelVul、LowLevelVul</li>
         :rtype: list of AssetFilters
         """
         return self._Filters
@@ -24346,7 +24338,7 @@ class DescribeAssetImageListRequest(AbstractModel):
 
     @property
     def By(self):
-        r"""排序字段
+        r"""<p>排序字段</p>
         :rtype: str
         """
         return self._By
@@ -24357,7 +24349,7 @@ class DescribeAssetImageListRequest(AbstractModel):
 
     @property
     def Order(self):
-        r"""排序方式 asc,desc
+        r"""<p>排序方式 asc,desc</p>
         :rtype: str
         """
         return self._Order
@@ -24395,9 +24387,9 @@ class DescribeAssetImageListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _List: 镜像列表
+        :param _List: <p>镜像列表</p>
         :type List: list of ImagesInfo
-        :param _TotalCount: 总数量
+        :param _TotalCount: <p>总数量</p>
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -24408,7 +24400,7 @@ class DescribeAssetImageListResponse(AbstractModel):
 
     @property
     def List(self):
-        r"""镜像列表
+        r"""<p>镜像列表</p>
         :rtype: list of ImagesInfo
         """
         return self._List
@@ -24419,7 +24411,7 @@ class DescribeAssetImageListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""总数量
+        r"""<p>总数量</p>
         :rtype: int
         """
         return self._TotalCount
