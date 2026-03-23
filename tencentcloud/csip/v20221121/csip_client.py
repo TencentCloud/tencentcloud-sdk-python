@@ -187,6 +187,29 @@ class CsipClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeAIAgentAssetList(self, request):
+        r"""获取 AI agent 资产列表
+
+        :param request: Request instance for DescribeAIAgentAssetList.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeAIAgentAssetListRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeAIAgentAssetListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAIAgentAssetList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAIAgentAssetListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeAbnormalCallRecord(self, request):
         r"""获取调用记录列表
 

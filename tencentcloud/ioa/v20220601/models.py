@@ -1302,7 +1302,7 @@ class CreateDeviceVirtualGroupRequest(AbstractModel):
         :type DomainInstanceId: str
         :param _Description: 详情
         :type Description: str
-        :param _OsType: 系统类型（0: win，1：linux，2: mac，4：android，5：ios ； 默认值0）(只支持32位)
+        :param _OsType: 系统类型（0: win，1：linux，2: mac，4：android，5：ios，-1：全系统（SaaS一体化版本） ； 不传默认为0）(只支持32位)
         :type OsType: int
         :param _TimeType: 分组类型（0:手动分组；非0为自动划分分组；具体枚举值为：1:自动每小时划分分组、2:自动每天划分分组、3:自定义时间划分分组； 默认值0）(只支持32位)
         :type TimeType: int
@@ -1354,7 +1354,7 @@ class CreateDeviceVirtualGroupRequest(AbstractModel):
 
     @property
     def OsType(self):
-        r"""系统类型（0: win，1：linux，2: mac，4：android，5：ios ； 默认值0）(只支持32位)
+        r"""系统类型（0: win，1：linux，2: mac，4：android，5：ios，-1：全系统（SaaS一体化版本） ； 不传默认为0）(只支持32位)
         :rtype: int
         """
         return self._OsType
@@ -4908,7 +4908,7 @@ class DescribeDeviceHardwareInfoListRequest(AbstractModel):
         r"""
         :param _GroupId: 【必填】设备分组id（需要和OsType匹配），下面是私有化场景下默认id：id-名称-操作系统1	全网终端	Win2	未分组终端	Win30000000	服务器	Win40000101	全网终端	Linux40000102	未分组终端	Linux40000103	服务器	Linux40000201	全网终端	macOS40000202	未分组终端	macOS40000203	服务器	macOS40000401	全网终端	Android40000402	未分组终端	Android40000501	全网终端	iOS40000502	未分组终端	iOSSaaS需要调用分组接口DescribeDeviceChildGroups获取对应分组id
         :type GroupId: int
-        :param _OsType: 【必填】操作系统类型（0: win，1：linux，2: mac，4：android，5：ios   默认值0），需要和GroupId或者GroupIds匹配
+        :param _OsType: 【必填】系统类型（0: win，1：linux，2: mac，4：android，5：ios，-1：全系统（SaaS一体化版本） ； 不传默认为0）(只支持32位)，需要和GroupId或者GroupIds匹配
         :type OsType: int
         :param _DomainInstanceId: 管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
         :type DomainInstanceId: str
@@ -4933,7 +4933,7 @@ class DescribeDeviceHardwareInfoListRequest(AbstractModel):
 
     @property
     def OsType(self):
-        r"""【必填】操作系统类型（0: win，1：linux，2: mac，4：android，5：ios   默认值0），需要和GroupId或者GroupIds匹配
+        r"""【必填】系统类型（0: win，1：linux，2: mac，4：android，5：ios，-1：全系统（SaaS一体化版本） ； 不传默认为0）(只支持32位)，需要和GroupId或者GroupIds匹配
         :rtype: int
         """
         return self._OsType
@@ -5354,7 +5354,7 @@ class DescribeDeviceVirtualGroupsRequest(AbstractModel):
         :type DomainInstanceId: str
         :param _Condition: 滤条件、分页参数 <li>Name - String - 是否必填：否 - 操作符: like  - 排序支持：否- 按终端自定义分组过滤。</li> <li>DeviceVirtualGroupName - String - 是否必填：否 - 操作符: like  - 排序支持：否- 按终端自定义分组过滤。</li>
         :type Condition: :class:`tencentcloud.ioa.v20220601.models.Condition`
-        :param _OsType: 系统类型（0: win，1：linux，2: mac，4：android，5：ios   默认值0）
+        :param _OsType: 系统类型（0: win，1：linux，2: mac，4：android，5：ios，-1：全系统（SaaS一体化版本） ； 不传默认为0）(只支持32位)
         :type OsType: int
         :param _VirtualGroupIds: 非必填，自定义分组ids
         :type VirtualGroupIds: list of int
@@ -5388,7 +5388,7 @@ class DescribeDeviceVirtualGroupsRequest(AbstractModel):
 
     @property
     def OsType(self):
-        r"""系统类型（0: win，1：linux，2: mac，4：android，5：ios   默认值0）
+        r"""系统类型（0: win，1：linux，2: mac，4：android，5：ios，-1：全系统（SaaS一体化版本） ； 不传默认为0）(只支持32位)
         :rtype: int
         """
         return self._OsType
@@ -5605,7 +5605,7 @@ id-名称-操作系统
 
 SaaS需要调用分组接口DescribeDeviceChildGroups获取对应分组id
         :type GroupId: int
-        :param _OsType: 操作系统类型（0: win，1：linux，2: mac，4：android，5：ios   默认值0），需要和GroupId或者GroupIds匹配
+        :param _OsType: 系统类型（0: win，1：linux，2: mac，4：android，5：ios，-1：全系统（SaaS一体化版本） ； 不传默认为0）(只支持32位)，需要和GroupId或者GroupIds匹配
         :type OsType: int
         :param _OnlineStatus: 在线状态 （2表示在线，0或者1表示离线）
         :type OnlineStatus: int
@@ -5733,7 +5733,7 @@ SaaS需要调用分组接口DescribeDeviceChildGroups获取对应分组id
 
     @property
     def OsType(self):
-        r"""操作系统类型（0: win，1：linux，2: mac，4：android，5：ios   默认值0），需要和GroupId或者GroupIds匹配
+        r"""系统类型（0: win，1：linux，2: mac，4：android，5：ios，-1：全系统（SaaS一体化版本） ； 不传默认为0）(只支持32位)，需要和GroupId或者GroupIds匹配
         :rtype: int
         """
         return self._OsType
@@ -7179,7 +7179,7 @@ class DescribeVirtualDevicesRequest(AbstractModel):
         :type Condition: :class:`tencentcloud.ioa.v20220601.models.Condition`
         :param _DeviceVirtualGroupId: 终端自定义分组ID（0：获取租户全部自定义分组下的终端数据；其他值：获取具体ID分组下的终端数据）
         :type DeviceVirtualGroupId: int
-        :param _OsType: 系统类型（0: win，1：linux，2: mac，4：android，5：ios   默认值0）
+        :param _OsType: 系统类型（0: win，1：linux，2: mac，4：android，5：ios，-1：全系统（SaaS一体化版本） ； 不传默认为0）(只支持32位)
         :type OsType: int
         :param _OnlineStatus: 选填，在线状态 （2表示在线，0或者1表示离线）
         :type OnlineStatus: int
@@ -7225,7 +7225,7 @@ class DescribeVirtualDevicesRequest(AbstractModel):
 
     @property
     def OsType(self):
-        r"""系统类型（0: win，1：linux，2: mac，4：android，5：ios   默认值0）
+        r"""系统类型（0: win，1：linux，2: mac，4：android，5：ios，-1：全系统（SaaS一体化版本） ； 不传默认为0）(只支持32位)
         :rtype: int
         """
         return self._OsType
@@ -8975,7 +8975,7 @@ class ExportDeviceDownloadTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _OsType: 系统类型（0: win，1：linux，2: mac，4：android，5：ios；默认值0）
+        :param _OsType: 系统类型（0: win，1：linux，2: mac，4：android，5：ios，-1：全系统（SaaS一体化版本） ； 不传默认为0）(只支持32位)
         :type OsType: int
         :param _DomainInstanceId: 管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
         :type DomainInstanceId: str
@@ -9000,7 +9000,7 @@ class ExportDeviceDownloadTaskRequest(AbstractModel):
 
     @property
     def OsType(self):
-        r"""系统类型（0: win，1：linux，2: mac，4：android，5：ios；默认值0）
+        r"""系统类型（0: win，1：linux，2: mac，4：android，5：ios，-1：全系统（SaaS一体化版本） ； 不传默认为0）(只支持32位)
         :rtype: int
         """
         return self._OsType
@@ -9758,7 +9758,7 @@ class ModifyVirtualDeviceGroupsRequest(AbstractModel):
         :type DeviceVirtualGroupId: int
         :param _DeviceVirtualGroupIds: 要添加的终端自定义分组id列表
         :type DeviceVirtualGroupIds: list of int
-        :param _OsType: 系统类型（0: win，1：linux，2: mac，4：android，5：ios   默认值0）
+        :param _OsType: 系统类型（0: win，1：linux，2: mac，4：android，5：ios，-1：全系统（SaaS一体化版本） ； 不传默认为0）(只支持32位)
         :type OsType: int
         """
         self._DeviceList = None
@@ -9813,7 +9813,7 @@ class ModifyVirtualDeviceGroupsRequest(AbstractModel):
 
     @property
     def OsType(self):
-        r"""系统类型（0: win，1：linux，2: mac，4：android，5：ios   默认值0）
+        r"""系统类型（0: win，1：linux，2: mac，4：android，5：ios，-1：全系统（SaaS一体化版本） ； 不传默认为0）(只支持32位)
         :rtype: int
         """
         return self._OsType

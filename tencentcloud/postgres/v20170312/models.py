@@ -2676,6 +2676,8 @@ class CreateInstancesRequest(AbstractModel):
         :type NeedSupportIpv6: int
         :param _DeletionProtection: <p>实例是否开启删除保护: true-开启删除保护；false-关闭删除保护。</p>
         :type DeletionProtection: bool
+        :param _StorageType: <p>实例存储类型，可选值：PHYSICAL_LOCAL_SSD：物理机本地ssd硬盘 CLOUD_PREMIUM：高性能云硬盘 CLOUD_SSD：ssd云硬盘 CLOUD_HSSD：增强型ssd云硬盘</p>
+        :type StorageType: str
         """
         self._Zone = None
         self._SpecCode = None
@@ -2709,6 +2711,7 @@ class CreateInstancesRequest(AbstractModel):
         self._SyncMode = None
         self._NeedSupportIpv6 = None
         self._DeletionProtection = None
+        self._StorageType = None
 
     @property
     def Zone(self):
@@ -3062,6 +3065,17 @@ class CreateInstancesRequest(AbstractModel):
     def DeletionProtection(self, DeletionProtection):
         self._DeletionProtection = DeletionProtection
 
+    @property
+    def StorageType(self):
+        r"""<p>实例存储类型，可选值：PHYSICAL_LOCAL_SSD：物理机本地ssd硬盘 CLOUD_PREMIUM：高性能云硬盘 CLOUD_SSD：ssd云硬盘 CLOUD_HSSD：增强型ssd云硬盘</p>
+        :rtype: str
+        """
+        return self._StorageType
+
+    @StorageType.setter
+    def StorageType(self, StorageType):
+        self._StorageType = StorageType
+
 
     def _deserialize(self, params):
         self._Zone = params.get("Zone")
@@ -3106,6 +3120,7 @@ class CreateInstancesRequest(AbstractModel):
         self._SyncMode = params.get("SyncMode")
         self._NeedSupportIpv6 = params.get("NeedSupportIpv6")
         self._DeletionProtection = params.get("DeletionProtection")
+        self._StorageType = params.get("StorageType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4463,6 +4478,8 @@ class DBInstance(AbstractModel):
         :type ExpandedCpu: int
         :param _DeletionProtection: <p>实例是否开启删除保护，取值如下：</p><ul><li>true：开启删除保护</li><li>false：关闭删除保护</li></ul>
         :type DeletionProtection: bool
+        :param _DBInstanceStorageType: <p>实例存储类型，可选值：PHYSICAL_LOCAL_SSD：物理机本地ssd硬盘 CLOUD_PREMIUM：高性能云硬盘 CLOUD_SSD：ssd云硬盘 CLOUD_HSSD：增强型ssd云硬盘</p>
+        :type DBInstanceStorageType: str
         """
         self._Region = None
         self._Zone = None
@@ -4505,6 +4522,7 @@ class DBInstance(AbstractModel):
         self._SupportIpv6 = None
         self._ExpandedCpu = None
         self._DeletionProtection = None
+        self._DBInstanceStorageType = None
 
     @property
     def Region(self):
@@ -4959,6 +4977,17 @@ class DBInstance(AbstractModel):
     def DeletionProtection(self, DeletionProtection):
         self._DeletionProtection = DeletionProtection
 
+    @property
+    def DBInstanceStorageType(self):
+        r"""<p>实例存储类型，可选值：PHYSICAL_LOCAL_SSD：物理机本地ssd硬盘 CLOUD_PREMIUM：高性能云硬盘 CLOUD_SSD：ssd云硬盘 CLOUD_HSSD：增强型ssd云硬盘</p>
+        :rtype: str
+        """
+        return self._DBInstanceStorageType
+
+    @DBInstanceStorageType.setter
+    def DBInstanceStorageType(self, DBInstanceStorageType):
+        self._DBInstanceStorageType = DBInstanceStorageType
+
 
     def _deserialize(self, params):
         self._Region = params.get("Region")
@@ -5022,6 +5051,7 @@ class DBInstance(AbstractModel):
         self._SupportIpv6 = params.get("SupportIpv6")
         self._ExpandedCpu = params.get("ExpandedCpu")
         self._DeletionProtection = params.get("DeletionProtection")
+        self._DBInstanceStorageType = params.get("DBInstanceStorageType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7726,10 +7756,13 @@ class DescribeClassesRequest(AbstractModel):
         :type DBEngine: str
         :param _DBMajorVersion: <p>数据库主版本号。例如12，13，可以通过接口<a href="https://cloud.tencent.com/document/product/409/89018">DescribeDBVersions</a>获取。</p>
         :type DBMajorVersion: str
+        :param _StorageType: <p>实例存储类型，根据存储类型返回支持的规格。</p><p>枚举值：</p><ul><li>PHYSICAL_LOCAL_SSD： 物理机本地ssd硬盘</li><li>CLOUD_PREMIUM： 高性能云硬盘</li><li>CLOUD_SSD： ssd云硬盘</li><li>CLOUD_HSSD： 增强型ssd云硬盘</li></ul><p>默认值：PHYSICAL_LOCAL_SSD</p>
+        :type StorageType: str
         """
         self._Zone = None
         self._DBEngine = None
         self._DBMajorVersion = None
+        self._StorageType = None
 
     @property
     def Zone(self):
@@ -7764,11 +7797,23 @@ class DescribeClassesRequest(AbstractModel):
     def DBMajorVersion(self, DBMajorVersion):
         self._DBMajorVersion = DBMajorVersion
 
+    @property
+    def StorageType(self):
+        r"""<p>实例存储类型，根据存储类型返回支持的规格。</p><p>枚举值：</p><ul><li>PHYSICAL_LOCAL_SSD： 物理机本地ssd硬盘</li><li>CLOUD_PREMIUM： 高性能云硬盘</li><li>CLOUD_SSD： ssd云硬盘</li><li>CLOUD_HSSD： 增强型ssd云硬盘</li></ul><p>默认值：PHYSICAL_LOCAL_SSD</p>
+        :rtype: str
+        """
+        return self._StorageType
+
+    @StorageType.setter
+    def StorageType(self, StorageType):
+        self._StorageType = StorageType
+
 
     def _deserialize(self, params):
         self._Zone = params.get("Zone")
         self._DBEngine = params.get("DBEngine")
         self._DBMajorVersion = params.get("DBMajorVersion")
+        self._StorageType = params.get("StorageType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9068,6 +9113,36 @@ class DescribeDBVersionsRequest(AbstractModel):
     r"""DescribeDBVersions请求参数结构体
 
     """
+
+    def __init__(self):
+        r"""
+        :param _StorageType: <p>实例存储类型，根据磁盘类型返回支持的版本</p><p>枚举值：</p><ul><li>PHYSICAL_LOCAL_SSD： 物理机本地ssd硬盘</li><li>CLOUD_PREMIUM： 高性能云硬盘</li><li>CLOUD_SSD： ssd云硬盘</li><li>CLOUD_HSSD： 增强型ssd云硬盘</li></ul><p>默认值：PHYSICAL_LOCAL_SSD</p>
+        :type StorageType: str
+        """
+        self._StorageType = None
+
+    @property
+    def StorageType(self):
+        r"""<p>实例存储类型，根据磁盘类型返回支持的版本</p><p>枚举值：</p><ul><li>PHYSICAL_LOCAL_SSD： 物理机本地ssd硬盘</li><li>CLOUD_PREMIUM： 高性能云硬盘</li><li>CLOUD_SSD： ssd云硬盘</li><li>CLOUD_HSSD： 增强型ssd云硬盘</li></ul><p>默认值：PHYSICAL_LOCAL_SSD</p>
+        :rtype: str
+        """
+        return self._StorageType
+
+    @StorageType.setter
+    def StorageType(self, StorageType):
+        self._StorageType = StorageType
+
+
+    def _deserialize(self, params):
+        self._StorageType = params.get("StorageType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DescribeDBVersionsResponse(AbstractModel):
@@ -10795,9 +10870,12 @@ class DescribeProductConfigRequest(AbstractModel):
         :type Zone: str
         :param _DBEngine: <p>数据库引擎，支持：<br>1、postgresql（云数据库PostgreSQL）；<br>2、mssql_compatible（MSSQL兼容-云数据库PostgreSQL）；<br>如不指定默认使用postgresql。</p>
         :type DBEngine: str
+        :param _StorageType: <p>实例存储类型，根据存储类型返回支持的版本和规格</p><p>枚举值：</p><ul><li>PHYSICAL_LOCAL_SSD： 物理机本地ssd硬盘</li><li>CLOUD_PREMIUM： 高性能云硬盘</li><li>CLOUD_SSD： ssd云硬盘</li><li>CLOUD_HSSD： 增强型ssd云硬盘</li></ul><p>默认值：PHYSICAL_LOCAL_SSD</p>
+        :type StorageType: str
         """
         self._Zone = None
         self._DBEngine = None
+        self._StorageType = None
 
     @property
     def Zone(self):
@@ -10821,10 +10899,22 @@ class DescribeProductConfigRequest(AbstractModel):
     def DBEngine(self, DBEngine):
         self._DBEngine = DBEngine
 
+    @property
+    def StorageType(self):
+        r"""<p>实例存储类型，根据存储类型返回支持的版本和规格</p><p>枚举值：</p><ul><li>PHYSICAL_LOCAL_SSD： 物理机本地ssd硬盘</li><li>CLOUD_PREMIUM： 高性能云硬盘</li><li>CLOUD_SSD： ssd云硬盘</li><li>CLOUD_HSSD： 增强型ssd云硬盘</li></ul><p>默认值：PHYSICAL_LOCAL_SSD</p>
+        :rtype: str
+        """
+        return self._StorageType
+
+    @StorageType.setter
+    def StorageType(self, StorageType):
+        self._StorageType = StorageType
+
 
     def _deserialize(self, params):
         self._Zone = params.get("Zone")
         self._DBEngine = params.get("DBEngine")
+        self._StorageType = params.get("StorageType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12607,6 +12697,8 @@ class InquiryPriceCreateDBInstancesRequest(AbstractModel):
         :type InstanceType: str
         :param _DBEngine: <p>DB引擎，默认postgresql，支持如下：<br>postgresql（云数据库PostgreSQL）<br>mssql_compatible（MSSQL兼容-云数据库PostgreSQL）</p>
         :type DBEngine: str
+        :param _StorageType: <p>实例存储类型，可选值：PHYSICAL_LOCAL_SSD：物理机本地ssd硬盘 CLOUD_PREMIUM：高性能云硬盘 CLOUD_SSD：ssd云硬盘 CLOUD_HSSD：增强型ssd云硬盘</p>
+        :type StorageType: str
         """
         self._Zone = None
         self._SpecCode = None
@@ -12617,6 +12709,7 @@ class InquiryPriceCreateDBInstancesRequest(AbstractModel):
         self._InstanceChargeType = None
         self._InstanceType = None
         self._DBEngine = None
+        self._StorageType = None
 
     @property
     def Zone(self):
@@ -12717,6 +12810,17 @@ class InquiryPriceCreateDBInstancesRequest(AbstractModel):
     def DBEngine(self, DBEngine):
         self._DBEngine = DBEngine
 
+    @property
+    def StorageType(self):
+        r"""<p>实例存储类型，可选值：PHYSICAL_LOCAL_SSD：物理机本地ssd硬盘 CLOUD_PREMIUM：高性能云硬盘 CLOUD_SSD：ssd云硬盘 CLOUD_HSSD：增强型ssd云硬盘</p>
+        :rtype: str
+        """
+        return self._StorageType
+
+    @StorageType.setter
+    def StorageType(self, StorageType):
+        self._StorageType = StorageType
+
 
     def _deserialize(self, params):
         self._Zone = params.get("Zone")
@@ -12728,6 +12832,7 @@ class InquiryPriceCreateDBInstancesRequest(AbstractModel):
         self._InstanceChargeType = params.get("InstanceChargeType")
         self._InstanceType = params.get("InstanceType")
         self._DBEngine = params.get("DBEngine")
+        self._StorageType = params.get("StorageType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

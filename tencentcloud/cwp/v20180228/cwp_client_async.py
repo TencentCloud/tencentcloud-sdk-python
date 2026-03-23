@@ -5806,6 +5806,24 @@ class CwpClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeSkillInfo(
+            self,
+            request: models.DescribeSkillInfoRequest,
+            opts: Dict = None,
+    ) -> models.DescribeSkillInfoResponse:
+        """
+        补丁详情
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeSkillInfo"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeSkillInfoResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeStrategyExist(
             self,
             request: models.DescribeStrategyExistRequest,

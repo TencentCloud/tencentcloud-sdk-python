@@ -35193,20 +35193,22 @@ class TextWaybill(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RecName: 收件人姓名
+        :param _RecName: <p>收件人姓名</p>
         :type RecName: :class:`tencentcloud.ocr.v20181119.models.WaybillObj`
-        :param _RecNum: 收件人手机号
+        :param _RecNum: <p>收件人手机号</p>
         :type RecNum: :class:`tencentcloud.ocr.v20181119.models.WaybillObj`
-        :param _RecAddr: 收件人地址
+        :param _RecAddr: <p>收件人地址</p>
         :type RecAddr: :class:`tencentcloud.ocr.v20181119.models.WaybillObj`
-        :param _SenderName: 寄件人姓名
+        :param _SenderName: <p>寄件人姓名</p>
         :type SenderName: :class:`tencentcloud.ocr.v20181119.models.WaybillObj`
-        :param _SenderNum: 寄件人手机号
+        :param _SenderNum: <p>寄件人手机号</p>
         :type SenderNum: :class:`tencentcloud.ocr.v20181119.models.WaybillObj`
-        :param _SenderAddr: 寄件人地址
+        :param _SenderAddr: <p>寄件人地址</p>
         :type SenderAddr: :class:`tencentcloud.ocr.v20181119.models.WaybillObj`
-        :param _WaybillNum: 运单号
+        :param _WaybillNum: <p>运单号, 当同时存在 母 / 子 运单号时， 该字段为子运单号</p>
         :type WaybillNum: :class:`tencentcloud.ocr.v20181119.models.WaybillObj`
+        :param _MainWaybillNum: <p>母运单号， 当不存在母运单号时， 该字段为不存在</p>
+        :type MainWaybillNum: :class:`tencentcloud.ocr.v20181119.models.WaybillObj`
         """
         self._RecName = None
         self._RecNum = None
@@ -35215,10 +35217,11 @@ class TextWaybill(AbstractModel):
         self._SenderNum = None
         self._SenderAddr = None
         self._WaybillNum = None
+        self._MainWaybillNum = None
 
     @property
     def RecName(self):
-        r"""收件人姓名
+        r"""<p>收件人姓名</p>
         :rtype: :class:`tencentcloud.ocr.v20181119.models.WaybillObj`
         """
         return self._RecName
@@ -35229,7 +35232,7 @@ class TextWaybill(AbstractModel):
 
     @property
     def RecNum(self):
-        r"""收件人手机号
+        r"""<p>收件人手机号</p>
         :rtype: :class:`tencentcloud.ocr.v20181119.models.WaybillObj`
         """
         return self._RecNum
@@ -35240,7 +35243,7 @@ class TextWaybill(AbstractModel):
 
     @property
     def RecAddr(self):
-        r"""收件人地址
+        r"""<p>收件人地址</p>
         :rtype: :class:`tencentcloud.ocr.v20181119.models.WaybillObj`
         """
         return self._RecAddr
@@ -35251,7 +35254,7 @@ class TextWaybill(AbstractModel):
 
     @property
     def SenderName(self):
-        r"""寄件人姓名
+        r"""<p>寄件人姓名</p>
         :rtype: :class:`tencentcloud.ocr.v20181119.models.WaybillObj`
         """
         return self._SenderName
@@ -35262,7 +35265,7 @@ class TextWaybill(AbstractModel):
 
     @property
     def SenderNum(self):
-        r"""寄件人手机号
+        r"""<p>寄件人手机号</p>
         :rtype: :class:`tencentcloud.ocr.v20181119.models.WaybillObj`
         """
         return self._SenderNum
@@ -35273,7 +35276,7 @@ class TextWaybill(AbstractModel):
 
     @property
     def SenderAddr(self):
-        r"""寄件人地址
+        r"""<p>寄件人地址</p>
         :rtype: :class:`tencentcloud.ocr.v20181119.models.WaybillObj`
         """
         return self._SenderAddr
@@ -35284,7 +35287,7 @@ class TextWaybill(AbstractModel):
 
     @property
     def WaybillNum(self):
-        r"""运单号
+        r"""<p>运单号, 当同时存在 母 / 子 运单号时， 该字段为子运单号</p>
         :rtype: :class:`tencentcloud.ocr.v20181119.models.WaybillObj`
         """
         return self._WaybillNum
@@ -35292,6 +35295,17 @@ class TextWaybill(AbstractModel):
     @WaybillNum.setter
     def WaybillNum(self, WaybillNum):
         self._WaybillNum = WaybillNum
+
+    @property
+    def MainWaybillNum(self):
+        r"""<p>母运单号， 当不存在母运单号时， 该字段为不存在</p>
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.WaybillObj`
+        """
+        return self._MainWaybillNum
+
+    @MainWaybillNum.setter
+    def MainWaybillNum(self, MainWaybillNum):
+        self._MainWaybillNum = MainWaybillNum
 
 
     def _deserialize(self, params):
@@ -35316,6 +35330,9 @@ class TextWaybill(AbstractModel):
         if params.get("WaybillNum") is not None:
             self._WaybillNum = WaybillObj()
             self._WaybillNum._deserialize(params.get("WaybillNum"))
+        if params.get("MainWaybillNum") is not None:
+            self._MainWaybillNum = WaybillObj()
+            self._MainWaybillNum._deserialize(params.get("MainWaybillNum"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -7412,6 +7412,29 @@ class CwpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeSkillInfo(self, request):
+        r"""补丁详情
+
+        :param request: Request instance for DescribeSkillInfo.
+        :type request: :class:`tencentcloud.cwp.v20180228.models.DescribeSkillInfoRequest`
+        :rtype: :class:`tencentcloud.cwp.v20180228.models.DescribeSkillInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSkillInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSkillInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeStrategyExist(self, request):
         r"""根据策略名查询策略是否存在
 

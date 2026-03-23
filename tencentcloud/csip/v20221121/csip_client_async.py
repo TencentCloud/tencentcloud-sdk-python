@@ -151,6 +151,24 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeAIAgentAssetList(
+            self,
+            request: models.DescribeAIAgentAssetListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAIAgentAssetListResponse:
+        """
+        获取 AI agent 资产列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAIAgentAssetList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAIAgentAssetListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeAbnormalCallRecord(
             self,
             request: models.DescribeAbnormalCallRecordRequest,

@@ -18,6 +18,179 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AIAgentAsset(AbstractModel):
+    r"""Ai Agent 资产信息列表项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: ID 标识
+        :type ID: str
+        :param _AgentName: agent 名称
+        :type AgentName: str
+        :param _AgentModel: agent 使用模型名称
+        :type AgentModel: list of str
+        :param _InstanceID: 实例 ID
+        :type InstanceID: str
+        :param _MetadataRiskList: metadata 风险列表。有如下枚举值: 1. AK_TMP  2. USER_DATA
+        :type MetadataRiskList: list of str
+        :param _IdentityTimeFirst: 首次检出时间
+        :type IdentityTimeFirst: str
+        :param _IdentityTimeLast: 最近检出时间
+        :type IdentityTimeLast: str
+        :param _IdentityMethod: 检出方式。有如下枚举值 1. FINGER 资产指纹方式检出 2. NETWORK 网络访问方式检出
+        :type IdentityMethod: str
+        :param _ExposureStatus: 暴露状态。有如下枚举值。1. EXPOSED；2.UNEXPOSED；
+3. UNKNOWN;
+        :type ExposureStatus: str
+        :param _MetadataRiskURL: metadata 有风险时对应路径
+        :type MetadataRiskURL: str
+        """
+        self._ID = None
+        self._AgentName = None
+        self._AgentModel = None
+        self._InstanceID = None
+        self._MetadataRiskList = None
+        self._IdentityTimeFirst = None
+        self._IdentityTimeLast = None
+        self._IdentityMethod = None
+        self._ExposureStatus = None
+        self._MetadataRiskURL = None
+
+    @property
+    def ID(self):
+        r"""ID 标识
+        :rtype: str
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def AgentName(self):
+        r"""agent 名称
+        :rtype: str
+        """
+        return self._AgentName
+
+    @AgentName.setter
+    def AgentName(self, AgentName):
+        self._AgentName = AgentName
+
+    @property
+    def AgentModel(self):
+        r"""agent 使用模型名称
+        :rtype: list of str
+        """
+        return self._AgentModel
+
+    @AgentModel.setter
+    def AgentModel(self, AgentModel):
+        self._AgentModel = AgentModel
+
+    @property
+    def InstanceID(self):
+        r"""实例 ID
+        :rtype: str
+        """
+        return self._InstanceID
+
+    @InstanceID.setter
+    def InstanceID(self, InstanceID):
+        self._InstanceID = InstanceID
+
+    @property
+    def MetadataRiskList(self):
+        r"""metadata 风险列表。有如下枚举值: 1. AK_TMP  2. USER_DATA
+        :rtype: list of str
+        """
+        return self._MetadataRiskList
+
+    @MetadataRiskList.setter
+    def MetadataRiskList(self, MetadataRiskList):
+        self._MetadataRiskList = MetadataRiskList
+
+    @property
+    def IdentityTimeFirst(self):
+        r"""首次检出时间
+        :rtype: str
+        """
+        return self._IdentityTimeFirst
+
+    @IdentityTimeFirst.setter
+    def IdentityTimeFirst(self, IdentityTimeFirst):
+        self._IdentityTimeFirst = IdentityTimeFirst
+
+    @property
+    def IdentityTimeLast(self):
+        r"""最近检出时间
+        :rtype: str
+        """
+        return self._IdentityTimeLast
+
+    @IdentityTimeLast.setter
+    def IdentityTimeLast(self, IdentityTimeLast):
+        self._IdentityTimeLast = IdentityTimeLast
+
+    @property
+    def IdentityMethod(self):
+        r"""检出方式。有如下枚举值 1. FINGER 资产指纹方式检出 2. NETWORK 网络访问方式检出
+        :rtype: str
+        """
+        return self._IdentityMethod
+
+    @IdentityMethod.setter
+    def IdentityMethod(self, IdentityMethod):
+        self._IdentityMethod = IdentityMethod
+
+    @property
+    def ExposureStatus(self):
+        r"""暴露状态。有如下枚举值。1. EXPOSED；2.UNEXPOSED；
+3. UNKNOWN;
+        :rtype: str
+        """
+        return self._ExposureStatus
+
+    @ExposureStatus.setter
+    def ExposureStatus(self, ExposureStatus):
+        self._ExposureStatus = ExposureStatus
+
+    @property
+    def MetadataRiskURL(self):
+        r"""metadata 有风险时对应路径
+        :rtype: str
+        """
+        return self._MetadataRiskURL
+
+    @MetadataRiskURL.setter
+    def MetadataRiskURL(self, MetadataRiskURL):
+        self._MetadataRiskURL = MetadataRiskURL
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        self._AgentName = params.get("AgentName")
+        self._AgentModel = params.get("AgentModel")
+        self._InstanceID = params.get("InstanceID")
+        self._MetadataRiskList = params.get("MetadataRiskList")
+        self._IdentityTimeFirst = params.get("IdentityTimeFirst")
+        self._IdentityTimeLast = params.get("IdentityTimeLast")
+        self._IdentityMethod = params.get("IdentityMethod")
+        self._ExposureStatus = params.get("ExposureStatus")
+        self._MetadataRiskURL = params.get("MetadataRiskURL")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AKInfo(AbstractModel):
     r"""AK简要信息
 
@@ -12477,6 +12650,122 @@ class DeleteRiskScanTaskResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAIAgentAssetListRequest(AbstractModel):
+    r"""DescribeAIAgentAssetList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        :param _Filter: 筛选
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._MemberId = None
+        self._Filter = None
+
+    @property
+    def MemberId(self):
+        r"""集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filter(self):
+        r"""筛选
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAIAgentAssetListResponse(AbstractModel):
+    r"""DescribeAIAgentAssetList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AssetList: 资产列表
+        :type AssetList: list of AIAgentAsset
+        :param _TotalCount: 资产总数
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._AssetList = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def AssetList(self):
+        r"""资产列表
+        :rtype: list of AIAgentAsset
+        """
+        return self._AssetList
+
+    @AssetList.setter
+    def AssetList(self, AssetList):
+        self._AssetList = AssetList
+
+    @property
+    def TotalCount(self):
+        r"""资产总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("AssetList") is not None:
+            self._AssetList = []
+            for item in params.get("AssetList"):
+                obj = AIAgentAsset()
+                obj._deserialize(item)
+                self._AssetList.append(obj)
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 

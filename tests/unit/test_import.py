@@ -99,6 +99,11 @@ def test_import_apigateway_v20180808():
     from tencentcloud.apigateway.v20180808 import models
 
 
+def test_import_apis_v20240801():
+    from tencentcloud.apis.v20240801 import apis_client
+    from tencentcloud.apis.v20240801 import models
+
+
 def test_import_apm_v20210622():
     from tencentcloud.apm.v20210622 import apm_client
     from tencentcloud.apm.v20210622 import models

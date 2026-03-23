@@ -58117,6 +58117,90 @@ class DescribeShellPolicyListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeSkillInfoRequest(AbstractModel):
+    r"""DescribeSkillInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Ids: 事件id
+        :type Ids: list of int non-negative
+        """
+        self._Ids = None
+
+    @property
+    def Ids(self):
+        r"""事件id
+        :rtype: list of int non-negative
+        """
+        return self._Ids
+
+    @Ids.setter
+    def Ids(self, Ids):
+        self._Ids = Ids
+
+
+    def _deserialize(self, params):
+        self._Ids = params.get("Ids")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSkillInfoResponse(AbstractModel):
+    r"""DescribeSkillInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SkillInfoList: skill信息列表
+        :type SkillInfoList: list of SkillInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._SkillInfoList = None
+        self._RequestId = None
+
+    @property
+    def SkillInfoList(self):
+        r"""skill信息列表
+        :rtype: list of SkillInfo
+        """
+        return self._SkillInfoList
+
+    @SkillInfoList.setter
+    def SkillInfoList(self, SkillInfoList):
+        self._SkillInfoList = SkillInfoList
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("SkillInfoList") is not None:
+            self._SkillInfoList = []
+            for item in params.get("SkillInfoList"):
+                obj = SkillInfo()
+                obj._deserialize(item)
+                self._SkillInfoList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeStrategyExistRequest(AbstractModel):
     r"""DescribeStrategyExist请求参数结构体
 
@@ -107328,6 +107412,132 @@ class ShellPolicyList(AbstractModel):
         self._IsEnabled = params.get("IsEnabled")
         self._UpdateTime = params.get("UpdateTime")
         self._HostScope = params.get("HostScope")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SkillInfo(AbstractModel):
+    r"""Skill 的信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SkillName: Skill名称
+        :type SkillName: str
+        :param _SkillDesc: Skill 描述
+        :type SkillDesc: str
+        :param _SkillSource: Skill来源
+        :type SkillSource: str
+        :param _Tags: Skill风险标签
+        :type Tags: list of str
+        :param _RiskDesc: skill风险描述
+        :type RiskDesc: str
+        :param _Evidence: 证据链
+        :type Evidence: str
+        :param _Id: 事件ID
+        :type Id: int
+        """
+        self._SkillName = None
+        self._SkillDesc = None
+        self._SkillSource = None
+        self._Tags = None
+        self._RiskDesc = None
+        self._Evidence = None
+        self._Id = None
+
+    @property
+    def SkillName(self):
+        r"""Skill名称
+        :rtype: str
+        """
+        return self._SkillName
+
+    @SkillName.setter
+    def SkillName(self, SkillName):
+        self._SkillName = SkillName
+
+    @property
+    def SkillDesc(self):
+        r"""Skill 描述
+        :rtype: str
+        """
+        return self._SkillDesc
+
+    @SkillDesc.setter
+    def SkillDesc(self, SkillDesc):
+        self._SkillDesc = SkillDesc
+
+    @property
+    def SkillSource(self):
+        r"""Skill来源
+        :rtype: str
+        """
+        return self._SkillSource
+
+    @SkillSource.setter
+    def SkillSource(self, SkillSource):
+        self._SkillSource = SkillSource
+
+    @property
+    def Tags(self):
+        r"""Skill风险标签
+        :rtype: list of str
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def RiskDesc(self):
+        r"""skill风险描述
+        :rtype: str
+        """
+        return self._RiskDesc
+
+    @RiskDesc.setter
+    def RiskDesc(self, RiskDesc):
+        self._RiskDesc = RiskDesc
+
+    @property
+    def Evidence(self):
+        r"""证据链
+        :rtype: str
+        """
+        return self._Evidence
+
+    @Evidence.setter
+    def Evidence(self, Evidence):
+        self._Evidence = Evidence
+
+    @property
+    def Id(self):
+        r"""事件ID
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+
+    def _deserialize(self, params):
+        self._SkillName = params.get("SkillName")
+        self._SkillDesc = params.get("SkillDesc")
+        self._SkillSource = params.get("SkillSource")
+        self._Tags = params.get("Tags")
+        self._RiskDesc = params.get("RiskDesc")
+        self._Evidence = params.get("Evidence")
+        self._Id = params.get("Id")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

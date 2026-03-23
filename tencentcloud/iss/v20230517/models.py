@@ -6344,69 +6344,70 @@ class DescribeDeviceData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DeviceId: 设备ID
+        :param _DeviceId: <p>设备ID</p>
         :type DeviceId: str
-        :param _Code: 设备编码（国标设备即我们为设备生成的20位国标编码，rtmp 设备为10 位设备编码）
+        :param _Code: <p>设备编码（国标设备即我们为设备生成的20位国标编码，rtmp 设备为10 位设备编码）</p>
         :type Code: str
-        :param _Name: 设备名称
+        :param _Name: <p>设备名称</p>
         :type Name: str
-        :param _AccessProtocol: 设备接入协议，1:RTMP,2:GB,3:GW 
+        :param _AccessProtocol: <p>设备接入协议，1:RTMP,2:GB,3:GW</p>
         :type AccessProtocol: int
-        :param _Type: 设备类型，1:IPC,2:NVR
+        :param _Type: <p>设备类型，1:IPC,2:NVR</p>
         :type Type: int
-        :param _ClusterId: 设备接入服务节点id
+        :param _ClusterId: <p>设备接入服务节点id</p>
         :type ClusterId: str
-        :param _ClusterName: 设备接入服务节点名称
-
+        :param _ClusterName: <p>设备接入服务节点名称</p>
         :type ClusterName: str
-        :param _TransportProtocol: 设备流传输协议，1:UDP,2:TCP 
+        :param _TransportProtocol: <p>设备流传输协议，1:UDP,2:TCP</p>
         :type TransportProtocol: int
-        :param _Password: 设备密码
+        :param _Password: <p>设备密码</p>
         :type Password: str
-        :param _Description: 设备描述
+        :param _Description: <p>设备描述</p>
         :type Description: str
-        :param _SipId: sip服务ID
+        :param _SipId: <p>sip服务ID</p>
         :type SipId: str
-        :param _SipDomain: sip服务域
+        :param _SipDomain: <p>sip服务域</p>
         :type SipDomain: str
-        :param _SipIp: sip服务IP地址
+        :param _SipIp: <p>sip服务IP地址</p>
         :type SipIp: str
-        :param _SipPort: sip服务端口
+        :param _SipPort: <p>sip服务端口</p>
         :type SipPort: int
-        :param _PushStreamUrl: Rtmp设备推流地址(仅rtmp设备有效)
+        :param _PushStreamUrl: <p>Rtmp设备推流地址(仅rtmp设备有效)</p>
         :type PushStreamUrl: str
-        :param _Status: 设备状态，0:未注册,1:在线,2:离线,3:禁用
+        :param _Status: <p>设备状态，0:未注册,1:在线,2:离线,3:禁用</p>
         :type Status: int
-        :param _OrganizationId: 设备所属组织ID
+        :param _OrganizationId: <p>设备所属组织ID</p>
         :type OrganizationId: str
-        :param _GatewayId: 设备接入网关ID，从查询网关列表接口中获取（仅网关接入需要）
+        :param _GatewayId: <p>设备接入网关ID，从查询网关列表接口中获取（仅网关接入需要）</p>
         :type GatewayId: str
-        :param _GatewayName: 设备所属网关名称
+        :param _GatewayName: <p>设备所属网关名称</p>
         :type GatewayName: str
-        :param _ProtocolTypeName: 设备网关协议名称
+        :param _ProtocolTypeName: <p>设备网关协议名称</p>
         :type ProtocolTypeName: str
-        :param _ProtocolType: 网关接入协议类型，1.海康SDK，2.大华SDK，3.宇视SDK，4.Onvif（仅网关接入需要）
+        :param _ProtocolType: <p>网关接入协议类型，1.海康SDK，2.大华SDK，3.宇视SDK，4.Onvif（仅网关接入需要）</p>
         :type ProtocolType: int
-        :param _Ip: 设备接入IP
+        :param _Ip: <p>设备接入IP</p>
         :type Ip: str
-        :param _Port: 设备Port
+        :param _Port: <p>设备Port</p>
         :type Port: int
-        :param _Username: 设备用户名
+        :param _Username: <p>设备用户名</p>
         :type Username: str
-        :param _Region: 设备地域
+        :param _Region: <p>设备地域</p>
         :type Region: str
-        :param _Manufacturer: 设备厂商
+        :param _Manufacturer: <p>设备厂商</p>
         :type Manufacturer: str
-        :param _AudioSwitch: 音频关开（0：关闭；1：开启）关闭时丢弃音频	
+        :param _AudioSwitch: <p>音频关开（0：关闭；1：开启）关闭时丢弃音频</p>
         :type AudioSwitch: int
-        :param _SubscribeSwitch: 订阅开关（0：关闭；1：开启）默认开启，开启状态下会订阅设备通道变化，仅国标NVR设备有效	
+        :param _SubscribeSwitch: <p>订阅开关（0：关闭；1：开启）默认开启，开启状态下会订阅设备通道变化，仅国标NVR设备有效</p>
         :type SubscribeSwitch: int
-        :param _AppName: RTMP推流地址自定义appName
+        :param _AppName: <p>RTMP推流地址自定义appName</p>
         :type AppName: str
-        :param _StreamName: RTMP推流地址自定义streamName
+        :param _StreamName: <p>RTMP推流地址自定义streamName</p>
         :type StreamName: str
-        :param _SilentFrameSwitch: 是否开启静音帧（0：关闭；1 开启）
+        :param _SilentFrameSwitch: <p>是否开启静音帧（0：关闭；1 开启）</p>
         :type SilentFrameSwitch: int
+        :param _PushStreamSecureUrl: <p>Rtmp设备安全认证推流地址(仅rtmp设备有效)</p>
+        :type PushStreamSecureUrl: str
         """
         self._DeviceId = None
         self._Code = None
@@ -6439,10 +6440,11 @@ class DescribeDeviceData(AbstractModel):
         self._AppName = None
         self._StreamName = None
         self._SilentFrameSwitch = None
+        self._PushStreamSecureUrl = None
 
     @property
     def DeviceId(self):
-        r"""设备ID
+        r"""<p>设备ID</p>
         :rtype: str
         """
         return self._DeviceId
@@ -6453,7 +6455,7 @@ class DescribeDeviceData(AbstractModel):
 
     @property
     def Code(self):
-        r"""设备编码（国标设备即我们为设备生成的20位国标编码，rtmp 设备为10 位设备编码）
+        r"""<p>设备编码（国标设备即我们为设备生成的20位国标编码，rtmp 设备为10 位设备编码）</p>
         :rtype: str
         """
         return self._Code
@@ -6464,7 +6466,7 @@ class DescribeDeviceData(AbstractModel):
 
     @property
     def Name(self):
-        r"""设备名称
+        r"""<p>设备名称</p>
         :rtype: str
         """
         return self._Name
@@ -6475,7 +6477,7 @@ class DescribeDeviceData(AbstractModel):
 
     @property
     def AccessProtocol(self):
-        r"""设备接入协议，1:RTMP,2:GB,3:GW 
+        r"""<p>设备接入协议，1:RTMP,2:GB,3:GW</p>
         :rtype: int
         """
         return self._AccessProtocol
@@ -6486,7 +6488,7 @@ class DescribeDeviceData(AbstractModel):
 
     @property
     def Type(self):
-        r"""设备类型，1:IPC,2:NVR
+        r"""<p>设备类型，1:IPC,2:NVR</p>
         :rtype: int
         """
         return self._Type
@@ -6497,7 +6499,7 @@ class DescribeDeviceData(AbstractModel):
 
     @property
     def ClusterId(self):
-        r"""设备接入服务节点id
+        r"""<p>设备接入服务节点id</p>
         :rtype: str
         """
         return self._ClusterId
@@ -6508,8 +6510,7 @@ class DescribeDeviceData(AbstractModel):
 
     @property
     def ClusterName(self):
-        r"""设备接入服务节点名称
-
+        r"""<p>设备接入服务节点名称</p>
         :rtype: str
         """
         return self._ClusterName
@@ -6520,7 +6521,7 @@ class DescribeDeviceData(AbstractModel):
 
     @property
     def TransportProtocol(self):
-        r"""设备流传输协议，1:UDP,2:TCP 
+        r"""<p>设备流传输协议，1:UDP,2:TCP</p>
         :rtype: int
         """
         return self._TransportProtocol
@@ -6531,7 +6532,7 @@ class DescribeDeviceData(AbstractModel):
 
     @property
     def Password(self):
-        r"""设备密码
+        r"""<p>设备密码</p>
         :rtype: str
         """
         return self._Password
@@ -6542,7 +6543,7 @@ class DescribeDeviceData(AbstractModel):
 
     @property
     def Description(self):
-        r"""设备描述
+        r"""<p>设备描述</p>
         :rtype: str
         """
         return self._Description
@@ -6553,7 +6554,7 @@ class DescribeDeviceData(AbstractModel):
 
     @property
     def SipId(self):
-        r"""sip服务ID
+        r"""<p>sip服务ID</p>
         :rtype: str
         """
         return self._SipId
@@ -6564,7 +6565,7 @@ class DescribeDeviceData(AbstractModel):
 
     @property
     def SipDomain(self):
-        r"""sip服务域
+        r"""<p>sip服务域</p>
         :rtype: str
         """
         return self._SipDomain
@@ -6575,7 +6576,7 @@ class DescribeDeviceData(AbstractModel):
 
     @property
     def SipIp(self):
-        r"""sip服务IP地址
+        r"""<p>sip服务IP地址</p>
         :rtype: str
         """
         return self._SipIp
@@ -6586,7 +6587,7 @@ class DescribeDeviceData(AbstractModel):
 
     @property
     def SipPort(self):
-        r"""sip服务端口
+        r"""<p>sip服务端口</p>
         :rtype: int
         """
         return self._SipPort
@@ -6597,7 +6598,7 @@ class DescribeDeviceData(AbstractModel):
 
     @property
     def PushStreamUrl(self):
-        r"""Rtmp设备推流地址(仅rtmp设备有效)
+        r"""<p>Rtmp设备推流地址(仅rtmp设备有效)</p>
         :rtype: str
         """
         return self._PushStreamUrl
@@ -6608,7 +6609,7 @@ class DescribeDeviceData(AbstractModel):
 
     @property
     def Status(self):
-        r"""设备状态，0:未注册,1:在线,2:离线,3:禁用
+        r"""<p>设备状态，0:未注册,1:在线,2:离线,3:禁用</p>
         :rtype: int
         """
         return self._Status
@@ -6619,7 +6620,7 @@ class DescribeDeviceData(AbstractModel):
 
     @property
     def OrganizationId(self):
-        r"""设备所属组织ID
+        r"""<p>设备所属组织ID</p>
         :rtype: str
         """
         return self._OrganizationId
@@ -6630,7 +6631,7 @@ class DescribeDeviceData(AbstractModel):
 
     @property
     def GatewayId(self):
-        r"""设备接入网关ID，从查询网关列表接口中获取（仅网关接入需要）
+        r"""<p>设备接入网关ID，从查询网关列表接口中获取（仅网关接入需要）</p>
         :rtype: str
         """
         return self._GatewayId
@@ -6641,7 +6642,7 @@ class DescribeDeviceData(AbstractModel):
 
     @property
     def GatewayName(self):
-        r"""设备所属网关名称
+        r"""<p>设备所属网关名称</p>
         :rtype: str
         """
         return self._GatewayName
@@ -6652,7 +6653,7 @@ class DescribeDeviceData(AbstractModel):
 
     @property
     def ProtocolTypeName(self):
-        r"""设备网关协议名称
+        r"""<p>设备网关协议名称</p>
         :rtype: str
         """
         return self._ProtocolTypeName
@@ -6663,7 +6664,7 @@ class DescribeDeviceData(AbstractModel):
 
     @property
     def ProtocolType(self):
-        r"""网关接入协议类型，1.海康SDK，2.大华SDK，3.宇视SDK，4.Onvif（仅网关接入需要）
+        r"""<p>网关接入协议类型，1.海康SDK，2.大华SDK，3.宇视SDK，4.Onvif（仅网关接入需要）</p>
         :rtype: int
         """
         return self._ProtocolType
@@ -6674,7 +6675,7 @@ class DescribeDeviceData(AbstractModel):
 
     @property
     def Ip(self):
-        r"""设备接入IP
+        r"""<p>设备接入IP</p>
         :rtype: str
         """
         return self._Ip
@@ -6685,7 +6686,7 @@ class DescribeDeviceData(AbstractModel):
 
     @property
     def Port(self):
-        r"""设备Port
+        r"""<p>设备Port</p>
         :rtype: int
         """
         return self._Port
@@ -6696,7 +6697,7 @@ class DescribeDeviceData(AbstractModel):
 
     @property
     def Username(self):
-        r"""设备用户名
+        r"""<p>设备用户名</p>
         :rtype: str
         """
         return self._Username
@@ -6707,7 +6708,7 @@ class DescribeDeviceData(AbstractModel):
 
     @property
     def Region(self):
-        r"""设备地域
+        r"""<p>设备地域</p>
         :rtype: str
         """
         return self._Region
@@ -6718,7 +6719,7 @@ class DescribeDeviceData(AbstractModel):
 
     @property
     def Manufacturer(self):
-        r"""设备厂商
+        r"""<p>设备厂商</p>
         :rtype: str
         """
         return self._Manufacturer
@@ -6729,7 +6730,7 @@ class DescribeDeviceData(AbstractModel):
 
     @property
     def AudioSwitch(self):
-        r"""音频关开（0：关闭；1：开启）关闭时丢弃音频	
+        r"""<p>音频关开（0：关闭；1：开启）关闭时丢弃音频</p>
         :rtype: int
         """
         return self._AudioSwitch
@@ -6740,7 +6741,7 @@ class DescribeDeviceData(AbstractModel):
 
     @property
     def SubscribeSwitch(self):
-        r"""订阅开关（0：关闭；1：开启）默认开启，开启状态下会订阅设备通道变化，仅国标NVR设备有效	
+        r"""<p>订阅开关（0：关闭；1：开启）默认开启，开启状态下会订阅设备通道变化，仅国标NVR设备有效</p>
         :rtype: int
         """
         return self._SubscribeSwitch
@@ -6751,7 +6752,7 @@ class DescribeDeviceData(AbstractModel):
 
     @property
     def AppName(self):
-        r"""RTMP推流地址自定义appName
+        r"""<p>RTMP推流地址自定义appName</p>
         :rtype: str
         """
         return self._AppName
@@ -6762,7 +6763,7 @@ class DescribeDeviceData(AbstractModel):
 
     @property
     def StreamName(self):
-        r"""RTMP推流地址自定义streamName
+        r"""<p>RTMP推流地址自定义streamName</p>
         :rtype: str
         """
         return self._StreamName
@@ -6773,7 +6774,7 @@ class DescribeDeviceData(AbstractModel):
 
     @property
     def SilentFrameSwitch(self):
-        r"""是否开启静音帧（0：关闭；1 开启）
+        r"""<p>是否开启静音帧（0：关闭；1 开启）</p>
         :rtype: int
         """
         return self._SilentFrameSwitch
@@ -6781,6 +6782,17 @@ class DescribeDeviceData(AbstractModel):
     @SilentFrameSwitch.setter
     def SilentFrameSwitch(self, SilentFrameSwitch):
         self._SilentFrameSwitch = SilentFrameSwitch
+
+    @property
+    def PushStreamSecureUrl(self):
+        r"""<p>Rtmp设备安全认证推流地址(仅rtmp设备有效)</p>
+        :rtype: str
+        """
+        return self._PushStreamSecureUrl
+
+    @PushStreamSecureUrl.setter
+    def PushStreamSecureUrl(self, PushStreamSecureUrl):
+        self._PushStreamSecureUrl = PushStreamSecureUrl
 
 
     def _deserialize(self, params):
@@ -6815,6 +6827,7 @@ class DescribeDeviceData(AbstractModel):
         self._AppName = params.get("AppName")
         self._StreamName = params.get("StreamName")
         self._SilentFrameSwitch = params.get("SilentFrameSwitch")
+        self._PushStreamSecureUrl = params.get("PushStreamSecureUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -83,7 +83,7 @@ class CvmClient(AbstractClient):
 
     def AssociateSecurityGroups(self, request):
         r"""本接口 (AssociateSecurityGroups) 用于绑定安全组到指定实例。
-        * 实例操作结果可以通过调用 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728#.E7.A4.BA.E4.BE.8B3-.E6.9F.A5.E8.AF.A2.E5.AE.9E.E4.BE.8B.E7.9A.84.E6.9C.80.E6.96.B0.E6.93.8D.E4.BD.9C.E6.83.85.E5.86.B5) 接口查询，如果实例的最新操作状态(LatestOperationState)为“SUCCESS”，则代表操作成功。
+        * 实例操作结果可以通过调用 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) 接口查询，如果实例的最新操作状态(LatestOperationState)为“SUCCESS”，则代表操作成功。
         <dx-alert infotype="explain" title="">
         多个安全组绑定至实例后，将以绑定顺序作为优先级顺序依次匹配执行。如需调整安全组优先级，请参见 [调整安全组优先级](https://cloud.tencent.com/document/product/213/42842)。
         </dx-alert>
@@ -1258,7 +1258,7 @@ class CvmClient(AbstractClient):
 
     def DisassociateSecurityGroups(self, request):
         r"""本接口 (DisassociateSecurityGroups) 用于解绑实例的指定安全组。
-        * 实例操作结果可以通过调用 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728#.E7.A4.BA.E4.BE.8B3-.E6.9F.A5.E8.AF.A2.E5.AE.9E.E4.BE.8B.E7.9A.84.E6.9C.80.E6.96.B0.E6.93.8D.E4.BD.9C.E6.83.85.E5.86.B5) 接口查询，如果实例的最新操作状态(LatestOperationState)为“SUCCESS”，则代表操作成功。
+        * 实例操作结果可以通过调用 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) 接口查询，如果实例的最新操作状态(LatestOperationState)为“SUCCESS”，则代表操作成功。
 
         :param request: Request instance for DisassociateSecurityGroups.
         :type request: :class:`tencentcloud.cvm.v20170312.models.DisassociateSecurityGroupsRequest`
@@ -1917,7 +1917,7 @@ class CvmClient(AbstractClient):
         * 项目为一个虚拟概念，用户可以在一个账户下面建立多个项目，每个项目中管理不同的资源；将多个不同实例分属到不同项目中，后续使用 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728)接口查询实例，项目ID可用于过滤结果。
         * 绑定负载均衡的实例不支持修改实例所属项目，请先使用[DeregisterInstancesFromLoadBalancer](https://cloud.tencent.com/document/api/214/1258)接口解绑负载均衡。
         * 支持批量操作。每次请求批量实例的上限为100。
-        * 实例操作结果可以通过调用 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728#.E7.A4.BA.E4.BE.8B3-.E6.9F.A5.E8.AF.A2.E5.AE.9E.E4.BE.8B.E7.9A.84.E6.9C.80.E6.96.B0.E6.93.8D.E4.BD.9C.E6.83.85.E5.86.B5) 接口查询，如果实例的最新操作状态(LatestOperationState)为“SUCCESS”，则代表操作成功。
+        * 实例操作结果可以通过调用 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) 接口查询，如果实例的最新操作状态(LatestOperationState)为“SUCCESS”，则代表操作成功。
 
         :param request: Request instance for ModifyInstancesProject.
         :type request: :class:`tencentcloud.cvm.v20170312.models.ModifyInstancesProjectRequest`
@@ -2174,7 +2174,7 @@ class CvmClient(AbstractClient):
 
         * 只支持操作包年包月实例。
         * 续费时请确保账户余额充足。可通过[DescribeAccountBalance](https://cloud.tencent.com/document/product/555/20253)接口查询账户余额。
-        * 实例操作结果可以通过调用 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728#.E7.A4.BA.E4.BE.8B3-.E6.9F.A5.E8.AF.A2.E5.AE.9E.E4.BE.8B.E7.9A.84.E6.9C.80.E6.96.B0.E6.93.8D.E4.BD.9C.E6.83.85.E5.86.B5) 接口查询，如果实例的最新操作状态(LatestOperationState)为“SUCCESS”，则代表操作成功。
+        * 实例操作结果可以通过调用 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) 接口查询，如果实例的最新操作状态(LatestOperationState)为“SUCCESS”，则代表操作成功。
 
         :param request: Request instance for RenewInstances.
         :type request: :class:`tencentcloud.cvm.v20170312.models.RenewInstancesRequest`
@@ -2405,7 +2405,7 @@ class CvmClient(AbstractClient):
         * 只有状态为`STOPPED`的实例才可以进行此操作。
         * 接口调用成功时，实例会进入`STARTING`状态；启动实例成功时，实例会进入`RUNNING`状态。
         * 支持批量操作。每次请求批量实例的上限为100。
-        * 本接口为异步接口，启动实例请求发送成功后会返回一个RequestId，此时操作并未立即完成。实例操作结果可以通过调用 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728#.E7.A4.BA.E4.BE.8B3-.E6.9F.A5.E8.AF.A2.E5.AE.9E.E4.BE.8B.E7.9A.84.E6.9C.80.E6.96.B0.E6.93.8D.E4.BD.9C.E6.83.85.E5.86.B5) 接口查询，如果实例的最新操作状态(LatestOperationState)为“SUCCESS”，则代表启动实例操作成功。
+        * 本接口为异步接口，启动实例请求发送成功后会返回一个RequestId，此时操作并未立即完成。实例操作结果可以通过调用 [DescribeInstances](https://cloud.tencent.com/document/api/213/15728) 接口查询，如果实例的最新操作状态(LatestOperationState)为“SUCCESS”，则代表启动实例操作成功。
 
         :param request: Request instance for StartInstances.
         :type request: :class:`tencentcloud.cvm.v20170312.models.StartInstancesRequest`
