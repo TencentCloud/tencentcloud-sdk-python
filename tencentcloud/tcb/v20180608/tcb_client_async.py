@@ -424,6 +424,24 @@ class TcbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteVmInstance(
+            self,
+            request: models.DeleteVmInstanceRequest,
+            opts: Dict = None,
+    ) -> models.DeleteVmInstanceResponse:
+        """
+        销毁云服务器实例
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteVmInstance"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteVmInstanceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeAuthDomains(
             self,
             request: models.DescribeAuthDomainsRequest,
@@ -875,6 +893,24 @@ class TcbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeVmInstances(
+            self,
+            request: models.DescribeVmInstancesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeVmInstancesResponse:
+        """
+        查询环境下的云服务器列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeVmInstances"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeVmInstancesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeVmSpec(
             self,
             request: models.DescribeVmSpecRequest,
@@ -989,6 +1025,24 @@ class TcbClient(AbstractClient):
         kwargs["action"] = "GetProviders"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.GetProvidersResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def InquireVmPrice(
+            self,
+            request: models.InquireVmPriceRequest,
+            opts: Dict = None,
+    ) -> models.InquireVmPriceResponse:
+        """
+        查询服务器价格
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "InquireVmPrice"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.InquireVmPriceResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

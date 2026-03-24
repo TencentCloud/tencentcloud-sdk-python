@@ -13025,20 +13025,22 @@ class ModifyNamespaceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RegistryId: 实例Id
+        :param _RegistryId: <p>实例Id</p>
         :type RegistryId: str
-        :param _NamespaceName: 命名空间名称
+        :param _NamespaceName: <p>命名空间名称</p>
         :type NamespaceName: str
-        :param _IsPublic: 访问级别，True为公开，False为私有
+        :param _IsPublic: <p>访问级别，True为公开，False为私有</p>
         :type IsPublic: bool
-        :param _IsAutoScan: 扫描级别，True为自动，False为手动
+        :param _IsAutoScan: <p>扫描级别，True为自动，False为手动</p>
         :type IsAutoScan: bool
-        :param _IsPreventVUL: 阻断开关，True为开放，False为关闭
+        :param _IsPreventVUL: <p>阻断开关，True为开放，False为关闭</p>
         :type IsPreventVUL: bool
-        :param _Severity: 阻断漏洞等级，目前仅支持 low、medium、high
+        :param _Severity: <p>阻断漏洞等级，目前仅支持 low、medium、high</p>
         :type Severity: str
-        :param _CVEWhitelistItems: 漏洞白名单列表
+        :param _CVEWhitelistItems: <p>漏洞白名单列表</p>
         :type CVEWhitelistItems: list of CVEWhitelistItem
+        :param _TagSpecification: <p>tag列表</p>
+        :type TagSpecification: :class:`tencentcloud.tcr.v20190924.models.TagSpecification`
         """
         self._RegistryId = None
         self._NamespaceName = None
@@ -13047,10 +13049,11 @@ class ModifyNamespaceRequest(AbstractModel):
         self._IsPreventVUL = None
         self._Severity = None
         self._CVEWhitelistItems = None
+        self._TagSpecification = None
 
     @property
     def RegistryId(self):
-        r"""实例Id
+        r"""<p>实例Id</p>
         :rtype: str
         """
         return self._RegistryId
@@ -13061,7 +13064,7 @@ class ModifyNamespaceRequest(AbstractModel):
 
     @property
     def NamespaceName(self):
-        r"""命名空间名称
+        r"""<p>命名空间名称</p>
         :rtype: str
         """
         return self._NamespaceName
@@ -13072,7 +13075,7 @@ class ModifyNamespaceRequest(AbstractModel):
 
     @property
     def IsPublic(self):
-        r"""访问级别，True为公开，False为私有
+        r"""<p>访问级别，True为公开，False为私有</p>
         :rtype: bool
         """
         return self._IsPublic
@@ -13083,7 +13086,7 @@ class ModifyNamespaceRequest(AbstractModel):
 
     @property
     def IsAutoScan(self):
-        r"""扫描级别，True为自动，False为手动
+        r"""<p>扫描级别，True为自动，False为手动</p>
         :rtype: bool
         """
         return self._IsAutoScan
@@ -13094,7 +13097,7 @@ class ModifyNamespaceRequest(AbstractModel):
 
     @property
     def IsPreventVUL(self):
-        r"""阻断开关，True为开放，False为关闭
+        r"""<p>阻断开关，True为开放，False为关闭</p>
         :rtype: bool
         """
         return self._IsPreventVUL
@@ -13105,7 +13108,7 @@ class ModifyNamespaceRequest(AbstractModel):
 
     @property
     def Severity(self):
-        r"""阻断漏洞等级，目前仅支持 low、medium、high
+        r"""<p>阻断漏洞等级，目前仅支持 low、medium、high</p>
         :rtype: str
         """
         return self._Severity
@@ -13116,7 +13119,7 @@ class ModifyNamespaceRequest(AbstractModel):
 
     @property
     def CVEWhitelistItems(self):
-        r"""漏洞白名单列表
+        r"""<p>漏洞白名单列表</p>
         :rtype: list of CVEWhitelistItem
         """
         return self._CVEWhitelistItems
@@ -13124,6 +13127,17 @@ class ModifyNamespaceRequest(AbstractModel):
     @CVEWhitelistItems.setter
     def CVEWhitelistItems(self, CVEWhitelistItems):
         self._CVEWhitelistItems = CVEWhitelistItems
+
+    @property
+    def TagSpecification(self):
+        r"""<p>tag列表</p>
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.TagSpecification`
+        """
+        return self._TagSpecification
+
+    @TagSpecification.setter
+    def TagSpecification(self, TagSpecification):
+        self._TagSpecification = TagSpecification
 
 
     def _deserialize(self, params):
@@ -13139,6 +13153,9 @@ class ModifyNamespaceRequest(AbstractModel):
                 obj = CVEWhitelistItem()
                 obj._deserialize(item)
                 self._CVEWhitelistItems.append(obj)
+        if params.get("TagSpecification") is not None:
+            self._TagSpecification = TagSpecification()
+            self._TagSpecification._deserialize(params.get("TagSpecification"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -525,6 +525,29 @@ class TcbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteVmInstance(self, request):
+        r"""销毁云服务器实例
+
+        :param request: Request instance for DeleteVmInstance.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.DeleteVmInstanceRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DeleteVmInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteVmInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteVmInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeAuthDomains(self, request):
         r"""本接口用于获取当前环境的安全域名列表。
         云开发会校验网页应用请求的来源域名，您需要将来源域名加入到WEB安全域名列表中。
@@ -1096,6 +1119,29 @@ class TcbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeVmInstances(self, request):
+        r"""查询环境下的云服务器列表
+
+        :param request: Request instance for DescribeVmInstances.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeVmInstancesRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DescribeVmInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVmInstances", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeVmInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeVmSpec(self, request):
         r"""云服务器规格list
 
@@ -1236,6 +1282,29 @@ class TcbClient(AbstractClient):
             body = self.call("GetProviders", params, headers=headers)
             response = json.loads(body)
             model = models.GetProvidersResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def InquireVmPrice(self, request):
+        r"""查询服务器价格
+
+        :param request: Request instance for InquireVmPrice.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.InquireVmPriceRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.InquireVmPriceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("InquireVmPrice", params, headers=headers)
+            response = json.loads(body)
+            model = models.InquireVmPriceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

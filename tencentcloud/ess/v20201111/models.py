@@ -24452,6 +24452,138 @@ class DescribeContractReviewChecklistsWebUrlResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeContractReviewMarkedRiskExportTaskRequest(AbstractModel):
+    r"""DescribeContractReviewMarkedRiskExportTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Operator: 执行本接口操作的员工信息。
+注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param _TaskId: 导出任务 ID。
+        :type TaskId: str
+        :param _Agent: 代理企业和员工的信息。
+在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
+        """
+        self._Operator = None
+        self._TaskId = None
+        self._Agent = None
+
+    @property
+    def Operator(self):
+        r"""执行本接口操作的员工信息。
+注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def TaskId(self):
+        r"""导出任务 ID。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Agent(self):
+        r"""代理企业和员工的信息。
+在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        :rtype: :class:`tencentcloud.ess.v20201111.models.Agent`
+        """
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._TaskId = params.get("TaskId")
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeContractReviewMarkedRiskExportTaskResponse(AbstractModel):
+    r"""DescribeContractReviewMarkedRiskExportTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Url: 导出文件 url。
+        :type Url: str
+        :param _Status: 任务状态。未知 = 0;   创建完成 = 1;   队列中 = 2;   执行中 = 3;   执行成功 = 4;   失败 = 5;   终止 = 6;
+        :type Status: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Url = None
+        self._Status = None
+        self._RequestId = None
+
+    @property
+    def Url(self):
+        r"""导出文件 url。
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def Status(self):
+        r"""任务状态。未知 = 0;   创建完成 = 1;   队列中 = 2;   执行中 = 3;   执行成功 = 4;   失败 = 5;   终止 = 6;
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Url = params.get("Url")
+        self._Status = params.get("Status")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeContractReviewTaskListWebUrlRequest(AbstractModel):
     r"""DescribeContractReviewTaskListWebUrl请求参数结构体
 
@@ -30622,6 +30754,138 @@ class ExportContractComparisonTaskResponse(AbstractModel):
     def _deserialize(self, params):
         self._ResourceUrl = params.get("ResourceUrl")
         self._ExpireTime = params.get("ExpireTime")
+        self._RequestId = params.get("RequestId")
+
+
+class ExportContractReviewMarkedRiskRequest(AbstractModel):
+    r"""ExportContractReviewMarkedRisk请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Operator: 执行本接口操作的员工信息。
+注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param _FromDate: 开始日期。eg， "2006-01-02"
+        :type FromDate: str
+        :param _ToDate: 结束日期。eg，"2006-02-01"
+        :type ToDate: str
+        :param _Agent: 代理企业和员工的信息。
+在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
+        """
+        self._Operator = None
+        self._FromDate = None
+        self._ToDate = None
+        self._Agent = None
+
+    @property
+    def Operator(self):
+        r"""执行本接口操作的员工信息。
+注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def FromDate(self):
+        r"""开始日期。eg， "2006-01-02"
+        :rtype: str
+        """
+        return self._FromDate
+
+    @FromDate.setter
+    def FromDate(self, FromDate):
+        self._FromDate = FromDate
+
+    @property
+    def ToDate(self):
+        r"""结束日期。eg，"2006-02-01"
+        :rtype: str
+        """
+        return self._ToDate
+
+    @ToDate.setter
+    def ToDate(self, ToDate):
+        self._ToDate = ToDate
+
+    @property
+    def Agent(self):
+        r"""代理企业和员工的信息。
+在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        :rtype: :class:`tencentcloud.ess.v20201111.models.Agent`
+        """
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._FromDate = params.get("FromDate")
+        self._ToDate = params.get("ToDate")
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExportContractReviewMarkedRiskResponse(AbstractModel):
+    r"""ExportContractReviewMarkedRisk返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 导出任务 id。
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""导出任务 id。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
 
 

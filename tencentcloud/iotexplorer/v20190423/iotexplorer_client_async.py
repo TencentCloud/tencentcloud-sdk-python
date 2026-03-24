@@ -1933,6 +1933,24 @@ class IotexplorerClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeProductDynamicRegister(
+            self,
+            request: models.DescribeProductDynamicRegisterRequest,
+            opts: Dict = None,
+    ) -> models.DescribeProductDynamicRegisterResponse:
+        """
+        获取产品动态注册详情
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeProductDynamicRegister"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeProductDynamicRegisterResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeProject(
             self,
             request: models.DescribeProjectRequest,
@@ -3044,6 +3062,24 @@ class IotexplorerClient(AbstractClient):
         kwargs["action"] = "ModifyProductCloudStorageAIService"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyProductCloudStorageAIServiceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyProductDynamicRegister(
+            self,
+            request: models.ModifyProductDynamicRegisterRequest,
+            opts: Dict = None,
+    ) -> models.ModifyProductDynamicRegisterResponse:
+        """
+        修改产品动态注册
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyProductDynamicRegister"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyProductDynamicRegisterResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

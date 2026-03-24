@@ -27986,52 +27986,54 @@ class DescribeVoucherInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Limit: 一页多少条数据，默认是20条，最大不超过1000
+        :param _Limit: <p>一页多少条数据，默认是20条，最大不超过1000</p>
         :type Limit: int
-        :param _Offset: 第多少页，默认是1
+        :param _Offset: <p>第多少页，默认是1</p>
         :type Offset: int
-        :param _Status: 券状态：待使用：unUsed，已使用： used，已发货：delivered，已作废： cancel，已过期：overdue
+        :param _Status: <p>券状态：待使用：unUsed，已使用：&nbsp;used，已发货：delivered，已作废：&nbsp;cancel，已过期：overdue</p>
         :type Status: str
-        :param _VoucherId: 代金券id
+        :param _VoucherId: <p>代金券id</p>
         :type VoucherId: str
-        :param _CodeId: 代金券订单id
+        :param _CodeId: <p>代金券订单id</p>
         :type CodeId: str
-        :param _ProductCode: 商品码
+        :param _ProductCode: <p>商品码</p>
         :type ProductCode: str
-        :param _ActivityId: 活动id
+        :param _ActivityId: <p>活动id</p>
         :type ActivityId: str
-        :param _VoucherName: 代金券名称
+        :param _VoucherName: <p>代金券名称</p>
         :type VoucherName: str
-        :param _TimeFrom: 发放开始时间,例：2021-01-01
+        :param _TimeFrom: <p>发放开始时间,例：2021-01-01</p>
         :type TimeFrom: str
-        :param _TimeTo: 发放结束时间，例：2021-01-01
+        :param _TimeTo: <p>发放结束时间，例：2021-01-01</p>
         :type TimeTo: str
-        :param _SortField: 指定排序字段：BeginTime开始时间、EndTime到期时间、CreateTime创建时间
+        :param _SortField: <p>指定排序字段：BeginTime开始时间、EndTime到期时间、CreateTime创建时间</p>
         :type SortField: str
-        :param _SortOrder: 指定升序降序：desc、asc
+        :param _SortOrder: <p>指定升序降序：desc、asc</p>
         :type SortOrder: str
-        :param _PayMode: 付费模式，postPay后付费/prePay预付费/riPay预留实例/""或者"*"表示全部模式，如果payMode为""或"*"，那么productCode与subProductCode必须传空
+        :param _PayMode: <p>付费模式，postPay后付费/prePay预付费/riPay预留实例/&quot;&quot;或者&quot;*&quot;表示全部模式，如果payMode为&quot;&quot;或&quot;*&quot;，那么productCode与subProductCode必须传空</p>
         :type PayMode: str
-        :param _PayScene: 付费场景PayMode=postPay时：spotpay-竞价实例,"settle account"-普通后付费PayMode=prePay时：purchase-包年包月新购，renew-包年包月续费（自动续费），modify-包年包月配置变更(变配）PayMode=riPay时：oneOffFee-预留实例预付，hourlyFee-预留实例每小时扣费，*-支持全部付费场景
+        :param _PayScene: <p>付费场景PayMode=postPay时：spotpay-竞价实例,&quot;settle account&quot;-普通后付费PayMode=prePay时：purchase-包年包月新购，renew-包年包月续费（自动续费），modify-包年包月配置变更(变配）PayMode=riPay时：oneOffFee-预留实例预付，hourlyFee-预留实例每小时扣费，*-支持全部付费场景</p>
         :type PayScene: str
-        :param _Operator: 操作人，默认就是用户uin
+        :param _Operator: <p>操作人，默认就是用户uin</p>
         :type Operator: str
-        :param _VoucherMainType: 代金券主类型 has_price 为有价现金券 no_price 为无价代金券
+        :param _VoucherMainType: <p>代金券主类型 has_price 为有价现金券 no_price 为无价代金券</p>
         :type VoucherMainType: str
-        :param _VoucherSubType: 代金券副类型 discount 为折扣券 deduct 为抵扣券
+        :param _VoucherSubType: <p>代金券副类型 discount 为折扣券 deduct 为抵扣券</p>
         :type VoucherSubType: str
-        :param _StartTimeFrom: 券有效时间开始时间
+        :param _StartTimeFrom: <p>券有效时间开始时间</p>
         :type StartTimeFrom: str
-        :param _StartTimeTo: 券有效时间结束时间
+        :param _StartTimeTo: <p>券有效时间结束时间</p>
         :type StartTimeTo: str
-        :param _EndTimeFrom: 券失效时间开始时间
+        :param _EndTimeFrom: <p>券失效时间开始时间</p>
         :type EndTimeFrom: str
-        :param _EndTimeTo: 券失效时间结束时间
+        :param _EndTimeTo: <p>券失效时间结束时间</p>
         :type EndTimeTo: str
-        :param _CreateTimeFrom: 发券时间开始时间
+        :param _CreateTimeFrom: <p>发券时间开始时间</p>
         :type CreateTimeFrom: str
-        :param _CreateTimeTo: 发券时间结束时间
+        :param _CreateTimeTo: <p>发券时间结束时间</p>
         :type CreateTimeTo: str
+        :param _Lang: <p>语言参数</p><p>默认值：zh</p><p>期望返回产品名称中文或其他语言，目前仅支持中文、英文；填&quot;zh&quot;或不填时返回中文，其他情况返回英文</p>
+        :type Lang: str
         """
         self._Limit = None
         self._Offset = None
@@ -28056,10 +28058,11 @@ class DescribeVoucherInfoRequest(AbstractModel):
         self._EndTimeTo = None
         self._CreateTimeFrom = None
         self._CreateTimeTo = None
+        self._Lang = None
 
     @property
     def Limit(self):
-        r"""一页多少条数据，默认是20条，最大不超过1000
+        r"""<p>一页多少条数据，默认是20条，最大不超过1000</p>
         :rtype: int
         """
         return self._Limit
@@ -28070,7 +28073,7 @@ class DescribeVoucherInfoRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""第多少页，默认是1
+        r"""<p>第多少页，默认是1</p>
         :rtype: int
         """
         return self._Offset
@@ -28081,7 +28084,7 @@ class DescribeVoucherInfoRequest(AbstractModel):
 
     @property
     def Status(self):
-        r"""券状态：待使用：unUsed，已使用： used，已发货：delivered，已作废： cancel，已过期：overdue
+        r"""<p>券状态：待使用：unUsed，已使用：&nbsp;used，已发货：delivered，已作废：&nbsp;cancel，已过期：overdue</p>
         :rtype: str
         """
         return self._Status
@@ -28092,7 +28095,7 @@ class DescribeVoucherInfoRequest(AbstractModel):
 
     @property
     def VoucherId(self):
-        r"""代金券id
+        r"""<p>代金券id</p>
         :rtype: str
         """
         return self._VoucherId
@@ -28103,7 +28106,7 @@ class DescribeVoucherInfoRequest(AbstractModel):
 
     @property
     def CodeId(self):
-        r"""代金券订单id
+        r"""<p>代金券订单id</p>
         :rtype: str
         """
         return self._CodeId
@@ -28114,7 +28117,7 @@ class DescribeVoucherInfoRequest(AbstractModel):
 
     @property
     def ProductCode(self):
-        r"""商品码
+        r"""<p>商品码</p>
         :rtype: str
         """
         return self._ProductCode
@@ -28125,7 +28128,7 @@ class DescribeVoucherInfoRequest(AbstractModel):
 
     @property
     def ActivityId(self):
-        r"""活动id
+        r"""<p>活动id</p>
         :rtype: str
         """
         return self._ActivityId
@@ -28136,7 +28139,7 @@ class DescribeVoucherInfoRequest(AbstractModel):
 
     @property
     def VoucherName(self):
-        r"""代金券名称
+        r"""<p>代金券名称</p>
         :rtype: str
         """
         return self._VoucherName
@@ -28147,7 +28150,7 @@ class DescribeVoucherInfoRequest(AbstractModel):
 
     @property
     def TimeFrom(self):
-        r"""发放开始时间,例：2021-01-01
+        r"""<p>发放开始时间,例：2021-01-01</p>
         :rtype: str
         """
         return self._TimeFrom
@@ -28158,7 +28161,7 @@ class DescribeVoucherInfoRequest(AbstractModel):
 
     @property
     def TimeTo(self):
-        r"""发放结束时间，例：2021-01-01
+        r"""<p>发放结束时间，例：2021-01-01</p>
         :rtype: str
         """
         return self._TimeTo
@@ -28169,7 +28172,7 @@ class DescribeVoucherInfoRequest(AbstractModel):
 
     @property
     def SortField(self):
-        r"""指定排序字段：BeginTime开始时间、EndTime到期时间、CreateTime创建时间
+        r"""<p>指定排序字段：BeginTime开始时间、EndTime到期时间、CreateTime创建时间</p>
         :rtype: str
         """
         return self._SortField
@@ -28180,7 +28183,7 @@ class DescribeVoucherInfoRequest(AbstractModel):
 
     @property
     def SortOrder(self):
-        r"""指定升序降序：desc、asc
+        r"""<p>指定升序降序：desc、asc</p>
         :rtype: str
         """
         return self._SortOrder
@@ -28191,7 +28194,7 @@ class DescribeVoucherInfoRequest(AbstractModel):
 
     @property
     def PayMode(self):
-        r"""付费模式，postPay后付费/prePay预付费/riPay预留实例/""或者"*"表示全部模式，如果payMode为""或"*"，那么productCode与subProductCode必须传空
+        r"""<p>付费模式，postPay后付费/prePay预付费/riPay预留实例/&quot;&quot;或者&quot;*&quot;表示全部模式，如果payMode为&quot;&quot;或&quot;*&quot;，那么productCode与subProductCode必须传空</p>
         :rtype: str
         """
         return self._PayMode
@@ -28202,7 +28205,7 @@ class DescribeVoucherInfoRequest(AbstractModel):
 
     @property
     def PayScene(self):
-        r"""付费场景PayMode=postPay时：spotpay-竞价实例,"settle account"-普通后付费PayMode=prePay时：purchase-包年包月新购，renew-包年包月续费（自动续费），modify-包年包月配置变更(变配）PayMode=riPay时：oneOffFee-预留实例预付，hourlyFee-预留实例每小时扣费，*-支持全部付费场景
+        r"""<p>付费场景PayMode=postPay时：spotpay-竞价实例,&quot;settle account&quot;-普通后付费PayMode=prePay时：purchase-包年包月新购，renew-包年包月续费（自动续费），modify-包年包月配置变更(变配）PayMode=riPay时：oneOffFee-预留实例预付，hourlyFee-预留实例每小时扣费，*-支持全部付费场景</p>
         :rtype: str
         """
         return self._PayScene
@@ -28213,7 +28216,7 @@ class DescribeVoucherInfoRequest(AbstractModel):
 
     @property
     def Operator(self):
-        r"""操作人，默认就是用户uin
+        r"""<p>操作人，默认就是用户uin</p>
         :rtype: str
         """
         return self._Operator
@@ -28224,7 +28227,7 @@ class DescribeVoucherInfoRequest(AbstractModel):
 
     @property
     def VoucherMainType(self):
-        r"""代金券主类型 has_price 为有价现金券 no_price 为无价代金券
+        r"""<p>代金券主类型 has_price 为有价现金券 no_price 为无价代金券</p>
         :rtype: str
         """
         return self._VoucherMainType
@@ -28235,7 +28238,7 @@ class DescribeVoucherInfoRequest(AbstractModel):
 
     @property
     def VoucherSubType(self):
-        r"""代金券副类型 discount 为折扣券 deduct 为抵扣券
+        r"""<p>代金券副类型 discount 为折扣券 deduct 为抵扣券</p>
         :rtype: str
         """
         return self._VoucherSubType
@@ -28246,7 +28249,7 @@ class DescribeVoucherInfoRequest(AbstractModel):
 
     @property
     def StartTimeFrom(self):
-        r"""券有效时间开始时间
+        r"""<p>券有效时间开始时间</p>
         :rtype: str
         """
         return self._StartTimeFrom
@@ -28257,7 +28260,7 @@ class DescribeVoucherInfoRequest(AbstractModel):
 
     @property
     def StartTimeTo(self):
-        r"""券有效时间结束时间
+        r"""<p>券有效时间结束时间</p>
         :rtype: str
         """
         return self._StartTimeTo
@@ -28268,7 +28271,7 @@ class DescribeVoucherInfoRequest(AbstractModel):
 
     @property
     def EndTimeFrom(self):
-        r"""券失效时间开始时间
+        r"""<p>券失效时间开始时间</p>
         :rtype: str
         """
         return self._EndTimeFrom
@@ -28279,7 +28282,7 @@ class DescribeVoucherInfoRequest(AbstractModel):
 
     @property
     def EndTimeTo(self):
-        r"""券失效时间结束时间
+        r"""<p>券失效时间结束时间</p>
         :rtype: str
         """
         return self._EndTimeTo
@@ -28290,7 +28293,7 @@ class DescribeVoucherInfoRequest(AbstractModel):
 
     @property
     def CreateTimeFrom(self):
-        r"""发券时间开始时间
+        r"""<p>发券时间开始时间</p>
         :rtype: str
         """
         return self._CreateTimeFrom
@@ -28301,7 +28304,7 @@ class DescribeVoucherInfoRequest(AbstractModel):
 
     @property
     def CreateTimeTo(self):
-        r"""发券时间结束时间
+        r"""<p>发券时间结束时间</p>
         :rtype: str
         """
         return self._CreateTimeTo
@@ -28309,6 +28312,17 @@ class DescribeVoucherInfoRequest(AbstractModel):
     @CreateTimeTo.setter
     def CreateTimeTo(self, CreateTimeTo):
         self._CreateTimeTo = CreateTimeTo
+
+    @property
+    def Lang(self):
+        r"""<p>语言参数</p><p>默认值：zh</p><p>期望返回产品名称中文或其他语言，目前仅支持中文、英文；填&quot;zh&quot;或不填时返回中文，其他情况返回英文</p>
+        :rtype: str
+        """
+        return self._Lang
+
+    @Lang.setter
+    def Lang(self, Lang):
+        self._Lang = Lang
 
 
     def _deserialize(self, params):
@@ -28335,6 +28349,7 @@ class DescribeVoucherInfoRequest(AbstractModel):
         self._EndTimeTo = params.get("EndTimeTo")
         self._CreateTimeFrom = params.get("CreateTimeFrom")
         self._CreateTimeTo = params.get("CreateTimeTo")
+        self._Lang = params.get("Lang")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -28352,11 +28367,11 @@ class DescribeVoucherInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 券总数
+        :param _TotalCount: <p>券总数</p>
         :type TotalCount: int
-        :param _TotalBalance: 总余额（微分）
+        :param _TotalBalance: <p>总余额（微分）</p>
         :type TotalBalance: int
-        :param _VoucherInfos: 代金券相关信息
+        :param _VoucherInfos: <p>代金券相关信息</p>
         :type VoucherInfos: list of VoucherInfos
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -28368,7 +28383,7 @@ class DescribeVoucherInfoResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""券总数
+        r"""<p>券总数</p>
         :rtype: int
         """
         return self._TotalCount
@@ -28379,7 +28394,7 @@ class DescribeVoucherInfoResponse(AbstractModel):
 
     @property
     def TotalBalance(self):
-        r"""总余额（微分）
+        r"""<p>总余额（微分）</p>
         :rtype: int
         """
         return self._TotalBalance
@@ -28390,7 +28405,7 @@ class DescribeVoucherInfoResponse(AbstractModel):
 
     @property
     def VoucherInfos(self):
-        r"""代金券相关信息
+        r"""<p>代金券相关信息</p>
         :rtype: list of VoucherInfos
         """
         return self._VoucherInfos

@@ -46,6 +46,8 @@ class AIAgentAsset(AbstractModel):
         :type ExposureStatus: str
         :param _MetadataRiskURL: metadata 有风险时对应路径
         :type MetadataRiskURL: str
+        :param _SkillState: 无
+        :type SkillState: :class:`tencentcloud.csip.v20221121.models.SkillState`
         """
         self._ID = None
         self._AgentName = None
@@ -57,6 +59,7 @@ class AIAgentAsset(AbstractModel):
         self._IdentityMethod = None
         self._ExposureStatus = None
         self._MetadataRiskURL = None
+        self._SkillState = None
 
     @property
     def ID(self):
@@ -169,6 +172,17 @@ class AIAgentAsset(AbstractModel):
     def MetadataRiskURL(self, MetadataRiskURL):
         self._MetadataRiskURL = MetadataRiskURL
 
+    @property
+    def SkillState(self):
+        r"""无
+        :rtype: :class:`tencentcloud.csip.v20221121.models.SkillState`
+        """
+        return self._SkillState
+
+    @SkillState.setter
+    def SkillState(self, SkillState):
+        self._SkillState = SkillState
+
 
     def _deserialize(self, params):
         self._ID = params.get("ID")
@@ -181,6 +195,9 @@ class AIAgentAsset(AbstractModel):
         self._IdentityMethod = params.get("IdentityMethod")
         self._ExposureStatus = params.get("ExposureStatus")
         self._MetadataRiskURL = params.get("MetadataRiskURL")
+        if params.get("SkillState") is not None:
+            self._SkillState = SkillState()
+            self._SkillState._deserialize(params.get("SkillState"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -33093,6 +33110,88 @@ class ServiceSupport(AbstractModel):
         self._SupportHandledCount = params.get("SupportHandledCount")
         self._SupportTotalCount = params.get("SupportTotalCount")
         self._IsSupport = params.get("IsSupport")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SkillState(AbstractModel):
+    r"""SKILL安装状态信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SkillInstallStatus: SKILL安装状态
+枚举值：
+0：未安装
+1：安装中
+2：已安装
+3：安装失败
+4：卸载中
+5：卸载失败
+        :type SkillInstallStatus: int
+        :param _SkillInstallTime: SKILL安装/卸载操作时间
+参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）
+        :type SkillInstallTime: str
+        :param _SkillInstallResult: SKILL安装/卸载结果描述信息
+        :type SkillInstallResult: str
+        """
+        self._SkillInstallStatus = None
+        self._SkillInstallTime = None
+        self._SkillInstallResult = None
+
+    @property
+    def SkillInstallStatus(self):
+        r"""SKILL安装状态
+枚举值：
+0：未安装
+1：安装中
+2：已安装
+3：安装失败
+4：卸载中
+5：卸载失败
+        :rtype: int
+        """
+        return self._SkillInstallStatus
+
+    @SkillInstallStatus.setter
+    def SkillInstallStatus(self, SkillInstallStatus):
+        self._SkillInstallStatus = SkillInstallStatus
+
+    @property
+    def SkillInstallTime(self):
+        r"""SKILL安装/卸载操作时间
+参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）
+        :rtype: str
+        """
+        return self._SkillInstallTime
+
+    @SkillInstallTime.setter
+    def SkillInstallTime(self, SkillInstallTime):
+        self._SkillInstallTime = SkillInstallTime
+
+    @property
+    def SkillInstallResult(self):
+        r"""SKILL安装/卸载结果描述信息
+        :rtype: str
+        """
+        return self._SkillInstallResult
+
+    @SkillInstallResult.setter
+    def SkillInstallResult(self, SkillInstallResult):
+        self._SkillInstallResult = SkillInstallResult
+
+
+    def _deserialize(self, params):
+        self._SkillInstallStatus = params.get("SkillInstallStatus")
+        self._SkillInstallTime = params.get("SkillInstallTime")
+        self._SkillInstallResult = params.get("SkillInstallResult")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

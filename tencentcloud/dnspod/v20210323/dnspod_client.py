@@ -72,6 +72,29 @@ class DnspodClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateAndPayDeal(self, request):
+        r"""DNSPod商品下单并支付
+
+        :param request: Request instance for CreateAndPayDeal.
+        :type request: :class:`tencentcloud.dnspod.v20210323.models.CreateAndPayDealRequest`
+        :rtype: :class:`tencentcloud.dnspod.v20210323.models.CreateAndPayDealResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAndPayDeal", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateAndPayDealResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateDeal(self, request):
         r"""DNSPod商品下单
 

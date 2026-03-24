@@ -2464,6 +2464,29 @@ class IotexplorerClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeProductDynamicRegister(self, request):
+        r"""获取产品动态注册详情
+
+        :param request: Request instance for DescribeProductDynamicRegister.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeProductDynamicRegisterRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeProductDynamicRegisterResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeProductDynamicRegister", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeProductDynamicRegisterResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeProject(self, request):
         r"""查询项目详情
 
@@ -3881,6 +3904,29 @@ class IotexplorerClient(AbstractClient):
             body = self.call("ModifyProductCloudStorageAIService", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyProductCloudStorageAIServiceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyProductDynamicRegister(self, request):
+        r"""修改产品动态注册
+
+        :param request: Request instance for ModifyProductDynamicRegister.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.ModifyProductDynamicRegisterRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.ModifyProductDynamicRegisterResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyProductDynamicRegister", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyProductDynamicRegisterResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

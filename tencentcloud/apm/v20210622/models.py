@@ -455,6 +455,8 @@ class ApmAppConfig(AbstractModel):
         :type ErrRateThreshold: int
         :param _ResponseDurationWarningThreshold: <p>响应时间预警阈值（ms），用于判断应用健康状态为&quot;黄色&quot;</p>
         :type ResponseDurationWarningThreshold: int
+        :param _UseDefaultFuseConfig: <p>是否默认使用探针自带熔断阈值</p>
+        :type UseDefaultFuseConfig: bool
         """
         self._InstanceKey = None
         self._ServiceName = None
@@ -517,6 +519,7 @@ class ApmAppConfig(AbstractModel):
         self._EnableThresholdConfig = None
         self._ErrRateThreshold = None
         self._ResponseDurationWarningThreshold = None
+        self._UseDefaultFuseConfig = None
 
     @property
     def InstanceKey(self):
@@ -1212,6 +1215,17 @@ class ApmAppConfig(AbstractModel):
     def ResponseDurationWarningThreshold(self, ResponseDurationWarningThreshold):
         self._ResponseDurationWarningThreshold = ResponseDurationWarningThreshold
 
+    @property
+    def UseDefaultFuseConfig(self):
+        r"""<p>是否默认使用探针自带熔断阈值</p>
+        :rtype: bool
+        """
+        return self._UseDefaultFuseConfig
+
+    @UseDefaultFuseConfig.setter
+    def UseDefaultFuseConfig(self, UseDefaultFuseConfig):
+        self._UseDefaultFuseConfig = UseDefaultFuseConfig
+
 
     def _deserialize(self, params):
         self._InstanceKey = params.get("InstanceKey")
@@ -1289,6 +1303,7 @@ class ApmAppConfig(AbstractModel):
         self._EnableThresholdConfig = params.get("EnableThresholdConfig")
         self._ErrRateThreshold = params.get("ErrRateThreshold")
         self._ResponseDurationWarningThreshold = params.get("ResponseDurationWarningThreshold")
+        self._UseDefaultFuseConfig = params.get("UseDefaultFuseConfig")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1406,6 +1421,8 @@ class ApmApplicationConfigView(AbstractModel):
         :type ErrRateThreshold: int
         :param _ResponseDurationWarningThreshold: <p>响应时间预警阈值</p><p>单位：ms</p>
         :type ResponseDurationWarningThreshold: int
+        :param _UseDefaultFuseConfig: <p>是否使用探针默认熔断阈值</p>
+        :type UseDefaultFuseConfig: bool
         """
         self._InstanceKey = None
         self._ServiceName = None
@@ -1457,6 +1474,7 @@ class ApmApplicationConfigView(AbstractModel):
         self._EnableThresholdConfig = None
         self._ErrRateThreshold = None
         self._ResponseDurationWarningThreshold = None
+        self._UseDefaultFuseConfig = None
 
     @property
     def InstanceKey(self):
@@ -2008,6 +2026,17 @@ class ApmApplicationConfigView(AbstractModel):
     def ResponseDurationWarningThreshold(self, ResponseDurationWarningThreshold):
         self._ResponseDurationWarningThreshold = ResponseDurationWarningThreshold
 
+    @property
+    def UseDefaultFuseConfig(self):
+        r"""<p>是否使用探针默认熔断阈值</p>
+        :rtype: bool
+        """
+        return self._UseDefaultFuseConfig
+
+    @UseDefaultFuseConfig.setter
+    def UseDefaultFuseConfig(self, UseDefaultFuseConfig):
+        self._UseDefaultFuseConfig = UseDefaultFuseConfig
+
 
     def _deserialize(self, params):
         self._InstanceKey = params.get("InstanceKey")
@@ -2072,6 +2101,7 @@ class ApmApplicationConfigView(AbstractModel):
         self._EnableThresholdConfig = params.get("EnableThresholdConfig")
         self._ErrRateThreshold = params.get("ErrRateThreshold")
         self._ResponseDurationWarningThreshold = params.get("ResponseDurationWarningThreshold")
+        self._UseDefaultFuseConfig = params.get("UseDefaultFuseConfig")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9018,6 +9048,8 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
         :type ErrRateThreshold: int
         :param _ResponseDurationWarningThreshold: <p>响应时间预警阈值（ms），用于判断应用健康状态为&quot;黄色&quot;</p>
         :type ResponseDurationWarningThreshold: int
+        :param _UseDefaultFuseConfig: <p>是否使用探针默认熔断阈值</p>
+        :type UseDefaultFuseConfig: bool
         """
         self._InstanceId = None
         self._ServiceName = None
@@ -9077,6 +9109,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
         self._EnableThresholdConfig = None
         self._ErrRateThreshold = None
         self._ResponseDurationWarningThreshold = None
+        self._UseDefaultFuseConfig = None
 
     @property
     def InstanceId(self):
@@ -9716,6 +9749,17 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
     def ResponseDurationWarningThreshold(self, ResponseDurationWarningThreshold):
         self._ResponseDurationWarningThreshold = ResponseDurationWarningThreshold
 
+    @property
+    def UseDefaultFuseConfig(self):
+        r"""<p>是否使用探针默认熔断阈值</p>
+        :rtype: bool
+        """
+        return self._UseDefaultFuseConfig
+
+    @UseDefaultFuseConfig.setter
+    def UseDefaultFuseConfig(self, UseDefaultFuseConfig):
+        self._UseDefaultFuseConfig = UseDefaultFuseConfig
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -9790,6 +9834,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
         self._EnableThresholdConfig = params.get("EnableThresholdConfig")
         self._ErrRateThreshold = params.get("ErrRateThreshold")
         self._ResponseDurationWarningThreshold = params.get("ResponseDurationWarningThreshold")
+        self._UseDefaultFuseConfig = params.get("UseDefaultFuseConfig")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

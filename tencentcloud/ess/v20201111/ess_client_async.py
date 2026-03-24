@@ -2457,6 +2457,24 @@ class EssClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeContractReviewMarkedRiskExportTask(
+            self,
+            request: models.DescribeContractReviewMarkedRiskExportTaskRequest,
+            opts: Dict = None,
+    ) -> models.DescribeContractReviewMarkedRiskExportTaskResponse:
+        """
+        本接口（DescribeContractReviewMarkedRiskExportTask）用于查询由 ExportContractReviewMarkedRisk 接口创建的导出任务状态。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeContractReviewMarkedRiskExportTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeContractReviewMarkedRiskExportTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeContractReviewTask(
             self,
             request: models.DescribeContractReviewTaskRequest,
@@ -3200,6 +3218,24 @@ class EssClient(AbstractClient):
         kwargs["action"] = "ExportContractComparisonTask"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ExportContractComparisonTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ExportContractReviewMarkedRisk(
+            self,
+            request: models.ExportContractReviewMarkedRiskRequest,
+            opts: Dict = None,
+    ) -> models.ExportContractReviewMarkedRiskResponse:
+        """
+        本接口（ExportContractReviewMarkedRisk）用于创建导出任务，可以导出合同审查标注风险项,包括忽略的、标记错误的、人工标注的风险等
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ExportContractReviewMarkedRisk"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ExportContractReviewMarkedRiskResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

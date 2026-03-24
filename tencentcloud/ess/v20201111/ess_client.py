@@ -2908,6 +2908,29 @@ class EssClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeContractReviewMarkedRiskExportTask(self, request):
+        r"""本接口（DescribeContractReviewMarkedRiskExportTask）用于查询由 ExportContractReviewMarkedRisk 接口创建的导出任务状态。
+
+        :param request: Request instance for DescribeContractReviewMarkedRiskExportTask.
+        :type request: :class:`tencentcloud.ess.v20201111.models.DescribeContractReviewMarkedRiskExportTaskRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.DescribeContractReviewMarkedRiskExportTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeContractReviewMarkedRiskExportTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeContractReviewMarkedRiskExportTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeContractReviewTask(self, request):
         r"""本接口（DescribeContractReviewTask）用于获取合同审查任务详情，包括任务的状态和识别出的风险信息。
 
@@ -3812,6 +3835,29 @@ class EssClient(AbstractClient):
             body = self.call("ExportContractComparisonTask", params, headers=headers)
             response = json.loads(body)
             model = models.ExportContractComparisonTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ExportContractReviewMarkedRisk(self, request):
+        r"""本接口（ExportContractReviewMarkedRisk）用于创建导出任务，可以导出合同审查标注风险项,包括忽略的、标记错误的、人工标注的风险等
+
+        :param request: Request instance for ExportContractReviewMarkedRisk.
+        :type request: :class:`tencentcloud.ess.v20201111.models.ExportContractReviewMarkedRiskRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.ExportContractReviewMarkedRiskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ExportContractReviewMarkedRisk", params, headers=headers)
+            response = json.loads(body)
+            model = models.ExportContractReviewMarkedRiskResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -1026,9 +1026,9 @@ class BatchModifyTargetWeightRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LoadBalancerId: 负载均衡实例 ID。
+        :param _LoadBalancerId: <p>负载均衡实例 ID。</p>
         :type LoadBalancerId: str
-        :param _ModifyList: 要批量修改权重的列表。
+        :param _ModifyList: <p>要批量修改权重的列表。ModifyList数组最多100个元素，ModifyList[i].Targets最多50个，全部Targets累加不超过500。</p>
         :type ModifyList: list of RsWeightRule
         """
         self._LoadBalancerId = None
@@ -1036,7 +1036,7 @@ class BatchModifyTargetWeightRequest(AbstractModel):
 
     @property
     def LoadBalancerId(self):
-        r"""负载均衡实例 ID。
+        r"""<p>负载均衡实例 ID。</p>
         :rtype: str
         """
         return self._LoadBalancerId
@@ -1047,7 +1047,7 @@ class BatchModifyTargetWeightRequest(AbstractModel):
 
     @property
     def ModifyList(self):
-        r"""要批量修改权重的列表。
+        r"""<p>要批量修改权重的列表。ModifyList数组最多100个元素，ModifyList[i].Targets最多50个，全部Targets累加不超过500。</p>
         :rtype: list of RsWeightRule
         """
         return self._ModifyList
@@ -10735,11 +10735,11 @@ class DescribeTargetHealthRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LoadBalancerIds: 要查询的负载均衡实例ID列表。
+        :param _LoadBalancerIds: <p>要查询的负载均衡实例ID列表。数组大小最大支持30。</p>
         :type LoadBalancerIds: list of str
-        :param _ListenerIds: 要查询的监听器ID列表。
+        :param _ListenerIds: <p>要查询的监听器ID列表。</p>
         :type ListenerIds: list of str
-        :param _LocationIds: 要查询的转发规则ID列表。
+        :param _LocationIds: <p>要查询的转发规则ID列表。</p>
         :type LocationIds: list of str
         """
         self._LoadBalancerIds = None
@@ -10748,7 +10748,7 @@ class DescribeTargetHealthRequest(AbstractModel):
 
     @property
     def LoadBalancerIds(self):
-        r"""要查询的负载均衡实例ID列表。
+        r"""<p>要查询的负载均衡实例ID列表。数组大小最大支持30。</p>
         :rtype: list of str
         """
         return self._LoadBalancerIds
@@ -10759,7 +10759,7 @@ class DescribeTargetHealthRequest(AbstractModel):
 
     @property
     def ListenerIds(self):
-        r"""要查询的监听器ID列表。
+        r"""<p>要查询的监听器ID列表。</p>
         :rtype: list of str
         """
         return self._ListenerIds
@@ -10770,7 +10770,7 @@ class DescribeTargetHealthRequest(AbstractModel):
 
     @property
     def LocationIds(self):
-        r"""要查询的转发规则ID列表。
+        r"""<p>要查询的转发规则ID列表。</p>
         :rtype: list of str
         """
         return self._LocationIds
@@ -10801,7 +10801,7 @@ class DescribeTargetHealthResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LoadBalancers: 负载均衡实例列表。
+        :param _LoadBalancers: <p>负载均衡实例列表。</p>
         :type LoadBalancers: list of LoadBalancerHealth
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -10811,7 +10811,7 @@ class DescribeTargetHealthResponse(AbstractModel):
 
     @property
     def LoadBalancers(self):
-        r"""负载均衡实例列表。
+        r"""<p>负载均衡实例列表。</p>
         :rtype: list of LoadBalancerHealth
         """
         return self._LoadBalancers

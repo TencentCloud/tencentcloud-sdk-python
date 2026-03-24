@@ -840,6 +840,24 @@ class LiveClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateVideoRedrawTask(
+            self,
+            request: models.CreateVideoRedrawTaskRequest,
+            opts: Dict = None,
+    ) -> models.CreateVideoRedrawTaskResponse:
+        """
+        创建AI转绘任务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateVideoRedrawTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateVideoRedrawTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteAuditKeywords(
             self,
             request: models.DeleteAuditKeywordsRequest,

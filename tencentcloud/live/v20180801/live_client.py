@@ -1051,6 +1051,29 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateVideoRedrawTask(self, request):
+        r"""创建AI转绘任务
+
+        :param request: Request instance for CreateVideoRedrawTask.
+        :type request: :class:`tencentcloud.live.v20180801.models.CreateVideoRedrawTaskRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.CreateVideoRedrawTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateVideoRedrawTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateVideoRedrawTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteAuditKeywords(self, request):
         r"""删除关键词信息。
 

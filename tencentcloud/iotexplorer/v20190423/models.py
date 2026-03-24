@@ -17132,6 +17132,115 @@ class DescribeProductCloudStorageAIServiceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeProductDynamicRegisterRequest(AbstractModel):
+    r"""DescribeProductDynamicRegister请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: 产品Id
+        :type ProductId: str
+        """
+        self._ProductId = None
+
+    @property
+    def ProductId(self):
+        r"""产品Id
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeProductDynamicRegisterResponse(AbstractModel):
+    r"""DescribeProductDynamicRegister返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RegisterType: 动态注册类型，0-关闭 1-预创建设备 2-自动创建设备
+        :type RegisterType: int
+        :param _ProductSecret: 动态注册产品密钥
+        :type ProductSecret: str
+        :param _RegisterLimit: 动态注册设备上限
+        :type RegisterLimit: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RegisterType = None
+        self._ProductSecret = None
+        self._RegisterLimit = None
+        self._RequestId = None
+
+    @property
+    def RegisterType(self):
+        r"""动态注册类型，0-关闭 1-预创建设备 2-自动创建设备
+        :rtype: int
+        """
+        return self._RegisterType
+
+    @RegisterType.setter
+    def RegisterType(self, RegisterType):
+        self._RegisterType = RegisterType
+
+    @property
+    def ProductSecret(self):
+        r"""动态注册产品密钥
+        :rtype: str
+        """
+        return self._ProductSecret
+
+    @ProductSecret.setter
+    def ProductSecret(self, ProductSecret):
+        self._ProductSecret = ProductSecret
+
+    @property
+    def RegisterLimit(self):
+        r"""动态注册设备上限
+        :rtype: int
+        """
+        return self._RegisterLimit
+
+    @RegisterLimit.setter
+    def RegisterLimit(self, RegisterLimit):
+        self._RegisterLimit = RegisterLimit
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RegisterType = params.get("RegisterType")
+        self._ProductSecret = params.get("ProductSecret")
+        self._RegisterLimit = params.get("RegisterLimit")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeProjectRequest(AbstractModel):
     r"""DescribeProject请求参数结构体
 
@@ -29716,6 +29825,145 @@ class ModifyProductCloudStorageAIServiceResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyProductDynamicRegisterRequest(AbstractModel):
+    r"""ModifyProductDynamicRegister请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: 产品Id
+        :type ProductId: str
+        :param _RegisterType: 动态注册类型，0-关闭 1-预创建设备 2-自动创建设备
+        :type RegisterType: int
+        :param _RegisterLimit: 动态注册设备上限
+        :type RegisterLimit: int
+        """
+        self._ProductId = None
+        self._RegisterType = None
+        self._RegisterLimit = None
+
+    @property
+    def ProductId(self):
+        r"""产品Id
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def RegisterType(self):
+        r"""动态注册类型，0-关闭 1-预创建设备 2-自动创建设备
+        :rtype: int
+        """
+        return self._RegisterType
+
+    @RegisterType.setter
+    def RegisterType(self, RegisterType):
+        self._RegisterType = RegisterType
+
+    @property
+    def RegisterLimit(self):
+        r"""动态注册设备上限
+        :rtype: int
+        """
+        return self._RegisterLimit
+
+    @RegisterLimit.setter
+    def RegisterLimit(self, RegisterLimit):
+        self._RegisterLimit = RegisterLimit
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        self._RegisterType = params.get("RegisterType")
+        self._RegisterLimit = params.get("RegisterLimit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyProductDynamicRegisterResponse(AbstractModel):
+    r"""ModifyProductDynamicRegister返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RegisterType: 动态注册类型，0-关闭 1-预创建设备 2-自动创建设备
+        :type RegisterType: int
+        :param _ProductSecret: 动态注册产品密钥
+        :type ProductSecret: str
+        :param _RegisterLimit: 动态注册设备上限
+        :type RegisterLimit: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RegisterType = None
+        self._ProductSecret = None
+        self._RegisterLimit = None
+        self._RequestId = None
+
+    @property
+    def RegisterType(self):
+        r"""动态注册类型，0-关闭 1-预创建设备 2-自动创建设备
+        :rtype: int
+        """
+        return self._RegisterType
+
+    @RegisterType.setter
+    def RegisterType(self, RegisterType):
+        self._RegisterType = RegisterType
+
+    @property
+    def ProductSecret(self):
+        r"""动态注册产品密钥
+        :rtype: str
+        """
+        return self._ProductSecret
+
+    @ProductSecret.setter
+    def ProductSecret(self, ProductSecret):
+        self._ProductSecret = ProductSecret
+
+    @property
+    def RegisterLimit(self):
+        r"""动态注册设备上限
+        :rtype: int
+        """
+        return self._RegisterLimit
+
+    @RegisterLimit.setter
+    def RegisterLimit(self, RegisterLimit):
+        self._RegisterLimit = RegisterLimit
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RegisterType = params.get("RegisterType")
+        self._ProductSecret = params.get("ProductSecret")
+        self._RegisterLimit = params.get("RegisterLimit")
         self._RequestId = params.get("RequestId")
 
 

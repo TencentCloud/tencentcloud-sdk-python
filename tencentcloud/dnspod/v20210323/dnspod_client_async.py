@@ -61,6 +61,24 @@ class DnspodClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateAndPayDeal(
+            self,
+            request: models.CreateAndPayDealRequest,
+            opts: Dict = None,
+    ) -> models.CreateAndPayDealResponse:
+        """
+        DNSPod商品下单并支付
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateAndPayDeal"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateAndPayDealResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateDeal(
             self,
             request: models.CreateDealRequest,

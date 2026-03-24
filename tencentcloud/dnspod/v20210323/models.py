@@ -1009,6 +1009,225 @@ class CheckSnapshotRollbackResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateAndPayDealRequest(AbstractModel):
+    r"""CreateAndPayDeal请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DealType: <p>询价类型，1 新购，2 续费，3 套餐升级（增值服务暂时只支持新购）</p>
+        :type DealType: int
+        :param _GoodsType: <p>商品类型，1 域名套餐 2 增值服务</p>
+        :type GoodsType: int
+        :param _GoodsChildType: <p>套餐类型：<br>DP_PLUS：专业版<br>DP_EXPERT：企业版<br>DP_ULTRA：尊享版</p><p>增值服务类型<br>LB：负载均衡<br>URL：URL转发<br>DMONITOR_TASKS：D监控任务数<br>DMONITOR_IP：D监控备用 IP 数<br>CUSTOMLINE：自定义线路数</p>
+        :type GoodsChildType: str
+        :param _GoodsNum: <p>增值服务购买数量，如果是域名套餐固定为1，如果是增值服务则按以下规则：<br>负载均衡、D监控任务数、D监控备用 IP 数、自定义线路数、URL 转发（必须是5的正整数倍，如 5、10、15 等）</p>
+        :type GoodsNum: int
+        :param _AutoRenew: <p>是否开启自动续费，1 开启，2 不开启（增值服务暂不支持自动续费），默认值为 2 不开启</p>
+        :type AutoRenew: int
+        :param _Domain: <p>需要绑定套餐的域名，如 dnspod.cn，如果是续费或升级，domain 参数必须要传，新购可不传。</p>
+        :type Domain: str
+        :param _TimeSpan: <p>套餐时长：</p><ol><li>套餐以月为单位（按月只能是 3、6 还有 12 的倍数），套餐例如购买一年则传12，最大120 。（续费最低一年）</li><li>升级套餐时不需要传。</li><li>增值服务的时长单位为年，买一年传1（增值服务新购按年只能是 1，增值服务续费最大为 10）</li></ol>
+        :type TimeSpan: int
+        :param _NewPackageType: <p>套餐类型，需要升级到的套餐类型，只有升级时需要。</p>
+        :type NewPackageType: str
+        :param _ClientToken: <p>可重入ID，避免接口重试场景生成额外订单和实例</p><p>入参限制：长度不超过70个字符</p>
+        :type ClientToken: str
+        """
+        self._DealType = None
+        self._GoodsType = None
+        self._GoodsChildType = None
+        self._GoodsNum = None
+        self._AutoRenew = None
+        self._Domain = None
+        self._TimeSpan = None
+        self._NewPackageType = None
+        self._ClientToken = None
+
+    @property
+    def DealType(self):
+        r"""<p>询价类型，1 新购，2 续费，3 套餐升级（增值服务暂时只支持新购）</p>
+        :rtype: int
+        """
+        return self._DealType
+
+    @DealType.setter
+    def DealType(self, DealType):
+        self._DealType = DealType
+
+    @property
+    def GoodsType(self):
+        r"""<p>商品类型，1 域名套餐 2 增值服务</p>
+        :rtype: int
+        """
+        return self._GoodsType
+
+    @GoodsType.setter
+    def GoodsType(self, GoodsType):
+        self._GoodsType = GoodsType
+
+    @property
+    def GoodsChildType(self):
+        r"""<p>套餐类型：<br>DP_PLUS：专业版<br>DP_EXPERT：企业版<br>DP_ULTRA：尊享版</p><p>增值服务类型<br>LB：负载均衡<br>URL：URL转发<br>DMONITOR_TASKS：D监控任务数<br>DMONITOR_IP：D监控备用 IP 数<br>CUSTOMLINE：自定义线路数</p>
+        :rtype: str
+        """
+        return self._GoodsChildType
+
+    @GoodsChildType.setter
+    def GoodsChildType(self, GoodsChildType):
+        self._GoodsChildType = GoodsChildType
+
+    @property
+    def GoodsNum(self):
+        r"""<p>增值服务购买数量，如果是域名套餐固定为1，如果是增值服务则按以下规则：<br>负载均衡、D监控任务数、D监控备用 IP 数、自定义线路数、URL 转发（必须是5的正整数倍，如 5、10、15 等）</p>
+        :rtype: int
+        """
+        return self._GoodsNum
+
+    @GoodsNum.setter
+    def GoodsNum(self, GoodsNum):
+        self._GoodsNum = GoodsNum
+
+    @property
+    def AutoRenew(self):
+        r"""<p>是否开启自动续费，1 开启，2 不开启（增值服务暂不支持自动续费），默认值为 2 不开启</p>
+        :rtype: int
+        """
+        return self._AutoRenew
+
+    @AutoRenew.setter
+    def AutoRenew(self, AutoRenew):
+        self._AutoRenew = AutoRenew
+
+    @property
+    def Domain(self):
+        r"""<p>需要绑定套餐的域名，如 dnspod.cn，如果是续费或升级，domain 参数必须要传，新购可不传。</p>
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def TimeSpan(self):
+        r"""<p>套餐时长：</p><ol><li>套餐以月为单位（按月只能是 3、6 还有 12 的倍数），套餐例如购买一年则传12，最大120 。（续费最低一年）</li><li>升级套餐时不需要传。</li><li>增值服务的时长单位为年，买一年传1（增值服务新购按年只能是 1，增值服务续费最大为 10）</li></ol>
+        :rtype: int
+        """
+        return self._TimeSpan
+
+    @TimeSpan.setter
+    def TimeSpan(self, TimeSpan):
+        self._TimeSpan = TimeSpan
+
+    @property
+    def NewPackageType(self):
+        r"""<p>套餐类型，需要升级到的套餐类型，只有升级时需要。</p>
+        :rtype: str
+        """
+        return self._NewPackageType
+
+    @NewPackageType.setter
+    def NewPackageType(self, NewPackageType):
+        self._NewPackageType = NewPackageType
+
+    @property
+    def ClientToken(self):
+        r"""<p>可重入ID，避免接口重试场景生成额外订单和实例</p><p>入参限制：长度不超过70个字符</p>
+        :rtype: str
+        """
+        return self._ClientToken
+
+    @ClientToken.setter
+    def ClientToken(self, ClientToken):
+        self._ClientToken = ClientToken
+
+
+    def _deserialize(self, params):
+        self._DealType = params.get("DealType")
+        self._GoodsType = params.get("GoodsType")
+        self._GoodsChildType = params.get("GoodsChildType")
+        self._GoodsNum = params.get("GoodsNum")
+        self._AutoRenew = params.get("AutoRenew")
+        self._Domain = params.get("Domain")
+        self._TimeSpan = params.get("TimeSpan")
+        self._NewPackageType = params.get("NewPackageType")
+        self._ClientToken = params.get("ClientToken")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAndPayDealResponse(AbstractModel):
+    r"""CreateAndPayDeal返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BigDealId: <p>大订单号，一个大订单号下可以有多个子订单，说明是同一次下单</p>
+        :type BigDealId: str
+        :param _DealList: <p>子订单列表</p>
+        :type DealList: list of Deals
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._BigDealId = None
+        self._DealList = None
+        self._RequestId = None
+
+    @property
+    def BigDealId(self):
+        r"""<p>大订单号，一个大订单号下可以有多个子订单，说明是同一次下单</p>
+        :rtype: str
+        """
+        return self._BigDealId
+
+    @BigDealId.setter
+    def BigDealId(self, BigDealId):
+        self._BigDealId = BigDealId
+
+    @property
+    def DealList(self):
+        r"""<p>子订单列表</p>
+        :rtype: list of Deals
+        """
+        return self._DealList
+
+    @DealList.setter
+    def DealList(self, DealList):
+        self._DealList = DealList
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._BigDealId = params.get("BigDealId")
+        if params.get("DealList") is not None:
+            self._DealList = []
+            for item in params.get("DealList"):
+                obj = Deals()
+                obj._deserialize(item)
+                self._DealList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class CreateDealRequest(AbstractModel):
     r"""CreateDeal请求参数结构体
 

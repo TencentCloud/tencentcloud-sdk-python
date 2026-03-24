@@ -12484,6 +12484,104 @@ class CreateScreenshotTaskResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateVideoRedrawTaskRequest(AbstractModel):
+    r"""CreateVideoRedrawTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Input: <p>输入待转绘视频url信息</p>
+        :type Input: :class:`tencentcloud.live.v20180801.models.VideoRedrawInput`
+        :param _CosInfo: <p>用户自定义cos信息</p>
+        :type CosInfo: :class:`tencentcloud.live.v20180801.models.VideoRedrawCosInfo`
+        """
+        self._Input = None
+        self._CosInfo = None
+
+    @property
+    def Input(self):
+        r"""<p>输入待转绘视频url信息</p>
+        :rtype: :class:`tencentcloud.live.v20180801.models.VideoRedrawInput`
+        """
+        return self._Input
+
+    @Input.setter
+    def Input(self, Input):
+        self._Input = Input
+
+    @property
+    def CosInfo(self):
+        r"""<p>用户自定义cos信息</p>
+        :rtype: :class:`tencentcloud.live.v20180801.models.VideoRedrawCosInfo`
+        """
+        return self._CosInfo
+
+    @CosInfo.setter
+    def CosInfo(self, CosInfo):
+        self._CosInfo = CosInfo
+
+
+    def _deserialize(self, params):
+        if params.get("Input") is not None:
+            self._Input = VideoRedrawInput()
+            self._Input._deserialize(params.get("Input"))
+        if params.get("CosInfo") is not None:
+            self._CosInfo = VideoRedrawCosInfo()
+            self._CosInfo._deserialize(params.get("CosInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateVideoRedrawTaskResponse(AbstractModel):
+    r"""CreateVideoRedrawTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务id</p>
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务id</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class DayStreamPlayInfo(AbstractModel):
     r"""流播放信息
 
@@ -27092,26 +27190,17 @@ class DescribeStreamPlayInfoListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StartTime: 起始时间点，接口查询支持两种时间格式：
-1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见IOS日期格式说明文档: https://cloud.tencent.com/document/product/266/11732#I
-2）yyyy-MM-dd HH:mm:ss：使用此格式时，默认代表北京时间。
-开始时间和结束时间的格式需要保持一致。
+        :param _StartTime: <p>起始时间点，接口查询支持两种时间格式：<br>1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见IOS日期格式说明文档: https://cloud.tencent.com/document/product/266/11732#I<br>2）yyyy-MM-dd HH:mm:ss：使用此格式时，默认代表北京时间。<br>开始时间和结束时间的格式需要保持一致。</p>
         :type StartTime: str
-        :param _EndTime: 结束时间点，接口查询支持两种时间格式：
-1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见IOS日期格式说明文档: https://cloud.tencent.com/document/product/266/11732#I
-2）yyyy-MM-dd HH:mm:ss：使用此格式时，默认代表北京时间。
-开始时间和结束时间的格式需要保持一致。结束时间和开始时间跨度不支持超过24小时，支持距当前时间一个月内的数据查询。
+        :param _EndTime: <p>结束时间点，接口查询支持两种时间格式：<br>1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见IOS日期格式说明文档: https://cloud.tencent.com/document/product/266/11732#I<br>2）yyyy-MM-dd HH:mm:ss：使用此格式时，默认代表北京时间。<br>开始时间和结束时间的格式需要保持一致。结束时间和开始时间跨度不支持超过24小时，支持距当前时间一个月内的数据查询。</p>
         :type EndTime: str
-        :param _PlayDomain: 播放域名，
-若不填，则为查询所有播放域名的在线流数据。
+        :param _PlayDomain: <p>播放域名，<br>若不填，则为查询所有播放域名的在线流数据。</p>
         :type PlayDomain: str
-        :param _StreamName: 流名称，精确匹配。
-若不填，则为查询总体播放数据。
+        :param _StreamName: <p>流名称，精确匹配。<br>若不填，则为查询总体播放数据。</p>
         :type StreamName: str
-        :param _AppName: 推流路径，与播放地址中的AppName保持一致，会精确匹配，在同时传递了StreamName时生效。
-若不填，则为查询总体播放数据。
+        :param _AppName: <p>该参数暂不可用。</p>
         :type AppName: str
-        :param _ServiceName: 服务名称，可选值包括LVB(标准直播)，LEB(快直播)，不填则查LVB+LEB总值。
+        :param _ServiceName: <p>服务名称，可选值包括LVB(标准直播)，LEB(快直播)，不填则查LVB+LEB总值。</p>
         :type ServiceName: str
         """
         self._StartTime = None
@@ -27123,10 +27212,7 @@ class DescribeStreamPlayInfoListRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""起始时间点，接口查询支持两种时间格式：
-1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见IOS日期格式说明文档: https://cloud.tencent.com/document/product/266/11732#I
-2）yyyy-MM-dd HH:mm:ss：使用此格式时，默认代表北京时间。
-开始时间和结束时间的格式需要保持一致。
+        r"""<p>起始时间点，接口查询支持两种时间格式：<br>1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见IOS日期格式说明文档: https://cloud.tencent.com/document/product/266/11732#I<br>2）yyyy-MM-dd HH:mm:ss：使用此格式时，默认代表北京时间。<br>开始时间和结束时间的格式需要保持一致。</p>
         :rtype: str
         """
         return self._StartTime
@@ -27137,10 +27223,7 @@ class DescribeStreamPlayInfoListRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""结束时间点，接口查询支持两种时间格式：
-1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见IOS日期格式说明文档: https://cloud.tencent.com/document/product/266/11732#I
-2）yyyy-MM-dd HH:mm:ss：使用此格式时，默认代表北京时间。
-开始时间和结束时间的格式需要保持一致。结束时间和开始时间跨度不支持超过24小时，支持距当前时间一个月内的数据查询。
+        r"""<p>结束时间点，接口查询支持两种时间格式：<br>1）YYYY-MM-DDThh:mm:ssZ：UTC时间格式，详见IOS日期格式说明文档: https://cloud.tencent.com/document/product/266/11732#I<br>2）yyyy-MM-dd HH:mm:ss：使用此格式时，默认代表北京时间。<br>开始时间和结束时间的格式需要保持一致。结束时间和开始时间跨度不支持超过24小时，支持距当前时间一个月内的数据查询。</p>
         :rtype: str
         """
         return self._EndTime
@@ -27151,8 +27234,7 @@ class DescribeStreamPlayInfoListRequest(AbstractModel):
 
     @property
     def PlayDomain(self):
-        r"""播放域名，
-若不填，则为查询所有播放域名的在线流数据。
+        r"""<p>播放域名，<br>若不填，则为查询所有播放域名的在线流数据。</p>
         :rtype: str
         """
         return self._PlayDomain
@@ -27163,8 +27245,7 @@ class DescribeStreamPlayInfoListRequest(AbstractModel):
 
     @property
     def StreamName(self):
-        r"""流名称，精确匹配。
-若不填，则为查询总体播放数据。
+        r"""<p>流名称，精确匹配。<br>若不填，则为查询总体播放数据。</p>
         :rtype: str
         """
         return self._StreamName
@@ -27175,8 +27256,7 @@ class DescribeStreamPlayInfoListRequest(AbstractModel):
 
     @property
     def AppName(self):
-        r"""推流路径，与播放地址中的AppName保持一致，会精确匹配，在同时传递了StreamName时生效。
-若不填，则为查询总体播放数据。
+        r"""<p>该参数暂不可用。</p>
         :rtype: str
         """
         return self._AppName
@@ -27187,7 +27267,7 @@ class DescribeStreamPlayInfoListRequest(AbstractModel):
 
     @property
     def ServiceName(self):
-        r"""服务名称，可选值包括LVB(标准直播)，LEB(快直播)，不填则查LVB+LEB总值。
+        r"""<p>服务名称，可选值包括LVB(标准直播)，LEB(快直播)，不填则查LVB+LEB总值。</p>
         :rtype: str
         """
         return self._ServiceName
@@ -27221,7 +27301,7 @@ class DescribeStreamPlayInfoListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DataInfoList: 统计信息列表，时间粒度是1分钟。
+        :param _DataInfoList: <p>统计信息列表，时间粒度是1分钟。</p>
         :type DataInfoList: list of DayStreamPlayInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -27231,7 +27311,7 @@ class DescribeStreamPlayInfoListResponse(AbstractModel):
 
     @property
     def DataInfoList(self):
-        r"""统计信息列表，时间粒度是1分钟。
+        r"""<p>统计信息列表，时间粒度是1分钟。</p>
         :rtype: list of DayStreamPlayInfo
         """
         return self._DataInfoList
@@ -44274,6 +44354,153 @@ class UpdateLiveWatermarkResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class VideoRedrawCosInfo(AbstractModel):
+    r"""aigc cos信息，存储用户请求时填写的cos信息，存放结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Region: <p>cos所在地域</p>
+        :type Region: str
+        :param _Bucket: <p>cos桶信息</p>
+        :type Bucket: str
+        :param _Dir: <p>任务存放cos的目录</p>
+        :type Dir: str
+        :param _TmpSecretId: <p>临时Cos SecretId</p>
+        :type TmpSecretId: str
+        :param _TmpSecretKey: <p>临时Cos SecretKey</p>
+        :type TmpSecretKey: str
+        :param _Token: <p>临时token</p>
+        :type Token: str
+        """
+        self._Region = None
+        self._Bucket = None
+        self._Dir = None
+        self._TmpSecretId = None
+        self._TmpSecretKey = None
+        self._Token = None
+
+    @property
+    def Region(self):
+        r"""<p>cos所在地域</p>
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Bucket(self):
+        r"""<p>cos桶信息</p>
+        :rtype: str
+        """
+        return self._Bucket
+
+    @Bucket.setter
+    def Bucket(self, Bucket):
+        self._Bucket = Bucket
+
+    @property
+    def Dir(self):
+        r"""<p>任务存放cos的目录</p>
+        :rtype: str
+        """
+        return self._Dir
+
+    @Dir.setter
+    def Dir(self, Dir):
+        self._Dir = Dir
+
+    @property
+    def TmpSecretId(self):
+        r"""<p>临时Cos SecretId</p>
+        :rtype: str
+        """
+        return self._TmpSecretId
+
+    @TmpSecretId.setter
+    def TmpSecretId(self, TmpSecretId):
+        self._TmpSecretId = TmpSecretId
+
+    @property
+    def TmpSecretKey(self):
+        r"""<p>临时Cos SecretKey</p>
+        :rtype: str
+        """
+        return self._TmpSecretKey
+
+    @TmpSecretKey.setter
+    def TmpSecretKey(self, TmpSecretKey):
+        self._TmpSecretKey = TmpSecretKey
+
+    @property
+    def Token(self):
+        r"""<p>临时token</p>
+        :rtype: str
+        """
+        return self._Token
+
+    @Token.setter
+    def Token(self, Token):
+        self._Token = Token
+
+
+    def _deserialize(self, params):
+        self._Region = params.get("Region")
+        self._Bucket = params.get("Bucket")
+        self._Dir = params.get("Dir")
+        self._TmpSecretId = params.get("TmpSecretId")
+        self._TmpSecretKey = params.get("TmpSecretKey")
+        self._Token = params.get("Token")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VideoRedrawInput(AbstractModel):
+    r"""视频转绘的输入源
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Url: <p>输入待转绘的视频URL</p>
+        :type Url: str
+        """
+        self._Url = None
+
+    @property
+    def Url(self):
+        r"""<p>输入待转绘的视频URL</p>
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+
+    def _deserialize(self, params):
+        self._Url = params.get("Url")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class WatermarkInfo(AbstractModel):

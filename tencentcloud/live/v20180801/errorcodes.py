@@ -89,6 +89,9 @@ FAILEDOPERATION_COSBUCKETNOTPERMISSION = 'FailedOperation.CosBucketNotPermission
 # Cos 角色不存在，请前往 控制台 -> 功能配置 -> 直播截图&鉴黄 页面进行授权。
 FAILEDOPERATION_COSROLENOTEXISTS = 'FailedOperation.CosRoleNotExists'
 
+# 创建AIGC任务失败
+FAILEDOPERATION_CREATEAIGCTASKFAILED = 'FailedOperation.CreateAIGCTaskFailed'
+
 # 创建/更新导播台主监、预监任务失败，可能是并发操作了同一个主监或预监任务。
 FAILEDOPERATION_CREATECASTERTASKFAILED = 'FailedOperation.CreateCasterTaskFailed'
 
@@ -559,6 +562,9 @@ INVALIDPARAMETER_INVALIDROUNDRECTRADIUS = 'InvalidParameter.InvalidRoundRectRadi
 
 # 源地址不规范。
 INVALIDPARAMETER_INVALIDSOURCEURL = 'InvalidParameter.InvalidSourceUrl'
+
+# TaskId非法
+INVALIDPARAMETER_INVALIDTASKID = 'InvalidParameter.InvalidTaskId'
 
 # 任务时间超出限制。
 INVALIDPARAMETER_INVALIDTASKTIME = 'InvalidParameter.InvalidTaskTime'

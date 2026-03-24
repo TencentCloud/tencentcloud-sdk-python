@@ -13846,6 +13846,15 @@ class DatabaseResponseInfo(AbstractModel):
         :type GovernPolicy: :class:`tencentcloud.dlc.v20210125.models.DataGovernPolicy`
         :param _DatabaseId: 数据库ID（无效字段）
         :type DatabaseId: str
+        :param _CatalogName: 所属catalog名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CatalogName: str
+        :param _CatalogType: 所属catalog 类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CatalogType: str
+        :param _IsInformationSchema: 是否InformationSchema
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsInformationSchema: bool
         """
         self._DatabaseName = None
         self._Comment = None
@@ -13857,6 +13866,9 @@ class DatabaseResponseInfo(AbstractModel):
         self._UserSubUin = None
         self._GovernPolicy = None
         self._DatabaseId = None
+        self._CatalogName = None
+        self._CatalogType = None
+        self._IsInformationSchema = None
 
     @property
     def DatabaseName(self):
@@ -13972,6 +13984,42 @@ class DatabaseResponseInfo(AbstractModel):
     def DatabaseId(self, DatabaseId):
         self._DatabaseId = DatabaseId
 
+    @property
+    def CatalogName(self):
+        r"""所属catalog名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CatalogName
+
+    @CatalogName.setter
+    def CatalogName(self, CatalogName):
+        self._CatalogName = CatalogName
+
+    @property
+    def CatalogType(self):
+        r"""所属catalog 类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CatalogType
+
+    @CatalogType.setter
+    def CatalogType(self, CatalogType):
+        self._CatalogType = CatalogType
+
+    @property
+    def IsInformationSchema(self):
+        r"""是否InformationSchema
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._IsInformationSchema
+
+    @IsInformationSchema.setter
+    def IsInformationSchema(self, IsInformationSchema):
+        self._IsInformationSchema = IsInformationSchema
+
 
     def _deserialize(self, params):
         self._DatabaseName = params.get("DatabaseName")
@@ -13991,6 +14039,9 @@ class DatabaseResponseInfo(AbstractModel):
             self._GovernPolicy = DataGovernPolicy()
             self._GovernPolicy._deserialize(params.get("GovernPolicy"))
         self._DatabaseId = params.get("DatabaseId")
+        self._CatalogName = params.get("CatalogName")
+        self._CatalogType = params.get("CatalogType")
+        self._IsInformationSchema = params.get("IsInformationSchema")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -28546,7 +28597,7 @@ class FavorInfo(AbstractModel):
 
 
 class Filter(AbstractModel):
-    r"""查询列表过滤条件参数
+    r"""筛选条件定义
 
     """
 

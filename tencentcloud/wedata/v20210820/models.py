@@ -85423,6 +85423,14 @@ class ProdSchedulerTask(AbstractModel):
         :param _InChargeNameList: 负责人name
 注意：此字段可能返回 null，表示取不到有效值。
         :type InChargeNameList: list of str
+        :param _TaskStatus: 生产调度任务状态，参考调度任务侧状态信息，“DELETED”状态为质量侧单独加的，查不到任务时认为任务“DELETED”
+'Y': '调度中',
+'F': '已下线',
+'O': '已暂停',
+'INVALID': '已失效',
+'DELETED': '已删除' 
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskStatus: str
         """
         self._WorkflowId = None
         self._TaskId = None
@@ -85432,6 +85440,7 @@ class ProdSchedulerTask(AbstractModel):
         self._ScheduleTimeZone = None
         self._InChargeIdList = None
         self._InChargeNameList = None
+        self._TaskStatus = None
 
     @property
     def WorkflowId(self):
@@ -85529,6 +85538,23 @@ class ProdSchedulerTask(AbstractModel):
     def InChargeNameList(self, InChargeNameList):
         self._InChargeNameList = InChargeNameList
 
+    @property
+    def TaskStatus(self):
+        r"""生产调度任务状态，参考调度任务侧状态信息，“DELETED”状态为质量侧单独加的，查不到任务时认为任务“DELETED”
+'Y': '调度中',
+'F': '已下线',
+'O': '已暂停',
+'INVALID': '已失效',
+'DELETED': '已删除' 
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TaskStatus
+
+    @TaskStatus.setter
+    def TaskStatus(self, TaskStatus):
+        self._TaskStatus = TaskStatus
+
 
     def _deserialize(self, params):
         self._WorkflowId = params.get("WorkflowId")
@@ -85539,6 +85565,7 @@ class ProdSchedulerTask(AbstractModel):
         self._ScheduleTimeZone = params.get("ScheduleTimeZone")
         self._InChargeIdList = params.get("InChargeIdList")
         self._InChargeNameList = params.get("InChargeNameList")
+        self._TaskStatus = params.get("TaskStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -95826,19 +95853,23 @@ class RuleGroupPage(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 记录数
+        :param _TotalCount: 查询结果总数量
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _Items: 规则组列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Items: list of RuleGroup
+        :param _MonitorEnabledCount: 已开启监控任务数量（在查询结果总量中）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MonitorEnabledCount: int
         """
         self._TotalCount = None
         self._Items = None
+        self._MonitorEnabledCount = None
 
     @property
     def TotalCount(self):
-        r"""记录数
+        r"""查询结果总数量
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -95860,6 +95891,18 @@ class RuleGroupPage(AbstractModel):
     def Items(self, Items):
         self._Items = Items
 
+    @property
+    def MonitorEnabledCount(self):
+        r"""已开启监控任务数量（在查询结果总量中）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._MonitorEnabledCount
+
+    @MonitorEnabledCount.setter
+    def MonitorEnabledCount(self, MonitorEnabledCount):
+        self._MonitorEnabledCount = MonitorEnabledCount
+
 
     def _deserialize(self, params):
         self._TotalCount = params.get("TotalCount")
@@ -95869,6 +95912,7 @@ class RuleGroupPage(AbstractModel):
                 obj = RuleGroup()
                 obj._deserialize(item)
                 self._Items.append(obj)
+        self._MonitorEnabledCount = params.get("MonitorEnabledCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
