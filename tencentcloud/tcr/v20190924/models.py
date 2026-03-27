@@ -14697,49 +14697,41 @@ class Registry(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RegistryId: 实例ID
+        :param _RegistryId: <p>实例ID</p>
         :type RegistryId: str
-        :param _RegistryName: 实例名称
+        :param _RegistryName: <p>实例名称</p>
         :type RegistryName: str
-        :param _RegistryType: 实例规格
+        :param _RegistryType: <p>实例规格</p>
         :type RegistryType: str
-        :param _Status: 实例状态。有以下状态：
-Pending, 初始化中
-Deploying, 创建中
-Running, 运行中
-Unhealthy, 状态异常
-FailedCreated, 创建失败
-FailedUpdated, 更新失败
-Bucket-Error, 存储桶异常
-Isolate, 待回收
-Deleting, 删除中
-DeleteBucketFailed, 实例删除存储桶失败
-DeleteFailed, 实例删除失败
+        :param _Status: <p>实例状态。有以下状态：<br>Pending, 初始化中<br>Deploying, 创建中<br>Running, 运行中<br>Unhealthy, 状态异常<br>FailedCreated, 创建失败<br>FailedUpdated, 更新失败<br>Bucket-Error, 存储桶异常<br>Isolate, 待回收<br>Deleting, 删除中<br>DeleteBucketFailed, 实例删除存储桶失败<br>DeleteFailed, 实例删除失败</p>
         :type Status: str
-        :param _PublicDomain: 实例的公共访问地址
+        :param _PublicDomain: <p>实例的公共访问地址</p>
         :type PublicDomain: str
-        :param _CreatedAt: 实例创建时间
+        :param _CreatedAt: <p>实例创建时间</p>
         :type CreatedAt: str
-        :param _RegionName: 地域名称
+        :param _RegionName: <p>地域名称</p>
         :type RegionName: str
-        :param _RegionId: 地域Id
+        :param _RegionId: <p>地域Id</p>
         :type RegionId: int
-        :param _EnableAnonymous: 是否支持匿名
+        :param _EnableAnonymous: <p>是否支持匿名</p>
         :type EnableAnonymous: bool
-        :param _TokenValidTime: Token有效时间
+        :param _TokenValidTime: <p>Token有效时间</p>
         :type TokenValidTime: int
-        :param _InternalEndpoint: 实例内部访问地址
+        :param _InternalEndpoint: <p>实例内部访问地址</p>
         :type InternalEndpoint: str
-        :param _TagSpecification: 实例云标签
+        :param _TagSpecification: <p>实例云标签</p>
         :type TagSpecification: :class:`tencentcloud.tcr.v20190924.models.TagSpecification`
-        :param _ExpiredAt: 实例过期时间（预付费）
+        :param _ExpiredAt: <p>实例过期时间（预付费）</p>
         :type ExpiredAt: str
-        :param _PayMod: 实例付费类型，0表示后付费，1表示预付费
+        :param _PayMod: <p>实例付费类型，0表示后付费，1表示预付费</p>
         :type PayMod: int
-        :param _RenewFlag: 预付费续费标识，0表示手动续费，1表示自动续费，2不续费并且不通知
+        :param _RenewFlag: <p>预付费续费标识，0表示手动续费，1表示自动续费，2不续费并且不通知</p>
         :type RenewFlag: int
-        :param _DeletionProtection: 是否开启实例删除保护，false表示不开启
+        :param _DeletionProtection: <p>是否开启实例删除保护，false表示不开启</p>
         :type DeletionProtection: bool
+        :param _AIFeature: <p>是否支持AI特性</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AIFeature: bool
         """
         self._RegistryId = None
         self._RegistryName = None
@@ -14757,10 +14749,11 @@ DeleteFailed, 实例删除失败
         self._PayMod = None
         self._RenewFlag = None
         self._DeletionProtection = None
+        self._AIFeature = None
 
     @property
     def RegistryId(self):
-        r"""实例ID
+        r"""<p>实例ID</p>
         :rtype: str
         """
         return self._RegistryId
@@ -14771,7 +14764,7 @@ DeleteFailed, 实例删除失败
 
     @property
     def RegistryName(self):
-        r"""实例名称
+        r"""<p>实例名称</p>
         :rtype: str
         """
         return self._RegistryName
@@ -14782,7 +14775,7 @@ DeleteFailed, 实例删除失败
 
     @property
     def RegistryType(self):
-        r"""实例规格
+        r"""<p>实例规格</p>
         :rtype: str
         """
         return self._RegistryType
@@ -14793,18 +14786,7 @@ DeleteFailed, 实例删除失败
 
     @property
     def Status(self):
-        r"""实例状态。有以下状态：
-Pending, 初始化中
-Deploying, 创建中
-Running, 运行中
-Unhealthy, 状态异常
-FailedCreated, 创建失败
-FailedUpdated, 更新失败
-Bucket-Error, 存储桶异常
-Isolate, 待回收
-Deleting, 删除中
-DeleteBucketFailed, 实例删除存储桶失败
-DeleteFailed, 实例删除失败
+        r"""<p>实例状态。有以下状态：<br>Pending, 初始化中<br>Deploying, 创建中<br>Running, 运行中<br>Unhealthy, 状态异常<br>FailedCreated, 创建失败<br>FailedUpdated, 更新失败<br>Bucket-Error, 存储桶异常<br>Isolate, 待回收<br>Deleting, 删除中<br>DeleteBucketFailed, 实例删除存储桶失败<br>DeleteFailed, 实例删除失败</p>
         :rtype: str
         """
         return self._Status
@@ -14815,7 +14797,7 @@ DeleteFailed, 实例删除失败
 
     @property
     def PublicDomain(self):
-        r"""实例的公共访问地址
+        r"""<p>实例的公共访问地址</p>
         :rtype: str
         """
         return self._PublicDomain
@@ -14826,7 +14808,7 @@ DeleteFailed, 实例删除失败
 
     @property
     def CreatedAt(self):
-        r"""实例创建时间
+        r"""<p>实例创建时间</p>
         :rtype: str
         """
         return self._CreatedAt
@@ -14837,7 +14819,7 @@ DeleteFailed, 实例删除失败
 
     @property
     def RegionName(self):
-        r"""地域名称
+        r"""<p>地域名称</p>
         :rtype: str
         """
         return self._RegionName
@@ -14848,7 +14830,7 @@ DeleteFailed, 实例删除失败
 
     @property
     def RegionId(self):
-        r"""地域Id
+        r"""<p>地域Id</p>
         :rtype: int
         """
         return self._RegionId
@@ -14859,7 +14841,7 @@ DeleteFailed, 实例删除失败
 
     @property
     def EnableAnonymous(self):
-        r"""是否支持匿名
+        r"""<p>是否支持匿名</p>
         :rtype: bool
         """
         return self._EnableAnonymous
@@ -14870,7 +14852,7 @@ DeleteFailed, 实例删除失败
 
     @property
     def TokenValidTime(self):
-        r"""Token有效时间
+        r"""<p>Token有效时间</p>
         :rtype: int
         """
         return self._TokenValidTime
@@ -14881,7 +14863,7 @@ DeleteFailed, 实例删除失败
 
     @property
     def InternalEndpoint(self):
-        r"""实例内部访问地址
+        r"""<p>实例内部访问地址</p>
         :rtype: str
         """
         return self._InternalEndpoint
@@ -14892,7 +14874,7 @@ DeleteFailed, 实例删除失败
 
     @property
     def TagSpecification(self):
-        r"""实例云标签
+        r"""<p>实例云标签</p>
         :rtype: :class:`tencentcloud.tcr.v20190924.models.TagSpecification`
         """
         return self._TagSpecification
@@ -14903,7 +14885,7 @@ DeleteFailed, 实例删除失败
 
     @property
     def ExpiredAt(self):
-        r"""实例过期时间（预付费）
+        r"""<p>实例过期时间（预付费）</p>
         :rtype: str
         """
         return self._ExpiredAt
@@ -14914,7 +14896,7 @@ DeleteFailed, 实例删除失败
 
     @property
     def PayMod(self):
-        r"""实例付费类型，0表示后付费，1表示预付费
+        r"""<p>实例付费类型，0表示后付费，1表示预付费</p>
         :rtype: int
         """
         return self._PayMod
@@ -14925,7 +14907,7 @@ DeleteFailed, 实例删除失败
 
     @property
     def RenewFlag(self):
-        r"""预付费续费标识，0表示手动续费，1表示自动续费，2不续费并且不通知
+        r"""<p>预付费续费标识，0表示手动续费，1表示自动续费，2不续费并且不通知</p>
         :rtype: int
         """
         return self._RenewFlag
@@ -14936,7 +14918,7 @@ DeleteFailed, 实例删除失败
 
     @property
     def DeletionProtection(self):
-        r"""是否开启实例删除保护，false表示不开启
+        r"""<p>是否开启实例删除保护，false表示不开启</p>
         :rtype: bool
         """
         return self._DeletionProtection
@@ -14944,6 +14926,18 @@ DeleteFailed, 实例删除失败
     @DeletionProtection.setter
     def DeletionProtection(self, DeletionProtection):
         self._DeletionProtection = DeletionProtection
+
+    @property
+    def AIFeature(self):
+        r"""<p>是否支持AI特性</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._AIFeature
+
+    @AIFeature.setter
+    def AIFeature(self, AIFeature):
+        self._AIFeature = AIFeature
 
 
     def _deserialize(self, params):
@@ -14965,6 +14959,7 @@ DeleteFailed, 实例删除失败
         self._PayMod = params.get("PayMod")
         self._RenewFlag = params.get("RenewFlag")
         self._DeletionProtection = params.get("DeletionProtection")
+        self._AIFeature = params.get("AIFeature")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

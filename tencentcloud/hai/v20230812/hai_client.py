@@ -95,6 +95,29 @@ class HaiClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteService(self, request):
+        r"""本接口 (DeleteService) 用于删除一个指定配置的实例。
+
+        :param request: Request instance for DeleteService.
+        :type request: :class:`tencentcloud.hai.v20230812.models.DeleteServiceRequest`
+        :rtype: :class:`tencentcloud.hai.v20230812.models.DeleteServiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteService", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteServiceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeployInferService(self, request):
         r"""本接口(DeployInferService)用于部署推理服务
 
@@ -339,6 +362,29 @@ class HaiClient(AbstractClient):
             body = self.call("DescribeServices", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeServicesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeServicesCallInfo(self, request):
+        r"""本接口 (DescribeServciesCallInfo) 用于查询服务调用信息。
+
+        :param request: Request instance for DescribeServicesCallInfo.
+        :type request: :class:`tencentcloud.hai.v20230812.models.DescribeServicesCallInfoRequest`
+        :rtype: :class:`tencentcloud.hai.v20230812.models.DescribeServicesCallInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeServicesCallInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeServicesCallInfoResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

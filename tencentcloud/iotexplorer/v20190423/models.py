@@ -18847,12 +18847,15 @@ class DeviceActiveResult(AbstractModel):
         :type Sn: str
         :param _ErrCode: 设备激活状态，0：激活成功；50011：系统错误；50012：产品不存在；50013：设备不存在；50014：产品无权限；50015：不是音视频产品；50016：SN格式错误；50017：激活码类型错误；50018：激活次数限频；50019：激活码不足；50020：SN已暂停；
         :type ErrCode: int
+        :param _ErrMessage: 错误信息
+        :type ErrMessage: str
         :param _ExpireTime: 过期时间
         :type ExpireTime: int
         """
         self._ModelId = None
         self._Sn = None
         self._ErrCode = None
+        self._ErrMessage = None
         self._ExpireTime = None
 
     @property
@@ -18894,6 +18897,17 @@ class DeviceActiveResult(AbstractModel):
         self._ErrCode = ErrCode
 
     @property
+    def ErrMessage(self):
+        r"""错误信息
+        :rtype: str
+        """
+        return self._ErrMessage
+
+    @ErrMessage.setter
+    def ErrMessage(self, ErrMessage):
+        self._ErrMessage = ErrMessage
+
+    @property
     def ExpireTime(self):
         r"""过期时间
         :rtype: int
@@ -18909,6 +18923,7 @@ class DeviceActiveResult(AbstractModel):
         self._ModelId = params.get("ModelId")
         self._Sn = params.get("Sn")
         self._ErrCode = params.get("ErrCode")
+        self._ErrMessage = params.get("ErrMessage")
         self._ExpireTime = params.get("ExpireTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

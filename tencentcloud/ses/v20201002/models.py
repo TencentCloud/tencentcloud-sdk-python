@@ -373,32 +373,29 @@ class BatchSendEmailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FromEmailAddress: 发信邮件地址。请填写发件人邮箱地址，例如：noreply@mail.qcloud.com。如需填写发件人说明，请按照
-发信人 &lt;邮件地址&gt; 的方式填写，例如：
-腾讯云团队 &lt;noreply@mail.qcloud.com&gt;
+        :param _FromEmailAddress: <p>发信邮件地址。请填写发件人邮箱地址，例如：noreply@mail.qcloud.com。如需填写发件人说明，请按照<br>发信人 &lt;邮件地址&gt; 的方式填写，例如：<br>腾讯云团队 &lt;noreply@mail.qcloud.com&gt;</p>
         :type FromEmailAddress: str
-        :param _ReceiverId: 收件人列表ID
+        :param _ReceiverId: <p>收件人列表ID</p>
         :type ReceiverId: int
-        :param _Subject: 邮件主题
+        :param _Subject: <p>邮件主题</p>
         :type Subject: str
-        :param _TaskType: 任务类型 1: 立即发送 2: 定时发送 3: 周期（频率）发送
+        :param _TaskType: <p>任务类型 1: 立即发送 2: 定时发送 3: 周期（频率）发送</p>
         :type TaskType: int
-        :param _ReplyToAddresses: 邮件的“回复”电子邮件地址。可以填写您能收到邮件的邮箱地址，可以是个人邮箱。如果不填，收件人的回复邮件将会发送失败。
+        :param _ReplyToAddresses: <p>邮件的“回复”电子邮件地址。可以填写您能收到邮件的邮箱地址，可以是个人邮箱。如果不填，收件人的回复邮件将会发送失败。</p>
         :type ReplyToAddresses: str
-        :param _Template: 使用模板发送时，填写的模板相关参数
-<dx-alert infotype="notice" title="注意"> 如您未申请过特殊配置，则该字段为必填 </dx-alert>
+        :param _Template: <p>使用模板发送时，填写的模板相关参数</p><blockquote class="rno-document-tips rno-document-tips-notice">    <div class="rno-document-tips-body">        <i class="rno-document-tip-icon"></i>        <div class="rno-document-tip-title">注意</div>        <div class="rno-document-tip-desc"><p>如您未申请过特殊配置，则该字段为必填</p></div>    </div></blockquote>
         :type Template: :class:`tencentcloud.ses.v20201002.models.Template`
-        :param _Simple: 已废弃<dx-alert infotype="notice" title="说明"> 仅部分历史上申请了特殊配置的客户需要使用。如您未申请过特殊配置，则不存在该字段。</dx-alert>
+        :param _Simple: <p>已废弃<blockquote class="rno-document-tips rno-document-tips-notice">    <div class="rno-document-tips-body">        <i class="rno-document-tip-icon"></i>        <div class="rno-document-tip-title">说明</div>        <div class="rno-document-tip-desc"><p>仅部分历史上申请了特殊配置的客户需要使用。如您未申请过特殊配置，则不存在该字段。</p></div>    </div></blockquote></p>
         :type Simple: :class:`tencentcloud.ses.v20201002.models.Simple`
-        :param _Attachments: 需要发送附件时，填写附件相关参数（暂未支持）
+        :param _Attachments: <p>需要发送附件时，填写附件相关参数（暂未支持）</p>
         :type Attachments: list of Attachment
-        :param _CycleParam: 周期发送任务的必要参数
+        :param _CycleParam: <p>周期发送任务的必要参数</p>
         :type CycleParam: :class:`tencentcloud.ses.v20201002.models.CycleEmailParam`
-        :param _TimedParam: 定时发送任务的必要参数
+        :param _TimedParam: <p>定时发送任务的必要参数</p>
         :type TimedParam: :class:`tencentcloud.ses.v20201002.models.TimedEmailParam`
-        :param _Unsubscribe: 退订链接选项 0: 不加入退订链接 1: 简体中文 2: 英文 3: 繁体中文 4: 西班牙语 5: 法语 6: 德语 7: 日语 8: 韩语 9: 阿拉伯语 10: 泰语
+        :param _Unsubscribe: <p>退订链接选项</p><p>枚举值：</p><ul><li>0： 不加入退订链接</li><li>1： 简体中文</li><li>2： 英文</li><li>3： 繁体中文</li><li>4： 西班牙语</li><li>5： 法语</li><li>6： 德语</li><li>7： 日语</li><li>8： 韩语</li><li>9： 阿拉伯语</li><li>10： 泰语</li><li>11： 印尼语</li></ul>
         :type Unsubscribe: str
-        :param _ADLocation: 是否添加广告标识 0:不添加 1:添加到subject前面，2:添加到subject后面
+        :param _ADLocation: <p>是否添加广告标识 0:不添加 1:添加到subject前面，2:添加到subject后面</p>
         :type ADLocation: int
         """
         self._FromEmailAddress = None
@@ -416,9 +413,7 @@ class BatchSendEmailRequest(AbstractModel):
 
     @property
     def FromEmailAddress(self):
-        r"""发信邮件地址。请填写发件人邮箱地址，例如：noreply@mail.qcloud.com。如需填写发件人说明，请按照
-发信人 &lt;邮件地址&gt; 的方式填写，例如：
-腾讯云团队 &lt;noreply@mail.qcloud.com&gt;
+        r"""<p>发信邮件地址。请填写发件人邮箱地址，例如：noreply@mail.qcloud.com。如需填写发件人说明，请按照<br>发信人 &lt;邮件地址&gt; 的方式填写，例如：<br>腾讯云团队 &lt;noreply@mail.qcloud.com&gt;</p>
         :rtype: str
         """
         return self._FromEmailAddress
@@ -429,7 +424,7 @@ class BatchSendEmailRequest(AbstractModel):
 
     @property
     def ReceiverId(self):
-        r"""收件人列表ID
+        r"""<p>收件人列表ID</p>
         :rtype: int
         """
         return self._ReceiverId
@@ -440,7 +435,7 @@ class BatchSendEmailRequest(AbstractModel):
 
     @property
     def Subject(self):
-        r"""邮件主题
+        r"""<p>邮件主题</p>
         :rtype: str
         """
         return self._Subject
@@ -451,7 +446,7 @@ class BatchSendEmailRequest(AbstractModel):
 
     @property
     def TaskType(self):
-        r"""任务类型 1: 立即发送 2: 定时发送 3: 周期（频率）发送
+        r"""<p>任务类型 1: 立即发送 2: 定时发送 3: 周期（频率）发送</p>
         :rtype: int
         """
         return self._TaskType
@@ -462,7 +457,7 @@ class BatchSendEmailRequest(AbstractModel):
 
     @property
     def ReplyToAddresses(self):
-        r"""邮件的“回复”电子邮件地址。可以填写您能收到邮件的邮箱地址，可以是个人邮箱。如果不填，收件人的回复邮件将会发送失败。
+        r"""<p>邮件的“回复”电子邮件地址。可以填写您能收到邮件的邮箱地址，可以是个人邮箱。如果不填，收件人的回复邮件将会发送失败。</p>
         :rtype: str
         """
         return self._ReplyToAddresses
@@ -473,8 +468,7 @@ class BatchSendEmailRequest(AbstractModel):
 
     @property
     def Template(self):
-        r"""使用模板发送时，填写的模板相关参数
-<dx-alert infotype="notice" title="注意"> 如您未申请过特殊配置，则该字段为必填 </dx-alert>
+        r"""<p>使用模板发送时，填写的模板相关参数</p><blockquote class="rno-document-tips rno-document-tips-notice">    <div class="rno-document-tips-body">        <i class="rno-document-tip-icon"></i>        <div class="rno-document-tip-title">注意</div>        <div class="rno-document-tip-desc"><p>如您未申请过特殊配置，则该字段为必填</p></div>    </div></blockquote>
         :rtype: :class:`tencentcloud.ses.v20201002.models.Template`
         """
         return self._Template
@@ -485,7 +479,7 @@ class BatchSendEmailRequest(AbstractModel):
 
     @property
     def Simple(self):
-        r"""已废弃<dx-alert infotype="notice" title="说明"> 仅部分历史上申请了特殊配置的客户需要使用。如您未申请过特殊配置，则不存在该字段。</dx-alert>
+        r"""<p>已废弃<blockquote class="rno-document-tips rno-document-tips-notice">    <div class="rno-document-tips-body">        <i class="rno-document-tip-icon"></i>        <div class="rno-document-tip-title">说明</div>        <div class="rno-document-tip-desc"><p>仅部分历史上申请了特殊配置的客户需要使用。如您未申请过特殊配置，则不存在该字段。</p></div>    </div></blockquote></p>
         :rtype: :class:`tencentcloud.ses.v20201002.models.Simple`
         """
         return self._Simple
@@ -496,7 +490,7 @@ class BatchSendEmailRequest(AbstractModel):
 
     @property
     def Attachments(self):
-        r"""需要发送附件时，填写附件相关参数（暂未支持）
+        r"""<p>需要发送附件时，填写附件相关参数（暂未支持）</p>
         :rtype: list of Attachment
         """
         return self._Attachments
@@ -507,7 +501,7 @@ class BatchSendEmailRequest(AbstractModel):
 
     @property
     def CycleParam(self):
-        r"""周期发送任务的必要参数
+        r"""<p>周期发送任务的必要参数</p>
         :rtype: :class:`tencentcloud.ses.v20201002.models.CycleEmailParam`
         """
         return self._CycleParam
@@ -518,7 +512,7 @@ class BatchSendEmailRequest(AbstractModel):
 
     @property
     def TimedParam(self):
-        r"""定时发送任务的必要参数
+        r"""<p>定时发送任务的必要参数</p>
         :rtype: :class:`tencentcloud.ses.v20201002.models.TimedEmailParam`
         """
         return self._TimedParam
@@ -529,7 +523,7 @@ class BatchSendEmailRequest(AbstractModel):
 
     @property
     def Unsubscribe(self):
-        r"""退订链接选项 0: 不加入退订链接 1: 简体中文 2: 英文 3: 繁体中文 4: 西班牙语 5: 法语 6: 德语 7: 日语 8: 韩语 9: 阿拉伯语 10: 泰语
+        r"""<p>退订链接选项</p><p>枚举值：</p><ul><li>0： 不加入退订链接</li><li>1： 简体中文</li><li>2： 英文</li><li>3： 繁体中文</li><li>4： 西班牙语</li><li>5： 法语</li><li>6： 德语</li><li>7： 日语</li><li>8： 韩语</li><li>9： 阿拉伯语</li><li>10： 泰语</li><li>11： 印尼语</li></ul>
         :rtype: str
         """
         return self._Unsubscribe
@@ -540,7 +534,7 @@ class BatchSendEmailRequest(AbstractModel):
 
     @property
     def ADLocation(self):
-        r"""是否添加广告标识 0:不添加 1:添加到subject前面，2:添加到subject后面
+        r"""<p>是否添加广告标识 0:不添加 1:添加到subject前面，2:添加到subject后面</p>
         :rtype: int
         """
         return self._ADLocation
@@ -593,7 +587,7 @@ class BatchSendEmailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 发送任务ID
+        :param _TaskId: <p>发送任务ID</p>
         :type TaskId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -603,7 +597,7 @@ class BatchSendEmailResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""发送任务ID
+        r"""<p>发送任务ID</p>
         :rtype: int
         """
         return self._TaskId

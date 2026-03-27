@@ -19469,6 +19469,9 @@ class DataSetRecord(AbstractModel):
         :param _MetaFrom: Catalog来源
 注意：此字段可能返回 null，表示取不到有效值。
         :type MetaFrom: str
+        :param _EngineOwner: 引擎侧责任人
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EngineOwner: str
         """
         self._AssetId = None
         self._DatasourceName = None
@@ -19537,6 +19540,7 @@ class DataSetRecord(AbstractModel):
         self._FullName = None
         self._Namespace = None
         self._MetaFrom = None
+        self._EngineOwner = None
 
     @property
     def AssetId(self):
@@ -20344,6 +20348,18 @@ class DataSetRecord(AbstractModel):
     def MetaFrom(self, MetaFrom):
         self._MetaFrom = MetaFrom
 
+    @property
+    def EngineOwner(self):
+        r"""引擎侧责任人
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._EngineOwner
+
+    @EngineOwner.setter
+    def EngineOwner(self, EngineOwner):
+        self._EngineOwner = EngineOwner
+
 
     def _deserialize(self, params):
         self._AssetId = params.get("AssetId")
@@ -20447,6 +20463,7 @@ class DataSetRecord(AbstractModel):
         self._FullName = params.get("FullName")
         self._Namespace = params.get("Namespace")
         self._MetaFrom = params.get("MetaFrom")
+        self._EngineOwner = params.get("EngineOwner")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -118609,12 +118626,11 @@ class TriggerManualTasksRequest(AbstractModel):
         :type TriggerScope: str
         :param _DataTimeList: 运行数据时间列表
         :type DataTimeList: list of str
-        :param _WorkflowId: 工作流ID
+        :param _WorkflowId: 手动工作流ID
         :type WorkflowId: str
         :param _Remark: 备注
         :type Remark: str
-        :param _TaskIds: 需要运行的任务列表
-TriggerScope=ENTIRE_WORKFLOW 时无需传此参数，TriggerScope=SPECIFIED_TASK此参数必传
+        :param _TaskIds: 需要运行的手动工作流任务列表TriggerScope=ENTIRE_WORKFLOW 时无需传此参数，TriggerScope=SPECIFIED_TASK此参数必传
         :type TaskIds: list of str
         :param _SchedulerResourceGroup: 用户提交运行时指定的调度资源组，未指定时使用任务配置的调度资源组
         :type SchedulerResourceGroup: str
@@ -118692,7 +118708,7 @@ TriggerScope=ENTIRE_WORKFLOW 时无需传此参数，TriggerScope=SPECIFIED_TASK
 
     @property
     def WorkflowId(self):
-        r"""工作流ID
+        r"""手动工作流ID
         :rtype: str
         """
         return self._WorkflowId
@@ -118714,8 +118730,7 @@ TriggerScope=ENTIRE_WORKFLOW 时无需传此参数，TriggerScope=SPECIFIED_TASK
 
     @property
     def TaskIds(self):
-        r"""需要运行的任务列表
-TriggerScope=ENTIRE_WORKFLOW 时无需传此参数，TriggerScope=SPECIFIED_TASK此参数必传
+        r"""需要运行的手动工作流任务列表TriggerScope=ENTIRE_WORKFLOW 时无需传此参数，TriggerScope=SPECIFIED_TASK此参数必传
         :rtype: list of str
         """
         return self._TaskIds

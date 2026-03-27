@@ -271,6 +271,8 @@ class ConsumeGroupItem(AbstractModel):
         :type CreateTime: int
         :param _TagList: 绑定的标签列表
         :type TagList: list of Tag
+        :param _RetryPolicy: 重试策略
+        :type RetryPolicy: :class:`tencentcloud.trocket.v20230308.models.RetryPolicy`
         """
         self._InstanceId = None
         self._ConsumerGroup = None
@@ -285,6 +287,7 @@ class ConsumeGroupItem(AbstractModel):
         self._SubscribeTopicNum = None
         self._CreateTime = None
         self._TagList = None
+        self._RetryPolicy = None
 
     @property
     def InstanceId(self):
@@ -435,6 +438,17 @@ class ConsumeGroupItem(AbstractModel):
     def TagList(self, TagList):
         self._TagList = TagList
 
+    @property
+    def RetryPolicy(self):
+        r"""重试策略
+        :rtype: :class:`tencentcloud.trocket.v20230308.models.RetryPolicy`
+        """
+        return self._RetryPolicy
+
+    @RetryPolicy.setter
+    def RetryPolicy(self, RetryPolicy):
+        self._RetryPolicy = RetryPolicy
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -455,6 +469,9 @@ class ConsumeGroupItem(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self._TagList.append(obj)
+        if params.get("RetryPolicy") is not None:
+            self._RetryPolicy = RetryPolicy()
+            self._RetryPolicy._deserialize(params.get("RetryPolicy"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -610,6 +627,8 @@ class CreateConsumerGroupRequest(AbstractModel):
         :type Remark: str
         :param _TagList: 标签列表
         :type TagList: list of Tag
+        :param _RetryPolicy: 重试策略
+        :type RetryPolicy: :class:`tencentcloud.trocket.v20230308.models.RetryPolicy`
         """
         self._InstanceId = None
         self._MaxRetryTimes = None
@@ -618,6 +637,7 @@ class CreateConsumerGroupRequest(AbstractModel):
         self._ConsumerGroup = None
         self._Remark = None
         self._TagList = None
+        self._RetryPolicy = None
 
     @property
     def InstanceId(self):
@@ -697,6 +717,17 @@ class CreateConsumerGroupRequest(AbstractModel):
     def TagList(self, TagList):
         self._TagList = TagList
 
+    @property
+    def RetryPolicy(self):
+        r"""重试策略
+        :rtype: :class:`tencentcloud.trocket.v20230308.models.RetryPolicy`
+        """
+        return self._RetryPolicy
+
+    @RetryPolicy.setter
+    def RetryPolicy(self, RetryPolicy):
+        self._RetryPolicy = RetryPolicy
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -711,6 +742,9 @@ class CreateConsumerGroupRequest(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self._TagList.append(obj)
+        if params.get("RetryPolicy") is not None:
+            self._RetryPolicy = RetryPolicy()
+            self._RetryPolicy._deserialize(params.get("RetryPolicy"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1149,6 +1183,12 @@ class CreateRoleRequest(AbstractModel):
         :type PermType: str
         :param _DetailedPerms: Topic&Group维度权限配置，权限类型为 TopicAndGroup 时必填
         :type DetailedPerms: list of DetailedRolePerm
+        :param _RoleGenerateMode: AK、SK的生成方式，AUTO：后端自动生成，MANUAL：用户手动输入
+        :type RoleGenerateMode: str
+        :param _AccessKey: 选择MANUAL模式下，需要手动输入AK值
+        :type AccessKey: str
+        :param _SecretKey: 选择MANUAL模式下，需要手动输入SK值
+        :type SecretKey: str
         """
         self._InstanceId = None
         self._Role = None
@@ -1157,6 +1197,9 @@ class CreateRoleRequest(AbstractModel):
         self._Remark = None
         self._PermType = None
         self._DetailedPerms = None
+        self._RoleGenerateMode = None
+        self._AccessKey = None
+        self._SecretKey = None
 
     @property
     def InstanceId(self):
@@ -1235,6 +1278,39 @@ class CreateRoleRequest(AbstractModel):
     def DetailedPerms(self, DetailedPerms):
         self._DetailedPerms = DetailedPerms
 
+    @property
+    def RoleGenerateMode(self):
+        r"""AK、SK的生成方式，AUTO：后端自动生成，MANUAL：用户手动输入
+        :rtype: str
+        """
+        return self._RoleGenerateMode
+
+    @RoleGenerateMode.setter
+    def RoleGenerateMode(self, RoleGenerateMode):
+        self._RoleGenerateMode = RoleGenerateMode
+
+    @property
+    def AccessKey(self):
+        r"""选择MANUAL模式下，需要手动输入AK值
+        :rtype: str
+        """
+        return self._AccessKey
+
+    @AccessKey.setter
+    def AccessKey(self, AccessKey):
+        self._AccessKey = AccessKey
+
+    @property
+    def SecretKey(self):
+        r"""选择MANUAL模式下，需要手动输入SK值
+        :rtype: str
+        """
+        return self._SecretKey
+
+    @SecretKey.setter
+    def SecretKey(self, SecretKey):
+        self._SecretKey = SecretKey
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -1249,6 +1325,9 @@ class CreateRoleRequest(AbstractModel):
                 obj = DetailedRolePerm()
                 obj._deserialize(item)
                 self._DetailedPerms.append(obj)
+        self._RoleGenerateMode = params.get("RoleGenerateMode")
+        self._AccessKey = params.get("AccessKey")
+        self._SecretKey = params.get("SecretKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2524,6 +2603,8 @@ class DescribeConsumerGroupResponse(AbstractModel):
 BROADCASTING 广播模式
 CLUSTERING 集群模式
         :type MessageModel: str
+        :param _RetryPolicy: 重试策略
+        :type RetryPolicy: :class:`tencentcloud.trocket.v20230308.models.RetryPolicy`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2537,6 +2618,7 @@ CLUSTERING 集群模式
         self._MaxRetryTimes = None
         self._Remark = None
         self._MessageModel = None
+        self._RetryPolicy = None
         self._RequestId = None
 
     @property
@@ -2657,6 +2739,17 @@ CLUSTERING 集群模式
         self._MessageModel = MessageModel
 
     @property
+    def RetryPolicy(self):
+        r"""重试策略
+        :rtype: :class:`tencentcloud.trocket.v20230308.models.RetryPolicy`
+        """
+        return self._RetryPolicy
+
+    @RetryPolicy.setter
+    def RetryPolicy(self, RetryPolicy):
+        self._RetryPolicy = RetryPolicy
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -2679,6 +2772,9 @@ CLUSTERING 集群模式
         self._MaxRetryTimes = params.get("MaxRetryTimes")
         self._Remark = params.get("Remark")
         self._MessageModel = params.get("MessageModel")
+        if params.get("RetryPolicy") is not None:
+            self._RetryPolicy = RetryPolicy()
+            self._RetryPolicy._deserialize(params.get("RetryPolicy"))
         self._RequestId = params.get("RequestId")
 
 
@@ -8788,6 +8884,8 @@ class ModifyConsumerGroupRequest(AbstractModel):
         :type MaxRetryTimes: int
         :param _Remark: 备注信息，最多 128 个字符
         :type Remark: str
+        :param _RetryPolicy: 重试策略
+        :type RetryPolicy: :class:`tencentcloud.trocket.v20230308.models.RetryPolicy`
         """
         self._InstanceId = None
         self._ConsumeEnable = None
@@ -8795,6 +8893,7 @@ class ModifyConsumerGroupRequest(AbstractModel):
         self._ConsumerGroup = None
         self._MaxRetryTimes = None
         self._Remark = None
+        self._RetryPolicy = None
 
     @property
     def InstanceId(self):
@@ -8863,6 +8962,17 @@ class ModifyConsumerGroupRequest(AbstractModel):
     def Remark(self, Remark):
         self._Remark = Remark
 
+    @property
+    def RetryPolicy(self):
+        r"""重试策略
+        :rtype: :class:`tencentcloud.trocket.v20230308.models.RetryPolicy`
+        """
+        return self._RetryPolicy
+
+    @RetryPolicy.setter
+    def RetryPolicy(self, RetryPolicy):
+        self._RetryPolicy = RetryPolicy
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -8871,6 +8981,9 @@ class ModifyConsumerGroupRequest(AbstractModel):
         self._ConsumerGroup = params.get("ConsumerGroup")
         self._MaxRetryTimes = params.get("MaxRetryTimes")
         self._Remark = params.get("Remark")
+        if params.get("RetryPolicy") is not None:
+            self._RetryPolicy = RetryPolicy()
+            self._RetryPolicy._deserialize(params.get("RetryPolicy"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9076,6 +9189,8 @@ class ModifyInstanceRequest(AbstractModel):
         :type ExtraTopicNum: str
         :param _EnableDeletionProtection: 是否开启删除保护
         :type EnableDeletionProtection: bool
+        :param _ZoneIds: 部署可用区列表
+        :type ZoneIds: list of str
         """
         self._InstanceId = None
         self._Name = None
@@ -9088,6 +9203,7 @@ class ModifyInstanceRequest(AbstractModel):
         self._MaxTopicNum = None
         self._ExtraTopicNum = None
         self._EnableDeletionProtection = None
+        self._ZoneIds = None
 
     @property
     def InstanceId(self):
@@ -9217,6 +9333,17 @@ class ModifyInstanceRequest(AbstractModel):
     def EnableDeletionProtection(self, EnableDeletionProtection):
         self._EnableDeletionProtection = EnableDeletionProtection
 
+    @property
+    def ZoneIds(self):
+        r"""部署可用区列表
+        :rtype: list of str
+        """
+        return self._ZoneIds
+
+    @ZoneIds.setter
+    def ZoneIds(self, ZoneIds):
+        self._ZoneIds = ZoneIds
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -9230,6 +9357,7 @@ class ModifyInstanceRequest(AbstractModel):
         self._MaxTopicNum = params.get("MaxTopicNum")
         self._ExtraTopicNum = params.get("ExtraTopicNum")
         self._EnableDeletionProtection = params.get("EnableDeletionProtection")
+        self._ZoneIds = params.get("ZoneIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10302,6 +10430,63 @@ class ResetConsumerGroupOffsetResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class RetryPolicy(AbstractModel):
+    r"""重试策略
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PolicyType: 重试策略类型，枚举值如下：
+
+- EXPONENTIAL：固定间隔
+- CUSTOMIZED：阶梯退避
+        :type PolicyType: str
+        :param _RetryInterval: 固定重试间隔，仅在重试策略为固定间隔时生效
+        :type RetryInterval: int
+        """
+        self._PolicyType = None
+        self._RetryInterval = None
+
+    @property
+    def PolicyType(self):
+        r"""重试策略类型，枚举值如下：
+
+- EXPONENTIAL：固定间隔
+- CUSTOMIZED：阶梯退避
+        :rtype: str
+        """
+        return self._PolicyType
+
+    @PolicyType.setter
+    def PolicyType(self, PolicyType):
+        self._PolicyType = PolicyType
+
+    @property
+    def RetryInterval(self):
+        r"""固定重试间隔，仅在重试策略为固定间隔时生效
+        :rtype: int
+        """
+        return self._RetryInterval
+
+    @RetryInterval.setter
+    def RetryInterval(self, RetryInterval):
+        self._RetryInterval = RetryInterval
+
+
+    def _deserialize(self, params):
+        self._PolicyType = params.get("PolicyType")
+        self._RetryInterval = params.get("RetryInterval")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class RoleItem(AbstractModel):
@@ -12124,17 +12309,17 @@ class VerifyMessageConsumptionRequest(AbstractModel):
         :type InstanceId: str
         :param _Topic: 主题名称，从 [DescribeTopicList](https://cloud.tencent.com/document/api/1493/96030) 接口返回的 [TopicItem](https://cloud.tencent.com/document/api/1493/96031#TopicItem) 或控制台获得。
         :type Topic: str
-        :param _ClientId: 客户端ID
-        :type ClientId: str
         :param _MsgId: 消息ID
         :type MsgId: str
+        :param _ClientId: 客户端 ID，不指定该参数时消息将被发送到对应消费组内任意客户端
+        :type ClientId: str
         :param _ConsumerGroup: 消费组名称，从 [DescribeConsumerGroupList](https://cloud.tencent.com/document/api/1493/101535) 接口返回的 [ConsumeGroupItem](https://cloud.tencent.com/document/api/1493/96031#ConsumeGroupItem) 或控制台获得。
         :type ConsumerGroup: str
         """
         self._InstanceId = None
         self._Topic = None
-        self._ClientId = None
         self._MsgId = None
+        self._ClientId = None
         self._ConsumerGroup = None
 
     @property
@@ -12160,17 +12345,6 @@ class VerifyMessageConsumptionRequest(AbstractModel):
         self._Topic = Topic
 
     @property
-    def ClientId(self):
-        r"""客户端ID
-        :rtype: str
-        """
-        return self._ClientId
-
-    @ClientId.setter
-    def ClientId(self, ClientId):
-        self._ClientId = ClientId
-
-    @property
     def MsgId(self):
         r"""消息ID
         :rtype: str
@@ -12180,6 +12354,17 @@ class VerifyMessageConsumptionRequest(AbstractModel):
     @MsgId.setter
     def MsgId(self, MsgId):
         self._MsgId = MsgId
+
+    @property
+    def ClientId(self):
+        r"""客户端 ID，不指定该参数时消息将被发送到对应消费组内任意客户端
+        :rtype: str
+        """
+        return self._ClientId
+
+    @ClientId.setter
+    def ClientId(self, ClientId):
+        self._ClientId = ClientId
 
     @property
     def ConsumerGroup(self):
@@ -12196,8 +12381,8 @@ class VerifyMessageConsumptionRequest(AbstractModel):
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._Topic = params.get("Topic")
-        self._ClientId = params.get("ClientId")
         self._MsgId = params.get("MsgId")
+        self._ClientId = params.get("ClientId")
         self._ConsumerGroup = params.get("ConsumerGroup")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

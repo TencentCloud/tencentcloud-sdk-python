@@ -1404,6 +1404,24 @@ class LiveClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeAIGCTaskStatus(
+            self,
+            request: models.DescribeAIGCTaskStatusRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAIGCTaskStatusResponse:
+        """
+        查询视频转绘任务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAIGCTaskStatus"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAIGCTaskStatusResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeAllStreamPlayInfoList(
             self,
             request: models.DescribeAllStreamPlayInfoListRequest,

@@ -2297,17 +2297,17 @@ class CopyJobItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SourceId: 需要复制的作业serial id
+        :param _SourceId: <p>需要复制的作业serial id</p>
         :type SourceId: str
-        :param _TargetClusterId: 目标集群的cluster serial id
+        :param _TargetClusterId: <p>目标集群的cluster serial id</p>
         :type TargetClusterId: str
-        :param _SourceName: 需要复制的作业名称
+        :param _SourceName: <p>需要复制的作业名称</p>
         :type SourceName: str
-        :param _TargetName: 新作业的名称
+        :param _TargetName: <p>新作业的名称</p>
         :type TargetName: str
-        :param _TargetFolderId: 新作业的目录id
+        :param _TargetFolderId: <p>新作业的目录id</p>
         :type TargetFolderId: str
-        :param _JobType: 源作业类型
+        :param _JobType: <p>作业类型</p><p>枚举值：</p><ul><li>1： sql作业</li><li>2： jar作业</li><li>4： python作业</li></ul>
         :type JobType: int
         """
         self._SourceId = None
@@ -2319,7 +2319,7 @@ class CopyJobItem(AbstractModel):
 
     @property
     def SourceId(self):
-        r"""需要复制的作业serial id
+        r"""<p>需要复制的作业serial id</p>
         :rtype: str
         """
         return self._SourceId
@@ -2330,7 +2330,7 @@ class CopyJobItem(AbstractModel):
 
     @property
     def TargetClusterId(self):
-        r"""目标集群的cluster serial id
+        r"""<p>目标集群的cluster serial id</p>
         :rtype: str
         """
         return self._TargetClusterId
@@ -2341,7 +2341,7 @@ class CopyJobItem(AbstractModel):
 
     @property
     def SourceName(self):
-        r"""需要复制的作业名称
+        r"""<p>需要复制的作业名称</p>
         :rtype: str
         """
         return self._SourceName
@@ -2352,7 +2352,7 @@ class CopyJobItem(AbstractModel):
 
     @property
     def TargetName(self):
-        r"""新作业的名称
+        r"""<p>新作业的名称</p>
         :rtype: str
         """
         return self._TargetName
@@ -2363,7 +2363,7 @@ class CopyJobItem(AbstractModel):
 
     @property
     def TargetFolderId(self):
-        r"""新作业的目录id
+        r"""<p>新作业的目录id</p>
         :rtype: str
         """
         return self._TargetFolderId
@@ -2374,7 +2374,7 @@ class CopyJobItem(AbstractModel):
 
     @property
     def JobType(self):
-        r"""源作业类型
+        r"""<p>作业类型</p><p>枚举值：</p><ul><li>1： sql作业</li><li>2： jar作业</li><li>4： python作业</li></ul>
         :rtype: int
         """
         return self._JobType
@@ -2985,82 +2985,84 @@ class CreateJobConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 作业Id
+        :param _JobId: <p>作业Id</p>
         :type JobId: str
-        :param _EntrypointClass: 主类
+        :param _EntrypointClass: <p>主类</p>
         :type EntrypointClass: str
-        :param _ProgramArgs: 主类入参，需要区分下Sql作业配置，Jar作业配置，Python作业配置，具体参考下面的示例值
+        :param _ProgramArgs: <p>主类入参，需要区分下Sql作业配置，Jar作业配置，Python作业配置，具体参考下面的示例值</p>
         :type ProgramArgs: str
-        :param _Remark: 备注
+        :param _Remark: <p>备注</p>
         :type Remark: str
-        :param _ResourceRefs: 资源引用数组
+        :param _ResourceRefs: <p>资源引用数组</p>
         :type ResourceRefs: list of ResourceRef
-        :param _DefaultParallelism: 作业默认并行度
+        :param _DefaultParallelism: <p>作业默认并行度</p>
         :type DefaultParallelism: int
-        :param _Properties: 系统参数
+        :param _Properties: <p>系统参数</p>
         :type Properties: list of Property
-        :param _AutoDelete: 1: 作业配置达到上限之后，自动删除可删除的最早版本
+        :param _AutoDelete: <p>1: 作业配置达到上限之后，自动删除可删除的最早版本</p>
         :type AutoDelete: int
-        :param _COSBucket: 作业使用的 COS 存储桶名
+        :param _COSBucket: <p>作业使用的 COS 存储桶名</p>
         :type COSBucket: str
-        :param _LogCollect: 是否采集作业日志
+        :param _LogCollect: <p>是否采集作业日志</p>
         :type LogCollect: bool
-        :param _JobManagerSpec: JobManager规格
+        :param _JobManagerSpec: <p>JobManager规格</p>
         :type JobManagerSpec: float
-        :param _TaskManagerSpec: TaskManager规格
+        :param _TaskManagerSpec: <p>TaskManager规格</p>
         :type TaskManagerSpec: float
-        :param _ClsLogsetId: CLS日志集ID
+        :param _ClsLogsetId: <p>CLS日志集ID</p>
         :type ClsLogsetId: str
-        :param _ClsTopicId: CLS日志主题ID
+        :param _ClsTopicId: <p>CLS日志主题ID</p>
         :type ClsTopicId: str
-        :param _LogCollectType: 日志采集类型 2：CLS；3：COS
+        :param _LogCollectType: <p>日志采集类型 2：CLS；3：COS</p>
         :type LogCollectType: int
-        :param _PythonVersion: pyflink作业运行时使用的python版本
+        :param _PythonVersion: <p>pyflink作业运行时使用的python版本</p>
         :type PythonVersion: str
-        :param _WorkSpaceId: 工作空间 SerialId
+        :param _WorkSpaceId: <p>工作空间 SerialId</p>
         :type WorkSpaceId: str
-        :param _LogLevel: 日志级别
+        :param _LogLevel: <p>日志级别</p>
         :type LogLevel: str
-        :param _AutoRecover: Oceanus 平台恢复作业开关 1:开启 -1: 关闭
+        :param _AutoRecover: <p>Oceanus 平台恢复作业开关 1:开启 -1: 关闭</p>
         :type AutoRecover: int
-        :param _ClazzLevels: 类日志级别
+        :param _ClazzLevels: <p>类日志级别</p>
         :type ClazzLevels: list of ClazzLevel
-        :param _ExpertModeOn: 是否打开专家模式
+        :param _ExpertModeOn: <p>是否打开专家模式</p>
         :type ExpertModeOn: bool
-        :param _ExpertModeConfiguration: 专家模式的配置
+        :param _ExpertModeConfiguration: <p>专家模式的配置</p>
         :type ExpertModeConfiguration: :class:`tencentcloud.oceanus.v20190422.models.ExpertModeConfiguration`
-        :param _TraceModeOn: trace链路
+        :param _TraceModeOn: <p>trace链路</p>
         :type TraceModeOn: bool
-        :param _TraceModeConfiguration: trace链路配置
+        :param _TraceModeConfiguration: <p>trace链路配置</p>
         :type TraceModeConfiguration: :class:`tencentcloud.oceanus.v20190422.models.TraceModeConfiguration`
-        :param _CheckpointRetainedNum: checkpoint保留个数
+        :param _CheckpointRetainedNum: <p>checkpoint保留个数</p>
         :type CheckpointRetainedNum: int
-        :param _JobGraph: 算子拓扑图
+        :param _JobGraph: <p>算子拓扑图</p>
         :type JobGraph: :class:`tencentcloud.oceanus.v20190422.models.JobGraph`
-        :param _EsServerlessIndex: es索引名称
+        :param _EsServerlessIndex: <p>es索引名称</p>
         :type EsServerlessIndex: str
-        :param _EsServerlessSpace: es索引空间
+        :param _EsServerlessSpace: <p>es索引空间</p>
         :type EsServerlessSpace: str
-        :param _FlinkVersion: flink版本
+        :param _FlinkVersion: <p>flink版本</p>
         :type FlinkVersion: str
-        :param _JobManagerCpu: JobManager cpu
+        :param _JobManagerCpu: <p>JobManager cpu</p>
         :type JobManagerCpu: float
-        :param _JobManagerMem: JobManager 内存
+        :param _JobManagerMem: <p>JobManager 内存</p>
         :type JobManagerMem: float
-        :param _JdkVersion: jdk版本
+        :param _JdkVersion: <p>jdk版本</p>
         :type JdkVersion: str
-        :param _TaskManagerCpu: TaskManager cpu
+        :param _TaskManagerCpu: <p>TaskManager cpu</p>
         :type TaskManagerCpu: float
-        :param _TaskManagerMem: TaskManager 内存
+        :param _TaskManagerMem: <p>TaskManager 内存</p>
         :type TaskManagerMem: float
-        :param _UseOldSystemConnector: 0=默认使用老的 1=使用新的
+        :param _UseOldSystemConnector: <p>0=默认使用老的 1=使用新的</p>
         :type UseOldSystemConnector: int
-        :param _ProgramArgsAfterGzip: 压缩参数
+        :param _ProgramArgsAfterGzip: <p>压缩参数</p>
         :type ProgramArgsAfterGzip: str
-        :param _CheckpointTimeoutSecond: checkpoint 超时时间
+        :param _CheckpointTimeoutSecond: <p>checkpoint 超时时间</p>
         :type CheckpointTimeoutSecond: int
-        :param _CheckpointIntervalSecond: checkpoint 间隔时间
+        :param _CheckpointIntervalSecond: <p>checkpoint 间隔时间</p>
         :type CheckpointIntervalSecond: int
+        :param _VariableReplaceMode: <p>变量替换模式</p><p>枚举值：</p><ul><li>0： 表变量替换</li><li>1： SQL全局变量替换</li></ul><p>默认值：1</p>
+        :type VariableReplaceMode: int
         """
         self._JobId = None
         self._EntrypointClass = None
@@ -3100,10 +3102,11 @@ class CreateJobConfigRequest(AbstractModel):
         self._ProgramArgsAfterGzip = None
         self._CheckpointTimeoutSecond = None
         self._CheckpointIntervalSecond = None
+        self._VariableReplaceMode = None
 
     @property
     def JobId(self):
-        r"""作业Id
+        r"""<p>作业Id</p>
         :rtype: str
         """
         return self._JobId
@@ -3114,7 +3117,7 @@ class CreateJobConfigRequest(AbstractModel):
 
     @property
     def EntrypointClass(self):
-        r"""主类
+        r"""<p>主类</p>
         :rtype: str
         """
         return self._EntrypointClass
@@ -3125,7 +3128,7 @@ class CreateJobConfigRequest(AbstractModel):
 
     @property
     def ProgramArgs(self):
-        r"""主类入参，需要区分下Sql作业配置，Jar作业配置，Python作业配置，具体参考下面的示例值
+        r"""<p>主类入参，需要区分下Sql作业配置，Jar作业配置，Python作业配置，具体参考下面的示例值</p>
         :rtype: str
         """
         return self._ProgramArgs
@@ -3136,7 +3139,7 @@ class CreateJobConfigRequest(AbstractModel):
 
     @property
     def Remark(self):
-        r"""备注
+        r"""<p>备注</p>
         :rtype: str
         """
         return self._Remark
@@ -3147,7 +3150,7 @@ class CreateJobConfigRequest(AbstractModel):
 
     @property
     def ResourceRefs(self):
-        r"""资源引用数组
+        r"""<p>资源引用数组</p>
         :rtype: list of ResourceRef
         """
         return self._ResourceRefs
@@ -3158,7 +3161,7 @@ class CreateJobConfigRequest(AbstractModel):
 
     @property
     def DefaultParallelism(self):
-        r"""作业默认并行度
+        r"""<p>作业默认并行度</p>
         :rtype: int
         """
         return self._DefaultParallelism
@@ -3169,7 +3172,7 @@ class CreateJobConfigRequest(AbstractModel):
 
     @property
     def Properties(self):
-        r"""系统参数
+        r"""<p>系统参数</p>
         :rtype: list of Property
         """
         return self._Properties
@@ -3180,7 +3183,7 @@ class CreateJobConfigRequest(AbstractModel):
 
     @property
     def AutoDelete(self):
-        r"""1: 作业配置达到上限之后，自动删除可删除的最早版本
+        r"""<p>1: 作业配置达到上限之后，自动删除可删除的最早版本</p>
         :rtype: int
         """
         return self._AutoDelete
@@ -3191,7 +3194,7 @@ class CreateJobConfigRequest(AbstractModel):
 
     @property
     def COSBucket(self):
-        r"""作业使用的 COS 存储桶名
+        r"""<p>作业使用的 COS 存储桶名</p>
         :rtype: str
         """
         return self._COSBucket
@@ -3202,7 +3205,7 @@ class CreateJobConfigRequest(AbstractModel):
 
     @property
     def LogCollect(self):
-        r"""是否采集作业日志
+        r"""<p>是否采集作业日志</p>
         :rtype: bool
         """
         return self._LogCollect
@@ -3213,7 +3216,7 @@ class CreateJobConfigRequest(AbstractModel):
 
     @property
     def JobManagerSpec(self):
-        r"""JobManager规格
+        r"""<p>JobManager规格</p>
         :rtype: float
         """
         return self._JobManagerSpec
@@ -3224,7 +3227,7 @@ class CreateJobConfigRequest(AbstractModel):
 
     @property
     def TaskManagerSpec(self):
-        r"""TaskManager规格
+        r"""<p>TaskManager规格</p>
         :rtype: float
         """
         return self._TaskManagerSpec
@@ -3235,7 +3238,7 @@ class CreateJobConfigRequest(AbstractModel):
 
     @property
     def ClsLogsetId(self):
-        r"""CLS日志集ID
+        r"""<p>CLS日志集ID</p>
         :rtype: str
         """
         return self._ClsLogsetId
@@ -3246,7 +3249,7 @@ class CreateJobConfigRequest(AbstractModel):
 
     @property
     def ClsTopicId(self):
-        r"""CLS日志主题ID
+        r"""<p>CLS日志主题ID</p>
         :rtype: str
         """
         return self._ClsTopicId
@@ -3257,7 +3260,7 @@ class CreateJobConfigRequest(AbstractModel):
 
     @property
     def LogCollectType(self):
-        r"""日志采集类型 2：CLS；3：COS
+        r"""<p>日志采集类型 2：CLS；3：COS</p>
         :rtype: int
         """
         return self._LogCollectType
@@ -3268,7 +3271,7 @@ class CreateJobConfigRequest(AbstractModel):
 
     @property
     def PythonVersion(self):
-        r"""pyflink作业运行时使用的python版本
+        r"""<p>pyflink作业运行时使用的python版本</p>
         :rtype: str
         """
         return self._PythonVersion
@@ -3279,7 +3282,7 @@ class CreateJobConfigRequest(AbstractModel):
 
     @property
     def WorkSpaceId(self):
-        r"""工作空间 SerialId
+        r"""<p>工作空间 SerialId</p>
         :rtype: str
         """
         return self._WorkSpaceId
@@ -3290,7 +3293,7 @@ class CreateJobConfigRequest(AbstractModel):
 
     @property
     def LogLevel(self):
-        r"""日志级别
+        r"""<p>日志级别</p>
         :rtype: str
         """
         return self._LogLevel
@@ -3301,7 +3304,7 @@ class CreateJobConfigRequest(AbstractModel):
 
     @property
     def AutoRecover(self):
-        r"""Oceanus 平台恢复作业开关 1:开启 -1: 关闭
+        r"""<p>Oceanus 平台恢复作业开关 1:开启 -1: 关闭</p>
         :rtype: int
         """
         return self._AutoRecover
@@ -3312,7 +3315,7 @@ class CreateJobConfigRequest(AbstractModel):
 
     @property
     def ClazzLevels(self):
-        r"""类日志级别
+        r"""<p>类日志级别</p>
         :rtype: list of ClazzLevel
         """
         return self._ClazzLevels
@@ -3323,7 +3326,7 @@ class CreateJobConfigRequest(AbstractModel):
 
     @property
     def ExpertModeOn(self):
-        r"""是否打开专家模式
+        r"""<p>是否打开专家模式</p>
         :rtype: bool
         """
         return self._ExpertModeOn
@@ -3334,7 +3337,7 @@ class CreateJobConfigRequest(AbstractModel):
 
     @property
     def ExpertModeConfiguration(self):
-        r"""专家模式的配置
+        r"""<p>专家模式的配置</p>
         :rtype: :class:`tencentcloud.oceanus.v20190422.models.ExpertModeConfiguration`
         """
         return self._ExpertModeConfiguration
@@ -3345,7 +3348,7 @@ class CreateJobConfigRequest(AbstractModel):
 
     @property
     def TraceModeOn(self):
-        r"""trace链路
+        r"""<p>trace链路</p>
         :rtype: bool
         """
         return self._TraceModeOn
@@ -3356,7 +3359,7 @@ class CreateJobConfigRequest(AbstractModel):
 
     @property
     def TraceModeConfiguration(self):
-        r"""trace链路配置
+        r"""<p>trace链路配置</p>
         :rtype: :class:`tencentcloud.oceanus.v20190422.models.TraceModeConfiguration`
         """
         return self._TraceModeConfiguration
@@ -3367,7 +3370,7 @@ class CreateJobConfigRequest(AbstractModel):
 
     @property
     def CheckpointRetainedNum(self):
-        r"""checkpoint保留个数
+        r"""<p>checkpoint保留个数</p>
         :rtype: int
         """
         return self._CheckpointRetainedNum
@@ -3378,7 +3381,7 @@ class CreateJobConfigRequest(AbstractModel):
 
     @property
     def JobGraph(self):
-        r"""算子拓扑图
+        r"""<p>算子拓扑图</p>
         :rtype: :class:`tencentcloud.oceanus.v20190422.models.JobGraph`
         """
         return self._JobGraph
@@ -3389,7 +3392,7 @@ class CreateJobConfigRequest(AbstractModel):
 
     @property
     def EsServerlessIndex(self):
-        r"""es索引名称
+        r"""<p>es索引名称</p>
         :rtype: str
         """
         return self._EsServerlessIndex
@@ -3400,7 +3403,7 @@ class CreateJobConfigRequest(AbstractModel):
 
     @property
     def EsServerlessSpace(self):
-        r"""es索引空间
+        r"""<p>es索引空间</p>
         :rtype: str
         """
         return self._EsServerlessSpace
@@ -3411,7 +3414,7 @@ class CreateJobConfigRequest(AbstractModel):
 
     @property
     def FlinkVersion(self):
-        r"""flink版本
+        r"""<p>flink版本</p>
         :rtype: str
         """
         return self._FlinkVersion
@@ -3422,7 +3425,7 @@ class CreateJobConfigRequest(AbstractModel):
 
     @property
     def JobManagerCpu(self):
-        r"""JobManager cpu
+        r"""<p>JobManager cpu</p>
         :rtype: float
         """
         return self._JobManagerCpu
@@ -3433,7 +3436,7 @@ class CreateJobConfigRequest(AbstractModel):
 
     @property
     def JobManagerMem(self):
-        r"""JobManager 内存
+        r"""<p>JobManager 内存</p>
         :rtype: float
         """
         return self._JobManagerMem
@@ -3444,7 +3447,7 @@ class CreateJobConfigRequest(AbstractModel):
 
     @property
     def JdkVersion(self):
-        r"""jdk版本
+        r"""<p>jdk版本</p>
         :rtype: str
         """
         return self._JdkVersion
@@ -3455,7 +3458,7 @@ class CreateJobConfigRequest(AbstractModel):
 
     @property
     def TaskManagerCpu(self):
-        r"""TaskManager cpu
+        r"""<p>TaskManager cpu</p>
         :rtype: float
         """
         return self._TaskManagerCpu
@@ -3466,7 +3469,7 @@ class CreateJobConfigRequest(AbstractModel):
 
     @property
     def TaskManagerMem(self):
-        r"""TaskManager 内存
+        r"""<p>TaskManager 内存</p>
         :rtype: float
         """
         return self._TaskManagerMem
@@ -3477,7 +3480,7 @@ class CreateJobConfigRequest(AbstractModel):
 
     @property
     def UseOldSystemConnector(self):
-        r"""0=默认使用老的 1=使用新的
+        r"""<p>0=默认使用老的 1=使用新的</p>
         :rtype: int
         """
         return self._UseOldSystemConnector
@@ -3488,7 +3491,7 @@ class CreateJobConfigRequest(AbstractModel):
 
     @property
     def ProgramArgsAfterGzip(self):
-        r"""压缩参数
+        r"""<p>压缩参数</p>
         :rtype: str
         """
         return self._ProgramArgsAfterGzip
@@ -3499,7 +3502,7 @@ class CreateJobConfigRequest(AbstractModel):
 
     @property
     def CheckpointTimeoutSecond(self):
-        r"""checkpoint 超时时间
+        r"""<p>checkpoint 超时时间</p>
         :rtype: int
         """
         return self._CheckpointTimeoutSecond
@@ -3510,7 +3513,7 @@ class CreateJobConfigRequest(AbstractModel):
 
     @property
     def CheckpointIntervalSecond(self):
-        r"""checkpoint 间隔时间
+        r"""<p>checkpoint 间隔时间</p>
         :rtype: int
         """
         return self._CheckpointIntervalSecond
@@ -3518,6 +3521,17 @@ class CreateJobConfigRequest(AbstractModel):
     @CheckpointIntervalSecond.setter
     def CheckpointIntervalSecond(self, CheckpointIntervalSecond):
         self._CheckpointIntervalSecond = CheckpointIntervalSecond
+
+    @property
+    def VariableReplaceMode(self):
+        r"""<p>变量替换模式</p><p>枚举值：</p><ul><li>0： 表变量替换</li><li>1： SQL全局变量替换</li></ul><p>默认值：1</p>
+        :rtype: int
+        """
+        return self._VariableReplaceMode
+
+    @VariableReplaceMode.setter
+    def VariableReplaceMode(self, VariableReplaceMode):
+        self._VariableReplaceMode = VariableReplaceMode
 
 
     def _deserialize(self, params):
@@ -3580,6 +3594,7 @@ class CreateJobConfigRequest(AbstractModel):
         self._ProgramArgsAfterGzip = params.get("ProgramArgsAfterGzip")
         self._CheckpointTimeoutSecond = params.get("CheckpointTimeoutSecond")
         self._CheckpointIntervalSecond = params.get("CheckpointIntervalSecond")
+        self._VariableReplaceMode = params.get("VariableReplaceMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3597,7 +3612,7 @@ class CreateJobConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Version: 作业配置版本号
+        :param _Version: <p>作业配置版本号</p>
         :type Version: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3607,7 +3622,7 @@ class CreateJobConfigResponse(AbstractModel):
 
     @property
     def Version(self):
-        r"""作业配置版本号
+        r"""<p>作业配置版本号</p>
         :rtype: int
         """
         return self._Version
@@ -8176,10 +8191,24 @@ class DescribeVariablesResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _VariableSet: ["x","y"]
+        :type VariableSet: list of VariableItem
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._VariableSet = None
         self._RequestId = None
+
+    @property
+    def VariableSet(self):
+        r"""["x","y"]
+        :rtype: list of VariableItem
+        """
+        return self._VariableSet
+
+    @VariableSet.setter
+    def VariableSet(self, VariableSet):
+        self._VariableSet = VariableSet
 
     @property
     def RequestId(self):
@@ -8194,6 +8223,12 @@ class DescribeVariablesResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("VariableSet") is not None:
+            self._VariableSet = []
+            for item in params.get("VariableSet"):
+                obj = VariableItem()
+                obj._deserialize(item)
+                self._VariableSet.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -9046,23 +9081,23 @@ class HadoopYarnItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterGroupSerialId: ClusterGroupSerialId
+        :param _ClusterGroupSerialId: <p>ClusterGroupSerialId</p>
         :type ClusterGroupSerialId: str
-        :param _Status: 状态
+        :param _Status: <p>状态</p><p>枚举值：</p><ul><li>1： 停止</li><li>2： 开启中</li><li>3： 启动</li><li>4： 开启失败</li><li>5： 停止中</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
-        :param _Cpu: cpu
+        :param _Cpu: <p>cpu</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Cpu: float
-        :param _Mem: mem
+        :param _Mem: <p>mem</p>
         :type Mem: float
-        :param _CreateTime: 创建时间
+        :param _CreateTime: <p>创建时间</p>
         :type CreateTime: str
-        :param _UpdateTime: 更新时间
+        :param _UpdateTime: <p>更新时间</p>
         :type UpdateTime: str
-        :param _Config: 配置文件内容
+        :param _Config: <p>配置文件内容</p>
         :type Config: str
-        :param _CreatorUin: CreatorUin
+        :param _CreatorUin: <p>CreatorUin</p>
         :type CreatorUin: str
         """
         self._ClusterGroupSerialId = None
@@ -9076,7 +9111,7 @@ class HadoopYarnItem(AbstractModel):
 
     @property
     def ClusterGroupSerialId(self):
-        r"""ClusterGroupSerialId
+        r"""<p>ClusterGroupSerialId</p>
         :rtype: str
         """
         return self._ClusterGroupSerialId
@@ -9087,7 +9122,7 @@ class HadoopYarnItem(AbstractModel):
 
     @property
     def Status(self):
-        r"""状态
+        r"""<p>状态</p><p>枚举值：</p><ul><li>1： 停止</li><li>2： 开启中</li><li>3： 启动</li><li>4： 开启失败</li><li>5： 停止中</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -9099,7 +9134,7 @@ class HadoopYarnItem(AbstractModel):
 
     @property
     def Cpu(self):
-        r"""cpu
+        r"""<p>cpu</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -9111,7 +9146,7 @@ class HadoopYarnItem(AbstractModel):
 
     @property
     def Mem(self):
-        r"""mem
+        r"""<p>mem</p>
         :rtype: float
         """
         return self._Mem
@@ -9122,7 +9157,7 @@ class HadoopYarnItem(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
         :rtype: str
         """
         return self._CreateTime
@@ -9133,7 +9168,7 @@ class HadoopYarnItem(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""更新时间
+        r"""<p>更新时间</p>
         :rtype: str
         """
         return self._UpdateTime
@@ -9144,7 +9179,7 @@ class HadoopYarnItem(AbstractModel):
 
     @property
     def Config(self):
-        r"""配置文件内容
+        r"""<p>配置文件内容</p>
         :rtype: str
         """
         return self._Config
@@ -9155,7 +9190,7 @@ class HadoopYarnItem(AbstractModel):
 
     @property
     def CreatorUin(self):
-        r"""CreatorUin
+        r"""<p>CreatorUin</p>
         :rtype: str
         """
         return self._CreatorUin
@@ -9191,123 +9226,125 @@ class JobConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 作业Id
+        :param _JobId: <p>作业Id</p>
         :type JobId: str
-        :param _EntrypointClass: 主类
+        :param _EntrypointClass: <p>主类</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type EntrypointClass: str
-        :param _ProgramArgs: 主类入参
+        :param _ProgramArgs: <p>主类入参</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProgramArgs: str
-        :param _Remark: 备注
+        :param _Remark: <p>备注</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
-        :param _CreateTime: 作业配置创建时间
+        :param _CreateTime: <p>作业配置创建时间</p>
         :type CreateTime: str
-        :param _Version: 作业配置的版本号
+        :param _Version: <p>作业配置的版本号</p>
         :type Version: int
-        :param _DefaultParallelism: 作业默认并行度
+        :param _DefaultParallelism: <p>作业默认并行度</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DefaultParallelism: int
-        :param _Properties: 系统参数
+        :param _Properties: <p>系统参数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Properties: list of Property
-        :param _ResourceRefDetails: 引用资源
+        :param _ResourceRefDetails: <p>引用资源</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceRefDetails: list of ResourceRefDetail
-        :param _CreatorUin: 创建者uin
+        :param _CreatorUin: <p>创建者uin</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreatorUin: str
-        :param _UpdateTime: 作业配置上次启动时间
+        :param _UpdateTime: <p>作业配置上次启动时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
-        :param _COSBucket: 作业绑定的存储桶
+        :param _COSBucket: <p>作业绑定的存储桶</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type COSBucket: str
-        :param _LogCollect: 是否启用日志收集，0-未启用，1-采集到cls，4-采集到cos，5-采集到es
+        :param _LogCollect: <p>是否启用日志收集，0-未启用，1-采集到cls，4-采集到cos，5-采集到es</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type LogCollect: int
-        :param _MaxParallelism: 作业的最大并行度
+        :param _MaxParallelism: <p>作业的最大并行度</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type MaxParallelism: int
-        :param _JobManagerSpec: JobManager规格
+        :param _JobManagerSpec: <p>JobManager规格</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type JobManagerSpec: float
-        :param _TaskManagerSpec: TaskManager规格
+        :param _TaskManagerSpec: <p>TaskManager规格</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskManagerSpec: float
-        :param _ClsLogsetId: CLS日志集ID
+        :param _ClsLogsetId: <p>CLS日志集ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClsLogsetId: str
-        :param _ClsTopicId: CLS日志主题ID
+        :param _ClsTopicId: <p>CLS日志主题ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClsTopicId: str
-        :param _PythonVersion: pyflink作业运行的python版本
+        :param _PythonVersion: <p>pyflink作业运行的python版本</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type PythonVersion: str
-        :param _AutoRecover: Oceanus 平台恢复作业开关 1:开启 -1: 关闭
+        :param _AutoRecover: <p>Oceanus 平台恢复作业开关 1:开启 -1: 关闭</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AutoRecover: int
-        :param _LogLevel: 日志级别
+        :param _LogLevel: <p>日志级别</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type LogLevel: str
-        :param _ClazzLevels: 类日志级别
+        :param _ClazzLevels: <p>类日志级别</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClazzLevels: list of ClazzLevel
-        :param _ExpertModeOn: 是否开启专家模式
+        :param _ExpertModeOn: <p>是否开启专家模式</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExpertModeOn: bool
-        :param _ExpertModeConfiguration: 专家模式的配置
+        :param _ExpertModeConfiguration: <p>专家模式的配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExpertModeConfiguration: :class:`tencentcloud.oceanus.v20190422.models.ExpertModeConfiguration`
-        :param _TraceModeOn: trace链路
+        :param _TraceModeOn: <p>trace链路</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TraceModeOn: bool
-        :param _TraceModeConfiguration: trace链路配置
+        :param _TraceModeConfiguration: <p>trace链路配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TraceModeConfiguration: :class:`tencentcloud.oceanus.v20190422.models.TraceModeConfiguration`
-        :param _CheckpointRetainedNum: checkpoint保留个数
+        :param _CheckpointRetainedNum: <p>checkpoint保留个数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CheckpointRetainedNum: int
-        :param _JobGraph: 算子拓扑图
+        :param _JobGraph: <p>算子拓扑图</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type JobGraph: :class:`tencentcloud.oceanus.v20190422.models.JobGraph`
-        :param _EsServerlessIndex: es索引
+        :param _EsServerlessIndex: <p>es索引</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type EsServerlessIndex: str
-        :param _EsServerlessSpace: es空间
+        :param _EsServerlessSpace: <p>es空间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type EsServerlessSpace: str
-        :param _IndexName: es索引中文
+        :param _IndexName: <p>es索引中文</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IndexName: str
-        :param _WorkspaceName: es空间中文
+        :param _WorkspaceName: <p>es空间中文</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WorkspaceName: str
-        :param _FlinkVersion: flink 版本
+        :param _FlinkVersion: <p>flink 版本</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FlinkVersion: str
-        :param _JdkVersion: jdk版本
+        :param _JdkVersion: <p>jdk版本</p>
         :type JdkVersion: str
-        :param _JobManagerCpu: jm使用cpu数目
+        :param _JobManagerCpu: <p>jm使用cpu数目</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type JobManagerCpu: float
-        :param _JobManagerMem: jm使用内存数目
+        :param _JobManagerMem: <p>jm使用内存数目</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type JobManagerMem: float
-        :param _TaskManagerCpu: tm使用cpu数
+        :param _TaskManagerCpu: <p>tm使用cpu数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskManagerCpu: float
-        :param _TaskManagerMem: tm使用mem数
+        :param _TaskManagerMem: <p>tm使用mem数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskManagerMem: float
-        :param _JobConfigItem: 运行中配置
+        :param _JobConfigItem: <p>运行中配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type JobConfigItem: :class:`tencentcloud.oceanus.v20190422.models.JobConfig`
-        :param _CheckpointTimeoutSecond: checkpoint 超时时间
+        :param _CheckpointTimeoutSecond: <p>checkpoint 超时时间</p>
         :type CheckpointTimeoutSecond: int
-        :param _CheckpointIntervalSecond: checkpoint 间隔时间
+        :param _CheckpointIntervalSecond: <p>checkpoint 间隔时间</p>
         :type CheckpointIntervalSecond: int
+        :param _VariableReplaceMode: <p>变量替换模式</p><p>枚举值：</p><ul><li>0： 表变量替换</li><li>1： 全局SQL变量替换</li></ul><p>默认值：0</p>
+        :type VariableReplaceMode: int
         """
         self._JobId = None
         self._EntrypointClass = None
@@ -9350,10 +9387,11 @@ class JobConfig(AbstractModel):
         self._JobConfigItem = None
         self._CheckpointTimeoutSecond = None
         self._CheckpointIntervalSecond = None
+        self._VariableReplaceMode = None
 
     @property
     def JobId(self):
-        r"""作业Id
+        r"""<p>作业Id</p>
         :rtype: str
         """
         return self._JobId
@@ -9364,7 +9402,7 @@ class JobConfig(AbstractModel):
 
     @property
     def EntrypointClass(self):
-        r"""主类
+        r"""<p>主类</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9376,7 +9414,7 @@ class JobConfig(AbstractModel):
 
     @property
     def ProgramArgs(self):
-        r"""主类入参
+        r"""<p>主类入参</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9388,7 +9426,7 @@ class JobConfig(AbstractModel):
 
     @property
     def Remark(self):
-        r"""备注
+        r"""<p>备注</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9400,7 +9438,7 @@ class JobConfig(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""作业配置创建时间
+        r"""<p>作业配置创建时间</p>
         :rtype: str
         """
         return self._CreateTime
@@ -9411,7 +9449,7 @@ class JobConfig(AbstractModel):
 
     @property
     def Version(self):
-        r"""作业配置的版本号
+        r"""<p>作业配置的版本号</p>
         :rtype: int
         """
         return self._Version
@@ -9422,7 +9460,7 @@ class JobConfig(AbstractModel):
 
     @property
     def DefaultParallelism(self):
-        r"""作业默认并行度
+        r"""<p>作业默认并行度</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -9434,7 +9472,7 @@ class JobConfig(AbstractModel):
 
     @property
     def Properties(self):
-        r"""系统参数
+        r"""<p>系统参数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Property
         """
@@ -9446,7 +9484,7 @@ class JobConfig(AbstractModel):
 
     @property
     def ResourceRefDetails(self):
-        r"""引用资源
+        r"""<p>引用资源</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ResourceRefDetail
         """
@@ -9458,7 +9496,7 @@ class JobConfig(AbstractModel):
 
     @property
     def CreatorUin(self):
-        r"""创建者uin
+        r"""<p>创建者uin</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9470,7 +9508,7 @@ class JobConfig(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""作业配置上次启动时间
+        r"""<p>作业配置上次启动时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9482,7 +9520,7 @@ class JobConfig(AbstractModel):
 
     @property
     def COSBucket(self):
-        r"""作业绑定的存储桶
+        r"""<p>作业绑定的存储桶</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9494,7 +9532,7 @@ class JobConfig(AbstractModel):
 
     @property
     def LogCollect(self):
-        r"""是否启用日志收集，0-未启用，1-采集到cls，4-采集到cos，5-采集到es
+        r"""<p>是否启用日志收集，0-未启用，1-采集到cls，4-采集到cos，5-采集到es</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -9506,7 +9544,7 @@ class JobConfig(AbstractModel):
 
     @property
     def MaxParallelism(self):
-        r"""作业的最大并行度
+        r"""<p>作业的最大并行度</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -9518,7 +9556,7 @@ class JobConfig(AbstractModel):
 
     @property
     def JobManagerSpec(self):
-        r"""JobManager规格
+        r"""<p>JobManager规格</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -9530,7 +9568,7 @@ class JobConfig(AbstractModel):
 
     @property
     def TaskManagerSpec(self):
-        r"""TaskManager规格
+        r"""<p>TaskManager规格</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -9542,7 +9580,7 @@ class JobConfig(AbstractModel):
 
     @property
     def ClsLogsetId(self):
-        r"""CLS日志集ID
+        r"""<p>CLS日志集ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9554,7 +9592,7 @@ class JobConfig(AbstractModel):
 
     @property
     def ClsTopicId(self):
-        r"""CLS日志主题ID
+        r"""<p>CLS日志主题ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9566,7 +9604,7 @@ class JobConfig(AbstractModel):
 
     @property
     def PythonVersion(self):
-        r"""pyflink作业运行的python版本
+        r"""<p>pyflink作业运行的python版本</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9578,7 +9616,7 @@ class JobConfig(AbstractModel):
 
     @property
     def AutoRecover(self):
-        r"""Oceanus 平台恢复作业开关 1:开启 -1: 关闭
+        r"""<p>Oceanus 平台恢复作业开关 1:开启 -1: 关闭</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -9590,7 +9628,7 @@ class JobConfig(AbstractModel):
 
     @property
     def LogLevel(self):
-        r"""日志级别
+        r"""<p>日志级别</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9602,7 +9640,7 @@ class JobConfig(AbstractModel):
 
     @property
     def ClazzLevels(self):
-        r"""类日志级别
+        r"""<p>类日志级别</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ClazzLevel
         """
@@ -9614,7 +9652,7 @@ class JobConfig(AbstractModel):
 
     @property
     def ExpertModeOn(self):
-        r"""是否开启专家模式
+        r"""<p>是否开启专家模式</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -9626,7 +9664,7 @@ class JobConfig(AbstractModel):
 
     @property
     def ExpertModeConfiguration(self):
-        r"""专家模式的配置
+        r"""<p>专家模式的配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.oceanus.v20190422.models.ExpertModeConfiguration`
         """
@@ -9638,7 +9676,7 @@ class JobConfig(AbstractModel):
 
     @property
     def TraceModeOn(self):
-        r"""trace链路
+        r"""<p>trace链路</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -9650,7 +9688,7 @@ class JobConfig(AbstractModel):
 
     @property
     def TraceModeConfiguration(self):
-        r"""trace链路配置
+        r"""<p>trace链路配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.oceanus.v20190422.models.TraceModeConfiguration`
         """
@@ -9662,7 +9700,7 @@ class JobConfig(AbstractModel):
 
     @property
     def CheckpointRetainedNum(self):
-        r"""checkpoint保留个数
+        r"""<p>checkpoint保留个数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -9674,7 +9712,7 @@ class JobConfig(AbstractModel):
 
     @property
     def JobGraph(self):
-        r"""算子拓扑图
+        r"""<p>算子拓扑图</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.oceanus.v20190422.models.JobGraph`
         """
@@ -9686,7 +9724,7 @@ class JobConfig(AbstractModel):
 
     @property
     def EsServerlessIndex(self):
-        r"""es索引
+        r"""<p>es索引</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9698,7 +9736,7 @@ class JobConfig(AbstractModel):
 
     @property
     def EsServerlessSpace(self):
-        r"""es空间
+        r"""<p>es空间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9710,7 +9748,7 @@ class JobConfig(AbstractModel):
 
     @property
     def IndexName(self):
-        r"""es索引中文
+        r"""<p>es索引中文</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9722,7 +9760,7 @@ class JobConfig(AbstractModel):
 
     @property
     def WorkspaceName(self):
-        r"""es空间中文
+        r"""<p>es空间中文</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9734,7 +9772,7 @@ class JobConfig(AbstractModel):
 
     @property
     def FlinkVersion(self):
-        r"""flink 版本
+        r"""<p>flink 版本</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9746,7 +9784,7 @@ class JobConfig(AbstractModel):
 
     @property
     def JdkVersion(self):
-        r"""jdk版本
+        r"""<p>jdk版本</p>
         :rtype: str
         """
         return self._JdkVersion
@@ -9757,7 +9795,7 @@ class JobConfig(AbstractModel):
 
     @property
     def JobManagerCpu(self):
-        r"""jm使用cpu数目
+        r"""<p>jm使用cpu数目</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -9769,7 +9807,7 @@ class JobConfig(AbstractModel):
 
     @property
     def JobManagerMem(self):
-        r"""jm使用内存数目
+        r"""<p>jm使用内存数目</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -9781,7 +9819,7 @@ class JobConfig(AbstractModel):
 
     @property
     def TaskManagerCpu(self):
-        r"""tm使用cpu数
+        r"""<p>tm使用cpu数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -9793,7 +9831,7 @@ class JobConfig(AbstractModel):
 
     @property
     def TaskManagerMem(self):
-        r"""tm使用mem数
+        r"""<p>tm使用mem数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -9805,7 +9843,7 @@ class JobConfig(AbstractModel):
 
     @property
     def JobConfigItem(self):
-        r"""运行中配置
+        r"""<p>运行中配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.oceanus.v20190422.models.JobConfig`
         """
@@ -9817,7 +9855,7 @@ class JobConfig(AbstractModel):
 
     @property
     def CheckpointTimeoutSecond(self):
-        r"""checkpoint 超时时间
+        r"""<p>checkpoint 超时时间</p>
         :rtype: int
         """
         return self._CheckpointTimeoutSecond
@@ -9828,7 +9866,7 @@ class JobConfig(AbstractModel):
 
     @property
     def CheckpointIntervalSecond(self):
-        r"""checkpoint 间隔时间
+        r"""<p>checkpoint 间隔时间</p>
         :rtype: int
         """
         return self._CheckpointIntervalSecond
@@ -9836,6 +9874,17 @@ class JobConfig(AbstractModel):
     @CheckpointIntervalSecond.setter
     def CheckpointIntervalSecond(self, CheckpointIntervalSecond):
         self._CheckpointIntervalSecond = CheckpointIntervalSecond
+
+    @property
+    def VariableReplaceMode(self):
+        r"""<p>变量替换模式</p><p>枚举值：</p><ul><li>0： 表变量替换</li><li>1： 全局SQL变量替换</li></ul><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._VariableReplaceMode
+
+    @VariableReplaceMode.setter
+    def VariableReplaceMode(self, VariableReplaceMode):
+        self._VariableReplaceMode = VariableReplaceMode
 
 
     def _deserialize(self, params):
@@ -9903,6 +9952,7 @@ class JobConfig(AbstractModel):
             self._JobConfigItem._deserialize(params.get("JobConfigItem"))
         self._CheckpointTimeoutSecond = params.get("CheckpointTimeoutSecond")
         self._CheckpointIntervalSecond = params.get("CheckpointIntervalSecond")
+        self._VariableReplaceMode = params.get("VariableReplaceMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13335,22 +13385,22 @@ class ResourceRefLatest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ResourceId: 资源id
+        :param _ResourceId: <p>资源id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceId: str
-        :param _Version: 版本号
+        :param _Version: <p>版本号</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Version: int
-        :param _Type: 资源类型
+        :param _Type: <p>资源类型</p><p>枚举值：</p><ul><li>1： Main资源</li><li>2： 依赖资源</li><li>3： python文件</li><li>4： 数据文件</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Type: int
-        :param _Status: 状态
+        :param _Status: <p>状态</p><p>枚举值：</p><ul><li>1： 活跃</li><li>-2： 删除</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
-        :param _WorkspaceId: 空间id
+        :param _WorkspaceId: <p>空间id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WorkspaceId: str
-        :param _Name: 资源名称
+        :param _Name: <p>资源名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         """
@@ -13363,7 +13413,7 @@ class ResourceRefLatest(AbstractModel):
 
     @property
     def ResourceId(self):
-        r"""资源id
+        r"""<p>资源id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -13375,7 +13425,7 @@ class ResourceRefLatest(AbstractModel):
 
     @property
     def Version(self):
-        r"""版本号
+        r"""<p>版本号</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -13387,7 +13437,7 @@ class ResourceRefLatest(AbstractModel):
 
     @property
     def Type(self):
-        r"""资源类型
+        r"""<p>资源类型</p><p>枚举值：</p><ul><li>1： Main资源</li><li>2： 依赖资源</li><li>3： python文件</li><li>4： 数据文件</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -13399,7 +13449,7 @@ class ResourceRefLatest(AbstractModel):
 
     @property
     def Status(self):
-        r"""状态
+        r"""<p>状态</p><p>枚举值：</p><ul><li>1： 活跃</li><li>-2： 删除</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -13411,7 +13461,7 @@ class ResourceRefLatest(AbstractModel):
 
     @property
     def WorkspaceId(self):
-        r"""空间id
+        r"""<p>空间id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -13423,7 +13473,7 @@ class ResourceRefLatest(AbstractModel):
 
     @property
     def Name(self):
-        r"""资源名称
+        r"""<p>资源名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -16623,6 +16673,146 @@ class TriggerJobSavepointResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class VariableItem(AbstractModel):
+    r"""变量信息列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SerialId: 变量id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SerialId: str
+        :param _Name: 变量名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Value: 变量值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        :param _Type: 变量值是否隐藏
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: int
+        :param _Remark: 变量描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
+        :param _CreateTime: 变量创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _CreatorUin: 变量创建人
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatorUin: str
+        """
+        self._SerialId = None
+        self._Name = None
+        self._Value = None
+        self._Type = None
+        self._Remark = None
+        self._CreateTime = None
+        self._CreatorUin = None
+
+    @property
+    def SerialId(self):
+        r"""变量id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SerialId
+
+    @SerialId.setter
+    def SerialId(self, SerialId):
+        self._SerialId = SerialId
+
+    @property
+    def Name(self):
+        r"""变量名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Value(self):
+        r"""变量值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def Type(self):
+        r"""变量值是否隐藏
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Remark(self):
+        r"""变量描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def CreateTime(self):
+        r"""变量创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def CreatorUin(self):
+        r"""变量创建人
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreatorUin
+
+    @CreatorUin.setter
+    def CreatorUin(self, CreatorUin):
+        self._CreatorUin = CreatorUin
+
+
+    def _deserialize(self, params):
+        self._SerialId = params.get("SerialId")
+        self._Name = params.get("Name")
+        self._Value = params.get("Value")
+        self._Type = params.get("Type")
+        self._Remark = params.get("Remark")
+        self._CreateTime = params.get("CreateTime")
+        self._CreatorUin = params.get("CreatorUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Warehouse(AbstractModel):
     r"""Setats Warehouse结构
 
@@ -16630,13 +16820,13 @@ class Warehouse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Status: <p>状态</p>
+        :param _Status: <p>状态</p><p>枚举值：</p><ul><li>0： 未开启</li><li>1： 开启中</li><li>2： 已开启</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param _Location: <p>location</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Location: str
-        :param _CatalogType: <p>catalogtype</p>
+        :param _CatalogType: <p>catalog类型</p><p>枚举值：</p><ul><li>hadoop： hadoop catalog</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CatalogType: str
         :param _Uri: <p>uri</p>
@@ -16673,7 +16863,7 @@ class Warehouse(AbstractModel):
 
     @property
     def Status(self):
-        r"""<p>状态</p>
+        r"""<p>状态</p><p>枚举值：</p><ul><li>0： 未开启</li><li>1： 开启中</li><li>2： 已开启</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -16697,7 +16887,7 @@ class Warehouse(AbstractModel):
 
     @property
     def CatalogType(self):
-        r"""<p>catalogtype</p>
+        r"""<p>catalog类型</p><p>枚举值：</p><ul><li>hadoop： hadoop catalog</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """

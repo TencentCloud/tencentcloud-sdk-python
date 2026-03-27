@@ -8590,11 +8590,14 @@ class CreateWorkflowRunRequest(AbstractModel):
         :type Query: str
         :param _CustomVariables: API参数配置
         :type CustomVariables: list of CustomVariable
+        :param _VisitorId: 用户ID
+        :type VisitorId: str
         """
         self._AppBizId = None
         self._RunEnv = None
         self._Query = None
         self._CustomVariables = None
+        self._VisitorId = None
 
     @property
     def AppBizId(self):
@@ -8640,6 +8643,17 @@ class CreateWorkflowRunRequest(AbstractModel):
     def CustomVariables(self, CustomVariables):
         self._CustomVariables = CustomVariables
 
+    @property
+    def VisitorId(self):
+        r"""用户ID
+        :rtype: str
+        """
+        return self._VisitorId
+
+    @VisitorId.setter
+    def VisitorId(self, VisitorId):
+        self._VisitorId = VisitorId
+
 
     def _deserialize(self, params):
         self._AppBizId = params.get("AppBizId")
@@ -8651,6 +8665,7 @@ class CreateWorkflowRunRequest(AbstractModel):
                 obj = CustomVariable()
                 obj._deserialize(item)
                 self._CustomVariables.append(obj)
+        self._VisitorId = params.get("VisitorId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

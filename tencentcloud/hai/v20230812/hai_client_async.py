@@ -79,6 +79,24 @@ class HaiClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteService(
+            self,
+            request: models.DeleteServiceRequest,
+            opts: Dict = None,
+    ) -> models.DeleteServiceResponse:
+        """
+        本接口 (DeleteService) 用于删除一个指定配置的实例。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteService"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteServiceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeployInferService(
             self,
             request: models.DeployInferServiceRequest,
@@ -272,6 +290,24 @@ class HaiClient(AbstractClient):
         kwargs["action"] = "DescribeServices"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeServicesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeServicesCallInfo(
+            self,
+            request: models.DescribeServicesCallInfoRequest,
+            opts: Dict = None,
+    ) -> models.DescribeServicesCallInfoResponse:
+        """
+        本接口 (DescribeServciesCallInfo) 用于查询服务调用信息。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeServicesCallInfo"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeServicesCallInfoResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

@@ -343,6 +343,9 @@ class TrocketClient(AbstractClient):
         - ConsumeMessageOrderly，投递顺序性，枚举值如下：
             - true 顺序投递
             - false 并发投递
+        - RetryPolicy，重试策略，枚举值如下：
+            - EXPONENTIAL：固定间隔
+            - CUSTOMIZED：阶梯退避
 
         Filters示例：
         [{ "Name": "ConsumeMessageOrderly", "Values": ["true"] }]
@@ -395,12 +398,22 @@ class TrocketClient(AbstractClient):
     def DescribeFusionInstanceList(self, request):
         r"""查询集群列表，支持 4.x 和 5.x 集群，其中 Filters 参数使用说明如下：
 
-        - InstanceName 集群名称，支持模糊查询，从本接口返回值或控制台获得
-        - InstanceId 集群ID，精确查询，从当前接口或控制台获得
-        - InstanceType 集群类型，可参考 [InstanceItem](https://cloud.tencent.com/document/api/1493/96031#InstanceItem) 数据结构，支持多选
-        - Version 集群版本，枚举值如下：
+        - InstanceName: 集群名称，支持模糊查询，从本接口返回值或控制台获得
+        - InstanceId: 集群ID，精确查询，从当前接口或控制台获得
+        - InstanceType: 集群类型，可参考 [InstanceItem](https://cloud.tencent.com/document/api/1493/96031#InstanceItem) 数据结构，支持多选
+        - Version: 集群版本，枚举值如下：
             - 4 RocketMQ 4.x 集群
             - 5 RocketMQ 5.x 集群
+        -  InstanceStatus: 集群状态筛选条件，支持多选，枚举值如下：
+            - RUNNING：运行中
+            - ABNORMAL：异常
+            - OVERDUE：隔离中
+            - DESTROYED：已销毁
+            - CREATING：创建中
+            - MODIFYING：变配中
+            - CREATE_FAILURE：创建失败
+            - MODIFY_FAILURE：变配失败
+            - DELETING：删除中
 
         Filters示例：
          [{ "Name": "InstanceId", "Values": ["rmq-72mo3a9o"] }]

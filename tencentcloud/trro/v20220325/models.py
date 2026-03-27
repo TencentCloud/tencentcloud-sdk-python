@@ -1427,17 +1427,17 @@ class DescribeDeviceSessionListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProjectId: 项目ID
+        :param _ProjectId: <p>项目ID</p>
         :type ProjectId: str
-        :param _PageNumber: 页码，从1开始
+        :param _PageNumber: <p>页码，从1开始</p>
         :type PageNumber: int
-        :param _PageSize: 每页个数
+        :param _PageSize: <p>每页个数</p>
         :type PageSize: int
-        :param _DeviceId: 设备ID
+        :param _DeviceId: <p>设备ID</p>
         :type DeviceId: str
-        :param _StartTime: 开始时间
+        :param _StartTime: <p>开始时间</p>
         :type StartTime: int
-        :param _EndTime: 结束时间
+        :param _EndTime: <p>结束时间</p>
         :type EndTime: int
         """
         self._ProjectId = None
@@ -1449,7 +1449,7 @@ class DescribeDeviceSessionListRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        r"""项目ID
+        r"""<p>项目ID</p>
         :rtype: str
         """
         return self._ProjectId
@@ -1460,7 +1460,7 @@ class DescribeDeviceSessionListRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        r"""页码，从1开始
+        r"""<p>页码，从1开始</p>
         :rtype: int
         """
         return self._PageNumber
@@ -1471,7 +1471,7 @@ class DescribeDeviceSessionListRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        r"""每页个数
+        r"""<p>每页个数</p>
         :rtype: int
         """
         return self._PageSize
@@ -1482,7 +1482,7 @@ class DescribeDeviceSessionListRequest(AbstractModel):
 
     @property
     def DeviceId(self):
-        r"""设备ID
+        r"""<p>设备ID</p>
         :rtype: str
         """
         return self._DeviceId
@@ -1493,7 +1493,7 @@ class DescribeDeviceSessionListRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""开始时间
+        r"""<p>开始时间</p>
         :rtype: int
         """
         return self._StartTime
@@ -1504,7 +1504,7 @@ class DescribeDeviceSessionListRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""结束时间
+        r"""<p>结束时间</p>
         :rtype: int
         """
         return self._EndTime
@@ -1538,11 +1538,11 @@ class DescribeDeviceSessionListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Total: 总个数
+        :param _Total: <p>总个数</p>
         :type Total: int
-        :param _DeviceSessionList: 会话列表
+        :param _DeviceSessionList: <p>会话列表</p>
         :type DeviceSessionList: list of SessionInfo
-        :param _Num: 本页数量
+        :param _Num: <p>本页数量</p>
         :type Num: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1554,7 +1554,7 @@ class DescribeDeviceSessionListResponse(AbstractModel):
 
     @property
     def Total(self):
-        r"""总个数
+        r"""<p>总个数</p>
         :rtype: int
         """
         return self._Total
@@ -1565,7 +1565,7 @@ class DescribeDeviceSessionListResponse(AbstractModel):
 
     @property
     def DeviceSessionList(self):
-        r"""会话列表
+        r"""<p>会话列表</p>
         :rtype: list of SessionInfo
         """
         return self._DeviceSessionList
@@ -1576,7 +1576,7 @@ class DescribeDeviceSessionListResponse(AbstractModel):
 
     @property
     def Num(self):
-        r"""本页数量
+        r"""<p>本页数量</p>
         :rtype: int
         """
         return self._Num
@@ -2088,17 +2088,17 @@ class DescribeRecentSessionListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProjectId: 项目ID
+        :param _ProjectId: <p>项目ID</p>
         :type ProjectId: str
-        :param _PageNumber: 页码，从1开始
+        :param _PageNumber: <p>页码，从1开始</p>
         :type PageNumber: int
-        :param _PageSize: 每页个数
+        :param _PageSize: <p>每页个数</p>
         :type PageSize: int
-        :param _DeviceId: 设备ID，支持过滤远端设备或现场设备
+        :param _DeviceId: <p>设备ID，支持过滤远端设备或现场设备</p>
         :type DeviceId: str
-        :param _StartTime: 时间范围的起始时间。时间范围最大为最近两小时，若不传或超出范围，则起始时间按两小时前计算
+        :param _StartTime: <p>时间范围的起始时间。时间范围最大为最近两小时，若不传或超出范围，则起始时间按两小时前计算</p>
         :type StartTime: int
-        :param _EndTime: 时间范围的结束时间。时间范围最大为最近两小时，若不传或超出范围，则结束时间按当前时间计算
+        :param _EndTime: <p>时间范围的结束时间。时间范围最大为最近两小时，若不传或超出范围，则结束时间按当前时间计算</p>
         :type EndTime: int
         """
         self._ProjectId = None
@@ -2110,7 +2110,7 @@ class DescribeRecentSessionListRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        r"""项目ID
+        r"""<p>项目ID</p>
         :rtype: str
         """
         return self._ProjectId
@@ -2121,7 +2121,7 @@ class DescribeRecentSessionListRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        r"""页码，从1开始
+        r"""<p>页码，从1开始</p>
         :rtype: int
         """
         return self._PageNumber
@@ -2132,7 +2132,7 @@ class DescribeRecentSessionListRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        r"""每页个数
+        r"""<p>每页个数</p>
         :rtype: int
         """
         return self._PageSize
@@ -2143,7 +2143,7 @@ class DescribeRecentSessionListRequest(AbstractModel):
 
     @property
     def DeviceId(self):
-        r"""设备ID，支持过滤远端设备或现场设备
+        r"""<p>设备ID，支持过滤远端设备或现场设备</p>
         :rtype: str
         """
         return self._DeviceId
@@ -2154,7 +2154,7 @@ class DescribeRecentSessionListRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""时间范围的起始时间。时间范围最大为最近两小时，若不传或超出范围，则起始时间按两小时前计算
+        r"""<p>时间范围的起始时间。时间范围最大为最近两小时，若不传或超出范围，则起始时间按两小时前计算</p>
         :rtype: int
         """
         return self._StartTime
@@ -2165,7 +2165,7 @@ class DescribeRecentSessionListRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""时间范围的结束时间。时间范围最大为最近两小时，若不传或超出范围，则结束时间按当前时间计算
+        r"""<p>时间范围的结束时间。时间范围最大为最近两小时，若不传或超出范围，则结束时间按当前时间计算</p>
         :rtype: int
         """
         return self._EndTime
@@ -2199,11 +2199,11 @@ class DescribeRecentSessionListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Total: 总个数
+        :param _Total: <p>总个数</p>
         :type Total: int
-        :param _RecentSessionList: 会话列表
+        :param _RecentSessionList: <p>会话列表</p>
         :type RecentSessionList: list of RecentSessionInfo
-        :param _Num: 本页数量
+        :param _Num: <p>本页数量</p>
         :type Num: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2215,7 +2215,7 @@ class DescribeRecentSessionListResponse(AbstractModel):
 
     @property
     def Total(self):
-        r"""总个数
+        r"""<p>总个数</p>
         :rtype: int
         """
         return self._Total
@@ -2226,7 +2226,7 @@ class DescribeRecentSessionListResponse(AbstractModel):
 
     @property
     def RecentSessionList(self):
-        r"""会话列表
+        r"""<p>会话列表</p>
         :rtype: list of RecentSessionInfo
         """
         return self._RecentSessionList
@@ -2237,7 +2237,7 @@ class DescribeRecentSessionListResponse(AbstractModel):
 
     @property
     def Num(self):
-        r"""本页数量
+        r"""<p>本页数量</p>
         :rtype: int
         """
         return self._Num
@@ -2277,15 +2277,15 @@ class DescribeSessionStatisticsByIntervalRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProjectId: 项目ID
+        :param _ProjectId: <p>项目ID</p>
         :type ProjectId: str
-        :param _StatisticInterval: 统计时间间隔：hour|day|month
+        :param _StatisticInterval: <p>统计时间间隔：hour|day|month</p>
         :type StatisticInterval: str
-        :param _DeviceId: 设备ID
+        :param _DeviceId: <p>设备ID</p>
         :type DeviceId: str
-        :param _StartTime: 起始时间，单位：秒
+        :param _StartTime: <p>起始时间，单位：秒</p>
         :type StartTime: int
-        :param _EndTime: 结束时间，单位：秒
+        :param _EndTime: <p>结束时间，单位：秒</p>
         :type EndTime: int
         """
         self._ProjectId = None
@@ -2296,7 +2296,7 @@ class DescribeSessionStatisticsByIntervalRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        r"""项目ID
+        r"""<p>项目ID</p>
         :rtype: str
         """
         return self._ProjectId
@@ -2307,7 +2307,7 @@ class DescribeSessionStatisticsByIntervalRequest(AbstractModel):
 
     @property
     def StatisticInterval(self):
-        r"""统计时间间隔：hour|day|month
+        r"""<p>统计时间间隔：hour|day|month</p>
         :rtype: str
         """
         return self._StatisticInterval
@@ -2318,7 +2318,7 @@ class DescribeSessionStatisticsByIntervalRequest(AbstractModel):
 
     @property
     def DeviceId(self):
-        r"""设备ID
+        r"""<p>设备ID</p>
         :rtype: str
         """
         return self._DeviceId
@@ -2329,7 +2329,7 @@ class DescribeSessionStatisticsByIntervalRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""起始时间，单位：秒
+        r"""<p>起始时间，单位：秒</p>
         :rtype: int
         """
         return self._StartTime
@@ -2340,7 +2340,7 @@ class DescribeSessionStatisticsByIntervalRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""结束时间，单位：秒
+        r"""<p>结束时间，单位：秒</p>
         :rtype: int
         """
         return self._EndTime
@@ -2373,7 +2373,7 @@ class DescribeSessionStatisticsByIntervalResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SessionStatistics: 各时间段的会话统计数据
+        :param _SessionStatistics: <p>各时间段的会话统计数据</p>
         :type SessionStatistics: list of SessionIntervalStatistic
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2383,7 +2383,7 @@ class DescribeSessionStatisticsByIntervalResponse(AbstractModel):
 
     @property
     def SessionStatistics(self):
-        r"""各时间段的会话统计数据
+        r"""<p>各时间段的会话统计数据</p>
         :rtype: list of SessionIntervalStatistic
         """
         return self._SessionStatistics
@@ -2421,13 +2421,13 @@ class DescribeSessionStatisticsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProjectId: 项目ID
+        :param _ProjectId: <p>项目ID</p>
         :type ProjectId: str
-        :param _DeviceId: 设备ID
+        :param _DeviceId: <p>设备ID</p>
         :type DeviceId: str
-        :param _StartTime: 起始时间，单位：秒
+        :param _StartTime: <p>起始时间，单位：秒</p>
         :type StartTime: int
-        :param _EndTime: 结束时间，单位：秒
+        :param _EndTime: <p>结束时间，单位：秒</p>
         :type EndTime: int
         """
         self._ProjectId = None
@@ -2437,7 +2437,7 @@ class DescribeSessionStatisticsRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        r"""项目ID
+        r"""<p>项目ID</p>
         :rtype: str
         """
         return self._ProjectId
@@ -2448,7 +2448,7 @@ class DescribeSessionStatisticsRequest(AbstractModel):
 
     @property
     def DeviceId(self):
-        r"""设备ID
+        r"""<p>设备ID</p>
         :rtype: str
         """
         return self._DeviceId
@@ -2459,7 +2459,7 @@ class DescribeSessionStatisticsRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""起始时间，单位：秒
+        r"""<p>起始时间，单位：秒</p>
         :rtype: int
         """
         return self._StartTime
@@ -2470,7 +2470,7 @@ class DescribeSessionStatisticsRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""结束时间，单位：秒
+        r"""<p>结束时间，单位：秒</p>
         :rtype: int
         """
         return self._EndTime
@@ -2502,15 +2502,15 @@ class DescribeSessionStatisticsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SessionNum: 会话数量
+        :param _SessionNum: <p>会话数量</p>
         :type SessionNum: int
-        :param _TotalDuration: 通话时长，单位：分钟
+        :param _TotalDuration: <p>通话时长，单位：分钟</p>
         :type TotalDuration: int
-        :param _ActiveFieldDeviceNum: 活跃现场设备数
+        :param _ActiveFieldDeviceNum: <p>活跃现场设备数</p>
         :type ActiveFieldDeviceNum: int
-        :param _ActiveRemoteDeviceNum: 活跃远端设备数
+        :param _ActiveRemoteDeviceNum: <p>活跃远端设备数</p>
         :type ActiveRemoteDeviceNum: int
-        :param _NotBadSessionRatio: 优良会话占比，单位：%
+        :param _NotBadSessionRatio: <p>优良会话占比，单位：%</p>
         :type NotBadSessionRatio: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2524,7 +2524,7 @@ class DescribeSessionStatisticsResponse(AbstractModel):
 
     @property
     def SessionNum(self):
-        r"""会话数量
+        r"""<p>会话数量</p>
         :rtype: int
         """
         return self._SessionNum
@@ -2535,7 +2535,7 @@ class DescribeSessionStatisticsResponse(AbstractModel):
 
     @property
     def TotalDuration(self):
-        r"""通话时长，单位：分钟
+        r"""<p>通话时长，单位：分钟</p>
         :rtype: int
         """
         return self._TotalDuration
@@ -2546,7 +2546,7 @@ class DescribeSessionStatisticsResponse(AbstractModel):
 
     @property
     def ActiveFieldDeviceNum(self):
-        r"""活跃现场设备数
+        r"""<p>活跃现场设备数</p>
         :rtype: int
         """
         return self._ActiveFieldDeviceNum
@@ -2557,7 +2557,7 @@ class DescribeSessionStatisticsResponse(AbstractModel):
 
     @property
     def ActiveRemoteDeviceNum(self):
-        r"""活跃远端设备数
+        r"""<p>活跃远端设备数</p>
         :rtype: int
         """
         return self._ActiveRemoteDeviceNum
@@ -2568,7 +2568,7 @@ class DescribeSessionStatisticsResponse(AbstractModel):
 
     @property
     def NotBadSessionRatio(self):
-        r"""优良会话占比，单位：%
+        r"""<p>优良会话占比，单位：%</p>
         :rtype: int
         """
         return self._NotBadSessionRatio

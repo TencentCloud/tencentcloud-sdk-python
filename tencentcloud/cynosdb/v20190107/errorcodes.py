@@ -392,6 +392,9 @@ OPERATIONDENIED_SERVERLESSINSTANCESTATUSDENIED = 'OperationDenied.ServerlessInst
 # 任务冲突检查不通过。
 OPERATIONDENIED_TASKCONFLICTERROR = 'OperationDenied.TaskConflictError'
 
+# 业务检查失败：{{1}}
+OPERATIONDENIED_TRADEBUSINESSCHECKERROR = 'OperationDenied.TradeBusinessCheckError'
+
 # 不支持该类型规格售卖
 OPERATIONDENIED_UNSUPPORTSALESPECERROR = 'OperationDenied.UnSupportSaleSpecError'
 

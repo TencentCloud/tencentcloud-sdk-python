@@ -216,6 +216,87 @@ class COSStorage(AbstractModel):
         
 
 
+class CallInfo(AbstractModel):
+    r"""服务调用信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ServiceId: 服务ID
+        :type ServiceId: str
+        :param _PublicEndpoint: 服务调用地址
+        :type PublicEndpoint: str
+        :param _ApiKey: 服务调用的API_KEY
+        :type ApiKey: str
+        :param _VpcEndpoint: 内网调用地址
+        :type VpcEndpoint: str
+        """
+        self._ServiceId = None
+        self._PublicEndpoint = None
+        self._ApiKey = None
+        self._VpcEndpoint = None
+
+    @property
+    def ServiceId(self):
+        r"""服务ID
+        :rtype: str
+        """
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def PublicEndpoint(self):
+        r"""服务调用地址
+        :rtype: str
+        """
+        return self._PublicEndpoint
+
+    @PublicEndpoint.setter
+    def PublicEndpoint(self, PublicEndpoint):
+        self._PublicEndpoint = PublicEndpoint
+
+    @property
+    def ApiKey(self):
+        r"""服务调用的API_KEY
+        :rtype: str
+        """
+        return self._ApiKey
+
+    @ApiKey.setter
+    def ApiKey(self, ApiKey):
+        self._ApiKey = ApiKey
+
+    @property
+    def VpcEndpoint(self):
+        r"""内网调用地址
+        :rtype: str
+        """
+        return self._VpcEndpoint
+
+    @VpcEndpoint.setter
+    def VpcEndpoint(self, VpcEndpoint):
+        self._VpcEndpoint = VpcEndpoint
+
+
+    def _deserialize(self, params):
+        self._ServiceId = params.get("ServiceId")
+        self._PublicEndpoint = params.get("PublicEndpoint")
+        self._ApiKey = params.get("ApiKey")
+        self._VpcEndpoint = params.get("VpcEndpoint")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ComputeDetail(AbstractModel):
     r"""算力详情
 
@@ -930,6 +1011,70 @@ class CreateMuskPromptResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._PromptId = params.get("PromptId")
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteServiceRequest(AbstractModel):
+    r"""DeleteService请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ServiceId: 服务ID
+        :type ServiceId: str
+        """
+        self._ServiceId = None
+
+    @property
+    def ServiceId(self):
+        r"""服务ID
+        :rtype: str
+        """
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+
+    def _deserialize(self, params):
+        self._ServiceId = params.get("ServiceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteServiceResponse(AbstractModel):
+    r"""DeleteService返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -2215,6 +2360,120 @@ class DescribeServiceLoginSettingsResponse(AbstractModel):
                 obj = LoginSetting()
                 obj._deserialize(item)
                 self._LoginSettings.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeServicesCallInfoRequest(AbstractModel):
+    r"""DescribeServicesCallInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ServiceIds: 推理服务ID列表
+        :type ServiceIds: list of str
+        :param _Limit: 分页大小
+        :type Limit: int
+        :param _Offset: 偏移量
+        :type Offset: int
+        """
+        self._ServiceIds = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def ServiceIds(self):
+        r"""推理服务ID列表
+        :rtype: list of str
+        """
+        return self._ServiceIds
+
+    @ServiceIds.setter
+    def ServiceIds(self, ServiceIds):
+        self._ServiceIds = ServiceIds
+
+    @property
+    def Limit(self):
+        r"""分页大小
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""偏移量
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._ServiceIds = params.get("ServiceIds")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeServicesCallInfoResponse(AbstractModel):
+    r"""DescribeServicesCallInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CallInfoSet: 调用信息
+        :type CallInfoSet: list of CallInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._CallInfoSet = None
+        self._RequestId = None
+
+    @property
+    def CallInfoSet(self):
+        r"""调用信息
+        :rtype: list of CallInfo
+        """
+        return self._CallInfoSet
+
+    @CallInfoSet.setter
+    def CallInfoSet(self, CallInfoSet):
+        self._CallInfoSet = CallInfoSet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("CallInfoSet") is not None:
+            self._CallInfoSet = []
+            for item in params.get("CallInfoSet"):
+                obj = CallInfo()
+                obj._deserialize(item)
+                self._CallInfoSet.append(obj)
         self._RequestId = params.get("RequestId")
 
 

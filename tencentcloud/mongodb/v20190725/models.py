@@ -14048,6 +14048,160 @@ class ModifyDBInstanceSpecResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyInstanceAzRequest(AbstractModel):
+    r"""ModifyInstanceAz请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>实例 ID，例如：cmgo-p8vn****。请登录 <a href="https://console.cloud.tencent.com/mongodb">MongoDB 控制台</a>在实例列表复制实例 ID。</p>
+        :type InstanceId: str
+        :param _PrimaryNodeZone: <p>主节点所在的可用区 ID。获取方式，请参见<a href="https://cloud.tencent.com/document/product/240/3637">地域和可用区</a>。</p>
+        :type PrimaryNodeZone: str
+        :param _SecondaryNodeZone: <p>从节点所在的可用区 ID 列表。<br><strong>注意</strong>：不可包含主节点与 Hidden 节点所在的可用区。</p>
+        :type SecondaryNodeZone: list of str
+        :param _HiddenNodeZone: <p>若当前实例未配置 Hidden 节点，则无需传入此参数。</p>
+        :type HiddenNodeZone: str
+        :param _ReadonlyNodeZone: <p>只读节点所在的可用区 ID 列表。<br><strong>注意</strong>：若当前实例已包含只读节点，则此参数为必填项。</p>
+        :type ReadonlyNodeZone: list of str
+        :param _InMaintenance: <p>指定切换可用区的执行时间策略。</p><ul><li>0：立即执行切换。</li><li>1：在设定的维护时间窗执行切换。具体信息，请参见<a href="https://cloud.tencent.com/document/product/240/19910">设置实例维护时间</a>。</li></ul>
+        :type InMaintenance: int
+        """
+        self._InstanceId = None
+        self._PrimaryNodeZone = None
+        self._SecondaryNodeZone = None
+        self._HiddenNodeZone = None
+        self._ReadonlyNodeZone = None
+        self._InMaintenance = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例 ID，例如：cmgo-p8vn****。请登录 <a href="https://console.cloud.tencent.com/mongodb">MongoDB 控制台</a>在实例列表复制实例 ID。</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def PrimaryNodeZone(self):
+        r"""<p>主节点所在的可用区 ID。获取方式，请参见<a href="https://cloud.tencent.com/document/product/240/3637">地域和可用区</a>。</p>
+        :rtype: str
+        """
+        return self._PrimaryNodeZone
+
+    @PrimaryNodeZone.setter
+    def PrimaryNodeZone(self, PrimaryNodeZone):
+        self._PrimaryNodeZone = PrimaryNodeZone
+
+    @property
+    def SecondaryNodeZone(self):
+        r"""<p>从节点所在的可用区 ID 列表。<br><strong>注意</strong>：不可包含主节点与 Hidden 节点所在的可用区。</p>
+        :rtype: list of str
+        """
+        return self._SecondaryNodeZone
+
+    @SecondaryNodeZone.setter
+    def SecondaryNodeZone(self, SecondaryNodeZone):
+        self._SecondaryNodeZone = SecondaryNodeZone
+
+    @property
+    def HiddenNodeZone(self):
+        r"""<p>若当前实例未配置 Hidden 节点，则无需传入此参数。</p>
+        :rtype: str
+        """
+        return self._HiddenNodeZone
+
+    @HiddenNodeZone.setter
+    def HiddenNodeZone(self, HiddenNodeZone):
+        self._HiddenNodeZone = HiddenNodeZone
+
+    @property
+    def ReadonlyNodeZone(self):
+        r"""<p>只读节点所在的可用区 ID 列表。<br><strong>注意</strong>：若当前实例已包含只读节点，则此参数为必填项。</p>
+        :rtype: list of str
+        """
+        return self._ReadonlyNodeZone
+
+    @ReadonlyNodeZone.setter
+    def ReadonlyNodeZone(self, ReadonlyNodeZone):
+        self._ReadonlyNodeZone = ReadonlyNodeZone
+
+    @property
+    def InMaintenance(self):
+        r"""<p>指定切换可用区的执行时间策略。</p><ul><li>0：立即执行切换。</li><li>1：在设定的维护时间窗执行切换。具体信息，请参见<a href="https://cloud.tencent.com/document/product/240/19910">设置实例维护时间</a>。</li></ul>
+        :rtype: int
+        """
+        return self._InMaintenance
+
+    @InMaintenance.setter
+    def InMaintenance(self, InMaintenance):
+        self._InMaintenance = InMaintenance
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._PrimaryNodeZone = params.get("PrimaryNodeZone")
+        self._SecondaryNodeZone = params.get("SecondaryNodeZone")
+        self._HiddenNodeZone = params.get("HiddenNodeZone")
+        self._ReadonlyNodeZone = params.get("ReadonlyNodeZone")
+        self._InMaintenance = params.get("InMaintenance")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyInstanceAzResponse(AbstractModel):
+    r"""ModifyInstanceAz返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DealId: <p>可用区调整订单ID。</p>
+        :type DealId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DealId = None
+        self._RequestId = None
+
+    @property
+    def DealId(self):
+        r"""<p>可用区调整订单ID。</p>
+        :rtype: str
+        """
+        return self._DealId
+
+    @DealId.setter
+    def DealId(self, DealId):
+        self._DealId = DealId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._DealId = params.get("DealId")
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyInstanceParamsRequest(AbstractModel):
     r"""ModifyInstanceParams请求参数结构体
 

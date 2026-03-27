@@ -6193,23 +6193,32 @@ class CreateRocketMQRoleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RoleName: 角色名称，不支持中字以及除了短线和下划线外的特殊字符且长度必须大于0且小等于32。
+        :param _RoleName: <p>角色名称，不支持中字以及除了短线和下划线外的特殊字符且长度必须大于0且小等于32。</p>
         :type RoleName: str
-        :param _ClusterId: 必填字段，集群Id
+        :param _ClusterId: <p>必填字段，集群Id</p>
         :type ClusterId: str
-        :param _Remark: 备注说明，长度必须大等于0且小等于128。
+        :param _Remark: <p>备注说明，长度必须大等于0且小等于128。</p>
         :type Remark: str
-        :param _PermType: 角色授权类型（集群：Cluster; 主题或消费组：TopicAndGroup）
+        :param _PermType: <p>角色授权类型（集群：Cluster; 主题或消费组：TopicAndGroup）</p>
         :type PermType: str
+        :param _RoleGenerateMode: <p>AK、SK的生成方式，AUTO：后端自动生成，MANUAL：用户手动输入</p>
+        :type RoleGenerateMode: str
+        :param _AccessKey: <p>选择MANUAL模式下，需要手动输入AK值</p>
+        :type AccessKey: str
+        :param _SecretKey: <p>选择MANUAL模式下，需要手动输入SK值</p>
+        :type SecretKey: str
         """
         self._RoleName = None
         self._ClusterId = None
         self._Remark = None
         self._PermType = None
+        self._RoleGenerateMode = None
+        self._AccessKey = None
+        self._SecretKey = None
 
     @property
     def RoleName(self):
-        r"""角色名称，不支持中字以及除了短线和下划线外的特殊字符且长度必须大于0且小等于32。
+        r"""<p>角色名称，不支持中字以及除了短线和下划线外的特殊字符且长度必须大于0且小等于32。</p>
         :rtype: str
         """
         return self._RoleName
@@ -6220,7 +6229,7 @@ class CreateRocketMQRoleRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        r"""必填字段，集群Id
+        r"""<p>必填字段，集群Id</p>
         :rtype: str
         """
         return self._ClusterId
@@ -6231,7 +6240,7 @@ class CreateRocketMQRoleRequest(AbstractModel):
 
     @property
     def Remark(self):
-        r"""备注说明，长度必须大等于0且小等于128。
+        r"""<p>备注说明，长度必须大等于0且小等于128。</p>
         :rtype: str
         """
         return self._Remark
@@ -6242,7 +6251,7 @@ class CreateRocketMQRoleRequest(AbstractModel):
 
     @property
     def PermType(self):
-        r"""角色授权类型（集群：Cluster; 主题或消费组：TopicAndGroup）
+        r"""<p>角色授权类型（集群：Cluster; 主题或消费组：TopicAndGroup）</p>
         :rtype: str
         """
         return self._PermType
@@ -6251,12 +6260,48 @@ class CreateRocketMQRoleRequest(AbstractModel):
     def PermType(self, PermType):
         self._PermType = PermType
 
+    @property
+    def RoleGenerateMode(self):
+        r"""<p>AK、SK的生成方式，AUTO：后端自动生成，MANUAL：用户手动输入</p>
+        :rtype: str
+        """
+        return self._RoleGenerateMode
+
+    @RoleGenerateMode.setter
+    def RoleGenerateMode(self, RoleGenerateMode):
+        self._RoleGenerateMode = RoleGenerateMode
+
+    @property
+    def AccessKey(self):
+        r"""<p>选择MANUAL模式下，需要手动输入AK值</p>
+        :rtype: str
+        """
+        return self._AccessKey
+
+    @AccessKey.setter
+    def AccessKey(self, AccessKey):
+        self._AccessKey = AccessKey
+
+    @property
+    def SecretKey(self):
+        r"""<p>选择MANUAL模式下，需要手动输入SK值</p>
+        :rtype: str
+        """
+        return self._SecretKey
+
+    @SecretKey.setter
+    def SecretKey(self, SecretKey):
+        self._SecretKey = SecretKey
+
 
     def _deserialize(self, params):
         self._RoleName = params.get("RoleName")
         self._ClusterId = params.get("ClusterId")
         self._Remark = params.get("Remark")
         self._PermType = params.get("PermType")
+        self._RoleGenerateMode = params.get("RoleGenerateMode")
+        self._AccessKey = params.get("AccessKey")
+        self._SecretKey = params.get("SecretKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6274,11 +6319,11 @@ class CreateRocketMQRoleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RoleName: 角色名称
+        :param _RoleName: <p>角色名称</p>
         :type RoleName: str
-        :param _Token: 角色token
+        :param _Token: <p>角色token</p>
         :type Token: str
-        :param _Remark: 备注说明
+        :param _Remark: <p>备注说明</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6291,7 +6336,7 @@ class CreateRocketMQRoleResponse(AbstractModel):
 
     @property
     def RoleName(self):
-        r"""角色名称
+        r"""<p>角色名称</p>
         :rtype: str
         """
         return self._RoleName
@@ -6302,7 +6347,7 @@ class CreateRocketMQRoleResponse(AbstractModel):
 
     @property
     def Token(self):
-        r"""角色token
+        r"""<p>角色token</p>
         :rtype: str
         """
         return self._Token
@@ -6313,7 +6358,7 @@ class CreateRocketMQRoleResponse(AbstractModel):
 
     @property
     def Remark(self):
-        r"""备注说明
+        r"""<p>备注说明</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -25743,27 +25788,26 @@ class ModifyRocketMQInstanceSpecRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 专享实例ID
+        :param _InstanceId: <p>专享实例ID</p>
         :type InstanceId: str
-        :param _Specification: 实例规格，
-rocket-vip-basic-1 基础型
-rocket-vip-basic-2 标准型
-rocket-vip-basic-3 高阶Ⅰ型
-rocket-vip-basic-4 高阶Ⅱ型
+        :param _Specification: <p>实例规格，<br>rocket-vip-basic-1 基础型<br>rocket-vip-basic-2 标准型<br>rocket-vip-basic-3 高阶Ⅰ型<br>rocket-vip-basic-4 高阶Ⅱ型</p>
         :type Specification: str
-        :param _NodeCount: 节点数量
+        :param _NodeCount: <p>节点数量</p>
         :type NodeCount: int
-        :param _StorageSize: 存储空间，GB为单位
+        :param _StorageSize: <p>存储空间，GB为单位</p>
         :type StorageSize: int
+        :param _ZoneIds: <p>部署可用区列表</p>
+        :type ZoneIds: list of str
         """
         self._InstanceId = None
         self._Specification = None
         self._NodeCount = None
         self._StorageSize = None
+        self._ZoneIds = None
 
     @property
     def InstanceId(self):
-        r"""专享实例ID
+        r"""<p>专享实例ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -25774,11 +25818,7 @@ rocket-vip-basic-4 高阶Ⅱ型
 
     @property
     def Specification(self):
-        r"""实例规格，
-rocket-vip-basic-1 基础型
-rocket-vip-basic-2 标准型
-rocket-vip-basic-3 高阶Ⅰ型
-rocket-vip-basic-4 高阶Ⅱ型
+        r"""<p>实例规格，<br>rocket-vip-basic-1 基础型<br>rocket-vip-basic-2 标准型<br>rocket-vip-basic-3 高阶Ⅰ型<br>rocket-vip-basic-4 高阶Ⅱ型</p>
         :rtype: str
         """
         return self._Specification
@@ -25789,7 +25829,7 @@ rocket-vip-basic-4 高阶Ⅱ型
 
     @property
     def NodeCount(self):
-        r"""节点数量
+        r"""<p>节点数量</p>
         :rtype: int
         """
         return self._NodeCount
@@ -25800,7 +25840,7 @@ rocket-vip-basic-4 高阶Ⅱ型
 
     @property
     def StorageSize(self):
-        r"""存储空间，GB为单位
+        r"""<p>存储空间，GB为单位</p>
         :rtype: int
         """
         return self._StorageSize
@@ -25809,12 +25849,24 @@ rocket-vip-basic-4 高阶Ⅱ型
     def StorageSize(self, StorageSize):
         self._StorageSize = StorageSize
 
+    @property
+    def ZoneIds(self):
+        r"""<p>部署可用区列表</p>
+        :rtype: list of str
+        """
+        return self._ZoneIds
+
+    @ZoneIds.setter
+    def ZoneIds(self, ZoneIds):
+        self._ZoneIds = ZoneIds
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._Specification = params.get("Specification")
         self._NodeCount = params.get("NodeCount")
         self._StorageSize = params.get("StorageSize")
+        self._ZoneIds = params.get("ZoneIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25832,7 +25884,7 @@ class ModifyRocketMQInstanceSpecResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _OrderId: 订单号
+        :param _OrderId: <p>订单号</p>
         :type OrderId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -25842,7 +25894,7 @@ class ModifyRocketMQInstanceSpecResponse(AbstractModel):
 
     @property
     def OrderId(self):
-        r"""订单号
+        r"""<p>订单号</p>
         :rtype: str
         """
         return self._OrderId
@@ -39009,17 +39061,17 @@ class VerifyRocketMQConsumeRequest(AbstractModel):
         :type GroupId: str
         :param _MsgId: 消息id
         :type MsgId: str
-        :param _ClientId: 客户端ID
-        :type ClientId: str
         :param _TopicName: 主题名称
         :type TopicName: str
+        :param _ClientId: 客户端 ID，不指定该参数时消息将被发送到对应消费组内任意客户端
+        :type ClientId: str
         """
         self._ClusterId = None
         self._NamespaceId = None
         self._GroupId = None
         self._MsgId = None
-        self._ClientId = None
         self._TopicName = None
+        self._ClientId = None
 
     @property
     def ClusterId(self):
@@ -39066,17 +39118,6 @@ class VerifyRocketMQConsumeRequest(AbstractModel):
         self._MsgId = MsgId
 
     @property
-    def ClientId(self):
-        r"""客户端ID
-        :rtype: str
-        """
-        return self._ClientId
-
-    @ClientId.setter
-    def ClientId(self, ClientId):
-        self._ClientId = ClientId
-
-    @property
     def TopicName(self):
         r"""主题名称
         :rtype: str
@@ -39087,14 +39128,25 @@ class VerifyRocketMQConsumeRequest(AbstractModel):
     def TopicName(self, TopicName):
         self._TopicName = TopicName
 
+    @property
+    def ClientId(self):
+        r"""客户端 ID，不指定该参数时消息将被发送到对应消费组内任意客户端
+        :rtype: str
+        """
+        return self._ClientId
+
+    @ClientId.setter
+    def ClientId(self, ClientId):
+        self._ClientId = ClientId
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
         self._NamespaceId = params.get("NamespaceId")
         self._GroupId = params.get("GroupId")
         self._MsgId = params.get("MsgId")
-        self._ClientId = params.get("ClientId")
         self._TopicName = params.get("TopicName")
+        self._ClientId = params.get("ClientId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

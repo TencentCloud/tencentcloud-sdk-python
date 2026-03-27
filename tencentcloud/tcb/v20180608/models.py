@@ -296,6 +296,108 @@ class AddProviderResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ApiKeyToken(AbstractModel):
+    r"""API Key 访问凭证信息。描述云开发环境下 API Key 的完整信息，包括标识符、名称、令牌值、创建时间和过期时间。支持两种类型：api_key（服务端管理员访问凭证，用于服务端接口调用的身份认证，可设置有效期，单个环境最多 5 个）和 publish_key（前端匿名访问凭证，固定有效期，每个环境仅保留一个）。注意：令牌值（ApiKey 字段）仅在创建时返回完整明文，列表查询时将进行脱敏处理。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _KeyId: API Key 的唯一标识符，由系统基于 UUID 自动生成的 Base64 URL 编码字符串。后续对该 API Key 进行删除、修改名称或精确查询操作时，均需使用该值作为定位参数
+        :type KeyId: str
+        :param _Name: API Key 的名称，即创建时传入的 KeyName 参数值。对于 publish_key 类型，该值固定为 publish_key
+        :type Name: str
+        :param _ApiKey: API Key 的令牌值（JWT 格式），用于服务端接口调用时的身份认证。出于安全考虑，仅在创建时返回一次完整明文；后续通过列表查询接口获取时，api_key 类型将进行脱敏处理；publish_key 类型始终返回完整明文。请在创建后妥善保存
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApiKey: str
+        :param _ExpireAt: API Key 的过期时间，格式遵循 ISO 8601 标准。对于 api_key 类型：若创建时未指定有效期（ExpireIn），则该字段不返回，表示永不过期；若指定了有效期，则返回具体的过期时间。对于 publish_key 类型：始终返回，固定为约 2099 年
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExpireAt: str
+        :param _CreateAt: API Key 的创建时间，格式遵循 ISO 8601 标准。对于 api_key 类型：为该 Key 实际创建时的时间。对于 publish_key 类型：若环境下已存在 publish_key 记录，则返回首次创建的时间而非本次调用时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateAt: str
+        """
+        self._KeyId = None
+        self._Name = None
+        self._ApiKey = None
+        self._ExpireAt = None
+        self._CreateAt = None
+
+    @property
+    def KeyId(self):
+        r"""API Key 的唯一标识符，由系统基于 UUID 自动生成的 Base64 URL 编码字符串。后续对该 API Key 进行删除、修改名称或精确查询操作时，均需使用该值作为定位参数
+        :rtype: str
+        """
+        return self._KeyId
+
+    @KeyId.setter
+    def KeyId(self, KeyId):
+        self._KeyId = KeyId
+
+    @property
+    def Name(self):
+        r"""API Key 的名称，即创建时传入的 KeyName 参数值。对于 publish_key 类型，该值固定为 publish_key
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ApiKey(self):
+        r"""API Key 的令牌值（JWT 格式），用于服务端接口调用时的身份认证。出于安全考虑，仅在创建时返回一次完整明文；后续通过列表查询接口获取时，api_key 类型将进行脱敏处理；publish_key 类型始终返回完整明文。请在创建后妥善保存
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ApiKey
+
+    @ApiKey.setter
+    def ApiKey(self, ApiKey):
+        self._ApiKey = ApiKey
+
+    @property
+    def ExpireAt(self):
+        r"""API Key 的过期时间，格式遵循 ISO 8601 标准。对于 api_key 类型：若创建时未指定有效期（ExpireIn），则该字段不返回，表示永不过期；若指定了有效期，则返回具体的过期时间。对于 publish_key 类型：始终返回，固定为约 2099 年
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExpireAt
+
+    @ExpireAt.setter
+    def ExpireAt(self, ExpireAt):
+        self._ExpireAt = ExpireAt
+
+    @property
+    def CreateAt(self):
+        r"""API Key 的创建时间，格式遵循 ISO 8601 标准。对于 api_key 类型：为该 Key 实际创建时的时间。对于 publish_key 类型：若环境下已存在 publish_key 记录，则返回首次创建的时间而非本次调用时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreateAt
+
+    @CreateAt.setter
+    def CreateAt(self, CreateAt):
+        self._CreateAt = CreateAt
+
+
+    def _deserialize(self, params):
+        self._KeyId = params.get("KeyId")
+        self._Name = params.get("Name")
+        self._ApiKey = params.get("ApiKey")
+        self._ExpireAt = params.get("ExpireAt")
+        self._CreateAt = params.get("CreateAt")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AuthDomain(AbstractModel):
     r"""合法域名
 
@@ -577,92 +679,77 @@ class BaasPackageInfo(AbstractModel):
         
 
 
-class BindCloudBaseAccessDomainRequest(AbstractModel):
-    r"""BindCloudBaseAccessDomain请求参数结构体
+class BanConfig(AbstractModel):
+    r"""封禁配置
 
     """
 
     def __init__(self):
         r"""
-        :param _ServiceId: 服务Id，目前是指环境Id
-        :type ServiceId: str
-        :param _Domain: 自定义域名
-        :type Domain: str
-        :param _CertId: 腾讯云证书Id
-        :type CertId: str
-        :param _BindFlag: 默认1，1 绑定默认Cdn，2 绑定TcbIngress（不经过cdn），4 绑定自定义cdn
-        :type BindFlag: int
-        :param _CustomCname: 自定义cdn cname域名
-        :type CustomCname: str
+        :param _IpWhiteList: ip白名单，支持ipv4、ipv6，支持CIDR
+        :type IpWhiteList: list of str
+        :param _IpBlackList: ip黑名单，支持ipv4、ipv6，支持CIDR
+        :type IpBlackList: list of str
+        :param _CountryWhiteList: 地域白名单（国家英文名）
+        :type CountryWhiteList: list of str
+        :param _CountryBlackList: 地域黑名单（国家英文名）
+        :type CountryBlackList: list of str
         """
-        self._ServiceId = None
-        self._Domain = None
-        self._CertId = None
-        self._BindFlag = None
-        self._CustomCname = None
+        self._IpWhiteList = None
+        self._IpBlackList = None
+        self._CountryWhiteList = None
+        self._CountryBlackList = None
 
     @property
-    def ServiceId(self):
-        r"""服务Id，目前是指环境Id
-        :rtype: str
+    def IpWhiteList(self):
+        r"""ip白名单，支持ipv4、ipv6，支持CIDR
+        :rtype: list of str
         """
-        return self._ServiceId
+        return self._IpWhiteList
 
-    @ServiceId.setter
-    def ServiceId(self, ServiceId):
-        self._ServiceId = ServiceId
+    @IpWhiteList.setter
+    def IpWhiteList(self, IpWhiteList):
+        self._IpWhiteList = IpWhiteList
 
     @property
-    def Domain(self):
-        r"""自定义域名
-        :rtype: str
+    def IpBlackList(self):
+        r"""ip黑名单，支持ipv4、ipv6，支持CIDR
+        :rtype: list of str
         """
-        return self._Domain
+        return self._IpBlackList
 
-    @Domain.setter
-    def Domain(self, Domain):
-        self._Domain = Domain
+    @IpBlackList.setter
+    def IpBlackList(self, IpBlackList):
+        self._IpBlackList = IpBlackList
 
     @property
-    def CertId(self):
-        r"""腾讯云证书Id
-        :rtype: str
+    def CountryWhiteList(self):
+        r"""地域白名单（国家英文名）
+        :rtype: list of str
         """
-        return self._CertId
+        return self._CountryWhiteList
 
-    @CertId.setter
-    def CertId(self, CertId):
-        self._CertId = CertId
+    @CountryWhiteList.setter
+    def CountryWhiteList(self, CountryWhiteList):
+        self._CountryWhiteList = CountryWhiteList
 
     @property
-    def BindFlag(self):
-        r"""默认1，1 绑定默认Cdn，2 绑定TcbIngress（不经过cdn），4 绑定自定义cdn
-        :rtype: int
+    def CountryBlackList(self):
+        r"""地域黑名单（国家英文名）
+        :rtype: list of str
         """
-        return self._BindFlag
+        return self._CountryBlackList
 
-    @BindFlag.setter
-    def BindFlag(self, BindFlag):
-        self._BindFlag = BindFlag
-
-    @property
-    def CustomCname(self):
-        r"""自定义cdn cname域名
-        :rtype: str
-        """
-        return self._CustomCname
-
-    @CustomCname.setter
-    def CustomCname(self, CustomCname):
-        self._CustomCname = CustomCname
+    @CountryBlackList.setter
+    def CountryBlackList(self, CountryBlackList):
+        self._CountryBlackList = CountryBlackList
 
 
     def _deserialize(self, params):
-        self._ServiceId = params.get("ServiceId")
-        self._Domain = params.get("Domain")
-        self._CertId = params.get("CertId")
-        self._BindFlag = params.get("BindFlag")
-        self._CustomCname = params.get("CustomCname")
+        self._IpWhiteList = params.get("IpWhiteList")
+        self._IpBlackList = params.get("IpBlackList")
+        self._CountryWhiteList = params.get("CountryWhiteList")
+        self._CountryBlackList = params.get("CountryBlackList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -671,160 +758,6 @@ class BindCloudBaseAccessDomainRequest(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
-
-
-class BindCloudBaseAccessDomainResponse(AbstractModel):
-    r"""BindCloudBaseAccessDomain返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _ServiceId: 服务Id，目前是指环境Id
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ServiceId: str
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._ServiceId = None
-        self._RequestId = None
-
-    @property
-    def ServiceId(self):
-        r"""服务Id，目前是指环境Id
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: str
-        """
-        return self._ServiceId
-
-    @ServiceId.setter
-    def ServiceId(self, ServiceId):
-        self._ServiceId = ServiceId
-
-    @property
-    def RequestId(self):
-        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._ServiceId = params.get("ServiceId")
-        self._RequestId = params.get("RequestId")
-
-
-class BindCloudBaseGWDomainRequest(AbstractModel):
-    r"""BindCloudBaseGWDomain请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _ServiceId: 服务ID
-        :type ServiceId: str
-        :param _Domain: 服务域名
-        :type Domain: str
-        :param _CertId: 证书ID
-        :type CertId: str
-        :param _EnableRegion: 是否启用多地域
-        :type EnableRegion: bool
-        """
-        self._ServiceId = None
-        self._Domain = None
-        self._CertId = None
-        self._EnableRegion = None
-
-    @property
-    def ServiceId(self):
-        r"""服务ID
-        :rtype: str
-        """
-        return self._ServiceId
-
-    @ServiceId.setter
-    def ServiceId(self, ServiceId):
-        self._ServiceId = ServiceId
-
-    @property
-    def Domain(self):
-        r"""服务域名
-        :rtype: str
-        """
-        return self._Domain
-
-    @Domain.setter
-    def Domain(self, Domain):
-        self._Domain = Domain
-
-    @property
-    def CertId(self):
-        r"""证书ID
-        :rtype: str
-        """
-        return self._CertId
-
-    @CertId.setter
-    def CertId(self, CertId):
-        self._CertId = CertId
-
-    @property
-    def EnableRegion(self):
-        r"""是否启用多地域
-        :rtype: bool
-        """
-        return self._EnableRegion
-
-    @EnableRegion.setter
-    def EnableRegion(self, EnableRegion):
-        self._EnableRegion = EnableRegion
-
-
-    def _deserialize(self, params):
-        self._ServiceId = params.get("ServiceId")
-        self._Domain = params.get("Domain")
-        self._CertId = params.get("CertId")
-        self._EnableRegion = params.get("EnableRegion")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class BindCloudBaseGWDomainResponse(AbstractModel):
-    r"""BindCloudBaseGWDomain返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._RequestId = None
-
-    @property
-    def RequestId(self):
-        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._RequestId = params.get("RequestId")
 
 
 class CheckTcbServiceRequest(AbstractModel):
@@ -874,776 +807,6 @@ class CheckTcbServiceResponse(AbstractModel):
     def _deserialize(self, params):
         self._Initialized = params.get("Initialized")
         self._RequestId = params.get("RequestId")
-
-
-class CloudBaseClientQPSPolicy(AbstractModel):
-    r"""http访问服务客户端限频
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _LimitBy: UserID 或 ClientIP 或 None，如果为 None 代表不限制
-        :type LimitBy: str
-        :param _LimitValue: 限制值
-        :type LimitValue: int
-        """
-        self._LimitBy = None
-        self._LimitValue = None
-
-    @property
-    def LimitBy(self):
-        r"""UserID 或 ClientIP 或 None，如果为 None 代表不限制
-        :rtype: str
-        """
-        return self._LimitBy
-
-    @LimitBy.setter
-    def LimitBy(self, LimitBy):
-        self._LimitBy = LimitBy
-
-    @property
-    def LimitValue(self):
-        r"""限制值
-        :rtype: int
-        """
-        return self._LimitValue
-
-    @LimitValue.setter
-    def LimitValue(self, LimitValue):
-        self._LimitValue = LimitValue
-
-
-    def _deserialize(self, params):
-        self._LimitBy = params.get("LimitBy")
-        self._LimitValue = params.get("LimitValue")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class CloudBaseGWAPI(AbstractModel):
-    r"""tcb 网关API
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _ServiceId: 服务ID
-        :type ServiceId: str
-        :param _APIId: API ID
-        :type APIId: str
-        :param _Path: API Path
-        :type Path: str
-        :param _Type: API 类型
-        :type Type: int
-        :param _Name: API 名
-        :type Name: str
-        :param _CreateTime: API创建时间
-        :type CreateTime: int
-        :param _Custom: 自定义值通用字段：
-Type为1时，该值为空。
-Type为2时，该值为容器的代理IP:PORT数组。
-        :type Custom: str
-        :param _EnableAuth: 表示是否开启认证
-注意：此字段可能返回 null，表示取不到有效值。
-        :type EnableAuth: bool
-        :param _EnvId: 云开发环境ID
-注意：此字段可能返回 null，表示取不到有效值。
-        :type EnvId: str
-        :param _AccessType: 访问类型（该参数暂不对外暴露）
-注意：此字段可能返回 null，表示取不到有效值。
-        :type AccessType: int
-        :param _UnionStatus: 统一发布状态
-注意：此字段可能返回 null，表示取不到有效值。
-        :type UnionStatus: int
-        :param _Domain: 域名（*表示所有域名）
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Domain: str
-        :param _ConflictFlag: 是否有路径冲突
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ConflictFlag: bool
-        :param _DomainStatus: 域名状态
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DomainStatus: int
-        :param _IsShortPath: 是否开启路径透传，默认true表示短路径，即不开启(已弃用)
-注意：此字段可能返回 null，表示取不到有效值。
-        :type IsShortPath: bool
-        :param _PathTransmission: 路径透传，默认0关闭，1开启，2关闭
-注意：此字段可能返回 null，表示取不到有效值。
-        :type PathTransmission: int
-        :param _EnableCheckAcrossDomain: 跨域校验，默认0开启，1开启，2关闭
-注意：此字段可能返回 null，表示取不到有效值。
-        :type EnableCheckAcrossDomain: int
-        :param _StaticFileDirectory: 静态托管文件目录
-注意：此字段可能返回 null，表示取不到有效值。
-        :type StaticFileDirectory: str
-        :param _QPSPolicy: QPS策略
-        :type QPSPolicy: :class:`tencentcloud.tcb.v20180608.models.CloudBaseGWAPIQPSPolicy`
-        """
-        self._ServiceId = None
-        self._APIId = None
-        self._Path = None
-        self._Type = None
-        self._Name = None
-        self._CreateTime = None
-        self._Custom = None
-        self._EnableAuth = None
-        self._EnvId = None
-        self._AccessType = None
-        self._UnionStatus = None
-        self._Domain = None
-        self._ConflictFlag = None
-        self._DomainStatus = None
-        self._IsShortPath = None
-        self._PathTransmission = None
-        self._EnableCheckAcrossDomain = None
-        self._StaticFileDirectory = None
-        self._QPSPolicy = None
-
-    @property
-    def ServiceId(self):
-        r"""服务ID
-        :rtype: str
-        """
-        return self._ServiceId
-
-    @ServiceId.setter
-    def ServiceId(self, ServiceId):
-        self._ServiceId = ServiceId
-
-    @property
-    def APIId(self):
-        r"""API ID
-        :rtype: str
-        """
-        return self._APIId
-
-    @APIId.setter
-    def APIId(self, APIId):
-        self._APIId = APIId
-
-    @property
-    def Path(self):
-        r"""API Path
-        :rtype: str
-        """
-        return self._Path
-
-    @Path.setter
-    def Path(self, Path):
-        self._Path = Path
-
-    @property
-    def Type(self):
-        r"""API 类型
-        :rtype: int
-        """
-        return self._Type
-
-    @Type.setter
-    def Type(self, Type):
-        self._Type = Type
-
-    @property
-    def Name(self):
-        r"""API 名
-        :rtype: str
-        """
-        return self._Name
-
-    @Name.setter
-    def Name(self, Name):
-        self._Name = Name
-
-    @property
-    def CreateTime(self):
-        r"""API创建时间
-        :rtype: int
-        """
-        return self._CreateTime
-
-    @CreateTime.setter
-    def CreateTime(self, CreateTime):
-        self._CreateTime = CreateTime
-
-    @property
-    def Custom(self):
-        r"""自定义值通用字段：
-Type为1时，该值为空。
-Type为2时，该值为容器的代理IP:PORT数组。
-        :rtype: str
-        """
-        return self._Custom
-
-    @Custom.setter
-    def Custom(self, Custom):
-        self._Custom = Custom
-
-    @property
-    def EnableAuth(self):
-        r"""表示是否开启认证
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: bool
-        """
-        return self._EnableAuth
-
-    @EnableAuth.setter
-    def EnableAuth(self, EnableAuth):
-        self._EnableAuth = EnableAuth
-
-    @property
-    def EnvId(self):
-        r"""云开发环境ID
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: str
-        """
-        return self._EnvId
-
-    @EnvId.setter
-    def EnvId(self, EnvId):
-        self._EnvId = EnvId
-
-    @property
-    def AccessType(self):
-        r"""访问类型（该参数暂不对外暴露）
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: int
-        """
-        return self._AccessType
-
-    @AccessType.setter
-    def AccessType(self, AccessType):
-        self._AccessType = AccessType
-
-    @property
-    def UnionStatus(self):
-        r"""统一发布状态
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: int
-        """
-        return self._UnionStatus
-
-    @UnionStatus.setter
-    def UnionStatus(self, UnionStatus):
-        self._UnionStatus = UnionStatus
-
-    @property
-    def Domain(self):
-        r"""域名（*表示所有域名）
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: str
-        """
-        return self._Domain
-
-    @Domain.setter
-    def Domain(self, Domain):
-        self._Domain = Domain
-
-    @property
-    def ConflictFlag(self):
-        r"""是否有路径冲突
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: bool
-        """
-        return self._ConflictFlag
-
-    @ConflictFlag.setter
-    def ConflictFlag(self, ConflictFlag):
-        self._ConflictFlag = ConflictFlag
-
-    @property
-    def DomainStatus(self):
-        r"""域名状态
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: int
-        """
-        return self._DomainStatus
-
-    @DomainStatus.setter
-    def DomainStatus(self, DomainStatus):
-        self._DomainStatus = DomainStatus
-
-    @property
-    def IsShortPath(self):
-        r"""是否开启路径透传，默认true表示短路径，即不开启(已弃用)
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: bool
-        """
-        return self._IsShortPath
-
-    @IsShortPath.setter
-    def IsShortPath(self, IsShortPath):
-        self._IsShortPath = IsShortPath
-
-    @property
-    def PathTransmission(self):
-        r"""路径透传，默认0关闭，1开启，2关闭
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: int
-        """
-        return self._PathTransmission
-
-    @PathTransmission.setter
-    def PathTransmission(self, PathTransmission):
-        self._PathTransmission = PathTransmission
-
-    @property
-    def EnableCheckAcrossDomain(self):
-        r"""跨域校验，默认0开启，1开启，2关闭
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: int
-        """
-        return self._EnableCheckAcrossDomain
-
-    @EnableCheckAcrossDomain.setter
-    def EnableCheckAcrossDomain(self, EnableCheckAcrossDomain):
-        self._EnableCheckAcrossDomain = EnableCheckAcrossDomain
-
-    @property
-    def StaticFileDirectory(self):
-        r"""静态托管文件目录
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: str
-        """
-        return self._StaticFileDirectory
-
-    @StaticFileDirectory.setter
-    def StaticFileDirectory(self, StaticFileDirectory):
-        self._StaticFileDirectory = StaticFileDirectory
-
-    @property
-    def QPSPolicy(self):
-        r"""QPS策略
-        :rtype: :class:`tencentcloud.tcb.v20180608.models.CloudBaseGWAPIQPSPolicy`
-        """
-        return self._QPSPolicy
-
-    @QPSPolicy.setter
-    def QPSPolicy(self, QPSPolicy):
-        self._QPSPolicy = QPSPolicy
-
-
-    def _deserialize(self, params):
-        self._ServiceId = params.get("ServiceId")
-        self._APIId = params.get("APIId")
-        self._Path = params.get("Path")
-        self._Type = params.get("Type")
-        self._Name = params.get("Name")
-        self._CreateTime = params.get("CreateTime")
-        self._Custom = params.get("Custom")
-        self._EnableAuth = params.get("EnableAuth")
-        self._EnvId = params.get("EnvId")
-        self._AccessType = params.get("AccessType")
-        self._UnionStatus = params.get("UnionStatus")
-        self._Domain = params.get("Domain")
-        self._ConflictFlag = params.get("ConflictFlag")
-        self._DomainStatus = params.get("DomainStatus")
-        self._IsShortPath = params.get("IsShortPath")
-        self._PathTransmission = params.get("PathTransmission")
-        self._EnableCheckAcrossDomain = params.get("EnableCheckAcrossDomain")
-        self._StaticFileDirectory = params.get("StaticFileDirectory")
-        if params.get("QPSPolicy") is not None:
-            self._QPSPolicy = CloudBaseGWAPIQPSPolicy()
-            self._QPSPolicy._deserialize(params.get("QPSPolicy"))
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class CloudBaseGWAPIQPSPolicy(AbstractModel):
-    r"""http访问服务路由qps策略
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _QPSTotal: qps限额总量
-        :type QPSTotal: int
-        :param _QPSPerClient: 客户端限频，如果不限制，LimitBy=None
-        :type QPSPerClient: :class:`tencentcloud.tcb.v20180608.models.CloudBaseClientQPSPolicy`
-        """
-        self._QPSTotal = None
-        self._QPSPerClient = None
-
-    @property
-    def QPSTotal(self):
-        r"""qps限额总量
-        :rtype: int
-        """
-        return self._QPSTotal
-
-    @QPSTotal.setter
-    def QPSTotal(self, QPSTotal):
-        self._QPSTotal = QPSTotal
-
-    @property
-    def QPSPerClient(self):
-        r"""客户端限频，如果不限制，LimitBy=None
-        :rtype: :class:`tencentcloud.tcb.v20180608.models.CloudBaseClientQPSPolicy`
-        """
-        return self._QPSPerClient
-
-    @QPSPerClient.setter
-    def QPSPerClient(self, QPSPerClient):
-        self._QPSPerClient = QPSPerClient
-
-
-    def _deserialize(self, params):
-        self._QPSTotal = params.get("QPSTotal")
-        if params.get("QPSPerClient") is not None:
-            self._QPSPerClient = CloudBaseClientQPSPolicy()
-            self._QPSPerClient._deserialize(params.get("QPSPerClient"))
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class CloudBaseGWService(AbstractModel):
-    r"""网关服务
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _ServiceId: 服务ID
-        :type ServiceId: str
-        :param _Domain: 服务域名
-        :type Domain: str
-        :param _OpenTime: 开启时间
-        :type OpenTime: int
-        :param _Status: 绑定状态，1 绑定中；2绑定失败；3绑定成功
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Status: int
-        :param _IsPreempted: 是否被抢占, 被抢占表示域名被其他环境绑定了，需要解绑或者重新绑定。
-注意：此字段可能返回 null，表示取不到有效值。
-        :type IsPreempted: bool
-        :param _EnableRegion: 是否开启多地域
-注意：此字段可能返回 null，表示取不到有效值。
-        :type EnableRegion: bool
-        :param _Cname: cdn CName地址
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Cname: str
-        :param _UnionStatus: 统一域名状态
-注意：此字段可能返回 null，表示取不到有效值。
-        :type UnionStatus: int
-        :param _CnameStatus: CName状态
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CnameStatus: int
-        :param _CertId: 证书Id
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CertId: str
-        :param _ForceHttps: 是否强制https
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ForceHttps: bool
-        :param _IcpForbidStatus: icp黑名单封禁状态，0-未封禁，1-封禁
-注意：此字段可能返回 null，表示取不到有效值。
-        :type IcpForbidStatus: int
-        :param _CustomRoutingRules: 自定义路由规则
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CustomRoutingRules: str
-        :param _BindFlag: 绑定类型，1绑定cdn，2源站，4自定义
-        :type BindFlag: int
-        :param _OriginCname: TcbIngress源站cname
-        :type OriginCname: str
-        :param _CustomCname: 自定义cname
-        :type CustomCname: str
-        """
-        self._ServiceId = None
-        self._Domain = None
-        self._OpenTime = None
-        self._Status = None
-        self._IsPreempted = None
-        self._EnableRegion = None
-        self._Cname = None
-        self._UnionStatus = None
-        self._CnameStatus = None
-        self._CertId = None
-        self._ForceHttps = None
-        self._IcpForbidStatus = None
-        self._CustomRoutingRules = None
-        self._BindFlag = None
-        self._OriginCname = None
-        self._CustomCname = None
-
-    @property
-    def ServiceId(self):
-        r"""服务ID
-        :rtype: str
-        """
-        return self._ServiceId
-
-    @ServiceId.setter
-    def ServiceId(self, ServiceId):
-        self._ServiceId = ServiceId
-
-    @property
-    def Domain(self):
-        r"""服务域名
-        :rtype: str
-        """
-        return self._Domain
-
-    @Domain.setter
-    def Domain(self, Domain):
-        self._Domain = Domain
-
-    @property
-    def OpenTime(self):
-        r"""开启时间
-        :rtype: int
-        """
-        return self._OpenTime
-
-    @OpenTime.setter
-    def OpenTime(self, OpenTime):
-        self._OpenTime = OpenTime
-
-    @property
-    def Status(self):
-        r"""绑定状态，1 绑定中；2绑定失败；3绑定成功
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: int
-        """
-        return self._Status
-
-    @Status.setter
-    def Status(self, Status):
-        self._Status = Status
-
-    @property
-    def IsPreempted(self):
-        r"""是否被抢占, 被抢占表示域名被其他环境绑定了，需要解绑或者重新绑定。
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: bool
-        """
-        return self._IsPreempted
-
-    @IsPreempted.setter
-    def IsPreempted(self, IsPreempted):
-        self._IsPreempted = IsPreempted
-
-    @property
-    def EnableRegion(self):
-        r"""是否开启多地域
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: bool
-        """
-        return self._EnableRegion
-
-    @EnableRegion.setter
-    def EnableRegion(self, EnableRegion):
-        self._EnableRegion = EnableRegion
-
-    @property
-    def Cname(self):
-        r"""cdn CName地址
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: str
-        """
-        return self._Cname
-
-    @Cname.setter
-    def Cname(self, Cname):
-        self._Cname = Cname
-
-    @property
-    def UnionStatus(self):
-        r"""统一域名状态
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: int
-        """
-        return self._UnionStatus
-
-    @UnionStatus.setter
-    def UnionStatus(self, UnionStatus):
-        self._UnionStatus = UnionStatus
-
-    @property
-    def CnameStatus(self):
-        r"""CName状态
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: int
-        """
-        return self._CnameStatus
-
-    @CnameStatus.setter
-    def CnameStatus(self, CnameStatus):
-        self._CnameStatus = CnameStatus
-
-    @property
-    def CertId(self):
-        r"""证书Id
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: str
-        """
-        return self._CertId
-
-    @CertId.setter
-    def CertId(self, CertId):
-        self._CertId = CertId
-
-    @property
-    def ForceHttps(self):
-        r"""是否强制https
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: bool
-        """
-        return self._ForceHttps
-
-    @ForceHttps.setter
-    def ForceHttps(self, ForceHttps):
-        self._ForceHttps = ForceHttps
-
-    @property
-    def IcpForbidStatus(self):
-        r"""icp黑名单封禁状态，0-未封禁，1-封禁
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: int
-        """
-        return self._IcpForbidStatus
-
-    @IcpForbidStatus.setter
-    def IcpForbidStatus(self, IcpForbidStatus):
-        self._IcpForbidStatus = IcpForbidStatus
-
-    @property
-    def CustomRoutingRules(self):
-        r"""自定义路由规则
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: str
-        """
-        return self._CustomRoutingRules
-
-    @CustomRoutingRules.setter
-    def CustomRoutingRules(self, CustomRoutingRules):
-        self._CustomRoutingRules = CustomRoutingRules
-
-    @property
-    def BindFlag(self):
-        r"""绑定类型，1绑定cdn，2源站，4自定义
-        :rtype: int
-        """
-        return self._BindFlag
-
-    @BindFlag.setter
-    def BindFlag(self, BindFlag):
-        self._BindFlag = BindFlag
-
-    @property
-    def OriginCname(self):
-        r"""TcbIngress源站cname
-        :rtype: str
-        """
-        return self._OriginCname
-
-    @OriginCname.setter
-    def OriginCname(self, OriginCname):
-        self._OriginCname = OriginCname
-
-    @property
-    def CustomCname(self):
-        r"""自定义cname
-        :rtype: str
-        """
-        return self._CustomCname
-
-    @CustomCname.setter
-    def CustomCname(self, CustomCname):
-        self._CustomCname = CustomCname
-
-
-    def _deserialize(self, params):
-        self._ServiceId = params.get("ServiceId")
-        self._Domain = params.get("Domain")
-        self._OpenTime = params.get("OpenTime")
-        self._Status = params.get("Status")
-        self._IsPreempted = params.get("IsPreempted")
-        self._EnableRegion = params.get("EnableRegion")
-        self._Cname = params.get("Cname")
-        self._UnionStatus = params.get("UnionStatus")
-        self._CnameStatus = params.get("CnameStatus")
-        self._CertId = params.get("CertId")
-        self._ForceHttps = params.get("ForceHttps")
-        self._IcpForbidStatus = params.get("IcpForbidStatus")
-        self._CustomRoutingRules = params.get("CustomRoutingRules")
-        self._BindFlag = params.get("BindFlag")
-        self._OriginCname = params.get("OriginCname")
-        self._CustomCname = params.get("CustomCname")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class CloudBaseOption(AbstractModel):
-    r"""http service选项
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Key: 键
-        :type Key: str
-        :param _Value: 值
-        :type Value: str
-        """
-        self._Key = None
-        self._Value = None
-
-    @property
-    def Key(self):
-        r"""键
-        :rtype: str
-        """
-        return self._Key
-
-    @Key.setter
-    def Key(self, Key):
-        self._Key = Key
-
-    @property
-    def Value(self):
-        r"""值
-        :rtype: str
-        """
-        return self._Value
-
-    @Value.setter
-    def Value(self, Value):
-        self._Value = Value
-
-
-    def _deserialize(self, params):
-        self._Key = params.get("Key")
-        self._Value = params.get("Value")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
 
 
 class ClsInfo(AbstractModel):
@@ -1923,6 +1086,196 @@ class ClusterDetail(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class CreateApiKeyRequest(AbstractModel):
+    r"""CreateApiKey请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: 环境 ID，用于标识该密钥归属的云开发环境，不同环境之间的数据相互隔离
+        :type EnvId: str
+        :param _KeyType: 密钥类型。可选值：api_key（服务端调用使用的 API 密钥，具有完整权限，请勿暴露在客户端）、publish_key（客户端使用的公开密钥，权限受限，可安全用于前端或移动端）。
+        :type KeyType: str
+        :param _KeyName: 密钥的自定义名称，用于在管理列表中标识和区分不同的密钥，建议填写能体现用途或归属的描述性名称，例如：server-prod、mobile-test
+        :type KeyName: str
+        :param _ExpireIn: 密钥的有效期，单位为秒，最短不得低于 7200 秒。超过有效期后密钥将自动失效。不设置或设置为 0 则表示永不过期，建议根据安全需求合理设置有效期
+        :type ExpireIn: int
+        """
+        self._EnvId = None
+        self._KeyType = None
+        self._KeyName = None
+        self._ExpireIn = None
+
+    @property
+    def EnvId(self):
+        r"""环境 ID，用于标识该密钥归属的云开发环境，不同环境之间的数据相互隔离
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def KeyType(self):
+        r"""密钥类型。可选值：api_key（服务端调用使用的 API 密钥，具有完整权限，请勿暴露在客户端）、publish_key（客户端使用的公开密钥，权限受限，可安全用于前端或移动端）。
+        :rtype: str
+        """
+        return self._KeyType
+
+    @KeyType.setter
+    def KeyType(self, KeyType):
+        self._KeyType = KeyType
+
+    @property
+    def KeyName(self):
+        r"""密钥的自定义名称，用于在管理列表中标识和区分不同的密钥，建议填写能体现用途或归属的描述性名称，例如：server-prod、mobile-test
+        :rtype: str
+        """
+        return self._KeyName
+
+    @KeyName.setter
+    def KeyName(self, KeyName):
+        self._KeyName = KeyName
+
+    @property
+    def ExpireIn(self):
+        r"""密钥的有效期，单位为秒，最短不得低于 7200 秒。超过有效期后密钥将自动失效。不设置或设置为 0 则表示永不过期，建议根据安全需求合理设置有效期
+        :rtype: int
+        """
+        return self._ExpireIn
+
+    @ExpireIn.setter
+    def ExpireIn(self, ExpireIn):
+        self._ExpireIn = ExpireIn
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        self._KeyType = params.get("KeyType")
+        self._KeyName = params.get("KeyName")
+        self._ExpireIn = params.get("ExpireIn")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateApiKeyResponse(AbstractModel):
+    r"""CreateApiKey返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _KeyId: API Key 的唯一标识符，由系统基于 JWT Access Token Hash 自动生成。后续对该 API Key 进行查询、修改名称或删除操作时，均需使用该值作为定位参数
+        :type KeyId: str
+        :param _Name: API Key 的名称，即创建时传入的 KeyName 参数值。对于 publish_key 类型，该值固定为 publish_key
+        :type Name: str
+        :param _ApiKey: API Key 的令牌值（JWT 格式），用于服务端接口调用时的身份认证。出于安全考虑，仅在创建时返回一次完整明文；后续通过列表查询接口获取时，api_key 类型将进行脱敏处理；publish_key 类型始终返回完整明文。请在创建后妥善保存
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApiKey: str
+        :param _ExpireAt: API Key 的过期时间。对于 api_key 类型：若创建时未指定有效期，则该字段不返回，表示永不过期；若指定了有效期，则返回具体的过期时间。对于 publish_key 类型：始终返回，固定为 2099 年
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExpireAt: str
+        :param _CreateAt: API Key 的创建时间。对于 api_key 类型：为实际创建该 Key 时的时间。对于 publish_key 类型：若环境下已存在 publish_key，则返回首次创建的时间而非本次调用时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateAt: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._KeyId = None
+        self._Name = None
+        self._ApiKey = None
+        self._ExpireAt = None
+        self._CreateAt = None
+        self._RequestId = None
+
+    @property
+    def KeyId(self):
+        r"""API Key 的唯一标识符，由系统基于 JWT Access Token Hash 自动生成。后续对该 API Key 进行查询、修改名称或删除操作时，均需使用该值作为定位参数
+        :rtype: str
+        """
+        return self._KeyId
+
+    @KeyId.setter
+    def KeyId(self, KeyId):
+        self._KeyId = KeyId
+
+    @property
+    def Name(self):
+        r"""API Key 的名称，即创建时传入的 KeyName 参数值。对于 publish_key 类型，该值固定为 publish_key
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ApiKey(self):
+        r"""API Key 的令牌值（JWT 格式），用于服务端接口调用时的身份认证。出于安全考虑，仅在创建时返回一次完整明文；后续通过列表查询接口获取时，api_key 类型将进行脱敏处理；publish_key 类型始终返回完整明文。请在创建后妥善保存
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ApiKey
+
+    @ApiKey.setter
+    def ApiKey(self, ApiKey):
+        self._ApiKey = ApiKey
+
+    @property
+    def ExpireAt(self):
+        r"""API Key 的过期时间。对于 api_key 类型：若创建时未指定有效期，则该字段不返回，表示永不过期；若指定了有效期，则返回具体的过期时间。对于 publish_key 类型：始终返回，固定为 2099 年
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExpireAt
+
+    @ExpireAt.setter
+    def ExpireAt(self, ExpireAt):
+        self._ExpireAt = ExpireAt
+
+    @property
+    def CreateAt(self):
+        r"""API Key 的创建时间。对于 api_key 类型：为实际创建该 Key 时的时间。对于 publish_key 类型：若环境下已存在 publish_key，则返回首次创建的时间而非本次调用时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreateAt
+
+    @CreateAt.setter
+    def CreateAt(self, CreateAt):
+        self._CreateAt = CreateAt
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._KeyId = params.get("KeyId")
+        self._Name = params.get("Name")
+        self._ApiKey = params.get("ApiKey")
+        self._ExpireAt = params.get("ExpireAt")
+        self._CreateAt = params.get("CreateAt")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateAuthDomainRequest(AbstractModel):
@@ -2340,297 +1693,6 @@ class CreateBillDealResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
-class CreateCloudBaseGWAPIRequest(AbstractModel):
-    r"""CreateCloudBaseGWAPI请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _ServiceId: Service ID
-        :type ServiceId: str
-        :param _Path: API Path
-        :type Path: str
-        :param _Type: API类型（1表示云函数，2表示容器）
-        :type Type: int
-        :param _Name: API Name
-        :type Name: str
-        :param _APIId: APIId，如果非空，表示修改绑定Path
-        :type APIId: str
-        :param _Custom: 自定义值通用字段（当Type为容器时必填）
-        :type Custom: str
-        :param _AuthSwitch: 认证开关 1为开启 2为关闭
-        :type AuthSwitch: int
-        :param _EnableRegion: 是否开启多地域
-        :type EnableRegion: bool
-        :param _EnableUnion: 是否启用统一域名
-        :type EnableUnion: bool
-        :param _Domain: 域名
-        :type Domain: str
-        :param _AccessTypes: 访问类型："OA", "PUBLIC", "MINIAPP", "VPC" （不传默认PUBLIC+MINIAPP+VPC）
-        :type AccessTypes: list of str
-        :param _IsShortPath: 是否开启路径透传，默认true表示短路径，即不开启路径透传(已弃用)
-        :type IsShortPath: bool
-        :param _PathTransmission: 路径透传，默认0关闭，1开启，2关闭
-        :type PathTransmission: int
-        :param _EnableCheckAcrossDomain: 跨域校验，默认0开启，1开启，2关闭
-        :type EnableCheckAcrossDomain: int
-        :param _StaticFileDirectory: 静态托管资源目录
-        :type StaticFileDirectory: str
-        """
-        self._ServiceId = None
-        self._Path = None
-        self._Type = None
-        self._Name = None
-        self._APIId = None
-        self._Custom = None
-        self._AuthSwitch = None
-        self._EnableRegion = None
-        self._EnableUnion = None
-        self._Domain = None
-        self._AccessTypes = None
-        self._IsShortPath = None
-        self._PathTransmission = None
-        self._EnableCheckAcrossDomain = None
-        self._StaticFileDirectory = None
-
-    @property
-    def ServiceId(self):
-        r"""Service ID
-        :rtype: str
-        """
-        return self._ServiceId
-
-    @ServiceId.setter
-    def ServiceId(self, ServiceId):
-        self._ServiceId = ServiceId
-
-    @property
-    def Path(self):
-        r"""API Path
-        :rtype: str
-        """
-        return self._Path
-
-    @Path.setter
-    def Path(self, Path):
-        self._Path = Path
-
-    @property
-    def Type(self):
-        r"""API类型（1表示云函数，2表示容器）
-        :rtype: int
-        """
-        return self._Type
-
-    @Type.setter
-    def Type(self, Type):
-        self._Type = Type
-
-    @property
-    def Name(self):
-        r"""API Name
-        :rtype: str
-        """
-        return self._Name
-
-    @Name.setter
-    def Name(self, Name):
-        self._Name = Name
-
-    @property
-    def APIId(self):
-        r"""APIId，如果非空，表示修改绑定Path
-        :rtype: str
-        """
-        return self._APIId
-
-    @APIId.setter
-    def APIId(self, APIId):
-        self._APIId = APIId
-
-    @property
-    def Custom(self):
-        r"""自定义值通用字段（当Type为容器时必填）
-        :rtype: str
-        """
-        return self._Custom
-
-    @Custom.setter
-    def Custom(self, Custom):
-        self._Custom = Custom
-
-    @property
-    def AuthSwitch(self):
-        r"""认证开关 1为开启 2为关闭
-        :rtype: int
-        """
-        return self._AuthSwitch
-
-    @AuthSwitch.setter
-    def AuthSwitch(self, AuthSwitch):
-        self._AuthSwitch = AuthSwitch
-
-    @property
-    def EnableRegion(self):
-        r"""是否开启多地域
-        :rtype: bool
-        """
-        return self._EnableRegion
-
-    @EnableRegion.setter
-    def EnableRegion(self, EnableRegion):
-        self._EnableRegion = EnableRegion
-
-    @property
-    def EnableUnion(self):
-        r"""是否启用统一域名
-        :rtype: bool
-        """
-        return self._EnableUnion
-
-    @EnableUnion.setter
-    def EnableUnion(self, EnableUnion):
-        self._EnableUnion = EnableUnion
-
-    @property
-    def Domain(self):
-        r"""域名
-        :rtype: str
-        """
-        return self._Domain
-
-    @Domain.setter
-    def Domain(self, Domain):
-        self._Domain = Domain
-
-    @property
-    def AccessTypes(self):
-        r"""访问类型："OA", "PUBLIC", "MINIAPP", "VPC" （不传默认PUBLIC+MINIAPP+VPC）
-        :rtype: list of str
-        """
-        return self._AccessTypes
-
-    @AccessTypes.setter
-    def AccessTypes(self, AccessTypes):
-        self._AccessTypes = AccessTypes
-
-    @property
-    def IsShortPath(self):
-        r"""是否开启路径透传，默认true表示短路径，即不开启路径透传(已弃用)
-        :rtype: bool
-        """
-        return self._IsShortPath
-
-    @IsShortPath.setter
-    def IsShortPath(self, IsShortPath):
-        self._IsShortPath = IsShortPath
-
-    @property
-    def PathTransmission(self):
-        r"""路径透传，默认0关闭，1开启，2关闭
-        :rtype: int
-        """
-        return self._PathTransmission
-
-    @PathTransmission.setter
-    def PathTransmission(self, PathTransmission):
-        self._PathTransmission = PathTransmission
-
-    @property
-    def EnableCheckAcrossDomain(self):
-        r"""跨域校验，默认0开启，1开启，2关闭
-        :rtype: int
-        """
-        return self._EnableCheckAcrossDomain
-
-    @EnableCheckAcrossDomain.setter
-    def EnableCheckAcrossDomain(self, EnableCheckAcrossDomain):
-        self._EnableCheckAcrossDomain = EnableCheckAcrossDomain
-
-    @property
-    def StaticFileDirectory(self):
-        r"""静态托管资源目录
-        :rtype: str
-        """
-        return self._StaticFileDirectory
-
-    @StaticFileDirectory.setter
-    def StaticFileDirectory(self, StaticFileDirectory):
-        self._StaticFileDirectory = StaticFileDirectory
-
-
-    def _deserialize(self, params):
-        self._ServiceId = params.get("ServiceId")
-        self._Path = params.get("Path")
-        self._Type = params.get("Type")
-        self._Name = params.get("Name")
-        self._APIId = params.get("APIId")
-        self._Custom = params.get("Custom")
-        self._AuthSwitch = params.get("AuthSwitch")
-        self._EnableRegion = params.get("EnableRegion")
-        self._EnableUnion = params.get("EnableUnion")
-        self._Domain = params.get("Domain")
-        self._AccessTypes = params.get("AccessTypes")
-        self._IsShortPath = params.get("IsShortPath")
-        self._PathTransmission = params.get("PathTransmission")
-        self._EnableCheckAcrossDomain = params.get("EnableCheckAcrossDomain")
-        self._StaticFileDirectory = params.get("StaticFileDirectory")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class CreateCloudBaseGWAPIResponse(AbstractModel):
-    r"""CreateCloudBaseGWAPI返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _APIId: API ID
-注意：此字段可能返回 null，表示取不到有效值。
-        :type APIId: str
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._APIId = None
-        self._RequestId = None
-
-    @property
-    def APIId(self):
-        r"""API ID
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: str
-        """
-        return self._APIId
-
-    @APIId.setter
-    def APIId(self, APIId):
-        self._APIId = APIId
-
-    @property
-    def RequestId(self):
-        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._APIId = params.get("APIId")
-        self._RequestId = params.get("RequestId")
-
-
 class CreateEnvRequest(AbstractModel):
     r"""CreateEnv请求参数结构体
 
@@ -2925,6 +1987,87 @@ class CreateEnvResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._EnvId = params.get("EnvId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateHTTPServiceRouteRequest(AbstractModel):
+    r"""CreateHTTPServiceRoute请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: 环境ID
+        :type EnvId: str
+        :param _Domain: 域名路由信息
+        :type Domain: :class:`tencentcloud.tcb.v20180608.models.HTTPServiceDomainParam`
+        """
+        self._EnvId = None
+        self._Domain = None
+
+    @property
+    def EnvId(self):
+        r"""环境ID
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def Domain(self):
+        r"""域名路由信息
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.HTTPServiceDomainParam`
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        if params.get("Domain") is not None:
+            self._Domain = HTTPServiceDomainParam()
+            self._Domain._deserialize(params.get("Domain"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateHTTPServiceRouteResponse(AbstractModel):
+    r"""CreateHTTPServiceRoute返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -3278,9 +2421,12 @@ class CreateStaticStoreRequest(AbstractModel):
         :type EnvId: str
         :param _EnableUnion: 是否启用统一域名
         :type EnableUnion: bool
+        :param _ExternalStorage: 外部存储源。
+        :type ExternalStorage: :class:`tencentcloud.tcb.v20180608.models.ExternalStorage`
         """
         self._EnvId = None
         self._EnableUnion = None
+        self._ExternalStorage = None
 
     @property
     def EnvId(self):
@@ -3304,10 +2450,24 @@ class CreateStaticStoreRequest(AbstractModel):
     def EnableUnion(self, EnableUnion):
         self._EnableUnion = EnableUnion
 
+    @property
+    def ExternalStorage(self):
+        r"""外部存储源。
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.ExternalStorage`
+        """
+        return self._ExternalStorage
+
+    @ExternalStorage.setter
+    def ExternalStorage(self, ExternalStorage):
+        self._ExternalStorage = ExternalStorage
+
 
     def _deserialize(self, params):
         self._EnvId = params.get("EnvId")
         self._EnableUnion = params.get("EnableUnion")
+        if params.get("ExternalStorage") is not None:
+            self._ExternalStorage = ExternalStorage()
+            self._ExternalStorage._deserialize(params.get("ExternalStorage"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3756,6 +2916,262 @@ class CreateUserResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateVmInstanceRequest(AbstractModel):
+    r"""CreateVmInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: 环境ID
+        :type EnvId: str
+        :param _Type: 服务器类型：
+LightHouse = 轻量云服务器
+CVM = 云服务器
+        :type Type: str
+        :param _LightHouseBundleId: 轻量云服务器套餐ID。 当Type=LightHouse时必传
+        :type LightHouseBundleId: str
+        :param _LightHouseBlueprintId: 轻量云服务器镜像ID。当Type=LightHouse时必传
+        :type LightHouseBlueprintId: str
+        :param _InstanceName: 服务器别名
+        :type InstanceName: str
+        :param _LoginConfiguration: 登录方式
+        :type LoginConfiguration: :class:`tencentcloud.tcb.v20180608.models.VMLoginConfiguration`
+        """
+        self._EnvId = None
+        self._Type = None
+        self._LightHouseBundleId = None
+        self._LightHouseBlueprintId = None
+        self._InstanceName = None
+        self._LoginConfiguration = None
+
+    @property
+    def EnvId(self):
+        r"""环境ID
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def Type(self):
+        r"""服务器类型：
+LightHouse = 轻量云服务器
+CVM = 云服务器
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def LightHouseBundleId(self):
+        r"""轻量云服务器套餐ID。 当Type=LightHouse时必传
+        :rtype: str
+        """
+        return self._LightHouseBundleId
+
+    @LightHouseBundleId.setter
+    def LightHouseBundleId(self, LightHouseBundleId):
+        self._LightHouseBundleId = LightHouseBundleId
+
+    @property
+    def LightHouseBlueprintId(self):
+        r"""轻量云服务器镜像ID。当Type=LightHouse时必传
+        :rtype: str
+        """
+        return self._LightHouseBlueprintId
+
+    @LightHouseBlueprintId.setter
+    def LightHouseBlueprintId(self, LightHouseBlueprintId):
+        self._LightHouseBlueprintId = LightHouseBlueprintId
+
+    @property
+    def InstanceName(self):
+        r"""服务器别名
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def LoginConfiguration(self):
+        r"""登录方式
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.VMLoginConfiguration`
+        """
+        return self._LoginConfiguration
+
+    @LoginConfiguration.setter
+    def LoginConfiguration(self, LoginConfiguration):
+        self._LoginConfiguration = LoginConfiguration
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        self._Type = params.get("Type")
+        self._LightHouseBundleId = params.get("LightHouseBundleId")
+        self._LightHouseBlueprintId = params.get("LightHouseBlueprintId")
+        self._InstanceName = params.get("InstanceName")
+        if params.get("LoginConfiguration") is not None:
+            self._LoginConfiguration = VMLoginConfiguration()
+            self._LoginConfiguration._deserialize(params.get("LoginConfiguration"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateVmInstanceResponse(AbstractModel):
+    r"""CreateVmInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class CustomLogConfig(AbstractModel):
+    r"""安全网关自定义日志配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NeedReqBodyLog: 是否需要请求体
+        :type NeedReqBodyLog: bool
+        :param _NeedReqHeaderLog: 是否需要请求头
+        :type NeedReqHeaderLog: bool
+        :param _NeedRspBodyLog: 是否需要回包体
+        :type NeedRspBodyLog: bool
+        :param _NeedRspHeaderLog: 是否需要回包头部信息
+        :type NeedRspHeaderLog: bool
+        :param _LogSetId: cls set信息
+        :type LogSetId: str
+        :param _LogTopicId: cls topicId
+        :type LogTopicId: str
+        """
+        self._NeedReqBodyLog = None
+        self._NeedReqHeaderLog = None
+        self._NeedRspBodyLog = None
+        self._NeedRspHeaderLog = None
+        self._LogSetId = None
+        self._LogTopicId = None
+
+    @property
+    def NeedReqBodyLog(self):
+        r"""是否需要请求体
+        :rtype: bool
+        """
+        return self._NeedReqBodyLog
+
+    @NeedReqBodyLog.setter
+    def NeedReqBodyLog(self, NeedReqBodyLog):
+        self._NeedReqBodyLog = NeedReqBodyLog
+
+    @property
+    def NeedReqHeaderLog(self):
+        r"""是否需要请求头
+        :rtype: bool
+        """
+        return self._NeedReqHeaderLog
+
+    @NeedReqHeaderLog.setter
+    def NeedReqHeaderLog(self, NeedReqHeaderLog):
+        self._NeedReqHeaderLog = NeedReqHeaderLog
+
+    @property
+    def NeedRspBodyLog(self):
+        r"""是否需要回包体
+        :rtype: bool
+        """
+        return self._NeedRspBodyLog
+
+    @NeedRspBodyLog.setter
+    def NeedRspBodyLog(self, NeedRspBodyLog):
+        self._NeedRspBodyLog = NeedRspBodyLog
+
+    @property
+    def NeedRspHeaderLog(self):
+        r"""是否需要回包头部信息
+        :rtype: bool
+        """
+        return self._NeedRspHeaderLog
+
+    @NeedRspHeaderLog.setter
+    def NeedRspHeaderLog(self, NeedRspHeaderLog):
+        self._NeedRspHeaderLog = NeedRspHeaderLog
+
+    @property
+    def LogSetId(self):
+        r"""cls set信息
+        :rtype: str
+        """
+        return self._LogSetId
+
+    @LogSetId.setter
+    def LogSetId(self, LogSetId):
+        self._LogSetId = LogSetId
+
+    @property
+    def LogTopicId(self):
+        r"""cls topicId
+        :rtype: str
+        """
+        return self._LogTopicId
+
+    @LogTopicId.setter
+    def LogTopicId(self, LogTopicId):
+        self._LogTopicId = LogTopicId
+
+
+    def _deserialize(self, params):
+        self._NeedReqBodyLog = params.get("NeedReqBodyLog")
+        self._NeedReqHeaderLog = params.get("NeedReqHeaderLog")
+        self._NeedRspBodyLog = params.get("NeedRspBodyLog")
+        self._NeedRspHeaderLog = params.get("NeedRspHeaderLog")
+        self._LogSetId = params.get("LogSetId")
+        self._LogTopicId = params.get("LogTopicId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DatabasesInfo(AbstractModel):
     r"""数据库资源信息
 
@@ -3913,6 +3329,85 @@ class DbInstance(AbstractModel):
         
 
 
+class DeleteApiKeyRequest(AbstractModel):
+    r"""DeleteApiKey请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: 环境 ID，用于标识该密钥归属的云开发环境，不同环境之间的数据相互隔离
+        :type EnvId: str
+        :param _KeyId: 密钥的唯一标识符，用于精确定位指定的 API 密钥。可通过查询密钥列表接口获取
+        :type KeyId: str
+        """
+        self._EnvId = None
+        self._KeyId = None
+
+    @property
+    def EnvId(self):
+        r"""环境 ID，用于标识该密钥归属的云开发环境，不同环境之间的数据相互隔离
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def KeyId(self):
+        r"""密钥的唯一标识符，用于精确定位指定的 API 密钥。可通过查询密钥列表接口获取
+        :rtype: str
+        """
+        return self._KeyId
+
+    @KeyId.setter
+    def KeyId(self, KeyId):
+        self._KeyId = KeyId
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        self._KeyId = params.get("KeyId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteApiKeyResponse(AbstractModel):
+    r"""DeleteApiKey返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteAuthDomainRequest(AbstractModel):
     r"""DeleteAuthDomain请求参数结构体
 
@@ -4007,101 +3502,34 @@ class DeleteAuthDomainResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
-class DeleteCloudBaseGWAPIRequest(AbstractModel):
-    r"""DeleteCloudBaseGWAPI请求参数结构体
+class DeleteHTTPServiceRouteRequest(AbstractModel):
+    r"""DeleteHTTPServiceRoute请求参数结构体
 
     """
 
     def __init__(self):
         r"""
-        :param _ServiceId: 服务ID
-        :type ServiceId: str
-        :param _Path: API Path
-        :type Path: str
-        :param _APIId: API ID
-        :type APIId: str
-        :param _Type: API类型
-        :type Type: int
-        :param _Name: API Name
-        :type Name: str
-        :param _Custom: 自定义值字段（Type为2时，传递容器服务名表示需要删除JNSGW）
-        :type Custom: str
+        :param _EnvId: 环境ID
+        :type EnvId: str
         :param _Domain: 域名
         :type Domain: str
+        :param _Paths: 路径列表。为空则表示删除此域名和所有路由
+        :type Paths: list of str
         """
-        self._ServiceId = None
-        self._Path = None
-        self._APIId = None
-        self._Type = None
-        self._Name = None
-        self._Custom = None
+        self._EnvId = None
         self._Domain = None
+        self._Paths = None
 
     @property
-    def ServiceId(self):
-        r"""服务ID
+    def EnvId(self):
+        r"""环境ID
         :rtype: str
         """
-        return self._ServiceId
+        return self._EnvId
 
-    @ServiceId.setter
-    def ServiceId(self, ServiceId):
-        self._ServiceId = ServiceId
-
-    @property
-    def Path(self):
-        r"""API Path
-        :rtype: str
-        """
-        return self._Path
-
-    @Path.setter
-    def Path(self, Path):
-        self._Path = Path
-
-    @property
-    def APIId(self):
-        r"""API ID
-        :rtype: str
-        """
-        return self._APIId
-
-    @APIId.setter
-    def APIId(self, APIId):
-        self._APIId = APIId
-
-    @property
-    def Type(self):
-        r"""API类型
-        :rtype: int
-        """
-        return self._Type
-
-    @Type.setter
-    def Type(self, Type):
-        self._Type = Type
-
-    @property
-    def Name(self):
-        r"""API Name
-        :rtype: str
-        """
-        return self._Name
-
-    @Name.setter
-    def Name(self, Name):
-        self._Name = Name
-
-    @property
-    def Custom(self):
-        r"""自定义值字段（Type为2时，传递容器服务名表示需要删除JNSGW）
-        :rtype: str
-        """
-        return self._Custom
-
-    @Custom.setter
-    def Custom(self, Custom):
-        self._Custom = Custom
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
 
     @property
     def Domain(self):
@@ -4114,15 +3542,22 @@ class DeleteCloudBaseGWAPIRequest(AbstractModel):
     def Domain(self, Domain):
         self._Domain = Domain
 
+    @property
+    def Paths(self):
+        r"""路径列表。为空则表示删除此域名和所有路由
+        :rtype: list of str
+        """
+        return self._Paths
+
+    @Paths.setter
+    def Paths(self, Paths):
+        self._Paths = Paths
+
 
     def _deserialize(self, params):
-        self._ServiceId = params.get("ServiceId")
-        self._Path = params.get("Path")
-        self._APIId = params.get("APIId")
-        self._Type = params.get("Type")
-        self._Name = params.get("Name")
-        self._Custom = params.get("Custom")
+        self._EnvId = params.get("EnvId")
         self._Domain = params.get("Domain")
+        self._Paths = params.get("Paths")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4133,31 +3568,17 @@ class DeleteCloudBaseGWAPIRequest(AbstractModel):
         
 
 
-class DeleteCloudBaseGWAPIResponse(AbstractModel):
-    r"""DeleteCloudBaseGWAPI返回参数结构体
+class DeleteHTTPServiceRouteResponse(AbstractModel):
+    r"""DeleteHTTPServiceRoute返回参数结构体
 
     """
 
     def __init__(self):
         r"""
-        :param _Count: 最终删除API个数
-        :type Count: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self._Count = None
         self._RequestId = None
-
-    @property
-    def Count(self):
-        r"""最终删除API个数
-        :rtype: int
-        """
-        return self._Count
-
-    @Count.setter
-    def Count(self, Count):
-        self._Count = Count
 
     @property
     def RequestId(self):
@@ -4172,101 +3593,6 @@ class DeleteCloudBaseGWAPIResponse(AbstractModel):
 
 
     def _deserialize(self, params):
-        self._Count = params.get("Count")
-        self._RequestId = params.get("RequestId")
-
-
-class DeleteCloudBaseGWDomainRequest(AbstractModel):
-    r"""DeleteCloudBaseGWDomain请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _ServiceId: 服务ID
-        :type ServiceId: str
-        :param _Domain: 服务域名
-        :type Domain: str
-        """
-        self._ServiceId = None
-        self._Domain = None
-
-    @property
-    def ServiceId(self):
-        r"""服务ID
-        :rtype: str
-        """
-        return self._ServiceId
-
-    @ServiceId.setter
-    def ServiceId(self, ServiceId):
-        self._ServiceId = ServiceId
-
-    @property
-    def Domain(self):
-        r"""服务域名
-        :rtype: str
-        """
-        return self._Domain
-
-    @Domain.setter
-    def Domain(self, Domain):
-        self._Domain = Domain
-
-
-    def _deserialize(self, params):
-        self._ServiceId = params.get("ServiceId")
-        self._Domain = params.get("Domain")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DeleteCloudBaseGWDomainResponse(AbstractModel):
-    r"""DeleteCloudBaseGWDomain返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Count: 删除个数
-        :type Count: int
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._Count = None
-        self._RequestId = None
-
-    @property
-    def Count(self):
-        r"""删除个数
-        :rtype: int
-        """
-        return self._Count
-
-    @Count.setter
-    def Count(self, Count):
-        self._Count = Count
-
-    @property
-    def RequestId(self):
-        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._Count = params.get("Count")
         self._RequestId = params.get("RequestId")
 
 
@@ -4683,6 +4009,150 @@ class DeleteVmInstanceResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeApiKeyListRequest(AbstractModel):
+    r"""DescribeApiKeyList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: 环境 ID，用于标识该密钥归属的云开发环境，不同环境之间的数据相互隔离
+        :type EnvId: str
+        :param _PageNumber: 分页查询的页码，从 1 开始。与 PageSize 配合使用，不传则默认返回第 1 页
+        :type PageNumber: int
+        :param _PageSize: 分页查询每页返回的记录条数。与 PageNumber 配合使用，不传则使用系统默认值
+        :type PageSize: int
+        :param _KeyType: 密钥类型过滤条件。可选值：api_key（服务端调用使用的 API 密钥，具有完整权限）、publish_key（客户端使用的公开密钥，权限受限）密钥类型过滤条件。不传默认值为api_key
+        :type KeyType: str
+        """
+        self._EnvId = None
+        self._PageNumber = None
+        self._PageSize = None
+        self._KeyType = None
+
+    @property
+    def EnvId(self):
+        r"""环境 ID，用于标识该密钥归属的云开发环境，不同环境之间的数据相互隔离
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def PageNumber(self):
+        r"""分页查询的页码，从 1 开始。与 PageSize 配合使用，不传则默认返回第 1 页
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        r"""分页查询每页返回的记录条数。与 PageNumber 配合使用，不传则使用系统默认值
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def KeyType(self):
+        r"""密钥类型过滤条件。可选值：api_key（服务端调用使用的 API 密钥，具有完整权限）、publish_key（客户端使用的公开密钥，权限受限）密钥类型过滤条件。不传默认值为api_key
+        :rtype: str
+        """
+        return self._KeyType
+
+    @KeyType.setter
+    def KeyType(self, KeyType):
+        self._KeyType = KeyType
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        self._KeyType = params.get("KeyType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeApiKeyListResponse(AbstractModel):
+    r"""DescribeApiKeyList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: API Key列表
+        :type Data: list of ApiKeyToken
+        :param _Total: 总数
+        :type Total: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""API Key列表
+        :rtype: list of ApiKeyToken
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Total(self):
+        r"""总数
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = ApiKeyToken()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._Total = params.get("Total")
         self._RequestId = params.get("RequestId")
 
 
@@ -5470,537 +4940,6 @@ class DescribeCloudBaseBuildServiceResponse(AbstractModel):
                 obj._deserialize(item)
                 self._DownloadHeaders.append(obj)
         self._OutDate = params.get("OutDate")
-        self._RequestId = params.get("RequestId")
-
-
-class DescribeCloudBaseGWAPIRequest(AbstractModel):
-    r"""DescribeCloudBaseGWAPI请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _ServiceId: 服务ID
-        :type ServiceId: str
-        :param _Domain: API域名
-        :type Domain: str
-        :param _Path: API Path
-        :type Path: str
-        :param _APIId: API ID
-        :type APIId: str
-        :param _Type: API类型，1为云函数，2为容器
-        :type Type: int
-        :param _Name: API名，Type为1时为云函数名，Type为2时为容器服务名
-        :type Name: str
-        :param _Offset: 查询的分页参数，用于设置查询的偏移位置，0表示从头开始
-        :type Offset: int
-        :param _Limit: 查询的分页参数，用于表示每次查询的最大返回数据量
-        :type Limit: int
-        :param _EnableRegion: 是否启用多地域
-        :type EnableRegion: bool
-        :param _EnableUnion: 是否使用统一域名
-        :type EnableUnion: bool
-        """
-        self._ServiceId = None
-        self._Domain = None
-        self._Path = None
-        self._APIId = None
-        self._Type = None
-        self._Name = None
-        self._Offset = None
-        self._Limit = None
-        self._EnableRegion = None
-        self._EnableUnion = None
-
-    @property
-    def ServiceId(self):
-        r"""服务ID
-        :rtype: str
-        """
-        return self._ServiceId
-
-    @ServiceId.setter
-    def ServiceId(self, ServiceId):
-        self._ServiceId = ServiceId
-
-    @property
-    def Domain(self):
-        r"""API域名
-        :rtype: str
-        """
-        return self._Domain
-
-    @Domain.setter
-    def Domain(self, Domain):
-        self._Domain = Domain
-
-    @property
-    def Path(self):
-        r"""API Path
-        :rtype: str
-        """
-        return self._Path
-
-    @Path.setter
-    def Path(self, Path):
-        self._Path = Path
-
-    @property
-    def APIId(self):
-        r"""API ID
-        :rtype: str
-        """
-        return self._APIId
-
-    @APIId.setter
-    def APIId(self, APIId):
-        self._APIId = APIId
-
-    @property
-    def Type(self):
-        r"""API类型，1为云函数，2为容器
-        :rtype: int
-        """
-        return self._Type
-
-    @Type.setter
-    def Type(self, Type):
-        self._Type = Type
-
-    @property
-    def Name(self):
-        r"""API名，Type为1时为云函数名，Type为2时为容器服务名
-        :rtype: str
-        """
-        return self._Name
-
-    @Name.setter
-    def Name(self, Name):
-        self._Name = Name
-
-    @property
-    def Offset(self):
-        r"""查询的分页参数，用于设置查询的偏移位置，0表示从头开始
-        :rtype: int
-        """
-        return self._Offset
-
-    @Offset.setter
-    def Offset(self, Offset):
-        self._Offset = Offset
-
-    @property
-    def Limit(self):
-        r"""查询的分页参数，用于表示每次查询的最大返回数据量
-        :rtype: int
-        """
-        return self._Limit
-
-    @Limit.setter
-    def Limit(self, Limit):
-        self._Limit = Limit
-
-    @property
-    def EnableRegion(self):
-        r"""是否启用多地域
-        :rtype: bool
-        """
-        return self._EnableRegion
-
-    @EnableRegion.setter
-    def EnableRegion(self, EnableRegion):
-        self._EnableRegion = EnableRegion
-
-    @property
-    def EnableUnion(self):
-        r"""是否使用统一域名
-        :rtype: bool
-        """
-        return self._EnableUnion
-
-    @EnableUnion.setter
-    def EnableUnion(self, EnableUnion):
-        self._EnableUnion = EnableUnion
-
-
-    def _deserialize(self, params):
-        self._ServiceId = params.get("ServiceId")
-        self._Domain = params.get("Domain")
-        self._Path = params.get("Path")
-        self._APIId = params.get("APIId")
-        self._Type = params.get("Type")
-        self._Name = params.get("Name")
-        self._Offset = params.get("Offset")
-        self._Limit = params.get("Limit")
-        self._EnableRegion = params.get("EnableRegion")
-        self._EnableUnion = params.get("EnableUnion")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeCloudBaseGWAPIResponse(AbstractModel):
-    r"""DescribeCloudBaseGWAPI返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _APISet: API列表
-注意：此字段可能返回 null，表示取不到有效值。
-        :type APISet: list of CloudBaseGWAPI
-        :param _EnableService: 是否开启http调用
-        :type EnableService: bool
-        :param _Total: 查询结果的数据总量
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Total: int
-        :param _Offset: 查询的分页参数
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Offset: int
-        :param _Limit: 查询的分页参数
-注意：此字段可能返回 null，表示取不到有效值。
-        :type Limit: int
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._APISet = None
-        self._EnableService = None
-        self._Total = None
-        self._Offset = None
-        self._Limit = None
-        self._RequestId = None
-
-    @property
-    def APISet(self):
-        r"""API列表
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: list of CloudBaseGWAPI
-        """
-        return self._APISet
-
-    @APISet.setter
-    def APISet(self, APISet):
-        self._APISet = APISet
-
-    @property
-    def EnableService(self):
-        r"""是否开启http调用
-        :rtype: bool
-        """
-        return self._EnableService
-
-    @EnableService.setter
-    def EnableService(self, EnableService):
-        self._EnableService = EnableService
-
-    @property
-    def Total(self):
-        r"""查询结果的数据总量
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: int
-        """
-        return self._Total
-
-    @Total.setter
-    def Total(self, Total):
-        self._Total = Total
-
-    @property
-    def Offset(self):
-        r"""查询的分页参数
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: int
-        """
-        return self._Offset
-
-    @Offset.setter
-    def Offset(self, Offset):
-        self._Offset = Offset
-
-    @property
-    def Limit(self):
-        r"""查询的分页参数
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: int
-        """
-        return self._Limit
-
-    @Limit.setter
-    def Limit(self, Limit):
-        self._Limit = Limit
-
-    @property
-    def RequestId(self):
-        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        if params.get("APISet") is not None:
-            self._APISet = []
-            for item in params.get("APISet"):
-                obj = CloudBaseGWAPI()
-                obj._deserialize(item)
-                self._APISet.append(obj)
-        self._EnableService = params.get("EnableService")
-        self._Total = params.get("Total")
-        self._Offset = params.get("Offset")
-        self._Limit = params.get("Limit")
-        self._RequestId = params.get("RequestId")
-
-
-class DescribeCloudBaseGWServiceRequest(AbstractModel):
-    r"""DescribeCloudBaseGWService请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _ServiceId: 服务ID
-        :type ServiceId: str
-        :param _Domain: 服务域名
-        :type Domain: str
-        :param _EnableRegion: 是否启用多地域
-        :type EnableRegion: bool
-        :param _EnableUnion: 是否启用统一域名
-        :type EnableUnion: bool
-        """
-        self._ServiceId = None
-        self._Domain = None
-        self._EnableRegion = None
-        self._EnableUnion = None
-
-    @property
-    def ServiceId(self):
-        r"""服务ID
-        :rtype: str
-        """
-        return self._ServiceId
-
-    @ServiceId.setter
-    def ServiceId(self, ServiceId):
-        self._ServiceId = ServiceId
-
-    @property
-    def Domain(self):
-        r"""服务域名
-        :rtype: str
-        """
-        return self._Domain
-
-    @Domain.setter
-    def Domain(self, Domain):
-        self._Domain = Domain
-
-    @property
-    def EnableRegion(self):
-        r"""是否启用多地域
-        :rtype: bool
-        """
-        return self._EnableRegion
-
-    @EnableRegion.setter
-    def EnableRegion(self, EnableRegion):
-        self._EnableRegion = EnableRegion
-
-    @property
-    def EnableUnion(self):
-        r"""是否启用统一域名
-        :rtype: bool
-        """
-        return self._EnableUnion
-
-    @EnableUnion.setter
-    def EnableUnion(self, EnableUnion):
-        self._EnableUnion = EnableUnion
-
-
-    def _deserialize(self, params):
-        self._ServiceId = params.get("ServiceId")
-        self._Domain = params.get("Domain")
-        self._EnableRegion = params.get("EnableRegion")
-        self._EnableUnion = params.get("EnableUnion")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeCloudBaseGWServiceResponse(AbstractModel):
-    r"""DescribeCloudBaseGWService返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _ServiceSet: 服务列表
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ServiceSet: list of CloudBaseGWService
-        :param _EnableService: 是否开启服务
-        :type EnableService: bool
-        :param _DefaultDomain: 默认域名信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :type DefaultDomain: str
-        :param _EnableUnion: 是否开启CDN迁移
-注意：此字段可能返回 null，表示取不到有效值。
-        :type EnableUnion: bool
-        :param _EnableCheckAcrossDomain: 是否开启跨域校验，默认开启 true
-注意：此字段可能返回 null，表示取不到有效值。
-        :type EnableCheckAcrossDomain: bool
-        :param _CustomRoutingRules: 自定义路由规则
-注意：此字段可能返回 null，表示取不到有效值。
-        :type CustomRoutingRules: str
-        :param _AccessFlag: 默认域名绑定类型，1绑定TCB-CDN，2绑定tcbingres（不经过cdn）
-        :type AccessFlag: int
-        :param _OriginDomain: 云接入源站域名
-        :type OriginDomain: str
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._ServiceSet = None
-        self._EnableService = None
-        self._DefaultDomain = None
-        self._EnableUnion = None
-        self._EnableCheckAcrossDomain = None
-        self._CustomRoutingRules = None
-        self._AccessFlag = None
-        self._OriginDomain = None
-        self._RequestId = None
-
-    @property
-    def ServiceSet(self):
-        r"""服务列表
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: list of CloudBaseGWService
-        """
-        return self._ServiceSet
-
-    @ServiceSet.setter
-    def ServiceSet(self, ServiceSet):
-        self._ServiceSet = ServiceSet
-
-    @property
-    def EnableService(self):
-        r"""是否开启服务
-        :rtype: bool
-        """
-        return self._EnableService
-
-    @EnableService.setter
-    def EnableService(self, EnableService):
-        self._EnableService = EnableService
-
-    @property
-    def DefaultDomain(self):
-        r"""默认域名信息
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: str
-        """
-        return self._DefaultDomain
-
-    @DefaultDomain.setter
-    def DefaultDomain(self, DefaultDomain):
-        self._DefaultDomain = DefaultDomain
-
-    @property
-    def EnableUnion(self):
-        r"""是否开启CDN迁移
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: bool
-        """
-        return self._EnableUnion
-
-    @EnableUnion.setter
-    def EnableUnion(self, EnableUnion):
-        self._EnableUnion = EnableUnion
-
-    @property
-    def EnableCheckAcrossDomain(self):
-        r"""是否开启跨域校验，默认开启 true
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: bool
-        """
-        return self._EnableCheckAcrossDomain
-
-    @EnableCheckAcrossDomain.setter
-    def EnableCheckAcrossDomain(self, EnableCheckAcrossDomain):
-        self._EnableCheckAcrossDomain = EnableCheckAcrossDomain
-
-    @property
-    def CustomRoutingRules(self):
-        r"""自定义路由规则
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: str
-        """
-        return self._CustomRoutingRules
-
-    @CustomRoutingRules.setter
-    def CustomRoutingRules(self, CustomRoutingRules):
-        self._CustomRoutingRules = CustomRoutingRules
-
-    @property
-    def AccessFlag(self):
-        r"""默认域名绑定类型，1绑定TCB-CDN，2绑定tcbingres（不经过cdn）
-        :rtype: int
-        """
-        return self._AccessFlag
-
-    @AccessFlag.setter
-    def AccessFlag(self, AccessFlag):
-        self._AccessFlag = AccessFlag
-
-    @property
-    def OriginDomain(self):
-        r"""云接入源站域名
-        :rtype: str
-        """
-        return self._OriginDomain
-
-    @OriginDomain.setter
-    def OriginDomain(self, OriginDomain):
-        self._OriginDomain = OriginDomain
-
-    @property
-    def RequestId(self):
-        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        if params.get("ServiceSet") is not None:
-            self._ServiceSet = []
-            for item in params.get("ServiceSet"):
-                obj = CloudBaseGWService()
-                obj._deserialize(item)
-                self._ServiceSet.append(obj)
-        self._EnableService = params.get("EnableService")
-        self._DefaultDomain = params.get("DefaultDomain")
-        self._EnableUnion = params.get("EnableUnion")
-        self._EnableCheckAcrossDomain = params.get("EnableCheckAcrossDomain")
-        self._CustomRoutingRules = params.get("CustomRoutingRules")
-        self._AccessFlag = params.get("AccessFlag")
-        self._OriginDomain = params.get("OriginDomain")
         self._RequestId = params.get("RequestId")
 
 
@@ -7912,6 +6851,314 @@ class DescribeEnvsResponse(AbstractModel):
                 obj._deserialize(item)
                 self._EnvList.append(obj)
         self._Total = params.get("Total")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeGatewayVersionsRequest(AbstractModel):
+    r"""DescribeGatewayVersions请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: 环境id
+        :type EnvId: str
+        :param _GatewayId: 网关id
+        :type GatewayId: str
+        :param _VersionName: 版本名
+        :type VersionName: str
+        """
+        self._EnvId = None
+        self._GatewayId = None
+        self._VersionName = None
+
+    @property
+    def EnvId(self):
+        r"""环境id
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def GatewayId(self):
+        r"""网关id
+        :rtype: str
+        """
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def VersionName(self):
+        r"""版本名
+        :rtype: str
+        """
+        return self._VersionName
+
+    @VersionName.setter
+    def VersionName(self, VersionName):
+        self._VersionName = VersionName
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        self._GatewayId = params.get("GatewayId")
+        self._VersionName = params.get("VersionName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeGatewayVersionsResponse(AbstractModel):
+    r"""DescribeGatewayVersions返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: 网关id
+        :type GatewayId: str
+        :param _TotalCount: 版本总数
+        :type TotalCount: int
+        :param _GatewayVersionItems: 版本信息详情
+        :type GatewayVersionItems: list of GatewayVersionItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._GatewayId = None
+        self._TotalCount = None
+        self._GatewayVersionItems = None
+        self._RequestId = None
+
+    @property
+    def GatewayId(self):
+        r"""网关id
+        :rtype: str
+        """
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def TotalCount(self):
+        r"""版本总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def GatewayVersionItems(self):
+        r"""版本信息详情
+        :rtype: list of GatewayVersionItem
+        """
+        return self._GatewayVersionItems
+
+    @GatewayVersionItems.setter
+    def GatewayVersionItems(self, GatewayVersionItems):
+        self._GatewayVersionItems = GatewayVersionItems
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._TotalCount = params.get("TotalCount")
+        if params.get("GatewayVersionItems") is not None:
+            self._GatewayVersionItems = []
+            for item in params.get("GatewayVersionItems"):
+                obj = GatewayVersionItem()
+                obj._deserialize(item)
+                self._GatewayVersionItems.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeHTTPServiceRouteRequest(AbstractModel):
+    r"""DescribeHTTPServiceRoute请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: 环境ID
+        :type EnvId: str
+        :param _Filters: 过滤条件。Key的含义参考对应字段，Value精确匹配。可过滤: Domain、Path、DomainType、UpstreamResourceType。可过滤的Values单条不超过100
+        :type Filters: list of Filter
+        :param _Offset: 分页偏移量。默认 0
+        :type Offset: int
+        :param _Limit: 分页限制。默认20，最大值1000
+        :type Limit: int
+        """
+        self._EnvId = None
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def EnvId(self):
+        r"""环境ID
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def Filters(self):
+        r"""过滤条件。Key的含义参考对应字段，Value精确匹配。可过滤: Domain、Path、DomainType、UpstreamResourceType。可过滤的Values单条不超过100
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        r"""分页偏移量。默认 0
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""分页限制。默认20，最大值1000
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeHTTPServiceRouteResponse(AbstractModel):
+    r"""DescribeHTTPServiceRoute返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domains: 域名路由信息列表
+        :type Domains: list of HTTPServiceDomain
+        :param _OriginDomain: 自定义接入的源站域名（HTTPService接入层域名）
+        :type OriginDomain: str
+        :param _TotalCount: 域名总数，分页查询使用总数判断是否已经拉取到所有数据
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Domains = None
+        self._OriginDomain = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Domains(self):
+        r"""域名路由信息列表
+        :rtype: list of HTTPServiceDomain
+        """
+        return self._Domains
+
+    @Domains.setter
+    def Domains(self, Domains):
+        self._Domains = Domains
+
+    @property
+    def OriginDomain(self):
+        r"""自定义接入的源站域名（HTTPService接入层域名）
+        :rtype: str
+        """
+        return self._OriginDomain
+
+    @OriginDomain.setter
+    def OriginDomain(self, OriginDomain):
+        self._OriginDomain = OriginDomain
+
+    @property
+    def TotalCount(self):
+        r"""域名总数，分页查询使用总数判断是否已经拉取到所有数据
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Domains") is not None:
+            self._Domains = []
+            for item in params.get("Domains"):
+                obj = HTTPServiceDomain()
+                obj._deserialize(item)
+                self._Domains.append(obj)
+        self._OriginDomain = params.get("OriginDomain")
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -10909,6 +10156,150 @@ class EnvInfo(AbstractModel):
         
 
 
+class ExternalStorage(AbstractModel):
+    r"""外部存储。
+    标识该存储介质，并非由云开发CloudBase创建，而是绑定的其他存储介质。
+    目前仅支持 [腾讯云-对象存储](https://cloud.tencent.com/document/product/436)。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BucketName: 桶名。
+当 Provider=cos 时，表示腾讯云对象存储桶。
+        :type BucketName: str
+        :param _Region: Bucket所属地域。
+当 Provider=cos 时，表示腾讯云对象存储桶的所属地域。
+        :type Region: str
+        :param _BasePath: 基础路径。
+绑定之后，用户访问云存储内的文件，后台会自动以BasePath作为前缀，拼接到所访问的文件中。
+例如：
+  BasePath=my-cloudbase-path ， 当用户访问云存储内的 /tencentcloud.png 时，实际访问的完整路径是：/my-cloudbase-path/tencentcloud.png
+        :type BasePath: str
+        :param _Enabled: 是否启用外部存储
+        :type Enabled: bool
+        """
+        self._BucketName = None
+        self._Region = None
+        self._BasePath = None
+        self._Enabled = None
+
+    @property
+    def BucketName(self):
+        r"""桶名。
+当 Provider=cos 时，表示腾讯云对象存储桶。
+        :rtype: str
+        """
+        return self._BucketName
+
+    @BucketName.setter
+    def BucketName(self, BucketName):
+        self._BucketName = BucketName
+
+    @property
+    def Region(self):
+        r"""Bucket所属地域。
+当 Provider=cos 时，表示腾讯云对象存储桶的所属地域。
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def BasePath(self):
+        r"""基础路径。
+绑定之后，用户访问云存储内的文件，后台会自动以BasePath作为前缀，拼接到所访问的文件中。
+例如：
+  BasePath=my-cloudbase-path ， 当用户访问云存储内的 /tencentcloud.png 时，实际访问的完整路径是：/my-cloudbase-path/tencentcloud.png
+        :rtype: str
+        """
+        return self._BasePath
+
+    @BasePath.setter
+    def BasePath(self, BasePath):
+        self._BasePath = BasePath
+
+    @property
+    def Enabled(self):
+        r"""是否启用外部存储
+        :rtype: bool
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+
+    def _deserialize(self, params):
+        self._BucketName = params.get("BucketName")
+        self._Region = params.get("Region")
+        self._BasePath = params.get("BasePath")
+        self._Enabled = params.get("Enabled")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Filter(AbstractModel):
+    r"""描述键值对过滤器，用于条件过滤查询。例如过滤ID、名称、状态等
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 需要过滤的字段。过滤条件数量限制为10。
+        :type Name: str
+        :param _Values: 字段的过滤值。
+        :type Values: list of str
+        """
+        self._Name = None
+        self._Values = None
+
+    @property
+    def Name(self):
+        r"""需要过滤的字段。过滤条件数量限制为10。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Values(self):
+        r"""字段的过滤值。
+        :rtype: list of str
+        """
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Values = params.get("Values")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class FunctionInfo(AbstractModel):
     r"""函数的信息
 
@@ -10952,6 +10343,179 @@ class FunctionInfo(AbstractModel):
     def _deserialize(self, params):
         self._Namespace = params.get("Namespace")
         self._Region = params.get("Region")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GatewayVersionItem(AbstractModel):
+    r"""网关版本详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VersionName: 版本名
+        :type VersionName: str
+        :param _Weight: 版本流量权重
+        :type Weight: int
+        :param _Status: 创建状态
+        :type Status: str
+        :param _CreatedTime: 创建时间
+        :type CreatedTime: str
+        :param _UpdatedTime: 更新时间
+        :type UpdatedTime: str
+        :param _BuildId: 构建ID
+        :type BuildId: int
+        :param _Remark: 备注
+        :type Remark: str
+        :param _Priority: 优先级
+        :type Priority: int
+        :param _IsDefault: 是否默认版本
+        :type IsDefault: bool
+        :param _CustomConfig: 网关版本自定义配置
+        :type CustomConfig: :class:`tencentcloud.tcb.v20180608.models.WxGatewayCustomConfig`
+        """
+        self._VersionName = None
+        self._Weight = None
+        self._Status = None
+        self._CreatedTime = None
+        self._UpdatedTime = None
+        self._BuildId = None
+        self._Remark = None
+        self._Priority = None
+        self._IsDefault = None
+        self._CustomConfig = None
+
+    @property
+    def VersionName(self):
+        r"""版本名
+        :rtype: str
+        """
+        return self._VersionName
+
+    @VersionName.setter
+    def VersionName(self, VersionName):
+        self._VersionName = VersionName
+
+    @property
+    def Weight(self):
+        r"""版本流量权重
+        :rtype: int
+        """
+        return self._Weight
+
+    @Weight.setter
+    def Weight(self, Weight):
+        self._Weight = Weight
+
+    @property
+    def Status(self):
+        r"""创建状态
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreatedTime(self):
+        r"""创建时间
+        :rtype: str
+        """
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+    @property
+    def UpdatedTime(self):
+        r"""更新时间
+        :rtype: str
+        """
+        return self._UpdatedTime
+
+    @UpdatedTime.setter
+    def UpdatedTime(self, UpdatedTime):
+        self._UpdatedTime = UpdatedTime
+
+    @property
+    def BuildId(self):
+        r"""构建ID
+        :rtype: int
+        """
+        return self._BuildId
+
+    @BuildId.setter
+    def BuildId(self, BuildId):
+        self._BuildId = BuildId
+
+    @property
+    def Remark(self):
+        r"""备注
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def Priority(self):
+        r"""优先级
+        :rtype: int
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+    @property
+    def IsDefault(self):
+        r"""是否默认版本
+        :rtype: bool
+        """
+        return self._IsDefault
+
+    @IsDefault.setter
+    def IsDefault(self, IsDefault):
+        self._IsDefault = IsDefault
+
+    @property
+    def CustomConfig(self):
+        r"""网关版本自定义配置
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.WxGatewayCustomConfig`
+        """
+        return self._CustomConfig
+
+    @CustomConfig.setter
+    def CustomConfig(self, CustomConfig):
+        self._CustomConfig = CustomConfig
+
+
+    def _deserialize(self, params):
+        self._VersionName = params.get("VersionName")
+        self._Weight = params.get("Weight")
+        self._Status = params.get("Status")
+        self._CreatedTime = params.get("CreatedTime")
+        self._UpdatedTime = params.get("UpdatedTime")
+        self._BuildId = params.get("BuildId")
+        self._Remark = params.get("Remark")
+        self._Priority = params.get("Priority")
+        self._IsDefault = params.get("IsDefault")
+        if params.get("CustomConfig") is not None:
+            self._CustomConfig = WxGatewayCustomConfig()
+            self._CustomConfig._deserialize(params.get("CustomConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11063,6 +10627,848 @@ class GetProvidersResponse(AbstractModel):
                 obj._deserialize(item)
                 self._Data.append(obj)
         self._RequestId = params.get("RequestId")
+
+
+class HTTPServiceDomain(AbstractModel):
+    r"""查询HTTP访问服务输出的域名信息，每个域名内包含所有路由信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 域名
+        :type Domain: str
+        :param _DomainType: 域名类型。 HTTPSERVICE: HTTP访问服务，CBR: 云托管服务，ANYSERVICE: 任意服务，AI_AGENT: AI agent，VM: 主机，INTEGRATION_CALLBACK: 集成回调
+        :type DomainType: str
+        :param _AccessType: 绑定类型。默认DIRECT。DIRECT: 直连到HTTP访问服务， CDN: 接入云开发CDN，CUSTOM: 自定义接入类型（其他CDN或者WAF）
+        :type AccessType: str
+        :param _CertId: 证书ID。当前账户下SSL平台的证书ID
+        :type CertId: str
+        :param _Protocol: 协议类型。默认HTTP_AND_HTTPS。HTTP_AND_HTTPS: 同时开启http和https，HTTP_TO_HTTPS: http重定向成https，HTTPS_TO_HTTP: https重定向成http。如果未配置证书无法访问https或者进行重定向
+        :type Protocol: str
+        :param _Cname: 配置DNS解析的CNAME。根据AccessType返回不同的CNAME值。
+        :type Cname: str
+        :param _IsDefault: 是否是默认域名
+        :type IsDefault: bool
+        :param _Enable: 域名开启状态
+        :type Enable: bool
+        :param _Status: 状态。PROCESSING、FAIL，SUCCESS。
+        :type Status: str
+        :param _DNSStatus: DNS解析状态。OK： 解析正常，INVALID：解析不正确，域名未解析到当前Cname域名。
+        :type DNSStatus: str
+        :param _Routes: HTTP访问服务路由信息
+        :type Routes: list of HTTPServiceRoute
+        :param _CreateTime: 域名创建时间
+        :type CreateTime: str
+        :param _UpdateTime: 域名更新时间
+        :type UpdateTime: str
+        """
+        self._Domain = None
+        self._DomainType = None
+        self._AccessType = None
+        self._CertId = None
+        self._Protocol = None
+        self._Cname = None
+        self._IsDefault = None
+        self._Enable = None
+        self._Status = None
+        self._DNSStatus = None
+        self._Routes = None
+        self._CreateTime = None
+        self._UpdateTime = None
+
+    @property
+    def Domain(self):
+        r"""域名
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def DomainType(self):
+        r"""域名类型。 HTTPSERVICE: HTTP访问服务，CBR: 云托管服务，ANYSERVICE: 任意服务，AI_AGENT: AI agent，VM: 主机，INTEGRATION_CALLBACK: 集成回调
+        :rtype: str
+        """
+        return self._DomainType
+
+    @DomainType.setter
+    def DomainType(self, DomainType):
+        self._DomainType = DomainType
+
+    @property
+    def AccessType(self):
+        r"""绑定类型。默认DIRECT。DIRECT: 直连到HTTP访问服务， CDN: 接入云开发CDN，CUSTOM: 自定义接入类型（其他CDN或者WAF）
+        :rtype: str
+        """
+        return self._AccessType
+
+    @AccessType.setter
+    def AccessType(self, AccessType):
+        self._AccessType = AccessType
+
+    @property
+    def CertId(self):
+        r"""证书ID。当前账户下SSL平台的证书ID
+        :rtype: str
+        """
+        return self._CertId
+
+    @CertId.setter
+    def CertId(self, CertId):
+        self._CertId = CertId
+
+    @property
+    def Protocol(self):
+        r"""协议类型。默认HTTP_AND_HTTPS。HTTP_AND_HTTPS: 同时开启http和https，HTTP_TO_HTTPS: http重定向成https，HTTPS_TO_HTTP: https重定向成http。如果未配置证书无法访问https或者进行重定向
+        :rtype: str
+        """
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def Cname(self):
+        r"""配置DNS解析的CNAME。根据AccessType返回不同的CNAME值。
+        :rtype: str
+        """
+        return self._Cname
+
+    @Cname.setter
+    def Cname(self, Cname):
+        self._Cname = Cname
+
+    @property
+    def IsDefault(self):
+        r"""是否是默认域名
+        :rtype: bool
+        """
+        return self._IsDefault
+
+    @IsDefault.setter
+    def IsDefault(self, IsDefault):
+        self._IsDefault = IsDefault
+
+    @property
+    def Enable(self):
+        r"""域名开启状态
+        :rtype: bool
+        """
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+    @property
+    def Status(self):
+        r"""状态。PROCESSING、FAIL，SUCCESS。
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def DNSStatus(self):
+        r"""DNS解析状态。OK： 解析正常，INVALID：解析不正确，域名未解析到当前Cname域名。
+        :rtype: str
+        """
+        return self._DNSStatus
+
+    @DNSStatus.setter
+    def DNSStatus(self, DNSStatus):
+        self._DNSStatus = DNSStatus
+
+    @property
+    def Routes(self):
+        r"""HTTP访问服务路由信息
+        :rtype: list of HTTPServiceRoute
+        """
+        return self._Routes
+
+    @Routes.setter
+    def Routes(self, Routes):
+        self._Routes = Routes
+
+    @property
+    def CreateTime(self):
+        r"""域名创建时间
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""域名更新时间
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._DomainType = params.get("DomainType")
+        self._AccessType = params.get("AccessType")
+        self._CertId = params.get("CertId")
+        self._Protocol = params.get("Protocol")
+        self._Cname = params.get("Cname")
+        self._IsDefault = params.get("IsDefault")
+        self._Enable = params.get("Enable")
+        self._Status = params.get("Status")
+        self._DNSStatus = params.get("DNSStatus")
+        if params.get("Routes") is not None:
+            self._Routes = []
+            for item in params.get("Routes"):
+                obj = HTTPServiceRoute()
+                obj._deserialize(item)
+                self._Routes.append(obj)
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HTTPServiceDomainParam(AbstractModel):
+    r"""创建或修改HTTP访问服务输入的域名信息，修改HTTP访问服务域名时对应字段不传参数表示不需要修改。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 域名。全局唯一。如果域名在其他环境下占用或者腾讯云CDN占用，可能会导致创建失败
+        :type Domain: str
+        :param _AccessType: 绑定类型。默认DIRECT。DIRECT: 直连到HTTP访问服务， CDN: 接入云开发CDN，CUSTOM: 自定义接入类型（其他CDN或者WAF）
+        :type AccessType: str
+        :param _CertId: 证书ID。当前账户下SSL平台的证书ID
+        :type CertId: str
+        :param _Protocol: 协议类型。默认HTTP_AND_HTTPS。HTTP_AND_HTTPS: 同时开启http和https，HTTP_TO_HTTPS: http重定向成https，HTTPS_TO_HTTP: https重定向成http。如果未配置证书无法访问https或者进行重定向
+        :type Protocol: str
+        :param _CustomCname: 自定义CNAME。对应AccessType: Custom
+        :type CustomCname: str
+        :param _Enable: 域名开启状态，不传默认开启
+        :type Enable: bool
+        :param _Routes: 创建/修改的HTTP访问服务路由列表。如果不传，仅创建或修改域名信息。列表最大支持传入20个
+        :type Routes: list of HTTPServiceRouteParam
+        """
+        self._Domain = None
+        self._AccessType = None
+        self._CertId = None
+        self._Protocol = None
+        self._CustomCname = None
+        self._Enable = None
+        self._Routes = None
+
+    @property
+    def Domain(self):
+        r"""域名。全局唯一。如果域名在其他环境下占用或者腾讯云CDN占用，可能会导致创建失败
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def AccessType(self):
+        r"""绑定类型。默认DIRECT。DIRECT: 直连到HTTP访问服务， CDN: 接入云开发CDN，CUSTOM: 自定义接入类型（其他CDN或者WAF）
+        :rtype: str
+        """
+        return self._AccessType
+
+    @AccessType.setter
+    def AccessType(self, AccessType):
+        self._AccessType = AccessType
+
+    @property
+    def CertId(self):
+        r"""证书ID。当前账户下SSL平台的证书ID
+        :rtype: str
+        """
+        return self._CertId
+
+    @CertId.setter
+    def CertId(self, CertId):
+        self._CertId = CertId
+
+    @property
+    def Protocol(self):
+        r"""协议类型。默认HTTP_AND_HTTPS。HTTP_AND_HTTPS: 同时开启http和https，HTTP_TO_HTTPS: http重定向成https，HTTPS_TO_HTTP: https重定向成http。如果未配置证书无法访问https或者进行重定向
+        :rtype: str
+        """
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def CustomCname(self):
+        r"""自定义CNAME。对应AccessType: Custom
+        :rtype: str
+        """
+        return self._CustomCname
+
+    @CustomCname.setter
+    def CustomCname(self, CustomCname):
+        self._CustomCname = CustomCname
+
+    @property
+    def Enable(self):
+        r"""域名开启状态，不传默认开启
+        :rtype: bool
+        """
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+    @property
+    def Routes(self):
+        r"""创建/修改的HTTP访问服务路由列表。如果不传，仅创建或修改域名信息。列表最大支持传入20个
+        :rtype: list of HTTPServiceRouteParam
+        """
+        return self._Routes
+
+    @Routes.setter
+    def Routes(self, Routes):
+        self._Routes = Routes
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        self._AccessType = params.get("AccessType")
+        self._CertId = params.get("CertId")
+        self._Protocol = params.get("Protocol")
+        self._CustomCname = params.get("CustomCname")
+        self._Enable = params.get("Enable")
+        if params.get("Routes") is not None:
+            self._Routes = []
+            for item in params.get("Routes"):
+                obj = HTTPServiceRouteParam()
+                obj._deserialize(item)
+                self._Routes.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HTTPServicePathRewrite(AbstractModel):
+    r"""HTTP访问服务路径重写配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Prefix: 路径前缀重写。StaticStorePrefix、Prefix只能填一个
+        :type Prefix: str
+        """
+        self._Prefix = None
+
+    @property
+    def Prefix(self):
+        r"""路径前缀重写。StaticStorePrefix、Prefix只能填一个
+        :rtype: str
+        """
+        return self._Prefix
+
+    @Prefix.setter
+    def Prefix(self, Prefix):
+        self._Prefix = Prefix
+
+
+    def _deserialize(self, params):
+        self._Prefix = params.get("Prefix")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HTTPServiceQPSPerClient(AbstractModel):
+    r"""http访问服务客户端限频
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LimitBy: 客户端维度限频标识。限制当前资源被单个客户端调用的频率，客户端标识支持 用户ID（UserID） 或 客户端 IP（ClientIP）。UserID 包括 云开发用户 ID 或 微信 openid，如果请求无 UserID 信息，则不会限制。
+        :type LimitBy: str
+        :param _LimitValue: 限制QPS值，每秒请求次数
+        :type LimitValue: int
+        """
+        self._LimitBy = None
+        self._LimitValue = None
+
+    @property
+    def LimitBy(self):
+        r"""客户端维度限频标识。限制当前资源被单个客户端调用的频率，客户端标识支持 用户ID（UserID） 或 客户端 IP（ClientIP）。UserID 包括 云开发用户 ID 或 微信 openid，如果请求无 UserID 信息，则不会限制。
+        :rtype: str
+        """
+        return self._LimitBy
+
+    @LimitBy.setter
+    def LimitBy(self, LimitBy):
+        self._LimitBy = LimitBy
+
+    @property
+    def LimitValue(self):
+        r"""限制QPS值，每秒请求次数
+        :rtype: int
+        """
+        return self._LimitValue
+
+    @LimitValue.setter
+    def LimitValue(self, LimitValue):
+        self._LimitValue = LimitValue
+
+
+    def _deserialize(self, params):
+        self._LimitBy = params.get("LimitBy")
+        self._LimitValue = params.get("LimitValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HTTPServiceRoute(AbstractModel):
+    r"""查询HTTP访问服务输出路由信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Path: 路径
+        :type Path: str
+        :param _PathRewrite: 路径重写
+        :type PathRewrite: :class:`tencentcloud.tcb.v20180608.models.HTTPServicePathRewrite`
+        :param _UpstreamResourceType: 上游服务类型。SCF: 云函数，CBR: 云托管，STATIC_STORE: 静态托管，WEB_SCF: WEB云函数，LH: Lighthouse
+        :type UpstreamResourceType: str
+        :param _UpstreamResourceName: 上游服务名
+        :type UpstreamResourceName: str
+        :param _EnableSafeDomain: 是否开启安全域名
+        :type EnableSafeDomain: bool
+        :param _EnableAuth: 是否开启身份认证
+        :type EnableAuth: bool
+        :param _EnablePathTransmission: 是否开启路径透传
+        :type EnablePathTransmission: bool
+        :param _QPSPolicy: QPS限频策略
+        :type QPSPolicy: :class:`tencentcloud.tcb.v20180608.models.HTTPServiceRouteQPSPolicy`
+        :param _Enable: 是否开启路由
+        :type Enable: bool
+        :param _CreateTime: 路由创建时间
+        :type CreateTime: str
+        :param _UpdateTime: 路由更新时间
+        :type UpdateTime: str
+        """
+        self._Path = None
+        self._PathRewrite = None
+        self._UpstreamResourceType = None
+        self._UpstreamResourceName = None
+        self._EnableSafeDomain = None
+        self._EnableAuth = None
+        self._EnablePathTransmission = None
+        self._QPSPolicy = None
+        self._Enable = None
+        self._CreateTime = None
+        self._UpdateTime = None
+
+    @property
+    def Path(self):
+        r"""路径
+        :rtype: str
+        """
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+    @property
+    def PathRewrite(self):
+        r"""路径重写
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.HTTPServicePathRewrite`
+        """
+        return self._PathRewrite
+
+    @PathRewrite.setter
+    def PathRewrite(self, PathRewrite):
+        self._PathRewrite = PathRewrite
+
+    @property
+    def UpstreamResourceType(self):
+        r"""上游服务类型。SCF: 云函数，CBR: 云托管，STATIC_STORE: 静态托管，WEB_SCF: WEB云函数，LH: Lighthouse
+        :rtype: str
+        """
+        return self._UpstreamResourceType
+
+    @UpstreamResourceType.setter
+    def UpstreamResourceType(self, UpstreamResourceType):
+        self._UpstreamResourceType = UpstreamResourceType
+
+    @property
+    def UpstreamResourceName(self):
+        r"""上游服务名
+        :rtype: str
+        """
+        return self._UpstreamResourceName
+
+    @UpstreamResourceName.setter
+    def UpstreamResourceName(self, UpstreamResourceName):
+        self._UpstreamResourceName = UpstreamResourceName
+
+    @property
+    def EnableSafeDomain(self):
+        r"""是否开启安全域名
+        :rtype: bool
+        """
+        return self._EnableSafeDomain
+
+    @EnableSafeDomain.setter
+    def EnableSafeDomain(self, EnableSafeDomain):
+        self._EnableSafeDomain = EnableSafeDomain
+
+    @property
+    def EnableAuth(self):
+        r"""是否开启身份认证
+        :rtype: bool
+        """
+        return self._EnableAuth
+
+    @EnableAuth.setter
+    def EnableAuth(self, EnableAuth):
+        self._EnableAuth = EnableAuth
+
+    @property
+    def EnablePathTransmission(self):
+        r"""是否开启路径透传
+        :rtype: bool
+        """
+        return self._EnablePathTransmission
+
+    @EnablePathTransmission.setter
+    def EnablePathTransmission(self, EnablePathTransmission):
+        self._EnablePathTransmission = EnablePathTransmission
+
+    @property
+    def QPSPolicy(self):
+        r"""QPS限频策略
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.HTTPServiceRouteQPSPolicy`
+        """
+        return self._QPSPolicy
+
+    @QPSPolicy.setter
+    def QPSPolicy(self, QPSPolicy):
+        self._QPSPolicy = QPSPolicy
+
+    @property
+    def Enable(self):
+        r"""是否开启路由
+        :rtype: bool
+        """
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+    @property
+    def CreateTime(self):
+        r"""路由创建时间
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""路由更新时间
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._Path = params.get("Path")
+        if params.get("PathRewrite") is not None:
+            self._PathRewrite = HTTPServicePathRewrite()
+            self._PathRewrite._deserialize(params.get("PathRewrite"))
+        self._UpstreamResourceType = params.get("UpstreamResourceType")
+        self._UpstreamResourceName = params.get("UpstreamResourceName")
+        self._EnableSafeDomain = params.get("EnableSafeDomain")
+        self._EnableAuth = params.get("EnableAuth")
+        self._EnablePathTransmission = params.get("EnablePathTransmission")
+        if params.get("QPSPolicy") is not None:
+            self._QPSPolicy = HTTPServiceRouteQPSPolicy()
+            self._QPSPolicy._deserialize(params.get("QPSPolicy"))
+        self._Enable = params.get("Enable")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HTTPServiceRouteParam(AbstractModel):
+    r"""创建或修改HTTP访问服务输入的路由信息，修改HTTP访问服务路由信息时对应字段不传参数表示不用修改。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Path: 路径
+        :type Path: str
+        :param _UpstreamResourceType: 上游服务类型。创建时必填，修改时可选填。SCF: 云函数，CBR: 云托管，STATIC_STORE: 静态托管，WEB_SCF: WEB云函数，LH: Lighthouse
+        :type UpstreamResourceType: str
+        :param _UpstreamResourceName: 上游服务名。创建时必填，修改时可选填
+        :type UpstreamResourceName: str
+        :param _PathRewrite: 路径重写
+        :type PathRewrite: :class:`tencentcloud.tcb.v20180608.models.HTTPServicePathRewrite`
+        :param _EnableSafeDomain: 是否开启安全域名。默认开启
+        :type EnableSafeDomain: bool
+        :param _EnableAuth: 是否开启身份认证。默认关闭
+        :type EnableAuth: bool
+        :param _EnablePathTransmission: 是否开启路径透传。默认关闭
+        :type EnablePathTransmission: bool
+        :param _QPSPolicy: QPS限频策略
+        :type QPSPolicy: :class:`tencentcloud.tcb.v20180608.models.HTTPServiceRouteQPSPolicy`
+        :param _Enable: 是否开启路由
+        :type Enable: bool
+        """
+        self._Path = None
+        self._UpstreamResourceType = None
+        self._UpstreamResourceName = None
+        self._PathRewrite = None
+        self._EnableSafeDomain = None
+        self._EnableAuth = None
+        self._EnablePathTransmission = None
+        self._QPSPolicy = None
+        self._Enable = None
+
+    @property
+    def Path(self):
+        r"""路径
+        :rtype: str
+        """
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+    @property
+    def UpstreamResourceType(self):
+        r"""上游服务类型。创建时必填，修改时可选填。SCF: 云函数，CBR: 云托管，STATIC_STORE: 静态托管，WEB_SCF: WEB云函数，LH: Lighthouse
+        :rtype: str
+        """
+        return self._UpstreamResourceType
+
+    @UpstreamResourceType.setter
+    def UpstreamResourceType(self, UpstreamResourceType):
+        self._UpstreamResourceType = UpstreamResourceType
+
+    @property
+    def UpstreamResourceName(self):
+        r"""上游服务名。创建时必填，修改时可选填
+        :rtype: str
+        """
+        return self._UpstreamResourceName
+
+    @UpstreamResourceName.setter
+    def UpstreamResourceName(self, UpstreamResourceName):
+        self._UpstreamResourceName = UpstreamResourceName
+
+    @property
+    def PathRewrite(self):
+        r"""路径重写
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.HTTPServicePathRewrite`
+        """
+        return self._PathRewrite
+
+    @PathRewrite.setter
+    def PathRewrite(self, PathRewrite):
+        self._PathRewrite = PathRewrite
+
+    @property
+    def EnableSafeDomain(self):
+        r"""是否开启安全域名。默认开启
+        :rtype: bool
+        """
+        return self._EnableSafeDomain
+
+    @EnableSafeDomain.setter
+    def EnableSafeDomain(self, EnableSafeDomain):
+        self._EnableSafeDomain = EnableSafeDomain
+
+    @property
+    def EnableAuth(self):
+        r"""是否开启身份认证。默认关闭
+        :rtype: bool
+        """
+        return self._EnableAuth
+
+    @EnableAuth.setter
+    def EnableAuth(self, EnableAuth):
+        self._EnableAuth = EnableAuth
+
+    @property
+    def EnablePathTransmission(self):
+        r"""是否开启路径透传。默认关闭
+        :rtype: bool
+        """
+        return self._EnablePathTransmission
+
+    @EnablePathTransmission.setter
+    def EnablePathTransmission(self, EnablePathTransmission):
+        self._EnablePathTransmission = EnablePathTransmission
+
+    @property
+    def QPSPolicy(self):
+        r"""QPS限频策略
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.HTTPServiceRouteQPSPolicy`
+        """
+        return self._QPSPolicy
+
+    @QPSPolicy.setter
+    def QPSPolicy(self, QPSPolicy):
+        self._QPSPolicy = QPSPolicy
+
+    @property
+    def Enable(self):
+        r"""是否开启路由
+        :rtype: bool
+        """
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+
+    def _deserialize(self, params):
+        self._Path = params.get("Path")
+        self._UpstreamResourceType = params.get("UpstreamResourceType")
+        self._UpstreamResourceName = params.get("UpstreamResourceName")
+        if params.get("PathRewrite") is not None:
+            self._PathRewrite = HTTPServicePathRewrite()
+            self._PathRewrite._deserialize(params.get("PathRewrite"))
+        self._EnableSafeDomain = params.get("EnableSafeDomain")
+        self._EnableAuth = params.get("EnableAuth")
+        self._EnablePathTransmission = params.get("EnablePathTransmission")
+        if params.get("QPSPolicy") is not None:
+            self._QPSPolicy = HTTPServiceRouteQPSPolicy()
+            self._QPSPolicy._deserialize(params.get("QPSPolicy"))
+        self._Enable = params.get("Enable")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HTTPServiceRouteQPSPolicy(AbstractModel):
+    r"""云开发路由限频策略
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _QPSTotal: QPS值，每秒请求次数
+        :type QPSTotal: int
+        :param _QPSPerClient: 客户端限频配置
+        :type QPSPerClient: :class:`tencentcloud.tcb.v20180608.models.HTTPServiceQPSPerClient`
+        """
+        self._QPSTotal = None
+        self._QPSPerClient = None
+
+    @property
+    def QPSTotal(self):
+        r"""QPS值，每秒请求次数
+        :rtype: int
+        """
+        return self._QPSTotal
+
+    @QPSTotal.setter
+    def QPSTotal(self, QPSTotal):
+        self._QPSTotal = QPSTotal
+
+    @property
+    def QPSPerClient(self):
+        r"""客户端限频配置
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.HTTPServiceQPSPerClient`
+        """
+        return self._QPSPerClient
+
+    @QPSPerClient.setter
+    def QPSPerClient(self, QPSPerClient):
+        self._QPSPerClient = QPSPerClient
+
+
+    def _deserialize(self, params):
+        self._QPSTotal = params.get("QPSTotal")
+        if params.get("QPSPerClient") is not None:
+            self._QPSPerClient = HTTPServiceQPSPerClient()
+            self._QPSPerClient._deserialize(params.get("QPSPerClient"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class HpaPolicy(AbstractModel):
@@ -12628,105 +13034,6 @@ class ModifyClientResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
-class ModifyCloudBaseGWAPIRequest(AbstractModel):
-    r"""ModifyCloudBaseGWAPI请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _ServiceId: Service ID
-        :type ServiceId: str
-        :param _APIId: API ID
-        :type APIId: str
-        :param _Options: 选项列表，key取值：domain, path。
-        :type Options: list of CloudBaseOption
-        """
-        self._ServiceId = None
-        self._APIId = None
-        self._Options = None
-
-    @property
-    def ServiceId(self):
-        r"""Service ID
-        :rtype: str
-        """
-        return self._ServiceId
-
-    @ServiceId.setter
-    def ServiceId(self, ServiceId):
-        self._ServiceId = ServiceId
-
-    @property
-    def APIId(self):
-        r"""API ID
-        :rtype: str
-        """
-        return self._APIId
-
-    @APIId.setter
-    def APIId(self, APIId):
-        self._APIId = APIId
-
-    @property
-    def Options(self):
-        r"""选项列表，key取值：domain, path。
-        :rtype: list of CloudBaseOption
-        """
-        return self._Options
-
-    @Options.setter
-    def Options(self, Options):
-        self._Options = Options
-
-
-    def _deserialize(self, params):
-        self._ServiceId = params.get("ServiceId")
-        self._APIId = params.get("APIId")
-        if params.get("Options") is not None:
-            self._Options = []
-            for item in params.get("Options"):
-                obj = CloudBaseOption()
-                obj._deserialize(item)
-                self._Options.append(obj)
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class ModifyCloudBaseGWAPIResponse(AbstractModel):
-    r"""ModifyCloudBaseGWAPI返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._RequestId = None
-
-    @property
-    def RequestId(self):
-        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._RequestId = params.get("RequestId")
-
-
 class ModifyClsTopicRequest(AbstractModel):
     r"""ModifyClsTopic请求参数结构体
 
@@ -13057,6 +13364,87 @@ class ModifyEnvRequest(AbstractModel):
 
 class ModifyEnvResponse(AbstractModel):
     r"""ModifyEnv返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyHTTPServiceRouteRequest(AbstractModel):
+    r"""ModifyHTTPServiceRoute请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: 环境ID
+        :type EnvId: str
+        :param _Domain: 域名路由信息
+        :type Domain: :class:`tencentcloud.tcb.v20180608.models.HTTPServiceDomainParam`
+        """
+        self._EnvId = None
+        self._Domain = None
+
+    @property
+    def EnvId(self):
+        r"""环境ID
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def Domain(self):
+        r"""域名路由信息
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.HTTPServiceDomainParam`
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        if params.get("Domain") is not None:
+            self._Domain = HTTPServiceDomainParam()
+            self._Domain._deserialize(params.get("Domain"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyHTTPServiceRouteResponse(AbstractModel):
+    r"""ModifyHTTPServiceRoute返回参数结构体
 
     """
 
@@ -17075,6 +17463,87 @@ class User(AbstractModel):
         
 
 
+class VMLoginConfiguration(AbstractModel):
+    r"""云服务器登录方式
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LoginType: 登录方式。扫码登录时指定为 SCAN_LOGIN
+        :type LoginType: str
+        :param _AutoGeneratePassword: 是否自动生成密码
+        :type AutoGeneratePassword: str
+        :param _Password: 指定密码登录
+        :type Password: str
+        :param _KeyIds: 绑定密钥ID
+        :type KeyIds: list of str
+        """
+        self._LoginType = None
+        self._AutoGeneratePassword = None
+        self._Password = None
+        self._KeyIds = None
+
+    @property
+    def LoginType(self):
+        r"""登录方式。扫码登录时指定为 SCAN_LOGIN
+        :rtype: str
+        """
+        return self._LoginType
+
+    @LoginType.setter
+    def LoginType(self, LoginType):
+        self._LoginType = LoginType
+
+    @property
+    def AutoGeneratePassword(self):
+        r"""是否自动生成密码
+        :rtype: str
+        """
+        return self._AutoGeneratePassword
+
+    @AutoGeneratePassword.setter
+    def AutoGeneratePassword(self, AutoGeneratePassword):
+        self._AutoGeneratePassword = AutoGeneratePassword
+
+    @property
+    def Password(self):
+        r"""指定密码登录
+        :rtype: str
+        """
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def KeyIds(self):
+        r"""绑定密钥ID
+        :rtype: list of str
+        """
+        return self._KeyIds
+
+    @KeyIds.setter
+    def KeyIds(self, KeyIds):
+        self._KeyIds = KeyIds
+
+
+    def _deserialize(self, params):
+        self._LoginType = params.get("LoginType")
+        self._AutoGeneratePassword = params.get("AutoGeneratePassword")
+        self._Password = params.get("Password")
+        self._KeyIds = params.get("KeyIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class VMPrice(AbstractModel):
     r"""虚拟主机价格
 
@@ -17471,6 +17940,106 @@ class VmInstance(AbstractModel):
         self._InstanceId = params.get("InstanceId")
         self._Status = params.get("Status")
         self._Region = params.get("Region")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WxGatewayCustomConfig(AbstractModel):
+    r"""安全网关自定义配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IsOpenXRealIp: 是否开启x-real-ip
+        :type IsOpenXRealIp: bool
+        :param _BanConfig: 封禁配置
+        :type BanConfig: :class:`tencentcloud.tcb.v20180608.models.BanConfig`
+        :param _SourceIpType: 获取源ip方式，PPV1(Proxy Protocol V1)、PPV2(Proxy Protocol V2)、TOA(tcp option address)
+        :type SourceIpType: str
+        :param _LogConfig: 日志信息
+        :type LogConfig: :class:`tencentcloud.tcb.v20180608.models.CustomLogConfig`
+        :param _IsAcceptHttpOne: 是否开启http1.0
+        :type IsAcceptHttpOne: bool
+        """
+        self._IsOpenXRealIp = None
+        self._BanConfig = None
+        self._SourceIpType = None
+        self._LogConfig = None
+        self._IsAcceptHttpOne = None
+
+    @property
+    def IsOpenXRealIp(self):
+        r"""是否开启x-real-ip
+        :rtype: bool
+        """
+        return self._IsOpenXRealIp
+
+    @IsOpenXRealIp.setter
+    def IsOpenXRealIp(self, IsOpenXRealIp):
+        self._IsOpenXRealIp = IsOpenXRealIp
+
+    @property
+    def BanConfig(self):
+        r"""封禁配置
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.BanConfig`
+        """
+        return self._BanConfig
+
+    @BanConfig.setter
+    def BanConfig(self, BanConfig):
+        self._BanConfig = BanConfig
+
+    @property
+    def SourceIpType(self):
+        r"""获取源ip方式，PPV1(Proxy Protocol V1)、PPV2(Proxy Protocol V2)、TOA(tcp option address)
+        :rtype: str
+        """
+        return self._SourceIpType
+
+    @SourceIpType.setter
+    def SourceIpType(self, SourceIpType):
+        self._SourceIpType = SourceIpType
+
+    @property
+    def LogConfig(self):
+        r"""日志信息
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.CustomLogConfig`
+        """
+        return self._LogConfig
+
+    @LogConfig.setter
+    def LogConfig(self, LogConfig):
+        self._LogConfig = LogConfig
+
+    @property
+    def IsAcceptHttpOne(self):
+        r"""是否开启http1.0
+        :rtype: bool
+        """
+        return self._IsAcceptHttpOne
+
+    @IsAcceptHttpOne.setter
+    def IsAcceptHttpOne(self, IsAcceptHttpOne):
+        self._IsAcceptHttpOne = IsAcceptHttpOne
+
+
+    def _deserialize(self, params):
+        self._IsOpenXRealIp = params.get("IsOpenXRealIp")
+        if params.get("BanConfig") is not None:
+            self._BanConfig = BanConfig()
+            self._BanConfig._deserialize(params.get("BanConfig"))
+        self._SourceIpType = params.get("SourceIpType")
+        if params.get("LogConfig") is not None:
+            self._LogConfig = CustomLogConfig()
+            self._LogConfig._deserialize(params.get("LogConfig"))
+        self._IsAcceptHttpOne = params.get("IsAcceptHttpOne")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

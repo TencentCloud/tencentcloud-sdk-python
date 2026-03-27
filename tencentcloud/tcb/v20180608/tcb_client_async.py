@@ -45,42 +45,6 @@ class TcbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def BindCloudBaseAccessDomain(
-            self,
-            request: models.BindCloudBaseAccessDomainRequest,
-            opts: Dict = None,
-    ) -> models.BindCloudBaseAccessDomainResponse:
-        """
-        绑定云开发自定义域名，用于云接入和静态托管
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "BindCloudBaseAccessDomain"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.BindCloudBaseAccessDomainResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def BindCloudBaseGWDomain(
-            self,
-            request: models.BindCloudBaseGWDomainRequest,
-            opts: Dict = None,
-    ) -> models.BindCloudBaseGWDomainResponse:
-        """
-        绑定自定义域名
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "BindCloudBaseGWDomain"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.BindCloudBaseGWDomainResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def CheckTcbService(
             self,
             request: models.CheckTcbServiceRequest,
@@ -94,6 +58,24 @@ class TcbClient(AbstractClient):
         kwargs["action"] = "CheckTcbService"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CheckTcbServiceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateApiKey(
+            self,
+            request: models.CreateApiKeyRequest,
+            opts: Dict = None,
+    ) -> models.CreateApiKeyResponse:
+        """
+        创建云开发平台的API Key。在指定云开发环境下创建一个 API Key 访问凭证。支持两种类型：api_key（服务端管理员访问凭证，以管理员身份签发，可设置有效期，不设置有效期则永不过期，单个环境最多创建 5 个）和 publish_key（前端匿名访问凭证，固定有效期，每个环境仅保留一个）。创建成功后将返回 API Key 明文 Token，该值仅在创建时返回一次，请妥善保存。需要管理员权限。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateApiKey"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateApiKeyResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -148,24 +130,6 @@ class TcbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def CreateCloudBaseGWAPI(
-            self,
-            request: models.CreateCloudBaseGWAPIRequest,
-            opts: Dict = None,
-    ) -> models.CreateCloudBaseGWAPIResponse:
-        """
-        创建云开发网关API
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "CreateCloudBaseGWAPI"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.CreateCloudBaseGWAPIResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def CreateEnv(
             self,
             request: models.CreateEnvRequest,
@@ -212,6 +176,24 @@ class TcbClient(AbstractClient):
         kwargs["action"] = "CreateEnvResource"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreateEnvResourceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateHTTPServiceRoute(
+            self,
+            request: models.CreateHTTPServiceRouteRequest,
+            opts: Dict = None,
+    ) -> models.CreateHTTPServiceRouteResponse:
+        """
+        本接口CreateHTTPServiceRoute用于创建HTTP访问服务路由。如果不传Domain.Routes，仅创建域名信息。首次创建域名后需要调用DescribeHTTPServiceRoute查询域名状态，如果状态是PROCESSING，需要轮询查询域名状态直到SUCCESS或者FAIL。如果状态是FAIL，可以删除后重新创建。创建成功后域名可能无法访问，原因是异步下发的路由，可通过http或者https探测路由是否下发，如果http访问返回404或者https访问握手失败，可等待一会再试，直到访问正常。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateHTTPServiceRoute"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateHTTPServiceRouteResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -309,6 +291,43 @@ class TcbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateVmInstance(
+            self,
+            request: models.CreateVmInstanceRequest,
+            opts: Dict = None,
+    ) -> models.CreateVmInstanceResponse:
+        """
+        创建虚拟服务器
+        创建流程为先调用[DescribeVmSpec](https://cloud.tencent.com/document/product/876/129360)获取可购买的规格，同时调用[DescribeBlueprints](https://cloud.tencent.com/document/product/1207/47689)拉取镜像列表，选中一个规格和一个镜像后，调用[InquireVmPrice](https://cloud.tencent.com/document/product/876/129759)询价，如果价格可接受，调用此接口创建实例
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateVmInstance"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateVmInstanceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteApiKey(
+            self,
+            request: models.DeleteApiKeyRequest,
+            opts: Dict = None,
+    ) -> models.DeleteApiKeyResponse:
+        """
+        删除指定云开发环境下的某个 API Key 服务端访问凭证。删除后，该 API Key 对应的 Token 将被吊销，已使用该 Key 发起的请求将失败。该操作具有幂等性，若指定的 API Key 不存在则直接返回成功。需要管理员权限。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteApiKey"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteApiKeyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteAuthDomain(
             self,
             request: models.DeleteAuthDomainRequest,
@@ -332,37 +351,19 @@ class TcbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def DeleteCloudBaseGWAPI(
+    async def DeleteHTTPServiceRoute(
             self,
-            request: models.DeleteCloudBaseGWAPIRequest,
+            request: models.DeleteHTTPServiceRouteRequest,
             opts: Dict = None,
-    ) -> models.DeleteCloudBaseGWAPIResponse:
+    ) -> models.DeleteHTTPServiceRouteResponse:
         """
-        删除网关API
+        本接口DeleteHTTPServiceRoute用于删除HTTP访问服务域名或者路由。可批量删除多条path路由、删除域名及所有path路由，如果Paths字段为空则删除域名及所有path路由，如果Paths不为空则仅删除path路由。
         """
         
         kwargs = {}
-        kwargs["action"] = "DeleteCloudBaseGWAPI"
+        kwargs["action"] = "DeleteHTTPServiceRoute"
         kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DeleteCloudBaseGWAPIResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DeleteCloudBaseGWDomain(
-            self,
-            request: models.DeleteCloudBaseGWDomainRequest,
-            opts: Dict = None,
-    ) -> models.DeleteCloudBaseGWDomainResponse:
-        """
-        删除网关域名
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DeleteCloudBaseGWDomain"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DeleteCloudBaseGWDomainResponse
+        kwargs["resp_cls"] = models.DeleteHTTPServiceRouteResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -437,6 +438,24 @@ class TcbClient(AbstractClient):
         kwargs["action"] = "DeleteVmInstance"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteVmInstanceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeApiKeyList(
+            self,
+            request: models.DescribeApiKeyListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeApiKeyListResponse:
+        """
+        查询 API Key 列表。分页查询指定云开发环境下的 API Key 访问凭证列表。支持按类型过滤（api_key 或 publish_key）。未指定类型时，默认仅返回 api_key 类型的记录。列表查询中 api_key 类型的令牌值将进行脱敏处理（仅保留前后各 6 位字符）；publish_key 类型始终返回完整明文。接口需要管理员权限。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeApiKeyList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeApiKeyListResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -529,42 +548,6 @@ class TcbClient(AbstractClient):
         kwargs["action"] = "DescribeCloudBaseBuildService"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeCloudBaseBuildServiceResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DescribeCloudBaseGWAPI(
-            self,
-            request: models.DescribeCloudBaseGWAPIRequest,
-            opts: Dict = None,
-    ) -> models.DescribeCloudBaseGWAPIResponse:
-        """
-        获取网关API列表
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeCloudBaseGWAPI"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeCloudBaseGWAPIResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DescribeCloudBaseGWService(
-            self,
-            request: models.DescribeCloudBaseGWServiceRequest,
-            opts: Dict = None,
-    ) -> models.DescribeCloudBaseGWServiceResponse:
-        """
-        获取网关服务
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeCloudBaseGWService"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeCloudBaseGWServiceResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -703,6 +686,43 @@ class TcbClient(AbstractClient):
         kwargs["action"] = "DescribeEnvs"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeEnvsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeGatewayVersions(
+            self,
+            request: models.DescribeGatewayVersionsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeGatewayVersionsResponse:
+        """
+        查询网关版本信息
+        暂不鉴权
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeGatewayVersions"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeGatewayVersionsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeHTTPServiceRoute(
+            self,
+            request: models.DescribeHTTPServiceRouteRequest,
+            opts: Dict = None,
+    ) -> models.DescribeHTTPServiceRouteResponse:
+        """
+        本接口DescribeHTTPServiceRoute用于查询环境下HTTP访问服务路由信息。可通过Filters过滤。如果不存在不会返回错误。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeHTTPServiceRoute"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeHTTPServiceRouteResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1087,24 +1107,6 @@ class TcbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def ModifyCloudBaseGWAPI(
-            self,
-            request: models.ModifyCloudBaseGWAPIRequest,
-            opts: Dict = None,
-    ) -> models.ModifyCloudBaseGWAPIResponse:
-        """
-        修改云开发网关API
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "ModifyCloudBaseGWAPI"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.ModifyCloudBaseGWAPIResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def ModifyClsTopic(
             self,
             request: models.ModifyClsTopicRequest,
@@ -1174,6 +1176,24 @@ class TcbClient(AbstractClient):
         kwargs["action"] = "ModifyEnvPlan"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyEnvPlanResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyHTTPServiceRoute(
+            self,
+            request: models.ModifyHTTPServiceRouteRequest,
+            opts: Dict = None,
+    ) -> models.ModifyHTTPServiceRouteResponse:
+        """
+        本接口ModifyHTTPServiceRoute用于修改HTTP访问服务路由。支持增量修改，对应字段不传参数表示不需要修改
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyHTTPServiceRoute"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyHTTPServiceRouteResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

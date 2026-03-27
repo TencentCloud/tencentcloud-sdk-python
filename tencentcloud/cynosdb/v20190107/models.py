@@ -228,23 +228,26 @@ class Account(AbstractModel):
         r"""
         :param _AccountName: 数据库账号名
         :type AccountName: str
+        :param _Host: 主机
+        :type Host: str
         :param _Description: 数据库账号描述
         :type Description: str
         :param _CreateTime: 创建时间
         :type CreateTime: str
         :param _UpdateTime: 更新时间
         :type UpdateTime: str
-        :param _Host: 主机
-        :type Host: str
         :param _MaxUserConnections: 用户最大连接数
         :type MaxUserConnections: int
+        :param _PasswordRotation: 是否开启密码轮转(0:关闭;1:开启)
+        :type PasswordRotation: int
         """
         self._AccountName = None
+        self._Host = None
         self._Description = None
         self._CreateTime = None
         self._UpdateTime = None
-        self._Host = None
         self._MaxUserConnections = None
+        self._PasswordRotation = None
 
     @property
     def AccountName(self):
@@ -256,6 +259,17 @@ class Account(AbstractModel):
     @AccountName.setter
     def AccountName(self, AccountName):
         self._AccountName = AccountName
+
+    @property
+    def Host(self):
+        r"""主机
+        :rtype: str
+        """
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
 
     @property
     def Description(self):
@@ -291,17 +305,6 @@ class Account(AbstractModel):
         self._UpdateTime = UpdateTime
 
     @property
-    def Host(self):
-        r"""主机
-        :rtype: str
-        """
-        return self._Host
-
-    @Host.setter
-    def Host(self, Host):
-        self._Host = Host
-
-    @property
     def MaxUserConnections(self):
         r"""用户最大连接数
         :rtype: int
@@ -312,14 +315,26 @@ class Account(AbstractModel):
     def MaxUserConnections(self, MaxUserConnections):
         self._MaxUserConnections = MaxUserConnections
 
+    @property
+    def PasswordRotation(self):
+        r"""是否开启密码轮转(0:关闭;1:开启)
+        :rtype: int
+        """
+        return self._PasswordRotation
+
+    @PasswordRotation.setter
+    def PasswordRotation(self, PasswordRotation):
+        self._PasswordRotation = PasswordRotation
+
 
     def _deserialize(self, params):
         self._AccountName = params.get("AccountName")
+        self._Host = params.get("Host")
         self._Description = params.get("Description")
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
-        self._Host = params.get("Host")
         self._MaxUserConnections = params.get("MaxUserConnections")
+        self._PasswordRotation = params.get("PasswordRotation")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -26377,7 +26392,8 @@ class DescribeProxiesRequest(AbstractModel):
 <li> ASC：升序排序 </li>
 <li> DESC：降序排序 </li>
         :type OrderByType: str
-        :param _Filters: 搜索条件，若存在多个Filter时，Filter间的关系为逻辑与（AND）关系。
+        :param _Filters: 搜索条件，若存在多个 Filter 时，Filter 间的关系为逻辑与（AND）关系。
+说明：此参数当前仅支持 Status 和 ProxyGroupId 两种过滤条件。
         :type Filters: list of QueryParamFilter
         """
         self._ClusterId = None
@@ -26448,7 +26464,8 @@ class DescribeProxiesRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""搜索条件，若存在多个Filter时，Filter间的关系为逻辑与（AND）关系。
+        r"""搜索条件，若存在多个 Filter 时，Filter 间的关系为逻辑与（AND）关系。
+说明：此参数当前仅支持 Status 和 ProxyGroupId 两种过滤条件。
         :rtype: list of QueryParamFilter
         """
         return self._Filters
@@ -43788,7 +43805,7 @@ class NetAddr(AbstractModel):
 
 
 class NewAccount(AbstractModel):
-    r"""x08新创建的账号
+    r"""新建账号
 
     """
 
@@ -43796,18 +43813,21 @@ class NewAccount(AbstractModel):
         r"""
         :param _AccountName: 账户名，包含字母数字_,以字母开头，字母或数字结尾，长度1-30
         :type AccountName: str
-        :param _AccountPassword: 密码，密码长度范围为8到64个字符
-        :type AccountPassword: str
         :param _Host: 主机(%或ipv4地址)
         :type Host: str
+        :param _AccountPassword: 密码，密码长度范围为8到64个字符
+        :type AccountPassword: str
+        :param _PasswordRotation: 是否开启密码轮转(0:关闭;1:开启)
+        :type PasswordRotation: int
         :param _Description: 描述
         :type Description: str
         :param _MaxUserConnections: 用户最大连接数，不能大于10240
         :type MaxUserConnections: int
         """
         self._AccountName = None
-        self._AccountPassword = None
         self._Host = None
+        self._AccountPassword = None
+        self._PasswordRotation = None
         self._Description = None
         self._MaxUserConnections = None
 
@@ -43823,6 +43843,17 @@ class NewAccount(AbstractModel):
         self._AccountName = AccountName
 
     @property
+    def Host(self):
+        r"""主机(%或ipv4地址)
+        :rtype: str
+        """
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+    @property
     def AccountPassword(self):
         r"""密码，密码长度范围为8到64个字符
         :rtype: str
@@ -43834,15 +43865,15 @@ class NewAccount(AbstractModel):
         self._AccountPassword = AccountPassword
 
     @property
-    def Host(self):
-        r"""主机(%或ipv4地址)
-        :rtype: str
+    def PasswordRotation(self):
+        r"""是否开启密码轮转(0:关闭;1:开启)
+        :rtype: int
         """
-        return self._Host
+        return self._PasswordRotation
 
-    @Host.setter
-    def Host(self, Host):
-        self._Host = Host
+    @PasswordRotation.setter
+    def PasswordRotation(self, PasswordRotation):
+        self._PasswordRotation = PasswordRotation
 
     @property
     def Description(self):
@@ -43869,8 +43900,9 @@ class NewAccount(AbstractModel):
 
     def _deserialize(self, params):
         self._AccountName = params.get("AccountName")
-        self._AccountPassword = params.get("AccountPassword")
         self._Host = params.get("Host")
+        self._AccountPassword = params.get("AccountPassword")
+        self._PasswordRotation = params.get("PasswordRotation")
         self._Description = params.get("Description")
         self._MaxUserConnections = params.get("MaxUserConnections")
         memeber_set = set(params.keys())
@@ -56284,6 +56316,8 @@ class UpgradeInstanceRequest(AbstractModel):
         :param _UpgradeType: 升级类型：upgradeImmediate，upgradeInMaintain
         :type UpgradeType: str
         :param _DeviceType: 实例机器类型
+1. common，通用型。
+2. exclusive，独享型。
         :type DeviceType: str
         :param _StorageLimit: 该参数已废弃
         :type StorageLimit: int
@@ -56357,6 +56391,8 @@ class UpgradeInstanceRequest(AbstractModel):
     @property
     def DeviceType(self):
         r"""实例机器类型
+1. common，通用型。
+2. exclusive，独享型。
         :rtype: str
         """
         return self._DeviceType

@@ -85538,6 +85538,10 @@ class ModifyLicenseUnBindsRequest(AbstractModel):
         :param _ResourceId: 资源ID
         :type ResourceId: str
         :param _LicenseType: 授权类型
+- 0 按量付费-专业版
+- 1 包年包月-专业版
+- 2 包年包月-旗舰版
+- 3 包年包月-轻量版
         :type LicenseType: int
         :param _IsAll: 是否全部机器(当全部机器数大于当前订单可用授权数时,多余机器会被跳过)
         :type IsAll: bool
@@ -85564,6 +85568,10 @@ class ModifyLicenseUnBindsRequest(AbstractModel):
     @property
     def LicenseType(self):
         r"""授权类型
+- 0 按量付费-专业版
+- 1 包年包月-专业版
+- 2 包年包月-旗舰版
+- 3 包年包月-轻量版
         :rtype: int
         """
         return self._LicenseType
@@ -102086,7 +102094,7 @@ class RiskDnsEvent(AbstractModel):
         :type SuggestSolution: str
         :param _ReferenceLink: 参考链接
         :type ReferenceLink: str
-        :param _HandleStatus: 处理状态；[0:待处理|2:已加白|3:非信任状态|4:已处理|5:已忽略]
+        :param _HandleStatus: 处理状态；[0:待处理|2:已加白|3:非信任状态|4:已处理|5:已忽略|6:已拦截]
         :type HandleStatus: int
         :param _Pid: 进程ID
         :type Pid: int
@@ -102312,7 +102320,7 @@ class RiskDnsEvent(AbstractModel):
 
     @property
     def HandleStatus(self):
-        r"""处理状态；[0:待处理|2:已加白|3:非信任状态|4:已处理|5:已忽略]
+        r"""处理状态；[0:待处理|2:已加白|3:非信任状态|4:已处理|5:已忽略|6:已拦截]
         :rtype: int
         """
         return self._HandleStatus

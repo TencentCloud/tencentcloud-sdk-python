@@ -1389,6 +1389,29 @@ class MongodbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyInstanceAz(self, request):
+        r"""本接口(ModifyInstanceAz)用于调整 MongoDB 云数据库的节点可用区分布，可通过指定主可用区和全部可用区分布信息完成云数据库的节点分布调整。
+
+        :param request: Request instance for ModifyInstanceAz.
+        :type request: :class:`tencentcloud.mongodb.v20190725.models.ModifyInstanceAzRequest`
+        :rtype: :class:`tencentcloud.mongodb.v20190725.models.ModifyInstanceAzResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyInstanceAz", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyInstanceAzResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyInstanceParams(self, request):
         r"""本接口（ModifyInstanceParams）用于修改mongoDB实例的参数配置。
 

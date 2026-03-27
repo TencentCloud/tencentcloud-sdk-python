@@ -1770,6 +1770,29 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeAIGCTaskStatus(self, request):
+        r"""查询视频转绘任务
+
+        :param request: Request instance for DescribeAIGCTaskStatus.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeAIGCTaskStatusRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeAIGCTaskStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAIGCTaskStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAIGCTaskStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeAllStreamPlayInfoList(self, request):
         r"""该接口为监控数据接口，数据采集及统计方式与计费数据不同，仅供运营分析使用，不能用于计费对账参考。
         输入某个时间点（1分钟维度），查询该时间点所有流的下行信息。

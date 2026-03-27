@@ -10897,36 +10897,23 @@ class AigcImageOutputConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StorageMode: 存储模式。取值有： <li>Permanent：永久存储，生成的图片文件将存储到云点播，可在事件通知中获取到 FileId；</li> <li>Temporary：临时存储，生成的图片文件不会存储到云点播，可在事件通知中获取到临时访问的 URL；</li>
-默认值：Temporary
+        :param _StorageMode: <p>存储模式。取值有： <li>Permanent：永久存储，生成的图片文件将存储到云点播，可在事件通知中获取到 FileId；</li> <li>Temporary：临时存储，生成的图片文件不会存储到云点播，可在事件通知中获取到临时访问的 URL；</li><br>默认值：Temporary</p>
         :type StorageMode: str
-        :param _MediaName: 输出文件名，最长 64 个字符。缺省由系统指定生成文件名。
+        :param _MediaName: <p>输出文件名，最长 64 个字符。缺省由系统指定生成文件名。</p>
         :type MediaName: str
-        :param _ClassId: 分类ID，用于对媒体进行分类管理，可通过 [创建分类](/document/product/266/7812) 接口，创建分类，获得分类 ID。
-<li>默认值：0，表示其他分类。</li>
+        :param _ClassId: <p>分类ID，用于对媒体进行分类管理，可通过 <a href="/document/product/266/7812">创建分类</a> 接口，创建分类，获得分类 ID。</p><li>默认值：0，表示其他分类。</li>
         :type ClassId: int
-        :param _ExpireTime: 输出文件的过期时间，超过该时间文件将被删除，默认为永久不过期，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
+        :param _ExpireTime: <p>输出文件的过期时间，超过该时间文件将被删除，默认为永久不过期，格式按照 ISO 8601标准表示，详见 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式说明</a>。</p>
         :type ExpireTime: str
-        :param _Resolution: 生成图片的分辨率。
-
-* GEM 2.5 可选值：1K、2K、4K，默认1K；
-* GEM 3.0 可选值：1K、2K、4K，默认1K；
-* Vidu q2 可选值：1080p、2K、4K，默认1080p；
-* Kling 2.1 可选值：1k、2k，默认1k；
-* Hunyuan 3.0 可选值：720P、1080P、2K、4K。
+        :param _Resolution: <p>生成图片的分辨率。各模型可选值：</p><ul><li>GG 2.5：1K、2K、4K，默认1K；</li><li>GG 3.0：1K、2K、4K，默认1K；</li><li>GG 3.1：512、1K、2K、4K，默认1K；</li><li>Kling 2.1：1k、2k，默认1k；</li><li>Kling 3.0：1k、2k，默认1k；</li><li>Kling 3.0-Omni：1k、2k、4k，默认1k；</li><li>SI 4.0：1K、2K、4K，默认1K；</li><li>SI 4.5：2K、4K，默认2K；</li><li>SI 5.0-lite：2K、3K，默认2K；</li><li>Vidu q2：1080p、2K、4K，默认1080p；</li><li>Hunyuan 3.0：宽、高均在 [512, 2048] 像素范围内，宽高乘积 ≤ 1024:1024 像素。示例：1024:1024；</li><li>Qwen 2.0：支持自由设置宽高，输出图像总像素需在512 * 512 至 2048 * 2048之间。默认分辨率为1024*1024；</li><li>Qwen 0925：不支持；</li></ul>
         :type Resolution: str
-        :param _AspectRatio: 指定所生成图片的宽高比。
-<li>当 ModelName 是 GEM，可选值是 1:1、3:2、2:3、3:4、4:3、4:5、5:4、9:16、16:9 和 21:9；</li>
-<li>当 ModelName 是 Qwen，则暂不支持。</li>
-<li>当 ModelName 是 Hunyuan，可选值16:9、9:16、1:1、4:3、3:4、3:2、2:3、21:9。</li>
-<li>当 ModelName 是 Vidu，可选值16:9、9:16、1:1、3:4、4:3、21:9、2:3、3:2。</li>
-<li>当 ModelName 是 Kling，可选值16:9、9:16、1:1、4:3、3:4、3:2、2:3、21:9。</li>
+        :param _AspectRatio: <p>指定所生成图片的宽高比。</p><ul><li>GG 2.5：1:1, 2:3, 3:2, 3:4, 4:3, 4:5, 5:4, 9:16, 16:9, 21:9；</li><li>GG 3.0：1:1, 2:3, 3:2, 3:4, 4:3, 4:5, 5:4, 9:16, 16:9, 21:9；</li><li>GG 3.1：1:1, 1:4, 1:8, 2:3, 3:2, 3:4, 4:1, 4:3, 4:5, 5:4, 8:1, 9:16, 16:9, 21:9；</li><li>Kling 2.1：16:9, 9:16, 1:1, 4:3, 3:4, 3:2, 2:3, 21:9；</li><li>Kling 3.0：16:9, 9:16, 1:1, 4:3, 3:4, 3:2, 2:3, 21:9；</li><li>Kling 3.0-Omni：16:9, 9:16, 1:1, 4:3, 3:4, 3:2, 2:3, 21:9；</li><li>Vidu q2：16:9、9:16、1:1、3:4、4:3、21:9、2:3、3:2；</li><li>SI 4.0：<strong>不支持</strong>此参数，可通过prompt指定16:9, 9:16, 1:1, 4:3, 3:4, 3:2, 2:3, 21:9；</li><li>SI 4.5：<strong>不支持</strong>此参数，可通过prompt指定16:9, 9:16, 1:1, 4:3, 3:4, 3:2, 2:3, 21:9；</li><li>SI 5.0-lite：<strong>不支持</strong>此参数，可通过prompt指定16:9, 9:16, 1:1, 4:3, 3:4, 3:2, 2:3, 21:9；</li><li>Hunyuan 3.0：不支持；</li><li>Qwen 2.0：不支持；</li><li>Qwen 0925：不支持；</li></ul>
         :type AspectRatio: str
-        :param _PersonGeneration: 是否允许人物或人脸生成。取值有： <li>AllowAdult：允许生成成人；</li> <li>Disallowed：禁止在图片中包含人物或人脸；</li> 
+        :param _PersonGeneration: <p>是否允许人物或人脸生成。取值有： <li>AllowAdult：允许生成成人；</li> <li>Disallowed：禁止在图片中包含人物或人脸；</li></p>
         :type PersonGeneration: str
-        :param _InputComplianceCheck: 是否开启输入内容的合规性检查。取值有： <li>Enabled：开启；</li> <li>Disabled：关闭；</li> 
+        :param _InputComplianceCheck: <p>是否开启输入内容的合规性检查。取值有： <li>Enabled：开启；</li> <li>Disabled：关闭；</li></p>
         :type InputComplianceCheck: str
-        :param _OutputComplianceCheck: 是否开启输出内容的合规性检查。取值有： <li>Enabled：开启；</li> <li>Disabled：关闭；</li> 
+        :param _OutputComplianceCheck: <p>是否开启输出内容的合规性检查。取值有： <li>Enabled：开启；</li> <li>Disabled：关闭；</li></p>
         :type OutputComplianceCheck: str
         """
         self._StorageMode = None
@@ -10941,8 +10928,7 @@ class AigcImageOutputConfig(AbstractModel):
 
     @property
     def StorageMode(self):
-        r"""存储模式。取值有： <li>Permanent：永久存储，生成的图片文件将存储到云点播，可在事件通知中获取到 FileId；</li> <li>Temporary：临时存储，生成的图片文件不会存储到云点播，可在事件通知中获取到临时访问的 URL；</li>
-默认值：Temporary
+        r"""<p>存储模式。取值有： <li>Permanent：永久存储，生成的图片文件将存储到云点播，可在事件通知中获取到 FileId；</li> <li>Temporary：临时存储，生成的图片文件不会存储到云点播，可在事件通知中获取到临时访问的 URL；</li><br>默认值：Temporary</p>
         :rtype: str
         """
         return self._StorageMode
@@ -10953,7 +10939,7 @@ class AigcImageOutputConfig(AbstractModel):
 
     @property
     def MediaName(self):
-        r"""输出文件名，最长 64 个字符。缺省由系统指定生成文件名。
+        r"""<p>输出文件名，最长 64 个字符。缺省由系统指定生成文件名。</p>
         :rtype: str
         """
         return self._MediaName
@@ -10964,8 +10950,7 @@ class AigcImageOutputConfig(AbstractModel):
 
     @property
     def ClassId(self):
-        r"""分类ID，用于对媒体进行分类管理，可通过 [创建分类](/document/product/266/7812) 接口，创建分类，获得分类 ID。
-<li>默认值：0，表示其他分类。</li>
+        r"""<p>分类ID，用于对媒体进行分类管理，可通过 <a href="/document/product/266/7812">创建分类</a> 接口，创建分类，获得分类 ID。</p><li>默认值：0，表示其他分类。</li>
         :rtype: int
         """
         return self._ClassId
@@ -10976,7 +10961,7 @@ class AigcImageOutputConfig(AbstractModel):
 
     @property
     def ExpireTime(self):
-        r"""输出文件的过期时间，超过该时间文件将被删除，默认为永久不过期，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
+        r"""<p>输出文件的过期时间，超过该时间文件将被删除，默认为永久不过期，格式按照 ISO 8601标准表示，详见 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式说明</a>。</p>
         :rtype: str
         """
         return self._ExpireTime
@@ -10987,13 +10972,7 @@ class AigcImageOutputConfig(AbstractModel):
 
     @property
     def Resolution(self):
-        r"""生成图片的分辨率。
-
-* GEM 2.5 可选值：1K、2K、4K，默认1K；
-* GEM 3.0 可选值：1K、2K、4K，默认1K；
-* Vidu q2 可选值：1080p、2K、4K，默认1080p；
-* Kling 2.1 可选值：1k、2k，默认1k；
-* Hunyuan 3.0 可选值：720P、1080P、2K、4K。
+        r"""<p>生成图片的分辨率。各模型可选值：</p><ul><li>GG 2.5：1K、2K、4K，默认1K；</li><li>GG 3.0：1K、2K、4K，默认1K；</li><li>GG 3.1：512、1K、2K、4K，默认1K；</li><li>Kling 2.1：1k、2k，默认1k；</li><li>Kling 3.0：1k、2k，默认1k；</li><li>Kling 3.0-Omni：1k、2k、4k，默认1k；</li><li>SI 4.0：1K、2K、4K，默认1K；</li><li>SI 4.5：2K、4K，默认2K；</li><li>SI 5.0-lite：2K、3K，默认2K；</li><li>Vidu q2：1080p、2K、4K，默认1080p；</li><li>Hunyuan 3.0：宽、高均在 [512, 2048] 像素范围内，宽高乘积 ≤ 1024:1024 像素。示例：1024:1024；</li><li>Qwen 2.0：支持自由设置宽高，输出图像总像素需在512 * 512 至 2048 * 2048之间。默认分辨率为1024*1024；</li><li>Qwen 0925：不支持；</li></ul>
         :rtype: str
         """
         return self._Resolution
@@ -11004,12 +10983,7 @@ class AigcImageOutputConfig(AbstractModel):
 
     @property
     def AspectRatio(self):
-        r"""指定所生成图片的宽高比。
-<li>当 ModelName 是 GEM，可选值是 1:1、3:2、2:3、3:4、4:3、4:5、5:4、9:16、16:9 和 21:9；</li>
-<li>当 ModelName 是 Qwen，则暂不支持。</li>
-<li>当 ModelName 是 Hunyuan，可选值16:9、9:16、1:1、4:3、3:4、3:2、2:3、21:9。</li>
-<li>当 ModelName 是 Vidu，可选值16:9、9:16、1:1、3:4、4:3、21:9、2:3、3:2。</li>
-<li>当 ModelName 是 Kling，可选值16:9、9:16、1:1、4:3、3:4、3:2、2:3、21:9。</li>
+        r"""<p>指定所生成图片的宽高比。</p><ul><li>GG 2.5：1:1, 2:3, 3:2, 3:4, 4:3, 4:5, 5:4, 9:16, 16:9, 21:9；</li><li>GG 3.0：1:1, 2:3, 3:2, 3:4, 4:3, 4:5, 5:4, 9:16, 16:9, 21:9；</li><li>GG 3.1：1:1, 1:4, 1:8, 2:3, 3:2, 3:4, 4:1, 4:3, 4:5, 5:4, 8:1, 9:16, 16:9, 21:9；</li><li>Kling 2.1：16:9, 9:16, 1:1, 4:3, 3:4, 3:2, 2:3, 21:9；</li><li>Kling 3.0：16:9, 9:16, 1:1, 4:3, 3:4, 3:2, 2:3, 21:9；</li><li>Kling 3.0-Omni：16:9, 9:16, 1:1, 4:3, 3:4, 3:2, 2:3, 21:9；</li><li>Vidu q2：16:9、9:16、1:1、3:4、4:3、21:9、2:3、3:2；</li><li>SI 4.0：<strong>不支持</strong>此参数，可通过prompt指定16:9, 9:16, 1:1, 4:3, 3:4, 3:2, 2:3, 21:9；</li><li>SI 4.5：<strong>不支持</strong>此参数，可通过prompt指定16:9, 9:16, 1:1, 4:3, 3:4, 3:2, 2:3, 21:9；</li><li>SI 5.0-lite：<strong>不支持</strong>此参数，可通过prompt指定16:9, 9:16, 1:1, 4:3, 3:4, 3:2, 2:3, 21:9；</li><li>Hunyuan 3.0：不支持；</li><li>Qwen 2.0：不支持；</li><li>Qwen 0925：不支持；</li></ul>
         :rtype: str
         """
         return self._AspectRatio
@@ -11020,7 +10994,7 @@ class AigcImageOutputConfig(AbstractModel):
 
     @property
     def PersonGeneration(self):
-        r"""是否允许人物或人脸生成。取值有： <li>AllowAdult：允许生成成人；</li> <li>Disallowed：禁止在图片中包含人物或人脸；</li> 
+        r"""<p>是否允许人物或人脸生成。取值有： <li>AllowAdult：允许生成成人；</li> <li>Disallowed：禁止在图片中包含人物或人脸；</li></p>
         :rtype: str
         """
         return self._PersonGeneration
@@ -11031,7 +11005,7 @@ class AigcImageOutputConfig(AbstractModel):
 
     @property
     def InputComplianceCheck(self):
-        r"""是否开启输入内容的合规性检查。取值有： <li>Enabled：开启；</li> <li>Disabled：关闭；</li> 
+        r"""<p>是否开启输入内容的合规性检查。取值有： <li>Enabled：开启；</li> <li>Disabled：关闭；</li></p>
         :rtype: str
         """
         return self._InputComplianceCheck
@@ -11042,7 +11016,7 @@ class AigcImageOutputConfig(AbstractModel):
 
     @property
     def OutputComplianceCheck(self):
-        r"""是否开启输出内容的合规性检查。取值有： <li>Enabled：开启；</li> <li>Disabled：关闭；</li> 
+        r"""<p>是否开启输出内容的合规性检查。取值有： <li>Enabled：开启；</li> <li>Disabled：关闭；</li></p>
         :rtype: str
         """
         return self._OutputComplianceCheck
@@ -12519,37 +12493,24 @@ class AigcVideoTaskInputFileInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: 输入的视频文件类型。取值有： <li>File：点播媒体文件；</li> <li>Url：可访问的 Url；</li> 
+        :param _Type: <p>输入的视频文件类型。取值有： <li>File：点播媒体文件；</li> <li>Url：可访问的 Url；</li></p>
         :type Type: str
-        :param _Category: 文件分类。取值为：
-<li>Image: 图片；</li>
-<li>Video: 视频。</li>
+        :param _Category: <p>文件分类。取值为：</p><li>Image: 图片；</li><li>Video: 视频。</li>
         :type Category: str
-        :param _FileId: 媒体文件 ID，即该文件在云点播上的全局唯一标识符，在上传成功后由云点播后台分配。可以在 [视频上传完成事件通知](/document/product/266/7830) 或 [云点播控制台](https://console.cloud.tencent.com/vod/media) 获取该字段。当 Type 取值为 File 时，本参数有效。说明：
-1. 推荐使用小于10M的图片；
-2. 图片格式的取值为：jpeg，jpg, png。
+        :param _FileId: <p>媒体文件 ID，即该文件在云点播上的全局唯一标识符，在上传成功后由云点播后台分配。可以在 <a href="/document/product/266/7830">视频上传完成事件通知</a> 或 <a href="https://console.cloud.tencent.com/vod/media">云点播控制台</a> 获取该字段。当 Type 取值为 File 时，本参数有效。说明：</p><ol><li>推荐使用小于10M的图片；</li><li>图片格式的取值为：jpeg，jpg, png。</li></ol>
         :type FileId: str
-        :param _Url: 可访问的文件 URL。当 Type 取值为 Url 时，本参数有效。
-说明：
-1. 推荐使用小于10M的图片；
-2. 图片格式的取值为：jpeg，jpg, png。
+        :param _Url: <p>可访问的文件 URL。当 Type 取值为 Url 时，本参数有效。<br>说明：</p><ol><li>推荐使用小于10M的图片；</li><li>图片格式的取值为：jpeg，jpg, png。</li></ol>
         :type Url: str
-        :param _ReferenceType: 参考类型，GV模型适用。
-注意：
-当使用 GV 模型时，可作为参考方式，可选值：asset 表示素材、style 表示风格；
-当使用 Kling 模型以及 Category 为 Video 时，可区分参考视频类型，feature 表示特征参考视频，base 表示待编辑视频。
+        :param _ReferenceType: <p>参考类型，GV模型适用。<br>注意：<br>当使用 GV 模型时，可作为参考方式，可选值：asset 表示素材、style 表示风格；<br>当使用 Kling 模型以及 Category 为 Video 时，可区分参考视频类型，feature 表示特征参考视频，base 表示待编辑视频。</p>
         :type ReferenceType: str
-        :param _ObjectId: 主体 Id。
-适用模型：Vidu-q2.
-当需要对图片标识主体时，需要每个图片都带主体 Id，后续生成时可以通过@主体 Id 的方式使用。当 Category 为 Image 时有效。
+        :param _ObjectId: <p>用法：Vidu主体Id、参考图模式。<br>参考图模式：只有一张图时候，ObjectId必须不为空（一张图、ObjectId为空，为首帧模式）。<br>Vidu主体Id：prompt可以通过 @主体Id 的方式使用。当 Category 为 Image 时有效。</p>
         :type ObjectId: str
-        :param _VoiceId: 适用于 Vidu-q2 模型。
-当全部图片携带主体 Id 时，可针对主体设置音色 Id。 当 Category 为 Image 时有效。音色列表：https://shengshu.feishu.cn/sheets/EgFvs6DShhiEBStmjzccr5gonOg
+        :param _VoiceId: <p>适用于 Vidu-q2 模型。<br>当全部图片携带主体 Id 时，可针对主体设置音色 Id。 当 Category 为 Image 时有效。音色列表：https://shengshu.feishu.cn/sheets/EgFvs6DShhiEBStmjzccr5gonOg</p>
         :type VoiceId: str
-        :param _KeepOriginalSound: 是否保留视频原声。当 Category 为 Video 时有效。取值如下：
-<li>Enabled：保留</li>
-<li>Disabled：不保留</li>
+        :param _KeepOriginalSound: <p>是否保留视频原声。当 Category 为 Video 时有效。取值如下：</p><li>Enabled：保留</li><li>Disabled：不保留</li>
         :type KeepOriginalSound: str
+        :param _Usage: <p>用于区分输入是首帧或参考帧。可选值：</p><ul><li>FirstFrame：首帧；</li><li>Reference：参考帧；</li></ul>
+        :type Usage: str
         """
         self._Type = None
         self._Category = None
@@ -12559,10 +12520,11 @@ class AigcVideoTaskInputFileInfo(AbstractModel):
         self._ObjectId = None
         self._VoiceId = None
         self._KeepOriginalSound = None
+        self._Usage = None
 
     @property
     def Type(self):
-        r"""输入的视频文件类型。取值有： <li>File：点播媒体文件；</li> <li>Url：可访问的 Url；</li> 
+        r"""<p>输入的视频文件类型。取值有： <li>File：点播媒体文件；</li> <li>Url：可访问的 Url；</li></p>
         :rtype: str
         """
         return self._Type
@@ -12573,9 +12535,7 @@ class AigcVideoTaskInputFileInfo(AbstractModel):
 
     @property
     def Category(self):
-        r"""文件分类。取值为：
-<li>Image: 图片；</li>
-<li>Video: 视频。</li>
+        r"""<p>文件分类。取值为：</p><li>Image: 图片；</li><li>Video: 视频。</li>
         :rtype: str
         """
         return self._Category
@@ -12586,9 +12546,7 @@ class AigcVideoTaskInputFileInfo(AbstractModel):
 
     @property
     def FileId(self):
-        r"""媒体文件 ID，即该文件在云点播上的全局唯一标识符，在上传成功后由云点播后台分配。可以在 [视频上传完成事件通知](/document/product/266/7830) 或 [云点播控制台](https://console.cloud.tencent.com/vod/media) 获取该字段。当 Type 取值为 File 时，本参数有效。说明：
-1. 推荐使用小于10M的图片；
-2. 图片格式的取值为：jpeg，jpg, png。
+        r"""<p>媒体文件 ID，即该文件在云点播上的全局唯一标识符，在上传成功后由云点播后台分配。可以在 <a href="/document/product/266/7830">视频上传完成事件通知</a> 或 <a href="https://console.cloud.tencent.com/vod/media">云点播控制台</a> 获取该字段。当 Type 取值为 File 时，本参数有效。说明：</p><ol><li>推荐使用小于10M的图片；</li><li>图片格式的取值为：jpeg，jpg, png。</li></ol>
         :rtype: str
         """
         return self._FileId
@@ -12599,10 +12557,7 @@ class AigcVideoTaskInputFileInfo(AbstractModel):
 
     @property
     def Url(self):
-        r"""可访问的文件 URL。当 Type 取值为 Url 时，本参数有效。
-说明：
-1. 推荐使用小于10M的图片；
-2. 图片格式的取值为：jpeg，jpg, png。
+        r"""<p>可访问的文件 URL。当 Type 取值为 Url 时，本参数有效。<br>说明：</p><ol><li>推荐使用小于10M的图片；</li><li>图片格式的取值为：jpeg，jpg, png。</li></ol>
         :rtype: str
         """
         return self._Url
@@ -12613,10 +12568,7 @@ class AigcVideoTaskInputFileInfo(AbstractModel):
 
     @property
     def ReferenceType(self):
-        r"""参考类型，GV模型适用。
-注意：
-当使用 GV 模型时，可作为参考方式，可选值：asset 表示素材、style 表示风格；
-当使用 Kling 模型以及 Category 为 Video 时，可区分参考视频类型，feature 表示特征参考视频，base 表示待编辑视频。
+        r"""<p>参考类型，GV模型适用。<br>注意：<br>当使用 GV 模型时，可作为参考方式，可选值：asset 表示素材、style 表示风格；<br>当使用 Kling 模型以及 Category 为 Video 时，可区分参考视频类型，feature 表示特征参考视频，base 表示待编辑视频。</p>
         :rtype: str
         """
         return self._ReferenceType
@@ -12627,9 +12579,7 @@ class AigcVideoTaskInputFileInfo(AbstractModel):
 
     @property
     def ObjectId(self):
-        r"""主体 Id。
-适用模型：Vidu-q2.
-当需要对图片标识主体时，需要每个图片都带主体 Id，后续生成时可以通过@主体 Id 的方式使用。当 Category 为 Image 时有效。
+        r"""<p>用法：Vidu主体Id、参考图模式。<br>参考图模式：只有一张图时候，ObjectId必须不为空（一张图、ObjectId为空，为首帧模式）。<br>Vidu主体Id：prompt可以通过 @主体Id 的方式使用。当 Category 为 Image 时有效。</p>
         :rtype: str
         """
         return self._ObjectId
@@ -12640,8 +12590,7 @@ class AigcVideoTaskInputFileInfo(AbstractModel):
 
     @property
     def VoiceId(self):
-        r"""适用于 Vidu-q2 模型。
-当全部图片携带主体 Id 时，可针对主体设置音色 Id。 当 Category 为 Image 时有效。音色列表：https://shengshu.feishu.cn/sheets/EgFvs6DShhiEBStmjzccr5gonOg
+        r"""<p>适用于 Vidu-q2 模型。<br>当全部图片携带主体 Id 时，可针对主体设置音色 Id。 当 Category 为 Image 时有效。音色列表：https://shengshu.feishu.cn/sheets/EgFvs6DShhiEBStmjzccr5gonOg</p>
         :rtype: str
         """
         return self._VoiceId
@@ -12652,9 +12601,7 @@ class AigcVideoTaskInputFileInfo(AbstractModel):
 
     @property
     def KeepOriginalSound(self):
-        r"""是否保留视频原声。当 Category 为 Video 时有效。取值如下：
-<li>Enabled：保留</li>
-<li>Disabled：不保留</li>
+        r"""<p>是否保留视频原声。当 Category 为 Video 时有效。取值如下：</p><li>Enabled：保留</li><li>Disabled：不保留</li>
         :rtype: str
         """
         return self._KeepOriginalSound
@@ -12662,6 +12609,17 @@ class AigcVideoTaskInputFileInfo(AbstractModel):
     @KeepOriginalSound.setter
     def KeepOriginalSound(self, KeepOriginalSound):
         self._KeepOriginalSound = KeepOriginalSound
+
+    @property
+    def Usage(self):
+        r"""<p>用于区分输入是首帧或参考帧。可选值：</p><ul><li>FirstFrame：首帧；</li><li>Reference：参考帧；</li></ul>
+        :rtype: str
+        """
+        return self._Usage
+
+    @Usage.setter
+    def Usage(self, Usage):
+        self._Usage = Usage
 
 
     def _deserialize(self, params):
@@ -12673,6 +12631,7 @@ class AigcVideoTaskInputFileInfo(AbstractModel):
         self._ObjectId = params.get("ObjectId")
         self._VoiceId = params.get("VoiceId")
         self._KeepOriginalSound = params.get("KeepOriginalSound")
+        self._Usage = params.get("Usage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21054,11 +21013,11 @@ class CreateAigcImageTaskRequest(AbstractModel):
         r"""
         :param _SubAppId: <p><b>点播<a href="https://cloud.tencent.com/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
         :type SubAppId: int
-        :param _ModelName: <p>模型名称。取值：</p><li>Qwen：千问。</li><li>Hunyuan：混元。</li><li>Vidu：生数。</li><li>Kling：可灵。</li><li>MJ：Midjourney。</li>
+        :param _ModelName: <p>模型名称。取值：</p><li>GG</li><li>SI</li><li>Qwen</li><li>Hunyuan</li><li>Vidu</li><li>Kling</li>
         :type ModelName: str
-        :param _ModelVersion: <p>模型版本。取值：<li>当 ModelName 是 Qwen，可选值为 0925；</li><li>当 ModelName 是 Hunyuan，可选值为 3.0；</li><li>当 ModelName 是 Vidu，可选值为 q2；</li><li>当 ModelName 是 Kling，可选值为 2.1、3.0、3.0-Omni；</li><li>当 ModelName 是 MJ，可选值为 v7；</li></p>
+        :param _ModelVersion: <p>模型版本。取值：</p><li>当 ModelName 是 GG，可选值为 2.5、3.0、3.1；</li><li>当 ModelName 是 Jimeng，可选值为 4.0；</li><li>当 ModelName 是 SI，可选值为 4.0、4.5、5.0-lite；</li><li>当 ModelName 是 Qwen，可选值为 0925、2.0；</li><li>当 ModelName 是 Hunyuan，可选值为 3.0；</li><li>当 ModelName 是 Vidu，可选值为 q2；</li><li>当 ModelName 是 Kling，可选值为 2.1、3.0、3.0-Omni；</li>
         :type ModelVersion: str
-        :param _FileInfos: <p>AIGC 生图任务的输入图片的文件信息。默认只支持指定1个。下列模型可传多张参考图：<li>GEM 2.5：0～3张图片；</li><li>Vidu q2：0～7张图片，图片支持 png、jpeg、jpg、webp格式，图片像素不能小于 128x128，且比例需要小于1:4或4:1；</li></p>
+        :param _FileInfos: <p>AIGC 生图任务的输入图片的文件信息。各模型支持最大参考图数量：</p><ul><li>GG 2.5： 3张；</li><li>GG 3.0：14张；</li><li>GG 3.1：14张；</li><li>Kling 2.1：4张；</li><li>Kling 3.0：1张；</li><li>Kling 3.0-Omni：1张；</li><li>SI 4.0：14张；</li><li>SI 4.5：14张；</li><li>SI 5.0-lite：14张；</li><li>Vidu q2：7张；</li><li>Hunyuan 3.0：3张；</li><li>Qwen 0925：1张；</li><li>Qwen 2.0：3张；</li><li>MJ v7：3张。</li></ul>
         :type FileInfos: list of AigcImageTaskInputFileInfo
         :param _Prompt: <p>生成图片的提示词。当 FileInfos 为空时，此参数必填。</p>
         :type Prompt: str
@@ -21068,7 +21027,7 @@ class CreateAigcImageTaskRequest(AbstractModel):
         :type EnhancePrompt: str
         :param _OutputConfig: <p>生图任务的输出媒体文件配置。</p>
         :type OutputConfig: :class:`tencentcloud.vod.v20180717.models.AigcImageOutputConfig`
-        :param _InputRegion: <p>输入文件的区域信息。当文件url是国外地址时候，可选Oversea。默认Mainland。</p>
+        :param _InputRegion: <p>输入的区域信息。可选值：</p><ul><li>Mainland：中国大陆；</li><li>Oversea：海外；</li><li>OverseaUSWest：海外-美西；</li></ul>
         :type InputRegion: str
         :param _SessionId: <p>用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。</p>
         :type SessionId: str
@@ -21106,7 +21065,7 @@ class CreateAigcImageTaskRequest(AbstractModel):
 
     @property
     def ModelName(self):
-        r"""<p>模型名称。取值：</p><li>Qwen：千问。</li><li>Hunyuan：混元。</li><li>Vidu：生数。</li><li>Kling：可灵。</li><li>MJ：Midjourney。</li>
+        r"""<p>模型名称。取值：</p><li>GG</li><li>SI</li><li>Qwen</li><li>Hunyuan</li><li>Vidu</li><li>Kling</li>
         :rtype: str
         """
         return self._ModelName
@@ -21117,7 +21076,7 @@ class CreateAigcImageTaskRequest(AbstractModel):
 
     @property
     def ModelVersion(self):
-        r"""<p>模型版本。取值：<li>当 ModelName 是 Qwen，可选值为 0925；</li><li>当 ModelName 是 Hunyuan，可选值为 3.0；</li><li>当 ModelName 是 Vidu，可选值为 q2；</li><li>当 ModelName 是 Kling，可选值为 2.1、3.0、3.0-Omni；</li><li>当 ModelName 是 MJ，可选值为 v7；</li></p>
+        r"""<p>模型版本。取值：</p><li>当 ModelName 是 GG，可选值为 2.5、3.0、3.1；</li><li>当 ModelName 是 Jimeng，可选值为 4.0；</li><li>当 ModelName 是 SI，可选值为 4.0、4.5、5.0-lite；</li><li>当 ModelName 是 Qwen，可选值为 0925、2.0；</li><li>当 ModelName 是 Hunyuan，可选值为 3.0；</li><li>当 ModelName 是 Vidu，可选值为 q2；</li><li>当 ModelName 是 Kling，可选值为 2.1、3.0、3.0-Omni；</li>
         :rtype: str
         """
         return self._ModelVersion
@@ -21128,7 +21087,7 @@ class CreateAigcImageTaskRequest(AbstractModel):
 
     @property
     def FileInfos(self):
-        r"""<p>AIGC 生图任务的输入图片的文件信息。默认只支持指定1个。下列模型可传多张参考图：<li>GEM 2.5：0～3张图片；</li><li>Vidu q2：0～7张图片，图片支持 png、jpeg、jpg、webp格式，图片像素不能小于 128x128，且比例需要小于1:4或4:1；</li></p>
+        r"""<p>AIGC 生图任务的输入图片的文件信息。各模型支持最大参考图数量：</p><ul><li>GG 2.5： 3张；</li><li>GG 3.0：14张；</li><li>GG 3.1：14张；</li><li>Kling 2.1：4张；</li><li>Kling 3.0：1张；</li><li>Kling 3.0-Omni：1张；</li><li>SI 4.0：14张；</li><li>SI 4.5：14张；</li><li>SI 5.0-lite：14张；</li><li>Vidu q2：7张；</li><li>Hunyuan 3.0：3张；</li><li>Qwen 0925：1张；</li><li>Qwen 2.0：3张；</li><li>MJ v7：3张。</li></ul>
         :rtype: list of AigcImageTaskInputFileInfo
         """
         return self._FileInfos
@@ -21183,7 +21142,7 @@ class CreateAigcImageTaskRequest(AbstractModel):
 
     @property
     def InputRegion(self):
-        r"""<p>输入文件的区域信息。当文件url是国外地址时候，可选Oversea。默认Mainland。</p>
+        r"""<p>输入的区域信息。可选值：</p><ul><li>Mainland：中国大陆；</li><li>Oversea：海外；</li><li>OverseaUSWest：海外-美西；</li></ul>
         :rtype: str
         """
         return self._InputRegion
