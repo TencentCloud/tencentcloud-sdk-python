@@ -804,6 +804,24 @@ class DomainClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyDomainOwner(
+            self,
+            request: models.ModifyDomainOwnerRequest,
+            opts: Dict = None,
+    ) -> models.ModifyDomainOwnerResponse:
+        """
+        本接口 (ModifyDomainOwner) 用于域名过户。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyDomainOwner"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyDomainOwnerResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyDomainOwnerBatch(
             self,
             request: models.ModifyDomainOwnerBatchRequest,

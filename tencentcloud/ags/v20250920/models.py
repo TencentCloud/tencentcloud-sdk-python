@@ -2130,6 +2130,57 @@ class LogConfiguration(AbstractModel):
         
 
 
+class MetadataVar(AbstractModel):
+    r"""metadata 项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>沙箱元数据名</p>
+        :type Name: str
+        :param _Value: <p>沙箱元数据值</p>
+        :type Value: str
+        """
+        self._Name = None
+        self._Value = None
+
+    @property
+    def Name(self):
+        r"""<p>沙箱元数据名</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Value(self):
+        r"""<p>沙箱元数据值</p>
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class MountOption(AbstractModel):
     r"""沙箱实例存储挂载配置可选项，用于覆盖沙箱工具的存储配置的部分选项，并提供子路径挂载配置。
 
@@ -2271,14 +2322,14 @@ class PauseSandboxInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 沙箱实例ID
+        :param _InstanceId: <p>沙箱实例ID</p>
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        r"""沙箱实例ID
+        r"""<p>沙箱实例ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -2651,6 +2702,10 @@ class SandboxInstance(AbstractModel):
         :type MountOptions: list of MountOption
         :param _CustomConfiguration: <p>沙箱实例自定义配置</p>
         :type CustomConfiguration: :class:`tencentcloud.ags.v20250920.models.CustomConfigurationDetail`
+        :param _NetworkMode: <p>网络模式</p><p>枚举值：</p><ul><li>PUBLIC： 公网访问</li><li>SANDBOX： 无网络</li><li>INTERNAL_SERVICE： 腾讯云内部公共服务</li></ul><p>可以覆盖工具级别的网络配置。但如果一个工具本身就不支持 VPC 网络，那么即便在实例设置里选了 VPC 模式，也是无效的</p>
+        :type NetworkMode: str
+        :param _Metadata: <p>沙箱实例元数据</p>
+        :type Metadata: list of MetadataVar
         """
         self._InstanceId = None
         self._ToolId = None
@@ -2663,6 +2718,8 @@ class SandboxInstance(AbstractModel):
         self._UpdateTime = None
         self._MountOptions = None
         self._CustomConfiguration = None
+        self._NetworkMode = None
+        self._Metadata = None
 
     @property
     def InstanceId(self):
@@ -2785,6 +2842,28 @@ class SandboxInstance(AbstractModel):
     def CustomConfiguration(self, CustomConfiguration):
         self._CustomConfiguration = CustomConfiguration
 
+    @property
+    def NetworkMode(self):
+        r"""<p>网络模式</p><p>枚举值：</p><ul><li>PUBLIC： 公网访问</li><li>SANDBOX： 无网络</li><li>INTERNAL_SERVICE： 腾讯云内部公共服务</li></ul><p>可以覆盖工具级别的网络配置。但如果一个工具本身就不支持 VPC 网络，那么即便在实例设置里选了 VPC 模式，也是无效的</p>
+        :rtype: str
+        """
+        return self._NetworkMode
+
+    @NetworkMode.setter
+    def NetworkMode(self, NetworkMode):
+        self._NetworkMode = NetworkMode
+
+    @property
+    def Metadata(self):
+        r"""<p>沙箱实例元数据</p>
+        :rtype: list of MetadataVar
+        """
+        return self._Metadata
+
+    @Metadata.setter
+    def Metadata(self, Metadata):
+        self._Metadata = Metadata
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -2805,6 +2884,13 @@ class SandboxInstance(AbstractModel):
         if params.get("CustomConfiguration") is not None:
             self._CustomConfiguration = CustomConfigurationDetail()
             self._CustomConfiguration._deserialize(params.get("CustomConfiguration"))
+        self._NetworkMode = params.get("NetworkMode")
+        if params.get("Metadata") is not None:
+            self._Metadata = []
+            for item in params.get("Metadata"):
+                obj = MetadataVar()
+                obj._deserialize(item)
+                self._Metadata.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3084,18 +3170,22 @@ class StartSandboxInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ToolId: 沙箱工具 ID，与 ToolName 至少有一个要填
+        :param _ToolId: <p>沙箱工具 ID，与 ToolName 至少有一个要填</p>
         :type ToolId: str
-        :param _ToolName: 沙箱工具名称，与 ToolId 至少有一个要填
+        :param _ToolName: <p>沙箱工具名称，与 ToolId 至少有一个要填</p>
         :type ToolName: str
-        :param _Timeout: 超时时间，超过这个时间就自动回收实例。支持格式：5m、300s、1h 等，默认 5m。最小 30s，最大 24h
+        :param _Timeout: <p>超时时间，超过这个时间就自动回收实例。支持格式：5m、300s、1h 等，默认 5m。最小 30s，最大 24h</p>
         :type Timeout: str
-        :param _ClientToken: 幂等性 Token，长度不超过 64 字符
+        :param _ClientToken: <p>幂等性 Token，长度不超过 64 字符</p>
         :type ClientToken: str
-        :param _MountOptions: 沙箱实例存储挂载配置
+        :param _MountOptions: <p>沙箱实例存储挂载配置</p>
         :type MountOptions: list of MountOption
-        :param _CustomConfiguration: 沙箱实例自定义配置
+        :param _CustomConfiguration: <p>沙箱实例自定义配置</p>
         :type CustomConfiguration: :class:`tencentcloud.ags.v20250920.models.CustomConfiguration`
+        :param _AuthMode: <p>沙箱访问认证模式</p><p>枚举值：</p><ul><li>DEFAULT： 跟随系统策略</li><li>TOKEN： Token认证</li><li>NONE： 免认证 </li></ul><p>默认值：DEFAULT</p>
+        :type AuthMode: str
+        :param _Metadata: <p>沙箱元数据</p>
+        :type Metadata: list of MetadataVar
         """
         self._ToolId = None
         self._ToolName = None
@@ -3103,10 +3193,12 @@ class StartSandboxInstanceRequest(AbstractModel):
         self._ClientToken = None
         self._MountOptions = None
         self._CustomConfiguration = None
+        self._AuthMode = None
+        self._Metadata = None
 
     @property
     def ToolId(self):
-        r"""沙箱工具 ID，与 ToolName 至少有一个要填
+        r"""<p>沙箱工具 ID，与 ToolName 至少有一个要填</p>
         :rtype: str
         """
         return self._ToolId
@@ -3117,7 +3209,7 @@ class StartSandboxInstanceRequest(AbstractModel):
 
     @property
     def ToolName(self):
-        r"""沙箱工具名称，与 ToolId 至少有一个要填
+        r"""<p>沙箱工具名称，与 ToolId 至少有一个要填</p>
         :rtype: str
         """
         return self._ToolName
@@ -3128,7 +3220,7 @@ class StartSandboxInstanceRequest(AbstractModel):
 
     @property
     def Timeout(self):
-        r"""超时时间，超过这个时间就自动回收实例。支持格式：5m、300s、1h 等，默认 5m。最小 30s，最大 24h
+        r"""<p>超时时间，超过这个时间就自动回收实例。支持格式：5m、300s、1h 等，默认 5m。最小 30s，最大 24h</p>
         :rtype: str
         """
         return self._Timeout
@@ -3139,7 +3231,7 @@ class StartSandboxInstanceRequest(AbstractModel):
 
     @property
     def ClientToken(self):
-        r"""幂等性 Token，长度不超过 64 字符
+        r"""<p>幂等性 Token，长度不超过 64 字符</p>
         :rtype: str
         """
         return self._ClientToken
@@ -3150,7 +3242,7 @@ class StartSandboxInstanceRequest(AbstractModel):
 
     @property
     def MountOptions(self):
-        r"""沙箱实例存储挂载配置
+        r"""<p>沙箱实例存储挂载配置</p>
         :rtype: list of MountOption
         """
         return self._MountOptions
@@ -3161,7 +3253,7 @@ class StartSandboxInstanceRequest(AbstractModel):
 
     @property
     def CustomConfiguration(self):
-        r"""沙箱实例自定义配置
+        r"""<p>沙箱实例自定义配置</p>
         :rtype: :class:`tencentcloud.ags.v20250920.models.CustomConfiguration`
         """
         return self._CustomConfiguration
@@ -3169,6 +3261,28 @@ class StartSandboxInstanceRequest(AbstractModel):
     @CustomConfiguration.setter
     def CustomConfiguration(self, CustomConfiguration):
         self._CustomConfiguration = CustomConfiguration
+
+    @property
+    def AuthMode(self):
+        r"""<p>沙箱访问认证模式</p><p>枚举值：</p><ul><li>DEFAULT： 跟随系统策略</li><li>TOKEN： Token认证</li><li>NONE： 免认证 </li></ul><p>默认值：DEFAULT</p>
+        :rtype: str
+        """
+        return self._AuthMode
+
+    @AuthMode.setter
+    def AuthMode(self, AuthMode):
+        self._AuthMode = AuthMode
+
+    @property
+    def Metadata(self):
+        r"""<p>沙箱元数据</p>
+        :rtype: list of MetadataVar
+        """
+        return self._Metadata
+
+    @Metadata.setter
+    def Metadata(self, Metadata):
+        self._Metadata = Metadata
 
 
     def _deserialize(self, params):
@@ -3185,6 +3299,13 @@ class StartSandboxInstanceRequest(AbstractModel):
         if params.get("CustomConfiguration") is not None:
             self._CustomConfiguration = CustomConfiguration()
             self._CustomConfiguration._deserialize(params.get("CustomConfiguration"))
+        self._AuthMode = params.get("AuthMode")
+        if params.get("Metadata") is not None:
+            self._Metadata = []
+            for item in params.get("Metadata"):
+                obj = MetadataVar()
+                obj._deserialize(item)
+                self._Metadata.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3202,7 +3323,7 @@ class StartSandboxInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Instance: 创建的沙箱实例完整信息
+        :param _Instance: <p>创建的沙箱实例完整信息</p>
         :type Instance: :class:`tencentcloud.ags.v20250920.models.SandboxInstance`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3212,7 +3333,7 @@ class StartSandboxInstanceResponse(AbstractModel):
 
     @property
     def Instance(self):
-        r"""创建的沙箱实例完整信息
+        r"""<p>创建的沙箱实例完整信息</p>
         :rtype: :class:`tencentcloud.ags.v20250920.models.SandboxInstance`
         """
         return self._Instance
@@ -3517,17 +3638,20 @@ class UpdateSandboxInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 沙箱实例ID
+        :param _InstanceId: <p>沙箱实例ID</p>
         :type InstanceId: str
-        :param _Timeout: 新的超时时间（从设置时开始重新计算超时），支持格式：5m、300s、1h等。最小30s，最大24h。如果不指定则保持原有超时设置
+        :param _Timeout: <p>新的超时时间（从设置时开始重新计算超时），支持格式：5m、300s、1h等。最小30s，最大24h。如果不指定则保持原有超时设置</p>
         :type Timeout: str
+        :param _Metadata: <p>沙箱实例元数据</p>
+        :type Metadata: list of MetadataVar
         """
         self._InstanceId = None
         self._Timeout = None
+        self._Metadata = None
 
     @property
     def InstanceId(self):
-        r"""沙箱实例ID
+        r"""<p>沙箱实例ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -3538,7 +3662,7 @@ class UpdateSandboxInstanceRequest(AbstractModel):
 
     @property
     def Timeout(self):
-        r"""新的超时时间（从设置时开始重新计算超时），支持格式：5m、300s、1h等。最小30s，最大24h。如果不指定则保持原有超时设置
+        r"""<p>新的超时时间（从设置时开始重新计算超时），支持格式：5m、300s、1h等。最小30s，最大24h。如果不指定则保持原有超时设置</p>
         :rtype: str
         """
         return self._Timeout
@@ -3547,10 +3671,27 @@ class UpdateSandboxInstanceRequest(AbstractModel):
     def Timeout(self, Timeout):
         self._Timeout = Timeout
 
+    @property
+    def Metadata(self):
+        r"""<p>沙箱实例元数据</p>
+        :rtype: list of MetadataVar
+        """
+        return self._Metadata
+
+    @Metadata.setter
+    def Metadata(self, Metadata):
+        self._Metadata = Metadata
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._Timeout = params.get("Timeout")
+        if params.get("Metadata") is not None:
+            self._Metadata = []
+            for item in params.get("Metadata"):
+                obj = MetadataVar()
+                obj._deserialize(item)
+                self._Metadata.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

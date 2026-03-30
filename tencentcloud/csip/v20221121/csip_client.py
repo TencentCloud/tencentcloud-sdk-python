@@ -210,6 +210,29 @@ class CsipClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeAKAnalysisDetail(self, request):
+        r"""访问密钥告警记录AI分析结果详情
+
+        :param request: Request instance for DescribeAKAnalysisDetail.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeAKAnalysisDetailRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeAKAnalysisDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAKAnalysisDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAKAnalysisDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeAbnormalCallRecord(self, request):
         r"""获取调用记录列表
 

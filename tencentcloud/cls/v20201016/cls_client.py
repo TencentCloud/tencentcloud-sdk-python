@@ -332,6 +332,29 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateConsole(self, request):
+        r"""本接口用于创建DataSight控制台
+
+        :param request: Request instance for CreateConsole.
+        :type request: :class:`tencentcloud.cls.v20201016.models.CreateConsoleRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.CreateConsoleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateConsole", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateConsoleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateConsoleSharing(self, request):
         r"""创建控制台分享
 
@@ -1088,6 +1111,29 @@ class ClsClient(AbstractClient):
             body = self.call("DeleteConfigFromMachineGroup", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteConfigFromMachineGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteConsole(self, request):
+        r"""本接口用于删除DataSight控制台
+
+        :param request: Request instance for DeleteConsole.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DeleteConsoleRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DeleteConsoleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteConsole", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteConsoleResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1916,6 +1962,29 @@ class ClsClient(AbstractClient):
             body = self.call("DescribeConsoleSharingList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeConsoleSharingListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeConsoles(self, request):
+        r"""查询DataSight控制台实例列表
+
+        :param request: Request instance for DescribeConsoles.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DescribeConsolesRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DescribeConsolesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeConsoles", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeConsolesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -3159,6 +3228,29 @@ class ClsClient(AbstractClient):
             body = self.call("ModifyConfigExtra", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyConfigExtraResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyConsole(self, request):
+        r"""本接口用于编辑DataSight控制台
+
+        :param request: Request instance for ModifyConsole.
+        :type request: :class:`tencentcloud.cls.v20201016.models.ModifyConsoleRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.ModifyConsoleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyConsole", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyConsoleResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

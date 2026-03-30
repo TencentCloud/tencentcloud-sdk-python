@@ -18,6 +18,451 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AIWorkbenchSREDigitalTwinTask(AbstractModel):
+    r"""AI工作台SRE数字分身任务
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 任务名称
+        :type Name: str
+        :param _TaskType: 任务类型
+        :type TaskType: str
+        :param _TaskConfig: 任务配置
+        :type TaskConfig: str
+        :param _ID: 唯一标识
+        :type ID: int
+        :param _CreatedAt: 创建时间
+        :type CreatedAt: str
+        :param _TwinID: 所属数字分身ID
+        :type TwinID: int
+        """
+        self._Name = None
+        self._TaskType = None
+        self._TaskConfig = None
+        self._ID = None
+        self._CreatedAt = None
+        self._TwinID = None
+
+    @property
+    def Name(self):
+        r"""任务名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def TaskType(self):
+        r"""任务类型
+        :rtype: str
+        """
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def TaskConfig(self):
+        r"""任务配置
+        :rtype: str
+        """
+        return self._TaskConfig
+
+    @TaskConfig.setter
+    def TaskConfig(self, TaskConfig):
+        self._TaskConfig = TaskConfig
+
+    @property
+    def ID(self):
+        r"""唯一标识
+        :rtype: int
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def CreatedAt(self):
+        r"""创建时间
+        :rtype: str
+        """
+        return self._CreatedAt
+
+    @CreatedAt.setter
+    def CreatedAt(self, CreatedAt):
+        self._CreatedAt = CreatedAt
+
+    @property
+    def TwinID(self):
+        r"""所属数字分身ID
+        :rtype: int
+        """
+        return self._TwinID
+
+    @TwinID.setter
+    def TwinID(self, TwinID):
+        self._TwinID = TwinID
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._TaskType = params.get("TaskType")
+        self._TaskConfig = params.get("TaskConfig")
+        self._ID = params.get("ID")
+        self._CreatedAt = params.get("CreatedAt")
+        self._TwinID = params.get("TwinID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AIWorkbenchSREDigitalTwinTaskList(AbstractModel):
+    r"""AI工作台SRE数字分身任务列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Tasks: 任务列表
+        :type Tasks: list of AIWorkbenchSREDigitalTwinTask
+        :param _Total: 任务总数
+        :type Total: int
+        """
+        self._Tasks = None
+        self._Total = None
+
+    @property
+    def Tasks(self):
+        r"""任务列表
+        :rtype: list of AIWorkbenchSREDigitalTwinTask
+        """
+        return self._Tasks
+
+    @Tasks.setter
+    def Tasks(self, Tasks):
+        self._Tasks = Tasks
+
+    @property
+    def Total(self):
+        r"""任务总数
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+
+    def _deserialize(self, params):
+        if params.get("Tasks") is not None:
+            self._Tasks = []
+            for item in params.get("Tasks"):
+                obj = AIWorkbenchSREDigitalTwinTask()
+                obj._deserialize(item)
+                self._Tasks.append(obj)
+        self._Total = params.get("Total")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AIWorkbenchSREDigitalTwinWorkLog(AbstractModel):
+    r"""AI工作台SRE数字分身工作日志
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: 唯一标识符
+        :type ID: int
+        :param _CreatedAt: 创建时间
+        :type CreatedAt: str
+        :param _TwinID: 所属数字分身ID
+        :type TwinID: int
+        :param _TaskID: 所属数字分身任务ID
+        :type TaskID: int
+        :param _StartTime: 分析时间
+        :type StartTime: str
+        :param _Status: 分析状态
+        :type Status: str
+        :param _Result: 分析结果摘要
+        :type Result: str
+        :param _TaskName: 所属任务名称
+        :type TaskName: str
+        :param _TaskType: 所属任务类型
+        :type TaskType: str
+        """
+        self._ID = None
+        self._CreatedAt = None
+        self._TwinID = None
+        self._TaskID = None
+        self._StartTime = None
+        self._Status = None
+        self._Result = None
+        self._TaskName = None
+        self._TaskType = None
+
+    @property
+    def ID(self):
+        r"""唯一标识符
+        :rtype: int
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def CreatedAt(self):
+        r"""创建时间
+        :rtype: str
+        """
+        return self._CreatedAt
+
+    @CreatedAt.setter
+    def CreatedAt(self, CreatedAt):
+        self._CreatedAt = CreatedAt
+
+    @property
+    def TwinID(self):
+        r"""所属数字分身ID
+        :rtype: int
+        """
+        return self._TwinID
+
+    @TwinID.setter
+    def TwinID(self, TwinID):
+        self._TwinID = TwinID
+
+    @property
+    def TaskID(self):
+        r"""所属数字分身任务ID
+        :rtype: int
+        """
+        return self._TaskID
+
+    @TaskID.setter
+    def TaskID(self, TaskID):
+        self._TaskID = TaskID
+
+    @property
+    def StartTime(self):
+        r"""分析时间
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def Status(self):
+        r"""分析状态
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Result(self):
+        r"""分析结果摘要
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def TaskName(self):
+        r"""所属任务名称
+        :rtype: str
+        """
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def TaskType(self):
+        r"""所属任务类型
+        :rtype: str
+        """
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        self._CreatedAt = params.get("CreatedAt")
+        self._TwinID = params.get("TwinID")
+        self._TaskID = params.get("TaskID")
+        self._StartTime = params.get("StartTime")
+        self._Status = params.get("Status")
+        self._Result = params.get("Result")
+        self._TaskName = params.get("TaskName")
+        self._TaskType = params.get("TaskType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AIWorkbenchSREDigitalTwinWorkLogDetail(AbstractModel):
+    r"""AI工作台SRE数字分身工作日志详细信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Content: 工作日志详细内容
+        :type Content: str
+        :param _TaskType: 工作日志任务类型
+        :type TaskType: str
+        :param _DialogID: 工作日志相关对话ID
+        :type DialogID: int
+        """
+        self._Content = None
+        self._TaskType = None
+        self._DialogID = None
+
+    @property
+    def Content(self):
+        r"""工作日志详细内容
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def TaskType(self):
+        r"""工作日志任务类型
+        :rtype: str
+        """
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def DialogID(self):
+        r"""工作日志相关对话ID
+        :rtype: int
+        """
+        return self._DialogID
+
+    @DialogID.setter
+    def DialogID(self, DialogID):
+        self._DialogID = DialogID
+
+
+    def _deserialize(self, params):
+        self._Content = params.get("Content")
+        self._TaskType = params.get("TaskType")
+        self._DialogID = params.get("DialogID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AIWorkbenchSREDigitalTwinWorkLogList(AbstractModel):
+    r"""AI工作台SRE数字分身工作日志列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WorkLogs: 工作日志列表
+        :type WorkLogs: list of AIWorkbenchSREDigitalTwinWorkLog
+        :param _Total: 总数
+        :type Total: int
+        """
+        self._WorkLogs = None
+        self._Total = None
+
+    @property
+    def WorkLogs(self):
+        r"""工作日志列表
+        :rtype: list of AIWorkbenchSREDigitalTwinWorkLog
+        """
+        return self._WorkLogs
+
+    @WorkLogs.setter
+    def WorkLogs(self, WorkLogs):
+        self._WorkLogs = WorkLogs
+
+    @property
+    def Total(self):
+        r"""总数
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+
+    def _deserialize(self, params):
+        if params.get("WorkLogs") is not None:
+            self._WorkLogs = []
+            for item in params.get("WorkLogs"):
+                obj = AIWorkbenchSREDigitalTwinWorkLog()
+                obj._deserialize(item)
+                self._WorkLogs.append(obj)
+        self._Total = params.get("Total")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateNoticeContentTmplRequest(AbstractModel):
     r"""CreateNoticeContentTmpl请求参数结构体
 
@@ -205,6 +650,354 @@ class DeleteNoticeContentTmplsResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAIWorkbenchSREDigitalTwinTaskListRequest(AbstractModel):
+    r"""DescribeAIWorkbenchSREDigitalTwinTaskList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TwinID: 数字分身ID
+        :type TwinID: int
+        :param _Offset: 偏移量
+        :type Offset: int
+        :param _Limit: 数量限制
+        :type Limit: int
+        """
+        self._TwinID = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def TwinID(self):
+        r"""数字分身ID
+        :rtype: int
+        """
+        return self._TwinID
+
+    @TwinID.setter
+    def TwinID(self, TwinID):
+        self._TwinID = TwinID
+
+    @property
+    def Offset(self):
+        r"""偏移量
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""数量限制
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._TwinID = params.get("TwinID")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAIWorkbenchSREDigitalTwinTaskListResponse(AbstractModel):
+    r"""DescribeAIWorkbenchSREDigitalTwinTaskList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JSONStrPaths: Json序列化路径
+        :type JSONStrPaths: list of str
+        :param _Data: 数字分身任务列表
+        :type Data: :class:`tencentcloud.monitor.v20230616.models.AIWorkbenchSREDigitalTwinTaskList`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._JSONStrPaths = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def JSONStrPaths(self):
+        r"""Json序列化路径
+        :rtype: list of str
+        """
+        return self._JSONStrPaths
+
+    @JSONStrPaths.setter
+    def JSONStrPaths(self, JSONStrPaths):
+        self._JSONStrPaths = JSONStrPaths
+
+    @property
+    def Data(self):
+        r"""数字分身任务列表
+        :rtype: :class:`tencentcloud.monitor.v20230616.models.AIWorkbenchSREDigitalTwinTaskList`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._JSONStrPaths = params.get("JSONStrPaths")
+        if params.get("Data") is not None:
+            self._Data = AIWorkbenchSREDigitalTwinTaskList()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAIWorkbenchSREDigitalTwinWorkLogDetailRequest(AbstractModel):
+    r"""DescribeAIWorkbenchSREDigitalTwinWorkLogDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WorkLogID: 工作日志ID
+        :type WorkLogID: int
+        """
+        self._WorkLogID = None
+
+    @property
+    def WorkLogID(self):
+        r"""工作日志ID
+        :rtype: int
+        """
+        return self._WorkLogID
+
+    @WorkLogID.setter
+    def WorkLogID(self, WorkLogID):
+        self._WorkLogID = WorkLogID
+
+
+    def _deserialize(self, params):
+        self._WorkLogID = params.get("WorkLogID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAIWorkbenchSREDigitalTwinWorkLogDetailResponse(AbstractModel):
+    r"""DescribeAIWorkbenchSREDigitalTwinWorkLogDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JSONStrPaths: Json序列化路径
+        :type JSONStrPaths: list of str
+        :param _Data: 数字分身详细信息
+        :type Data: :class:`tencentcloud.monitor.v20230616.models.AIWorkbenchSREDigitalTwinWorkLogDetail`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._JSONStrPaths = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def JSONStrPaths(self):
+        r"""Json序列化路径
+        :rtype: list of str
+        """
+        return self._JSONStrPaths
+
+    @JSONStrPaths.setter
+    def JSONStrPaths(self, JSONStrPaths):
+        self._JSONStrPaths = JSONStrPaths
+
+    @property
+    def Data(self):
+        r"""数字分身详细信息
+        :rtype: :class:`tencentcloud.monitor.v20230616.models.AIWorkbenchSREDigitalTwinWorkLogDetail`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._JSONStrPaths = params.get("JSONStrPaths")
+        if params.get("Data") is not None:
+            self._Data = AIWorkbenchSREDigitalTwinWorkLogDetail()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAIWorkbenchSREDigitalTwinWorkLogListRequest(AbstractModel):
+    r"""DescribeAIWorkbenchSREDigitalTwinWorkLogList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TwinID: 数字分身ID
+        :type TwinID: int
+        :param _Offset: 分页偏移量
+        :type Offset: int
+        :param _Limit: 分页限制条数
+        :type Limit: int
+        """
+        self._TwinID = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def TwinID(self):
+        r"""数字分身ID
+        :rtype: int
+        """
+        return self._TwinID
+
+    @TwinID.setter
+    def TwinID(self, TwinID):
+        self._TwinID = TwinID
+
+    @property
+    def Offset(self):
+        r"""分页偏移量
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""分页限制条数
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._TwinID = params.get("TwinID")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAIWorkbenchSREDigitalTwinWorkLogListResponse(AbstractModel):
+    r"""DescribeAIWorkbenchSREDigitalTwinWorkLogList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JSONStrPaths: Json序列化路径
+        :type JSONStrPaths: list of str
+        :param _Data: 数字分身工作日志列表
+        :type Data: :class:`tencentcloud.monitor.v20230616.models.AIWorkbenchSREDigitalTwinWorkLogList`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._JSONStrPaths = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def JSONStrPaths(self):
+        r"""Json序列化路径
+        :rtype: list of str
+        """
+        return self._JSONStrPaths
+
+    @JSONStrPaths.setter
+    def JSONStrPaths(self, JSONStrPaths):
+        self._JSONStrPaths = JSONStrPaths
+
+    @property
+    def Data(self):
+        r"""数字分身工作日志列表
+        :rtype: :class:`tencentcloud.monitor.v20230616.models.AIWorkbenchSREDigitalTwinWorkLogList`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._JSONStrPaths = params.get("JSONStrPaths")
+        if params.get("Data") is not None:
+            self._Data = AIWorkbenchSREDigitalTwinWorkLogList()
+            self._Data._deserialize(params.get("Data"))
         self._RequestId = params.get("RequestId")
 
 
@@ -2062,6 +2855,138 @@ Trigger 告警触发; Recovery 告警恢复
         if params.get("Template") is not None:
             self._Template = TeamsRobotNoticeTmpl()
             self._Template._deserialize(params.get("Template"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TriggerAIWorkbenchSREDigitalTwinTaskRequest(AbstractModel):
+    r"""TriggerAIWorkbenchSREDigitalTwinTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskID: 数字分身任务ID
+        :type TaskID: int
+        """
+        self._TaskID = None
+
+    @property
+    def TaskID(self):
+        r"""数字分身任务ID
+        :rtype: int
+        """
+        return self._TaskID
+
+    @TaskID.setter
+    def TaskID(self, TaskID):
+        self._TaskID = TaskID
+
+
+    def _deserialize(self, params):
+        self._TaskID = params.get("TaskID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TriggerAIWorkbenchSREDigitalTwinTaskResponse(AbstractModel):
+    r"""TriggerAIWorkbenchSREDigitalTwinTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JSONStrPaths: Json序列化路径
+        :type JSONStrPaths: list of str
+        :param _Data: 数字分身任务信息
+        :type Data: :class:`tencentcloud.monitor.v20230616.models.TriggerDigitalTwinTaskResp`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._JSONStrPaths = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def JSONStrPaths(self):
+        r"""Json序列化路径
+        :rtype: list of str
+        """
+        return self._JSONStrPaths
+
+    @JSONStrPaths.setter
+    def JSONStrPaths(self, JSONStrPaths):
+        self._JSONStrPaths = JSONStrPaths
+
+    @property
+    def Data(self):
+        r"""数字分身任务信息
+        :rtype: :class:`tencentcloud.monitor.v20230616.models.TriggerDigitalTwinTaskResp`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._JSONStrPaths = params.get("JSONStrPaths")
+        if params.get("Data") is not None:
+            self._Data = TriggerDigitalTwinTaskResp()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class TriggerDigitalTwinTaskResp(AbstractModel):
+    r"""触发数字分身任务响应
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskID: 数字分身任务ID
+        :type TaskID: int
+        """
+        self._TaskID = None
+
+    @property
+    def TaskID(self):
+        r"""数字分身任务ID
+        :rtype: int
+        """
+        return self._TaskID
+
+    @TaskID.setter
+    def TaskID(self, TaskID):
+        self._TaskID = TaskID
+
+
+    def _deserialize(self, params):
+        self._TaskID = params.get("TaskID")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

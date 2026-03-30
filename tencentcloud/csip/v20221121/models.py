@@ -12786,6 +12786,175 @@ class DescribeAIAgentAssetListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeAKAnalysisDetailRequest(AbstractModel):
+    r"""DescribeAKAnalysisDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: 告警记录ID
+        :type ID: int
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        """
+        self._ID = None
+        self._MemberId = None
+
+    @property
+    def ID(self):
+        r"""告警记录ID
+        :rtype: int
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def MemberId(self):
+        r"""集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAKAnalysisDetailResponse(AbstractModel):
+    r"""DescribeAKAnalysisDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AIStatus: 告警AI分析状态 -1 分析失败 0 未分析 1 分析中 2 分析成功，真实告警 3 分析成功，可疑告警
+        :type AIStatus: int
+        :param _AITaskID: AI分析任务ID
+        :type AITaskID: str
+        :param _AIResult: 告警AI分析结果，base64格式，避免数据被拦截
+        :type AIResult: str
+        :param _Feedback: 反馈建议
+        :type Feedback: str
+        :param _FeedbackResult: 反馈状态  0表示没有反馈，1表示认可，2表示不认可
+        :type FeedbackResult: int
+        :param _FailedReason: 失败原因
+        :type FailedReason: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._AIStatus = None
+        self._AITaskID = None
+        self._AIResult = None
+        self._Feedback = None
+        self._FeedbackResult = None
+        self._FailedReason = None
+        self._RequestId = None
+
+    @property
+    def AIStatus(self):
+        r"""告警AI分析状态 -1 分析失败 0 未分析 1 分析中 2 分析成功，真实告警 3 分析成功，可疑告警
+        :rtype: int
+        """
+        return self._AIStatus
+
+    @AIStatus.setter
+    def AIStatus(self, AIStatus):
+        self._AIStatus = AIStatus
+
+    @property
+    def AITaskID(self):
+        r"""AI分析任务ID
+        :rtype: str
+        """
+        return self._AITaskID
+
+    @AITaskID.setter
+    def AITaskID(self, AITaskID):
+        self._AITaskID = AITaskID
+
+    @property
+    def AIResult(self):
+        r"""告警AI分析结果，base64格式，避免数据被拦截
+        :rtype: str
+        """
+        return self._AIResult
+
+    @AIResult.setter
+    def AIResult(self, AIResult):
+        self._AIResult = AIResult
+
+    @property
+    def Feedback(self):
+        r"""反馈建议
+        :rtype: str
+        """
+        return self._Feedback
+
+    @Feedback.setter
+    def Feedback(self, Feedback):
+        self._Feedback = Feedback
+
+    @property
+    def FeedbackResult(self):
+        r"""反馈状态  0表示没有反馈，1表示认可，2表示不认可
+        :rtype: int
+        """
+        return self._FeedbackResult
+
+    @FeedbackResult.setter
+    def FeedbackResult(self, FeedbackResult):
+        self._FeedbackResult = FeedbackResult
+
+    @property
+    def FailedReason(self):
+        r"""失败原因
+        :rtype: str
+        """
+        return self._FailedReason
+
+    @FailedReason.setter
+    def FailedReason(self, FailedReason):
+        self._FailedReason = FailedReason
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._AIStatus = params.get("AIStatus")
+        self._AITaskID = params.get("AITaskID")
+        self._AIResult = params.get("AIResult")
+        self._Feedback = params.get("Feedback")
+        self._FeedbackResult = params.get("FeedbackResult")
+        self._FailedReason = params.get("FailedReason")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeAbnormalCallRecordRequest(AbstractModel):
     r"""DescribeAbnormalCallRecord请求参数结构体
 

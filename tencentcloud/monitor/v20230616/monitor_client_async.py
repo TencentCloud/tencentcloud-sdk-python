@@ -61,6 +61,60 @@ class MonitorClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeAIWorkbenchSREDigitalTwinTaskList(
+            self,
+            request: models.DescribeAIWorkbenchSREDigitalTwinTaskListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAIWorkbenchSREDigitalTwinTaskListResponse:
+        """
+        查询AI工作台SRE数字分身任务列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAIWorkbenchSREDigitalTwinTaskList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAIWorkbenchSREDigitalTwinTaskListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAIWorkbenchSREDigitalTwinWorkLogDetail(
+            self,
+            request: models.DescribeAIWorkbenchSREDigitalTwinWorkLogDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAIWorkbenchSREDigitalTwinWorkLogDetailResponse:
+        """
+        查询AI工作台SRE数字分身工作日志详细信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAIWorkbenchSREDigitalTwinWorkLogDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAIWorkbenchSREDigitalTwinWorkLogDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAIWorkbenchSREDigitalTwinWorkLogList(
+            self,
+            request: models.DescribeAIWorkbenchSREDigitalTwinWorkLogListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAIWorkbenchSREDigitalTwinWorkLogListResponse:
+        """
+        查询AI工作台SRE数字分身任务工作日志列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAIWorkbenchSREDigitalTwinWorkLogList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAIWorkbenchSREDigitalTwinWorkLogListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeAlarmNotifyHistories(
             self,
             request: models.DescribeAlarmNotifyHistoriesRequest,
@@ -110,6 +164,24 @@ class MonitorClient(AbstractClient):
         kwargs["action"] = "ModifyNoticeContentTmpl"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyNoticeContentTmplResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def TriggerAIWorkbenchSREDigitalTwinTask(
+            self,
+            request: models.TriggerAIWorkbenchSREDigitalTwinTaskRequest,
+            opts: Dict = None,
+    ) -> models.TriggerAIWorkbenchSREDigitalTwinTaskResponse:
+        """
+        触发数字分身任务请求
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "TriggerAIWorkbenchSREDigitalTwinTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.TriggerAIWorkbenchSREDigitalTwinTaskResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

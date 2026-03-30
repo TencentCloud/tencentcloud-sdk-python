@@ -1020,6 +1020,29 @@ class DomainClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyDomainOwner(self, request):
+        r"""本接口 (ModifyDomainOwner) 用于域名过户。
+
+        :param request: Request instance for ModifyDomainOwner.
+        :type request: :class:`tencentcloud.domain.v20180808.models.ModifyDomainOwnerRequest`
+        :rtype: :class:`tencentcloud.domain.v20180808.models.ModifyDomainOwnerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDomainOwner", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDomainOwnerResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyDomainOwnerBatch(self, request):
         r"""本接口 ( ModifyDomainOwnerBatch) 用于域名批量账号间转移 。
 

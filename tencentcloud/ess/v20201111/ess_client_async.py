@@ -630,6 +630,24 @@ class EssClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateDraftContractByPromptsTask(
+            self,
+            request: models.CreateDraftContractByPromptsTaskRequest,
+            opts: Dict = None,
+    ) -> models.CreateDraftContractByPromptsTaskResponse:
+        """
+        此接口（CreateDraftContractByPromptsTask）用于创建智能合同起草任务。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateDraftContractByPromptsTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateDraftContractByPromptsTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateDynamicFlowApprover(
             self,
             request: models.CreateDynamicFlowApproverRequest,
@@ -2532,6 +2550,24 @@ class EssClient(AbstractClient):
         kwargs["action"] = "DescribeContractReviewWebUrl"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeContractReviewWebUrlResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeDraftContractByPromptsTask(
+            self,
+            request: models.DescribeDraftContractByPromptsTaskRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDraftContractByPromptsTaskResponse:
+        """
+        此接口（DescribeDraftContractByPromptsTask）用于查询智能合同起草任务状态。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDraftContractByPromptsTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDraftContractByPromptsTaskResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

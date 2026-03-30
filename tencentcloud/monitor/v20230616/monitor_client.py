@@ -72,6 +72,75 @@ class MonitorClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeAIWorkbenchSREDigitalTwinTaskList(self, request):
+        r"""查询AI工作台SRE数字分身任务列表
+
+        :param request: Request instance for DescribeAIWorkbenchSREDigitalTwinTaskList.
+        :type request: :class:`tencentcloud.monitor.v20230616.models.DescribeAIWorkbenchSREDigitalTwinTaskListRequest`
+        :rtype: :class:`tencentcloud.monitor.v20230616.models.DescribeAIWorkbenchSREDigitalTwinTaskListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAIWorkbenchSREDigitalTwinTaskList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAIWorkbenchSREDigitalTwinTaskListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAIWorkbenchSREDigitalTwinWorkLogDetail(self, request):
+        r"""查询AI工作台SRE数字分身工作日志详细信息
+
+        :param request: Request instance for DescribeAIWorkbenchSREDigitalTwinWorkLogDetail.
+        :type request: :class:`tencentcloud.monitor.v20230616.models.DescribeAIWorkbenchSREDigitalTwinWorkLogDetailRequest`
+        :rtype: :class:`tencentcloud.monitor.v20230616.models.DescribeAIWorkbenchSREDigitalTwinWorkLogDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAIWorkbenchSREDigitalTwinWorkLogDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAIWorkbenchSREDigitalTwinWorkLogDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAIWorkbenchSREDigitalTwinWorkLogList(self, request):
+        r"""查询AI工作台SRE数字分身任务工作日志列表
+
+        :param request: Request instance for DescribeAIWorkbenchSREDigitalTwinWorkLogList.
+        :type request: :class:`tencentcloud.monitor.v20230616.models.DescribeAIWorkbenchSREDigitalTwinWorkLogListRequest`
+        :rtype: :class:`tencentcloud.monitor.v20230616.models.DescribeAIWorkbenchSREDigitalTwinWorkLogListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAIWorkbenchSREDigitalTwinWorkLogList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAIWorkbenchSREDigitalTwinWorkLogListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeAlarmNotifyHistories(self, request):
         r"""按需查询告警的通知历史
 
@@ -132,6 +201,29 @@ class MonitorClient(AbstractClient):
             body = self.call("ModifyNoticeContentTmpl", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyNoticeContentTmplResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def TriggerAIWorkbenchSREDigitalTwinTask(self, request):
+        r"""触发数字分身任务请求
+
+        :param request: Request instance for TriggerAIWorkbenchSREDigitalTwinTask.
+        :type request: :class:`tencentcloud.monitor.v20230616.models.TriggerAIWorkbenchSREDigitalTwinTaskRequest`
+        :rtype: :class:`tencentcloud.monitor.v20230616.models.TriggerAIWorkbenchSREDigitalTwinTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("TriggerAIWorkbenchSREDigitalTwinTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.TriggerAIWorkbenchSREDigitalTwinTaskResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

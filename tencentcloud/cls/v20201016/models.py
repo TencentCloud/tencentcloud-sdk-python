@@ -18,6 +18,44 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AccessControlRule(AbstractModel):
+    r"""DataSight访问控制规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AccessMode: 访问方式：public - 公网，internal - 内网
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccessMode: str
+        """
+        self._AccessMode = None
+
+    @property
+    def AccessMode(self):
+        r"""访问方式：public - 公网，internal - 内网
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AccessMode
+
+    @AccessMode.setter
+    def AccessMode(self, AccessMode):
+        self._AccessMode = AccessMode
+
+
+    def _deserialize(self, params):
+        self._AccessMode = params.get("AccessMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AddMachineGroupInfoRequest(AbstractModel):
     r"""AddMachineGroupInfo请求参数结构体
 
@@ -2280,6 +2318,61 @@ class AnonymousInfo(AbstractModel):
         
 
 
+class AnonymousLoginInfo(AbstractModel):
+    r"""DataSight内网匿名登录账号信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SecretId: <p>匿名登录账号secretId</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecretId: str
+        :param _SecretKey: <p>匿名登录账号secretKey</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecretKey: str
+        """
+        self._SecretId = None
+        self._SecretKey = None
+
+    @property
+    def SecretId(self):
+        r"""<p>匿名登录账号secretId</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SecretId
+
+    @SecretId.setter
+    def SecretId(self, SecretId):
+        self._SecretId = SecretId
+
+    @property
+    def SecretKey(self):
+        r"""<p>匿名登录账号secretKey</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SecretKey
+
+    @SecretKey.setter
+    def SecretKey(self, SecretKey):
+        self._SecretKey = SecretKey
+
+
+    def _deserialize(self, params):
+        self._SecretId = params.get("SecretId")
+        self._SecretKey = params.get("SecretKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ApplyConfigToMachineGroupRequest(AbstractModel):
     r"""ApplyConfigToMachineGroup请求参数结构体
 
@@ -2422,6 +2515,74 @@ class AppointLabel(AbstractModel):
     def _deserialize(self, params):
         self._Type = params.get("Type")
         self._Keys = params.get("Keys")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AuthRoleInfo(AbstractModel):
+    r"""dataSight 第三方验证登录角色配置信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RoleName: <p>Auth角色名称</p>
+        :type RoleName: str
+        :param _SecretId: <p>Auth角色对应权限SecretId</p>
+        :type SecretId: str
+        :param _SecretKey: <p>Auth角色对应权限SecretKey</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecretKey: str
+        """
+        self._RoleName = None
+        self._SecretId = None
+        self._SecretKey = None
+
+    @property
+    def RoleName(self):
+        r"""<p>Auth角色名称</p>
+        :rtype: str
+        """
+        return self._RoleName
+
+    @RoleName.setter
+    def RoleName(self, RoleName):
+        self._RoleName = RoleName
+
+    @property
+    def SecretId(self):
+        r"""<p>Auth角色对应权限SecretId</p>
+        :rtype: str
+        """
+        return self._SecretId
+
+    @SecretId.setter
+    def SecretId(self, SecretId):
+        self._SecretId = SecretId
+
+    @property
+    def SecretKey(self):
+        r"""<p>Auth角色对应权限SecretKey</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SecretKey
+
+    @SecretKey.setter
+    def SecretKey(self, SecretKey):
+        self._SecretKey = SecretKey
+
+
+    def _deserialize(self, params):
+        self._RoleName = params.get("RoleName")
+        self._SecretId = params.get("SecretId")
+        self._SecretKey = params.get("SecretKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4330,6 +4491,419 @@ class ConfigInfo(AbstractModel):
         self._UserDefineRule = params.get("UserDefineRule")
         self._AdvancedConfig = params.get("AdvancedConfig")
         self._InputType = params.get("InputType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Console(AbstractModel):
+    r"""DataSight控制台实例
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ConsoleId: <p>DataSight控制台Id</p>
+        :type ConsoleId: str
+        :param _AccessMode: <p>访问方式：public-公网，internal-内网</p>
+        :type AccessMode: list of str
+        :param _LoginMode: <p>登录方式：0-账号密码鉴权，1-匿名登录，2-第三方认证登录</p>
+        :type LoginMode: int
+        :param _DomainPrefix: <p>自定义域名前缀</p>
+        :type DomainPrefix: str
+        :param _Accounts: <p>用户账号信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Accounts: list of ConsoleAccount
+        :param _IntranetType: <p>内网类型，默认为0</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IntranetType: int
+        :param _IntranetRegion: <p>内网地域</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IntranetRegion: str
+        :param _VpcId: <p>内网私有网络VpcId</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcId: str
+        :param _SubnetId: <p>内网子网SubnetId</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubnetId: str
+        :param _AnonymousLogin: <p>匿名登录账号信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AnonymousLogin: :class:`tencentcloud.cls.v20201016.models.AnonymousLoginInfo`
+        :param _AuthRoles: <p>auth用户角色信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AuthRoles: list of AuthRoleInfo
+        :param _Tags: <p>绑定的标签信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
+        :param _HideParams: <p>自定义隐藏参数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HideParams: list of str
+        :param _AccessControlRules: <p>访问控制规则</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccessControlRules: list of AccessControlRule
+        :param _Remarks: <p>备注</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remarks: str
+        :param _Menus: <p>自定义显示菜单</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Menus: list of str
+        """
+        self._ConsoleId = None
+        self._AccessMode = None
+        self._LoginMode = None
+        self._DomainPrefix = None
+        self._Accounts = None
+        self._IntranetType = None
+        self._IntranetRegion = None
+        self._VpcId = None
+        self._SubnetId = None
+        self._AnonymousLogin = None
+        self._AuthRoles = None
+        self._Tags = None
+        self._HideParams = None
+        self._AccessControlRules = None
+        self._Remarks = None
+        self._Menus = None
+
+    @property
+    def ConsoleId(self):
+        r"""<p>DataSight控制台Id</p>
+        :rtype: str
+        """
+        return self._ConsoleId
+
+    @ConsoleId.setter
+    def ConsoleId(self, ConsoleId):
+        self._ConsoleId = ConsoleId
+
+    @property
+    def AccessMode(self):
+        r"""<p>访问方式：public-公网，internal-内网</p>
+        :rtype: list of str
+        """
+        return self._AccessMode
+
+    @AccessMode.setter
+    def AccessMode(self, AccessMode):
+        self._AccessMode = AccessMode
+
+    @property
+    def LoginMode(self):
+        r"""<p>登录方式：0-账号密码鉴权，1-匿名登录，2-第三方认证登录</p>
+        :rtype: int
+        """
+        return self._LoginMode
+
+    @LoginMode.setter
+    def LoginMode(self, LoginMode):
+        self._LoginMode = LoginMode
+
+    @property
+    def DomainPrefix(self):
+        r"""<p>自定义域名前缀</p>
+        :rtype: str
+        """
+        return self._DomainPrefix
+
+    @DomainPrefix.setter
+    def DomainPrefix(self, DomainPrefix):
+        self._DomainPrefix = DomainPrefix
+
+    @property
+    def Accounts(self):
+        r"""<p>用户账号信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ConsoleAccount
+        """
+        return self._Accounts
+
+    @Accounts.setter
+    def Accounts(self, Accounts):
+        self._Accounts = Accounts
+
+    @property
+    def IntranetType(self):
+        r"""<p>内网类型，默认为0</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._IntranetType
+
+    @IntranetType.setter
+    def IntranetType(self, IntranetType):
+        self._IntranetType = IntranetType
+
+    @property
+    def IntranetRegion(self):
+        r"""<p>内网地域</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._IntranetRegion
+
+    @IntranetRegion.setter
+    def IntranetRegion(self, IntranetRegion):
+        self._IntranetRegion = IntranetRegion
+
+    @property
+    def VpcId(self):
+        r"""<p>内网私有网络VpcId</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetId(self):
+        r"""<p>内网子网SubnetId</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def AnonymousLogin(self):
+        r"""<p>匿名登录账号信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cls.v20201016.models.AnonymousLoginInfo`
+        """
+        return self._AnonymousLogin
+
+    @AnonymousLogin.setter
+    def AnonymousLogin(self, AnonymousLogin):
+        self._AnonymousLogin = AnonymousLogin
+
+    @property
+    def AuthRoles(self):
+        r"""<p>auth用户角色信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of AuthRoleInfo
+        """
+        return self._AuthRoles
+
+    @AuthRoles.setter
+    def AuthRoles(self, AuthRoles):
+        self._AuthRoles = AuthRoles
+
+    @property
+    def Tags(self):
+        r"""<p>绑定的标签信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def HideParams(self):
+        r"""<p>自定义隐藏参数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._HideParams
+
+    @HideParams.setter
+    def HideParams(self, HideParams):
+        self._HideParams = HideParams
+
+    @property
+    def AccessControlRules(self):
+        r"""<p>访问控制规则</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of AccessControlRule
+        """
+        return self._AccessControlRules
+
+    @AccessControlRules.setter
+    def AccessControlRules(self, AccessControlRules):
+        self._AccessControlRules = AccessControlRules
+
+    @property
+    def Remarks(self):
+        r"""<p>备注</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Remarks
+
+    @Remarks.setter
+    def Remarks(self, Remarks):
+        self._Remarks = Remarks
+
+    @property
+    def Menus(self):
+        r"""<p>自定义显示菜单</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._Menus
+
+    @Menus.setter
+    def Menus(self, Menus):
+        self._Menus = Menus
+
+
+    def _deserialize(self, params):
+        self._ConsoleId = params.get("ConsoleId")
+        self._AccessMode = params.get("AccessMode")
+        self._LoginMode = params.get("LoginMode")
+        self._DomainPrefix = params.get("DomainPrefix")
+        if params.get("Accounts") is not None:
+            self._Accounts = []
+            for item in params.get("Accounts"):
+                obj = ConsoleAccount()
+                obj._deserialize(item)
+                self._Accounts.append(obj)
+        self._IntranetType = params.get("IntranetType")
+        self._IntranetRegion = params.get("IntranetRegion")
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
+        if params.get("AnonymousLogin") is not None:
+            self._AnonymousLogin = AnonymousLoginInfo()
+            self._AnonymousLogin._deserialize(params.get("AnonymousLogin"))
+        if params.get("AuthRoles") is not None:
+            self._AuthRoles = []
+            for item in params.get("AuthRoles"):
+                obj = AuthRoleInfo()
+                obj._deserialize(item)
+                self._AuthRoles.append(obj)
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._HideParams = params.get("HideParams")
+        if params.get("AccessControlRules") is not None:
+            self._AccessControlRules = []
+            for item in params.get("AccessControlRules"):
+                obj = AccessControlRule()
+                obj._deserialize(item)
+                self._AccessControlRules.append(obj)
+        self._Remarks = params.get("Remarks")
+        self._Menus = params.get("Menus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ConsoleAccount(AbstractModel):
+    r"""DataSight控制台用户账号信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UserName: <p>用户名</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserName: str
+        :param _Password: <p>用户密码</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Password: str
+        :param _SecretId: <p>腾讯云账号SecretId</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecretId: str
+        :param _SecretKey: <p>腾讯云账号SecretKey</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecretKey: str
+        :param _Email: <p>电子邮箱，用于发送验证码</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Email: str
+        """
+        self._UserName = None
+        self._Password = None
+        self._SecretId = None
+        self._SecretKey = None
+        self._Email = None
+
+    @property
+    def UserName(self):
+        r"""<p>用户名</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def Password(self):
+        r"""<p>用户密码</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def SecretId(self):
+        r"""<p>腾讯云账号SecretId</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SecretId
+
+    @SecretId.setter
+    def SecretId(self, SecretId):
+        self._SecretId = SecretId
+
+    @property
+    def SecretKey(self):
+        r"""<p>腾讯云账号SecretKey</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SecretKey
+
+    @SecretKey.setter
+    def SecretKey(self, SecretKey):
+        self._SecretKey = SecretKey
+
+    @property
+    def Email(self):
+        r"""<p>电子邮箱，用于发送验证码</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Email
+
+    @Email.setter
+    def Email(self, Email):
+        self._Email = Email
+
+
+    def _deserialize(self, params):
+        self._UserName = params.get("UserName")
+        self._Password = params.get("Password")
+        self._SecretId = params.get("SecretId")
+        self._SecretKey = params.get("SecretKey")
+        self._Email = params.get("Email")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7916,6 +8490,317 @@ class CreateConfigResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._ConfigId = params.get("ConfigId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateConsoleRequest(AbstractModel):
+    r"""CreateConsole请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AccessMode: <p>访问方式：public - 公网，internal - 内网</p>
+        :type AccessMode: list of str
+        :param _LoginMode: <p>登录方式：0 - 账号密码鉴权，1 - 匿名登陆，2 - 第三方认证登录</p>
+        :type LoginMode: int
+        :param _DomainPrefix: <p>自定义域名前缀</p>
+        :type DomainPrefix: str
+        :param _Accounts: <p>用户账号信息</p><p>“账号密码鉴权“登录方式必传</p>
+        :type Accounts: list of ConsoleAccount
+        :param _AnonymousLogin: <p>匿名登录账号信息</p><p>“匿名登录”登录方式必传</p>
+        :type AnonymousLogin: :class:`tencentcloud.cls.v20201016.models.AnonymousLoginInfo`
+        :param _IntranetType: <p>内网类型，默认为0</p>
+        :type IntranetType: int
+        :param _IntranetRegion: <p>内网地域</p>
+        :type IntranetRegion: str
+        :param _VpcId: <p>内网私有网络VpcId</p>
+        :type VpcId: str
+        :param _SubnetId: <p>内网子网SubnetId</p>
+        :type SubnetId: str
+        :param _AuthRoles: <p>Auth角色信息</p><p>“第三方认证登录”登录方式必传</p>
+        :type AuthRoles: list of AuthRoleInfo
+        :param _Tags: <p>标签描述列表，通过指定该参数可以同时绑定标签到相应的日志主题。最大支持10个标签键值对，同一个资源只能绑定到同一个标签键下。</p>
+        :type Tags: list of Tag
+        :param _HideParams: <p>自定义隐藏参数</p>
+        :type HideParams: list of str
+        :param _AccessControlRules: <p>访问控制规则</p><p>“第三方认证登录”登录方式必传 AccessMode: internal &amp;&amp; Action: ACCEPT 规则</p>
+        :type AccessControlRules: list of AccessControlRule
+        :param _Remarks: <p>备注</p>
+        :type Remarks: str
+        :param _Menus: <p>自定义显示菜单</p>
+        :type Menus: list of str
+        """
+        self._AccessMode = None
+        self._LoginMode = None
+        self._DomainPrefix = None
+        self._Accounts = None
+        self._AnonymousLogin = None
+        self._IntranetType = None
+        self._IntranetRegion = None
+        self._VpcId = None
+        self._SubnetId = None
+        self._AuthRoles = None
+        self._Tags = None
+        self._HideParams = None
+        self._AccessControlRules = None
+        self._Remarks = None
+        self._Menus = None
+
+    @property
+    def AccessMode(self):
+        r"""<p>访问方式：public - 公网，internal - 内网</p>
+        :rtype: list of str
+        """
+        return self._AccessMode
+
+    @AccessMode.setter
+    def AccessMode(self, AccessMode):
+        self._AccessMode = AccessMode
+
+    @property
+    def LoginMode(self):
+        r"""<p>登录方式：0 - 账号密码鉴权，1 - 匿名登陆，2 - 第三方认证登录</p>
+        :rtype: int
+        """
+        return self._LoginMode
+
+    @LoginMode.setter
+    def LoginMode(self, LoginMode):
+        self._LoginMode = LoginMode
+
+    @property
+    def DomainPrefix(self):
+        r"""<p>自定义域名前缀</p>
+        :rtype: str
+        """
+        return self._DomainPrefix
+
+    @DomainPrefix.setter
+    def DomainPrefix(self, DomainPrefix):
+        self._DomainPrefix = DomainPrefix
+
+    @property
+    def Accounts(self):
+        r"""<p>用户账号信息</p><p>“账号密码鉴权“登录方式必传</p>
+        :rtype: list of ConsoleAccount
+        """
+        return self._Accounts
+
+    @Accounts.setter
+    def Accounts(self, Accounts):
+        self._Accounts = Accounts
+
+    @property
+    def AnonymousLogin(self):
+        r"""<p>匿名登录账号信息</p><p>“匿名登录”登录方式必传</p>
+        :rtype: :class:`tencentcloud.cls.v20201016.models.AnonymousLoginInfo`
+        """
+        return self._AnonymousLogin
+
+    @AnonymousLogin.setter
+    def AnonymousLogin(self, AnonymousLogin):
+        self._AnonymousLogin = AnonymousLogin
+
+    @property
+    def IntranetType(self):
+        r"""<p>内网类型，默认为0</p>
+        :rtype: int
+        """
+        return self._IntranetType
+
+    @IntranetType.setter
+    def IntranetType(self, IntranetType):
+        self._IntranetType = IntranetType
+
+    @property
+    def IntranetRegion(self):
+        r"""<p>内网地域</p>
+        :rtype: str
+        """
+        return self._IntranetRegion
+
+    @IntranetRegion.setter
+    def IntranetRegion(self, IntranetRegion):
+        self._IntranetRegion = IntranetRegion
+
+    @property
+    def VpcId(self):
+        r"""<p>内网私有网络VpcId</p>
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetId(self):
+        r"""<p>内网子网SubnetId</p>
+        :rtype: str
+        """
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def AuthRoles(self):
+        r"""<p>Auth角色信息</p><p>“第三方认证登录”登录方式必传</p>
+        :rtype: list of AuthRoleInfo
+        """
+        return self._AuthRoles
+
+    @AuthRoles.setter
+    def AuthRoles(self, AuthRoles):
+        self._AuthRoles = AuthRoles
+
+    @property
+    def Tags(self):
+        r"""<p>标签描述列表，通过指定该参数可以同时绑定标签到相应的日志主题。最大支持10个标签键值对，同一个资源只能绑定到同一个标签键下。</p>
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def HideParams(self):
+        r"""<p>自定义隐藏参数</p>
+        :rtype: list of str
+        """
+        return self._HideParams
+
+    @HideParams.setter
+    def HideParams(self, HideParams):
+        self._HideParams = HideParams
+
+    @property
+    def AccessControlRules(self):
+        r"""<p>访问控制规则</p><p>“第三方认证登录”登录方式必传 AccessMode: internal &amp;&amp; Action: ACCEPT 规则</p>
+        :rtype: list of AccessControlRule
+        """
+        return self._AccessControlRules
+
+    @AccessControlRules.setter
+    def AccessControlRules(self, AccessControlRules):
+        self._AccessControlRules = AccessControlRules
+
+    @property
+    def Remarks(self):
+        r"""<p>备注</p>
+        :rtype: str
+        """
+        return self._Remarks
+
+    @Remarks.setter
+    def Remarks(self, Remarks):
+        self._Remarks = Remarks
+
+    @property
+    def Menus(self):
+        r"""<p>自定义显示菜单</p>
+        :rtype: list of str
+        """
+        return self._Menus
+
+    @Menus.setter
+    def Menus(self, Menus):
+        self._Menus = Menus
+
+
+    def _deserialize(self, params):
+        self._AccessMode = params.get("AccessMode")
+        self._LoginMode = params.get("LoginMode")
+        self._DomainPrefix = params.get("DomainPrefix")
+        if params.get("Accounts") is not None:
+            self._Accounts = []
+            for item in params.get("Accounts"):
+                obj = ConsoleAccount()
+                obj._deserialize(item)
+                self._Accounts.append(obj)
+        if params.get("AnonymousLogin") is not None:
+            self._AnonymousLogin = AnonymousLoginInfo()
+            self._AnonymousLogin._deserialize(params.get("AnonymousLogin"))
+        self._IntranetType = params.get("IntranetType")
+        self._IntranetRegion = params.get("IntranetRegion")
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
+        if params.get("AuthRoles") is not None:
+            self._AuthRoles = []
+            for item in params.get("AuthRoles"):
+                obj = AuthRoleInfo()
+                obj._deserialize(item)
+                self._AuthRoles.append(obj)
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._HideParams = params.get("HideParams")
+        if params.get("AccessControlRules") is not None:
+            self._AccessControlRules = []
+            for item in params.get("AccessControlRules"):
+                obj = AccessControlRule()
+                obj._deserialize(item)
+                self._AccessControlRules.append(obj)
+        self._Remarks = params.get("Remarks")
+        self._Menus = params.get("Menus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateConsoleResponse(AbstractModel):
+    r"""CreateConsole返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ConsoleId: <p>DataSight控制台Id</p>
+        :type ConsoleId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ConsoleId = None
+        self._RequestId = None
+
+    @property
+    def ConsoleId(self):
+        r"""<p>DataSight控制台Id</p>
+        :rtype: str
+        """
+        return self._ConsoleId
+
+    @ConsoleId.setter
+    def ConsoleId(self, ConsoleId):
+        self._ConsoleId = ConsoleId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ConsoleId = params.get("ConsoleId")
         self._RequestId = params.get("RequestId")
 
 
@@ -15350,6 +16235,70 @@ class DeleteConfigResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteConsoleRequest(AbstractModel):
+    r"""DeleteConsole请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ConsoleId: <p>DataSight控制台Id</p>
+        :type ConsoleId: str
+        """
+        self._ConsoleId = None
+
+    @property
+    def ConsoleId(self):
+        r"""<p>DataSight控制台Id</p>
+        :rtype: str
+        """
+        return self._ConsoleId
+
+    @ConsoleId.setter
+    def ConsoleId(self, ConsoleId):
+        self._ConsoleId = ConsoleId
+
+
+    def _deserialize(self, params):
+        self._ConsoleId = params.get("ConsoleId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteConsoleResponse(AbstractModel):
+    r"""DeleteConsole返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteConsoleSharingRequest(AbstractModel):
     r"""DeleteConsoleSharing请求参数结构体
 
@@ -18923,6 +19872,140 @@ class DescribeConsoleSharingListResponse(AbstractModel):
                 obj = ConsoleSharingInfo()
                 obj._deserialize(item)
                 self._ConsoleSharingInfos.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeConsolesRequest(AbstractModel):
+    r"""DescribeConsoles请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Offset: <p>分页的偏移量，默认值为0。</p>
+        :type Offset: int
+        :param _Limit: <p>分页单页限制数目，默认值为100，最大值100。</p>
+        :type Limit: int
+        :param _Filters: <li> DomainPrefix按照【域名前缀】进行过滤。类型：String必选：否</li><li> ConsoleId按照【DataSight实例ID】进行过滤。类型：String必选：否</li><li> tagKey按照【标签键】进行过滤。类型：String必选：否</li><li> tag:tagKey按照【标签键值对】进行过滤。tagKey使用具体的标签键进行替换，例如tag:exampleKey。类型：String必选：否</li>
+        :type Filters: list of Filter
+        """
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+
+    @property
+    def Offset(self):
+        r"""<p>分页的偏移量，默认值为0。</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>分页单页限制数目，默认值为100，最大值100。</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        r"""<li> DomainPrefix按照【域名前缀】进行过滤。类型：String必选：否</li><li> ConsoleId按照【DataSight实例ID】进行过滤。类型：String必选：否</li><li> tagKey按照【标签键】进行过滤。类型：String必选：否</li><li> tag:tagKey按照【标签键值对】进行过滤。tagKey使用具体的标签键进行替换，例如tag:exampleKey。类型：String必选：否</li>
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeConsolesResponse(AbstractModel):
+    r"""DescribeConsoles返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Consoles: <p>DataSight控制台实例列表</p>
+        :type Consoles: list of Console
+        :param _TotalCount: <p>实例总数</p>
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Consoles = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Consoles(self):
+        r"""<p>DataSight控制台实例列表</p>
+        :rtype: list of Console
+        """
+        return self._Consoles
+
+    @Consoles.setter
+    def Consoles(self, Consoles):
+        self._Consoles = Consoles
+
+    @property
+    def TotalCount(self):
+        r"""<p>实例总数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Consoles") is not None:
+            self._Consoles = []
+            for item in params.get("Consoles"):
+                obj = Console()
+                obj._deserialize(item)
+                self._Consoles.append(obj)
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -34737,6 +35820,312 @@ class ModifyConfigResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyConsoleRequest(AbstractModel):
+    r"""ModifyConsole请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ConsoleId: <p>DataSight控制台ConsoleId</p>
+        :type ConsoleId: str
+        :param _AccessMode: <p>访问方式：public - 公网，internal - 内网</p>
+        :type AccessMode: list of str
+        :param _LoginMode: <p>登录方式：0 - 账号密码鉴权，1 - 匿名登陆，2 - 第三方认证登录</p>
+        :type LoginMode: int
+        :param _DomainPrefix: <p>自定义域名前缀</p>
+        :type DomainPrefix: str
+        :param _Accounts: <p>用户账号信息</p><p>“账号密码鉴权“登录方式必传</p>
+        :type Accounts: list of ConsoleAccount
+        :param _AnonymousLogin: <p>匿名登录账号信息</p><p>“匿名登录”登录方式必传</p>
+        :type AnonymousLogin: :class:`tencentcloud.cls.v20201016.models.AnonymousLoginInfo`
+        :param _IntranetType: <p>内网类型，默认为0</p>
+        :type IntranetType: int
+        :param _IntranetRegion: <p>内网地域</p>
+        :type IntranetRegion: str
+        :param _VpcId: <p>内网私有网络VpcId</p>
+        :type VpcId: str
+        :param _SubnetId: <p>内网子网SubnetId</p>
+        :type SubnetId: str
+        :param _AuthRoles: <p>Auth用户角色信息</p><p>“第三方认证登录”登录方式必传</p>
+        :type AuthRoles: list of AuthRoleInfo
+        :param _HideParams: <p>自定义隐藏参数</p>
+        :type HideParams: list of str
+        :param _AccessControlRules: <p>访问控制规则</p><p>“第三方认证登录”登录方式必传 AccessMode: internal &amp;&amp; Action: ACCEPT 规则</p>
+        :type AccessControlRules: list of AccessControlRule
+        :param _Remarks: <p>备注</p>
+        :type Remarks: str
+        :param _Menus: <p>自定义显示菜单</p>
+        :type Menus: list of str
+        """
+        self._ConsoleId = None
+        self._AccessMode = None
+        self._LoginMode = None
+        self._DomainPrefix = None
+        self._Accounts = None
+        self._AnonymousLogin = None
+        self._IntranetType = None
+        self._IntranetRegion = None
+        self._VpcId = None
+        self._SubnetId = None
+        self._AuthRoles = None
+        self._HideParams = None
+        self._AccessControlRules = None
+        self._Remarks = None
+        self._Menus = None
+
+    @property
+    def ConsoleId(self):
+        r"""<p>DataSight控制台ConsoleId</p>
+        :rtype: str
+        """
+        return self._ConsoleId
+
+    @ConsoleId.setter
+    def ConsoleId(self, ConsoleId):
+        self._ConsoleId = ConsoleId
+
+    @property
+    def AccessMode(self):
+        r"""<p>访问方式：public - 公网，internal - 内网</p>
+        :rtype: list of str
+        """
+        return self._AccessMode
+
+    @AccessMode.setter
+    def AccessMode(self, AccessMode):
+        self._AccessMode = AccessMode
+
+    @property
+    def LoginMode(self):
+        r"""<p>登录方式：0 - 账号密码鉴权，1 - 匿名登陆，2 - 第三方认证登录</p>
+        :rtype: int
+        """
+        return self._LoginMode
+
+    @LoginMode.setter
+    def LoginMode(self, LoginMode):
+        self._LoginMode = LoginMode
+
+    @property
+    def DomainPrefix(self):
+        r"""<p>自定义域名前缀</p>
+        :rtype: str
+        """
+        return self._DomainPrefix
+
+    @DomainPrefix.setter
+    def DomainPrefix(self, DomainPrefix):
+        self._DomainPrefix = DomainPrefix
+
+    @property
+    def Accounts(self):
+        r"""<p>用户账号信息</p><p>“账号密码鉴权“登录方式必传</p>
+        :rtype: list of ConsoleAccount
+        """
+        return self._Accounts
+
+    @Accounts.setter
+    def Accounts(self, Accounts):
+        self._Accounts = Accounts
+
+    @property
+    def AnonymousLogin(self):
+        r"""<p>匿名登录账号信息</p><p>“匿名登录”登录方式必传</p>
+        :rtype: :class:`tencentcloud.cls.v20201016.models.AnonymousLoginInfo`
+        """
+        return self._AnonymousLogin
+
+    @AnonymousLogin.setter
+    def AnonymousLogin(self, AnonymousLogin):
+        self._AnonymousLogin = AnonymousLogin
+
+    @property
+    def IntranetType(self):
+        r"""<p>内网类型，默认为0</p>
+        :rtype: int
+        """
+        return self._IntranetType
+
+    @IntranetType.setter
+    def IntranetType(self, IntranetType):
+        self._IntranetType = IntranetType
+
+    @property
+    def IntranetRegion(self):
+        r"""<p>内网地域</p>
+        :rtype: str
+        """
+        return self._IntranetRegion
+
+    @IntranetRegion.setter
+    def IntranetRegion(self, IntranetRegion):
+        self._IntranetRegion = IntranetRegion
+
+    @property
+    def VpcId(self):
+        r"""<p>内网私有网络VpcId</p>
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetId(self):
+        r"""<p>内网子网SubnetId</p>
+        :rtype: str
+        """
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def AuthRoles(self):
+        r"""<p>Auth用户角色信息</p><p>“第三方认证登录”登录方式必传</p>
+        :rtype: list of AuthRoleInfo
+        """
+        return self._AuthRoles
+
+    @AuthRoles.setter
+    def AuthRoles(self, AuthRoles):
+        self._AuthRoles = AuthRoles
+
+    @property
+    def HideParams(self):
+        r"""<p>自定义隐藏参数</p>
+        :rtype: list of str
+        """
+        return self._HideParams
+
+    @HideParams.setter
+    def HideParams(self, HideParams):
+        self._HideParams = HideParams
+
+    @property
+    def AccessControlRules(self):
+        r"""<p>访问控制规则</p><p>“第三方认证登录”登录方式必传 AccessMode: internal &amp;&amp; Action: ACCEPT 规则</p>
+        :rtype: list of AccessControlRule
+        """
+        return self._AccessControlRules
+
+    @AccessControlRules.setter
+    def AccessControlRules(self, AccessControlRules):
+        self._AccessControlRules = AccessControlRules
+
+    @property
+    def Remarks(self):
+        r"""<p>备注</p>
+        :rtype: str
+        """
+        return self._Remarks
+
+    @Remarks.setter
+    def Remarks(self, Remarks):
+        self._Remarks = Remarks
+
+    @property
+    def Menus(self):
+        r"""<p>自定义显示菜单</p>
+        :rtype: list of str
+        """
+        return self._Menus
+
+    @Menus.setter
+    def Menus(self, Menus):
+        self._Menus = Menus
+
+
+    def _deserialize(self, params):
+        self._ConsoleId = params.get("ConsoleId")
+        self._AccessMode = params.get("AccessMode")
+        self._LoginMode = params.get("LoginMode")
+        self._DomainPrefix = params.get("DomainPrefix")
+        if params.get("Accounts") is not None:
+            self._Accounts = []
+            for item in params.get("Accounts"):
+                obj = ConsoleAccount()
+                obj._deserialize(item)
+                self._Accounts.append(obj)
+        if params.get("AnonymousLogin") is not None:
+            self._AnonymousLogin = AnonymousLoginInfo()
+            self._AnonymousLogin._deserialize(params.get("AnonymousLogin"))
+        self._IntranetType = params.get("IntranetType")
+        self._IntranetRegion = params.get("IntranetRegion")
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
+        if params.get("AuthRoles") is not None:
+            self._AuthRoles = []
+            for item in params.get("AuthRoles"):
+                obj = AuthRoleInfo()
+                obj._deserialize(item)
+                self._AuthRoles.append(obj)
+        self._HideParams = params.get("HideParams")
+        if params.get("AccessControlRules") is not None:
+            self._AccessControlRules = []
+            for item in params.get("AccessControlRules"):
+                obj = AccessControlRule()
+                obj._deserialize(item)
+                self._AccessControlRules.append(obj)
+        self._Remarks = params.get("Remarks")
+        self._Menus = params.get("Menus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyConsoleResponse(AbstractModel):
+    r"""ModifyConsole返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ConsoleId: <p>DataSight控制台Id</p>
+        :type ConsoleId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ConsoleId = None
+        self._RequestId = None
+
+    @property
+    def ConsoleId(self):
+        r"""<p>DataSight控制台Id</p>
+        :rtype: str
+        """
+        return self._ConsoleId
+
+    @ConsoleId.setter
+    def ConsoleId(self, ConsoleId):
+        self._ConsoleId = ConsoleId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ConsoleId = params.get("ConsoleId")
         self._RequestId = params.get("RequestId")
 
 

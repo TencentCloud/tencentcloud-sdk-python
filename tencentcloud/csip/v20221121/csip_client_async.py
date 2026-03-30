@@ -169,6 +169,24 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeAKAnalysisDetail(
+            self,
+            request: models.DescribeAKAnalysisDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAKAnalysisDetailResponse:
+        """
+        访问密钥告警记录AI分析结果详情
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAKAnalysisDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAKAnalysisDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeAbnormalCallRecord(
             self,
             request: models.DescribeAbnormalCallRecordRequest,

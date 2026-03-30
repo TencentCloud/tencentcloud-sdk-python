@@ -33243,6 +33243,8 @@ class NotebookSessionInfo(AbstractModel):
         :type PodSize: int
         :param _PodNumbers: pod数量
         :type PodNumbers: int
+        :param _SparkAppName: spark app名称
+        :type SparkAppName: str
         """
         self._Name = None
         self._Kind = None
@@ -33270,6 +33272,7 @@ class NotebookSessionInfo(AbstractModel):
         self._ResourceGroupName = None
         self._PodSize = None
         self._PodNumbers = None
+        self._SparkAppName = None
 
     @property
     def Name(self):
@@ -33563,6 +33566,17 @@ class NotebookSessionInfo(AbstractModel):
     def PodNumbers(self, PodNumbers):
         self._PodNumbers = PodNumbers
 
+    @property
+    def SparkAppName(self):
+        r"""spark app名称
+        :rtype: str
+        """
+        return self._SparkAppName
+
+    @SparkAppName.setter
+    def SparkAppName(self, SparkAppName):
+        self._SparkAppName = SparkAppName
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -33601,6 +33615,7 @@ class NotebookSessionInfo(AbstractModel):
         self._ResourceGroupName = params.get("ResourceGroupName")
         self._PodSize = params.get("PodSize")
         self._PodNumbers = params.get("PodNumbers")
+        self._SparkAppName = params.get("SparkAppName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -33898,6 +33913,10 @@ class NotebookSessions(AbstractModel):
         :type ResourceGroupId: str
         :param _ResourceGroupName: 资源组名字
         :type ResourceGroupName: str
+        :param _KernelId: Kernel id
+        :type KernelId: str
+        :param _SparkAppName: spark app名称
+        :type SparkAppName: str
         """
         self._Kind = None
         self._SessionId = None
@@ -33914,6 +33933,8 @@ class NotebookSessions(AbstractModel):
         self._DataEngineId = None
         self._ResourceGroupId = None
         self._ResourceGroupName = None
+        self._KernelId = None
+        self._SparkAppName = None
 
     @property
     def Kind(self):
@@ -34080,6 +34101,28 @@ class NotebookSessions(AbstractModel):
     def ResourceGroupName(self, ResourceGroupName):
         self._ResourceGroupName = ResourceGroupName
 
+    @property
+    def KernelId(self):
+        r"""Kernel id
+        :rtype: str
+        """
+        return self._KernelId
+
+    @KernelId.setter
+    def KernelId(self, KernelId):
+        self._KernelId = KernelId
+
+    @property
+    def SparkAppName(self):
+        r"""spark app名称
+        :rtype: str
+        """
+        return self._SparkAppName
+
+    @SparkAppName.setter
+    def SparkAppName(self, SparkAppName):
+        self._SparkAppName = SparkAppName
+
 
     def _deserialize(self, params):
         self._Kind = params.get("Kind")
@@ -34097,6 +34140,8 @@ class NotebookSessions(AbstractModel):
         self._DataEngineId = params.get("DataEngineId")
         self._ResourceGroupId = params.get("ResourceGroupId")
         self._ResourceGroupName = params.get("ResourceGroupName")
+        self._KernelId = params.get("KernelId")
+        self._SparkAppName = params.get("SparkAppName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

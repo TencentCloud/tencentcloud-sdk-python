@@ -8975,6 +8975,132 @@ class ModifyDomainOwnerBatchResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyDomainOwnerRequest(AbstractModel):
+    r"""ModifyDomainOwner请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DomainId: 域名ID
+        :type DomainId: str
+        :param _NewOwnerUin: 新用户UIN
+        :type NewOwnerUin: str
+        :param _NewOwnerAppId: 新用户APPID
+        :type NewOwnerAppId: str
+        :param _TransferDns: 是否同时转移对应的 DNS 解析域名，默认false
+        :type TransferDns: bool
+        """
+        self._DomainId = None
+        self._NewOwnerUin = None
+        self._NewOwnerAppId = None
+        self._TransferDns = None
+
+    @property
+    def DomainId(self):
+        r"""域名ID
+        :rtype: str
+        """
+        return self._DomainId
+
+    @DomainId.setter
+    def DomainId(self, DomainId):
+        self._DomainId = DomainId
+
+    @property
+    def NewOwnerUin(self):
+        r"""新用户UIN
+        :rtype: str
+        """
+        return self._NewOwnerUin
+
+    @NewOwnerUin.setter
+    def NewOwnerUin(self, NewOwnerUin):
+        self._NewOwnerUin = NewOwnerUin
+
+    @property
+    def NewOwnerAppId(self):
+        r"""新用户APPID
+        :rtype: str
+        """
+        return self._NewOwnerAppId
+
+    @NewOwnerAppId.setter
+    def NewOwnerAppId(self, NewOwnerAppId):
+        self._NewOwnerAppId = NewOwnerAppId
+
+    @property
+    def TransferDns(self):
+        r"""是否同时转移对应的 DNS 解析域名，默认false
+        :rtype: bool
+        """
+        return self._TransferDns
+
+    @TransferDns.setter
+    def TransferDns(self, TransferDns):
+        self._TransferDns = TransferDns
+
+
+    def _deserialize(self, params):
+        self._DomainId = params.get("DomainId")
+        self._NewOwnerUin = params.get("NewOwnerUin")
+        self._NewOwnerAppId = params.get("NewOwnerAppId")
+        self._TransferDns = params.get("TransferDns")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDomainOwnerResponse(AbstractModel):
+    r"""ModifyDomainOwner返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TransferDnsResult: null: 未转移对应的 DNS 解析域名，false: 转移对应的 DNS 解析域名失败，true: 转移对应的 DNS 解析域名成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TransferDnsResult: bool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TransferDnsResult = None
+        self._RequestId = None
+
+    @property
+    def TransferDnsResult(self):
+        r"""null: 未转移对应的 DNS 解析域名，false: 转移对应的 DNS 解析域名失败，true: 转移对应的 DNS 解析域名成功
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._TransferDnsResult
+
+    @TransferDnsResult.setter
+    def TransferDnsResult(self, TransferDnsResult):
+        self._TransferDnsResult = TransferDnsResult
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TransferDnsResult = params.get("TransferDnsResult")
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyIntlCustomDnsHostRequest(AbstractModel):
     r"""ModifyIntlCustomDnsHost请求参数结构体
 

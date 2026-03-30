@@ -266,6 +266,24 @@ class ClsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateConsole(
+            self,
+            request: models.CreateConsoleRequest,
+            opts: Dict = None,
+    ) -> models.CreateConsoleResponse:
+        """
+        本接口用于创建DataSight控制台
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateConsole"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateConsoleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateConsoleSharing(
             self,
             request: models.CreateConsoleSharingRequest,
@@ -861,6 +879,24 @@ class ClsClient(AbstractClient):
         kwargs["action"] = "DeleteConfigFromMachineGroup"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteConfigFromMachineGroupResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteConsole(
+            self,
+            request: models.DeleteConsoleRequest,
+            opts: Dict = None,
+    ) -> models.DeleteConsoleResponse:
+        """
+        本接口用于删除DataSight控制台
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteConsole"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteConsoleResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1509,6 +1545,24 @@ class ClsClient(AbstractClient):
         kwargs["action"] = "DescribeConsoleSharingList"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeConsoleSharingListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeConsoles(
+            self,
+            request: models.DescribeConsolesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeConsolesResponse:
+        """
+        查询DataSight控制台实例列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeConsoles"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeConsolesResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2482,6 +2536,24 @@ class ClsClient(AbstractClient):
         kwargs["action"] = "ModifyConfigExtra"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyConfigExtraResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyConsole(
+            self,
+            request: models.ModifyConsoleRequest,
+            opts: Dict = None,
+    ) -> models.ModifyConsoleResponse:
+        """
+        本接口用于编辑DataSight控制台
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyConsole"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyConsoleResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

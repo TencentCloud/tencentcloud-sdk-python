@@ -8606,6 +8606,149 @@ class CreateDocumentResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateDraftContractByPromptsTaskRequest(AbstractModel):
+    r"""CreateDraftContractByPromptsTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Operator: 执行本接口操作的员工信息。 注: 在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param _Requirement: 起草要求
+        :type Requirement: str
+        :param _ReferenceTemplateId: 参考模板文件资源id（PDF/Word格式）
+        :type ReferenceTemplateId: str
+        :param _RequirementFileIds: 相关规定文件资源id列表（PDF/Word格式）
+        :type RequirementFileIds: list of str
+        :param _ContractLanguage: 起草合同的语言要求（zh，en）默认zh
+        :type ContractLanguage: str
+        """
+        self._Operator = None
+        self._Requirement = None
+        self._ReferenceTemplateId = None
+        self._RequirementFileIds = None
+        self._ContractLanguage = None
+
+    @property
+    def Operator(self):
+        r"""执行本接口操作的员工信息。 注: 在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。
+        :rtype: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def Requirement(self):
+        r"""起草要求
+        :rtype: str
+        """
+        return self._Requirement
+
+    @Requirement.setter
+    def Requirement(self, Requirement):
+        self._Requirement = Requirement
+
+    @property
+    def ReferenceTemplateId(self):
+        r"""参考模板文件资源id（PDF/Word格式）
+        :rtype: str
+        """
+        return self._ReferenceTemplateId
+
+    @ReferenceTemplateId.setter
+    def ReferenceTemplateId(self, ReferenceTemplateId):
+        self._ReferenceTemplateId = ReferenceTemplateId
+
+    @property
+    def RequirementFileIds(self):
+        r"""相关规定文件资源id列表（PDF/Word格式）
+        :rtype: list of str
+        """
+        return self._RequirementFileIds
+
+    @RequirementFileIds.setter
+    def RequirementFileIds(self, RequirementFileIds):
+        self._RequirementFileIds = RequirementFileIds
+
+    @property
+    def ContractLanguage(self):
+        r"""起草合同的语言要求（zh，en）默认zh
+        :rtype: str
+        """
+        return self._ContractLanguage
+
+    @ContractLanguage.setter
+    def ContractLanguage(self, ContractLanguage):
+        self._ContractLanguage = ContractLanguage
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._Requirement = params.get("Requirement")
+        self._ReferenceTemplateId = params.get("ReferenceTemplateId")
+        self._RequirementFileIds = params.get("RequirementFileIds")
+        self._ContractLanguage = params.get("ContractLanguage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDraftContractByPromptsTaskResponse(AbstractModel):
+    r"""CreateDraftContractByPromptsTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 起草任务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""起草任务id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateDynamicFlowApproverRequest(AbstractModel):
     r"""CreateDynamicFlowApprover请求参数结构体
 
@@ -25224,6 +25367,147 @@ class DescribeContractReviewWebUrlResponse(AbstractModel):
     def _deserialize(self, params):
         self._WebUrl = params.get("WebUrl")
         self._Status = params.get("Status")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDraftContractByPromptsTaskRequest(AbstractModel):
+    r"""DescribeDraftContractByPromptsTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Operator: 执行本接口操作的员工信息。 注: 在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param _TaskId: 任务id
+        :type TaskId: str
+        """
+        self._Operator = None
+        self._TaskId = None
+
+    @property
+    def Operator(self):
+        r"""执行本接口操作的员工信息。 注: 在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。
+        :rtype: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def TaskId(self):
+        r"""任务id
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDraftContractByPromptsTaskResponse(AbstractModel):
+    r"""DescribeDraftContractByPromptsTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 任务状态，枚举，0 已创建，1 执行中，2 成功，3 失败
+        :type Status: int
+        :param _Message: 任务错误信息，仅在失败时返回
+        :type Message: str
+        :param _ContractName: 生成的合同名称
+        :type ContractName: str
+        :param _ResourceId: 生成的合同文件资源id
+        :type ResourceId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Status = None
+        self._Message = None
+        self._ContractName = None
+        self._ResourceId = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        r"""任务状态，枚举，0 已创建，1 执行中，2 成功，3 失败
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Message(self):
+        r"""任务错误信息，仅在失败时返回
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def ContractName(self):
+        r"""生成的合同名称
+        :rtype: str
+        """
+        return self._ContractName
+
+    @ContractName.setter
+    def ContractName(self, ContractName):
+        self._ContractName = ContractName
+
+    @property
+    def ResourceId(self):
+        r"""生成的合同文件资源id
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._Message = params.get("Message")
+        self._ContractName = params.get("ContractName")
+        self._ResourceId = params.get("ResourceId")
         self._RequestId = params.get("RequestId")
 
 

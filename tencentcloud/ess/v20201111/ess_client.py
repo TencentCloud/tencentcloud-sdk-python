@@ -741,6 +741,29 @@ class EssClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateDraftContractByPromptsTask(self, request):
+        r"""此接口（CreateDraftContractByPromptsTask）用于创建智能合同起草任务。
+
+        :param request: Request instance for CreateDraftContractByPromptsTask.
+        :type request: :class:`tencentcloud.ess.v20201111.models.CreateDraftContractByPromptsTaskRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.CreateDraftContractByPromptsTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateDraftContractByPromptsTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateDraftContractByPromptsTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateDynamicFlowApprover(self, request):
         r"""此接口（CreateDynamicFlowApprover）接口主要用于补充动态签署方2.0合同的签署方信息，包括但不限于名字、手机号和签署区域等信息。
 
@@ -2999,6 +3022,29 @@ class EssClient(AbstractClient):
             body = self.call("DescribeContractReviewWebUrl", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeContractReviewWebUrlResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDraftContractByPromptsTask(self, request):
+        r"""此接口（DescribeDraftContractByPromptsTask）用于查询智能合同起草任务状态。
+
+        :param request: Request instance for DescribeDraftContractByPromptsTask.
+        :type request: :class:`tencentcloud.ess.v20201111.models.DescribeDraftContractByPromptsTaskRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.DescribeDraftContractByPromptsTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDraftContractByPromptsTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDraftContractByPromptsTaskResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
