@@ -289,6 +289,59 @@ class AKInfo(AbstractModel):
         
 
 
+class AccessCredentialOutput(AbstractModel):
+    r"""常规密钥凭据（出参专用），用于查询详情接口的响应。Value字段返回打码后的值，不暴露明文
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 凭据键名（原文），如SecretId、SecretKey、Token等
+        :type Key: str
+        :param _Value: 凭据键值（打码后）
+补充说明：保留前3后4位，中间用***替代；长度不足7位时全部替换为***
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        r"""凭据键名（原文），如SecretId、SecretKey、Token等
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        r"""凭据键值（打码后）
+补充说明：保留前3后4位，中间用***替代；长度不足7位时全部替换为***
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AccessKeyAlarm(AbstractModel):
     r"""访问密钥告警记录
 
@@ -11394,6 +11447,65 @@ class CreateRiskCenterScanTaskResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CredentialEffectScope(AbstractModel):
+    r"""生效机器范围，用于指定凭证在哪些机器上生效
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Exclude: 是否排除模式
+枚举值：
+0：包含模式（仅Instances中的机器生效），此时Instances必填
+1：排除模式（Instances中的机器不生效，其余机器生效），此时Instances可选（空列表表示全部机器生效）
+        :type Exclude: int
+        :param _Instances: 机器实例ID列表。Exclude为0时必填，表示仅这些机器可访问凭证；Exclude为1时可选，表示这些机器不可访问凭证（空列表表示全部机器生效）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Instances: list of str
+        """
+        self._Exclude = None
+        self._Instances = None
+
+    @property
+    def Exclude(self):
+        r"""是否排除模式
+枚举值：
+0：包含模式（仅Instances中的机器生效），此时Instances必填
+1：排除模式（Instances中的机器不生效，其余机器生效），此时Instances可选（空列表表示全部机器生效）
+        :rtype: int
+        """
+        return self._Exclude
+
+    @Exclude.setter
+    def Exclude(self, Exclude):
+        self._Exclude = Exclude
+
+    @property
+    def Instances(self):
+        r"""机器实例ID列表。Exclude为0时必填，表示仅这些机器可访问凭证；Exclude为1时可选，表示这些机器不可访问凭证（空列表表示全部机器生效）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._Instances
+
+    @Instances.setter
+    def Instances(self, Instances):
+        self._Instances = Instances
+
+
+    def _deserialize(self, params):
+        self._Exclude = params.get("Exclude")
+        self._Instances = params.get("Instances")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CsipRiskCenterStatistics(AbstractModel):
     r"""风险中心风险概览统计数据
 
@@ -18120,6 +18232,352 @@ class DescribeHighBaseLineRiskListResponse(AbstractModel):
                 obj = HighBaseLineRiskItem()
                 obj._deserialize(item)
                 self._HighBaseLineRiskList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeKeySandboxCredentialListRequest(AbstractModel):
+    r"""DescribeKeySandboxCredentialList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filter: 过滤条件列表，支持的过滤条件如下：
+CredentialName - 凭证名称（模糊匹配）
+CredentialType - 凭证类型（精确匹配），取值：access、sts
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        """
+        self._Filter = None
+        self._MemberId = None
+
+    @property
+    def Filter(self):
+        r"""过滤条件列表，支持的过滤条件如下：
+CredentialName - 凭证名称（模糊匹配）
+CredentialType - 凭证类型（精确匹配），取值：access、sts
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+    @property
+    def MemberId(self):
+        r"""集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeKeySandboxCredentialListResponse(AbstractModel):
+    r"""DescribeKeySandboxCredentialList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 凭证数据列表
+        :type Data: list of KeySandboxCredential
+        :param _TotalCount: 总数量
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""凭证数据列表
+        :rtype: list of KeySandboxCredential
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def TotalCount(self):
+        r"""总数量
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = KeySandboxCredential()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeKeySandboxCredentialRequest(AbstractModel):
+    r"""DescribeKeySandboxCredential请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CredentialId: 凭证ID
+        :type CredentialId: str
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        """
+        self._CredentialId = None
+        self._MemberId = None
+
+    @property
+    def CredentialId(self):
+        r"""凭证ID
+        :rtype: str
+        """
+        return self._CredentialId
+
+    @CredentialId.setter
+    def CredentialId(self, CredentialId):
+        self._CredentialId = CredentialId
+
+    @property
+    def MemberId(self):
+        r"""集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        self._CredentialId = params.get("CredentialId")
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeKeySandboxCredentialResponse(AbstractModel):
+    r"""DescribeKeySandboxCredential返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CredentialId: 凭证ID
+        :type CredentialId: str
+        :param _CredentialName: 凭证名称
+        :type CredentialName: str
+        :param _CredentialType: 凭证类型
+枚举值：
+access：常规密钥
+sts：STS临时密钥
+        :type CredentialType: str
+        :param _CredentialEffectScope: 生效机器范围
+        :type CredentialEffectScope: :class:`tencentcloud.csip.v20221121.models.CredentialEffectScope`
+        :param _Access: 常规密钥凭据数据（打码后），CredentialType为access时返回
+补充说明：Key为原文，Value为打码后的值（保留前3后4位，中间用***替代）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Access: list of AccessCredentialOutput
+        :param _STS: STS凭据数据（打码后），CredentialType为sts时返回
+补充说明：System为原文，SecretID和SecretKey为打码后的值（保留前3后4位，中间用***替代）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type STS: :class:`tencentcloud.csip.v20221121.models.STSCredentialOutput`
+        :param _CreateTime: 创建时间
+参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）
+        :type CreateTime: str
+        :param _UpdateTime: 更新时间
+参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）
+        :type UpdateTime: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._CredentialId = None
+        self._CredentialName = None
+        self._CredentialType = None
+        self._CredentialEffectScope = None
+        self._Access = None
+        self._STS = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._RequestId = None
+
+    @property
+    def CredentialId(self):
+        r"""凭证ID
+        :rtype: str
+        """
+        return self._CredentialId
+
+    @CredentialId.setter
+    def CredentialId(self, CredentialId):
+        self._CredentialId = CredentialId
+
+    @property
+    def CredentialName(self):
+        r"""凭证名称
+        :rtype: str
+        """
+        return self._CredentialName
+
+    @CredentialName.setter
+    def CredentialName(self, CredentialName):
+        self._CredentialName = CredentialName
+
+    @property
+    def CredentialType(self):
+        r"""凭证类型
+枚举值：
+access：常规密钥
+sts：STS临时密钥
+        :rtype: str
+        """
+        return self._CredentialType
+
+    @CredentialType.setter
+    def CredentialType(self, CredentialType):
+        self._CredentialType = CredentialType
+
+    @property
+    def CredentialEffectScope(self):
+        r"""生效机器范围
+        :rtype: :class:`tencentcloud.csip.v20221121.models.CredentialEffectScope`
+        """
+        return self._CredentialEffectScope
+
+    @CredentialEffectScope.setter
+    def CredentialEffectScope(self, CredentialEffectScope):
+        self._CredentialEffectScope = CredentialEffectScope
+
+    @property
+    def Access(self):
+        r"""常规密钥凭据数据（打码后），CredentialType为access时返回
+补充说明：Key为原文，Value为打码后的值（保留前3后4位，中间用***替代）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of AccessCredentialOutput
+        """
+        return self._Access
+
+    @Access.setter
+    def Access(self, Access):
+        self._Access = Access
+
+    @property
+    def STS(self):
+        r"""STS凭据数据（打码后），CredentialType为sts时返回
+补充说明：System为原文，SecretID和SecretKey为打码后的值（保留前3后4位，中间用***替代）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.csip.v20221121.models.STSCredentialOutput`
+        """
+        return self._STS
+
+    @STS.setter
+    def STS(self, STS):
+        self._STS = STS
+
+    @property
+    def CreateTime(self):
+        r"""创建时间
+参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""更新时间
+参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._CredentialId = params.get("CredentialId")
+        self._CredentialName = params.get("CredentialName")
+        self._CredentialType = params.get("CredentialType")
+        if params.get("CredentialEffectScope") is not None:
+            self._CredentialEffectScope = CredentialEffectScope()
+            self._CredentialEffectScope._deserialize(params.get("CredentialEffectScope"))
+        if params.get("Access") is not None:
+            self._Access = []
+            for item in params.get("Access"):
+                obj = AccessCredentialOutput()
+                obj._deserialize(item)
+                self._Access.append(obj)
+        if params.get("STS") is not None:
+            self._STS = STSCredentialOutput()
+            self._STS._deserialize(params.get("STS"))
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
         self._RequestId = params.get("RequestId")
 
 
@@ -27846,6 +28304,129 @@ class IpAssetListVO(AbstractModel):
         
 
 
+class KeySandboxCredential(AbstractModel):
+    r"""凭证数据结构，用于列表查询和详情查询的响应
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CredentialId: 凭证ID
+        :type CredentialId: str
+        :param _CredentialName: 凭证名称
+        :type CredentialName: str
+        :param _CredentialType: 凭证类型
+枚举值：
+access：常规密钥（Key/Value键值对）
+sts：STS临时密钥凭据
+        :type CredentialType: str
+        :param _CredentialEffectScope: 生效机器范围
+        :type CredentialEffectScope: :class:`tencentcloud.csip.v20221121.models.CredentialEffectScope`
+        :param _CreateTime: 创建时间
+参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）
+        :type CreateTime: str
+        :param _UpdateTime: 更新时间
+参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）
+        :type UpdateTime: str
+        """
+        self._CredentialId = None
+        self._CredentialName = None
+        self._CredentialType = None
+        self._CredentialEffectScope = None
+        self._CreateTime = None
+        self._UpdateTime = None
+
+    @property
+    def CredentialId(self):
+        r"""凭证ID
+        :rtype: str
+        """
+        return self._CredentialId
+
+    @CredentialId.setter
+    def CredentialId(self, CredentialId):
+        self._CredentialId = CredentialId
+
+    @property
+    def CredentialName(self):
+        r"""凭证名称
+        :rtype: str
+        """
+        return self._CredentialName
+
+    @CredentialName.setter
+    def CredentialName(self, CredentialName):
+        self._CredentialName = CredentialName
+
+    @property
+    def CredentialType(self):
+        r"""凭证类型
+枚举值：
+access：常规密钥（Key/Value键值对）
+sts：STS临时密钥凭据
+        :rtype: str
+        """
+        return self._CredentialType
+
+    @CredentialType.setter
+    def CredentialType(self, CredentialType):
+        self._CredentialType = CredentialType
+
+    @property
+    def CredentialEffectScope(self):
+        r"""生效机器范围
+        :rtype: :class:`tencentcloud.csip.v20221121.models.CredentialEffectScope`
+        """
+        return self._CredentialEffectScope
+
+    @CredentialEffectScope.setter
+    def CredentialEffectScope(self, CredentialEffectScope):
+        self._CredentialEffectScope = CredentialEffectScope
+
+    @property
+    def CreateTime(self):
+        r"""创建时间
+参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""更新时间
+参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._CredentialId = params.get("CredentialId")
+        self._CredentialName = params.get("CredentialName")
+        self._CredentialType = params.get("CredentialType")
+        if params.get("CredentialEffectScope") is not None:
+            self._CredentialEffectScope = CredentialEffectScope()
+            self._CredentialEffectScope._deserialize(params.get("CredentialEffectScope"))
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class KeyValue(AbstractModel):
     r"""KeyValue对
 
@@ -31882,6 +32463,76 @@ class RoleInfo(AbstractModel):
                 self._FromLogAnalysisData.append(obj)
         self._ContainerName = params.get("ContainerName")
         self._ContainerID = params.get("ContainerID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class STSCredentialOutput(AbstractModel):
+    r"""STS临时密钥凭据（出参专用），用于查询详情接口的响应。SecretID和SecretKey字段返回打码后的值，System返回原文
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _System: 凭据提供商标识（原文），如tencentCam、aws、aliyun等
+        :type System: str
+        :param _SecretID: SecretID（打码后）
+补充说明：保留前3后4位，中间用***替代；长度不足7位时全部替换为***
+        :type SecretID: str
+        :param _SecretKey: SecretKey（打码后）
+补充说明：保留前3后4位，中间用***替代；长度不足7位时全部替换为***
+        :type SecretKey: str
+        """
+        self._System = None
+        self._SecretID = None
+        self._SecretKey = None
+
+    @property
+    def System(self):
+        r"""凭据提供商标识（原文），如tencentCam、aws、aliyun等
+        :rtype: str
+        """
+        return self._System
+
+    @System.setter
+    def System(self, System):
+        self._System = System
+
+    @property
+    def SecretID(self):
+        r"""SecretID（打码后）
+补充说明：保留前3后4位，中间用***替代；长度不足7位时全部替换为***
+        :rtype: str
+        """
+        return self._SecretID
+
+    @SecretID.setter
+    def SecretID(self, SecretID):
+        self._SecretID = SecretID
+
+    @property
+    def SecretKey(self):
+        r"""SecretKey（打码后）
+补充说明：保留前3后4位，中间用***替代；长度不足7位时全部替换为***
+        :rtype: str
+        """
+        return self._SecretKey
+
+    @SecretKey.setter
+    def SecretKey(self, SecretKey):
+        self._SecretKey = SecretKey
+
+
+    def _deserialize(self, params):
+        self._System = params.get("System")
+        self._SecretID = params.get("SecretID")
+        self._SecretKey = params.get("SecretKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -2055,10 +2055,66 @@ class DescribeLicenseListResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _Count: 临期license数量
+        :type Count: int
+        :param _Overview: 正式license总览统计数据
+        :type Overview: :class:`tencentcloud.vcube.v20220410.models.Overview`
+        :param _LicenseList: 临期license列表
+        :type LicenseList: list of OverviewLicense
+        :param _TrialOverview: 测试license总览统计数据
+        :type TrialOverview: :class:`tencentcloud.vcube.v20220410.models.Overview`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._Count = None
+        self._Overview = None
+        self._LicenseList = None
+        self._TrialOverview = None
         self._RequestId = None
+
+    @property
+    def Count(self):
+        r"""临期license数量
+        :rtype: int
+        """
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+    @property
+    def Overview(self):
+        r"""正式license总览统计数据
+        :rtype: :class:`tencentcloud.vcube.v20220410.models.Overview`
+        """
+        return self._Overview
+
+    @Overview.setter
+    def Overview(self, Overview):
+        self._Overview = Overview
+
+    @property
+    def LicenseList(self):
+        r"""临期license列表
+        :rtype: list of OverviewLicense
+        """
+        return self._LicenseList
+
+    @LicenseList.setter
+    def LicenseList(self, LicenseList):
+        self._LicenseList = LicenseList
+
+    @property
+    def TrialOverview(self):
+        r"""测试license总览统计数据
+        :rtype: :class:`tencentcloud.vcube.v20220410.models.Overview`
+        """
+        return self._TrialOverview
+
+    @TrialOverview.setter
+    def TrialOverview(self, TrialOverview):
+        self._TrialOverview = TrialOverview
 
     @property
     def RequestId(self):
@@ -2073,6 +2129,19 @@ class DescribeLicenseListResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._Count = params.get("Count")
+        if params.get("Overview") is not None:
+            self._Overview = Overview()
+            self._Overview._deserialize(params.get("Overview"))
+        if params.get("LicenseList") is not None:
+            self._LicenseList = []
+            for item in params.get("LicenseList"):
+                obj = OverviewLicense()
+                obj._deserialize(item)
+                self._LicenseList.append(obj)
+        if params.get("TrialOverview") is not None:
+            self._TrialOverview = Overview()
+            self._TrialOverview._deserialize(params.get("TrialOverview"))
         self._RequestId = params.get("RequestId")
 
 
@@ -5250,6 +5319,417 @@ class NewsInfo(AbstractModel):
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Overview(AbstractModel):
+    r"""总览统计数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Expired: 过期license数量
+        :type Expired: int
+        :param _Valid: 有效license数量
+        :type Valid: int
+        :param _Near: 临期license数量
+        :type Near: int
+        """
+        self._Expired = None
+        self._Valid = None
+        self._Near = None
+
+    @property
+    def Expired(self):
+        r"""过期license数量
+        :rtype: int
+        """
+        return self._Expired
+
+    @Expired.setter
+    def Expired(self, Expired):
+        self._Expired = Expired
+
+    @property
+    def Valid(self):
+        r"""有效license数量
+        :rtype: int
+        """
+        return self._Valid
+
+    @Valid.setter
+    def Valid(self, Valid):
+        self._Valid = Valid
+
+    @property
+    def Near(self):
+        r"""临期license数量
+        :rtype: int
+        """
+        return self._Near
+
+    @Near.setter
+    def Near(self, Near):
+        self._Near = Near
+
+
+    def _deserialize(self, params):
+        self._Expired = params.get("Expired")
+        self._Valid = params.get("Valid")
+        self._Near = params.get("Near")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OverviewAppInfo(AbstractModel):
+    r"""应用包名信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 应用Id
+        :type Id: int
+        :param _AppName: 应用名称
+        :type AppName: str
+        :param _BundleId: Ios 包名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BundleId: str
+        :param _PackageName: Andorid 包名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PackageName: str
+        :param _MacBundleId: Mac 进程名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MacBundleId: str
+        :param _WinProcessName: windows 进程名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WinProcessName: str
+        :param _DomainList: 域名列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DomainList: list of str
+        """
+        self._Id = None
+        self._AppName = None
+        self._BundleId = None
+        self._PackageName = None
+        self._MacBundleId = None
+        self._WinProcessName = None
+        self._DomainList = None
+
+    @property
+    def Id(self):
+        r"""应用Id
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def AppName(self):
+        r"""应用名称
+        :rtype: str
+        """
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def BundleId(self):
+        r"""Ios 包名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BundleId
+
+    @BundleId.setter
+    def BundleId(self, BundleId):
+        self._BundleId = BundleId
+
+    @property
+    def PackageName(self):
+        r"""Andorid 包名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._PackageName
+
+    @PackageName.setter
+    def PackageName(self, PackageName):
+        self._PackageName = PackageName
+
+    @property
+    def MacBundleId(self):
+        r"""Mac 进程名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._MacBundleId
+
+    @MacBundleId.setter
+    def MacBundleId(self, MacBundleId):
+        self._MacBundleId = MacBundleId
+
+    @property
+    def WinProcessName(self):
+        r"""windows 进程名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._WinProcessName
+
+    @WinProcessName.setter
+    def WinProcessName(self, WinProcessName):
+        self._WinProcessName = WinProcessName
+
+    @property
+    def DomainList(self):
+        r"""域名列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._DomainList
+
+    @DomainList.setter
+    def DomainList(self, DomainList):
+        self._DomainList = DomainList
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._AppName = params.get("AppName")
+        self._BundleId = params.get("BundleId")
+        self._PackageName = params.get("PackageName")
+        self._MacBundleId = params.get("MacBundleId")
+        self._WinProcessName = params.get("WinProcessName")
+        self._DomainList = params.get("DomainList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OverviewLicense(AbstractModel):
+    r"""视立方应用license
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Application: 所属应用
+        :type Application: :class:`tencentcloud.vcube.v20220410.models.OverviewAppInfo`
+        :param _StartTime: license生效时间
+        :type StartTime: str
+        :param _EndTime: license失效时间
+        :type EndTime: str
+        :param _FeatureId: license对应的功能Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FeatureId: int
+        :param _LicenseType: license是测试：test还是正式：formal
+        :type LicenseType: str
+        :param _LicenseId: license索引
+        :type LicenseId: int
+        :param _Name: license名称
+        :type Name: str
+        :param _RestTime: 返回还有多少秒过期，过期返回负值
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RestTime: int
+        :param _CreatedAt: 创建时间
+        :type CreatedAt: str
+        :param _UpdatedAt: 更新时间
+        :type UpdatedAt: str
+        :param _Plan: 优图套餐名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Plan: str
+        :param _Type: licenseType
+        :type Type: str
+        """
+        self._Application = None
+        self._StartTime = None
+        self._EndTime = None
+        self._FeatureId = None
+        self._LicenseType = None
+        self._LicenseId = None
+        self._Name = None
+        self._RestTime = None
+        self._CreatedAt = None
+        self._UpdatedAt = None
+        self._Plan = None
+        self._Type = None
+
+    @property
+    def Application(self):
+        r"""所属应用
+        :rtype: :class:`tencentcloud.vcube.v20220410.models.OverviewAppInfo`
+        """
+        return self._Application
+
+    @Application.setter
+    def Application(self, Application):
+        self._Application = Application
+
+    @property
+    def StartTime(self):
+        r"""license生效时间
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""license失效时间
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def FeatureId(self):
+        r"""license对应的功能Id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._FeatureId
+
+    @FeatureId.setter
+    def FeatureId(self, FeatureId):
+        self._FeatureId = FeatureId
+
+    @property
+    def LicenseType(self):
+        r"""license是测试：test还是正式：formal
+        :rtype: str
+        """
+        return self._LicenseType
+
+    @LicenseType.setter
+    def LicenseType(self, LicenseType):
+        self._LicenseType = LicenseType
+
+    @property
+    def LicenseId(self):
+        r"""license索引
+        :rtype: int
+        """
+        return self._LicenseId
+
+    @LicenseId.setter
+    def LicenseId(self, LicenseId):
+        self._LicenseId = LicenseId
+
+    @property
+    def Name(self):
+        r"""license名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def RestTime(self):
+        r"""返回还有多少秒过期，过期返回负值
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._RestTime
+
+    @RestTime.setter
+    def RestTime(self, RestTime):
+        self._RestTime = RestTime
+
+    @property
+    def CreatedAt(self):
+        r"""创建时间
+        :rtype: str
+        """
+        return self._CreatedAt
+
+    @CreatedAt.setter
+    def CreatedAt(self, CreatedAt):
+        self._CreatedAt = CreatedAt
+
+    @property
+    def UpdatedAt(self):
+        r"""更新时间
+        :rtype: str
+        """
+        return self._UpdatedAt
+
+    @UpdatedAt.setter
+    def UpdatedAt(self, UpdatedAt):
+        self._UpdatedAt = UpdatedAt
+
+    @property
+    def Plan(self):
+        r"""优图套餐名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Plan
+
+    @Plan.setter
+    def Plan(self, Plan):
+        self._Plan = Plan
+
+    @property
+    def Type(self):
+        r"""licenseType
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        if params.get("Application") is not None:
+            self._Application = OverviewAppInfo()
+            self._Application._deserialize(params.get("Application"))
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._FeatureId = params.get("FeatureId")
+        self._LicenseType = params.get("LicenseType")
+        self._LicenseId = params.get("LicenseId")
+        self._Name = params.get("Name")
+        self._RestTime = params.get("RestTime")
+        self._CreatedAt = params.get("CreatedAt")
+        self._UpdatedAt = params.get("UpdatedAt")
+        self._Plan = params.get("Plan")
+        self._Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

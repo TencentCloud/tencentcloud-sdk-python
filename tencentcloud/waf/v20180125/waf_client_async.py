@@ -1591,6 +1591,24 @@ class WafClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeLLMContentSecCheck(
+            self,
+            request: models.DescribeLLMContentSecCheckRequest,
+            opts: Dict = None,
+    ) -> models.DescribeLLMContentSecCheckResponse:
+        """
+        大模型请求内容和响应内容审核接口
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeLLMContentSecCheck"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeLLMContentSecCheckResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeLogHistogram(
             self,
             request: models.DescribeLogHistogramRequest,
@@ -1820,6 +1838,24 @@ class WafClient(AbstractClient):
         kwargs["action"] = "DescribeProtectionModes"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeProtectionModesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeQClawContentSecCheck(
+            self,
+            request: models.DescribeQClawContentSecCheckRequest,
+            opts: Dict = None,
+    ) -> models.DescribeQClawContentSecCheckResponse:
+        """
+        大模型请求内容和响应内容审核接口
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeQClawContentSecCheck"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeQClawContentSecCheckResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

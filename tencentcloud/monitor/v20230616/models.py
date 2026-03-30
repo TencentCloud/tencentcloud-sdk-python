@@ -463,6 +463,422 @@ class AIWorkbenchSREDigitalTwinWorkLogList(AbstractModel):
         
 
 
+class AlarmLable(AbstractModel):
+    r"""告警中的Label
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: label name
+        :type Name: str
+        :param _Value: label value
+        :type Value: str
+        """
+        self._Name = None
+        self._Value = None
+
+    @property
+    def Name(self):
+        r"""label name
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Value(self):
+        r"""label value
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AlarmNotifyHistory(AbstractModel):
+    r"""单个告警通知历史
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NotifyId: 通知的唯一ID
+        :type NotifyId: str
+        :param _PolicyId: 告警策略ID
+        :type PolicyId: str
+        :param _SessionId: 告警周期iD
+        :type SessionId: str
+        :param _NotifyTime: 通知时间 unix秒级时间戳
+        :type NotifyTime: int
+        :param _TriggerTime: 触发时间 unix秒级时间戳
+        :type TriggerTime: int
+        :param _TriggerLevel: 告警级别 None 非分级告警级别; Note 提示级别; Warn 严重级别; Serious 紧急级别
+        :type TriggerLevel: str
+        :param _AlarmContent: 告警内容
+        :type AlarmContent: str
+        :param _AlarmObject: 告警对象
+        :type AlarmObject: str
+        :param _ChannelSet: 本次告警通知涉及到的渠道合集
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChannelSet: list of str
+        :param _ChannelsReceivers: 渠道的接收人信息
+        :type ChannelsReceivers: list of ChannelsReceivers
+        :param _PolicyName: 告警策略名称
+        :type PolicyName: str
+        :param _PromeInstanceID: Prometheus实例ID, 仅当 MT_PROME 时有效
+        :type PromeInstanceID: str
+        :param _PromeInstanceRegion: Prometheus实例所在的地域, 仅当 MT_PROME 时有效
+        :type PromeInstanceRegion: str
+        :param _Notices: 通知模板相关的配置信息
+        :type Notices: list of NotifyRelatedNotice
+        :param _TriggerStatus: 告警触发状态  Trigger 告警状态触发; Recovery 告警状态恢复
+        :type TriggerStatus: str
+        :param _PromeConsoleURL: 与当前Prometheus通知历史相关控制台页面地址，仅当 MR_PROME 时有效
+        :type PromeConsoleURL: str
+        :param _Labels: 告警的lable
+        :type Labels: list of AlarmLable
+        """
+        self._NotifyId = None
+        self._PolicyId = None
+        self._SessionId = None
+        self._NotifyTime = None
+        self._TriggerTime = None
+        self._TriggerLevel = None
+        self._AlarmContent = None
+        self._AlarmObject = None
+        self._ChannelSet = None
+        self._ChannelsReceivers = None
+        self._PolicyName = None
+        self._PromeInstanceID = None
+        self._PromeInstanceRegion = None
+        self._Notices = None
+        self._TriggerStatus = None
+        self._PromeConsoleURL = None
+        self._Labels = None
+
+    @property
+    def NotifyId(self):
+        r"""通知的唯一ID
+        :rtype: str
+        """
+        return self._NotifyId
+
+    @NotifyId.setter
+    def NotifyId(self, NotifyId):
+        self._NotifyId = NotifyId
+
+    @property
+    def PolicyId(self):
+        r"""告警策略ID
+        :rtype: str
+        """
+        return self._PolicyId
+
+    @PolicyId.setter
+    def PolicyId(self, PolicyId):
+        self._PolicyId = PolicyId
+
+    @property
+    def SessionId(self):
+        r"""告警周期iD
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def NotifyTime(self):
+        r"""通知时间 unix秒级时间戳
+        :rtype: int
+        """
+        return self._NotifyTime
+
+    @NotifyTime.setter
+    def NotifyTime(self, NotifyTime):
+        self._NotifyTime = NotifyTime
+
+    @property
+    def TriggerTime(self):
+        r"""触发时间 unix秒级时间戳
+        :rtype: int
+        """
+        return self._TriggerTime
+
+    @TriggerTime.setter
+    def TriggerTime(self, TriggerTime):
+        self._TriggerTime = TriggerTime
+
+    @property
+    def TriggerLevel(self):
+        r"""告警级别 None 非分级告警级别; Note 提示级别; Warn 严重级别; Serious 紧急级别
+        :rtype: str
+        """
+        return self._TriggerLevel
+
+    @TriggerLevel.setter
+    def TriggerLevel(self, TriggerLevel):
+        self._TriggerLevel = TriggerLevel
+
+    @property
+    def AlarmContent(self):
+        r"""告警内容
+        :rtype: str
+        """
+        return self._AlarmContent
+
+    @AlarmContent.setter
+    def AlarmContent(self, AlarmContent):
+        self._AlarmContent = AlarmContent
+
+    @property
+    def AlarmObject(self):
+        r"""告警对象
+        :rtype: str
+        """
+        return self._AlarmObject
+
+    @AlarmObject.setter
+    def AlarmObject(self, AlarmObject):
+        self._AlarmObject = AlarmObject
+
+    @property
+    def ChannelSet(self):
+        r"""本次告警通知涉及到的渠道合集
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._ChannelSet
+
+    @ChannelSet.setter
+    def ChannelSet(self, ChannelSet):
+        self._ChannelSet = ChannelSet
+
+    @property
+    def ChannelsReceivers(self):
+        r"""渠道的接收人信息
+        :rtype: list of ChannelsReceivers
+        """
+        return self._ChannelsReceivers
+
+    @ChannelsReceivers.setter
+    def ChannelsReceivers(self, ChannelsReceivers):
+        self._ChannelsReceivers = ChannelsReceivers
+
+    @property
+    def PolicyName(self):
+        r"""告警策略名称
+        :rtype: str
+        """
+        return self._PolicyName
+
+    @PolicyName.setter
+    def PolicyName(self, PolicyName):
+        self._PolicyName = PolicyName
+
+    @property
+    def PromeInstanceID(self):
+        r"""Prometheus实例ID, 仅当 MT_PROME 时有效
+        :rtype: str
+        """
+        return self._PromeInstanceID
+
+    @PromeInstanceID.setter
+    def PromeInstanceID(self, PromeInstanceID):
+        self._PromeInstanceID = PromeInstanceID
+
+    @property
+    def PromeInstanceRegion(self):
+        r"""Prometheus实例所在的地域, 仅当 MT_PROME 时有效
+        :rtype: str
+        """
+        return self._PromeInstanceRegion
+
+    @PromeInstanceRegion.setter
+    def PromeInstanceRegion(self, PromeInstanceRegion):
+        self._PromeInstanceRegion = PromeInstanceRegion
+
+    @property
+    def Notices(self):
+        r"""通知模板相关的配置信息
+        :rtype: list of NotifyRelatedNotice
+        """
+        return self._Notices
+
+    @Notices.setter
+    def Notices(self, Notices):
+        self._Notices = Notices
+
+    @property
+    def TriggerStatus(self):
+        r"""告警触发状态  Trigger 告警状态触发; Recovery 告警状态恢复
+        :rtype: str
+        """
+        return self._TriggerStatus
+
+    @TriggerStatus.setter
+    def TriggerStatus(self, TriggerStatus):
+        self._TriggerStatus = TriggerStatus
+
+    @property
+    def PromeConsoleURL(self):
+        r"""与当前Prometheus通知历史相关控制台页面地址，仅当 MR_PROME 时有效
+        :rtype: str
+        """
+        return self._PromeConsoleURL
+
+    @PromeConsoleURL.setter
+    def PromeConsoleURL(self, PromeConsoleURL):
+        self._PromeConsoleURL = PromeConsoleURL
+
+    @property
+    def Labels(self):
+        r"""告警的lable
+        :rtype: list of AlarmLable
+        """
+        return self._Labels
+
+    @Labels.setter
+    def Labels(self, Labels):
+        self._Labels = Labels
+
+
+    def _deserialize(self, params):
+        self._NotifyId = params.get("NotifyId")
+        self._PolicyId = params.get("PolicyId")
+        self._SessionId = params.get("SessionId")
+        self._NotifyTime = params.get("NotifyTime")
+        self._TriggerTime = params.get("TriggerTime")
+        self._TriggerLevel = params.get("TriggerLevel")
+        self._AlarmContent = params.get("AlarmContent")
+        self._AlarmObject = params.get("AlarmObject")
+        self._ChannelSet = params.get("ChannelSet")
+        if params.get("ChannelsReceivers") is not None:
+            self._ChannelsReceivers = []
+            for item in params.get("ChannelsReceivers"):
+                obj = ChannelsReceivers()
+                obj._deserialize(item)
+                self._ChannelsReceivers.append(obj)
+        self._PolicyName = params.get("PolicyName")
+        self._PromeInstanceID = params.get("PromeInstanceID")
+        self._PromeInstanceRegion = params.get("PromeInstanceRegion")
+        if params.get("Notices") is not None:
+            self._Notices = []
+            for item in params.get("Notices"):
+                obj = NotifyRelatedNotice()
+                obj._deserialize(item)
+                self._Notices.append(obj)
+        self._TriggerStatus = params.get("TriggerStatus")
+        self._PromeConsoleURL = params.get("PromeConsoleURL")
+        if params.get("Labels") is not None:
+            self._Labels = []
+            for item in params.get("Labels"):
+                obj = AlarmLable()
+                obj._deserialize(item)
+                self._Labels.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChannelsReceivers(AbstractModel):
+    r"""接受人详情信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ChannelName: 通知渠道名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChannelName: str
+        :param _Receivers: 接收者
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Receivers: list of str
+        :param _SendStatus: 发送结果,0-无效,1-成功,2-失败,3-无需发送
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SendStatus: str
+        """
+        self._ChannelName = None
+        self._Receivers = None
+        self._SendStatus = None
+
+    @property
+    def ChannelName(self):
+        r"""通知渠道名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ChannelName
+
+    @ChannelName.setter
+    def ChannelName(self, ChannelName):
+        self._ChannelName = ChannelName
+
+    @property
+    def Receivers(self):
+        r"""接收者
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._Receivers
+
+    @Receivers.setter
+    def Receivers(self, Receivers):
+        self._Receivers = Receivers
+
+    @property
+    def SendStatus(self):
+        r"""发送结果,0-无效,1-成功,2-失败,3-无需发送
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SendStatus
+
+    @SendStatus.setter
+    def SendStatus(self, SendStatus):
+        self._SendStatus = SendStatus
+
+
+    def _deserialize(self, params):
+        self._ChannelName = params.get("ChannelName")
+        self._Receivers = params.get("Receivers")
+        self._SendStatus = params.get("SendStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateNoticeContentTmplRequest(AbstractModel):
     r"""CreateNoticeContentTmpl请求参数结构体
 
@@ -1136,10 +1552,38 @@ class DescribeAlarmNotifyHistoriesResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _AlarmNotifyHistoryList: 告警历史
+        :type AlarmNotifyHistoryList: list of AlarmNotifyHistory
+        :param _PageResult: 分页情况
+        :type PageResult: :class:`tencentcloud.monitor.v20230616.models.PageByNoResult`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._AlarmNotifyHistoryList = None
+        self._PageResult = None
         self._RequestId = None
+
+    @property
+    def AlarmNotifyHistoryList(self):
+        r"""告警历史
+        :rtype: list of AlarmNotifyHistory
+        """
+        return self._AlarmNotifyHistoryList
+
+    @AlarmNotifyHistoryList.setter
+    def AlarmNotifyHistoryList(self, AlarmNotifyHistoryList):
+        self._AlarmNotifyHistoryList = AlarmNotifyHistoryList
+
+    @property
+    def PageResult(self):
+        r"""分页情况
+        :rtype: :class:`tencentcloud.monitor.v20230616.models.PageByNoResult`
+        """
+        return self._PageResult
+
+    @PageResult.setter
+    def PageResult(self, PageResult):
+        self._PageResult = PageResult
 
     @property
     def RequestId(self):
@@ -1154,6 +1598,15 @@ class DescribeAlarmNotifyHistoriesResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("AlarmNotifyHistoryList") is not None:
+            self._AlarmNotifyHistoryList = []
+            for item in params.get("AlarmNotifyHistoryList"):
+                obj = AlarmNotifyHistory()
+                obj._deserialize(item)
+                self._AlarmNotifyHistoryList.append(obj)
+        if params.get("PageResult") is not None:
+            self._PageResult = PageByNoResult()
+            self._PageResult._deserialize(params.get("PageResult"))
         self._RequestId = params.get("RequestId")
 
 
@@ -2215,6 +2668,57 @@ class NoticeContentTmplItem(AbstractModel):
         
 
 
+class NotifyRelatedNotice(AbstractModel):
+    r"""通知历史中关联的通知模板信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NoticeId: 通知模板ID
+        :type NoticeId: str
+        :param _NoticeName: 通知模板的名称
+        :type NoticeName: str
+        """
+        self._NoticeId = None
+        self._NoticeName = None
+
+    @property
+    def NoticeId(self):
+        r"""通知模板ID
+        :rtype: str
+        """
+        return self._NoticeId
+
+    @NoticeId.setter
+    def NoticeId(self, NoticeId):
+        self._NoticeId = NoticeId
+
+    @property
+    def NoticeName(self):
+        r"""通知模板的名称
+        :rtype: str
+        """
+        return self._NoticeName
+
+    @NoticeName.setter
+    def NoticeName(self, NoticeName):
+        self._NoticeName = NoticeName
+
+
+    def _deserialize(self, params):
+        self._NoticeId = params.get("NoticeId")
+        self._NoticeName = params.get("NoticeName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PageByNoParams(AbstractModel):
     r"""分页请求参数
 
@@ -2260,6 +2764,114 @@ class PageByNoParams(AbstractModel):
     def _deserialize(self, params):
         self._PerPage = params.get("PerPage")
         self._PageNo = params.get("PageNo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PageByNoResult(AbstractModel):
+    r"""分页结果参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 总共有多少数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _TotalPage: 总共有多少个分页
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalPage: int
+        :param _CurrentPageNo: 当前的分页号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CurrentPageNo: int
+        :param _IsEnd: 【已弃用】是否遍历到末尾
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsEnd: bool
+        :param _End: 是否遍历到末尾
+        :type End: bool
+        """
+        self._TotalCount = None
+        self._TotalPage = None
+        self._CurrentPageNo = None
+        self._IsEnd = None
+        self._End = None
+
+    @property
+    def TotalCount(self):
+        r"""总共有多少数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def TotalPage(self):
+        r"""总共有多少个分页
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TotalPage
+
+    @TotalPage.setter
+    def TotalPage(self, TotalPage):
+        self._TotalPage = TotalPage
+
+    @property
+    def CurrentPageNo(self):
+        r"""当前的分页号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._CurrentPageNo
+
+    @CurrentPageNo.setter
+    def CurrentPageNo(self, CurrentPageNo):
+        self._CurrentPageNo = CurrentPageNo
+
+    @property
+    def IsEnd(self):
+        warnings.warn("parameter `IsEnd` is deprecated", DeprecationWarning) 
+
+        r"""【已弃用】是否遍历到末尾
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._IsEnd
+
+    @IsEnd.setter
+    def IsEnd(self, IsEnd):
+        warnings.warn("parameter `IsEnd` is deprecated", DeprecationWarning) 
+
+        self._IsEnd = IsEnd
+
+    @property
+    def End(self):
+        r"""是否遍历到末尾
+        :rtype: bool
+        """
+        return self._End
+
+    @End.setter
+    def End(self, End):
+        self._End = End
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        self._TotalPage = params.get("TotalPage")
+        self._CurrentPageNo = params.get("CurrentPageNo")
+        self._IsEnd = params.get("IsEnd")
+        self._End = params.get("End")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

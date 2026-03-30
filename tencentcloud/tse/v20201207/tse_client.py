@@ -509,6 +509,29 @@ class TseClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateOrModifyCloudNativeAPIGatewayCORS(self, request):
+        r"""创建或编辑云原生网关跨域配置
+
+        :param request: Request instance for CreateOrModifyCloudNativeAPIGatewayCORS.
+        :type request: :class:`tencentcloud.tse.v20201207.models.CreateOrModifyCloudNativeAPIGatewayCORSRequest`
+        :rtype: :class:`tencentcloud.tse.v20201207.models.CreateOrModifyCloudNativeAPIGatewayCORSResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateOrModifyCloudNativeAPIGatewayCORS", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateOrModifyCloudNativeAPIGatewayCORSResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateOrModifyCloudNativeAPIGatewayIPRestriction(self, request):
         r"""创建或编辑云原生网关访问控制
 
@@ -615,6 +638,29 @@ class TseClient(AbstractClient):
             body = self.call("DeleteCloudNativeAPIGateway", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteCloudNativeAPIGatewayResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteCloudNativeAPIGatewayCORS(self, request):
+        r"""删除云原生网关跨域插件
+
+        :param request: Request instance for DeleteCloudNativeAPIGatewayCORS.
+        :type request: :class:`tencentcloud.tse.v20201207.models.DeleteCloudNativeAPIGatewayCORSRequest`
+        :rtype: :class:`tencentcloud.tse.v20201207.models.DeleteCloudNativeAPIGatewayCORSResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteCloudNativeAPIGatewayCORS", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteCloudNativeAPIGatewayCORSResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1190,6 +1236,29 @@ class TseClient(AbstractClient):
             body = self.call("DescribeCloudNativeAPIGateway", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeCloudNativeAPIGatewayResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCloudNativeAPIGatewayCORS(self, request):
+        r"""查询云原生网关跨域配置
+
+        :param request: Request instance for DescribeCloudNativeAPIGatewayCORS.
+        :type request: :class:`tencentcloud.tse.v20201207.models.DescribeCloudNativeAPIGatewayCORSRequest`
+        :rtype: :class:`tencentcloud.tse.v20201207.models.DescribeCloudNativeAPIGatewayCORSResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCloudNativeAPIGatewayCORS", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCloudNativeAPIGatewayCORSResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

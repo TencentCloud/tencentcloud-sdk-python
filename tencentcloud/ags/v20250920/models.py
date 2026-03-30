@@ -846,22 +846,24 @@ class CustomConfiguration(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Image: 镜像地址
+        :param _Image: <p>镜像地址</p>
         :type Image: str
-        :param _ImageRegistryType: 镜像仓库类型：`enterprise`、`personal`。
+        :param _ImageRegistryType: <p>镜像仓库类型：<code>enterprise</code>、<code>personal</code>。</p>
         :type ImageRegistryType: str
-        :param _Command: 启动命令
+        :param _Command: <p>启动命令</p>
         :type Command: list of str
-        :param _Args: 启动参数
+        :param _Args: <p>启动参数</p>
         :type Args: list of str
-        :param _Env: 环境变量
+        :param _Env: <p>环境变量</p>
         :type Env: list of EnvVar
-        :param _Ports: 端口配置
+        :param _Ports: <p>端口配置</p>
         :type Ports: list of PortConfiguration
-        :param _Resources: 资源配置
+        :param _Resources: <p>资源配置</p>
         :type Resources: :class:`tencentcloud.ags.v20250920.models.ResourceConfiguration`
-        :param _Probe: 探针配置
+        :param _Probe: <p>探针配置</p>
         :type Probe: :class:`tencentcloud.ags.v20250920.models.ProbeConfiguration`
+        :param _DNSConfig: <p>沙箱 DNS 配置</p>
+        :type DNSConfig: :class:`tencentcloud.ags.v20250920.models.DNSConfig`
         """
         self._Image = None
         self._ImageRegistryType = None
@@ -871,10 +873,11 @@ class CustomConfiguration(AbstractModel):
         self._Ports = None
         self._Resources = None
         self._Probe = None
+        self._DNSConfig = None
 
     @property
     def Image(self):
-        r"""镜像地址
+        r"""<p>镜像地址</p>
         :rtype: str
         """
         return self._Image
@@ -885,7 +888,7 @@ class CustomConfiguration(AbstractModel):
 
     @property
     def ImageRegistryType(self):
-        r"""镜像仓库类型：`enterprise`、`personal`。
+        r"""<p>镜像仓库类型：<code>enterprise</code>、<code>personal</code>。</p>
         :rtype: str
         """
         return self._ImageRegistryType
@@ -896,7 +899,7 @@ class CustomConfiguration(AbstractModel):
 
     @property
     def Command(self):
-        r"""启动命令
+        r"""<p>启动命令</p>
         :rtype: list of str
         """
         return self._Command
@@ -907,7 +910,7 @@ class CustomConfiguration(AbstractModel):
 
     @property
     def Args(self):
-        r"""启动参数
+        r"""<p>启动参数</p>
         :rtype: list of str
         """
         return self._Args
@@ -918,7 +921,7 @@ class CustomConfiguration(AbstractModel):
 
     @property
     def Env(self):
-        r"""环境变量
+        r"""<p>环境变量</p>
         :rtype: list of EnvVar
         """
         return self._Env
@@ -929,7 +932,7 @@ class CustomConfiguration(AbstractModel):
 
     @property
     def Ports(self):
-        r"""端口配置
+        r"""<p>端口配置</p>
         :rtype: list of PortConfiguration
         """
         return self._Ports
@@ -940,7 +943,7 @@ class CustomConfiguration(AbstractModel):
 
     @property
     def Resources(self):
-        r"""资源配置
+        r"""<p>资源配置</p>
         :rtype: :class:`tencentcloud.ags.v20250920.models.ResourceConfiguration`
         """
         return self._Resources
@@ -951,7 +954,7 @@ class CustomConfiguration(AbstractModel):
 
     @property
     def Probe(self):
-        r"""探针配置
+        r"""<p>探针配置</p>
         :rtype: :class:`tencentcloud.ags.v20250920.models.ProbeConfiguration`
         """
         return self._Probe
@@ -959,6 +962,17 @@ class CustomConfiguration(AbstractModel):
     @Probe.setter
     def Probe(self, Probe):
         self._Probe = Probe
+
+    @property
+    def DNSConfig(self):
+        r"""<p>沙箱 DNS 配置</p>
+        :rtype: :class:`tencentcloud.ags.v20250920.models.DNSConfig`
+        """
+        return self._DNSConfig
+
+    @DNSConfig.setter
+    def DNSConfig(self, DNSConfig):
+        self._DNSConfig = DNSConfig
 
 
     def _deserialize(self, params):
@@ -984,6 +998,9 @@ class CustomConfiguration(AbstractModel):
         if params.get("Probe") is not None:
             self._Probe = ProbeConfiguration()
             self._Probe._deserialize(params.get("Probe"))
+        if params.get("DNSConfig") is not None:
+            self._DNSConfig = DNSConfig()
+            self._DNSConfig._deserialize(params.get("DNSConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1001,24 +1018,26 @@ class CustomConfigurationDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Image: 镜像地址
+        :param _Image: <p>镜像地址</p>
         :type Image: str
-        :param _ImageRegistryType: 镜像仓库类型：`TCR`、`CCR`。
+        :param _ImageRegistryType: <p>镜像仓库类型：<code>TCR</code>、<code>CCR</code>。</p>
         :type ImageRegistryType: str
-        :param _ImageDigest: 镜像 Digest
+        :param _ImageDigest: <p>镜像 Digest</p>
         :type ImageDigest: str
-        :param _Command: 启动命令
+        :param _Command: <p>启动命令</p>
         :type Command: list of str
-        :param _Args: 启动参数
+        :param _Args: <p>启动参数</p>
         :type Args: list of str
-        :param _Env: 环境变量
+        :param _Env: <p>环境变量</p>
         :type Env: list of EnvVar
-        :param _Ports: 端口配置
+        :param _Ports: <p>端口配置</p>
         :type Ports: list of PortConfiguration
-        :param _Resources: 资源配置
+        :param _Resources: <p>资源配置</p>
         :type Resources: :class:`tencentcloud.ags.v20250920.models.ResourceConfiguration`
-        :param _Probe: 探针配置
+        :param _Probe: <p>探针配置</p>
         :type Probe: :class:`tencentcloud.ags.v20250920.models.ProbeConfiguration`
+        :param _DNSConfig: <p>沙箱 DNS 配置</p>
+        :type DNSConfig: :class:`tencentcloud.ags.v20250920.models.DNSConfig`
         """
         self._Image = None
         self._ImageRegistryType = None
@@ -1029,10 +1048,11 @@ class CustomConfigurationDetail(AbstractModel):
         self._Ports = None
         self._Resources = None
         self._Probe = None
+        self._DNSConfig = None
 
     @property
     def Image(self):
-        r"""镜像地址
+        r"""<p>镜像地址</p>
         :rtype: str
         """
         return self._Image
@@ -1043,7 +1063,7 @@ class CustomConfigurationDetail(AbstractModel):
 
     @property
     def ImageRegistryType(self):
-        r"""镜像仓库类型：`TCR`、`CCR`。
+        r"""<p>镜像仓库类型：<code>TCR</code>、<code>CCR</code>。</p>
         :rtype: str
         """
         return self._ImageRegistryType
@@ -1054,7 +1074,7 @@ class CustomConfigurationDetail(AbstractModel):
 
     @property
     def ImageDigest(self):
-        r"""镜像 Digest
+        r"""<p>镜像 Digest</p>
         :rtype: str
         """
         return self._ImageDigest
@@ -1065,7 +1085,7 @@ class CustomConfigurationDetail(AbstractModel):
 
     @property
     def Command(self):
-        r"""启动命令
+        r"""<p>启动命令</p>
         :rtype: list of str
         """
         return self._Command
@@ -1076,7 +1096,7 @@ class CustomConfigurationDetail(AbstractModel):
 
     @property
     def Args(self):
-        r"""启动参数
+        r"""<p>启动参数</p>
         :rtype: list of str
         """
         return self._Args
@@ -1087,7 +1107,7 @@ class CustomConfigurationDetail(AbstractModel):
 
     @property
     def Env(self):
-        r"""环境变量
+        r"""<p>环境变量</p>
         :rtype: list of EnvVar
         """
         return self._Env
@@ -1098,7 +1118,7 @@ class CustomConfigurationDetail(AbstractModel):
 
     @property
     def Ports(self):
-        r"""端口配置
+        r"""<p>端口配置</p>
         :rtype: list of PortConfiguration
         """
         return self._Ports
@@ -1109,7 +1129,7 @@ class CustomConfigurationDetail(AbstractModel):
 
     @property
     def Resources(self):
-        r"""资源配置
+        r"""<p>资源配置</p>
         :rtype: :class:`tencentcloud.ags.v20250920.models.ResourceConfiguration`
         """
         return self._Resources
@@ -1120,7 +1140,7 @@ class CustomConfigurationDetail(AbstractModel):
 
     @property
     def Probe(self):
-        r"""探针配置
+        r"""<p>探针配置</p>
         :rtype: :class:`tencentcloud.ags.v20250920.models.ProbeConfiguration`
         """
         return self._Probe
@@ -1128,6 +1148,17 @@ class CustomConfigurationDetail(AbstractModel):
     @Probe.setter
     def Probe(self, Probe):
         self._Probe = Probe
+
+    @property
+    def DNSConfig(self):
+        r"""<p>沙箱 DNS 配置</p>
+        :rtype: :class:`tencentcloud.ags.v20250920.models.DNSConfig`
+        """
+        return self._DNSConfig
+
+    @DNSConfig.setter
+    def DNSConfig(self, DNSConfig):
+        self._DNSConfig = DNSConfig
 
 
     def _deserialize(self, params):
@@ -1154,6 +1185,75 @@ class CustomConfigurationDetail(AbstractModel):
         if params.get("Probe") is not None:
             self._Probe = ProbeConfiguration()
             self._Probe._deserialize(params.get("Probe"))
+        if params.get("DNSConfig") is not None:
+            self._DNSConfig = DNSConfig()
+            self._DNSConfig._deserialize(params.get("DNSConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DNSConfig(AbstractModel):
+    r"""沙箱自定义 dns 配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Servers: <p>DNS 服务器地址</p><p>参数格式：需要有效 IP 地址</p><p>默认值：10.0.0.1</p>
+        :type Servers: list of str
+        :param _Searches: <p>搜索域(对应 resolv.conf 的 search 指令)</p>
+        :type Searches: list of str
+        :param _Options: <p>配置项(对应  resolv.conf 选项)</p>
+        :type Options: list of str
+        """
+        self._Servers = None
+        self._Searches = None
+        self._Options = None
+
+    @property
+    def Servers(self):
+        r"""<p>DNS 服务器地址</p><p>参数格式：需要有效 IP 地址</p><p>默认值：10.0.0.1</p>
+        :rtype: list of str
+        """
+        return self._Servers
+
+    @Servers.setter
+    def Servers(self, Servers):
+        self._Servers = Servers
+
+    @property
+    def Searches(self):
+        r"""<p>搜索域(对应 resolv.conf 的 search 指令)</p>
+        :rtype: list of str
+        """
+        return self._Searches
+
+    @Searches.setter
+    def Searches(self, Searches):
+        self._Searches = Searches
+
+    @property
+    def Options(self):
+        r"""<p>配置项(对应  resolv.conf 选项)</p>
+        :rtype: list of str
+        """
+        return self._Options
+
+    @Options.setter
+    def Options(self, Options):
+        self._Options = Options
+
+
+    def _deserialize(self, params):
+        self._Servers = params.get("Servers")
+        self._Searches = params.get("Searches")
+        self._Options = params.get("Options")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

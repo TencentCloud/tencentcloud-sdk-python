@@ -2372,12 +2372,15 @@ class ChangePwdTaskDetail(AbstractModel):
         :type Device: :class:`tencentcloud.bh.v20230418.models.Device`
         :param _Account: 资产账号
         :type Account: str
-        :param _LastChangeStatus: 上次改密结果。0-未改密  1-改密成功 2-改密失败
+        :param _LastChangeStatus: 上次改密结果。0-未改密  1-改密成功 2-改密失败,3-改密中，4-改密超时
         :type LastChangeStatus: int
+        :param _TaskStatus: 改密任务状态，0-待执行，1-执行完成，2-执行失败，3-执行中，4-执行超时
+        :type TaskStatus: int
         """
         self._Device = None
         self._Account = None
         self._LastChangeStatus = None
+        self._TaskStatus = None
 
     @property
     def Device(self):
@@ -2403,7 +2406,7 @@ class ChangePwdTaskDetail(AbstractModel):
 
     @property
     def LastChangeStatus(self):
-        r"""上次改密结果。0-未改密  1-改密成功 2-改密失败
+        r"""上次改密结果。0-未改密  1-改密成功 2-改密失败,3-改密中，4-改密超时
         :rtype: int
         """
         return self._LastChangeStatus
@@ -2412,6 +2415,17 @@ class ChangePwdTaskDetail(AbstractModel):
     def LastChangeStatus(self, LastChangeStatus):
         self._LastChangeStatus = LastChangeStatus
 
+    @property
+    def TaskStatus(self):
+        r"""改密任务状态，0-待执行，1-执行完成，2-执行失败，3-执行中，4-执行超时
+        :rtype: int
+        """
+        return self._TaskStatus
+
+    @TaskStatus.setter
+    def TaskStatus(self, TaskStatus):
+        self._TaskStatus = TaskStatus
+
 
     def _deserialize(self, params):
         if params.get("Device") is not None:
@@ -2419,6 +2433,7 @@ class ChangePwdTaskDetail(AbstractModel):
             self._Device._deserialize(params.get("Device"))
         self._Account = params.get("Account")
         self._LastChangeStatus = params.get("LastChangeStatus")
+        self._TaskStatus = params.get("TaskStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2480,6 +2495,8 @@ class ChangePwdTaskInfo(AbstractModel):
         :type NextTime: str
         :param _LastTime: 上次执行时间
         :type LastTime: str
+        :param _Status: 改密任务状态，0-待执行，1-执行完成，2-执行失败，3-执行中，4-执行超时
+        :type Status: int
         """
         self._Id = None
         self._OperationId = None
@@ -2503,6 +2520,7 @@ class ChangePwdTaskInfo(AbstractModel):
         self._FirstTime = None
         self._NextTime = None
         self._LastTime = None
+        self._Status = None
 
     @property
     def Id(self):
@@ -2746,6 +2764,17 @@ class ChangePwdTaskInfo(AbstractModel):
     def LastTime(self, LastTime):
         self._LastTime = LastTime
 
+    @property
+    def Status(self):
+        r"""改密任务状态，0-待执行，1-执行完成，2-执行失败，3-执行中，4-执行超时
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -2777,6 +2806,7 @@ class ChangePwdTaskInfo(AbstractModel):
         self._FirstTime = params.get("FirstTime")
         self._NextTime = params.get("NextTime")
         self._LastTime = params.get("LastTime")
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18184,6 +18214,10 @@ class Resource(AbstractModel):
         :type TimeSpan: int
         :param _PayMode: 计费模式 0后付费，1预付费
         :type PayMode: int
+        :param _BillingRegion: 计费侧地域
+        :type BillingRegion: str
+        :param _BillingZone: 计费侧可用区
+        :type BillingZone: str
         """
         self._ResourceId = None
         self._ApCode = None
@@ -18243,6 +18277,8 @@ class Resource(AbstractModel):
         self._TimeUnit = None
         self._TimeSpan = None
         self._PayMode = None
+        self._BillingRegion = None
+        self._BillingZone = None
 
     @property
     def ResourceId(self):
@@ -18882,6 +18918,28 @@ class Resource(AbstractModel):
     def PayMode(self, PayMode):
         self._PayMode = PayMode
 
+    @property
+    def BillingRegion(self):
+        r"""计费侧地域
+        :rtype: str
+        """
+        return self._BillingRegion
+
+    @BillingRegion.setter
+    def BillingRegion(self, BillingRegion):
+        self._BillingRegion = BillingRegion
+
+    @property
+    def BillingZone(self):
+        r"""计费侧可用区
+        :rtype: str
+        """
+        return self._BillingZone
+
+    @BillingZone.setter
+    def BillingZone(self, BillingZone):
+        self._BillingZone = BillingZone
+
 
     def _deserialize(self, params):
         self._ResourceId = params.get("ResourceId")
@@ -18947,6 +19005,8 @@ class Resource(AbstractModel):
         self._TimeUnit = params.get("TimeUnit")
         self._TimeSpan = params.get("TimeSpan")
         self._PayMode = params.get("PayMode")
+        self._BillingRegion = params.get("BillingRegion")
+        self._BillingZone = params.get("BillingZone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

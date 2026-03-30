@@ -2566,6 +2566,8 @@ https：使用https协议回源
 
     @property
     def HttpsUpstreamPort(self):
+        warnings.warn("parameter `HttpsUpstreamPort` is deprecated", DeprecationWarning) 
+
         r"""HTTPS回源端口,仅UpstreamScheme为http时需要填当前字段
         :rtype: str
         """
@@ -2573,6 +2575,8 @@ https：使用https协议回源
 
     @HttpsUpstreamPort.setter
     def HttpsUpstreamPort(self, HttpsUpstreamPort):
+        warnings.warn("parameter `HttpsUpstreamPort` is deprecated", DeprecationWarning) 
+
         self._HttpsUpstreamPort = HttpsUpstreamPort
 
     @property
@@ -3497,6 +3501,42 @@ class ApiDetailSampleHistory(AbstractModel):
         self._RepLog = params.get("RepLog")
         self._RspLog = params.get("RspLog")
         self._FullReqLog = params.get("FullReqLog")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ApiGuardContent(AbstractModel):
+    r"""guard content
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Prompt: prompt
+        :type Prompt: str
+        """
+        self._Prompt = None
+
+    @property
+    def Prompt(self):
+        r"""prompt
+        :rtype: str
+        """
+        return self._Prompt
+
+    @Prompt.setter
+    def Prompt(self, Prompt):
+        self._Prompt = Prompt
+
+
+    def _deserialize(self, params):
+        self._Prompt = params.get("Prompt")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9592,6 +9632,87 @@ class CdcRegion(AbstractModel):
         
 
 
+class ClawRiskItem(AbstractModel):
+    r"""ClawRiskItem
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RiskType: 风险类别
+        :type RiskType: str
+        :param _RuleId: 规则id
+        :type RuleId: str
+        :param _RuleName: 规则名称
+        :type RuleName: str
+        :param _Score: 分数
+        :type Score: float
+        """
+        self._RiskType = None
+        self._RuleId = None
+        self._RuleName = None
+        self._Score = None
+
+    @property
+    def RiskType(self):
+        r"""风险类别
+        :rtype: str
+        """
+        return self._RiskType
+
+    @RiskType.setter
+    def RiskType(self, RiskType):
+        self._RiskType = RiskType
+
+    @property
+    def RuleId(self):
+        r"""规则id
+        :rtype: str
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def RuleName(self):
+        r"""规则名称
+        :rtype: str
+        """
+        return self._RuleName
+
+    @RuleName.setter
+    def RuleName(self, RuleName):
+        self._RuleName = RuleName
+
+    @property
+    def Score(self):
+        r"""分数
+        :rtype: float
+        """
+        return self._Score
+
+    @Score.setter
+    def Score(self, Score):
+        self._Score = Score
+
+
+    def _deserialize(self, params):
+        self._RiskType = params.get("RiskType")
+        self._RuleId = params.get("RuleId")
+        self._RuleName = params.get("RuleName")
+        self._Score = params.get("Score")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ClbDomainsInfo(AbstractModel):
     r"""负载均衡型WAF域名详情
 
@@ -14560,7 +14681,7 @@ class DeleteIpAccessControlRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Domain: 域名
+        :param _Domain: 域名，当操作对象为全局规则时，Domain参数应填写为"global"
         :type Domain: str
         :param _Items: 删除的ip数组
         :type Items: list of str
@@ -14568,7 +14689,7 @@ class DeleteIpAccessControlRequest(AbstractModel):
         :type IsId: bool
         :param _DeleteAll: 是否删除对应的域名下的所有黑/白IP名单，true表示全部删除，false表示只删除指定ip名单
         :type DeleteAll: bool
-        :param _SourceType: 是否为多域名黑白名单
+        :param _SourceType: 用于按数据来源删除黑白名单记录，非必填，默认为custom。 custom（自定义），用户在控制台手动添加的黑白名单规则 cc（CC 防护	），由 CC 防护模块自动添加的 IP 黑白名单 bot（Bot 防护），由 Bot 防护模块自动添加的 IP 黑白名单 batch（批量域名防护），批量域名维度添加的黑白名单规则
         :type SourceType: str
         :param _ActionType: IP黑白名单类型，40为IP白名单，42为IP黑名单
         :type ActionType: int
@@ -14582,7 +14703,7 @@ class DeleteIpAccessControlRequest(AbstractModel):
 
     @property
     def Domain(self):
-        r"""域名
+        r"""域名，当操作对象为全局规则时，Domain参数应填写为"global"
         :rtype: str
         """
         return self._Domain
@@ -14626,7 +14747,7 @@ class DeleteIpAccessControlRequest(AbstractModel):
 
     @property
     def SourceType(self):
-        r"""是否为多域名黑白名单
+        r"""用于按数据来源删除黑白名单记录，非必填，默认为custom。 custom（自定义），用户在控制台手动添加的黑白名单规则 cc（CC 防护	），由 CC 防护模块自动添加的 IP 黑白名单 bot（Bot 防护），由 Bot 防护模块自动添加的 IP 黑白名单 batch（批量域名防护），批量域名维度添加的黑白名单规则
         :rtype: str
         """
         return self._SourceType
@@ -14729,13 +14850,13 @@ class DeleteIpAccessControlV2Request(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Domain: 域名
+        :param _Domain: 域名，当操作对象为全局规则时，Domain参数应填写为"global"
         :type Domain: str
         :param _RuleIds: 规则ID列表，支持批量删除，在DeleteAll参数为true的时候可以不传
         :type RuleIds: list of int non-negative
         :param _DeleteAll: 是否删除对应的域名下的所有黑/白IP名单，true表示全部删除，false表示只删除指定IP名单，批量防护不支持
         :type DeleteAll: bool
-        :param _SourceType: batch表示为批量防护的IP黑白名单
+        :param _SourceType: 用于按数据来源删除黑白名单记录，非必填，默认为custom。 custom（自定义），用户在控制台手动添加的黑白名单规则 cc（CC 防护	），由 CC 防护模块自动添加的 IP 黑白名单 bot（Bot 防护），由 Bot 防护模块自动添加的 IP 黑白名单 batch（批量域名防护），批量域名维度添加的黑白名单规则
         :type SourceType: str
         :param _ActionType: IP黑白名单类型，40为IP白名单，42为IP黑名单，在DeleteAll为true的时候必传此参数
         :type ActionType: int
@@ -14748,7 +14869,7 @@ class DeleteIpAccessControlV2Request(AbstractModel):
 
     @property
     def Domain(self):
-        r"""域名
+        r"""域名，当操作对象为全局规则时，Domain参数应填写为"global"
         :rtype: str
         """
         return self._Domain
@@ -14781,7 +14902,7 @@ class DeleteIpAccessControlV2Request(AbstractModel):
 
     @property
     def SourceType(self):
-        r"""batch表示为批量防护的IP黑白名单
+        r"""用于按数据来源删除黑白名单记录，非必填，默认为custom。 custom（自定义），用户在控制台手动添加的黑白名单规则 cc（CC 防护	），由 CC 防护模块自动添加的 IP 黑白名单 bot（Bot 防护），由 Bot 防护模块自动添加的 IP 黑白名单 batch（批量域名防护），批量域名维度添加的黑白名单规则
         :rtype: str
         """
         return self._SourceType
@@ -23205,7 +23326,7 @@ class DescribeIpAccessControlRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Domain: 域名
+        :param _Domain: 域名，当操作对象为全局规则时，Domain参数应填写为"global"
         :type Domain: str
         :param _Count: 计数标识
         :type Count: int
@@ -23223,7 +23344,7 @@ class DescribeIpAccessControlRequest(AbstractModel):
         :type OffSet: int
         :param _Limit: 每页返回的数量，默认为20
         :type Limit: int
-        :param _Source: 来源
+        :param _Source: 用于按数据来源过滤黑白名单记录，非必填（默认为空字符串，表示不过滤/查询全部）。 "" (空字符串)	，不按来源过滤，返回所有记录（默认值） custom（自定义），用户在控制台手动添加的黑白名单规则 cc（CC 防护	），由 CC 防护模块自动添加的 IP 黑白名单 bot（Bot 防护），由 Bot 防护模块自动添加的 IP 黑白名单 batch（批量域名防护），批量域名维度添加的黑白名单规则 batch-group（防护对象组），防护对象组维度添加的黑白名单规则
         :type Source: str
         :param _Sort: 排序参数
         :type Sort: str
@@ -23260,7 +23381,7 @@ class DescribeIpAccessControlRequest(AbstractModel):
 
     @property
     def Domain(self):
-        r"""域名
+        r"""域名，当操作对象为全局规则时，Domain参数应填写为"global"
         :rtype: str
         """
         return self._Domain
@@ -23367,7 +23488,7 @@ class DescribeIpAccessControlRequest(AbstractModel):
 
     @property
     def Source(self):
-        r"""来源
+        r"""用于按数据来源过滤黑白名单记录，非必填（默认为空字符串，表示不过滤/查询全部）。 "" (空字符串)	，不按来源过滤，返回所有记录（默认值） custom（自定义），用户在控制台手动添加的黑白名单规则 cc（CC 防护	），由 CC 防护模块自动添加的 IP 黑白名单 bot（Bot 防护），由 Bot 防护模块自动添加的 IP 黑白名单 batch（批量域名防护），批量域名维度添加的黑白名单规则 batch-group（防护对象组），防护对象组维度添加的黑白名单规则
         :rtype: str
         """
         return self._Source
@@ -23822,6 +23943,177 @@ class DescribeIpHitItemsResponse(AbstractModel):
     def _deserialize(self, params):
         if params.get("Data") is not None:
             self._Data = IpHitItemsData()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeLLMContentSecCheckRequest(AbstractModel):
+    r"""DescribeLLMContentSecCheck请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ServiceId:  服务id,使用哪一套防护策略，就需要传哪一套服务id，模型会检测该服务id下的所有规则
+        :type ServiceId: str
+        :param _Content: 要审核的内容
+        :type Content: str
+        :param _Type: 流量类型，是入向流量还是出向流量，入向：1，出向：2；入向和出向必填
+        :type Type: int
+        :param _InstanceId: 实例id，必传
+        :type InstanceId: str
+        :param _ChatId: 对话的id
+        :type ChatId: str
+        :param _UserId: 标识用户的id，限速使用，不填，则限速会不生效
+        :type UserId: str
+        :param _TokenUsage: token使用量，不填，会采用默认的token计算方法，计算的是模型的消耗，因为该值时在出向方向上添加，即Type=2
+        :type TokenUsage: int
+        """
+        self._ServiceId = None
+        self._Content = None
+        self._Type = None
+        self._InstanceId = None
+        self._ChatId = None
+        self._UserId = None
+        self._TokenUsage = None
+
+    @property
+    def ServiceId(self):
+        r""" 服务id,使用哪一套防护策略，就需要传哪一套服务id，模型会检测该服务id下的所有规则
+        :rtype: str
+        """
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def Content(self):
+        r"""要审核的内容
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def Type(self):
+        r"""流量类型，是入向流量还是出向流量，入向：1，出向：2；入向和出向必填
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def InstanceId(self):
+        r"""实例id，必传
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ChatId(self):
+        r"""对话的id
+        :rtype: str
+        """
+        return self._ChatId
+
+    @ChatId.setter
+    def ChatId(self, ChatId):
+        self._ChatId = ChatId
+
+    @property
+    def UserId(self):
+        r"""标识用户的id，限速使用，不填，则限速会不生效
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def TokenUsage(self):
+        r"""token使用量，不填，会采用默认的token计算方法，计算的是模型的消耗，因为该值时在出向方向上添加，即Type=2
+        :rtype: int
+        """
+        return self._TokenUsage
+
+    @TokenUsage.setter
+    def TokenUsage(self, TokenUsage):
+        self._TokenUsage = TokenUsage
+
+
+    def _deserialize(self, params):
+        self._ServiceId = params.get("ServiceId")
+        self._Content = params.get("Content")
+        self._Type = params.get("Type")
+        self._InstanceId = params.get("InstanceId")
+        self._ChatId = params.get("ChatId")
+        self._UserId = params.get("UserId")
+        self._TokenUsage = params.get("TokenUsage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLLMContentSecCheckResponse(AbstractModel):
+    r"""DescribeLLMContentSecCheck返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 检测结果
+        :type Data: :class:`tencentcloud.waf.v20180125.models.LLMDetectResult`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""检测结果
+        :rtype: :class:`tencentcloud.waf.v20180125.models.LLMDetectResult`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = LLMDetectResult()
             self._Data._deserialize(params.get("Data"))
         self._RequestId = params.get("RequestId")
 
@@ -25748,6 +26040,134 @@ class DescribeProtectionModesResponse(AbstractModel):
                 obj = TigaMainClassMode()
                 obj._deserialize(item)
                 self._Modes.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeQClawContentSecCheckRequest(AbstractModel):
+    r"""DescribeQClawContentSecCheck请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ServiceId:  服务id,使用哪一套防护策略，就需要传哪一套服务id，模型会检测该服务id下的所有规则
+        :type ServiceId: str
+        :param _Content: 要审核的内容
+        :type Content: :class:`tencentcloud.waf.v20180125.models.ApiGuardContent`
+        :param _UserId: 标识用户的id，限速使用，不填，则限速会不生效
+        :type UserId: str
+        :param _SessionId: 会话id
+        :type SessionId: str
+        """
+        self._ServiceId = None
+        self._Content = None
+        self._UserId = None
+        self._SessionId = None
+
+    @property
+    def ServiceId(self):
+        r""" 服务id,使用哪一套防护策略，就需要传哪一套服务id，模型会检测该服务id下的所有规则
+        :rtype: str
+        """
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def Content(self):
+        r"""要审核的内容
+        :rtype: :class:`tencentcloud.waf.v20180125.models.ApiGuardContent`
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def UserId(self):
+        r"""标识用户的id，限速使用，不填，则限速会不生效
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def SessionId(self):
+        r"""会话id
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+
+    def _deserialize(self, params):
+        self._ServiceId = params.get("ServiceId")
+        if params.get("Content") is not None:
+            self._Content = ApiGuardContent()
+            self._Content._deserialize(params.get("Content"))
+        self._UserId = params.get("UserId")
+        self._SessionId = params.get("SessionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeQClawContentSecCheckResponse(AbstractModel):
+    r"""DescribeQClawContentSecCheck返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 检测结果
+        :type Data: :class:`tencentcloud.waf.v20180125.models.LLMRisks`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""检测结果
+        :rtype: :class:`tencentcloud.waf.v20180125.models.LLMRisks`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = LLMRisks()
+            self._Data._deserialize(params.get("Data"))
         self._RequestId = params.get("RequestId")
 
 
@@ -34308,7 +34728,7 @@ class ImportIpAccessControlRequest(AbstractModel):
         :param _Domain: 具体域名如：test.qcloudwaf.com
 全局域名为：global
         :type Domain: str
-        :param _SourceType: 是否为批量防护IP黑白名单，当为批量防护IP黑白名单时，取值为batch，否则为空
+        :param _SourceType: 用于按数据来源导入黑白名单记录，必填。 custom（自定义），用户在控制台手动添加的黑白名单规则 cc（CC 防护	），由 CC 防护模块自动添加的 IP 黑白名单 bot（Bot 防护），由 Bot 防护模块自动添加的 IP 黑白名单 batch（批量域名防护），批量域名维度添加的黑白名单规则
         :type SourceType: str
         :param _InstanceId: 实例Id
         :type InstanceId: str
@@ -34343,7 +34763,7 @@ class ImportIpAccessControlRequest(AbstractModel):
 
     @property
     def SourceType(self):
-        r"""是否为批量防护IP黑白名单，当为批量防护IP黑白名单时，取值为batch，否则为空
+        r"""用于按数据来源导入黑白名单记录，必填。 custom（自定义），用户在控制台手动添加的黑白名单规则 cc（CC 防护	），由 CC 防护模块自动添加的 IP 黑白名单 bot（Bot 防护），由 Bot 防护模块自动添加的 IP 黑白名单 batch（批量域名防护），批量域名维度添加的黑白名单规则
         :rtype: str
         """
         return self._SourceType
@@ -36751,6 +37171,210 @@ class KVInt(AbstractModel):
         
 
 
+class KeyWordInfo(AbstractModel):
+    r"""大模型安全检测敏感词库命中信息结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 命中的词库id
+        :type Id: str
+        :param _Name: 命中的词库名称
+        :type Name: str
+        """
+        self._Id = None
+        self._Name = None
+
+    @property
+    def Id(self):
+        r"""命中的词库id
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        r"""命中的词库名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LLMDetectResult(AbstractModel):
+    r"""大模型安全检测综合结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SensitiveResult:  仅输出侧：涉敏信息
+        :type SensitiveResult: list of LLMSensitiveValueLevel
+        :param _KeyWordsResult:  输入输出均检测：关键词库命中信息
+        :type KeyWordsResult: list of KeyWordInfo
+        :param _DataCategoryResult: 输入输出均检测：数据分类分级结果
+        :type DataCategoryResult: list of str
+        :param _PromptInjectionResult:  仅输入侧检出：prompt检测的结果
+        :type PromptInjectionResult: :class:`tencentcloud.waf.v20180125.models.PromptDetectResult`
+        :param _RuleId: 命中的规则ID
+        :type RuleId: str
+        :param _RuleName: 命中的规则名称
+        :type RuleName: str
+        :param _Action: 规则动作
+        :type Action: str
+        :param _Payload: 攻击payload
+        :type Payload: str
+        """
+        self._SensitiveResult = None
+        self._KeyWordsResult = None
+        self._DataCategoryResult = None
+        self._PromptInjectionResult = None
+        self._RuleId = None
+        self._RuleName = None
+        self._Action = None
+        self._Payload = None
+
+    @property
+    def SensitiveResult(self):
+        r""" 仅输出侧：涉敏信息
+        :rtype: list of LLMSensitiveValueLevel
+        """
+        return self._SensitiveResult
+
+    @SensitiveResult.setter
+    def SensitiveResult(self, SensitiveResult):
+        self._SensitiveResult = SensitiveResult
+
+    @property
+    def KeyWordsResult(self):
+        r""" 输入输出均检测：关键词库命中信息
+        :rtype: list of KeyWordInfo
+        """
+        return self._KeyWordsResult
+
+    @KeyWordsResult.setter
+    def KeyWordsResult(self, KeyWordsResult):
+        self._KeyWordsResult = KeyWordsResult
+
+    @property
+    def DataCategoryResult(self):
+        r"""输入输出均检测：数据分类分级结果
+        :rtype: list of str
+        """
+        return self._DataCategoryResult
+
+    @DataCategoryResult.setter
+    def DataCategoryResult(self, DataCategoryResult):
+        self._DataCategoryResult = DataCategoryResult
+
+    @property
+    def PromptInjectionResult(self):
+        r""" 仅输入侧检出：prompt检测的结果
+        :rtype: :class:`tencentcloud.waf.v20180125.models.PromptDetectResult`
+        """
+        return self._PromptInjectionResult
+
+    @PromptInjectionResult.setter
+    def PromptInjectionResult(self, PromptInjectionResult):
+        self._PromptInjectionResult = PromptInjectionResult
+
+    @property
+    def RuleId(self):
+        r"""命中的规则ID
+        :rtype: str
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def RuleName(self):
+        r"""命中的规则名称
+        :rtype: str
+        """
+        return self._RuleName
+
+    @RuleName.setter
+    def RuleName(self, RuleName):
+        self._RuleName = RuleName
+
+    @property
+    def Action(self):
+        r"""规则动作
+        :rtype: str
+        """
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
+
+    @property
+    def Payload(self):
+        r"""攻击payload
+        :rtype: str
+        """
+        return self._Payload
+
+    @Payload.setter
+    def Payload(self, Payload):
+        self._Payload = Payload
+
+
+    def _deserialize(self, params):
+        if params.get("SensitiveResult") is not None:
+            self._SensitiveResult = []
+            for item in params.get("SensitiveResult"):
+                obj = LLMSensitiveValueLevel()
+                obj._deserialize(item)
+                self._SensitiveResult.append(obj)
+        if params.get("KeyWordsResult") is not None:
+            self._KeyWordsResult = []
+            for item in params.get("KeyWordsResult"):
+                obj = KeyWordInfo()
+                obj._deserialize(item)
+                self._KeyWordsResult.append(obj)
+        self._DataCategoryResult = params.get("DataCategoryResult")
+        if params.get("PromptInjectionResult") is not None:
+            self._PromptInjectionResult = PromptDetectResult()
+            self._PromptInjectionResult._deserialize(params.get("PromptInjectionResult"))
+        self._RuleId = params.get("RuleId")
+        self._RuleName = params.get("RuleName")
+        self._Action = params.get("Action")
+        self._Payload = params.get("Payload")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class LLMMonPkg(AbstractModel):
     r"""有效预付费大模型安全包信息
 
@@ -37010,6 +37634,98 @@ class LLMPkg(AbstractModel):
         self._BeginTime = params.get("BeginTime")
         self._EndTime = params.get("EndTime")
         self._InquireKey = params.get("InquireKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LLMRisks(AbstractModel):
+    r"""LLMRisks
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Risks: 分数
+        :type Risks: list of ClawRiskItem
+        """
+        self._Risks = None
+
+    @property
+    def Risks(self):
+        r"""分数
+        :rtype: list of ClawRiskItem
+        """
+        return self._Risks
+
+    @Risks.setter
+    def Risks(self, Risks):
+        self._Risks = Risks
+
+
+    def _deserialize(self, params):
+        if params.get("Risks") is not None:
+            self._Risks = []
+            for item in params.get("Risks"):
+                obj = ClawRiskItem()
+                obj._deserialize(item)
+                self._Risks.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LLMSensitiveValueLevel(AbstractModel):
+    r"""涉敏信息结果结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Label: 敏感数据标签，如政治、色情
+        :type Label: str
+        :param _Level: 敏感数据等级，250,300，400分别代表超严格、严格、标准等级
+        :type Level: int
+        """
+        self._Label = None
+        self._Level = None
+
+    @property
+    def Label(self):
+        r"""敏感数据标签，如政治、色情
+        :rtype: str
+        """
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
+
+    @property
+    def Level(self):
+        r"""敏感数据等级，250,300，400分别代表超严格、严格、标准等级
+        :rtype: int
+        """
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
+
+
+    def _deserialize(self, params):
+        self._Label = params.get("Label")
+        self._Level = params.get("Level")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -49236,6 +49952,57 @@ class ProductInfo(AbstractModel):
     def _deserialize(self, params):
         self._Name = params.get("Name")
         self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PromptDetectResult(AbstractModel):
+    r"""prompt注入检测结果结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 检测结果
+        :type Result: str
+        :param _Confidence: 置信度
+        :type Confidence: int
+        """
+        self._Result = None
+        self._Confidence = None
+
+    @property
+    def Result(self):
+        r"""检测结果
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def Confidence(self):
+        r"""置信度
+        :rtype: int
+        """
+        return self._Confidence
+
+    @Confidence.setter
+    def Confidence(self, Confidence):
+        self._Confidence = Confidence
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._Confidence = params.get("Confidence")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

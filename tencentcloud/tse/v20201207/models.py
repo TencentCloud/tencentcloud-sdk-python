@@ -8556,6 +8556,220 @@ class CreateNativeGatewayServiceSourceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateOrModifyCloudNativeAPIGatewayCORSRequest(AbstractModel):
+    r"""CreateOrModifyCloudNativeAPIGatewayCORS请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: 网关ID
+        :type GatewayId: str
+        :param _SourceType: 跨域插件绑定的资源类型：route|service
+        :type SourceType: str
+        :param _SourceId: 路由或服务的id
+        :type SourceId: str
+        :param _Enabled: 是否启用插件
+        :type Enabled: bool
+        :param _Origins: 跨域 Access-Control-Allow-Origin
+        :type Origins: list of str
+        :param _Headers: 跨域 Access-Control-Allow-Headers header
+        :type Headers: list of str
+        :param _Methods: 跨域 Access-Control-Allow-Methods
+        :type Methods: list of str
+        :param _ExposedHeaders: 跨域 Access-Control-Expose-Headers
+        :type ExposedHeaders: list of str
+        :param _MaxAge: preflight 请求缓存时间
+        :type MaxAge: int
+        :param _Credentials: 跨域 Access-Control-Allow-Credentials
+        :type Credentials: bool
+        :param _PreFlightContinue: 是否把OPTIONS请求透传后端
+        :type PreFlightContinue: bool
+        """
+        self._GatewayId = None
+        self._SourceType = None
+        self._SourceId = None
+        self._Enabled = None
+        self._Origins = None
+        self._Headers = None
+        self._Methods = None
+        self._ExposedHeaders = None
+        self._MaxAge = None
+        self._Credentials = None
+        self._PreFlightContinue = None
+
+    @property
+    def GatewayId(self):
+        r"""网关ID
+        :rtype: str
+        """
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def SourceType(self):
+        r"""跨域插件绑定的资源类型：route|service
+        :rtype: str
+        """
+        return self._SourceType
+
+    @SourceType.setter
+    def SourceType(self, SourceType):
+        self._SourceType = SourceType
+
+    @property
+    def SourceId(self):
+        r"""路由或服务的id
+        :rtype: str
+        """
+        return self._SourceId
+
+    @SourceId.setter
+    def SourceId(self, SourceId):
+        self._SourceId = SourceId
+
+    @property
+    def Enabled(self):
+        r"""是否启用插件
+        :rtype: bool
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+    @property
+    def Origins(self):
+        r"""跨域 Access-Control-Allow-Origin
+        :rtype: list of str
+        """
+        return self._Origins
+
+    @Origins.setter
+    def Origins(self, Origins):
+        self._Origins = Origins
+
+    @property
+    def Headers(self):
+        r"""跨域 Access-Control-Allow-Headers header
+        :rtype: list of str
+        """
+        return self._Headers
+
+    @Headers.setter
+    def Headers(self, Headers):
+        self._Headers = Headers
+
+    @property
+    def Methods(self):
+        r"""跨域 Access-Control-Allow-Methods
+        :rtype: list of str
+        """
+        return self._Methods
+
+    @Methods.setter
+    def Methods(self, Methods):
+        self._Methods = Methods
+
+    @property
+    def ExposedHeaders(self):
+        r"""跨域 Access-Control-Expose-Headers
+        :rtype: list of str
+        """
+        return self._ExposedHeaders
+
+    @ExposedHeaders.setter
+    def ExposedHeaders(self, ExposedHeaders):
+        self._ExposedHeaders = ExposedHeaders
+
+    @property
+    def MaxAge(self):
+        r"""preflight 请求缓存时间
+        :rtype: int
+        """
+        return self._MaxAge
+
+    @MaxAge.setter
+    def MaxAge(self, MaxAge):
+        self._MaxAge = MaxAge
+
+    @property
+    def Credentials(self):
+        r"""跨域 Access-Control-Allow-Credentials
+        :rtype: bool
+        """
+        return self._Credentials
+
+    @Credentials.setter
+    def Credentials(self, Credentials):
+        self._Credentials = Credentials
+
+    @property
+    def PreFlightContinue(self):
+        r"""是否把OPTIONS请求透传后端
+        :rtype: bool
+        """
+        return self._PreFlightContinue
+
+    @PreFlightContinue.setter
+    def PreFlightContinue(self, PreFlightContinue):
+        self._PreFlightContinue = PreFlightContinue
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._SourceType = params.get("SourceType")
+        self._SourceId = params.get("SourceId")
+        self._Enabled = params.get("Enabled")
+        self._Origins = params.get("Origins")
+        self._Headers = params.get("Headers")
+        self._Methods = params.get("Methods")
+        self._ExposedHeaders = params.get("ExposedHeaders")
+        self._MaxAge = params.get("MaxAge")
+        self._Credentials = params.get("Credentials")
+        self._PreFlightContinue = params.get("PreFlightContinue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateOrModifyCloudNativeAPIGatewayCORSResponse(AbstractModel):
+    r"""CreateOrModifyCloudNativeAPIGatewayCORS返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CreateOrModifyCloudNativeAPIGatewayIPRestrictionRequest(AbstractModel):
     r"""CreateOrModifyCloudNativeAPIGatewayIPRestriction请求参数结构体
 
@@ -9072,6 +9286,100 @@ class DeleteAutoScalerResourceStrategyResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteCloudNativeAPIGatewayCORSRequest(AbstractModel):
+    r"""DeleteCloudNativeAPIGatewayCORS请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: 网关ID
+        :type GatewayId: str
+        :param _SourceType: 跨域插件绑定的资源类型：route|service
+        :type SourceType: str
+        :param _SourceId: 路由或服务的id
+        :type SourceId: str
+        """
+        self._GatewayId = None
+        self._SourceType = None
+        self._SourceId = None
+
+    @property
+    def GatewayId(self):
+        r"""网关ID
+        :rtype: str
+        """
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def SourceType(self):
+        r"""跨域插件绑定的资源类型：route|service
+        :rtype: str
+        """
+        return self._SourceType
+
+    @SourceType.setter
+    def SourceType(self, SourceType):
+        self._SourceType = SourceType
+
+    @property
+    def SourceId(self):
+        r"""路由或服务的id
+        :rtype: str
+        """
+        return self._SourceId
+
+    @SourceId.setter
+    def SourceId(self, SourceId):
+        self._SourceId = SourceId
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._SourceType = params.get("SourceType")
+        self._SourceId = params.get("SourceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteCloudNativeAPIGatewayCORSResponse(AbstractModel):
+    r"""DeleteCloudNativeAPIGatewayCORS返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -11834,6 +12142,119 @@ class DescribeAutoScalerResourceStrategyBindingGroupsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeCloudNativeAPIGatewayCORSRequest(AbstractModel):
+    r"""DescribeCloudNativeAPIGatewayCORS请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: 网关ID
+        :type GatewayId: str
+        :param _SourceType: 跨域插件绑定的资源类型：route|service
+        :type SourceType: str
+        :param _SourceId: 路由或服务的id
+        :type SourceId: str
+        """
+        self._GatewayId = None
+        self._SourceType = None
+        self._SourceId = None
+
+    @property
+    def GatewayId(self):
+        r"""网关ID
+        :rtype: str
+        """
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def SourceType(self):
+        r"""跨域插件绑定的资源类型：route|service
+        :rtype: str
+        """
+        return self._SourceType
+
+    @SourceType.setter
+    def SourceType(self, SourceType):
+        self._SourceType = SourceType
+
+    @property
+    def SourceId(self):
+        r"""路由或服务的id
+        :rtype: str
+        """
+        return self._SourceId
+
+    @SourceId.setter
+    def SourceId(self, SourceId):
+        self._SourceId = SourceId
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._SourceType = params.get("SourceType")
+        self._SourceId = params.get("SourceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCloudNativeAPIGatewayCORSResponse(AbstractModel):
+    r"""DescribeCloudNativeAPIGatewayCORS返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 出参
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.tse.v20201207.models.DescribeKongCORSResult`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""出参
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tse.v20201207.models.DescribeKongCORSResult`
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = DescribeKongCORSResult()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeCloudNativeAPIGatewayCanaryRulesRequest(AbstractModel):
     r"""DescribeCloudNativeAPIGatewayCanaryRules请求参数结构体
 
@@ -13006,6 +13427,8 @@ class DescribeCloudNativeAPIGatewayResult(AbstractModel):
         :type AvailableUpgradeVersions: list of str
         :param _AvailableUpgrade: 是否提示可升级
         :type AvailableUpgrade: bool
+        :param _AvailableRollbackVersion: 可回退的版本
+        :type AvailableRollbackVersion: str
         """
         self._GatewayId = None
         self._Status = None
@@ -13036,6 +13459,7 @@ class DescribeCloudNativeAPIGatewayResult(AbstractModel):
         self._AvailableVersions = None
         self._AvailableUpgradeVersions = None
         self._AvailableUpgrade = None
+        self._AvailableRollbackVersion = None
 
     @property
     def GatewayId(self):
@@ -13360,6 +13784,17 @@ class DescribeCloudNativeAPIGatewayResult(AbstractModel):
     def AvailableUpgrade(self, AvailableUpgrade):
         self._AvailableUpgrade = AvailableUpgrade
 
+    @property
+    def AvailableRollbackVersion(self):
+        r"""可回退的版本
+        :rtype: str
+        """
+        return self._AvailableRollbackVersion
+
+    @AvailableRollbackVersion.setter
+    def AvailableRollbackVersion(self, AvailableRollbackVersion):
+        self._AvailableRollbackVersion = AvailableRollbackVersion
+
 
     def _deserialize(self, params):
         self._GatewayId = params.get("GatewayId")
@@ -13402,6 +13837,7 @@ class DescribeCloudNativeAPIGatewayResult(AbstractModel):
         self._AvailableVersions = params.get("AvailableVersions")
         self._AvailableUpgradeVersions = params.get("AvailableUpgradeVersions")
         self._AvailableUpgrade = params.get("AvailableUpgrade")
+        self._AvailableRollbackVersion = params.get("AvailableRollbackVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17501,6 +17937,177 @@ class DescribeInstanceTagInfosResponse(AbstractModel):
                 obj._deserialize(item)
                 self._TagInfos.append(obj)
         self._RequestId = params.get("RequestId")
+
+
+class DescribeKongCORSResult(AbstractModel):
+    r"""查询跨域配置出参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SourceType: 资源类型
+        :type SourceType: str
+        :param _SourceId: 资源id
+        :type SourceId: str
+        :param _Enabled: 是否启用
+        :type Enabled: bool
+        :param _Origins: 跨域 Origins
+        :type Origins: list of str
+        :param _Headers: 跨域 Headers
+        :type Headers: list of str
+        :param _Methods: 跨域 Methods
+        :type Methods: list of str
+        :param _ExposedHeaders: 跨域 ExposedHeaders
+        :type ExposedHeaders: list of str
+        :param _MaxAge: 跨域OPTIONS请求缓存时间
+        :type MaxAge: int
+        :param _Credentials: 跨域请求是否允许携带身份信息
+        :type Credentials: bool
+        :param _PreFlightContinue: 跨域请求是否透传后端
+        :type PreFlightContinue: bool
+        """
+        self._SourceType = None
+        self._SourceId = None
+        self._Enabled = None
+        self._Origins = None
+        self._Headers = None
+        self._Methods = None
+        self._ExposedHeaders = None
+        self._MaxAge = None
+        self._Credentials = None
+        self._PreFlightContinue = None
+
+    @property
+    def SourceType(self):
+        r"""资源类型
+        :rtype: str
+        """
+        return self._SourceType
+
+    @SourceType.setter
+    def SourceType(self, SourceType):
+        self._SourceType = SourceType
+
+    @property
+    def SourceId(self):
+        r"""资源id
+        :rtype: str
+        """
+        return self._SourceId
+
+    @SourceId.setter
+    def SourceId(self, SourceId):
+        self._SourceId = SourceId
+
+    @property
+    def Enabled(self):
+        r"""是否启用
+        :rtype: bool
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+    @property
+    def Origins(self):
+        r"""跨域 Origins
+        :rtype: list of str
+        """
+        return self._Origins
+
+    @Origins.setter
+    def Origins(self, Origins):
+        self._Origins = Origins
+
+    @property
+    def Headers(self):
+        r"""跨域 Headers
+        :rtype: list of str
+        """
+        return self._Headers
+
+    @Headers.setter
+    def Headers(self, Headers):
+        self._Headers = Headers
+
+    @property
+    def Methods(self):
+        r"""跨域 Methods
+        :rtype: list of str
+        """
+        return self._Methods
+
+    @Methods.setter
+    def Methods(self, Methods):
+        self._Methods = Methods
+
+    @property
+    def ExposedHeaders(self):
+        r"""跨域 ExposedHeaders
+        :rtype: list of str
+        """
+        return self._ExposedHeaders
+
+    @ExposedHeaders.setter
+    def ExposedHeaders(self, ExposedHeaders):
+        self._ExposedHeaders = ExposedHeaders
+
+    @property
+    def MaxAge(self):
+        r"""跨域OPTIONS请求缓存时间
+        :rtype: int
+        """
+        return self._MaxAge
+
+    @MaxAge.setter
+    def MaxAge(self, MaxAge):
+        self._MaxAge = MaxAge
+
+    @property
+    def Credentials(self):
+        r"""跨域请求是否允许携带身份信息
+        :rtype: bool
+        """
+        return self._Credentials
+
+    @Credentials.setter
+    def Credentials(self, Credentials):
+        self._Credentials = Credentials
+
+    @property
+    def PreFlightContinue(self):
+        r"""跨域请求是否透传后端
+        :rtype: bool
+        """
+        return self._PreFlightContinue
+
+    @PreFlightContinue.setter
+    def PreFlightContinue(self, PreFlightContinue):
+        self._PreFlightContinue = PreFlightContinue
+
+
+    def _deserialize(self, params):
+        self._SourceType = params.get("SourceType")
+        self._SourceId = params.get("SourceId")
+        self._Enabled = params.get("Enabled")
+        self._Origins = params.get("Origins")
+        self._Headers = params.get("Headers")
+        self._Methods = params.get("Methods")
+        self._ExposedHeaders = params.get("ExposedHeaders")
+        self._MaxAge = params.get("MaxAge")
+        self._Credentials = params.get("Credentials")
+        self._PreFlightContinue = params.get("PreFlightContinue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DescribeKongIpRestrictionResult(AbstractModel):

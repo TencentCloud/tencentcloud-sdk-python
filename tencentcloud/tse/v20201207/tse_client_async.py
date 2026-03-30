@@ -403,6 +403,24 @@ class TseClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateOrModifyCloudNativeAPIGatewayCORS(
+            self,
+            request: models.CreateOrModifyCloudNativeAPIGatewayCORSRequest,
+            opts: Dict = None,
+    ) -> models.CreateOrModifyCloudNativeAPIGatewayCORSResponse:
+        """
+        创建或编辑云原生网关跨域配置
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateOrModifyCloudNativeAPIGatewayCORS"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateOrModifyCloudNativeAPIGatewayCORSResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateOrModifyCloudNativeAPIGatewayIPRestriction(
             self,
             request: models.CreateOrModifyCloudNativeAPIGatewayIPRestrictionRequest,
@@ -488,6 +506,24 @@ class TseClient(AbstractClient):
         kwargs["action"] = "DeleteCloudNativeAPIGateway"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteCloudNativeAPIGatewayResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteCloudNativeAPIGatewayCORS(
+            self,
+            request: models.DeleteCloudNativeAPIGatewayCORSRequest,
+            opts: Dict = None,
+    ) -> models.DeleteCloudNativeAPIGatewayCORSResponse:
+        """
+        删除云原生网关跨域插件
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteCloudNativeAPIGatewayCORS"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteCloudNativeAPIGatewayCORSResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -938,6 +974,24 @@ class TseClient(AbstractClient):
         kwargs["action"] = "DescribeCloudNativeAPIGateway"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeCloudNativeAPIGatewayResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCloudNativeAPIGatewayCORS(
+            self,
+            request: models.DescribeCloudNativeAPIGatewayCORSRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCloudNativeAPIGatewayCORSResponse:
+        """
+        查询云原生网关跨域配置
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCloudNativeAPIGatewayCORS"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCloudNativeAPIGatewayCORSResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

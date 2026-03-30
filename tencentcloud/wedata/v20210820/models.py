@@ -5344,12 +5344,16 @@ class BaseUser(AbstractModel):
         :param _Email: 邮箱
 注意：此字段可能返回 null，表示取不到有效值。
         :type Email: str
+        :param _UserTag: 0: 普通用户 1: entraId用户
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserTag: int
         """
         self._UserId = None
         self._UserName = None
         self._DisplayName = None
         self._PhoneNum = None
         self._Email = None
+        self._UserTag = None
 
     @property
     def UserId(self):
@@ -5411,6 +5415,18 @@ class BaseUser(AbstractModel):
     def Email(self, Email):
         self._Email = Email
 
+    @property
+    def UserTag(self):
+        r"""0: 普通用户 1: entraId用户
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._UserTag
+
+    @UserTag.setter
+    def UserTag(self, UserTag):
+        self._UserTag = UserTag
+
 
     def _deserialize(self, params):
         self._UserId = params.get("UserId")
@@ -5418,6 +5434,7 @@ class BaseUser(AbstractModel):
         self._DisplayName = params.get("DisplayName")
         self._PhoneNum = params.get("PhoneNum")
         self._Email = params.get("Email")
+        self._UserTag = params.get("UserTag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -86180,6 +86197,9 @@ class ProjectUserRole(AbstractModel):
         :param _Status: 用户状态 0:历史 1:正常 2:已删除
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
+        :param _UserTag: 0: 普通用户 1: entraId用户
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserTag: int
         """
         self._Roles = None
         self._UserName = None
@@ -86195,6 +86215,7 @@ class ProjectUserRole(AbstractModel):
         self._IsProjectOwner = None
         self._CreateTimestamp = None
         self._Status = None
+        self._UserTag = None
 
     @property
     def Roles(self):
@@ -86364,6 +86385,18 @@ class ProjectUserRole(AbstractModel):
     def Status(self, Status):
         self._Status = Status
 
+    @property
+    def UserTag(self):
+        r"""0: 普通用户 1: entraId用户
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._UserTag
+
+    @UserTag.setter
+    def UserTag(self, UserTag):
+        self._UserTag = UserTag
+
 
     def _deserialize(self, params):
         if params.get("Roles") is not None:
@@ -86385,6 +86418,7 @@ class ProjectUserRole(AbstractModel):
         self._IsProjectOwner = params.get("IsProjectOwner")
         self._CreateTimestamp = params.get("CreateTimestamp")
         self._Status = params.get("Status")
+        self._UserTag = params.get("UserTag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

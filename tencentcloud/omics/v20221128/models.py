@@ -6659,15 +6659,15 @@ class VPCOption(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _VPCId: 私有网络ID（VPCId和VPCCIDRBlock必选其一。若使用VPCId，则使用现用私有网络；若使用VPCCIDRBlock，则创建新的私有网络）
+        :param _VPCId: <p>私有网络ID（VPCId和VPCCIDRBlock必选其一。若使用VPCId，则使用现用私有网络；若使用VPCCIDRBlock，则创建新的私有网络）</p>
         :type VPCId: str
-        :param _SubnetId: 子网ID（SubnetId和SubnetZone&SubnetCIDRBlock必选其一。若使用SubnetId，则使用现用子网；若使用SubnetZone&SubnetCIDRBlock，则创建新的子网）
+        :param _SubnetId: <p>子网ID（SubnetId和SubnetZone&amp;SubnetCIDRBlock必选其一。若使用SubnetId，则使用现用子网；若使用SubnetZone&amp;SubnetCIDRBlock，则创建新的子网）</p>
         :type SubnetId: str
-        :param _SubnetZone: 子网可用区。
+        :param _SubnetZone: <p>子网可用区。</p>
         :type SubnetZone: str
-        :param _VPCCIDRBlock: 私有网络CIDR。
+        :param _VPCCIDRBlock: <p>私有网络CIDR。</p>
         :type VPCCIDRBlock: str
-        :param _SubnetCIDRBlock: 子网CIDR。
+        :param _SubnetCIDRBlock: <p>子网CIDR。</p>
         :type SubnetCIDRBlock: str
         """
         self._VPCId = None
@@ -6678,7 +6678,7 @@ class VPCOption(AbstractModel):
 
     @property
     def VPCId(self):
-        r"""私有网络ID（VPCId和VPCCIDRBlock必选其一。若使用VPCId，则使用现用私有网络；若使用VPCCIDRBlock，则创建新的私有网络）
+        r"""<p>私有网络ID（VPCId和VPCCIDRBlock必选其一。若使用VPCId，则使用现用私有网络；若使用VPCCIDRBlock，则创建新的私有网络）</p>
         :rtype: str
         """
         return self._VPCId
@@ -6689,7 +6689,7 @@ class VPCOption(AbstractModel):
 
     @property
     def SubnetId(self):
-        r"""子网ID（SubnetId和SubnetZone&SubnetCIDRBlock必选其一。若使用SubnetId，则使用现用子网；若使用SubnetZone&SubnetCIDRBlock，则创建新的子网）
+        r"""<p>子网ID（SubnetId和SubnetZone&amp;SubnetCIDRBlock必选其一。若使用SubnetId，则使用现用子网；若使用SubnetZone&amp;SubnetCIDRBlock，则创建新的子网）</p>
         :rtype: str
         """
         return self._SubnetId
@@ -6700,7 +6700,7 @@ class VPCOption(AbstractModel):
 
     @property
     def SubnetZone(self):
-        r"""子网可用区。
+        r"""<p>子网可用区。</p>
         :rtype: str
         """
         return self._SubnetZone
@@ -6711,7 +6711,7 @@ class VPCOption(AbstractModel):
 
     @property
     def VPCCIDRBlock(self):
-        r"""私有网络CIDR。
+        r"""<p>私有网络CIDR。</p>
         :rtype: str
         """
         return self._VPCCIDRBlock
@@ -6722,7 +6722,7 @@ class VPCOption(AbstractModel):
 
     @property
     def SubnetCIDRBlock(self):
-        r"""子网CIDR。
+        r"""<p>子网CIDR。</p>
         :rtype: str
         """
         return self._SubnetCIDRBlock

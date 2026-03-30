@@ -645,36 +645,30 @@ class AdaptiveDynamicStreamingInfoItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: 转自适应码流规格。
+        :param _Definition: <p>转自适应码流规格。</p>
         :type Definition: int
-        :param _Package: 打包格式，取值范围：
-<li>HLS；</li>
-<li>DASH。</li>
+        :param _Package: <p>打包格式，取值范围：</p><li>HLS；</li><li>DASH。</li>
         :type Package: str
-        :param _DrmType: 加密类型。
+        :param _DrmType: <p>加密类型。</p>
         :type DrmType: str
-        :param _Url: 播放地址。
+        :param _Url: <p>播放地址。</p>
         :type Url: str
-        :param _Size: 媒体文件大小，单位：字节。
-<li>当媒体文件为 HLS 时，大小是 m3u8 和 ts 文件大小的总和；</li>
-<li>当媒体文件为 DASH 时，大小是 mpd 和分片文件大小的总和；</li>
-<li><font color=red>注意</font>：在 2022-01-10T16:00:00Z 前处理生成的自适应码流文件此字段为0。</li>
+        :param _Size: <p>媒体文件大小，单位：字节。</p><li>当媒体文件为 HLS 时，大小是 m3u8 和 ts 文件大小的总和；</li><li>当媒体文件为 DASH 时，大小是 mpd 和分片文件大小的总和；</li><li><font color="red">注意</font>：在 2022-01-10T16:00:00Z 前处理生成的自适应码流文件此字段为0。</li>
         :type Size: int
-        :param _DigitalWatermarkType: 数字水印类型。可选值：
-<li>Trace 表示经过溯源水印处理；</li>
-<li>CopyRight 表示经过版权水印处理；</li>
-<li>None 表示没有经过数字水印处理。</li>
+        :param _DigitalWatermarkType: <p>数字水印类型。可选值：</p><li>Trace 表示经过溯源水印处理；</li><li>CopyRight 表示经过版权水印处理；</li><li>None 表示没有经过数字水印处理。</li>
         :type DigitalWatermarkType: str
-        :param _SubStreamSet: 子流信息列表。
+        :param _SubStreamSet: <p>子流信息列表。</p>
         :type SubStreamSet: list of MediaSubStreamInfoItem
-        :param _CopyRightWatermarkText: 版权信息。
+        :param _CopyRightWatermarkText: <p>版权信息。</p>
         :type CopyRightWatermarkText: str
-        :param _BlindWatermarkDefinition: 数字水印模板id。
+        :param _BlindWatermarkDefinition: <p>数字水印模板id。</p>
         :type BlindWatermarkDefinition: int
-        :param _SubtitleSet: 字幕信息列表。
+        :param _SubtitleSet: <p>字幕信息列表。</p>
         :type SubtitleSet: list of MediaSubtitleItem
-        :param _DefaultSubtitleId: 默认字幕的唯一标识。
+        :param _DefaultSubtitleId: <p>默认字幕的唯一标识。</p>
         :type DefaultSubtitleId: str
+        :param _DrmEncryptType: <p>DRM加密方法。</p>
+        :type DrmEncryptType: str
         """
         self._Definition = None
         self._Package = None
@@ -687,10 +681,11 @@ class AdaptiveDynamicStreamingInfoItem(AbstractModel):
         self._BlindWatermarkDefinition = None
         self._SubtitleSet = None
         self._DefaultSubtitleId = None
+        self._DrmEncryptType = None
 
     @property
     def Definition(self):
-        r"""转自适应码流规格。
+        r"""<p>转自适应码流规格。</p>
         :rtype: int
         """
         return self._Definition
@@ -701,9 +696,7 @@ class AdaptiveDynamicStreamingInfoItem(AbstractModel):
 
     @property
     def Package(self):
-        r"""打包格式，取值范围：
-<li>HLS；</li>
-<li>DASH。</li>
+        r"""<p>打包格式，取值范围：</p><li>HLS；</li><li>DASH。</li>
         :rtype: str
         """
         return self._Package
@@ -714,7 +707,7 @@ class AdaptiveDynamicStreamingInfoItem(AbstractModel):
 
     @property
     def DrmType(self):
-        r"""加密类型。
+        r"""<p>加密类型。</p>
         :rtype: str
         """
         return self._DrmType
@@ -725,7 +718,7 @@ class AdaptiveDynamicStreamingInfoItem(AbstractModel):
 
     @property
     def Url(self):
-        r"""播放地址。
+        r"""<p>播放地址。</p>
         :rtype: str
         """
         return self._Url
@@ -736,10 +729,7 @@ class AdaptiveDynamicStreamingInfoItem(AbstractModel):
 
     @property
     def Size(self):
-        r"""媒体文件大小，单位：字节。
-<li>当媒体文件为 HLS 时，大小是 m3u8 和 ts 文件大小的总和；</li>
-<li>当媒体文件为 DASH 时，大小是 mpd 和分片文件大小的总和；</li>
-<li><font color=red>注意</font>：在 2022-01-10T16:00:00Z 前处理生成的自适应码流文件此字段为0。</li>
+        r"""<p>媒体文件大小，单位：字节。</p><li>当媒体文件为 HLS 时，大小是 m3u8 和 ts 文件大小的总和；</li><li>当媒体文件为 DASH 时，大小是 mpd 和分片文件大小的总和；</li><li><font color="red">注意</font>：在 2022-01-10T16:00:00Z 前处理生成的自适应码流文件此字段为0。</li>
         :rtype: int
         """
         return self._Size
@@ -750,10 +740,7 @@ class AdaptiveDynamicStreamingInfoItem(AbstractModel):
 
     @property
     def DigitalWatermarkType(self):
-        r"""数字水印类型。可选值：
-<li>Trace 表示经过溯源水印处理；</li>
-<li>CopyRight 表示经过版权水印处理；</li>
-<li>None 表示没有经过数字水印处理。</li>
+        r"""<p>数字水印类型。可选值：</p><li>Trace 表示经过溯源水印处理；</li><li>CopyRight 表示经过版权水印处理；</li><li>None 表示没有经过数字水印处理。</li>
         :rtype: str
         """
         return self._DigitalWatermarkType
@@ -764,7 +751,7 @@ class AdaptiveDynamicStreamingInfoItem(AbstractModel):
 
     @property
     def SubStreamSet(self):
-        r"""子流信息列表。
+        r"""<p>子流信息列表。</p>
         :rtype: list of MediaSubStreamInfoItem
         """
         return self._SubStreamSet
@@ -775,7 +762,7 @@ class AdaptiveDynamicStreamingInfoItem(AbstractModel):
 
     @property
     def CopyRightWatermarkText(self):
-        r"""版权信息。
+        r"""<p>版权信息。</p>
         :rtype: str
         """
         return self._CopyRightWatermarkText
@@ -786,7 +773,7 @@ class AdaptiveDynamicStreamingInfoItem(AbstractModel):
 
     @property
     def BlindWatermarkDefinition(self):
-        r"""数字水印模板id。
+        r"""<p>数字水印模板id。</p>
         :rtype: int
         """
         return self._BlindWatermarkDefinition
@@ -797,7 +784,7 @@ class AdaptiveDynamicStreamingInfoItem(AbstractModel):
 
     @property
     def SubtitleSet(self):
-        r"""字幕信息列表。
+        r"""<p>字幕信息列表。</p>
         :rtype: list of MediaSubtitleItem
         """
         return self._SubtitleSet
@@ -808,7 +795,7 @@ class AdaptiveDynamicStreamingInfoItem(AbstractModel):
 
     @property
     def DefaultSubtitleId(self):
-        r"""默认字幕的唯一标识。
+        r"""<p>默认字幕的唯一标识。</p>
         :rtype: str
         """
         return self._DefaultSubtitleId
@@ -816,6 +803,17 @@ class AdaptiveDynamicStreamingInfoItem(AbstractModel):
     @DefaultSubtitleId.setter
     def DefaultSubtitleId(self, DefaultSubtitleId):
         self._DefaultSubtitleId = DefaultSubtitleId
+
+    @property
+    def DrmEncryptType(self):
+        r"""<p>DRM加密方法。</p>
+        :rtype: str
+        """
+        return self._DrmEncryptType
+
+    @DrmEncryptType.setter
+    def DrmEncryptType(self, DrmEncryptType):
+        self._DrmEncryptType = DrmEncryptType
 
 
     def _deserialize(self, params):
@@ -840,6 +838,7 @@ class AdaptiveDynamicStreamingInfoItem(AbstractModel):
                 obj._deserialize(item)
                 self._SubtitleSet.append(obj)
         self._DefaultSubtitleId = params.get("DefaultSubtitleId")
+        self._DrmEncryptType = params.get("DrmEncryptType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -979,45 +978,33 @@ class AdaptiveDynamicStreamingTemplate(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: 转自适应码流模板唯一标识。
+        :param _Definition: <p>转自适应码流模板唯一标识。</p>
         :type Definition: int
-        :param _Type: 模板类型，取值范围：
-<li>Preset：系统预置模板；</li>
-<li>Custom：用户自定义模板。</li>
+        :param _Type: <p>模板类型，取值范围：</p><li>Preset：系统预置模板；</li><li>Custom：用户自定义模板。</li>
         :type Type: str
-        :param _Name: 转自适应码流模板名称。
+        :param _Name: <p>转自适应码流模板名称。</p>
         :type Name: str
-        :param _Comment: 转自适应码流模板描述信息。
+        :param _Comment: <p>转自适应码流模板描述信息。</p>
         :type Comment: str
-        :param _Format: 自适应转码格式，取值范围：
-<li>HLS。</li>
+        :param _Format: <p>自适应转码格式，取值范围：</p><li>HLS。</li>
         :type Format: str
-        :param _DrmType: DRM 类型，取值范围：
-<li>SimpleAES</li>
-<li>Widevine</li>
-<li>FairPlay</li>
-如果取值为空字符串，代表不对视频做 DRM 保护。
+        :param _DrmType: <p>DRM 类型，取值范围：</p><li>SimpleAES</li><li>Widevine</li><li>FairPlay</li><li>Widevine+FairPlay</li>如果取值为空字符串，代表不对视频做 DRM 保护。
         :type DrmType: str
-        :param _DrmKeyProvider: DRM 的密钥提供商，取值范围：
-<li>SDMC：华曦达；</li>
-<li>VOD：云点播。</li>
-默认值为 VOD 。
+        :param _DrmKeyProvider: <p>DRM 的密钥提供商，取值范围：</p><li>SDMC：华曦达；</li><li>VOD：云点播。</li>默认值为 VOD 。<p>华曦达服务后续逐步下线，请使用VOD DRM加密服务。</p>
         :type DrmKeyProvider: str
-        :param _StreamInfos: 自适应转码输入流参数信息，最多输入10路流。
+        :param _DrmEncryptType: <p>DRM的加密类型，取值范围：{&quot;cbcs&quot;, &quot;cenc&quot;}</p>
+        :type DrmEncryptType: str
+        :param _StreamInfos: <p>自适应转码输入流参数信息，最多输入10路流。</p>
         :type StreamInfos: list of AdaptiveStreamTemplate
-        :param _DisableHigherVideoBitrate: 是否禁止视频低码率转高码率，取值范围：
-<li>0：否，</li>
-<li>1：是。</li>
+        :param _DisableHigherVideoBitrate: <p>是否禁止视频低码率转高码率，取值范围：</p><li>0：否，</li><li>1：是。</li>
         :type DisableHigherVideoBitrate: int
-        :param _DisableHigherVideoResolution: 是否禁止视频分辨率转高分辨率，取值范围：
-<li>0：否，</li>
-<li>1：是。</li>
+        :param _DisableHigherVideoResolution: <p>是否禁止视频分辨率转高分辨率，取值范围：</p><li>0：否，</li><li>1：是。</li>
         :type DisableHigherVideoResolution: int
-        :param _CreateTime: 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :param _CreateTime: <p>模板创建时间，使用 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式</a>。</p>
         :type CreateTime: str
-        :param _UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :param _UpdateTime: <p>模板最后修改时间，使用 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式</a>。</p>
         :type UpdateTime: str
-        :param _SegmentType: 切片类型，仅当 Format 为 HLS 时有效。
+        :param _SegmentType: <p>切片类型，仅当 Format 为 HLS 时有效。</p>
         :type SegmentType: str
         """
         self._Definition = None
@@ -1027,6 +1014,7 @@ class AdaptiveDynamicStreamingTemplate(AbstractModel):
         self._Format = None
         self._DrmType = None
         self._DrmKeyProvider = None
+        self._DrmEncryptType = None
         self._StreamInfos = None
         self._DisableHigherVideoBitrate = None
         self._DisableHigherVideoResolution = None
@@ -1036,7 +1024,7 @@ class AdaptiveDynamicStreamingTemplate(AbstractModel):
 
     @property
     def Definition(self):
-        r"""转自适应码流模板唯一标识。
+        r"""<p>转自适应码流模板唯一标识。</p>
         :rtype: int
         """
         return self._Definition
@@ -1047,9 +1035,7 @@ class AdaptiveDynamicStreamingTemplate(AbstractModel):
 
     @property
     def Type(self):
-        r"""模板类型，取值范围：
-<li>Preset：系统预置模板；</li>
-<li>Custom：用户自定义模板。</li>
+        r"""<p>模板类型，取值范围：</p><li>Preset：系统预置模板；</li><li>Custom：用户自定义模板。</li>
         :rtype: str
         """
         return self._Type
@@ -1060,7 +1046,7 @@ class AdaptiveDynamicStreamingTemplate(AbstractModel):
 
     @property
     def Name(self):
-        r"""转自适应码流模板名称。
+        r"""<p>转自适应码流模板名称。</p>
         :rtype: str
         """
         return self._Name
@@ -1071,7 +1057,7 @@ class AdaptiveDynamicStreamingTemplate(AbstractModel):
 
     @property
     def Comment(self):
-        r"""转自适应码流模板描述信息。
+        r"""<p>转自适应码流模板描述信息。</p>
         :rtype: str
         """
         return self._Comment
@@ -1082,8 +1068,7 @@ class AdaptiveDynamicStreamingTemplate(AbstractModel):
 
     @property
     def Format(self):
-        r"""自适应转码格式，取值范围：
-<li>HLS。</li>
+        r"""<p>自适应转码格式，取值范围：</p><li>HLS。</li>
         :rtype: str
         """
         return self._Format
@@ -1094,11 +1079,7 @@ class AdaptiveDynamicStreamingTemplate(AbstractModel):
 
     @property
     def DrmType(self):
-        r"""DRM 类型，取值范围：
-<li>SimpleAES</li>
-<li>Widevine</li>
-<li>FairPlay</li>
-如果取值为空字符串，代表不对视频做 DRM 保护。
+        r"""<p>DRM 类型，取值范围：</p><li>SimpleAES</li><li>Widevine</li><li>FairPlay</li><li>Widevine+FairPlay</li>如果取值为空字符串，代表不对视频做 DRM 保护。
         :rtype: str
         """
         return self._DrmType
@@ -1109,10 +1090,7 @@ class AdaptiveDynamicStreamingTemplate(AbstractModel):
 
     @property
     def DrmKeyProvider(self):
-        r"""DRM 的密钥提供商，取值范围：
-<li>SDMC：华曦达；</li>
-<li>VOD：云点播。</li>
-默认值为 VOD 。
+        r"""<p>DRM 的密钥提供商，取值范围：</p><li>SDMC：华曦达；</li><li>VOD：云点播。</li>默认值为 VOD 。<p>华曦达服务后续逐步下线，请使用VOD DRM加密服务。</p>
         :rtype: str
         """
         return self._DrmKeyProvider
@@ -1122,8 +1100,19 @@ class AdaptiveDynamicStreamingTemplate(AbstractModel):
         self._DrmKeyProvider = DrmKeyProvider
 
     @property
+    def DrmEncryptType(self):
+        r"""<p>DRM的加密类型，取值范围：{&quot;cbcs&quot;, &quot;cenc&quot;}</p>
+        :rtype: str
+        """
+        return self._DrmEncryptType
+
+    @DrmEncryptType.setter
+    def DrmEncryptType(self, DrmEncryptType):
+        self._DrmEncryptType = DrmEncryptType
+
+    @property
     def StreamInfos(self):
-        r"""自适应转码输入流参数信息，最多输入10路流。
+        r"""<p>自适应转码输入流参数信息，最多输入10路流。</p>
         :rtype: list of AdaptiveStreamTemplate
         """
         return self._StreamInfos
@@ -1134,9 +1123,7 @@ class AdaptiveDynamicStreamingTemplate(AbstractModel):
 
     @property
     def DisableHigherVideoBitrate(self):
-        r"""是否禁止视频低码率转高码率，取值范围：
-<li>0：否，</li>
-<li>1：是。</li>
+        r"""<p>是否禁止视频低码率转高码率，取值范围：</p><li>0：否，</li><li>1：是。</li>
         :rtype: int
         """
         return self._DisableHigherVideoBitrate
@@ -1147,9 +1134,7 @@ class AdaptiveDynamicStreamingTemplate(AbstractModel):
 
     @property
     def DisableHigherVideoResolution(self):
-        r"""是否禁止视频分辨率转高分辨率，取值范围：
-<li>0：否，</li>
-<li>1：是。</li>
+        r"""<p>是否禁止视频分辨率转高分辨率，取值范围：</p><li>0：否，</li><li>1：是。</li>
         :rtype: int
         """
         return self._DisableHigherVideoResolution
@@ -1160,7 +1145,7 @@ class AdaptiveDynamicStreamingTemplate(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        r"""<p>模板创建时间，使用 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式</a>。</p>
         :rtype: str
         """
         return self._CreateTime
@@ -1171,7 +1156,7 @@ class AdaptiveDynamicStreamingTemplate(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        r"""<p>模板最后修改时间，使用 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式</a>。</p>
         :rtype: str
         """
         return self._UpdateTime
@@ -1182,7 +1167,7 @@ class AdaptiveDynamicStreamingTemplate(AbstractModel):
 
     @property
     def SegmentType(self):
-        r"""切片类型，仅当 Format 为 HLS 时有效。
+        r"""<p>切片类型，仅当 Format 为 HLS 时有效。</p>
         :rtype: str
         """
         return self._SegmentType
@@ -1200,6 +1185,7 @@ class AdaptiveDynamicStreamingTemplate(AbstractModel):
         self._Format = params.get("Format")
         self._DrmType = params.get("DrmType")
         self._DrmKeyProvider = params.get("DrmKeyProvider")
+        self._DrmEncryptType = params.get("DrmEncryptType")
         if params.get("StreamInfos") is not None:
             self._StreamInfos = []
             for item in params.get("StreamInfos"):
@@ -19521,44 +19507,27 @@ class CreateAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Format: 自适应转码格式，取值范围：
-<li>HLS；</li>
-<li>MPEG-DASH。</li>
+        :param _Format: <p>自适应转码格式，取值范围：</p><li>HLS；</li><li>MPEG-DASH。</li>
         :type Format: str
-        :param _StreamInfos: 自适应转码输出子流参数信息，最多输出10路子流。
-注意：各个子流的帧率必须保持一致；如果不一致，采用第一个子流的帧率作为输出帧率。
+        :param _StreamInfos: <p>自适应转码输出子流参数信息，最多输出10路子流。<br>注意：各个子流的帧率必须保持一致；如果不一致，采用第一个子流的帧率作为输出帧率。</p>
         :type StreamInfos: list of AdaptiveStreamTemplate
-        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        :param _SubAppId: <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
         :type SubAppId: int
-        :param _Name: 模板名称，长度限制：64 个字符。
+        :param _Name: <p>模板名称，长度限制：64 个字符。</p>
         :type Name: str
-        :param _DrmType: DRM 方案类型，取值范围：
-<li>SimpleAES</li>
-<li>Widevine</li>
-<li>FairPlay</li>
-默认值为空字符串，如果取值为空字符串，代表不对视频做 DRM 保护。
+        :param _DrmType: <p>DRM 方案类型，取值范围：</p><li>SimpleAES</li><li>Widevine</li><li>FairPlay</li><li>Widevine+FairPlay</li>默认值为空字符串，如果取值为空字符串，代表不对视频做 DRM 保护。
         :type DrmType: str
-        :param _DrmKeyProvider: DRM 的密钥提供商，取值范围：
-<li>SDMC：华曦达；</li>
-<li>VOD：云点播。</li>
-默认为 VOD 。
+        :param _DrmKeyProvider: <p>DRM 的密钥提供商，取值范围：</p><li>SDMC：华曦达；</li><li>VOD：云点播。</li>默认为 VOD 。<p>华曦达服务后续逐步下线，请使用VOD DRM加密服务。</p>
         :type DrmKeyProvider: str
-        :param _DisableHigherVideoBitrate: 是否禁止视频低码率转高码率，取值范围：
-<li>0：否，</li>
-<li>1：是。</li>
-默认为否。
+        :param _DrmEncryptType: <p>加密方式，可选值：<br>cbcs：Widevine，FairPlay，WideVine+FairPlay支持；<br>cenc：Widevine支持；   </p><p>若不填<br>FairPlay 默认cbcs;<br>Widevine 默认cenc;<br>WideVine+FairPlay默认cbcs;</p>
+        :type DrmEncryptType: str
+        :param _DisableHigherVideoBitrate: <p>是否禁止视频低码率转高码率，取值范围：</p><li>0：否，</li><li>1：是。</li>默认为否。
         :type DisableHigherVideoBitrate: int
-        :param _DisableHigherVideoResolution: 是否禁止视频分辨率转高分辨率，取值范围：
-<li>0：否，</li>
-<li>1：是。</li>
-默认为否。
+        :param _DisableHigherVideoResolution: <p>是否禁止视频分辨率转高分辨率，取值范围：</p><li>0：否，</li><li>1：是。</li>默认为否。
         :type DisableHigherVideoResolution: int
-        :param _Comment: 模板描述信息，长度限制：256 个字符。
+        :param _Comment: <p>模板描述信息，长度限制：256 个字符。</p>
         :type Comment: str
-        :param _SegmentType: 切片类型，当 Format 为 HLS 时有效，可选值：
-<li>ts：ts 切片；</li>
-<li>fmp4：fmp4 切片。</li>
-默认值：ts。
+        :param _SegmentType: <p>切片类型，当 Format 为 HLS 时有效，可选值：</p><li>ts：ts 切片；</li><li>fmp4：fmp4 切片。</li>默认值：ts。
         :type SegmentType: str
         """
         self._Format = None
@@ -19567,6 +19536,7 @@ class CreateAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
         self._Name = None
         self._DrmType = None
         self._DrmKeyProvider = None
+        self._DrmEncryptType = None
         self._DisableHigherVideoBitrate = None
         self._DisableHigherVideoResolution = None
         self._Comment = None
@@ -19574,9 +19544,7 @@ class CreateAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
 
     @property
     def Format(self):
-        r"""自适应转码格式，取值范围：
-<li>HLS；</li>
-<li>MPEG-DASH。</li>
+        r"""<p>自适应转码格式，取值范围：</p><li>HLS；</li><li>MPEG-DASH。</li>
         :rtype: str
         """
         return self._Format
@@ -19587,8 +19555,7 @@ class CreateAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
 
     @property
     def StreamInfos(self):
-        r"""自适应转码输出子流参数信息，最多输出10路子流。
-注意：各个子流的帧率必须保持一致；如果不一致，采用第一个子流的帧率作为输出帧率。
+        r"""<p>自适应转码输出子流参数信息，最多输出10路子流。<br>注意：各个子流的帧率必须保持一致；如果不一致，采用第一个子流的帧率作为输出帧率。</p>
         :rtype: list of AdaptiveStreamTemplate
         """
         return self._StreamInfos
@@ -19599,7 +19566,7 @@ class CreateAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
 
     @property
     def SubAppId(self):
-        r"""<b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        r"""<p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
         :rtype: int
         """
         return self._SubAppId
@@ -19610,7 +19577,7 @@ class CreateAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""模板名称，长度限制：64 个字符。
+        r"""<p>模板名称，长度限制：64 个字符。</p>
         :rtype: str
         """
         return self._Name
@@ -19621,11 +19588,7 @@ class CreateAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
 
     @property
     def DrmType(self):
-        r"""DRM 方案类型，取值范围：
-<li>SimpleAES</li>
-<li>Widevine</li>
-<li>FairPlay</li>
-默认值为空字符串，如果取值为空字符串，代表不对视频做 DRM 保护。
+        r"""<p>DRM 方案类型，取值范围：</p><li>SimpleAES</li><li>Widevine</li><li>FairPlay</li><li>Widevine+FairPlay</li>默认值为空字符串，如果取值为空字符串，代表不对视频做 DRM 保护。
         :rtype: str
         """
         return self._DrmType
@@ -19636,10 +19599,7 @@ class CreateAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
 
     @property
     def DrmKeyProvider(self):
-        r"""DRM 的密钥提供商，取值范围：
-<li>SDMC：华曦达；</li>
-<li>VOD：云点播。</li>
-默认为 VOD 。
+        r"""<p>DRM 的密钥提供商，取值范围：</p><li>SDMC：华曦达；</li><li>VOD：云点播。</li>默认为 VOD 。<p>华曦达服务后续逐步下线，请使用VOD DRM加密服务。</p>
         :rtype: str
         """
         return self._DrmKeyProvider
@@ -19649,11 +19609,19 @@ class CreateAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
         self._DrmKeyProvider = DrmKeyProvider
 
     @property
+    def DrmEncryptType(self):
+        r"""<p>加密方式，可选值：<br>cbcs：Widevine，FairPlay，WideVine+FairPlay支持；<br>cenc：Widevine支持；   </p><p>若不填<br>FairPlay 默认cbcs;<br>Widevine 默认cenc;<br>WideVine+FairPlay默认cbcs;</p>
+        :rtype: str
+        """
+        return self._DrmEncryptType
+
+    @DrmEncryptType.setter
+    def DrmEncryptType(self, DrmEncryptType):
+        self._DrmEncryptType = DrmEncryptType
+
+    @property
     def DisableHigherVideoBitrate(self):
-        r"""是否禁止视频低码率转高码率，取值范围：
-<li>0：否，</li>
-<li>1：是。</li>
-默认为否。
+        r"""<p>是否禁止视频低码率转高码率，取值范围：</p><li>0：否，</li><li>1：是。</li>默认为否。
         :rtype: int
         """
         return self._DisableHigherVideoBitrate
@@ -19664,10 +19632,7 @@ class CreateAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
 
     @property
     def DisableHigherVideoResolution(self):
-        r"""是否禁止视频分辨率转高分辨率，取值范围：
-<li>0：否，</li>
-<li>1：是。</li>
-默认为否。
+        r"""<p>是否禁止视频分辨率转高分辨率，取值范围：</p><li>0：否，</li><li>1：是。</li>默认为否。
         :rtype: int
         """
         return self._DisableHigherVideoResolution
@@ -19678,7 +19643,7 @@ class CreateAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
 
     @property
     def Comment(self):
-        r"""模板描述信息，长度限制：256 个字符。
+        r"""<p>模板描述信息，长度限制：256 个字符。</p>
         :rtype: str
         """
         return self._Comment
@@ -19689,10 +19654,7 @@ class CreateAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
 
     @property
     def SegmentType(self):
-        r"""切片类型，当 Format 为 HLS 时有效，可选值：
-<li>ts：ts 切片；</li>
-<li>fmp4：fmp4 切片。</li>
-默认值：ts。
+        r"""<p>切片类型，当 Format 为 HLS 时有效，可选值：</p><li>ts：ts 切片；</li><li>fmp4：fmp4 切片。</li>默认值：ts。
         :rtype: str
         """
         return self._SegmentType
@@ -19714,6 +19676,7 @@ class CreateAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
         self._Name = params.get("Name")
         self._DrmType = params.get("DrmType")
         self._DrmKeyProvider = params.get("DrmKeyProvider")
+        self._DrmEncryptType = params.get("DrmEncryptType")
         self._DisableHigherVideoBitrate = params.get("DisableHigherVideoBitrate")
         self._DisableHigherVideoResolution = params.get("DisableHigherVideoResolution")
         self._Comment = params.get("Comment")
@@ -19735,7 +19698,7 @@ class CreateAdaptiveDynamicStreamingTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: 自适应转码模板唯一标识。
+        :param _Definition: <p>自适应转码模板唯一标识。</p>
         :type Definition: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -19745,7 +19708,7 @@ class CreateAdaptiveDynamicStreamingTemplateResponse(AbstractModel):
 
     @property
     def Definition(self):
-        r"""自适应转码模板唯一标识。
+        r"""<p>自适应转码模板唯一标识。</p>
         :rtype: int
         """
         return self._Definition
@@ -34144,14 +34107,14 @@ class DescribeDrmKeyProviderInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        :param _SubAppId: <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
         :type SubAppId: int
         """
         self._SubAppId = None
 
     @property
     def SubAppId(self):
-        r"""<b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        r"""<p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
         :rtype: int
         """
         return self._SubAppId
@@ -34180,7 +34143,7 @@ class DescribeDrmKeyProviderInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SDMCInfo: 华曦达（SDMC）相关的 DRM 密钥提供商信息。
+        :param _SDMCInfo: <p>华曦达（SDMC）相关的 DRM 密钥提供商信息。</p><p>华曦达服务后续逐步下线，请使用VOD DRM加密服务。</p>
         :type SDMCInfo: :class:`tencentcloud.vod.v20180717.models.SDMCDrmKeyProviderInfo`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -34190,7 +34153,7 @@ class DescribeDrmKeyProviderInfoResponse(AbstractModel):
 
     @property
     def SDMCInfo(self):
-        r"""华曦达（SDMC）相关的 DRM 密钥提供商信息。
+        r"""<p>华曦达（SDMC）相关的 DRM 密钥提供商信息。</p><p>华曦达服务后续逐步下线，请使用VOD DRM加密服务。</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.SDMCDrmKeyProviderInfo`
         """
         return self._SDMCInfo
@@ -81533,9 +81496,9 @@ class SetDrmKeyProviderInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SDMCInfo: 华曦达（SDMC）相关的 DRM 密钥提供商信息。
+        :param _SDMCInfo: <p>华曦达（SDMC）相关的 DRM 密钥提供商信息。</p><p>华曦达服务后续逐步下线，请使用VOD DRM加密服务。</p>
         :type SDMCInfo: :class:`tencentcloud.vod.v20180717.models.SDMCDrmKeyProviderInfo`
-        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        :param _SubAppId: <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
         :type SubAppId: int
         """
         self._SDMCInfo = None
@@ -81543,7 +81506,7 @@ class SetDrmKeyProviderInfoRequest(AbstractModel):
 
     @property
     def SDMCInfo(self):
-        r"""华曦达（SDMC）相关的 DRM 密钥提供商信息。
+        r"""<p>华曦达（SDMC）相关的 DRM 密钥提供商信息。</p><p>华曦达服务后续逐步下线，请使用VOD DRM加密服务。</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.SDMCDrmKeyProviderInfo`
         """
         return self._SDMCInfo
@@ -81554,7 +81517,7 @@ class SetDrmKeyProviderInfoRequest(AbstractModel):
 
     @property
     def SubAppId(self):
-        r"""<b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        r"""<p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
         :rtype: int
         """
         return self._SubAppId

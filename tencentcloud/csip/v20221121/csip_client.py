@@ -900,6 +900,52 @@ class CsipClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeKeySandboxCredential(self, request):
+        r"""查询凭证详情，返回凭证元数据和打码后的凭据数据。access类型返回Access数组（Key原文、Value打码），sts类型返回STS对象（System原文、SecretID和SecretKey打码）
+
+        :param request: Request instance for DescribeKeySandboxCredential.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeKeySandboxCredentialRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeKeySandboxCredentialResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeKeySandboxCredential", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeKeySandboxCredentialResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeKeySandboxCredentialList(self, request):
+        r"""查询凭证列表
+
+        :param request: Request instance for DescribeKeySandboxCredentialList.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeKeySandboxCredentialListRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeKeySandboxCredentialListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeKeySandboxCredentialList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeKeySandboxCredentialListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeListenerList(self, request):
         r"""查询clb监听器列表
 

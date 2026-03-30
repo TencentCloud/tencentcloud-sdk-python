@@ -11457,6 +11457,71 @@ class DescribeSubAccountLinuxUserInfosRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _Offset: 分页偏移量（0 表示全量）
+        :type Offset: int
+        :param _Limit: 每页数量（0 表示全量）
+        :type Limit: int
+        :param _Filters: 过滤条件
+        :type Filters: list of Filter
+        """
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+
+    @property
+    def Offset(self):
+        r"""分页偏移量（0 表示全量）
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""每页数量（0 表示全量）
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        r"""过滤条件
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DescribeSubAccountLinuxUserInfosResponse(AbstractModel):
     r"""DescribeSubAccountLinuxUserInfos返回参数结构体
@@ -11467,10 +11532,13 @@ class DescribeSubAccountLinuxUserInfosResponse(AbstractModel):
         r"""
         :param _SubAccountList: 子账号信息列表
         :type SubAccountList: list of SubAccountInfo
+        :param _TotalCount: 总数（配合分页使用）
+        :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._SubAccountList = None
+        self._TotalCount = None
         self._RequestId = None
 
     @property
@@ -11483,6 +11551,17 @@ class DescribeSubAccountLinuxUserInfosResponse(AbstractModel):
     @SubAccountList.setter
     def SubAccountList(self, SubAccountList):
         self._SubAccountList = SubAccountList
+
+    @property
+    def TotalCount(self):
+        r"""总数（配合分页使用）
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
 
     @property
     def RequestId(self):
@@ -11503,6 +11582,7 @@ class DescribeSubAccountLinuxUserInfosResponse(AbstractModel):
                 obj = SubAccountInfo()
                 obj._deserialize(item)
                 self._SubAccountList.append(obj)
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -26293,6 +26373,10 @@ class SubAccountInfo(AbstractModel):
         :type LinuxGid: int
         :param _LinuxUserName: 子账号在Linux下的用户名
         :type LinuxUserName: str
+        :param _EnableRootLogin: 是否开启 root 登录
+        :type EnableRootLogin: bool
+        :param _UpdateTime: 更新时间
+        :type UpdateTime: str
         """
         self._Uin = None
         self._SubUin = None
@@ -26300,6 +26384,8 @@ class SubAccountInfo(AbstractModel):
         self._LinuxUid = None
         self._LinuxGid = None
         self._LinuxUserName = None
+        self._EnableRootLogin = None
+        self._UpdateTime = None
 
     @property
     def Uin(self):
@@ -26367,6 +26453,28 @@ class SubAccountInfo(AbstractModel):
     def LinuxUserName(self, LinuxUserName):
         self._LinuxUserName = LinuxUserName
 
+    @property
+    def EnableRootLogin(self):
+        r"""是否开启 root 登录
+        :rtype: bool
+        """
+        return self._EnableRootLogin
+
+    @EnableRootLogin.setter
+    def EnableRootLogin(self, EnableRootLogin):
+        self._EnableRootLogin = EnableRootLogin
+
+    @property
+    def UpdateTime(self):
+        r"""更新时间
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
 
     def _deserialize(self, params):
         self._Uin = params.get("Uin")
@@ -26375,6 +26483,8 @@ class SubAccountInfo(AbstractModel):
         self._LinuxUid = params.get("LinuxUid")
         self._LinuxGid = params.get("LinuxGid")
         self._LinuxUserName = params.get("LinuxUserName")
+        self._EnableRootLogin = params.get("EnableRootLogin")
+        self._UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

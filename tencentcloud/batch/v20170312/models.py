@@ -8375,11 +8375,14 @@ class Placement(AbstractModel):
         :type HostIds: list of str
         :param _HostId: 实例所属的专用宿主机ID，仅用于出参。
         :type HostId: str
+        :param _RackId: 实例所属的实例资源池机架ID，仅用于出参。
+        :type RackId: str
         """
         self._Zone = None
         self._ProjectId = None
         self._HostIds = None
         self._HostId = None
+        self._RackId = None
 
     @property
     def Zone(self):
@@ -8425,12 +8428,24 @@ class Placement(AbstractModel):
     def HostId(self, HostId):
         self._HostId = HostId
 
+    @property
+    def RackId(self):
+        r"""实例所属的实例资源池机架ID，仅用于出参。
+        :rtype: str
+        """
+        return self._RackId
+
+    @RackId.setter
+    def RackId(self, RackId):
+        self._RackId = RackId
+
 
     def _deserialize(self, params):
         self._Zone = params.get("Zone")
         self._ProjectId = params.get("ProjectId")
         self._HostIds = params.get("HostIds")
         self._HostId = params.get("HostId")
+        self._RackId = params.get("RackId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -1972,6 +1972,10 @@ class CreateModelServiceRequest(AbstractModel):
         :type PluginConfigs: list of PluginConfigDTO
         :param _Timeout: 超时配置，秒
         :type Timeout: int
+        :param _PromptModerateStatus: 是否开启提示词安全检测
+        :type PromptModerateStatus: bool
+        :param _PromptModerateConfig: 提示词安全检测配置
+        :type PromptModerateConfig: :class:`tencentcloud.apis.v20240801.models.PromptModerateConfigDTO`
         """
         self._InstanceID = None
         self._Name = None
@@ -1990,6 +1994,8 @@ class CreateModelServiceRequest(AbstractModel):
         self._IpBlackList = None
         self._PluginConfigs = None
         self._Timeout = None
+        self._PromptModerateStatus = None
+        self._PromptModerateConfig = None
 
     @property
     def InstanceID(self):
@@ -2178,6 +2184,28 @@ class CreateModelServiceRequest(AbstractModel):
     def Timeout(self, Timeout):
         self._Timeout = Timeout
 
+    @property
+    def PromptModerateStatus(self):
+        r"""是否开启提示词安全检测
+        :rtype: bool
+        """
+        return self._PromptModerateStatus
+
+    @PromptModerateStatus.setter
+    def PromptModerateStatus(self, PromptModerateStatus):
+        self._PromptModerateStatus = PromptModerateStatus
+
+    @property
+    def PromptModerateConfig(self):
+        r"""提示词安全检测配置
+        :rtype: :class:`tencentcloud.apis.v20240801.models.PromptModerateConfigDTO`
+        """
+        return self._PromptModerateConfig
+
+    @PromptModerateConfig.setter
+    def PromptModerateConfig(self, PromptModerateConfig):
+        self._PromptModerateConfig = PromptModerateConfig
+
 
     def _deserialize(self, params):
         self._InstanceID = params.get("InstanceID")
@@ -2213,6 +2241,10 @@ class CreateModelServiceRequest(AbstractModel):
                 obj._deserialize(item)
                 self._PluginConfigs.append(obj)
         self._Timeout = params.get("Timeout")
+        self._PromptModerateStatus = params.get("PromptModerateStatus")
+        if params.get("PromptModerateConfig") is not None:
+            self._PromptModerateConfig = PromptModerateConfigDTO()
+            self._PromptModerateConfig._deserialize(params.get("PromptModerateConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5789,6 +5821,12 @@ class DescribeModelServiceResponseVO(AbstractModel):
         :type RelateAgentAppNum: int
         :param _Url: 请求路径
         :type Url: str
+        :param _PromptModerateStatus: 是否开启提示词安全检测
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PromptModerateStatus: bool
+        :param _PromptModerateConfig: 提示词安全检测配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PromptModerateConfig: :class:`tencentcloud.apis.v20240801.models.PromptModerateConfigDTO`
         """
         self._AppID = None
         self._Uin = None
@@ -5817,6 +5855,8 @@ class DescribeModelServiceResponseVO(AbstractModel):
         self._Status = None
         self._RelateAgentAppNum = None
         self._Url = None
+        self._PromptModerateStatus = None
+        self._PromptModerateConfig = None
 
     @property
     def AppID(self):
@@ -6120,6 +6160,30 @@ class DescribeModelServiceResponseVO(AbstractModel):
     def Url(self, Url):
         self._Url = Url
 
+    @property
+    def PromptModerateStatus(self):
+        r"""是否开启提示词安全检测
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._PromptModerateStatus
+
+    @PromptModerateStatus.setter
+    def PromptModerateStatus(self, PromptModerateStatus):
+        self._PromptModerateStatus = PromptModerateStatus
+
+    @property
+    def PromptModerateConfig(self):
+        r"""提示词安全检测配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.apis.v20240801.models.PromptModerateConfigDTO`
+        """
+        return self._PromptModerateConfig
+
+    @PromptModerateConfig.setter
+    def PromptModerateConfig(self, PromptModerateConfig):
+        self._PromptModerateConfig = PromptModerateConfig
+
 
     def _deserialize(self, params):
         self._AppID = params.get("AppID")
@@ -6165,6 +6229,10 @@ class DescribeModelServiceResponseVO(AbstractModel):
         self._Status = params.get("Status")
         self._RelateAgentAppNum = params.get("RelateAgentAppNum")
         self._Url = params.get("Url")
+        self._PromptModerateStatus = params.get("PromptModerateStatus")
+        if params.get("PromptModerateConfig") is not None:
+            self._PromptModerateConfig = PromptModerateConfigDTO()
+            self._PromptModerateConfig._deserialize(params.get("PromptModerateConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8852,6 +8920,10 @@ class ModifyModelServiceRequest(AbstractModel):
         :type PluginConfigs: list of PluginConfigDTO
         :param _Timeout: 超时配置，秒
         :type Timeout: int
+        :param _PromptModerateStatus: 是否开启提示词安全检测配置
+        :type PromptModerateStatus: bool
+        :param _PromptModerateConfig: 提示词安全检测配置
+        :type PromptModerateConfig: :class:`tencentcloud.apis.v20240801.models.PromptModerateConfigDTO`
         """
         self._InstanceID = None
         self._ID = None
@@ -8870,6 +8942,8 @@ class ModifyModelServiceRequest(AbstractModel):
         self._IpBlackList = None
         self._PluginConfigs = None
         self._Timeout = None
+        self._PromptModerateStatus = None
+        self._PromptModerateConfig = None
 
     @property
     def InstanceID(self):
@@ -9058,6 +9132,28 @@ class ModifyModelServiceRequest(AbstractModel):
     def Timeout(self, Timeout):
         self._Timeout = Timeout
 
+    @property
+    def PromptModerateStatus(self):
+        r"""是否开启提示词安全检测配置
+        :rtype: bool
+        """
+        return self._PromptModerateStatus
+
+    @PromptModerateStatus.setter
+    def PromptModerateStatus(self, PromptModerateStatus):
+        self._PromptModerateStatus = PromptModerateStatus
+
+    @property
+    def PromptModerateConfig(self):
+        r"""提示词安全检测配置
+        :rtype: :class:`tencentcloud.apis.v20240801.models.PromptModerateConfigDTO`
+        """
+        return self._PromptModerateConfig
+
+    @PromptModerateConfig.setter
+    def PromptModerateConfig(self, PromptModerateConfig):
+        self._PromptModerateConfig = PromptModerateConfig
+
 
     def _deserialize(self, params):
         self._InstanceID = params.get("InstanceID")
@@ -9093,6 +9189,10 @@ class ModifyModelServiceRequest(AbstractModel):
                 obj._deserialize(item)
                 self._PluginConfigs.append(obj)
         self._Timeout = params.get("Timeout")
+        self._PromptModerateStatus = params.get("PromptModerateStatus")
+        if params.get("PromptModerateConfig") is not None:
+            self._PromptModerateConfig = PromptModerateConfigDTO()
+            self._PromptModerateConfig._deserialize(params.get("PromptModerateConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9321,6 +9421,61 @@ class PluginFormValueDTO(AbstractModel):
     def _deserialize(self, params):
         self._Field = params.get("Field")
         self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PromptModerateConfigDTO(AbstractModel):
+    r"""提示词安全配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Action: 执行动作
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Action: str
+        :param _InterceptMessage: 响应拦截内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InterceptMessage: str
+        """
+        self._Action = None
+        self._InterceptMessage = None
+
+    @property
+    def Action(self):
+        r"""执行动作
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
+
+    @property
+    def InterceptMessage(self):
+        r"""响应拦截内容
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._InterceptMessage
+
+    @InterceptMessage.setter
+    def InterceptMessage(self, InterceptMessage):
+        self._InterceptMessage = InterceptMessage
+
+
+    def _deserialize(self, params):
+        self._Action = params.get("Action")
+        self._InterceptMessage = params.get("InterceptMessage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

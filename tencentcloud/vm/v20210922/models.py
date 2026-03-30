@@ -1172,9 +1172,9 @@ class DescribeTaskDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务ID，创建任务后返回的TaskId字段
+        :param _TaskId: <p>任务ID，创建任务后返回的TaskId字段</p>
         :type TaskId: str
-        :param _ShowAllSegments: 是否展示所有分片，默认只展示命中规则的分片
+        :param _ShowAllSegments: <p>是否展示所有分片，默认只展示命中规则的分片</p>
         :type ShowAllSegments: bool
         """
         self._TaskId = None
@@ -1182,7 +1182,7 @@ class DescribeTaskDetailRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""任务ID，创建任务后返回的TaskId字段
+        r"""<p>任务ID，创建任务后返回的TaskId字段</p>
         :rtype: str
         """
         return self._TaskId
@@ -1193,7 +1193,7 @@ class DescribeTaskDetailRequest(AbstractModel):
 
     @property
     def ShowAllSegments(self):
-        r"""是否展示所有分片，默认只展示命中规则的分片
+        r"""<p>是否展示所有分片，默认只展示命中规则的分片</p>
         :rtype: bool
         """
         return self._ShowAllSegments
@@ -1223,56 +1223,50 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 该字段用于返回创建视频审核任务后返回的任务ID（在Results参数中），用于标识需要查询任务详情的审核任务。
+        :param _TaskId: <p>该字段用于返回创建视频审核任务后返回的任务ID（在Results参数中），用于标识需要查询任务详情的审核任务。</p>
         :type TaskId: str
-        :param _DataId: 该字段用于返回调用视频审核接口时传入的数据ID参数，方便数据的辨别和管理。
+        :param _DataId: <p>该字段用于返回调用视频审核接口时传入的数据ID参数，方便数据的辨别和管理。</p>
         :type DataId: str
-        :param _BizType: 该字段用于返回调用视频审核接口时传入的BizType参数，方便数据的辨别和管理。
+        :param _BizType: <p>该字段用于返回调用视频审核接口时传入的BizType参数，方便数据的辨别和管理。</p>
         :type BizType: str
-        :param _Name: 该字段用于返回调用视频审核接口时传入的TaskInput参数中的任务名称，方便任务的识别与管理。
+        :param _Name: <p>该字段用于返回调用视频审核接口时传入的TaskInput参数中的任务名称，方便任务的识别与管理。</p>
         :type Name: str
-        :param _Status: 该字段用于返回所查询内容的任务状态。
-<br>取值：**FINISH**（任务已完成）、**PENDING** （任务等待中）、**RUNNING** （任务进行中）、**ERROR** （任务出错）、**CANCELLED** （任务已取消）。
+        :param _Status: <p>该字段用于返回所查询内容的任务状态。<br><br>取值：<strong>FINISH</strong>（任务已完成）、<strong>PENDING</strong> （任务等待中）、<strong>RUNNING</strong> （任务进行中）、<strong>ERROR</strong> （任务出错）、<strong>CANCELLED</strong> （任务已取消）。</p>
         :type Status: str
-        :param _Type: 该字段用于返回调用视频审核接口时输入的视频审核类型，取值为：**VIDEO**（点播视频）、**LIVE_VIDEO**（直播视频）和**VIDEO_AIGC**（AI生成检测），默认值为VIDEO。
+        :param _Type: <p>该字段用于返回调用视频审核接口时输入的视频审核类型，取值为：<strong>VIDEO</strong>（点播视频）、<strong>LIVE_VIDEO</strong>（直播视频）和<strong>VIDEO_AIGC</strong>（AI生成检测），默认值为VIDEO。</p>
         :type Type: str
-        :param _Suggestion: 该字段用于返回基于恶意标签的后续操作建议。当您获取到判定结果后，返回值表示系统推荐的后续操作；建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：**Block**：建议屏蔽，**Review** ：建议人工复审，**Pass**：建议通过
+        :param _Suggestion: <p>该字段用于返回基于恶意标签的后续操作建议。当您获取到判定结果后，返回值表示系统推荐的后续操作；建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：<strong>Block</strong>：建议屏蔽，<strong>Review</strong> ：建议人工复审，<strong>Pass</strong>：建议通过</p>
         :type Suggestion: str
-        :param _Labels: 该字段用于返回检测结果所对应的恶意标签。<br>返回值：**Porn**：色情，**Abuse**：谩骂，**Ad**：广告，**Custom**：自定义违规；以及其他令人反感、不安全或不适宜的内容类型。
+        :param _Labels: <p>该字段用于返回检测结果所对应的恶意标签。<br>返回值：<strong>Porn</strong>：色情，<strong>Abuse</strong>：谩骂，<strong>Ad</strong>：广告，<strong>Custom</strong>：自定义违规；以及其他令人反感、不安全或不适宜的内容类型。</p>
         :type Labels: list of TaskLabel
-        :param _MediaInfo: 该字段用于返回输入媒体文件的详细信息，包括编解码格式、分片时长等信息。详细内容敬请参考MediaInfo数据结构的描述。
+        :param _MediaInfo: <p>该字段用于返回输入媒体文件的详细信息，包括编解码格式、分片时长等信息。详细内容敬请参考MediaInfo数据结构的描述。</p>
         :type MediaInfo: :class:`tencentcloud.vm.v20210922.models.MediaInfo`
-        :param _InputInfo: 该字段用于返回审核服务的媒体内容信息，主要包括传入文件类型和访问地址。
+        :param _InputInfo: <p>该字段用于返回审核服务的媒体内容信息，主要包括传入文件类型和访问地址。</p>
         :type InputInfo: :class:`tencentcloud.vm.v20210922.models.InputInfo`
-        :param _CreatedAt: 该字段用于返回被查询任务创建的时间，格式采用 ISO 8601标准。
+        :param _CreatedAt: <p>该字段用于返回被查询任务创建的时间，格式采用 ISO 8601标准。</p>
         :type CreatedAt: str
-        :param _UpdatedAt: 该字段用于返回被查询任务最后更新时间，格式采用 ISO 8601标准。
+        :param _UpdatedAt: <p>该字段用于返回被查询任务最后更新时间，格式采用 ISO 8601标准。</p>
         :type UpdatedAt: str
-        :param _TryInSeconds: 在秒后重试
+        :param _TryInSeconds: <p>在秒后重试</p>
         :type TryInSeconds: int
-        :param _ImageSegments: 该字段用于返回视频中截帧审核的结果，详细返回内容敬请参考ImageSegments数据结构的描述。
+        :param _ImageSegments: <p>该字段用于返回视频中截帧审核的结果，详细返回内容敬请参考ImageSegments数据结构的描述。</p>
         :type ImageSegments: list of ImageSegments
-        :param _AudioSegments: 该字段用于返回视频中音频审核的结果，详细返回内容敬请参考AudioSegments数据结构的描述。
+        :param _AudioSegments: <p>该字段用于返回视频中音频审核的结果，详细返回内容敬请参考AudioSegments数据结构的描述。</p>
         :type AudioSegments: list of AudioSegments
-        :param _ErrorType: 当任务状态为Error时，返回对应错误的类型，取值：
-**DECODE_ERROR**: 解码失败。（输入资源中可能包含无法解码的视频）
-**URL_ERROR**：下载地址验证失败。
-**TIMEOUT_ERROR**：处理超时。
-**CALLBACK_ERRORR**：回调错误。
-**MODERATION_ERROR**：审核失败。
-**URL_NOT_SUPPORTED**：源文件太大或没有图片音频帧
-任务状态非Error时默认返回为空。
+        :param _ErrorType: <p>当任务状态为Error时，返回对应错误的类型，取值：<br><strong>DECODE_ERROR</strong>: 解码失败。（输入资源中可能包含无法解码的视频）<br><strong>URL_ERROR</strong>：下载地址验证失败。<br><strong>TIMEOUT_ERROR</strong>：处理超时。<br><strong>CALLBACK_ERRORR</strong>：回调错误。<br><strong>MODERATION_ERROR</strong>：审核失败。<br><strong>URL_NOT_SUPPORTED</strong>：源文件太大或没有图片音频帧<br>任务状态非Error时默认返回为空。</p>
         :type ErrorType: str
-        :param _ErrorDescription: 当任务状态为Error时，该字段用于返回对应错误的详细描述，任务状态非Error时默认返回为空。
+        :param _ErrorDescription: <p>当任务状态为Error时，该字段用于返回对应错误的详细描述，任务状态非Error时默认返回为空。</p>
         :type ErrorDescription: str
-        :param _Label: 该字段用于返回检测结果所对应的标签。如果未命中恶意，返回Normal，如果命中恶意，则返回Labels中优先级最高的标签
+        :param _Label: <p>该字段用于返回检测结果所对应的标签。如果未命中恶意，返回Normal，如果命中恶意，则返回Labels中优先级最高的标签</p>
         :type Label: str
-        :param _AudioText: 该字段用于返回音频文件识别出的对应文本内容，最大支持**前1000个字符**。
+        :param _AudioText: <p>该字段用于返回音频文件识别出的对应文本内容，最大支持<strong>前1000个字符</strong>。</p>
         :type AudioText: str
-        :param _Asrs: 该字段用于返回音频文件识别出的对应文本内容。
+        :param _Asrs: <p>该字段用于返回音频文件识别出的对应文本内容。</p>
         :type Asrs: list of RcbAsr
-        :param _SegmentCosUrlList: 该字段用于返回检测结果明细数据相关的cos url	
+        :param _SegmentCosUrlList: <p>该字段用于返回检测结果明细数据相关的cos url</p>
         :type SegmentCosUrlList: :class:`tencentcloud.vm.v20210922.models.SegmentCosUrlList`
+        :param _VideoSegments: <p>该字段用于返回视频中视频切片审核的结果</p>
+        :type VideoSegments: list of VideoSegment
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1297,11 +1291,12 @@ class DescribeTaskDetailResponse(AbstractModel):
         self._AudioText = None
         self._Asrs = None
         self._SegmentCosUrlList = None
+        self._VideoSegments = None
         self._RequestId = None
 
     @property
     def TaskId(self):
-        r"""该字段用于返回创建视频审核任务后返回的任务ID（在Results参数中），用于标识需要查询任务详情的审核任务。
+        r"""<p>该字段用于返回创建视频审核任务后返回的任务ID（在Results参数中），用于标识需要查询任务详情的审核任务。</p>
         :rtype: str
         """
         return self._TaskId
@@ -1312,7 +1307,7 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     @property
     def DataId(self):
-        r"""该字段用于返回调用视频审核接口时传入的数据ID参数，方便数据的辨别和管理。
+        r"""<p>该字段用于返回调用视频审核接口时传入的数据ID参数，方便数据的辨别和管理。</p>
         :rtype: str
         """
         return self._DataId
@@ -1323,7 +1318,7 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     @property
     def BizType(self):
-        r"""该字段用于返回调用视频审核接口时传入的BizType参数，方便数据的辨别和管理。
+        r"""<p>该字段用于返回调用视频审核接口时传入的BizType参数，方便数据的辨别和管理。</p>
         :rtype: str
         """
         return self._BizType
@@ -1334,7 +1329,7 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     @property
     def Name(self):
-        r"""该字段用于返回调用视频审核接口时传入的TaskInput参数中的任务名称，方便任务的识别与管理。
+        r"""<p>该字段用于返回调用视频审核接口时传入的TaskInput参数中的任务名称，方便任务的识别与管理。</p>
         :rtype: str
         """
         return self._Name
@@ -1345,8 +1340,7 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     @property
     def Status(self):
-        r"""该字段用于返回所查询内容的任务状态。
-<br>取值：**FINISH**（任务已完成）、**PENDING** （任务等待中）、**RUNNING** （任务进行中）、**ERROR** （任务出错）、**CANCELLED** （任务已取消）。
+        r"""<p>该字段用于返回所查询内容的任务状态。<br><br>取值：<strong>FINISH</strong>（任务已完成）、<strong>PENDING</strong> （任务等待中）、<strong>RUNNING</strong> （任务进行中）、<strong>ERROR</strong> （任务出错）、<strong>CANCELLED</strong> （任务已取消）。</p>
         :rtype: str
         """
         return self._Status
@@ -1357,7 +1351,7 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     @property
     def Type(self):
-        r"""该字段用于返回调用视频审核接口时输入的视频审核类型，取值为：**VIDEO**（点播视频）、**LIVE_VIDEO**（直播视频）和**VIDEO_AIGC**（AI生成检测），默认值为VIDEO。
+        r"""<p>该字段用于返回调用视频审核接口时输入的视频审核类型，取值为：<strong>VIDEO</strong>（点播视频）、<strong>LIVE_VIDEO</strong>（直播视频）和<strong>VIDEO_AIGC</strong>（AI生成检测），默认值为VIDEO。</p>
         :rtype: str
         """
         return self._Type
@@ -1368,7 +1362,7 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     @property
     def Suggestion(self):
-        r"""该字段用于返回基于恶意标签的后续操作建议。当您获取到判定结果后，返回值表示系统推荐的后续操作；建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：**Block**：建议屏蔽，**Review** ：建议人工复审，**Pass**：建议通过
+        r"""<p>该字段用于返回基于恶意标签的后续操作建议。当您获取到判定结果后，返回值表示系统推荐的后续操作；建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：<strong>Block</strong>：建议屏蔽，<strong>Review</strong> ：建议人工复审，<strong>Pass</strong>：建议通过</p>
         :rtype: str
         """
         return self._Suggestion
@@ -1379,7 +1373,7 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     @property
     def Labels(self):
-        r"""该字段用于返回检测结果所对应的恶意标签。<br>返回值：**Porn**：色情，**Abuse**：谩骂，**Ad**：广告，**Custom**：自定义违规；以及其他令人反感、不安全或不适宜的内容类型。
+        r"""<p>该字段用于返回检测结果所对应的恶意标签。<br>返回值：<strong>Porn</strong>：色情，<strong>Abuse</strong>：谩骂，<strong>Ad</strong>：广告，<strong>Custom</strong>：自定义违规；以及其他令人反感、不安全或不适宜的内容类型。</p>
         :rtype: list of TaskLabel
         """
         return self._Labels
@@ -1390,7 +1384,7 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     @property
     def MediaInfo(self):
-        r"""该字段用于返回输入媒体文件的详细信息，包括编解码格式、分片时长等信息。详细内容敬请参考MediaInfo数据结构的描述。
+        r"""<p>该字段用于返回输入媒体文件的详细信息，包括编解码格式、分片时长等信息。详细内容敬请参考MediaInfo数据结构的描述。</p>
         :rtype: :class:`tencentcloud.vm.v20210922.models.MediaInfo`
         """
         return self._MediaInfo
@@ -1401,7 +1395,7 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     @property
     def InputInfo(self):
-        r"""该字段用于返回审核服务的媒体内容信息，主要包括传入文件类型和访问地址。
+        r"""<p>该字段用于返回审核服务的媒体内容信息，主要包括传入文件类型和访问地址。</p>
         :rtype: :class:`tencentcloud.vm.v20210922.models.InputInfo`
         """
         return self._InputInfo
@@ -1412,7 +1406,7 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     @property
     def CreatedAt(self):
-        r"""该字段用于返回被查询任务创建的时间，格式采用 ISO 8601标准。
+        r"""<p>该字段用于返回被查询任务创建的时间，格式采用 ISO 8601标准。</p>
         :rtype: str
         """
         return self._CreatedAt
@@ -1423,7 +1417,7 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     @property
     def UpdatedAt(self):
-        r"""该字段用于返回被查询任务最后更新时间，格式采用 ISO 8601标准。
+        r"""<p>该字段用于返回被查询任务最后更新时间，格式采用 ISO 8601标准。</p>
         :rtype: str
         """
         return self._UpdatedAt
@@ -1434,7 +1428,7 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     @property
     def TryInSeconds(self):
-        r"""在秒后重试
+        r"""<p>在秒后重试</p>
         :rtype: int
         """
         return self._TryInSeconds
@@ -1445,7 +1439,7 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     @property
     def ImageSegments(self):
-        r"""该字段用于返回视频中截帧审核的结果，详细返回内容敬请参考ImageSegments数据结构的描述。
+        r"""<p>该字段用于返回视频中截帧审核的结果，详细返回内容敬请参考ImageSegments数据结构的描述。</p>
         :rtype: list of ImageSegments
         """
         return self._ImageSegments
@@ -1456,7 +1450,7 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     @property
     def AudioSegments(self):
-        r"""该字段用于返回视频中音频审核的结果，详细返回内容敬请参考AudioSegments数据结构的描述。
+        r"""<p>该字段用于返回视频中音频审核的结果，详细返回内容敬请参考AudioSegments数据结构的描述。</p>
         :rtype: list of AudioSegments
         """
         return self._AudioSegments
@@ -1467,14 +1461,7 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     @property
     def ErrorType(self):
-        r"""当任务状态为Error时，返回对应错误的类型，取值：
-**DECODE_ERROR**: 解码失败。（输入资源中可能包含无法解码的视频）
-**URL_ERROR**：下载地址验证失败。
-**TIMEOUT_ERROR**：处理超时。
-**CALLBACK_ERRORR**：回调错误。
-**MODERATION_ERROR**：审核失败。
-**URL_NOT_SUPPORTED**：源文件太大或没有图片音频帧
-任务状态非Error时默认返回为空。
+        r"""<p>当任务状态为Error时，返回对应错误的类型，取值：<br><strong>DECODE_ERROR</strong>: 解码失败。（输入资源中可能包含无法解码的视频）<br><strong>URL_ERROR</strong>：下载地址验证失败。<br><strong>TIMEOUT_ERROR</strong>：处理超时。<br><strong>CALLBACK_ERRORR</strong>：回调错误。<br><strong>MODERATION_ERROR</strong>：审核失败。<br><strong>URL_NOT_SUPPORTED</strong>：源文件太大或没有图片音频帧<br>任务状态非Error时默认返回为空。</p>
         :rtype: str
         """
         return self._ErrorType
@@ -1485,7 +1472,7 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     @property
     def ErrorDescription(self):
-        r"""当任务状态为Error时，该字段用于返回对应错误的详细描述，任务状态非Error时默认返回为空。
+        r"""<p>当任务状态为Error时，该字段用于返回对应错误的详细描述，任务状态非Error时默认返回为空。</p>
         :rtype: str
         """
         return self._ErrorDescription
@@ -1496,7 +1483,7 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     @property
     def Label(self):
-        r"""该字段用于返回检测结果所对应的标签。如果未命中恶意，返回Normal，如果命中恶意，则返回Labels中优先级最高的标签
+        r"""<p>该字段用于返回检测结果所对应的标签。如果未命中恶意，返回Normal，如果命中恶意，则返回Labels中优先级最高的标签</p>
         :rtype: str
         """
         return self._Label
@@ -1507,7 +1494,7 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     @property
     def AudioText(self):
-        r"""该字段用于返回音频文件识别出的对应文本内容，最大支持**前1000个字符**。
+        r"""<p>该字段用于返回音频文件识别出的对应文本内容，最大支持<strong>前1000个字符</strong>。</p>
         :rtype: str
         """
         return self._AudioText
@@ -1518,7 +1505,7 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     @property
     def Asrs(self):
-        r"""该字段用于返回音频文件识别出的对应文本内容。
+        r"""<p>该字段用于返回音频文件识别出的对应文本内容。</p>
         :rtype: list of RcbAsr
         """
         return self._Asrs
@@ -1529,7 +1516,7 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     @property
     def SegmentCosUrlList(self):
-        r"""该字段用于返回检测结果明细数据相关的cos url	
+        r"""<p>该字段用于返回检测结果明细数据相关的cos url</p>
         :rtype: :class:`tencentcloud.vm.v20210922.models.SegmentCosUrlList`
         """
         return self._SegmentCosUrlList
@@ -1537,6 +1524,17 @@ class DescribeTaskDetailResponse(AbstractModel):
     @SegmentCosUrlList.setter
     def SegmentCosUrlList(self, SegmentCosUrlList):
         self._SegmentCosUrlList = SegmentCosUrlList
+
+    @property
+    def VideoSegments(self):
+        r"""<p>该字段用于返回视频中视频切片审核的结果</p>
+        :rtype: list of VideoSegment
+        """
+        return self._VideoSegments
+
+    @VideoSegments.setter
+    def VideoSegments(self, VideoSegments):
+        self._VideoSegments = VideoSegments
 
     @property
     def RequestId(self):
@@ -1598,6 +1596,12 @@ class DescribeTaskDetailResponse(AbstractModel):
         if params.get("SegmentCosUrlList") is not None:
             self._SegmentCosUrlList = SegmentCosUrlList()
             self._SegmentCosUrlList._deserialize(params.get("SegmentCosUrlList"))
+        if params.get("VideoSegments") is not None:
+            self._VideoSegments = []
+            for item in params.get("VideoSegments"):
+                obj = VideoSegment()
+                obj._deserialize(item)
+                self._VideoSegments.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -2595,21 +2599,27 @@ class InputInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: 传入的类型可选：URL，COS
+        :param _Type: <p>传入的类型可选：URL，COS</p>
         :type Type: str
-        :param _Url: Url地址
+        :param _Url: <p>Url地址</p>
         :type Url: str
-        :param _BucketInfo: 桶信息。当输入当时COS时，该字段不为空
+        :param _BucketInfo: <p>桶信息。当输入当时COS时，该字段不为空</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type BucketInfo: str
+        :param _ImageUrlList: <p>大模型审核可选输入图片列表</p>
+        :type ImageUrlList: list of str
+        :param _TextContent: <p>大模型审核场景下，base64编码的审核要求内容</p>
+        :type TextContent: str
         """
         self._Type = None
         self._Url = None
         self._BucketInfo = None
+        self._ImageUrlList = None
+        self._TextContent = None
 
     @property
     def Type(self):
-        r"""传入的类型可选：URL，COS
+        r"""<p>传入的类型可选：URL，COS</p>
         :rtype: str
         """
         return self._Type
@@ -2620,7 +2630,7 @@ class InputInfo(AbstractModel):
 
     @property
     def Url(self):
-        r"""Url地址
+        r"""<p>Url地址</p>
         :rtype: str
         """
         return self._Url
@@ -2631,7 +2641,7 @@ class InputInfo(AbstractModel):
 
     @property
     def BucketInfo(self):
-        r"""桶信息。当输入当时COS时，该字段不为空
+        r"""<p>桶信息。当输入当时COS时，该字段不为空</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2641,11 +2651,35 @@ class InputInfo(AbstractModel):
     def BucketInfo(self, BucketInfo):
         self._BucketInfo = BucketInfo
 
+    @property
+    def ImageUrlList(self):
+        r"""<p>大模型审核可选输入图片列表</p>
+        :rtype: list of str
+        """
+        return self._ImageUrlList
+
+    @ImageUrlList.setter
+    def ImageUrlList(self, ImageUrlList):
+        self._ImageUrlList = ImageUrlList
+
+    @property
+    def TextContent(self):
+        r"""<p>大模型审核场景下，base64编码的审核要求内容</p>
+        :rtype: str
+        """
+        return self._TextContent
+
+    @TextContent.setter
+    def TextContent(self, TextContent):
+        self._TextContent = TextContent
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
         self._Url = params.get("Url")
         self._BucketInfo = params.get("BucketInfo")
+        self._ImageUrlList = params.get("ImageUrlList")
+        self._TextContent = params.get("TextContent")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3323,24 +3357,26 @@ class StorageInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: 类型 可选：
-URL 资源链接类型
-COS 腾讯云对象存储类型
+        :param _Type: <p>类型 可选：<br>URL 资源链接类型<br>COS 腾讯云对象存储类型</p>
         :type Type: str
-        :param _Url: 资源链接
+        :param _Url: <p>资源链接</p>
         :type Url: str
-        :param _BucketInfo: 腾讯云存储桶信息
+        :param _BucketInfo: <p>腾讯云存储桶信息</p>
         :type BucketInfo: :class:`tencentcloud.vm.v20210922.models.BucketInfo`
+        :param _ImageUrlList: <p>大模型审核场景下，送审的图片列表</p>
+        :type ImageUrlList: list of str
+        :param _TextContent: <p>大模型审核场景下，base64编码的审核要求内容</p>
+        :type TextContent: str
         """
         self._Type = None
         self._Url = None
         self._BucketInfo = None
+        self._ImageUrlList = None
+        self._TextContent = None
 
     @property
     def Type(self):
-        r"""类型 可选：
-URL 资源链接类型
-COS 腾讯云对象存储类型
+        r"""<p>类型 可选：<br>URL 资源链接类型<br>COS 腾讯云对象存储类型</p>
         :rtype: str
         """
         return self._Type
@@ -3351,7 +3387,7 @@ COS 腾讯云对象存储类型
 
     @property
     def Url(self):
-        r"""资源链接
+        r"""<p>资源链接</p>
         :rtype: str
         """
         return self._Url
@@ -3362,7 +3398,7 @@ COS 腾讯云对象存储类型
 
     @property
     def BucketInfo(self):
-        r"""腾讯云存储桶信息
+        r"""<p>腾讯云存储桶信息</p>
         :rtype: :class:`tencentcloud.vm.v20210922.models.BucketInfo`
         """
         return self._BucketInfo
@@ -3371,6 +3407,28 @@ COS 腾讯云对象存储类型
     def BucketInfo(self, BucketInfo):
         self._BucketInfo = BucketInfo
 
+    @property
+    def ImageUrlList(self):
+        r"""<p>大模型审核场景下，送审的图片列表</p>
+        :rtype: list of str
+        """
+        return self._ImageUrlList
+
+    @ImageUrlList.setter
+    def ImageUrlList(self, ImageUrlList):
+        self._ImageUrlList = ImageUrlList
+
+    @property
+    def TextContent(self):
+        r"""<p>大模型审核场景下，base64编码的审核要求内容</p>
+        :rtype: str
+        """
+        return self._TextContent
+
+    @TextContent.setter
+    def TextContent(self, TextContent):
+        self._TextContent = TextContent
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
@@ -3378,6 +3436,8 @@ COS 腾讯云对象存储类型
         if params.get("BucketInfo") is not None:
             self._BucketInfo = BucketInfo()
             self._BucketInfo._deserialize(params.get("BucketInfo"))
+        self._ImageUrlList = params.get("ImageUrlList")
+        self._TextContent = params.get("TextContent")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4402,6 +4462,301 @@ class User(AbstractModel):
         self._GroupSize = params.get("GroupSize")
         self._ReceiverId = params.get("ReceiverId")
         self._SendTime = params.get("SendTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VideoLLMDetail(AbstractModel):
+    r"""大模型原子能力审核明细
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LabelName: <p>命中的标签名</p>
+        :type LabelName: str
+        :param _Reason: <p>命中标签的原因</p>
+        :type Reason: str
+        :param _TargetText: <p>命中的文本内容</p>
+        :type TargetText: list of str
+        :param _Suggestion: <p>违规建议</p>
+        :type Suggestion: str
+        """
+        self._LabelName = None
+        self._Reason = None
+        self._TargetText = None
+        self._Suggestion = None
+
+    @property
+    def LabelName(self):
+        r"""<p>命中的标签名</p>
+        :rtype: str
+        """
+        return self._LabelName
+
+    @LabelName.setter
+    def LabelName(self, LabelName):
+        self._LabelName = LabelName
+
+    @property
+    def Reason(self):
+        r"""<p>命中标签的原因</p>
+        :rtype: str
+        """
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
+
+    @property
+    def TargetText(self):
+        r"""<p>命中的文本内容</p>
+        :rtype: list of str
+        """
+        return self._TargetText
+
+    @TargetText.setter
+    def TargetText(self, TargetText):
+        self._TargetText = TargetText
+
+    @property
+    def Suggestion(self):
+        r"""<p>违规建议</p>
+        :rtype: str
+        """
+        return self._Suggestion
+
+    @Suggestion.setter
+    def Suggestion(self, Suggestion):
+        self._Suggestion = Suggestion
+
+
+    def _deserialize(self, params):
+        self._LabelName = params.get("LabelName")
+        self._Reason = params.get("Reason")
+        self._TargetText = params.get("TargetText")
+        self._Suggestion = params.get("Suggestion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VideoSegment(AbstractModel):
+    r"""单个视频切片审核结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: <p>视频切片审核结果</p>
+        :type Result: :class:`tencentcloud.vm.v20210922.models.VideoSegmentResult`
+        :param _OffsetTime: <p>视频切片的起始时间偏移</p>
+        :type OffsetTime: str
+        :param _CreatedAt: <p>切片保存时间</p>
+        :type CreatedAt: str
+        """
+        self._Result = None
+        self._OffsetTime = None
+        self._CreatedAt = None
+
+    @property
+    def Result(self):
+        r"""<p>视频切片审核结果</p>
+        :rtype: :class:`tencentcloud.vm.v20210922.models.VideoSegmentResult`
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def OffsetTime(self):
+        r"""<p>视频切片的起始时间偏移</p>
+        :rtype: str
+        """
+        return self._OffsetTime
+
+    @OffsetTime.setter
+    def OffsetTime(self, OffsetTime):
+        self._OffsetTime = OffsetTime
+
+    @property
+    def CreatedAt(self):
+        r"""<p>切片保存时间</p>
+        :rtype: str
+        """
+        return self._CreatedAt
+
+    @CreatedAt.setter
+    def CreatedAt(self, CreatedAt):
+        self._CreatedAt = CreatedAt
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = VideoSegmentResult()
+            self._Result._deserialize(params.get("Result"))
+        self._OffsetTime = params.get("OffsetTime")
+        self._CreatedAt = params.get("CreatedAt")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VideoSegmentResult(AbstractModel):
+    r"""单个视频切片审核详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HitFlag: <p>违规标志 0 未命中 1 命中</p>
+        :type HitFlag: int
+        :param _Suggestion: <p>审核建议，可选值： Pass 通过， Review 建议人审， Block 确认违规</p>
+        :type Suggestion: str
+        :param _Text: <p>Asr文本内容</p>
+        :type Text: str
+        :param _Detail: <p>审核结果</p>
+        :type Detail: list of VideoLLMDetail
+        :param _VideoUrl: <p>视频切片存储URL</p>
+        :type VideoUrl: str
+        :param _AudioUrl: <p>音频切片存储URL</p>
+        :type AudioUrl: str
+        :param _Duration: <p>切片时长</p>
+        :type Duration: str
+        :param _RequestId: <p>切片请求ID</p>
+        :type RequestId: str
+        """
+        self._HitFlag = None
+        self._Suggestion = None
+        self._Text = None
+        self._Detail = None
+        self._VideoUrl = None
+        self._AudioUrl = None
+        self._Duration = None
+        self._RequestId = None
+
+    @property
+    def HitFlag(self):
+        r"""<p>违规标志 0 未命中 1 命中</p>
+        :rtype: int
+        """
+        return self._HitFlag
+
+    @HitFlag.setter
+    def HitFlag(self, HitFlag):
+        self._HitFlag = HitFlag
+
+    @property
+    def Suggestion(self):
+        r"""<p>审核建议，可选值： Pass 通过， Review 建议人审， Block 确认违规</p>
+        :rtype: str
+        """
+        return self._Suggestion
+
+    @Suggestion.setter
+    def Suggestion(self, Suggestion):
+        self._Suggestion = Suggestion
+
+    @property
+    def Text(self):
+        r"""<p>Asr文本内容</p>
+        :rtype: str
+        """
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def Detail(self):
+        r"""<p>审核结果</p>
+        :rtype: list of VideoLLMDetail
+        """
+        return self._Detail
+
+    @Detail.setter
+    def Detail(self, Detail):
+        self._Detail = Detail
+
+    @property
+    def VideoUrl(self):
+        r"""<p>视频切片存储URL</p>
+        :rtype: str
+        """
+        return self._VideoUrl
+
+    @VideoUrl.setter
+    def VideoUrl(self, VideoUrl):
+        self._VideoUrl = VideoUrl
+
+    @property
+    def AudioUrl(self):
+        r"""<p>音频切片存储URL</p>
+        :rtype: str
+        """
+        return self._AudioUrl
+
+    @AudioUrl.setter
+    def AudioUrl(self, AudioUrl):
+        self._AudioUrl = AudioUrl
+
+    @property
+    def Duration(self):
+        r"""<p>切片时长</p>
+        :rtype: str
+        """
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def RequestId(self):
+        r"""<p>切片请求ID</p>
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._HitFlag = params.get("HitFlag")
+        self._Suggestion = params.get("Suggestion")
+        self._Text = params.get("Text")
+        if params.get("Detail") is not None:
+            self._Detail = []
+            for item in params.get("Detail"):
+                obj = VideoLLMDetail()
+                obj._deserialize(item)
+                self._Detail.append(obj)
+        self._VideoUrl = params.get("VideoUrl")
+        self._AudioUrl = params.get("AudioUrl")
+        self._Duration = params.get("Duration")
+        self._RequestId = params.get("RequestId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

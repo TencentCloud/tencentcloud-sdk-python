@@ -2886,6 +2886,7 @@ class LiveClient(AbstractClient):
     ) -> models.DescribeLogDownloadListResponse:
         """
         批量获取日志URL。
+        日志数据打包存在一定延迟，24小时候数据包趋于完整。
         """
         
         kwargs = {}

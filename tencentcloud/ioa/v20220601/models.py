@@ -1509,7 +1509,7 @@ class CreatePrivilegeCodeRequest(AbstractModel):
         :type Mid: str
         :param _DomainInstanceId: 管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
         :type DomainInstanceId: str
-        :param _OsType: 系统类型（0: win，1：linux，2: mac，4：android，5：ios ）；默认值0
+        :param _OsType: 系统类型（0: win，1：linux，2: mac，4：android，5：ios，-1：全系统（SaaS一体化版本） ； 不传默认为0）(只支持32位)
         :type OsType: int
         """
         self._Mid = None
@@ -1540,7 +1540,7 @@ class CreatePrivilegeCodeRequest(AbstractModel):
 
     @property
     def OsType(self):
-        r"""系统类型（0: win，1：linux，2: mac，4：android，5：ios ）；默认值0
+        r"""系统类型（0: win，1：linux，2: mac，4：android，5：ios，-1：全系统（SaaS一体化版本） ； 不传默认为0）(只支持32位)
         :rtype: int
         """
         return self._OsType
@@ -3970,7 +3970,7 @@ class DescribeDeviceChildGroupsRequest(AbstractModel):
         :type Condition: :class:`tencentcloud.ioa.v20220601.models.Condition`
         :param _ParentId: 父分组id，默认0：表示获取全网终端分组
         :type ParentId: int
-        :param _OsType: 操作系统类型（0：win，1：linux，2：mac，4：android，5：ios；默认0：系统win）
+        :param _OsType: 系统类型（0: win，1：linux，2: mac，4：android，5：ios，-1：全系统（SaaS一体化版本） ； 不传默认为0）(只支持32位)
         :type OsType: int
         """
         self._DomainInstanceId = None
@@ -4021,7 +4021,7 @@ class DescribeDeviceChildGroupsRequest(AbstractModel):
 
     @property
     def OsType(self):
-        r"""操作系统类型（0：win，1：linux，2：mac，4：android，5：ios；默认0：系统win）
+        r"""系统类型（0: win，1：linux，2: mac，4：android，5：ios，-1：全系统（SaaS一体化版本） ； 不传默认为0）(只支持32位)
         :rtype: int
         """
         return self._OsType

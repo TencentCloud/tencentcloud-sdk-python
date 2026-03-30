@@ -597,14 +597,14 @@ class DescribeFraudBaseRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DeviceToken: 客户端通过SDK获取的设备Token
+        :param _DeviceToken: <p>客户端通过SDK获取的设备Token</p>
         :type DeviceToken: str
         """
         self._DeviceToken = None
 
     @property
     def DeviceToken(self):
-        r"""客户端通过SDK获取的设备Token
+        r"""<p>客户端通过SDK获取的设备Token</p>
         :rtype: str
         """
         return self._DeviceToken
@@ -633,28 +633,32 @@ class DescribeFraudBaseResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AppVersion: App版本信息
+        :param _AppVersion: <p>App版本信息</p>
         :type AppVersion: str
-        :param _Brand: 品牌
+        :param _Brand: <p>品牌</p>
         :type Brand: str
-        :param _ClientIp: 客户端IP
+        :param _ClientIp: <p>客户端IP</p>
         :type ClientIp: str
-        :param _Model: 机型
+        :param _Model: <p>机型</p>
         :type Model: str
-        :param _NetworkType: 网络类型
+        :param _NetworkType: <p>网络类型</p>
         :type NetworkType: str
-        :param _PackageName: 应用包名
+        :param _PackageName: <p>应用包名</p>
         :type PackageName: str
-        :param _Platform: 平台（2-Android，3-iOS，4-H5，5-微信小程序）
+        :param _Platform: <p>平台（2-Android，3-iOS，4-H5，5-微信小程序）</p>
         :type Platform: str
-        :param _SystemVersion: 系统版本
+        :param _SystemVersion: <p>系统版本</p>
         :type SystemVersion: str
-        :param _SdkBuildNo: SDK版本号
+        :param _SdkBuildNo: <p>SDK版本号</p>
         :type SdkBuildNo: str
-        :param _RiskInfos: 实时风险信息
+        :param _RiskInfos: <p>实时风险信息</p>
         :type RiskInfos: list of RiskInfo
-        :param _HistRiskInfos: 离线风险信息
+        :param _HistRiskInfos: <p>离线风险信息</p>
         :type HistRiskInfos: list of RiskInfo
+        :param _RiskCheckTimestamp: <p>检测时间戳（毫秒）</p>
+        :type RiskCheckTimestamp: str
+        :param _ExtraInfos: <p>额外信息</p>
+        :type ExtraInfos: list of ExtraInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -669,11 +673,13 @@ class DescribeFraudBaseResponse(AbstractModel):
         self._SdkBuildNo = None
         self._RiskInfos = None
         self._HistRiskInfos = None
+        self._RiskCheckTimestamp = None
+        self._ExtraInfos = None
         self._RequestId = None
 
     @property
     def AppVersion(self):
-        r"""App版本信息
+        r"""<p>App版本信息</p>
         :rtype: str
         """
         return self._AppVersion
@@ -684,7 +690,7 @@ class DescribeFraudBaseResponse(AbstractModel):
 
     @property
     def Brand(self):
-        r"""品牌
+        r"""<p>品牌</p>
         :rtype: str
         """
         return self._Brand
@@ -695,7 +701,7 @@ class DescribeFraudBaseResponse(AbstractModel):
 
     @property
     def ClientIp(self):
-        r"""客户端IP
+        r"""<p>客户端IP</p>
         :rtype: str
         """
         return self._ClientIp
@@ -706,7 +712,7 @@ class DescribeFraudBaseResponse(AbstractModel):
 
     @property
     def Model(self):
-        r"""机型
+        r"""<p>机型</p>
         :rtype: str
         """
         return self._Model
@@ -717,7 +723,7 @@ class DescribeFraudBaseResponse(AbstractModel):
 
     @property
     def NetworkType(self):
-        r"""网络类型
+        r"""<p>网络类型</p>
         :rtype: str
         """
         return self._NetworkType
@@ -728,7 +734,7 @@ class DescribeFraudBaseResponse(AbstractModel):
 
     @property
     def PackageName(self):
-        r"""应用包名
+        r"""<p>应用包名</p>
         :rtype: str
         """
         return self._PackageName
@@ -739,7 +745,7 @@ class DescribeFraudBaseResponse(AbstractModel):
 
     @property
     def Platform(self):
-        r"""平台（2-Android，3-iOS，4-H5，5-微信小程序）
+        r"""<p>平台（2-Android，3-iOS，4-H5，5-微信小程序）</p>
         :rtype: str
         """
         return self._Platform
@@ -750,7 +756,7 @@ class DescribeFraudBaseResponse(AbstractModel):
 
     @property
     def SystemVersion(self):
-        r"""系统版本
+        r"""<p>系统版本</p>
         :rtype: str
         """
         return self._SystemVersion
@@ -761,7 +767,7 @@ class DescribeFraudBaseResponse(AbstractModel):
 
     @property
     def SdkBuildNo(self):
-        r"""SDK版本号
+        r"""<p>SDK版本号</p>
         :rtype: str
         """
         return self._SdkBuildNo
@@ -772,7 +778,7 @@ class DescribeFraudBaseResponse(AbstractModel):
 
     @property
     def RiskInfos(self):
-        r"""实时风险信息
+        r"""<p>实时风险信息</p>
         :rtype: list of RiskInfo
         """
         return self._RiskInfos
@@ -783,7 +789,7 @@ class DescribeFraudBaseResponse(AbstractModel):
 
     @property
     def HistRiskInfos(self):
-        r"""离线风险信息
+        r"""<p>离线风险信息</p>
         :rtype: list of RiskInfo
         """
         return self._HistRiskInfos
@@ -791,6 +797,28 @@ class DescribeFraudBaseResponse(AbstractModel):
     @HistRiskInfos.setter
     def HistRiskInfos(self, HistRiskInfos):
         self._HistRiskInfos = HistRiskInfos
+
+    @property
+    def RiskCheckTimestamp(self):
+        r"""<p>检测时间戳（毫秒）</p>
+        :rtype: str
+        """
+        return self._RiskCheckTimestamp
+
+    @RiskCheckTimestamp.setter
+    def RiskCheckTimestamp(self, RiskCheckTimestamp):
+        self._RiskCheckTimestamp = RiskCheckTimestamp
+
+    @property
+    def ExtraInfos(self):
+        r"""<p>额外信息</p>
+        :rtype: list of ExtraInfo
+        """
+        return self._ExtraInfos
+
+    @ExtraInfos.setter
+    def ExtraInfos(self, ExtraInfos):
+        self._ExtraInfos = ExtraInfos
 
     @property
     def RequestId(self):
@@ -826,6 +854,13 @@ class DescribeFraudBaseResponse(AbstractModel):
                 obj = RiskInfo()
                 obj._deserialize(item)
                 self._HistRiskInfos.append(obj)
+        self._RiskCheckTimestamp = params.get("RiskCheckTimestamp")
+        if params.get("ExtraInfos") is not None:
+            self._ExtraInfos = []
+            for item in params.get("ExtraInfos"):
+                obj = ExtraInfo()
+                obj._deserialize(item)
+                self._ExtraInfos.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -1736,6 +1771,57 @@ class DescribeTrustedIDResponse(AbstractModel):
         self._SystemVersion = params.get("SystemVersion")
         self._SdkBuildNo = params.get("SdkBuildNo")
         self._RequestId = params.get("RequestId")
+
+
+class ExtraInfo(AbstractModel):
+    r"""附加信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: <p>附加信息名字</p>
+        :type Key: str
+        :param _Value: <p>附加信息内容</p>
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        r"""<p>附加信息名字</p>
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        r"""<p>附加信息内容</p>
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class RiskInfo(AbstractModel):

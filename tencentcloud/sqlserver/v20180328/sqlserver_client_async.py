@@ -97,6 +97,24 @@ class SqlserverClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CloseLog(
+            self,
+            request: models.CloseLogRequest,
+            opts: Dict = None,
+    ) -> models.CloseLogResponse:
+        """
+        关闭日志
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CloseLog"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CloseLogResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CompleteExpansion(
             self,
             request: models.CompleteExpansionRequest,
@@ -313,6 +331,24 @@ class SqlserverClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateExportTask(
+            self,
+            request: models.CreateExportTaskRequest,
+            opts: Dict = None,
+    ) -> models.CreateExportTaskResponse:
+        """
+        创建日志下载任务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateExportTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateExportTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateIncrementalMigration(
             self,
             request: models.CreateIncrementalMigrationRequest,
@@ -488,6 +524,24 @@ class SqlserverClient(AbstractClient):
         kwargs["action"] = "DeleteDBInstance"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteDBInstanceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteExportTask(
+            self,
+            request: models.DeleteExportTaskRequest,
+            opts: Dict = None,
+    ) -> models.DeleteExportTaskResponse:
+        """
+        删除日志下载任务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteExportTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteExportTaskResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1069,6 +1123,24 @@ class SqlserverClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeExportTasks(
+            self,
+            request: models.DescribeExportTasksRequest,
+            opts: Dict = None,
+    ) -> models.DescribeExportTasksResponse:
+        """
+        查询日志下载任务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeExportTasks"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeExportTasksResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeFlowStatus(
             self,
             request: models.DescribeFlowStatusRequest,
@@ -1226,6 +1298,42 @@ class SqlserverClient(AbstractClient):
         kwargs["action"] = "DescribeInstanceTradeParameter"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeInstanceTradeParameterResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeLogInstanceList(
+            self,
+            request: models.DescribeLogInstanceListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeLogInstanceListResponse:
+        """
+        日志实例列表查询
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeLogInstanceList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeLogInstanceListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeLogs(
+            self,
+            request: models.DescribeLogsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeLogsResponse:
+        """
+        查询日志
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeLogs"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeLogsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2223,6 +2331,24 @@ class SqlserverClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyLog(
+            self,
+            request: models.ModifyLogRequest,
+            opts: Dict = None,
+    ) -> models.ModifyLogResponse:
+        """
+        修改日志
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyLog"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyLogResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyMaintenanceSpan(
             self,
             request: models.ModifyMaintenanceSpanRequest,
@@ -2344,6 +2470,24 @@ class SqlserverClient(AbstractClient):
         kwargs["action"] = "OpenInterCommunication"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.OpenInterCommunicationResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def OpenLog(
+            self,
+            request: models.OpenLogRequest,
+            opts: Dict = None,
+    ) -> models.OpenLogResponse:
+        """
+        开启审计日志
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "OpenLog"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.OpenLogResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

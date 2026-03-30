@@ -2091,6 +2091,10 @@ class SubmitTextureTo3DJobRequest(AbstractModel):
         r"""
         :param _File3D: <p>源3D模型文件。<br>Type可选值：OBJ，GLB</p>
         :type File3D: :class:`tencentcloud.ai3d.v20250513.models.File3D`
+        :param _Model: <p>混元生3D生成模型版本，默认为3.0，可选项：3.0，3.1<br>仅选择3.1版本时，多视图功能可用。</p>
+        :type Model: str
+        :param _MultiViewImages: <p>多视角的模型图片（仅3.1版本支持），视角参考值：<br>left：左视图；<br>right：右视图；<br>back：后视图；<br>top：顶视图；<br>bottom：底视图；<br>left_front：左前45°视图；<br>right_front：右前45°视图；</p><p>每个视角仅限制一张图片。<br>●图片大小限制：编码后所有图片大小总和不可超过8M。（base64编码下图片大小总和不超过6M，因base64编码后图片大小会大30%左右）<br>●图片分辨率限制：单边分辨率小于5000且大于128。<br>●支持图片格式：支持jpg或png</p>
+        :type MultiViewImages: list of ViewImage
         :param _Prompt: <p>文生3D，3D内容的描述，中文正向提示词。<br>最多支持200个 utf-8 字符。<br>文生3D, image、image_url和 prompt必填其一，且prompt和image/image_url不能同时存在。</p>
         :type Prompt: str
         :param _Image: <p>3D模型纹理参考图 Base64 数据和参考图 Url。</p><ul><li>Base64 和 Url 必须提供一个，如果都提供以 Url 为准。</li><li>图片限制：单边分辨率小于4096且大于128，转成 Base64 字符串后小于 10MB，格式支持 jpg、jpeg、png。</li></ul>
@@ -2099,6 +2103,8 @@ class SubmitTextureTo3DJobRequest(AbstractModel):
         :type EnablePBR: bool
         """
         self._File3D = None
+        self._Model = None
+        self._MultiViewImages = None
         self._Prompt = None
         self._Image = None
         self._EnablePBR = None
@@ -2113,6 +2119,28 @@ class SubmitTextureTo3DJobRequest(AbstractModel):
     @File3D.setter
     def File3D(self, File3D):
         self._File3D = File3D
+
+    @property
+    def Model(self):
+        r"""<p>混元生3D生成模型版本，默认为3.0，可选项：3.0，3.1<br>仅选择3.1版本时，多视图功能可用。</p>
+        :rtype: str
+        """
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+    @property
+    def MultiViewImages(self):
+        r"""<p>多视角的模型图片（仅3.1版本支持），视角参考值：<br>left：左视图；<br>right：右视图；<br>back：后视图；<br>top：顶视图；<br>bottom：底视图；<br>left_front：左前45°视图；<br>right_front：右前45°视图；</p><p>每个视角仅限制一张图片。<br>●图片大小限制：编码后所有图片大小总和不可超过8M。（base64编码下图片大小总和不超过6M，因base64编码后图片大小会大30%左右）<br>●图片分辨率限制：单边分辨率小于5000且大于128。<br>●支持图片格式：支持jpg或png</p>
+        :rtype: list of ViewImage
+        """
+        return self._MultiViewImages
+
+    @MultiViewImages.setter
+    def MultiViewImages(self, MultiViewImages):
+        self._MultiViewImages = MultiViewImages
 
     @property
     def Prompt(self):
@@ -2152,6 +2180,13 @@ class SubmitTextureTo3DJobRequest(AbstractModel):
         if params.get("File3D") is not None:
             self._File3D = File3D()
             self._File3D._deserialize(params.get("File3D"))
+        self._Model = params.get("Model")
+        if params.get("MultiViewImages") is not None:
+            self._MultiViewImages = []
+            for item in params.get("MultiViewImages"):
+                obj = ViewImage()
+                obj._deserialize(item)
+                self._MultiViewImages.append(obj)
         self._Prompt = params.get("Prompt")
         if params.get("Image") is not None:
             self._Image = Image()

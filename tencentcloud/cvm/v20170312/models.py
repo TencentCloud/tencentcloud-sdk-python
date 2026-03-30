@@ -7799,6 +7799,347 @@ class DescribeRegionsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeResourcePoolPackInstancesRequest(AbstractModel):
+    r"""DescribeResourcePoolPackInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DedicatedResourcePackIds: 实例资源池ID列表。形如：rpp-39kj2fsb。每次请求的实例的上限为100。
+        :type DedicatedResourcePackIds: list of str
+        """
+        self._DedicatedResourcePackIds = None
+
+    @property
+    def DedicatedResourcePackIds(self):
+        r"""实例资源池ID列表。形如：rpp-39kj2fsb。每次请求的实例的上限为100。
+        :rtype: list of str
+        """
+        return self._DedicatedResourcePackIds
+
+    @DedicatedResourcePackIds.setter
+    def DedicatedResourcePackIds(self, DedicatedResourcePackIds):
+        self._DedicatedResourcePackIds = DedicatedResourcePackIds
+
+
+    def _deserialize(self, params):
+        self._DedicatedResourcePackIds = params.get("DedicatedResourcePackIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeResourcePoolPackInstancesResponse(AbstractModel):
+    r"""DescribeResourcePoolPackInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DedicatedResourcePackInstanceSet: 实例资源池内已创建的实例详情列表。
+        :type DedicatedResourcePackInstanceSet: list of ResourcePoolPackInstance
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DedicatedResourcePackInstanceSet = None
+        self._RequestId = None
+
+    @property
+    def DedicatedResourcePackInstanceSet(self):
+        r"""实例资源池内已创建的实例详情列表。
+        :rtype: list of ResourcePoolPackInstance
+        """
+        return self._DedicatedResourcePackInstanceSet
+
+    @DedicatedResourcePackInstanceSet.setter
+    def DedicatedResourcePackInstanceSet(self, DedicatedResourcePackInstanceSet):
+        self._DedicatedResourcePackInstanceSet = DedicatedResourcePackInstanceSet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("DedicatedResourcePackInstanceSet") is not None:
+            self._DedicatedResourcePackInstanceSet = []
+            for item in params.get("DedicatedResourcePackInstanceSet"):
+                obj = ResourcePoolPackInstance()
+                obj._deserialize(item)
+                self._DedicatedResourcePackInstanceSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeResourcePoolPackTypeConfigsRequest(AbstractModel):
+    r"""DescribeResourcePoolPackTypeConfigs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filters: <li><strong>zone</strong></li>
+<p style="padding-left: 30px;">按照【<strong>可用区</strong>】进行过滤。形如：ap-guangzhou-6。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：是</p><p style="padding-left: 30px;">可选项：<a href="https://cloud.tencent.com/document/product/213/6091">可用区列表</a></p>
+<li><strong>instance-family</strong></li>
+<p style="padding-left: 30px;">按照【<strong>实例族</strong>】进行过滤。形如：SA9。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
+<li><strong>instance-type</strong></li>
+<p style="padding-left: 30px;">按照【<strong>实例规格</strong>】进行过滤。形如：SA9.96XLARGE1152。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
+每次请求的`Filters`的上限为10。
+        :type Filters: list of Filter
+        """
+        self._Filters = None
+
+    @property
+    def Filters(self):
+        r"""<li><strong>zone</strong></li>
+<p style="padding-left: 30px;">按照【<strong>可用区</strong>】进行过滤。形如：ap-guangzhou-6。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：是</p><p style="padding-left: 30px;">可选项：<a href="https://cloud.tencent.com/document/product/213/6091">可用区列表</a></p>
+<li><strong>instance-family</strong></li>
+<p style="padding-left: 30px;">按照【<strong>实例族</strong>】进行过滤。形如：SA9。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
+<li><strong>instance-type</strong></li>
+<p style="padding-left: 30px;">按照【<strong>实例规格</strong>】进行过滤。形如：SA9.96XLARGE1152。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
+每次请求的`Filters`的上限为10。
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeResourcePoolPackTypeConfigsResponse(AbstractModel):
+    r"""DescribeResourcePoolPackTypeConfigs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceTypeConfigSet: 支持实例资源池的机型规格列表。
+        :type InstanceTypeConfigSet: list of InstanceTypeConfig
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._InstanceTypeConfigSet = None
+        self._RequestId = None
+
+    @property
+    def InstanceTypeConfigSet(self):
+        r"""支持实例资源池的机型规格列表。
+        :rtype: list of InstanceTypeConfig
+        """
+        return self._InstanceTypeConfigSet
+
+    @InstanceTypeConfigSet.setter
+    def InstanceTypeConfigSet(self, InstanceTypeConfigSet):
+        self._InstanceTypeConfigSet = InstanceTypeConfigSet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("InstanceTypeConfigSet") is not None:
+            self._InstanceTypeConfigSet = []
+            for item in params.get("InstanceTypeConfigSet"):
+                obj = InstanceTypeConfig()
+                obj._deserialize(item)
+                self._InstanceTypeConfigSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeResourcePoolPacksRequest(AbstractModel):
+    r"""DescribeResourcePoolPacks请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MaxResults: 返回数量，默认值为10，最小值为10，最大值为100。
+        :type MaxResults: int
+        :param _NextToken: 分页标记，用于获取下一页数据。
+        :type NextToken: str
+        :param _Filters: <li><strong>dedicated-resource-pack-id</strong></li>
+<p style="padding-left: 30px;">按照【<strong>实例资源池ID</strong>】进行过滤。形如：rpp-rn99mzt2。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
+<li><strong>zone</strong></li>
+<p style="padding-left: 30px;">按照【<strong>可用区</strong>】进行过滤。形如：ap-guangzhou-6。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p><p style="padding-left: 30px;">可选项：<a href="https://cloud.tencent.com/document/product/213/6091">可用区列表</a></p>
+<li><strong>instance-family</strong></li>
+<p style="padding-left: 30px;">按照【<strong>实例类型</strong>】进行过滤。形如：SA9。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
+<li><strong>instance-type</strong></li>
+<p style="padding-left: 30px;">按照【<strong>实例规格</strong>】进行过滤。形如：SA9.96XLARGE1152。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
+<li><strong>status</strong></li>
+<p style="padding-left: 30px;">按照【<strong>实例资源池状态</strong>】进行过滤。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p><p style="padding-left: 30px;">可选项：CREATING (创建中) | ACTIVE (运行中) | RETIRED (已过期)</p>
+每次请求的`Filters`的上限为10。
+        :type Filters: list of Filter
+        """
+        self._MaxResults = None
+        self._NextToken = None
+        self._Filters = None
+
+    @property
+    def MaxResults(self):
+        r"""返回数量，默认值为10，最小值为10，最大值为100。
+        :rtype: int
+        """
+        return self._MaxResults
+
+    @MaxResults.setter
+    def MaxResults(self, MaxResults):
+        self._MaxResults = MaxResults
+
+    @property
+    def NextToken(self):
+        r"""分页标记，用于获取下一页数据。
+        :rtype: str
+        """
+        return self._NextToken
+
+    @NextToken.setter
+    def NextToken(self, NextToken):
+        self._NextToken = NextToken
+
+    @property
+    def Filters(self):
+        r"""<li><strong>dedicated-resource-pack-id</strong></li>
+<p style="padding-left: 30px;">按照【<strong>实例资源池ID</strong>】进行过滤。形如：rpp-rn99mzt2。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
+<li><strong>zone</strong></li>
+<p style="padding-left: 30px;">按照【<strong>可用区</strong>】进行过滤。形如：ap-guangzhou-6。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p><p style="padding-left: 30px;">可选项：<a href="https://cloud.tencent.com/document/product/213/6091">可用区列表</a></p>
+<li><strong>instance-family</strong></li>
+<p style="padding-left: 30px;">按照【<strong>实例类型</strong>】进行过滤。形如：SA9。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
+<li><strong>instance-type</strong></li>
+<p style="padding-left: 30px;">按照【<strong>实例规格</strong>】进行过滤。形如：SA9.96XLARGE1152。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p>
+<li><strong>status</strong></li>
+<p style="padding-left: 30px;">按照【<strong>实例资源池状态</strong>】进行过滤。</p><p style="padding-left: 30px;">类型：String</p><p style="padding-left: 30px;">必选：否</p><p style="padding-left: 30px;">可选项：CREATING (创建中) | ACTIVE (运行中) | RETIRED (已过期)</p>
+每次请求的`Filters`的上限为10。
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._MaxResults = params.get("MaxResults")
+        self._NextToken = params.get("NextToken")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeResourcePoolPacksResponse(AbstractModel):
+    r"""DescribeResourcePoolPacks返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DedicatedResourcePackSet: 符合条件的实例资源池列表。
+        :type DedicatedResourcePackSet: list of ResourcePoolPack
+        :param _NextToken: 下一页数据的标记，用于分页查询。值为空时表示已到最后一页。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NextToken: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DedicatedResourcePackSet = None
+        self._NextToken = None
+        self._RequestId = None
+
+    @property
+    def DedicatedResourcePackSet(self):
+        r"""符合条件的实例资源池列表。
+        :rtype: list of ResourcePoolPack
+        """
+        return self._DedicatedResourcePackSet
+
+    @DedicatedResourcePackSet.setter
+    def DedicatedResourcePackSet(self, DedicatedResourcePackSet):
+        self._DedicatedResourcePackSet = DedicatedResourcePackSet
+
+    @property
+    def NextToken(self):
+        r"""下一页数据的标记，用于分页查询。值为空时表示已到最后一页。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._NextToken
+
+    @NextToken.setter
+    def NextToken(self, NextToken):
+        self._NextToken = NextToken
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("DedicatedResourcePackSet") is not None:
+            self._DedicatedResourcePackSet = []
+            for item in params.get("DedicatedResourcePackSet"):
+                obj = ResourcePoolPack()
+                obj._deserialize(item)
+                self._DedicatedResourcePackSet.append(obj)
+        self._NextToken = params.get("NextToken")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeTaskInfoRequest(AbstractModel):
     r"""DescribeTaskInfo请求参数结构体
 
@@ -11110,6 +11451,132 @@ class ImportKeyPairResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._KeyId = params.get("KeyId")
+        self._RequestId = params.get("RequestId")
+
+
+class InquirePricePurchaseResourcePoolPacksRequest(AbstractModel):
+    r"""InquirePricePurchaseResourcePoolPacks请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Zone: 实例资源池预扣包所在可用区。形如：ap-guangzhou-6。可通过[DescribeZones](https://cloud.tencent.com/document/product/213/15707)接口获取可用区列表。
+        :type Zone: str
+        :param _InstanceType: 实例资源池的规格，仅支持整机/半整机规格。形如：SA9.96XLARGE1152。
+        :type InstanceType: str
+        :param _InstanceCount: 实例资源池的数量。1个数量代表1个半整机/整机资源池。
+        :type InstanceCount: int
+        :param _Period: 实例资源池的时长，单位：月。取值范围：1-60。
+        :type Period: int
+        """
+        self._Zone = None
+        self._InstanceType = None
+        self._InstanceCount = None
+        self._Period = None
+
+    @property
+    def Zone(self):
+        r"""实例资源池预扣包所在可用区。形如：ap-guangzhou-6。可通过[DescribeZones](https://cloud.tencent.com/document/product/213/15707)接口获取可用区列表。
+        :rtype: str
+        """
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def InstanceType(self):
+        r"""实例资源池的规格，仅支持整机/半整机规格。形如：SA9.96XLARGE1152。
+        :rtype: str
+        """
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def InstanceCount(self):
+        r"""实例资源池的数量。1个数量代表1个半整机/整机资源池。
+        :rtype: int
+        """
+        return self._InstanceCount
+
+    @InstanceCount.setter
+    def InstanceCount(self, InstanceCount):
+        self._InstanceCount = InstanceCount
+
+    @property
+    def Period(self):
+        r"""实例资源池的时长，单位：月。取值范围：1-60。
+        :rtype: int
+        """
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
+
+
+    def _deserialize(self, params):
+        self._Zone = params.get("Zone")
+        self._InstanceType = params.get("InstanceType")
+        self._InstanceCount = params.get("InstanceCount")
+        self._Period = params.get("Period")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InquirePricePurchaseResourcePoolPacksResponse(AbstractModel):
+    r"""InquirePricePurchaseResourcePoolPacks返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Price: 实例资源池价格信息。
+        :type Price: :class:`tencentcloud.cvm.v20170312.models.ItemPrice`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Price = None
+        self._RequestId = None
+
+    @property
+    def Price(self):
+        r"""实例资源池价格信息。
+        :rtype: :class:`tencentcloud.cvm.v20170312.models.ItemPrice`
+        """
+        return self._Price
+
+    @Price.setter
+    def Price(self, Price):
+        self._Price = Price
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Price") is not None:
+            self._Price = ItemPrice()
+            self._Price._deserialize(params.get("Price"))
         self._RequestId = params.get("RequestId")
 
 
@@ -17686,11 +18153,14 @@ class Placement(AbstractModel):
         :type HostIds: list of str
         :param _HostId: 实例所属的专用宿主机ID，仅用于出参。
         :type HostId: str
+        :param _RackId: 实例所属的实例资源池机架ID，仅用于出参。
+        :type RackId: str
         """
         self._Zone = None
         self._ProjectId = None
         self._HostIds = None
         self._HostId = None
+        self._RackId = None
 
     @property
     def Zone(self):
@@ -17736,12 +18206,24 @@ class Placement(AbstractModel):
     def HostId(self, HostId):
         self._HostId = HostId
 
+    @property
+    def RackId(self):
+        r"""实例所属的实例资源池机架ID，仅用于出参。
+        :rtype: str
+        """
+        return self._RackId
+
+    @RackId.setter
+    def RackId(self, RackId):
+        self._RackId = RackId
+
 
     def _deserialize(self, params):
         self._Zone = params.get("Zone")
         self._ProjectId = params.get("ProjectId")
         self._HostIds = params.get("HostIds")
         self._HostId = params.get("HostId")
+        self._RackId = params.get("RackId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18090,6 +18572,225 @@ class ProgramFpgaImageResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class PurchaseResourcePoolPacksRequest(AbstractModel):
+    r"""PurchaseResourcePoolPacks请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Zone: 实例资源池预扣包所在可用区。形如：ap-guangzhou-6。可通过[DescribeZones](https://cloud.tencent.com/document/product/213/15707)接口获取可用区列表。
+        :type Zone: str
+        :param _InstanceType: 实例资源池预扣包的规格，仅支持半整机/整机规格。形如：SA9.96XLARGE1152（SA9半整机）。
+        :type InstanceType: str
+        :param _InstanceCount: 实例资源池预扣包的数量。1个数量代表1个半整机/整机资源池。取值范围：1-100。
+        :type InstanceCount: int
+        :param _Period: 实例资源池预扣包的时长，单位：月。取值范围：1-60。
+        :type Period: int
+        :param _ResourcePoolPackType: 实例资源池类型。取值范围：
+<li>EXCLUSIVE：独享（默认值）</li>
+<li>SHARED：共享</li>
+注意：第一期仅支持EXCLUSIVE类型。
+        :type ResourcePoolPackType: str
+        :param _AutoPlacement: 自动放置开关，默认开启（true）。
+<li>开启：在不指定实例资源池创建实例时，系统会在开启了该能力的实例资源池里寻找合适的池子创建实例。</li>
+<li>关闭：在不指定实例资源池创建实例时，系统不会在该池子里创建实例，只有在指定实例资源池创建实例时，指定了该池子的ID，才允许在池子内创建实例。</li>
+        :type AutoPlacement: bool
+        :param _DedicatedResourcePoolPackName: 实例资源池的名称。长度限制：1-60个字符，支持中文、英文、数字、连接线"-"、下划线"_"。
+        :type DedicatedResourcePoolPackName: str
+        :param _RenewFlag: 自动续费标识。取值范围：
+<li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费</li>
+<li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费（默认值）</li>
+<li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费</li>
+        :type RenewFlag: str
+        :param _DryRun: 试运行，用于校验请求参数是否正确。默认为false。
+<li>true：发送检查请求，不会创建实例资源池。检查项包括是否填写了必需参数，请求格式，业务限制等。如果检查不通过，则返回对应错误码；如果检查通过，则返回RequestId。</li>
+<li>false（默认值）：发送正常请求，通过检查后直接创建实例资源池。</li>
+        :type DryRun: bool
+        """
+        self._Zone = None
+        self._InstanceType = None
+        self._InstanceCount = None
+        self._Period = None
+        self._ResourcePoolPackType = None
+        self._AutoPlacement = None
+        self._DedicatedResourcePoolPackName = None
+        self._RenewFlag = None
+        self._DryRun = None
+
+    @property
+    def Zone(self):
+        r"""实例资源池预扣包所在可用区。形如：ap-guangzhou-6。可通过[DescribeZones](https://cloud.tencent.com/document/product/213/15707)接口获取可用区列表。
+        :rtype: str
+        """
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def InstanceType(self):
+        r"""实例资源池预扣包的规格，仅支持半整机/整机规格。形如：SA9.96XLARGE1152（SA9半整机）。
+        :rtype: str
+        """
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def InstanceCount(self):
+        r"""实例资源池预扣包的数量。1个数量代表1个半整机/整机资源池。取值范围：1-100。
+        :rtype: int
+        """
+        return self._InstanceCount
+
+    @InstanceCount.setter
+    def InstanceCount(self, InstanceCount):
+        self._InstanceCount = InstanceCount
+
+    @property
+    def Period(self):
+        r"""实例资源池预扣包的时长，单位：月。取值范围：1-60。
+        :rtype: int
+        """
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
+
+    @property
+    def ResourcePoolPackType(self):
+        r"""实例资源池类型。取值范围：
+<li>EXCLUSIVE：独享（默认值）</li>
+<li>SHARED：共享</li>
+注意：第一期仅支持EXCLUSIVE类型。
+        :rtype: str
+        """
+        return self._ResourcePoolPackType
+
+    @ResourcePoolPackType.setter
+    def ResourcePoolPackType(self, ResourcePoolPackType):
+        self._ResourcePoolPackType = ResourcePoolPackType
+
+    @property
+    def AutoPlacement(self):
+        r"""自动放置开关，默认开启（true）。
+<li>开启：在不指定实例资源池创建实例时，系统会在开启了该能力的实例资源池里寻找合适的池子创建实例。</li>
+<li>关闭：在不指定实例资源池创建实例时，系统不会在该池子里创建实例，只有在指定实例资源池创建实例时，指定了该池子的ID，才允许在池子内创建实例。</li>
+        :rtype: bool
+        """
+        return self._AutoPlacement
+
+    @AutoPlacement.setter
+    def AutoPlacement(self, AutoPlacement):
+        self._AutoPlacement = AutoPlacement
+
+    @property
+    def DedicatedResourcePoolPackName(self):
+        r"""实例资源池的名称。长度限制：1-60个字符，支持中文、英文、数字、连接线"-"、下划线"_"。
+        :rtype: str
+        """
+        return self._DedicatedResourcePoolPackName
+
+    @DedicatedResourcePoolPackName.setter
+    def DedicatedResourcePoolPackName(self, DedicatedResourcePoolPackName):
+        self._DedicatedResourcePoolPackName = DedicatedResourcePoolPackName
+
+    @property
+    def RenewFlag(self):
+        r"""自动续费标识。取值范围：
+<li>NOTIFY_AND_AUTO_RENEW：通知过期且自动续费</li>
+<li>NOTIFY_AND_MANUAL_RENEW：通知过期不自动续费（默认值）</li>
+<li>DISABLE_NOTIFY_AND_MANUAL_RENEW：不通知过期不自动续费</li>
+        :rtype: str
+        """
+        return self._RenewFlag
+
+    @RenewFlag.setter
+    def RenewFlag(self, RenewFlag):
+        self._RenewFlag = RenewFlag
+
+    @property
+    def DryRun(self):
+        r"""试运行，用于校验请求参数是否正确。默认为false。
+<li>true：发送检查请求，不会创建实例资源池。检查项包括是否填写了必需参数，请求格式，业务限制等。如果检查不通过，则返回对应错误码；如果检查通过，则返回RequestId。</li>
+<li>false（默认值）：发送正常请求，通过检查后直接创建实例资源池。</li>
+        :rtype: bool
+        """
+        return self._DryRun
+
+    @DryRun.setter
+    def DryRun(self, DryRun):
+        self._DryRun = DryRun
+
+
+    def _deserialize(self, params):
+        self._Zone = params.get("Zone")
+        self._InstanceType = params.get("InstanceType")
+        self._InstanceCount = params.get("InstanceCount")
+        self._Period = params.get("Period")
+        self._ResourcePoolPackType = params.get("ResourcePoolPackType")
+        self._AutoPlacement = params.get("AutoPlacement")
+        self._DedicatedResourcePoolPackName = params.get("DedicatedResourcePoolPackName")
+        self._RenewFlag = params.get("RenewFlag")
+        self._DryRun = params.get("DryRun")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PurchaseResourcePoolPacksResponse(AbstractModel):
+    r"""PurchaseResourcePoolPacks返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DedicatedResourcePackIdSet: 创建的实例资源池ID列表。形如：rpp-39kj2fsb。
+        :type DedicatedResourcePackIdSet: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DedicatedResourcePackIdSet = None
+        self._RequestId = None
+
+    @property
+    def DedicatedResourcePackIdSet(self):
+        r"""创建的实例资源池ID列表。形如：rpp-39kj2fsb。
+        :rtype: list of str
+        """
+        return self._DedicatedResourcePackIdSet
+
+    @DedicatedResourcePackIdSet.setter
+    def DedicatedResourcePackIdSet(self, DedicatedResourcePackIdSet):
+        self._DedicatedResourcePackIdSet = DedicatedResourcePackIdSet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._DedicatedResourcePackIdSet = params.get("DedicatedResourcePackIdSet")
         self._RequestId = params.get("RequestId")
 
 
@@ -19856,6 +20557,464 @@ class ResizeInstanceDisksResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class ResourceCount(AbstractModel):
+    r"""实例资源池容量
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Cpu: vCPU核数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Cpu: int
+        :param _Memory: 内存大小，单位：GB。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Memory: int
+        :param _Gpu: GPU数量。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Gpu: int
+        :param _Disk: 本地盘大小，单位：GB。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Disk: int
+        """
+        self._Cpu = None
+        self._Memory = None
+        self._Gpu = None
+        self._Disk = None
+
+    @property
+    def Cpu(self):
+        r"""vCPU核数。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Cpu
+
+    @Cpu.setter
+    def Cpu(self, Cpu):
+        self._Cpu = Cpu
+
+    @property
+    def Memory(self):
+        r"""内存大小，单位：GB。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Memory
+
+    @Memory.setter
+    def Memory(self, Memory):
+        self._Memory = Memory
+
+    @property
+    def Gpu(self):
+        r"""GPU数量。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Gpu
+
+    @Gpu.setter
+    def Gpu(self, Gpu):
+        self._Gpu = Gpu
+
+    @property
+    def Disk(self):
+        r"""本地盘大小，单位：GB。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Disk
+
+    @Disk.setter
+    def Disk(self, Disk):
+        self._Disk = Disk
+
+
+    def _deserialize(self, params):
+        self._Cpu = params.get("Cpu")
+        self._Memory = params.get("Memory")
+        self._Gpu = params.get("Gpu")
+        self._Disk = params.get("Disk")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResourcePoolPack(AbstractModel):
+    r"""实例资源池
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DedicatedResourcePackId: 实例资源池ID。形如：rpp-rn99mzt2。
+        :type DedicatedResourcePackId: str
+        :param _DedicatedResourcePackName: 实例资源池的名称。
+        :type DedicatedResourcePackName: str
+        :param _Zone: 实例资源池预扣包所在可用区。形如：ap-guangzhou-6。
+返回项：<a href="https://cloud.tencent.com/document/product/213/6091">可用区列表</a>
+        :type Zone: str
+        :param _InstanceType: 实例资源池预扣包的规格，仅支持半整机/整机规格。形如：SA9.96XLARGE1152（SA9半整机）。
+        :type InstanceType: str
+        :param _InstanceFamily: 实例资源池预扣包的实例类型。形如：SA9。
+        :type InstanceFamily: str
+        :param _ResourcePoolPackType: 实例资源池类型。
+返回项：EXCLUSIVE (独享) | SHARED (共享)。
+        :type ResourcePoolPackType: str
+        :param _Status: 实例资源池状态。
+返回项：CREATING (创建中) | ACTIVE (运行中) | FAILED (创建失败) | RETIRED (已过期)。
+        :type Status: str
+        :param _TotalCapacity: 实例资源池总容量。
+        :type TotalCapacity: :class:`tencentcloud.cvm.v20170312.models.ResourceCount`
+        :param _AvailableCapacity: 实例资源池剩余容量。
+        :type AvailableCapacity: :class:`tencentcloud.cvm.v20170312.models.ResourceCount`
+        :param _HostIp: 底层物理机IP（已加密）。
+        :type HostIp: str
+        :param _RackId: 机架ID（已加密）。
+        :type RackId: str
+        :param _SwitchId: 交换机ID（已加密）。
+        :type SwitchId: str
+        :param _AutoPlacement: 自动放置开关状态。开启则在不指定实例资源池创建实例时，系统会在开启了该能力的实例资源池里寻找合适的池子创建实例。关闭则在不指定实例资源池创建实例时，系统不会在该池子里创建实例，只有在指定实例资源池创建实例时，指定了该池子的ID，才允许在池子内创建实例。
+        :type AutoPlacement: bool
+        :param _RenewFlag: 自动续费标识。
+返回项：NOTIFY_AND_AUTO_RENEW (通知且自动续费) | NOTIFY_AND_MANUAL_RENEW (通知不自动续费) | DISABLE_NOTIFY_AND_MANUAL_RENEW (不通知不自动续费)。
+        :type RenewFlag: str
+        :param _StartTime: 实例资源池预扣包创建时间。按照`ISO8601`标准表示，并且使用`UTC`时间。格式为：`YYYY-MM-DDThh:mm:ssZ`。
+        :type StartTime: str
+        :param _EndTime: 实例资源池到期时间。按照`ISO8601`标准表示，并且使用`UTC`时间。格式为：`YYYY-MM-DDThh:mm:ssZ`。
+        :type EndTime: str
+        """
+        self._DedicatedResourcePackId = None
+        self._DedicatedResourcePackName = None
+        self._Zone = None
+        self._InstanceType = None
+        self._InstanceFamily = None
+        self._ResourcePoolPackType = None
+        self._Status = None
+        self._TotalCapacity = None
+        self._AvailableCapacity = None
+        self._HostIp = None
+        self._RackId = None
+        self._SwitchId = None
+        self._AutoPlacement = None
+        self._RenewFlag = None
+        self._StartTime = None
+        self._EndTime = None
+
+    @property
+    def DedicatedResourcePackId(self):
+        r"""实例资源池ID。形如：rpp-rn99mzt2。
+        :rtype: str
+        """
+        return self._DedicatedResourcePackId
+
+    @DedicatedResourcePackId.setter
+    def DedicatedResourcePackId(self, DedicatedResourcePackId):
+        self._DedicatedResourcePackId = DedicatedResourcePackId
+
+    @property
+    def DedicatedResourcePackName(self):
+        r"""实例资源池的名称。
+        :rtype: str
+        """
+        return self._DedicatedResourcePackName
+
+    @DedicatedResourcePackName.setter
+    def DedicatedResourcePackName(self, DedicatedResourcePackName):
+        self._DedicatedResourcePackName = DedicatedResourcePackName
+
+    @property
+    def Zone(self):
+        r"""实例资源池预扣包所在可用区。形如：ap-guangzhou-6。
+返回项：<a href="https://cloud.tencent.com/document/product/213/6091">可用区列表</a>
+        :rtype: str
+        """
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def InstanceType(self):
+        r"""实例资源池预扣包的规格，仅支持半整机/整机规格。形如：SA9.96XLARGE1152（SA9半整机）。
+        :rtype: str
+        """
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def InstanceFamily(self):
+        r"""实例资源池预扣包的实例类型。形如：SA9。
+        :rtype: str
+        """
+        return self._InstanceFamily
+
+    @InstanceFamily.setter
+    def InstanceFamily(self, InstanceFamily):
+        self._InstanceFamily = InstanceFamily
+
+    @property
+    def ResourcePoolPackType(self):
+        r"""实例资源池类型。
+返回项：EXCLUSIVE (独享) | SHARED (共享)。
+        :rtype: str
+        """
+        return self._ResourcePoolPackType
+
+    @ResourcePoolPackType.setter
+    def ResourcePoolPackType(self, ResourcePoolPackType):
+        self._ResourcePoolPackType = ResourcePoolPackType
+
+    @property
+    def Status(self):
+        r"""实例资源池状态。
+返回项：CREATING (创建中) | ACTIVE (运行中) | FAILED (创建失败) | RETIRED (已过期)。
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def TotalCapacity(self):
+        r"""实例资源池总容量。
+        :rtype: :class:`tencentcloud.cvm.v20170312.models.ResourceCount`
+        """
+        return self._TotalCapacity
+
+    @TotalCapacity.setter
+    def TotalCapacity(self, TotalCapacity):
+        self._TotalCapacity = TotalCapacity
+
+    @property
+    def AvailableCapacity(self):
+        r"""实例资源池剩余容量。
+        :rtype: :class:`tencentcloud.cvm.v20170312.models.ResourceCount`
+        """
+        return self._AvailableCapacity
+
+    @AvailableCapacity.setter
+    def AvailableCapacity(self, AvailableCapacity):
+        self._AvailableCapacity = AvailableCapacity
+
+    @property
+    def HostIp(self):
+        r"""底层物理机IP（已加密）。
+        :rtype: str
+        """
+        return self._HostIp
+
+    @HostIp.setter
+    def HostIp(self, HostIp):
+        self._HostIp = HostIp
+
+    @property
+    def RackId(self):
+        r"""机架ID（已加密）。
+        :rtype: str
+        """
+        return self._RackId
+
+    @RackId.setter
+    def RackId(self, RackId):
+        self._RackId = RackId
+
+    @property
+    def SwitchId(self):
+        r"""交换机ID（已加密）。
+        :rtype: str
+        """
+        return self._SwitchId
+
+    @SwitchId.setter
+    def SwitchId(self, SwitchId):
+        self._SwitchId = SwitchId
+
+    @property
+    def AutoPlacement(self):
+        r"""自动放置开关状态。开启则在不指定实例资源池创建实例时，系统会在开启了该能力的实例资源池里寻找合适的池子创建实例。关闭则在不指定实例资源池创建实例时，系统不会在该池子里创建实例，只有在指定实例资源池创建实例时，指定了该池子的ID，才允许在池子内创建实例。
+        :rtype: bool
+        """
+        return self._AutoPlacement
+
+    @AutoPlacement.setter
+    def AutoPlacement(self, AutoPlacement):
+        self._AutoPlacement = AutoPlacement
+
+    @property
+    def RenewFlag(self):
+        r"""自动续费标识。
+返回项：NOTIFY_AND_AUTO_RENEW (通知且自动续费) | NOTIFY_AND_MANUAL_RENEW (通知不自动续费) | DISABLE_NOTIFY_AND_MANUAL_RENEW (不通知不自动续费)。
+        :rtype: str
+        """
+        return self._RenewFlag
+
+    @RenewFlag.setter
+    def RenewFlag(self, RenewFlag):
+        self._RenewFlag = RenewFlag
+
+    @property
+    def StartTime(self):
+        r"""实例资源池预扣包创建时间。按照`ISO8601`标准表示，并且使用`UTC`时间。格式为：`YYYY-MM-DDThh:mm:ssZ`。
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""实例资源池到期时间。按照`ISO8601`标准表示，并且使用`UTC`时间。格式为：`YYYY-MM-DDThh:mm:ssZ`。
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+
+    def _deserialize(self, params):
+        self._DedicatedResourcePackId = params.get("DedicatedResourcePackId")
+        self._DedicatedResourcePackName = params.get("DedicatedResourcePackName")
+        self._Zone = params.get("Zone")
+        self._InstanceType = params.get("InstanceType")
+        self._InstanceFamily = params.get("InstanceFamily")
+        self._ResourcePoolPackType = params.get("ResourcePoolPackType")
+        self._Status = params.get("Status")
+        if params.get("TotalCapacity") is not None:
+            self._TotalCapacity = ResourceCount()
+            self._TotalCapacity._deserialize(params.get("TotalCapacity"))
+        if params.get("AvailableCapacity") is not None:
+            self._AvailableCapacity = ResourceCount()
+            self._AvailableCapacity._deserialize(params.get("AvailableCapacity"))
+        self._HostIp = params.get("HostIp")
+        self._RackId = params.get("RackId")
+        self._SwitchId = params.get("SwitchId")
+        self._AutoPlacement = params.get("AutoPlacement")
+        self._RenewFlag = params.get("RenewFlag")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResourcePoolPackInstance(AbstractModel):
+    r"""描述实例资源池内已创建实例的信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DedicatedResourcePackId: 实例资源池ID。形如：rpp-fb7bzcyt。
+        :type DedicatedResourcePackId: str
+        :param _InstanceIdSet: 实例资源池内的实例ID列表。形如：["ins-5u8lxsum"]。
+        :type InstanceIdSet: list of str
+        :param _InstanceFamily: 实例族。形如：SA9。
+        :type InstanceFamily: str
+        :param _InstanceType: 实例规格。形如：SA9.96XLARGE1152。
+        :type InstanceType: str
+        :param _Zone: 可用区。形如：ap-guangzhou-6。
+        :type Zone: str
+        """
+        self._DedicatedResourcePackId = None
+        self._InstanceIdSet = None
+        self._InstanceFamily = None
+        self._InstanceType = None
+        self._Zone = None
+
+    @property
+    def DedicatedResourcePackId(self):
+        r"""实例资源池ID。形如：rpp-fb7bzcyt。
+        :rtype: str
+        """
+        return self._DedicatedResourcePackId
+
+    @DedicatedResourcePackId.setter
+    def DedicatedResourcePackId(self, DedicatedResourcePackId):
+        self._DedicatedResourcePackId = DedicatedResourcePackId
+
+    @property
+    def InstanceIdSet(self):
+        r"""实例资源池内的实例ID列表。形如：["ins-5u8lxsum"]。
+        :rtype: list of str
+        """
+        return self._InstanceIdSet
+
+    @InstanceIdSet.setter
+    def InstanceIdSet(self, InstanceIdSet):
+        self._InstanceIdSet = InstanceIdSet
+
+    @property
+    def InstanceFamily(self):
+        r"""实例族。形如：SA9。
+        :rtype: str
+        """
+        return self._InstanceFamily
+
+    @InstanceFamily.setter
+    def InstanceFamily(self, InstanceFamily):
+        self._InstanceFamily = InstanceFamily
+
+    @property
+    def InstanceType(self):
+        r"""实例规格。形如：SA9.96XLARGE1152。
+        :rtype: str
+        """
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def Zone(self):
+        r"""可用区。形如：ap-guangzhou-6。
+        :rtype: str
+        """
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+
+    def _deserialize(self, params):
+        self._DedicatedResourcePackId = params.get("DedicatedResourcePackId")
+        self._InstanceIdSet = params.get("InstanceIdSet")
+        self._InstanceFamily = params.get("InstanceFamily")
+        self._InstanceType = params.get("InstanceType")
+        self._Zone = params.get("Zone")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class RunAutomationServiceEnabled(AbstractModel):
@@ -21683,6 +22842,70 @@ class TerminateInstancesRequest(AbstractModel):
 
 class TerminateInstancesResponse(AbstractModel):
     r"""TerminateInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class TerminateResourcePoolPacksRequest(AbstractModel):
+    r"""TerminateResourcePoolPacks请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DedicatedResourcePackIds: 实例资源池ID列表，支持批量销毁。形如：rpp-6rk3550n。每次请求的实例的上限为100。
+        :type DedicatedResourcePackIds: list of str
+        """
+        self._DedicatedResourcePackIds = None
+
+    @property
+    def DedicatedResourcePackIds(self):
+        r"""实例资源池ID列表，支持批量销毁。形如：rpp-6rk3550n。每次请求的实例的上限为100。
+        :rtype: list of str
+        """
+        return self._DedicatedResourcePackIds
+
+    @DedicatedResourcePackIds.setter
+    def DedicatedResourcePackIds(self, DedicatedResourcePackIds):
+        self._DedicatedResourcePackIds = DedicatedResourcePackIds
+
+
+    def _deserialize(self, params):
+        self._DedicatedResourcePackIds = params.get("DedicatedResourcePackIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TerminateResourcePoolPacksResponse(AbstractModel):
+    r"""TerminateResourcePoolPacks返回参数结构体
 
     """
 

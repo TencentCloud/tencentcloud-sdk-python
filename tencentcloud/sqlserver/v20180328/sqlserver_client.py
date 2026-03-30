@@ -118,6 +118,29 @@ class SqlserverClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CloseLog(self, request):
+        r"""关闭日志
+
+        :param request: Request instance for CloseLog.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.CloseLogRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.CloseLogResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CloseLog", params, headers=headers)
+            response = json.loads(body)
+            model = models.CloseLogResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CompleteExpansion(self, request):
         r"""本接口（CompleteExpansion）在实例发起扩容后，实例状态处于“升级待切换”时，可立即完成实例升级切换操作，无需等待可维护时间窗。本接口需要在实例低峰时调用，在完全切换成功前，存在部分库不可访问的风险。
 
@@ -394,6 +417,29 @@ class SqlserverClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateExportTask(self, request):
+        r"""创建日志下载任务
+
+        :param request: Request instance for CreateExportTask.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.CreateExportTaskRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.CreateExportTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateExportTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateExportTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateIncrementalMigration(self, request):
         r"""本接口（CreateIncrementalMigration）用于创建增量备份导入任务。
 
@@ -615,6 +661,29 @@ class SqlserverClient(AbstractClient):
             body = self.call("DeleteDBInstance", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteDBInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteExportTask(self, request):
+        r"""删除日志下载任务
+
+        :param request: Request instance for DeleteExportTask.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DeleteExportTaskRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DeleteExportTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteExportTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteExportTaskResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1360,6 +1429,29 @@ class SqlserverClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeExportTasks(self, request):
+        r"""查询日志下载任务
+
+        :param request: Request instance for DescribeExportTasks.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeExportTasksRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DescribeExportTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeExportTasks", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeExportTasksResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeFlowStatus(self, request):
         r"""本接口(DescribeFlowStatus)用于查询流程状态。
 
@@ -1558,6 +1650,52 @@ class SqlserverClient(AbstractClient):
             body = self.call("DescribeInstanceTradeParameter", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeInstanceTradeParameterResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeLogInstanceList(self, request):
+        r"""日志实例列表查询
+
+        :param request: Request instance for DescribeLogInstanceList.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeLogInstanceListRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DescribeLogInstanceListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLogInstanceList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLogInstanceListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeLogs(self, request):
+        r"""查询日志
+
+        :param request: Request instance for DescribeLogs.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.DescribeLogsRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.DescribeLogsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLogs", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLogsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2834,6 +2972,29 @@ class SqlserverClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyLog(self, request):
+        r"""修改日志
+
+        :param request: Request instance for ModifyLog.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.ModifyLogRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.ModifyLogResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyLog", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyLogResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyMaintenanceSpan(self, request):
         r"""本接口（ModifyMaintenanceSpan）用于修改实例的可维护时间窗
 
@@ -2986,6 +3147,29 @@ class SqlserverClient(AbstractClient):
             body = self.call("OpenInterCommunication", params, headers=headers)
             response = json.loads(body)
             model = models.OpenInterCommunicationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def OpenLog(self, request):
+        r"""开启审计日志
+
+        :param request: Request instance for OpenLog.
+        :type request: :class:`tencentcloud.sqlserver.v20180328.models.OpenLogRequest`
+        :rtype: :class:`tencentcloud.sqlserver.v20180328.models.OpenLogResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("OpenLog", params, headers=headers)
+            response = json.loads(body)
+            model = models.OpenLogResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

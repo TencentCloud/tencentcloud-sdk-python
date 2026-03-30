@@ -37621,9 +37621,12 @@ class StopParams(AbstractModel):
         :type StopPolicy: str
         :param _ThreadCount: 线程数
         :type ThreadCount: int
+        :param _GraceDownTime: 安全停止超时时间，单位秒
+        :type GraceDownTime: int
         """
         self._StopPolicy = None
         self._ThreadCount = None
+        self._GraceDownTime = None
 
     @property
     def StopPolicy(self):
@@ -37648,10 +37651,22 @@ class StopParams(AbstractModel):
     def ThreadCount(self, ThreadCount):
         self._ThreadCount = ThreadCount
 
+    @property
+    def GraceDownTime(self):
+        r"""安全停止超时时间，单位秒
+        :rtype: int
+        """
+        return self._GraceDownTime
+
+    @GraceDownTime.setter
+    def GraceDownTime(self, GraceDownTime):
+        self._GraceDownTime = GraceDownTime
+
 
     def _deserialize(self, params):
         self._StopPolicy = params.get("StopPolicy")
         self._ThreadCount = params.get("ThreadCount")
+        self._GraceDownTime = params.get("GraceDownTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

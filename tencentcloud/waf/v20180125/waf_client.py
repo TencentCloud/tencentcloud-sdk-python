@@ -2027,6 +2027,29 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeLLMContentSecCheck(self, request):
+        r"""大模型请求内容和响应内容审核接口
+
+        :param request: Request instance for DescribeLLMContentSecCheck.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeLLMContentSecCheckRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeLLMContentSecCheckResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLLMContentSecCheck", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLLMContentSecCheckResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeLogHistogram(self, request):
         r"""本接口用于构建日志数量直方图
 
@@ -2317,6 +2340,29 @@ class WafClient(AbstractClient):
             body = self.call("DescribeProtectionModes", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeProtectionModesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeQClawContentSecCheck(self, request):
+        r"""大模型请求内容和响应内容审核接口
+
+        :param request: Request instance for DescribeQClawContentSecCheck.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeQClawContentSecCheckRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeQClawContentSecCheckResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeQClawContentSecCheck", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeQClawContentSecCheckResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

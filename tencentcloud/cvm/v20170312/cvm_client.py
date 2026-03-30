@@ -1154,6 +1154,75 @@ class CvmClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeResourcePoolPackInstances(self, request):
+        r"""本接口(DescribeResourcePoolPackInstances)用于查询指定实例资源池内已创建的实例列表及其物理拓扑信息。
+
+        :param request: Request instance for DescribeResourcePoolPackInstances.
+        :type request: :class:`tencentcloud.cvm.v20170312.models.DescribeResourcePoolPackInstancesRequest`
+        :rtype: :class:`tencentcloud.cvm.v20170312.models.DescribeResourcePoolPackInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeResourcePoolPackInstances", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeResourcePoolPackInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeResourcePoolPackTypeConfigs(self, request):
+        r"""本接口(DescribeResourcePoolPackTypeConfigs)用于查询当前地域/可用区支持创建实例资源池的整机/半整机规格列表。
+
+        :param request: Request instance for DescribeResourcePoolPackTypeConfigs.
+        :type request: :class:`tencentcloud.cvm.v20170312.models.DescribeResourcePoolPackTypeConfigsRequest`
+        :rtype: :class:`tencentcloud.cvm.v20170312.models.DescribeResourcePoolPackTypeConfigsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeResourcePoolPackTypeConfigs", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeResourcePoolPackTypeConfigsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeResourcePoolPacks(self, request):
+        r"""本接口(DescribeResourcePoolPacks)用于查询用户已创建的实例资源池列表，包括资源池基本信息、剩余容量、底层物理拓扑信息等。
+
+        :param request: Request instance for DescribeResourcePoolPacks.
+        :type request: :class:`tencentcloud.cvm.v20170312.models.DescribeResourcePoolPacksRequest`
+        :rtype: :class:`tencentcloud.cvm.v20170312.models.DescribeResourcePoolPacksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeResourcePoolPacks", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeResourcePoolPacksResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeTaskInfo(self, request):
         r"""本接口 (DescribeTaskInfo) 用于查询云服务器维修任务列表及详细信息。
 
@@ -1413,6 +1482,29 @@ class CvmClient(AbstractClient):
             body = self.call("ImportKeyPair", params, headers=headers)
             response = json.loads(body)
             model = models.ImportKeyPairResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def InquirePricePurchaseResourcePoolPacks(self, request):
+        r"""本接口(InquirePricePurchaseResourcePoolPacks)用于查询创建实例资源池的价格。
+
+        :param request: Request instance for InquirePricePurchaseResourcePoolPacks.
+        :type request: :class:`tencentcloud.cvm.v20170312.models.InquirePricePurchaseResourcePoolPacksRequest`
+        :rtype: :class:`tencentcloud.cvm.v20170312.models.InquirePricePurchaseResourcePoolPacksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("InquirePricePurchaseResourcePoolPacks", params, headers=headers)
+            response = json.loads(body)
+            model = models.InquirePricePurchaseResourcePoolPacksResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2068,6 +2160,32 @@ class CvmClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def PurchaseResourcePoolPacks(self, request):
+        r"""本接口(PurchaseResourcePoolPacks)用于创建一个或多个实例资源池，每个资源池绑定一个整机或半整机规格的物理资源容量。
+
+        * 实例资源池为剩余容量按量付费模式，购买前请确保账户余额充足。
+        * 本接口为异步接口，创建请求发送成功后会返回DedicatedResourcePackIds，此时创建任务并未完成。
+
+        :param request: Request instance for PurchaseResourcePoolPacks.
+        :type request: :class:`tencentcloud.cvm.v20170312.models.PurchaseResourcePoolPacksRequest`
+        :rtype: :class:`tencentcloud.cvm.v20170312.models.PurchaseResourcePoolPacksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("PurchaseResourcePoolPacks", params, headers=headers)
+            response = json.loads(body)
+            model = models.PurchaseResourcePoolPacksResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def RebootInstances(self, request):
         r"""本接口 (RebootInstances) 用于重启实例。
 
@@ -2506,6 +2624,34 @@ class CvmClient(AbstractClient):
             body = self.call("TerminateInstances", params, headers=headers)
             response = json.loads(body)
             model = models.TerminateInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def TerminateResourcePoolPacks(self, request):
+        r"""本接口(TerminateResourcePoolPacks)用于销毁指定的实例资源池。
+
+        * 销毁资源池不会销毁池内已创建的实例。
+        * 池内实例会从专属资源池解绑，转移至公共资源池，继续按原生命周期运行。
+        * 转移后无法再查询底层物理拓扑信息。
+        * 释放底层物理资源并删除资源池记录。
+
+        :param request: Request instance for TerminateResourcePoolPacks.
+        :type request: :class:`tencentcloud.cvm.v20170312.models.TerminateResourcePoolPacksRequest`
+        :rtype: :class:`tencentcloud.cvm.v20170312.models.TerminateResourcePoolPacksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("TerminateResourcePoolPacks", params, headers=headers)
+            response = json.loads(body)
+            model = models.TerminateResourcePoolPacksResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

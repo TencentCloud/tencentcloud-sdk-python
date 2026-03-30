@@ -27800,6 +27800,7 @@ class DescribeIntegrationEmployeesRequest(AbstractModel):
 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         :param _Limit: 指定分页每页返回的数据条数，单页最大支持 20。
+如果没有传递， 则为默认值20。
         :type Limit: int
         :param _Agent: 代理企业和员工的信息。
 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
@@ -27839,6 +27840,7 @@ class DescribeIntegrationEmployeesRequest(AbstractModel):
     @property
     def Limit(self):
         r"""指定分页每页返回的数据条数，单页最大支持 20。
+如果没有传递， 则为默认值20。
         :rtype: int
         """
         return self._Limit

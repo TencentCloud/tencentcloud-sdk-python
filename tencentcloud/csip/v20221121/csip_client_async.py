@@ -709,6 +709,42 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeKeySandboxCredential(
+            self,
+            request: models.DescribeKeySandboxCredentialRequest,
+            opts: Dict = None,
+    ) -> models.DescribeKeySandboxCredentialResponse:
+        """
+        查询凭证详情，返回凭证元数据和打码后的凭据数据。access类型返回Access数组（Key原文、Value打码），sts类型返回STS对象（System原文、SecretID和SecretKey打码）
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeKeySandboxCredential"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeKeySandboxCredentialResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeKeySandboxCredentialList(
+            self,
+            request: models.DescribeKeySandboxCredentialListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeKeySandboxCredentialListResponse:
+        """
+        查询凭证列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeKeySandboxCredentialList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeKeySandboxCredentialListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeListenerList(
             self,
             request: models.DescribeListenerListRequest,

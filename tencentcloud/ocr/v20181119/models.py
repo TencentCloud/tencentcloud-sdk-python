@@ -21571,40 +21571,36 @@ class PassportRecognizeInfos(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: 证件类型（护照信息页识别结果）
+        :param _Type: <p>证件类型（护照信息页识别结果）</p>
         :type Type: str
-        :param _IssuingCountry: 发行国家（护照信息页识别结果）
+        :param _IssuingCountry: <p>发行国家（护照信息页识别结果）</p>
         :type IssuingCountry: str
-        :param _PassportID: 护照号码（护照信息页识别结果）
+        :param _PassportID: <p>护照号码（护照信息页识别结果）</p>
         :type PassportID: str
-        :param _Surname: 姓（护照信息页识别结果）
+        :param _Surname: <p>姓（护照信息页识别结果）</p>
         :type Surname: str
-        :param _GivenName: 名（护照信息页识别结果）
+        :param _GivenName: <p>名（护照信息页识别结果）</p>
         :type GivenName: str
-        :param _Name: 姓名（护照信息页识别结果）
+        :param _Name: <p>姓名（护照信息页识别结果）</p>
         :type Name: str
-        :param _Nationality: 国籍信息（护照信息页识别结果）
+        :param _Nationality: <p>国籍信息（护照信息页识别结果）</p>
         :type Nationality: str
-        :param _DateOfBirth: 出生日期（护照信息页识别结果）
+        :param _DateOfBirth: <p>出生日期（护照信息页识别结果）</p>
         :type DateOfBirth: str
-        :param _Sex: 性别（护照信息页识别结果）
+        :param _Sex: <p>性别（护照信息页识别结果）</p>
         :type Sex: str
-        :param _DateOfIssuance: 发行日期（护照信息页识别结果）
+        :param _DateOfIssuance: <p>发行日期（护照信息页识别结果）</p>
         :type DateOfIssuance: str
-        :param _DateOfExpiration: 截止日期（护照信息页识别结果）
+        :param _DateOfExpiration: <p>截止日期（护照信息页识别结果）</p>
         :type DateOfExpiration: str
-        :param _Signature: 持证人签名（护照信息页识别结果）
-
-仅中国大陆护照支持返回此字段，港澳台及境外护照不支持
+        :param _Signature: <p>持证人签名（护照信息页识别结果）</p><p>仅中国大陆护照支持返回此字段，港澳台及境外护照不支持</p>
         :type Signature: str
-        :param _IssuePlace: 签发地点（护照信息页识别结果）
-
-仅中国大陆护照支持返回此字段，港澳台及境外护照不支持
+        :param _IssuePlace: <p>签发地点（护照信息页识别结果）</p><p>仅中国大陆护照支持返回此字段，港澳台及境外护照不支持</p>
         :type IssuePlace: str
-        :param _IssuingAuthority: 签发机关（护照信息页识别结果）
-
-仅中国大陆护照支持返回此字段，港澳台及境外护照不支持
+        :param _IssuingAuthority: <p>签发机关（护照信息页识别结果）</p><p>仅中国大陆护照支持返回此字段，港澳台及境外护照不支持</p>
         :type IssuingAuthority: str
+        :param _BirthPlace: <p>出生地（护照信息页识别结果）</p>
+        :type BirthPlace: str
         """
         self._Type = None
         self._IssuingCountry = None
@@ -21620,10 +21616,11 @@ class PassportRecognizeInfos(AbstractModel):
         self._Signature = None
         self._IssuePlace = None
         self._IssuingAuthority = None
+        self._BirthPlace = None
 
     @property
     def Type(self):
-        r"""证件类型（护照信息页识别结果）
+        r"""<p>证件类型（护照信息页识别结果）</p>
         :rtype: str
         """
         return self._Type
@@ -21634,7 +21631,7 @@ class PassportRecognizeInfos(AbstractModel):
 
     @property
     def IssuingCountry(self):
-        r"""发行国家（护照信息页识别结果）
+        r"""<p>发行国家（护照信息页识别结果）</p>
         :rtype: str
         """
         return self._IssuingCountry
@@ -21645,7 +21642,7 @@ class PassportRecognizeInfos(AbstractModel):
 
     @property
     def PassportID(self):
-        r"""护照号码（护照信息页识别结果）
+        r"""<p>护照号码（护照信息页识别结果）</p>
         :rtype: str
         """
         return self._PassportID
@@ -21656,7 +21653,7 @@ class PassportRecognizeInfos(AbstractModel):
 
     @property
     def Surname(self):
-        r"""姓（护照信息页识别结果）
+        r"""<p>姓（护照信息页识别结果）</p>
         :rtype: str
         """
         return self._Surname
@@ -21667,7 +21664,7 @@ class PassportRecognizeInfos(AbstractModel):
 
     @property
     def GivenName(self):
-        r"""名（护照信息页识别结果）
+        r"""<p>名（护照信息页识别结果）</p>
         :rtype: str
         """
         return self._GivenName
@@ -21678,7 +21675,7 @@ class PassportRecognizeInfos(AbstractModel):
 
     @property
     def Name(self):
-        r"""姓名（护照信息页识别结果）
+        r"""<p>姓名（护照信息页识别结果）</p>
         :rtype: str
         """
         return self._Name
@@ -21689,7 +21686,7 @@ class PassportRecognizeInfos(AbstractModel):
 
     @property
     def Nationality(self):
-        r"""国籍信息（护照信息页识别结果）
+        r"""<p>国籍信息（护照信息页识别结果）</p>
         :rtype: str
         """
         return self._Nationality
@@ -21700,7 +21697,7 @@ class PassportRecognizeInfos(AbstractModel):
 
     @property
     def DateOfBirth(self):
-        r"""出生日期（护照信息页识别结果）
+        r"""<p>出生日期（护照信息页识别结果）</p>
         :rtype: str
         """
         return self._DateOfBirth
@@ -21711,7 +21708,7 @@ class PassportRecognizeInfos(AbstractModel):
 
     @property
     def Sex(self):
-        r"""性别（护照信息页识别结果）
+        r"""<p>性别（护照信息页识别结果）</p>
         :rtype: str
         """
         return self._Sex
@@ -21722,7 +21719,7 @@ class PassportRecognizeInfos(AbstractModel):
 
     @property
     def DateOfIssuance(self):
-        r"""发行日期（护照信息页识别结果）
+        r"""<p>发行日期（护照信息页识别结果）</p>
         :rtype: str
         """
         return self._DateOfIssuance
@@ -21733,7 +21730,7 @@ class PassportRecognizeInfos(AbstractModel):
 
     @property
     def DateOfExpiration(self):
-        r"""截止日期（护照信息页识别结果）
+        r"""<p>截止日期（护照信息页识别结果）</p>
         :rtype: str
         """
         return self._DateOfExpiration
@@ -21744,9 +21741,7 @@ class PassportRecognizeInfos(AbstractModel):
 
     @property
     def Signature(self):
-        r"""持证人签名（护照信息页识别结果）
-
-仅中国大陆护照支持返回此字段，港澳台及境外护照不支持
+        r"""<p>持证人签名（护照信息页识别结果）</p><p>仅中国大陆护照支持返回此字段，港澳台及境外护照不支持</p>
         :rtype: str
         """
         return self._Signature
@@ -21757,9 +21752,7 @@ class PassportRecognizeInfos(AbstractModel):
 
     @property
     def IssuePlace(self):
-        r"""签发地点（护照信息页识别结果）
-
-仅中国大陆护照支持返回此字段，港澳台及境外护照不支持
+        r"""<p>签发地点（护照信息页识别结果）</p><p>仅中国大陆护照支持返回此字段，港澳台及境外护照不支持</p>
         :rtype: str
         """
         return self._IssuePlace
@@ -21770,9 +21763,7 @@ class PassportRecognizeInfos(AbstractModel):
 
     @property
     def IssuingAuthority(self):
-        r"""签发机关（护照信息页识别结果）
-
-仅中国大陆护照支持返回此字段，港澳台及境外护照不支持
+        r"""<p>签发机关（护照信息页识别结果）</p><p>仅中国大陆护照支持返回此字段，港澳台及境外护照不支持</p>
         :rtype: str
         """
         return self._IssuingAuthority
@@ -21780,6 +21771,17 @@ class PassportRecognizeInfos(AbstractModel):
     @IssuingAuthority.setter
     def IssuingAuthority(self, IssuingAuthority):
         self._IssuingAuthority = IssuingAuthority
+
+    @property
+    def BirthPlace(self):
+        r"""<p>出生地（护照信息页识别结果）</p>
+        :rtype: str
+        """
+        return self._BirthPlace
+
+    @BirthPlace.setter
+    def BirthPlace(self, BirthPlace):
+        self._BirthPlace = BirthPlace
 
 
     def _deserialize(self, params):
@@ -21797,6 +21799,7 @@ class PassportRecognizeInfos(AbstractModel):
         self._Signature = params.get("Signature")
         self._IssuePlace = params.get("IssuePlace")
         self._IssuingAuthority = params.get("IssuingAuthority")
+        self._BirthPlace = params.get("BirthPlace")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -33695,22 +33698,23 @@ class TextDetection(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DetectedText: 识别出的文本行内容
+        :param _DetectedText: <p>识别出的文本行内容</p>
         :type DetectedText: str
-        :param _Confidence: 置信度 0 ~100
+        :param _Confidence: <p>置信度 0 ~100</p>
         :type Confidence: int
-        :param _Polygon: 文本行坐标，以四个顶点坐标表示
+        :param _Polygon: <p>文本行坐标，以四个顶点坐标表示</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Polygon: list of Coord
-        :param _AdvancedInfo: 此字段为扩展字段。
-GeneralBasicOcr接口返回段落信息Parag，包含ParagNo。
+        :param _AdvancedInfo: <p>此字段为扩展字段。<br>GeneralBasicOcr接口返回段落信息Parag，包含ParagNo。</p>
         :type AdvancedInfo: str
-        :param _ItemPolygon: 文本行在旋转纠正之后的图像中的像素坐标，表示为（左上角x, 左上角y，宽width，高height）
+        :param _ItemPolygon: <p>文本行在旋转纠正之后的图像中的像素坐标，表示为（左上角x, 左上角y，宽width，高height）</p>
         :type ItemPolygon: :class:`tencentcloud.ocr.v20181119.models.ItemCoord`
-        :param _Words: 识别出来的单字信息包括单字（包括单字Character和单字置信度confidence）， 支持识别的接口：GeneralBasicOCR、GeneralAccurateOCR
+        :param _Words: <p>识别出来的单字信息包括单字（包括单字Character和单字置信度confidence）， 支持识别的接口：GeneralBasicOCR、GeneralAccurateOCR</p>
         :type Words: list of DetectedWords
-        :param _WordCoordPoint: 单字在原图中的四点坐标， 支持识别的接口：GeneralBasicOCR、GeneralAccurateOCR
+        :param _WordCoordPoint: <p>单字在原图中的四点坐标， 支持识别的接口：GeneralBasicOCR、GeneralAccurateOCR</p>
         :type WordCoordPoint: list of DetectedWordCoordPoint
+        :param _Language: <p>语种信息。zh:中文; en:英文; th:泰语; id:印尼语; ja:日语; ko:韩语; es:西班牙语; fr:法语; de:德语; pt:葡萄牙语; vi:越南语; ms:马来语; ru:俄语; it:意大利语; nl:荷兰语; sv:瑞典语; fi:芬兰语; no:挪威语; hu:匈牙利语; ar:阿拉伯语; hi:印地语</p>
+        :type Language: str
         """
         self._DetectedText = None
         self._Confidence = None
@@ -33719,10 +33723,11 @@ GeneralBasicOcr接口返回段落信息Parag，包含ParagNo。
         self._ItemPolygon = None
         self._Words = None
         self._WordCoordPoint = None
+        self._Language = None
 
     @property
     def DetectedText(self):
-        r"""识别出的文本行内容
+        r"""<p>识别出的文本行内容</p>
         :rtype: str
         """
         return self._DetectedText
@@ -33733,7 +33738,7 @@ GeneralBasicOcr接口返回段落信息Parag，包含ParagNo。
 
     @property
     def Confidence(self):
-        r"""置信度 0 ~100
+        r"""<p>置信度 0 ~100</p>
         :rtype: int
         """
         return self._Confidence
@@ -33744,7 +33749,7 @@ GeneralBasicOcr接口返回段落信息Parag，包含ParagNo。
 
     @property
     def Polygon(self):
-        r"""文本行坐标，以四个顶点坐标表示
+        r"""<p>文本行坐标，以四个顶点坐标表示</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Coord
         """
@@ -33756,8 +33761,7 @@ GeneralBasicOcr接口返回段落信息Parag，包含ParagNo。
 
     @property
     def AdvancedInfo(self):
-        r"""此字段为扩展字段。
-GeneralBasicOcr接口返回段落信息Parag，包含ParagNo。
+        r"""<p>此字段为扩展字段。<br>GeneralBasicOcr接口返回段落信息Parag，包含ParagNo。</p>
         :rtype: str
         """
         return self._AdvancedInfo
@@ -33768,7 +33772,7 @@ GeneralBasicOcr接口返回段落信息Parag，包含ParagNo。
 
     @property
     def ItemPolygon(self):
-        r"""文本行在旋转纠正之后的图像中的像素坐标，表示为（左上角x, 左上角y，宽width，高height）
+        r"""<p>文本行在旋转纠正之后的图像中的像素坐标，表示为（左上角x, 左上角y，宽width，高height）</p>
         :rtype: :class:`tencentcloud.ocr.v20181119.models.ItemCoord`
         """
         return self._ItemPolygon
@@ -33779,7 +33783,7 @@ GeneralBasicOcr接口返回段落信息Parag，包含ParagNo。
 
     @property
     def Words(self):
-        r"""识别出来的单字信息包括单字（包括单字Character和单字置信度confidence）， 支持识别的接口：GeneralBasicOCR、GeneralAccurateOCR
+        r"""<p>识别出来的单字信息包括单字（包括单字Character和单字置信度confidence）， 支持识别的接口：GeneralBasicOCR、GeneralAccurateOCR</p>
         :rtype: list of DetectedWords
         """
         return self._Words
@@ -33790,7 +33794,7 @@ GeneralBasicOcr接口返回段落信息Parag，包含ParagNo。
 
     @property
     def WordCoordPoint(self):
-        r"""单字在原图中的四点坐标， 支持识别的接口：GeneralBasicOCR、GeneralAccurateOCR
+        r"""<p>单字在原图中的四点坐标， 支持识别的接口：GeneralBasicOCR、GeneralAccurateOCR</p>
         :rtype: list of DetectedWordCoordPoint
         """
         return self._WordCoordPoint
@@ -33798,6 +33802,17 @@ GeneralBasicOcr接口返回段落信息Parag，包含ParagNo。
     @WordCoordPoint.setter
     def WordCoordPoint(self, WordCoordPoint):
         self._WordCoordPoint = WordCoordPoint
+
+    @property
+    def Language(self):
+        r"""<p>语种信息。zh:中文; en:英文; th:泰语; id:印尼语; ja:日语; ko:韩语; es:西班牙语; fr:法语; de:德语; pt:葡萄牙语; vi:越南语; ms:马来语; ru:俄语; it:意大利语; nl:荷兰语; sv:瑞典语; fi:芬兰语; no:挪威语; hu:匈牙利语; ar:阿拉伯语; hi:印地语</p>
+        :rtype: str
+        """
+        return self._Language
+
+    @Language.setter
+    def Language(self, Language):
+        self._Language = Language
 
 
     def _deserialize(self, params):
@@ -33825,6 +33840,7 @@ GeneralBasicOcr接口返回段落信息Parag，包含ParagNo。
                 obj = DetectedWordCoordPoint()
                 obj._deserialize(item)
                 self._WordCoordPoint.append(obj)
+        self._Language = params.get("Language")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -42345,9 +42361,9 @@ class VerifyBizLicenseEnterprise4Response(AbstractModel):
         :type IsLrNameConsistent: bool
         :param _IsIdNumConsistent: <p>注册登记证件号码是否一致<br>仅StatusCode为0时返回，企业名称与统一社会信用代码均未查得时，固定返回false</p>
         :type IsIdNumConsistent: bool
-        :param _OperatingStatus: <p>经营状态</p><p>枚举值：</p><ul><li>1： 开业（在营）</li><li>2： 迁出</li><li>3： 注销</li><li>4： 吊销</li><li>5： 撤销</li><li>6： 停业</li><li>0： 其他</li><li>-10002： 企业信息不正确，无法查询</li></ul>
+        :param _OperatingStatus: <p>经营状态</p><p>枚举值：</p><ul><li>1： 开业（在营）</li><li>2： 迁出</li><li>3： 注销</li><li>4： 吊销</li><li>5： 撤销</li><li>6： 停业</li><li>7： 撤销登记</li><li>0： 其他</li><li>/： 无法查询</li></ul>
         :type OperatingStatus: str
-        :param _OperatingPeriod: <p>营业期限：一般包括营业开始时间和结束时间</p><p>参数格式：yyyy-MM-dd/yyyy-MM-dd</p><p>无固定期限的格式为：yyyy-MM-dd/<br>部分企业历史数据可能为空，将返回：/<br>企业信息不正确，无法查询，将返回：-10002</p>
+        :param _OperatingPeriod: <p>营业期限：一般包括营业开始时间和结束时间</p><p>参数格式：yyyy-MM-dd/yyyy-MM-dd</p><p>无固定期限的格式为：yyyy-MM-dd/<br>部分企业历史数据可能为空，将返回：/<br>无法查询，将返回：/</p>
         :type OperatingPeriod: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -42430,7 +42446,7 @@ class VerifyBizLicenseEnterprise4Response(AbstractModel):
 
     @property
     def OperatingStatus(self):
-        r"""<p>经营状态</p><p>枚举值：</p><ul><li>1： 开业（在营）</li><li>2： 迁出</li><li>3： 注销</li><li>4： 吊销</li><li>5： 撤销</li><li>6： 停业</li><li>0： 其他</li><li>-10002： 企业信息不正确，无法查询</li></ul>
+        r"""<p>经营状态</p><p>枚举值：</p><ul><li>1： 开业（在营）</li><li>2： 迁出</li><li>3： 注销</li><li>4： 吊销</li><li>5： 撤销</li><li>6： 停业</li><li>7： 撤销登记</li><li>0： 其他</li><li>/： 无法查询</li></ul>
         :rtype: str
         """
         return self._OperatingStatus
@@ -42441,7 +42457,7 @@ class VerifyBizLicenseEnterprise4Response(AbstractModel):
 
     @property
     def OperatingPeriod(self):
-        r"""<p>营业期限：一般包括营业开始时间和结束时间</p><p>参数格式：yyyy-MM-dd/yyyy-MM-dd</p><p>无固定期限的格式为：yyyy-MM-dd/<br>部分企业历史数据可能为空，将返回：/<br>企业信息不正确，无法查询，将返回：-10002</p>
+        r"""<p>营业期限：一般包括营业开始时间和结束时间</p><p>参数格式：yyyy-MM-dd/yyyy-MM-dd</p><p>无固定期限的格式为：yyyy-MM-dd/<br>部分企业历史数据可能为空，将返回：/<br>无法查询，将返回：/</p>
         :rtype: str
         """
         return self._OperatingPeriod

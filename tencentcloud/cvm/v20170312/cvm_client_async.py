@@ -923,6 +923,60 @@ class CvmClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeResourcePoolPackInstances(
+            self,
+            request: models.DescribeResourcePoolPackInstancesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeResourcePoolPackInstancesResponse:
+        """
+        本接口(DescribeResourcePoolPackInstances)用于查询指定实例资源池内已创建的实例列表及其物理拓扑信息。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeResourcePoolPackInstances"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeResourcePoolPackInstancesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeResourcePoolPackTypeConfigs(
+            self,
+            request: models.DescribeResourcePoolPackTypeConfigsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeResourcePoolPackTypeConfigsResponse:
+        """
+        本接口(DescribeResourcePoolPackTypeConfigs)用于查询当前地域/可用区支持创建实例资源池的整机/半整机规格列表。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeResourcePoolPackTypeConfigs"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeResourcePoolPackTypeConfigsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeResourcePoolPacks(
+            self,
+            request: models.DescribeResourcePoolPacksRequest,
+            opts: Dict = None,
+    ) -> models.DescribeResourcePoolPacksResponse:
+        """
+        本接口(DescribeResourcePoolPacks)用于查询用户已创建的实例资源池列表，包括资源池基本信息、剩余容量、底层物理拓扑信息等。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeResourcePoolPacks"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeResourcePoolPacksResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeTaskInfo(
             self,
             request: models.DescribeTaskInfoRequest,
@@ -1131,6 +1185,24 @@ class CvmClient(AbstractClient):
         kwargs["action"] = "ImportKeyPair"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ImportKeyPairResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def InquirePricePurchaseResourcePoolPacks(
+            self,
+            request: models.InquirePricePurchaseResourcePoolPacksRequest,
+            opts: Dict = None,
+    ) -> models.InquirePricePurchaseResourcePoolPacksResponse:
+        """
+        本接口(InquirePricePurchaseResourcePoolPacks)用于查询创建实例资源池的价格。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "InquirePricePurchaseResourcePoolPacks"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.InquirePricePurchaseResourcePoolPacksResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1657,6 +1729,27 @@ class CvmClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def PurchaseResourcePoolPacks(
+            self,
+            request: models.PurchaseResourcePoolPacksRequest,
+            opts: Dict = None,
+    ) -> models.PurchaseResourcePoolPacksResponse:
+        """
+        本接口(PurchaseResourcePoolPacks)用于创建一个或多个实例资源池，每个资源池绑定一个整机或半整机规格的物理资源容量。
+
+        * 实例资源池为剩余容量按量付费模式，购买前请确保账户余额充足。
+        * 本接口为异步接口，创建请求发送成功后会返回DedicatedResourcePackIds，此时创建任务并未完成。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "PurchaseResourcePoolPacks"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.PurchaseResourcePoolPacksResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def RebootInstances(
             self,
             request: models.RebootInstancesRequest,
@@ -2019,6 +2112,29 @@ class CvmClient(AbstractClient):
         kwargs["action"] = "TerminateInstances"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.TerminateInstancesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def TerminateResourcePoolPacks(
+            self,
+            request: models.TerminateResourcePoolPacksRequest,
+            opts: Dict = None,
+    ) -> models.TerminateResourcePoolPacksResponse:
+        """
+        本接口(TerminateResourcePoolPacks)用于销毁指定的实例资源池。
+
+        * 销毁资源池不会销毁池内已创建的实例。
+        * 池内实例会从专属资源池解绑，转移至公共资源池，继续按原生命周期运行。
+        * 转移后无法再查询底层物理拓扑信息。
+        * 释放底层物理资源并删除资源池记录。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "TerminateResourcePoolPacks"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.TerminateResourcePoolPacksResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

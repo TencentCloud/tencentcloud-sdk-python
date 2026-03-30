@@ -12115,23 +12115,21 @@ class CreateRecordTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StreamName: 流名称。
+        :param _StreamName: <p>流名称。</p>
         :type StreamName: str
-        :param _DomainName: 推流域名。
+        :param _DomainName: <p>推流域名。</p>
         :type DomainName: str
-        :param _AppName: 推流路径。
+        :param _AppName: <p>推流路径。</p>
         :type AppName: str
-        :param _EndTime: 录制任务结束时间，Unix时间戳。设置时间必须大于StartTime及当前时间，且小于当前时间+7天。
+        :param _EndTime: <p>录制任务结束时间，Unix时间戳。设置时间必须大于StartTime及当前时间，且小于当前时间+7天。</p>
         :type EndTime: int
-        :param _StartTime: 录制任务开始时间，Unix时间戳。如果不填表示立即启动录制。EndTime - StartTime不能超过24小时。
+        :param _StartTime: <p>录制任务开始时间，Unix时间戳。如果不填表示立即启动录制。EndTime - StartTime不能超过24小时。</p>
         :type StartTime: int
-        :param _StreamType: 推流类型，默认0。取值：
-0-直播推流。
-1-合成流，即 A+B=C 类型混流。
+        :param _StreamType: <p>推流类型，默认0。取值：<br>0-直播推流。<br>1-合成流，即 A+B=C 类型混流。</p>
         :type StreamType: int
-        :param _TemplateId: 录制模板ID，CreateLiveRecordTemplate 返回值。如果不填或者传入错误ID，则默认录制HLS格式、永久存储。
+        :param _TemplateId: <p>录制模板ID，CreateLiveRecordTemplate 返回值。如果不填或者传入错误ID，则默认录制 HLS 格式、永久存储至 VOD 主应用下。<br>示例值：0。</p>
         :type TemplateId: int
-        :param _Extension: 扩展字段，暂无定义。默认为空。
+        :param _Extension: <p>扩展字段，暂无定义。默认为空。</p>
         :type Extension: str
         """
         self._StreamName = None
@@ -12145,7 +12143,7 @@ class CreateRecordTaskRequest(AbstractModel):
 
     @property
     def StreamName(self):
-        r"""流名称。
+        r"""<p>流名称。</p>
         :rtype: str
         """
         return self._StreamName
@@ -12156,7 +12154,7 @@ class CreateRecordTaskRequest(AbstractModel):
 
     @property
     def DomainName(self):
-        r"""推流域名。
+        r"""<p>推流域名。</p>
         :rtype: str
         """
         return self._DomainName
@@ -12167,7 +12165,7 @@ class CreateRecordTaskRequest(AbstractModel):
 
     @property
     def AppName(self):
-        r"""推流路径。
+        r"""<p>推流路径。</p>
         :rtype: str
         """
         return self._AppName
@@ -12178,7 +12176,7 @@ class CreateRecordTaskRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""录制任务结束时间，Unix时间戳。设置时间必须大于StartTime及当前时间，且小于当前时间+7天。
+        r"""<p>录制任务结束时间，Unix时间戳。设置时间必须大于StartTime及当前时间，且小于当前时间+7天。</p>
         :rtype: int
         """
         return self._EndTime
@@ -12189,7 +12187,7 @@ class CreateRecordTaskRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""录制任务开始时间，Unix时间戳。如果不填表示立即启动录制。EndTime - StartTime不能超过24小时。
+        r"""<p>录制任务开始时间，Unix时间戳。如果不填表示立即启动录制。EndTime - StartTime不能超过24小时。</p>
         :rtype: int
         """
         return self._StartTime
@@ -12200,9 +12198,7 @@ class CreateRecordTaskRequest(AbstractModel):
 
     @property
     def StreamType(self):
-        r"""推流类型，默认0。取值：
-0-直播推流。
-1-合成流，即 A+B=C 类型混流。
+        r"""<p>推流类型，默认0。取值：<br>0-直播推流。<br>1-合成流，即 A+B=C 类型混流。</p>
         :rtype: int
         """
         return self._StreamType
@@ -12213,7 +12209,7 @@ class CreateRecordTaskRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        r"""录制模板ID，CreateLiveRecordTemplate 返回值。如果不填或者传入错误ID，则默认录制HLS格式、永久存储。
+        r"""<p>录制模板ID，CreateLiveRecordTemplate 返回值。如果不填或者传入错误ID，则默认录制 HLS 格式、永久存储至 VOD 主应用下。<br>示例值：0。</p>
         :rtype: int
         """
         return self._TemplateId
@@ -12224,7 +12220,7 @@ class CreateRecordTaskRequest(AbstractModel):
 
     @property
     def Extension(self):
-        r"""扩展字段，暂无定义。默认为空。
+        r"""<p>扩展字段，暂无定义。默认为空。</p>
         :rtype: str
         """
         return self._Extension
@@ -12260,7 +12256,7 @@ class CreateRecordTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务ID，全局唯一标识录制任务。返回TaskId字段说明录制任务创建成功。
+        :param _TaskId: <p>任务ID，全局唯一标识录制任务。返回TaskId字段说明录制任务创建成功。</p>
         :type TaskId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -12270,7 +12266,7 @@ class CreateRecordTaskResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""任务ID，全局唯一标识录制任务。返回TaskId字段说明录制任务创建成功。
+        r"""<p>任务ID，全局唯一标识录制任务。返回TaskId字段说明录制任务创建成功。</p>
         :rtype: str
         """
         return self._TaskId
