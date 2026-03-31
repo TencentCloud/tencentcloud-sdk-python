@@ -50,7 +50,7 @@ class TdmysqlClient(AbstractClient):
 
 
     def CreateDBSBackup(self, request):
-        r"""创建实例备份集
+        r"""创建实例手工备份  CreateDBSBackup
 
         :param request: Request instance for CreateDBSBackup.
         :type request: :class:`tencentcloud.tdmysql.v20211122.models.CreateDBSBackupRequest`
@@ -73,7 +73,7 @@ class TdmysqlClient(AbstractClient):
 
 
     def DeleteDBSBackupSets(self, request):
-        r"""删除实例备份集
+        r"""删除实例手工备份 DeleteDBSBackupSets
 
         :param request: Request instance for DeleteDBSBackupSets.
         :type request: :class:`tencentcloud.tdmysql.v20211122.models.DeleteDBSBackupSetsRequest`
@@ -119,7 +119,7 @@ class TdmysqlClient(AbstractClient):
 
 
     def DescribeDBSAvailableRecoveryTime(self, request):
-        r"""可恢复时间查询
+        r"""获取可恢复时间 DescribeDBSAvailableRecoveryTime
 
         :param request: Request instance for DescribeDBSAvailableRecoveryTime.
         :type request: :class:`tencentcloud.tdmysql.v20211122.models.DescribeDBSAvailableRecoveryTimeRequest`
@@ -142,7 +142,7 @@ class TdmysqlClient(AbstractClient):
 
 
     def DescribeDBSCloneInstances(self, request):
-        r"""查询实例克隆列表
+        r"""查询实例克隆列表 DescribeDBSCloneInstances
 
         :param request: Request instance for DescribeDBSCloneInstances.
         :type request: :class:`tencentcloud.tdmysql.v20211122.models.DescribeDBSCloneInstancesRequest`
@@ -349,7 +349,7 @@ class TdmysqlClient(AbstractClient):
 
 
     def ModifyDBSBackupPolicy(self, request):
-        r"""修改实例备份策略
+        r"""修改实例备份策略 ModifyDBSBackupPolicy
 
         :param request: Request instance for ModifyDBSBackupPolicy.
         :type request: :class:`tencentcloud.tdmysql.v20211122.models.ModifyDBSBackupPolicyRequest`
@@ -372,7 +372,7 @@ class TdmysqlClient(AbstractClient):
 
 
     def ModifyDBSBackupSetComment(self, request):
-        r"""修改备份集备注
+        r"""修改实例备份备注 ModifyDBSBackupSetComment
 
         :param request: Request instance for ModifyDBSBackupSetComment.
         :type request: :class:`tencentcloud.tdmysql.v20211122.models.ModifyDBSBackupSetCommentRequest`

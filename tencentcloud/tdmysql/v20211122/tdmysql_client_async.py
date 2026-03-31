@@ -49,7 +49,7 @@ class TdmysqlClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateDBSBackupResponse:
         """
-        创建实例备份集
+        创建实例手工备份  CreateDBSBackup
         """
         
         kwargs = {}
@@ -67,7 +67,7 @@ class TdmysqlClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DeleteDBSBackupSetsResponse:
         """
-        删除实例备份集
+        删除实例手工备份 DeleteDBSBackupSets
         """
         
         kwargs = {}
@@ -103,7 +103,7 @@ class TdmysqlClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeDBSAvailableRecoveryTimeResponse:
         """
-        可恢复时间查询
+        获取可恢复时间 DescribeDBSAvailableRecoveryTime
         """
         
         kwargs = {}
@@ -121,7 +121,7 @@ class TdmysqlClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeDBSCloneInstancesResponse:
         """
-        查询实例克隆列表
+        查询实例克隆列表 DescribeDBSCloneInstances
         """
         
         kwargs = {}
@@ -283,7 +283,7 @@ class TdmysqlClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyDBSBackupPolicyResponse:
         """
-        修改实例备份策略
+        修改实例备份策略 ModifyDBSBackupPolicy
         """
         
         kwargs = {}
@@ -301,7 +301,7 @@ class TdmysqlClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyDBSBackupSetCommentResponse:
         """
-        修改备份集备注
+        修改实例备份备注 ModifyDBSBackupSetComment
         """
         
         kwargs = {}

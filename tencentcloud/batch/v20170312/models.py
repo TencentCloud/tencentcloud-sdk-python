@@ -8375,6 +8375,10 @@ class Placement(AbstractModel):
         :type HostIds: list of str
         :param _HostId: 实例所属的专用宿主机ID，仅用于出参。
         :type HostId: str
+        :param _DedicatedResourcePackTenancy: 专有资源预扣策略。取值范围：<li>ResourcePool：使用实例资源池进行资源预扣</li>
+        :type DedicatedResourcePackTenancy: str
+        :param _DedicatedResourcePackIds: 专有预扣资源ID列表。形如：rpp-7eumgm3l。通过指定专有预扣资源创建实例时，必须同时指定匹配的DedicatedResourcePackTenancy。
+        :type DedicatedResourcePackIds: list of str
         :param _RackId: 实例所属的实例资源池机架ID，仅用于出参。
         :type RackId: str
         """
@@ -8382,6 +8386,8 @@ class Placement(AbstractModel):
         self._ProjectId = None
         self._HostIds = None
         self._HostId = None
+        self._DedicatedResourcePackTenancy = None
+        self._DedicatedResourcePackIds = None
         self._RackId = None
 
     @property
@@ -8429,6 +8435,28 @@ class Placement(AbstractModel):
         self._HostId = HostId
 
     @property
+    def DedicatedResourcePackTenancy(self):
+        r"""专有资源预扣策略。取值范围：<li>ResourcePool：使用实例资源池进行资源预扣</li>
+        :rtype: str
+        """
+        return self._DedicatedResourcePackTenancy
+
+    @DedicatedResourcePackTenancy.setter
+    def DedicatedResourcePackTenancy(self, DedicatedResourcePackTenancy):
+        self._DedicatedResourcePackTenancy = DedicatedResourcePackTenancy
+
+    @property
+    def DedicatedResourcePackIds(self):
+        r"""专有预扣资源ID列表。形如：rpp-7eumgm3l。通过指定专有预扣资源创建实例时，必须同时指定匹配的DedicatedResourcePackTenancy。
+        :rtype: list of str
+        """
+        return self._DedicatedResourcePackIds
+
+    @DedicatedResourcePackIds.setter
+    def DedicatedResourcePackIds(self, DedicatedResourcePackIds):
+        self._DedicatedResourcePackIds = DedicatedResourcePackIds
+
+    @property
     def RackId(self):
         r"""实例所属的实例资源池机架ID，仅用于出参。
         :rtype: str
@@ -8445,6 +8473,8 @@ class Placement(AbstractModel):
         self._ProjectId = params.get("ProjectId")
         self._HostIds = params.get("HostIds")
         self._HostId = params.get("HostId")
+        self._DedicatedResourcePackTenancy = params.get("DedicatedResourcePackTenancy")
+        self._DedicatedResourcePackIds = params.get("DedicatedResourcePackIds")
         self._RackId = params.get("RackId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

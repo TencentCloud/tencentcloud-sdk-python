@@ -1327,53 +1327,45 @@ class CreateCfsFileSystemRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Zone: 可用区名称，例如ap-beijing-1，请参考 [概览](https://cloud.tencent.com/document/product/582/13225) 文档中的地域与可用区列表
+        :param _Zone: <p>可用区名称，例如ap-beijing-1，请参考 <a href="https://cloud.tencent.com/document/product/582/13225">概览</a> 文档中的地域与可用区列表</p>
         :type Zone: str
-        :param _NetInterface: 网络类型，可选值为 VPC，CCN；其中 VPC 为私有网络， CCN 为云联网。通用标准型/性能型请选择VPC，Turbo标准型/性能型请选择CCN。
+        :param _NetInterface: <p>网络类型，可选值为 VPC，CCN；其中 VPC 为私有网络， CCN 为云联网。通用标准型/性能型请选择VPC，Turbo标准型/性能型请选择CCN。</p>
         :type NetInterface: str
-        :param _PGroupId: 权限组 ID,pgroupbasic 是默认权限组，通过控制查询权限组列表接口获取[DescribeCfsPGroups](https://cloud.tencent.com/document/product/582/38157)
+        :param _PGroupId: <p>权限组 ID,pgroupbasic 是默认权限组，通过控制查询权限组列表接口获取<a href="https://cloud.tencent.com/document/product/582/38157">DescribeCfsPGroups</a></p>
         :type PGroupId: str
-        :param _Protocol: 文件系统协议类型， 值为 NFS、CIFS、TURBO ; 若留空则默认为 NFS协议，turbo系列必须选择TURBO，不支持NFS、CIFS
+        :param _Protocol: <p>文件系统协议类型， 值为 NFS、CIFS、TURBO ; 若留空则默认为 NFS协议，turbo系列必须选择TURBO，不支持NFS、CIFS</p>
         :type Protocol: str
-        :param _StorageType: 文件系统存储类型，默认值为 SD ；其中 SD 为通用标准型存储， HP为通用性能型存储， TB为Turbo标准型， TP 为Turbo性能型。
+        :param _StorageType: <p>文件系统存储类型，默认值为 SD ；其中 SD 为通用标准型存储， HP为通用性能型存储， TB为Turbo标准型， TP 为Turbo性能型。</p>
         :type StorageType: str
-        :param _VpcId: 私有网络（VPC） ID，若网络类型选择的是VPC，该字段为必填.通过查询私有网络接口获取，
-[DescribeVpcs](https://cloud.tencent.com/document/product/215/15778)
+        :param _VpcId: <p>私有网络（VPC） ID，若网络类型选择的是VPC，该字段为必填.通过查询私有网络接口获取，<br><a href="https://cloud.tencent.com/document/product/215/15778">DescribeVpcs</a></p>
         :type VpcId: str
-        :param _SubnetId: 子网 ID，若网络类型选择的是VPC，该字段为必填。通过查询子网接口获取，
-[DescribeSubnets](https://cloud.tencent.com/document/product/215/15784)
+        :param _SubnetId: <p>子网 ID，若网络类型选择的是VPC，该字段为必填。通过查询子网接口获取，<br><a href="https://cloud.tencent.com/document/product/215/15784">DescribeSubnets</a></p>
         :type SubnetId: str
-        :param _MountIP: 指定IP地址，仅VPC网络支持；若不填写、将在该子网下随机分配 IP，Turbo系列当前不支持指定
+        :param _MountIP: <p>指定IP地址，仅VPC网络支持；若不填写、将在该子网下随机分配 IP，Turbo系列当前不支持指定</p>
         :type MountIP: str
-        :param _FsName: 用户自定义文件系统名称
+        :param _FsName: <p>用户自定义文件系统名称</p>
         :type FsName: str
-        :param _ResourceTags: 文件系统标签
+        :param _Encrypted: <p>文件系统是否加密，若留空则默认为不加密</p>
+        :type Encrypted: bool
+        :param _ResourceTags: <p>文件系统标签</p>
         :type ResourceTags: list of TagInfo
-        :param _ClientToken: 用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。用于保证请求幂等性的字符串失效时间为2小时。
+        :param _ClientToken: <p>用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。用于保证请求幂等性的字符串失效时间为2小时。</p>
         :type ClientToken: str
-        :param _CcnId: 云联网ID， 若网络类型选择的是CCN，该字段为必填;通过查询云联网列表接口获取，通过接口
-[DescribeCcns](https://cloud.tencent.com/document/product/215/19199)
-
+        :param _CcnId: <p>云联网ID， 若网络类型选择的是CCN，该字段为必填;通过查询云联网列表接口获取，通过接口<br><a href="https://cloud.tencent.com/document/product/215/19199">DescribeCcns</a></p>
         :type CcnId: str
-        :param _CidrBlock: 云联网中CFS使用的网段， 若网络类型选择的是Ccn，该字段为必填，且不能和Ccn中已经绑定的网段冲突
+        :param _CidrBlock: <p>云联网中CFS使用的网段， 若网络类型选择的是Ccn，该字段为必填，且不能和Ccn中已经绑定的网段冲突</p>
         :type CidrBlock: str
-        :param _Capacity: 文件系统容量，turbo系列必填，单位为GiB。 turbo标准型单位GB，起售20TiB，即20480 GiB；扩容步长10TiB，即10240 GiB。turbo性能型起售10TiB，即10240 GiB；扩容步长10TiB，10240 GiB。
+        :param _Capacity: <p>文件系统容量，turbo系列必填，单位为GiB。 turbo标准型单位GB，起售20TiB，即20480 GiB；扩容步长10TiB，即10240 GiB。turbo性能型起售10TiB，即10240 GiB；扩容步长10TiB，10240 GiB。</p>
         :type Capacity: int
-        :param _SnapshotId: 文件系统快照ID，通过查询快照列表获取该参数，
-[DescribeCfsSnapshots](https://cloud.tencent.com/document/product/582/80206)
+        :param _SnapshotId: <p>文件系统快照ID，通过查询快照列表获取该参数，<br><a href="https://cloud.tencent.com/document/product/582/80206">DescribeCfsSnapshots</a></p>
         :type SnapshotId: str
-        :param _AutoSnapshotPolicyId: 定期快照策略ID，通过查询快照策略信息获取,
-[DescribeAutoSnapshotPolicies](https://cloud.tencent.com/document/product/582/38157)
+        :param _AutoSnapshotPolicyId: <p>定期快照策略ID，通过查询快照策略信息获取,<br><a href="https://cloud.tencent.com/document/product/582/38157">DescribeAutoSnapshotPolicies</a></p>
         :type AutoSnapshotPolicyId: str
-        :param _EnableAutoScaleUp: 是否开启默认扩容，仅turbo类型文件存储支持
+        :param _EnableAutoScaleUp: <p>是否开启默认扩容，仅turbo类型文件存储支持</p>
         :type EnableAutoScaleUp: bool
-        :param _CfsVersion: v1.5：创建普通版的通用文件系统；
-v3.1：创建增强版的通用文件系统
-说明：增强版的通用系统需要开通白名单才能使用，如有需要请提交工单与我们联系。
+        :param _CfsVersion: <p>v1.5：创建普通版的通用文件系统；<br>v3.1：创建增强版的通用文件系统<br>说明：增强版的通用系统需要开通白名单才能使用，如有需要请提交工单与我们联系。</p>
         :type CfsVersion: str
-        :param _MetaType: turbo文件系统元数据属性
-basic：创建标准型的元数据
-enhanced：创建增强型的元数据
+        :param _MetaType: <p>turbo文件系统元数据属性<br>basic：创建标准型的元数据<br>enhanced：创建增强型的元数据</p>
         :type MetaType: str
         """
         self._Zone = None
@@ -1385,6 +1377,7 @@ enhanced：创建增强型的元数据
         self._SubnetId = None
         self._MountIP = None
         self._FsName = None
+        self._Encrypted = None
         self._ResourceTags = None
         self._ClientToken = None
         self._CcnId = None
@@ -1398,7 +1391,7 @@ enhanced：创建增强型的元数据
 
     @property
     def Zone(self):
-        r"""可用区名称，例如ap-beijing-1，请参考 [概览](https://cloud.tencent.com/document/product/582/13225) 文档中的地域与可用区列表
+        r"""<p>可用区名称，例如ap-beijing-1，请参考 <a href="https://cloud.tencent.com/document/product/582/13225">概览</a> 文档中的地域与可用区列表</p>
         :rtype: str
         """
         return self._Zone
@@ -1409,7 +1402,7 @@ enhanced：创建增强型的元数据
 
     @property
     def NetInterface(self):
-        r"""网络类型，可选值为 VPC，CCN；其中 VPC 为私有网络， CCN 为云联网。通用标准型/性能型请选择VPC，Turbo标准型/性能型请选择CCN。
+        r"""<p>网络类型，可选值为 VPC，CCN；其中 VPC 为私有网络， CCN 为云联网。通用标准型/性能型请选择VPC，Turbo标准型/性能型请选择CCN。</p>
         :rtype: str
         """
         return self._NetInterface
@@ -1420,7 +1413,7 @@ enhanced：创建增强型的元数据
 
     @property
     def PGroupId(self):
-        r"""权限组 ID,pgroupbasic 是默认权限组，通过控制查询权限组列表接口获取[DescribeCfsPGroups](https://cloud.tencent.com/document/product/582/38157)
+        r"""<p>权限组 ID,pgroupbasic 是默认权限组，通过控制查询权限组列表接口获取<a href="https://cloud.tencent.com/document/product/582/38157">DescribeCfsPGroups</a></p>
         :rtype: str
         """
         return self._PGroupId
@@ -1431,7 +1424,7 @@ enhanced：创建增强型的元数据
 
     @property
     def Protocol(self):
-        r"""文件系统协议类型， 值为 NFS、CIFS、TURBO ; 若留空则默认为 NFS协议，turbo系列必须选择TURBO，不支持NFS、CIFS
+        r"""<p>文件系统协议类型， 值为 NFS、CIFS、TURBO ; 若留空则默认为 NFS协议，turbo系列必须选择TURBO，不支持NFS、CIFS</p>
         :rtype: str
         """
         return self._Protocol
@@ -1442,7 +1435,7 @@ enhanced：创建增强型的元数据
 
     @property
     def StorageType(self):
-        r"""文件系统存储类型，默认值为 SD ；其中 SD 为通用标准型存储， HP为通用性能型存储， TB为Turbo标准型， TP 为Turbo性能型。
+        r"""<p>文件系统存储类型，默认值为 SD ；其中 SD 为通用标准型存储， HP为通用性能型存储， TB为Turbo标准型， TP 为Turbo性能型。</p>
         :rtype: str
         """
         return self._StorageType
@@ -1453,8 +1446,7 @@ enhanced：创建增强型的元数据
 
     @property
     def VpcId(self):
-        r"""私有网络（VPC） ID，若网络类型选择的是VPC，该字段为必填.通过查询私有网络接口获取，
-[DescribeVpcs](https://cloud.tencent.com/document/product/215/15778)
+        r"""<p>私有网络（VPC） ID，若网络类型选择的是VPC，该字段为必填.通过查询私有网络接口获取，<br><a href="https://cloud.tencent.com/document/product/215/15778">DescribeVpcs</a></p>
         :rtype: str
         """
         return self._VpcId
@@ -1465,8 +1457,7 @@ enhanced：创建增强型的元数据
 
     @property
     def SubnetId(self):
-        r"""子网 ID，若网络类型选择的是VPC，该字段为必填。通过查询子网接口获取，
-[DescribeSubnets](https://cloud.tencent.com/document/product/215/15784)
+        r"""<p>子网 ID，若网络类型选择的是VPC，该字段为必填。通过查询子网接口获取，<br><a href="https://cloud.tencent.com/document/product/215/15784">DescribeSubnets</a></p>
         :rtype: str
         """
         return self._SubnetId
@@ -1477,7 +1468,7 @@ enhanced：创建增强型的元数据
 
     @property
     def MountIP(self):
-        r"""指定IP地址，仅VPC网络支持；若不填写、将在该子网下随机分配 IP，Turbo系列当前不支持指定
+        r"""<p>指定IP地址，仅VPC网络支持；若不填写、将在该子网下随机分配 IP，Turbo系列当前不支持指定</p>
         :rtype: str
         """
         return self._MountIP
@@ -1488,7 +1479,7 @@ enhanced：创建增强型的元数据
 
     @property
     def FsName(self):
-        r"""用户自定义文件系统名称
+        r"""<p>用户自定义文件系统名称</p>
         :rtype: str
         """
         return self._FsName
@@ -1498,8 +1489,19 @@ enhanced：创建增强型的元数据
         self._FsName = FsName
 
     @property
+    def Encrypted(self):
+        r"""<p>文件系统是否加密，若留空则默认为不加密</p>
+        :rtype: bool
+        """
+        return self._Encrypted
+
+    @Encrypted.setter
+    def Encrypted(self, Encrypted):
+        self._Encrypted = Encrypted
+
+    @property
     def ResourceTags(self):
-        r"""文件系统标签
+        r"""<p>文件系统标签</p>
         :rtype: list of TagInfo
         """
         return self._ResourceTags
@@ -1510,7 +1512,7 @@ enhanced：创建增强型的元数据
 
     @property
     def ClientToken(self):
-        r"""用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。用于保证请求幂等性的字符串失效时间为2小时。
+        r"""<p>用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。用于保证请求幂等性的字符串失效时间为2小时。</p>
         :rtype: str
         """
         return self._ClientToken
@@ -1521,9 +1523,7 @@ enhanced：创建增强型的元数据
 
     @property
     def CcnId(self):
-        r"""云联网ID， 若网络类型选择的是CCN，该字段为必填;通过查询云联网列表接口获取，通过接口
-[DescribeCcns](https://cloud.tencent.com/document/product/215/19199)
-
+        r"""<p>云联网ID， 若网络类型选择的是CCN，该字段为必填;通过查询云联网列表接口获取，通过接口<br><a href="https://cloud.tencent.com/document/product/215/19199">DescribeCcns</a></p>
         :rtype: str
         """
         return self._CcnId
@@ -1534,7 +1534,7 @@ enhanced：创建增强型的元数据
 
     @property
     def CidrBlock(self):
-        r"""云联网中CFS使用的网段， 若网络类型选择的是Ccn，该字段为必填，且不能和Ccn中已经绑定的网段冲突
+        r"""<p>云联网中CFS使用的网段， 若网络类型选择的是Ccn，该字段为必填，且不能和Ccn中已经绑定的网段冲突</p>
         :rtype: str
         """
         return self._CidrBlock
@@ -1545,7 +1545,7 @@ enhanced：创建增强型的元数据
 
     @property
     def Capacity(self):
-        r"""文件系统容量，turbo系列必填，单位为GiB。 turbo标准型单位GB，起售20TiB，即20480 GiB；扩容步长10TiB，即10240 GiB。turbo性能型起售10TiB，即10240 GiB；扩容步长10TiB，10240 GiB。
+        r"""<p>文件系统容量，turbo系列必填，单位为GiB。 turbo标准型单位GB，起售20TiB，即20480 GiB；扩容步长10TiB，即10240 GiB。turbo性能型起售10TiB，即10240 GiB；扩容步长10TiB，10240 GiB。</p>
         :rtype: int
         """
         return self._Capacity
@@ -1556,8 +1556,7 @@ enhanced：创建增强型的元数据
 
     @property
     def SnapshotId(self):
-        r"""文件系统快照ID，通过查询快照列表获取该参数，
-[DescribeCfsSnapshots](https://cloud.tencent.com/document/product/582/80206)
+        r"""<p>文件系统快照ID，通过查询快照列表获取该参数，<br><a href="https://cloud.tencent.com/document/product/582/80206">DescribeCfsSnapshots</a></p>
         :rtype: str
         """
         return self._SnapshotId
@@ -1568,8 +1567,7 @@ enhanced：创建增强型的元数据
 
     @property
     def AutoSnapshotPolicyId(self):
-        r"""定期快照策略ID，通过查询快照策略信息获取,
-[DescribeAutoSnapshotPolicies](https://cloud.tencent.com/document/product/582/38157)
+        r"""<p>定期快照策略ID，通过查询快照策略信息获取,<br><a href="https://cloud.tencent.com/document/product/582/38157">DescribeAutoSnapshotPolicies</a></p>
         :rtype: str
         """
         return self._AutoSnapshotPolicyId
@@ -1580,7 +1578,7 @@ enhanced：创建增强型的元数据
 
     @property
     def EnableAutoScaleUp(self):
-        r"""是否开启默认扩容，仅turbo类型文件存储支持
+        r"""<p>是否开启默认扩容，仅turbo类型文件存储支持</p>
         :rtype: bool
         """
         return self._EnableAutoScaleUp
@@ -1591,9 +1589,7 @@ enhanced：创建增强型的元数据
 
     @property
     def CfsVersion(self):
-        r"""v1.5：创建普通版的通用文件系统；
-v3.1：创建增强版的通用文件系统
-说明：增强版的通用系统需要开通白名单才能使用，如有需要请提交工单与我们联系。
+        r"""<p>v1.5：创建普通版的通用文件系统；<br>v3.1：创建增强版的通用文件系统<br>说明：增强版的通用系统需要开通白名单才能使用，如有需要请提交工单与我们联系。</p>
         :rtype: str
         """
         return self._CfsVersion
@@ -1604,9 +1600,7 @@ v3.1：创建增强版的通用文件系统
 
     @property
     def MetaType(self):
-        r"""turbo文件系统元数据属性
-basic：创建标准型的元数据
-enhanced：创建增强型的元数据
+        r"""<p>turbo文件系统元数据属性<br>basic：创建标准型的元数据<br>enhanced：创建增强型的元数据</p>
         :rtype: str
         """
         return self._MetaType
@@ -1626,6 +1620,7 @@ enhanced：创建增强型的元数据
         self._SubnetId = params.get("SubnetId")
         self._MountIP = params.get("MountIP")
         self._FsName = params.get("FsName")
+        self._Encrypted = params.get("Encrypted")
         if params.get("ResourceTags") is not None:
             self._ResourceTags = []
             for item in params.get("ResourceTags"):
@@ -1658,21 +1653,21 @@ class CreateCfsFileSystemResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CreationTime: 文件系统创建时间
+        :param _CreationTime: <p>文件系统创建时间</p>
         :type CreationTime: str
-        :param _CreationToken: 用户自定义文件系统名称
+        :param _CreationToken: <p>用户自定义文件系统名称</p>
         :type CreationToken: str
-        :param _FileSystemId: 文件系统 ID
+        :param _FileSystemId: <p>文件系统 ID</p>
         :type FileSystemId: str
-        :param _LifeCycleState: 文件系统状态，可能出现状态包括：“creating”  创建中, “create_failed” 创建失败, “available” 可用, “unserviced” 不可用, “upgrading” 升级中， “deleting” 删除中。
+        :param _LifeCycleState: <p>文件系统状态，可能出现状态包括：“creating”  创建中, “create_failed” 创建失败, “available” 可用, “unserviced” 不可用, “upgrading” 升级中， “deleting” 删除中。</p>
         :type LifeCycleState: str
-        :param _SizeByte: 文件系统已使用容量大小，单位为 Byte
+        :param _SizeByte: <p>文件系统已使用容量大小，单位为 Byte</p>
         :type SizeByte: int
-        :param _ZoneId: 可用区 ID
+        :param _ZoneId: <p>可用区 ID</p>
         :type ZoneId: int
-        :param _FsName: 用户自定义文件系统名称
+        :param _FsName: <p>用户自定义文件系统名称</p>
         :type FsName: str
-        :param _Encrypted: 文件系统是否加密
+        :param _Encrypted: <p>文件系统是否加密</p>
         :type Encrypted: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1689,7 +1684,7 @@ class CreateCfsFileSystemResponse(AbstractModel):
 
     @property
     def CreationTime(self):
-        r"""文件系统创建时间
+        r"""<p>文件系统创建时间</p>
         :rtype: str
         """
         return self._CreationTime
@@ -1700,7 +1695,7 @@ class CreateCfsFileSystemResponse(AbstractModel):
 
     @property
     def CreationToken(self):
-        r"""用户自定义文件系统名称
+        r"""<p>用户自定义文件系统名称</p>
         :rtype: str
         """
         return self._CreationToken
@@ -1711,7 +1706,7 @@ class CreateCfsFileSystemResponse(AbstractModel):
 
     @property
     def FileSystemId(self):
-        r"""文件系统 ID
+        r"""<p>文件系统 ID</p>
         :rtype: str
         """
         return self._FileSystemId
@@ -1722,7 +1717,7 @@ class CreateCfsFileSystemResponse(AbstractModel):
 
     @property
     def LifeCycleState(self):
-        r"""文件系统状态，可能出现状态包括：“creating”  创建中, “create_failed” 创建失败, “available” 可用, “unserviced” 不可用, “upgrading” 升级中， “deleting” 删除中。
+        r"""<p>文件系统状态，可能出现状态包括：“creating”  创建中, “create_failed” 创建失败, “available” 可用, “unserviced” 不可用, “upgrading” 升级中， “deleting” 删除中。</p>
         :rtype: str
         """
         return self._LifeCycleState
@@ -1733,7 +1728,7 @@ class CreateCfsFileSystemResponse(AbstractModel):
 
     @property
     def SizeByte(self):
-        r"""文件系统已使用容量大小，单位为 Byte
+        r"""<p>文件系统已使用容量大小，单位为 Byte</p>
         :rtype: int
         """
         return self._SizeByte
@@ -1744,7 +1739,7 @@ class CreateCfsFileSystemResponse(AbstractModel):
 
     @property
     def ZoneId(self):
-        r"""可用区 ID
+        r"""<p>可用区 ID</p>
         :rtype: int
         """
         return self._ZoneId
@@ -1755,7 +1750,7 @@ class CreateCfsFileSystemResponse(AbstractModel):
 
     @property
     def FsName(self):
-        r"""用户自定义文件系统名称
+        r"""<p>用户自定义文件系统名称</p>
         :rtype: str
         """
         return self._FsName
@@ -1766,7 +1761,7 @@ class CreateCfsFileSystemResponse(AbstractModel):
 
     @property
     def Encrypted(self):
-        r"""文件系统是否加密
+        r"""<p>文件系统是否加密</p>
         :rtype: bool
         """
         return self._Encrypted

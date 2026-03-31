@@ -46641,11 +46641,11 @@ class HaVip(AbstractModel):
         :type Business: str
         :param _HaVipAssociationSet: `HAVIP`的飘移范围。
         :type HaVipAssociationSet: list of HaVipAssociation
-        :param _CheckAssociate: 是否开启`HAVIP`的飘移范围校验。
+        :param _CheckAssociate: 是否开启`HAVIP`的漂移范围校验。
         :type CheckAssociate: bool
         :param _CdcId: CDC实例ID。
         :type CdcId: str
-        :param _FlushedTime: HAVIP 刷新时间。该参数只作为出参数。以下场景会触发 FlushTime 被刷新：1）子机发出免费 ARP 触发 HAVIP 漂移；2）手动HAVIP解绑网卡; 没有更新时默认值：0000-00-00 00:00:00
+        :param _FlushedTime: HAVIP 刷新时间。该参数只作为出参数。以下场景会触发FlushedTime 被刷新：1）子机发出免费 ARP 触发 HAVIP 漂移；2）手动HAVIP解绑网卡; 没有更新时默认值：0000-00-00 00:00:00
         :type FlushedTime: str
         :param _TagSet: 标签键值对。	
         :type TagSet: list of Tag
@@ -46803,7 +46803,7 @@ class HaVip(AbstractModel):
 
     @property
     def CheckAssociate(self):
-        r"""是否开启`HAVIP`的飘移范围校验。
+        r"""是否开启`HAVIP`的漂移范围校验。
         :rtype: bool
         """
         return self._CheckAssociate
@@ -46825,7 +46825,7 @@ class HaVip(AbstractModel):
 
     @property
     def FlushedTime(self):
-        r"""HAVIP 刷新时间。该参数只作为出参数。以下场景会触发 FlushTime 被刷新：1）子机发出免费 ARP 触发 HAVIP 漂移；2）手动HAVIP解绑网卡; 没有更新时默认值：0000-00-00 00:00:00
+        r"""HAVIP 刷新时间。该参数只作为出参数。以下场景会触发FlushedTime 被刷新：1）子机发出免费 ARP 触发 HAVIP 漂移；2）手动HAVIP解绑网卡; 没有更新时默认值：0000-00-00 00:00:00
         :rtype: str
         """
         return self._FlushedTime
@@ -71429,6 +71429,10 @@ class TrafficMirror(AbstractModel):
         :type SubnetId: str
         :param _TargetInfo: 流量镜接收目标资源信息，当接收目标为ENI和CLB时返回。
         :type TargetInfo: list of TrafficMirrorTargetResourceInfo
+        :param _IngressFilterRules: 流量镜像入站过滤规则。
+        :type IngressFilterRules: list of TrafficMirrorFilter
+        :param _EgressFilterRules: 流量镜像出站过滤规则。
+        :type EgressFilterRules: list of TrafficMirrorFilter
         """
         self._VpcId = None
         self._TrafficMirrorId = None
@@ -71444,6 +71448,8 @@ class TrafficMirror(AbstractModel):
         self._Type = None
         self._SubnetId = None
         self._TargetInfo = None
+        self._IngressFilterRules = None
+        self._EgressFilterRules = None
 
     @property
     def VpcId(self):
@@ -71599,6 +71605,28 @@ class TrafficMirror(AbstractModel):
     def TargetInfo(self, TargetInfo):
         self._TargetInfo = TargetInfo
 
+    @property
+    def IngressFilterRules(self):
+        r"""流量镜像入站过滤规则。
+        :rtype: list of TrafficMirrorFilter
+        """
+        return self._IngressFilterRules
+
+    @IngressFilterRules.setter
+    def IngressFilterRules(self, IngressFilterRules):
+        self._IngressFilterRules = IngressFilterRules
+
+    @property
+    def EgressFilterRules(self):
+        r"""流量镜像出站过滤规则。
+        :rtype: list of TrafficMirrorFilter
+        """
+        return self._EgressFilterRules
+
+    @EgressFilterRules.setter
+    def EgressFilterRules(self, EgressFilterRules):
+        self._EgressFilterRules = EgressFilterRules
+
 
     def _deserialize(self, params):
         self._VpcId = params.get("VpcId")
@@ -71627,6 +71655,18 @@ class TrafficMirror(AbstractModel):
                 obj = TrafficMirrorTargetResourceInfo()
                 obj._deserialize(item)
                 self._TargetInfo.append(obj)
+        if params.get("IngressFilterRules") is not None:
+            self._IngressFilterRules = []
+            for item in params.get("IngressFilterRules"):
+                obj = TrafficMirrorFilter()
+                obj._deserialize(item)
+                self._IngressFilterRules.append(obj)
+        if params.get("EgressFilterRules") is not None:
+            self._EgressFilterRules = []
+            for item in params.get("EgressFilterRules"):
+                obj = TrafficMirrorFilter()
+                obj._deserialize(item)
+                self._EgressFilterRules.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -71654,12 +71694,27 @@ class TrafficMirrorFilter(AbstractModel):
         :type SrcPort: str
         :param _DstPort: 过滤规则的目的端口，默认值1-65535
         :type DstPort: str
+        :param _TrafficMirrorFilterRuleId: 流量镜像过滤规则唯一ID。
+        :type TrafficMirrorFilterRuleId: str
+        :param _Priority: 流量镜像过滤规则优先级。
+        :type Priority: int
+        :param _Action: 流量镜像过滤规则策略，支持类型："ACCEPT", "DROP"。
+        :type Action: str
+        :param _Description: 流量镜像过滤规则描述。
+        :type Description: str
+        :param _CreatedTime: 创建时间。
+        :type CreatedTime: str
         """
         self._SrcNet = None
         self._DstNet = None
         self._Protocol = None
         self._SrcPort = None
         self._DstPort = None
+        self._TrafficMirrorFilterRuleId = None
+        self._Priority = None
+        self._Action = None
+        self._Description = None
+        self._CreatedTime = None
 
     @property
     def SrcNet(self):
@@ -71716,6 +71771,61 @@ class TrafficMirrorFilter(AbstractModel):
     def DstPort(self, DstPort):
         self._DstPort = DstPort
 
+    @property
+    def TrafficMirrorFilterRuleId(self):
+        r"""流量镜像过滤规则唯一ID。
+        :rtype: str
+        """
+        return self._TrafficMirrorFilterRuleId
+
+    @TrafficMirrorFilterRuleId.setter
+    def TrafficMirrorFilterRuleId(self, TrafficMirrorFilterRuleId):
+        self._TrafficMirrorFilterRuleId = TrafficMirrorFilterRuleId
+
+    @property
+    def Priority(self):
+        r"""流量镜像过滤规则优先级。
+        :rtype: int
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+    @property
+    def Action(self):
+        r"""流量镜像过滤规则策略，支持类型："ACCEPT", "DROP"。
+        :rtype: str
+        """
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
+
+    @property
+    def Description(self):
+        r"""流量镜像过滤规则描述。
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def CreatedTime(self):
+        r"""创建时间。
+        :rtype: str
+        """
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
 
     def _deserialize(self, params):
         self._SrcNet = params.get("SrcNet")
@@ -71723,6 +71833,11 @@ class TrafficMirrorFilter(AbstractModel):
         self._Protocol = params.get("Protocol")
         self._SrcPort = params.get("SrcPort")
         self._DstPort = params.get("DstPort")
+        self._TrafficMirrorFilterRuleId = params.get("TrafficMirrorFilterRuleId")
+        self._Priority = params.get("Priority")
+        self._Action = params.get("Action")
+        self._Description = params.get("Description")
+        self._CreatedTime = params.get("CreatedTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

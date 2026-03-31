@@ -5991,11 +5991,11 @@ class CreatePostPaidInstanceRequest(AbstractModel):
         :type MsgRetentionTime: int
         :param _ClusterId: <p>创建实例时可以选择集群Id, 该入参表示集群Id。不指定实例所在集群则不传入该参数</p>
         :type ClusterId: int
-        :param _KafkaVersion: <p>实例版本。目前支持当前支持"2.4.1", "2.4.2","2.8.1", "3.2.3"，默认取值"2.4.1"。"2.4.1" 与 "2.4.2" 属于同一个版本，传任意一个均可。</p>
+        :param _KafkaVersion: <p>实例版本。目前支持当前支持&quot;2.4.1&quot;, &quot;2.4.2&quot;,&quot;2.8.1&quot;, &quot;3.2.3&quot;，默认取值&quot;2.4.1&quot;。&quot;2.4.1&quot; 与 &quot;2.4.2&quot; 属于同一个版本，传任意一个均可。</p>
         :type KafkaVersion: str
-        :param _SpecificationsType: <p>实例类型。"standard"：标准版，"profession"：专业版。  (标准版仅国际站支持，国内站目前支持专业版)</p>
+        :param _SpecificationsType: <p>实例类型。&quot;standard&quot;：标准版，&quot;profession&quot;：专业版。  (标准版仅国际站支持，国内站目前支持专业版)</p>
         :type SpecificationsType: str
-        :param _DiskType: <p>专业版实例磁盘类型，标准版实例不需要填写。"CLOUD_SSD"：SSD云硬盘；"CLOUD_BASIC"：高性能云硬盘。不传默认值为 "CLOUD_BASIC"</p>
+        :param _DiskType: <p>专业版实例磁盘类型，标准版实例不需要填写。&quot;CLOUD_SSD&quot;：SSD云硬盘；&quot;CLOUD_BASIC&quot;：高性能云硬盘。不传默认值为 &quot;CLOUD_BASIC&quot;</p>
         :type DiskType: str
         :param _BandWidth: <p>实例内网峰值带宽，默认值为40。单位 MB/s。标准版需传入当前实例规格所对应的峰值带宽。注意如果创建的实例为专业版实例，峰值带宽，分区数等参数配置需要满足专业版的计费规格，可以通过以下链接查看计费规格：https://cloud.tencent.com/document/product/597/11745</p>
         :type BandWidth: int
@@ -6013,7 +6013,7 @@ class CreatePostPaidInstanceRequest(AbstractModel):
         :type ZoneIds: list of int
         :param _InstanceNum: <p>购买实例数量。非必填，默认值为 1。当传入该参数时，会创建多个 instanceName 加后缀区分的实例</p>
         :type InstanceNum: int
-        :param _PublicNetworkMonthly: <p>公网带宽大小，单位 Mbps。默认是没有加上免费 3Mbps 带宽。例如总共需要 3Mbps 公网带宽，此处传 0；总共需要 6Mbps 公网带宽，此处传 3。需要保证传入参数为 3 的整数倍</p>
+        :param _PublicNetworkMonthly: <p>公网带宽大小，单位 Mbps。</p><p>单位：Mbps</p>
         :type PublicNetworkMonthly: int
         :param _Tags: <p>标签</p>
         :type Tags: list of Tag
@@ -6112,7 +6112,7 @@ class CreatePostPaidInstanceRequest(AbstractModel):
 
     @property
     def KafkaVersion(self):
-        r"""<p>实例版本。目前支持当前支持"2.4.1", "2.4.2","2.8.1", "3.2.3"，默认取值"2.4.1"。"2.4.1" 与 "2.4.2" 属于同一个版本，传任意一个均可。</p>
+        r"""<p>实例版本。目前支持当前支持&quot;2.4.1&quot;, &quot;2.4.2&quot;,&quot;2.8.1&quot;, &quot;3.2.3&quot;，默认取值&quot;2.4.1&quot;。&quot;2.4.1&quot; 与 &quot;2.4.2&quot; 属于同一个版本，传任意一个均可。</p>
         :rtype: str
         """
         return self._KafkaVersion
@@ -6123,7 +6123,7 @@ class CreatePostPaidInstanceRequest(AbstractModel):
 
     @property
     def SpecificationsType(self):
-        r"""<p>实例类型。"standard"：标准版，"profession"：专业版。  (标准版仅国际站支持，国内站目前支持专业版)</p>
+        r"""<p>实例类型。&quot;standard&quot;：标准版，&quot;profession&quot;：专业版。  (标准版仅国际站支持，国内站目前支持专业版)</p>
         :rtype: str
         """
         return self._SpecificationsType
@@ -6134,7 +6134,7 @@ class CreatePostPaidInstanceRequest(AbstractModel):
 
     @property
     def DiskType(self):
-        r"""<p>专业版实例磁盘类型，标准版实例不需要填写。"CLOUD_SSD"：SSD云硬盘；"CLOUD_BASIC"：高性能云硬盘。不传默认值为 "CLOUD_BASIC"</p>
+        r"""<p>专业版实例磁盘类型，标准版实例不需要填写。&quot;CLOUD_SSD&quot;：SSD云硬盘；&quot;CLOUD_BASIC&quot;：高性能云硬盘。不传默认值为 &quot;CLOUD_BASIC&quot;</p>
         :rtype: str
         """
         return self._DiskType
@@ -6233,7 +6233,7 @@ class CreatePostPaidInstanceRequest(AbstractModel):
 
     @property
     def PublicNetworkMonthly(self):
-        r"""<p>公网带宽大小，单位 Mbps。默认是没有加上免费 3Mbps 带宽。例如总共需要 3Mbps 公网带宽，此处传 0；总共需要 6Mbps 公网带宽，此处传 3。需要保证传入参数为 3 的整数倍</p>
+        r"""<p>公网带宽大小，单位 Mbps。</p><p>单位：Mbps</p>
         :rtype: int
         """
         return self._PublicNetworkMonthly
@@ -6486,7 +6486,7 @@ class CreateRouteRequest(AbstractModel):
         :type VpcId: str
         :param _SubnetId: <p>vpc子网id,当vipType为3时必填</p>
         :type SubnetId: str
-        :param _AccessType: <p>访问类型：0-plaintext；1-sasl_plaintext；3-sasl_ssl; 4-sasl_scram_sha_256; 5-sasl_scram_sha_512  默认为0vipType=3,支持 0,1,3,4,5vipType=7,支持0,1,3vipType=1,支持1,3</p>
+        :param _AccessType: <p>访问类型：0-plaintext；1-sasl_plaintext；3-sasl_ssl; 4-sasl_scram_sha_256; 5-sasl_scram_sha_512  默认为0<br>vipType=3,支持 0,1,3,4,5<br>vipType=7,支持0,1,3<br>vipType=1,支持1,3</p>
         :type AccessType: int
         :param _AuthFlag: <p>是否需要权限管理,该字段已废弃</p>
         :type AuthFlag: int
@@ -6500,6 +6500,8 @@ class CreateRouteRequest(AbstractModel):
         :type Note: str
         :param _SecurityGroupIds: <p>关联安全组有序列表</p>
         :type SecurityGroupIds: list of str
+        :param _IpWhitelist: <p>公网路由IP白名单预设配置</p><p>入参限制：vipType=1</p>
+        :type IpWhitelist: list of IpWhitelistDTO
         """
         self._InstanceId = None
         self._VipType = None
@@ -6512,6 +6514,7 @@ class CreateRouteRequest(AbstractModel):
         self._Ip = None
         self._Note = None
         self._SecurityGroupIds = None
+        self._IpWhitelist = None
 
     @property
     def InstanceId(self):
@@ -6559,7 +6562,7 @@ class CreateRouteRequest(AbstractModel):
 
     @property
     def AccessType(self):
-        r"""<p>访问类型：0-plaintext；1-sasl_plaintext；3-sasl_ssl; 4-sasl_scram_sha_256; 5-sasl_scram_sha_512  默认为0vipType=3,支持 0,1,3,4,5vipType=7,支持0,1,3vipType=1,支持1,3</p>
+        r"""<p>访问类型：0-plaintext；1-sasl_plaintext；3-sasl_ssl; 4-sasl_scram_sha_256; 5-sasl_scram_sha_512  默认为0<br>vipType=3,支持 0,1,3,4,5<br>vipType=7,支持0,1,3<br>vipType=1,支持1,3</p>
         :rtype: int
         """
         return self._AccessType
@@ -6634,6 +6637,17 @@ class CreateRouteRequest(AbstractModel):
     def SecurityGroupIds(self, SecurityGroupIds):
         self._SecurityGroupIds = SecurityGroupIds
 
+    @property
+    def IpWhitelist(self):
+        r"""<p>公网路由IP白名单预设配置</p><p>入参限制：vipType=1</p>
+        :rtype: list of IpWhitelistDTO
+        """
+        return self._IpWhitelist
+
+    @IpWhitelist.setter
+    def IpWhitelist(self, IpWhitelist):
+        self._IpWhitelist = IpWhitelist
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -6647,6 +6661,12 @@ class CreateRouteRequest(AbstractModel):
         self._Ip = params.get("Ip")
         self._Note = params.get("Note")
         self._SecurityGroupIds = params.get("SecurityGroupIds")
+        if params.get("IpWhitelist") is not None:
+            self._IpWhitelist = []
+            for item in params.get("IpWhitelist"):
+                obj = IpWhitelistDTO()
+                obj._deserialize(item)
+                self._IpWhitelist.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20532,7 +20552,7 @@ class InstanceAttributesResponse(AbstractModel):
         :type Vip: str
         :param _Vport: <p>虚拟端口</p>
         :type Vport: str
-        :param _Status: <p>实例的状态。0: 创建中，1: 运行中，2: 删除中,  3: 已删除,  5: 隔离中,  7: 升级中,  -1: 创建失败 </p>
+        :param _Status: <p>实例的状态。0: 创建中，1: 运行中，2: 删除中,  3: 已删除,  5: 隔离中,  7: 升级中,  -1: 创建失败</p>
         :type Status: int
         :param _Bandwidth: <p>实例带宽，单位：Mbps</p>
         :type Bandwidth: int
@@ -20574,7 +20594,7 @@ class InstanceAttributesResponse(AbstractModel):
         :type MaxGroupNum: int
         :param _Cvm: <p>售卖类型,0:标准版,1:专业版</p>
         :type Cvm: int
-        :param _InstanceType: <p>实例类型  枚举列表: profession  :专业版  <br />standards2  :标准版premium   :高级版serverless  :serverless版</p>
+        :param _InstanceType: <p>实例类型  枚举列表:<br>profession  :专业版<br>standards2  :标准版<br>premium   :高级版<br>serverless  :serverless版</p>
         :type InstanceType: str
         :param _Features: <p>表示该实例支持的特性。FEATURE_SUBNET_ACL:表示acl策略支持设置子网。</p>
         :type Features: list of str
@@ -20598,11 +20618,11 @@ class InstanceAttributesResponse(AbstractModel):
         :type MaxMessageByte: int
         :param _InstanceChargeType: <p>实例计费类型  POSTPAID_BY_HOUR 按小时付费; PREPAID 包年包月</p>
         :type InstanceChargeType: str
-        :param _ElasticBandwidthSwitch: <p>是否开启弹性带宽白名单 <br />1:已开启弹性带宽白名单;0:未开启弹性带宽白名单;</p>
+        :param _ElasticBandwidthSwitch: <p>是否开启弹性带宽白名单<br>1:已开启弹性带宽白名单;<br>0:未开启弹性带宽白名单;</p>
         :type ElasticBandwidthSwitch: int
-        :param _ElasticBandwidthOpenStatus: <p>弹性带宽开通状态1:未开启弹性带宽;16: 开启弹性带宽中;32:开启弹性带宽成功;33:关闭弹性带宽中;34:关闭弹性带宽成功;64:开启弹性带宽失败;65:关闭弹性带宽失败;</p>
+        :param _ElasticBandwidthOpenStatus: <p>弹性带宽开通状态<br>1:未开启弹性带宽;<br>16: 开启弹性带宽中;<br>32:开启弹性带宽成功;<br>33:关闭弹性带宽中;<br>34:关闭弹性带宽成功;<br>64:开启弹性带宽失败;<br>65:关闭弹性带宽失败;</p>
         :type ElasticBandwidthOpenStatus: int
-        :param _ClusterType: <p>集群类型<br />CLOUD_IDC IDC集群CLOUD_CVM_SHARE CVM共享集群CLOUD_CVM_YUNTI 云梯CVM集群CLOUD_CVM    CVM集群CLOUD_CDC CDC集群CLOUD_EKS_TSE EKS集群</p>
+        :param _ClusterType: <p>集群类型<br>CLOUD_IDC IDC集群<br>CLOUD_CVM_SHARE CVM共享集群<br>CLOUD_CVM_YUNTI 云梯CVM集群<br>CLOUD_CVM    CVM集群<br>CLOUD_CDC CDC集群<br>CLOUD_EKS_TSE EKS集群</p>
         :type ClusterType: str
         :param _FreePartitionNumber: <p>免费分区数量</p>
         :type FreePartitionNumber: int
@@ -20614,9 +20634,9 @@ class InstanceAttributesResponse(AbstractModel):
         :type UncleanLeaderElectionEnable: int
         :param _DeleteProtectionEnable: <p>实例删除保护开关: 1 开启 0 关闭</p>
         :type DeleteProtectionEnable: int
-        :param _RetentionBytes: <p>实例级别消息保留大小</p>单位：bytes<br>默认值：-1
+        :param _RetentionBytes: <p>实例级别消息保留大小</p><p>单位：bytes</p><p>默认值：-1</p>
         :type RetentionBytes: int
-        :param _TransactionalIdExpirationMs: <p>事务ID最大空闲时间，超时未提交的事务将被标记为过期</p>单位：ms
+        :param _TransactionalIdExpirationMs: <p>事务ID最大空闲时间，超时未提交的事务将被标记为过期</p><p>单位：ms</p>
         :type TransactionalIdExpirationMs: int
         """
         self._InstanceId = None
@@ -20725,7 +20745,7 @@ class InstanceAttributesResponse(AbstractModel):
 
     @property
     def Status(self):
-        r"""<p>实例的状态。0: 创建中，1: 运行中，2: 删除中,  3: 已删除,  5: 隔离中,  7: 升级中,  -1: 创建失败 </p>
+        r"""<p>实例的状态。0: 创建中，1: 运行中，2: 删除中,  3: 已删除,  5: 隔离中,  7: 升级中,  -1: 创建失败</p>
         :rtype: int
         """
         return self._Status
@@ -20956,7 +20976,7 @@ class InstanceAttributesResponse(AbstractModel):
 
     @property
     def InstanceType(self):
-        r"""<p>实例类型  枚举列表: profession  :专业版  <br />standards2  :标准版premium   :高级版serverless  :serverless版</p>
+        r"""<p>实例类型  枚举列表:<br>profession  :专业版<br>standards2  :标准版<br>premium   :高级版<br>serverless  :serverless版</p>
         :rtype: str
         """
         return self._InstanceType
@@ -21088,7 +21108,7 @@ class InstanceAttributesResponse(AbstractModel):
 
     @property
     def ElasticBandwidthSwitch(self):
-        r"""<p>是否开启弹性带宽白名单 <br />1:已开启弹性带宽白名单;0:未开启弹性带宽白名单;</p>
+        r"""<p>是否开启弹性带宽白名单<br>1:已开启弹性带宽白名单;<br>0:未开启弹性带宽白名单;</p>
         :rtype: int
         """
         return self._ElasticBandwidthSwitch
@@ -21099,7 +21119,7 @@ class InstanceAttributesResponse(AbstractModel):
 
     @property
     def ElasticBandwidthOpenStatus(self):
-        r"""<p>弹性带宽开通状态1:未开启弹性带宽;16: 开启弹性带宽中;32:开启弹性带宽成功;33:关闭弹性带宽中;34:关闭弹性带宽成功;64:开启弹性带宽失败;65:关闭弹性带宽失败;</p>
+        r"""<p>弹性带宽开通状态<br>1:未开启弹性带宽;<br>16: 开启弹性带宽中;<br>32:开启弹性带宽成功;<br>33:关闭弹性带宽中;<br>34:关闭弹性带宽成功;<br>64:开启弹性带宽失败;<br>65:关闭弹性带宽失败;</p>
         :rtype: int
         """
         return self._ElasticBandwidthOpenStatus
@@ -21110,7 +21130,7 @@ class InstanceAttributesResponse(AbstractModel):
 
     @property
     def ClusterType(self):
-        r"""<p>集群类型<br />CLOUD_IDC IDC集群CLOUD_CVM_SHARE CVM共享集群CLOUD_CVM_YUNTI 云梯CVM集群CLOUD_CVM    CVM集群CLOUD_CDC CDC集群CLOUD_EKS_TSE EKS集群</p>
+        r"""<p>集群类型<br>CLOUD_IDC IDC集群<br>CLOUD_CVM_SHARE CVM共享集群<br>CLOUD_CVM_YUNTI 云梯CVM集群<br>CLOUD_CVM    CVM集群<br>CLOUD_CDC CDC集群<br>CLOUD_EKS_TSE EKS集群</p>
         :rtype: str
         """
         return self._ClusterType
@@ -21176,7 +21196,7 @@ class InstanceAttributesResponse(AbstractModel):
 
     @property
     def RetentionBytes(self):
-        r"""<p>实例级别消息保留大小</p>单位：bytes<br>默认值：-1
+        r"""<p>实例级别消息保留大小</p><p>单位：bytes</p><p>默认值：-1</p>
         :rtype: int
         """
         return self._RetentionBytes
@@ -21187,7 +21207,7 @@ class InstanceAttributesResponse(AbstractModel):
 
     @property
     def TransactionalIdExpirationMs(self):
-        r"""<p>事务ID最大空闲时间，超时未提交的事务将被标记为过期</p>单位：ms
+        r"""<p>事务ID最大空闲时间，超时未提交的事务将被标记为过期</p><p>单位：ms</p>
         :rtype: int
         """
         return self._TransactionalIdExpirationMs
@@ -21442,7 +21462,7 @@ class InstanceDetail(AbstractModel):
         :type Vport: str
         :param _VipList: <p>虚拟IP列表</p>
         :type VipList: list of VipEntity
-        :param _Status: <p>实例的状态。0: 创建中，1: 运行中，2: 删除中,  3: 已删除,  5: 隔离中,  7: 升级中,  -1: 创建失败 </p>
+        :param _Status: <p>实例的状态。0: 创建中，1: 运行中，2: 删除中,  3: 已删除,  5: 隔离中,  7: 升级中,  -1: 创建失败</p>
         :type Status: int
         :param _Bandwidth: <p>实例带宽，单位Mbps</p>
         :type Bandwidth: int
@@ -21496,7 +21516,7 @@ class InstanceDetail(AbstractModel):
         :type ClusterType: str
         :param _Features: <p>实例功能列表</p>
         :type Features: list of str
-        :param _RetentionBytes: <p>实例级别消息保留大小</p>单位：byte<br>默认值：-1<br><p>实例级别消息保留大小</p>
+        :param _RetentionBytes: <p>实例级别消息保留大小</p><p>单位：byte</p><p>默认值：-1</p><p>实例级别消息保留大小</p>
         :type RetentionBytes: int
         """
         self._InstanceId = None
@@ -21590,7 +21610,7 @@ class InstanceDetail(AbstractModel):
 
     @property
     def Status(self):
-        r"""<p>实例的状态。0: 创建中，1: 运行中，2: 删除中,  3: 已删除,  5: 隔离中,  7: 升级中,  -1: 创建失败 </p>
+        r"""<p>实例的状态。0: 创建中，1: 运行中，2: 删除中,  3: 已删除,  5: 隔离中,  7: 升级中,  -1: 创建失败</p>
         :rtype: int
         """
         return self._Status
@@ -21887,7 +21907,7 @@ class InstanceDetail(AbstractModel):
 
     @property
     def RetentionBytes(self):
-        r"""<p>实例级别消息保留大小</p>单位：byte<br>默认值：-1<br><p>实例级别消息保留大小</p>
+        r"""<p>实例级别消息保留大小</p><p>单位：byte</p><p>默认值：-1</p><p>实例级别消息保留大小</p>
         :rtype: int
         """
         return self._RetentionBytes
@@ -22455,6 +22475,57 @@ class InstanceVersion(AbstractModel):
         
 
 
+class IpWhitelistDTO(AbstractModel):
+    r"""实例公网路由IP白名单列表对象
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CidrBlock: <p>放通IP或网段</p>
+        :type CidrBlock: str
+        :param _PolicyDescription: <p>描述</p>
+        :type PolicyDescription: str
+        """
+        self._CidrBlock = None
+        self._PolicyDescription = None
+
+    @property
+    def CidrBlock(self):
+        r"""<p>放通IP或网段</p>
+        :rtype: str
+        """
+        return self._CidrBlock
+
+    @CidrBlock.setter
+    def CidrBlock(self, CidrBlock):
+        self._CidrBlock = CidrBlock
+
+    @property
+    def PolicyDescription(self):
+        r"""<p>描述</p>
+        :rtype: str
+        """
+        return self._PolicyDescription
+
+    @PolicyDescription.setter
+    def PolicyDescription(self, PolicyDescription):
+        self._PolicyDescription = PolicyDescription
+
+
+    def _deserialize(self, params):
+        self._CidrBlock = params.get("CidrBlock")
+        self._PolicyDescription = params.get("PolicyDescription")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class JgwOperateResponse(AbstractModel):
     r"""操作型结果返回值
 
@@ -22462,11 +22533,11 @@ class JgwOperateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ReturnCode: 返回的code，0为正常，非0为错误
+        :param _ReturnCode: <p>返回的code，0为正常，非0为错误</p>
         :type ReturnCode: str
-        :param _ReturnMessage: 成功消息
+        :param _ReturnMessage: <p>成功消息</p>
         :type ReturnMessage: str
-        :param _Data: 操作型返回的Data数据,可能有flowId等
+        :param _Data: <p>操作型返回的Data数据,可能有flowId等</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.ckafka.v20190819.models.OperateResponseData`
         """
@@ -22476,7 +22547,7 @@ class JgwOperateResponse(AbstractModel):
 
     @property
     def ReturnCode(self):
-        r"""返回的code，0为正常，非0为错误
+        r"""<p>返回的code，0为正常，非0为错误</p>
         :rtype: str
         """
         return self._ReturnCode
@@ -22487,7 +22558,7 @@ class JgwOperateResponse(AbstractModel):
 
     @property
     def ReturnMessage(self):
-        r"""成功消息
+        r"""<p>成功消息</p>
         :rtype: str
         """
         return self._ReturnMessage
@@ -22498,7 +22569,7 @@ class JgwOperateResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""操作型返回的Data数据,可能有flowId等
+        r"""<p>操作型返回的Data数据,可能有flowId等</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.OperateResponseData`
         """

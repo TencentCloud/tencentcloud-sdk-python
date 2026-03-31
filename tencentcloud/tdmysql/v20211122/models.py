@@ -689,7 +689,7 @@ class CreateDBSBackupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BackupMethod: <p>备份方式：physical、snapshot 这个值和DescribeDBSBackupPolicy接口返回的backupMethod保持一致</p>枚举值：<ul><li> physical： 物理备份</li><li> snapshot： 快照备份</li></ul>
+        :param _BackupMethod: <p>备份方式：physical、snapshot 这个值和DescribeDBSBackupPolicy接口返回的backupMethod保持一致</p><p>枚举值：</p><ul><li>physical： 物理备份</li><li>snapshot： 快照备份</li></ul>
         :type BackupMethod: str
         :param _BackupType: <p>备份类型：暂时只支持full</p>
         :type BackupType: str
@@ -705,7 +705,7 @@ class CreateDBSBackupRequest(AbstractModel):
 
     @property
     def BackupMethod(self):
-        r"""<p>备份方式：physical、snapshot 这个值和DescribeDBSBackupPolicy接口返回的backupMethod保持一致</p>枚举值：<ul><li> physical： 物理备份</li><li> snapshot： 快照备份</li></ul>
+        r"""<p>备份方式：physical、snapshot 这个值和DescribeDBSBackupPolicy接口返回的backupMethod保持一致</p><p>枚举值：</p><ul><li>physical： 物理备份</li><li>snapshot： 快照备份</li></ul>
         :rtype: str
         """
         return self._BackupMethod
@@ -1246,7 +1246,7 @@ class DescribeDBSAvailableRecoveryTimeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: <p>db实例ID</p>
+        :param _InstanceId: <p>实例ID</p>
         :type InstanceId: str
         :param _BackupSetId: <p>备份集ID,值来自 DescribeDBSBackupSets 接口返回</p>
         :type BackupSetId: int
@@ -1256,7 +1256,7 @@ class DescribeDBSAvailableRecoveryTimeRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""<p>db实例ID</p>
+        r"""<p>实例ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -2396,9 +2396,9 @@ class ModifyDBSBackupPolicyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BackupPolicy: 备份策略
+        :param _BackupPolicy: <p>备份策略</p>
         :type BackupPolicy: :class:`tencentcloud.tdmysql.v20211122.models.BackupPolicyModelInput`
-        :param _InstanceId: 实例ID
+        :param _InstanceId: <p>实例ID</p>
         :type InstanceId: str
         """
         self._BackupPolicy = None
@@ -2406,7 +2406,7 @@ class ModifyDBSBackupPolicyRequest(AbstractModel):
 
     @property
     def BackupPolicy(self):
-        r"""备份策略
+        r"""<p>备份策略</p>
         :rtype: :class:`tencentcloud.tdmysql.v20211122.models.BackupPolicyModelInput`
         """
         return self._BackupPolicy
@@ -2417,7 +2417,7 @@ class ModifyDBSBackupPolicyRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例ID
+        r"""<p>实例ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -2449,9 +2449,9 @@ class ModifyDBSBackupPolicyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _IsSuccess: 是否成功
+        :param _IsSuccess: <p>是否成功</p>
         :type IsSuccess: bool
-        :param _Msg: 消息
+        :param _Msg: <p>消息</p>
         :type Msg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2462,7 +2462,7 @@ class ModifyDBSBackupPolicyResponse(AbstractModel):
 
     @property
     def IsSuccess(self):
-        r"""是否成功
+        r"""<p>是否成功</p>
         :rtype: bool
         """
         return self._IsSuccess
@@ -2473,7 +2473,7 @@ class ModifyDBSBackupPolicyResponse(AbstractModel):
 
     @property
     def Msg(self):
-        r"""消息
+        r"""<p>消息</p>
         :rtype: str
         """
         return self._Msg

@@ -8615,11 +8615,11 @@ class CreateDraftContractByPromptsTaskRequest(AbstractModel):
         r"""
         :param _Operator: 执行本接口操作的员工信息。 注: 在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param _Requirement: 起草要求
+        :param _Requirement: 起草要求，范围要求 5-1000 字
         :type Requirement: str
-        :param _ReferenceTemplateId: 参考模板文件资源id（PDF/Word格式）
+        :param _ReferenceTemplateId: 参考模板文件资源id（PDF/Word格式），大小不超过1M，通过[上传文件](https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles)接口来获取。
         :type ReferenceTemplateId: str
-        :param _RequirementFileIds: 相关规定文件资源id列表（PDF/Word格式）
+        :param _RequirementFileIds: 相关规定文件资源id列表（PDF/Word格式），最多3个文件，每个大小不超过1M，通过[上传文件](https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles)接口来获取。
         :type RequirementFileIds: list of str
         :param _ContractLanguage: 起草合同的语言要求（zh，en）默认zh
         :type ContractLanguage: str
@@ -8643,7 +8643,7 @@ class CreateDraftContractByPromptsTaskRequest(AbstractModel):
 
     @property
     def Requirement(self):
-        r"""起草要求
+        r"""起草要求，范围要求 5-1000 字
         :rtype: str
         """
         return self._Requirement
@@ -8654,7 +8654,7 @@ class CreateDraftContractByPromptsTaskRequest(AbstractModel):
 
     @property
     def ReferenceTemplateId(self):
-        r"""参考模板文件资源id（PDF/Word格式）
+        r"""参考模板文件资源id（PDF/Word格式），大小不超过1M，通过[上传文件](https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles)接口来获取。
         :rtype: str
         """
         return self._ReferenceTemplateId
@@ -8665,7 +8665,7 @@ class CreateDraftContractByPromptsTaskRequest(AbstractModel):
 
     @property
     def RequirementFileIds(self):
-        r"""相关规定文件资源id列表（PDF/Word格式）
+        r"""相关规定文件资源id列表（PDF/Word格式），最多3个文件，每个大小不超过1M，通过[上传文件](https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles)接口来获取。
         :rtype: list of str
         """
         return self._RequirementFileIds
@@ -25438,6 +25438,8 @@ class DescribeDraftContractByPromptsTaskResponse(AbstractModel):
         :type ContractName: str
         :param _ResourceId: 生成的合同文件资源id
         :type ResourceId: str
+        :param _ContractUrl: 生成的合同文件下载链接，有效期2小时
+        :type ContractUrl: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -25445,6 +25447,7 @@ class DescribeDraftContractByPromptsTaskResponse(AbstractModel):
         self._Message = None
         self._ContractName = None
         self._ResourceId = None
+        self._ContractUrl = None
         self._RequestId = None
 
     @property
@@ -25492,6 +25495,17 @@ class DescribeDraftContractByPromptsTaskResponse(AbstractModel):
         self._ResourceId = ResourceId
 
     @property
+    def ContractUrl(self):
+        r"""生成的合同文件下载链接，有效期2小时
+        :rtype: str
+        """
+        return self._ContractUrl
+
+    @ContractUrl.setter
+    def ContractUrl(self, ContractUrl):
+        self._ContractUrl = ContractUrl
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -25508,6 +25522,7 @@ class DescribeDraftContractByPromptsTaskResponse(AbstractModel):
         self._Message = params.get("Message")
         self._ContractName = params.get("ContractName")
         self._ResourceId = params.get("ResourceId")
+        self._ContractUrl = params.get("ContractUrl")
         self._RequestId = params.get("RequestId")
 
 

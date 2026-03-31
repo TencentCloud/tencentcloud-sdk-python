@@ -15317,6 +15317,9 @@ class LogstashInstanceInfo(AbstractModel):
         :type DeployMode: int
         :param _MultiZoneInfo: 多可用区部署时可用区的详细信息
         :type MultiZoneInfo: list of ZoneDetail
+        :param _UserDnsIp: 客户自定义dns配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserDnsIp: str
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -15349,6 +15352,7 @@ class LogstashInstanceInfo(AbstractModel):
         self._MemSize = None
         self._DeployMode = None
         self._MultiZoneInfo = None
+        self._UserDnsIp = None
 
     @property
     def InstanceId(self):
@@ -15697,6 +15701,18 @@ class LogstashInstanceInfo(AbstractModel):
     def MultiZoneInfo(self, MultiZoneInfo):
         self._MultiZoneInfo = MultiZoneInfo
 
+    @property
+    def UserDnsIp(self):
+        r"""客户自定义dns配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UserDnsIp
+
+    @UserDnsIp.setter
+    def UserDnsIp(self, UserDnsIp):
+        self._UserDnsIp = UserDnsIp
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -15752,6 +15768,7 @@ class LogstashInstanceInfo(AbstractModel):
                 obj = ZoneDetail()
                 obj._deserialize(item)
                 self._MultiZoneInfo.append(obj)
+        self._UserDnsIp = params.get("UserDnsIp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -23150,6 +23167,8 @@ class UpdateLogstashInstanceRequest(AbstractModel):
         :type NodeNum: int
         :param _YMLConfig: 实例YML配置
         :type YMLConfig: str
+        :param _UserDnsIp: 客户自定义dns配置
+        :type UserDnsIp: str
         :param _BindedES: 实例绑定的ES集群信息
         :type BindedES: :class:`tencentcloud.es.v20180416.models.LogstashBindedES`
         :param _InstanceName: 实例名称
@@ -23168,6 +23187,7 @@ class UpdateLogstashInstanceRequest(AbstractModel):
         self._InstanceId = None
         self._NodeNum = None
         self._YMLConfig = None
+        self._UserDnsIp = None
         self._BindedES = None
         self._InstanceName = None
         self._ExtendedFiles = None
@@ -23208,6 +23228,17 @@ class UpdateLogstashInstanceRequest(AbstractModel):
     @YMLConfig.setter
     def YMLConfig(self, YMLConfig):
         self._YMLConfig = YMLConfig
+
+    @property
+    def UserDnsIp(self):
+        r"""客户自定义dns配置
+        :rtype: str
+        """
+        return self._UserDnsIp
+
+    @UserDnsIp.setter
+    def UserDnsIp(self, UserDnsIp):
+        self._UserDnsIp = UserDnsIp
 
     @property
     def BindedES(self):
@@ -23291,6 +23322,7 @@ class UpdateLogstashInstanceRequest(AbstractModel):
         self._InstanceId = params.get("InstanceId")
         self._NodeNum = params.get("NodeNum")
         self._YMLConfig = params.get("YMLConfig")
+        self._UserDnsIp = params.get("UserDnsIp")
         if params.get("BindedES") is not None:
             self._BindedES = LogstashBindedES()
             self._BindedES._deserialize(params.get("BindedES"))

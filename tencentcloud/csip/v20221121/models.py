@@ -26952,13 +26952,10 @@ class Filters(AbstractModel):
     def __init__(self):
         r"""
         :param _Name: 实例ID
-注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
         :param _Values: 实例ID内容
-注意：此字段可能返回 null，表示取不到有效值。
         :type Values: list of str
         :param _ExactMatch: 模糊匹配
-注意：此字段可能返回 null，表示取不到有效值。
         :type ExactMatch: str
         """
         self._Name = None
@@ -26968,7 +26965,6 @@ class Filters(AbstractModel):
     @property
     def Name(self):
         r"""实例ID
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Name
@@ -26980,7 +26976,6 @@ class Filters(AbstractModel):
     @property
     def Values(self):
         r"""实例ID内容
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
         return self._Values
@@ -26992,7 +26987,6 @@ class Filters(AbstractModel):
     @property
     def ExactMatch(self):
         r"""模糊匹配
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ExactMatch

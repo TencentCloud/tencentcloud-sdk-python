@@ -467,6 +467,9 @@ OPERATIONDENIED_CAMDENIEDERROR = 'OperationDenied.CamDeniedError'
 # 目标实例状态检查不通过。
 OPERATIONDENIED_DTSINSTANCESTATUSERROR = 'OperationDenied.DTSInstanceStatusError'
 
+# 禁止删除运行中的备份
+OPERATIONDENIED_DELETERUNNINGBACKUPTASKERR = 'OperationDenied.DeleteRunningBackupTaskErr'
+
 # 您没有权限操作当前资源。
 OPERATIONDENIED_INSTANCEACCESSDENIEDERROR = 'OperationDenied.InstanceAccessDeniedError'
 

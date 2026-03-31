@@ -8875,10 +8875,9 @@ class MobileStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Mobile: 手机号码。
+        :param _Mobile: <p>手机号码。</p>
         :type Mobile: str
-        :param _Encryption: 敏感数据加密信息。
-- 对传入信息（手机号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+        :param _Encryption: <p>敏感数据加密信息。</p><ul><li>对传入信息（手机号）有加密需求的用户可使用此参数，详情请点击左侧链接。</li></ul>
         :type Encryption: :class:`tencentcloud.faceid.v20180301.models.Encryption`
         """
         self._Mobile = None
@@ -8886,7 +8885,7 @@ class MobileStatusRequest(AbstractModel):
 
     @property
     def Mobile(self):
-        r"""手机号码。
+        r"""<p>手机号码。</p>
         :rtype: str
         """
         return self._Mobile
@@ -8897,8 +8896,7 @@ class MobileStatusRequest(AbstractModel):
 
     @property
     def Encryption(self):
-        r"""敏感数据加密信息。
-- 对传入信息（手机号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+        r"""<p>敏感数据加密信息。</p><ul><li>对传入信息（手机号）有加密需求的用户可使用此参数，详情请点击左侧链接。</li></ul>
         :rtype: :class:`tencentcloud.faceid.v20180301.models.Encryption`
         """
         return self._Encryption
@@ -8930,25 +8928,11 @@ class MobileStatusResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 认证结果码，收费情况如下。
-- 收费结果码：
-0：成功。
-
-- 不收费结果码：
--1：未查询到结果。
--2：手机号格式不正确。
--3：验证中心服务繁忙。
--4：认证次数超过当日限制，请次日重试。
+        :param _Result: <p>认证结果码，收费情况如下。</p><ul><li><p>收费结果码：<br>0：成功。</p></li><li><p>不收费结果码：<br>-1：未查询到结果。<br>-2：手机号格式不正确。<br>-3：验证中心服务繁忙。<br>-4：认证次数超过当日限制，请次日重试。</p></li></ul>
         :type Result: str
-        :param _Description: 业务结果描述。
+        :param _Description: <p>业务结果描述。</p>
         :type Description: str
-        :param _StatusCode: 状态码。
-- 取值范围：
-0：正常。
-1：停机。
-2：销号。
-4：不在网。
-99：未知状态。
+        :param _StatusCode: <p>状态码。- 取值范围：0：正常。1：停机。2：销号。4：不在网。5：在网但不可用 。99：未知状态。</p>
         :type StatusCode: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -8960,15 +8944,7 @@ class MobileStatusResponse(AbstractModel):
 
     @property
     def Result(self):
-        r"""认证结果码，收费情况如下。
-- 收费结果码：
-0：成功。
-
-- 不收费结果码：
--1：未查询到结果。
--2：手机号格式不正确。
--3：验证中心服务繁忙。
--4：认证次数超过当日限制，请次日重试。
+        r"""<p>认证结果码，收费情况如下。</p><ul><li><p>收费结果码：<br>0：成功。</p></li><li><p>不收费结果码：<br>-1：未查询到结果。<br>-2：手机号格式不正确。<br>-3：验证中心服务繁忙。<br>-4：认证次数超过当日限制，请次日重试。</p></li></ul>
         :rtype: str
         """
         return self._Result
@@ -8979,7 +8955,7 @@ class MobileStatusResponse(AbstractModel):
 
     @property
     def Description(self):
-        r"""业务结果描述。
+        r"""<p>业务结果描述。</p>
         :rtype: str
         """
         return self._Description
@@ -8990,13 +8966,7 @@ class MobileStatusResponse(AbstractModel):
 
     @property
     def StatusCode(self):
-        r"""状态码。
-- 取值范围：
-0：正常。
-1：停机。
-2：销号。
-4：不在网。
-99：未知状态。
+        r"""<p>状态码。- 取值范围：0：正常。1：停机。2：销号。4：不在网。5：在网但不可用 。99：未知状态。</p>
         :rtype: int
         """
         return self._StatusCode

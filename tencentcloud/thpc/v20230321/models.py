@@ -7013,9 +7013,9 @@ class OutputRedirect(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Driver: 输出driver类型
+        :param _Driver: <p>输出driver类型</p><p>枚举值：</p><ul><li>local： 宿主机本地目录</li><li>cos： 远端cos存储</li></ul><p>默认值：local</p>
         :type Driver: str
-        :param _Options: 重定向配置参数
+        :param _Options: <p>重定向配置参数</p><p>日志重定向路径，用于指定任务日志的输出目标。取值格式与 Driver 类型关联：<br>当 Driver 为 local 时，格式为本地文件路径，如 stdout=/tmp/train_out.log；<br>当 Driver 为 cos 时，格式为 COS 存储桶路径，如 stdout=cos://test-123456.cos.ap-shanghai.myqcloud.com/test/.</p>
         :type Options: list of str
         """
         self._Driver = None
@@ -7023,7 +7023,7 @@ class OutputRedirect(AbstractModel):
 
     @property
     def Driver(self):
-        r"""输出driver类型
+        r"""<p>输出driver类型</p><p>枚举值：</p><ul><li>local： 宿主机本地目录</li><li>cos： 远端cos存储</li></ul><p>默认值：local</p>
         :rtype: str
         """
         return self._Driver
@@ -7034,7 +7034,7 @@ class OutputRedirect(AbstractModel):
 
     @property
     def Options(self):
-        r"""重定向配置参数
+        r"""<p>重定向配置参数</p><p>日志重定向路径，用于指定任务日志的输出目标。取值格式与 Driver 类型关联：<br>当 Driver 为 local 时，格式为本地文件路径，如 stdout=/tmp/train_out.log；<br>当 Driver 为 cos 时，格式为 COS 存储桶路径，如 stdout=cos://test-123456.cos.ap-shanghai.myqcloud.com/test/.</p>
         :rtype: list of str
         """
         return self._Options

@@ -33856,8 +33856,11 @@ class GetMostSuitableImageCacheRequest(AbstractModel):
         r"""
         :param _Images: 容器镜像列表
         :type Images: list of str
+        :param _Snapshotter: 容器镜像制作snapshotter
+        :type Snapshotter: str
         """
         self._Images = None
+        self._Snapshotter = None
 
     @property
     def Images(self):
@@ -33870,9 +33873,21 @@ class GetMostSuitableImageCacheRequest(AbstractModel):
     def Images(self, Images):
         self._Images = Images
 
+    @property
+    def Snapshotter(self):
+        r"""容器镜像制作snapshotter
+        :rtype: str
+        """
+        return self._Snapshotter
+
+    @Snapshotter.setter
+    def Snapshotter(self, Snapshotter):
+        self._Snapshotter = Snapshotter
+
 
     def _deserialize(self, params):
         self._Images = params.get("Images")
+        self._Snapshotter = params.get("Snapshotter")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -34630,6 +34645,10 @@ UpdateFailed：更新失败
         :type ImageRegistryCredentials: list of ImageRegistryCredential
         :param _Tags: 腾讯云标签
         :type Tags: list of Tag
+        :param _ImageCacheType: 镜像缓存类型
+        :type ImageCacheType: str
+        :param _Snapshotter: 镜像缓存所属snapshotter类型
+        :type Snapshotter: str
         """
         self._ImageCacheId = None
         self._ImageCacheName = None
@@ -34644,6 +34663,8 @@ UpdateFailed：更新失败
         self._RetentionDays = None
         self._ImageRegistryCredentials = None
         self._Tags = None
+        self._ImageCacheType = None
+        self._Snapshotter = None
 
     @property
     def ImageCacheId(self):
@@ -34794,6 +34815,28 @@ UpdateFailed：更新失败
     def Tags(self, Tags):
         self._Tags = Tags
 
+    @property
+    def ImageCacheType(self):
+        r"""镜像缓存类型
+        :rtype: str
+        """
+        return self._ImageCacheType
+
+    @ImageCacheType.setter
+    def ImageCacheType(self, ImageCacheType):
+        self._ImageCacheType = ImageCacheType
+
+    @property
+    def Snapshotter(self):
+        r"""镜像缓存所属snapshotter类型
+        :rtype: str
+        """
+        return self._Snapshotter
+
+    @Snapshotter.setter
+    def Snapshotter(self, Snapshotter):
+        self._Snapshotter = Snapshotter
+
 
     def _deserialize(self, params):
         self._ImageCacheId = params.get("ImageCacheId")
@@ -34824,6 +34867,8 @@ UpdateFailed：更新失败
                 obj = Tag()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        self._ImageCacheType = params.get("ImageCacheType")
+        self._Snapshotter = params.get("Snapshotter")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
