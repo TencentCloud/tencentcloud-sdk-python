@@ -440,6 +440,29 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ScaleNodePool(self, request):
+        r"""设置 TKE 节点池期望节点数
+
+        :param request: Request instance for ScaleNodePool.
+        :type request: :class:`tencentcloud.tke.v20220501.models.ScaleNodePoolRequest`
+        :rtype: :class:`tencentcloud.tke.v20220501.models.ScaleNodePoolResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ScaleNodePool", params, headers=headers)
+            response = json.loads(body)
+            model = models.ScaleNodePoolResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def SetMachineLogin(self, request):
         r"""设置是否开启节点登录
 

@@ -16552,17 +16552,20 @@ class ModifyDisasterRecoverGroupAttributeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DisasterRecoverGroupId: 分散置放群组ID，可使用[DescribeDisasterRecoverGroups](https://cloud.tencent.com/document/api/213/17810)接口获取。
+        :param _DisasterRecoverGroupId: <p>分散置放群组ID，可使用<a href="https://cloud.tencent.com/document/api/213/17810">DescribeDisasterRecoverGroups</a>接口获取。</p>
         :type DisasterRecoverGroupId: str
-        :param _Name: 分散置放群组名称，长度1-60个字符，支持中、英文。
+        :param _Name: <p>分散置放群组名称，长度1-60个字符，支持中、英文。</p>
         :type Name: str
+        :param _Affinity: <p>分散置放群组的亲和度，在置放群组的实例会按该亲和度分布，亲和度的取值范围是：1-10。</p><p>取值范围：[1, 10]</p><p>调整只能从小调到大，不能从大调到小</p>
+        :type Affinity: int
         """
         self._DisasterRecoverGroupId = None
         self._Name = None
+        self._Affinity = None
 
     @property
     def DisasterRecoverGroupId(self):
-        r"""分散置放群组ID，可使用[DescribeDisasterRecoverGroups](https://cloud.tencent.com/document/api/213/17810)接口获取。
+        r"""<p>分散置放群组ID，可使用<a href="https://cloud.tencent.com/document/api/213/17810">DescribeDisasterRecoverGroups</a>接口获取。</p>
         :rtype: str
         """
         return self._DisasterRecoverGroupId
@@ -16573,7 +16576,7 @@ class ModifyDisasterRecoverGroupAttributeRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""分散置放群组名称，长度1-60个字符，支持中、英文。
+        r"""<p>分散置放群组名称，长度1-60个字符，支持中、英文。</p>
         :rtype: str
         """
         return self._Name
@@ -16582,10 +16585,22 @@ class ModifyDisasterRecoverGroupAttributeRequest(AbstractModel):
     def Name(self, Name):
         self._Name = Name
 
+    @property
+    def Affinity(self):
+        r"""<p>分散置放群组的亲和度，在置放群组的实例会按该亲和度分布，亲和度的取值范围是：1-10。</p><p>取值范围：[1, 10]</p><p>调整只能从小调到大，不能从大调到小</p>
+        :rtype: int
+        """
+        return self._Affinity
+
+    @Affinity.setter
+    def Affinity(self, Affinity):
+        self._Affinity = Affinity
+
 
     def _deserialize(self, params):
         self._DisasterRecoverGroupId = params.get("DisasterRecoverGroupId")
         self._Name = params.get("Name")
+        self._Affinity = params.get("Affinity")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

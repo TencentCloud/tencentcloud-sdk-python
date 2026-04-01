@@ -1199,7 +1199,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DeleteLLMComprehendTemplateResponse:
         """
-        删除用户自定义图像异步处理模板。
+        删除用户自定义大模型解析模板。
 
         注意：模板 ID 为 10000 以下的为系统预置模板，不允许删除。
         """

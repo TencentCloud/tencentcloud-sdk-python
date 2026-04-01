@@ -10241,6 +10241,8 @@ class DescribeACLRequest(AbstractModel):
 
     @property
     def SearchWord(self):
+        warnings.warn("parameter `SearchWord` is deprecated", DeprecationWarning) 
+
         r"""关键字匹配
         :rtype: str
         """
@@ -10248,6 +10250,8 @@ class DescribeACLRequest(AbstractModel):
 
     @SearchWord.setter
     def SearchWord(self, SearchWord):
+        warnings.warn("parameter `SearchWord` is deprecated", DeprecationWarning) 
+
         self._SearchWord = SearchWord
 
 

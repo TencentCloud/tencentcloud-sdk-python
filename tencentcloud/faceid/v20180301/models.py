@@ -7871,36 +7871,31 @@ class IntentionQuestionResult(AbstractModel):
 
 
 class IntentionVerifyData(AbstractModel):
-    r"""意愿核身相关结果。
+    r"""意愿核身朗读模式相关结果。
 
     """
 
     def __init__(self):
         r"""
-        :param _IntentionVerifyVideo: 意愿确认环节中录制的视频（base64）。
-- 若不存在则为空字符串。
+        :param _IntentionVerifyVideo: <p>意愿确认环节中录制的视频（base64）。</p><ul><li>若不存在则为空字符串。</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IntentionVerifyVideo: str
-        :param _AsrResult: 意愿确认环节中用户语音转文字的识别结果。
-- 若不存在则为空字符串。
+        :param _AsrResult: <p>意愿确认环节中用户语音转文字的识别结果。</p><ul><li>若不存在则为空字符串。</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AsrResult: str
-        :param _ErrorCode: 意愿确认环节的结果码。
-- 当该结果码为0时，语音朗读的视频与语音识别结果才会返回。
+        :param _ErrorCode: <p>意愿确认环节（朗读模式）的结果码。取值范围：<br>0: &quot;成功&quot;<br>-1: &quot;系统异常&quot;<br>-2: &quot;参数错误&quot;<br>-3:&quot;业务繁忙，请重试&quot;<br>-4：&quot;后端服务异常，请重试&quot;<br>-5：&quot;后端服务进房异常，请重试&quot;<br>-6：&quot;后端服务录制异常，请重试&quot;<br>-7：&quot;文件存储异常，请重试&quot;<br>-8：&quot;后端服务重复进房，请重试&quot;<br>-9：&quot;实时视频流异常，请重试&quot;<br>-10：&quot;语音识别失败，请重试&quot;<br>-11：&quot;流程已中断，请重试&quot;<br>-12：&quot;流程未完成，请重试&quot;<br>-13：&quot;token校验不通过，请重试&quot;<br>-14：&quot;流程已结束&quot;<br>-15:&quot;超过预设重试次数&quot;<br>-16:&quot;系统未知错误，请联系人工核实&quot;<br>-17:&quot;未检测到用户声音&quot;<br>3001:&quot;请保持人脸在框内&quot;<br>3002:&quot;检测到多张人脸&quot;<br>3003:&quot;人脸检测失败&quot;<br>3011:&quot;人脸比对相似度低&quot;<br>3012:&quot;人脸比对失败&quot;<br>-800: &quot;前端不兼容错误&quot;<br>-801: &quot;用户未授权摄像头和麦克风权限&quot;<br>-802: &quot;核验流程异常中断，请勿切屏或进行其他操作&quot;<br>-803: &quot;用户主动关闭链接/异常断开链接&quot;</p><p>说明：若在人脸核身过程失败、未进入意愿确认过程，则该参数返回为空，请参考人脸核身错误码结果（DetectInfoText.ErrCode）注意：此字段可能返回 null，表示取不到有效值。<br>示例值：0</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorCode: int
-        :param _ErrorMessage: 意愿确认环节的结果信息。
+        :param _ErrorMessage: <p>意愿确认环节的结果信息。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorMessage: str
-        :param _IntentionVerifyBestFrame: 意愿确认环节中录制视频的最佳帧（base64）。
-- 若不存在则为空字符串。
+        :param _IntentionVerifyBestFrame: <p>意愿确认环节中录制视频的最佳帧（base64）。</p><ul><li>若不存在则为空字符串。</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IntentionVerifyBestFrame: str
-        :param _AsrResultSimilarity: 本次流程用户语音与传入文本比对的相似度分值，取值范围 [0.00, 100.00]。只有配置了相似度阈值后才进行语音校验并返回相似度分值。
+        :param _AsrResultSimilarity: <p>本次流程用户语音与传入文本比对的相似度分值，取值范围 [0.00, 100.00]。只有配置了相似度阈值后才进行语音校验并返回相似度分值。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AsrResultSimilarity: str
-        :param _IntentionVerifyAudio: 意愿确认环节中录制的音频（base64）。
-- 若不存在则为空字符串。
+        :param _IntentionVerifyAudio: <p>意愿确认环节中录制的音频（base64）。</p><ul><li>若不存在则为空字符串。</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IntentionVerifyAudio: str
         """
@@ -7914,8 +7909,7 @@ class IntentionVerifyData(AbstractModel):
 
     @property
     def IntentionVerifyVideo(self):
-        r"""意愿确认环节中录制的视频（base64）。
-- 若不存在则为空字符串。
+        r"""<p>意愿确认环节中录制的视频（base64）。</p><ul><li>若不存在则为空字符串。</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7927,8 +7921,7 @@ class IntentionVerifyData(AbstractModel):
 
     @property
     def AsrResult(self):
-        r"""意愿确认环节中用户语音转文字的识别结果。
-- 若不存在则为空字符串。
+        r"""<p>意愿确认环节中用户语音转文字的识别结果。</p><ul><li>若不存在则为空字符串。</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7940,8 +7933,7 @@ class IntentionVerifyData(AbstractModel):
 
     @property
     def ErrorCode(self):
-        r"""意愿确认环节的结果码。
-- 当该结果码为0时，语音朗读的视频与语音识别结果才会返回。
+        r"""<p>意愿确认环节（朗读模式）的结果码。取值范围：<br>0: &quot;成功&quot;<br>-1: &quot;系统异常&quot;<br>-2: &quot;参数错误&quot;<br>-3:&quot;业务繁忙，请重试&quot;<br>-4：&quot;后端服务异常，请重试&quot;<br>-5：&quot;后端服务进房异常，请重试&quot;<br>-6：&quot;后端服务录制异常，请重试&quot;<br>-7：&quot;文件存储异常，请重试&quot;<br>-8：&quot;后端服务重复进房，请重试&quot;<br>-9：&quot;实时视频流异常，请重试&quot;<br>-10：&quot;语音识别失败，请重试&quot;<br>-11：&quot;流程已中断，请重试&quot;<br>-12：&quot;流程未完成，请重试&quot;<br>-13：&quot;token校验不通过，请重试&quot;<br>-14：&quot;流程已结束&quot;<br>-15:&quot;超过预设重试次数&quot;<br>-16:&quot;系统未知错误，请联系人工核实&quot;<br>-17:&quot;未检测到用户声音&quot;<br>3001:&quot;请保持人脸在框内&quot;<br>3002:&quot;检测到多张人脸&quot;<br>3003:&quot;人脸检测失败&quot;<br>3011:&quot;人脸比对相似度低&quot;<br>3012:&quot;人脸比对失败&quot;<br>-800: &quot;前端不兼容错误&quot;<br>-801: &quot;用户未授权摄像头和麦克风权限&quot;<br>-802: &quot;核验流程异常中断，请勿切屏或进行其他操作&quot;<br>-803: &quot;用户主动关闭链接/异常断开链接&quot;</p><p>说明：若在人脸核身过程失败、未进入意愿确认过程，则该参数返回为空，请参考人脸核身错误码结果（DetectInfoText.ErrCode）注意：此字段可能返回 null，表示取不到有效值。<br>示例值：0</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -7953,7 +7945,7 @@ class IntentionVerifyData(AbstractModel):
 
     @property
     def ErrorMessage(self):
-        r"""意愿确认环节的结果信息。
+        r"""<p>意愿确认环节的结果信息。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7965,8 +7957,7 @@ class IntentionVerifyData(AbstractModel):
 
     @property
     def IntentionVerifyBestFrame(self):
-        r"""意愿确认环节中录制视频的最佳帧（base64）。
-- 若不存在则为空字符串。
+        r"""<p>意愿确认环节中录制视频的最佳帧（base64）。</p><ul><li>若不存在则为空字符串。</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7980,7 +7971,7 @@ class IntentionVerifyData(AbstractModel):
     def AsrResultSimilarity(self):
         warnings.warn("parameter `AsrResultSimilarity` is deprecated", DeprecationWarning) 
 
-        r"""本次流程用户语音与传入文本比对的相似度分值，取值范围 [0.00, 100.00]。只有配置了相似度阈值后才进行语音校验并返回相似度分值。
+        r"""<p>本次流程用户语音与传入文本比对的相似度分值，取值范围 [0.00, 100.00]。只有配置了相似度阈值后才进行语音校验并返回相似度分值。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7994,8 +7985,7 @@ class IntentionVerifyData(AbstractModel):
 
     @property
     def IntentionVerifyAudio(self):
-        r"""意愿确认环节中录制的音频（base64）。
-- 若不存在则为空字符串。
+        r"""<p>意愿确认环节中录制的音频（base64）。</p><ul><li>若不存在则为空字符串。</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """

@@ -3803,9 +3803,9 @@ class DescribeInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 集群实例ID
+        :param _InstanceId: <p>集群实例ID</p>
         :type InstanceId: str
-        :param _IsOpenApi: 是否是open api查询
+        :param _IsOpenApi: <p>是否是open api查询</p>
         :type IsOpenApi: bool
         """
         self._InstanceId = None
@@ -3813,7 +3813,7 @@ class DescribeInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""集群实例ID
+        r"""<p>集群实例ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -3824,7 +3824,7 @@ class DescribeInstanceRequest(AbstractModel):
 
     @property
     def IsOpenApi(self):
-        r"""是否是open api查询
+        r"""<p>是否是open api查询</p>
         :rtype: bool
         """
         return self._IsOpenApi
@@ -3854,7 +3854,7 @@ class DescribeInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceInfo: 实例描述信息
+        :param _InstanceInfo: <p>实例描述信息</p>
         :type InstanceInfo: :class:`tencentcloud.cdwch.v20200915.models.InstanceInfo`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3864,7 +3864,7 @@ class DescribeInstanceResponse(AbstractModel):
 
     @property
     def InstanceInfo(self):
-        r"""实例描述信息
+        r"""<p>实例描述信息</p>
         :rtype: :class:`tencentcloud.cdwch.v20200915.models.InstanceInfo`
         """
         return self._InstanceInfo
@@ -5057,28 +5057,32 @@ class InstanceConfigInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ConfKey: 配置项名称
+        :param _ConfKey: <p>配置项名称</p>
         :type ConfKey: str
-        :param _ConfValue: 配置项内容
+        :param _ConfValue: <p>配置项内容</p>
         :type ConfValue: str
-        :param _DefaultValue: 默认值
+        :param _DefaultValue: <p>默认值</p>
         :type DefaultValue: str
-        :param _NeedRestart: 是否需要重启
+        :param _NeedRestart: <p>是否需要重启</p>
         :type NeedRestart: bool
-        :param _Editable: 是否可编辑
+        :param _Editable: <p>是否可编辑</p>
         :type Editable: bool
-        :param _ConfDesc: 配置项解释
+        :param _ConfDesc: <p>配置项解释</p>
         :type ConfDesc: str
-        :param _FileName: 文件名称
+        :param _FileName: <p>文件名称</p>
         :type FileName: str
-        :param _ModifyRuleType: 规则名称类型
+        :param _ModifyRuleType: <p>规则名称类型</p>
         :type ModifyRuleType: str
-        :param _ModifyRuleValue: 规则名称内容
+        :param _ModifyRuleValue: <p>规则名称内容</p>
         :type ModifyRuleValue: str
-        :param _Uin: 修改人的uin
+        :param _Uin: <p>修改人的uin</p>
         :type Uin: str
-        :param _ModifyTime: 修改时间
+        :param _ModifyTime: <p>修改时间</p>
         :type ModifyTime: str
+        :param _ValueRange: <p>取值范围</p>
+        :type ValueRange: str
+        :param _AbnormalParam: <p>标记异常</p>
+        :type AbnormalParam: str
         """
         self._ConfKey = None
         self._ConfValue = None
@@ -5091,10 +5095,12 @@ class InstanceConfigInfo(AbstractModel):
         self._ModifyRuleValue = None
         self._Uin = None
         self._ModifyTime = None
+        self._ValueRange = None
+        self._AbnormalParam = None
 
     @property
     def ConfKey(self):
-        r"""配置项名称
+        r"""<p>配置项名称</p>
         :rtype: str
         """
         return self._ConfKey
@@ -5105,7 +5111,7 @@ class InstanceConfigInfo(AbstractModel):
 
     @property
     def ConfValue(self):
-        r"""配置项内容
+        r"""<p>配置项内容</p>
         :rtype: str
         """
         return self._ConfValue
@@ -5116,7 +5122,7 @@ class InstanceConfigInfo(AbstractModel):
 
     @property
     def DefaultValue(self):
-        r"""默认值
+        r"""<p>默认值</p>
         :rtype: str
         """
         return self._DefaultValue
@@ -5127,7 +5133,7 @@ class InstanceConfigInfo(AbstractModel):
 
     @property
     def NeedRestart(self):
-        r"""是否需要重启
+        r"""<p>是否需要重启</p>
         :rtype: bool
         """
         return self._NeedRestart
@@ -5138,7 +5144,7 @@ class InstanceConfigInfo(AbstractModel):
 
     @property
     def Editable(self):
-        r"""是否可编辑
+        r"""<p>是否可编辑</p>
         :rtype: bool
         """
         return self._Editable
@@ -5149,7 +5155,7 @@ class InstanceConfigInfo(AbstractModel):
 
     @property
     def ConfDesc(self):
-        r"""配置项解释
+        r"""<p>配置项解释</p>
         :rtype: str
         """
         return self._ConfDesc
@@ -5160,7 +5166,7 @@ class InstanceConfigInfo(AbstractModel):
 
     @property
     def FileName(self):
-        r"""文件名称
+        r"""<p>文件名称</p>
         :rtype: str
         """
         return self._FileName
@@ -5171,7 +5177,7 @@ class InstanceConfigInfo(AbstractModel):
 
     @property
     def ModifyRuleType(self):
-        r"""规则名称类型
+        r"""<p>规则名称类型</p>
         :rtype: str
         """
         return self._ModifyRuleType
@@ -5182,7 +5188,7 @@ class InstanceConfigInfo(AbstractModel):
 
     @property
     def ModifyRuleValue(self):
-        r"""规则名称内容
+        r"""<p>规则名称内容</p>
         :rtype: str
         """
         return self._ModifyRuleValue
@@ -5193,7 +5199,7 @@ class InstanceConfigInfo(AbstractModel):
 
     @property
     def Uin(self):
-        r"""修改人的uin
+        r"""<p>修改人的uin</p>
         :rtype: str
         """
         return self._Uin
@@ -5204,7 +5210,7 @@ class InstanceConfigInfo(AbstractModel):
 
     @property
     def ModifyTime(self):
-        r"""修改时间
+        r"""<p>修改时间</p>
         :rtype: str
         """
         return self._ModifyTime
@@ -5212,6 +5218,28 @@ class InstanceConfigInfo(AbstractModel):
     @ModifyTime.setter
     def ModifyTime(self, ModifyTime):
         self._ModifyTime = ModifyTime
+
+    @property
+    def ValueRange(self):
+        r"""<p>取值范围</p>
+        :rtype: str
+        """
+        return self._ValueRange
+
+    @ValueRange.setter
+    def ValueRange(self, ValueRange):
+        self._ValueRange = ValueRange
+
+    @property
+    def AbnormalParam(self):
+        r"""<p>标记异常</p>
+        :rtype: str
+        """
+        return self._AbnormalParam
+
+    @AbnormalParam.setter
+    def AbnormalParam(self, AbnormalParam):
+        self._AbnormalParam = AbnormalParam
 
 
     def _deserialize(self, params):
@@ -5226,6 +5254,8 @@ class InstanceConfigInfo(AbstractModel):
         self._ModifyRuleValue = params.get("ModifyRuleValue")
         self._Uin = params.get("Uin")
         self._ModifyTime = params.get("ModifyTime")
+        self._ValueRange = params.get("ValueRange")
+        self._AbnormalParam = params.get("AbnormalParam")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5243,17 +5273,26 @@ class InstanceConfigItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ConfKey: key
+        :param _ConfKey: <p>key</p>
         :type ConfKey: str
-        :param _ConfValue: value
+        :param _ConfValue: <p>value</p>
         :type ConfValue: str
+        :param _ModifyType: <p>add/delete/update</p>
+        :type ModifyType: str
+        :param _NeedRestart: <p>是否需要重启</p>
+        :type NeedRestart: bool
+        :param _OriginalConfValue: <p>修改前的值</p>
+        :type OriginalConfValue: str
         """
         self._ConfKey = None
         self._ConfValue = None
+        self._ModifyType = None
+        self._NeedRestart = None
+        self._OriginalConfValue = None
 
     @property
     def ConfKey(self):
-        r"""key
+        r"""<p>key</p>
         :rtype: str
         """
         return self._ConfKey
@@ -5264,7 +5303,7 @@ class InstanceConfigItem(AbstractModel):
 
     @property
     def ConfValue(self):
-        r"""value
+        r"""<p>value</p>
         :rtype: str
         """
         return self._ConfValue
@@ -5273,10 +5312,46 @@ class InstanceConfigItem(AbstractModel):
     def ConfValue(self, ConfValue):
         self._ConfValue = ConfValue
 
+    @property
+    def ModifyType(self):
+        r"""<p>add/delete/update</p>
+        :rtype: str
+        """
+        return self._ModifyType
+
+    @ModifyType.setter
+    def ModifyType(self, ModifyType):
+        self._ModifyType = ModifyType
+
+    @property
+    def NeedRestart(self):
+        r"""<p>是否需要重启</p>
+        :rtype: bool
+        """
+        return self._NeedRestart
+
+    @NeedRestart.setter
+    def NeedRestart(self, NeedRestart):
+        self._NeedRestart = NeedRestart
+
+    @property
+    def OriginalConfValue(self):
+        r"""<p>修改前的值</p>
+        :rtype: str
+        """
+        return self._OriginalConfValue
+
+    @OriginalConfValue.setter
+    def OriginalConfValue(self, OriginalConfValue):
+        self._OriginalConfValue = OriginalConfValue
+
 
     def _deserialize(self, params):
         self._ConfKey = params.get("ConfKey")
         self._ConfValue = params.get("ConfValue")
+        self._ModifyType = params.get("ModifyType")
+        self._NeedRestart = params.get("NeedRestart")
+        self._OriginalConfValue = params.get("OriginalConfValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5330,121 +5405,120 @@ class InstanceInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 集群实例ID, "cdw-xxxx" 字符串类型
+        :param _InstanceId: <p>集群实例ID, &quot;cdw-xxxx&quot; 字符串类型</p>
         :type InstanceId: str
-        :param _InstanceName: 集群实例名称
+        :param _InstanceName: <p>集群实例名称</p>
         :type InstanceName: str
-        :param _Status: 状态,
-Init 创建中; Serving 运行中； 
-Deleted已销毁；Deleting 销毁中；
-Modify 集群变更中；
+        :param _Status: <p>状态,<br>Init 创建中; Serving 运行中；<br>Deleted已销毁；Deleting 销毁中；<br>Modify 集群变更中；</p>
         :type Status: str
-        :param _Version: 版本
+        :param _Version: <p>版本</p>
         :type Version: str
-        :param _Region: 地域, ap-guangzhou
+        :param _Region: <p>地域, ap-guangzhou</p>
         :type Region: str
-        :param _Zone: 可用区， ap-guangzhou-3
+        :param _Zone: <p>可用区， ap-guangzhou-3</p>
         :type Zone: str
-        :param _VpcId: 私有网络名称
+        :param _VpcId: <p>私有网络名称</p>
         :type VpcId: str
-        :param _SubnetId: 子网名称
+        :param _SubnetId: <p>子网名称</p>
         :type SubnetId: str
-        :param _PayMode: 付费类型，"hour", "prepay"
+        :param _PayMode: <p>付费类型，&quot;hour&quot;, &quot;prepay&quot;</p>
         :type PayMode: str
-        :param _CreateTime: 创建时间
+        :param _CreateTime: <p>创建时间</p>
         :type CreateTime: str
-        :param _ExpireTime: 过期时间
+        :param _ExpireTime: <p>过期时间</p>
         :type ExpireTime: str
-        :param _MasterSummary: 数据节点描述信息
+        :param _MasterSummary: <p>数据节点描述信息</p>
         :type MasterSummary: :class:`tencentcloud.cdwch.v20200915.models.NodesSummary`
-        :param _CommonSummary: zookeeper节点描述信息
+        :param _CommonSummary: <p>zookeeper节点描述信息</p>
         :type CommonSummary: :class:`tencentcloud.cdwch.v20200915.models.NodesSummary`
-        :param _HA: 高可用,"true" "false"
+        :param _HA: <p>高可用,&quot;true&quot; &quot;false&quot;</p>
         :type HA: str
-        :param _AccessInfo: 访问地址，例如 "10.0.0.1:9000"
+        :param _AccessInfo: <p>访问地址，例如 &quot;10.0.0.1:9000&quot;</p>
         :type AccessInfo: str
-        :param _Id: 记录ID，数值型
+        :param _Id: <p>记录ID，数值型</p>
         :type Id: int
-        :param _RegionId: regionId, 表示地域
+        :param _RegionId: <p>regionId, 表示地域</p>
         :type RegionId: int
-        :param _ZoneDesc: 可用区说明，例如 "广州二区"
+        :param _ZoneDesc: <p>可用区说明，例如 &quot;广州二区&quot;</p>
         :type ZoneDesc: str
-        :param _FlowMsg: 错误流程说明信息
+        :param _FlowMsg: <p>错误流程说明信息</p>
         :type FlowMsg: str
-        :param _StatusDesc: 状态描述，例如“运行中”等
+        :param _StatusDesc: <p>状态描述，例如“运行中”等</p>
         :type StatusDesc: str
-        :param _RenewFlag: 自动续费标记
+        :param _RenewFlag: <p>自动续费标记</p>
         :type RenewFlag: bool
-        :param _Tags: 标签列表
+        :param _Tags: <p>标签列表</p>
         :type Tags: list of Tag
-        :param _Monitor: 监控信息
+        :param _Monitor: <p>监控信息</p>
         :type Monitor: str
-        :param _HasClsTopic: 是否开通日志
+        :param _HasClsTopic: <p>是否开通日志</p>
         :type HasClsTopic: bool
-        :param _ClsTopicId: 日志主题ID
+        :param _ClsTopicId: <p>日志主题ID</p>
         :type ClsTopicId: str
-        :param _ClsLogSetId: 日志集ID
+        :param _ClsLogSetId: <p>日志集ID</p>
         :type ClsLogSetId: str
-        :param _EnableXMLConfig: 是否支持xml配置管理
+        :param _EnableXMLConfig: <p>是否支持xml配置管理</p>
         :type EnableXMLConfig: int
-        :param _RegionDesc: 区域
+        :param _RegionDesc: <p>区域</p>
         :type RegionDesc: str
-        :param _Eip: 弹性网卡地址
+        :param _Eip: <p>弹性网卡地址</p>
         :type Eip: str
-        :param _CosMoveFactor: 冷热分层系数
+        :param _CosMoveFactor: <p>冷热分层系数</p>
         :type CosMoveFactor: int
-        :param _Kind: external/local/yunti
+        :param _Kind: <p>external/local/yunti</p>
         :type Kind: str
-        :param _IsElastic: 是否弹性ck
+        :param _IsElastic: <p>是否弹性ck</p>
         :type IsElastic: bool
-        :param _InstanceStateInfo: 集群详细状态
+        :param _InstanceStateInfo: <p>集群详细状态</p>
         :type InstanceStateInfo: :class:`tencentcloud.cdwch.v20200915.models.InstanceStateInfo`
-        :param _HAZk: ZK高可用
+        :param _HAZk: <p>ZK高可用</p>
         :type HAZk: bool
-        :param _MountDiskType: 挂载盘,默认0:没有类型；1:裸盘;2:lvm
+        :param _MountDiskType: <p>挂载盘,默认0:没有类型；1:裸盘;2:lvm</p>
         :type MountDiskType: int
-        :param _CHProxyVip: chproxy连接ip
+        :param _CHProxyVip: <p>chproxy连接ip</p>
         :type CHProxyVip: str
-        :param _CosBucketName: cos buket的名字
+        :param _CosBucketName: <p>cos buket的名字</p>
         :type CosBucketName: str
-        :param _CanAttachCbs: 是否可以挂载云盘
+        :param _CanAttachCbs: <p>是否可以挂载云盘</p>
         :type CanAttachCbs: bool
-        :param _CanAttachCbsLvm: 是否可以挂载云盘阵列
+        :param _CanAttachCbsLvm: <p>是否可以挂载云盘阵列</p>
         :type CanAttachCbsLvm: bool
-        :param _CanAttachCos: 是否可以挂载cos
+        :param _CanAttachCos: <p>是否可以挂载cos</p>
         :type CanAttachCos: bool
-        :param _Components: 服务信息
+        :param _Components: <p>服务信息</p>
         :type Components: list of ServiceInfo
-        :param _UpgradeVersions: 可升级的内核版本
+        :param _UpgradeVersions: <p>可升级的内核版本</p>
         :type UpgradeVersions: str
-        :param _EsIndexId: ex-index
+        :param _EsIndexId: <p>ex-index</p>
         :type EsIndexId: str
-        :param _EsIndexUsername: username
+        :param _EsIndexUsername: <p>username</p>
         :type EsIndexUsername: str
-        :param _EsIndexPassword: password
+        :param _EsIndexPassword: <p>password</p>
         :type EsIndexPassword: str
-        :param _HasEsIndex: true
+        :param _HasEsIndex: <p>true</p>
         :type HasEsIndex: bool
-        :param _IsSecondaryZone: true
+        :param _IsSecondaryZone: <p>true</p>
         :type IsSecondaryZone: bool
-        :param _SecondaryZoneInfo: desc
+        :param _SecondaryZoneInfo: <p>desc</p>
         :type SecondaryZoneInfo: str
-        :param _ClickHouseKeeper: 是否clickhouse-keeper
+        :param _ClickHouseKeeper: <p>是否clickhouse-keeper</p>
         :type ClickHouseKeeper: bool
-        :param _Details: 实例扩展信息
+        :param _Details: <p>实例扩展信息</p>
         :type Details: :class:`tencentcloud.cdwch.v20200915.models.InstanceDetail`
-        :param _IsWhiteSGs: 安全组白名单
+        :param _IsWhiteSGs: <p>安全组白名单</p>
         :type IsWhiteSGs: bool
-        :param _BindSGs: 绑定的安全组
+        :param _BindSGs: <p>绑定的安全组</p>
         :type BindSGs: list of str
-        :param _HasPublicCloudClb: 是否开启公网clb
+        :param _HasPublicCloudClb: <p>是否开启公网clb</p>
         :type HasPublicCloudClb: bool
-        :param _UpgradeZkVersions: 可升级的zk版本
+        :param _UpgradeZkVersions: <p>可升级的zk版本</p>
         :type UpgradeZkVersions: str
-        :param _ShowRip: 是否显示rip
+        :param _ShowRip: <p>是否显示rip</p>
         :type ShowRip: str
-        :param _InstanceType: 实例类型：标准型 standard，无keeper节点类型noKeeper；
+        :param _InstanceType: <p>实例类型：标准型 standard，无keeper节点类型noKeeper；</p>
         :type InstanceType: str
+        :param _EnableConfigKeyValue: <p>keyvalue视图</p>
+        :type EnableConfigKeyValue: str
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -5502,10 +5576,11 @@ Modify 集群变更中；
         self._UpgradeZkVersions = None
         self._ShowRip = None
         self._InstanceType = None
+        self._EnableConfigKeyValue = None
 
     @property
     def InstanceId(self):
-        r"""集群实例ID, "cdw-xxxx" 字符串类型
+        r"""<p>集群实例ID, &quot;cdw-xxxx&quot; 字符串类型</p>
         :rtype: str
         """
         return self._InstanceId
@@ -5516,7 +5591,7 @@ Modify 集群变更中；
 
     @property
     def InstanceName(self):
-        r"""集群实例名称
+        r"""<p>集群实例名称</p>
         :rtype: str
         """
         return self._InstanceName
@@ -5527,10 +5602,7 @@ Modify 集群变更中；
 
     @property
     def Status(self):
-        r"""状态,
-Init 创建中; Serving 运行中； 
-Deleted已销毁；Deleting 销毁中；
-Modify 集群变更中；
+        r"""<p>状态,<br>Init 创建中; Serving 运行中；<br>Deleted已销毁；Deleting 销毁中；<br>Modify 集群变更中；</p>
         :rtype: str
         """
         return self._Status
@@ -5541,7 +5613,7 @@ Modify 集群变更中；
 
     @property
     def Version(self):
-        r"""版本
+        r"""<p>版本</p>
         :rtype: str
         """
         return self._Version
@@ -5552,7 +5624,7 @@ Modify 集群变更中；
 
     @property
     def Region(self):
-        r"""地域, ap-guangzhou
+        r"""<p>地域, ap-guangzhou</p>
         :rtype: str
         """
         return self._Region
@@ -5563,7 +5635,7 @@ Modify 集群变更中；
 
     @property
     def Zone(self):
-        r"""可用区， ap-guangzhou-3
+        r"""<p>可用区， ap-guangzhou-3</p>
         :rtype: str
         """
         return self._Zone
@@ -5574,7 +5646,7 @@ Modify 集群变更中；
 
     @property
     def VpcId(self):
-        r"""私有网络名称
+        r"""<p>私有网络名称</p>
         :rtype: str
         """
         return self._VpcId
@@ -5585,7 +5657,7 @@ Modify 集群变更中；
 
     @property
     def SubnetId(self):
-        r"""子网名称
+        r"""<p>子网名称</p>
         :rtype: str
         """
         return self._SubnetId
@@ -5596,7 +5668,7 @@ Modify 集群变更中；
 
     @property
     def PayMode(self):
-        r"""付费类型，"hour", "prepay"
+        r"""<p>付费类型，&quot;hour&quot;, &quot;prepay&quot;</p>
         :rtype: str
         """
         return self._PayMode
@@ -5607,7 +5679,7 @@ Modify 集群变更中；
 
     @property
     def CreateTime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
         :rtype: str
         """
         return self._CreateTime
@@ -5618,7 +5690,7 @@ Modify 集群变更中；
 
     @property
     def ExpireTime(self):
-        r"""过期时间
+        r"""<p>过期时间</p>
         :rtype: str
         """
         return self._ExpireTime
@@ -5629,7 +5701,7 @@ Modify 集群变更中；
 
     @property
     def MasterSummary(self):
-        r"""数据节点描述信息
+        r"""<p>数据节点描述信息</p>
         :rtype: :class:`tencentcloud.cdwch.v20200915.models.NodesSummary`
         """
         return self._MasterSummary
@@ -5640,7 +5712,7 @@ Modify 集群变更中；
 
     @property
     def CommonSummary(self):
-        r"""zookeeper节点描述信息
+        r"""<p>zookeeper节点描述信息</p>
         :rtype: :class:`tencentcloud.cdwch.v20200915.models.NodesSummary`
         """
         return self._CommonSummary
@@ -5651,7 +5723,7 @@ Modify 集群变更中；
 
     @property
     def HA(self):
-        r"""高可用,"true" "false"
+        r"""<p>高可用,&quot;true&quot; &quot;false&quot;</p>
         :rtype: str
         """
         return self._HA
@@ -5662,7 +5734,7 @@ Modify 集群变更中；
 
     @property
     def AccessInfo(self):
-        r"""访问地址，例如 "10.0.0.1:9000"
+        r"""<p>访问地址，例如 &quot;10.0.0.1:9000&quot;</p>
         :rtype: str
         """
         return self._AccessInfo
@@ -5673,7 +5745,7 @@ Modify 集群变更中；
 
     @property
     def Id(self):
-        r"""记录ID，数值型
+        r"""<p>记录ID，数值型</p>
         :rtype: int
         """
         return self._Id
@@ -5684,7 +5756,7 @@ Modify 集群变更中；
 
     @property
     def RegionId(self):
-        r"""regionId, 表示地域
+        r"""<p>regionId, 表示地域</p>
         :rtype: int
         """
         return self._RegionId
@@ -5695,7 +5767,7 @@ Modify 集群变更中；
 
     @property
     def ZoneDesc(self):
-        r"""可用区说明，例如 "广州二区"
+        r"""<p>可用区说明，例如 &quot;广州二区&quot;</p>
         :rtype: str
         """
         return self._ZoneDesc
@@ -5706,7 +5778,7 @@ Modify 集群变更中；
 
     @property
     def FlowMsg(self):
-        r"""错误流程说明信息
+        r"""<p>错误流程说明信息</p>
         :rtype: str
         """
         return self._FlowMsg
@@ -5717,7 +5789,7 @@ Modify 集群变更中；
 
     @property
     def StatusDesc(self):
-        r"""状态描述，例如“运行中”等
+        r"""<p>状态描述，例如“运行中”等</p>
         :rtype: str
         """
         return self._StatusDesc
@@ -5728,7 +5800,7 @@ Modify 集群变更中；
 
     @property
     def RenewFlag(self):
-        r"""自动续费标记
+        r"""<p>自动续费标记</p>
         :rtype: bool
         """
         return self._RenewFlag
@@ -5739,7 +5811,7 @@ Modify 集群变更中；
 
     @property
     def Tags(self):
-        r"""标签列表
+        r"""<p>标签列表</p>
         :rtype: list of Tag
         """
         return self._Tags
@@ -5750,7 +5822,7 @@ Modify 集群变更中；
 
     @property
     def Monitor(self):
-        r"""监控信息
+        r"""<p>监控信息</p>
         :rtype: str
         """
         return self._Monitor
@@ -5761,7 +5833,7 @@ Modify 集群变更中；
 
     @property
     def HasClsTopic(self):
-        r"""是否开通日志
+        r"""<p>是否开通日志</p>
         :rtype: bool
         """
         return self._HasClsTopic
@@ -5772,7 +5844,7 @@ Modify 集群变更中；
 
     @property
     def ClsTopicId(self):
-        r"""日志主题ID
+        r"""<p>日志主题ID</p>
         :rtype: str
         """
         return self._ClsTopicId
@@ -5783,7 +5855,7 @@ Modify 集群变更中；
 
     @property
     def ClsLogSetId(self):
-        r"""日志集ID
+        r"""<p>日志集ID</p>
         :rtype: str
         """
         return self._ClsLogSetId
@@ -5794,7 +5866,7 @@ Modify 集群变更中；
 
     @property
     def EnableXMLConfig(self):
-        r"""是否支持xml配置管理
+        r"""<p>是否支持xml配置管理</p>
         :rtype: int
         """
         return self._EnableXMLConfig
@@ -5805,7 +5877,7 @@ Modify 集群变更中；
 
     @property
     def RegionDesc(self):
-        r"""区域
+        r"""<p>区域</p>
         :rtype: str
         """
         return self._RegionDesc
@@ -5816,7 +5888,7 @@ Modify 集群变更中；
 
     @property
     def Eip(self):
-        r"""弹性网卡地址
+        r"""<p>弹性网卡地址</p>
         :rtype: str
         """
         return self._Eip
@@ -5827,7 +5899,7 @@ Modify 集群变更中；
 
     @property
     def CosMoveFactor(self):
-        r"""冷热分层系数
+        r"""<p>冷热分层系数</p>
         :rtype: int
         """
         return self._CosMoveFactor
@@ -5838,7 +5910,7 @@ Modify 集群变更中；
 
     @property
     def Kind(self):
-        r"""external/local/yunti
+        r"""<p>external/local/yunti</p>
         :rtype: str
         """
         return self._Kind
@@ -5849,7 +5921,7 @@ Modify 集群变更中；
 
     @property
     def IsElastic(self):
-        r"""是否弹性ck
+        r"""<p>是否弹性ck</p>
         :rtype: bool
         """
         return self._IsElastic
@@ -5860,7 +5932,7 @@ Modify 集群变更中；
 
     @property
     def InstanceStateInfo(self):
-        r"""集群详细状态
+        r"""<p>集群详细状态</p>
         :rtype: :class:`tencentcloud.cdwch.v20200915.models.InstanceStateInfo`
         """
         return self._InstanceStateInfo
@@ -5871,7 +5943,7 @@ Modify 集群变更中；
 
     @property
     def HAZk(self):
-        r"""ZK高可用
+        r"""<p>ZK高可用</p>
         :rtype: bool
         """
         return self._HAZk
@@ -5882,7 +5954,7 @@ Modify 集群变更中；
 
     @property
     def MountDiskType(self):
-        r"""挂载盘,默认0:没有类型；1:裸盘;2:lvm
+        r"""<p>挂载盘,默认0:没有类型；1:裸盘;2:lvm</p>
         :rtype: int
         """
         return self._MountDiskType
@@ -5893,7 +5965,7 @@ Modify 集群变更中；
 
     @property
     def CHProxyVip(self):
-        r"""chproxy连接ip
+        r"""<p>chproxy连接ip</p>
         :rtype: str
         """
         return self._CHProxyVip
@@ -5904,7 +5976,7 @@ Modify 集群变更中；
 
     @property
     def CosBucketName(self):
-        r"""cos buket的名字
+        r"""<p>cos buket的名字</p>
         :rtype: str
         """
         return self._CosBucketName
@@ -5915,7 +5987,7 @@ Modify 集群变更中；
 
     @property
     def CanAttachCbs(self):
-        r"""是否可以挂载云盘
+        r"""<p>是否可以挂载云盘</p>
         :rtype: bool
         """
         return self._CanAttachCbs
@@ -5926,7 +5998,7 @@ Modify 集群变更中；
 
     @property
     def CanAttachCbsLvm(self):
-        r"""是否可以挂载云盘阵列
+        r"""<p>是否可以挂载云盘阵列</p>
         :rtype: bool
         """
         return self._CanAttachCbsLvm
@@ -5937,7 +6009,7 @@ Modify 集群变更中；
 
     @property
     def CanAttachCos(self):
-        r"""是否可以挂载cos
+        r"""<p>是否可以挂载cos</p>
         :rtype: bool
         """
         return self._CanAttachCos
@@ -5948,7 +6020,7 @@ Modify 集群变更中；
 
     @property
     def Components(self):
-        r"""服务信息
+        r"""<p>服务信息</p>
         :rtype: list of ServiceInfo
         """
         return self._Components
@@ -5959,7 +6031,7 @@ Modify 集群变更中；
 
     @property
     def UpgradeVersions(self):
-        r"""可升级的内核版本
+        r"""<p>可升级的内核版本</p>
         :rtype: str
         """
         return self._UpgradeVersions
@@ -5970,7 +6042,7 @@ Modify 集群变更中；
 
     @property
     def EsIndexId(self):
-        r"""ex-index
+        r"""<p>ex-index</p>
         :rtype: str
         """
         return self._EsIndexId
@@ -5981,7 +6053,7 @@ Modify 集群变更中；
 
     @property
     def EsIndexUsername(self):
-        r"""username
+        r"""<p>username</p>
         :rtype: str
         """
         return self._EsIndexUsername
@@ -5992,7 +6064,7 @@ Modify 集群变更中；
 
     @property
     def EsIndexPassword(self):
-        r"""password
+        r"""<p>password</p>
         :rtype: str
         """
         return self._EsIndexPassword
@@ -6003,7 +6075,7 @@ Modify 集群变更中；
 
     @property
     def HasEsIndex(self):
-        r"""true
+        r"""<p>true</p>
         :rtype: bool
         """
         return self._HasEsIndex
@@ -6014,7 +6086,7 @@ Modify 集群变更中；
 
     @property
     def IsSecondaryZone(self):
-        r"""true
+        r"""<p>true</p>
         :rtype: bool
         """
         return self._IsSecondaryZone
@@ -6025,7 +6097,7 @@ Modify 集群变更中；
 
     @property
     def SecondaryZoneInfo(self):
-        r"""desc
+        r"""<p>desc</p>
         :rtype: str
         """
         return self._SecondaryZoneInfo
@@ -6036,7 +6108,7 @@ Modify 集群变更中；
 
     @property
     def ClickHouseKeeper(self):
-        r"""是否clickhouse-keeper
+        r"""<p>是否clickhouse-keeper</p>
         :rtype: bool
         """
         return self._ClickHouseKeeper
@@ -6047,7 +6119,7 @@ Modify 集群变更中；
 
     @property
     def Details(self):
-        r"""实例扩展信息
+        r"""<p>实例扩展信息</p>
         :rtype: :class:`tencentcloud.cdwch.v20200915.models.InstanceDetail`
         """
         return self._Details
@@ -6058,7 +6130,7 @@ Modify 集群变更中；
 
     @property
     def IsWhiteSGs(self):
-        r"""安全组白名单
+        r"""<p>安全组白名单</p>
         :rtype: bool
         """
         return self._IsWhiteSGs
@@ -6069,7 +6141,7 @@ Modify 集群变更中；
 
     @property
     def BindSGs(self):
-        r"""绑定的安全组
+        r"""<p>绑定的安全组</p>
         :rtype: list of str
         """
         return self._BindSGs
@@ -6080,7 +6152,7 @@ Modify 集群变更中；
 
     @property
     def HasPublicCloudClb(self):
-        r"""是否开启公网clb
+        r"""<p>是否开启公网clb</p>
         :rtype: bool
         """
         return self._HasPublicCloudClb
@@ -6091,7 +6163,7 @@ Modify 集群变更中；
 
     @property
     def UpgradeZkVersions(self):
-        r"""可升级的zk版本
+        r"""<p>可升级的zk版本</p>
         :rtype: str
         """
         return self._UpgradeZkVersions
@@ -6102,7 +6174,7 @@ Modify 集群变更中；
 
     @property
     def ShowRip(self):
-        r"""是否显示rip
+        r"""<p>是否显示rip</p>
         :rtype: str
         """
         return self._ShowRip
@@ -6113,7 +6185,7 @@ Modify 集群变更中；
 
     @property
     def InstanceType(self):
-        r"""实例类型：标准型 standard，无keeper节点类型noKeeper；
+        r"""<p>实例类型：标准型 standard，无keeper节点类型noKeeper；</p>
         :rtype: str
         """
         return self._InstanceType
@@ -6121,6 +6193,17 @@ Modify 集群变更中；
     @InstanceType.setter
     def InstanceType(self, InstanceType):
         self._InstanceType = InstanceType
+
+    @property
+    def EnableConfigKeyValue(self):
+        r"""<p>keyvalue视图</p>
+        :rtype: str
+        """
+        return self._EnableConfigKeyValue
+
+    @EnableConfigKeyValue.setter
+    def EnableConfigKeyValue(self, EnableConfigKeyValue):
+        self._EnableConfigKeyValue = EnableConfigKeyValue
 
 
     def _deserialize(self, params):
@@ -6198,6 +6281,7 @@ Modify 集群变更中；
         self._UpgradeZkVersions = params.get("UpgradeZkVersions")
         self._ShowRip = params.get("ShowRip")
         self._InstanceType = params.get("InstanceType")
+        self._EnableConfigKeyValue = params.get("EnableConfigKeyValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6481,24 +6565,28 @@ class InstanceStateInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceState: 集群状态，例如：Serving
+        :param _InstanceState: <p>集群状态，例如：Serving</p>
         :type InstanceState: str
-        :param _FlowCreateTime: 集群操作创建时间
+        :param _FlowCreateTime: <p>集群操作创建时间</p>
         :type FlowCreateTime: str
-        :param _FlowName: 集群操作名称
+        :param _FlowName: <p>集群操作名称</p>
         :type FlowName: str
-        :param _FlowProgress: 集群操作进度
+        :param _FlowProgress: <p>集群操作进度</p>
         :type FlowProgress: int
-        :param _InstanceStateDesc: 集群状态描述，例如：运行中
+        :param _InstanceStateDesc: <p>集群状态描述，例如：运行中</p>
         :type InstanceStateDesc: str
-        :param _FlowMsg: 集群流程错误信息，例如：“创建失败，资源不足”
+        :param _FlowMsg: <p>集群流程错误信息，例如：“创建失败，资源不足”</p>
         :type FlowMsg: str
-        :param _ProcessName: 当前步骤的名称，例如：”购买资源中“
+        :param _ProcessName: <p>当前步骤的名称，例如：”购买资源中“</p>
         :type ProcessName: str
-        :param _RequestId: 请求id
+        :param _RequestId: <p>请求id</p>
         :type RequestId: str
-        :param _ProcessSubName: 流程的二级名称
+        :param _ProcessSubName: <p>流程的二级名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :type ProcessSubName: str
+        :param _RequestID: <p>请求ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RequestID: str
         """
         self._InstanceState = None
         self._FlowCreateTime = None
@@ -6509,10 +6597,11 @@ class InstanceStateInfo(AbstractModel):
         self._ProcessName = None
         self._RequestId = None
         self._ProcessSubName = None
+        self._RequestID = None
 
     @property
     def InstanceState(self):
-        r"""集群状态，例如：Serving
+        r"""<p>集群状态，例如：Serving</p>
         :rtype: str
         """
         return self._InstanceState
@@ -6523,7 +6612,7 @@ class InstanceStateInfo(AbstractModel):
 
     @property
     def FlowCreateTime(self):
-        r"""集群操作创建时间
+        r"""<p>集群操作创建时间</p>
         :rtype: str
         """
         return self._FlowCreateTime
@@ -6534,7 +6623,7 @@ class InstanceStateInfo(AbstractModel):
 
     @property
     def FlowName(self):
-        r"""集群操作名称
+        r"""<p>集群操作名称</p>
         :rtype: str
         """
         return self._FlowName
@@ -6545,7 +6634,7 @@ class InstanceStateInfo(AbstractModel):
 
     @property
     def FlowProgress(self):
-        r"""集群操作进度
+        r"""<p>集群操作进度</p>
         :rtype: int
         """
         return self._FlowProgress
@@ -6556,7 +6645,7 @@ class InstanceStateInfo(AbstractModel):
 
     @property
     def InstanceStateDesc(self):
-        r"""集群状态描述，例如：运行中
+        r"""<p>集群状态描述，例如：运行中</p>
         :rtype: str
         """
         return self._InstanceStateDesc
@@ -6567,7 +6656,7 @@ class InstanceStateInfo(AbstractModel):
 
     @property
     def FlowMsg(self):
-        r"""集群流程错误信息，例如：“创建失败，资源不足”
+        r"""<p>集群流程错误信息，例如：“创建失败，资源不足”</p>
         :rtype: str
         """
         return self._FlowMsg
@@ -6578,7 +6667,7 @@ class InstanceStateInfo(AbstractModel):
 
     @property
     def ProcessName(self):
-        r"""当前步骤的名称，例如：”购买资源中“
+        r"""<p>当前步骤的名称，例如：”购买资源中“</p>
         :rtype: str
         """
         return self._ProcessName
@@ -6589,7 +6678,7 @@ class InstanceStateInfo(AbstractModel):
 
     @property
     def RequestId(self):
-        r"""请求id
+        r"""<p>请求id</p>
         :rtype: str
         """
         return self._RequestId
@@ -6600,7 +6689,8 @@ class InstanceStateInfo(AbstractModel):
 
     @property
     def ProcessSubName(self):
-        r"""流程的二级名称
+        r"""<p>流程的二级名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._ProcessSubName
@@ -6608,6 +6698,18 @@ class InstanceStateInfo(AbstractModel):
     @ProcessSubName.setter
     def ProcessSubName(self, ProcessSubName):
         self._ProcessSubName = ProcessSubName
+
+    @property
+    def RequestID(self):
+        r"""<p>请求ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RequestID
+
+    @RequestID.setter
+    def RequestID(self, RequestID):
+        self._RequestID = RequestID
 
 
     def _deserialize(self, params):
@@ -6620,6 +6722,7 @@ class InstanceStateInfo(AbstractModel):
         self._ProcessName = params.get("ProcessName")
         self._RequestId = params.get("RequestId")
         self._ProcessSubName = params.get("ProcessSubName")
+        self._RequestID = params.get("RequestID")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

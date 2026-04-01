@@ -349,6 +349,24 @@ class TkeClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ScaleNodePool(
+            self,
+            request: models.ScaleNodePoolRequest,
+            opts: Dict = None,
+    ) -> models.ScaleNodePoolResponse:
+        """
+        设置 TKE 节点池期望节点数
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ScaleNodePool"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ScaleNodePoolResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def SetMachineLogin(
             self,
             request: models.SetMachineLoginRequest,

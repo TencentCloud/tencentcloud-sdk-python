@@ -14457,21 +14457,21 @@ class ModifyAclRequest(AbstractModel):
         :type AllowAnyAccount: bool
         :param _Id: 访问权限ID
         :type Id: int
-        :param _AllowClipFileUp: 是否开启剪贴板文件上行
+        :param _AllowClipFileUp: 是否开启剪贴板文件上行，不传时默认为false
         :type AllowClipFileUp: bool
-        :param _AllowClipFileDown: 是否开启剪贴板文件下行
+        :param _AllowClipFileDown: 是否开启剪贴板文件下行，不传时默认为false
         :type AllowClipFileDown: bool
-        :param _AllowClipTextUp: 是否开启剪贴板文本（含图片）上行
+        :param _AllowClipTextUp: 是否开启剪贴板文本（含图片）上行，不传时默认为false
         :type AllowClipTextUp: bool
-        :param _AllowClipTextDown: 是否开启剪贴板文本（含图片）下行
+        :param _AllowClipTextDown: 是否开启剪贴板文本（含图片）下行，不传时默认为false
         :type AllowClipTextDown: bool
-        :param _AllowFileUp: 是否开启文件传输上传
+        :param _AllowFileUp: 是否开启文件传输上传，不传时默认为false
         :type AllowFileUp: bool
-        :param _MaxFileUpSize: 文件传输上传大小限制（预留参数，目前暂未使用）
+        :param _MaxFileUpSize: 文件传输上传大小限制（预留参数，目前暂未使用），不传时默认为0
         :type MaxFileUpSize: int
-        :param _AllowFileDown: 是否开启文件传输下载
+        :param _AllowFileDown: 是否开启文件传输下载，不传时默认为false
         :type AllowFileDown: bool
-        :param _MaxFileDownSize: 文件传输下载大小限制（预留参数，目前暂未使用）
+        :param _MaxFileDownSize: 文件传输下载大小限制（预留参数，目前暂未使用），不传时默认为0
         :type MaxFileDownSize: int
         :param _UserIdSet: 关联的用户ID
         :type UserIdSet: list of int non-negative
@@ -14479,25 +14479,25 @@ class ModifyAclRequest(AbstractModel):
         :type UserGroupIdSet: list of int non-negative
         :param _DeviceIdSet: 关联的资产ID
         :type DeviceIdSet: list of int non-negative
-        :param _AppAssetIdSet: 关联的应用资产ID集合
+        :param _AppAssetIdSet: 关联的应用资产ID集合，不传时表示不选择任何应用资产
         :type AppAssetIdSet: list of int non-negative
-        :param _DeviceGroupIdSet: 关联的资产组ID
+        :param _DeviceGroupIdSet: 关联的资产组ID，不传时表示不选择任何资产组
         :type DeviceGroupIdSet: list of int non-negative
-        :param _AccountSet: 关联的账号
+        :param _AccountSet: 关联的资产账号，不传时表示不选择任何资产账号
         :type AccountSet: list of str
-        :param _CmdTemplateIdSet: 关联的高危命令模板ID
+        :param _CmdTemplateIdSet: 关联的高危命令模板ID，不传时表示不选择任何模板
         :type CmdTemplateIdSet: list of int non-negative
-        :param _ACTemplateIdSet: 关联高危DB模板ID
+        :param _ACTemplateIdSet: 关联高危DB模板ID，不传时表示不选择任何模板
         :type ACTemplateIdSet: list of str
-        :param _AllowDiskFileUp: 是否开启 RDP 磁盘映射文件上传
+        :param _AllowDiskFileUp: 是否开启 RDP 磁盘映射文件上传，不传时默认为false
         :type AllowDiskFileUp: bool
-        :param _AllowDiskFileDown: 是否开启 RDP 磁盘映射文件下载
+        :param _AllowDiskFileDown: 是否开启 RDP 磁盘映射文件下载，不传时默认为false
         :type AllowDiskFileDown: bool
-        :param _AllowShellFileUp: 是否开启rz sz文件上传
+        :param _AllowShellFileUp: 是否开启rz sz文件上传，不传时默认为false
         :type AllowShellFileUp: bool
-        :param _AllowShellFileDown: 是否开启rz sz文件下载
+        :param _AllowShellFileDown: 是否开启rz sz文件下载，不传时默认为false
         :type AllowShellFileDown: bool
-        :param _AllowFileDel: 是否开启 SFTP 文件删除
+        :param _AllowFileDel: 是否开启 SFTP 文件删除，不传时默认为false
         :type AllowFileDel: bool
         :param _ValidateFrom: 访问权限生效时间，如:"2021-09-22T00:00:00+00:00"
 生效、失效时间不填则访问权限长期有效
@@ -14507,11 +14507,11 @@ class ModifyAclRequest(AbstractModel):
         :type ValidateTo: str
         :param _DepartmentId: 权限所属部门的ID，如：1.2.3
         :type DepartmentId: str
-        :param _AllowAccessCredential: 是否允许使用访问串
+        :param _AllowAccessCredential: 是否允许使用访问串，不传时默认为true
         :type AllowAccessCredential: bool
-        :param _AllowKeyboardLogger: 是否允许键盘记录
+        :param _AllowKeyboardLogger: 是否允许键盘记录，不传时默认为false
         :type AllowKeyboardLogger: bool
-        :param _MaxAccessCredentialDuration: 访问串有效期最大时长，秒数，允许使用访问串时需大于0且必须为86400整数倍
+        :param _MaxAccessCredentialDuration: 访问串有效期最大时长，秒数，允许使用访问串时需大于0且必须为86400整数倍，不传时默认为9999天对应的秒数
         :type MaxAccessCredentialDuration: int
         """
         self._Name = None
@@ -14592,7 +14592,7 @@ class ModifyAclRequest(AbstractModel):
 
     @property
     def AllowClipFileUp(self):
-        r"""是否开启剪贴板文件上行
+        r"""是否开启剪贴板文件上行，不传时默认为false
         :rtype: bool
         """
         return self._AllowClipFileUp
@@ -14603,7 +14603,7 @@ class ModifyAclRequest(AbstractModel):
 
     @property
     def AllowClipFileDown(self):
-        r"""是否开启剪贴板文件下行
+        r"""是否开启剪贴板文件下行，不传时默认为false
         :rtype: bool
         """
         return self._AllowClipFileDown
@@ -14614,7 +14614,7 @@ class ModifyAclRequest(AbstractModel):
 
     @property
     def AllowClipTextUp(self):
-        r"""是否开启剪贴板文本（含图片）上行
+        r"""是否开启剪贴板文本（含图片）上行，不传时默认为false
         :rtype: bool
         """
         return self._AllowClipTextUp
@@ -14625,7 +14625,7 @@ class ModifyAclRequest(AbstractModel):
 
     @property
     def AllowClipTextDown(self):
-        r"""是否开启剪贴板文本（含图片）下行
+        r"""是否开启剪贴板文本（含图片）下行，不传时默认为false
         :rtype: bool
         """
         return self._AllowClipTextDown
@@ -14636,7 +14636,7 @@ class ModifyAclRequest(AbstractModel):
 
     @property
     def AllowFileUp(self):
-        r"""是否开启文件传输上传
+        r"""是否开启文件传输上传，不传时默认为false
         :rtype: bool
         """
         return self._AllowFileUp
@@ -14647,7 +14647,7 @@ class ModifyAclRequest(AbstractModel):
 
     @property
     def MaxFileUpSize(self):
-        r"""文件传输上传大小限制（预留参数，目前暂未使用）
+        r"""文件传输上传大小限制（预留参数，目前暂未使用），不传时默认为0
         :rtype: int
         """
         return self._MaxFileUpSize
@@ -14658,7 +14658,7 @@ class ModifyAclRequest(AbstractModel):
 
     @property
     def AllowFileDown(self):
-        r"""是否开启文件传输下载
+        r"""是否开启文件传输下载，不传时默认为false
         :rtype: bool
         """
         return self._AllowFileDown
@@ -14669,7 +14669,7 @@ class ModifyAclRequest(AbstractModel):
 
     @property
     def MaxFileDownSize(self):
-        r"""文件传输下载大小限制（预留参数，目前暂未使用）
+        r"""文件传输下载大小限制（预留参数，目前暂未使用），不传时默认为0
         :rtype: int
         """
         return self._MaxFileDownSize
@@ -14713,7 +14713,7 @@ class ModifyAclRequest(AbstractModel):
 
     @property
     def AppAssetIdSet(self):
-        r"""关联的应用资产ID集合
+        r"""关联的应用资产ID集合，不传时表示不选择任何应用资产
         :rtype: list of int non-negative
         """
         return self._AppAssetIdSet
@@ -14724,7 +14724,7 @@ class ModifyAclRequest(AbstractModel):
 
     @property
     def DeviceGroupIdSet(self):
-        r"""关联的资产组ID
+        r"""关联的资产组ID，不传时表示不选择任何资产组
         :rtype: list of int non-negative
         """
         return self._DeviceGroupIdSet
@@ -14735,7 +14735,7 @@ class ModifyAclRequest(AbstractModel):
 
     @property
     def AccountSet(self):
-        r"""关联的账号
+        r"""关联的资产账号，不传时表示不选择任何资产账号
         :rtype: list of str
         """
         return self._AccountSet
@@ -14746,7 +14746,7 @@ class ModifyAclRequest(AbstractModel):
 
     @property
     def CmdTemplateIdSet(self):
-        r"""关联的高危命令模板ID
+        r"""关联的高危命令模板ID，不传时表示不选择任何模板
         :rtype: list of int non-negative
         """
         return self._CmdTemplateIdSet
@@ -14757,7 +14757,7 @@ class ModifyAclRequest(AbstractModel):
 
     @property
     def ACTemplateIdSet(self):
-        r"""关联高危DB模板ID
+        r"""关联高危DB模板ID，不传时表示不选择任何模板
         :rtype: list of str
         """
         return self._ACTemplateIdSet
@@ -14768,7 +14768,7 @@ class ModifyAclRequest(AbstractModel):
 
     @property
     def AllowDiskFileUp(self):
-        r"""是否开启 RDP 磁盘映射文件上传
+        r"""是否开启 RDP 磁盘映射文件上传，不传时默认为false
         :rtype: bool
         """
         return self._AllowDiskFileUp
@@ -14779,7 +14779,7 @@ class ModifyAclRequest(AbstractModel):
 
     @property
     def AllowDiskFileDown(self):
-        r"""是否开启 RDP 磁盘映射文件下载
+        r"""是否开启 RDP 磁盘映射文件下载，不传时默认为false
         :rtype: bool
         """
         return self._AllowDiskFileDown
@@ -14790,7 +14790,7 @@ class ModifyAclRequest(AbstractModel):
 
     @property
     def AllowShellFileUp(self):
-        r"""是否开启rz sz文件上传
+        r"""是否开启rz sz文件上传，不传时默认为false
         :rtype: bool
         """
         return self._AllowShellFileUp
@@ -14801,7 +14801,7 @@ class ModifyAclRequest(AbstractModel):
 
     @property
     def AllowShellFileDown(self):
-        r"""是否开启rz sz文件下载
+        r"""是否开启rz sz文件下载，不传时默认为false
         :rtype: bool
         """
         return self._AllowShellFileDown
@@ -14812,7 +14812,7 @@ class ModifyAclRequest(AbstractModel):
 
     @property
     def AllowFileDel(self):
-        r"""是否开启 SFTP 文件删除
+        r"""是否开启 SFTP 文件删除，不传时默认为false
         :rtype: bool
         """
         return self._AllowFileDel
@@ -14858,7 +14858,7 @@ class ModifyAclRequest(AbstractModel):
 
     @property
     def AllowAccessCredential(self):
-        r"""是否允许使用访问串
+        r"""是否允许使用访问串，不传时默认为true
         :rtype: bool
         """
         return self._AllowAccessCredential
@@ -14869,7 +14869,7 @@ class ModifyAclRequest(AbstractModel):
 
     @property
     def AllowKeyboardLogger(self):
-        r"""是否允许键盘记录
+        r"""是否允许键盘记录，不传时默认为false
         :rtype: bool
         """
         return self._AllowKeyboardLogger
@@ -14880,7 +14880,7 @@ class ModifyAclRequest(AbstractModel):
 
     @property
     def MaxAccessCredentialDuration(self):
-        r"""访问串有效期最大时长，秒数，允许使用访问串时需大于0且必须为86400整数倍
+        r"""访问串有效期最大时长，秒数，允许使用访问串时需大于0且必须为86400整数倍，不传时默认为9999天对应的秒数
         :rtype: int
         """
         return self._MaxAccessCredentialDuration

@@ -16248,7 +16248,7 @@ class CreateTrafficMirrorRequest(AbstractModel):
         :type State: str
         :param _Direction: 流量镜像采集方向，支持EGRESS/INGRESS/ALL（vpc），ALL（公网IP）。
         :type Direction: str
-        :param _CollectorSrcs: 流量镜像的采集对象。
+        :param _CollectorSrcs: 流量镜像的采集对象 (最多支持20个采集对象)。
         :type CollectorSrcs: list of str
         :param _NatId: 流量镜像过滤的natgw实例。
         :type NatId: str
@@ -16262,6 +16262,10 @@ class CreateTrafficMirrorRequest(AbstractModel):
         :type Type: str
         :param _Tags: 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
         :type Tags: list of Tag
+        :param _IngressFilterRules: 流量镜像入站过滤规则。
+        :type IngressFilterRules: list of TrafficMirrorFilter
+        :param _EgressFilterRules: 流量镜像出站过滤规则。
+        :type EgressFilterRules: list of TrafficMirrorFilter
         """
         self._VpcId = None
         self._TrafficMirrorName = None
@@ -16275,6 +16279,8 @@ class CreateTrafficMirrorRequest(AbstractModel):
         self._SubnetId = None
         self._Type = None
         self._Tags = None
+        self._IngressFilterRules = None
+        self._EgressFilterRules = None
 
     @property
     def VpcId(self):
@@ -16333,7 +16339,7 @@ class CreateTrafficMirrorRequest(AbstractModel):
 
     @property
     def CollectorSrcs(self):
-        r"""流量镜像的采集对象。
+        r"""流量镜像的采集对象 (最多支持20个采集对象)。
         :rtype: list of str
         """
         return self._CollectorSrcs
@@ -16408,6 +16414,28 @@ class CreateTrafficMirrorRequest(AbstractModel):
     def Tags(self, Tags):
         self._Tags = Tags
 
+    @property
+    def IngressFilterRules(self):
+        r"""流量镜像入站过滤规则。
+        :rtype: list of TrafficMirrorFilter
+        """
+        return self._IngressFilterRules
+
+    @IngressFilterRules.setter
+    def IngressFilterRules(self, IngressFilterRules):
+        self._IngressFilterRules = IngressFilterRules
+
+    @property
+    def EgressFilterRules(self):
+        r"""流量镜像出站过滤规则。
+        :rtype: list of TrafficMirrorFilter
+        """
+        return self._EgressFilterRules
+
+    @EgressFilterRules.setter
+    def EgressFilterRules(self, EgressFilterRules):
+        self._EgressFilterRules = EgressFilterRules
+
 
     def _deserialize(self, params):
         self._VpcId = params.get("VpcId")
@@ -16434,6 +16462,18 @@ class CreateTrafficMirrorRequest(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        if params.get("IngressFilterRules") is not None:
+            self._IngressFilterRules = []
+            for item in params.get("IngressFilterRules"):
+                obj = TrafficMirrorFilter()
+                obj._deserialize(item)
+                self._IngressFilterRules.append(obj)
+        if params.get("EgressFilterRules") is not None:
+            self._EgressFilterRules = []
+            for item in params.get("EgressFilterRules"):
+                obj = TrafficMirrorFilter()
+                obj._deserialize(item)
+                self._EgressFilterRules.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -38399,10 +38439,13 @@ class DescribeTrafficMirrorsResponse(AbstractModel):
         r"""
         :param _TrafficMirrorSet: 流量镜像实例信息
         :type TrafficMirrorSet: list of TrafficMirror
+        :param _TotalCount: 符合条件的对象数
+        :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TrafficMirrorSet = None
+        self._TotalCount = None
         self._RequestId = None
 
     @property
@@ -38415,6 +38458,17 @@ class DescribeTrafficMirrorsResponse(AbstractModel):
     @TrafficMirrorSet.setter
     def TrafficMirrorSet(self, TrafficMirrorSet):
         self._TrafficMirrorSet = TrafficMirrorSet
+
+    @property
+    def TotalCount(self):
+        r"""符合条件的对象数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
 
     @property
     def RequestId(self):
@@ -38435,6 +38489,7 @@ class DescribeTrafficMirrorsResponse(AbstractModel):
                 obj = TrafficMirror()
                 obj._deserialize(item)
                 self._TrafficMirrorSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -63117,7 +63172,8 @@ class RemoveBandwidthPackageResourcesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ResourceIds: 资源唯一ID，当前支持EIP资源和LB资源，形如'eip-xxxx', 'lb-xxxx'。EIP资源列表可通过[DescribeAddresses](https://cloud.tencent.com/document/product/215/16702)接口获取，LB资源列表可通过[DescribeLoadBalancers](https://cloud.tencent.com/document/api/214/30685)接口获取。
+        :param _ResourceIds: 资源唯一ID，当前支持EIP资源和LB资源，形如'eip-xxxx', 'lb-xxxx'。<li>EIP资源列表：可通过[DescribeAddresses](https://cloud.tencent.com/document/product/215/16702)接口获取。高防EIP、Anycast EIP、精品BGP EIP默认不支持从共享带宽包中移除，其中高防EIP和精品BGP IP可以迁移到其他同线路类型的共享带宽包中。</li><li>LB资源列表：可通过[DescribeLoadBalancers](https://cloud.tencent.com/document/api/214/30685)接口获取。</li>
+
         :type ResourceIds: list of str
         :param _BandwidthPackageId: 带宽包唯一标识ID，形如'bwp-xxxx'，可以使用[DescribeBandwidthPackages](https://cloud.tencent.com/document/product/215/19209)接口查询BandwidthPackageId。
         :type BandwidthPackageId: str
@@ -63138,7 +63194,8 @@ class RemoveBandwidthPackageResourcesRequest(AbstractModel):
 
     @property
     def ResourceIds(self):
-        r"""资源唯一ID，当前支持EIP资源和LB资源，形如'eip-xxxx', 'lb-xxxx'。EIP资源列表可通过[DescribeAddresses](https://cloud.tencent.com/document/product/215/16702)接口获取，LB资源列表可通过[DescribeLoadBalancers](https://cloud.tencent.com/document/api/214/30685)接口获取。
+        r"""资源唯一ID，当前支持EIP资源和LB资源，形如'eip-xxxx', 'lb-xxxx'。<li>EIP资源列表：可通过[DescribeAddresses](https://cloud.tencent.com/document/product/215/16702)接口获取。高防EIP、Anycast EIP、精品BGP EIP默认不支持从共享带宽包中移除，其中高防EIP和精品BGP IP可以迁移到其他同线路类型的共享带宽包中。</li><li>LB资源列表：可通过[DescribeLoadBalancers](https://cloud.tencent.com/document/api/214/30685)接口获取。</li>
+
         :rtype: list of str
         """
         return self._ResourceIds
@@ -65474,10 +65531,16 @@ class ResetTrafficMirrorFilterRequest(AbstractModel):
         :type NatId: str
         :param _CollectorNormalFilters: 流量镜像需要过滤的五元组规则
         :type CollectorNormalFilters: list of TrafficMirrorFilter
+        :param _IngressFilterRules: 流量镜像入站过滤规则。
+        :type IngressFilterRules: list of TrafficMirrorFilter
+        :param _EgressFilterRules: 流量镜像出站过滤规则。
+        :type EgressFilterRules: list of TrafficMirrorFilter
         """
         self._TrafficMirrorId = None
         self._NatId = None
         self._CollectorNormalFilters = None
+        self._IngressFilterRules = None
+        self._EgressFilterRules = None
 
     @property
     def TrafficMirrorId(self):
@@ -65512,6 +65575,28 @@ class ResetTrafficMirrorFilterRequest(AbstractModel):
     def CollectorNormalFilters(self, CollectorNormalFilters):
         self._CollectorNormalFilters = CollectorNormalFilters
 
+    @property
+    def IngressFilterRules(self):
+        r"""流量镜像入站过滤规则。
+        :rtype: list of TrafficMirrorFilter
+        """
+        return self._IngressFilterRules
+
+    @IngressFilterRules.setter
+    def IngressFilterRules(self, IngressFilterRules):
+        self._IngressFilterRules = IngressFilterRules
+
+    @property
+    def EgressFilterRules(self):
+        r"""流量镜像出站过滤规则。
+        :rtype: list of TrafficMirrorFilter
+        """
+        return self._EgressFilterRules
+
+    @EgressFilterRules.setter
+    def EgressFilterRules(self, EgressFilterRules):
+        self._EgressFilterRules = EgressFilterRules
+
 
     def _deserialize(self, params):
         self._TrafficMirrorId = params.get("TrafficMirrorId")
@@ -65522,6 +65607,18 @@ class ResetTrafficMirrorFilterRequest(AbstractModel):
                 obj = TrafficMirrorFilter()
                 obj._deserialize(item)
                 self._CollectorNormalFilters.append(obj)
+        if params.get("IngressFilterRules") is not None:
+            self._IngressFilterRules = []
+            for item in params.get("IngressFilterRules"):
+                obj = TrafficMirrorFilter()
+                obj._deserialize(item)
+                self._IngressFilterRules.append(obj)
+        if params.get("EgressFilterRules") is not None:
+            self._EgressFilterRules = []
+            for item in params.get("EgressFilterRules"):
+                obj = TrafficMirrorFilter()
+                obj._deserialize(item)
+                self._EgressFilterRules.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -73322,12 +73419,18 @@ class UpdateTrafficMirrorAllFilterRequest(AbstractModel):
         :type NatId: str
         :param _CollectorNormalFilters: 流量镜像需要过滤的五元组规则
         :type CollectorNormalFilters: list of TrafficMirrorFilter
+        :param _IngressFilterRules: 流量镜像入站过滤规则。
+        :type IngressFilterRules: list of TrafficMirrorFilter
+        :param _EgressFilterRules: 流量镜像出站过滤规则。
+        :type EgressFilterRules: list of TrafficMirrorFilter
         """
         self._TrafficMirrorId = None
         self._Direction = None
         self._CollectorSrcs = None
         self._NatId = None
         self._CollectorNormalFilters = None
+        self._IngressFilterRules = None
+        self._EgressFilterRules = None
 
     @property
     def TrafficMirrorId(self):
@@ -73384,6 +73487,28 @@ class UpdateTrafficMirrorAllFilterRequest(AbstractModel):
     def CollectorNormalFilters(self, CollectorNormalFilters):
         self._CollectorNormalFilters = CollectorNormalFilters
 
+    @property
+    def IngressFilterRules(self):
+        r"""流量镜像入站过滤规则。
+        :rtype: list of TrafficMirrorFilter
+        """
+        return self._IngressFilterRules
+
+    @IngressFilterRules.setter
+    def IngressFilterRules(self, IngressFilterRules):
+        self._IngressFilterRules = IngressFilterRules
+
+    @property
+    def EgressFilterRules(self):
+        r"""流量镜像出站过滤规则。
+        :rtype: list of TrafficMirrorFilter
+        """
+        return self._EgressFilterRules
+
+    @EgressFilterRules.setter
+    def EgressFilterRules(self, EgressFilterRules):
+        self._EgressFilterRules = EgressFilterRules
+
 
     def _deserialize(self, params):
         self._TrafficMirrorId = params.get("TrafficMirrorId")
@@ -73396,6 +73521,18 @@ class UpdateTrafficMirrorAllFilterRequest(AbstractModel):
                 obj = TrafficMirrorFilter()
                 obj._deserialize(item)
                 self._CollectorNormalFilters.append(obj)
+        if params.get("IngressFilterRules") is not None:
+            self._IngressFilterRules = []
+            for item in params.get("IngressFilterRules"):
+                obj = TrafficMirrorFilter()
+                obj._deserialize(item)
+                self._IngressFilterRules.append(obj)
+        if params.get("EgressFilterRules") is not None:
+            self._EgressFilterRules = []
+            for item in params.get("EgressFilterRules"):
+                obj = TrafficMirrorFilter()
+                obj._deserialize(item)
+                self._EgressFilterRules.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -73443,7 +73580,15 @@ class UpdateTrafficMirrorDirectionRequest(AbstractModel):
         r"""
         :param _TrafficMirrorId: 流量镜像实例ID
         :type TrafficMirrorId: str
-        :param _Direction: 流量镜像采集方向
+        :param _Direction: 流量镜像采集方向。取值范围：
+
+- EGRESS - 出方向采集
+
+- INGRESS - 入方向采集
+
+- ALL - 出入双向采集
+
+- NO-DIRECTION - 不区分采集方向（新模式）。切换为该模式后将不再支持按方向采集，需通过 CreateTrafficMirrorFilterRules 接口创建带方向的过滤规则，过滤规则支持设置优先级和单独编辑。
         :type Direction: str
         """
         self._TrafficMirrorId = None
@@ -73462,7 +73607,15 @@ class UpdateTrafficMirrorDirectionRequest(AbstractModel):
 
     @property
     def Direction(self):
-        r"""流量镜像采集方向
+        r"""流量镜像采集方向。取值范围：
+
+- EGRESS - 出方向采集
+
+- INGRESS - 入方向采集
+
+- ALL - 出入双向采集
+
+- NO-DIRECTION - 不区分采集方向（新模式）。切换为该模式后将不再支持按方向采集，需通过 CreateTrafficMirrorFilterRules 接口创建带方向的过滤规则，过滤规则支持设置优先级和单独编辑。
         :rtype: str
         """
         return self._Direction

@@ -5668,25 +5668,25 @@ class ServerBaseInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ServerName: 服务名
+        :param _ServerName: <p>服务名</p>
         :type ServerName: str
-        :param _DefaultDomainName: 默认服务域名
+        :param _DefaultDomainName: <p>默认服务域名</p>
         :type DefaultDomainName: str
-        :param _CustomDomainName: 自定义域名
+        :param _CustomDomainName: <p>自定义域名</p>
         :type CustomDomainName: str
-        :param _Status: 服务状态：running/deploying/deploy_failed
+        :param _Status: <p>服务状态：creating/create_failed/freezing/freeze_fail/froze/unfreezing/unfreeze_fail/normal/deleting/delete_failed/abnormal</p><p>枚举值：</p><ul><li>creating： 创建中</li><li>create_failed： 创建失败</li><li>freezing： 冻结中</li><li>freeze_fail： 冻结失败</li><li>froze： 已冻结</li><li>unfreezing： 解冻中</li><li>unfreeze_fail： 解冻失败</li><li>normal： 正常</li><li>deleting： 删除中</li><li>delete_failed： 删除失败</li><li>abnormal： 服务异常</li></ul>
         :type Status: str
-        :param _UpdateTime: 更新时间
+        :param _UpdateTime: <p>更新时间</p>
         :type UpdateTime: str
-        :param _AccessTypes: 公网访问类型
+        :param _AccessTypes: <p>公网访问类型</p>
         :type AccessTypes: list of str
-        :param _CustomDomainNames: 展示自定义域名
+        :param _CustomDomainNames: <p>展示自定义域名</p>
         :type CustomDomainNames: list of str
-        :param _ServerType: 服务类型: function 云函数2.0；container 容器服务
+        :param _ServerType: <p>服务类型: function 云函数2.0；container 容器服务</p>
         :type ServerType: str
-        :param _TrafficType: 流量类型，目前只有 FLOW
+        :param _TrafficType: <p>流量类型，目前只有 FLOW</p>
         :type TrafficType: str
-        :param _CreateTime: 创建时间
+        :param _CreateTime: <p>创建时间</p>
         :type CreateTime: str
         """
         self._ServerName = None
@@ -5702,7 +5702,7 @@ class ServerBaseInfo(AbstractModel):
 
     @property
     def ServerName(self):
-        r"""服务名
+        r"""<p>服务名</p>
         :rtype: str
         """
         return self._ServerName
@@ -5713,7 +5713,7 @@ class ServerBaseInfo(AbstractModel):
 
     @property
     def DefaultDomainName(self):
-        r"""默认服务域名
+        r"""<p>默认服务域名</p>
         :rtype: str
         """
         return self._DefaultDomainName
@@ -5724,7 +5724,7 @@ class ServerBaseInfo(AbstractModel):
 
     @property
     def CustomDomainName(self):
-        r"""自定义域名
+        r"""<p>自定义域名</p>
         :rtype: str
         """
         return self._CustomDomainName
@@ -5735,7 +5735,7 @@ class ServerBaseInfo(AbstractModel):
 
     @property
     def Status(self):
-        r"""服务状态：running/deploying/deploy_failed
+        r"""<p>服务状态：creating/create_failed/freezing/freeze_fail/froze/unfreezing/unfreeze_fail/normal/deleting/delete_failed/abnormal</p><p>枚举值：</p><ul><li>creating： 创建中</li><li>create_failed： 创建失败</li><li>freezing： 冻结中</li><li>freeze_fail： 冻结失败</li><li>froze： 已冻结</li><li>unfreezing： 解冻中</li><li>unfreeze_fail： 解冻失败</li><li>normal： 正常</li><li>deleting： 删除中</li><li>delete_failed： 删除失败</li><li>abnormal： 服务异常</li></ul>
         :rtype: str
         """
         return self._Status
@@ -5746,7 +5746,7 @@ class ServerBaseInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""更新时间
+        r"""<p>更新时间</p>
         :rtype: str
         """
         return self._UpdateTime
@@ -5757,7 +5757,7 @@ class ServerBaseInfo(AbstractModel):
 
     @property
     def AccessTypes(self):
-        r"""公网访问类型
+        r"""<p>公网访问类型</p>
         :rtype: list of str
         """
         return self._AccessTypes
@@ -5768,7 +5768,7 @@ class ServerBaseInfo(AbstractModel):
 
     @property
     def CustomDomainNames(self):
-        r"""展示自定义域名
+        r"""<p>展示自定义域名</p>
         :rtype: list of str
         """
         return self._CustomDomainNames
@@ -5779,7 +5779,7 @@ class ServerBaseInfo(AbstractModel):
 
     @property
     def ServerType(self):
-        r"""服务类型: function 云函数2.0；container 容器服务
+        r"""<p>服务类型: function 云函数2.0；container 容器服务</p>
         :rtype: str
         """
         return self._ServerType
@@ -5790,7 +5790,7 @@ class ServerBaseInfo(AbstractModel):
 
     @property
     def TrafficType(self):
-        r"""流量类型，目前只有 FLOW
+        r"""<p>流量类型，目前只有 FLOW</p>
         :rtype: str
         """
         return self._TrafficType
@@ -5801,7 +5801,7 @@ class ServerBaseInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
         :rtype: str
         """
         return self._CreateTime

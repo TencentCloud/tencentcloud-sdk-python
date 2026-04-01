@@ -21383,7 +21383,7 @@ class CreateAigcSubjectRequest(AbstractModel):
         :type SubAppId: int
         :param _SubjectName: <p>主体名称。</p>
         :type SubjectName: str
-        :param _SubjectImages: <p>主体图片，至少上传 1 张主体图片。</p><ul><li>注1：支持传入图片 Base64 编码或图片URL（确保可访问）；</li><li>注2：最多支持输入 3 张图；</li><li>注3：图片支持 png、jpeg、jpg、webp格式；</li><li>注4：图片比例需要小于 1:4 或者 4:1 ；</li><li>注5：图片大小不超过 50 MB；</li></ul>
+        :param _SubjectImages: <p>主体图片，至少上传 1 张主体图片。* 注1：支持传入图片URL（确保可访问）；* 注2：最多支持输入 3 张图；* 注3：图片支持 png、jpeg、jpg、webp格式；* 注4：图片比例需要小于 1:4 或者 4:1 ；* 注5：图片大小不超过 50 MB；</p>
         :type SubjectImages: list of str
         :param _SubjectVideos: <p>视频参考支持上传 1 个主体视频</p><ul><li>注1：仅参考生viduq2-pro模型支持使用视频主体</li><li>注2：最多支持上传 1个5秒 的视频</li><li>注3：视频支持 mp4、avi、mov格式</li><li>注4：视频像素不能小于 128*128，且比例需要小于1:4或者4:1，且大小不超过100M。</li></ul>
         :type SubjectVideos: list of str
@@ -21429,7 +21429,7 @@ class CreateAigcSubjectRequest(AbstractModel):
 
     @property
     def SubjectImages(self):
-        r"""<p>主体图片，至少上传 1 张主体图片。</p><ul><li>注1：支持传入图片 Base64 编码或图片URL（确保可访问）；</li><li>注2：最多支持输入 3 张图；</li><li>注3：图片支持 png、jpeg、jpg、webp格式；</li><li>注4：图片比例需要小于 1:4 或者 4:1 ；</li><li>注5：图片大小不超过 50 MB；</li></ul>
+        r"""<p>主体图片，至少上传 1 张主体图片。* 注1：支持传入图片URL（确保可访问）；* 注2：最多支持输入 3 张图；* 注3：图片支持 png、jpeg、jpg、webp格式；* 注4：图片比例需要小于 1:4 或者 4:1 ；* 注5：图片大小不超过 50 MB；</p>
         :rtype: list of str
         """
         return self._SubjectImages
@@ -35702,13 +35702,13 @@ class DescribeLLMComprehendTemplatesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        :param _SubAppId: <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
         :type SubAppId: int
-        :param _Definitions: 大模型解析模板唯一标识过滤条件，数组长度最大值：100。
+        :param _Definitions: <p>大模型解析模板唯一标识过滤条件，数组长度最大值：100。</p>
         :type Definitions: list of int
-        :param _Offset: 分页偏移量，默认值：0。
+        :param _Offset: <p>分页偏移量，默认值：0。</p>
         :type Offset: int
-        :param _Limit: 返回记录条数，默认值：10，最大值：100。
+        :param _Limit: <p>返回记录条数，默认值：10，最大值：100。</p>
         :type Limit: int
         """
         self._SubAppId = None
@@ -35718,7 +35718,7 @@ class DescribeLLMComprehendTemplatesRequest(AbstractModel):
 
     @property
     def SubAppId(self):
-        r"""<b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        r"""<p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
         :rtype: int
         """
         return self._SubAppId
@@ -35729,7 +35729,7 @@ class DescribeLLMComprehendTemplatesRequest(AbstractModel):
 
     @property
     def Definitions(self):
-        r"""大模型解析模板唯一标识过滤条件，数组长度最大值：100。
+        r"""<p>大模型解析模板唯一标识过滤条件，数组长度最大值：100。</p>
         :rtype: list of int
         """
         return self._Definitions
@@ -35740,7 +35740,7 @@ class DescribeLLMComprehendTemplatesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""分页偏移量，默认值：0。
+        r"""<p>分页偏移量，默认值：0。</p>
         :rtype: int
         """
         return self._Offset
@@ -35751,7 +35751,7 @@ class DescribeLLMComprehendTemplatesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""返回记录条数，默认值：10，最大值：100。
+        r"""<p>返回记录条数，默认值：10，最大值：100。</p>
         :rtype: int
         """
         return self._Limit
@@ -35783,9 +35783,9 @@ class DescribeLLMComprehendTemplatesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 符合过滤条件的记录总数。
+        :param _TotalCount: <p>符合过滤条件的记录总数。</p>
         :type TotalCount: int
-        :param _LLMComprehendTemplateSet: 图片异步处理模板详情列表。
+        :param _LLMComprehendTemplateSet: <p>大模型解析模板详情列表。</p>
         :type LLMComprehendTemplateSet: list of LLMComprehendTemplateItem
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -35796,7 +35796,7 @@ class DescribeLLMComprehendTemplatesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""符合过滤条件的记录总数。
+        r"""<p>符合过滤条件的记录总数。</p>
         :rtype: int
         """
         return self._TotalCount
@@ -35807,7 +35807,7 @@ class DescribeLLMComprehendTemplatesResponse(AbstractModel):
 
     @property
     def LLMComprehendTemplateSet(self):
-        r"""图片异步处理模板详情列表。
+        r"""<p>大模型解析模板详情列表。</p>
         :rtype: list of LLMComprehendTemplateItem
         """
         return self._LLMComprehendTemplateSet
@@ -49969,15 +49969,15 @@ class LLMComprehendFaceRecognition(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: 
+        :param _Switch: <p>人脸识别任务开关</p><p>枚举值：</p><ul><li>ON： 开启智能人脸识别任务</li><li>OFF： 关闭智能人脸识别任务</li></ul><p>默认值：OFF</p>
         :type Switch: str
-        :param _Score: 
+        :param _Score: <p>人脸识别过滤分数，当识别结果达到该分数以上，返回识别结果</p><p>取值范围：[0, 100]</p><p>默认值：95</p>
         :type Score: float
-        :param _DefaultLibraryLabelSet: 
+        :param _DefaultLibraryLabelSet: <p>默认人物过滤标签，指定需要返回的默认人物的标签。如果未填或者为空，则全部默认人物结果都返回。</p><p>枚举值：</p><ul><li>entertainment： 娱乐明星</li><li>sport： 体育明星</li><li>politician： 政治人物</li></ul>
         :type DefaultLibraryLabelSet: list of str
-        :param _UserDefineLibraryLabelSet: 
+        :param _UserDefineLibraryLabelSet: <p>用户自定义人物过滤标签，指定需要返回的用户自定义人物的标签。如果未填或者为空，则全部自定义人物结果都返回。 </p><p>入参限制：标签个数最多 100 个，每个标签长度最多 16 个字符。</p>
         :type UserDefineLibraryLabelSet: list of str
-        :param _FaceLibrary: 
+        :param _FaceLibrary: <p>人物库选择</p><p>枚举值：</p><ul><li>Default： 使用默认人物库</li><li>UserDefine： 使用用户自定义人物库</li><li>All： 同时使用默认人物库和用户自定义人物库</li></ul><p>默认值：All</p>
         :type FaceLibrary: str
         """
         self._Switch = None
@@ -49988,7 +49988,7 @@ class LLMComprehendFaceRecognition(AbstractModel):
 
     @property
     def Switch(self):
-        r"""
+        r"""<p>人脸识别任务开关</p><p>枚举值：</p><ul><li>ON： 开启智能人脸识别任务</li><li>OFF： 关闭智能人脸识别任务</li></ul><p>默认值：OFF</p>
         :rtype: str
         """
         return self._Switch
@@ -49999,7 +49999,7 @@ class LLMComprehendFaceRecognition(AbstractModel):
 
     @property
     def Score(self):
-        r"""
+        r"""<p>人脸识别过滤分数，当识别结果达到该分数以上，返回识别结果</p><p>取值范围：[0, 100]</p><p>默认值：95</p>
         :rtype: float
         """
         return self._Score
@@ -50010,7 +50010,7 @@ class LLMComprehendFaceRecognition(AbstractModel):
 
     @property
     def DefaultLibraryLabelSet(self):
-        r"""
+        r"""<p>默认人物过滤标签，指定需要返回的默认人物的标签。如果未填或者为空，则全部默认人物结果都返回。</p><p>枚举值：</p><ul><li>entertainment： 娱乐明星</li><li>sport： 体育明星</li><li>politician： 政治人物</li></ul>
         :rtype: list of str
         """
         return self._DefaultLibraryLabelSet
@@ -50021,7 +50021,7 @@ class LLMComprehendFaceRecognition(AbstractModel):
 
     @property
     def UserDefineLibraryLabelSet(self):
-        r"""
+        r"""<p>用户自定义人物过滤标签，指定需要返回的用户自定义人物的标签。如果未填或者为空，则全部自定义人物结果都返回。 </p><p>入参限制：标签个数最多 100 个，每个标签长度最多 16 个字符。</p>
         :rtype: list of str
         """
         return self._UserDefineLibraryLabelSet
@@ -50032,7 +50032,7 @@ class LLMComprehendFaceRecognition(AbstractModel):
 
     @property
     def FaceLibrary(self):
-        r"""
+        r"""<p>人物库选择</p><p>枚举值：</p><ul><li>Default： 使用默认人物库</li><li>UserDefine： 使用用户自定义人物库</li><li>All： 同时使用默认人物库和用户自定义人物库</li></ul><p>默认值：All</p>
         :rtype: str
         """
         return self._FaceLibrary
@@ -50065,15 +50065,15 @@ class LLMComprehendFaceRecognitionForUpdate(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Switch: 
+        :param _Switch: <p>人脸识别任务开关</p><p>枚举值：</p><ul><li>ON： 开启智能人脸识别任务</li><li>OFF： 关闭智能人脸识别任务</li></ul><p>默认值：OFF</p>
         :type Switch: str
-        :param _Score: 
+        :param _Score: <p>人脸识别过滤分数，当识别结果达到该分数以上，返回识别结果</p><p>取值范围：[0, 100]</p>
         :type Score: float
-        :param _DefaultLibraryLabelSet: 
+        :param _DefaultLibraryLabelSet: <p>默认人物过滤标签，指定需要返回的默认人物的标签。如果未填或者为空，则全部默认人物结果都返回。</p><p>枚举值：</p><ul><li>entertainment： 娱乐明星</li><li>sport： 体育明星</li><li>politician： 政治人物</li></ul>
         :type DefaultLibraryLabelSet: list of str
-        :param _UserDefineLibraryLabelSet: 
+        :param _UserDefineLibraryLabelSet: <p>用户自定义人物过滤标签，指定需要返回的用户自定义人物的标签。如果未填或者为空，则全部自定义人物结果都返回。 </p><p>入参限制：标签个数最多 100 个，每个标签长度最多 16 个字符。</p>
         :type UserDefineLibraryLabelSet: list of str
-        :param _FaceLibrary: 
+        :param _FaceLibrary: <p>人物库选择</p><p>枚举值：</p><ul><li>Default： 使用默认人物库</li><li>UserDefine： 使用用户自定义人物库</li><li>All： 同时使用默认人物库和用户自定义人物库</li></ul><p>默认值：All</p>
         :type FaceLibrary: str
         """
         self._Switch = None
@@ -50084,7 +50084,7 @@ class LLMComprehendFaceRecognitionForUpdate(AbstractModel):
 
     @property
     def Switch(self):
-        r"""
+        r"""<p>人脸识别任务开关</p><p>枚举值：</p><ul><li>ON： 开启智能人脸识别任务</li><li>OFF： 关闭智能人脸识别任务</li></ul><p>默认值：OFF</p>
         :rtype: str
         """
         return self._Switch
@@ -50095,7 +50095,7 @@ class LLMComprehendFaceRecognitionForUpdate(AbstractModel):
 
     @property
     def Score(self):
-        r"""
+        r"""<p>人脸识别过滤分数，当识别结果达到该分数以上，返回识别结果</p><p>取值范围：[0, 100]</p>
         :rtype: float
         """
         return self._Score
@@ -50106,7 +50106,7 @@ class LLMComprehendFaceRecognitionForUpdate(AbstractModel):
 
     @property
     def DefaultLibraryLabelSet(self):
-        r"""
+        r"""<p>默认人物过滤标签，指定需要返回的默认人物的标签。如果未填或者为空，则全部默认人物结果都返回。</p><p>枚举值：</p><ul><li>entertainment： 娱乐明星</li><li>sport： 体育明星</li><li>politician： 政治人物</li></ul>
         :rtype: list of str
         """
         return self._DefaultLibraryLabelSet
@@ -50117,7 +50117,7 @@ class LLMComprehendFaceRecognitionForUpdate(AbstractModel):
 
     @property
     def UserDefineLibraryLabelSet(self):
-        r"""
+        r"""<p>用户自定义人物过滤标签，指定需要返回的用户自定义人物的标签。如果未填或者为空，则全部自定义人物结果都返回。 </p><p>入参限制：标签个数最多 100 个，每个标签长度最多 16 个字符。</p>
         :rtype: list of str
         """
         return self._UserDefineLibraryLabelSet
@@ -50128,7 +50128,7 @@ class LLMComprehendFaceRecognitionForUpdate(AbstractModel):
 
     @property
     def FaceLibrary(self):
-        r"""
+        r"""<p>人物库选择</p><p>枚举值：</p><ul><li>Default： 使用默认人物库</li><li>UserDefine： 使用用户自定义人物库</li><li>All： 同时使用默认人物库和用户自定义人物库</li></ul><p>默认值：All</p>
         :rtype: str
         """
         return self._FaceLibrary
@@ -50271,23 +50271,23 @@ class LLMComprehendTemplateItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: 图片异步处理模板唯一标识。
+        :param _Definition: <p>图片异步处理模板唯一标识。</p>
         :type Definition: int
-        :param _Name: 图片异步处理模板名称。
+        :param _Name: <p>图片异步处理模板名称。</p>
         :type Name: str
-        :param _Comment: 图片异步处理模板描述信息。
+        :param _Comment: <p>图片异步处理模板描述信息。</p>
         :type Comment: str
-        :param _Level: 解析级别，可选值为：
-- Audio: 音频级解析
-- Video: 视频级解析
+        :param _Level: <p>解析级别，可选值为：</p><ul><li>Audio: 音频级解析</li><li>Video: 视频级解析</li></ul>
         :type Level: str
-        :param _Summary: 分段摘要解析配置
+        :param _Summary: <p>分段摘要解析配置</p>
         :type Summary: :class:`tencentcloud.vod.v20180717.models.LLMComprehendSummary`
-        :param _Asr: 文本转录解析配置
+        :param _Asr: <p>文本转录解析配置</p>
         :type Asr: :class:`tencentcloud.vod.v20180717.models.LLMComprehendAsr`
-        :param _CreateTime: 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :param _FaceRecognition: <p>人脸识别解析配置</p>
+        :type FaceRecognition: :class:`tencentcloud.vod.v20180717.models.LLMComprehendFaceRecognition`
+        :param _CreateTime: <p>模板创建时间，使用 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式</a>。</p>
         :type CreateTime: str
-        :param _UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :param _UpdateTime: <p>模板最后修改时间，使用 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式</a>。</p>
         :type UpdateTime: str
         """
         self._Definition = None
@@ -50296,12 +50296,13 @@ class LLMComprehendTemplateItem(AbstractModel):
         self._Level = None
         self._Summary = None
         self._Asr = None
+        self._FaceRecognition = None
         self._CreateTime = None
         self._UpdateTime = None
 
     @property
     def Definition(self):
-        r"""图片异步处理模板唯一标识。
+        r"""<p>图片异步处理模板唯一标识。</p>
         :rtype: int
         """
         return self._Definition
@@ -50312,7 +50313,7 @@ class LLMComprehendTemplateItem(AbstractModel):
 
     @property
     def Name(self):
-        r"""图片异步处理模板名称。
+        r"""<p>图片异步处理模板名称。</p>
         :rtype: str
         """
         return self._Name
@@ -50323,7 +50324,7 @@ class LLMComprehendTemplateItem(AbstractModel):
 
     @property
     def Comment(self):
-        r"""图片异步处理模板描述信息。
+        r"""<p>图片异步处理模板描述信息。</p>
         :rtype: str
         """
         return self._Comment
@@ -50334,9 +50335,7 @@ class LLMComprehendTemplateItem(AbstractModel):
 
     @property
     def Level(self):
-        r"""解析级别，可选值为：
-- Audio: 音频级解析
-- Video: 视频级解析
+        r"""<p>解析级别，可选值为：</p><ul><li>Audio: 音频级解析</li><li>Video: 视频级解析</li></ul>
         :rtype: str
         """
         return self._Level
@@ -50347,7 +50346,7 @@ class LLMComprehendTemplateItem(AbstractModel):
 
     @property
     def Summary(self):
-        r"""分段摘要解析配置
+        r"""<p>分段摘要解析配置</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.LLMComprehendSummary`
         """
         return self._Summary
@@ -50358,7 +50357,7 @@ class LLMComprehendTemplateItem(AbstractModel):
 
     @property
     def Asr(self):
-        r"""文本转录解析配置
+        r"""<p>文本转录解析配置</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.LLMComprehendAsr`
         """
         return self._Asr
@@ -50368,8 +50367,19 @@ class LLMComprehendTemplateItem(AbstractModel):
         self._Asr = Asr
 
     @property
+    def FaceRecognition(self):
+        r"""<p>人脸识别解析配置</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.LLMComprehendFaceRecognition`
+        """
+        return self._FaceRecognition
+
+    @FaceRecognition.setter
+    def FaceRecognition(self, FaceRecognition):
+        self._FaceRecognition = FaceRecognition
+
+    @property
     def CreateTime(self):
-        r"""模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        r"""<p>模板创建时间，使用 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式</a>。</p>
         :rtype: str
         """
         return self._CreateTime
@@ -50380,7 +50390,7 @@ class LLMComprehendTemplateItem(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        r"""<p>模板最后修改时间，使用 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式</a>。</p>
         :rtype: str
         """
         return self._UpdateTime
@@ -50401,6 +50411,9 @@ class LLMComprehendTemplateItem(AbstractModel):
         if params.get("Asr") is not None:
             self._Asr = LLMComprehendAsr()
             self._Asr._deserialize(params.get("Asr"))
+        if params.get("FaceRecognition") is not None:
+            self._FaceRecognition = LLMComprehendFaceRecognition()
+            self._FaceRecognition._deserialize(params.get("FaceRecognition"))
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())

@@ -6869,6 +6869,10 @@ class DescAcItem(AbstractModel):
         :type CreateTime: str
         :param _UpdateTime: 规则最近更新时间
         :type UpdateTime: str
+        :param _DestValueType: 目的值的类型，与TargetType或DestType所代表的目的类型含义有所不同，如目的类型是template,但template分ip模板和域名模板，故需通过DestValueType进一步区分
+        :type DestValueType: str
+        :param _RulePartition: 规则分区，1最前分区，2中间分区，3最后分区
+        :type RulePartition: int
         """
         self._SourceContent = None
         self._TargetContent = None
@@ -6907,6 +6911,8 @@ class DescAcItem(AbstractModel):
         self._CityKey = None
         self._CreateTime = None
         self._UpdateTime = None
+        self._DestValueType = None
+        self._RulePartition = None
 
     @property
     def SourceContent(self):
@@ -7316,6 +7322,28 @@ class DescAcItem(AbstractModel):
     def UpdateTime(self, UpdateTime):
         self._UpdateTime = UpdateTime
 
+    @property
+    def DestValueType(self):
+        r"""目的值的类型，与TargetType或DestType所代表的目的类型含义有所不同，如目的类型是template,但template分ip模板和域名模板，故需通过DestValueType进一步区分
+        :rtype: str
+        """
+        return self._DestValueType
+
+    @DestValueType.setter
+    def DestValueType(self, DestValueType):
+        self._DestValueType = DestValueType
+
+    @property
+    def RulePartition(self):
+        r"""规则分区，1最前分区，2中间分区，3最后分区
+        :rtype: int
+        """
+        return self._RulePartition
+
+    @RulePartition.setter
+    def RulePartition(self, RulePartition):
+        self._RulePartition = RulePartition
+
 
     def _deserialize(self, params):
         self._SourceContent = params.get("SourceContent")
@@ -7360,6 +7388,8 @@ class DescAcItem(AbstractModel):
         self._CityKey = params.get("CityKey")
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
+        self._DestValueType = params.get("DestValueType")
+        self._RulePartition = params.get("RulePartition")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -30076,6 +30106,10 @@ log：观察
         :type CreateTime: str
         :param _UpdateTime: 规则最近更新时间
         :type UpdateTime: str
+        :param _DestValueType: 目的值的类型，与TargetType或DestType所代表的目的类型含义有所不同，如目的类型是template,但template分ip模板和域名模板，故需通过DestValueType进一步区分
+        :type DestValueType: str
+        :param _RulePartition: 规则分区，1最前分区，2中间分区，3最后分区，增删改查规则时无需传入此参数
+        :type RulePartition: int
         """
         self._SourceContent = None
         self._SourceType = None
@@ -30104,6 +30138,8 @@ log：观察
         self._Invalid = None
         self._CreateTime = None
         self._UpdateTime = None
+        self._DestValueType = None
+        self._RulePartition = None
 
     @property
     def SourceContent(self):
@@ -30423,6 +30459,28 @@ log：观察
     def UpdateTime(self, UpdateTime):
         self._UpdateTime = UpdateTime
 
+    @property
+    def DestValueType(self):
+        r"""目的值的类型，与TargetType或DestType所代表的目的类型含义有所不同，如目的类型是template,但template分ip模板和域名模板，故需通过DestValueType进一步区分
+        :rtype: str
+        """
+        return self._DestValueType
+
+    @DestValueType.setter
+    def DestValueType(self, DestValueType):
+        self._DestValueType = DestValueType
+
+    @property
+    def RulePartition(self):
+        r"""规则分区，1最前分区，2中间分区，3最后分区，增删改查规则时无需传入此参数
+        :rtype: int
+        """
+        return self._RulePartition
+
+    @RulePartition.setter
+    def RulePartition(self, RulePartition):
+        self._RulePartition = RulePartition
+
 
     def _deserialize(self, params):
         self._SourceContent = params.get("SourceContent")
@@ -30457,6 +30515,8 @@ log：观察
         self._Invalid = params.get("Invalid")
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
+        self._DestValueType = params.get("DestValueType")
+        self._RulePartition = params.get("RulePartition")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
