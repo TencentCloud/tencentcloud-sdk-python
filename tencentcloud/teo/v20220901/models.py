@@ -26426,6 +26426,218 @@ class DescribeSecurityTemplateBindingsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeSharedCNAMERequest(AbstractModel):
+    r"""DescribeSharedCNAME请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 共享CNAME所属站点ID。
+        :type ZoneId: str
+        :param _Filters: 过滤条件，Filters.Values的上限为20。详细的过滤条件如下：
+<li>shared-cname<br>   按照【<strong>共享CNAME</strong>】进行过滤。<br>   类型：String<br>   必选：否</li>
+<li>type<br>   按照【<strong>共享canme类型</strong>】进行过滤。<br>   类型：String<br>   必选：否</li>
+<li>description<br>   按照【<strong>描述</strong>】进行过滤。<br>   类型：String<br>   必选：否</li>
+        :type Filters: list of AdvancedFilter
+        :param _Direction: 列表排序方式，取值有：
+<li>asc：升序排列；</li>
+<li>desc：降序排列。</li>默认值为asc。
+        :type Direction: str
+        :param _Match: 匹配方式，取值有：
+<li>all：返回匹配所有查询条件的共享CNAME；</li>
+<li>any：返回匹配任意一个查询条件的共享CNAME。</li>默认值为all。
+        :type Match: str
+        :param _Order: 排序依据，取值有：
+<li>create-time：创建时间；</li>
+<li>shared-cname：共享CNAME；</li>默认根据shared-cname属性排序。
+        :type Order: str
+        :param _Offset: 分页查询偏移量，默认为 0。
+        :type Offset: int
+        :param _Limit: 分页查询限制数目，默认值：20，上限：200。
+        :type Limit: int
+        """
+        self._ZoneId = None
+        self._Filters = None
+        self._Direction = None
+        self._Match = None
+        self._Order = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def ZoneId(self):
+        r"""共享CNAME所属站点ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Filters(self):
+        r"""过滤条件，Filters.Values的上限为20。详细的过滤条件如下：
+<li>shared-cname<br>   按照【<strong>共享CNAME</strong>】进行过滤。<br>   类型：String<br>   必选：否</li>
+<li>type<br>   按照【<strong>共享canme类型</strong>】进行过滤。<br>   类型：String<br>   必选：否</li>
+<li>description<br>   按照【<strong>描述</strong>】进行过滤。<br>   类型：String<br>   必选：否</li>
+        :rtype: list of AdvancedFilter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Direction(self):
+        r"""列表排序方式，取值有：
+<li>asc：升序排列；</li>
+<li>desc：降序排列。</li>默认值为asc。
+        :rtype: str
+        """
+        return self._Direction
+
+    @Direction.setter
+    def Direction(self, Direction):
+        self._Direction = Direction
+
+    @property
+    def Match(self):
+        r"""匹配方式，取值有：
+<li>all：返回匹配所有查询条件的共享CNAME；</li>
+<li>any：返回匹配任意一个查询条件的共享CNAME。</li>默认值为all。
+        :rtype: str
+        """
+        return self._Match
+
+    @Match.setter
+    def Match(self, Match):
+        self._Match = Match
+
+    @property
+    def Order(self):
+        r"""排序依据，取值有：
+<li>create-time：创建时间；</li>
+<li>shared-cname：共享CNAME；</li>默认根据shared-cname属性排序。
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def Offset(self):
+        r"""分页查询偏移量，默认为 0。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""分页查询限制数目，默认值：20，上限：200。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = AdvancedFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Direction = params.get("Direction")
+        self._Match = params.get("Match")
+        self._Order = params.get("Order")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSharedCNAMEResponse(AbstractModel):
+    r"""DescribeSharedCNAME返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 符合过滤条件的共享CNAME总数。
+        :type TotalCount: int
+        :param _SharedCNAMEInfo: 共享CNAME列表明细。
+        :type SharedCNAMEInfo: list of SharedCNAMEInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._SharedCNAMEInfo = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""符合过滤条件的共享CNAME总数。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def SharedCNAMEInfo(self):
+        r"""共享CNAME列表明细。
+        :rtype: list of SharedCNAMEInfo
+        """
+        return self._SharedCNAMEInfo
+
+    @SharedCNAMEInfo.setter
+    def SharedCNAMEInfo(self, SharedCNAMEInfo):
+        self._SharedCNAMEInfo = SharedCNAMEInfo
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("SharedCNAMEInfo") is not None:
+            self._SharedCNAMEInfo = []
+            for item in params.get("SharedCNAMEInfo"):
+                obj = SharedCNAMEInfo()
+                obj._deserialize(item)
+                self._SharedCNAMEInfo.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeTimingL4DataRequest(AbstractModel):
     r"""DescribeTimingL4Data请求参数结构体
 
@@ -34473,6 +34685,118 @@ class IPReputationGroup(AbstractModel):
                 obj = BotManagementActionOverrides()
                 obj._deserialize(item)
                 self._BotManagementActionOverrides.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IPSSLConfig(AbstractModel):
+    r"""IP SSL相关信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AssociatedDomain: IP SSL关联的域名。如果Status值为 unbound 时，该字段为空值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssociatedDomain: str
+        :param _Status: 关联状态， 取值如下：
+<li>bound：IP SSL配置已绑定</li>
+<li>binding：IP SSL配置绑定中</li>
+<li>unbinding：IP SSL配置解绑中</li>
+<li>unbound：IP SSL配置未绑定</li>
+        :type Status: str
+        """
+        self._AssociatedDomain = None
+        self._Status = None
+
+    @property
+    def AssociatedDomain(self):
+        r"""IP SSL关联的域名。如果Status值为 unbound 时，该字段为空值。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AssociatedDomain
+
+    @AssociatedDomain.setter
+    def AssociatedDomain(self, AssociatedDomain):
+        self._AssociatedDomain = AssociatedDomain
+
+    @property
+    def Status(self):
+        r"""关联状态， 取值如下：
+<li>bound：IP SSL配置已绑定</li>
+<li>binding：IP SSL配置绑定中</li>
+<li>unbinding：IP SSL配置解绑中</li>
+<li>unbound：IP SSL配置未绑定</li>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._AssociatedDomain = params.get("AssociatedDomain")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IPSSLSetting(AbstractModel):
+    r"""IP SSL 配置信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Operation: 操作类型， 取值如下： <li>bind：绑定</li> <li>unbind：解绑</li>
+        :type Operation: str
+        :param _AssociatedDomain: 要绑定的IP SSL的所属域名。
+        :type AssociatedDomain: str
+        """
+        self._Operation = None
+        self._AssociatedDomain = None
+
+    @property
+    def Operation(self):
+        r"""操作类型， 取值如下： <li>bind：绑定</li> <li>unbind：解绑</li>
+        :rtype: str
+        """
+        return self._Operation
+
+    @Operation.setter
+    def Operation(self, Operation):
+        self._Operation = Operation
+
+    @property
+    def AssociatedDomain(self):
+        r"""要绑定的IP SSL的所属域名。
+        :rtype: str
+        """
+        return self._AssociatedDomain
+
+    @AssociatedDomain.setter
+    def AssociatedDomain(self, AssociatedDomain):
+        self._AssociatedDomain = AssociatedDomain
+
+
+    def _deserialize(self, params):
+        self._Operation = params.get("Operation")
+        self._AssociatedDomain = params.get("AssociatedDomain")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -43067,6 +43391,117 @@ class ModifySecurityPolicyResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifySharedCNAMERequest(AbstractModel):
+    r"""ModifySharedCNAME请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 共享 CNAME 所属站点 ID。
+        :type ZoneId: str
+        :param _SharedCNAME: 共享 CNAME。
+        :type SharedCNAME: str
+        :param _Description: 请输入调整后的描述。
+        :type Description: str
+        :param _IPSSLSetting: 设置IP SSL 类型的共享CNAME 的 IP SSL 信息。
+        :type IPSSLSetting: :class:`tencentcloud.teo.v20220901.models.IPSSLSetting`
+        """
+        self._ZoneId = None
+        self._SharedCNAME = None
+        self._Description = None
+        self._IPSSLSetting = None
+
+    @property
+    def ZoneId(self):
+        r"""共享 CNAME 所属站点 ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def SharedCNAME(self):
+        r"""共享 CNAME。
+        :rtype: str
+        """
+        return self._SharedCNAME
+
+    @SharedCNAME.setter
+    def SharedCNAME(self, SharedCNAME):
+        self._SharedCNAME = SharedCNAME
+
+    @property
+    def Description(self):
+        r"""请输入调整后的描述。
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def IPSSLSetting(self):
+        r"""设置IP SSL 类型的共享CNAME 的 IP SSL 信息。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.IPSSLSetting`
+        """
+        return self._IPSSLSetting
+
+    @IPSSLSetting.setter
+    def IPSSLSetting(self, IPSSLSetting):
+        self._IPSSLSetting = IPSSLSetting
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._SharedCNAME = params.get("SharedCNAME")
+        self._Description = params.get("Description")
+        if params.get("IPSSLSetting") is not None:
+            self._IPSSLSetting = IPSSLSetting()
+            self._IPSSLSetting._deserialize(params.get("IPSSLSetting"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifySharedCNAMEResponse(AbstractModel):
+    r"""ModifySharedCNAME返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyWebSecurityTemplateRequest(AbstractModel):
     r"""ModifyWebSecurityTemplate请求参数结构体
 
@@ -49770,6 +50205,74 @@ class RedirectActionParameters(AbstractModel):
         
 
 
+class ReferenceHolder(AbstractModel):
+    r"""引用/被引用的实例信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点ID。
+        :type ZoneId: str
+        :param _Type: 实例类型，取值如下：
+<li>acceleration-domain：加速域名；</li>
+        :type Type: str
+        :param _Instance: 被引用/引用的实例信息。
+        :type Instance: str
+        """
+        self._ZoneId = None
+        self._Type = None
+        self._Instance = None
+
+    @property
+    def ZoneId(self):
+        r"""站点ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Type(self):
+        r"""实例类型，取值如下：
+<li>acceleration-domain：加速域名；</li>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Instance(self):
+        r"""被引用/引用的实例信息。
+        :rtype: str
+        """
+        return self._Instance
+
+    @Instance.setter
+    def Instance(self, Instance):
+        self._Instance = Instance
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._Type = params.get("Type")
+        self._Instance = params.get("Instance")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RefreshMultiPathGatewaySecretKeyRequest(AbstractModel):
     r"""RefreshMultiPathGatewaySecretKey请求参数结构体
 
@@ -54099,6 +54602,128 @@ class SetContentIdentifierParameters(AbstractModel):
 
     def _deserialize(self, params):
         self._ContentIdentifier = params.get("ContentIdentifier")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SharedCNAMEInfo(AbstractModel):
+    r"""共享CNAME明细
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 共享CNAME类型：取值范围如下：
+<li>custom：由用户创建的自定义共享CNAME</li>
+<li>ip-ssl：IP SSL类型的共享CNAME</li>
+        :type Type: str
+        :param _SharedCNAME: 共享CNAME名称。
+        :type SharedCNAME: str
+        :param _Description: 描述。
+        :type Description: str
+        :param _IPSSLConfig: 当type为ip-ssl时，展示该共享CNAME关联的 IP SSL 配置信息。
+        :type IPSSLConfig: :class:`tencentcloud.teo.v20220901.models.IPSSLConfig`
+        :param _BindDomainCount: 共享CNAME绑定的加速域名数量。
+        :type BindDomainCount: int
+        :param _AccelerationDomains: 加入该共享CNAME的加速域名列表。当加入的域名数量超过100个时，只返回前100个加速域名。
+        :type AccelerationDomains: list of ReferenceHolder
+        """
+        self._Type = None
+        self._SharedCNAME = None
+        self._Description = None
+        self._IPSSLConfig = None
+        self._BindDomainCount = None
+        self._AccelerationDomains = None
+
+    @property
+    def Type(self):
+        r"""共享CNAME类型：取值范围如下：
+<li>custom：由用户创建的自定义共享CNAME</li>
+<li>ip-ssl：IP SSL类型的共享CNAME</li>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def SharedCNAME(self):
+        r"""共享CNAME名称。
+        :rtype: str
+        """
+        return self._SharedCNAME
+
+    @SharedCNAME.setter
+    def SharedCNAME(self, SharedCNAME):
+        self._SharedCNAME = SharedCNAME
+
+    @property
+    def Description(self):
+        r"""描述。
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def IPSSLConfig(self):
+        r"""当type为ip-ssl时，展示该共享CNAME关联的 IP SSL 配置信息。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.IPSSLConfig`
+        """
+        return self._IPSSLConfig
+
+    @IPSSLConfig.setter
+    def IPSSLConfig(self, IPSSLConfig):
+        self._IPSSLConfig = IPSSLConfig
+
+    @property
+    def BindDomainCount(self):
+        r"""共享CNAME绑定的加速域名数量。
+        :rtype: int
+        """
+        return self._BindDomainCount
+
+    @BindDomainCount.setter
+    def BindDomainCount(self, BindDomainCount):
+        self._BindDomainCount = BindDomainCount
+
+    @property
+    def AccelerationDomains(self):
+        r"""加入该共享CNAME的加速域名列表。当加入的域名数量超过100个时，只返回前100个加速域名。
+        :rtype: list of ReferenceHolder
+        """
+        return self._AccelerationDomains
+
+    @AccelerationDomains.setter
+    def AccelerationDomains(self, AccelerationDomains):
+        self._AccelerationDomains = AccelerationDomains
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._SharedCNAME = params.get("SharedCNAME")
+        self._Description = params.get("Description")
+        if params.get("IPSSLConfig") is not None:
+            self._IPSSLConfig = IPSSLConfig()
+            self._IPSSLConfig._deserialize(params.get("IPSSLConfig"))
+        self._BindDomainCount = params.get("BindDomainCount")
+        if params.get("AccelerationDomains") is not None:
+            self._AccelerationDomains = []
+            for item in params.get("AccelerationDomains"):
+                obj = ReferenceHolder()
+                obj._deserialize(item)
+                self._AccelerationDomains.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

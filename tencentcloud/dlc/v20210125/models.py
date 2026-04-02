@@ -28603,17 +28603,20 @@ class Filter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 属性名称, 若存在多个Filter时，Filter间的关系为逻辑或（OR）关系。
+        :param _Name: 筛选字段名，对应实体属性名（驼峰命名）
         :type Name: str
-        :param _Values: 属性值, 若同一个Filter存在多个Values，同一Filter下Values间的关系为逻辑或（OR）关系。
+        :param _Operator: 筛选操作符：EQ/NE/GT/GE/LT/LE/LIKE/IN，默认EQ
+        :type Operator: str
+        :param _Values: 筛选值列表，EQ/NE/GT/GE/LT/LE/LIKE取第一个值，IN使用完整列表
         :type Values: list of str
         """
         self._Name = None
+        self._Operator = None
         self._Values = None
 
     @property
     def Name(self):
-        r"""属性名称, 若存在多个Filter时，Filter间的关系为逻辑或（OR）关系。
+        r"""筛选字段名，对应实体属性名（驼峰命名）
         :rtype: str
         """
         return self._Name
@@ -28623,8 +28626,19 @@ class Filter(AbstractModel):
         self._Name = Name
 
     @property
+    def Operator(self):
+        r"""筛选操作符：EQ/NE/GT/GE/LT/LE/LIKE/IN，默认EQ
+        :rtype: str
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
     def Values(self):
-        r"""属性值, 若同一个Filter存在多个Values，同一Filter下Values间的关系为逻辑或（OR）关系。
+        r"""筛选值列表，EQ/NE/GT/GE/LT/LE/LIKE取第一个值，IN使用完整列表
         :rtype: list of str
         """
         return self._Values
@@ -28636,6 +28650,7 @@ class Filter(AbstractModel):
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
+        self._Operator = params.get("Operator")
         self._Values = params.get("Values")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

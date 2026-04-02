@@ -26,6 +26,29 @@ class Ga2Client(AbstractClient):
     _service = 'ga2'
 
 
+    def CreateGlobalAccelerator(self, request):
+        r"""创建全球加速实例
+
+        :param request: Request instance for CreateGlobalAccelerator.
+        :type request: :class:`tencentcloud.ga2.v20250115.models.CreateGlobalAcceleratorRequest`
+        :rtype: :class:`tencentcloud.ga2.v20250115.models.CreateGlobalAcceleratorResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateGlobalAccelerator", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateGlobalAcceleratorResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeCrossBorderSettlement(self, request):
         r"""查询跨境账单
 

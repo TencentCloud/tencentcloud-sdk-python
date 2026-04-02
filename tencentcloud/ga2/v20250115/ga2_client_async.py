@@ -25,6 +25,24 @@ class Ga2Client(AbstractClient):
     _endpoint = 'ga2.tencentcloudapi.com'
     _service = 'ga2'
 
+    async def CreateGlobalAccelerator(
+            self,
+            request: models.CreateGlobalAcceleratorRequest,
+            opts: Dict = None,
+    ) -> models.CreateGlobalAcceleratorResponse:
+        """
+        创建全球加速实例
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateGlobalAccelerator"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateGlobalAcceleratorResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeCrossBorderSettlement(
             self,
             request: models.DescribeCrossBorderSettlementRequest,

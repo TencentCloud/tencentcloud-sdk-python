@@ -2352,6 +2352,24 @@ class TeoClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeSharedCNAME(
+            self,
+            request: models.DescribeSharedCNAMERequest,
+            opts: Dict = None,
+    ) -> models.DescribeSharedCNAMEResponse:
+        """
+        查询共享CNAME列表，支持模糊搜索、分页、排序等。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeSharedCNAME"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeSharedCNAMEResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeTimingL4Data(
             self,
             request: models.DescribeTimingL4DataRequest,
@@ -3550,6 +3568,24 @@ class TeoClient(AbstractClient):
         kwargs["action"] = "ModifySecurityPolicy"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifySecurityPolicyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifySharedCNAME(
+            self,
+            request: models.ModifySharedCNAMERequest,
+            opts: Dict = None,
+    ) -> models.ModifySharedCNAMEResponse:
+        """
+        用于修改共享 CNAME。当前仅支持修改共享 CNAME 的描述和设置 IP SSL类型的共享CNAME关联IP SSL 域名，共享 CNAME 本身创建后不支持修改。该功能白名单内测中。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifySharedCNAME"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifySharedCNAMEResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

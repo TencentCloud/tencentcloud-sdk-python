@@ -2815,6 +2815,273 @@ class CancelRebuildIndexTaskResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ChatCompletionsRequest(AbstractModel):
+    r"""ChatCompletions请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Model: <p>功能名称</p><p>枚举值：</p><ul><li>text2sql： 智能生成检索分析语句</li><li>text2sql-reasoning： 智能生成检索分析语句-深度思考</li></ul>
+        :type Model: str
+        :param _Messages: <p>聊天上下文信息。<br>说明：</p><ol><li>长度最多为 11 (5轮历史会话 + user新提问) ，按对话时间从旧到新在数组中排列。超出此长度会丢弃旧会话数据。</li><li>Message.Role 可选值：user、assistant。<br>user 和 assistant 需交替出现，以 user 提问开始，user 提问结束，Content 不能为空。Role 的顺序示例：[user assistant user assistant user ...]。</li></ol>
+        :type Messages: list of Message
+        :param _Stream: <p>流式调用开关。<br>说明：</p><ol><li>未传值时默认为非流式调用（false）。</li><li>流式调用时以 SSE 协议增量返回结果（返回值取 Choices[n].Delta 中的值，需要拼接增量数据才能获得完整结果）。</li><li>非流式调用时：<br>调用方式与普通 HTTP 请求无异。<br>接口响应耗时较长，如需更低时延建议设置为 true。<br>只返回一次最终结果（返回值取 Choices[n].Message 中的值）。</li></ol><p>注意：</p><ol><li>通过 SDK 调用时，流式和非流式调用需用不同的方式获取返回值，具体参考 SDK 中的注释或示例（在各语言 SDK 代码仓库的 examples/hunyuan/v20230901/ 目录中）。</li><li>可能会出现部分内容已输出，但中间某一段响应中的 FinishReason 值为 sensitive，此时说明安全审核未通过。如果业务场景有实时文字上屏的需求，需要自行撤回已上屏的内容，并建议自定义替换为一条提示语，如 “这个问题我不方便回答，不如我们换个话题试试”，以保障终端体验。</li></ol>
+        :type Stream: bool
+        :param _Metadata: <p>额外元数据信息。例如：[{&quot;Key&quot;:&quot;topic_id&quot;,&quot;Value&quot;:&quot;xxxxxxxx-xxxx&quot;},{&quot;Key&quot;:&quot;topic_region&quot;,&quot;Value&quot;:&quot;ap-guangzhou&quot;}]</p>
+        :type Metadata: list of MetadataItem
+        """
+        self._Model = None
+        self._Messages = None
+        self._Stream = None
+        self._Metadata = None
+
+    @property
+    def Model(self):
+        r"""<p>功能名称</p><p>枚举值：</p><ul><li>text2sql： 智能生成检索分析语句</li><li>text2sql-reasoning： 智能生成检索分析语句-深度思考</li></ul>
+        :rtype: str
+        """
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+    @property
+    def Messages(self):
+        r"""<p>聊天上下文信息。<br>说明：</p><ol><li>长度最多为 11 (5轮历史会话 + user新提问) ，按对话时间从旧到新在数组中排列。超出此长度会丢弃旧会话数据。</li><li>Message.Role 可选值：user、assistant。<br>user 和 assistant 需交替出现，以 user 提问开始，user 提问结束，Content 不能为空。Role 的顺序示例：[user assistant user assistant user ...]。</li></ol>
+        :rtype: list of Message
+        """
+        return self._Messages
+
+    @Messages.setter
+    def Messages(self, Messages):
+        self._Messages = Messages
+
+    @property
+    def Stream(self):
+        r"""<p>流式调用开关。<br>说明：</p><ol><li>未传值时默认为非流式调用（false）。</li><li>流式调用时以 SSE 协议增量返回结果（返回值取 Choices[n].Delta 中的值，需要拼接增量数据才能获得完整结果）。</li><li>非流式调用时：<br>调用方式与普通 HTTP 请求无异。<br>接口响应耗时较长，如需更低时延建议设置为 true。<br>只返回一次最终结果（返回值取 Choices[n].Message 中的值）。</li></ol><p>注意：</p><ol><li>通过 SDK 调用时，流式和非流式调用需用不同的方式获取返回值，具体参考 SDK 中的注释或示例（在各语言 SDK 代码仓库的 examples/hunyuan/v20230901/ 目录中）。</li><li>可能会出现部分内容已输出，但中间某一段响应中的 FinishReason 值为 sensitive，此时说明安全审核未通过。如果业务场景有实时文字上屏的需求，需要自行撤回已上屏的内容，并建议自定义替换为一条提示语，如 “这个问题我不方便回答，不如我们换个话题试试”，以保障终端体验。</li></ol>
+        :rtype: bool
+        """
+        return self._Stream
+
+    @Stream.setter
+    def Stream(self, Stream):
+        self._Stream = Stream
+
+    @property
+    def Metadata(self):
+        r"""<p>额外元数据信息。例如：[{&quot;Key&quot;:&quot;topic_id&quot;,&quot;Value&quot;:&quot;xxxxxxxx-xxxx&quot;},{&quot;Key&quot;:&quot;topic_region&quot;,&quot;Value&quot;:&quot;ap-guangzhou&quot;}]</p>
+        :rtype: list of MetadataItem
+        """
+        return self._Metadata
+
+    @Metadata.setter
+    def Metadata(self, Metadata):
+        self._Metadata = Metadata
+
+
+    def _deserialize(self, params):
+        self._Model = params.get("Model")
+        if params.get("Messages") is not None:
+            self._Messages = []
+            for item in params.get("Messages"):
+                obj = Message()
+                obj._deserialize(item)
+                self._Messages.append(obj)
+        self._Stream = params.get("Stream")
+        if params.get("Metadata") is not None:
+            self._Metadata = []
+            for item in params.get("Metadata"):
+                obj = MetadataItem()
+                obj._deserialize(item)
+                self._Metadata.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChatCompletionsResponse(AbstractModel):
+    r"""ChatCompletions返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Created: <p>Unix 时间戳，单位为秒。</p>
+        :type Created: int
+        :param _Usage: <p>Token 统计信息。</p>
+        :type Usage: :class:`tencentcloud.cls.v20201016.models.ChatUsage`
+        :param _Id: <p>本次请求的 Id。</p>
+        :type Id: str
+        :param _Choices: <p>回复内容。</p>
+        :type Choices: list of Choice
+        :param _Model: <p>功能名称</p><p>枚举值：</p><ul><li>text2sql： 智能生成检索分析语句</li><li>text2sql-reasoning： 智能生成检索分析语句-深度思考</li></ul>
+        :type Model: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
+        :type RequestId: str
+        """
+        self._Created = None
+        self._Usage = None
+        self._Id = None
+        self._Choices = None
+        self._Model = None
+        self._RequestId = None
+
+    @property
+    def Created(self):
+        r"""<p>Unix 时间戳，单位为秒。</p>
+        :rtype: int
+        """
+        return self._Created
+
+    @Created.setter
+    def Created(self, Created):
+        self._Created = Created
+
+    @property
+    def Usage(self):
+        r"""<p>Token 统计信息。</p>
+        :rtype: :class:`tencentcloud.cls.v20201016.models.ChatUsage`
+        """
+        return self._Usage
+
+    @Usage.setter
+    def Usage(self, Usage):
+        self._Usage = Usage
+
+    @property
+    def Id(self):
+        r"""<p>本次请求的 Id。</p>
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Choices(self):
+        r"""<p>回复内容。</p>
+        :rtype: list of Choice
+        """
+        return self._Choices
+
+    @Choices.setter
+    def Choices(self, Choices):
+        self._Choices = Choices
+
+    @property
+    def Model(self):
+        r"""<p>功能名称</p><p>枚举值：</p><ul><li>text2sql： 智能生成检索分析语句</li><li>text2sql-reasoning： 智能生成检索分析语句-深度思考</li></ul>
+        :rtype: str
+        """
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Created = params.get("Created")
+        if params.get("Usage") is not None:
+            self._Usage = ChatUsage()
+            self._Usage._deserialize(params.get("Usage"))
+        self._Id = params.get("Id")
+        if params.get("Choices") is not None:
+            self._Choices = []
+            for item in params.get("Choices"):
+                obj = Choice()
+                obj._deserialize(item)
+                self._Choices.append(obj)
+        self._Model = params.get("Model")
+        self._RequestId = params.get("RequestId")
+
+
+class ChatUsage(AbstractModel):
+    r"""消耗量
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PromptTokens: 输入token数
+        :type PromptTokens: int
+        :param _CompletionTokens: 输出token数
+        :type CompletionTokens: int
+        :param _TotalTokens: 总token数
+        :type TotalTokens: int
+        """
+        self._PromptTokens = None
+        self._CompletionTokens = None
+        self._TotalTokens = None
+
+    @property
+    def PromptTokens(self):
+        r"""输入token数
+        :rtype: int
+        """
+        return self._PromptTokens
+
+    @PromptTokens.setter
+    def PromptTokens(self, PromptTokens):
+        self._PromptTokens = PromptTokens
+
+    @property
+    def CompletionTokens(self):
+        r"""输出token数
+        :rtype: int
+        """
+        return self._CompletionTokens
+
+    @CompletionTokens.setter
+    def CompletionTokens(self, CompletionTokens):
+        self._CompletionTokens = CompletionTokens
+
+    @property
+    def TotalTokens(self):
+        r"""总token数
+        :rtype: int
+        """
+        return self._TotalTokens
+
+    @TotalTokens.setter
+    def TotalTokens(self, TotalTokens):
+        self._TotalTokens = TotalTokens
+
+
+    def _deserialize(self, params):
+        self._PromptTokens = params.get("PromptTokens")
+        self._CompletionTokens = params.get("CompletionTokens")
+        self._TotalTokens = params.get("TotalTokens")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CheckFunctionRequest(AbstractModel):
     r"""CheckFunction请求参数结构体
 
@@ -3146,6 +3413,91 @@ class CheckRechargeKafkaServerResponse(AbstractModel):
     def _deserialize(self, params):
         self._Status = params.get("Status")
         self._RequestId = params.get("RequestId")
+
+
+class Choice(AbstractModel):
+    r"""返回的回复, 支持多个
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FinishReason: <p>结束标志位，可能为 stop、 sensitive或者tool_calls。<br>stop 表示输出正常结束。<br>sensitive 表示安全审核未通过。<br>tool_calls 标识函数调用。</p><p>注意：<br>可能会出现部分内容已输出，但中间某一段响应中的 FinishReason 值为 sensitive，此时说明安全审核未通过。如果业务场景有实时文字上屏的需求，需要自行撤回已上屏的内容，并建议自定义替换为一条提示语，如 “这个问题我不方便回答，不如我们换个话题试试”，以保障终端体验。</p>
+        :type FinishReason: str
+        :param _Delta: <p>增量返回值，流式调用时使用该字段。</p>
+        :type Delta: :class:`tencentcloud.cls.v20201016.models.Delta`
+        :param _Message: <p>返回值，非流式调用时使用该字段。</p>
+        :type Message: :class:`tencentcloud.cls.v20201016.models.Message`
+        :param _Index: <p>索引值，流式调用时使用该字段。</p>
+        :type Index: int
+        """
+        self._FinishReason = None
+        self._Delta = None
+        self._Message = None
+        self._Index = None
+
+    @property
+    def FinishReason(self):
+        r"""<p>结束标志位，可能为 stop、 sensitive或者tool_calls。<br>stop 表示输出正常结束。<br>sensitive 表示安全审核未通过。<br>tool_calls 标识函数调用。</p><p>注意：<br>可能会出现部分内容已输出，但中间某一段响应中的 FinishReason 值为 sensitive，此时说明安全审核未通过。如果业务场景有实时文字上屏的需求，需要自行撤回已上屏的内容，并建议自定义替换为一条提示语，如 “这个问题我不方便回答，不如我们换个话题试试”，以保障终端体验。</p>
+        :rtype: str
+        """
+        return self._FinishReason
+
+    @FinishReason.setter
+    def FinishReason(self, FinishReason):
+        self._FinishReason = FinishReason
+
+    @property
+    def Delta(self):
+        r"""<p>增量返回值，流式调用时使用该字段。</p>
+        :rtype: :class:`tencentcloud.cls.v20201016.models.Delta`
+        """
+        return self._Delta
+
+    @Delta.setter
+    def Delta(self, Delta):
+        self._Delta = Delta
+
+    @property
+    def Message(self):
+        r"""<p>返回值，非流式调用时使用该字段。</p>
+        :rtype: :class:`tencentcloud.cls.v20201016.models.Message`
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Index(self):
+        r"""<p>索引值，流式调用时使用该字段。</p>
+        :rtype: int
+        """
+        return self._Index
+
+    @Index.setter
+    def Index(self, Index):
+        self._Index = Index
+
+
+    def _deserialize(self, params):
+        self._FinishReason = params.get("FinishReason")
+        if params.get("Delta") is not None:
+            self._Delta = Delta()
+            self._Delta._deserialize(params.get("Delta"))
+        if params.get("Message") is not None:
+            self._Message = Message()
+            self._Message._deserialize(params.get("Message"))
+        self._Index = params.get("Index")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class Ckafka(AbstractModel):
@@ -18202,6 +18554,92 @@ ap-nanjing 南京地域。
         
 
 
+class Delta(AbstractModel):
+    r"""返回的内容
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Role: <p>角色</p><p>枚举值：</p><ul><li>user： 用户</li><li>assistant： AI助手</li></ul>
+        :type Role: str
+        :param _Content: <p>内容详情</p>
+        :type Content: str
+        :param _ReasoningContent: <p>思维链内容。<br>用于展示模型思考过程，仅深度思考模式可用。仅作为输出参数返回，在进行多轮对话时，无需传入输入参数中。</p>
+        :type ReasoningContent: str
+        :param _ToolCalls: <p>模型生成的工具调用。仅支持输出参数返回。<br>对于每一次的输出值应该以Id为标识对Type、Name、Arguments字段进行合并。</p>
+        :type ToolCalls: list of ToolCall
+        """
+        self._Role = None
+        self._Content = None
+        self._ReasoningContent = None
+        self._ToolCalls = None
+
+    @property
+    def Role(self):
+        r"""<p>角色</p><p>枚举值：</p><ul><li>user： 用户</li><li>assistant： AI助手</li></ul>
+        :rtype: str
+        """
+        return self._Role
+
+    @Role.setter
+    def Role(self, Role):
+        self._Role = Role
+
+    @property
+    def Content(self):
+        r"""<p>内容详情</p>
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def ReasoningContent(self):
+        r"""<p>思维链内容。<br>用于展示模型思考过程，仅深度思考模式可用。仅作为输出参数返回，在进行多轮对话时，无需传入输入参数中。</p>
+        :rtype: str
+        """
+        return self._ReasoningContent
+
+    @ReasoningContent.setter
+    def ReasoningContent(self, ReasoningContent):
+        self._ReasoningContent = ReasoningContent
+
+    @property
+    def ToolCalls(self):
+        r"""<p>模型生成的工具调用。仅支持输出参数返回。<br>对于每一次的输出值应该以Id为标识对Type、Name、Arguments字段进行合并。</p>
+        :rtype: list of ToolCall
+        """
+        return self._ToolCalls
+
+    @ToolCalls.setter
+    def ToolCalls(self, ToolCalls):
+        self._ToolCalls = ToolCalls
+
+
+    def _deserialize(self, params):
+        self._Role = params.get("Role")
+        self._Content = params.get("Content")
+        self._ReasoningContent = params.get("ReasoningContent")
+        if params.get("ToolCalls") is not None:
+            self._ToolCalls = []
+            for item in params.get("ToolCalls"):
+                obj = ToolCall()
+                obj._deserialize(item)
+                self._ToolCalls.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DescribeAlarmNoticesRequest(AbstractModel):
     r"""DescribeAlarmNotices请求参数结构体
 
@@ -33027,6 +33465,92 @@ class MergePartitionResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class Message(AbstractModel):
+    r"""会话内容
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Role: <p>角色</p><p>枚举值：</p><ul><li>user： 用户</li><li>assistant： AI助手</li></ul>
+        :type Role: str
+        :param _Content: <p>文本内容</p>
+        :type Content: str
+        :param _ReasoningContent: <p>思维链内容。<br>用于展示模型思考过程，仅深度思考模式可用。仅作为输出参数返回，在进行多轮对话时，无需传入输入参数中。</p>
+        :type ReasoningContent: str
+        :param _ToolCalls: <p>模型生成的工具调用。仅支持输出参数返回。</p>
+        :type ToolCalls: list of ToolCall
+        """
+        self._Role = None
+        self._Content = None
+        self._ReasoningContent = None
+        self._ToolCalls = None
+
+    @property
+    def Role(self):
+        r"""<p>角色</p><p>枚举值：</p><ul><li>user： 用户</li><li>assistant： AI助手</li></ul>
+        :rtype: str
+        """
+        return self._Role
+
+    @Role.setter
+    def Role(self, Role):
+        self._Role = Role
+
+    @property
+    def Content(self):
+        r"""<p>文本内容</p>
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def ReasoningContent(self):
+        r"""<p>思维链内容。<br>用于展示模型思考过程，仅深度思考模式可用。仅作为输出参数返回，在进行多轮对话时，无需传入输入参数中。</p>
+        :rtype: str
+        """
+        return self._ReasoningContent
+
+    @ReasoningContent.setter
+    def ReasoningContent(self, ReasoningContent):
+        self._ReasoningContent = ReasoningContent
+
+    @property
+    def ToolCalls(self):
+        r"""<p>模型生成的工具调用。仅支持输出参数返回。</p>
+        :rtype: list of ToolCall
+        """
+        return self._ToolCalls
+
+    @ToolCalls.setter
+    def ToolCalls(self, ToolCalls):
+        self._ToolCalls = ToolCalls
+
+
+    def _deserialize(self, params):
+        self._Role = params.get("Role")
+        self._Content = params.get("Content")
+        self._ReasoningContent = params.get("ReasoningContent")
+        if params.get("ToolCalls") is not None:
+            self._ToolCalls = []
+            for item in params.get("ToolCalls"):
+                obj = ToolCall()
+                obj._deserialize(item)
+                self._ToolCalls.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class MetaTagInfo(AbstractModel):
     r"""元数据信息
 
@@ -33151,6 +33675,57 @@ class MetadataInfo(AbstractModel):
         self._MetaFields = params.get("MetaFields")
         self._EnableTag = params.get("EnableTag")
         self._TagJsonTiled = params.get("TagJsonTiled")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MetadataItem(AbstractModel):
+    r"""Metadata数组项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: <p>元数据标签键</p>
+        :type Key: str
+        :param _Value: <p>元数据标签值</p>
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        r"""<p>元数据标签键</p>
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        r"""<p>元数据标签值</p>
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -46711,6 +47286,140 @@ class Tag(AbstractModel):
     def _deserialize(self, params):
         self._Key = params.get("Key")
         self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ToolCall(AbstractModel):
+    r"""模型生成的工具调用
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>工具调用id</p>
+        :type Id: str
+        :param _Type: <p>工具调用类型，当前只支持function</p>
+        :type Type: str
+        :param _Function: <p>具体的function调用</p>
+        :type Function: :class:`tencentcloud.cls.v20201016.models.ToolCallFunction`
+        :param _Index: <p>索引值</p>
+        :type Index: int
+        """
+        self._Id = None
+        self._Type = None
+        self._Function = None
+        self._Index = None
+
+    @property
+    def Id(self):
+        r"""<p>工具调用id</p>
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Type(self):
+        r"""<p>工具调用类型，当前只支持function</p>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Function(self):
+        r"""<p>具体的function调用</p>
+        :rtype: :class:`tencentcloud.cls.v20201016.models.ToolCallFunction`
+        """
+        return self._Function
+
+    @Function.setter
+    def Function(self, Function):
+        self._Function = Function
+
+    @property
+    def Index(self):
+        r"""<p>索引值</p>
+        :rtype: int
+        """
+        return self._Index
+
+    @Index.setter
+    def Index(self, Index):
+        self._Index = Index
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Type = params.get("Type")
+        if params.get("Function") is not None:
+            self._Function = ToolCallFunction()
+            self._Function._deserialize(params.get("Function"))
+        self._Index = params.get("Index")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ToolCallFunction(AbstractModel):
+    r"""具体的Tool Call Function调用
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>Function名称</p>
+        :type Name: str
+        :param _Arguments: <p>Function参数，一般为json字符串</p>
+        :type Arguments: str
+        """
+        self._Name = None
+        self._Arguments = None
+
+    @property
+    def Name(self):
+        r"""<p>Function名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Arguments(self):
+        r"""<p>Function参数，一般为json字符串</p>
+        :rtype: str
+        """
+        return self._Arguments
+
+    @Arguments.setter
+    def Arguments(self, Arguments):
+        self._Arguments = Arguments
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Arguments = params.get("Arguments")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

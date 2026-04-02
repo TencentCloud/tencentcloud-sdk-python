@@ -1693,6 +1693,100 @@ class CreateBillDealResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateCustomLoginKeyRequest(AbstractModel):
+    r"""CreateCustomLoginKey请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: 环境id
+        :type EnvId: str
+        """
+        self._EnvId = None
+
+    @property
+    def EnvId(self):
+        r"""环境id
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCustomLoginKeyResponse(AbstractModel):
+    r"""CreateCustomLoginKey返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PrivateKey: 自定义登录的 RSA 私钥（1024 位），PEM 编码格式（PKCS#1）。调用方需使用该私钥对包含用户身份信息的 JSON 数据进行 JWS 签名，生成 JWT Token 后传入自定义登录接口完成身份认证。出于安全考虑，系统仅存储公钥，私钥仅在创建时返回一次且无法恢复，请妥善保存。创建新密钥后，该环境下原有未设置过期时间的旧密钥将被自动标记为 2 小时后过期
+        :type PrivateKey: str
+        :param _KeyID: 密钥对的唯一标识符（UUID 格式），由系统自动生成。在自定义登录时，需将该 KeyID 拼接到 ProviderToken 参数中（格式：{KeyID}/{algorithm}/{signedJWT}），服务端通过 KeyID 查找对应的公钥以验证签名
+        :type KeyID: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._PrivateKey = None
+        self._KeyID = None
+        self._RequestId = None
+
+    @property
+    def PrivateKey(self):
+        r"""自定义登录的 RSA 私钥（1024 位），PEM 编码格式（PKCS#1）。调用方需使用该私钥对包含用户身份信息的 JSON 数据进行 JWS 签名，生成 JWT Token 后传入自定义登录接口完成身份认证。出于安全考虑，系统仅存储公钥，私钥仅在创建时返回一次且无法恢复，请妥善保存。创建新密钥后，该环境下原有未设置过期时间的旧密钥将被自动标记为 2 小时后过期
+        :rtype: str
+        """
+        return self._PrivateKey
+
+    @PrivateKey.setter
+    def PrivateKey(self, PrivateKey):
+        self._PrivateKey = PrivateKey
+
+    @property
+    def KeyID(self):
+        r"""密钥对的唯一标识符（UUID 格式），由系统自动生成。在自定义登录时，需将该 KeyID 拼接到 ProviderToken 参数中（格式：{KeyID}/{algorithm}/{signedJWT}），服务端通过 KeyID 查找对应的公钥以验证签名
+        :rtype: str
+        """
+        return self._KeyID
+
+    @KeyID.setter
+    def KeyID(self, KeyID):
+        self._KeyID = KeyID
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._PrivateKey = params.get("PrivateKey")
+        self._KeyID = params.get("KeyID")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateEnvRequest(AbstractModel):
     r"""CreateEnv请求参数结构体
 
@@ -9264,17 +9358,21 @@ class EmailProviderConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SmtpConfig: smtp配置
+        :param _SmtpConfig: <p>smtp配置</p>
         :type SmtpConfig: :class:`tencentcloud.tcb.v20180608.models.EmailSmtpConfig`
-        :param _On: 可选：TRUE，FALSE，如果On为TRUE，则表示采用默认代发。
+        :param _On: <p>可选：TRUE，FALSE，如果On为TRUE，则表示采用默认代发。</p>
         :type On: str
+        :param _TemplateConfig: <p>邮件模板配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TemplateConfig: :class:`tencentcloud.tcb.v20180608.models.EmailTemplateConfig`
         """
         self._SmtpConfig = None
         self._On = None
+        self._TemplateConfig = None
 
     @property
     def SmtpConfig(self):
-        r"""smtp配置
+        r"""<p>smtp配置</p>
         :rtype: :class:`tencentcloud.tcb.v20180608.models.EmailSmtpConfig`
         """
         return self._SmtpConfig
@@ -9285,7 +9383,7 @@ class EmailProviderConfig(AbstractModel):
 
     @property
     def On(self):
-        r"""可选：TRUE，FALSE，如果On为TRUE，则表示采用默认代发。
+        r"""<p>可选：TRUE，FALSE，如果On为TRUE，则表示采用默认代发。</p>
         :rtype: str
         """
         return self._On
@@ -9294,12 +9392,27 @@ class EmailProviderConfig(AbstractModel):
     def On(self, On):
         self._On = On
 
+    @property
+    def TemplateConfig(self):
+        r"""<p>邮件模板配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.EmailTemplateConfig`
+        """
+        return self._TemplateConfig
+
+    @TemplateConfig.setter
+    def TemplateConfig(self, TemplateConfig):
+        self._TemplateConfig = TemplateConfig
+
 
     def _deserialize(self, params):
         if params.get("SmtpConfig") is not None:
             self._SmtpConfig = EmailSmtpConfig()
             self._SmtpConfig._deserialize(params.get("SmtpConfig"))
         self._On = params.get("On")
+        if params.get("TemplateConfig") is not None:
+            self._TemplateConfig = EmailTemplateConfig()
+            self._TemplateConfig._deserialize(params.get("TemplateConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9411,6 +9524,65 @@ class EmailSmtpConfig(AbstractModel):
         self._AccountUsername = params.get("AccountUsername")
         self._AccountPassword = params.get("AccountPassword")
         self._SecurityMode = params.get("SecurityMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EmailTemplateConfig(AbstractModel):
+    r"""邮件模板配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RegisterSignIn: <p>注册登录模板</p><p>入参限制：模板中必须包含{{.VerificationCode}}变量，用于邮件中验证码的展示，可选变量有{{.Usage}}、{{.ExpireMinutes}}、{{.Email}}。邮件模板中禁止包含 script、javascript、onclick、onload、iframe、link 标签及 CSS expression、CSS url() 等</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegisterSignIn: :class:`tencentcloud.tcb.v20180608.models.LocalizedTemplate`
+        :param _DefaultTpl: <p>默认模板</p><p>入参限制：模板中必须包含{{.VerificationCode}}变量，用于邮件中验证码的展示，可选变量有{{.Usage}}、{{.ExpireMinutes}}、{{.Email}}。邮件模板中禁止包含 script、javascript、onclick、onload、iframe、link 标签及 CSS expression、CSS url() 等</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DefaultTpl: :class:`tencentcloud.tcb.v20180608.models.LocalizedTemplate`
+        """
+        self._RegisterSignIn = None
+        self._DefaultTpl = None
+
+    @property
+    def RegisterSignIn(self):
+        r"""<p>注册登录模板</p><p>入参限制：模板中必须包含{{.VerificationCode}}变量，用于邮件中验证码的展示，可选变量有{{.Usage}}、{{.ExpireMinutes}}、{{.Email}}。邮件模板中禁止包含 script、javascript、onclick、onload、iframe、link 标签及 CSS expression、CSS url() 等</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.LocalizedTemplate`
+        """
+        return self._RegisterSignIn
+
+    @RegisterSignIn.setter
+    def RegisterSignIn(self, RegisterSignIn):
+        self._RegisterSignIn = RegisterSignIn
+
+    @property
+    def DefaultTpl(self):
+        r"""<p>默认模板</p><p>入参限制：模板中必须包含{{.VerificationCode}}变量，用于邮件中验证码的展示，可选变量有{{.Usage}}、{{.ExpireMinutes}}、{{.Email}}。邮件模板中禁止包含 script、javascript、onclick、onload、iframe、link 标签及 CSS expression、CSS url() 等</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.LocalizedTemplate`
+        """
+        return self._DefaultTpl
+
+    @DefaultTpl.setter
+    def DefaultTpl(self, DefaultTpl):
+        self._DefaultTpl = DefaultTpl
+
+
+    def _deserialize(self, params):
+        if params.get("RegisterSignIn") is not None:
+            self._RegisterSignIn = LocalizedTemplate()
+            self._RegisterSignIn._deserialize(params.get("RegisterSignIn"))
+        if params.get("DefaultTpl") is not None:
+            self._DefaultTpl = LocalizedTemplate()
+            self._DefaultTpl._deserialize(params.get("DefaultTpl"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10658,6 +10830,8 @@ class HTTPServiceDomain(AbstractModel):
         :type DNSStatus: str
         :param _Routes: HTTP访问服务路由信息
         :type Routes: list of HTTPServiceRoute
+        :param _Extension: 扩展字段，内部包含headers处理等
+        :type Extension: :class:`tencentcloud.tcb.v20180608.models.HTTPServiceExtension`
         :param _CreateTime: 域名创建时间
         :type CreateTime: str
         :param _UpdateTime: 域名更新时间
@@ -10674,6 +10848,7 @@ class HTTPServiceDomain(AbstractModel):
         self._Status = None
         self._DNSStatus = None
         self._Routes = None
+        self._Extension = None
         self._CreateTime = None
         self._UpdateTime = None
 
@@ -10799,6 +10974,17 @@ class HTTPServiceDomain(AbstractModel):
         self._Routes = Routes
 
     @property
+    def Extension(self):
+        r"""扩展字段，内部包含headers处理等
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.HTTPServiceExtension`
+        """
+        return self._Extension
+
+    @Extension.setter
+    def Extension(self, Extension):
+        self._Extension = Extension
+
+    @property
     def CreateTime(self):
         r"""域名创建时间
         :rtype: str
@@ -10838,6 +11024,9 @@ class HTTPServiceDomain(AbstractModel):
                 obj = HTTPServiceRoute()
                 obj._deserialize(item)
                 self._Routes.append(obj)
+        if params.get("Extension") is not None:
+            self._Extension = HTTPServiceExtension()
+            self._Extension._deserialize(params.get("Extension"))
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())
@@ -10857,20 +11046,22 @@ class HTTPServiceDomainParam(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Domain: 域名。全局唯一。如果域名在其他环境下占用或者腾讯云CDN占用，可能会导致创建失败
+        :param _Domain: <p>域名。全局唯一。如果域名在其他环境下占用或者腾讯云CDN占用，可能会导致创建失败</p>
         :type Domain: str
-        :param _AccessType: 绑定类型。默认DIRECT。DIRECT: 直连到HTTP访问服务， CDN: 接入云开发CDN，CUSTOM: 自定义接入类型（其他CDN或者WAF）
+        :param _AccessType: <p>绑定类型。默认DIRECT。DIRECT: 直连到HTTP访问服务， CDN: 接入云开发CDN，CUSTOM: 自定义接入类型（其他CDN或者WAF）</p>
         :type AccessType: str
-        :param _CertId: 证书ID。当前账户下SSL平台的证书ID
+        :param _CertId: <p>证书ID。当前账户下SSL平台的证书ID</p>
         :type CertId: str
-        :param _Protocol: 协议类型。默认HTTP_AND_HTTPS。HTTP_AND_HTTPS: 同时开启http和https，HTTP_TO_HTTPS: http重定向成https，HTTPS_TO_HTTP: https重定向成http。如果未配置证书无法访问https或者进行重定向
+        :param _Protocol: <p>协议类型。默认HTTP_AND_HTTPS。HTTP_AND_HTTPS: 同时开启http和https，HTTP_TO_HTTPS: http重定向成https，HTTPS_TO_HTTP: https重定向成http。如果未配置证书无法访问https或者进行重定向</p>
         :type Protocol: str
-        :param _CustomCname: 自定义CNAME。对应AccessType: Custom
+        :param _CustomCname: <p>自定义CNAME。对应AccessType: Custom</p>
         :type CustomCname: str
-        :param _Enable: 域名开启状态，不传默认开启
+        :param _Enable: <p>域名开启状态，不传默认开启</p>
         :type Enable: bool
-        :param _Routes: 创建/修改的HTTP访问服务路由列表。如果不传，仅创建或修改域名信息。列表最大支持传入20个
+        :param _Routes: <p>创建/修改的HTTP访问服务路由列表。如果不传，仅创建或修改域名信息。列表最大支持传入20个</p>
         :type Routes: list of HTTPServiceRouteParam
+        :param _Extension: <p>扩展字段，内部包含headers处理等</p>
+        :type Extension: :class:`tencentcloud.tcb.v20180608.models.HTTPServiceExtension`
         """
         self._Domain = None
         self._AccessType = None
@@ -10879,10 +11070,11 @@ class HTTPServiceDomainParam(AbstractModel):
         self._CustomCname = None
         self._Enable = None
         self._Routes = None
+        self._Extension = None
 
     @property
     def Domain(self):
-        r"""域名。全局唯一。如果域名在其他环境下占用或者腾讯云CDN占用，可能会导致创建失败
+        r"""<p>域名。全局唯一。如果域名在其他环境下占用或者腾讯云CDN占用，可能会导致创建失败</p>
         :rtype: str
         """
         return self._Domain
@@ -10893,7 +11085,7 @@ class HTTPServiceDomainParam(AbstractModel):
 
     @property
     def AccessType(self):
-        r"""绑定类型。默认DIRECT。DIRECT: 直连到HTTP访问服务， CDN: 接入云开发CDN，CUSTOM: 自定义接入类型（其他CDN或者WAF）
+        r"""<p>绑定类型。默认DIRECT。DIRECT: 直连到HTTP访问服务， CDN: 接入云开发CDN，CUSTOM: 自定义接入类型（其他CDN或者WAF）</p>
         :rtype: str
         """
         return self._AccessType
@@ -10904,7 +11096,7 @@ class HTTPServiceDomainParam(AbstractModel):
 
     @property
     def CertId(self):
-        r"""证书ID。当前账户下SSL平台的证书ID
+        r"""<p>证书ID。当前账户下SSL平台的证书ID</p>
         :rtype: str
         """
         return self._CertId
@@ -10915,7 +11107,7 @@ class HTTPServiceDomainParam(AbstractModel):
 
     @property
     def Protocol(self):
-        r"""协议类型。默认HTTP_AND_HTTPS。HTTP_AND_HTTPS: 同时开启http和https，HTTP_TO_HTTPS: http重定向成https，HTTPS_TO_HTTP: https重定向成http。如果未配置证书无法访问https或者进行重定向
+        r"""<p>协议类型。默认HTTP_AND_HTTPS。HTTP_AND_HTTPS: 同时开启http和https，HTTP_TO_HTTPS: http重定向成https，HTTPS_TO_HTTP: https重定向成http。如果未配置证书无法访问https或者进行重定向</p>
         :rtype: str
         """
         return self._Protocol
@@ -10926,7 +11118,7 @@ class HTTPServiceDomainParam(AbstractModel):
 
     @property
     def CustomCname(self):
-        r"""自定义CNAME。对应AccessType: Custom
+        r"""<p>自定义CNAME。对应AccessType: Custom</p>
         :rtype: str
         """
         return self._CustomCname
@@ -10937,7 +11129,7 @@ class HTTPServiceDomainParam(AbstractModel):
 
     @property
     def Enable(self):
-        r"""域名开启状态，不传默认开启
+        r"""<p>域名开启状态，不传默认开启</p>
         :rtype: bool
         """
         return self._Enable
@@ -10948,7 +11140,7 @@ class HTTPServiceDomainParam(AbstractModel):
 
     @property
     def Routes(self):
-        r"""创建/修改的HTTP访问服务路由列表。如果不传，仅创建或修改域名信息。列表最大支持传入20个
+        r"""<p>创建/修改的HTTP访问服务路由列表。如果不传，仅创建或修改域名信息。列表最大支持传入20个</p>
         :rtype: list of HTTPServiceRouteParam
         """
         return self._Routes
@@ -10956,6 +11148,17 @@ class HTTPServiceDomainParam(AbstractModel):
     @Routes.setter
     def Routes(self, Routes):
         self._Routes = Routes
+
+    @property
+    def Extension(self):
+        r"""<p>扩展字段，内部包含headers处理等</p>
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.HTTPServiceExtension`
+        """
+        return self._Extension
+
+    @Extension.setter
+    def Extension(self, Extension):
+        self._Extension = Extension
 
 
     def _deserialize(self, params):
@@ -10971,6 +11174,204 @@ class HTTPServiceDomainParam(AbstractModel):
                 obj = HTTPServiceRouteParam()
                 obj._deserialize(item)
                 self._Routes.append(obj)
+        if params.get("Extension") is not None:
+            self._Extension = HTTPServiceExtension()
+            self._Extension._deserialize(params.get("Extension"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HTTPServiceExtension(AbstractModel):
+    r"""HTTP访问服务路由扩展字段
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HeadersHandler: 添加请求头列表
+        :type HeadersHandler: :class:`tencentcloud.tcb.v20180608.models.HTTPServiceHeadersHandler`
+        """
+        self._HeadersHandler = None
+
+    @property
+    def HeadersHandler(self):
+        r"""添加请求头列表
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.HTTPServiceHeadersHandler`
+        """
+        return self._HeadersHandler
+
+    @HeadersHandler.setter
+    def HeadersHandler(self, HeadersHandler):
+        self._HeadersHandler = HeadersHandler
+
+
+    def _deserialize(self, params):
+        if params.get("HeadersHandler") is not None:
+            self._HeadersHandler = HTTPServiceHeadersHandler()
+            self._HeadersHandler._deserialize(params.get("HeadersHandler"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HTTPServiceHeaderToAdd(AbstractModel):
+    r"""HTTP访问服务路由添加header
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 添加头部的key
+        :type Key: str
+        :param _Value: 添加头部的值
+        :type Value: str
+        :param _Action: 添加头部的处理行为。默认：OVERWRITE_IF_EXISTS_OR_ADD。APPEND_IF_EXISTS_OR_ADD: 已存在时追加值，不存在时添加，ADD_IF_ABSENT:  仅在 header 不存在时添加，已存在时不做任何操作，OVERWRITE_IF_EXISTS_OR_ADD: 已存在时覆盖值，不存在时添加（默认值），OVERWRITE_IF_EXISTS: 仅在 header 已存在时覆盖值，不存在时不做任何操作
+        :type Action: str
+        """
+        self._Key = None
+        self._Value = None
+        self._Action = None
+
+    @property
+    def Key(self):
+        r"""添加头部的key
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        r"""添加头部的值
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def Action(self):
+        r"""添加头部的处理行为。默认：OVERWRITE_IF_EXISTS_OR_ADD。APPEND_IF_EXISTS_OR_ADD: 已存在时追加值，不存在时添加，ADD_IF_ABSENT:  仅在 header 不存在时添加，已存在时不做任何操作，OVERWRITE_IF_EXISTS_OR_ADD: 已存在时覆盖值，不存在时添加（默认值），OVERWRITE_IF_EXISTS: 仅在 header 已存在时覆盖值，不存在时不做任何操作
+        :rtype: str
+        """
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        self._Action = params.get("Action")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HTTPServiceHeadersHandler(AbstractModel):
+    r"""HTTP访问服务路由headers处理
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestHeadersToAdd: 添加请求头列表
+        :type RequestHeadersToAdd: list of HTTPServiceHeaderToAdd
+        :param _RequestHeadersToRemove: 删除请求头列表
+        :type RequestHeadersToRemove: list of str
+        :param _ResponseHeadersToAdd: 添加返回头列表
+        :type ResponseHeadersToAdd: list of HTTPServiceHeaderToAdd
+        :param _ResponseHeadersToRemove: 删除返回头列表
+        :type ResponseHeadersToRemove: list of str
+        """
+        self._RequestHeadersToAdd = None
+        self._RequestHeadersToRemove = None
+        self._ResponseHeadersToAdd = None
+        self._ResponseHeadersToRemove = None
+
+    @property
+    def RequestHeadersToAdd(self):
+        r"""添加请求头列表
+        :rtype: list of HTTPServiceHeaderToAdd
+        """
+        return self._RequestHeadersToAdd
+
+    @RequestHeadersToAdd.setter
+    def RequestHeadersToAdd(self, RequestHeadersToAdd):
+        self._RequestHeadersToAdd = RequestHeadersToAdd
+
+    @property
+    def RequestHeadersToRemove(self):
+        r"""删除请求头列表
+        :rtype: list of str
+        """
+        return self._RequestHeadersToRemove
+
+    @RequestHeadersToRemove.setter
+    def RequestHeadersToRemove(self, RequestHeadersToRemove):
+        self._RequestHeadersToRemove = RequestHeadersToRemove
+
+    @property
+    def ResponseHeadersToAdd(self):
+        r"""添加返回头列表
+        :rtype: list of HTTPServiceHeaderToAdd
+        """
+        return self._ResponseHeadersToAdd
+
+    @ResponseHeadersToAdd.setter
+    def ResponseHeadersToAdd(self, ResponseHeadersToAdd):
+        self._ResponseHeadersToAdd = ResponseHeadersToAdd
+
+    @property
+    def ResponseHeadersToRemove(self):
+        r"""删除返回头列表
+        :rtype: list of str
+        """
+        return self._ResponseHeadersToRemove
+
+    @ResponseHeadersToRemove.setter
+    def ResponseHeadersToRemove(self, ResponseHeadersToRemove):
+        self._ResponseHeadersToRemove = ResponseHeadersToRemove
+
+
+    def _deserialize(self, params):
+        if params.get("RequestHeadersToAdd") is not None:
+            self._RequestHeadersToAdd = []
+            for item in params.get("RequestHeadersToAdd"):
+                obj = HTTPServiceHeaderToAdd()
+                obj._deserialize(item)
+                self._RequestHeadersToAdd.append(obj)
+        self._RequestHeadersToRemove = params.get("RequestHeadersToRemove")
+        if params.get("ResponseHeadersToAdd") is not None:
+            self._ResponseHeadersToAdd = []
+            for item in params.get("ResponseHeadersToAdd"):
+                obj = HTTPServiceHeaderToAdd()
+                obj._deserialize(item)
+                self._ResponseHeadersToAdd.append(obj)
+        self._ResponseHeadersToRemove = params.get("ResponseHeadersToRemove")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11093,6 +11494,8 @@ class HTTPServiceRoute(AbstractModel):
         :type QPSPolicy: :class:`tencentcloud.tcb.v20180608.models.HTTPServiceRouteQPSPolicy`
         :param _Enable: 是否开启路由
         :type Enable: bool
+        :param _Extension: 扩展字段，内部包含headers处理等
+        :type Extension: :class:`tencentcloud.tcb.v20180608.models.HTTPServiceExtension`
         :param _CreateTime: 路由创建时间
         :type CreateTime: str
         :param _UpdateTime: 路由更新时间
@@ -11107,6 +11510,7 @@ class HTTPServiceRoute(AbstractModel):
         self._EnablePathTransmission = None
         self._QPSPolicy = None
         self._Enable = None
+        self._Extension = None
         self._CreateTime = None
         self._UpdateTime = None
 
@@ -11210,6 +11614,17 @@ class HTTPServiceRoute(AbstractModel):
         self._Enable = Enable
 
     @property
+    def Extension(self):
+        r"""扩展字段，内部包含headers处理等
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.HTTPServiceExtension`
+        """
+        return self._Extension
+
+    @Extension.setter
+    def Extension(self, Extension):
+        self._Extension = Extension
+
+    @property
     def CreateTime(self):
         r"""路由创建时间
         :rtype: str
@@ -11246,6 +11661,9 @@ class HTTPServiceRoute(AbstractModel):
             self._QPSPolicy = HTTPServiceRouteQPSPolicy()
             self._QPSPolicy._deserialize(params.get("QPSPolicy"))
         self._Enable = params.get("Enable")
+        if params.get("Extension") is not None:
+            self._Extension = HTTPServiceExtension()
+            self._Extension._deserialize(params.get("Extension"))
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())
@@ -11283,6 +11701,8 @@ class HTTPServiceRouteParam(AbstractModel):
         :type QPSPolicy: :class:`tencentcloud.tcb.v20180608.models.HTTPServiceRouteQPSPolicy`
         :param _Enable: 是否开启路由
         :type Enable: bool
+        :param _Extension: 扩展字段，内部包含headers处理等
+        :type Extension: :class:`tencentcloud.tcb.v20180608.models.HTTPServiceExtension`
         """
         self._Path = None
         self._UpstreamResourceType = None
@@ -11293,6 +11713,7 @@ class HTTPServiceRouteParam(AbstractModel):
         self._EnablePathTransmission = None
         self._QPSPolicy = None
         self._Enable = None
+        self._Extension = None
 
     @property
     def Path(self):
@@ -11393,6 +11814,17 @@ class HTTPServiceRouteParam(AbstractModel):
     def Enable(self, Enable):
         self._Enable = Enable
 
+    @property
+    def Extension(self):
+        r"""扩展字段，内部包含headers处理等
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.HTTPServiceExtension`
+        """
+        return self._Extension
+
+    @Extension.setter
+    def Extension(self, Extension):
+        self._Extension = Extension
+
 
     def _deserialize(self, params):
         self._Path = params.get("Path")
@@ -11408,6 +11840,9 @@ class HTTPServiceRouteParam(AbstractModel):
             self._QPSPolicy = HTTPServiceRouteQPSPolicy()
             self._QPSPolicy._deserialize(params.get("QPSPolicy"))
         self._Enable = params.get("Enable")
+        if params.get("Extension") is not None:
+            self._Extension = HTTPServiceExtension()
+            self._Extension._deserialize(params.get("Extension"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12240,6 +12675,61 @@ class LocalizedMessage(AbstractModel):
                 obj = MessageLocalized()
                 obj._deserialize(item)
                 self._Localized.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LocalizedTemplate(AbstractModel):
+    r"""多语言模板
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZhCN: <p>中文</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ZhCN: str
+        :param _EnUS: <p>英文</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnUS: str
+        """
+        self._ZhCN = None
+        self._EnUS = None
+
+    @property
+    def ZhCN(self):
+        r"""<p>中文</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ZhCN
+
+    @ZhCN.setter
+    def ZhCN(self, ZhCN):
+        self._ZhCN = ZhCN
+
+    @property
+    def EnUS(self):
+        r"""<p>英文</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._EnUS
+
+    @EnUS.setter
+    def EnUS(self, EnUS):
+        self._EnUS = EnUS
+
+
+    def _deserialize(self, params):
+        self._ZhCN = params.get("ZhCN")
+        self._EnUS = params.get("EnUS")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

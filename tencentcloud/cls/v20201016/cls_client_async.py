@@ -79,6 +79,26 @@ class ClsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ChatCompletions(
+            self,
+            request: models.ChatCompletionsRequest,
+            opts: Dict = None,
+    ) -> models.ChatCompletionsResponse:
+        """
+        调用接口，发起一次对话请求。
+        本接口支持智能生成检索分析语句等日志服务AI功能。
+        ⚠️注意：通过SSE流式调用此接口时，请务必设置请求域名（Endpoint）为 cls.ai.tencentcloudapi.com。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ChatCompletions"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ChatCompletionsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CheckFunction(
             self,
             request: models.CheckFunctionRequest,

@@ -35165,7 +35165,7 @@ class InstallAddonRequest(AbstractModel):
         :type AddonName: str
         :param _AddonVersion: addon版本（不传默认安装最新版本）
         :type AddonVersion: str
-        :param _RawValues: addon的参数，是一个json格式的base64转码后的字符串（addon参数由DescribeAddonValues获取）
+        :param _RawValues: addon的参数，是一个json格式的base64转码后的字符串（addon参数由DescribeAddonValues获取）。不同的addon组件支持的RawValues参数参考文档：https://cloud.tencent.com/document/product/457/39048。
         :type RawValues: str
         :param _DryRun: 是否仅做安装检查，设置为true时仅做检查，不会安装组件。默认值为 false。
         :type DryRun: bool
@@ -35211,7 +35211,7 @@ class InstallAddonRequest(AbstractModel):
 
     @property
     def RawValues(self):
-        r"""addon的参数，是一个json格式的base64转码后的字符串（addon参数由DescribeAddonValues获取）
+        r"""addon的参数，是一个json格式的base64转码后的字符串（addon参数由DescribeAddonValues获取）。不同的addon组件支持的RawValues参数参考文档：https://cloud.tencent.com/document/product/457/39048。
         :rtype: str
         """
         return self._RawValues
@@ -52856,7 +52856,7 @@ class UpdateAddonRequest(AbstractModel):
         :type AddonName: str
         :param _AddonVersion: addon版本（不传默认不更新，不传AddonVersion时RawValues必传）
         :type AddonVersion: str
-        :param _RawValues: addon的参数，是一个json格式的base64转码后的字符串（addon参数由DescribeAddonValues获取，不传RawValues时AddonVersion必传）。
+        :param _RawValues: addon的参数，是一个json格式的base64转码后的字符串（addon参数由DescribeAddonValues获取，不传RawValues时AddonVersion必传）。不同的addon组件支持的RawValues参数参考文档：https://cloud.tencent.com/document/product/457/39048。
         :type RawValues: str
         :param _UpdateStrategy: addon参数的更新策略，支持replace和merge两种策略，默认值为merge，兼容旧版本API。replace：使用新RawValues全量替换addon原RawValues，merge：根据新RawValues新增或更新addon原RawValues中对应参数。
         :type UpdateStrategy: str
@@ -52905,7 +52905,7 @@ class UpdateAddonRequest(AbstractModel):
 
     @property
     def RawValues(self):
-        r"""addon的参数，是一个json格式的base64转码后的字符串（addon参数由DescribeAddonValues获取，不传RawValues时AddonVersion必传）。
+        r"""addon的参数，是一个json格式的base64转码后的字符串（addon参数由DescribeAddonValues获取，不传RawValues时AddonVersion必传）。不同的addon组件支持的RawValues参数参考文档：https://cloud.tencent.com/document/product/457/39048。
         :rtype: str
         """
         return self._RawValues

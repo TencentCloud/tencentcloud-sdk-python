@@ -25,46 +25,36 @@ class CreateProductSecretRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SecretName: 凭据名称，同一region内不可重复，最长128字节，使用字母、数字或者 - _ 的组合，第一个字符必须为字母或者数字。
+        :param _SecretName: <p>凭据名称，同一region内不可重复，最长128字节，使用字母、数字或者 - _ 的组合，第一个字符必须为字母或者数字。</p>
         :type SecretName: str
-        :param _UserNamePrefix: 用户账号名前缀，由用户自行指定，长度限定在8个字符以内，
-可选字符集包括：
-数字字符：[0, 9]，
-小写字符：[a, z]，
-大写字符：[A, Z]，
-特殊字符(全英文符号)：下划线(_)，
-前缀必须以大写或小写字母开头。
+        :param _UserNamePrefix: <p>用户账号名前缀，由用户自行指定，长度限定在8个字符以内，<br>可选字符集包括：<br>数字字符：[0, 9]，<br>小写字符：[a, z]，<br>大写字符：[A, Z]，<br>特殊字符(全英文符号)：下划线(_)，<br>前缀必须以大写或小写字母开头。</p>
         :type UserNamePrefix: str
-        :param _ProductName: 凭据所绑定的云产品名称，如Mysql，可以通过DescribeSupportedProducts接口获取所支持的云产品名称。
+        :param _ProductName: <p>凭据所绑定的云产品名称，如Mysql，可以通过DescribeSupportedProducts接口获取所支持的云产品名称。</p>
         :type ProductName: str
-        :param _InstanceID: 云产品实例ID。
+        :param _InstanceID: <p>云产品实例ID。</p>
         :type InstanceID: str
-        :param _Domains: 账号的域名，IP形式，支持填入%。
+        :param _Domains: <p>账号的域名，IP形式，支持填入%。</p>
         :type Domains: list of str
-        :param _PrivilegesList: 将凭据与云产品实例绑定时，需要授予的权限列表。
+        :param _PrivilegesList: <p>将凭据与云产品实例绑定时，需要授予的权限列表。</p>
         :type PrivilegesList: list of ProductPrivilegeUnit
-        :param _Description: 描述信息，用于详细描述用途等，最大支持2048字节。
+        :param _Description: <p>描述信息，用于详细描述用途等，最大支持2048字节。</p>
         :type Description: str
-        :param _KmsKeyId: 指定对凭据进行加密的KMS CMK。
-如果为空则表示使用Secrets Manager为您默认创建的CMK进行加密。
-您也可以指定在同region 下自行创建的KMS CMK进行加密。
+        :param _KmsKeyId: <p>指定对凭据进行加密的KMS CMK。<br>如果为空则表示使用Secrets Manager为您默认创建的CMK进行加密。<br>您也可以指定在同region 下自行创建的KMS CMK进行加密。</p>
         :type KmsKeyId: str
-        :param _Tags: 标签列表。
+        :param _Tags: <p>标签列表。</p>
         :type Tags: list of Tag
-        :param _RotationBeginTime: 用户自定义的开始轮转时间，格式：2006-01-02 15:04:05。
-当EnableRotation为True时，此参数必填。
+        :param _RotationBeginTime: <p>用户自定义的开始轮转时间，格式：2006-01-02 15:04:05。<br>当EnableRotation为True时，此参数必填。</p>
         :type RotationBeginTime: str
-        :param _EnableRotation: 是否开启轮转
-True -- 开启
-False -- 不开启
-如果不指定，默认为False。
+        :param _EnableRotation: <p>是否开启轮转<br>True -- 开启<br>False -- 不开启<br>如果不指定，默认为False。</p>
         :type EnableRotation: bool
-        :param _RotationFrequency: 轮转周期，以天为单位，默认为1天。
+        :param _RotationFrequency: <p>轮转周期，以天为单位，默认为1天。</p>
         :type RotationFrequency: int
-        :param _KmsHsmClusterId: KMS的独享集群的ID。当KmsKeyId为空,并且用户的KMS存在有效的HsmClusterId时有效。
+        :param _KmsHsmClusterId: <p>KMS的独享集群的ID。当KmsKeyId为空,并且用户的KMS存在有效的HsmClusterId时有效。</p>
         :type KmsHsmClusterId: str
-        :param _AccountRemark: 账户备注
+        :param _AccountRemark: <p>账户备注</p>
         :type AccountRemark: str
+        :param _AccountType: <p>数据库账号类型，目前仅在创建sqlserver凭据场景会使用到，仅支持L3</p><p>枚举值：</p><ul><li>L3： 普通权限账号</li></ul>
+        :type AccountType: str
         """
         self._SecretName = None
         self._UserNamePrefix = None
@@ -80,10 +70,11 @@ False -- 不开启
         self._RotationFrequency = None
         self._KmsHsmClusterId = None
         self._AccountRemark = None
+        self._AccountType = None
 
     @property
     def SecretName(self):
-        r"""凭据名称，同一region内不可重复，最长128字节，使用字母、数字或者 - _ 的组合，第一个字符必须为字母或者数字。
+        r"""<p>凭据名称，同一region内不可重复，最长128字节，使用字母、数字或者 - _ 的组合，第一个字符必须为字母或者数字。</p>
         :rtype: str
         """
         return self._SecretName
@@ -94,13 +85,7 @@ False -- 不开启
 
     @property
     def UserNamePrefix(self):
-        r"""用户账号名前缀，由用户自行指定，长度限定在8个字符以内，
-可选字符集包括：
-数字字符：[0, 9]，
-小写字符：[a, z]，
-大写字符：[A, Z]，
-特殊字符(全英文符号)：下划线(_)，
-前缀必须以大写或小写字母开头。
+        r"""<p>用户账号名前缀，由用户自行指定，长度限定在8个字符以内，<br>可选字符集包括：<br>数字字符：[0, 9]，<br>小写字符：[a, z]，<br>大写字符：[A, Z]，<br>特殊字符(全英文符号)：下划线(_)，<br>前缀必须以大写或小写字母开头。</p>
         :rtype: str
         """
         return self._UserNamePrefix
@@ -111,7 +96,7 @@ False -- 不开启
 
     @property
     def ProductName(self):
-        r"""凭据所绑定的云产品名称，如Mysql，可以通过DescribeSupportedProducts接口获取所支持的云产品名称。
+        r"""<p>凭据所绑定的云产品名称，如Mysql，可以通过DescribeSupportedProducts接口获取所支持的云产品名称。</p>
         :rtype: str
         """
         return self._ProductName
@@ -122,7 +107,7 @@ False -- 不开启
 
     @property
     def InstanceID(self):
-        r"""云产品实例ID。
+        r"""<p>云产品实例ID。</p>
         :rtype: str
         """
         return self._InstanceID
@@ -133,7 +118,7 @@ False -- 不开启
 
     @property
     def Domains(self):
-        r"""账号的域名，IP形式，支持填入%。
+        r"""<p>账号的域名，IP形式，支持填入%。</p>
         :rtype: list of str
         """
         return self._Domains
@@ -144,7 +129,7 @@ False -- 不开启
 
     @property
     def PrivilegesList(self):
-        r"""将凭据与云产品实例绑定时，需要授予的权限列表。
+        r"""<p>将凭据与云产品实例绑定时，需要授予的权限列表。</p>
         :rtype: list of ProductPrivilegeUnit
         """
         return self._PrivilegesList
@@ -155,7 +140,7 @@ False -- 不开启
 
     @property
     def Description(self):
-        r"""描述信息，用于详细描述用途等，最大支持2048字节。
+        r"""<p>描述信息，用于详细描述用途等，最大支持2048字节。</p>
         :rtype: str
         """
         return self._Description
@@ -166,9 +151,7 @@ False -- 不开启
 
     @property
     def KmsKeyId(self):
-        r"""指定对凭据进行加密的KMS CMK。
-如果为空则表示使用Secrets Manager为您默认创建的CMK进行加密。
-您也可以指定在同region 下自行创建的KMS CMK进行加密。
+        r"""<p>指定对凭据进行加密的KMS CMK。<br>如果为空则表示使用Secrets Manager为您默认创建的CMK进行加密。<br>您也可以指定在同region 下自行创建的KMS CMK进行加密。</p>
         :rtype: str
         """
         return self._KmsKeyId
@@ -179,7 +162,7 @@ False -- 不开启
 
     @property
     def Tags(self):
-        r"""标签列表。
+        r"""<p>标签列表。</p>
         :rtype: list of Tag
         """
         return self._Tags
@@ -190,8 +173,7 @@ False -- 不开启
 
     @property
     def RotationBeginTime(self):
-        r"""用户自定义的开始轮转时间，格式：2006-01-02 15:04:05。
-当EnableRotation为True时，此参数必填。
+        r"""<p>用户自定义的开始轮转时间，格式：2006-01-02 15:04:05。<br>当EnableRotation为True时，此参数必填。</p>
         :rtype: str
         """
         return self._RotationBeginTime
@@ -202,10 +184,7 @@ False -- 不开启
 
     @property
     def EnableRotation(self):
-        r"""是否开启轮转
-True -- 开启
-False -- 不开启
-如果不指定，默认为False。
+        r"""<p>是否开启轮转<br>True -- 开启<br>False -- 不开启<br>如果不指定，默认为False。</p>
         :rtype: bool
         """
         return self._EnableRotation
@@ -216,7 +195,7 @@ False -- 不开启
 
     @property
     def RotationFrequency(self):
-        r"""轮转周期，以天为单位，默认为1天。
+        r"""<p>轮转周期，以天为单位，默认为1天。</p>
         :rtype: int
         """
         return self._RotationFrequency
@@ -227,7 +206,7 @@ False -- 不开启
 
     @property
     def KmsHsmClusterId(self):
-        r"""KMS的独享集群的ID。当KmsKeyId为空,并且用户的KMS存在有效的HsmClusterId时有效。
+        r"""<p>KMS的独享集群的ID。当KmsKeyId为空,并且用户的KMS存在有效的HsmClusterId时有效。</p>
         :rtype: str
         """
         return self._KmsHsmClusterId
@@ -238,7 +217,7 @@ False -- 不开启
 
     @property
     def AccountRemark(self):
-        r"""账户备注
+        r"""<p>账户备注</p>
         :rtype: str
         """
         return self._AccountRemark
@@ -246,6 +225,17 @@ False -- 不开启
     @AccountRemark.setter
     def AccountRemark(self, AccountRemark):
         self._AccountRemark = AccountRemark
+
+    @property
+    def AccountType(self):
+        r"""<p>数据库账号类型，目前仅在创建sqlserver凭据场景会使用到，仅支持L3</p><p>枚举值：</p><ul><li>L3： 普通权限账号</li></ul>
+        :rtype: str
+        """
+        return self._AccountType
+
+    @AccountType.setter
+    def AccountType(self, AccountType):
+        self._AccountType = AccountType
 
 
     def _deserialize(self, params):
@@ -273,6 +263,7 @@ False -- 不开启
         self._RotationFrequency = params.get("RotationFrequency")
         self._KmsHsmClusterId = params.get("KmsHsmClusterId")
         self._AccountRemark = params.get("AccountRemark")
+        self._AccountType = params.get("AccountType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -290,13 +281,13 @@ class CreateProductSecretResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SecretName: 创建的凭据名称。
+        :param _SecretName: <p>创建的凭据名称。</p>
         :type SecretName: str
-        :param _TagCode: 标签操作的返回码. 0: 成功；1: 内部错误；2: 业务处理错误。
+        :param _TagCode: <p>标签操作的返回码. 0: 成功；1: 内部错误；2: 业务处理错误。</p>
         :type TagCode: int
-        :param _TagMsg: 标签操作的返回信息。
+        :param _TagMsg: <p>标签操作的返回信息。</p>
         :type TagMsg: str
-        :param _FlowID: 创建云产品凭据异步任务ID号。
+        :param _FlowID: <p>创建云产品凭据异步任务ID号。</p>
         :type FlowID: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -309,7 +300,7 @@ class CreateProductSecretResponse(AbstractModel):
 
     @property
     def SecretName(self):
-        r"""创建的凭据名称。
+        r"""<p>创建的凭据名称。</p>
         :rtype: str
         """
         return self._SecretName
@@ -320,7 +311,7 @@ class CreateProductSecretResponse(AbstractModel):
 
     @property
     def TagCode(self):
-        r"""标签操作的返回码. 0: 成功；1: 内部错误；2: 业务处理错误。
+        r"""<p>标签操作的返回码. 0: 成功；1: 内部错误；2: 业务处理错误。</p>
         :rtype: int
         """
         return self._TagCode
@@ -331,7 +322,7 @@ class CreateProductSecretResponse(AbstractModel):
 
     @property
     def TagMsg(self):
-        r"""标签操作的返回信息。
+        r"""<p>标签操作的返回信息。</p>
         :rtype: str
         """
         return self._TagMsg
@@ -342,7 +333,7 @@ class CreateProductSecretResponse(AbstractModel):
 
     @property
     def FlowID(self):
-        r"""创建云产品凭据异步任务ID号。
+        r"""<p>创建云产品凭据异步任务ID号。</p>
         :rtype: int
         """
         return self._FlowID

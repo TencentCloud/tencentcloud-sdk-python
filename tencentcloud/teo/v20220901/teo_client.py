@@ -2988,6 +2988,29 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeSharedCNAME(self, request):
+        r"""查询共享CNAME列表，支持模糊搜索、分页、排序等。
+
+        :param request: Request instance for DescribeSharedCNAME.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeSharedCNAMERequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeSharedCNAMEResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSharedCNAME", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSharedCNAMEResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeTimingL4Data(self, request):
         r"""<p>本接口（<code>DescribeTimingL4Data</code>）用于查询四层时序数据列表。</p>
 
@@ -4492,6 +4515,29 @@ class TeoClient(AbstractClient):
             body = self.call("ModifySecurityPolicy", params, headers=headers)
             response = json.loads(body)
             model = models.ModifySecurityPolicyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifySharedCNAME(self, request):
+        r"""用于修改共享 CNAME。当前仅支持修改共享 CNAME 的描述和设置 IP SSL类型的共享CNAME关联IP SSL 域名，共享 CNAME 本身创建后不支持修改。该功能白名单内测中。
+
+        :param request: Request instance for ModifySharedCNAME.
+        :type request: :class:`tencentcloud.teo.v20220901.models.ModifySharedCNAMERequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ModifySharedCNAMEResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifySharedCNAME", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifySharedCNAMEResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

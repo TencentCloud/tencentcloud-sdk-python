@@ -26050,23 +26050,29 @@ class DescribeQClawContentSecCheckRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ServiceId:  服务id,使用哪一套防护策略，就需要传哪一套服务id，模型会检测该服务id下的所有规则
+        :param _ServiceId: <p>服务id,使用哪一套防护策略，就需要传哪一套服务id，模型会检测该服务id下的所有规则</p>
         :type ServiceId: str
-        :param _Content: 要审核的内容
+        :param _Content: <p>要审核的内容</p>
         :type Content: :class:`tencentcloud.waf.v20180125.models.ApiGuardContent`
-        :param _UserId: 标识用户的id，限速使用，不填，则限速会不生效
+        :param _UserId: <p>标识用户的id，限速使用，不填，则限速会不生效</p>
         :type UserId: str
-        :param _SessionId: 会话id
+        :param _SessionId: <p>会话id</p>
         :type SessionId: str
+        :param _ToolName: <p>工具名称</p>
+        :type ToolName: str
+        :param _ToolArgs: <p>工具执行的参数</p>
+        :type ToolArgs: str
         """
         self._ServiceId = None
         self._Content = None
         self._UserId = None
         self._SessionId = None
+        self._ToolName = None
+        self._ToolArgs = None
 
     @property
     def ServiceId(self):
-        r""" 服务id,使用哪一套防护策略，就需要传哪一套服务id，模型会检测该服务id下的所有规则
+        r"""<p>服务id,使用哪一套防护策略，就需要传哪一套服务id，模型会检测该服务id下的所有规则</p>
         :rtype: str
         """
         return self._ServiceId
@@ -26077,7 +26083,7 @@ class DescribeQClawContentSecCheckRequest(AbstractModel):
 
     @property
     def Content(self):
-        r"""要审核的内容
+        r"""<p>要审核的内容</p>
         :rtype: :class:`tencentcloud.waf.v20180125.models.ApiGuardContent`
         """
         return self._Content
@@ -26088,7 +26094,7 @@ class DescribeQClawContentSecCheckRequest(AbstractModel):
 
     @property
     def UserId(self):
-        r"""标识用户的id，限速使用，不填，则限速会不生效
+        r"""<p>标识用户的id，限速使用，不填，则限速会不生效</p>
         :rtype: str
         """
         return self._UserId
@@ -26099,7 +26105,7 @@ class DescribeQClawContentSecCheckRequest(AbstractModel):
 
     @property
     def SessionId(self):
-        r"""会话id
+        r"""<p>会话id</p>
         :rtype: str
         """
         return self._SessionId
@@ -26107,6 +26113,28 @@ class DescribeQClawContentSecCheckRequest(AbstractModel):
     @SessionId.setter
     def SessionId(self, SessionId):
         self._SessionId = SessionId
+
+    @property
+    def ToolName(self):
+        r"""<p>工具名称</p>
+        :rtype: str
+        """
+        return self._ToolName
+
+    @ToolName.setter
+    def ToolName(self, ToolName):
+        self._ToolName = ToolName
+
+    @property
+    def ToolArgs(self):
+        r"""<p>工具执行的参数</p>
+        :rtype: str
+        """
+        return self._ToolArgs
+
+    @ToolArgs.setter
+    def ToolArgs(self, ToolArgs):
+        self._ToolArgs = ToolArgs
 
 
     def _deserialize(self, params):
@@ -26116,6 +26144,8 @@ class DescribeQClawContentSecCheckRequest(AbstractModel):
             self._Content._deserialize(params.get("Content"))
         self._UserId = params.get("UserId")
         self._SessionId = params.get("SessionId")
+        self._ToolName = params.get("ToolName")
+        self._ToolArgs = params.get("ToolArgs")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -26133,7 +26163,7 @@ class DescribeQClawContentSecCheckResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 检测结果
+        :param _Data: <p>检测结果</p>
         :type Data: :class:`tencentcloud.waf.v20180125.models.LLMRisks`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -26143,7 +26173,7 @@ class DescribeQClawContentSecCheckResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""检测结果
+        r"""<p>检测结果</p>
         :rtype: :class:`tencentcloud.waf.v20180125.models.LLMRisks`
         """
         return self._Data
@@ -37229,21 +37259,21 @@ class LLMDetectResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SensitiveResult:  仅输出侧：涉敏信息
+        :param _SensitiveResult: <p>仅输出侧：涉敏信息</p>
         :type SensitiveResult: list of LLMSensitiveValueLevel
-        :param _KeyWordsResult:  输入输出均检测：关键词库命中信息
+        :param _KeyWordsResult: <p>输入输出均检测：关键词库命中信息</p>
         :type KeyWordsResult: list of KeyWordInfo
-        :param _DataCategoryResult: 输入输出均检测：数据分类分级结果
+        :param _DataCategoryResult: <p>输入输出均检测：数据分类分级结果</p>
         :type DataCategoryResult: list of str
-        :param _PromptInjectionResult:  仅输入侧检出：prompt检测的结果
+        :param _PromptInjectionResult: <p>仅输入侧检出：prompt检测的结果</p>
         :type PromptInjectionResult: :class:`tencentcloud.waf.v20180125.models.PromptDetectResult`
-        :param _RuleId: 命中的规则ID
+        :param _RuleId: <p>命中的规则ID</p>
         :type RuleId: str
-        :param _RuleName: 命中的规则名称
+        :param _RuleName: <p>命中的规则名称</p>
         :type RuleName: str
-        :param _Action: 规则动作
+        :param _Action: <p>规则动作</p>
         :type Action: str
-        :param _Payload: 攻击payload
+        :param _Payload: <p>攻击payload</p>
         :type Payload: str
         """
         self._SensitiveResult = None
@@ -37257,7 +37287,7 @@ class LLMDetectResult(AbstractModel):
 
     @property
     def SensitiveResult(self):
-        r""" 仅输出侧：涉敏信息
+        r"""<p>仅输出侧：涉敏信息</p>
         :rtype: list of LLMSensitiveValueLevel
         """
         return self._SensitiveResult
@@ -37268,7 +37298,7 @@ class LLMDetectResult(AbstractModel):
 
     @property
     def KeyWordsResult(self):
-        r""" 输入输出均检测：关键词库命中信息
+        r"""<p>输入输出均检测：关键词库命中信息</p>
         :rtype: list of KeyWordInfo
         """
         return self._KeyWordsResult
@@ -37279,7 +37309,7 @@ class LLMDetectResult(AbstractModel):
 
     @property
     def DataCategoryResult(self):
-        r"""输入输出均检测：数据分类分级结果
+        r"""<p>输入输出均检测：数据分类分级结果</p>
         :rtype: list of str
         """
         return self._DataCategoryResult
@@ -37290,7 +37320,7 @@ class LLMDetectResult(AbstractModel):
 
     @property
     def PromptInjectionResult(self):
-        r""" 仅输入侧检出：prompt检测的结果
+        r"""<p>仅输入侧检出：prompt检测的结果</p>
         :rtype: :class:`tencentcloud.waf.v20180125.models.PromptDetectResult`
         """
         return self._PromptInjectionResult
@@ -37301,7 +37331,7 @@ class LLMDetectResult(AbstractModel):
 
     @property
     def RuleId(self):
-        r"""命中的规则ID
+        r"""<p>命中的规则ID</p>
         :rtype: str
         """
         return self._RuleId
@@ -37312,7 +37342,7 @@ class LLMDetectResult(AbstractModel):
 
     @property
     def RuleName(self):
-        r"""命中的规则名称
+        r"""<p>命中的规则名称</p>
         :rtype: str
         """
         return self._RuleName
@@ -37323,7 +37353,7 @@ class LLMDetectResult(AbstractModel):
 
     @property
     def Action(self):
-        r"""规则动作
+        r"""<p>规则动作</p>
         :rtype: str
         """
         return self._Action
@@ -37334,7 +37364,7 @@ class LLMDetectResult(AbstractModel):
 
     @property
     def Payload(self):
-        r"""攻击payload
+        r"""<p>攻击payload</p>
         :rtype: str
         """
         return self._Payload
