@@ -47217,22 +47217,21 @@ class ProgramItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProgramItemId: 数据项ID，调用[DescribePrograms](https://console.cloud.tencent.com/tsf/privilege?rid=1&tab=program)接口查询已创建的数据集或登陆控制台进行查看；也可以通过调用[CreateProgram](https://cloud.tencent.com/document/api/649/108544)创建新的数据集。
-
+        :param _ProgramItemId: <p>数据项ID，调用<a href="https://console.cloud.tencent.com/tsf/privilege?rid=1&amp;tab=program">DescribePrograms</a>接口查询已创建的数据集或登录控制台进行查看；也可以通过调用<a href="https://cloud.tencent.com/document/api/649/108544">CreateProgram</a>创建新的数据集。</p>
         :type ProgramItemId: str
-        :param _Resource: 资源
+        :param _Resource: <p>资源</p>
         :type Resource: :class:`tencentcloud.tsf.v20180326.models.Resource`
-        :param _ValueList: 数据值列表
+        :param _ValueList: <p>数据值列表</p>
         :type ValueList: list of str
-        :param _IsAll: 全选标识，true: 全选；false: 非全选
+        :param _IsAll: <p>全选标识，true: 全选；false: 非全选</p>
         :type IsAll: bool
-        :param _CreationTime: 创建时间，时间戳格式【Long】
+        :param _CreationTime: <p>创建时间，时间戳格式【Long】</p>
         :type CreationTime: int
-        :param _LastUpdateTime: 最后更新时间，时间戳格式【Long】，单位毫秒
+        :param _LastUpdateTime: <p>最后更新时间，时间戳格式【Long】，单位毫秒</p>
         :type LastUpdateTime: int
-        :param _DeleteFlag: 删除标识，true: 可删除；false: 不可删除
+        :param _DeleteFlag: <p>删除标识，true: 可删除；false: 不可删除</p>
         :type DeleteFlag: bool
-        :param _ProgramId: 数据集ID，调用[DescribePrograms](https://console.cloud.tencent.com/tsf/privilege?rid=1&tab=program)查询接口获取
+        :param _ProgramId: <p>数据集ID，调用<a href="https://console.cloud.tencent.com/tsf/privilege?rid=1&amp;tab=program">DescribePrograms</a>查询接口获取</p>
         :type ProgramId: str
         """
         self._ProgramItemId = None
@@ -47246,8 +47245,7 @@ class ProgramItem(AbstractModel):
 
     @property
     def ProgramItemId(self):
-        r"""数据项ID，调用[DescribePrograms](https://console.cloud.tencent.com/tsf/privilege?rid=1&tab=program)接口查询已创建的数据集或登陆控制台进行查看；也可以通过调用[CreateProgram](https://cloud.tencent.com/document/api/649/108544)创建新的数据集。
-
+        r"""<p>数据项ID，调用<a href="https://console.cloud.tencent.com/tsf/privilege?rid=1&amp;tab=program">DescribePrograms</a>接口查询已创建的数据集或登录控制台进行查看；也可以通过调用<a href="https://cloud.tencent.com/document/api/649/108544">CreateProgram</a>创建新的数据集。</p>
         :rtype: str
         """
         return self._ProgramItemId
@@ -47258,7 +47256,7 @@ class ProgramItem(AbstractModel):
 
     @property
     def Resource(self):
-        r"""资源
+        r"""<p>资源</p>
         :rtype: :class:`tencentcloud.tsf.v20180326.models.Resource`
         """
         return self._Resource
@@ -47269,7 +47267,7 @@ class ProgramItem(AbstractModel):
 
     @property
     def ValueList(self):
-        r"""数据值列表
+        r"""<p>数据值列表</p>
         :rtype: list of str
         """
         return self._ValueList
@@ -47280,7 +47278,7 @@ class ProgramItem(AbstractModel):
 
     @property
     def IsAll(self):
-        r"""全选标识，true: 全选；false: 非全选
+        r"""<p>全选标识，true: 全选；false: 非全选</p>
         :rtype: bool
         """
         return self._IsAll
@@ -47291,7 +47289,7 @@ class ProgramItem(AbstractModel):
 
     @property
     def CreationTime(self):
-        r"""创建时间，时间戳格式【Long】
+        r"""<p>创建时间，时间戳格式【Long】</p>
         :rtype: int
         """
         return self._CreationTime
@@ -47302,7 +47300,7 @@ class ProgramItem(AbstractModel):
 
     @property
     def LastUpdateTime(self):
-        r"""最后更新时间，时间戳格式【Long】，单位毫秒
+        r"""<p>最后更新时间，时间戳格式【Long】，单位毫秒</p>
         :rtype: int
         """
         return self._LastUpdateTime
@@ -47313,7 +47311,7 @@ class ProgramItem(AbstractModel):
 
     @property
     def DeleteFlag(self):
-        r"""删除标识，true: 可删除；false: 不可删除
+        r"""<p>删除标识，true: 可删除；false: 不可删除</p>
         :rtype: bool
         """
         return self._DeleteFlag
@@ -47324,7 +47322,7 @@ class ProgramItem(AbstractModel):
 
     @property
     def ProgramId(self):
-        r"""数据集ID，调用[DescribePrograms](https://console.cloud.tencent.com/tsf/privilege?rid=1&tab=program)查询接口获取
+        r"""<p>数据集ID，调用<a href="https://console.cloud.tencent.com/tsf/privilege?rid=1&amp;tab=program">DescribePrograms</a>查询接口获取</p>
         :rtype: str
         """
         return self._ProgramId

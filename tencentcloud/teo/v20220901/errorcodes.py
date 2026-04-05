@@ -191,6 +191,12 @@ INVALIDPARAMETER_BADCONTENT = 'InvalidParameter.BadContent'
 # 函数名称不符合命名规范。
 INVALIDPARAMETER_BADFUNCTIONNAME = 'InvalidParameter.BadFunctionName'
 
+# 命名空间名称不合法。
+INVALIDPARAMETER_BADNAMESPACENAME = 'InvalidParameter.BadNamespaceName'
+
+# 绑定变量不存在。
+INVALIDPARAMETER_BINDINGNOTFOUND = 'InvalidParameter.BindingNotFound'
+
 # 无效的查询字符串。
 INVALIDPARAMETER_CACHEKEYQUERYSTRINGREQUIRESFULLURLCACHEOFF = 'InvalidParameter.CacheKeyQueryStringRequiresFullUrlCacheOff'
 
@@ -235,6 +241,9 @@ INVALIDPARAMETER_DOMAINNOTFOUND = 'InvalidParameter.DomainNotFound'
 
 # 当前域名已开启流量调度功能。
 INVALIDPARAMETER_DOMAINONTRAFFICSCHEDULING = 'InvalidParameter.DomainOnTrafficScheduling'
+
+# 绑定变量名称已存在。
+INVALIDPARAMETER_DUPLICATEBINDINGNAME = 'InvalidParameter.DuplicateBindingName'
 
 # 重复规则。
 INVALIDPARAMETER_DUPLICATERULE = 'InvalidParameter.DuplicateRule'
@@ -328,6 +337,9 @@ INVALIDPARAMETER_ERRINVALIDELSEWHENMODIFYORIGINACTIONCONFIGURED = 'InvalidParame
 
 # 条件为空。
 INVALIDPARAMETER_ERRNILCONDITION = 'InvalidParameter.ErrNilCondition'
+
+# 绑定名已存在。如需覆盖，请使用 bind-override。
+INVALIDPARAMETER_FUNCTIONBINDVARIABLENAMECONFLICT = 'InvalidParameter.FunctionBindVariableNameConflict'
 
 # 函数名称和本账号下其他函数冲突。
 INVALIDPARAMETER_FUNCTIONNAMECONFLICT = 'InvalidParameter.FunctionNameConflict'
@@ -491,6 +503,9 @@ INVALIDPARAMETER_INVALIDMAXAGETIME = 'InvalidParameter.InvalidMaxAgeTime'
 # 无效查询维度。
 INVALIDPARAMETER_INVALIDMETRIC = 'InvalidParameter.InvalidMetric'
 
+# 操作类型不合法。
+INVALIDPARAMETER_INVALIDOPERATION = 'InvalidParameter.InvalidOperation'
+
 # 无效的源站。
 INVALIDPARAMETER_INVALIDORIGIN = 'InvalidParameter.InvalidOrigin'
 
@@ -587,6 +602,12 @@ INVALIDPARAMETER_INVALIDRULEPROTO = 'InvalidParameter.InvalidRuleProto'
 # 无效的回源Host。
 INVALIDPARAMETER_INVALIDSERVERNAME = 'InvalidParameter.InvalidServerName'
 
+# 排序字段不合法。
+INVALIDPARAMETER_INVALIDSORTBY = 'InvalidParameter.InvalidSortBy'
+
+# 排序方向不合法。
+INVALIDPARAMETER_INVALIDSORTORDER = 'InvalidParameter.InvalidSortOrder'
+
 # edgeone的debug配置无效。
 INVALIDPARAMETER_INVALIDSTANDARDDEBUG = 'InvalidParameter.InvalidStandardDebug'
 
@@ -616,6 +637,9 @@ INVALIDPARAMETER_INVALIDWEBSOCKETTIMEOUT = 'InvalidParameter.InvalidWebSocketTim
 
 # 无效的缓存键。
 INVALIDPARAMETER_KEYRULESINVALIDQUERYSTRINGVALUE = 'InvalidParameter.KeyRulesInvalidQueryStringValue'
+
+# 请求的Key数量超过限制。
+INVALIDPARAMETER_KEYSTOOMANY = 'InvalidParameter.KeysTooMany'
 
 # 参数长度超过限制。
 INVALIDPARAMETER_LENGTHEXCEEDSLIMIT = 'InvalidParameter.LengthExceedsLimit'
@@ -649,6 +673,9 @@ INVALIDPARAMETER_MODIFYPARAMETERSMISSING = 'InvalidParameter.ModifyParametersMis
 
 # 不支持智能路由
 INVALIDPARAMETER_MULTIPLYLAYERNOTSUPPORTSMARTROUTING = 'InvalidParameter.MultiplyLayerNotSupportSmartRouting'
+
+# 命名空间正在使用中，无法删除。
+INVALIDPARAMETER_NAMESPACEINUSE = 'InvalidParameter.NamespaceInUse'
 
 # 操作配置存在不支持的预设变量。
 INVALIDPARAMETER_NOTSUPPORTTHISPRESET = 'InvalidParameter.NotSupportThisPreset'
@@ -727,6 +754,9 @@ INVALIDPARAMETER_REALTIMELOGINVALIDTASKTYPE = 'InvalidParameter.RealtimeLogInval
 
 # 实时日志推送任务数据超过了限制
 INVALIDPARAMETER_REALTIMELOGNUMSEXCEEDLIMIT = 'InvalidParameter.RealtimeLogNumsExceedLimit'
+
+# 命名空间备注信息过长。
+INVALIDPARAMETER_REMARKTOOLONG = 'InvalidParameter.RemarkTooLong'
 
 # 无效的响应头header。
 INVALIDPARAMETER_RESPONSEHEADERCACHECONTROLNOTALLOWDELETE = 'InvalidParameter.ResponseHeaderCacheControlNotAllowDelete'
@@ -1015,6 +1045,9 @@ LIMITEXCEEDED_FUNCTIONLIMITEXCEEDED = 'LimitExceeded.FunctionLimitExceeded'
 
 # 负载均衡数量超过限制。
 LIMITEXCEEDED_LOADBALANCINGCOUNTLIMITEXCEEDED = 'LimitExceeded.LoadBalancingCountLimitExceeded'
+
+# 站点下 KV 命名空间数量已达上限
+LIMITEXCEEDED_NAMESPACELIMITEXCEEDED = 'LimitExceeded.NamespaceLimitExceeded'
 
 # 计费套餐不支持。
 LIMITEXCEEDED_PACKNOTALLOW = 'LimitExceeded.PackNotAllow'
@@ -1405,6 +1438,9 @@ RESOURCEUNAVAILABLE_FUNCTIONNOTFOUND = 'ResourceUnavailable.FunctionNotFound'
 
 # 域名不存在或未开启代理。
 RESOURCEUNAVAILABLE_HOSTNOTFOUND = 'ResourceUnavailable.HostNotFound'
+
+# KV命名空间不存在。
+RESOURCEUNAVAILABLE_NAMESPACENOTFOUND = 'ResourceUnavailable.NamespaceNotFound'
 
 # 规则不存在或不属于该账号。
 RESOURCEUNAVAILABLE_RULENOTFOUND = 'ResourceUnavailable.RuleNotFound'

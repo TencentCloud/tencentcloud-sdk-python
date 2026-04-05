@@ -8442,6 +8442,127 @@ class CodeAction(AbstractModel):
         
 
 
+class ComponentReference(AbstractModel):
+    r"""组件被引用的实例信息，用于展示该组件与边缘函数等资源的绑定关系。当边缘函数需要访问组件（如 KV 命名空间）时，会建立引用关系，通过此结构体可查看引用的具体实例详情及所属站点信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ReferenceType: 引用的实例类型。取值有：
+<li>edge-function：边缘函数。</li>
+        :type ReferenceType: str
+        :param _ReferenceId: 引用的实例 ID。根据 ReferenceType 的取值不同，返回对应的实例 ID：
+<li>当 ReferenceType 为 edge-function 时：返回边缘函数 ID，格式形如：ef-2vc5oe9mzqhm。</li>
+
+        :type ReferenceId: str
+        :param _ReferenceName: 引用的实例名称。根据 ReferenceType 的取值不同，返回对应的实例名称：
+<li>当 ReferenceType 为 edge-function 时：返回边缘函数名称。</li>
+
+        :type ReferenceName: str
+        :param _ZoneId: 站点 ID。引用该命名空间的实例所属的站点标识。
+        :type ZoneId: str
+        :param _ZoneName: 站点名称。引用该命名空间的实例所属的站点名称。
+        :type ZoneName: str
+        :param _AliasZoneName: 引用该命名空间的实例所属站点的别名。若未设置站点别名，则返回空字符串。
+        :type AliasZoneName: str
+        """
+        self._ReferenceType = None
+        self._ReferenceId = None
+        self._ReferenceName = None
+        self._ZoneId = None
+        self._ZoneName = None
+        self._AliasZoneName = None
+
+    @property
+    def ReferenceType(self):
+        r"""引用的实例类型。取值有：
+<li>edge-function：边缘函数。</li>
+        :rtype: str
+        """
+        return self._ReferenceType
+
+    @ReferenceType.setter
+    def ReferenceType(self, ReferenceType):
+        self._ReferenceType = ReferenceType
+
+    @property
+    def ReferenceId(self):
+        r"""引用的实例 ID。根据 ReferenceType 的取值不同，返回对应的实例 ID：
+<li>当 ReferenceType 为 edge-function 时：返回边缘函数 ID，格式形如：ef-2vc5oe9mzqhm。</li>
+
+        :rtype: str
+        """
+        return self._ReferenceId
+
+    @ReferenceId.setter
+    def ReferenceId(self, ReferenceId):
+        self._ReferenceId = ReferenceId
+
+    @property
+    def ReferenceName(self):
+        r"""引用的实例名称。根据 ReferenceType 的取值不同，返回对应的实例名称：
+<li>当 ReferenceType 为 edge-function 时：返回边缘函数名称。</li>
+
+        :rtype: str
+        """
+        return self._ReferenceName
+
+    @ReferenceName.setter
+    def ReferenceName(self, ReferenceName):
+        self._ReferenceName = ReferenceName
+
+    @property
+    def ZoneId(self):
+        r"""站点 ID。引用该命名空间的实例所属的站点标识。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def ZoneName(self):
+        r"""站点名称。引用该命名空间的实例所属的站点名称。
+        :rtype: str
+        """
+        return self._ZoneName
+
+    @ZoneName.setter
+    def ZoneName(self, ZoneName):
+        self._ZoneName = ZoneName
+
+    @property
+    def AliasZoneName(self):
+        r"""引用该命名空间的实例所属站点的别名。若未设置站点别名，则返回空字符串。
+        :rtype: str
+        """
+        return self._AliasZoneName
+
+    @AliasZoneName.setter
+    def AliasZoneName(self, AliasZoneName):
+        self._AliasZoneName = AliasZoneName
+
+
+    def _deserialize(self, params):
+        self._ReferenceType = params.get("ReferenceType")
+        self._ReferenceId = params.get("ReferenceId")
+        self._ReferenceName = params.get("ReferenceName")
+        self._ZoneId = params.get("ZoneId")
+        self._ZoneName = params.get("ZoneName")
+        self._AliasZoneName = params.get("AliasZoneName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Compression(AbstractModel):
     r"""智能压缩配置。
 
@@ -10613,6 +10734,100 @@ class CreateDnsRecordResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RecordId = params.get("RecordId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateEdgeKVNamespaceRequest(AbstractModel):
+    r"""CreateEdgeKVNamespace请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _Namespace: 命名空间名称。输入内容有以下限制：支持输入 1-50 个字符，允许的字符为 a-z、A-Z、0-9、-，且 - 不能单独注册或连续使用，不能放在开头或结尾。在同站点下，名称需保证唯一。
+        :type Namespace: str
+        :param _Remark: 命名空间描述。用于说明命名空间的用途或业务含义。最大支持 256 个字符。
+        :type Remark: str
+        """
+        self._ZoneId = None
+        self._Namespace = None
+        self._Remark = None
+
+    @property
+    def ZoneId(self):
+        r"""站点 ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Namespace(self):
+        r"""命名空间名称。输入内容有以下限制：支持输入 1-50 个字符，允许的字符为 a-z、A-Z、0-9、-，且 - 不能单独注册或连续使用，不能放在开头或结尾。在同站点下，名称需保证唯一。
+        :rtype: str
+        """
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def Remark(self):
+        r"""命名空间描述。用于说明命名空间的用途或业务含义。最大支持 256 个字符。
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._Namespace = params.get("Namespace")
+        self._Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateEdgeKVNamespaceResponse(AbstractModel):
+    r"""CreateEdgeKVNamespace返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -14823,7 +15038,7 @@ class CustomField(AbstractModel):
 
 
 class CustomRule(AbstractModel):
-    r"""Web安全的自定义规则
+    r"""Web 防护功能下的自定义规则。
 
     """
 
@@ -14831,17 +15046,17 @@ class CustomRule(AbstractModel):
         r"""
         :param _Name: 自定义规则的名称。
         :type Name: str
-        :param _Condition: 自定义规则的具体内容，需符合表达式语法，详细规范参见产品文档。
+        :param _Condition: 自定义规则的具体内容，需符合表达式语法，详细规范参见 [产品文档](https://cloud.tencent.com/document/product/1552/125343) 。
         :type Condition: str
-        :param _Action: 自定义规则的执行动作。	SecurityAction 的 Name 取值支持：<li>Deny：拦截；</li><li>Monitor：观察；</li><li>ReturnCustomPage：使用指定页面拦截；</li><li>Redirect：重定向至 URL；</li><li>BlockIP：IP 封禁；</li><li>JSChallenge：JavaScript 挑战；</li><li>ManagedChallenge：托管挑战；</li><li>Allow：放行。</li>
+        :param _Action: 自定义规则的处置动作。SecurityAction.Name 取值范围如下：<ul><li>Deny：拦截；</li><li>Monitor：观察；</li><li>ReturnCustomPage：使用指定页面拦截；</li><li>Redirect：重定向至 URL；</li><li>BlockIP：IP 封禁；</li><li>JSChallenge：JavaScript 挑战；</li><li>ManagedChallenge：托管挑战；</li><li>Allow：放行。</li></ul>
         :type Action: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
-        :param _Enabled: 自定义规则是否开启。取值有：<li>on：开启</li><li>off：关闭</li>
+        :param _Enabled: 自定义规则是否开启。取值有：<ul><li>on：开启</li><li>off：关闭</li></ul>
         :type Enabled: str
-        :param _Id: 自定义规则的 ID。<br>通过规则 ID 可支持不同的规则配置操作：<br> - 增加新规则：ID 为空或不指定 ID 参数；<br> - 修改已有规则：指定需要更新/修改的规则 ID；<br> - 删除已有规则：CustomRules 参数中，Rules 列表中未包含的已有规则将被删除。
+        :param _Id: 自定义规则的 ID。通过规则 ID 可支持不同的规则配置操作：<ul><li>增加新规则：ID 为空或不指定 ID 参数；</li><li>修改已有规则：指定需要更新/修改的规则 ID；</li><li>删除已有规则：CustomRules 参数中，Rules 列表中未包含的已有规则将被删除。</li></ul>
         :type Id: str
-        :param _RuleType: 自定义规则的类型。取值有：<li>BasicAccessRule：基础访问管控；</li><li>PreciseMatchRule：精准匹配规则，默认；</li><li>ManagedAccessRule：专家定制规则，仅出参。</li><br/>默认为PreciseMatchRule。
+        :param _RuleType: 自定义规则的类型。取值有：<ul><li>BasicAccessRule：基础访问管控；</li><li>PreciseMatchRule：精准匹配规则；</li><li>ManagedAccessRule：专家定制规则，仅出参支持。</li></ul>说明：当未指定 RuleType 时，默认为 `PreciseMatchRule`。
         :type RuleType: str
-        :param _Priority: 自定义规则的优先级，范围是 0 ~ 100，默认为 0，仅支持精准匹配规则（PreciseMatchRule）。
+        :param _Priority: 自定义规则的优先级，范围是 0 ~ 100，默认为 0，仅支持精准匹配规则（`PreciseMatchRule`）。
         :type Priority: int
         """
         self._Name = None
@@ -14865,7 +15080,7 @@ class CustomRule(AbstractModel):
 
     @property
     def Condition(self):
-        r"""自定义规则的具体内容，需符合表达式语法，详细规范参见产品文档。
+        r"""自定义规则的具体内容，需符合表达式语法，详细规范参见 [产品文档](https://cloud.tencent.com/document/product/1552/125343) 。
         :rtype: str
         """
         return self._Condition
@@ -14876,7 +15091,7 @@ class CustomRule(AbstractModel):
 
     @property
     def Action(self):
-        r"""自定义规则的执行动作。	SecurityAction 的 Name 取值支持：<li>Deny：拦截；</li><li>Monitor：观察；</li><li>ReturnCustomPage：使用指定页面拦截；</li><li>Redirect：重定向至 URL；</li><li>BlockIP：IP 封禁；</li><li>JSChallenge：JavaScript 挑战；</li><li>ManagedChallenge：托管挑战；</li><li>Allow：放行。</li>
+        r"""自定义规则的处置动作。SecurityAction.Name 取值范围如下：<ul><li>Deny：拦截；</li><li>Monitor：观察；</li><li>ReturnCustomPage：使用指定页面拦截；</li><li>Redirect：重定向至 URL；</li><li>BlockIP：IP 封禁；</li><li>JSChallenge：JavaScript 挑战；</li><li>ManagedChallenge：托管挑战；</li><li>Allow：放行。</li></ul>
         :rtype: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
         """
         return self._Action
@@ -14887,7 +15102,7 @@ class CustomRule(AbstractModel):
 
     @property
     def Enabled(self):
-        r"""自定义规则是否开启。取值有：<li>on：开启</li><li>off：关闭</li>
+        r"""自定义规则是否开启。取值有：<ul><li>on：开启</li><li>off：关闭</li></ul>
         :rtype: str
         """
         return self._Enabled
@@ -14898,7 +15113,7 @@ class CustomRule(AbstractModel):
 
     @property
     def Id(self):
-        r"""自定义规则的 ID。<br>通过规则 ID 可支持不同的规则配置操作：<br> - 增加新规则：ID 为空或不指定 ID 参数；<br> - 修改已有规则：指定需要更新/修改的规则 ID；<br> - 删除已有规则：CustomRules 参数中，Rules 列表中未包含的已有规则将被删除。
+        r"""自定义规则的 ID。通过规则 ID 可支持不同的规则配置操作：<ul><li>增加新规则：ID 为空或不指定 ID 参数；</li><li>修改已有规则：指定需要更新/修改的规则 ID；</li><li>删除已有规则：CustomRules 参数中，Rules 列表中未包含的已有规则将被删除。</li></ul>
         :rtype: str
         """
         return self._Id
@@ -14909,7 +15124,7 @@ class CustomRule(AbstractModel):
 
     @property
     def RuleType(self):
-        r"""自定义规则的类型。取值有：<li>BasicAccessRule：基础访问管控；</li><li>PreciseMatchRule：精准匹配规则，默认；</li><li>ManagedAccessRule：专家定制规则，仅出参。</li><br/>默认为PreciseMatchRule。
+        r"""自定义规则的类型。取值有：<ul><li>BasicAccessRule：基础访问管控；</li><li>PreciseMatchRule：精准匹配规则；</li><li>ManagedAccessRule：专家定制规则，仅出参支持。</li></ul>说明：当未指定 RuleType 时，默认为 `PreciseMatchRule`。
         :rtype: str
         """
         return self._RuleType
@@ -14920,7 +15135,7 @@ class CustomRule(AbstractModel):
 
     @property
     def Priority(self):
-        r"""自定义规则的优先级，范围是 0 ~ 100，默认为 0，仅支持精准匹配规则（PreciseMatchRule）。
+        r"""自定义规则的优先级，范围是 0 ~ 100，默认为 0，仅支持精准匹配规则（`PreciseMatchRule`）。
         :rtype: int
         """
         return self._Priority
@@ -15627,6 +15842,63 @@ class DNSPodDetail(AbstractModel):
 
     def _deserialize(self, params):
         self._IsFake = params.get("IsFake")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DefaultDenySecurityActionParameters(AbstractModel):
+    r"""默认拦截动作配置。当安全规则命中并触发拦截处置动作时，若 SecurityAction 仅指定了 Name 为 Deny 且未指定 DenyActionParameters，则按功能模块维度匹配并使用此处定义的默认参数配置：
+    <li>ManagedRules 托管规则默认拦截处置动作配置。</li>
+    <li>OtherModules 除托管规则外的安全防护规则（自定义规则、速率限制 和 Bot 管理功能）默认拦截处置动作配置。</li>
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ManagedRules: 托管规则默认拦截处置动作配置。	DenyActionParameters 支持的配置参数：<li>ReturnCustomPage：是否使用自定义页面。</li><li>ResponseCode：自定义页面的状态码。</li><li>ErrorPageId：自定义页面的 PageId。</li>
+        :type ManagedRules: :class:`tencentcloud.teo.v20220901.models.DenyActionParameters`
+        :param _OtherModules: 除托管规则外的安全防护规则（自定义规则、速率限制 和 Bot 管理功能）默认拦截处置动作配置。	DenyActionParameters 支持的配置参数：<li>ReturnCustomPage：是否使用自定义页面。</li><li>ResponseCode：自定义页面的状态码。</li><li>ErrorPageId：自定义页面的 PageId。</li>
+        :type OtherModules: :class:`tencentcloud.teo.v20220901.models.DenyActionParameters`
+        """
+        self._ManagedRules = None
+        self._OtherModules = None
+
+    @property
+    def ManagedRules(self):
+        r"""托管规则默认拦截处置动作配置。	DenyActionParameters 支持的配置参数：<li>ReturnCustomPage：是否使用自定义页面。</li><li>ResponseCode：自定义页面的状态码。</li><li>ErrorPageId：自定义页面的 PageId。</li>
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DenyActionParameters`
+        """
+        return self._ManagedRules
+
+    @ManagedRules.setter
+    def ManagedRules(self, ManagedRules):
+        self._ManagedRules = ManagedRules
+
+    @property
+    def OtherModules(self):
+        r"""除托管规则外的安全防护规则（自定义规则、速率限制 和 Bot 管理功能）默认拦截处置动作配置。	DenyActionParameters 支持的配置参数：<li>ReturnCustomPage：是否使用自定义页面。</li><li>ResponseCode：自定义页面的状态码。</li><li>ErrorPageId：自定义页面的 PageId。</li>
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DenyActionParameters`
+        """
+        return self._OtherModules
+
+    @OtherModules.setter
+    def OtherModules(self, OtherModules):
+        self._OtherModules = OtherModules
+
+
+    def _deserialize(self, params):
+        if params.get("ManagedRules") is not None:
+            self._ManagedRules = DenyActionParameters()
+            self._ManagedRules._deserialize(params.get("ManagedRules"))
+        if params.get("OtherModules") is not None:
+            self._OtherModules = DenyActionParameters()
+            self._OtherModules._deserialize(params.get("OtherModules"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16366,6 +16638,85 @@ class DeleteDnsRecordsRequest(AbstractModel):
 
 class DeleteDnsRecordsResponse(AbstractModel):
     r"""DeleteDnsRecords返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteEdgeKVNamespaceRequest(AbstractModel):
+    r"""DeleteEdgeKVNamespace请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _Namespace: 要删除的命名空间名称。
+        :type Namespace: str
+        """
+        self._ZoneId = None
+        self._Namespace = None
+
+    @property
+    def ZoneId(self):
+        r"""站点 ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Namespace(self):
+        r"""要删除的命名空间名称。
+        :rtype: str
+        """
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._Namespace = params.get("Namespace")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteEdgeKVNamespaceResponse(AbstractModel):
+    r"""DeleteEdgeKVNamespace返回参数结构体
 
     """
 
@@ -21164,6 +21515,205 @@ class DescribeDnsRecordsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeEdgeKVNamespacesRequest(AbstractModel):
+    r"""DescribeEdgeKVNamespaces请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _Offset: 分页查询偏移量。默认值：0。
+        :type Offset: int
+        :param _Limit: 分页查询限制数目。默认值：20，最大值：1000。
+        :type Limit: int
+        :param _SortBy: 排序依据，取值有：
+<li>created-on：创建时间；</li>
+<li>updated-on：更新时间。</li>
+默认值为 created-on。
+        :type SortBy: str
+        :param _SortOrder: 列表排序方式，取值有：
+<li>asc：升序排列；</li>
+<li>desc：降序排列。</li>
+默认值为 desc。
+
+        :type SortOrder: str
+        :param _Filters: 过滤条件，Filters.Values 的上限为 20。该参数不填写时，返回站点 ID 下全部 KV 命名空间。详细的过滤条件如下：
+<li>namespace：按照 KV 命名空间名称进行过滤，支持模糊查询；</li>
+<li>remark：按照命名空间描述进行过滤，支持模糊查询。</li>
+
+        :type Filters: list of AdvancedFilter
+        """
+        self._ZoneId = None
+        self._Offset = None
+        self._Limit = None
+        self._SortBy = None
+        self._SortOrder = None
+        self._Filters = None
+
+    @property
+    def ZoneId(self):
+        r"""站点 ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Offset(self):
+        r"""分页查询偏移量。默认值：0。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""分页查询限制数目。默认值：20，最大值：1000。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def SortBy(self):
+        r"""排序依据，取值有：
+<li>created-on：创建时间；</li>
+<li>updated-on：更新时间。</li>
+默认值为 created-on。
+        :rtype: str
+        """
+        return self._SortBy
+
+    @SortBy.setter
+    def SortBy(self, SortBy):
+        self._SortBy = SortBy
+
+    @property
+    def SortOrder(self):
+        r"""列表排序方式，取值有：
+<li>asc：升序排列；</li>
+<li>desc：降序排列。</li>
+默认值为 desc。
+
+        :rtype: str
+        """
+        return self._SortOrder
+
+    @SortOrder.setter
+    def SortOrder(self, SortOrder):
+        self._SortOrder = SortOrder
+
+    @property
+    def Filters(self):
+        r"""过滤条件，Filters.Values 的上限为 20。该参数不填写时，返回站点 ID 下全部 KV 命名空间。详细的过滤条件如下：
+<li>namespace：按照 KV 命名空间名称进行过滤，支持模糊查询；</li>
+<li>remark：按照命名空间描述进行过滤，支持模糊查询。</li>
+
+        :rtype: list of AdvancedFilter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._SortBy = params.get("SortBy")
+        self._SortOrder = params.get("SortOrder")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = AdvancedFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeEdgeKVNamespacesResponse(AbstractModel):
+    r"""DescribeEdgeKVNamespaces返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 符合条件的命名空间总数。
+        :type TotalCount: int
+        :param _KVNamespaces: KV 命名空间信息列表。若无符合条件的命名空间，则返回空数组。
+        :type KVNamespaces: list of KVNamespace
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._KVNamespaces = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""符合条件的命名空间总数。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def KVNamespaces(self):
+        r"""KV 命名空间信息列表。若无符合条件的命名空间，则返回空数组。
+        :rtype: list of KVNamespace
+        """
+        return self._KVNamespaces
+
+    @KVNamespaces.setter
+    def KVNamespaces(self, KVNamespaces):
+        self._KVNamespaces = KVNamespaces
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("KVNamespaces") is not None:
+            self._KVNamespaces = []
+            for item in params.get("KVNamespaces"):
+                obj = KVNamespace()
+                obj._deserialize(item)
+                self._KVNamespaces.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeEnvironmentsRequest(AbstractModel):
     r"""DescribeEnvironments请求参数结构体
 
@@ -21260,6 +21810,176 @@ class DescribeEnvironmentsResponse(AbstractModel):
                 obj = EnvInfo()
                 obj._deserialize(item)
                 self._EnvInfos.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeFunctionComponentBindingsRequest(AbstractModel):
+    r"""DescribeFunctionComponentBindings请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _FunctionId: 函数 ID。
+        :type FunctionId: str
+        :param _Offset: 分页查询偏移量。默认值：0。
+        :type Offset: int
+        :param _Limit: 分页查询限制数目。默认值：20，最大值：1000。
+        :type Limit: int
+        :param _Filters: 过滤条件，Filters.Values 的上限为 20。详细的过滤条件如下：
+<li>name：按照绑定的变量名进行过滤，支持模糊查询；</li>
+<li>type：按照绑定类型进行过滤，不支持模糊查询。</li>
+
+        :type Filters: list of AdvancedFilter
+        """
+        self._ZoneId = None
+        self._FunctionId = None
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+
+    @property
+    def ZoneId(self):
+        r"""站点 ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def FunctionId(self):
+        r"""函数 ID。
+        :rtype: str
+        """
+        return self._FunctionId
+
+    @FunctionId.setter
+    def FunctionId(self, FunctionId):
+        self._FunctionId = FunctionId
+
+    @property
+    def Offset(self):
+        r"""分页查询偏移量。默认值：0。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""分页查询限制数目。默认值：20，最大值：1000。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        r"""过滤条件，Filters.Values 的上限为 20。详细的过滤条件如下：
+<li>name：按照绑定的变量名进行过滤，支持模糊查询；</li>
+<li>type：按照绑定类型进行过滤，不支持模糊查询。</li>
+
+        :rtype: list of AdvancedFilter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._FunctionId = params.get("FunctionId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = AdvancedFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeFunctionComponentBindingsResponse(AbstractModel):
+    r"""DescribeFunctionComponentBindings返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 符合条件的函数绑定总数。
+        :type TotalCount: int
+        :param _FunctionComponentBindings: 函数组件绑定列表。
+        :type FunctionComponentBindings: list of FunctionComponentBinding
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._FunctionComponentBindings = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""符合条件的函数绑定总数。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def FunctionComponentBindings(self):
+        r"""函数组件绑定列表。
+        :rtype: list of FunctionComponentBinding
+        """
+        return self._FunctionComponentBindings
+
+    @FunctionComponentBindings.setter
+    def FunctionComponentBindings(self, FunctionComponentBindings):
+        self._FunctionComponentBindings = FunctionComponentBindings
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("FunctionComponentBindings") is not None:
+            self._FunctionComponentBindings = []
+            for item in params.get("FunctionComponentBindings"):
+                obj = FunctionComponentBinding()
+                obj._deserialize(item)
+                self._FunctionComponentBindings.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -29379,7 +30099,7 @@ class DeviceProfile(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClientType: 客户端设备类型。取值有：<li>iOS；</li><li>Android；</li><li>WebView。</li>
+        :param _ClientType: 客户端设备类型。取值有：<li>iOS；</li><li>Android；</li><li>WebView；</li><li>WeChatMiniProgram。</li>
         :type ClientType: str
         :param _HighRiskMinScore: 判定请求为高风险的最低值，取值范围为 1～99。数值越大请求风险越高越接近 Bot 客户端发起的请求。默认值为 50，对应含义 51～100 为高风险。
         :type HighRiskMinScore: int
@@ -29398,7 +30118,7 @@ class DeviceProfile(AbstractModel):
 
     @property
     def ClientType(self):
-        r"""客户端设备类型。取值有：<li>iOS；</li><li>Android；</li><li>WebView。</li>
+        r"""客户端设备类型。取值有：<li>iOS；</li><li>Android；</li><li>WebView；</li><li>WeChatMiniProgram。</li>
         :rtype: str
         """
         return self._ClientType
@@ -30485,6 +31205,511 @@ class DropPageDetail(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class EdgeKVDeleteRequest(AbstractModel):
+    r"""EdgeKVDelete请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _Namespace: 命名空间名称。
+        :type Namespace: str
+        :param _Keys: 键名列表。数组长度上限为 20。每个键名不能为空，长度为 1-512 个字符，允许的字符为字母、数字、中划线和下划线。删除单个键时传入包含一个元素的数组。
+        :type Keys: list of str
+        """
+        self._ZoneId = None
+        self._Namespace = None
+        self._Keys = None
+
+    @property
+    def ZoneId(self):
+        r"""站点 ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Namespace(self):
+        r"""命名空间名称。
+        :rtype: str
+        """
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def Keys(self):
+        r"""键名列表。数组长度上限为 20。每个键名不能为空，长度为 1-512 个字符，允许的字符为字母、数字、中划线和下划线。删除单个键时传入包含一个元素的数组。
+        :rtype: list of str
+        """
+        return self._Keys
+
+    @Keys.setter
+    def Keys(self, Keys):
+        self._Keys = Keys
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._Namespace = params.get("Namespace")
+        self._Keys = params.get("Keys")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EdgeKVDeleteResponse(AbstractModel):
+    r"""EdgeKVDelete返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class EdgeKVGetRequest(AbstractModel):
+    r"""EdgeKVGet请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _Namespace: 命名空间名称。可通过 DescribeEdgeKVNamespaces 接口获取站点下的命名空间列表。
+        :type Namespace: str
+        :param _Keys: 键名列表。数组长度上限为 20。每个键名不能为空，长度为 1-512 个字符，允许的字符为字母、数字、中划线和下划线。查询单个键时传入包含一个元素的数组。
+        :type Keys: list of str
+        """
+        self._ZoneId = None
+        self._Namespace = None
+        self._Keys = None
+
+    @property
+    def ZoneId(self):
+        r"""站点 ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Namespace(self):
+        r"""命名空间名称。可通过 DescribeEdgeKVNamespaces 接口获取站点下的命名空间列表。
+        :rtype: str
+        """
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def Keys(self):
+        r"""键名列表。数组长度上限为 20。每个键名不能为空，长度为 1-512 个字符，允许的字符为字母、数字、中划线和下划线。查询单个键时传入包含一个元素的数组。
+        :rtype: list of str
+        """
+        return self._Keys
+
+    @Keys.setter
+    def Keys(self, Keys):
+        self._Keys = Keys
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._Namespace = params.get("Namespace")
+        self._Keys = params.get("Keys")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EdgeKVGetResponse(AbstractModel):
+    r"""EdgeKVGet返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 键值对数据列表。按入参 Keys 的顺序依次返回结果，若某键不存在，则对应项的 Value 字段返回空字符串。
+        :type Data: list of KeyValuePair
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""键值对数据列表。按入参 Keys 的顺序依次返回结果，若某键不存在，则对应项的 Value 字段返回空字符串。
+        :rtype: list of KeyValuePair
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = KeyValuePair()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class EdgeKVListRequest(AbstractModel):
+    r"""EdgeKVList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _Namespace: 命名空间名称。
+        :type Namespace: str
+        :param _Prefix: 键名前缀过滤。只返回以指定前缀开头的键名，长度为 1-512 个字符。不填写表示返回所有键名；不允许传入空字符串。
+        :type Prefix: str
+        :param _Cursor: 游标位置。标识当前查询的起始位置，用于遍历大量数据。首次查询时不填写，从头开始遍历；后续查询时填写上一次返回的 Cursor 值，从该位置继续向后遍历。
+
+        :type Cursor: str
+        :param _Limit: 返回的键名数量。默认值：20，最大值：1000。
+        :type Limit: int
+        """
+        self._ZoneId = None
+        self._Namespace = None
+        self._Prefix = None
+        self._Cursor = None
+        self._Limit = None
+
+    @property
+    def ZoneId(self):
+        r"""站点 ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Namespace(self):
+        r"""命名空间名称。
+        :rtype: str
+        """
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def Prefix(self):
+        r"""键名前缀过滤。只返回以指定前缀开头的键名，长度为 1-512 个字符。不填写表示返回所有键名；不允许传入空字符串。
+        :rtype: str
+        """
+        return self._Prefix
+
+    @Prefix.setter
+    def Prefix(self, Prefix):
+        self._Prefix = Prefix
+
+    @property
+    def Cursor(self):
+        r"""游标位置。标识当前查询的起始位置，用于遍历大量数据。首次查询时不填写，从头开始遍历；后续查询时填写上一次返回的 Cursor 值，从该位置继续向后遍历。
+
+        :rtype: str
+        """
+        return self._Cursor
+
+    @Cursor.setter
+    def Cursor(self, Cursor):
+        self._Cursor = Cursor
+
+    @property
+    def Limit(self):
+        r"""返回的键名数量。默认值：20，最大值：1000。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._Namespace = params.get("Namespace")
+        self._Prefix = params.get("Prefix")
+        self._Cursor = params.get("Cursor")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EdgeKVListResponse(AbstractModel):
+    r"""EdgeKVList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Keys: 键名列表。
+        :type Keys: list of str
+        :param _Cursor: 游标位置。标识当前遍历的位置，用于获取下一批数据。将此值填入下次请求的 Cursor 参数中，可继续向后遍历。若为空字符串，表示已遍历完所有数据。
+
+        :type Cursor: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Keys = None
+        self._Cursor = None
+        self._RequestId = None
+
+    @property
+    def Keys(self):
+        r"""键名列表。
+        :rtype: list of str
+        """
+        return self._Keys
+
+    @Keys.setter
+    def Keys(self, Keys):
+        self._Keys = Keys
+
+    @property
+    def Cursor(self):
+        r"""游标位置。标识当前遍历的位置，用于获取下一批数据。将此值填入下次请求的 Cursor 参数中，可继续向后遍历。若为空字符串，表示已遍历完所有数据。
+
+        :rtype: str
+        """
+        return self._Cursor
+
+    @Cursor.setter
+    def Cursor(self, Cursor):
+        self._Cursor = Cursor
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Keys = params.get("Keys")
+        self._Cursor = params.get("Cursor")
+        self._RequestId = params.get("RequestId")
+
+
+class EdgeKVPutRequest(AbstractModel):
+    r"""EdgeKVPut请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _Namespace: 命名空间名称。
+        :type Namespace: str
+        :param _Key: 键名，长度为 1-512 个字符，允许的字符为字母、数字、中划线和下划线。
+        :type Key: str
+        :param _Value: 键值。不能为空，最大支持 1 MB。支持存储字符串数据。
+        :type Value: str
+        :param _Expiration: 过期时间，绝对时间。表示从 1970 年 1 月 1 日（UTC/GMT 的午夜）开始所经过的秒数，不能小于当前时间。若 Expiration 和 ExpirationTTL 都填写，以 ExpirationTTL 为准。若 Expiration 和 ExpirationTTL 都不填写，则该键值对永不过期。
+        :type Expiration: int
+        :param _ExpirationTTL: 过期时间，相对时间，单位为秒。表示数据将在指定秒数后过期，必须大于 0。若 Expiration 和 ExpirationTTL 都填写，以 ExpirationTTL 为准。若 Expiration 和 ExpirationTTL 都不填写，则该键值对永不过期。
+        :type ExpirationTTL: int
+        """
+        self._ZoneId = None
+        self._Namespace = None
+        self._Key = None
+        self._Value = None
+        self._Expiration = None
+        self._ExpirationTTL = None
+
+    @property
+    def ZoneId(self):
+        r"""站点 ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Namespace(self):
+        r"""命名空间名称。
+        :rtype: str
+        """
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def Key(self):
+        r"""键名，长度为 1-512 个字符，允许的字符为字母、数字、中划线和下划线。
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        r"""键值。不能为空，最大支持 1 MB。支持存储字符串数据。
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def Expiration(self):
+        r"""过期时间，绝对时间。表示从 1970 年 1 月 1 日（UTC/GMT 的午夜）开始所经过的秒数，不能小于当前时间。若 Expiration 和 ExpirationTTL 都填写，以 ExpirationTTL 为准。若 Expiration 和 ExpirationTTL 都不填写，则该键值对永不过期。
+        :rtype: int
+        """
+        return self._Expiration
+
+    @Expiration.setter
+    def Expiration(self, Expiration):
+        self._Expiration = Expiration
+
+    @property
+    def ExpirationTTL(self):
+        r"""过期时间，相对时间，单位为秒。表示数据将在指定秒数后过期，必须大于 0。若 Expiration 和 ExpirationTTL 都填写，以 ExpirationTTL 为准。若 Expiration 和 ExpirationTTL 都不填写，则该键值对永不过期。
+        :rtype: int
+        """
+        return self._ExpirationTTL
+
+    @ExpirationTTL.setter
+    def ExpirationTTL(self, ExpirationTTL):
+        self._ExpirationTTL = ExpirationTTL
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._Namespace = params.get("Namespace")
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        self._Expiration = params.get("Expiration")
+        self._ExpirationTTL = params.get("ExpirationTTL")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EdgeKVPutResponse(AbstractModel):
+    r"""EdgeKVPut返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class EnableOriginACLRequest(AbstractModel):
@@ -32626,6 +33851,88 @@ class Function(AbstractModel):
         self._Domain = params.get("Domain")
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FunctionComponentBinding(AbstractModel):
+    r"""边缘函数组件绑定配置，用于建立边缘函数与组件（如 KV 命名空间）的关联关系。通过绑定配置，边缘函数代码可在运行时通过指定的变量名访问绑定的资源。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 绑定的组件类型。取值有：
+<li>kv_namespace：KV 命名空间。</li>
+
+        :type Type: str
+        :param _VariableName: 用于绑定的变量名。限制 1-50 个字符，允许的字符为字母、数字和下划线，其中数字不能在开头。在边缘函数代码中通过该变量名访问绑定的组件。根据 Type 的取值不同，使用方式如下：
+<li>当 Type 为 kv_namespace 时：在代码中可通过该变量名访问 KV 命名空间，例如设置为 "MY_KV" 时，可通过 MY_KV.get("key") 进行读写操作。</li>
+
+        :type VariableName: str
+        :param _KVNamespaceParameters: KV 命名空间配置参数。用于指定绑定的 KV 命名空间详情。当 Type 为 kv_namespace 时，此字段必填。
+
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KVNamespaceParameters: :class:`tencentcloud.teo.v20220901.models.KVNamespaceParameters`
+        """
+        self._Type = None
+        self._VariableName = None
+        self._KVNamespaceParameters = None
+
+    @property
+    def Type(self):
+        r"""绑定的组件类型。取值有：
+<li>kv_namespace：KV 命名空间。</li>
+
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def VariableName(self):
+        r"""用于绑定的变量名。限制 1-50 个字符，允许的字符为字母、数字和下划线，其中数字不能在开头。在边缘函数代码中通过该变量名访问绑定的组件。根据 Type 的取值不同，使用方式如下：
+<li>当 Type 为 kv_namespace 时：在代码中可通过该变量名访问 KV 命名空间，例如设置为 "MY_KV" 时，可通过 MY_KV.get("key") 进行读写操作。</li>
+
+        :rtype: str
+        """
+        return self._VariableName
+
+    @VariableName.setter
+    def VariableName(self, VariableName):
+        self._VariableName = VariableName
+
+    @property
+    def KVNamespaceParameters(self):
+        r"""KV 命名空间配置参数。用于指定绑定的 KV 命名空间详情。当 Type 为 kv_namespace 时，此字段必填。
+
+
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.KVNamespaceParameters`
+        """
+        return self._KVNamespaceParameters
+
+    @KVNamespaceParameters.setter
+    def KVNamespaceParameters(self, KVNamespaceParameters):
+        self._KVNamespaceParameters = KVNamespaceParameters
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._VariableName = params.get("VariableName")
+        if params.get("KVNamespaceParameters") is not None:
+            self._KVNamespaceParameters = KVNamespaceParameters()
+            self._KVNamespaceParameters._deserialize(params.get("KVNamespaceParameters"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -36106,6 +37413,254 @@ class JustInTimeTranscodeTemplate(AbstractModel):
             self._AudioTemplate._deserialize(params.get("AudioTemplate"))
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KVNamespace(AbstractModel):
+    r"""KV 命名空间信息，包含命名空间的基本属性、存储容量使用情况以及被引用关系。KV 命名空间是边缘函数存储键值对数据的容器，可在边缘函数中通过绑定方式进行读写操作。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Namespace: 命名空间名称。在同站点下具有唯一性。
+        :type Namespace: str
+        :param _Remark: 命名空间描述。创建时填写的备注信息，用于说明命名空间的用途或业务含义。最大支持 256 个字符。
+        :type Remark: str
+        :param _Capacity: KV 存储空间可用容量，单位为字节（Byte）。表示该命名空间可存储数据的最大容量上限，当前默认为 1 GB。
+        :type Capacity: int
+        :param _CapacityUsed: KV 存储空间已用容量，单位为字节（Byte）。表示该命名空间当前已使用的存储空间大小。
+        :type CapacityUsed: int
+        :param _References: 命名空间被引用实例的列表。展示当前命名空间被哪些边缘函数实例引用，以及引用的站点信息。若未被引用，则返回空数组。
+        :type References: list of ComponentReference
+        :param _CreatedOn: 命名空间的创建时间，遵循 ISO 8601 标准，格式为 YYYY-MM-DDThh:mm:ssZ（UTC 时间）。
+        :type CreatedOn: str
+        :param _ModifiedOn: 命名空间的最后修改时间，遵循 ISO 8601 标准，格式为 YYYY-MM-DDThh:mm:ssZ（UTC 时间）。
+        :type ModifiedOn: str
+        """
+        self._Namespace = None
+        self._Remark = None
+        self._Capacity = None
+        self._CapacityUsed = None
+        self._References = None
+        self._CreatedOn = None
+        self._ModifiedOn = None
+
+    @property
+    def Namespace(self):
+        r"""命名空间名称。在同站点下具有唯一性。
+        :rtype: str
+        """
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def Remark(self):
+        r"""命名空间描述。创建时填写的备注信息，用于说明命名空间的用途或业务含义。最大支持 256 个字符。
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def Capacity(self):
+        r"""KV 存储空间可用容量，单位为字节（Byte）。表示该命名空间可存储数据的最大容量上限，当前默认为 1 GB。
+        :rtype: int
+        """
+        return self._Capacity
+
+    @Capacity.setter
+    def Capacity(self, Capacity):
+        self._Capacity = Capacity
+
+    @property
+    def CapacityUsed(self):
+        r"""KV 存储空间已用容量，单位为字节（Byte）。表示该命名空间当前已使用的存储空间大小。
+        :rtype: int
+        """
+        return self._CapacityUsed
+
+    @CapacityUsed.setter
+    def CapacityUsed(self, CapacityUsed):
+        self._CapacityUsed = CapacityUsed
+
+    @property
+    def References(self):
+        r"""命名空间被引用实例的列表。展示当前命名空间被哪些边缘函数实例引用，以及引用的站点信息。若未被引用，则返回空数组。
+        :rtype: list of ComponentReference
+        """
+        return self._References
+
+    @References.setter
+    def References(self, References):
+        self._References = References
+
+    @property
+    def CreatedOn(self):
+        r"""命名空间的创建时间，遵循 ISO 8601 标准，格式为 YYYY-MM-DDThh:mm:ssZ（UTC 时间）。
+        :rtype: str
+        """
+        return self._CreatedOn
+
+    @CreatedOn.setter
+    def CreatedOn(self, CreatedOn):
+        self._CreatedOn = CreatedOn
+
+    @property
+    def ModifiedOn(self):
+        r"""命名空间的最后修改时间，遵循 ISO 8601 标准，格式为 YYYY-MM-DDThh:mm:ssZ（UTC 时间）。
+        :rtype: str
+        """
+        return self._ModifiedOn
+
+    @ModifiedOn.setter
+    def ModifiedOn(self, ModifiedOn):
+        self._ModifiedOn = ModifiedOn
+
+
+    def _deserialize(self, params):
+        self._Namespace = params.get("Namespace")
+        self._Remark = params.get("Remark")
+        self._Capacity = params.get("Capacity")
+        self._CapacityUsed = params.get("CapacityUsed")
+        if params.get("References") is not None:
+            self._References = []
+            for item in params.get("References"):
+                obj = ComponentReference()
+                obj._deserialize(item)
+                self._References.append(obj)
+        self._CreatedOn = params.get("CreatedOn")
+        self._ModifiedOn = params.get("ModifiedOn")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KVNamespaceParameters(AbstractModel):
+    r"""边缘函数绑定 KV 命名空间时所需的详细配置参数，用于指定绑定的命名空间来源。通过此配置，边缘函数可操作指定站点下的 KV 命名空间。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: KV 命名空间所属的站点 ID。指定要绑定的 KV 命名空间所在的站点，支持跨站点绑定。
+        :type ZoneId: str
+        :param _Namespace: KV 命名空间名称。指定要绑定的具体命名空间，可通过 DescribeKVNamespace 接口获取站点下的命名空间列表。
+        :type Namespace: str
+        """
+        self._ZoneId = None
+        self._Namespace = None
+
+    @property
+    def ZoneId(self):
+        r"""KV 命名空间所属的站点 ID。指定要绑定的 KV 命名空间所在的站点，支持跨站点绑定。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Namespace(self):
+        r"""KV 命名空间名称。指定要绑定的具体命名空间，可通过 DescribeKVNamespace 接口获取站点下的命名空间列表。
+        :rtype: str
+        """
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._Namespace = params.get("Namespace")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KeyValuePair(AbstractModel):
+    r"""KV 键值对数据，包含键名、键值和过期时间信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 键名。每个键名不能为空，长度为 1-512 个字符，允许的字符为字母、数字、中划线和下划线。
+        :type Key: str
+        :param _Value: 键值。入参时不能为空，最大支持 1 MB。出参时若键不存在，则返回空字符串。
+        :type Value: str
+        :param _Expiration: 过期时间，遵循 ISO 8601 标准，格式为 YYYY-MM-DDThh:mm:ssZ（UTC 时间）。出参时若为空字符串，表示该键值对永不过期。
+        :type Expiration: str
+        """
+        self._Key = None
+        self._Value = None
+        self._Expiration = None
+
+    @property
+    def Key(self):
+        r"""键名。每个键名不能为空，长度为 1-512 个字符，允许的字符为字母、数字、中划线和下划线。
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        r"""键值。入参时不能为空，最大支持 1 MB。出参时若键不存在，则返回空字符串。
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def Expiration(self):
+        r"""过期时间，遵循 ISO 8601 标准，格式为 YYYY-MM-DDThh:mm:ssZ（UTC 时间）。出参时若为空字符串，表示该键值对永不过期。
+        :rtype: str
+        """
+        return self._Expiration
+
+    @Expiration.setter
+    def Expiration(self, Expiration):
+        self._Expiration = Expiration
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        self._Expiration = params.get("Expiration")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -39775,6 +41330,224 @@ class ModifyDnsRecordsStatusRequest(AbstractModel):
 
 class ModifyDnsRecordsStatusResponse(AbstractModel):
     r"""ModifyDnsRecordsStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyEdgeKVNamespaceRequest(AbstractModel):
+    r"""ModifyEdgeKVNamespace请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _Namespace: 命名空间名称。
+        :type Namespace: str
+        :param _Remark: 命名空间描述。用于说明命名空间的用途或业务含义。最大支持 256 个字符。
+        :type Remark: str
+        """
+        self._ZoneId = None
+        self._Namespace = None
+        self._Remark = None
+
+    @property
+    def ZoneId(self):
+        r"""站点 ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Namespace(self):
+        r"""命名空间名称。
+        :rtype: str
+        """
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def Remark(self):
+        r"""命名空间描述。用于说明命名空间的用途或业务含义。最大支持 256 个字符。
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._Namespace = params.get("Namespace")
+        self._Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyEdgeKVNamespaceResponse(AbstractModel):
+    r"""ModifyEdgeKVNamespace返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyFunctionComponentBindingsRequest(AbstractModel):
+    r"""ModifyFunctionComponentBindings请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: 站点 ID。
+        :type ZoneId: str
+        :param _FunctionId: 函数 ID。
+        :type FunctionId: str
+        :param _Operation: 操作类型，取值有：
+<li>bind：绑定组件；</li>
+<li>bind-override：绑定组件。若绑定已存在则为重绑定行为，否则为绑定行为；</li>
+<li>unbind：解绑组件；</li>
+<li>rebind：重置绑定关系。清空所有现有绑定，并设置为传入的绑定列表。若传入空列表，则清空所有绑定。</li>
+
+        :type Operation: str
+        :param _FunctionComponentBindings: 操作的函数组件绑定列表。当 Operation 为 rebind 且传入空列表时，表示清空所有绑定。
+        :type FunctionComponentBindings: list of FunctionComponentBinding
+        """
+        self._ZoneId = None
+        self._FunctionId = None
+        self._Operation = None
+        self._FunctionComponentBindings = None
+
+    @property
+    def ZoneId(self):
+        r"""站点 ID。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def FunctionId(self):
+        r"""函数 ID。
+        :rtype: str
+        """
+        return self._FunctionId
+
+    @FunctionId.setter
+    def FunctionId(self, FunctionId):
+        self._FunctionId = FunctionId
+
+    @property
+    def Operation(self):
+        r"""操作类型，取值有：
+<li>bind：绑定组件；</li>
+<li>bind-override：绑定组件。若绑定已存在则为重绑定行为，否则为绑定行为；</li>
+<li>unbind：解绑组件；</li>
+<li>rebind：重置绑定关系。清空所有现有绑定，并设置为传入的绑定列表。若传入空列表，则清空所有绑定。</li>
+
+        :rtype: str
+        """
+        return self._Operation
+
+    @Operation.setter
+    def Operation(self, Operation):
+        self._Operation = Operation
+
+    @property
+    def FunctionComponentBindings(self):
+        r"""操作的函数组件绑定列表。当 Operation 为 rebind 且传入空列表时，表示清空所有绑定。
+        :rtype: list of FunctionComponentBinding
+        """
+        return self._FunctionComponentBindings
+
+    @FunctionComponentBindings.setter
+    def FunctionComponentBindings(self, FunctionComponentBindings):
+        self._FunctionComponentBindings = FunctionComponentBindings
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._FunctionId = params.get("FunctionId")
+        self._Operation = params.get("Operation")
+        if params.get("FunctionComponentBindings") is not None:
+            self._FunctionComponentBindings = []
+            for item in params.get("FunctionComponentBindings"):
+                obj = FunctionComponentBinding()
+                obj._deserialize(item)
+                self._FunctionComponentBindings.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyFunctionComponentBindingsResponse(AbstractModel):
+    r"""ModifyFunctionComponentBindings返回参数结构体
 
     """
 
@@ -54001,6 +55774,8 @@ class SecurityPolicy(AbstractModel):
         :type BotManagement: :class:`tencentcloud.teo.v20220901.models.BotManagement`
         :param _BotManagementLite: 基础 Bot 管理配置。
         :type BotManagementLite: :class:`tencentcloud.teo.v20220901.models.BotManagementLite`
+        :param _DefaultDenySecurityActionParameters: 默认拦截动作配置。
+        :type DefaultDenySecurityActionParameters: :class:`tencentcloud.teo.v20220901.models.DefaultDenySecurityActionParameters`
         """
         self._CustomRules = None
         self._ManagedRules = None
@@ -54009,6 +55784,7 @@ class SecurityPolicy(AbstractModel):
         self._ExceptionRules = None
         self._BotManagement = None
         self._BotManagementLite = None
+        self._DefaultDenySecurityActionParameters = None
 
     @property
     def CustomRules(self):
@@ -54087,6 +55863,17 @@ class SecurityPolicy(AbstractModel):
     def BotManagementLite(self, BotManagementLite):
         self._BotManagementLite = BotManagementLite
 
+    @property
+    def DefaultDenySecurityActionParameters(self):
+        r"""默认拦截动作配置。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DefaultDenySecurityActionParameters`
+        """
+        return self._DefaultDenySecurityActionParameters
+
+    @DefaultDenySecurityActionParameters.setter
+    def DefaultDenySecurityActionParameters(self, DefaultDenySecurityActionParameters):
+        self._DefaultDenySecurityActionParameters = DefaultDenySecurityActionParameters
+
 
     def _deserialize(self, params):
         if params.get("CustomRules") is not None:
@@ -54110,6 +55897,9 @@ class SecurityPolicy(AbstractModel):
         if params.get("BotManagementLite") is not None:
             self._BotManagementLite = BotManagementLite()
             self._BotManagementLite._deserialize(params.get("BotManagementLite"))
+        if params.get("DefaultDenySecurityActionParameters") is not None:
+            self._DefaultDenySecurityActionParameters = DefaultDenySecurityActionParameters()
+            self._DefaultDenySecurityActionParameters._deserialize(params.get("DefaultDenySecurityActionParameters"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

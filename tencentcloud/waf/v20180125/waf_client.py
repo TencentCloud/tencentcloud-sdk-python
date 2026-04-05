@@ -2349,29 +2349,6 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribeQClawContentSecCheck(self, request):
-        r"""大模型请求内容和响应内容审核接口
-
-        :param request: Request instance for DescribeQClawContentSecCheck.
-        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeQClawContentSecCheckRequest`
-        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeQClawContentSecCheckResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeQClawContentSecCheck", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeQClawContentSecCheckResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DescribeRateLimitsV2(self, request):
         r"""查询限流规则列表接口
 

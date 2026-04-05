@@ -14843,14 +14843,14 @@ class DeleteDataEngineRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DataEngineNames: 删除虚拟集群的名称数组
+        :param _DataEngineNames: <p>删除虚拟集群的名称数组</p>
         :type DataEngineNames: list of str
         """
         self._DataEngineNames = None
 
     @property
     def DataEngineNames(self):
-        r"""删除虚拟集群的名称数组
+        r"""<p>删除虚拟集群的名称数组</p>
         :rtype: list of str
         """
         return self._DataEngineNames

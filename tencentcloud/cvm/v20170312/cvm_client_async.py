@@ -341,6 +341,24 @@ class CvmClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteInstancesDisasterRecoverGroups(
+            self,
+            request: models.DeleteInstancesDisasterRecoverGroupsRequest,
+            opts: Dict = None,
+    ) -> models.DeleteInstancesDisasterRecoverGroupsResponse:
+        """
+        本接口 (DeleteInstancesDisasterRecoverGroups) 用于将云服务器实例从指定的置放群组中批量移除。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteInstancesDisasterRecoverGroups"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteInstancesDisasterRecoverGroupsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteKeyPairs(
             self,
             request: models.DeleteKeyPairsRequest,

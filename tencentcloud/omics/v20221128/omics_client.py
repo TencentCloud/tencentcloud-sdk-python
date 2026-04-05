@@ -164,6 +164,52 @@ class OmicsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeHPCClusters(self, request):
+        r"""查询HPC集群列表。
+
+        :param request: Request instance for DescribeHPCClusters.
+        :type request: :class:`tencentcloud.omics.v20221128.models.DescribeHPCClustersRequest`
+        :rtype: :class:`tencentcloud.omics.v20221128.models.DescribeHPCClustersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeHPCClusters", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeHPCClustersResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeHPCNodes(self, request):
+        r"""查询HPC节点列表。
+
+        :param request: Request instance for DescribeHPCNodes.
+        :type request: :class:`tencentcloud.omics.v20221128.models.DescribeHPCNodesRequest`
+        :rtype: :class:`tencentcloud.omics.v20221128.models.DescribeHPCNodesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeHPCNodes", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeHPCNodesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeRunGroups(self, request):
         r"""查询任务批次列表。
 
@@ -385,6 +431,29 @@ class OmicsClient(AbstractClient):
             body = self.call("ModifyVolume", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyVolumeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def RebootHPCNodes(self, request):
+        r"""重启HPC节点
+
+        :param request: Request instance for RebootHPCNodes.
+        :type request: :class:`tencentcloud.omics.v20221128.models.RebootHPCNodesRequest`
+        :rtype: :class:`tencentcloud.omics.v20221128.models.RebootHPCNodesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RebootHPCNodes", params, headers=headers)
+            response = json.loads(body)
+            model = models.RebootHPCNodesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

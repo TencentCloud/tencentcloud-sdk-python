@@ -29557,45 +29557,29 @@ class NodeRunBase(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NodeRunId: 节点运行的ID
+        :param _NodeRunId: <p>节点运行的ID</p>
         :type NodeRunId: str
-        :param _NodeId: 节点ID
+        :param _NodeId: <p>节点ID</p>
         :type NodeId: str
-        :param _WorkflowRunId: 工作流运行实例的ID
+        :param _WorkflowRunId: <p>工作流运行实例的ID</p>
         :type WorkflowRunId: str
-        :param _NodeName: 节点名称
+        :param _NodeName: <p>节点名称</p>
         :type NodeName: str
-        :param _NodeType: 节点类型。
-1： 开始节点
-2：参数提取节点
-3：大模型节点
-4：知识问答节点
-5：知识检索节点
-6：标签提取节点
-7：代码执行节点
-8：工具节点
-9：逻辑判断节点
-10：回复节点
-11：选项卡节点
-12：循环节点
-13：意图识别节点
-14：工作流节点
-15：插件节点
-16：结束节点
-17: 变量聚合节点数据
-18: 批处理节点
-19: 消息队列节点
+        :param _NodeType: <p>节点类型。<br>1： 开始节点<br>2：参数提取节点<br>3：大模型节点<br>4：知识问答节点<br>5：知识检索节点<br>6：标签提取节点<br>7：代码执行节点<br>8：工具节点<br>9：逻辑判断节点<br>10：回复节点<br>11：选项卡节点<br>12：循环节点<br>13：意图识别节点<br>14：工作流节点<br>15：插件节点<br>16：结束节点<br>17: 变量聚合节点数据<br>18: 批处理节点<br>19: 消息队列节点</p>
         :type NodeType: int
-        :param _State: 运行状态。0: 初始状态；1: 运行中；2: 运行成功； 3: 运行失败； 4: 已取消
+        :param _State: <p>运行状态。0: 初始状态；1: 运行中；2: 运行成功； 3: 运行失败； 4: 已取消</p>
         :type State: int
-        :param _FailCode: 错误码
+        :param _FailCode: <p>错误码</p>
         :type FailCode: str
-        :param _FailMessage: 错误信息
+        :param _FailMessage: <p>错误信息</p>
         :type FailMessage: str
-        :param _CostMilliseconds: 消耗时间（毫秒）
+        :param _CostMilliseconds: <p>消耗时间（毫秒）</p>
         :type CostMilliseconds: int
-        :param _TotalTokens: 消耗的token总数
+        :param _TotalTokens: <p>消耗的token总数</p>
         :type TotalTokens: int
+        :param _BranchIndexList: <p>分支下标列表</p><p>单位：无</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BranchIndexList: list of int
         """
         self._NodeRunId = None
         self._NodeId = None
@@ -29607,10 +29591,11 @@ class NodeRunBase(AbstractModel):
         self._FailMessage = None
         self._CostMilliseconds = None
         self._TotalTokens = None
+        self._BranchIndexList = None
 
     @property
     def NodeRunId(self):
-        r"""节点运行的ID
+        r"""<p>节点运行的ID</p>
         :rtype: str
         """
         return self._NodeRunId
@@ -29621,7 +29606,7 @@ class NodeRunBase(AbstractModel):
 
     @property
     def NodeId(self):
-        r"""节点ID
+        r"""<p>节点ID</p>
         :rtype: str
         """
         return self._NodeId
@@ -29632,7 +29617,7 @@ class NodeRunBase(AbstractModel):
 
     @property
     def WorkflowRunId(self):
-        r"""工作流运行实例的ID
+        r"""<p>工作流运行实例的ID</p>
         :rtype: str
         """
         return self._WorkflowRunId
@@ -29643,7 +29628,7 @@ class NodeRunBase(AbstractModel):
 
     @property
     def NodeName(self):
-        r"""节点名称
+        r"""<p>节点名称</p>
         :rtype: str
         """
         return self._NodeName
@@ -29654,26 +29639,7 @@ class NodeRunBase(AbstractModel):
 
     @property
     def NodeType(self):
-        r"""节点类型。
-1： 开始节点
-2：参数提取节点
-3：大模型节点
-4：知识问答节点
-5：知识检索节点
-6：标签提取节点
-7：代码执行节点
-8：工具节点
-9：逻辑判断节点
-10：回复节点
-11：选项卡节点
-12：循环节点
-13：意图识别节点
-14：工作流节点
-15：插件节点
-16：结束节点
-17: 变量聚合节点数据
-18: 批处理节点
-19: 消息队列节点
+        r"""<p>节点类型。<br>1： 开始节点<br>2：参数提取节点<br>3：大模型节点<br>4：知识问答节点<br>5：知识检索节点<br>6：标签提取节点<br>7：代码执行节点<br>8：工具节点<br>9：逻辑判断节点<br>10：回复节点<br>11：选项卡节点<br>12：循环节点<br>13：意图识别节点<br>14：工作流节点<br>15：插件节点<br>16：结束节点<br>17: 变量聚合节点数据<br>18: 批处理节点<br>19: 消息队列节点</p>
         :rtype: int
         """
         return self._NodeType
@@ -29684,7 +29650,7 @@ class NodeRunBase(AbstractModel):
 
     @property
     def State(self):
-        r"""运行状态。0: 初始状态；1: 运行中；2: 运行成功； 3: 运行失败； 4: 已取消
+        r"""<p>运行状态。0: 初始状态；1: 运行中；2: 运行成功； 3: 运行失败； 4: 已取消</p>
         :rtype: int
         """
         return self._State
@@ -29695,7 +29661,7 @@ class NodeRunBase(AbstractModel):
 
     @property
     def FailCode(self):
-        r"""错误码
+        r"""<p>错误码</p>
         :rtype: str
         """
         return self._FailCode
@@ -29706,7 +29672,7 @@ class NodeRunBase(AbstractModel):
 
     @property
     def FailMessage(self):
-        r"""错误信息
+        r"""<p>错误信息</p>
         :rtype: str
         """
         return self._FailMessage
@@ -29717,7 +29683,7 @@ class NodeRunBase(AbstractModel):
 
     @property
     def CostMilliseconds(self):
-        r"""消耗时间（毫秒）
+        r"""<p>消耗时间（毫秒）</p>
         :rtype: int
         """
         return self._CostMilliseconds
@@ -29728,7 +29694,7 @@ class NodeRunBase(AbstractModel):
 
     @property
     def TotalTokens(self):
-        r"""消耗的token总数
+        r"""<p>消耗的token总数</p>
         :rtype: int
         """
         return self._TotalTokens
@@ -29736,6 +29702,18 @@ class NodeRunBase(AbstractModel):
     @TotalTokens.setter
     def TotalTokens(self, TotalTokens):
         self._TotalTokens = TotalTokens
+
+    @property
+    def BranchIndexList(self):
+        r"""<p>分支下标列表</p><p>单位：无</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int
+        """
+        return self._BranchIndexList
+
+    @BranchIndexList.setter
+    def BranchIndexList(self, BranchIndexList):
+        self._BranchIndexList = BranchIndexList
 
 
     def _deserialize(self, params):
@@ -29749,6 +29727,7 @@ class NodeRunBase(AbstractModel):
         self._FailMessage = params.get("FailMessage")
         self._CostMilliseconds = params.get("CostMilliseconds")
         self._TotalTokens = params.get("TotalTokens")
+        self._BranchIndexList = params.get("BranchIndexList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -38349,37 +38328,37 @@ class WorkflowRunNodeInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NodeId: 节点ID
+        :param _NodeId: <p>节点ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type NodeId: str
-        :param _NodeType: 节点类型
+        :param _NodeType: <p>节点类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type NodeType: int
-        :param _NodeName: 节点名称
+        :param _NodeName: <p>节点名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type NodeName: str
-        :param _Status: 状态
+        :param _Status: <p>状态</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
-        :param _Input: 输入
+        :param _Input: <p>输入</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Input: str
-        :param _Output: 输出
+        :param _Output: <p>输出</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Output: str
-        :param _TaskOutput: 任务输出
+        :param _TaskOutput: <p>任务输出</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskOutput: str
-        :param _FailMessage: 错误信息
+        :param _FailMessage: <p>错误信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FailMessage: str
-        :param _CostMilliSeconds: 花费时长
+        :param _CostMilliSeconds: <p>花费时长，单位为毫秒</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CostMilliSeconds: int
-        :param _StatisticInfos: 大模型输出信息
+        :param _StatisticInfos: <p>大模型输出信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type StatisticInfos: list of StatisticInfo
-        :param _FailCode: 错误代码
+        :param _FailCode: <p>错误代码</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FailCode: str
         """
@@ -38397,7 +38376,7 @@ class WorkflowRunNodeInfo(AbstractModel):
 
     @property
     def NodeId(self):
-        r"""节点ID
+        r"""<p>节点ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -38409,7 +38388,7 @@ class WorkflowRunNodeInfo(AbstractModel):
 
     @property
     def NodeType(self):
-        r"""节点类型
+        r"""<p>节点类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -38421,7 +38400,7 @@ class WorkflowRunNodeInfo(AbstractModel):
 
     @property
     def NodeName(self):
-        r"""节点名称
+        r"""<p>节点名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -38433,7 +38412,7 @@ class WorkflowRunNodeInfo(AbstractModel):
 
     @property
     def Status(self):
-        r"""状态
+        r"""<p>状态</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -38445,7 +38424,7 @@ class WorkflowRunNodeInfo(AbstractModel):
 
     @property
     def Input(self):
-        r"""输入
+        r"""<p>输入</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -38457,7 +38436,7 @@ class WorkflowRunNodeInfo(AbstractModel):
 
     @property
     def Output(self):
-        r"""输出
+        r"""<p>输出</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -38469,7 +38448,7 @@ class WorkflowRunNodeInfo(AbstractModel):
 
     @property
     def TaskOutput(self):
-        r"""任务输出
+        r"""<p>任务输出</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -38481,7 +38460,7 @@ class WorkflowRunNodeInfo(AbstractModel):
 
     @property
     def FailMessage(self):
-        r"""错误信息
+        r"""<p>错误信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -38493,7 +38472,7 @@ class WorkflowRunNodeInfo(AbstractModel):
 
     @property
     def CostMilliSeconds(self):
-        r"""花费时长
+        r"""<p>花费时长，单位为毫秒</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -38505,7 +38484,7 @@ class WorkflowRunNodeInfo(AbstractModel):
 
     @property
     def StatisticInfos(self):
-        r"""大模型输出信息
+        r"""<p>大模型输出信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of StatisticInfo
         """
@@ -38517,7 +38496,7 @@ class WorkflowRunNodeInfo(AbstractModel):
 
     @property
     def FailCode(self):
-        r"""错误代码
+        r"""<p>错误代码</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """

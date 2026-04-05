@@ -37089,6 +37089,137 @@ class DescribeVideoSearchTaskDetailResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeVoicesRequest(AbstractModel):
+    r"""DescribeVoices请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VoiceType: <p>音色类别</p><p>枚举值：</p><ul><li>system： 系统音色</li></ul>
+        :type VoiceType: str
+        :param _ExtParam: <p>扩展参数，json字符串</p><p>其他筛选条件voiceName String 音色名，模糊匹配labels Array of String 标签，匹配包含这些标签的音色</p>
+        :type ExtParam: str
+        """
+        self._VoiceType = None
+        self._ExtParam = None
+
+    @property
+    def VoiceType(self):
+        r"""<p>音色类别</p><p>枚举值：</p><ul><li>system： 系统音色</li></ul>
+        :rtype: str
+        """
+        return self._VoiceType
+
+    @VoiceType.setter
+    def VoiceType(self, VoiceType):
+        self._VoiceType = VoiceType
+
+    @property
+    def ExtParam(self):
+        r"""<p>扩展参数，json字符串</p><p>其他筛选条件voiceName String 音色名，模糊匹配labels Array of String 标签，匹配包含这些标签的音色</p>
+        :rtype: str
+        """
+        return self._ExtParam
+
+    @ExtParam.setter
+    def ExtParam(self, ExtParam):
+        self._ExtParam = ExtParam
+
+
+    def _deserialize(self, params):
+        self._VoiceType = params.get("VoiceType")
+        self._ExtParam = params.get("ExtParam")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVoicesResponse(AbstractModel):
+    r"""DescribeVoices返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorCode: <p>错误码，成功时返回0</p>
+        :type ErrorCode: int
+        :param _Msg: <p>错误信息，成功时返回success</p>
+        :type Msg: str
+        :param _Voices: <p>可用音色列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Voices: list of VoiceInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ErrorCode = None
+        self._Msg = None
+        self._Voices = None
+        self._RequestId = None
+
+    @property
+    def ErrorCode(self):
+        r"""<p>错误码，成功时返回0</p>
+        :rtype: int
+        """
+        return self._ErrorCode
+
+    @ErrorCode.setter
+    def ErrorCode(self, ErrorCode):
+        self._ErrorCode = ErrorCode
+
+    @property
+    def Msg(self):
+        r"""<p>错误信息，成功时返回success</p>
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def Voices(self):
+        r"""<p>可用音色列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of VoiceInfo
+        """
+        return self._Voices
+
+    @Voices.setter
+    def Voices(self, Voices):
+        self._Voices = Voices
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ErrorCode = params.get("ErrorCode")
+        self._Msg = params.get("Msg")
+        if params.get("Voices") is not None:
+            self._Voices = []
+            for item in params.get("Voices"):
+                obj = VoiceInfo()
+                obj._deserialize(item)
+                self._Voices.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeWatermarkTemplatesRequest(AbstractModel):
     r"""DescribeWatermarkTemplates请求参数结构体
 
@@ -79971,6 +80102,162 @@ low_compress：画质优先：优先保证画质，压缩出来的文件体积�
         self._ScenarioBased = params.get("ScenarioBased")
         self._SceneType = params.get("SceneType")
         self._CompressType = params.get("CompressType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VoiceInfo(AbstractModel):
+    r"""音色信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VoiceId: <p>音色ID</p>
+        :type VoiceId: str
+        :param _Name: <p>音色名</p>
+        :type Name: str
+        :param _Description: <p>音色描述信息</p>
+        :type Description: str
+        :param _Category: <p>音色类别</p><p>枚举值：</p><ul><li>system： 系统音色</li></ul>
+        :type Category: str
+        :param _Gender: <p>性别</p><p>枚举值：</p><ul><li>male： 男</li><li>famale： 女</li></ul>
+        :type Gender: str
+        :param _Languages: <p>支持语种列表</p><p>如：en</p>
+        :type Languages: list of str
+        :param _AudioUrl: <p>试听音频URL</p>
+        :type AudioUrl: str
+        :param _Labels: <p>标签列表</p><p>如：温柔</p>
+        :type Labels: list of str
+        :param _Scenes: <p>推荐场景</p><p>如：教育</p>
+        :type Scenes: list of str
+        """
+        self._VoiceId = None
+        self._Name = None
+        self._Description = None
+        self._Category = None
+        self._Gender = None
+        self._Languages = None
+        self._AudioUrl = None
+        self._Labels = None
+        self._Scenes = None
+
+    @property
+    def VoiceId(self):
+        r"""<p>音色ID</p>
+        :rtype: str
+        """
+        return self._VoiceId
+
+    @VoiceId.setter
+    def VoiceId(self, VoiceId):
+        self._VoiceId = VoiceId
+
+    @property
+    def Name(self):
+        r"""<p>音色名</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>音色描述信息</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Category(self):
+        r"""<p>音色类别</p><p>枚举值：</p><ul><li>system： 系统音色</li></ul>
+        :rtype: str
+        """
+        return self._Category
+
+    @Category.setter
+    def Category(self, Category):
+        self._Category = Category
+
+    @property
+    def Gender(self):
+        r"""<p>性别</p><p>枚举值：</p><ul><li>male： 男</li><li>famale： 女</li></ul>
+        :rtype: str
+        """
+        return self._Gender
+
+    @Gender.setter
+    def Gender(self, Gender):
+        self._Gender = Gender
+
+    @property
+    def Languages(self):
+        r"""<p>支持语种列表</p><p>如：en</p>
+        :rtype: list of str
+        """
+        return self._Languages
+
+    @Languages.setter
+    def Languages(self, Languages):
+        self._Languages = Languages
+
+    @property
+    def AudioUrl(self):
+        r"""<p>试听音频URL</p>
+        :rtype: str
+        """
+        return self._AudioUrl
+
+    @AudioUrl.setter
+    def AudioUrl(self, AudioUrl):
+        self._AudioUrl = AudioUrl
+
+    @property
+    def Labels(self):
+        r"""<p>标签列表</p><p>如：温柔</p>
+        :rtype: list of str
+        """
+        return self._Labels
+
+    @Labels.setter
+    def Labels(self, Labels):
+        self._Labels = Labels
+
+    @property
+    def Scenes(self):
+        r"""<p>推荐场景</p><p>如：教育</p>
+        :rtype: list of str
+        """
+        return self._Scenes
+
+    @Scenes.setter
+    def Scenes(self, Scenes):
+        self._Scenes = Scenes
+
+
+    def _deserialize(self, params):
+        self._VoiceId = params.get("VoiceId")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._Category = params.get("Category")
+        self._Gender = params.get("Gender")
+        self._Languages = params.get("Languages")
+        self._AudioUrl = params.get("AudioUrl")
+        self._Labels = params.get("Labels")
+        self._Scenes = params.get("Scenes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

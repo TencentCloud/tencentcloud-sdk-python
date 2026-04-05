@@ -1969,6 +1969,24 @@ class MpsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeVoices(
+            self,
+            request: models.DescribeVoicesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeVoicesResponse:
+        """
+        同步接口。查询可用音色，支持通过类型、标签、语言等条件检索音色
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeVoices"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeVoicesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeWatermarkTemplates(
             self,
             request: models.DescribeWatermarkTemplatesRequest,

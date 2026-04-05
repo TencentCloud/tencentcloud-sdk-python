@@ -2500,6 +2500,29 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeVoices(self, request):
+        r"""同步接口。查询可用音色，支持通过类型、标签、语言等条件检索音色
+
+        :param request: Request instance for DescribeVoices.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DescribeVoicesRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeVoicesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVoices", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeVoicesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeWatermarkTemplates(self, request):
         r"""查询用户自定义水印模板，支持根据条件，分页查询。
 

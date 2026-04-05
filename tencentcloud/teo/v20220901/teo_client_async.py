@@ -347,6 +347,24 @@ class TeoClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateEdgeKVNamespace(
+            self,
+            request: models.CreateEdgeKVNamespaceRequest,
+            opts: Dict = None,
+    ) -> models.CreateEdgeKVNamespaceResponse:
+        """
+        本接口用于在指定站点下创建 KV 命名空间。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateEdgeKVNamespace"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateEdgeKVNamespaceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateFunction(
             self,
             request: models.CreateFunctionRequest,
@@ -935,6 +953,24 @@ class TeoClient(AbstractClient):
         kwargs["action"] = "DeleteDnsRecords"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteDnsRecordsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteEdgeKVNamespace(
+            self,
+            request: models.DeleteEdgeKVNamespaceRequest,
+            opts: Dict = None,
+    ) -> models.DeleteEdgeKVNamespaceResponse:
+        """
+        本接口用于删除指定的 KV 命名空间。删除后命名空间内的所有键值对数据将被清空且不可恢复。若命名空间正被边缘函数引用，需先解除绑定关系后方可删除。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteEdgeKVNamespace"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteEdgeKVNamespaceResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1626,6 +1662,24 @@ class TeoClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeEdgeKVNamespaces(
+            self,
+            request: models.DescribeEdgeKVNamespacesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeEdgeKVNamespacesResponse:
+        """
+        查询指定站点下的 KV 命名空间列表，支持分页、排序和条件过滤。返回命名空间的基本信息、存储容量使用情况以及被引用关系。若查询不到数据，则返回空数组。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeEdgeKVNamespaces"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeEdgeKVNamespacesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeEnvironments(
             self,
             request: models.DescribeEnvironmentsRequest,
@@ -1639,6 +1693,24 @@ class TeoClient(AbstractClient):
         kwargs["action"] = "DescribeEnvironments"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeEnvironmentsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeFunctionComponentBindings(
+            self,
+            request: models.DescribeFunctionComponentBindingsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeFunctionComponentBindingsResponse:
+        """
+        本接口用于查询指定边缘函数的组件绑定列表，支持分页和条件过滤，返回绑定的组件类型、变量名及配置参数等详细信息。当前支持的绑定组件类型为 KV 命名空间（kv_namespace）。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeFunctionComponentBindings"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeFunctionComponentBindingsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2712,6 +2784,78 @@ class TeoClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def EdgeKVDelete(
+            self,
+            request: models.EdgeKVDeleteRequest,
+            opts: Dict = None,
+    ) -> models.EdgeKVDeleteResponse:
+        """
+        本接口用于删除指定命名空间中的一个或多个键值对数据，支持批量删除。删除后数据不可恢复。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "EdgeKVDelete"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.EdgeKVDeleteResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def EdgeKVGet(
+            self,
+            request: models.EdgeKVGetRequest,
+            opts: Dict = None,
+    ) -> models.EdgeKVGetResponse:
+        """
+        本接口用于从指定命名空间中批量读取键的值，支持一次查询最多 20 个键。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "EdgeKVGet"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.EdgeKVGetResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def EdgeKVList(
+            self,
+            request: models.EdgeKVListRequest,
+            opts: Dict = None,
+    ) -> models.EdgeKVListResponse:
+        """
+        本接口用于列出指定命名空间下的所有键名，支持前缀过滤。通过 Cursor 实现游标遍历，返回下一个游标用于继续查询。适用于遍历命名空间中的所有键。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "EdgeKVList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.EdgeKVListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def EdgeKVPut(
+            self,
+            request: models.EdgeKVPutRequest,
+            opts: Dict = None,
+    ) -> models.EdgeKVPutResponse:
+        """
+        本接口用于向指定命名空间写入键值对数据，支持设置过期时间。若键已存在则覆盖原有值，若不存在则创建新键值对。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "EdgeKVPut"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.EdgeKVPutResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def EnableOriginACL(
             self,
             request: models.EnableOriginACLRequest,
@@ -3065,6 +3209,24 @@ class TeoClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyEdgeKVNamespace(
+            self,
+            request: models.ModifyEdgeKVNamespaceRequest,
+            opts: Dict = None,
+    ) -> models.ModifyEdgeKVNamespaceResponse:
+        """
+        本接口用于修改指定 KV 命名空间的属性信息，当前支持修改命名空间描述。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyEdgeKVNamespace"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyEdgeKVNamespaceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyFunction(
             self,
             request: models.ModifyFunctionRequest,
@@ -3078,6 +3240,24 @@ class TeoClient(AbstractClient):
         kwargs["action"] = "ModifyFunction"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyFunctionResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyFunctionComponentBindings(
+            self,
+            request: models.ModifyFunctionComponentBindingsRequest,
+            opts: Dict = None,
+    ) -> models.ModifyFunctionComponentBindingsResponse:
+        """
+        修改边缘函数与组件的绑定关系，支持绑定（bind）、覆盖绑定（bind-override）、解绑（unbind）和重置绑定（rebind）四种操作模式。通过指定操作类型和组件列表，可实现对函数组件绑定关系的管理。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyFunctionComponentBindings"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyFunctionComponentBindingsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

@@ -38,6 +38,9 @@ FAILEDOPERATION_BYOLIMAGESHAREFAILED = 'FailedOperation.BYOLImageShareFailed'
 # 未找到指定的容灾组
 FAILEDOPERATION_DISASTERRECOVERGROUPNOTFOUND = 'FailedOperation.DisasterRecoverGroupNotFound'
 
+# 实例置放群组信息不匹配，操作失败。
+FAILEDOPERATION_DISASTERRECOVERGROUPNOTMATCH = 'FailedOperation.DisasterRecoverGroupNotMatch'
+
 # 获取实例的自动化助手状态失败
 FAILEDOPERATION_GETINSTANCETATAGENTSTATUSFAILED = 'FailedOperation.GetInstanceTATAgentStatusFailed'
 
@@ -871,6 +874,9 @@ RESOURCEINSUFFICIENT_ZONESOLDOUTFORSPECIFIEDINSTANCE = 'ResourceInsufficient.Zon
 
 # 高性能计算集群不存在。
 RESOURCENOTFOUND_HPCCLUSTER = 'ResourceNotFound.HpcCluster'
+
+# 实例ID未找到。
+RESOURCENOTFOUND_INVALIDINSTANCEIDNOTFOUND = 'ResourceNotFound.InvalidInstanceIdNotFound'
 
 # 指定的置放群组不存在。
 RESOURCENOTFOUND_INVALIDPLACEMENTSET = 'ResourceNotFound.InvalidPlacementSet'

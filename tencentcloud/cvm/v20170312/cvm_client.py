@@ -422,6 +422,29 @@ class CvmClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteInstancesDisasterRecoverGroups(self, request):
+        r"""本接口 (DeleteInstancesDisasterRecoverGroups) 用于将云服务器实例从指定的置放群组中批量移除。
+
+        :param request: Request instance for DeleteInstancesDisasterRecoverGroups.
+        :type request: :class:`tencentcloud.cvm.v20170312.models.DeleteInstancesDisasterRecoverGroupsRequest`
+        :rtype: :class:`tencentcloud.cvm.v20170312.models.DeleteInstancesDisasterRecoverGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteInstancesDisasterRecoverGroups", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteInstancesDisasterRecoverGroupsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteKeyPairs(self, request):
         r"""本接口 (DeleteKeyPairs) 用于删除已在腾讯云托管的密钥对。
 

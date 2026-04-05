@@ -1843,24 +1843,6 @@ class WafClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def DescribeQClawContentSecCheck(
-            self,
-            request: models.DescribeQClawContentSecCheckRequest,
-            opts: Dict = None,
-    ) -> models.DescribeQClawContentSecCheckResponse:
-        """
-        大模型请求内容和响应内容审核接口
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeQClawContentSecCheck"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeQClawContentSecCheckResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def DescribeRateLimitsV2(
             self,
             request: models.DescribeRateLimitsV2Request,

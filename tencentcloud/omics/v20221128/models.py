@@ -1326,6 +1326,329 @@ class DescribeEnvironmentsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeHPCClustersRequest(AbstractModel):
+    r"""DescribeHPCClusters请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Limit: 返回数量，默认为20，最大值为100。
+        :type Limit: int
+        :param _Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param _Filters: 过滤器，支持过滤字段：
+- ClusterId：集群ID
+- Name：名称
+- Status：状态
+- ConfirmDeadlineLt: 交付确认截止日期小于给定值的集群，如2026-01-13T16:00:00+08:00
+        :type Filters: list of Filter
+        """
+        self._Limit = None
+        self._Offset = None
+        self._Filters = None
+
+    @property
+    def Limit(self):
+        r"""返回数量，默认为20，最大值为100。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""偏移量，默认为0。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Filters(self):
+        r"""过滤器，支持过滤字段：
+- ClusterId：集群ID
+- Name：名称
+- Status：状态
+- ConfirmDeadlineLt: 交付确认截止日期小于给定值的集群，如2026-01-13T16:00:00+08:00
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeHPCClustersResponse(AbstractModel):
+    r"""DescribeHPCClusters返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Clusters: HPC集群。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Clusters: list of HPCCluster
+        :param _TotalCount: 符合条件的数量。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Clusters = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Clusters(self):
+        r"""HPC集群。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of HPCCluster
+        """
+        return self._Clusters
+
+    @Clusters.setter
+    def Clusters(self, Clusters):
+        self._Clusters = Clusters
+
+    @property
+    def TotalCount(self):
+        r"""符合条件的数量。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Clusters") is not None:
+            self._Clusters = []
+            for item in params.get("Clusters"):
+                obj = HPCCluster()
+                obj._deserialize(item)
+                self._Clusters.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeHPCNodesRequest(AbstractModel):
+    r"""DescribeHPCNodes请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群ID。
+        :type ClusterId: str
+        :param _Limit: 返回数量，默认为20，最大值为100。
+        :type Limit: int
+        :param _Offset: 偏移量，默认为0。
+        :type Offset: int
+        :param _Filters: 过滤器，支持过滤字段：
+- ClusterId：集群ID
+- QueueId：队列ID
+- NodeId：节点ID
+- Name：名称
+- Role：角色
+- Type：类型
+- Zone：可用区
+- InstanceState：实例状态
+- InstanceType：实例机型
+- InstanceFamily：实例机型族
+- InstanceChargeType：实例计费类型
+- Tag：标签，Value格式为tagKey:tagValue
+        :type Filters: list of Filter
+        """
+        self._ClusterId = None
+        self._Limit = None
+        self._Offset = None
+        self._Filters = None
+
+    @property
+    def ClusterId(self):
+        r"""集群ID。
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def Limit(self):
+        r"""返回数量，默认为20，最大值为100。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""偏移量，默认为0。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Filters(self):
+        r"""过滤器，支持过滤字段：
+- ClusterId：集群ID
+- QueueId：队列ID
+- NodeId：节点ID
+- Name：名称
+- Role：角色
+- Type：类型
+- Zone：可用区
+- InstanceState：实例状态
+- InstanceType：实例机型
+- InstanceFamily：实例机型族
+- InstanceChargeType：实例计费类型
+- Tag：标签，Value格式为tagKey:tagValue
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeHPCNodesResponse(AbstractModel):
+    r"""DescribeHPCNodes返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Nodes: HPC节点。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Nodes: list of HPCNode
+        :param _TotalCount: 符合条件的数量。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Nodes = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Nodes(self):
+        r"""HPC节点。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of HPCNode
+        """
+        return self._Nodes
+
+    @Nodes.setter
+    def Nodes(self, Nodes):
+        self._Nodes = Nodes
+
+    @property
+    def TotalCount(self):
+        r"""符合条件的数量。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Nodes") is not None:
+            self._Nodes = []
+            for item in params.get("Nodes"):
+                obj = HPCNode()
+                obj._deserialize(item)
+                self._Nodes.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeRunGroupsRequest(AbstractModel):
     r"""DescribeRunGroups请求参数结构体
 
@@ -3159,6 +3482,885 @@ class GitInfo(AbstractModel):
         
 
 
+class HPCCluster(AbstractModel):
+    r"""HPC集群
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群ID
+        :type ClusterId: str
+        :param _Name: 名称
+        :type Name: str
+        :param _Description: 描述
+        :type Description: str
+        :param _Status: 状态
+        :type Status: str
+        :param _Scheduler: 调度器
+        :type Scheduler: str
+        :param _VPCId: VPC ID
+        :type VPCId: str
+        :param _NodeCount: 节点数量
+        :type NodeCount: int
+        :param _Tags: 标签
+        :type Tags: list of Tag
+        :param _CreateTime: 创建时间
+        :type CreateTime: str
+        :param _Type: 集群类型
+        :type Type: str
+        :param _OsName: 系统名称
+        :type OsName: str
+        :param _SchedulerVersion: 调度器版本
+        :type SchedulerVersion: str
+        :param _VPCCIDRBlock: 集群VPC CIDR
+        :type VPCCIDRBlock: str
+        :param _ConfirmDeadline: 集群确认交付截止日期
+        :type ConfirmDeadline: str
+        """
+        self._ClusterId = None
+        self._Name = None
+        self._Description = None
+        self._Status = None
+        self._Scheduler = None
+        self._VPCId = None
+        self._NodeCount = None
+        self._Tags = None
+        self._CreateTime = None
+        self._Type = None
+        self._OsName = None
+        self._SchedulerVersion = None
+        self._VPCCIDRBlock = None
+        self._ConfirmDeadline = None
+
+    @property
+    def ClusterId(self):
+        r"""集群ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def Name(self):
+        r"""名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""描述
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Status(self):
+        r"""状态
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Scheduler(self):
+        r"""调度器
+        :rtype: str
+        """
+        return self._Scheduler
+
+    @Scheduler.setter
+    def Scheduler(self, Scheduler):
+        self._Scheduler = Scheduler
+
+    @property
+    def VPCId(self):
+        r"""VPC ID
+        :rtype: str
+        """
+        return self._VPCId
+
+    @VPCId.setter
+    def VPCId(self, VPCId):
+        self._VPCId = VPCId
+
+    @property
+    def NodeCount(self):
+        r"""节点数量
+        :rtype: int
+        """
+        return self._NodeCount
+
+    @NodeCount.setter
+    def NodeCount(self, NodeCount):
+        self._NodeCount = NodeCount
+
+    @property
+    def Tags(self):
+        r"""标签
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def CreateTime(self):
+        r"""创建时间
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def Type(self):
+        r"""集群类型
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def OsName(self):
+        r"""系统名称
+        :rtype: str
+        """
+        return self._OsName
+
+    @OsName.setter
+    def OsName(self, OsName):
+        self._OsName = OsName
+
+    @property
+    def SchedulerVersion(self):
+        r"""调度器版本
+        :rtype: str
+        """
+        return self._SchedulerVersion
+
+    @SchedulerVersion.setter
+    def SchedulerVersion(self, SchedulerVersion):
+        self._SchedulerVersion = SchedulerVersion
+
+    @property
+    def VPCCIDRBlock(self):
+        r"""集群VPC CIDR
+        :rtype: str
+        """
+        return self._VPCCIDRBlock
+
+    @VPCCIDRBlock.setter
+    def VPCCIDRBlock(self, VPCCIDRBlock):
+        self._VPCCIDRBlock = VPCCIDRBlock
+
+    @property
+    def ConfirmDeadline(self):
+        r"""集群确认交付截止日期
+        :rtype: str
+        """
+        return self._ConfirmDeadline
+
+    @ConfirmDeadline.setter
+    def ConfirmDeadline(self, ConfirmDeadline):
+        self._ConfirmDeadline = ConfirmDeadline
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._Status = params.get("Status")
+        self._Scheduler = params.get("Scheduler")
+        self._VPCId = params.get("VPCId")
+        self._NodeCount = params.get("NodeCount")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._CreateTime = params.get("CreateTime")
+        self._Type = params.get("Type")
+        self._OsName = params.get("OsName")
+        self._SchedulerVersion = params.get("SchedulerVersion")
+        self._VPCCIDRBlock = params.get("VPCCIDRBlock")
+        self._ConfirmDeadline = params.get("ConfirmDeadline")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HPCDisk(AbstractModel):
+    r"""HPC实例硬盘
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DiskId: 硬盘ID。仅作为出参。
+        :type DiskId: str
+        :param _Size: 硬盘大小
+        :type Size: int
+        :param _Type: 类型
+        :type Type: str
+        """
+        self._DiskId = None
+        self._Size = None
+        self._Type = None
+
+    @property
+    def DiskId(self):
+        r"""硬盘ID。仅作为出参。
+        :rtype: str
+        """
+        return self._DiskId
+
+    @DiskId.setter
+    def DiskId(self, DiskId):
+        self._DiskId = DiskId
+
+    @property
+    def Size(self):
+        r"""硬盘大小
+        :rtype: int
+        """
+        return self._Size
+
+    @Size.setter
+    def Size(self, Size):
+        self._Size = Size
+
+    @property
+    def Type(self):
+        r"""类型
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._DiskId = params.get("DiskId")
+        self._Size = params.get("Size")
+        self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HPCGPUInfo(AbstractModel):
+    r"""HPC实例GPU
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GPUType: GPU类型
+        :type GPUType: str
+        :param _GPUCount: GPU数量
+        :type GPUCount: float
+        """
+        self._GPUType = None
+        self._GPUCount = None
+
+    @property
+    def GPUType(self):
+        r"""GPU类型
+        :rtype: str
+        """
+        return self._GPUType
+
+    @GPUType.setter
+    def GPUType(self, GPUType):
+        self._GPUType = GPUType
+
+    @property
+    def GPUCount(self):
+        r"""GPU数量
+        :rtype: float
+        """
+        return self._GPUCount
+
+    @GPUCount.setter
+    def GPUCount(self, GPUCount):
+        self._GPUCount = GPUCount
+
+
+    def _deserialize(self, params):
+        self._GPUType = params.get("GPUType")
+        self._GPUCount = params.get("GPUCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HPCInstance(AbstractModel):
+    r"""HPC实例
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _Name: 名称
+        :type Name: str
+        :param _CPU: CPU数量
+        :type CPU: int
+        :param _Memory: 内存
+        :type Memory: int
+        :param _State: 状态
+        :type State: str
+        :param _Type: 类型
+        :type Type: str
+        :param _ChargeType: 计费类型
+        :type ChargeType: str
+        :param _OSName: 系统名称
+        :type OSName: str
+        :param _SystemDisk: 系统盘
+        :type SystemDisk: :class:`tencentcloud.omics.v20221128.models.HPCDisk`
+        :param _GPUInfo: GPU
+        :type GPUInfo: :class:`tencentcloud.omics.v20221128.models.HPCGPUInfo`
+        :param _PrivateIPAddresses: 内网IP地址
+        :type PrivateIPAddresses: list of str
+        :param _PublicIPAddresses: 公网IP地址
+        :type PublicIPAddresses: list of str
+        :param _CreateTime: 创建时间
+        :type CreateTime: str
+        :param _ExpireTime: 到期时间
+        :type ExpireTime: str
+        :param _Uuid: Uuid
+        :type Uuid: str
+        :param _InternetInfo: 节点网络信息
+        :type InternetInfo: :class:`tencentcloud.omics.v20221128.models.HPCInternetInfo`
+        """
+        self._InstanceId = None
+        self._Name = None
+        self._CPU = None
+        self._Memory = None
+        self._State = None
+        self._Type = None
+        self._ChargeType = None
+        self._OSName = None
+        self._SystemDisk = None
+        self._GPUInfo = None
+        self._PrivateIPAddresses = None
+        self._PublicIPAddresses = None
+        self._CreateTime = None
+        self._ExpireTime = None
+        self._Uuid = None
+        self._InternetInfo = None
+
+    @property
+    def InstanceId(self):
+        r"""实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Name(self):
+        r"""名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def CPU(self):
+        r"""CPU数量
+        :rtype: int
+        """
+        return self._CPU
+
+    @CPU.setter
+    def CPU(self, CPU):
+        self._CPU = CPU
+
+    @property
+    def Memory(self):
+        r"""内存
+        :rtype: int
+        """
+        return self._Memory
+
+    @Memory.setter
+    def Memory(self, Memory):
+        self._Memory = Memory
+
+    @property
+    def State(self):
+        r"""状态
+        :rtype: str
+        """
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def Type(self):
+        r"""类型
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def ChargeType(self):
+        r"""计费类型
+        :rtype: str
+        """
+        return self._ChargeType
+
+    @ChargeType.setter
+    def ChargeType(self, ChargeType):
+        self._ChargeType = ChargeType
+
+    @property
+    def OSName(self):
+        r"""系统名称
+        :rtype: str
+        """
+        return self._OSName
+
+    @OSName.setter
+    def OSName(self, OSName):
+        self._OSName = OSName
+
+    @property
+    def SystemDisk(self):
+        r"""系统盘
+        :rtype: :class:`tencentcloud.omics.v20221128.models.HPCDisk`
+        """
+        return self._SystemDisk
+
+    @SystemDisk.setter
+    def SystemDisk(self, SystemDisk):
+        self._SystemDisk = SystemDisk
+
+    @property
+    def GPUInfo(self):
+        r"""GPU
+        :rtype: :class:`tencentcloud.omics.v20221128.models.HPCGPUInfo`
+        """
+        return self._GPUInfo
+
+    @GPUInfo.setter
+    def GPUInfo(self, GPUInfo):
+        self._GPUInfo = GPUInfo
+
+    @property
+    def PrivateIPAddresses(self):
+        r"""内网IP地址
+        :rtype: list of str
+        """
+        return self._PrivateIPAddresses
+
+    @PrivateIPAddresses.setter
+    def PrivateIPAddresses(self, PrivateIPAddresses):
+        self._PrivateIPAddresses = PrivateIPAddresses
+
+    @property
+    def PublicIPAddresses(self):
+        r"""公网IP地址
+        :rtype: list of str
+        """
+        return self._PublicIPAddresses
+
+    @PublicIPAddresses.setter
+    def PublicIPAddresses(self, PublicIPAddresses):
+        self._PublicIPAddresses = PublicIPAddresses
+
+    @property
+    def CreateTime(self):
+        r"""创建时间
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ExpireTime(self):
+        r"""到期时间
+        :rtype: str
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def Uuid(self):
+        r"""Uuid
+        :rtype: str
+        """
+        return self._Uuid
+
+    @Uuid.setter
+    def Uuid(self, Uuid):
+        self._Uuid = Uuid
+
+    @property
+    def InternetInfo(self):
+        r"""节点网络信息
+        :rtype: :class:`tencentcloud.omics.v20221128.models.HPCInternetInfo`
+        """
+        return self._InternetInfo
+
+    @InternetInfo.setter
+    def InternetInfo(self, InternetInfo):
+        self._InternetInfo = InternetInfo
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Name = params.get("Name")
+        self._CPU = params.get("CPU")
+        self._Memory = params.get("Memory")
+        self._State = params.get("State")
+        self._Type = params.get("Type")
+        self._ChargeType = params.get("ChargeType")
+        self._OSName = params.get("OSName")
+        if params.get("SystemDisk") is not None:
+            self._SystemDisk = HPCDisk()
+            self._SystemDisk._deserialize(params.get("SystemDisk"))
+        if params.get("GPUInfo") is not None:
+            self._GPUInfo = HPCGPUInfo()
+            self._GPUInfo._deserialize(params.get("GPUInfo"))
+        self._PrivateIPAddresses = params.get("PrivateIPAddresses")
+        self._PublicIPAddresses = params.get("PublicIPAddresses")
+        self._CreateTime = params.get("CreateTime")
+        self._ExpireTime = params.get("ExpireTime")
+        self._Uuid = params.get("Uuid")
+        if params.get("InternetInfo") is not None:
+            self._InternetInfo = HPCInternetInfo()
+            self._InternetInfo._deserialize(params.get("InternetInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HPCInternetInfo(AbstractModel):
+    r"""HPC节点网络信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InternetMaxBandwidthOut: <p>网络出口带宽，单位Mbps</p>
+        :type InternetMaxBandwidthOut: int
+        :param _InternetChargeType: <p>网络收费类型</p><p>枚举值：</p><ul><li>BANDWIDTH_PREPAID： 预付费按带宽结算</li><li>TRAFFIC_POSTPAID_BY_HOUR： 流量按小时后付费</li><li>BANDWIDTH_POSTPAID_BY_HOUR： 带宽按小时后付费</li></ul>
+        :type InternetChargeType: str
+        """
+        self._InternetMaxBandwidthOut = None
+        self._InternetChargeType = None
+
+    @property
+    def InternetMaxBandwidthOut(self):
+        r"""<p>网络出口带宽，单位Mbps</p>
+        :rtype: int
+        """
+        return self._InternetMaxBandwidthOut
+
+    @InternetMaxBandwidthOut.setter
+    def InternetMaxBandwidthOut(self, InternetMaxBandwidthOut):
+        self._InternetMaxBandwidthOut = InternetMaxBandwidthOut
+
+    @property
+    def InternetChargeType(self):
+        r"""<p>网络收费类型</p><p>枚举值：</p><ul><li>BANDWIDTH_PREPAID： 预付费按带宽结算</li><li>TRAFFIC_POSTPAID_BY_HOUR： 流量按小时后付费</li><li>BANDWIDTH_POSTPAID_BY_HOUR： 带宽按小时后付费</li></ul>
+        :rtype: str
+        """
+        return self._InternetChargeType
+
+    @InternetChargeType.setter
+    def InternetChargeType(self, InternetChargeType):
+        self._InternetChargeType = InternetChargeType
+
+
+    def _deserialize(self, params):
+        self._InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
+        self._InternetChargeType = params.get("InternetChargeType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HPCNode(AbstractModel):
+    r"""HPC节点
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NodeId: <p>节点ID</p>
+        :type NodeId: str
+        :param _QueueId: <p>队列ID</p>
+        :type QueueId: str
+        :param _ClusterId: <p>集群ID</p>
+        :type ClusterId: str
+        :param _Role: <p>角色</p>
+        :type Role: str
+        :param _Type: <p>类型</p>
+        :type Type: str
+        :param _Zone: <p>可用区</p>
+        :type Zone: str
+        :param _ImageId: <p>镜像ID</p>
+        :type ImageId: str
+        :param _Instance: <p>实例信息</p>
+        :type Instance: :class:`tencentcloud.omics.v20221128.models.HPCInstance`
+        :param _Tags: <p>标签</p>
+        :type Tags: list of Tag
+        :param _Name: <p>节点名称</p>
+        :type Name: str
+        :param _QueueName: <p>队列名称</p>
+        :type QueueName: str
+        :param _Status: <p>节点状态。取值范围：<br>IDLE 空闲<br>DOWN 节点下线<br>MIXED 节点部分使用<br>ALLOC  节点完全分配<br>DRAIN 排空，不接受新任务</p>
+        :type Status: str
+        """
+        self._NodeId = None
+        self._QueueId = None
+        self._ClusterId = None
+        self._Role = None
+        self._Type = None
+        self._Zone = None
+        self._ImageId = None
+        self._Instance = None
+        self._Tags = None
+        self._Name = None
+        self._QueueName = None
+        self._Status = None
+
+    @property
+    def NodeId(self):
+        r"""<p>节点ID</p>
+        :rtype: str
+        """
+        return self._NodeId
+
+    @NodeId.setter
+    def NodeId(self, NodeId):
+        self._NodeId = NodeId
+
+    @property
+    def QueueId(self):
+        r"""<p>队列ID</p>
+        :rtype: str
+        """
+        return self._QueueId
+
+    @QueueId.setter
+    def QueueId(self, QueueId):
+        self._QueueId = QueueId
+
+    @property
+    def ClusterId(self):
+        r"""<p>集群ID</p>
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def Role(self):
+        r"""<p>角色</p>
+        :rtype: str
+        """
+        return self._Role
+
+    @Role.setter
+    def Role(self, Role):
+        self._Role = Role
+
+    @property
+    def Type(self):
+        r"""<p>类型</p>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Zone(self):
+        r"""<p>可用区</p>
+        :rtype: str
+        """
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def ImageId(self):
+        r"""<p>镜像ID</p>
+        :rtype: str
+        """
+        return self._ImageId
+
+    @ImageId.setter
+    def ImageId(self, ImageId):
+        self._ImageId = ImageId
+
+    @property
+    def Instance(self):
+        r"""<p>实例信息</p>
+        :rtype: :class:`tencentcloud.omics.v20221128.models.HPCInstance`
+        """
+        return self._Instance
+
+    @Instance.setter
+    def Instance(self, Instance):
+        self._Instance = Instance
+
+    @property
+    def Tags(self):
+        r"""<p>标签</p>
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def Name(self):
+        r"""<p>节点名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def QueueName(self):
+        r"""<p>队列名称</p>
+        :rtype: str
+        """
+        return self._QueueName
+
+    @QueueName.setter
+    def QueueName(self, QueueName):
+        self._QueueName = QueueName
+
+    @property
+    def Status(self):
+        r"""<p>节点状态。取值范围：<br>IDLE 空闲<br>DOWN 节点下线<br>MIXED 节点部分使用<br>ALLOC  节点完全分配<br>DRAIN 排空，不接受新任务</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._NodeId = params.get("NodeId")
+        self._QueueId = params.get("QueueId")
+        self._ClusterId = params.get("ClusterId")
+        self._Role = params.get("Role")
+        self._Type = params.get("Type")
+        self._Zone = params.get("Zone")
+        self._ImageId = params.get("ImageId")
+        if params.get("Instance") is not None:
+            self._Instance = HPCInstance()
+            self._Instance._deserialize(params.get("Instance"))
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._Name = params.get("Name")
+        self._QueueName = params.get("QueueName")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ImportTableFileRequest(AbstractModel):
     r"""ImportTableFile请求参数结构体
 
@@ -3658,6 +4860,100 @@ class NotificationType(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class RebootHPCNodesRequest(AbstractModel):
+    r"""RebootHPCNodes请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: <p>集群Id</p>
+        :type ClusterId: str
+        :param _NodeIds: <p>节点Id，例如ins-d1fc42ss</p>
+        :type NodeIds: list of str
+        :param _StopType: <p>重启的关机类型。</p><p>枚举值：</p><ul><li>SOFT： 软关机</li><li>HARD： 硬关机</li><li>SOFT_FIRST： 优先软关机，失败再执行硬关机</li></ul><p>默认值：SOFT</p>
+        :type StopType: str
+        """
+        self._ClusterId = None
+        self._NodeIds = None
+        self._StopType = None
+
+    @property
+    def ClusterId(self):
+        r"""<p>集群Id</p>
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def NodeIds(self):
+        r"""<p>节点Id，例如ins-d1fc42ss</p>
+        :rtype: list of str
+        """
+        return self._NodeIds
+
+    @NodeIds.setter
+    def NodeIds(self, NodeIds):
+        self._NodeIds = NodeIds
+
+    @property
+    def StopType(self):
+        r"""<p>重启的关机类型。</p><p>枚举值：</p><ul><li>SOFT： 软关机</li><li>HARD： 硬关机</li><li>SOFT_FIRST： 优先软关机，失败再执行硬关机</li></ul><p>默认值：SOFT</p>
+        :rtype: str
+        """
+        return self._StopType
+
+    @StopType.setter
+    def StopType(self, StopType):
+        self._StopType = StopType
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._NodeIds = params.get("NodeIds")
+        self._StopType = params.get("StopType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RebootHPCNodesResponse(AbstractModel):
+    r"""RebootHPCNodes返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class ResourceIds(AbstractModel):
@@ -6561,6 +7857,57 @@ class TableRow(AbstractModel):
     def _deserialize(self, params):
         self._TableRowUuid = params.get("TableRowUuid")
         self._Content = params.get("Content")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Tag(AbstractModel):
+    r"""标签
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 标签键
+        :type Key: str
+        :param _Value: 标签值
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        r"""标签键
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        r"""标签值
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

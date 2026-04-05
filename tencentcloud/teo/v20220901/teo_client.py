@@ -433,6 +433,29 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateEdgeKVNamespace(self, request):
+        r"""本接口用于在指定站点下创建 KV 命名空间。
+
+        :param request: Request instance for CreateEdgeKVNamespace.
+        :type request: :class:`tencentcloud.teo.v20220901.models.CreateEdgeKVNamespaceRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.CreateEdgeKVNamespaceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateEdgeKVNamespace", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateEdgeKVNamespaceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateFunction(self, request):
         r"""创建并部署边缘函数至 EdgeOne 的边缘节点。
 
@@ -1177,6 +1200,29 @@ class TeoClient(AbstractClient):
             body = self.call("DeleteDnsRecords", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteDnsRecordsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteEdgeKVNamespace(self, request):
+        r"""本接口用于删除指定的 KV 命名空间。删除后命名空间内的所有键值对数据将被清空且不可恢复。若命名空间正被边缘函数引用，需先解除绑定关系后方可删除。
+
+        :param request: Request instance for DeleteEdgeKVNamespace.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DeleteEdgeKVNamespaceRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DeleteEdgeKVNamespaceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteEdgeKVNamespace", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteEdgeKVNamespaceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2062,6 +2108,29 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeEdgeKVNamespaces(self, request):
+        r"""查询指定站点下的 KV 命名空间列表，支持分页、排序和条件过滤。返回命名空间的基本信息、存储容量使用情况以及被引用关系。若查询不到数据，则返回空数组。
+
+        :param request: Request instance for DescribeEdgeKVNamespaces.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeEdgeKVNamespacesRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeEdgeKVNamespacesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeEdgeKVNamespaces", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeEdgeKVNamespacesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeEnvironments(self, request):
         r"""在版本管理模式下，用于查询环境信息，可获取环境 ID、类型、当前生效版本等。版本管理功能内测中，当前仅白名单开放。
 
@@ -2076,6 +2145,29 @@ class TeoClient(AbstractClient):
             body = self.call("DescribeEnvironments", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeEnvironmentsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeFunctionComponentBindings(self, request):
+        r"""本接口用于查询指定边缘函数的组件绑定列表，支持分页和条件过滤，返回绑定的组件类型、变量名及配置参数等详细信息。当前支持的绑定组件类型为 KV 命名空间（kv_namespace）。
+
+        :param request: Request instance for DescribeFunctionComponentBindings.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeFunctionComponentBindingsRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeFunctionComponentBindingsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeFunctionComponentBindings", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeFunctionComponentBindingsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -3428,6 +3520,98 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def EdgeKVDelete(self, request):
+        r"""本接口用于删除指定命名空间中的一个或多个键值对数据，支持批量删除。删除后数据不可恢复。
+
+        :param request: Request instance for EdgeKVDelete.
+        :type request: :class:`tencentcloud.teo.v20220901.models.EdgeKVDeleteRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.EdgeKVDeleteResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("EdgeKVDelete", params, headers=headers)
+            response = json.loads(body)
+            model = models.EdgeKVDeleteResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def EdgeKVGet(self, request):
+        r"""本接口用于从指定命名空间中批量读取键的值，支持一次查询最多 20 个键。
+
+        :param request: Request instance for EdgeKVGet.
+        :type request: :class:`tencentcloud.teo.v20220901.models.EdgeKVGetRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.EdgeKVGetResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("EdgeKVGet", params, headers=headers)
+            response = json.loads(body)
+            model = models.EdgeKVGetResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def EdgeKVList(self, request):
+        r"""本接口用于列出指定命名空间下的所有键名，支持前缀过滤。通过 Cursor 实现游标遍历，返回下一个游标用于继续查询。适用于遍历命名空间中的所有键。
+
+        :param request: Request instance for EdgeKVList.
+        :type request: :class:`tencentcloud.teo.v20220901.models.EdgeKVListRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.EdgeKVListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("EdgeKVList", params, headers=headers)
+            response = json.loads(body)
+            model = models.EdgeKVListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def EdgeKVPut(self, request):
+        r"""本接口用于向指定命名空间写入键值对数据，支持设置过期时间。若键已存在则覆盖原有值，若不存在则创建新键值对。
+
+        :param request: Request instance for EdgeKVPut.
+        :type request: :class:`tencentcloud.teo.v20220901.models.EdgeKVPutRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.EdgeKVPutResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("EdgeKVPut", params, headers=headers)
+            response = json.loads(body)
+            model = models.EdgeKVPutResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def EnableOriginACL(self, request):
         r"""本接口用于站点首次开启源站防护，启用后 EdgeOne 将会使用特定的回源 IP 网段为七层加速域名/四层代理实例回源。单次支持提交的七层加速域名的数量最大为 200，四层代理实例的数量最大为 100，支持七层加速域名/四层代理实例混合提交，总实例个数最大为 200。如需要启用超过 200 个资源，可先通过指定资源的方式以最大数量启用，剩余资源通过 ModifyOriginACL 接口启用。后续新增七层加速域名/四层代理实例均请通过 ModifyOriginACL 接口配置。同时开启的时候对开白的账户支持选择其他回源 IP 网段版本，例如精简版，来达到使用更少的 IP 网段回源效果。
 
@@ -3876,6 +4060,29 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyEdgeKVNamespace(self, request):
+        r"""本接口用于修改指定 KV 命名空间的属性信息，当前支持修改命名空间描述。
+
+        :param request: Request instance for ModifyEdgeKVNamespace.
+        :type request: :class:`tencentcloud.teo.v20220901.models.ModifyEdgeKVNamespaceRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ModifyEdgeKVNamespaceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyEdgeKVNamespace", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyEdgeKVNamespaceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyFunction(self, request):
         r"""修改边缘函数，支持修改函数的内容及描述信息，修改且重新部署后，函数立刻生效。
 
@@ -3890,6 +4097,29 @@ class TeoClient(AbstractClient):
             body = self.call("ModifyFunction", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyFunctionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyFunctionComponentBindings(self, request):
+        r"""修改边缘函数与组件的绑定关系，支持绑定（bind）、覆盖绑定（bind-override）、解绑（unbind）和重置绑定（rebind）四种操作模式。通过指定操作类型和组件列表，可实现对函数组件绑定关系的管理。
+
+        :param request: Request instance for ModifyFunctionComponentBindings.
+        :type request: :class:`tencentcloud.teo.v20220901.models.ModifyFunctionComponentBindingsRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ModifyFunctionComponentBindingsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyFunctionComponentBindings", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyFunctionComponentBindingsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

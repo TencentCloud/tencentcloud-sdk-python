@@ -133,6 +133,42 @@ class OmicsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeHPCClusters(
+            self,
+            request: models.DescribeHPCClustersRequest,
+            opts: Dict = None,
+    ) -> models.DescribeHPCClustersResponse:
+        """
+        查询HPC集群列表。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeHPCClusters"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeHPCClustersResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeHPCNodes(
+            self,
+            request: models.DescribeHPCNodesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeHPCNodesResponse:
+        """
+        查询HPC节点列表。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeHPCNodes"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeHPCNodesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeRunGroups(
             self,
             request: models.DescribeRunGroupsRequest,
@@ -308,6 +344,24 @@ class OmicsClient(AbstractClient):
         kwargs["action"] = "ModifyVolume"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyVolumeResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def RebootHPCNodes(
+            self,
+            request: models.RebootHPCNodesRequest,
+            opts: Dict = None,
+    ) -> models.RebootHPCNodesResponse:
+        """
+        重启HPC节点
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "RebootHPCNodes"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.RebootHPCNodesResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

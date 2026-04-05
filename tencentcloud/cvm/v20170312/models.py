@@ -4397,6 +4397,85 @@ class DeleteInstancesActionTimerResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteInstancesDisasterRecoverGroupsRequest(AbstractModel):
+    r"""DeleteInstancesDisasterRecoverGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceIds: 一个或多个待操作的实例ID。可通过[`DescribeInstances`](https://cloud.tencent.com/document/api/213/15728)接口返回值中的`InstanceId`获取。每次请求批量实例的上限为100。
+        :type InstanceIds: list of str
+        :param _DisasterRecoverGroupIds: 分散置放群组ID列表，可通过[DescribeDisasterRecoverGroups](https://cloud.tencent.com/document/api/213/17810)接口获取。
+        :type DisasterRecoverGroupIds: list of str
+        """
+        self._InstanceIds = None
+        self._DisasterRecoverGroupIds = None
+
+    @property
+    def InstanceIds(self):
+        r"""一个或多个待操作的实例ID。可通过[`DescribeInstances`](https://cloud.tencent.com/document/api/213/15728)接口返回值中的`InstanceId`获取。每次请求批量实例的上限为100。
+        :rtype: list of str
+        """
+        return self._InstanceIds
+
+    @InstanceIds.setter
+    def InstanceIds(self, InstanceIds):
+        self._InstanceIds = InstanceIds
+
+    @property
+    def DisasterRecoverGroupIds(self):
+        r"""分散置放群组ID列表，可通过[DescribeDisasterRecoverGroups](https://cloud.tencent.com/document/api/213/17810)接口获取。
+        :rtype: list of str
+        """
+        return self._DisasterRecoverGroupIds
+
+    @DisasterRecoverGroupIds.setter
+    def DisasterRecoverGroupIds(self, DisasterRecoverGroupIds):
+        self._DisasterRecoverGroupIds = DisasterRecoverGroupIds
+
+
+    def _deserialize(self, params):
+        self._InstanceIds = params.get("InstanceIds")
+        self._DisasterRecoverGroupIds = params.get("DisasterRecoverGroupIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteInstancesDisasterRecoverGroupsResponse(AbstractModel):
+    r"""DeleteInstancesDisasterRecoverGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteKeyPairsRequest(AbstractModel):
     r"""DeleteKeyPairs请求参数结构体
 

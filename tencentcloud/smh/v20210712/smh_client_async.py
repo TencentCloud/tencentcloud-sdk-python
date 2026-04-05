@@ -43,42 +43,6 @@ class SmhClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def CreateUser(
-            self,
-            request: models.CreateUserRequest,
-            opts: Dict = None,
-    ) -> models.CreateUserResponse:
-        """
-        新建用户。
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "CreateUser"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.CreateUserResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def CreateUserLifecycle(
-            self,
-            request: models.CreateUserLifecycleRequest,
-            opts: Dict = None,
-    ) -> models.CreateUserLifecycleResponse:
-        """
-        设置用户生命周期。如果指定的用户已经设置了生命周期，重复调用此接口将覆盖已有的设置。也可用于清除指定用户的生命周期。
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "CreateUserLifecycle"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.CreateUserLifecycleResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def DeleteLibrary(
             self,
             request: models.DeleteLibraryRequest,
@@ -92,24 +56,6 @@ class SmhClient(AbstractClient):
         kwargs["action"] = "DeleteLibrary"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteLibraryResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DeleteUser(
-            self,
-            request: models.DeleteUserRequest,
-            opts: Dict = None,
-    ) -> models.DeleteUserResponse:
-        """
-        一次删除多个用户。
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DeleteUser"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DeleteUserResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -205,24 +151,6 @@ class SmhClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def DescribeUserLifecycle(
-            self,
-            request: models.DescribeUserLifecycleRequest,
-            opts: Dict = None,
-    ) -> models.DescribeUserLifecycleResponse:
-        """
-        查询用户生命周期。
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeUserLifecycle"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeUserLifecycleResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def ModifyLibrary(
             self,
             request: models.ModifyLibraryRequest,
@@ -236,24 +164,6 @@ class SmhClient(AbstractClient):
         kwargs["action"] = "ModifyLibrary"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyLibraryResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def ModifyUser(
-            self,
-            request: models.ModifyUserRequest,
-            opts: Dict = None,
-    ) -> models.ModifyUserResponse:
-        """
-        更新用户信息。
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "ModifyUser"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.ModifyUserResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
