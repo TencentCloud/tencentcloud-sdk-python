@@ -2556,6 +2556,29 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeClusterSchedulerPolicy(self, request):
+        r"""查询集群调度策略
+
+        :param request: Request instance for DescribeClusterSchedulerPolicy.
+        :type request: :class:`tencentcloud.tke.v20180525.models.DescribeClusterSchedulerPolicyRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.DescribeClusterSchedulerPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeClusterSchedulerPolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeClusterSchedulerPolicyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeClusterSecurity(self, request):
         r"""集群的密钥信息
 
@@ -5215,6 +5238,29 @@ class TkeClient(AbstractClient):
             body = self.call("ModifyClusterRuntimeConfig", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyClusterRuntimeConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyClusterSchedulerPolicy(self, request):
+        r"""修改集群调度策略
+
+        :param request: Request instance for ModifyClusterSchedulerPolicy.
+        :type request: :class:`tencentcloud.tke.v20180525.models.ModifyClusterSchedulerPolicyRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.ModifyClusterSchedulerPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyClusterSchedulerPolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyClusterSchedulerPolicyResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

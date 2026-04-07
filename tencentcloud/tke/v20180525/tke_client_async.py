@@ -2005,6 +2005,24 @@ class TkeClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeClusterSchedulerPolicy(
+            self,
+            request: models.DescribeClusterSchedulerPolicyRequest,
+            opts: Dict = None,
+    ) -> models.DescribeClusterSchedulerPolicyResponse:
+        """
+        查询集群调度策略
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeClusterSchedulerPolicy"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeClusterSchedulerPolicyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeClusterSecurity(
             self,
             request: models.DescribeClusterSecurityRequest,
@@ -4088,6 +4106,24 @@ class TkeClient(AbstractClient):
         kwargs["action"] = "ModifyClusterRuntimeConfig"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyClusterRuntimeConfigResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyClusterSchedulerPolicy(
+            self,
+            request: models.ModifyClusterSchedulerPolicyRequest,
+            opts: Dict = None,
+    ) -> models.ModifyClusterSchedulerPolicyResponse:
+        """
+        修改集群调度策略
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyClusterSchedulerPolicy"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyClusterSchedulerPolicyResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

@@ -1665,6 +1665,24 @@ class RedisClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyInstanceChargeType(
+            self,
+            request: models.ModifyInstanceChargeTypeRequest,
+            opts: Dict = None,
+    ) -> models.ModifyInstanceChargeTypeResponse:
+        """
+        本接口用于变更实例的计费类型
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyInstanceChargeType"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyInstanceChargeTypeResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyInstanceEvent(
             self,
             request: models.ModifyInstanceEventRequest,

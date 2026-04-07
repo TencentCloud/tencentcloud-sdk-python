@@ -472,6 +472,74 @@ class ActionConfigInfo(AbstractModel):
         
 
 
+class ActivateSSAIRequest(AbstractModel):
+    r"""ActivateSSAI请求参数结构体
+
+    """
+
+
+class ActivateSSAIResponse(AbstractModel):
+    r"""ActivateSSAI返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ActivateStreamPackageRequest(AbstractModel):
+    r"""ActivateStreamPackage请求参数结构体
+
+    """
+
+
+class ActivateStreamPackageResponse(AbstractModel):
+    r"""ActivateStreamPackage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class Activity(AbstractModel):
     r"""编排原子任务
 
@@ -1181,6 +1249,156 @@ class ActivityResult(AbstractModel):
         if params.get("ActivityResItem") is not None:
             self._ActivityResItem = ActivityResItem()
             self._ActivityResItem._deserialize(params.get("ActivityResItem"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AdBreakInfo(AbstractModel):
+    r"""AdBreakInfo。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SourceLocationId: SourceLocationId。
+        :type SourceLocationId: str
+        :param _VodSourceName: VodSourceName。
+        :type VodSourceName: str
+        :param _Offset: Offset。
+        :type Offset: int
+        :param _MessageType: MessageType，分SpliceInsert和TimeSignal。
+        :type MessageType: str
+        :param _TimeSignalConf: TimeSignalConf。
+        :type TimeSignalConf: :class:`tencentcloud.mps.v20190612.models.TimeSignalInfo`
+        :param _SpliceInsertConf: SpliceInsertConf。
+        :type SpliceInsertConf: :class:`tencentcloud.mps.v20190612.models.SpliceInsertInfo`
+        :param _Metadatas: Metadatas。
+        :type Metadatas: list of Metadata
+        :param _SourceLocationName: SourceLocationName。
+        :type SourceLocationName: str
+        """
+        self._SourceLocationId = None
+        self._VodSourceName = None
+        self._Offset = None
+        self._MessageType = None
+        self._TimeSignalConf = None
+        self._SpliceInsertConf = None
+        self._Metadatas = None
+        self._SourceLocationName = None
+
+    @property
+    def SourceLocationId(self):
+        r"""SourceLocationId。
+        :rtype: str
+        """
+        return self._SourceLocationId
+
+    @SourceLocationId.setter
+    def SourceLocationId(self, SourceLocationId):
+        self._SourceLocationId = SourceLocationId
+
+    @property
+    def VodSourceName(self):
+        r"""VodSourceName。
+        :rtype: str
+        """
+        return self._VodSourceName
+
+    @VodSourceName.setter
+    def VodSourceName(self, VodSourceName):
+        self._VodSourceName = VodSourceName
+
+    @property
+    def Offset(self):
+        r"""Offset。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def MessageType(self):
+        r"""MessageType，分SpliceInsert和TimeSignal。
+        :rtype: str
+        """
+        return self._MessageType
+
+    @MessageType.setter
+    def MessageType(self, MessageType):
+        self._MessageType = MessageType
+
+    @property
+    def TimeSignalConf(self):
+        r"""TimeSignalConf。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TimeSignalInfo`
+        """
+        return self._TimeSignalConf
+
+    @TimeSignalConf.setter
+    def TimeSignalConf(self, TimeSignalConf):
+        self._TimeSignalConf = TimeSignalConf
+
+    @property
+    def SpliceInsertConf(self):
+        r"""SpliceInsertConf。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SpliceInsertInfo`
+        """
+        return self._SpliceInsertConf
+
+    @SpliceInsertConf.setter
+    def SpliceInsertConf(self, SpliceInsertConf):
+        self._SpliceInsertConf = SpliceInsertConf
+
+    @property
+    def Metadatas(self):
+        r"""Metadatas。
+        :rtype: list of Metadata
+        """
+        return self._Metadatas
+
+    @Metadatas.setter
+    def Metadatas(self, Metadatas):
+        self._Metadatas = Metadatas
+
+    @property
+    def SourceLocationName(self):
+        r"""SourceLocationName。
+        :rtype: str
+        """
+        return self._SourceLocationName
+
+    @SourceLocationName.setter
+    def SourceLocationName(self, SourceLocationName):
+        self._SourceLocationName = SourceLocationName
+
+
+    def _deserialize(self, params):
+        self._SourceLocationId = params.get("SourceLocationId")
+        self._VodSourceName = params.get("VodSourceName")
+        self._Offset = params.get("Offset")
+        self._MessageType = params.get("MessageType")
+        if params.get("TimeSignalConf") is not None:
+            self._TimeSignalConf = TimeSignalInfo()
+            self._TimeSignalConf._deserialize(params.get("TimeSignalConf"))
+        if params.get("SpliceInsertConf") is not None:
+            self._SpliceInsertConf = SpliceInsertInfo()
+            self._SpliceInsertConf._deserialize(params.get("SpliceInsertConf"))
+        if params.get("Metadatas") is not None:
+            self._Metadatas = []
+            for item in params.get("Metadatas"):
+                obj = Metadata()
+                obj._deserialize(item)
+                self._Metadatas.append(obj)
+        self._SourceLocationName = params.get("SourceLocationName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12639,6 +12857,57 @@ class AigcVideoReferenceVideoInfo(AbstractModel):
         
 
 
+class AliasValueConf(AbstractModel):
+    r"""Alias-value配置信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Alias: Alias。
+        :type Alias: str
+        :param _Value: Value。
+        :type Value: str
+        """
+        self._Alias = None
+        self._Value = None
+
+    @property
+    def Alias(self):
+        r"""Alias。
+        :rtype: str
+        """
+        return self._Alias
+
+    @Alias.setter
+    def Alias(self, Alias):
+        self._Alias = Alias
+
+    @property
+    def Value(self):
+        r"""Value。
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Alias = params.get("Alias")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AnimatedGraphicTaskInput(AbstractModel):
     r"""转动图任务类型。
 
@@ -13587,6 +13856,203 @@ class AsrWordsConfigureInfoForUpdate(AbstractModel):
     def _deserialize(self, params):
         self._Switch = params.get("Switch")
         self._LabelSet = params.get("LabelSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AssemblyUsageDetail(AbstractModel):
+    r"""线性组装信息查询
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ChannelID: <p>频道id</p>
+        :type ChannelID: str
+        :param _Date: <p>日期</p>
+        :type Date: str
+        :param _StartTime: <p>查询开始时间</p>
+        :type StartTime: str
+        :param _EndTime: <p>查询结束时间</p>
+        :type EndTime: str
+        :param _Duration: <p>持续时间</p>
+        :type Duration: int
+        :param _ChannelTier: <p>频道类型</p>
+        :type ChannelTier: str
+        :param _ChannelName: <p>频道名称</p>
+        :type ChannelName: str
+        """
+        self._ChannelID = None
+        self._Date = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Duration = None
+        self._ChannelTier = None
+        self._ChannelName = None
+
+    @property
+    def ChannelID(self):
+        r"""<p>频道id</p>
+        :rtype: str
+        """
+        return self._ChannelID
+
+    @ChannelID.setter
+    def ChannelID(self, ChannelID):
+        self._ChannelID = ChannelID
+
+    @property
+    def Date(self):
+        r"""<p>日期</p>
+        :rtype: str
+        """
+        return self._Date
+
+    @Date.setter
+    def Date(self, Date):
+        self._Date = Date
+
+    @property
+    def StartTime(self):
+        r"""<p>查询开始时间</p>
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>查询结束时间</p>
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Duration(self):
+        r"""<p>持续时间</p>
+        :rtype: int
+        """
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def ChannelTier(self):
+        r"""<p>频道类型</p>
+        :rtype: str
+        """
+        return self._ChannelTier
+
+    @ChannelTier.setter
+    def ChannelTier(self, ChannelTier):
+        self._ChannelTier = ChannelTier
+
+    @property
+    def ChannelName(self):
+        r"""<p>频道名称</p>
+        :rtype: str
+        """
+        return self._ChannelName
+
+    @ChannelName.setter
+    def ChannelName(self, ChannelName):
+        self._ChannelName = ChannelName
+
+
+    def _deserialize(self, params):
+        self._ChannelID = params.get("ChannelID")
+        self._Date = params.get("Date")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Duration = params.get("Duration")
+        self._ChannelTier = params.get("ChannelTier")
+        self._ChannelName = params.get("ChannelName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AssemblyUsageInfo(AbstractModel):
+    r"""线性组装用量查询响应
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AssemblyUsageDetails: 频道线性组装用量明细
+        :type AssemblyUsageDetails: list of AssemblyUsageDetail
+        :param _SumBasicChannelDuration: Basic频道类型总时长
+        :type SumBasicChannelDuration: int
+        :param _SumStandardChannelDuration: Standard频道类型总时长
+        :type SumStandardChannelDuration: int
+        """
+        self._AssemblyUsageDetails = None
+        self._SumBasicChannelDuration = None
+        self._SumStandardChannelDuration = None
+
+    @property
+    def AssemblyUsageDetails(self):
+        r"""频道线性组装用量明细
+        :rtype: list of AssemblyUsageDetail
+        """
+        return self._AssemblyUsageDetails
+
+    @AssemblyUsageDetails.setter
+    def AssemblyUsageDetails(self, AssemblyUsageDetails):
+        self._AssemblyUsageDetails = AssemblyUsageDetails
+
+    @property
+    def SumBasicChannelDuration(self):
+        r"""Basic频道类型总时长
+        :rtype: int
+        """
+        return self._SumBasicChannelDuration
+
+    @SumBasicChannelDuration.setter
+    def SumBasicChannelDuration(self, SumBasicChannelDuration):
+        self._SumBasicChannelDuration = SumBasicChannelDuration
+
+    @property
+    def SumStandardChannelDuration(self):
+        r"""Standard频道类型总时长
+        :rtype: int
+        """
+        return self._SumStandardChannelDuration
+
+    @SumStandardChannelDuration.setter
+    def SumStandardChannelDuration(self, SumStandardChannelDuration):
+        self._SumStandardChannelDuration = SumStandardChannelDuration
+
+
+    def _deserialize(self, params):
+        if params.get("AssemblyUsageDetails") is not None:
+            self._AssemblyUsageDetails = []
+            for item in params.get("AssemblyUsageDetails"):
+                obj = AssemblyUsageDetail()
+                obj._deserialize(item)
+                self._AssemblyUsageDetails.append(obj)
+        self._SumBasicChannelDuration = params.get("SumBasicChannelDuration")
+        self._SumStandardChannelDuration = params.get("SumStandardChannelDuration")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15708,6 +16174,67 @@ class BlindWatermarkTemplate(AbstractModel):
         
 
 
+class ChannelAlertResp(AbstractModel):
+    r"""线性组装频道告警返回信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProgramAlertCounts: Program告警聚合信息。
+        :type ProgramAlertCounts: list of ProgramAlertCounts
+        :param _ProgramAlertInfos: Program告警明细信息。
+        :type ProgramAlertInfos: list of ProgramAlertInfos
+        """
+        self._ProgramAlertCounts = None
+        self._ProgramAlertInfos = None
+
+    @property
+    def ProgramAlertCounts(self):
+        r"""Program告警聚合信息。
+        :rtype: list of ProgramAlertCounts
+        """
+        return self._ProgramAlertCounts
+
+    @ProgramAlertCounts.setter
+    def ProgramAlertCounts(self, ProgramAlertCounts):
+        self._ProgramAlertCounts = ProgramAlertCounts
+
+    @property
+    def ProgramAlertInfos(self):
+        r"""Program告警明细信息。
+        :rtype: list of ProgramAlertInfos
+        """
+        return self._ProgramAlertInfos
+
+    @ProgramAlertInfos.setter
+    def ProgramAlertInfos(self, ProgramAlertInfos):
+        self._ProgramAlertInfos = ProgramAlertInfos
+
+
+    def _deserialize(self, params):
+        if params.get("ProgramAlertCounts") is not None:
+            self._ProgramAlertCounts = []
+            for item in params.get("ProgramAlertCounts"):
+                obj = ProgramAlertCounts()
+                obj._deserialize(item)
+                self._ProgramAlertCounts.append(obj)
+        if params.get("ProgramAlertInfos") is not None:
+            self._ProgramAlertInfos = []
+            for item in params.get("ProgramAlertInfos"):
+                obj = ProgramAlertInfos()
+                obj._deserialize(item)
+                self._ProgramAlertInfos.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ClassificationConfigureInfo(AbstractModel):
     r"""智能分类任务控制参数
 
@@ -15778,6 +16305,87 @@ class ClassificationConfigureInfoForUpdate(AbstractModel):
 
     def _deserialize(self, params):
         self._Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ClipRangeInfo(AbstractModel):
+    r"""垫片配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: vod类型有效，内容有效起始时间，可选Entire和SpecifyTimeRange。
+        :type Type: str
+        :param _Offset: 偏移量,Type为SpecifyTimeRange时有效。
+        :type Offset: int
+        :param _StartOffset: 开始偏移量,Type为SpecifyTimeRange时有效。
+        :type StartOffset: int
+        :param _EndOffset: 结束偏移量,Type为SpecifyTimeRange时有效。
+        :type EndOffset: int
+        """
+        self._Type = None
+        self._Offset = None
+        self._StartOffset = None
+        self._EndOffset = None
+
+    @property
+    def Type(self):
+        r"""vod类型有效，内容有效起始时间，可选Entire和SpecifyTimeRange。
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Offset(self):
+        r"""偏移量,Type为SpecifyTimeRange时有效。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def StartOffset(self):
+        r"""开始偏移量,Type为SpecifyTimeRange时有效。
+        :rtype: int
+        """
+        return self._StartOffset
+
+    @StartOffset.setter
+    def StartOffset(self, StartOffset):
+        self._StartOffset = StartOffset
+
+    @property
+    def EndOffset(self):
+        r"""结束偏移量,Type为SpecifyTimeRange时有效。
+        :rtype: int
+        """
+        return self._EndOffset
+
+    @EndOffset.setter
+    def EndOffset(self, EndOffset):
+        self._EndOffset = EndOffset
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Offset = params.get("Offset")
+        self._StartOffset = params.get("StartOffset")
+        self._EndOffset = params.get("EndOffset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17849,6 +18457,62 @@ class ComposeVideoStream(AbstractModel):
         self._Codec = params.get("Codec")
         self._Fps = params.get("Fps")
         self._Bitrate = params.get("Bitrate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ConfigAliasesInfo(AbstractModel):
+    r"""参数配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ParamName: 参数名。
+        :type ParamName: str
+        :param _AliasValueList: alias-value配置。
+        :type AliasValueList: list of AliasValueConf
+        """
+        self._ParamName = None
+        self._AliasValueList = None
+
+    @property
+    def ParamName(self):
+        r"""参数名。
+        :rtype: str
+        """
+        return self._ParamName
+
+    @ParamName.setter
+    def ParamName(self, ParamName):
+        self._ParamName = ParamName
+
+    @property
+    def AliasValueList(self):
+        r"""alias-value配置。
+        :rtype: list of AliasValueConf
+        """
+        return self._AliasValueList
+
+    @AliasValueList.setter
+    def AliasValueList(self, AliasValueList):
+        self._AliasValueList = AliasValueList
+
+
+    def _deserialize(self, params):
+        self._ParamName = params.get("ParamName")
+        if params.get("AliasValueList") is not None:
+            self._AliasValueList = []
+            for item in params.get("AliasValueList"):
+                obj = AliasValueConf()
+                obj._deserialize(item)
+                self._AliasValueList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -24519,6 +25183,771 @@ class CreateStreamLinkSecurityGroupResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateStreamPackageLinearAssemblyChannelRequest(AbstractModel):
+    r"""CreateStreamPackageLinearAssemblyChannel请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: Channel名称。
+        :type Name: str
+        :param _Tier: 定义channel的特性，Standard支持直播和点播源，Basic只支持点播源编排，可选值：Standard、Basic。
+        :type Tier: str
+        :param _PlaybackMode: 频道中的source切换的模式，分Linear线性和Loop循环，Basic只支持Linear，Standard两种都支持。
+        :type PlaybackMode: str
+        :param _TimeShiftEnable: 时移开启开关，只有Tier为Standard时有效。
+        :type TimeShiftEnable: bool
+        :param _TimeShiftConf: 时移配置，时移开关开启时有效。
+        :type TimeShiftConf: :class:`tencentcloud.mps.v20190612.models.TimeShiftInfo`
+        :param _SlateConf: 垫片配置，只有PlaybackMode为Linear时有效。
+        :type SlateConf: :class:`tencentcloud.mps.v20190612.models.SlateInfo`
+        :param _Outputs: 输出配置。
+        :type Outputs: list of OutputReq
+        """
+        self._Name = None
+        self._Tier = None
+        self._PlaybackMode = None
+        self._TimeShiftEnable = None
+        self._TimeShiftConf = None
+        self._SlateConf = None
+        self._Outputs = None
+
+    @property
+    def Name(self):
+        r"""Channel名称。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Tier(self):
+        r"""定义channel的特性，Standard支持直播和点播源，Basic只支持点播源编排，可选值：Standard、Basic。
+        :rtype: str
+        """
+        return self._Tier
+
+    @Tier.setter
+    def Tier(self, Tier):
+        self._Tier = Tier
+
+    @property
+    def PlaybackMode(self):
+        r"""频道中的source切换的模式，分Linear线性和Loop循环，Basic只支持Linear，Standard两种都支持。
+        :rtype: str
+        """
+        return self._PlaybackMode
+
+    @PlaybackMode.setter
+    def PlaybackMode(self, PlaybackMode):
+        self._PlaybackMode = PlaybackMode
+
+    @property
+    def TimeShiftEnable(self):
+        r"""时移开启开关，只有Tier为Standard时有效。
+        :rtype: bool
+        """
+        return self._TimeShiftEnable
+
+    @TimeShiftEnable.setter
+    def TimeShiftEnable(self, TimeShiftEnable):
+        self._TimeShiftEnable = TimeShiftEnable
+
+    @property
+    def TimeShiftConf(self):
+        r"""时移配置，时移开关开启时有效。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TimeShiftInfo`
+        """
+        return self._TimeShiftConf
+
+    @TimeShiftConf.setter
+    def TimeShiftConf(self, TimeShiftConf):
+        self._TimeShiftConf = TimeShiftConf
+
+    @property
+    def SlateConf(self):
+        r"""垫片配置，只有PlaybackMode为Linear时有效。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SlateInfo`
+        """
+        return self._SlateConf
+
+    @SlateConf.setter
+    def SlateConf(self, SlateConf):
+        self._SlateConf = SlateConf
+
+    @property
+    def Outputs(self):
+        r"""输出配置。
+        :rtype: list of OutputReq
+        """
+        return self._Outputs
+
+    @Outputs.setter
+    def Outputs(self, Outputs):
+        self._Outputs = Outputs
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Tier = params.get("Tier")
+        self._PlaybackMode = params.get("PlaybackMode")
+        self._TimeShiftEnable = params.get("TimeShiftEnable")
+        if params.get("TimeShiftConf") is not None:
+            self._TimeShiftConf = TimeShiftInfo()
+            self._TimeShiftConf._deserialize(params.get("TimeShiftConf"))
+        if params.get("SlateConf") is not None:
+            self._SlateConf = SlateInfo()
+            self._SlateConf._deserialize(params.get("SlateConf"))
+        if params.get("Outputs") is not None:
+            self._Outputs = []
+            for item in params.get("Outputs"):
+                obj = OutputReq()
+                obj._deserialize(item)
+                self._Outputs.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateStreamPackageLinearAssemblyChannelResponse(AbstractModel):
+    r"""CreateStreamPackageLinearAssemblyChannel返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Info: channel信息。
+        :type Info: :class:`tencentcloud.mps.v20190612.models.LinearAssemblyChannelInfo`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Info = None
+        self._RequestId = None
+
+    @property
+    def Info(self):
+        r"""channel信息。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.LinearAssemblyChannelInfo`
+        """
+        return self._Info
+
+    @Info.setter
+    def Info(self, Info):
+        self._Info = Info
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Info") is not None:
+            self._Info = LinearAssemblyChannelInfo()
+            self._Info._deserialize(params.get("Info"))
+        self._RequestId = params.get("RequestId")
+
+
+class CreateStreamPackageLinearAssemblyProgramRequest(AbstractModel):
+    r"""CreateStreamPackageLinearAssemblyProgram请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: Program名称。
+        :type Name: str
+        :param _AttachedChannel: 绑定的channel。
+        :type AttachedChannel: str
+        :param _SourceType: 编排的目标source的类型，分直播Live和点播VOD。Tier为Basic时只支持VOD，Tier为Standard时支持Live和VOD
+        :type SourceType: str
+        :param _SourceLocationId: 关联的source location。
+        :type SourceLocationId: str
+        :param _SourceName: 关联的直播or点播，source名称，location下全局唯一。
+        :type SourceName: str
+        :param _PlaybackConf: PlaybackConf。
+        :type PlaybackConf: :class:`tencentcloud.mps.v20190612.models.PlaybackInfoReq`
+        :param _AdBreaks: AdBreaks，只有source类型为Vod时有效。
+        :type AdBreaks: list of AdBreakInfo
+        """
+        self._Name = None
+        self._AttachedChannel = None
+        self._SourceType = None
+        self._SourceLocationId = None
+        self._SourceName = None
+        self._PlaybackConf = None
+        self._AdBreaks = None
+
+    @property
+    def Name(self):
+        r"""Program名称。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def AttachedChannel(self):
+        r"""绑定的channel。
+        :rtype: str
+        """
+        return self._AttachedChannel
+
+    @AttachedChannel.setter
+    def AttachedChannel(self, AttachedChannel):
+        self._AttachedChannel = AttachedChannel
+
+    @property
+    def SourceType(self):
+        r"""编排的目标source的类型，分直播Live和点播VOD。Tier为Basic时只支持VOD，Tier为Standard时支持Live和VOD
+        :rtype: str
+        """
+        return self._SourceType
+
+    @SourceType.setter
+    def SourceType(self, SourceType):
+        self._SourceType = SourceType
+
+    @property
+    def SourceLocationId(self):
+        r"""关联的source location。
+        :rtype: str
+        """
+        return self._SourceLocationId
+
+    @SourceLocationId.setter
+    def SourceLocationId(self, SourceLocationId):
+        self._SourceLocationId = SourceLocationId
+
+    @property
+    def SourceName(self):
+        r"""关联的直播or点播，source名称，location下全局唯一。
+        :rtype: str
+        """
+        return self._SourceName
+
+    @SourceName.setter
+    def SourceName(self, SourceName):
+        self._SourceName = SourceName
+
+    @property
+    def PlaybackConf(self):
+        r"""PlaybackConf。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.PlaybackInfoReq`
+        """
+        return self._PlaybackConf
+
+    @PlaybackConf.setter
+    def PlaybackConf(self, PlaybackConf):
+        self._PlaybackConf = PlaybackConf
+
+    @property
+    def AdBreaks(self):
+        r"""AdBreaks，只有source类型为Vod时有效。
+        :rtype: list of AdBreakInfo
+        """
+        return self._AdBreaks
+
+    @AdBreaks.setter
+    def AdBreaks(self, AdBreaks):
+        self._AdBreaks = AdBreaks
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._AttachedChannel = params.get("AttachedChannel")
+        self._SourceType = params.get("SourceType")
+        self._SourceLocationId = params.get("SourceLocationId")
+        self._SourceName = params.get("SourceName")
+        if params.get("PlaybackConf") is not None:
+            self._PlaybackConf = PlaybackInfoReq()
+            self._PlaybackConf._deserialize(params.get("PlaybackConf"))
+        if params.get("AdBreaks") is not None:
+            self._AdBreaks = []
+            for item in params.get("AdBreaks"):
+                obj = AdBreakInfo()
+                obj._deserialize(item)
+                self._AdBreaks.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateStreamPackageLinearAssemblyProgramResponse(AbstractModel):
+    r"""CreateStreamPackageLinearAssemblyProgram返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Info: channel信息。
+        :type Info: :class:`tencentcloud.mps.v20190612.models.LinearAssemblyProgramInfo`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Info = None
+        self._RequestId = None
+
+    @property
+    def Info(self):
+        r"""channel信息。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.LinearAssemblyProgramInfo`
+        """
+        return self._Info
+
+    @Info.setter
+    def Info(self, Info):
+        self._Info = Info
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Info") is not None:
+            self._Info = LinearAssemblyProgramInfo()
+            self._Info._deserialize(params.get("Info"))
+        self._RequestId = params.get("RequestId")
+
+
+class CreateStreamPackageSSAIChannelRequest(AbstractModel):
+    r"""CreateStreamPackageSSAIChannel请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 广告插入配置名称，全局唯一，不能与其他频道重复。
+        :type Name: str
+        :param _ContentSource: 源流地址前缀
+        :type ContentSource: str
+        :param _SSAIInfo: 广告插入配置
+        :type SSAIInfo: :class:`tencentcloud.mps.v20190612.models.SSAIConf`
+        """
+        self._Name = None
+        self._ContentSource = None
+        self._SSAIInfo = None
+
+    @property
+    def Name(self):
+        r"""广告插入配置名称，全局唯一，不能与其他频道重复。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ContentSource(self):
+        r"""源流地址前缀
+        :rtype: str
+        """
+        return self._ContentSource
+
+    @ContentSource.setter
+    def ContentSource(self, ContentSource):
+        self._ContentSource = ContentSource
+
+    @property
+    def SSAIInfo(self):
+        r"""广告插入配置
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SSAIConf`
+        """
+        return self._SSAIInfo
+
+    @SSAIInfo.setter
+    def SSAIInfo(self, SSAIInfo):
+        self._SSAIInfo = SSAIInfo
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._ContentSource = params.get("ContentSource")
+        if params.get("SSAIInfo") is not None:
+            self._SSAIInfo = SSAIConf()
+            self._SSAIInfo._deserialize(params.get("SSAIInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateStreamPackageSSAIChannelResponse(AbstractModel):
+    r"""CreateStreamPackageSSAIChannel返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Info: 创建的广告插入配置信息。
+        :type Info: :class:`tencentcloud.mps.v20190612.models.SSAIChannelInfo`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Info = None
+        self._RequestId = None
+
+    @property
+    def Info(self):
+        r"""创建的广告插入配置信息。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SSAIChannelInfo`
+        """
+        return self._Info
+
+    @Info.setter
+    def Info(self, Info):
+        self._Info = Info
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Info") is not None:
+            self._Info = SSAIChannelInfo()
+            self._Info._deserialize(params.get("Info"))
+        self._RequestId = params.get("RequestId")
+
+
+class CreateStreamPackageSourceLocationRequest(AbstractModel):
+    r"""CreateStreamPackageSourceLocation请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: SourceLocation名称。
+        :type Name: str
+        :param _BaseUrl: 基准URL。
+        :type BaseUrl: str
+        :param _SegmentDeliverEnable: 是否开启补片。
+        :type SegmentDeliverEnable: bool
+        :param _SegmentDeliverConf: 补片配置。
+        :type SegmentDeliverConf: :class:`tencentcloud.mps.v20190612.models.SegmentDeliverInfo`
+        :param _SegmentDeliverUsePackageEnable: 是否开启package分发分片，默认开启。
+        :type SegmentDeliverUsePackageEnable: bool
+        """
+        self._Name = None
+        self._BaseUrl = None
+        self._SegmentDeliverEnable = None
+        self._SegmentDeliverConf = None
+        self._SegmentDeliverUsePackageEnable = None
+
+    @property
+    def Name(self):
+        r"""SourceLocation名称。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def BaseUrl(self):
+        r"""基准URL。
+        :rtype: str
+        """
+        return self._BaseUrl
+
+    @BaseUrl.setter
+    def BaseUrl(self, BaseUrl):
+        self._BaseUrl = BaseUrl
+
+    @property
+    def SegmentDeliverEnable(self):
+        r"""是否开启补片。
+        :rtype: bool
+        """
+        return self._SegmentDeliverEnable
+
+    @SegmentDeliverEnable.setter
+    def SegmentDeliverEnable(self, SegmentDeliverEnable):
+        self._SegmentDeliverEnable = SegmentDeliverEnable
+
+    @property
+    def SegmentDeliverConf(self):
+        r"""补片配置。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SegmentDeliverInfo`
+        """
+        return self._SegmentDeliverConf
+
+    @SegmentDeliverConf.setter
+    def SegmentDeliverConf(self, SegmentDeliverConf):
+        self._SegmentDeliverConf = SegmentDeliverConf
+
+    @property
+    def SegmentDeliverUsePackageEnable(self):
+        r"""是否开启package分发分片，默认开启。
+        :rtype: bool
+        """
+        return self._SegmentDeliverUsePackageEnable
+
+    @SegmentDeliverUsePackageEnable.setter
+    def SegmentDeliverUsePackageEnable(self, SegmentDeliverUsePackageEnable):
+        self._SegmentDeliverUsePackageEnable = SegmentDeliverUsePackageEnable
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._BaseUrl = params.get("BaseUrl")
+        self._SegmentDeliverEnable = params.get("SegmentDeliverEnable")
+        if params.get("SegmentDeliverConf") is not None:
+            self._SegmentDeliverConf = SegmentDeliverInfo()
+            self._SegmentDeliverConf._deserialize(params.get("SegmentDeliverConf"))
+        self._SegmentDeliverUsePackageEnable = params.get("SegmentDeliverUsePackageEnable")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateStreamPackageSourceLocationResponse(AbstractModel):
+    r"""CreateStreamPackageSourceLocation返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Info: SourceLocation信息。
+        :type Info: :class:`tencentcloud.mps.v20190612.models.SourceLocationInfo`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Info = None
+        self._RequestId = None
+
+    @property
+    def Info(self):
+        r"""SourceLocation信息。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SourceLocationInfo`
+        """
+        return self._Info
+
+    @Info.setter
+    def Info(self, Info):
+        self._Info = Info
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Info") is not None:
+            self._Info = SourceLocationInfo()
+            self._Info._deserialize(params.get("Info"))
+        self._RequestId = params.get("RequestId")
+
+
+class CreateStreamPackageSourceRequest(AbstractModel):
+    r"""CreateStreamPackageSource请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AttachedLocation: 该source所属的location id，必填且唯一绑定一个location。
+        :type AttachedLocation: str
+        :param _Name: Source名称，在location下面全局唯一。
+        :type Name: str
+        :param _Type: 区分直播Live和点播VOD source类型，可选值：Live、VOD。
+        :type Type: str
+        :param _PackageConfs: source具体配置。
+        :type PackageConfs: list of SourcePackageConf
+        :param _SourceTags: sourcetag标签，ADS可以根据Source Tag信息，返回更精准的广告
+        :type SourceTags: list of SourceTag
+        """
+        self._AttachedLocation = None
+        self._Name = None
+        self._Type = None
+        self._PackageConfs = None
+        self._SourceTags = None
+
+    @property
+    def AttachedLocation(self):
+        r"""该source所属的location id，必填且唯一绑定一个location。
+        :rtype: str
+        """
+        return self._AttachedLocation
+
+    @AttachedLocation.setter
+    def AttachedLocation(self, AttachedLocation):
+        self._AttachedLocation = AttachedLocation
+
+    @property
+    def Name(self):
+        r"""Source名称，在location下面全局唯一。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        r"""区分直播Live和点播VOD source类型，可选值：Live、VOD。
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def PackageConfs(self):
+        r"""source具体配置。
+        :rtype: list of SourcePackageConf
+        """
+        return self._PackageConfs
+
+    @PackageConfs.setter
+    def PackageConfs(self, PackageConfs):
+        self._PackageConfs = PackageConfs
+
+    @property
+    def SourceTags(self):
+        r"""sourcetag标签，ADS可以根据Source Tag信息，返回更精准的广告
+        :rtype: list of SourceTag
+        """
+        return self._SourceTags
+
+    @SourceTags.setter
+    def SourceTags(self, SourceTags):
+        self._SourceTags = SourceTags
+
+
+    def _deserialize(self, params):
+        self._AttachedLocation = params.get("AttachedLocation")
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        if params.get("PackageConfs") is not None:
+            self._PackageConfs = []
+            for item in params.get("PackageConfs"):
+                obj = SourcePackageConf()
+                obj._deserialize(item)
+                self._PackageConfs.append(obj)
+        if params.get("SourceTags") is not None:
+            self._SourceTags = []
+            for item in params.get("SourceTags"):
+                obj = SourceTag()
+                obj._deserialize(item)
+                self._SourceTags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateStreamPackageSourceResponse(AbstractModel):
+    r"""CreateStreamPackageSource返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Info: Source信息。
+        :type Info: :class:`tencentcloud.mps.v20190612.models.SourceInfo`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Info = None
+        self._RequestId = None
+
+    @property
+    def Info(self):
+        r"""Source信息。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SourceInfo`
+        """
+        return self._Info
+
+    @Info.setter
+    def Info(self, Info):
+        self._Info = Info
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Info") is not None:
+            self._Info = SourceInfo()
+            self._Info._deserialize(params.get("Info"))
+        self._RequestId = params.get("RequestId")
+
+
 class CreateSubtitleEmbedTemplateRequest(AbstractModel):
     r"""CreateSubtitleEmbedTemplate请求参数结构体
 
@@ -25655,6 +27084,87 @@ class CreateWorkflowResponse(AbstractModel):
     def _deserialize(self, params):
         self._WorkflowId = params.get("WorkflowId")
         self._RequestId = params.get("RequestId")
+
+
+class DashManifestInfo(AbstractModel):
+    r"""Type为DASH时manifest配置使用的字段。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Windows: 每个清单的总持续时间（以秒为单位）。[30, 3600]，类型：整数，默认值60。
+        :type Windows: int
+        :param _MinBufferTime: 播放器在缓冲区中保持的最小缓存时间（以秒为单位）。[2, 60]，类型：整数，默认值30。
+        :type MinBufferTime: int
+        :param _MinUpdatePeriod: 播放器在请求更新清单之前应等待的最短时间（以秒为单位）。[2, 60]，类型：整数，默认值2。
+        :type MinUpdatePeriod: int
+        :param _SuggestedPresentationDelay: 播放器启播时距离最新直播时间点的时间，是一个回退量（以秒为单位）。[2, 60]，类型：整数，默认值10。
+        :type SuggestedPresentationDelay: int
+        """
+        self._Windows = None
+        self._MinBufferTime = None
+        self._MinUpdatePeriod = None
+        self._SuggestedPresentationDelay = None
+
+    @property
+    def Windows(self):
+        r"""每个清单的总持续时间（以秒为单位）。[30, 3600]，类型：整数，默认值60。
+        :rtype: int
+        """
+        return self._Windows
+
+    @Windows.setter
+    def Windows(self, Windows):
+        self._Windows = Windows
+
+    @property
+    def MinBufferTime(self):
+        r"""播放器在缓冲区中保持的最小缓存时间（以秒为单位）。[2, 60]，类型：整数，默认值30。
+        :rtype: int
+        """
+        return self._MinBufferTime
+
+    @MinBufferTime.setter
+    def MinBufferTime(self, MinBufferTime):
+        self._MinBufferTime = MinBufferTime
+
+    @property
+    def MinUpdatePeriod(self):
+        r"""播放器在请求更新清单之前应等待的最短时间（以秒为单位）。[2, 60]，类型：整数，默认值2。
+        :rtype: int
+        """
+        return self._MinUpdatePeriod
+
+    @MinUpdatePeriod.setter
+    def MinUpdatePeriod(self, MinUpdatePeriod):
+        self._MinUpdatePeriod = MinUpdatePeriod
+
+    @property
+    def SuggestedPresentationDelay(self):
+        r"""播放器启播时距离最新直播时间点的时间，是一个回退量（以秒为单位）。[2, 60]，类型：整数，默认值10。
+        :rtype: int
+        """
+        return self._SuggestedPresentationDelay
+
+    @SuggestedPresentationDelay.setter
+    def SuggestedPresentationDelay(self, SuggestedPresentationDelay):
+        self._SuggestedPresentationDelay = SuggestedPresentationDelay
+
+
+    def _deserialize(self, params):
+        self._Windows = params.get("Windows")
+        self._MinBufferTime = params.get("MinBufferTime")
+        self._MinUpdatePeriod = params.get("MinUpdatePeriod")
+        self._SuggestedPresentationDelay = params.get("SuggestedPresentationDelay")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DeleteAIAnalysisTemplateRequest(AbstractModel):
@@ -26990,6 +28500,533 @@ class DeleteStreamLinkSecurityGroupRequest(AbstractModel):
 
 class DeleteStreamLinkSecurityGroupResponse(AbstractModel):
     r"""DeleteStreamLinkSecurityGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteStreamPackageLinearAssemblyChannelRequest(AbstractModel):
+    r"""DeleteStreamPackageLinearAssemblyChannel请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 频道id。
+        :type Id: str
+        """
+        self._Id = None
+
+    @property
+    def Id(self):
+        r"""频道id。
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteStreamPackageLinearAssemblyChannelResponse(AbstractModel):
+    r"""DeleteStreamPackageLinearAssemblyChannel返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteStreamPackageLinearAssemblyChannelsRequest(AbstractModel):
+    r"""DeleteStreamPackageLinearAssemblyChannels请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Ids: 频道id列表。
+        :type Ids: list of str
+        """
+        self._Ids = None
+
+    @property
+    def Ids(self):
+        r"""频道id列表。
+        :rtype: list of str
+        """
+        return self._Ids
+
+    @Ids.setter
+    def Ids(self, Ids):
+        self._Ids = Ids
+
+
+    def _deserialize(self, params):
+        self._Ids = params.get("Ids")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteStreamPackageLinearAssemblyChannelsResponse(AbstractModel):
+    r"""DeleteStreamPackageLinearAssemblyChannels返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteStreamPackageLinearAssemblyProgramRequest(AbstractModel):
+    r"""DeleteStreamPackageLinearAssemblyProgram请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: Program id。
+        :type Id: str
+        """
+        self._Id = None
+
+    @property
+    def Id(self):
+        r"""Program id。
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteStreamPackageLinearAssemblyProgramResponse(AbstractModel):
+    r"""DeleteStreamPackageLinearAssemblyProgram返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteStreamPackageLinearAssemblyProgramsByChannelRequest(AbstractModel):
+    r"""DeleteStreamPackageLinearAssemblyProgramsByChannel请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ChannelID: <p>频道的ID</p>
+        :type ChannelID: str
+        :param _IDs: <p>需要删除的Id数组</p>
+        :type IDs: list of str
+        """
+        self._ChannelID = None
+        self._IDs = None
+
+    @property
+    def ChannelID(self):
+        r"""<p>频道的ID</p>
+        :rtype: str
+        """
+        return self._ChannelID
+
+    @ChannelID.setter
+    def ChannelID(self, ChannelID):
+        self._ChannelID = ChannelID
+
+    @property
+    def IDs(self):
+        r"""<p>需要删除的Id数组</p>
+        :rtype: list of str
+        """
+        return self._IDs
+
+    @IDs.setter
+    def IDs(self, IDs):
+        self._IDs = IDs
+
+
+    def _deserialize(self, params):
+        self._ChannelID = params.get("ChannelID")
+        self._IDs = params.get("IDs")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteStreamPackageLinearAssemblyProgramsByChannelResponse(AbstractModel):
+    r"""DeleteStreamPackageLinearAssemblyProgramsByChannel返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteStreamPackageLinearAssemblyProgramsRequest(AbstractModel):
+    r"""DeleteStreamPackageLinearAssemblyPrograms请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Ids: Program id列表。
+        :type Ids: list of str
+        """
+        self._Ids = None
+
+    @property
+    def Ids(self):
+        r"""Program id列表。
+        :rtype: list of str
+        """
+        return self._Ids
+
+    @Ids.setter
+    def Ids(self, Ids):
+        self._Ids = Ids
+
+
+    def _deserialize(self, params):
+        self._Ids = params.get("Ids")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteStreamPackageLinearAssemblyProgramsResponse(AbstractModel):
+    r"""DeleteStreamPackageLinearAssemblyPrograms返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteStreamPackageSSAIChannelRequest(AbstractModel):
+    r"""DeleteStreamPackageSSAIChannel请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: 需要删除的广告插入配置ID。
+        :type ID: str
+        """
+        self._ID = None
+
+    @property
+    def ID(self):
+        r"""需要删除的广告插入配置ID。
+        :rtype: str
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteStreamPackageSSAIChannelResponse(AbstractModel):
+    r"""DeleteStreamPackageSSAIChannel返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteStreamPackageSourceLocationRequest(AbstractModel):
+    r"""DeleteStreamPackageSourceLocation请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: SourceLocation Id。
+        :type Id: str
+        """
+        self._Id = None
+
+    @property
+    def Id(self):
+        r"""SourceLocation Id。
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteStreamPackageSourceLocationResponse(AbstractModel):
+    r"""DeleteStreamPackageSourceLocation返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteStreamPackageSourceRequest(AbstractModel):
+    r"""DeleteStreamPackageSource请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: Source Id。
+        :type Id: str
+        """
+        self._Id = None
+
+    @property
+    def Id(self):
+        r"""Source Id。
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteStreamPackageSourceResponse(AbstractModel):
+    r"""DeleteStreamPackageSource返回参数结构体
 
     """
 
@@ -31247,6 +33284,63 @@ class DescribeLiveRecordTemplatesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeMDPMPSUserInfoRequest(AbstractModel):
+    r"""DescribeMDPMPSUserInfo请求参数结构体
+
+    """
+
+
+class DescribeMDPMPSUserInfoResponse(AbstractModel):
+    r"""DescribeMDPMPSUserInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 用户状态，取值为：
+<li> InvalidMpsUser：未开通mps；</li>
+<li>Normal：正常 ；</li>
+<li> Closed：下线；</li>
+<li> Arrearage：欠费停服</li>
+        :type Status: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Status = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        r"""用户状态，取值为：
+<li> InvalidMpsUser：未开通mps；</li>
+<li>Normal：正常 ；</li>
+<li> Closed：下线；</li>
+<li> Arrearage：欠费停服</li>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeMediaMetaDataRequest(AbstractModel):
     r"""DescribeMediaMetaData请求参数结构体
 
@@ -33080,6 +35174,55 @@ class DescribeRTSPPullSourceAddress(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class DescribeSSAIActivateStateRequest(AbstractModel):
+    r"""DescribeSSAIActivateState请求参数结构体
+
+    """
+
+
+class DescribeSSAIActivateStateResponse(AbstractModel):
+    r"""DescribeSSAIActivateState返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: SSAI开通状态，0表示正常开通，-1表示未开通
+        :type Status: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Status = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        r"""SSAI开通状态，0表示正常开通，-1表示未开通
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeSampleSnapshotTemplatesRequest(AbstractModel):
@@ -35666,6 +37809,2006 @@ class DescribeStreamLinkSecurityGroupsResponse(AbstractModel):
                 obj = SecurityGroupInfo()
                 obj._deserialize(item)
                 self._Infos.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeStreamPackageActivateStateRequest(AbstractModel):
+    r"""DescribeStreamPackageActivateState请求参数结构体
+
+    """
+
+
+class DescribeStreamPackageActivateStateResponse(AbstractModel):
+    r"""DescribeStreamPackageActivateState返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 用户已激活为0，否则为非0。
+        :type Status: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Status = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        r"""用户已激活为0，否则为非0。
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeStreamPackageLinearAssemblyChannelAlertsRequest(AbstractModel):
+    r"""DescribeStreamPackageLinearAssemblyChannelAlerts请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ChannelId: 频道ID。
+        :type ChannelId: str
+        :param _StartTime: 查询开始时间，Unix时间戳，支持最近七天的查询。
+        :type StartTime: int
+        :param _EndTime: 查询结束时间，Unix时间戳，支持最近七天的查询。
+        :type EndTime: int
+        """
+        self._ChannelId = None
+        self._StartTime = None
+        self._EndTime = None
+
+    @property
+    def ChannelId(self):
+        r"""频道ID。
+        :rtype: str
+        """
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
+    @property
+    def StartTime(self):
+        r"""查询开始时间，Unix时间戳，支持最近七天的查询。
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""查询结束时间，Unix时间戳，支持最近七天的查询。
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+
+    def _deserialize(self, params):
+        self._ChannelId = params.get("ChannelId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeStreamPackageLinearAssemblyChannelAlertsResponse(AbstractModel):
+    r"""DescribeStreamPackageLinearAssemblyChannelAlerts返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Infos: 频道告警信息。
+        :type Infos: :class:`tencentcloud.mps.v20190612.models.ChannelAlertResp`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Infos = None
+        self._RequestId = None
+
+    @property
+    def Infos(self):
+        r"""频道告警信息。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ChannelAlertResp`
+        """
+        return self._Infos
+
+    @Infos.setter
+    def Infos(self, Infos):
+        self._Infos = Infos
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Infos") is not None:
+            self._Infos = ChannelAlertResp()
+            self._Infos._deserialize(params.get("Infos"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeStreamPackageLinearAssemblyChannelRequest(AbstractModel):
+    r"""DescribeStreamPackageLinearAssemblyChannel请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 频道id。
+        :type Id: str
+        """
+        self._Id = None
+
+    @property
+    def Id(self):
+        r"""频道id。
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeStreamPackageLinearAssemblyChannelResponse(AbstractModel):
+    r"""DescribeStreamPackageLinearAssemblyChannel返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Info: Channel信息。
+        :type Info: :class:`tencentcloud.mps.v20190612.models.LinearAssemblyChannelInfo`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Info = None
+        self._RequestId = None
+
+    @property
+    def Info(self):
+        r"""Channel信息。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.LinearAssemblyChannelInfo`
+        """
+        return self._Info
+
+    @Info.setter
+    def Info(self, Info):
+        self._Info = Info
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Info") is not None:
+            self._Info = LinearAssemblyChannelInfo()
+            self._Info._deserialize(params.get("Info"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeStreamPackageLinearAssemblyChannelsRequest(AbstractModel):
+    r"""DescribeStreamPackageLinearAssemblyChannels请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PageNum: 页数，取值范围为[1, 1000]。
+        :type PageNum: int
+        :param _PageSize: 每页大小，取值范围为[1, 1000]。
+        :type PageSize: int
+        """
+        self._PageNum = None
+        self._PageSize = None
+
+    @property
+    def PageNum(self):
+        r"""页数，取值范围为[1, 1000]。
+        :rtype: int
+        """
+        return self._PageNum
+
+    @PageNum.setter
+    def PageNum(self, PageNum):
+        self._PageNum = PageNum
+
+    @property
+    def PageSize(self):
+        r"""每页大小，取值范围为[1, 1000]。
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+
+    def _deserialize(self, params):
+        self._PageNum = params.get("PageNum")
+        self._PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeStreamPackageLinearAssemblyChannelsResponse(AbstractModel):
+    r"""DescribeStreamPackageLinearAssemblyChannels返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Infos: Channel列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Infos: list of LinearAssemblyChannelInfo
+        :param _PageNum: 页数。
+        :type PageNum: int
+        :param _PageSize: 每页大小。
+        :type PageSize: int
+        :param _TotalNum: 总数量。
+        :type TotalNum: int
+        :param _TotalPage: 总页数。
+        :type TotalPage: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Infos = None
+        self._PageNum = None
+        self._PageSize = None
+        self._TotalNum = None
+        self._TotalPage = None
+        self._RequestId = None
+
+    @property
+    def Infos(self):
+        r"""Channel列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of LinearAssemblyChannelInfo
+        """
+        return self._Infos
+
+    @Infos.setter
+    def Infos(self, Infos):
+        self._Infos = Infos
+
+    @property
+    def PageNum(self):
+        r"""页数。
+        :rtype: int
+        """
+        return self._PageNum
+
+    @PageNum.setter
+    def PageNum(self, PageNum):
+        self._PageNum = PageNum
+
+    @property
+    def PageSize(self):
+        r"""每页大小。
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def TotalNum(self):
+        r"""总数量。
+        :rtype: int
+        """
+        return self._TotalNum
+
+    @TotalNum.setter
+    def TotalNum(self, TotalNum):
+        self._TotalNum = TotalNum
+
+    @property
+    def TotalPage(self):
+        r"""总页数。
+        :rtype: int
+        """
+        return self._TotalPage
+
+    @TotalPage.setter
+    def TotalPage(self, TotalPage):
+        self._TotalPage = TotalPage
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Infos") is not None:
+            self._Infos = []
+            for item in params.get("Infos"):
+                obj = LinearAssemblyChannelInfo()
+                obj._deserialize(item)
+                self._Infos.append(obj)
+        self._PageNum = params.get("PageNum")
+        self._PageSize = params.get("PageSize")
+        self._TotalNum = params.get("TotalNum")
+        self._TotalPage = params.get("TotalPage")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeStreamPackageLinearAssemblyProgramRequest(AbstractModel):
+    r"""DescribeStreamPackageLinearAssemblyProgram请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: program id。
+        :type Id: str
+        """
+        self._Id = None
+
+    @property
+    def Id(self):
+        r"""program id。
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeStreamPackageLinearAssemblyProgramResponse(AbstractModel):
+    r"""DescribeStreamPackageLinearAssemblyProgram返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Info: Program信息。
+        :type Info: :class:`tencentcloud.mps.v20190612.models.LinearAssemblyProgramInfo`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Info = None
+        self._RequestId = None
+
+    @property
+    def Info(self):
+        r"""Program信息。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.LinearAssemblyProgramInfo`
+        """
+        return self._Info
+
+    @Info.setter
+    def Info(self, Info):
+        self._Info = Info
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Info") is not None:
+            self._Info = LinearAssemblyProgramInfo()
+            self._Info._deserialize(params.get("Info"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeStreamPackageLinearAssemblyProgramSchedulesRequest(AbstractModel):
+    r"""DescribeStreamPackageLinearAssemblyProgramSchedules请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ChannelId: 查询某个Channel下面的所有Program。
+        :type ChannelId: str
+        :param _TimeWindow: 窗口时长信息，单位秒。最大7776000s
+        :type TimeWindow: int
+        :param _PageNum: 页数，取值范围为[1, 10000]。
+        :type PageNum: int
+        :param _PageSize: 每页大小，取值范围为[1, 1000]。
+        :type PageSize: int
+        """
+        self._ChannelId = None
+        self._TimeWindow = None
+        self._PageNum = None
+        self._PageSize = None
+
+    @property
+    def ChannelId(self):
+        r"""查询某个Channel下面的所有Program。
+        :rtype: str
+        """
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
+    @property
+    def TimeWindow(self):
+        r"""窗口时长信息，单位秒。最大7776000s
+        :rtype: int
+        """
+        return self._TimeWindow
+
+    @TimeWindow.setter
+    def TimeWindow(self, TimeWindow):
+        self._TimeWindow = TimeWindow
+
+    @property
+    def PageNum(self):
+        r"""页数，取值范围为[1, 10000]。
+        :rtype: int
+        """
+        return self._PageNum
+
+    @PageNum.setter
+    def PageNum(self, PageNum):
+        self._PageNum = PageNum
+
+    @property
+    def PageSize(self):
+        r"""每页大小，取值范围为[1, 1000]。
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+
+    def _deserialize(self, params):
+        self._ChannelId = params.get("ChannelId")
+        self._TimeWindow = params.get("TimeWindow")
+        self._PageNum = params.get("PageNum")
+        self._PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeStreamPackageLinearAssemblyProgramSchedulesResponse(AbstractModel):
+    r"""DescribeStreamPackageLinearAssemblyProgramSchedules返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Infos: Program的调度列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Infos: list of LinearAssemblyProgramInfo
+        :param _PageNum: 页数。
+        :type PageNum: int
+        :param _PageSize: 每页大小。
+        :type PageSize: int
+        :param _TotalNum: 总数量。
+        :type TotalNum: int
+        :param _TotalPage: 总页数。
+        :type TotalPage: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Infos = None
+        self._PageNum = None
+        self._PageSize = None
+        self._TotalNum = None
+        self._TotalPage = None
+        self._RequestId = None
+
+    @property
+    def Infos(self):
+        r"""Program的调度列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of LinearAssemblyProgramInfo
+        """
+        return self._Infos
+
+    @Infos.setter
+    def Infos(self, Infos):
+        self._Infos = Infos
+
+    @property
+    def PageNum(self):
+        r"""页数。
+        :rtype: int
+        """
+        return self._PageNum
+
+    @PageNum.setter
+    def PageNum(self, PageNum):
+        self._PageNum = PageNum
+
+    @property
+    def PageSize(self):
+        r"""每页大小。
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def TotalNum(self):
+        r"""总数量。
+        :rtype: int
+        """
+        return self._TotalNum
+
+    @TotalNum.setter
+    def TotalNum(self, TotalNum):
+        self._TotalNum = TotalNum
+
+    @property
+    def TotalPage(self):
+        r"""总页数。
+        :rtype: int
+        """
+        return self._TotalPage
+
+    @TotalPage.setter
+    def TotalPage(self, TotalPage):
+        self._TotalPage = TotalPage
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Infos") is not None:
+            self._Infos = []
+            for item in params.get("Infos"):
+                obj = LinearAssemblyProgramInfo()
+                obj._deserialize(item)
+                self._Infos.append(obj)
+        self._PageNum = params.get("PageNum")
+        self._PageSize = params.get("PageSize")
+        self._TotalNum = params.get("TotalNum")
+        self._TotalPage = params.get("TotalPage")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeStreamPackageLinearAssemblyProgramsRequest(AbstractModel):
+    r"""DescribeStreamPackageLinearAssemblyPrograms请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PageNum: 页数，取值范围为[1, 1000]。
+        :type PageNum: int
+        :param _PageSize: 每页大小，取值范围为[1, 10000]。
+        :type PageSize: int
+        :param _ChannelId: 查询某个Channel下面的所有Program。
+        :type ChannelId: str
+        :param _Name: 按Name过滤，模糊匹配
+        :type Name: str
+        """
+        self._PageNum = None
+        self._PageSize = None
+        self._ChannelId = None
+        self._Name = None
+
+    @property
+    def PageNum(self):
+        r"""页数，取值范围为[1, 1000]。
+        :rtype: int
+        """
+        return self._PageNum
+
+    @PageNum.setter
+    def PageNum(self, PageNum):
+        self._PageNum = PageNum
+
+    @property
+    def PageSize(self):
+        r"""每页大小，取值范围为[1, 10000]。
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def ChannelId(self):
+        r"""查询某个Channel下面的所有Program。
+        :rtype: str
+        """
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
+    @property
+    def Name(self):
+        r"""按Name过滤，模糊匹配
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+
+    def _deserialize(self, params):
+        self._PageNum = params.get("PageNum")
+        self._PageSize = params.get("PageSize")
+        self._ChannelId = params.get("ChannelId")
+        self._Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeStreamPackageLinearAssemblyProgramsResponse(AbstractModel):
+    r"""DescribeStreamPackageLinearAssemblyPrograms返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Infos: Program列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Infos: list of LinearAssemblyProgramInfo
+        :param _PageNum: 页数。
+        :type PageNum: int
+        :param _PageSize: 每页大小。
+        :type PageSize: int
+        :param _TotalNum: 总数量。
+        :type TotalNum: int
+        :param _TotalPage: 总页数。
+        :type TotalPage: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Infos = None
+        self._PageNum = None
+        self._PageSize = None
+        self._TotalNum = None
+        self._TotalPage = None
+        self._RequestId = None
+
+    @property
+    def Infos(self):
+        r"""Program列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of LinearAssemblyProgramInfo
+        """
+        return self._Infos
+
+    @Infos.setter
+    def Infos(self, Infos):
+        self._Infos = Infos
+
+    @property
+    def PageNum(self):
+        r"""页数。
+        :rtype: int
+        """
+        return self._PageNum
+
+    @PageNum.setter
+    def PageNum(self, PageNum):
+        self._PageNum = PageNum
+
+    @property
+    def PageSize(self):
+        r"""每页大小。
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def TotalNum(self):
+        r"""总数量。
+        :rtype: int
+        """
+        return self._TotalNum
+
+    @TotalNum.setter
+    def TotalNum(self, TotalNum):
+        self._TotalNum = TotalNum
+
+    @property
+    def TotalPage(self):
+        r"""总页数。
+        :rtype: int
+        """
+        return self._TotalPage
+
+    @TotalPage.setter
+    def TotalPage(self, TotalPage):
+        self._TotalPage = TotalPage
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Infos") is not None:
+            self._Infos = []
+            for item in params.get("Infos"):
+                obj = LinearAssemblyProgramInfo()
+                obj._deserialize(item)
+                self._Infos.append(obj)
+        self._PageNum = params.get("PageNum")
+        self._PageSize = params.get("PageSize")
+        self._TotalNum = params.get("TotalNum")
+        self._TotalPage = params.get("TotalPage")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeStreamPackageLinearAssemblyUsageRequest(AbstractModel):
+    r"""DescribeStreamPackageLinearAssemblyUsage请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: 查询开始时间
+        :type StartTime: str
+        :param _EndTime: 查询结束时间
+        :type EndTime: str
+        :param _Dimension: 维度，可选值：summary对应false；detail 对应true
+        :type Dimension: bool
+        :param _ChannelIds: 要查询的频道ID列表
+        :type ChannelIds: list of str
+        :param _ChannelTiers: 要查询的频道类型，可选Basic/Standard；若为空，默认查询所有类型
+        :type ChannelTiers: list of str
+        """
+        self._StartTime = None
+        self._EndTime = None
+        self._Dimension = None
+        self._ChannelIds = None
+        self._ChannelTiers = None
+
+    @property
+    def StartTime(self):
+        r"""查询开始时间
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""查询结束时间
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Dimension(self):
+        r"""维度，可选值：summary对应false；detail 对应true
+        :rtype: bool
+        """
+        return self._Dimension
+
+    @Dimension.setter
+    def Dimension(self, Dimension):
+        self._Dimension = Dimension
+
+    @property
+    def ChannelIds(self):
+        r"""要查询的频道ID列表
+        :rtype: list of str
+        """
+        return self._ChannelIds
+
+    @ChannelIds.setter
+    def ChannelIds(self, ChannelIds):
+        self._ChannelIds = ChannelIds
+
+    @property
+    def ChannelTiers(self):
+        r"""要查询的频道类型，可选Basic/Standard；若为空，默认查询所有类型
+        :rtype: list of str
+        """
+        return self._ChannelTiers
+
+    @ChannelTiers.setter
+    def ChannelTiers(self, ChannelTiers):
+        self._ChannelTiers = ChannelTiers
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Dimension = params.get("Dimension")
+        self._ChannelIds = params.get("ChannelIds")
+        self._ChannelTiers = params.get("ChannelTiers")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeStreamPackageLinearAssemblyUsageResponse(AbstractModel):
+    r"""DescribeStreamPackageLinearAssemblyUsage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Info: 线性组装用量详情
+        :type Info: :class:`tencentcloud.mps.v20190612.models.AssemblyUsageInfo`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Info = None
+        self._RequestId = None
+
+    @property
+    def Info(self):
+        r"""线性组装用量详情
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AssemblyUsageInfo`
+        """
+        return self._Info
+
+    @Info.setter
+    def Info(self, Info):
+        self._Info = Info
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Info") is not None:
+            self._Info = AssemblyUsageInfo()
+            self._Info._deserialize(params.get("Info"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeStreamPackageSSAIChannelRequest(AbstractModel):
+    r"""DescribeStreamPackageSSAIChannel请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: 广告插入配置ID。
+        :type ID: str
+        """
+        self._ID = None
+
+    @property
+    def ID(self):
+        r"""广告插入配置ID。
+        :rtype: str
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeStreamPackageSSAIChannelResponse(AbstractModel):
+    r"""DescribeStreamPackageSSAIChannel返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Info: 广告插入配置信息。
+        :type Info: :class:`tencentcloud.mps.v20190612.models.SSAIChannelInfo`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Info = None
+        self._RequestId = None
+
+    @property
+    def Info(self):
+        r"""广告插入配置信息。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SSAIChannelInfo`
+        """
+        return self._Info
+
+    @Info.setter
+    def Info(self, Info):
+        self._Info = Info
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Info") is not None:
+            self._Info = SSAIChannelInfo()
+            self._Info._deserialize(params.get("Info"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeStreamPackageSSAIChannelsRequest(AbstractModel):
+    r"""DescribeStreamPackageSSAIChannels请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PageNum: 页码，默认1。
+        :type PageNum: int
+        :param _PageSize: 每页大小，默认10。
+        :type PageSize: int
+        """
+        self._PageNum = None
+        self._PageSize = None
+
+    @property
+    def PageNum(self):
+        r"""页码，默认1。
+        :rtype: int
+        """
+        return self._PageNum
+
+    @PageNum.setter
+    def PageNum(self, PageNum):
+        self._PageNum = PageNum
+
+    @property
+    def PageSize(self):
+        r"""每页大小，默认10。
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+
+    def _deserialize(self, params):
+        self._PageNum = params.get("PageNum")
+        self._PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeStreamPackageSSAIChannelsResponse(AbstractModel):
+    r"""DescribeStreamPackageSSAIChannels返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Infos: 广告插入配置信息。
+        :type Infos: list of SSAIChannelInfo
+        :param _PageNum: 页码。
+        :type PageNum: int
+        :param _PageSize: 每页大小。
+        :type PageSize: int
+        :param _TotalNum: 总条目数。
+        :type TotalNum: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Infos = None
+        self._PageNum = None
+        self._PageSize = None
+        self._TotalNum = None
+        self._RequestId = None
+
+    @property
+    def Infos(self):
+        r"""广告插入配置信息。
+        :rtype: list of SSAIChannelInfo
+        """
+        return self._Infos
+
+    @Infos.setter
+    def Infos(self, Infos):
+        self._Infos = Infos
+
+    @property
+    def PageNum(self):
+        r"""页码。
+        :rtype: int
+        """
+        return self._PageNum
+
+    @PageNum.setter
+    def PageNum(self, PageNum):
+        self._PageNum = PageNum
+
+    @property
+    def PageSize(self):
+        r"""每页大小。
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def TotalNum(self):
+        r"""总条目数。
+        :rtype: int
+        """
+        return self._TotalNum
+
+    @TotalNum.setter
+    def TotalNum(self, TotalNum):
+        self._TotalNum = TotalNum
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Infos") is not None:
+            self._Infos = []
+            for item in params.get("Infos"):
+                obj = SSAIChannelInfo()
+                obj._deserialize(item)
+                self._Infos.append(obj)
+        self._PageNum = params.get("PageNum")
+        self._PageSize = params.get("PageSize")
+        self._TotalNum = params.get("TotalNum")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeStreamPackageSSAIUsageRequest(AbstractModel):
+    r"""DescribeStreamPackageSSAIUsage请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: 起始时间
+        :type StartTime: str
+        :param _EndTime: 结束时间
+        :type EndTime: str
+        :param _ChannelIds: 需要查询的channel_id
+        :type ChannelIds: list of str
+        :param _Types: 需要查询的广告类型。可选Pre-roll/Mid-roll/VOD；若为空，默认查询所有类型
+        :type Types: list of str
+        :param _Dimension: 维度，可选值：summary对应false；detail 对应true
+        :type Dimension: bool
+        """
+        self._StartTime = None
+        self._EndTime = None
+        self._ChannelIds = None
+        self._Types = None
+        self._Dimension = None
+
+    @property
+    def StartTime(self):
+        r"""起始时间
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""结束时间
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def ChannelIds(self):
+        r"""需要查询的channel_id
+        :rtype: list of str
+        """
+        return self._ChannelIds
+
+    @ChannelIds.setter
+    def ChannelIds(self, ChannelIds):
+        self._ChannelIds = ChannelIds
+
+    @property
+    def Types(self):
+        r"""需要查询的广告类型。可选Pre-roll/Mid-roll/VOD；若为空，默认查询所有类型
+        :rtype: list of str
+        """
+        return self._Types
+
+    @Types.setter
+    def Types(self, Types):
+        self._Types = Types
+
+    @property
+    def Dimension(self):
+        r"""维度，可选值：summary对应false；detail 对应true
+        :rtype: bool
+        """
+        return self._Dimension
+
+    @Dimension.setter
+    def Dimension(self, Dimension):
+        self._Dimension = Dimension
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._ChannelIds = params.get("ChannelIds")
+        self._Types = params.get("Types")
+        self._Dimension = params.get("Dimension")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeStreamPackageSSAIUsageResponse(AbstractModel):
+    r"""DescribeStreamPackageSSAIUsage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Info: SSAI用量信息
+        :type Info: :class:`tencentcloud.mps.v20190612.models.SSAIUsageInfo`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Info = None
+        self._RequestId = None
+
+    @property
+    def Info(self):
+        r"""SSAI用量信息
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SSAIUsageInfo`
+        """
+        return self._Info
+
+    @Info.setter
+    def Info(self, Info):
+        self._Info = Info
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Info") is not None:
+            self._Info = SSAIUsageInfo()
+            self._Info._deserialize(params.get("Info"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeStreamPackageSourceAlertsRequest(AbstractModel):
+    r"""DescribeStreamPackageSourceAlerts请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SourceId: Source ID。
+        :type SourceId: str
+        :param _StartTime: 查询开始时间，Unix时间戳，支持最近七天的查询。
+        :type StartTime: int
+        :param _EndTime: 查询结束时间，Unix时间戳，支持最近七天的查询。
+        :type EndTime: int
+        """
+        self._SourceId = None
+        self._StartTime = None
+        self._EndTime = None
+
+    @property
+    def SourceId(self):
+        r"""Source ID。
+        :rtype: str
+        """
+        return self._SourceId
+
+    @SourceId.setter
+    def SourceId(self, SourceId):
+        self._SourceId = SourceId
+
+    @property
+    def StartTime(self):
+        r"""查询开始时间，Unix时间戳，支持最近七天的查询。
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""查询结束时间，Unix时间戳，支持最近七天的查询。
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+
+    def _deserialize(self, params):
+        self._SourceId = params.get("SourceId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeStreamPackageSourceAlertsResponse(AbstractModel):
+    r"""DescribeStreamPackageSourceAlerts返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Infos: Source告警信息。
+        :type Infos: list of SourceAlert
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Infos = None
+        self._RequestId = None
+
+    @property
+    def Infos(self):
+        r"""Source告警信息。
+        :rtype: list of SourceAlert
+        """
+        return self._Infos
+
+    @Infos.setter
+    def Infos(self, Infos):
+        self._Infos = Infos
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Infos") is not None:
+            self._Infos = []
+            for item in params.get("Infos"):
+                obj = SourceAlert()
+                obj._deserialize(item)
+                self._Infos.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeStreamPackageSourceLocationRequest(AbstractModel):
+    r"""DescribeStreamPackageSourceLocation请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: SourceLocation Id。
+        :type Id: str
+        """
+        self._Id = None
+
+    @property
+    def Id(self):
+        r"""SourceLocation Id。
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeStreamPackageSourceLocationResponse(AbstractModel):
+    r"""DescribeStreamPackageSourceLocation返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Info: SourceLocation信息。
+        :type Info: :class:`tencentcloud.mps.v20190612.models.SourceLocationInfo`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Info = None
+        self._RequestId = None
+
+    @property
+    def Info(self):
+        r"""SourceLocation信息。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SourceLocationInfo`
+        """
+        return self._Info
+
+    @Info.setter
+    def Info(self, Info):
+        self._Info = Info
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Info") is not None:
+            self._Info = SourceLocationInfo()
+            self._Info._deserialize(params.get("Info"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeStreamPackageSourceLocationsRequest(AbstractModel):
+    r"""DescribeStreamPackageSourceLocations请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PageNum: 页数，取值范围为[1, 1000]。
+        :type PageNum: int
+        :param _PageSize: 每页大小，取值范围为[1, 1000]。
+        :type PageSize: int
+        """
+        self._PageNum = None
+        self._PageSize = None
+
+    @property
+    def PageNum(self):
+        r"""页数，取值范围为[1, 1000]。
+        :rtype: int
+        """
+        return self._PageNum
+
+    @PageNum.setter
+    def PageNum(self, PageNum):
+        self._PageNum = PageNum
+
+    @property
+    def PageSize(self):
+        r"""每页大小，取值范围为[1, 1000]。
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+
+    def _deserialize(self, params):
+        self._PageNum = params.get("PageNum")
+        self._PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeStreamPackageSourceLocationsResponse(AbstractModel):
+    r"""DescribeStreamPackageSourceLocations返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Infos: SourceLocation列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Infos: list of SourceLocationInfo
+        :param _PageNum: 页数。
+        :type PageNum: int
+        :param _PageSize: 每页大小。
+        :type PageSize: int
+        :param _TotalNum: 总数量。
+        :type TotalNum: int
+        :param _TotalPage: 总页数。
+        :type TotalPage: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Infos = None
+        self._PageNum = None
+        self._PageSize = None
+        self._TotalNum = None
+        self._TotalPage = None
+        self._RequestId = None
+
+    @property
+    def Infos(self):
+        r"""SourceLocation列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of SourceLocationInfo
+        """
+        return self._Infos
+
+    @Infos.setter
+    def Infos(self, Infos):
+        self._Infos = Infos
+
+    @property
+    def PageNum(self):
+        r"""页数。
+        :rtype: int
+        """
+        return self._PageNum
+
+    @PageNum.setter
+    def PageNum(self, PageNum):
+        self._PageNum = PageNum
+
+    @property
+    def PageSize(self):
+        r"""每页大小。
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def TotalNum(self):
+        r"""总数量。
+        :rtype: int
+        """
+        return self._TotalNum
+
+    @TotalNum.setter
+    def TotalNum(self, TotalNum):
+        self._TotalNum = TotalNum
+
+    @property
+    def TotalPage(self):
+        r"""总页数。
+        :rtype: int
+        """
+        return self._TotalPage
+
+    @TotalPage.setter
+    def TotalPage(self, TotalPage):
+        self._TotalPage = TotalPage
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Infos") is not None:
+            self._Infos = []
+            for item in params.get("Infos"):
+                obj = SourceLocationInfo()
+                obj._deserialize(item)
+                self._Infos.append(obj)
+        self._PageNum = params.get("PageNum")
+        self._PageSize = params.get("PageSize")
+        self._TotalNum = params.get("TotalNum")
+        self._TotalPage = params.get("TotalPage")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeStreamPackageSourceRequest(AbstractModel):
+    r"""DescribeStreamPackageSource请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: Source Id。
+        :type Id: str
+        """
+        self._Id = None
+
+    @property
+    def Id(self):
+        r"""Source Id。
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeStreamPackageSourceResponse(AbstractModel):
+    r"""DescribeStreamPackageSource返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Info: Source信息。
+        :type Info: :class:`tencentcloud.mps.v20190612.models.SourceInfo`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Info = None
+        self._RequestId = None
+
+    @property
+    def Info(self):
+        r"""Source信息。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SourceInfo`
+        """
+        return self._Info
+
+    @Info.setter
+    def Info(self, Info):
+        self._Info = Info
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Info") is not None:
+            self._Info = SourceInfo()
+            self._Info._deserialize(params.get("Info"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeStreamPackageSourcesRequest(AbstractModel):
+    r"""DescribeStreamPackageSources请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PageNum: 页数，取值范围为[1, 1000]。
+        :type PageNum: int
+        :param _PageSize: 每页大小，取值范围为[1, 1000]。
+        :type PageSize: int
+        :param _LocationId: Location Id，查询该location下面所有source。
+        :type LocationId: str
+        :param _Type: Source的类型，分直播Live和点播VOD。
+        :type Type: str
+        """
+        self._PageNum = None
+        self._PageSize = None
+        self._LocationId = None
+        self._Type = None
+
+    @property
+    def PageNum(self):
+        r"""页数，取值范围为[1, 1000]。
+        :rtype: int
+        """
+        return self._PageNum
+
+    @PageNum.setter
+    def PageNum(self, PageNum):
+        self._PageNum = PageNum
+
+    @property
+    def PageSize(self):
+        r"""每页大小，取值范围为[1, 1000]。
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def LocationId(self):
+        r"""Location Id，查询该location下面所有source。
+        :rtype: str
+        """
+        return self._LocationId
+
+    @LocationId.setter
+    def LocationId(self, LocationId):
+        self._LocationId = LocationId
+
+    @property
+    def Type(self):
+        r"""Source的类型，分直播Live和点播VOD。
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._PageNum = params.get("PageNum")
+        self._PageSize = params.get("PageSize")
+        self._LocationId = params.get("LocationId")
+        self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeStreamPackageSourcesResponse(AbstractModel):
+    r"""DescribeStreamPackageSources返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Infos: Source列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Infos: list of SourceInfo
+        :param _PageNum: 页数。
+        :type PageNum: int
+        :param _PageSize: 每页大小。
+        :type PageSize: int
+        :param _TotalNum: 总数量。
+        :type TotalNum: int
+        :param _TotalPage: 总页数。
+        :type TotalPage: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Infos = None
+        self._PageNum = None
+        self._PageSize = None
+        self._TotalNum = None
+        self._TotalPage = None
+        self._RequestId = None
+
+    @property
+    def Infos(self):
+        r"""Source列表。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of SourceInfo
+        """
+        return self._Infos
+
+    @Infos.setter
+    def Infos(self, Infos):
+        self._Infos = Infos
+
+    @property
+    def PageNum(self):
+        r"""页数。
+        :rtype: int
+        """
+        return self._PageNum
+
+    @PageNum.setter
+    def PageNum(self, PageNum):
+        self._PageNum = PageNum
+
+    @property
+    def PageSize(self):
+        r"""每页大小。
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def TotalNum(self):
+        r"""总数量。
+        :rtype: int
+        """
+        return self._TotalNum
+
+    @TotalNum.setter
+    def TotalNum(self, TotalNum):
+        self._TotalNum = TotalNum
+
+    @property
+    def TotalPage(self):
+        r"""总页数。
+        :rtype: int
+        """
+        return self._TotalPage
+
+    @TotalPage.setter
+    def TotalPage(self, TotalPage):
+        self._TotalPage = TotalPage
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Infos") is not None:
+            self._Infos = []
+            for item in params.get("Infos"):
+                obj = SourceInfo()
+                obj._deserialize(item)
+                self._Infos.append(obj)
+        self._PageNum = params.get("PageNum")
+        self._PageSize = params.get("PageSize")
+        self._TotalNum = params.get("TotalNum")
+        self._TotalPage = params.get("TotalPage")
         self._RequestId = params.get("RequestId")
 
 
@@ -44859,6 +49002,429 @@ class InputAddress(AbstractModel):
         
 
 
+class LinearAssemblyChannelInfo(AbstractModel):
+    r"""线性组装频道信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>线性组装频道名称。</p>
+        :type Name: str
+        :param _Tier: <p>定义channel的特性，Standard支持直播和点播源，Basic只支持点播源编排。</p>
+        :type Tier: str
+        :param _PlaybackMode: <p>频道中的source切换的模式，分Linear线性和Loop循环，直播只支持Linear。</p>
+        :type PlaybackMode: str
+        :param _TimeShiftConf: <p>时移配置，vod有效。</p>
+        :type TimeShiftConf: :class:`tencentcloud.mps.v20190612.models.TimeShiftInfo`
+        :param _SlateConf: <p>垫片配置。</p>
+        :type SlateConf: :class:`tencentcloud.mps.v20190612.models.SlateInfo`
+        :param _Outputs: <p>output信息。</p>
+        :type Outputs: list of OutputInfo
+        :param _AttachedPrograms: <p>该channel绑定的program列表。</p>
+        :type AttachedPrograms: list of str
+        :param _ProgramSchedules: <p>program信息。</p>
+        :type ProgramSchedules: list of ProgramScheduleInfo
+        :param _Id: <p>Id。</p>
+        :type Id: str
+        :param _Region: <p>Region。</p>
+        :type Region: str
+        :param _State: <p>State。</p>
+        :type State: str
+        :param _TimeShiftEnable: <p>时移开启开关。</p>
+        :type TimeShiftEnable: bool
+        :param _CreateTime: <p>channel创建时间，unix秒时间戳。</p>
+        :type CreateTime: int
+        """
+        self._Name = None
+        self._Tier = None
+        self._PlaybackMode = None
+        self._TimeShiftConf = None
+        self._SlateConf = None
+        self._Outputs = None
+        self._AttachedPrograms = None
+        self._ProgramSchedules = None
+        self._Id = None
+        self._Region = None
+        self._State = None
+        self._TimeShiftEnable = None
+        self._CreateTime = None
+
+    @property
+    def Name(self):
+        r"""<p>线性组装频道名称。</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Tier(self):
+        r"""<p>定义channel的特性，Standard支持直播和点播源，Basic只支持点播源编排。</p>
+        :rtype: str
+        """
+        return self._Tier
+
+    @Tier.setter
+    def Tier(self, Tier):
+        self._Tier = Tier
+
+    @property
+    def PlaybackMode(self):
+        r"""<p>频道中的source切换的模式，分Linear线性和Loop循环，直播只支持Linear。</p>
+        :rtype: str
+        """
+        return self._PlaybackMode
+
+    @PlaybackMode.setter
+    def PlaybackMode(self, PlaybackMode):
+        self._PlaybackMode = PlaybackMode
+
+    @property
+    def TimeShiftConf(self):
+        r"""<p>时移配置，vod有效。</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TimeShiftInfo`
+        """
+        return self._TimeShiftConf
+
+    @TimeShiftConf.setter
+    def TimeShiftConf(self, TimeShiftConf):
+        self._TimeShiftConf = TimeShiftConf
+
+    @property
+    def SlateConf(self):
+        r"""<p>垫片配置。</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SlateInfo`
+        """
+        return self._SlateConf
+
+    @SlateConf.setter
+    def SlateConf(self, SlateConf):
+        self._SlateConf = SlateConf
+
+    @property
+    def Outputs(self):
+        r"""<p>output信息。</p>
+        :rtype: list of OutputInfo
+        """
+        return self._Outputs
+
+    @Outputs.setter
+    def Outputs(self, Outputs):
+        self._Outputs = Outputs
+
+    @property
+    def AttachedPrograms(self):
+        r"""<p>该channel绑定的program列表。</p>
+        :rtype: list of str
+        """
+        return self._AttachedPrograms
+
+    @AttachedPrograms.setter
+    def AttachedPrograms(self, AttachedPrograms):
+        self._AttachedPrograms = AttachedPrograms
+
+    @property
+    def ProgramSchedules(self):
+        r"""<p>program信息。</p>
+        :rtype: list of ProgramScheduleInfo
+        """
+        return self._ProgramSchedules
+
+    @ProgramSchedules.setter
+    def ProgramSchedules(self, ProgramSchedules):
+        self._ProgramSchedules = ProgramSchedules
+
+    @property
+    def Id(self):
+        r"""<p>Id。</p>
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Region(self):
+        r"""<p>Region。</p>
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def State(self):
+        r"""<p>State。</p>
+        :rtype: str
+        """
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def TimeShiftEnable(self):
+        r"""<p>时移开启开关。</p>
+        :rtype: bool
+        """
+        return self._TimeShiftEnable
+
+    @TimeShiftEnable.setter
+    def TimeShiftEnable(self, TimeShiftEnable):
+        self._TimeShiftEnable = TimeShiftEnable
+
+    @property
+    def CreateTime(self):
+        r"""<p>channel创建时间，unix秒时间戳。</p>
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Tier = params.get("Tier")
+        self._PlaybackMode = params.get("PlaybackMode")
+        if params.get("TimeShiftConf") is not None:
+            self._TimeShiftConf = TimeShiftInfo()
+            self._TimeShiftConf._deserialize(params.get("TimeShiftConf"))
+        if params.get("SlateConf") is not None:
+            self._SlateConf = SlateInfo()
+            self._SlateConf._deserialize(params.get("SlateConf"))
+        if params.get("Outputs") is not None:
+            self._Outputs = []
+            for item in params.get("Outputs"):
+                obj = OutputInfo()
+                obj._deserialize(item)
+                self._Outputs.append(obj)
+        self._AttachedPrograms = params.get("AttachedPrograms")
+        if params.get("ProgramSchedules") is not None:
+            self._ProgramSchedules = []
+            for item in params.get("ProgramSchedules"):
+                obj = ProgramScheduleInfo()
+                obj._deserialize(item)
+                self._ProgramSchedules.append(obj)
+        self._Id = params.get("Id")
+        self._Region = params.get("Region")
+        self._State = params.get("State")
+        self._TimeShiftEnable = params.get("TimeShiftEnable")
+        self._CreateTime = params.get("CreateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LinearAssemblyProgramInfo(AbstractModel):
+    r"""频道线性组装program信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: program名称。
+        :type Name: str
+        :param _SourceType: 编排的目标source的类型，分直播和点播。
+        :type SourceType: str
+        :param _SourceLocationId: 关联的source location id。
+        :type SourceLocationId: str
+        :param _SourceId: SourceId，唯一标识一个source。
+        :type SourceId: str
+        :param _SourceName: 关联的直播or点播，source名称，location下全局唯一。
+        :type SourceName: str
+        :param _AttachedChannel: 绑定的channel。
+        :type AttachedChannel: str
+        :param _PlaybackConf: 播放配置。
+        :type PlaybackConf: :class:`tencentcloud.mps.v20190612.models.PlaybackInfo`
+        :param _AdBreaks: AdBreaks。
+        :type AdBreaks: list of AdBreakInfo
+        :param _Id: Id。
+        :type Id: str
+        :param _Region: Region。
+        :type Region: str
+        :param _SourceLocationName: SourceLocation名称。
+        :type SourceLocationName: str
+        """
+        self._Name = None
+        self._SourceType = None
+        self._SourceLocationId = None
+        self._SourceId = None
+        self._SourceName = None
+        self._AttachedChannel = None
+        self._PlaybackConf = None
+        self._AdBreaks = None
+        self._Id = None
+        self._Region = None
+        self._SourceLocationName = None
+
+    @property
+    def Name(self):
+        r"""program名称。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def SourceType(self):
+        r"""编排的目标source的类型，分直播和点播。
+        :rtype: str
+        """
+        return self._SourceType
+
+    @SourceType.setter
+    def SourceType(self, SourceType):
+        self._SourceType = SourceType
+
+    @property
+    def SourceLocationId(self):
+        r"""关联的source location id。
+        :rtype: str
+        """
+        return self._SourceLocationId
+
+    @SourceLocationId.setter
+    def SourceLocationId(self, SourceLocationId):
+        self._SourceLocationId = SourceLocationId
+
+    @property
+    def SourceId(self):
+        r"""SourceId，唯一标识一个source。
+        :rtype: str
+        """
+        return self._SourceId
+
+    @SourceId.setter
+    def SourceId(self, SourceId):
+        self._SourceId = SourceId
+
+    @property
+    def SourceName(self):
+        r"""关联的直播or点播，source名称，location下全局唯一。
+        :rtype: str
+        """
+        return self._SourceName
+
+    @SourceName.setter
+    def SourceName(self, SourceName):
+        self._SourceName = SourceName
+
+    @property
+    def AttachedChannel(self):
+        r"""绑定的channel。
+        :rtype: str
+        """
+        return self._AttachedChannel
+
+    @AttachedChannel.setter
+    def AttachedChannel(self, AttachedChannel):
+        self._AttachedChannel = AttachedChannel
+
+    @property
+    def PlaybackConf(self):
+        r"""播放配置。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.PlaybackInfo`
+        """
+        return self._PlaybackConf
+
+    @PlaybackConf.setter
+    def PlaybackConf(self, PlaybackConf):
+        self._PlaybackConf = PlaybackConf
+
+    @property
+    def AdBreaks(self):
+        r"""AdBreaks。
+        :rtype: list of AdBreakInfo
+        """
+        return self._AdBreaks
+
+    @AdBreaks.setter
+    def AdBreaks(self, AdBreaks):
+        self._AdBreaks = AdBreaks
+
+    @property
+    def Id(self):
+        r"""Id。
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Region(self):
+        r"""Region。
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def SourceLocationName(self):
+        r"""SourceLocation名称。
+        :rtype: str
+        """
+        return self._SourceLocationName
+
+    @SourceLocationName.setter
+    def SourceLocationName(self, SourceLocationName):
+        self._SourceLocationName = SourceLocationName
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._SourceType = params.get("SourceType")
+        self._SourceLocationId = params.get("SourceLocationId")
+        self._SourceId = params.get("SourceId")
+        self._SourceName = params.get("SourceName")
+        self._AttachedChannel = params.get("AttachedChannel")
+        if params.get("PlaybackConf") is not None:
+            self._PlaybackConf = PlaybackInfo()
+            self._PlaybackConf._deserialize(params.get("PlaybackConf"))
+        if params.get("AdBreaks") is not None:
+            self._AdBreaks = []
+            for item in params.get("AdBreaks"):
+                obj = AdBreakInfo()
+                obj._deserialize(item)
+                self._AdBreaks.append(obj)
+        self._Id = params.get("Id")
+        self._Region = params.get("Region")
+        self._SourceLocationName = params.get("SourceLocationName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class LiveActivityResItem(AbstractModel):
     r"""直播编排子任务输出
 
@@ -48788,6 +53354,57 @@ class ManageTaskResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ManifestInfo(AbstractModel):
+    r"""线性组装频道配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Windows: 单位秒。
+        :type Windows: int
+        :param _AdMarkupType: 打到output广告标签的格式，可选Date Range和Enhanced SCTE-35。
+        :type AdMarkupType: str
+        """
+        self._Windows = None
+        self._AdMarkupType = None
+
+    @property
+    def Windows(self):
+        r"""单位秒。
+        :rtype: int
+        """
+        return self._Windows
+
+    @Windows.setter
+    def Windows(self, Windows):
+        self._Windows = Windows
+
+    @property
+    def AdMarkupType(self):
+        r"""打到output广告标签的格式，可选Date Range和Enhanced SCTE-35。
+        :rtype: str
+        """
+        return self._AdMarkupType
+
+    @AdMarkupType.setter
+    def AdMarkupType(self, AdMarkupType):
+        self._AdMarkupType = AdMarkupType
+
+
+    def _deserialize(self, params):
+        self._Windows = params.get("Windows")
+        self._AdMarkupType = params.get("AdMarkupType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class MediaAiAnalysisClassificationItem(AbstractModel):
     r"""智能分类结果
 
@@ -52636,6 +57253,57 @@ class MediaVideoStreamItem(AbstractModel):
         self._Codecs = params.get("Codecs")
         self._FpsNumerator = params.get("FpsNumerator")
         self._FpsDenominator = params.get("FpsDenominator")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Metadata(AbstractModel):
+    r"""Metadata。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: Key。
+        :type Key: str
+        :param _Value: Value。
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        r"""Key。
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        r"""Value。
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -56800,6 +61468,731 @@ class ModifyStreamLinkSecurityGroupResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyStreamPackageLinearAssemblyChannelRequest(AbstractModel):
+    r"""ModifyStreamPackageLinearAssemblyChannel请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: Channel Id。
+        :type Id: str
+        :param _Name: 修改后的名称。
+        :type Name: str
+        :param _Tier: 定义channel的特性，Standard支持直播和点播源，Basic只支持点播源编排。
+        :type Tier: str
+        :param _PlaybackMode: 频道中的source切换的模式，分Linear线性和Loop循环，直播只支持Linear。
+        :type PlaybackMode: str
+        :param _TimeShiftEnable: 时移开启开关。
+        :type TimeShiftEnable: bool
+        :param _TimeShiftConf: 时移配置。	
+        :type TimeShiftConf: :class:`tencentcloud.mps.v20190612.models.TimeShiftInfo`
+        :param _SlateConf: 垫片配置。	
+        :type SlateConf: :class:`tencentcloud.mps.v20190612.models.SlateInfo`
+        :param _Outputs: 输出配置。	
+        :type Outputs: list of OutputInfo
+        """
+        self._Id = None
+        self._Name = None
+        self._Tier = None
+        self._PlaybackMode = None
+        self._TimeShiftEnable = None
+        self._TimeShiftConf = None
+        self._SlateConf = None
+        self._Outputs = None
+
+    @property
+    def Id(self):
+        r"""Channel Id。
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        r"""修改后的名称。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Tier(self):
+        r"""定义channel的特性，Standard支持直播和点播源，Basic只支持点播源编排。
+        :rtype: str
+        """
+        return self._Tier
+
+    @Tier.setter
+    def Tier(self, Tier):
+        self._Tier = Tier
+
+    @property
+    def PlaybackMode(self):
+        r"""频道中的source切换的模式，分Linear线性和Loop循环，直播只支持Linear。
+        :rtype: str
+        """
+        return self._PlaybackMode
+
+    @PlaybackMode.setter
+    def PlaybackMode(self, PlaybackMode):
+        self._PlaybackMode = PlaybackMode
+
+    @property
+    def TimeShiftEnable(self):
+        r"""时移开启开关。
+        :rtype: bool
+        """
+        return self._TimeShiftEnable
+
+    @TimeShiftEnable.setter
+    def TimeShiftEnable(self, TimeShiftEnable):
+        self._TimeShiftEnable = TimeShiftEnable
+
+    @property
+    def TimeShiftConf(self):
+        r"""时移配置。	
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TimeShiftInfo`
+        """
+        return self._TimeShiftConf
+
+    @TimeShiftConf.setter
+    def TimeShiftConf(self, TimeShiftConf):
+        self._TimeShiftConf = TimeShiftConf
+
+    @property
+    def SlateConf(self):
+        r"""垫片配置。	
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SlateInfo`
+        """
+        return self._SlateConf
+
+    @SlateConf.setter
+    def SlateConf(self, SlateConf):
+        self._SlateConf = SlateConf
+
+    @property
+    def Outputs(self):
+        r"""输出配置。	
+        :rtype: list of OutputInfo
+        """
+        return self._Outputs
+
+    @Outputs.setter
+    def Outputs(self, Outputs):
+        self._Outputs = Outputs
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._Tier = params.get("Tier")
+        self._PlaybackMode = params.get("PlaybackMode")
+        self._TimeShiftEnable = params.get("TimeShiftEnable")
+        if params.get("TimeShiftConf") is not None:
+            self._TimeShiftConf = TimeShiftInfo()
+            self._TimeShiftConf._deserialize(params.get("TimeShiftConf"))
+        if params.get("SlateConf") is not None:
+            self._SlateConf = SlateInfo()
+            self._SlateConf._deserialize(params.get("SlateConf"))
+        if params.get("Outputs") is not None:
+            self._Outputs = []
+            for item in params.get("Outputs"):
+                obj = OutputInfo()
+                obj._deserialize(item)
+                self._Outputs.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyStreamPackageLinearAssemblyChannelResponse(AbstractModel):
+    r"""ModifyStreamPackageLinearAssemblyChannel返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyStreamPackageLinearAssemblyProgramRequest(AbstractModel):
+    r"""ModifyStreamPackageLinearAssemblyProgram请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: Program Id。
+        :type Id: str
+        :param _Name: 修改后的名称。
+        :type Name: str
+        :param _SourceType: 编排的目标source的类型，分直播和点播。Tier为Basic时只支持VOD，Tier为Standard时支持Live和VOD
+        :type SourceType: str
+        :param _SourceLocationId: 关联的source location。	
+        :type SourceLocationId: str
+        :param _SourceName: 关联的直播or点播，source名称，location下全局唯一。
+        :type SourceName: str
+        :param _PlaybackConf: PlaybackConf。
+        :type PlaybackConf: :class:`tencentcloud.mps.v20190612.models.PlaybackInfoReq`
+        :param _AdBreaks: AdBreaks。
+        :type AdBreaks: list of AdBreakInfo
+        """
+        self._Id = None
+        self._Name = None
+        self._SourceType = None
+        self._SourceLocationId = None
+        self._SourceName = None
+        self._PlaybackConf = None
+        self._AdBreaks = None
+
+    @property
+    def Id(self):
+        r"""Program Id。
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        r"""修改后的名称。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def SourceType(self):
+        r"""编排的目标source的类型，分直播和点播。Tier为Basic时只支持VOD，Tier为Standard时支持Live和VOD
+        :rtype: str
+        """
+        return self._SourceType
+
+    @SourceType.setter
+    def SourceType(self, SourceType):
+        self._SourceType = SourceType
+
+    @property
+    def SourceLocationId(self):
+        r"""关联的source location。	
+        :rtype: str
+        """
+        return self._SourceLocationId
+
+    @SourceLocationId.setter
+    def SourceLocationId(self, SourceLocationId):
+        self._SourceLocationId = SourceLocationId
+
+    @property
+    def SourceName(self):
+        r"""关联的直播or点播，source名称，location下全局唯一。
+        :rtype: str
+        """
+        return self._SourceName
+
+    @SourceName.setter
+    def SourceName(self, SourceName):
+        self._SourceName = SourceName
+
+    @property
+    def PlaybackConf(self):
+        r"""PlaybackConf。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.PlaybackInfoReq`
+        """
+        return self._PlaybackConf
+
+    @PlaybackConf.setter
+    def PlaybackConf(self, PlaybackConf):
+        self._PlaybackConf = PlaybackConf
+
+    @property
+    def AdBreaks(self):
+        r"""AdBreaks。
+        :rtype: list of AdBreakInfo
+        """
+        return self._AdBreaks
+
+    @AdBreaks.setter
+    def AdBreaks(self, AdBreaks):
+        self._AdBreaks = AdBreaks
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._SourceType = params.get("SourceType")
+        self._SourceLocationId = params.get("SourceLocationId")
+        self._SourceName = params.get("SourceName")
+        if params.get("PlaybackConf") is not None:
+            self._PlaybackConf = PlaybackInfoReq()
+            self._PlaybackConf._deserialize(params.get("PlaybackConf"))
+        if params.get("AdBreaks") is not None:
+            self._AdBreaks = []
+            for item in params.get("AdBreaks"):
+                obj = AdBreakInfo()
+                obj._deserialize(item)
+                self._AdBreaks.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyStreamPackageLinearAssemblyProgramResponse(AbstractModel):
+    r"""ModifyStreamPackageLinearAssemblyProgram返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyStreamPackageSSAIChannelRequest(AbstractModel):
+    r"""ModifyStreamPackageSSAIChannel请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 广告插入配置名称，全局唯一，不能与其他频道重复。
+        :type Name: str
+        :param _ContentSource: 通配广告源地址。
+        :type ContentSource: str
+        :param _SSAIInfo: 广告插入配置信息。
+        :type SSAIInfo: :class:`tencentcloud.mps.v20190612.models.SSAIConf`
+        :param _ID: 广告插入配置ID。
+        :type ID: str
+        """
+        self._Name = None
+        self._ContentSource = None
+        self._SSAIInfo = None
+        self._ID = None
+
+    @property
+    def Name(self):
+        r"""广告插入配置名称，全局唯一，不能与其他频道重复。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ContentSource(self):
+        r"""通配广告源地址。
+        :rtype: str
+        """
+        return self._ContentSource
+
+    @ContentSource.setter
+    def ContentSource(self, ContentSource):
+        self._ContentSource = ContentSource
+
+    @property
+    def SSAIInfo(self):
+        r"""广告插入配置信息。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SSAIConf`
+        """
+        return self._SSAIInfo
+
+    @SSAIInfo.setter
+    def SSAIInfo(self, SSAIInfo):
+        self._SSAIInfo = SSAIInfo
+
+    @property
+    def ID(self):
+        r"""广告插入配置ID。
+        :rtype: str
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._ContentSource = params.get("ContentSource")
+        if params.get("SSAIInfo") is not None:
+            self._SSAIInfo = SSAIConf()
+            self._SSAIInfo._deserialize(params.get("SSAIInfo"))
+        self._ID = params.get("ID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyStreamPackageSSAIChannelResponse(AbstractModel):
+    r"""ModifyStreamPackageSSAIChannel返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyStreamPackageSourceLocationRequest(AbstractModel):
+    r"""ModifyStreamPackageSourceLocation请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: SourceLocation Id。
+        :type Id: str
+        :param _Name: 修改后的名称。
+        :type Name: str
+        :param _BaseUrl: 基准URL。	
+        :type BaseUrl: str
+        :param _SegmentDeliverEnable: 是否开启补片。
+        :type SegmentDeliverEnable: bool
+        :param _SegmentDeliverConf: 补片配置。	
+        :type SegmentDeliverConf: :class:`tencentcloud.mps.v20190612.models.SegmentDeliverInfo`
+        :param _SegmentDeliverUsePackageEnable: 是否开启package分发分片，默认开启。	
+        :type SegmentDeliverUsePackageEnable: bool
+        """
+        self._Id = None
+        self._Name = None
+        self._BaseUrl = None
+        self._SegmentDeliverEnable = None
+        self._SegmentDeliverConf = None
+        self._SegmentDeliverUsePackageEnable = None
+
+    @property
+    def Id(self):
+        r"""SourceLocation Id。
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        r"""修改后的名称。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def BaseUrl(self):
+        r"""基准URL。	
+        :rtype: str
+        """
+        return self._BaseUrl
+
+    @BaseUrl.setter
+    def BaseUrl(self, BaseUrl):
+        self._BaseUrl = BaseUrl
+
+    @property
+    def SegmentDeliverEnable(self):
+        r"""是否开启补片。
+        :rtype: bool
+        """
+        return self._SegmentDeliverEnable
+
+    @SegmentDeliverEnable.setter
+    def SegmentDeliverEnable(self, SegmentDeliverEnable):
+        self._SegmentDeliverEnable = SegmentDeliverEnable
+
+    @property
+    def SegmentDeliverConf(self):
+        r"""补片配置。	
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SegmentDeliverInfo`
+        """
+        return self._SegmentDeliverConf
+
+    @SegmentDeliverConf.setter
+    def SegmentDeliverConf(self, SegmentDeliverConf):
+        self._SegmentDeliverConf = SegmentDeliverConf
+
+    @property
+    def SegmentDeliverUsePackageEnable(self):
+        r"""是否开启package分发分片，默认开启。	
+        :rtype: bool
+        """
+        return self._SegmentDeliverUsePackageEnable
+
+    @SegmentDeliverUsePackageEnable.setter
+    def SegmentDeliverUsePackageEnable(self, SegmentDeliverUsePackageEnable):
+        self._SegmentDeliverUsePackageEnable = SegmentDeliverUsePackageEnable
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._BaseUrl = params.get("BaseUrl")
+        self._SegmentDeliverEnable = params.get("SegmentDeliverEnable")
+        if params.get("SegmentDeliverConf") is not None:
+            self._SegmentDeliverConf = SegmentDeliverInfo()
+            self._SegmentDeliverConf._deserialize(params.get("SegmentDeliverConf"))
+        self._SegmentDeliverUsePackageEnable = params.get("SegmentDeliverUsePackageEnable")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyStreamPackageSourceLocationResponse(AbstractModel):
+    r"""ModifyStreamPackageSourceLocation返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyStreamPackageSourceRequest(AbstractModel):
+    r"""ModifyStreamPackageSource请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: Source Id。
+        :type Id: str
+        :param _Name: 修改后的名称。
+        :type Name: str
+        :param _Type: 区分直播Live和点播VOD source类型。	
+        :type Type: str
+        :param _PackageConfs: source配置。	
+        :type PackageConfs: list of SourcePackageConf
+        :param _SourceTags: ADS可以根据Source Tag信息，返回更精准的广告。
+        :type SourceTags: list of SourceTag
+        """
+        self._Id = None
+        self._Name = None
+        self._Type = None
+        self._PackageConfs = None
+        self._SourceTags = None
+
+    @property
+    def Id(self):
+        r"""Source Id。
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        r"""修改后的名称。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        r"""区分直播Live和点播VOD source类型。	
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def PackageConfs(self):
+        r"""source配置。	
+        :rtype: list of SourcePackageConf
+        """
+        return self._PackageConfs
+
+    @PackageConfs.setter
+    def PackageConfs(self, PackageConfs):
+        self._PackageConfs = PackageConfs
+
+    @property
+    def SourceTags(self):
+        r"""ADS可以根据Source Tag信息，返回更精准的广告。
+        :rtype: list of SourceTag
+        """
+        return self._SourceTags
+
+    @SourceTags.setter
+    def SourceTags(self, SourceTags):
+        self._SourceTags = SourceTags
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        if params.get("PackageConfs") is not None:
+            self._PackageConfs = []
+            for item in params.get("PackageConfs"):
+                obj = SourcePackageConf()
+                obj._deserialize(item)
+                self._PackageConfs.append(obj)
+        if params.get("SourceTags") is not None:
+            self._SourceTags = []
+            for item in params.get("SourceTags"):
+                obj = SourceTag()
+                obj._deserialize(item)
+                self._SourceTags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyStreamPackageSourceResponse(AbstractModel):
+    r"""ModifyStreamPackageSource返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifySubtitleEmbedTemplateRequest(AbstractModel):
     r"""ModifySubtitleEmbedTemplate请求参数结构体
 
@@ -57625,6 +63018,57 @@ class MosaicInput(AbstractModel):
         
 
 
+class NameServer(AbstractModel):
+    r"""自定义服务器信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 名称。
+        :type Name: str
+        :param _Url: 地址。
+        :type Url: str
+        """
+        self._Name = None
+        self._Url = None
+
+    @property
+    def Name(self):
+        r"""名称。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Url(self):
+        r"""地址。
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Url = params.get("Url")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class NumberFormat(AbstractModel):
     r"""输出文件名的`{number}`变量的规则。
 
@@ -57936,6 +63380,121 @@ class OutputAddress(AbstractModel):
         
 
 
+class OutputInfo(AbstractModel):
+    r"""线性组装output信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: HLS DASH。
+        :type Type: str
+        :param _GroupName: output group名称，可以和source的group名称对应关联起来。
+        :type GroupName: str
+        :param _ManifestName: channel program调度后输出的文件名。
+        :type ManifestName: str
+        :param _ManifestConf: Type为HLS时manifest配置使用的字段。
+        :type ManifestConf: :class:`tencentcloud.mps.v20190612.models.ManifestInfo`
+        :param _PlaybackURL: 播放地址。
+        :type PlaybackURL: str
+        :param _DashManifestConf: Type为DASH时manifest配置使用的字段。
+        :type DashManifestConf: :class:`tencentcloud.mps.v20190612.models.DashManifestInfo`
+        """
+        self._Type = None
+        self._GroupName = None
+        self._ManifestName = None
+        self._ManifestConf = None
+        self._PlaybackURL = None
+        self._DashManifestConf = None
+
+    @property
+    def Type(self):
+        r"""HLS DASH。
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def GroupName(self):
+        r"""output group名称，可以和source的group名称对应关联起来。
+        :rtype: str
+        """
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def ManifestName(self):
+        r"""channel program调度后输出的文件名。
+        :rtype: str
+        """
+        return self._ManifestName
+
+    @ManifestName.setter
+    def ManifestName(self, ManifestName):
+        self._ManifestName = ManifestName
+
+    @property
+    def ManifestConf(self):
+        r"""Type为HLS时manifest配置使用的字段。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ManifestInfo`
+        """
+        return self._ManifestConf
+
+    @ManifestConf.setter
+    def ManifestConf(self, ManifestConf):
+        self._ManifestConf = ManifestConf
+
+    @property
+    def PlaybackURL(self):
+        r"""播放地址。
+        :rtype: str
+        """
+        return self._PlaybackURL
+
+    @PlaybackURL.setter
+    def PlaybackURL(self, PlaybackURL):
+        self._PlaybackURL = PlaybackURL
+
+    @property
+    def DashManifestConf(self):
+        r"""Type为DASH时manifest配置使用的字段。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DashManifestInfo`
+        """
+        return self._DashManifestConf
+
+    @DashManifestConf.setter
+    def DashManifestConf(self, DashManifestConf):
+        self._DashManifestConf = DashManifestConf
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._GroupName = params.get("GroupName")
+        self._ManifestName = params.get("ManifestName")
+        if params.get("ManifestConf") is not None:
+            self._ManifestConf = ManifestInfo()
+            self._ManifestConf._deserialize(params.get("ManifestConf"))
+        self._PlaybackURL = params.get("PlaybackURL")
+        if params.get("DashManifestConf") is not None:
+            self._DashManifestConf = DashManifestInfo()
+            self._DashManifestConf._deserialize(params.get("DashManifestConf"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class OutputRISTSourceAddressResp(AbstractModel):
     r"""RIST输出的监听地址。
 
@@ -57981,6 +63540,106 @@ class OutputRISTSourceAddressResp(AbstractModel):
     def _deserialize(self, params):
         self._Ip = params.get("Ip")
         self._Port = params.get("Port")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OutputReq(AbstractModel):
+    r"""线性组装output信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: 输出类型，区分HLS DASH。
+        :type Type: str
+        :param _GroupName: output group名称，可以和source的group名称对应关联起来。
+        :type GroupName: str
+        :param _ManifestName: channel program调度后输出的文件名。
+        :type ManifestName: str
+        :param _ManifestConf: Type为HLS时manifest配置使用的字段。
+        :type ManifestConf: :class:`tencentcloud.mps.v20190612.models.ManifestInfo`
+        :param _DashManifestConf: Type为DASH时manifest配置使用的字段。
+        :type DashManifestConf: :class:`tencentcloud.mps.v20190612.models.DashManifestInfo`
+        """
+        self._Type = None
+        self._GroupName = None
+        self._ManifestName = None
+        self._ManifestConf = None
+        self._DashManifestConf = None
+
+    @property
+    def Type(self):
+        r"""输出类型，区分HLS DASH。
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def GroupName(self):
+        r"""output group名称，可以和source的group名称对应关联起来。
+        :rtype: str
+        """
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def ManifestName(self):
+        r"""channel program调度后输出的文件名。
+        :rtype: str
+        """
+        return self._ManifestName
+
+    @ManifestName.setter
+    def ManifestName(self, ManifestName):
+        self._ManifestName = ManifestName
+
+    @property
+    def ManifestConf(self):
+        r"""Type为HLS时manifest配置使用的字段。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ManifestInfo`
+        """
+        return self._ManifestConf
+
+    @ManifestConf.setter
+    def ManifestConf(self, ManifestConf):
+        self._ManifestConf = ManifestConf
+
+    @property
+    def DashManifestConf(self):
+        r"""Type为DASH时manifest配置使用的字段。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DashManifestInfo`
+        """
+        return self._DashManifestConf
+
+    @DashManifestConf.setter
+    def DashManifestConf(self, DashManifestConf):
+        self._DashManifestConf = DashManifestConf
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._GroupName = params.get("GroupName")
+        self._ManifestName = params.get("ManifestName")
+        if params.get("ManifestConf") is not None:
+            self._ManifestConf = ManifestInfo()
+            self._ManifestConf._deserialize(params.get("ManifestConf"))
+        if params.get("DashManifestConf") is not None:
+            self._DashManifestConf = DashManifestInfo()
+            self._DashManifestConf._deserialize(params.get("DashManifestConf"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -58937,6 +64596,247 @@ class PidSelector(AbstractModel):
     def _deserialize(self, params):
         self._AudioPID = params.get("AudioPID")
         self._VideoPID = params.get("VideoPID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PlaybackInfo(AbstractModel):
+    r"""program播放配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Duration: <p>program持续时间，单位毫秒，直播有效。</p>
+        :type Duration: int
+        :param _TransitionType: <p>program启动方式，直播只支持Absolute，点播还支持Relative。</p>
+        :type TransitionType: str
+        :param _StartTime: <p>unix时间戳，Absolute场景下program的开始执行时间。</p>
+        :type StartTime: int
+        :param _RelativePosition: <p>和所选program的插入顺序关系，分After和Before。</p>
+        :type RelativePosition: str
+        :param _RelativeProgramId: <p>所选的插入参考program id。</p>
+        :type RelativeProgramId: str
+        :param _ClipRangeConf: <p>垫片配置。</p>
+        :type ClipRangeConf: :class:`tencentcloud.mps.v20190612.models.ClipRangeInfo`
+        :param _RelativeProgramName: <p>RelativeProgramName。</p>
+        :type RelativeProgramName: str
+        """
+        self._Duration = None
+        self._TransitionType = None
+        self._StartTime = None
+        self._RelativePosition = None
+        self._RelativeProgramId = None
+        self._ClipRangeConf = None
+        self._RelativeProgramName = None
+
+    @property
+    def Duration(self):
+        r"""<p>program持续时间，单位毫秒，直播有效。</p>
+        :rtype: int
+        """
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def TransitionType(self):
+        r"""<p>program启动方式，直播只支持Absolute，点播还支持Relative。</p>
+        :rtype: str
+        """
+        return self._TransitionType
+
+    @TransitionType.setter
+    def TransitionType(self, TransitionType):
+        self._TransitionType = TransitionType
+
+    @property
+    def StartTime(self):
+        r"""<p>unix时间戳，Absolute场景下program的开始执行时间。</p>
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def RelativePosition(self):
+        r"""<p>和所选program的插入顺序关系，分After和Before。</p>
+        :rtype: str
+        """
+        return self._RelativePosition
+
+    @RelativePosition.setter
+    def RelativePosition(self, RelativePosition):
+        self._RelativePosition = RelativePosition
+
+    @property
+    def RelativeProgramId(self):
+        r"""<p>所选的插入参考program id。</p>
+        :rtype: str
+        """
+        return self._RelativeProgramId
+
+    @RelativeProgramId.setter
+    def RelativeProgramId(self, RelativeProgramId):
+        self._RelativeProgramId = RelativeProgramId
+
+    @property
+    def ClipRangeConf(self):
+        r"""<p>垫片配置。</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ClipRangeInfo`
+        """
+        return self._ClipRangeConf
+
+    @ClipRangeConf.setter
+    def ClipRangeConf(self, ClipRangeConf):
+        self._ClipRangeConf = ClipRangeConf
+
+    @property
+    def RelativeProgramName(self):
+        r"""<p>RelativeProgramName。</p>
+        :rtype: str
+        """
+        return self._RelativeProgramName
+
+    @RelativeProgramName.setter
+    def RelativeProgramName(self, RelativeProgramName):
+        self._RelativeProgramName = RelativeProgramName
+
+
+    def _deserialize(self, params):
+        self._Duration = params.get("Duration")
+        self._TransitionType = params.get("TransitionType")
+        self._StartTime = params.get("StartTime")
+        self._RelativePosition = params.get("RelativePosition")
+        self._RelativeProgramId = params.get("RelativeProgramId")
+        if params.get("ClipRangeConf") is not None:
+            self._ClipRangeConf = ClipRangeInfo()
+            self._ClipRangeConf._deserialize(params.get("ClipRangeConf"))
+        self._RelativeProgramName = params.get("RelativeProgramName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PlaybackInfoReq(AbstractModel):
+    r"""program播放配置请求。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TransitionType: program启动方式，直播只支持Absolute，点播还支持Relative。PlaybackMode类型为Linear的VOD支持Absolute和Relative。PlaybackMode类型为Loop的VOD只支持Relative
+        :type TransitionType: str
+        :param _StartTime: unix时间戳，absolute场景下program的开始执行时间。最多大于当前90天（7776000）。
+        :type StartTime: int
+        :param _Duration: program持续时间，单位毫秒，直播有效。支持600000-86400000。默认600000。
+        :type Duration: int
+        :param _RelativePosition: 和所选program的插入顺序关系，分After和Before。
+        :type RelativePosition: str
+        :param _RelativeProgramId: 所选的插入参考program id。
+        :type RelativeProgramId: str
+        :param _ClipRangeConf: 垫片配置。
+        :type ClipRangeConf: :class:`tencentcloud.mps.v20190612.models.ClipRangeInfo`
+        """
+        self._TransitionType = None
+        self._StartTime = None
+        self._Duration = None
+        self._RelativePosition = None
+        self._RelativeProgramId = None
+        self._ClipRangeConf = None
+
+    @property
+    def TransitionType(self):
+        r"""program启动方式，直播只支持Absolute，点播还支持Relative。PlaybackMode类型为Linear的VOD支持Absolute和Relative。PlaybackMode类型为Loop的VOD只支持Relative
+        :rtype: str
+        """
+        return self._TransitionType
+
+    @TransitionType.setter
+    def TransitionType(self, TransitionType):
+        self._TransitionType = TransitionType
+
+    @property
+    def StartTime(self):
+        r"""unix时间戳，absolute场景下program的开始执行时间。最多大于当前90天（7776000）。
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def Duration(self):
+        r"""program持续时间，单位毫秒，直播有效。支持600000-86400000。默认600000。
+        :rtype: int
+        """
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def RelativePosition(self):
+        r"""和所选program的插入顺序关系，分After和Before。
+        :rtype: str
+        """
+        return self._RelativePosition
+
+    @RelativePosition.setter
+    def RelativePosition(self, RelativePosition):
+        self._RelativePosition = RelativePosition
+
+    @property
+    def RelativeProgramId(self):
+        r"""所选的插入参考program id。
+        :rtype: str
+        """
+        return self._RelativeProgramId
+
+    @RelativeProgramId.setter
+    def RelativeProgramId(self, RelativeProgramId):
+        self._RelativeProgramId = RelativeProgramId
+
+    @property
+    def ClipRangeConf(self):
+        r"""垫片配置。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ClipRangeInfo`
+        """
+        return self._ClipRangeConf
+
+    @ClipRangeConf.setter
+    def ClipRangeConf(self, ClipRangeConf):
+        self._ClipRangeConf = ClipRangeConf
+
+
+    def _deserialize(self, params):
+        self._TransitionType = params.get("TransitionType")
+        self._StartTime = params.get("StartTime")
+        self._Duration = params.get("Duration")
+        self._RelativePosition = params.get("RelativePosition")
+        self._RelativeProgramId = params.get("RelativeProgramId")
+        if params.get("ClipRangeConf") is not None:
+            self._ClipRangeConf = ClipRangeInfo()
+            self._ClipRangeConf._deserialize(params.get("ClipRangeConf"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -61210,6 +67110,369 @@ class ProcessMediaResponse(AbstractModel):
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
+
+
+class ProgramAlertCounts(AbstractModel):
+    r"""线性组装Program聚合告警信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProgramId: <p>Program ID。</p>
+        :type ProgramId: str
+        :param _ProgramName: <p>Program名称。</p>
+        :type ProgramName: str
+        :param _Category: <p>告警分类。</p>
+        :type Category: str
+        :param _Count: <p>出现次数</p>
+        :type Count: int
+        :param _LastModifiedTime: <p>更新时间。</p>
+        :type LastModifiedTime: int
+        """
+        self._ProgramId = None
+        self._ProgramName = None
+        self._Category = None
+        self._Count = None
+        self._LastModifiedTime = None
+
+    @property
+    def ProgramId(self):
+        r"""<p>Program ID。</p>
+        :rtype: str
+        """
+        return self._ProgramId
+
+    @ProgramId.setter
+    def ProgramId(self, ProgramId):
+        self._ProgramId = ProgramId
+
+    @property
+    def ProgramName(self):
+        r"""<p>Program名称。</p>
+        :rtype: str
+        """
+        return self._ProgramName
+
+    @ProgramName.setter
+    def ProgramName(self, ProgramName):
+        self._ProgramName = ProgramName
+
+    @property
+    def Category(self):
+        r"""<p>告警分类。</p>
+        :rtype: str
+        """
+        return self._Category
+
+    @Category.setter
+    def Category(self, Category):
+        self._Category = Category
+
+    @property
+    def Count(self):
+        r"""<p>出现次数</p>
+        :rtype: int
+        """
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+    @property
+    def LastModifiedTime(self):
+        r"""<p>更新时间。</p>
+        :rtype: int
+        """
+        return self._LastModifiedTime
+
+    @LastModifiedTime.setter
+    def LastModifiedTime(self, LastModifiedTime):
+        self._LastModifiedTime = LastModifiedTime
+
+
+    def _deserialize(self, params):
+        self._ProgramId = params.get("ProgramId")
+        self._ProgramName = params.get("ProgramName")
+        self._Category = params.get("Category")
+        self._Count = params.get("Count")
+        self._LastModifiedTime = params.get("LastModifiedTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProgramAlertInfos(AbstractModel):
+    r"""线性组装program告警信息详情。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ChannelId: <p>频道ID。</p>
+        :type ChannelId: str
+        :param _ChannelName: <p>频道名称。</p>
+        :type ChannelName: str
+        :param _ProgramId: <p>ProgramName。</p>
+        :type ProgramId: str
+        :param _ProgramName: <p>ProgramName。</p>
+        :type ProgramName: str
+        :param _Code: <p>告警事件码。</p>
+        :type Code: int
+        :param _Category: <p>告警分类。</p>
+        :type Category: str
+        :param _Message: <p>告警消息。</p>
+        :type Message: str
+        :param _LastModifiedTime: <p>更新时间。</p>
+        :type LastModifiedTime: int
+        """
+        self._ChannelId = None
+        self._ChannelName = None
+        self._ProgramId = None
+        self._ProgramName = None
+        self._Code = None
+        self._Category = None
+        self._Message = None
+        self._LastModifiedTime = None
+
+    @property
+    def ChannelId(self):
+        r"""<p>频道ID。</p>
+        :rtype: str
+        """
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
+    @property
+    def ChannelName(self):
+        r"""<p>频道名称。</p>
+        :rtype: str
+        """
+        return self._ChannelName
+
+    @ChannelName.setter
+    def ChannelName(self, ChannelName):
+        self._ChannelName = ChannelName
+
+    @property
+    def ProgramId(self):
+        r"""<p>ProgramName。</p>
+        :rtype: str
+        """
+        return self._ProgramId
+
+    @ProgramId.setter
+    def ProgramId(self, ProgramId):
+        self._ProgramId = ProgramId
+
+    @property
+    def ProgramName(self):
+        r"""<p>ProgramName。</p>
+        :rtype: str
+        """
+        return self._ProgramName
+
+    @ProgramName.setter
+    def ProgramName(self, ProgramName):
+        self._ProgramName = ProgramName
+
+    @property
+    def Code(self):
+        r"""<p>告警事件码。</p>
+        :rtype: int
+        """
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def Category(self):
+        r"""<p>告警分类。</p>
+        :rtype: str
+        """
+        return self._Category
+
+    @Category.setter
+    def Category(self, Category):
+        self._Category = Category
+
+    @property
+    def Message(self):
+        r"""<p>告警消息。</p>
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def LastModifiedTime(self):
+        r"""<p>更新时间。</p>
+        :rtype: int
+        """
+        return self._LastModifiedTime
+
+    @LastModifiedTime.setter
+    def LastModifiedTime(self, LastModifiedTime):
+        self._LastModifiedTime = LastModifiedTime
+
+
+    def _deserialize(self, params):
+        self._ChannelId = params.get("ChannelId")
+        self._ChannelName = params.get("ChannelName")
+        self._ProgramId = params.get("ProgramId")
+        self._ProgramName = params.get("ProgramName")
+        self._Code = params.get("Code")
+        self._Category = params.get("Category")
+        self._Message = params.get("Message")
+        self._LastModifiedTime = params.get("LastModifiedTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProgramScheduleInfo(AbstractModel):
+    r"""该channel下面Program的调度信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProgramName: <p>program名称。</p>
+        :type ProgramName: str
+        :param _ProgramId: <p>program id。</p>
+        :type ProgramId: str
+        :param _SourceType: <p>source类型。</p>
+        :type SourceType: str
+        :param _SourceId: <p>source id。</p>
+        :type SourceId: str
+        :param _SourceLocationId: <p>source location的id。</p>
+        :type SourceLocationId: str
+        :param _StartTime: <p>开始时间戳。</p>
+        :type StartTime: int
+        :param _Duration: <p>持续时长。</p>
+        :type Duration: str
+        """
+        self._ProgramName = None
+        self._ProgramId = None
+        self._SourceType = None
+        self._SourceId = None
+        self._SourceLocationId = None
+        self._StartTime = None
+        self._Duration = None
+
+    @property
+    def ProgramName(self):
+        r"""<p>program名称。</p>
+        :rtype: str
+        """
+        return self._ProgramName
+
+    @ProgramName.setter
+    def ProgramName(self, ProgramName):
+        self._ProgramName = ProgramName
+
+    @property
+    def ProgramId(self):
+        r"""<p>program id。</p>
+        :rtype: str
+        """
+        return self._ProgramId
+
+    @ProgramId.setter
+    def ProgramId(self, ProgramId):
+        self._ProgramId = ProgramId
+
+    @property
+    def SourceType(self):
+        r"""<p>source类型。</p>
+        :rtype: str
+        """
+        return self._SourceType
+
+    @SourceType.setter
+    def SourceType(self, SourceType):
+        self._SourceType = SourceType
+
+    @property
+    def SourceId(self):
+        r"""<p>source id。</p>
+        :rtype: str
+        """
+        return self._SourceId
+
+    @SourceId.setter
+    def SourceId(self, SourceId):
+        self._SourceId = SourceId
+
+    @property
+    def SourceLocationId(self):
+        r"""<p>source location的id。</p>
+        :rtype: str
+        """
+        return self._SourceLocationId
+
+    @SourceLocationId.setter
+    def SourceLocationId(self, SourceLocationId):
+        self._SourceLocationId = SourceLocationId
+
+    @property
+    def StartTime(self):
+        r"""<p>开始时间戳。</p>
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def Duration(self):
+        r"""<p>持续时长。</p>
+        :rtype: str
+        """
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+
+    def _deserialize(self, params):
+        self._ProgramName = params.get("ProgramName")
+        self._ProgramId = params.get("ProgramId")
+        self._SourceType = params.get("SourceType")
+        self._SourceId = params.get("SourceId")
+        self._SourceLocationId = params.get("SourceLocationId")
+        self._StartTime = params.get("StartTime")
+        self._Duration = params.get("Duration")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ProhibitedAsrReviewTemplateInfo(AbstractModel):
@@ -65054,6 +71317,556 @@ class SRTSourceAddressResp(AbstractModel):
         
 
 
+class SSAIChannelInfo(AbstractModel):
+    r"""广告插入频道配置信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: 频道ID，全局唯一标识。
+        :type ID: str
+        :param _Name: 频道名称。
+        :type Name: str
+        :param _ContentSource: 广告源信息。
+        :type ContentSource: str
+        :param _PlaybackPrefix: 播放地址。
+        :type PlaybackPrefix: str
+        :param _SSAIInfo: 广告插入SSAI配置信息。
+        :type SSAIInfo: :class:`tencentcloud.mps.v20190612.models.SSAIConf`
+        :param _Region: 地域信息。
+        :type Region: str
+        :param _SessionInitPrefix: 用于clickthrough地址
+        :type SessionInitPrefix: str
+        """
+        self._ID = None
+        self._Name = None
+        self._ContentSource = None
+        self._PlaybackPrefix = None
+        self._SSAIInfo = None
+        self._Region = None
+        self._SessionInitPrefix = None
+
+    @property
+    def ID(self):
+        r"""频道ID，全局唯一标识。
+        :rtype: str
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def Name(self):
+        r"""频道名称。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ContentSource(self):
+        r"""广告源信息。
+        :rtype: str
+        """
+        return self._ContentSource
+
+    @ContentSource.setter
+    def ContentSource(self, ContentSource):
+        self._ContentSource = ContentSource
+
+    @property
+    def PlaybackPrefix(self):
+        r"""播放地址。
+        :rtype: str
+        """
+        return self._PlaybackPrefix
+
+    @PlaybackPrefix.setter
+    def PlaybackPrefix(self, PlaybackPrefix):
+        self._PlaybackPrefix = PlaybackPrefix
+
+    @property
+    def SSAIInfo(self):
+        r"""广告插入SSAI配置信息。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SSAIConf`
+        """
+        return self._SSAIInfo
+
+    @SSAIInfo.setter
+    def SSAIInfo(self, SSAIInfo):
+        self._SSAIInfo = SSAIInfo
+
+    @property
+    def Region(self):
+        r"""地域信息。
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def SessionInitPrefix(self):
+        r"""用于clickthrough地址
+        :rtype: str
+        """
+        return self._SessionInitPrefix
+
+    @SessionInitPrefix.setter
+    def SessionInitPrefix(self, SessionInitPrefix):
+        self._SessionInitPrefix = SessionInitPrefix
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        self._Name = params.get("Name")
+        self._ContentSource = params.get("ContentSource")
+        self._PlaybackPrefix = params.get("PlaybackPrefix")
+        if params.get("SSAIInfo") is not None:
+            self._SSAIInfo = SSAIConf()
+            self._SSAIInfo._deserialize(params.get("SSAIInfo"))
+        self._Region = params.get("Region")
+        self._SessionInitPrefix = params.get("SessionInitPrefix")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SSAIConf(AbstractModel):
+    r"""SSAI广告插入配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AdsUrl: <p>广告决策服务器URL(ADS)。</p>
+        :type AdsUrl: str
+        :param _ConfigAliases: <p>参数配置。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConfigAliases: list of ConfigAliasesInfo
+        :param _AdMarkerPassthrough: <p>是否开启广告标记透传。</p>
+        :type AdMarkerPassthrough: bool
+        :param _SCTE35AdType: <p>如何处理广告中的标记,可选值[1-2]：<br>1:所有SCTE-35类型标记全部处理-all（默认）<br>2:SCTE-35enhanced，解析部分类型。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SCTE35AdType: int
+        :param _SlateAd: <p>默认广告url。</p>
+        :type SlateAd: str
+        :param _Threshold: <p>未填充的最大时长，单位：秒。</p>
+        :type Threshold: int
+        :param _DashMPDLocation: <p>是否开启mpd location, true对应enable， false对应disable。</p>
+        :type DashMPDLocation: bool
+        :param _AdTriggers: <p>被视作广告的标记类型，可选值[1-8]：</p><ol><li>Splice insert<br>2.Provider advertisement</li><li>Distributor advertisement</li><li>Provider placement opportunity</li><li>Distributor placement opportunity</li><li>Break</li><li>Provider overlay placement opportunity</li><li>Distributor overlay placement opportunity。</li></ol>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AdTriggers: list of int non-negative
+        :param _DeliveryRestrictions: <p>被视作广告的分发限制类型，可选值[1-4]：<br>1:None<br>2:Restricted（默认） 3:Unrestricted<br>4.Both</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeliveryRestrictions: int
+        :param _SourceCDNPrefix: <p>源流CDN前缀，需要以http://或者https://开头。</p>
+        :type SourceCDNPrefix: str
+        :param _AdCDNPrefix: <p>广告CDN前缀，需要以http://或者https://开头。</p>
+        :type AdCDNPrefix: str
+        :param _PreRollAdsUrl: <p>预加载广告决策服务地址。</p>
+        :type PreRollAdsUrl: str
+        :param _PreRollMaxAllowedDuration: <p>预加载广告最大允许时长，0-3600。</p>
+        :type PreRollMaxAllowedDuration: int
+        :param _MultiRequest: <p>是否开启多次请求ADS,开启后将优先请求ADS，请求失败后再请求兜底广告</p>
+        :type MultiRequest: bool
+        """
+        self._AdsUrl = None
+        self._ConfigAliases = None
+        self._AdMarkerPassthrough = None
+        self._SCTE35AdType = None
+        self._SlateAd = None
+        self._Threshold = None
+        self._DashMPDLocation = None
+        self._AdTriggers = None
+        self._DeliveryRestrictions = None
+        self._SourceCDNPrefix = None
+        self._AdCDNPrefix = None
+        self._PreRollAdsUrl = None
+        self._PreRollMaxAllowedDuration = None
+        self._MultiRequest = None
+
+    @property
+    def AdsUrl(self):
+        r"""<p>广告决策服务器URL(ADS)。</p>
+        :rtype: str
+        """
+        return self._AdsUrl
+
+    @AdsUrl.setter
+    def AdsUrl(self, AdsUrl):
+        self._AdsUrl = AdsUrl
+
+    @property
+    def ConfigAliases(self):
+        r"""<p>参数配置。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ConfigAliasesInfo
+        """
+        return self._ConfigAliases
+
+    @ConfigAliases.setter
+    def ConfigAliases(self, ConfigAliases):
+        self._ConfigAliases = ConfigAliases
+
+    @property
+    def AdMarkerPassthrough(self):
+        r"""<p>是否开启广告标记透传。</p>
+        :rtype: bool
+        """
+        return self._AdMarkerPassthrough
+
+    @AdMarkerPassthrough.setter
+    def AdMarkerPassthrough(self, AdMarkerPassthrough):
+        self._AdMarkerPassthrough = AdMarkerPassthrough
+
+    @property
+    def SCTE35AdType(self):
+        r"""<p>如何处理广告中的标记,可选值[1-2]：<br>1:所有SCTE-35类型标记全部处理-all（默认）<br>2:SCTE-35enhanced，解析部分类型。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._SCTE35AdType
+
+    @SCTE35AdType.setter
+    def SCTE35AdType(self, SCTE35AdType):
+        self._SCTE35AdType = SCTE35AdType
+
+    @property
+    def SlateAd(self):
+        r"""<p>默认广告url。</p>
+        :rtype: str
+        """
+        return self._SlateAd
+
+    @SlateAd.setter
+    def SlateAd(self, SlateAd):
+        self._SlateAd = SlateAd
+
+    @property
+    def Threshold(self):
+        r"""<p>未填充的最大时长，单位：秒。</p>
+        :rtype: int
+        """
+        return self._Threshold
+
+    @Threshold.setter
+    def Threshold(self, Threshold):
+        self._Threshold = Threshold
+
+    @property
+    def DashMPDLocation(self):
+        r"""<p>是否开启mpd location, true对应enable， false对应disable。</p>
+        :rtype: bool
+        """
+        return self._DashMPDLocation
+
+    @DashMPDLocation.setter
+    def DashMPDLocation(self, DashMPDLocation):
+        self._DashMPDLocation = DashMPDLocation
+
+    @property
+    def AdTriggers(self):
+        r"""<p>被视作广告的标记类型，可选值[1-8]：</p><ol><li>Splice insert<br>2.Provider advertisement</li><li>Distributor advertisement</li><li>Provider placement opportunity</li><li>Distributor placement opportunity</li><li>Break</li><li>Provider overlay placement opportunity</li><li>Distributor overlay placement opportunity。</li></ol>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int non-negative
+        """
+        return self._AdTriggers
+
+    @AdTriggers.setter
+    def AdTriggers(self, AdTriggers):
+        self._AdTriggers = AdTriggers
+
+    @property
+    def DeliveryRestrictions(self):
+        r"""<p>被视作广告的分发限制类型，可选值[1-4]：<br>1:None<br>2:Restricted（默认） 3:Unrestricted<br>4.Both</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._DeliveryRestrictions
+
+    @DeliveryRestrictions.setter
+    def DeliveryRestrictions(self, DeliveryRestrictions):
+        self._DeliveryRestrictions = DeliveryRestrictions
+
+    @property
+    def SourceCDNPrefix(self):
+        r"""<p>源流CDN前缀，需要以http://或者https://开头。</p>
+        :rtype: str
+        """
+        return self._SourceCDNPrefix
+
+    @SourceCDNPrefix.setter
+    def SourceCDNPrefix(self, SourceCDNPrefix):
+        self._SourceCDNPrefix = SourceCDNPrefix
+
+    @property
+    def AdCDNPrefix(self):
+        r"""<p>广告CDN前缀，需要以http://或者https://开头。</p>
+        :rtype: str
+        """
+        return self._AdCDNPrefix
+
+    @AdCDNPrefix.setter
+    def AdCDNPrefix(self, AdCDNPrefix):
+        self._AdCDNPrefix = AdCDNPrefix
+
+    @property
+    def PreRollAdsUrl(self):
+        r"""<p>预加载广告决策服务地址。</p>
+        :rtype: str
+        """
+        return self._PreRollAdsUrl
+
+    @PreRollAdsUrl.setter
+    def PreRollAdsUrl(self, PreRollAdsUrl):
+        self._PreRollAdsUrl = PreRollAdsUrl
+
+    @property
+    def PreRollMaxAllowedDuration(self):
+        r"""<p>预加载广告最大允许时长，0-3600。</p>
+        :rtype: int
+        """
+        return self._PreRollMaxAllowedDuration
+
+    @PreRollMaxAllowedDuration.setter
+    def PreRollMaxAllowedDuration(self, PreRollMaxAllowedDuration):
+        self._PreRollMaxAllowedDuration = PreRollMaxAllowedDuration
+
+    @property
+    def MultiRequest(self):
+        r"""<p>是否开启多次请求ADS,开启后将优先请求ADS，请求失败后再请求兜底广告</p>
+        :rtype: bool
+        """
+        return self._MultiRequest
+
+    @MultiRequest.setter
+    def MultiRequest(self, MultiRequest):
+        self._MultiRequest = MultiRequest
+
+
+    def _deserialize(self, params):
+        self._AdsUrl = params.get("AdsUrl")
+        if params.get("ConfigAliases") is not None:
+            self._ConfigAliases = []
+            for item in params.get("ConfigAliases"):
+                obj = ConfigAliasesInfo()
+                obj._deserialize(item)
+                self._ConfigAliases.append(obj)
+        self._AdMarkerPassthrough = params.get("AdMarkerPassthrough")
+        self._SCTE35AdType = params.get("SCTE35AdType")
+        self._SlateAd = params.get("SlateAd")
+        self._Threshold = params.get("Threshold")
+        self._DashMPDLocation = params.get("DashMPDLocation")
+        self._AdTriggers = params.get("AdTriggers")
+        self._DeliveryRestrictions = params.get("DeliveryRestrictions")
+        self._SourceCDNPrefix = params.get("SourceCDNPrefix")
+        self._AdCDNPrefix = params.get("AdCDNPrefix")
+        self._PreRollAdsUrl = params.get("PreRollAdsUrl")
+        self._PreRollMaxAllowedDuration = params.get("PreRollMaxAllowedDuration")
+        self._MultiRequest = params.get("MultiRequest")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SSAIUsageInfo(AbstractModel):
+    r"""SSAI用量信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AdRequestSuccess: 广告请求成功次数
+        :type AdRequestSuccess: int
+        :param _AdRequestFail: 广告请求失败次数
+        :type AdRequestFail: int
+        :param _Impression: 曝光次数
+        :type Impression: int
+        :param _MidFillRate: 中贴个性化广告填充率
+        :type MidFillRate: float
+        :param _AdMarkerTime: 中贴广告标记时间
+        :type AdMarkerTime: float
+        :param _ReplacedTime: 中贴个性化替换时间
+        :type ReplacedTime: float
+        :param _PreReplaceRate: 前贴广告替换率
+        :type PreReplaceRate: float
+        :param _PreReqNum: 前贴广告请求数
+        :type PreReqNum: int
+        :param _PreReplacedNum: 前贴广告替换数
+        :type PreReplacedNum: int
+        :param _UsageDetails: 各广告配置用量详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UsageDetails: list of UsageDetail
+        """
+        self._AdRequestSuccess = None
+        self._AdRequestFail = None
+        self._Impression = None
+        self._MidFillRate = None
+        self._AdMarkerTime = None
+        self._ReplacedTime = None
+        self._PreReplaceRate = None
+        self._PreReqNum = None
+        self._PreReplacedNum = None
+        self._UsageDetails = None
+
+    @property
+    def AdRequestSuccess(self):
+        r"""广告请求成功次数
+        :rtype: int
+        """
+        return self._AdRequestSuccess
+
+    @AdRequestSuccess.setter
+    def AdRequestSuccess(self, AdRequestSuccess):
+        self._AdRequestSuccess = AdRequestSuccess
+
+    @property
+    def AdRequestFail(self):
+        r"""广告请求失败次数
+        :rtype: int
+        """
+        return self._AdRequestFail
+
+    @AdRequestFail.setter
+    def AdRequestFail(self, AdRequestFail):
+        self._AdRequestFail = AdRequestFail
+
+    @property
+    def Impression(self):
+        r"""曝光次数
+        :rtype: int
+        """
+        return self._Impression
+
+    @Impression.setter
+    def Impression(self, Impression):
+        self._Impression = Impression
+
+    @property
+    def MidFillRate(self):
+        r"""中贴个性化广告填充率
+        :rtype: float
+        """
+        return self._MidFillRate
+
+    @MidFillRate.setter
+    def MidFillRate(self, MidFillRate):
+        self._MidFillRate = MidFillRate
+
+    @property
+    def AdMarkerTime(self):
+        r"""中贴广告标记时间
+        :rtype: float
+        """
+        return self._AdMarkerTime
+
+    @AdMarkerTime.setter
+    def AdMarkerTime(self, AdMarkerTime):
+        self._AdMarkerTime = AdMarkerTime
+
+    @property
+    def ReplacedTime(self):
+        r"""中贴个性化替换时间
+        :rtype: float
+        """
+        return self._ReplacedTime
+
+    @ReplacedTime.setter
+    def ReplacedTime(self, ReplacedTime):
+        self._ReplacedTime = ReplacedTime
+
+    @property
+    def PreReplaceRate(self):
+        r"""前贴广告替换率
+        :rtype: float
+        """
+        return self._PreReplaceRate
+
+    @PreReplaceRate.setter
+    def PreReplaceRate(self, PreReplaceRate):
+        self._PreReplaceRate = PreReplaceRate
+
+    @property
+    def PreReqNum(self):
+        r"""前贴广告请求数
+        :rtype: int
+        """
+        return self._PreReqNum
+
+    @PreReqNum.setter
+    def PreReqNum(self, PreReqNum):
+        self._PreReqNum = PreReqNum
+
+    @property
+    def PreReplacedNum(self):
+        r"""前贴广告替换数
+        :rtype: int
+        """
+        return self._PreReplacedNum
+
+    @PreReplacedNum.setter
+    def PreReplacedNum(self, PreReplacedNum):
+        self._PreReplacedNum = PreReplacedNum
+
+    @property
+    def UsageDetails(self):
+        r"""各广告配置用量详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of UsageDetail
+        """
+        return self._UsageDetails
+
+    @UsageDetails.setter
+    def UsageDetails(self, UsageDetails):
+        self._UsageDetails = UsageDetails
+
+
+    def _deserialize(self, params):
+        self._AdRequestSuccess = params.get("AdRequestSuccess")
+        self._AdRequestFail = params.get("AdRequestFail")
+        self._Impression = params.get("Impression")
+        self._MidFillRate = params.get("MidFillRate")
+        self._AdMarkerTime = params.get("AdMarkerTime")
+        self._ReplacedTime = params.get("ReplacedTime")
+        self._PreReplaceRate = params.get("PreReplaceRate")
+        self._PreReqNum = params.get("PreReqNum")
+        self._PreReplacedNum = params.get("PreReplacedNum")
+        if params.get("UsageDetails") is not None:
+            self._UsageDetails = []
+            for item in params.get("UsageDetails"):
+                obj = UsageDetail()
+                obj._deserialize(item)
+                self._UsageDetails.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SampleSnapshotTaskInput(AbstractModel):
     r"""对视频做采样截图任务输入参数类型。
 
@@ -66940,6 +73753,62 @@ class SecurityGroupInfo(AbstractModel):
         
 
 
+class SegmentDeliverInfo(AbstractModel):
+    r"""SourceLocation垫片配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DefaultSegmentUrl: 默认内容源地址。
+        :type DefaultSegmentUrl: str
+        :param _NameServers: 自定义服务器地址。
+        :type NameServers: list of NameServer
+        """
+        self._DefaultSegmentUrl = None
+        self._NameServers = None
+
+    @property
+    def DefaultSegmentUrl(self):
+        r"""默认内容源地址。
+        :rtype: str
+        """
+        return self._DefaultSegmentUrl
+
+    @DefaultSegmentUrl.setter
+    def DefaultSegmentUrl(self, DefaultSegmentUrl):
+        self._DefaultSegmentUrl = DefaultSegmentUrl
+
+    @property
+    def NameServers(self):
+        r"""自定义服务器地址。
+        :rtype: list of NameServer
+        """
+        return self._NameServers
+
+    @NameServers.setter
+    def NameServers(self, NameServers):
+        self._NameServers = NameServers
+
+
+    def _deserialize(self, params):
+        self._DefaultSegmentUrl = params.get("DefaultSegmentUrl")
+        if params.get("NameServers") is not None:
+            self._NameServers = []
+            for item in params.get("NameServers"):
+                obj = NameServer()
+                obj._deserialize(item)
+                self._NameServers.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SegmentRecognitionItem(AbstractModel):
     r"""智能拆条片段。
 
@@ -67460,6 +74329,57 @@ class SimpleAesDrm(AbstractModel):
         self._Uri = params.get("Uri")
         self._Key = params.get("Key")
         self._Vector = params.get("Vector")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SlateInfo(AbstractModel):
+    r"""线性组装频道垫片配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SourceLocationId: source location的ID。
+        :type SourceLocationId: str
+        :param _VodSourceName: 对应的vod垫片内容源名称。
+        :type VodSourceName: str
+        """
+        self._SourceLocationId = None
+        self._VodSourceName = None
+
+    @property
+    def SourceLocationId(self):
+        r"""source location的ID。
+        :rtype: str
+        """
+        return self._SourceLocationId
+
+    @SourceLocationId.setter
+    def SourceLocationId(self, SourceLocationId):
+        self._SourceLocationId = SourceLocationId
+
+    @property
+    def VodSourceName(self):
+        r"""对应的vod垫片内容源名称。
+        :rtype: str
+        """
+        return self._VodSourceName
+
+    @VodSourceName.setter
+    def VodSourceName(self, VodSourceName):
+        self._VodSourceName = VodSourceName
+
+
+    def _deserialize(self, params):
+        self._SourceLocationId = params.get("SourceLocationId")
+        self._VodSourceName = params.get("VodSourceName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -70534,6 +77454,576 @@ class SnapshotByTimeOffsetTemplate(AbstractModel):
         
 
 
+class SourceAlert(AbstractModel):
+    r"""线性组装Location告警信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SourceId: Source ID。
+        :type SourceId: str
+        :param _SourceName: Source名称。
+        :type SourceName: str
+        :param _Code: 告警事件码。
+        :type Code: int
+        :param _Category: 告警分类。
+        :type Category: str
+        :param _Message: 告警消息。
+        :type Message: str
+        :param _LastModifiedTime: 更新时间。
+        :type LastModifiedTime: int
+        """
+        self._SourceId = None
+        self._SourceName = None
+        self._Code = None
+        self._Category = None
+        self._Message = None
+        self._LastModifiedTime = None
+
+    @property
+    def SourceId(self):
+        r"""Source ID。
+        :rtype: str
+        """
+        return self._SourceId
+
+    @SourceId.setter
+    def SourceId(self, SourceId):
+        self._SourceId = SourceId
+
+    @property
+    def SourceName(self):
+        r"""Source名称。
+        :rtype: str
+        """
+        return self._SourceName
+
+    @SourceName.setter
+    def SourceName(self, SourceName):
+        self._SourceName = SourceName
+
+    @property
+    def Code(self):
+        r"""告警事件码。
+        :rtype: int
+        """
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def Category(self):
+        r"""告警分类。
+        :rtype: str
+        """
+        return self._Category
+
+    @Category.setter
+    def Category(self, Category):
+        self._Category = Category
+
+    @property
+    def Message(self):
+        r"""告警消息。
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def LastModifiedTime(self):
+        r"""更新时间。
+        :rtype: int
+        """
+        return self._LastModifiedTime
+
+    @LastModifiedTime.setter
+    def LastModifiedTime(self, LastModifiedTime):
+        self._LastModifiedTime = LastModifiedTime
+
+
+    def _deserialize(self, params):
+        self._SourceId = params.get("SourceId")
+        self._SourceName = params.get("SourceName")
+        self._Code = params.get("Code")
+        self._Category = params.get("Category")
+        self._Message = params.get("Message")
+        self._LastModifiedTime = params.get("LastModifiedTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SourceInfo(AbstractModel):
+    r"""源信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 名称。
+        :type Name: str
+        :param _Type: source类型，区分直播Live和点播Vod。
+        :type Type: str
+        :param _PackageConf: 源配置。
+        :type PackageConf: list of SourcePackageConf
+        :param _Id: ID。
+        :type Id: str
+        :param _CreateTime: 创建时间戳。
+        :type CreateTime: int
+        :param _UpdateTime: 更新时间戳。
+        :type UpdateTime: int
+        :param _Region: Region。
+        :type Region: str
+        :param _SourceTags: 源标签
+        :type SourceTags: list of SourceTag
+        """
+        self._Name = None
+        self._Type = None
+        self._PackageConf = None
+        self._Id = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._Region = None
+        self._SourceTags = None
+
+    @property
+    def Name(self):
+        r"""名称。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        r"""source类型，区分直播Live和点播Vod。
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def PackageConf(self):
+        r"""源配置。
+        :rtype: list of SourcePackageConf
+        """
+        return self._PackageConf
+
+    @PackageConf.setter
+    def PackageConf(self, PackageConf):
+        self._PackageConf = PackageConf
+
+    @property
+    def Id(self):
+        r"""ID。
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def CreateTime(self):
+        r"""创建时间戳。
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""更新时间戳。
+        :rtype: int
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def Region(self):
+        r"""Region。
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def SourceTags(self):
+        r"""源标签
+        :rtype: list of SourceTag
+        """
+        return self._SourceTags
+
+    @SourceTags.setter
+    def SourceTags(self, SourceTags):
+        self._SourceTags = SourceTags
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        if params.get("PackageConf") is not None:
+            self._PackageConf = []
+            for item in params.get("PackageConf"):
+                obj = SourcePackageConf()
+                obj._deserialize(item)
+                self._PackageConf.append(obj)
+        self._Id = params.get("Id")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._Region = params.get("Region")
+        if params.get("SourceTags") is not None:
+            self._SourceTags = []
+            for item in params.get("SourceTags"):
+                obj = SourceTag()
+                obj._deserialize(item)
+                self._SourceTags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SourceLocationInfo(AbstractModel):
+    r"""SourceLocation配置信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>ID，唯一标识。</p>
+        :type Id: str
+        :param _Name: <p>SourceLocation名称。</p>
+        :type Name: str
+        :param _Region: <p>地域。</p>
+        :type Region: str
+        :param _BaseUrl: <p>BaseUrl信息。</p>
+        :type BaseUrl: str
+        :param _SegmentDeliverEnable: <p>是否开启补片。</p>
+        :type SegmentDeliverEnable: bool
+        :param _SegmentDeliverConf: <p>补片配置。</p>
+        :type SegmentDeliverConf: :class:`tencentcloud.mps.v20190612.models.SegmentDeliverInfo`
+        :param _AttachedLiveSources: <p>绑定的直播source id列表。</p>
+        :type AttachedLiveSources: list of str
+        :param _AttachedVodSources: <p>绑定的点播source id列表。</p>
+        :type AttachedVodSources: list of str
+        :param _CreateTime: <p>source location创建时间，Unix时间戳。</p>
+        :type CreateTime: int
+        :param _UpdateTime: <p>source location最近一次修改时间，Unix时间戳。</p>
+        :type UpdateTime: int
+        :param _SegmentDeliverUsePackageEnable: <p>是否开启package分发分片，默认开启。</p>
+        :type SegmentDeliverUsePackageEnable: bool
+        """
+        self._Id = None
+        self._Name = None
+        self._Region = None
+        self._BaseUrl = None
+        self._SegmentDeliverEnable = None
+        self._SegmentDeliverConf = None
+        self._AttachedLiveSources = None
+        self._AttachedVodSources = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._SegmentDeliverUsePackageEnable = None
+
+    @property
+    def Id(self):
+        r"""<p>ID，唯一标识。</p>
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        r"""<p>SourceLocation名称。</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Region(self):
+        r"""<p>地域。</p>
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def BaseUrl(self):
+        r"""<p>BaseUrl信息。</p>
+        :rtype: str
+        """
+        return self._BaseUrl
+
+    @BaseUrl.setter
+    def BaseUrl(self, BaseUrl):
+        self._BaseUrl = BaseUrl
+
+    @property
+    def SegmentDeliverEnable(self):
+        r"""<p>是否开启补片。</p>
+        :rtype: bool
+        """
+        return self._SegmentDeliverEnable
+
+    @SegmentDeliverEnable.setter
+    def SegmentDeliverEnable(self, SegmentDeliverEnable):
+        self._SegmentDeliverEnable = SegmentDeliverEnable
+
+    @property
+    def SegmentDeliverConf(self):
+        r"""<p>补片配置。</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SegmentDeliverInfo`
+        """
+        return self._SegmentDeliverConf
+
+    @SegmentDeliverConf.setter
+    def SegmentDeliverConf(self, SegmentDeliverConf):
+        self._SegmentDeliverConf = SegmentDeliverConf
+
+    @property
+    def AttachedLiveSources(self):
+        r"""<p>绑定的直播source id列表。</p>
+        :rtype: list of str
+        """
+        return self._AttachedLiveSources
+
+    @AttachedLiveSources.setter
+    def AttachedLiveSources(self, AttachedLiveSources):
+        self._AttachedLiveSources = AttachedLiveSources
+
+    @property
+    def AttachedVodSources(self):
+        r"""<p>绑定的点播source id列表。</p>
+        :rtype: list of str
+        """
+        return self._AttachedVodSources
+
+    @AttachedVodSources.setter
+    def AttachedVodSources(self, AttachedVodSources):
+        self._AttachedVodSources = AttachedVodSources
+
+    @property
+    def CreateTime(self):
+        r"""<p>source location创建时间，Unix时间戳。</p>
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""<p>source location最近一次修改时间，Unix时间戳。</p>
+        :rtype: int
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def SegmentDeliverUsePackageEnable(self):
+        r"""<p>是否开启package分发分片，默认开启。</p>
+        :rtype: bool
+        """
+        return self._SegmentDeliverUsePackageEnable
+
+    @SegmentDeliverUsePackageEnable.setter
+    def SegmentDeliverUsePackageEnable(self, SegmentDeliverUsePackageEnable):
+        self._SegmentDeliverUsePackageEnable = SegmentDeliverUsePackageEnable
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._Region = params.get("Region")
+        self._BaseUrl = params.get("BaseUrl")
+        self._SegmentDeliverEnable = params.get("SegmentDeliverEnable")
+        if params.get("SegmentDeliverConf") is not None:
+            self._SegmentDeliverConf = SegmentDeliverInfo()
+            self._SegmentDeliverConf._deserialize(params.get("SegmentDeliverConf"))
+        self._AttachedLiveSources = params.get("AttachedLiveSources")
+        self._AttachedVodSources = params.get("AttachedVodSources")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._SegmentDeliverUsePackageEnable = params.get("SegmentDeliverUsePackageEnable")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SourcePackageConf(AbstractModel):
+    r"""源文件信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GroupName: group名称，当channel为Linear模式并且选择了vod source的时候，该group 名称和channel output的输出组名称对应。
+        :type GroupName: str
+        :param _Type: 类型，区分HLS和DASH，可选值：HLS、DASH。
+        :type Type: str
+        :param _Path: 访问路径。
+        :type Path: str
+        """
+        self._GroupName = None
+        self._Type = None
+        self._Path = None
+
+    @property
+    def GroupName(self):
+        r"""group名称，当channel为Linear模式并且选择了vod source的时候，该group 名称和channel output的输出组名称对应。
+        :rtype: str
+        """
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def Type(self):
+        r"""类型，区分HLS和DASH，可选值：HLS、DASH。
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Path(self):
+        r"""访问路径。
+        :rtype: str
+        """
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+
+    def _deserialize(self, params):
+        self._GroupName = params.get("GroupName")
+        self._Type = params.get("Type")
+        self._Path = params.get("Path")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SourceTag(AbstractModel):
+    r"""type SourceTag struct {
+    	Key   string `json:"Key"`
+    	Value string `json:"Value"`
+    }
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: sourcetag的key，支持1-50位的大写字母、数字、下划线、中划线
+        :type Key: str
+        :param _Value: sourcetag的value，支持1-200位的字母、数字下划线、中划线、英文句号、百分号（%）
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        r"""sourcetag的key，支持1-50位的大写字母、数字、下划线、中划线
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        r"""sourcetag的value，支持1-200位的字母、数字下划线、中划线、英文句号、百分号（%）
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SpecificationDataItem(AbstractModel):
     r"""指定规格任务统计数据。
 
@@ -70718,6 +78208,87 @@ preset1：每个子流使用不同的key加密；
         
 
 
+class SpliceInsertInfo(AbstractModel):
+    r"""SpliceInsertInfo。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EventID: EventID。
+        :type EventID: str
+        :param _AvailNum: AvailNum。
+        :type AvailNum: str
+        :param _AvailExpected: AvailExpected。
+        :type AvailExpected: str
+        :param _ProgramID: ProgramID。
+        :type ProgramID: str
+        """
+        self._EventID = None
+        self._AvailNum = None
+        self._AvailExpected = None
+        self._ProgramID = None
+
+    @property
+    def EventID(self):
+        r"""EventID。
+        :rtype: str
+        """
+        return self._EventID
+
+    @EventID.setter
+    def EventID(self, EventID):
+        self._EventID = EventID
+
+    @property
+    def AvailNum(self):
+        r"""AvailNum。
+        :rtype: str
+        """
+        return self._AvailNum
+
+    @AvailNum.setter
+    def AvailNum(self, AvailNum):
+        self._AvailNum = AvailNum
+
+    @property
+    def AvailExpected(self):
+        r"""AvailExpected。
+        :rtype: str
+        """
+        return self._AvailExpected
+
+    @AvailExpected.setter
+    def AvailExpected(self, AvailExpected):
+        self._AvailExpected = AvailExpected
+
+    @property
+    def ProgramID(self):
+        r"""ProgramID。
+        :rtype: str
+        """
+        return self._ProgramID
+
+    @ProgramID.setter
+    def ProgramID(self, ProgramID):
+        self._ProgramID = ProgramID
+
+
+    def _deserialize(self, params):
+        self._EventID = params.get("EventID")
+        self._AvailNum = params.get("AvailNum")
+        self._AvailExpected = params.get("AvailExpected")
+        self._ProgramID = params.get("ProgramID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class StartStreamLinkFlowRequest(AbstractModel):
     r"""StartStreamLinkFlow请求参数结构体
 
@@ -70782,6 +78353,70 @@ class StartStreamLinkFlowResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class StartStreamPackageLinearAssemblyChannelRequest(AbstractModel):
+    r"""StartStreamPackageLinearAssemblyChannel请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: Channel ID。
+        :type Id: str
+        """
+        self._Id = None
+
+    @property
+    def Id(self):
+        r"""Channel ID。
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StartStreamPackageLinearAssemblyChannelResponse(AbstractModel):
+    r"""StartStreamPackageLinearAssemblyChannel返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class StopStreamLinkFlowRequest(AbstractModel):
     r"""StopStreamLinkFlow请求参数结构体
 
@@ -70820,6 +78455,70 @@ class StopStreamLinkFlowRequest(AbstractModel):
 
 class StopStreamLinkFlowResponse(AbstractModel):
     r"""StopStreamLinkFlow返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class StopStreamPackageLinearAssemblyChannelRequest(AbstractModel):
+    r"""StopStreamPackageLinearAssemblyChannel请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: Channel ID。
+        :type Id: str
+        """
+        self._Id = None
+
+    @property
+    def Id(self):
+        r"""Channel ID。
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StopStreamPackageLinearAssemblyChannelResponse(AbstractModel):
+    r"""StopStreamPackageLinearAssemblyChannel返回参数结构体
 
     """
 
@@ -75932,6 +83631,183 @@ class TextWatermarkTemplateInputForUpdate(AbstractModel):
         
 
 
+class TimeShiftInfo(AbstractModel):
+    r"""线性组装频道时移配置信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TimeWindows: 回看窗口，单位秒。
+        :type TimeWindows: int
+        """
+        self._TimeWindows = None
+
+    @property
+    def TimeWindows(self):
+        r"""回看窗口，单位秒。
+        :rtype: int
+        """
+        return self._TimeWindows
+
+    @TimeWindows.setter
+    def TimeWindows(self, TimeWindows):
+        self._TimeWindows = TimeWindows
+
+
+    def _deserialize(self, params):
+        self._TimeWindows = params.get("TimeWindows")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TimeSignalInfo(AbstractModel):
+    r"""TimeSignalInfo。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EventID: EventID。
+        :type EventID: str
+        :param _UPIDType: UPIDType。
+        :type UPIDType: str
+        :param _UPID: UPID。
+        :type UPID: str
+        :param _TypeID: TypeID。
+        :type TypeID: str
+        :param _Num: Num。
+        :type Num: str
+        :param _Expected: Expected。
+        :type Expected: str
+        :param _SubsegmentNum: SubsegmentNum。
+        :type SubsegmentNum: str
+        :param _SubsegmentsExpected: SubsegmentsExpected。
+        :type SubsegmentsExpected: str
+        """
+        self._EventID = None
+        self._UPIDType = None
+        self._UPID = None
+        self._TypeID = None
+        self._Num = None
+        self._Expected = None
+        self._SubsegmentNum = None
+        self._SubsegmentsExpected = None
+
+    @property
+    def EventID(self):
+        r"""EventID。
+        :rtype: str
+        """
+        return self._EventID
+
+    @EventID.setter
+    def EventID(self, EventID):
+        self._EventID = EventID
+
+    @property
+    def UPIDType(self):
+        r"""UPIDType。
+        :rtype: str
+        """
+        return self._UPIDType
+
+    @UPIDType.setter
+    def UPIDType(self, UPIDType):
+        self._UPIDType = UPIDType
+
+    @property
+    def UPID(self):
+        r"""UPID。
+        :rtype: str
+        """
+        return self._UPID
+
+    @UPID.setter
+    def UPID(self, UPID):
+        self._UPID = UPID
+
+    @property
+    def TypeID(self):
+        r"""TypeID。
+        :rtype: str
+        """
+        return self._TypeID
+
+    @TypeID.setter
+    def TypeID(self, TypeID):
+        self._TypeID = TypeID
+
+    @property
+    def Num(self):
+        r"""Num。
+        :rtype: str
+        """
+        return self._Num
+
+    @Num.setter
+    def Num(self, Num):
+        self._Num = Num
+
+    @property
+    def Expected(self):
+        r"""Expected。
+        :rtype: str
+        """
+        return self._Expected
+
+    @Expected.setter
+    def Expected(self, Expected):
+        self._Expected = Expected
+
+    @property
+    def SubsegmentNum(self):
+        r"""SubsegmentNum。
+        :rtype: str
+        """
+        return self._SubsegmentNum
+
+    @SubsegmentNum.setter
+    def SubsegmentNum(self, SubsegmentNum):
+        self._SubsegmentNum = SubsegmentNum
+
+    @property
+    def SubsegmentsExpected(self):
+        r"""SubsegmentsExpected。
+        :rtype: str
+        """
+        return self._SubsegmentsExpected
+
+    @SubsegmentsExpected.setter
+    def SubsegmentsExpected(self, SubsegmentsExpected):
+        self._SubsegmentsExpected = SubsegmentsExpected
+
+
+    def _deserialize(self, params):
+        self._EventID = params.get("EventID")
+        self._UPIDType = params.get("UPIDType")
+        self._UPID = params.get("UPID")
+        self._TypeID = params.get("TypeID")
+        self._Num = params.get("Num")
+        self._Expected = params.get("Expected")
+        self._SubsegmentNum = params.get("SubsegmentNum")
+        self._SubsegmentsExpected = params.get("SubsegmentsExpected")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TimeSpotCheck(AbstractModel):
     r"""媒体质检的检测策略。
 
@@ -77446,6 +85322,462 @@ class UrlInputInfo(AbstractModel):
 
     def _deserialize(self, params):
         self._Url = params.get("Url")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UsageDetail(AbstractModel):
+    r"""广告配置及广告类型维度下的SSAI用量详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UniqId: <p>广告配置uniq_id</p>
+        :type UniqId: str
+        :param _ChannelId: <p>广告配置id</p>
+        :type ChannelId: str
+        :param _ChannelName: <p>广告配置名称</p>
+        :type ChannelName: str
+        :param _AdType: <p>广告类型</p>
+        :type AdType: str
+        :param _AdRequestSuccess: <p>广告请求成功数</p>
+        :type AdRequestSuccess: int
+        :param _AdRequestFail: <p>广告请求失败数</p>
+        :type AdRequestFail: int
+        :param _Impression: <p>广告曝光数</p>
+        :type Impression: int
+        :param _Start: <p>广告开始播放数</p>
+        :type Start: int
+        :param _FirstQuarter: <p>广告播放到1/4处数</p>
+        :type FirstQuarter: int
+        :param _Midpoint: <p>广告播放到1/2处数</p>
+        :type Midpoint: int
+        :param _ThirdQuarter: <p>广告播放到3/4处数</p>
+        :type ThirdQuarter: int
+        :param _Complete: <p>广告播放完成数</p>
+        :type Complete: int
+        :param _AdMarkerTime: <p>中贴广告标记时间</p>
+        :type AdMarkerTime: float
+        :param _ReplacedTime: <p>中贴个性化替换时间</p>
+        :type ReplacedTime: float
+        :param _MidFillRate: <p>中贴个性化广告填充率</p>
+        :type MidFillRate: float
+        :param _PreReqNum: <p>前贴广告请求数</p>
+        :type PreReqNum: int
+        :param _PreReplacedNum: <p>前贴广告替换数</p>
+        :type PreReplacedNum: int
+        :param _PreReplaceRate: <p>前贴广告替换率</p>
+        :type PreReplaceRate: float
+        :param _ADMarkerFound: <p>在清单中发现了广告标记次数</p>
+        :type ADMarkerFound: int
+        :param _MakeAdsRequest: <p>向ADS请求广告次数</p>
+        :type MakeAdsRequest: int
+        :param _VASTResponse: <p>从ADS收到VAST返回次数</p>
+        :type VASTResponse: int
+        :param _FilledAvail: <p>成功填充了广告次数</p>
+        :type FilledAvail: int
+        :param _WarningNoAd: <p>执行广告替换时遇到问题次数</p>
+        :type WarningNoAd: int
+        :param _ErrorAdsTimeout: <p>ADS返回超时次数</p>
+        :type ErrorAdsTimeout: int
+        :param _EmptyVASTResponse: <p>ADS 返回了一个空的 VAST 响应次数</p>
+        :type EmptyVASTResponse: int
+        :param _EmptyVMAPResponse: <p>ADS 返回了一个空的VMAP 响应次数</p>
+        :type EmptyVMAPResponse: int
+        :param _Date: <p>日期</p>
+        :type Date: str
+        :param _StartTime: <p>开始时间</p>
+        :type StartTime: str
+        :param _EndTime: <p>结束时间</p>
+        :type EndTime: str
+        """
+        self._UniqId = None
+        self._ChannelId = None
+        self._ChannelName = None
+        self._AdType = None
+        self._AdRequestSuccess = None
+        self._AdRequestFail = None
+        self._Impression = None
+        self._Start = None
+        self._FirstQuarter = None
+        self._Midpoint = None
+        self._ThirdQuarter = None
+        self._Complete = None
+        self._AdMarkerTime = None
+        self._ReplacedTime = None
+        self._MidFillRate = None
+        self._PreReqNum = None
+        self._PreReplacedNum = None
+        self._PreReplaceRate = None
+        self._ADMarkerFound = None
+        self._MakeAdsRequest = None
+        self._VASTResponse = None
+        self._FilledAvail = None
+        self._WarningNoAd = None
+        self._ErrorAdsTimeout = None
+        self._EmptyVASTResponse = None
+        self._EmptyVMAPResponse = None
+        self._Date = None
+        self._StartTime = None
+        self._EndTime = None
+
+    @property
+    def UniqId(self):
+        r"""<p>广告配置uniq_id</p>
+        :rtype: str
+        """
+        return self._UniqId
+
+    @UniqId.setter
+    def UniqId(self, UniqId):
+        self._UniqId = UniqId
+
+    @property
+    def ChannelId(self):
+        r"""<p>广告配置id</p>
+        :rtype: str
+        """
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
+    @property
+    def ChannelName(self):
+        r"""<p>广告配置名称</p>
+        :rtype: str
+        """
+        return self._ChannelName
+
+    @ChannelName.setter
+    def ChannelName(self, ChannelName):
+        self._ChannelName = ChannelName
+
+    @property
+    def AdType(self):
+        r"""<p>广告类型</p>
+        :rtype: str
+        """
+        return self._AdType
+
+    @AdType.setter
+    def AdType(self, AdType):
+        self._AdType = AdType
+
+    @property
+    def AdRequestSuccess(self):
+        r"""<p>广告请求成功数</p>
+        :rtype: int
+        """
+        return self._AdRequestSuccess
+
+    @AdRequestSuccess.setter
+    def AdRequestSuccess(self, AdRequestSuccess):
+        self._AdRequestSuccess = AdRequestSuccess
+
+    @property
+    def AdRequestFail(self):
+        r"""<p>广告请求失败数</p>
+        :rtype: int
+        """
+        return self._AdRequestFail
+
+    @AdRequestFail.setter
+    def AdRequestFail(self, AdRequestFail):
+        self._AdRequestFail = AdRequestFail
+
+    @property
+    def Impression(self):
+        r"""<p>广告曝光数</p>
+        :rtype: int
+        """
+        return self._Impression
+
+    @Impression.setter
+    def Impression(self, Impression):
+        self._Impression = Impression
+
+    @property
+    def Start(self):
+        r"""<p>广告开始播放数</p>
+        :rtype: int
+        """
+        return self._Start
+
+    @Start.setter
+    def Start(self, Start):
+        self._Start = Start
+
+    @property
+    def FirstQuarter(self):
+        r"""<p>广告播放到1/4处数</p>
+        :rtype: int
+        """
+        return self._FirstQuarter
+
+    @FirstQuarter.setter
+    def FirstQuarter(self, FirstQuarter):
+        self._FirstQuarter = FirstQuarter
+
+    @property
+    def Midpoint(self):
+        r"""<p>广告播放到1/2处数</p>
+        :rtype: int
+        """
+        return self._Midpoint
+
+    @Midpoint.setter
+    def Midpoint(self, Midpoint):
+        self._Midpoint = Midpoint
+
+    @property
+    def ThirdQuarter(self):
+        r"""<p>广告播放到3/4处数</p>
+        :rtype: int
+        """
+        return self._ThirdQuarter
+
+    @ThirdQuarter.setter
+    def ThirdQuarter(self, ThirdQuarter):
+        self._ThirdQuarter = ThirdQuarter
+
+    @property
+    def Complete(self):
+        r"""<p>广告播放完成数</p>
+        :rtype: int
+        """
+        return self._Complete
+
+    @Complete.setter
+    def Complete(self, Complete):
+        self._Complete = Complete
+
+    @property
+    def AdMarkerTime(self):
+        r"""<p>中贴广告标记时间</p>
+        :rtype: float
+        """
+        return self._AdMarkerTime
+
+    @AdMarkerTime.setter
+    def AdMarkerTime(self, AdMarkerTime):
+        self._AdMarkerTime = AdMarkerTime
+
+    @property
+    def ReplacedTime(self):
+        r"""<p>中贴个性化替换时间</p>
+        :rtype: float
+        """
+        return self._ReplacedTime
+
+    @ReplacedTime.setter
+    def ReplacedTime(self, ReplacedTime):
+        self._ReplacedTime = ReplacedTime
+
+    @property
+    def MidFillRate(self):
+        r"""<p>中贴个性化广告填充率</p>
+        :rtype: float
+        """
+        return self._MidFillRate
+
+    @MidFillRate.setter
+    def MidFillRate(self, MidFillRate):
+        self._MidFillRate = MidFillRate
+
+    @property
+    def PreReqNum(self):
+        r"""<p>前贴广告请求数</p>
+        :rtype: int
+        """
+        return self._PreReqNum
+
+    @PreReqNum.setter
+    def PreReqNum(self, PreReqNum):
+        self._PreReqNum = PreReqNum
+
+    @property
+    def PreReplacedNum(self):
+        r"""<p>前贴广告替换数</p>
+        :rtype: int
+        """
+        return self._PreReplacedNum
+
+    @PreReplacedNum.setter
+    def PreReplacedNum(self, PreReplacedNum):
+        self._PreReplacedNum = PreReplacedNum
+
+    @property
+    def PreReplaceRate(self):
+        r"""<p>前贴广告替换率</p>
+        :rtype: float
+        """
+        return self._PreReplaceRate
+
+    @PreReplaceRate.setter
+    def PreReplaceRate(self, PreReplaceRate):
+        self._PreReplaceRate = PreReplaceRate
+
+    @property
+    def ADMarkerFound(self):
+        r"""<p>在清单中发现了广告标记次数</p>
+        :rtype: int
+        """
+        return self._ADMarkerFound
+
+    @ADMarkerFound.setter
+    def ADMarkerFound(self, ADMarkerFound):
+        self._ADMarkerFound = ADMarkerFound
+
+    @property
+    def MakeAdsRequest(self):
+        r"""<p>向ADS请求广告次数</p>
+        :rtype: int
+        """
+        return self._MakeAdsRequest
+
+    @MakeAdsRequest.setter
+    def MakeAdsRequest(self, MakeAdsRequest):
+        self._MakeAdsRequest = MakeAdsRequest
+
+    @property
+    def VASTResponse(self):
+        r"""<p>从ADS收到VAST返回次数</p>
+        :rtype: int
+        """
+        return self._VASTResponse
+
+    @VASTResponse.setter
+    def VASTResponse(self, VASTResponse):
+        self._VASTResponse = VASTResponse
+
+    @property
+    def FilledAvail(self):
+        r"""<p>成功填充了广告次数</p>
+        :rtype: int
+        """
+        return self._FilledAvail
+
+    @FilledAvail.setter
+    def FilledAvail(self, FilledAvail):
+        self._FilledAvail = FilledAvail
+
+    @property
+    def WarningNoAd(self):
+        r"""<p>执行广告替换时遇到问题次数</p>
+        :rtype: int
+        """
+        return self._WarningNoAd
+
+    @WarningNoAd.setter
+    def WarningNoAd(self, WarningNoAd):
+        self._WarningNoAd = WarningNoAd
+
+    @property
+    def ErrorAdsTimeout(self):
+        r"""<p>ADS返回超时次数</p>
+        :rtype: int
+        """
+        return self._ErrorAdsTimeout
+
+    @ErrorAdsTimeout.setter
+    def ErrorAdsTimeout(self, ErrorAdsTimeout):
+        self._ErrorAdsTimeout = ErrorAdsTimeout
+
+    @property
+    def EmptyVASTResponse(self):
+        r"""<p>ADS 返回了一个空的 VAST 响应次数</p>
+        :rtype: int
+        """
+        return self._EmptyVASTResponse
+
+    @EmptyVASTResponse.setter
+    def EmptyVASTResponse(self, EmptyVASTResponse):
+        self._EmptyVASTResponse = EmptyVASTResponse
+
+    @property
+    def EmptyVMAPResponse(self):
+        r"""<p>ADS 返回了一个空的VMAP 响应次数</p>
+        :rtype: int
+        """
+        return self._EmptyVMAPResponse
+
+    @EmptyVMAPResponse.setter
+    def EmptyVMAPResponse(self, EmptyVMAPResponse):
+        self._EmptyVMAPResponse = EmptyVMAPResponse
+
+    @property
+    def Date(self):
+        r"""<p>日期</p>
+        :rtype: str
+        """
+        return self._Date
+
+    @Date.setter
+    def Date(self, Date):
+        self._Date = Date
+
+    @property
+    def StartTime(self):
+        r"""<p>开始时间</p>
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>结束时间</p>
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+
+    def _deserialize(self, params):
+        self._UniqId = params.get("UniqId")
+        self._ChannelId = params.get("ChannelId")
+        self._ChannelName = params.get("ChannelName")
+        self._AdType = params.get("AdType")
+        self._AdRequestSuccess = params.get("AdRequestSuccess")
+        self._AdRequestFail = params.get("AdRequestFail")
+        self._Impression = params.get("Impression")
+        self._Start = params.get("Start")
+        self._FirstQuarter = params.get("FirstQuarter")
+        self._Midpoint = params.get("Midpoint")
+        self._ThirdQuarter = params.get("ThirdQuarter")
+        self._Complete = params.get("Complete")
+        self._AdMarkerTime = params.get("AdMarkerTime")
+        self._ReplacedTime = params.get("ReplacedTime")
+        self._MidFillRate = params.get("MidFillRate")
+        self._PreReqNum = params.get("PreReqNum")
+        self._PreReplacedNum = params.get("PreReplacedNum")
+        self._PreReplaceRate = params.get("PreReplaceRate")
+        self._ADMarkerFound = params.get("ADMarkerFound")
+        self._MakeAdsRequest = params.get("MakeAdsRequest")
+        self._VASTResponse = params.get("VASTResponse")
+        self._FilledAvail = params.get("FilledAvail")
+        self._WarningNoAd = params.get("WarningNoAd")
+        self._ErrorAdsTimeout = params.get("ErrorAdsTimeout")
+        self._EmptyVASTResponse = params.get("EmptyVASTResponse")
+        self._EmptyVMAPResponse = params.get("EmptyVMAPResponse")
+        self._Date = params.get("Date")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

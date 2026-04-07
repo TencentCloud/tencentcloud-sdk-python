@@ -25,6 +25,42 @@ class MpsClient(AbstractClient):
     _endpoint = 'mps.tencentcloudapi.com'
     _service = 'mps'
 
+    async def ActivateSSAI(
+            self,
+            request: models.ActivateSSAIRequest,
+            opts: Dict = None,
+    ) -> models.ActivateSSAIResponse:
+        """
+        开通SSAI
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ActivateSSAI"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ActivateSSAIResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ActivateStreamPackage(
+            self,
+            request: models.ActivateStreamPackageRequest,
+            opts: Dict = None,
+    ) -> models.ActivateStreamPackageResponse:
+        """
+        创建媒体封装用户。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ActivateStreamPackage"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ActivateStreamPackageResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def BatchDeleteStreamLinkFlow(
             self,
             request: models.BatchDeleteStreamLinkFlowRequest,
@@ -565,6 +601,96 @@ class MpsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateStreamPackageLinearAssemblyChannel(
+            self,
+            request: models.CreateStreamPackageLinearAssemblyChannelRequest,
+            opts: Dict = None,
+    ) -> models.CreateStreamPackageLinearAssemblyChannelResponse:
+        """
+        创建媒体包装频道。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateStreamPackageLinearAssemblyChannel"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateStreamPackageLinearAssemblyChannelResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateStreamPackageLinearAssemblyProgram(
+            self,
+            request: models.CreateStreamPackageLinearAssemblyProgramRequest,
+            opts: Dict = None,
+    ) -> models.CreateStreamPackageLinearAssemblyProgramResponse:
+        """
+        创建线性组装Program。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateStreamPackageLinearAssemblyProgram"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateStreamPackageLinearAssemblyProgramResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateStreamPackageSSAIChannel(
+            self,
+            request: models.CreateStreamPackageSSAIChannelRequest,
+            opts: Dict = None,
+    ) -> models.CreateStreamPackageSSAIChannelResponse:
+        """
+        创建SSAI广告插入配置。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateStreamPackageSSAIChannel"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateStreamPackageSSAIChannelResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateStreamPackageSource(
+            self,
+            request: models.CreateStreamPackageSourceRequest,
+            opts: Dict = None,
+    ) -> models.CreateStreamPackageSourceResponse:
+        """
+        创建媒体包装频道。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateStreamPackageSource"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateStreamPackageSourceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateStreamPackageSourceLocation(
+            self,
+            request: models.CreateStreamPackageSourceLocationRequest,
+            opts: Dict = None,
+    ) -> models.CreateStreamPackageSourceLocationResponse:
+        """
+        创建媒体包装频道。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateStreamPackageSourceLocation"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateStreamPackageSourceLocationResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateSubtitleEmbedTemplate(
             self,
             request: models.CreateSubtitleEmbedTemplateRequest,
@@ -1083,6 +1209,150 @@ class MpsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteStreamPackageLinearAssemblyChannel(
+            self,
+            request: models.DeleteStreamPackageLinearAssemblyChannelRequest,
+            opts: Dict = None,
+    ) -> models.DeleteStreamPackageLinearAssemblyChannelResponse:
+        """
+        删除媒体包装Channel。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteStreamPackageLinearAssemblyChannel"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteStreamPackageLinearAssemblyChannelResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteStreamPackageLinearAssemblyChannels(
+            self,
+            request: models.DeleteStreamPackageLinearAssemblyChannelsRequest,
+            opts: Dict = None,
+    ) -> models.DeleteStreamPackageLinearAssemblyChannelsResponse:
+        """
+        批量删除媒体包装Channel。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteStreamPackageLinearAssemblyChannels"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteStreamPackageLinearAssemblyChannelsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteStreamPackageLinearAssemblyProgram(
+            self,
+            request: models.DeleteStreamPackageLinearAssemblyProgramRequest,
+            opts: Dict = None,
+    ) -> models.DeleteStreamPackageLinearAssemblyProgramResponse:
+        """
+        删除线性组装Program。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteStreamPackageLinearAssemblyProgram"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteStreamPackageLinearAssemblyProgramResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteStreamPackageLinearAssemblyPrograms(
+            self,
+            request: models.DeleteStreamPackageLinearAssemblyProgramsRequest,
+            opts: Dict = None,
+    ) -> models.DeleteStreamPackageLinearAssemblyProgramsResponse:
+        """
+        批量删除线性组装Program。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteStreamPackageLinearAssemblyPrograms"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteStreamPackageLinearAssemblyProgramsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteStreamPackageLinearAssemblyProgramsByChannel(
+            self,
+            request: models.DeleteStreamPackageLinearAssemblyProgramsByChannelRequest,
+            opts: Dict = None,
+    ) -> models.DeleteStreamPackageLinearAssemblyProgramsByChannelResponse:
+        """
+        批量删除同一Channel下的ID
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteStreamPackageLinearAssemblyProgramsByChannel"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteStreamPackageLinearAssemblyProgramsByChannelResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteStreamPackageSSAIChannel(
+            self,
+            request: models.DeleteStreamPackageSSAIChannelRequest,
+            opts: Dict = None,
+    ) -> models.DeleteStreamPackageSSAIChannelResponse:
+        """
+        删除广告插入配置。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteStreamPackageSSAIChannel"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteStreamPackageSSAIChannelResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteStreamPackageSource(
+            self,
+            request: models.DeleteStreamPackageSourceRequest,
+            opts: Dict = None,
+    ) -> models.DeleteStreamPackageSourceResponse:
+        """
+        批量删除媒体包装Source。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteStreamPackageSource"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteStreamPackageSourceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteStreamPackageSourceLocation(
+            self,
+            request: models.DeleteStreamPackageSourceLocationRequest,
+            opts: Dict = None,
+    ) -> models.DeleteStreamPackageSourceLocationResponse:
+        """
+        删除媒体包装SourceLocation。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteStreamPackageSourceLocation"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteStreamPackageSourceLocationResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteSubtitleEmbedTemplate(
             self,
             request: models.DeleteSubtitleEmbedTemplateRequest,
@@ -1443,6 +1713,24 @@ class MpsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeMDPMPSUserInfo(
+            self,
+            request: models.DescribeMDPMPSUserInfoRequest,
+            opts: Dict = None,
+    ) -> models.DescribeMDPMPSUserInfoResponse:
+        """
+        查询用户开通mps信息，是否开通/授权。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeMDPMPSUserInfo"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeMDPMPSUserInfoResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeMediaMetaData(
             self,
             request: models.DescribeMediaMetaDataRequest,
@@ -1510,6 +1798,24 @@ class MpsClient(AbstractClient):
         kwargs["action"] = "DescribeQualityControlTemplates"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeQualityControlTemplatesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeSSAIActivateState(
+            self,
+            request: models.DescribeSSAIActivateStateRequest,
+            opts: Dict = None,
+    ) -> models.DescribeSSAIActivateStateResponse:
+        """
+        查询SSAI开通状态
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeSSAIActivateState"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeSSAIActivateStateResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1834,6 +2140,294 @@ class MpsClient(AbstractClient):
         kwargs["action"] = "DescribeStreamLinkSecurityGroups"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeStreamLinkSecurityGroupsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeStreamPackageActivateState(
+            self,
+            request: models.DescribeStreamPackageActivateStateRequest,
+            opts: Dict = None,
+    ) -> models.DescribeStreamPackageActivateStateResponse:
+        """
+        查询媒体封装用户开通情况。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeStreamPackageActivateState"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeStreamPackageActivateStateResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeStreamPackageLinearAssemblyChannel(
+            self,
+            request: models.DescribeStreamPackageLinearAssemblyChannelRequest,
+            opts: Dict = None,
+    ) -> models.DescribeStreamPackageLinearAssemblyChannelResponse:
+        """
+        查询媒体包装线性组装频道信息。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeStreamPackageLinearAssemblyChannel"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeStreamPackageLinearAssemblyChannelResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeStreamPackageLinearAssemblyChannelAlerts(
+            self,
+            request: models.DescribeStreamPackageLinearAssemblyChannelAlertsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeStreamPackageLinearAssemblyChannelAlertsResponse:
+        """
+        查询线性组装频道告警信息。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeStreamPackageLinearAssemblyChannelAlerts"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeStreamPackageLinearAssemblyChannelAlertsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeStreamPackageLinearAssemblyChannels(
+            self,
+            request: models.DescribeStreamPackageLinearAssemblyChannelsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeStreamPackageLinearAssemblyChannelsResponse:
+        """
+        查询线性组装频道信息列表。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeStreamPackageLinearAssemblyChannels"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeStreamPackageLinearAssemblyChannelsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeStreamPackageLinearAssemblyProgram(
+            self,
+            request: models.DescribeStreamPackageLinearAssemblyProgramRequest,
+            opts: Dict = None,
+    ) -> models.DescribeStreamPackageLinearAssemblyProgramResponse:
+        """
+        查询媒体包装Program信息。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeStreamPackageLinearAssemblyProgram"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeStreamPackageLinearAssemblyProgramResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeStreamPackageLinearAssemblyProgramSchedules(
+            self,
+            request: models.DescribeStreamPackageLinearAssemblyProgramSchedulesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeStreamPackageLinearAssemblyProgramSchedulesResponse:
+        """
+        查询Programe信息列表。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeStreamPackageLinearAssemblyProgramSchedules"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeStreamPackageLinearAssemblyProgramSchedulesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeStreamPackageLinearAssemblyPrograms(
+            self,
+            request: models.DescribeStreamPackageLinearAssemblyProgramsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeStreamPackageLinearAssemblyProgramsResponse:
+        """
+        查询Programe信息列表。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeStreamPackageLinearAssemblyPrograms"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeStreamPackageLinearAssemblyProgramsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeStreamPackageLinearAssemblyUsage(
+            self,
+            request: models.DescribeStreamPackageLinearAssemblyUsageRequest,
+            opts: Dict = None,
+    ) -> models.DescribeStreamPackageLinearAssemblyUsageResponse:
+        """
+        频道线性组装用量查询
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeStreamPackageLinearAssemblyUsage"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeStreamPackageLinearAssemblyUsageResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeStreamPackageSSAIChannel(
+            self,
+            request: models.DescribeStreamPackageSSAIChannelRequest,
+            opts: Dict = None,
+    ) -> models.DescribeStreamPackageSSAIChannelResponse:
+        """
+        查询广告插入配置。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeStreamPackageSSAIChannel"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeStreamPackageSSAIChannelResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeStreamPackageSSAIChannels(
+            self,
+            request: models.DescribeStreamPackageSSAIChannelsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeStreamPackageSSAIChannelsResponse:
+        """
+        批量查询广告插入配置。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeStreamPackageSSAIChannels"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeStreamPackageSSAIChannelsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeStreamPackageSSAIUsage(
+            self,
+            request: models.DescribeStreamPackageSSAIUsageRequest,
+            opts: Dict = None,
+    ) -> models.DescribeStreamPackageSSAIUsageResponse:
+        """
+        SSAI广告替换用量查询
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeStreamPackageSSAIUsage"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeStreamPackageSSAIUsageResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeStreamPackageSource(
+            self,
+            request: models.DescribeStreamPackageSourceRequest,
+            opts: Dict = None,
+    ) -> models.DescribeStreamPackageSourceResponse:
+        """
+        查询媒体包装Source信息。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeStreamPackageSource"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeStreamPackageSourceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeStreamPackageSourceAlerts(
+            self,
+            request: models.DescribeStreamPackageSourceAlertsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeStreamPackageSourceAlertsResponse:
+        """
+        查询线性组装Source告警信息。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeStreamPackageSourceAlerts"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeStreamPackageSourceAlertsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeStreamPackageSourceLocation(
+            self,
+            request: models.DescribeStreamPackageSourceLocationRequest,
+            opts: Dict = None,
+    ) -> models.DescribeStreamPackageSourceLocationResponse:
+        """
+        查询媒体包装SourceLocation信息。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeStreamPackageSourceLocation"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeStreamPackageSourceLocationResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeStreamPackageSourceLocations(
+            self,
+            request: models.DescribeStreamPackageSourceLocationsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeStreamPackageSourceLocationsResponse:
+        """
+        查询SourceLocation信息列表。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeStreamPackageSourceLocations"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeStreamPackageSourceLocationsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeStreamPackageSources(
+            self,
+            request: models.DescribeStreamPackageSourcesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeStreamPackageSourcesResponse:
+        """
+        查询Source信息列表。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeStreamPackageSources"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeStreamPackageSourcesResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2613,6 +3207,96 @@ class MpsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyStreamPackageLinearAssemblyChannel(
+            self,
+            request: models.ModifyStreamPackageLinearAssemblyChannelRequest,
+            opts: Dict = None,
+    ) -> models.ModifyStreamPackageLinearAssemblyChannelResponse:
+        """
+        修改媒体包装Source信息。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyStreamPackageLinearAssemblyChannel"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyStreamPackageLinearAssemblyChannelResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyStreamPackageLinearAssemblyProgram(
+            self,
+            request: models.ModifyStreamPackageLinearAssemblyProgramRequest,
+            opts: Dict = None,
+    ) -> models.ModifyStreamPackageLinearAssemblyProgramResponse:
+        """
+        修改媒体包装Program信息。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyStreamPackageLinearAssemblyProgram"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyStreamPackageLinearAssemblyProgramResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyStreamPackageSSAIChannel(
+            self,
+            request: models.ModifyStreamPackageSSAIChannelRequest,
+            opts: Dict = None,
+    ) -> models.ModifyStreamPackageSSAIChannelResponse:
+        """
+        修改广告插入配置。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyStreamPackageSSAIChannel"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyStreamPackageSSAIChannelResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyStreamPackageSource(
+            self,
+            request: models.ModifyStreamPackageSourceRequest,
+            opts: Dict = None,
+    ) -> models.ModifyStreamPackageSourceResponse:
+        """
+        修改媒体包装Source信息。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyStreamPackageSource"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyStreamPackageSourceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyStreamPackageSourceLocation(
+            self,
+            request: models.ModifyStreamPackageSourceLocationRequest,
+            opts: Dict = None,
+    ) -> models.ModifyStreamPackageSourceLocationResponse:
+        """
+        修改媒体包装SourceLocation信息。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyStreamPackageSourceLocation"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyStreamPackageSourceLocationResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifySubtitleEmbedTemplate(
             self,
             request: models.ModifySubtitleEmbedTemplateRequest,
@@ -2872,6 +3556,24 @@ class MpsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def StartStreamPackageLinearAssemblyChannel(
+            self,
+            request: models.StartStreamPackageLinearAssemblyChannelRequest,
+            opts: Dict = None,
+    ) -> models.StartStreamPackageLinearAssemblyChannelResponse:
+        """
+        启动媒体包装频道。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "StartStreamPackageLinearAssemblyChannel"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.StartStreamPackageLinearAssemblyChannelResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def StopStreamLinkFlow(
             self,
             request: models.StopStreamLinkFlowRequest,
@@ -2885,6 +3587,24 @@ class MpsClient(AbstractClient):
         kwargs["action"] = "StopStreamLinkFlow"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.StopStreamLinkFlowResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def StopStreamPackageLinearAssemblyChannel(
+            self,
+            request: models.StopStreamPackageLinearAssemblyChannelRequest,
+            opts: Dict = None,
+    ) -> models.StopStreamPackageLinearAssemblyChannelResponse:
+        """
+        停止线性组装频道。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "StopStreamPackageLinearAssemblyChannel"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.StopStreamPackageLinearAssemblyChannelResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

@@ -26,6 +26,52 @@ class MpsClient(AbstractClient):
     _service = 'mps'
 
 
+    def ActivateSSAI(self, request):
+        r"""开通SSAI
+
+        :param request: Request instance for ActivateSSAI.
+        :type request: :class:`tencentcloud.mps.v20190612.models.ActivateSSAIRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ActivateSSAIResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ActivateSSAI", params, headers=headers)
+            response = json.loads(body)
+            model = models.ActivateSSAIResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ActivateStreamPackage(self, request):
+        r"""创建媒体封装用户。
+
+        :param request: Request instance for ActivateStreamPackage.
+        :type request: :class:`tencentcloud.mps.v20190612.models.ActivateStreamPackageRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ActivateStreamPackageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ActivateStreamPackage", params, headers=headers)
+            response = json.loads(body)
+            model = models.ActivateStreamPackageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def BatchDeleteStreamLinkFlow(self, request):
         r"""批量删除媒体传输流。
 
@@ -711,6 +757,121 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateStreamPackageLinearAssemblyChannel(self, request):
+        r"""创建媒体包装频道。
+
+        :param request: Request instance for CreateStreamPackageLinearAssemblyChannel.
+        :type request: :class:`tencentcloud.mps.v20190612.models.CreateStreamPackageLinearAssemblyChannelRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CreateStreamPackageLinearAssemblyChannelResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateStreamPackageLinearAssemblyChannel", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateStreamPackageLinearAssemblyChannelResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateStreamPackageLinearAssemblyProgram(self, request):
+        r"""创建线性组装Program。
+
+        :param request: Request instance for CreateStreamPackageLinearAssemblyProgram.
+        :type request: :class:`tencentcloud.mps.v20190612.models.CreateStreamPackageLinearAssemblyProgramRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CreateStreamPackageLinearAssemblyProgramResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateStreamPackageLinearAssemblyProgram", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateStreamPackageLinearAssemblyProgramResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateStreamPackageSSAIChannel(self, request):
+        r"""创建SSAI广告插入配置。
+
+        :param request: Request instance for CreateStreamPackageSSAIChannel.
+        :type request: :class:`tencentcloud.mps.v20190612.models.CreateStreamPackageSSAIChannelRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CreateStreamPackageSSAIChannelResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateStreamPackageSSAIChannel", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateStreamPackageSSAIChannelResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateStreamPackageSource(self, request):
+        r"""创建媒体包装频道。
+
+        :param request: Request instance for CreateStreamPackageSource.
+        :type request: :class:`tencentcloud.mps.v20190612.models.CreateStreamPackageSourceRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CreateStreamPackageSourceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateStreamPackageSource", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateStreamPackageSourceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateStreamPackageSourceLocation(self, request):
+        r"""创建媒体包装频道。
+
+        :param request: Request instance for CreateStreamPackageSourceLocation.
+        :type request: :class:`tencentcloud.mps.v20190612.models.CreateStreamPackageSourceLocationRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CreateStreamPackageSourceLocationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateStreamPackageSourceLocation", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateStreamPackageSourceLocationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateSubtitleEmbedTemplate(self, request):
         r"""创建自定义字幕压制模板
 
@@ -1369,6 +1530,190 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteStreamPackageLinearAssemblyChannel(self, request):
+        r"""删除媒体包装Channel。
+
+        :param request: Request instance for DeleteStreamPackageLinearAssemblyChannel.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DeleteStreamPackageLinearAssemblyChannelRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DeleteStreamPackageLinearAssemblyChannelResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteStreamPackageLinearAssemblyChannel", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteStreamPackageLinearAssemblyChannelResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteStreamPackageLinearAssemblyChannels(self, request):
+        r"""批量删除媒体包装Channel。
+
+        :param request: Request instance for DeleteStreamPackageLinearAssemblyChannels.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DeleteStreamPackageLinearAssemblyChannelsRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DeleteStreamPackageLinearAssemblyChannelsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteStreamPackageLinearAssemblyChannels", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteStreamPackageLinearAssemblyChannelsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteStreamPackageLinearAssemblyProgram(self, request):
+        r"""删除线性组装Program。
+
+        :param request: Request instance for DeleteStreamPackageLinearAssemblyProgram.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DeleteStreamPackageLinearAssemblyProgramRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DeleteStreamPackageLinearAssemblyProgramResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteStreamPackageLinearAssemblyProgram", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteStreamPackageLinearAssemblyProgramResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteStreamPackageLinearAssemblyPrograms(self, request):
+        r"""批量删除线性组装Program。
+
+        :param request: Request instance for DeleteStreamPackageLinearAssemblyPrograms.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DeleteStreamPackageLinearAssemblyProgramsRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DeleteStreamPackageLinearAssemblyProgramsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteStreamPackageLinearAssemblyPrograms", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteStreamPackageLinearAssemblyProgramsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteStreamPackageLinearAssemblyProgramsByChannel(self, request):
+        r"""批量删除同一Channel下的ID
+
+        :param request: Request instance for DeleteStreamPackageLinearAssemblyProgramsByChannel.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DeleteStreamPackageLinearAssemblyProgramsByChannelRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DeleteStreamPackageLinearAssemblyProgramsByChannelResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteStreamPackageLinearAssemblyProgramsByChannel", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteStreamPackageLinearAssemblyProgramsByChannelResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteStreamPackageSSAIChannel(self, request):
+        r"""删除广告插入配置。
+
+        :param request: Request instance for DeleteStreamPackageSSAIChannel.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DeleteStreamPackageSSAIChannelRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DeleteStreamPackageSSAIChannelResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteStreamPackageSSAIChannel", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteStreamPackageSSAIChannelResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteStreamPackageSource(self, request):
+        r"""批量删除媒体包装Source。
+
+        :param request: Request instance for DeleteStreamPackageSource.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DeleteStreamPackageSourceRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DeleteStreamPackageSourceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteStreamPackageSource", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteStreamPackageSourceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteStreamPackageSourceLocation(self, request):
+        r"""删除媒体包装SourceLocation。
+
+        :param request: Request instance for DeleteStreamPackageSourceLocation.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DeleteStreamPackageSourceLocationRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DeleteStreamPackageSourceLocationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteStreamPackageSourceLocation", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteStreamPackageSourceLocationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteSubtitleEmbedTemplate(self, request):
         r"""删除用户自定义字幕压制模板。
 
@@ -1829,6 +2174,29 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeMDPMPSUserInfo(self, request):
+        r"""查询用户开通mps信息，是否开通/授权。
+
+        :param request: Request instance for DescribeMDPMPSUserInfo.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DescribeMDPMPSUserInfoRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeMDPMPSUserInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMDPMPSUserInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMDPMPSUserInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeMediaMetaData(self, request):
         r"""获取媒体的元信息，包括视频画面宽、高、编码格式、时长、帧率等。
 
@@ -1912,6 +2280,29 @@ class MpsClient(AbstractClient):
             body = self.call("DescribeQualityControlTemplates", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeQualityControlTemplatesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeSSAIActivateState(self, request):
+        r"""查询SSAI开通状态
+
+        :param request: Request instance for DescribeSSAIActivateState.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DescribeSSAIActivateStateRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeSSAIActivateStateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSSAIActivateState", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSSAIActivateStateResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2326,6 +2717,374 @@ class MpsClient(AbstractClient):
             body = self.call("DescribeStreamLinkSecurityGroups", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeStreamLinkSecurityGroupsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeStreamPackageActivateState(self, request):
+        r"""查询媒体封装用户开通情况。
+
+        :param request: Request instance for DescribeStreamPackageActivateState.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DescribeStreamPackageActivateStateRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeStreamPackageActivateStateResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeStreamPackageActivateState", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeStreamPackageActivateStateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeStreamPackageLinearAssemblyChannel(self, request):
+        r"""查询媒体包装线性组装频道信息。
+
+        :param request: Request instance for DescribeStreamPackageLinearAssemblyChannel.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DescribeStreamPackageLinearAssemblyChannelRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeStreamPackageLinearAssemblyChannelResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeStreamPackageLinearAssemblyChannel", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeStreamPackageLinearAssemblyChannelResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeStreamPackageLinearAssemblyChannelAlerts(self, request):
+        r"""查询线性组装频道告警信息。
+
+        :param request: Request instance for DescribeStreamPackageLinearAssemblyChannelAlerts.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DescribeStreamPackageLinearAssemblyChannelAlertsRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeStreamPackageLinearAssemblyChannelAlertsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeStreamPackageLinearAssemblyChannelAlerts", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeStreamPackageLinearAssemblyChannelAlertsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeStreamPackageLinearAssemblyChannels(self, request):
+        r"""查询线性组装频道信息列表。
+
+        :param request: Request instance for DescribeStreamPackageLinearAssemblyChannels.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DescribeStreamPackageLinearAssemblyChannelsRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeStreamPackageLinearAssemblyChannelsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeStreamPackageLinearAssemblyChannels", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeStreamPackageLinearAssemblyChannelsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeStreamPackageLinearAssemblyProgram(self, request):
+        r"""查询媒体包装Program信息。
+
+        :param request: Request instance for DescribeStreamPackageLinearAssemblyProgram.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DescribeStreamPackageLinearAssemblyProgramRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeStreamPackageLinearAssemblyProgramResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeStreamPackageLinearAssemblyProgram", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeStreamPackageLinearAssemblyProgramResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeStreamPackageLinearAssemblyProgramSchedules(self, request):
+        r"""查询Programe信息列表。
+
+        :param request: Request instance for DescribeStreamPackageLinearAssemblyProgramSchedules.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DescribeStreamPackageLinearAssemblyProgramSchedulesRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeStreamPackageLinearAssemblyProgramSchedulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeStreamPackageLinearAssemblyProgramSchedules", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeStreamPackageLinearAssemblyProgramSchedulesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeStreamPackageLinearAssemblyPrograms(self, request):
+        r"""查询Programe信息列表。
+
+        :param request: Request instance for DescribeStreamPackageLinearAssemblyPrograms.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DescribeStreamPackageLinearAssemblyProgramsRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeStreamPackageLinearAssemblyProgramsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeStreamPackageLinearAssemblyPrograms", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeStreamPackageLinearAssemblyProgramsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeStreamPackageLinearAssemblyUsage(self, request):
+        r"""频道线性组装用量查询
+
+        :param request: Request instance for DescribeStreamPackageLinearAssemblyUsage.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DescribeStreamPackageLinearAssemblyUsageRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeStreamPackageLinearAssemblyUsageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeStreamPackageLinearAssemblyUsage", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeStreamPackageLinearAssemblyUsageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeStreamPackageSSAIChannel(self, request):
+        r"""查询广告插入配置。
+
+        :param request: Request instance for DescribeStreamPackageSSAIChannel.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DescribeStreamPackageSSAIChannelRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeStreamPackageSSAIChannelResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeStreamPackageSSAIChannel", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeStreamPackageSSAIChannelResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeStreamPackageSSAIChannels(self, request):
+        r"""批量查询广告插入配置。
+
+        :param request: Request instance for DescribeStreamPackageSSAIChannels.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DescribeStreamPackageSSAIChannelsRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeStreamPackageSSAIChannelsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeStreamPackageSSAIChannels", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeStreamPackageSSAIChannelsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeStreamPackageSSAIUsage(self, request):
+        r"""SSAI广告替换用量查询
+
+        :param request: Request instance for DescribeStreamPackageSSAIUsage.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DescribeStreamPackageSSAIUsageRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeStreamPackageSSAIUsageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeStreamPackageSSAIUsage", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeStreamPackageSSAIUsageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeStreamPackageSource(self, request):
+        r"""查询媒体包装Source信息。
+
+        :param request: Request instance for DescribeStreamPackageSource.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DescribeStreamPackageSourceRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeStreamPackageSourceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeStreamPackageSource", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeStreamPackageSourceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeStreamPackageSourceAlerts(self, request):
+        r"""查询线性组装Source告警信息。
+
+        :param request: Request instance for DescribeStreamPackageSourceAlerts.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DescribeStreamPackageSourceAlertsRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeStreamPackageSourceAlertsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeStreamPackageSourceAlerts", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeStreamPackageSourceAlertsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeStreamPackageSourceLocation(self, request):
+        r"""查询媒体包装SourceLocation信息。
+
+        :param request: Request instance for DescribeStreamPackageSourceLocation.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DescribeStreamPackageSourceLocationRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeStreamPackageSourceLocationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeStreamPackageSourceLocation", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeStreamPackageSourceLocationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeStreamPackageSourceLocations(self, request):
+        r"""查询SourceLocation信息列表。
+
+        :param request: Request instance for DescribeStreamPackageSourceLocations.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DescribeStreamPackageSourceLocationsRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeStreamPackageSourceLocationsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeStreamPackageSourceLocations", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeStreamPackageSourceLocationsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeStreamPackageSources(self, request):
+        r"""查询Source信息列表。
+
+        :param request: Request instance for DescribeStreamPackageSources.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DescribeStreamPackageSourcesRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeStreamPackageSourcesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeStreamPackageSources", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeStreamPackageSourcesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -3319,6 +4078,121 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyStreamPackageLinearAssemblyChannel(self, request):
+        r"""修改媒体包装Source信息。
+
+        :param request: Request instance for ModifyStreamPackageLinearAssemblyChannel.
+        :type request: :class:`tencentcloud.mps.v20190612.models.ModifyStreamPackageLinearAssemblyChannelRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ModifyStreamPackageLinearAssemblyChannelResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyStreamPackageLinearAssemblyChannel", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyStreamPackageLinearAssemblyChannelResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyStreamPackageLinearAssemblyProgram(self, request):
+        r"""修改媒体包装Program信息。
+
+        :param request: Request instance for ModifyStreamPackageLinearAssemblyProgram.
+        :type request: :class:`tencentcloud.mps.v20190612.models.ModifyStreamPackageLinearAssemblyProgramRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ModifyStreamPackageLinearAssemblyProgramResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyStreamPackageLinearAssemblyProgram", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyStreamPackageLinearAssemblyProgramResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyStreamPackageSSAIChannel(self, request):
+        r"""修改广告插入配置。
+
+        :param request: Request instance for ModifyStreamPackageSSAIChannel.
+        :type request: :class:`tencentcloud.mps.v20190612.models.ModifyStreamPackageSSAIChannelRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ModifyStreamPackageSSAIChannelResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyStreamPackageSSAIChannel", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyStreamPackageSSAIChannelResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyStreamPackageSource(self, request):
+        r"""修改媒体包装Source信息。
+
+        :param request: Request instance for ModifyStreamPackageSource.
+        :type request: :class:`tencentcloud.mps.v20190612.models.ModifyStreamPackageSourceRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ModifyStreamPackageSourceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyStreamPackageSource", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyStreamPackageSourceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyStreamPackageSourceLocation(self, request):
+        r"""修改媒体包装SourceLocation信息。
+
+        :param request: Request instance for ModifyStreamPackageSourceLocation.
+        :type request: :class:`tencentcloud.mps.v20190612.models.ModifyStreamPackageSourceLocationRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ModifyStreamPackageSourceLocationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyStreamPackageSourceLocation", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyStreamPackageSourceLocationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifySubtitleEmbedTemplate(self, request):
         r"""修改用户自定义字幕压制模板。
 
@@ -3643,6 +4517,29 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def StartStreamPackageLinearAssemblyChannel(self, request):
+        r"""启动媒体包装频道。
+
+        :param request: Request instance for StartStreamPackageLinearAssemblyChannel.
+        :type request: :class:`tencentcloud.mps.v20190612.models.StartStreamPackageLinearAssemblyChannelRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.StartStreamPackageLinearAssemblyChannelResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StartStreamPackageLinearAssemblyChannel", params, headers=headers)
+            response = json.loads(body)
+            model = models.StartStreamPackageLinearAssemblyChannelResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def StopStreamLinkFlow(self, request):
         r"""停止媒体传输流。
 
@@ -3657,6 +4554,29 @@ class MpsClient(AbstractClient):
             body = self.call("StopStreamLinkFlow", params, headers=headers)
             response = json.loads(body)
             model = models.StopStreamLinkFlowResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def StopStreamPackageLinearAssemblyChannel(self, request):
+        r"""停止线性组装频道。
+
+        :param request: Request instance for StopStreamPackageLinearAssemblyChannel.
+        :type request: :class:`tencentcloud.mps.v20190612.models.StopStreamPackageLinearAssemblyChannelRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.StopStreamPackageLinearAssemblyChannelResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StopStreamPackageLinearAssemblyChannel", params, headers=headers)
+            response = json.loads(body)
+            model = models.StopStreamPackageLinearAssemblyChannelResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

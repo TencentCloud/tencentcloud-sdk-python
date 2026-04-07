@@ -2103,6 +2103,57 @@ class CheckInstancesUpgradeAbleResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ClientConnection(AbstractModel):
+    r"""调度器客户端连接配置参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _QPS: 客户端与服务器连接时每秒允许的最大查询数
+        :type QPS: float
+        :param _Burst: 客户端在短时间内超过QPS限制的突发请求数量
+        :type Burst: int
+        """
+        self._QPS = None
+        self._Burst = None
+
+    @property
+    def QPS(self):
+        r"""客户端与服务器连接时每秒允许的最大查询数
+        :rtype: float
+        """
+        return self._QPS
+
+    @QPS.setter
+    def QPS(self, QPS):
+        self._QPS = QPS
+
+    @property
+    def Burst(self):
+        r"""客户端在短时间内超过QPS限制的突发请求数量
+        :rtype: int
+        """
+        return self._Burst
+
+    @Burst.setter
+    def Burst(self, Burst):
+        self._Burst = Burst
+
+
+    def _deserialize(self, params):
+        self._QPS = params.get("QPS")
+        self._Burst = params.get("Burst")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Cluster(AbstractModel):
     r"""集群信息结构体
 
@@ -18464,6 +18515,159 @@ class DescribeClusterRoutesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeClusterSchedulerPolicyRequest(AbstractModel):
+    r"""DescribeClusterSchedulerPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: <p>集群ID</p>
+        :type ClusterId: str
+        """
+        self._ClusterId = None
+
+    @property
+    def ClusterId(self):
+        r"""<p>集群ID</p>
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeClusterSchedulerPolicyResponse(AbstractModel):
+    r"""DescribeClusterSchedulerPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Policy: <p>调度策略json字符串</p>
+        :type Policy: str
+        :param _SchedulerPolicyConfig: <p>SchedulerPolicy配置信息</p>
+        :type SchedulerPolicyConfig: list of SchedulerPolicyConfig
+        :param _ClientConnection: <p>客户端连接</p>
+        :type ClientConnection: :class:`tencentcloud.tke.v20180525.models.ClientConnection`
+        :param _Extenders: <p>扩展调度器</p>
+        :type Extenders: list of Extenders
+        :param _HighPerformance: <p>高性能模式</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HighPerformance: bool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Policy = None
+        self._SchedulerPolicyConfig = None
+        self._ClientConnection = None
+        self._Extenders = None
+        self._HighPerformance = None
+        self._RequestId = None
+
+    @property
+    def Policy(self):
+        r"""<p>调度策略json字符串</p>
+        :rtype: str
+        """
+        return self._Policy
+
+    @Policy.setter
+    def Policy(self, Policy):
+        self._Policy = Policy
+
+    @property
+    def SchedulerPolicyConfig(self):
+        r"""<p>SchedulerPolicy配置信息</p>
+        :rtype: list of SchedulerPolicyConfig
+        """
+        return self._SchedulerPolicyConfig
+
+    @SchedulerPolicyConfig.setter
+    def SchedulerPolicyConfig(self, SchedulerPolicyConfig):
+        self._SchedulerPolicyConfig = SchedulerPolicyConfig
+
+    @property
+    def ClientConnection(self):
+        r"""<p>客户端连接</p>
+        :rtype: :class:`tencentcloud.tke.v20180525.models.ClientConnection`
+        """
+        return self._ClientConnection
+
+    @ClientConnection.setter
+    def ClientConnection(self, ClientConnection):
+        self._ClientConnection = ClientConnection
+
+    @property
+    def Extenders(self):
+        r"""<p>扩展调度器</p>
+        :rtype: list of Extenders
+        """
+        return self._Extenders
+
+    @Extenders.setter
+    def Extenders(self, Extenders):
+        self._Extenders = Extenders
+
+    @property
+    def HighPerformance(self):
+        r"""<p>高性能模式</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._HighPerformance
+
+    @HighPerformance.setter
+    def HighPerformance(self, HighPerformance):
+        self._HighPerformance = HighPerformance
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Policy = params.get("Policy")
+        if params.get("SchedulerPolicyConfig") is not None:
+            self._SchedulerPolicyConfig = []
+            for item in params.get("SchedulerPolicyConfig"):
+                obj = SchedulerPolicyConfig()
+                obj._deserialize(item)
+                self._SchedulerPolicyConfig.append(obj)
+        if params.get("ClientConnection") is not None:
+            self._ClientConnection = ClientConnection()
+            self._ClientConnection._deserialize(params.get("ClientConnection"))
+        if params.get("Extenders") is not None:
+            self._Extenders = []
+            for item in params.get("Extenders"):
+                obj = Extenders()
+                obj._deserialize(item)
+                self._Extenders.append(obj)
+        self._HighPerformance = params.get("HighPerformance")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeClusterSecurityRequest(AbstractModel):
     r"""DescribeClusterSecurity请求参数结构体
 
@@ -32874,6 +33078,183 @@ class ExistedInstancesPara(AbstractModel):
         
 
 
+class ExtenderClientConfig(AbstractModel):
+    r"""扩展调度器(Extenders)客户端配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Service: 访问extender服务url设置
+        :type Service: :class:`tencentcloud.tke.v20180525.models.ServiceReference`
+        """
+        self._Service = None
+
+    @property
+    def Service(self):
+        r"""访问extender服务url设置
+        :rtype: :class:`tencentcloud.tke.v20180525.models.ServiceReference`
+        """
+        return self._Service
+
+    @Service.setter
+    def Service(self, Service):
+        self._Service = Service
+
+
+    def _deserialize(self, params):
+        if params.get("Service") is not None:
+            self._Service = ServiceReference()
+            self._Service._deserialize(params.get("Service"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExtenderManagedResource(AbstractModel):
+    r"""扩展调度器(Extender)管理的扩展资源
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 自定义资源的名称
+        :type Name: str
+        """
+        self._Name = None
+
+    @property
+    def Name(self):
+        r"""自定义资源的名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Extenders(AbstractModel):
+    r"""扩展调度器(Extenders)
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FilterVerb: 过滤阶段接口
+        :type FilterVerb: str
+        :param _PrioritizeVerb: 打分阶段扩展接口
+        :type PrioritizeVerb: str
+        :param _Weight: 打分阶段节点分数的权重,取值范围限定(0,2】
+        :type Weight: int
+        :param _ManagedResources: 扩展调度器(Extender)管理的扩展资源
+        :type ManagedResources: list of ExtenderManagedResource
+        :param _ExtenderClientConfig: extender客户端配置
+        :type ExtenderClientConfig: :class:`tencentcloud.tke.v20180525.models.ExtenderClientConfig`
+        """
+        self._FilterVerb = None
+        self._PrioritizeVerb = None
+        self._Weight = None
+        self._ManagedResources = None
+        self._ExtenderClientConfig = None
+
+    @property
+    def FilterVerb(self):
+        r"""过滤阶段接口
+        :rtype: str
+        """
+        return self._FilterVerb
+
+    @FilterVerb.setter
+    def FilterVerb(self, FilterVerb):
+        self._FilterVerb = FilterVerb
+
+    @property
+    def PrioritizeVerb(self):
+        r"""打分阶段扩展接口
+        :rtype: str
+        """
+        return self._PrioritizeVerb
+
+    @PrioritizeVerb.setter
+    def PrioritizeVerb(self, PrioritizeVerb):
+        self._PrioritizeVerb = PrioritizeVerb
+
+    @property
+    def Weight(self):
+        r"""打分阶段节点分数的权重,取值范围限定(0,2】
+        :rtype: int
+        """
+        return self._Weight
+
+    @Weight.setter
+    def Weight(self, Weight):
+        self._Weight = Weight
+
+    @property
+    def ManagedResources(self):
+        r"""扩展调度器(Extender)管理的扩展资源
+        :rtype: list of ExtenderManagedResource
+        """
+        return self._ManagedResources
+
+    @ManagedResources.setter
+    def ManagedResources(self, ManagedResources):
+        self._ManagedResources = ManagedResources
+
+    @property
+    def ExtenderClientConfig(self):
+        r"""extender客户端配置
+        :rtype: :class:`tencentcloud.tke.v20180525.models.ExtenderClientConfig`
+        """
+        return self._ExtenderClientConfig
+
+    @ExtenderClientConfig.setter
+    def ExtenderClientConfig(self, ExtenderClientConfig):
+        self._ExtenderClientConfig = ExtenderClientConfig
+
+
+    def _deserialize(self, params):
+        self._FilterVerb = params.get("FilterVerb")
+        self._PrioritizeVerb = params.get("PrioritizeVerb")
+        self._Weight = params.get("Weight")
+        if params.get("ManagedResources") is not None:
+            self._ManagedResources = []
+            for item in params.get("ManagedResources"):
+                obj = ExtenderManagedResource()
+                obj._deserialize(item)
+                self._ManagedResources.append(obj)
+        if params.get("ExtenderClientConfig") is not None:
+            self._ExtenderClientConfig = ExtenderClientConfig()
+            self._ExtenderClientConfig._deserialize(params.get("ExtenderClientConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ExtensionAddon(AbstractModel):
     r"""创建集群时，选择安装的扩展组件的信息
 
@@ -39628,6 +40009,142 @@ class ModifyClusterRuntimeConfigResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyClusterSchedulerPolicyRequest(AbstractModel):
+    r"""ModifyClusterSchedulerPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群ID
+        :type ClusterId: str
+        :param _SchedulerPolicyConfig: SchedulerPolicy配置信息
+        :type SchedulerPolicyConfig: list of SchedulerPolicyConfig
+        :param _ClientConnection: 客户端连接
+        :type ClientConnection: :class:`tencentcloud.tke.v20180525.models.ClientConnection`
+        :param _Extenders: 扩展调度器
+        :type Extenders: list of Extenders
+        :param _HighPerformance: 高性能模式
+        :type HighPerformance: bool
+        """
+        self._ClusterId = None
+        self._SchedulerPolicyConfig = None
+        self._ClientConnection = None
+        self._Extenders = None
+        self._HighPerformance = None
+
+    @property
+    def ClusterId(self):
+        r"""集群ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def SchedulerPolicyConfig(self):
+        r"""SchedulerPolicy配置信息
+        :rtype: list of SchedulerPolicyConfig
+        """
+        return self._SchedulerPolicyConfig
+
+    @SchedulerPolicyConfig.setter
+    def SchedulerPolicyConfig(self, SchedulerPolicyConfig):
+        self._SchedulerPolicyConfig = SchedulerPolicyConfig
+
+    @property
+    def ClientConnection(self):
+        r"""客户端连接
+        :rtype: :class:`tencentcloud.tke.v20180525.models.ClientConnection`
+        """
+        return self._ClientConnection
+
+    @ClientConnection.setter
+    def ClientConnection(self, ClientConnection):
+        self._ClientConnection = ClientConnection
+
+    @property
+    def Extenders(self):
+        r"""扩展调度器
+        :rtype: list of Extenders
+        """
+        return self._Extenders
+
+    @Extenders.setter
+    def Extenders(self, Extenders):
+        self._Extenders = Extenders
+
+    @property
+    def HighPerformance(self):
+        r"""高性能模式
+        :rtype: bool
+        """
+        return self._HighPerformance
+
+    @HighPerformance.setter
+    def HighPerformance(self, HighPerformance):
+        self._HighPerformance = HighPerformance
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        if params.get("SchedulerPolicyConfig") is not None:
+            self._SchedulerPolicyConfig = []
+            for item in params.get("SchedulerPolicyConfig"):
+                obj = SchedulerPolicyConfig()
+                obj._deserialize(item)
+                self._SchedulerPolicyConfig.append(obj)
+        if params.get("ClientConnection") is not None:
+            self._ClientConnection = ClientConnection()
+            self._ClientConnection._deserialize(params.get("ClientConnection"))
+        if params.get("Extenders") is not None:
+            self._Extenders = []
+            for item in params.get("Extenders"):
+                obj = Extenders()
+                obj._deserialize(item)
+                self._Extenders.append(obj)
+        self._HighPerformance = params.get("HighPerformance")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyClusterSchedulerPolicyResponse(AbstractModel):
+    r"""ModifyClusterSchedulerPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyClusterTagsRequest(AbstractModel):
     r"""ModifyClusterTags请求参数结构体
 
@@ -43405,6 +43922,67 @@ class PermissionItem(AbstractModel):
         self._RoleType = params.get("RoleType")
         self._IsCustom = params.get("IsCustom")
         self._Namespace = params.get("Namespace")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PluginSet(AbstractModel):
+    r"""管理调度插件(plugins)的启用和禁用
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Enabled: 指定需要额外启用的插件列表
+        :type Enabled: list of SchedulerPolicyPriority
+        :param _Disabled: 指定需要禁用的默认插件列表
+        :type Disabled: list of SchedulerPolicyPriority
+        """
+        self._Enabled = None
+        self._Disabled = None
+
+    @property
+    def Enabled(self):
+        r"""指定需要额外启用的插件列表
+        :rtype: list of SchedulerPolicyPriority
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+    @property
+    def Disabled(self):
+        r"""指定需要禁用的默认插件列表
+        :rtype: list of SchedulerPolicyPriority
+        """
+        return self._Disabled
+
+    @Disabled.setter
+    def Disabled(self, Disabled):
+        self._Disabled = Disabled
+
+
+    def _deserialize(self, params):
+        if params.get("Enabled") is not None:
+            self._Enabled = []
+            for item in params.get("Enabled"):
+                obj = SchedulerPolicyPriority()
+                obj._deserialize(item)
+                self._Enabled.append(obj)
+        if params.get("Disabled") is not None:
+            self._Disabled = []
+            for item in params.get("Disabled"):
+                obj = SchedulerPolicyPriority()
+                obj._deserialize(item)
+                self._Disabled.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -50736,6 +51314,189 @@ class ScaleOutClusterMasterResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class SchedulerPluginConfigs(AbstractModel):
+    r"""调度器plugin配置参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 配置的插件的名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Args: 初始化时传递给插件的参数，对{"apiVersion":"kubescheduler.config.k8s.io/v1beta3","kind":"NodeResourcesFitArgs","scoringStrategy":{"type":"LeastAllocated"}}base64后的结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Args: str
+        """
+        self._Name = None
+        self._Args = None
+
+    @property
+    def Name(self):
+        r"""配置的插件的名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Args(self):
+        r"""初始化时传递给插件的参数，对{"apiVersion":"kubescheduler.config.k8s.io/v1beta3","kind":"NodeResourcesFitArgs","scoringStrategy":{"type":"LeastAllocated"}}base64后的结果
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Args
+
+    @Args.setter
+    def Args(self, Args):
+        self._Args = Args
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Args = params.get("Args")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SchedulerPolicyConfig(AbstractModel):
+    r"""SchedulerPolicy配置信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SchedulerName: 调度器名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SchedulerName: str
+        :param _PluginConfigs: 调度器plugin配置参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PluginConfigs: list of SchedulerPluginConfigs
+        :param _PluginSet: 插件配置
+        :type PluginSet: :class:`tencentcloud.tke.v20180525.models.PluginSet`
+        """
+        self._SchedulerName = None
+        self._PluginConfigs = None
+        self._PluginSet = None
+
+    @property
+    def SchedulerName(self):
+        r"""调度器名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SchedulerName
+
+    @SchedulerName.setter
+    def SchedulerName(self, SchedulerName):
+        self._SchedulerName = SchedulerName
+
+    @property
+    def PluginConfigs(self):
+        r"""调度器plugin配置参数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of SchedulerPluginConfigs
+        """
+        return self._PluginConfigs
+
+    @PluginConfigs.setter
+    def PluginConfigs(self, PluginConfigs):
+        self._PluginConfigs = PluginConfigs
+
+    @property
+    def PluginSet(self):
+        r"""插件配置
+        :rtype: :class:`tencentcloud.tke.v20180525.models.PluginSet`
+        """
+        return self._PluginSet
+
+    @PluginSet.setter
+    def PluginSet(self, PluginSet):
+        self._PluginSet = PluginSet
+
+
+    def _deserialize(self, params):
+        self._SchedulerName = params.get("SchedulerName")
+        if params.get("PluginConfigs") is not None:
+            self._PluginConfigs = []
+            for item in params.get("PluginConfigs"):
+                obj = SchedulerPluginConfigs()
+                obj._deserialize(item)
+                self._PluginConfigs.append(obj)
+        if params.get("PluginSet") is not None:
+            self._PluginSet = PluginSet()
+            self._PluginSet._deserialize(params.get("PluginSet"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SchedulerPolicyPriority(AbstractModel):
+    r"""调度策略权重
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 打分函数名称
+        :type Name: str
+        :param _Weight: 权重
+        :type Weight: int
+        """
+        self._Name = None
+        self._Weight = None
+
+    @property
+    def Name(self):
+        r"""打分函数名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Weight(self):
+        r"""权重
+        :rtype: int
+        """
+        return self._Weight
+
+    @Weight.setter
+    def Weight(self, Weight):
+        self._Weight = Weight
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Weight = params.get("Weight")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SecurityContext(AbstractModel):
     r"""cloudrun安全特性
 
@@ -50962,6 +51723,102 @@ class ServiceAccountAuthenticationOptions(AbstractModel):
         self._Issuer = params.get("Issuer")
         self._JWKSURI = params.get("JWKSURI")
         self._AutoCreateDiscoveryAnonymousAuth = params.get("AutoCreateDiscoveryAnonymousAuth")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ServiceReference(AbstractModel):
+    r"""调度器访问自定义 Extender 服务 URL 的设置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Namespace: 命名空间
+        :type Namespace: str
+        :param _Name: 服务名称
+        :type Name: str
+        :param _Port: 服务端口
+        :type Port: int
+        :param _Path: 服务路径
+        :type Path: str
+        :param _Scheme: 服务协议
+        :type Scheme: str
+        """
+        self._Namespace = None
+        self._Name = None
+        self._Port = None
+        self._Path = None
+        self._Scheme = None
+
+    @property
+    def Namespace(self):
+        r"""命名空间
+        :rtype: str
+        """
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def Name(self):
+        r"""服务名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Port(self):
+        r"""服务端口
+        :rtype: int
+        """
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+    @property
+    def Path(self):
+        r"""服务路径
+        :rtype: str
+        """
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+    @property
+    def Scheme(self):
+        r"""服务协议
+        :rtype: str
+        """
+        return self._Scheme
+
+    @Scheme.setter
+    def Scheme(self, Scheme):
+        self._Scheme = Scheme
+
+
+    def _deserialize(self, params):
+        self._Namespace = params.get("Namespace")
+        self._Name = params.get("Name")
+        self._Port = params.get("Port")
+        self._Path = params.get("Path")
+        self._Scheme = params.get("Scheme")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

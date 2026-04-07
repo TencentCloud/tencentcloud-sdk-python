@@ -2121,6 +2121,29 @@ class RedisClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyInstanceChargeType(self, request):
+        r"""本接口用于变更实例的计费类型
+
+        :param request: Request instance for ModifyInstanceChargeType.
+        :type request: :class:`tencentcloud.redis.v20180412.models.ModifyInstanceChargeTypeRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.ModifyInstanceChargeTypeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyInstanceChargeType", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyInstanceChargeTypeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyInstanceEvent(self, request):
         r"""本接口（ModifyInstanceEvent）用于修改实例的运维事件的执行计划。
 

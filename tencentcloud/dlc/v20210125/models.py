@@ -3406,30 +3406,32 @@ class Column(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 列名称，不区分大小写，最大支持25个字符。
+        :param _Name: <p>列名称，不区分大小写，最大支持25个字符。</p>
         :type Name: str
-        :param _Type: string|tinyint|smallint|int|bigint|boolean|float|double|decimal|timestamp|date|binary|array|map|struct|uniontype
+        :param _Type: <p>string|tinyint|smallint|int|bigint|boolean|float|double|decimal|timestamp|date|binary|array|map|struct|uniontype</p>
         :type Type: str
-        :param _Comment: 对该类的注释。
+        :param _Comment: <p>对该类的注释。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Comment: str
-        :param _Precision: 表示整个 numeric 的长度
+        :param _Precision: <p>表示整个 numeric 的长度</p>
         :type Precision: int
-        :param _Scale: 表示小数部分的长度
+        :param _Scale: <p>表示小数部分的长度</p>
         :type Scale: int
-        :param _Nullable: 是否为null
+        :param _Nullable: <p>是否为null</p>
         :type Nullable: str
-        :param _Position: 字段位置，小的在前
+        :param _Position: <p>字段位置，小的在前</p>
         :type Position: int
-        :param _CreateTime: 字段创建时间
+        :param _CreateTime: <p>字段创建时间</p><p>参数格式：YYYY-MM-DD hh:mm:ss</p>
         :type CreateTime: str
-        :param _ModifiedTime: 字段修改时间
+        :param _ModifiedTime: <p>字段修改时间</p><p>参数格式：YYYY-MM-DD hh:mm:ss</p>
         :type ModifiedTime: str
-        :param _IsPartition: 是否为分区字段
+        :param _IsPartition: <p>是否为分区字段</p>
         :type IsPartition: bool
-        :param _DataMaskStrategyInfo: 数据脱敏策略信息
+        :param _DataMaskStrategyInfo: <p>数据脱敏策略信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DataMaskStrategyInfo: :class:`tencentcloud.dlc.v20210125.models.DataMaskStrategyInfo`
+        :param _TypeText: <p>数据字段说明</p>
+        :type TypeText: str
         """
         self._Name = None
         self._Type = None
@@ -3442,10 +3444,11 @@ class Column(AbstractModel):
         self._ModifiedTime = None
         self._IsPartition = None
         self._DataMaskStrategyInfo = None
+        self._TypeText = None
 
     @property
     def Name(self):
-        r"""列名称，不区分大小写，最大支持25个字符。
+        r"""<p>列名称，不区分大小写，最大支持25个字符。</p>
         :rtype: str
         """
         return self._Name
@@ -3456,7 +3459,7 @@ class Column(AbstractModel):
 
     @property
     def Type(self):
-        r"""string|tinyint|smallint|int|bigint|boolean|float|double|decimal|timestamp|date|binary|array|map|struct|uniontype
+        r"""<p>string|tinyint|smallint|int|bigint|boolean|float|double|decimal|timestamp|date|binary|array|map|struct|uniontype</p>
         :rtype: str
         """
         return self._Type
@@ -3467,7 +3470,7 @@ class Column(AbstractModel):
 
     @property
     def Comment(self):
-        r"""对该类的注释。
+        r"""<p>对该类的注释。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3479,7 +3482,7 @@ class Column(AbstractModel):
 
     @property
     def Precision(self):
-        r"""表示整个 numeric 的长度
+        r"""<p>表示整个 numeric 的长度</p>
         :rtype: int
         """
         return self._Precision
@@ -3490,7 +3493,7 @@ class Column(AbstractModel):
 
     @property
     def Scale(self):
-        r"""表示小数部分的长度
+        r"""<p>表示小数部分的长度</p>
         :rtype: int
         """
         return self._Scale
@@ -3501,7 +3504,7 @@ class Column(AbstractModel):
 
     @property
     def Nullable(self):
-        r"""是否为null
+        r"""<p>是否为null</p>
         :rtype: str
         """
         return self._Nullable
@@ -3512,7 +3515,7 @@ class Column(AbstractModel):
 
     @property
     def Position(self):
-        r"""字段位置，小的在前
+        r"""<p>字段位置，小的在前</p>
         :rtype: int
         """
         return self._Position
@@ -3523,7 +3526,7 @@ class Column(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""字段创建时间
+        r"""<p>字段创建时间</p><p>参数格式：YYYY-MM-DD hh:mm:ss</p>
         :rtype: str
         """
         return self._CreateTime
@@ -3534,7 +3537,7 @@ class Column(AbstractModel):
 
     @property
     def ModifiedTime(self):
-        r"""字段修改时间
+        r"""<p>字段修改时间</p><p>参数格式：YYYY-MM-DD hh:mm:ss</p>
         :rtype: str
         """
         return self._ModifiedTime
@@ -3545,7 +3548,7 @@ class Column(AbstractModel):
 
     @property
     def IsPartition(self):
-        r"""是否为分区字段
+        r"""<p>是否为分区字段</p>
         :rtype: bool
         """
         return self._IsPartition
@@ -3556,7 +3559,7 @@ class Column(AbstractModel):
 
     @property
     def DataMaskStrategyInfo(self):
-        r"""数据脱敏策略信息
+        r"""<p>数据脱敏策略信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dlc.v20210125.models.DataMaskStrategyInfo`
         """
@@ -3565,6 +3568,17 @@ class Column(AbstractModel):
     @DataMaskStrategyInfo.setter
     def DataMaskStrategyInfo(self, DataMaskStrategyInfo):
         self._DataMaskStrategyInfo = DataMaskStrategyInfo
+
+    @property
+    def TypeText(self):
+        r"""<p>数据字段说明</p>
+        :rtype: str
+        """
+        return self._TypeText
+
+    @TypeText.setter
+    def TypeText(self, TypeText):
+        self._TypeText = TypeText
 
 
     def _deserialize(self, params):
@@ -3581,6 +3595,7 @@ class Column(AbstractModel):
         if params.get("DataMaskStrategyInfo") is not None:
             self._DataMaskStrategyInfo = DataMaskStrategyInfo()
             self._DataMaskStrategyInfo._deserialize(params.get("DataMaskStrategyInfo"))
+        self._TypeText = params.get("TypeText")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

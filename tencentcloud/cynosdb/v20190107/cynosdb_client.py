@@ -1981,6 +1981,29 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeInstanceSpecsByOperationType(self, request):
+        r"""根据操作类型查询实例规格
+
+        :param request: Request instance for DescribeInstanceSpecsByOperationType.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeInstanceSpecsByOperationTypeRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeInstanceSpecsByOperationTypeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInstanceSpecsByOperationType", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInstanceSpecsByOperationTypeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeInstances(self, request):
         r"""本接口(DescribeInstances)用于查询实例列表。
 

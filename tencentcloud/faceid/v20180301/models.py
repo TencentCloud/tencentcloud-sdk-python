@@ -1242,7 +1242,7 @@ class CheckIdCardInformationResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Sim: <p>相似度。- 取值范围 [0.00, 100.00]。- 推荐相似度大于等于70时可判断为同一人，可根据具体场景自行调整阈值（阈值70的误通过率为万分之一）。</p>
+        :param _Sim: <p>相似度。- 取值范围 [0.00, 100.00]。- 推荐相似度大于等于70时可判断为同一人（采用固定阈值70，误通过率为万分之一，不支持调整阈值）。</p>
         :type Sim: float
         :param _Result: <p>业务错误码。- 成功情况返回Success。- 错误情况请参考下方错误码 列表中FailedOperation部分</p>
         :type Result: str
@@ -1292,7 +1292,7 @@ class CheckIdCardInformationResponse(AbstractModel):
 
     @property
     def Sim(self):
-        r"""<p>相似度。- 取值范围 [0.00, 100.00]。- 推荐相似度大于等于70时可判断为同一人，可根据具体场景自行调整阈值（阈值70的误通过率为万分之一）。</p>
+        r"""<p>相似度。- 取值范围 [0.00, 100.00]。- 推荐相似度大于等于70时可判断为同一人（采用固定阈值70，误通过率为万分之一，不支持调整阈值）。</p>
         :rtype: float
         """
         return self._Sim
@@ -7305,7 +7305,7 @@ class ImageRecognitionV2Response(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Sim: <p>相似度。- 取值范围 [0.00, 100.00]。- 推荐相似度大于等于70时可判断为同一人，可根据具体场景自行调整阈值（阈值70的误通过率为万分之一）</p>
+        :param _Sim: <p>相似度。- 取值范围 [0.00, 100.00]。- 推荐相似度大于等于70时可判断为同一人（采用固定阈值70，误通过率为万分之一，不支持调整阈值）</p>
         :type Sim: float
         :param _Result: <p>业务错误码。</p><ul><li>成功情况返回Success。</li><li>错误情况请参考下方错误码 列表中FailedOperation部分</li></ul>
         :type Result: str
@@ -7324,7 +7324,7 @@ class ImageRecognitionV2Response(AbstractModel):
 
     @property
     def Sim(self):
-        r"""<p>相似度。- 取值范围 [0.00, 100.00]。- 推荐相似度大于等于70时可判断为同一人，可根据具体场景自行调整阈值（阈值70的误通过率为万分之一）</p>
+        r"""<p>相似度。- 取值范围 [0.00, 100.00]。- 推荐相似度大于等于70时可判断为同一人（采用固定阈值70，误通过率为万分之一，不支持调整阈值）</p>
         :rtype: float
         """
         return self._Sim
@@ -8150,7 +8150,7 @@ class LivenessCompareResponse(AbstractModel):
         :param _BestFrameBase64: <p>验证通过后的视频最佳截图照片。</p><ul><li>照片为BASE64编码后的值，jpg格式。</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type BestFrameBase64: str
-        :param _Sim: <p>相似度。- 取值范围 [0.00, 100.00]。- 推荐相似度大于等于70时可判断为同一人，可根据具体场景自行调整阈值（阈值70的误通过率为万分之一）。</p>
+        :param _Sim: <p>相似度。- 取值范围 [0.00, 100.00]。- 推荐相似度大于等于70时可判断为同一人（采用固定阈值70，误通过率为万分之一，不支持调整阈值）。</p>
         :type Sim: float
         :param _Result: <p>业务错误码。</p><ul><li>成功情况返回Success。</li><li>错误情况请参考下方错误码，列表中FailedOperation部分。</li></ul>
         :type Result: str
@@ -8183,7 +8183,7 @@ class LivenessCompareResponse(AbstractModel):
 
     @property
     def Sim(self):
-        r"""<p>相似度。- 取值范围 [0.00, 100.00]。- 推荐相似度大于等于70时可判断为同一人，可根据具体场景自行调整阈值（阈值70的误通过率为万分之一）。</p>
+        r"""<p>相似度。- 取值范围 [0.00, 100.00]。- 推荐相似度大于等于70时可判断为同一人（采用固定阈值70，误通过率为万分之一，不支持调整阈值）。</p>
         :rtype: float
         """
         return self._Sim
@@ -8400,7 +8400,7 @@ class LivenessRecognitionResponse(AbstractModel):
         :param _BestFrameBase64: <p>验证通过后的视频最佳截图照片。</p><ul><li>照片为BASE64编码后的值，jpg格式。</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type BestFrameBase64: str
-        :param _Sim: <p>相似度。- 取值范围 [0.00, 100.00]。- 推荐相似度大于等于70时可判断为同一人，可根据具体场景自行调整阈值（阈值70的误通过率为万分之一）</p>
+        :param _Sim: <p>相似度。- 取值范围 [0.00, 100.00]。- 推荐相似度大于等于70时可判断为同一人，（采用固定阈值70，误通过率为万分之一，不支持调整阈值）</p>
         :type Sim: float
         :param _Result: <p>业务错误码。</p><ul><li>成功情况返回Success。</li><li>错误情况请参考下方错误码 列表中FailedOperation部分</li></ul>
         :type Result: str
@@ -8433,7 +8433,7 @@ class LivenessRecognitionResponse(AbstractModel):
 
     @property
     def Sim(self):
-        r"""<p>相似度。- 取值范围 [0.00, 100.00]。- 推荐相似度大于等于70时可判断为同一人，可根据具体场景自行调整阈值（阈值70的误通过率为万分之一）</p>
+        r"""<p>相似度。- 取值范围 [0.00, 100.00]。- 推荐相似度大于等于70时可判断为同一人，（采用固定阈值70，误通过率为万分之一，不支持调整阈值）</p>
         :rtype: float
         """
         return self._Sim

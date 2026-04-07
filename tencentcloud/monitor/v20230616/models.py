@@ -2480,29 +2480,31 @@ class NoticeContentTmplItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _QCloudYehe: 官网通知渠道配置
+        :param _QCloudYehe: <p>官网通知渠道配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type QCloudYehe: list of QCloudYeheNoticeTmplMatcher
-        :param _WeWorkRobot: 企业微信机器人通知渠道配置
+        :param _WeWorkRobot: <p>企业微信机器人通知渠道配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WeWorkRobot: list of WeWorkRobotNoticeTmplMatcher
-        :param _DingDingRobot: 钉钉机器人通知渠道配置
+        :param _DingDingRobot: <p>钉钉机器人通知渠道配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DingDingRobot: list of DingDingRobotNoticeTmplMatcher
-        :param _FeiShuRobot: 飞书机器人通知渠道配置
+        :param _FeiShuRobot: <p>飞书机器人通知渠道配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FeiShuRobot: list of FeiShuRobotNoticeTmplMatcher
-        :param _Webhook: 自定义Webhook通知渠道配置
+        :param _Webhook: <p>自定义Webhook通知渠道配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Webhook: list of WebhookNoticeTmplMatcher
-        :param _TeamsRobot: Teams机器人通知渠道配置
+        :param _TeamsRobot: <p>Teams机器人通知渠道配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TeamsRobot: list of TeamsRobotNoticeTmplMatcher
-        :param _PagerDutyRobot: PagerDutyRobot机器人通知渠道配置
+        :param _PagerDutyRobot: <p>PagerDutyRobot机器人通知渠道配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type PagerDutyRobot: list of PagerDutyRobotNoticeTmplMatcher
-        :param _GoogleChatRobot: GoogleChat
+        :param _GoogleChatRobot: <p>GoogleChat</p>
         :type GoogleChatRobot: list of GoogleChatRobotNoticeTmplMatcher
+        :param _SlackRobot: <p>Slack</p>
+        :type SlackRobot: list of SlackRobotNoticeTmplMatcher
         """
         self._QCloudYehe = None
         self._WeWorkRobot = None
@@ -2512,10 +2514,11 @@ class NoticeContentTmplItem(AbstractModel):
         self._TeamsRobot = None
         self._PagerDutyRobot = None
         self._GoogleChatRobot = None
+        self._SlackRobot = None
 
     @property
     def QCloudYehe(self):
-        r"""官网通知渠道配置
+        r"""<p>官网通知渠道配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of QCloudYeheNoticeTmplMatcher
         """
@@ -2527,7 +2530,7 @@ class NoticeContentTmplItem(AbstractModel):
 
     @property
     def WeWorkRobot(self):
-        r"""企业微信机器人通知渠道配置
+        r"""<p>企业微信机器人通知渠道配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of WeWorkRobotNoticeTmplMatcher
         """
@@ -2539,7 +2542,7 @@ class NoticeContentTmplItem(AbstractModel):
 
     @property
     def DingDingRobot(self):
-        r"""钉钉机器人通知渠道配置
+        r"""<p>钉钉机器人通知渠道配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DingDingRobotNoticeTmplMatcher
         """
@@ -2551,7 +2554,7 @@ class NoticeContentTmplItem(AbstractModel):
 
     @property
     def FeiShuRobot(self):
-        r"""飞书机器人通知渠道配置
+        r"""<p>飞书机器人通知渠道配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of FeiShuRobotNoticeTmplMatcher
         """
@@ -2563,7 +2566,7 @@ class NoticeContentTmplItem(AbstractModel):
 
     @property
     def Webhook(self):
-        r"""自定义Webhook通知渠道配置
+        r"""<p>自定义Webhook通知渠道配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of WebhookNoticeTmplMatcher
         """
@@ -2575,7 +2578,7 @@ class NoticeContentTmplItem(AbstractModel):
 
     @property
     def TeamsRobot(self):
-        r"""Teams机器人通知渠道配置
+        r"""<p>Teams机器人通知渠道配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TeamsRobotNoticeTmplMatcher
         """
@@ -2587,7 +2590,7 @@ class NoticeContentTmplItem(AbstractModel):
 
     @property
     def PagerDutyRobot(self):
-        r"""PagerDutyRobot机器人通知渠道配置
+        r"""<p>PagerDutyRobot机器人通知渠道配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of PagerDutyRobotNoticeTmplMatcher
         """
@@ -2599,7 +2602,7 @@ class NoticeContentTmplItem(AbstractModel):
 
     @property
     def GoogleChatRobot(self):
-        r"""GoogleChat
+        r"""<p>GoogleChat</p>
         :rtype: list of GoogleChatRobotNoticeTmplMatcher
         """
         return self._GoogleChatRobot
@@ -2607,6 +2610,17 @@ class NoticeContentTmplItem(AbstractModel):
     @GoogleChatRobot.setter
     def GoogleChatRobot(self, GoogleChatRobot):
         self._GoogleChatRobot = GoogleChatRobot
+
+    @property
+    def SlackRobot(self):
+        r"""<p>Slack</p>
+        :rtype: list of SlackRobotNoticeTmplMatcher
+        """
+        return self._SlackRobot
+
+    @SlackRobot.setter
+    def SlackRobot(self, SlackRobot):
+        self._SlackRobot = SlackRobot
 
 
     def _deserialize(self, params):
@@ -2658,6 +2672,12 @@ class NoticeContentTmplItem(AbstractModel):
                 obj = GoogleChatRobotNoticeTmplMatcher()
                 obj._deserialize(item)
                 self._GoogleChatRobot.append(obj)
+        if params.get("SlackRobot") is not None:
+            self._SlackRobot = []
+            for item in params.get("SlackRobot"):
+                obj = SlackRobotNoticeTmplMatcher()
+                obj._deserialize(item)
+                self._SlackRobot.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3376,6 +3396,95 @@ class QCloudYeheWeChatNoticeTmplItem(AbstractModel):
         self._AlarmObjectTmpl = params.get("AlarmObjectTmpl")
         self._AlarmRegionTmpl = params.get("AlarmRegionTmpl")
         self._AlarmTimeTmpl = params.get("AlarmTimeTmpl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SlackRobotNoticeTmpl(AbstractModel):
+    r"""企业微信机器人内容模板配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ContentTmpl: <p>内容模板</p>
+        :type ContentTmpl: str
+        """
+        self._ContentTmpl = None
+
+    @property
+    def ContentTmpl(self):
+        r"""<p>内容模板</p>
+        :rtype: str
+        """
+        return self._ContentTmpl
+
+    @ContentTmpl.setter
+    def ContentTmpl(self, ContentTmpl):
+        self._ContentTmpl = ContentTmpl
+
+
+    def _deserialize(self, params):
+        self._ContentTmpl = params.get("ContentTmpl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SlackRobotNoticeTmplMatcher(AbstractModel):
+    r"""企业微信机器人通知模板的匹配器
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MatchingStatus: <p>匹配状态 Invalid;<br>Trigger 告警触发; Recovery 告警恢复</p>
+        :type MatchingStatus: list of str
+        :param _Template: <p>模板配置</p>
+        :type Template: :class:`tencentcloud.monitor.v20230616.models.SlackRobotNoticeTmpl`
+        """
+        self._MatchingStatus = None
+        self._Template = None
+
+    @property
+    def MatchingStatus(self):
+        r"""<p>匹配状态 Invalid;<br>Trigger 告警触发; Recovery 告警恢复</p>
+        :rtype: list of str
+        """
+        return self._MatchingStatus
+
+    @MatchingStatus.setter
+    def MatchingStatus(self, MatchingStatus):
+        self._MatchingStatus = MatchingStatus
+
+    @property
+    def Template(self):
+        r"""<p>模板配置</p>
+        :rtype: :class:`tencentcloud.monitor.v20230616.models.SlackRobotNoticeTmpl`
+        """
+        return self._Template
+
+    @Template.setter
+    def Template(self, Template):
+        self._Template = Template
+
+
+    def _deserialize(self, params):
+        self._MatchingStatus = params.get("MatchingStatus")
+        if params.get("Template") is not None:
+            self._Template = SlackRobotNoticeTmpl()
+            self._Template._deserialize(params.get("Template"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

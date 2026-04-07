@@ -1038,24 +1038,6 @@ class TcbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def EditAuthConfig(
-            self,
-            request: models.EditAuthConfigRequest,
-            opts: Dict = None,
-    ) -> models.EditAuthConfigResponse:
-        """
-        修改登录配置
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "EditAuthConfig"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.EditAuthConfigResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def GetProviders(
             self,
             request: models.GetProvidersRequest,
@@ -1294,24 +1276,6 @@ class TcbClient(AbstractClient):
         kwargs["action"] = "ModifyUser"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyUserResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def ReinstateEnv(
-            self,
-            request: models.ReinstateEnvRequest,
-            opts: Dict = None,
-    ) -> models.ReinstateEnvResponse:
-        """
-        针对已隔离的免费环境，可以通过本接口将其恢复访问。
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "ReinstateEnv"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.ReinstateEnvResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

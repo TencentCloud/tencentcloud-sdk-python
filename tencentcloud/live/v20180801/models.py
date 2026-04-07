@@ -1892,29 +1892,27 @@ class AvatarScriptInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ScriptId: 数字人直播间话术 ID。
+        :param _ScriptId: <p>数字人直播间话术 ID。</p>
         :type ScriptId: str
-        :param _Title: 话术标题。
+        :param _ProductId: <p>数字人直播间产品 ID。</p>
+        :type ProductId: str
+        :param _Title: <p>话术标题。</p>
         :type Title: str
-        :param _Content: 话术内容。
+        :param _Content: <p>话术内容。</p>
         :type Content: str
-        :param _Status: 话术状态。
-PENDING --未生成。
-PROCESSING --生成中。
-READY --已生成。
+        :param _Status: <p>话术状态。PENDING --未生成。PROCESSING --生成中。READY --已生成。FAILED-失败</p><p>枚举值：</p><ul><li>FAILED： 失败</li></ul>
         :type Status: str
-        :param _Duration: 时长。单位：毫秒。
+        :param _Duration: <p>时长。单位：毫秒。</p>
         :type Duration: int
-        :param _Position: 话术位置。
+        :param _Position: <p>话术位置。</p>
         :type Position: int
-        :param _CreateTime: 话术创建时间，UTC时间。
-注意：UTC时间和北京时间相差八小时。
+        :param _CreateTime: <p>话术创建时间，UTC时间。<br>注意：UTC时间和北京时间相差八小时。</p>
         :type CreateTime: str
-        :param _UpdateTime: 话术最后更新时间，UTC时间。
-注意：UTC时间和北京时间相差八小时。
+        :param _UpdateTime: <p>话术最后更新时间，UTC时间。<br>注意：UTC时间和北京时间相差八小时。</p>
         :type UpdateTime: str
         """
         self._ScriptId = None
+        self._ProductId = None
         self._Title = None
         self._Content = None
         self._Status = None
@@ -1925,7 +1923,7 @@ READY --已生成。
 
     @property
     def ScriptId(self):
-        r"""数字人直播间话术 ID。
+        r"""<p>数字人直播间话术 ID。</p>
         :rtype: str
         """
         return self._ScriptId
@@ -1935,8 +1933,19 @@ READY --已生成。
         self._ScriptId = ScriptId
 
     @property
+    def ProductId(self):
+        r"""<p>数字人直播间产品 ID。</p>
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
     def Title(self):
-        r"""话术标题。
+        r"""<p>话术标题。</p>
         :rtype: str
         """
         return self._Title
@@ -1947,7 +1956,7 @@ READY --已生成。
 
     @property
     def Content(self):
-        r"""话术内容。
+        r"""<p>话术内容。</p>
         :rtype: str
         """
         return self._Content
@@ -1958,10 +1967,7 @@ READY --已生成。
 
     @property
     def Status(self):
-        r"""话术状态。
-PENDING --未生成。
-PROCESSING --生成中。
-READY --已生成。
+        r"""<p>话术状态。PENDING --未生成。PROCESSING --生成中。READY --已生成。FAILED-失败</p><p>枚举值：</p><ul><li>FAILED： 失败</li></ul>
         :rtype: str
         """
         return self._Status
@@ -1972,7 +1978,7 @@ READY --已生成。
 
     @property
     def Duration(self):
-        r"""时长。单位：毫秒。
+        r"""<p>时长。单位：毫秒。</p>
         :rtype: int
         """
         return self._Duration
@@ -1983,7 +1989,7 @@ READY --已生成。
 
     @property
     def Position(self):
-        r"""话术位置。
+        r"""<p>话术位置。</p>
         :rtype: int
         """
         return self._Position
@@ -1994,8 +2000,7 @@ READY --已生成。
 
     @property
     def CreateTime(self):
-        r"""话术创建时间，UTC时间。
-注意：UTC时间和北京时间相差八小时。
+        r"""<p>话术创建时间，UTC时间。<br>注意：UTC时间和北京时间相差八小时。</p>
         :rtype: str
         """
         return self._CreateTime
@@ -2006,8 +2011,7 @@ READY --已生成。
 
     @property
     def UpdateTime(self):
-        r"""话术最后更新时间，UTC时间。
-注意：UTC时间和北京时间相差八小时。
+        r"""<p>话术最后更新时间，UTC时间。<br>注意：UTC时间和北京时间相差八小时。</p>
         :rtype: str
         """
         return self._UpdateTime
@@ -2019,6 +2023,7 @@ READY --已生成。
 
     def _deserialize(self, params):
         self._ScriptId = params.get("ScriptId")
+        self._ProductId = params.get("ProductId")
         self._Title = params.get("Title")
         self._Content = params.get("Content")
         self._Status = params.get("Status")

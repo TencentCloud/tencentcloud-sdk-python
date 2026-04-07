@@ -1555,6 +1555,24 @@ class CynosdbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeInstanceSpecsByOperationType(
+            self,
+            request: models.DescribeInstanceSpecsByOperationTypeRequest,
+            opts: Dict = None,
+    ) -> models.DescribeInstanceSpecsByOperationTypeResponse:
+        """
+        根据操作类型查询实例规格
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeInstanceSpecsByOperationType"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeInstanceSpecsByOperationTypeResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeInstances(
             self,
             request: models.DescribeInstancesRequest,

@@ -796,44 +796,41 @@ class AddInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群ID
+        :param _ClusterId: <p>集群ID</p>
         :type ClusterId: str
-        :param _Cpu: Cpu核数
+        :param _Cpu: <p>Cpu核数</p>
         :type Cpu: int
-        :param _Memory: 内存，单位为GB
+        :param _Memory: <p>内存，单位为GB</p>
         :type Memory: int
-        :param _ReadOnlyCount: 新增只读实例数，取值范围为(0,15]
+        :param _ReadOnlyCount: <p>新增只读实例数，取值范围为(0,15]</p>
         :type ReadOnlyCount: int
-        :param _DeviceType: 实例机器类型，支持值如下：
-- common：表示通用型
-- exclusive：表示独享型
+        :param _DeviceType: <p>实例机器类型，支持值如下：</p><ul><li>common：表示通用型</li><li>exclusive：表示独享型</li></ul>
         :type DeviceType: str
-        :param _InstanceGrpId: 实例组ID，在已有RO组中新增实例时使用，不传则新增RO组。当前版本不建议传输该值。
+        :param _InstanceGrpId: <p>实例组ID，在已有RO组中新增实例时使用，不传则新增RO组。当前版本不建议传输该值。</p>
         :type InstanceGrpId: str
-        :param _VpcId: 所属VPC网络ID。
+        :param _VpcId: <p>所属VPC网络ID。</p>
         :type VpcId: str
-        :param _SubnetId: 所属子网ID，如果设置了VpcId，则SubnetId必填。
+        :param _SubnetId: <p>所属子网ID，如果设置了VpcId，则SubnetId必填。</p>
         :type SubnetId: str
-        :param _Port: 新增RO组时使用的Port，取值范围为[0,65535)
+        :param _Port: <p>新增RO组时使用的Port，取值范围为[0,65535)</p>
         :type Port: int
-        :param _InstanceName: 实例名称，字符串长度范围为[0,64)，取值范围为大小写字母，0-9数字，'_','-','.'
+        :param _InstanceName: <p>实例名称，字符串长度范围为[0,64)，取值范围为大小写字母，0-9数字，&#39;_&#39;,&#39;-&#39;,&#39;.&#39;</p>
         :type InstanceName: str
-        :param _AutoVoucher: 是否自动选择代金券 1是 0否 默认为0
+        :param _AutoVoucher: <p>是否自动选择代金券 1是 0否 默认为0</p>
         :type AutoVoucher: int
-        :param _DbType: 数据库类型，取值范围: 
-<li> MYSQL </li>
+        :param _DbType: <p>数据库类型，取值范围: </p><li> MYSQL </li>
         :type DbType: str
-        :param _OrderSource: 订单来源，字符串长度范围为[0,64)
+        :param _OrderSource: <p>订单来源，字符串长度范围为[0,64)</p>
         :type OrderSource: str
-        :param _DealMode: 交易模式 0-下单并支付 1-下单
+        :param _DealMode: <p>交易模式 0-下单并支付 1-下单</p>
         :type DealMode: int
-        :param _ParamTemplateId: 参数模板ID
+        :param _ParamTemplateId: <p>参数模板ID</p>
         :type ParamTemplateId: int
-        :param _InstanceParams: 参数列表，ParamTemplateId 传入时InstanceParams才有效
+        :param _InstanceParams: <p>参数列表，ParamTemplateId 传入时InstanceParams才有效</p>
         :type InstanceParams: list of ModifyParamItem
-        :param _SecurityGroupIds: 安全组ID，新建只读实例时可以指定安全组。
+        :param _SecurityGroupIds: <p>安全组ID，新建只读实例时可以指定安全组。</p>
         :type SecurityGroupIds: list of str
-        :param _UpgradeProxy: proxy同步升级
+        :param _UpgradeProxy: <p>proxy同步升级</p>
         :type UpgradeProxy: :class:`tencentcloud.cynosdb.v20190107.models.UpgradeProxy`
         """
         self._ClusterId = None
@@ -857,7 +854,7 @@ class AddInstancesRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        r"""集群ID
+        r"""<p>集群ID</p>
         :rtype: str
         """
         return self._ClusterId
@@ -868,7 +865,7 @@ class AddInstancesRequest(AbstractModel):
 
     @property
     def Cpu(self):
-        r"""Cpu核数
+        r"""<p>Cpu核数</p>
         :rtype: int
         """
         return self._Cpu
@@ -879,7 +876,7 @@ class AddInstancesRequest(AbstractModel):
 
     @property
     def Memory(self):
-        r"""内存，单位为GB
+        r"""<p>内存，单位为GB</p>
         :rtype: int
         """
         return self._Memory
@@ -890,7 +887,7 @@ class AddInstancesRequest(AbstractModel):
 
     @property
     def ReadOnlyCount(self):
-        r"""新增只读实例数，取值范围为(0,15]
+        r"""<p>新增只读实例数，取值范围为(0,15]</p>
         :rtype: int
         """
         return self._ReadOnlyCount
@@ -901,9 +898,7 @@ class AddInstancesRequest(AbstractModel):
 
     @property
     def DeviceType(self):
-        r"""实例机器类型，支持值如下：
-- common：表示通用型
-- exclusive：表示独享型
+        r"""<p>实例机器类型，支持值如下：</p><ul><li>common：表示通用型</li><li>exclusive：表示独享型</li></ul>
         :rtype: str
         """
         return self._DeviceType
@@ -916,7 +911,7 @@ class AddInstancesRequest(AbstractModel):
     def InstanceGrpId(self):
         warnings.warn("parameter `InstanceGrpId` is deprecated", DeprecationWarning) 
 
-        r"""实例组ID，在已有RO组中新增实例时使用，不传则新增RO组。当前版本不建议传输该值。
+        r"""<p>实例组ID，在已有RO组中新增实例时使用，不传则新增RO组。当前版本不建议传输该值。</p>
         :rtype: str
         """
         return self._InstanceGrpId
@@ -929,7 +924,7 @@ class AddInstancesRequest(AbstractModel):
 
     @property
     def VpcId(self):
-        r"""所属VPC网络ID。
+        r"""<p>所属VPC网络ID。</p>
         :rtype: str
         """
         return self._VpcId
@@ -940,7 +935,7 @@ class AddInstancesRequest(AbstractModel):
 
     @property
     def SubnetId(self):
-        r"""所属子网ID，如果设置了VpcId，则SubnetId必填。
+        r"""<p>所属子网ID，如果设置了VpcId，则SubnetId必填。</p>
         :rtype: str
         """
         return self._SubnetId
@@ -951,7 +946,7 @@ class AddInstancesRequest(AbstractModel):
 
     @property
     def Port(self):
-        r"""新增RO组时使用的Port，取值范围为[0,65535)
+        r"""<p>新增RO组时使用的Port，取值范围为[0,65535)</p>
         :rtype: int
         """
         return self._Port
@@ -962,7 +957,7 @@ class AddInstancesRequest(AbstractModel):
 
     @property
     def InstanceName(self):
-        r"""实例名称，字符串长度范围为[0,64)，取值范围为大小写字母，0-9数字，'_','-','.'
+        r"""<p>实例名称，字符串长度范围为[0,64)，取值范围为大小写字母，0-9数字，&#39;_&#39;,&#39;-&#39;,&#39;.&#39;</p>
         :rtype: str
         """
         return self._InstanceName
@@ -973,7 +968,7 @@ class AddInstancesRequest(AbstractModel):
 
     @property
     def AutoVoucher(self):
-        r"""是否自动选择代金券 1是 0否 默认为0
+        r"""<p>是否自动选择代金券 1是 0否 默认为0</p>
         :rtype: int
         """
         return self._AutoVoucher
@@ -984,8 +979,7 @@ class AddInstancesRequest(AbstractModel):
 
     @property
     def DbType(self):
-        r"""数据库类型，取值范围: 
-<li> MYSQL </li>
+        r"""<p>数据库类型，取值范围: </p><li> MYSQL </li>
         :rtype: str
         """
         return self._DbType
@@ -996,7 +990,7 @@ class AddInstancesRequest(AbstractModel):
 
     @property
     def OrderSource(self):
-        r"""订单来源，字符串长度范围为[0,64)
+        r"""<p>订单来源，字符串长度范围为[0,64)</p>
         :rtype: str
         """
         return self._OrderSource
@@ -1007,7 +1001,7 @@ class AddInstancesRequest(AbstractModel):
 
     @property
     def DealMode(self):
-        r"""交易模式 0-下单并支付 1-下单
+        r"""<p>交易模式 0-下单并支付 1-下单</p>
         :rtype: int
         """
         return self._DealMode
@@ -1018,7 +1012,7 @@ class AddInstancesRequest(AbstractModel):
 
     @property
     def ParamTemplateId(self):
-        r"""参数模板ID
+        r"""<p>参数模板ID</p>
         :rtype: int
         """
         return self._ParamTemplateId
@@ -1029,7 +1023,7 @@ class AddInstancesRequest(AbstractModel):
 
     @property
     def InstanceParams(self):
-        r"""参数列表，ParamTemplateId 传入时InstanceParams才有效
+        r"""<p>参数列表，ParamTemplateId 传入时InstanceParams才有效</p>
         :rtype: list of ModifyParamItem
         """
         return self._InstanceParams
@@ -1040,7 +1034,7 @@ class AddInstancesRequest(AbstractModel):
 
     @property
     def SecurityGroupIds(self):
-        r"""安全组ID，新建只读实例时可以指定安全组。
+        r"""<p>安全组ID，新建只读实例时可以指定安全组。</p>
         :rtype: list of str
         """
         return self._SecurityGroupIds
@@ -1051,7 +1045,7 @@ class AddInstancesRequest(AbstractModel):
 
     @property
     def UpgradeProxy(self):
-        r"""proxy同步升级
+        r"""<p>proxy同步升级</p>
         :rtype: :class:`tencentcloud.cynosdb.v20190107.models.UpgradeProxy`
         """
         return self._UpgradeProxy
@@ -1104,13 +1098,13 @@ class AddInstancesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TranId: 冻结流水，一次开通一个冻结流水。
+        :param _TranId: <p>冻结流水，一次开通一个冻结流水。</p>
         :type TranId: str
-        :param _DealNames: 后付费订单号。
+        :param _DealNames: <p>付费的订单号。说明：建议您使用 <a href="https://cloud.tencent.com/document/product/1003/52131">DescribeResourcesByDealName</a> 接口查询订单关联实例。</p>
         :type DealNames: list of str
-        :param _ResourceIds: 发货资源id列表。
+        :param _ResourceIds: <p>发货资源id列表。</p>
         :type ResourceIds: list of str
-        :param _BigDealIds: 大订单号
+        :param _BigDealIds: <p>大订单号</p>
         :type BigDealIds: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1123,7 +1117,7 @@ class AddInstancesResponse(AbstractModel):
 
     @property
     def TranId(self):
-        r"""冻结流水，一次开通一个冻结流水。
+        r"""<p>冻结流水，一次开通一个冻结流水。</p>
         :rtype: str
         """
         return self._TranId
@@ -1134,7 +1128,7 @@ class AddInstancesResponse(AbstractModel):
 
     @property
     def DealNames(self):
-        r"""后付费订单号。
+        r"""<p>付费的订单号。说明：建议您使用 <a href="https://cloud.tencent.com/document/product/1003/52131">DescribeResourcesByDealName</a> 接口查询订单关联实例。</p>
         :rtype: list of str
         """
         return self._DealNames
@@ -1145,18 +1139,22 @@ class AddInstancesResponse(AbstractModel):
 
     @property
     def ResourceIds(self):
-        r"""发货资源id列表。
+        warnings.warn("parameter `ResourceIds` is deprecated", DeprecationWarning) 
+
+        r"""<p>发货资源id列表。</p>
         :rtype: list of str
         """
         return self._ResourceIds
 
     @ResourceIds.setter
     def ResourceIds(self, ResourceIds):
+        warnings.warn("parameter `ResourceIds` is deprecated", DeprecationWarning) 
+
         self._ResourceIds = ResourceIds
 
     @property
     def BigDealIds(self):
-        r"""大订单号
+        r"""<p>大订单号</p>
         :rtype: list of str
         """
         return self._BigDealIds
@@ -22667,6 +22665,139 @@ class DescribeInstanceSlowQueriesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeInstanceSpecsByOperationTypeRequest(AbstractModel):
+    r"""DescribeInstanceSpecsByOperationType请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群ID
+        :type ClusterId: str
+        :param _OperationType: 操作类型
+addROInstance：新增RO实例
+modifyInstance：变配
+        :type OperationType: str
+        :param _InstanceId: 实例ID，查询变配规格时必传
+        :type InstanceId: str
+        :param _DeviceType: 实例机器类型
+        :type DeviceType: str
+        """
+        self._ClusterId = None
+        self._OperationType = None
+        self._InstanceId = None
+        self._DeviceType = None
+
+    @property
+    def ClusterId(self):
+        r"""集群ID
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def OperationType(self):
+        r"""操作类型
+addROInstance：新增RO实例
+modifyInstance：变配
+        :rtype: str
+        """
+        return self._OperationType
+
+    @OperationType.setter
+    def OperationType(self, OperationType):
+        self._OperationType = OperationType
+
+    @property
+    def InstanceId(self):
+        r"""实例ID，查询变配规格时必传
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def DeviceType(self):
+        r"""实例机器类型
+        :rtype: str
+        """
+        return self._DeviceType
+
+    @DeviceType.setter
+    def DeviceType(self, DeviceType):
+        self._DeviceType = DeviceType
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._OperationType = params.get("OperationType")
+        self._InstanceId = params.get("InstanceId")
+        self._DeviceType = params.get("DeviceType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInstanceSpecsByOperationTypeResponse(AbstractModel):
+    r"""DescribeInstanceSpecsByOperationType返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceSpecSet: 实例规格信息
+        :type InstanceSpecSet: list of InstanceSpec
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._InstanceSpecSet = None
+        self._RequestId = None
+
+    @property
+    def InstanceSpecSet(self):
+        r"""实例规格信息
+        :rtype: list of InstanceSpec
+        """
+        return self._InstanceSpecSet
+
+    @InstanceSpecSet.setter
+    def InstanceSpecSet(self, InstanceSpecSet):
+        self._InstanceSpecSet = InstanceSpecSet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("InstanceSpecSet") is not None:
+            self._InstanceSpecSet = []
+            for item in params.get("InstanceSpecSet"):
+                obj = InstanceSpec()
+                obj._deserialize(item)
+                self._InstanceSpecSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeInstanceSpecsRequest(AbstractModel):
     r"""DescribeInstanceSpecs请求参数结构体
 
@@ -28665,9 +28796,12 @@ class DescribeSlaveZonesRequest(AbstractModel):
         :type Zone: str
         :param _OssClusterId: 云架集群ID
         :type OssClusterId: int
+        :param _StorageVersion: 存储架构类型。枚举值：1.0/2.0  默认值：1.0
+        :type StorageVersion: str
         """
         self._Zone = None
         self._OssClusterId = None
+        self._StorageVersion = None
 
     @property
     def Zone(self):
@@ -28691,10 +28825,22 @@ class DescribeSlaveZonesRequest(AbstractModel):
     def OssClusterId(self, OssClusterId):
         self._OssClusterId = OssClusterId
 
+    @property
+    def StorageVersion(self):
+        r"""存储架构类型。枚举值：1.0/2.0  默认值：1.0
+        :rtype: str
+        """
+        return self._StorageVersion
+
+    @StorageVersion.setter
+    def StorageVersion(self, StorageVersion):
+        self._StorageVersion = StorageVersion
+
 
     def _deserialize(self, params):
         self._Zone = params.get("Zone")
         self._OssClusterId = params.get("OssClusterId")
+        self._StorageVersion = params.get("StorageVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

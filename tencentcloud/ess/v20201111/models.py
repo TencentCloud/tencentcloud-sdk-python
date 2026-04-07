@@ -31197,15 +31197,13 @@ class ExportContractReviewResultRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Operator: 执行本接口操作的员工信息。
-注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :param _Operator: <p>执行本接口操作的员工信息。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param _TaskId: 合同审查任务ID
+        :param _TaskId: <p>合同审查任务ID</p>
         :type TaskId: str
-        :param _FileType: 导出文件类型。1  = 带风险批注文件; 2 = 审查结果＆摘要（.xIsx）; 3 = 不带批注文件
+        :param _FileType: <p>导出文件类型</p><p>枚举值：</p><ul><li>1： WORD、PDF当前带风险批注文件</li><li>2： 审查结果＆摘要（.xIsx）</li><li>3： WORD、PDF审查合同内容时的文件（最原始文件）</li><li>4： WORD、PDF当前无风险批注文件</li></ul>
         :type FileType: int
-        :param _Agent: 代理企业和员工的信息。
-在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        :param _Agent: <p>代理企业和员工的信息。<br>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
         self._Operator = None
@@ -31215,8 +31213,7 @@ class ExportContractReviewResultRequest(AbstractModel):
 
     @property
     def Operator(self):
-        r"""执行本接口操作的员工信息。
-注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        r"""<p>执行本接口操作的员工信息。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
         :rtype: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         """
         return self._Operator
@@ -31227,7 +31224,7 @@ class ExportContractReviewResultRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""合同审查任务ID
+        r"""<p>合同审查任务ID</p>
         :rtype: str
         """
         return self._TaskId
@@ -31238,7 +31235,7 @@ class ExportContractReviewResultRequest(AbstractModel):
 
     @property
     def FileType(self):
-        r"""导出文件类型。1  = 带风险批注文件; 2 = 审查结果＆摘要（.xIsx）; 3 = 不带批注文件
+        r"""<p>导出文件类型</p><p>枚举值：</p><ul><li>1： WORD、PDF当前带风险批注文件</li><li>2： 审查结果＆摘要（.xIsx）</li><li>3： WORD、PDF审查合同内容时的文件（最原始文件）</li><li>4： WORD、PDF当前无风险批注文件</li></ul>
         :rtype: int
         """
         return self._FileType
@@ -31249,8 +31246,7 @@ class ExportContractReviewResultRequest(AbstractModel):
 
     @property
     def Agent(self):
-        r"""代理企业和员工的信息。
-在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        r"""<p>代理企业和员工的信息。<br>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
         :rtype: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
         return self._Agent
@@ -31286,7 +31282,7 @@ class ExportContractReviewResultResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Url: 文件下载链接
+        :param _Url: <p>文件下载链接</p>
         :type Url: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -31296,7 +31292,7 @@ class ExportContractReviewResultResponse(AbstractModel):
 
     @property
     def Url(self):
-        r"""文件下载链接
+        r"""<p>文件下载链接</p>
         :rtype: str
         """
         return self._Url

@@ -38660,25 +38660,15 @@ class DescribeK8sApiAbnormalEventListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Filters: 过滤条件。
-<li>TimeRange - string -是否必填: 否 - 时间范围筛选 ["2022-03-31 16:55:00", "2022-03-31 17:00:00"]</li>
-<li>MatchRules - string  - 是否必填: 否 -命中规则筛选</li>
-<li>RiskLevel - string  - 是否必填: 否 -威胁等级筛选</li>
-<li>Status - string  - 是否必填: 否 -事件状态筛选</li>
-<li>MatchRuleType - string  - 是否必填: 否 -命中规则类型筛选</li>
-<li>ClusterRunningStatus - string  - 是否必填: 否 -集群运行状态</li>
-<li>ClusterName - string  - 是否必填: 否 -集群名称</li>
-<li>ClusterID - string  - 是否必填: 否 -集群ID</li>
+        :param _Filters: <p>过滤条件。</p><li>TimeRange - string -是否必填: 否 - 时间范围筛选 ["2022-03-31 16:55:00", "2022-03-31 17:00:00"]</li><li>MatchRules - string  - 是否必填: 否 -命中规则筛选</li><li>RiskLevel - string  - 是否必填: 否 -威胁等级筛选</li><li>Status - string  - 是否必填: 否 -事件状态筛选</li><li>MatchRuleType - string  - 是否必填: 否 -命中规则类型筛选</li><li>ClusterRunningStatus - string  - 是否必填: 否 -集群运行状态</li><li>ClusterName - string  - 是否必填: 否 -集群名称</li><li>ClusterID - string  - 是否必填: 否 -集群ID</li>
         :type Filters: list of RunTimeFilters
-        :param _Limit: 需要返回的数量，默认为10，最大值为100
+        :param _Limit: <p>需要返回的数量，默认为10，最大值为100</p>
         :type Limit: int
-        :param _Offset: 偏移量，默认为0。
+        :param _Offset: <p>偏移量，默认为0。</p>
         :type Offset: int
-        :param _Order: 排序方式
+        :param _Order: <p>排序方式</p>
         :type Order: str
-        :param _By: 排序字段
-LatestFoundTime: 最近生成时间
-AlarmCount: 告警数量
+        :param _By: <p>排序字段<br>LatestFoundTime: 最近生成时间<br>AlarmCount: 告警数量</p>
         :type By: str
         """
         self._Filters = None
@@ -38689,15 +38679,7 @@ AlarmCount: 告警数量
 
     @property
     def Filters(self):
-        r"""过滤条件。
-<li>TimeRange - string -是否必填: 否 - 时间范围筛选 ["2022-03-31 16:55:00", "2022-03-31 17:00:00"]</li>
-<li>MatchRules - string  - 是否必填: 否 -命中规则筛选</li>
-<li>RiskLevel - string  - 是否必填: 否 -威胁等级筛选</li>
-<li>Status - string  - 是否必填: 否 -事件状态筛选</li>
-<li>MatchRuleType - string  - 是否必填: 否 -命中规则类型筛选</li>
-<li>ClusterRunningStatus - string  - 是否必填: 否 -集群运行状态</li>
-<li>ClusterName - string  - 是否必填: 否 -集群名称</li>
-<li>ClusterID - string  - 是否必填: 否 -集群ID</li>
+        r"""<p>过滤条件。</p><li>TimeRange - string -是否必填: 否 - 时间范围筛选 ["2022-03-31 16:55:00", "2022-03-31 17:00:00"]</li><li>MatchRules - string  - 是否必填: 否 -命中规则筛选</li><li>RiskLevel - string  - 是否必填: 否 -威胁等级筛选</li><li>Status - string  - 是否必填: 否 -事件状态筛选</li><li>MatchRuleType - string  - 是否必填: 否 -命中规则类型筛选</li><li>ClusterRunningStatus - string  - 是否必填: 否 -集群运行状态</li><li>ClusterName - string  - 是否必填: 否 -集群名称</li><li>ClusterID - string  - 是否必填: 否 -集群ID</li>
         :rtype: list of RunTimeFilters
         """
         return self._Filters
@@ -38708,7 +38690,7 @@ AlarmCount: 告警数量
 
     @property
     def Limit(self):
-        r"""需要返回的数量，默认为10，最大值为100
+        r"""<p>需要返回的数量，默认为10，最大值为100</p>
         :rtype: int
         """
         return self._Limit
@@ -38719,7 +38701,7 @@ AlarmCount: 告警数量
 
     @property
     def Offset(self):
-        r"""偏移量，默认为0。
+        r"""<p>偏移量，默认为0。</p>
         :rtype: int
         """
         return self._Offset
@@ -38730,7 +38712,7 @@ AlarmCount: 告警数量
 
     @property
     def Order(self):
-        r"""排序方式
+        r"""<p>排序方式</p>
         :rtype: str
         """
         return self._Order
@@ -38741,9 +38723,7 @@ AlarmCount: 告警数量
 
     @property
     def By(self):
-        r"""排序字段
-LatestFoundTime: 最近生成时间
-AlarmCount: 告警数量
+        r"""<p>排序字段<br>LatestFoundTime: 最近生成时间<br>AlarmCount: 告警数量</p>
         :rtype: str
         """
         return self._By
@@ -38781,20 +38761,23 @@ class DescribeK8sApiAbnormalEventListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _List: 事件列表
+        :param _List: <p>事件列表</p>
         :type List: list of K8sApiAbnormalEventListItem
-        :param _TotalCount: 总数量
+        :param _TotalCount: <p>总数量</p>
         :type TotalCount: int
+        :param _RuleTypeZhSet: <p>k8s告警类型和对应中文翻译</p>
+        :type RuleTypeZhSet: list of K8SAPIRuleTypeZhItem
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._List = None
         self._TotalCount = None
+        self._RuleTypeZhSet = None
         self._RequestId = None
 
     @property
     def List(self):
-        r"""事件列表
+        r"""<p>事件列表</p>
         :rtype: list of K8sApiAbnormalEventListItem
         """
         return self._List
@@ -38805,7 +38788,7 @@ class DescribeK8sApiAbnormalEventListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""总数量
+        r"""<p>总数量</p>
         :rtype: int
         """
         return self._TotalCount
@@ -38813,6 +38796,17 @@ class DescribeK8sApiAbnormalEventListResponse(AbstractModel):
     @TotalCount.setter
     def TotalCount(self, TotalCount):
         self._TotalCount = TotalCount
+
+    @property
+    def RuleTypeZhSet(self):
+        r"""<p>k8s告警类型和对应中文翻译</p>
+        :rtype: list of K8SAPIRuleTypeZhItem
+        """
+        return self._RuleTypeZhSet
+
+    @RuleTypeZhSet.setter
+    def RuleTypeZhSet(self, RuleTypeZhSet):
+        self._RuleTypeZhSet = RuleTypeZhSet
 
     @property
     def RequestId(self):
@@ -38834,6 +38828,12 @@ class DescribeK8sApiAbnormalEventListResponse(AbstractModel):
                 obj._deserialize(item)
                 self._List.append(obj)
         self._TotalCount = params.get("TotalCount")
+        if params.get("RuleTypeZhSet") is not None:
+            self._RuleTypeZhSet = []
+            for item in params.get("RuleTypeZhSet"):
+                obj = K8SAPIRuleTypeZhItem()
+                obj._deserialize(item)
+                self._RuleTypeZhSet.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -39359,14 +39359,14 @@ class DescribeK8sApiAbnormalTendencyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TendencyPeriod: 趋势周期(默认为7天)
+        :param _TendencyPeriod: <p>趋势周期(默认为7天)</p>
         :type TendencyPeriod: int
         """
         self._TendencyPeriod = None
 
     @property
     def TendencyPeriod(self):
-        r"""趋势周期(默认为7天)
+        r"""<p>趋势周期(默认为7天)</p>
         :rtype: int
         """
         return self._TendencyPeriod
@@ -39395,17 +39395,20 @@ class DescribeK8sApiAbnormalTendencyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _List: 趋势列表
+        :param _List: <p>趋势列表</p>
         :type List: list of K8sApiAbnormalTendencyItem
+        :param _RuleTypeZhSet: <p>规则类型对应中文</p>
+        :type RuleTypeZhSet: list of K8SAPIRuleTypeZhItem
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._List = None
+        self._RuleTypeZhSet = None
         self._RequestId = None
 
     @property
     def List(self):
-        r"""趋势列表
+        r"""<p>趋势列表</p>
         :rtype: list of K8sApiAbnormalTendencyItem
         """
         return self._List
@@ -39413,6 +39416,17 @@ class DescribeK8sApiAbnormalTendencyResponse(AbstractModel):
     @List.setter
     def List(self, List):
         self._List = List
+
+    @property
+    def RuleTypeZhSet(self):
+        r"""<p>规则类型对应中文</p>
+        :rtype: list of K8SAPIRuleTypeZhItem
+        """
+        return self._RuleTypeZhSet
+
+    @RuleTypeZhSet.setter
+    def RuleTypeZhSet(self, RuleTypeZhSet):
+        self._RuleTypeZhSet = RuleTypeZhSet
 
     @property
     def RequestId(self):
@@ -39433,6 +39447,12 @@ class DescribeK8sApiAbnormalTendencyResponse(AbstractModel):
                 obj = K8sApiAbnormalTendencyItem()
                 obj._deserialize(item)
                 self._List.append(obj)
+        if params.get("RuleTypeZhSet") is not None:
+            self._RuleTypeZhSet = []
+            for item in params.get("RuleTypeZhSet"):
+                obj = K8SAPIRuleTypeZhItem()
+                obj._deserialize(item)
+                self._RuleTypeZhSet.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -62826,6 +62846,108 @@ class InitializeUserComplianceEnvironmentResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class K8SAPIRuleTypeCountItem(AbstractModel):
+    r"""k8s告警类型和对应的告警数量
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleType: <p>规则类型</p><p>枚举值：</p><ul><li>ABNORMAL_CREATE_POD： 可疑容器创建</li></ul>
+        :type RuleType: str
+        :param _EventCount: <p>规则对应告警数量</p>
+        :type EventCount: int
+        """
+        self._RuleType = None
+        self._EventCount = None
+
+    @property
+    def RuleType(self):
+        r"""<p>规则类型</p><p>枚举值：</p><ul><li>ABNORMAL_CREATE_POD： 可疑容器创建</li></ul>
+        :rtype: str
+        """
+        return self._RuleType
+
+    @RuleType.setter
+    def RuleType(self, RuleType):
+        self._RuleType = RuleType
+
+    @property
+    def EventCount(self):
+        r"""<p>规则对应告警数量</p>
+        :rtype: int
+        """
+        return self._EventCount
+
+    @EventCount.setter
+    def EventCount(self, EventCount):
+        self._EventCount = EventCount
+
+
+    def _deserialize(self, params):
+        self._RuleType = params.get("RuleType")
+        self._EventCount = params.get("EventCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class K8SAPIRuleTypeZhItem(AbstractModel):
+    r"""k8s告警类型和中文映射
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleType: <p>规则类型</p><p>枚举值：</p><ul><li>&quot;rule_type&quot;: &quot;ABNORMAL_CREATE_POD&quot;,： 可疑容器创建</li></ul>
+        :type RuleType: str
+        :param _RuleTypeZh: <p>规则类型对应中文</p>
+        :type RuleTypeZh: str
+        """
+        self._RuleType = None
+        self._RuleTypeZh = None
+
+    @property
+    def RuleType(self):
+        r"""<p>规则类型</p><p>枚举值：</p><ul><li>&quot;rule_type&quot;: &quot;ABNORMAL_CREATE_POD&quot;,： 可疑容器创建</li></ul>
+        :rtype: str
+        """
+        return self._RuleType
+
+    @RuleType.setter
+    def RuleType(self, RuleType):
+        self._RuleType = RuleType
+
+    @property
+    def RuleTypeZh(self):
+        r"""<p>规则类型对应中文</p>
+        :rtype: str
+        """
+        return self._RuleTypeZh
+
+    @RuleTypeZh.setter
+    def RuleTypeZh(self, RuleTypeZh):
+        self._RuleTypeZh = RuleTypeZh
+
+
+    def _deserialize(self, params):
+        self._RuleType = params.get("RuleType")
+        self._RuleTypeZh = params.get("RuleTypeZh")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class K8sApiAbnormalEventInfo(AbstractModel):
     r"""k8sApi异常事件详情
 
@@ -62833,49 +62955,48 @@ class K8sApiAbnormalEventInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MatchRuleName: 命中规则名称
+        :param _MatchRuleName: <p>命中规则名称</p>
         :type MatchRuleName: str
-        :param _MatchRuleType: 命中规则类型
+        :param _MatchRuleType: <p>命中规则类型</p>
         :type MatchRuleType: str
-        :param _RiskLevel: 告警等级
+        :param _RiskLevel: <p>告警等级</p>
         :type RiskLevel: str
-        :param _ClusterID: 集群ID
+        :param _ClusterID: <p>集群ID</p>
         :type ClusterID: str
-        :param _ClusterName: 集群名称
+        :param _ClusterName: <p>集群名称</p>
         :type ClusterName: str
-        :param _ClusterRunningStatus: 集群运行状态，CSR_RUNNING-运行中，CSR_EXCEPTION-异常，CSR_CREATING-创建中
+        :param _ClusterRunningStatus: <p>集群运行状态，CSR_RUNNING-运行中，CSR_EXCEPTION-异常，CSR_CREATING-创建中</p>
         :type ClusterRunningStatus: str
-        :param _FirstCreateTime: 初次生成时间
+        :param _FirstCreateTime: <p>初次生成时间</p>
         :type FirstCreateTime: str
-        :param _LastCreateTime: 最近一次生成时间
+        :param _LastCreateTime: <p>最近一次生成时间</p>
         :type LastCreateTime: str
-        :param _AlarmCount: 告警数量
+        :param _AlarmCount: <p>告警数量</p>
         :type AlarmCount: int
-        :param _Status: 状态
-"EVENT_UNDEAL":未处理
-"EVENT_DEALED": 已处理
-"EVENT_IGNORE": 忽略
-"EVENT_DEL": 删除
-"EVENT_ADD_WHITE": 加白
+        :param _Status: <p>状态<br>&quot;EVENT_UNDEAL&quot;:未处理<br>&quot;EVENT_DEALED&quot;: 已处理<br>&quot;EVENT_IGNORE&quot;: 忽略<br>&quot;EVENT_DEL&quot;: 删除<br>&quot;EVENT_ADD_WHITE&quot;: 加白</p>
         :type Status: str
-        :param _ClusterMasterIP: 集群masterIP
+        :param _ClusterMasterIP: <p>集群masterIP</p>
         :type ClusterMasterIP: str
-        :param _K8sVersion: k8s版本
+        :param _K8sVersion: <p>k8s版本</p>
         :type K8sVersion: str
-        :param _RunningComponent: 运行时组件
+        :param _RunningComponent: <p>运行时组件</p>
         :type RunningComponent: list of str
-        :param _Desc: 描述
+        :param _Desc: <p>描述</p>
         :type Desc: str
-        :param _Suggestion: 建议
+        :param _Suggestion: <p>建议</p>
         :type Suggestion: str
-        :param _Info: 请求信息
+        :param _Info: <p>请求信息</p>
         :type Info: str
-        :param _MatchRuleID: 规则ID
+        :param _MatchRuleID: <p>规则ID</p>
         :type MatchRuleID: str
-        :param _HighLightFields: 高亮字段数组
+        :param _HighLightFields: <p>高亮字段数组</p>
         :type HighLightFields: list of str
-        :param _MatchRule: 命中规则
+        :param _MatchRule: <p>命中规则</p>
         :type MatchRule: :class:`tencentcloud.tcss.v20201101.models.K8sApiAbnormalRuleScopeInfo`
+        :param _HighLightFieldsVal: <p>高亮字段对应的命中规则内容(JSON字符串, 如: {&quot;field1&quot;:&quot;value1&quot;,&quot;field2&quot;:&quot;value2&quot;})</p><p>参数格式：{&quot;field1&quot;:&quot;value1&quot;,&quot;field2&quot;:&quot;value2&quot;}</p>
+        :type HighLightFieldsVal: str
+        :param _RuleTypeZH: <p>规则中文</p>
+        :type RuleTypeZH: str
         """
         self._MatchRuleName = None
         self._MatchRuleType = None
@@ -62896,10 +63017,12 @@ class K8sApiAbnormalEventInfo(AbstractModel):
         self._MatchRuleID = None
         self._HighLightFields = None
         self._MatchRule = None
+        self._HighLightFieldsVal = None
+        self._RuleTypeZH = None
 
     @property
     def MatchRuleName(self):
-        r"""命中规则名称
+        r"""<p>命中规则名称</p>
         :rtype: str
         """
         return self._MatchRuleName
@@ -62910,7 +63033,7 @@ class K8sApiAbnormalEventInfo(AbstractModel):
 
     @property
     def MatchRuleType(self):
-        r"""命中规则类型
+        r"""<p>命中规则类型</p>
         :rtype: str
         """
         return self._MatchRuleType
@@ -62921,7 +63044,7 @@ class K8sApiAbnormalEventInfo(AbstractModel):
 
     @property
     def RiskLevel(self):
-        r"""告警等级
+        r"""<p>告警等级</p>
         :rtype: str
         """
         return self._RiskLevel
@@ -62932,7 +63055,7 @@ class K8sApiAbnormalEventInfo(AbstractModel):
 
     @property
     def ClusterID(self):
-        r"""集群ID
+        r"""<p>集群ID</p>
         :rtype: str
         """
         return self._ClusterID
@@ -62943,7 +63066,7 @@ class K8sApiAbnormalEventInfo(AbstractModel):
 
     @property
     def ClusterName(self):
-        r"""集群名称
+        r"""<p>集群名称</p>
         :rtype: str
         """
         return self._ClusterName
@@ -62954,7 +63077,7 @@ class K8sApiAbnormalEventInfo(AbstractModel):
 
     @property
     def ClusterRunningStatus(self):
-        r"""集群运行状态，CSR_RUNNING-运行中，CSR_EXCEPTION-异常，CSR_CREATING-创建中
+        r"""<p>集群运行状态，CSR_RUNNING-运行中，CSR_EXCEPTION-异常，CSR_CREATING-创建中</p>
         :rtype: str
         """
         return self._ClusterRunningStatus
@@ -62965,7 +63088,7 @@ class K8sApiAbnormalEventInfo(AbstractModel):
 
     @property
     def FirstCreateTime(self):
-        r"""初次生成时间
+        r"""<p>初次生成时间</p>
         :rtype: str
         """
         return self._FirstCreateTime
@@ -62976,7 +63099,7 @@ class K8sApiAbnormalEventInfo(AbstractModel):
 
     @property
     def LastCreateTime(self):
-        r"""最近一次生成时间
+        r"""<p>最近一次生成时间</p>
         :rtype: str
         """
         return self._LastCreateTime
@@ -62987,7 +63110,7 @@ class K8sApiAbnormalEventInfo(AbstractModel):
 
     @property
     def AlarmCount(self):
-        r"""告警数量
+        r"""<p>告警数量</p>
         :rtype: int
         """
         return self._AlarmCount
@@ -62998,12 +63121,7 @@ class K8sApiAbnormalEventInfo(AbstractModel):
 
     @property
     def Status(self):
-        r"""状态
-"EVENT_UNDEAL":未处理
-"EVENT_DEALED": 已处理
-"EVENT_IGNORE": 忽略
-"EVENT_DEL": 删除
-"EVENT_ADD_WHITE": 加白
+        r"""<p>状态<br>&quot;EVENT_UNDEAL&quot;:未处理<br>&quot;EVENT_DEALED&quot;: 已处理<br>&quot;EVENT_IGNORE&quot;: 忽略<br>&quot;EVENT_DEL&quot;: 删除<br>&quot;EVENT_ADD_WHITE&quot;: 加白</p>
         :rtype: str
         """
         return self._Status
@@ -63014,7 +63132,7 @@ class K8sApiAbnormalEventInfo(AbstractModel):
 
     @property
     def ClusterMasterIP(self):
-        r"""集群masterIP
+        r"""<p>集群masterIP</p>
         :rtype: str
         """
         return self._ClusterMasterIP
@@ -63025,7 +63143,7 @@ class K8sApiAbnormalEventInfo(AbstractModel):
 
     @property
     def K8sVersion(self):
-        r"""k8s版本
+        r"""<p>k8s版本</p>
         :rtype: str
         """
         return self._K8sVersion
@@ -63036,7 +63154,7 @@ class K8sApiAbnormalEventInfo(AbstractModel):
 
     @property
     def RunningComponent(self):
-        r"""运行时组件
+        r"""<p>运行时组件</p>
         :rtype: list of str
         """
         return self._RunningComponent
@@ -63047,7 +63165,7 @@ class K8sApiAbnormalEventInfo(AbstractModel):
 
     @property
     def Desc(self):
-        r"""描述
+        r"""<p>描述</p>
         :rtype: str
         """
         return self._Desc
@@ -63058,7 +63176,7 @@ class K8sApiAbnormalEventInfo(AbstractModel):
 
     @property
     def Suggestion(self):
-        r"""建议
+        r"""<p>建议</p>
         :rtype: str
         """
         return self._Suggestion
@@ -63069,7 +63187,7 @@ class K8sApiAbnormalEventInfo(AbstractModel):
 
     @property
     def Info(self):
-        r"""请求信息
+        r"""<p>请求信息</p>
         :rtype: str
         """
         return self._Info
@@ -63080,7 +63198,7 @@ class K8sApiAbnormalEventInfo(AbstractModel):
 
     @property
     def MatchRuleID(self):
-        r"""规则ID
+        r"""<p>规则ID</p>
         :rtype: str
         """
         return self._MatchRuleID
@@ -63091,7 +63209,7 @@ class K8sApiAbnormalEventInfo(AbstractModel):
 
     @property
     def HighLightFields(self):
-        r"""高亮字段数组
+        r"""<p>高亮字段数组</p>
         :rtype: list of str
         """
         return self._HighLightFields
@@ -63102,7 +63220,7 @@ class K8sApiAbnormalEventInfo(AbstractModel):
 
     @property
     def MatchRule(self):
-        r"""命中规则
+        r"""<p>命中规则</p>
         :rtype: :class:`tencentcloud.tcss.v20201101.models.K8sApiAbnormalRuleScopeInfo`
         """
         return self._MatchRule
@@ -63110,6 +63228,28 @@ class K8sApiAbnormalEventInfo(AbstractModel):
     @MatchRule.setter
     def MatchRule(self, MatchRule):
         self._MatchRule = MatchRule
+
+    @property
+    def HighLightFieldsVal(self):
+        r"""<p>高亮字段对应的命中规则内容(JSON字符串, 如: {&quot;field1&quot;:&quot;value1&quot;,&quot;field2&quot;:&quot;value2&quot;})</p><p>参数格式：{&quot;field1&quot;:&quot;value1&quot;,&quot;field2&quot;:&quot;value2&quot;}</p>
+        :rtype: str
+        """
+        return self._HighLightFieldsVal
+
+    @HighLightFieldsVal.setter
+    def HighLightFieldsVal(self, HighLightFieldsVal):
+        self._HighLightFieldsVal = HighLightFieldsVal
+
+    @property
+    def RuleTypeZH(self):
+        r"""<p>规则中文</p>
+        :rtype: str
+        """
+        return self._RuleTypeZH
+
+    @RuleTypeZH.setter
+    def RuleTypeZH(self, RuleTypeZH):
+        self._RuleTypeZH = RuleTypeZH
 
 
     def _deserialize(self, params):
@@ -63134,6 +63274,8 @@ class K8sApiAbnormalEventInfo(AbstractModel):
         if params.get("MatchRule") is not None:
             self._MatchRule = K8sApiAbnormalRuleScopeInfo()
             self._MatchRule._deserialize(params.get("MatchRule"))
+        self._HighLightFieldsVal = params.get("HighLightFieldsVal")
+        self._RuleTypeZH = params.get("RuleTypeZH")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -63664,50 +63806,29 @@ class K8sApiAbnormalRuleScopeInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Scope: 范围
-系统事件:
-ANONYMOUS_ACCESS: 匿名访问
-ABNORMAL_UA_REQ: 异常UA请求
-ANONYMOUS_ABNORMAL_PERMISSION: 匿名用户权限异动
-GET_CREDENTIALS: 凭据信息获取
-MOUNT_SENSITIVE_PATH: 敏感路径挂载
-COMMAND_RUN: 命令执行
-PRIVILEGE_CONTAINER: 特权容器
-EXCEPTION_CRONTAB_TASK: 异常定时任务
-STATICS_POD: 静态pod创建
-ABNORMAL_CREATE_POD: 异常pod创建
-USER_DEFINED: 用户自定义
+        :param _Scope: <p>范围<br>系统事件:<br>ANONYMOUS_ACCESS: 匿名访问<br>ABNORMAL_UA_REQ: 异常UA请求<br>ANONYMOUS_ABNORMAL_PERMISSION: 匿名用户权限异动<br>GET_CREDENTIALS: 凭据信息获取<br>MOUNT_SENSITIVE_PATH: 敏感路径挂载<br>COMMAND_RUN: 命令执行<br>PRIVILEGE_CONTAINER: 特权容器<br>EXCEPTION_CRONTAB_TASK: 异常定时任务<br>STATICS_POD: 静态pod创建<br>ABNORMAL_CREATE_POD: 异常pod创建<br>USER_DEFINED: 用户自定义</p>
         :type Scope: str
-        :param _Action: 动作(RULE_MODE_ALERT: 告警 RULE_MODE_RELEASE:放行)
+        :param _Action: <p>动作(RULE_MODE_ALERT: 告警 RULE_MODE_RELEASE:放行)</p>
         :type Action: str
-        :param _RiskLevel: 威胁等级 HIGH:高级 MIDDLE: 中级 LOW:低级 NOTICE:提示
+        :param _RiskLevel: <p>威胁等级 HIGH:高级 MIDDLE: 中级 LOW:低级 NOTICE:提示</p>
         :type RiskLevel: str
-        :param _Status: 开关状态(true:开 false:关) 适用于系统规则
+        :param _Status: <p>开关状态(true:开 false:关) 适用于系统规则</p>
         :type Status: bool
-        :param _IsDelete: 是否被删除 适用于自定义规则入参
+        :param _IsDelete: <p>是否被删除 适用于自定义规则入参</p>
         :type IsDelete: bool
+        :param _RuleTypeZH: <p>规则类型对应中文</p>
+        :type RuleTypeZH: str
         """
         self._Scope = None
         self._Action = None
         self._RiskLevel = None
         self._Status = None
         self._IsDelete = None
+        self._RuleTypeZH = None
 
     @property
     def Scope(self):
-        r"""范围
-系统事件:
-ANONYMOUS_ACCESS: 匿名访问
-ABNORMAL_UA_REQ: 异常UA请求
-ANONYMOUS_ABNORMAL_PERMISSION: 匿名用户权限异动
-GET_CREDENTIALS: 凭据信息获取
-MOUNT_SENSITIVE_PATH: 敏感路径挂载
-COMMAND_RUN: 命令执行
-PRIVILEGE_CONTAINER: 特权容器
-EXCEPTION_CRONTAB_TASK: 异常定时任务
-STATICS_POD: 静态pod创建
-ABNORMAL_CREATE_POD: 异常pod创建
-USER_DEFINED: 用户自定义
+        r"""<p>范围<br>系统事件:<br>ANONYMOUS_ACCESS: 匿名访问<br>ABNORMAL_UA_REQ: 异常UA请求<br>ANONYMOUS_ABNORMAL_PERMISSION: 匿名用户权限异动<br>GET_CREDENTIALS: 凭据信息获取<br>MOUNT_SENSITIVE_PATH: 敏感路径挂载<br>COMMAND_RUN: 命令执行<br>PRIVILEGE_CONTAINER: 特权容器<br>EXCEPTION_CRONTAB_TASK: 异常定时任务<br>STATICS_POD: 静态pod创建<br>ABNORMAL_CREATE_POD: 异常pod创建<br>USER_DEFINED: 用户自定义</p>
         :rtype: str
         """
         return self._Scope
@@ -63718,7 +63839,7 @@ USER_DEFINED: 用户自定义
 
     @property
     def Action(self):
-        r"""动作(RULE_MODE_ALERT: 告警 RULE_MODE_RELEASE:放行)
+        r"""<p>动作(RULE_MODE_ALERT: 告警 RULE_MODE_RELEASE:放行)</p>
         :rtype: str
         """
         return self._Action
@@ -63729,7 +63850,7 @@ USER_DEFINED: 用户自定义
 
     @property
     def RiskLevel(self):
-        r"""威胁等级 HIGH:高级 MIDDLE: 中级 LOW:低级 NOTICE:提示
+        r"""<p>威胁等级 HIGH:高级 MIDDLE: 中级 LOW:低级 NOTICE:提示</p>
         :rtype: str
         """
         return self._RiskLevel
@@ -63740,7 +63861,7 @@ USER_DEFINED: 用户自定义
 
     @property
     def Status(self):
-        r"""开关状态(true:开 false:关) 适用于系统规则
+        r"""<p>开关状态(true:开 false:关) 适用于系统规则</p>
         :rtype: bool
         """
         return self._Status
@@ -63751,7 +63872,7 @@ USER_DEFINED: 用户自定义
 
     @property
     def IsDelete(self):
-        r"""是否被删除 适用于自定义规则入参
+        r"""<p>是否被删除 适用于自定义规则入参</p>
         :rtype: bool
         """
         return self._IsDelete
@@ -63760,6 +63881,17 @@ USER_DEFINED: 用户自定义
     def IsDelete(self, IsDelete):
         self._IsDelete = IsDelete
 
+    @property
+    def RuleTypeZH(self):
+        r"""<p>规则类型对应中文</p>
+        :rtype: str
+        """
+        return self._RuleTypeZH
+
+    @RuleTypeZH.setter
+    def RuleTypeZH(self, RuleTypeZH):
+        self._RuleTypeZH = RuleTypeZH
+
 
     def _deserialize(self, params):
         self._Scope = params.get("Scope")
@@ -63767,6 +63899,7 @@ USER_DEFINED: 用户自定义
         self._RiskLevel = params.get("RiskLevel")
         self._Status = params.get("Status")
         self._IsDelete = params.get("IsDelete")
+        self._RuleTypeZH = params.get("RuleTypeZH")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -63784,30 +63917,32 @@ class K8sApiAbnormalTendencyItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Date: 日期
+        :param _Date: <p>日期</p>
         :type Date: str
-        :param _ExceptionUARequestCount: 异常UA请求事件数
+        :param _ExceptionUARequestCount: <p>异常UA请求事件数</p>
         :type ExceptionUARequestCount: int
-        :param _AnonymousUserRightCount: 匿名用户权限事件数
+        :param _AnonymousUserRightCount: <p>匿名用户权限事件数</p>
         :type AnonymousUserRightCount: int
-        :param _CredentialInformationObtainCount: 凭据信息获取事件数
+        :param _CredentialInformationObtainCount: <p>凭据信息获取事件数</p>
         :type CredentialInformationObtainCount: int
-        :param _SensitiveDataMountCount: 敏感数据挂载事件数
+        :param _SensitiveDataMountCount: <p>敏感数据挂载事件数</p>
         :type SensitiveDataMountCount: int
-        :param _CmdExecCount: 命令执行事件数
+        :param _CmdExecCount: <p>命令执行事件数</p>
         :type CmdExecCount: int
-        :param _AbnormalScheduledTaskCount: 异常定时任务事件数
+        :param _AbnormalScheduledTaskCount: <p>异常定时任务事件数</p>
         :type AbnormalScheduledTaskCount: int
-        :param _StaticsPodCreateCount: 静态Pod创建数
+        :param _StaticsPodCreateCount: <p>静态Pod创建数</p>
         :type StaticsPodCreateCount: int
-        :param _DoubtfulContainerCreateCount: 可疑容器创建数
+        :param _DoubtfulContainerCreateCount: <p>可疑容器创建数</p>
         :type DoubtfulContainerCreateCount: int
-        :param _UserDefinedRuleCount: 自定义规则事件数
+        :param _UserDefinedRuleCount: <p>自定义规则事件数</p>
         :type UserDefinedRuleCount: int
-        :param _AnonymousAccessCount: 匿名访问事件数
+        :param _AnonymousAccessCount: <p>匿名访问事件数</p>
         :type AnonymousAccessCount: int
-        :param _PrivilegeContainerCount: 特权容器事件数
+        :param _PrivilegeContainerCount: <p>特权容器事件数</p>
         :type PrivilegeContainerCount: int
+        :param _RuleTypeCountSet: <p>规则类型对应告警数量</p>
+        :type RuleTypeCountSet: list of K8SAPIRuleTypeCountItem
         """
         self._Date = None
         self._ExceptionUARequestCount = None
@@ -63821,10 +63956,11 @@ class K8sApiAbnormalTendencyItem(AbstractModel):
         self._UserDefinedRuleCount = None
         self._AnonymousAccessCount = None
         self._PrivilegeContainerCount = None
+        self._RuleTypeCountSet = None
 
     @property
     def Date(self):
-        r"""日期
+        r"""<p>日期</p>
         :rtype: str
         """
         return self._Date
@@ -63835,7 +63971,7 @@ class K8sApiAbnormalTendencyItem(AbstractModel):
 
     @property
     def ExceptionUARequestCount(self):
-        r"""异常UA请求事件数
+        r"""<p>异常UA请求事件数</p>
         :rtype: int
         """
         return self._ExceptionUARequestCount
@@ -63846,7 +63982,7 @@ class K8sApiAbnormalTendencyItem(AbstractModel):
 
     @property
     def AnonymousUserRightCount(self):
-        r"""匿名用户权限事件数
+        r"""<p>匿名用户权限事件数</p>
         :rtype: int
         """
         return self._AnonymousUserRightCount
@@ -63857,7 +63993,7 @@ class K8sApiAbnormalTendencyItem(AbstractModel):
 
     @property
     def CredentialInformationObtainCount(self):
-        r"""凭据信息获取事件数
+        r"""<p>凭据信息获取事件数</p>
         :rtype: int
         """
         return self._CredentialInformationObtainCount
@@ -63868,7 +64004,7 @@ class K8sApiAbnormalTendencyItem(AbstractModel):
 
     @property
     def SensitiveDataMountCount(self):
-        r"""敏感数据挂载事件数
+        r"""<p>敏感数据挂载事件数</p>
         :rtype: int
         """
         return self._SensitiveDataMountCount
@@ -63879,7 +64015,7 @@ class K8sApiAbnormalTendencyItem(AbstractModel):
 
     @property
     def CmdExecCount(self):
-        r"""命令执行事件数
+        r"""<p>命令执行事件数</p>
         :rtype: int
         """
         return self._CmdExecCount
@@ -63890,7 +64026,7 @@ class K8sApiAbnormalTendencyItem(AbstractModel):
 
     @property
     def AbnormalScheduledTaskCount(self):
-        r"""异常定时任务事件数
+        r"""<p>异常定时任务事件数</p>
         :rtype: int
         """
         return self._AbnormalScheduledTaskCount
@@ -63901,7 +64037,7 @@ class K8sApiAbnormalTendencyItem(AbstractModel):
 
     @property
     def StaticsPodCreateCount(self):
-        r"""静态Pod创建数
+        r"""<p>静态Pod创建数</p>
         :rtype: int
         """
         return self._StaticsPodCreateCount
@@ -63912,7 +64048,7 @@ class K8sApiAbnormalTendencyItem(AbstractModel):
 
     @property
     def DoubtfulContainerCreateCount(self):
-        r"""可疑容器创建数
+        r"""<p>可疑容器创建数</p>
         :rtype: int
         """
         return self._DoubtfulContainerCreateCount
@@ -63923,7 +64059,7 @@ class K8sApiAbnormalTendencyItem(AbstractModel):
 
     @property
     def UserDefinedRuleCount(self):
-        r"""自定义规则事件数
+        r"""<p>自定义规则事件数</p>
         :rtype: int
         """
         return self._UserDefinedRuleCount
@@ -63934,7 +64070,7 @@ class K8sApiAbnormalTendencyItem(AbstractModel):
 
     @property
     def AnonymousAccessCount(self):
-        r"""匿名访问事件数
+        r"""<p>匿名访问事件数</p>
         :rtype: int
         """
         return self._AnonymousAccessCount
@@ -63945,7 +64081,7 @@ class K8sApiAbnormalTendencyItem(AbstractModel):
 
     @property
     def PrivilegeContainerCount(self):
-        r"""特权容器事件数
+        r"""<p>特权容器事件数</p>
         :rtype: int
         """
         return self._PrivilegeContainerCount
@@ -63953,6 +64089,17 @@ class K8sApiAbnormalTendencyItem(AbstractModel):
     @PrivilegeContainerCount.setter
     def PrivilegeContainerCount(self, PrivilegeContainerCount):
         self._PrivilegeContainerCount = PrivilegeContainerCount
+
+    @property
+    def RuleTypeCountSet(self):
+        r"""<p>规则类型对应告警数量</p>
+        :rtype: list of K8SAPIRuleTypeCountItem
+        """
+        return self._RuleTypeCountSet
+
+    @RuleTypeCountSet.setter
+    def RuleTypeCountSet(self, RuleTypeCountSet):
+        self._RuleTypeCountSet = RuleTypeCountSet
 
 
     def _deserialize(self, params):
@@ -63968,6 +64115,12 @@ class K8sApiAbnormalTendencyItem(AbstractModel):
         self._UserDefinedRuleCount = params.get("UserDefinedRuleCount")
         self._AnonymousAccessCount = params.get("AnonymousAccessCount")
         self._PrivilegeContainerCount = params.get("PrivilegeContainerCount")
+        if params.get("RuleTypeCountSet") is not None:
+            self._RuleTypeCountSet = []
+            for item in params.get("RuleTypeCountSet"):
+                obj = K8SAPIRuleTypeCountItem()
+                obj._deserialize(item)
+                self._RuleTypeCountSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

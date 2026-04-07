@@ -5675,6 +5675,12 @@ class CreateOwnNumberApplyRequest(AbstractModel):
         :type MobileNddPrefix: str
         :param _LocalNumberTrimAC: 同市固话去掉区号
         :type LocalNumberTrimAC: bool
+        :param _CalleeFormatPassthrough: 被叫格式透传 （完成透传用户输入，不做处理）
+        :type CalleeFormatPassthrough: bool
+        :param _CallerFormatPassthrough: 主叫格式透传 （完成透传用户输入，不做处理）
+        :type CallerFormatPassthrough: bool
+        :param _InternationalNumberPrefix: 国际长途前缀码
+        :type InternationalNumberPrefix: str
         """
         self._SdkAppId = None
         self._SipTrunkId = None
@@ -5682,6 +5688,9 @@ class CreateOwnNumberApplyRequest(AbstractModel):
         self._Prefix = None
         self._MobileNddPrefix = None
         self._LocalNumberTrimAC = None
+        self._CalleeFormatPassthrough = None
+        self._CallerFormatPassthrough = None
+        self._InternationalNumberPrefix = None
 
     @property
     def SdkAppId(self):
@@ -5749,6 +5758,39 @@ class CreateOwnNumberApplyRequest(AbstractModel):
     def LocalNumberTrimAC(self, LocalNumberTrimAC):
         self._LocalNumberTrimAC = LocalNumberTrimAC
 
+    @property
+    def CalleeFormatPassthrough(self):
+        r"""被叫格式透传 （完成透传用户输入，不做处理）
+        :rtype: bool
+        """
+        return self._CalleeFormatPassthrough
+
+    @CalleeFormatPassthrough.setter
+    def CalleeFormatPassthrough(self, CalleeFormatPassthrough):
+        self._CalleeFormatPassthrough = CalleeFormatPassthrough
+
+    @property
+    def CallerFormatPassthrough(self):
+        r"""主叫格式透传 （完成透传用户输入，不做处理）
+        :rtype: bool
+        """
+        return self._CallerFormatPassthrough
+
+    @CallerFormatPassthrough.setter
+    def CallerFormatPassthrough(self, CallerFormatPassthrough):
+        self._CallerFormatPassthrough = CallerFormatPassthrough
+
+    @property
+    def InternationalNumberPrefix(self):
+        r"""国际长途前缀码
+        :rtype: str
+        """
+        return self._InternationalNumberPrefix
+
+    @InternationalNumberPrefix.setter
+    def InternationalNumberPrefix(self, InternationalNumberPrefix):
+        self._InternationalNumberPrefix = InternationalNumberPrefix
+
 
     def _deserialize(self, params):
         self._SdkAppId = params.get("SdkAppId")
@@ -5762,6 +5804,9 @@ class CreateOwnNumberApplyRequest(AbstractModel):
         self._Prefix = params.get("Prefix")
         self._MobileNddPrefix = params.get("MobileNddPrefix")
         self._LocalNumberTrimAC = params.get("LocalNumberTrimAC")
+        self._CalleeFormatPassthrough = params.get("CalleeFormatPassthrough")
+        self._CallerFormatPassthrough = params.get("CallerFormatPassthrough")
+        self._InternationalNumberPrefix = params.get("InternationalNumberPrefix")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14755,6 +14800,12 @@ class ModifyOwnNumberApplyRequest(AbstractModel):
         :type MobileNddPrefix: str
         :param _LocalNumberTrimAC: 同市固话去掉区号
         :type LocalNumberTrimAC: bool
+        :param _CalleeFormatPassthrough: 被叫格式透传 （完成透传用户输入，不做处理）
+        :type CalleeFormatPassthrough: bool
+        :param _CallerFormatPassthrough: 主叫格式透传 （完成透传用户输入，不做处理）
+        :type CallerFormatPassthrough: bool
+        :param _InternationalNumberPrefix: 国际长途前缀码
+        :type InternationalNumberPrefix: str
         """
         self._SdkAppId = None
         self._DetailList = None
@@ -14762,6 +14813,9 @@ class ModifyOwnNumberApplyRequest(AbstractModel):
         self._Prefix = None
         self._MobileNddPrefix = None
         self._LocalNumberTrimAC = None
+        self._CalleeFormatPassthrough = None
+        self._CallerFormatPassthrough = None
+        self._InternationalNumberPrefix = None
 
     @property
     def SdkAppId(self):
@@ -14829,6 +14883,39 @@ class ModifyOwnNumberApplyRequest(AbstractModel):
     def LocalNumberTrimAC(self, LocalNumberTrimAC):
         self._LocalNumberTrimAC = LocalNumberTrimAC
 
+    @property
+    def CalleeFormatPassthrough(self):
+        r"""被叫格式透传 （完成透传用户输入，不做处理）
+        :rtype: bool
+        """
+        return self._CalleeFormatPassthrough
+
+    @CalleeFormatPassthrough.setter
+    def CalleeFormatPassthrough(self, CalleeFormatPassthrough):
+        self._CalleeFormatPassthrough = CalleeFormatPassthrough
+
+    @property
+    def CallerFormatPassthrough(self):
+        r"""主叫格式透传 （完成透传用户输入，不做处理）
+        :rtype: bool
+        """
+        return self._CallerFormatPassthrough
+
+    @CallerFormatPassthrough.setter
+    def CallerFormatPassthrough(self, CallerFormatPassthrough):
+        self._CallerFormatPassthrough = CallerFormatPassthrough
+
+    @property
+    def InternationalNumberPrefix(self):
+        r"""国际长途前缀码
+        :rtype: str
+        """
+        return self._InternationalNumberPrefix
+
+    @InternationalNumberPrefix.setter
+    def InternationalNumberPrefix(self, InternationalNumberPrefix):
+        self._InternationalNumberPrefix = InternationalNumberPrefix
+
 
     def _deserialize(self, params):
         self._SdkAppId = params.get("SdkAppId")
@@ -14842,6 +14929,9 @@ class ModifyOwnNumberApplyRequest(AbstractModel):
         self._Prefix = params.get("Prefix")
         self._MobileNddPrefix = params.get("MobileNddPrefix")
         self._LocalNumberTrimAC = params.get("LocalNumberTrimAC")
+        self._CalleeFormatPassthrough = params.get("CalleeFormatPassthrough")
+        self._CallerFormatPassthrough = params.get("CallerFormatPassthrough")
+        self._InternationalNumberPrefix = params.get("InternationalNumberPrefix")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
