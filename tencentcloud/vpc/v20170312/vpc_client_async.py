@@ -1686,6 +1686,24 @@ class VpcClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateTrafficMirrorFilterRules(
+            self,
+            request: models.CreateTrafficMirrorFilterRulesRequest,
+            opts: Dict = None,
+    ) -> models.CreateTrafficMirrorFilterRulesResponse:
+        """
+        创建流量镜像五元组过滤规则。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateTrafficMirrorFilterRules"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateTrafficMirrorFilterRulesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateTrafficPackages(
             self,
             request: models.CreateTrafficPackagesRequest,
@@ -2760,6 +2778,24 @@ class VpcClient(AbstractClient):
         kwargs["action"] = "DeleteTrafficMirror"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteTrafficMirrorResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteTrafficMirrorFilterRules(
+            self,
+            request: models.DeleteTrafficMirrorFilterRulesRequest,
+            opts: Dict = None,
+    ) -> models.DeleteTrafficMirrorFilterRulesResponse:
+        """
+        删除流量镜像五元组过滤规则。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteTrafficMirrorFilterRules"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteTrafficMirrorFilterRulesResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -4801,6 +4837,24 @@ class VpcClient(AbstractClient):
         kwargs["action"] = "DescribeTenantCcns"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeTenantCcnsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeTrafficMirrorFilterRules(
+            self,
+            request: models.DescribeTrafficMirrorFilterRulesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeTrafficMirrorFilterRulesResponse:
+        """
+        查询流量镜像五元组过滤规则。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeTrafficMirrorFilterRules"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeTrafficMirrorFilterRulesResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -7170,6 +7224,24 @@ class VpcClient(AbstractClient):
         kwargs["action"] = "ModifyTrafficMirrorAttribute"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyTrafficMirrorAttributeResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyTrafficMirrorFilterRules(
+            self,
+            request: models.ModifyTrafficMirrorFilterRulesRequest,
+            opts: Dict = None,
+    ) -> models.ModifyTrafficMirrorFilterRulesResponse:
+        """
+        修改流量镜像五元组过滤规则。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyTrafficMirrorFilterRules"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyTrafficMirrorFilterRulesResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

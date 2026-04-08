@@ -7776,7 +7776,8 @@ class ClientAttester(AbstractModel):
         :type Type: str
         :param _AttesterSource: 认证方法。取值有：
 <li>TC-RCE: 使用风险识别 RCE 进行认证；</li>
-<li>TC-CAPTCHA: 使用天御验证码进行认证。</li>
+<li>TC-CAPTCHA: 使用天御验证码进行认证；</li>
+<li>TC-EO-CAPTCHA: 使用 EdgeOne 人机校验进行认证。</li>
         :type AttesterSource: str
         :param _AttesterDuration: 认证有效时间。默认为 60s，支持的单位有：
 <li>s：秒，取值范围 60～43200；</li>
@@ -7789,6 +7790,9 @@ class ClientAttester(AbstractModel):
         :param _TCCaptchaOption: TC-CAPTCHA 认证的配置信息。
 <li>当 AttesterSource 参数值为 TC-CAPTCHA 时，此字段必填。</li>
         :type TCCaptchaOption: :class:`tencentcloud.teo.v20220901.models.TCCaptchaOption`
+        :param _TCEOCaptchaOption: TC-EO-CAPTCHA 认证的配置信息。
+<li>当 AttesterSource 参数值为 TC-EO-CAPTCHA 时，此字段必填。</li>
+        :type TCEOCaptchaOption: :class:`tencentcloud.teo.v20220901.models.TCEOCaptchaOption`
         """
         self._Id = None
         self._Name = None
@@ -7797,6 +7801,7 @@ class ClientAttester(AbstractModel):
         self._AttesterDuration = None
         self._TCRCEOption = None
         self._TCCaptchaOption = None
+        self._TCEOCaptchaOption = None
 
     @property
     def Id(self):
@@ -7837,7 +7842,8 @@ class ClientAttester(AbstractModel):
     def AttesterSource(self):
         r"""认证方法。取值有：
 <li>TC-RCE: 使用风险识别 RCE 进行认证；</li>
-<li>TC-CAPTCHA: 使用天御验证码进行认证。</li>
+<li>TC-CAPTCHA: 使用天御验证码进行认证；</li>
+<li>TC-EO-CAPTCHA: 使用 EdgeOne 人机校验进行认证。</li>
         :rtype: str
         """
         return self._AttesterSource
@@ -7884,6 +7890,18 @@ class ClientAttester(AbstractModel):
     def TCCaptchaOption(self, TCCaptchaOption):
         self._TCCaptchaOption = TCCaptchaOption
 
+    @property
+    def TCEOCaptchaOption(self):
+        r"""TC-EO-CAPTCHA 认证的配置信息。
+<li>当 AttesterSource 参数值为 TC-EO-CAPTCHA 时，此字段必填。</li>
+        :rtype: :class:`tencentcloud.teo.v20220901.models.TCEOCaptchaOption`
+        """
+        return self._TCEOCaptchaOption
+
+    @TCEOCaptchaOption.setter
+    def TCEOCaptchaOption(self, TCEOCaptchaOption):
+        self._TCEOCaptchaOption = TCEOCaptchaOption
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -7897,6 +7915,9 @@ class ClientAttester(AbstractModel):
         if params.get("TCCaptchaOption") is not None:
             self._TCCaptchaOption = TCCaptchaOption()
             self._TCCaptchaOption._deserialize(params.get("TCCaptchaOption"))
+        if params.get("TCEOCaptchaOption") is not None:
+            self._TCEOCaptchaOption = TCEOCaptchaOption()
+            self._TCEOCaptchaOption._deserialize(params.get("TCEOCaptchaOption"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -57618,6 +57639,42 @@ class TCCaptchaOption(AbstractModel):
     def _deserialize(self, params):
         self._CaptchaAppId = params.get("CaptchaAppId")
         self._AppSecretKey = params.get("AppSecretKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TCEOCaptchaOption(AbstractModel):
+    r"""EdgeOne 人机校验认证实例信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CaptchaMode: EdgeOne 人机校验模式，取值有：<li> Invisible：无感验证；</li><li>Adaptive：自适应交互验证。</li>
+        :type CaptchaMode: str
+        """
+        self._CaptchaMode = None
+
+    @property
+    def CaptchaMode(self):
+        r"""EdgeOne 人机校验模式，取值有：<li> Invisible：无感验证；</li><li>Adaptive：自适应交互验证。</li>
+        :rtype: str
+        """
+        return self._CaptchaMode
+
+    @CaptchaMode.setter
+    def CaptchaMode(self, CaptchaMode):
+        self._CaptchaMode = CaptchaMode
+
+
+    def _deserialize(self, params):
+        self._CaptchaMode = params.get("CaptchaMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

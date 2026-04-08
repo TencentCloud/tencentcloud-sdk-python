@@ -414,7 +414,7 @@ class LiveClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateLiveAvatarScriptResponse:
         """
-        调用该接口，用于创建数字人直播间话术。
+        调用该接口，用于创建数字人直播间/AIGC直播间话术。
         """
         
         kwargs = {}
@@ -1905,7 +1905,7 @@ class LiveClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeLiveAvatarScriptsResponse:
         """
-        调用该接口，查询数字人直播间话术信息列表。
+        调用该接口，查询数字人直播间话术信息列表。新增产品ID参数
         """
         
         kwargs = {}
@@ -3543,7 +3543,7 @@ class LiveClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyLiveAvatarRoomResponse:
         """
-        调用该接口，用于修改数字人直播间。
+        调用该接口，用于修改数字人(包括AIGC数字人)直播间。
         """
         
         kwargs = {}
@@ -3965,7 +3965,7 @@ class LiveClient(AbstractClient):
             opts: Dict = None,
     ) -> models.StartLiveAvatarRoomResponse:
         """
-        调用该接口，用于启动数字人直播间。
+        调用该接口，用于启动数字人（包括AIGC数字人）直播间。
         """
         
         kwargs = {}

@@ -16231,6 +16231,165 @@ class CreateSubnetsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateTrafficMirrorFilterRulesRequest(AbstractModel):
+    r"""CreateTrafficMirrorFilterRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TrafficMirrorId: 流量镜像实例唯一ID。
+        :type TrafficMirrorId: str
+        :param _IngressFilterRules: 流量镜像入站过滤规则。
+        :type IngressFilterRules: list of TrafficMirrorFilter
+        :param _EgressFilterRules: 流量镜像出站过滤规则。
+        :type EgressFilterRules: list of TrafficMirrorFilter
+        """
+        self._TrafficMirrorId = None
+        self._IngressFilterRules = None
+        self._EgressFilterRules = None
+
+    @property
+    def TrafficMirrorId(self):
+        r"""流量镜像实例唯一ID。
+        :rtype: str
+        """
+        return self._TrafficMirrorId
+
+    @TrafficMirrorId.setter
+    def TrafficMirrorId(self, TrafficMirrorId):
+        self._TrafficMirrorId = TrafficMirrorId
+
+    @property
+    def IngressFilterRules(self):
+        r"""流量镜像入站过滤规则。
+        :rtype: list of TrafficMirrorFilter
+        """
+        return self._IngressFilterRules
+
+    @IngressFilterRules.setter
+    def IngressFilterRules(self, IngressFilterRules):
+        self._IngressFilterRules = IngressFilterRules
+
+    @property
+    def EgressFilterRules(self):
+        r"""流量镜像出站过滤规则。
+        :rtype: list of TrafficMirrorFilter
+        """
+        return self._EgressFilterRules
+
+    @EgressFilterRules.setter
+    def EgressFilterRules(self, EgressFilterRules):
+        self._EgressFilterRules = EgressFilterRules
+
+
+    def _deserialize(self, params):
+        self._TrafficMirrorId = params.get("TrafficMirrorId")
+        if params.get("IngressFilterRules") is not None:
+            self._IngressFilterRules = []
+            for item in params.get("IngressFilterRules"):
+                obj = TrafficMirrorFilter()
+                obj._deserialize(item)
+                self._IngressFilterRules.append(obj)
+        if params.get("EgressFilterRules") is not None:
+            self._EgressFilterRules = []
+            for item in params.get("EgressFilterRules"):
+                obj = TrafficMirrorFilter()
+                obj._deserialize(item)
+                self._EgressFilterRules.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateTrafficMirrorFilterRulesResponse(AbstractModel):
+    r"""CreateTrafficMirrorFilterRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TrafficMirrorId: 流量镜像实例唯一ID。
+        :type TrafficMirrorId: str
+        :param _IngressFilterRules: 流量镜像入站过滤规则。
+        :type IngressFilterRules: list of TrafficMirrorFilter
+        :param _EgressFilterRules: 流量镜像出站过滤规则。
+        :type EgressFilterRules: list of TrafficMirrorFilter
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TrafficMirrorId = None
+        self._IngressFilterRules = None
+        self._EgressFilterRules = None
+        self._RequestId = None
+
+    @property
+    def TrafficMirrorId(self):
+        r"""流量镜像实例唯一ID。
+        :rtype: str
+        """
+        return self._TrafficMirrorId
+
+    @TrafficMirrorId.setter
+    def TrafficMirrorId(self, TrafficMirrorId):
+        self._TrafficMirrorId = TrafficMirrorId
+
+    @property
+    def IngressFilterRules(self):
+        r"""流量镜像入站过滤规则。
+        :rtype: list of TrafficMirrorFilter
+        """
+        return self._IngressFilterRules
+
+    @IngressFilterRules.setter
+    def IngressFilterRules(self, IngressFilterRules):
+        self._IngressFilterRules = IngressFilterRules
+
+    @property
+    def EgressFilterRules(self):
+        r"""流量镜像出站过滤规则。
+        :rtype: list of TrafficMirrorFilter
+        """
+        return self._EgressFilterRules
+
+    @EgressFilterRules.setter
+    def EgressFilterRules(self, EgressFilterRules):
+        self._EgressFilterRules = EgressFilterRules
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TrafficMirrorId = params.get("TrafficMirrorId")
+        if params.get("IngressFilterRules") is not None:
+            self._IngressFilterRules = []
+            for item in params.get("IngressFilterRules"):
+                obj = TrafficMirrorFilter()
+                obj._deserialize(item)
+                self._IngressFilterRules.append(obj)
+        if params.get("EgressFilterRules") is not None:
+            self._EgressFilterRules = []
+            for item in params.get("EgressFilterRules"):
+                obj = TrafficMirrorFilter()
+                obj._deserialize(item)
+                self._EgressFilterRules.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class CreateTrafficMirrorRequest(AbstractModel):
     r"""CreateTrafficMirror请求参数结构体
 
@@ -23097,6 +23256,100 @@ class DeleteTemplateMemberRequest(AbstractModel):
 
 class DeleteTemplateMemberResponse(AbstractModel):
     r"""DeleteTemplateMember返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteTrafficMirrorFilterRulesRequest(AbstractModel):
+    r"""DeleteTrafficMirrorFilterRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TrafficMirrorId: 流量镜像实例唯一ID。
+        :type TrafficMirrorId: str
+        :param _IngressFilterRuleIds: 流量镜像入站过滤唯一ID列表。
+        :type IngressFilterRuleIds: list of str
+        :param _EgressFilterRuleIds: 流量镜像出站过滤唯一ID列表。
+        :type EgressFilterRuleIds: list of str
+        """
+        self._TrafficMirrorId = None
+        self._IngressFilterRuleIds = None
+        self._EgressFilterRuleIds = None
+
+    @property
+    def TrafficMirrorId(self):
+        r"""流量镜像实例唯一ID。
+        :rtype: str
+        """
+        return self._TrafficMirrorId
+
+    @TrafficMirrorId.setter
+    def TrafficMirrorId(self, TrafficMirrorId):
+        self._TrafficMirrorId = TrafficMirrorId
+
+    @property
+    def IngressFilterRuleIds(self):
+        r"""流量镜像入站过滤唯一ID列表。
+        :rtype: list of str
+        """
+        return self._IngressFilterRuleIds
+
+    @IngressFilterRuleIds.setter
+    def IngressFilterRuleIds(self, IngressFilterRuleIds):
+        self._IngressFilterRuleIds = IngressFilterRuleIds
+
+    @property
+    def EgressFilterRuleIds(self):
+        r"""流量镜像出站过滤唯一ID列表。
+        :rtype: list of str
+        """
+        return self._EgressFilterRuleIds
+
+    @EgressFilterRuleIds.setter
+    def EgressFilterRuleIds(self, EgressFilterRuleIds):
+        self._EgressFilterRuleIds = EgressFilterRuleIds
+
+
+    def _deserialize(self, params):
+        self._TrafficMirrorId = params.get("TrafficMirrorId")
+        self._IngressFilterRuleIds = params.get("IngressFilterRuleIds")
+        self._EgressFilterRuleIds = params.get("EgressFilterRuleIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteTrafficMirrorFilterRulesResponse(AbstractModel):
+    r"""DeleteTrafficMirrorFilterRules返回参数结构体
 
     """
 
@@ -38339,6 +38592,211 @@ class DescribeTenantCcnsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeTrafficMirrorFilterRulesRequest(AbstractModel):
+    r"""DescribeTrafficMirrorFilterRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TrafficMirrorId: 流量镜像唯一ID
+        :type TrafficMirrorId: str
+        :param _TrafficMirrorFilterRuleIds: 流量镜像出站、入站过滤唯一ID列表。
+        :type TrafficMirrorFilterRuleIds: list of str
+        :param _Filters: <li>traffic-mirror-filter-rule-id - String - （过滤条件） 流量镜像过滤规则，形如：tmfi-qfhrb7yj。 </li>
+<li>action - String - （过滤条件）策略， 支持类型： ACCEPT， DROP。 </li>
+<li>description - String - （过滤条件）描述。 </li>
+<li>direction - String - （过滤条件）方向, 支持类型：INGRESS， EGRESS。</li>
+        :type Filters: list of Filter
+        :param _Offset: 偏移量。
+        :type Offset: int
+        :param _Limit: 请求对象个数。
+        :type Limit: int
+        """
+        self._TrafficMirrorId = None
+        self._TrafficMirrorFilterRuleIds = None
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def TrafficMirrorId(self):
+        r"""流量镜像唯一ID
+        :rtype: str
+        """
+        return self._TrafficMirrorId
+
+    @TrafficMirrorId.setter
+    def TrafficMirrorId(self, TrafficMirrorId):
+        self._TrafficMirrorId = TrafficMirrorId
+
+    @property
+    def TrafficMirrorFilterRuleIds(self):
+        r"""流量镜像出站、入站过滤唯一ID列表。
+        :rtype: list of str
+        """
+        return self._TrafficMirrorFilterRuleIds
+
+    @TrafficMirrorFilterRuleIds.setter
+    def TrafficMirrorFilterRuleIds(self, TrafficMirrorFilterRuleIds):
+        self._TrafficMirrorFilterRuleIds = TrafficMirrorFilterRuleIds
+
+    @property
+    def Filters(self):
+        r"""<li>traffic-mirror-filter-rule-id - String - （过滤条件） 流量镜像过滤规则，形如：tmfi-qfhrb7yj。 </li>
+<li>action - String - （过滤条件）策略， 支持类型： ACCEPT， DROP。 </li>
+<li>description - String - （过滤条件）描述。 </li>
+<li>direction - String - （过滤条件）方向, 支持类型：INGRESS， EGRESS。</li>
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        r"""偏移量。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""请求对象个数。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._TrafficMirrorId = params.get("TrafficMirrorId")
+        self._TrafficMirrorFilterRuleIds = params.get("TrafficMirrorFilterRuleIds")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTrafficMirrorFilterRulesResponse(AbstractModel):
+    r"""DescribeTrafficMirrorFilterRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TrafficMirrorId: 流量镜像实例唯一ID。
+        :type TrafficMirrorId: str
+        :param _IngressFilterRules: 流量镜像入站过滤规则。
+        :type IngressFilterRules: list of TrafficMirrorFilter
+        :param _EgressFilterRules: 流量镜像出站过滤规则。
+        :type EgressFilterRules: list of TrafficMirrorFilter
+        :param _TotalCount: 符合条件的实例数量。分页查询的时候，如果IngressFilterRules的长度加上IngressFilterRules的长度，小于limit的时候表示已经查询完毕。
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TrafficMirrorId = None
+        self._IngressFilterRules = None
+        self._EgressFilterRules = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def TrafficMirrorId(self):
+        r"""流量镜像实例唯一ID。
+        :rtype: str
+        """
+        return self._TrafficMirrorId
+
+    @TrafficMirrorId.setter
+    def TrafficMirrorId(self, TrafficMirrorId):
+        self._TrafficMirrorId = TrafficMirrorId
+
+    @property
+    def IngressFilterRules(self):
+        r"""流量镜像入站过滤规则。
+        :rtype: list of TrafficMirrorFilter
+        """
+        return self._IngressFilterRules
+
+    @IngressFilterRules.setter
+    def IngressFilterRules(self, IngressFilterRules):
+        self._IngressFilterRules = IngressFilterRules
+
+    @property
+    def EgressFilterRules(self):
+        r"""流量镜像出站过滤规则。
+        :rtype: list of TrafficMirrorFilter
+        """
+        return self._EgressFilterRules
+
+    @EgressFilterRules.setter
+    def EgressFilterRules(self, EgressFilterRules):
+        self._EgressFilterRules = EgressFilterRules
+
+    @property
+    def TotalCount(self):
+        r"""符合条件的实例数量。分页查询的时候，如果IngressFilterRules的长度加上IngressFilterRules的长度，小于limit的时候表示已经查询完毕。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TrafficMirrorId = params.get("TrafficMirrorId")
+        if params.get("IngressFilterRules") is not None:
+            self._IngressFilterRules = []
+            for item in params.get("IngressFilterRules"):
+                obj = TrafficMirrorFilter()
+                obj._deserialize(item)
+                self._IngressFilterRules.append(obj)
+        if params.get("EgressFilterRules") is not None:
+            self._EgressFilterRules = []
+            for item in params.get("EgressFilterRules"):
+                obj = TrafficMirrorFilter()
+                obj._deserialize(item)
+                self._EgressFilterRules.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeTrafficMirrorsRequest(AbstractModel):
     r"""DescribeTrafficMirrors请求参数结构体
 
@@ -51424,14 +51882,13 @@ class ModifyAddressesBandwidthRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AddressIds: EIP唯一标识ID列表，形如'eip-xxxx'，可以使用[DescribeAddresses](https://cloud.tencent.com/document/product/215/16702)接口获取AddressId。
-
+        :param _AddressIds: <p>EIP唯一标识ID列表，形如&#39;eip-xxxx&#39;，可以使用<a href="https://cloud.tencent.com/document/product/215/16702">DescribeAddresses</a>接口获取AddressId。</p>
         :type AddressIds: list of str
-        :param _InternetMaxBandwidthOut: 调整带宽目标值，可调整的带宽上限值参考产品文档[带宽上限](https://cloud.tencent.com/document/product/1199/48333)。
+        :param _InternetMaxBandwidthOut: <p>调整带宽目标值，可调整的带宽上限值参考产品文档<a href="https://cloud.tencent.com/document/product/1199/48333">带宽上限</a>。</p>
         :type InternetMaxBandwidthOut: int
-        :param _StartTime: 包月带宽起始时间(已废弃，输入无效)
+        :param _StartTime: <p>包月带宽起始时间(已废弃，输入无效)</p>
         :type StartTime: str
-        :param _EndTime: 包月带宽结束时间(已废弃，输入无效)
+        :param _EndTime: <p>包月带宽结束时间(已废弃，输入无效)</p>
         :type EndTime: str
         """
         self._AddressIds = None
@@ -51441,8 +51898,7 @@ class ModifyAddressesBandwidthRequest(AbstractModel):
 
     @property
     def AddressIds(self):
-        r"""EIP唯一标识ID列表，形如'eip-xxxx'，可以使用[DescribeAddresses](https://cloud.tencent.com/document/product/215/16702)接口获取AddressId。
-
+        r"""<p>EIP唯一标识ID列表，形如&#39;eip-xxxx&#39;，可以使用<a href="https://cloud.tencent.com/document/product/215/16702">DescribeAddresses</a>接口获取AddressId。</p>
         :rtype: list of str
         """
         return self._AddressIds
@@ -51453,7 +51909,7 @@ class ModifyAddressesBandwidthRequest(AbstractModel):
 
     @property
     def InternetMaxBandwidthOut(self):
-        r"""调整带宽目标值，可调整的带宽上限值参考产品文档[带宽上限](https://cloud.tencent.com/document/product/1199/48333)。
+        r"""<p>调整带宽目标值，可调整的带宽上限值参考产品文档<a href="https://cloud.tencent.com/document/product/1199/48333">带宽上限</a>。</p>
         :rtype: int
         """
         return self._InternetMaxBandwidthOut
@@ -51466,7 +51922,7 @@ class ModifyAddressesBandwidthRequest(AbstractModel):
     def StartTime(self):
         warnings.warn("parameter `StartTime` is deprecated", DeprecationWarning) 
 
-        r"""包月带宽起始时间(已废弃，输入无效)
+        r"""<p>包月带宽起始时间(已废弃，输入无效)</p>
         :rtype: str
         """
         return self._StartTime
@@ -51481,7 +51937,7 @@ class ModifyAddressesBandwidthRequest(AbstractModel):
     def EndTime(self):
         warnings.warn("parameter `EndTime` is deprecated", DeprecationWarning) 
 
-        r"""包月带宽结束时间(已废弃，输入无效)
+        r"""<p>包月带宽结束时间(已废弃，输入无效)</p>
         :rtype: str
         """
         return self._EndTime
@@ -51515,7 +51971,7 @@ class ModifyAddressesBandwidthResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 异步任务TaskId。可以使用[DescribeTaskResult](https://cloud.tencent.com/document/api/215/36271)接口查询任务状态。
+        :param _TaskId: <p>异步任务TaskId。可以使用<a href="https://cloud.tencent.com/document/api/215/36271">DescribeTaskResult</a>接口查询任务状态。</p>
         :type TaskId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -51525,7 +51981,7 @@ class ModifyAddressesBandwidthResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""异步任务TaskId。可以使用[DescribeTaskResult](https://cloud.tencent.com/document/api/215/36271)接口查询任务状态。
+        r"""<p>异步任务TaskId。可以使用<a href="https://cloud.tencent.com/document/api/215/36271">DescribeTaskResult</a>接口查询任务状态。</p>
         :rtype: str
         """
         return self._TaskId
@@ -57035,6 +57491,110 @@ class ModifyTrafficMirrorAttributeRequest(AbstractModel):
 
 class ModifyTrafficMirrorAttributeResponse(AbstractModel):
     r"""ModifyTrafficMirrorAttribute返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyTrafficMirrorFilterRulesRequest(AbstractModel):
+    r"""ModifyTrafficMirrorFilterRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TrafficMirrorId: 流量镜像实例唯一ID。
+        :type TrafficMirrorId: str
+        :param _IngressFilterRules: 流量镜像入站过滤规则。
+        :type IngressFilterRules: list of TrafficMirrorFilter
+        :param _EgressFilterRules: 流量镜像出站过滤规则。
+        :type EgressFilterRules: list of TrafficMirrorFilter
+        """
+        self._TrafficMirrorId = None
+        self._IngressFilterRules = None
+        self._EgressFilterRules = None
+
+    @property
+    def TrafficMirrorId(self):
+        r"""流量镜像实例唯一ID。
+        :rtype: str
+        """
+        return self._TrafficMirrorId
+
+    @TrafficMirrorId.setter
+    def TrafficMirrorId(self, TrafficMirrorId):
+        self._TrafficMirrorId = TrafficMirrorId
+
+    @property
+    def IngressFilterRules(self):
+        r"""流量镜像入站过滤规则。
+        :rtype: list of TrafficMirrorFilter
+        """
+        return self._IngressFilterRules
+
+    @IngressFilterRules.setter
+    def IngressFilterRules(self, IngressFilterRules):
+        self._IngressFilterRules = IngressFilterRules
+
+    @property
+    def EgressFilterRules(self):
+        r"""流量镜像出站过滤规则。
+        :rtype: list of TrafficMirrorFilter
+        """
+        return self._EgressFilterRules
+
+    @EgressFilterRules.setter
+    def EgressFilterRules(self, EgressFilterRules):
+        self._EgressFilterRules = EgressFilterRules
+
+
+    def _deserialize(self, params):
+        self._TrafficMirrorId = params.get("TrafficMirrorId")
+        if params.get("IngressFilterRules") is not None:
+            self._IngressFilterRules = []
+            for item in params.get("IngressFilterRules"):
+                obj = TrafficMirrorFilter()
+                obj._deserialize(item)
+                self._IngressFilterRules.append(obj)
+        if params.get("EgressFilterRules") is not None:
+            self._EgressFilterRules = []
+            for item in params.get("EgressFilterRules"):
+                obj = TrafficMirrorFilter()
+                obj._deserialize(item)
+                self._EgressFilterRules.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyTrafficMirrorFilterRulesResponse(AbstractModel):
+    r"""ModifyTrafficMirrorFilterRules返回参数结构体
 
     """
 

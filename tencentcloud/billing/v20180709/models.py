@@ -14266,40 +14266,46 @@ class CostDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PayerUin: 支付者uin
+        :param _PayerUin: <p>支付者uin</p>
         :type PayerUin: str
-        :param _BusinessCodeName: 产品名称
+        :param _BusinessCodeName: <p>产品名称</p>
         :type BusinessCodeName: str
-        :param _ProductCodeName: 子产品名称
+        :param _ProductCodeName: <p>子产品名称</p>
         :type ProductCodeName: str
-        :param _PayModeName: 计费模式名称
+        :param _PayModeName: <p>计费模式名称</p>
         :type PayModeName: str
-        :param _ProjectName: 项目名称
+        :param _ProjectName: <p>项目名称</p>
         :type ProjectName: str
-        :param _RegionName: 区域名称
+        :param _RegionName: <p>区域名称</p>
         :type RegionName: str
-        :param _ZoneName: 地区名称
+        :param _ZoneName: <p>地区名称</p>
         :type ZoneName: str
-        :param _ResourceId: 资源id
+        :param _ResourceId: <p>资源id</p>
         :type ResourceId: str
-        :param _ResourceName: 资源名称
+        :param _ResourceName: <p>资源名称</p>
         :type ResourceName: str
-        :param _ActionTypeName: 类型名称
+        :param _ActionTypeName: <p>类型名称</p>
         :type ActionTypeName: str
-        :param _OrderId: 订单id
+        :param _OrderId: <p>订单id</p>
         :type OrderId: str
-        :param _BillId: 交易id
+        :param _BillId: <p>交易id</p>
         :type BillId: str
-        :param _FeeBeginTime: 费用开始时间
+        :param _FeeBeginTime: <p>费用开始时间</p>
         :type FeeBeginTime: str
-        :param _FeeEndTime: 费用结束时间
+        :param _FeeEndTime: <p>费用结束时间</p>
         :type FeeEndTime: str
-        :param _ComponentSet: 组件明细
+        :param _ComponentSet: <p>组件明细</p>
         :type ComponentSet: list of CostComponentSet
-        :param _ProductCode: 子产品名称代码
+        :param _ProductCode: <p>子产品名称代码</p>
         :type ProductCode: str
-        :param _Tags: 标签信息	
+        :param _Tags: <p>标签信息</p>
         :type Tags: list of BillTagInfo
+        :param _OperateUin: <p>操作者UIN：操作者账号 ID（预付费资源下单或后付费操作开通资源账号的 ID 或者角色 ID ）</p>
+        :type OperateUin: str
+        :param _OwnerUin: <p>使用者UIN：实际使用资源的账号 ID</p>
+        :type OwnerUin: str
+        :param _PayTime: <p>扣费时间：结算扣费时间</p>
+        :type PayTime: str
         """
         self._PayerUin = None
         self._BusinessCodeName = None
@@ -14318,10 +14324,13 @@ class CostDetail(AbstractModel):
         self._ComponentSet = None
         self._ProductCode = None
         self._Tags = None
+        self._OperateUin = None
+        self._OwnerUin = None
+        self._PayTime = None
 
     @property
     def PayerUin(self):
-        r"""支付者uin
+        r"""<p>支付者uin</p>
         :rtype: str
         """
         return self._PayerUin
@@ -14332,7 +14341,7 @@ class CostDetail(AbstractModel):
 
     @property
     def BusinessCodeName(self):
-        r"""产品名称
+        r"""<p>产品名称</p>
         :rtype: str
         """
         return self._BusinessCodeName
@@ -14343,7 +14352,7 @@ class CostDetail(AbstractModel):
 
     @property
     def ProductCodeName(self):
-        r"""子产品名称
+        r"""<p>子产品名称</p>
         :rtype: str
         """
         return self._ProductCodeName
@@ -14354,7 +14363,7 @@ class CostDetail(AbstractModel):
 
     @property
     def PayModeName(self):
-        r"""计费模式名称
+        r"""<p>计费模式名称</p>
         :rtype: str
         """
         return self._PayModeName
@@ -14365,7 +14374,7 @@ class CostDetail(AbstractModel):
 
     @property
     def ProjectName(self):
-        r"""项目名称
+        r"""<p>项目名称</p>
         :rtype: str
         """
         return self._ProjectName
@@ -14376,7 +14385,7 @@ class CostDetail(AbstractModel):
 
     @property
     def RegionName(self):
-        r"""区域名称
+        r"""<p>区域名称</p>
         :rtype: str
         """
         return self._RegionName
@@ -14387,7 +14396,7 @@ class CostDetail(AbstractModel):
 
     @property
     def ZoneName(self):
-        r"""地区名称
+        r"""<p>地区名称</p>
         :rtype: str
         """
         return self._ZoneName
@@ -14398,7 +14407,7 @@ class CostDetail(AbstractModel):
 
     @property
     def ResourceId(self):
-        r"""资源id
+        r"""<p>资源id</p>
         :rtype: str
         """
         return self._ResourceId
@@ -14409,7 +14418,7 @@ class CostDetail(AbstractModel):
 
     @property
     def ResourceName(self):
-        r"""资源名称
+        r"""<p>资源名称</p>
         :rtype: str
         """
         return self._ResourceName
@@ -14420,7 +14429,7 @@ class CostDetail(AbstractModel):
 
     @property
     def ActionTypeName(self):
-        r"""类型名称
+        r"""<p>类型名称</p>
         :rtype: str
         """
         return self._ActionTypeName
@@ -14431,7 +14440,7 @@ class CostDetail(AbstractModel):
 
     @property
     def OrderId(self):
-        r"""订单id
+        r"""<p>订单id</p>
         :rtype: str
         """
         return self._OrderId
@@ -14442,7 +14451,7 @@ class CostDetail(AbstractModel):
 
     @property
     def BillId(self):
-        r"""交易id
+        r"""<p>交易id</p>
         :rtype: str
         """
         return self._BillId
@@ -14453,7 +14462,7 @@ class CostDetail(AbstractModel):
 
     @property
     def FeeBeginTime(self):
-        r"""费用开始时间
+        r"""<p>费用开始时间</p>
         :rtype: str
         """
         return self._FeeBeginTime
@@ -14464,7 +14473,7 @@ class CostDetail(AbstractModel):
 
     @property
     def FeeEndTime(self):
-        r"""费用结束时间
+        r"""<p>费用结束时间</p>
         :rtype: str
         """
         return self._FeeEndTime
@@ -14475,7 +14484,7 @@ class CostDetail(AbstractModel):
 
     @property
     def ComponentSet(self):
-        r"""组件明细
+        r"""<p>组件明细</p>
         :rtype: list of CostComponentSet
         """
         return self._ComponentSet
@@ -14486,7 +14495,7 @@ class CostDetail(AbstractModel):
 
     @property
     def ProductCode(self):
-        r"""子产品名称代码
+        r"""<p>子产品名称代码</p>
         :rtype: str
         """
         return self._ProductCode
@@ -14497,7 +14506,7 @@ class CostDetail(AbstractModel):
 
     @property
     def Tags(self):
-        r"""标签信息	
+        r"""<p>标签信息</p>
         :rtype: list of BillTagInfo
         """
         return self._Tags
@@ -14505,6 +14514,39 @@ class CostDetail(AbstractModel):
     @Tags.setter
     def Tags(self, Tags):
         self._Tags = Tags
+
+    @property
+    def OperateUin(self):
+        r"""<p>操作者UIN：操作者账号 ID（预付费资源下单或后付费操作开通资源账号的 ID 或者角色 ID ）</p>
+        :rtype: str
+        """
+        return self._OperateUin
+
+    @OperateUin.setter
+    def OperateUin(self, OperateUin):
+        self._OperateUin = OperateUin
+
+    @property
+    def OwnerUin(self):
+        r"""<p>使用者UIN：实际使用资源的账号 ID</p>
+        :rtype: str
+        """
+        return self._OwnerUin
+
+    @OwnerUin.setter
+    def OwnerUin(self, OwnerUin):
+        self._OwnerUin = OwnerUin
+
+    @property
+    def PayTime(self):
+        r"""<p>扣费时间：结算扣费时间</p>
+        :rtype: str
+        """
+        return self._PayTime
+
+    @PayTime.setter
+    def PayTime(self, PayTime):
+        self._PayTime = PayTime
 
 
     def _deserialize(self, params):
@@ -14535,6 +14577,9 @@ class CostDetail(AbstractModel):
                 obj = BillTagInfo()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        self._OperateUin = params.get("OperateUin")
+        self._OwnerUin = params.get("OwnerUin")
+        self._PayTime = params.get("PayTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

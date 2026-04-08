@@ -1740,24 +1740,24 @@ class AgentPluginInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PluginId: 插件id
+        :param _PluginId: <p>插件id</p>
         :type PluginId: str
-        :param _Headers: 应用配置的插件header信息
+        :param _Headers: <p>应用配置的插件header信息</p>
         :type Headers: list of AgentPluginHeader
-        :param _Model: 插件调用LLM时使用的模型配置，一般用于指定知识库问答插件的生成模型
+        :param _Model: <p>插件调用LLM时使用的模型配置，一般用于指定知识库问答插件的生成模型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Model: :class:`tencentcloud.lke.v20231130.models.AgentModelInfo`
-        :param _PluginInfoType: 插件信息类型; 0: 未指定类型; 1: 知识库问答插件
+        :param _PluginInfoType: <p>插件信息类型; 0: 未指定类型; 1: 知识库问答插件</p>
         :type PluginInfoType: int
-        :param _KnowledgeQa: 知识库问答插件配置
+        :param _KnowledgeQa: <p>知识库问答插件配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type KnowledgeQa: :class:`tencentcloud.lke.v20231130.models.AgentKnowledgeQAPlugin`
-        :param _EnableRoleAuth: 是否使用一键授权
+        :param _EnableRoleAuth: <p>是否使用一键授权</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type EnableRoleAuth: bool
-        :param _Query: 应用配置的插件query信息
+        :param _Query: <p>应用配置的插件query信息</p>
         :type Query: list of AgentPluginQuery
-        :param _McpType: MCP类型
+        :param _McpType: <p>MCP类型</p><p>枚举值：</p><ul><li>0： SSE 模式</li><li>1： Streamable Http 模式</li></ul>
         :type McpType: int
         """
         self._PluginId = None
@@ -1771,7 +1771,7 @@ class AgentPluginInfo(AbstractModel):
 
     @property
     def PluginId(self):
-        r"""插件id
+        r"""<p>插件id</p>
         :rtype: str
         """
         return self._PluginId
@@ -1782,7 +1782,7 @@ class AgentPluginInfo(AbstractModel):
 
     @property
     def Headers(self):
-        r"""应用配置的插件header信息
+        r"""<p>应用配置的插件header信息</p>
         :rtype: list of AgentPluginHeader
         """
         return self._Headers
@@ -1793,7 +1793,7 @@ class AgentPluginInfo(AbstractModel):
 
     @property
     def Model(self):
-        r"""插件调用LLM时使用的模型配置，一般用于指定知识库问答插件的生成模型
+        r"""<p>插件调用LLM时使用的模型配置，一般用于指定知识库问答插件的生成模型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.lke.v20231130.models.AgentModelInfo`
         """
@@ -1805,7 +1805,7 @@ class AgentPluginInfo(AbstractModel):
 
     @property
     def PluginInfoType(self):
-        r"""插件信息类型; 0: 未指定类型; 1: 知识库问答插件
+        r"""<p>插件信息类型; 0: 未指定类型; 1: 知识库问答插件</p>
         :rtype: int
         """
         return self._PluginInfoType
@@ -1816,7 +1816,7 @@ class AgentPluginInfo(AbstractModel):
 
     @property
     def KnowledgeQa(self):
-        r"""知识库问答插件配置
+        r"""<p>知识库问答插件配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.lke.v20231130.models.AgentKnowledgeQAPlugin`
         """
@@ -1828,7 +1828,7 @@ class AgentPluginInfo(AbstractModel):
 
     @property
     def EnableRoleAuth(self):
-        r"""是否使用一键授权
+        r"""<p>是否使用一键授权</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -1840,7 +1840,7 @@ class AgentPluginInfo(AbstractModel):
 
     @property
     def Query(self):
-        r"""应用配置的插件query信息
+        r"""<p>应用配置的插件query信息</p>
         :rtype: list of AgentPluginQuery
         """
         return self._Query
@@ -1851,7 +1851,7 @@ class AgentPluginInfo(AbstractModel):
 
     @property
     def McpType(self):
-        r"""MCP类型
+        r"""<p>MCP类型</p><p>枚举值：</p><ul><li>0： SSE 模式</li><li>1： Streamable Http 模式</li></ul>
         :rtype: int
         """
         return self._McpType
@@ -2635,6 +2635,72 @@ class AgentReference(AbstractModel):
         self._Title = params.get("Title")
         self._KnowledgeName = params.get("KnowledgeName")
         self._KnowledgeBizId = params.get("KnowledgeBizId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AgentTask(AbstractModel):
+    r"""智能体任务信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Index: <p>任务序号</p>
+        :type Index: int
+        :param _Content: <p>任务内容</p>
+        :type Content: str
+        :param _Status: <p>任务状态</p>
+        :type Status: str
+        """
+        self._Index = None
+        self._Content = None
+        self._Status = None
+
+    @property
+    def Index(self):
+        r"""<p>任务序号</p>
+        :rtype: int
+        """
+        return self._Index
+
+    @Index.setter
+    def Index(self, Index):
+        self._Index = Index
+
+    @property
+    def Content(self):
+        r"""<p>任务内容</p>
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def Status(self):
+        r"""<p>任务状态</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._Index = params.get("Index")
+        self._Content = params.get("Content")
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6568,58 +6634,55 @@ class Content(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: 消息内容类型
-text：文本
-image：图片
-file：文件
-option_cards：选项卡
-custom_params：用户自定义业务参数
-sandbox：云桌面
-custom_variables：自定义输入参数
-web_search: 网页搜索内容
-file_collection：文件收集信息
-widget：widget信息
-widget_action：用户端widget动作信息
+        :param _Type: <p>消息内容类型<br>text：文本<br>image：图片<br>file：文件<br>option_cards：选项卡<br>custom_params：用户自定义业务参数<br>sandbox：云桌面<br>custom_variables：自定义输入参数<br>web_search: 网页搜索内容<br>file_collection：文件收集信息<br>widget：widget信息<br>widget_action：用户端widget动作信息</p>
         :type Type: str
-        :param _Text: 文本内容
+        :param _Text: <p>文本内容</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Text: str
-        :param _QuoteInfos: 引用信息
+        :param _QuoteInfos: <p>引用信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type QuoteInfos: list of QuoteInfo
-        :param _References: 参考文献信息
+        :param _References: <p>参考文献信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type References: list of ContentReference
-        :param _Image: 图片信息
+        :param _Image: <p>图片信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Image: :class:`tencentcloud.lke.v20231130.models.ImageInfoContent`
-        :param _File: 文件信息
+        :param _File: <p>文件信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type File: :class:`tencentcloud.lke.v20231130.models.FileInfoContent`
-        :param _OptionCards: 选项卡信息
+        :param _OptionCards: <p>选项卡信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type OptionCards: list of str
-        :param _CustomParams: 用户自定义业务参数信息
+        :param _CustomParams: <p>用户自定义业务参数信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CustomParams: list of str
-        :param _CustomVariables: 自定义变量
+        :param _CustomVariables: <p>自定义变量</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CustomVariables: list of str
-        :param _Sandbox: 沙盒信息
+        :param _Sandbox: <p>沙盒信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Sandbox: :class:`tencentcloud.lke.v20231130.models.SandboxContent`
-        :param _WebSearch: 网页搜索内容
+        :param _WebSearch: <p>网页搜索内容</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WebSearch: :class:`tencentcloud.lke.v20231130.models.WebSearchContent`
-        :param _FileCollection: 文件收集信息
+        :param _FileCollection: <p>文件收集信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FileCollection: :class:`tencentcloud.lke.v20231130.models.FileCollection`
-        :param _Widget: Widget信息
+        :param _Widget: <p>Widget信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Widget: :class:`tencentcloud.lke.v20231130.models.Widget`
-        :param _WidgetAction: Widget动作信息
+        :param _WidgetAction: <p>Widget动作信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WidgetAction: :class:`tencentcloud.lke.v20231130.models.WidgetAction`
+        :param _Tasks: <p>任务列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tasks: list of AgentTask
+        :param _Questionnaire: <p>问卷信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Questionnaire: :class:`tencentcloud.lke.v20231130.models.Questionnaire`
+        :param _OptionMode: <p>选项卡模式</p>
+        :type OptionMode: int
         """
         self._Type = None
         self._Text = None
@@ -6635,21 +6698,13 @@ widget_action：用户端widget动作信息
         self._FileCollection = None
         self._Widget = None
         self._WidgetAction = None
+        self._Tasks = None
+        self._Questionnaire = None
+        self._OptionMode = None
 
     @property
     def Type(self):
-        r"""消息内容类型
-text：文本
-image：图片
-file：文件
-option_cards：选项卡
-custom_params：用户自定义业务参数
-sandbox：云桌面
-custom_variables：自定义输入参数
-web_search: 网页搜索内容
-file_collection：文件收集信息
-widget：widget信息
-widget_action：用户端widget动作信息
+        r"""<p>消息内容类型<br>text：文本<br>image：图片<br>file：文件<br>option_cards：选项卡<br>custom_params：用户自定义业务参数<br>sandbox：云桌面<br>custom_variables：自定义输入参数<br>web_search: 网页搜索内容<br>file_collection：文件收集信息<br>widget：widget信息<br>widget_action：用户端widget动作信息</p>
         :rtype: str
         """
         return self._Type
@@ -6660,7 +6715,7 @@ widget_action：用户端widget动作信息
 
     @property
     def Text(self):
-        r"""文本内容
+        r"""<p>文本内容</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6672,7 +6727,7 @@ widget_action：用户端widget动作信息
 
     @property
     def QuoteInfos(self):
-        r"""引用信息
+        r"""<p>引用信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of QuoteInfo
         """
@@ -6684,7 +6739,7 @@ widget_action：用户端widget动作信息
 
     @property
     def References(self):
-        r"""参考文献信息
+        r"""<p>参考文献信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ContentReference
         """
@@ -6696,7 +6751,7 @@ widget_action：用户端widget动作信息
 
     @property
     def Image(self):
-        r"""图片信息
+        r"""<p>图片信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.lke.v20231130.models.ImageInfoContent`
         """
@@ -6708,7 +6763,7 @@ widget_action：用户端widget动作信息
 
     @property
     def File(self):
-        r"""文件信息
+        r"""<p>文件信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.lke.v20231130.models.FileInfoContent`
         """
@@ -6720,7 +6775,7 @@ widget_action：用户端widget动作信息
 
     @property
     def OptionCards(self):
-        r"""选项卡信息
+        r"""<p>选项卡信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -6732,7 +6787,7 @@ widget_action：用户端widget动作信息
 
     @property
     def CustomParams(self):
-        r"""用户自定义业务参数信息
+        r"""<p>用户自定义业务参数信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -6744,7 +6799,7 @@ widget_action：用户端widget动作信息
 
     @property
     def CustomVariables(self):
-        r"""自定义变量
+        r"""<p>自定义变量</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -6756,7 +6811,7 @@ widget_action：用户端widget动作信息
 
     @property
     def Sandbox(self):
-        r"""沙盒信息
+        r"""<p>沙盒信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.lke.v20231130.models.SandboxContent`
         """
@@ -6768,7 +6823,7 @@ widget_action：用户端widget动作信息
 
     @property
     def WebSearch(self):
-        r"""网页搜索内容
+        r"""<p>网页搜索内容</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.lke.v20231130.models.WebSearchContent`
         """
@@ -6780,7 +6835,7 @@ widget_action：用户端widget动作信息
 
     @property
     def FileCollection(self):
-        r"""文件收集信息
+        r"""<p>文件收集信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.lke.v20231130.models.FileCollection`
         """
@@ -6792,7 +6847,7 @@ widget_action：用户端widget动作信息
 
     @property
     def Widget(self):
-        r"""Widget信息
+        r"""<p>Widget信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.lke.v20231130.models.Widget`
         """
@@ -6804,7 +6859,7 @@ widget_action：用户端widget动作信息
 
     @property
     def WidgetAction(self):
-        r"""Widget动作信息
+        r"""<p>Widget动作信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.lke.v20231130.models.WidgetAction`
         """
@@ -6813,6 +6868,41 @@ widget_action：用户端widget动作信息
     @WidgetAction.setter
     def WidgetAction(self, WidgetAction):
         self._WidgetAction = WidgetAction
+
+    @property
+    def Tasks(self):
+        r"""<p>任务列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of AgentTask
+        """
+        return self._Tasks
+
+    @Tasks.setter
+    def Tasks(self, Tasks):
+        self._Tasks = Tasks
+
+    @property
+    def Questionnaire(self):
+        r"""<p>问卷信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.lke.v20231130.models.Questionnaire`
+        """
+        return self._Questionnaire
+
+    @Questionnaire.setter
+    def Questionnaire(self, Questionnaire):
+        self._Questionnaire = Questionnaire
+
+    @property
+    def OptionMode(self):
+        r"""<p>选项卡模式</p>
+        :rtype: int
+        """
+        return self._OptionMode
+
+    @OptionMode.setter
+    def OptionMode(self, OptionMode):
+        self._OptionMode = OptionMode
 
 
     def _deserialize(self, params):
@@ -6854,6 +6944,16 @@ widget_action：用户端widget动作信息
         if params.get("WidgetAction") is not None:
             self._WidgetAction = WidgetAction()
             self._WidgetAction._deserialize(params.get("WidgetAction"))
+        if params.get("Tasks") is not None:
+            self._Tasks = []
+            for item in params.get("Tasks"):
+                obj = AgentTask()
+                obj._deserialize(item)
+                self._Tasks.append(obj)
+        if params.get("Questionnaire") is not None:
+            self._Questionnaire = Questionnaire()
+            self._Questionnaire._deserialize(params.get("Questionnaire"))
+        self._OptionMode = params.get("OptionMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16037,27 +16137,27 @@ class FileInfoContent(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DocBizId: 实时文档解析接口返回的 DocBizId
+        :param _DocBizId: <p>实时文档解析接口返回的 DocBizId</p>
 注意：此字段可能返回 null，表示取不到有效值。
-        :type DocBizId: int
-        :param _FileName: 文件名称
+        :type DocBizId: str
+        :param _FileName: <p>文件名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FileName: str
-        :param _FileType: 文件类型
+        :param _FileType: <p>文件类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FileType: str
-        :param _FileSize: 文件大小
+        :param _FileSize: <p>文件大小，单位为Byte</p>
 注意：此字段可能返回 null，表示取不到有效值。
-        :type FileSize: int
-        :param _FileUrl: 文件 URL
+        :type FileSize: str
+        :param _FileUrl: <p>文件 URL</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FileUrl: str
-        :param _DocId: 实时文档解析接口返回的 doc_id。
+        :param _DocId: <p>实时文档解析接口返回的 doc_id。</p>
 注意：此字段可能返回 null，表示取不到有效值。
-        :type DocId: int
-        :param _CreateTime: 文件创建时间
+        :type DocId: str
+        :param _CreateTime: <p>文件创建时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
-        :type CreateTime: int
+        :type CreateTime: str
         """
         self._DocBizId = None
         self._FileName = None
@@ -16071,9 +16171,9 @@ class FileInfoContent(AbstractModel):
     def DocBizId(self):
         warnings.warn("parameter `DocBizId` is deprecated", DeprecationWarning) 
 
-        r"""实时文档解析接口返回的 DocBizId
+        r"""<p>实时文档解析接口返回的 DocBizId</p>
 注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: int
+        :rtype: str
         """
         return self._DocBizId
 
@@ -16085,7 +16185,7 @@ class FileInfoContent(AbstractModel):
 
     @property
     def FileName(self):
-        r"""文件名称
+        r"""<p>文件名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -16097,7 +16197,7 @@ class FileInfoContent(AbstractModel):
 
     @property
     def FileType(self):
-        r"""文件类型
+        r"""<p>文件类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -16109,9 +16209,9 @@ class FileInfoContent(AbstractModel):
 
     @property
     def FileSize(self):
-        r"""文件大小
+        r"""<p>文件大小，单位为Byte</p>
 注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: int
+        :rtype: str
         """
         return self._FileSize
 
@@ -16121,7 +16221,7 @@ class FileInfoContent(AbstractModel):
 
     @property
     def FileUrl(self):
-        r"""文件 URL
+        r"""<p>文件 URL</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -16133,9 +16233,9 @@ class FileInfoContent(AbstractModel):
 
     @property
     def DocId(self):
-        r"""实时文档解析接口返回的 doc_id。
+        r"""<p>实时文档解析接口返回的 doc_id。</p>
 注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: int
+        :rtype: str
         """
         return self._DocId
 
@@ -16145,9 +16245,9 @@ class FileInfoContent(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""文件创建时间
+        r"""<p>文件创建时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: int
+        :rtype: str
         """
         return self._CreateTime
 
@@ -31551,6 +31651,285 @@ class QaReference(AbstractModel):
         self._ReferBizId = params.get("ReferBizId")
         self._KnowledgeBizId = params.get("KnowledgeBizId")
         self._KnowledgeName = params.get("KnowledgeName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QuestionOption(AbstractModel):
+    r"""问题可选项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Label: <p>选项的标签</p>
+        :type Label: str
+        :param _Description: <p>选项的描述</p>
+        :type Description: str
+        """
+        self._Label = None
+        self._Description = None
+
+    @property
+    def Label(self):
+        r"""<p>选项的标签</p>
+        :rtype: str
+        """
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
+
+    @property
+    def Description(self):
+        r"""<p>选项的描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._Label = params.get("Label")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Questionnaire(AbstractModel):
+    r"""问卷信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Title: <p>问卷的标题</p>
+        :type Title: str
+        :param _Questions: <p>问卷的问题列表</p>
+        :type Questions: list of QuestionnaireQuestion
+        :param _Answers: <p>问卷的答案列表</p>
+        :type Answers: list of QuestionnaireQuestionAnswer
+        """
+        self._Title = None
+        self._Questions = None
+        self._Answers = None
+
+    @property
+    def Title(self):
+        r"""<p>问卷的标题</p>
+        :rtype: str
+        """
+        return self._Title
+
+    @Title.setter
+    def Title(self, Title):
+        self._Title = Title
+
+    @property
+    def Questions(self):
+        r"""<p>问卷的问题列表</p>
+        :rtype: list of QuestionnaireQuestion
+        """
+        return self._Questions
+
+    @Questions.setter
+    def Questions(self, Questions):
+        self._Questions = Questions
+
+    @property
+    def Answers(self):
+        r"""<p>问卷的答案列表</p>
+        :rtype: list of QuestionnaireQuestionAnswer
+        """
+        return self._Answers
+
+    @Answers.setter
+    def Answers(self, Answers):
+        self._Answers = Answers
+
+
+    def _deserialize(self, params):
+        self._Title = params.get("Title")
+        if params.get("Questions") is not None:
+            self._Questions = []
+            for item in params.get("Questions"):
+                obj = QuestionnaireQuestion()
+                obj._deserialize(item)
+                self._Questions.append(obj)
+        if params.get("Answers") is not None:
+            self._Answers = []
+            for item in params.get("Answers"):
+                obj = QuestionnaireQuestionAnswer()
+                obj._deserialize(item)
+                self._Answers.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QuestionnaireQuestion(AbstractModel):
+    r"""问卷的问题
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Index: <p>问题的序号</p>
+        :type Index: int
+        :param _Question: <p>问题的内容</p>
+        :type Question: str
+        :param _Type: <p>问题类型</p>
+        :type Type: int
+        :param _Required: <p>是否必选</p>
+        :type Required: bool
+        :param _Options: <p>问题的选项</p>
+        :type Options: list of QuestionOption
+        """
+        self._Index = None
+        self._Question = None
+        self._Type = None
+        self._Required = None
+        self._Options = None
+
+    @property
+    def Index(self):
+        r"""<p>问题的序号</p>
+        :rtype: int
+        """
+        return self._Index
+
+    @Index.setter
+    def Index(self, Index):
+        self._Index = Index
+
+    @property
+    def Question(self):
+        r"""<p>问题的内容</p>
+        :rtype: str
+        """
+        return self._Question
+
+    @Question.setter
+    def Question(self, Question):
+        self._Question = Question
+
+    @property
+    def Type(self):
+        r"""<p>问题类型</p>
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Required(self):
+        r"""<p>是否必选</p>
+        :rtype: bool
+        """
+        return self._Required
+
+    @Required.setter
+    def Required(self, Required):
+        self._Required = Required
+
+    @property
+    def Options(self):
+        r"""<p>问题的选项</p>
+        :rtype: list of QuestionOption
+        """
+        return self._Options
+
+    @Options.setter
+    def Options(self, Options):
+        self._Options = Options
+
+
+    def _deserialize(self, params):
+        self._Index = params.get("Index")
+        self._Question = params.get("Question")
+        self._Type = params.get("Type")
+        self._Required = params.get("Required")
+        if params.get("Options") is not None:
+            self._Options = []
+            for item in params.get("Options"):
+                obj = QuestionOption()
+                obj._deserialize(item)
+                self._Options.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QuestionnaireQuestionAnswer(AbstractModel):
+    r"""问卷问题的答案
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Question: <p>问题</p>
+        :type Question: str
+        :param _SelectedLabels: <p>选中的答案标签</p>
+        :type SelectedLabels: list of str
+        """
+        self._Question = None
+        self._SelectedLabels = None
+
+    @property
+    def Question(self):
+        r"""<p>问题</p>
+        :rtype: str
+        """
+        return self._Question
+
+    @Question.setter
+    def Question(self, Question):
+        self._Question = Question
+
+    @property
+    def SelectedLabels(self):
+        r"""<p>选中的答案标签</p>
+        :rtype: list of str
+        """
+        return self._SelectedLabels
+
+    @SelectedLabels.setter
+    def SelectedLabels(self, SelectedLabels):
+        self._SelectedLabels = SelectedLabels
+
+
+    def _deserialize(self, params):
+        self._Question = params.get("Question")
+        self._SelectedLabels = params.get("SelectedLabels")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

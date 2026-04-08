@@ -8034,28 +8034,29 @@ class CreateLiveAvatarScriptRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Title: 话术标题。限制500字节。
+        :param _Title: <p>话术标题。限制500字节。</p>
         :type Title: str
-        :param _Content: 话术内容。中文最大支持150个汉字（全角标点符号算一个汉字）；英文最大支持500个字母（半角标点符号算一个字母）。
+        :param _Content: <p>话术内容。中文最大支持150个汉字（全角标点符号算一个汉字）；英文最大支持500个字母（半角标点符号算一个字母）。</p>
         :type Content: str
-        :param _RoomId: 话术所属的数字人直播间 ID。
+        :param _RoomId: <p>话术所属的数字人直播间 ID。</p>
         :type RoomId: str
-        :param _SpecifyPosition: 话术插入时，可根据已有话术位置，指定新话术插入位置。
-如已有三条话术100，200，300。
-新话术可选择150插入到第一条和第二条中间。
+        :param _SpecifyPosition: <p>话术插入时，可根据已有话术位置，指定新话术插入位置。<br>如已有三条话术100，200，300。<br>新话术可选择150插入到第一条和第二条中间。</p>
         :type SpecifyPosition: int
-        :param _Operator: 操作者。
+        :param _Operator: <p>操作者。</p>
         :type Operator: str
+        :param _ProductId: <p>话术所属的数字人产品 ID。</p>
+        :type ProductId: str
         """
         self._Title = None
         self._Content = None
         self._RoomId = None
         self._SpecifyPosition = None
         self._Operator = None
+        self._ProductId = None
 
     @property
     def Title(self):
-        r"""话术标题。限制500字节。
+        r"""<p>话术标题。限制500字节。</p>
         :rtype: str
         """
         return self._Title
@@ -8066,7 +8067,7 @@ class CreateLiveAvatarScriptRequest(AbstractModel):
 
     @property
     def Content(self):
-        r"""话术内容。中文最大支持150个汉字（全角标点符号算一个汉字）；英文最大支持500个字母（半角标点符号算一个字母）。
+        r"""<p>话术内容。中文最大支持150个汉字（全角标点符号算一个汉字）；英文最大支持500个字母（半角标点符号算一个字母）。</p>
         :rtype: str
         """
         return self._Content
@@ -8077,7 +8078,7 @@ class CreateLiveAvatarScriptRequest(AbstractModel):
 
     @property
     def RoomId(self):
-        r"""话术所属的数字人直播间 ID。
+        r"""<p>话术所属的数字人直播间 ID。</p>
         :rtype: str
         """
         return self._RoomId
@@ -8088,9 +8089,7 @@ class CreateLiveAvatarScriptRequest(AbstractModel):
 
     @property
     def SpecifyPosition(self):
-        r"""话术插入时，可根据已有话术位置，指定新话术插入位置。
-如已有三条话术100，200，300。
-新话术可选择150插入到第一条和第二条中间。
+        r"""<p>话术插入时，可根据已有话术位置，指定新话术插入位置。<br>如已有三条话术100，200，300。<br>新话术可选择150插入到第一条和第二条中间。</p>
         :rtype: int
         """
         return self._SpecifyPosition
@@ -8101,7 +8100,7 @@ class CreateLiveAvatarScriptRequest(AbstractModel):
 
     @property
     def Operator(self):
-        r"""操作者。
+        r"""<p>操作者。</p>
         :rtype: str
         """
         return self._Operator
@@ -8110,6 +8109,17 @@ class CreateLiveAvatarScriptRequest(AbstractModel):
     def Operator(self, Operator):
         self._Operator = Operator
 
+    @property
+    def ProductId(self):
+        r"""<p>话术所属的数字人产品 ID。</p>
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
 
     def _deserialize(self, params):
         self._Title = params.get("Title")
@@ -8117,6 +8127,7 @@ class CreateLiveAvatarScriptRequest(AbstractModel):
         self._RoomId = params.get("RoomId")
         self._SpecifyPosition = params.get("SpecifyPosition")
         self._Operator = params.get("Operator")
+        self._ProductId = params.get("ProductId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8134,7 +8145,7 @@ class CreateLiveAvatarScriptResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ScriptId: 话术 ID。
+        :param _ScriptId: <p>话术 ID。</p>
         :type ScriptId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -8144,7 +8155,7 @@ class CreateLiveAvatarScriptResponse(AbstractModel):
 
     @property
     def ScriptId(self):
-        r"""话术 ID。
+        r"""<p>话术 ID。</p>
         :rtype: str
         """
         return self._ScriptId
@@ -18437,23 +18448,26 @@ class DescribeLiveAvatarScriptsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RoomId: 数字人直播间 ID。
+        :param _RoomId: <p>数字人直播间 ID。</p>
         :type RoomId: str
-        :param _ScriptId: 数字人直播间话术 ID。
+        :param _ScriptId: <p>数字人直播间话术 ID。</p>
         :type ScriptId: str
-        :param _PageIndex: 分页查询的页数。
+        :param _PageIndex: <p>分页查询的页数。</p>
         :type PageIndex: int
-        :param _PageSize: 分页查询的每页个数。
+        :param _PageSize: <p>分页查询的每页个数。</p>
         :type PageSize: int
+        :param _ProductId: <p>数字人该话术所属的产品 ID。</p>
+        :type ProductId: str
         """
         self._RoomId = None
         self._ScriptId = None
         self._PageIndex = None
         self._PageSize = None
+        self._ProductId = None
 
     @property
     def RoomId(self):
-        r"""数字人直播间 ID。
+        r"""<p>数字人直播间 ID。</p>
         :rtype: str
         """
         return self._RoomId
@@ -18464,7 +18478,7 @@ class DescribeLiveAvatarScriptsRequest(AbstractModel):
 
     @property
     def ScriptId(self):
-        r"""数字人直播间话术 ID。
+        r"""<p>数字人直播间话术 ID。</p>
         :rtype: str
         """
         return self._ScriptId
@@ -18475,7 +18489,7 @@ class DescribeLiveAvatarScriptsRequest(AbstractModel):
 
     @property
     def PageIndex(self):
-        r"""分页查询的页数。
+        r"""<p>分页查询的页数。</p>
         :rtype: int
         """
         return self._PageIndex
@@ -18486,7 +18500,7 @@ class DescribeLiveAvatarScriptsRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        r"""分页查询的每页个数。
+        r"""<p>分页查询的每页个数。</p>
         :rtype: int
         """
         return self._PageSize
@@ -18495,12 +18509,24 @@ class DescribeLiveAvatarScriptsRequest(AbstractModel):
     def PageSize(self, PageSize):
         self._PageSize = PageSize
 
+    @property
+    def ProductId(self):
+        r"""<p>数字人该话术所属的产品 ID。</p>
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
 
     def _deserialize(self, params):
         self._RoomId = params.get("RoomId")
         self._ScriptId = params.get("ScriptId")
         self._PageIndex = params.get("PageIndex")
         self._PageSize = params.get("PageSize")
+        self._ProductId = params.get("ProductId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18518,11 +18544,11 @@ class DescribeLiveAvatarScriptsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InfoList: 数字人直播间话术信息列表。
+        :param _InfoList: <p>数字人直播间话术信息列表。</p>
         :type InfoList: list of AvatarScriptInfo
-        :param _LimitCreateNum: 限制可创建的数字人直播间话术总条数。
+        :param _LimitCreateNum: <p>限制可创建的数字人直播间话术总条数。</p>
         :type LimitCreateNum: int
-        :param _TotalNum: 当前数字人直播间话术总条数。
+        :param _TotalNum: <p>当前数字人直播间话术总条数。</p>
         :type TotalNum: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -18534,7 +18560,7 @@ class DescribeLiveAvatarScriptsResponse(AbstractModel):
 
     @property
     def InfoList(self):
-        r"""数字人直播间话术信息列表。
+        r"""<p>数字人直播间话术信息列表。</p>
         :rtype: list of AvatarScriptInfo
         """
         return self._InfoList
@@ -18545,7 +18571,7 @@ class DescribeLiveAvatarScriptsResponse(AbstractModel):
 
     @property
     def LimitCreateNum(self):
-        r"""限制可创建的数字人直播间话术总条数。
+        r"""<p>限制可创建的数字人直播间话术总条数。</p>
         :rtype: int
         """
         return self._LimitCreateNum
@@ -18556,7 +18582,7 @@ class DescribeLiveAvatarScriptsResponse(AbstractModel):
 
     @property
     def TotalNum(self):
-        r"""当前数字人直播间话术总条数。
+        r"""<p>当前数字人直播间话术总条数。</p>
         :rtype: int
         """
         return self._TotalNum
@@ -32777,34 +32803,30 @@ class ModifyLiveAvatarRoomRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RoomId: 数字人直播间 ID。
+        :param _RoomId: <p>数字人直播间 ID。</p>
         :type RoomId: str
-        :param _Name: 直播间名称。
+        :param _Name: <p>直播间名称。</p>
         :type Name: str
-        :param _AvatarKey: 数字人形象KEY。
+        :param _AvatarKey: <p>数字人形象KEY。</p>
         :type AvatarKey: str
-        :param _TimbreKey: 音色KEY。
+        :param _TimbreKey: <p>音色KEY。</p>
         :type TimbreKey: str
-        :param _BackgroundUrl: 背景图片URL。
+        :param _BackgroundUrl: <p>背景图片URL。</p>
         :type BackgroundUrl: str
-        :param _AnchorScale: 主播大小，默认1.00。
-取值范围(0, 15.00]。
-精度：使用小数点后两位。
+        :param _AnchorScale: <p>主播大小，默认1.00。<br>取值范围(0, 15.00]。<br>精度：使用小数点后两位。</p>
         :type AnchorScale: float
-        :param _AnchorVerticalPos: 主播纵向位置。默认-1贴底部。
-左上角为原点，形象顶部离屏幕顶部的距离，最大不能使形象底部超出屏幕。
-即该纵向位置最大为：数字人分辨率的高 - 形象高。
+        :param _AnchorVerticalPos: <p>主播纵向位置。默认-1贴底部。<br>左上角为原点，形象顶部离屏幕顶部的距离，最大不能使形象底部超出屏幕。<br>即该纵向位置最大为：数字人分辨率的高 - 形象高。</p>
         :type AnchorVerticalPos: int
-        :param _AnchorHorizontalPos: 主播横向位置。默认-1居中。
-左上角为原点，形象左侧离左侧屏幕的距离。最大值不可使形象右侧超出右侧屏幕。
-即最大值为：数字人分辨率的宽 - 形象宽。
+        :param _AnchorHorizontalPos: <p>主播横向位置。默认-1居中。<br>左上角为原点，形象左侧离左侧屏幕的距离。最大值不可使形象右侧超出右侧屏幕。<br>即最大值为：数字人分辨率的宽 - 形象宽。</p>
         :type AnchorHorizontalPos: int
-        :param _SpeechSpeed: 语速（1.0为正常语速，范围[0.6-2.5]，值为0.6时播报语速最慢，值为2.5时播报语速最快。
+        :param _SpeechSpeed: <p>语速（1.0为正常语速，范围[0.6-2.5]，值为0.6时播报语速最慢，值为2.5时播报语速最快。</p>
         :type SpeechSpeed: float
-        :param _SpeechVolume: 音量大小，范围[0，10]，对应音量大小。默认为5，代表正常音量，值越大音量越高。
+        :param _SpeechVolume: <p>音量大小，范围[0，10]，对应音量大小。默认为5，代表正常音量，值越大音量越高。</p>
         :type SpeechVolume: int
-        :param _Operator: 操作者。
+        :param _Operator: <p>操作者。</p>
         :type Operator: str
+        :param _RoomType: <p>房间类型。AIGC：AIGC形象房间；PRESET：预设形象房间</p><p>枚举值：</p><ul><li>AIGC： AIGC形象房间</li><li>PRESET： 预设形象房间</li></ul>
+        :type RoomType: str
         """
         self._RoomId = None
         self._Name = None
@@ -32817,10 +32839,11 @@ class ModifyLiveAvatarRoomRequest(AbstractModel):
         self._SpeechSpeed = None
         self._SpeechVolume = None
         self._Operator = None
+        self._RoomType = None
 
     @property
     def RoomId(self):
-        r"""数字人直播间 ID。
+        r"""<p>数字人直播间 ID。</p>
         :rtype: str
         """
         return self._RoomId
@@ -32831,7 +32854,7 @@ class ModifyLiveAvatarRoomRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""直播间名称。
+        r"""<p>直播间名称。</p>
         :rtype: str
         """
         return self._Name
@@ -32842,7 +32865,7 @@ class ModifyLiveAvatarRoomRequest(AbstractModel):
 
     @property
     def AvatarKey(self):
-        r"""数字人形象KEY。
+        r"""<p>数字人形象KEY。</p>
         :rtype: str
         """
         return self._AvatarKey
@@ -32853,7 +32876,7 @@ class ModifyLiveAvatarRoomRequest(AbstractModel):
 
     @property
     def TimbreKey(self):
-        r"""音色KEY。
+        r"""<p>音色KEY。</p>
         :rtype: str
         """
         return self._TimbreKey
@@ -32864,7 +32887,7 @@ class ModifyLiveAvatarRoomRequest(AbstractModel):
 
     @property
     def BackgroundUrl(self):
-        r"""背景图片URL。
+        r"""<p>背景图片URL。</p>
         :rtype: str
         """
         return self._BackgroundUrl
@@ -32875,9 +32898,7 @@ class ModifyLiveAvatarRoomRequest(AbstractModel):
 
     @property
     def AnchorScale(self):
-        r"""主播大小，默认1.00。
-取值范围(0, 15.00]。
-精度：使用小数点后两位。
+        r"""<p>主播大小，默认1.00。<br>取值范围(0, 15.00]。<br>精度：使用小数点后两位。</p>
         :rtype: float
         """
         return self._AnchorScale
@@ -32888,9 +32909,7 @@ class ModifyLiveAvatarRoomRequest(AbstractModel):
 
     @property
     def AnchorVerticalPos(self):
-        r"""主播纵向位置。默认-1贴底部。
-左上角为原点，形象顶部离屏幕顶部的距离，最大不能使形象底部超出屏幕。
-即该纵向位置最大为：数字人分辨率的高 - 形象高。
+        r"""<p>主播纵向位置。默认-1贴底部。<br>左上角为原点，形象顶部离屏幕顶部的距离，最大不能使形象底部超出屏幕。<br>即该纵向位置最大为：数字人分辨率的高 - 形象高。</p>
         :rtype: int
         """
         return self._AnchorVerticalPos
@@ -32901,9 +32920,7 @@ class ModifyLiveAvatarRoomRequest(AbstractModel):
 
     @property
     def AnchorHorizontalPos(self):
-        r"""主播横向位置。默认-1居中。
-左上角为原点，形象左侧离左侧屏幕的距离。最大值不可使形象右侧超出右侧屏幕。
-即最大值为：数字人分辨率的宽 - 形象宽。
+        r"""<p>主播横向位置。默认-1居中。<br>左上角为原点，形象左侧离左侧屏幕的距离。最大值不可使形象右侧超出右侧屏幕。<br>即最大值为：数字人分辨率的宽 - 形象宽。</p>
         :rtype: int
         """
         return self._AnchorHorizontalPos
@@ -32914,7 +32931,7 @@ class ModifyLiveAvatarRoomRequest(AbstractModel):
 
     @property
     def SpeechSpeed(self):
-        r"""语速（1.0为正常语速，范围[0.6-2.5]，值为0.6时播报语速最慢，值为2.5时播报语速最快。
+        r"""<p>语速（1.0为正常语速，范围[0.6-2.5]，值为0.6时播报语速最慢，值为2.5时播报语速最快。</p>
         :rtype: float
         """
         return self._SpeechSpeed
@@ -32925,7 +32942,7 @@ class ModifyLiveAvatarRoomRequest(AbstractModel):
 
     @property
     def SpeechVolume(self):
-        r"""音量大小，范围[0，10]，对应音量大小。默认为5，代表正常音量，值越大音量越高。
+        r"""<p>音量大小，范围[0，10]，对应音量大小。默认为5，代表正常音量，值越大音量越高。</p>
         :rtype: int
         """
         return self._SpeechVolume
@@ -32936,7 +32953,7 @@ class ModifyLiveAvatarRoomRequest(AbstractModel):
 
     @property
     def Operator(self):
-        r"""操作者。
+        r"""<p>操作者。</p>
         :rtype: str
         """
         return self._Operator
@@ -32944,6 +32961,17 @@ class ModifyLiveAvatarRoomRequest(AbstractModel):
     @Operator.setter
     def Operator(self, Operator):
         self._Operator = Operator
+
+    @property
+    def RoomType(self):
+        r"""<p>房间类型。AIGC：AIGC形象房间；PRESET：预设形象房间</p><p>枚举值：</p><ul><li>AIGC： AIGC形象房间</li><li>PRESET： 预设形象房间</li></ul>
+        :rtype: str
+        """
+        return self._RoomType
+
+    @RoomType.setter
+    def RoomType(self, RoomType):
+        self._RoomType = RoomType
 
 
     def _deserialize(self, params):
@@ -32958,6 +32986,7 @@ class ModifyLiveAvatarRoomRequest(AbstractModel):
         self._SpeechSpeed = params.get("SpeechSpeed")
         self._SpeechVolume = params.get("SpeechVolume")
         self._Operator = params.get("Operator")
+        self._RoomType = params.get("RoomType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -40824,23 +40853,26 @@ class StartLiveAvatarRoomRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RoomId: 数字人直播间 ID。
+        :param _RoomId: <p>数字人直播间 ID。</p>
         :type RoomId: str
-        :param _Comment: 目标地址描述。
+        :param _Comment: <p>目标地址描述。</p>
         :type Comment: str
-        :param _ToUrl: 推流目标地址。
+        :param _ToUrl: <p>推流目标地址。</p>
         :type ToUrl: str
-        :param _Operator: 操作者。
+        :param _Operator: <p>操作者。</p>
         :type Operator: str
+        :param _RoomType: <p>房间类型。AIGC：AIGC形象房间；PRESET：预设形象房间</p><p>枚举值：</p><ul><li>AIGC： AIGC形象房间</li><li>PRESET： 预设形象房间</li></ul>
+        :type RoomType: str
         """
         self._RoomId = None
         self._Comment = None
         self._ToUrl = None
         self._Operator = None
+        self._RoomType = None
 
     @property
     def RoomId(self):
-        r"""数字人直播间 ID。
+        r"""<p>数字人直播间 ID。</p>
         :rtype: str
         """
         return self._RoomId
@@ -40851,7 +40883,7 @@ class StartLiveAvatarRoomRequest(AbstractModel):
 
     @property
     def Comment(self):
-        r"""目标地址描述。
+        r"""<p>目标地址描述。</p>
         :rtype: str
         """
         return self._Comment
@@ -40862,7 +40894,7 @@ class StartLiveAvatarRoomRequest(AbstractModel):
 
     @property
     def ToUrl(self):
-        r"""推流目标地址。
+        r"""<p>推流目标地址。</p>
         :rtype: str
         """
         return self._ToUrl
@@ -40873,7 +40905,7 @@ class StartLiveAvatarRoomRequest(AbstractModel):
 
     @property
     def Operator(self):
-        r"""操作者。
+        r"""<p>操作者。</p>
         :rtype: str
         """
         return self._Operator
@@ -40882,12 +40914,24 @@ class StartLiveAvatarRoomRequest(AbstractModel):
     def Operator(self, Operator):
         self._Operator = Operator
 
+    @property
+    def RoomType(self):
+        r"""<p>房间类型。AIGC：AIGC形象房间；PRESET：预设形象房间</p><p>枚举值：</p><ul><li>AIGC： AIGC形象房间</li><li>PRESET： 预设形象房间</li></ul>
+        :rtype: str
+        """
+        return self._RoomType
+
+    @RoomType.setter
+    def RoomType(self, RoomType):
+        self._RoomType = RoomType
+
 
     def _deserialize(self, params):
         self._RoomId = params.get("RoomId")
         self._Comment = params.get("Comment")
         self._ToUrl = params.get("ToUrl")
         self._Operator = params.get("Operator")
+        self._RoomType = params.get("RoomType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

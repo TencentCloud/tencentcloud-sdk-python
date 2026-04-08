@@ -1529,6 +1529,24 @@ class DnspodClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyRecordBatchV3(
+            self,
+            request: models.ModifyRecordBatchV3Request,
+            opts: Dict = None,
+    ) -> models.ModifyRecordBatchV3Response:
+        """
+        批量修改记录
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyRecordBatchV3"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyRecordBatchV3Response
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyRecordFields(
             self,
             request: models.ModifyRecordFieldsRequest,

@@ -1945,6 +1945,29 @@ class DnspodClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyRecordBatchV3(self, request):
+        r"""批量修改记录
+
+        :param request: Request instance for ModifyRecordBatchV3.
+        :type request: :class:`tencentcloud.dnspod.v20210323.models.ModifyRecordBatchV3Request`
+        :rtype: :class:`tencentcloud.dnspod.v20210323.models.ModifyRecordBatchV3Response`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyRecordBatchV3", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyRecordBatchV3Response()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyRecordFields(self, request):
         r"""修改记录可选字段
 

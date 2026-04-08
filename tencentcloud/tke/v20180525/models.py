@@ -33123,14 +33123,17 @@ class ExtenderManagedResource(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 自定义资源的名称
+        :param _Name: <p>自定义资源的名称</p>
         :type Name: str
+        :param _IgnoredByScheduler: <p>调度器是否忽略该资源的默认处理</p>
+        :type IgnoredByScheduler: bool
         """
         self._Name = None
+        self._IgnoredByScheduler = None
 
     @property
     def Name(self):
-        r"""自定义资源的名称
+        r"""<p>自定义资源的名称</p>
         :rtype: str
         """
         return self._Name
@@ -33139,9 +33142,21 @@ class ExtenderManagedResource(AbstractModel):
     def Name(self, Name):
         self._Name = Name
 
+    @property
+    def IgnoredByScheduler(self):
+        r"""<p>调度器是否忽略该资源的默认处理</p>
+        :rtype: bool
+        """
+        return self._IgnoredByScheduler
+
+    @IgnoredByScheduler.setter
+    def IgnoredByScheduler(self, IgnoredByScheduler):
+        self._IgnoredByScheduler = IgnoredByScheduler
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
+        self._IgnoredByScheduler = params.get("IgnoredByScheduler")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -33159,26 +33174,32 @@ class Extenders(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FilterVerb: 过滤阶段接口
+        :param _FilterVerb: <p>过滤阶段接口</p>
         :type FilterVerb: str
-        :param _PrioritizeVerb: 打分阶段扩展接口
+        :param _PrioritizeVerb: <p>打分阶段扩展接口</p>
         :type PrioritizeVerb: str
-        :param _Weight: 打分阶段节点分数的权重,取值范围限定(0,2】
+        :param _Weight: <p>打分阶段节点分数的权重,取值范围限定(0,2】</p>
         :type Weight: int
-        :param _ManagedResources: 扩展调度器(Extender)管理的扩展资源
+        :param _ManagedResources: <p>扩展调度器(Extender)管理的扩展资源</p>
         :type ManagedResources: list of ExtenderManagedResource
-        :param _ExtenderClientConfig: extender客户端配置
+        :param _ExtenderClientConfig: <p>extender客户端配置</p>
         :type ExtenderClientConfig: :class:`tencentcloud.tke.v20180525.models.ExtenderClientConfig`
+        :param _PreemptVerb: <p>抢占接口</p>
+        :type PreemptVerb: str
+        :param _NodeCacheCapable: <p>节点缓存能力</p>
+        :type NodeCacheCapable: bool
         """
         self._FilterVerb = None
         self._PrioritizeVerb = None
         self._Weight = None
         self._ManagedResources = None
         self._ExtenderClientConfig = None
+        self._PreemptVerb = None
+        self._NodeCacheCapable = None
 
     @property
     def FilterVerb(self):
-        r"""过滤阶段接口
+        r"""<p>过滤阶段接口</p>
         :rtype: str
         """
         return self._FilterVerb
@@ -33189,7 +33210,7 @@ class Extenders(AbstractModel):
 
     @property
     def PrioritizeVerb(self):
-        r"""打分阶段扩展接口
+        r"""<p>打分阶段扩展接口</p>
         :rtype: str
         """
         return self._PrioritizeVerb
@@ -33200,7 +33221,7 @@ class Extenders(AbstractModel):
 
     @property
     def Weight(self):
-        r"""打分阶段节点分数的权重,取值范围限定(0,2】
+        r"""<p>打分阶段节点分数的权重,取值范围限定(0,2】</p>
         :rtype: int
         """
         return self._Weight
@@ -33211,7 +33232,7 @@ class Extenders(AbstractModel):
 
     @property
     def ManagedResources(self):
-        r"""扩展调度器(Extender)管理的扩展资源
+        r"""<p>扩展调度器(Extender)管理的扩展资源</p>
         :rtype: list of ExtenderManagedResource
         """
         return self._ManagedResources
@@ -33222,7 +33243,7 @@ class Extenders(AbstractModel):
 
     @property
     def ExtenderClientConfig(self):
-        r"""extender客户端配置
+        r"""<p>extender客户端配置</p>
         :rtype: :class:`tencentcloud.tke.v20180525.models.ExtenderClientConfig`
         """
         return self._ExtenderClientConfig
@@ -33230,6 +33251,28 @@ class Extenders(AbstractModel):
     @ExtenderClientConfig.setter
     def ExtenderClientConfig(self, ExtenderClientConfig):
         self._ExtenderClientConfig = ExtenderClientConfig
+
+    @property
+    def PreemptVerb(self):
+        r"""<p>抢占接口</p>
+        :rtype: str
+        """
+        return self._PreemptVerb
+
+    @PreemptVerb.setter
+    def PreemptVerb(self, PreemptVerb):
+        self._PreemptVerb = PreemptVerb
+
+    @property
+    def NodeCacheCapable(self):
+        r"""<p>节点缓存能力</p>
+        :rtype: bool
+        """
+        return self._NodeCacheCapable
+
+    @NodeCacheCapable.setter
+    def NodeCacheCapable(self, NodeCacheCapable):
+        self._NodeCacheCapable = NodeCacheCapable
 
 
     def _deserialize(self, params):
@@ -33245,6 +33288,8 @@ class Extenders(AbstractModel):
         if params.get("ExtenderClientConfig") is not None:
             self._ExtenderClientConfig = ExtenderClientConfig()
             self._ExtenderClientConfig._deserialize(params.get("ExtenderClientConfig"))
+        self._PreemptVerb = params.get("PreemptVerb")
+        self._NodeCacheCapable = params.get("NodeCacheCapable")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

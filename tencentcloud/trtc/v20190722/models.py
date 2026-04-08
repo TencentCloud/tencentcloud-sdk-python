@@ -15417,7 +15417,7 @@ class StartStreamIngestRequest(AbstractModel):
         :type UserId: str
         :param _UserSig: 输入在线媒体流机器人UserId对应的校验签名，即UserId和UserSig相当于机器人进房的登录密码，具体计算方法请参考TRTC计算[UserSig](https://cloud.tencent.com/document/product/647/45910#UserSig)的方案。
         :type UserSig: str
-        :param _StreamUrl: 源流URL【必填】。如果是视频流，分辨率请保持不变。
+        :param _StreamUrl: 源流URL【必填】。如果是视频流，分辨率请保持不变，视频流的最大分辨率限制1080p，最大帧率限制30fps。
         :type StreamUrl: str
         :param _PrivateMapKey: TRTC房间权限加密串，只有在TRTC控制台启用了高级权限控制的时候需要携带，在TRTC控制台如果开启高级权限控制后，TRTC 的后台服务系统会校验一个叫做 [PrivateMapKey] 的“权限票据”，权限票据中包含了一个加密后的 RoomId 和一个加密后的“权限位列表”。由于 PrivateMapKey 中包含 RoomId，所以只提供了 UserSig 没有提供 PrivateMapKey 时，并不能进入指定的房间。
         :type PrivateMapKey: str
@@ -15438,12 +15438,14 @@ class StartStreamIngestRequest(AbstractModel):
         :type RepeatNum: int
         :param _MaxDuration: 循环播放最大时长,仅支持RepeatNum设置-1时生效，取值范围[1, 10080]，单位分钟。
         :type MaxDuration: int
-        :param _Volume: 音量，取值范围[0, 100]，默认100，表示原音量。
+        :param _Volume: 音量，取值范围[0, 200]，默认100，表示原音量。
         :type Volume: int
         :param _EnableProgress: 开启播放进度回调, 默认false，当开启后，播放进度会通过trtc custom data 回调给播放端
         :type EnableProgress: bool
         :param _Tempo: 播放倍速，默认1.0，可取[0.5, 0.75, 1.0, 1.25, 1.5, 1.75, 2.0]
         :type Tempo: float
+        :param _IdleTimeout: 播放任务处于空闲状态的最大时长（秒）, 不填时任务会自适应销毁，可取[0, 600]，空闲状态超过设置的 IdleTimeout 后，该播放任务会自动销毁
+        :type IdleTimeout: int
         """
         self._SdkAppId = None
         self._RoomId = None
@@ -15462,6 +15464,7 @@ class StartStreamIngestRequest(AbstractModel):
         self._Volume = None
         self._EnableProgress = None
         self._Tempo = None
+        self._IdleTimeout = None
 
     @property
     def SdkAppId(self):
@@ -15523,7 +15526,7 @@ class StartStreamIngestRequest(AbstractModel):
 
     @property
     def StreamUrl(self):
-        r"""源流URL【必填】。如果是视频流，分辨率请保持不变。
+        r"""源流URL【必填】。如果是视频流，分辨率请保持不变，视频流的最大分辨率限制1080p，最大帧率限制30fps。
         :rtype: str
         """
         return self._StreamUrl
@@ -15637,7 +15640,7 @@ class StartStreamIngestRequest(AbstractModel):
 
     @property
     def Volume(self):
-        r"""音量，取值范围[0, 100]，默认100，表示原音量。
+        r"""音量，取值范围[0, 200]，默认100，表示原音量。
         :rtype: int
         """
         return self._Volume
@@ -15668,6 +15671,17 @@ class StartStreamIngestRequest(AbstractModel):
     def Tempo(self, Tempo):
         self._Tempo = Tempo
 
+    @property
+    def IdleTimeout(self):
+        r"""播放任务处于空闲状态的最大时长（秒）, 不填时任务会自适应销毁，可取[0, 600]，空闲状态超过设置的 IdleTimeout 后，该播放任务会自动销毁
+        :rtype: int
+        """
+        return self._IdleTimeout
+
+    @IdleTimeout.setter
+    def IdleTimeout(self, IdleTimeout):
+        self._IdleTimeout = IdleTimeout
+
 
     def _deserialize(self, params):
         self._SdkAppId = params.get("SdkAppId")
@@ -15691,6 +15705,7 @@ class StartStreamIngestRequest(AbstractModel):
         self._Volume = params.get("Volume")
         self._EnableProgress = params.get("EnableProgress")
         self._Tempo = params.get("Tempo")
+        self._IdleTimeout = params.get("IdleTimeout")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18680,7 +18695,7 @@ class UpdateStreamIngestRequest(AbstractModel):
         :type TaskId: str
         :param _StreamUrl: 源流URL。
         :type StreamUrl: str
-        :param _Volume: 音量，取值范围[0, 100]，默认100，表示原音量。
+        :param _Volume: 音量，取值范围[0, 200]，默认100，表示原音量。
         :type Volume: int
         :param _IsPause: 是否暂停，默认false表示不暂停。暂停期间任务仍在进行中仍会计费，暂停超过12小时会自动销毁任务, 建议主动调用停止任务接口。
         :type IsPause: bool
@@ -18732,7 +18747,7 @@ class UpdateStreamIngestRequest(AbstractModel):
 
     @property
     def Volume(self):
-        r"""音量，取值范围[0, 100]，默认100，表示原音量。
+        r"""音量，取值范围[0, 200]，默认100，表示原音量。
         :rtype: int
         """
         return self._Volume

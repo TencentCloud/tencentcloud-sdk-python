@@ -15591,6 +15591,90 @@ class ModifyRecordBatchResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyRecordBatchV3Request(AbstractModel):
+    r"""ModifyRecordBatchV3请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModifyRecordList: 需要修改的记录列表
+        :type ModifyRecordList: list of ModifyRecordItem
+        """
+        self._ModifyRecordList = None
+
+    @property
+    def ModifyRecordList(self):
+        r"""需要修改的记录列表
+        :rtype: list of ModifyRecordItem
+        """
+        return self._ModifyRecordList
+
+    @ModifyRecordList.setter
+    def ModifyRecordList(self, ModifyRecordList):
+        self._ModifyRecordList = ModifyRecordList
+
+
+    def _deserialize(self, params):
+        if params.get("ModifyRecordList") is not None:
+            self._ModifyRecordList = []
+            for item in params.get("ModifyRecordList"):
+                obj = ModifyRecordItem()
+                obj._deserialize(item)
+                self._ModifyRecordList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyRecordBatchV3Response(AbstractModel):
+    r"""ModifyRecordBatchV3返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: 批量任务ID
+        :type JobId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._JobId = None
+        self._RequestId = None
+
+    @property
+    def JobId(self):
+        r"""批量任务ID
+        :rtype: int
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyRecordFieldsRequest(AbstractModel):
     r"""ModifyRecordFields请求参数结构体
 
@@ -15842,6 +15926,177 @@ class ModifyRecordGroupResponse(AbstractModel):
     def _deserialize(self, params):
         self._GroupId = params.get("GroupId")
         self._RequestId = params.get("RequestId")
+
+
+class ModifyRecordItem(AbstractModel):
+    r"""批量修改记录入参，指定修改的记录ID和记录内容
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RecordId: 记录 ID
+        :type RecordId: int
+        :param _SubDomain: 主机记录
+        :type SubDomain: str
+        :param _RecordType: 记录类型
+        :type RecordType: str
+        :param _RecordLine: 记录线路
+        :type RecordLine: str
+        :param _Value: 记录值
+        :type Value: str
+        :param _Enabled: 解析记录状态 1：开启 0：暂停
+        :type Enabled: str
+        :param _Remark: 备注信息
+        :type Remark: str
+        :param _Weight: 权重
+        :type Weight: int
+        :param _MX: MX优先级
+        :type MX: int
+        :param _TTL: TTL缓存时间
+        :type TTL: int
+        """
+        self._RecordId = None
+        self._SubDomain = None
+        self._RecordType = None
+        self._RecordLine = None
+        self._Value = None
+        self._Enabled = None
+        self._Remark = None
+        self._Weight = None
+        self._MX = None
+        self._TTL = None
+
+    @property
+    def RecordId(self):
+        r"""记录 ID
+        :rtype: int
+        """
+        return self._RecordId
+
+    @RecordId.setter
+    def RecordId(self, RecordId):
+        self._RecordId = RecordId
+
+    @property
+    def SubDomain(self):
+        r"""主机记录
+        :rtype: str
+        """
+        return self._SubDomain
+
+    @SubDomain.setter
+    def SubDomain(self, SubDomain):
+        self._SubDomain = SubDomain
+
+    @property
+    def RecordType(self):
+        r"""记录类型
+        :rtype: str
+        """
+        return self._RecordType
+
+    @RecordType.setter
+    def RecordType(self, RecordType):
+        self._RecordType = RecordType
+
+    @property
+    def RecordLine(self):
+        r"""记录线路
+        :rtype: str
+        """
+        return self._RecordLine
+
+    @RecordLine.setter
+    def RecordLine(self, RecordLine):
+        self._RecordLine = RecordLine
+
+    @property
+    def Value(self):
+        r"""记录值
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def Enabled(self):
+        r"""解析记录状态 1：开启 0：暂停
+        :rtype: str
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+    @property
+    def Remark(self):
+        r"""备注信息
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def Weight(self):
+        r"""权重
+        :rtype: int
+        """
+        return self._Weight
+
+    @Weight.setter
+    def Weight(self, Weight):
+        self._Weight = Weight
+
+    @property
+    def MX(self):
+        r"""MX优先级
+        :rtype: int
+        """
+        return self._MX
+
+    @MX.setter
+    def MX(self, MX):
+        self._MX = MX
+
+    @property
+    def TTL(self):
+        r"""TTL缓存时间
+        :rtype: int
+        """
+        return self._TTL
+
+    @TTL.setter
+    def TTL(self, TTL):
+        self._TTL = TTL
+
+
+    def _deserialize(self, params):
+        self._RecordId = params.get("RecordId")
+        self._SubDomain = params.get("SubDomain")
+        self._RecordType = params.get("RecordType")
+        self._RecordLine = params.get("RecordLine")
+        self._Value = params.get("Value")
+        self._Enabled = params.get("Enabled")
+        self._Remark = params.get("Remark")
+        self._Weight = params.get("Weight")
+        self._MX = params.get("MX")
+        self._TTL = params.get("TTL")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ModifyRecordRemarkRequest(AbstractModel):

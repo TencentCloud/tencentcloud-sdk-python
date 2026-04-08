@@ -18537,11 +18537,11 @@ class DescribeBackupListByVaultItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群id
+        :param _ClusterId: <p>集群id</p>
         :type ClusterId: str
-        :param _ClusterName: 集群name
+        :param _ClusterName: <p>集群name</p>
         :type ClusterName: str
-        :param _BackupFileInfo: 备份信息
+        :param _BackupFileInfo: <p>备份信息</p>
         :type BackupFileInfo: :class:`tencentcloud.cynosdb.v20190107.models.BackupFileInfo`
         """
         self._ClusterId = None
@@ -18550,7 +18550,7 @@ class DescribeBackupListByVaultItem(AbstractModel):
 
     @property
     def ClusterId(self):
-        r"""集群id
+        r"""<p>集群id</p>
         :rtype: str
         """
         return self._ClusterId
@@ -18561,7 +18561,7 @@ class DescribeBackupListByVaultItem(AbstractModel):
 
     @property
     def ClusterName(self):
-        r"""集群name
+        r"""<p>集群name</p>
         :rtype: str
         """
         return self._ClusterName
@@ -18572,7 +18572,7 @@ class DescribeBackupListByVaultItem(AbstractModel):
 
     @property
     def BackupFileInfo(self):
-        r"""备份信息
+        r"""<p>备份信息</p>
         :rtype: :class:`tencentcloud.cynosdb.v20190107.models.BackupFileInfo`
         """
         return self._BackupFileInfo
@@ -19372,11 +19372,11 @@ class DescribeBinlogListByVaultItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群ID
+        :param _ClusterId: <p>集群ID</p>
         :type ClusterId: str
-        :param _ClusterName: 集群名称
+        :param _ClusterName: <p>集群名称</p>
         :type ClusterName: str
-        :param _BinlogFileInfo: Binlog文件信息
+        :param _BinlogFileInfo: <p>Binlog文件信息</p>
         :type BinlogFileInfo: :class:`tencentcloud.cynosdb.v20190107.models.BinlogItem`
         """
         self._ClusterId = None
@@ -19385,7 +19385,7 @@ class DescribeBinlogListByVaultItem(AbstractModel):
 
     @property
     def ClusterId(self):
-        r"""集群ID
+        r"""<p>集群ID</p>
         :rtype: str
         """
         return self._ClusterId
@@ -19396,7 +19396,7 @@ class DescribeBinlogListByVaultItem(AbstractModel):
 
     @property
     def ClusterName(self):
-        r"""集群名称
+        r"""<p>集群名称</p>
         :rtype: str
         """
         return self._ClusterName
@@ -19407,7 +19407,7 @@ class DescribeBinlogListByVaultItem(AbstractModel):
 
     @property
     def BinlogFileInfo(self):
-        r"""Binlog文件信息
+        r"""<p>Binlog文件信息</p>
         :rtype: :class:`tencentcloud.cynosdb.v20190107.models.BinlogItem`
         """
         return self._BinlogFileInfo
@@ -26976,11 +26976,11 @@ class DescribeRedoLogListByVaultItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群ID
+        :param _ClusterId: <p>集群ID</p>
         :type ClusterId: str
-        :param _ClusterName: 集群名称
+        :param _ClusterName: <p>集群名称</p>
         :type ClusterName: str
-        :param _RedoFileInfo: RedoLog文件信息
+        :param _RedoFileInfo: <p>RedoLog文件信息</p>
         :type RedoFileInfo: :class:`tencentcloud.cynosdb.v20190107.models.RedoLogItem`
         """
         self._ClusterId = None
@@ -26989,7 +26989,7 @@ class DescribeRedoLogListByVaultItem(AbstractModel):
 
     @property
     def ClusterId(self):
-        r"""集群ID
+        r"""<p>集群ID</p>
         :rtype: str
         """
         return self._ClusterId
@@ -27000,7 +27000,7 @@ class DescribeRedoLogListByVaultItem(AbstractModel):
 
     @property
     def ClusterName(self):
-        r"""集群名称
+        r"""<p>集群名称</p>
         :rtype: str
         """
         return self._ClusterName
@@ -27011,7 +27011,7 @@ class DescribeRedoLogListByVaultItem(AbstractModel):
 
     @property
     def RedoFileInfo(self):
-        r"""RedoLog文件信息
+        r"""<p>RedoLog文件信息</p>
         :rtype: :class:`tencentcloud.cynosdb.v20190107.models.RedoLogItem`
         """
         return self._RedoFileInfo

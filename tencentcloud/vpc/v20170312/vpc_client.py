@@ -2112,6 +2112,29 @@ class VpcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateTrafficMirrorFilterRules(self, request):
+        r"""创建流量镜像五元组过滤规则。
+
+        :param request: Request instance for CreateTrafficMirrorFilterRules.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.CreateTrafficMirrorFilterRulesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.CreateTrafficMirrorFilterRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateTrafficMirrorFilterRules", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateTrafficMirrorFilterRulesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateTrafficPackages(self, request):
         r"""本接口 (CreateTrafficPackages) 用于创建共享流量包。
 
@@ -3472,6 +3495,29 @@ class VpcClient(AbstractClient):
             body = self.call("DeleteTrafficMirror", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteTrafficMirrorResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteTrafficMirrorFilterRules(self, request):
+        r"""删除流量镜像五元组过滤规则。
+
+        :param request: Request instance for DeleteTrafficMirrorFilterRules.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DeleteTrafficMirrorFilterRulesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DeleteTrafficMirrorFilterRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteTrafficMirrorFilterRules", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteTrafficMirrorFilterRulesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -6073,6 +6119,29 @@ class VpcClient(AbstractClient):
             body = self.call("DescribeTenantCcns", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeTenantCcnsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeTrafficMirrorFilterRules(self, request):
+        r"""查询流量镜像五元组过滤规则。
+
+        :param request: Request instance for DescribeTrafficMirrorFilterRules.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.DescribeTrafficMirrorFilterRulesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.DescribeTrafficMirrorFilterRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTrafficMirrorFilterRules", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTrafficMirrorFilterRulesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -9072,6 +9141,29 @@ class VpcClient(AbstractClient):
             body = self.call("ModifyTrafficMirrorAttribute", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyTrafficMirrorAttributeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyTrafficMirrorFilterRules(self, request):
+        r"""修改流量镜像五元组过滤规则。
+
+        :param request: Request instance for ModifyTrafficMirrorFilterRules.
+        :type request: :class:`tencentcloud.vpc.v20170312.models.ModifyTrafficMirrorFilterRulesRequest`
+        :rtype: :class:`tencentcloud.vpc.v20170312.models.ModifyTrafficMirrorFilterRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyTrafficMirrorFilterRules", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyTrafficMirrorFilterRulesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
