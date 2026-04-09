@@ -2421,27 +2421,27 @@ class CreateOrganizationMemberRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 成员名称。最大长度为25个字符，支持英文字母、数字、汉字、符号+@、&._[]-:,
+        :param _Name: <p>成员名称。最大长度为25个字符，支持英文字母、数字、汉字、符号+@、&amp;._[]-:,</p>
         :type Name: str
-        :param _PolicyType: 关系策略。取值：Financial
+        :param _PolicyType: <p>关系策略。取值：Financial</p>
         :type PolicyType: str
-        :param _PermissionIds: 成员财务权限ID列表。取值：1-查看账单、2-查看余额、3-资金划拨（若需要开启资金划拨权限，请联系您的商务经理内部开通。）、4-合并出账、5-开票、6-优惠继承、7-代付费、8-成本分析、9-预算管理、10-信用额度设置（若需要开启信用额度设置权限，请联系您的商务经理内部开通。），1、2 默认必须
+        :param _PermissionIds: <p>成员财务权限ID列表。取值：1-查看账单、2-查看余额、3-资金划拨（若需要开启资金划拨权限，请联系您的商务经理内部开通。）、4-合并出账、5-开票、6-优惠继承、7-代付费、8-成本分析、9-预算管理、10-信用额度设置（若需要开启信用额度设置权限，请联系您的商务经理内部开通。），1、2 默认必须</p>
         :type PermissionIds: list of int non-negative
-        :param _NodeId: 成员所属部门的节点ID。可以通过[DescribeOrganizationNodes](https://cloud.tencent.com/document/product/850/82926)获取
+        :param _NodeId: <p>成员所属部门的节点ID。可以通过<a href="https://cloud.tencent.com/document/product/850/82926">DescribeOrganizationNodes</a>获取</p>
         :type NodeId: int
-        :param _AccountName: 账号名称。最大长度为25个字符，支持英文字母、数字、汉字、符号+@、&._[]-:,
+        :param _AccountName: <p>账号名称。最大长度为25个字符，支持英文字母、数字、汉字、符号+@、&amp;._[]-:,</p>
         :type AccountName: str
-        :param _Remark: 备注。
+        :param _Remark: <p>备注。</p>
         :type Remark: str
-        :param _RecordId: 成员创建记录ID。创建异常重试时需要
+        :param _RecordId: <p>成员创建记录ID。创建异常重试时需要</p>
         :type RecordId: int
-        :param _PayUin: 代付者Uin。成员代付费时需要
+        :param _PayUin: <p>代付者Uin。成员代付费时需要</p>
         :type PayUin: str
-        :param _IdentityRoleID: 成员访问身份ID列表。可以调用ListOrganizationIdentity获取，1默认支持
+        :param _IdentityRoleID: <p>成员访问身份ID列表。可以调用ListOrganizationIdentity获取，1默认支持</p>
         :type IdentityRoleID: list of int non-negative
-        :param _AuthRelationId: 认证主体关系ID。给不同主体创建成员时需要，可以调用DescribeOrganizationAuthNode获取
+        :param _AuthRelationId: <p>认证主体关系ID。给不同主体创建成员时需要，可以调用DescribeOrganizationAuthNode获取</p>
         :type AuthRelationId: int
-        :param _Tags: 成员标签列表。最大10个
+        :param _Tags: <p>成员标签列表。最大10个</p>
         :type Tags: list of Tag
         """
         self._Name = None
@@ -2458,7 +2458,7 @@ class CreateOrganizationMemberRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""成员名称。最大长度为25个字符，支持英文字母、数字、汉字、符号+@、&._[]-:,
+        r"""<p>成员名称。最大长度为25个字符，支持英文字母、数字、汉字、符号+@、&amp;._[]-:,</p>
         :rtype: str
         """
         return self._Name
@@ -2469,7 +2469,7 @@ class CreateOrganizationMemberRequest(AbstractModel):
 
     @property
     def PolicyType(self):
-        r"""关系策略。取值：Financial
+        r"""<p>关系策略。取值：Financial</p>
         :rtype: str
         """
         return self._PolicyType
@@ -2480,7 +2480,7 @@ class CreateOrganizationMemberRequest(AbstractModel):
 
     @property
     def PermissionIds(self):
-        r"""成员财务权限ID列表。取值：1-查看账单、2-查看余额、3-资金划拨（若需要开启资金划拨权限，请联系您的商务经理内部开通。）、4-合并出账、5-开票、6-优惠继承、7-代付费、8-成本分析、9-预算管理、10-信用额度设置（若需要开启信用额度设置权限，请联系您的商务经理内部开通。），1、2 默认必须
+        r"""<p>成员财务权限ID列表。取值：1-查看账单、2-查看余额、3-资金划拨（若需要开启资金划拨权限，请联系您的商务经理内部开通。）、4-合并出账、5-开票、6-优惠继承、7-代付费、8-成本分析、9-预算管理、10-信用额度设置（若需要开启信用额度设置权限，请联系您的商务经理内部开通。），1、2 默认必须</p>
         :rtype: list of int non-negative
         """
         return self._PermissionIds
@@ -2491,7 +2491,7 @@ class CreateOrganizationMemberRequest(AbstractModel):
 
     @property
     def NodeId(self):
-        r"""成员所属部门的节点ID。可以通过[DescribeOrganizationNodes](https://cloud.tencent.com/document/product/850/82926)获取
+        r"""<p>成员所属部门的节点ID。可以通过<a href="https://cloud.tencent.com/document/product/850/82926">DescribeOrganizationNodes</a>获取</p>
         :rtype: int
         """
         return self._NodeId
@@ -2502,7 +2502,7 @@ class CreateOrganizationMemberRequest(AbstractModel):
 
     @property
     def AccountName(self):
-        r"""账号名称。最大长度为25个字符，支持英文字母、数字、汉字、符号+@、&._[]-:,
+        r"""<p>账号名称。最大长度为25个字符，支持英文字母、数字、汉字、符号+@、&amp;._[]-:,</p>
         :rtype: str
         """
         return self._AccountName
@@ -2513,7 +2513,7 @@ class CreateOrganizationMemberRequest(AbstractModel):
 
     @property
     def Remark(self):
-        r"""备注。
+        r"""<p>备注。</p>
         :rtype: str
         """
         return self._Remark
@@ -2524,7 +2524,7 @@ class CreateOrganizationMemberRequest(AbstractModel):
 
     @property
     def RecordId(self):
-        r"""成员创建记录ID。创建异常重试时需要
+        r"""<p>成员创建记录ID。创建异常重试时需要</p>
         :rtype: int
         """
         return self._RecordId
@@ -2535,7 +2535,7 @@ class CreateOrganizationMemberRequest(AbstractModel):
 
     @property
     def PayUin(self):
-        r"""代付者Uin。成员代付费时需要
+        r"""<p>代付者Uin。成员代付费时需要</p>
         :rtype: str
         """
         return self._PayUin
@@ -2546,7 +2546,7 @@ class CreateOrganizationMemberRequest(AbstractModel):
 
     @property
     def IdentityRoleID(self):
-        r"""成员访问身份ID列表。可以调用ListOrganizationIdentity获取，1默认支持
+        r"""<p>成员访问身份ID列表。可以调用ListOrganizationIdentity获取，1默认支持</p>
         :rtype: list of int non-negative
         """
         return self._IdentityRoleID
@@ -2557,7 +2557,7 @@ class CreateOrganizationMemberRequest(AbstractModel):
 
     @property
     def AuthRelationId(self):
-        r"""认证主体关系ID。给不同主体创建成员时需要，可以调用DescribeOrganizationAuthNode获取
+        r"""<p>认证主体关系ID。给不同主体创建成员时需要，可以调用DescribeOrganizationAuthNode获取</p>
         :rtype: int
         """
         return self._AuthRelationId
@@ -2568,7 +2568,7 @@ class CreateOrganizationMemberRequest(AbstractModel):
 
     @property
     def Tags(self):
-        r"""成员标签列表。最大10个
+        r"""<p>成员标签列表。最大10个</p>
         :rtype: list of Tag
         """
         return self._Tags
@@ -2612,7 +2612,7 @@ class CreateOrganizationMemberResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Uin: 成员Uin。
+        :param _Uin: <p>成员Uin。</p>
         :type Uin: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2622,7 +2622,7 @@ class CreateOrganizationMemberResponse(AbstractModel):
 
     @property
     def Uin(self):
-        r"""成员Uin。
+        r"""<p>成员Uin。</p>
         :rtype: int
         """
         return self._Uin

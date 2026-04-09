@@ -4343,6 +4343,105 @@ class CreateDatabaseWhiteListRulesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateNatFwDnatRuleRequest(AbstractModel):
+    r"""CreateNatFwDnatRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Mode: 0：cfw新增模式，1：cfw接入模式。
+        :type Mode: int
+        :param _CfwInstance: 防火墙实例id，该字段必须传递。
+        :type CfwInstance: str
+        :param _DnatRules: 添加或删除操作的Dnat规则列表。
+        :type DnatRules: list of CfwNatDnatRule
+        """
+        self._Mode = None
+        self._CfwInstance = None
+        self._DnatRules = None
+
+    @property
+    def Mode(self):
+        r"""0：cfw新增模式，1：cfw接入模式。
+        :rtype: int
+        """
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
+    @property
+    def CfwInstance(self):
+        r"""防火墙实例id，该字段必须传递。
+        :rtype: str
+        """
+        return self._CfwInstance
+
+    @CfwInstance.setter
+    def CfwInstance(self, CfwInstance):
+        self._CfwInstance = CfwInstance
+
+    @property
+    def DnatRules(self):
+        r"""添加或删除操作的Dnat规则列表。
+        :rtype: list of CfwNatDnatRule
+        """
+        return self._DnatRules
+
+    @DnatRules.setter
+    def DnatRules(self, DnatRules):
+        self._DnatRules = DnatRules
+
+
+    def _deserialize(self, params):
+        self._Mode = params.get("Mode")
+        self._CfwInstance = params.get("CfwInstance")
+        if params.get("DnatRules") is not None:
+            self._DnatRules = []
+            for item in params.get("DnatRules"):
+                obj = CfwNatDnatRule()
+                obj._deserialize(item)
+                self._DnatRules.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateNatFwDnatRuleResponse(AbstractModel):
+    r"""CreateNatFwDnatRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CreateNatFwInstanceRequest(AbstractModel):
     r"""CreateNatFwInstance请求参数结构体
 
@@ -6317,6 +6416,105 @@ class DeleteBlockIgnoreRuleNewRequest(AbstractModel):
 
 class DeleteBlockIgnoreRuleNewResponse(AbstractModel):
     r"""DeleteBlockIgnoreRuleNew返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteNatFwDnatRuleRequest(AbstractModel):
+    r"""DeleteNatFwDnatRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Mode: 0：cfw新增模式，1：cfw接入模式。
+        :type Mode: int
+        :param _CfwInstance: 防火墙实例id，该字段必须传递。
+        :type CfwInstance: str
+        :param _DnatRules: 添加或删除操作的Dnat规则列表。
+        :type DnatRules: list of CfwNatDnatRule
+        """
+        self._Mode = None
+        self._CfwInstance = None
+        self._DnatRules = None
+
+    @property
+    def Mode(self):
+        r"""0：cfw新增模式，1：cfw接入模式。
+        :rtype: int
+        """
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
+    @property
+    def CfwInstance(self):
+        r"""防火墙实例id，该字段必须传递。
+        :rtype: str
+        """
+        return self._CfwInstance
+
+    @CfwInstance.setter
+    def CfwInstance(self, CfwInstance):
+        self._CfwInstance = CfwInstance
+
+    @property
+    def DnatRules(self):
+        r"""添加或删除操作的Dnat规则列表。
+        :rtype: list of CfwNatDnatRule
+        """
+        return self._DnatRules
+
+    @DnatRules.setter
+    def DnatRules(self, DnatRules):
+        self._DnatRules = DnatRules
+
+
+    def _deserialize(self, params):
+        self._Mode = params.get("Mode")
+        self._CfwInstance = params.get("CfwInstance")
+        if params.get("DnatRules") is not None:
+            self._DnatRules = []
+            for item in params.get("DnatRules"):
+                obj = CfwNatDnatRule()
+                obj._deserialize(item)
+                self._DnatRules.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteNatFwDnatRuleResponse(AbstractModel):
+    r"""DeleteNatFwDnatRule返回参数结构体
 
     """
 

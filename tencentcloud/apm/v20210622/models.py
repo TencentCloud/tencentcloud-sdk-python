@@ -2119,22 +2119,25 @@ class ApmAssociation(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PeerId: 关联产品的实例ID
+        :param _PeerId: <p>关联产品的实例ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type PeerId: str
-        :param _Status: 关联关系状态：1（启用）、2（不启用）、3（已失效）
+        :param _Status: <p>关联关系状态：1（启用）、2（不启用）、3（已失效）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
-        :param _Topic: CKafka消息主题
+        :param _Topic: <p>CKafka消息主题</p>
         :type Topic: str
+        :param _MetricTopic: <p>Ckafka消费主题</p><p>用于Kafka指标投递</p>
+        :type MetricTopic: str
         """
         self._PeerId = None
         self._Status = None
         self._Topic = None
+        self._MetricTopic = None
 
     @property
     def PeerId(self):
-        r"""关联产品的实例ID
+        r"""<p>关联产品的实例ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2146,7 +2149,7 @@ class ApmAssociation(AbstractModel):
 
     @property
     def Status(self):
-        r"""关联关系状态：1（启用）、2（不启用）、3（已失效）
+        r"""<p>关联关系状态：1（启用）、2（不启用）、3（已失效）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -2158,7 +2161,7 @@ class ApmAssociation(AbstractModel):
 
     @property
     def Topic(self):
-        r"""CKafka消息主题
+        r"""<p>CKafka消息主题</p>
         :rtype: str
         """
         return self._Topic
@@ -2167,11 +2170,23 @@ class ApmAssociation(AbstractModel):
     def Topic(self, Topic):
         self._Topic = Topic
 
+    @property
+    def MetricTopic(self):
+        r"""<p>Ckafka消费主题</p><p>用于Kafka指标投递</p>
+        :rtype: str
+        """
+        return self._MetricTopic
+
+    @MetricTopic.setter
+    def MetricTopic(self, MetricTopic):
+        self._MetricTopic = MetricTopic
+
 
     def _deserialize(self, params):
         self._PeerId = params.get("PeerId")
         self._Status = params.get("Status")
         self._Topic = params.get("Topic")
+        self._MetricTopic = params.get("MetricTopic")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9880,26 +9895,29 @@ class ModifyApmAssociationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProductName: 关联的产品名，当前只支持Prometheus、CKafka
+        :param _ProductName: <p>关联的产品名，当前只支持Prometheus、CKafka</p>
         :type ProductName: str
-        :param _Status: 关联关系的状态：// 关联关系状态：1（启用）、2（不启用）
+        :param _Status: <p>关联关系的状态：// 关联关系状态：1（启用）、2（不启用）</p>
         :type Status: int
-        :param _InstanceId: 业务系统ID
+        :param _InstanceId: <p>业务系统ID</p>
         :type InstanceId: str
-        :param _PeerId: 关联的产品实例ID
+        :param _PeerId: <p>关联的产品实例ID</p>
         :type PeerId: str
-        :param _Topic: CKafka消息主题
+        :param _Topic: <p>CKafka消息主题</p>
         :type Topic: str
+        :param _MetricTopic: <p>Ckafka消息主题</p>
+        :type MetricTopic: str
         """
         self._ProductName = None
         self._Status = None
         self._InstanceId = None
         self._PeerId = None
         self._Topic = None
+        self._MetricTopic = None
 
     @property
     def ProductName(self):
-        r"""关联的产品名，当前只支持Prometheus、CKafka
+        r"""<p>关联的产品名，当前只支持Prometheus、CKafka</p>
         :rtype: str
         """
         return self._ProductName
@@ -9910,7 +9928,7 @@ class ModifyApmAssociationRequest(AbstractModel):
 
     @property
     def Status(self):
-        r"""关联关系的状态：// 关联关系状态：1（启用）、2（不启用）
+        r"""<p>关联关系的状态：// 关联关系状态：1（启用）、2（不启用）</p>
         :rtype: int
         """
         return self._Status
@@ -9921,7 +9939,7 @@ class ModifyApmAssociationRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""业务系统ID
+        r"""<p>业务系统ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -9932,7 +9950,7 @@ class ModifyApmAssociationRequest(AbstractModel):
 
     @property
     def PeerId(self):
-        r"""关联的产品实例ID
+        r"""<p>关联的产品实例ID</p>
         :rtype: str
         """
         return self._PeerId
@@ -9943,7 +9961,7 @@ class ModifyApmAssociationRequest(AbstractModel):
 
     @property
     def Topic(self):
-        r"""CKafka消息主题
+        r"""<p>CKafka消息主题</p>
         :rtype: str
         """
         return self._Topic
@@ -9952,6 +9970,17 @@ class ModifyApmAssociationRequest(AbstractModel):
     def Topic(self, Topic):
         self._Topic = Topic
 
+    @property
+    def MetricTopic(self):
+        r"""<p>Ckafka消息主题</p>
+        :rtype: str
+        """
+        return self._MetricTopic
+
+    @MetricTopic.setter
+    def MetricTopic(self, MetricTopic):
+        self._MetricTopic = MetricTopic
+
 
     def _deserialize(self, params):
         self._ProductName = params.get("ProductName")
@@ -9959,6 +9988,7 @@ class ModifyApmAssociationRequest(AbstractModel):
         self._InstanceId = params.get("InstanceId")
         self._PeerId = params.get("PeerId")
         self._Topic = params.get("Topic")
+        self._MetricTopic = params.get("MetricTopic")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

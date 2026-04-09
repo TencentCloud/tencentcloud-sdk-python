@@ -325,6 +325,29 @@ class CfwClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateNatFwDnatRule(self, request):
+        r"""创建Nat防火墙Dnat规则
+
+        :param request: Request instance for CreateNatFwDnatRule.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.CreateNatFwDnatRuleRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.CreateNatFwDnatRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateNatFwDnatRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateNatFwDnatRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateNatFwInstance(self, request):
         r"""创建NAT防火墙实例（Region参数必填）
 
@@ -500,6 +523,29 @@ class CfwClient(AbstractClient):
             body = self.call("DeleteBlockIgnoreRuleNew", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteBlockIgnoreRuleNewResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteNatFwDnatRule(self, request):
+        r"""删除Nat防火墙Dnat规则
+
+        :param request: Request instance for DeleteNatFwDnatRule.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.DeleteNatFwDnatRuleRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.DeleteNatFwDnatRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteNatFwDnatRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteNatFwDnatRuleResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

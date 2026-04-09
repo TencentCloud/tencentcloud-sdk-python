@@ -25,34 +25,36 @@ class AIAgentAsset(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ID: ID 标识
+        :param _ID: <p>ID 标识</p>
         :type ID: str
-        :param _AgentName: agent 名称
+        :param _AgentName: <p>agent 名称</p>
         :type AgentName: str
-        :param _AgentModel: agent 使用模型名称
+        :param _AgentModel: <p>agent 使用模型名称</p>
         :type AgentModel: list of str
-        :param _InstanceID: 实例 ID
+        :param _InstanceID: <p>实例 ID</p>
         :type InstanceID: str
-        :param _MetadataRiskList: metadata 风险列表。有如下枚举值: 1. AK_TMP  2. USER_DATA
+        :param _InstanceName: <p>实例名称</p>
+        :type InstanceName: str
+        :param _MetadataRiskList: <p>metadata 风险列表。有如下枚举值: 1. AK_TMP  2. USER_DATA</p>
         :type MetadataRiskList: list of str
-        :param _IdentityTimeFirst: 首次检出时间
+        :param _IdentityTimeFirst: <p>首次检出时间</p>
         :type IdentityTimeFirst: str
-        :param _IdentityTimeLast: 最近检出时间
+        :param _IdentityTimeLast: <p>最近检出时间</p>
         :type IdentityTimeLast: str
-        :param _IdentityMethod: 检出方式。有如下枚举值 1. FINGER 资产指纹方式检出 2. NETWORK 网络访问方式检出
+        :param _IdentityMethod: <p>检出方式。有如下枚举值 1. FINGER 资产指纹方式检出 2. NETWORK 网络访问方式检出</p>
         :type IdentityMethod: str
-        :param _ExposureStatus: 暴露状态。有如下枚举值。1. EXPOSED；2.UNEXPOSED；
-3. UNKNOWN;
+        :param _ExposureStatus: <p>暴露状态。有如下枚举值。1. EXPOSED；2.UNEXPOSED；</p><ol start="3"><li>UNKNOWN;</li></ol>
         :type ExposureStatus: str
-        :param _MetadataRiskURL: metadata 有风险时对应路径
+        :param _MetadataRiskURL: <p>metadata 有风险时对应路径</p>
         :type MetadataRiskURL: str
-        :param _SkillState: 无
+        :param _SkillState: <p>无</p>
         :type SkillState: :class:`tencentcloud.csip.v20221121.models.SkillState`
         """
         self._ID = None
         self._AgentName = None
         self._AgentModel = None
         self._InstanceID = None
+        self._InstanceName = None
         self._MetadataRiskList = None
         self._IdentityTimeFirst = None
         self._IdentityTimeLast = None
@@ -63,7 +65,7 @@ class AIAgentAsset(AbstractModel):
 
     @property
     def ID(self):
-        r"""ID 标识
+        r"""<p>ID 标识</p>
         :rtype: str
         """
         return self._ID
@@ -74,7 +76,7 @@ class AIAgentAsset(AbstractModel):
 
     @property
     def AgentName(self):
-        r"""agent 名称
+        r"""<p>agent 名称</p>
         :rtype: str
         """
         return self._AgentName
@@ -85,7 +87,7 @@ class AIAgentAsset(AbstractModel):
 
     @property
     def AgentModel(self):
-        r"""agent 使用模型名称
+        r"""<p>agent 使用模型名称</p>
         :rtype: list of str
         """
         return self._AgentModel
@@ -96,7 +98,7 @@ class AIAgentAsset(AbstractModel):
 
     @property
     def InstanceID(self):
-        r"""实例 ID
+        r"""<p>实例 ID</p>
         :rtype: str
         """
         return self._InstanceID
@@ -106,8 +108,19 @@ class AIAgentAsset(AbstractModel):
         self._InstanceID = InstanceID
 
     @property
+    def InstanceName(self):
+        r"""<p>实例名称</p>
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
     def MetadataRiskList(self):
-        r"""metadata 风险列表。有如下枚举值: 1. AK_TMP  2. USER_DATA
+        r"""<p>metadata 风险列表。有如下枚举值: 1. AK_TMP  2. USER_DATA</p>
         :rtype: list of str
         """
         return self._MetadataRiskList
@@ -118,7 +131,7 @@ class AIAgentAsset(AbstractModel):
 
     @property
     def IdentityTimeFirst(self):
-        r"""首次检出时间
+        r"""<p>首次检出时间</p>
         :rtype: str
         """
         return self._IdentityTimeFirst
@@ -129,7 +142,7 @@ class AIAgentAsset(AbstractModel):
 
     @property
     def IdentityTimeLast(self):
-        r"""最近检出时间
+        r"""<p>最近检出时间</p>
         :rtype: str
         """
         return self._IdentityTimeLast
@@ -140,7 +153,7 @@ class AIAgentAsset(AbstractModel):
 
     @property
     def IdentityMethod(self):
-        r"""检出方式。有如下枚举值 1. FINGER 资产指纹方式检出 2. NETWORK 网络访问方式检出
+        r"""<p>检出方式。有如下枚举值 1. FINGER 资产指纹方式检出 2. NETWORK 网络访问方式检出</p>
         :rtype: str
         """
         return self._IdentityMethod
@@ -151,8 +164,7 @@ class AIAgentAsset(AbstractModel):
 
     @property
     def ExposureStatus(self):
-        r"""暴露状态。有如下枚举值。1. EXPOSED；2.UNEXPOSED；
-3. UNKNOWN;
+        r"""<p>暴露状态。有如下枚举值。1. EXPOSED；2.UNEXPOSED；</p><ol start="3"><li>UNKNOWN;</li></ol>
         :rtype: str
         """
         return self._ExposureStatus
@@ -163,7 +175,7 @@ class AIAgentAsset(AbstractModel):
 
     @property
     def MetadataRiskURL(self):
-        r"""metadata 有风险时对应路径
+        r"""<p>metadata 有风险时对应路径</p>
         :rtype: str
         """
         return self._MetadataRiskURL
@@ -174,7 +186,7 @@ class AIAgentAsset(AbstractModel):
 
     @property
     def SkillState(self):
-        r"""无
+        r"""<p>无</p>
         :rtype: :class:`tencentcloud.csip.v20221121.models.SkillState`
         """
         return self._SkillState
@@ -189,6 +201,7 @@ class AIAgentAsset(AbstractModel):
         self._AgentName = params.get("AgentName")
         self._AgentModel = params.get("AgentModel")
         self._InstanceID = params.get("InstanceID")
+        self._InstanceName = params.get("InstanceName")
         self._MetadataRiskList = params.get("MetadataRiskList")
         self._IdentityTimeFirst = params.get("IdentityTimeFirst")
         self._IdentityTimeLast = params.get("IdentityTimeLast")

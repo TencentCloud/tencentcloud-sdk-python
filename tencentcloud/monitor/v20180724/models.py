@@ -25814,6 +25814,116 @@ class ExportPrometheusReadOnlyDynamicAPIRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _InstanceId: Prometheus 实例 ID
+        :type InstanceId: str
+        :param _Method: HTTP 方法名 GET/POST/PUT/DELETE 等
+        :type Method: str
+        :param _Path: HTTP 路径（包括 query string）
+        :type Path: str
+        :param _RequestBody: HTTP 请求体，任何数据
+        :type RequestBody: str
+        :param _Headers: HTTP 请求头
+        :type Headers: list of PrometheusStringKeyValuePair
+        :param _SelfMonitor: 是否请求自监控数据。自监控仅支持 /api/v1/query 与 /api/v1/query_range 接口。
+        :type SelfMonitor: bool
+        """
+        self._InstanceId = None
+        self._Method = None
+        self._Path = None
+        self._RequestBody = None
+        self._Headers = None
+        self._SelfMonitor = None
+
+    @property
+    def InstanceId(self):
+        r"""Prometheus 实例 ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Method(self):
+        r"""HTTP 方法名 GET/POST/PUT/DELETE 等
+        :rtype: str
+        """
+        return self._Method
+
+    @Method.setter
+    def Method(self, Method):
+        self._Method = Method
+
+    @property
+    def Path(self):
+        r"""HTTP 路径（包括 query string）
+        :rtype: str
+        """
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+    @property
+    def RequestBody(self):
+        r"""HTTP 请求体，任何数据
+        :rtype: str
+        """
+        return self._RequestBody
+
+    @RequestBody.setter
+    def RequestBody(self, RequestBody):
+        self._RequestBody = RequestBody
+
+    @property
+    def Headers(self):
+        r"""HTTP 请求头
+        :rtype: list of PrometheusStringKeyValuePair
+        """
+        return self._Headers
+
+    @Headers.setter
+    def Headers(self, Headers):
+        self._Headers = Headers
+
+    @property
+    def SelfMonitor(self):
+        r"""是否请求自监控数据。自监控仅支持 /api/v1/query 与 /api/v1/query_range 接口。
+        :rtype: bool
+        """
+        return self._SelfMonitor
+
+    @SelfMonitor.setter
+    def SelfMonitor(self, SelfMonitor):
+        self._SelfMonitor = SelfMonitor
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Method = params.get("Method")
+        self._Path = params.get("Path")
+        self._RequestBody = params.get("RequestBody")
+        if params.get("Headers") is not None:
+            self._Headers = []
+            for item in params.get("Headers"):
+                obj = PrometheusStringKeyValuePair()
+                obj._deserialize(item)
+                self._Headers.append(obj)
+        self._SelfMonitor = params.get("SelfMonitor")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class ExportPrometheusReadOnlyDynamicAPIResponse(AbstractModel):
     r"""ExportPrometheusReadOnlyDynamicAPI返回参数结构体
@@ -25822,10 +25932,24 @@ class ExportPrometheusReadOnlyDynamicAPIResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _HTTP: HTTP 响应数据
+        :type HTTP: :class:`tencentcloud.monitor.v20180724.models.PrometheusDynamicAPIResponseHTTP`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._HTTP = None
         self._RequestId = None
+
+    @property
+    def HTTP(self):
+        r"""HTTP 响应数据
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.PrometheusDynamicAPIResponseHTTP`
+        """
+        return self._HTTP
+
+    @HTTP.setter
+    def HTTP(self, HTTP):
+        self._HTTP = HTTP
 
     @property
     def RequestId(self):
@@ -25840,6 +25964,9 @@ class ExportPrometheusReadOnlyDynamicAPIResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("HTTP") is not None:
+            self._HTTP = PrometheusDynamicAPIResponseHTTP()
+            self._HTTP._deserialize(params.get("HTTP"))
         self._RequestId = params.get("RequestId")
 
 
@@ -34451,6 +34578,57 @@ class PrometheusConfigItem(AbstractModel):
         
 
 
+class PrometheusDynamicAPIResponseHTTP(AbstractModel):
+    r"""Prometheus 内部动态 api 代理响应
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StatusCode: HTTP 状态码
+        :type StatusCode: int
+        :param _ResponseBody: HTTP 响应体
+        :type ResponseBody: str
+        """
+        self._StatusCode = None
+        self._ResponseBody = None
+
+    @property
+    def StatusCode(self):
+        r"""HTTP 状态码
+        :rtype: int
+        """
+        return self._StatusCode
+
+    @StatusCode.setter
+    def StatusCode(self, StatusCode):
+        self._StatusCode = StatusCode
+
+    @property
+    def ResponseBody(self):
+        r"""HTTP 响应体
+        :rtype: str
+        """
+        return self._ResponseBody
+
+    @ResponseBody.setter
+    def ResponseBody(self, ResponseBody):
+        self._ResponseBody = ResponseBody
+
+
+    def _deserialize(self, params):
+        self._StatusCode = params.get("StatusCode")
+        self._ResponseBody = params.get("ResponseBody")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PrometheusInstanceGrantInfo(AbstractModel):
     r"""实例的授权信息
 
@@ -36838,6 +37016,57 @@ class PrometheusScrapeJob(AbstractModel):
         self._AgentId = params.get("AgentId")
         self._JobId = params.get("JobId")
         self._Config = params.get("Config")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PrometheusStringKeyValuePair(AbstractModel):
+    r"""Prometheus 通用字符串类型 kv
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 键
+        :type Key: str
+        :param _Value: 值
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        r"""键
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        r"""值
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -856,18 +856,20 @@ class AdaptiveDynamicStreamingTaskInput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: 转自适应码流模板 ID。
+        :param _Definition: <p>转自适应码流模板 ID。</p>
         :type Definition: int
-        :param _WatermarkSet: 水印列表，支持多张图片或文字水印，最大可支持 10 张。
+        :param _WatermarkSet: <p>水印列表，支持多张图片或文字水印，最大可支持 10 张。</p>
         :type WatermarkSet: list of WatermarkInput
-        :param _TraceWatermark: 溯源水印。
+        :param _TraceWatermark: <p>溯源水印。</p>
         :type TraceWatermark: :class:`tencentcloud.vod.v20180717.models.TraceWatermarkInput`
-        :param _CopyRightWatermark: 版权水印。
+        :param _CopyRightWatermark: <p>版权水印。</p>
         :type CopyRightWatermark: :class:`tencentcloud.vod.v20180717.models.CopyRightWatermarkInput`
-        :param _BlindWatermark: 数字水印。
+        :param _BlindWatermark: <p>数字水印。</p>
         :type BlindWatermark: :class:`tencentcloud.vod.v20180717.models.BlindWatermarkInput`
-        :param _SubtitleSet: 字幕列表，元素为字幕 ID，支持多个字幕，最大可支持16个。
+        :param _SubtitleSet: <p>外挂字幕列表，元素为字幕 ID，支持多个字幕，最大可支持16个。</p>
         :type SubtitleSet: list of str
+        :param _SubtitleInfoSet: <p>字幕压制信息列表。最大可支持 2 个。</p>
+        :type SubtitleInfoSet: list of SubtitleInfoInput
         """
         self._Definition = None
         self._WatermarkSet = None
@@ -875,10 +877,11 @@ class AdaptiveDynamicStreamingTaskInput(AbstractModel):
         self._CopyRightWatermark = None
         self._BlindWatermark = None
         self._SubtitleSet = None
+        self._SubtitleInfoSet = None
 
     @property
     def Definition(self):
-        r"""转自适应码流模板 ID。
+        r"""<p>转自适应码流模板 ID。</p>
         :rtype: int
         """
         return self._Definition
@@ -889,7 +892,7 @@ class AdaptiveDynamicStreamingTaskInput(AbstractModel):
 
     @property
     def WatermarkSet(self):
-        r"""水印列表，支持多张图片或文字水印，最大可支持 10 张。
+        r"""<p>水印列表，支持多张图片或文字水印，最大可支持 10 张。</p>
         :rtype: list of WatermarkInput
         """
         return self._WatermarkSet
@@ -900,7 +903,7 @@ class AdaptiveDynamicStreamingTaskInput(AbstractModel):
 
     @property
     def TraceWatermark(self):
-        r"""溯源水印。
+        r"""<p>溯源水印。</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.TraceWatermarkInput`
         """
         return self._TraceWatermark
@@ -911,7 +914,7 @@ class AdaptiveDynamicStreamingTaskInput(AbstractModel):
 
     @property
     def CopyRightWatermark(self):
-        r"""版权水印。
+        r"""<p>版权水印。</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.CopyRightWatermarkInput`
         """
         return self._CopyRightWatermark
@@ -922,7 +925,7 @@ class AdaptiveDynamicStreamingTaskInput(AbstractModel):
 
     @property
     def BlindWatermark(self):
-        r"""数字水印。
+        r"""<p>数字水印。</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.BlindWatermarkInput`
         """
         return self._BlindWatermark
@@ -933,7 +936,7 @@ class AdaptiveDynamicStreamingTaskInput(AbstractModel):
 
     @property
     def SubtitleSet(self):
-        r"""字幕列表，元素为字幕 ID，支持多个字幕，最大可支持16个。
+        r"""<p>外挂字幕列表，元素为字幕 ID，支持多个字幕，最大可支持16个。</p>
         :rtype: list of str
         """
         return self._SubtitleSet
@@ -941,6 +944,17 @@ class AdaptiveDynamicStreamingTaskInput(AbstractModel):
     @SubtitleSet.setter
     def SubtitleSet(self, SubtitleSet):
         self._SubtitleSet = SubtitleSet
+
+    @property
+    def SubtitleInfoSet(self):
+        r"""<p>字幕压制信息列表。最大可支持 2 个。</p>
+        :rtype: list of SubtitleInfoInput
+        """
+        return self._SubtitleInfoSet
+
+    @SubtitleInfoSet.setter
+    def SubtitleInfoSet(self, SubtitleInfoSet):
+        self._SubtitleInfoSet = SubtitleInfoSet
 
 
     def _deserialize(self, params):
@@ -961,6 +975,12 @@ class AdaptiveDynamicStreamingTaskInput(AbstractModel):
             self._BlindWatermark = BlindWatermarkInput()
             self._BlindWatermark._deserialize(params.get("BlindWatermark"))
         self._SubtitleSet = params.get("SubtitleSet")
+        if params.get("SubtitleInfoSet") is not None:
+            self._SubtitleInfoSet = []
+            for item in params.get("SubtitleInfoSet"):
+                obj = SubtitleInfoInput()
+                obj._deserialize(item)
+                self._SubtitleInfoSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -84368,6 +84388,312 @@ class SubtitleFormatsOperation(AbstractModel):
         
 
 
+class SubtitleInfoInput(AbstractModel):
+    r"""字幕压制输入信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>字幕 ID。</p>
+        :type Id: str
+        :param _FontType: <p>字体类型。</p><p>枚举值：</p><ul><li>hei.ttf： 黑体</li><li>song.ttf： 宋体</li><li>kai.ttf（推荐）或 simkai.ttf： 楷体</li><li>msyh.ttf： 微软雅黑</li><li>msyhbd.ttf： 微软雅黑加粗</li><li>hkjgt.ttf： 华康金刚体</li><li>dhttx.ttf： 典黑体特细</li><li>xqgdzt.ttf： 喜鹊古字典体</li><li>qpcyt.ttf： 巧拼超圆体</li><li>arial.ttf： 仅支持英文</li><li>dinalternate.ttf： DIN Alternate Bold</li><li>helveticalt.ttf： Helvetica</li><li>helveticains.ttf： Helvetica Inserat</li><li>trajanpro.ttf： TrajanPro-Bold</li><li>korean.ttf： 韩语</li><li>japanese.ttf： 日语</li><li>thai.ttf： 泰语</li><li>roboto.ttf： Roboto</li><li>notosans.ttf： NotoSans</li><li>notosansthai.ttf： 泰语NotoSansThai</li><li>sarabun.ttf： 泰语Sarabun</li><li>kanit.ttf： 泰语Kanit</li><li>charmonman.ttf： 泰语Charmonman</li><li>notonaskharabic.ttf： 阿拉伯语NotoNaskhArabic</li><li>notosansdevanagari.ttf： 印度语NotoSansDevanagari</li><li>notosanstc.ttf： 粤语思源黑体NotoSansTC</li><li>notosanskr.ttf： 韩语NotoSansKR</li><li>gothica1.ttf： 韩语GothicA1</li><li>nanummyeongjo.ttf： 韩语NanumMyeongjo</li><li>notosansjp.ttf： 日语NotoSansJP</li><li>notoserifjp.ttf： 日语NotoSerifJP</li><li>shipporimincho.ttf： 日语ShipporiMincho</li></ul><p>默认值：hei.ttf 黑体</p>
+        :type FontType: str
+        :param _FontSize: <p>字体大小，不指定则以字幕文件中为准。支持像素和百分比格式：</p><ul><li>像素：Npx，N范围：(0,4096]。</li><li>百分比：N%，N范围：(0,100]；例如，10%表示字幕字体大小=10%*源视频高度。不填且字幕文件中无设置时，默认源视频高度的5%。</li></ul>
+        :type FontSize: str
+        :param _FontColor: <p>字体颜色，格式：0xRRGGBB。</p><p>默认值：0xFFFFFF（白色）。</p>
+        :type FontColor: str
+        :param _FontAlpha: <p>文字透明度。取值范围：(0, 1]。</p><ul><li>0：完全透明；</li><li>1：完全不透明</li></ul><p>默认值：1</p>
+        :type FontAlpha: float
+        :param _YPos: <p>字幕y轴坐标位置，指定此参数会忽略字幕文件自带坐标；支持像素和百分比格式：</p><ul><li>像素：Npx，N范围：[0,4096]。</li><li>百分比：N%，N范围：[0,100]；例如10%表示字幕y坐标=10%<em>源视频高度。默认值：源视频高度</em>4%。<br>注意：坐标轴原点在源视频中轴线底部，字幕基准点在字幕中轴线底部，参考下图：<img src="https://ie-mps-1258344699.cos.ap-nanjing.tencentcos.cn/common/cloud/mps-demo/102_ai_subtitle/subtitle_style.png" alt="image"></li></ul>
+        :type YPos: str
+        :param _BoardY: <p>字幕背景底板的y轴坐标位置；支持像素和百分比格式：</p><ul><li>像素：Npx，N范围：[0,4096]。</li><li>百分比：N%，N范围：[0,100]；例如10%表示字幕背景底板y坐标=10%*源视频高度。不传表示不开启字幕背景底板。<br>注意：坐标轴原点位于源视频的中轴线底部，字幕背景底板的基准点在其中轴线底部，参考下图：<img src="https://ie-mps-1258344699.cos.ap-nanjing.tencentcos.cn/common/cloud/mps-demo/102_ai_subtitle/subtitle_style.png" alt="image"></li></ul>
+        :type BoardY: str
+        :param _BoardWidth: <p>底板的宽度，正整数。</p><ul><li>像素：Npx，N 取值范围：[0,4096]。</li><li>百分比：N%，N 取值范围：[0, 100]。开启底板且不填此值时，默认源视频宽像素的90%。</li></ul>
+        :type BoardWidth: str
+        :param _BoardHeight: <p>底板的高度，正整数。</p><ul><li>像素：Npx，N 取值范围：[0,4096]。</li><li>百分比：N%，N 取值范围：[0, 100]。开启底板且不填此值时，默认为源视频高像素的15%。</li></ul>
+        :type BoardHeight: str
+        :param _BoardColor: <p>底板颜色。格式：0xRRGGBB。</p><p>默认值：0x000000（黑色）。</p>
+        :type BoardColor: str
+        :param _BoardAlpha: <p>字幕背景板透明度，取值范围：[0, 1]。</p><ul><li>0：完全透明；</li><li>1：完全不透明。</li></ul><p>默认值：0.8。</p>
+        :type BoardAlpha: float
+        :param _Alignment: <p>对齐方式。</p><p>枚举值：</p><ul><li>top： 顶部对齐，字幕顶部按位置固定，底部随行数变化。 </li><li>bottom： 底部对齐，字幕底部按位置固定，顶部随行数变化。 </li></ul><p>默认值：bottom</p>
+        :type Alignment: str
+        :param _OutlineWidth: <p>描边宽度。浮点数。</p><ul><li>像素：Npx，N 取值范围： [0, 1000]。</li><li>百分比：N%，N 取值范围：[0, 100]。</li></ul><p>不填默认源视频高度的0.3%。</p>
+        :type OutlineWidth: str
+        :param _OutlineColor: <p>描边颜色。格式：0xRRGGBB。</p><p>默认值：0x000000（黑色）。</p>
+        :type OutlineColor: str
+        :param _OutlineAlpha: <p>描边透明度。(0，1] 正浮点数。</p><ul><li>0：完全透明；</li><li>1：完全不透明。</li></ul><p>默认值：1</p>
+        :type OutlineAlpha: float
+        :param _ShadowWidth: <p>阴影宽度。浮点数。</p><ul><li>像素：Npx，N 取值范围： [0, 1000]。</li><li>百分比：N%，N 取值范围：[0, 100]。不填默认无阴影。</li></ul>
+        :type ShadowWidth: str
+        :param _ShadowColor: <p>阴影颜色。格式：0xRRGGBB。</p><p>默认值：0x000000（黑色），有设置阴影的情况下。</p>
+        :type ShadowColor: str
+        :param _ShadowAlpha: <p>阴影透明度。(0，1] 正浮点数。</p><ul><li>0：完全透明；</li><li>1：完全不透明。</li></ul><p>默认值：1，完全不透明，有设置阴影的情况下。</p>
+        :type ShadowAlpha: float
+        :param _LineSpacing: <p>行间距。正整数。</p><ul><li>像素：Npx，N 取值范围： [0, 1000]。</li><li>百分比：N%，N 取值范围：[0, 100]。</li></ul><p>默认值：0</p>
+        :type LineSpacing: str
+        """
+        self._Id = None
+        self._FontType = None
+        self._FontSize = None
+        self._FontColor = None
+        self._FontAlpha = None
+        self._YPos = None
+        self._BoardY = None
+        self._BoardWidth = None
+        self._BoardHeight = None
+        self._BoardColor = None
+        self._BoardAlpha = None
+        self._Alignment = None
+        self._OutlineWidth = None
+        self._OutlineColor = None
+        self._OutlineAlpha = None
+        self._ShadowWidth = None
+        self._ShadowColor = None
+        self._ShadowAlpha = None
+        self._LineSpacing = None
+
+    @property
+    def Id(self):
+        r"""<p>字幕 ID。</p>
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def FontType(self):
+        r"""<p>字体类型。</p><p>枚举值：</p><ul><li>hei.ttf： 黑体</li><li>song.ttf： 宋体</li><li>kai.ttf（推荐）或 simkai.ttf： 楷体</li><li>msyh.ttf： 微软雅黑</li><li>msyhbd.ttf： 微软雅黑加粗</li><li>hkjgt.ttf： 华康金刚体</li><li>dhttx.ttf： 典黑体特细</li><li>xqgdzt.ttf： 喜鹊古字典体</li><li>qpcyt.ttf： 巧拼超圆体</li><li>arial.ttf： 仅支持英文</li><li>dinalternate.ttf： DIN Alternate Bold</li><li>helveticalt.ttf： Helvetica</li><li>helveticains.ttf： Helvetica Inserat</li><li>trajanpro.ttf： TrajanPro-Bold</li><li>korean.ttf： 韩语</li><li>japanese.ttf： 日语</li><li>thai.ttf： 泰语</li><li>roboto.ttf： Roboto</li><li>notosans.ttf： NotoSans</li><li>notosansthai.ttf： 泰语NotoSansThai</li><li>sarabun.ttf： 泰语Sarabun</li><li>kanit.ttf： 泰语Kanit</li><li>charmonman.ttf： 泰语Charmonman</li><li>notonaskharabic.ttf： 阿拉伯语NotoNaskhArabic</li><li>notosansdevanagari.ttf： 印度语NotoSansDevanagari</li><li>notosanstc.ttf： 粤语思源黑体NotoSansTC</li><li>notosanskr.ttf： 韩语NotoSansKR</li><li>gothica1.ttf： 韩语GothicA1</li><li>nanummyeongjo.ttf： 韩语NanumMyeongjo</li><li>notosansjp.ttf： 日语NotoSansJP</li><li>notoserifjp.ttf： 日语NotoSerifJP</li><li>shipporimincho.ttf： 日语ShipporiMincho</li></ul><p>默认值：hei.ttf 黑体</p>
+        :rtype: str
+        """
+        return self._FontType
+
+    @FontType.setter
+    def FontType(self, FontType):
+        self._FontType = FontType
+
+    @property
+    def FontSize(self):
+        r"""<p>字体大小，不指定则以字幕文件中为准。支持像素和百分比格式：</p><ul><li>像素：Npx，N范围：(0,4096]。</li><li>百分比：N%，N范围：(0,100]；例如，10%表示字幕字体大小=10%*源视频高度。不填且字幕文件中无设置时，默认源视频高度的5%。</li></ul>
+        :rtype: str
+        """
+        return self._FontSize
+
+    @FontSize.setter
+    def FontSize(self, FontSize):
+        self._FontSize = FontSize
+
+    @property
+    def FontColor(self):
+        r"""<p>字体颜色，格式：0xRRGGBB。</p><p>默认值：0xFFFFFF（白色）。</p>
+        :rtype: str
+        """
+        return self._FontColor
+
+    @FontColor.setter
+    def FontColor(self, FontColor):
+        self._FontColor = FontColor
+
+    @property
+    def FontAlpha(self):
+        r"""<p>文字透明度。取值范围：(0, 1]。</p><ul><li>0：完全透明；</li><li>1：完全不透明</li></ul><p>默认值：1</p>
+        :rtype: float
+        """
+        return self._FontAlpha
+
+    @FontAlpha.setter
+    def FontAlpha(self, FontAlpha):
+        self._FontAlpha = FontAlpha
+
+    @property
+    def YPos(self):
+        r"""<p>字幕y轴坐标位置，指定此参数会忽略字幕文件自带坐标；支持像素和百分比格式：</p><ul><li>像素：Npx，N范围：[0,4096]。</li><li>百分比：N%，N范围：[0,100]；例如10%表示字幕y坐标=10%<em>源视频高度。默认值：源视频高度</em>4%。<br>注意：坐标轴原点在源视频中轴线底部，字幕基准点在字幕中轴线底部，参考下图：<img src="https://ie-mps-1258344699.cos.ap-nanjing.tencentcos.cn/common/cloud/mps-demo/102_ai_subtitle/subtitle_style.png" alt="image"></li></ul>
+        :rtype: str
+        """
+        return self._YPos
+
+    @YPos.setter
+    def YPos(self, YPos):
+        self._YPos = YPos
+
+    @property
+    def BoardY(self):
+        r"""<p>字幕背景底板的y轴坐标位置；支持像素和百分比格式：</p><ul><li>像素：Npx，N范围：[0,4096]。</li><li>百分比：N%，N范围：[0,100]；例如10%表示字幕背景底板y坐标=10%*源视频高度。不传表示不开启字幕背景底板。<br>注意：坐标轴原点位于源视频的中轴线底部，字幕背景底板的基准点在其中轴线底部，参考下图：<img src="https://ie-mps-1258344699.cos.ap-nanjing.tencentcos.cn/common/cloud/mps-demo/102_ai_subtitle/subtitle_style.png" alt="image"></li></ul>
+        :rtype: str
+        """
+        return self._BoardY
+
+    @BoardY.setter
+    def BoardY(self, BoardY):
+        self._BoardY = BoardY
+
+    @property
+    def BoardWidth(self):
+        r"""<p>底板的宽度，正整数。</p><ul><li>像素：Npx，N 取值范围：[0,4096]。</li><li>百分比：N%，N 取值范围：[0, 100]。开启底板且不填此值时，默认源视频宽像素的90%。</li></ul>
+        :rtype: str
+        """
+        return self._BoardWidth
+
+    @BoardWidth.setter
+    def BoardWidth(self, BoardWidth):
+        self._BoardWidth = BoardWidth
+
+    @property
+    def BoardHeight(self):
+        r"""<p>底板的高度，正整数。</p><ul><li>像素：Npx，N 取值范围：[0,4096]。</li><li>百分比：N%，N 取值范围：[0, 100]。开启底板且不填此值时，默认为源视频高像素的15%。</li></ul>
+        :rtype: str
+        """
+        return self._BoardHeight
+
+    @BoardHeight.setter
+    def BoardHeight(self, BoardHeight):
+        self._BoardHeight = BoardHeight
+
+    @property
+    def BoardColor(self):
+        r"""<p>底板颜色。格式：0xRRGGBB。</p><p>默认值：0x000000（黑色）。</p>
+        :rtype: str
+        """
+        return self._BoardColor
+
+    @BoardColor.setter
+    def BoardColor(self, BoardColor):
+        self._BoardColor = BoardColor
+
+    @property
+    def BoardAlpha(self):
+        r"""<p>字幕背景板透明度，取值范围：[0, 1]。</p><ul><li>0：完全透明；</li><li>1：完全不透明。</li></ul><p>默认值：0.8。</p>
+        :rtype: float
+        """
+        return self._BoardAlpha
+
+    @BoardAlpha.setter
+    def BoardAlpha(self, BoardAlpha):
+        self._BoardAlpha = BoardAlpha
+
+    @property
+    def Alignment(self):
+        r"""<p>对齐方式。</p><p>枚举值：</p><ul><li>top： 顶部对齐，字幕顶部按位置固定，底部随行数变化。 </li><li>bottom： 底部对齐，字幕底部按位置固定，顶部随行数变化。 </li></ul><p>默认值：bottom</p>
+        :rtype: str
+        """
+        return self._Alignment
+
+    @Alignment.setter
+    def Alignment(self, Alignment):
+        self._Alignment = Alignment
+
+    @property
+    def OutlineWidth(self):
+        r"""<p>描边宽度。浮点数。</p><ul><li>像素：Npx，N 取值范围： [0, 1000]。</li><li>百分比：N%，N 取值范围：[0, 100]。</li></ul><p>不填默认源视频高度的0.3%。</p>
+        :rtype: str
+        """
+        return self._OutlineWidth
+
+    @OutlineWidth.setter
+    def OutlineWidth(self, OutlineWidth):
+        self._OutlineWidth = OutlineWidth
+
+    @property
+    def OutlineColor(self):
+        r"""<p>描边颜色。格式：0xRRGGBB。</p><p>默认值：0x000000（黑色）。</p>
+        :rtype: str
+        """
+        return self._OutlineColor
+
+    @OutlineColor.setter
+    def OutlineColor(self, OutlineColor):
+        self._OutlineColor = OutlineColor
+
+    @property
+    def OutlineAlpha(self):
+        r"""<p>描边透明度。(0，1] 正浮点数。</p><ul><li>0：完全透明；</li><li>1：完全不透明。</li></ul><p>默认值：1</p>
+        :rtype: float
+        """
+        return self._OutlineAlpha
+
+    @OutlineAlpha.setter
+    def OutlineAlpha(self, OutlineAlpha):
+        self._OutlineAlpha = OutlineAlpha
+
+    @property
+    def ShadowWidth(self):
+        r"""<p>阴影宽度。浮点数。</p><ul><li>像素：Npx，N 取值范围： [0, 1000]。</li><li>百分比：N%，N 取值范围：[0, 100]。不填默认无阴影。</li></ul>
+        :rtype: str
+        """
+        return self._ShadowWidth
+
+    @ShadowWidth.setter
+    def ShadowWidth(self, ShadowWidth):
+        self._ShadowWidth = ShadowWidth
+
+    @property
+    def ShadowColor(self):
+        r"""<p>阴影颜色。格式：0xRRGGBB。</p><p>默认值：0x000000（黑色），有设置阴影的情况下。</p>
+        :rtype: str
+        """
+        return self._ShadowColor
+
+    @ShadowColor.setter
+    def ShadowColor(self, ShadowColor):
+        self._ShadowColor = ShadowColor
+
+    @property
+    def ShadowAlpha(self):
+        r"""<p>阴影透明度。(0，1] 正浮点数。</p><ul><li>0：完全透明；</li><li>1：完全不透明。</li></ul><p>默认值：1，完全不透明，有设置阴影的情况下。</p>
+        :rtype: float
+        """
+        return self._ShadowAlpha
+
+    @ShadowAlpha.setter
+    def ShadowAlpha(self, ShadowAlpha):
+        self._ShadowAlpha = ShadowAlpha
+
+    @property
+    def LineSpacing(self):
+        r"""<p>行间距。正整数。</p><ul><li>像素：Npx，N 取值范围： [0, 1000]。</li><li>百分比：N%，N 取值范围：[0, 100]。</li></ul><p>默认值：0</p>
+        :rtype: str
+        """
+        return self._LineSpacing
+
+    @LineSpacing.setter
+    def LineSpacing(self, LineSpacing):
+        self._LineSpacing = LineSpacing
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._FontType = params.get("FontType")
+        self._FontSize = params.get("FontSize")
+        self._FontColor = params.get("FontColor")
+        self._FontAlpha = params.get("FontAlpha")
+        self._YPos = params.get("YPos")
+        self._BoardY = params.get("BoardY")
+        self._BoardWidth = params.get("BoardWidth")
+        self._BoardHeight = params.get("BoardHeight")
+        self._BoardColor = params.get("BoardColor")
+        self._BoardAlpha = params.get("BoardAlpha")
+        self._Alignment = params.get("Alignment")
+        self._OutlineWidth = params.get("OutlineWidth")
+        self._OutlineColor = params.get("OutlineColor")
+        self._OutlineAlpha = params.get("OutlineAlpha")
+        self._ShadowWidth = params.get("ShadowWidth")
+        self._ShadowColor = params.get("ShadowColor")
+        self._ShadowAlpha = params.get("ShadowAlpha")
+        self._LineSpacing = params.get("LineSpacing")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SuperResolutionInfo(AbstractModel):
     r"""画面超分控制参数
 
@@ -86532,30 +86858,26 @@ class TranscodeTaskInput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: 视频转码模板 ID。
+        :param _Definition: <p>视频转码模板 ID。</p>
         :type Definition: int
-        :param _WatermarkSet: 水印列表，支持多张图片或文字水印，最大可支持 10 张。
+        :param _WatermarkSet: <p>水印列表，支持多张图片或文字水印，最大可支持 10 张。</p>
         :type WatermarkSet: list of WatermarkInput
-        :param _TraceWatermark: 溯源水印。
+        :param _TraceWatermark: <p>溯源水印。</p>
         :type TraceWatermark: :class:`tencentcloud.vod.v20180717.models.TraceWatermarkInput`
-        :param _CopyRightWatermark: 版权水印。
+        :param _CopyRightWatermark: <p>版权水印。</p>
         :type CopyRightWatermark: :class:`tencentcloud.vod.v20180717.models.CopyRightWatermarkInput`
-        :param _BlindWatermark: 数字水印。
+        :param _BlindWatermark: <p>数字水印。</p>
         :type BlindWatermark: :class:`tencentcloud.vod.v20180717.models.BlindWatermarkInput`
-        :param _MosaicSet: 马赛克列表，最大可支持 10 张。
+        :param _MosaicSet: <p>马赛克列表，最大可支持 10 张。</p>
         :type MosaicSet: list of MosaicInput
-        :param _HeadTailSet: 片头片尾列表，支持多片头片尾，最大可支持 10 个。
+        :param _HeadTailSet: <p>片头片尾列表，支持多片头片尾，最大可支持 10 个。</p>
         :type HeadTailSet: list of HeadTailTaskInput
-        :param _StartTimeOffset: 转码后的视频的起始时间偏移，单位：秒。
-<li>不填或填0，表示转码后的视频从原始视频的起始位置开始；</li>
-<li>当数值大于0时（假设为 n），表示转码后的视频从原始视频的第 n 秒位置开始；</li>
-<li>当数值小于0时（假设为 -n），表示转码后的视频从原始视频结束 n 秒前的位置开始。</li>
+        :param _StartTimeOffset: <p>转码后的视频的起始时间偏移，单位：秒。</p><li>不填或填0，表示转码后的视频从原始视频的起始位置开始；</li><li>当数值大于0时（假设为 n），表示转码后的视频从原始视频的第 n 秒位置开始；</li><li>当数值小于0时（假设为 -n），表示转码后的视频从原始视频结束 n 秒前的位置开始。</li>
         :type StartTimeOffset: float
-        :param _EndTimeOffset: 转码后视频的终止时间偏移，单位：秒。
-<li>不填或填0，表示转码后的视频持续到原始视频的末尾终止；</li>
-<li>当数值大于0时（假设为 n），表示转码后的视频持续到原始视频第 n 秒时终止；</li>
-<li>当数值小于0时（假设为 -n），表示转码后的视频持续到原始视频结束 n 秒前终止。</li>
+        :param _EndTimeOffset: <p>转码后视频的终止时间偏移，单位：秒。</p><li>不填或填0，表示转码后的视频持续到原始视频的末尾终止；</li><li>当数值大于0时（假设为 n），表示转码后的视频持续到原始视频第 n 秒时终止；</li><li>当数值小于0时（假设为 -n），表示转码后的视频持续到原始视频结束 n 秒前终止。</li>
         :type EndTimeOffset: float
+        :param _SubtitleInfoSet: <p>字幕压制信息列表。最大可支持 2 个。</p>
+        :type SubtitleInfoSet: list of SubtitleInfoInput
         """
         self._Definition = None
         self._WatermarkSet = None
@@ -86566,10 +86888,11 @@ class TranscodeTaskInput(AbstractModel):
         self._HeadTailSet = None
         self._StartTimeOffset = None
         self._EndTimeOffset = None
+        self._SubtitleInfoSet = None
 
     @property
     def Definition(self):
-        r"""视频转码模板 ID。
+        r"""<p>视频转码模板 ID。</p>
         :rtype: int
         """
         return self._Definition
@@ -86580,7 +86903,7 @@ class TranscodeTaskInput(AbstractModel):
 
     @property
     def WatermarkSet(self):
-        r"""水印列表，支持多张图片或文字水印，最大可支持 10 张。
+        r"""<p>水印列表，支持多张图片或文字水印，最大可支持 10 张。</p>
         :rtype: list of WatermarkInput
         """
         return self._WatermarkSet
@@ -86591,7 +86914,7 @@ class TranscodeTaskInput(AbstractModel):
 
     @property
     def TraceWatermark(self):
-        r"""溯源水印。
+        r"""<p>溯源水印。</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.TraceWatermarkInput`
         """
         return self._TraceWatermark
@@ -86602,7 +86925,7 @@ class TranscodeTaskInput(AbstractModel):
 
     @property
     def CopyRightWatermark(self):
-        r"""版权水印。
+        r"""<p>版权水印。</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.CopyRightWatermarkInput`
         """
         return self._CopyRightWatermark
@@ -86613,7 +86936,7 @@ class TranscodeTaskInput(AbstractModel):
 
     @property
     def BlindWatermark(self):
-        r"""数字水印。
+        r"""<p>数字水印。</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.BlindWatermarkInput`
         """
         return self._BlindWatermark
@@ -86624,7 +86947,7 @@ class TranscodeTaskInput(AbstractModel):
 
     @property
     def MosaicSet(self):
-        r"""马赛克列表，最大可支持 10 张。
+        r"""<p>马赛克列表，最大可支持 10 张。</p>
         :rtype: list of MosaicInput
         """
         return self._MosaicSet
@@ -86635,7 +86958,7 @@ class TranscodeTaskInput(AbstractModel):
 
     @property
     def HeadTailSet(self):
-        r"""片头片尾列表，支持多片头片尾，最大可支持 10 个。
+        r"""<p>片头片尾列表，支持多片头片尾，最大可支持 10 个。</p>
         :rtype: list of HeadTailTaskInput
         """
         return self._HeadTailSet
@@ -86646,10 +86969,7 @@ class TranscodeTaskInput(AbstractModel):
 
     @property
     def StartTimeOffset(self):
-        r"""转码后的视频的起始时间偏移，单位：秒。
-<li>不填或填0，表示转码后的视频从原始视频的起始位置开始；</li>
-<li>当数值大于0时（假设为 n），表示转码后的视频从原始视频的第 n 秒位置开始；</li>
-<li>当数值小于0时（假设为 -n），表示转码后的视频从原始视频结束 n 秒前的位置开始。</li>
+        r"""<p>转码后的视频的起始时间偏移，单位：秒。</p><li>不填或填0，表示转码后的视频从原始视频的起始位置开始；</li><li>当数值大于0时（假设为 n），表示转码后的视频从原始视频的第 n 秒位置开始；</li><li>当数值小于0时（假设为 -n），表示转码后的视频从原始视频结束 n 秒前的位置开始。</li>
         :rtype: float
         """
         return self._StartTimeOffset
@@ -86660,10 +86980,7 @@ class TranscodeTaskInput(AbstractModel):
 
     @property
     def EndTimeOffset(self):
-        r"""转码后视频的终止时间偏移，单位：秒。
-<li>不填或填0，表示转码后的视频持续到原始视频的末尾终止；</li>
-<li>当数值大于0时（假设为 n），表示转码后的视频持续到原始视频第 n 秒时终止；</li>
-<li>当数值小于0时（假设为 -n），表示转码后的视频持续到原始视频结束 n 秒前终止。</li>
+        r"""<p>转码后视频的终止时间偏移，单位：秒。</p><li>不填或填0，表示转码后的视频持续到原始视频的末尾终止；</li><li>当数值大于0时（假设为 n），表示转码后的视频持续到原始视频第 n 秒时终止；</li><li>当数值小于0时（假设为 -n），表示转码后的视频持续到原始视频结束 n 秒前终止。</li>
         :rtype: float
         """
         return self._EndTimeOffset
@@ -86671,6 +86988,17 @@ class TranscodeTaskInput(AbstractModel):
     @EndTimeOffset.setter
     def EndTimeOffset(self, EndTimeOffset):
         self._EndTimeOffset = EndTimeOffset
+
+    @property
+    def SubtitleInfoSet(self):
+        r"""<p>字幕压制信息列表。最大可支持 2 个。</p>
+        :rtype: list of SubtitleInfoInput
+        """
+        return self._SubtitleInfoSet
+
+    @SubtitleInfoSet.setter
+    def SubtitleInfoSet(self, SubtitleInfoSet):
+        self._SubtitleInfoSet = SubtitleInfoSet
 
 
     def _deserialize(self, params):
@@ -86704,6 +87032,12 @@ class TranscodeTaskInput(AbstractModel):
                 self._HeadTailSet.append(obj)
         self._StartTimeOffset = params.get("StartTimeOffset")
         self._EndTimeOffset = params.get("EndTimeOffset")
+        if params.get("SubtitleInfoSet") is not None:
+            self._SubtitleInfoSet = []
+            for item in params.get("SubtitleInfoSet"):
+                obj = SubtitleInfoInput()
+                obj._deserialize(item)
+                self._SubtitleInfoSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

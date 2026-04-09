@@ -28035,7 +28035,7 @@ class DescribeVoucherInfoRequest(AbstractModel):
         :type Limit: int
         :param _Offset: <p>第多少页，默认是1</p>
         :type Offset: int
-        :param _Status: <p>券状态：待使用：unUsed，已使用：&nbsp;used，已发货：delivered，已作废：&nbsp;cancel，已过期：overdue</p>
+        :param _Status: <p>券状态：待使用：unUsed，已使用：xa0used，已发货：delivered，已作废：xa0cancel，已过期：overdue</p>
         :type Status: str
         :param _VoucherId: <p>代金券id</p>
         :type VoucherId: str
@@ -28129,7 +28129,7 @@ class DescribeVoucherInfoRequest(AbstractModel):
 
     @property
     def Status(self):
-        r"""<p>券状态：待使用：unUsed，已使用：&nbsp;used，已发货：delivered，已作废：&nbsp;cancel，已过期：overdue</p>
+        r"""<p>券状态：待使用：unUsed，已使用：xa0used，已发货：delivered，已作废：xa0cancel，已过期：overdue</p>
         :rtype: str
         """
         return self._Status
@@ -28418,12 +28418,15 @@ class DescribeVoucherInfoResponse(AbstractModel):
         :type TotalBalance: int
         :param _VoucherInfos: <p>代金券相关信息</p>
         :type VoucherInfos: list of VoucherInfos
+        :param _Unit: <p>接口返回的金额字段单位</p><p>默认值：micro</p><p>金额单位：micro（微分）<br>代金券发放和使用按8位高精度处理，所以金额单位默认为micro（微分），如需CNY或USD请按以下公式换算<br>CNY：1 micro = 10⁻⁸ 元<br>USD：1 micro = 10⁻⁸ 美元</p>
+        :type Unit: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
         self._TotalBalance = None
         self._VoucherInfos = None
+        self._Unit = None
         self._RequestId = None
 
     @property
@@ -28460,6 +28463,17 @@ class DescribeVoucherInfoResponse(AbstractModel):
         self._VoucherInfos = VoucherInfos
 
     @property
+    def Unit(self):
+        r"""<p>接口返回的金额字段单位</p><p>默认值：micro</p><p>金额单位：micro（微分）<br>代金券发放和使用按8位高精度处理，所以金额单位默认为micro（微分），如需CNY或USD请按以下公式换算<br>CNY：1 micro = 10⁻⁸ 元<br>USD：1 micro = 10⁻⁸ 美元</p>
+        :rtype: str
+        """
+        return self._Unit
+
+    @Unit.setter
+    def Unit(self, Unit):
+        self._Unit = Unit
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -28480,6 +28494,7 @@ class DescribeVoucherInfoResponse(AbstractModel):
                 obj = VoucherInfos()
                 obj._deserialize(item)
                 self._VoucherInfos.append(obj)
+        self._Unit = params.get("Unit")
         self._RequestId = params.get("RequestId")
 
 

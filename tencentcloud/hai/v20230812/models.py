@@ -537,26 +537,29 @@ class ContainerInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Image: 镜像相关信息
+        :param _Image: <p>镜像相关信息</p>
         :type Image: :class:`tencentcloud.hai.v20230812.models.ImageInfo`
-        :param _Port: 服务监听端口
+        :param _Port: <p>服务监听端口</p>
         :type Port: str
-        :param _Scripts: 启动命令
+        :param _Scripts: <p>启动命令</p>
         :type Scripts: list of str
-        :param _Envs: 环境变量列表
+        :param _Envs: <p>环境变量列表</p>
         :type Envs: list of EnvParam
-        :param _Storages: 存储挂载配置
+        :param _Storages: <p>存储挂载配置</p>
         :type Storages: list of StorageInfo
+        :param _Probe: <p>探针信息</p>
+        :type Probe: :class:`tencentcloud.hai.v20230812.models.ProbeInfo`
         """
         self._Image = None
         self._Port = None
         self._Scripts = None
         self._Envs = None
         self._Storages = None
+        self._Probe = None
 
     @property
     def Image(self):
-        r"""镜像相关信息
+        r"""<p>镜像相关信息</p>
         :rtype: :class:`tencentcloud.hai.v20230812.models.ImageInfo`
         """
         return self._Image
@@ -567,7 +570,7 @@ class ContainerInfo(AbstractModel):
 
     @property
     def Port(self):
-        r"""服务监听端口
+        r"""<p>服务监听端口</p>
         :rtype: str
         """
         return self._Port
@@ -578,7 +581,7 @@ class ContainerInfo(AbstractModel):
 
     @property
     def Scripts(self):
-        r"""启动命令
+        r"""<p>启动命令</p>
         :rtype: list of str
         """
         return self._Scripts
@@ -589,7 +592,7 @@ class ContainerInfo(AbstractModel):
 
     @property
     def Envs(self):
-        r"""环境变量列表
+        r"""<p>环境变量列表</p>
         :rtype: list of EnvParam
         """
         return self._Envs
@@ -600,7 +603,7 @@ class ContainerInfo(AbstractModel):
 
     @property
     def Storages(self):
-        r"""存储挂载配置
+        r"""<p>存储挂载配置</p>
         :rtype: list of StorageInfo
         """
         return self._Storages
@@ -608,6 +611,17 @@ class ContainerInfo(AbstractModel):
     @Storages.setter
     def Storages(self, Storages):
         self._Storages = Storages
+
+    @property
+    def Probe(self):
+        r"""<p>探针信息</p>
+        :rtype: :class:`tencentcloud.hai.v20230812.models.ProbeInfo`
+        """
+        return self._Probe
+
+    @Probe.setter
+    def Probe(self, Probe):
+        self._Probe = Probe
 
 
     def _deserialize(self, params):
@@ -628,6 +642,9 @@ class ContainerInfo(AbstractModel):
                 obj = StorageInfo()
                 obj._deserialize(item)
                 self._Storages.append(obj)
+        if params.get("Probe") is not None:
+            self._Probe = ProbeInfo()
+            self._Probe._deserialize(params.get("Probe"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -754,17 +771,17 @@ class CreateInferServiceByTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TemplateId: 模版ID
+        :param _TemplateId: <p>模版ID</p>
         :type TemplateId: str
-        :param _ServiceName: 服务名称
+        :param _ServiceName: <p>服务名称</p>
         :type ServiceName: str
-        :param _Replicas: 副本数
+        :param _Replicas: <p>副本数</p>
         :type Replicas: int
-        :param _ServiceChargeType: 付费方式，POSTPAID_BY_HOUR按量后付费
+        :param _ServiceChargeType: <p>付费方式，POSTPAID_BY_HOUR按量后付费</p>
         :type ServiceChargeType: str
-        :param _HyperParam: 描述了服务的超参数配置
+        :param _HyperParam: <p>描述了服务的超参数配置</p>
         :type HyperParam: :class:`tencentcloud.hai.v20230812.models.HyperParam`
-        :param _NetworkSetting: 网络设置
+        :param _NetworkSetting: <p>网络设置</p>
         :type NetworkSetting: :class:`tencentcloud.hai.v20230812.models.NetworkSetting`
         """
         self._TemplateId = None
@@ -776,7 +793,7 @@ class CreateInferServiceByTemplateRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        r"""模版ID
+        r"""<p>模版ID</p>
         :rtype: str
         """
         return self._TemplateId
@@ -787,7 +804,7 @@ class CreateInferServiceByTemplateRequest(AbstractModel):
 
     @property
     def ServiceName(self):
-        r"""服务名称
+        r"""<p>服务名称</p>
         :rtype: str
         """
         return self._ServiceName
@@ -798,7 +815,7 @@ class CreateInferServiceByTemplateRequest(AbstractModel):
 
     @property
     def Replicas(self):
-        r"""副本数
+        r"""<p>副本数</p>
         :rtype: int
         """
         return self._Replicas
@@ -809,7 +826,7 @@ class CreateInferServiceByTemplateRequest(AbstractModel):
 
     @property
     def ServiceChargeType(self):
-        r"""付费方式，POSTPAID_BY_HOUR按量后付费
+        r"""<p>付费方式，POSTPAID_BY_HOUR按量后付费</p>
         :rtype: str
         """
         return self._ServiceChargeType
@@ -820,7 +837,7 @@ class CreateInferServiceByTemplateRequest(AbstractModel):
 
     @property
     def HyperParam(self):
-        r"""描述了服务的超参数配置
+        r"""<p>描述了服务的超参数配置</p>
         :rtype: :class:`tencentcloud.hai.v20230812.models.HyperParam`
         """
         return self._HyperParam
@@ -831,7 +848,7 @@ class CreateInferServiceByTemplateRequest(AbstractModel):
 
     @property
     def NetworkSetting(self):
-        r"""网络设置
+        r"""<p>网络设置</p>
         :rtype: :class:`tencentcloud.hai.v20230812.models.NetworkSetting`
         """
         return self._NetworkSetting
@@ -869,7 +886,7 @@ class CreateInferServiceByTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ServiceId: 服务ID
+        :param _ServiceId: <p>服务ID</p>
         :type ServiceId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -879,7 +896,7 @@ class CreateInferServiceByTemplateResponse(AbstractModel):
 
     @property
     def ServiceId(self):
-        r"""服务ID
+        r"""<p>服务ID</p>
         :rtype: str
         """
         return self._ServiceId
@@ -2747,6 +2764,57 @@ class HiCacheInfo(AbstractModel):
         
 
 
+class HttpConfig(AbstractModel):
+    r"""http配置信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Path: <p>指定健康检查的URL路径</p>
+        :type Path: str
+        :param _Port: <p>指定健康检查的端口</p>
+        :type Port: int
+        """
+        self._Path = None
+        self._Port = None
+
+    @property
+    def Path(self):
+        r"""<p>指定健康检查的URL路径</p>
+        :rtype: str
+        """
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+    @property
+    def Port(self):
+        r"""<p>指定健康检查的端口</p>
+        :rtype: int
+        """
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+
+    def _deserialize(self, params):
+        self._Path = params.get("Path")
+        self._Port = params.get("Port")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class HyperParam(AbstractModel):
     r"""描述了服务的超参数配置
 
@@ -4394,6 +4462,191 @@ class Price(AbstractModel):
                 obj = ItemPriceDetail()
                 obj._deserialize(item)
                 self._PriceDetailSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProbeConfig(AbstractModel):
+    r"""探针配置信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HttpGet: <p>HTTP GET请求进行健康检查</p>
+        :type HttpGet: :class:`tencentcloud.hai.v20230812.models.HttpConfig`
+        :param _InitialDelaySeconds: <p>容器启动后，等待多少秒开始第一次探测</p>
+        :type InitialDelaySeconds: int
+        :param _PeriodSeconds: <p>每次执行探测的间隔时间（秒）</p>
+        :type PeriodSeconds: int
+        :param _TimeoutSeconds: <p>每次探测等待响应的超时时间（秒）</p>
+        :type TimeoutSeconds: int
+        :param _SuccessThreshold: <p>探测失败后，最小连续成功次数才被认为成功</p>
+        :type SuccessThreshold: int
+        :param _FailureThreshold: <p>探测失败后，Kubernetes的重试次数</p>
+        :type FailureThreshold: int
+        """
+        self._HttpGet = None
+        self._InitialDelaySeconds = None
+        self._PeriodSeconds = None
+        self._TimeoutSeconds = None
+        self._SuccessThreshold = None
+        self._FailureThreshold = None
+
+    @property
+    def HttpGet(self):
+        r"""<p>HTTP GET请求进行健康检查</p>
+        :rtype: :class:`tencentcloud.hai.v20230812.models.HttpConfig`
+        """
+        return self._HttpGet
+
+    @HttpGet.setter
+    def HttpGet(self, HttpGet):
+        self._HttpGet = HttpGet
+
+    @property
+    def InitialDelaySeconds(self):
+        r"""<p>容器启动后，等待多少秒开始第一次探测</p>
+        :rtype: int
+        """
+        return self._InitialDelaySeconds
+
+    @InitialDelaySeconds.setter
+    def InitialDelaySeconds(self, InitialDelaySeconds):
+        self._InitialDelaySeconds = InitialDelaySeconds
+
+    @property
+    def PeriodSeconds(self):
+        r"""<p>每次执行探测的间隔时间（秒）</p>
+        :rtype: int
+        """
+        return self._PeriodSeconds
+
+    @PeriodSeconds.setter
+    def PeriodSeconds(self, PeriodSeconds):
+        self._PeriodSeconds = PeriodSeconds
+
+    @property
+    def TimeoutSeconds(self):
+        r"""<p>每次探测等待响应的超时时间（秒）</p>
+        :rtype: int
+        """
+        return self._TimeoutSeconds
+
+    @TimeoutSeconds.setter
+    def TimeoutSeconds(self, TimeoutSeconds):
+        self._TimeoutSeconds = TimeoutSeconds
+
+    @property
+    def SuccessThreshold(self):
+        r"""<p>探测失败后，最小连续成功次数才被认为成功</p>
+        :rtype: int
+        """
+        return self._SuccessThreshold
+
+    @SuccessThreshold.setter
+    def SuccessThreshold(self, SuccessThreshold):
+        self._SuccessThreshold = SuccessThreshold
+
+    @property
+    def FailureThreshold(self):
+        r"""<p>探测失败后，Kubernetes的重试次数</p>
+        :rtype: int
+        """
+        return self._FailureThreshold
+
+    @FailureThreshold.setter
+    def FailureThreshold(self, FailureThreshold):
+        self._FailureThreshold = FailureThreshold
+
+
+    def _deserialize(self, params):
+        if params.get("HttpGet") is not None:
+            self._HttpGet = HttpConfig()
+            self._HttpGet._deserialize(params.get("HttpGet"))
+        self._InitialDelaySeconds = params.get("InitialDelaySeconds")
+        self._PeriodSeconds = params.get("PeriodSeconds")
+        self._TimeoutSeconds = params.get("TimeoutSeconds")
+        self._SuccessThreshold = params.get("SuccessThreshold")
+        self._FailureThreshold = params.get("FailureThreshold")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProbeInfo(AbstractModel):
+    r"""探针信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LivenessProbe: <p>存活探针</p>
+        :type LivenessProbe: :class:`tencentcloud.hai.v20230812.models.ProbeConfig`
+        :param _ReadinessProbe: <p>就绪探针</p>
+        :type ReadinessProbe: :class:`tencentcloud.hai.v20230812.models.ProbeConfig`
+        :param _StartupProbe: <p>启动探针</p>
+        :type StartupProbe: :class:`tencentcloud.hai.v20230812.models.ProbeConfig`
+        """
+        self._LivenessProbe = None
+        self._ReadinessProbe = None
+        self._StartupProbe = None
+
+    @property
+    def LivenessProbe(self):
+        r"""<p>存活探针</p>
+        :rtype: :class:`tencentcloud.hai.v20230812.models.ProbeConfig`
+        """
+        return self._LivenessProbe
+
+    @LivenessProbe.setter
+    def LivenessProbe(self, LivenessProbe):
+        self._LivenessProbe = LivenessProbe
+
+    @property
+    def ReadinessProbe(self):
+        r"""<p>就绪探针</p>
+        :rtype: :class:`tencentcloud.hai.v20230812.models.ProbeConfig`
+        """
+        return self._ReadinessProbe
+
+    @ReadinessProbe.setter
+    def ReadinessProbe(self, ReadinessProbe):
+        self._ReadinessProbe = ReadinessProbe
+
+    @property
+    def StartupProbe(self):
+        r"""<p>启动探针</p>
+        :rtype: :class:`tencentcloud.hai.v20230812.models.ProbeConfig`
+        """
+        return self._StartupProbe
+
+    @StartupProbe.setter
+    def StartupProbe(self, StartupProbe):
+        self._StartupProbe = StartupProbe
+
+
+    def _deserialize(self, params):
+        if params.get("LivenessProbe") is not None:
+            self._LivenessProbe = ProbeConfig()
+            self._LivenessProbe._deserialize(params.get("LivenessProbe"))
+        if params.get("ReadinessProbe") is not None:
+            self._ReadinessProbe = ProbeConfig()
+            self._ReadinessProbe._deserialize(params.get("ReadinessProbe"))
+        if params.get("StartupProbe") is not None:
+            self._StartupProbe = ProbeConfig()
+            self._StartupProbe._deserialize(params.get("StartupProbe"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -259,6 +259,24 @@ class CfwClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateNatFwDnatRule(
+            self,
+            request: models.CreateNatFwDnatRuleRequest,
+            opts: Dict = None,
+    ) -> models.CreateNatFwDnatRuleResponse:
+        """
+        创建Nat防火墙Dnat规则
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateNatFwDnatRule"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateNatFwDnatRuleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateNatFwInstance(
             self,
             request: models.CreateNatFwInstanceRequest,
@@ -398,6 +416,24 @@ class CfwClient(AbstractClient):
         kwargs["action"] = "DeleteBlockIgnoreRuleNew"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteBlockIgnoreRuleNewResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteNatFwDnatRule(
+            self,
+            request: models.DeleteNatFwDnatRuleRequest,
+            opts: Dict = None,
+    ) -> models.DeleteNatFwDnatRuleResponse:
+        """
+        删除Nat防火墙Dnat规则
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteNatFwDnatRule"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteNatFwDnatRuleResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

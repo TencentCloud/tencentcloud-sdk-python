@@ -6420,26 +6420,24 @@ class ListAggregateCompliancePacksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Limit: 数量
+        :param _Limit: <p>数量</p>
         :type Limit: int
-        :param _Offset: 偏移量
+        :param _Offset: <p>偏移量</p>
         :type Offset: int
-        :param _AccountGroupId: 账号组ID
+        :param _AccountGroupId: <p>账号组ID</p>
         :type AccountGroupId: str
-        :param _CompliancePackName: 合规包名称
+        :param _CompliancePackName: <p>合规包名称</p>
         :type CompliancePackName: str
-        :param _RiskLevel: 风险等级
-1：高风险。
-2：中风险。
-3：低风险。
+        :param _RiskLevel: <p>风险等级<br>1：高风险。<br>2：中风险。<br>3：低风险。</p>
         :type RiskLevel: list of int non-negative
-        :param _Status: 合规包状态 ACTIVE、NO_ACTIVE
+        :param _Status: <p>合规包状态 ACTIVE、NO_ACTIVE</p>
         :type Status: str
-        :param _ComplianceResult: 评估状态合规： 'COMPLIANT'
-不合规： 'NON_COMPLIANT'
+        :param _ComplianceResult: <p>评估状态合规： &#39;COMPLIANT&#39;<br>不合规： &#39;NON_COMPLIANT&#39;</p>
         :type ComplianceResult: list of str
-        :param _OrderType: 排序类型, 倒序：desc，顺序：asc
+        :param _OrderType: <p>排序类型, 倒序：desc，顺序：asc</p>
         :type OrderType: str
+        :param _IncludeCompliancePackRuleResult: <p>包含合规包结果定义</p><p>枚举值：</p><ul><li>NO： 不包含</li></ul><p>默认值：空</p><p>此字段为新增，因此不传或者传了YES都会默认返回包含合规结果数据，其他枚举值后面视情况丰富</p>
+        :type IncludeCompliancePackRuleResult: str
         """
         self._Limit = None
         self._Offset = None
@@ -6449,10 +6447,11 @@ class ListAggregateCompliancePacksRequest(AbstractModel):
         self._Status = None
         self._ComplianceResult = None
         self._OrderType = None
+        self._IncludeCompliancePackRuleResult = None
 
     @property
     def Limit(self):
-        r"""数量
+        r"""<p>数量</p>
         :rtype: int
         """
         return self._Limit
@@ -6463,7 +6462,7 @@ class ListAggregateCompliancePacksRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""偏移量
+        r"""<p>偏移量</p>
         :rtype: int
         """
         return self._Offset
@@ -6474,7 +6473,7 @@ class ListAggregateCompliancePacksRequest(AbstractModel):
 
     @property
     def AccountGroupId(self):
-        r"""账号组ID
+        r"""<p>账号组ID</p>
         :rtype: str
         """
         return self._AccountGroupId
@@ -6485,7 +6484,7 @@ class ListAggregateCompliancePacksRequest(AbstractModel):
 
     @property
     def CompliancePackName(self):
-        r"""合规包名称
+        r"""<p>合规包名称</p>
         :rtype: str
         """
         return self._CompliancePackName
@@ -6496,10 +6495,7 @@ class ListAggregateCompliancePacksRequest(AbstractModel):
 
     @property
     def RiskLevel(self):
-        r"""风险等级
-1：高风险。
-2：中风险。
-3：低风险。
+        r"""<p>风险等级<br>1：高风险。<br>2：中风险。<br>3：低风险。</p>
         :rtype: list of int non-negative
         """
         return self._RiskLevel
@@ -6510,7 +6506,7 @@ class ListAggregateCompliancePacksRequest(AbstractModel):
 
     @property
     def Status(self):
-        r"""合规包状态 ACTIVE、NO_ACTIVE
+        r"""<p>合规包状态 ACTIVE、NO_ACTIVE</p>
         :rtype: str
         """
         return self._Status
@@ -6521,8 +6517,7 @@ class ListAggregateCompliancePacksRequest(AbstractModel):
 
     @property
     def ComplianceResult(self):
-        r"""评估状态合规： 'COMPLIANT'
-不合规： 'NON_COMPLIANT'
+        r"""<p>评估状态合规： &#39;COMPLIANT&#39;<br>不合规： &#39;NON_COMPLIANT&#39;</p>
         :rtype: list of str
         """
         return self._ComplianceResult
@@ -6533,7 +6528,7 @@ class ListAggregateCompliancePacksRequest(AbstractModel):
 
     @property
     def OrderType(self):
-        r"""排序类型, 倒序：desc，顺序：asc
+        r"""<p>排序类型, 倒序：desc，顺序：asc</p>
         :rtype: str
         """
         return self._OrderType
@@ -6541,6 +6536,17 @@ class ListAggregateCompliancePacksRequest(AbstractModel):
     @OrderType.setter
     def OrderType(self, OrderType):
         self._OrderType = OrderType
+
+    @property
+    def IncludeCompliancePackRuleResult(self):
+        r"""<p>包含合规包结果定义</p><p>枚举值：</p><ul><li>NO： 不包含</li></ul><p>默认值：空</p><p>此字段为新增，因此不传或者传了YES都会默认返回包含合规结果数据，其他枚举值后面视情况丰富</p>
+        :rtype: str
+        """
+        return self._IncludeCompliancePackRuleResult
+
+    @IncludeCompliancePackRuleResult.setter
+    def IncludeCompliancePackRuleResult(self, IncludeCompliancePackRuleResult):
+        self._IncludeCompliancePackRuleResult = IncludeCompliancePackRuleResult
 
 
     def _deserialize(self, params):
@@ -6552,6 +6558,7 @@ class ListAggregateCompliancePacksRequest(AbstractModel):
         self._Status = params.get("Status")
         self._ComplianceResult = params.get("ComplianceResult")
         self._OrderType = params.get("OrderType")
+        self._IncludeCompliancePackRuleResult = params.get("IncludeCompliancePackRuleResult")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6569,9 +6576,9 @@ class ListAggregateCompliancePacksResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Total: 总数
+        :param _Total: <p>总数</p>
         :type Total: int
-        :param _Items: 详情
+        :param _Items: <p>详情</p>
         :type Items: list of ConfigCompliancePack
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6582,7 +6589,7 @@ class ListAggregateCompliancePacksResponse(AbstractModel):
 
     @property
     def Total(self):
-        r"""总数
+        r"""<p>总数</p>
         :rtype: int
         """
         return self._Total
@@ -6593,7 +6600,7 @@ class ListAggregateCompliancePacksResponse(AbstractModel):
 
     @property
     def Items(self):
-        r"""详情
+        r"""<p>详情</p>
         :rtype: list of ConfigCompliancePack
         """
         return self._Items

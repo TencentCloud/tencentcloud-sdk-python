@@ -2949,14 +2949,17 @@ class AiAnalysisTaskClassificationInput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: 视频智能分类模板 ID。
+        :param _Definition: <p>视频智能分类模板 ID。</p>
         :type Definition: int
+        :param _ExtendedParameter: <p>扩展参数。</p>
+        :type ExtendedParameter: str
         """
         self._Definition = None
+        self._ExtendedParameter = None
 
     @property
     def Definition(self):
-        r"""视频智能分类模板 ID。
+        r"""<p>视频智能分类模板 ID。</p>
         :rtype: int
         """
         return self._Definition
@@ -2965,9 +2968,21 @@ class AiAnalysisTaskClassificationInput(AbstractModel):
     def Definition(self, Definition):
         self._Definition = Definition
 
+    @property
+    def ExtendedParameter(self):
+        r"""<p>扩展参数。</p>
+        :rtype: str
+        """
+        return self._ExtendedParameter
+
+    @ExtendedParameter.setter
+    def ExtendedParameter(self, ExtendedParameter):
+        self._ExtendedParameter = ExtendedParameter
+
 
     def _deserialize(self, params):
         self._Definition = params.get("Definition")
+        self._ExtendedParameter = params.get("ExtendedParameter")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3143,14 +3158,17 @@ class AiAnalysisTaskCoverInput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: 视频智能封面模板 ID。
+        :param _Definition: <p>视频智能封面模板 ID。</p>
         :type Definition: int
+        :param _ExtendedParameter: <p>扩展参数。</p>
+        :type ExtendedParameter: str
         """
         self._Definition = None
+        self._ExtendedParameter = None
 
     @property
     def Definition(self):
-        r"""视频智能封面模板 ID。
+        r"""<p>视频智能封面模板 ID。</p>
         :rtype: int
         """
         return self._Definition
@@ -3159,9 +3177,21 @@ class AiAnalysisTaskCoverInput(AbstractModel):
     def Definition(self, Definition):
         self._Definition = Definition
 
+    @property
+    def ExtendedParameter(self):
+        r"""<p>扩展参数。</p>
+        :rtype: str
+        """
+        return self._ExtendedParameter
+
+    @ExtendedParameter.setter
+    def ExtendedParameter(self, ExtendedParameter):
+        self._ExtendedParameter = ExtendedParameter
+
 
     def _deserialize(self, params):
         self._Definition = params.get("Definition")
+        self._ExtendedParameter = params.get("ExtendedParameter")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3354,14 +3384,17 @@ class AiAnalysisTaskCutoutInput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: 视频智能抠图模板 ID。
+        :param _Definition: <p>视频智能抠图模板 ID。</p>
         :type Definition: int
+        :param _ExtendedParameter: <p>扩展参数。</p>
+        :type ExtendedParameter: str
         """
         self._Definition = None
+        self._ExtendedParameter = None
 
     @property
     def Definition(self):
-        r"""视频智能抠图模板 ID。
+        r"""<p>视频智能抠图模板 ID。</p>
         :rtype: int
         """
         return self._Definition
@@ -3370,9 +3403,21 @@ class AiAnalysisTaskCutoutInput(AbstractModel):
     def Definition(self, Definition):
         self._Definition = Definition
 
+    @property
+    def ExtendedParameter(self):
+        r"""<p>扩展参数。</p>
+        :rtype: str
+        """
+        return self._ExtendedParameter
+
+    @ExtendedParameter.setter
+    def ExtendedParameter(self, ExtendedParameter):
+        self._ExtendedParameter = ExtendedParameter
+
 
     def _deserialize(self, params):
         self._Definition = params.get("Definition")
+        self._ExtendedParameter = params.get("ExtendedParameter")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3590,14 +3635,17 @@ class AiAnalysisTaskDelLogoInput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: 视频智能擦除模板 ID。
+        :param _Definition: <p>视频智能擦除模板 ID。</p>
         :type Definition: int
+        :param _ExtendedParameter: <p>扩展参数。</p>
+        :type ExtendedParameter: str
         """
         self._Definition = None
+        self._ExtendedParameter = None
 
     @property
     def Definition(self):
-        r"""视频智能擦除模板 ID。
+        r"""<p>视频智能擦除模板 ID。</p>
         :rtype: int
         """
         return self._Definition
@@ -3606,9 +3654,21 @@ class AiAnalysisTaskDelLogoInput(AbstractModel):
     def Definition(self, Definition):
         self._Definition = Definition
 
+    @property
+    def ExtendedParameter(self):
+        r"""<p>扩展参数。</p>
+        :rtype: str
+        """
+        return self._ExtendedParameter
+
+    @ExtendedParameter.setter
+    def ExtendedParameter(self, ExtendedParameter):
+        self._ExtendedParameter = ExtendedParameter
+
 
     def _deserialize(self, params):
         self._Definition = params.get("Definition")
+        self._ExtendedParameter = params.get("ExtendedParameter")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3864,14 +3924,17 @@ class AiAnalysisTaskDescriptionInput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: 视频智能描述模板 ID。
+        :param _Definition: <p>视频智能描述模板 ID。</p>
         :type Definition: int
+        :param _ExtendedParameter: <p>扩展参数。</p>
+        :type ExtendedParameter: str
         """
         self._Definition = None
+        self._ExtendedParameter = None
 
     @property
     def Definition(self):
-        r"""视频智能描述模板 ID。
+        r"""<p>视频智能描述模板 ID。</p>
         :rtype: int
         """
         return self._Definition
@@ -3880,9 +3943,21 @@ class AiAnalysisTaskDescriptionInput(AbstractModel):
     def Definition(self, Definition):
         self._Definition = Definition
 
+    @property
+    def ExtendedParameter(self):
+        r"""<p>扩展参数。</p>
+        :rtype: str
+        """
+        return self._ExtendedParameter
+
+    @ExtendedParameter.setter
+    def ExtendedParameter(self, ExtendedParameter):
+        self._ExtendedParameter = ExtendedParameter
+
 
     def _deserialize(self, params):
         self._Definition = params.get("Definition")
+        self._ExtendedParameter = params.get("ExtendedParameter")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4043,14 +4118,17 @@ class AiAnalysisTaskDubbingInput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: 视频译制模板 ID。
+        :param _Definition: <p>视频译制模板 ID。</p>
         :type Definition: int
+        :param _ExtendedParameter: <p>扩展参数。</p>
+        :type ExtendedParameter: str
         """
         self._Definition = None
+        self._ExtendedParameter = None
 
     @property
     def Definition(self):
-        r"""视频译制模板 ID。
+        r"""<p>视频译制模板 ID。</p>
         :rtype: int
         """
         return self._Definition
@@ -4059,9 +4137,21 @@ class AiAnalysisTaskDubbingInput(AbstractModel):
     def Definition(self, Definition):
         self._Definition = Definition
 
+    @property
+    def ExtendedParameter(self):
+        r"""<p>扩展参数。</p>
+        :rtype: str
+        """
+        return self._ExtendedParameter
+
+    @ExtendedParameter.setter
+    def ExtendedParameter(self, ExtendedParameter):
+        self._ExtendedParameter = ExtendedParameter
+
 
     def _deserialize(self, params):
         self._Definition = params.get("Definition")
+        self._ExtendedParameter = params.get("ExtendedParameter")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4264,14 +4354,17 @@ class AiAnalysisTaskFrameTagInput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: 视频智能按帧标签模板 ID。
+        :param _Definition: <p>视频智能按帧标签模板 ID。</p>
         :type Definition: int
+        :param _ExtendedParameter: <p>扩展参数。</p>
+        :type ExtendedParameter: str
         """
         self._Definition = None
+        self._ExtendedParameter = None
 
     @property
     def Definition(self):
-        r"""视频智能按帧标签模板 ID。
+        r"""<p>视频智能按帧标签模板 ID。</p>
         :rtype: int
         """
         return self._Definition
@@ -4280,9 +4373,21 @@ class AiAnalysisTaskFrameTagInput(AbstractModel):
     def Definition(self, Definition):
         self._Definition = Definition
 
+    @property
+    def ExtendedParameter(self):
+        r"""<p>扩展参数。</p>
+        :rtype: str
+        """
+        return self._ExtendedParameter
+
+    @ExtendedParameter.setter
+    def ExtendedParameter(self, ExtendedParameter):
+        self._ExtendedParameter = ExtendedParameter
+
 
     def _deserialize(self, params):
         self._Definition = params.get("Definition")
+        self._ExtendedParameter = params.get("ExtendedParameter")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4458,14 +4563,17 @@ class AiAnalysisTaskHeadTailInput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: 片头片尾识别模板 ID。
+        :param _Definition: <p>片头片尾识别模板 ID。</p>
         :type Definition: int
+        :param _ExtendedParameter: <p>扩展参数。</p>
+        :type ExtendedParameter: str
         """
         self._Definition = None
+        self._ExtendedParameter = None
 
     @property
     def Definition(self):
-        r"""片头片尾识别模板 ID。
+        r"""<p>片头片尾识别模板 ID。</p>
         :rtype: int
         """
         return self._Definition
@@ -4474,9 +4582,21 @@ class AiAnalysisTaskHeadTailInput(AbstractModel):
     def Definition(self, Definition):
         self._Definition = Definition
 
+    @property
+    def ExtendedParameter(self):
+        r"""<p>扩展参数。</p>
+        :rtype: str
+        """
+        return self._ExtendedParameter
+
+    @ExtendedParameter.setter
+    def ExtendedParameter(self, ExtendedParameter):
+        self._ExtendedParameter = ExtendedParameter
+
 
     def _deserialize(self, params):
         self._Definition = params.get("Definition")
+        self._ExtendedParameter = params.get("ExtendedParameter")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4651,14 +4771,17 @@ class AiAnalysisTaskHighlightInput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: 视频智能精彩片段模板 ID。
+        :param _Definition: <p>视频智能精彩片段模板 ID。</p>
         :type Definition: int
+        :param _ExtendedParameter: <p>扩展参数。</p>
+        :type ExtendedParameter: str
         """
         self._Definition = None
+        self._ExtendedParameter = None
 
     @property
     def Definition(self):
-        r"""视频智能精彩片段模板 ID。
+        r"""<p>视频智能精彩片段模板 ID。</p>
         :rtype: int
         """
         return self._Definition
@@ -4667,9 +4790,21 @@ class AiAnalysisTaskHighlightInput(AbstractModel):
     def Definition(self, Definition):
         self._Definition = Definition
 
+    @property
+    def ExtendedParameter(self):
+        r"""<p>扩展参数。</p>
+        :rtype: str
+        """
+        return self._ExtendedParameter
+
+    @ExtendedParameter.setter
+    def ExtendedParameter(self, ExtendedParameter):
+        self._ExtendedParameter = ExtendedParameter
+
 
     def _deserialize(self, params):
         self._Definition = params.get("Definition")
+        self._ExtendedParameter = params.get("ExtendedParameter")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4849,15 +4984,18 @@ class AiAnalysisTaskHorizontalToVerticalInput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: 视频智能横转竖模板 ID
+        :param _Definition: <p>视频智能横转竖模板 ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Definition: int
+        :param _ExtendedParameter: <p>扩展参数。</p>
+        :type ExtendedParameter: str
         """
         self._Definition = None
+        self._ExtendedParameter = None
 
     @property
     def Definition(self):
-        r"""视频智能横转竖模板 ID
+        r"""<p>视频智能横转竖模板 ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -4867,9 +5005,21 @@ class AiAnalysisTaskHorizontalToVerticalInput(AbstractModel):
     def Definition(self, Definition):
         self._Definition = Definition
 
+    @property
+    def ExtendedParameter(self):
+        r"""<p>扩展参数。</p>
+        :rtype: str
+        """
+        return self._ExtendedParameter
+
+    @ExtendedParameter.setter
+    def ExtendedParameter(self, ExtendedParameter):
+        self._ExtendedParameter = ExtendedParameter
+
 
     def _deserialize(self, params):
         self._Definition = params.get("Definition")
+        self._ExtendedParameter = params.get("ExtendedParameter")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5134,14 +5284,17 @@ class AiAnalysisTaskReelInput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: 智能成片模板 ID。
+        :param _Definition: <p>智能成片模板 ID。</p>
         :type Definition: int
+        :param _ExtendedParameter: <p>扩展参数。</p>
+        :type ExtendedParameter: str
         """
         self._Definition = None
+        self._ExtendedParameter = None
 
     @property
     def Definition(self):
-        r"""智能成片模板 ID。
+        r"""<p>智能成片模板 ID。</p>
         :rtype: int
         """
         return self._Definition
@@ -5150,9 +5303,21 @@ class AiAnalysisTaskReelInput(AbstractModel):
     def Definition(self, Definition):
         self._Definition = Definition
 
+    @property
+    def ExtendedParameter(self):
+        r"""<p>扩展参数。</p>
+        :rtype: str
+        """
+        return self._ExtendedParameter
+
+    @ExtendedParameter.setter
+    def ExtendedParameter(self, ExtendedParameter):
+        self._ExtendedParameter = ExtendedParameter
+
 
     def _deserialize(self, params):
         self._Definition = params.get("Definition")
+        self._ExtendedParameter = params.get("ExtendedParameter")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5433,14 +5598,17 @@ class AiAnalysisTaskSegmentInput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: 拆条任务模板 ID。
+        :param _Definition: <p>拆条任务模板 ID。</p>
         :type Definition: int
+        :param _ExtendedParameter: <p>扩展参数。</p>
+        :type ExtendedParameter: str
         """
         self._Definition = None
+        self._ExtendedParameter = None
 
     @property
     def Definition(self):
-        r"""拆条任务模板 ID。
+        r"""<p>拆条任务模板 ID。</p>
         :rtype: int
         """
         return self._Definition
@@ -5449,9 +5617,21 @@ class AiAnalysisTaskSegmentInput(AbstractModel):
     def Definition(self, Definition):
         self._Definition = Definition
 
+    @property
+    def ExtendedParameter(self):
+        r"""<p>扩展参数。</p>
+        :rtype: str
+        """
+        return self._ExtendedParameter
+
+    @ExtendedParameter.setter
+    def ExtendedParameter(self, ExtendedParameter):
+        self._ExtendedParameter = ExtendedParameter
+
 
     def _deserialize(self, params):
         self._Definition = params.get("Definition")
+        self._ExtendedParameter = params.get("ExtendedParameter")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5629,14 +5809,17 @@ class AiAnalysisTaskTagInput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: 视频智能标签模板 ID。
+        :param _Definition: <p>视频智能标签模板 ID。</p>
         :type Definition: int
+        :param _ExtendedParameter: <p>扩展参数。</p>
+        :type ExtendedParameter: str
         """
         self._Definition = None
+        self._ExtendedParameter = None
 
     @property
     def Definition(self):
-        r"""视频智能标签模板 ID。
+        r"""<p>视频智能标签模板 ID。</p>
         :rtype: int
         """
         return self._Definition
@@ -5645,9 +5828,21 @@ class AiAnalysisTaskTagInput(AbstractModel):
     def Definition(self, Definition):
         self._Definition = Definition
 
+    @property
+    def ExtendedParameter(self):
+        r"""<p>扩展参数。</p>
+        :rtype: str
+        """
+        return self._ExtendedParameter
+
+    @ExtendedParameter.setter
+    def ExtendedParameter(self, ExtendedParameter):
+        self._ExtendedParameter = ExtendedParameter
+
 
     def _deserialize(self, params):
         self._Definition = params.get("Definition")
+        self._ExtendedParameter = params.get("ExtendedParameter")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5823,14 +6018,17 @@ class AiAnalysisTaskVideoComprehensionInput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: 视频（音频）理解模板ID
+        :param _Definition: <p>视频（音频）理解模板ID</p>
         :type Definition: int
+        :param _ExtendedParameter: <p>扩展参数。</p>
+        :type ExtendedParameter: str
         """
         self._Definition = None
+        self._ExtendedParameter = None
 
     @property
     def Definition(self):
-        r"""视频（音频）理解模板ID
+        r"""<p>视频（音频）理解模板ID</p>
         :rtype: int
         """
         return self._Definition
@@ -5839,9 +6037,21 @@ class AiAnalysisTaskVideoComprehensionInput(AbstractModel):
     def Definition(self, Definition):
         self._Definition = Definition
 
+    @property
+    def ExtendedParameter(self):
+        r"""<p>扩展参数。</p>
+        :rtype: str
+        """
+        return self._ExtendedParameter
+
+    @ExtendedParameter.setter
+    def ExtendedParameter(self, ExtendedParameter):
+        self._ExtendedParameter = ExtendedParameter
+
 
     def _deserialize(self, params):
         self._Definition = params.get("Definition")
+        self._ExtendedParameter = params.get("ExtendedParameter")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6092,14 +6302,17 @@ class AiAnalysisTaskVideoRemakeInput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: 视频智能去重模板 ID
+        :param _Definition: <p>视频智能去重模板 ID</p>
         :type Definition: int
+        :param _ExtendedParameter: <p>扩展参数。</p>
+        :type ExtendedParameter: str
         """
         self._Definition = None
+        self._ExtendedParameter = None
 
     @property
     def Definition(self):
-        r"""视频智能去重模板 ID
+        r"""<p>视频智能去重模板 ID</p>
         :rtype: int
         """
         return self._Definition
@@ -6108,9 +6321,21 @@ class AiAnalysisTaskVideoRemakeInput(AbstractModel):
     def Definition(self, Definition):
         self._Definition = Definition
 
+    @property
+    def ExtendedParameter(self):
+        r"""<p>扩展参数。</p>
+        :rtype: str
+        """
+        return self._ExtendedParameter
+
+    @ExtendedParameter.setter
+    def ExtendedParameter(self, ExtendedParameter):
+        self._ExtendedParameter = ExtendedParameter
+
 
     def _deserialize(self, params):
         self._Definition = params.get("Definition")
+        self._ExtendedParameter = params.get("ExtendedParameter")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -68074,29 +68299,32 @@ class QualityControlData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NoAudio: 为true时表示视频无音频轨。
+        :param _NoAudio: <p>为true时表示视频无音频轨。</p>
         :type NoAudio: bool
-        :param _NoVideo: 为true时表示视频无视频轨。
+        :param _NoVideo: <p>为true时表示视频无视频轨。</p>
         :type NoVideo: bool
-        :param _QualityEvaluationScore: 视频无参考质量评分，百分制。
+        :param _QualityEvaluationScore: <p>视频无参考质量评分，百分制。</p>
         :type QualityEvaluationScore: int
-        :param _QualityEvaluationMeanOpinionScore: 视频无参考质量评分，MOS分数。
+        :param _QualityEvaluationMeanOpinionScore: <p>视频无参考质量评分，MOS分数。</p>
         :type QualityEvaluationMeanOpinionScore: float
-        :param _QualityControlResultSet: 内容质检检出异常项。
+        :param _AestheticEvaluationScore: <p>视频美学评分，范围：[0,100]。</p>
+        :type AestheticEvaluationScore: int
+        :param _QualityControlResultSet: <p>内容质检检出异常项。</p>
         :type QualityControlResultSet: list of QualityControlResult
-        :param _ContainerDiagnoseResultSet: 格式诊断检出异常项。
+        :param _ContainerDiagnoseResultSet: <p>格式诊断检出异常项。</p>
         :type ContainerDiagnoseResultSet: list of ContainerDiagnoseResultItem
         """
         self._NoAudio = None
         self._NoVideo = None
         self._QualityEvaluationScore = None
         self._QualityEvaluationMeanOpinionScore = None
+        self._AestheticEvaluationScore = None
         self._QualityControlResultSet = None
         self._ContainerDiagnoseResultSet = None
 
     @property
     def NoAudio(self):
-        r"""为true时表示视频无音频轨。
+        r"""<p>为true时表示视频无音频轨。</p>
         :rtype: bool
         """
         return self._NoAudio
@@ -68107,7 +68335,7 @@ class QualityControlData(AbstractModel):
 
     @property
     def NoVideo(self):
-        r"""为true时表示视频无视频轨。
+        r"""<p>为true时表示视频无视频轨。</p>
         :rtype: bool
         """
         return self._NoVideo
@@ -68118,7 +68346,7 @@ class QualityControlData(AbstractModel):
 
     @property
     def QualityEvaluationScore(self):
-        r"""视频无参考质量评分，百分制。
+        r"""<p>视频无参考质量评分，百分制。</p>
         :rtype: int
         """
         return self._QualityEvaluationScore
@@ -68129,7 +68357,7 @@ class QualityControlData(AbstractModel):
 
     @property
     def QualityEvaluationMeanOpinionScore(self):
-        r"""视频无参考质量评分，MOS分数。
+        r"""<p>视频无参考质量评分，MOS分数。</p>
         :rtype: float
         """
         return self._QualityEvaluationMeanOpinionScore
@@ -68139,8 +68367,19 @@ class QualityControlData(AbstractModel):
         self._QualityEvaluationMeanOpinionScore = QualityEvaluationMeanOpinionScore
 
     @property
+    def AestheticEvaluationScore(self):
+        r"""<p>视频美学评分，范围：[0,100]。</p>
+        :rtype: int
+        """
+        return self._AestheticEvaluationScore
+
+    @AestheticEvaluationScore.setter
+    def AestheticEvaluationScore(self, AestheticEvaluationScore):
+        self._AestheticEvaluationScore = AestheticEvaluationScore
+
+    @property
     def QualityControlResultSet(self):
-        r"""内容质检检出异常项。
+        r"""<p>内容质检检出异常项。</p>
         :rtype: list of QualityControlResult
         """
         return self._QualityControlResultSet
@@ -68151,7 +68390,7 @@ class QualityControlData(AbstractModel):
 
     @property
     def ContainerDiagnoseResultSet(self):
-        r"""格式诊断检出异常项。
+        r"""<p>格式诊断检出异常项。</p>
         :rtype: list of ContainerDiagnoseResultItem
         """
         return self._ContainerDiagnoseResultSet
@@ -68166,6 +68405,7 @@ class QualityControlData(AbstractModel):
         self._NoVideo = params.get("NoVideo")
         self._QualityEvaluationScore = params.get("QualityEvaluationScore")
         self._QualityEvaluationMeanOpinionScore = params.get("QualityEvaluationMeanOpinionScore")
+        self._AestheticEvaluationScore = params.get("AestheticEvaluationScore")
         if params.get("QualityControlResultSet") is not None:
             self._QualityControlResultSet = []
             for item in params.get("QualityControlResultSet"):

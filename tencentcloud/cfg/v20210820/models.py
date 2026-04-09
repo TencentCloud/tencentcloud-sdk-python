@@ -1711,13 +1711,13 @@ class DescribePolicy(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskPolicyIdList: 保护策略ID列表
+        :param _TaskPolicyIdList: <p>保护策略ID列表</p>
         :type TaskPolicyIdList: list of str
-        :param _TaskPolicyStatus: 保护策略状态
+        :param _TaskPolicyStatus: <p>保护策略状态</p><p>枚举值：</p><ul><li>已触发： 表示已触发护栏策略</li><li>未触发： 表示未触发护栏策略</li><li>已恢复： 表示护栏策略已恢复</li></ul>
         :type TaskPolicyStatus: str
-        :param _TaskPolicyRule: 策略规则
+        :param _TaskPolicyRule: <p>策略规则</p>
         :type TaskPolicyRule: str
-        :param _TaskPolicyDealType: 护栏策略生效处理策略 1:顺序执行，2:暂停
+        :param _TaskPolicyDealType: <p>护栏策略生效处理策略 1:顺序执行，2:暂停</p>
         :type TaskPolicyDealType: int
         """
         self._TaskPolicyIdList = None
@@ -1727,7 +1727,7 @@ class DescribePolicy(AbstractModel):
 
     @property
     def TaskPolicyIdList(self):
-        r"""保护策略ID列表
+        r"""<p>保护策略ID列表</p>
         :rtype: list of str
         """
         return self._TaskPolicyIdList
@@ -1738,7 +1738,7 @@ class DescribePolicy(AbstractModel):
 
     @property
     def TaskPolicyStatus(self):
-        r"""保护策略状态
+        r"""<p>保护策略状态</p><p>枚举值：</p><ul><li>已触发： 表示已触发护栏策略</li><li>未触发： 表示未触发护栏策略</li><li>已恢复： 表示护栏策略已恢复</li></ul>
         :rtype: str
         """
         return self._TaskPolicyStatus
@@ -1749,7 +1749,7 @@ class DescribePolicy(AbstractModel):
 
     @property
     def TaskPolicyRule(self):
-        r"""策略规则
+        r"""<p>策略规则</p>
         :rtype: str
         """
         return self._TaskPolicyRule
@@ -1760,7 +1760,7 @@ class DescribePolicy(AbstractModel):
 
     @property
     def TaskPolicyDealType(self):
-        r"""护栏策略生效处理策略 1:顺序执行，2:暂停
+        r"""<p>护栏策略生效处理策略 1:顺序执行，2:暂停</p>
         :rtype: int
         """
         return self._TaskPolicyDealType
@@ -2974,6 +2974,8 @@ class ModifyTaskRunStatusRequest(AbstractModel):
         :type Issue: str
         :param _Record: 演练记录
         :type Record: str
+        :param _IncludeRecordInReport: 
+        :type IncludeRecordInReport: int
         """
         self._TaskId = None
         self._Status = None
@@ -2981,6 +2983,7 @@ class ModifyTaskRunStatusRequest(AbstractModel):
         self._Summary = None
         self._Issue = None
         self._Record = None
+        self._IncludeRecordInReport = None
 
     @property
     def TaskId(self):
@@ -3048,6 +3051,17 @@ class ModifyTaskRunStatusRequest(AbstractModel):
     def Record(self, Record):
         self._Record = Record
 
+    @property
+    def IncludeRecordInReport(self):
+        r"""
+        :rtype: int
+        """
+        return self._IncludeRecordInReport
+
+    @IncludeRecordInReport.setter
+    def IncludeRecordInReport(self, IncludeRecordInReport):
+        self._IncludeRecordInReport = IncludeRecordInReport
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
@@ -3056,6 +3070,7 @@ class ModifyTaskRunStatusRequest(AbstractModel):
         self._Summary = params.get("Summary")
         self._Issue = params.get("Issue")
         self._Record = params.get("Record")
+        self._IncludeRecordInReport = params.get("IncludeRecordInReport")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4776,47 +4791,47 @@ class TaskGroupAction(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskGroupActionId: 任务分组动作ID
+        :param _TaskGroupActionId: <p>任务分组动作ID</p>
         :type TaskGroupActionId: int
-        :param _TaskGroupInstances: 任务分组动作实例列表
+        :param _TaskGroupInstances: <p>任务分组动作实例列表</p>
         :type TaskGroupInstances: list of TaskGroupInstance
-        :param _ActionId: 动作ID
+        :param _ActionId: <p>动作ID</p>
         :type ActionId: int
-        :param _TaskGroupActionOrder: 分组动作顺序
+        :param _TaskGroupActionOrder: <p>分组动作顺序</p>
         :type TaskGroupActionOrder: int
-        :param _TaskGroupActionGeneralConfiguration: 分组动作通用配置
+        :param _TaskGroupActionGeneralConfiguration: <p>分组动作通用配置</p>
         :type TaskGroupActionGeneralConfiguration: str
-        :param _TaskGroupActionCustomConfiguration: 分组动作自定义配置
+        :param _TaskGroupActionCustomConfiguration: <p>分组动作自定义配置</p>
         :type TaskGroupActionCustomConfiguration: str
-        :param _TaskGroupActionStatus: 分组动作状态
+        :param _TaskGroupActionStatus: <p>分组动作状态</p><p>枚举值：</p><ul><li>2001： 未开始</li><li>2002： 待执行</li><li>2003： 执行中</li><li>2004： 执行结束</li></ul>
         :type TaskGroupActionStatus: int
-        :param _TaskGroupActionCreateTime: 动作分组创建时间
+        :param _TaskGroupActionCreateTime: <p>动作分组创建时间</p>
         :type TaskGroupActionCreateTime: str
-        :param _TaskGroupActionUpdateTime: 动作分组更新时间
+        :param _TaskGroupActionUpdateTime: <p>动作分组更新时间</p>
         :type TaskGroupActionUpdateTime: str
-        :param _ActionTitle: 动作名称
+        :param _ActionTitle: <p>动作名称</p>
         :type ActionTitle: str
-        :param _TaskGroupActionStatusType: 状态类型: 0 -- 无状态，1 -- 成功，2-- 失败，3--终止，4--跳过
+        :param _TaskGroupActionStatusType: <p>状态类型: 0 -- 无状态，1 -- 成功，2-- 失败，3--终止，4--跳过</p>
         :type TaskGroupActionStatusType: int
-        :param _TaskGroupActionRandomId: RandomId
+        :param _TaskGroupActionRandomId: <p>RandomId</p>
         :type TaskGroupActionRandomId: int
-        :param _TaskGroupActionRecoverId: RecoverId
+        :param _TaskGroupActionRecoverId: <p>RecoverId</p>
         :type TaskGroupActionRecoverId: int
-        :param _TaskGroupActionExecuteId: ExecuteId
+        :param _TaskGroupActionExecuteId: <p>ExecuteId</p>
         :type TaskGroupActionExecuteId: int
-        :param _ActionApiType: 调用api类型，0:tat, 1:云api
+        :param _ActionApiType: <p>调用api类型，0:tat, 1:云api</p>
         :type ActionApiType: int
-        :param _ActionAttribute: 1:故障，2:恢复
+        :param _ActionAttribute: <p>1:故障，2:恢复</p>
         :type ActionAttribute: int
-        :param _ActionType: 动作类型：平台、自定义
+        :param _ActionType: <p>动作类型：平台、自定义</p>
         :type ActionType: str
-        :param _IsExecuteRedo: 是否可重试
+        :param _IsExecuteRedo: <p>是否可重试</p>
         :type IsExecuteRedo: bool
-        :param _ActionRisk: 动作风险级别
+        :param _ActionRisk: <p>动作风险级别</p>
         :type ActionRisk: str
-        :param _TaskGroupActionExecuteTime: 动作运行时间
+        :param _TaskGroupActionExecuteTime: <p>动作运行时间</p><p>单位：秒</p>
         :type TaskGroupActionExecuteTime: int
-        :param _TaskGroupActionStartTime: 动作开始执行时间
+        :param _TaskGroupActionStartTime: <p>动作开始执行时间</p>
         :type TaskGroupActionStartTime: str
         """
         self._TaskGroupActionId = None
@@ -4843,7 +4858,7 @@ class TaskGroupAction(AbstractModel):
 
     @property
     def TaskGroupActionId(self):
-        r"""任务分组动作ID
+        r"""<p>任务分组动作ID</p>
         :rtype: int
         """
         return self._TaskGroupActionId
@@ -4854,7 +4869,7 @@ class TaskGroupAction(AbstractModel):
 
     @property
     def TaskGroupInstances(self):
-        r"""任务分组动作实例列表
+        r"""<p>任务分组动作实例列表</p>
         :rtype: list of TaskGroupInstance
         """
         return self._TaskGroupInstances
@@ -4865,7 +4880,7 @@ class TaskGroupAction(AbstractModel):
 
     @property
     def ActionId(self):
-        r"""动作ID
+        r"""<p>动作ID</p>
         :rtype: int
         """
         return self._ActionId
@@ -4876,7 +4891,7 @@ class TaskGroupAction(AbstractModel):
 
     @property
     def TaskGroupActionOrder(self):
-        r"""分组动作顺序
+        r"""<p>分组动作顺序</p>
         :rtype: int
         """
         return self._TaskGroupActionOrder
@@ -4887,7 +4902,7 @@ class TaskGroupAction(AbstractModel):
 
     @property
     def TaskGroupActionGeneralConfiguration(self):
-        r"""分组动作通用配置
+        r"""<p>分组动作通用配置</p>
         :rtype: str
         """
         return self._TaskGroupActionGeneralConfiguration
@@ -4898,7 +4913,7 @@ class TaskGroupAction(AbstractModel):
 
     @property
     def TaskGroupActionCustomConfiguration(self):
-        r"""分组动作自定义配置
+        r"""<p>分组动作自定义配置</p>
         :rtype: str
         """
         return self._TaskGroupActionCustomConfiguration
@@ -4909,7 +4924,7 @@ class TaskGroupAction(AbstractModel):
 
     @property
     def TaskGroupActionStatus(self):
-        r"""分组动作状态
+        r"""<p>分组动作状态</p><p>枚举值：</p><ul><li>2001： 未开始</li><li>2002： 待执行</li><li>2003： 执行中</li><li>2004： 执行结束</li></ul>
         :rtype: int
         """
         return self._TaskGroupActionStatus
@@ -4920,7 +4935,7 @@ class TaskGroupAction(AbstractModel):
 
     @property
     def TaskGroupActionCreateTime(self):
-        r"""动作分组创建时间
+        r"""<p>动作分组创建时间</p>
         :rtype: str
         """
         return self._TaskGroupActionCreateTime
@@ -4931,7 +4946,7 @@ class TaskGroupAction(AbstractModel):
 
     @property
     def TaskGroupActionUpdateTime(self):
-        r"""动作分组更新时间
+        r"""<p>动作分组更新时间</p>
         :rtype: str
         """
         return self._TaskGroupActionUpdateTime
@@ -4942,7 +4957,7 @@ class TaskGroupAction(AbstractModel):
 
     @property
     def ActionTitle(self):
-        r"""动作名称
+        r"""<p>动作名称</p>
         :rtype: str
         """
         return self._ActionTitle
@@ -4953,7 +4968,7 @@ class TaskGroupAction(AbstractModel):
 
     @property
     def TaskGroupActionStatusType(self):
-        r"""状态类型: 0 -- 无状态，1 -- 成功，2-- 失败，3--终止，4--跳过
+        r"""<p>状态类型: 0 -- 无状态，1 -- 成功，2-- 失败，3--终止，4--跳过</p>
         :rtype: int
         """
         return self._TaskGroupActionStatusType
@@ -4964,7 +4979,7 @@ class TaskGroupAction(AbstractModel):
 
     @property
     def TaskGroupActionRandomId(self):
-        r"""RandomId
+        r"""<p>RandomId</p>
         :rtype: int
         """
         return self._TaskGroupActionRandomId
@@ -4975,7 +4990,7 @@ class TaskGroupAction(AbstractModel):
 
     @property
     def TaskGroupActionRecoverId(self):
-        r"""RecoverId
+        r"""<p>RecoverId</p>
         :rtype: int
         """
         return self._TaskGroupActionRecoverId
@@ -4986,7 +5001,7 @@ class TaskGroupAction(AbstractModel):
 
     @property
     def TaskGroupActionExecuteId(self):
-        r"""ExecuteId
+        r"""<p>ExecuteId</p>
         :rtype: int
         """
         return self._TaskGroupActionExecuteId
@@ -4997,7 +5012,7 @@ class TaskGroupAction(AbstractModel):
 
     @property
     def ActionApiType(self):
-        r"""调用api类型，0:tat, 1:云api
+        r"""<p>调用api类型，0:tat, 1:云api</p>
         :rtype: int
         """
         return self._ActionApiType
@@ -5008,7 +5023,7 @@ class TaskGroupAction(AbstractModel):
 
     @property
     def ActionAttribute(self):
-        r"""1:故障，2:恢复
+        r"""<p>1:故障，2:恢复</p>
         :rtype: int
         """
         return self._ActionAttribute
@@ -5019,7 +5034,7 @@ class TaskGroupAction(AbstractModel):
 
     @property
     def ActionType(self):
-        r"""动作类型：平台、自定义
+        r"""<p>动作类型：平台、自定义</p>
         :rtype: str
         """
         return self._ActionType
@@ -5030,7 +5045,7 @@ class TaskGroupAction(AbstractModel):
 
     @property
     def IsExecuteRedo(self):
-        r"""是否可重试
+        r"""<p>是否可重试</p>
         :rtype: bool
         """
         return self._IsExecuteRedo
@@ -5041,7 +5056,7 @@ class TaskGroupAction(AbstractModel):
 
     @property
     def ActionRisk(self):
-        r"""动作风险级别
+        r"""<p>动作风险级别</p>
         :rtype: str
         """
         return self._ActionRisk
@@ -5052,7 +5067,7 @@ class TaskGroupAction(AbstractModel):
 
     @property
     def TaskGroupActionExecuteTime(self):
-        r"""动作运行时间
+        r"""<p>动作运行时间</p><p>单位：秒</p>
         :rtype: int
         """
         return self._TaskGroupActionExecuteTime
@@ -5063,7 +5078,7 @@ class TaskGroupAction(AbstractModel):
 
     @property
     def TaskGroupActionStartTime(self):
-        r"""动作开始执行时间
+        r"""<p>动作开始执行时间</p>
         :rtype: str
         """
         return self._TaskGroupActionStartTime
@@ -5388,28 +5403,28 @@ class TaskGroupInstance(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskGroupInstanceId: 实例ID
+        :param _TaskGroupInstanceId: <p>实例ID</p>
         :type TaskGroupInstanceId: int
-        :param _TaskGroupInstanceObjectId: 实例ID
+        :param _TaskGroupInstanceObjectId: <p>实例ID</p>
         :type TaskGroupInstanceObjectId: str
-        :param _TaskGroupInstanceStatus: 实例动作执行状态
+        :param _TaskGroupInstanceStatus: <p>实例动作执行状态</p><p>枚举值：</p><ul><li>3001： 未开始</li><li>3002： 执行中</li><li>3003： 执行结束</li><li>3004： 准备中</li></ul>
         :type TaskGroupInstanceStatus: int
-        :param _TaskGroupInstanceCreateTime: 实例创建时间
+        :param _TaskGroupInstanceCreateTime: <p>实例创建时间</p>
         :type TaskGroupInstanceCreateTime: str
-        :param _TaskGroupInstanceUpdateTime: 实例更新时间
+        :param _TaskGroupInstanceUpdateTime: <p>实例更新时间</p>
         :type TaskGroupInstanceUpdateTime: str
-        :param _TaskGroupInstanceStatusType: 状态类型: 0 -- 无状态，1 -- 成功，2-- 失败，3--终止，4--跳过
+        :param _TaskGroupInstanceStatusType: <p>状态类型: 0 -- 无状态，1 -- 成功，2-- 失败，3--终止，4--跳过</p>
         :type TaskGroupInstanceStatusType: int
-        :param _TaskGroupInstanceStartTime: 执行开始时间
+        :param _TaskGroupInstanceStartTime: <p>执行开始时间</p>
         :type TaskGroupInstanceStartTime: str
-        :param _TaskGroupInstanceEndTime: 执行结束时间
+        :param _TaskGroupInstanceEndTime: <p>执行结束时间</p>
         :type TaskGroupInstanceEndTime: str
-        :param _TaskGroupInstanceExecuteLog: 实例动作执行日志
+        :param _TaskGroupInstanceExecuteLog: <p>实例动作执行日志</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskGroupInstanceExecuteLog: str
-        :param _TaskGroupInstanceIsRedo: 实例是否可重试
+        :param _TaskGroupInstanceIsRedo: <p>实例是否可重试</p>
         :type TaskGroupInstanceIsRedo: bool
-        :param _TaskGroupInstanceExecuteTime: 动作实例执行时间
+        :param _TaskGroupInstanceExecuteTime: <p>动作实例执行时间</p><p>单位：秒</p>
         :type TaskGroupInstanceExecuteTime: int
         """
         self._TaskGroupInstanceId = None
@@ -5426,7 +5441,7 @@ class TaskGroupInstance(AbstractModel):
 
     @property
     def TaskGroupInstanceId(self):
-        r"""实例ID
+        r"""<p>实例ID</p>
         :rtype: int
         """
         return self._TaskGroupInstanceId
@@ -5437,7 +5452,7 @@ class TaskGroupInstance(AbstractModel):
 
     @property
     def TaskGroupInstanceObjectId(self):
-        r"""实例ID
+        r"""<p>实例ID</p>
         :rtype: str
         """
         return self._TaskGroupInstanceObjectId
@@ -5448,7 +5463,7 @@ class TaskGroupInstance(AbstractModel):
 
     @property
     def TaskGroupInstanceStatus(self):
-        r"""实例动作执行状态
+        r"""<p>实例动作执行状态</p><p>枚举值：</p><ul><li>3001： 未开始</li><li>3002： 执行中</li><li>3003： 执行结束</li><li>3004： 准备中</li></ul>
         :rtype: int
         """
         return self._TaskGroupInstanceStatus
@@ -5459,7 +5474,7 @@ class TaskGroupInstance(AbstractModel):
 
     @property
     def TaskGroupInstanceCreateTime(self):
-        r"""实例创建时间
+        r"""<p>实例创建时间</p>
         :rtype: str
         """
         return self._TaskGroupInstanceCreateTime
@@ -5470,7 +5485,7 @@ class TaskGroupInstance(AbstractModel):
 
     @property
     def TaskGroupInstanceUpdateTime(self):
-        r"""实例更新时间
+        r"""<p>实例更新时间</p>
         :rtype: str
         """
         return self._TaskGroupInstanceUpdateTime
@@ -5481,7 +5496,7 @@ class TaskGroupInstance(AbstractModel):
 
     @property
     def TaskGroupInstanceStatusType(self):
-        r"""状态类型: 0 -- 无状态，1 -- 成功，2-- 失败，3--终止，4--跳过
+        r"""<p>状态类型: 0 -- 无状态，1 -- 成功，2-- 失败，3--终止，4--跳过</p>
         :rtype: int
         """
         return self._TaskGroupInstanceStatusType
@@ -5492,7 +5507,7 @@ class TaskGroupInstance(AbstractModel):
 
     @property
     def TaskGroupInstanceStartTime(self):
-        r"""执行开始时间
+        r"""<p>执行开始时间</p>
         :rtype: str
         """
         return self._TaskGroupInstanceStartTime
@@ -5503,7 +5518,7 @@ class TaskGroupInstance(AbstractModel):
 
     @property
     def TaskGroupInstanceEndTime(self):
-        r"""执行结束时间
+        r"""<p>执行结束时间</p>
         :rtype: str
         """
         return self._TaskGroupInstanceEndTime
@@ -5516,7 +5531,7 @@ class TaskGroupInstance(AbstractModel):
     def TaskGroupInstanceExecuteLog(self):
         warnings.warn("parameter `TaskGroupInstanceExecuteLog` is deprecated", DeprecationWarning) 
 
-        r"""实例动作执行日志
+        r"""<p>实例动作执行日志</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5530,7 +5545,7 @@ class TaskGroupInstance(AbstractModel):
 
     @property
     def TaskGroupInstanceIsRedo(self):
-        r"""实例是否可重试
+        r"""<p>实例是否可重试</p>
         :rtype: bool
         """
         return self._TaskGroupInstanceIsRedo
@@ -5541,7 +5556,7 @@ class TaskGroupInstance(AbstractModel):
 
     @property
     def TaskGroupInstanceExecuteTime(self):
-        r"""动作实例执行时间
+        r"""<p>动作实例执行时间</p><p>单位：秒</p>
         :rtype: int
         """
         return self._TaskGroupInstanceExecuteTime
@@ -5580,11 +5595,11 @@ class TaskGroupInstancesExecuteRules(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskGroupInstancesExecuteMode: 实例选取模式
+        :param _TaskGroupInstancesExecuteMode: <p>实例选取模式</p><p>枚举值：</p><ul><li>1： 全部注入</li><li>2： 随机选取指定比例注入</li><li>3： 随机选取指定数量注入</li></ul>
         :type TaskGroupInstancesExecuteMode: int
-        :param _TaskGroupInstancesExecutePercent: 按比例选取模式下选取比例
+        :param _TaskGroupInstancesExecutePercent: <p>按比例选取模式下选取比例</p>
         :type TaskGroupInstancesExecutePercent: int
-        :param _TaskGroupInstancesExecuteNum: 按数量选取模式下选取数量
+        :param _TaskGroupInstancesExecuteNum: <p>按数量选取模式下选取数量</p>
         :type TaskGroupInstancesExecuteNum: int
         """
         self._TaskGroupInstancesExecuteMode = None
@@ -5593,7 +5608,7 @@ class TaskGroupInstancesExecuteRules(AbstractModel):
 
     @property
     def TaskGroupInstancesExecuteMode(self):
-        r"""实例选取模式
+        r"""<p>实例选取模式</p><p>枚举值：</p><ul><li>1： 全部注入</li><li>2： 随机选取指定比例注入</li><li>3： 随机选取指定数量注入</li></ul>
         :rtype: int
         """
         return self._TaskGroupInstancesExecuteMode
@@ -5604,7 +5619,7 @@ class TaskGroupInstancesExecuteRules(AbstractModel):
 
     @property
     def TaskGroupInstancesExecutePercent(self):
-        r"""按比例选取模式下选取比例
+        r"""<p>按比例选取模式下选取比例</p>
         :rtype: int
         """
         return self._TaskGroupInstancesExecutePercent
@@ -5615,7 +5630,7 @@ class TaskGroupInstancesExecuteRules(AbstractModel):
 
     @property
     def TaskGroupInstancesExecuteNum(self):
-        r"""按数量选取模式下选取数量
+        r"""<p>按数量选取模式下选取数量</p>
         :rtype: int
         """
         return self._TaskGroupInstancesExecuteNum
@@ -6257,16 +6272,15 @@ class TaskTarget(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TargetId: 目标标签ID
+        :param _TargetId: <p>目标标签ID</p>
         :type TargetId: int
-        :param _TargetDesc: 目标描述
+        :param _TargetDesc: <p>目标描述</p>
         :type TargetDesc: str
-        :param _Type: 1:演练场景
-2:演练目标
+        :param _Type: <p>1:演练场景<br>2:演练目标</p>
         :type Type: int
-        :param _Source: 1:平台 2:用户个人
+        :param _Source: <p>1:平台 2:用户个人</p>
         :type Source: int
-        :param _TargetStatus: 目标标签是否已被删除
+        :param _TargetStatus: <p>目标标签是否已被删除</p><p>枚举值：</p><ul><li>0： 未删除</li><li>1： 已删除</li></ul>
         :type TargetStatus: int
         """
         self._TargetId = None
@@ -6277,7 +6291,7 @@ class TaskTarget(AbstractModel):
 
     @property
     def TargetId(self):
-        r"""目标标签ID
+        r"""<p>目标标签ID</p>
         :rtype: int
         """
         return self._TargetId
@@ -6288,7 +6302,7 @@ class TaskTarget(AbstractModel):
 
     @property
     def TargetDesc(self):
-        r"""目标描述
+        r"""<p>目标描述</p>
         :rtype: str
         """
         return self._TargetDesc
@@ -6299,8 +6313,7 @@ class TaskTarget(AbstractModel):
 
     @property
     def Type(self):
-        r"""1:演练场景
-2:演练目标
+        r"""<p>1:演练场景<br>2:演练目标</p>
         :rtype: int
         """
         return self._Type
@@ -6311,7 +6324,7 @@ class TaskTarget(AbstractModel):
 
     @property
     def Source(self):
-        r"""1:平台 2:用户个人
+        r"""<p>1:平台 2:用户个人</p>
         :rtype: int
         """
         return self._Source
@@ -6322,7 +6335,7 @@ class TaskTarget(AbstractModel):
 
     @property
     def TargetStatus(self):
-        r"""目标标签是否已被删除
+        r"""<p>目标标签是否已被删除</p><p>枚举值：</p><ul><li>0： 未删除</li><li>1： 已删除</li></ul>
         :rtype: int
         """
         return self._TargetStatus
