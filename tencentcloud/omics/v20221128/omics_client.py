@@ -141,6 +141,52 @@ class OmicsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeApplicationVersions(self, request):
+        r"""查询应用版本列表
+
+        :param request: Request instance for DescribeApplicationVersions.
+        :type request: :class:`tencentcloud.omics.v20221128.models.DescribeApplicationVersionsRequest`
+        :rtype: :class:`tencentcloud.omics.v20221128.models.DescribeApplicationVersionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeApplicationVersions", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeApplicationVersionsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeApplications(self, request):
+        r"""查询项目应用列表
+
+        :param request: Request instance for DescribeApplications.
+        :type request: :class:`tencentcloud.omics.v20221128.models.DescribeApplicationsRequest`
+        :rtype: :class:`tencentcloud.omics.v20221128.models.DescribeApplicationsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeApplications", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeApplicationsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeEnvironments(self, request):
         r"""查询环境列表。
 
@@ -201,6 +247,52 @@ class OmicsClient(AbstractClient):
             body = self.call("DescribeHPCNodes", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeHPCNodesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeInputTemplates(self, request):
+        r"""查询运行参数模板列表
+
+        :param request: Request instance for DescribeInputTemplates.
+        :type request: :class:`tencentcloud.omics.v20221128.models.DescribeInputTemplatesRequest`
+        :rtype: :class:`tencentcloud.omics.v20221128.models.DescribeInputTemplatesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInputTemplates", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInputTemplatesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeProjects(self, request):
+        r"""查询项目列表
+
+        :param request: Request instance for DescribeProjects.
+        :type request: :class:`tencentcloud.omics.v20221128.models.DescribeProjectsRequest`
+        :rtype: :class:`tencentcloud.omics.v20221128.models.DescribeProjectsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeProjects", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeProjectsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -325,6 +417,29 @@ class OmicsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def GetInputTemplateFile(self, request):
+        r"""查询运行参数模板内容
+
+        :param request: Request instance for GetInputTemplateFile.
+        :type request: :class:`tencentcloud.omics.v20221128.models.GetInputTemplateFileRequest`
+        :rtype: :class:`tencentcloud.omics.v20221128.models.GetInputTemplateFileResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetInputTemplateFile", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetInputTemplateFileResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def GetRunCalls(self, request):
         r"""查询作业详情。
 
@@ -385,6 +500,29 @@ class OmicsClient(AbstractClient):
             body = self.call("GetRunStatus", params, headers=headers)
             response = json.loads(body)
             model = models.GetRunStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ImportCommonApplication(self, request):
+        r"""导入公共应用到项目
+
+        :param request: Request instance for ImportCommonApplication.
+        :type request: :class:`tencentcloud.omics.v20221128.models.ImportCommonApplicationRequest`
+        :rtype: :class:`tencentcloud.omics.v20221128.models.ImportCommonApplicationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ImportCommonApplication", params, headers=headers)
+            response = json.loads(body)
+            model = models.ImportCommonApplicationResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

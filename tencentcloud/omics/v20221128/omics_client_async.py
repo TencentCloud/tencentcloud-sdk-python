@@ -115,6 +115,42 @@ class OmicsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeApplicationVersions(
+            self,
+            request: models.DescribeApplicationVersionsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeApplicationVersionsResponse:
+        """
+        查询应用版本列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeApplicationVersions"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeApplicationVersionsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeApplications(
+            self,
+            request: models.DescribeApplicationsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeApplicationsResponse:
+        """
+        查询项目应用列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeApplications"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeApplicationsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeEnvironments(
             self,
             request: models.DescribeEnvironmentsRequest,
@@ -164,6 +200,42 @@ class OmicsClient(AbstractClient):
         kwargs["action"] = "DescribeHPCNodes"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeHPCNodesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeInputTemplates(
+            self,
+            request: models.DescribeInputTemplatesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeInputTemplatesResponse:
+        """
+        查询运行参数模板列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeInputTemplates"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeInputTemplatesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeProjects(
+            self,
+            request: models.DescribeProjectsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeProjectsResponse:
+        """
+        查询项目列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeProjects"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeProjectsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -259,6 +331,24 @@ class OmicsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def GetInputTemplateFile(
+            self,
+            request: models.GetInputTemplateFileRequest,
+            opts: Dict = None,
+    ) -> models.GetInputTemplateFileResponse:
+        """
+        查询运行参数模板内容
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetInputTemplateFile"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetInputTemplateFileResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def GetRunCalls(
             self,
             request: models.GetRunCallsRequest,
@@ -308,6 +398,24 @@ class OmicsClient(AbstractClient):
         kwargs["action"] = "GetRunStatus"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.GetRunStatusResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ImportCommonApplication(
+            self,
+            request: models.ImportCommonApplicationRequest,
+            opts: Dict = None,
+    ) -> models.ImportCommonApplicationResponse:
+        """
+        导入公共应用到项目
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ImportCommonApplication"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ImportCommonApplicationResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

@@ -18,6 +18,278 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class Application(AbstractModel):
+    r"""应用详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ApplicationId: <p>应用ID</p>
+        :type ApplicationId: str
+        :param _ProjectId: <p>项目ID</p>
+        :type ProjectId: str
+        :param _Name: <p>名称</p>
+        :type Name: str
+        :param _Description: <p>描述</p>
+        :type Description: str
+        :param _Type: <p>类型</p><p>枚举值：</p><ul><li>WDL： WDL</li><li>NEXTFLOW： NEXTFLOW</li></ul>
+        :type Type: str
+        :param _Entrypoint: <p>代码入口</p>
+        :type Entrypoint: str
+        :param _CreateTime: <p>创建时间</p>
+        :type CreateTime: str
+        :param _UpdateTime: <p>更新时间</p>
+        :type UpdateTime: str
+        :param _Creator: <p>创建人</p>
+        :type Creator: str
+        :param _CreatorId: <p>创建人ID</p>
+        :type CreatorId: str
+        :param _VersionCount: <p>版本数量</p>
+        :type VersionCount: int
+        :param _Versions: <p>版本列表</p>
+        :type Versions: list of ApplicationVersion
+        :param _GitSource: <p>GIT信息</p>
+        :type GitSource: :class:`tencentcloud.omics.v20221128.models.GitInfo`
+        :param _RunConstraints: <p>运行限制</p>
+        :type RunConstraints: :class:`tencentcloud.omics.v20221128.models.RunConstraints`
+        :param _CosSource: <p>应用COS文件信息</p>
+        :type CosSource: :class:`tencentcloud.omics.v20221128.models.CosFileInfo`
+        :param _SortOrder: <p>排序顺序</p>
+        :type SortOrder: int
+        """
+        self._ApplicationId = None
+        self._ProjectId = None
+        self._Name = None
+        self._Description = None
+        self._Type = None
+        self._Entrypoint = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._Creator = None
+        self._CreatorId = None
+        self._VersionCount = None
+        self._Versions = None
+        self._GitSource = None
+        self._RunConstraints = None
+        self._CosSource = None
+        self._SortOrder = None
+
+    @property
+    def ApplicationId(self):
+        r"""<p>应用ID</p>
+        :rtype: str
+        """
+        return self._ApplicationId
+
+    @ApplicationId.setter
+    def ApplicationId(self, ApplicationId):
+        self._ApplicationId = ApplicationId
+
+    @property
+    def ProjectId(self):
+        r"""<p>项目ID</p>
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def Name(self):
+        r"""<p>名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Type(self):
+        r"""<p>类型</p><p>枚举值：</p><ul><li>WDL： WDL</li><li>NEXTFLOW： NEXTFLOW</li></ul>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Entrypoint(self):
+        r"""<p>代码入口</p>
+        :rtype: str
+        """
+        return self._Entrypoint
+
+    @Entrypoint.setter
+    def Entrypoint(self, Entrypoint):
+        self._Entrypoint = Entrypoint
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""<p>更新时间</p>
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def Creator(self):
+        r"""<p>创建人</p>
+        :rtype: str
+        """
+        return self._Creator
+
+    @Creator.setter
+    def Creator(self, Creator):
+        self._Creator = Creator
+
+    @property
+    def CreatorId(self):
+        r"""<p>创建人ID</p>
+        :rtype: str
+        """
+        return self._CreatorId
+
+    @CreatorId.setter
+    def CreatorId(self, CreatorId):
+        self._CreatorId = CreatorId
+
+    @property
+    def VersionCount(self):
+        r"""<p>版本数量</p>
+        :rtype: int
+        """
+        return self._VersionCount
+
+    @VersionCount.setter
+    def VersionCount(self, VersionCount):
+        self._VersionCount = VersionCount
+
+    @property
+    def Versions(self):
+        r"""<p>版本列表</p>
+        :rtype: list of ApplicationVersion
+        """
+        return self._Versions
+
+    @Versions.setter
+    def Versions(self, Versions):
+        self._Versions = Versions
+
+    @property
+    def GitSource(self):
+        r"""<p>GIT信息</p>
+        :rtype: :class:`tencentcloud.omics.v20221128.models.GitInfo`
+        """
+        return self._GitSource
+
+    @GitSource.setter
+    def GitSource(self, GitSource):
+        self._GitSource = GitSource
+
+    @property
+    def RunConstraints(self):
+        r"""<p>运行限制</p>
+        :rtype: :class:`tencentcloud.omics.v20221128.models.RunConstraints`
+        """
+        return self._RunConstraints
+
+    @RunConstraints.setter
+    def RunConstraints(self, RunConstraints):
+        self._RunConstraints = RunConstraints
+
+    @property
+    def CosSource(self):
+        r"""<p>应用COS文件信息</p>
+        :rtype: :class:`tencentcloud.omics.v20221128.models.CosFileInfo`
+        """
+        return self._CosSource
+
+    @CosSource.setter
+    def CosSource(self, CosSource):
+        self._CosSource = CosSource
+
+    @property
+    def SortOrder(self):
+        r"""<p>排序顺序</p>
+        :rtype: int
+        """
+        return self._SortOrder
+
+    @SortOrder.setter
+    def SortOrder(self, SortOrder):
+        self._SortOrder = SortOrder
+
+
+    def _deserialize(self, params):
+        self._ApplicationId = params.get("ApplicationId")
+        self._ProjectId = params.get("ProjectId")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._Type = params.get("Type")
+        self._Entrypoint = params.get("Entrypoint")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._Creator = params.get("Creator")
+        self._CreatorId = params.get("CreatorId")
+        self._VersionCount = params.get("VersionCount")
+        if params.get("Versions") is not None:
+            self._Versions = []
+            for item in params.get("Versions"):
+                obj = ApplicationVersion()
+                obj._deserialize(item)
+                self._Versions.append(obj)
+        if params.get("GitSource") is not None:
+            self._GitSource = GitInfo()
+            self._GitSource._deserialize(params.get("GitSource"))
+        if params.get("RunConstraints") is not None:
+            self._RunConstraints = RunConstraints()
+            self._RunConstraints._deserialize(params.get("RunConstraints"))
+        if params.get("CosSource") is not None:
+            self._CosSource = CosFileInfo()
+            self._CosSource._deserialize(params.get("CosSource"))
+        self._SortOrder = params.get("SortOrder")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ApplicationVersion(AbstractModel):
     r"""应用版本。
 
@@ -1186,6 +1458,314 @@ class DeleteVolumeResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeApplicationVersionsRequest(AbstractModel):
+    r"""DescribeApplicationVersions请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: <p>项目ID</p>
+        :type ProjectId: str
+        :param _ApplicationId: <p>运行应用ID</p>
+        :type ApplicationId: str
+        :param _Offset: <p>翻页入参</p>
+        :type Offset: int
+        :param _Limit: <p>翻页入参</p>
+        :type Limit: int
+        """
+        self._ProjectId = None
+        self._ApplicationId = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def ProjectId(self):
+        r"""<p>项目ID</p>
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def ApplicationId(self):
+        r"""<p>运行应用ID</p>
+        :rtype: str
+        """
+        return self._ApplicationId
+
+    @ApplicationId.setter
+    def ApplicationId(self, ApplicationId):
+        self._ApplicationId = ApplicationId
+
+    @property
+    def Offset(self):
+        r"""<p>翻页入参</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>翻页入参</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._ApplicationId = params.get("ApplicationId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeApplicationVersionsResponse(AbstractModel):
+    r"""DescribeApplicationVersions返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ApplicationVersions: <p>应用运行版本列表</p>
+        :type ApplicationVersions: list of ApplicationVersion
+        :param _TotalCount: <p>应用运行版本列表总数</p>
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ApplicationVersions = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def ApplicationVersions(self):
+        r"""<p>应用运行版本列表</p>
+        :rtype: list of ApplicationVersion
+        """
+        return self._ApplicationVersions
+
+    @ApplicationVersions.setter
+    def ApplicationVersions(self, ApplicationVersions):
+        self._ApplicationVersions = ApplicationVersions
+
+    @property
+    def TotalCount(self):
+        r"""<p>应用运行版本列表总数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ApplicationVersions") is not None:
+            self._ApplicationVersions = []
+            for item in params.get("ApplicationVersions"):
+                obj = ApplicationVersion()
+                obj._deserialize(item)
+                self._ApplicationVersions.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeApplicationsRequest(AbstractModel):
+    r"""DescribeApplications请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: <p>项目ID</p>
+        :type ProjectId: str
+        :param _Limit: <p>翻页入参</p>
+        :type Limit: int
+        :param _Offset: <p>翻页入参</p>
+        :type Offset: int
+        :param _Filters: <p>过滤器，支持过滤字段：</p><ul><li>Name：应用名称</li><li>ApplicationId：应用ID</li><li>HasRun</li><li>CreatorId：创建人ID</li><li>Type：应用类型</li></ul>
+        :type Filters: list of Filter
+        :param _OrderBy: <p>排序</p>
+        :type OrderBy: str
+        """
+        self._ProjectId = None
+        self._Limit = None
+        self._Offset = None
+        self._Filters = None
+        self._OrderBy = None
+
+    @property
+    def ProjectId(self):
+        r"""<p>项目ID</p>
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def Limit(self):
+        r"""<p>翻页入参</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""<p>翻页入参</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Filters(self):
+        r"""<p>过滤器，支持过滤字段：</p><ul><li>Name：应用名称</li><li>ApplicationId：应用ID</li><li>HasRun</li><li>CreatorId：创建人ID</li><li>Type：应用类型</li></ul>
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def OrderBy(self):
+        r"""<p>排序</p>
+        :rtype: str
+        """
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._OrderBy = params.get("OrderBy")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeApplicationsResponse(AbstractModel):
+    r"""DescribeApplications返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>应用列表总数</p>
+        :type TotalCount: int
+        :param _Applications: <p>应用列表</p>
+        :type Applications: list of Application
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Applications = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>应用列表总数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Applications(self):
+        r"""<p>应用列表</p>
+        :rtype: list of Application
+        """
+        return self._Applications
+
+    @Applications.setter
+    def Applications(self, Applications):
+        self._Applications = Applications
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Applications") is not None:
+            self._Applications = []
+            for item in params.get("Applications"):
+                obj = Application()
+                obj._deserialize(item)
+                self._Applications.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeEnvironmentsRequest(AbstractModel):
     r"""DescribeEnvironments请求参数结构体
 
@@ -1646,6 +2226,323 @@ class DescribeHPCNodesResponse(AbstractModel):
                 obj._deserialize(item)
                 self._Nodes.append(obj)
         self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeInputTemplatesRequest(AbstractModel):
+    r"""DescribeInputTemplates请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: <p>项目ID</p>
+        :type ProjectId: str
+        :param _Limit: <p>翻页入参</p>
+        :type Limit: int
+        :param _Offset: <p>翻页入参</p>
+        :type Offset: int
+        :param _Filters: <p>过滤器，支持过滤字段：</p><ul><li>Name：模板名称</li><li>InputTemplateId：模板ID</li></ul>
+        :type Filters: list of Filter
+        :param _ApplicationVersionId: <p>运行应用版本ID</p>
+        :type ApplicationVersionId: str
+        :param _ApplicationId: <p>运行应用ID</p>
+        :type ApplicationId: str
+        """
+        self._ProjectId = None
+        self._Limit = None
+        self._Offset = None
+        self._Filters = None
+        self._ApplicationVersionId = None
+        self._ApplicationId = None
+
+    @property
+    def ProjectId(self):
+        r"""<p>项目ID</p>
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def Limit(self):
+        r"""<p>翻页入参</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""<p>翻页入参</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Filters(self):
+        r"""<p>过滤器，支持过滤字段：</p><ul><li>Name：模板名称</li><li>InputTemplateId：模板ID</li></ul>
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def ApplicationVersionId(self):
+        r"""<p>运行应用版本ID</p>
+        :rtype: str
+        """
+        return self._ApplicationVersionId
+
+    @ApplicationVersionId.setter
+    def ApplicationVersionId(self, ApplicationVersionId):
+        self._ApplicationVersionId = ApplicationVersionId
+
+    @property
+    def ApplicationId(self):
+        r"""<p>运行应用ID</p>
+        :rtype: str
+        """
+        return self._ApplicationId
+
+    @ApplicationId.setter
+    def ApplicationId(self, ApplicationId):
+        self._ApplicationId = ApplicationId
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._ApplicationVersionId = params.get("ApplicationVersionId")
+        self._ApplicationId = params.get("ApplicationId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInputTemplatesResponse(AbstractModel):
+    r"""DescribeInputTemplates返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InputTemplates: <p>运行应用参数模板列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InputTemplates: list of InputTemplate
+        :param _TotalCount: <p>运行参数模板列表总数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._InputTemplates = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def InputTemplates(self):
+        r"""<p>运行应用参数模板列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of InputTemplate
+        """
+        return self._InputTemplates
+
+    @InputTemplates.setter
+    def InputTemplates(self, InputTemplates):
+        self._InputTemplates = InputTemplates
+
+    @property
+    def TotalCount(self):
+        r"""<p>运行参数模板列表总数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("InputTemplates") is not None:
+            self._InputTemplates = []
+            for item in params.get("InputTemplates"):
+                obj = InputTemplate()
+                obj._deserialize(item)
+                self._InputTemplates.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeProjectsRequest(AbstractModel):
+    r"""DescribeProjects请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Limit: <p>翻页入参</p>
+        :type Limit: int
+        :param _Offset: <p>翻页入参</p>
+        :type Offset: int
+        :param _Filters: <p>过滤器，支持过滤字段：</p><ul><li>Name：项目名称</li><li>ProjectId：项目ID</li><li>Region：地域</li></ul>
+        :type Filters: list of Filter
+        """
+        self._Limit = None
+        self._Offset = None
+        self._Filters = None
+
+    @property
+    def Limit(self):
+        r"""<p>翻页入参</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""<p>翻页入参</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Filters(self):
+        r"""<p>过滤器，支持过滤字段：</p><ul><li>Name：项目名称</li><li>ProjectId：项目ID</li><li>Region：地域</li></ul>
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeProjectsResponse(AbstractModel):
+    r"""DescribeProjects返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>项目列表总数</p>
+        :type TotalCount: int
+        :param _Projects: <p>项目列表</p>
+        :type Projects: list of Project
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Projects = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>项目列表总数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Projects(self):
+        r"""<p>项目列表</p>
+        :rtype: list of Project
+        """
+        return self._Projects
+
+    @Projects.setter
+    def Projects(self, Projects):
+        self._Projects = Projects
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Projects") is not None:
+            self._Projects = []
+            for item in params.get("Projects"):
+                obj = Project()
+                obj._deserialize(item)
+                self._Projects.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -2993,6 +3890,149 @@ class Filter(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class GetInputTemplateFileRequest(AbstractModel):
+    r"""GetInputTemplateFile请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InputTemplateId: <p>运行参数模板ID</p>
+        :type InputTemplateId: str
+        :param _ProjectId: <p>项目ID</p>
+        :type ProjectId: str
+        :param _ApplicationVersionId: <p>运行应用版本ID</p>
+        :type ApplicationVersionId: str
+        :param _ApplicationId: <p>运行应用ID</p>
+        :type ApplicationId: str
+        """
+        self._InputTemplateId = None
+        self._ProjectId = None
+        self._ApplicationVersionId = None
+        self._ApplicationId = None
+
+    @property
+    def InputTemplateId(self):
+        r"""<p>运行参数模板ID</p>
+        :rtype: str
+        """
+        return self._InputTemplateId
+
+    @InputTemplateId.setter
+    def InputTemplateId(self, InputTemplateId):
+        self._InputTemplateId = InputTemplateId
+
+    @property
+    def ProjectId(self):
+        r"""<p>项目ID</p>
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def ApplicationVersionId(self):
+        r"""<p>运行应用版本ID</p>
+        :rtype: str
+        """
+        return self._ApplicationVersionId
+
+    @ApplicationVersionId.setter
+    def ApplicationVersionId(self, ApplicationVersionId):
+        self._ApplicationVersionId = ApplicationVersionId
+
+    @property
+    def ApplicationId(self):
+        r"""<p>运行应用ID</p>
+        :rtype: str
+        """
+        return self._ApplicationId
+
+    @ApplicationId.setter
+    def ApplicationId(self, ApplicationId):
+        self._ApplicationId = ApplicationId
+
+
+    def _deserialize(self, params):
+        self._InputTemplateId = params.get("InputTemplateId")
+        self._ProjectId = params.get("ProjectId")
+        self._ApplicationVersionId = params.get("ApplicationVersionId")
+        self._ApplicationId = params.get("ApplicationId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetInputTemplateFileResponse(AbstractModel):
+    r"""GetInputTemplateFile返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CosSignedUrl: <p>COS签名url</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CosSignedUrl: str
+        :param _Content: <p>模板内容</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Content: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._CosSignedUrl = None
+        self._Content = None
+        self._RequestId = None
+
+    @property
+    def CosSignedUrl(self):
+        r"""<p>COS签名url</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CosSignedUrl
+
+    @CosSignedUrl.setter
+    def CosSignedUrl(self, CosSignedUrl):
+        self._CosSignedUrl = CosSignedUrl
+
+    @property
+    def Content(self):
+        r"""<p>模板内容</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._CosSignedUrl = params.get("CosSignedUrl")
+        self._Content = params.get("Content")
+        self._RequestId = params.get("RequestId")
 
 
 class GetRunCallsRequest(AbstractModel):
@@ -4361,6 +5401,162 @@ class HPCNode(AbstractModel):
         
 
 
+class ImportCommonApplicationRequest(AbstractModel):
+    r"""ImportCommonApplication请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CommonAppUuid: <p>公共应用ID</p>
+        :type CommonAppUuid: str
+        :param _CommonAppNewName: <p>公共应用重命名</p>
+        :type CommonAppNewName: str
+        :param _ProjectId: <p>项目ID</p>
+        :type ProjectId: str
+        :param _Type: <p>公共应用类型</p><p>枚举值：</p><ul><li>WDL： WDL</li><li>NEXTFLOW： NEXTFLOW</li></ul>
+        :type Type: str
+        :param _NextflowVersion: <p>NEXTFLOW版本</p>
+        :type NextflowVersion: str
+        :param _Internal: <p>是否内部应用</p>
+        :type Internal: bool
+        """
+        self._CommonAppUuid = None
+        self._CommonAppNewName = None
+        self._ProjectId = None
+        self._Type = None
+        self._NextflowVersion = None
+        self._Internal = None
+
+    @property
+    def CommonAppUuid(self):
+        r"""<p>公共应用ID</p>
+        :rtype: str
+        """
+        return self._CommonAppUuid
+
+    @CommonAppUuid.setter
+    def CommonAppUuid(self, CommonAppUuid):
+        self._CommonAppUuid = CommonAppUuid
+
+    @property
+    def CommonAppNewName(self):
+        r"""<p>公共应用重命名</p>
+        :rtype: str
+        """
+        return self._CommonAppNewName
+
+    @CommonAppNewName.setter
+    def CommonAppNewName(self, CommonAppNewName):
+        self._CommonAppNewName = CommonAppNewName
+
+    @property
+    def ProjectId(self):
+        r"""<p>项目ID</p>
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def Type(self):
+        r"""<p>公共应用类型</p><p>枚举值：</p><ul><li>WDL： WDL</li><li>NEXTFLOW： NEXTFLOW</li></ul>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def NextflowVersion(self):
+        r"""<p>NEXTFLOW版本</p>
+        :rtype: str
+        """
+        return self._NextflowVersion
+
+    @NextflowVersion.setter
+    def NextflowVersion(self, NextflowVersion):
+        self._NextflowVersion = NextflowVersion
+
+    @property
+    def Internal(self):
+        r"""<p>是否内部应用</p>
+        :rtype: bool
+        """
+        return self._Internal
+
+    @Internal.setter
+    def Internal(self, Internal):
+        self._Internal = Internal
+
+
+    def _deserialize(self, params):
+        self._CommonAppUuid = params.get("CommonAppUuid")
+        self._CommonAppNewName = params.get("CommonAppNewName")
+        self._ProjectId = params.get("ProjectId")
+        self._Type = params.get("Type")
+        self._NextflowVersion = params.get("NextflowVersion")
+        self._Internal = params.get("Internal")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ImportCommonApplicationResponse(AbstractModel):
+    r"""ImportCommonApplication返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ApplicationId: <p>应用ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplicationId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ApplicationId = None
+        self._RequestId = None
+
+    @property
+    def ApplicationId(self):
+        r"""<p>应用ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ApplicationId
+
+    @ApplicationId.setter
+    def ApplicationId(self, ApplicationId):
+        self._ApplicationId = ApplicationId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ApplicationId = params.get("ApplicationId")
+        self._RequestId = params.get("RequestId")
+
+
 class ImportTableFileRequest(AbstractModel):
     r"""ImportTableFile请求参数结构体
 
@@ -4498,6 +5694,162 @@ class ImportTableFileResponse(AbstractModel):
     def _deserialize(self, params):
         self._TableId = params.get("TableId")
         self._RequestId = params.get("RequestId")
+
+
+class InputTemplate(AbstractModel):
+    r"""运行参数模板
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Uuid: <p>唯一ID</p>
+        :type Uuid: str
+        :param _InputTemplateId: <p>应用输入模板ID</p>
+        :type InputTemplateId: str
+        :param _ProjectId: <p>关联项目ID</p>
+        :type ProjectId: str
+        :param _ApplicationId: <p>关联应用ID</p>
+        :type ApplicationId: str
+        :param _ApplicationVersionId: <p>关联应用版本</p>
+        :type ApplicationVersionId: str
+        :param _Name: <p>名称</p>
+        :type Name: str
+        :param _Description: <p>描述</p>
+        :type Description: str
+        :param _Creator: <p>创建人</p>
+        :type Creator: str
+        :param _CreatorId: <p>创建人ID</p>
+        :type CreatorId: str
+        """
+        self._Uuid = None
+        self._InputTemplateId = None
+        self._ProjectId = None
+        self._ApplicationId = None
+        self._ApplicationVersionId = None
+        self._Name = None
+        self._Description = None
+        self._Creator = None
+        self._CreatorId = None
+
+    @property
+    def Uuid(self):
+        r"""<p>唯一ID</p>
+        :rtype: str
+        """
+        return self._Uuid
+
+    @Uuid.setter
+    def Uuid(self, Uuid):
+        self._Uuid = Uuid
+
+    @property
+    def InputTemplateId(self):
+        r"""<p>应用输入模板ID</p>
+        :rtype: str
+        """
+        return self._InputTemplateId
+
+    @InputTemplateId.setter
+    def InputTemplateId(self, InputTemplateId):
+        self._InputTemplateId = InputTemplateId
+
+    @property
+    def ProjectId(self):
+        r"""<p>关联项目ID</p>
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def ApplicationId(self):
+        r"""<p>关联应用ID</p>
+        :rtype: str
+        """
+        return self._ApplicationId
+
+    @ApplicationId.setter
+    def ApplicationId(self, ApplicationId):
+        self._ApplicationId = ApplicationId
+
+    @property
+    def ApplicationVersionId(self):
+        r"""<p>关联应用版本</p>
+        :rtype: str
+        """
+        return self._ApplicationVersionId
+
+    @ApplicationVersionId.setter
+    def ApplicationVersionId(self, ApplicationVersionId):
+        self._ApplicationVersionId = ApplicationVersionId
+
+    @property
+    def Name(self):
+        r"""<p>名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Creator(self):
+        r"""<p>创建人</p>
+        :rtype: str
+        """
+        return self._Creator
+
+    @Creator.setter
+    def Creator(self, Creator):
+        self._Creator = Creator
+
+    @property
+    def CreatorId(self):
+        r"""<p>创建人ID</p>
+        :rtype: str
+        """
+        return self._CreatorId
+
+    @CreatorId.setter
+    def CreatorId(self, CreatorId):
+        self._CreatorId = CreatorId
+
+
+    def _deserialize(self, params):
+        self._Uuid = params.get("Uuid")
+        self._InputTemplateId = params.get("InputTemplateId")
+        self._ProjectId = params.get("ProjectId")
+        self._ApplicationId = params.get("ApplicationId")
+        self._ApplicationVersionId = params.get("ApplicationVersionId")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._Creator = params.get("Creator")
+        self._CreatorId = params.get("CreatorId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class LimitRange(AbstractModel):
@@ -4852,6 +6204,147 @@ class NotificationType(AbstractModel):
         self._StationMessage = params.get("StationMessage")
         self._Email = params.get("Email")
         self._CurrentUserEmail = params.get("CurrentUserEmail")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Project(AbstractModel):
+    r"""项目信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: <p>项目ID</p>
+        :type ProjectId: str
+        :param _Name: <p>名称</p>
+        :type Name: str
+        :param _Description: <p>描述</p>
+        :type Description: str
+        :param _Region: <p>地域</p>
+        :type Region: str
+        :param _CreateTime: <p>创建时间</p>
+        :type CreateTime: str
+        :param _UpdateTime: <p>更新时间</p>
+        :type UpdateTime: str
+        :param _Creator: <p>创建人</p>
+        :type Creator: str
+        :param _IsDefault: <p>是否默认项目</p>
+        :type IsDefault: bool
+        """
+        self._ProjectId = None
+        self._Name = None
+        self._Description = None
+        self._Region = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._Creator = None
+        self._IsDefault = None
+
+    @property
+    def ProjectId(self):
+        r"""<p>项目ID</p>
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def Name(self):
+        r"""<p>名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Region(self):
+        r"""<p>地域</p>
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""<p>更新时间</p>
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def Creator(self):
+        r"""<p>创建人</p>
+        :rtype: str
+        """
+        return self._Creator
+
+    @Creator.setter
+    def Creator(self, Creator):
+        self._Creator = Creator
+
+    @property
+    def IsDefault(self):
+        r"""<p>是否默认项目</p>
+        :rtype: bool
+        """
+        return self._IsDefault
+
+    @IsDefault.setter
+    def IsDefault(self, IsDefault):
+        self._IsDefault = IsDefault
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._Region = params.get("Region")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._Creator = params.get("Creator")
+        self._IsDefault = params.get("IsDefault")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5985,6 +7478,42 @@ class RunApplicationResponse(AbstractModel):
     def _deserialize(self, params):
         self._RunGroupId = params.get("RunGroupId")
         self._RequestId = params.get("RequestId")
+
+
+class RunConstraints(AbstractModel):
+    r"""运行限制
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NextflowVersion: <p>运行时可选的Nextflow版本</p>
+        :type NextflowVersion: list of str
+        """
+        self._NextflowVersion = None
+
+    @property
+    def NextflowVersion(self):
+        r"""<p>运行时可选的Nextflow版本</p>
+        :rtype: list of str
+        """
+        return self._NextflowVersion
+
+    @NextflowVersion.setter
+    def NextflowVersion(self, NextflowVersion):
+        self._NextflowVersion = NextflowVersion
+
+
+    def _deserialize(self, params):
+        self._NextflowVersion = params.get("NextflowVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class RunGroup(AbstractModel):
