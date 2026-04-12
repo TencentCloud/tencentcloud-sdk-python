@@ -241,6 +241,24 @@ class OmicsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribePublicApplications(
+            self,
+            request: models.DescribePublicApplicationsRequest,
+            opts: Dict = None,
+    ) -> models.DescribePublicApplicationsResponse:
+        """
+        查询公共应用列表。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribePublicApplications"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribePublicApplicationsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeRunGroups(
             self,
             request: models.DescribeRunGroupsRequest,

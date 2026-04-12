@@ -15306,29 +15306,26 @@ class BatchProcessMediaRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InputInfo: 媒体处理的文件输入信息。
+        :param _InputInfo: <p>媒体处理的文件输入信息。</p>
         :type InputInfo: list of MediaInputInfo
-        :param _OutputStorage: 媒体处理输出文件的目标存储。不填则继承 InputInfo 中的存储位置。
-注意：当InputInfo.Type为URL时，该参数是必填项，目前只支持COS输出
+        :param _OutputStorage: <p>媒体处理输出文件的目标存储。不填则继承 InputInfo 中的存储位置。<br>注意：当InputInfo.Type为URL时，该参数是必填项，目前只支持COS输出</p>
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
-        :param _OutputDir: 媒体处理生成的文件输出的目标目录，必选以 / 开头和结尾，如`/movie/201907/`。
-如果不填，表示与 InputInfo 中文件所在的目录一致。
+        :param _OutputDir: <p>媒体处理生成的文件输出的目标目录，必选以 / 开头和结尾，如<code>/movie/201907/</code>。<br>如果不填，表示与 InputInfo 中文件所在的目录一致。</p>
         :type OutputDir: str
-        :param _SmartSubtitlesTask: 智能字幕
+        :param _SmartSubtitlesTask: <p>智能字幕</p>
         :type SmartSubtitlesTask: :class:`tencentcloud.mps.v20190612.models.SmartSubtitlesTaskInput`
-        :param _TaskNotifyConfig: 任务的事件通知信息，不填代表不获取事件通知。
+        :param _TaskNotifyConfig: <p>任务的事件通知信息，不填代表不获取事件通知。</p>
         :type TaskNotifyConfig: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
-        :param _TasksPriority: 任务流的优先级，数值越大优先级越高，取值范围是-10到 10，不填代表0。
+        :param _TasksPriority: <p>任务流的优先级，数值越大优先级越高，取值范围是-10到 10，不填代表0。</p>
         :type TasksPriority: int
-        :param _SessionContext: 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+        :param _SessionContext: <p>来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。</p>
         :type SessionContext: str
-        :param _ResourceId: 资源ID，需要保证对应资源是开启状态。默认为账号主资源ID。
+        :param _ResourceId: <p>资源ID，需要保证对应资源是开启状态。默认为账号主资源ID。</p>
         :type ResourceId: str
-        :param _SkipMateData: 是否跳过元信息获取，可选值： 
-0：表示不跳过 
-1：表示跳过 
-默认值：0	
+        :param _SkipMateData: <p>是否跳过元信息获取，可选值：<br>0：表示不跳过<br>1：表示跳过<br>默认值：0</p>
         :type SkipMateData: int
+        :param _TaskMode: <p>执行模式，可选值：</p><li>Parallel: 并发执行</li><li>Serial: 串行执行</li>注意：默认并发执行。
+        :type TaskMode: str
         """
         self._InputInfo = None
         self._OutputStorage = None
@@ -15339,10 +15336,11 @@ class BatchProcessMediaRequest(AbstractModel):
         self._SessionContext = None
         self._ResourceId = None
         self._SkipMateData = None
+        self._TaskMode = None
 
     @property
     def InputInfo(self):
-        r"""媒体处理的文件输入信息。
+        r"""<p>媒体处理的文件输入信息。</p>
         :rtype: list of MediaInputInfo
         """
         return self._InputInfo
@@ -15353,8 +15351,7 @@ class BatchProcessMediaRequest(AbstractModel):
 
     @property
     def OutputStorage(self):
-        r"""媒体处理输出文件的目标存储。不填则继承 InputInfo 中的存储位置。
-注意：当InputInfo.Type为URL时，该参数是必填项，目前只支持COS输出
+        r"""<p>媒体处理输出文件的目标存储。不填则继承 InputInfo 中的存储位置。<br>注意：当InputInfo.Type为URL时，该参数是必填项，目前只支持COS输出</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
         return self._OutputStorage
@@ -15365,8 +15362,7 @@ class BatchProcessMediaRequest(AbstractModel):
 
     @property
     def OutputDir(self):
-        r"""媒体处理生成的文件输出的目标目录，必选以 / 开头和结尾，如`/movie/201907/`。
-如果不填，表示与 InputInfo 中文件所在的目录一致。
+        r"""<p>媒体处理生成的文件输出的目标目录，必选以 / 开头和结尾，如<code>/movie/201907/</code>。<br>如果不填，表示与 InputInfo 中文件所在的目录一致。</p>
         :rtype: str
         """
         return self._OutputDir
@@ -15377,7 +15373,7 @@ class BatchProcessMediaRequest(AbstractModel):
 
     @property
     def SmartSubtitlesTask(self):
-        r"""智能字幕
+        r"""<p>智能字幕</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.SmartSubtitlesTaskInput`
         """
         return self._SmartSubtitlesTask
@@ -15388,7 +15384,7 @@ class BatchProcessMediaRequest(AbstractModel):
 
     @property
     def TaskNotifyConfig(self):
-        r"""任务的事件通知信息，不填代表不获取事件通知。
+        r"""<p>任务的事件通知信息，不填代表不获取事件通知。</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
         """
         return self._TaskNotifyConfig
@@ -15399,7 +15395,7 @@ class BatchProcessMediaRequest(AbstractModel):
 
     @property
     def TasksPriority(self):
-        r"""任务流的优先级，数值越大优先级越高，取值范围是-10到 10，不填代表0。
+        r"""<p>任务流的优先级，数值越大优先级越高，取值范围是-10到 10，不填代表0。</p>
         :rtype: int
         """
         return self._TasksPriority
@@ -15410,7 +15406,7 @@ class BatchProcessMediaRequest(AbstractModel):
 
     @property
     def SessionContext(self):
-        r"""来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+        r"""<p>来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。</p>
         :rtype: str
         """
         return self._SessionContext
@@ -15421,7 +15417,7 @@ class BatchProcessMediaRequest(AbstractModel):
 
     @property
     def ResourceId(self):
-        r"""资源ID，需要保证对应资源是开启状态。默认为账号主资源ID。
+        r"""<p>资源ID，需要保证对应资源是开启状态。默认为账号主资源ID。</p>
         :rtype: str
         """
         return self._ResourceId
@@ -15432,10 +15428,7 @@ class BatchProcessMediaRequest(AbstractModel):
 
     @property
     def SkipMateData(self):
-        r"""是否跳过元信息获取，可选值： 
-0：表示不跳过 
-1：表示跳过 
-默认值：0	
+        r"""<p>是否跳过元信息获取，可选值：<br>0：表示不跳过<br>1：表示跳过<br>默认值：0</p>
         :rtype: int
         """
         return self._SkipMateData
@@ -15443,6 +15436,17 @@ class BatchProcessMediaRequest(AbstractModel):
     @SkipMateData.setter
     def SkipMateData(self, SkipMateData):
         self._SkipMateData = SkipMateData
+
+    @property
+    def TaskMode(self):
+        r"""<p>执行模式，可选值：</p><li>Parallel: 并发执行</li><li>Serial: 串行执行</li>注意：默认并发执行。
+        :rtype: str
+        """
+        return self._TaskMode
+
+    @TaskMode.setter
+    def TaskMode(self, TaskMode):
+        self._TaskMode = TaskMode
 
 
     def _deserialize(self, params):
@@ -15466,6 +15470,7 @@ class BatchProcessMediaRequest(AbstractModel):
         self._SessionContext = params.get("SessionContext")
         self._ResourceId = params.get("ResourceId")
         self._SkipMateData = params.get("SkipMateData")
+        self._TaskMode = params.get("TaskMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15483,7 +15488,7 @@ class BatchProcessMediaResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务 ID。
+        :param _TaskId: <p>任务 ID。</p>
         :type TaskId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -15493,7 +15498,7 @@ class BatchProcessMediaResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""任务 ID。
+        r"""<p>任务 ID。</p>
         :rtype: str
         """
         return self._TaskId
@@ -32317,14 +32322,14 @@ class DescribeImageTaskDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 图片处理任务的任务 ID。
+        :param _TaskId: <p>图片处理任务的任务 ID。</p>
         :type TaskId: str
         """
         self._TaskId = None
 
     @property
     def TaskId(self):
-        r"""图片处理任务的任务 ID。
+        r"""<p>图片处理任务的任务 ID。</p>
         :rtype: str
         """
         return self._TaskId
@@ -32353,31 +32358,33 @@ class DescribeImageTaskDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskType: 任务类型，目前取值有：
-<li>WorkflowTask：工作流处理任务。</li>
+        :param _TaskType: <p>任务类型，目前取值有：</p><li>WorkflowTask：工作流处理任务。</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskType: str
-        :param _Status: 任务状态，取值：
-<li>WAITING：等待中；</li>
-<li>PROCESSING：处理中；</li>
-<li>FINISH：已完成。</li>
+        :param _Status: <p>任务状态，取值：</p><li>WAITING：等待中；</li><li>PROCESSING：处理中；</li><li>FINISH：已完成。</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
-        :param _ErrCode: 任务失败时的错误码。
+        :param _ErrCode: <p>任务失败时的错误码。</p>
         :type ErrCode: int
-        :param _ErrMsg: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :param _ErrMsg: <p>错误码，空字符串表示成功，其他值表示失败，取值请参考 <a href="https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81">媒体处理类错误码</a> 列表。</p>
         :type ErrMsg: str
-        :param _Message: 任务异常Message。
+        :param _Message: <p>任务异常Message。</p>
         :type Message: str
-        :param _ImageProcessTaskResultSet: 图片处理任务的执行状态与结果。
+        :param _ImageProcessTaskResultSet: <p>图片处理任务的执行状态与结果。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ImageProcessTaskResultSet: list of ImageProcessTaskResult
-        :param _CreateTime: 任务的创建时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+        :param _CreateTime: <p>任务的创建时间，采用 <a href="https://cloud.tencent.com/document/product/862/37710#52">ISO 日期格式</a>。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
-        :param _FinishTime: 任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+        :param _FinishTime: <p>任务执行完毕的时间，采用 <a href="https://cloud.tencent.com/document/product/862/37710#52">ISO 日期格式</a>。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FinishTime: str
+        :param _Definition: <p>模板唯一标识。</p>
+        :type Definition: int
+        :param _ImageTask: <p>任务发起参数。</p>
+        :type ImageTask: :class:`tencentcloud.mps.v20190612.models.ImageTaskInput`
+        :param _InputInfo: <p>图片任务输入信息。</p>
+        :type InputInfo: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -32389,12 +32396,14 @@ class DescribeImageTaskDetailResponse(AbstractModel):
         self._ImageProcessTaskResultSet = None
         self._CreateTime = None
         self._FinishTime = None
+        self._Definition = None
+        self._ImageTask = None
+        self._InputInfo = None
         self._RequestId = None
 
     @property
     def TaskType(self):
-        r"""任务类型，目前取值有：
-<li>WorkflowTask：工作流处理任务。</li>
+        r"""<p>任务类型，目前取值有：</p><li>WorkflowTask：工作流处理任务。</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -32406,10 +32415,7 @@ class DescribeImageTaskDetailResponse(AbstractModel):
 
     @property
     def Status(self):
-        r"""任务状态，取值：
-<li>WAITING：等待中；</li>
-<li>PROCESSING：处理中；</li>
-<li>FINISH：已完成。</li>
+        r"""<p>任务状态，取值：</p><li>WAITING：等待中；</li><li>PROCESSING：处理中；</li><li>FINISH：已完成。</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -32421,7 +32427,7 @@ class DescribeImageTaskDetailResponse(AbstractModel):
 
     @property
     def ErrCode(self):
-        r"""任务失败时的错误码。
+        r"""<p>任务失败时的错误码。</p>
         :rtype: int
         """
         return self._ErrCode
@@ -32432,7 +32438,7 @@ class DescribeImageTaskDetailResponse(AbstractModel):
 
     @property
     def ErrMsg(self):
-        r"""错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        r"""<p>错误码，空字符串表示成功，其他值表示失败，取值请参考 <a href="https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81">媒体处理类错误码</a> 列表。</p>
         :rtype: str
         """
         return self._ErrMsg
@@ -32443,7 +32449,7 @@ class DescribeImageTaskDetailResponse(AbstractModel):
 
     @property
     def Message(self):
-        r"""任务异常Message。
+        r"""<p>任务异常Message。</p>
         :rtype: str
         """
         return self._Message
@@ -32454,7 +32460,7 @@ class DescribeImageTaskDetailResponse(AbstractModel):
 
     @property
     def ImageProcessTaskResultSet(self):
-        r"""图片处理任务的执行状态与结果。
+        r"""<p>图片处理任务的执行状态与结果。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ImageProcessTaskResult
         """
@@ -32466,7 +32472,7 @@ class DescribeImageTaskDetailResponse(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""任务的创建时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+        r"""<p>任务的创建时间，采用 <a href="https://cloud.tencent.com/document/product/862/37710#52">ISO 日期格式</a>。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -32478,7 +32484,7 @@ class DescribeImageTaskDetailResponse(AbstractModel):
 
     @property
     def FinishTime(self):
-        r"""任务执行完毕的时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/862/37710#52)。
+        r"""<p>任务执行完毕的时间，采用 <a href="https://cloud.tencent.com/document/product/862/37710#52">ISO 日期格式</a>。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -32487,6 +32493,39 @@ class DescribeImageTaskDetailResponse(AbstractModel):
     @FinishTime.setter
     def FinishTime(self, FinishTime):
         self._FinishTime = FinishTime
+
+    @property
+    def Definition(self):
+        r"""<p>模板唯一标识。</p>
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def ImageTask(self):
+        r"""<p>任务发起参数。</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ImageTaskInput`
+        """
+        return self._ImageTask
+
+    @ImageTask.setter
+    def ImageTask(self, ImageTask):
+        self._ImageTask = ImageTask
+
+    @property
+    def InputInfo(self):
+        r"""<p>图片任务输入信息。</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
+        """
+        return self._InputInfo
+
+    @InputInfo.setter
+    def InputInfo(self, InputInfo):
+        self._InputInfo = InputInfo
 
     @property
     def RequestId(self):
@@ -32514,6 +32553,13 @@ class DescribeImageTaskDetailResponse(AbstractModel):
                 self._ImageProcessTaskResultSet.append(obj)
         self._CreateTime = params.get("CreateTime")
         self._FinishTime = params.get("FinishTime")
+        self._Definition = params.get("Definition")
+        if params.get("ImageTask") is not None:
+            self._ImageTask = ImageTaskInput()
+            self._ImageTask._deserialize(params.get("ImageTask"))
+        if params.get("InputInfo") is not None:
+            self._InputInfo = MediaInputInfo()
+            self._InputInfo._deserialize(params.get("InputInfo"))
         self._RequestId = params.get("RequestId")
 
 
@@ -75868,18 +75914,18 @@ class SmartSubtitleTaskBatchOutput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Progress: 任务进度。
+        :param _Progress: <p>任务进度。</p>
         :type Progress: int
-        :param _Status: 任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        :param _Status: <p>任务状态，有 PROCESSING，SUCCESS，WAITING 和 FAIL 四种。</p>
         :type Status: str
-        :param _ErrCodeExt: 错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        :param _ErrCodeExt: <p>错误码，空字符串表示成功，其他值表示失败，取值请参考 <a href="https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81">媒体处理类错误码</a> 列表。</p>
         :type ErrCodeExt: str
-        :param _Message: 错误信息。
+        :param _Message: <p>错误信息。</p>
         :type Message: str
-        :param _TransTextTask: 翻译任务输出信息。
+        :param _TransTextTask: <p>翻译任务输出信息。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TransTextTask: :class:`tencentcloud.mps.v20190612.models.SmartSubtitleTaskTransTextResultOutput`
-        :param _AsrFullTextTask: 语音全文识别任务输出信息。
+        :param _AsrFullTextTask: <p>语音全文识别任务输出信息。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AsrFullTextTask: :class:`tencentcloud.mps.v20190612.models.SmartSubtitleTaskAsrFullTextResultOutput`
         """
@@ -75892,7 +75938,7 @@ class SmartSubtitleTaskBatchOutput(AbstractModel):
 
     @property
     def Progress(self):
-        r"""任务进度。
+        r"""<p>任务进度。</p>
         :rtype: int
         """
         return self._Progress
@@ -75903,7 +75949,7 @@ class SmartSubtitleTaskBatchOutput(AbstractModel):
 
     @property
     def Status(self):
-        r"""任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。
+        r"""<p>任务状态，有 PROCESSING，SUCCESS，WAITING 和 FAIL 四种。</p>
         :rtype: str
         """
         return self._Status
@@ -75914,7 +75960,7 @@ class SmartSubtitleTaskBatchOutput(AbstractModel):
 
     @property
     def ErrCodeExt(self):
-        r"""错误码，空字符串表示成功，其他值表示失败，取值请参考 [媒体处理类错误码](https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81) 列表。
+        r"""<p>错误码，空字符串表示成功，其他值表示失败，取值请参考 <a href="https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81">媒体处理类错误码</a> 列表。</p>
         :rtype: str
         """
         return self._ErrCodeExt
@@ -75925,7 +75971,7 @@ class SmartSubtitleTaskBatchOutput(AbstractModel):
 
     @property
     def Message(self):
-        r"""错误信息。
+        r"""<p>错误信息。</p>
         :rtype: str
         """
         return self._Message
@@ -75936,7 +75982,7 @@ class SmartSubtitleTaskBatchOutput(AbstractModel):
 
     @property
     def TransTextTask(self):
-        r"""翻译任务输出信息。
+        r"""<p>翻译任务输出信息。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.SmartSubtitleTaskTransTextResultOutput`
         """
@@ -75948,7 +75994,7 @@ class SmartSubtitleTaskBatchOutput(AbstractModel):
 
     @property
     def AsrFullTextTask(self):
-        r"""语音全文识别任务输出信息。
+        r"""<p>语音全文识别任务输出信息。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.SmartSubtitleTaskAsrFullTextResultOutput`
         """

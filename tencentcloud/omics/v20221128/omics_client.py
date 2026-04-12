@@ -302,6 +302,29 @@ class OmicsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribePublicApplications(self, request):
+        r"""查询公共应用列表。
+
+        :param request: Request instance for DescribePublicApplications.
+        :type request: :class:`tencentcloud.omics.v20221128.models.DescribePublicApplicationsRequest`
+        :rtype: :class:`tencentcloud.omics.v20221128.models.DescribePublicApplicationsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePublicApplications", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePublicApplicationsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeRunGroups(self, request):
         r"""查询任务批次列表。
 

@@ -2047,6 +2047,66 @@ class DescribeLicenseListRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _PageNumber: <p>页码，从0开始</p>
+        :type PageNumber: int
+        :param _PageSize: <p>每页数据量</p>
+        :type PageSize: int
+        :param _Platform: <p>pc端还是mobile端</p>
+        :type Platform: str
+        """
+        self._PageNumber = None
+        self._PageSize = None
+        self._Platform = None
+
+    @property
+    def PageNumber(self):
+        r"""<p>页码，从0开始</p>
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        r"""<p>每页数据量</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def Platform(self):
+        r"""<p>pc端还是mobile端</p>
+        :rtype: str
+        """
+        return self._Platform
+
+    @Platform.setter
+    def Platform(self, Platform):
+        self._Platform = Platform
+
+
+    def _deserialize(self, params):
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        self._Platform = params.get("Platform")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DescribeLicenseListResponse(AbstractModel):
     r"""DescribeLicenseList返回参数结构体
@@ -2055,13 +2115,13 @@ class DescribeLicenseListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Count: 临期license数量
+        :param _Count: <p>临期license数量</p>
         :type Count: int
-        :param _Overview: 正式license总览统计数据
+        :param _Overview: <p>正式license总览统计数据</p>
         :type Overview: :class:`tencentcloud.vcube.v20220410.models.Overview`
-        :param _LicenseList: 临期license列表
+        :param _LicenseList: <p>临期license列表</p>
         :type LicenseList: list of OverviewLicense
-        :param _TrialOverview: 测试license总览统计数据
+        :param _TrialOverview: <p>测试license总览统计数据</p>
         :type TrialOverview: :class:`tencentcloud.vcube.v20220410.models.Overview`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2074,7 +2134,7 @@ class DescribeLicenseListResponse(AbstractModel):
 
     @property
     def Count(self):
-        r"""临期license数量
+        r"""<p>临期license数量</p>
         :rtype: int
         """
         return self._Count
@@ -2085,7 +2145,7 @@ class DescribeLicenseListResponse(AbstractModel):
 
     @property
     def Overview(self):
-        r"""正式license总览统计数据
+        r"""<p>正式license总览统计数据</p>
         :rtype: :class:`tencentcloud.vcube.v20220410.models.Overview`
         """
         return self._Overview
@@ -2096,7 +2156,7 @@ class DescribeLicenseListResponse(AbstractModel):
 
     @property
     def LicenseList(self):
-        r"""临期license列表
+        r"""<p>临期license列表</p>
         :rtype: list of OverviewLicense
         """
         return self._LicenseList
@@ -2107,7 +2167,7 @@ class DescribeLicenseListResponse(AbstractModel):
 
     @property
     def TrialOverview(self):
-        r"""测试license总览统计数据
+        r"""<p>测试license总览统计数据</p>
         :rtype: :class:`tencentcloud.vcube.v20220410.models.Overview`
         """
         return self._TrialOverview

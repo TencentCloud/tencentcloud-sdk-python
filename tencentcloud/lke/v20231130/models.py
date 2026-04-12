@@ -36585,21 +36585,21 @@ class UpdateVarRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AppBizId: 应用ID
+        :param _AppBizId: <p>应用ID，获取方法参看如何获取   <a href="https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa">BotBizId</a>。</p>
         :type AppBizId: str
-        :param _VarId: 变量ID
+        :param _VarId: <p>变量 ID。由 CreateVar 接口生成，通过 CreateVar / DescribeVar 返回结果获取。</p>
         :type VarId: str
-        :param _VarName: 变量名称，最大支持50个字符
+        :param _VarName: <p>变量名称，最大支持50个字符，英文字母开头，支持英文数字与下划线”_” 。</p>
         :type VarName: str
-        :param _VarDesc: 参数描述
+        :param _VarDesc: <p>参数描述</p>
         :type VarDesc: str
-        :param _VarType: 参数类型
+        :param _VarType: <p>变量类型</p><p>枚举值：</p><ul><li>STRING： 字符串</li><li>INT： 整形</li><li>BOOL： 布尔型</li><li>OBJECT： 对象</li><li>ARRAY_STRING： 字符串数组</li><li>ARRAY_INT： 整型数组</li><li>ARRAY_FLOAT： 浮点型数组</li><li>ARRAY_BOOL： 布尔型数组</li><li>ARRAY_OBJECT： 对象数组</li><li>FILE： 文件类型</li><li>DOCUMENT： 文档类型</li><li>IMAGE： 图片类型</li><li>AUDIO： 音频</li><li>VIDEO： 视频</li><li>ARRAY_FILE： 文件数组</li><li>ARRAY_DOCUMENT： 文档数组</li><li>ARRAY_IMAGE： 图片数组</li><li>ARRAY_AUDIO： 音频数组</li><li>ARRAY_VIDEO： 视频数组</li><li>SECRET： 秘钥</li><li>ARRAY_ARRAY： 多维数组</li></ul><p>默认值：STRING</p>
         :type VarType: str
-        :param _VarDefaultValue: 自定义变量默认值
+        :param _VarDefaultValue: <p>自定义变量默认值，<code>VarDefaultValue</code>&nbsp;默认为空</p>
         :type VarDefaultValue: str
-        :param _VarDefaultFileName: 自定义变量文件默认名称
+        :param _VarDefaultFileName: <p>自定义变量文件默认名称，<code>VarDefaultFileName</code> 默认为空</p>
         :type VarDefaultFileName: str
-        :param _VarModuleType: 变量类型
+        :param _VarModuleType: <p>变量模块类型</p><p>枚举值：</p><ul><li>0： API参数</li><li>1： 环境参数</li><li>2： 应用参数</li><li>3： 系统参数</li></ul>
         :type VarModuleType: int
         """
         self._AppBizId = None
@@ -36613,7 +36613,7 @@ class UpdateVarRequest(AbstractModel):
 
     @property
     def AppBizId(self):
-        r"""应用ID
+        r"""<p>应用ID，获取方法参看如何获取   <a href="https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa">BotBizId</a>。</p>
         :rtype: str
         """
         return self._AppBizId
@@ -36624,7 +36624,7 @@ class UpdateVarRequest(AbstractModel):
 
     @property
     def VarId(self):
-        r"""变量ID
+        r"""<p>变量 ID。由 CreateVar 接口生成，通过 CreateVar / DescribeVar 返回结果获取。</p>
         :rtype: str
         """
         return self._VarId
@@ -36635,7 +36635,7 @@ class UpdateVarRequest(AbstractModel):
 
     @property
     def VarName(self):
-        r"""变量名称，最大支持50个字符
+        r"""<p>变量名称，最大支持50个字符，英文字母开头，支持英文数字与下划线”_” 。</p>
         :rtype: str
         """
         return self._VarName
@@ -36646,7 +36646,7 @@ class UpdateVarRequest(AbstractModel):
 
     @property
     def VarDesc(self):
-        r"""参数描述
+        r"""<p>参数描述</p>
         :rtype: str
         """
         return self._VarDesc
@@ -36657,7 +36657,7 @@ class UpdateVarRequest(AbstractModel):
 
     @property
     def VarType(self):
-        r"""参数类型
+        r"""<p>变量类型</p><p>枚举值：</p><ul><li>STRING： 字符串</li><li>INT： 整形</li><li>BOOL： 布尔型</li><li>OBJECT： 对象</li><li>ARRAY_STRING： 字符串数组</li><li>ARRAY_INT： 整型数组</li><li>ARRAY_FLOAT： 浮点型数组</li><li>ARRAY_BOOL： 布尔型数组</li><li>ARRAY_OBJECT： 对象数组</li><li>FILE： 文件类型</li><li>DOCUMENT： 文档类型</li><li>IMAGE： 图片类型</li><li>AUDIO： 音频</li><li>VIDEO： 视频</li><li>ARRAY_FILE： 文件数组</li><li>ARRAY_DOCUMENT： 文档数组</li><li>ARRAY_IMAGE： 图片数组</li><li>ARRAY_AUDIO： 音频数组</li><li>ARRAY_VIDEO： 视频数组</li><li>SECRET： 秘钥</li><li>ARRAY_ARRAY： 多维数组</li></ul><p>默认值：STRING</p>
         :rtype: str
         """
         return self._VarType
@@ -36668,7 +36668,7 @@ class UpdateVarRequest(AbstractModel):
 
     @property
     def VarDefaultValue(self):
-        r"""自定义变量默认值
+        r"""<p>自定义变量默认值，<code>VarDefaultValue</code>&nbsp;默认为空</p>
         :rtype: str
         """
         return self._VarDefaultValue
@@ -36679,7 +36679,7 @@ class UpdateVarRequest(AbstractModel):
 
     @property
     def VarDefaultFileName(self):
-        r"""自定义变量文件默认名称
+        r"""<p>自定义变量文件默认名称，<code>VarDefaultFileName</code> 默认为空</p>
         :rtype: str
         """
         return self._VarDefaultFileName
@@ -36690,7 +36690,7 @@ class UpdateVarRequest(AbstractModel):
 
     @property
     def VarModuleType(self):
-        r"""变量类型
+        r"""<p>变量模块类型</p><p>枚举值：</p><ul><li>0： API参数</li><li>1： 环境参数</li><li>2： 应用参数</li><li>3： 系统参数</li></ul>
         :rtype: int
         """
         return self._VarModuleType
@@ -36726,7 +36726,7 @@ class UpdateVarResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _VarId: 变量ID
+        :param _VarId: <p>变量ID</p>
         :type VarId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -36736,7 +36736,7 @@ class UpdateVarResponse(AbstractModel):
 
     @property
     def VarId(self):
-        r"""变量ID
+        r"""<p>变量ID</p>
         :rtype: str
         """
         return self._VarId

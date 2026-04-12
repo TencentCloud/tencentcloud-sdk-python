@@ -2884,7 +2884,7 @@ class TeoClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ExportZoneConfigResponse:
         """
-        导出站点配置接口，本接口支持用户根据需要的配置项进行配置导出，导出的配置用于导入站点配置接口（ImportZoneConfig）进行配置导入。该功能仅支持标准版和企业版套餐站点使用。
+        导出站点配置接口，本接口支持用户根据需要的配置项进行配置导出，导出的配置用于导入站点配置接口（ImportZoneConfig）进行配置导入。
         """
         
         kwargs = {}

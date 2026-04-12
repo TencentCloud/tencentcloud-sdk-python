@@ -769,84 +769,88 @@ class ApiDetailInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ApiId: API ID
+        :param _ApiId: <p>API ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApiId: str
-        :param _NamespaceId: 命名空间ID
+        :param _NamespaceId: <p>命名空间ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type NamespaceId: str
-        :param _NamespaceName: 命名空间名称
+        :param _NamespaceName: <p>命名空间名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type NamespaceName: str
-        :param _MicroserviceId: 服务ID
+        :param _MicroserviceId: <p>服务ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type MicroserviceId: str
-        :param _MicroserviceName: 服务名称
+        :param _MicroserviceName: <p>服务名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type MicroserviceName: str
-        :param _Path: API 请求路径
+        :param _Path: <p>API 请求路径</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Path: str
-        :param _PathMapping: Api 映射路径
+        :param _PathMapping: <p>Api 映射路径</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type PathMapping: str
-        :param _Method: 请求方法
+        :param _Method: <p>请求方法</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Method: str
-        :param _GroupId: 所属分组ID
+        :param _GroupId: <p>所属分组ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type GroupId: str
-        :param _UsableStatus: 是否禁用
+        :param _UsableStatus: <p>是否禁用</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UsableStatus: str
-        :param _ReleaseStatus: 发布状态
+        :param _ReleaseStatus: <p>发布状态</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReleaseStatus: str
-        :param _RateLimitStatus: 开启限流
+        :param _RateLimitStatus: <p>开启限流</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RateLimitStatus: str
-        :param _MockStatus: 是否开启mock
+        :param _MockStatus: <p>是否开启mock</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type MockStatus: str
-        :param _CreatedTime: 创建时间
+        :param _CreatedTime: <p>创建时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreatedTime: str
-        :param _UpdatedTime: 更新时间
+        :param _UpdatedTime: <p>更新时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdatedTime: str
-        :param _ReleasedTime: 发布时间
+        :param _ReleasedTime: <p>发布时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReleasedTime: str
-        :param _GroupName: 所属分组名称
+        :param _GroupName: <p>所属分组名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type GroupName: str
-        :param _Timeout: API 超时，单位毫秒
+        :param _Timeout: <p>API 超时，单位毫秒</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Timeout: int
-        :param _Host: Api所在服务host
+        :param _Host: <p>Api所在服务host</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Host: str
-        :param _ApiType: API类型。 ms ： 微服务API； external :外部服务Api
+        :param _ApiType: <p>API类型。 ms ： 微服务API； external :外部服务Api</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApiType: str
-        :param _Description: Api描述信息
+        :param _Description: <p>Api描述信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
-        :param _ApiMatchType: API路径匹配类型。normal：普通API；wildcard：通配API。
+        :param _ApiMatchType: <p>API路径匹配类型。normal：普通API；wildcard：通配API。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApiMatchType: str
-        :param _RpcExt: RPC 额外信息
+        :param _RpcExt: <p>RPC 额外信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RpcExt: str
-        :param _GatewayDeployGroupId: 部署组id
+        :param _GatewayDeployGroupId: <p>部署组id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type GatewayDeployGroupId: str
-        :param _Md5: md5
+        :param _Md5: <p>md5</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Md5: str
-        :param _RpcType: RPC 类型
+        :param _RpcType: <p>RPC 类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RpcType: str
+        :param _PathMappingUnsupported: <p>是否禁用短路径访问开关</p>
+        :type PathMappingUnsupported: bool
+        :param _PathMappingUnsupportedMsg: <p>禁用短路径访问开关原因</p>
+        :type PathMappingUnsupportedMsg: str
         """
         self._ApiId = None
         self._NamespaceId = None
@@ -874,10 +878,12 @@ class ApiDetailInfo(AbstractModel):
         self._GatewayDeployGroupId = None
         self._Md5 = None
         self._RpcType = None
+        self._PathMappingUnsupported = None
+        self._PathMappingUnsupportedMsg = None
 
     @property
     def ApiId(self):
-        r"""API ID
+        r"""<p>API ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -889,7 +895,7 @@ class ApiDetailInfo(AbstractModel):
 
     @property
     def NamespaceId(self):
-        r"""命名空间ID
+        r"""<p>命名空间ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -901,7 +907,7 @@ class ApiDetailInfo(AbstractModel):
 
     @property
     def NamespaceName(self):
-        r"""命名空间名称
+        r"""<p>命名空间名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -913,7 +919,7 @@ class ApiDetailInfo(AbstractModel):
 
     @property
     def MicroserviceId(self):
-        r"""服务ID
+        r"""<p>服务ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -925,7 +931,7 @@ class ApiDetailInfo(AbstractModel):
 
     @property
     def MicroserviceName(self):
-        r"""服务名称
+        r"""<p>服务名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -937,7 +943,7 @@ class ApiDetailInfo(AbstractModel):
 
     @property
     def Path(self):
-        r"""API 请求路径
+        r"""<p>API 请求路径</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -949,7 +955,7 @@ class ApiDetailInfo(AbstractModel):
 
     @property
     def PathMapping(self):
-        r"""Api 映射路径
+        r"""<p>Api 映射路径</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -961,7 +967,7 @@ class ApiDetailInfo(AbstractModel):
 
     @property
     def Method(self):
-        r"""请求方法
+        r"""<p>请求方法</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -973,7 +979,7 @@ class ApiDetailInfo(AbstractModel):
 
     @property
     def GroupId(self):
-        r"""所属分组ID
+        r"""<p>所属分组ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -985,7 +991,7 @@ class ApiDetailInfo(AbstractModel):
 
     @property
     def UsableStatus(self):
-        r"""是否禁用
+        r"""<p>是否禁用</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -997,7 +1003,7 @@ class ApiDetailInfo(AbstractModel):
 
     @property
     def ReleaseStatus(self):
-        r"""发布状态
+        r"""<p>发布状态</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1009,7 +1015,7 @@ class ApiDetailInfo(AbstractModel):
 
     @property
     def RateLimitStatus(self):
-        r"""开启限流
+        r"""<p>开启限流</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1021,7 +1027,7 @@ class ApiDetailInfo(AbstractModel):
 
     @property
     def MockStatus(self):
-        r"""是否开启mock
+        r"""<p>是否开启mock</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1033,7 +1039,7 @@ class ApiDetailInfo(AbstractModel):
 
     @property
     def CreatedTime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1045,7 +1051,7 @@ class ApiDetailInfo(AbstractModel):
 
     @property
     def UpdatedTime(self):
-        r"""更新时间
+        r"""<p>更新时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1057,7 +1063,7 @@ class ApiDetailInfo(AbstractModel):
 
     @property
     def ReleasedTime(self):
-        r"""发布时间
+        r"""<p>发布时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1069,7 +1075,7 @@ class ApiDetailInfo(AbstractModel):
 
     @property
     def GroupName(self):
-        r"""所属分组名称
+        r"""<p>所属分组名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1081,7 +1087,7 @@ class ApiDetailInfo(AbstractModel):
 
     @property
     def Timeout(self):
-        r"""API 超时，单位毫秒
+        r"""<p>API 超时，单位毫秒</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -1093,7 +1099,7 @@ class ApiDetailInfo(AbstractModel):
 
     @property
     def Host(self):
-        r"""Api所在服务host
+        r"""<p>Api所在服务host</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1105,7 +1111,7 @@ class ApiDetailInfo(AbstractModel):
 
     @property
     def ApiType(self):
-        r"""API类型。 ms ： 微服务API； external :外部服务Api
+        r"""<p>API类型。 ms ： 微服务API； external :外部服务Api</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1117,7 +1123,7 @@ class ApiDetailInfo(AbstractModel):
 
     @property
     def Description(self):
-        r"""Api描述信息
+        r"""<p>Api描述信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1129,7 +1135,7 @@ class ApiDetailInfo(AbstractModel):
 
     @property
     def ApiMatchType(self):
-        r"""API路径匹配类型。normal：普通API；wildcard：通配API。
+        r"""<p>API路径匹配类型。normal：普通API；wildcard：通配API。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1141,7 +1147,7 @@ class ApiDetailInfo(AbstractModel):
 
     @property
     def RpcExt(self):
-        r"""RPC 额外信息
+        r"""<p>RPC 额外信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1153,7 +1159,7 @@ class ApiDetailInfo(AbstractModel):
 
     @property
     def GatewayDeployGroupId(self):
-        r"""部署组id
+        r"""<p>部署组id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1165,7 +1171,7 @@ class ApiDetailInfo(AbstractModel):
 
     @property
     def Md5(self):
-        r"""md5
+        r"""<p>md5</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1177,7 +1183,7 @@ class ApiDetailInfo(AbstractModel):
 
     @property
     def RpcType(self):
-        r"""RPC 类型
+        r"""<p>RPC 类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1186,6 +1192,28 @@ class ApiDetailInfo(AbstractModel):
     @RpcType.setter
     def RpcType(self, RpcType):
         self._RpcType = RpcType
+
+    @property
+    def PathMappingUnsupported(self):
+        r"""<p>是否禁用短路径访问开关</p>
+        :rtype: bool
+        """
+        return self._PathMappingUnsupported
+
+    @PathMappingUnsupported.setter
+    def PathMappingUnsupported(self, PathMappingUnsupported):
+        self._PathMappingUnsupported = PathMappingUnsupported
+
+    @property
+    def PathMappingUnsupportedMsg(self):
+        r"""<p>禁用短路径访问开关原因</p>
+        :rtype: str
+        """
+        return self._PathMappingUnsupportedMsg
+
+    @PathMappingUnsupportedMsg.setter
+    def PathMappingUnsupportedMsg(self, PathMappingUnsupportedMsg):
+        self._PathMappingUnsupportedMsg = PathMappingUnsupportedMsg
 
 
     def _deserialize(self, params):
@@ -1215,6 +1243,8 @@ class ApiDetailInfo(AbstractModel):
         self._GatewayDeployGroupId = params.get("GatewayDeployGroupId")
         self._Md5 = params.get("Md5")
         self._RpcType = params.get("RpcType")
+        self._PathMappingUnsupported = params.get("PathMappingUnsupported")
+        self._PathMappingUnsupportedMsg = params.get("PathMappingUnsupportedMsg")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1854,45 +1884,47 @@ class ApiRateLimitRule(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuleId: rule Id
+        :param _RuleId: <p>rule Id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RuleId: str
-        :param _ApiId: API ID
+        :param _ApiId: <p>API ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApiId: str
-        :param _RuleName: 限流名称
+        :param _RuleName: <p>限流名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RuleName: str
-        :param _MaxQps: 最大限流qps
+        :param _MaxQps: <p>最大限流qps</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type MaxQps: int
-        :param _UsableStatus: 生效/禁用, enabled/disabled
+        :param _UsableStatus: <p>生效/禁用, enabled/disabled</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UsableStatus: str
-        :param _RuleContent: 规则内容
+        :param _RuleContent: <p>规则内容</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RuleContent: str
-        :param _TsfRuleId: Tsf Rule ID
+        :param _TsfRuleId: <p>Tsf Rule ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TsfRuleId: str
-        :param _Description: 描述
+        :param _Description: <p>描述</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
-        :param _CreatedTime: 创建时间
+        :param _CreatedTime: <p>创建时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreatedTime: str
-        :param _UpdatedTime: 更新时间
+        :param _UpdatedTime: <p>更新时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdatedTime: str
-        :param _Limit: 分页参数limit
+        :param _Limit: <p>分页参数limit</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Limit: int
-        :param _Offset: 分页参数offset
+        :param _Offset: <p>分页参数offset</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Offset: int
-        :param _AppId: AppId
+        :param _AppId: <p>AppId</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AppId: str
+        :param _UsePathAndMethodFormat: <p>旧格式 method 与 path 分开，新格式 path-Method,如 /checkToken-GET，默认为新格式</p>
+        :type UsePathAndMethodFormat: bool
         """
         self._RuleId = None
         self._ApiId = None
@@ -1907,10 +1939,11 @@ class ApiRateLimitRule(AbstractModel):
         self._Limit = None
         self._Offset = None
         self._AppId = None
+        self._UsePathAndMethodFormat = None
 
     @property
     def RuleId(self):
-        r"""rule Id
+        r"""<p>rule Id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1922,7 +1955,7 @@ class ApiRateLimitRule(AbstractModel):
 
     @property
     def ApiId(self):
-        r"""API ID
+        r"""<p>API ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1934,7 +1967,7 @@ class ApiRateLimitRule(AbstractModel):
 
     @property
     def RuleName(self):
-        r"""限流名称
+        r"""<p>限流名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1946,7 +1979,7 @@ class ApiRateLimitRule(AbstractModel):
 
     @property
     def MaxQps(self):
-        r"""最大限流qps
+        r"""<p>最大限流qps</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -1958,7 +1991,7 @@ class ApiRateLimitRule(AbstractModel):
 
     @property
     def UsableStatus(self):
-        r"""生效/禁用, enabled/disabled
+        r"""<p>生效/禁用, enabled/disabled</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1970,7 +2003,7 @@ class ApiRateLimitRule(AbstractModel):
 
     @property
     def RuleContent(self):
-        r"""规则内容
+        r"""<p>规则内容</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1982,7 +2015,7 @@ class ApiRateLimitRule(AbstractModel):
 
     @property
     def TsfRuleId(self):
-        r"""Tsf Rule ID
+        r"""<p>Tsf Rule ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1994,7 +2027,7 @@ class ApiRateLimitRule(AbstractModel):
 
     @property
     def Description(self):
-        r"""描述
+        r"""<p>描述</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2006,7 +2039,7 @@ class ApiRateLimitRule(AbstractModel):
 
     @property
     def CreatedTime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2018,7 +2051,7 @@ class ApiRateLimitRule(AbstractModel):
 
     @property
     def UpdatedTime(self):
-        r"""更新时间
+        r"""<p>更新时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2030,7 +2063,7 @@ class ApiRateLimitRule(AbstractModel):
 
     @property
     def Limit(self):
-        r"""分页参数limit
+        r"""<p>分页参数limit</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -2042,7 +2075,7 @@ class ApiRateLimitRule(AbstractModel):
 
     @property
     def Offset(self):
-        r"""分页参数offset
+        r"""<p>分页参数offset</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -2054,7 +2087,7 @@ class ApiRateLimitRule(AbstractModel):
 
     @property
     def AppId(self):
-        r"""AppId
+        r"""<p>AppId</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2063,6 +2096,17 @@ class ApiRateLimitRule(AbstractModel):
     @AppId.setter
     def AppId(self, AppId):
         self._AppId = AppId
+
+    @property
+    def UsePathAndMethodFormat(self):
+        r"""<p>旧格式 method 与 path 分开，新格式 path-Method,如 /checkToken-GET，默认为新格式</p>
+        :rtype: bool
+        """
+        return self._UsePathAndMethodFormat
+
+    @UsePathAndMethodFormat.setter
+    def UsePathAndMethodFormat(self, UsePathAndMethodFormat):
+        self._UsePathAndMethodFormat = UsePathAndMethodFormat
 
 
     def _deserialize(self, params):
@@ -2079,6 +2123,7 @@ class ApiRateLimitRule(AbstractModel):
         self._Limit = params.get("Limit")
         self._Offset = params.get("Offset")
         self._AppId = params.get("AppId")
+        self._UsePathAndMethodFormat = params.get("UsePathAndMethodFormat")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -42696,30 +42741,36 @@ class Microservice(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MicroserviceId: 微服务ID
+        :param _MicroserviceId: <p>微服务ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type MicroserviceId: str
-        :param _MicroserviceName: 微服务名称
+        :param _MicroserviceName: <p>微服务名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type MicroserviceName: str
-        :param _MicroserviceDesc: 微服务描述
+        :param _MicroserviceDesc: <p>微服务描述</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type MicroserviceDesc: str
-        :param _CreateTime: 创建时间
+        :param _CreateTime: <p>创建时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: int
-        :param _UpdateTime: 更新时间
+        :param _UpdateTime: <p>更新时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: int
-        :param _NamespaceId: 命名空间ID
+        :param _NamespaceId: <p>命名空间ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type NamespaceId: str
-        :param _RunInstanceCount: 微服务的运行实例数目
+        :param _RunInstanceCount: <p>微服务的运行实例数目</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RunInstanceCount: int
-        :param _CriticalInstanceCount: 微服务的离线实例数目
+        :param _CriticalInstanceCount: <p>微服务的离线实例数目</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CriticalInstanceCount: int
+        :param _DeleteDisabled: <p>是否禁用删除按钮，true：是；false：否。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeleteDisabled: bool
+        :param _DeleteDisabledReason: <p>禁用删除原因。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeleteDisabledReason: str
         """
         self._MicroserviceId = None
         self._MicroserviceName = None
@@ -42729,10 +42780,12 @@ class Microservice(AbstractModel):
         self._NamespaceId = None
         self._RunInstanceCount = None
         self._CriticalInstanceCount = None
+        self._DeleteDisabled = None
+        self._DeleteDisabledReason = None
 
     @property
     def MicroserviceId(self):
-        r"""微服务ID
+        r"""<p>微服务ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -42744,7 +42797,7 @@ class Microservice(AbstractModel):
 
     @property
     def MicroserviceName(self):
-        r"""微服务名称
+        r"""<p>微服务名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -42756,7 +42809,7 @@ class Microservice(AbstractModel):
 
     @property
     def MicroserviceDesc(self):
-        r"""微服务描述
+        r"""<p>微服务描述</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -42768,7 +42821,7 @@ class Microservice(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -42780,7 +42833,7 @@ class Microservice(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""更新时间
+        r"""<p>更新时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -42792,7 +42845,7 @@ class Microservice(AbstractModel):
 
     @property
     def NamespaceId(self):
-        r"""命名空间ID
+        r"""<p>命名空间ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -42804,7 +42857,7 @@ class Microservice(AbstractModel):
 
     @property
     def RunInstanceCount(self):
-        r"""微服务的运行实例数目
+        r"""<p>微服务的运行实例数目</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -42816,7 +42869,7 @@ class Microservice(AbstractModel):
 
     @property
     def CriticalInstanceCount(self):
-        r"""微服务的离线实例数目
+        r"""<p>微服务的离线实例数目</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -42825,6 +42878,30 @@ class Microservice(AbstractModel):
     @CriticalInstanceCount.setter
     def CriticalInstanceCount(self, CriticalInstanceCount):
         self._CriticalInstanceCount = CriticalInstanceCount
+
+    @property
+    def DeleteDisabled(self):
+        r"""<p>是否禁用删除按钮，true：是；false：否。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._DeleteDisabled
+
+    @DeleteDisabled.setter
+    def DeleteDisabled(self, DeleteDisabled):
+        self._DeleteDisabled = DeleteDisabled
+
+    @property
+    def DeleteDisabledReason(self):
+        r"""<p>禁用删除原因。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DeleteDisabledReason
+
+    @DeleteDisabledReason.setter
+    def DeleteDisabledReason(self, DeleteDisabledReason):
+        self._DeleteDisabledReason = DeleteDisabledReason
 
 
     def _deserialize(self, params):
@@ -42836,6 +42913,8 @@ class Microservice(AbstractModel):
         self._NamespaceId = params.get("NamespaceId")
         self._RunInstanceCount = params.get("RunInstanceCount")
         self._CriticalInstanceCount = params.get("CriticalInstanceCount")
+        self._DeleteDisabled = params.get("DeleteDisabled")
+        self._DeleteDisabledReason = params.get("DeleteDisabledReason")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -43814,34 +43893,32 @@ class ModifyLaneRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuleId: 灰度发布规则ID。该参数可以通过调用 [DescribeLaneRules](https://cloud.tencent.com/document/product/649/44505) 的返回值中的 RuleId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=grayscale&subTab=lanerule)查看；也可以调用[CreateLaneRule](https://cloud.tencent.com/document/product/649/44507)创建新的灰度发布规则。
+        :param _RuleId: <p>灰度发布规则ID。该参数可以通过调用 <a href="https://cloud.tencent.com/document/product/649/44505">DescribeLaneRules</a> 的返回值中的 RuleId 字段来获取或通过登录<a href="https://console.cloud.tencent.com/tse/tsf-consul?tab=grayscale&amp;subTab=lanerule">控制台</a>查看；也可以调用<a href="https://cloud.tencent.com/document/product/649/44507">CreateLaneRule</a>创建新的灰度发布规则。</p>
         :type RuleId: str
-        :param _RuleName: 灰度发布规则名称，最多支持60个字符，支持中英文字符。
+        :param _RuleName: <p>灰度发布规则名称，最多支持60个字符，支持中英文字符。</p>
         :type RuleName: str
-        :param _Remark: 灰度发布规则备注，最多支持200个字符。
+        :param _Remark: <p>灰度发布规则备注，最多支持200个字符。</p>
         :type Remark: str
-        :param _RuleTagList: 灰度发布规则标签列表。
+        :param _RuleTagList: <p>灰度发布规则标签列表。</p>
         :type RuleTagList: list of LaneRuleTag
-        :param _RuleTagRelationship: 灰度发布规则标签关系。- RELEATION_AND：与- RELEATION_OR：或
-        :type RuleTagRelationship: str
-        :param _LaneId: 泳道配置ID。该参数可以通过调用 [DescribeLanes](https://cloud.tencent.com/document/product/649/44504) 的返回值中的 LaneId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=grayscale&subTab=lane)查看；也可以调用[CreateLane](https://cloud.tencent.com/document/product/649/44508)创建新的泳道配置。
+        :param _LaneId: <p>泳道配置ID。该参数可以通过调用 <a href="https://cloud.tencent.com/document/product/649/44504">DescribeLanes</a> 的返回值中的 LaneId 字段来获取或通过登录<a href="https://console.cloud.tencent.com/tse/tsf-consul?tab=grayscale&amp;subTab=lane">控制台</a>查看；也可以调用<a href="https://cloud.tencent.com/document/product/649/44508">CreateLane</a>创建新的泳道配置。</p>
         :type LaneId: str
-        :param _Enable: 开启状态。
-- true：开启
-- false：关闭
+        :param _Enable: <p>开启状态。</p><ul><li>true：开启</li><li>false：关闭</li></ul>
         :type Enable: bool
+        :param _RuleTagRelationship: <p>灰度发布规则标签关系。- RELEATION_AND：与- RELEATION_OR：或</p>
+        :type RuleTagRelationship: str
         """
         self._RuleId = None
         self._RuleName = None
         self._Remark = None
         self._RuleTagList = None
-        self._RuleTagRelationship = None
         self._LaneId = None
         self._Enable = None
+        self._RuleTagRelationship = None
 
     @property
     def RuleId(self):
-        r"""灰度发布规则ID。该参数可以通过调用 [DescribeLaneRules](https://cloud.tencent.com/document/product/649/44505) 的返回值中的 RuleId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=grayscale&subTab=lanerule)查看；也可以调用[CreateLaneRule](https://cloud.tencent.com/document/product/649/44507)创建新的灰度发布规则。
+        r"""<p>灰度发布规则ID。该参数可以通过调用 <a href="https://cloud.tencent.com/document/product/649/44505">DescribeLaneRules</a> 的返回值中的 RuleId 字段来获取或通过登录<a href="https://console.cloud.tencent.com/tse/tsf-consul?tab=grayscale&amp;subTab=lanerule">控制台</a>查看；也可以调用<a href="https://cloud.tencent.com/document/product/649/44507">CreateLaneRule</a>创建新的灰度发布规则。</p>
         :rtype: str
         """
         return self._RuleId
@@ -43852,7 +43929,7 @@ class ModifyLaneRuleRequest(AbstractModel):
 
     @property
     def RuleName(self):
-        r"""灰度发布规则名称，最多支持60个字符，支持中英文字符。
+        r"""<p>灰度发布规则名称，最多支持60个字符，支持中英文字符。</p>
         :rtype: str
         """
         return self._RuleName
@@ -43863,7 +43940,7 @@ class ModifyLaneRuleRequest(AbstractModel):
 
     @property
     def Remark(self):
-        r"""灰度发布规则备注，最多支持200个字符。
+        r"""<p>灰度发布规则备注，最多支持200个字符。</p>
         :rtype: str
         """
         return self._Remark
@@ -43874,7 +43951,7 @@ class ModifyLaneRuleRequest(AbstractModel):
 
     @property
     def RuleTagList(self):
-        r"""灰度发布规则标签列表。
+        r"""<p>灰度发布规则标签列表。</p>
         :rtype: list of LaneRuleTag
         """
         return self._RuleTagList
@@ -43884,19 +43961,8 @@ class ModifyLaneRuleRequest(AbstractModel):
         self._RuleTagList = RuleTagList
 
     @property
-    def RuleTagRelationship(self):
-        r"""灰度发布规则标签关系。- RELEATION_AND：与- RELEATION_OR：或
-        :rtype: str
-        """
-        return self._RuleTagRelationship
-
-    @RuleTagRelationship.setter
-    def RuleTagRelationship(self, RuleTagRelationship):
-        self._RuleTagRelationship = RuleTagRelationship
-
-    @property
     def LaneId(self):
-        r"""泳道配置ID。该参数可以通过调用 [DescribeLanes](https://cloud.tencent.com/document/product/649/44504) 的返回值中的 LaneId 字段来获取或通过登录[控制台](https://console.cloud.tencent.com/tse/tsf-consul?tab=grayscale&subTab=lane)查看；也可以调用[CreateLane](https://cloud.tencent.com/document/product/649/44508)创建新的泳道配置。
+        r"""<p>泳道配置ID。该参数可以通过调用 <a href="https://cloud.tencent.com/document/product/649/44504">DescribeLanes</a> 的返回值中的 LaneId 字段来获取或通过登录<a href="https://console.cloud.tencent.com/tse/tsf-consul?tab=grayscale&amp;subTab=lane">控制台</a>查看；也可以调用<a href="https://cloud.tencent.com/document/product/649/44508">CreateLane</a>创建新的泳道配置。</p>
         :rtype: str
         """
         return self._LaneId
@@ -43907,9 +43973,7 @@ class ModifyLaneRuleRequest(AbstractModel):
 
     @property
     def Enable(self):
-        r"""开启状态。
-- true：开启
-- false：关闭
+        r"""<p>开启状态。</p><ul><li>true：开启</li><li>false：关闭</li></ul>
         :rtype: bool
         """
         return self._Enable
@@ -43917,6 +43981,17 @@ class ModifyLaneRuleRequest(AbstractModel):
     @Enable.setter
     def Enable(self, Enable):
         self._Enable = Enable
+
+    @property
+    def RuleTagRelationship(self):
+        r"""<p>灰度发布规则标签关系。- RELEATION_AND：与- RELEATION_OR：或</p>
+        :rtype: str
+        """
+        return self._RuleTagRelationship
+
+    @RuleTagRelationship.setter
+    def RuleTagRelationship(self, RuleTagRelationship):
+        self._RuleTagRelationship = RuleTagRelationship
 
 
     def _deserialize(self, params):
@@ -43929,9 +44004,9 @@ class ModifyLaneRuleRequest(AbstractModel):
                 obj = LaneRuleTag()
                 obj._deserialize(item)
                 self._RuleTagList.append(obj)
-        self._RuleTagRelationship = params.get("RuleTagRelationship")
         self._LaneId = params.get("LaneId")
         self._Enable = params.get("Enable")
+        self._RuleTagRelationship = params.get("RuleTagRelationship")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -43949,9 +44024,7 @@ class ModifyLaneRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 修改结果。
-- true：成功
-- false：失败
+        :param _Result: <p>修改结果。</p><ul><li>true：成功</li><li>false：失败</li></ul>
         :type Result: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -43961,9 +44034,7 @@ class ModifyLaneRuleResponse(AbstractModel):
 
     @property
     def Result(self):
-        r"""修改结果。
-- true：成功
-- false：失败
+        r"""<p>修改结果。</p><ul><li>true：成功</li><li>false：失败</li></ul>
         :rtype: bool
         """
         return self._Result
@@ -50666,50 +50737,52 @@ class ServiceSetting(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AccessType: 0:公网, 1:集群内访问, 2：NodePort, 3: VPC 内网访问
+        :param _AccessType: <p>0:公网, 1:集群内访问, 2：NodePort, 3: VPC 内网访问</p>
         :type AccessType: int
-        :param _ProtocolPorts: 容器端口映射
+        :param _ProtocolPorts: <p>容器端口映射</p>
         :type ProtocolPorts: list of ProtocolPort
-        :param _SubnetId: 子网ID
+        :param _SubnetId: <p>子网ID</p>
         :type SubnetId: str
-        :param _DisableService: 是否创建 k8s service，默认为 false
+        :param _DisableService: <p>是否创建 k8s service，默认为 false</p>
         :type DisableService: bool
-        :param _HeadlessService: service 是否为 headless 类型
+        :param _HeadlessService: <p>service 是否为 headless 类型</p>
         :type HeadlessService: bool
-        :param _AllowDeleteService: 当为 true 且 DisableService 也为 true 时，会删除之前创建的 service，请小心使用
+        :param _AllowDeleteService: <p>当为 true 且 DisableService 也为 true 时，会删除之前创建的 service，请小心使用</p>
         :type AllowDeleteService: bool
-        :param _OpenSessionAffinity: 开启SessionAffinity，true为开启，false为不开启，默认为false
+        :param _OpenSessionAffinity: <p>开启SessionAffinity，true为开启，false为不开启，默认为false</p>
         :type OpenSessionAffinity: bool
-        :param _SessionAffinityTimeoutSeconds: SessionAffinity会话时间，默认10800
+        :param _SessionAffinityTimeoutSeconds: <p>SessionAffinity会话时间，默认10800</p>
         :type SessionAffinityTimeoutSeconds: int
-        :param _ServiceName: 服务名称
+        :param _ServiceName: <p>服务名称</p>
         :type ServiceName: str
-        :param _ExternalTrafficStrategy: 外部流量策略
+        :param _ExternalTrafficStrategy: <p>外部流量策略</p>
         :type ExternalTrafficStrategy: str
-        :param _ExternalTrafficPolicy: 外部流量策略
+        :param _ExternalTrafficPolicy: <p>外部流量策略</p>
         :type ExternalTrafficPolicy: str
-        :param _LoadBalancerProvisioner: 负载均衡提供者
+        :param _LoadBalancerProvisioner: <p>负载均衡提供者</p>
         :type LoadBalancerProvisioner: str
-        :param _LoadBalancingType: 负载均衡类型，Intranet表示内网，Internet表示外网
+        :param _LoadBalancingType: <p>负载均衡类型，Intranet表示内网，Internet表示外网</p>
         :type LoadBalancingType: str
-        :param _ClusterIp: k8s负载均衡内网vip
+        :param _ClusterIp: <p>k8s负载均衡内网vip</p>
         :type ClusterIp: str
-        :param _DisableServiceInt: 禁用服务Int记录
+        :param _DisableServiceInt: <p>禁用服务Int记录</p>
         :type DisableServiceInt: int
-        :param _OpenSessionAffinityInt: 开启SessionAffinity Int记录
+        :param _OpenSessionAffinityInt: <p>开启SessionAffinity Int记录</p>
         :type OpenSessionAffinityInt: int
-        :param _HeadlessServiceInt: 开启HeadlessService int记录
+        :param _HeadlessServiceInt: <p>开启HeadlessService int记录</p>
         :type HeadlessServiceInt: int
-        :param _Name: 服务名称
+        :param _Name: <p>服务名称</p>
         :type Name: str
-        :param _VpcId: VPC网络ID
+        :param _VpcId: <p>VPC网络ID</p>
         :type VpcId: str
-        :param _LoadBalancingIp: 负载均衡VIP
+        :param _LoadBalancingIp: <p>负载均衡VIP</p>
         :type LoadBalancingIp: str
-        :param _LoadBalancerId: 负载均衡id
+        :param _LoadBalancerId: <p>负载均衡id</p>
         :type LoadBalancerId: str
-        :param _ExistingLoadBalancerId: 已存在的负载均衡id
+        :param _ExistingLoadBalancerId: <p>已存在的负载均衡id</p>
         :type ExistingLoadBalancerId: str
+        :param _EnableGlobalService: <p>是否为全局服务（仅TCS环境使用）</p>
+        :type EnableGlobalService: bool
         """
         self._AccessType = None
         self._ProtocolPorts = None
@@ -50733,10 +50806,11 @@ class ServiceSetting(AbstractModel):
         self._LoadBalancingIp = None
         self._LoadBalancerId = None
         self._ExistingLoadBalancerId = None
+        self._EnableGlobalService = None
 
     @property
     def AccessType(self):
-        r"""0:公网, 1:集群内访问, 2：NodePort, 3: VPC 内网访问
+        r"""<p>0:公网, 1:集群内访问, 2：NodePort, 3: VPC 内网访问</p>
         :rtype: int
         """
         return self._AccessType
@@ -50747,7 +50821,7 @@ class ServiceSetting(AbstractModel):
 
     @property
     def ProtocolPorts(self):
-        r"""容器端口映射
+        r"""<p>容器端口映射</p>
         :rtype: list of ProtocolPort
         """
         return self._ProtocolPorts
@@ -50758,7 +50832,7 @@ class ServiceSetting(AbstractModel):
 
     @property
     def SubnetId(self):
-        r"""子网ID
+        r"""<p>子网ID</p>
         :rtype: str
         """
         return self._SubnetId
@@ -50769,7 +50843,7 @@ class ServiceSetting(AbstractModel):
 
     @property
     def DisableService(self):
-        r"""是否创建 k8s service，默认为 false
+        r"""<p>是否创建 k8s service，默认为 false</p>
         :rtype: bool
         """
         return self._DisableService
@@ -50780,7 +50854,7 @@ class ServiceSetting(AbstractModel):
 
     @property
     def HeadlessService(self):
-        r"""service 是否为 headless 类型
+        r"""<p>service 是否为 headless 类型</p>
         :rtype: bool
         """
         return self._HeadlessService
@@ -50791,7 +50865,7 @@ class ServiceSetting(AbstractModel):
 
     @property
     def AllowDeleteService(self):
-        r"""当为 true 且 DisableService 也为 true 时，会删除之前创建的 service，请小心使用
+        r"""<p>当为 true 且 DisableService 也为 true 时，会删除之前创建的 service，请小心使用</p>
         :rtype: bool
         """
         return self._AllowDeleteService
@@ -50802,7 +50876,7 @@ class ServiceSetting(AbstractModel):
 
     @property
     def OpenSessionAffinity(self):
-        r"""开启SessionAffinity，true为开启，false为不开启，默认为false
+        r"""<p>开启SessionAffinity，true为开启，false为不开启，默认为false</p>
         :rtype: bool
         """
         return self._OpenSessionAffinity
@@ -50813,7 +50887,7 @@ class ServiceSetting(AbstractModel):
 
     @property
     def SessionAffinityTimeoutSeconds(self):
-        r"""SessionAffinity会话时间，默认10800
+        r"""<p>SessionAffinity会话时间，默认10800</p>
         :rtype: int
         """
         return self._SessionAffinityTimeoutSeconds
@@ -50824,7 +50898,7 @@ class ServiceSetting(AbstractModel):
 
     @property
     def ServiceName(self):
-        r"""服务名称
+        r"""<p>服务名称</p>
         :rtype: str
         """
         return self._ServiceName
@@ -50835,7 +50909,7 @@ class ServiceSetting(AbstractModel):
 
     @property
     def ExternalTrafficStrategy(self):
-        r"""外部流量策略
+        r"""<p>外部流量策略</p>
         :rtype: str
         """
         return self._ExternalTrafficStrategy
@@ -50846,7 +50920,7 @@ class ServiceSetting(AbstractModel):
 
     @property
     def ExternalTrafficPolicy(self):
-        r"""外部流量策略
+        r"""<p>外部流量策略</p>
         :rtype: str
         """
         return self._ExternalTrafficPolicy
@@ -50857,7 +50931,7 @@ class ServiceSetting(AbstractModel):
 
     @property
     def LoadBalancerProvisioner(self):
-        r"""负载均衡提供者
+        r"""<p>负载均衡提供者</p>
         :rtype: str
         """
         return self._LoadBalancerProvisioner
@@ -50868,7 +50942,7 @@ class ServiceSetting(AbstractModel):
 
     @property
     def LoadBalancingType(self):
-        r"""负载均衡类型，Intranet表示内网，Internet表示外网
+        r"""<p>负载均衡类型，Intranet表示内网，Internet表示外网</p>
         :rtype: str
         """
         return self._LoadBalancingType
@@ -50879,7 +50953,7 @@ class ServiceSetting(AbstractModel):
 
     @property
     def ClusterIp(self):
-        r"""k8s负载均衡内网vip
+        r"""<p>k8s负载均衡内网vip</p>
         :rtype: str
         """
         return self._ClusterIp
@@ -50890,7 +50964,7 @@ class ServiceSetting(AbstractModel):
 
     @property
     def DisableServiceInt(self):
-        r"""禁用服务Int记录
+        r"""<p>禁用服务Int记录</p>
         :rtype: int
         """
         return self._DisableServiceInt
@@ -50901,7 +50975,7 @@ class ServiceSetting(AbstractModel):
 
     @property
     def OpenSessionAffinityInt(self):
-        r"""开启SessionAffinity Int记录
+        r"""<p>开启SessionAffinity Int记录</p>
         :rtype: int
         """
         return self._OpenSessionAffinityInt
@@ -50912,7 +50986,7 @@ class ServiceSetting(AbstractModel):
 
     @property
     def HeadlessServiceInt(self):
-        r"""开启HeadlessService int记录
+        r"""<p>开启HeadlessService int记录</p>
         :rtype: int
         """
         return self._HeadlessServiceInt
@@ -50923,7 +50997,7 @@ class ServiceSetting(AbstractModel):
 
     @property
     def Name(self):
-        r"""服务名称
+        r"""<p>服务名称</p>
         :rtype: str
         """
         return self._Name
@@ -50934,7 +51008,7 @@ class ServiceSetting(AbstractModel):
 
     @property
     def VpcId(self):
-        r"""VPC网络ID
+        r"""<p>VPC网络ID</p>
         :rtype: str
         """
         return self._VpcId
@@ -50945,7 +51019,7 @@ class ServiceSetting(AbstractModel):
 
     @property
     def LoadBalancingIp(self):
-        r"""负载均衡VIP
+        r"""<p>负载均衡VIP</p>
         :rtype: str
         """
         return self._LoadBalancingIp
@@ -50956,7 +51030,7 @@ class ServiceSetting(AbstractModel):
 
     @property
     def LoadBalancerId(self):
-        r"""负载均衡id
+        r"""<p>负载均衡id</p>
         :rtype: str
         """
         return self._LoadBalancerId
@@ -50967,7 +51041,7 @@ class ServiceSetting(AbstractModel):
 
     @property
     def ExistingLoadBalancerId(self):
-        r"""已存在的负载均衡id
+        r"""<p>已存在的负载均衡id</p>
         :rtype: str
         """
         return self._ExistingLoadBalancerId
@@ -50975,6 +51049,17 @@ class ServiceSetting(AbstractModel):
     @ExistingLoadBalancerId.setter
     def ExistingLoadBalancerId(self, ExistingLoadBalancerId):
         self._ExistingLoadBalancerId = ExistingLoadBalancerId
+
+    @property
+    def EnableGlobalService(self):
+        r"""<p>是否为全局服务（仅TCS环境使用）</p>
+        :rtype: bool
+        """
+        return self._EnableGlobalService
+
+    @EnableGlobalService.setter
+    def EnableGlobalService(self, EnableGlobalService):
+        self._EnableGlobalService = EnableGlobalService
 
 
     def _deserialize(self, params):
@@ -51005,6 +51090,7 @@ class ServiceSetting(AbstractModel):
         self._LoadBalancingIp = params.get("LoadBalancingIp")
         self._LoadBalancerId = params.get("LoadBalancerId")
         self._ExistingLoadBalancerId = params.get("ExistingLoadBalancerId")
+        self._EnableGlobalService = params.get("EnableGlobalService")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -52028,6 +52114,10 @@ class SimpleGroup(AbstractModel):
         :type AppMicroServiceType: str
         :param _K8sNamespaceName: k8s 命名空间名称
         :type K8sNamespaceName: str
+        :param _CreateTime: 创建时间
+        :type CreateTime: str
+        :param _UpdatedTime: 更新时间
+        :type UpdatedTime: str
         """
         self._GroupId = None
         self._GroupName = None
@@ -52043,6 +52133,8 @@ class SimpleGroup(AbstractModel):
         self._GroupResourceType = None
         self._AppMicroServiceType = None
         self._K8sNamespaceName = None
+        self._CreateTime = None
+        self._UpdatedTime = None
 
     @property
     def GroupId(self):
@@ -52198,6 +52290,28 @@ class SimpleGroup(AbstractModel):
     def K8sNamespaceName(self, K8sNamespaceName):
         self._K8sNamespaceName = K8sNamespaceName
 
+    @property
+    def CreateTime(self):
+        r"""创建时间
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdatedTime(self):
+        r"""更新时间
+        :rtype: str
+        """
+        return self._UpdatedTime
+
+    @UpdatedTime.setter
+    def UpdatedTime(self, UpdatedTime):
+        self._UpdatedTime = UpdatedTime
+
 
     def _deserialize(self, params):
         self._GroupId = params.get("GroupId")
@@ -52214,6 +52328,8 @@ class SimpleGroup(AbstractModel):
         self._GroupResourceType = params.get("GroupResourceType")
         self._AppMicroServiceType = params.get("AppMicroServiceType")
         self._K8sNamespaceName = params.get("K8sNamespaceName")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdatedTime = params.get("UpdatedTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -57015,10 +57131,13 @@ class UpdateApiRateLimitRulesRequest(AbstractModel):
         :type UsableStatus: str
         :param _MaxQps: QPS值。开启限流规则时，必填
         :type MaxQps: int
+        :param _UsePathAndMethodFormat: 旧格式 method 与 path 分开，新格式 path-<Method>,如 /checkToken-GET，默认为新格式
+        :type UsePathAndMethodFormat: bool
         """
         self._ApiIds = None
         self._UsableStatus = None
         self._MaxQps = None
+        self._UsePathAndMethodFormat = None
 
     @property
     def ApiIds(self):
@@ -57053,11 +57172,23 @@ class UpdateApiRateLimitRulesRequest(AbstractModel):
     def MaxQps(self, MaxQps):
         self._MaxQps = MaxQps
 
+    @property
+    def UsePathAndMethodFormat(self):
+        r"""旧格式 method 与 path 分开，新格式 path-<Method>,如 /checkToken-GET，默认为新格式
+        :rtype: bool
+        """
+        return self._UsePathAndMethodFormat
+
+    @UsePathAndMethodFormat.setter
+    def UsePathAndMethodFormat(self, UsePathAndMethodFormat):
+        self._UsePathAndMethodFormat = UsePathAndMethodFormat
+
 
     def _deserialize(self, params):
         self._ApiIds = params.get("ApiIds")
         self._UsableStatus = params.get("UsableStatus")
         self._MaxQps = params.get("MaxQps")
+        self._UsePathAndMethodFormat = params.get("UsePathAndMethodFormat")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

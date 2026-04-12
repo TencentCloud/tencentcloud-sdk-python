@@ -2546,6 +2546,124 @@ class DescribeProjectsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribePublicApplicationsRequest(AbstractModel):
+    r"""DescribePublicApplications请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Limit: 返回数量，默认为20，最大值为100。
+        :type Limit: int
+        :param _Offset: 偏移量，默认为0。
+        :type Offset: int
+        """
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def Limit(self):
+        r"""返回数量，默认为20，最大值为100。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""偏移量，默认为0。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePublicApplicationsResponse(AbstractModel):
+    r"""DescribePublicApplications返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Applications: 公共应用。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Applications: list of PublicApplication
+        :param _TotalCount: 符合条件的数量。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Applications = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Applications(self):
+        r"""公共应用。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of PublicApplication
+        """
+        return self._Applications
+
+    @Applications.setter
+    def Applications(self, Applications):
+        self._Applications = Applications
+
+    @property
+    def TotalCount(self):
+        r"""符合条件的数量。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Applications") is not None:
+            self._Applications = []
+            for item in params.get("Applications"):
+                obj = PublicApplication()
+                obj._deserialize(item)
+                self._Applications.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeRunGroupsRequest(AbstractModel):
     r"""DescribeRunGroups请求参数结构体
 
@@ -6355,6 +6473,137 @@ class Project(AbstractModel):
         
 
 
+class PublicApplication(AbstractModel):
+    r"""公共应用。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ApplicationId: <p>应用ID。</p>
+        :type ApplicationId: str
+        :param _Name: <p>名称。</p>
+        :type Name: str
+        :param _Type: <p>类型。</p>
+        :type Type: str
+        :param _AppGroupType: <p>应用标记</p><p>枚举值：</p><ul><li>SUB_APP： 子应用</li><li>APP_COLLECTION： 合集</li><li>STANDALONE_APP： 独立应用</li></ul>
+        :type AppGroupType: str
+        :param _NextflowVersion: <p>Nextflow版本</p>
+        :type NextflowVersion: list of str
+        :param _AppTags: <p>应用分类</p>
+        :type AppTags: list of ToolRepoTag
+        :param _AppId: <p>应用标识</p>
+        :type AppId: str
+        """
+        self._ApplicationId = None
+        self._Name = None
+        self._Type = None
+        self._AppGroupType = None
+        self._NextflowVersion = None
+        self._AppTags = None
+        self._AppId = None
+
+    @property
+    def ApplicationId(self):
+        r"""<p>应用ID。</p>
+        :rtype: str
+        """
+        return self._ApplicationId
+
+    @ApplicationId.setter
+    def ApplicationId(self, ApplicationId):
+        self._ApplicationId = ApplicationId
+
+    @property
+    def Name(self):
+        r"""<p>名称。</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        r"""<p>类型。</p>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def AppGroupType(self):
+        r"""<p>应用标记</p><p>枚举值：</p><ul><li>SUB_APP： 子应用</li><li>APP_COLLECTION： 合集</li><li>STANDALONE_APP： 独立应用</li></ul>
+        :rtype: str
+        """
+        return self._AppGroupType
+
+    @AppGroupType.setter
+    def AppGroupType(self, AppGroupType):
+        self._AppGroupType = AppGroupType
+
+    @property
+    def NextflowVersion(self):
+        r"""<p>Nextflow版本</p>
+        :rtype: list of str
+        """
+        return self._NextflowVersion
+
+    @NextflowVersion.setter
+    def NextflowVersion(self, NextflowVersion):
+        self._NextflowVersion = NextflowVersion
+
+    @property
+    def AppTags(self):
+        r"""<p>应用分类</p>
+        :rtype: list of ToolRepoTag
+        """
+        return self._AppTags
+
+    @AppTags.setter
+    def AppTags(self, AppTags):
+        self._AppTags = AppTags
+
+    @property
+    def AppId(self):
+        r"""<p>应用标识</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+
+    def _deserialize(self, params):
+        self._ApplicationId = params.get("ApplicationId")
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        self._AppGroupType = params.get("AppGroupType")
+        self._NextflowVersion = params.get("NextflowVersion")
+        if params.get("AppTags") is not None:
+            self._AppTags = []
+            for item in params.get("AppTags"):
+                obj = ToolRepoTag()
+                obj._deserialize(item)
+                self._AppTags.append(obj)
+        self._AppId = params.get("AppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RebootHPCNodesRequest(AbstractModel):
     r"""RebootHPCNodes请求参数结构体
 
@@ -9526,6 +9775,57 @@ class TerminateRunGroupResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class ToolRepoTag(AbstractModel):
+    r"""应用分类标签
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TagId: <p>应用分类标签ID</p>
+        :type TagId: str
+        :param _TagName: <p>应用分类标签名称</p>
+        :type TagName: str
+        """
+        self._TagId = None
+        self._TagName = None
+
+    @property
+    def TagId(self):
+        r"""<p>应用分类标签ID</p>
+        :rtype: str
+        """
+        return self._TagId
+
+    @TagId.setter
+    def TagId(self, TagId):
+        self._TagId = TagId
+
+    @property
+    def TagName(self):
+        r"""<p>应用分类标签名称</p>
+        :rtype: str
+        """
+        return self._TagName
+
+    @TagName.setter
+    def TagName(self, TagName):
+        self._TagName = TagName
+
+
+    def _deserialize(self, params):
+        self._TagId = params.get("TagId")
+        self._TagName = params.get("TagName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class VPCOption(AbstractModel):

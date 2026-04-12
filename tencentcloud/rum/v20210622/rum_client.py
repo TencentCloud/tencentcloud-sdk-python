@@ -302,6 +302,52 @@ class RumClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeApplicationExitReportDetail(self, request):
+        r"""获取应用退出个例上报详情
+
+        :param request: Request instance for DescribeApplicationExitReportDetail.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeApplicationExitReportDetailRequest`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeApplicationExitReportDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeApplicationExitReportDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeApplicationExitReportDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeApplicationExitReportList(self, request):
+        r"""获取应用退出个例上报列表
+
+        :param request: Request instance for DescribeApplicationExitReportList.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeApplicationExitReportListRequest`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeApplicationExitReportListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeApplicationExitReportList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeApplicationExitReportListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeData(self, request):
         r"""转发monitor查询
 
@@ -1017,6 +1063,328 @@ class RumClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeExceptionDetail(self, request):
+        r"""获取异常问题详情数据
+
+        :param request: Request instance for DescribeExceptionDetail.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeExceptionDetailRequest`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeExceptionDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeExceptionDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeExceptionDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeExceptionReportList(self, request):
+        r"""获取异常个例列表
+
+        :param request: Request instance for DescribeExceptionReportList.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeExceptionReportListRequest`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeExceptionReportListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeExceptionReportList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeExceptionReportListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeFOOMMallocProblemDetail(self, request):
+        r"""获取FOOM内存分配问题详情数据
+
+        :param request: Request instance for DescribeFOOMMallocProblemDetail.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeFOOMMallocProblemDetailRequest`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeFOOMMallocProblemDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeFOOMMallocProblemDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeFOOMMallocProblemDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeFOOMMallocProblemList(self, request):
+        r"""获取FOOM内存分配问题列表数据
+
+        :param request: Request instance for DescribeFOOMMallocProblemList.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeFOOMMallocProblemListRequest`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeFOOMMallocProblemListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeFOOMMallocProblemList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeFOOMMallocProblemListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeFOOMMallocReportList(self, request):
+        r"""获取FOOM内存分配问题上报列表
+
+        :param request: Request instance for DescribeFOOMMallocReportList.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeFOOMMallocReportListRequest`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeFOOMMallocReportListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeFOOMMallocReportList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeFOOMMallocReportListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeFOOMProblemDetail(self, request):
+        r"""获取FOOM问题详情数据
+
+        :param request: Request instance for DescribeFOOMProblemDetail.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeFOOMProblemDetailRequest`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeFOOMProblemDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeFOOMProblemDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeFOOMProblemDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeFOOMProblemList(self, request):
+        r"""获取FOOM问题列表数据
+
+        :param request: Request instance for DescribeFOOMProblemList.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeFOOMProblemListRequest`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeFOOMProblemListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeFOOMProblemList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeFOOMProblemListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeFOOMReportList(self, request):
+        r"""获取FOOM问题上报列表
+
+        :param request: Request instance for DescribeFOOMReportList.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeFOOMReportListRequest`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeFOOMReportListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeFOOMReportList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeFOOMReportListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeIssuesDistribution(self, request):
+        r"""获取问题分布数据
+
+        :param request: Request instance for DescribeIssuesDistribution.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeIssuesDistributionRequest`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeIssuesDistributionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeIssuesDistribution", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeIssuesDistributionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeIssuesList(self, request):
+        r"""获取问题列表数据
+
+        :param request: Request instance for DescribeIssuesList.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeIssuesListRequest`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeIssuesListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeIssuesList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeIssuesListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeIssuesStatisticsTrend(self, request):
+        r"""获取问题趋势数据
+
+        :param request: Request instance for DescribeIssuesStatisticsTrend.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeIssuesStatisticsTrendRequest`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeIssuesStatisticsTrendResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeIssuesStatisticsTrend", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeIssuesStatisticsTrendResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeLagANRProblemAccountDetail(self, request):
+        r"""获取卡顿ANR问题用户详情
+
+        :param request: Request instance for DescribeLagANRProblemAccountDetail.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeLagANRProblemAccountDetailRequest`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeLagANRProblemAccountDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLagANRProblemAccountDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLagANRProblemAccountDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeLagANRProblemFeatureAccounts(self, request):
+        r"""获取卡顿ANR问题用户列表
+
+        :param request: Request instance for DescribeLagANRProblemFeatureAccounts.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeLagANRProblemFeatureAccountsRequest`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeLagANRProblemFeatureAccountsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLagANRProblemFeatureAccounts", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLagANRProblemFeatureAccountsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeLagANRProblemList(self, request):
+        r"""获取卡顿ANR问题列表数据
+
+        :param request: Request instance for DescribeLagANRProblemList.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeLagANRProblemListRequest`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeLagANRProblemListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLagANRProblemList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLagANRProblemListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeProjectLimits(self, request):
         r"""获取应用上报抽样信息
 
@@ -1330,6 +1698,52 @@ class RumClient(AbstractClient):
             body = self.call("DescribeTawInstances", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeTawInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeToken(self, request):
+        r"""查询令牌
+
+        :param request: Request instance for DescribeToken.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeTokenRequest`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeTokenResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeToken", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTokenResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeTopIssues(self, request):
+        r"""查询top问题列表
+
+        :param request: Request instance for DescribeTopIssues.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeTopIssuesRequest`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeTopIssuesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTopIssues", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTopIssuesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

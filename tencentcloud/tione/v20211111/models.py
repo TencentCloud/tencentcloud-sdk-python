@@ -3938,57 +3938,58 @@ class CreateTrainingTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 训练任务名称，不超过60个字符，仅支持中英文、数字、下划线"_"、短横"-"，只能以中英文、数字开头
+        :param _Name: <p>训练任务名称，不超过60个字符，仅支持中英文、数字、下划线&quot;_&quot;、短横&quot;-&quot;，只能以中英文、数字开头</p>
         :type Name: str
-        :param _ChargeType: 计费模式，eg：PREPAID 包年包月（资源组）;
-POSTPAID_BY_HOUR 按量计费
+        :param _ChargeType: <p>计费模式，eg：PREPAID 包年包月（资源组）;<br>POSTPAID_BY_HOUR 按量计费</p>
         :type ChargeType: str
-        :param _ResourceConfigInfos: 资源配置，需填写对应算力规格ID和节点数量，算力规格ID查询接口为DescribeBillingSpecsPrice，eg：[{"Role":"WORKER", "InstanceType": "TI.S.MEDIUM.POST", "InstanceNum": 1}]
+        :param _ResourceConfigInfos: <p>资源配置，需填写对应算力规格ID和节点数量，算力规格ID查询接口为DescribeBillingSpecsPrice，eg：[{&quot;Role&quot;:&quot;WORKER&quot;, &quot;InstanceType&quot;: &quot;TI.S.MEDIUM.POST&quot;, &quot;InstanceNum&quot;: 1}]</p>
         :type ResourceConfigInfos: list of ResourceConfigInfo
-        :param _FrameworkName: 训练框架名称，通过DescribeTrainingFrameworks接口查询，eg：SPARK、PYSPARK、TENSORFLOW、PYTORCH
+        :param _FrameworkName: <p>训练框架名称，通过DescribeTrainingFrameworks接口查询，eg：SPARK、PYSPARK、TENSORFLOW、PYTORCH</p>
         :type FrameworkName: str
-        :param _FrameworkVersion: 训练框架版本，通过DescribeTrainingFrameworks接口查询，eg：1.15、1.9
+        :param _FrameworkVersion: <p>训练框架版本，通过DescribeTrainingFrameworks接口查询，eg：1.15、1.9</p>
         :type FrameworkVersion: str
-        :param _FrameworkEnvironment: 训练框架环境，通过DescribeTrainingFrameworks接口查询，eg：tf1.15-py3.7-cpu、torch1.9-py3.8-cuda11.1-gpu
+        :param _FrameworkEnvironment: <p>训练框架环境，通过DescribeTrainingFrameworks接口查询，eg：tf1.15-py3.7-cpu、torch1.9-py3.8-cuda11.1-gpu</p>
         :type FrameworkEnvironment: str
-        :param _ResourceGroupId: 预付费专用资源组ID，通过DescribeBillingResourceGroups接口查询
+        :param _ResourceGroupId: <p>预付费专用资源组ID，通过DescribeBillingResourceGroups接口查询</p>
         :type ResourceGroupId: str
-        :param _Tags: 标签配置
+        :param _Tags: <p>标签配置</p>
         :type Tags: list of Tag
-        :param _ImageInfo: 自定义镜像信息
+        :param _ImageInfo: <p>自定义镜像信息</p>
         :type ImageInfo: :class:`tencentcloud.tione.v20211111.models.ImageInfo`
-        :param _CodePackagePath: COS代码包路径
+        :param _CodePackagePath: <p>COS代码包路径</p>
         :type CodePackagePath: :class:`tencentcloud.tione.v20211111.models.CosPathInfo`
-        :param _StartCmdInfo: 任务的启动命令，按任务训练模式输入，如遇特殊字符导致配置失败，可使用EncodedStartCmdInfo参数
+        :param _StartCmdInfo: <p>任务的启动命令，按任务训练模式输入，如遇特殊字符导致配置失败，可使用EncodedStartCmdInfo参数</p>
         :type StartCmdInfo: :class:`tencentcloud.tione.v20211111.models.StartCmdInfo`
-        :param _TrainingMode: 训练模式，通过DescribeTrainingFrameworks接口查询，eg：PS_WORKER、DDP、MPI、HOROVOD
+        :param _TrainingMode: <p>训练模式，通过DescribeTrainingFrameworks接口查询，eg：PS_WORKER、DDP、MPI、HOROVOD</p>
         :type TrainingMode: str
-        :param _DataConfigs: 数据配置，依赖DataSource字段，数量不超过10个
+        :param _DataConfigs: <p>数据配置，依赖DataSource字段，数量不超过10个</p>
         :type DataConfigs: list of DataConfig
-        :param _VpcId: VPC Id
+        :param _VpcId: <p>VPC Id</p>
         :type VpcId: str
-        :param _SubnetId: 子网Id
+        :param _SubnetId: <p>子网Id</p>
         :type SubnetId: str
-        :param _Output: COS训练输出路径
+        :param _Output: <p>COS训练输出路径</p>
         :type Output: :class:`tencentcloud.tione.v20211111.models.CosPathInfo`
-        :param _LogConfig: CLS日志配置
+        :param _LogConfig: <p>CLS日志配置</p>
         :type LogConfig: :class:`tencentcloud.tione.v20211111.models.LogConfig`
-        :param _TuningParameters: 调优参数，不超过2048个字符
+        :param _TuningParameters: <p>调优参数，不超过2048个字符</p>
         :type TuningParameters: str
-        :param _LogEnable: 是否上报日志
+        :param _LogEnable: <p>是否上报日志</p>
         :type LogEnable: bool
-        :param _Remark: 备注，不超过1024个字符
+        :param _Remark: <p>备注，不超过1024个字符</p>
         :type Remark: str
-        :param _DataSource: 数据来源，eg：DATASET、COS、CFS、CFSTurbo、HDFS、GooseFSx
+        :param _DataSource: <p>数据来源，eg：DATASET、COS、CFS、CFSTurbo、HDFS、GooseFSx</p>
         :type DataSource: str
-        :param _CallbackUrl: 回调地址，用于创建/启动/停止训练任务的异步回调。回调格式&内容详见：[[TI-ONE接口回调说明]](https://cloud.tencent.com/document/product/851/84292)
+        :param _CallbackUrl: <p>回调地址，用于创建/启动/停止训练任务的异步回调。回调格式&amp;内容详见：<a href="https://cloud.tencent.com/document/product/851/84292">[TI-ONE接口回调说明]</a></p>
         :type CallbackUrl: str
-        :param _EncodedStartCmdInfo: 编码后的任务启动命令，与StartCmdInfo同时配置时，仅当前参数生效
+        :param _EncodedStartCmdInfo: <p>编码后的任务启动命令，与StartCmdInfo同时配置时，仅当前参数生效</p>
         :type EncodedStartCmdInfo: :class:`tencentcloud.tione.v20211111.models.EncodedStartCmdInfo`
-        :param _CodeRepos: 代码仓库配置
+        :param _CodeRepos: <p>代码仓库配置</p>
         :type CodeRepos: list of CodeRepoConfig
-        :param _ExposeNetworkConfig: 网络暴露配置
+        :param _ExposeNetworkConfig: <p>网络暴露配置</p>
         :type ExposeNetworkConfig: :class:`tencentcloud.tione.v20211111.models.ExposeNetworkConfig`
+        :param _Envs: <p>环境变量</p>
+        :type Envs: list of EnvVar
         """
         self._Name = None
         self._ChargeType = None
@@ -4015,10 +4016,11 @@ POSTPAID_BY_HOUR 按量计费
         self._EncodedStartCmdInfo = None
         self._CodeRepos = None
         self._ExposeNetworkConfig = None
+        self._Envs = None
 
     @property
     def Name(self):
-        r"""训练任务名称，不超过60个字符，仅支持中英文、数字、下划线"_"、短横"-"，只能以中英文、数字开头
+        r"""<p>训练任务名称，不超过60个字符，仅支持中英文、数字、下划线&quot;_&quot;、短横&quot;-&quot;，只能以中英文、数字开头</p>
         :rtype: str
         """
         return self._Name
@@ -4029,8 +4031,7 @@ POSTPAID_BY_HOUR 按量计费
 
     @property
     def ChargeType(self):
-        r"""计费模式，eg：PREPAID 包年包月（资源组）;
-POSTPAID_BY_HOUR 按量计费
+        r"""<p>计费模式，eg：PREPAID 包年包月（资源组）;<br>POSTPAID_BY_HOUR 按量计费</p>
         :rtype: str
         """
         return self._ChargeType
@@ -4041,7 +4042,7 @@ POSTPAID_BY_HOUR 按量计费
 
     @property
     def ResourceConfigInfos(self):
-        r"""资源配置，需填写对应算力规格ID和节点数量，算力规格ID查询接口为DescribeBillingSpecsPrice，eg：[{"Role":"WORKER", "InstanceType": "TI.S.MEDIUM.POST", "InstanceNum": 1}]
+        r"""<p>资源配置，需填写对应算力规格ID和节点数量，算力规格ID查询接口为DescribeBillingSpecsPrice，eg：[{&quot;Role&quot;:&quot;WORKER&quot;, &quot;InstanceType&quot;: &quot;TI.S.MEDIUM.POST&quot;, &quot;InstanceNum&quot;: 1}]</p>
         :rtype: list of ResourceConfigInfo
         """
         return self._ResourceConfigInfos
@@ -4052,7 +4053,7 @@ POSTPAID_BY_HOUR 按量计费
 
     @property
     def FrameworkName(self):
-        r"""训练框架名称，通过DescribeTrainingFrameworks接口查询，eg：SPARK、PYSPARK、TENSORFLOW、PYTORCH
+        r"""<p>训练框架名称，通过DescribeTrainingFrameworks接口查询，eg：SPARK、PYSPARK、TENSORFLOW、PYTORCH</p>
         :rtype: str
         """
         return self._FrameworkName
@@ -4063,7 +4064,7 @@ POSTPAID_BY_HOUR 按量计费
 
     @property
     def FrameworkVersion(self):
-        r"""训练框架版本，通过DescribeTrainingFrameworks接口查询，eg：1.15、1.9
+        r"""<p>训练框架版本，通过DescribeTrainingFrameworks接口查询，eg：1.15、1.9</p>
         :rtype: str
         """
         return self._FrameworkVersion
@@ -4074,7 +4075,7 @@ POSTPAID_BY_HOUR 按量计费
 
     @property
     def FrameworkEnvironment(self):
-        r"""训练框架环境，通过DescribeTrainingFrameworks接口查询，eg：tf1.15-py3.7-cpu、torch1.9-py3.8-cuda11.1-gpu
+        r"""<p>训练框架环境，通过DescribeTrainingFrameworks接口查询，eg：tf1.15-py3.7-cpu、torch1.9-py3.8-cuda11.1-gpu</p>
         :rtype: str
         """
         return self._FrameworkEnvironment
@@ -4085,7 +4086,7 @@ POSTPAID_BY_HOUR 按量计费
 
     @property
     def ResourceGroupId(self):
-        r"""预付费专用资源组ID，通过DescribeBillingResourceGroups接口查询
+        r"""<p>预付费专用资源组ID，通过DescribeBillingResourceGroups接口查询</p>
         :rtype: str
         """
         return self._ResourceGroupId
@@ -4096,7 +4097,7 @@ POSTPAID_BY_HOUR 按量计费
 
     @property
     def Tags(self):
-        r"""标签配置
+        r"""<p>标签配置</p>
         :rtype: list of Tag
         """
         return self._Tags
@@ -4107,7 +4108,7 @@ POSTPAID_BY_HOUR 按量计费
 
     @property
     def ImageInfo(self):
-        r"""自定义镜像信息
+        r"""<p>自定义镜像信息</p>
         :rtype: :class:`tencentcloud.tione.v20211111.models.ImageInfo`
         """
         return self._ImageInfo
@@ -4118,7 +4119,7 @@ POSTPAID_BY_HOUR 按量计费
 
     @property
     def CodePackagePath(self):
-        r"""COS代码包路径
+        r"""<p>COS代码包路径</p>
         :rtype: :class:`tencentcloud.tione.v20211111.models.CosPathInfo`
         """
         return self._CodePackagePath
@@ -4129,7 +4130,7 @@ POSTPAID_BY_HOUR 按量计费
 
     @property
     def StartCmdInfo(self):
-        r"""任务的启动命令，按任务训练模式输入，如遇特殊字符导致配置失败，可使用EncodedStartCmdInfo参数
+        r"""<p>任务的启动命令，按任务训练模式输入，如遇特殊字符导致配置失败，可使用EncodedStartCmdInfo参数</p>
         :rtype: :class:`tencentcloud.tione.v20211111.models.StartCmdInfo`
         """
         return self._StartCmdInfo
@@ -4140,7 +4141,7 @@ POSTPAID_BY_HOUR 按量计费
 
     @property
     def TrainingMode(self):
-        r"""训练模式，通过DescribeTrainingFrameworks接口查询，eg：PS_WORKER、DDP、MPI、HOROVOD
+        r"""<p>训练模式，通过DescribeTrainingFrameworks接口查询，eg：PS_WORKER、DDP、MPI、HOROVOD</p>
         :rtype: str
         """
         return self._TrainingMode
@@ -4151,7 +4152,7 @@ POSTPAID_BY_HOUR 按量计费
 
     @property
     def DataConfigs(self):
-        r"""数据配置，依赖DataSource字段，数量不超过10个
+        r"""<p>数据配置，依赖DataSource字段，数量不超过10个</p>
         :rtype: list of DataConfig
         """
         return self._DataConfigs
@@ -4162,7 +4163,7 @@ POSTPAID_BY_HOUR 按量计费
 
     @property
     def VpcId(self):
-        r"""VPC Id
+        r"""<p>VPC Id</p>
         :rtype: str
         """
         return self._VpcId
@@ -4173,7 +4174,7 @@ POSTPAID_BY_HOUR 按量计费
 
     @property
     def SubnetId(self):
-        r"""子网Id
+        r"""<p>子网Id</p>
         :rtype: str
         """
         return self._SubnetId
@@ -4184,7 +4185,7 @@ POSTPAID_BY_HOUR 按量计费
 
     @property
     def Output(self):
-        r"""COS训练输出路径
+        r"""<p>COS训练输出路径</p>
         :rtype: :class:`tencentcloud.tione.v20211111.models.CosPathInfo`
         """
         return self._Output
@@ -4195,7 +4196,7 @@ POSTPAID_BY_HOUR 按量计费
 
     @property
     def LogConfig(self):
-        r"""CLS日志配置
+        r"""<p>CLS日志配置</p>
         :rtype: :class:`tencentcloud.tione.v20211111.models.LogConfig`
         """
         return self._LogConfig
@@ -4206,7 +4207,7 @@ POSTPAID_BY_HOUR 按量计费
 
     @property
     def TuningParameters(self):
-        r"""调优参数，不超过2048个字符
+        r"""<p>调优参数，不超过2048个字符</p>
         :rtype: str
         """
         return self._TuningParameters
@@ -4217,7 +4218,7 @@ POSTPAID_BY_HOUR 按量计费
 
     @property
     def LogEnable(self):
-        r"""是否上报日志
+        r"""<p>是否上报日志</p>
         :rtype: bool
         """
         return self._LogEnable
@@ -4228,7 +4229,7 @@ POSTPAID_BY_HOUR 按量计费
 
     @property
     def Remark(self):
-        r"""备注，不超过1024个字符
+        r"""<p>备注，不超过1024个字符</p>
         :rtype: str
         """
         return self._Remark
@@ -4239,7 +4240,7 @@ POSTPAID_BY_HOUR 按量计费
 
     @property
     def DataSource(self):
-        r"""数据来源，eg：DATASET、COS、CFS、CFSTurbo、HDFS、GooseFSx
+        r"""<p>数据来源，eg：DATASET、COS、CFS、CFSTurbo、HDFS、GooseFSx</p>
         :rtype: str
         """
         return self._DataSource
@@ -4250,7 +4251,7 @@ POSTPAID_BY_HOUR 按量计费
 
     @property
     def CallbackUrl(self):
-        r"""回调地址，用于创建/启动/停止训练任务的异步回调。回调格式&内容详见：[[TI-ONE接口回调说明]](https://cloud.tencent.com/document/product/851/84292)
+        r"""<p>回调地址，用于创建/启动/停止训练任务的异步回调。回调格式&amp;内容详见：<a href="https://cloud.tencent.com/document/product/851/84292">[TI-ONE接口回调说明]</a></p>
         :rtype: str
         """
         return self._CallbackUrl
@@ -4261,7 +4262,7 @@ POSTPAID_BY_HOUR 按量计费
 
     @property
     def EncodedStartCmdInfo(self):
-        r"""编码后的任务启动命令，与StartCmdInfo同时配置时，仅当前参数生效
+        r"""<p>编码后的任务启动命令，与StartCmdInfo同时配置时，仅当前参数生效</p>
         :rtype: :class:`tencentcloud.tione.v20211111.models.EncodedStartCmdInfo`
         """
         return self._EncodedStartCmdInfo
@@ -4272,7 +4273,7 @@ POSTPAID_BY_HOUR 按量计费
 
     @property
     def CodeRepos(self):
-        r"""代码仓库配置
+        r"""<p>代码仓库配置</p>
         :rtype: list of CodeRepoConfig
         """
         return self._CodeRepos
@@ -4283,7 +4284,7 @@ POSTPAID_BY_HOUR 按量计费
 
     @property
     def ExposeNetworkConfig(self):
-        r"""网络暴露配置
+        r"""<p>网络暴露配置</p>
         :rtype: :class:`tencentcloud.tione.v20211111.models.ExposeNetworkConfig`
         """
         return self._ExposeNetworkConfig
@@ -4291,6 +4292,17 @@ POSTPAID_BY_HOUR 按量计费
     @ExposeNetworkConfig.setter
     def ExposeNetworkConfig(self, ExposeNetworkConfig):
         self._ExposeNetworkConfig = ExposeNetworkConfig
+
+    @property
+    def Envs(self):
+        r"""<p>环境变量</p>
+        :rtype: list of EnvVar
+        """
+        return self._Envs
+
+    @Envs.setter
+    def Envs(self, Envs):
+        self._Envs = Envs
 
 
     def _deserialize(self, params):
@@ -4353,6 +4365,12 @@ POSTPAID_BY_HOUR 按量计费
         if params.get("ExposeNetworkConfig") is not None:
             self._ExposeNetworkConfig = ExposeNetworkConfig()
             self._ExposeNetworkConfig._deserialize(params.get("ExposeNetworkConfig"))
+        if params.get("Envs") is not None:
+            self._Envs = []
+            for item in params.get("Envs"):
+                obj = EnvVar()
+                obj._deserialize(item)
+                self._Envs.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4370,7 +4388,7 @@ class CreateTrainingTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 训练任务ID
+        :param _Id: <p>训练任务ID</p>
         :type Id: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4380,7 +4398,7 @@ class CreateTrainingTaskResponse(AbstractModel):
 
     @property
     def Id(self):
-        r"""训练任务ID
+        r"""<p>训练任务ID</p>
         :rtype: str
         """
         return self._Id
@@ -4936,33 +4954,33 @@ class DataSourceInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 数据源ID
+        :param _Id: <p>数据源ID</p>
         :type Id: str
-        :param _Name: 数据源名称
+        :param _Name: <p>数据源名称</p>
         :type Name: str
-        :param _Creator: 创建者uin
+        :param _Creator: <p>创建者uin</p>
         :type Creator: str
-        :param _CreatorName: 创建者名称
+        :param _CreatorName: <p>创建者名称</p>
         :type CreatorName: str
-        :param _Type: 数据源类型英文名
+        :param _Type: <p>数据源类型英文名</p>
         :type Type: str
-        :param _Permission: 数据源权限，取值有RW RO
+        :param _Permission: <p>数据源权限，取值有RW RO</p>
         :type Permission: str
-        :param _StorageId: 数据源所属存储实例ID
+        :param _StorageId: <p>数据源所属存储实例ID</p>
         :type StorageId: str
-        :param _StorageName: 数据源所属存储实例名称
+        :param _StorageName: <p>数据源所属存储实例名称</p>
         :type StorageName: str
-        :param _MountConfigure: 数据源挂载配置
+        :param _MountConfigure: <p>数据源挂载配置</p>
         :type MountConfigure: :class:`tencentcloud.tione.v20211111.models.MountConfigureInfo`
-        :param _CreateTime: 创建时间, 格式为yyyy-mm-ddThh:mm:ssZ
+        :param _CreateTime: <p>创建时间, 格式为yyyy-mm-ddThh:mm:ssZ</p>
         :type CreateTime: str
-        :param _UpdateTime: 更新时间, 格式为yyyy-mm-ddThh:mm:ssZ
+        :param _UpdateTime: <p>更新时间, 格式为yyyy-mm-ddThh:mm:ssZ</p>
         :type UpdateTime: str
-        :param _LimitMount: 限制开关是否开启，只有开启时才有限制
+        :param _LimitMount: <p>限制开关是否开启，只有开启时才有限制</p>
         :type LimitMount: bool
-        :param _Tags: 标签配置
+        :param _Tags: <p>标签配置</p>
         :type Tags: list of Tag
-        :param _ExtraConf: 额外配置,对应存储实例的额外配置
+        :param _ExtraConf: <p>额外配置,对应存储实例的额外配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExtraConf: :class:`tencentcloud.tione.v20211111.models.StorageExtraConf`
         """
@@ -4983,7 +5001,7 @@ class DataSourceInfo(AbstractModel):
 
     @property
     def Id(self):
-        r"""数据源ID
+        r"""<p>数据源ID</p>
         :rtype: str
         """
         return self._Id
@@ -4994,7 +5012,7 @@ class DataSourceInfo(AbstractModel):
 
     @property
     def Name(self):
-        r"""数据源名称
+        r"""<p>数据源名称</p>
         :rtype: str
         """
         return self._Name
@@ -5005,7 +5023,7 @@ class DataSourceInfo(AbstractModel):
 
     @property
     def Creator(self):
-        r"""创建者uin
+        r"""<p>创建者uin</p>
         :rtype: str
         """
         return self._Creator
@@ -5016,7 +5034,7 @@ class DataSourceInfo(AbstractModel):
 
     @property
     def CreatorName(self):
-        r"""创建者名称
+        r"""<p>创建者名称</p>
         :rtype: str
         """
         return self._CreatorName
@@ -5027,7 +5045,7 @@ class DataSourceInfo(AbstractModel):
 
     @property
     def Type(self):
-        r"""数据源类型英文名
+        r"""<p>数据源类型英文名</p>
         :rtype: str
         """
         return self._Type
@@ -5038,7 +5056,7 @@ class DataSourceInfo(AbstractModel):
 
     @property
     def Permission(self):
-        r"""数据源权限，取值有RW RO
+        r"""<p>数据源权限，取值有RW RO</p>
         :rtype: str
         """
         return self._Permission
@@ -5049,7 +5067,7 @@ class DataSourceInfo(AbstractModel):
 
     @property
     def StorageId(self):
-        r"""数据源所属存储实例ID
+        r"""<p>数据源所属存储实例ID</p>
         :rtype: str
         """
         return self._StorageId
@@ -5060,7 +5078,7 @@ class DataSourceInfo(AbstractModel):
 
     @property
     def StorageName(self):
-        r"""数据源所属存储实例名称
+        r"""<p>数据源所属存储实例名称</p>
         :rtype: str
         """
         return self._StorageName
@@ -5071,7 +5089,7 @@ class DataSourceInfo(AbstractModel):
 
     @property
     def MountConfigure(self):
-        r"""数据源挂载配置
+        r"""<p>数据源挂载配置</p>
         :rtype: :class:`tencentcloud.tione.v20211111.models.MountConfigureInfo`
         """
         return self._MountConfigure
@@ -5082,7 +5100,7 @@ class DataSourceInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""创建时间, 格式为yyyy-mm-ddThh:mm:ssZ
+        r"""<p>创建时间, 格式为yyyy-mm-ddThh:mm:ssZ</p>
         :rtype: str
         """
         return self._CreateTime
@@ -5093,7 +5111,7 @@ class DataSourceInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""更新时间, 格式为yyyy-mm-ddThh:mm:ssZ
+        r"""<p>更新时间, 格式为yyyy-mm-ddThh:mm:ssZ</p>
         :rtype: str
         """
         return self._UpdateTime
@@ -5104,7 +5122,7 @@ class DataSourceInfo(AbstractModel):
 
     @property
     def LimitMount(self):
-        r"""限制开关是否开启，只有开启时才有限制
+        r"""<p>限制开关是否开启，只有开启时才有限制</p>
         :rtype: bool
         """
         return self._LimitMount
@@ -5115,7 +5133,7 @@ class DataSourceInfo(AbstractModel):
 
     @property
     def Tags(self):
-        r"""标签配置
+        r"""<p>标签配置</p>
         :rtype: list of Tag
         """
         return self._Tags
@@ -5126,7 +5144,7 @@ class DataSourceInfo(AbstractModel):
 
     @property
     def ExtraConf(self):
-        r"""额外配置,对应存储实例的额外配置
+        r"""<p>额外配置,对应存储实例的额外配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tione.v20211111.models.StorageExtraConf`
         """
@@ -18177,15 +18195,15 @@ class MountInstanceInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: 类型英文名
+        :param _Type: <p>类型英文名</p>
         :type Type: str
-        :param _StorageId: 存储实例ID
+        :param _StorageId: <p>存储实例ID</p>
         :type StorageId: str
-        :param _StorageName: 存储实例名称
+        :param _StorageName: <p>存储实例名称</p>
         :type StorageName: str
-        :param _Status: 状态，0可挂载 1不可挂载(挂载限制)
+        :param _Status: <p>状态</p><p>枚举值：</p><ul><li>0： 可挂载（正常）</li><li>1： 不可挂载（挂载限制）</li><li>2： 不可挂载（存储配置关闭）</li></ul>
         :type Status: int
-        :param _ExtraConf: 额外配置
+        :param _ExtraConf: <p>额外配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExtraConf: :class:`tencentcloud.tione.v20211111.models.StorageExtraConf`
         """
@@ -18197,7 +18215,7 @@ class MountInstanceInfo(AbstractModel):
 
     @property
     def Type(self):
-        r"""类型英文名
+        r"""<p>类型英文名</p>
         :rtype: str
         """
         return self._Type
@@ -18208,7 +18226,7 @@ class MountInstanceInfo(AbstractModel):
 
     @property
     def StorageId(self):
-        r"""存储实例ID
+        r"""<p>存储实例ID</p>
         :rtype: str
         """
         return self._StorageId
@@ -18219,7 +18237,7 @@ class MountInstanceInfo(AbstractModel):
 
     @property
     def StorageName(self):
-        r"""存储实例名称
+        r"""<p>存储实例名称</p>
         :rtype: str
         """
         return self._StorageName
@@ -18230,7 +18248,7 @@ class MountInstanceInfo(AbstractModel):
 
     @property
     def Status(self):
-        r"""状态，0可挂载 1不可挂载(挂载限制)
+        r"""<p>状态</p><p>枚举值：</p><ul><li>0： 可挂载（正常）</li><li>1： 不可挂载（挂载限制）</li><li>2： 不可挂载（存储配置关闭）</li></ul>
         :rtype: int
         """
         return self._Status
@@ -18241,7 +18259,7 @@ class MountInstanceInfo(AbstractModel):
 
     @property
     def ExtraConf(self):
-        r"""额外配置
+        r"""<p>额外配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tione.v20211111.models.StorageExtraConf`
         """
@@ -18277,23 +18295,23 @@ class MountLimitInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: 数据源类型英文名
+        :param _Type: <p>数据源类型英文名</p>
         :type Type: str
-        :param _StorageId: 数据源所属存储实例ID
+        :param _StorageId: <p>数据源所属存储实例ID</p>
         :type StorageId: str
-        :param _StorageName: 数据源所属存储实例名称
+        :param _StorageName: <p>数据源所属存储实例名称</p>
         :type StorageName: str
-        :param _LimitMount: 限制开关是否开启，只有开启时才有限制
+        :param _LimitMount: <p>限制开关是否开启，只有开启时才有限制</p>
         :type LimitMount: bool
-        :param _Creator: 创建者uin
+        :param _Creator: <p>创建者uin</p>
         :type Creator: str
-        :param _CreatorName: 创建者名称
+        :param _CreatorName: <p>创建者名称</p>
         :type CreatorName: str
-        :param _CreateTime: 创建时间, 格式为yyyy-mm-ddThh:mm:ssZ
+        :param _CreateTime: <p>创建时间, 格式为yyyy-mm-ddThh:mm:ssZ</p>
         :type CreateTime: str
-        :param _UpdateTime: 更新时间, 格式为yyyy-mm-ddThh:mm:ssZ
+        :param _UpdateTime: <p>更新时间, 格式为yyyy-mm-ddThh:mm:ssZ</p>
         :type UpdateTime: str
-        :param _ExtraConf: 额外配置
+        :param _ExtraConf: <p>额外配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExtraConf: :class:`tencentcloud.tione.v20211111.models.StorageExtraConf`
         """
@@ -18309,7 +18327,7 @@ class MountLimitInfo(AbstractModel):
 
     @property
     def Type(self):
-        r"""数据源类型英文名
+        r"""<p>数据源类型英文名</p>
         :rtype: str
         """
         return self._Type
@@ -18320,7 +18338,7 @@ class MountLimitInfo(AbstractModel):
 
     @property
     def StorageId(self):
-        r"""数据源所属存储实例ID
+        r"""<p>数据源所属存储实例ID</p>
         :rtype: str
         """
         return self._StorageId
@@ -18331,7 +18349,7 @@ class MountLimitInfo(AbstractModel):
 
     @property
     def StorageName(self):
-        r"""数据源所属存储实例名称
+        r"""<p>数据源所属存储实例名称</p>
         :rtype: str
         """
         return self._StorageName
@@ -18342,7 +18360,7 @@ class MountLimitInfo(AbstractModel):
 
     @property
     def LimitMount(self):
-        r"""限制开关是否开启，只有开启时才有限制
+        r"""<p>限制开关是否开启，只有开启时才有限制</p>
         :rtype: bool
         """
         return self._LimitMount
@@ -18353,7 +18371,7 @@ class MountLimitInfo(AbstractModel):
 
     @property
     def Creator(self):
-        r"""创建者uin
+        r"""<p>创建者uin</p>
         :rtype: str
         """
         return self._Creator
@@ -18364,7 +18382,7 @@ class MountLimitInfo(AbstractModel):
 
     @property
     def CreatorName(self):
-        r"""创建者名称
+        r"""<p>创建者名称</p>
         :rtype: str
         """
         return self._CreatorName
@@ -18375,7 +18393,7 @@ class MountLimitInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""创建时间, 格式为yyyy-mm-ddThh:mm:ssZ
+        r"""<p>创建时间, 格式为yyyy-mm-ddThh:mm:ssZ</p>
         :rtype: str
         """
         return self._CreateTime
@@ -18386,7 +18404,7 @@ class MountLimitInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""更新时间, 格式为yyyy-mm-ddThh:mm:ssZ
+        r"""<p>更新时间, 格式为yyyy-mm-ddThh:mm:ssZ</p>
         :rtype: str
         """
         return self._UpdateTime
@@ -18397,7 +18415,7 @@ class MountLimitInfo(AbstractModel):
 
     @property
     def ExtraConf(self):
-        r"""额外配置
+        r"""<p>额外配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tione.v20211111.models.StorageExtraConf`
         """
@@ -28122,76 +28140,77 @@ class TrainingTaskSetItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 训练任务ID
+        :param _Id: <p>训练任务ID</p>
         :type Id: str
-        :param _Name: 训练任务名称
+        :param _Name: <p>训练任务名称</p>
         :type Name: str
-        :param _FrameworkName: 框架名称
+        :param _FrameworkName: <p>框架名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FrameworkName: str
-        :param _FrameworkVersion: 训练框架版本
+        :param _FrameworkVersion: <p>训练框架版本</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FrameworkVersion: str
-        :param _FrameworkEnvironment: 框架运行环境
+        :param _FrameworkEnvironment: <p>框架运行环境</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FrameworkEnvironment: str
-        :param _ChargeType: 计费模式
+        :param _ChargeType: <p>计费模式</p>
         :type ChargeType: str
-        :param _ChargeStatus: 计费状态，eg：BILLING计费中，ARREARS_STOP欠费停止，NOT_BILLING不在计费中
+        :param _ChargeStatus: <p>计费状态，eg：BILLING计费中，ARREARS_STOP欠费停止，NOT_BILLING不在计费中</p>
         :type ChargeStatus: str
-        :param _ResourceGroupId: 预付费专用资源组
+        :param _ResourceGroupId: <p>预付费专用资源组</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceGroupId: str
-        :param _ResourceConfigInfos: 资源配置
+        :param _ResourceConfigInfos: <p>资源配置</p>
         :type ResourceConfigInfos: list of ResourceConfigInfo
-        :param _TrainingMode: 训练模式eg：PS_WORKER、DDP、MPI、HOROVOD
+        :param _TrainingMode: <p>训练模式eg：PS_WORKER、DDP、MPI、HOROVOD</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TrainingMode: str
-        :param _Status: 任务状态，eg：SUBMITTING提交中、PENDING排队中、
-STARTING启动中、RUNNING运行中、STOPPING停止中、STOPPED已停止、FAILED异常、SUCCEED已完成
+        :param _Status: <p>任务状态，eg：SUBMITTING提交中、PENDING排队中、<br>STARTING启动中、RUNNING运行中、STOPPING停止中、STOPPED已停止、FAILED异常、SUCCEED已完成</p>
         :type Status: str
-        :param _RuntimeInSeconds: 运行时长
+        :param _RuntimeInSeconds: <p>运行时长</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RuntimeInSeconds: int
-        :param _CreateTime: 创建时间
+        :param _CreateTime: <p>创建时间</p>
         :type CreateTime: str
-        :param _StartTime: 训练开始时间
+        :param _StartTime: <p>训练开始时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: str
-        :param _EndTime: 训练结束时间
+        :param _EndTime: <p>训练结束时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: str
-        :param _Output: 训练输出
+        :param _Output: <p>训练输出</p>
         :type Output: :class:`tencentcloud.tione.v20211111.models.CosPathInfo`
-        :param _FailureReason: 失败原因
+        :param _FailureReason: <p>失败原因</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FailureReason: str
-        :param _UpdateTime: 更新时间
+        :param _UpdateTime: <p>更新时间</p>
         :type UpdateTime: str
-        :param _BillingInfo: 计费金额信息，eg：2.00元/小时 (按量计费)
+        :param _BillingInfo: <p>计费金额信息，eg：2.00元/小时 (按量计费)</p>
         :type BillingInfo: str
-        :param _ResourceGroupName: 预付费专用资源组名称
+        :param _ResourceGroupName: <p>预付费专用资源组名称</p>
         :type ResourceGroupName: str
-        :param _ImageInfo: 自定义镜像信息
+        :param _ImageInfo: <p>自定义镜像信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ImageInfo: :class:`tencentcloud.tione.v20211111.models.ImageInfo`
-        :param _Message: 任务信息
+        :param _Message: <p>任务信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
-        :param _Tags: 标签配置
+        :param _Tags: <p>标签配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
-        :param _CallbackUrl: 回调地址
+        :param _CallbackUrl: <p>回调地址</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CallbackUrl: str
-        :param _SubUin: 任务subUin信息
+        :param _SubUin: <p>任务subUin信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubUin: str
-        :param _SubUinName: 任务创建者名称
+        :param _SubUinName: <p>任务创建者名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubUinName: str
-        :param _AppId: 任务AppId
+        :param _AppId: <p>任务AppId</p>
         :type AppId: str
+        :param _Envs: <p>环境变量</p>
+        :type Envs: list of EnvVar
         """
         self._Id = None
         self._Name = None
@@ -28220,10 +28239,11 @@ STARTING启动中、RUNNING运行中、STOPPING停止中、STOPPED已停止、FA
         self._SubUin = None
         self._SubUinName = None
         self._AppId = None
+        self._Envs = None
 
     @property
     def Id(self):
-        r"""训练任务ID
+        r"""<p>训练任务ID</p>
         :rtype: str
         """
         return self._Id
@@ -28234,7 +28254,7 @@ STARTING启动中、RUNNING运行中、STOPPING停止中、STOPPED已停止、FA
 
     @property
     def Name(self):
-        r"""训练任务名称
+        r"""<p>训练任务名称</p>
         :rtype: str
         """
         return self._Name
@@ -28245,7 +28265,7 @@ STARTING启动中、RUNNING运行中、STOPPING停止中、STOPPED已停止、FA
 
     @property
     def FrameworkName(self):
-        r"""框架名称
+        r"""<p>框架名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -28257,7 +28277,7 @@ STARTING启动中、RUNNING运行中、STOPPING停止中、STOPPED已停止、FA
 
     @property
     def FrameworkVersion(self):
-        r"""训练框架版本
+        r"""<p>训练框架版本</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -28269,7 +28289,7 @@ STARTING启动中、RUNNING运行中、STOPPING停止中、STOPPED已停止、FA
 
     @property
     def FrameworkEnvironment(self):
-        r"""框架运行环境
+        r"""<p>框架运行环境</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -28281,7 +28301,7 @@ STARTING启动中、RUNNING运行中、STOPPING停止中、STOPPED已停止、FA
 
     @property
     def ChargeType(self):
-        r"""计费模式
+        r"""<p>计费模式</p>
         :rtype: str
         """
         return self._ChargeType
@@ -28292,7 +28312,7 @@ STARTING启动中、RUNNING运行中、STOPPING停止中、STOPPED已停止、FA
 
     @property
     def ChargeStatus(self):
-        r"""计费状态，eg：BILLING计费中，ARREARS_STOP欠费停止，NOT_BILLING不在计费中
+        r"""<p>计费状态，eg：BILLING计费中，ARREARS_STOP欠费停止，NOT_BILLING不在计费中</p>
         :rtype: str
         """
         return self._ChargeStatus
@@ -28303,7 +28323,7 @@ STARTING启动中、RUNNING运行中、STOPPING停止中、STOPPED已停止、FA
 
     @property
     def ResourceGroupId(self):
-        r"""预付费专用资源组
+        r"""<p>预付费专用资源组</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -28315,7 +28335,7 @@ STARTING启动中、RUNNING运行中、STOPPING停止中、STOPPED已停止、FA
 
     @property
     def ResourceConfigInfos(self):
-        r"""资源配置
+        r"""<p>资源配置</p>
         :rtype: list of ResourceConfigInfo
         """
         return self._ResourceConfigInfos
@@ -28326,7 +28346,7 @@ STARTING启动中、RUNNING运行中、STOPPING停止中、STOPPED已停止、FA
 
     @property
     def TrainingMode(self):
-        r"""训练模式eg：PS_WORKER、DDP、MPI、HOROVOD
+        r"""<p>训练模式eg：PS_WORKER、DDP、MPI、HOROVOD</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -28338,8 +28358,7 @@ STARTING启动中、RUNNING运行中、STOPPING停止中、STOPPED已停止、FA
 
     @property
     def Status(self):
-        r"""任务状态，eg：SUBMITTING提交中、PENDING排队中、
-STARTING启动中、RUNNING运行中、STOPPING停止中、STOPPED已停止、FAILED异常、SUCCEED已完成
+        r"""<p>任务状态，eg：SUBMITTING提交中、PENDING排队中、<br>STARTING启动中、RUNNING运行中、STOPPING停止中、STOPPED已停止、FAILED异常、SUCCEED已完成</p>
         :rtype: str
         """
         return self._Status
@@ -28350,7 +28369,7 @@ STARTING启动中、RUNNING运行中、STOPPING停止中、STOPPED已停止、FA
 
     @property
     def RuntimeInSeconds(self):
-        r"""运行时长
+        r"""<p>运行时长</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -28362,7 +28381,7 @@ STARTING启动中、RUNNING运行中、STOPPING停止中、STOPPED已停止、FA
 
     @property
     def CreateTime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
         :rtype: str
         """
         return self._CreateTime
@@ -28373,7 +28392,7 @@ STARTING启动中、RUNNING运行中、STOPPING停止中、STOPPED已停止、FA
 
     @property
     def StartTime(self):
-        r"""训练开始时间
+        r"""<p>训练开始时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -28385,7 +28404,7 @@ STARTING启动中、RUNNING运行中、STOPPING停止中、STOPPED已停止、FA
 
     @property
     def EndTime(self):
-        r"""训练结束时间
+        r"""<p>训练结束时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -28397,7 +28416,7 @@ STARTING启动中、RUNNING运行中、STOPPING停止中、STOPPED已停止、FA
 
     @property
     def Output(self):
-        r"""训练输出
+        r"""<p>训练输出</p>
         :rtype: :class:`tencentcloud.tione.v20211111.models.CosPathInfo`
         """
         return self._Output
@@ -28408,7 +28427,7 @@ STARTING启动中、RUNNING运行中、STOPPING停止中、STOPPED已停止、FA
 
     @property
     def FailureReason(self):
-        r"""失败原因
+        r"""<p>失败原因</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -28420,7 +28439,7 @@ STARTING启动中、RUNNING运行中、STOPPING停止中、STOPPED已停止、FA
 
     @property
     def UpdateTime(self):
-        r"""更新时间
+        r"""<p>更新时间</p>
         :rtype: str
         """
         return self._UpdateTime
@@ -28431,7 +28450,7 @@ STARTING启动中、RUNNING运行中、STOPPING停止中、STOPPED已停止、FA
 
     @property
     def BillingInfo(self):
-        r"""计费金额信息，eg：2.00元/小时 (按量计费)
+        r"""<p>计费金额信息，eg：2.00元/小时 (按量计费)</p>
         :rtype: str
         """
         return self._BillingInfo
@@ -28442,7 +28461,7 @@ STARTING启动中、RUNNING运行中、STOPPING停止中、STOPPED已停止、FA
 
     @property
     def ResourceGroupName(self):
-        r"""预付费专用资源组名称
+        r"""<p>预付费专用资源组名称</p>
         :rtype: str
         """
         return self._ResourceGroupName
@@ -28453,7 +28472,7 @@ STARTING启动中、RUNNING运行中、STOPPING停止中、STOPPED已停止、FA
 
     @property
     def ImageInfo(self):
-        r"""自定义镜像信息
+        r"""<p>自定义镜像信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tione.v20211111.models.ImageInfo`
         """
@@ -28465,7 +28484,7 @@ STARTING启动中、RUNNING运行中、STOPPING停止中、STOPPED已停止、FA
 
     @property
     def Message(self):
-        r"""任务信息
+        r"""<p>任务信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -28477,7 +28496,7 @@ STARTING启动中、RUNNING运行中、STOPPING停止中、STOPPED已停止、FA
 
     @property
     def Tags(self):
-        r"""标签配置
+        r"""<p>标签配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Tag
         """
@@ -28489,7 +28508,7 @@ STARTING启动中、RUNNING运行中、STOPPING停止中、STOPPED已停止、FA
 
     @property
     def CallbackUrl(self):
-        r"""回调地址
+        r"""<p>回调地址</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -28501,7 +28520,7 @@ STARTING启动中、RUNNING运行中、STOPPING停止中、STOPPED已停止、FA
 
     @property
     def SubUin(self):
-        r"""任务subUin信息
+        r"""<p>任务subUin信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -28513,7 +28532,7 @@ STARTING启动中、RUNNING运行中、STOPPING停止中、STOPPED已停止、FA
 
     @property
     def SubUinName(self):
-        r"""任务创建者名称
+        r"""<p>任务创建者名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -28525,7 +28544,7 @@ STARTING启动中、RUNNING运行中、STOPPING停止中、STOPPED已停止、FA
 
     @property
     def AppId(self):
-        r"""任务AppId
+        r"""<p>任务AppId</p>
         :rtype: str
         """
         return self._AppId
@@ -28533,6 +28552,17 @@ STARTING启动中、RUNNING运行中、STOPPING停止中、STOPPED已停止、FA
     @AppId.setter
     def AppId(self, AppId):
         self._AppId = AppId
+
+    @property
+    def Envs(self):
+        r"""<p>环境变量</p>
+        :rtype: list of EnvVar
+        """
+        return self._Envs
+
+    @Envs.setter
+    def Envs(self, Envs):
+        self._Envs = Envs
 
 
     def _deserialize(self, params):
@@ -28577,6 +28607,12 @@ STARTING启动中、RUNNING运行中、STOPPING停止中、STOPPED已停止、FA
         self._SubUin = params.get("SubUin")
         self._SubUinName = params.get("SubUinName")
         self._AppId = params.get("AppId")
+        if params.get("Envs") is not None:
+            self._Envs = []
+            for item in params.get("Envs"):
+                obj = EnvVar()
+                obj._deserialize(item)
+                self._Envs.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

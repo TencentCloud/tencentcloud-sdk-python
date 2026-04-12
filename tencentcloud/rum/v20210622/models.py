@@ -18,6 +18,89 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class CompareCondition(AbstractModel):
+    r"""BugLY比较结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppVersion: App版本
+        :type AppVersion: str
+        :param _Filters: 筛选条件
+        :type Filters: :class:`tencentcloud.rum.v20210622.models.Filters`
+        :param _StartTime: 开始时间
+        :type StartTime: int
+        :param _EndTime: 结束时间
+        :type EndTime: int
+        """
+        self._AppVersion = None
+        self._Filters = None
+        self._StartTime = None
+        self._EndTime = None
+
+    @property
+    def AppVersion(self):
+        r"""App版本
+        :rtype: str
+        """
+        return self._AppVersion
+
+    @AppVersion.setter
+    def AppVersion(self, AppVersion):
+        self._AppVersion = AppVersion
+
+    @property
+    def Filters(self):
+        r"""筛选条件
+        :rtype: :class:`tencentcloud.rum.v20210622.models.Filters`
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def StartTime(self):
+        r"""开始时间
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""结束时间
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+
+    def _deserialize(self, params):
+        self._AppVersion = params.get("AppVersion")
+        if params.get("Filters") is not None:
+            self._Filters = Filters()
+            self._Filters._deserialize(params.get("Filters"))
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateReleaseFileRequest(AbstractModel):
     r"""CreateReleaseFile请求参数结构体
 
@@ -1583,6 +1666,434 @@ class DescribeAppSingleCaseListResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._Data = params.get("Data")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeApplicationExitReportDetailRequest(AbstractModel):
+    r"""DescribeApplicationExitReportDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: 产品Id
+        :type ProductId: str
+        :param _ParamToken: 提供给前端使用，当填写本字段时，会覆盖 formlist 的值
+        :type ParamToken: str
+        :param _ClientIdentify: 问题Id
+        :type ClientIdentify: str
+        :param _StartEventTime: 开始时间
+        :type StartEventTime: int
+        :param _EndEventTime: 结束时间
+        :type EndEventTime: int
+        :param _ExtraData: 拓展数据
+        :type ExtraData: str
+        :param _RequestHeader: 请求头
+        :type RequestHeader: str
+        """
+        self._ProductId = None
+        self._ParamToken = None
+        self._ClientIdentify = None
+        self._StartEventTime = None
+        self._EndEventTime = None
+        self._ExtraData = None
+        self._RequestHeader = None
+
+    @property
+    def ProductId(self):
+        r"""产品Id
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def ParamToken(self):
+        r"""提供给前端使用，当填写本字段时，会覆盖 formlist 的值
+        :rtype: str
+        """
+        return self._ParamToken
+
+    @ParamToken.setter
+    def ParamToken(self, ParamToken):
+        self._ParamToken = ParamToken
+
+    @property
+    def ClientIdentify(self):
+        r"""问题Id
+        :rtype: str
+        """
+        return self._ClientIdentify
+
+    @ClientIdentify.setter
+    def ClientIdentify(self, ClientIdentify):
+        self._ClientIdentify = ClientIdentify
+
+    @property
+    def StartEventTime(self):
+        r"""开始时间
+        :rtype: int
+        """
+        return self._StartEventTime
+
+    @StartEventTime.setter
+    def StartEventTime(self, StartEventTime):
+        self._StartEventTime = StartEventTime
+
+    @property
+    def EndEventTime(self):
+        r"""结束时间
+        :rtype: int
+        """
+        return self._EndEventTime
+
+    @EndEventTime.setter
+    def EndEventTime(self, EndEventTime):
+        self._EndEventTime = EndEventTime
+
+    @property
+    def ExtraData(self):
+        r"""拓展数据
+        :rtype: str
+        """
+        return self._ExtraData
+
+    @ExtraData.setter
+    def ExtraData(self, ExtraData):
+        self._ExtraData = ExtraData
+
+    @property
+    def RequestHeader(self):
+        r"""请求头
+        :rtype: str
+        """
+        return self._RequestHeader
+
+    @RequestHeader.setter
+    def RequestHeader(self, RequestHeader):
+        self._RequestHeader = RequestHeader
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        self._ParamToken = params.get("ParamToken")
+        self._ClientIdentify = params.get("ClientIdentify")
+        self._StartEventTime = params.get("StartEventTime")
+        self._EndEventTime = params.get("EndEventTime")
+        self._ExtraData = params.get("ExtraData")
+        self._RequestHeader = params.get("RequestHeader")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeApplicationExitReportDetailResponse(AbstractModel):
+    r"""DescribeApplicationExitReportDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 返回值
+        :type Data: str
+        :param _Code: 状态码
+        :type Code: int
+        :param _Message: 消息
+        :type Message: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._Code = None
+        self._Message = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""返回值
+        :rtype: str
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Code(self):
+        r"""状态码
+        :rtype: int
+        """
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def Message(self):
+        r"""消息
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Data = params.get("Data")
+        self._Code = params.get("Code")
+        self._Message = params.get("Message")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeApplicationExitReportListRequest(AbstractModel):
+    r"""DescribeApplicationExitReportList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: 产品Id
+        :type ProductId: str
+        :param _ParamToken: 提供给前端使用，当填写本字段时，会覆盖 formlist 的值
+        :type ParamToken: str
+        :param _FormListString: 接口调试专用，当 token 为空时，以这里的 value 作为筛选表单信息
+        :type FormListString: str
+        :param _PageNumber: 当前页码
+        :type PageNumber: int
+        :param _PageSize: 每页展示最大数量
+        :type PageSize: int
+        :param _SortField: 排序字段
+        :type SortField: str
+        :param _SortType: 排序类型
+        :type SortType: str
+        :param _ExtraData: 拓展数据
+        :type ExtraData: str
+        :param _RequestHeader: 请求头
+        :type RequestHeader: str
+        """
+        self._ProductId = None
+        self._ParamToken = None
+        self._FormListString = None
+        self._PageNumber = None
+        self._PageSize = None
+        self._SortField = None
+        self._SortType = None
+        self._ExtraData = None
+        self._RequestHeader = None
+
+    @property
+    def ProductId(self):
+        r"""产品Id
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def ParamToken(self):
+        r"""提供给前端使用，当填写本字段时，会覆盖 formlist 的值
+        :rtype: str
+        """
+        return self._ParamToken
+
+    @ParamToken.setter
+    def ParamToken(self, ParamToken):
+        self._ParamToken = ParamToken
+
+    @property
+    def FormListString(self):
+        r"""接口调试专用，当 token 为空时，以这里的 value 作为筛选表单信息
+        :rtype: str
+        """
+        return self._FormListString
+
+    @FormListString.setter
+    def FormListString(self, FormListString):
+        self._FormListString = FormListString
+
+    @property
+    def PageNumber(self):
+        r"""当前页码
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        r"""每页展示最大数量
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def SortField(self):
+        r"""排序字段
+        :rtype: str
+        """
+        return self._SortField
+
+    @SortField.setter
+    def SortField(self, SortField):
+        self._SortField = SortField
+
+    @property
+    def SortType(self):
+        r"""排序类型
+        :rtype: str
+        """
+        return self._SortType
+
+    @SortType.setter
+    def SortType(self, SortType):
+        self._SortType = SortType
+
+    @property
+    def ExtraData(self):
+        r"""拓展数据
+        :rtype: str
+        """
+        return self._ExtraData
+
+    @ExtraData.setter
+    def ExtraData(self, ExtraData):
+        self._ExtraData = ExtraData
+
+    @property
+    def RequestHeader(self):
+        r"""请求头
+        :rtype: str
+        """
+        return self._RequestHeader
+
+    @RequestHeader.setter
+    def RequestHeader(self, RequestHeader):
+        self._RequestHeader = RequestHeader
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        self._ParamToken = params.get("ParamToken")
+        self._FormListString = params.get("FormListString")
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        self._SortField = params.get("SortField")
+        self._SortType = params.get("SortType")
+        self._ExtraData = params.get("ExtraData")
+        self._RequestHeader = params.get("RequestHeader")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeApplicationExitReportListResponse(AbstractModel):
+    r"""DescribeApplicationExitReportList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 返回值
+        :type Data: str
+        :param _Code: 状态码
+        :type Code: int
+        :param _Message: 消息
+        :type Message: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._Code = None
+        self._Message = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""返回值
+        :rtype: str
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Code(self):
+        r"""状态码
+        :rtype: int
+        """
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def Message(self):
+        r"""消息
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Data = params.get("Data")
+        self._Code = params.get("Code")
+        self._Message = params.get("Message")
         self._RequestId = params.get("RequestId")
 
 
@@ -14247,6 +14758,3452 @@ class DescribeErrorResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeExceptionDetailRequest(AbstractModel):
+    r"""DescribeExceptionDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: 产品Id
+        :type ProductId: str
+        :param _ClientIdentify: 消息唯一标识
+        :type ClientIdentify: str
+        :param _ClusterStackType: 集群堆栈类型
+        :type ClusterStackType: int
+        :param _Feature: 特征
+        :type Feature: str
+        :param _IssueType: 问题类型
+        :type IssueType: int
+        :param _StartEventTime: 事件开始时间
+        :type StartEventTime: int
+        :param _EndEventTime: 事件结束时间
+        :type EndEventTime: int
+        :param _ExtraData: 拓展数据
+        :type ExtraData: str
+        :param _RequestHeader: 请求头
+        :type RequestHeader: str
+        """
+        self._ProductId = None
+        self._ClientIdentify = None
+        self._ClusterStackType = None
+        self._Feature = None
+        self._IssueType = None
+        self._StartEventTime = None
+        self._EndEventTime = None
+        self._ExtraData = None
+        self._RequestHeader = None
+
+    @property
+    def ProductId(self):
+        r"""产品Id
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def ClientIdentify(self):
+        r"""消息唯一标识
+        :rtype: str
+        """
+        return self._ClientIdentify
+
+    @ClientIdentify.setter
+    def ClientIdentify(self, ClientIdentify):
+        self._ClientIdentify = ClientIdentify
+
+    @property
+    def ClusterStackType(self):
+        r"""集群堆栈类型
+        :rtype: int
+        """
+        return self._ClusterStackType
+
+    @ClusterStackType.setter
+    def ClusterStackType(self, ClusterStackType):
+        self._ClusterStackType = ClusterStackType
+
+    @property
+    def Feature(self):
+        r"""特征
+        :rtype: str
+        """
+        return self._Feature
+
+    @Feature.setter
+    def Feature(self, Feature):
+        self._Feature = Feature
+
+    @property
+    def IssueType(self):
+        r"""问题类型
+        :rtype: int
+        """
+        return self._IssueType
+
+    @IssueType.setter
+    def IssueType(self, IssueType):
+        self._IssueType = IssueType
+
+    @property
+    def StartEventTime(self):
+        r"""事件开始时间
+        :rtype: int
+        """
+        return self._StartEventTime
+
+    @StartEventTime.setter
+    def StartEventTime(self, StartEventTime):
+        self._StartEventTime = StartEventTime
+
+    @property
+    def EndEventTime(self):
+        r"""事件结束时间
+        :rtype: int
+        """
+        return self._EndEventTime
+
+    @EndEventTime.setter
+    def EndEventTime(self, EndEventTime):
+        self._EndEventTime = EndEventTime
+
+    @property
+    def ExtraData(self):
+        r"""拓展数据
+        :rtype: str
+        """
+        return self._ExtraData
+
+    @ExtraData.setter
+    def ExtraData(self, ExtraData):
+        self._ExtraData = ExtraData
+
+    @property
+    def RequestHeader(self):
+        r"""请求头
+        :rtype: str
+        """
+        return self._RequestHeader
+
+    @RequestHeader.setter
+    def RequestHeader(self, RequestHeader):
+        self._RequestHeader = RequestHeader
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        self._ClientIdentify = params.get("ClientIdentify")
+        self._ClusterStackType = params.get("ClusterStackType")
+        self._Feature = params.get("Feature")
+        self._IssueType = params.get("IssueType")
+        self._StartEventTime = params.get("StartEventTime")
+        self._EndEventTime = params.get("EndEventTime")
+        self._ExtraData = params.get("ExtraData")
+        self._RequestHeader = params.get("RequestHeader")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeExceptionDetailResponse(AbstractModel):
+    r"""DescribeExceptionDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 返回值
+        :type Data: str
+        :param _Code: 状态码
+        :type Code: int
+        :param _Message: 消息
+        :type Message: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._Code = None
+        self._Message = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""返回值
+        :rtype: str
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Code(self):
+        r"""状态码
+        :rtype: int
+        """
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def Message(self):
+        r"""消息
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Data = params.get("Data")
+        self._Code = params.get("Code")
+        self._Message = params.get("Message")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeExceptionReportListRequest(AbstractModel):
+    r"""DescribeExceptionReportList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: 产品Id
+        :type ProductId: str
+        :param _FormListString: 接口调试专用，当 token 为空时，以这里的 value 作为筛选表单信息
+        :type FormListString: str
+        :param _ParamToken: 提供给前端使用，当填写本字段时，会覆盖 form_list 的值
+        :type ParamToken: str
+        :param _IssueType: 问题类型
+        :type IssueType: int
+        :param _SortField: 排序字段
+        :type SortField: str
+        :param _SortType: 排序方式
+        :type SortType: str
+        :param _Feature: 特征
+        :type Feature: str
+        :param _PageSize: 每页数目
+        :type PageSize: int
+        :param _PageNumber: 页码
+        :type PageNumber: int
+        :param _ExtraData: 拓展字段
+        :type ExtraData: str
+        :param _RequestHeader: 请求头
+        :type RequestHeader: str
+        """
+        self._ProductId = None
+        self._FormListString = None
+        self._ParamToken = None
+        self._IssueType = None
+        self._SortField = None
+        self._SortType = None
+        self._Feature = None
+        self._PageSize = None
+        self._PageNumber = None
+        self._ExtraData = None
+        self._RequestHeader = None
+
+    @property
+    def ProductId(self):
+        r"""产品Id
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def FormListString(self):
+        r"""接口调试专用，当 token 为空时，以这里的 value 作为筛选表单信息
+        :rtype: str
+        """
+        return self._FormListString
+
+    @FormListString.setter
+    def FormListString(self, FormListString):
+        self._FormListString = FormListString
+
+    @property
+    def ParamToken(self):
+        r"""提供给前端使用，当填写本字段时，会覆盖 form_list 的值
+        :rtype: str
+        """
+        return self._ParamToken
+
+    @ParamToken.setter
+    def ParamToken(self, ParamToken):
+        self._ParamToken = ParamToken
+
+    @property
+    def IssueType(self):
+        r"""问题类型
+        :rtype: int
+        """
+        return self._IssueType
+
+    @IssueType.setter
+    def IssueType(self, IssueType):
+        self._IssueType = IssueType
+
+    @property
+    def SortField(self):
+        r"""排序字段
+        :rtype: str
+        """
+        return self._SortField
+
+    @SortField.setter
+    def SortField(self, SortField):
+        self._SortField = SortField
+
+    @property
+    def SortType(self):
+        r"""排序方式
+        :rtype: str
+        """
+        return self._SortType
+
+    @SortType.setter
+    def SortType(self, SortType):
+        self._SortType = SortType
+
+    @property
+    def Feature(self):
+        r"""特征
+        :rtype: str
+        """
+        return self._Feature
+
+    @Feature.setter
+    def Feature(self, Feature):
+        self._Feature = Feature
+
+    @property
+    def PageSize(self):
+        r"""每页数目
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def PageNumber(self):
+        r"""页码
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def ExtraData(self):
+        r"""拓展字段
+        :rtype: str
+        """
+        return self._ExtraData
+
+    @ExtraData.setter
+    def ExtraData(self, ExtraData):
+        self._ExtraData = ExtraData
+
+    @property
+    def RequestHeader(self):
+        r"""请求头
+        :rtype: str
+        """
+        return self._RequestHeader
+
+    @RequestHeader.setter
+    def RequestHeader(self, RequestHeader):
+        self._RequestHeader = RequestHeader
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        self._FormListString = params.get("FormListString")
+        self._ParamToken = params.get("ParamToken")
+        self._IssueType = params.get("IssueType")
+        self._SortField = params.get("SortField")
+        self._SortType = params.get("SortType")
+        self._Feature = params.get("Feature")
+        self._PageSize = params.get("PageSize")
+        self._PageNumber = params.get("PageNumber")
+        self._ExtraData = params.get("ExtraData")
+        self._RequestHeader = params.get("RequestHeader")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeExceptionReportListResponse(AbstractModel):
+    r"""DescribeExceptionReportList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 返回值
+        :type Data: str
+        :param _Code: 状态码
+        :type Code: int
+        :param _Message: 消息
+        :type Message: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._Code = None
+        self._Message = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""返回值
+        :rtype: str
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Code(self):
+        r"""状态码
+        :rtype: int
+        """
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def Message(self):
+        r"""消息
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Data = params.get("Data")
+        self._Code = params.get("Code")
+        self._Message = params.get("Message")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeFOOMMallocProblemDetailRequest(AbstractModel):
+    r"""DescribeFOOMMallocProblemDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: 产品Id
+        :type ProductId: str
+        :param _ClientIdentify: 消息唯一标识
+        :type ClientIdentify: str
+        :param _Feature: 特征
+        :type Feature: str
+        :param _StartEventTime: 事件开始时间
+        :type StartEventTime: int
+        :param _EndEventTime: 事件结束时间
+        :type EndEventTime: int
+        :param _ExtraData: 拓展数据
+        :type ExtraData: str
+        :param _RequestHeader: 请求头
+        :type RequestHeader: str
+        """
+        self._ProductId = None
+        self._ClientIdentify = None
+        self._Feature = None
+        self._StartEventTime = None
+        self._EndEventTime = None
+        self._ExtraData = None
+        self._RequestHeader = None
+
+    @property
+    def ProductId(self):
+        r"""产品Id
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def ClientIdentify(self):
+        r"""消息唯一标识
+        :rtype: str
+        """
+        return self._ClientIdentify
+
+    @ClientIdentify.setter
+    def ClientIdentify(self, ClientIdentify):
+        self._ClientIdentify = ClientIdentify
+
+    @property
+    def Feature(self):
+        r"""特征
+        :rtype: str
+        """
+        return self._Feature
+
+    @Feature.setter
+    def Feature(self, Feature):
+        self._Feature = Feature
+
+    @property
+    def StartEventTime(self):
+        r"""事件开始时间
+        :rtype: int
+        """
+        return self._StartEventTime
+
+    @StartEventTime.setter
+    def StartEventTime(self, StartEventTime):
+        self._StartEventTime = StartEventTime
+
+    @property
+    def EndEventTime(self):
+        r"""事件结束时间
+        :rtype: int
+        """
+        return self._EndEventTime
+
+    @EndEventTime.setter
+    def EndEventTime(self, EndEventTime):
+        self._EndEventTime = EndEventTime
+
+    @property
+    def ExtraData(self):
+        r"""拓展数据
+        :rtype: str
+        """
+        return self._ExtraData
+
+    @ExtraData.setter
+    def ExtraData(self, ExtraData):
+        self._ExtraData = ExtraData
+
+    @property
+    def RequestHeader(self):
+        r"""请求头
+        :rtype: str
+        """
+        return self._RequestHeader
+
+    @RequestHeader.setter
+    def RequestHeader(self, RequestHeader):
+        self._RequestHeader = RequestHeader
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        self._ClientIdentify = params.get("ClientIdentify")
+        self._Feature = params.get("Feature")
+        self._StartEventTime = params.get("StartEventTime")
+        self._EndEventTime = params.get("EndEventTime")
+        self._ExtraData = params.get("ExtraData")
+        self._RequestHeader = params.get("RequestHeader")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeFOOMMallocProblemDetailResponse(AbstractModel):
+    r"""DescribeFOOMMallocProblemDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 返回值
+        :type Data: str
+        :param _Code: 状态码
+        :type Code: int
+        :param _Message: 消息
+        :type Message: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._Code = None
+        self._Message = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""返回值
+        :rtype: str
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Code(self):
+        r"""状态码
+        :rtype: int
+        """
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def Message(self):
+        r"""消息
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Data = params.get("Data")
+        self._Code = params.get("Code")
+        self._Message = params.get("Message")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeFOOMMallocProblemListRequest(AbstractModel):
+    r"""DescribeFOOMMallocProblemList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: 产品Id
+        :type ProductId: str
+        :param _ParamToken: 提供给前端使用，当填写本字段时，会覆盖 formlist 的值
+        :type ParamToken: str
+        :param _FormListString: 接口调试专用，当 token 为空时，以这里的 value 作为筛选表单信息
+        :type FormListString: str
+        :param _PageNumber: 当前页码
+        :type PageNumber: int
+        :param _PageSize: 每页展示最大数量
+        :type PageSize: int
+        :param _SortField: 排序字段
+        :type SortField: str
+        :param _SortType: 排序类型
+        :type SortType: str
+        :param _ExtraData: 拓展数据
+        :type ExtraData: str
+        :param _RequestHeader: 请求头
+        :type RequestHeader: str
+        """
+        self._ProductId = None
+        self._ParamToken = None
+        self._FormListString = None
+        self._PageNumber = None
+        self._PageSize = None
+        self._SortField = None
+        self._SortType = None
+        self._ExtraData = None
+        self._RequestHeader = None
+
+    @property
+    def ProductId(self):
+        r"""产品Id
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def ParamToken(self):
+        r"""提供给前端使用，当填写本字段时，会覆盖 formlist 的值
+        :rtype: str
+        """
+        return self._ParamToken
+
+    @ParamToken.setter
+    def ParamToken(self, ParamToken):
+        self._ParamToken = ParamToken
+
+    @property
+    def FormListString(self):
+        r"""接口调试专用，当 token 为空时，以这里的 value 作为筛选表单信息
+        :rtype: str
+        """
+        return self._FormListString
+
+    @FormListString.setter
+    def FormListString(self, FormListString):
+        self._FormListString = FormListString
+
+    @property
+    def PageNumber(self):
+        r"""当前页码
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        r"""每页展示最大数量
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def SortField(self):
+        r"""排序字段
+        :rtype: str
+        """
+        return self._SortField
+
+    @SortField.setter
+    def SortField(self, SortField):
+        self._SortField = SortField
+
+    @property
+    def SortType(self):
+        r"""排序类型
+        :rtype: str
+        """
+        return self._SortType
+
+    @SortType.setter
+    def SortType(self, SortType):
+        self._SortType = SortType
+
+    @property
+    def ExtraData(self):
+        r"""拓展数据
+        :rtype: str
+        """
+        return self._ExtraData
+
+    @ExtraData.setter
+    def ExtraData(self, ExtraData):
+        self._ExtraData = ExtraData
+
+    @property
+    def RequestHeader(self):
+        r"""请求头
+        :rtype: str
+        """
+        return self._RequestHeader
+
+    @RequestHeader.setter
+    def RequestHeader(self, RequestHeader):
+        self._RequestHeader = RequestHeader
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        self._ParamToken = params.get("ParamToken")
+        self._FormListString = params.get("FormListString")
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        self._SortField = params.get("SortField")
+        self._SortType = params.get("SortType")
+        self._ExtraData = params.get("ExtraData")
+        self._RequestHeader = params.get("RequestHeader")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeFOOMMallocProblemListResponse(AbstractModel):
+    r"""DescribeFOOMMallocProblemList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 返回值
+        :type Data: str
+        :param _Message: 消息
+        :type Message: str
+        :param _Code: 状态码
+        :type Code: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._Message = None
+        self._Code = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""返回值
+        :rtype: str
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Message(self):
+        r"""消息
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Code(self):
+        r"""状态码
+        :rtype: int
+        """
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Data = params.get("Data")
+        self._Message = params.get("Message")
+        self._Code = params.get("Code")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeFOOMMallocReportListRequest(AbstractModel):
+    r"""DescribeFOOMMallocReportList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: 产品Id
+        :type ProductId: str
+        :param _FormListString: 接口调试专用，当 token 为空时，以这里的 value 作为筛选表单信息
+        :type FormListString: str
+        :param _ParamToken: 提供给前端使用，当填写本字段时，会覆盖 formlist 的值
+        :type ParamToken: str
+        :param _Feature: 特征
+        :type Feature: str
+        :param _PageNumber: 当前页码
+        :type PageNumber: int
+        :param _PageSize: 每页展示最大数量
+        :type PageSize: int
+        :param _SortField: 排序字段
+        :type SortField: str
+        :param _SortType: 排序类型
+        :type SortType: str
+        :param _ExtraData: 拓展数据
+        :type ExtraData: str
+        :param _RequestHeader: 请求头
+        :type RequestHeader: str
+        """
+        self._ProductId = None
+        self._FormListString = None
+        self._ParamToken = None
+        self._Feature = None
+        self._PageNumber = None
+        self._PageSize = None
+        self._SortField = None
+        self._SortType = None
+        self._ExtraData = None
+        self._RequestHeader = None
+
+    @property
+    def ProductId(self):
+        r"""产品Id
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def FormListString(self):
+        r"""接口调试专用，当 token 为空时，以这里的 value 作为筛选表单信息
+        :rtype: str
+        """
+        return self._FormListString
+
+    @FormListString.setter
+    def FormListString(self, FormListString):
+        self._FormListString = FormListString
+
+    @property
+    def ParamToken(self):
+        r"""提供给前端使用，当填写本字段时，会覆盖 formlist 的值
+        :rtype: str
+        """
+        return self._ParamToken
+
+    @ParamToken.setter
+    def ParamToken(self, ParamToken):
+        self._ParamToken = ParamToken
+
+    @property
+    def Feature(self):
+        r"""特征
+        :rtype: str
+        """
+        return self._Feature
+
+    @Feature.setter
+    def Feature(self, Feature):
+        self._Feature = Feature
+
+    @property
+    def PageNumber(self):
+        r"""当前页码
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        r"""每页展示最大数量
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def SortField(self):
+        r"""排序字段
+        :rtype: str
+        """
+        return self._SortField
+
+    @SortField.setter
+    def SortField(self, SortField):
+        self._SortField = SortField
+
+    @property
+    def SortType(self):
+        r"""排序类型
+        :rtype: str
+        """
+        return self._SortType
+
+    @SortType.setter
+    def SortType(self, SortType):
+        self._SortType = SortType
+
+    @property
+    def ExtraData(self):
+        r"""拓展数据
+        :rtype: str
+        """
+        return self._ExtraData
+
+    @ExtraData.setter
+    def ExtraData(self, ExtraData):
+        self._ExtraData = ExtraData
+
+    @property
+    def RequestHeader(self):
+        r"""请求头
+        :rtype: str
+        """
+        return self._RequestHeader
+
+    @RequestHeader.setter
+    def RequestHeader(self, RequestHeader):
+        self._RequestHeader = RequestHeader
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        self._FormListString = params.get("FormListString")
+        self._ParamToken = params.get("ParamToken")
+        self._Feature = params.get("Feature")
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        self._SortField = params.get("SortField")
+        self._SortType = params.get("SortType")
+        self._ExtraData = params.get("ExtraData")
+        self._RequestHeader = params.get("RequestHeader")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeFOOMMallocReportListResponse(AbstractModel):
+    r"""DescribeFOOMMallocReportList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 返回值
+        :type Data: str
+        :param _Message: 消息
+        :type Message: str
+        :param _Code: 状态码
+        :type Code: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._Message = None
+        self._Code = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""返回值
+        :rtype: str
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Message(self):
+        r"""消息
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Code(self):
+        r"""状态码
+        :rtype: int
+        """
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Data = params.get("Data")
+        self._Message = params.get("Message")
+        self._Code = params.get("Code")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeFOOMProblemDetailRequest(AbstractModel):
+    r"""DescribeFOOMProblemDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: 产品Id
+        :type ProductId: str
+        :param _ClientIdentify: 消息唯一标识
+        :type ClientIdentify: str
+        :param _Feature: 特征
+        :type Feature: str
+        :param _StartEventTime: 事件开始时间
+        :type StartEventTime: int
+        :param _EndEventTime: 事件结束时间
+        :type EndEventTime: int
+        :param _ExtraData: 拓展数据
+        :type ExtraData: str
+        :param _RequestHeader: 请求头
+        :type RequestHeader: str
+        """
+        self._ProductId = None
+        self._ClientIdentify = None
+        self._Feature = None
+        self._StartEventTime = None
+        self._EndEventTime = None
+        self._ExtraData = None
+        self._RequestHeader = None
+
+    @property
+    def ProductId(self):
+        r"""产品Id
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def ClientIdentify(self):
+        r"""消息唯一标识
+        :rtype: str
+        """
+        return self._ClientIdentify
+
+    @ClientIdentify.setter
+    def ClientIdentify(self, ClientIdentify):
+        self._ClientIdentify = ClientIdentify
+
+    @property
+    def Feature(self):
+        r"""特征
+        :rtype: str
+        """
+        return self._Feature
+
+    @Feature.setter
+    def Feature(self, Feature):
+        self._Feature = Feature
+
+    @property
+    def StartEventTime(self):
+        r"""事件开始时间
+        :rtype: int
+        """
+        return self._StartEventTime
+
+    @StartEventTime.setter
+    def StartEventTime(self, StartEventTime):
+        self._StartEventTime = StartEventTime
+
+    @property
+    def EndEventTime(self):
+        r"""事件结束时间
+        :rtype: int
+        """
+        return self._EndEventTime
+
+    @EndEventTime.setter
+    def EndEventTime(self, EndEventTime):
+        self._EndEventTime = EndEventTime
+
+    @property
+    def ExtraData(self):
+        r"""拓展数据
+        :rtype: str
+        """
+        return self._ExtraData
+
+    @ExtraData.setter
+    def ExtraData(self, ExtraData):
+        self._ExtraData = ExtraData
+
+    @property
+    def RequestHeader(self):
+        r"""请求头
+        :rtype: str
+        """
+        return self._RequestHeader
+
+    @RequestHeader.setter
+    def RequestHeader(self, RequestHeader):
+        self._RequestHeader = RequestHeader
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        self._ClientIdentify = params.get("ClientIdentify")
+        self._Feature = params.get("Feature")
+        self._StartEventTime = params.get("StartEventTime")
+        self._EndEventTime = params.get("EndEventTime")
+        self._ExtraData = params.get("ExtraData")
+        self._RequestHeader = params.get("RequestHeader")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeFOOMProblemDetailResponse(AbstractModel):
+    r"""DescribeFOOMProblemDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 返回值
+        :type Data: str
+        :param _Code: 状态码
+        :type Code: int
+        :param _Message: 消息
+        :type Message: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._Code = None
+        self._Message = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""返回值
+        :rtype: str
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Code(self):
+        r"""状态码
+        :rtype: int
+        """
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def Message(self):
+        r"""消息
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Data = params.get("Data")
+        self._Code = params.get("Code")
+        self._Message = params.get("Message")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeFOOMProblemListRequest(AbstractModel):
+    r"""DescribeFOOMProblemList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: 产品Id
+        :type ProductId: str
+        :param _ParamToken: 提供给前端使用，当填写本字段时，会覆盖 formlist 的值
+        :type ParamToken: str
+        :param _FormListString: 接口调试专用，当 token 为空时，以这里的 value 作为筛选表单信息
+        :type FormListString: str
+        :param _PageNumber: 当前页码
+        :type PageNumber: int
+        :param _PageSize: 每页展示最大数量
+        :type PageSize: int
+        :param _SortField: 排序字段
+        :type SortField: str
+        :param _SortType: 排序类型
+        :type SortType: str
+        :param _ExtraData: 拓展数据
+        :type ExtraData: str
+        :param _RequestHeader: 请求头
+        :type RequestHeader: str
+        """
+        self._ProductId = None
+        self._ParamToken = None
+        self._FormListString = None
+        self._PageNumber = None
+        self._PageSize = None
+        self._SortField = None
+        self._SortType = None
+        self._ExtraData = None
+        self._RequestHeader = None
+
+    @property
+    def ProductId(self):
+        r"""产品Id
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def ParamToken(self):
+        r"""提供给前端使用，当填写本字段时，会覆盖 formlist 的值
+        :rtype: str
+        """
+        return self._ParamToken
+
+    @ParamToken.setter
+    def ParamToken(self, ParamToken):
+        self._ParamToken = ParamToken
+
+    @property
+    def FormListString(self):
+        r"""接口调试专用，当 token 为空时，以这里的 value 作为筛选表单信息
+        :rtype: str
+        """
+        return self._FormListString
+
+    @FormListString.setter
+    def FormListString(self, FormListString):
+        self._FormListString = FormListString
+
+    @property
+    def PageNumber(self):
+        r"""当前页码
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        r"""每页展示最大数量
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def SortField(self):
+        r"""排序字段
+        :rtype: str
+        """
+        return self._SortField
+
+    @SortField.setter
+    def SortField(self, SortField):
+        self._SortField = SortField
+
+    @property
+    def SortType(self):
+        r"""排序类型
+        :rtype: str
+        """
+        return self._SortType
+
+    @SortType.setter
+    def SortType(self, SortType):
+        self._SortType = SortType
+
+    @property
+    def ExtraData(self):
+        r"""拓展数据
+        :rtype: str
+        """
+        return self._ExtraData
+
+    @ExtraData.setter
+    def ExtraData(self, ExtraData):
+        self._ExtraData = ExtraData
+
+    @property
+    def RequestHeader(self):
+        r"""请求头
+        :rtype: str
+        """
+        return self._RequestHeader
+
+    @RequestHeader.setter
+    def RequestHeader(self, RequestHeader):
+        self._RequestHeader = RequestHeader
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        self._ParamToken = params.get("ParamToken")
+        self._FormListString = params.get("FormListString")
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        self._SortField = params.get("SortField")
+        self._SortType = params.get("SortType")
+        self._ExtraData = params.get("ExtraData")
+        self._RequestHeader = params.get("RequestHeader")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeFOOMProblemListResponse(AbstractModel):
+    r"""DescribeFOOMProblemList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 返回值
+        :type Data: str
+        :param _Message: 消息
+        :type Message: str
+        :param _Code: 状态码
+        :type Code: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._Message = None
+        self._Code = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""返回值
+        :rtype: str
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Message(self):
+        r"""消息
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Code(self):
+        r"""状态码
+        :rtype: int
+        """
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Data = params.get("Data")
+        self._Message = params.get("Message")
+        self._Code = params.get("Code")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeFOOMReportListRequest(AbstractModel):
+    r"""DescribeFOOMReportList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: 产品Id
+        :type ProductId: str
+        :param _FormListString: 接口调试专用，当 token 为空时，以这里的 value 作为筛选表单信息
+        :type FormListString: str
+        :param _ParamToken: 提供给前端使用，当填写本字段时，会覆盖 formlist 的值
+        :type ParamToken: str
+        :param _Feature: 特征
+        :type Feature: str
+        :param _PageNumber: 当前页码
+        :type PageNumber: int
+        :param _PageSize: 每页展示最大数量
+        :type PageSize: int
+        :param _SortField: 排序字段
+        :type SortField: str
+        :param _SortType: 排序类型
+        :type SortType: str
+        :param _ExtraData: 拓展数据
+        :type ExtraData: str
+        :param _RequestHeader: 请求头
+        :type RequestHeader: str
+        """
+        self._ProductId = None
+        self._FormListString = None
+        self._ParamToken = None
+        self._Feature = None
+        self._PageNumber = None
+        self._PageSize = None
+        self._SortField = None
+        self._SortType = None
+        self._ExtraData = None
+        self._RequestHeader = None
+
+    @property
+    def ProductId(self):
+        r"""产品Id
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def FormListString(self):
+        r"""接口调试专用，当 token 为空时，以这里的 value 作为筛选表单信息
+        :rtype: str
+        """
+        return self._FormListString
+
+    @FormListString.setter
+    def FormListString(self, FormListString):
+        self._FormListString = FormListString
+
+    @property
+    def ParamToken(self):
+        r"""提供给前端使用，当填写本字段时，会覆盖 formlist 的值
+        :rtype: str
+        """
+        return self._ParamToken
+
+    @ParamToken.setter
+    def ParamToken(self, ParamToken):
+        self._ParamToken = ParamToken
+
+    @property
+    def Feature(self):
+        r"""特征
+        :rtype: str
+        """
+        return self._Feature
+
+    @Feature.setter
+    def Feature(self, Feature):
+        self._Feature = Feature
+
+    @property
+    def PageNumber(self):
+        r"""当前页码
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        r"""每页展示最大数量
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def SortField(self):
+        r"""排序字段
+        :rtype: str
+        """
+        return self._SortField
+
+    @SortField.setter
+    def SortField(self, SortField):
+        self._SortField = SortField
+
+    @property
+    def SortType(self):
+        r"""排序类型
+        :rtype: str
+        """
+        return self._SortType
+
+    @SortType.setter
+    def SortType(self, SortType):
+        self._SortType = SortType
+
+    @property
+    def ExtraData(self):
+        r"""拓展数据
+        :rtype: str
+        """
+        return self._ExtraData
+
+    @ExtraData.setter
+    def ExtraData(self, ExtraData):
+        self._ExtraData = ExtraData
+
+    @property
+    def RequestHeader(self):
+        r"""请求头
+        :rtype: str
+        """
+        return self._RequestHeader
+
+    @RequestHeader.setter
+    def RequestHeader(self, RequestHeader):
+        self._RequestHeader = RequestHeader
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        self._FormListString = params.get("FormListString")
+        self._ParamToken = params.get("ParamToken")
+        self._Feature = params.get("Feature")
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        self._SortField = params.get("SortField")
+        self._SortType = params.get("SortType")
+        self._ExtraData = params.get("ExtraData")
+        self._RequestHeader = params.get("RequestHeader")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeFOOMReportListResponse(AbstractModel):
+    r"""DescribeFOOMReportList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 返回值
+        :type Data: str
+        :param _Message: 消息
+        :type Message: str
+        :param _Code: 状态码
+        :type Code: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._Message = None
+        self._Code = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""返回值
+        :rtype: str
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Message(self):
+        r"""消息
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Code(self):
+        r"""状态码
+        :rtype: int
+        """
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Data = params.get("Data")
+        self._Message = params.get("Message")
+        self._Code = params.get("Code")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeIssuesDistributionRequest(AbstractModel):
+    r"""DescribeIssuesDistribution请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: 产品Id
+        :type ProductId: str
+        :param _FormListString: 接口调试专用，当 token 为空时，以这里的 value 作为筛选表单信息
+        :type FormListString: str
+        :param _DimType: 分布维度是自定义维度时，填‘user_custom’
+        :type DimType: str
+        :param _Dimension: 维度，e.g. os_version, app_version, model等
+        :type Dimension: str
+        :param _Intervals: 数字类型字段的区间范围
+        :type Intervals: list of int
+        :param _ParamToken: 提供给前端使用，当填写本字段时，会覆盖 form_list 的值
+        :type ParamToken: str
+        :param _IssueId: 问题Id
+        :type IssueId: str
+        :param _IssueType: 问题类型
+        :type IssueType: int
+        :param _ParamLimit: 限制返回的个数，默认返回所有值
+        :type ParamLimit: int
+        :param _MapKey: 键
+        :type MapKey: str
+        :param _MapName: 名称
+        :type MapName: str
+        :param _MetricType: 指标类型
+        :type MetricType: int
+        :param _PageSize: 每页数目
+        :type PageSize: int
+        :param _PageNumber: 页码
+        :type PageNumber: int
+        :param _UserCustomKey: 用户自定义维度key
+        :type UserCustomKey: str
+        :param _ExtraData: 拓展字段
+        :type ExtraData: str
+        :param _RequestHeader: 请求头
+        :type RequestHeader: str
+        """
+        self._ProductId = None
+        self._FormListString = None
+        self._DimType = None
+        self._Dimension = None
+        self._Intervals = None
+        self._ParamToken = None
+        self._IssueId = None
+        self._IssueType = None
+        self._ParamLimit = None
+        self._MapKey = None
+        self._MapName = None
+        self._MetricType = None
+        self._PageSize = None
+        self._PageNumber = None
+        self._UserCustomKey = None
+        self._ExtraData = None
+        self._RequestHeader = None
+
+    @property
+    def ProductId(self):
+        r"""产品Id
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def FormListString(self):
+        r"""接口调试专用，当 token 为空时，以这里的 value 作为筛选表单信息
+        :rtype: str
+        """
+        return self._FormListString
+
+    @FormListString.setter
+    def FormListString(self, FormListString):
+        self._FormListString = FormListString
+
+    @property
+    def DimType(self):
+        r"""分布维度是自定义维度时，填‘user_custom’
+        :rtype: str
+        """
+        return self._DimType
+
+    @DimType.setter
+    def DimType(self, DimType):
+        self._DimType = DimType
+
+    @property
+    def Dimension(self):
+        r"""维度，e.g. os_version, app_version, model等
+        :rtype: str
+        """
+        return self._Dimension
+
+    @Dimension.setter
+    def Dimension(self, Dimension):
+        self._Dimension = Dimension
+
+    @property
+    def Intervals(self):
+        r"""数字类型字段的区间范围
+        :rtype: list of int
+        """
+        return self._Intervals
+
+    @Intervals.setter
+    def Intervals(self, Intervals):
+        self._Intervals = Intervals
+
+    @property
+    def ParamToken(self):
+        r"""提供给前端使用，当填写本字段时，会覆盖 form_list 的值
+        :rtype: str
+        """
+        return self._ParamToken
+
+    @ParamToken.setter
+    def ParamToken(self, ParamToken):
+        self._ParamToken = ParamToken
+
+    @property
+    def IssueId(self):
+        r"""问题Id
+        :rtype: str
+        """
+        return self._IssueId
+
+    @IssueId.setter
+    def IssueId(self, IssueId):
+        self._IssueId = IssueId
+
+    @property
+    def IssueType(self):
+        r"""问题类型
+        :rtype: int
+        """
+        return self._IssueType
+
+    @IssueType.setter
+    def IssueType(self, IssueType):
+        self._IssueType = IssueType
+
+    @property
+    def ParamLimit(self):
+        r"""限制返回的个数，默认返回所有值
+        :rtype: int
+        """
+        return self._ParamLimit
+
+    @ParamLimit.setter
+    def ParamLimit(self, ParamLimit):
+        self._ParamLimit = ParamLimit
+
+    @property
+    def MapKey(self):
+        r"""键
+        :rtype: str
+        """
+        return self._MapKey
+
+    @MapKey.setter
+    def MapKey(self, MapKey):
+        self._MapKey = MapKey
+
+    @property
+    def MapName(self):
+        r"""名称
+        :rtype: str
+        """
+        return self._MapName
+
+    @MapName.setter
+    def MapName(self, MapName):
+        self._MapName = MapName
+
+    @property
+    def MetricType(self):
+        r"""指标类型
+        :rtype: int
+        """
+        return self._MetricType
+
+    @MetricType.setter
+    def MetricType(self, MetricType):
+        self._MetricType = MetricType
+
+    @property
+    def PageSize(self):
+        r"""每页数目
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def PageNumber(self):
+        r"""页码
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def UserCustomKey(self):
+        r"""用户自定义维度key
+        :rtype: str
+        """
+        return self._UserCustomKey
+
+    @UserCustomKey.setter
+    def UserCustomKey(self, UserCustomKey):
+        self._UserCustomKey = UserCustomKey
+
+    @property
+    def ExtraData(self):
+        r"""拓展字段
+        :rtype: str
+        """
+        return self._ExtraData
+
+    @ExtraData.setter
+    def ExtraData(self, ExtraData):
+        self._ExtraData = ExtraData
+
+    @property
+    def RequestHeader(self):
+        r"""请求头
+        :rtype: str
+        """
+        return self._RequestHeader
+
+    @RequestHeader.setter
+    def RequestHeader(self, RequestHeader):
+        self._RequestHeader = RequestHeader
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        self._FormListString = params.get("FormListString")
+        self._DimType = params.get("DimType")
+        self._Dimension = params.get("Dimension")
+        self._Intervals = params.get("Intervals")
+        self._ParamToken = params.get("ParamToken")
+        self._IssueId = params.get("IssueId")
+        self._IssueType = params.get("IssueType")
+        self._ParamLimit = params.get("ParamLimit")
+        self._MapKey = params.get("MapKey")
+        self._MapName = params.get("MapName")
+        self._MetricType = params.get("MetricType")
+        self._PageSize = params.get("PageSize")
+        self._PageNumber = params.get("PageNumber")
+        self._UserCustomKey = params.get("UserCustomKey")
+        self._ExtraData = params.get("ExtraData")
+        self._RequestHeader = params.get("RequestHeader")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeIssuesDistributionResponse(AbstractModel):
+    r"""DescribeIssuesDistribution返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 返回值
+        :type Data: str
+        :param _Code: 状态码
+        :type Code: int
+        :param _Message: 消息
+        :type Message: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._Code = None
+        self._Message = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""返回值
+        :rtype: str
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Code(self):
+        r"""状态码
+        :rtype: int
+        """
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def Message(self):
+        r"""消息
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Data = params.get("Data")
+        self._Code = params.get("Code")
+        self._Message = params.get("Message")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeIssuesListRequest(AbstractModel):
+    r"""DescribeIssuesList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: 产品Id
+        :type ProductId: str
+        :param _FormList: 接口调试专用，当 token 为空时，以这里的 value 作为筛选表单信息
+        :type FormList: str
+        :param _FormListA: 接口调试专用，对比模式下条件A，当 token 为空时，以这里的 value 作为筛选表单信息
+        :type FormListA: str
+        :param _FormListB: 接口调试专用，对比模式下条件B，当 token 为空时，以这里的 value 作为筛选表单信息
+        :type FormListB: str
+        :param _ParamToken: 提供给前端使用，当填写本字段时，会覆盖 form_list 的值
+        :type ParamToken: str
+        :param _IssueType: 问题类型
+        :type IssueType: int
+        :param _SortField: 排序字段
+        :type SortField: str
+        :param _SortType: 排序方式
+        :type SortType: str
+        :param _PageSize: 每页数目
+        :type PageSize: int
+        :param _PageNumber: 页码
+        :type PageNumber: int
+        :param _SortABRatio: 问题对比列表模式下，用于标识是按照sort_field字段的A值排序还是B值还是ratio值
+        :type SortABRatio: str
+        :param _Compare: 模式：false:问题列表模式，true:对比列表模式
+        :type Compare: bool
+        :param _CompareStatus: 对比状态 0:所有 1:新增 2：遗留 3:已解决
+        :type CompareStatus: int
+        :param _ExtraData: 拓展字段
+        :type ExtraData: str
+        :param _RequestHeader: 请求头
+        :type RequestHeader: str
+        """
+        self._ProductId = None
+        self._FormList = None
+        self._FormListA = None
+        self._FormListB = None
+        self._ParamToken = None
+        self._IssueType = None
+        self._SortField = None
+        self._SortType = None
+        self._PageSize = None
+        self._PageNumber = None
+        self._SortABRatio = None
+        self._Compare = None
+        self._CompareStatus = None
+        self._ExtraData = None
+        self._RequestHeader = None
+
+    @property
+    def ProductId(self):
+        r"""产品Id
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def FormList(self):
+        r"""接口调试专用，当 token 为空时，以这里的 value 作为筛选表单信息
+        :rtype: str
+        """
+        return self._FormList
+
+    @FormList.setter
+    def FormList(self, FormList):
+        self._FormList = FormList
+
+    @property
+    def FormListA(self):
+        r"""接口调试专用，对比模式下条件A，当 token 为空时，以这里的 value 作为筛选表单信息
+        :rtype: str
+        """
+        return self._FormListA
+
+    @FormListA.setter
+    def FormListA(self, FormListA):
+        self._FormListA = FormListA
+
+    @property
+    def FormListB(self):
+        r"""接口调试专用，对比模式下条件B，当 token 为空时，以这里的 value 作为筛选表单信息
+        :rtype: str
+        """
+        return self._FormListB
+
+    @FormListB.setter
+    def FormListB(self, FormListB):
+        self._FormListB = FormListB
+
+    @property
+    def ParamToken(self):
+        r"""提供给前端使用，当填写本字段时，会覆盖 form_list 的值
+        :rtype: str
+        """
+        return self._ParamToken
+
+    @ParamToken.setter
+    def ParamToken(self, ParamToken):
+        self._ParamToken = ParamToken
+
+    @property
+    def IssueType(self):
+        r"""问题类型
+        :rtype: int
+        """
+        return self._IssueType
+
+    @IssueType.setter
+    def IssueType(self, IssueType):
+        self._IssueType = IssueType
+
+    @property
+    def SortField(self):
+        r"""排序字段
+        :rtype: str
+        """
+        return self._SortField
+
+    @SortField.setter
+    def SortField(self, SortField):
+        self._SortField = SortField
+
+    @property
+    def SortType(self):
+        r"""排序方式
+        :rtype: str
+        """
+        return self._SortType
+
+    @SortType.setter
+    def SortType(self, SortType):
+        self._SortType = SortType
+
+    @property
+    def PageSize(self):
+        r"""每页数目
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def PageNumber(self):
+        r"""页码
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def SortABRatio(self):
+        r"""问题对比列表模式下，用于标识是按照sort_field字段的A值排序还是B值还是ratio值
+        :rtype: str
+        """
+        return self._SortABRatio
+
+    @SortABRatio.setter
+    def SortABRatio(self, SortABRatio):
+        self._SortABRatio = SortABRatio
+
+    @property
+    def Compare(self):
+        r"""模式：false:问题列表模式，true:对比列表模式
+        :rtype: bool
+        """
+        return self._Compare
+
+    @Compare.setter
+    def Compare(self, Compare):
+        self._Compare = Compare
+
+    @property
+    def CompareStatus(self):
+        r"""对比状态 0:所有 1:新增 2：遗留 3:已解决
+        :rtype: int
+        """
+        return self._CompareStatus
+
+    @CompareStatus.setter
+    def CompareStatus(self, CompareStatus):
+        self._CompareStatus = CompareStatus
+
+    @property
+    def ExtraData(self):
+        r"""拓展字段
+        :rtype: str
+        """
+        return self._ExtraData
+
+    @ExtraData.setter
+    def ExtraData(self, ExtraData):
+        self._ExtraData = ExtraData
+
+    @property
+    def RequestHeader(self):
+        r"""请求头
+        :rtype: str
+        """
+        return self._RequestHeader
+
+    @RequestHeader.setter
+    def RequestHeader(self, RequestHeader):
+        self._RequestHeader = RequestHeader
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        self._FormList = params.get("FormList")
+        self._FormListA = params.get("FormListA")
+        self._FormListB = params.get("FormListB")
+        self._ParamToken = params.get("ParamToken")
+        self._IssueType = params.get("IssueType")
+        self._SortField = params.get("SortField")
+        self._SortType = params.get("SortType")
+        self._PageSize = params.get("PageSize")
+        self._PageNumber = params.get("PageNumber")
+        self._SortABRatio = params.get("SortABRatio")
+        self._Compare = params.get("Compare")
+        self._CompareStatus = params.get("CompareStatus")
+        self._ExtraData = params.get("ExtraData")
+        self._RequestHeader = params.get("RequestHeader")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeIssuesListResponse(AbstractModel):
+    r"""DescribeIssuesList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 返回值
+        :type Data: str
+        :param _Code: 状态码
+        :type Code: int
+        :param _Message: 消息
+        :type Message: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._Code = None
+        self._Message = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""返回值
+        :rtype: str
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Code(self):
+        r"""状态码
+        :rtype: int
+        """
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def Message(self):
+        r"""消息
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Data = params.get("Data")
+        self._Code = params.get("Code")
+        self._Message = params.get("Message")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeIssuesStatisticsTrendRequest(AbstractModel):
+    r"""DescribeIssuesStatisticsTrend请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: 产品Id
+        :type ProductId: str
+        :param _ParamToken: 提供给前端使用，当填写本字段时，会覆盖 form_list 的值
+        :type ParamToken: str
+        :param _FormList: 接口调试专用，当 token 为空时，以这里的 value 作为筛选表单信息
+        :type FormList: str
+        :param _IssueId: 问题Id
+        :type IssueId: str
+        :param _IssueType: 问题类型
+        :type IssueType: int
+        :param _TimeWindow: 时间窗口
+        :type TimeWindow: int
+        :param _TotalSize: 累计值
+        :type TotalSize: bool
+        :param _Stat: 无
+        :type Stat: int
+        :param _MetricType: 指标类型
+        :type MetricType: int
+        :param _ExtraData: 拓展字段
+        :type ExtraData: str
+        :param _RequestHeader: 请求头
+        :type RequestHeader: str
+        :param _TrendStat: 无
+        :type TrendStat: int
+        """
+        self._ProductId = None
+        self._ParamToken = None
+        self._FormList = None
+        self._IssueId = None
+        self._IssueType = None
+        self._TimeWindow = None
+        self._TotalSize = None
+        self._Stat = None
+        self._MetricType = None
+        self._ExtraData = None
+        self._RequestHeader = None
+        self._TrendStat = None
+
+    @property
+    def ProductId(self):
+        r"""产品Id
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def ParamToken(self):
+        r"""提供给前端使用，当填写本字段时，会覆盖 form_list 的值
+        :rtype: str
+        """
+        return self._ParamToken
+
+    @ParamToken.setter
+    def ParamToken(self, ParamToken):
+        self._ParamToken = ParamToken
+
+    @property
+    def FormList(self):
+        r"""接口调试专用，当 token 为空时，以这里的 value 作为筛选表单信息
+        :rtype: str
+        """
+        return self._FormList
+
+    @FormList.setter
+    def FormList(self, FormList):
+        self._FormList = FormList
+
+    @property
+    def IssueId(self):
+        r"""问题Id
+        :rtype: str
+        """
+        return self._IssueId
+
+    @IssueId.setter
+    def IssueId(self, IssueId):
+        self._IssueId = IssueId
+
+    @property
+    def IssueType(self):
+        r"""问题类型
+        :rtype: int
+        """
+        return self._IssueType
+
+    @IssueType.setter
+    def IssueType(self, IssueType):
+        self._IssueType = IssueType
+
+    @property
+    def TimeWindow(self):
+        r"""时间窗口
+        :rtype: int
+        """
+        return self._TimeWindow
+
+    @TimeWindow.setter
+    def TimeWindow(self, TimeWindow):
+        self._TimeWindow = TimeWindow
+
+    @property
+    def TotalSize(self):
+        r"""累计值
+        :rtype: bool
+        """
+        return self._TotalSize
+
+    @TotalSize.setter
+    def TotalSize(self, TotalSize):
+        self._TotalSize = TotalSize
+
+    @property
+    def Stat(self):
+        r"""无
+        :rtype: int
+        """
+        return self._Stat
+
+    @Stat.setter
+    def Stat(self, Stat):
+        self._Stat = Stat
+
+    @property
+    def MetricType(self):
+        r"""指标类型
+        :rtype: int
+        """
+        return self._MetricType
+
+    @MetricType.setter
+    def MetricType(self, MetricType):
+        self._MetricType = MetricType
+
+    @property
+    def ExtraData(self):
+        r"""拓展字段
+        :rtype: str
+        """
+        return self._ExtraData
+
+    @ExtraData.setter
+    def ExtraData(self, ExtraData):
+        self._ExtraData = ExtraData
+
+    @property
+    def RequestHeader(self):
+        r"""请求头
+        :rtype: str
+        """
+        return self._RequestHeader
+
+    @RequestHeader.setter
+    def RequestHeader(self, RequestHeader):
+        self._RequestHeader = RequestHeader
+
+    @property
+    def TrendStat(self):
+        r"""无
+        :rtype: int
+        """
+        return self._TrendStat
+
+    @TrendStat.setter
+    def TrendStat(self, TrendStat):
+        self._TrendStat = TrendStat
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        self._ParamToken = params.get("ParamToken")
+        self._FormList = params.get("FormList")
+        self._IssueId = params.get("IssueId")
+        self._IssueType = params.get("IssueType")
+        self._TimeWindow = params.get("TimeWindow")
+        self._TotalSize = params.get("TotalSize")
+        self._Stat = params.get("Stat")
+        self._MetricType = params.get("MetricType")
+        self._ExtraData = params.get("ExtraData")
+        self._RequestHeader = params.get("RequestHeader")
+        self._TrendStat = params.get("TrendStat")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeIssuesStatisticsTrendResponse(AbstractModel):
+    r"""DescribeIssuesStatisticsTrend返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 返回值
+        :type Data: str
+        :param _Code: 状态码
+        :type Code: int
+        :param _Message: 消息
+        :type Message: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._Code = None
+        self._Message = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""返回值
+        :rtype: str
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Code(self):
+        r"""状态码
+        :rtype: int
+        """
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def Message(self):
+        r"""消息
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Data = params.get("Data")
+        self._Code = params.get("Code")
+        self._Message = params.get("Message")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeLagANRProblemAccountDetailRequest(AbstractModel):
+    r"""DescribeLagANRProblemAccountDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: 产品Id
+        :type ProductId: str
+        :param _ClientIdentify: 消息唯一标识
+        :type ClientIdentify: str
+        :param _Feature: 特征
+        :type Feature: str
+        :param _StartEventTime: 事件开始时间
+        :type StartEventTime: int
+        :param _EndEventTime: 事件结束时间
+        :type EndEventTime: int
+        :param _ExtraData: 拓展数据
+        :type ExtraData: str
+        :param _RequestHeader: 请求头
+        :type RequestHeader: str
+        """
+        self._ProductId = None
+        self._ClientIdentify = None
+        self._Feature = None
+        self._StartEventTime = None
+        self._EndEventTime = None
+        self._ExtraData = None
+        self._RequestHeader = None
+
+    @property
+    def ProductId(self):
+        r"""产品Id
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def ClientIdentify(self):
+        r"""消息唯一标识
+        :rtype: str
+        """
+        return self._ClientIdentify
+
+    @ClientIdentify.setter
+    def ClientIdentify(self, ClientIdentify):
+        self._ClientIdentify = ClientIdentify
+
+    @property
+    def Feature(self):
+        r"""特征
+        :rtype: str
+        """
+        return self._Feature
+
+    @Feature.setter
+    def Feature(self, Feature):
+        self._Feature = Feature
+
+    @property
+    def StartEventTime(self):
+        r"""事件开始时间
+        :rtype: int
+        """
+        return self._StartEventTime
+
+    @StartEventTime.setter
+    def StartEventTime(self, StartEventTime):
+        self._StartEventTime = StartEventTime
+
+    @property
+    def EndEventTime(self):
+        r"""事件结束时间
+        :rtype: int
+        """
+        return self._EndEventTime
+
+    @EndEventTime.setter
+    def EndEventTime(self, EndEventTime):
+        self._EndEventTime = EndEventTime
+
+    @property
+    def ExtraData(self):
+        r"""拓展数据
+        :rtype: str
+        """
+        return self._ExtraData
+
+    @ExtraData.setter
+    def ExtraData(self, ExtraData):
+        self._ExtraData = ExtraData
+
+    @property
+    def RequestHeader(self):
+        r"""请求头
+        :rtype: str
+        """
+        return self._RequestHeader
+
+    @RequestHeader.setter
+    def RequestHeader(self, RequestHeader):
+        self._RequestHeader = RequestHeader
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        self._ClientIdentify = params.get("ClientIdentify")
+        self._Feature = params.get("Feature")
+        self._StartEventTime = params.get("StartEventTime")
+        self._EndEventTime = params.get("EndEventTime")
+        self._ExtraData = params.get("ExtraData")
+        self._RequestHeader = params.get("RequestHeader")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLagANRProblemAccountDetailResponse(AbstractModel):
+    r"""DescribeLagANRProblemAccountDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 返回值
+        :type Data: str
+        :param _Code: 状态码
+        :type Code: int
+        :param _Message: 消息
+        :type Message: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._Code = None
+        self._Message = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""返回值
+        :rtype: str
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Code(self):
+        r"""状态码
+        :rtype: int
+        """
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def Message(self):
+        r"""消息
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Data = params.get("Data")
+        self._Code = params.get("Code")
+        self._Message = params.get("Message")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeLagANRProblemFeatureAccountsRequest(AbstractModel):
+    r"""DescribeLagANRProblemFeatureAccounts请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: 产品Id
+        :type ProductId: str
+        :param _FormListString: 接口调试专用，当 token 为空时，以这里的 value 作为筛选表单信息
+        :type FormListString: str
+        :param _ParamToken: 提供给前端使用，当填写本字段时，会覆盖 formlist 的值
+        :type ParamToken: str
+        :param _Feature: 问题特征
+        :type Feature: str
+        :param _SortField: 排序字段
+        :type SortField: str
+        :param _SortType: 排序类型
+        :type SortType: str
+        :param _PageNumber: 当前页码
+        :type PageNumber: int
+        :param _PageSize: 每页展示最大数量
+        :type PageSize: int
+        :param _ExtraData: 拓展数据
+        :type ExtraData: str
+        :param _RequestHeader: 请求头
+        :type RequestHeader: str
+        """
+        self._ProductId = None
+        self._FormListString = None
+        self._ParamToken = None
+        self._Feature = None
+        self._SortField = None
+        self._SortType = None
+        self._PageNumber = None
+        self._PageSize = None
+        self._ExtraData = None
+        self._RequestHeader = None
+
+    @property
+    def ProductId(self):
+        r"""产品Id
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def FormListString(self):
+        r"""接口调试专用，当 token 为空时，以这里的 value 作为筛选表单信息
+        :rtype: str
+        """
+        return self._FormListString
+
+    @FormListString.setter
+    def FormListString(self, FormListString):
+        self._FormListString = FormListString
+
+    @property
+    def ParamToken(self):
+        r"""提供给前端使用，当填写本字段时，会覆盖 formlist 的值
+        :rtype: str
+        """
+        return self._ParamToken
+
+    @ParamToken.setter
+    def ParamToken(self, ParamToken):
+        self._ParamToken = ParamToken
+
+    @property
+    def Feature(self):
+        r"""问题特征
+        :rtype: str
+        """
+        return self._Feature
+
+    @Feature.setter
+    def Feature(self, Feature):
+        self._Feature = Feature
+
+    @property
+    def SortField(self):
+        r"""排序字段
+        :rtype: str
+        """
+        return self._SortField
+
+    @SortField.setter
+    def SortField(self, SortField):
+        self._SortField = SortField
+
+    @property
+    def SortType(self):
+        r"""排序类型
+        :rtype: str
+        """
+        return self._SortType
+
+    @SortType.setter
+    def SortType(self, SortType):
+        self._SortType = SortType
+
+    @property
+    def PageNumber(self):
+        r"""当前页码
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        r"""每页展示最大数量
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def ExtraData(self):
+        r"""拓展数据
+        :rtype: str
+        """
+        return self._ExtraData
+
+    @ExtraData.setter
+    def ExtraData(self, ExtraData):
+        self._ExtraData = ExtraData
+
+    @property
+    def RequestHeader(self):
+        r"""请求头
+        :rtype: str
+        """
+        return self._RequestHeader
+
+    @RequestHeader.setter
+    def RequestHeader(self, RequestHeader):
+        self._RequestHeader = RequestHeader
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        self._FormListString = params.get("FormListString")
+        self._ParamToken = params.get("ParamToken")
+        self._Feature = params.get("Feature")
+        self._SortField = params.get("SortField")
+        self._SortType = params.get("SortType")
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        self._ExtraData = params.get("ExtraData")
+        self._RequestHeader = params.get("RequestHeader")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLagANRProblemFeatureAccountsResponse(AbstractModel):
+    r"""DescribeLagANRProblemFeatureAccounts返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 返回值
+        :type Data: str
+        :param _Message: 消息
+        :type Message: str
+        :param _Code: 状态码
+        :type Code: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._Message = None
+        self._Code = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""返回值
+        :rtype: str
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Message(self):
+        r"""消息
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Code(self):
+        r"""状态码
+        :rtype: int
+        """
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Data = params.get("Data")
+        self._Message = params.get("Message")
+        self._Code = params.get("Code")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeLagANRProblemListRequest(AbstractModel):
+    r"""DescribeLagANRProblemList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: 产品Id
+        :type ProductId: str
+        :param _ParamToken: 提供给前端使用，当填写本字段时，会覆盖 formlist 的值
+        :type ParamToken: str
+        :param _FormListString: 接口调试专用，当 token 为空时，以这里的 value 作为筛选表单信息
+        :type FormListString: str
+        :param _PageNumber: 当前页码
+        :type PageNumber: int
+        :param _PageSize: 每页展示最大数量
+        :type PageSize: int
+        :param _SortField: 排序字段
+        :type SortField: str
+        :param _SortType: 排序类型
+        :type SortType: str
+        :param _ExtraData: 拓展数据
+        :type ExtraData: str
+        :param _RequestHeader: 请求头
+        :type RequestHeader: str
+        """
+        self._ProductId = None
+        self._ParamToken = None
+        self._FormListString = None
+        self._PageNumber = None
+        self._PageSize = None
+        self._SortField = None
+        self._SortType = None
+        self._ExtraData = None
+        self._RequestHeader = None
+
+    @property
+    def ProductId(self):
+        r"""产品Id
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def ParamToken(self):
+        r"""提供给前端使用，当填写本字段时，会覆盖 formlist 的值
+        :rtype: str
+        """
+        return self._ParamToken
+
+    @ParamToken.setter
+    def ParamToken(self, ParamToken):
+        self._ParamToken = ParamToken
+
+    @property
+    def FormListString(self):
+        r"""接口调试专用，当 token 为空时，以这里的 value 作为筛选表单信息
+        :rtype: str
+        """
+        return self._FormListString
+
+    @FormListString.setter
+    def FormListString(self, FormListString):
+        self._FormListString = FormListString
+
+    @property
+    def PageNumber(self):
+        r"""当前页码
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        r"""每页展示最大数量
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def SortField(self):
+        r"""排序字段
+        :rtype: str
+        """
+        return self._SortField
+
+    @SortField.setter
+    def SortField(self, SortField):
+        self._SortField = SortField
+
+    @property
+    def SortType(self):
+        r"""排序类型
+        :rtype: str
+        """
+        return self._SortType
+
+    @SortType.setter
+    def SortType(self, SortType):
+        self._SortType = SortType
+
+    @property
+    def ExtraData(self):
+        r"""拓展数据
+        :rtype: str
+        """
+        return self._ExtraData
+
+    @ExtraData.setter
+    def ExtraData(self, ExtraData):
+        self._ExtraData = ExtraData
+
+    @property
+    def RequestHeader(self):
+        r"""请求头
+        :rtype: str
+        """
+        return self._RequestHeader
+
+    @RequestHeader.setter
+    def RequestHeader(self, RequestHeader):
+        self._RequestHeader = RequestHeader
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        self._ParamToken = params.get("ParamToken")
+        self._FormListString = params.get("FormListString")
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        self._SortField = params.get("SortField")
+        self._SortType = params.get("SortType")
+        self._ExtraData = params.get("ExtraData")
+        self._RequestHeader = params.get("RequestHeader")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLagANRProblemListResponse(AbstractModel):
+    r"""DescribeLagANRProblemList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 返回值
+        :type Data: str
+        :param _Message: 消息
+        :type Message: str
+        :param _Code: 状态码
+        :type Code: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._Message = None
+        self._Code = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""返回值
+        :rtype: str
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Message(self):
+        r"""消息
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Code(self):
+        r"""状态码
+        :rtype: int
+        """
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Data = params.get("Data")
+        self._Message = params.get("Message")
+        self._Code = params.get("Code")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeProjectLimitsRequest(AbstractModel):
     r"""DescribeProjectLimits请求参数结构体
 
@@ -16353,6 +20310,408 @@ class DescribeTawInstancesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeTokenRequest(AbstractModel):
+    r"""DescribeToken请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FormListString: 筛选条件
+        :type FormListString: str
+        :param _FormListAString: 仅对比模式下填写，筛选条件A
+        :type FormListAString: str
+        :param _FormListBString: 仅对比模式下填写，筛选条件B
+        :type FormListBString: str
+        :param _RequestHeader: 请求头
+        :type RequestHeader: str
+        :param _ExtraData: 拓展字段
+        :type ExtraData: str
+        """
+        self._FormListString = None
+        self._FormListAString = None
+        self._FormListBString = None
+        self._RequestHeader = None
+        self._ExtraData = None
+
+    @property
+    def FormListString(self):
+        r"""筛选条件
+        :rtype: str
+        """
+        return self._FormListString
+
+    @FormListString.setter
+    def FormListString(self, FormListString):
+        self._FormListString = FormListString
+
+    @property
+    def FormListAString(self):
+        r"""仅对比模式下填写，筛选条件A
+        :rtype: str
+        """
+        return self._FormListAString
+
+    @FormListAString.setter
+    def FormListAString(self, FormListAString):
+        self._FormListAString = FormListAString
+
+    @property
+    def FormListBString(self):
+        r"""仅对比模式下填写，筛选条件B
+        :rtype: str
+        """
+        return self._FormListBString
+
+    @FormListBString.setter
+    def FormListBString(self, FormListBString):
+        self._FormListBString = FormListBString
+
+    @property
+    def RequestHeader(self):
+        r"""请求头
+        :rtype: str
+        """
+        return self._RequestHeader
+
+    @RequestHeader.setter
+    def RequestHeader(self, RequestHeader):
+        self._RequestHeader = RequestHeader
+
+    @property
+    def ExtraData(self):
+        r"""拓展字段
+        :rtype: str
+        """
+        return self._ExtraData
+
+    @ExtraData.setter
+    def ExtraData(self, ExtraData):
+        self._ExtraData = ExtraData
+
+
+    def _deserialize(self, params):
+        self._FormListString = params.get("FormListString")
+        self._FormListAString = params.get("FormListAString")
+        self._FormListBString = params.get("FormListBString")
+        self._RequestHeader = params.get("RequestHeader")
+        self._ExtraData = params.get("ExtraData")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTokenResponse(AbstractModel):
+    r"""DescribeToken返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 返回值
+        :type Data: str
+        :param _Code: 状态码
+        :type Code: int
+        :param _Message: 消息
+        :type Message: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._Code = None
+        self._Message = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""返回值
+        :rtype: str
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Code(self):
+        r"""状态码
+        :rtype: int
+        """
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def Message(self):
+        r"""消息
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Data = params.get("Data")
+        self._Code = params.get("Code")
+        self._Message = params.get("Message")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeTopIssuesRequest(AbstractModel):
+    r"""DescribeTopIssues请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: 产品Id
+        :type ProductId: str
+        :param _Compare: 需要对比的查询条件，没有则不填
+        :type Compare: :class:`tencentcloud.rum.v20210622.models.CompareCondition`
+        :param _Condition: 查询条件
+        :type Condition: :class:`tencentcloud.rum.v20210622.models.CompareCondition`
+        :param _IssueType: 问题类型
+        :type IssueType: int
+        :param _SortField: 排序字段
+        :type SortField: str
+        :param _SortType: 排序方式
+        :type SortType: str
+        :param _TopNum: topN
+        :type TopNum: int
+        :param _ExtraData: 拓展字段
+        :type ExtraData: str
+        :param _RequestHeader: 请求头
+        :type RequestHeader: str
+        """
+        self._ProductId = None
+        self._Compare = None
+        self._Condition = None
+        self._IssueType = None
+        self._SortField = None
+        self._SortType = None
+        self._TopNum = None
+        self._ExtraData = None
+        self._RequestHeader = None
+
+    @property
+    def ProductId(self):
+        r"""产品Id
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def Compare(self):
+        r"""需要对比的查询条件，没有则不填
+        :rtype: :class:`tencentcloud.rum.v20210622.models.CompareCondition`
+        """
+        return self._Compare
+
+    @Compare.setter
+    def Compare(self, Compare):
+        self._Compare = Compare
+
+    @property
+    def Condition(self):
+        r"""查询条件
+        :rtype: :class:`tencentcloud.rum.v20210622.models.CompareCondition`
+        """
+        return self._Condition
+
+    @Condition.setter
+    def Condition(self, Condition):
+        self._Condition = Condition
+
+    @property
+    def IssueType(self):
+        r"""问题类型
+        :rtype: int
+        """
+        return self._IssueType
+
+    @IssueType.setter
+    def IssueType(self, IssueType):
+        self._IssueType = IssueType
+
+    @property
+    def SortField(self):
+        r"""排序字段
+        :rtype: str
+        """
+        return self._SortField
+
+    @SortField.setter
+    def SortField(self, SortField):
+        self._SortField = SortField
+
+    @property
+    def SortType(self):
+        r"""排序方式
+        :rtype: str
+        """
+        return self._SortType
+
+    @SortType.setter
+    def SortType(self, SortType):
+        self._SortType = SortType
+
+    @property
+    def TopNum(self):
+        r"""topN
+        :rtype: int
+        """
+        return self._TopNum
+
+    @TopNum.setter
+    def TopNum(self, TopNum):
+        self._TopNum = TopNum
+
+    @property
+    def ExtraData(self):
+        r"""拓展字段
+        :rtype: str
+        """
+        return self._ExtraData
+
+    @ExtraData.setter
+    def ExtraData(self, ExtraData):
+        self._ExtraData = ExtraData
+
+    @property
+    def RequestHeader(self):
+        r"""请求头
+        :rtype: str
+        """
+        return self._RequestHeader
+
+    @RequestHeader.setter
+    def RequestHeader(self, RequestHeader):
+        self._RequestHeader = RequestHeader
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        if params.get("Compare") is not None:
+            self._Compare = CompareCondition()
+            self._Compare._deserialize(params.get("Compare"))
+        if params.get("Condition") is not None:
+            self._Condition = CompareCondition()
+            self._Condition._deserialize(params.get("Condition"))
+        self._IssueType = params.get("IssueType")
+        self._SortField = params.get("SortField")
+        self._SortType = params.get("SortType")
+        self._TopNum = params.get("TopNum")
+        self._ExtraData = params.get("ExtraData")
+        self._RequestHeader = params.get("RequestHeader")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTopIssuesResponse(AbstractModel):
+    r"""DescribeTopIssues返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 返回值
+        :type Data: str
+        :param _Code: 状态码
+        :type Code: int
+        :param _Message: 消息
+        :type Message: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._Code = None
+        self._Message = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""返回值
+        :rtype: str
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Code(self):
+        r"""状态码
+        :rtype: int
+        """
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def Message(self):
+        r"""消息
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Data = params.get("Data")
+        self._Code = params.get("Code")
+        self._Message = params.get("Message")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeUvListRequest(AbstractModel):
     r"""DescribeUvList请求参数结构体
 
@@ -16610,6 +20969,117 @@ class Filter(AbstractModel):
     def _deserialize(self, params):
         self._Values = params.get("Values")
         self._Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Filters(AbstractModel):
+    r"""BugLY筛选结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IsReversed: 是否反转
+        :type IsReversed: bool
+        :param _Key: 键
+        :type Key: str
+        :param _Name: 名称
+        :type Name: str
+        :param _Operator: 运算符
+        :type Operator: str
+        :param _Type: 类型
+        :type Type: int
+        :param _Values: 值
+        :type Values: list of str
+        """
+        self._IsReversed = None
+        self._Key = None
+        self._Name = None
+        self._Operator = None
+        self._Type = None
+        self._Values = None
+
+    @property
+    def IsReversed(self):
+        r"""是否反转
+        :rtype: bool
+        """
+        return self._IsReversed
+
+    @IsReversed.setter
+    def IsReversed(self, IsReversed):
+        self._IsReversed = IsReversed
+
+    @property
+    def Key(self):
+        r"""键
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Name(self):
+        r"""名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Operator(self):
+        r"""运算符
+        :rtype: str
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def Type(self):
+        r"""类型
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Values(self):
+        r"""值
+        :rtype: list of str
+        """
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
+
+    def _deserialize(self, params):
+        self._IsReversed = params.get("IsReversed")
+        self._Key = params.get("Key")
+        self._Name = params.get("Name")
+        self._Operator = params.get("Operator")
+        self._Type = params.get("Type")
+        self._Values = params.get("Values")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

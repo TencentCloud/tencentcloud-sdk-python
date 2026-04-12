@@ -241,6 +241,42 @@ class RumClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeApplicationExitReportDetail(
+            self,
+            request: models.DescribeApplicationExitReportDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribeApplicationExitReportDetailResponse:
+        """
+        获取应用退出个例上报详情
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeApplicationExitReportDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeApplicationExitReportDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeApplicationExitReportList(
+            self,
+            request: models.DescribeApplicationExitReportListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeApplicationExitReportListResponse:
+        """
+        获取应用退出个例上报列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeApplicationExitReportList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeApplicationExitReportListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeData(
             self,
             request: models.DescribeDataRequest,
@@ -801,6 +837,258 @@ class RumClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeExceptionDetail(
+            self,
+            request: models.DescribeExceptionDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribeExceptionDetailResponse:
+        """
+        获取异常问题详情数据
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeExceptionDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeExceptionDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeExceptionReportList(
+            self,
+            request: models.DescribeExceptionReportListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeExceptionReportListResponse:
+        """
+        获取异常个例列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeExceptionReportList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeExceptionReportListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeFOOMMallocProblemDetail(
+            self,
+            request: models.DescribeFOOMMallocProblemDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribeFOOMMallocProblemDetailResponse:
+        """
+        获取FOOM内存分配问题详情数据
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeFOOMMallocProblemDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeFOOMMallocProblemDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeFOOMMallocProblemList(
+            self,
+            request: models.DescribeFOOMMallocProblemListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeFOOMMallocProblemListResponse:
+        """
+        获取FOOM内存分配问题列表数据
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeFOOMMallocProblemList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeFOOMMallocProblemListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeFOOMMallocReportList(
+            self,
+            request: models.DescribeFOOMMallocReportListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeFOOMMallocReportListResponse:
+        """
+        获取FOOM内存分配问题上报列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeFOOMMallocReportList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeFOOMMallocReportListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeFOOMProblemDetail(
+            self,
+            request: models.DescribeFOOMProblemDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribeFOOMProblemDetailResponse:
+        """
+        获取FOOM问题详情数据
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeFOOMProblemDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeFOOMProblemDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeFOOMProblemList(
+            self,
+            request: models.DescribeFOOMProblemListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeFOOMProblemListResponse:
+        """
+        获取FOOM问题列表数据
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeFOOMProblemList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeFOOMProblemListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeFOOMReportList(
+            self,
+            request: models.DescribeFOOMReportListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeFOOMReportListResponse:
+        """
+        获取FOOM问题上报列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeFOOMReportList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeFOOMReportListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeIssuesDistribution(
+            self,
+            request: models.DescribeIssuesDistributionRequest,
+            opts: Dict = None,
+    ) -> models.DescribeIssuesDistributionResponse:
+        """
+        获取问题分布数据
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeIssuesDistribution"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeIssuesDistributionResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeIssuesList(
+            self,
+            request: models.DescribeIssuesListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeIssuesListResponse:
+        """
+        获取问题列表数据
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeIssuesList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeIssuesListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeIssuesStatisticsTrend(
+            self,
+            request: models.DescribeIssuesStatisticsTrendRequest,
+            opts: Dict = None,
+    ) -> models.DescribeIssuesStatisticsTrendResponse:
+        """
+        获取问题趋势数据
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeIssuesStatisticsTrend"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeIssuesStatisticsTrendResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeLagANRProblemAccountDetail(
+            self,
+            request: models.DescribeLagANRProblemAccountDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribeLagANRProblemAccountDetailResponse:
+        """
+        获取卡顿ANR问题用户详情
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeLagANRProblemAccountDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeLagANRProblemAccountDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeLagANRProblemFeatureAccounts(
+            self,
+            request: models.DescribeLagANRProblemFeatureAccountsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeLagANRProblemFeatureAccountsResponse:
+        """
+        获取卡顿ANR问题用户列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeLagANRProblemFeatureAccounts"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeLagANRProblemFeatureAccountsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeLagANRProblemList(
+            self,
+            request: models.DescribeLagANRProblemListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeLagANRProblemListResponse:
+        """
+        获取卡顿ANR问题列表数据
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeLagANRProblemList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeLagANRProblemListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeProjectLimits(
             self,
             request: models.DescribeProjectLimitsRequest,
@@ -1048,6 +1336,42 @@ class RumClient(AbstractClient):
         kwargs["action"] = "DescribeTawInstances"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeTawInstancesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeToken(
+            self,
+            request: models.DescribeTokenRequest,
+            opts: Dict = None,
+    ) -> models.DescribeTokenResponse:
+        """
+        查询令牌
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeToken"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeTokenResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeTopIssues(
+            self,
+            request: models.DescribeTopIssuesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeTopIssuesResponse:
+        """
+        查询top问题列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeTopIssues"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeTopIssuesResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

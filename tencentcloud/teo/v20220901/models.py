@@ -8845,7 +8845,7 @@ class ConfigGroupWorkModeInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ConfigGroupType: 配置组类型，可选项如下：<li>l7_acceleration: 七层加速配置组；</li><li>edge_functions: 边缘函数配置组。</li>
+        :param _ConfigGroupType: 配置组类型，可选项如下：<li>l7_acceleration: 七层加速配置组；</li><li>edge_functions: 边缘函数配置组。</li><li>web_security: Web 防护配置组。</li>
         :type ConfigGroupType: str
         :param _WorkMode: 工作模式，可选项如下：<li>immediate_effect: 即时生效模式；</li><li>version_control: 版本管理模式。</li>
         :type WorkMode: str
@@ -8855,7 +8855,7 @@ class ConfigGroupWorkModeInfo(AbstractModel):
 
     @property
     def ConfigGroupType(self):
-        r"""配置组类型，可选项如下：<li>l7_acceleration: 七层加速配置组；</li><li>edge_functions: 边缘函数配置组。</li>
+        r"""配置组类型，可选项如下：<li>l7_acceleration: 七层加速配置组；</li><li>edge_functions: 边缘函数配置组。</li><li>web_security: Web 防护配置组。</li>
         :rtype: str
         """
         return self._ConfigGroupType
@@ -32917,8 +32917,7 @@ class ExportZoneConfigRequest(AbstractModel):
         r"""
         :param _ZoneId: 站点 ID。
         :type ZoneId: str
-        :param _Types: 导出配置项的类型列表，不填表示导出所有类型的配置，当前支持的取值有：<li>L7AccelerationConfig：表示导出七层加速配置，对应控制台「站点加速-全局加速配置」和「站点加速-规则引擎」。</li>
-需注意：后续支持导出的类型会随着迭代增加，导出所有类型时需要注意导出文件大小，建议使用时指定需要导出的配置类型，以便控制请求响应包负载大小。
+        :param _Types: 导出配置项的类型列表，不填表示导出所有类型的配置，当前支持的取值有：<li>L7AccelerationConfig：表示导出七层加速配置，对应控制台「站点加速-全局加速配置」和「站点加速-规则引擎」。</li><li>WebSecurity：表示导出 Web 防护配置。</li> 需注意：后续支持导出的类型会随着迭代增加，导出所有类型时需要注意导出文件大小，建议使用时指定需要导出的配置类型，以便控制请求响应包负载大小。
         :type Types: list of str
         """
         self._ZoneId = None
@@ -32937,8 +32936,7 @@ class ExportZoneConfigRequest(AbstractModel):
 
     @property
     def Types(self):
-        r"""导出配置项的类型列表，不填表示导出所有类型的配置，当前支持的取值有：<li>L7AccelerationConfig：表示导出七层加速配置，对应控制台「站点加速-全局加速配置」和「站点加速-规则引擎」。</li>
-需注意：后续支持导出的类型会随着迭代增加，导出所有类型时需要注意导出文件大小，建议使用时指定需要导出的配置类型，以便控制请求响应包负载大小。
+        r"""导出配置项的类型列表，不填表示导出所有类型的配置，当前支持的取值有：<li>L7AccelerationConfig：表示导出七层加速配置，对应控制台「站点加速-全局加速配置」和「站点加速-规则引擎」。</li><li>WebSecurity：表示导出 Web 防护配置。</li> 需注意：后续支持导出的类型会随着迭代增加，导出所有类型时需要注意导出文件大小，建议使用时指定需要导出的配置类型，以便控制请求响应包负载大小。
         :rtype: list of str
         """
         return self._Types
