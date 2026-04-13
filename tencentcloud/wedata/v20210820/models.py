@@ -56666,30 +56666,33 @@ class EventListenerTaskInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务id
+        :param _TaskId: <p>任务id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: str
-        :param _TaskName: 任务名称
+        :param _TaskName: <p>任务名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskName: str
-        :param _WorkflowId: 工作流id
+        :param _WorkflowId: <p>工作流id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WorkflowId: str
-        :param _WorkflowName: 工作流名称
+        :param _WorkflowName: <p>工作流名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WorkflowName: str
-        :param _TaskTypeId: 任务类型id
+        :param _TaskTypeId: <p>任务类型id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskTypeId: int
-        :param _TaskType: 任务类型名称
+        :param _TaskType: <p>任务类型名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskType: str
-        :param _ProjectId: 项目id
+        :param _ProjectId: <p>项目id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectId: str
-        :param _CycleType: 任务周期类型
+        :param _CycleType: <p>任务周期类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CycleType: str
+        :param _EventName: <p>事件名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EventName: str
         """
         self._TaskId = None
         self._TaskName = None
@@ -56699,10 +56702,11 @@ class EventListenerTaskInfo(AbstractModel):
         self._TaskType = None
         self._ProjectId = None
         self._CycleType = None
+        self._EventName = None
 
     @property
     def TaskId(self):
-        r"""任务id
+        r"""<p>任务id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -56714,7 +56718,7 @@ class EventListenerTaskInfo(AbstractModel):
 
     @property
     def TaskName(self):
-        r"""任务名称
+        r"""<p>任务名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -56726,7 +56730,7 @@ class EventListenerTaskInfo(AbstractModel):
 
     @property
     def WorkflowId(self):
-        r"""工作流id
+        r"""<p>工作流id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -56738,7 +56742,7 @@ class EventListenerTaskInfo(AbstractModel):
 
     @property
     def WorkflowName(self):
-        r"""工作流名称
+        r"""<p>工作流名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -56750,7 +56754,7 @@ class EventListenerTaskInfo(AbstractModel):
 
     @property
     def TaskTypeId(self):
-        r"""任务类型id
+        r"""<p>任务类型id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -56762,7 +56766,7 @@ class EventListenerTaskInfo(AbstractModel):
 
     @property
     def TaskType(self):
-        r"""任务类型名称
+        r"""<p>任务类型名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -56774,7 +56778,7 @@ class EventListenerTaskInfo(AbstractModel):
 
     @property
     def ProjectId(self):
-        r"""项目id
+        r"""<p>项目id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -56786,7 +56790,7 @@ class EventListenerTaskInfo(AbstractModel):
 
     @property
     def CycleType(self):
-        r"""任务周期类型
+        r"""<p>任务周期类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -56795,6 +56799,18 @@ class EventListenerTaskInfo(AbstractModel):
     @CycleType.setter
     def CycleType(self, CycleType):
         self._CycleType = CycleType
+
+    @property
+    def EventName(self):
+        r"""<p>事件名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._EventName
+
+    @EventName.setter
+    def EventName(self, EventName):
+        self._EventName = EventName
 
 
     def _deserialize(self, params):
@@ -56806,6 +56822,7 @@ class EventListenerTaskInfo(AbstractModel):
         self._TaskType = params.get("TaskType")
         self._ProjectId = params.get("ProjectId")
         self._CycleType = params.get("CycleType")
+        self._EventName = params.get("EventName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

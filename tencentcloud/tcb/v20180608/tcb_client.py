@@ -1299,6 +1299,29 @@ class TcbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ExecutePGSql(self, request):
+        r"""在Postgres数据库上执行SQL
+
+        :param request: Request instance for ExecutePGSql.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.ExecutePGSqlRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.ExecutePGSqlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ExecutePGSql", params, headers=headers)
+            response = json.loads(body)
+            model = models.ExecutePGSqlResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def GetProviders(self, request):
         r"""查询指定云开发环境下的身份认证源列表。返回该环境已配置的所有身份认证源信息，包括第三方登录（OAuth、OIDC、SAML）、微信小程序登录、自定义登录和邮箱登录等。返回结果包含认证源基本信息、关联应用、配置状态及启用情况。若自定义登录或邮箱登录的身份源尚未创建，接口会自动追加一个默认关闭状态的身份源记录。
 

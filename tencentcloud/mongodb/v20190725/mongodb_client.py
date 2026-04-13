@@ -1596,6 +1596,29 @@ class MongodbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def RestoreDBInstance(self, request):
+        r"""本接口(RestoreDBInstance)用于回档数据库实例到指定时间点。
+
+        :param request: Request instance for RestoreDBInstance.
+        :type request: :class:`tencentcloud.mongodb.v20190725.models.RestoreDBInstanceRequest`
+        :rtype: :class:`tencentcloud.mongodb.v20190725.models.RestoreDBInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RestoreDBInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.RestoreDBInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def SetAccountUserPrivilege(self, request):
         r"""本接口（SetAccountUserPrivilege）用于设置实例的账号权限。
 

@@ -61,6 +61,24 @@ class ConfigClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def AddAlarmPolicy(
+            self,
+            request: models.AddAlarmPolicyRequest,
+            opts: Dict = None,
+    ) -> models.AddAlarmPolicyResponse:
+        """
+        新增告警监控规则
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "AddAlarmPolicy"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.AddAlarmPolicyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def AddCompliancePack(
             self,
             request: models.AddCompliancePackRequest,
@@ -218,6 +236,24 @@ class ConfigClient(AbstractClient):
         kwargs["action"] = "DeleteAggregateConfigRule"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteAggregateConfigRuleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteAlarmPolicy(
+            self,
+            request: models.DeleteAlarmPolicyRequest,
+            opts: Dict = None,
+    ) -> models.DeleteAlarmPolicyResponse:
+        """
+        删除告警规则
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteAlarmPolicy"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteAlarmPolicyResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -619,6 +655,24 @@ class ConfigClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ListAlarmPolicy(
+            self,
+            request: models.ListAlarmPolicyRequest,
+            opts: Dict = None,
+    ) -> models.ListAlarmPolicyResponse:
+        """
+        告警规则列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListAlarmPolicy"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListAlarmPolicyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ListCompliancePacks(
             self,
             request: models.ListCompliancePacksRequest,
@@ -974,6 +1028,24 @@ class ConfigClient(AbstractClient):
         kwargs["action"] = "UpdateAggregateConfigRule"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.UpdateAggregateConfigRuleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UpdateAlarmPolicy(
+            self,
+            request: models.UpdateAlarmPolicyRequest,
+            opts: Dict = None,
+    ) -> models.UpdateAlarmPolicyResponse:
+        """
+        更新告警规则
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpdateAlarmPolicy"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpdateAlarmPolicyResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

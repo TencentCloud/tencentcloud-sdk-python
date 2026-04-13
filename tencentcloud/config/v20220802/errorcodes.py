@@ -53,6 +53,9 @@ INVALIDPARAMETER = 'InvalidParameter'
 # 用户组数量超过上限。
 LIMITEXCEEDED_ACCOUNTGROUPLIMITOVER = 'LimitExceeded.AccountGroupLimitOver'
 
+# 告警策略数量上限
+LIMITEXCEEDED_ALERTPOLICYLIMIT = 'LimitExceeded.AlertPolicyLimit'
+
 # 合规包数量到达上限。
 LIMITEXCEEDED_COMPLIANCEPACKMAXNUM = 'LimitExceeded.CompliancePackMaxNum'
 
@@ -94,6 +97,9 @@ RESOURCENOTFOUND_REMEDIATIONISNOTEXIST = 'ResourceNotFound.RemediationIsNotExist
 
 # 资源不存在。
 RESOURCENOTFOUND_RESOURCENOTEXIST = 'ResourceNotFound.ResourceNotExist'
+
+# 资源类型不存在。
+RESOURCENOTFOUND_RESOURCETYPENOTEXIST = 'ResourceNotFound.ResourceTypeNotExist'
 
 # 规则不存在。
 RESOURCENOTFOUND_RULEISNOTEXIST = 'ResourceNotFound.RuleIsNotExist'

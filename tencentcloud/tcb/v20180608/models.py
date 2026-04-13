@@ -10219,6 +10219,164 @@ class EnvInfo(AbstractModel):
         
 
 
+class ExecutePGSqlRequest(AbstractModel):
+    r"""ExecutePGSql请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: <p>云开发环境ID</p>
+        :type EnvId: str
+        :param _Sql: <p>要执行的SQL语句</p>
+        :type Sql: str
+        :param _Role: <p>指定 role 执行 SQL</p>
+        :type Role: str
+        """
+        self._EnvId = None
+        self._Sql = None
+        self._Role = None
+
+    @property
+    def EnvId(self):
+        r"""<p>云开发环境ID</p>
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def Sql(self):
+        r"""<p>要执行的SQL语句</p>
+        :rtype: str
+        """
+        return self._Sql
+
+    @Sql.setter
+    def Sql(self, Sql):
+        self._Sql = Sql
+
+    @property
+    def Role(self):
+        r"""<p>指定 role 执行 SQL</p>
+        :rtype: str
+        """
+        return self._Role
+
+    @Role.setter
+    def Role(self, Role):
+        self._Role = Role
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        self._Sql = params.get("Sql")
+        self._Role = params.get("Role")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExecutePGSqlResponse(AbstractModel):
+    r"""ExecutePGSql返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AffectedRows: <p>影响行数</p>
+        :type AffectedRows: int
+        :param _Columns: <p>字段名列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Columns: list of str
+        :param _Rows: <p>数据行。每一行数据都是一个JSON串，将JSON进行反序列化将得到了每列的值。值可能是 null 或者 字符串，如果是 null 说明该列的值为 &lt;null&gt;，如果是字符串则为该列的值的字符串表示形式。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Rows: list of str
+        :param _ExecutionTimeMs: <p>SQL执行耗时</p><p>单位：毫秒</p>
+        :type ExecutionTimeMs: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._AffectedRows = None
+        self._Columns = None
+        self._Rows = None
+        self._ExecutionTimeMs = None
+        self._RequestId = None
+
+    @property
+    def AffectedRows(self):
+        r"""<p>影响行数</p>
+        :rtype: int
+        """
+        return self._AffectedRows
+
+    @AffectedRows.setter
+    def AffectedRows(self, AffectedRows):
+        self._AffectedRows = AffectedRows
+
+    @property
+    def Columns(self):
+        r"""<p>字段名列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._Columns
+
+    @Columns.setter
+    def Columns(self, Columns):
+        self._Columns = Columns
+
+    @property
+    def Rows(self):
+        r"""<p>数据行。每一行数据都是一个JSON串，将JSON进行反序列化将得到了每列的值。值可能是 null 或者 字符串，如果是 null 说明该列的值为 &lt;null&gt;，如果是字符串则为该列的值的字符串表示形式。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._Rows
+
+    @Rows.setter
+    def Rows(self, Rows):
+        self._Rows = Rows
+
+    @property
+    def ExecutionTimeMs(self):
+        r"""<p>SQL执行耗时</p><p>单位：毫秒</p>
+        :rtype: int
+        """
+        return self._ExecutionTimeMs
+
+    @ExecutionTimeMs.setter
+    def ExecutionTimeMs(self, ExecutionTimeMs):
+        self._ExecutionTimeMs = ExecutionTimeMs
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._AffectedRows = params.get("AffectedRows")
+        self._Columns = params.get("Columns")
+        self._Rows = params.get("Rows")
+        self._ExecutionTimeMs = params.get("ExecutionTimeMs")
+        self._RequestId = params.get("RequestId")
+
+
 class ExternalStorage(AbstractModel):
     r"""外部存储。
     标识该存储介质，并非由云开发CloudBase创建，而是绑定的其他存储介质。

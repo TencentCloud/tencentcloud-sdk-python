@@ -11311,22 +11311,24 @@ class AigcImageTaskInput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ModelName: 模型名称。
+        :param _ModelName: <p>模型名称。</p>
         :type ModelName: str
-        :param _ModelVersion: 模型版本。
+        :param _ModelVersion: <p>模型版本。</p>
         :type ModelVersion: str
-        :param _FileInfos: AIGC生图任务输入文件信息。
+        :param _FileInfos: <p>AIGC生图任务输入文件信息。</p>
         :type FileInfos: list of AigcImageTaskInputFileInfo
-        :param _Prompt: 生成图片的提示词。最大支持1000字符，当 FileInfos 为空时，此参数必填。
+        :param _Prompt: <p>生成图片的提示词。最大支持1000字符，当 FileInfos 为空时，此参数必填。</p>
         :type Prompt: str
-        :param _NegativePrompt: 要阻止模型生成图片的提示词。最大支持1000字符。
+        :param _NegativePrompt: <p>要阻止模型生成图片的提示词。最大支持1000字符。</p>
         :type NegativePrompt: str
-        :param _EnhancePrompt: 是否自动优化提示词。开启时将自动优化传入的Prompt，以提升生成质量。取值有： <li>Enabled：开启；</li> <li>Disabled：关闭；</li> 
+        :param _EnhancePrompt: <p>是否自动优化提示词。开启时将自动优化传入的Prompt，以提升生成质量。取值有： <li>Enabled：开启；</li> <li>Disabled：关闭；</li></p>
         :type EnhancePrompt: str
-        :param _GenerationMode: 生成模式。取值有： <li>Standard：标准模式；</li> <li>Professional：高品质模式；</li> 
+        :param _GenerationMode: <p>生成模式。取值有： <li>Standard：标准模式；</li> <li>Professional：高品质模式；</li></p>
         :type GenerationMode: str
-        :param _OutputConfig: AIGC 生图输出结果文件输出。
+        :param _OutputConfig: <p>AIGC 生图输出结果文件输出。</p>
         :type OutputConfig: :class:`tencentcloud.vod.v20180717.models.AigcImageOutputConfig`
+        :param _Seed: <p>模型随机种子。</p>
+        :type Seed: int
         """
         self._ModelName = None
         self._ModelVersion = None
@@ -11336,10 +11338,11 @@ class AigcImageTaskInput(AbstractModel):
         self._EnhancePrompt = None
         self._GenerationMode = None
         self._OutputConfig = None
+        self._Seed = None
 
     @property
     def ModelName(self):
-        r"""模型名称。
+        r"""<p>模型名称。</p>
         :rtype: str
         """
         return self._ModelName
@@ -11350,7 +11353,7 @@ class AigcImageTaskInput(AbstractModel):
 
     @property
     def ModelVersion(self):
-        r"""模型版本。
+        r"""<p>模型版本。</p>
         :rtype: str
         """
         return self._ModelVersion
@@ -11361,7 +11364,7 @@ class AigcImageTaskInput(AbstractModel):
 
     @property
     def FileInfos(self):
-        r"""AIGC生图任务输入文件信息。
+        r"""<p>AIGC生图任务输入文件信息。</p>
         :rtype: list of AigcImageTaskInputFileInfo
         """
         return self._FileInfos
@@ -11372,7 +11375,7 @@ class AigcImageTaskInput(AbstractModel):
 
     @property
     def Prompt(self):
-        r"""生成图片的提示词。最大支持1000字符，当 FileInfos 为空时，此参数必填。
+        r"""<p>生成图片的提示词。最大支持1000字符，当 FileInfos 为空时，此参数必填。</p>
         :rtype: str
         """
         return self._Prompt
@@ -11383,7 +11386,7 @@ class AigcImageTaskInput(AbstractModel):
 
     @property
     def NegativePrompt(self):
-        r"""要阻止模型生成图片的提示词。最大支持1000字符。
+        r"""<p>要阻止模型生成图片的提示词。最大支持1000字符。</p>
         :rtype: str
         """
         return self._NegativePrompt
@@ -11394,7 +11397,7 @@ class AigcImageTaskInput(AbstractModel):
 
     @property
     def EnhancePrompt(self):
-        r"""是否自动优化提示词。开启时将自动优化传入的Prompt，以提升生成质量。取值有： <li>Enabled：开启；</li> <li>Disabled：关闭；</li> 
+        r"""<p>是否自动优化提示词。开启时将自动优化传入的Prompt，以提升生成质量。取值有： <li>Enabled：开启；</li> <li>Disabled：关闭；</li></p>
         :rtype: str
         """
         return self._EnhancePrompt
@@ -11405,7 +11408,7 @@ class AigcImageTaskInput(AbstractModel):
 
     @property
     def GenerationMode(self):
-        r"""生成模式。取值有： <li>Standard：标准模式；</li> <li>Professional：高品质模式；</li> 
+        r"""<p>生成模式。取值有： <li>Standard：标准模式；</li> <li>Professional：高品质模式；</li></p>
         :rtype: str
         """
         return self._GenerationMode
@@ -11416,7 +11419,7 @@ class AigcImageTaskInput(AbstractModel):
 
     @property
     def OutputConfig(self):
-        r"""AIGC 生图输出结果文件输出。
+        r"""<p>AIGC 生图输出结果文件输出。</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.AigcImageOutputConfig`
         """
         return self._OutputConfig
@@ -11424,6 +11427,17 @@ class AigcImageTaskInput(AbstractModel):
     @OutputConfig.setter
     def OutputConfig(self, OutputConfig):
         self._OutputConfig = OutputConfig
+
+    @property
+    def Seed(self):
+        r"""<p>模型随机种子。</p>
+        :rtype: int
+        """
+        return self._Seed
+
+    @Seed.setter
+    def Seed(self, Seed):
+        self._Seed = Seed
 
 
     def _deserialize(self, params):
@@ -11442,6 +11456,7 @@ class AigcImageTaskInput(AbstractModel):
         if params.get("OutputConfig") is not None:
             self._OutputConfig = AigcImageOutputConfig()
             self._OutputConfig._deserialize(params.get("OutputConfig"))
+        self._Seed = params.get("Seed")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11804,11 +11819,11 @@ class AigcVideoOutputConfig(AbstractModel):
         :type ClassId: int
         :param _ExpireTime: <p>输出文件的过期时间，超过该时间文件将被删除，默认为永久不过期，格式按照 ISO 8601标准表示，详见 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式说明</a>。</p>
         :type ExpireTime: str
-        :param _Duration: <p>生成视频的时长，单位：秒。<li>当 ModelName 是 Kling，可选值为 5、10，默认为 5；</li><li>当 ModelName 是 Hailuo，可选值为 6、10，默认为 6；</li><li>当 ModelName 是 Vidu，可指定1-10；</li><li>当 ModelName 是 GV，可选值为 8，默认为 8；</li><li>当 ModelName 是 OS，可选值为 4、8、12，默认为 8；</li></p>
+        :param _Duration: <p>生成视频的时长，单位：秒。</p><li>当 ModelName 是 Kling，可选值为 5、10，默认为 5；</li><li>当 ModelName 是 Hailuo，可选值为 6、10，默认为 6；</li><li>当 ModelName 是 Vidu，可指定1-10；</li><li>当 ModelName 是 GV，可选值为 8，默认为 8；</li><li>当 ModelName 是 OS，可选值为 4、8、12，默认为 8；</li><li>当 ModelName 是 PixVerse，可指定1-15，默认为5；</li>
         :type Duration: float
-        :param _Resolution: <p>生成视频的分辨率。</p><li>当 ModelName 是 Kling，可选值为 720P、1080P，默认为 720P；</li><li>当 ModelName 是 Hailuo，可选值为 768P、1080P，默认为 768P；</li><li>当 ModelName 是 Vidu，可选值为 720P、1080P，默认为 720P；</li><li>当 ModelName 是 GV，可选值为 720P、1080P，默认为 720P；</li><li>当 ModelName 是 OS，可选值为 720P；</li>
+        :param _Resolution: <p>生成视频的分辨率。</p><li>当 ModelName 是 Kling，可选值为 720P、1080P，默认为 720P；</li><li>当 ModelName 是 Hailuo，可选值为 768P、1080P，默认为 768P；</li><li>当 ModelName 是 Vidu，可选值为 720P、1080P，默认为 720P；</li><li>当 ModelName 是 GV，可选值为 720P、1080P，默认为 720P；</li><li>当 ModelName 是 OS，可选值为 720P；</li><li>当 ModelName 是 PixVerse，可选值为 540p、720p、1080p、2k、4k，默认为720p；</li>
         :type Resolution: str
-        :param _AspectRatio: <p>指定所生成视频的宽高比。</p><li>当 ModelName 是 Kling，当文生视频时，则可选值为 16:9、9:16、 1:1，默认为16:9；</li><li>当 ModelName 是 Vidu，当文生视频时和使用参考图片生成时，则可选值为 16:9、9:16、4:3、3:4、1:1，其中仅版本q2支持4:3、3:4</li><li>当 ModelName 是 GV，则可选值为 16:9、9:16，默认为 16:9；</li><li>当 ModelName 是 OS，当文生视频时，则可选值为 16:9、9:16，默认为 16:9；</li><li>当 ModelName 是 Hailuo，则暂不支持。</li>
+        :param _AspectRatio: <p>指定所生成视频的宽高比。</p><li>当 ModelName 是 Kling，当文生视频时，则可选值为 16:9、9:16、 1:1，默认为16:9；</li><li>当 ModelName 是 Vidu，当文生视频时和使用参考图片生成时，则可选值为 16:9、9:16、4:3、3:4、1:1，其中仅版本q2支持4:3、3:4</li><li>当 ModelName 是 GV，则可选值为 16:9、9:16，默认为 16:9；</li><li>当 ModelName 是 OS，当文生视频时，则可选值为 16:9、9:16，默认为 16:9；</li><li>当 ModelName 是 Hailuo，则暂不支持;</li><li>当 ModelName 是PixVerse，则可选值为 16:9，4:3，1:1，3:4，9:16，2:3，3:2，21:9;</li>
         :type AspectRatio: str
         :param _AudioGeneration: <p>是否生成音频。支持的模型包括 GV、OS、Vidu、Jimeng、Kling。</p><p>枚举值：</p><ul><li>Enabled： 开启</li><li>Disabled： 关闭</li></ul><p>默认值：Disabled</p>
         :type AudioGeneration: str
@@ -11889,7 +11904,7 @@ class AigcVideoOutputConfig(AbstractModel):
 
     @property
     def Duration(self):
-        r"""<p>生成视频的时长，单位：秒。<li>当 ModelName 是 Kling，可选值为 5、10，默认为 5；</li><li>当 ModelName 是 Hailuo，可选值为 6、10，默认为 6；</li><li>当 ModelName 是 Vidu，可指定1-10；</li><li>当 ModelName 是 GV，可选值为 8，默认为 8；</li><li>当 ModelName 是 OS，可选值为 4、8、12，默认为 8；</li></p>
+        r"""<p>生成视频的时长，单位：秒。</p><li>当 ModelName 是 Kling，可选值为 5、10，默认为 5；</li><li>当 ModelName 是 Hailuo，可选值为 6、10，默认为 6；</li><li>当 ModelName 是 Vidu，可指定1-10；</li><li>当 ModelName 是 GV，可选值为 8，默认为 8；</li><li>当 ModelName 是 OS，可选值为 4、8、12，默认为 8；</li><li>当 ModelName 是 PixVerse，可指定1-15，默认为5；</li>
         :rtype: float
         """
         return self._Duration
@@ -11900,7 +11915,7 @@ class AigcVideoOutputConfig(AbstractModel):
 
     @property
     def Resolution(self):
-        r"""<p>生成视频的分辨率。</p><li>当 ModelName 是 Kling，可选值为 720P、1080P，默认为 720P；</li><li>当 ModelName 是 Hailuo，可选值为 768P、1080P，默认为 768P；</li><li>当 ModelName 是 Vidu，可选值为 720P、1080P，默认为 720P；</li><li>当 ModelName 是 GV，可选值为 720P、1080P，默认为 720P；</li><li>当 ModelName 是 OS，可选值为 720P；</li>
+        r"""<p>生成视频的分辨率。</p><li>当 ModelName 是 Kling，可选值为 720P、1080P，默认为 720P；</li><li>当 ModelName 是 Hailuo，可选值为 768P、1080P，默认为 768P；</li><li>当 ModelName 是 Vidu，可选值为 720P、1080P，默认为 720P；</li><li>当 ModelName 是 GV，可选值为 720P、1080P，默认为 720P；</li><li>当 ModelName 是 OS，可选值为 720P；</li><li>当 ModelName 是 PixVerse，可选值为 540p、720p、1080p、2k、4k，默认为720p；</li>
         :rtype: str
         """
         return self._Resolution
@@ -11911,7 +11926,7 @@ class AigcVideoOutputConfig(AbstractModel):
 
     @property
     def AspectRatio(self):
-        r"""<p>指定所生成视频的宽高比。</p><li>当 ModelName 是 Kling，当文生视频时，则可选值为 16:9、9:16、 1:1，默认为16:9；</li><li>当 ModelName 是 Vidu，当文生视频时和使用参考图片生成时，则可选值为 16:9、9:16、4:3、3:4、1:1，其中仅版本q2支持4:3、3:4</li><li>当 ModelName 是 GV，则可选值为 16:9、9:16，默认为 16:9；</li><li>当 ModelName 是 OS，当文生视频时，则可选值为 16:9、9:16，默认为 16:9；</li><li>当 ModelName 是 Hailuo，则暂不支持。</li>
+        r"""<p>指定所生成视频的宽高比。</p><li>当 ModelName 是 Kling，当文生视频时，则可选值为 16:9、9:16、 1:1，默认为16:9；</li><li>当 ModelName 是 Vidu，当文生视频时和使用参考图片生成时，则可选值为 16:9、9:16、4:3、3:4、1:1，其中仅版本q2支持4:3、3:4</li><li>当 ModelName 是 GV，则可选值为 16:9、9:16，默认为 16:9；</li><li>当 ModelName 是 OS，当文生视频时，则可选值为 16:9、9:16，默认为 16:9；</li><li>当 ModelName 是 Hailuo，则暂不支持;</li><li>当 ModelName 是PixVerse，则可选值为 16:9，4:3，1:1，3:4，9:16，2:3，3:2，21:9;</li>
         :rtype: str
         """
         return self._AspectRatio
@@ -12298,6 +12313,8 @@ class AigcVideoTaskInput(AbstractModel):
         :type InputRegion: str
         :param _SceneType: <p>场景类型。取值如下：<li>当 ModelName 为 Kling 时，取值 motion_control 表示动作控制；</li><li>其他 ModelName 暂不支持。</li></p>
         :type SceneType: str
+        :param _Seed: <p>模型随机种子。</p>
+        :type Seed: int
         """
         self._ModelName = None
         self._ModelVersion = None
@@ -12312,6 +12329,7 @@ class AigcVideoTaskInput(AbstractModel):
         self._OutputConfig = None
         self._InputRegion = None
         self._SceneType = None
+        self._Seed = None
 
     @property
     def ModelName(self):
@@ -12456,6 +12474,17 @@ class AigcVideoTaskInput(AbstractModel):
     def SceneType(self, SceneType):
         self._SceneType = SceneType
 
+    @property
+    def Seed(self):
+        r"""<p>模型随机种子。</p>
+        :rtype: int
+        """
+        return self._Seed
+
+    @Seed.setter
+    def Seed(self, Seed):
+        self._Seed = Seed
+
 
     def _deserialize(self, params):
         self._ModelName = params.get("ModelName")
@@ -12483,6 +12512,7 @@ class AigcVideoTaskInput(AbstractModel):
             self._OutputConfig._deserialize(params.get("OutputConfig"))
         self._InputRegion = params.get("InputRegion")
         self._SceneType = params.get("SceneType")
+        self._Seed = params.get("Seed")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21058,6 +21088,8 @@ class CreateAigcImageTaskRequest(AbstractModel):
         :type OutputConfig: :class:`tencentcloud.vod.v20180717.models.AigcImageOutputConfig`
         :param _InputRegion: <p>输入的区域信息。可选值：</p><ul><li>Mainland：中国大陆；</li><li>Oversea：海外；</li><li>OverseaUSWest：海外-美西；</li></ul>
         :type InputRegion: str
+        :param _Seed: <p>模型随机种子。</p>
+        :type Seed: int
         :param _SessionId: <p>用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。</p>
         :type SessionId: str
         :param _SessionContext: <p>来源上下文，用于透传用户请求信息，音画质重生完成回调将返回该字段值，最长 1000 个字符。</p>
@@ -21076,6 +21108,7 @@ class CreateAigcImageTaskRequest(AbstractModel):
         self._EnhancePrompt = None
         self._OutputConfig = None
         self._InputRegion = None
+        self._Seed = None
         self._SessionId = None
         self._SessionContext = None
         self._TasksPriority = None
@@ -21181,6 +21214,17 @@ class CreateAigcImageTaskRequest(AbstractModel):
         self._InputRegion = InputRegion
 
     @property
+    def Seed(self):
+        r"""<p>模型随机种子。</p>
+        :rtype: int
+        """
+        return self._Seed
+
+    @Seed.setter
+    def Seed(self, Seed):
+        self._Seed = Seed
+
+    @property
     def SessionId(self):
         r"""<p>用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。</p>
         :rtype: str
@@ -21242,6 +21286,7 @@ class CreateAigcImageTaskRequest(AbstractModel):
             self._OutputConfig = AigcImageOutputConfig()
             self._OutputConfig._deserialize(params.get("OutputConfig"))
         self._InputRegion = params.get("InputRegion")
+        self._Seed = params.get("Seed")
         self._SessionId = params.get("SessionId")
         self._SessionContext = params.get("SessionContext")
         self._TasksPriority = params.get("TasksPriority")
@@ -21784,9 +21829,9 @@ class CreateAigcVideoTaskRequest(AbstractModel):
         r"""
         :param _SubAppId: <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
         :type SubAppId: int
-        :param _ModelName: <p>模型名称。取值：<br>Kling：可灵；<br>Vidu；<br>Hailuo：海螺；<br>Jimeng：即梦；<br>Hunyuan：混元；<br>Mingmou：明眸；<br>GV；<br>OS；</p>
+        :param _ModelName: <p>模型名称。取值：<br>Kling：可灵；<br>Vidu；<br>Hailuo：海螺；<br>Jimeng：即梦；<br>Hunyuan：混元；<br>Mingmou：明眸；<br>GV；<br>OS；<br>PixVerse;</p>
         :type ModelName: str
-        :param _ModelVersion: <p>模型版本。取值：<br>当 ModelName 是 Hailuo，可选值为 02、2.3、2.3-fast；<br>当 ModelName 是 Kling，可选值为 1.6、2.0、2.1、2.5、2.6、O1、3.0、3.0-Omni；<br>当 ModelName 是 Jimeng，可选值为 3.0pro；<br>当 ModelName 是 Vidu，可选值为 q2、q2-pro、q2-turbo、q3、q3-pro、q3-turbo；<br>当 ModelName 是 GV，可选值为 3.1、3.1-fast；<br>当 ModelName 是 OS，可选值为 2.0；<br>当 ModelName 是 Hunyuan，可选值为 1.5；<br>当 ModelName 是 Mingmou，可选值为 1.0；</p>
+        :param _ModelVersion: <p>模型版本。取值：<br>当 ModelName 是 Hailuo，可选值为 02、2.3、2.3-fast；<br>当 ModelName 是 Kling，可选值为 1.6、2.0、2.1、2.5、2.6、O1、3.0、3.0-Omni；<br>当 ModelName 是 Jimeng，可选值为 3.0pro；<br>当 ModelName 是 Vidu，可选值为 q2、q2-pro、q2-turbo、q3、q3-pro、q3-turbo；<br>当 ModelName 是 GV，可选值为 3.1、3.1-fast；<br>当 ModelName 是 OS，可选值为 2.0；<br>当 ModelName 是 Hunyuan，可选值为 1.5；<br>当 ModelName 是 Mingmou，可选值为 1.0；<br>当 ModelName 是 PixVerse，可选值为 v5.6、v6、c1；</p>
         :type ModelVersion: str
         :param _FileInfos: <p>用于描述模型在生成视频时要使用的资源文件，分为<strong>首尾帧模式、参考图、视频参考、视频编辑等模式</strong>。</p><p><strong>首尾帧视频生成</strong>：首帧图片只支持<strong>一张</strong>图片，<strong>图片的Usage字段为FirstFrame</strong>，LastFrameFileId 或者 LastFrameUrl 表示尾帧。可以单独传首帧，不能单独传尾帧。<strong>首尾帧生成会参考图片比例</strong>。<br><strong>参考图片生成</strong>：可传入单张图片或者多张，<strong>图片的Usage字段为Reference</strong>；参考图片，可以调整生成视频的宽高比例。<br><strong>视频编辑、视频参考</strong>：Vidu、Kling可输入视频作为参考或者进行编辑。传入视频的同时也可以传入图片，<strong>图片的Usage字段为Reference</strong>。</p><p>注意：</p><ol><li>图片大小不超过10M。</li><li>支持的图片格式：jpeg、jpg、png。x0b</li><li>关于模型某个版本是否支持参考图、首尾帧、视频编辑等功能，可向我们索取文档或者参考原厂文档信息。</li></ol>
         :type FileInfos: list of AigcVideoTaskInputFileInfo
@@ -21808,6 +21853,8 @@ class CreateAigcVideoTaskRequest(AbstractModel):
         :type InputRegion: str
         :param _SceneType: <p>场景类型。取值如下：</p><li>当 ModelName 为 Kling 时：    motion_control 表示动作控制；    avatar_i2v 表示数字人；    lip_sync 表示对口型；</li><li>当 ModelName 为 Vidu 时：    template_effect 表示特效模板；</li><li>其他 ModelName 暂不支持。</li>
         :type SceneType: str
+        :param _Seed: <p>模型随机种子。</p>
+        :type Seed: int
         :param _SessionId: <p>用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。</p>
         :type SessionId: str
         :param _SessionContext: <p>来源上下文，用于透传用户请求信息，音画质重生完成回调将返回该字段值，最长 1000 个字符。</p>
@@ -21830,6 +21877,7 @@ class CreateAigcVideoTaskRequest(AbstractModel):
         self._OutputConfig = None
         self._InputRegion = None
         self._SceneType = None
+        self._Seed = None
         self._SessionId = None
         self._SessionContext = None
         self._TasksPriority = None
@@ -21848,7 +21896,7 @@ class CreateAigcVideoTaskRequest(AbstractModel):
 
     @property
     def ModelName(self):
-        r"""<p>模型名称。取值：<br>Kling：可灵；<br>Vidu；<br>Hailuo：海螺；<br>Jimeng：即梦；<br>Hunyuan：混元；<br>Mingmou：明眸；<br>GV；<br>OS；</p>
+        r"""<p>模型名称。取值：<br>Kling：可灵；<br>Vidu；<br>Hailuo：海螺；<br>Jimeng：即梦；<br>Hunyuan：混元；<br>Mingmou：明眸；<br>GV；<br>OS；<br>PixVerse;</p>
         :rtype: str
         """
         return self._ModelName
@@ -21859,7 +21907,7 @@ class CreateAigcVideoTaskRequest(AbstractModel):
 
     @property
     def ModelVersion(self):
-        r"""<p>模型版本。取值：<br>当 ModelName 是 Hailuo，可选值为 02、2.3、2.3-fast；<br>当 ModelName 是 Kling，可选值为 1.6、2.0、2.1、2.5、2.6、O1、3.0、3.0-Omni；<br>当 ModelName 是 Jimeng，可选值为 3.0pro；<br>当 ModelName 是 Vidu，可选值为 q2、q2-pro、q2-turbo、q3、q3-pro、q3-turbo；<br>当 ModelName 是 GV，可选值为 3.1、3.1-fast；<br>当 ModelName 是 OS，可选值为 2.0；<br>当 ModelName 是 Hunyuan，可选值为 1.5；<br>当 ModelName 是 Mingmou，可选值为 1.0；</p>
+        r"""<p>模型版本。取值：<br>当 ModelName 是 Hailuo，可选值为 02、2.3、2.3-fast；<br>当 ModelName 是 Kling，可选值为 1.6、2.0、2.1、2.5、2.6、O1、3.0、3.0-Omni；<br>当 ModelName 是 Jimeng，可选值为 3.0pro；<br>当 ModelName 是 Vidu，可选值为 q2、q2-pro、q2-turbo、q3、q3-pro、q3-turbo；<br>当 ModelName 是 GV，可选值为 3.1、3.1-fast；<br>当 ModelName 是 OS，可选值为 2.0；<br>当 ModelName 是 Hunyuan，可选值为 1.5；<br>当 ModelName 是 Mingmou，可选值为 1.0；<br>当 ModelName 是 PixVerse，可选值为 v5.6、v6、c1；</p>
         :rtype: str
         """
         return self._ModelVersion
@@ -21979,6 +22027,17 @@ class CreateAigcVideoTaskRequest(AbstractModel):
         self._SceneType = SceneType
 
     @property
+    def Seed(self):
+        r"""<p>模型随机种子。</p>
+        :rtype: int
+        """
+        return self._Seed
+
+    @Seed.setter
+    def Seed(self, Seed):
+        self._Seed = Seed
+
+    @property
     def SessionId(self):
         r"""<p>用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。</p>
         :rtype: str
@@ -22049,6 +22108,7 @@ class CreateAigcVideoTaskRequest(AbstractModel):
             self._OutputConfig._deserialize(params.get("OutputConfig"))
         self._InputRegion = params.get("InputRegion")
         self._SceneType = params.get("SceneType")
+        self._Seed = params.get("Seed")
         self._SessionId = params.get("SessionId")
         self._SessionContext = params.get("SessionContext")
         self._TasksPriority = params.get("TasksPriority")

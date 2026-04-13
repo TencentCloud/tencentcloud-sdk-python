@@ -1162,6 +1162,147 @@ class CreateInstanceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateMigrationTaskRequest(AbstractModel):
+    r"""CreateMigrationTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
+        :type InstanceId: str
+        :param _Type: 0 - 未指定（存量）
+1 - 元数据导入
+        :type Type: int
+        :param _Topics: 待导入的消费组列表
+        :type Topics: list of TopicItem
+        :param _Groups: 待导入的消费组列表
+        :type Groups: list of ConsumeGroupItem
+        :param _Roles: 待导入的角色列表
+        :type Roles: list of RoleItem
+        """
+        self._InstanceId = None
+        self._Type = None
+        self._Topics = None
+        self._Groups = None
+        self._Roles = None
+
+    @property
+    def InstanceId(self):
+        r"""腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Type(self):
+        r"""0 - 未指定（存量）
+1 - 元数据导入
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Topics(self):
+        r"""待导入的消费组列表
+        :rtype: list of TopicItem
+        """
+        return self._Topics
+
+    @Topics.setter
+    def Topics(self, Topics):
+        self._Topics = Topics
+
+    @property
+    def Groups(self):
+        r"""待导入的消费组列表
+        :rtype: list of ConsumeGroupItem
+        """
+        return self._Groups
+
+    @Groups.setter
+    def Groups(self, Groups):
+        self._Groups = Groups
+
+    @property
+    def Roles(self):
+        r"""待导入的角色列表
+        :rtype: list of RoleItem
+        """
+        return self._Roles
+
+    @Roles.setter
+    def Roles(self, Roles):
+        self._Roles = Roles
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Type = params.get("Type")
+        if params.get("Topics") is not None:
+            self._Topics = []
+            for item in params.get("Topics"):
+                obj = TopicItem()
+                obj._deserialize(item)
+                self._Topics.append(obj)
+        if params.get("Groups") is not None:
+            self._Groups = []
+            for item in params.get("Groups"):
+                obj = ConsumeGroupItem()
+                obj._deserialize(item)
+                self._Groups.append(obj)
+        if params.get("Roles") is not None:
+            self._Roles = []
+            for item in params.get("Roles"):
+                obj = RoleItem()
+                obj._deserialize(item)
+                self._Roles.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateMigrationTaskResponse(AbstractModel):
+    r"""CreateMigrationTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CreateRoleRequest(AbstractModel):
     r"""CreateRole请求参数结构体
 

@@ -2553,17 +2553,23 @@ class DescribePublicApplicationsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Limit: 返回数量，默认为20，最大值为100。
+        :param _Limit: <p>返回数量，默认为20，最大值为100。</p>
         :type Limit: int
-        :param _Offset: 偏移量，默认为0。
+        :param _Offset: <p>偏移量，默认为0。</p>
         :type Offset: int
+        :param _ParentAppId: <p>父应用ID</p>
+        :type ParentAppId: str
+        :param _AppType: <p>应用类型</p><p>枚举值：</p><ul><li>WDL： WDL</li><li>NEXTFLOW： NEXTFLOW</li></ul>
+        :type AppType: str
         """
         self._Limit = None
         self._Offset = None
+        self._ParentAppId = None
+        self._AppType = None
 
     @property
     def Limit(self):
-        r"""返回数量，默认为20，最大值为100。
+        r"""<p>返回数量，默认为20，最大值为100。</p>
         :rtype: int
         """
         return self._Limit
@@ -2574,7 +2580,7 @@ class DescribePublicApplicationsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""偏移量，默认为0。
+        r"""<p>偏移量，默认为0。</p>
         :rtype: int
         """
         return self._Offset
@@ -2583,10 +2589,34 @@ class DescribePublicApplicationsRequest(AbstractModel):
     def Offset(self, Offset):
         self._Offset = Offset
 
+    @property
+    def ParentAppId(self):
+        r"""<p>父应用ID</p>
+        :rtype: str
+        """
+        return self._ParentAppId
+
+    @ParentAppId.setter
+    def ParentAppId(self, ParentAppId):
+        self._ParentAppId = ParentAppId
+
+    @property
+    def AppType(self):
+        r"""<p>应用类型</p><p>枚举值：</p><ul><li>WDL： WDL</li><li>NEXTFLOW： NEXTFLOW</li></ul>
+        :rtype: str
+        """
+        return self._AppType
+
+    @AppType.setter
+    def AppType(self, AppType):
+        self._AppType = AppType
+
 
     def _deserialize(self, params):
         self._Limit = params.get("Limit")
         self._Offset = params.get("Offset")
+        self._ParentAppId = params.get("ParentAppId")
+        self._AppType = params.get("AppType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2604,10 +2634,10 @@ class DescribePublicApplicationsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Applications: 公共应用。
+        :param _Applications: <p>公共应用。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Applications: list of PublicApplication
-        :param _TotalCount: 符合条件的数量。
+        :param _TotalCount: <p>符合条件的数量。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2619,7 +2649,7 @@ class DescribePublicApplicationsResponse(AbstractModel):
 
     @property
     def Applications(self):
-        r"""公共应用。
+        r"""<p>公共应用。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of PublicApplication
         """
@@ -2631,7 +2661,7 @@ class DescribePublicApplicationsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""符合条件的数量。
+        r"""<p>符合条件的数量。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """

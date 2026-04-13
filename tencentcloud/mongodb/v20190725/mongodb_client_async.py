@@ -1255,6 +1255,24 @@ class MongodbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def RestoreDBInstance(
+            self,
+            request: models.RestoreDBInstanceRequest,
+            opts: Dict = None,
+    ) -> models.RestoreDBInstanceResponse:
+        """
+        本接口(RestoreDBInstance)用于回档数据库实例到指定时间点。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "RestoreDBInstance"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.RestoreDBInstanceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def SetAccountUserPrivilege(
             self,
             request: models.SetAccountUserPrivilegeRequest,

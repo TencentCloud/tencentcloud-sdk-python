@@ -15809,6 +15809,227 @@ class RestartNodesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class RestoreCollection(AbstractModel):
+    r"""待回档collection
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OldCollection: 待回档的原collection
+        :type OldCollection: str
+        :param _NewCollection: 回档后的collection
+        :type NewCollection: str
+        """
+        self._OldCollection = None
+        self._NewCollection = None
+
+    @property
+    def OldCollection(self):
+        r"""待回档的原collection
+        :rtype: str
+        """
+        return self._OldCollection
+
+    @OldCollection.setter
+    def OldCollection(self, OldCollection):
+        self._OldCollection = OldCollection
+
+    @property
+    def NewCollection(self):
+        r"""回档后的collection
+        :rtype: str
+        """
+        return self._NewCollection
+
+    @NewCollection.setter
+    def NewCollection(self, NewCollection):
+        self._NewCollection = NewCollection
+
+
+    def _deserialize(self, params):
+        self._OldCollection = params.get("OldCollection")
+        self._NewCollection = params.get("NewCollection")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RestoreDBInstanceRequest(AbstractModel):
+    r"""RestoreDBInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>实例 ID。请登录 <a href="https://console.cloud.tencent.com/mongodb/instance">MongoDB 控制台</a>在实例列表复制实例 ID。</p>
+        :type InstanceId: str
+        :param _RestoreTime: <p>指定回档的目标时间点。该时间必须处于实例的备份保留期内。</p><p>参数格式：YYYY-MM-DD hh:mm:ss</p>
+        :type RestoreTime: str
+        :param _Databases: <p>回档的库表信息。</p>
+        :type Databases: list of RestoreDatabases
+        """
+        self._InstanceId = None
+        self._RestoreTime = None
+        self._Databases = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例 ID。请登录 <a href="https://console.cloud.tencent.com/mongodb/instance">MongoDB 控制台</a>在实例列表复制实例 ID。</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def RestoreTime(self):
+        r"""<p>指定回档的目标时间点。该时间必须处于实例的备份保留期内。</p><p>参数格式：YYYY-MM-DD hh:mm:ss</p>
+        :rtype: str
+        """
+        return self._RestoreTime
+
+    @RestoreTime.setter
+    def RestoreTime(self, RestoreTime):
+        self._RestoreTime = RestoreTime
+
+    @property
+    def Databases(self):
+        r"""<p>回档的库表信息。</p>
+        :rtype: list of RestoreDatabases
+        """
+        return self._Databases
+
+    @Databases.setter
+    def Databases(self, Databases):
+        self._Databases = Databases
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._RestoreTime = params.get("RestoreTime")
+        if params.get("Databases") is not None:
+            self._Databases = []
+            for item in params.get("Databases"):
+                obj = RestoreDatabases()
+                obj._deserialize(item)
+                self._Databases.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RestoreDBInstanceResponse(AbstractModel):
+    r"""RestoreDBInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: <p>回档任务流程 ID。</p>
+        :type FlowId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FlowId = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        r"""<p>回档任务流程 ID。</p>
+        :rtype: int
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        self._RequestId = params.get("RequestId")
+
+
+class RestoreDatabases(AbstractModel):
+    r"""库表回档到新实例，库表信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Db: DB名称。
+        :type Db: str
+        :param _Collections: 待回档的集合信息。
+        :type Collections: list of RestoreCollection
+        """
+        self._Db = None
+        self._Collections = None
+
+    @property
+    def Db(self):
+        r"""DB名称。
+        :rtype: str
+        """
+        return self._Db
+
+    @Db.setter
+    def Db(self, Db):
+        self._Db = Db
+
+    @property
+    def Collections(self):
+        r"""待回档的集合信息。
+        :rtype: list of RestoreCollection
+        """
+        return self._Collections
+
+    @Collections.setter
+    def Collections(self, Collections):
+        self._Collections = Collections
+
+
+    def _deserialize(self, params):
+        self._Db = params.get("Db")
+        if params.get("Collections") is not None:
+            self._Collections = []
+            for item in params.get("Collections"):
+                obj = RestoreCollection()
+                obj._deserialize(item)
+                self._Collections.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SecurityGroup(AbstractModel):
     r"""安全组信息
 

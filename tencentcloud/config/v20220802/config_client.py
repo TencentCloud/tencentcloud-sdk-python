@@ -72,6 +72,29 @@ class ConfigClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def AddAlarmPolicy(self, request):
+        r"""新增告警监控规则
+
+        :param request: Request instance for AddAlarmPolicy.
+        :type request: :class:`tencentcloud.config.v20220802.models.AddAlarmPolicyRequest`
+        :rtype: :class:`tencentcloud.config.v20220802.models.AddAlarmPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AddAlarmPolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.AddAlarmPolicyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def AddCompliancePack(self, request):
         r"""新建合规包
 
@@ -270,6 +293,29 @@ class ConfigClient(AbstractClient):
             body = self.call("DeleteAggregateConfigRule", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteAggregateConfigRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteAlarmPolicy(self, request):
+        r"""删除告警规则
+
+        :param request: Request instance for DeleteAlarmPolicy.
+        :type request: :class:`tencentcloud.config.v20220802.models.DeleteAlarmPolicyRequest`
+        :rtype: :class:`tencentcloud.config.v20220802.models.DeleteAlarmPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteAlarmPolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteAlarmPolicyResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -785,6 +831,29 @@ class ConfigClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ListAlarmPolicy(self, request):
+        r"""告警规则列表
+
+        :param request: Request instance for ListAlarmPolicy.
+        :type request: :class:`tencentcloud.config.v20220802.models.ListAlarmPolicyRequest`
+        :rtype: :class:`tencentcloud.config.v20220802.models.ListAlarmPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListAlarmPolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListAlarmPolicyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ListCompliancePacks(self, request):
         r"""获取合规包列表
 
@@ -1236,6 +1305,29 @@ class ConfigClient(AbstractClient):
             body = self.call("UpdateAggregateConfigRule", params, headers=headers)
             response = json.loads(body)
             model = models.UpdateAggregateConfigRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateAlarmPolicy(self, request):
+        r"""更新告警规则
+
+        :param request: Request instance for UpdateAlarmPolicy.
+        :type request: :class:`tencentcloud.config.v20220802.models.UpdateAlarmPolicyRequest`
+        :rtype: :class:`tencentcloud.config.v20220802.models.UpdateAlarmPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateAlarmPolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateAlarmPolicyResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -36555,28 +36555,26 @@ class PadTemplate(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TemplateId: 模板id。
+        :param _TemplateId: <p>模板id。</p>
         :type TemplateId: int
-        :param _TemplateName: 模板名称。
+        :param _TemplateName: <p>模板名称。</p>
         :type TemplateName: str
-        :param _Url: 垫片内容。
+        :param _Url: <p>垫片内容。</p>
         :type Url: str
-        :param _CreateTime: 模板创建时间。
+        :param _CreateTime: <p>模板创建时间。</p>
         :type CreateTime: str
-        :param _UpdateTime: 模板修改时间。
+        :param _UpdateTime: <p>模板修改时间。</p>
         :type UpdateTime: str
-        :param _Description: 模板描述。
+        :param _Description: <p>模板描述。</p>
         :type Description: str
-        :param _WaitDuration: 断流等待时间。
-取值范围：0-30000。
-单位：ms。
+        :param _WaitDuration: <p>断流等待时间。<br>取值范围：0-30000。<br>单位：ms。</p>
         :type WaitDuration: int
-        :param _MaxDuration: 最大垫片时长。
-取值范围：0 - 正无穷。
-单位：ms。
+        :param _MaxDuration: <p>最大垫片时长。<br>取值范围：0 - 正无穷。<br>单位：ms。</p>
         :type MaxDuration: int
-        :param _Type: 垫片内容类型： 1：图片，2：视频。 默认值：1。
+        :param _Type: <p>垫片内容类型： 1：图片，2：视频。 默认值：1。</p>
         :type Type: int
+        :param _TriggerCondition: <p>断流垫片触发条件</p><p>枚举值：</p><ul><li>0： 主动及异常断流</li><li>1： 异常断流</li></ul><p>默认值：0</p>
+        :type TriggerCondition: int
         """
         self._TemplateId = None
         self._TemplateName = None
@@ -36587,10 +36585,11 @@ class PadTemplate(AbstractModel):
         self._WaitDuration = None
         self._MaxDuration = None
         self._Type = None
+        self._TriggerCondition = None
 
     @property
     def TemplateId(self):
-        r"""模板id。
+        r"""<p>模板id。</p>
         :rtype: int
         """
         return self._TemplateId
@@ -36601,7 +36600,7 @@ class PadTemplate(AbstractModel):
 
     @property
     def TemplateName(self):
-        r"""模板名称。
+        r"""<p>模板名称。</p>
         :rtype: str
         """
         return self._TemplateName
@@ -36612,7 +36611,7 @@ class PadTemplate(AbstractModel):
 
     @property
     def Url(self):
-        r"""垫片内容。
+        r"""<p>垫片内容。</p>
         :rtype: str
         """
         return self._Url
@@ -36623,7 +36622,7 @@ class PadTemplate(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""模板创建时间。
+        r"""<p>模板创建时间。</p>
         :rtype: str
         """
         return self._CreateTime
@@ -36634,7 +36633,7 @@ class PadTemplate(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""模板修改时间。
+        r"""<p>模板修改时间。</p>
         :rtype: str
         """
         return self._UpdateTime
@@ -36645,7 +36644,7 @@ class PadTemplate(AbstractModel):
 
     @property
     def Description(self):
-        r"""模板描述。
+        r"""<p>模板描述。</p>
         :rtype: str
         """
         return self._Description
@@ -36656,9 +36655,7 @@ class PadTemplate(AbstractModel):
 
     @property
     def WaitDuration(self):
-        r"""断流等待时间。
-取值范围：0-30000。
-单位：ms。
+        r"""<p>断流等待时间。<br>取值范围：0-30000。<br>单位：ms。</p>
         :rtype: int
         """
         return self._WaitDuration
@@ -36669,9 +36666,7 @@ class PadTemplate(AbstractModel):
 
     @property
     def MaxDuration(self):
-        r"""最大垫片时长。
-取值范围：0 - 正无穷。
-单位：ms。
+        r"""<p>最大垫片时长。<br>取值范围：0 - 正无穷。<br>单位：ms。</p>
         :rtype: int
         """
         return self._MaxDuration
@@ -36682,7 +36677,7 @@ class PadTemplate(AbstractModel):
 
     @property
     def Type(self):
-        r"""垫片内容类型： 1：图片，2：视频。 默认值：1。
+        r"""<p>垫片内容类型： 1：图片，2：视频。 默认值：1。</p>
         :rtype: int
         """
         return self._Type
@@ -36690,6 +36685,17 @@ class PadTemplate(AbstractModel):
     @Type.setter
     def Type(self, Type):
         self._Type = Type
+
+    @property
+    def TriggerCondition(self):
+        r"""<p>断流垫片触发条件</p><p>枚举值：</p><ul><li>0： 主动及异常断流</li><li>1： 异常断流</li></ul><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._TriggerCondition
+
+    @TriggerCondition.setter
+    def TriggerCondition(self, TriggerCondition):
+        self._TriggerCondition = TriggerCondition
 
 
     def _deserialize(self, params):
@@ -36702,6 +36708,7 @@ class PadTemplate(AbstractModel):
         self._WaitDuration = params.get("WaitDuration")
         self._MaxDuration = params.get("MaxDuration")
         self._Type = params.get("Type")
+        self._TriggerCondition = params.get("TriggerCondition")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

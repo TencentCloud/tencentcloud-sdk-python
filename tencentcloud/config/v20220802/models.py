@@ -412,6 +412,192 @@ class AddAggregateConfigRuleResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class AddAlarmPolicyRequest(AbstractModel):
+    r"""AddAlarmPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 告警策略名
+        :type Name: str
+        :param _EventScope: 事件范围  1：当前账号  2：多账号
+        :type EventScope: list of int
+        :param _RiskLevel: 风险等级 1：高风险  2：中风险 3：低风险
+        :type RiskLevel: list of int
+        :param _NoticeTime: 通知时间段
+        :type NoticeTime: str
+        :param _NotificationMechanism: 通知机制
+        :type NotificationMechanism: str
+        :param _Status: 状态 1：启用 2：停用
+        :type Status: int
+        :param _NoticePeriod: 通知周期
+        :type NoticePeriod: list of int
+        :param _Description: 策略描述
+        :type Description: str
+        """
+        self._Name = None
+        self._EventScope = None
+        self._RiskLevel = None
+        self._NoticeTime = None
+        self._NotificationMechanism = None
+        self._Status = None
+        self._NoticePeriod = None
+        self._Description = None
+
+    @property
+    def Name(self):
+        r"""告警策略名
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def EventScope(self):
+        r"""事件范围  1：当前账号  2：多账号
+        :rtype: list of int
+        """
+        return self._EventScope
+
+    @EventScope.setter
+    def EventScope(self, EventScope):
+        self._EventScope = EventScope
+
+    @property
+    def RiskLevel(self):
+        r"""风险等级 1：高风险  2：中风险 3：低风险
+        :rtype: list of int
+        """
+        return self._RiskLevel
+
+    @RiskLevel.setter
+    def RiskLevel(self, RiskLevel):
+        self._RiskLevel = RiskLevel
+
+    @property
+    def NoticeTime(self):
+        r"""通知时间段
+        :rtype: str
+        """
+        return self._NoticeTime
+
+    @NoticeTime.setter
+    def NoticeTime(self, NoticeTime):
+        self._NoticeTime = NoticeTime
+
+    @property
+    def NotificationMechanism(self):
+        r"""通知机制
+        :rtype: str
+        """
+        return self._NotificationMechanism
+
+    @NotificationMechanism.setter
+    def NotificationMechanism(self, NotificationMechanism):
+        self._NotificationMechanism = NotificationMechanism
+
+    @property
+    def Status(self):
+        r"""状态 1：启用 2：停用
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def NoticePeriod(self):
+        r"""通知周期
+        :rtype: list of int
+        """
+        return self._NoticePeriod
+
+    @NoticePeriod.setter
+    def NoticePeriod(self, NoticePeriod):
+        self._NoticePeriod = NoticePeriod
+
+    @property
+    def Description(self):
+        r"""策略描述
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._EventScope = params.get("EventScope")
+        self._RiskLevel = params.get("RiskLevel")
+        self._NoticeTime = params.get("NoticeTime")
+        self._NotificationMechanism = params.get("NotificationMechanism")
+        self._Status = params.get("Status")
+        self._NoticePeriod = params.get("NoticePeriod")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AddAlarmPolicyResponse(AbstractModel):
+    r"""AddAlarmPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AlarmPolicyId: 告警策略唯一id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AlarmPolicyId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._AlarmPolicyId = None
+        self._RequestId = None
+
+    @property
+    def AlarmPolicyId(self):
+        r"""告警策略唯一id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._AlarmPolicyId
+
+    @AlarmPolicyId.setter
+    def AlarmPolicyId(self, AlarmPolicyId):
+        self._AlarmPolicyId = AlarmPolicyId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._AlarmPolicyId = params.get("AlarmPolicyId")
+        self._RequestId = params.get("RequestId")
+
+
 class AddCompliancePackRequest(AbstractModel):
     r"""AddCompliancePack请求参数结构体
 
@@ -548,31 +734,27 @@ class AddConfigRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Identifier: 规则模板标识，预设规则模板为Identifier, 自定义规则为云函数arn（region:functionName）
+        :param _Identifier: <p>规则模板标识，预设规则模板为Identifier, 自定义规则为云函数arn（region:functionName）</p>
         :type Identifier: str
-        :param _IdentifierType: 规则模板类型，SYSTEM, CUSTOMIZE
+        :param _IdentifierType: <p>规则模板类型，SYSTEM, CUSTOMIZE</p>
         :type IdentifierType: str
-        :param _RuleName: 规则名称
+        :param _RuleName: <p>规则名称</p>
         :type RuleName: str
-        :param _ResourceType: 规则支持的资源
+        :param _ResourceType: <p>规则支持的资源</p>
         :type ResourceType: list of str
-        :param _TriggerType: 触发类型，最多支持两种
+        :param _TriggerType: <p>触发类型，最多支持两种</p>
         :type TriggerType: list of TriggerType
-        :param _RiskLevel: 风险等级
-1：高风险。
-2：中风险。
-3：低风险。
+        :param _RiskLevel: <p>风险等级<br>1：高风险。<br>2：中风险。<br>3：低风险。</p>
         :type RiskLevel: int
-        :param _InputParameter: 入参
+        :param _InputParameter: <p>入参</p>
         :type InputParameter: list of InputParameter
-        :param _Description: 规则描述。长度范围0~1024字符
+        :param _Description: <p>规则描述。长度范围0~1024字符</p>
         :type Description: str
-        :param _RegionsScope: 规则评估地域范围，规则仅对指定地域中的资源生效。
-支持的地域范围config:ListResourceRegions返回的地域
+        :param _RegionsScope: <p>规则评估地域范围，规则仅对指定地域中的资源生效。<br>支持的地域范围config:ListResourceRegions返回的地域</p>
         :type RegionsScope: list of str
-        :param _TagsScope: 规则评估标签范围，规则仅对绑定指定标签的资源生效。
+        :param _TagsScope: <p>规则评估标签范围，规则仅对绑定指定标签的资源生效。</p>
         :type TagsScope: list of Tag
-        :param _ExcludeResourceIdsScope: 规则对指定资源ID无效，即不对该资源执行评估。
+        :param _ExcludeResourceIdsScope: <p>规则对指定资源ID无效，即不对该资源执行评估。</p>
         :type ExcludeResourceIdsScope: list of str
         """
         self._Identifier = None
@@ -589,7 +771,7 @@ class AddConfigRuleRequest(AbstractModel):
 
     @property
     def Identifier(self):
-        r"""规则模板标识，预设规则模板为Identifier, 自定义规则为云函数arn（region:functionName）
+        r"""<p>规则模板标识，预设规则模板为Identifier, 自定义规则为云函数arn（region:functionName）</p>
         :rtype: str
         """
         return self._Identifier
@@ -600,7 +782,7 @@ class AddConfigRuleRequest(AbstractModel):
 
     @property
     def IdentifierType(self):
-        r"""规则模板类型，SYSTEM, CUSTOMIZE
+        r"""<p>规则模板类型，SYSTEM, CUSTOMIZE</p>
         :rtype: str
         """
         return self._IdentifierType
@@ -611,7 +793,7 @@ class AddConfigRuleRequest(AbstractModel):
 
     @property
     def RuleName(self):
-        r"""规则名称
+        r"""<p>规则名称</p>
         :rtype: str
         """
         return self._RuleName
@@ -622,7 +804,7 @@ class AddConfigRuleRequest(AbstractModel):
 
     @property
     def ResourceType(self):
-        r"""规则支持的资源
+        r"""<p>规则支持的资源</p>
         :rtype: list of str
         """
         return self._ResourceType
@@ -633,7 +815,7 @@ class AddConfigRuleRequest(AbstractModel):
 
     @property
     def TriggerType(self):
-        r"""触发类型，最多支持两种
+        r"""<p>触发类型，最多支持两种</p>
         :rtype: list of TriggerType
         """
         return self._TriggerType
@@ -644,10 +826,7 @@ class AddConfigRuleRequest(AbstractModel):
 
     @property
     def RiskLevel(self):
-        r"""风险等级
-1：高风险。
-2：中风险。
-3：低风险。
+        r"""<p>风险等级<br>1：高风险。<br>2：中风险。<br>3：低风险。</p>
         :rtype: int
         """
         return self._RiskLevel
@@ -658,7 +837,7 @@ class AddConfigRuleRequest(AbstractModel):
 
     @property
     def InputParameter(self):
-        r"""入参
+        r"""<p>入参</p>
         :rtype: list of InputParameter
         """
         return self._InputParameter
@@ -669,7 +848,7 @@ class AddConfigRuleRequest(AbstractModel):
 
     @property
     def Description(self):
-        r"""规则描述。长度范围0~1024字符
+        r"""<p>规则描述。长度范围0~1024字符</p>
         :rtype: str
         """
         return self._Description
@@ -680,8 +859,7 @@ class AddConfigRuleRequest(AbstractModel):
 
     @property
     def RegionsScope(self):
-        r"""规则评估地域范围，规则仅对指定地域中的资源生效。
-支持的地域范围config:ListResourceRegions返回的地域
+        r"""<p>规则评估地域范围，规则仅对指定地域中的资源生效。<br>支持的地域范围config:ListResourceRegions返回的地域</p>
         :rtype: list of str
         """
         return self._RegionsScope
@@ -692,7 +870,7 @@ class AddConfigRuleRequest(AbstractModel):
 
     @property
     def TagsScope(self):
-        r"""规则评估标签范围，规则仅对绑定指定标签的资源生效。
+        r"""<p>规则评估标签范围，规则仅对绑定指定标签的资源生效。</p>
         :rtype: list of Tag
         """
         return self._TagsScope
@@ -703,7 +881,7 @@ class AddConfigRuleRequest(AbstractModel):
 
     @property
     def ExcludeResourceIdsScope(self):
-        r"""规则对指定资源ID无效，即不对该资源执行评估。
+        r"""<p>规则对指定资源ID无效，即不对该资源执行评估。</p>
         :rtype: list of str
         """
         return self._ExcludeResourceIdsScope
@@ -757,10 +935,24 @@ class AddConfigRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _RuleId: <p>规则ID</p>
+        :type RuleId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._RuleId = None
         self._RequestId = None
+
+    @property
+    def RuleId(self):
+        r"""<p>规则ID</p>
+        :rtype: str
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
 
     @property
     def RequestId(self):
@@ -775,6 +967,7 @@ class AddConfigRuleResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RuleId = params.get("RuleId")
         self._RequestId = params.get("RequestId")
 
 
@@ -1443,6 +1636,179 @@ class AggregatorAccount(AbstractModel):
     def _deserialize(self, params):
         self._MemberUin = params.get("MemberUin")
         self._MemberName = params.get("MemberName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AlarmPolicyRsp(AbstractModel):
+    r"""告警策略列表单个记录结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AlarmPolicyId: 告警策略唯一标识id
+        :type AlarmPolicyId: int
+        :param _Name: 策略名称
+        :type Name: str
+        :param _Type: 事件类型
+        :type Type: int
+        :param _EventScope: 1：当前账号  2：多账号
+        :type EventScope: list of int
+        :param _RiskLevel: 1：高风险  2：中风险 3：低风险
+        :type RiskLevel: list of int
+        :param _NoticePeriod: 通知周期，1-7数字分别代表周一至周日
+        :type NoticePeriod: list of int
+        :param _NoticeTime: 通知时间段
+        :type NoticeTime: str
+        :param _NotificationMechanism: 通知机制
+        :type NotificationMechanism: str
+        :param _Status: 策略状态 1：启动  2：停止
+        :type Status: int
+        :param _Description: 策略描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        """
+        self._AlarmPolicyId = None
+        self._Name = None
+        self._Type = None
+        self._EventScope = None
+        self._RiskLevel = None
+        self._NoticePeriod = None
+        self._NoticeTime = None
+        self._NotificationMechanism = None
+        self._Status = None
+        self._Description = None
+
+    @property
+    def AlarmPolicyId(self):
+        r"""告警策略唯一标识id
+        :rtype: int
+        """
+        return self._AlarmPolicyId
+
+    @AlarmPolicyId.setter
+    def AlarmPolicyId(self, AlarmPolicyId):
+        self._AlarmPolicyId = AlarmPolicyId
+
+    @property
+    def Name(self):
+        r"""策略名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        r"""事件类型
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def EventScope(self):
+        r"""1：当前账号  2：多账号
+        :rtype: list of int
+        """
+        return self._EventScope
+
+    @EventScope.setter
+    def EventScope(self, EventScope):
+        self._EventScope = EventScope
+
+    @property
+    def RiskLevel(self):
+        r"""1：高风险  2：中风险 3：低风险
+        :rtype: list of int
+        """
+        return self._RiskLevel
+
+    @RiskLevel.setter
+    def RiskLevel(self, RiskLevel):
+        self._RiskLevel = RiskLevel
+
+    @property
+    def NoticePeriod(self):
+        r"""通知周期，1-7数字分别代表周一至周日
+        :rtype: list of int
+        """
+        return self._NoticePeriod
+
+    @NoticePeriod.setter
+    def NoticePeriod(self, NoticePeriod):
+        self._NoticePeriod = NoticePeriod
+
+    @property
+    def NoticeTime(self):
+        r"""通知时间段
+        :rtype: str
+        """
+        return self._NoticeTime
+
+    @NoticeTime.setter
+    def NoticeTime(self, NoticeTime):
+        self._NoticeTime = NoticeTime
+
+    @property
+    def NotificationMechanism(self):
+        r"""通知机制
+        :rtype: str
+        """
+        return self._NotificationMechanism
+
+    @NotificationMechanism.setter
+    def NotificationMechanism(self, NotificationMechanism):
+        self._NotificationMechanism = NotificationMechanism
+
+    @property
+    def Status(self):
+        r"""策略状态 1：启动  2：停止
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Description(self):
+        r"""策略描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._AlarmPolicyId = params.get("AlarmPolicyId")
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        self._EventScope = params.get("EventScope")
+        self._RiskLevel = params.get("RiskLevel")
+        self._NoticePeriod = params.get("NoticePeriod")
+        self._NoticeTime = params.get("NoticeTime")
+        self._NotificationMechanism = params.get("NotificationMechanism")
+        self._Status = params.get("Status")
+        self._Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3541,6 +3907,70 @@ class DeleteAggregateConfigRuleRequest(AbstractModel):
 
 class DeleteAggregateConfigRuleResponse(AbstractModel):
     r"""DeleteAggregateConfigRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteAlarmPolicyRequest(AbstractModel):
+    r"""DeleteAlarmPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AlarmPolicyId: 告警策略id
+        :type AlarmPolicyId: int
+        """
+        self._AlarmPolicyId = None
+
+    @property
+    def AlarmPolicyId(self):
+        r"""告警策略id
+        :rtype: int
+        """
+        return self._AlarmPolicyId
+
+    @AlarmPolicyId.setter
+    def AlarmPolicyId(self, AlarmPolicyId):
+        self._AlarmPolicyId = AlarmPolicyId
+
+
+    def _deserialize(self, params):
+        self._AlarmPolicyId = params.get("AlarmPolicyId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteAlarmPolicyResponse(AbstractModel):
+    r"""DeleteAlarmPolicy返回参数结构体
 
     """
 
@@ -7355,6 +7785,105 @@ class ListAggregatorsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ListAlarmPolicyRequest(AbstractModel):
+    r"""ListAlarmPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Offset: 页码
+        :type Offset: int
+        """
+        self._Offset = None
+
+    @property
+    def Offset(self):
+        r"""页码
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListAlarmPolicyResponse(AbstractModel):
+    r"""ListAlarmPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: 返回记录的数量
+        :type Total: int
+        :param _AlarmPolicyList: 告警策略返回值
+        :type AlarmPolicyList: list of AlarmPolicyRsp
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._AlarmPolicyList = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        r"""返回记录的数量
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def AlarmPolicyList(self):
+        r"""告警策略返回值
+        :rtype: list of AlarmPolicyRsp
+        """
+        return self._AlarmPolicyList
+
+    @AlarmPolicyList.setter
+    def AlarmPolicyList(self, AlarmPolicyList):
+        self._AlarmPolicyList = AlarmPolicyList
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("AlarmPolicyList") is not None:
+            self._AlarmPolicyList = []
+            for item in params.get("AlarmPolicyList"):
+                obj = AlarmPolicyRsp()
+                obj._deserialize(item)
+                self._AlarmPolicyList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class ListCompliancePacksRequest(AbstractModel):
     r"""ListCompliancePacks请求参数结构体
 
@@ -10769,6 +11298,190 @@ class UpdateAggregateConfigRuleRequest(AbstractModel):
 
 class UpdateAggregateConfigRuleResponse(AbstractModel):
     r"""UpdateAggregateConfigRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateAlarmPolicyRequest(AbstractModel):
+    r"""UpdateAlarmPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AlarmPolicyId: 告警策略id
+        :type AlarmPolicyId: int
+        :param _Name: 告警策略名
+        :type Name: str
+        :param _EventScope: 事件范围  1：当前账号  2：多账号
+        :type EventScope: list of int
+        :param _RiskLevel: 风险等级 1：高风险  2：中风险 3：低风险
+        :type RiskLevel: list of int
+        :param _NoticeTime: 通知时间段
+        :type NoticeTime: str
+        :param _NotificationMechanism: 通知机制
+        :type NotificationMechanism: str
+        :param _Status: 状态 1：启用 2：停用
+        :type Status: int
+        :param _NoticePeriod: 通知周期,1-7数字分别代表周一到周日
+        :type NoticePeriod: list of int
+        :param _Description: 策略描述
+        :type Description: str
+        """
+        self._AlarmPolicyId = None
+        self._Name = None
+        self._EventScope = None
+        self._RiskLevel = None
+        self._NoticeTime = None
+        self._NotificationMechanism = None
+        self._Status = None
+        self._NoticePeriod = None
+        self._Description = None
+
+    @property
+    def AlarmPolicyId(self):
+        r"""告警策略id
+        :rtype: int
+        """
+        return self._AlarmPolicyId
+
+    @AlarmPolicyId.setter
+    def AlarmPolicyId(self, AlarmPolicyId):
+        self._AlarmPolicyId = AlarmPolicyId
+
+    @property
+    def Name(self):
+        r"""告警策略名
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def EventScope(self):
+        r"""事件范围  1：当前账号  2：多账号
+        :rtype: list of int
+        """
+        return self._EventScope
+
+    @EventScope.setter
+    def EventScope(self, EventScope):
+        self._EventScope = EventScope
+
+    @property
+    def RiskLevel(self):
+        r"""风险等级 1：高风险  2：中风险 3：低风险
+        :rtype: list of int
+        """
+        return self._RiskLevel
+
+    @RiskLevel.setter
+    def RiskLevel(self, RiskLevel):
+        self._RiskLevel = RiskLevel
+
+    @property
+    def NoticeTime(self):
+        r"""通知时间段
+        :rtype: str
+        """
+        return self._NoticeTime
+
+    @NoticeTime.setter
+    def NoticeTime(self, NoticeTime):
+        self._NoticeTime = NoticeTime
+
+    @property
+    def NotificationMechanism(self):
+        r"""通知机制
+        :rtype: str
+        """
+        return self._NotificationMechanism
+
+    @NotificationMechanism.setter
+    def NotificationMechanism(self, NotificationMechanism):
+        self._NotificationMechanism = NotificationMechanism
+
+    @property
+    def Status(self):
+        r"""状态 1：启用 2：停用
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def NoticePeriod(self):
+        r"""通知周期,1-7数字分别代表周一到周日
+        :rtype: list of int
+        """
+        return self._NoticePeriod
+
+    @NoticePeriod.setter
+    def NoticePeriod(self, NoticePeriod):
+        self._NoticePeriod = NoticePeriod
+
+    @property
+    def Description(self):
+        r"""策略描述
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._AlarmPolicyId = params.get("AlarmPolicyId")
+        self._Name = params.get("Name")
+        self._EventScope = params.get("EventScope")
+        self._RiskLevel = params.get("RiskLevel")
+        self._NoticeTime = params.get("NoticeTime")
+        self._NotificationMechanism = params.get("NotificationMechanism")
+        self._Status = params.get("Status")
+        self._NoticePeriod = params.get("NoticePeriod")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateAlarmPolicyResponse(AbstractModel):
+    r"""UpdateAlarmPolicy返回参数结构体
 
     """
 

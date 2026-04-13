@@ -1963,118 +1963,95 @@ class CreateModelServiceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ServiceGroupId: 新增版本时需要填写
+        :param _ServiceGroupId: <p>新增版本时需要填写</p>
         :type ServiceGroupId: str
-        :param _ServiceGroupName: 不超过60个字，仅支持英文、数字、下划线"_"、短横"-"，只能以英文、数字开头
+        :param _ServiceGroupName: <p>不超过60个字，仅支持英文、数字、下划线&quot;_&quot;、短横&quot;-&quot;，只能以英文、数字开头</p>
         :type ServiceGroupName: str
-        :param _ServiceDescription: 模型服务的描述
+        :param _ServiceDescription: <p>模型服务的描述</p>
         :type ServiceDescription: str
-        :param _ChargeType: 付费模式,有 PREPAID （包年包月）和 POSTPAID_BY_HOUR（按量付费）
+        :param _ChargeType: <p>付费模式,有 PREPAID （包年包月）和 POSTPAID_BY_HOUR（按量付费）</p>
         :type ChargeType: str
-        :param _ResourceGroupId: 预付费模式下所属的资源组id，同服务组下唯一
+        :param _ResourceGroupId: <p>预付费模式下所属的资源组id，同服务组下唯一</p>
         :type ResourceGroupId: str
-        :param _ModelInfo: 模型信息，需要挂载模型时填写
+        :param _ModelInfo: <p>模型信息，需要挂载模型时填写</p>
         :type ModelInfo: :class:`tencentcloud.tione.v20211111.models.ModelInfo`
-        :param _ImageInfo: 镜像信息，配置服务运行所需的镜像地址等信息
+        :param _ImageInfo: <p>镜像信息，配置服务运行所需的镜像地址等信息</p>
         :type ImageInfo: :class:`tencentcloud.tione.v20211111.models.ImageInfo`
-        :param _Env: 环境变量，可选参数，用于配置容器中的环境变量
+        :param _Env: <p>环境变量，可选参数，用于配置容器中的环境变量</p>
         :type Env: list of EnvVar
-        :param _Resources: 资源描述，指定包年包月模式下的cpu,mem,gpu等信息，后付费无需填写
+        :param _Resources: <p>资源描述，指定包年包月模式下的cpu,mem,gpu等信息，后付费无需填写</p>
         :type Resources: :class:`tencentcloud.tione.v20211111.models.ResourceInfo`
-        :param _InstanceType: 使用DescribeBillingSpecs接口返回的规格列表中的值，或者参考实例列表:
-TI.S.MEDIUM.POST	2C4G
-TI.S.LARGE.POST	4C8G
-TI.S.2XLARGE16.POST	8C16G
-TI.S.2XLARGE32.POST	8C32G
-TI.S.4XLARGE32.POST	16C32G
-TI.S.4XLARGE64.POST	16C64G
-TI.S.6XLARGE48.POST	24C48G
-TI.S.6XLARGE96.POST	24C96G
-TI.S.8XLARGE64.POST	32C64G
-TI.S.8XLARGE128.POST 32C128G
-TI.GN7.LARGE20.POST	4C20G T4*1/4
-TI.GN7.2XLARGE40.POST	10C40G T4*1/2
-TI.GN7.2XLARGE32.POST	8C32G T4*1
-TI.GN7.5XLARGE80.POST	20C80G T4*1
-TI.GN7.8XLARGE128.POST	32C128G T4*1
-TI.GN7.10XLARGE160.POST	40C160G T4*2
-TI.GN7.20XLARGE320.POST	80C320G T4*4
+        :param _InstanceType: <p>使用DescribeBillingSpecs接口返回的规格列表中的值，或者参考实例列表:<br>TI.S.MEDIUM.POST    2C4G<br>TI.S.LARGE.POST    4C8G<br>TI.S.2XLARGE16.POST    8C16G<br>TI.S.2XLARGE32.POST    8C32G<br>TI.S.4XLARGE32.POST    16C32G<br>TI.S.4XLARGE64.POST    16C64G<br>TI.S.6XLARGE48.POST    24C48G<br>TI.S.6XLARGE96.POST    24C96G<br>TI.S.8XLARGE64.POST    32C64G<br>TI.S.8XLARGE128.POST 32C128G<br>TI.GN7.LARGE20.POST    4C20G T4<em>1/4<br>TI.GN7.2XLARGE40.POST    10C40G T4</em>1/2<br>TI.GN7.2XLARGE32.POST    8C32G T4<em>1<br>TI.GN7.5XLARGE80.POST    20C80G T4</em>1<br>TI.GN7.8XLARGE128.POST    32C128G T4<em>1<br>TI.GN7.10XLARGE160.POST    40C160G T4</em>2<br>TI.GN7.20XLARGE320.POST    80C320G T4*4</p>
         :type InstanceType: str
-        :param _ScaleMode: 扩缩容类型 支持：自动 - "AUTO", 手动 - "MANUAL",默认为MANUAL
+        :param _ScaleMode: <p>扩缩容类型 支持：自动 - &quot;AUTO&quot;, 手动 - &quot;MANUAL&quot;,默认为MANUAL</p>
         :type ScaleMode: str
-        :param _Replicas: 实例数量, 不同计费模式和调节模式下对应关系如下
-PREPAID 和 POSTPAID_BY_HOUR:
-手动调节模式下对应 实例数量
-自动调节模式下对应 基于时间的默认策略的实例数量
-HYBRID_PAID:
-后付费实例手动调节模式下对应 实例数量
-后付费实例自动调节模式下对应 时间策略的默认策略的实例数量
+        :param _Replicas: <p>实例数量, 不同计费模式和调节模式下对应关系如下<br>PREPAID 和 POSTPAID_BY_HOUR:<br>手动调节模式下对应 实例数量<br>自动调节模式下对应 基于时间的默认策略的实例数量<br>HYBRID_PAID:<br>后付费实例手动调节模式下对应 实例数量<br>后付费实例自动调节模式下对应 时间策略的默认策略的实例数量</p>
         :type Replicas: int
-        :param _HorizontalPodAutoscaler: 自动伸缩信息
+        :param _HorizontalPodAutoscaler: <p>自动伸缩信息</p>
         :type HorizontalPodAutoscaler: :class:`tencentcloud.tione.v20211111.models.HorizontalPodAutoscaler`
-        :param _LogEnable: 是否开启日志投递，开启后需填写配置投递到指定cls
+        :param _LogEnable: <p>是否开启日志投递，开启后需填写配置投递到指定cls</p>
         :type LogEnable: bool
-        :param _LogConfig: 日志配置，需要投递服务日志到指定cls时填写
+        :param _LogConfig: <p>日志配置，需要投递服务日志到指定cls时填写</p>
         :type LogConfig: :class:`tencentcloud.tione.v20211111.models.LogConfig`
-        :param _AuthorizationEnable: 是否开启接口鉴权，开启后自动生成token信息，访问需要token鉴权
+        :param _AuthorizationEnable: <p>是否开启接口鉴权，开启后自动生成token信息，访问需要token鉴权</p>
         :type AuthorizationEnable: bool
-        :param _Tags: 腾讯云标签
+        :param _Tags: <p>腾讯云标签</p>
         :type Tags: list of Tag
-        :param _NewVersion: 是否新增版本
+        :param _NewVersion: <p>是否新增版本</p>
         :type NewVersion: bool
-        :param _CronScaleJobs: 定时任务配置，使用定时策略时填写
+        :param _CronScaleJobs: <p>定时任务配置，使用定时策略时填写</p>
         :type CronScaleJobs: list of CronScaleJob
-        :param _ScaleStrategy: 自动伸缩策略配置 HPA : 通过HPA进行弹性伸缩 CRON 通过定时任务进行伸缩
+        :param _ScaleStrategy: <p>自动伸缩策略配置 HPA : 通过HPA进行弹性伸缩 CRON 通过定时任务进行伸缩</p>
         :type ScaleStrategy: str
-        :param _HybridBillingPrepaidReplicas: 计费模式[HYBRID_PAID]时生效, 用于标识混合计费模式下的预付费实例数
+        :param _HybridBillingPrepaidReplicas: <p>计费模式[HYBRID_PAID]时生效, 用于标识混合计费模式下的预付费实例数</p>
         :type HybridBillingPrepaidReplicas: int
-        :param _CreateSource: [AUTO_ML 自动学习，自动学习正式发布 AUTO_ML_FORMAL, DEFAULT 默认]
+        :param _CreateSource: <p>[AUTO_ML 自动学习，自动学习正式发布 AUTO_ML_FORMAL, DEFAULT 默认]</p>
         :type CreateSource: str
-        :param _ModelHotUpdateEnable: 是否开启模型的热更新。默认不开启
+        :param _ModelHotUpdateEnable: <p>是否开启模型的热更新。默认不开启</p>
         :type ModelHotUpdateEnable: bool
-        :param _ScheduledAction: 定时停止配置
+        :param _ScheduledAction: <p>定时停止配置</p>
         :type ScheduledAction: :class:`tencentcloud.tione.v20211111.models.ScheduledAction`
-        :param _VolumeMount: 挂载配置，目前只支持CFS
+        :param _VolumeMount: <p>挂载配置，目前只支持CFS</p>
         :type VolumeMount: :class:`tencentcloud.tione.v20211111.models.VolumeMount`
-        :param _ServiceLimit: 服务限速限流相关配置
+        :param _ServiceLimit: <p>服务限速限流相关配置</p>
         :type ServiceLimit: :class:`tencentcloud.tione.v20211111.models.ServiceLimit`
-        :param _CallbackUrl: 回调地址，用于回调创建服务状态信息，回调格式&内容详情见：[TI-ONE 接口回调说明](https://cloud.tencent.com/document/product/851/84292)
+        :param _CallbackUrl: <p>回调地址，用于回调创建服务状态信息，回调格式&amp;内容详情见：<a href="https://cloud.tencent.com/document/product/851/84292">TI-ONE 接口回调说明</a></p>
         :type CallbackUrl: str
-        :param _ModelTurboEnable: 是否开启模型的加速, 仅对StableDiffusion(动态加速)格式的模型有效。
+        :param _ModelTurboEnable: <p>是否开启模型的加速, 仅对StableDiffusion(动态加速)格式的模型有效。</p>
         :type ModelTurboEnable: bool
-        :param _ServiceCategory: 服务分类
+        :param _ServiceCategory: <p>服务分类</p>
         :type ServiceCategory: str
-        :param _Command: 服务的启动命令，如遇特殊字符导致配置失败，可使用CommandBase64参数
+        :param _Command: <p>服务的启动命令，如遇特殊字符导致配置失败，可使用CommandBase64参数</p>
         :type Command: str
-        :param _ServiceEIP: 是否开启TIONE内网访问外部，此功能仅支持后付费机型与从TIONE平台购买的预付费机型；使用从CVM选择资源组时此配置不生效。
+        :param _ServiceEIP: <p>是否开启TIONE内网访问外部，此功能仅支持后付费机型与从TIONE平台购买的预付费机型；使用从CVM选择资源组时此配置不生效。</p>
         :type ServiceEIP: :class:`tencentcloud.tione.v20211111.models.ServiceEIP`
-        :param _CommandBase64: 服务的启动命令，以base64格式进行输入，与Command同时配置时，仅当前参数生效
+        :param _CommandBase64: <p>服务的启动命令，以base64格式进行输入，与Command同时配置时，仅当前参数生效</p>
         :type CommandBase64: str
-        :param _ServicePort: 服务端口，仅在非内置镜像时生效，默认8501。不支持输入8501-8510,6006,9092
+        :param _ServicePort: <p>服务端口，仅在非内置镜像时生效，默认8501。不支持输入8501-8510,6006,9092</p>
         :type ServicePort: int
-        :param _DeployType: 服务的部署类型 [STANDARD 标准部署，DIST 分布式多机部署] 默认STANDARD
+        :param _DeployType: <p>服务的部署类型 [标准部署，分布式多机部署，] 默认STANDARD</p><p>枚举值：</p><ul><li>STANDARD： 标准部署</li><li>DIST： 多机分布式部署</li><li>ROLE_SET： 多角色部署</li></ul>
         :type DeployType: str
-        :param _InstancePerReplicas: 单副本下的实例数，仅在部署类型为DIST时生效，默认1
+        :param _InstancePerReplicas: <p>单副本下的实例数，仅在部署类型为DIST时生效，默认1</p>
         :type InstancePerReplicas: int
-        :param _TerminationGracePeriodSeconds: 服务的优雅退出时限。单位为秒，默认值为30，最小为1
+        :param _TerminationGracePeriodSeconds: <p>服务的优雅退出时限。单位为秒，默认值为30，最小为1</p>
         :type TerminationGracePeriodSeconds: int
-        :param _PreStopCommand: 服务实例停止前执行的命令，执行完毕或执行时间超过优雅退出时限后实例结束
+        :param _PreStopCommand: <p>服务实例停止前执行的命令，执行完毕或执行时间超过优雅退出时限后实例结束</p>
         :type PreStopCommand: list of str
-        :param _GrpcEnable: 是否启用 grpc 端口
+        :param _GrpcEnable: <p>是否启用 grpc 端口</p>
         :type GrpcEnable: bool
-        :param _HealthProbe: 健康探针
+        :param _HealthProbe: <p>健康探针</p>
         :type HealthProbe: :class:`tencentcloud.tione.v20211111.models.HealthProbe`
-        :param _RollingUpdate: 滚动更新策略
+        :param _RollingUpdate: <p>滚动更新策略</p>
         :type RollingUpdate: :class:`tencentcloud.tione.v20211111.models.RollingUpdate`
-        :param _Sidecar: sidecar配置
+        :param _Sidecar: <p>sidecar配置</p>
         :type Sidecar: :class:`tencentcloud.tione.v20211111.models.SidecarSpec`
-        :param _VolumeMounts: 数据盘批量挂载配置，当前仅支持CFS，仅针对“模型来源-腾讯云存储、模型来源-腾讯云容器镜像、模型来源-资源组、模型来源-数据源”。
+        :param _VolumeMounts: <p>数据盘批量挂载配置，当前仅支持CFS，仅针对“模型来源-腾讯云存储、模型来源-腾讯云容器镜像、模型来源-资源组、模型来源-数据源”。</p>
         :type VolumeMounts: list of VolumeMount
-        :param _SchedulingStrategy: 调度策略 [binpack] 优先占满整机，尽量避免碎卡（默认值）[spread] 优先分散在各个节点，确保服务高可用
+        :param _SchedulingStrategy: <p>调度策略 [binpack] 优先占满整机，尽量避免碎卡（默认值）[spread] 优先分散在各个节点，确保服务高可用</p>
         :type SchedulingStrategy: str
-        :param _GatewayLogConfig: 网关日志投递相关配置
+        :param _GatewayLogConfig: <p>网关日志投递相关配置</p>
         :type GatewayLogConfig: :class:`tencentcloud.tione.v20211111.models.LogConfig`
-        :param _GatewayConfig: 网关相关配置
+        :param _GatewayConfig: <p>网关相关配置</p>
         :type GatewayConfig: :class:`tencentcloud.tione.v20211111.models.GatewayConfig`
         """
         self._ServiceGroupId = None
@@ -2125,7 +2102,7 @@ HYBRID_PAID:
 
     @property
     def ServiceGroupId(self):
-        r"""新增版本时需要填写
+        r"""<p>新增版本时需要填写</p>
         :rtype: str
         """
         return self._ServiceGroupId
@@ -2136,7 +2113,7 @@ HYBRID_PAID:
 
     @property
     def ServiceGroupName(self):
-        r"""不超过60个字，仅支持英文、数字、下划线"_"、短横"-"，只能以英文、数字开头
+        r"""<p>不超过60个字，仅支持英文、数字、下划线&quot;_&quot;、短横&quot;-&quot;，只能以英文、数字开头</p>
         :rtype: str
         """
         return self._ServiceGroupName
@@ -2147,7 +2124,7 @@ HYBRID_PAID:
 
     @property
     def ServiceDescription(self):
-        r"""模型服务的描述
+        r"""<p>模型服务的描述</p>
         :rtype: str
         """
         return self._ServiceDescription
@@ -2158,7 +2135,7 @@ HYBRID_PAID:
 
     @property
     def ChargeType(self):
-        r"""付费模式,有 PREPAID （包年包月）和 POSTPAID_BY_HOUR（按量付费）
+        r"""<p>付费模式,有 PREPAID （包年包月）和 POSTPAID_BY_HOUR（按量付费）</p>
         :rtype: str
         """
         return self._ChargeType
@@ -2169,7 +2146,7 @@ HYBRID_PAID:
 
     @property
     def ResourceGroupId(self):
-        r"""预付费模式下所属的资源组id，同服务组下唯一
+        r"""<p>预付费模式下所属的资源组id，同服务组下唯一</p>
         :rtype: str
         """
         return self._ResourceGroupId
@@ -2180,7 +2157,7 @@ HYBRID_PAID:
 
     @property
     def ModelInfo(self):
-        r"""模型信息，需要挂载模型时填写
+        r"""<p>模型信息，需要挂载模型时填写</p>
         :rtype: :class:`tencentcloud.tione.v20211111.models.ModelInfo`
         """
         return self._ModelInfo
@@ -2191,7 +2168,7 @@ HYBRID_PAID:
 
     @property
     def ImageInfo(self):
-        r"""镜像信息，配置服务运行所需的镜像地址等信息
+        r"""<p>镜像信息，配置服务运行所需的镜像地址等信息</p>
         :rtype: :class:`tencentcloud.tione.v20211111.models.ImageInfo`
         """
         return self._ImageInfo
@@ -2202,7 +2179,7 @@ HYBRID_PAID:
 
     @property
     def Env(self):
-        r"""环境变量，可选参数，用于配置容器中的环境变量
+        r"""<p>环境变量，可选参数，用于配置容器中的环境变量</p>
         :rtype: list of EnvVar
         """
         return self._Env
@@ -2213,7 +2190,7 @@ HYBRID_PAID:
 
     @property
     def Resources(self):
-        r"""资源描述，指定包年包月模式下的cpu,mem,gpu等信息，后付费无需填写
+        r"""<p>资源描述，指定包年包月模式下的cpu,mem,gpu等信息，后付费无需填写</p>
         :rtype: :class:`tencentcloud.tione.v20211111.models.ResourceInfo`
         """
         return self._Resources
@@ -2224,24 +2201,7 @@ HYBRID_PAID:
 
     @property
     def InstanceType(self):
-        r"""使用DescribeBillingSpecs接口返回的规格列表中的值，或者参考实例列表:
-TI.S.MEDIUM.POST	2C4G
-TI.S.LARGE.POST	4C8G
-TI.S.2XLARGE16.POST	8C16G
-TI.S.2XLARGE32.POST	8C32G
-TI.S.4XLARGE32.POST	16C32G
-TI.S.4XLARGE64.POST	16C64G
-TI.S.6XLARGE48.POST	24C48G
-TI.S.6XLARGE96.POST	24C96G
-TI.S.8XLARGE64.POST	32C64G
-TI.S.8XLARGE128.POST 32C128G
-TI.GN7.LARGE20.POST	4C20G T4*1/4
-TI.GN7.2XLARGE40.POST	10C40G T4*1/2
-TI.GN7.2XLARGE32.POST	8C32G T4*1
-TI.GN7.5XLARGE80.POST	20C80G T4*1
-TI.GN7.8XLARGE128.POST	32C128G T4*1
-TI.GN7.10XLARGE160.POST	40C160G T4*2
-TI.GN7.20XLARGE320.POST	80C320G T4*4
+        r"""<p>使用DescribeBillingSpecs接口返回的规格列表中的值，或者参考实例列表:<br>TI.S.MEDIUM.POST    2C4G<br>TI.S.LARGE.POST    4C8G<br>TI.S.2XLARGE16.POST    8C16G<br>TI.S.2XLARGE32.POST    8C32G<br>TI.S.4XLARGE32.POST    16C32G<br>TI.S.4XLARGE64.POST    16C64G<br>TI.S.6XLARGE48.POST    24C48G<br>TI.S.6XLARGE96.POST    24C96G<br>TI.S.8XLARGE64.POST    32C64G<br>TI.S.8XLARGE128.POST 32C128G<br>TI.GN7.LARGE20.POST    4C20G T4<em>1/4<br>TI.GN7.2XLARGE40.POST    10C40G T4</em>1/2<br>TI.GN7.2XLARGE32.POST    8C32G T4<em>1<br>TI.GN7.5XLARGE80.POST    20C80G T4</em>1<br>TI.GN7.8XLARGE128.POST    32C128G T4<em>1<br>TI.GN7.10XLARGE160.POST    40C160G T4</em>2<br>TI.GN7.20XLARGE320.POST    80C320G T4*4</p>
         :rtype: str
         """
         return self._InstanceType
@@ -2252,7 +2212,7 @@ TI.GN7.20XLARGE320.POST	80C320G T4*4
 
     @property
     def ScaleMode(self):
-        r"""扩缩容类型 支持：自动 - "AUTO", 手动 - "MANUAL",默认为MANUAL
+        r"""<p>扩缩容类型 支持：自动 - &quot;AUTO&quot;, 手动 - &quot;MANUAL&quot;,默认为MANUAL</p>
         :rtype: str
         """
         return self._ScaleMode
@@ -2263,13 +2223,7 @@ TI.GN7.20XLARGE320.POST	80C320G T4*4
 
     @property
     def Replicas(self):
-        r"""实例数量, 不同计费模式和调节模式下对应关系如下
-PREPAID 和 POSTPAID_BY_HOUR:
-手动调节模式下对应 实例数量
-自动调节模式下对应 基于时间的默认策略的实例数量
-HYBRID_PAID:
-后付费实例手动调节模式下对应 实例数量
-后付费实例自动调节模式下对应 时间策略的默认策略的实例数量
+        r"""<p>实例数量, 不同计费模式和调节模式下对应关系如下<br>PREPAID 和 POSTPAID_BY_HOUR:<br>手动调节模式下对应 实例数量<br>自动调节模式下对应 基于时间的默认策略的实例数量<br>HYBRID_PAID:<br>后付费实例手动调节模式下对应 实例数量<br>后付费实例自动调节模式下对应 时间策略的默认策略的实例数量</p>
         :rtype: int
         """
         return self._Replicas
@@ -2280,7 +2234,7 @@ HYBRID_PAID:
 
     @property
     def HorizontalPodAutoscaler(self):
-        r"""自动伸缩信息
+        r"""<p>自动伸缩信息</p>
         :rtype: :class:`tencentcloud.tione.v20211111.models.HorizontalPodAutoscaler`
         """
         return self._HorizontalPodAutoscaler
@@ -2291,7 +2245,7 @@ HYBRID_PAID:
 
     @property
     def LogEnable(self):
-        r"""是否开启日志投递，开启后需填写配置投递到指定cls
+        r"""<p>是否开启日志投递，开启后需填写配置投递到指定cls</p>
         :rtype: bool
         """
         return self._LogEnable
@@ -2302,7 +2256,7 @@ HYBRID_PAID:
 
     @property
     def LogConfig(self):
-        r"""日志配置，需要投递服务日志到指定cls时填写
+        r"""<p>日志配置，需要投递服务日志到指定cls时填写</p>
         :rtype: :class:`tencentcloud.tione.v20211111.models.LogConfig`
         """
         return self._LogConfig
@@ -2313,7 +2267,7 @@ HYBRID_PAID:
 
     @property
     def AuthorizationEnable(self):
-        r"""是否开启接口鉴权，开启后自动生成token信息，访问需要token鉴权
+        r"""<p>是否开启接口鉴权，开启后自动生成token信息，访问需要token鉴权</p>
         :rtype: bool
         """
         return self._AuthorizationEnable
@@ -2324,7 +2278,7 @@ HYBRID_PAID:
 
     @property
     def Tags(self):
-        r"""腾讯云标签
+        r"""<p>腾讯云标签</p>
         :rtype: list of Tag
         """
         return self._Tags
@@ -2335,7 +2289,7 @@ HYBRID_PAID:
 
     @property
     def NewVersion(self):
-        r"""是否新增版本
+        r"""<p>是否新增版本</p>
         :rtype: bool
         """
         return self._NewVersion
@@ -2346,7 +2300,7 @@ HYBRID_PAID:
 
     @property
     def CronScaleJobs(self):
-        r"""定时任务配置，使用定时策略时填写
+        r"""<p>定时任务配置，使用定时策略时填写</p>
         :rtype: list of CronScaleJob
         """
         return self._CronScaleJobs
@@ -2357,7 +2311,7 @@ HYBRID_PAID:
 
     @property
     def ScaleStrategy(self):
-        r"""自动伸缩策略配置 HPA : 通过HPA进行弹性伸缩 CRON 通过定时任务进行伸缩
+        r"""<p>自动伸缩策略配置 HPA : 通过HPA进行弹性伸缩 CRON 通过定时任务进行伸缩</p>
         :rtype: str
         """
         return self._ScaleStrategy
@@ -2368,7 +2322,7 @@ HYBRID_PAID:
 
     @property
     def HybridBillingPrepaidReplicas(self):
-        r"""计费模式[HYBRID_PAID]时生效, 用于标识混合计费模式下的预付费实例数
+        r"""<p>计费模式[HYBRID_PAID]时生效, 用于标识混合计费模式下的预付费实例数</p>
         :rtype: int
         """
         return self._HybridBillingPrepaidReplicas
@@ -2379,7 +2333,7 @@ HYBRID_PAID:
 
     @property
     def CreateSource(self):
-        r"""[AUTO_ML 自动学习，自动学习正式发布 AUTO_ML_FORMAL, DEFAULT 默认]
+        r"""<p>[AUTO_ML 自动学习，自动学习正式发布 AUTO_ML_FORMAL, DEFAULT 默认]</p>
         :rtype: str
         """
         return self._CreateSource
@@ -2390,7 +2344,7 @@ HYBRID_PAID:
 
     @property
     def ModelHotUpdateEnable(self):
-        r"""是否开启模型的热更新。默认不开启
+        r"""<p>是否开启模型的热更新。默认不开启</p>
         :rtype: bool
         """
         return self._ModelHotUpdateEnable
@@ -2401,7 +2355,7 @@ HYBRID_PAID:
 
     @property
     def ScheduledAction(self):
-        r"""定时停止配置
+        r"""<p>定时停止配置</p>
         :rtype: :class:`tencentcloud.tione.v20211111.models.ScheduledAction`
         """
         return self._ScheduledAction
@@ -2412,7 +2366,7 @@ HYBRID_PAID:
 
     @property
     def VolumeMount(self):
-        r"""挂载配置，目前只支持CFS
+        r"""<p>挂载配置，目前只支持CFS</p>
         :rtype: :class:`tencentcloud.tione.v20211111.models.VolumeMount`
         """
         return self._VolumeMount
@@ -2423,7 +2377,7 @@ HYBRID_PAID:
 
     @property
     def ServiceLimit(self):
-        r"""服务限速限流相关配置
+        r"""<p>服务限速限流相关配置</p>
         :rtype: :class:`tencentcloud.tione.v20211111.models.ServiceLimit`
         """
         return self._ServiceLimit
@@ -2434,7 +2388,7 @@ HYBRID_PAID:
 
     @property
     def CallbackUrl(self):
-        r"""回调地址，用于回调创建服务状态信息，回调格式&内容详情见：[TI-ONE 接口回调说明](https://cloud.tencent.com/document/product/851/84292)
+        r"""<p>回调地址，用于回调创建服务状态信息，回调格式&amp;内容详情见：<a href="https://cloud.tencent.com/document/product/851/84292">TI-ONE 接口回调说明</a></p>
         :rtype: str
         """
         return self._CallbackUrl
@@ -2445,7 +2399,7 @@ HYBRID_PAID:
 
     @property
     def ModelTurboEnable(self):
-        r"""是否开启模型的加速, 仅对StableDiffusion(动态加速)格式的模型有效。
+        r"""<p>是否开启模型的加速, 仅对StableDiffusion(动态加速)格式的模型有效。</p>
         :rtype: bool
         """
         return self._ModelTurboEnable
@@ -2456,7 +2410,7 @@ HYBRID_PAID:
 
     @property
     def ServiceCategory(self):
-        r"""服务分类
+        r"""<p>服务分类</p>
         :rtype: str
         """
         return self._ServiceCategory
@@ -2467,7 +2421,7 @@ HYBRID_PAID:
 
     @property
     def Command(self):
-        r"""服务的启动命令，如遇特殊字符导致配置失败，可使用CommandBase64参数
+        r"""<p>服务的启动命令，如遇特殊字符导致配置失败，可使用CommandBase64参数</p>
         :rtype: str
         """
         return self._Command
@@ -2478,7 +2432,7 @@ HYBRID_PAID:
 
     @property
     def ServiceEIP(self):
-        r"""是否开启TIONE内网访问外部，此功能仅支持后付费机型与从TIONE平台购买的预付费机型；使用从CVM选择资源组时此配置不生效。
+        r"""<p>是否开启TIONE内网访问外部，此功能仅支持后付费机型与从TIONE平台购买的预付费机型；使用从CVM选择资源组时此配置不生效。</p>
         :rtype: :class:`tencentcloud.tione.v20211111.models.ServiceEIP`
         """
         return self._ServiceEIP
@@ -2489,7 +2443,7 @@ HYBRID_PAID:
 
     @property
     def CommandBase64(self):
-        r"""服务的启动命令，以base64格式进行输入，与Command同时配置时，仅当前参数生效
+        r"""<p>服务的启动命令，以base64格式进行输入，与Command同时配置时，仅当前参数生效</p>
         :rtype: str
         """
         return self._CommandBase64
@@ -2500,7 +2454,7 @@ HYBRID_PAID:
 
     @property
     def ServicePort(self):
-        r"""服务端口，仅在非内置镜像时生效，默认8501。不支持输入8501-8510,6006,9092
+        r"""<p>服务端口，仅在非内置镜像时生效，默认8501。不支持输入8501-8510,6006,9092</p>
         :rtype: int
         """
         return self._ServicePort
@@ -2511,7 +2465,7 @@ HYBRID_PAID:
 
     @property
     def DeployType(self):
-        r"""服务的部署类型 [STANDARD 标准部署，DIST 分布式多机部署] 默认STANDARD
+        r"""<p>服务的部署类型 [标准部署，分布式多机部署，] 默认STANDARD</p><p>枚举值：</p><ul><li>STANDARD： 标准部署</li><li>DIST： 多机分布式部署</li><li>ROLE_SET： 多角色部署</li></ul>
         :rtype: str
         """
         return self._DeployType
@@ -2522,7 +2476,7 @@ HYBRID_PAID:
 
     @property
     def InstancePerReplicas(self):
-        r"""单副本下的实例数，仅在部署类型为DIST时生效，默认1
+        r"""<p>单副本下的实例数，仅在部署类型为DIST时生效，默认1</p>
         :rtype: int
         """
         return self._InstancePerReplicas
@@ -2533,7 +2487,7 @@ HYBRID_PAID:
 
     @property
     def TerminationGracePeriodSeconds(self):
-        r"""服务的优雅退出时限。单位为秒，默认值为30，最小为1
+        r"""<p>服务的优雅退出时限。单位为秒，默认值为30，最小为1</p>
         :rtype: int
         """
         return self._TerminationGracePeriodSeconds
@@ -2544,7 +2498,7 @@ HYBRID_PAID:
 
     @property
     def PreStopCommand(self):
-        r"""服务实例停止前执行的命令，执行完毕或执行时间超过优雅退出时限后实例结束
+        r"""<p>服务实例停止前执行的命令，执行完毕或执行时间超过优雅退出时限后实例结束</p>
         :rtype: list of str
         """
         return self._PreStopCommand
@@ -2555,7 +2509,7 @@ HYBRID_PAID:
 
     @property
     def GrpcEnable(self):
-        r"""是否启用 grpc 端口
+        r"""<p>是否启用 grpc 端口</p>
         :rtype: bool
         """
         return self._GrpcEnable
@@ -2566,7 +2520,7 @@ HYBRID_PAID:
 
     @property
     def HealthProbe(self):
-        r"""健康探针
+        r"""<p>健康探针</p>
         :rtype: :class:`tencentcloud.tione.v20211111.models.HealthProbe`
         """
         return self._HealthProbe
@@ -2577,7 +2531,7 @@ HYBRID_PAID:
 
     @property
     def RollingUpdate(self):
-        r"""滚动更新策略
+        r"""<p>滚动更新策略</p>
         :rtype: :class:`tencentcloud.tione.v20211111.models.RollingUpdate`
         """
         return self._RollingUpdate
@@ -2588,7 +2542,7 @@ HYBRID_PAID:
 
     @property
     def Sidecar(self):
-        r"""sidecar配置
+        r"""<p>sidecar配置</p>
         :rtype: :class:`tencentcloud.tione.v20211111.models.SidecarSpec`
         """
         return self._Sidecar
@@ -2599,7 +2553,7 @@ HYBRID_PAID:
 
     @property
     def VolumeMounts(self):
-        r"""数据盘批量挂载配置，当前仅支持CFS，仅针对“模型来源-腾讯云存储、模型来源-腾讯云容器镜像、模型来源-资源组、模型来源-数据源”。
+        r"""<p>数据盘批量挂载配置，当前仅支持CFS，仅针对“模型来源-腾讯云存储、模型来源-腾讯云容器镜像、模型来源-资源组、模型来源-数据源”。</p>
         :rtype: list of VolumeMount
         """
         return self._VolumeMounts
@@ -2610,7 +2564,7 @@ HYBRID_PAID:
 
     @property
     def SchedulingStrategy(self):
-        r"""调度策略 [binpack] 优先占满整机，尽量避免碎卡（默认值）[spread] 优先分散在各个节点，确保服务高可用
+        r"""<p>调度策略 [binpack] 优先占满整机，尽量避免碎卡（默认值）[spread] 优先分散在各个节点，确保服务高可用</p>
         :rtype: str
         """
         return self._SchedulingStrategy
@@ -2621,7 +2575,7 @@ HYBRID_PAID:
 
     @property
     def GatewayLogConfig(self):
-        r"""网关日志投递相关配置
+        r"""<p>网关日志投递相关配置</p>
         :rtype: :class:`tencentcloud.tione.v20211111.models.LogConfig`
         """
         return self._GatewayLogConfig
@@ -2632,7 +2586,7 @@ HYBRID_PAID:
 
     @property
     def GatewayConfig(self):
-        r"""网关相关配置
+        r"""<p>网关相关配置</p>
         :rtype: :class:`tencentcloud.tione.v20211111.models.GatewayConfig`
         """
         return self._GatewayConfig
@@ -2753,7 +2707,7 @@ class CreateModelServiceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Service: 生成的模型服务
+        :param _Service: <p>生成的模型服务</p>
         :type Service: :class:`tencentcloud.tione.v20211111.models.Service`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2763,7 +2717,7 @@ class CreateModelServiceResponse(AbstractModel):
 
     @property
     def Service(self):
-        r"""生成的模型服务
+        r"""<p>生成的模型服务</p>
         :rtype: :class:`tencentcloud.tione.v20211111.models.Service`
         """
         return self._Service
@@ -9134,53 +9088,27 @@ class DescribeLogsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Service: 服务类型，TRAIN为任务式建模, NOTEBOOK为Notebook, INFER为在线服务, BATCH为批量预测
-枚举值：
-- TRAIN
-- NOTEBOOK
-- INFER
-- BATCH
+        :param _Service: <p>服务类型，TRAIN为任务式建模, NOTEBOOK为Notebook, INFER为在线服务, BATCH为批量预测<br>枚举值：</p><ul><li>TRAIN</li><li>NOTEBOOK</li><li>INFER</li><li>BATCH</li></ul>
         :type Service: str
-        :param _StartTime: 日志查询开始时间（RFC3339格式的时间字符串），默认值为当前时间的前一个小时
+        :param _StartTime: <p>日志查询开始时间（RFC3339格式的时间字符串），默认值为当前时间的前一个小时</p>
         :type StartTime: str
-        :param _EndTime: 日志查询结束时间（RFC3339格式的时间字符串），默认值为当前时间
+        :param _EndTime: <p>日志查询结束时间（RFC3339格式的时间字符串），默认值为当前时间</p>
         :type EndTime: str
-        :param _Limit: 日志查询条数，默认值100，最大值1000
+        :param _Limit: <p>日志查询条数，默认值100，最大值1000</p>
         :type Limit: int
-        :param _ServiceId: 服务ID，和Service参数对应，不同Service的服务ID获取方式不同，具体如下：
-- Service类型为TRAIN：
-  调用[DescribeTrainingTask接口](/document/product/851/75089)查询训练任务详情，ServiceId为接口返回值中Response.TrainingTaskDetail.LatestInstanceId
-- Service类型为NOTEBOOK：
-  调用[DescribeNotebook接口](/document/product/851/95662)查询Notebook详情，ServiceId为接口返回值中Response.NotebookDetail.PodName
-- Service类型为INFER：
-  调用[DescribeModelServiceGroup接口](/document/product/851/82285)查询服务组详情，ServiceId为接口返回值中Response.ServiceGroup.Services.ServiceId
-- Service类型为BATCH：
-  调用[DescribeBatchTask接口](/document/product/851/80180)查询跑批任务详情，ServiceId为接口返回值中Response.BatchTaskDetail.LatestInstanceId
+        :param _ServiceId: <p>服务ID，和Service参数对应，不同Service的服务ID获取方式不同，具体如下：</p><ul><li>Service类型为TRAIN：<br>调用<a href="/document/product/851/75089">DescribeTrainingTask接口</a>查询训练任务详情，ServiceId为接口返回值中Response.TrainingTaskDetail.LatestInstanceId</li><li>Service类型为NOTEBOOK：<br>调用<a href="/document/product/851/95662">DescribeNotebook接口</a>查询Notebook详情，ServiceId为接口返回值中Response.NotebookDetail.PodName</li><li>Service类型为INFER：<br>调用<a href="/document/product/851/82285">DescribeModelServiceGroup接口</a>查询服务组详情，ServiceId为接口返回值中Response.ServiceGroup.Services.ServiceId</li><li>Service类型为BATCH：<br>调用<a href="/document/product/851/80180">DescribeBatchTask接口</a>查询跑批任务详情，ServiceId为接口返回值中Response.BatchTaskDetail.LatestInstanceId</li></ul>
         :type ServiceId: str
-        :param _PodName: Pod的名称，即需要查询服务对应的Pod，和Service参数对应，不同Service的PodName获取方式不同，具体如下：
-- Service类型为TRAIN：
-  调用[DescribeTrainingTaskPods接口](/document/product/851/75088)查询训练任务pod列表，PodName为接口返回值中Response.PodNames
-- Service类型为NOTEBOOK：
-  调用[DescribeNotebook接口](/document/product/851/95662)查询Notebook详情，PodName为接口返回值中Response.NotebookDetail.PodName
-- Service类型为INFER：
-  调用[DescribeModelService接口](/document/product/851/82287)查询单个服务详情，PodName为接口返回值中Response.Service.ServiceInfo.PodInfos
-- Service类型为BATCH：
-  调用[DescribeBatchTask接口](/document/product/851/80180)查询跑批任务详情，PodName为接口返回值中Response.BatchTaskDetail. PodList
-注：支持结尾通配符*
+        :param _PodName: <p>Pod的名称，即需要查询服务对应的Pod，和Service参数对应，不同Service的PodName获取方式不同，具体如下：</p><ul><li>Service类型为TRAIN：<br>调用<a href="/document/product/851/75088">DescribeTrainingTaskPods接口</a>查询训练任务pod列表，PodName为接口返回值中Response.PodNames</li><li>Service类型为NOTEBOOK：<br>调用<a href="/document/product/851/95662">DescribeNotebook接口</a>查询Notebook详情，PodName为接口返回值中Response.NotebookDetail.PodName</li><li>Service类型为INFER：<br>调用<a href="/document/product/851/82287">DescribeModelService接口</a>查询单个服务详情，PodName为接口返回值中Response.Service.ServiceInfo.PodInfos</li><li>Service类型为BATCH：<br>调用<a href="/document/product/851/80180">DescribeBatchTask接口</a>查询跑批任务详情，PodName为接口返回值中Response.BatchTaskDetail. PodList<br>注：支持结尾通配符*</li></ul>
         :type PodName: str
-        :param _Order: 排序方向（可选值为ASC, DESC ），默认为DESC
+        :param _Order: <p>排序方向（可选值为ASC, DESC ），默认为DESC</p>
         :type Order: str
-        :param _OrderField: 按哪个字段排序（可选值为Timestamp），默认值为Timestamp
+        :param _OrderField: <p>按哪个字段排序（可选值为Timestamp），默认值为Timestamp</p>
         :type OrderField: str
-        :param _Context: 日志查询上下文，查询下一页的时候需要回传这个字段，该字段来自本接口的返回
+        :param _Context: <p>日志查询上下文，查询下一页的时候需要回传这个字段，该字段来自本接口的返回</p>
         :type Context: str
-        :param _Filters: 过滤条件
-注意: 
-1. Filter.Name：目前只支持Key（也就是按关键字过滤日志）
-2. Filter.Values：表示过滤日志的关键字；Values为多个的时候表示同时满足
-3. Filter. Negative和Filter. Fuzzy没有使用
+        :param _Filters: <p>过滤条件<br>注意: </p><ol><li>Filter.Name：目前只支持Key（也就是按关键字过滤日志）</li><li>Filter.Values：表示过滤日志的关键字；Values为多个的时候表示同时满足</li><li>Filter. Negative和Filter. Fuzzy没有使用</li></ol>
         :type Filters: list of Filter
-        :param _Offset: 使用OFFSET分页查询时，指定返回的数据偏移量，默认为0
+        :param _Offset: <p>使用OFFSET分页查询时，指定返回的数据偏移量，默认为0</p>
         :type Offset: int
         """
         self._Service = None
@@ -9197,12 +9125,7 @@ class DescribeLogsRequest(AbstractModel):
 
     @property
     def Service(self):
-        r"""服务类型，TRAIN为任务式建模, NOTEBOOK为Notebook, INFER为在线服务, BATCH为批量预测
-枚举值：
-- TRAIN
-- NOTEBOOK
-- INFER
-- BATCH
+        r"""<p>服务类型，TRAIN为任务式建模, NOTEBOOK为Notebook, INFER为在线服务, BATCH为批量预测<br>枚举值：</p><ul><li>TRAIN</li><li>NOTEBOOK</li><li>INFER</li><li>BATCH</li></ul>
         :rtype: str
         """
         return self._Service
@@ -9213,7 +9136,7 @@ class DescribeLogsRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""日志查询开始时间（RFC3339格式的时间字符串），默认值为当前时间的前一个小时
+        r"""<p>日志查询开始时间（RFC3339格式的时间字符串），默认值为当前时间的前一个小时</p>
         :rtype: str
         """
         return self._StartTime
@@ -9224,7 +9147,7 @@ class DescribeLogsRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""日志查询结束时间（RFC3339格式的时间字符串），默认值为当前时间
+        r"""<p>日志查询结束时间（RFC3339格式的时间字符串），默认值为当前时间</p>
         :rtype: str
         """
         return self._EndTime
@@ -9235,7 +9158,7 @@ class DescribeLogsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""日志查询条数，默认值100，最大值1000
+        r"""<p>日志查询条数，默认值100，最大值1000</p>
         :rtype: int
         """
         return self._Limit
@@ -9246,15 +9169,7 @@ class DescribeLogsRequest(AbstractModel):
 
     @property
     def ServiceId(self):
-        r"""服务ID，和Service参数对应，不同Service的服务ID获取方式不同，具体如下：
-- Service类型为TRAIN：
-  调用[DescribeTrainingTask接口](/document/product/851/75089)查询训练任务详情，ServiceId为接口返回值中Response.TrainingTaskDetail.LatestInstanceId
-- Service类型为NOTEBOOK：
-  调用[DescribeNotebook接口](/document/product/851/95662)查询Notebook详情，ServiceId为接口返回值中Response.NotebookDetail.PodName
-- Service类型为INFER：
-  调用[DescribeModelServiceGroup接口](/document/product/851/82285)查询服务组详情，ServiceId为接口返回值中Response.ServiceGroup.Services.ServiceId
-- Service类型为BATCH：
-  调用[DescribeBatchTask接口](/document/product/851/80180)查询跑批任务详情，ServiceId为接口返回值中Response.BatchTaskDetail.LatestInstanceId
+        r"""<p>服务ID，和Service参数对应，不同Service的服务ID获取方式不同，具体如下：</p><ul><li>Service类型为TRAIN：<br>调用<a href="/document/product/851/75089">DescribeTrainingTask接口</a>查询训练任务详情，ServiceId为接口返回值中Response.TrainingTaskDetail.LatestInstanceId</li><li>Service类型为NOTEBOOK：<br>调用<a href="/document/product/851/95662">DescribeNotebook接口</a>查询Notebook详情，ServiceId为接口返回值中Response.NotebookDetail.PodName</li><li>Service类型为INFER：<br>调用<a href="/document/product/851/82285">DescribeModelServiceGroup接口</a>查询服务组详情，ServiceId为接口返回值中Response.ServiceGroup.Services.ServiceId</li><li>Service类型为BATCH：<br>调用<a href="/document/product/851/80180">DescribeBatchTask接口</a>查询跑批任务详情，ServiceId为接口返回值中Response.BatchTaskDetail.LatestInstanceId</li></ul>
         :rtype: str
         """
         return self._ServiceId
@@ -9265,16 +9180,7 @@ class DescribeLogsRequest(AbstractModel):
 
     @property
     def PodName(self):
-        r"""Pod的名称，即需要查询服务对应的Pod，和Service参数对应，不同Service的PodName获取方式不同，具体如下：
-- Service类型为TRAIN：
-  调用[DescribeTrainingTaskPods接口](/document/product/851/75088)查询训练任务pod列表，PodName为接口返回值中Response.PodNames
-- Service类型为NOTEBOOK：
-  调用[DescribeNotebook接口](/document/product/851/95662)查询Notebook详情，PodName为接口返回值中Response.NotebookDetail.PodName
-- Service类型为INFER：
-  调用[DescribeModelService接口](/document/product/851/82287)查询单个服务详情，PodName为接口返回值中Response.Service.ServiceInfo.PodInfos
-- Service类型为BATCH：
-  调用[DescribeBatchTask接口](/document/product/851/80180)查询跑批任务详情，PodName为接口返回值中Response.BatchTaskDetail. PodList
-注：支持结尾通配符*
+        r"""<p>Pod的名称，即需要查询服务对应的Pod，和Service参数对应，不同Service的PodName获取方式不同，具体如下：</p><ul><li>Service类型为TRAIN：<br>调用<a href="/document/product/851/75088">DescribeTrainingTaskPods接口</a>查询训练任务pod列表，PodName为接口返回值中Response.PodNames</li><li>Service类型为NOTEBOOK：<br>调用<a href="/document/product/851/95662">DescribeNotebook接口</a>查询Notebook详情，PodName为接口返回值中Response.NotebookDetail.PodName</li><li>Service类型为INFER：<br>调用<a href="/document/product/851/82287">DescribeModelService接口</a>查询单个服务详情，PodName为接口返回值中Response.Service.ServiceInfo.PodInfos</li><li>Service类型为BATCH：<br>调用<a href="/document/product/851/80180">DescribeBatchTask接口</a>查询跑批任务详情，PodName为接口返回值中Response.BatchTaskDetail. PodList<br>注：支持结尾通配符*</li></ul>
         :rtype: str
         """
         return self._PodName
@@ -9285,7 +9191,7 @@ class DescribeLogsRequest(AbstractModel):
 
     @property
     def Order(self):
-        r"""排序方向（可选值为ASC, DESC ），默认为DESC
+        r"""<p>排序方向（可选值为ASC, DESC ），默认为DESC</p>
         :rtype: str
         """
         return self._Order
@@ -9296,7 +9202,7 @@ class DescribeLogsRequest(AbstractModel):
 
     @property
     def OrderField(self):
-        r"""按哪个字段排序（可选值为Timestamp），默认值为Timestamp
+        r"""<p>按哪个字段排序（可选值为Timestamp），默认值为Timestamp</p>
         :rtype: str
         """
         return self._OrderField
@@ -9307,7 +9213,7 @@ class DescribeLogsRequest(AbstractModel):
 
     @property
     def Context(self):
-        r"""日志查询上下文，查询下一页的时候需要回传这个字段，该字段来自本接口的返回
+        r"""<p>日志查询上下文，查询下一页的时候需要回传这个字段，该字段来自本接口的返回</p>
         :rtype: str
         """
         return self._Context
@@ -9318,11 +9224,7 @@ class DescribeLogsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""过滤条件
-注意: 
-1. Filter.Name：目前只支持Key（也就是按关键字过滤日志）
-2. Filter.Values：表示过滤日志的关键字；Values为多个的时候表示同时满足
-3. Filter. Negative和Filter. Fuzzy没有使用
+        r"""<p>过滤条件<br>注意: </p><ol><li>Filter.Name：目前只支持Key（也就是按关键字过滤日志）</li><li>Filter.Values：表示过滤日志的关键字；Values为多个的时候表示同时满足</li><li>Filter. Negative和Filter. Fuzzy没有使用</li></ol>
         :rtype: list of Filter
         """
         return self._Filters
@@ -9333,7 +9235,7 @@ class DescribeLogsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""使用OFFSET分页查询时，指定返回的数据偏移量，默认为0
+        r"""<p>使用OFFSET分页查询时，指定返回的数据偏移量，默认为0</p>
         :rtype: int
         """
         return self._Offset
@@ -9377,10 +9279,10 @@ class DescribeLogsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Context: 分页的游标
+        :param _Context: <p>分页的游标</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Context: str
-        :param _Content: 日志数组
+        :param _Content: <p>日志数组</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Content: list of LogIdentity
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -9392,7 +9294,7 @@ class DescribeLogsResponse(AbstractModel):
 
     @property
     def Context(self):
-        r"""分页的游标
+        r"""<p>分页的游标</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9404,7 +9306,7 @@ class DescribeLogsResponse(AbstractModel):
 
     @property
     def Content(self):
-        r"""日志数组
+        r"""<p>日志数组</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of LogIdentity
         """
@@ -16125,37 +16027,36 @@ class ModelInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ModelVersionId: 模型版本id, DescribeTrainingModelVersion查询模型接口时的id
-自动学习类型的模型填写自动学习的任务id
+        :param _ModelVersionId: <p>模型版本id, DescribeTrainingModelVersion查询模型接口时的id<br>自动学习类型的模型填写自动学习的任务id</p>
         :type ModelVersionId: str
-        :param _ModelId: 模型id
+        :param _ModelId: <p>模型id</p>
         :type ModelId: str
-        :param _ModelName: 模型名
+        :param _ModelName: <p>模型名</p>
         :type ModelName: str
-        :param _ModelVersion: 模型版本
+        :param _ModelVersion: <p>模型版本</p>
         :type ModelVersion: str
-        :param _ModelSource: 模型来源
+        :param _ModelSource: <p>模型来源</p>
         :type ModelSource: str
-        :param _CosPathInfo: cos路径信息
+        :param _CosPathInfo: <p>cos路径信息</p>
         :type CosPathInfo: :class:`tencentcloud.tione.v20211111.models.CosPathInfo`
-        :param _GooseFSx: GooseFSx的配置，ModelSource为GooseFSx时有效
+        :param _GooseFSx: <p>GooseFSx的配置，ModelSource为GooseFSx时有效</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type GooseFSx: :class:`tencentcloud.tione.v20211111.models.GooseFSx`
-        :param _AlgorithmFramework: 模型对应的算法框架，预留
+        :param _AlgorithmFramework: <p>模型对应的算法框架，预留</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AlgorithmFramework: str
-        :param _ModelType: 默认为 NORMAL, 已加速模型: ACCELERATE, 自动学习模型 AUTO_ML
+        :param _ModelType: <p>默认为 NORMAL, 已加速模型: ACCELERATE, 自动学习模型 AUTO_ML</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ModelType: str
-        :param _ModelFormat: 模型格式
+        :param _ModelFormat: <p>模型格式</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ModelFormat: str
-        :param _IsPrivateModel: 是否为私有化大模型
+        :param _IsPrivateModel: <p>是否为私有化大模型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsPrivateModel: bool
-        :param _ModelCategory: 模型的类别 多模态MultiModal, 文本大模型 LLM
+        :param _ModelCategory: <p>模型的类别 多模态MultiModal, 文本大模型 LLM</p>
         :type ModelCategory: str
-        :param _PublicDataSource: 数据源的配置
+        :param _PublicDataSource: <p>数据源的配置</p>
         :type PublicDataSource: :class:`tencentcloud.tione.v20211111.models.PublicDataSourceFS`
         """
         self._ModelVersionId = None
@@ -16174,8 +16075,7 @@ class ModelInfo(AbstractModel):
 
     @property
     def ModelVersionId(self):
-        r"""模型版本id, DescribeTrainingModelVersion查询模型接口时的id
-自动学习类型的模型填写自动学习的任务id
+        r"""<p>模型版本id, DescribeTrainingModelVersion查询模型接口时的id<br>自动学习类型的模型填写自动学习的任务id</p>
         :rtype: str
         """
         return self._ModelVersionId
@@ -16186,7 +16086,7 @@ class ModelInfo(AbstractModel):
 
     @property
     def ModelId(self):
-        r"""模型id
+        r"""<p>模型id</p>
         :rtype: str
         """
         return self._ModelId
@@ -16197,7 +16097,7 @@ class ModelInfo(AbstractModel):
 
     @property
     def ModelName(self):
-        r"""模型名
+        r"""<p>模型名</p>
         :rtype: str
         """
         return self._ModelName
@@ -16208,7 +16108,7 @@ class ModelInfo(AbstractModel):
 
     @property
     def ModelVersion(self):
-        r"""模型版本
+        r"""<p>模型版本</p>
         :rtype: str
         """
         return self._ModelVersion
@@ -16219,7 +16119,7 @@ class ModelInfo(AbstractModel):
 
     @property
     def ModelSource(self):
-        r"""模型来源
+        r"""<p>模型来源</p>
         :rtype: str
         """
         return self._ModelSource
@@ -16230,7 +16130,7 @@ class ModelInfo(AbstractModel):
 
     @property
     def CosPathInfo(self):
-        r"""cos路径信息
+        r"""<p>cos路径信息</p>
         :rtype: :class:`tencentcloud.tione.v20211111.models.CosPathInfo`
         """
         return self._CosPathInfo
@@ -16241,7 +16141,7 @@ class ModelInfo(AbstractModel):
 
     @property
     def GooseFSx(self):
-        r"""GooseFSx的配置，ModelSource为GooseFSx时有效
+        r"""<p>GooseFSx的配置，ModelSource为GooseFSx时有效</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tione.v20211111.models.GooseFSx`
         """
@@ -16253,7 +16153,7 @@ class ModelInfo(AbstractModel):
 
     @property
     def AlgorithmFramework(self):
-        r"""模型对应的算法框架，预留
+        r"""<p>模型对应的算法框架，预留</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -16265,7 +16165,7 @@ class ModelInfo(AbstractModel):
 
     @property
     def ModelType(self):
-        r"""默认为 NORMAL, 已加速模型: ACCELERATE, 自动学习模型 AUTO_ML
+        r"""<p>默认为 NORMAL, 已加速模型: ACCELERATE, 自动学习模型 AUTO_ML</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -16277,7 +16177,7 @@ class ModelInfo(AbstractModel):
 
     @property
     def ModelFormat(self):
-        r"""模型格式
+        r"""<p>模型格式</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -16289,7 +16189,7 @@ class ModelInfo(AbstractModel):
 
     @property
     def IsPrivateModel(self):
-        r"""是否为私有化大模型
+        r"""<p>是否为私有化大模型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -16301,7 +16201,7 @@ class ModelInfo(AbstractModel):
 
     @property
     def ModelCategory(self):
-        r"""模型的类别 多模态MultiModal, 文本大模型 LLM
+        r"""<p>模型的类别 多模态MultiModal, 文本大模型 LLM</p>
         :rtype: str
         """
         return self._ModelCategory
@@ -16312,7 +16212,7 @@ class ModelInfo(AbstractModel):
 
     @property
     def PublicDataSource(self):
-        r"""数据源的配置
+        r"""<p>数据源的配置</p>
         :rtype: :class:`tencentcloud.tione.v20211111.models.PublicDataSourceFS`
         """
         return self._PublicDataSource
@@ -23030,6 +22930,16 @@ class Service(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type AppId: int
         :param _BusinessStatus: 服务的业务状态
+CREATING 创建中
+CREATE_FAILED 创建失败
+CREATE_SUCCEED 创建成功
+ARREARS_STOP 因欠费停止
+WHITELIST_STOP 白名单额度不足
+RELEASE_FAILED 资源释放失败
+WHITELIST_RELEASE_FAILED 白名单资源释放失败
+TIMEOUT_EXCEPTION 创建超时异常
+BILLING 计费中
+WHITELIST_USING 白名单试用中
 注意：此字段可能返回 null，表示取不到有效值。
         :type BusinessStatus: str
         :param _ServiceLimit: 已废弃,以ServiceInfo中的对应为准
@@ -23042,8 +22952,9 @@ class Service(AbstractModel):
         :param _Status: 服务状态
 CREATING 创建中
 CREATE_FAILED 创建失败
-Normal	正常运行中
-Stopped  已停止
+TIMEOUT_EXCEPTION 创建超时异常
+Normal 正常运行中
+Stopped 已停止
 Stopping 停止中
 Abnormal 异常
 Pending 启动中
@@ -23355,6 +23266,16 @@ DEFAULT: 其他来源
     @property
     def BusinessStatus(self):
         r"""服务的业务状态
+CREATING 创建中
+CREATE_FAILED 创建失败
+CREATE_SUCCEED 创建成功
+ARREARS_STOP 因欠费停止
+WHITELIST_STOP 白名单额度不足
+RELEASE_FAILED 资源释放失败
+WHITELIST_RELEASE_FAILED 白名单资源释放失败
+TIMEOUT_EXCEPTION 创建超时异常
+BILLING 计费中
+WHITELIST_USING 白名单试用中
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -23411,8 +23332,9 @@ DEFAULT: 其他来源
         r"""服务状态
 CREATING 创建中
 CREATE_FAILED 创建失败
-Normal	正常运行中
-Stopped  已停止
+TIMEOUT_EXCEPTION 创建超时异常
+Normal 正常运行中
+Stopped 已停止
 Stopping 停止中
 Abnormal 异常
 Pending 启动中
@@ -24112,86 +24034,69 @@ class ServiceGroup(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ServiceGroupId: 服务组id
+        :param _ServiceGroupId: <p>服务组id</p>
         :type ServiceGroupId: str
-        :param _ServiceGroupName: 服务组名
+        :param _ServiceGroupName: <p>服务组名</p>
         :type ServiceGroupName: str
-        :param _CreatedBy: 创建者
+        :param _CreatedBy: <p>创建者</p>
         :type CreatedBy: str
-        :param _CreateTime: 创建时间
+        :param _CreateTime: <p>创建时间</p>
         :type CreateTime: str
-        :param _UpdateTime: 更新时间
+        :param _UpdateTime: <p>更新时间</p>
         :type UpdateTime: str
-        :param _Uin: 主账号
+        :param _Uin: <p>主账号</p>
         :type Uin: str
-        :param _ServiceCount: 服务组下服务总数
+        :param _ServiceCount: <p>服务组下服务总数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceCount: int
-        :param _RunningServiceCount: 服务组下在运行的服务数量
+        :param _RunningServiceCount: <p>服务组下在运行的服务数量</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RunningServiceCount: int
-        :param _Services: 服务描述
+        :param _Services: <p>服务描述</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Services: list of Service
-        :param _Status: 服务组状态，与服务一致
- CREATING 创建中
-     CREATE_FAILED 创建失败
-     Normal	正常运行中
-     Stopped  已停止
-     Stopping 停止中
-     Abnormal 异常
-     Pending 启动中
-     Waiting 就绪中
+        :param _Status: <p>服务组状态，与服务一致<br> CREATING 创建中<br>     CREATE_FAILED 创建失败<br>     Normal    正常运行中<br>     Stopped  已停止<br>     Stopping 停止中<br>     Abnormal 异常<br>     Pending 启动中<br>     Waiting 就绪中</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
-        :param _Tags: 服务组标签
+        :param _Tags: <p>服务组标签</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
-        :param _LatestVersion: 服务组下最高版本
+        :param _LatestVersion: <p>服务组下最高版本</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type LatestVersion: str
-        :param _BusinessStatus: 服务的业务状态
-CREATING 创建中
-     CREATE_FAILED 创建失败
-     ARREARS_STOP 因欠费被强制停止
-     BILLING 计费中
-     WHITELIST_USING 白名单试用中
-     WHITELIST_STOP 白名单额度不足
+        :param _BusinessStatus: <p>服务的业务状态<br>CREATING 创建中<br>     CREATE_FAILED 创建失败<br>     ARREARS_STOP 因欠费被强制停止<br>     BILLING 计费中<br>     WHITELIST_USING 白名单试用中<br>     WHITELIST_STOP 白名单额度不足</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type BusinessStatus: str
-        :param _BillingInfo: 服务的计费信息
+        :param _BillingInfo: <p>服务的计费信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type BillingInfo: str
-        :param _CreateSource: 服务的创建来源
+        :param _CreateSource: <p>服务的创建来源</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateSource: str
-        :param _WeightUpdateStatus: 服务组的权重更新状态 
-UPDATING 更新中
-     UPDATED 更新成功
-     UPDATE_FAILED 更新失败
+        :param _WeightUpdateStatus: <p>服务组的权重更新状态<br>UPDATING 更新中<br>     UPDATED 更新成功<br>     UPDATE_FAILED 更新失败</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WeightUpdateStatus: str
-        :param _ReplicasCount: 服务组下运行的pod数量
+        :param _ReplicasCount: <p>服务组下运行的pod数量</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReplicasCount: int
-        :param _AvailableReplicasCount: 服务组下期望的pod数
+        :param _AvailableReplicasCount: <p>服务组下期望的pod数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AvailableReplicasCount: int
-        :param _SubUin: 服务组的subuin
+        :param _SubUin: <p>服务组的subuin</p>
         :type SubUin: str
-        :param _AppId: 服务组的app_id
+        :param _AppId: <p>服务组的app_id</p>
         :type AppId: int
-        :param _AuthorizationEnable: 是否开启鉴权
+        :param _AuthorizationEnable: <p>是否开启鉴权</p>
         :type AuthorizationEnable: bool
-        :param _AuthTokens: 限流鉴权 token 列表
+        :param _AuthTokens: <p>限流鉴权 token 列表</p>
         :type AuthTokens: list of AuthToken
-        :param _MonitorSource: 用于监控的创建来源字段
+        :param _MonitorSource: <p>用于监控的创建来源字段</p>
         :type MonitorSource: str
-        :param _SubUinName: 子用户的 nickname
+        :param _SubUinName: <p>子用户的 nickname</p>
         :type SubUinName: str
-        :param _GatewayLogConfig: 网关日志投递相关配置
+        :param _GatewayLogConfig: <p>网关日志投递相关配置</p>
         :type GatewayLogConfig: :class:`tencentcloud.tione.v20211111.models.LogConfig`
-        :param _GatewayConfig: 网关路由相关配置
+        :param _GatewayConfig: <p>网关路由相关配置</p>
         :type GatewayConfig: :class:`tencentcloud.tione.v20211111.models.GatewayConfig`
         """
         self._ServiceGroupId = None
@@ -24223,7 +24128,7 @@ UPDATING 更新中
 
     @property
     def ServiceGroupId(self):
-        r"""服务组id
+        r"""<p>服务组id</p>
         :rtype: str
         """
         return self._ServiceGroupId
@@ -24234,7 +24139,7 @@ UPDATING 更新中
 
     @property
     def ServiceGroupName(self):
-        r"""服务组名
+        r"""<p>服务组名</p>
         :rtype: str
         """
         return self._ServiceGroupName
@@ -24245,7 +24150,7 @@ UPDATING 更新中
 
     @property
     def CreatedBy(self):
-        r"""创建者
+        r"""<p>创建者</p>
         :rtype: str
         """
         return self._CreatedBy
@@ -24256,7 +24161,7 @@ UPDATING 更新中
 
     @property
     def CreateTime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
         :rtype: str
         """
         return self._CreateTime
@@ -24267,7 +24172,7 @@ UPDATING 更新中
 
     @property
     def UpdateTime(self):
-        r"""更新时间
+        r"""<p>更新时间</p>
         :rtype: str
         """
         return self._UpdateTime
@@ -24278,7 +24183,7 @@ UPDATING 更新中
 
     @property
     def Uin(self):
-        r"""主账号
+        r"""<p>主账号</p>
         :rtype: str
         """
         return self._Uin
@@ -24289,7 +24194,7 @@ UPDATING 更新中
 
     @property
     def ServiceCount(self):
-        r"""服务组下服务总数
+        r"""<p>服务组下服务总数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -24301,7 +24206,7 @@ UPDATING 更新中
 
     @property
     def RunningServiceCount(self):
-        r"""服务组下在运行的服务数量
+        r"""<p>服务组下在运行的服务数量</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -24313,7 +24218,7 @@ UPDATING 更新中
 
     @property
     def Services(self):
-        r"""服务描述
+        r"""<p>服务描述</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Service
         """
@@ -24325,15 +24230,7 @@ UPDATING 更新中
 
     @property
     def Status(self):
-        r"""服务组状态，与服务一致
- CREATING 创建中
-     CREATE_FAILED 创建失败
-     Normal	正常运行中
-     Stopped  已停止
-     Stopping 停止中
-     Abnormal 异常
-     Pending 启动中
-     Waiting 就绪中
+        r"""<p>服务组状态，与服务一致<br> CREATING 创建中<br>     CREATE_FAILED 创建失败<br>     Normal    正常运行中<br>     Stopped  已停止<br>     Stopping 停止中<br>     Abnormal 异常<br>     Pending 启动中<br>     Waiting 就绪中</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -24345,7 +24242,7 @@ UPDATING 更新中
 
     @property
     def Tags(self):
-        r"""服务组标签
+        r"""<p>服务组标签</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Tag
         """
@@ -24357,7 +24254,7 @@ UPDATING 更新中
 
     @property
     def LatestVersion(self):
-        r"""服务组下最高版本
+        r"""<p>服务组下最高版本</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -24369,13 +24266,7 @@ UPDATING 更新中
 
     @property
     def BusinessStatus(self):
-        r"""服务的业务状态
-CREATING 创建中
-     CREATE_FAILED 创建失败
-     ARREARS_STOP 因欠费被强制停止
-     BILLING 计费中
-     WHITELIST_USING 白名单试用中
-     WHITELIST_STOP 白名单额度不足
+        r"""<p>服务的业务状态<br>CREATING 创建中<br>     CREATE_FAILED 创建失败<br>     ARREARS_STOP 因欠费被强制停止<br>     BILLING 计费中<br>     WHITELIST_USING 白名单试用中<br>     WHITELIST_STOP 白名单额度不足</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -24387,7 +24278,7 @@ CREATING 创建中
 
     @property
     def BillingInfo(self):
-        r"""服务的计费信息
+        r"""<p>服务的计费信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -24399,7 +24290,7 @@ CREATING 创建中
 
     @property
     def CreateSource(self):
-        r"""服务的创建来源
+        r"""<p>服务的创建来源</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -24411,10 +24302,7 @@ CREATING 创建中
 
     @property
     def WeightUpdateStatus(self):
-        r"""服务组的权重更新状态 
-UPDATING 更新中
-     UPDATED 更新成功
-     UPDATE_FAILED 更新失败
+        r"""<p>服务组的权重更新状态<br>UPDATING 更新中<br>     UPDATED 更新成功<br>     UPDATE_FAILED 更新失败</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -24426,7 +24314,7 @@ UPDATING 更新中
 
     @property
     def ReplicasCount(self):
-        r"""服务组下运行的pod数量
+        r"""<p>服务组下运行的pod数量</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -24438,7 +24326,7 @@ UPDATING 更新中
 
     @property
     def AvailableReplicasCount(self):
-        r"""服务组下期望的pod数
+        r"""<p>服务组下期望的pod数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -24450,7 +24338,7 @@ UPDATING 更新中
 
     @property
     def SubUin(self):
-        r"""服务组的subuin
+        r"""<p>服务组的subuin</p>
         :rtype: str
         """
         return self._SubUin
@@ -24461,7 +24349,7 @@ UPDATING 更新中
 
     @property
     def AppId(self):
-        r"""服务组的app_id
+        r"""<p>服务组的app_id</p>
         :rtype: int
         """
         return self._AppId
@@ -24472,7 +24360,7 @@ UPDATING 更新中
 
     @property
     def AuthorizationEnable(self):
-        r"""是否开启鉴权
+        r"""<p>是否开启鉴权</p>
         :rtype: bool
         """
         return self._AuthorizationEnable
@@ -24483,7 +24371,7 @@ UPDATING 更新中
 
     @property
     def AuthTokens(self):
-        r"""限流鉴权 token 列表
+        r"""<p>限流鉴权 token 列表</p>
         :rtype: list of AuthToken
         """
         return self._AuthTokens
@@ -24494,7 +24382,7 @@ UPDATING 更新中
 
     @property
     def MonitorSource(self):
-        r"""用于监控的创建来源字段
+        r"""<p>用于监控的创建来源字段</p>
         :rtype: str
         """
         return self._MonitorSource
@@ -24505,7 +24393,7 @@ UPDATING 更新中
 
     @property
     def SubUinName(self):
-        r"""子用户的 nickname
+        r"""<p>子用户的 nickname</p>
         :rtype: str
         """
         return self._SubUinName
@@ -24516,7 +24404,7 @@ UPDATING 更新中
 
     @property
     def GatewayLogConfig(self):
-        r"""网关日志投递相关配置
+        r"""<p>网关日志投递相关配置</p>
         :rtype: :class:`tencentcloud.tione.v20211111.models.LogConfig`
         """
         return self._GatewayLogConfig
@@ -24527,7 +24415,7 @@ UPDATING 更新中
 
     @property
     def GatewayConfig(self):
-        r"""网关路由相关配置
+        r"""<p>网关路由相关配置</p>
         :rtype: :class:`tencentcloud.tione.v20211111.models.GatewayConfig`
         """
         return self._GatewayConfig
@@ -24600,120 +24488,112 @@ class ServiceInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Replicas: 期望运行的Pod数量，停止状态是0
-不同计费模式和调节模式下对应关系如下
-PREPAID 和 POSTPAID_BY_HOUR:
-手动调节模式下对应 实例数量
-自动调节模式下对应 基于时间的默认策略的实例数量
-HYBRID_PAID:
-后付费实例手动调节模式下对应 实例数量
-后付费实例自动调节模式下对应 时间策略的默认策略的实例数量
+        :param _Replicas: <p>期望运行的Pod数量，停止状态是0<br>不同计费模式和调节模式下对应关系如下<br>PREPAID 和 POSTPAID_BY_HOUR:<br>手动调节模式下对应 实例数量<br>自动调节模式下对应 基于时间的默认策略的实例数量<br>HYBRID_PAID:<br>后付费实例手动调节模式下对应 实例数量<br>后付费实例自动调节模式下对应 时间策略的默认策略的实例数量</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Replicas: int
-        :param _ImageInfo: 镜像信息
+        :param _ImageInfo: <p>镜像信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ImageInfo: :class:`tencentcloud.tione.v20211111.models.ImageInfo`
-        :param _Env: 环境变量
+        :param _Env: <p>环境变量</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Env: list of EnvVar
-        :param _Resources: 资源信息
+        :param _Resources: <p>资源信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Resources: :class:`tencentcloud.tione.v20211111.models.ResourceInfo`
-        :param _InstanceType: 后付费实例对应的机型规格
+        :param _InstanceType: <p>后付费实例对应的机型规格</p>
         :type InstanceType: str
-        :param _ModelInfo: 模型信息
+        :param _ModelInfo: <p>模型信息</p>
         :type ModelInfo: :class:`tencentcloud.tione.v20211111.models.ModelInfo`
-        :param _LogEnable: 是否启用日志
+        :param _LogEnable: <p>是否启用日志</p>
         :type LogEnable: bool
-        :param _LogConfig: 日志配置
+        :param _LogConfig: <p>日志配置</p>
         :type LogConfig: :class:`tencentcloud.tione.v20211111.models.LogConfig`
-        :param _AuthorizationEnable: 是否开启鉴权
+        :param _AuthorizationEnable: <p>是否开启鉴权</p>
         :type AuthorizationEnable: bool
-        :param _HorizontalPodAutoscaler: hpa配置
+        :param _HorizontalPodAutoscaler: <p>hpa配置</p>
         :type HorizontalPodAutoscaler: :class:`tencentcloud.tione.v20211111.models.HorizontalPodAutoscaler`
-        :param _Status: 服务的状态描述
+        :param _Status: <p>服务的状态描述</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: :class:`tencentcloud.tione.v20211111.models.WorkloadStatus`
-        :param _Weight: 权重
+        :param _Weight: <p>权重</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Weight: int
-        :param _ResourceTotal: 资源总量
+        :param _ResourceTotal: <p>资源总量</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceTotal: :class:`tencentcloud.tione.v20211111.models.ResourceInfo`
-        :param _OldReplicas: 历史实例数
+        :param _OldReplicas: <p>历史实例数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type OldReplicas: int
-        :param _HybridBillingPrepaidReplicas: 计费模式[HYBRID_PAID]时生效, 用于标识混合计费模式下的预付费实例数, 若不填则默认为1
+        :param _HybridBillingPrepaidReplicas: <p>计费模式[HYBRID_PAID]时生效, 用于标识混合计费模式下的预付费实例数, 若不填则默认为1</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type HybridBillingPrepaidReplicas: int
-        :param _OldHybridBillingPrepaidReplicas: 历史 HYBRID_PAID 时的实例数，用户恢复服务
+        :param _OldHybridBillingPrepaidReplicas: <p>历史 HYBRID_PAID 时的实例数，用户恢复服务</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type OldHybridBillingPrepaidReplicas: int
-        :param _ModelHotUpdateEnable: 是否开启模型的热更新。默认不开启
+        :param _ModelHotUpdateEnable: <p>是否开启模型的热更新。默认不开启</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ModelHotUpdateEnable: bool
-        :param _InstanceAlias: 服务的规格别名
+        :param _InstanceAlias: <p>服务的规格别名</p>
         :type InstanceAlias: str
-        :param _ScaleMode: 实例数量调节方式,默认为手动
-支持：自动 - "AUTO", 手动 - "MANUAL"
+        :param _ScaleMode: <p>实例数量调节方式,默认为手动<br>支持：自动 - &quot;AUTO&quot;, 手动 - &quot;MANUAL&quot;</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ScaleMode: str
-        :param _CronScaleJobs: 定时伸缩任务
+        :param _CronScaleJobs: <p>定时伸缩任务</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CronScaleJobs: list of CronScaleJob
-        :param _ScaleStrategy: 定时伸缩策略
+        :param _ScaleStrategy: <p>定时伸缩策略</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ScaleStrategy: str
-        :param _ScheduledAction: 定时停止的配置
+        :param _ScheduledAction: <p>定时停止的配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ScheduledAction: :class:`tencentcloud.tione.v20211111.models.ScheduledAction`
-        :param _PodList: 实例列表
+        :param _PodList: <p>实例列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type PodList: list of str
-        :param _Pods: Pod列表信息
+        :param _Pods: <p>Pod列表信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Pods: :class:`tencentcloud.tione.v20211111.models.Pod`
-        :param _PodInfos: Pod列表信息
+        :param _PodInfos: <p>Pod列表信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type PodInfos: list of Pod
-        :param _ServiceLimit: 服务限速限流相关配置
+        :param _ServiceLimit: <p>服务限速限流相关配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceLimit: :class:`tencentcloud.tione.v20211111.models.ServiceLimit`
-        :param _ModelTurboEnable: 是否开启模型的加速, 仅对StableDiffusion(动态加速)格式的模型有效。
+        :param _ModelTurboEnable: <p>是否开启模型的加速, 仅对StableDiffusion(动态加速)格式的模型有效。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ModelTurboEnable: bool
-        :param _VolumeMount: 挂载
+        :param _VolumeMount: <p>挂载</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type VolumeMount: :class:`tencentcloud.tione.v20211111.models.VolumeMount`
-        :param _InferCodeInfo: 推理代码信息
+        :param _InferCodeInfo: <p>推理代码信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type InferCodeInfo: :class:`tencentcloud.tione.v20211111.models.InferCodeInfo`
-        :param _Command: 服务的启动命令
+        :param _Command: <p>服务的启动命令</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Command: str
-        :param _ServiceEIP: 开启TIONE内网访问外部设置
+        :param _ServiceEIP: <p>开启TIONE内网访问外部设置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceEIP: :class:`tencentcloud.tione.v20211111.models.ServiceEIP`
-        :param _ServicePort: 服务端口，默认为8501
+        :param _ServicePort: <p>服务端口，默认为8501</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ServicePort: int
-        :param _TerminationGracePeriodSeconds: 服务的优雅退出时限。单位为秒，默认值为30，最小为1
+        :param _TerminationGracePeriodSeconds: <p>服务的优雅退出时限。单位为秒，默认值为30，最小为1</p>
         :type TerminationGracePeriodSeconds: int
-        :param _PreStopCommand: 服务实例停止前执行的命令，执行完毕或执行时间超过优雅退出时限后实例结束
+        :param _PreStopCommand: <p>服务实例停止前执行的命令，执行完毕或执行时间超过优雅退出时限后实例结束</p>
         :type PreStopCommand: list of str
-        :param _GrpcEnable: 是否启用grpc端口
+        :param _GrpcEnable: <p>是否启用grpc端口</p>
         :type GrpcEnable: bool
-        :param _HealthProbe: 健康探针
+        :param _HealthProbe: <p>健康探针</p>
         :type HealthProbe: :class:`tencentcloud.tione.v20211111.models.HealthProbe`
-        :param _RollingUpdate: 滚动更新配置
+        :param _RollingUpdate: <p>滚动更新配置</p>
         :type RollingUpdate: :class:`tencentcloud.tione.v20211111.models.RollingUpdate`
-        :param _InstancePerReplicas: 单副本下的实例数，仅在部署类型为DIST、ROLE时生效，默认1
+        :param _InstancePerReplicas: <p>单副本下的实例数，仅在部署类型为DIST、ROLE时生效，默认1</p>
         :type InstancePerReplicas: int
-        :param _VolumeMounts: 批量数据盘挂载配置
+        :param _VolumeMounts: <p>批量数据盘挂载配置</p>
         :type VolumeMounts: list of VolumeMount
-        :param _SchedulingStrategy: 调度策略 [binpack] 优先占满整机，尽量避免碎卡（默认值）[spread] 优先分散在各个节点，确保服务高可用
+        :param _SchedulingStrategy: <p>调度策略 [binpack] 优先占满整机，尽量避免碎卡（默认值）[spread] 优先分散在各个节点，确保服务高可用</p>
         :type SchedulingStrategy: str
-        :param _NodeCount: 服务实际运行的节点数
+        :param _NodeCount: <p>服务实际运行的节点数</p>
         :type NodeCount: int
         """
         self._Replicas = None
@@ -24760,14 +24640,7 @@ HYBRID_PAID:
 
     @property
     def Replicas(self):
-        r"""期望运行的Pod数量，停止状态是0
-不同计费模式和调节模式下对应关系如下
-PREPAID 和 POSTPAID_BY_HOUR:
-手动调节模式下对应 实例数量
-自动调节模式下对应 基于时间的默认策略的实例数量
-HYBRID_PAID:
-后付费实例手动调节模式下对应 实例数量
-后付费实例自动调节模式下对应 时间策略的默认策略的实例数量
+        r"""<p>期望运行的Pod数量，停止状态是0<br>不同计费模式和调节模式下对应关系如下<br>PREPAID 和 POSTPAID_BY_HOUR:<br>手动调节模式下对应 实例数量<br>自动调节模式下对应 基于时间的默认策略的实例数量<br>HYBRID_PAID:<br>后付费实例手动调节模式下对应 实例数量<br>后付费实例自动调节模式下对应 时间策略的默认策略的实例数量</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -24779,7 +24652,7 @@ HYBRID_PAID:
 
     @property
     def ImageInfo(self):
-        r"""镜像信息
+        r"""<p>镜像信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tione.v20211111.models.ImageInfo`
         """
@@ -24791,7 +24664,7 @@ HYBRID_PAID:
 
     @property
     def Env(self):
-        r"""环境变量
+        r"""<p>环境变量</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of EnvVar
         """
@@ -24803,7 +24676,7 @@ HYBRID_PAID:
 
     @property
     def Resources(self):
-        r"""资源信息
+        r"""<p>资源信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tione.v20211111.models.ResourceInfo`
         """
@@ -24815,7 +24688,7 @@ HYBRID_PAID:
 
     @property
     def InstanceType(self):
-        r"""后付费实例对应的机型规格
+        r"""<p>后付费实例对应的机型规格</p>
         :rtype: str
         """
         return self._InstanceType
@@ -24826,7 +24699,7 @@ HYBRID_PAID:
 
     @property
     def ModelInfo(self):
-        r"""模型信息
+        r"""<p>模型信息</p>
         :rtype: :class:`tencentcloud.tione.v20211111.models.ModelInfo`
         """
         return self._ModelInfo
@@ -24837,7 +24710,7 @@ HYBRID_PAID:
 
     @property
     def LogEnable(self):
-        r"""是否启用日志
+        r"""<p>是否启用日志</p>
         :rtype: bool
         """
         return self._LogEnable
@@ -24848,7 +24721,7 @@ HYBRID_PAID:
 
     @property
     def LogConfig(self):
-        r"""日志配置
+        r"""<p>日志配置</p>
         :rtype: :class:`tencentcloud.tione.v20211111.models.LogConfig`
         """
         return self._LogConfig
@@ -24859,7 +24732,7 @@ HYBRID_PAID:
 
     @property
     def AuthorizationEnable(self):
-        r"""是否开启鉴权
+        r"""<p>是否开启鉴权</p>
         :rtype: bool
         """
         return self._AuthorizationEnable
@@ -24870,7 +24743,7 @@ HYBRID_PAID:
 
     @property
     def HorizontalPodAutoscaler(self):
-        r"""hpa配置
+        r"""<p>hpa配置</p>
         :rtype: :class:`tencentcloud.tione.v20211111.models.HorizontalPodAutoscaler`
         """
         return self._HorizontalPodAutoscaler
@@ -24881,7 +24754,7 @@ HYBRID_PAID:
 
     @property
     def Status(self):
-        r"""服务的状态描述
+        r"""<p>服务的状态描述</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tione.v20211111.models.WorkloadStatus`
         """
@@ -24893,7 +24766,7 @@ HYBRID_PAID:
 
     @property
     def Weight(self):
-        r"""权重
+        r"""<p>权重</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -24905,7 +24778,7 @@ HYBRID_PAID:
 
     @property
     def ResourceTotal(self):
-        r"""资源总量
+        r"""<p>资源总量</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tione.v20211111.models.ResourceInfo`
         """
@@ -24917,7 +24790,7 @@ HYBRID_PAID:
 
     @property
     def OldReplicas(self):
-        r"""历史实例数
+        r"""<p>历史实例数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -24929,7 +24802,7 @@ HYBRID_PAID:
 
     @property
     def HybridBillingPrepaidReplicas(self):
-        r"""计费模式[HYBRID_PAID]时生效, 用于标识混合计费模式下的预付费实例数, 若不填则默认为1
+        r"""<p>计费模式[HYBRID_PAID]时生效, 用于标识混合计费模式下的预付费实例数, 若不填则默认为1</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -24941,7 +24814,7 @@ HYBRID_PAID:
 
     @property
     def OldHybridBillingPrepaidReplicas(self):
-        r"""历史 HYBRID_PAID 时的实例数，用户恢复服务
+        r"""<p>历史 HYBRID_PAID 时的实例数，用户恢复服务</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -24953,7 +24826,7 @@ HYBRID_PAID:
 
     @property
     def ModelHotUpdateEnable(self):
-        r"""是否开启模型的热更新。默认不开启
+        r"""<p>是否开启模型的热更新。默认不开启</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -24965,7 +24838,7 @@ HYBRID_PAID:
 
     @property
     def InstanceAlias(self):
-        r"""服务的规格别名
+        r"""<p>服务的规格别名</p>
         :rtype: str
         """
         return self._InstanceAlias
@@ -24976,8 +24849,7 @@ HYBRID_PAID:
 
     @property
     def ScaleMode(self):
-        r"""实例数量调节方式,默认为手动
-支持：自动 - "AUTO", 手动 - "MANUAL"
+        r"""<p>实例数量调节方式,默认为手动<br>支持：自动 - &quot;AUTO&quot;, 手动 - &quot;MANUAL&quot;</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -24989,7 +24861,7 @@ HYBRID_PAID:
 
     @property
     def CronScaleJobs(self):
-        r"""定时伸缩任务
+        r"""<p>定时伸缩任务</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CronScaleJob
         """
@@ -25001,7 +24873,7 @@ HYBRID_PAID:
 
     @property
     def ScaleStrategy(self):
-        r"""定时伸缩策略
+        r"""<p>定时伸缩策略</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -25013,7 +24885,7 @@ HYBRID_PAID:
 
     @property
     def ScheduledAction(self):
-        r"""定时停止的配置
+        r"""<p>定时停止的配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tione.v20211111.models.ScheduledAction`
         """
@@ -25027,7 +24899,7 @@ HYBRID_PAID:
     def PodList(self):
         warnings.warn("parameter `PodList` is deprecated", DeprecationWarning) 
 
-        r"""实例列表
+        r"""<p>实例列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -25043,7 +24915,7 @@ HYBRID_PAID:
     def Pods(self):
         warnings.warn("parameter `Pods` is deprecated", DeprecationWarning) 
 
-        r"""Pod列表信息
+        r"""<p>Pod列表信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tione.v20211111.models.Pod`
         """
@@ -25057,7 +24929,7 @@ HYBRID_PAID:
 
     @property
     def PodInfos(self):
-        r"""Pod列表信息
+        r"""<p>Pod列表信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Pod
         """
@@ -25069,7 +24941,7 @@ HYBRID_PAID:
 
     @property
     def ServiceLimit(self):
-        r"""服务限速限流相关配置
+        r"""<p>服务限速限流相关配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tione.v20211111.models.ServiceLimit`
         """
@@ -25081,7 +24953,7 @@ HYBRID_PAID:
 
     @property
     def ModelTurboEnable(self):
-        r"""是否开启模型的加速, 仅对StableDiffusion(动态加速)格式的模型有效。
+        r"""<p>是否开启模型的加速, 仅对StableDiffusion(动态加速)格式的模型有效。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -25093,7 +24965,7 @@ HYBRID_PAID:
 
     @property
     def VolumeMount(self):
-        r"""挂载
+        r"""<p>挂载</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tione.v20211111.models.VolumeMount`
         """
@@ -25105,7 +24977,7 @@ HYBRID_PAID:
 
     @property
     def InferCodeInfo(self):
-        r"""推理代码信息
+        r"""<p>推理代码信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tione.v20211111.models.InferCodeInfo`
         """
@@ -25117,7 +24989,7 @@ HYBRID_PAID:
 
     @property
     def Command(self):
-        r"""服务的启动命令
+        r"""<p>服务的启动命令</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -25129,7 +25001,7 @@ HYBRID_PAID:
 
     @property
     def ServiceEIP(self):
-        r"""开启TIONE内网访问外部设置
+        r"""<p>开启TIONE内网访问外部设置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tione.v20211111.models.ServiceEIP`
         """
@@ -25141,7 +25013,7 @@ HYBRID_PAID:
 
     @property
     def ServicePort(self):
-        r"""服务端口，默认为8501
+        r"""<p>服务端口，默认为8501</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -25153,7 +25025,7 @@ HYBRID_PAID:
 
     @property
     def TerminationGracePeriodSeconds(self):
-        r"""服务的优雅退出时限。单位为秒，默认值为30，最小为1
+        r"""<p>服务的优雅退出时限。单位为秒，默认值为30，最小为1</p>
         :rtype: int
         """
         return self._TerminationGracePeriodSeconds
@@ -25164,7 +25036,7 @@ HYBRID_PAID:
 
     @property
     def PreStopCommand(self):
-        r"""服务实例停止前执行的命令，执行完毕或执行时间超过优雅退出时限后实例结束
+        r"""<p>服务实例停止前执行的命令，执行完毕或执行时间超过优雅退出时限后实例结束</p>
         :rtype: list of str
         """
         return self._PreStopCommand
@@ -25175,7 +25047,7 @@ HYBRID_PAID:
 
     @property
     def GrpcEnable(self):
-        r"""是否启用grpc端口
+        r"""<p>是否启用grpc端口</p>
         :rtype: bool
         """
         return self._GrpcEnable
@@ -25186,7 +25058,7 @@ HYBRID_PAID:
 
     @property
     def HealthProbe(self):
-        r"""健康探针
+        r"""<p>健康探针</p>
         :rtype: :class:`tencentcloud.tione.v20211111.models.HealthProbe`
         """
         return self._HealthProbe
@@ -25197,7 +25069,7 @@ HYBRID_PAID:
 
     @property
     def RollingUpdate(self):
-        r"""滚动更新配置
+        r"""<p>滚动更新配置</p>
         :rtype: :class:`tencentcloud.tione.v20211111.models.RollingUpdate`
         """
         return self._RollingUpdate
@@ -25208,7 +25080,7 @@ HYBRID_PAID:
 
     @property
     def InstancePerReplicas(self):
-        r"""单副本下的实例数，仅在部署类型为DIST、ROLE时生效，默认1
+        r"""<p>单副本下的实例数，仅在部署类型为DIST、ROLE时生效，默认1</p>
         :rtype: int
         """
         return self._InstancePerReplicas
@@ -25219,7 +25091,7 @@ HYBRID_PAID:
 
     @property
     def VolumeMounts(self):
-        r"""批量数据盘挂载配置
+        r"""<p>批量数据盘挂载配置</p>
         :rtype: list of VolumeMount
         """
         return self._VolumeMounts
@@ -25230,7 +25102,7 @@ HYBRID_PAID:
 
     @property
     def SchedulingStrategy(self):
-        r"""调度策略 [binpack] 优先占满整机，尽量避免碎卡（默认值）[spread] 优先分散在各个节点，确保服务高可用
+        r"""<p>调度策略 [binpack] 优先占满整机，尽量避免碎卡（默认值）[spread] 优先分散在各个节点，确保服务高可用</p>
         :rtype: str
         """
         return self._SchedulingStrategy
@@ -25241,7 +25113,7 @@ HYBRID_PAID:
 
     @property
     def NodeCount(self):
-        r"""服务实际运行的节点数
+        r"""<p>服务实际运行的节点数</p>
         :rtype: int
         """
         return self._NodeCount
@@ -28970,14 +28842,14 @@ class VolumeMount(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CFSConfig: cfs的配置信息
+        :param _CFSConfig: <p>cfs的配置信息</p>
         :type CFSConfig: :class:`tencentcloud.tione.v20211111.models.CFSConfig`
-        :param _VolumeSourceType: 挂载源类型，CFS、COS、PUBLIC_DATA_SOURCE，默认为CFS
+        :param _VolumeSourceType: <p>挂载源类型，CFS、COS、PUBLIC_DATA_SOURCE，默认为CFS</p>
         :type VolumeSourceType: str
-        :param _MountPath: 自定义容器内挂载路径
+        :param _MountPath: <p>自定义容器内挂载路径</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type MountPath: str
-        :param _PublicDataSource: 挂载数据源时的配置信息
+        :param _PublicDataSource: <p>挂载数据源时的配置信息</p>
         :type PublicDataSource: :class:`tencentcloud.tione.v20211111.models.PublicDataSourceFS`
         """
         self._CFSConfig = None
@@ -28987,7 +28859,7 @@ class VolumeMount(AbstractModel):
 
     @property
     def CFSConfig(self):
-        r"""cfs的配置信息
+        r"""<p>cfs的配置信息</p>
         :rtype: :class:`tencentcloud.tione.v20211111.models.CFSConfig`
         """
         return self._CFSConfig
@@ -28998,7 +28870,7 @@ class VolumeMount(AbstractModel):
 
     @property
     def VolumeSourceType(self):
-        r"""挂载源类型，CFS、COS、PUBLIC_DATA_SOURCE，默认为CFS
+        r"""<p>挂载源类型，CFS、COS、PUBLIC_DATA_SOURCE，默认为CFS</p>
         :rtype: str
         """
         return self._VolumeSourceType
@@ -29009,7 +28881,7 @@ class VolumeMount(AbstractModel):
 
     @property
     def MountPath(self):
-        r"""自定义容器内挂载路径
+        r"""<p>自定义容器内挂载路径</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -29021,7 +28893,7 @@ class VolumeMount(AbstractModel):
 
     @property
     def PublicDataSource(self):
-        r"""挂载数据源时的配置信息
+        r"""<p>挂载数据源时的配置信息</p>
         :rtype: :class:`tencentcloud.tione.v20211111.models.PublicDataSourceFS`
         """
         return self._PublicDataSource

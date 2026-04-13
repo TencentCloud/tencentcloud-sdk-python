@@ -1038,6 +1038,24 @@ class TcbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ExecutePGSql(
+            self,
+            request: models.ExecutePGSqlRequest,
+            opts: Dict = None,
+    ) -> models.ExecutePGSqlResponse:
+        """
+        在Postgres数据库上执行SQL
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ExecutePGSql"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ExecutePGSqlResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def GetProviders(
             self,
             request: models.GetProvidersRequest,

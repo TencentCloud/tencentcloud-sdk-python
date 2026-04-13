@@ -5659,14 +5659,14 @@ class DescribeInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        :param _InstanceId: <p>腾讯云MQTT实例ID，从 <a href="https://cloud.tencent.com/document/api/1778/111029">DescribeInstanceList</a>接口或控制台获得。</p>
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        r"""腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        r"""<p>腾讯云MQTT实例ID，从 <a href="https://cloud.tencent.com/document/api/1778/111029">DescribeInstanceList</a>接口或控制台获得。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -5695,81 +5695,78 @@ class DescribeInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceType: 实例类型
-BASIC 基础版
-PRO  专业版
-PLATINUM 铂金版
+        :param _InstanceType: <p>实例类型<br>BASIC 基础版<br>PRO  专业版<br>PLATINUM 铂金版</p>
         :type InstanceType: str
-        :param _InstanceId: 实例ID
+        :param _InstanceId: <p>实例ID</p>
         :type InstanceId: str
-        :param _InstanceName: 实例名称
+        :param _InstanceName: <p>实例名称</p>
         :type InstanceName: str
-        :param _TopicNum: 主题数量
+        :param _TopicNum: <p>主题数量</p>
         :type TopicNum: int
-        :param _TopicNumLimit: 实例最大主题数量
+        :param _TopicNumLimit: <p>实例最大主题数量</p>
         :type TopicNumLimit: int
-        :param _TpsLimit: TPS限流值
+        :param _TpsLimit: <p>TPS限流值</p>
         :type TpsLimit: int
-        :param _CreatedTime: 创建时间，秒为单位
+        :param _CreatedTime: <p>创建时间，秒为单位</p>
         :type CreatedTime: int
-        :param _Remark: 备注信息
+        :param _Remark: <p>备注信息</p>
         :type Remark: str
-        :param _InstanceStatus: 实例状态， RUNNING, 运行中 MAINTAINING，维护中 ABNORMAL，异常 OVERDUE，欠费 DESTROYED，已删除 CREATING，创建中 MODIFYING，变配中 CREATE_FAILURE，创建失败 MODIFY_FAILURE，变配失败 DELETING，删除中
+        :param _InstanceStatus: <p>实例状态， RUNNING, 运行中 MAINTAINING，维护中 ABNORMAL，异常 OVERDUE，欠费 DESTROYED，已删除 CREATING，创建中 MODIFYING，变配中 CREATE_FAILURE，创建失败 MODIFY_FAILURE，变配失败 DELETING，删除中</p>
         :type InstanceStatus: str
-        :param _SkuCode: 实例规格
+        :param _SkuCode: <p>实例规格</p>
         :type SkuCode: str
-        :param _MaxSubscriptionPerClient: 单客户端最大订阅数
+        :param _MaxSubscriptionPerClient: <p>单客户端最大订阅数</p>
         :type MaxSubscriptionPerClient: int
-        :param _AuthorizationPolicyLimit: 授权规则条数
+        :param _AuthorizationPolicyLimit: <p>授权规则条数</p>
         :type AuthorizationPolicyLimit: int
-        :param _ClientNumLimit: 客户端数量上限
+        :param _ClientNumLimit: <p>客户端数量上限</p>
         :type ClientNumLimit: int
-        :param _DeviceCertificateProvisionType: 客户端证书注册方式：
-JITP：自动注册
-API：通过API手动注册
+        :param _DeviceCertificateProvisionType: <p>客户端证书注册方式：<br>JITP：自动注册<br>API：通过API手动注册</p>
         :type DeviceCertificateProvisionType: str
-        :param _AutomaticActivation: 自动注册设备证书时是否自动激活
+        :param _AutomaticActivation: <p>自动注册设备证书时是否自动激活</p>
         :type AutomaticActivation: bool
-        :param _RenewFlag: 是否自动续费。仅包年包月集群生效。 1:自动续费 0:非自动续费
+        :param _RenewFlag: <p>是否自动续费。仅包年包月集群生效。 1:自动续费 0:非自动续费</p>
         :type RenewFlag: int
-        :param _PayMode: 计费模式， POSTPAID，按量计费 PREPAID，包年包月
+        :param _PayMode: <p>计费模式， POSTPAID，按量计费 PREPAID，包年包月</p>
         :type PayMode: str
-        :param _ExpiryTime: 到期时间，毫秒级时间戳
+        :param _ExpiryTime: <p>到期时间，毫秒级时间戳</p>
         :type ExpiryTime: int
-        :param _DestroyTime: 预销毁时间，毫秒级时间戳
+        :param _DestroyTime: <p>预销毁时间，毫秒级时间戳</p>
         :type DestroyTime: int
-        :param _X509Mode: TLS,单向认证    mTLS,双向认证    BYOC;一机一证
+        :param _X509Mode: <p>TLS,单向认证    mTLS,双向认证    BYOC;一机一证</p>
         :type X509Mode: str
-        :param _MaxCaNum: 最大Ca配额
+        :param _MaxCaNum: <p>最大Ca配额</p>
         :type MaxCaNum: int
-        :param _RegistrationCode: 证书注册码
+        :param _RegistrationCode: <p>证书注册码</p>
         :type RegistrationCode: str
-        :param _MaxSubscription: 集群最大订阅数
+        :param _MaxSubscription: <p>集群最大订阅数</p>
         :type MaxSubscription: int
-        :param _AuthorizationPolicy: 授权策略开关
+        :param _AuthorizationPolicy: <p>授权策略开关</p>
         :type AuthorizationPolicy: bool
-        :param _SharedSubscriptionGroupLimit: 共享订阅组数最大限制
+        :param _SharedSubscriptionGroupLimit: <p>共享订阅组数最大限制</p>
         :type SharedSubscriptionGroupLimit: int
-        :param _MaxTopicFilterPerSharedSubscriptionGroup: 单个共享订阅组TopicFilter数限制
+        :param _MaxTopicFilterPerSharedSubscriptionGroup: <p>单个共享订阅组TopicFilter数限制</p>
         :type MaxTopicFilterPerSharedSubscriptionGroup: int
-        :param _AutoSubscriptionPolicyLimit: 自动订阅规则条数限制
+        :param _AutoSubscriptionPolicyLimit: <p>自动订阅规则条数限制</p>
         :type AutoSubscriptionPolicyLimit: int
-        :param _MaxTopicFilterPerAutoSubscriptionPolicy: 单条自动订阅规则TopicFilter数限制
+        :param _MaxTopicFilterPerAutoSubscriptionPolicy: <p>单条自动订阅规则TopicFilter数限制</p>
         :type MaxTopicFilterPerAutoSubscriptionPolicy: int
-        :param _UseDefaultServerCert: 是否使用默认的服务端证书
+        :param _UseDefaultServerCert: <p>是否使用默认的服务端证书</p>
         :type UseDefaultServerCert: bool
-        :param _TrustedCaLimit: 服务端CA最大数量
+        :param _TrustedCaLimit: <p>服务端CA最大数量</p>
         :type TrustedCaLimit: int
-        :param _ServerCertLimit: 服务端证书最大数量
+        :param _ServerCertLimit: <p>服务端证书最大数量</p>
         :type ServerCertLimit: int
-        :param _TopicPrefixSlashLimit: topic前缀最大层级
+        :param _TopicPrefixSlashLimit: <p>topic前缀最大层级</p>
         :type TopicPrefixSlashLimit: int
-        :param _MessageRate: 单客户端发送消息限速，单位 条/秒
+        :param _MessageRate: <p>单客户端发送消息限速，单位 条/秒</p>
         :type MessageRate: int
-        :param _TransportLayerSecurity: 服务端tls支持的协议，使用“,”分割。例如：TLSv1.3,TLSv1.2,TLSv1.1,TLSv1
+        :param _TransportLayerSecurity: <p>服务端tls支持的协议，使用“,”分割。例如：TLSv1.3,TLSv1.2,TLSv1.1,TLSv1</p>
         :type TransportLayerSecurity: str
-        :param _MessageEnrichmentRuleLimit: 消息属性增强规则配额
+        :param _MessageEnrichmentRuleLimit: <p>消息属性增强规则配额</p>
         :type MessageEnrichmentRuleLimit: int
+        :param _BlockRuleLimit: <p>封禁规则最大数量</p>
+        :type BlockRuleLimit: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -5808,14 +5805,12 @@ API：通过API手动注册
         self._MessageRate = None
         self._TransportLayerSecurity = None
         self._MessageEnrichmentRuleLimit = None
+        self._BlockRuleLimit = None
         self._RequestId = None
 
     @property
     def InstanceType(self):
-        r"""实例类型
-BASIC 基础版
-PRO  专业版
-PLATINUM 铂金版
+        r"""<p>实例类型<br>BASIC 基础版<br>PRO  专业版<br>PLATINUM 铂金版</p>
         :rtype: str
         """
         return self._InstanceType
@@ -5826,7 +5821,7 @@ PLATINUM 铂金版
 
     @property
     def InstanceId(self):
-        r"""实例ID
+        r"""<p>实例ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -5837,7 +5832,7 @@ PLATINUM 铂金版
 
     @property
     def InstanceName(self):
-        r"""实例名称
+        r"""<p>实例名称</p>
         :rtype: str
         """
         return self._InstanceName
@@ -5848,7 +5843,7 @@ PLATINUM 铂金版
 
     @property
     def TopicNum(self):
-        r"""主题数量
+        r"""<p>主题数量</p>
         :rtype: int
         """
         return self._TopicNum
@@ -5859,7 +5854,7 @@ PLATINUM 铂金版
 
     @property
     def TopicNumLimit(self):
-        r"""实例最大主题数量
+        r"""<p>实例最大主题数量</p>
         :rtype: int
         """
         return self._TopicNumLimit
@@ -5870,7 +5865,7 @@ PLATINUM 铂金版
 
     @property
     def TpsLimit(self):
-        r"""TPS限流值
+        r"""<p>TPS限流值</p>
         :rtype: int
         """
         return self._TpsLimit
@@ -5881,7 +5876,7 @@ PLATINUM 铂金版
 
     @property
     def CreatedTime(self):
-        r"""创建时间，秒为单位
+        r"""<p>创建时间，秒为单位</p>
         :rtype: int
         """
         return self._CreatedTime
@@ -5892,7 +5887,7 @@ PLATINUM 铂金版
 
     @property
     def Remark(self):
-        r"""备注信息
+        r"""<p>备注信息</p>
         :rtype: str
         """
         return self._Remark
@@ -5903,7 +5898,7 @@ PLATINUM 铂金版
 
     @property
     def InstanceStatus(self):
-        r"""实例状态， RUNNING, 运行中 MAINTAINING，维护中 ABNORMAL，异常 OVERDUE，欠费 DESTROYED，已删除 CREATING，创建中 MODIFYING，变配中 CREATE_FAILURE，创建失败 MODIFY_FAILURE，变配失败 DELETING，删除中
+        r"""<p>实例状态， RUNNING, 运行中 MAINTAINING，维护中 ABNORMAL，异常 OVERDUE，欠费 DESTROYED，已删除 CREATING，创建中 MODIFYING，变配中 CREATE_FAILURE，创建失败 MODIFY_FAILURE，变配失败 DELETING，删除中</p>
         :rtype: str
         """
         return self._InstanceStatus
@@ -5914,7 +5909,7 @@ PLATINUM 铂金版
 
     @property
     def SkuCode(self):
-        r"""实例规格
+        r"""<p>实例规格</p>
         :rtype: str
         """
         return self._SkuCode
@@ -5925,7 +5920,7 @@ PLATINUM 铂金版
 
     @property
     def MaxSubscriptionPerClient(self):
-        r"""单客户端最大订阅数
+        r"""<p>单客户端最大订阅数</p>
         :rtype: int
         """
         return self._MaxSubscriptionPerClient
@@ -5936,7 +5931,7 @@ PLATINUM 铂金版
 
     @property
     def AuthorizationPolicyLimit(self):
-        r"""授权规则条数
+        r"""<p>授权规则条数</p>
         :rtype: int
         """
         return self._AuthorizationPolicyLimit
@@ -5947,7 +5942,7 @@ PLATINUM 铂金版
 
     @property
     def ClientNumLimit(self):
-        r"""客户端数量上限
+        r"""<p>客户端数量上限</p>
         :rtype: int
         """
         return self._ClientNumLimit
@@ -5958,9 +5953,7 @@ PLATINUM 铂金版
 
     @property
     def DeviceCertificateProvisionType(self):
-        r"""客户端证书注册方式：
-JITP：自动注册
-API：通过API手动注册
+        r"""<p>客户端证书注册方式：<br>JITP：自动注册<br>API：通过API手动注册</p>
         :rtype: str
         """
         return self._DeviceCertificateProvisionType
@@ -5971,7 +5964,7 @@ API：通过API手动注册
 
     @property
     def AutomaticActivation(self):
-        r"""自动注册设备证书时是否自动激活
+        r"""<p>自动注册设备证书时是否自动激活</p>
         :rtype: bool
         """
         return self._AutomaticActivation
@@ -5982,7 +5975,7 @@ API：通过API手动注册
 
     @property
     def RenewFlag(self):
-        r"""是否自动续费。仅包年包月集群生效。 1:自动续费 0:非自动续费
+        r"""<p>是否自动续费。仅包年包月集群生效。 1:自动续费 0:非自动续费</p>
         :rtype: int
         """
         return self._RenewFlag
@@ -5993,7 +5986,7 @@ API：通过API手动注册
 
     @property
     def PayMode(self):
-        r"""计费模式， POSTPAID，按量计费 PREPAID，包年包月
+        r"""<p>计费模式， POSTPAID，按量计费 PREPAID，包年包月</p>
         :rtype: str
         """
         return self._PayMode
@@ -6004,7 +5997,7 @@ API：通过API手动注册
 
     @property
     def ExpiryTime(self):
-        r"""到期时间，毫秒级时间戳
+        r"""<p>到期时间，毫秒级时间戳</p>
         :rtype: int
         """
         return self._ExpiryTime
@@ -6015,7 +6008,7 @@ API：通过API手动注册
 
     @property
     def DestroyTime(self):
-        r"""预销毁时间，毫秒级时间戳
+        r"""<p>预销毁时间，毫秒级时间戳</p>
         :rtype: int
         """
         return self._DestroyTime
@@ -6026,7 +6019,7 @@ API：通过API手动注册
 
     @property
     def X509Mode(self):
-        r"""TLS,单向认证    mTLS,双向认证    BYOC;一机一证
+        r"""<p>TLS,单向认证    mTLS,双向认证    BYOC;一机一证</p>
         :rtype: str
         """
         return self._X509Mode
@@ -6037,7 +6030,7 @@ API：通过API手动注册
 
     @property
     def MaxCaNum(self):
-        r"""最大Ca配额
+        r"""<p>最大Ca配额</p>
         :rtype: int
         """
         return self._MaxCaNum
@@ -6048,7 +6041,7 @@ API：通过API手动注册
 
     @property
     def RegistrationCode(self):
-        r"""证书注册码
+        r"""<p>证书注册码</p>
         :rtype: str
         """
         return self._RegistrationCode
@@ -6059,7 +6052,7 @@ API：通过API手动注册
 
     @property
     def MaxSubscription(self):
-        r"""集群最大订阅数
+        r"""<p>集群最大订阅数</p>
         :rtype: int
         """
         return self._MaxSubscription
@@ -6070,7 +6063,7 @@ API：通过API手动注册
 
     @property
     def AuthorizationPolicy(self):
-        r"""授权策略开关
+        r"""<p>授权策略开关</p>
         :rtype: bool
         """
         return self._AuthorizationPolicy
@@ -6081,7 +6074,7 @@ API：通过API手动注册
 
     @property
     def SharedSubscriptionGroupLimit(self):
-        r"""共享订阅组数最大限制
+        r"""<p>共享订阅组数最大限制</p>
         :rtype: int
         """
         return self._SharedSubscriptionGroupLimit
@@ -6092,18 +6085,22 @@ API：通过API手动注册
 
     @property
     def MaxTopicFilterPerSharedSubscriptionGroup(self):
-        r"""单个共享订阅组TopicFilter数限制
+        warnings.warn("parameter `MaxTopicFilterPerSharedSubscriptionGroup` is deprecated", DeprecationWarning) 
+
+        r"""<p>单个共享订阅组TopicFilter数限制</p>
         :rtype: int
         """
         return self._MaxTopicFilterPerSharedSubscriptionGroup
 
     @MaxTopicFilterPerSharedSubscriptionGroup.setter
     def MaxTopicFilterPerSharedSubscriptionGroup(self, MaxTopicFilterPerSharedSubscriptionGroup):
+        warnings.warn("parameter `MaxTopicFilterPerSharedSubscriptionGroup` is deprecated", DeprecationWarning) 
+
         self._MaxTopicFilterPerSharedSubscriptionGroup = MaxTopicFilterPerSharedSubscriptionGroup
 
     @property
     def AutoSubscriptionPolicyLimit(self):
-        r"""自动订阅规则条数限制
+        r"""<p>自动订阅规则条数限制</p>
         :rtype: int
         """
         return self._AutoSubscriptionPolicyLimit
@@ -6114,7 +6111,7 @@ API：通过API手动注册
 
     @property
     def MaxTopicFilterPerAutoSubscriptionPolicy(self):
-        r"""单条自动订阅规则TopicFilter数限制
+        r"""<p>单条自动订阅规则TopicFilter数限制</p>
         :rtype: int
         """
         return self._MaxTopicFilterPerAutoSubscriptionPolicy
@@ -6125,7 +6122,7 @@ API：通过API手动注册
 
     @property
     def UseDefaultServerCert(self):
-        r"""是否使用默认的服务端证书
+        r"""<p>是否使用默认的服务端证书</p>
         :rtype: bool
         """
         return self._UseDefaultServerCert
@@ -6136,7 +6133,7 @@ API：通过API手动注册
 
     @property
     def TrustedCaLimit(self):
-        r"""服务端CA最大数量
+        r"""<p>服务端CA最大数量</p>
         :rtype: int
         """
         return self._TrustedCaLimit
@@ -6147,7 +6144,7 @@ API：通过API手动注册
 
     @property
     def ServerCertLimit(self):
-        r"""服务端证书最大数量
+        r"""<p>服务端证书最大数量</p>
         :rtype: int
         """
         return self._ServerCertLimit
@@ -6158,7 +6155,7 @@ API：通过API手动注册
 
     @property
     def TopicPrefixSlashLimit(self):
-        r"""topic前缀最大层级
+        r"""<p>topic前缀最大层级</p>
         :rtype: int
         """
         return self._TopicPrefixSlashLimit
@@ -6169,7 +6166,7 @@ API：通过API手动注册
 
     @property
     def MessageRate(self):
-        r"""单客户端发送消息限速，单位 条/秒
+        r"""<p>单客户端发送消息限速，单位 条/秒</p>
         :rtype: int
         """
         return self._MessageRate
@@ -6180,7 +6177,7 @@ API：通过API手动注册
 
     @property
     def TransportLayerSecurity(self):
-        r"""服务端tls支持的协议，使用“,”分割。例如：TLSv1.3,TLSv1.2,TLSv1.1,TLSv1
+        r"""<p>服务端tls支持的协议，使用“,”分割。例如：TLSv1.3,TLSv1.2,TLSv1.1,TLSv1</p>
         :rtype: str
         """
         return self._TransportLayerSecurity
@@ -6191,7 +6188,7 @@ API：通过API手动注册
 
     @property
     def MessageEnrichmentRuleLimit(self):
-        r"""消息属性增强规则配额
+        r"""<p>消息属性增强规则配额</p>
         :rtype: int
         """
         return self._MessageEnrichmentRuleLimit
@@ -6199,6 +6196,17 @@ API：通过API手动注册
     @MessageEnrichmentRuleLimit.setter
     def MessageEnrichmentRuleLimit(self, MessageEnrichmentRuleLimit):
         self._MessageEnrichmentRuleLimit = MessageEnrichmentRuleLimit
+
+    @property
+    def BlockRuleLimit(self):
+        r"""<p>封禁规则最大数量</p>
+        :rtype: int
+        """
+        return self._BlockRuleLimit
+
+    @BlockRuleLimit.setter
+    def BlockRuleLimit(self, BlockRuleLimit):
+        self._BlockRuleLimit = BlockRuleLimit
 
     @property
     def RequestId(self):
@@ -6248,6 +6256,7 @@ API：通过API手动注册
         self._MessageRate = params.get("MessageRate")
         self._TransportLayerSecurity = params.get("TransportLayerSecurity")
         self._MessageEnrichmentRuleLimit = params.get("MessageEnrichmentRuleLimit")
+        self._BlockRuleLimit = params.get("BlockRuleLimit")
         self._RequestId = params.get("RequestId")
 
 

@@ -81,6 +81,24 @@ class TrocketClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateMigrationTask(
+            self,
+            request: models.CreateMigrationTaskRequest,
+            opts: Dict = None,
+    ) -> models.CreateMigrationTaskResponse:
+        """
+        创建元数据迁移上云任务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateMigrationTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateMigrationTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateRole(
             self,
             request: models.CreateRoleRequest,

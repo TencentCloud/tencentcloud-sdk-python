@@ -97,6 +97,29 @@ class TrocketClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateMigrationTask(self, request):
+        r"""创建元数据迁移上云任务
+
+        :param request: Request instance for CreateMigrationTask.
+        :type request: :class:`tencentcloud.trocket.v20230308.models.CreateMigrationTaskRequest`
+        :rtype: :class:`tencentcloud.trocket.v20230308.models.CreateMigrationTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateMigrationTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateMigrationTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateRole(self, request):
         r"""添加角色。
         当前 API 适用集群：5.x 集群。4.x 集群的创建角色接口文档见 [CreateRocketMQRole](https://cloud.tencent.com/document/product/1179/107538)，给角色授权接口文档见 [CreateRocketMQEnvironmentRole](https://cloud.tencent.com/document/product/1179/107539)。

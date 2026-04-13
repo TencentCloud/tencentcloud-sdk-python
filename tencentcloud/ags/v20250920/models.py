@@ -2199,14 +2199,14 @@ class LogConfiguration(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CLSConfig: 日志推送CLS的配置。
+        :param _CLSConfig: <p>日志推送CLS的配置。</p>
         :type CLSConfig: :class:`tencentcloud.ags.v20250920.models.CLSConfig`
         """
         self._CLSConfig = None
 
     @property
     def CLSConfig(self):
-        r"""日志推送CLS的配置。
+        r"""<p>日志推送CLS的配置。</p>
         :rtype: :class:`tencentcloud.ags.v20250920.models.CLSConfig`
         """
         return self._CLSConfig

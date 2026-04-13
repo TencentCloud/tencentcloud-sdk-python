@@ -3231,33 +3231,33 @@ class CreateRecordRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Domain: 域名
+        :param _Domain: <p>域名</p>
         :type Domain: str
-        :param _RecordType: 记录类型，可通过接口DescribeRecordType获得，大写英文，比如：A 。
+        :param _RecordType: <p>记录类型，可通过接口DescribeRecordType获得，大写英文，比如：A 。</p>
         :type RecordType: str
-        :param _RecordLine: 记录线路，可以通过接口DescribeRecordLineList查看当前域名允许的线路信息，中文，比如：默认。
+        :param _RecordLine: <p>记录线路，可以通过接口DescribeRecordLineList查看当前域名允许的线路信息，中文，比如：默认。</p>
         :type RecordLine: str
-        :param _Value: 记录值，如 IP : 200.200.200.200， CNAME : cname.dnspod.com.， MX : mail.dnspod.com.。
+        :param _Value: <p>记录值，如 IP : 200.200.200.200， CNAME : cname.dnspod.com.， MX : mail.dnspod.com.。</p>
         :type Value: str
-        :param _DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+        :param _DomainId: <p>域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。</p>
         :type DomainId: int
-        :param _SubDomain: 主机记录，如 www，如果不传，默认为 @。
+        :param _SubDomain: <p>主机记录，如 www，如果不传，默认为 @。</p>
         :type SubDomain: str
-        :param _RecordLineId: 线路的 ID，可以通过接口DescribeRecordLineList查看当前域名允许的线路信息，英文字符串，比如：10=1。参数RecordLineId优先级高于RecordLine，如果同时传递二者，优先使用RecordLineId参数。
+        :param _RecordLineId: <p>线路的 ID，可以通过接口DescribeRecordLineList查看当前域名允许的线路信息，英文字符串，比如：10=1。参数RecordLineId优先级高于RecordLine，如果同时传递二者，优先使用RecordLineId参数。</p>
         :type RecordLineId: str
-        :param _MX: MX 优先级，当记录类型是 MX、HTTPS、SVCB 时必填，范围1-65535。
+        :param _MX: <p>MX 优先级，当记录类型是 MX、HTTPS、SVCB 时必填，范围0-65535。</p><p>取值范围：[0, 65535]</p>
         :type MX: int
-        :param _TTL: TTL，范围1-604800，不同套餐域名最小值不同。
+        :param _TTL: <p>TTL，范围1-604800，不同套餐域名最小值不同。</p>
         :type TTL: int
-        :param _Weight: 权重信息，0到100的整数。0 表示关闭，不传该参数，表示不设置权重信息。
+        :param _Weight: <p>权重信息，0到100的整数。0 表示关闭，不传该参数，表示不设置权重信息。</p>
         :type Weight: int
-        :param _Status: 记录初始状态，取值范围为 ENABLE 和 DISABLE 。默认为 ENABLE ，如果传入 DISABLE，解析不会生效，也不会验证负载均衡的限制。
+        :param _Status: <p>记录初始状态，取值范围为 ENABLE 和 DISABLE 。默认为 ENABLE ，如果传入 DISABLE，解析不会生效，也不会验证负载均衡的限制。</p>
         :type Status: str
-        :param _Remark: 备注
+        :param _Remark: <p>备注</p>
         :type Remark: str
-        :param _DnssecConflictMode: 开启DNSSEC时，强制添加CNAME/URL记录
+        :param _DnssecConflictMode: <p>开启DNSSEC时，强制添加CNAME/URL记录</p>
         :type DnssecConflictMode: str
-        :param _GroupId: 记录分组 Id。可以通过接口 DescribeRecordGroupList 接口 GroupId 字段获取。
+        :param _GroupId: <p>记录分组 Id。可以通过接口 DescribeRecordGroupList 接口 GroupId 字段获取。</p><p>取值参考：<a href="https://cloud.tencent.com/document/api/1427/83225">DescribeRecordGroupList</a></p>
         :type GroupId: int
         """
         self._Domain = None
@@ -3277,7 +3277,7 @@ class CreateRecordRequest(AbstractModel):
 
     @property
     def Domain(self):
-        r"""域名
+        r"""<p>域名</p>
         :rtype: str
         """
         return self._Domain
@@ -3288,7 +3288,7 @@ class CreateRecordRequest(AbstractModel):
 
     @property
     def RecordType(self):
-        r"""记录类型，可通过接口DescribeRecordType获得，大写英文，比如：A 。
+        r"""<p>记录类型，可通过接口DescribeRecordType获得，大写英文，比如：A 。</p>
         :rtype: str
         """
         return self._RecordType
@@ -3299,7 +3299,7 @@ class CreateRecordRequest(AbstractModel):
 
     @property
     def RecordLine(self):
-        r"""记录线路，可以通过接口DescribeRecordLineList查看当前域名允许的线路信息，中文，比如：默认。
+        r"""<p>记录线路，可以通过接口DescribeRecordLineList查看当前域名允许的线路信息，中文，比如：默认。</p>
         :rtype: str
         """
         return self._RecordLine
@@ -3310,7 +3310,7 @@ class CreateRecordRequest(AbstractModel):
 
     @property
     def Value(self):
-        r"""记录值，如 IP : 200.200.200.200， CNAME : cname.dnspod.com.， MX : mail.dnspod.com.。
+        r"""<p>记录值，如 IP : 200.200.200.200， CNAME : cname.dnspod.com.， MX : mail.dnspod.com.。</p>
         :rtype: str
         """
         return self._Value
@@ -3321,7 +3321,7 @@ class CreateRecordRequest(AbstractModel):
 
     @property
     def DomainId(self):
-        r"""域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。
+        r"""<p>域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。</p>
         :rtype: int
         """
         return self._DomainId
@@ -3332,7 +3332,7 @@ class CreateRecordRequest(AbstractModel):
 
     @property
     def SubDomain(self):
-        r"""主机记录，如 www，如果不传，默认为 @。
+        r"""<p>主机记录，如 www，如果不传，默认为 @。</p>
         :rtype: str
         """
         return self._SubDomain
@@ -3343,7 +3343,7 @@ class CreateRecordRequest(AbstractModel):
 
     @property
     def RecordLineId(self):
-        r"""线路的 ID，可以通过接口DescribeRecordLineList查看当前域名允许的线路信息，英文字符串，比如：10=1。参数RecordLineId优先级高于RecordLine，如果同时传递二者，优先使用RecordLineId参数。
+        r"""<p>线路的 ID，可以通过接口DescribeRecordLineList查看当前域名允许的线路信息，英文字符串，比如：10=1。参数RecordLineId优先级高于RecordLine，如果同时传递二者，优先使用RecordLineId参数。</p>
         :rtype: str
         """
         return self._RecordLineId
@@ -3354,7 +3354,7 @@ class CreateRecordRequest(AbstractModel):
 
     @property
     def MX(self):
-        r"""MX 优先级，当记录类型是 MX、HTTPS、SVCB 时必填，范围1-65535。
+        r"""<p>MX 优先级，当记录类型是 MX、HTTPS、SVCB 时必填，范围0-65535。</p><p>取值范围：[0, 65535]</p>
         :rtype: int
         """
         return self._MX
@@ -3365,7 +3365,7 @@ class CreateRecordRequest(AbstractModel):
 
     @property
     def TTL(self):
-        r"""TTL，范围1-604800，不同套餐域名最小值不同。
+        r"""<p>TTL，范围1-604800，不同套餐域名最小值不同。</p>
         :rtype: int
         """
         return self._TTL
@@ -3376,7 +3376,7 @@ class CreateRecordRequest(AbstractModel):
 
     @property
     def Weight(self):
-        r"""权重信息，0到100的整数。0 表示关闭，不传该参数，表示不设置权重信息。
+        r"""<p>权重信息，0到100的整数。0 表示关闭，不传该参数，表示不设置权重信息。</p>
         :rtype: int
         """
         return self._Weight
@@ -3387,7 +3387,7 @@ class CreateRecordRequest(AbstractModel):
 
     @property
     def Status(self):
-        r"""记录初始状态，取值范围为 ENABLE 和 DISABLE 。默认为 ENABLE ，如果传入 DISABLE，解析不会生效，也不会验证负载均衡的限制。
+        r"""<p>记录初始状态，取值范围为 ENABLE 和 DISABLE 。默认为 ENABLE ，如果传入 DISABLE，解析不会生效，也不会验证负载均衡的限制。</p>
         :rtype: str
         """
         return self._Status
@@ -3398,7 +3398,7 @@ class CreateRecordRequest(AbstractModel):
 
     @property
     def Remark(self):
-        r"""备注
+        r"""<p>备注</p>
         :rtype: str
         """
         return self._Remark
@@ -3409,7 +3409,7 @@ class CreateRecordRequest(AbstractModel):
 
     @property
     def DnssecConflictMode(self):
-        r"""开启DNSSEC时，强制添加CNAME/URL记录
+        r"""<p>开启DNSSEC时，强制添加CNAME/URL记录</p>
         :rtype: str
         """
         return self._DnssecConflictMode
@@ -3420,7 +3420,7 @@ class CreateRecordRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        r"""记录分组 Id。可以通过接口 DescribeRecordGroupList 接口 GroupId 字段获取。
+        r"""<p>记录分组 Id。可以通过接口 DescribeRecordGroupList 接口 GroupId 字段获取。</p><p>取值参考：<a href="https://cloud.tencent.com/document/api/1427/83225">DescribeRecordGroupList</a></p>
         :rtype: int
         """
         return self._GroupId
@@ -3462,7 +3462,7 @@ class CreateRecordResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RecordId: 记录ID
+        :param _RecordId: <p>记录ID</p>
         :type RecordId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3472,7 +3472,7 @@ class CreateRecordResponse(AbstractModel):
 
     @property
     def RecordId(self):
-        r"""记录ID
+        r"""<p>记录ID</p>
         :rtype: int
         """
         return self._RecordId
@@ -15439,15 +15439,15 @@ class ModifyRecordBatchRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RecordIdList: 记录ID数组。可以通过接口DescribeRecordList查到所有的解析记录列表以及对应的RecordId。单次最多修改5000条记录。
+        :param _RecordIdList: <p>记录ID数组。可以通过接口DescribeRecordList查到所有的解析记录列表以及对应的RecordId。单次最多修改5000条记录。</p><p>取值参考：<a href="https://cloud.tencent.com/document/api/1427/56166">DescribeRecordList</a></p>
         :type RecordIdList: list of int non-negative
-        :param _Change: 要修改的字段，可选值为 [“sub_domain”、”record_type”、”area”、”value”、”mx”、”ttl”、”status”] 中的某一个。
+        :param _Change: <p>要修改的字段，可选值为 [“sub_domain”、”record_type”、”area”、”value”、”mx”、”ttl”、”status”] 中的某一个。</p>
         :type Change: str
-        :param _ChangeTo: 修改为，具体依赖 change 字段，必填参数。
+        :param _ChangeTo: <p>修改为，具体依赖 change 字段，必填参数。</p>
         :type ChangeTo: str
-        :param _Value: 要修改到的记录值，仅当 change 字段为 “record_type” 时为必填参数。
+        :param _Value: <p>要修改到的记录值，仅当 change 字段为 “record_type” 时为必填参数。</p>
         :type Value: str
-        :param _MX: MX 优先级，当记录类型是 MX、HTTPS、SVCB 时必填，范围1-65535。
+        :param _MX: <p>MX 优先级，当记录类型是 MX、HTTPS、SVCB 时必填，范围0-65535。</p>
         :type MX: str
         """
         self._RecordIdList = None
@@ -15458,7 +15458,7 @@ class ModifyRecordBatchRequest(AbstractModel):
 
     @property
     def RecordIdList(self):
-        r"""记录ID数组。可以通过接口DescribeRecordList查到所有的解析记录列表以及对应的RecordId。单次最多修改5000条记录。
+        r"""<p>记录ID数组。可以通过接口DescribeRecordList查到所有的解析记录列表以及对应的RecordId。单次最多修改5000条记录。</p><p>取值参考：<a href="https://cloud.tencent.com/document/api/1427/56166">DescribeRecordList</a></p>
         :rtype: list of int non-negative
         """
         return self._RecordIdList
@@ -15469,7 +15469,7 @@ class ModifyRecordBatchRequest(AbstractModel):
 
     @property
     def Change(self):
-        r"""要修改的字段，可选值为 [“sub_domain”、”record_type”、”area”、”value”、”mx”、”ttl”、”status”] 中的某一个。
+        r"""<p>要修改的字段，可选值为 [“sub_domain”、”record_type”、”area”、”value”、”mx”、”ttl”、”status”] 中的某一个。</p>
         :rtype: str
         """
         return self._Change
@@ -15480,7 +15480,7 @@ class ModifyRecordBatchRequest(AbstractModel):
 
     @property
     def ChangeTo(self):
-        r"""修改为，具体依赖 change 字段，必填参数。
+        r"""<p>修改为，具体依赖 change 字段，必填参数。</p>
         :rtype: str
         """
         return self._ChangeTo
@@ -15491,7 +15491,7 @@ class ModifyRecordBatchRequest(AbstractModel):
 
     @property
     def Value(self):
-        r"""要修改到的记录值，仅当 change 字段为 “record_type” 时为必填参数。
+        r"""<p>要修改到的记录值，仅当 change 字段为 “record_type” 时为必填参数。</p>
         :rtype: str
         """
         return self._Value
@@ -15502,7 +15502,7 @@ class ModifyRecordBatchRequest(AbstractModel):
 
     @property
     def MX(self):
-        r"""MX 优先级，当记录类型是 MX、HTTPS、SVCB 时必填，范围1-65535。
+        r"""<p>MX 优先级，当记录类型是 MX、HTTPS、SVCB 时必填，范围0-65535。</p>
         :rtype: str
         """
         return self._MX
@@ -15535,9 +15535,9 @@ class ModifyRecordBatchResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 批量任务ID
+        :param _JobId: <p>批量任务ID</p>
         :type JobId: int
-        :param _DetailList: 见ModifyRecordBatchDetail
+        :param _DetailList: <p>见ModifyRecordBatchDetail</p>
         :type DetailList: list of ModifyRecordBatchDetail
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -15548,7 +15548,7 @@ class ModifyRecordBatchResponse(AbstractModel):
 
     @property
     def JobId(self):
-        r"""批量任务ID
+        r"""<p>批量任务ID</p>
         :rtype: int
         """
         return self._JobId
@@ -15559,7 +15559,7 @@ class ModifyRecordBatchResponse(AbstractModel):
 
     @property
     def DetailList(self):
-        r"""见ModifyRecordBatchDetail
+        r"""<p>见ModifyRecordBatchDetail</p>
         :rtype: list of ModifyRecordBatchDetail
         """
         return self._DetailList
@@ -16215,33 +16215,33 @@ class ModifyRecordRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Domain: 域名
+        :param _Domain: <p>域名</p>
         :type Domain: str
-        :param _RecordType: 记录类型，可通过接口DescribeRecordType获得，大写英文，比如：A 。
+        :param _RecordType: <p>记录类型，可通过接口DescribeRecordType获得，大写英文，比如：A 。</p>
         :type RecordType: str
-        :param _RecordLine: 记录线路，可以通过接口DescribeRecordLineList查看当前域名允许的线路信息。比如：默认。
+        :param _RecordLine: <p>记录线路，可以通过接口DescribeRecordLineList查看当前域名允许的线路信息。比如：默认。</p>
         :type RecordLine: str
-        :param _Value: 记录值，如 IP : 200.200.200.200， CNAME : cname.dnspod.com.， MX : mail.dnspod.com.。
+        :param _Value: <p>记录值，如 IP : 200.200.200.200， CNAME : cname.dnspod.com.， MX : mail.dnspod.com.。</p>
         :type Value: str
-        :param _RecordId: 记录 ID 。可以通过接口DescribeRecordList查到所有的解析记录列表以及对应的RecordId
+        :param _RecordId: <p>记录 ID 。可以通过接口DescribeRecordList查到所有的解析记录列表以及对应的RecordId</p>
         :type RecordId: int
-        :param _DomainId: 域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
+        :param _DomainId: <p>域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId</p>
         :type DomainId: int
-        :param _SubDomain: 主机记录，如 www，如果不传，默认为 @。
+        :param _SubDomain: <p>主机记录，如 www，如果不传，默认为 @。</p>
         :type SubDomain: str
-        :param _RecordLineId: 线路的 ID，可以通过接口DescribeRecordLineList查看当前域名允许的线路信息，比如：10=1。参数RecordLineId优先级高于RecordLine，如果同时传递二者，优先使用RecordLineId参数。
+        :param _RecordLineId: <p>线路的 ID，可以通过接口DescribeRecordLineList查看当前域名允许的线路信息，比如：10=1。参数RecordLineId优先级高于RecordLine，如果同时传递二者，优先使用RecordLineId参数。</p>
         :type RecordLineId: str
-        :param _MX: MX 优先级，当记录类型是 MX、HTTPS、SVCB 时必填，范围1-65535。
+        :param _MX: <p>MX 优先级，当记录类型是 MX、HTTPS、SVCB 时必填，范围0-65535。</p><p>取值范围：[0, 65535]</p>
         :type MX: int
-        :param _TTL: TTL，范围1-604800，不同等级域名最小值不同。
+        :param _TTL: <p>TTL，范围1-604800，不同等级域名最小值不同。</p>
         :type TTL: int
-        :param _Weight: 权重信息，0到100的整数。0 表示关闭，不传该参数，表示不设置权重信息。
+        :param _Weight: <p>权重信息，0到100的整数。0 表示关闭，不传该参数，表示不设置权重信息。</p>
         :type Weight: int
-        :param _Status: 记录初始状态，取值范围为 ENABLE 和 DISABLE 。默认为 ENABLE ，如果传入 DISABLE，解析不会生效，也不会验证负载均衡的限制。
+        :param _Status: <p>记录初始状态，取值范围为 ENABLE 和 DISABLE 。默认为 ENABLE ，如果传入 DISABLE，解析不会生效，也不会验证负载均衡的限制。</p>
         :type Status: str
-        :param _Remark: 记录的备注信息。传空删除备注。
+        :param _Remark: <p>记录的备注信息。传空删除备注。</p>
         :type Remark: str
-        :param _DnssecConflictMode: 开启DNSSEC时，强制将其它记录修改为CNAME/URL记录
+        :param _DnssecConflictMode: <p>开启DNSSEC时，强制将其它记录修改为CNAME/URL记录</p>
         :type DnssecConflictMode: str
         """
         self._Domain = None
@@ -16261,7 +16261,7 @@ class ModifyRecordRequest(AbstractModel):
 
     @property
     def Domain(self):
-        r"""域名
+        r"""<p>域名</p>
         :rtype: str
         """
         return self._Domain
@@ -16272,7 +16272,7 @@ class ModifyRecordRequest(AbstractModel):
 
     @property
     def RecordType(self):
-        r"""记录类型，可通过接口DescribeRecordType获得，大写英文，比如：A 。
+        r"""<p>记录类型，可通过接口DescribeRecordType获得，大写英文，比如：A 。</p>
         :rtype: str
         """
         return self._RecordType
@@ -16283,7 +16283,7 @@ class ModifyRecordRequest(AbstractModel):
 
     @property
     def RecordLine(self):
-        r"""记录线路，可以通过接口DescribeRecordLineList查看当前域名允许的线路信息。比如：默认。
+        r"""<p>记录线路，可以通过接口DescribeRecordLineList查看当前域名允许的线路信息。比如：默认。</p>
         :rtype: str
         """
         return self._RecordLine
@@ -16294,7 +16294,7 @@ class ModifyRecordRequest(AbstractModel):
 
     @property
     def Value(self):
-        r"""记录值，如 IP : 200.200.200.200， CNAME : cname.dnspod.com.， MX : mail.dnspod.com.。
+        r"""<p>记录值，如 IP : 200.200.200.200， CNAME : cname.dnspod.com.， MX : mail.dnspod.com.。</p>
         :rtype: str
         """
         return self._Value
@@ -16305,7 +16305,7 @@ class ModifyRecordRequest(AbstractModel):
 
     @property
     def RecordId(self):
-        r"""记录 ID 。可以通过接口DescribeRecordList查到所有的解析记录列表以及对应的RecordId
+        r"""<p>记录 ID 。可以通过接口DescribeRecordList查到所有的解析记录列表以及对应的RecordId</p>
         :rtype: int
         """
         return self._RecordId
@@ -16316,7 +16316,7 @@ class ModifyRecordRequest(AbstractModel):
 
     @property
     def DomainId(self):
-        r"""域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId
+        r"""<p>域名 ID 。参数 DomainId 优先级比参数 Domain 高，如果传递参数 DomainId 将忽略参数 Domain 。可以通过接口DescribeDomainList查到所有的Domain以及DomainId</p>
         :rtype: int
         """
         return self._DomainId
@@ -16327,7 +16327,7 @@ class ModifyRecordRequest(AbstractModel):
 
     @property
     def SubDomain(self):
-        r"""主机记录，如 www，如果不传，默认为 @。
+        r"""<p>主机记录，如 www，如果不传，默认为 @。</p>
         :rtype: str
         """
         return self._SubDomain
@@ -16338,7 +16338,7 @@ class ModifyRecordRequest(AbstractModel):
 
     @property
     def RecordLineId(self):
-        r"""线路的 ID，可以通过接口DescribeRecordLineList查看当前域名允许的线路信息，比如：10=1。参数RecordLineId优先级高于RecordLine，如果同时传递二者，优先使用RecordLineId参数。
+        r"""<p>线路的 ID，可以通过接口DescribeRecordLineList查看当前域名允许的线路信息，比如：10=1。参数RecordLineId优先级高于RecordLine，如果同时传递二者，优先使用RecordLineId参数。</p>
         :rtype: str
         """
         return self._RecordLineId
@@ -16349,7 +16349,7 @@ class ModifyRecordRequest(AbstractModel):
 
     @property
     def MX(self):
-        r"""MX 优先级，当记录类型是 MX、HTTPS、SVCB 时必填，范围1-65535。
+        r"""<p>MX 优先级，当记录类型是 MX、HTTPS、SVCB 时必填，范围0-65535。</p><p>取值范围：[0, 65535]</p>
         :rtype: int
         """
         return self._MX
@@ -16360,7 +16360,7 @@ class ModifyRecordRequest(AbstractModel):
 
     @property
     def TTL(self):
-        r"""TTL，范围1-604800，不同等级域名最小值不同。
+        r"""<p>TTL，范围1-604800，不同等级域名最小值不同。</p>
         :rtype: int
         """
         return self._TTL
@@ -16371,7 +16371,7 @@ class ModifyRecordRequest(AbstractModel):
 
     @property
     def Weight(self):
-        r"""权重信息，0到100的整数。0 表示关闭，不传该参数，表示不设置权重信息。
+        r"""<p>权重信息，0到100的整数。0 表示关闭，不传该参数，表示不设置权重信息。</p>
         :rtype: int
         """
         return self._Weight
@@ -16382,7 +16382,7 @@ class ModifyRecordRequest(AbstractModel):
 
     @property
     def Status(self):
-        r"""记录初始状态，取值范围为 ENABLE 和 DISABLE 。默认为 ENABLE ，如果传入 DISABLE，解析不会生效，也不会验证负载均衡的限制。
+        r"""<p>记录初始状态，取值范围为 ENABLE 和 DISABLE 。默认为 ENABLE ，如果传入 DISABLE，解析不会生效，也不会验证负载均衡的限制。</p>
         :rtype: str
         """
         return self._Status
@@ -16393,7 +16393,7 @@ class ModifyRecordRequest(AbstractModel):
 
     @property
     def Remark(self):
-        r"""记录的备注信息。传空删除备注。
+        r"""<p>记录的备注信息。传空删除备注。</p>
         :rtype: str
         """
         return self._Remark
@@ -16404,7 +16404,7 @@ class ModifyRecordRequest(AbstractModel):
 
     @property
     def DnssecConflictMode(self):
-        r"""开启DNSSEC时，强制将其它记录修改为CNAME/URL记录
+        r"""<p>开启DNSSEC时，强制将其它记录修改为CNAME/URL记录</p>
         :rtype: str
         """
         return self._DnssecConflictMode
@@ -16446,7 +16446,7 @@ class ModifyRecordResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RecordId: 记录ID
+        :param _RecordId: <p>记录ID</p>
         :type RecordId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -16456,7 +16456,7 @@ class ModifyRecordResponse(AbstractModel):
 
     @property
     def RecordId(self):
-        r"""记录ID
+        r"""<p>记录ID</p>
         :rtype: int
         """
         return self._RecordId
