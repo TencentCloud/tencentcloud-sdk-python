@@ -23702,6 +23702,140 @@ class CreateProcessImageTemplateResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateProjectRequest(AbstractModel):
+    r"""CreateProject请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectName: <p>项目名称</p>
+        :type ProjectName: str
+        :param _TermBase: <p>项目术语表</p>
+        :type TermBase: list of TermBase
+        :param _Description: <p>项目描述</p>
+        :type Description: str
+        :param _Speakers: <p>角色列表</p>
+        :type Speakers: list of Speakers
+        """
+        self._ProjectName = None
+        self._TermBase = None
+        self._Description = None
+        self._Speakers = None
+
+    @property
+    def ProjectName(self):
+        r"""<p>项目名称</p>
+        :rtype: str
+        """
+        return self._ProjectName
+
+    @ProjectName.setter
+    def ProjectName(self, ProjectName):
+        self._ProjectName = ProjectName
+
+    @property
+    def TermBase(self):
+        r"""<p>项目术语表</p>
+        :rtype: list of TermBase
+        """
+        return self._TermBase
+
+    @TermBase.setter
+    def TermBase(self, TermBase):
+        self._TermBase = TermBase
+
+    @property
+    def Description(self):
+        r"""<p>项目描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Speakers(self):
+        r"""<p>角色列表</p>
+        :rtype: list of Speakers
+        """
+        return self._Speakers
+
+    @Speakers.setter
+    def Speakers(self, Speakers):
+        self._Speakers = Speakers
+
+
+    def _deserialize(self, params):
+        self._ProjectName = params.get("ProjectName")
+        if params.get("TermBase") is not None:
+            self._TermBase = []
+            for item in params.get("TermBase"):
+                obj = TermBase()
+                obj._deserialize(item)
+                self._TermBase.append(obj)
+        self._Description = params.get("Description")
+        if params.get("Speakers") is not None:
+            self._Speakers = []
+            for item in params.get("Speakers"):
+                obj = Speakers()
+                obj._deserialize(item)
+                self._Speakers.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateProjectResponse(AbstractModel):
+    r"""CreateProject返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: <p>项目id</p>
+        :type ProjectId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ProjectId = None
+        self._RequestId = None
+
+    @property
+    def ProjectId(self):
+        r"""<p>项目id</p>
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateQualityControlTemplateRequest(AbstractModel):
     r"""CreateQualityControlTemplate请求参数结构体
 
@@ -28075,6 +28209,70 @@ class DeleteProcessImageTemplateRequest(AbstractModel):
 
 class DeleteProcessImageTemplateResponse(AbstractModel):
     r"""DeleteProcessImageTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteProjectRequest(AbstractModel):
+    r"""DeleteProject请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: <p>项目id</p>
+        :type ProjectId: str
+        """
+        self._ProjectId = None
+
+    @property
+    def ProjectId(self):
+        r"""<p>项目id</p>
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteProjectResponse(AbstractModel):
+    r"""DeleteProject返回参数结构体
 
     """
 
@@ -68140,6 +68338,142 @@ class ProhibitedOcrReviewTemplateInfoForUpdate(AbstractModel):
         
 
 
+class Project(AbstractModel):
+    r"""剧集项目信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: <p>项目id</p>
+        :type ProjectId: str
+        :param _ProjectName: <p>项目名称</p>
+        :type ProjectName: str
+        :param _Description: <p>项目描述</p>
+        :type Description: str
+        :param _TermBase: <p>项目术语库</p>
+        :type TermBase: list of TermBase
+        :param _Speakers: <p>角色列表</p>
+        :type Speakers: list of Speakers
+        :param _CreatedAt: <p>创建时间（Unix 时间戳）</p>
+        :type CreatedAt: int
+        :param _UpdatedAt: <p>更新时间（Unix 时间戳）</p>
+        :type UpdatedAt: int
+        """
+        self._ProjectId = None
+        self._ProjectName = None
+        self._Description = None
+        self._TermBase = None
+        self._Speakers = None
+        self._CreatedAt = None
+        self._UpdatedAt = None
+
+    @property
+    def ProjectId(self):
+        r"""<p>项目id</p>
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def ProjectName(self):
+        r"""<p>项目名称</p>
+        :rtype: str
+        """
+        return self._ProjectName
+
+    @ProjectName.setter
+    def ProjectName(self, ProjectName):
+        self._ProjectName = ProjectName
+
+    @property
+    def Description(self):
+        r"""<p>项目描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def TermBase(self):
+        r"""<p>项目术语库</p>
+        :rtype: list of TermBase
+        """
+        return self._TermBase
+
+    @TermBase.setter
+    def TermBase(self, TermBase):
+        self._TermBase = TermBase
+
+    @property
+    def Speakers(self):
+        r"""<p>角色列表</p>
+        :rtype: list of Speakers
+        """
+        return self._Speakers
+
+    @Speakers.setter
+    def Speakers(self, Speakers):
+        self._Speakers = Speakers
+
+    @property
+    def CreatedAt(self):
+        r"""<p>创建时间（Unix 时间戳）</p>
+        :rtype: int
+        """
+        return self._CreatedAt
+
+    @CreatedAt.setter
+    def CreatedAt(self, CreatedAt):
+        self._CreatedAt = CreatedAt
+
+    @property
+    def UpdatedAt(self):
+        r"""<p>更新时间（Unix 时间戳）</p>
+        :rtype: int
+        """
+        return self._UpdatedAt
+
+    @UpdatedAt.setter
+    def UpdatedAt(self, UpdatedAt):
+        self._UpdatedAt = UpdatedAt
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._ProjectName = params.get("ProjectName")
+        self._Description = params.get("Description")
+        if params.get("TermBase") is not None:
+            self._TermBase = []
+            for item in params.get("TermBase"):
+                obj = TermBase()
+                obj._deserialize(item)
+                self._TermBase.append(obj)
+        if params.get("Speakers") is not None:
+            self._Speakers = []
+            for item in params.get("Speakers"):
+                obj = Speakers()
+                obj._deserialize(item)
+                self._Speakers.append(obj)
+        self._CreatedAt = params.get("CreatedAt")
+        self._UpdatedAt = params.get("UpdatedAt")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PureSubtitleTransResult(AbstractModel):
     r"""纯字幕翻译结果
 
@@ -69125,6 +69459,150 @@ class QualityControlTemplate(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class QueryProjectRequest(AbstractModel):
+    r"""QueryProject请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: <p>项目id</p>
+        :type ProjectId: str
+        :param _ProjectName: <p>项目名称</p>
+        :type ProjectName: str
+        :param _Page: <p>页码，从 1 开始，默认 1</p>
+        :type Page: int
+        :param _PageSize: <p>每页数量，默认 20</p>
+        :type PageSize: int
+        """
+        self._ProjectId = None
+        self._ProjectName = None
+        self._Page = None
+        self._PageSize = None
+
+    @property
+    def ProjectId(self):
+        r"""<p>项目id</p>
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def ProjectName(self):
+        r"""<p>项目名称</p>
+        :rtype: str
+        """
+        return self._ProjectName
+
+    @ProjectName.setter
+    def ProjectName(self, ProjectName):
+        self._ProjectName = ProjectName
+
+    @property
+    def Page(self):
+        r"""<p>页码，从 1 开始，默认 1</p>
+        :rtype: int
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def PageSize(self):
+        r"""<p>每页数量，默认 20</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._ProjectName = params.get("ProjectName")
+        self._Page = params.get("Page")
+        self._PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryProjectResponse(AbstractModel):
+    r"""QueryProject返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: <p>符合条件的总数量</p>
+        :type Total: int
+        :param _Data: <p>项目数据</p>
+        :type Data: list of Project
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        r"""<p>符合条件的总数量</p>
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Data(self):
+        r"""<p>项目数据</p>
+        :rtype: list of Project
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = Project()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class RTMPAddressDestination(AbstractModel):
@@ -78310,6 +78788,122 @@ class SourceTag(AbstractModel):
         
 
 
+class Speakers(AbstractModel):
+    r"""角色列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SpeakerId: <p>角色唯一标识</p>
+        :type SpeakerId: str
+        :param _VoiceId: <p>绑定的音色 ID</p>
+        :type VoiceId: str
+        :param _Gender: <p>性别：male / female，默认 male</p>
+        :type Gender: str
+        :param _AgeGroup: <p>年龄段：child / teenager / youth / middle_aged/ senior，默认 youth</p>
+        :type AgeGroup: str
+        :param _Description: <p>角色描述</p>
+        :type Description: str
+        :param _NameTerms: <p>角色人名术语表</p>
+        :type NameTerms: list of TermBase
+        """
+        self._SpeakerId = None
+        self._VoiceId = None
+        self._Gender = None
+        self._AgeGroup = None
+        self._Description = None
+        self._NameTerms = None
+
+    @property
+    def SpeakerId(self):
+        r"""<p>角色唯一标识</p>
+        :rtype: str
+        """
+        return self._SpeakerId
+
+    @SpeakerId.setter
+    def SpeakerId(self, SpeakerId):
+        self._SpeakerId = SpeakerId
+
+    @property
+    def VoiceId(self):
+        r"""<p>绑定的音色 ID</p>
+        :rtype: str
+        """
+        return self._VoiceId
+
+    @VoiceId.setter
+    def VoiceId(self, VoiceId):
+        self._VoiceId = VoiceId
+
+    @property
+    def Gender(self):
+        r"""<p>性别：male / female，默认 male</p>
+        :rtype: str
+        """
+        return self._Gender
+
+    @Gender.setter
+    def Gender(self, Gender):
+        self._Gender = Gender
+
+    @property
+    def AgeGroup(self):
+        r"""<p>年龄段：child / teenager / youth / middle_aged/ senior，默认 youth</p>
+        :rtype: str
+        """
+        return self._AgeGroup
+
+    @AgeGroup.setter
+    def AgeGroup(self, AgeGroup):
+        self._AgeGroup = AgeGroup
+
+    @property
+    def Description(self):
+        r"""<p>角色描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def NameTerms(self):
+        r"""<p>角色人名术语表</p>
+        :rtype: list of TermBase
+        """
+        return self._NameTerms
+
+    @NameTerms.setter
+    def NameTerms(self, NameTerms):
+        self._NameTerms = NameTerms
+
+
+    def _deserialize(self, params):
+        self._SpeakerId = params.get("SpeakerId")
+        self._VoiceId = params.get("VoiceId")
+        self._Gender = params.get("Gender")
+        self._AgeGroup = params.get("AgeGroup")
+        self._Description = params.get("Description")
+        if params.get("NameTerms") is not None:
+            self._NameTerms = []
+            for item in params.get("NameTerms"):
+                obj = TermBase()
+                obj._deserialize(item)
+                self._NameTerms.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SpecificationDataItem(AbstractModel):
     r"""指定规格任务统计数据。
 
@@ -82329,6 +82923,57 @@ class TaskStatDataItem(AbstractModel):
         
 
 
+class TermBase(AbstractModel):
+    r"""术语表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Src: <p>术语原语言</p>
+        :type Src: str
+        :param _Dst: <p>术语目标语言</p>
+        :type Dst: str
+        """
+        self._Src = None
+        self._Dst = None
+
+    @property
+    def Src(self):
+        r"""<p>术语原语言</p>
+        :rtype: str
+        """
+        return self._Src
+
+    @Src.setter
+    def Src(self, Src):
+        self._Src = Src
+
+    @property
+    def Dst(self):
+        r"""<p>术语目标语言</p>
+        :rtype: str
+        """
+        return self._Dst
+
+    @Dst.setter
+    def Dst(self, Dst):
+        self._Dst = Dst
+
+
+    def _deserialize(self, params):
+        self._Src = params.get("Src")
+        self._Dst = params.get("Dst")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TerrorismConfigureInfo(AbstractModel):
     r"""涉敏任务控制参数
 
@@ -85142,6 +85787,140 @@ Output：输出。
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class UpdateProjectRequest(AbstractModel):
+    r"""UpdateProject请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: <p>项目id</p>
+        :type ProjectId: str
+        :param _ProjectName: <p>项目名称</p>
+        :type ProjectName: str
+        :param _TermBase: <p>项目术语表</p>
+        :type TermBase: list of TermBase
+        :param _Description: <p>项目描述</p>
+        :type Description: str
+        :param _Speakers: <p>角色列表</p>
+        :type Speakers: list of Speakers
+        """
+        self._ProjectId = None
+        self._ProjectName = None
+        self._TermBase = None
+        self._Description = None
+        self._Speakers = None
+
+    @property
+    def ProjectId(self):
+        r"""<p>项目id</p>
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def ProjectName(self):
+        r"""<p>项目名称</p>
+        :rtype: str
+        """
+        return self._ProjectName
+
+    @ProjectName.setter
+    def ProjectName(self, ProjectName):
+        self._ProjectName = ProjectName
+
+    @property
+    def TermBase(self):
+        r"""<p>项目术语表</p>
+        :rtype: list of TermBase
+        """
+        return self._TermBase
+
+    @TermBase.setter
+    def TermBase(self, TermBase):
+        self._TermBase = TermBase
+
+    @property
+    def Description(self):
+        r"""<p>项目描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Speakers(self):
+        r"""<p>角色列表</p>
+        :rtype: list of Speakers
+        """
+        return self._Speakers
+
+    @Speakers.setter
+    def Speakers(self, Speakers):
+        self._Speakers = Speakers
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._ProjectName = params.get("ProjectName")
+        if params.get("TermBase") is not None:
+            self._TermBase = []
+            for item in params.get("TermBase"):
+                obj = TermBase()
+                obj._deserialize(item)
+                self._TermBase.append(obj)
+        self._Description = params.get("Description")
+        if params.get("Speakers") is not None:
+            self._Speakers = []
+            for item in params.get("Speakers"):
+                obj = Speakers()
+                obj._deserialize(item)
+                self._Speakers.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateProjectResponse(AbstractModel):
+    r"""UpdateProject返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class UpdateSmartErasePrivacyConfig(AbstractModel):

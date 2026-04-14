@@ -671,7 +671,7 @@ class TkeClient(AbstractClient):
 
 
     def CreateExternalNodePool(self, request):
-        r"""创建第三方节点池
+        r"""创建注册节点池
 
         :param request: Request instance for CreateExternalNodePool.
         :type request: :class:`tencentcloud.tke.v20180525.models.CreateExternalNodePoolRequest`
@@ -1430,7 +1430,7 @@ class TkeClient(AbstractClient):
 
 
     def DeleteExternalNode(self, request):
-        r"""删除第三方节点
+        r"""删除注册节点
 
         :param request: Request instance for DeleteExternalNode.
         :type request: :class:`tencentcloud.tke.v20180525.models.DeleteExternalNodeRequest`
@@ -1453,7 +1453,7 @@ class TkeClient(AbstractClient):
 
 
     def DeleteExternalNodePool(self, request):
-        r"""删除第三方节点池
+        r"""删除注册节点池
 
         :param request: Request instance for DeleteExternalNodePool.
         :type request: :class:`tencentcloud.tke.v20180525.models.DeleteExternalNodePoolRequest`
@@ -3086,7 +3086,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeExternalNode(self, request):
-        r"""查看第三方节点列表
+        r"""查看注册节点列表
 
         :param request: Request instance for DescribeExternalNode.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeExternalNodeRequest`
@@ -3109,7 +3109,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeExternalNodePools(self, request):
-        r"""查看第三方节点池列表
+        r"""查看注册节点池列表
 
         :param request: Request instance for DescribeExternalNodePools.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeExternalNodePoolsRequest`
@@ -3132,7 +3132,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeExternalNodeScript(self, request):
-        r"""获取第三方节点添加脚本
+        r"""获取注册节点初始化脚本
 
         :param request: Request instance for DescribeExternalNodeScript.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeExternalNodeScriptRequest`
@@ -3155,7 +3155,7 @@ class TkeClient(AbstractClient):
 
 
     def DescribeExternalNodeSupportConfig(self, request):
-        r"""查看开启第三方节点池配置信息
+        r"""查看开启注册节点池配置信息
 
         :param request: Request instance for DescribeExternalNodeSupportConfig.
         :type request: :class:`tencentcloud.tke.v20180525.models.DescribeExternalNodeSupportConfigRequest`
@@ -4512,7 +4512,7 @@ class TkeClient(AbstractClient):
 
 
     def DrainExternalNode(self, request):
-        r"""驱逐第三方节点
+        r"""驱逐注册节点
 
         :param request: Request instance for DrainExternalNode.
         :type request: :class:`tencentcloud.tke.v20180525.models.DrainExternalNodeRequest`
@@ -4673,7 +4673,7 @@ class TkeClient(AbstractClient):
 
 
     def EnableExternalNodeSupport(self, request):
-        r"""开启第三方节点池支持
+        r"""开启注册节点池支持
 
         :param request: Request instance for EnableExternalNodeSupport.
         :type request: :class:`tencentcloud.tke.v20180525.models.EnableExternalNodeSupportRequest`
@@ -5317,7 +5317,7 @@ class TkeClient(AbstractClient):
 
 
     def ModifyExternalNodePool(self, request):
-        r"""修改第三方节点池
+        r"""修改注册节点池
 
         :param request: Request instance for ModifyExternalNodePool.
         :type request: :class:`tencentcloud.tke.v20180525.models.ModifyExternalNodePoolRequest`

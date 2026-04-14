@@ -8715,9 +8715,7 @@ class ConfigGroupVersionInfo(AbstractModel):
         :type VersionNumber: str
         :param _GroupId: 配置组 ID。
         :type GroupId: str
-        :param _GroupType: 配置组类型。取值有：
-<li>l7_acceleration ：七层加速配置组。</li>
-<li>edge_functions ：边缘函数配置组。</li>
+        :param _GroupType: 配置组类型，可选项如下：<li>l7_acceleration: 七层加速配置组；</li><li>edge_functions: 边缘函数配置组；</li><li>web_security: Web 防护配置组。</li>
         :type GroupType: str
         :param _Description: 版本描述。
         :type Description: str
@@ -8772,9 +8770,7 @@ class ConfigGroupVersionInfo(AbstractModel):
 
     @property
     def GroupType(self):
-        r"""配置组类型。取值有：
-<li>l7_acceleration ：七层加速配置组。</li>
-<li>edge_functions ：边缘函数配置组。</li>
+        r"""配置组类型，可选项如下：<li>l7_acceleration: 七层加速配置组；</li><li>edge_functions: 边缘函数配置组；</li><li>web_security: Web 防护配置组。</li>
         :rtype: str
         """
         return self._GroupType

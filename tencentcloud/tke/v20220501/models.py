@@ -1616,12 +1616,15 @@ InstanceIds(实例ID),InstanceType(实例类型：Regular，Native，Super，Ext
         :type Filters: list of Filter
         :param _SortBy: 排序信息
         :type SortBy: :class:`tencentcloud.tke.v20220501.models.SortBy`
+        :param _NeedTags: 是否返回节点云标签
+        :type NeedTags: bool
         """
         self._ClusterId = None
         self._Offset = None
         self._Limit = None
         self._Filters = None
         self._SortBy = None
+        self._NeedTags = None
 
     @property
     def ClusterId(self):
@@ -1679,6 +1682,17 @@ InstanceIds(实例ID),InstanceType(实例类型：Regular，Native，Super，Ext
     def SortBy(self, SortBy):
         self._SortBy = SortBy
 
+    @property
+    def NeedTags(self):
+        r"""是否返回节点云标签
+        :rtype: bool
+        """
+        return self._NeedTags
+
+    @NeedTags.setter
+    def NeedTags(self, NeedTags):
+        self._NeedTags = NeedTags
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -1693,6 +1707,7 @@ InstanceIds(实例ID),InstanceType(实例类型：Regular，Native，Super，Ext
         if params.get("SortBy") is not None:
             self._SortBy = SortBy()
             self._SortBy._deserialize(params.get("SortBy"))
+        self._NeedTags = params.get("NeedTags")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5679,6 +5694,9 @@ class NativeNodeInfo(AbstractModel):
 - eks-f8mvyaep 表示这个实例是一个 CXM 的实例
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
+        :param _Tags: 原生节点云标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
         """
         self._MachineName = None
         self._MachineState = None
@@ -5709,6 +5727,7 @@ class NativeNodeInfo(AbstractModel):
         self._OsImage = None
         self._MachineType = None
         self._InstanceId = None
+        self._Tags = None
 
     @property
     def MachineName(self):
@@ -6047,6 +6066,18 @@ class NativeNodeInfo(AbstractModel):
     def InstanceId(self, InstanceId):
         self._InstanceId = InstanceId
 
+    @property
+    def Tags(self):
+        r"""原生节点云标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._MachineName = params.get("MachineName")
@@ -6089,6 +6120,12 @@ class NativeNodeInfo(AbstractModel):
         self._OsImage = params.get("OsImage")
         self._MachineType = params.get("MachineType")
         self._InstanceId = params.get("InstanceId")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6964,9 +7001,13 @@ class RegularNodeInfo(AbstractModel):
         :param _AutoscalingGroupId: 自动伸缩组ID
 注意：此字段可能返回 null，表示取不到有效值。
         :type AutoscalingGroupId: str
+        :param _Tags: 普通节点云标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
         """
         self._InstanceAdvancedSettings = None
         self._AutoscalingGroupId = None
+        self._Tags = None
 
     @property
     def InstanceAdvancedSettings(self):
@@ -6992,12 +7033,30 @@ class RegularNodeInfo(AbstractModel):
     def AutoscalingGroupId(self, AutoscalingGroupId):
         self._AutoscalingGroupId = AutoscalingGroupId
 
+    @property
+    def Tags(self):
+        r"""普通节点云标签
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         if params.get("InstanceAdvancedSettings") is not None:
             self._InstanceAdvancedSettings = InstanceAdvancedSettings()
             self._InstanceAdvancedSettings._deserialize(params.get("InstanceAdvancedSettings"))
         self._AutoscalingGroupId = params.get("AutoscalingGroupId")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7719,6 +7778,12 @@ class SuperNodeInfo(AbstractModel):
         :param _InstanceAttribute: 实例属性
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceAttribute: str
+        :param _NodeName: 节点名称
+        :type NodeName: str
+        :param _Duration: 包销时长
+        :type Duration: str
+        :param _ResourceId: 预付费资源ID
+        :type ResourceId: str
         """
         self._Name = None
         self._AutoRenewFlag = None
@@ -7734,6 +7799,9 @@ class SuperNodeInfo(AbstractModel):
         self._ExpireAt = None
         self._MaxCPUScheduledPod = None
         self._InstanceAttribute = None
+        self._NodeName = None
+        self._Duration = None
+        self._ResourceId = None
 
     @property
     def Name(self):
@@ -7903,6 +7971,39 @@ class SuperNodeInfo(AbstractModel):
     def InstanceAttribute(self, InstanceAttribute):
         self._InstanceAttribute = InstanceAttribute
 
+    @property
+    def NodeName(self):
+        r"""节点名称
+        :rtype: str
+        """
+        return self._NodeName
+
+    @NodeName.setter
+    def NodeName(self, NodeName):
+        self._NodeName = NodeName
+
+    @property
+    def Duration(self):
+        r"""包销时长
+        :rtype: str
+        """
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def ResourceId(self):
+        r"""预付费资源ID
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -7919,6 +8020,9 @@ class SuperNodeInfo(AbstractModel):
         self._ExpireAt = params.get("ExpireAt")
         self._MaxCPUScheduledPod = params.get("MaxCPUScheduledPod")
         self._InstanceAttribute = params.get("InstanceAttribute")
+        self._NodeName = params.get("NodeName")
+        self._Duration = params.get("Duration")
+        self._ResourceId = params.get("ResourceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

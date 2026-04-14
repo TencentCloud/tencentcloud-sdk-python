@@ -535,7 +535,7 @@ class TkeClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateExternalNodePoolResponse:
         """
-        创建第三方节点池
+        创建注册节点池
         """
         
         kwargs = {}
@@ -1129,7 +1129,7 @@ class TkeClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DeleteExternalNodeResponse:
         """
-        删除第三方节点
+        删除注册节点
         """
         
         kwargs = {}
@@ -1147,7 +1147,7 @@ class TkeClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DeleteExternalNodePoolResponse:
         """
-        删除第三方节点池
+        删除注册节点池
         """
         
         kwargs = {}
@@ -2425,7 +2425,7 @@ class TkeClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeExternalNodeResponse:
         """
-        查看第三方节点列表
+        查看注册节点列表
         """
         
         kwargs = {}
@@ -2443,7 +2443,7 @@ class TkeClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeExternalNodePoolsResponse:
         """
-        查看第三方节点池列表
+        查看注册节点池列表
         """
         
         kwargs = {}
@@ -2461,7 +2461,7 @@ class TkeClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeExternalNodeScriptResponse:
         """
-        获取第三方节点添加脚本
+        获取注册节点初始化脚本
         """
         
         kwargs = {}
@@ -2479,7 +2479,7 @@ class TkeClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeExternalNodeSupportConfigResponse:
         """
-        查看开启第三方节点池配置信息
+        查看开启注册节点池配置信息
         """
         
         kwargs = {}
@@ -3541,7 +3541,7 @@ class TkeClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DrainExternalNodeResponse:
         """
-        驱逐第三方节点
+        驱逐注册节点
         """
         
         kwargs = {}
@@ -3667,7 +3667,7 @@ class TkeClient(AbstractClient):
             opts: Dict = None,
     ) -> models.EnableExternalNodeSupportResponse:
         """
-        开启第三方节点池支持
+        开启注册节点池支持
         """
         
         kwargs = {}
@@ -4171,7 +4171,7 @@ class TkeClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyExternalNodePoolResponse:
         """
-        修改第三方节点池
+        修改注册节点池
         """
         
         kwargs = {}

@@ -389,6 +389,24 @@ class MpsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateProject(
+            self,
+            request: models.CreateProjectRequest,
+            opts: Dict = None,
+    ) -> models.CreateProjectResponse:
+        """
+        剧集项目创建
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateProject"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateProjectResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateQualityControlTemplate(
             self,
             request: models.CreateQualityControlTemplateRequest,
@@ -1024,6 +1042,24 @@ class MpsClient(AbstractClient):
         kwargs["action"] = "DeleteProcessImageTemplate"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteProcessImageTemplateResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteProject(
+            self,
+            request: models.DeleteProjectRequest,
+            opts: Dict = None,
+    ) -> models.DeleteProjectResponse:
+        """
+        剧集项目删除接口
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteProject"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteProjectResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -3484,6 +3520,24 @@ class MpsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def QueryProject(
+            self,
+            request: models.QueryProjectRequest,
+            opts: Dict = None,
+    ) -> models.QueryProjectResponse:
+        """
+        剧集项目查询
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "QueryProject"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.QueryProjectResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def RecognizeAudio(
             self,
             request: models.RecognizeAudioRequest,
@@ -3641,6 +3695,24 @@ class MpsClient(AbstractClient):
         kwargs["action"] = "TextTranslation"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.TextTranslationResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UpdateProject(
+            self,
+            request: models.UpdateProjectRequest,
+            opts: Dict = None,
+    ) -> models.UpdateProjectResponse:
+        """
+        剧集项目更新
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpdateProject"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpdateProjectResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

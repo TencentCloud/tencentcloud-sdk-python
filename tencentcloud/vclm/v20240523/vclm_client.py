@@ -421,6 +421,29 @@ class VclmClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def SubmitImageToVideoViduJob(self, request):
+        r"""提交Vidu图生视频任务接口
+
+        :param request: Request instance for SubmitImageToVideoViduJob.
+        :type request: :class:`tencentcloud.vclm.v20240523.models.SubmitImageToVideoViduJobRequest`
+        :rtype: :class:`tencentcloud.vclm.v20240523.models.SubmitImageToVideoViduJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SubmitImageToVideoViduJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.SubmitImageToVideoViduJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def SubmitPortraitSingJob(self, request):
         r"""用于提交图片唱演任务。
         支持提交音频和图片生成唱演视频，满足社交娱乐、互动营销等场景的需求。

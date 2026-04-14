@@ -8854,11 +8854,11 @@ class CreateConsoleRequest(AbstractModel):
         r"""
         :param _AccessMode: <p>访问方式：public - 公网，internal - 内网</p>
         :type AccessMode: list of str
-        :param _LoginMode: <p>登录方式：0 - 账号密码鉴权，1 - 匿名登陆，2 - 第三方认证登录</p>
+        :param _LoginMode: <p>登录方式</p><p>枚举值：</p><ul><li>0： 账号密码鉴权</li><li>1： 匿名登录</li><li>2： 第三方认证登录</li></ul>
         :type LoginMode: int
         :param _DomainPrefix: <p>自定义域名前缀</p>
         :type DomainPrefix: str
-        :param _Accounts: <p>用户账号信息</p><p>“账号密码鉴权“登录方式必传</p>
+        :param _Accounts: <p>用户账号信息</p><p>“账号密码鉴权”登录方式必传</p>
         :type Accounts: list of ConsoleAccount
         :param _AnonymousLogin: <p>匿名登录账号信息</p><p>“匿名登录”登录方式必传</p>
         :type AnonymousLogin: :class:`tencentcloud.cls.v20201016.models.AnonymousLoginInfo`
@@ -8912,7 +8912,7 @@ class CreateConsoleRequest(AbstractModel):
 
     @property
     def LoginMode(self):
-        r"""<p>登录方式：0 - 账号密码鉴权，1 - 匿名登陆，2 - 第三方认证登录</p>
+        r"""<p>登录方式</p><p>枚举值：</p><ul><li>0： 账号密码鉴权</li><li>1： 匿名登录</li><li>2： 第三方认证登录</li></ul>
         :rtype: int
         """
         return self._LoginMode
@@ -8934,7 +8934,7 @@ class CreateConsoleRequest(AbstractModel):
 
     @property
     def Accounts(self):
-        r"""<p>用户账号信息</p><p>“账号密码鉴权“登录方式必传</p>
+        r"""<p>用户账号信息</p><p>“账号密码鉴权”登录方式必传</p>
         :rtype: list of ConsoleAccount
         """
         return self._Accounts
@@ -36344,11 +36344,11 @@ class ModifyConsoleRequest(AbstractModel):
         :type ConsoleId: str
         :param _AccessMode: <p>访问方式：public - 公网，internal - 内网</p>
         :type AccessMode: list of str
-        :param _LoginMode: <p>登录方式：0 - 账号密码鉴权，1 - 匿名登陆，2 - 第三方认证登录</p>
+        :param _LoginMode: <p>登录方式</p><p>枚举值：</p><ul><li>0： 账号密码鉴权</li><li>1： 匿名登录</li><li>2： 第三方认证登录</li></ul>
         :type LoginMode: int
         :param _DomainPrefix: <p>自定义域名前缀</p>
         :type DomainPrefix: str
-        :param _Accounts: <p>用户账号信息</p><p>“账号密码鉴权“登录方式必传</p>
+        :param _Accounts: <p>用户账号信息</p><p>“账号密码鉴权”登录方式必传</p>
         :type Accounts: list of ConsoleAccount
         :param _AnonymousLogin: <p>匿名登录账号信息</p><p>“匿名登录”登录方式必传</p>
         :type AnonymousLogin: :class:`tencentcloud.cls.v20201016.models.AnonymousLoginInfo`
@@ -36411,7 +36411,7 @@ class ModifyConsoleRequest(AbstractModel):
 
     @property
     def LoginMode(self):
-        r"""<p>登录方式：0 - 账号密码鉴权，1 - 匿名登陆，2 - 第三方认证登录</p>
+        r"""<p>登录方式</p><p>枚举值：</p><ul><li>0： 账号密码鉴权</li><li>1： 匿名登录</li><li>2： 第三方认证登录</li></ul>
         :rtype: int
         """
         return self._LoginMode
@@ -36433,7 +36433,7 @@ class ModifyConsoleRequest(AbstractModel):
 
     @property
     def Accounts(self):
-        r"""<p>用户账号信息</p><p>“账号密码鉴权“登录方式必传</p>
+        r"""<p>用户账号信息</p><p>“账号密码鉴权”登录方式必传</p>
         :rtype: list of ConsoleAccount
         """
         return self._Accounts

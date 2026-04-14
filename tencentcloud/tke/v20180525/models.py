@@ -207,6 +207,10 @@ class AddExistedInstancesRequest(AbstractModel):
         :type ImageId: str
         :param _NodeType: 直接添加为原生节点
         :type NodeType: str
+        :param _Tags: 云标签列表
+        :type Tags: list of Tag
+        :param _RenewFlag: 自动续费标识，NOTIFY_AND_AUTO_RENEW（通知过期且自动续费）、NOTIFY_AND_MANUAL_RENEW（通知过期不自动续费）
+        :type RenewFlag: str
         """
         self._ClusterId = None
         self._InstanceIds = None
@@ -220,6 +224,8 @@ class AddExistedInstancesRequest(AbstractModel):
         self._InstanceAdvancedSettingsOverrides = None
         self._ImageId = None
         self._NodeType = None
+        self._Tags = None
+        self._RenewFlag = None
 
     @property
     def ClusterId(self):
@@ -353,6 +359,28 @@ class AddExistedInstancesRequest(AbstractModel):
     def NodeType(self, NodeType):
         self._NodeType = NodeType
 
+    @property
+    def Tags(self):
+        r"""云标签列表
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def RenewFlag(self):
+        r"""自动续费标识，NOTIFY_AND_AUTO_RENEW（通知过期且自动续费）、NOTIFY_AND_MANUAL_RENEW（通知过期不自动续费）
+        :rtype: str
+        """
+        return self._RenewFlag
+
+    @RenewFlag.setter
+    def RenewFlag(self, RenewFlag):
+        self._RenewFlag = RenewFlag
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -380,6 +408,13 @@ class AddExistedInstancesRequest(AbstractModel):
                 self._InstanceAdvancedSettingsOverrides.append(obj)
         self._ImageId = params.get("ImageId")
         self._NodeType = params.get("NodeType")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._RenewFlag = params.get("RenewFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2161,59 +2196,61 @@ class Cluster(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群ID
+        :param _ClusterId: <p>集群ID</p>
         :type ClusterId: str
-        :param _ClusterName: 集群名称
+        :param _ClusterName: <p>集群名称</p>
         :type ClusterName: str
-        :param _ClusterDescription: 集群描述
+        :param _ClusterDescription: <p>集群描述</p>
         :type ClusterDescription: str
-        :param _ClusterVersion: 集群版本（默认值为1.10.5）
+        :param _ClusterVersion: <p>集群版本（默认值为1.10.5）</p>
         :type ClusterVersion: str
-        :param _ClusterOs: 集群系统。centos7.2x86_64 或者 ubuntu16.04.1 LTSx86_64，默认取值为ubuntu16.04.1 LTSx86_64
+        :param _ClusterOs: <p>集群系统。centos7.2x86_64 或者 ubuntu16.04.1 LTSx86_64，默认取值为ubuntu16.04.1 LTSx86_64</p>
         :type ClusterOs: str
-        :param _ClusterType: 集群类型，托管集群：MANAGED_CLUSTER，独立集群：INDEPENDENT_CLUSTER。
+        :param _ClusterType: <p>集群类型，托管集群：MANAGED_CLUSTER，独立集群：INDEPENDENT_CLUSTER。</p>
         :type ClusterType: str
-        :param _ClusterNetworkSettings: 集群网络相关参数
+        :param _ClusterNetworkSettings: <p>集群网络相关参数</p>
         :type ClusterNetworkSettings: :class:`tencentcloud.tke.v20180525.models.ClusterNetworkSettings`
-        :param _ClusterNodeNum: 集群当前node数量
+        :param _ClusterNodeNum: <p>集群当前node数量</p>
         :type ClusterNodeNum: int
-        :param _ProjectId: 集群所属的项目ID
+        :param _ProjectId: <p>集群所属的项目ID</p>
         :type ProjectId: int
-        :param _TagSpecification: 标签描述列表。
+        :param _TagSpecification: <p>标签描述列表。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TagSpecification: list of TagSpecification
-        :param _ClusterStatus: 集群状态 (Trading 集群开通中,Creating 创建中,Running 运行中,Deleting 删除中,Idling 闲置中,Recovering 唤醒中,Scaling 规模调整中,Upgrading 升级中,WaittingForConnect 等待注册,Trading 集群开通中,Isolated 欠费隔离中,Pause 集群升级暂停,NodeUpgrading 节点升级中,RuntimeUpgrading 节点运行时升级中,MasterScaling Master扩缩容中,ClusterLevelUpgrading 调整规格中,ResourceIsolate 隔离中,ResourceIsolated 已隔离,ResourceReverse 冲正中,Abnormal 异常)
+        :param _ClusterStatus: <p>集群状态 (Trading 集群开通中,Creating 创建中,Running 运行中,Deleting 删除中,Idling 闲置中,Recovering 唤醒中,Scaling 规模调整中,Upgrading 升级中,WaittingForConnect 等待注册,Trading 集群开通中,Isolated 欠费隔离中,Pause 集群升级暂停,NodeUpgrading 节点升级中,RuntimeUpgrading 节点运行时升级中,MasterScaling Master扩缩容中,ClusterLevelUpgrading 调整规格中,ResourceIsolate 隔离中,ResourceIsolated 已隔离,ResourceReverse 冲正中,Abnormal 异常)</p>
         :type ClusterStatus: str
-        :param _Property: 集群属性(包括集群不同属性的MAP，属性字段包括NodeNameType (lan-ip模式和hostname 模式，默认无lan-ip模式))
+        :param _Property: <p>集群属性(包括集群不同属性的MAP，属性字段包括NodeNameType (lan-ip模式和hostname 模式，默认无lan-ip模式))</p>
         :type Property: str
-        :param _ClusterMaterNodeNum: 集群当前master数量
+        :param _ClusterMaterNodeNum: <p>集群当前master数量</p>
         :type ClusterMaterNodeNum: int
-        :param _ImageId: 集群使用镜像id
+        :param _ImageId: <p>集群使用镜像id</p>
         :type ImageId: str
-        :param _OsCustomizeType: OsCustomizeType 系统定制类型
+        :param _OsCustomizeType: <p>OsCustomizeType 系统定制类型</p>
         :type OsCustomizeType: str
-        :param _ContainerRuntime: 集群运行环境docker或container
+        :param _ContainerRuntime: <p>集群运行环境docker或container</p>
         :type ContainerRuntime: str
-        :param _CreatedTime: 创建时间
+        :param _CreatedTime: <p>创建时间</p>
         :type CreatedTime: str
-        :param _DeletionProtection: 集群删除保护开关，打开：true，关闭：false
+        :param _DeletionProtection: <p>集群删除保护开关，打开：true，关闭：false</p>
         :type DeletionProtection: bool
-        :param _EnableExternalNode: 集群是否开启第三方节点支持，开启：true，关闭：false
+        :param _EnableExternalNode: <p>集群是否开启第三方节点支持，开启：true，关闭：false</p>
         :type EnableExternalNode: bool
-        :param _ClusterLevel: 集群等级，针对托管集群生效
+        :param _ClusterLevel: <p>集群等级，针对托管集群生效</p>
         :type ClusterLevel: str
-        :param _AutoUpgradeClusterLevel: 自动变配集群等级，针对托管集群生效。开启：true，关闭：false
+        :param _AutoUpgradeClusterLevel: <p>自动变配集群等级，针对托管集群生效。开启：true，关闭：false</p>
         :type AutoUpgradeClusterLevel: bool
-        :param _QGPUShareEnable: 是否开启QGPU共享，开启：true，关闭：false
+        :param _QGPUShareEnable: <p>是否开启QGPU共享，开启：true，关闭：false</p>
         :type QGPUShareEnable: bool
-        :param _RuntimeVersion: 运行时版本
+        :param _RuntimeVersion: <p>运行时版本</p>
         :type RuntimeVersion: str
-        :param _ClusterEtcdNodeNum: 集群当前etcd数量
+        :param _ClusterEtcdNodeNum: <p>集群当前etcd数量</p>
         :type ClusterEtcdNodeNum: int
-        :param _CdcId: 本地专用集群Id
+        :param _CdcId: <p>本地专用集群Id</p>
         :type CdcId: str
-        :param _IsHighAvailability: 集群是否启用高可用模式。用于指导跨可用区资源打散等高可用策略的执行
+        :param _IsHighAvailability: <p>集群是否启用高可用模式。用于指导跨可用区资源打散等高可用策略的执行</p>
         :type IsHighAvailability: bool
+        :param _SecurityModeConfig: <p>开启后会下发Gatekeeper和网络策略</p>
+        :type SecurityModeConfig: :class:`tencentcloud.tke.v20180525.models.SecurityModeConfig`
         """
         self._ClusterId = None
         self._ClusterName = None
@@ -2241,10 +2278,11 @@ class Cluster(AbstractModel):
         self._ClusterEtcdNodeNum = None
         self._CdcId = None
         self._IsHighAvailability = None
+        self._SecurityModeConfig = None
 
     @property
     def ClusterId(self):
-        r"""集群ID
+        r"""<p>集群ID</p>
         :rtype: str
         """
         return self._ClusterId
@@ -2255,7 +2293,7 @@ class Cluster(AbstractModel):
 
     @property
     def ClusterName(self):
-        r"""集群名称
+        r"""<p>集群名称</p>
         :rtype: str
         """
         return self._ClusterName
@@ -2266,7 +2304,7 @@ class Cluster(AbstractModel):
 
     @property
     def ClusterDescription(self):
-        r"""集群描述
+        r"""<p>集群描述</p>
         :rtype: str
         """
         return self._ClusterDescription
@@ -2277,7 +2315,7 @@ class Cluster(AbstractModel):
 
     @property
     def ClusterVersion(self):
-        r"""集群版本（默认值为1.10.5）
+        r"""<p>集群版本（默认值为1.10.5）</p>
         :rtype: str
         """
         return self._ClusterVersion
@@ -2288,7 +2326,7 @@ class Cluster(AbstractModel):
 
     @property
     def ClusterOs(self):
-        r"""集群系统。centos7.2x86_64 或者 ubuntu16.04.1 LTSx86_64，默认取值为ubuntu16.04.1 LTSx86_64
+        r"""<p>集群系统。centos7.2x86_64 或者 ubuntu16.04.1 LTSx86_64，默认取值为ubuntu16.04.1 LTSx86_64</p>
         :rtype: str
         """
         return self._ClusterOs
@@ -2299,7 +2337,7 @@ class Cluster(AbstractModel):
 
     @property
     def ClusterType(self):
-        r"""集群类型，托管集群：MANAGED_CLUSTER，独立集群：INDEPENDENT_CLUSTER。
+        r"""<p>集群类型，托管集群：MANAGED_CLUSTER，独立集群：INDEPENDENT_CLUSTER。</p>
         :rtype: str
         """
         return self._ClusterType
@@ -2310,7 +2348,7 @@ class Cluster(AbstractModel):
 
     @property
     def ClusterNetworkSettings(self):
-        r"""集群网络相关参数
+        r"""<p>集群网络相关参数</p>
         :rtype: :class:`tencentcloud.tke.v20180525.models.ClusterNetworkSettings`
         """
         return self._ClusterNetworkSettings
@@ -2321,7 +2359,7 @@ class Cluster(AbstractModel):
 
     @property
     def ClusterNodeNum(self):
-        r"""集群当前node数量
+        r"""<p>集群当前node数量</p>
         :rtype: int
         """
         return self._ClusterNodeNum
@@ -2332,7 +2370,7 @@ class Cluster(AbstractModel):
 
     @property
     def ProjectId(self):
-        r"""集群所属的项目ID
+        r"""<p>集群所属的项目ID</p>
         :rtype: int
         """
         return self._ProjectId
@@ -2343,7 +2381,7 @@ class Cluster(AbstractModel):
 
     @property
     def TagSpecification(self):
-        r"""标签描述列表。
+        r"""<p>标签描述列表。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TagSpecification
         """
@@ -2355,7 +2393,7 @@ class Cluster(AbstractModel):
 
     @property
     def ClusterStatus(self):
-        r"""集群状态 (Trading 集群开通中,Creating 创建中,Running 运行中,Deleting 删除中,Idling 闲置中,Recovering 唤醒中,Scaling 规模调整中,Upgrading 升级中,WaittingForConnect 等待注册,Trading 集群开通中,Isolated 欠费隔离中,Pause 集群升级暂停,NodeUpgrading 节点升级中,RuntimeUpgrading 节点运行时升级中,MasterScaling Master扩缩容中,ClusterLevelUpgrading 调整规格中,ResourceIsolate 隔离中,ResourceIsolated 已隔离,ResourceReverse 冲正中,Abnormal 异常)
+        r"""<p>集群状态 (Trading 集群开通中,Creating 创建中,Running 运行中,Deleting 删除中,Idling 闲置中,Recovering 唤醒中,Scaling 规模调整中,Upgrading 升级中,WaittingForConnect 等待注册,Trading 集群开通中,Isolated 欠费隔离中,Pause 集群升级暂停,NodeUpgrading 节点升级中,RuntimeUpgrading 节点运行时升级中,MasterScaling Master扩缩容中,ClusterLevelUpgrading 调整规格中,ResourceIsolate 隔离中,ResourceIsolated 已隔离,ResourceReverse 冲正中,Abnormal 异常)</p>
         :rtype: str
         """
         return self._ClusterStatus
@@ -2366,7 +2404,7 @@ class Cluster(AbstractModel):
 
     @property
     def Property(self):
-        r"""集群属性(包括集群不同属性的MAP，属性字段包括NodeNameType (lan-ip模式和hostname 模式，默认无lan-ip模式))
+        r"""<p>集群属性(包括集群不同属性的MAP，属性字段包括NodeNameType (lan-ip模式和hostname 模式，默认无lan-ip模式))</p>
         :rtype: str
         """
         return self._Property
@@ -2377,7 +2415,7 @@ class Cluster(AbstractModel):
 
     @property
     def ClusterMaterNodeNum(self):
-        r"""集群当前master数量
+        r"""<p>集群当前master数量</p>
         :rtype: int
         """
         return self._ClusterMaterNodeNum
@@ -2388,7 +2426,7 @@ class Cluster(AbstractModel):
 
     @property
     def ImageId(self):
-        r"""集群使用镜像id
+        r"""<p>集群使用镜像id</p>
         :rtype: str
         """
         return self._ImageId
@@ -2399,7 +2437,7 @@ class Cluster(AbstractModel):
 
     @property
     def OsCustomizeType(self):
-        r"""OsCustomizeType 系统定制类型
+        r"""<p>OsCustomizeType 系统定制类型</p>
         :rtype: str
         """
         return self._OsCustomizeType
@@ -2410,7 +2448,7 @@ class Cluster(AbstractModel):
 
     @property
     def ContainerRuntime(self):
-        r"""集群运行环境docker或container
+        r"""<p>集群运行环境docker或container</p>
         :rtype: str
         """
         return self._ContainerRuntime
@@ -2421,7 +2459,7 @@ class Cluster(AbstractModel):
 
     @property
     def CreatedTime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
         :rtype: str
         """
         return self._CreatedTime
@@ -2432,7 +2470,7 @@ class Cluster(AbstractModel):
 
     @property
     def DeletionProtection(self):
-        r"""集群删除保护开关，打开：true，关闭：false
+        r"""<p>集群删除保护开关，打开：true，关闭：false</p>
         :rtype: bool
         """
         return self._DeletionProtection
@@ -2443,7 +2481,7 @@ class Cluster(AbstractModel):
 
     @property
     def EnableExternalNode(self):
-        r"""集群是否开启第三方节点支持，开启：true，关闭：false
+        r"""<p>集群是否开启第三方节点支持，开启：true，关闭：false</p>
         :rtype: bool
         """
         return self._EnableExternalNode
@@ -2454,7 +2492,7 @@ class Cluster(AbstractModel):
 
     @property
     def ClusterLevel(self):
-        r"""集群等级，针对托管集群生效
+        r"""<p>集群等级，针对托管集群生效</p>
         :rtype: str
         """
         return self._ClusterLevel
@@ -2465,7 +2503,7 @@ class Cluster(AbstractModel):
 
     @property
     def AutoUpgradeClusterLevel(self):
-        r"""自动变配集群等级，针对托管集群生效。开启：true，关闭：false
+        r"""<p>自动变配集群等级，针对托管集群生效。开启：true，关闭：false</p>
         :rtype: bool
         """
         return self._AutoUpgradeClusterLevel
@@ -2476,7 +2514,7 @@ class Cluster(AbstractModel):
 
     @property
     def QGPUShareEnable(self):
-        r"""是否开启QGPU共享，开启：true，关闭：false
+        r"""<p>是否开启QGPU共享，开启：true，关闭：false</p>
         :rtype: bool
         """
         return self._QGPUShareEnable
@@ -2487,7 +2525,7 @@ class Cluster(AbstractModel):
 
     @property
     def RuntimeVersion(self):
-        r"""运行时版本
+        r"""<p>运行时版本</p>
         :rtype: str
         """
         return self._RuntimeVersion
@@ -2498,7 +2536,7 @@ class Cluster(AbstractModel):
 
     @property
     def ClusterEtcdNodeNum(self):
-        r"""集群当前etcd数量
+        r"""<p>集群当前etcd数量</p>
         :rtype: int
         """
         return self._ClusterEtcdNodeNum
@@ -2509,7 +2547,7 @@ class Cluster(AbstractModel):
 
     @property
     def CdcId(self):
-        r"""本地专用集群Id
+        r"""<p>本地专用集群Id</p>
         :rtype: str
         """
         return self._CdcId
@@ -2520,7 +2558,7 @@ class Cluster(AbstractModel):
 
     @property
     def IsHighAvailability(self):
-        r"""集群是否启用高可用模式。用于指导跨可用区资源打散等高可用策略的执行
+        r"""<p>集群是否启用高可用模式。用于指导跨可用区资源打散等高可用策略的执行</p>
         :rtype: bool
         """
         return self._IsHighAvailability
@@ -2528,6 +2566,17 @@ class Cluster(AbstractModel):
     @IsHighAvailability.setter
     def IsHighAvailability(self, IsHighAvailability):
         self._IsHighAvailability = IsHighAvailability
+
+    @property
+    def SecurityModeConfig(self):
+        r"""<p>开启后会下发Gatekeeper和网络策略</p>
+        :rtype: :class:`tencentcloud.tke.v20180525.models.SecurityModeConfig`
+        """
+        return self._SecurityModeConfig
+
+    @SecurityModeConfig.setter
+    def SecurityModeConfig(self, SecurityModeConfig):
+        self._SecurityModeConfig = SecurityModeConfig
 
 
     def _deserialize(self, params):
@@ -2564,6 +2613,9 @@ class Cluster(AbstractModel):
         self._ClusterEtcdNodeNum = params.get("ClusterEtcdNodeNum")
         self._CdcId = params.get("CdcId")
         self._IsHighAvailability = params.get("IsHighAvailability")
+        if params.get("SecurityModeConfig") is not None:
+            self._SecurityModeConfig = SecurityModeConfig()
+            self._SecurityModeConfig._deserialize(params.get("SecurityModeConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2581,59 +2633,52 @@ class ClusterAdvancedSettings(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AsEnabled: 是否启用集群节点自动扩缩容(创建集群流程不支持开启此功能)
+        :param _AsEnabled: <p>是否启用集群节点自动扩缩容(创建集群流程不支持开启此功能)</p>
         :type AsEnabled: bool
-        :param _AuditEnabled: 是否开启审计开关
+        :param _AuditEnabled: <p>是否开启审计开关</p>
         :type AuditEnabled: bool
-        :param _AuditLogTopicId: 审计日志上传到的topic
+        :param _AuditLogTopicId: <p>审计日志上传到的topic</p>
         :type AuditLogTopicId: str
-        :param _AuditLogsetId: 审计日志上传到的logset日志集
+        :param _AuditLogsetId: <p>审计日志上传到的logset日志集</p>
         :type AuditLogsetId: str
-        :param _BasePodNumber: 自定义模式下的基础pod数量
+        :param _BasePodNumber: <p>自定义模式下的基础pod数量</p>
         :type BasePodNumber: int
-        :param _CiliumMode: 启用 CiliumMode 的模式，空值表示不启用，“clusterIP” 表示启用 Cilium 支持 ClusterIP
+        :param _CiliumMode: <p>启用 CiliumMode 的模式，空值表示不启用，“clusterIP” 表示启用 Cilium 支持 ClusterIP</p>
         :type CiliumMode: str
-        :param _ContainerRuntime: 集群使用的runtime类型，包括"docker"和"containerd"两种类型，默认为"docker"
+        :param _ContainerRuntime: <p>集群使用的runtime类型，包括&quot;docker&quot;和&quot;containerd&quot;两种类型，默认为&quot;docker&quot;</p>
         :type ContainerRuntime: str
-        :param _DataPlaneV2: 是否启用 DataPlaneV2（cilium替代kube-proxy） 
+        :param _DataPlaneV2: <p>是否启用 DataPlaneV2（cilium替代kube-proxy）</p>
         :type DataPlaneV2: bool
-        :param _DeletionProtection: 是否启用集群删除保护
+        :param _DeletionProtection: <p>是否启用集群删除保护</p>
         :type DeletionProtection: bool
-        :param _EnableCustomizedPodCIDR: 是否开节点podCIDR大小的自定义模式
+        :param _EnableCustomizedPodCIDR: <p>是否开节点podCIDR大小的自定义模式</p>
         :type EnableCustomizedPodCIDR: bool
-        :param _EtcdOverrideConfigs: 元数据拆分存储Etcd配置
+        :param _EtcdOverrideConfigs: <p>元数据拆分存储Etcd配置</p>
         :type EtcdOverrideConfigs: list of EtcdOverrideConfig
-        :param _ExtraArgs: 集群自定义参数
+        :param _ExtraArgs: <p>集群自定义参数</p>
         :type ExtraArgs: :class:`tencentcloud.tke.v20180525.models.ClusterExtraArgs`
-        :param _IPVS: 是否启用IPVS
+        :param _IPVS: <p>是否启用IPVS</p>
         :type IPVS: bool
-        :param _IsDualStack: 集群VPC-CNI模式下是否是双栈集群，默认false，表明非双栈集群。
+        :param _IsDualStack: <p>集群VPC-CNI模式下是否是双栈集群，默认false，表明非双栈集群。</p>
         :type IsDualStack: bool
-        :param _IsNonStaticIpMode: 集群VPC-CNI模式是否为非固定IP，默认: FALSE 固定IP。
+        :param _IsNonStaticIpMode: <p>集群VPC-CNI模式是否为非固定IP，默认: FALSE 固定IP。</p>
         :type IsNonStaticIpMode: bool
-        :param _KubeProxyMode: 集群的网络代理模型，目前tke集群支持的网络代理模式有三种：iptables,ipvs,ipvs-bpf，此参数仅在使用ipvs-bpf模式时使用，三种网络模式的参数设置关系如下：
-iptables模式：IPVS和KubeProxyMode都不设置
-ipvs模式: 设置IPVS为true, KubeProxyMode不设置
-ipvs-bpf模式: 设置KubeProxyMode为kube-proxy-bpf
-使用ipvs-bpf的网络模式需要满足以下条件：
-1. 集群版本必须为1.14及以上；
-2. 系统镜像必须是: Tencent Linux 2.4；
+        :param _KubeProxyMode: <p>集群的网络代理模型，目前tke集群支持的网络代理模式有三种：iptables,ipvs,ipvs-bpf，此参数仅在使用ipvs-bpf模式时使用，三种网络模式的参数设置关系如下：<br>iptables模式：IPVS和KubeProxyMode都不设置<br>ipvs模式: 设置IPVS为true, KubeProxyMode不设置<br>ipvs-bpf模式: 设置KubeProxyMode为kube-proxy-bpf<br>使用ipvs-bpf的网络模式需要满足以下条件：</p><ol><li>集群版本必须为1.14及以上；</li><li>系统镜像必须是: Tencent Linux 2.4；</li></ol>
         :type KubeProxyMode: str
-        :param _NetworkType: 集群网络类型，默认为GR。
-- GR: 全局路由
-- VPC-CNI: VPC-CNI模式
-- CiliumOverlay: CiliumOverlay模式
+        :param _NetworkType: <p>集群网络类型，默认为GR。</p><ul><li>GR: 全局路由</li><li>VPC-CNI: VPC-CNI模式</li><li>CiliumOverlay: CiliumOverlay模式</li></ul>
         :type NetworkType: str
-        :param _NodeNameType: 集群中节点NodeName类型（包括 hostname,lan-ip两种形式，默认为lan-ip。如果开启了hostname模式，创建节点时需要设置HostName参数，并且InstanceName需要和HostName一致）
+        :param _NodeNameType: <p>集群中节点NodeName类型（包括 hostname,lan-ip两种形式，默认为lan-ip。如果开启了hostname模式，创建节点时需要设置HostName参数，并且InstanceName需要和HostName一致）</p>
         :type NodeNameType: str
-        :param _QGPUShareEnable: 是否开启QGPU共享
+        :param _QGPUShareEnable: <p>是否开启QGPU共享</p>
         :type QGPUShareEnable: bool
-        :param _RuntimeVersion: 运行时版本
+        :param _RuntimeVersion: <p>运行时版本</p>
         :type RuntimeVersion: str
-        :param _VpcCniType: 区分共享网卡多IP模式和独立网卡模式，共享网卡多 IP 模式填写"tke-route-eni"，独立网卡模式填写"tke-direct-eni"，默认为共享网卡模式
+        :param _VpcCniType: <p>区分共享网卡多IP模式和独立网卡模式，共享网卡多 IP 模式填写&quot;tke-route-eni&quot;，独立网卡模式填写&quot;tke-direct-eni&quot;，默认为共享网卡模式</p>
         :type VpcCniType: str
-        :param _IsHighAvailability: 集群是否启用高可用模式。用于指导跨可用区资源打散等高可用策略的执行，默认为true
+        :param _IsHighAvailability: <p>集群是否启用高可用模式。用于指导跨可用区资源打散等高可用策略的执行，默认为true</p>
         :type IsHighAvailability: bool
+        :param _SecurityModeConfig: <p>集群安全模式配置</p>
+        :type SecurityModeConfig: :class:`tencentcloud.tke.v20180525.models.SecurityModeConfig`
         """
         self._AsEnabled = None
         self._AuditEnabled = None
@@ -2657,10 +2702,11 @@ ipvs-bpf模式: 设置KubeProxyMode为kube-proxy-bpf
         self._RuntimeVersion = None
         self._VpcCniType = None
         self._IsHighAvailability = None
+        self._SecurityModeConfig = None
 
     @property
     def AsEnabled(self):
-        r"""是否启用集群节点自动扩缩容(创建集群流程不支持开启此功能)
+        r"""<p>是否启用集群节点自动扩缩容(创建集群流程不支持开启此功能)</p>
         :rtype: bool
         """
         return self._AsEnabled
@@ -2671,7 +2717,7 @@ ipvs-bpf模式: 设置KubeProxyMode为kube-proxy-bpf
 
     @property
     def AuditEnabled(self):
-        r"""是否开启审计开关
+        r"""<p>是否开启审计开关</p>
         :rtype: bool
         """
         return self._AuditEnabled
@@ -2682,7 +2728,7 @@ ipvs-bpf模式: 设置KubeProxyMode为kube-proxy-bpf
 
     @property
     def AuditLogTopicId(self):
-        r"""审计日志上传到的topic
+        r"""<p>审计日志上传到的topic</p>
         :rtype: str
         """
         return self._AuditLogTopicId
@@ -2693,7 +2739,7 @@ ipvs-bpf模式: 设置KubeProxyMode为kube-proxy-bpf
 
     @property
     def AuditLogsetId(self):
-        r"""审计日志上传到的logset日志集
+        r"""<p>审计日志上传到的logset日志集</p>
         :rtype: str
         """
         return self._AuditLogsetId
@@ -2704,7 +2750,7 @@ ipvs-bpf模式: 设置KubeProxyMode为kube-proxy-bpf
 
     @property
     def BasePodNumber(self):
-        r"""自定义模式下的基础pod数量
+        r"""<p>自定义模式下的基础pod数量</p>
         :rtype: int
         """
         return self._BasePodNumber
@@ -2715,7 +2761,7 @@ ipvs-bpf模式: 设置KubeProxyMode为kube-proxy-bpf
 
     @property
     def CiliumMode(self):
-        r"""启用 CiliumMode 的模式，空值表示不启用，“clusterIP” 表示启用 Cilium 支持 ClusterIP
+        r"""<p>启用 CiliumMode 的模式，空值表示不启用，“clusterIP” 表示启用 Cilium 支持 ClusterIP</p>
         :rtype: str
         """
         return self._CiliumMode
@@ -2726,7 +2772,7 @@ ipvs-bpf模式: 设置KubeProxyMode为kube-proxy-bpf
 
     @property
     def ContainerRuntime(self):
-        r"""集群使用的runtime类型，包括"docker"和"containerd"两种类型，默认为"docker"
+        r"""<p>集群使用的runtime类型，包括&quot;docker&quot;和&quot;containerd&quot;两种类型，默认为&quot;docker&quot;</p>
         :rtype: str
         """
         return self._ContainerRuntime
@@ -2737,7 +2783,7 @@ ipvs-bpf模式: 设置KubeProxyMode为kube-proxy-bpf
 
     @property
     def DataPlaneV2(self):
-        r"""是否启用 DataPlaneV2（cilium替代kube-proxy） 
+        r"""<p>是否启用 DataPlaneV2（cilium替代kube-proxy）</p>
         :rtype: bool
         """
         return self._DataPlaneV2
@@ -2748,7 +2794,7 @@ ipvs-bpf模式: 设置KubeProxyMode为kube-proxy-bpf
 
     @property
     def DeletionProtection(self):
-        r"""是否启用集群删除保护
+        r"""<p>是否启用集群删除保护</p>
         :rtype: bool
         """
         return self._DeletionProtection
@@ -2759,7 +2805,7 @@ ipvs-bpf模式: 设置KubeProxyMode为kube-proxy-bpf
 
     @property
     def EnableCustomizedPodCIDR(self):
-        r"""是否开节点podCIDR大小的自定义模式
+        r"""<p>是否开节点podCIDR大小的自定义模式</p>
         :rtype: bool
         """
         return self._EnableCustomizedPodCIDR
@@ -2770,7 +2816,7 @@ ipvs-bpf模式: 设置KubeProxyMode为kube-proxy-bpf
 
     @property
     def EtcdOverrideConfigs(self):
-        r"""元数据拆分存储Etcd配置
+        r"""<p>元数据拆分存储Etcd配置</p>
         :rtype: list of EtcdOverrideConfig
         """
         return self._EtcdOverrideConfigs
@@ -2781,7 +2827,7 @@ ipvs-bpf模式: 设置KubeProxyMode为kube-proxy-bpf
 
     @property
     def ExtraArgs(self):
-        r"""集群自定义参数
+        r"""<p>集群自定义参数</p>
         :rtype: :class:`tencentcloud.tke.v20180525.models.ClusterExtraArgs`
         """
         return self._ExtraArgs
@@ -2792,7 +2838,7 @@ ipvs-bpf模式: 设置KubeProxyMode为kube-proxy-bpf
 
     @property
     def IPVS(self):
-        r"""是否启用IPVS
+        r"""<p>是否启用IPVS</p>
         :rtype: bool
         """
         return self._IPVS
@@ -2803,7 +2849,7 @@ ipvs-bpf模式: 设置KubeProxyMode为kube-proxy-bpf
 
     @property
     def IsDualStack(self):
-        r"""集群VPC-CNI模式下是否是双栈集群，默认false，表明非双栈集群。
+        r"""<p>集群VPC-CNI模式下是否是双栈集群，默认false，表明非双栈集群。</p>
         :rtype: bool
         """
         return self._IsDualStack
@@ -2814,7 +2860,7 @@ ipvs-bpf模式: 设置KubeProxyMode为kube-proxy-bpf
 
     @property
     def IsNonStaticIpMode(self):
-        r"""集群VPC-CNI模式是否为非固定IP，默认: FALSE 固定IP。
+        r"""<p>集群VPC-CNI模式是否为非固定IP，默认: FALSE 固定IP。</p>
         :rtype: bool
         """
         return self._IsNonStaticIpMode
@@ -2825,13 +2871,7 @@ ipvs-bpf模式: 设置KubeProxyMode为kube-proxy-bpf
 
     @property
     def KubeProxyMode(self):
-        r"""集群的网络代理模型，目前tke集群支持的网络代理模式有三种：iptables,ipvs,ipvs-bpf，此参数仅在使用ipvs-bpf模式时使用，三种网络模式的参数设置关系如下：
-iptables模式：IPVS和KubeProxyMode都不设置
-ipvs模式: 设置IPVS为true, KubeProxyMode不设置
-ipvs-bpf模式: 设置KubeProxyMode为kube-proxy-bpf
-使用ipvs-bpf的网络模式需要满足以下条件：
-1. 集群版本必须为1.14及以上；
-2. 系统镜像必须是: Tencent Linux 2.4；
+        r"""<p>集群的网络代理模型，目前tke集群支持的网络代理模式有三种：iptables,ipvs,ipvs-bpf，此参数仅在使用ipvs-bpf模式时使用，三种网络模式的参数设置关系如下：<br>iptables模式：IPVS和KubeProxyMode都不设置<br>ipvs模式: 设置IPVS为true, KubeProxyMode不设置<br>ipvs-bpf模式: 设置KubeProxyMode为kube-proxy-bpf<br>使用ipvs-bpf的网络模式需要满足以下条件：</p><ol><li>集群版本必须为1.14及以上；</li><li>系统镜像必须是: Tencent Linux 2.4；</li></ol>
         :rtype: str
         """
         return self._KubeProxyMode
@@ -2842,10 +2882,7 @@ ipvs-bpf模式: 设置KubeProxyMode为kube-proxy-bpf
 
     @property
     def NetworkType(self):
-        r"""集群网络类型，默认为GR。
-- GR: 全局路由
-- VPC-CNI: VPC-CNI模式
-- CiliumOverlay: CiliumOverlay模式
+        r"""<p>集群网络类型，默认为GR。</p><ul><li>GR: 全局路由</li><li>VPC-CNI: VPC-CNI模式</li><li>CiliumOverlay: CiliumOverlay模式</li></ul>
         :rtype: str
         """
         return self._NetworkType
@@ -2856,7 +2893,7 @@ ipvs-bpf模式: 设置KubeProxyMode为kube-proxy-bpf
 
     @property
     def NodeNameType(self):
-        r"""集群中节点NodeName类型（包括 hostname,lan-ip两种形式，默认为lan-ip。如果开启了hostname模式，创建节点时需要设置HostName参数，并且InstanceName需要和HostName一致）
+        r"""<p>集群中节点NodeName类型（包括 hostname,lan-ip两种形式，默认为lan-ip。如果开启了hostname模式，创建节点时需要设置HostName参数，并且InstanceName需要和HostName一致）</p>
         :rtype: str
         """
         return self._NodeNameType
@@ -2867,7 +2904,7 @@ ipvs-bpf模式: 设置KubeProxyMode为kube-proxy-bpf
 
     @property
     def QGPUShareEnable(self):
-        r"""是否开启QGPU共享
+        r"""<p>是否开启QGPU共享</p>
         :rtype: bool
         """
         return self._QGPUShareEnable
@@ -2878,7 +2915,7 @@ ipvs-bpf模式: 设置KubeProxyMode为kube-proxy-bpf
 
     @property
     def RuntimeVersion(self):
-        r"""运行时版本
+        r"""<p>运行时版本</p>
         :rtype: str
         """
         return self._RuntimeVersion
@@ -2889,7 +2926,7 @@ ipvs-bpf模式: 设置KubeProxyMode为kube-proxy-bpf
 
     @property
     def VpcCniType(self):
-        r"""区分共享网卡多IP模式和独立网卡模式，共享网卡多 IP 模式填写"tke-route-eni"，独立网卡模式填写"tke-direct-eni"，默认为共享网卡模式
+        r"""<p>区分共享网卡多IP模式和独立网卡模式，共享网卡多 IP 模式填写&quot;tke-route-eni&quot;，独立网卡模式填写&quot;tke-direct-eni&quot;，默认为共享网卡模式</p>
         :rtype: str
         """
         return self._VpcCniType
@@ -2900,7 +2937,7 @@ ipvs-bpf模式: 设置KubeProxyMode为kube-proxy-bpf
 
     @property
     def IsHighAvailability(self):
-        r"""集群是否启用高可用模式。用于指导跨可用区资源打散等高可用策略的执行，默认为true
+        r"""<p>集群是否启用高可用模式。用于指导跨可用区资源打散等高可用策略的执行，默认为true</p>
         :rtype: bool
         """
         return self._IsHighAvailability
@@ -2908,6 +2945,17 @@ ipvs-bpf模式: 设置KubeProxyMode为kube-proxy-bpf
     @IsHighAvailability.setter
     def IsHighAvailability(self, IsHighAvailability):
         self._IsHighAvailability = IsHighAvailability
+
+    @property
+    def SecurityModeConfig(self):
+        r"""<p>集群安全模式配置</p>
+        :rtype: :class:`tencentcloud.tke.v20180525.models.SecurityModeConfig`
+        """
+        return self._SecurityModeConfig
+
+    @SecurityModeConfig.setter
+    def SecurityModeConfig(self, SecurityModeConfig):
+        self._SecurityModeConfig = SecurityModeConfig
 
 
     def _deserialize(self, params):
@@ -2940,6 +2988,9 @@ ipvs-bpf模式: 设置KubeProxyMode为kube-proxy-bpf
         self._RuntimeVersion = params.get("RuntimeVersion")
         self._VpcCniType = params.get("VpcCniType")
         self._IsHighAvailability = params.get("IsHighAvailability")
+        if params.get("SecurityModeConfig") is not None:
+            self._SecurityModeConfig = SecurityModeConfig()
+            self._SecurityModeConfig._deserialize(params.get("SecurityModeConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3875,20 +3926,20 @@ class ClusterCredential(AbstractModel):
 
 
 class ClusterExternalConfig(AbstractModel):
-    r"""开启第三方节点池支持配置信息
+    r"""开启注册节点池支持配置信息
 
     """
 
     def __init__(self):
         r"""
-        :param _NetworkType: 集群网络插件类型，支持：Flannel、CiliumBGP、CiliumVXLan
+        :param _NetworkType: 容器网络类型，支持：HostNetwork、CiliumBGP
         :type NetworkType: str
         :param _SubnetId: 子网ID
         :type SubnetId: str
-        :param _ClusterCIDR: Pod CIDR
+        :param _ClusterCIDR: 集群CIDR，网络模式HostNetwork 时无需填写
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterCIDR: str
-        :param _Enabled: 是否开启第三方节点池支持
+        :param _Enabled: 【已废弃】是否开启专线连接能力
         :type Enabled: bool
         """
         self._NetworkType = None
@@ -3898,7 +3949,7 @@ class ClusterExternalConfig(AbstractModel):
 
     @property
     def NetworkType(self):
-        r"""集群网络插件类型，支持：Flannel、CiliumBGP、CiliumVXLan
+        r"""容器网络类型，支持：HostNetwork、CiliumBGP
         :rtype: str
         """
         return self._NetworkType
@@ -3920,7 +3971,7 @@ class ClusterExternalConfig(AbstractModel):
 
     @property
     def ClusterCIDR(self):
-        r"""Pod CIDR
+        r"""集群CIDR，网络模式HostNetwork 时无需填写
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3932,7 +3983,7 @@ class ClusterExternalConfig(AbstractModel):
 
     @property
     def Enabled(self):
-        r"""是否开启第三方节点池支持
+        r"""【已废弃】是否开启专线连接能力
         :rtype: bool
         """
         return self._Enabled
@@ -9238,15 +9289,15 @@ class CreateExternalNodePoolRequest(AbstractModel):
         :type ContainerRuntime: str
         :param _RuntimeVersion: 运行时版本
         :type RuntimeVersion: str
-        :param _Labels: 第三方节点label
+        :param _Labels: 注册节点标签
         :type Labels: list of Label
-        :param _Taints: 第三方节点taint
+        :param _Taints: 注册节点污点
         :type Taints: list of Taint
-        :param _InstanceAdvancedSettings: 第三方节点高级设置
+        :param _InstanceAdvancedSettings: 注册节点高级设置
         :type InstanceAdvancedSettings: :class:`tencentcloud.tke.v20180525.models.InstanceAdvancedSettings`
         :param _DeletionProtection: 删除保护开关
         :type DeletionProtection: bool
-        :param _NodeType: 节点类型
+        :param _NodeType: 节点类型，支持 CPU、GPU
         :type NodeType: str
         """
         self._ClusterId = None
@@ -9305,7 +9356,7 @@ class CreateExternalNodePoolRequest(AbstractModel):
 
     @property
     def Labels(self):
-        r"""第三方节点label
+        r"""注册节点标签
         :rtype: list of Label
         """
         return self._Labels
@@ -9316,7 +9367,7 @@ class CreateExternalNodePoolRequest(AbstractModel):
 
     @property
     def Taints(self):
-        r"""第三方节点taint
+        r"""注册节点污点
         :rtype: list of Taint
         """
         return self._Taints
@@ -9327,7 +9378,7 @@ class CreateExternalNodePoolRequest(AbstractModel):
 
     @property
     def InstanceAdvancedSettings(self):
-        r"""第三方节点高级设置
+        r"""注册节点高级设置
         :rtype: :class:`tencentcloud.tke.v20180525.models.InstanceAdvancedSettings`
         """
         return self._InstanceAdvancedSettings
@@ -9349,7 +9400,7 @@ class CreateExternalNodePoolRequest(AbstractModel):
 
     @property
     def NodeType(self):
-        r"""节点类型
+        r"""节点类型，支持 CPU、GPU
         :rtype: str
         """
         return self._NodeType
@@ -13147,9 +13198,9 @@ class DeleteExternalNodePoolRequest(AbstractModel):
         r"""
         :param _ClusterId: 集群ID
         :type ClusterId: str
-        :param _NodePoolIds: 第三方节点池ID列表
+        :param _NodePoolIds: 注册节点池ID列表
         :type NodePoolIds: list of str
-        :param _Force: 是否强制删除，在第三方节点上有pod的情况下，如果选择非强制删除，则删除会失败
+        :param _Force: 是否强制删除，在注册节点上有pod的情况下，如果选择非强制删除，则删除会失败
         :type Force: bool
         """
         self._ClusterId = None
@@ -13169,7 +13220,7 @@ class DeleteExternalNodePoolRequest(AbstractModel):
 
     @property
     def NodePoolIds(self):
-        r"""第三方节点池ID列表
+        r"""注册节点池ID列表
         :rtype: list of str
         """
         return self._NodePoolIds
@@ -13180,7 +13231,7 @@ class DeleteExternalNodePoolRequest(AbstractModel):
 
     @property
     def Force(self):
-        r"""是否强制删除，在第三方节点上有pod的情况下，如果选择非强制删除，则删除会失败
+        r"""是否强制删除，在注册节点上有pod的情况下，如果选择非强制删除，则删除会失败
         :rtype: bool
         """
         return self._Force
@@ -13241,9 +13292,9 @@ class DeleteExternalNodeRequest(AbstractModel):
         r"""
         :param _ClusterId: 集群ID
         :type ClusterId: str
-        :param _Names: 第三方节点列表
+        :param _Names: 注册节点列表
         :type Names: list of str
-        :param _Force: 是否强制删除：如果第三方节点上有运行中Pod，则非强制删除状态下不会进行删除
+        :param _Force: 是否强制删除：如果注册节点上有运行中Pod，则非强制删除状态下不会进行删除
         :type Force: bool
         """
         self._ClusterId = None
@@ -13263,7 +13314,7 @@ class DeleteExternalNodeRequest(AbstractModel):
 
     @property
     def Names(self):
-        r"""第三方节点列表
+        r"""注册节点列表
         :rtype: list of str
         """
         return self._Names
@@ -13274,7 +13325,7 @@ class DeleteExternalNodeRequest(AbstractModel):
 
     @property
     def Force(self):
-        r"""是否强制删除：如果第三方节点上有运行中Pod，则非强制删除状态下不会进行删除
+        r"""是否强制删除：如果注册节点上有运行中Pod，则非强制删除状态下不会进行删除
         :rtype: bool
         """
         return self._Force
@@ -21574,7 +21625,7 @@ class DescribeExternalNodePoolsResponse(AbstractModel):
         :param _TotalCount: 节点池总数
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
-        :param _NodePoolSet: 第三方节点池列表
+        :param _NodePoolSet: 注册节点池列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type NodePoolSet: list of ExternalNodePool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -21598,7 +21649,7 @@ class DescribeExternalNodePoolsResponse(AbstractModel):
 
     @property
     def NodePoolSet(self):
-        r"""第三方节点池列表
+        r"""注册节点池列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ExternalNodePool
         """
@@ -21773,7 +21824,7 @@ class DescribeExternalNodeScriptRequest(AbstractModel):
         r"""
         :param _ClusterId: 集群ID
         :type ClusterId: str
-        :param _NodePoolId: 节点池ID
+        :param _NodePoolId: 注册节点池ID
         :type NodePoolId: str
         :param _Interface: 网卡名
         :type Interface: str
@@ -21801,7 +21852,7 @@ class DescribeExternalNodeScriptRequest(AbstractModel):
 
     @property
     def NodePoolId(self):
-        r"""节点池ID
+        r"""注册节点池ID
         :rtype: str
         """
         return self._NodePoolId
@@ -21940,14 +21991,14 @@ class DescribeExternalNodeSupportConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群Id
+        :param _ClusterId: 集群Id，可通过查看集群的基本信息->基础信息页获取
         :type ClusterId: str
         """
         self._ClusterId = None
 
     @property
     def ClusterId(self):
-        r"""集群Id
+        r"""集群Id，可通过查看集群的基本信息->基础信息页获取
         :rtype: str
         """
         return self._ClusterId
@@ -21978,17 +22029,17 @@ class DescribeExternalNodeSupportConfigResponse(AbstractModel):
         r"""
         :param _ClusterCIDR: 用于分配集群容器和服务 IP 的 CIDR，不得与 VPC CIDR 冲突，也不得与同 VPC 内其他集群 CIDR 冲突。且网段范围必须在内网网段内，例如:10.1.0.0/14, 192.168.0.1/18,172.16.0.0/16。
         :type ClusterCIDR: str
-        :param _NetworkType: 集群网络插件类型，支持：CiliumBGP、CiliumVXLan
+        :param _NetworkType: 集群网络插件类型，支持：CiliumOverlay、HostNetwork
         :type NetworkType: str
         :param _SubnetId: 子网ID
         :type SubnetId: str
-        :param _Enabled: 是否开启第三方节点专线连接支持
+        :param _Enabled: 是否开启注册节点专线连接支持
         :type Enabled: bool
         :param _AS: 节点所属交换机的BGP AS 号
         :type AS: str
         :param _SwitchIP: 节点所属交换机的交换机 IP
         :type SwitchIP: str
-        :param _Status: 开启第三方节点池状态
+        :param _Status: 开启注册节点池状态，支持 Initializing、InitFailed、Enabled、Disabled
         :type Status: str
         :param _FailedReason: 如果开启失败原因
         :type FailedReason: str
@@ -21996,10 +22047,10 @@ class DescribeExternalNodeSupportConfigResponse(AbstractModel):
         :type Master: str
         :param _Proxy: 镜像仓库代理地址
         :type Proxy: str
-        :param _Progress: 用于记录开启第三方节点的过程进行到哪一步了
+        :param _Progress: 开启注册节点能力的进度
 注意：此字段可能返回 null，表示取不到有效值。
         :type Progress: list of Step
-        :param _EnabledPublicConnect: 是否开启第三方节点公网连接支持
+        :param _EnabledPublicConnect: 是否开启注册节点公网连接支持
         :type EnabledPublicConnect: bool
         :param _PublicConnectUrl: 注册节点公网版公网连接地址
         :type PublicConnectUrl: str
@@ -22037,7 +22088,7 @@ class DescribeExternalNodeSupportConfigResponse(AbstractModel):
 
     @property
     def NetworkType(self):
-        r"""集群网络插件类型，支持：CiliumBGP、CiliumVXLan
+        r"""集群网络插件类型，支持：CiliumOverlay、HostNetwork
         :rtype: str
         """
         return self._NetworkType
@@ -22059,7 +22110,7 @@ class DescribeExternalNodeSupportConfigResponse(AbstractModel):
 
     @property
     def Enabled(self):
-        r"""是否开启第三方节点专线连接支持
+        r"""是否开启注册节点专线连接支持
         :rtype: bool
         """
         return self._Enabled
@@ -22092,7 +22143,7 @@ class DescribeExternalNodeSupportConfigResponse(AbstractModel):
 
     @property
     def Status(self):
-        r"""开启第三方节点池状态
+        r"""开启注册节点池状态，支持 Initializing、InitFailed、Enabled、Disabled
         :rtype: str
         """
         return self._Status
@@ -22136,7 +22187,7 @@ class DescribeExternalNodeSupportConfigResponse(AbstractModel):
 
     @property
     def Progress(self):
-        r"""用于记录开启第三方节点的过程进行到哪一步了
+        r"""开启注册节点能力的进度
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Step
         """
@@ -22148,7 +22199,7 @@ class DescribeExternalNodeSupportConfigResponse(AbstractModel):
 
     @property
     def EnabledPublicConnect(self):
-        r"""是否开启第三方节点公网连接支持
+        r"""是否开启注册节点公网连接支持
         :rtype: bool
         """
         return self._EnabledPublicConnect
@@ -32086,7 +32137,7 @@ class EnableExternalNodeSupportRequest(AbstractModel):
         r"""
         :param _ClusterId: 集群Id
         :type ClusterId: str
-        :param _ClusterExternalConfig: 开启第三方节点池支持配置信息
+        :param _ClusterExternalConfig: 开启注册节点池支持配置信息
         :type ClusterExternalConfig: :class:`tencentcloud.tke.v20180525.models.ClusterExternalConfig`
         """
         self._ClusterId = None
@@ -32105,7 +32156,7 @@ class EnableExternalNodeSupportRequest(AbstractModel):
 
     @property
     def ClusterExternalConfig(self):
-        r"""开启第三方节点池支持配置信息
+        r"""开启注册节点池支持配置信息
         :rtype: :class:`tencentcloud.tke.v20180525.models.ClusterExternalConfig`
         """
         return self._ClusterExternalConfig
@@ -33352,30 +33403,30 @@ class ExtensionAddon(AbstractModel):
 
 
 class ExternalNode(AbstractModel):
-    r"""第三方节点
+    r"""注册节点
 
     """
 
     def __init__(self):
         r"""
-        :param _Name: 第三方节点名称
+        :param _Name: <p>注册节点名称</p>
         :type Name: str
-        :param _NodePoolId: 第三方节点所属节点池
+        :param _NodePoolId: <p>注册节点所属节点池</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type NodePoolId: str
-        :param _IP: 第三方IP地址
+        :param _IP: <p>注册节点IP地址</p>
         :type IP: str
-        :param _Location: 第三方地域
+        :param _Location: <p>注册节点地域</p>
         :type Location: str
-        :param _Status: 第三方节点状态
+        :param _Status: <p>注册节点状态</p><p>枚举值：</p><ul><li>Running： 运行中</li><li>Failed： 异常状态</li><li>Terminating： 删除中</li><li>Draining： 驱逐中</li></ul>
         :type Status: str
-        :param _CreatedTime: 创建时间
+        :param _CreatedTime: <p>创建时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreatedTime: str
-        :param _Reason: 异常原因
+        :param _Reason: <p>异常原因</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Reason: str
-        :param _Unschedulable: 是否封锁。true表示已封锁，false表示未封锁
+        :param _Unschedulable: <p>是否封锁。true表示已封锁，false表示未封锁</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Unschedulable: bool
         """
@@ -33390,7 +33441,7 @@ class ExternalNode(AbstractModel):
 
     @property
     def Name(self):
-        r"""第三方节点名称
+        r"""<p>注册节点名称</p>
         :rtype: str
         """
         return self._Name
@@ -33401,7 +33452,7 @@ class ExternalNode(AbstractModel):
 
     @property
     def NodePoolId(self):
-        r"""第三方节点所属节点池
+        r"""<p>注册节点所属节点池</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -33413,7 +33464,7 @@ class ExternalNode(AbstractModel):
 
     @property
     def IP(self):
-        r"""第三方IP地址
+        r"""<p>注册节点IP地址</p>
         :rtype: str
         """
         return self._IP
@@ -33424,7 +33475,7 @@ class ExternalNode(AbstractModel):
 
     @property
     def Location(self):
-        r"""第三方地域
+        r"""<p>注册节点地域</p>
         :rtype: str
         """
         return self._Location
@@ -33435,7 +33486,7 @@ class ExternalNode(AbstractModel):
 
     @property
     def Status(self):
-        r"""第三方节点状态
+        r"""<p>注册节点状态</p><p>枚举值：</p><ul><li>Running： 运行中</li><li>Failed： 异常状态</li><li>Terminating： 删除中</li><li>Draining： 驱逐中</li></ul>
         :rtype: str
         """
         return self._Status
@@ -33446,7 +33497,7 @@ class ExternalNode(AbstractModel):
 
     @property
     def CreatedTime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -33458,7 +33509,7 @@ class ExternalNode(AbstractModel):
 
     @property
     def Reason(self):
-        r"""异常原因
+        r"""<p>异常原因</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -33470,7 +33521,7 @@ class ExternalNode(AbstractModel):
 
     @property
     def Unschedulable(self):
-        r"""是否封锁。true表示已封锁，false表示未封锁
+        r"""<p>是否封锁。true表示已封锁，false表示未封锁</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -33501,15 +33552,15 @@ class ExternalNode(AbstractModel):
 
 
 class ExternalNodePool(AbstractModel):
-    r"""第三方节点池信息
+    r"""注册节点池信息
 
     """
 
     def __init__(self):
         r"""
-        :param _NodePoolId: 第三方节点池ID
+        :param _NodePoolId: 注册节点池ID
         :type NodePoolId: str
-        :param _Name: 第三方节点池名称
+        :param _Name: 注册节点池名称
         :type Name: str
         :param _LifeState: 节点池生命周期
         :type LifeState: str
@@ -33517,20 +33568,22 @@ class ExternalNodePool(AbstractModel):
         :type ClusterCIDR: str
         :param _NetworkType: 集群网络插件类型
         :type NetworkType: str
-        :param _RuntimeConfig: 第三方节点Runtime配置
+        :param _RuntimeConfig: 注册节点运行时配置
         :type RuntimeConfig: :class:`tencentcloud.tke.v20180525.models.RuntimeConfig`
-        :param _Labels: 第三方节点label
+        :param _Labels: 注册节点标签
 注意：此字段可能返回 null，表示取不到有效值。
         :type Labels: list of Label
-        :param _Taints: 第三方节点taint
+        :param _Taints: 注册节点污点
 注意：此字段可能返回 null，表示取不到有效值。
         :type Taints: list of Taint
-        :param _InstanceAdvancedSettings: 第三方节点高级设置
+        :param _InstanceAdvancedSettings: 注册节点高级设置
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceAdvancedSettings: :class:`tencentcloud.tke.v20180525.models.InstanceAdvancedSettings`
         :param _DeletionProtection: 删除保护开关
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeletionProtection: bool
+        :param _NodeType: 注册节点类型
+        :type NodeType: str
         """
         self._NodePoolId = None
         self._Name = None
@@ -33542,10 +33595,11 @@ class ExternalNodePool(AbstractModel):
         self._Taints = None
         self._InstanceAdvancedSettings = None
         self._DeletionProtection = None
+        self._NodeType = None
 
     @property
     def NodePoolId(self):
-        r"""第三方节点池ID
+        r"""注册节点池ID
         :rtype: str
         """
         return self._NodePoolId
@@ -33556,7 +33610,7 @@ class ExternalNodePool(AbstractModel):
 
     @property
     def Name(self):
-        r"""第三方节点池名称
+        r"""注册节点池名称
         :rtype: str
         """
         return self._Name
@@ -33600,7 +33654,7 @@ class ExternalNodePool(AbstractModel):
 
     @property
     def RuntimeConfig(self):
-        r"""第三方节点Runtime配置
+        r"""注册节点运行时配置
         :rtype: :class:`tencentcloud.tke.v20180525.models.RuntimeConfig`
         """
         return self._RuntimeConfig
@@ -33611,7 +33665,7 @@ class ExternalNodePool(AbstractModel):
 
     @property
     def Labels(self):
-        r"""第三方节点label
+        r"""注册节点标签
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Label
         """
@@ -33623,7 +33677,7 @@ class ExternalNodePool(AbstractModel):
 
     @property
     def Taints(self):
-        r"""第三方节点taint
+        r"""注册节点污点
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Taint
         """
@@ -33635,7 +33689,7 @@ class ExternalNodePool(AbstractModel):
 
     @property
     def InstanceAdvancedSettings(self):
-        r"""第三方节点高级设置
+        r"""注册节点高级设置
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tke.v20180525.models.InstanceAdvancedSettings`
         """
@@ -33656,6 +33710,17 @@ class ExternalNodePool(AbstractModel):
     @DeletionProtection.setter
     def DeletionProtection(self, DeletionProtection):
         self._DeletionProtection = DeletionProtection
+
+    @property
+    def NodeType(self):
+        r"""注册节点类型
+        :rtype: str
+        """
+        return self._NodeType
+
+    @NodeType.setter
+    def NodeType(self, NodeType):
+        self._NodeType = NodeType
 
 
     def _deserialize(self, params):
@@ -33683,6 +33748,7 @@ class ExternalNodePool(AbstractModel):
             self._InstanceAdvancedSettings = InstanceAdvancedSettings()
             self._InstanceAdvancedSettings._deserialize(params.get("InstanceAdvancedSettings"))
         self._DeletionProtection = params.get("DeletionProtection")
+        self._NodeType = params.get("NodeType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -38594,24 +38660,26 @@ class ModifyClusterAttributeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群ID
+        :param _ClusterId: <p>集群ID</p><p>取值参考：<a href="https://cloud.tencent.com/document/api/457/31862">DescribeClusters</a></p>
         :type ClusterId: str
-        :param _ProjectId: 集群所属项目
+        :param _ProjectId: <p>集群所属项目</p>
         :type ProjectId: int
-        :param _ClusterName: 集群名称,字符长度50
+        :param _ClusterName: <p>集群名称,字符长度50</p>
         :type ClusterName: str
-        :param _ClusterDesc: 集群描述
+        :param _ClusterDesc: <p>集群描述</p>
         :type ClusterDesc: str
-        :param _ClusterLevel: 集群等级，等级类型：L20、L50、L100、L200、L500、L1000、L3000、L5000
+        :param _ClusterLevel: <p>集群等级，等级类型：L20、L50、L100、L200、L500、L1000、L3000、L5000</p>
         :type ClusterLevel: str
-        :param _AutoUpgradeClusterLevel: 自动变配集群等级
+        :param _AutoUpgradeClusterLevel: <p>自动变配集群等级</p>
         :type AutoUpgradeClusterLevel: :class:`tencentcloud.tke.v20180525.models.AutoUpgradeClusterLevel`
-        :param _QGPUShareEnable: 是否开启QGPU共享
+        :param _QGPUShareEnable: <p>是否开启QGPU共享</p>
         :type QGPUShareEnable: bool
-        :param _ClusterProperty: 集群属性
+        :param _ClusterProperty: <p>集群属性</p>
         :type ClusterProperty: :class:`tencentcloud.tke.v20180525.models.ClusterProperty`
-        :param _IsHighAvailability: 集群是否启用高可用模式。用于指导跨可用区资源打散等高可用策略的执行
+        :param _IsHighAvailability: <p>集群是否启用高可用模式。用于指导跨可用区资源打散等高可用策略的执行</p>
         :type IsHighAvailability: bool
+        :param _SecurityModeConfig: <p>集群安全模式配置</p>
+        :type SecurityModeConfig: :class:`tencentcloud.tke.v20180525.models.SecurityModeConfig`
         """
         self._ClusterId = None
         self._ProjectId = None
@@ -38622,10 +38690,11 @@ class ModifyClusterAttributeRequest(AbstractModel):
         self._QGPUShareEnable = None
         self._ClusterProperty = None
         self._IsHighAvailability = None
+        self._SecurityModeConfig = None
 
     @property
     def ClusterId(self):
-        r"""集群ID
+        r"""<p>集群ID</p><p>取值参考：<a href="https://cloud.tencent.com/document/api/457/31862">DescribeClusters</a></p>
         :rtype: str
         """
         return self._ClusterId
@@ -38636,7 +38705,7 @@ class ModifyClusterAttributeRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        r"""集群所属项目
+        r"""<p>集群所属项目</p>
         :rtype: int
         """
         return self._ProjectId
@@ -38647,7 +38716,7 @@ class ModifyClusterAttributeRequest(AbstractModel):
 
     @property
     def ClusterName(self):
-        r"""集群名称,字符长度50
+        r"""<p>集群名称,字符长度50</p>
         :rtype: str
         """
         return self._ClusterName
@@ -38658,7 +38727,7 @@ class ModifyClusterAttributeRequest(AbstractModel):
 
     @property
     def ClusterDesc(self):
-        r"""集群描述
+        r"""<p>集群描述</p>
         :rtype: str
         """
         return self._ClusterDesc
@@ -38669,7 +38738,7 @@ class ModifyClusterAttributeRequest(AbstractModel):
 
     @property
     def ClusterLevel(self):
-        r"""集群等级，等级类型：L20、L50、L100、L200、L500、L1000、L3000、L5000
+        r"""<p>集群等级，等级类型：L20、L50、L100、L200、L500、L1000、L3000、L5000</p>
         :rtype: str
         """
         return self._ClusterLevel
@@ -38680,7 +38749,7 @@ class ModifyClusterAttributeRequest(AbstractModel):
 
     @property
     def AutoUpgradeClusterLevel(self):
-        r"""自动变配集群等级
+        r"""<p>自动变配集群等级</p>
         :rtype: :class:`tencentcloud.tke.v20180525.models.AutoUpgradeClusterLevel`
         """
         return self._AutoUpgradeClusterLevel
@@ -38691,7 +38760,7 @@ class ModifyClusterAttributeRequest(AbstractModel):
 
     @property
     def QGPUShareEnable(self):
-        r"""是否开启QGPU共享
+        r"""<p>是否开启QGPU共享</p>
         :rtype: bool
         """
         return self._QGPUShareEnable
@@ -38702,7 +38771,7 @@ class ModifyClusterAttributeRequest(AbstractModel):
 
     @property
     def ClusterProperty(self):
-        r"""集群属性
+        r"""<p>集群属性</p>
         :rtype: :class:`tencentcloud.tke.v20180525.models.ClusterProperty`
         """
         return self._ClusterProperty
@@ -38713,7 +38782,7 @@ class ModifyClusterAttributeRequest(AbstractModel):
 
     @property
     def IsHighAvailability(self):
-        r"""集群是否启用高可用模式。用于指导跨可用区资源打散等高可用策略的执行
+        r"""<p>集群是否启用高可用模式。用于指导跨可用区资源打散等高可用策略的执行</p>
         :rtype: bool
         """
         return self._IsHighAvailability
@@ -38721,6 +38790,17 @@ class ModifyClusterAttributeRequest(AbstractModel):
     @IsHighAvailability.setter
     def IsHighAvailability(self, IsHighAvailability):
         self._IsHighAvailability = IsHighAvailability
+
+    @property
+    def SecurityModeConfig(self):
+        r"""<p>集群安全模式配置</p>
+        :rtype: :class:`tencentcloud.tke.v20180525.models.SecurityModeConfig`
+        """
+        return self._SecurityModeConfig
+
+    @SecurityModeConfig.setter
+    def SecurityModeConfig(self, SecurityModeConfig):
+        self._SecurityModeConfig = SecurityModeConfig
 
 
     def _deserialize(self, params):
@@ -38737,6 +38817,9 @@ class ModifyClusterAttributeRequest(AbstractModel):
             self._ClusterProperty = ClusterProperty()
             self._ClusterProperty._deserialize(params.get("ClusterProperty"))
         self._IsHighAvailability = params.get("IsHighAvailability")
+        if params.get("SecurityModeConfig") is not None:
+            self._SecurityModeConfig = SecurityModeConfig()
+            self._SecurityModeConfig._deserialize(params.get("SecurityModeConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -38754,22 +38837,24 @@ class ModifyClusterAttributeResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProjectId: 集群所属项目
+        :param _ProjectId: <p>集群所属项目</p>
         :type ProjectId: int
-        :param _ClusterName: 集群名称
+        :param _ClusterName: <p>集群名称</p>
         :type ClusterName: str
-        :param _ClusterDesc: 集群描述
+        :param _ClusterDesc: <p>集群描述</p>
         :type ClusterDesc: str
-        :param _ClusterLevel: 集群等级
+        :param _ClusterLevel: <p>集群等级</p>
         :type ClusterLevel: str
-        :param _AutoUpgradeClusterLevel: 自动变配集群等级
+        :param _AutoUpgradeClusterLevel: <p>自动变配集群等级</p>
         :type AutoUpgradeClusterLevel: :class:`tencentcloud.tke.v20180525.models.AutoUpgradeClusterLevel`
-        :param _QGPUShareEnable: 是否开启QGPU共享
+        :param _QGPUShareEnable: <p>是否开启QGPU共享</p>
         :type QGPUShareEnable: bool
-        :param _ClusterProperty: 集群属性
+        :param _ClusterProperty: <p>集群属性</p>
         :type ClusterProperty: :class:`tencentcloud.tke.v20180525.models.ClusterProperty`
-        :param _IsHighAvailability: 集群是否启用高可用模式。用于指导跨可用区资源打散等高可用策略的执行
+        :param _IsHighAvailability: <p>集群是否启用高可用模式。用于指导跨可用区资源打散等高可用策略的执行</p>
         :type IsHighAvailability: bool
+        :param _SecurityModeConfig: <p>集群安全模式配置</p>
+        :type SecurityModeConfig: :class:`tencentcloud.tke.v20180525.models.SecurityModeConfig`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -38781,11 +38866,12 @@ class ModifyClusterAttributeResponse(AbstractModel):
         self._QGPUShareEnable = None
         self._ClusterProperty = None
         self._IsHighAvailability = None
+        self._SecurityModeConfig = None
         self._RequestId = None
 
     @property
     def ProjectId(self):
-        r"""集群所属项目
+        r"""<p>集群所属项目</p>
         :rtype: int
         """
         return self._ProjectId
@@ -38796,7 +38882,7 @@ class ModifyClusterAttributeResponse(AbstractModel):
 
     @property
     def ClusterName(self):
-        r"""集群名称
+        r"""<p>集群名称</p>
         :rtype: str
         """
         return self._ClusterName
@@ -38807,7 +38893,7 @@ class ModifyClusterAttributeResponse(AbstractModel):
 
     @property
     def ClusterDesc(self):
-        r"""集群描述
+        r"""<p>集群描述</p>
         :rtype: str
         """
         return self._ClusterDesc
@@ -38818,7 +38904,7 @@ class ModifyClusterAttributeResponse(AbstractModel):
 
     @property
     def ClusterLevel(self):
-        r"""集群等级
+        r"""<p>集群等级</p>
         :rtype: str
         """
         return self._ClusterLevel
@@ -38829,7 +38915,7 @@ class ModifyClusterAttributeResponse(AbstractModel):
 
     @property
     def AutoUpgradeClusterLevel(self):
-        r"""自动变配集群等级
+        r"""<p>自动变配集群等级</p>
         :rtype: :class:`tencentcloud.tke.v20180525.models.AutoUpgradeClusterLevel`
         """
         return self._AutoUpgradeClusterLevel
@@ -38840,7 +38926,7 @@ class ModifyClusterAttributeResponse(AbstractModel):
 
     @property
     def QGPUShareEnable(self):
-        r"""是否开启QGPU共享
+        r"""<p>是否开启QGPU共享</p>
         :rtype: bool
         """
         return self._QGPUShareEnable
@@ -38851,7 +38937,7 @@ class ModifyClusterAttributeResponse(AbstractModel):
 
     @property
     def ClusterProperty(self):
-        r"""集群属性
+        r"""<p>集群属性</p>
         :rtype: :class:`tencentcloud.tke.v20180525.models.ClusterProperty`
         """
         return self._ClusterProperty
@@ -38862,7 +38948,7 @@ class ModifyClusterAttributeResponse(AbstractModel):
 
     @property
     def IsHighAvailability(self):
-        r"""集群是否启用高可用模式。用于指导跨可用区资源打散等高可用策略的执行
+        r"""<p>集群是否启用高可用模式。用于指导跨可用区资源打散等高可用策略的执行</p>
         :rtype: bool
         """
         return self._IsHighAvailability
@@ -38870,6 +38956,17 @@ class ModifyClusterAttributeResponse(AbstractModel):
     @IsHighAvailability.setter
     def IsHighAvailability(self, IsHighAvailability):
         self._IsHighAvailability = IsHighAvailability
+
+    @property
+    def SecurityModeConfig(self):
+        r"""<p>集群安全模式配置</p>
+        :rtype: :class:`tencentcloud.tke.v20180525.models.SecurityModeConfig`
+        """
+        return self._SecurityModeConfig
+
+    @SecurityModeConfig.setter
+    def SecurityModeConfig(self, SecurityModeConfig):
+        self._SecurityModeConfig = SecurityModeConfig
 
     @property
     def RequestId(self):
@@ -38896,6 +38993,9 @@ class ModifyClusterAttributeResponse(AbstractModel):
             self._ClusterProperty = ClusterProperty()
             self._ClusterProperty._deserialize(params.get("ClusterProperty"))
         self._IsHighAvailability = params.get("IsHighAvailability")
+        if params.get("SecurityModeConfig") is not None:
+            self._SecurityModeConfig = SecurityModeConfig()
+            self._SecurityModeConfig._deserialize(params.get("SecurityModeConfig"))
         self._RequestId = params.get("RequestId")
 
 
@@ -40490,9 +40590,9 @@ class ModifyExternalNodePoolRequest(AbstractModel):
         :type NodePoolId: str
         :param _Name: 节点池名称
         :type Name: str
-        :param _Labels: 第三方节点label
+        :param _Labels: 注册节点标签
         :type Labels: list of Label
-        :param _Taints: 第三方节点taint
+        :param _Taints: 注册节点污点
         :type Taints: list of Taint
         :param _DeletionProtection: 删除保护开关
         :type DeletionProtection: bool
@@ -40542,7 +40642,7 @@ class ModifyExternalNodePoolRequest(AbstractModel):
 
     @property
     def Labels(self):
-        r"""第三方节点label
+        r"""注册节点标签
         :rtype: list of Label
         """
         return self._Labels
@@ -40553,7 +40653,7 @@ class ModifyExternalNodePoolRequest(AbstractModel):
 
     @property
     def Taints(self):
-        r"""第三方节点taint
+        r"""注册节点污点
         :rtype: list of Taint
         """
         return self._Taints
@@ -51582,6 +51682,77 @@ class SecurityContext(AbstractModel):
         
 
 
+class SecurityModeConfig(AbstractModel):
+    r"""集群安全模式相关参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Enabled: <p>安全模式开关（true 开启 / false 关闭）</p>
+        :type Enabled: bool
+        :param _Namespaces: <p>灰度 namespace 列表</p>
+        :type Namespaces: list of str
+        :param _Labels: <p>灰度 Pod label</p>
+        :type Labels: list of Label
+        """
+        self._Enabled = None
+        self._Namespaces = None
+        self._Labels = None
+
+    @property
+    def Enabled(self):
+        r"""<p>安全模式开关（true 开启 / false 关闭）</p>
+        :rtype: bool
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+    @property
+    def Namespaces(self):
+        r"""<p>灰度 namespace 列表</p>
+        :rtype: list of str
+        """
+        return self._Namespaces
+
+    @Namespaces.setter
+    def Namespaces(self, Namespaces):
+        self._Namespaces = Namespaces
+
+    @property
+    def Labels(self):
+        r"""<p>灰度 Pod label</p>
+        :rtype: list of Label
+        """
+        return self._Labels
+
+    @Labels.setter
+    def Labels(self, Labels):
+        self._Labels = Labels
+
+
+    def _deserialize(self, params):
+        self._Enabled = params.get("Enabled")
+        self._Namespaces = params.get("Namespaces")
+        if params.get("Labels") is not None:
+            self._Labels = []
+            for item in params.get("Labels"):
+                obj = Label()
+                obj._deserialize(item)
+                self._Labels.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SequenceFlow(AbstractModel):
     r"""发布序列步骤
 
@@ -52025,19 +52196,24 @@ class Step(AbstractModel):
         :param _Name: 名称
         :type Name: str
         :param _StartAt: 开始时间
+注意：此字段可能返回 null，表示取不到有效值。
         :type StartAt: str
         :param _EndAt: 结束时间
+注意：此字段可能返回 null，表示取不到有效值。
         :type EndAt: str
         :param _Status: 当前状态
         :type Status: str
         :param _Message: 执行信息
         :type Message: str
+        :param _Detail: 错误详情
+        :type Detail: str
         """
         self._Name = None
         self._StartAt = None
         self._EndAt = None
         self._Status = None
         self._Message = None
+        self._Detail = None
 
     @property
     def Name(self):
@@ -52053,6 +52229,7 @@ class Step(AbstractModel):
     @property
     def StartAt(self):
         r"""开始时间
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._StartAt
@@ -52064,6 +52241,7 @@ class Step(AbstractModel):
     @property
     def EndAt(self):
         r"""结束时间
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._EndAt
@@ -52094,6 +52272,17 @@ class Step(AbstractModel):
     def Message(self, Message):
         self._Message = Message
 
+    @property
+    def Detail(self):
+        r"""错误详情
+        :rtype: str
+        """
+        return self._Detail
+
+    @Detail.setter
+    def Detail(self, Detail):
+        self._Detail = Detail
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -52101,6 +52290,7 @@ class Step(AbstractModel):
         self._EndAt = params.get("EndAt")
         self._Status = params.get("Status")
         self._Message = params.get("Message")
+        self._Detail = params.get("Detail")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -55186,10 +55376,12 @@ major 大版本原地升级
         :type ResetParam: :class:`tencentcloud.tke.v20180525.models.UpgradeNodeResetParam`
         :param _SkipPreCheck: 是否忽略节点升级前检查，默认值 false
         :type SkipPreCheck: bool
-        :param _MaxNotReadyPercent: 最大可容忍的不可用Pod比例
+        :param _MaxNotReadyPercent: 最大可容忍的不可用Pod比例，如果设置 0 表示不做校验
         :type MaxNotReadyPercent: float
         :param _UpgradeRunTime: 是否升级节点运行时，默认false不升级
         :type UpgradeRunTime: bool
+        :param _Concurrent: 支持多个节点并行升级，默认值为 1，最大并行数为15
+        :type Concurrent: int
         """
         self._ClusterId = None
         self._Operation = None
@@ -55199,6 +55391,7 @@ major 大版本原地升级
         self._SkipPreCheck = None
         self._MaxNotReadyPercent = None
         self._UpgradeRunTime = None
+        self._Concurrent = None
 
     @property
     def ClusterId(self):
@@ -55275,7 +55468,7 @@ major 大版本原地升级
 
     @property
     def MaxNotReadyPercent(self):
-        r"""最大可容忍的不可用Pod比例
+        r"""最大可容忍的不可用Pod比例，如果设置 0 表示不做校验
         :rtype: float
         """
         return self._MaxNotReadyPercent
@@ -55295,6 +55488,17 @@ major 大版本原地升级
     def UpgradeRunTime(self, UpgradeRunTime):
         self._UpgradeRunTime = UpgradeRunTime
 
+    @property
+    def Concurrent(self):
+        r"""支持多个节点并行升级，默认值为 1，最大并行数为15
+        :rtype: int
+        """
+        return self._Concurrent
+
+    @Concurrent.setter
+    def Concurrent(self, Concurrent):
+        self._Concurrent = Concurrent
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -55307,6 +55511,7 @@ major 大版本原地升级
         self._SkipPreCheck = params.get("SkipPreCheck")
         self._MaxNotReadyPercent = params.get("MaxNotReadyPercent")
         self._UpgradeRunTime = params.get("UpgradeRunTime")
+        self._Concurrent = params.get("Concurrent")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

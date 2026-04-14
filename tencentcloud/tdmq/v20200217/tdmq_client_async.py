@@ -335,6 +335,24 @@ class TdmqClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateRocketMQMigrationTask(
+            self,
+            request: models.CreateRocketMQMigrationTaskRequest,
+            opts: Dict = None,
+    ) -> models.CreateRocketMQMigrationTaskResponse:
+        """
+        创建RocketMQ元数据迁移任务，用于批量创建主题和消费组数据
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateRocketMQMigrationTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateRocketMQMigrationTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateRocketMQNamespace(
             self,
             request: models.CreateRocketMQNamespaceRequest,

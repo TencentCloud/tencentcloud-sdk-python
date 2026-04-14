@@ -421,6 +421,29 @@ class TdmqClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateRocketMQMigrationTask(self, request):
+        r"""创建RocketMQ元数据迁移任务，用于批量创建主题和消费组数据
+
+        :param request: Request instance for CreateRocketMQMigrationTask.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.CreateRocketMQMigrationTaskRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.CreateRocketMQMigrationTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateRocketMQMigrationTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateRocketMQMigrationTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateRocketMQNamespace(self, request):
         r"""创建 RocketMQ 命名空间。
         当前 API 适用集群：4.x 虚拟集群和 4.x 专享集群，其他集群类型均不支持该功能。

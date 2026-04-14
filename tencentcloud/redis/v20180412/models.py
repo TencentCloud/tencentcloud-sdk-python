@@ -9096,7 +9096,7 @@ class DescribeLogInstanceListRequest(AbstractModel):
         :type Filters: list of Filter
         :param _LogSubType: <p>日志子类型。</p><p>枚举值：</p><ul><li>write： 写日志。</li><li>read： 读日志。</li><li>all： 读写日志。</li></ul>
         :type LogSubType: str
-        :param _LogSwitch: <p>日志开关。不传查询所有日志实例。</p><ul><li>on：开启。</li><li>off：关闭。</li></ul>
+        :param _LogSwitch: <p>日志开关。</p><p>枚举值：</p><ul><li>on： 开启</li><li>off： 关闭</li></ul><p>默认值：off</p>
         :type LogSwitch: str
         """
         self._LogType = None
@@ -9163,7 +9163,7 @@ class DescribeLogInstanceListRequest(AbstractModel):
 
     @property
     def LogSwitch(self):
-        r"""<p>日志开关。不传查询所有日志实例。</p><ul><li>on：开启。</li><li>off：关闭。</li></ul>
+        r"""<p>日志开关。</p><p>枚举值：</p><ul><li>on： 开启</li><li>off： 关闭</li></ul><p>默认值：off</p>
         :rtype: str
         """
         return self._LogSwitch

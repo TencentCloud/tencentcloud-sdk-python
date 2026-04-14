@@ -2740,6 +2740,29 @@ class OrganizationClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def UpdateIPWhitelist(self, request):
+        r"""更新新建ip白名单
+
+        :param request: Request instance for UpdateIPWhitelist.
+        :type request: :class:`tencentcloud.organization.v20210331.models.UpdateIPWhitelistRequest`
+        :rtype: :class:`tencentcloud.organization.v20210331.models.UpdateIPWhitelistResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateIPWhitelist", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateIPWhitelistResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def UpdateOrganizationIdentity(self, request):
         r"""更新组织身份
 

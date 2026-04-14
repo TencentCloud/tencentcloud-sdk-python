@@ -2149,6 +2149,24 @@ class OrganizationClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def UpdateIPWhitelist(
+            self,
+            request: models.UpdateIPWhitelistRequest,
+            opts: Dict = None,
+    ) -> models.UpdateIPWhitelistResponse:
+        """
+        更新新建ip白名单
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpdateIPWhitelist"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpdateIPWhitelistResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def UpdateOrganizationIdentity(
             self,
             request: models.UpdateOrganizationIdentityRequest,

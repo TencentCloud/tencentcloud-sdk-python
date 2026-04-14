@@ -473,13 +473,13 @@ class ItemCoord(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Height: 算式高度
+        :param _Height: <p>算式高度（单位：px）</p>
         :type Height: int
-        :param _Width: 算式宽度
+        :param _Width: <p>算式宽度（单位：px）</p>
         :type Width: int
-        :param _X: 算式图的左上角横坐标
+        :param _X: <p>算式图的左上角横坐标</p>
         :type X: int
-        :param _Y: 算式图的左上角纵坐标
+        :param _Y: <p>算式图的左上角纵坐标</p>
         :type Y: int
         """
         self._Height = None
@@ -489,7 +489,7 @@ class ItemCoord(AbstractModel):
 
     @property
     def Height(self):
-        r"""算式高度
+        r"""<p>算式高度（单位：px）</p>
         :rtype: int
         """
         return self._Height
@@ -500,7 +500,7 @@ class ItemCoord(AbstractModel):
 
     @property
     def Width(self):
-        r"""算式宽度
+        r"""<p>算式宽度（单位：px）</p>
         :rtype: int
         """
         return self._Width
@@ -511,7 +511,7 @@ class ItemCoord(AbstractModel):
 
     @property
     def X(self):
-        r"""算式图的左上角横坐标
+        r"""<p>算式图的左上角横坐标</p>
         :rtype: int
         """
         return self._X
@@ -522,7 +522,7 @@ class ItemCoord(AbstractModel):
 
     @property
     def Y(self):
-        r"""算式图的左上角纵坐标
+        r"""<p>算式图的左上角纵坐标</p>
         :rtype: int
         """
         return self._Y

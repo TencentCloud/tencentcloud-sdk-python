@@ -623,6 +623,8 @@ class CreateSandboxToolRequest(AbstractModel):
         :type CustomConfiguration: :class:`tencentcloud.ags.v20250920.models.CustomConfiguration`
         :param _LogConfiguration: <p>沙箱工具日志推送相关配置</p>
         :type LogConfiguration: :class:`tencentcloud.ags.v20250920.models.LogConfiguration`
+        :param _Persistent: <p>常驻沙箱标识</p>
+        :type Persistent: bool
         """
         self._ToolName = None
         self._ToolType = None
@@ -635,6 +637,7 @@ class CreateSandboxToolRequest(AbstractModel):
         self._StorageMounts = None
         self._CustomConfiguration = None
         self._LogConfiguration = None
+        self._Persistent = None
 
     @property
     def ToolName(self):
@@ -757,6 +760,17 @@ class CreateSandboxToolRequest(AbstractModel):
     def LogConfiguration(self, LogConfiguration):
         self._LogConfiguration = LogConfiguration
 
+    @property
+    def Persistent(self):
+        r"""<p>常驻沙箱标识</p>
+        :rtype: bool
+        """
+        return self._Persistent
+
+    @Persistent.setter
+    def Persistent(self, Persistent):
+        self._Persistent = Persistent
+
 
     def _deserialize(self, params):
         self._ToolName = params.get("ToolName")
@@ -786,6 +800,7 @@ class CreateSandboxToolRequest(AbstractModel):
         if params.get("LogConfiguration") is not None:
             self._LogConfiguration = LogConfiguration()
             self._LogConfiguration._deserialize(params.get("LogConfiguration"))
+        self._Persistent = params.get("Persistent")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2788,6 +2803,8 @@ class SandboxInstance(AbstractModel):
         :type ToolName: str
         :param _Status: <p>实例状态：STARTING（启动中）、RUNNING（运行中）、STOPPING（停止中）、STOPPED（已停止）、STOP_FAILED（停止失败）、FAILED（失败状态）</p>
         :type Status: str
+        :param _Persistent: <p>是否常驻实例</p>
+        :type Persistent: bool
         :param _TimeoutSeconds: <p>超时时间（秒），null 表示无超时设置</p>
         :type TimeoutSeconds: int
         :param _ExpiresAt: <p>过期时间（ISO 8601 格式），null 表示无过期时间</p>
@@ -2811,6 +2828,7 @@ class SandboxInstance(AbstractModel):
         self._ToolId = None
         self._ToolName = None
         self._Status = None
+        self._Persistent = None
         self._TimeoutSeconds = None
         self._ExpiresAt = None
         self._StopReason = None
@@ -2864,6 +2882,17 @@ class SandboxInstance(AbstractModel):
     @Status.setter
     def Status(self, Status):
         self._Status = Status
+
+    @property
+    def Persistent(self):
+        r"""<p>是否常驻实例</p>
+        :rtype: bool
+        """
+        return self._Persistent
+
+    @Persistent.setter
+    def Persistent(self, Persistent):
+        self._Persistent = Persistent
 
     @property
     def TimeoutSeconds(self):
@@ -2970,6 +2999,7 @@ class SandboxInstance(AbstractModel):
         self._ToolId = params.get("ToolId")
         self._ToolName = params.get("ToolName")
         self._Status = params.get("Status")
+        self._Persistent = params.get("Persistent")
         self._TimeoutSeconds = params.get("TimeoutSeconds")
         self._ExpiresAt = params.get("ExpiresAt")
         self._StopReason = params.get("StopReason")
@@ -3018,6 +3048,8 @@ class SandboxTool(AbstractModel):
         :type Status: str
         :param _Description: <p>沙箱工具描述信息，最大长度 200 字符</p>
         :type Description: str
+        :param _Persistent: <p>是否常驻沙箱</p>
+        :type Persistent: bool
         :param _DefaultTimeoutSeconds: <p>默认超时时间，支持格式：5m、300s、1h 等，不指定则使用系统默认值（5 分钟）。最大 24 小时</p>
         :type DefaultTimeoutSeconds: int
         :param _NetworkConfiguration: <p>网络配置</p>
@@ -3044,6 +3076,7 @@ class SandboxTool(AbstractModel):
         self._ToolType = None
         self._Status = None
         self._Description = None
+        self._Persistent = None
         self._DefaultTimeoutSeconds = None
         self._NetworkConfiguration = None
         self._Tags = None
@@ -3109,6 +3142,17 @@ class SandboxTool(AbstractModel):
     @Description.setter
     def Description(self, Description):
         self._Description = Description
+
+    @property
+    def Persistent(self):
+        r"""<p>是否常驻沙箱</p>
+        :rtype: bool
+        """
+        return self._Persistent
+
+    @Persistent.setter
+    def Persistent(self, Persistent):
+        self._Persistent = Persistent
 
     @property
     def DefaultTimeoutSeconds(self):
@@ -3227,6 +3271,7 @@ class SandboxTool(AbstractModel):
         self._ToolType = params.get("ToolType")
         self._Status = params.get("Status")
         self._Description = params.get("Description")
+        self._Persistent = params.get("Persistent")
         self._DefaultTimeoutSeconds = params.get("DefaultTimeoutSeconds")
         if params.get("NetworkConfiguration") is not None:
             self._NetworkConfiguration = NetworkConfiguration()

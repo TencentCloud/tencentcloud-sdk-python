@@ -6062,6 +6062,160 @@ class CreateRocketMQGroupV2Response(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateRocketMQMigrationTaskRequest(AbstractModel):
+    r"""CreateRocketMQMigrationTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: <p>集群ID</p>
+        :type ClusterId: str
+        :param _Type: <p>任务类型：<br>0，集群迁移<br>1，导入到指定命名空间</p>
+        :type Type: int
+        :param _Topics: <p>待导入的主题列表</p>
+        :type Topics: list of RocketMQTopicConfig
+        :param _Groups: <p>待导入的消费组列表</p>
+        :type Groups: list of RocketMQGroupConfig
+        :param _Roles: <p>待导入的角色列表</p>
+        :type Roles: list of RocketMQRoleConfig
+        :param _Namespace: <p>指定导入的命名空间</p>
+        :type Namespace: str
+        """
+        self._ClusterId = None
+        self._Type = None
+        self._Topics = None
+        self._Groups = None
+        self._Roles = None
+        self._Namespace = None
+
+    @property
+    def ClusterId(self):
+        r"""<p>集群ID</p>
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def Type(self):
+        r"""<p>任务类型：<br>0，集群迁移<br>1，导入到指定命名空间</p>
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Topics(self):
+        r"""<p>待导入的主题列表</p>
+        :rtype: list of RocketMQTopicConfig
+        """
+        return self._Topics
+
+    @Topics.setter
+    def Topics(self, Topics):
+        self._Topics = Topics
+
+    @property
+    def Groups(self):
+        r"""<p>待导入的消费组列表</p>
+        :rtype: list of RocketMQGroupConfig
+        """
+        return self._Groups
+
+    @Groups.setter
+    def Groups(self, Groups):
+        self._Groups = Groups
+
+    @property
+    def Roles(self):
+        r"""<p>待导入的角色列表</p>
+        :rtype: list of RocketMQRoleConfig
+        """
+        return self._Roles
+
+    @Roles.setter
+    def Roles(self, Roles):
+        self._Roles = Roles
+
+    @property
+    def Namespace(self):
+        r"""<p>指定导入的命名空间</p>
+        :rtype: str
+        """
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._Type = params.get("Type")
+        if params.get("Topics") is not None:
+            self._Topics = []
+            for item in params.get("Topics"):
+                obj = RocketMQTopicConfig()
+                obj._deserialize(item)
+                self._Topics.append(obj)
+        if params.get("Groups") is not None:
+            self._Groups = []
+            for item in params.get("Groups"):
+                obj = RocketMQGroupConfig()
+                obj._deserialize(item)
+                self._Groups.append(obj)
+        if params.get("Roles") is not None:
+            self._Roles = []
+            for item in params.get("Roles"):
+                obj = RocketMQRoleConfig()
+                obj._deserialize(item)
+                self._Roles.append(obj)
+        self._Namespace = params.get("Namespace")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateRocketMQMigrationTaskResponse(AbstractModel):
+    r"""CreateRocketMQMigrationTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CreateRocketMQNamespaceRequest(AbstractModel):
     r"""CreateRocketMQNamespace请求参数结构体
 
@@ -35355,6 +35509,137 @@ class RocketMQNamespace(AbstractModel):
         self._PublicEndpoint = params.get("PublicEndpoint")
         self._VpcEndpoint = params.get("VpcEndpoint")
         self._InternalEndpoint = params.get("InternalEndpoint")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RocketMQRoleConfig(AbstractModel):
+    r"""RocketMQ角色配置信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RoleName: 角色名，对应SecretKey
+        :type RoleName: str
+        :param _RoleToken: accessKey
+        :type RoleToken: str
+        :param _EnvironmentId: 命名空间
+        :type EnvironmentId: str
+        :param _Permissions: 角色权限
+        :type Permissions: list of str
+        :param _Remark: 备注
+        :type Remark: str
+        :param _PermType: 权限类型，默认按集群授权（Cluster：集群级别；TopicAndGroup：主题&消费组级别）
+        :type PermType: str
+        :param _DetailedRolePerms: Topic和Group维度权限配置
+        :type DetailedRolePerms: list of DetailedRolePerm
+        """
+        self._RoleName = None
+        self._RoleToken = None
+        self._EnvironmentId = None
+        self._Permissions = None
+        self._Remark = None
+        self._PermType = None
+        self._DetailedRolePerms = None
+
+    @property
+    def RoleName(self):
+        r"""角色名，对应SecretKey
+        :rtype: str
+        """
+        return self._RoleName
+
+    @RoleName.setter
+    def RoleName(self, RoleName):
+        self._RoleName = RoleName
+
+    @property
+    def RoleToken(self):
+        r"""accessKey
+        :rtype: str
+        """
+        return self._RoleToken
+
+    @RoleToken.setter
+    def RoleToken(self, RoleToken):
+        self._RoleToken = RoleToken
+
+    @property
+    def EnvironmentId(self):
+        r"""命名空间
+        :rtype: str
+        """
+        return self._EnvironmentId
+
+    @EnvironmentId.setter
+    def EnvironmentId(self, EnvironmentId):
+        self._EnvironmentId = EnvironmentId
+
+    @property
+    def Permissions(self):
+        r"""角色权限
+        :rtype: list of str
+        """
+        return self._Permissions
+
+    @Permissions.setter
+    def Permissions(self, Permissions):
+        self._Permissions = Permissions
+
+    @property
+    def Remark(self):
+        r"""备注
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def PermType(self):
+        r"""权限类型，默认按集群授权（Cluster：集群级别；TopicAndGroup：主题&消费组级别）
+        :rtype: str
+        """
+        return self._PermType
+
+    @PermType.setter
+    def PermType(self, PermType):
+        self._PermType = PermType
+
+    @property
+    def DetailedRolePerms(self):
+        r"""Topic和Group维度权限配置
+        :rtype: list of DetailedRolePerm
+        """
+        return self._DetailedRolePerms
+
+    @DetailedRolePerms.setter
+    def DetailedRolePerms(self, DetailedRolePerms):
+        self._DetailedRolePerms = DetailedRolePerms
+
+
+    def _deserialize(self, params):
+        self._RoleName = params.get("RoleName")
+        self._RoleToken = params.get("RoleToken")
+        self._EnvironmentId = params.get("EnvironmentId")
+        self._Permissions = params.get("Permissions")
+        self._Remark = params.get("Remark")
+        self._PermType = params.get("PermType")
+        if params.get("DetailedRolePerms") is not None:
+            self._DetailedRolePerms = []
+            for item in params.get("DetailedRolePerms"):
+                obj = DetailedRolePerm()
+                obj._deserialize(item)
+                self._DetailedRolePerms.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

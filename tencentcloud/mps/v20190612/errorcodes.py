@@ -359,6 +359,15 @@ INVALIDPARAMETERVALUE_PRIVACYMODEL = 'InvalidParameterValue.PrivacyModel'
 # 擦除模板隐私保护目标错误
 INVALIDPARAMETERVALUE_PRIVACYTARGETS = 'InvalidParameterValue.PrivacyTargets'
 
+# 剧集项目数量超出上限
+INVALIDPARAMETERVALUE_PROJECTLIMITEXCEEDED = 'InvalidParameterValue.ProjectLimitExceeded'
+
+# 剧集项目名称重复
+INVALIDPARAMETERVALUE_PROJECTNAMEDUPLICATE = 'InvalidParameterValue.ProjectNameDuplicate'
+
+# 剧集项目不存在
+INVALIDPARAMETERVALUE_PROJECTNOTFOUND = 'InvalidParameterValue.ProjectNotFound'
+
 # 参数值错误：Quality。
 INVALIDPARAMETERVALUE_QUALITY = 'InvalidParameterValue.Quality'
 
@@ -490,6 +499,9 @@ INVALIDPARAMETERVALUE_USEORIGINALSIZE = 'InvalidParameterValue.UseOriginalSize'
 
 # 参数值错误：人脸用户自定义库过滤标签非法。
 INVALIDPARAMETERVALUE_USERDEFINELIBRARYLABELSET = 'InvalidParameterValue.UserDefineLibraryLabelSet'
+
+# 用户未注册mps
+INVALIDPARAMETERVALUE_USERUNREGISTER = 'InvalidParameterValue.UserUnRegister'
 
 # 参数错误：视频流码率。
 INVALIDPARAMETERVALUE_VIDEOBITRATE = 'InvalidParameterValue.VideoBitrate'

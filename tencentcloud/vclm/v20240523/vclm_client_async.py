@@ -335,6 +335,24 @@ class VclmClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def SubmitImageToVideoViduJob(
+            self,
+            request: models.SubmitImageToVideoViduJobRequest,
+            opts: Dict = None,
+    ) -> models.SubmitImageToVideoViduJobResponse:
+        """
+        提交Vidu图生视频任务接口
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "SubmitImageToVideoViduJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.SubmitImageToVideoViduJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def SubmitPortraitSingJob(
             self,
             request: models.SubmitPortraitSingJobRequest,

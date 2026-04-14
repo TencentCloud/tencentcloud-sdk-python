@@ -419,24 +419,27 @@ class AddAlarmPolicyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 告警策略名
+        :param _Name: <p>告警策略名</p>
         :type Name: str
-        :param _EventScope: 事件范围  1：当前账号  2：多账号
+        :param _Type: <p>事件类型 1：资源不合规事件</p>
+        :type Type: int
+        :param _EventScope: <p>事件范围  1：当前账号  2：多账号</p>
         :type EventScope: list of int
-        :param _RiskLevel: 风险等级 1：高风险  2：中风险 3：低风险
+        :param _RiskLevel: <p>风险等级 1：高风险  2：中风险 3：低风险</p>
         :type RiskLevel: list of int
-        :param _NoticeTime: 通知时间段
+        :param _NoticeTime: <p>通知时间段</p>
         :type NoticeTime: str
-        :param _NotificationMechanism: 通知机制
+        :param _NotificationMechanism: <p>通知机制</p>
         :type NotificationMechanism: str
-        :param _Status: 状态 1：启用 2：停用
+        :param _Status: <p>状态 1：启用 2：停用</p>
         :type Status: int
-        :param _NoticePeriod: 通知周期
+        :param _NoticePeriod: <p>通知周期</p>
         :type NoticePeriod: list of int
-        :param _Description: 策略描述
+        :param _Description: <p>策略描述</p>
         :type Description: str
         """
         self._Name = None
+        self._Type = None
         self._EventScope = None
         self._RiskLevel = None
         self._NoticeTime = None
@@ -447,7 +450,7 @@ class AddAlarmPolicyRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""告警策略名
+        r"""<p>告警策略名</p>
         :rtype: str
         """
         return self._Name
@@ -457,8 +460,19 @@ class AddAlarmPolicyRequest(AbstractModel):
         self._Name = Name
 
     @property
+    def Type(self):
+        r"""<p>事件类型 1：资源不合规事件</p>
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
     def EventScope(self):
-        r"""事件范围  1：当前账号  2：多账号
+        r"""<p>事件范围  1：当前账号  2：多账号</p>
         :rtype: list of int
         """
         return self._EventScope
@@ -469,7 +483,7 @@ class AddAlarmPolicyRequest(AbstractModel):
 
     @property
     def RiskLevel(self):
-        r"""风险等级 1：高风险  2：中风险 3：低风险
+        r"""<p>风险等级 1：高风险  2：中风险 3：低风险</p>
         :rtype: list of int
         """
         return self._RiskLevel
@@ -480,7 +494,7 @@ class AddAlarmPolicyRequest(AbstractModel):
 
     @property
     def NoticeTime(self):
-        r"""通知时间段
+        r"""<p>通知时间段</p>
         :rtype: str
         """
         return self._NoticeTime
@@ -491,7 +505,7 @@ class AddAlarmPolicyRequest(AbstractModel):
 
     @property
     def NotificationMechanism(self):
-        r"""通知机制
+        r"""<p>通知机制</p>
         :rtype: str
         """
         return self._NotificationMechanism
@@ -502,7 +516,7 @@ class AddAlarmPolicyRequest(AbstractModel):
 
     @property
     def Status(self):
-        r"""状态 1：启用 2：停用
+        r"""<p>状态 1：启用 2：停用</p>
         :rtype: int
         """
         return self._Status
@@ -513,7 +527,7 @@ class AddAlarmPolicyRequest(AbstractModel):
 
     @property
     def NoticePeriod(self):
-        r"""通知周期
+        r"""<p>通知周期</p>
         :rtype: list of int
         """
         return self._NoticePeriod
@@ -524,7 +538,7 @@ class AddAlarmPolicyRequest(AbstractModel):
 
     @property
     def Description(self):
-        r"""策略描述
+        r"""<p>策略描述</p>
         :rtype: str
         """
         return self._Description
@@ -536,6 +550,7 @@ class AddAlarmPolicyRequest(AbstractModel):
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
+        self._Type = params.get("Type")
         self._EventScope = params.get("EventScope")
         self._RiskLevel = params.get("RiskLevel")
         self._NoticeTime = params.get("NoticeTime")
@@ -560,7 +575,7 @@ class AddAlarmPolicyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AlarmPolicyId: 告警策略唯一id
+        :param _AlarmPolicyId: <p>告警策略唯一id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AlarmPolicyId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -571,7 +586,7 @@ class AddAlarmPolicyResponse(AbstractModel):
 
     @property
     def AlarmPolicyId(self):
-        r"""告警策略唯一id
+        r"""<p>告警策略唯一id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """

@@ -490,6 +490,29 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateProject(self, request):
+        r"""剧集项目创建
+
+        :param request: Request instance for CreateProject.
+        :type request: :class:`tencentcloud.mps.v20190612.models.CreateProjectRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CreateProjectResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateProject", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateProjectResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateQualityControlTemplate(self, request):
         r"""创建媒体质检模板，数量上限：50。
 
@@ -1291,6 +1314,29 @@ class MpsClient(AbstractClient):
             body = self.call("DeleteProcessImageTemplate", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteProcessImageTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteProject(self, request):
+        r"""剧集项目删除接口
+
+        :param request: Request instance for DeleteProject.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DeleteProjectRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DeleteProjectResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteProject", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteProjectResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -4425,6 +4471,29 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def QueryProject(self, request):
+        r"""剧集项目查询
+
+        :param request: Request instance for QueryProject.
+        :type request: :class:`tencentcloud.mps.v20190612.models.QueryProjectRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.QueryProjectResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("QueryProject", params, headers=headers)
+            response = json.loads(body)
+            model = models.QueryProjectResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def RecognizeAudio(self, request):
         r"""同步接口，返回语音识别结果
 
@@ -4623,6 +4692,29 @@ class MpsClient(AbstractClient):
             body = self.call("TextTranslation", params, headers=headers)
             response = json.loads(body)
             model = models.TextTranslationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateProject(self, request):
+        r"""剧集项目更新
+
+        :param request: Request instance for UpdateProject.
+        :type request: :class:`tencentcloud.mps.v20190612.models.UpdateProjectRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.UpdateProjectResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateProject", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateProjectResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

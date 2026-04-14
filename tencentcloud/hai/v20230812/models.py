@@ -5943,17 +5943,20 @@ class UpdateServiceConfigsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ServiceId: 服务ID
+        :param _ServiceId: <p>服务ID</p>
         :type ServiceId: str
-        :param _TargetReplicas: 期望副本数
+        :param _TargetReplicas: <p>期望副本数</p>
         :type TargetReplicas: int
+        :param _DeploymentConfigs: <p>启动参数、环境变量等参数</p>
+        :type DeploymentConfigs: list of DeploymentConfig
         """
         self._ServiceId = None
         self._TargetReplicas = None
+        self._DeploymentConfigs = None
 
     @property
     def ServiceId(self):
-        r"""服务ID
+        r"""<p>服务ID</p>
         :rtype: str
         """
         return self._ServiceId
@@ -5964,7 +5967,7 @@ class UpdateServiceConfigsRequest(AbstractModel):
 
     @property
     def TargetReplicas(self):
-        r"""期望副本数
+        r"""<p>期望副本数</p>
         :rtype: int
         """
         return self._TargetReplicas
@@ -5973,10 +5976,27 @@ class UpdateServiceConfigsRequest(AbstractModel):
     def TargetReplicas(self, TargetReplicas):
         self._TargetReplicas = TargetReplicas
 
+    @property
+    def DeploymentConfigs(self):
+        r"""<p>启动参数、环境变量等参数</p>
+        :rtype: list of DeploymentConfig
+        """
+        return self._DeploymentConfigs
+
+    @DeploymentConfigs.setter
+    def DeploymentConfigs(self, DeploymentConfigs):
+        self._DeploymentConfigs = DeploymentConfigs
+
 
     def _deserialize(self, params):
         self._ServiceId = params.get("ServiceId")
         self._TargetReplicas = params.get("TargetReplicas")
+        if params.get("DeploymentConfigs") is not None:
+            self._DeploymentConfigs = []
+            for item in params.get("DeploymentConfigs"):
+                obj = DeploymentConfig()
+                obj._deserialize(item)
+                self._DeploymentConfigs.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
