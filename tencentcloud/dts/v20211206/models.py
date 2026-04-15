@@ -1871,40 +1871,39 @@ class ConfigureSyncJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 同步实例id（即标识一个同步作业），形如sync-werwfs23，可通过[DescribeSyncJobs](https://cloud.tencent.com/document/product/571/82103)接口获取。
-
+        :param _JobId: <p>同步实例id（即标识一个同步作业），形如sync-werwfs23，可通过<a href="https://cloud.tencent.com/document/product/571/82103">DescribeSyncJobs</a>接口获取。</p>
         :type JobId: str
-        :param _SrcAccessType: 源端接入类型，cdb(云数据库)、cvm(云服务器自建)、vpc(私有网络)、extranet(外网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、intranet(自研上云),注意具体可选值依赖当前链路
+        :param _SrcAccessType: <p>源端接入类型，cdb(云数据库)、cvm(云服务器自建)、vpc(私有网络)、extranet(外网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、intranet(自研上云),注意具体可选值依赖当前链路</p>
         :type SrcAccessType: str
-        :param _DstAccessType: 目标端接入类型，cdb(云数据库)、cvm(云服务器自建)、vpc(私有网络)、extranet(外网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、intranet(自研上云)、ckafka(CKafka实例),注意具体可选值依赖当前链路
+        :param _DstAccessType: <p>目标端接入类型，cdb(云数据库)、cvm(云服务器自建)、vpc(私有网络)、extranet(外网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、intranet(自研上云)、ckafka(CKafka实例),注意具体可选值依赖当前链路</p>
         :type DstAccessType: str
-        :param _Objects: 同步库表对象信息
+        :param _Objects: <p>同步库表对象信息</p>
         :type Objects: :class:`tencentcloud.dts.v20211206.models.Objects`
-        :param _JobName: 同步任务名称
+        :param _JobName: <p>同步任务名称</p>
         :type JobName: str
-        :param _JobMode: 枚举值是 liteMode 和 fullMode ，分别对应精简模式或正常模式
+        :param _JobMode: <p>配置任务模式，默认值为fullMode</p><p>枚举值：</p><ul><li>fullMode： 正常模式</li></ul>
         :type JobMode: str
-        :param _RunMode: 运行模式，取值如：Immediate(表示立即运行，默认为此项值)、Timed(表示定时运行)
+        :param _RunMode: <p>运行模式，取值如：Immediate(表示立即运行，默认为此项值)、Timed(表示定时运行)</p>
         :type RunMode: str
-        :param _ExpectRunTime: 期待启动时间，当RunMode取值为Timed时，此值必填，形如："2006-01-02 15:04:05"
+        :param _ExpectRunTime: <p>期待启动时间，当RunMode取值为Timed时，此值必填，形如：&quot;2006-01-02 15:04:05&quot;</p>
         :type ExpectRunTime: str
-        :param _SrcConnectType: 源端tdsql连接方式：proxy-通过tdsql proxy主机访问各个set节点，注意只有在自研上云的网络环境下才能通过这种方式连接，SrcInfos中只需要提供proxy主机信息。set-直连set节点，如选择直连set方式，需要正确填写proxy主机信息及所有set节点信息。源端是tdsqlmysql类型必填。
+        :param _SrcConnectType: <p>源端tdsql连接方式：proxy-通过tdsql proxy主机访问各个set节点，注意只有在自研上云的网络环境下才能通过这种方式连接，SrcInfos中只需要提供proxy主机信息。set-直连set节点，如选择直连set方式，需要正确填写proxy主机信息及所有set节点信息。源端是tdsqlmysql类型必填。</p>
         :type SrcConnectType: str
-        :param _SrcInfo: 源端信息，单机版类型数据库配置使用，且SrcNodeType传single。例如mysql、percona、mariadb等。
+        :param _SrcInfo: <p>源端信息，单机版类型数据库配置使用，且SrcNodeType传single。例如mysql、percona、mariadb等。</p>
         :type SrcInfo: :class:`tencentcloud.dts.v20211206.models.Endpoint`
-        :param _SrcInfos: 源端信息，分布式类型数据库配置使用，且SrcNodeType传cluster。例如分布式数据库tdsqlmysql等，mongodb使用此参数透传。
+        :param _SrcInfos: <p>源端信息，分布式类型数据库配置使用，且SrcNodeType传cluster。例如分布式数据库tdsqlmysql等，mongodb使用此参数透传。</p>
         :type SrcInfos: :class:`tencentcloud.dts.v20211206.models.SyncDBEndpointInfos`
-        :param _SrcNodeType: 枚举值：cluster、single。源库为单节点数据库使用single，多节点使用cluster
+        :param _SrcNodeType: <p>枚举值：cluster、single。源库为单节点数据库使用single，多节点使用cluster</p>
         :type SrcNodeType: str
-        :param _DstInfo: 目标端信息，单机版类型数据库配置使用，且SrcNodeType传single。例如mysql、percona、mariadb等。
+        :param _DstInfo: <p>目标端信息，单机版类型数据库配置使用，且SrcNodeType传single。例如mysql、percona、mariadb等。</p>
         :type DstInfo: :class:`tencentcloud.dts.v20211206.models.Endpoint`
-        :param _DstInfos: 目标端信息，分布式类型数据库配置使用，且SrcNodeType传cluster。例如分布式数据库tdsqlmysql等，mongodb使用此参数透传。
+        :param _DstInfos: <p>目标端信息，分布式类型数据库配置使用，且SrcNodeType传cluster。例如分布式数据库tdsqlmysql等，mongodb使用此参数透传。</p>
         :type DstInfos: :class:`tencentcloud.dts.v20211206.models.SyncDBEndpointInfos`
-        :param _DstNodeType: 枚举值：cluster、single。目标库为单节点数据库使用single，多节点使用cluster
+        :param _DstNodeType: <p>枚举值：cluster、single。目标库为单节点数据库使用single，多节点使用cluster</p>
         :type DstNodeType: str
-        :param _Options: 同步任务选项；该字段下的RateLimitOption暂时无法生效、如果需要修改限速、可通过ModifySyncRateLimit接口完成限速
+        :param _Options: <p>同步任务选项；该字段下的RateLimitOption暂时无法生效、如果需要修改限速、可通过ModifySyncRateLimit接口完成限速</p>
         :type Options: :class:`tencentcloud.dts.v20211206.models.Options`
-        :param _AutoRetryTimeRangeMinutes: 自动重试的时间段、可设置5至720分钟、0表示不重试
+        :param _AutoRetryTimeRangeMinutes: <p>自动重试的时间段、可设置5至720分钟、0表示不重试</p>
         :type AutoRetryTimeRangeMinutes: int
         """
         self._JobId = None
@@ -1927,8 +1926,7 @@ class ConfigureSyncJobRequest(AbstractModel):
 
     @property
     def JobId(self):
-        r"""同步实例id（即标识一个同步作业），形如sync-werwfs23，可通过[DescribeSyncJobs](https://cloud.tencent.com/document/product/571/82103)接口获取。
-
+        r"""<p>同步实例id（即标识一个同步作业），形如sync-werwfs23，可通过<a href="https://cloud.tencent.com/document/product/571/82103">DescribeSyncJobs</a>接口获取。</p>
         :rtype: str
         """
         return self._JobId
@@ -1939,7 +1937,7 @@ class ConfigureSyncJobRequest(AbstractModel):
 
     @property
     def SrcAccessType(self):
-        r"""源端接入类型，cdb(云数据库)、cvm(云服务器自建)、vpc(私有网络)、extranet(外网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、intranet(自研上云),注意具体可选值依赖当前链路
+        r"""<p>源端接入类型，cdb(云数据库)、cvm(云服务器自建)、vpc(私有网络)、extranet(外网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、intranet(自研上云),注意具体可选值依赖当前链路</p>
         :rtype: str
         """
         return self._SrcAccessType
@@ -1950,7 +1948,7 @@ class ConfigureSyncJobRequest(AbstractModel):
 
     @property
     def DstAccessType(self):
-        r"""目标端接入类型，cdb(云数据库)、cvm(云服务器自建)、vpc(私有网络)、extranet(外网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、intranet(自研上云)、ckafka(CKafka实例),注意具体可选值依赖当前链路
+        r"""<p>目标端接入类型，cdb(云数据库)、cvm(云服务器自建)、vpc(私有网络)、extranet(外网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、intranet(自研上云)、ckafka(CKafka实例),注意具体可选值依赖当前链路</p>
         :rtype: str
         """
         return self._DstAccessType
@@ -1961,7 +1959,7 @@ class ConfigureSyncJobRequest(AbstractModel):
 
     @property
     def Objects(self):
-        r"""同步库表对象信息
+        r"""<p>同步库表对象信息</p>
         :rtype: :class:`tencentcloud.dts.v20211206.models.Objects`
         """
         return self._Objects
@@ -1972,7 +1970,7 @@ class ConfigureSyncJobRequest(AbstractModel):
 
     @property
     def JobName(self):
-        r"""同步任务名称
+        r"""<p>同步任务名称</p>
         :rtype: str
         """
         return self._JobName
@@ -1983,7 +1981,7 @@ class ConfigureSyncJobRequest(AbstractModel):
 
     @property
     def JobMode(self):
-        r"""枚举值是 liteMode 和 fullMode ，分别对应精简模式或正常模式
+        r"""<p>配置任务模式，默认值为fullMode</p><p>枚举值：</p><ul><li>fullMode： 正常模式</li></ul>
         :rtype: str
         """
         return self._JobMode
@@ -1994,7 +1992,7 @@ class ConfigureSyncJobRequest(AbstractModel):
 
     @property
     def RunMode(self):
-        r"""运行模式，取值如：Immediate(表示立即运行，默认为此项值)、Timed(表示定时运行)
+        r"""<p>运行模式，取值如：Immediate(表示立即运行，默认为此项值)、Timed(表示定时运行)</p>
         :rtype: str
         """
         return self._RunMode
@@ -2005,7 +2003,7 @@ class ConfigureSyncJobRequest(AbstractModel):
 
     @property
     def ExpectRunTime(self):
-        r"""期待启动时间，当RunMode取值为Timed时，此值必填，形如："2006-01-02 15:04:05"
+        r"""<p>期待启动时间，当RunMode取值为Timed时，此值必填，形如：&quot;2006-01-02 15:04:05&quot;</p>
         :rtype: str
         """
         return self._ExpectRunTime
@@ -2016,7 +2014,7 @@ class ConfigureSyncJobRequest(AbstractModel):
 
     @property
     def SrcConnectType(self):
-        r"""源端tdsql连接方式：proxy-通过tdsql proxy主机访问各个set节点，注意只有在自研上云的网络环境下才能通过这种方式连接，SrcInfos中只需要提供proxy主机信息。set-直连set节点，如选择直连set方式，需要正确填写proxy主机信息及所有set节点信息。源端是tdsqlmysql类型必填。
+        r"""<p>源端tdsql连接方式：proxy-通过tdsql proxy主机访问各个set节点，注意只有在自研上云的网络环境下才能通过这种方式连接，SrcInfos中只需要提供proxy主机信息。set-直连set节点，如选择直连set方式，需要正确填写proxy主机信息及所有set节点信息。源端是tdsqlmysql类型必填。</p>
         :rtype: str
         """
         return self._SrcConnectType
@@ -2027,7 +2025,7 @@ class ConfigureSyncJobRequest(AbstractModel):
 
     @property
     def SrcInfo(self):
-        r"""源端信息，单机版类型数据库配置使用，且SrcNodeType传single。例如mysql、percona、mariadb等。
+        r"""<p>源端信息，单机版类型数据库配置使用，且SrcNodeType传single。例如mysql、percona、mariadb等。</p>
         :rtype: :class:`tencentcloud.dts.v20211206.models.Endpoint`
         """
         return self._SrcInfo
@@ -2038,7 +2036,7 @@ class ConfigureSyncJobRequest(AbstractModel):
 
     @property
     def SrcInfos(self):
-        r"""源端信息，分布式类型数据库配置使用，且SrcNodeType传cluster。例如分布式数据库tdsqlmysql等，mongodb使用此参数透传。
+        r"""<p>源端信息，分布式类型数据库配置使用，且SrcNodeType传cluster。例如分布式数据库tdsqlmysql等，mongodb使用此参数透传。</p>
         :rtype: :class:`tencentcloud.dts.v20211206.models.SyncDBEndpointInfos`
         """
         return self._SrcInfos
@@ -2049,7 +2047,7 @@ class ConfigureSyncJobRequest(AbstractModel):
 
     @property
     def SrcNodeType(self):
-        r"""枚举值：cluster、single。源库为单节点数据库使用single，多节点使用cluster
+        r"""<p>枚举值：cluster、single。源库为单节点数据库使用single，多节点使用cluster</p>
         :rtype: str
         """
         return self._SrcNodeType
@@ -2060,7 +2058,7 @@ class ConfigureSyncJobRequest(AbstractModel):
 
     @property
     def DstInfo(self):
-        r"""目标端信息，单机版类型数据库配置使用，且SrcNodeType传single。例如mysql、percona、mariadb等。
+        r"""<p>目标端信息，单机版类型数据库配置使用，且SrcNodeType传single。例如mysql、percona、mariadb等。</p>
         :rtype: :class:`tencentcloud.dts.v20211206.models.Endpoint`
         """
         return self._DstInfo
@@ -2071,7 +2069,7 @@ class ConfigureSyncJobRequest(AbstractModel):
 
     @property
     def DstInfos(self):
-        r"""目标端信息，分布式类型数据库配置使用，且SrcNodeType传cluster。例如分布式数据库tdsqlmysql等，mongodb使用此参数透传。
+        r"""<p>目标端信息，分布式类型数据库配置使用，且SrcNodeType传cluster。例如分布式数据库tdsqlmysql等，mongodb使用此参数透传。</p>
         :rtype: :class:`tencentcloud.dts.v20211206.models.SyncDBEndpointInfos`
         """
         return self._DstInfos
@@ -2082,7 +2080,7 @@ class ConfigureSyncJobRequest(AbstractModel):
 
     @property
     def DstNodeType(self):
-        r"""枚举值：cluster、single。目标库为单节点数据库使用single，多节点使用cluster
+        r"""<p>枚举值：cluster、single。目标库为单节点数据库使用single，多节点使用cluster</p>
         :rtype: str
         """
         return self._DstNodeType
@@ -2093,7 +2091,7 @@ class ConfigureSyncJobRequest(AbstractModel):
 
     @property
     def Options(self):
-        r"""同步任务选项；该字段下的RateLimitOption暂时无法生效、如果需要修改限速、可通过ModifySyncRateLimit接口完成限速
+        r"""<p>同步任务选项；该字段下的RateLimitOption暂时无法生效、如果需要修改限速、可通过ModifySyncRateLimit接口完成限速</p>
         :rtype: :class:`tencentcloud.dts.v20211206.models.Options`
         """
         return self._Options
@@ -2104,7 +2102,7 @@ class ConfigureSyncJobRequest(AbstractModel):
 
     @property
     def AutoRetryTimeRangeMinutes(self):
-        r"""自动重试的时间段、可设置5至720分钟、0表示不重试
+        r"""<p>自动重试的时间段、可设置5至720分钟、0表示不重试</p>
         :rtype: int
         """
         return self._AutoRetryTimeRangeMinutes
@@ -14899,15 +14897,12 @@ class Objects(AbstractModel):
         :type Databases: list of Database
         :param _AdvancedObjects: 高级对象类型，如function、procedure。注意：如果要迁移同步高级对象，此配置中应该包含对应的高级对象类型。当需要同步高级对象时，初始化类型必须包含结构初始化类型，即任务的Options.InitType字段值为Structure或Full
         :type AdvancedObjects: list of str
-        :param _OnlineDDL: OnlineDDL类型，冗余字段不做配置用途
-        :type OnlineDDL: :class:`tencentcloud.dts.v20211206.models.OnlineDDL`
         :param _DatabasesOpFilter: 库/表/视图级 DML/DDL 白名单
         :type DatabasesOpFilter: list of DBOpFilter
         """
         self._Mode = None
         self._Databases = None
         self._AdvancedObjects = None
-        self._OnlineDDL = None
         self._DatabasesOpFilter = None
 
     @property
@@ -14945,17 +14940,6 @@ class Objects(AbstractModel):
         self._AdvancedObjects = AdvancedObjects
 
     @property
-    def OnlineDDL(self):
-        r"""OnlineDDL类型，冗余字段不做配置用途
-        :rtype: :class:`tencentcloud.dts.v20211206.models.OnlineDDL`
-        """
-        return self._OnlineDDL
-
-    @OnlineDDL.setter
-    def OnlineDDL(self, OnlineDDL):
-        self._OnlineDDL = OnlineDDL
-
-    @property
     def DatabasesOpFilter(self):
         r"""库/表/视图级 DML/DDL 白名单
         :rtype: list of DBOpFilter
@@ -14976,9 +14960,6 @@ class Objects(AbstractModel):
                 obj._deserialize(item)
                 self._Databases.append(obj)
         self._AdvancedObjects = params.get("AdvancedObjects")
-        if params.get("OnlineDDL") is not None:
-            self._OnlineDDL = OnlineDDL()
-            self._OnlineDDL._deserialize(params.get("OnlineDDL"))
         if params.get("DatabasesOpFilter") is not None:
             self._DatabasesOpFilter = []
             for item in params.get("DatabasesOpFilter"):
@@ -15036,42 +15017,6 @@ class OffsetTimeMap(AbstractModel):
     def _deserialize(self, params):
         self._PartitionNo = params.get("PartitionNo")
         self._Offset = params.get("Offset")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class OnlineDDL(AbstractModel):
-    r"""OnlineDDL类型
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Status: 状态，ON-启用，OFF-不启用。
-        :type Status: str
-        """
-        self._Status = None
-
-    @property
-    def Status(self):
-        r"""状态，ON-启用，OFF-不启用。
-        :rtype: str
-        """
-        return self._Status
-
-    @Status.setter
-    def Status(self, Status):
-        self._Status = Status
-
-
-    def _deserialize(self, params):
-        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15145,33 +15090,33 @@ class Options(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InitType: 同步初始化选项，Data(全量数据初始化)、Structure(结构初始化)、Full(全量数据且结构初始化，默认)、None(仅增量)；mongodb链路只支持全量数据初始化或仅增量。
+        :param _InitType: <p>同步初始化选项，Data(全量数据初始化)、Structure(结构初始化)、Full(全量数据且结构初始化，默认)、None(仅增量)；mongodb链路只支持全量数据初始化或仅增量。</p>
         :type InitType: str
-        :param _DealOfExistSameTable: 同名表的处理，ReportErrorAfterCheck(前置校验并报错，默认)、ExecuteAfterIgnore(忽略并继续执行)
+        :param _DealOfExistSameTable: <p>同名表的处理，ReportErrorAfterCheck(前置校验并报错，默认)、ExecuteAfterIgnore(忽略并继续执行)</p>
         :type DealOfExistSameTable: str
-        :param _ConflictHandleType: 冲突处理选项，ReportError(报错，默认为该值)、Ignore(忽略)、Cover(覆盖)、ConditionCover(条件覆盖)
+        :param _ConflictHandleType: <p>冲突处理选项，ReportError(报错，默认为该值)、Ignore(忽略)、Cover(覆盖)、ConditionCover(条件覆盖)</p>
         :type ConflictHandleType: str
-        :param _AddAdditionalColumn: 是否添加附加列
+        :param _AddAdditionalColumn: <p>是否添加附加列</p>
         :type AddAdditionalColumn: bool
-        :param _OpTypes: 所要同步的DML和DDL的选项，Insert(插入操作)、Update(更新操作)、Delete(删除操作)、DDL(结构同步)， PartialDDL(自定义,和DdlOptions一起配合使用)。注意，这里至少需要包含DML中的一种。
+        :param _OpTypes: <p>所要同步的DML和DDL的选项，Insert(插入操作)、Update(更新操作)、Delete(删除操作)、DDL(结构同步)， PartialDDL(自定义,和DdlOptions一起配合使用)。注意，这里至少需要包含DML中的一种。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type OpTypes: list of str
-        :param _ConflictHandleOption: 冲突处理的详细选项，如条件覆盖中的条件行和条件操作
+        :param _ConflictHandleOption: <p>冲突处理的详细选项，如条件覆盖中的条件行和条件操作</p>
         :type ConflictHandleOption: :class:`tencentcloud.dts.v20211206.models.ConflictHandleOption`
-        :param _DdlOptions: DDL同步选项，具体描述要同步哪些DDL
+        :param _DdlOptions: <p>DDL同步选项，具体描述要同步哪些DDL</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DdlOptions: list of DdlOption
-        :param _KafkaOption: kafka同步选项
+        :param _KafkaOption: <p>kafka同步选项</p>
         :type KafkaOption: :class:`tencentcloud.dts.v20211206.models.KafkaOption`
-        :param _RateLimitOption: 任务限速信息
+        :param _RateLimitOption: <p>任务限速信息</p>
         :type RateLimitOption: :class:`tencentcloud.dts.v20211206.models.RateLimitOption`
-        :param _AutoRetryTimeRangeMinutes: 自动重试的时间窗口设置
+        :param _AutoRetryTimeRangeMinutes: <p>自动重试的时间窗口设置</p>
         :type AutoRetryTimeRangeMinutes: int
-        :param _StartPosition: 同步到kafka链路指定位点。目前只支持时间格式：2023-12-20T19:24:23+08:00。如果没有指定位点，为空。
+        :param _StartPosition: <p>同步到kafka链路指定位点。目前只支持时间格式：2023-12-20T19:24:23+08:00。如果没有指定位点，为空。</p>
         :type StartPosition: str
-        :param _FilterBeginCommit: 同步到kafka链路是否过滤掉begin和commit消息。目前仅mysql2kafka链路支持
+        :param _FilterBeginCommit: <p>同步到kafka链路是否过滤掉begin和commit消息。目前仅mysql2kafka链路支持</p>
         :type FilterBeginCommit: bool
-        :param _FilterCheckpoint: 同步到kafka链路是否过滤掉checkpoint消息。目前仅mysql2kafka链路支持
+        :param _FilterCheckpoint: <p>同步到kafka链路是否过滤掉checkpoint消息。目前仅mysql2kafka链路支持</p>
         :type FilterCheckpoint: bool
         """
         self._InitType = None
@@ -15190,7 +15135,7 @@ class Options(AbstractModel):
 
     @property
     def InitType(self):
-        r"""同步初始化选项，Data(全量数据初始化)、Structure(结构初始化)、Full(全量数据且结构初始化，默认)、None(仅增量)；mongodb链路只支持全量数据初始化或仅增量。
+        r"""<p>同步初始化选项，Data(全量数据初始化)、Structure(结构初始化)、Full(全量数据且结构初始化，默认)、None(仅增量)；mongodb链路只支持全量数据初始化或仅增量。</p>
         :rtype: str
         """
         return self._InitType
@@ -15201,7 +15146,7 @@ class Options(AbstractModel):
 
     @property
     def DealOfExistSameTable(self):
-        r"""同名表的处理，ReportErrorAfterCheck(前置校验并报错，默认)、ExecuteAfterIgnore(忽略并继续执行)
+        r"""<p>同名表的处理，ReportErrorAfterCheck(前置校验并报错，默认)、ExecuteAfterIgnore(忽略并继续执行)</p>
         :rtype: str
         """
         return self._DealOfExistSameTable
@@ -15212,7 +15157,7 @@ class Options(AbstractModel):
 
     @property
     def ConflictHandleType(self):
-        r"""冲突处理选项，ReportError(报错，默认为该值)、Ignore(忽略)、Cover(覆盖)、ConditionCover(条件覆盖)
+        r"""<p>冲突处理选项，ReportError(报错，默认为该值)、Ignore(忽略)、Cover(覆盖)、ConditionCover(条件覆盖)</p>
         :rtype: str
         """
         return self._ConflictHandleType
@@ -15223,7 +15168,7 @@ class Options(AbstractModel):
 
     @property
     def AddAdditionalColumn(self):
-        r"""是否添加附加列
+        r"""<p>是否添加附加列</p>
         :rtype: bool
         """
         return self._AddAdditionalColumn
@@ -15234,7 +15179,7 @@ class Options(AbstractModel):
 
     @property
     def OpTypes(self):
-        r"""所要同步的DML和DDL的选项，Insert(插入操作)、Update(更新操作)、Delete(删除操作)、DDL(结构同步)， PartialDDL(自定义,和DdlOptions一起配合使用)。注意，这里至少需要包含DML中的一种。
+        r"""<p>所要同步的DML和DDL的选项，Insert(插入操作)、Update(更新操作)、Delete(删除操作)、DDL(结构同步)， PartialDDL(自定义,和DdlOptions一起配合使用)。注意，这里至少需要包含DML中的一种。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -15246,7 +15191,7 @@ class Options(AbstractModel):
 
     @property
     def ConflictHandleOption(self):
-        r"""冲突处理的详细选项，如条件覆盖中的条件行和条件操作
+        r"""<p>冲突处理的详细选项，如条件覆盖中的条件行和条件操作</p>
         :rtype: :class:`tencentcloud.dts.v20211206.models.ConflictHandleOption`
         """
         return self._ConflictHandleOption
@@ -15257,7 +15202,7 @@ class Options(AbstractModel):
 
     @property
     def DdlOptions(self):
-        r"""DDL同步选项，具体描述要同步哪些DDL
+        r"""<p>DDL同步选项，具体描述要同步哪些DDL</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DdlOption
         """
@@ -15269,7 +15214,7 @@ class Options(AbstractModel):
 
     @property
     def KafkaOption(self):
-        r"""kafka同步选项
+        r"""<p>kafka同步选项</p>
         :rtype: :class:`tencentcloud.dts.v20211206.models.KafkaOption`
         """
         return self._KafkaOption
@@ -15280,7 +15225,7 @@ class Options(AbstractModel):
 
     @property
     def RateLimitOption(self):
-        r"""任务限速信息
+        r"""<p>任务限速信息</p>
         :rtype: :class:`tencentcloud.dts.v20211206.models.RateLimitOption`
         """
         return self._RateLimitOption
@@ -15291,7 +15236,7 @@ class Options(AbstractModel):
 
     @property
     def AutoRetryTimeRangeMinutes(self):
-        r"""自动重试的时间窗口设置
+        r"""<p>自动重试的时间窗口设置</p>
         :rtype: int
         """
         return self._AutoRetryTimeRangeMinutes
@@ -15302,7 +15247,7 @@ class Options(AbstractModel):
 
     @property
     def StartPosition(self):
-        r"""同步到kafka链路指定位点。目前只支持时间格式：2023-12-20T19:24:23+08:00。如果没有指定位点，为空。
+        r"""<p>同步到kafka链路指定位点。目前只支持时间格式：2023-12-20T19:24:23+08:00。如果没有指定位点，为空。</p>
         :rtype: str
         """
         return self._StartPosition
@@ -15313,7 +15258,7 @@ class Options(AbstractModel):
 
     @property
     def FilterBeginCommit(self):
-        r"""同步到kafka链路是否过滤掉begin和commit消息。目前仅mysql2kafka链路支持
+        r"""<p>同步到kafka链路是否过滤掉begin和commit消息。目前仅mysql2kafka链路支持</p>
         :rtype: bool
         """
         return self._FilterBeginCommit
@@ -15324,7 +15269,7 @@ class Options(AbstractModel):
 
     @property
     def FilterCheckpoint(self):
-        r"""同步到kafka链路是否过滤掉checkpoint消息。目前仅mysql2kafka链路支持
+        r"""<p>同步到kafka链路是否过滤掉checkpoint消息。目前仅mysql2kafka链路支持</p>
         :rtype: bool
         """
         return self._FilterCheckpoint

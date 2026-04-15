@@ -4679,7 +4679,7 @@ class MpsClient(AbstractClient):
 
 
     def TextTranslation(self, request):
-        r"""文本翻译
+        r"""文本翻译，使用 翻译字幕（附加语种）计费项，按1100字符（按照 Unicode 码点数 统计，hello 算5个字符，你好 算2个字符）/分钟折算到时长计费
 
         :param request: Request instance for TextTranslation.
         :type request: :class:`tencentcloud.mps.v20190612.models.TextTranslationRequest`

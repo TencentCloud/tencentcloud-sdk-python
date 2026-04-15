@@ -382,157 +382,162 @@ class Cluster(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群 ID
+        :param _ClusterId: <p>集群 ID</p>
         :type ClusterId: str
-        :param _Name: 集群名称
+        :param _Name: <p>集群名称</p>
         :type Name: str
-        :param _Region: 地域
+        :param _Region: <p>地域</p>
         :type Region: str
-        :param _AppId: 用户 AppID
+        :param _AppId: <p>用户 AppID</p>
         :type AppId: int
-        :param _OwnerUin: 主账号 UIN
+        :param _OwnerUin: <p>主账号 UIN</p>
         :type OwnerUin: str
-        :param _CreatorUin: 创建者 UIN
+        :param _CreatorUin: <p>创建者 UIN</p>
         :type CreatorUin: str
-        :param _Status: 集群状态, 1 未初始化,3 初始化中，2 运行中
+        :param _Status: <p>集群状态, 1 未初始化,3 初始化中，2 运行中</p>
         :type Status: int
-        :param _Remark: 描述
+        :param _Remark: <p>描述</p>
         :type Remark: str
-        :param _CreateTime: 集群创建时间
+        :param _CreateTime: <p>集群创建时间</p>
         :type CreateTime: str
-        :param _UpdateTime: 最后一次操作集群的时间
+        :param _UpdateTime: <p>最后一次操作集群的时间</p>
         :type UpdateTime: str
-        :param _CuNum: CU 数量
+        :param _CuNum: <p>CU 数量</p>
         :type CuNum: int
-        :param _CuMem: CU 内存规格
+        :param _CuMem: <p>CU 内存规格</p>
         :type CuMem: int
-        :param _Zone: 可用区
+        :param _Zone: <p>可用区</p>
         :type Zone: str
-        :param _StatusDesc: 状态描述
+        :param _StatusDesc: <p>状态描述</p>
         :type StatusDesc: str
-        :param _CCNs: 网络
+        :param _CCNs: <p>网络</p>
         :type CCNs: list of CCN
-        :param _NetEnvironmentType: 网络
+        :param _NetEnvironmentType: <p>网络</p>
         :type NetEnvironmentType: int
-        :param _FreeCuNum: 空闲 CU
+        :param _FreeCuNum: <p>空闲 CU</p>
         :type FreeCuNum: int
-        :param _Tags: 集群绑定的标签
+        :param _Tags: <p>集群绑定的标签</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
-        :param _IsolatedTime: 集群隔离时间; 没隔离时间，则为 -
+        :param _IsolatedTime: <p>集群隔离时间; 没隔离时间，则为 -</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsolatedTime: str
-        :param _ExpireTime: 集群过期时间; 没过期概念，则为 -
+        :param _ExpireTime: <p>集群过期时间; 没过期概念，则为 -</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExpireTime: str
-        :param _SecondsUntilExpiry: 距离过期还有多少秒; 没过期概念，则为 -
+        :param _SecondsUntilExpiry: <p>距离过期还有多少秒; 没过期概念，则为 -</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SecondsUntilExpiry: str
-        :param _AutoRenewFlag: 自动续费标记，0 表示默认状态 (用户未设置，即初始状态，用户开通了预付费不停服特权会进行自动续费)， 1 表示自动续费，2表示明确不自动续费(用户设置)
+        :param _AutoRenewFlag: <p>自动续费标记，0 表示默认状态 (用户未设置，即初始状态，用户开通了预付费不停服特权会进行自动续费)， 1 表示自动续费，2表示明确不自动续费(用户设置)</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AutoRenewFlag: int
-        :param _DefaultCOSBucket: 集群的默认 COS 存储桶
+        :param _DefaultCOSBucket: <p>集群的默认 COS 存储桶</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DefaultCOSBucket: str
-        :param _CLSLogSet: 集群的CLS 日志集 LogSet
+        :param _CLSLogSet: <p>集群的CLS 日志集 LogSet</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CLSLogSet: str
-        :param _CLSTopicId: 集群的CLS 日志主题 TopicId
+        :param _CLSTopicId: <p>集群的CLS 日志主题 TopicId</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CLSTopicId: str
-        :param _CLSLogName: 集群的CLS 日志集  名字
+        :param _CLSLogName: <p>集群的CLS 日志集  名字</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CLSLogName: str
-        :param _CLSTopicName: 集群的CLS 日志主题  名字
+        :param _CLSTopicName: <p>集群的CLS 日志主题  名字</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CLSTopicName: str
-        :param _Version: 集群的版本信息
+        :param _Version: <p>集群的版本信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Version: :class:`tencentcloud.oceanus.v20190422.models.ClusterVersion`
-        :param _FreeCu: 细粒度资源下的空闲CU
+        :param _FreeCu: <p>细粒度资源下的空闲CU</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FreeCu: float
-        :param _DefaultLogCollectConf: 集群的默认日志采集配置
+        :param _DefaultLogCollectConf: <p>集群的默认日志采集配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DefaultLogCollectConf: str
-        :param _CustomizedDNSEnabled: 取值：0-没有设置，1-已设置，2-不允许设置
+        :param _CustomizedDNSEnabled: <p>取值：0-没有设置，1-已设置，2-不允许设置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CustomizedDNSEnabled: int
-        :param _Correlations: 空间信息
+        :param _Correlations: <p>空间信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Correlations: list of WorkSpaceClusterItem
-        :param _RunningCu: 运行CU
+        :param _RunningCu: <p>运行CU</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RunningCu: float
-        :param _PayMode: 0 后付费,1 预付费
+        :param _PayMode: <p>0 后付费,1 预付费</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type PayMode: int
-        :param _IsNeedManageNode: 前端区分 集群是否需要2CU逻辑 因为历史集群 变配不需要, default 1  新集群都需要
+        :param _IsNeedManageNode: <p>前端区分 集群是否需要2CU逻辑 因为历史集群 变配不需要, default 1  新集群都需要</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsNeedManageNode: int
-        :param _ClusterSessions: session集群信息
+        :param _ClusterSessions: <p>session集群信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterSessions: list of ClusterSession
-        :param _ArchGeneration: V3版本 = 2
+        :param _ArchGeneration: <p>V3版本 = 2</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ArchGeneration: int
-        :param _ClusterType: 0:TKE, 1:EKS
+        :param _ClusterType: <p>0:TKE, 1:EKS</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterType: int
-        :param _Orders: 订单信息
+        :param _Orders: <p>订单信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Orders: list of Order
-        :param _SqlGateways: Gateway信息
+        :param _SqlGateways: <p>Gateway信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SqlGateways: list of SqlGatewayItem
-        :param _WebUIType: 0 公网访问 // 1 内网访问	
+        :param _WebUIType: <p>0 公网访问 // 1 内网访问</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WebUIType: int
-        :param _Type: 2 独享集群
+        :param _Type: <p>2 独享集群</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Type: int
-        :param _SubEks: 子eks集群
+        :param _SubEks: <p>子eks集群</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubEks: :class:`tencentcloud.oceanus.v20190422.models.SubEks`
-        :param _AgentSerialId: 上级集群
+        :param _AgentSerialId: <p>上级集群</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AgentSerialId: str
-        :param _ResourceType: 资源类型
+        :param _ResourceType: <p>资源类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceType: int
-        :param _BillingResourceMode: 集群类型
+        :param _BillingResourceMode: <p>集群类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type BillingResourceMode: str
-        :param _MemRatio: Cu比例
+        :param _MemRatio: <p>Cu比例</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type MemRatio: int
-        :param _CrossTenantEniMode: 是否开启跨租户弹性网卡
+        :param _CrossTenantEniMode: <p>是否开启跨租户弹性网卡</p>
         :type CrossTenantEniMode: int
-        :param _TotalCpu: 总的CPU
+        :param _TotalCpu: <p>总的CPU</p>
         :type TotalCpu: float
-        :param _TotalMem: 总的内存
+        :param _TotalMem: <p>总的内存</p>
         :type TotalMem: float
-        :param _RunningCpu: 运行的CPU
+        :param _RunningCpu: <p>运行的CPU</p>
         :type RunningCpu: float
-        :param _RunningMem: 运行的内存
+        :param _RunningMem: <p>运行的内存</p>
         :type RunningMem: float
-        :param _Setats: setats集群
+        :param _Setats: <p>setats集群</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Setats: :class:`tencentcloud.oceanus.v20190422.models.Setats`
-        :param _Yarns: []
+        :param _Yarns: <p>[]</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Yarns: list of HadoopYarnItem
-        :param _DeploymentMode: 0 单可用区 1多可用区
+        :param _DeploymentMode: <p>0 单可用区 1多可用区</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeploymentMode: int
-        :param _SlaveZones: 备可用区
+        :param _SlaveZones: <p>备可用区</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SlaveZones: list of SlaveZone
-        :param _LogCOSBucket: 集群的日志cos存储
+        :param _LogCOSBucket: <p>集群的日志cos存储</p>
         :type LogCOSBucket: str
-        :param _CdcId: Cdc集群Id
+        :param _CdcId: <p>Cdc集群Id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CdcId: str
+        :param _ClusterProcessMsg: <p>集群进度</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterProcessMsg: str
+        :param _MaxCuPerJob: <p>单作业最大可配置 CU 数</p>
+        :type MaxCuPerJob: int
         """
         self._ClusterId = None
         self._Name = None
@@ -592,10 +597,12 @@ class Cluster(AbstractModel):
         self._SlaveZones = None
         self._LogCOSBucket = None
         self._CdcId = None
+        self._ClusterProcessMsg = None
+        self._MaxCuPerJob = None
 
     @property
     def ClusterId(self):
-        r"""集群 ID
+        r"""<p>集群 ID</p>
         :rtype: str
         """
         return self._ClusterId
@@ -606,7 +613,7 @@ class Cluster(AbstractModel):
 
     @property
     def Name(self):
-        r"""集群名称
+        r"""<p>集群名称</p>
         :rtype: str
         """
         return self._Name
@@ -617,7 +624,7 @@ class Cluster(AbstractModel):
 
     @property
     def Region(self):
-        r"""地域
+        r"""<p>地域</p>
         :rtype: str
         """
         return self._Region
@@ -628,7 +635,7 @@ class Cluster(AbstractModel):
 
     @property
     def AppId(self):
-        r"""用户 AppID
+        r"""<p>用户 AppID</p>
         :rtype: int
         """
         return self._AppId
@@ -639,7 +646,7 @@ class Cluster(AbstractModel):
 
     @property
     def OwnerUin(self):
-        r"""主账号 UIN
+        r"""<p>主账号 UIN</p>
         :rtype: str
         """
         return self._OwnerUin
@@ -650,7 +657,7 @@ class Cluster(AbstractModel):
 
     @property
     def CreatorUin(self):
-        r"""创建者 UIN
+        r"""<p>创建者 UIN</p>
         :rtype: str
         """
         return self._CreatorUin
@@ -661,7 +668,7 @@ class Cluster(AbstractModel):
 
     @property
     def Status(self):
-        r"""集群状态, 1 未初始化,3 初始化中，2 运行中
+        r"""<p>集群状态, 1 未初始化,3 初始化中，2 运行中</p>
         :rtype: int
         """
         return self._Status
@@ -672,7 +679,7 @@ class Cluster(AbstractModel):
 
     @property
     def Remark(self):
-        r"""描述
+        r"""<p>描述</p>
         :rtype: str
         """
         return self._Remark
@@ -683,7 +690,7 @@ class Cluster(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""集群创建时间
+        r"""<p>集群创建时间</p>
         :rtype: str
         """
         return self._CreateTime
@@ -694,7 +701,7 @@ class Cluster(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""最后一次操作集群的时间
+        r"""<p>最后一次操作集群的时间</p>
         :rtype: str
         """
         return self._UpdateTime
@@ -705,7 +712,7 @@ class Cluster(AbstractModel):
 
     @property
     def CuNum(self):
-        r"""CU 数量
+        r"""<p>CU 数量</p>
         :rtype: int
         """
         return self._CuNum
@@ -716,7 +723,7 @@ class Cluster(AbstractModel):
 
     @property
     def CuMem(self):
-        r"""CU 内存规格
+        r"""<p>CU 内存规格</p>
         :rtype: int
         """
         return self._CuMem
@@ -727,7 +734,7 @@ class Cluster(AbstractModel):
 
     @property
     def Zone(self):
-        r"""可用区
+        r"""<p>可用区</p>
         :rtype: str
         """
         return self._Zone
@@ -738,7 +745,7 @@ class Cluster(AbstractModel):
 
     @property
     def StatusDesc(self):
-        r"""状态描述
+        r"""<p>状态描述</p>
         :rtype: str
         """
         return self._StatusDesc
@@ -749,7 +756,7 @@ class Cluster(AbstractModel):
 
     @property
     def CCNs(self):
-        r"""网络
+        r"""<p>网络</p>
         :rtype: list of CCN
         """
         return self._CCNs
@@ -760,7 +767,7 @@ class Cluster(AbstractModel):
 
     @property
     def NetEnvironmentType(self):
-        r"""网络
+        r"""<p>网络</p>
         :rtype: int
         """
         return self._NetEnvironmentType
@@ -771,7 +778,7 @@ class Cluster(AbstractModel):
 
     @property
     def FreeCuNum(self):
-        r"""空闲 CU
+        r"""<p>空闲 CU</p>
         :rtype: int
         """
         return self._FreeCuNum
@@ -782,7 +789,7 @@ class Cluster(AbstractModel):
 
     @property
     def Tags(self):
-        r"""集群绑定的标签
+        r"""<p>集群绑定的标签</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Tag
         """
@@ -794,7 +801,7 @@ class Cluster(AbstractModel):
 
     @property
     def IsolatedTime(self):
-        r"""集群隔离时间; 没隔离时间，则为 -
+        r"""<p>集群隔离时间; 没隔离时间，则为 -</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -806,7 +813,7 @@ class Cluster(AbstractModel):
 
     @property
     def ExpireTime(self):
-        r"""集群过期时间; 没过期概念，则为 -
+        r"""<p>集群过期时间; 没过期概念，则为 -</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -818,7 +825,7 @@ class Cluster(AbstractModel):
 
     @property
     def SecondsUntilExpiry(self):
-        r"""距离过期还有多少秒; 没过期概念，则为 -
+        r"""<p>距离过期还有多少秒; 没过期概念，则为 -</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -830,7 +837,7 @@ class Cluster(AbstractModel):
 
     @property
     def AutoRenewFlag(self):
-        r"""自动续费标记，0 表示默认状态 (用户未设置，即初始状态，用户开通了预付费不停服特权会进行自动续费)， 1 表示自动续费，2表示明确不自动续费(用户设置)
+        r"""<p>自动续费标记，0 表示默认状态 (用户未设置，即初始状态，用户开通了预付费不停服特权会进行自动续费)， 1 表示自动续费，2表示明确不自动续费(用户设置)</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -842,7 +849,7 @@ class Cluster(AbstractModel):
 
     @property
     def DefaultCOSBucket(self):
-        r"""集群的默认 COS 存储桶
+        r"""<p>集群的默认 COS 存储桶</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -854,7 +861,7 @@ class Cluster(AbstractModel):
 
     @property
     def CLSLogSet(self):
-        r"""集群的CLS 日志集 LogSet
+        r"""<p>集群的CLS 日志集 LogSet</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -866,7 +873,7 @@ class Cluster(AbstractModel):
 
     @property
     def CLSTopicId(self):
-        r"""集群的CLS 日志主题 TopicId
+        r"""<p>集群的CLS 日志主题 TopicId</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -878,7 +885,7 @@ class Cluster(AbstractModel):
 
     @property
     def CLSLogName(self):
-        r"""集群的CLS 日志集  名字
+        r"""<p>集群的CLS 日志集  名字</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -890,7 +897,7 @@ class Cluster(AbstractModel):
 
     @property
     def CLSTopicName(self):
-        r"""集群的CLS 日志主题  名字
+        r"""<p>集群的CLS 日志主题  名字</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -902,7 +909,7 @@ class Cluster(AbstractModel):
 
     @property
     def Version(self):
-        r"""集群的版本信息
+        r"""<p>集群的版本信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.oceanus.v20190422.models.ClusterVersion`
         """
@@ -914,7 +921,7 @@ class Cluster(AbstractModel):
 
     @property
     def FreeCu(self):
-        r"""细粒度资源下的空闲CU
+        r"""<p>细粒度资源下的空闲CU</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -926,7 +933,7 @@ class Cluster(AbstractModel):
 
     @property
     def DefaultLogCollectConf(self):
-        r"""集群的默认日志采集配置
+        r"""<p>集群的默认日志采集配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -938,7 +945,7 @@ class Cluster(AbstractModel):
 
     @property
     def CustomizedDNSEnabled(self):
-        r"""取值：0-没有设置，1-已设置，2-不允许设置
+        r"""<p>取值：0-没有设置，1-已设置，2-不允许设置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -950,7 +957,7 @@ class Cluster(AbstractModel):
 
     @property
     def Correlations(self):
-        r"""空间信息
+        r"""<p>空间信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of WorkSpaceClusterItem
         """
@@ -962,7 +969,7 @@ class Cluster(AbstractModel):
 
     @property
     def RunningCu(self):
-        r"""运行CU
+        r"""<p>运行CU</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -974,7 +981,7 @@ class Cluster(AbstractModel):
 
     @property
     def PayMode(self):
-        r"""0 后付费,1 预付费
+        r"""<p>0 后付费,1 预付费</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -986,7 +993,7 @@ class Cluster(AbstractModel):
 
     @property
     def IsNeedManageNode(self):
-        r"""前端区分 集群是否需要2CU逻辑 因为历史集群 变配不需要, default 1  新集群都需要
+        r"""<p>前端区分 集群是否需要2CU逻辑 因为历史集群 变配不需要, default 1  新集群都需要</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -998,7 +1005,7 @@ class Cluster(AbstractModel):
 
     @property
     def ClusterSessions(self):
-        r"""session集群信息
+        r"""<p>session集群信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ClusterSession
         """
@@ -1010,7 +1017,7 @@ class Cluster(AbstractModel):
 
     @property
     def ArchGeneration(self):
-        r"""V3版本 = 2
+        r"""<p>V3版本 = 2</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -1022,7 +1029,7 @@ class Cluster(AbstractModel):
 
     @property
     def ClusterType(self):
-        r"""0:TKE, 1:EKS
+        r"""<p>0:TKE, 1:EKS</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -1034,7 +1041,7 @@ class Cluster(AbstractModel):
 
     @property
     def Orders(self):
-        r"""订单信息
+        r"""<p>订单信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Order
         """
@@ -1046,7 +1053,7 @@ class Cluster(AbstractModel):
 
     @property
     def SqlGateways(self):
-        r"""Gateway信息
+        r"""<p>Gateway信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SqlGatewayItem
         """
@@ -1058,7 +1065,7 @@ class Cluster(AbstractModel):
 
     @property
     def WebUIType(self):
-        r"""0 公网访问 // 1 内网访问	
+        r"""<p>0 公网访问 // 1 内网访问</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -1070,7 +1077,7 @@ class Cluster(AbstractModel):
 
     @property
     def Type(self):
-        r"""2 独享集群
+        r"""<p>2 独享集群</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -1082,7 +1089,7 @@ class Cluster(AbstractModel):
 
     @property
     def SubEks(self):
-        r"""子eks集群
+        r"""<p>子eks集群</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.oceanus.v20190422.models.SubEks`
         """
@@ -1094,7 +1101,7 @@ class Cluster(AbstractModel):
 
     @property
     def AgentSerialId(self):
-        r"""上级集群
+        r"""<p>上级集群</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1106,7 +1113,7 @@ class Cluster(AbstractModel):
 
     @property
     def ResourceType(self):
-        r"""资源类型
+        r"""<p>资源类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -1118,7 +1125,7 @@ class Cluster(AbstractModel):
 
     @property
     def BillingResourceMode(self):
-        r"""集群类型
+        r"""<p>集群类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1130,7 +1137,7 @@ class Cluster(AbstractModel):
 
     @property
     def MemRatio(self):
-        r"""Cu比例
+        r"""<p>Cu比例</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -1142,7 +1149,7 @@ class Cluster(AbstractModel):
 
     @property
     def CrossTenantEniMode(self):
-        r"""是否开启跨租户弹性网卡
+        r"""<p>是否开启跨租户弹性网卡</p>
         :rtype: int
         """
         return self._CrossTenantEniMode
@@ -1153,7 +1160,7 @@ class Cluster(AbstractModel):
 
     @property
     def TotalCpu(self):
-        r"""总的CPU
+        r"""<p>总的CPU</p>
         :rtype: float
         """
         return self._TotalCpu
@@ -1164,7 +1171,7 @@ class Cluster(AbstractModel):
 
     @property
     def TotalMem(self):
-        r"""总的内存
+        r"""<p>总的内存</p>
         :rtype: float
         """
         return self._TotalMem
@@ -1175,7 +1182,7 @@ class Cluster(AbstractModel):
 
     @property
     def RunningCpu(self):
-        r"""运行的CPU
+        r"""<p>运行的CPU</p>
         :rtype: float
         """
         return self._RunningCpu
@@ -1186,7 +1193,7 @@ class Cluster(AbstractModel):
 
     @property
     def RunningMem(self):
-        r"""运行的内存
+        r"""<p>运行的内存</p>
         :rtype: float
         """
         return self._RunningMem
@@ -1197,7 +1204,7 @@ class Cluster(AbstractModel):
 
     @property
     def Setats(self):
-        r"""setats集群
+        r"""<p>setats集群</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.oceanus.v20190422.models.Setats`
         """
@@ -1209,7 +1216,7 @@ class Cluster(AbstractModel):
 
     @property
     def Yarns(self):
-        r"""[]
+        r"""<p>[]</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of HadoopYarnItem
         """
@@ -1221,7 +1228,7 @@ class Cluster(AbstractModel):
 
     @property
     def DeploymentMode(self):
-        r"""0 单可用区 1多可用区
+        r"""<p>0 单可用区 1多可用区</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -1233,7 +1240,7 @@ class Cluster(AbstractModel):
 
     @property
     def SlaveZones(self):
-        r"""备可用区
+        r"""<p>备可用区</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SlaveZone
         """
@@ -1245,7 +1252,7 @@ class Cluster(AbstractModel):
 
     @property
     def LogCOSBucket(self):
-        r"""集群的日志cos存储
+        r"""<p>集群的日志cos存储</p>
         :rtype: str
         """
         return self._LogCOSBucket
@@ -1256,7 +1263,7 @@ class Cluster(AbstractModel):
 
     @property
     def CdcId(self):
-        r"""Cdc集群Id
+        r"""<p>Cdc集群Id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1265,6 +1272,29 @@ class Cluster(AbstractModel):
     @CdcId.setter
     def CdcId(self, CdcId):
         self._CdcId = CdcId
+
+    @property
+    def ClusterProcessMsg(self):
+        r"""<p>集群进度</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ClusterProcessMsg
+
+    @ClusterProcessMsg.setter
+    def ClusterProcessMsg(self, ClusterProcessMsg):
+        self._ClusterProcessMsg = ClusterProcessMsg
+
+    @property
+    def MaxCuPerJob(self):
+        r"""<p>单作业最大可配置 CU 数</p>
+        :rtype: int
+        """
+        return self._MaxCuPerJob
+
+    @MaxCuPerJob.setter
+    def MaxCuPerJob(self, MaxCuPerJob):
+        self._MaxCuPerJob = MaxCuPerJob
 
 
     def _deserialize(self, params):
@@ -1372,6 +1402,8 @@ class Cluster(AbstractModel):
                 self._SlaveZones.append(obj)
         self._LogCOSBucket = params.get("LogCOSBucket")
         self._CdcId = params.get("CdcId")
+        self._ClusterProcessMsg = params.get("ClusterProcessMsg")
+        self._MaxCuPerJob = params.get("MaxCuPerJob")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7456,9 +7488,9 @@ class DescribeTreeJobsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Filters: 筛选条件字段，使用了筛选字段后不支持分页，最多返回2000条记录
+        :param _Filters: <p>筛选条件字段，使用了筛选字段后不支持分页，最多返回2000条记录</p>
         :type Filters: list of Filter
-        :param _WorkSpaceId: 工作空间 Serialid
+        :param _WorkSpaceId: <p>工作空间 Serialid</p>
         :type WorkSpaceId: str
         """
         self._Filters = None
@@ -7466,7 +7498,7 @@ class DescribeTreeJobsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""筛选条件字段，使用了筛选字段后不支持分页，最多返回2000条记录
+        r"""<p>筛选条件字段，使用了筛选字段后不支持分页，最多返回2000条记录</p>
         :rtype: list of Filter
         """
         return self._Filters
@@ -7477,7 +7509,7 @@ class DescribeTreeJobsRequest(AbstractModel):
 
     @property
     def WorkSpaceId(self):
-        r"""工作空间 Serialid
+        r"""<p>工作空间 Serialid</p>
         :rtype: str
         """
         return self._WorkSpaceId
@@ -7512,19 +7544,19 @@ class DescribeTreeJobsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ParentId: 父节点ID
+        :param _ParentId: <p>父节点ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ParentId: str
-        :param _Id: 当前文件夹ID
+        :param _Id: <p>当前文件夹ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Id: str
-        :param _Name: 当前文件夹名
+        :param _Name: <p>当前文件夹名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
-        :param _JobSet: 当前文件夹下的作业列表
+        :param _JobSet: <p>当前文件夹下的作业列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type JobSet: list of TreeJobSets
-        :param _Children: 迭代子目录
+        :param _Children: <p>迭代子目录</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Children: list of DescribeTreeJobsRsp
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7539,7 +7571,7 @@ class DescribeTreeJobsResponse(AbstractModel):
 
     @property
     def ParentId(self):
-        r"""父节点ID
+        r"""<p>父节点ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7551,7 +7583,7 @@ class DescribeTreeJobsResponse(AbstractModel):
 
     @property
     def Id(self):
-        r"""当前文件夹ID
+        r"""<p>当前文件夹ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7563,7 +7595,7 @@ class DescribeTreeJobsResponse(AbstractModel):
 
     @property
     def Name(self):
-        r"""当前文件夹名
+        r"""<p>当前文件夹名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7575,7 +7607,7 @@ class DescribeTreeJobsResponse(AbstractModel):
 
     @property
     def JobSet(self):
-        r"""当前文件夹下的作业列表
+        r"""<p>当前文件夹下的作业列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TreeJobSets
         """
@@ -7587,7 +7619,7 @@ class DescribeTreeJobsResponse(AbstractModel):
 
     @property
     def Children(self):
-        r"""迭代子目录
+        r"""<p>迭代子目录</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DescribeTreeJobsRsp
         """
@@ -14621,6 +14653,8 @@ class Setats(AbstractModel):
         :type SetatsUiUrl: str
         :param _ImageVersion: <p>setats镜像版本</p>
         :type ImageVersion: str
+        :param _WebUIType: <p>类型：0 公网，1 内网</p><p>枚举值：</p><ul><li>0： 公网</li><li>1： 内网</li></ul><p>默认值：0</p>
+        :type WebUIType: int
         """
         self._SetatsSerialId = None
         self._Status = None
@@ -14638,6 +14672,7 @@ class Setats(AbstractModel):
         self._Type = None
         self._SetatsUiUrl = None
         self._ImageVersion = None
+        self._WebUIType = None
 
     @property
     def SetatsSerialId(self):
@@ -14827,6 +14862,17 @@ class Setats(AbstractModel):
     def ImageVersion(self, ImageVersion):
         self._ImageVersion = ImageVersion
 
+    @property
+    def WebUIType(self):
+        r"""<p>类型：0 公网，1 内网</p><p>枚举值：</p><ul><li>0： 公网</li><li>1： 内网</li></ul><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._WebUIType
+
+    @WebUIType.setter
+    def WebUIType(self, WebUIType):
+        self._WebUIType = WebUIType
+
 
     def _deserialize(self, params):
         self._SetatsSerialId = params.get("SetatsSerialId")
@@ -14856,6 +14902,7 @@ class Setats(AbstractModel):
         self._Type = params.get("Type")
         self._SetatsUiUrl = params.get("SetatsUiUrl")
         self._ImageVersion = params.get("ImageVersion")
+        self._WebUIType = params.get("WebUIType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

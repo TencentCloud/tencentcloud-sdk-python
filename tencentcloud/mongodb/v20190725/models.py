@@ -1271,41 +1271,31 @@ class BackupInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID。
+        :param _InstanceId: <p>实例ID。</p>
         :type InstanceId: str
-        :param _BackupType: 备份方式。
-- 0：自动备份。
-- 1：手动备份。
+        :param _BackupType: <p>备份方式。</p><ul><li>0：自动备份。</li><li>1：手动备份。</li></ul>
         :type BackupType: int
-        :param _BackupName: 备份文件名称。
+        :param _BackupName: <p>备份文件名称。</p>
         :type BackupName: str
-        :param _BackupDesc: 备份任务备注信息。
+        :param _BackupDesc: <p>备份任务备注信息。</p>
         :type BackupDesc: str
-        :param _BackupSize: 备份文件大小，单位：KB。
+        :param _BackupSize: <p>备份文件大小，单位：KB。</p>
         :type BackupSize: int
-        :param _StartTime: 备份开始时间。
+        :param _StartTime: <p>备份开始时间。</p>
         :type StartTime: str
-        :param _EndTime: 备份结束时间。
+        :param _EndTime: <p>备份结束时间。</p>
         :type EndTime: str
-        :param _Status: 备份状态。
-- 1：备份中。
-- 2：备份成功。
+        :param _Status: <p>备份状态。</p><ul><li>1：备份中。</li><li>2：备份成功。</li></ul>
         :type Status: int
-        :param _BackupMethod: 备份方式。
-- 0：逻辑备份。
-- 1：物理备份。
-- 3：快照备份。
-**说明:**
-- 通用版实例支持逻辑备份与物理备份。云盘版实例支持物理备份与快照备份，暂不支持逻辑备份。
-- 实例开通存储加密，则备份方式不能为物理备份。
+        :param _BackupMethod: <p>备份方式。</p><ul><li>0：逻辑备份。</li><li>1：物理备份。</li><li>3：快照备份。<br><strong>说明:</strong></li><li>通用版实例支持逻辑备份与物理备份。云盘版实例支持物理备份与快照备份，暂不支持逻辑备份。</li><li>实例开通存储加密，则备份方式不能为物理备份。</li></ul>
         :type BackupMethod: int
-        :param _BackId: 备份记录 ID。
+        :param _BackId: <p>备份记录 ID。</p>
         :type BackId: int
-        :param _DeleteTime: 备份删除时间。
+        :param _DeleteTime: <p>备份删除时间。</p>
         :type DeleteTime: str
-        :param _BackupRegion: 异地备份地域。
+        :param _BackupRegion: <p>异地备份地域。</p>
         :type BackupRegion: str
-        :param _RestoreTime: 备份支持的回档时间。
+        :param _RestoreTime: <p>备份支持的回档时间。</p>
         :type RestoreTime: str
         """
         self._InstanceId = None
@@ -1324,7 +1314,7 @@ class BackupInfo(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例ID。
+        r"""<p>实例ID。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -1335,9 +1325,7 @@ class BackupInfo(AbstractModel):
 
     @property
     def BackupType(self):
-        r"""备份方式。
-- 0：自动备份。
-- 1：手动备份。
+        r"""<p>备份方式。</p><ul><li>0：自动备份。</li><li>1：手动备份。</li></ul>
         :rtype: int
         """
         return self._BackupType
@@ -1348,7 +1336,7 @@ class BackupInfo(AbstractModel):
 
     @property
     def BackupName(self):
-        r"""备份文件名称。
+        r"""<p>备份文件名称。</p>
         :rtype: str
         """
         return self._BackupName
@@ -1359,7 +1347,7 @@ class BackupInfo(AbstractModel):
 
     @property
     def BackupDesc(self):
-        r"""备份任务备注信息。
+        r"""<p>备份任务备注信息。</p>
         :rtype: str
         """
         return self._BackupDesc
@@ -1370,7 +1358,7 @@ class BackupInfo(AbstractModel):
 
     @property
     def BackupSize(self):
-        r"""备份文件大小，单位：KB。
+        r"""<p>备份文件大小，单位：KB。</p>
         :rtype: int
         """
         return self._BackupSize
@@ -1381,7 +1369,7 @@ class BackupInfo(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""备份开始时间。
+        r"""<p>备份开始时间。</p>
         :rtype: str
         """
         return self._StartTime
@@ -1392,7 +1380,7 @@ class BackupInfo(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""备份结束时间。
+        r"""<p>备份结束时间。</p>
         :rtype: str
         """
         return self._EndTime
@@ -1403,9 +1391,7 @@ class BackupInfo(AbstractModel):
 
     @property
     def Status(self):
-        r"""备份状态。
-- 1：备份中。
-- 2：备份成功。
+        r"""<p>备份状态。</p><ul><li>1：备份中。</li><li>2：备份成功。</li></ul>
         :rtype: int
         """
         return self._Status
@@ -1416,13 +1402,7 @@ class BackupInfo(AbstractModel):
 
     @property
     def BackupMethod(self):
-        r"""备份方式。
-- 0：逻辑备份。
-- 1：物理备份。
-- 3：快照备份。
-**说明:**
-- 通用版实例支持逻辑备份与物理备份。云盘版实例支持物理备份与快照备份，暂不支持逻辑备份。
-- 实例开通存储加密，则备份方式不能为物理备份。
+        r"""<p>备份方式。</p><ul><li>0：逻辑备份。</li><li>1：物理备份。</li><li>3：快照备份。<br><strong>说明:</strong></li><li>通用版实例支持逻辑备份与物理备份。云盘版实例支持物理备份与快照备份，暂不支持逻辑备份。</li><li>实例开通存储加密，则备份方式不能为物理备份。</li></ul>
         :rtype: int
         """
         return self._BackupMethod
@@ -1433,7 +1413,7 @@ class BackupInfo(AbstractModel):
 
     @property
     def BackId(self):
-        r"""备份记录 ID。
+        r"""<p>备份记录 ID。</p>
         :rtype: int
         """
         return self._BackId
@@ -1444,7 +1424,7 @@ class BackupInfo(AbstractModel):
 
     @property
     def DeleteTime(self):
-        r"""备份删除时间。
+        r"""<p>备份删除时间。</p>
         :rtype: str
         """
         return self._DeleteTime
@@ -1455,7 +1435,7 @@ class BackupInfo(AbstractModel):
 
     @property
     def BackupRegion(self):
-        r"""异地备份地域。
+        r"""<p>异地备份地域。</p>
         :rtype: str
         """
         return self._BackupRegion
@@ -1466,7 +1446,7 @@ class BackupInfo(AbstractModel):
 
     @property
     def RestoreTime(self):
-        r"""备份支持的回档时间。
+        r"""<p>备份支持的回档时间。</p>
         :rtype: str
         """
         return self._RestoreTime
@@ -16432,57 +16412,35 @@ class SetBackupRulesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
+        :param _InstanceId: <p>实例 ID。请登录 <a href="https://console.cloud.tencent.com/mongodb">MongoDB 控制台</a>在实例列表复制实例 ID。</p>
         :type InstanceId: str
-        :param _BackupMethod: 备份方式。
-- 0：逻辑备份。
-- 1：物理备份。
-- 3：快照备份。
-**说明**:
-1. 通用版实例支持逻辑备份与物理备份。云盘版实例支持物理备份与快照备份，暂不支持逻辑备份。
-2. 实例开通存储加密，则备份方式不能为物理备份。
+        :param _BackupMethod: <p>备份方式。</p><ul><li>0：逻辑备份。</li><li>1：物理备份。</li><li>3：快照备份。<br><strong>说明</strong>:</li><li>通用版实例支持逻辑备份与物理备份。云盘版实例支持物理备份与快照备份，暂不支持逻辑备份。</li><li>实例开通存储加密，则备份方式不能为物理备份。</li></ul>
         :type BackupMethod: int
-        :param _BackupTime: 设置自动备份开始时间。取值范围为：[0,23]，例如：该参数设置为2，表示02:00开始备份。
+        :param _BackupTime: <p>设置自动备份开始时间。取值范围为：[0,23]，例如：该参数设置为2，表示02:00开始备份。</p>
         :type BackupTime: int
-        :param _BackupFrequency: 指定每日自动备份频率。
-- 12: 每日备份2次，间隔约12小时。
-- 24: 每日备份1次（默认），间隔约24小时。
+        :param _BackupFrequency: <p>指定每日自动备份频率。</p><ul><li>12: 每日备份2次，间隔约12小时。</li><li>24: 每日备份1次（默认），间隔约24小时。</li></ul>
         :type BackupFrequency: int
-        :param _Notify: 设置自动备份发生错误时，是否发送失败告警。
-- true：发送。
-- false：不发送。
+        :param _Notify: <p>设置自动备份发生错误时，是否发送失败告警。</p><ul><li>true：发送。</li><li>false：不发送。</li></ul>
         :type Notify: bool
-        :param _BackupRetentionPeriod: 指定备份数据保留时长。
-- 单位：天，默认为 7 天。
-- 取值范围：[7,365]。
+        :param _BackupRetentionPeriod: <p>指定备份数据保留时长。</p><ul><li>单位：天，默认为 7 天。</li><li>取值范围：[7,365]。</li></ul>
         :type BackupRetentionPeriod: int
-        :param _ActiveWeekdays: 指定每周内执行自动备份的具体日期。
-- 格式：请输入 0-6 之间的数字代表周日至周六（例如：1 代表周一），多个日期请用英文逗号 , 分隔。
-- 示例：输入 1,3,5 表示系统将在每周的周一、周三、周五执行备份。
-- 默认值：不设置，则默认为全周期 (0,1,2,3,4,5,6)，即每日执行备份。
+        :param _ActiveWeekdays: <p>指定每周内执行自动备份的具体日期。</p><ul><li>格式：请输入 0-6 之间的数字代表周日至周六（例如：1 代表周一），多个日期请用英文逗号 , 分隔。</li><li>示例：输入 1,3,5 表示系统将在每周的周一、周三、周五执行备份。</li><li>默认值：不设置，则默认为全周期 (0,1,2,3,4,5,6)，即每日执行备份。</li></ul>
         :type ActiveWeekdays: str
-        :param _LongTermUnit: 长期保留周期。支持按周或按月选择特定日期的备份（例如，每月1日、15日的备份数据），将其保留更长周期。- 不开启（默认）：不启用长期保留功能。- 按周保留： 指定为 weekly。- 按月保留： 指定为 monthly。待废弃，使用LongTermInterval
+        :param _LongTermUnit: <p>长期保留周期。支持按周或按月选择特定日期的备份（例如，每月1日、15日的备份数据），将其保留更长周期。- 不开启（默认）：不启用长期保留功能。- 按周保留： 指定为 weekly。- 按月保留： 指定为 monthly。待废弃，使用LongTermInterval</p>
         :type LongTermUnit: str
-        :param _LongTermActiveDays: 指定用于长期保留的具体备份日期。此设置仅在 **LongTermUnit** 被设为**weekly** 或 **monthly** 时生效。
-- 按周（weekly）保留：请输入 0-6 之间的数字来代表周日至周六。多个日期请用英文逗号分隔。
-- 按月（monthly）保留：请输入 1-31 之间的数字来代表月份中的具体日期。多个日期请用英文逗号分隔。
+        :param _LongTermActiveDays: <p>指定用于长期保留的具体备份日期。此设置仅在 <strong>LongTermUnit</strong> 被设为<strong>weekly</strong> 或 <strong>monthly</strong> 时生效。</p><ul><li>按周（weekly）保留：请输入 0-6 之间的数字来代表周日至周六。多个日期请用英文逗号分隔。</li><li>按月（monthly）保留：请输入 1-31 之间的数字来代表月份中的具体日期。多个日期请用英文逗号分隔。</li></ul>
         :type LongTermActiveDays: str
-        :param _LongTermExpiredDays: 长期备份保留时长。取值范围[30,1075]。
+        :param _LongTermExpiredDays: <p>长期备份保留时长。取值范围[30,1075]。</p>
         :type LongTermExpiredDays: int
-        :param _OplogExpiredDays: 增量备份保留时长。
-- 单位：天。
-- 默认值：7天。
-- 取值范围：[7,365]。
+        :param _OplogExpiredDays: <p>增量备份保留时长。</p><ul><li>单位：天。</li><li>默认值：7天。</li><li>取值范围：[7,365]。</li></ul>
         :type OplogExpiredDays: int
-        :param _BackupVersion: 指定备份版本。
-- 旧版本备份：0。
-- 开启高级备份：1。
+        :param _BackupVersion: <p>指定备份版本。</p><ul><li>旧版本备份：0。</li><li>开启高级备份：1。</li></ul>
         :type BackupVersion: int
-        :param _AlarmWaterLevel: 设置备份数据集存储空间使用率的告警阈值。- 单位：%。-  默认值：100。- 取值范围：[50,300]。待废弃,使用AlertThreshold
+        :param _AlarmWaterLevel: <p>设置备份数据集存储空间使用率的告警阈值。- 单位：%。-  默认值：100。- 取值范围：[50,300]。待废弃,使用AlertThreshold</p>
         :type AlarmWaterLevel: int
-        :param _LongTermInterval: 长期保留周期。支持按周或按月选择特定日期的备份（例如，每月1日、15日的备份数据），将其保留更长周期。- 不开启（默认）：不启用长期保留功能。- 按周保留： 指定为 weekly。- 按月保留： 指定为 monthly。
+        :param _LongTermInterval: <p>长期保留周期。支持按周或按月选择特定日期的备份（例如，每月1日、15日的备份数据），将其保留更长周期。- 不开启（默认）：不启用长期保留功能。- 按周保留： 指定为 weekly。- 按月保留： 指定为 monthly。</p>
         :type LongTermInterval: str
-        :param _AlertThreshold: 设置备份数据集存储空间使用率的告警阈值。- 单位：%。-  默认值：100。- 取值范围：[50,300]。
+        :param _AlertThreshold: <p>设置备份数据集存储空间使用率的告警阈值。- 单位：%。-  默认值：100。- 取值范围：[50,300]。</p>
         :type AlertThreshold: int
         """
         self._InstanceId = None
@@ -16503,7 +16461,7 @@ class SetBackupRulesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例 ID。请登录 [MongoDB 控制台](https://console.cloud.tencent.com/mongodb)在实例列表复制实例 ID。
+        r"""<p>实例 ID。请登录 <a href="https://console.cloud.tencent.com/mongodb">MongoDB 控制台</a>在实例列表复制实例 ID。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -16514,13 +16472,7 @@ class SetBackupRulesRequest(AbstractModel):
 
     @property
     def BackupMethod(self):
-        r"""备份方式。
-- 0：逻辑备份。
-- 1：物理备份。
-- 3：快照备份。
-**说明**:
-1. 通用版实例支持逻辑备份与物理备份。云盘版实例支持物理备份与快照备份，暂不支持逻辑备份。
-2. 实例开通存储加密，则备份方式不能为物理备份。
+        r"""<p>备份方式。</p><ul><li>0：逻辑备份。</li><li>1：物理备份。</li><li>3：快照备份。<br><strong>说明</strong>:</li><li>通用版实例支持逻辑备份与物理备份。云盘版实例支持物理备份与快照备份，暂不支持逻辑备份。</li><li>实例开通存储加密，则备份方式不能为物理备份。</li></ul>
         :rtype: int
         """
         return self._BackupMethod
@@ -16531,7 +16483,7 @@ class SetBackupRulesRequest(AbstractModel):
 
     @property
     def BackupTime(self):
-        r"""设置自动备份开始时间。取值范围为：[0,23]，例如：该参数设置为2，表示02:00开始备份。
+        r"""<p>设置自动备份开始时间。取值范围为：[0,23]，例如：该参数设置为2，表示02:00开始备份。</p>
         :rtype: int
         """
         return self._BackupTime
@@ -16542,9 +16494,7 @@ class SetBackupRulesRequest(AbstractModel):
 
     @property
     def BackupFrequency(self):
-        r"""指定每日自动备份频率。
-- 12: 每日备份2次，间隔约12小时。
-- 24: 每日备份1次（默认），间隔约24小时。
+        r"""<p>指定每日自动备份频率。</p><ul><li>12: 每日备份2次，间隔约12小时。</li><li>24: 每日备份1次（默认），间隔约24小时。</li></ul>
         :rtype: int
         """
         return self._BackupFrequency
@@ -16555,9 +16505,7 @@ class SetBackupRulesRequest(AbstractModel):
 
     @property
     def Notify(self):
-        r"""设置自动备份发生错误时，是否发送失败告警。
-- true：发送。
-- false：不发送。
+        r"""<p>设置自动备份发生错误时，是否发送失败告警。</p><ul><li>true：发送。</li><li>false：不发送。</li></ul>
         :rtype: bool
         """
         return self._Notify
@@ -16568,9 +16516,7 @@ class SetBackupRulesRequest(AbstractModel):
 
     @property
     def BackupRetentionPeriod(self):
-        r"""指定备份数据保留时长。
-- 单位：天，默认为 7 天。
-- 取值范围：[7,365]。
+        r"""<p>指定备份数据保留时长。</p><ul><li>单位：天，默认为 7 天。</li><li>取值范围：[7,365]。</li></ul>
         :rtype: int
         """
         return self._BackupRetentionPeriod
@@ -16581,10 +16527,7 @@ class SetBackupRulesRequest(AbstractModel):
 
     @property
     def ActiveWeekdays(self):
-        r"""指定每周内执行自动备份的具体日期。
-- 格式：请输入 0-6 之间的数字代表周日至周六（例如：1 代表周一），多个日期请用英文逗号 , 分隔。
-- 示例：输入 1,3,5 表示系统将在每周的周一、周三、周五执行备份。
-- 默认值：不设置，则默认为全周期 (0,1,2,3,4,5,6)，即每日执行备份。
+        r"""<p>指定每周内执行自动备份的具体日期。</p><ul><li>格式：请输入 0-6 之间的数字代表周日至周六（例如：1 代表周一），多个日期请用英文逗号 , 分隔。</li><li>示例：输入 1,3,5 表示系统将在每周的周一、周三、周五执行备份。</li><li>默认值：不设置，则默认为全周期 (0,1,2,3,4,5,6)，即每日执行备份。</li></ul>
         :rtype: str
         """
         return self._ActiveWeekdays
@@ -16595,7 +16538,7 @@ class SetBackupRulesRequest(AbstractModel):
 
     @property
     def LongTermUnit(self):
-        r"""长期保留周期。支持按周或按月选择特定日期的备份（例如，每月1日、15日的备份数据），将其保留更长周期。- 不开启（默认）：不启用长期保留功能。- 按周保留： 指定为 weekly。- 按月保留： 指定为 monthly。待废弃，使用LongTermInterval
+        r"""<p>长期保留周期。支持按周或按月选择特定日期的备份（例如，每月1日、15日的备份数据），将其保留更长周期。- 不开启（默认）：不启用长期保留功能。- 按周保留： 指定为 weekly。- 按月保留： 指定为 monthly。待废弃，使用LongTermInterval</p>
         :rtype: str
         """
         return self._LongTermUnit
@@ -16606,9 +16549,7 @@ class SetBackupRulesRequest(AbstractModel):
 
     @property
     def LongTermActiveDays(self):
-        r"""指定用于长期保留的具体备份日期。此设置仅在 **LongTermUnit** 被设为**weekly** 或 **monthly** 时生效。
-- 按周（weekly）保留：请输入 0-6 之间的数字来代表周日至周六。多个日期请用英文逗号分隔。
-- 按月（monthly）保留：请输入 1-31 之间的数字来代表月份中的具体日期。多个日期请用英文逗号分隔。
+        r"""<p>指定用于长期保留的具体备份日期。此设置仅在 <strong>LongTermUnit</strong> 被设为<strong>weekly</strong> 或 <strong>monthly</strong> 时生效。</p><ul><li>按周（weekly）保留：请输入 0-6 之间的数字来代表周日至周六。多个日期请用英文逗号分隔。</li><li>按月（monthly）保留：请输入 1-31 之间的数字来代表月份中的具体日期。多个日期请用英文逗号分隔。</li></ul>
         :rtype: str
         """
         return self._LongTermActiveDays
@@ -16619,7 +16560,7 @@ class SetBackupRulesRequest(AbstractModel):
 
     @property
     def LongTermExpiredDays(self):
-        r"""长期备份保留时长。取值范围[30,1075]。
+        r"""<p>长期备份保留时长。取值范围[30,1075]。</p>
         :rtype: int
         """
         return self._LongTermExpiredDays
@@ -16630,10 +16571,7 @@ class SetBackupRulesRequest(AbstractModel):
 
     @property
     def OplogExpiredDays(self):
-        r"""增量备份保留时长。
-- 单位：天。
-- 默认值：7天。
-- 取值范围：[7,365]。
+        r"""<p>增量备份保留时长。</p><ul><li>单位：天。</li><li>默认值：7天。</li><li>取值范围：[7,365]。</li></ul>
         :rtype: int
         """
         return self._OplogExpiredDays
@@ -16644,9 +16582,7 @@ class SetBackupRulesRequest(AbstractModel):
 
     @property
     def BackupVersion(self):
-        r"""指定备份版本。
-- 旧版本备份：0。
-- 开启高级备份：1。
+        r"""<p>指定备份版本。</p><ul><li>旧版本备份：0。</li><li>开启高级备份：1。</li></ul>
         :rtype: int
         """
         return self._BackupVersion
@@ -16657,7 +16593,7 @@ class SetBackupRulesRequest(AbstractModel):
 
     @property
     def AlarmWaterLevel(self):
-        r"""设置备份数据集存储空间使用率的告警阈值。- 单位：%。-  默认值：100。- 取值范围：[50,300]。待废弃,使用AlertThreshold
+        r"""<p>设置备份数据集存储空间使用率的告警阈值。- 单位：%。-  默认值：100。- 取值范围：[50,300]。待废弃,使用AlertThreshold</p>
         :rtype: int
         """
         return self._AlarmWaterLevel
@@ -16668,7 +16604,7 @@ class SetBackupRulesRequest(AbstractModel):
 
     @property
     def LongTermInterval(self):
-        r"""长期保留周期。支持按周或按月选择特定日期的备份（例如，每月1日、15日的备份数据），将其保留更长周期。- 不开启（默认）：不启用长期保留功能。- 按周保留： 指定为 weekly。- 按月保留： 指定为 monthly。
+        r"""<p>长期保留周期。支持按周或按月选择特定日期的备份（例如，每月1日、15日的备份数据），将其保留更长周期。- 不开启（默认）：不启用长期保留功能。- 按周保留： 指定为 weekly。- 按月保留： 指定为 monthly。</p>
         :rtype: str
         """
         return self._LongTermInterval
@@ -16679,7 +16615,7 @@ class SetBackupRulesRequest(AbstractModel):
 
     @property
     def AlertThreshold(self):
-        r"""设置备份数据集存储空间使用率的告警阈值。- 单位：%。-  默认值：100。- 取值范围：[50,300]。
+        r"""<p>设置备份数据集存储空间使用率的告警阈值。- 单位：%。-  默认值：100。- 取值范围：[50,300]。</p>
         :rtype: int
         """
         return self._AlertThreshold

@@ -7807,14 +7807,17 @@ class ListAlarmPolicyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Offset: 页码
+        :param _Offset: <p>页码</p>
         :type Offset: int
+        :param _Limit: <p>每页展示数量</p>
+        :type Limit: int
         """
         self._Offset = None
+        self._Limit = None
 
     @property
     def Offset(self):
-        r"""页码
+        r"""<p>页码</p>
         :rtype: int
         """
         return self._Offset
@@ -7823,9 +7826,21 @@ class ListAlarmPolicyRequest(AbstractModel):
     def Offset(self, Offset):
         self._Offset = Offset
 
+    @property
+    def Limit(self):
+        r"""<p>每页展示数量</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
 
     def _deserialize(self, params):
         self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7843,9 +7858,9 @@ class ListAlarmPolicyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Total: 返回记录的数量
+        :param _Total: <p>返回记录的数量</p>
         :type Total: int
-        :param _AlarmPolicyList: 告警策略返回值
+        :param _AlarmPolicyList: <p>告警策略返回值</p>
         :type AlarmPolicyList: list of AlarmPolicyRsp
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7856,7 +7871,7 @@ class ListAlarmPolicyResponse(AbstractModel):
 
     @property
     def Total(self):
-        r"""返回记录的数量
+        r"""<p>返回记录的数量</p>
         :rtype: int
         """
         return self._Total
@@ -7867,7 +7882,7 @@ class ListAlarmPolicyResponse(AbstractModel):
 
     @property
     def AlarmPolicyList(self):
-        r"""告警策略返回值
+        r"""<p>告警策略返回值</p>
         :rtype: list of AlarmPolicyRsp
         """
         return self._AlarmPolicyList

@@ -331,6 +331,42 @@ class TcbrClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def StartVersionInstance(
+            self,
+            request: models.StartVersionInstanceRequest,
+            opts: Dict = None,
+    ) -> models.StartVersionInstanceResponse:
+        """
+        启动版本实例
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "StartVersionInstance"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.StartVersionInstanceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def StopVersionInstance(
+            self,
+            request: models.StopVersionInstanceRequest,
+            opts: Dict = None,
+    ) -> models.StopVersionInstanceResponse:
+        """
+        停止版本实例
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "StopVersionInstance"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.StopVersionInstanceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def SubmitServerRollback(
             self,
             request: models.SubmitServerRollbackRequest,

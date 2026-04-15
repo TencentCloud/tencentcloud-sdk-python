@@ -6574,59 +6574,7 @@ class CacheKeyHeader(AbstractModel):
 
 
 class CacheKeyParameters(AbstractModel):
-    r"""自定义 Cache Key 配置参数。该配置参数的 FullURLCache 和 QueryString 采用组合表达，具体示例可以参考：
-    - 查询字符串全部保留。开启忽略大小写。
-    ```
-    {
-      "CacheKey": {
-        "FullURLCache": "on",
-        "QueryString": {
-          "Switch": "off"
-        },
-        "IgnoreCase": "on"
-      }
-    }
-    ```
-    - 查询字符串全部忽略。开启忽略大小写。
-    ```
-    {
-      "CacheKey": {
-        "FullURLCache": "off",
-        "QueryString": {
-          "Switch": "off"
-        },
-        "IgnoreCase": "on"
-      }
-    }
-    ```
-    - 查询字符串保留指定参数。关闭忽略大小写。
-    ```
-    {
-      "CacheKey": {
-        "FullURLCache": "off",
-        "QueryString": {
-            "Switch": "on",
-            "Action": "includeCustom",
-            "Values": ["name1","name2","name3"]
-        },
-        "IgnoreCase": "off"
-      }
-    }
-    ```
-    - 查询字符串忽略指定参数。关闭忽略大小写。
-    ```
-    {
-      "CacheKey": {
-        "FullURLCache": "off",
-        "QueryString": {
-            "Switch": "on",
-            "Action": "excludeCustom",
-            "Values": ["name1","name2","name3"]
-        },
-        "IgnoreCase": "off"
-      }
-    }
-    ```
+    r"""自定义 Cache Key 配置参数。
 
     """
 

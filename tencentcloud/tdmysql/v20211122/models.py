@@ -107,6 +107,197 @@ class ArchiveLogInterval(AbstractModel):
         
 
 
+class ArchiveLogModel(AbstractModel):
+    r"""归档日志对象
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ArchiveLogId: 归档日志ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ArchiveLogId: int
+        :param _BackupDuration: 备份耗时
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BackupDuration: int
+        :param _BackupStatus: 备份集状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BackupStatus: str
+        :param _EndTime: 备份结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndTime: str
+        :param _ErrorMessage: 错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorMessage: str
+        :param _ExpiredTime: 过期时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExpiredTime: str
+        :param _FileName: 备份文件名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileName: str
+        :param _FileSize: 备份集文件大小，单位Byte
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileSize: int
+        :param _InstanceId: 实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param _StartTime: 备份开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTime: str
+        """
+        self._ArchiveLogId = None
+        self._BackupDuration = None
+        self._BackupStatus = None
+        self._EndTime = None
+        self._ErrorMessage = None
+        self._ExpiredTime = None
+        self._FileName = None
+        self._FileSize = None
+        self._InstanceId = None
+        self._StartTime = None
+
+    @property
+    def ArchiveLogId(self):
+        r"""归档日志ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ArchiveLogId
+
+    @ArchiveLogId.setter
+    def ArchiveLogId(self, ArchiveLogId):
+        self._ArchiveLogId = ArchiveLogId
+
+    @property
+    def BackupDuration(self):
+        r"""备份耗时
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._BackupDuration
+
+    @BackupDuration.setter
+    def BackupDuration(self, BackupDuration):
+        self._BackupDuration = BackupDuration
+
+    @property
+    def BackupStatus(self):
+        r"""备份集状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BackupStatus
+
+    @BackupStatus.setter
+    def BackupStatus(self, BackupStatus):
+        self._BackupStatus = BackupStatus
+
+    @property
+    def EndTime(self):
+        r"""备份结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def ErrorMessage(self):
+        r"""错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ErrorMessage
+
+    @ErrorMessage.setter
+    def ErrorMessage(self, ErrorMessage):
+        self._ErrorMessage = ErrorMessage
+
+    @property
+    def ExpiredTime(self):
+        r"""过期时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExpiredTime
+
+    @ExpiredTime.setter
+    def ExpiredTime(self, ExpiredTime):
+        self._ExpiredTime = ExpiredTime
+
+    @property
+    def FileName(self):
+        r"""备份文件名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def FileSize(self):
+        r"""备份集文件大小，单位Byte
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._FileSize
+
+    @FileSize.setter
+    def FileSize(self, FileSize):
+        self._FileSize = FileSize
+
+    @property
+    def InstanceId(self):
+        r"""实例ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def StartTime(self):
+        r"""备份开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+
+    def _deserialize(self, params):
+        self._ArchiveLogId = params.get("ArchiveLogId")
+        self._BackupDuration = params.get("BackupDuration")
+        self._BackupStatus = params.get("BackupStatus")
+        self._EndTime = params.get("EndTime")
+        self._ErrorMessage = params.get("ErrorMessage")
+        self._ExpiredTime = params.get("ExpiredTime")
+        self._FileName = params.get("FileName")
+        self._FileSize = params.get("FileSize")
+        self._InstanceId = params.get("InstanceId")
+        self._StartTime = params.get("StartTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BackupPolicyModelInput(AbstractModel):
     r"""修改备份策略对象
 
@@ -1236,6 +1427,227 @@ class DescribeDBParametersResponse(AbstractModel):
                 obj = ParamDesc()
                 obj._deserialize(item)
                 self._Params.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDBSArchiveLogsRequest(AbstractModel):
+    r"""DescribeDBSArchiveLogs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>实例ID</p>
+        :type InstanceId: str
+        :param _ArchiveLogId: <p>日志记录ID</p>
+        :type ArchiveLogId: int
+        :param _EndTime: <p>结束时间</p>
+        :type EndTime: str
+        :param _FilterStatus: <p>备份状态：pending,running,success,failed</p>
+        :type FilterStatus: str
+        :param _Limit: <p>条数限制</p>
+        :type Limit: int
+        :param _Offset: <p>偏移量</p>
+        :type Offset: int
+        :param _OrderBy: <p>排序字段，枚举：StartTime,EndTime,ExpiredTime,FileSize,BackupDuration</p>
+        :type OrderBy: str
+        :param _OrderType: <p>排序方式：ASC：顺序, DESC：倒序</p>
+        :type OrderType: str
+        :param _StartTime: <p>开始时间</p>
+        :type StartTime: str
+        """
+        self._InstanceId = None
+        self._ArchiveLogId = None
+        self._EndTime = None
+        self._FilterStatus = None
+        self._Limit = None
+        self._Offset = None
+        self._OrderBy = None
+        self._OrderType = None
+        self._StartTime = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例ID</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ArchiveLogId(self):
+        r"""<p>日志记录ID</p>
+        :rtype: int
+        """
+        return self._ArchiveLogId
+
+    @ArchiveLogId.setter
+    def ArchiveLogId(self, ArchiveLogId):
+        self._ArchiveLogId = ArchiveLogId
+
+    @property
+    def EndTime(self):
+        r"""<p>结束时间</p>
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def FilterStatus(self):
+        r"""<p>备份状态：pending,running,success,failed</p>
+        :rtype: str
+        """
+        return self._FilterStatus
+
+    @FilterStatus.setter
+    def FilterStatus(self, FilterStatus):
+        self._FilterStatus = FilterStatus
+
+    @property
+    def Limit(self):
+        r"""<p>条数限制</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""<p>偏移量</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def OrderBy(self):
+        r"""<p>排序字段，枚举：StartTime,EndTime,ExpiredTime,FileSize,BackupDuration</p>
+        :rtype: str
+        """
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
+
+    @property
+    def OrderType(self):
+        r"""<p>排序方式：ASC：顺序, DESC：倒序</p>
+        :rtype: str
+        """
+        return self._OrderType
+
+    @OrderType.setter
+    def OrderType(self, OrderType):
+        self._OrderType = OrderType
+
+    @property
+    def StartTime(self):
+        r"""<p>开始时间</p>
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._ArchiveLogId = params.get("ArchiveLogId")
+        self._EndTime = params.get("EndTime")
+        self._FilterStatus = params.get("FilterStatus")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._OrderBy = params.get("OrderBy")
+        self._OrderType = params.get("OrderType")
+        self._StartTime = params.get("StartTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDBSArchiveLogsResponse(AbstractModel):
+    r"""DescribeDBSArchiveLogs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Items: <p>归档日志列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of ArchiveLogModel
+        :param _TotalCount: <p>总数</p>
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Items = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Items(self):
+        r"""<p>归档日志列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ArchiveLogModel
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def TotalCount(self):
+        r"""<p>总数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = ArchiveLogModel()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 

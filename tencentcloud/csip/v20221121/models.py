@@ -31629,6 +31629,8 @@ class RiskDetailItem(AbstractModel):
         :type RiskRuleId: str
         :param _CheckStatus: 风险验证状态
         :type CheckStatus: str
+        :param _AppID: 
+        :type AppID: int
         """
         self._CreateTime = None
         self._UpdateTime = None
@@ -31643,6 +31645,7 @@ class RiskDetailItem(AbstractModel):
         self._RiskId = None
         self._RiskRuleId = None
         self._CheckStatus = None
+        self._AppID = None
 
     @property
     def CreateTime(self):
@@ -31787,6 +31790,17 @@ class RiskDetailItem(AbstractModel):
     def CheckStatus(self, CheckStatus):
         self._CheckStatus = CheckStatus
 
+    @property
+    def AppID(self):
+        r"""
+        :rtype: int
+        """
+        return self._AppID
+
+    @AppID.setter
+    def AppID(self, AppID):
+        self._AppID = AppID
+
 
     def _deserialize(self, params):
         self._CreateTime = params.get("CreateTime")
@@ -31802,6 +31816,7 @@ class RiskDetailItem(AbstractModel):
         self._RiskId = params.get("RiskId")
         self._RiskRuleId = params.get("RiskRuleId")
         self._CheckStatus = params.get("CheckStatus")
+        self._AppID = params.get("AppID")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

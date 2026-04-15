@@ -352,6 +352,24 @@ class EmrClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeBootScript(
+            self,
+            request: models.DescribeBootScriptRequest,
+            opts: Dict = None,
+    ) -> models.DescribeBootScriptResponse:
+        """
+        获取引导脚本
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeBootScript"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeBootScriptResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeClusterFlowStatusDetail(
             self,
             request: models.DescribeClusterFlowStatusDetailRequest,
@@ -1195,6 +1213,24 @@ class EmrClient(AbstractClient):
         kwargs["action"] = "ModifyAutoScaleStrategy"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyAutoScaleStrategyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyBootScript(
+            self,
+            request: models.ModifyBootScriptRequest,
+            opts: Dict = None,
+    ) -> models.ModifyBootScriptResponse:
+        """
+        修改引导脚本
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyBootScript"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyBootScriptResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

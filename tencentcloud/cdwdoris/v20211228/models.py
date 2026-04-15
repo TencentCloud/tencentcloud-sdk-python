@@ -305,6 +305,8 @@ class BackUpJobDisplay(AbstractModel):
         :type Encryption: str
         :param _EncryptionEnabled: 是否开通加密存储：0-未开通，1-已开通
         :type EncryptionEnabled: bool
+        :param _ScheduleId: 任务调度id
+        :type ScheduleId: int
         """
         self._JobId = None
         self._Snapshot = None
@@ -335,6 +337,7 @@ class BackUpJobDisplay(AbstractModel):
         self._BucketEncryption = None
         self._Encryption = None
         self._EncryptionEnabled = None
+        self._ScheduleId = None
 
     @property
     def JobId(self):
@@ -655,6 +658,17 @@ class BackUpJobDisplay(AbstractModel):
     def EncryptionEnabled(self, EncryptionEnabled):
         self._EncryptionEnabled = EncryptionEnabled
 
+    @property
+    def ScheduleId(self):
+        r"""任务调度id
+        :rtype: int
+        """
+        return self._ScheduleId
+
+    @ScheduleId.setter
+    def ScheduleId(self, ScheduleId):
+        self._ScheduleId = ScheduleId
+
 
     def _deserialize(self, params):
         self._JobId = params.get("JobId")
@@ -694,6 +708,7 @@ class BackUpJobDisplay(AbstractModel):
             self._BucketEncryption._deserialize(params.get("BucketEncryption"))
         self._Encryption = params.get("Encryption")
         self._EncryptionEnabled = params.get("EncryptionEnabled")
+        self._ScheduleId = params.get("ScheduleId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4007,12 +4022,15 @@ class DescribeAreaRegionResponse(AbstractModel):
         :type FrontEndRules: list of FrontEndRule
         :param _AvailableWhiteListNames: 返回可用的白名单名称
         :type AvailableWhiteListNames: list of str
+        :param _IsolationDays: 隔离天数
+        :type IsolationDays: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Items = None
         self._FrontEndRules = None
         self._AvailableWhiteListNames = None
+        self._IsolationDays = None
         self._RequestId = None
 
     @property
@@ -4049,6 +4067,17 @@ class DescribeAreaRegionResponse(AbstractModel):
         self._AvailableWhiteListNames = AvailableWhiteListNames
 
     @property
+    def IsolationDays(self):
+        r"""隔离天数
+        :rtype: int
+        """
+        return self._IsolationDays
+
+    @IsolationDays.setter
+    def IsolationDays(self, IsolationDays):
+        self._IsolationDays = IsolationDays
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -4074,6 +4103,7 @@ class DescribeAreaRegionResponse(AbstractModel):
                 obj._deserialize(item)
                 self._FrontEndRules.append(obj)
         self._AvailableWhiteListNames = params.get("AvailableWhiteListNames")
+        self._IsolationDays = params.get("IsolationDays")
         self._RequestId = params.get("RequestId")
 
 
@@ -4475,9 +4505,12 @@ class DescribeBackUpSchedulesRequest(AbstractModel):
         :type ApplicationType: int
         :param _EncryptionFilters: 0-未加密；1-已加密
         :type EncryptionFilters: list of int
+        :param _ScheduleId: 调度任务id过滤
+        :type ScheduleId: int
         """
         self._ApplicationType = None
         self._EncryptionFilters = None
+        self._ScheduleId = None
 
     @property
     def ApplicationType(self):
@@ -4504,10 +4537,22 @@ class DescribeBackUpSchedulesRequest(AbstractModel):
     def EncryptionFilters(self, EncryptionFilters):
         self._EncryptionFilters = EncryptionFilters
 
+    @property
+    def ScheduleId(self):
+        r"""调度任务id过滤
+        :rtype: int
+        """
+        return self._ScheduleId
+
+    @ScheduleId.setter
+    def ScheduleId(self, ScheduleId):
+        self._ScheduleId = ScheduleId
+
 
     def _deserialize(self, params):
         self._ApplicationType = params.get("ApplicationType")
         self._EncryptionFilters = params.get("EncryptionFilters")
+        self._ScheduleId = params.get("ScheduleId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5189,6 +5234,8 @@ class DescribeClusterConfigsResponse(AbstractModel):
         :type HasCN: bool
         :param _ExistingJarConfList: 实例已经存在的jar包列表
         :type ExistingJarConfList: list of ClusterConfigsInfoFromEMR
+        :param _IPDBFileSizeLimit: ipdb的文件大小 byte
+        :type IPDBFileSizeLimit: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -5197,6 +5244,7 @@ class DescribeClusterConfigsResponse(AbstractModel):
         self._ErrorMsg = None
         self._HasCN = None
         self._ExistingJarConfList = None
+        self._IPDBFileSizeLimit = None
         self._RequestId = None
 
     @property
@@ -5255,6 +5303,17 @@ class DescribeClusterConfigsResponse(AbstractModel):
         self._ExistingJarConfList = ExistingJarConfList
 
     @property
+    def IPDBFileSizeLimit(self):
+        r"""ipdb的文件大小 byte
+        :rtype: str
+        """
+        return self._IPDBFileSizeLimit
+
+    @IPDBFileSizeLimit.setter
+    def IPDBFileSizeLimit(self, IPDBFileSizeLimit):
+        self._IPDBFileSizeLimit = IPDBFileSizeLimit
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -5282,6 +5341,7 @@ class DescribeClusterConfigsResponse(AbstractModel):
                 obj = ClusterConfigsInfoFromEMR()
                 obj._deserialize(item)
                 self._ExistingJarConfList.append(obj)
+        self._IPDBFileSizeLimit = params.get("IPDBFileSizeLimit")
         self._RequestId = params.get("RequestId")
 
 
@@ -9017,14 +9077,14 @@ class DescribeWorkloadGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 集群id
+        :param _InstanceId: <p>集群id</p>
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        r"""集群id
+        r"""<p>集群id</p>
         :rtype: str
         """
         return self._InstanceId
@@ -9053,23 +9113,26 @@ class DescribeWorkloadGroupResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _WorkloadGroups: 资源组信息
+        :param _WorkloadGroups: <p>资源组信息</p>
         :type WorkloadGroups: list of WorkloadGroupConfig
-        :param _Status: 是否开启资源组：开启-open、关闭-close
+        :param _Status: <p>是否开启资源组：开启-open、关闭-close</p>
         :type Status: str
-        :param _ErrorMsg: 错误信息
+        :param _ErrorMsg: <p>错误信息</p>
         :type ErrorMsg: str
+        :param _MonitorStatus: <p>是否开启监控，0：未开启，1：开启</p>
+        :type MonitorStatus: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._WorkloadGroups = None
         self._Status = None
         self._ErrorMsg = None
+        self._MonitorStatus = None
         self._RequestId = None
 
     @property
     def WorkloadGroups(self):
-        r"""资源组信息
+        r"""<p>资源组信息</p>
         :rtype: list of WorkloadGroupConfig
         """
         return self._WorkloadGroups
@@ -9080,7 +9143,7 @@ class DescribeWorkloadGroupResponse(AbstractModel):
 
     @property
     def Status(self):
-        r"""是否开启资源组：开启-open、关闭-close
+        r"""<p>是否开启资源组：开启-open、关闭-close</p>
         :rtype: str
         """
         return self._Status
@@ -9091,7 +9154,7 @@ class DescribeWorkloadGroupResponse(AbstractModel):
 
     @property
     def ErrorMsg(self):
-        r"""错误信息
+        r"""<p>错误信息</p>
         :rtype: str
         """
         return self._ErrorMsg
@@ -9099,6 +9162,17 @@ class DescribeWorkloadGroupResponse(AbstractModel):
     @ErrorMsg.setter
     def ErrorMsg(self, ErrorMsg):
         self._ErrorMsg = ErrorMsg
+
+    @property
+    def MonitorStatus(self):
+        r"""<p>是否开启监控，0：未开启，1：开启</p>
+        :rtype: int
+        """
+        return self._MonitorStatus
+
+    @MonitorStatus.setter
+    def MonitorStatus(self, MonitorStatus):
+        self._MonitorStatus = MonitorStatus
 
     @property
     def RequestId(self):
@@ -9121,6 +9195,7 @@ class DescribeWorkloadGroupResponse(AbstractModel):
                 self._WorkloadGroups.append(obj)
         self._Status = params.get("Status")
         self._ErrorMsg = params.get("ErrorMsg")
+        self._MonitorStatus = params.get("MonitorStatus")
         self._RequestId = params.get("RequestId")
 
 
@@ -9701,6 +9776,10 @@ Changing  变更中
         :type SlaveInstances: list of str
         :param _SyncerIp: ccr服务部署节点ip
         :type SyncerIp: str
+        :param _EnableSqlConv: 是否支持sql convertor
+        :type EnableSqlConv: int
+        :param _TimeZone: 集群时区，默认+08:00
+        :type TimeZone: str
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -9763,6 +9842,8 @@ Changing  变更中
         self._MasterInstance = None
         self._SlaveInstances = None
         self._SyncerIp = None
+        self._EnableSqlConv = None
+        self._TimeZone = None
 
     @property
     def InstanceId(self):
@@ -10448,6 +10529,28 @@ Changing  变更中
     def SyncerIp(self, SyncerIp):
         self._SyncerIp = SyncerIp
 
+    @property
+    def EnableSqlConv(self):
+        r"""是否支持sql convertor
+        :rtype: int
+        """
+        return self._EnableSqlConv
+
+    @EnableSqlConv.setter
+    def EnableSqlConv(self, EnableSqlConv):
+        self._EnableSqlConv = EnableSqlConv
+
+    @property
+    def TimeZone(self):
+        r"""集群时区，默认+08:00
+        :rtype: str
+        """
+        return self._TimeZone
+
+    @TimeZone.setter
+    def TimeZone(self, TimeZone):
+        self._TimeZone = TimeZone
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -10524,6 +10627,8 @@ Changing  变更中
         self._MasterInstance = params.get("MasterInstance")
         self._SlaveInstances = params.get("SlaveInstances")
         self._SyncerIp = params.get("SyncerIp")
+        self._EnableSqlConv = params.get("EnableSqlConv")
+        self._TimeZone = params.get("TimeZone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15880,10 +15985,16 @@ class SnapshotRemainPolicy(AbstractModel):
         :type RemainDays: int
         :param _RemainLatestNum: 保留最新快照的数量
         :type RemainLatestNum: int
+        :param _RemainDaysUnit: 天数单位
+0：天
+1：季度
+2：年
+        :type RemainDaysUnit: int
         """
         self._Type = None
         self._RemainDays = None
         self._RemainLatestNum = None
+        self._RemainDaysUnit = None
 
     @property
     def Type(self):
@@ -15918,11 +16029,26 @@ class SnapshotRemainPolicy(AbstractModel):
     def RemainLatestNum(self, RemainLatestNum):
         self._RemainLatestNum = RemainLatestNum
 
+    @property
+    def RemainDaysUnit(self):
+        r"""天数单位
+0：天
+1：季度
+2：年
+        :rtype: int
+        """
+        return self._RemainDaysUnit
+
+    @RemainDaysUnit.setter
+    def RemainDaysUnit(self, RemainDaysUnit):
+        self._RemainDaysUnit = RemainDaysUnit
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
         self._RemainDays = params.get("RemainDays")
         self._RemainLatestNum = params.get("RemainLatestNum")
+        self._RemainDaysUnit = params.get("RemainDaysUnit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

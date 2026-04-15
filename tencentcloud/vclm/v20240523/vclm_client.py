@@ -164,6 +164,75 @@ class VclmClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeImageToVideoJob(self, request):
+        r"""用于查询视频特效任务。
+
+        :param request: Request instance for DescribeImageToVideoJob.
+        :type request: :class:`tencentcloud.vclm.v20240523.models.DescribeImageToVideoJobRequest`
+        :rtype: :class:`tencentcloud.vclm.v20240523.models.DescribeImageToVideoJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeImageToVideoJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeImageToVideoJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeImageToVideoViduJob(self, request):
+        r"""查询Vidu图生视频任务接口
+
+        :param request: Request instance for DescribeImageToVideoViduJob.
+        :type request: :class:`tencentcloud.vclm.v20240523.models.DescribeImageToVideoViduJobRequest`
+        :rtype: :class:`tencentcloud.vclm.v20240523.models.DescribeImageToVideoViduJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeImageToVideoViduJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeImageToVideoViduJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeMotionControlKlingJob(self, request):
+        r"""查询Kling动作控制任务
+
+        :param request: Request instance for DescribeMotionControlKlingJob.
+        :type request: :class:`tencentcloud.vclm.v20240523.models.DescribeMotionControlKlingJobRequest`
+        :rtype: :class:`tencentcloud.vclm.v20240523.models.DescribeMotionControlKlingJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMotionControlKlingJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMotionControlKlingJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribePortraitSingJob(self, request):
         r"""用于查询图片唱演任务。
         支持提交音频和图片生成唱演视频，满足社交娱乐、互动营销等场景的需求。
@@ -179,6 +248,29 @@ class VclmClient(AbstractClient):
             body = self.call("DescribePortraitSingJob", params, headers=headers)
             response = json.loads(body)
             model = models.DescribePortraitSingJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeReferenceToVideoViduJob(self, request):
+        r"""查询Vidu参考生视频任务接口
+
+        :param request: Request instance for DescribeReferenceToVideoViduJob.
+        :type request: :class:`tencentcloud.vclm.v20240523.models.DescribeReferenceToVideoViduJobRequest`
+        :rtype: :class:`tencentcloud.vclm.v20240523.models.DescribeReferenceToVideoViduJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeReferenceToVideoViduJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeReferenceToVideoViduJobResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -211,6 +303,52 @@ class VclmClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeTextToVideoJob(self, request):
+        r"""用于查询文生视频任务。
+
+        :param request: Request instance for DescribeTextToVideoJob.
+        :type request: :class:`tencentcloud.vclm.v20240523.models.DescribeTextToVideoJobRequest`
+        :rtype: :class:`tencentcloud.vclm.v20240523.models.DescribeTextToVideoJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTextToVideoJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTextToVideoJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeTextToVideoViduJob(self, request):
+        r"""查询Vidu文生视频任务接口
+
+        :param request: Request instance for DescribeTextToVideoViduJob.
+        :type request: :class:`tencentcloud.vclm.v20240523.models.DescribeTextToVideoViduJobRequest`
+        :rtype: :class:`tencentcloud.vclm.v20240523.models.DescribeTextToVideoViduJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTextToVideoViduJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTextToVideoViduJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeVideoEditJob(self, request):
         r"""用于提交视频编辑任务，支持上传视频、文本及图片素材开展编辑操作，涵盖风格迁移、元素替换、内容增减等核心能力。
 
@@ -225,6 +363,52 @@ class VclmClient(AbstractClient):
             body = self.call("DescribeVideoEditJob", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeVideoEditJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeVideoEditKlingJob(self, request):
+        r"""查询Kling多模态编辑任务
+
+        :param request: Request instance for DescribeVideoEditKlingJob.
+        :type request: :class:`tencentcloud.vclm.v20240523.models.DescribeVideoEditKlingJobRequest`
+        :rtype: :class:`tencentcloud.vclm.v20240523.models.DescribeVideoEditKlingJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVideoEditKlingJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeVideoEditKlingJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeVideoExtendKlingJob(self, request):
+        r"""查询视频延长任务
+
+        :param request: Request instance for DescribeVideoExtendKlingJob.
+        :type request: :class:`tencentcloud.vclm.v20240523.models.DescribeVideoExtendKlingJobRequest`
+        :rtype: :class:`tencentcloud.vclm.v20240523.models.DescribeVideoExtendKlingJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVideoExtendKlingJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeVideoExtendKlingJobResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -421,6 +605,29 @@ class VclmClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def SubmitImageToVideoJob(self, request):
+        r"""提交视频特效任务接口
+
+        :param request: Request instance for SubmitImageToVideoJob.
+        :type request: :class:`tencentcloud.vclm.v20240523.models.SubmitImageToVideoJobRequest`
+        :rtype: :class:`tencentcloud.vclm.v20240523.models.SubmitImageToVideoJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SubmitImageToVideoJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.SubmitImageToVideoJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def SubmitImageToVideoViduJob(self, request):
         r"""提交Vidu图生视频任务接口
 
@@ -435,6 +642,29 @@ class VclmClient(AbstractClient):
             body = self.call("SubmitImageToVideoViduJob", params, headers=headers)
             response = json.loads(body)
             model = models.SubmitImageToVideoViduJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def SubmitMotionControlKlingJob(self, request):
+        r"""提交动作控制(Kling)任务并发
+
+        :param request: Request instance for SubmitMotionControlKlingJob.
+        :type request: :class:`tencentcloud.vclm.v20240523.models.SubmitMotionControlKlingJobRequest`
+        :rtype: :class:`tencentcloud.vclm.v20240523.models.SubmitMotionControlKlingJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SubmitMotionControlKlingJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.SubmitMotionControlKlingJobResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -468,6 +698,29 @@ class VclmClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def SubmitReferenceToVideoViduJob(self, request):
+        r"""提交Vidu参考生视频任务接口
+
+        :param request: Request instance for SubmitReferenceToVideoViduJob.
+        :type request: :class:`tencentcloud.vclm.v20240523.models.SubmitReferenceToVideoViduJobRequest`
+        :rtype: :class:`tencentcloud.vclm.v20240523.models.SubmitReferenceToVideoViduJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SubmitReferenceToVideoViduJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.SubmitReferenceToVideoViduJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def SubmitTemplateToVideoJob(self, request):
         r"""提交视频特效任务接口
 
@@ -491,6 +744,52 @@ class VclmClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def SubmitTextToVideoJob(self, request):
+        r"""通过提交对视频内容的描述文本生成一个短视频。文生视频为异步处理任务，成功提交任务后返回任务的JobId。
+
+        :param request: Request instance for SubmitTextToVideoJob.
+        :type request: :class:`tencentcloud.vclm.v20240523.models.SubmitTextToVideoJobRequest`
+        :rtype: :class:`tencentcloud.vclm.v20240523.models.SubmitTextToVideoJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SubmitTextToVideoJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.SubmitTextToVideoJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def SubmitTextToVideoViduJob(self, request):
+        r"""提交Vidu文生视频任务接口
+
+        :param request: Request instance for SubmitTextToVideoViduJob.
+        :type request: :class:`tencentcloud.vclm.v20240523.models.SubmitTextToVideoViduJobRequest`
+        :rtype: :class:`tencentcloud.vclm.v20240523.models.SubmitTextToVideoViduJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SubmitTextToVideoViduJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.SubmitTextToVideoViduJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def SubmitVideoEditJob(self, request):
         r"""用于提交视频编辑任务，支持上传视频、文本及图片素材开展编辑操作，涵盖风格迁移、元素替换、内容增减等核心能力。
 
@@ -505,6 +804,52 @@ class VclmClient(AbstractClient):
             body = self.call("SubmitVideoEditJob", params, headers=headers)
             response = json.loads(body)
             model = models.SubmitVideoEditJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def SubmitVideoEditKlingJob(self, request):
+        r"""提交Kling多模态编辑任务
+
+        :param request: Request instance for SubmitVideoEditKlingJob.
+        :type request: :class:`tencentcloud.vclm.v20240523.models.SubmitVideoEditKlingJobRequest`
+        :rtype: :class:`tencentcloud.vclm.v20240523.models.SubmitVideoEditKlingJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SubmitVideoEditKlingJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.SubmitVideoEditKlingJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def SubmitVideoExtendKlingJob(self, request):
+        r"""用于提交视频延长任务接口。
+
+        :param request: Request instance for SubmitVideoExtendKlingJob.
+        :type request: :class:`tencentcloud.vclm.v20240523.models.SubmitVideoExtendKlingJobRequest`
+        :rtype: :class:`tencentcloud.vclm.v20240523.models.SubmitVideoExtendKlingJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SubmitVideoExtendKlingJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.SubmitVideoExtendKlingJobResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

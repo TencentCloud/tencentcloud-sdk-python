@@ -417,6 +417,52 @@ class TcbrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def StartVersionInstance(self, request):
+        r"""启动版本实例
+
+        :param request: Request instance for StartVersionInstance.
+        :type request: :class:`tencentcloud.tcbr.v20220217.models.StartVersionInstanceRequest`
+        :rtype: :class:`tencentcloud.tcbr.v20220217.models.StartVersionInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StartVersionInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.StartVersionInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def StopVersionInstance(self, request):
+        r"""停止版本实例
+
+        :param request: Request instance for StopVersionInstance.
+        :type request: :class:`tencentcloud.tcbr.v20220217.models.StopVersionInstanceRequest`
+        :rtype: :class:`tencentcloud.tcbr.v20220217.models.StopVersionInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StopVersionInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.StopVersionInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def SubmitServerRollback(self, request):
         r"""回滚版本
 

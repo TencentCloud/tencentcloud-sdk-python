@@ -6739,6 +6739,24 @@ class VpcClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyNatGatewayAdvancedAttribute(
+            self,
+            request: models.ModifyNatGatewayAdvancedAttributeRequest,
+            opts: Dict = None,
+    ) -> models.ModifyNatGatewayAdvancedAttributeResponse:
+        """
+        本接口（ModifyNatGatewayAdvancedAttribute）用于修改NAT网关的高级属性。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyNatGatewayAdvancedAttribute"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyNatGatewayAdvancedAttributeResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyNatGatewayAttribute(
             self,
             request: models.ModifyNatGatewayAttributeRequest,

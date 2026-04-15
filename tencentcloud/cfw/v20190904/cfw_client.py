@@ -1293,6 +1293,29 @@ class CfwClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeNDRAssetIdentificationList(self, request):
+        r"""DescribeNDRAssetIdentificationList - 获取NDR资产识别结果列表
+
+        :param request: Request instance for DescribeNDRAssetIdentificationList.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeNDRAssetIdentificationListRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.DescribeNDRAssetIdentificationListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeNDRAssetIdentificationList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeNDRAssetIdentificationListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeNatAcRule(self, request):
         r"""查询NAT访问控制列表
 

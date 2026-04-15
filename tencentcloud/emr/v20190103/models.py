@@ -7996,6 +7996,213 @@ class DescribeAutoScaleStrategiesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeBootScriptRequest(AbstractModel):
+    r"""DescribeBootScript请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: EMR实例序列号
+        :type InstanceId: str
+        :param _BootType: 引导脚本类型，resourceAfter,clusterAfter,clusterBefore不填时表示全部时机
+        :type BootType: str
+        """
+        self._InstanceId = None
+        self._BootType = None
+
+    @property
+    def InstanceId(self):
+        r"""EMR实例序列号
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def BootType(self):
+        r"""引导脚本类型，resourceAfter,clusterAfter,clusterBefore不填时表示全部时机
+        :rtype: str
+        """
+        return self._BootType
+
+    @BootType.setter
+    def BootType(self, BootType):
+        self._BootType = BootType
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._BootType = params.get("BootType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBootScriptResponse(AbstractModel):
+    r"""DescribeBootScript返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Detail: 引导脚本详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Detail: :class:`tencentcloud.emr.v20190103.models.DescribeBootScriptRsp`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Detail = None
+        self._RequestId = None
+
+    @property
+    def Detail(self):
+        r"""引导脚本详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.emr.v20190103.models.DescribeBootScriptRsp`
+        """
+        return self._Detail
+
+    @Detail.setter
+    def Detail(self, Detail):
+        self._Detail = Detail
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Detail") is not None:
+            self._Detail = DescribeBootScriptRsp()
+            self._Detail._deserialize(params.get("Detail"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeBootScriptRsp(AbstractModel):
+    r"""引导脚本回包
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceAfter: 资源初始化结束自定义脚本文件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceAfter: list of PreExecuteFileSetting
+        :param _ClusterBefore: 集群启动前自定义脚本文件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterBefore: list of PreExecuteFileSetting
+        :param _ClusterAfter: 集群启动后自定义脚本文件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterAfter: list of PreExecuteFileSetting
+        :param _ServiceBefore: 服务下线前自定义脚本
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceBefore: list of PreExecuteFileSetting
+        """
+        self._ResourceAfter = None
+        self._ClusterBefore = None
+        self._ClusterAfter = None
+        self._ServiceBefore = None
+
+    @property
+    def ResourceAfter(self):
+        r"""资源初始化结束自定义脚本文件
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of PreExecuteFileSetting
+        """
+        return self._ResourceAfter
+
+    @ResourceAfter.setter
+    def ResourceAfter(self, ResourceAfter):
+        self._ResourceAfter = ResourceAfter
+
+    @property
+    def ClusterBefore(self):
+        r"""集群启动前自定义脚本文件
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of PreExecuteFileSetting
+        """
+        return self._ClusterBefore
+
+    @ClusterBefore.setter
+    def ClusterBefore(self, ClusterBefore):
+        self._ClusterBefore = ClusterBefore
+
+    @property
+    def ClusterAfter(self):
+        r"""集群启动后自定义脚本文件
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of PreExecuteFileSetting
+        """
+        return self._ClusterAfter
+
+    @ClusterAfter.setter
+    def ClusterAfter(self, ClusterAfter):
+        self._ClusterAfter = ClusterAfter
+
+    @property
+    def ServiceBefore(self):
+        r"""服务下线前自定义脚本
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of PreExecuteFileSetting
+        """
+        return self._ServiceBefore
+
+    @ServiceBefore.setter
+    def ServiceBefore(self, ServiceBefore):
+        self._ServiceBefore = ServiceBefore
+
+
+    def _deserialize(self, params):
+        if params.get("ResourceAfter") is not None:
+            self._ResourceAfter = []
+            for item in params.get("ResourceAfter"):
+                obj = PreExecuteFileSetting()
+                obj._deserialize(item)
+                self._ResourceAfter.append(obj)
+        if params.get("ClusterBefore") is not None:
+            self._ClusterBefore = []
+            for item in params.get("ClusterBefore"):
+                obj = PreExecuteFileSetting()
+                obj._deserialize(item)
+                self._ClusterBefore.append(obj)
+        if params.get("ClusterAfter") is not None:
+            self._ClusterAfter = []
+            for item in params.get("ClusterAfter"):
+                obj = PreExecuteFileSetting()
+                obj._deserialize(item)
+                self._ClusterAfter.append(obj)
+        if params.get("ServiceBefore") is not None:
+            self._ServiceBefore = []
+            for item in params.get("ServiceBefore"):
+                obj = PreExecuteFileSetting()
+                obj._deserialize(item)
+                self._ServiceBefore.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DescribeClusterFlowStatusDetailRequest(AbstractModel):
     r"""DescribeClusterFlowStatusDetail请求参数结构体
 
@@ -23206,6 +23413,105 @@ class ModifyAutoScaleStrategyResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyBootScriptRequest(AbstractModel):
+    r"""ModifyBootScript请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: EMR实例Id
+        :type InstanceId: str
+        :param _BootType: 引导脚本类型,resourceAfter,clusterAfter,clusterBefore
+        :type BootType: str
+        :param _PreExecutedFileSettings: 引导脚本的具体变更，如为空表示WhenRun时机无引导脚本
+        :type PreExecutedFileSettings: list of PreExecuteFileSetting
+        """
+        self._InstanceId = None
+        self._BootType = None
+        self._PreExecutedFileSettings = None
+
+    @property
+    def InstanceId(self):
+        r"""EMR实例Id
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def BootType(self):
+        r"""引导脚本类型,resourceAfter,clusterAfter,clusterBefore
+        :rtype: str
+        """
+        return self._BootType
+
+    @BootType.setter
+    def BootType(self, BootType):
+        self._BootType = BootType
+
+    @property
+    def PreExecutedFileSettings(self):
+        r"""引导脚本的具体变更，如为空表示WhenRun时机无引导脚本
+        :rtype: list of PreExecuteFileSetting
+        """
+        return self._PreExecutedFileSettings
+
+    @PreExecutedFileSettings.setter
+    def PreExecutedFileSettings(self, PreExecutedFileSettings):
+        self._PreExecutedFileSettings = PreExecutedFileSettings
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._BootType = params.get("BootType")
+        if params.get("PreExecutedFileSettings") is not None:
+            self._PreExecutedFileSettings = []
+            for item in params.get("PreExecutedFileSettings"):
+                obj = PreExecuteFileSetting()
+                obj._deserialize(item)
+                self._PreExecutedFileSettings.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyBootScriptResponse(AbstractModel):
+    r"""ModifyBootScript返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyGlobalConfigRequest(AbstractModel):
     r"""ModifyGlobalConfig请求参数结构体
 
@@ -30671,6 +30977,222 @@ class PodVolume(AbstractModel):
         if params.get("HostVolume") is not None:
             self._HostVolume = HostVolumeContext()
             self._HostVolume._deserialize(params.get("HostVolume"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PreExecuteFileSetting(AbstractModel):
+    r"""预执行脚本配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Path: 脚本在COS上路径
+        :type Path: str
+        :param _Args: 执行脚本参数
+        :type Args: str
+        :param _Bucket: COS的Bucket名称
+        :type Bucket: str
+        :param _Region: COS的Region名称
+        :type Region: str
+        :param _Domain: COS的Domain数据
+        :type Domain: str
+        :param _RunOrder: 执行顺序
+        :type RunOrder: int
+        :param _WhenRun: resourceAfter 或 clusterAfter
+        :type WhenRun: str
+        :param _CosFileName: 脚本文件名
+        :type CosFileName: str
+        :param _CosFileURI: 脚本的cos地址
+        :type CosFileURI: str
+        :param _CosSecretId: cos的SecretId
+        :type CosSecretId: str
+        :param _CosSecretKey: Cos的SecretKey
+        :type CosSecretKey: str
+        :param _AppId: cos的appid
+        :type AppId: str
+        :param _Remark: 备注
+        :type Remark: str
+        """
+        self._Path = None
+        self._Args = None
+        self._Bucket = None
+        self._Region = None
+        self._Domain = None
+        self._RunOrder = None
+        self._WhenRun = None
+        self._CosFileName = None
+        self._CosFileURI = None
+        self._CosSecretId = None
+        self._CosSecretKey = None
+        self._AppId = None
+        self._Remark = None
+
+    @property
+    def Path(self):
+        r"""脚本在COS上路径
+        :rtype: str
+        """
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+    @property
+    def Args(self):
+        r"""执行脚本参数
+        :rtype: str
+        """
+        return self._Args
+
+    @Args.setter
+    def Args(self, Args):
+        self._Args = Args
+
+    @property
+    def Bucket(self):
+        r"""COS的Bucket名称
+        :rtype: str
+        """
+        return self._Bucket
+
+    @Bucket.setter
+    def Bucket(self, Bucket):
+        self._Bucket = Bucket
+
+    @property
+    def Region(self):
+        r"""COS的Region名称
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Domain(self):
+        r"""COS的Domain数据
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def RunOrder(self):
+        r"""执行顺序
+        :rtype: int
+        """
+        return self._RunOrder
+
+    @RunOrder.setter
+    def RunOrder(self, RunOrder):
+        self._RunOrder = RunOrder
+
+    @property
+    def WhenRun(self):
+        r"""resourceAfter 或 clusterAfter
+        :rtype: str
+        """
+        return self._WhenRun
+
+    @WhenRun.setter
+    def WhenRun(self, WhenRun):
+        self._WhenRun = WhenRun
+
+    @property
+    def CosFileName(self):
+        r"""脚本文件名
+        :rtype: str
+        """
+        return self._CosFileName
+
+    @CosFileName.setter
+    def CosFileName(self, CosFileName):
+        self._CosFileName = CosFileName
+
+    @property
+    def CosFileURI(self):
+        r"""脚本的cos地址
+        :rtype: str
+        """
+        return self._CosFileURI
+
+    @CosFileURI.setter
+    def CosFileURI(self, CosFileURI):
+        self._CosFileURI = CosFileURI
+
+    @property
+    def CosSecretId(self):
+        r"""cos的SecretId
+        :rtype: str
+        """
+        return self._CosSecretId
+
+    @CosSecretId.setter
+    def CosSecretId(self, CosSecretId):
+        self._CosSecretId = CosSecretId
+
+    @property
+    def CosSecretKey(self):
+        r"""Cos的SecretKey
+        :rtype: str
+        """
+        return self._CosSecretKey
+
+    @CosSecretKey.setter
+    def CosSecretKey(self, CosSecretKey):
+        self._CosSecretKey = CosSecretKey
+
+    @property
+    def AppId(self):
+        r"""cos的appid
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def Remark(self):
+        r"""备注
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+
+    def _deserialize(self, params):
+        self._Path = params.get("Path")
+        self._Args = params.get("Args")
+        self._Bucket = params.get("Bucket")
+        self._Region = params.get("Region")
+        self._Domain = params.get("Domain")
+        self._RunOrder = params.get("RunOrder")
+        self._WhenRun = params.get("WhenRun")
+        self._CosFileName = params.get("CosFileName")
+        self._CosFileURI = params.get("CosFileURI")
+        self._CosSecretId = params.get("CosSecretId")
+        self._CosSecretKey = params.get("CosSecretKey")
+        self._AppId = params.get("AppId")
+        self._Remark = params.get("Remark")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

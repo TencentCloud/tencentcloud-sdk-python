@@ -98,7 +98,7 @@ class ClsClient(AbstractClient):
     def ChatCompletions(self, request):
         r"""调用接口，发起一次对话请求。
         本接口支持智能生成检索分析语句等日志服务AI功能。
-        ⚠️注意：通过SSE流式调用此接口时，请务必设置请求域名（Endpoint）为 cls.ai.tencentcloudapi.com。
+        ⚠️注意：通过SSE流式调用此接口时，请务必设置请求域名（Endpoint）为 cls.ai.tencentcloudapi.com (VPC内网环境可配置 cls.ai.internal.tencentcloudapi.com）。
 
         :param request: Request instance for ChatCompletions.
         :type request: :class:`tencentcloud.cls.v20201016.models.ChatCompletionsRequest`

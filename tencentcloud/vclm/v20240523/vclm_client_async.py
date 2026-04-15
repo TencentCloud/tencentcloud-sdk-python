@@ -133,6 +133,60 @@ class VclmClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeImageToVideoJob(
+            self,
+            request: models.DescribeImageToVideoJobRequest,
+            opts: Dict = None,
+    ) -> models.DescribeImageToVideoJobResponse:
+        """
+        用于查询视频特效任务。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeImageToVideoJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeImageToVideoJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeImageToVideoViduJob(
+            self,
+            request: models.DescribeImageToVideoViduJobRequest,
+            opts: Dict = None,
+    ) -> models.DescribeImageToVideoViduJobResponse:
+        """
+        查询Vidu图生视频任务接口
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeImageToVideoViduJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeImageToVideoViduJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeMotionControlKlingJob(
+            self,
+            request: models.DescribeMotionControlKlingJobRequest,
+            opts: Dict = None,
+    ) -> models.DescribeMotionControlKlingJobResponse:
+        """
+        查询Kling动作控制任务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeMotionControlKlingJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeMotionControlKlingJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribePortraitSingJob(
             self,
             request: models.DescribePortraitSingJobRequest,
@@ -147,6 +201,24 @@ class VclmClient(AbstractClient):
         kwargs["action"] = "DescribePortraitSingJob"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribePortraitSingJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeReferenceToVideoViduJob(
+            self,
+            request: models.DescribeReferenceToVideoViduJobRequest,
+            opts: Dict = None,
+    ) -> models.DescribeReferenceToVideoViduJobResponse:
+        """
+        查询Vidu参考生视频任务接口
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeReferenceToVideoViduJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeReferenceToVideoViduJobResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -170,6 +242,42 @@ class VclmClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeTextToVideoJob(
+            self,
+            request: models.DescribeTextToVideoJobRequest,
+            opts: Dict = None,
+    ) -> models.DescribeTextToVideoJobResponse:
+        """
+        用于查询文生视频任务。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeTextToVideoJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeTextToVideoJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeTextToVideoViduJob(
+            self,
+            request: models.DescribeTextToVideoViduJobRequest,
+            opts: Dict = None,
+    ) -> models.DescribeTextToVideoViduJobResponse:
+        """
+        查询Vidu文生视频任务接口
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeTextToVideoViduJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeTextToVideoViduJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeVideoEditJob(
             self,
             request: models.DescribeVideoEditJobRequest,
@@ -183,6 +291,42 @@ class VclmClient(AbstractClient):
         kwargs["action"] = "DescribeVideoEditJob"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeVideoEditJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeVideoEditKlingJob(
+            self,
+            request: models.DescribeVideoEditKlingJobRequest,
+            opts: Dict = None,
+    ) -> models.DescribeVideoEditKlingJobResponse:
+        """
+        查询Kling多模态编辑任务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeVideoEditKlingJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeVideoEditKlingJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeVideoExtendKlingJob(
+            self,
+            request: models.DescribeVideoExtendKlingJobRequest,
+            opts: Dict = None,
+    ) -> models.DescribeVideoExtendKlingJobResponse:
+        """
+        查询视频延长任务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeVideoExtendKlingJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeVideoExtendKlingJobResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -335,6 +479,24 @@ class VclmClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def SubmitImageToVideoJob(
+            self,
+            request: models.SubmitImageToVideoJobRequest,
+            opts: Dict = None,
+    ) -> models.SubmitImageToVideoJobResponse:
+        """
+        提交视频特效任务接口
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "SubmitImageToVideoJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.SubmitImageToVideoJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def SubmitImageToVideoViduJob(
             self,
             request: models.SubmitImageToVideoViduJobRequest,
@@ -348,6 +510,24 @@ class VclmClient(AbstractClient):
         kwargs["action"] = "SubmitImageToVideoViduJob"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.SubmitImageToVideoViduJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def SubmitMotionControlKlingJob(
+            self,
+            request: models.SubmitMotionControlKlingJobRequest,
+            opts: Dict = None,
+    ) -> models.SubmitMotionControlKlingJobResponse:
+        """
+        提交动作控制(Kling)任务并发
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "SubmitMotionControlKlingJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.SubmitMotionControlKlingJobResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -372,6 +552,24 @@ class VclmClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def SubmitReferenceToVideoViduJob(
+            self,
+            request: models.SubmitReferenceToVideoViduJobRequest,
+            opts: Dict = None,
+    ) -> models.SubmitReferenceToVideoViduJobResponse:
+        """
+        提交Vidu参考生视频任务接口
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "SubmitReferenceToVideoViduJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.SubmitReferenceToVideoViduJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def SubmitTemplateToVideoJob(
             self,
             request: models.SubmitTemplateToVideoJobRequest,
@@ -390,6 +588,42 @@ class VclmClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def SubmitTextToVideoJob(
+            self,
+            request: models.SubmitTextToVideoJobRequest,
+            opts: Dict = None,
+    ) -> models.SubmitTextToVideoJobResponse:
+        """
+        通过提交对视频内容的描述文本生成一个短视频。文生视频为异步处理任务，成功提交任务后返回任务的JobId。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "SubmitTextToVideoJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.SubmitTextToVideoJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def SubmitTextToVideoViduJob(
+            self,
+            request: models.SubmitTextToVideoViduJobRequest,
+            opts: Dict = None,
+    ) -> models.SubmitTextToVideoViduJobResponse:
+        """
+        提交Vidu文生视频任务接口
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "SubmitTextToVideoViduJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.SubmitTextToVideoViduJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def SubmitVideoEditJob(
             self,
             request: models.SubmitVideoEditJobRequest,
@@ -403,6 +637,42 @@ class VclmClient(AbstractClient):
         kwargs["action"] = "SubmitVideoEditJob"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.SubmitVideoEditJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def SubmitVideoEditKlingJob(
+            self,
+            request: models.SubmitVideoEditKlingJobRequest,
+            opts: Dict = None,
+    ) -> models.SubmitVideoEditKlingJobResponse:
+        """
+        提交Kling多模态编辑任务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "SubmitVideoEditKlingJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.SubmitVideoEditKlingJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def SubmitVideoExtendKlingJob(
+            self,
+            request: models.SubmitVideoExtendKlingJobRequest,
+            opts: Dict = None,
+    ) -> models.SubmitVideoExtendKlingJobResponse:
+        """
+        用于提交视频延长任务接口。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "SubmitVideoExtendKlingJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.SubmitVideoExtendKlingJobResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

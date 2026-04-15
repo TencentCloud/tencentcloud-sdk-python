@@ -12673,36 +12673,38 @@ class IndicatorItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Code: 英文缩写
+        :param _Code: <p>英文缩写</p>
         :type Code: str
-        :param _Scode: 标准缩写
+        :param _Scode: <p>标准缩写</p>
         :type Scode: str
-        :param _Name: 项目名称
+        :param _Name: <p>项目名称</p>
         :type Name: str
-        :param _Sname: 标准名
+        :param _Sname: <p>标准名</p>
         :type Sname: str
-        :param _Result: 结果
+        :param _Result: <p>结果</p>
         :type Result: str
-        :param _Unit: 单位
+        :param _Unit: <p>单位</p>
         :type Unit: str
-        :param _Range: 参考范围
+        :param _Range: <p>参考范围</p>
         :type Range: str
-        :param _Arrow: 上下箭头
+        :param _Arrow: <p>上下箭头</p>
         :type Arrow: str
-        :param _Normal: 是否正常
+        :param _Normal: <p>是否正常</p>
         :type Normal: bool
-        :param _ItemString: 项目原文
+        :param _ItemString: <p>项目原文</p>
         :type ItemString: str
-        :param _Id: 指标项ID
+        :param _Id: <p>指标项ID</p>
         :type Id: int
-        :param _Coords: 指标项坐标位置
+        :param _Coords: <p>指标项坐标位置</p>
         :type Coords: :class:`tencentcloud.mrs.v20200910.models.Coordinate`
-        :param _InferNormal: 推测结果是否异常
+        :param _InferNormal: <p>推测结果是否异常</p>
         :type InferNormal: str
-        :param _Sample: 标本
+        :param _Sample: <p>标本</p>
         :type Sample: str
-        :param _Method: 检测方法
+        :param _Method: <p>检测方法</p>
         :type Method: str
+        :param _ItemCoords: <p>检验指标项坐标信息</p>
+        :type ItemCoords: :class:`tencentcloud.mrs.v20200910.models.ItemCoordinate`
         """
         self._Code = None
         self._Scode = None
@@ -12719,10 +12721,11 @@ class IndicatorItem(AbstractModel):
         self._InferNormal = None
         self._Sample = None
         self._Method = None
+        self._ItemCoords = None
 
     @property
     def Code(self):
-        r"""英文缩写
+        r"""<p>英文缩写</p>
         :rtype: str
         """
         return self._Code
@@ -12733,7 +12736,7 @@ class IndicatorItem(AbstractModel):
 
     @property
     def Scode(self):
-        r"""标准缩写
+        r"""<p>标准缩写</p>
         :rtype: str
         """
         return self._Scode
@@ -12744,7 +12747,7 @@ class IndicatorItem(AbstractModel):
 
     @property
     def Name(self):
-        r"""项目名称
+        r"""<p>项目名称</p>
         :rtype: str
         """
         return self._Name
@@ -12755,7 +12758,7 @@ class IndicatorItem(AbstractModel):
 
     @property
     def Sname(self):
-        r"""标准名
+        r"""<p>标准名</p>
         :rtype: str
         """
         return self._Sname
@@ -12766,7 +12769,7 @@ class IndicatorItem(AbstractModel):
 
     @property
     def Result(self):
-        r"""结果
+        r"""<p>结果</p>
         :rtype: str
         """
         return self._Result
@@ -12777,7 +12780,7 @@ class IndicatorItem(AbstractModel):
 
     @property
     def Unit(self):
-        r"""单位
+        r"""<p>单位</p>
         :rtype: str
         """
         return self._Unit
@@ -12788,7 +12791,7 @@ class IndicatorItem(AbstractModel):
 
     @property
     def Range(self):
-        r"""参考范围
+        r"""<p>参考范围</p>
         :rtype: str
         """
         return self._Range
@@ -12799,7 +12802,7 @@ class IndicatorItem(AbstractModel):
 
     @property
     def Arrow(self):
-        r"""上下箭头
+        r"""<p>上下箭头</p>
         :rtype: str
         """
         return self._Arrow
@@ -12810,7 +12813,7 @@ class IndicatorItem(AbstractModel):
 
     @property
     def Normal(self):
-        r"""是否正常
+        r"""<p>是否正常</p>
         :rtype: bool
         """
         return self._Normal
@@ -12821,7 +12824,7 @@ class IndicatorItem(AbstractModel):
 
     @property
     def ItemString(self):
-        r"""项目原文
+        r"""<p>项目原文</p>
         :rtype: str
         """
         return self._ItemString
@@ -12832,7 +12835,7 @@ class IndicatorItem(AbstractModel):
 
     @property
     def Id(self):
-        r"""指标项ID
+        r"""<p>指标项ID</p>
         :rtype: int
         """
         return self._Id
@@ -12843,18 +12846,22 @@ class IndicatorItem(AbstractModel):
 
     @property
     def Coords(self):
-        r"""指标项坐标位置
+        warnings.warn("parameter `Coords` is deprecated", DeprecationWarning) 
+
+        r"""<p>指标项坐标位置</p>
         :rtype: :class:`tencentcloud.mrs.v20200910.models.Coordinate`
         """
         return self._Coords
 
     @Coords.setter
     def Coords(self, Coords):
+        warnings.warn("parameter `Coords` is deprecated", DeprecationWarning) 
+
         self._Coords = Coords
 
     @property
     def InferNormal(self):
-        r"""推测结果是否异常
+        r"""<p>推测结果是否异常</p>
         :rtype: str
         """
         return self._InferNormal
@@ -12865,7 +12872,7 @@ class IndicatorItem(AbstractModel):
 
     @property
     def Sample(self):
-        r"""标本
+        r"""<p>标本</p>
         :rtype: str
         """
         return self._Sample
@@ -12876,7 +12883,7 @@ class IndicatorItem(AbstractModel):
 
     @property
     def Method(self):
-        r"""检测方法
+        r"""<p>检测方法</p>
         :rtype: str
         """
         return self._Method
@@ -12884,6 +12891,17 @@ class IndicatorItem(AbstractModel):
     @Method.setter
     def Method(self, Method):
         self._Method = Method
+
+    @property
+    def ItemCoords(self):
+        r"""<p>检验指标项坐标信息</p>
+        :rtype: :class:`tencentcloud.mrs.v20200910.models.ItemCoordinate`
+        """
+        return self._ItemCoords
+
+    @ItemCoords.setter
+    def ItemCoords(self, ItemCoords):
+        self._ItemCoords = ItemCoords
 
 
     def _deserialize(self, params):
@@ -12904,6 +12922,9 @@ class IndicatorItem(AbstractModel):
         self._InferNormal = params.get("InferNormal")
         self._Sample = params.get("Sample")
         self._Method = params.get("Method")
+        if params.get("ItemCoords") is not None:
+            self._ItemCoords = ItemCoordinate()
+            self._ItemCoords._deserialize(params.get("ItemCoords"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14645,6 +14666,78 @@ class IssueInfo(AbstractModel):
         self._CertNumber = params.get("CertNumber")
         self._IssuedAuthority = params.get("IssuedAuthority")
         self._IssuedDate = params.get("IssuedDate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ItemCoordinate(AbstractModel):
+    r"""检验指标内容坐标
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>指标项名称坐标</p>
+        :type Name: :class:`tencentcloud.mrs.v20200910.models.Coordinate`
+        :param _Result: <p>指标结果称坐标</p>
+        :type Result: :class:`tencentcloud.mrs.v20200910.models.Coordinate`
+        :param _Range: <p>指标项范围坐标</p>
+        :type Range: :class:`tencentcloud.mrs.v20200910.models.Coordinate`
+        """
+        self._Name = None
+        self._Result = None
+        self._Range = None
+
+    @property
+    def Name(self):
+        r"""<p>指标项名称坐标</p>
+        :rtype: :class:`tencentcloud.mrs.v20200910.models.Coordinate`
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Result(self):
+        r"""<p>指标结果称坐标</p>
+        :rtype: :class:`tencentcloud.mrs.v20200910.models.Coordinate`
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def Range(self):
+        r"""<p>指标项范围坐标</p>
+        :rtype: :class:`tencentcloud.mrs.v20200910.models.Coordinate`
+        """
+        return self._Range
+
+    @Range.setter
+    def Range(self, Range):
+        self._Range = Range
+
+
+    def _deserialize(self, params):
+        if params.get("Name") is not None:
+            self._Name = Coordinate()
+            self._Name._deserialize(params.get("Name"))
+        if params.get("Result") is not None:
+            self._Result = Coordinate()
+            self._Result._deserialize(params.get("Result"))
+        if params.get("Range") is not None:
+            self._Range = Coordinate()
+            self._Range._deserialize(params.get("Range"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -443,6 +443,29 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeBootScript(self, request):
+        r"""获取引导脚本
+
+        :param request: Request instance for DescribeBootScript.
+        :type request: :class:`tencentcloud.emr.v20190103.models.DescribeBootScriptRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.DescribeBootScriptResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBootScript", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBootScriptResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeClusterFlowStatusDetail(self, request):
         r"""查询EMR任务运行详情状态
 
@@ -1517,6 +1540,29 @@ class EmrClient(AbstractClient):
             body = self.call("ModifyAutoScaleStrategy", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyAutoScaleStrategyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyBootScript(self, request):
+        r"""修改引导脚本
+
+        :param request: Request instance for ModifyBootScript.
+        :type request: :class:`tencentcloud.emr.v20190103.models.ModifyBootScriptRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.ModifyBootScriptResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyBootScript", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyBootScriptResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

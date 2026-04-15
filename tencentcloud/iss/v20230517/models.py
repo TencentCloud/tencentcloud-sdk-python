@@ -1606,20 +1606,22 @@ class AddRecordBackupTemplateData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TemplateId: 模板ID
+        :param _TemplateId: <p>模板ID</p>
         :type TemplateId: str
-        :param _TemplateName: 模板名称
+        :param _TemplateName: <p>模板名称</p>
         :type TemplateName: str
-        :param _TimeSections: 上云时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）
+        :param _TimeSections: <p>上云时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）</p>
         :type TimeSections: list of RecordTemplateTimeSections
-        :param _DevTimeSections: 录像时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）
+        :param _DevTimeSections: <p>录像时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）</p>
         :type DevTimeSections: list of RecordTemplateTimeSections
-        :param _Scale: 上云倍速（支持1，2，4倍速）
+        :param _Scale: <p>上云倍速（支持1，2，4倍速）</p>
         :type Scale: int
-        :param _CreateAt: 创建时间
+        :param _CreateAt: <p>创建时间</p>
         :type CreateAt: str
-        :param _UpdateAt: 更新时间
+        :param _UpdateAt: <p>更新时间</p>
         :type UpdateAt: str
+        :param _DayOffset: <p>周期偏移量，默认1，表示拉取昨天的设备录像，0表示取去今天的设备录像，3表示拉取前天的设备录像</p><p>默认值：1</p>
+        :type DayOffset: int
         """
         self._TemplateId = None
         self._TemplateName = None
@@ -1628,10 +1630,11 @@ class AddRecordBackupTemplateData(AbstractModel):
         self._Scale = None
         self._CreateAt = None
         self._UpdateAt = None
+        self._DayOffset = None
 
     @property
     def TemplateId(self):
-        r"""模板ID
+        r"""<p>模板ID</p>
         :rtype: str
         """
         return self._TemplateId
@@ -1642,7 +1645,7 @@ class AddRecordBackupTemplateData(AbstractModel):
 
     @property
     def TemplateName(self):
-        r"""模板名称
+        r"""<p>模板名称</p>
         :rtype: str
         """
         return self._TemplateName
@@ -1653,7 +1656,7 @@ class AddRecordBackupTemplateData(AbstractModel):
 
     @property
     def TimeSections(self):
-        r"""上云时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）
+        r"""<p>上云时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）</p>
         :rtype: list of RecordTemplateTimeSections
         """
         return self._TimeSections
@@ -1664,7 +1667,7 @@ class AddRecordBackupTemplateData(AbstractModel):
 
     @property
     def DevTimeSections(self):
-        r"""录像时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）
+        r"""<p>录像时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）</p>
         :rtype: list of RecordTemplateTimeSections
         """
         return self._DevTimeSections
@@ -1675,7 +1678,7 @@ class AddRecordBackupTemplateData(AbstractModel):
 
     @property
     def Scale(self):
-        r"""上云倍速（支持1，2，4倍速）
+        r"""<p>上云倍速（支持1，2，4倍速）</p>
         :rtype: int
         """
         return self._Scale
@@ -1686,7 +1689,7 @@ class AddRecordBackupTemplateData(AbstractModel):
 
     @property
     def CreateAt(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
         :rtype: str
         """
         return self._CreateAt
@@ -1697,7 +1700,7 @@ class AddRecordBackupTemplateData(AbstractModel):
 
     @property
     def UpdateAt(self):
-        r"""更新时间
+        r"""<p>更新时间</p>
         :rtype: str
         """
         return self._UpdateAt
@@ -1705,6 +1708,17 @@ class AddRecordBackupTemplateData(AbstractModel):
     @UpdateAt.setter
     def UpdateAt(self, UpdateAt):
         self._UpdateAt = UpdateAt
+
+    @property
+    def DayOffset(self):
+        r"""<p>周期偏移量，默认1，表示拉取昨天的设备录像，0表示取去今天的设备录像，3表示拉取前天的设备录像</p><p>默认值：1</p>
+        :rtype: int
+        """
+        return self._DayOffset
+
+    @DayOffset.setter
+    def DayOffset(self, DayOffset):
+        self._DayOffset = DayOffset
 
 
     def _deserialize(self, params):
@@ -1725,6 +1739,7 @@ class AddRecordBackupTemplateData(AbstractModel):
         self._Scale = params.get("Scale")
         self._CreateAt = params.get("CreateAt")
         self._UpdateAt = params.get("UpdateAt")
+        self._DayOffset = params.get("DayOffset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1742,23 +1757,26 @@ class AddRecordBackupTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TemplateName: 模板名称（仅支持中文、英文、数字、_、-，长度不超过32个字符，模板名称全局唯一，不能为空，不能重复）
+        :param _TemplateName: <p>模板名称（仅支持中文、英文、数字、_、-，长度不超过32个字符，模板名称全局唯一，不能为空，不能重复）</p>
         :type TemplateName: str
-        :param _TimeSections: 上云时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）
+        :param _TimeSections: <p>上云时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）</p>
         :type TimeSections: list of RecordTemplateTimeSections
-        :param _DevTimeSections: 录像时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）
+        :param _DevTimeSections: <p>录像时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）</p>
         :type DevTimeSections: list of RecordTemplateTimeSections
-        :param _Scale: 上云倍速（支持1，2，4倍速）
+        :param _Scale: <p>上云倍速（支持1，2，4倍速）</p>
         :type Scale: int
+        :param _DayOffset: <p>周期偏移量，默认1，表示拉取昨天的设备录像，0表示取去今天的设备录像，3表示拉取前天的设备录像</p><p>取值范围：[0, 90]</p><p>默认值：1</p>
+        :type DayOffset: int
         """
         self._TemplateName = None
         self._TimeSections = None
         self._DevTimeSections = None
         self._Scale = None
+        self._DayOffset = None
 
     @property
     def TemplateName(self):
-        r"""模板名称（仅支持中文、英文、数字、_、-，长度不超过32个字符，模板名称全局唯一，不能为空，不能重复）
+        r"""<p>模板名称（仅支持中文、英文、数字、_、-，长度不超过32个字符，模板名称全局唯一，不能为空，不能重复）</p>
         :rtype: str
         """
         return self._TemplateName
@@ -1769,7 +1787,7 @@ class AddRecordBackupTemplateRequest(AbstractModel):
 
     @property
     def TimeSections(self):
-        r"""上云时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）
+        r"""<p>上云时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）</p>
         :rtype: list of RecordTemplateTimeSections
         """
         return self._TimeSections
@@ -1780,7 +1798,7 @@ class AddRecordBackupTemplateRequest(AbstractModel):
 
     @property
     def DevTimeSections(self):
-        r"""录像时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）
+        r"""<p>录像时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）</p>
         :rtype: list of RecordTemplateTimeSections
         """
         return self._DevTimeSections
@@ -1791,7 +1809,7 @@ class AddRecordBackupTemplateRequest(AbstractModel):
 
     @property
     def Scale(self):
-        r"""上云倍速（支持1，2，4倍速）
+        r"""<p>上云倍速（支持1，2，4倍速）</p>
         :rtype: int
         """
         return self._Scale
@@ -1799,6 +1817,17 @@ class AddRecordBackupTemplateRequest(AbstractModel):
     @Scale.setter
     def Scale(self, Scale):
         self._Scale = Scale
+
+    @property
+    def DayOffset(self):
+        r"""<p>周期偏移量，默认1，表示拉取昨天的设备录像，0表示取去今天的设备录像，3表示拉取前天的设备录像</p><p>取值范围：[0, 90]</p><p>默认值：1</p>
+        :rtype: int
+        """
+        return self._DayOffset
+
+    @DayOffset.setter
+    def DayOffset(self, DayOffset):
+        self._DayOffset = DayOffset
 
 
     def _deserialize(self, params):
@@ -1816,6 +1845,7 @@ class AddRecordBackupTemplateRequest(AbstractModel):
                 obj._deserialize(item)
                 self._DevTimeSections.append(obj)
         self._Scale = params.get("Scale")
+        self._DayOffset = params.get("DayOffset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1833,7 +1863,7 @@ class AddRecordBackupTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 返回数据
+        :param _Data: <p>返回数据</p>
         :type Data: :class:`tencentcloud.iss.v20230517.models.AddRecordBackupTemplateData`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1843,7 +1873,7 @@ class AddRecordBackupTemplateResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""返回数据
+        r"""<p>返回数据</p>
         :rtype: :class:`tencentcloud.iss.v20230517.models.AddRecordBackupTemplateData`
         """
         return self._Data
@@ -8850,20 +8880,22 @@ class DescribeRecordBackupTemplateData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TemplateId: 模板ID
+        :param _TemplateId: <p>模板ID</p>
         :type TemplateId: str
-        :param _TemplateName: 模板名称
+        :param _TemplateName: <p>模板名称</p>
         :type TemplateName: str
-        :param _TimeSections: 上云时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）
+        :param _TimeSections: <p>上云时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）</p>
         :type TimeSections: list of RecordTemplateTimeSections
-        :param _DevTimeSections: 录像时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）
+        :param _DevTimeSections: <p>录像时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）</p>
         :type DevTimeSections: list of RecordTemplateTimeSections
-        :param _Scale: 上云倍速（支持1，2，4倍速）
+        :param _Scale: <p>上云倍速（支持1，2，4倍速）</p>
         :type Scale: int
-        :param _CreateAt: 创建时间
+        :param _CreateAt: <p>创建时间</p>
         :type CreateAt: str
-        :param _UpdateAt: 更新时间
+        :param _UpdateAt: <p>更新时间</p>
         :type UpdateAt: str
+        :param _DayOffset: <p>周期偏移量，默认1，表示拉取昨天的设备录像，0表示取去今天的设备录像，3表示拉取前天的设备录像</p>
+        :type DayOffset: int
         """
         self._TemplateId = None
         self._TemplateName = None
@@ -8872,10 +8904,11 @@ class DescribeRecordBackupTemplateData(AbstractModel):
         self._Scale = None
         self._CreateAt = None
         self._UpdateAt = None
+        self._DayOffset = None
 
     @property
     def TemplateId(self):
-        r"""模板ID
+        r"""<p>模板ID</p>
         :rtype: str
         """
         return self._TemplateId
@@ -8886,7 +8919,7 @@ class DescribeRecordBackupTemplateData(AbstractModel):
 
     @property
     def TemplateName(self):
-        r"""模板名称
+        r"""<p>模板名称</p>
         :rtype: str
         """
         return self._TemplateName
@@ -8897,7 +8930,7 @@ class DescribeRecordBackupTemplateData(AbstractModel):
 
     @property
     def TimeSections(self):
-        r"""上云时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）
+        r"""<p>上云时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）</p>
         :rtype: list of RecordTemplateTimeSections
         """
         return self._TimeSections
@@ -8908,7 +8941,7 @@ class DescribeRecordBackupTemplateData(AbstractModel):
 
     @property
     def DevTimeSections(self):
-        r"""录像时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）
+        r"""<p>录像时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）</p>
         :rtype: list of RecordTemplateTimeSections
         """
         return self._DevTimeSections
@@ -8919,7 +8952,7 @@ class DescribeRecordBackupTemplateData(AbstractModel):
 
     @property
     def Scale(self):
-        r"""上云倍速（支持1，2，4倍速）
+        r"""<p>上云倍速（支持1，2，4倍速）</p>
         :rtype: int
         """
         return self._Scale
@@ -8930,7 +8963,7 @@ class DescribeRecordBackupTemplateData(AbstractModel):
 
     @property
     def CreateAt(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
         :rtype: str
         """
         return self._CreateAt
@@ -8941,7 +8974,7 @@ class DescribeRecordBackupTemplateData(AbstractModel):
 
     @property
     def UpdateAt(self):
-        r"""更新时间
+        r"""<p>更新时间</p>
         :rtype: str
         """
         return self._UpdateAt
@@ -8949,6 +8982,17 @@ class DescribeRecordBackupTemplateData(AbstractModel):
     @UpdateAt.setter
     def UpdateAt(self, UpdateAt):
         self._UpdateAt = UpdateAt
+
+    @property
+    def DayOffset(self):
+        r"""<p>周期偏移量，默认1，表示拉取昨天的设备录像，0表示取去今天的设备录像，3表示拉取前天的设备录像</p>
+        :rtype: int
+        """
+        return self._DayOffset
+
+    @DayOffset.setter
+    def DayOffset(self, DayOffset):
+        self._DayOffset = DayOffset
 
 
     def _deserialize(self, params):
@@ -8969,6 +9013,7 @@ class DescribeRecordBackupTemplateData(AbstractModel):
         self._Scale = params.get("Scale")
         self._CreateAt = params.get("CreateAt")
         self._UpdateAt = params.get("UpdateAt")
+        self._DayOffset = params.get("DayOffset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13552,20 +13597,22 @@ class ListRecordBackupTemplatesData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TemplateId: 模板ID
+        :param _TemplateId: <p>模板ID</p>
         :type TemplateId: str
-        :param _TemplateName: 模板名称
+        :param _TemplateName: <p>模板名称</p>
         :type TemplateName: str
-        :param _TimeSections: 上云时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）
+        :param _TimeSections: <p>上云时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）</p>
         :type TimeSections: list of RecordTemplateTimeSections
-        :param _DevTimeSections: 录像时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）
+        :param _DevTimeSections: <p>录像时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）</p>
         :type DevTimeSections: list of RecordTemplateTimeSections
-        :param _Scale: 上云倍速（支持1，2，4倍速）
+        :param _Scale: <p>上云倍速（支持1，2，4倍速）</p>
         :type Scale: int
-        :param _CreateAt: 创建时间
+        :param _CreateAt: <p>创建时间</p>
         :type CreateAt: str
-        :param _UpdateAt: 更新时间
+        :param _UpdateAt: <p>更新时间</p>
         :type UpdateAt: str
+        :param _DayOffset: <p>周期偏移量，默认1，表示拉去昨天的，0表示拉去今天的，3表示拉去前天的</p>
+        :type DayOffset: int
         """
         self._TemplateId = None
         self._TemplateName = None
@@ -13574,10 +13621,11 @@ class ListRecordBackupTemplatesData(AbstractModel):
         self._Scale = None
         self._CreateAt = None
         self._UpdateAt = None
+        self._DayOffset = None
 
     @property
     def TemplateId(self):
-        r"""模板ID
+        r"""<p>模板ID</p>
         :rtype: str
         """
         return self._TemplateId
@@ -13588,7 +13636,7 @@ class ListRecordBackupTemplatesData(AbstractModel):
 
     @property
     def TemplateName(self):
-        r"""模板名称
+        r"""<p>模板名称</p>
         :rtype: str
         """
         return self._TemplateName
@@ -13599,7 +13647,7 @@ class ListRecordBackupTemplatesData(AbstractModel):
 
     @property
     def TimeSections(self):
-        r"""上云时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）
+        r"""<p>上云时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）</p>
         :rtype: list of RecordTemplateTimeSections
         """
         return self._TimeSections
@@ -13610,7 +13658,7 @@ class ListRecordBackupTemplatesData(AbstractModel):
 
     @property
     def DevTimeSections(self):
-        r"""录像时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）
+        r"""<p>录像时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）</p>
         :rtype: list of RecordTemplateTimeSections
         """
         return self._DevTimeSections
@@ -13621,7 +13669,7 @@ class ListRecordBackupTemplatesData(AbstractModel):
 
     @property
     def Scale(self):
-        r"""上云倍速（支持1，2，4倍速）
+        r"""<p>上云倍速（支持1，2，4倍速）</p>
         :rtype: int
         """
         return self._Scale
@@ -13632,7 +13680,7 @@ class ListRecordBackupTemplatesData(AbstractModel):
 
     @property
     def CreateAt(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
         :rtype: str
         """
         return self._CreateAt
@@ -13643,7 +13691,7 @@ class ListRecordBackupTemplatesData(AbstractModel):
 
     @property
     def UpdateAt(self):
-        r"""更新时间
+        r"""<p>更新时间</p>
         :rtype: str
         """
         return self._UpdateAt
@@ -13651,6 +13699,17 @@ class ListRecordBackupTemplatesData(AbstractModel):
     @UpdateAt.setter
     def UpdateAt(self, UpdateAt):
         self._UpdateAt = UpdateAt
+
+    @property
+    def DayOffset(self):
+        r"""<p>周期偏移量，默认1，表示拉去昨天的，0表示拉去今天的，3表示拉去前天的</p>
+        :rtype: int
+        """
+        return self._DayOffset
+
+    @DayOffset.setter
+    def DayOffset(self, DayOffset):
+        self._DayOffset = DayOffset
 
 
     def _deserialize(self, params):
@@ -13671,6 +13730,7 @@ class ListRecordBackupTemplatesData(AbstractModel):
         self._Scale = params.get("Scale")
         self._CreateAt = params.get("CreateAt")
         self._UpdateAt = params.get("UpdateAt")
+        self._DayOffset = params.get("DayOffset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19247,20 +19307,22 @@ class UpdateRecordBackupTemplateData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TemplateId: 模板ID
+        :param _TemplateId: <p>模板ID</p>
         :type TemplateId: str
-        :param _TemplateName: 模板名称
+        :param _TemplateName: <p>模板名称</p>
         :type TemplateName: str
-        :param _TimeSections: 上云时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）
+        :param _TimeSections: <p>上云时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）</p>
         :type TimeSections: list of RecordTemplateTimeSections
-        :param _DevTimeSections: 录像时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）
+        :param _DevTimeSections: <p>录像时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）</p>
         :type DevTimeSections: list of RecordTemplateTimeSections
-        :param _Scale: 上云倍速（支持1，2，4倍速）
+        :param _Scale: <p>上云倍速（支持1，2，4倍速）</p>
         :type Scale: int
-        :param _CreateAt: 创建时间
+        :param _CreateAt: <p>创建时间</p>
         :type CreateAt: str
-        :param _UpdateAt: 更新时间
+        :param _UpdateAt: <p>更新时间</p>
         :type UpdateAt: str
+        :param _DayOffset: <p>周期偏移量，默认1，表示拉取昨天的设备录像，0表示取去今天的设备录像，3表示拉取前天的设备录像</p>
+        :type DayOffset: int
         """
         self._TemplateId = None
         self._TemplateName = None
@@ -19269,10 +19331,11 @@ class UpdateRecordBackupTemplateData(AbstractModel):
         self._Scale = None
         self._CreateAt = None
         self._UpdateAt = None
+        self._DayOffset = None
 
     @property
     def TemplateId(self):
-        r"""模板ID
+        r"""<p>模板ID</p>
         :rtype: str
         """
         return self._TemplateId
@@ -19283,7 +19346,7 @@ class UpdateRecordBackupTemplateData(AbstractModel):
 
     @property
     def TemplateName(self):
-        r"""模板名称
+        r"""<p>模板名称</p>
         :rtype: str
         """
         return self._TemplateName
@@ -19294,7 +19357,7 @@ class UpdateRecordBackupTemplateData(AbstractModel):
 
     @property
     def TimeSections(self):
-        r"""上云时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）
+        r"""<p>上云时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）</p>
         :rtype: list of RecordTemplateTimeSections
         """
         return self._TimeSections
@@ -19305,7 +19368,7 @@ class UpdateRecordBackupTemplateData(AbstractModel):
 
     @property
     def DevTimeSections(self):
-        r"""录像时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）
+        r"""<p>录像时间段（按周进行设置，支持一天设置多个时间段，每个时间段不小于10分钟）</p>
         :rtype: list of RecordTemplateTimeSections
         """
         return self._DevTimeSections
@@ -19316,7 +19379,7 @@ class UpdateRecordBackupTemplateData(AbstractModel):
 
     @property
     def Scale(self):
-        r"""上云倍速（支持1，2，4倍速）
+        r"""<p>上云倍速（支持1，2，4倍速）</p>
         :rtype: int
         """
         return self._Scale
@@ -19327,7 +19390,7 @@ class UpdateRecordBackupTemplateData(AbstractModel):
 
     @property
     def CreateAt(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
         :rtype: str
         """
         return self._CreateAt
@@ -19338,7 +19401,7 @@ class UpdateRecordBackupTemplateData(AbstractModel):
 
     @property
     def UpdateAt(self):
-        r"""更新时间
+        r"""<p>更新时间</p>
         :rtype: str
         """
         return self._UpdateAt
@@ -19346,6 +19409,17 @@ class UpdateRecordBackupTemplateData(AbstractModel):
     @UpdateAt.setter
     def UpdateAt(self, UpdateAt):
         self._UpdateAt = UpdateAt
+
+    @property
+    def DayOffset(self):
+        r"""<p>周期偏移量，默认1，表示拉取昨天的设备录像，0表示取去今天的设备录像，3表示拉取前天的设备录像</p>
+        :rtype: int
+        """
+        return self._DayOffset
+
+    @DayOffset.setter
+    def DayOffset(self, DayOffset):
+        self._DayOffset = DayOffset
 
 
     def _deserialize(self, params):
@@ -19366,6 +19440,7 @@ class UpdateRecordBackupTemplateData(AbstractModel):
         self._Scale = params.get("Scale")
         self._CreateAt = params.get("CreateAt")
         self._UpdateAt = params.get("UpdateAt")
+        self._DayOffset = params.get("DayOffset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

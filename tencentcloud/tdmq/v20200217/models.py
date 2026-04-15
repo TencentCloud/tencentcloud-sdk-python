@@ -4354,30 +4354,26 @@ class CreateProClusterRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ZoneIds: 多可用区部署选择三个可用区，示例[200002,200003,200004]
-
-单可用区部署选择一个可用区，示例[200002]
+        :param _ZoneIds: <p>多可用区部署选择三个可用区，示例[200002,200003,200004]<br>单可用区部署选择一个可用区，示例[200002]</p><p>当选择PULSAR.P2.MINI1 时只支持两个可用区，其他支持三个可用区</p>
         :type ZoneIds: list of int
-        :param _ProductName: 集群规格代号
-参考 [专业集群规格](https://cloud.tencent.com/document/product/1179/83705)
+        :param _ProductName: <p>集群规格代号<br>参考 <a href="https://cloud.tencent.com/document/product/1179/83705">专业集群规格</a></p>
         :type ProductName: str
-        :param _AutoRenewFlag: 1: true，开启自动按月续费
-
-0: false，关闭自动按月续费
+        :param _AutoRenewFlag: <p>1: true，开启自动按月续费</p><p>0: false，关闭自动按月续费</p>
         :type AutoRenewFlag: int
-        :param _TimeSpan: 购买时长，取值范围：1～50
+        :param _TimeSpan: <p>购买时长，取值范围：1～50</p>
         :type TimeSpan: int
-        :param _ClusterName: 集群名称，不支持中字以及除了短线和下划线外的特殊字符且不超过64个字符。
+        :param _ClusterName: <p>集群名称不能为空，支持数字、字母、中文以及符号 “-_=:.”，长度不超过64个字符</p>
         :type ClusterName: str
-        :param _AutoVoucher: 是否自动选择代金券 1是 0否 默认为0
+        :param _AutoVoucher: <p>是否自动选择代金券 1是 0否 默认为0</p>
         :type AutoVoucher: int
-        :param _StorageSize: 存储规格
-参考 [专业集群规格](https://cloud.tencent.com/document/product/1179/83705)
+        :param _StorageSize: <p>存储规格<br>参考 <a href="https://cloud.tencent.com/document/product/1179/83705">专业集群规格</a></p>
         :type StorageSize: int
-        :param _Vpc: vpc网络标签
+        :param _Vpc: <p>vpc网络标签</p>
         :type Vpc: :class:`tencentcloud.tdmq.v20200217.models.VpcInfo`
-        :param _Tags: 集群的标签列表(已废弃)
+        :param _Tags: <p>集群的标签列表(已废弃)</p>
         :type Tags: list of Tag
+        :param _InstanceVersion: <p>集群版本信息</p>
+        :type InstanceVersion: str
         """
         self._ZoneIds = None
         self._ProductName = None
@@ -4388,12 +4384,11 @@ class CreateProClusterRequest(AbstractModel):
         self._StorageSize = None
         self._Vpc = None
         self._Tags = None
+        self._InstanceVersion = None
 
     @property
     def ZoneIds(self):
-        r"""多可用区部署选择三个可用区，示例[200002,200003,200004]
-
-单可用区部署选择一个可用区，示例[200002]
+        r"""<p>多可用区部署选择三个可用区，示例[200002,200003,200004]<br>单可用区部署选择一个可用区，示例[200002]</p><p>当选择PULSAR.P2.MINI1 时只支持两个可用区，其他支持三个可用区</p>
         :rtype: list of int
         """
         return self._ZoneIds
@@ -4404,8 +4399,7 @@ class CreateProClusterRequest(AbstractModel):
 
     @property
     def ProductName(self):
-        r"""集群规格代号
-参考 [专业集群规格](https://cloud.tencent.com/document/product/1179/83705)
+        r"""<p>集群规格代号<br>参考 <a href="https://cloud.tencent.com/document/product/1179/83705">专业集群规格</a></p>
         :rtype: str
         """
         return self._ProductName
@@ -4416,9 +4410,7 @@ class CreateProClusterRequest(AbstractModel):
 
     @property
     def AutoRenewFlag(self):
-        r"""1: true，开启自动按月续费
-
-0: false，关闭自动按月续费
+        r"""<p>1: true，开启自动按月续费</p><p>0: false，关闭自动按月续费</p>
         :rtype: int
         """
         return self._AutoRenewFlag
@@ -4429,7 +4421,7 @@ class CreateProClusterRequest(AbstractModel):
 
     @property
     def TimeSpan(self):
-        r"""购买时长，取值范围：1～50
+        r"""<p>购买时长，取值范围：1～50</p>
         :rtype: int
         """
         return self._TimeSpan
@@ -4440,7 +4432,7 @@ class CreateProClusterRequest(AbstractModel):
 
     @property
     def ClusterName(self):
-        r"""集群名称，不支持中字以及除了短线和下划线外的特殊字符且不超过64个字符。
+        r"""<p>集群名称不能为空，支持数字、字母、中文以及符号 “-_=:.”，长度不超过64个字符</p>
         :rtype: str
         """
         return self._ClusterName
@@ -4451,7 +4443,7 @@ class CreateProClusterRequest(AbstractModel):
 
     @property
     def AutoVoucher(self):
-        r"""是否自动选择代金券 1是 0否 默认为0
+        r"""<p>是否自动选择代金券 1是 0否 默认为0</p>
         :rtype: int
         """
         return self._AutoVoucher
@@ -4462,8 +4454,7 @@ class CreateProClusterRequest(AbstractModel):
 
     @property
     def StorageSize(self):
-        r"""存储规格
-参考 [专业集群规格](https://cloud.tencent.com/document/product/1179/83705)
+        r"""<p>存储规格<br>参考 <a href="https://cloud.tencent.com/document/product/1179/83705">专业集群规格</a></p>
         :rtype: int
         """
         return self._StorageSize
@@ -4474,7 +4465,7 @@ class CreateProClusterRequest(AbstractModel):
 
     @property
     def Vpc(self):
-        r"""vpc网络标签
+        r"""<p>vpc网络标签</p>
         :rtype: :class:`tencentcloud.tdmq.v20200217.models.VpcInfo`
         """
         return self._Vpc
@@ -4485,7 +4476,7 @@ class CreateProClusterRequest(AbstractModel):
 
     @property
     def Tags(self):
-        r"""集群的标签列表(已废弃)
+        r"""<p>集群的标签列表(已废弃)</p>
         :rtype: list of Tag
         """
         return self._Tags
@@ -4493,6 +4484,17 @@ class CreateProClusterRequest(AbstractModel):
     @Tags.setter
     def Tags(self, Tags):
         self._Tags = Tags
+
+    @property
+    def InstanceVersion(self):
+        r"""<p>集群版本信息</p>
+        :rtype: str
+        """
+        return self._InstanceVersion
+
+    @InstanceVersion.setter
+    def InstanceVersion(self, InstanceVersion):
+        self._InstanceVersion = InstanceVersion
 
 
     def _deserialize(self, params):
@@ -4512,6 +4514,7 @@ class CreateProClusterRequest(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        self._InstanceVersion = params.get("InstanceVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4529,13 +4532,13 @@ class CreateProClusterResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DealName: 子订单号
+        :param _DealName: <p>子订单号</p>
         :type DealName: str
-        :param _BigDealId: 订单号
+        :param _BigDealId: <p>订单号</p>
         :type BigDealId: str
-        :param _ClusterId: 集群Id
+        :param _ClusterId: <p>集群Id</p>
         :type ClusterId: str
-        :param _ClusterName: 集群名称
+        :param _ClusterName: <p>集群名称</p>
         :type ClusterName: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4548,7 +4551,7 @@ class CreateProClusterResponse(AbstractModel):
 
     @property
     def DealName(self):
-        r"""子订单号
+        r"""<p>子订单号</p>
         :rtype: str
         """
         return self._DealName
@@ -4559,7 +4562,7 @@ class CreateProClusterResponse(AbstractModel):
 
     @property
     def BigDealId(self):
-        r"""订单号
+        r"""<p>订单号</p>
         :rtype: str
         """
         return self._BigDealId
@@ -4570,7 +4573,7 @@ class CreateProClusterResponse(AbstractModel):
 
     @property
     def ClusterId(self):
-        r"""集群Id
+        r"""<p>集群Id</p>
         :rtype: str
         """
         return self._ClusterId
@@ -4581,7 +4584,7 @@ class CreateProClusterResponse(AbstractModel):
 
     @property
     def ClusterName(self):
-        r"""集群名称
+        r"""<p>集群名称</p>
         :rtype: str
         """
         return self._ClusterName
@@ -36676,18 +36679,24 @@ class Role(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RoleName: 角色名称。
+        :param _RoleName: <p>角色名称。</p>
         :type RoleName: str
-        :param _Token: 角色token值。
+        :param _Token: <p>角色token值。</p>
         :type Token: str
-        :param _Remark: 备注说明。
+        :param _Remark: <p>备注说明。</p>
         :type Remark: str
-        :param _CreateTime: 创建时间。
+        :param _CreateTime: <p>创建时间。</p>
         :type CreateTime: str
-        :param _UpdateTime: 更新时间。
+        :param _UpdateTime: <p>更新时间。</p>
         :type UpdateTime: str
-        :param _PermType: 授权类型（Cluster：集群；TopicAndGroup：主题或消费组）
+        :param _PermType: <p>授权类型（Cluster：集群；TopicAndGroup：主题或消费组）</p>
         :type PermType: str
+        :param _TokenType: <p>角色类型</p><p>枚举值：</p><ul><li>Temporary： 轮转密钥</li><li>Permanent： 永久密钥</li></ul>
+        :type TokenType: str
+        :param _SecretName: <p>SSM 唯一 ID</p>
+        :type SecretName: str
+        :param _RotateFreq: <p>轮转周期</p><p>单位：天</p>
+        :type RotateFreq: int
         """
         self._RoleName = None
         self._Token = None
@@ -36695,10 +36704,13 @@ class Role(AbstractModel):
         self._CreateTime = None
         self._UpdateTime = None
         self._PermType = None
+        self._TokenType = None
+        self._SecretName = None
+        self._RotateFreq = None
 
     @property
     def RoleName(self):
-        r"""角色名称。
+        r"""<p>角色名称。</p>
         :rtype: str
         """
         return self._RoleName
@@ -36709,7 +36721,7 @@ class Role(AbstractModel):
 
     @property
     def Token(self):
-        r"""角色token值。
+        r"""<p>角色token值。</p>
         :rtype: str
         """
         return self._Token
@@ -36720,7 +36732,7 @@ class Role(AbstractModel):
 
     @property
     def Remark(self):
-        r"""备注说明。
+        r"""<p>备注说明。</p>
         :rtype: str
         """
         return self._Remark
@@ -36731,7 +36743,7 @@ class Role(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""创建时间。
+        r"""<p>创建时间。</p>
         :rtype: str
         """
         return self._CreateTime
@@ -36742,7 +36754,7 @@ class Role(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""更新时间。
+        r"""<p>更新时间。</p>
         :rtype: str
         """
         return self._UpdateTime
@@ -36753,7 +36765,7 @@ class Role(AbstractModel):
 
     @property
     def PermType(self):
-        r"""授权类型（Cluster：集群；TopicAndGroup：主题或消费组）
+        r"""<p>授权类型（Cluster：集群；TopicAndGroup：主题或消费组）</p>
         :rtype: str
         """
         return self._PermType
@@ -36761,6 +36773,39 @@ class Role(AbstractModel):
     @PermType.setter
     def PermType(self, PermType):
         self._PermType = PermType
+
+    @property
+    def TokenType(self):
+        r"""<p>角色类型</p><p>枚举值：</p><ul><li>Temporary： 轮转密钥</li><li>Permanent： 永久密钥</li></ul>
+        :rtype: str
+        """
+        return self._TokenType
+
+    @TokenType.setter
+    def TokenType(self, TokenType):
+        self._TokenType = TokenType
+
+    @property
+    def SecretName(self):
+        r"""<p>SSM 唯一 ID</p>
+        :rtype: str
+        """
+        return self._SecretName
+
+    @SecretName.setter
+    def SecretName(self, SecretName):
+        self._SecretName = SecretName
+
+    @property
+    def RotateFreq(self):
+        r"""<p>轮转周期</p><p>单位：天</p>
+        :rtype: int
+        """
+        return self._RotateFreq
+
+    @RotateFreq.setter
+    def RotateFreq(self, RotateFreq):
+        self._RotateFreq = RotateFreq
 
 
     def _deserialize(self, params):
@@ -36770,6 +36815,9 @@ class Role(AbstractModel):
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
         self._PermType = params.get("PermType")
+        self._TokenType = params.get("TokenType")
+        self._SecretName = params.get("SecretName")
+        self._RotateFreq = params.get("RotateFreq")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

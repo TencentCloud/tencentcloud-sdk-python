@@ -54822,6 +54822,115 @@ class ModifyLocalGatewayResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyNatGatewayAdvancedAttributeRequest(AbstractModel):
+    r"""ModifyNatGatewayAdvancedAttribute请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NatGatewayId: NAT网关的ID，形如：`nat-df45454`。
+        :type NatGatewayId: str
+        :param _UDPMappingTimeout: UDP映射空闲时间，单位：秒。含义为UDP流空闲多少秒以后从NAT映射中释放。取值范围为：3-7200，默认为180。
+        :type UDPMappingTimeout: int
+        :param _TCPEstablishedConnectionTimeout: TCP已建立的连接空闲超时时间，单位：秒。含义为TCP已建立的连接空闲多少秒以后从NAT映射中释放。取值范围为：40-10800，默认为10800。
+        :type TCPEstablishedConnectionTimeout: int
+        :param _TCPTimeWaitTimeout: TCP TIME_WAIT超时时间，单位：秒。含义为完全关闭的TCP连接在到期后保留在NAT映射中的秒数。取值范围为：10-600，默认为120。
+        :type TCPTimeWaitTimeout: int
+        """
+        self._NatGatewayId = None
+        self._UDPMappingTimeout = None
+        self._TCPEstablishedConnectionTimeout = None
+        self._TCPTimeWaitTimeout = None
+
+    @property
+    def NatGatewayId(self):
+        r"""NAT网关的ID，形如：`nat-df45454`。
+        :rtype: str
+        """
+        return self._NatGatewayId
+
+    @NatGatewayId.setter
+    def NatGatewayId(self, NatGatewayId):
+        self._NatGatewayId = NatGatewayId
+
+    @property
+    def UDPMappingTimeout(self):
+        r"""UDP映射空闲时间，单位：秒。含义为UDP流空闲多少秒以后从NAT映射中释放。取值范围为：3-7200，默认为180。
+        :rtype: int
+        """
+        return self._UDPMappingTimeout
+
+    @UDPMappingTimeout.setter
+    def UDPMappingTimeout(self, UDPMappingTimeout):
+        self._UDPMappingTimeout = UDPMappingTimeout
+
+    @property
+    def TCPEstablishedConnectionTimeout(self):
+        r"""TCP已建立的连接空闲超时时间，单位：秒。含义为TCP已建立的连接空闲多少秒以后从NAT映射中释放。取值范围为：40-10800，默认为10800。
+        :rtype: int
+        """
+        return self._TCPEstablishedConnectionTimeout
+
+    @TCPEstablishedConnectionTimeout.setter
+    def TCPEstablishedConnectionTimeout(self, TCPEstablishedConnectionTimeout):
+        self._TCPEstablishedConnectionTimeout = TCPEstablishedConnectionTimeout
+
+    @property
+    def TCPTimeWaitTimeout(self):
+        r"""TCP TIME_WAIT超时时间，单位：秒。含义为完全关闭的TCP连接在到期后保留在NAT映射中的秒数。取值范围为：10-600，默认为120。
+        :rtype: int
+        """
+        return self._TCPTimeWaitTimeout
+
+    @TCPTimeWaitTimeout.setter
+    def TCPTimeWaitTimeout(self, TCPTimeWaitTimeout):
+        self._TCPTimeWaitTimeout = TCPTimeWaitTimeout
+
+
+    def _deserialize(self, params):
+        self._NatGatewayId = params.get("NatGatewayId")
+        self._UDPMappingTimeout = params.get("UDPMappingTimeout")
+        self._TCPEstablishedConnectionTimeout = params.get("TCPEstablishedConnectionTimeout")
+        self._TCPTimeWaitTimeout = params.get("TCPTimeWaitTimeout")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyNatGatewayAdvancedAttributeResponse(AbstractModel):
+    r"""ModifyNatGatewayAdvancedAttribute返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyNatGatewayAttributeRequest(AbstractModel):
     r"""ModifyNatGatewayAttribute请求参数结构体
 

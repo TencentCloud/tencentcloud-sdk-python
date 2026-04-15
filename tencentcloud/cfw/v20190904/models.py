@@ -9052,22 +9052,22 @@ class DescribeBlockIgnoreListRequest(AbstractModel):
         :type Order: str
         :param _By: 排序列：EndTime结束时间，StartTime开始时间，MatchTimes命中次数
         :type By: str
+        :param _ShowType: blocklist 封禁列表
+whitelist 白名单列表
+        :type ShowType: str
         :param _SearchValue: 搜索参数，json格式字符串，空则传"{}"，域名：domain，危险等级：level，放通原因：ignore_reason，安全事件来源：rule_source，地理位置：address，模糊搜索：common
         :type SearchValue: str
         :param _RuleType: 规则类型：1封禁，2放通
         :type RuleType: int
-        :param _ShowType: blocklist 封禁列表
-whitelist 白名单列表
-        :type ShowType: str
         """
         self._Limit = None
         self._Offset = None
         self._Direction = None
         self._Order = None
         self._By = None
+        self._ShowType = None
         self._SearchValue = None
         self._RuleType = None
-        self._ShowType = None
 
     @property
     def Limit(self):
@@ -9125,6 +9125,18 @@ whitelist 白名单列表
         self._By = By
 
     @property
+    def ShowType(self):
+        r"""blocklist 封禁列表
+whitelist 白名单列表
+        :rtype: str
+        """
+        return self._ShowType
+
+    @ShowType.setter
+    def ShowType(self, ShowType):
+        self._ShowType = ShowType
+
+    @property
     def SearchValue(self):
         r"""搜索参数，json格式字符串，空则传"{}"，域名：domain，危险等级：level，放通原因：ignore_reason，安全事件来源：rule_source，地理位置：address，模糊搜索：common
         :rtype: str
@@ -9146,18 +9158,6 @@ whitelist 白名单列表
     def RuleType(self, RuleType):
         self._RuleType = RuleType
 
-    @property
-    def ShowType(self):
-        r"""blocklist 封禁列表
-whitelist 白名单列表
-        :rtype: str
-        """
-        return self._ShowType
-
-    @ShowType.setter
-    def ShowType(self, ShowType):
-        self._ShowType = ShowType
-
 
     def _deserialize(self, params):
         self._Limit = params.get("Limit")
@@ -9165,9 +9165,9 @@ whitelist 白名单列表
         self._Direction = params.get("Direction")
         self._Order = params.get("Order")
         self._By = params.get("By")
+        self._ShowType = params.get("ShowType")
         self._SearchValue = params.get("SearchValue")
         self._RuleType = params.get("RuleType")
-        self._ShowType = params.get("ShowType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12287,6 +12287,330 @@ class DescribeLogsResponse(AbstractModel):
         self._ReturnCode = params.get("ReturnCode")
         self._ReturnMsg = params.get("ReturnMsg")
         self._AppProtocolList = params.get("AppProtocolList")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeNDRAssetIdentificationListRequest(AbstractModel):
+    r"""DescribeNDRAssetIdentificationList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Limit: 每页条数
+        :type Limit: int
+        :param _Offset: 偏移量
+        :type Offset: int
+        :param _Order: 排序方式，asc正序 desc倒序
+        :type Order: str
+        :param _By: 排序字段
+        :type By: str
+        :param _Filters: 查询过滤条件，多个条件之间为AND的关系
+        :type Filters: list of OperatorFilter
+        """
+        self._Limit = None
+        self._Offset = None
+        self._Order = None
+        self._By = None
+        self._Filters = None
+
+    @property
+    def Limit(self):
+        r"""每页条数
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""偏移量
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Order(self):
+        r"""排序方式，asc正序 desc倒序
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def By(self):
+        r"""排序字段
+        :rtype: str
+        """
+        return self._By
+
+    @By.setter
+    def By(self, By):
+        self._By = By
+
+    @property
+    def Filters(self):
+        r"""查询过滤条件，多个条件之间为AND的关系
+        :rtype: list of OperatorFilter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._Order = params.get("Order")
+        self._By = params.get("By")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = OperatorFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeNDRAssetIdentificationListResponse(AbstractModel):
+    r"""DescribeNDRAssetIdentificationList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: 符合查询条件的总条数
+        :type Total: int
+        :param _Data: 查询结果列表
+        :type Data: list of NDRAssetServiceInfo
+        :param _AssetCategoryStats: 服务类型统计结果
+        :type AssetCategoryStats: list of NDRAssetCategoryStats
+        :param _RegionOptions: 地域可选项
+        :type RegionOptions: list of FieldOption
+        :param _IpVersionOptions: IP版本可选项
+        :type IpVersionOptions: list of FieldOption
+        :param _IpTypeOptions: IP类型可选项
+        :type IpTypeOptions: list of FieldOption
+        :param _AssetCategoryOptions: 服务类型可选项
+        :type AssetCategoryOptions: list of FieldOption
+        :param _IdentificationSourceOptions: 识别来源可选项
+        :type IdentificationSourceOptions: list of FieldOption
+        :param _ProtocolOptions: 协议可选项
+        :type ProtocolOptions: list of FieldOption
+        :param _InstanceTypeOptions: 实例类型可选项
+        :type InstanceTypeOptions: list of FieldOption
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._Data = None
+        self._AssetCategoryStats = None
+        self._RegionOptions = None
+        self._IpVersionOptions = None
+        self._IpTypeOptions = None
+        self._AssetCategoryOptions = None
+        self._IdentificationSourceOptions = None
+        self._ProtocolOptions = None
+        self._InstanceTypeOptions = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        r"""符合查询条件的总条数
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Data(self):
+        r"""查询结果列表
+        :rtype: list of NDRAssetServiceInfo
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def AssetCategoryStats(self):
+        r"""服务类型统计结果
+        :rtype: list of NDRAssetCategoryStats
+        """
+        return self._AssetCategoryStats
+
+    @AssetCategoryStats.setter
+    def AssetCategoryStats(self, AssetCategoryStats):
+        self._AssetCategoryStats = AssetCategoryStats
+
+    @property
+    def RegionOptions(self):
+        r"""地域可选项
+        :rtype: list of FieldOption
+        """
+        return self._RegionOptions
+
+    @RegionOptions.setter
+    def RegionOptions(self, RegionOptions):
+        self._RegionOptions = RegionOptions
+
+    @property
+    def IpVersionOptions(self):
+        r"""IP版本可选项
+        :rtype: list of FieldOption
+        """
+        return self._IpVersionOptions
+
+    @IpVersionOptions.setter
+    def IpVersionOptions(self, IpVersionOptions):
+        self._IpVersionOptions = IpVersionOptions
+
+    @property
+    def IpTypeOptions(self):
+        r"""IP类型可选项
+        :rtype: list of FieldOption
+        """
+        return self._IpTypeOptions
+
+    @IpTypeOptions.setter
+    def IpTypeOptions(self, IpTypeOptions):
+        self._IpTypeOptions = IpTypeOptions
+
+    @property
+    def AssetCategoryOptions(self):
+        r"""服务类型可选项
+        :rtype: list of FieldOption
+        """
+        return self._AssetCategoryOptions
+
+    @AssetCategoryOptions.setter
+    def AssetCategoryOptions(self, AssetCategoryOptions):
+        self._AssetCategoryOptions = AssetCategoryOptions
+
+    @property
+    def IdentificationSourceOptions(self):
+        r"""识别来源可选项
+        :rtype: list of FieldOption
+        """
+        return self._IdentificationSourceOptions
+
+    @IdentificationSourceOptions.setter
+    def IdentificationSourceOptions(self, IdentificationSourceOptions):
+        self._IdentificationSourceOptions = IdentificationSourceOptions
+
+    @property
+    def ProtocolOptions(self):
+        r"""协议可选项
+        :rtype: list of FieldOption
+        """
+        return self._ProtocolOptions
+
+    @ProtocolOptions.setter
+    def ProtocolOptions(self, ProtocolOptions):
+        self._ProtocolOptions = ProtocolOptions
+
+    @property
+    def InstanceTypeOptions(self):
+        r"""实例类型可选项
+        :rtype: list of FieldOption
+        """
+        return self._InstanceTypeOptions
+
+    @InstanceTypeOptions.setter
+    def InstanceTypeOptions(self, InstanceTypeOptions):
+        self._InstanceTypeOptions = InstanceTypeOptions
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = NDRAssetServiceInfo()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        if params.get("AssetCategoryStats") is not None:
+            self._AssetCategoryStats = []
+            for item in params.get("AssetCategoryStats"):
+                obj = NDRAssetCategoryStats()
+                obj._deserialize(item)
+                self._AssetCategoryStats.append(obj)
+        if params.get("RegionOptions") is not None:
+            self._RegionOptions = []
+            for item in params.get("RegionOptions"):
+                obj = FieldOption()
+                obj._deserialize(item)
+                self._RegionOptions.append(obj)
+        if params.get("IpVersionOptions") is not None:
+            self._IpVersionOptions = []
+            for item in params.get("IpVersionOptions"):
+                obj = FieldOption()
+                obj._deserialize(item)
+                self._IpVersionOptions.append(obj)
+        if params.get("IpTypeOptions") is not None:
+            self._IpTypeOptions = []
+            for item in params.get("IpTypeOptions"):
+                obj = FieldOption()
+                obj._deserialize(item)
+                self._IpTypeOptions.append(obj)
+        if params.get("AssetCategoryOptions") is not None:
+            self._AssetCategoryOptions = []
+            for item in params.get("AssetCategoryOptions"):
+                obj = FieldOption()
+                obj._deserialize(item)
+                self._AssetCategoryOptions.append(obj)
+        if params.get("IdentificationSourceOptions") is not None:
+            self._IdentificationSourceOptions = []
+            for item in params.get("IdentificationSourceOptions"):
+                obj = FieldOption()
+                obj._deserialize(item)
+                self._IdentificationSourceOptions.append(obj)
+        if params.get("ProtocolOptions") is not None:
+            self._ProtocolOptions = []
+            for item in params.get("ProtocolOptions"):
+                obj = FieldOption()
+                obj._deserialize(item)
+                self._ProtocolOptions.append(obj)
+        if params.get("InstanceTypeOptions") is not None:
+            self._InstanceTypeOptions = []
+            for item in params.get("InstanceTypeOptions"):
+                obj = FieldOption()
+                obj._deserialize(item)
+                self._InstanceTypeOptions.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -17143,6 +17467,57 @@ class ExpandCfwVerticalResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class FieldOption(AbstractModel):
+    r"""字段可选项枚举值
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: 字段展示值
+        :type Text: str
+        :param _Value: 字段存储值
+        :type Value: str
+        """
+        self._Text = None
+        self._Value = None
+
+    @property
+    def Text(self):
+        r"""字段展示值
+        :rtype: str
+        """
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def Value(self):
+        r"""字段存储值
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Text = params.get("Text")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class FwCidrInfo(AbstractModel):
@@ -22729,6 +23104,433 @@ class MultiTopicSearchInformation(AbstractModel):
         
 
 
+class NDRAssetCategoryStats(AbstractModel):
+    r"""NDR资产识别服务类型统计结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 服务类型
+        :type Name: str
+        :param _Services: 服务统计结果
+        :type Services: list of NDRAssetServiceStats
+        """
+        self._Name = None
+        self._Services = None
+
+    @property
+    def Name(self):
+        r"""服务类型
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Services(self):
+        r"""服务统计结果
+        :rtype: list of NDRAssetServiceStats
+        """
+        return self._Services
+
+    @Services.setter
+    def Services(self, Services):
+        self._Services = Services
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        if params.get("Services") is not None:
+            self._Services = []
+            for item in params.get("Services"):
+                obj = NDRAssetServiceStats()
+                obj._deserialize(item)
+                self._Services.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NDRAssetServiceInfo(AbstractModel):
+    r"""NDR资产识别信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AssetId: 资产ID
+        :type AssetId: str
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _InstanceName: 实例名称
+        :type InstanceName: str
+        :param _InstanceType: 实例类型
+        :type InstanceType: str
+        :param _Region: 地域
+        :type Region: str
+        :param _VpcId: 私有网络ID
+        :type VpcId: str
+        :param _VpcName: 私有网络名称
+        :type VpcName: str
+        :param _Ip: 服务IP
+        :type Ip: str
+        :param _Port: 服务端口
+        :type Port: int
+        :param _IpVersion: IP版本 
+"0": IPv4
+"1": IPv6
+        :type IpVersion: str
+        :param _IpType: IP类型
+"0": 公网IP
+"1": EIP
+"-1": 内网IP
+        :type IpType: str
+        :param _AssetService: 服务名称
+        :type AssetService: str
+        :param _AssetVersion: 服务版本
+        :type AssetVersion: str
+        :param _AssetCategory: 服务类型
+        :type AssetCategory: str
+        :param _Protocol: 协议
+        :type Protocol: str
+        :param _IdentificationSource: 识别来源
+"0": 流量识别
+"1": 云资产实例
+        :type IdentificationSource: str
+        :param _FirstIdentificationTime: 首次识别时间
+        :type FirstIdentificationTime: str
+        :param _LatestIdentificationTime: 最近识别时间
+        :type LatestIdentificationTime: str
+        :param _ServerAddr: 服务地址
+        :type ServerAddr: str
+        """
+        self._AssetId = None
+        self._InstanceId = None
+        self._InstanceName = None
+        self._InstanceType = None
+        self._Region = None
+        self._VpcId = None
+        self._VpcName = None
+        self._Ip = None
+        self._Port = None
+        self._IpVersion = None
+        self._IpType = None
+        self._AssetService = None
+        self._AssetVersion = None
+        self._AssetCategory = None
+        self._Protocol = None
+        self._IdentificationSource = None
+        self._FirstIdentificationTime = None
+        self._LatestIdentificationTime = None
+        self._ServerAddr = None
+
+    @property
+    def AssetId(self):
+        r"""资产ID
+        :rtype: str
+        """
+        return self._AssetId
+
+    @AssetId.setter
+    def AssetId(self, AssetId):
+        self._AssetId = AssetId
+
+    @property
+    def InstanceId(self):
+        r"""实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceName(self):
+        r"""实例名称
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def InstanceType(self):
+        r"""实例类型
+        :rtype: str
+        """
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def Region(self):
+        r"""地域
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def VpcId(self):
+        r"""私有网络ID
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def VpcName(self):
+        r"""私有网络名称
+        :rtype: str
+        """
+        return self._VpcName
+
+    @VpcName.setter
+    def VpcName(self, VpcName):
+        self._VpcName = VpcName
+
+    @property
+    def Ip(self):
+        r"""服务IP
+        :rtype: str
+        """
+        return self._Ip
+
+    @Ip.setter
+    def Ip(self, Ip):
+        self._Ip = Ip
+
+    @property
+    def Port(self):
+        r"""服务端口
+        :rtype: int
+        """
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+    @property
+    def IpVersion(self):
+        r"""IP版本 
+"0": IPv4
+"1": IPv6
+        :rtype: str
+        """
+        return self._IpVersion
+
+    @IpVersion.setter
+    def IpVersion(self, IpVersion):
+        self._IpVersion = IpVersion
+
+    @property
+    def IpType(self):
+        r"""IP类型
+"0": 公网IP
+"1": EIP
+"-1": 内网IP
+        :rtype: str
+        """
+        return self._IpType
+
+    @IpType.setter
+    def IpType(self, IpType):
+        self._IpType = IpType
+
+    @property
+    def AssetService(self):
+        r"""服务名称
+        :rtype: str
+        """
+        return self._AssetService
+
+    @AssetService.setter
+    def AssetService(self, AssetService):
+        self._AssetService = AssetService
+
+    @property
+    def AssetVersion(self):
+        r"""服务版本
+        :rtype: str
+        """
+        return self._AssetVersion
+
+    @AssetVersion.setter
+    def AssetVersion(self, AssetVersion):
+        self._AssetVersion = AssetVersion
+
+    @property
+    def AssetCategory(self):
+        r"""服务类型
+        :rtype: str
+        """
+        return self._AssetCategory
+
+    @AssetCategory.setter
+    def AssetCategory(self, AssetCategory):
+        self._AssetCategory = AssetCategory
+
+    @property
+    def Protocol(self):
+        r"""协议
+        :rtype: str
+        """
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def IdentificationSource(self):
+        r"""识别来源
+"0": 流量识别
+"1": 云资产实例
+        :rtype: str
+        """
+        return self._IdentificationSource
+
+    @IdentificationSource.setter
+    def IdentificationSource(self, IdentificationSource):
+        self._IdentificationSource = IdentificationSource
+
+    @property
+    def FirstIdentificationTime(self):
+        r"""首次识别时间
+        :rtype: str
+        """
+        return self._FirstIdentificationTime
+
+    @FirstIdentificationTime.setter
+    def FirstIdentificationTime(self, FirstIdentificationTime):
+        self._FirstIdentificationTime = FirstIdentificationTime
+
+    @property
+    def LatestIdentificationTime(self):
+        r"""最近识别时间
+        :rtype: str
+        """
+        return self._LatestIdentificationTime
+
+    @LatestIdentificationTime.setter
+    def LatestIdentificationTime(self, LatestIdentificationTime):
+        self._LatestIdentificationTime = LatestIdentificationTime
+
+    @property
+    def ServerAddr(self):
+        r"""服务地址
+        :rtype: str
+        """
+        return self._ServerAddr
+
+    @ServerAddr.setter
+    def ServerAddr(self, ServerAddr):
+        self._ServerAddr = ServerAddr
+
+
+    def _deserialize(self, params):
+        self._AssetId = params.get("AssetId")
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceName = params.get("InstanceName")
+        self._InstanceType = params.get("InstanceType")
+        self._Region = params.get("Region")
+        self._VpcId = params.get("VpcId")
+        self._VpcName = params.get("VpcName")
+        self._Ip = params.get("Ip")
+        self._Port = params.get("Port")
+        self._IpVersion = params.get("IpVersion")
+        self._IpType = params.get("IpType")
+        self._AssetService = params.get("AssetService")
+        self._AssetVersion = params.get("AssetVersion")
+        self._AssetCategory = params.get("AssetCategory")
+        self._Protocol = params.get("Protocol")
+        self._IdentificationSource = params.get("IdentificationSource")
+        self._FirstIdentificationTime = params.get("FirstIdentificationTime")
+        self._LatestIdentificationTime = params.get("LatestIdentificationTime")
+        self._ServerAddr = params.get("ServerAddr")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NDRAssetServiceStats(AbstractModel):
+    r"""NDR资产服务统计结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 服务名称
+        :type Name: str
+        :param _Count: 服务计数
+        :type Count: int
+        """
+        self._Name = None
+        self._Count = None
+
+    @property
+    def Name(self):
+        r"""服务名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Count(self):
+        r"""服务计数
+        :rtype: int
+        """
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Count = params.get("Count")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class NatFwEipsInfo(AbstractModel):
     r"""Nat防火墙弹性公网ip列表
 
@@ -23917,6 +24719,96 @@ class NewModeItems(AbstractModel):
         self._VpcList = params.get("VpcList")
         self._Eips = params.get("Eips")
         self._AddCount = params.get("AddCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OperatorFilter(AbstractModel):
+    r"""查询过滤条件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 过滤字段
+        :type Name: str
+        :param _Values: 匹配的值
+        :type Values: list of str
+        :param _OperatorType: 操作类型：
+1：等于 field = value
+2：大于 field > value
+3：小于 field < value
+4：大于等于 field >= value
+5：小于等于 field <= value
+6：不等于 field <> value
+7：IN field IN (value1, value2...)
+8：NOT IN field NOT IN (value1, value2...)
+9：模糊匹配 field LIKE value
+13：非模糊匹配 field NOT LIKE value
+14：按位与 field & value = value
+15：between and field between value1 and value2
+        :type OperatorType: int
+        """
+        self._Name = None
+        self._Values = None
+        self._OperatorType = None
+
+    @property
+    def Name(self):
+        r"""过滤字段
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Values(self):
+        r"""匹配的值
+        :rtype: list of str
+        """
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
+    @property
+    def OperatorType(self):
+        r"""操作类型：
+1：等于 field = value
+2：大于 field > value
+3：小于 field < value
+4：大于等于 field >= value
+5：小于等于 field <= value
+6：不等于 field <> value
+7：IN field IN (value1, value2...)
+8：NOT IN field NOT IN (value1, value2...)
+9：模糊匹配 field LIKE value
+13：非模糊匹配 field NOT LIKE value
+14：按位与 field & value = value
+15：between and field between value1 and value2
+        :rtype: int
+        """
+        return self._OperatorType
+
+    @OperatorType.setter
+    def OperatorType(self, OperatorType):
+        self._OperatorType = OperatorType
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Values = params.get("Values")
+        self._OperatorType = params.get("OperatorType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

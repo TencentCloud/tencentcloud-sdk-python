@@ -221,6 +221,9 @@ INTERNALERROR_SYSTEMERROR = 'InternalError.SystemError'
 # 参数错误。
 INVALIDPARAMETER = 'InvalidParameter'
 
+# 集群版本信息不对
+INVALIDPARAMETER_INSTANCEVERSION = 'InvalidParameter.InstanceVersion'
+
 # 无效的管理端接口地址。
 INVALIDPARAMETER_INVALIDADMINURL = 'InvalidParameter.InvalidAdminUrl'
 

@@ -118,6 +118,29 @@ class TdmysqlClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDBSArchiveLogs(self, request):
+        r"""查询实例归档日志列表 DescribeDBSArchiveLogs
+
+        :param request: Request instance for DescribeDBSArchiveLogs.
+        :type request: :class:`tencentcloud.tdmysql.v20211122.models.DescribeDBSArchiveLogsRequest`
+        :rtype: :class:`tencentcloud.tdmysql.v20211122.models.DescribeDBSArchiveLogsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDBSArchiveLogs", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDBSArchiveLogsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDBSAvailableRecoveryTime(self, request):
         r"""获取可恢复时间 DescribeDBSAvailableRecoveryTime
 

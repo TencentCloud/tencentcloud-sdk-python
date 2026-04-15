@@ -9783,61 +9783,55 @@ class EnvInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EnvId: 账户下该环境唯一标识
+        :param _EnvId: <p>账户下该环境唯一标识</p>
         :type EnvId: str
-        :param _Source: 环境来源。包含以下取值：
-<li>miniapp：微信小程序</li>
-<li>qcloud ：腾讯云</li>
+        :param _Source: <p>环境来源。包含以下取值：</p><li>miniapp：微信小程序</li><li>qcloud ：腾讯云</li>
         :type Source: str
-        :param _Alias: 环境别名，要以a-z开头，不能包含 a-zA-z0-9- 以外的字符
+        :param _Alias: <p>环境别名，要以a-z开头，不能包含 a-zA-z0-9- 以外的字符</p>
         :type Alias: str
-        :param _CreateTime: 创建时间
+        :param _CreateTime: <p>创建时间</p>
         :type CreateTime: str
-        :param _UpdateTime: 最后修改时间
+        :param _UpdateTime: <p>最后修改时间</p>
         :type UpdateTime: str
-        :param _Status: 环境状态。包含以下取值：
-<li>NORMAL：正常可用</li>
-<li>UNAVAILABLE：服务不可用，可能是尚未初始化或者初始化过程中</li>
+        :param _Status: <p>环境状态。包含以下取值：</p><li>NORMAL：正常可用</li><li>UNAVAILABLE：服务不可用，可能是尚未初始化或者初始化过程中</li>
         :type Status: str
-        :param _Databases: 数据库列表
+        :param _Databases: <p>数据库列表</p>
         :type Databases: list of DatabasesInfo
-        :param _Storages: 存储列表
+        :param _Storages: <p>存储列表</p>
         :type Storages: list of StorageInfo
-        :param _Functions: 函数列表
+        :param _Functions: <p>函数列表</p>
         :type Functions: list of FunctionInfo
-        :param _PackageId: tcb产品套餐ID，参考DescribePackages接口的返回值。
+        :param _PackageId: <p>tcb产品套餐ID，参考DescribePackages接口的返回值。</p>
         :type PackageId: str
-        :param _PackageName: 套餐中文名称，参考DescribePackages接口的返回值。
+        :param _PackageName: <p>套餐中文名称，参考DescribePackages接口的返回值。</p>
         :type PackageName: str
-        :param _LogServices: 云日志服务列表
+        :param _LogServices: <p>云日志服务列表</p>
         :type LogServices: list of LogServiceInfo
-        :param _StaticStorages: 静态资源信息
+        :param _StaticStorages: <p>静态资源信息</p>
         :type StaticStorages: list of StaticStorageInfo
-        :param _IsAutoDegrade: 是否到期自动降为免费版
+        :param _IsAutoDegrade: <p>是否到期自动降为免费版</p>
         :type IsAutoDegrade: bool
-        :param _EnvChannel: 环境渠道
+        :param _EnvChannel: <p>环境渠道</p>
         :type EnvChannel: str
-        :param _PayMode: 支付方式。包含以下取值：
-<li> prepayment：预付费</li>
-<li> postpaid：后付费</li>
+        :param _PayMode: <p>支付方式。包含以下取值：</p><li> prepayment：预付费</li><li> postpaid：后付费</li>
         :type PayMode: str
-        :param _IsDefault: 是否为默认环境
+        :param _IsDefault: <p>是否为默认环境</p>
         :type IsDefault: bool
-        :param _Region: 环境所属地域
+        :param _Region: <p>环境所属地域</p>
         :type Region: str
-        :param _Tags: 环境标签列表
+        :param _Tags: <p>环境标签列表</p>
         :type Tags: list of Tag
-        :param _CustomLogServices: 自定义日志服务
+        :param _CustomLogServices: <p>自定义日志服务</p>
         :type CustomLogServices: list of ClsInfo
-        :param _EnvType: 环境类型：baas, run, hoting, weda
+        :param _EnvType: <p>环境类型：baas, run, hoting, weda</p>
         :type EnvType: str
-        :param _IsDauPackage: 是否是dau新套餐
+        :param _IsDauPackage: <p>是否是dau新套餐</p>
         :type IsDauPackage: bool
-        :param _PackageType: 套餐类型:空\baas\tcbr
+        :param _PackageType: <p>套餐类型:空\baas\tcbr</p>
         :type PackageType: str
-        :param _ArchitectureType: 架构类型
+        :param _ArchitectureType: <p>架构类型</p>
         :type ArchitectureType: str
-        :param _Recycle: 回收标志，默认为空
+        :param _Recycle: <p>回收标志，默认为空</p>
         :type Recycle: str
         """
         self._EnvId = None
@@ -9868,7 +9862,7 @@ class EnvInfo(AbstractModel):
 
     @property
     def EnvId(self):
-        r"""账户下该环境唯一标识
+        r"""<p>账户下该环境唯一标识</p>
         :rtype: str
         """
         return self._EnvId
@@ -9879,9 +9873,7 @@ class EnvInfo(AbstractModel):
 
     @property
     def Source(self):
-        r"""环境来源。包含以下取值：
-<li>miniapp：微信小程序</li>
-<li>qcloud ：腾讯云</li>
+        r"""<p>环境来源。包含以下取值：</p><li>miniapp：微信小程序</li><li>qcloud ：腾讯云</li>
         :rtype: str
         """
         return self._Source
@@ -9892,7 +9884,7 @@ class EnvInfo(AbstractModel):
 
     @property
     def Alias(self):
-        r"""环境别名，要以a-z开头，不能包含 a-zA-z0-9- 以外的字符
+        r"""<p>环境别名，要以a-z开头，不能包含 a-zA-z0-9- 以外的字符</p>
         :rtype: str
         """
         return self._Alias
@@ -9903,7 +9895,7 @@ class EnvInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
         :rtype: str
         """
         return self._CreateTime
@@ -9914,7 +9906,7 @@ class EnvInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""最后修改时间
+        r"""<p>最后修改时间</p>
         :rtype: str
         """
         return self._UpdateTime
@@ -9925,9 +9917,7 @@ class EnvInfo(AbstractModel):
 
     @property
     def Status(self):
-        r"""环境状态。包含以下取值：
-<li>NORMAL：正常可用</li>
-<li>UNAVAILABLE：服务不可用，可能是尚未初始化或者初始化过程中</li>
+        r"""<p>环境状态。包含以下取值：</p><li>NORMAL：正常可用</li><li>UNAVAILABLE：服务不可用，可能是尚未初始化或者初始化过程中</li>
         :rtype: str
         """
         return self._Status
@@ -9938,7 +9928,7 @@ class EnvInfo(AbstractModel):
 
     @property
     def Databases(self):
-        r"""数据库列表
+        r"""<p>数据库列表</p>
         :rtype: list of DatabasesInfo
         """
         return self._Databases
@@ -9949,7 +9939,7 @@ class EnvInfo(AbstractModel):
 
     @property
     def Storages(self):
-        r"""存储列表
+        r"""<p>存储列表</p>
         :rtype: list of StorageInfo
         """
         return self._Storages
@@ -9960,7 +9950,7 @@ class EnvInfo(AbstractModel):
 
     @property
     def Functions(self):
-        r"""函数列表
+        r"""<p>函数列表</p>
         :rtype: list of FunctionInfo
         """
         return self._Functions
@@ -9971,7 +9961,7 @@ class EnvInfo(AbstractModel):
 
     @property
     def PackageId(self):
-        r"""tcb产品套餐ID，参考DescribePackages接口的返回值。
+        r"""<p>tcb产品套餐ID，参考DescribePackages接口的返回值。</p>
         :rtype: str
         """
         return self._PackageId
@@ -9982,7 +9972,7 @@ class EnvInfo(AbstractModel):
 
     @property
     def PackageName(self):
-        r"""套餐中文名称，参考DescribePackages接口的返回值。
+        r"""<p>套餐中文名称，参考DescribePackages接口的返回值。</p>
         :rtype: str
         """
         return self._PackageName
@@ -9993,7 +9983,7 @@ class EnvInfo(AbstractModel):
 
     @property
     def LogServices(self):
-        r"""云日志服务列表
+        r"""<p>云日志服务列表</p>
         :rtype: list of LogServiceInfo
         """
         return self._LogServices
@@ -10004,7 +9994,7 @@ class EnvInfo(AbstractModel):
 
     @property
     def StaticStorages(self):
-        r"""静态资源信息
+        r"""<p>静态资源信息</p>
         :rtype: list of StaticStorageInfo
         """
         return self._StaticStorages
@@ -10015,7 +10005,7 @@ class EnvInfo(AbstractModel):
 
     @property
     def IsAutoDegrade(self):
-        r"""是否到期自动降为免费版
+        r"""<p>是否到期自动降为免费版</p>
         :rtype: bool
         """
         return self._IsAutoDegrade
@@ -10026,7 +10016,7 @@ class EnvInfo(AbstractModel):
 
     @property
     def EnvChannel(self):
-        r"""环境渠道
+        r"""<p>环境渠道</p>
         :rtype: str
         """
         return self._EnvChannel
@@ -10037,9 +10027,7 @@ class EnvInfo(AbstractModel):
 
     @property
     def PayMode(self):
-        r"""支付方式。包含以下取值：
-<li> prepayment：预付费</li>
-<li> postpaid：后付费</li>
+        r"""<p>支付方式。包含以下取值：</p><li> prepayment：预付费</li><li> postpaid：后付费</li>
         :rtype: str
         """
         return self._PayMode
@@ -10050,7 +10038,7 @@ class EnvInfo(AbstractModel):
 
     @property
     def IsDefault(self):
-        r"""是否为默认环境
+        r"""<p>是否为默认环境</p>
         :rtype: bool
         """
         return self._IsDefault
@@ -10061,7 +10049,7 @@ class EnvInfo(AbstractModel):
 
     @property
     def Region(self):
-        r"""环境所属地域
+        r"""<p>环境所属地域</p>
         :rtype: str
         """
         return self._Region
@@ -10072,7 +10060,7 @@ class EnvInfo(AbstractModel):
 
     @property
     def Tags(self):
-        r"""环境标签列表
+        r"""<p>环境标签列表</p>
         :rtype: list of Tag
         """
         return self._Tags
@@ -10083,7 +10071,7 @@ class EnvInfo(AbstractModel):
 
     @property
     def CustomLogServices(self):
-        r"""自定义日志服务
+        r"""<p>自定义日志服务</p>
         :rtype: list of ClsInfo
         """
         return self._CustomLogServices
@@ -10094,7 +10082,7 @@ class EnvInfo(AbstractModel):
 
     @property
     def EnvType(self):
-        r"""环境类型：baas, run, hoting, weda
+        r"""<p>环境类型：baas, run, hoting, weda</p>
         :rtype: str
         """
         return self._EnvType
@@ -10105,7 +10093,7 @@ class EnvInfo(AbstractModel):
 
     @property
     def IsDauPackage(self):
-        r"""是否是dau新套餐
+        r"""<p>是否是dau新套餐</p>
         :rtype: bool
         """
         return self._IsDauPackage
@@ -10116,7 +10104,7 @@ class EnvInfo(AbstractModel):
 
     @property
     def PackageType(self):
-        r"""套餐类型:空\baas\tcbr
+        r"""<p>套餐类型:空\baas\tcbr</p>
         :rtype: str
         """
         return self._PackageType
@@ -10127,7 +10115,7 @@ class EnvInfo(AbstractModel):
 
     @property
     def ArchitectureType(self):
-        r"""架构类型
+        r"""<p>架构类型</p>
         :rtype: str
         """
         return self._ArchitectureType
@@ -10138,7 +10126,7 @@ class EnvInfo(AbstractModel):
 
     @property
     def Recycle(self):
-        r"""回收标志，默认为空
+        r"""<p>回收标志，默认为空</p>
         :rtype: str
         """
         return self._Recycle
@@ -17109,26 +17097,32 @@ class StaticStorageInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StaticDomain: 静态CDN域名
+        :param _StaticDomain: <p>静态CDN域名</p>
         :type StaticDomain: str
-        :param _DefaultDirName: 静态CDN默认文件夹，当前为根目录
+        :param _DefaultDirName: <p>静态CDN默认文件夹，当前为根目录</p>
         :type DefaultDirName: str
-        :param _Status: 资源状态(process/online/offline/init)
+        :param _Status: <p>资源状态(process/online/offline/init)</p>
         :type Status: str
-        :param _Region: cos所属区域
+        :param _Region: <p>cos所属区域</p>
         :type Region: str
-        :param _Bucket: bucket信息
+        :param _Bucket: <p>bucket信息</p>
         :type Bucket: str
+        :param _AccessExpire: <p>到期时间（秒级时间戳）</p>
+        :type AccessExpire: int
+        :param _ExternalStorage: <p>外部存储。</p>
+        :type ExternalStorage: :class:`tencentcloud.tcb.v20180608.models.ExternalStorage`
         """
         self._StaticDomain = None
         self._DefaultDirName = None
         self._Status = None
         self._Region = None
         self._Bucket = None
+        self._AccessExpire = None
+        self._ExternalStorage = None
 
     @property
     def StaticDomain(self):
-        r"""静态CDN域名
+        r"""<p>静态CDN域名</p>
         :rtype: str
         """
         return self._StaticDomain
@@ -17139,7 +17133,7 @@ class StaticStorageInfo(AbstractModel):
 
     @property
     def DefaultDirName(self):
-        r"""静态CDN默认文件夹，当前为根目录
+        r"""<p>静态CDN默认文件夹，当前为根目录</p>
         :rtype: str
         """
         return self._DefaultDirName
@@ -17150,7 +17144,7 @@ class StaticStorageInfo(AbstractModel):
 
     @property
     def Status(self):
-        r"""资源状态(process/online/offline/init)
+        r"""<p>资源状态(process/online/offline/init)</p>
         :rtype: str
         """
         return self._Status
@@ -17161,7 +17155,7 @@ class StaticStorageInfo(AbstractModel):
 
     @property
     def Region(self):
-        r"""cos所属区域
+        r"""<p>cos所属区域</p>
         :rtype: str
         """
         return self._Region
@@ -17172,7 +17166,7 @@ class StaticStorageInfo(AbstractModel):
 
     @property
     def Bucket(self):
-        r"""bucket信息
+        r"""<p>bucket信息</p>
         :rtype: str
         """
         return self._Bucket
@@ -17181,6 +17175,28 @@ class StaticStorageInfo(AbstractModel):
     def Bucket(self, Bucket):
         self._Bucket = Bucket
 
+    @property
+    def AccessExpire(self):
+        r"""<p>到期时间（秒级时间戳）</p>
+        :rtype: int
+        """
+        return self._AccessExpire
+
+    @AccessExpire.setter
+    def AccessExpire(self, AccessExpire):
+        self._AccessExpire = AccessExpire
+
+    @property
+    def ExternalStorage(self):
+        r"""<p>外部存储。</p>
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.ExternalStorage`
+        """
+        return self._ExternalStorage
+
+    @ExternalStorage.setter
+    def ExternalStorage(self, ExternalStorage):
+        self._ExternalStorage = ExternalStorage
+
 
     def _deserialize(self, params):
         self._StaticDomain = params.get("StaticDomain")
@@ -17188,6 +17204,10 @@ class StaticStorageInfo(AbstractModel):
         self._Status = params.get("Status")
         self._Region = params.get("Region")
         self._Bucket = params.get("Bucket")
+        self._AccessExpire = params.get("AccessExpire")
+        if params.get("ExternalStorage") is not None:
+            self._ExternalStorage = ExternalStorage()
+            self._ExternalStorage._deserialize(params.get("ExternalStorage"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17332,25 +17352,26 @@ class StorageInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Region: 资源所属地域。
-当前支持ap-shanghai
+        :param _Region: <p>资源所属地域。<br>当前支持ap-shanghai</p>
         :type Region: str
-        :param _Bucket: 桶名，存储资源的唯一标识
+        :param _Bucket: <p>桶名，存储资源的唯一标识</p>
         :type Bucket: str
-        :param _CdnDomain: cdn 域名
+        :param _CdnDomain: <p>cdn 域名</p>
         :type CdnDomain: str
-        :param _AppId: 资源所属用户的腾讯云appId
+        :param _AppId: <p>资源所属用户的腾讯云appId</p>
         :type AppId: str
+        :param _ExternalStorage: <p>外部存储介质相关信息。</p>
+        :type ExternalStorage: :class:`tencentcloud.tcb.v20180608.models.ExternalStorage`
         """
         self._Region = None
         self._Bucket = None
         self._CdnDomain = None
         self._AppId = None
+        self._ExternalStorage = None
 
     @property
     def Region(self):
-        r"""资源所属地域。
-当前支持ap-shanghai
+        r"""<p>资源所属地域。<br>当前支持ap-shanghai</p>
         :rtype: str
         """
         return self._Region
@@ -17361,7 +17382,7 @@ class StorageInfo(AbstractModel):
 
     @property
     def Bucket(self):
-        r"""桶名，存储资源的唯一标识
+        r"""<p>桶名，存储资源的唯一标识</p>
         :rtype: str
         """
         return self._Bucket
@@ -17372,7 +17393,7 @@ class StorageInfo(AbstractModel):
 
     @property
     def CdnDomain(self):
-        r"""cdn 域名
+        r"""<p>cdn 域名</p>
         :rtype: str
         """
         return self._CdnDomain
@@ -17383,7 +17404,7 @@ class StorageInfo(AbstractModel):
 
     @property
     def AppId(self):
-        r"""资源所属用户的腾讯云appId
+        r"""<p>资源所属用户的腾讯云appId</p>
         :rtype: str
         """
         return self._AppId
@@ -17392,12 +17413,26 @@ class StorageInfo(AbstractModel):
     def AppId(self, AppId):
         self._AppId = AppId
 
+    @property
+    def ExternalStorage(self):
+        r"""<p>外部存储介质相关信息。</p>
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.ExternalStorage`
+        """
+        return self._ExternalStorage
+
+    @ExternalStorage.setter
+    def ExternalStorage(self, ExternalStorage):
+        self._ExternalStorage = ExternalStorage
+
 
     def _deserialize(self, params):
         self._Region = params.get("Region")
         self._Bucket = params.get("Bucket")
         self._CdnDomain = params.get("CdnDomain")
         self._AppId = params.get("AppId")
+        if params.get("ExternalStorage") is not None:
+            self._ExternalStorage = ExternalStorage()
+            self._ExternalStorage._deserialize(params.get("ExternalStorage"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

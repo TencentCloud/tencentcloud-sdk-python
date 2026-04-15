@@ -10928,6 +10928,8 @@ class AigcImageOutputConfig(AbstractModel):
         :type InputComplianceCheck: str
         :param _OutputComplianceCheck: <p>是否开启输出内容的合规性检查。取值有： <li>Enabled：开启；</li> <li>Disabled：关闭；</li></p>
         :type OutputComplianceCheck: str
+        :param _OutputImageCount: <p>生成图片张数。*<em>仅ModelName为Kling时有效，可选值 1-9 *</em>。</p>
+        :type OutputImageCount: int
         """
         self._StorageMode = None
         self._MediaName = None
@@ -10938,6 +10940,7 @@ class AigcImageOutputConfig(AbstractModel):
         self._PersonGeneration = None
         self._InputComplianceCheck = None
         self._OutputComplianceCheck = None
+        self._OutputImageCount = None
 
     @property
     def StorageMode(self):
@@ -11038,6 +11041,17 @@ class AigcImageOutputConfig(AbstractModel):
     def OutputComplianceCheck(self, OutputComplianceCheck):
         self._OutputComplianceCheck = OutputComplianceCheck
 
+    @property
+    def OutputImageCount(self):
+        r"""<p>生成图片张数。*<em>仅ModelName为Kling时有效，可选值 1-9 *</em>。</p>
+        :rtype: int
+        """
+        return self._OutputImageCount
+
+    @OutputImageCount.setter
+    def OutputImageCount(self, OutputImageCount):
+        self._OutputImageCount = OutputImageCount
+
 
     def _deserialize(self, params):
         self._StorageMode = params.get("StorageMode")
@@ -11049,6 +11063,7 @@ class AigcImageOutputConfig(AbstractModel):
         self._PersonGeneration = params.get("PersonGeneration")
         self._InputComplianceCheck = params.get("InputComplianceCheck")
         self._OutputComplianceCheck = params.get("OutputComplianceCheck")
+        self._OutputImageCount = params.get("OutputImageCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11841,6 +11856,8 @@ class AigcVideoOutputConfig(AbstractModel):
         :type FrameInterpolate: str
         :param _LogoAdd: <p>是否开启图标水印。取值有： <li>Enabled：开启；</li> <li>Disabled：关闭；</li><br>目前支持的模型有 Vidu，其他模型暂不支持。</p>
         :type LogoAdd: str
+        :param _EnableBGM: <p>是否为生成的视频添加背景音乐。</p><p>枚举值：</p><ul><li>Enabled： 系统将从预设 BGM 库中自动挑选合适的音乐并添加。</li><li>Disabled： 不添加BGM。</li></ul><p>默认值：Disabled</p>
+        :type EnableBGM: str
         """
         self._StorageMode = None
         self._MediaName = None
@@ -11857,6 +11874,7 @@ class AigcVideoOutputConfig(AbstractModel):
         self._OffPeak = None
         self._FrameInterpolate = None
         self._LogoAdd = None
+        self._EnableBGM = None
 
     @property
     def StorageMode(self):
@@ -12023,6 +12041,17 @@ class AigcVideoOutputConfig(AbstractModel):
     def LogoAdd(self, LogoAdd):
         self._LogoAdd = LogoAdd
 
+    @property
+    def EnableBGM(self):
+        r"""<p>是否为生成的视频添加背景音乐。</p><p>枚举值：</p><ul><li>Enabled： 系统将从预设 BGM 库中自动挑选合适的音乐并添加。</li><li>Disabled： 不添加BGM。</li></ul><p>默认值：Disabled</p>
+        :rtype: str
+        """
+        return self._EnableBGM
+
+    @EnableBGM.setter
+    def EnableBGM(self, EnableBGM):
+        self._EnableBGM = EnableBGM
+
 
     def _deserialize(self, params):
         self._StorageMode = params.get("StorageMode")
@@ -12040,6 +12069,7 @@ class AigcVideoOutputConfig(AbstractModel):
         self._OffPeak = params.get("OffPeak")
         self._FrameInterpolate = params.get("FrameInterpolate")
         self._LogoAdd = params.get("LogoAdd")
+        self._EnableBGM = params.get("EnableBGM")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

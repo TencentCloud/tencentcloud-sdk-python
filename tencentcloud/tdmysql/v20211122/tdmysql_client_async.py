@@ -97,6 +97,24 @@ class TdmysqlClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeDBSArchiveLogs(
+            self,
+            request: models.DescribeDBSArchiveLogsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDBSArchiveLogsResponse:
+        """
+        查询实例归档日志列表 DescribeDBSArchiveLogs
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDBSArchiveLogs"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDBSArchiveLogsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeDBSAvailableRecoveryTime(
             self,
             request: models.DescribeDBSAvailableRecoveryTimeRequest,

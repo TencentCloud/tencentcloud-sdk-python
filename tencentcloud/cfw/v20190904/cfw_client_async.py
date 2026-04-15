@@ -1017,6 +1017,24 @@ class CfwClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeNDRAssetIdentificationList(
+            self,
+            request: models.DescribeNDRAssetIdentificationListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeNDRAssetIdentificationListResponse:
+        """
+        DescribeNDRAssetIdentificationList - 获取NDR资产识别结果列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeNDRAssetIdentificationList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeNDRAssetIdentificationListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeNatAcRule(
             self,
             request: models.DescribeNatAcRuleRequest,
