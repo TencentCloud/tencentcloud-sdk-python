@@ -1735,9 +1735,9 @@ class CreateLoadTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群 ID
+        :param _ClusterId: <p>集群 ID</p>
         :type ClusterId: str
-        :param _LoadTaskCreationAttrs: 创建预热任务参数
+        :param _LoadTaskCreationAttrs: <p>创建预热任务参数</p>
         :type LoadTaskCreationAttrs: :class:`tencentcloud.goosefs.v20220519.models.LoadTaskCreationAttrs`
         """
         self._ClusterId = None
@@ -1745,7 +1745,7 @@ class CreateLoadTaskRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        r"""集群 ID
+        r"""<p>集群 ID</p>
         :rtype: str
         """
         return self._ClusterId
@@ -1756,7 +1756,7 @@ class CreateLoadTaskRequest(AbstractModel):
 
     @property
     def LoadTaskCreationAttrs(self):
-        r"""创建预热任务参数
+        r"""<p>创建预热任务参数</p>
         :rtype: :class:`tencentcloud.goosefs.v20220519.models.LoadTaskCreationAttrs`
         """
         return self._LoadTaskCreationAttrs
@@ -1788,7 +1788,7 @@ class CreateLoadTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 预热任务 ID
+        :param _TaskId: <p>预热任务 ID</p>
         :type TaskId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1798,7 +1798,7 @@ class CreateLoadTaskResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""预热任务 ID
+        r"""<p>预热任务 ID</p>
         :rtype: str
         """
         return self._TaskId

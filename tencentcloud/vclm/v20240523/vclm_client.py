@@ -49,6 +49,75 @@ class VclmClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateAigcElement(self, request):
+        r"""提交视频特效任务接口
+
+        :param request: Request instance for CreateAigcElement.
+        :type request: :class:`tencentcloud.vclm.v20240523.models.CreateAigcElementRequest`
+        :rtype: :class:`tencentcloud.vclm.v20240523.models.CreateAigcElementResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAigcElement", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateAigcElementResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteAigcElement(self, request):
+        r"""删除主体库
+
+        :param request: Request instance for DeleteAigcElement.
+        :type request: :class:`tencentcloud.vclm.v20240523.models.DeleteAigcElementRequest`
+        :rtype: :class:`tencentcloud.vclm.v20240523.models.DeleteAigcElementResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteAigcElement", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteAigcElementResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAigcElement(self, request):
+        r"""提交视频特效任务接口
+
+        :param request: Request instance for DescribeAigcElement.
+        :type request: :class:`tencentcloud.vclm.v20240523.models.DescribeAigcElementRequest`
+        :rtype: :class:`tencentcloud.vclm.v20240523.models.DescribeAigcElementResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAigcElement", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAigcElementResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeAigcVideoJob(self, request):
         r"""查询生视频任务
 

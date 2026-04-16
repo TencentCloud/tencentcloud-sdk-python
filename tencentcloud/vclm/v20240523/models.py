@@ -385,6 +385,592 @@ class CheckAnimateImageJobResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateAigcElementRequest(AbstractModel):
+    r"""CreateAigcElement请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 
+        :type Name: str
+        :param _Description: 
+        :type Description: str
+        :param _ReferenceType: 
+        :type ReferenceType: str
+        :param _ElementImageList: 
+        :type ElementImageList: :class:`tencentcloud.vclm.v20240523.models.ElementImageList`
+        :param _VideoList: 
+        :type VideoList: list of str
+        :param _Provider: 
+        :type Provider: list of str
+        :param _TagList: 
+        :type TagList: list of TagList
+        """
+        self._Name = None
+        self._Description = None
+        self._ReferenceType = None
+        self._ElementImageList = None
+        self._VideoList = None
+        self._Provider = None
+        self._TagList = None
+
+    @property
+    def Name(self):
+        r"""
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def ReferenceType(self):
+        r"""
+        :rtype: str
+        """
+        return self._ReferenceType
+
+    @ReferenceType.setter
+    def ReferenceType(self, ReferenceType):
+        self._ReferenceType = ReferenceType
+
+    @property
+    def ElementImageList(self):
+        r"""
+        :rtype: :class:`tencentcloud.vclm.v20240523.models.ElementImageList`
+        """
+        return self._ElementImageList
+
+    @ElementImageList.setter
+    def ElementImageList(self, ElementImageList):
+        self._ElementImageList = ElementImageList
+
+    @property
+    def VideoList(self):
+        r"""
+        :rtype: list of str
+        """
+        return self._VideoList
+
+    @VideoList.setter
+    def VideoList(self, VideoList):
+        self._VideoList = VideoList
+
+    @property
+    def Provider(self):
+        r"""
+        :rtype: list of str
+        """
+        return self._Provider
+
+    @Provider.setter
+    def Provider(self, Provider):
+        self._Provider = Provider
+
+    @property
+    def TagList(self):
+        r"""
+        :rtype: list of TagList
+        """
+        return self._TagList
+
+    @TagList.setter
+    def TagList(self, TagList):
+        self._TagList = TagList
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._ReferenceType = params.get("ReferenceType")
+        if params.get("ElementImageList") is not None:
+            self._ElementImageList = ElementImageList()
+            self._ElementImageList._deserialize(params.get("ElementImageList"))
+        self._VideoList = params.get("VideoList")
+        self._Provider = params.get("Provider")
+        if params.get("TagList") is not None:
+            self._TagList = []
+            for item in params.get("TagList"):
+                obj = TagList()
+                obj._deserialize(item)
+                self._TagList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAigcElementResponse(AbstractModel):
+    r"""CreateAigcElement返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: <p>任务ID。</p>
+        :type JobId: str
+        :param _ElementId: 
+        :type ElementId: str
+        :param _Status: 
+        :type Status: str
+        :param _Provider: 
+        :type Provider: list of str
+        :param _CreatedAt: 
+        :type CreatedAt: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._JobId = None
+        self._ElementId = None
+        self._Status = None
+        self._Provider = None
+        self._CreatedAt = None
+        self._RequestId = None
+
+    @property
+    def JobId(self):
+        r"""<p>任务ID。</p>
+        :rtype: str
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def ElementId(self):
+        r"""
+        :rtype: str
+        """
+        return self._ElementId
+
+    @ElementId.setter
+    def ElementId(self, ElementId):
+        self._ElementId = ElementId
+
+    @property
+    def Status(self):
+        r"""
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Provider(self):
+        r"""
+        :rtype: list of str
+        """
+        return self._Provider
+
+    @Provider.setter
+    def Provider(self, Provider):
+        self._Provider = Provider
+
+    @property
+    def CreatedAt(self):
+        r"""
+        :rtype: str
+        """
+        return self._CreatedAt
+
+    @CreatedAt.setter
+    def CreatedAt(self, CreatedAt):
+        self._CreatedAt = CreatedAt
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        self._ElementId = params.get("ElementId")
+        self._Status = params.get("Status")
+        self._Provider = params.get("Provider")
+        self._CreatedAt = params.get("CreatedAt")
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteAigcElementRequest(AbstractModel):
+    r"""DeleteAigcElement请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ElementId: 
+        :type ElementId: str
+        """
+        self._ElementId = None
+
+    @property
+    def ElementId(self):
+        r"""
+        :rtype: str
+        """
+        return self._ElementId
+
+    @ElementId.setter
+    def ElementId(self, ElementId):
+        self._ElementId = ElementId
+
+
+    def _deserialize(self, params):
+        self._ElementId = params.get("ElementId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteAigcElementResponse(AbstractModel):
+    r"""DeleteAigcElement返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ElementId: 
+        :type ElementId: str
+        :param _Deleted: 
+        :type Deleted: bool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ElementId = None
+        self._Deleted = None
+        self._RequestId = None
+
+    @property
+    def ElementId(self):
+        r"""
+        :rtype: str
+        """
+        return self._ElementId
+
+    @ElementId.setter
+    def ElementId(self, ElementId):
+        self._ElementId = ElementId
+
+    @property
+    def Deleted(self):
+        r"""
+        :rtype: bool
+        """
+        return self._Deleted
+
+    @Deleted.setter
+    def Deleted(self, Deleted):
+        self._Deleted = Deleted
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ElementId = params.get("ElementId")
+        self._Deleted = params.get("Deleted")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAigcElementRequest(AbstractModel):
+    r"""DescribeAigcElement请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ElementId: 
+        :type ElementId: str
+        """
+        self._ElementId = None
+
+    @property
+    def ElementId(self):
+        r"""
+        :rtype: str
+        """
+        return self._ElementId
+
+    @ElementId.setter
+    def ElementId(self, ElementId):
+        self._ElementId = ElementId
+
+
+    def _deserialize(self, params):
+        self._ElementId = params.get("ElementId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAigcElementResponse(AbstractModel):
+    r"""DescribeAigcElement返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>主体名称</p>
+        :type Name: str
+        :param _ElementId: <p>主体id</p>
+        :type ElementId: str
+        :param _Description: <p>主体描述</p>
+        :type Description: str
+        :param _ReferenceType: <p>主体参考方式</p><p>枚举值：</p><ul><li>video_refer： 视频角色主体</li><li>image_refer： 多图主体</li></ul>
+        :type ReferenceType: str
+        :param _Status: <p>任务状态</p><p>枚举值：</p><ul><li>pending： 执行中</li><li>failed： 任务失败</li><li>succeed： 任务成功</li></ul>
+        :type Status: str
+        :param _Provider: <p>厂商列表</p>
+        :type Provider: list of str
+        :param _ElementImageList: <p>主体参考图，可通过多张图片设定主体及其细节</p>
+        :type ElementImageList: :class:`tencentcloud.vclm.v20240523.models.ElementImageList`
+        :param _VideoList: <p>主体参考视频，可通过视频设定主体及其细节</p>
+        :type VideoList: list of str
+        :param _TagList: <p>为主体配置标签，一个主体可以配置多个标签</p>
+        :type TagList: list of TagList
+        :param _ProviderDetails: <p>厂商聚合字段</p>
+        :type ProviderDetails: list of ProviderDetail
+        :param _CreatedAt: <p>创建时间</p>
+        :type CreatedAt: str
+        :param _UpdatedAt: <p>更新时间</p>
+        :type UpdatedAt: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Name = None
+        self._ElementId = None
+        self._Description = None
+        self._ReferenceType = None
+        self._Status = None
+        self._Provider = None
+        self._ElementImageList = None
+        self._VideoList = None
+        self._TagList = None
+        self._ProviderDetails = None
+        self._CreatedAt = None
+        self._UpdatedAt = None
+        self._RequestId = None
+
+    @property
+    def Name(self):
+        r"""<p>主体名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ElementId(self):
+        r"""<p>主体id</p>
+        :rtype: str
+        """
+        return self._ElementId
+
+    @ElementId.setter
+    def ElementId(self, ElementId):
+        self._ElementId = ElementId
+
+    @property
+    def Description(self):
+        r"""<p>主体描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def ReferenceType(self):
+        r"""<p>主体参考方式</p><p>枚举值：</p><ul><li>video_refer： 视频角色主体</li><li>image_refer： 多图主体</li></ul>
+        :rtype: str
+        """
+        return self._ReferenceType
+
+    @ReferenceType.setter
+    def ReferenceType(self, ReferenceType):
+        self._ReferenceType = ReferenceType
+
+    @property
+    def Status(self):
+        r"""<p>任务状态</p><p>枚举值：</p><ul><li>pending： 执行中</li><li>failed： 任务失败</li><li>succeed： 任务成功</li></ul>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Provider(self):
+        r"""<p>厂商列表</p>
+        :rtype: list of str
+        """
+        return self._Provider
+
+    @Provider.setter
+    def Provider(self, Provider):
+        self._Provider = Provider
+
+    @property
+    def ElementImageList(self):
+        r"""<p>主体参考图，可通过多张图片设定主体及其细节</p>
+        :rtype: :class:`tencentcloud.vclm.v20240523.models.ElementImageList`
+        """
+        return self._ElementImageList
+
+    @ElementImageList.setter
+    def ElementImageList(self, ElementImageList):
+        self._ElementImageList = ElementImageList
+
+    @property
+    def VideoList(self):
+        r"""<p>主体参考视频，可通过视频设定主体及其细节</p>
+        :rtype: list of str
+        """
+        return self._VideoList
+
+    @VideoList.setter
+    def VideoList(self, VideoList):
+        self._VideoList = VideoList
+
+    @property
+    def TagList(self):
+        r"""<p>为主体配置标签，一个主体可以配置多个标签</p>
+        :rtype: list of TagList
+        """
+        return self._TagList
+
+    @TagList.setter
+    def TagList(self, TagList):
+        self._TagList = TagList
+
+    @property
+    def ProviderDetails(self):
+        r"""<p>厂商聚合字段</p>
+        :rtype: list of ProviderDetail
+        """
+        return self._ProviderDetails
+
+    @ProviderDetails.setter
+    def ProviderDetails(self, ProviderDetails):
+        self._ProviderDetails = ProviderDetails
+
+    @property
+    def CreatedAt(self):
+        r"""<p>创建时间</p>
+        :rtype: str
+        """
+        return self._CreatedAt
+
+    @CreatedAt.setter
+    def CreatedAt(self, CreatedAt):
+        self._CreatedAt = CreatedAt
+
+    @property
+    def UpdatedAt(self):
+        r"""<p>更新时间</p>
+        :rtype: str
+        """
+        return self._UpdatedAt
+
+    @UpdatedAt.setter
+    def UpdatedAt(self, UpdatedAt):
+        self._UpdatedAt = UpdatedAt
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._ElementId = params.get("ElementId")
+        self._Description = params.get("Description")
+        self._ReferenceType = params.get("ReferenceType")
+        self._Status = params.get("Status")
+        self._Provider = params.get("Provider")
+        if params.get("ElementImageList") is not None:
+            self._ElementImageList = ElementImageList()
+            self._ElementImageList._deserialize(params.get("ElementImageList"))
+        self._VideoList = params.get("VideoList")
+        if params.get("TagList") is not None:
+            self._TagList = []
+            for item in params.get("TagList"):
+                obj = TagList()
+                obj._deserialize(item)
+                self._TagList.append(obj)
+        if params.get("ProviderDetails") is not None:
+            self._ProviderDetails = []
+            for item in params.get("ProviderDetails"):
+                obj = ProviderDetail()
+                obj._deserialize(item)
+                self._ProviderDetails.append(obj)
+        self._CreatedAt = params.get("CreatedAt")
+        self._UpdatedAt = params.get("UpdatedAt")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeAigcVideoJobRequest(AbstractModel):
     r"""DescribeAigcVideoJob请求参数结构体
 
@@ -3235,6 +3821,62 @@ class Element(AbstractModel):
         
 
 
+class ElementImageList(AbstractModel):
+    r"""主体正面图 参考图列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ReferImages: <p>主体参考图</p>
+        :type ReferImages: list of ReferImageItem
+        :param _FrontalImage: <p>主体主图</p>
+        :type FrontalImage: str
+        """
+        self._ReferImages = None
+        self._FrontalImage = None
+
+    @property
+    def ReferImages(self):
+        r"""<p>主体参考图</p>
+        :rtype: list of ReferImageItem
+        """
+        return self._ReferImages
+
+    @ReferImages.setter
+    def ReferImages(self, ReferImages):
+        self._ReferImages = ReferImages
+
+    @property
+    def FrontalImage(self):
+        r"""<p>主体主图</p>
+        :rtype: str
+        """
+        return self._FrontalImage
+
+    @FrontalImage.setter
+    def FrontalImage(self, FrontalImage):
+        self._FrontalImage = FrontalImage
+
+
+    def _deserialize(self, params):
+        if params.get("ReferImages") is not None:
+            self._ReferImages = []
+            for item in params.get("ReferImages"):
+                obj = ReferImageItem()
+                obj._deserialize(item)
+                self._ReferImages.append(obj)
+        self._FrontalImage = params.get("FrontalImage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ExtraParam(AbstractModel):
     r"""扩展字段。
 
@@ -3863,6 +4505,108 @@ class MultiPrompt(AbstractModel):
         self._Index = params.get("Index")
         self._Prompt = params.get("Prompt")
         self._Duration = params.get("Duration")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProviderDetail(AbstractModel):
+    r"""ProviderDetail
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Provider: <p>供应商详情</p>
+        :type Provider: str
+        :param _Status: <p>状态</p>
+        :type Status: str
+        :param _ErrorMessage: <p>错误信息</p>
+        :type ErrorMessage: str
+        """
+        self._Provider = None
+        self._Status = None
+        self._ErrorMessage = None
+
+    @property
+    def Provider(self):
+        r"""<p>供应商详情</p>
+        :rtype: str
+        """
+        return self._Provider
+
+    @Provider.setter
+    def Provider(self, Provider):
+        self._Provider = Provider
+
+    @property
+    def Status(self):
+        r"""<p>状态</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrorMessage(self):
+        r"""<p>错误信息</p>
+        :rtype: str
+        """
+        return self._ErrorMessage
+
+    @ErrorMessage.setter
+    def ErrorMessage(self, ErrorMessage):
+        self._ErrorMessage = ErrorMessage
+
+
+    def _deserialize(self, params):
+        self._Provider = params.get("Provider")
+        self._Status = params.get("Status")
+        self._ErrorMessage = params.get("ErrorMessage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReferImageItem(AbstractModel):
+    r"""生成视频时所引用的音色
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImageUrl: <p>图片地址</p>
+        :type ImageUrl: str
+        """
+        self._ImageUrl = None
+
+    @property
+    def ImageUrl(self):
+        r"""<p>图片地址</p>
+        :rtype: str
+        """
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
+
+
+    def _deserialize(self, params):
+        self._ImageUrl = params.get("ImageUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8378,6 +9122,42 @@ class SubmitVideoVoiceJobResponse(AbstractModel):
     def _deserialize(self, params):
         self._JobId = params.get("JobId")
         self._RequestId = params.get("RequestId")
+
+
+class TagList(AbstractModel):
+    r"""生成视频时所引用的音色
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TagId: <p>tag标签</p>
+        :type TagId: str
+        """
+        self._TagId = None
+
+    @property
+    def TagId(self):
+        r"""<p>tag标签</p>
+        :rtype: str
+        """
+        return self._TagId
+
+    @TagId.setter
+    def TagId(self, TagId):
+        self._TagId = TagId
+
+
+    def _deserialize(self, params):
+        self._TagId = params.get("TagId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class Trajectory(AbstractModel):

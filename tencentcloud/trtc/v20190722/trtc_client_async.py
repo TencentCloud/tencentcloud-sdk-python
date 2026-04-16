@@ -25,6 +25,24 @@ class TrtcClient(AbstractClient):
     _endpoint = 'trtc.tencentcloudapi.com'
     _service = 'trtc'
 
+    async def AsyncTextToSpeech(
+            self,
+            request: models.AsyncTextToSpeechRequest,
+            opts: Dict = None,
+    ) -> models.AsyncTextToSpeechResponse:
+        """
+        异步语音合成
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "AsyncTextToSpeech"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.AsyncTextToSpeechResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ControlAIConversation(
             self,
             request: models.ControlAIConversationRequest,
@@ -332,6 +350,24 @@ class TrtcClient(AbstractClient):
         kwargs["action"] = "DescribeAITranscription"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeAITranscriptionResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAsyncTextToSpeech(
+            self,
+            request: models.DescribeAsyncTextToSpeechRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAsyncTextToSpeechResponse:
+        """
+        查询异步语音合成状态
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAsyncTextToSpeech"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAsyncTextToSpeechResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

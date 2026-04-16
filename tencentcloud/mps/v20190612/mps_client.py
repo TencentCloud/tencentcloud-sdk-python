@@ -2128,6 +2128,29 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDesignTask(self, request):
+        r"""查询配音相关任务（异步）结果
+
+        :param request: Request instance for DescribeDesignTask.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DescribeDesignTaskRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeDesignTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDesignTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDesignTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeGroupAttachFlowsById(self, request):
         r"""根据安全组反差关联的Flow信息。
 
@@ -3388,6 +3411,29 @@ class MpsClient(AbstractClient):
             body = self.call("DescribeWorkflows", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeWorkflowsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DesignVoiceAsync(self, request):
+        r"""音色设计，根据prompt生成音色ID
+
+        :param request: Request instance for DesignVoiceAsync.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DesignVoiceAsyncRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DesignVoiceAsyncResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DesignVoiceAsync", params, headers=headers)
+            response = json.loads(body)
+            model = models.DesignVoiceAsyncResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

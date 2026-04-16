@@ -258,6 +258,29 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CloseSourceStream(self, request):
+        r"""用于关闭回源客户源站功能
+
+        :param request: Request instance for CloseSourceStream.
+        :type request: :class:`tencentcloud.live.v20180801.models.CloseSourceStreamRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.CloseSourceStreamResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CloseSourceStream", params, headers=headers)
+            response = json.loads(body)
+            model = models.CloseSourceStreamResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CopyCaster(self, request):
         r"""该接口用来复制导播台配置
 
@@ -3692,6 +3715,29 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeOriginStreamInfo(self, request):
+        r"""获取直播源站配置信息，支持直播原站格式。
+
+        :param request: Request instance for DescribeOriginStreamInfo.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeOriginStreamInfoRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeOriginStreamInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeOriginStreamInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeOriginStreamInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribePlayErrorCodeDetailInfoList(self, request):
         r"""该接口为监控数据接口，数据采集及统计方式与计费数据不同，仅供运营分析使用，不能用于计费对账参考。
         查询下行播放错误码信息，某段时间内1分钟粒度的各http错误码出现的次数，包括4xx，5xx。
@@ -4817,6 +4863,29 @@ class LiveClient(AbstractClient):
             body = self.call("ModifyLiveTranscodeTemplate", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyLiveTranscodeTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyOriginStreamInfo(self, request):
+        r"""变更直播源站配置，支持直播原站格式。
+
+        :param request: Request instance for ModifyOriginStreamInfo.
+        :type request: :class:`tencentcloud.live.v20180801.models.ModifyOriginStreamInfoRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.ModifyOriginStreamInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyOriginStreamInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyOriginStreamInfoResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

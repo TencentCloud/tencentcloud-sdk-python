@@ -209,6 +209,9 @@ INVALIDPARAMETER_PITCH = 'InvalidParameter.Pitch'
 # 自定义布局参数错误。
 INVALIDPARAMETER_PRESETLAYOUTCONFIG = 'InvalidParameter.PresetLayoutConfig'
 
+# 发音纠正词典条目参数错误
+INVALIDPARAMETER_PRONUNCIATIONDICT = 'InvalidParameter.PronunciationDict'
+
 # PublishCdnUrls参数校验失败。
 INVALIDPARAMETER_PUBLISHCDNURLS = 'InvalidParameter.PublishCdnUrls'
 
@@ -448,6 +451,9 @@ UNSUPPORTEDOPERATION_INTERNALERROR = 'UnsupportedOperation.InternalError'
 
 # 不允许使用，请联系技术人员
 UNSUPPORTEDOPERATION_NOTALLOWED = 'UnsupportedOperation.NotAllowed'
+
+# 任务并发限制
+UNSUPPORTEDOPERATION_TASKLIMIT = 'UnsupportedOperation.TaskLimit'
 
 # 声音克隆错误
 UNSUPPORTEDOPERATION_VOICECLONEERROR = 'UnsupportedOperation.VoiceCloneError'

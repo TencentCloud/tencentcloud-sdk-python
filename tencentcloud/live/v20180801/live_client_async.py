@@ -207,6 +207,24 @@ class LiveClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CloseSourceStream(
+            self,
+            request: models.CloseSourceStreamRequest,
+            opts: Dict = None,
+    ) -> models.CloseSourceStreamResponse:
+        """
+        用于关闭回源客户源站功能
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CloseSourceStream"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CloseSourceStreamResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CopyCaster(
             self,
             request: models.CopyCasterRequest,
@@ -2916,6 +2934,24 @@ class LiveClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeOriginStreamInfo(
+            self,
+            request: models.DescribeOriginStreamInfoRequest,
+            opts: Dict = None,
+    ) -> models.DescribeOriginStreamInfoResponse:
+        """
+        获取直播源站配置信息，支持直播原站格式。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeOriginStreamInfo"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeOriginStreamInfoResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribePlayErrorCodeDetailInfoList(
             self,
             request: models.DescribePlayErrorCodeDetailInfoListRequest,
@@ -3805,6 +3841,24 @@ class LiveClient(AbstractClient):
         kwargs["action"] = "ModifyLiveTranscodeTemplate"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyLiveTranscodeTemplateResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyOriginStreamInfo(
+            self,
+            request: models.ModifyOriginStreamInfoRequest,
+            opts: Dict = None,
+    ) -> models.ModifyOriginStreamInfoResponse:
+        """
+        变更直播源站配置，支持直播原站格式。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyOriginStreamInfo"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyOriginStreamInfoResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

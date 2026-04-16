@@ -2216,8 +2216,11 @@ class LogConfiguration(AbstractModel):
         r"""
         :param _CLSConfig: <p>日志推送CLS的配置。</p>
         :type CLSConfig: :class:`tencentcloud.ags.v20250920.models.CLSConfig`
+        :param _LogSources: <p>日志源配置</p>
+        :type LogSources: :class:`tencentcloud.ags.v20250920.models.LogSources`
         """
         self._CLSConfig = None
+        self._LogSources = None
 
     @property
     def CLSConfig(self):
@@ -2230,11 +2233,63 @@ class LogConfiguration(AbstractModel):
     def CLSConfig(self, CLSConfig):
         self._CLSConfig = CLSConfig
 
+    @property
+    def LogSources(self):
+        r"""<p>日志源配置</p>
+        :rtype: :class:`tencentcloud.ags.v20250920.models.LogSources`
+        """
+        return self._LogSources
+
+    @LogSources.setter
+    def LogSources(self, LogSources):
+        self._LogSources = LogSources
+
 
     def _deserialize(self, params):
         if params.get("CLSConfig") is not None:
             self._CLSConfig = CLSConfig()
             self._CLSConfig._deserialize(params.get("CLSConfig"))
+        if params.get("LogSources") is not None:
+            self._LogSources = LogSources()
+            self._LogSources._deserialize(params.get("LogSources"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LogSources(AbstractModel):
+    r"""日志源配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Files: <p>需要采集的日志文件路径，必须是 /logs/ 目录下的文件，不支持子目录，最大支持 10 个文件。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Files: list of str
+        """
+        self._Files = None
+
+    @property
+    def Files(self):
+        r"""<p>需要采集的日志文件路径，必须是 /logs/ 目录下的文件，不支持子目录，最大支持 10 个文件。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._Files
+
+    @Files.setter
+    def Files(self, Files):
+        self._Files = Files
+
+
+    def _deserialize(self, params):
+        self._Files = params.get("Files")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

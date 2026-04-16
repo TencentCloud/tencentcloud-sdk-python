@@ -1677,6 +1677,24 @@ class MpsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeDesignTask(
+            self,
+            request: models.DescribeDesignTaskRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDesignTaskResponse:
+        """
+        查询配音相关任务（异步）结果
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDesignTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDesignTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeGroupAttachFlowsById(
             self,
             request: models.DescribeGroupAttachFlowsByIdRequest,
@@ -2666,6 +2684,24 @@ class MpsClient(AbstractClient):
         kwargs["action"] = "DescribeWorkflows"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeWorkflowsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DesignVoiceAsync(
+            self,
+            request: models.DesignVoiceAsyncRequest,
+            opts: Dict = None,
+    ) -> models.DesignVoiceAsyncResponse:
+        """
+        音色设计，根据prompt生成音色ID
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DesignVoiceAsync"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DesignVoiceAsyncResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

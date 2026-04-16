@@ -372,6 +372,24 @@ class DtsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeCompareDiffItems(
+            self,
+            request: models.DescribeCompareDiffItemsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCompareDiffItemsResponse:
+        """
+        本接口用于查询一致性校验任务中，不一致数据块的详情信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCompareDiffItems"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCompareDiffItemsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeCompareReport(
             self,
             request: models.DescribeCompareReportRequest,
@@ -607,6 +625,24 @@ class DtsClient(AbstractClient):
         kwargs["action"] = "DescribeSubscribeReturnable"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeSubscribeReturnableResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeSyncCompareDiffItems(
+            self,
+            request: models.DescribeSyncCompareDiffItemsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeSyncCompareDiffItemsResponse:
+        """
+        本接口用于查询一致性校验任务中，不一致数据块的详情信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeSyncCompareDiffItems"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeSyncCompareDiffItemsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

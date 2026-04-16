@@ -31872,6 +31872,149 @@ class DescribeContentReviewTemplatesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeDesignTaskRequest(AbstractModel):
+    r"""DescribeDesignTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务id</p>
+        :type TaskId: str
+        """
+        self._TaskId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务id</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDesignTaskResponse(AbstractModel):
+    r"""DescribeDesignTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorCode: <p>错误码，成功时返回0</p>
+        :type ErrorCode: int
+        :param _Msg: <p>错误信息，成功时返回success</p>
+        :type Msg: str
+        :param _Status: <p>任务状态</p><p>枚举值：</p><ul><li>success： 成功</li><li>fail： 失败</li><li>processing： 处理中</li></ul>
+        :type Status: str
+        :param _VoiceId: <p>音色id</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VoiceId: str
+        :param _ExtInfo: <p>扩展信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExtInfo: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ErrorCode = None
+        self._Msg = None
+        self._Status = None
+        self._VoiceId = None
+        self._ExtInfo = None
+        self._RequestId = None
+
+    @property
+    def ErrorCode(self):
+        r"""<p>错误码，成功时返回0</p>
+        :rtype: int
+        """
+        return self._ErrorCode
+
+    @ErrorCode.setter
+    def ErrorCode(self, ErrorCode):
+        self._ErrorCode = ErrorCode
+
+    @property
+    def Msg(self):
+        r"""<p>错误信息，成功时返回success</p>
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def Status(self):
+        r"""<p>任务状态</p><p>枚举值：</p><ul><li>success： 成功</li><li>fail： 失败</li><li>processing： 处理中</li></ul>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def VoiceId(self):
+        r"""<p>音色id</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._VoiceId
+
+    @VoiceId.setter
+    def VoiceId(self, VoiceId):
+        self._VoiceId = VoiceId
+
+    @property
+    def ExtInfo(self):
+        r"""<p>扩展信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExtInfo
+
+    @ExtInfo.setter
+    def ExtInfo(self, ExtInfo):
+        self._ExtInfo = ExtInfo
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ErrorCode = params.get("ErrorCode")
+        self._Msg = params.get("Msg")
+        self._Status = params.get("Status")
+        self._VoiceId = params.get("VoiceId")
+        self._ExtInfo = params.get("ExtInfo")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeEvent(AbstractModel):
     r"""查询Event的配置信息。
 
@@ -42323,6 +42466,130 @@ class DescribeWorkflowsResponse(AbstractModel):
                 obj = WorkflowInfo()
                 obj._deserialize(item)
                 self._WorkflowInfoSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DesignVoiceAsyncRequest(AbstractModel):
+    r"""DesignVoiceAsync请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Prompt: <p>音色描述</p>
+        :type Prompt: str
+        :param _ExtParam: <p>扩展参数，json字符串</p>
+        :type ExtParam: str
+        """
+        self._Prompt = None
+        self._ExtParam = None
+
+    @property
+    def Prompt(self):
+        r"""<p>音色描述</p>
+        :rtype: str
+        """
+        return self._Prompt
+
+    @Prompt.setter
+    def Prompt(self, Prompt):
+        self._Prompt = Prompt
+
+    @property
+    def ExtParam(self):
+        r"""<p>扩展参数，json字符串</p>
+        :rtype: str
+        """
+        return self._ExtParam
+
+    @ExtParam.setter
+    def ExtParam(self, ExtParam):
+        self._ExtParam = ExtParam
+
+
+    def _deserialize(self, params):
+        self._Prompt = params.get("Prompt")
+        self._ExtParam = params.get("ExtParam")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DesignVoiceAsyncResponse(AbstractModel):
+    r"""DesignVoiceAsync返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorCode: <p>错误码，成功时返回0</p>
+        :type ErrorCode: int
+        :param _Msg: <p>错误信息，成功时返回success</p>
+        :type Msg: str
+        :param _TaskId: <p>任务id，查询任务时使用</p>
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ErrorCode = None
+        self._Msg = None
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def ErrorCode(self):
+        r"""<p>错误码，成功时返回0</p>
+        :rtype: int
+        """
+        return self._ErrorCode
+
+    @ErrorCode.setter
+    def ErrorCode(self, ErrorCode):
+        self._ErrorCode = ErrorCode
+
+    @property
+    def Msg(self):
+        r"""<p>错误信息，成功时返回success</p>
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def TaskId(self):
+        r"""<p>任务id，查询任务时使用</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ErrorCode = params.get("ErrorCode")
+        self._Msg = params.get("Msg")
+        self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
 
 

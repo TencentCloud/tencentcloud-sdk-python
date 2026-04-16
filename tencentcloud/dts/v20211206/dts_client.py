@@ -468,6 +468,29 @@ class DtsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeCompareDiffItems(self, request):
+        r"""本接口用于查询一致性校验任务中，不一致数据块的详情信息
+
+        :param request: Request instance for DescribeCompareDiffItems.
+        :type request: :class:`tencentcloud.dts.v20211206.models.DescribeCompareDiffItemsRequest`
+        :rtype: :class:`tencentcloud.dts.v20211206.models.DescribeCompareDiffItemsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCompareDiffItems", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCompareDiffItemsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeCompareReport(self, request):
         r"""查询一致性校验任务详情
 
@@ -764,6 +787,29 @@ class DtsClient(AbstractClient):
             body = self.call("DescribeSubscribeReturnable", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeSubscribeReturnableResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeSyncCompareDiffItems(self, request):
+        r"""本接口用于查询一致性校验任务中，不一致数据块的详情信息
+
+        :param request: Request instance for DescribeSyncCompareDiffItems.
+        :type request: :class:`tencentcloud.dts.v20211206.models.DescribeSyncCompareDiffItemsRequest`
+        :rtype: :class:`tencentcloud.dts.v20211206.models.DescribeSyncCompareDiffItemsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSyncCompareDiffItems", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSyncCompareDiffItemsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

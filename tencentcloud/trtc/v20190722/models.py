@@ -525,6 +525,87 @@ class AgentParams(AbstractModel):
         
 
 
+class AlignmentItem(AbstractModel):
+    r"""字幕对齐
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TimeBeginMs: 字幕对应的时间起点
+        :type TimeBeginMs: int
+        :param _TimeEndMs: 字幕对应的时间尾点
+        :type TimeEndMs: int
+        :param _TextBegin: 字幕对应的文本索引起点
+        :type TextBegin: int
+        :param _TextEnd: 字幕对应的文本索引尾点
+        :type TextEnd: int
+        """
+        self._TimeBeginMs = None
+        self._TimeEndMs = None
+        self._TextBegin = None
+        self._TextEnd = None
+
+    @property
+    def TimeBeginMs(self):
+        r"""字幕对应的时间起点
+        :rtype: int
+        """
+        return self._TimeBeginMs
+
+    @TimeBeginMs.setter
+    def TimeBeginMs(self, TimeBeginMs):
+        self._TimeBeginMs = TimeBeginMs
+
+    @property
+    def TimeEndMs(self):
+        r"""字幕对应的时间尾点
+        :rtype: int
+        """
+        return self._TimeEndMs
+
+    @TimeEndMs.setter
+    def TimeEndMs(self, TimeEndMs):
+        self._TimeEndMs = TimeEndMs
+
+    @property
+    def TextBegin(self):
+        r"""字幕对应的文本索引起点
+        :rtype: int
+        """
+        return self._TextBegin
+
+    @TextBegin.setter
+    def TextBegin(self, TextBegin):
+        self._TextBegin = TextBegin
+
+    @property
+    def TextEnd(self):
+        r"""字幕对应的文本索引尾点
+        :rtype: int
+        """
+        return self._TextEnd
+
+    @TextEnd.setter
+    def TextEnd(self, TextEnd):
+        self._TextEnd = TextEnd
+
+
+    def _deserialize(self, params):
+        self._TimeBeginMs = params.get("TimeBeginMs")
+        self._TimeEndMs = params.get("TimeEndMs")
+        self._TextBegin = params.get("TextBegin")
+        self._TextEnd = params.get("TextEnd")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AmbientSound(AbstractModel):
     r"""背景音设置，将在通话中添加环境音效，使体验更加逼真。目前支持以下选项：
     coffee_shops: 咖啡店氛围，背景中有人聊天。
@@ -760,6 +841,199 @@ class AsrParam(AbstractModel):
         
 
 
+class AsyncTextToSpeechRequest(AbstractModel):
+    r"""AsyncTextToSpeech请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: 需要转语音的文字内容，最大允许50000字符，注意 1汉字=2字符
+        :type Text: str
+        :param _Voice: 文本转语音的声音配置
+        :type Voice: :class:`tencentcloud.trtc.v20190722.models.Voice`
+        :param _SdkAppId: TRTC的SdkAppId
+        :type SdkAppId: int
+        :param _AudioFormat: 文本转语音的输出音频的格式
+        :type AudioFormat: :class:`tencentcloud.trtc.v20190722.models.AudioFormat`
+        :param _Model: TTS的模型，当前固定为：flow_01_turbo
+        :type Model: str
+        :param _PronunciationDict: 多音字/生僻字发音纠正词典条目。指定特定词语在本次请求中使用的发音。
+        :type PronunciationDict: list of PronunciationDict
+        :param _AlignmentMode: 默认为0，0表示不生成字幕，1表示生成字幕
+        :type AlignmentMode: int
+        :param _LanguageCode: 需要合成的语言（ISO 639-1），默认自动识别，支持的语言如下：  zh（中文） en（英文） yue（粤语） ja（日语） ko（韩语） ar（阿拉伯语） id（印尼语） th（泰语）
+        :type LanguageCode: str
+        """
+        self._Text = None
+        self._Voice = None
+        self._SdkAppId = None
+        self._AudioFormat = None
+        self._Model = None
+        self._PronunciationDict = None
+        self._AlignmentMode = None
+        self._LanguageCode = None
+
+    @property
+    def Text(self):
+        r"""需要转语音的文字内容，最大允许50000字符，注意 1汉字=2字符
+        :rtype: str
+        """
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def Voice(self):
+        r"""文本转语音的声音配置
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.Voice`
+        """
+        return self._Voice
+
+    @Voice.setter
+    def Voice(self, Voice):
+        self._Voice = Voice
+
+    @property
+    def SdkAppId(self):
+        r"""TRTC的SdkAppId
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def AudioFormat(self):
+        r"""文本转语音的输出音频的格式
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.AudioFormat`
+        """
+        return self._AudioFormat
+
+    @AudioFormat.setter
+    def AudioFormat(self, AudioFormat):
+        self._AudioFormat = AudioFormat
+
+    @property
+    def Model(self):
+        r"""TTS的模型，当前固定为：flow_01_turbo
+        :rtype: str
+        """
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+    @property
+    def PronunciationDict(self):
+        r"""多音字/生僻字发音纠正词典条目。指定特定词语在本次请求中使用的发音。
+        :rtype: list of PronunciationDict
+        """
+        return self._PronunciationDict
+
+    @PronunciationDict.setter
+    def PronunciationDict(self, PronunciationDict):
+        self._PronunciationDict = PronunciationDict
+
+    @property
+    def AlignmentMode(self):
+        r"""默认为0，0表示不生成字幕，1表示生成字幕
+        :rtype: int
+        """
+        return self._AlignmentMode
+
+    @AlignmentMode.setter
+    def AlignmentMode(self, AlignmentMode):
+        self._AlignmentMode = AlignmentMode
+
+    @property
+    def LanguageCode(self):
+        r"""需要合成的语言（ISO 639-1），默认自动识别，支持的语言如下：  zh（中文） en（英文） yue（粤语） ja（日语） ko（韩语） ar（阿拉伯语） id（印尼语） th（泰语）
+        :rtype: str
+        """
+        return self._LanguageCode
+
+    @LanguageCode.setter
+    def LanguageCode(self, LanguageCode):
+        self._LanguageCode = LanguageCode
+
+
+    def _deserialize(self, params):
+        self._Text = params.get("Text")
+        if params.get("Voice") is not None:
+            self._Voice = Voice()
+            self._Voice._deserialize(params.get("Voice"))
+        self._SdkAppId = params.get("SdkAppId")
+        if params.get("AudioFormat") is not None:
+            self._AudioFormat = AudioFormat()
+            self._AudioFormat._deserialize(params.get("AudioFormat"))
+        self._Model = params.get("Model")
+        if params.get("PronunciationDict") is not None:
+            self._PronunciationDict = []
+            for item in params.get("PronunciationDict"):
+                obj = PronunciationDict()
+                obj._deserialize(item)
+                self._PronunciationDict.append(obj)
+        self._AlignmentMode = params.get("AlignmentMode")
+        self._LanguageCode = params.get("LanguageCode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AsyncTextToSpeechResponse(AbstractModel):
+    r"""AsyncTextToSpeech返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务ID
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""任务ID
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class AudioEncode(AbstractModel):
     r"""音频编码参数。
 
@@ -938,6 +1212,9 @@ class AudioFormat(AbstractModel):
 - TextToSpeech 非流式接口
 
  支持 pcm,wav,mp3,  默认: pcm
+
+- AsyncTextToSpeech
+支持pcm,mp3, 默认：mp3
         :type Format: str
         :param _SampleRate: 生成的音频采样率，默认24000
 可选
@@ -962,6 +1239,9 @@ class AudioFormat(AbstractModel):
 - TextToSpeech 非流式接口
 
  支持 pcm,wav,mp3,  默认: pcm
+
+- AsyncTextToSpeech
+支持pcm,mp3, 默认：mp3
         :rtype: str
         """
         return self._Format
@@ -3853,6 +4133,123 @@ class DescribeAITranscriptionResponse(AbstractModel):
         self._Status = params.get("Status")
         self._TaskId = params.get("TaskId")
         self._SessionId = params.get("SessionId")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAsyncTextToSpeechRequest(AbstractModel):
+    r"""DescribeAsyncTextToSpeech请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务ID
+        :type TaskId: str
+        """
+        self._TaskId = None
+
+    @property
+    def TaskId(self):
+        r"""任务ID
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAsyncTextToSpeechResponse(AbstractModel):
+    r"""DescribeAsyncTextToSpeech返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 任务状态
+- Processing，处理中
+- Success，任务成功
+- Failed，任务失败
+- Expired，任务过期
+        :type Status: str
+        :param _AudioDownloadUrl: 音频下载url
+        :type AudioDownloadUrl: str
+        :param _SubtitleDownloadUrl: 字幕下载url
+        :type SubtitleDownloadUrl: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Status = None
+        self._AudioDownloadUrl = None
+        self._SubtitleDownloadUrl = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        r"""任务状态
+- Processing，处理中
+- Success，任务成功
+- Failed，任务失败
+- Expired，任务过期
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def AudioDownloadUrl(self):
+        r"""音频下载url
+        :rtype: str
+        """
+        return self._AudioDownloadUrl
+
+    @AudioDownloadUrl.setter
+    def AudioDownloadUrl(self, AudioDownloadUrl):
+        self._AudioDownloadUrl = AudioDownloadUrl
+
+    @property
+    def SubtitleDownloadUrl(self):
+        r"""字幕下载url
+        :rtype: str
+        """
+        return self._SubtitleDownloadUrl
+
+    @SubtitleDownloadUrl.setter
+    def SubtitleDownloadUrl(self, SubtitleDownloadUrl):
+        self._SubtitleDownloadUrl = SubtitleDownloadUrl
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._AudioDownloadUrl = params.get("AudioDownloadUrl")
+        self._SubtitleDownloadUrl = params.get("SubtitleDownloadUrl")
         self._RequestId = params.get("RequestId")
 
 
@@ -12182,6 +12579,57 @@ class PresetLayoutConfig(AbstractModel):
         
 
 
+class PronunciationDict(AbstractModel):
+    r"""多音字/生僻字发音纠正词典条目。指定特定词语在本次请求中使用的发音。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Word: 需要纠正发音的词语，前后空格自动去除。同一请求中若有重复词语，以最后一条为准。
+        :type Word: str
+        :param _Pronunciation: 目标发音，支持以下格式：<br>① 带声调数字的拼音（1=阴平，2=阳平，3=上声，4=去声，5=轻声），如 yin2 hang2；<br>② 拼音连写（无空格），如 yin2hang2；<br>③ 文字+拼音混写，如 银hang2；<br>④ 直接文本替换，会将原始文本替换为目标文本
+        :type Pronunciation: str
+        """
+        self._Word = None
+        self._Pronunciation = None
+
+    @property
+    def Word(self):
+        r"""需要纠正发音的词语，前后空格自动去除。同一请求中若有重复词语，以最后一条为准。
+        :rtype: str
+        """
+        return self._Word
+
+    @Word.setter
+    def Word(self, Word):
+        self._Word = Word
+
+    @property
+    def Pronunciation(self):
+        r"""目标发音，支持以下格式：<br>① 带声调数字的拼音（1=阴平，2=阳平，3=上声，4=去声，5=轻声），如 yin2 hang2；<br>② 拼音连写（无空格），如 yin2hang2；<br>③ 文字+拼音混写，如 银hang2；<br>④ 直接文本替换，会将原始文本替换为目标文本
+        :rtype: str
+        """
+        return self._Pronunciation
+
+    @Pronunciation.setter
+    def Pronunciation(self, Pronunciation):
+        self._Pronunciation = Pronunciation
+
+
+    def _deserialize(self, params):
+        self._Word = params.get("Word")
+        self._Pronunciation = params.get("Pronunciation")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PublishCdnParams(AbstractModel):
     r"""第三方CDN转推参数
 
@@ -17304,6 +17752,10 @@ class TextToSpeechRequest(AbstractModel):
 - id（印尼语）
 - th（泰语）
         :type Language: str
+        :param _PronunciationDict: 多音字/生僻字发音纠正词典条目。指定特定词语在本次请求中使用的发音。
+        :type PronunciationDict: list of PronunciationDict
+        :param _AlignmentMode: 默认为0，0表示不生成字幕，1表示生成字幕
+        :type AlignmentMode: int
         """
         self._Text = None
         self._Voice = None
@@ -17312,6 +17764,8 @@ class TextToSpeechRequest(AbstractModel):
         self._APIKey = None
         self._Model = None
         self._Language = None
+        self._PronunciationDict = None
+        self._AlignmentMode = None
 
     @property
     def Text(self):
@@ -17402,6 +17856,28 @@ class TextToSpeechRequest(AbstractModel):
     def Language(self, Language):
         self._Language = Language
 
+    @property
+    def PronunciationDict(self):
+        r"""多音字/生僻字发音纠正词典条目。指定特定词语在本次请求中使用的发音。
+        :rtype: list of PronunciationDict
+        """
+        return self._PronunciationDict
+
+    @PronunciationDict.setter
+    def PronunciationDict(self, PronunciationDict):
+        self._PronunciationDict = PronunciationDict
+
+    @property
+    def AlignmentMode(self):
+        r"""默认为0，0表示不生成字幕，1表示生成字幕
+        :rtype: int
+        """
+        return self._AlignmentMode
+
+    @AlignmentMode.setter
+    def AlignmentMode(self, AlignmentMode):
+        self._AlignmentMode = AlignmentMode
+
 
     def _deserialize(self, params):
         self._Text = params.get("Text")
@@ -17415,6 +17891,13 @@ class TextToSpeechRequest(AbstractModel):
         self._APIKey = params.get("APIKey")
         self._Model = params.get("Model")
         self._Language = params.get("Language")
+        if params.get("PronunciationDict") is not None:
+            self._PronunciationDict = []
+            for item in params.get("PronunciationDict"):
+                obj = PronunciationDict()
+                obj._deserialize(item)
+                self._PronunciationDict.append(obj)
+        self._AlignmentMode = params.get("AlignmentMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17434,10 +17917,13 @@ class TextToSpeechResponse(AbstractModel):
         r"""
         :param _Audio: Base64编码的音频数据
         :type Audio: str
+        :param _Alignments: 字幕对齐数据
+        :type Alignments: list of AlignmentItem
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Audio = None
+        self._Alignments = None
         self._RequestId = None
 
     @property
@@ -17450,6 +17936,17 @@ class TextToSpeechResponse(AbstractModel):
     @Audio.setter
     def Audio(self, Audio):
         self._Audio = Audio
+
+    @property
+    def Alignments(self):
+        r"""字幕对齐数据
+        :rtype: list of AlignmentItem
+        """
+        return self._Alignments
+
+    @Alignments.setter
+    def Alignments(self, Alignments):
+        self._Alignments = Alignments
 
     @property
     def RequestId(self):
@@ -17465,6 +17962,12 @@ class TextToSpeechResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._Audio = params.get("Audio")
+        if params.get("Alignments") is not None:
+            self._Alignments = []
+            for item in params.get("Alignments"):
+                obj = AlignmentItem()
+                obj._deserialize(item)
+                self._Alignments.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -17498,6 +18001,10 @@ class TextToSpeechSSERequest(AbstractModel):
 - th（泰语）
 
         :type Language: str
+        :param _PronunciationDict: 多音字/生僻字发音纠正词典条目。指定特定词语在本次请求中使用的发音。
+        :type PronunciationDict: list of PronunciationDict
+        :param _AlignmentMode: 默认为0，0表示不生成字幕，1表示生成字幕
+        :type AlignmentMode: int
         """
         self._Text = None
         self._Voice = None
@@ -17506,6 +18013,8 @@ class TextToSpeechSSERequest(AbstractModel):
         self._APIKey = None
         self._Model = None
         self._Language = None
+        self._PronunciationDict = None
+        self._AlignmentMode = None
 
     @property
     def Text(self):
@@ -17597,6 +18106,28 @@ class TextToSpeechSSERequest(AbstractModel):
     def Language(self, Language):
         self._Language = Language
 
+    @property
+    def PronunciationDict(self):
+        r"""多音字/生僻字发音纠正词典条目。指定特定词语在本次请求中使用的发音。
+        :rtype: list of PronunciationDict
+        """
+        return self._PronunciationDict
+
+    @PronunciationDict.setter
+    def PronunciationDict(self, PronunciationDict):
+        self._PronunciationDict = PronunciationDict
+
+    @property
+    def AlignmentMode(self):
+        r"""默认为0，0表示不生成字幕，1表示生成字幕
+        :rtype: int
+        """
+        return self._AlignmentMode
+
+    @AlignmentMode.setter
+    def AlignmentMode(self, AlignmentMode):
+        self._AlignmentMode = AlignmentMode
+
 
     def _deserialize(self, params):
         self._Text = params.get("Text")
@@ -17610,6 +18141,13 @@ class TextToSpeechSSERequest(AbstractModel):
         self._APIKey = params.get("APIKey")
         self._Model = params.get("Model")
         self._Language = params.get("Language")
+        if params.get("PronunciationDict") is not None:
+            self._PronunciationDict = []
+            for item in params.get("PronunciationDict"):
+                obj = PronunciationDict()
+                obj._deserialize(item)
+                self._PronunciationDict.append(obj)
+        self._AlignmentMode = params.get("AlignmentMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

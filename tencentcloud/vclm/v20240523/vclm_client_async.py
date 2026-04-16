@@ -43,6 +43,60 @@ class VclmClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateAigcElement(
+            self,
+            request: models.CreateAigcElementRequest,
+            opts: Dict = None,
+    ) -> models.CreateAigcElementResponse:
+        """
+        提交视频特效任务接口
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateAigcElement"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateAigcElementResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteAigcElement(
+            self,
+            request: models.DeleteAigcElementRequest,
+            opts: Dict = None,
+    ) -> models.DeleteAigcElementResponse:
+        """
+        删除主体库
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteAigcElement"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteAigcElementResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAigcElement(
+            self,
+            request: models.DescribeAigcElementRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAigcElementResponse:
+        """
+        提交视频特效任务接口
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAigcElement"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAigcElementResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeAigcVideoJob(
             self,
             request: models.DescribeAigcVideoJobRequest,

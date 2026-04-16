@@ -1399,16 +1399,16 @@ class LogoRect(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _X: 左上角X坐标
+        :param _X: <p>左上角X坐标</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type X: int
-        :param _Y: 左上角Y坐标
+        :param _Y: <p>左上角Y坐标</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Y: int
-        :param _Width: 方框宽度
+        :param _Width: <p>方框宽度<br>单位为 px</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Width: int
-        :param _Height: 方框高度
+        :param _Height: <p>方框高度<br>单位为 px</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Height: int
         """
@@ -1419,7 +1419,7 @@ class LogoRect(AbstractModel):
 
     @property
     def X(self):
-        r"""左上角X坐标
+        r"""<p>左上角X坐标</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -1431,7 +1431,7 @@ class LogoRect(AbstractModel):
 
     @property
     def Y(self):
-        r"""左上角Y坐标
+        r"""<p>左上角Y坐标</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -1443,7 +1443,7 @@ class LogoRect(AbstractModel):
 
     @property
     def Width(self):
-        r"""方框宽度
+        r"""<p>方框宽度<br>单位为 px</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -1455,7 +1455,7 @@ class LogoRect(AbstractModel):
 
     @property
     def Height(self):
-        r"""方框高度
+        r"""<p>方框高度<br>单位为 px</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """

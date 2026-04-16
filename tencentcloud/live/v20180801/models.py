@@ -5627,6 +5627,70 @@ class ClientIpPlaySumInfo(AbstractModel):
         
 
 
+class CloseSourceStreamRequest(AbstractModel):
+    r"""CloseSourceStream请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DomainName: 播放域名。
+        :type DomainName: str
+        """
+        self._DomainName = None
+
+    @property
+    def DomainName(self):
+        r"""播放域名。
+        :rtype: str
+        """
+        return self._DomainName
+
+    @DomainName.setter
+    def DomainName(self, DomainName):
+        self._DomainName = DomainName
+
+
+    def _deserialize(self, params):
+        self._DomainName = params.get("DomainName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloseSourceStreamResponse(AbstractModel):
+    r"""CloseSourceStream返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CloudEffectInfo(AbstractModel):
     r"""云端特效信息。
 
@@ -24882,6 +24946,61 @@ class DescribeMonitorReportResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeOriginStreamInfoRequest(AbstractModel):
+    r"""DescribeOriginStreamInfo请求参数结构体
+
+    """
+
+
+class DescribeOriginStreamInfoResponse(AbstractModel):
+    r"""DescribeOriginStreamInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CacheFormatRule: 缓存格式规则。 
+0：默认格式。
+1：云直播源站格式。
+当 OriginStreamPlayType 为 customization 时候生效。
+        :type CacheFormatRule: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._CacheFormatRule = None
+        self._RequestId = None
+
+    @property
+    def CacheFormatRule(self):
+        r"""缓存格式规则。 
+0：默认格式。
+1：云直播源站格式。
+当 OriginStreamPlayType 为 customization 时候生效。
+        :rtype: int
+        """
+        return self._CacheFormatRule
+
+    @CacheFormatRule.setter
+    def CacheFormatRule(self, CacheFormatRule):
+        self._CacheFormatRule = CacheFormatRule
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._CacheFormatRule = params.get("CacheFormatRule")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribePlayErrorCodeDetailInfoListRequest(AbstractModel):
     r"""DescribePlayErrorCodeDetailInfoList请求参数结构体
 
@@ -36078,6 +36197,40 @@ baseline/main/high。
 
 class ModifyLiveTranscodeTemplateResponse(AbstractModel):
     r"""ModifyLiveTranscodeTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyOriginStreamInfoRequest(AbstractModel):
+    r"""ModifyOriginStreamInfo请求参数结构体
+
+    """
+
+
+class ModifyOriginStreamInfoResponse(AbstractModel):
+    r"""ModifyOriginStreamInfo返回参数结构体
 
     """
 

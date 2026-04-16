@@ -5588,6 +5588,212 @@ class DescribeCheckSyncJobResultResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeCompareDiffItemsRequest(AbstractModel):
+    r"""DescribeCompareDiffItems请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: 迁移任务 Id
+        :type JobId: str
+        :param _CompareTaskId: 校验任务 Id
+        :type CompareTaskId: str
+        :param _DBName: 数据库名
+        :type DBName: str
+        :param _SchemaName: schema名
+        :type SchemaName: str
+        :param _TableName: 数据表名
+        :type TableName: str
+        :param _ChunkId: 数据分块号
+        :type ChunkId: int
+        :param _Limit: 分页条件，查询结果返回条数
+        :type Limit: int
+        :param _Offset: 分页条件，查询的起始位置
+        :type Offset: int
+        """
+        self._JobId = None
+        self._CompareTaskId = None
+        self._DBName = None
+        self._SchemaName = None
+        self._TableName = None
+        self._ChunkId = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def JobId(self):
+        r"""迁移任务 Id
+        :rtype: str
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def CompareTaskId(self):
+        r"""校验任务 Id
+        :rtype: str
+        """
+        return self._CompareTaskId
+
+    @CompareTaskId.setter
+    def CompareTaskId(self, CompareTaskId):
+        self._CompareTaskId = CompareTaskId
+
+    @property
+    def DBName(self):
+        r"""数据库名
+        :rtype: str
+        """
+        return self._DBName
+
+    @DBName.setter
+    def DBName(self, DBName):
+        self._DBName = DBName
+
+    @property
+    def SchemaName(self):
+        r"""schema名
+        :rtype: str
+        """
+        return self._SchemaName
+
+    @SchemaName.setter
+    def SchemaName(self, SchemaName):
+        self._SchemaName = SchemaName
+
+    @property
+    def TableName(self):
+        r"""数据表名
+        :rtype: str
+        """
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def ChunkId(self):
+        r"""数据分块号
+        :rtype: int
+        """
+        return self._ChunkId
+
+    @ChunkId.setter
+    def ChunkId(self, ChunkId):
+        self._ChunkId = ChunkId
+
+    @property
+    def Limit(self):
+        r"""分页条件，查询结果返回条数
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""分页条件，查询的起始位置
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        self._CompareTaskId = params.get("CompareTaskId")
+        self._DBName = params.get("DBName")
+        self._SchemaName = params.get("SchemaName")
+        self._TableName = params.get("TableName")
+        self._ChunkId = params.get("ChunkId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCompareDiffItemsResponse(AbstractModel):
+    r"""DescribeCompareDiffItems返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 查询结果的数量
+        :type TotalCount: int
+        :param _Items: 查询结果详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of DiffChunkItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Items = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""查询结果的数量
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Items(self):
+        r"""查询结果详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DiffChunkItem
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = DiffChunkItem()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeCompareReportRequest(AbstractModel):
     r"""DescribeCompareReport请求参数结构体
 
@@ -6911,37 +7117,37 @@ class DescribeMigrationJobsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 数据迁移任务ID，如：dts-amm1jw5q
+        :param _JobId: <p>数据迁移任务ID，如：dts-amm1jw5q</p>
         :type JobId: str
-        :param _JobName: 数据迁移任务名称
+        :param _JobName: <p>数据迁移任务名称</p>
         :type JobName: str
-        :param _Status: 数据迁移任务状态，可取值包括：created(创建完成)、checking(校验中)、checkPass(校验通过)、checkNotPass(校验不通过)、readyRun(准备运行)、running(任务运行中)、readyComplete(准备完成)、success(任务成功)、failed(任务失败)、stopping(中止中)、completing(完成中)
+        :param _Status: <p>数据迁移任务状态，可取值包括：created(创建完成)、checking(校验中)、checkPass(校验通过)、checkNotPass(校验不通过)、readyRun(准备运行)、running(任务运行中)、readyComplete(准备完成)、success(任务成功)、failed(任务失败)、stopping(中止中)、completing(完成中)</p>
         :type Status: list of str
-        :param _SrcInstanceId: 源实例ID，格式如：cdb-c1nl9rpv
+        :param _SrcInstanceId: <p>源实例ID，格式如：cdb-c1nl9rpv</p>
         :type SrcInstanceId: str
-        :param _SrcRegion: 源实例地域，如：ap-guangzhou
+        :param _SrcRegion: <p>源实例地域，如：ap-guangzhou</p>
         :type SrcRegion: str
-        :param _SrcDatabaseType: 源实例数据库类型，如：sqlserver,mysql,mongodb,redis,tendis,keewidb,clickhouse,cynosdbmysql,percona,tdsqlpercona,mariadb,tdsqlmysql,postgresql
+        :param _SrcDatabaseType: <p>源实例数据库类型，如：sqlserver,mysql,mongodb,redis,tendis,keewidb,clickhouse,cynosdbmysql,percona,tdsqlpercona,mariadb,tdsqlmysql,postgresql</p>
         :type SrcDatabaseType: list of str
-        :param _SrcAccessType: 源实例接入类型，值包括：extranet(外网)、vpncloud(云vpn接入的实例)、dcg(专线接入的实例)、ccn(云联网接入的实例)、cdb(云上cdb实例)、cvm(cvm自建实例)
+        :param _SrcAccessType: <p>源实例接入类型，值包括：extranet(外网)、vpncloud(云vpn接入的实例)、dcg(专线接入的实例)、ccn(云联网接入的实例)、cdb(云上cdb实例)、cvm(cvm自建实例)</p>
         :type SrcAccessType: list of str
-        :param _DstInstanceId: 目标实例ID，格式如：cdb-c1nl9rpv
+        :param _DstInstanceId: <p>目标实例ID，格式如：cdb-c1nl9rpv</p>
         :type DstInstanceId: str
-        :param _DstRegion: 目标实例地域，如：ap-guangzhou
+        :param _DstRegion: <p>目标实例地域，如：ap-guangzhou</p>
         :type DstRegion: str
-        :param _DstDatabaseType: 目标源实例数据库类型，如：sqlserver,mysql,mongodb,redis,tendis,keewidb,clickhouse,cynosdbmysql,percona,tdsqlpercona,mariadb,tdsqlmysql,postgresql
+        :param _DstDatabaseType: <p>目标源实例数据库类型，如：sqlserver,mysql,mongodb,redis,tendis,keewidb,clickhouse,cynosdbmysql,percona,tdsqlpercona,mariadb,tdsqlmysql,postgresql</p>
         :type DstDatabaseType: list of str
-        :param _DstAccessType: 目标实例接入类型，值包括：extranet(外网)、vpncloud(云vpn接入的实例)、dcg(专线接入的实例)、ccn(云联网接入的实例)、cdb(云上cdb实例)、cvm(cvm自建实例)
+        :param _DstAccessType: <p>目标实例接入类型，值包括：extranet(外网)、vpncloud(云vpn接入的实例)、dcg(专线接入的实例)、ccn(云联网接入的实例)、cdb(云上cdb实例)、cvm(cvm自建实例)</p>
         :type DstAccessType: list of str
-        :param _RunMode: 任务运行模式，值包括：immediate(立即运行)，timed(定时运行)
+        :param _RunMode: <p>任务运行模式，值包括：immediate(立即运行)，timed(定时运行)</p>
         :type RunMode: str
-        :param _OrderSeq: 排序方式，可能取值为asc、desc，默认按照创建时间倒序
+        :param _OrderSeq: <p>排序方式，可能取值为asc、desc，默认按照创建时间倒序</p>
         :type OrderSeq: str
-        :param _Limit: 返回实例数量，默认20，有效区间[1,100]
+        :param _Limit: <p>返回实例数量，默认20，有效区间[1,100]</p>
         :type Limit: int
-        :param _Offset: 偏移量，默认为0
+        :param _Offset: <p>偏移量，默认为0</p>
         :type Offset: int
-        :param _TagFilters: 标签过滤
+        :param _TagFilters: <p>标签过滤</p>
         :type TagFilters: list of TagFilter
         """
         self._JobId = None
@@ -6963,7 +7169,7 @@ class DescribeMigrationJobsRequest(AbstractModel):
 
     @property
     def JobId(self):
-        r"""数据迁移任务ID，如：dts-amm1jw5q
+        r"""<p>数据迁移任务ID，如：dts-amm1jw5q</p>
         :rtype: str
         """
         return self._JobId
@@ -6974,7 +7180,7 @@ class DescribeMigrationJobsRequest(AbstractModel):
 
     @property
     def JobName(self):
-        r"""数据迁移任务名称
+        r"""<p>数据迁移任务名称</p>
         :rtype: str
         """
         return self._JobName
@@ -6985,7 +7191,7 @@ class DescribeMigrationJobsRequest(AbstractModel):
 
     @property
     def Status(self):
-        r"""数据迁移任务状态，可取值包括：created(创建完成)、checking(校验中)、checkPass(校验通过)、checkNotPass(校验不通过)、readyRun(准备运行)、running(任务运行中)、readyComplete(准备完成)、success(任务成功)、failed(任务失败)、stopping(中止中)、completing(完成中)
+        r"""<p>数据迁移任务状态，可取值包括：created(创建完成)、checking(校验中)、checkPass(校验通过)、checkNotPass(校验不通过)、readyRun(准备运行)、running(任务运行中)、readyComplete(准备完成)、success(任务成功)、failed(任务失败)、stopping(中止中)、completing(完成中)</p>
         :rtype: list of str
         """
         return self._Status
@@ -6996,7 +7202,7 @@ class DescribeMigrationJobsRequest(AbstractModel):
 
     @property
     def SrcInstanceId(self):
-        r"""源实例ID，格式如：cdb-c1nl9rpv
+        r"""<p>源实例ID，格式如：cdb-c1nl9rpv</p>
         :rtype: str
         """
         return self._SrcInstanceId
@@ -7007,7 +7213,7 @@ class DescribeMigrationJobsRequest(AbstractModel):
 
     @property
     def SrcRegion(self):
-        r"""源实例地域，如：ap-guangzhou
+        r"""<p>源实例地域，如：ap-guangzhou</p>
         :rtype: str
         """
         return self._SrcRegion
@@ -7018,7 +7224,7 @@ class DescribeMigrationJobsRequest(AbstractModel):
 
     @property
     def SrcDatabaseType(self):
-        r"""源实例数据库类型，如：sqlserver,mysql,mongodb,redis,tendis,keewidb,clickhouse,cynosdbmysql,percona,tdsqlpercona,mariadb,tdsqlmysql,postgresql
+        r"""<p>源实例数据库类型，如：sqlserver,mysql,mongodb,redis,tendis,keewidb,clickhouse,cynosdbmysql,percona,tdsqlpercona,mariadb,tdsqlmysql,postgresql</p>
         :rtype: list of str
         """
         return self._SrcDatabaseType
@@ -7029,7 +7235,7 @@ class DescribeMigrationJobsRequest(AbstractModel):
 
     @property
     def SrcAccessType(self):
-        r"""源实例接入类型，值包括：extranet(外网)、vpncloud(云vpn接入的实例)、dcg(专线接入的实例)、ccn(云联网接入的实例)、cdb(云上cdb实例)、cvm(cvm自建实例)
+        r"""<p>源实例接入类型，值包括：extranet(外网)、vpncloud(云vpn接入的实例)、dcg(专线接入的实例)、ccn(云联网接入的实例)、cdb(云上cdb实例)、cvm(cvm自建实例)</p>
         :rtype: list of str
         """
         return self._SrcAccessType
@@ -7040,7 +7246,7 @@ class DescribeMigrationJobsRequest(AbstractModel):
 
     @property
     def DstInstanceId(self):
-        r"""目标实例ID，格式如：cdb-c1nl9rpv
+        r"""<p>目标实例ID，格式如：cdb-c1nl9rpv</p>
         :rtype: str
         """
         return self._DstInstanceId
@@ -7051,7 +7257,7 @@ class DescribeMigrationJobsRequest(AbstractModel):
 
     @property
     def DstRegion(self):
-        r"""目标实例地域，如：ap-guangzhou
+        r"""<p>目标实例地域，如：ap-guangzhou</p>
         :rtype: str
         """
         return self._DstRegion
@@ -7062,7 +7268,7 @@ class DescribeMigrationJobsRequest(AbstractModel):
 
     @property
     def DstDatabaseType(self):
-        r"""目标源实例数据库类型，如：sqlserver,mysql,mongodb,redis,tendis,keewidb,clickhouse,cynosdbmysql,percona,tdsqlpercona,mariadb,tdsqlmysql,postgresql
+        r"""<p>目标源实例数据库类型，如：sqlserver,mysql,mongodb,redis,tendis,keewidb,clickhouse,cynosdbmysql,percona,tdsqlpercona,mariadb,tdsqlmysql,postgresql</p>
         :rtype: list of str
         """
         return self._DstDatabaseType
@@ -7073,7 +7279,7 @@ class DescribeMigrationJobsRequest(AbstractModel):
 
     @property
     def DstAccessType(self):
-        r"""目标实例接入类型，值包括：extranet(外网)、vpncloud(云vpn接入的实例)、dcg(专线接入的实例)、ccn(云联网接入的实例)、cdb(云上cdb实例)、cvm(cvm自建实例)
+        r"""<p>目标实例接入类型，值包括：extranet(外网)、vpncloud(云vpn接入的实例)、dcg(专线接入的实例)、ccn(云联网接入的实例)、cdb(云上cdb实例)、cvm(cvm自建实例)</p>
         :rtype: list of str
         """
         return self._DstAccessType
@@ -7084,7 +7290,7 @@ class DescribeMigrationJobsRequest(AbstractModel):
 
     @property
     def RunMode(self):
-        r"""任务运行模式，值包括：immediate(立即运行)，timed(定时运行)
+        r"""<p>任务运行模式，值包括：immediate(立即运行)，timed(定时运行)</p>
         :rtype: str
         """
         return self._RunMode
@@ -7095,7 +7301,7 @@ class DescribeMigrationJobsRequest(AbstractModel):
 
     @property
     def OrderSeq(self):
-        r"""排序方式，可能取值为asc、desc，默认按照创建时间倒序
+        r"""<p>排序方式，可能取值为asc、desc，默认按照创建时间倒序</p>
         :rtype: str
         """
         return self._OrderSeq
@@ -7106,7 +7312,7 @@ class DescribeMigrationJobsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""返回实例数量，默认20，有效区间[1,100]
+        r"""<p>返回实例数量，默认20，有效区间[1,100]</p>
         :rtype: int
         """
         return self._Limit
@@ -7117,7 +7323,7 @@ class DescribeMigrationJobsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""偏移量，默认为0
+        r"""<p>偏移量，默认为0</p>
         :rtype: int
         """
         return self._Offset
@@ -7128,7 +7334,7 @@ class DescribeMigrationJobsRequest(AbstractModel):
 
     @property
     def TagFilters(self):
-        r"""标签过滤
+        r"""<p>标签过滤</p>
         :rtype: list of TagFilter
         """
         return self._TagFilters
@@ -7177,9 +7383,9 @@ class DescribeMigrationJobsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 迁移任务数量
+        :param _TotalCount: <p>迁移任务数量</p>
         :type TotalCount: int
-        :param _JobList: 迁移任务列表
+        :param _JobList: <p>迁移任务列表</p>
         :type JobList: list of JobItem
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7190,7 +7396,7 @@ class DescribeMigrationJobsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""迁移任务数量
+        r"""<p>迁移任务数量</p>
         :rtype: int
         """
         return self._TotalCount
@@ -7201,7 +7407,7 @@ class DescribeMigrationJobsResponse(AbstractModel):
 
     @property
     def JobList(self):
-        r"""迁移任务列表
+        r"""<p>迁移任务列表</p>
         :rtype: list of JobItem
         """
         return self._JobList
@@ -8614,6 +8820,212 @@ class DescribeSubscribeReturnableResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeSyncCompareDiffItemsRequest(AbstractModel):
+    r"""DescribeSyncCompareDiffItems请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: 迁移任务 Id
+        :type JobId: str
+        :param _CompareTaskId: 校验任务 Id
+        :type CompareTaskId: str
+        :param _DBName: 数据库名
+        :type DBName: str
+        :param _SchemaName: schema名
+        :type SchemaName: str
+        :param _TableName: 数据表名
+        :type TableName: str
+        :param _ChunkId: 数据分块号
+        :type ChunkId: int
+        :param _Limit: 分页条件，查询结果返回条数
+        :type Limit: int
+        :param _Offset: 分页条件，查询的起始位置
+        :type Offset: int
+        """
+        self._JobId = None
+        self._CompareTaskId = None
+        self._DBName = None
+        self._SchemaName = None
+        self._TableName = None
+        self._ChunkId = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def JobId(self):
+        r"""迁移任务 Id
+        :rtype: str
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def CompareTaskId(self):
+        r"""校验任务 Id
+        :rtype: str
+        """
+        return self._CompareTaskId
+
+    @CompareTaskId.setter
+    def CompareTaskId(self, CompareTaskId):
+        self._CompareTaskId = CompareTaskId
+
+    @property
+    def DBName(self):
+        r"""数据库名
+        :rtype: str
+        """
+        return self._DBName
+
+    @DBName.setter
+    def DBName(self, DBName):
+        self._DBName = DBName
+
+    @property
+    def SchemaName(self):
+        r"""schema名
+        :rtype: str
+        """
+        return self._SchemaName
+
+    @SchemaName.setter
+    def SchemaName(self, SchemaName):
+        self._SchemaName = SchemaName
+
+    @property
+    def TableName(self):
+        r"""数据表名
+        :rtype: str
+        """
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def ChunkId(self):
+        r"""数据分块号
+        :rtype: int
+        """
+        return self._ChunkId
+
+    @ChunkId.setter
+    def ChunkId(self, ChunkId):
+        self._ChunkId = ChunkId
+
+    @property
+    def Limit(self):
+        r"""分页条件，查询结果返回条数
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""分页条件，查询的起始位置
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        self._CompareTaskId = params.get("CompareTaskId")
+        self._DBName = params.get("DBName")
+        self._SchemaName = params.get("SchemaName")
+        self._TableName = params.get("TableName")
+        self._ChunkId = params.get("ChunkId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSyncCompareDiffItemsResponse(AbstractModel):
+    r"""DescribeSyncCompareDiffItems返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 查询结果的数量
+        :type TotalCount: int
+        :param _Items: 查询结果详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of DiffChunkItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Items = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""查询结果的数量
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Items(self):
+        r"""查询结果详情
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DiffChunkItem
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = DiffChunkItem()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeSyncCompareReportRequest(AbstractModel):
     r"""DescribeSyncCompareReport请求参数结构体
 
@@ -9659,6 +10071,195 @@ class DetailCheckItem(AbstractModel):
         self._ErrorLog = params.get("ErrorLog")
         self._HelpDoc = params.get("HelpDoc")
         self._SkipInfo = params.get("SkipInfo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DiffChunkItem(AbstractModel):
+    r"""数据块内不一致数据的详情信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DBName: 数据库名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DBName: str
+        :param _SchemaName: schema名
+        :type SchemaName: str
+        :param _TableName: 数据表名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TableName: str
+        :param _ChunkId: 分块号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChunkId: int
+        :param _Identifier: 数据标识符，比如主键信息等
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Identifier: str
+        :param _DiffType: 不一致类型，可能的取值为：data - 两边数据不一致；srcLack - 源缺失；dstLack - 目标缺失
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiffType: str
+        :param _SchemaInfo: 表结构信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SchemaInfo: list of str
+        :param _SrcItem: 源端数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SrcItem: list of str
+        :param _DstItem: 目标端数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DstItem: list of str
+        :param _FinishedAt: 完成时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FinishedAt: str
+        """
+        self._DBName = None
+        self._SchemaName = None
+        self._TableName = None
+        self._ChunkId = None
+        self._Identifier = None
+        self._DiffType = None
+        self._SchemaInfo = None
+        self._SrcItem = None
+        self._DstItem = None
+        self._FinishedAt = None
+
+    @property
+    def DBName(self):
+        r"""数据库名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DBName
+
+    @DBName.setter
+    def DBName(self, DBName):
+        self._DBName = DBName
+
+    @property
+    def SchemaName(self):
+        r"""schema名
+        :rtype: str
+        """
+        return self._SchemaName
+
+    @SchemaName.setter
+    def SchemaName(self, SchemaName):
+        self._SchemaName = SchemaName
+
+    @property
+    def TableName(self):
+        r"""数据表名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def ChunkId(self):
+        r"""分块号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ChunkId
+
+    @ChunkId.setter
+    def ChunkId(self, ChunkId):
+        self._ChunkId = ChunkId
+
+    @property
+    def Identifier(self):
+        r"""数据标识符，比如主键信息等
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Identifier
+
+    @Identifier.setter
+    def Identifier(self, Identifier):
+        self._Identifier = Identifier
+
+    @property
+    def DiffType(self):
+        r"""不一致类型，可能的取值为：data - 两边数据不一致；srcLack - 源缺失；dstLack - 目标缺失
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DiffType
+
+    @DiffType.setter
+    def DiffType(self, DiffType):
+        self._DiffType = DiffType
+
+    @property
+    def SchemaInfo(self):
+        r"""表结构信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._SchemaInfo
+
+    @SchemaInfo.setter
+    def SchemaInfo(self, SchemaInfo):
+        self._SchemaInfo = SchemaInfo
+
+    @property
+    def SrcItem(self):
+        r"""源端数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._SrcItem
+
+    @SrcItem.setter
+    def SrcItem(self, SrcItem):
+        self._SrcItem = SrcItem
+
+    @property
+    def DstItem(self):
+        r"""目标端数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._DstItem
+
+    @DstItem.setter
+    def DstItem(self, DstItem):
+        self._DstItem = DstItem
+
+    @property
+    def FinishedAt(self):
+        r"""完成时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FinishedAt
+
+    @FinishedAt.setter
+    def FinishedAt(self, FinishedAt):
+        self._FinishedAt = FinishedAt
+
+
+    def _deserialize(self, params):
+        self._DBName = params.get("DBName")
+        self._SchemaName = params.get("SchemaName")
+        self._TableName = params.get("TableName")
+        self._ChunkId = params.get("ChunkId")
+        self._Identifier = params.get("Identifier")
+        self._DiffType = params.get("DiffType")
+        self._SchemaInfo = params.get("SchemaInfo")
+        self._SrcItem = params.get("SrcItem")
+        self._DstItem = params.get("DstItem")
+        self._FinishedAt = params.get("FinishedAt")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12746,23 +13347,22 @@ class MigrateOption(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DatabaseTable: 迁移对象选项，需要告知迁移服务迁移哪些库表对象
+        :param _DatabaseTable: <p>迁移对象选项，需要告知迁移服务迁移哪些库表对象</p>
         :type DatabaseTable: :class:`tencentcloud.dts.v20211206.models.DatabaseTableObject`
-        :param _MigrateType: 迁移类型，full(全量迁移)，structure(结构迁移)，fullAndIncrement(全量加增量迁移)， 默认为fullAndIncrement;注意redis,keewidb产品只支持fullAndIncrement类型。
+        :param _MigrateType: <p>迁移类型，full(全量迁移)，structure(结构迁移)，fullAndIncrement(全量加增量迁移)， 默认为fullAndIncrement;注意redis,keewidb产品只支持fullAndIncrement类型。</p>
         :type MigrateType: str
-        :param _Consistency: 数据一致性校验选项， 默认为不开启一致性校验
+        :param _Consistency: <p>数据一致性校验选项， 默认为不开启一致性校验</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Consistency: :class:`tencentcloud.dts.v20211206.models.ConsistencyOption`
-        :param _IsMigrateAccount: 是否迁移账号，true(迁移账号)，false(不迁移账号)
+        :param _IsMigrateAccount: <p>是否迁移账号，true(迁移账号)，false(不迁移账号)</p>
         :type IsMigrateAccount: bool
-        :param _IsOverrideRoot: 是否用源库Root账户覆盖目标库，值包括：false-不覆盖，true-覆盖，选择库表或者结构迁移时应该为false，注意只对旧版迁移有效
+        :param _IsOverrideRoot: <p>是否用源库Root账户覆盖目标库，值包括：false-不覆盖，true-覆盖，选择库表或者结构迁移时应该为false，注意只对旧版迁移有效</p>
         :type IsOverrideRoot: bool
-        :param _IsDstReadOnly: 是否在迁移时设置目标库只读(仅对mysql有效)，true(设置只读)、false(不设置只读，默认此值)
+        :param _IsDstReadOnly: <p>是否在迁移时设置目标库只读(仅对mysql有效)，true(设置只读)、false(不设置只读，默认此值)</p>
         :type IsDstReadOnly: bool
-        :param _ExtraAttr: 其他附加信息，对于特定库可设置额外参数，Redis可定义如下的参数: 
-["DstWriteMode":normal, 	目标库写入模式,可取值clearData(清空目标实例数据)、overwrite(以覆盖写的方式执行任务)、normal(要求目标端为空，否则校验不通过) ，不显示指定默认以覆盖写的方式执行任务	"IsDstReadOnly":true, 	是否在迁移时设置目标库只读,true(设置只读)、false(不设置只读) 	"ClientOutputBufferHardLimit":512, 	从机缓冲区的硬性容量限制(MB) 	"ClientOutputBufferSoftLimit":512, 	从机缓冲区的软性容量限制(MB) 	"ClientOutputBufferPersistTime":60, 从机缓冲区的软性限制持续时间(秒) 	"ReplBacklogSize":512, 	环形缓冲区容量限制(MB) 	"ReplTimeout":120，		复制超时时间(秒) 	"IsExpireKey":"true",过期key自动淘汰]
+        :param _ExtraAttr: <p>其他附加信息，对于特定库可设置额外参数，Redis可定义如下的参数:<br>[&quot;DstWriteMode&quot;:normal,     目标库写入模式,可取值clearData(清空目标实例数据)、overwrite(以覆盖写的方式执行任务)、normal(要求目标端为空，否则校验不通过) ，不显示指定默认以覆盖写的方式执行任务    &quot;IsDstReadOnly&quot;:true,     是否在迁移时设置目标库只读,true(设置只读)、false(不设置只读)     &quot;ClientOutputBufferHardLimit&quot;:512,     从机缓冲区的硬性容量限制(MB)     &quot;ClientOutputBufferSoftLimit&quot;:512,     从机缓冲区的软性容量限制(MB)     &quot;ClientOutputBufferPersistTime&quot;:60, 从机缓冲区的软性限制持续时间(秒)     &quot;ReplBacklogSize&quot;:512,     环形缓冲区容量限制(MB)     &quot;ReplTimeout&quot;:120，        复制超时时间(秒)     &quot;IsExpireKey&quot;:&quot;true&quot;,过期key自动淘汰]</p>
         :type ExtraAttr: list of KeyValuePairOption
-        :param _MigrateWay: pgsql迁移分类：logical(逻辑迁移)、physical(物理迁移)
+        :param _MigrateWay: <p>pgsql迁移分类：logical(逻辑迁移)、physical(物理迁移)</p>
         :type MigrateWay: str
         """
         self._DatabaseTable = None
@@ -12776,7 +13376,7 @@ class MigrateOption(AbstractModel):
 
     @property
     def DatabaseTable(self):
-        r"""迁移对象选项，需要告知迁移服务迁移哪些库表对象
+        r"""<p>迁移对象选项，需要告知迁移服务迁移哪些库表对象</p>
         :rtype: :class:`tencentcloud.dts.v20211206.models.DatabaseTableObject`
         """
         return self._DatabaseTable
@@ -12787,7 +13387,7 @@ class MigrateOption(AbstractModel):
 
     @property
     def MigrateType(self):
-        r"""迁移类型，full(全量迁移)，structure(结构迁移)，fullAndIncrement(全量加增量迁移)， 默认为fullAndIncrement;注意redis,keewidb产品只支持fullAndIncrement类型。
+        r"""<p>迁移类型，full(全量迁移)，structure(结构迁移)，fullAndIncrement(全量加增量迁移)， 默认为fullAndIncrement;注意redis,keewidb产品只支持fullAndIncrement类型。</p>
         :rtype: str
         """
         return self._MigrateType
@@ -12798,7 +13398,7 @@ class MigrateOption(AbstractModel):
 
     @property
     def Consistency(self):
-        r"""数据一致性校验选项， 默认为不开启一致性校验
+        r"""<p>数据一致性校验选项， 默认为不开启一致性校验</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dts.v20211206.models.ConsistencyOption`
         """
@@ -12810,7 +13410,7 @@ class MigrateOption(AbstractModel):
 
     @property
     def IsMigrateAccount(self):
-        r"""是否迁移账号，true(迁移账号)，false(不迁移账号)
+        r"""<p>是否迁移账号，true(迁移账号)，false(不迁移账号)</p>
         :rtype: bool
         """
         return self._IsMigrateAccount
@@ -12821,7 +13421,7 @@ class MigrateOption(AbstractModel):
 
     @property
     def IsOverrideRoot(self):
-        r"""是否用源库Root账户覆盖目标库，值包括：false-不覆盖，true-覆盖，选择库表或者结构迁移时应该为false，注意只对旧版迁移有效
+        r"""<p>是否用源库Root账户覆盖目标库，值包括：false-不覆盖，true-覆盖，选择库表或者结构迁移时应该为false，注意只对旧版迁移有效</p>
         :rtype: bool
         """
         return self._IsOverrideRoot
@@ -12832,7 +13432,7 @@ class MigrateOption(AbstractModel):
 
     @property
     def IsDstReadOnly(self):
-        r"""是否在迁移时设置目标库只读(仅对mysql有效)，true(设置只读)、false(不设置只读，默认此值)
+        r"""<p>是否在迁移时设置目标库只读(仅对mysql有效)，true(设置只读)、false(不设置只读，默认此值)</p>
         :rtype: bool
         """
         return self._IsDstReadOnly
@@ -12843,8 +13443,7 @@ class MigrateOption(AbstractModel):
 
     @property
     def ExtraAttr(self):
-        r"""其他附加信息，对于特定库可设置额外参数，Redis可定义如下的参数: 
-["DstWriteMode":normal, 	目标库写入模式,可取值clearData(清空目标实例数据)、overwrite(以覆盖写的方式执行任务)、normal(要求目标端为空，否则校验不通过) ，不显示指定默认以覆盖写的方式执行任务	"IsDstReadOnly":true, 	是否在迁移时设置目标库只读,true(设置只读)、false(不设置只读) 	"ClientOutputBufferHardLimit":512, 	从机缓冲区的硬性容量限制(MB) 	"ClientOutputBufferSoftLimit":512, 	从机缓冲区的软性容量限制(MB) 	"ClientOutputBufferPersistTime":60, 从机缓冲区的软性限制持续时间(秒) 	"ReplBacklogSize":512, 	环形缓冲区容量限制(MB) 	"ReplTimeout":120，		复制超时时间(秒) 	"IsExpireKey":"true",过期key自动淘汰]
+        r"""<p>其他附加信息，对于特定库可设置额外参数，Redis可定义如下的参数:<br>[&quot;DstWriteMode&quot;:normal,     目标库写入模式,可取值clearData(清空目标实例数据)、overwrite(以覆盖写的方式执行任务)、normal(要求目标端为空，否则校验不通过) ，不显示指定默认以覆盖写的方式执行任务    &quot;IsDstReadOnly&quot;:true,     是否在迁移时设置目标库只读,true(设置只读)、false(不设置只读)     &quot;ClientOutputBufferHardLimit&quot;:512,     从机缓冲区的硬性容量限制(MB)     &quot;ClientOutputBufferSoftLimit&quot;:512,     从机缓冲区的软性容量限制(MB)     &quot;ClientOutputBufferPersistTime&quot;:60, 从机缓冲区的软性限制持续时间(秒)     &quot;ReplBacklogSize&quot;:512,     环形缓冲区容量限制(MB)     &quot;ReplTimeout&quot;:120，        复制超时时间(秒)     &quot;IsExpireKey&quot;:&quot;true&quot;,过期key自动淘汰]</p>
         :rtype: list of KeyValuePairOption
         """
         return self._ExtraAttr
@@ -12855,7 +13454,7 @@ class MigrateOption(AbstractModel):
 
     @property
     def MigrateWay(self):
-        r"""pgsql迁移分类：logical(逻辑迁移)、physical(物理迁移)
+        r"""<p>pgsql迁移分类：logical(逻辑迁移)、physical(物理迁移)</p>
         :rtype: str
         """
         return self._MigrateWay

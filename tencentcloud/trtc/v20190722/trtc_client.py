@@ -26,6 +26,29 @@ class TrtcClient(AbstractClient):
     _service = 'trtc'
 
 
+    def AsyncTextToSpeech(self, request):
+        r"""异步语音合成
+
+        :param request: Request instance for AsyncTextToSpeech.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.AsyncTextToSpeechRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.AsyncTextToSpeechResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AsyncTextToSpeech", params, headers=headers)
+            response = json.loads(body)
+            model = models.AsyncTextToSpeechResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ControlAIConversation(self, request):
         r"""提供服务端控制机器人的功能
 
@@ -409,6 +432,29 @@ class TrtcClient(AbstractClient):
             body = self.call("DescribeAITranscription", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeAITranscriptionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAsyncTextToSpeech(self, request):
+        r"""查询异步语音合成状态
+
+        :param request: Request instance for DescribeAsyncTextToSpeech.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeAsyncTextToSpeechRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.DescribeAsyncTextToSpeechResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAsyncTextToSpeech", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAsyncTextToSpeechResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
