@@ -2129,7 +2129,7 @@ class MpsClient(AbstractClient):
 
 
     def DescribeDesignTask(self, request):
-        r"""查询配音相关任务（异步）结果
+        r"""查询音色设计任务（异步）结果
 
         :param request: Request instance for DescribeDesignTask.
         :type request: :class:`tencentcloud.mps.v20190612.models.DescribeDesignTaskRequest`

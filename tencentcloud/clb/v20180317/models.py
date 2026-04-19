@@ -11422,9 +11422,9 @@ class Filter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 过滤器的名称
+        :param _Name: <p>过滤器的名称</p>
         :type Name: str
-        :param _Values: 过滤器的值数组
+        :param _Values: <p>过滤器的值数组</p>
         :type Values: list of str
         """
         self._Name = None
@@ -11432,7 +11432,7 @@ class Filter(AbstractModel):
 
     @property
     def Name(self):
-        r"""过滤器的名称
+        r"""<p>过滤器的名称</p>
         :rtype: str
         """
         return self._Name
@@ -11443,7 +11443,7 @@ class Filter(AbstractModel):
 
     @property
     def Values(self):
-        r"""过滤器的值数组
+        r"""<p>过滤器的值数组</p>
         :rtype: list of str
         """
         return self._Values

@@ -4201,6 +4201,24 @@ class TkeClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyLogConfig(
+            self,
+            request: models.ModifyLogConfigRequest,
+            opts: Dict = None,
+    ) -> models.ModifyLogConfigResponse:
+        """
+        修改日志采集配置
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyLogConfig"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyLogConfigResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyMasterComponent(
             self,
             request: models.ModifyMasterComponentRequest,

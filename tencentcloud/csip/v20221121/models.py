@@ -31603,33 +31603,33 @@ class RiskDetailItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CreateTime: 首次发现时间
+        :param _CreateTime: <p>首次发现时间</p>
         :type CreateTime: str
-        :param _UpdateTime: 更新时间
+        :param _UpdateTime: <p>更新时间</p>
         :type UpdateTime: str
-        :param _RiskStatus: 风险状态
+        :param _RiskStatus: <p>风险状态</p>
         :type RiskStatus: int
-        :param _RiskContent: 风险内容
+        :param _RiskContent: <p>风险内容</p>
         :type RiskContent: str
-        :param _Provider: 云厂商
+        :param _Provider: <p>云厂商</p>
         :type Provider: str
-        :param _ProviderName: 云厂商名称
+        :param _ProviderName: <p>云厂商名称</p>
         :type ProviderName: str
-        :param _CloudAccountId: 云账号
+        :param _CloudAccountId: <p>云账号</p>
         :type CloudAccountId: str
-        :param _CloudAccountName: 云账号名称
+        :param _CloudAccountName: <p>云账号名称</p>
         :type CloudAccountName: str
-        :param _InstanceId: 实例ID
+        :param _InstanceId: <p>实例ID</p>
         :type InstanceId: str
-        :param _InstanceName: 实例名称
+        :param _InstanceName: <p>实例名称</p>
         :type InstanceName: str
-        :param _RiskId: 风险ID
+        :param _RiskId: <p>风险ID</p>
         :type RiskId: int
-        :param _RiskRuleId: 风险规则ID
+        :param _RiskRuleId: <p>风险规则ID</p>
         :type RiskRuleId: str
-        :param _CheckStatus: 风险验证状态
+        :param _CheckStatus: <p>风险验证状态</p>
         :type CheckStatus: str
-        :param _AppID: 
+        :param _AppID: <p>用户AppID</p>
         :type AppID: int
         """
         self._CreateTime = None
@@ -31649,7 +31649,7 @@ class RiskDetailItem(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""首次发现时间
+        r"""<p>首次发现时间</p>
         :rtype: str
         """
         return self._CreateTime
@@ -31660,7 +31660,7 @@ class RiskDetailItem(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""更新时间
+        r"""<p>更新时间</p>
         :rtype: str
         """
         return self._UpdateTime
@@ -31671,7 +31671,7 @@ class RiskDetailItem(AbstractModel):
 
     @property
     def RiskStatus(self):
-        r"""风险状态
+        r"""<p>风险状态</p>
         :rtype: int
         """
         return self._RiskStatus
@@ -31682,7 +31682,7 @@ class RiskDetailItem(AbstractModel):
 
     @property
     def RiskContent(self):
-        r"""风险内容
+        r"""<p>风险内容</p>
         :rtype: str
         """
         return self._RiskContent
@@ -31693,7 +31693,7 @@ class RiskDetailItem(AbstractModel):
 
     @property
     def Provider(self):
-        r"""云厂商
+        r"""<p>云厂商</p>
         :rtype: str
         """
         return self._Provider
@@ -31704,7 +31704,7 @@ class RiskDetailItem(AbstractModel):
 
     @property
     def ProviderName(self):
-        r"""云厂商名称
+        r"""<p>云厂商名称</p>
         :rtype: str
         """
         return self._ProviderName
@@ -31715,7 +31715,7 @@ class RiskDetailItem(AbstractModel):
 
     @property
     def CloudAccountId(self):
-        r"""云账号
+        r"""<p>云账号</p>
         :rtype: str
         """
         return self._CloudAccountId
@@ -31726,7 +31726,7 @@ class RiskDetailItem(AbstractModel):
 
     @property
     def CloudAccountName(self):
-        r"""云账号名称
+        r"""<p>云账号名称</p>
         :rtype: str
         """
         return self._CloudAccountName
@@ -31737,7 +31737,7 @@ class RiskDetailItem(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例ID
+        r"""<p>实例ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -31748,7 +31748,7 @@ class RiskDetailItem(AbstractModel):
 
     @property
     def InstanceName(self):
-        r"""实例名称
+        r"""<p>实例名称</p>
         :rtype: str
         """
         return self._InstanceName
@@ -31759,7 +31759,7 @@ class RiskDetailItem(AbstractModel):
 
     @property
     def RiskId(self):
-        r"""风险ID
+        r"""<p>风险ID</p>
         :rtype: int
         """
         return self._RiskId
@@ -31770,7 +31770,7 @@ class RiskDetailItem(AbstractModel):
 
     @property
     def RiskRuleId(self):
-        r"""风险规则ID
+        r"""<p>风险规则ID</p>
         :rtype: str
         """
         return self._RiskRuleId
@@ -31781,7 +31781,7 @@ class RiskDetailItem(AbstractModel):
 
     @property
     def CheckStatus(self):
-        r"""风险验证状态
+        r"""<p>风险验证状态</p>
         :rtype: str
         """
         return self._CheckStatus
@@ -31792,7 +31792,7 @@ class RiskDetailItem(AbstractModel):
 
     @property
     def AppID(self):
-        r"""
+        r"""<p>用户AppID</p>
         :rtype: int
         """
         return self._AppID

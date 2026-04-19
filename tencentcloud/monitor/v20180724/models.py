@@ -7569,20 +7569,22 @@ class CreatePrometheusMultiTenantInstancePostPayModeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceName: 实例名
+        :param _InstanceName: <p>实例名</p>
         :type InstanceName: str
-        :param _VpcId: VPC ID(可通过 vpc:DescribeVpcs 接口获取，与实例同地域)
+        :param _VpcId: <p>VPC ID(可通过 vpc:DescribeVpcs 接口获取，与实例同地域)</p>
         :type VpcId: str
-        :param _SubnetId: 子网 ID(可通过 vpc:DescribeSubnets 接口获取)
+        :param _SubnetId: <p>子网 ID(可通过 vpc:DescribeSubnets 接口获取)</p>
         :type SubnetId: str
-        :param _DataRetentionTime: 数据存储时间（单位天），限制值为15, 30, 45, 90, 180, 365, 730之一
+        :param _DataRetentionTime: <p>数据存储时间（单位天），限制值为15, 30, 45, 90, 180, 365, 730之一</p>
         :type DataRetentionTime: int
-        :param _Zone: 可用区(与子网同可用区)
+        :param _Zone: <p>可用区(与子网同可用区)</p>
         :type Zone: str
-        :param _TagSpecification: 实例的标签
+        :param _TagSpecification: <p>实例的标签</p>
         :type TagSpecification: list of PrometheusTag
-        :param _GrafanaInstanceId: 需要关联的 Grafana 实例
+        :param _GrafanaInstanceId: <p>需要关联的 Grafana 实例</p>
         :type GrafanaInstanceId: str
+        :param _InstanceAttributes: <p>标识prom实例特殊属性</p><p>归档存储时长(天):<br>key: LongTermStorageRetentionTime<br>value: 60-730</p>
+        :type InstanceAttributes: list of PrometheusRuleKV
         """
         self._InstanceName = None
         self._VpcId = None
@@ -7591,10 +7593,11 @@ class CreatePrometheusMultiTenantInstancePostPayModeRequest(AbstractModel):
         self._Zone = None
         self._TagSpecification = None
         self._GrafanaInstanceId = None
+        self._InstanceAttributes = None
 
     @property
     def InstanceName(self):
-        r"""实例名
+        r"""<p>实例名</p>
         :rtype: str
         """
         return self._InstanceName
@@ -7605,7 +7608,7 @@ class CreatePrometheusMultiTenantInstancePostPayModeRequest(AbstractModel):
 
     @property
     def VpcId(self):
-        r"""VPC ID(可通过 vpc:DescribeVpcs 接口获取，与实例同地域)
+        r"""<p>VPC ID(可通过 vpc:DescribeVpcs 接口获取，与实例同地域)</p>
         :rtype: str
         """
         return self._VpcId
@@ -7616,7 +7619,7 @@ class CreatePrometheusMultiTenantInstancePostPayModeRequest(AbstractModel):
 
     @property
     def SubnetId(self):
-        r"""子网 ID(可通过 vpc:DescribeSubnets 接口获取)
+        r"""<p>子网 ID(可通过 vpc:DescribeSubnets 接口获取)</p>
         :rtype: str
         """
         return self._SubnetId
@@ -7627,7 +7630,7 @@ class CreatePrometheusMultiTenantInstancePostPayModeRequest(AbstractModel):
 
     @property
     def DataRetentionTime(self):
-        r"""数据存储时间（单位天），限制值为15, 30, 45, 90, 180, 365, 730之一
+        r"""<p>数据存储时间（单位天），限制值为15, 30, 45, 90, 180, 365, 730之一</p>
         :rtype: int
         """
         return self._DataRetentionTime
@@ -7638,7 +7641,7 @@ class CreatePrometheusMultiTenantInstancePostPayModeRequest(AbstractModel):
 
     @property
     def Zone(self):
-        r"""可用区(与子网同可用区)
+        r"""<p>可用区(与子网同可用区)</p>
         :rtype: str
         """
         return self._Zone
@@ -7649,7 +7652,7 @@ class CreatePrometheusMultiTenantInstancePostPayModeRequest(AbstractModel):
 
     @property
     def TagSpecification(self):
-        r"""实例的标签
+        r"""<p>实例的标签</p>
         :rtype: list of PrometheusTag
         """
         return self._TagSpecification
@@ -7660,7 +7663,7 @@ class CreatePrometheusMultiTenantInstancePostPayModeRequest(AbstractModel):
 
     @property
     def GrafanaInstanceId(self):
-        r"""需要关联的 Grafana 实例
+        r"""<p>需要关联的 Grafana 实例</p>
         :rtype: str
         """
         return self._GrafanaInstanceId
@@ -7668,6 +7671,17 @@ class CreatePrometheusMultiTenantInstancePostPayModeRequest(AbstractModel):
     @GrafanaInstanceId.setter
     def GrafanaInstanceId(self, GrafanaInstanceId):
         self._GrafanaInstanceId = GrafanaInstanceId
+
+    @property
+    def InstanceAttributes(self):
+        r"""<p>标识prom实例特殊属性</p><p>归档存储时长(天):<br>key: LongTermStorageRetentionTime<br>value: 60-730</p>
+        :rtype: list of PrometheusRuleKV
+        """
+        return self._InstanceAttributes
+
+    @InstanceAttributes.setter
+    def InstanceAttributes(self, InstanceAttributes):
+        self._InstanceAttributes = InstanceAttributes
 
 
     def _deserialize(self, params):
@@ -7683,6 +7697,12 @@ class CreatePrometheusMultiTenantInstancePostPayModeRequest(AbstractModel):
                 obj._deserialize(item)
                 self._TagSpecification.append(obj)
         self._GrafanaInstanceId = params.get("GrafanaInstanceId")
+        if params.get("InstanceAttributes") is not None:
+            self._InstanceAttributes = []
+            for item in params.get("InstanceAttributes"):
+                obj = PrometheusRuleKV()
+                obj._deserialize(item)
+                self._InstanceAttributes.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7700,7 +7720,7 @@ class CreatePrometheusMultiTenantInstancePostPayModeResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID
+        :param _InstanceId: <p>实例 ID</p>
         :type InstanceId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7710,7 +7730,7 @@ class CreatePrometheusMultiTenantInstancePostPayModeResponse(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例 ID
+        r"""<p>实例 ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -31355,20 +31375,23 @@ class ModifyPrometheusInstanceAttributesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID
+        :param _InstanceId: <p>实例 ID</p>
         :type InstanceId: str
-        :param _InstanceName: 实例名称
+        :param _InstanceName: <p>实例名称</p>
         :type InstanceName: str
-        :param _DataRetentionTime: 数据存储时间（单位天），限制值为15, 30, 45, 90, 180, 365, 730之一
+        :param _DataRetentionTime: <p>数据存储时间（单位天），限制值为15, 30, 45, 90, 180, 365, 730之一</p>
         :type DataRetentionTime: int
+        :param _InstanceAttributes: <p>标识prom实例特殊属性</p><p>归档存储时长(天):<br>key: LongTermStorageRetentionTime<br>value: 60-730</p>
+        :type InstanceAttributes: list of PrometheusRuleKV
         """
         self._InstanceId = None
         self._InstanceName = None
         self._DataRetentionTime = None
+        self._InstanceAttributes = None
 
     @property
     def InstanceId(self):
-        r"""实例 ID
+        r"""<p>实例 ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -31379,7 +31402,7 @@ class ModifyPrometheusInstanceAttributesRequest(AbstractModel):
 
     @property
     def InstanceName(self):
-        r"""实例名称
+        r"""<p>实例名称</p>
         :rtype: str
         """
         return self._InstanceName
@@ -31390,7 +31413,7 @@ class ModifyPrometheusInstanceAttributesRequest(AbstractModel):
 
     @property
     def DataRetentionTime(self):
-        r"""数据存储时间（单位天），限制值为15, 30, 45, 90, 180, 365, 730之一
+        r"""<p>数据存储时间（单位天），限制值为15, 30, 45, 90, 180, 365, 730之一</p>
         :rtype: int
         """
         return self._DataRetentionTime
@@ -31399,11 +31422,28 @@ class ModifyPrometheusInstanceAttributesRequest(AbstractModel):
     def DataRetentionTime(self, DataRetentionTime):
         self._DataRetentionTime = DataRetentionTime
 
+    @property
+    def InstanceAttributes(self):
+        r"""<p>标识prom实例特殊属性</p><p>归档存储时长(天):<br>key: LongTermStorageRetentionTime<br>value: 60-730</p>
+        :rtype: list of PrometheusRuleKV
+        """
+        return self._InstanceAttributes
+
+    @InstanceAttributes.setter
+    def InstanceAttributes(self, InstanceAttributes):
+        self._InstanceAttributes = InstanceAttributes
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._InstanceName = params.get("InstanceName")
         self._DataRetentionTime = params.get("DataRetentionTime")
+        if params.get("InstanceAttributes") is not None:
+            self._InstanceAttributes = []
+            for item in params.get("InstanceAttributes"):
+                obj = PrometheusRuleKV()
+                obj._deserialize(item)
+                self._InstanceAttributes.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -34961,128 +35001,89 @@ class PrometheusInstancesItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID。
+        :param _InstanceId: <p>实例ID。</p>
         :type InstanceId: str
-        :param _InstanceName: 实例名称。
+        :param _InstanceName: <p>实例名称。</p>
         :type InstanceName: str
-        :param _InstanceChargeType: 实例计费模式。取值范围：
-<ul>
-<li>2：包年包月</li>
-<li>3：按量</li>
-</ul>
+        :param _InstanceChargeType: <p>实例计费模式。取值范围：</p><ul><li>2：包年包月</li><li>3：按量</li></ul>
         :type InstanceChargeType: int
-        :param _RegionId: 地域 ID
+        :param _RegionId: <p>地域 ID</p>
         :type RegionId: int
-        :param _Zone: 可用区
+        :param _Zone: <p>可用区</p>
         :type Zone: str
-        :param _VpcId: VPC ID
+        :param _VpcId: <p>VPC ID</p>
         :type VpcId: str
-        :param _SubnetId: 子网 ID
+        :param _SubnetId: <p>子网 ID</p>
         :type SubnetId: str
-        :param _DataRetentionTime: 存储周期
+        :param _DataRetentionTime: <p>存储周期</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DataRetentionTime: int
-        :param _InstanceStatus: 实例业务状态。取值范围：
-<ul>
-<li>1：正在创建</li>
-<li>2：运行中</li>
-<li>3：异常</li>
-<li>4：重建中</li>
-<li>5：销毁中</li>
-<li>6：已停服</li>
-<li>8：欠费停服中</li>
-<li>9：欠费已停服</li>
-</ul>
+        :param _InstanceStatus: <p>实例业务状态。取值范围：</p><ul><li>1：正在创建</li><li>2：运行中</li><li>3：异常</li><li>4：重建中</li><li>5：销毁中</li><li>6：已停服</li><li>8：欠费停服中</li><li>9：欠费已停服</li></ul>
         :type InstanceStatus: int
-        :param _GrafanaURL: Grafana 面板 URL
+        :param _GrafanaURL: <p>Grafana 面板 URL</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type GrafanaURL: str
-        :param _CreatedAt: 创建时间
+        :param _CreatedAt: <p>创建时间</p>
         :type CreatedAt: str
-        :param _EnableGrafana: 是否开启 Grafana
-<li>0：不开启</li>
-<li>1：开启</li>
+        :param _EnableGrafana: <p>是否开启 Grafana</p><li>0：不开启</li><li>1：开启</li>
         :type EnableGrafana: int
-        :param _IPv4Address: 实例IPV4地址
+        :param _IPv4Address: <p>实例IPV4地址</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IPv4Address: str
-        :param _TagSpecification: 实例关联的标签列表。
+        :param _TagSpecification: <p>实例关联的标签列表。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TagSpecification: list of PrometheusTag
-        :param _ExpireTime: 购买的实例过期时间
+        :param _ExpireTime: <p>购买的实例过期时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExpireTime: str
-        :param _ChargeStatus: 计费状态
-<ul>
-<li>1：正常</li>
-<li>2：过期</li>
-<li>3：销毁</li>
-<li>4：分配中</li>
-<li>5：分配失败</li>
-</ul>
+        :param _ChargeStatus: <p>计费状态</p><ul><li>1：正常</li><li>2：过期</li><li>3：销毁</li><li>4：分配中</li><li>5：分配失败</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ChargeStatus: int
-        :param _SpecName: 规格名称
+        :param _SpecName: <p>规格名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SpecName: str
-        :param _AutoRenewFlag: 自动续费标记
-<ul>
-<li>0：不自动续费</li>
-<li>1：开启自动续费</li>
-<li>2：禁止自动续费</li>
-<li>-1：无效</li>
-</ul>
+        :param _AutoRenewFlag: <p>自动续费标记</p><ul><li>0：不自动续费</li><li>1：开启自动续费</li><li>2：禁止自动续费</li><li>-1：无效</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AutoRenewFlag: int
-        :param _IsNearExpire: 是否快过期
-<ul>
-<li>0：否</li>
-<li>1：快过期</li>
-</ul>
+        :param _IsNearExpire: <p>是否快过期</p><ul><li>0：否</li><li>1：快过期</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsNearExpire: int
-        :param _AuthToken: 数据写入需要的 Token
+        :param _AuthToken: <p>数据写入需要的 Token</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AuthToken: str
-        :param _RemoteWrite: Prometheus Remote Write 的地址
+        :param _RemoteWrite: <p>Prometheus Remote Write 的地址</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RemoteWrite: str
-        :param _ApiRootPath: Prometheus HTTP Api 根地址
+        :param _ApiRootPath: <p>Prometheus HTTP Api 根地址</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApiRootPath: str
-        :param _ProxyAddress: Proxy 的地址
+        :param _ProxyAddress: <p>Proxy 的地址</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProxyAddress: str
-        :param _GrafanaStatus: Grafana 运行状态
-<ul>
-<li>1：正在创建</li>
-<li>2：运行中</li>
-<li>3：异常</li>
-<li>4：重启中</li>
-<li>5：销毁中</li>
-<li>6：已停机</li>
-<li>7：已删除</li>
-</ul>
+        :param _GrafanaStatus: <p>Grafana 运行状态</p><ul><li>1：正在创建</li><li>2：运行中</li><li>3：异常</li><li>4：重启中</li><li>5：销毁中</li><li>6：已停机</li><li>7：已删除</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type GrafanaStatus: int
-        :param _GrafanaIpWhiteList: Grafana IP 白名单列表，使用英文分号分隔
+        :param _GrafanaIpWhiteList: <p>Grafana IP 白名单列表，使用英文分号分隔</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type GrafanaIpWhiteList: str
-        :param _Grant: 实例的授权信息
+        :param _Grant: <p>实例的授权信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Grant: :class:`tencentcloud.monitor.v20180724.models.PrometheusInstanceGrantInfo`
-        :param _GrafanaInstanceId: 绑定的 Grafana 实例 ID
+        :param _GrafanaInstanceId: <p>绑定的 Grafana 实例 ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type GrafanaInstanceId: str
-        :param _AlertRuleLimit: 告警规则限制
+        :param _AlertRuleLimit: <p>告警规则限制</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AlertRuleLimit: int
-        :param _RecordingRuleLimit: 预聚合规则限制
+        :param _RecordingRuleLimit: <p>预聚合规则限制</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RecordingRuleLimit: int
-        :param _MigrationType: 迁移状态，0-不在迁移中，1-迁移中、原实例，2-迁移中、目标实例
+        :param _MigrationType: <p>迁移状态，0-不在迁移中，1-迁移中、原实例，2-迁移中、目标实例</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type MigrationType: int
+        :param _InstanceAttributes: <p>标识prom实例特殊属性</p><p>归档存储时长(天):<br>key: LongTermStorageRetentionTime<br>value: 60-730</p><p>实例创建方式：<br>key: CreatedFrom<br>value: 0 - 来自prom控制台<br>1 - 来自tke集群详情页<br>2 - 来自新建集群页</p><p>免费试用到期时间:<br>key: FreeTrialExpireAt<br>value: RFC3339 格式时间字符串</p><p>关联的资源包ID:<br>key: ResourcePackageID<br>value: prompkg-xxxxx</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceAttributes: list of PrometheusRuleKV
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -35114,10 +35115,11 @@ class PrometheusInstancesItem(AbstractModel):
         self._AlertRuleLimit = None
         self._RecordingRuleLimit = None
         self._MigrationType = None
+        self._InstanceAttributes = None
 
     @property
     def InstanceId(self):
-        r"""实例ID。
+        r"""<p>实例ID。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -35128,7 +35130,7 @@ class PrometheusInstancesItem(AbstractModel):
 
     @property
     def InstanceName(self):
-        r"""实例名称。
+        r"""<p>实例名称。</p>
         :rtype: str
         """
         return self._InstanceName
@@ -35139,11 +35141,7 @@ class PrometheusInstancesItem(AbstractModel):
 
     @property
     def InstanceChargeType(self):
-        r"""实例计费模式。取值范围：
-<ul>
-<li>2：包年包月</li>
-<li>3：按量</li>
-</ul>
+        r"""<p>实例计费模式。取值范围：</p><ul><li>2：包年包月</li><li>3：按量</li></ul>
         :rtype: int
         """
         return self._InstanceChargeType
@@ -35154,7 +35152,7 @@ class PrometheusInstancesItem(AbstractModel):
 
     @property
     def RegionId(self):
-        r"""地域 ID
+        r"""<p>地域 ID</p>
         :rtype: int
         """
         return self._RegionId
@@ -35165,7 +35163,7 @@ class PrometheusInstancesItem(AbstractModel):
 
     @property
     def Zone(self):
-        r"""可用区
+        r"""<p>可用区</p>
         :rtype: str
         """
         return self._Zone
@@ -35176,7 +35174,7 @@ class PrometheusInstancesItem(AbstractModel):
 
     @property
     def VpcId(self):
-        r"""VPC ID
+        r"""<p>VPC ID</p>
         :rtype: str
         """
         return self._VpcId
@@ -35187,7 +35185,7 @@ class PrometheusInstancesItem(AbstractModel):
 
     @property
     def SubnetId(self):
-        r"""子网 ID
+        r"""<p>子网 ID</p>
         :rtype: str
         """
         return self._SubnetId
@@ -35198,7 +35196,7 @@ class PrometheusInstancesItem(AbstractModel):
 
     @property
     def DataRetentionTime(self):
-        r"""存储周期
+        r"""<p>存储周期</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -35210,17 +35208,7 @@ class PrometheusInstancesItem(AbstractModel):
 
     @property
     def InstanceStatus(self):
-        r"""实例业务状态。取值范围：
-<ul>
-<li>1：正在创建</li>
-<li>2：运行中</li>
-<li>3：异常</li>
-<li>4：重建中</li>
-<li>5：销毁中</li>
-<li>6：已停服</li>
-<li>8：欠费停服中</li>
-<li>9：欠费已停服</li>
-</ul>
+        r"""<p>实例业务状态。取值范围：</p><ul><li>1：正在创建</li><li>2：运行中</li><li>3：异常</li><li>4：重建中</li><li>5：销毁中</li><li>6：已停服</li><li>8：欠费停服中</li><li>9：欠费已停服</li></ul>
         :rtype: int
         """
         return self._InstanceStatus
@@ -35231,7 +35219,7 @@ class PrometheusInstancesItem(AbstractModel):
 
     @property
     def GrafanaURL(self):
-        r"""Grafana 面板 URL
+        r"""<p>Grafana 面板 URL</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -35243,7 +35231,7 @@ class PrometheusInstancesItem(AbstractModel):
 
     @property
     def CreatedAt(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
         :rtype: str
         """
         return self._CreatedAt
@@ -35254,9 +35242,7 @@ class PrometheusInstancesItem(AbstractModel):
 
     @property
     def EnableGrafana(self):
-        r"""是否开启 Grafana
-<li>0：不开启</li>
-<li>1：开启</li>
+        r"""<p>是否开启 Grafana</p><li>0：不开启</li><li>1：开启</li>
         :rtype: int
         """
         return self._EnableGrafana
@@ -35267,7 +35253,7 @@ class PrometheusInstancesItem(AbstractModel):
 
     @property
     def IPv4Address(self):
-        r"""实例IPV4地址
+        r"""<p>实例IPV4地址</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -35279,7 +35265,7 @@ class PrometheusInstancesItem(AbstractModel):
 
     @property
     def TagSpecification(self):
-        r"""实例关联的标签列表。
+        r"""<p>实例关联的标签列表。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of PrometheusTag
         """
@@ -35291,7 +35277,7 @@ class PrometheusInstancesItem(AbstractModel):
 
     @property
     def ExpireTime(self):
-        r"""购买的实例过期时间
+        r"""<p>购买的实例过期时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -35303,14 +35289,7 @@ class PrometheusInstancesItem(AbstractModel):
 
     @property
     def ChargeStatus(self):
-        r"""计费状态
-<ul>
-<li>1：正常</li>
-<li>2：过期</li>
-<li>3：销毁</li>
-<li>4：分配中</li>
-<li>5：分配失败</li>
-</ul>
+        r"""<p>计费状态</p><ul><li>1：正常</li><li>2：过期</li><li>3：销毁</li><li>4：分配中</li><li>5：分配失败</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -35322,7 +35301,7 @@ class PrometheusInstancesItem(AbstractModel):
 
     @property
     def SpecName(self):
-        r"""规格名称
+        r"""<p>规格名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -35334,13 +35313,7 @@ class PrometheusInstancesItem(AbstractModel):
 
     @property
     def AutoRenewFlag(self):
-        r"""自动续费标记
-<ul>
-<li>0：不自动续费</li>
-<li>1：开启自动续费</li>
-<li>2：禁止自动续费</li>
-<li>-1：无效</li>
-</ul>
+        r"""<p>自动续费标记</p><ul><li>0：不自动续费</li><li>1：开启自动续费</li><li>2：禁止自动续费</li><li>-1：无效</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -35352,11 +35325,7 @@ class PrometheusInstancesItem(AbstractModel):
 
     @property
     def IsNearExpire(self):
-        r"""是否快过期
-<ul>
-<li>0：否</li>
-<li>1：快过期</li>
-</ul>
+        r"""<p>是否快过期</p><ul><li>0：否</li><li>1：快过期</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -35368,7 +35337,7 @@ class PrometheusInstancesItem(AbstractModel):
 
     @property
     def AuthToken(self):
-        r"""数据写入需要的 Token
+        r"""<p>数据写入需要的 Token</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -35380,7 +35349,7 @@ class PrometheusInstancesItem(AbstractModel):
 
     @property
     def RemoteWrite(self):
-        r"""Prometheus Remote Write 的地址
+        r"""<p>Prometheus Remote Write 的地址</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -35392,7 +35361,7 @@ class PrometheusInstancesItem(AbstractModel):
 
     @property
     def ApiRootPath(self):
-        r"""Prometheus HTTP Api 根地址
+        r"""<p>Prometheus HTTP Api 根地址</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -35404,7 +35373,7 @@ class PrometheusInstancesItem(AbstractModel):
 
     @property
     def ProxyAddress(self):
-        r"""Proxy 的地址
+        r"""<p>Proxy 的地址</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -35416,16 +35385,7 @@ class PrometheusInstancesItem(AbstractModel):
 
     @property
     def GrafanaStatus(self):
-        r"""Grafana 运行状态
-<ul>
-<li>1：正在创建</li>
-<li>2：运行中</li>
-<li>3：异常</li>
-<li>4：重启中</li>
-<li>5：销毁中</li>
-<li>6：已停机</li>
-<li>7：已删除</li>
-</ul>
+        r"""<p>Grafana 运行状态</p><ul><li>1：正在创建</li><li>2：运行中</li><li>3：异常</li><li>4：重启中</li><li>5：销毁中</li><li>6：已停机</li><li>7：已删除</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -35437,7 +35397,7 @@ class PrometheusInstancesItem(AbstractModel):
 
     @property
     def GrafanaIpWhiteList(self):
-        r"""Grafana IP 白名单列表，使用英文分号分隔
+        r"""<p>Grafana IP 白名单列表，使用英文分号分隔</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -35449,7 +35409,7 @@ class PrometheusInstancesItem(AbstractModel):
 
     @property
     def Grant(self):
-        r"""实例的授权信息
+        r"""<p>实例的授权信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.monitor.v20180724.models.PrometheusInstanceGrantInfo`
         """
@@ -35461,7 +35421,7 @@ class PrometheusInstancesItem(AbstractModel):
 
     @property
     def GrafanaInstanceId(self):
-        r"""绑定的 Grafana 实例 ID
+        r"""<p>绑定的 Grafana 实例 ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -35473,7 +35433,7 @@ class PrometheusInstancesItem(AbstractModel):
 
     @property
     def AlertRuleLimit(self):
-        r"""告警规则限制
+        r"""<p>告警规则限制</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -35485,7 +35445,7 @@ class PrometheusInstancesItem(AbstractModel):
 
     @property
     def RecordingRuleLimit(self):
-        r"""预聚合规则限制
+        r"""<p>预聚合规则限制</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -35497,7 +35457,7 @@ class PrometheusInstancesItem(AbstractModel):
 
     @property
     def MigrationType(self):
-        r"""迁移状态，0-不在迁移中，1-迁移中、原实例，2-迁移中、目标实例
+        r"""<p>迁移状态，0-不在迁移中，1-迁移中、原实例，2-迁移中、目标实例</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -35506,6 +35466,18 @@ class PrometheusInstancesItem(AbstractModel):
     @MigrationType.setter
     def MigrationType(self, MigrationType):
         self._MigrationType = MigrationType
+
+    @property
+    def InstanceAttributes(self):
+        r"""<p>标识prom实例特殊属性</p><p>归档存储时长(天):<br>key: LongTermStorageRetentionTime<br>value: 60-730</p><p>实例创建方式：<br>key: CreatedFrom<br>value: 0 - 来自prom控制台<br>1 - 来自tke集群详情页<br>2 - 来自新建集群页</p><p>免费试用到期时间:<br>key: FreeTrialExpireAt<br>value: RFC3339 格式时间字符串</p><p>关联的资源包ID:<br>key: ResourcePackageID<br>value: prompkg-xxxxx</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of PrometheusRuleKV
+        """
+        return self._InstanceAttributes
+
+    @InstanceAttributes.setter
+    def InstanceAttributes(self, InstanceAttributes):
+        self._InstanceAttributes = InstanceAttributes
 
 
     def _deserialize(self, params):
@@ -35546,6 +35518,12 @@ class PrometheusInstancesItem(AbstractModel):
         self._AlertRuleLimit = params.get("AlertRuleLimit")
         self._RecordingRuleLimit = params.get("RecordingRuleLimit")
         self._MigrationType = params.get("MigrationType")
+        if params.get("InstanceAttributes") is not None:
+            self._InstanceAttributes = []
+            for item in params.get("InstanceAttributes"):
+                obj = PrometheusRuleKV()
+                obj._deserialize(item)
+                self._InstanceAttributes.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -72483,8 +72483,10 @@ class SSAIConf(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AdsUrl: <p>广告决策服务器URL(ADS)。</p>
+        :param _AdsUrl: <p>广告决策服务器URL(ADS)。注意：填了AdsUrl会自动代替覆盖AdsUrls[0]</p>
         :type AdsUrl: str
+        :param _AdsUrls: <p>广告决策服务器URL数组(ADS)</p>
+        :type AdsUrls: list of str
         :param _ConfigAliases: <p>参数配置。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ConfigAliases: list of ConfigAliasesInfo
@@ -72509,14 +72511,17 @@ class SSAIConf(AbstractModel):
         :type SourceCDNPrefix: str
         :param _AdCDNPrefix: <p>广告CDN前缀，需要以http://或者https://开头。</p>
         :type AdCDNPrefix: str
-        :param _PreRollAdsUrl: <p>预加载广告决策服务地址。</p>
+        :param _PreRollAdsUrl: <p>预加载广告决策服务地址。注意：填了PreRollAdsUrl会自动代替覆盖PreRollAdsUrls[0]</p>
         :type PreRollAdsUrl: str
+        :param _PreRollAdsUrls: <p>预加载广告决策服务地址数组</p>
+        :type PreRollAdsUrls: list of str
         :param _PreRollMaxAllowedDuration: <p>预加载广告最大允许时长，0-3600。</p>
         :type PreRollMaxAllowedDuration: int
         :param _MultiRequest: <p>是否开启多次请求ADS,开启后将优先请求ADS，请求失败后再请求兜底广告</p>
         :type MultiRequest: bool
         """
         self._AdsUrl = None
+        self._AdsUrls = None
         self._ConfigAliases = None
         self._AdMarkerPassthrough = None
         self._SCTE35AdType = None
@@ -72528,12 +72533,13 @@ class SSAIConf(AbstractModel):
         self._SourceCDNPrefix = None
         self._AdCDNPrefix = None
         self._PreRollAdsUrl = None
+        self._PreRollAdsUrls = None
         self._PreRollMaxAllowedDuration = None
         self._MultiRequest = None
 
     @property
     def AdsUrl(self):
-        r"""<p>广告决策服务器URL(ADS)。</p>
+        r"""<p>广告决策服务器URL(ADS)。注意：填了AdsUrl会自动代替覆盖AdsUrls[0]</p>
         :rtype: str
         """
         return self._AdsUrl
@@ -72541,6 +72547,17 @@ class SSAIConf(AbstractModel):
     @AdsUrl.setter
     def AdsUrl(self, AdsUrl):
         self._AdsUrl = AdsUrl
+
+    @property
+    def AdsUrls(self):
+        r"""<p>广告决策服务器URL数组(ADS)</p>
+        :rtype: list of str
+        """
+        return self._AdsUrls
+
+    @AdsUrls.setter
+    def AdsUrls(self, AdsUrls):
+        self._AdsUrls = AdsUrls
 
     @property
     def ConfigAliases(self):
@@ -72658,7 +72675,7 @@ class SSAIConf(AbstractModel):
 
     @property
     def PreRollAdsUrl(self):
-        r"""<p>预加载广告决策服务地址。</p>
+        r"""<p>预加载广告决策服务地址。注意：填了PreRollAdsUrl会自动代替覆盖PreRollAdsUrls[0]</p>
         :rtype: str
         """
         return self._PreRollAdsUrl
@@ -72666,6 +72683,17 @@ class SSAIConf(AbstractModel):
     @PreRollAdsUrl.setter
     def PreRollAdsUrl(self, PreRollAdsUrl):
         self._PreRollAdsUrl = PreRollAdsUrl
+
+    @property
+    def PreRollAdsUrls(self):
+        r"""<p>预加载广告决策服务地址数组</p>
+        :rtype: list of str
+        """
+        return self._PreRollAdsUrls
+
+    @PreRollAdsUrls.setter
+    def PreRollAdsUrls(self, PreRollAdsUrls):
+        self._PreRollAdsUrls = PreRollAdsUrls
 
     @property
     def PreRollMaxAllowedDuration(self):
@@ -72692,6 +72720,7 @@ class SSAIConf(AbstractModel):
 
     def _deserialize(self, params):
         self._AdsUrl = params.get("AdsUrl")
+        self._AdsUrls = params.get("AdsUrls")
         if params.get("ConfigAliases") is not None:
             self._ConfigAliases = []
             for item in params.get("ConfigAliases"):
@@ -72708,6 +72737,7 @@ class SSAIConf(AbstractModel):
         self._SourceCDNPrefix = params.get("SourceCDNPrefix")
         self._AdCDNPrefix = params.get("AdCDNPrefix")
         self._PreRollAdsUrl = params.get("PreRollAdsUrl")
+        self._PreRollAdsUrls = params.get("PreRollAdsUrls")
         self._PreRollMaxAllowedDuration = params.get("PreRollMaxAllowedDuration")
         self._MultiRequest = params.get("MultiRequest")
         memeber_set = set(params.keys())

@@ -4270,67 +4270,7 @@ class CreateDataSourceRequest(AbstractModel):
         :type ProjectId: str
         :param _Name: 数据源名称
         :type Name: str
-        :param _Type: 数据源类型:枚举值
-
-- MYSQL
-- TENCENT_MYSQL
-- POSTGRE
-- ORACLE
-- SQLSERVER
-- FTP
-- HIVE
-- HUDI
-- HDFS
-- ICEBERG
-- KAFKA
-- DTS_KAFKA
-- HBASE
-- SPARK
-- TBASE
-- DB2
-- DM
-- GAUSSDB
-- GBASE
-- IMPALA
-- ES
-- TENCENT_ES
-- GREENPLUM
-- SAP_HANA
-- SFTP
-- OCEANBASE
-- CLICKHOUSE
-- KUDU
-- VERTICA
-- REDIS
-- COS
-- DLC
-- DORIS
-- CKAFKA
-- S3_DATAINSIGHT
-- TDSQL
-- TDSQL_MYSQL
-- MONGODB
-- TENCENT_MONGODB
-- REST_API
-- TiDB
-- StarRocks
-- Trino
-- Kyuubi
-- TCHOUSE_X
-- TCHOUSE_P
-- TCHOUSE_C
-- TCHOUSE_D
-- INFLUXDB
-- BIG_QUERY
-- SSH
-- BLOB
-- TDSQL_POSTGRE
-- GDB
-- TDENGINE
-- TDSQLC
-- FileSystem
-- TCLake
-
+        :param _Type: 数据源类型:枚举值- MYSQL- TENCENT_MYSQL- POSTGRE- ORACLE- SQLSERVER- FTP- HIVE- HUDI- HDFS- ICEBERG- KAFKA- DTS_KAFKA- HBASE- SPARK- TBASE- DB2- DM- GAUSSDB- GBASE- IMPALA- ES- TENCENT_ES- GREENPLUM- SAP_HANA- SFTP- OCEANBASE- CLICKHOUSE- KUDU- VERTICA- REDIS- COS- DLC- DORIS- CKAFKA- S3_DATAINSIGHT- TDSQL- TDSQL_MYSQL- MONGODB- TENCENT_MONGODB- REST_API- TiDB- StarRocks- Trino- Kyuubi- TCHOUSE_X- TCHOUSE_P- TCHOUSE_C- TCHOUSE_D- INFLUXDB- BIG_QUERY- SSH- BLOB- TDSQL_POSTGRE- GDB- TDENGINE- TDSQLC- FileSystem- TCLake- TDSQL_BOUNDLESS
         :type Type: str
         :param _ProdConProperties: 数据源的配置信息，以JSON KV存储，根据每个数据源类型不同，而KV存储信息不同
 
@@ -4492,67 +4432,7 @@ cos:
 
     @property
     def Type(self):
-        r"""数据源类型:枚举值
-
-- MYSQL
-- TENCENT_MYSQL
-- POSTGRE
-- ORACLE
-- SQLSERVER
-- FTP
-- HIVE
-- HUDI
-- HDFS
-- ICEBERG
-- KAFKA
-- DTS_KAFKA
-- HBASE
-- SPARK
-- TBASE
-- DB2
-- DM
-- GAUSSDB
-- GBASE
-- IMPALA
-- ES
-- TENCENT_ES
-- GREENPLUM
-- SAP_HANA
-- SFTP
-- OCEANBASE
-- CLICKHOUSE
-- KUDU
-- VERTICA
-- REDIS
-- COS
-- DLC
-- DORIS
-- CKAFKA
-- S3_DATAINSIGHT
-- TDSQL
-- TDSQL_MYSQL
-- MONGODB
-- TENCENT_MONGODB
-- REST_API
-- TiDB
-- StarRocks
-- Trino
-- Kyuubi
-- TCHOUSE_X
-- TCHOUSE_P
-- TCHOUSE_C
-- TCHOUSE_D
-- INFLUXDB
-- BIG_QUERY
-- SSH
-- BLOB
-- TDSQL_POSTGRE
-- GDB
-- TDENGINE
-- TDSQLC
-- FileSystem
-- TCLake
-
+        r"""数据源类型:枚举值- MYSQL- TENCENT_MYSQL- POSTGRE- ORACLE- SQLSERVER- FTP- HIVE- HUDI- HDFS- ICEBERG- KAFKA- DTS_KAFKA- HBASE- SPARK- TBASE- DB2- DM- GAUSSDB- GBASE- IMPALA- ES- TENCENT_ES- GREENPLUM- SAP_HANA- SFTP- OCEANBASE- CLICKHOUSE- KUDU- VERTICA- REDIS- COS- DLC- DORIS- CKAFKA- S3_DATAINSIGHT- TDSQL- TDSQL_MYSQL- MONGODB- TENCENT_MONGODB- REST_API- TiDB- StarRocks- Trino- Kyuubi- TCHOUSE_X- TCHOUSE_P- TCHOUSE_C- TCHOUSE_D- INFLUXDB- BIG_QUERY- SSH- BLOB- TDSQL_POSTGRE- GDB- TDENGINE- TDSQLC- FileSystem- TCLake- TDSQL_BOUNDLESS
         :rtype: str
         """
         return self._Type
@@ -7307,91 +7187,68 @@ class CreateTaskSchedulerConfiguration(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CycleType: 周期类型：默认为 DAY_CYCLE
-
-支持的类型为 
-
-* ONEOFF_CYCLE: 一次性
-* YEAR_CYCLE: 年
-* MONTH_CYCLE: 月
-* WEEK_CYCLE: 周
-* DAY_CYCLE: 天
-* HOUR_CYCLE: 小时
-* MINUTE_CYCLE: 分钟
-* CRONTAB_CYCLE: crontab表达式类型
+        :param _CycleType: <p>周期类型：默认为 DAY_CYCLE</p><p>支持的类型为 </p><ul><li>ONEOFF_CYCLE: 一次性</li><li>YEAR_CYCLE: 年</li><li>MONTH_CYCLE: 月</li><li>WEEK_CYCLE: 周</li><li>DAY_CYCLE: 天</li><li>HOUR_CYCLE: 小时</li><li>MINUTE_CYCLE: 分钟</li><li>CRONTAB_CYCLE: crontab表达式类型</li></ul>
         :type CycleType: str
-        :param _ScheduleTimeZone: 时区，默认为 UTC+8
+        :param _ScheduleTimeZone: <p>时区，默认为 UTC+8</p>
         :type ScheduleTimeZone: str
-        :param _CrontabExpression: Cron表达式，默认为 0 0 0 * * ? * 
+        :param _CrontabExpression: <p>Cron表达式，默认为 0 0 0 * * ? *</p>
         :type CrontabExpression: str
-        :param _StartTime: 生效日期，默认为当前日期的 00:00:00
+        :param _StartTime: <p>生效日期，默认为当前日期的 00:00:00</p>
         :type StartTime: str
-        :param _EndTime: 结束日期，默认为 2099-12-31 23:59:59
+        :param _EndTime: <p>结束日期，默认为 2099-12-31 23:59:59</p>
         :type EndTime: str
-        :param _ExecutionStartTime: 执行时间 左闭区间，默认 00:00
+        :param _ExecutionStartTime: <p>执行时间 左闭区间，默认 00:00</p>
         :type ExecutionStartTime: str
-        :param _ExecutionEndTime: 执行时间 右闭区间，默认 23:59
+        :param _ExecutionEndTime: <p>执行时间 右闭区间，默认 23:59</p>
         :type ExecutionEndTime: str
-        :param _CalendarOpen: 日历调度 取值为 0 和 1， 1为打开，0为关闭，默认为0
+        :param _CalendarOpen: <p>日历调度 取值为 0 和 1， 1为打开，0为关闭，默认为0</p>
         :type CalendarOpen: str
-        :param _CalendarId: 日历调度 日历 ID
+        :param _CalendarId: <p>日历调度 日历 ID</p>
         :type CalendarId: str
-        :param _SelfDepend: 自依赖, 默认值 serial, 取值为：parallel(并行), serial(串行), orderly(有序)
+        :param _SelfDepend: <p>自依赖, 默认值 serial, 取值为：parallel(并行), serial(串行), orderly(有序)</p>
         :type SelfDepend: str
-        :param _UpstreamDependencyConfigList: 上游依赖数组
+        :param _UpstreamDependencyConfigList: <p>上游依赖数组</p>
         :type UpstreamDependencyConfigList: list of DependencyTaskBrief
-        :param _EventListenerList: 事件数组
+        :param _EventListenerList: <p>事件数组</p>
         :type EventListenerList: list of EventListener
-        :param _AllowRedoType: 重跑&补录配置, 默认为 ALL; , ALL 运行成功或失败后皆可重跑或补录, FAILURE 运行成功后不可重跑或补录，运行失败后可重跑或补录, NONE 运行成功或失败后皆不可重跑或补录;
+        :param _AllowRedoType: <p>重跑&amp;补录配置, 默认为 ALL; , ALL 运行成功或失败后皆可重跑或补录, FAILURE 运行成功后不可重跑或补录，运行失败后可重跑或补录, NONE 运行成功或失败后皆不可重跑或补录;</p>
         :type AllowRedoType: str
-        :param _ParamTaskOutList: 输出参数数组
+        :param _ParamTaskOutList: <p>输出参数数组</p>
         :type ParamTaskOutList: list of OutTaskParameter
-        :param _ParamTaskInList: 输入参数数组
+        :param _ParamTaskInList: <p>输入参数数组</p>
         :type ParamTaskInList: list of InTaskParameter
-        :param _TaskOutputRegistryList: 产出登记
+        :param _TaskOutputRegistryList: <p>产出登记</p>
         :type TaskOutputRegistryList: list of TaskDataRegistry
-        :param _InitStrategy: **实例生成策略**
-* T_PLUS_0: T+0生成,默认策略
-* T_PLUS_1: T+1生成
+        :param _InitStrategy: <p><strong>实例生成策略</strong></p><ul><li>T_PLUS_0: T+0生成,默认策略</li><li>T_PLUS_1: T+1生成</li></ul>
         :type InitStrategy: str
-        :param _ScheduleRunType: 调度类型: 0 正常调度 1 空跑调度，默认为 0
+        :param _ScheduleRunType: <p>调度类型: 0 正常调度 1 空跑调度，默认为 0</p>
         :type ScheduleRunType: str
-        :param _RunPriority: 任务调度优先级 运行优先级 4高 5中 6低 , 默认:6
+        :param _RunPriority: <p>任务调度优先级 运行优先级 4高 5中 6低 , 默认:6</p>
         :type RunPriority: str
-        :param _RetryWait: 重试策略 重试等待时间,单位分钟: 默认: 5
+        :param _RetryWait: <p>重试策略 重试等待时间,单位分钟: 默认: 5</p>
         :type RetryWait: str
-        :param _MaxRetryAttempts: 重试策略 最大尝试次数, 默认: 4
+        :param _MaxRetryAttempts: <p>重试策略 最大尝试次数, 默认: 4</p>
         :type MaxRetryAttempts: str
-        :param _ExecutionTTL: 超时处理策略 运行耗时超时（单位：分钟）默认为 -1
+        :param _ExecutionTTL: <p>超时处理策略 运行耗时超时（单位：分钟）默认为 -1</p>
         :type ExecutionTTL: str
-        :param _WaitExecutionTotalTTL: 超时处理策略 等待总时长耗时超时（单位：分钟）默认为 -1
+        :param _WaitExecutionTotalTTL: <p>超时处理策略 等待总时长耗时超时（单位：分钟）默认为 -1</p>
         :type WaitExecutionTotalTTL: str
-        :param _ScheduleType: 调度类型: 0 正常调度 1 空跑调度，默认为 0
+        :param _ScheduleType: <p>调度类型: 0 正常调度 1 空跑调度，默认为 0</p>
         :type ScheduleType: int
-        :param _RunPriorityType: 任务调度优先级 运行优先级 4高 5中 6低 , 默认:6
+        :param _RunPriorityType: <p>任务调度优先级 运行优先级 4高 5中 6低 , 默认:6</p>
         :type RunPriorityType: int
-        :param _RetryWaitMinute: 重试策略 重试等待时间,单位分钟: 默认: 5
+        :param _RetryWaitMinute: <p>重试策略 重试等待时间,单位分钟: 默认: 5</p>
         :type RetryWaitMinute: int
-        :param _MaxRetryNumber: 重试策略 最大尝试次数, 默认: 4
+        :param _MaxRetryNumber: <p>重试策略 最大尝试次数, 默认: 4</p>
         :type MaxRetryNumber: int
-        :param _ExecutionTTLMinute: 超时处理策略 运行耗时超时（单位：分钟）默认为 -1
+        :param _ExecutionTTLMinute: <p>超时处理策略 运行耗时超时（单位：分钟）默认为 -1</p>
         :type ExecutionTTLMinute: int
-        :param _WaitExecutionTotalTTLMinute: 超时处理策略 等待总时长耗时超时（单位：分钟）默认为 -1
+        :param _WaitExecutionTotalTTLMinute: <p>超时处理策略 等待总时长耗时超时（单位：分钟）默认为 -1</p>
         :type WaitExecutionTotalTTLMinute: int
-        :param _DependencyTriggerPolicy: - 任务依赖运行条件，默认为ALL_SUCCESS，暂时只支持工作流调度项目下配置
-- ALL_SUCCESS： 全部成功：所有上游依赖任务都达到终态时，进行依赖判断，如果上游全部都成功，则依赖判断成功，否则如果上游有一个跳过运行，则标记为跳过运行，其余情况标记为上游失败
-- ALL_FAILED：全部失败：所有上游依赖任务都达到终态时，进行依赖判断，如果上游状态都是失败或者上游失败，则依赖判断成功，否则就标记为跳过运行
-- ALL_DONE：全部完成：所有上游依赖任务都达到终态时，进行依赖判断，直接是依赖判断成功
-- ALL_DONE_AT_LEAST_ONE_SUCCESS：上游全部完成至少一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个成功，则依赖判断成功，否则就是跳过运行
-- ALL_SKIPPED：上游全部都跳过: 所有上游依赖任务都达到终态时，进行依赖判断，所有的上游都是跳过状态才算依赖判断成功，否则当前节点就是跳过运行
-- ONE_FAILED：至少一个失败: 上游只要有一个失败了，就进行依赖判断，且依赖判断成功，如果上游全部完成但是没有失败，则跳过运行
-- ONE_SUCCESS：至少一个成功：上游只要有一个成功，就进行依赖判断，且依赖判断成功，如果上游全部完成但是没有成功，则跳过运行
-- ONE_DONE：至少一个完成：上游只要有一个完成了，就进行依赖判断，且依赖判断成功，否则还是等待上游
-- NONE_FAILED：上游全部完成，没有失败: 所有上游依赖任务都达到终态时，进行依赖判断，如果上游都是成功或者跳过运行，则依赖判断成功，否则标记为上游失败
-- ALL_DONE_NONE_FAILED_AT_LEAST_ONE_SUCCESS：上游全部完成，没有失败，至少有一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，上游没有一个失败且至少有一个成功的情况下，依赖判断成功，否则就是跳过运行
-- NONE_SKIPPED：上游全部完成，没有跳过运行: 所有上游依赖任务都达到终态时，进行依赖判断, 如果上游状态全部都是成功、失败、上游失败状态，则依赖判断成功，否则为跳过运行
-- ALL_DONE_AT_LEAST_ONE_FAILED：上游全部完成至少一个失败: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个失败，则依赖判断成功，否则就是跳过运行
+        :param _DependencyTriggerPolicy: <ul><li>任务依赖运行条件，默认为ALL_SUCCESS，暂时只支持工作流调度项目下配置</li><li>ALL_SUCCESS： 全部成功：所有上游依赖任务都达到终态时，进行依赖判断，如果上游全部都成功，则依赖判断成功，否则如果上游有一个跳过运行，则标记为跳过运行，其余情况标记为上游失败</li><li>ALL_FAILED：全部失败：所有上游依赖任务都达到终态时，进行依赖判断，如果上游状态都是失败或者上游失败，则依赖判断成功，否则就标记为跳过运行</li><li>ALL_DONE：全部完成：所有上游依赖任务都达到终态时，进行依赖判断，直接是依赖判断成功</li><li>ALL_DONE_AT_LEAST_ONE_SUCCESS：上游全部完成至少一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个成功，则依赖判断成功，否则就是跳过运行</li><li>ALL_SKIPPED：上游全部都跳过: 所有上游依赖任务都达到终态时，进行依赖判断，所有的上游都是跳过状态才算依赖判断成功，否则当前节点就是跳过运行</li><li>ONE_FAILED：至少一个失败: 上游只要有一个失败了，就进行依赖判断，且依赖判断成功，如果上游全部完成但是没有失败，则跳过运行</li><li>ONE_SUCCESS：至少一个成功：上游只要有一个成功，就进行依赖判断，且依赖判断成功，如果上游全部完成但是没有成功，则跳过运行</li><li>ONE_DONE：至少一个完成：上游只要有一个完成了，就进行依赖判断，且依赖判断成功，否则还是等待上游</li><li>NONE_FAILED：上游全部完成，没有失败: 所有上游依赖任务都达到终态时，进行依赖判断，如果上游都是成功或者跳过运行，则依赖判断成功，否则标记为上游失败</li><li>ALL_DONE_NONE_FAILED_AT_LEAST_ONE_SUCCESS：上游全部完成，没有失败，至少有一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，上游没有一个失败且至少有一个成功的情况下，依赖判断成功，否则就是跳过运行</li><li>NONE_SKIPPED：上游全部完成，没有跳过运行: 所有上游依赖任务都达到终态时，进行依赖判断, 如果上游状态全部都是成功、失败、上游失败状态，则依赖判断成功，否则为跳过运行</li><li>ALL_DONE_AT_LEAST_ONE_FAILED：上游全部完成至少一个失败: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个失败，则依赖判断成功，否则就是跳过运行</li></ul>
         :type DependencyTriggerPolicy: str
+        :param _AllowDownstreamDependency: <p>是否允许下游依赖 1允许 0不允许</p><p>取值范围：[0, 1]</p><p>默认值：1</p>
+        :type AllowDownstreamDependency: int
         """
         self._CycleType = None
         self._ScheduleTimeZone = None
@@ -7423,21 +7280,11 @@ class CreateTaskSchedulerConfiguration(AbstractModel):
         self._ExecutionTTLMinute = None
         self._WaitExecutionTotalTTLMinute = None
         self._DependencyTriggerPolicy = None
+        self._AllowDownstreamDependency = None
 
     @property
     def CycleType(self):
-        r"""周期类型：默认为 DAY_CYCLE
-
-支持的类型为 
-
-* ONEOFF_CYCLE: 一次性
-* YEAR_CYCLE: 年
-* MONTH_CYCLE: 月
-* WEEK_CYCLE: 周
-* DAY_CYCLE: 天
-* HOUR_CYCLE: 小时
-* MINUTE_CYCLE: 分钟
-* CRONTAB_CYCLE: crontab表达式类型
+        r"""<p>周期类型：默认为 DAY_CYCLE</p><p>支持的类型为 </p><ul><li>ONEOFF_CYCLE: 一次性</li><li>YEAR_CYCLE: 年</li><li>MONTH_CYCLE: 月</li><li>WEEK_CYCLE: 周</li><li>DAY_CYCLE: 天</li><li>HOUR_CYCLE: 小时</li><li>MINUTE_CYCLE: 分钟</li><li>CRONTAB_CYCLE: crontab表达式类型</li></ul>
         :rtype: str
         """
         return self._CycleType
@@ -7448,7 +7295,7 @@ class CreateTaskSchedulerConfiguration(AbstractModel):
 
     @property
     def ScheduleTimeZone(self):
-        r"""时区，默认为 UTC+8
+        r"""<p>时区，默认为 UTC+8</p>
         :rtype: str
         """
         return self._ScheduleTimeZone
@@ -7459,7 +7306,7 @@ class CreateTaskSchedulerConfiguration(AbstractModel):
 
     @property
     def CrontabExpression(self):
-        r"""Cron表达式，默认为 0 0 0 * * ? * 
+        r"""<p>Cron表达式，默认为 0 0 0 * * ? *</p>
         :rtype: str
         """
         return self._CrontabExpression
@@ -7470,7 +7317,7 @@ class CreateTaskSchedulerConfiguration(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""生效日期，默认为当前日期的 00:00:00
+        r"""<p>生效日期，默认为当前日期的 00:00:00</p>
         :rtype: str
         """
         return self._StartTime
@@ -7481,7 +7328,7 @@ class CreateTaskSchedulerConfiguration(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""结束日期，默认为 2099-12-31 23:59:59
+        r"""<p>结束日期，默认为 2099-12-31 23:59:59</p>
         :rtype: str
         """
         return self._EndTime
@@ -7492,7 +7339,7 @@ class CreateTaskSchedulerConfiguration(AbstractModel):
 
     @property
     def ExecutionStartTime(self):
-        r"""执行时间 左闭区间，默认 00:00
+        r"""<p>执行时间 左闭区间，默认 00:00</p>
         :rtype: str
         """
         return self._ExecutionStartTime
@@ -7503,7 +7350,7 @@ class CreateTaskSchedulerConfiguration(AbstractModel):
 
     @property
     def ExecutionEndTime(self):
-        r"""执行时间 右闭区间，默认 23:59
+        r"""<p>执行时间 右闭区间，默认 23:59</p>
         :rtype: str
         """
         return self._ExecutionEndTime
@@ -7514,7 +7361,7 @@ class CreateTaskSchedulerConfiguration(AbstractModel):
 
     @property
     def CalendarOpen(self):
-        r"""日历调度 取值为 0 和 1， 1为打开，0为关闭，默认为0
+        r"""<p>日历调度 取值为 0 和 1， 1为打开，0为关闭，默认为0</p>
         :rtype: str
         """
         return self._CalendarOpen
@@ -7525,7 +7372,7 @@ class CreateTaskSchedulerConfiguration(AbstractModel):
 
     @property
     def CalendarId(self):
-        r"""日历调度 日历 ID
+        r"""<p>日历调度 日历 ID</p>
         :rtype: str
         """
         return self._CalendarId
@@ -7536,7 +7383,7 @@ class CreateTaskSchedulerConfiguration(AbstractModel):
 
     @property
     def SelfDepend(self):
-        r"""自依赖, 默认值 serial, 取值为：parallel(并行), serial(串行), orderly(有序)
+        r"""<p>自依赖, 默认值 serial, 取值为：parallel(并行), serial(串行), orderly(有序)</p>
         :rtype: str
         """
         return self._SelfDepend
@@ -7547,7 +7394,7 @@ class CreateTaskSchedulerConfiguration(AbstractModel):
 
     @property
     def UpstreamDependencyConfigList(self):
-        r"""上游依赖数组
+        r"""<p>上游依赖数组</p>
         :rtype: list of DependencyTaskBrief
         """
         return self._UpstreamDependencyConfigList
@@ -7558,7 +7405,7 @@ class CreateTaskSchedulerConfiguration(AbstractModel):
 
     @property
     def EventListenerList(self):
-        r"""事件数组
+        r"""<p>事件数组</p>
         :rtype: list of EventListener
         """
         return self._EventListenerList
@@ -7569,7 +7416,7 @@ class CreateTaskSchedulerConfiguration(AbstractModel):
 
     @property
     def AllowRedoType(self):
-        r"""重跑&补录配置, 默认为 ALL; , ALL 运行成功或失败后皆可重跑或补录, FAILURE 运行成功后不可重跑或补录，运行失败后可重跑或补录, NONE 运行成功或失败后皆不可重跑或补录;
+        r"""<p>重跑&amp;补录配置, 默认为 ALL; , ALL 运行成功或失败后皆可重跑或补录, FAILURE 运行成功后不可重跑或补录，运行失败后可重跑或补录, NONE 运行成功或失败后皆不可重跑或补录;</p>
         :rtype: str
         """
         return self._AllowRedoType
@@ -7580,7 +7427,7 @@ class CreateTaskSchedulerConfiguration(AbstractModel):
 
     @property
     def ParamTaskOutList(self):
-        r"""输出参数数组
+        r"""<p>输出参数数组</p>
         :rtype: list of OutTaskParameter
         """
         return self._ParamTaskOutList
@@ -7591,7 +7438,7 @@ class CreateTaskSchedulerConfiguration(AbstractModel):
 
     @property
     def ParamTaskInList(self):
-        r"""输入参数数组
+        r"""<p>输入参数数组</p>
         :rtype: list of InTaskParameter
         """
         return self._ParamTaskInList
@@ -7602,7 +7449,7 @@ class CreateTaskSchedulerConfiguration(AbstractModel):
 
     @property
     def TaskOutputRegistryList(self):
-        r"""产出登记
+        r"""<p>产出登记</p>
         :rtype: list of TaskDataRegistry
         """
         return self._TaskOutputRegistryList
@@ -7613,9 +7460,7 @@ class CreateTaskSchedulerConfiguration(AbstractModel):
 
     @property
     def InitStrategy(self):
-        r"""**实例生成策略**
-* T_PLUS_0: T+0生成,默认策略
-* T_PLUS_1: T+1生成
+        r"""<p><strong>实例生成策略</strong></p><ul><li>T_PLUS_0: T+0生成,默认策略</li><li>T_PLUS_1: T+1生成</li></ul>
         :rtype: str
         """
         return self._InitStrategy
@@ -7628,7 +7473,7 @@ class CreateTaskSchedulerConfiguration(AbstractModel):
     def ScheduleRunType(self):
         warnings.warn("parameter `ScheduleRunType` is deprecated", DeprecationWarning) 
 
-        r"""调度类型: 0 正常调度 1 空跑调度，默认为 0
+        r"""<p>调度类型: 0 正常调度 1 空跑调度，默认为 0</p>
         :rtype: str
         """
         return self._ScheduleRunType
@@ -7643,7 +7488,7 @@ class CreateTaskSchedulerConfiguration(AbstractModel):
     def RunPriority(self):
         warnings.warn("parameter `RunPriority` is deprecated", DeprecationWarning) 
 
-        r"""任务调度优先级 运行优先级 4高 5中 6低 , 默认:6
+        r"""<p>任务调度优先级 运行优先级 4高 5中 6低 , 默认:6</p>
         :rtype: str
         """
         return self._RunPriority
@@ -7658,7 +7503,7 @@ class CreateTaskSchedulerConfiguration(AbstractModel):
     def RetryWait(self):
         warnings.warn("parameter `RetryWait` is deprecated", DeprecationWarning) 
 
-        r"""重试策略 重试等待时间,单位分钟: 默认: 5
+        r"""<p>重试策略 重试等待时间,单位分钟: 默认: 5</p>
         :rtype: str
         """
         return self._RetryWait
@@ -7673,7 +7518,7 @@ class CreateTaskSchedulerConfiguration(AbstractModel):
     def MaxRetryAttempts(self):
         warnings.warn("parameter `MaxRetryAttempts` is deprecated", DeprecationWarning) 
 
-        r"""重试策略 最大尝试次数, 默认: 4
+        r"""<p>重试策略 最大尝试次数, 默认: 4</p>
         :rtype: str
         """
         return self._MaxRetryAttempts
@@ -7688,7 +7533,7 @@ class CreateTaskSchedulerConfiguration(AbstractModel):
     def ExecutionTTL(self):
         warnings.warn("parameter `ExecutionTTL` is deprecated", DeprecationWarning) 
 
-        r"""超时处理策略 运行耗时超时（单位：分钟）默认为 -1
+        r"""<p>超时处理策略 运行耗时超时（单位：分钟）默认为 -1</p>
         :rtype: str
         """
         return self._ExecutionTTL
@@ -7703,7 +7548,7 @@ class CreateTaskSchedulerConfiguration(AbstractModel):
     def WaitExecutionTotalTTL(self):
         warnings.warn("parameter `WaitExecutionTotalTTL` is deprecated", DeprecationWarning) 
 
-        r"""超时处理策略 等待总时长耗时超时（单位：分钟）默认为 -1
+        r"""<p>超时处理策略 等待总时长耗时超时（单位：分钟）默认为 -1</p>
         :rtype: str
         """
         return self._WaitExecutionTotalTTL
@@ -7716,7 +7561,7 @@ class CreateTaskSchedulerConfiguration(AbstractModel):
 
     @property
     def ScheduleType(self):
-        r"""调度类型: 0 正常调度 1 空跑调度，默认为 0
+        r"""<p>调度类型: 0 正常调度 1 空跑调度，默认为 0</p>
         :rtype: int
         """
         return self._ScheduleType
@@ -7727,7 +7572,7 @@ class CreateTaskSchedulerConfiguration(AbstractModel):
 
     @property
     def RunPriorityType(self):
-        r"""任务调度优先级 运行优先级 4高 5中 6低 , 默认:6
+        r"""<p>任务调度优先级 运行优先级 4高 5中 6低 , 默认:6</p>
         :rtype: int
         """
         return self._RunPriorityType
@@ -7738,7 +7583,7 @@ class CreateTaskSchedulerConfiguration(AbstractModel):
 
     @property
     def RetryWaitMinute(self):
-        r"""重试策略 重试等待时间,单位分钟: 默认: 5
+        r"""<p>重试策略 重试等待时间,单位分钟: 默认: 5</p>
         :rtype: int
         """
         return self._RetryWaitMinute
@@ -7749,7 +7594,7 @@ class CreateTaskSchedulerConfiguration(AbstractModel):
 
     @property
     def MaxRetryNumber(self):
-        r"""重试策略 最大尝试次数, 默认: 4
+        r"""<p>重试策略 最大尝试次数, 默认: 4</p>
         :rtype: int
         """
         return self._MaxRetryNumber
@@ -7760,7 +7605,7 @@ class CreateTaskSchedulerConfiguration(AbstractModel):
 
     @property
     def ExecutionTTLMinute(self):
-        r"""超时处理策略 运行耗时超时（单位：分钟）默认为 -1
+        r"""<p>超时处理策略 运行耗时超时（单位：分钟）默认为 -1</p>
         :rtype: int
         """
         return self._ExecutionTTLMinute
@@ -7771,7 +7616,7 @@ class CreateTaskSchedulerConfiguration(AbstractModel):
 
     @property
     def WaitExecutionTotalTTLMinute(self):
-        r"""超时处理策略 等待总时长耗时超时（单位：分钟）默认为 -1
+        r"""<p>超时处理策略 等待总时长耗时超时（单位：分钟）默认为 -1</p>
         :rtype: int
         """
         return self._WaitExecutionTotalTTLMinute
@@ -7782,19 +7627,7 @@ class CreateTaskSchedulerConfiguration(AbstractModel):
 
     @property
     def DependencyTriggerPolicy(self):
-        r"""- 任务依赖运行条件，默认为ALL_SUCCESS，暂时只支持工作流调度项目下配置
-- ALL_SUCCESS： 全部成功：所有上游依赖任务都达到终态时，进行依赖判断，如果上游全部都成功，则依赖判断成功，否则如果上游有一个跳过运行，则标记为跳过运行，其余情况标记为上游失败
-- ALL_FAILED：全部失败：所有上游依赖任务都达到终态时，进行依赖判断，如果上游状态都是失败或者上游失败，则依赖判断成功，否则就标记为跳过运行
-- ALL_DONE：全部完成：所有上游依赖任务都达到终态时，进行依赖判断，直接是依赖判断成功
-- ALL_DONE_AT_LEAST_ONE_SUCCESS：上游全部完成至少一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个成功，则依赖判断成功，否则就是跳过运行
-- ALL_SKIPPED：上游全部都跳过: 所有上游依赖任务都达到终态时，进行依赖判断，所有的上游都是跳过状态才算依赖判断成功，否则当前节点就是跳过运行
-- ONE_FAILED：至少一个失败: 上游只要有一个失败了，就进行依赖判断，且依赖判断成功，如果上游全部完成但是没有失败，则跳过运行
-- ONE_SUCCESS：至少一个成功：上游只要有一个成功，就进行依赖判断，且依赖判断成功，如果上游全部完成但是没有成功，则跳过运行
-- ONE_DONE：至少一个完成：上游只要有一个完成了，就进行依赖判断，且依赖判断成功，否则还是等待上游
-- NONE_FAILED：上游全部完成，没有失败: 所有上游依赖任务都达到终态时，进行依赖判断，如果上游都是成功或者跳过运行，则依赖判断成功，否则标记为上游失败
-- ALL_DONE_NONE_FAILED_AT_LEAST_ONE_SUCCESS：上游全部完成，没有失败，至少有一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，上游没有一个失败且至少有一个成功的情况下，依赖判断成功，否则就是跳过运行
-- NONE_SKIPPED：上游全部完成，没有跳过运行: 所有上游依赖任务都达到终态时，进行依赖判断, 如果上游状态全部都是成功、失败、上游失败状态，则依赖判断成功，否则为跳过运行
-- ALL_DONE_AT_LEAST_ONE_FAILED：上游全部完成至少一个失败: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个失败，则依赖判断成功，否则就是跳过运行
+        r"""<ul><li>任务依赖运行条件，默认为ALL_SUCCESS，暂时只支持工作流调度项目下配置</li><li>ALL_SUCCESS： 全部成功：所有上游依赖任务都达到终态时，进行依赖判断，如果上游全部都成功，则依赖判断成功，否则如果上游有一个跳过运行，则标记为跳过运行，其余情况标记为上游失败</li><li>ALL_FAILED：全部失败：所有上游依赖任务都达到终态时，进行依赖判断，如果上游状态都是失败或者上游失败，则依赖判断成功，否则就标记为跳过运行</li><li>ALL_DONE：全部完成：所有上游依赖任务都达到终态时，进行依赖判断，直接是依赖判断成功</li><li>ALL_DONE_AT_LEAST_ONE_SUCCESS：上游全部完成至少一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个成功，则依赖判断成功，否则就是跳过运行</li><li>ALL_SKIPPED：上游全部都跳过: 所有上游依赖任务都达到终态时，进行依赖判断，所有的上游都是跳过状态才算依赖判断成功，否则当前节点就是跳过运行</li><li>ONE_FAILED：至少一个失败: 上游只要有一个失败了，就进行依赖判断，且依赖判断成功，如果上游全部完成但是没有失败，则跳过运行</li><li>ONE_SUCCESS：至少一个成功：上游只要有一个成功，就进行依赖判断，且依赖判断成功，如果上游全部完成但是没有成功，则跳过运行</li><li>ONE_DONE：至少一个完成：上游只要有一个完成了，就进行依赖判断，且依赖判断成功，否则还是等待上游</li><li>NONE_FAILED：上游全部完成，没有失败: 所有上游依赖任务都达到终态时，进行依赖判断，如果上游都是成功或者跳过运行，则依赖判断成功，否则标记为上游失败</li><li>ALL_DONE_NONE_FAILED_AT_LEAST_ONE_SUCCESS：上游全部完成，没有失败，至少有一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，上游没有一个失败且至少有一个成功的情况下，依赖判断成功，否则就是跳过运行</li><li>NONE_SKIPPED：上游全部完成，没有跳过运行: 所有上游依赖任务都达到终态时，进行依赖判断, 如果上游状态全部都是成功、失败、上游失败状态，则依赖判断成功，否则为跳过运行</li><li>ALL_DONE_AT_LEAST_ONE_FAILED：上游全部完成至少一个失败: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个失败，则依赖判断成功，否则就是跳过运行</li></ul>
         :rtype: str
         """
         return self._DependencyTriggerPolicy
@@ -7802,6 +7635,21 @@ class CreateTaskSchedulerConfiguration(AbstractModel):
     @DependencyTriggerPolicy.setter
     def DependencyTriggerPolicy(self, DependencyTriggerPolicy):
         self._DependencyTriggerPolicy = DependencyTriggerPolicy
+
+    @property
+    def AllowDownstreamDependency(self):
+        warnings.warn("parameter `AllowDownstreamDependency` is deprecated", DeprecationWarning) 
+
+        r"""<p>是否允许下游依赖 1允许 0不允许</p><p>取值范围：[0, 1]</p><p>默认值：1</p>
+        :rtype: int
+        """
+        return self._AllowDownstreamDependency
+
+    @AllowDownstreamDependency.setter
+    def AllowDownstreamDependency(self, AllowDownstreamDependency):
+        warnings.warn("parameter `AllowDownstreamDependency` is deprecated", DeprecationWarning) 
+
+        self._AllowDownstreamDependency = AllowDownstreamDependency
 
 
     def _deserialize(self, params):
@@ -7860,6 +7708,7 @@ class CreateTaskSchedulerConfiguration(AbstractModel):
         self._ExecutionTTLMinute = params.get("ExecutionTTLMinute")
         self._WaitExecutionTotalTTLMinute = params.get("WaitExecutionTotalTTLMinute")
         self._DependencyTriggerPolicy = params.get("DependencyTriggerPolicy")
+        self._AllowDownstreamDependency = params.get("AllowDownstreamDependency")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8354,40 +8203,30 @@ class CreateTriggerTaskSchedulerConfiguration(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _UpstreamDependencyConfigList: 上游依赖的任务数组
+        :param _UpstreamDependencyConfigList: <p>上游依赖的任务数组</p>
         :type UpstreamDependencyConfigList: list of DependencyTriggerTaskBrief
-        :param _RunPriorityType: 任务调度优先级 运行优先级 4高 5中 6低 , 默认:6
+        :param _RunPriorityType: <p>任务调度优先级 运行优先级 4高 5中 6低 , 默认:6</p>
         :type RunPriorityType: int
-        :param _RetryWaitMinute: 重试策略 重试等待时间,单位分钟: 默认: 5
+        :param _RetryWaitMinute: <p>重试策略 重试等待时间,单位分钟: 默认: 5</p>
         :type RetryWaitMinute: int
-        :param _MaxRetryNumber: 重试策略 最大尝试次数, 默认: 4
+        :param _MaxRetryNumber: <p>重试策略 最大尝试次数, 默认: 4</p>
         :type MaxRetryNumber: int
-        :param _ExecutionTTLMinute: 超时处理策略 运行耗时超时（单位：分钟）默认为 -1
+        :param _ExecutionTTLMinute: <p>超时处理策略 运行耗时超时（单位：分钟）默认为 -1</p>
         :type ExecutionTTLMinute: int
-        :param _WaitExecutionTotalTTLMinute: 超时处理策略 等待总时长耗时超时（单位：分钟）默认为 -1
+        :param _WaitExecutionTotalTTLMinute: <p>超时处理策略 等待总时长耗时超时（单位：分钟）默认为 -1</p>
         :type WaitExecutionTotalTTLMinute: int
-        :param _AllowRedoType: 重跑&补录配置, 默认为 ALL; , ALL 运行成功或失败后皆可重跑或补录, FAILURE 运行成功后不可重跑或补录，运行失败后可重跑或补录, NONE 运行成功或失败后皆不可重跑或补录;
+        :param _AllowRedoType: <p>重跑&amp;补录配置, 默认为 ALL; , ALL 运行成功或失败后皆可重跑或补录, FAILURE 运行成功后不可重跑或补录，运行失败后可重跑或补录, NONE 运行成功或失败后皆不可重跑或补录;</p>
         :type AllowRedoType: str
-        :param _ParamTaskOutList: 输出参数数组
+        :param _ParamTaskOutList: <p>输出参数数组</p>
         :type ParamTaskOutList: list of OutTaskParameter
-        :param _ParamTaskInList: 输入参数数组
+        :param _ParamTaskInList: <p>输入参数数组</p>
         :type ParamTaskInList: list of InTaskParameter
-        :param _TaskOutputRegistryList: 产出登记
+        :param _TaskOutputRegistryList: <p>产出登记</p>
         :type TaskOutputRegistryList: list of TaskDataRegistry
-        :param _DependencyTriggerPolicy: - 任务依赖运行条件，默认为ALL_SUCCESS，暂时只支持工作流调度项目下配置
-- ALL_SUCCESS： 全部成功：所有上游依赖任务都达到终态时，进行依赖判断，如果上游全部都成功，则依赖判断成功，否则如果上游有一个跳过运行，则标记为跳过运行，其余情况标记为上游失败
-- ALL_FAILED：全部失败：所有上游依赖任务都达到终态时，进行依赖判断，如果上游状态都是失败或者上游失败，则依赖判断成功，否则就标记为跳过运行
-- ALL_DONE：全部完成：所有上游依赖任务都达到终态时，进行依赖判断，直接是依赖判断成功
-- ALL_DONE_AT_LEAST_ONE_SUCCESS：上游全部完成至少一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个成功，则依赖判断成功，否则就是跳过运行
-- ALL_SKIPPED：上游全部都跳过: 所有上游依赖任务都达到终态时，进行依赖判断，所有的上游都是跳过状态才算依赖判断成功，否则当前节点就是跳过运行
-- ONE_FAILED：至少一个失败: 上游只要有一个失败了，就进行依赖判断，且依赖判断成功，如果上游全部完成但是没有失败，则跳过运行
-- ONE_SUCCESS：至少一个成功：上游只要有一个成功，就进行依赖判断，且依赖判断成功，如果上游全部完成但是没有成功，则跳过运行
-- ONE_DONE：至少一个完成：上游只要有一个完成了，就进行依赖判断，且依赖判断成功，否则还是等待上游
-- NONE_FAILED：上游全部完成，没有失败: 所有上游依赖任务都达到终态时，进行依赖判断，如果上游都是成功或者跳过运行，则依赖判断成功，否则标记为上游失败
-- ALL_DONE_NONE_FAILED_AT_LEAST_ONE_SUCCESS：上游全部完成，没有失败，至少有一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，上游没有一个失败且至少有一个成功的情况下，依赖判断成功，否则就是跳过运行
-- NONE_SKIPPED：上游全部完成，没有跳过运行: 所有上游依赖任务都达到终态时，进行依赖判断, 如果上游状态全部都是成功、失败、上游失败状态，则依赖判断成功，否则为跳过运行
-- ALL_DONE_AT_LEAST_ONE_FAILED：上游全部完成至少一个失败: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个失败，则依赖判断成功，否则就是跳过运行
+        :param _DependencyTriggerPolicy: <ul><li>任务依赖运行条件，默认为ALL_SUCCESS，暂时只支持工作流调度项目下配置</li><li>ALL_SUCCESS： 全部成功：所有上游依赖任务都达到终态时，进行依赖判断，如果上游全部都成功，则依赖判断成功，否则如果上游有一个跳过运行，则标记为跳过运行，其余情况标记为上游失败</li><li>ALL_FAILED：全部失败：所有上游依赖任务都达到终态时，进行依赖判断，如果上游状态都是失败或者上游失败，则依赖判断成功，否则就标记为跳过运行</li><li>ALL_DONE：全部完成：所有上游依赖任务都达到终态时，进行依赖判断，直接是依赖判断成功</li><li>ALL_DONE_AT_LEAST_ONE_SUCCESS：上游全部完成至少一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个成功，则依赖判断成功，否则就是跳过运行</li><li>ALL_SKIPPED：上游全部都跳过: 所有上游依赖任务都达到终态时，进行依赖判断，所有的上游都是跳过状态才算依赖判断成功，否则当前节点就是跳过运行</li><li>ONE_FAILED：至少一个失败: 上游只要有一个失败了，就进行依赖判断，且依赖判断成功，如果上游全部完成但是没有失败，则跳过运行</li><li>ONE_SUCCESS：至少一个成功：上游只要有一个成功，就进行依赖判断，且依赖判断成功，如果上游全部完成但是没有成功，则跳过运行</li><li>ONE_DONE：至少一个完成：上游只要有一个完成了，就进行依赖判断，且依赖判断成功，否则还是等待上游</li><li>NONE_FAILED：上游全部完成，没有失败: 所有上游依赖任务都达到终态时，进行依赖判断，如果上游都是成功或者跳过运行，则依赖判断成功，否则标记为上游失败</li><li>ALL_DONE_NONE_FAILED_AT_LEAST_ONE_SUCCESS：上游全部完成，没有失败，至少有一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，上游没有一个失败且至少有一个成功的情况下，依赖判断成功，否则就是跳过运行</li><li>NONE_SKIPPED：上游全部完成，没有跳过运行: 所有上游依赖任务都达到终态时，进行依赖判断, 如果上游状态全部都是成功、失败、上游失败状态，则依赖判断成功，否则为跳过运行</li><li>ALL_DONE_AT_LEAST_ONE_FAILED：上游全部完成至少一个失败: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个失败，则依赖判断成功，否则就是跳过运行</li></ul>
         :type DependencyTriggerPolicy: str
+        :param _AllowDownstreamDependency: <p>是否允许下游依赖 1允许 0不允许</p><p>取值范围：[0, 1]</p><p>默认值：1</p>
+        :type AllowDownstreamDependency: int
         """
         self._UpstreamDependencyConfigList = None
         self._RunPriorityType = None
@@ -8400,10 +8239,11 @@ class CreateTriggerTaskSchedulerConfiguration(AbstractModel):
         self._ParamTaskInList = None
         self._TaskOutputRegistryList = None
         self._DependencyTriggerPolicy = None
+        self._AllowDownstreamDependency = None
 
     @property
     def UpstreamDependencyConfigList(self):
-        r"""上游依赖的任务数组
+        r"""<p>上游依赖的任务数组</p>
         :rtype: list of DependencyTriggerTaskBrief
         """
         return self._UpstreamDependencyConfigList
@@ -8414,7 +8254,7 @@ class CreateTriggerTaskSchedulerConfiguration(AbstractModel):
 
     @property
     def RunPriorityType(self):
-        r"""任务调度优先级 运行优先级 4高 5中 6低 , 默认:6
+        r"""<p>任务调度优先级 运行优先级 4高 5中 6低 , 默认:6</p>
         :rtype: int
         """
         return self._RunPriorityType
@@ -8425,7 +8265,7 @@ class CreateTriggerTaskSchedulerConfiguration(AbstractModel):
 
     @property
     def RetryWaitMinute(self):
-        r"""重试策略 重试等待时间,单位分钟: 默认: 5
+        r"""<p>重试策略 重试等待时间,单位分钟: 默认: 5</p>
         :rtype: int
         """
         return self._RetryWaitMinute
@@ -8436,7 +8276,7 @@ class CreateTriggerTaskSchedulerConfiguration(AbstractModel):
 
     @property
     def MaxRetryNumber(self):
-        r"""重试策略 最大尝试次数, 默认: 4
+        r"""<p>重试策略 最大尝试次数, 默认: 4</p>
         :rtype: int
         """
         return self._MaxRetryNumber
@@ -8447,7 +8287,7 @@ class CreateTriggerTaskSchedulerConfiguration(AbstractModel):
 
     @property
     def ExecutionTTLMinute(self):
-        r"""超时处理策略 运行耗时超时（单位：分钟）默认为 -1
+        r"""<p>超时处理策略 运行耗时超时（单位：分钟）默认为 -1</p>
         :rtype: int
         """
         return self._ExecutionTTLMinute
@@ -8458,7 +8298,7 @@ class CreateTriggerTaskSchedulerConfiguration(AbstractModel):
 
     @property
     def WaitExecutionTotalTTLMinute(self):
-        r"""超时处理策略 等待总时长耗时超时（单位：分钟）默认为 -1
+        r"""<p>超时处理策略 等待总时长耗时超时（单位：分钟）默认为 -1</p>
         :rtype: int
         """
         return self._WaitExecutionTotalTTLMinute
@@ -8469,7 +8309,7 @@ class CreateTriggerTaskSchedulerConfiguration(AbstractModel):
 
     @property
     def AllowRedoType(self):
-        r"""重跑&补录配置, 默认为 ALL; , ALL 运行成功或失败后皆可重跑或补录, FAILURE 运行成功后不可重跑或补录，运行失败后可重跑或补录, NONE 运行成功或失败后皆不可重跑或补录;
+        r"""<p>重跑&amp;补录配置, 默认为 ALL; , ALL 运行成功或失败后皆可重跑或补录, FAILURE 运行成功后不可重跑或补录，运行失败后可重跑或补录, NONE 运行成功或失败后皆不可重跑或补录;</p>
         :rtype: str
         """
         return self._AllowRedoType
@@ -8480,7 +8320,7 @@ class CreateTriggerTaskSchedulerConfiguration(AbstractModel):
 
     @property
     def ParamTaskOutList(self):
-        r"""输出参数数组
+        r"""<p>输出参数数组</p>
         :rtype: list of OutTaskParameter
         """
         return self._ParamTaskOutList
@@ -8491,7 +8331,7 @@ class CreateTriggerTaskSchedulerConfiguration(AbstractModel):
 
     @property
     def ParamTaskInList(self):
-        r"""输入参数数组
+        r"""<p>输入参数数组</p>
         :rtype: list of InTaskParameter
         """
         return self._ParamTaskInList
@@ -8502,7 +8342,7 @@ class CreateTriggerTaskSchedulerConfiguration(AbstractModel):
 
     @property
     def TaskOutputRegistryList(self):
-        r"""产出登记
+        r"""<p>产出登记</p>
         :rtype: list of TaskDataRegistry
         """
         return self._TaskOutputRegistryList
@@ -8513,19 +8353,7 @@ class CreateTriggerTaskSchedulerConfiguration(AbstractModel):
 
     @property
     def DependencyTriggerPolicy(self):
-        r"""- 任务依赖运行条件，默认为ALL_SUCCESS，暂时只支持工作流调度项目下配置
-- ALL_SUCCESS： 全部成功：所有上游依赖任务都达到终态时，进行依赖判断，如果上游全部都成功，则依赖判断成功，否则如果上游有一个跳过运行，则标记为跳过运行，其余情况标记为上游失败
-- ALL_FAILED：全部失败：所有上游依赖任务都达到终态时，进行依赖判断，如果上游状态都是失败或者上游失败，则依赖判断成功，否则就标记为跳过运行
-- ALL_DONE：全部完成：所有上游依赖任务都达到终态时，进行依赖判断，直接是依赖判断成功
-- ALL_DONE_AT_LEAST_ONE_SUCCESS：上游全部完成至少一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个成功，则依赖判断成功，否则就是跳过运行
-- ALL_SKIPPED：上游全部都跳过: 所有上游依赖任务都达到终态时，进行依赖判断，所有的上游都是跳过状态才算依赖判断成功，否则当前节点就是跳过运行
-- ONE_FAILED：至少一个失败: 上游只要有一个失败了，就进行依赖判断，且依赖判断成功，如果上游全部完成但是没有失败，则跳过运行
-- ONE_SUCCESS：至少一个成功：上游只要有一个成功，就进行依赖判断，且依赖判断成功，如果上游全部完成但是没有成功，则跳过运行
-- ONE_DONE：至少一个完成：上游只要有一个完成了，就进行依赖判断，且依赖判断成功，否则还是等待上游
-- NONE_FAILED：上游全部完成，没有失败: 所有上游依赖任务都达到终态时，进行依赖判断，如果上游都是成功或者跳过运行，则依赖判断成功，否则标记为上游失败
-- ALL_DONE_NONE_FAILED_AT_LEAST_ONE_SUCCESS：上游全部完成，没有失败，至少有一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，上游没有一个失败且至少有一个成功的情况下，依赖判断成功，否则就是跳过运行
-- NONE_SKIPPED：上游全部完成，没有跳过运行: 所有上游依赖任务都达到终态时，进行依赖判断, 如果上游状态全部都是成功、失败、上游失败状态，则依赖判断成功，否则为跳过运行
-- ALL_DONE_AT_LEAST_ONE_FAILED：上游全部完成至少一个失败: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个失败，则依赖判断成功，否则就是跳过运行
+        r"""<ul><li>任务依赖运行条件，默认为ALL_SUCCESS，暂时只支持工作流调度项目下配置</li><li>ALL_SUCCESS： 全部成功：所有上游依赖任务都达到终态时，进行依赖判断，如果上游全部都成功，则依赖判断成功，否则如果上游有一个跳过运行，则标记为跳过运行，其余情况标记为上游失败</li><li>ALL_FAILED：全部失败：所有上游依赖任务都达到终态时，进行依赖判断，如果上游状态都是失败或者上游失败，则依赖判断成功，否则就标记为跳过运行</li><li>ALL_DONE：全部完成：所有上游依赖任务都达到终态时，进行依赖判断，直接是依赖判断成功</li><li>ALL_DONE_AT_LEAST_ONE_SUCCESS：上游全部完成至少一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个成功，则依赖判断成功，否则就是跳过运行</li><li>ALL_SKIPPED：上游全部都跳过: 所有上游依赖任务都达到终态时，进行依赖判断，所有的上游都是跳过状态才算依赖判断成功，否则当前节点就是跳过运行</li><li>ONE_FAILED：至少一个失败: 上游只要有一个失败了，就进行依赖判断，且依赖判断成功，如果上游全部完成但是没有失败，则跳过运行</li><li>ONE_SUCCESS：至少一个成功：上游只要有一个成功，就进行依赖判断，且依赖判断成功，如果上游全部完成但是没有成功，则跳过运行</li><li>ONE_DONE：至少一个完成：上游只要有一个完成了，就进行依赖判断，且依赖判断成功，否则还是等待上游</li><li>NONE_FAILED：上游全部完成，没有失败: 所有上游依赖任务都达到终态时，进行依赖判断，如果上游都是成功或者跳过运行，则依赖判断成功，否则标记为上游失败</li><li>ALL_DONE_NONE_FAILED_AT_LEAST_ONE_SUCCESS：上游全部完成，没有失败，至少有一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，上游没有一个失败且至少有一个成功的情况下，依赖判断成功，否则就是跳过运行</li><li>NONE_SKIPPED：上游全部完成，没有跳过运行: 所有上游依赖任务都达到终态时，进行依赖判断, 如果上游状态全部都是成功、失败、上游失败状态，则依赖判断成功，否则为跳过运行</li><li>ALL_DONE_AT_LEAST_ONE_FAILED：上游全部完成至少一个失败: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个失败，则依赖判断成功，否则就是跳过运行</li></ul>
         :rtype: str
         """
         return self._DependencyTriggerPolicy
@@ -8533,6 +8361,17 @@ class CreateTriggerTaskSchedulerConfiguration(AbstractModel):
     @DependencyTriggerPolicy.setter
     def DependencyTriggerPolicy(self, DependencyTriggerPolicy):
         self._DependencyTriggerPolicy = DependencyTriggerPolicy
+
+    @property
+    def AllowDownstreamDependency(self):
+        r"""<p>是否允许下游依赖 1允许 0不允许</p><p>取值范围：[0, 1]</p><p>默认值：1</p>
+        :rtype: int
+        """
+        return self._AllowDownstreamDependency
+
+    @AllowDownstreamDependency.setter
+    def AllowDownstreamDependency(self, AllowDownstreamDependency):
+        self._AllowDownstreamDependency = AllowDownstreamDependency
 
 
     def _deserialize(self, params):
@@ -8567,6 +8406,7 @@ class CreateTriggerTaskSchedulerConfiguration(AbstractModel):
                 obj._deserialize(item)
                 self._TaskOutputRegistryList.append(obj)
         self._DependencyTriggerPolicy = params.get("DependencyTriggerPolicy")
+        self._AllowDownstreamDependency = params.get("AllowDownstreamDependency")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -31470,6 +31310,595 @@ class ListTriggerTaskInfo(AbstractModel):
         
 
 
+class ListTriggerTaskRunBrief(AbstractModel):
+    r"""查询任务运行列表返回参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ExecutionId: 任务运行ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecutionId: str
+        :param _WorkflowId: 工作流ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkflowId: str
+        :param _WorkflowExecutionId: 工作流运行ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkflowExecutionId: str
+        :param _TaskId: 任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: str
+        :param _TriggerType: 触发类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TriggerType: str
+        :param _WaitTime: 等待时长，单位秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WaitTime: str
+        :param _ExecuteUserUin: 运行账号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecuteUserUin: str
+        :param _ScheduleTime: 计划调度时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScheduleTime: str
+        :param _ExecutionStartTime: 运行开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecutionStartTime: str
+        :param _ExecutionEndTime: 运行结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecutionEndTime: str
+        :param _ExecutionTime: 运行时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecutionTime: str
+        :param _RetryTimes: 系统自动重试次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RetryTimes: int
+        :param _ErrorCodeStr: 错误码描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorCodeStr: str
+        :param _TaskName: 任务名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskName: str
+        :param _WorkflowName: 工作流名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkflowName: str
+        :param _RerunTimes: 用户手动重跑次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RerunTimes: int
+        :param _TaskExecutionState: 任务运行状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskExecutionState: str
+        :param _IsLatestExecution: 是否是最新一次运行
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsLatestExecution: bool
+        """
+        self._ExecutionId = None
+        self._WorkflowId = None
+        self._WorkflowExecutionId = None
+        self._TaskId = None
+        self._TriggerType = None
+        self._WaitTime = None
+        self._ExecuteUserUin = None
+        self._ScheduleTime = None
+        self._ExecutionStartTime = None
+        self._ExecutionEndTime = None
+        self._ExecutionTime = None
+        self._RetryTimes = None
+        self._ErrorCodeStr = None
+        self._TaskName = None
+        self._WorkflowName = None
+        self._RerunTimes = None
+        self._TaskExecutionState = None
+        self._IsLatestExecution = None
+
+    @property
+    def ExecutionId(self):
+        r"""任务运行ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExecutionId
+
+    @ExecutionId.setter
+    def ExecutionId(self, ExecutionId):
+        self._ExecutionId = ExecutionId
+
+    @property
+    def WorkflowId(self):
+        r"""工作流ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._WorkflowId
+
+    @WorkflowId.setter
+    def WorkflowId(self, WorkflowId):
+        self._WorkflowId = WorkflowId
+
+    @property
+    def WorkflowExecutionId(self):
+        r"""工作流运行ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._WorkflowExecutionId
+
+    @WorkflowExecutionId.setter
+    def WorkflowExecutionId(self, WorkflowExecutionId):
+        self._WorkflowExecutionId = WorkflowExecutionId
+
+    @property
+    def TaskId(self):
+        r"""任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TriggerType(self):
+        r"""触发类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TriggerType
+
+    @TriggerType.setter
+    def TriggerType(self, TriggerType):
+        self._TriggerType = TriggerType
+
+    @property
+    def WaitTime(self):
+        r"""等待时长，单位秒
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._WaitTime
+
+    @WaitTime.setter
+    def WaitTime(self, WaitTime):
+        self._WaitTime = WaitTime
+
+    @property
+    def ExecuteUserUin(self):
+        r"""运行账号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExecuteUserUin
+
+    @ExecuteUserUin.setter
+    def ExecuteUserUin(self, ExecuteUserUin):
+        self._ExecuteUserUin = ExecuteUserUin
+
+    @property
+    def ScheduleTime(self):
+        r"""计划调度时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ScheduleTime
+
+    @ScheduleTime.setter
+    def ScheduleTime(self, ScheduleTime):
+        self._ScheduleTime = ScheduleTime
+
+    @property
+    def ExecutionStartTime(self):
+        r"""运行开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExecutionStartTime
+
+    @ExecutionStartTime.setter
+    def ExecutionStartTime(self, ExecutionStartTime):
+        self._ExecutionStartTime = ExecutionStartTime
+
+    @property
+    def ExecutionEndTime(self):
+        r"""运行结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExecutionEndTime
+
+    @ExecutionEndTime.setter
+    def ExecutionEndTime(self, ExecutionEndTime):
+        self._ExecutionEndTime = ExecutionEndTime
+
+    @property
+    def ExecutionTime(self):
+        r"""运行时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExecutionTime
+
+    @ExecutionTime.setter
+    def ExecutionTime(self, ExecutionTime):
+        self._ExecutionTime = ExecutionTime
+
+    @property
+    def RetryTimes(self):
+        r"""系统自动重试次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._RetryTimes
+
+    @RetryTimes.setter
+    def RetryTimes(self, RetryTimes):
+        self._RetryTimes = RetryTimes
+
+    @property
+    def ErrorCodeStr(self):
+        r"""错误码描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ErrorCodeStr
+
+    @ErrorCodeStr.setter
+    def ErrorCodeStr(self, ErrorCodeStr):
+        self._ErrorCodeStr = ErrorCodeStr
+
+    @property
+    def TaskName(self):
+        r"""任务名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def WorkflowName(self):
+        r"""工作流名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._WorkflowName
+
+    @WorkflowName.setter
+    def WorkflowName(self, WorkflowName):
+        self._WorkflowName = WorkflowName
+
+    @property
+    def RerunTimes(self):
+        r"""用户手动重跑次数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._RerunTimes
+
+    @RerunTimes.setter
+    def RerunTimes(self, RerunTimes):
+        self._RerunTimes = RerunTimes
+
+    @property
+    def TaskExecutionState(self):
+        r"""任务运行状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TaskExecutionState
+
+    @TaskExecutionState.setter
+    def TaskExecutionState(self, TaskExecutionState):
+        self._TaskExecutionState = TaskExecutionState
+
+    @property
+    def IsLatestExecution(self):
+        r"""是否是最新一次运行
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._IsLatestExecution
+
+    @IsLatestExecution.setter
+    def IsLatestExecution(self, IsLatestExecution):
+        self._IsLatestExecution = IsLatestExecution
+
+
+    def _deserialize(self, params):
+        self._ExecutionId = params.get("ExecutionId")
+        self._WorkflowId = params.get("WorkflowId")
+        self._WorkflowExecutionId = params.get("WorkflowExecutionId")
+        self._TaskId = params.get("TaskId")
+        self._TriggerType = params.get("TriggerType")
+        self._WaitTime = params.get("WaitTime")
+        self._ExecuteUserUin = params.get("ExecuteUserUin")
+        self._ScheduleTime = params.get("ScheduleTime")
+        self._ExecutionStartTime = params.get("ExecutionStartTime")
+        self._ExecutionEndTime = params.get("ExecutionEndTime")
+        self._ExecutionTime = params.get("ExecutionTime")
+        self._RetryTimes = params.get("RetryTimes")
+        self._ErrorCodeStr = params.get("ErrorCodeStr")
+        self._TaskName = params.get("TaskName")
+        self._WorkflowName = params.get("WorkflowName")
+        self._RerunTimes = params.get("RerunTimes")
+        self._TaskExecutionState = params.get("TaskExecutionState")
+        self._IsLatestExecution = params.get("IsLatestExecution")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListTriggerTaskRunResult(AbstractModel):
+    r"""查询工作流结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 总记录数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _TotalPageNumber: 页数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalPageNumber: int
+        :param _PageNumber: 页码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PageNumber: int
+        :param _PageSize: 页大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PageSize: int
+        :param _Items: 任务运行信息集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of ListTriggerTaskRunBrief
+        """
+        self._TotalCount = None
+        self._TotalPageNumber = None
+        self._PageNumber = None
+        self._PageSize = None
+        self._Items = None
+
+    @property
+    def TotalCount(self):
+        r"""总记录数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def TotalPageNumber(self):
+        r"""页数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TotalPageNumber
+
+    @TotalPageNumber.setter
+    def TotalPageNumber(self, TotalPageNumber):
+        self._TotalPageNumber = TotalPageNumber
+
+    @property
+    def PageNumber(self):
+        r"""页码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        r"""页大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def Items(self):
+        r"""任务运行信息集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ListTriggerTaskRunBrief
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        self._TotalPageNumber = params.get("TotalPageNumber")
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = ListTriggerTaskRunBrief()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListTriggerTaskRunsRequest(AbstractModel):
+    r"""ListTriggerTaskRuns请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: 项目ID
+        :type ProjectId: str
+        :param _Filters: 过滤参数，任务名称或ID查询: Keyword，工作流ID查询: WorkflowId，文件夹查询: FolderId，负责人查询: InChargeUin，工作流执行ID: WorkflowExecutionId，任务执行ID: ExecutionId，任务ID: TaskId，计划调度时间区间: ScheduleTimeGreaterEqual / ScheduleTimeLessEqual
+        :type Filters: list of Filter
+        :param _OrderFields: 排序字段，排序字段名称	如下开始时间：CreateTime，结束时间：EndTime，计划调度时间：ScheduleTime
+        :type OrderFields: list of OrderField
+        :param _PageNumber: 页码
+        :type PageNumber: int
+        :param _PageSize: 页大小
+        :type PageSize: int
+        """
+        self._ProjectId = None
+        self._Filters = None
+        self._OrderFields = None
+        self._PageNumber = None
+        self._PageSize = None
+
+    @property
+    def ProjectId(self):
+        r"""项目ID
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def Filters(self):
+        r"""过滤参数，任务名称或ID查询: Keyword，工作流ID查询: WorkflowId，文件夹查询: FolderId，负责人查询: InChargeUin，工作流执行ID: WorkflowExecutionId，任务执行ID: ExecutionId，任务ID: TaskId，计划调度时间区间: ScheduleTimeGreaterEqual / ScheduleTimeLessEqual
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def OrderFields(self):
+        r"""排序字段，排序字段名称	如下开始时间：CreateTime，结束时间：EndTime，计划调度时间：ScheduleTime
+        :rtype: list of OrderField
+        """
+        return self._OrderFields
+
+    @OrderFields.setter
+    def OrderFields(self, OrderFields):
+        self._OrderFields = OrderFields
+
+    @property
+    def PageNumber(self):
+        r"""页码
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        r"""页大小
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        if params.get("OrderFields") is not None:
+            self._OrderFields = []
+            for item in params.get("OrderFields"):
+                obj = OrderField()
+                obj._deserialize(item)
+                self._OrderFields.append(obj)
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListTriggerTaskRunsResponse(AbstractModel):
+    r"""ListTriggerTaskRuns返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 任务运行查询结果
+        :type Data: :class:`tencentcloud.wedata.v20250806.models.ListTriggerTaskRunResult`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""任务运行查询结果
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.ListTriggerTaskRunResult`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = ListTriggerTaskRunResult()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
 class ListTriggerTaskVersions(AbstractModel):
     r"""查询任务版本分页列表
 
@@ -46121,10 +46550,12 @@ class RevokeDataSourceAuthorizationRequest(AbstractModel):
         r"""
         :param _DataSourceId: 数据源id
         :type DataSourceId: str
-        :param _RevokeProjectId: 回收的项目id，与UserUin参数只能填一个
+        :param _RevokeProjectId: 回收的项目id，与RevokeUser参数只能选填一个，或者都不传当RevokeProjectId与RevokeUser都不传时，表示回收当前数据源所有权限（数据源为项目共享时，不回收当前数据源创建项目下所有用户对该数据源的权限，当数据源为个人和项目管理员共享时，不回收当前数据源创建项目下数据源创建用户和管理员的权限）
         :type RevokeProjectId: str
         :param _RevokeUser: 回收项目下用户列表，格式为：项目id_用户id
-与RevokeProjectId参数只能填一个
+与RevokeProjectId参数只能选填一个，或者都不传
+当RevokeProjectId与RevokeUser都不传时，表示回收当前数据源所有权限（
+数据源为项目共享时，不回收当前数据源创建项目下所有用户对该数据源的权限，当数据源为个人和项目管理员共享时，不回收当前数据源创建项目下数据源创建用户和管理员的权限）
 
 
         :type RevokeUser: str
@@ -46146,7 +46577,7 @@ class RevokeDataSourceAuthorizationRequest(AbstractModel):
 
     @property
     def RevokeProjectId(self):
-        r"""回收的项目id，与UserUin参数只能填一个
+        r"""回收的项目id，与RevokeUser参数只能选填一个，或者都不传当RevokeProjectId与RevokeUser都不传时，表示回收当前数据源所有权限（数据源为项目共享时，不回收当前数据源创建项目下所有用户对该数据源的权限，当数据源为个人和项目管理员共享时，不回收当前数据源创建项目下数据源创建用户和管理员的权限）
         :rtype: str
         """
         return self._RevokeProjectId
@@ -46158,7 +46589,9 @@ class RevokeDataSourceAuthorizationRequest(AbstractModel):
     @property
     def RevokeUser(self):
         r"""回收项目下用户列表，格式为：项目id_用户id
-与RevokeProjectId参数只能填一个
+与RevokeProjectId参数只能选填一个，或者都不传
+当RevokeProjectId与RevokeUser都不传时，表示回收当前数据源所有权限（
+数据源为项目共享时，不回收当前数据源创建项目下所有用户对该数据源的权限，当数据源为个人和项目管理员共享时，不回收当前数据源创建项目下数据源创建用户和管理员的权限）
 
 
         :rtype: str
@@ -52311,128 +52744,108 @@ class TaskSchedulerConfiguration(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CycleType: 周期类型：支持的类型为
-
-ONEOFF_CYCLE: 一次性
-YEAR_CYCLE: 年
-MONTH_CYCLE: 月
-WEEK_CYCLE: 周
-DAY_CYCLE: 天
-HOUR_CYCLE: 小时
-MINUTE_CYCLE: 分钟
-CRONTAB_CYCLE: crontab表达式类型
+        :param _CycleType: <p>周期类型：支持的类型为</p><p>ONEOFF_CYCLE: 一次性<br>YEAR_CYCLE: 年<br>MONTH_CYCLE: 月<br>WEEK_CYCLE: 周<br>DAY_CYCLE: 天<br>HOUR_CYCLE: 小时<br>MINUTE_CYCLE: 分钟<br>CRONTAB_CYCLE: crontab表达式类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CycleType: str
-        :param _ScheduleTimeZone: 时区
+        :param _ScheduleTimeZone: <p>时区</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ScheduleTimeZone: str
-        :param _CrontabExpression: 0 2 3 1,L,2 * ?	
+        :param _CrontabExpression: <p>0 2 3 1,L,2 * ?</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CrontabExpression: str
-        :param _StartTime: 生效日期
+        :param _StartTime: <p>生效日期</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: str
-        :param _EndTime: 结束日期
+        :param _EndTime: <p>结束日期</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: str
-        :param _ExecutionStartTime: 执行时间 左闭区间
+        :param _ExecutionStartTime: <p>执行时间 左闭区间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExecutionStartTime: str
-        :param _ExecutionEndTime: 执行时间 右闭区间
+        :param _ExecutionEndTime: <p>执行时间 右闭区间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExecutionEndTime: str
-        :param _CalendarOpen: 日历调度 取值为 0 和 1， 1为打开，0为关闭，默认为0
+        :param _CalendarOpen: <p>日历调度 取值为 0 和 1， 1为打开，0为关闭，默认为0</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CalendarOpen: str
-        :param _CalendarId: 日历调度 日历 ID
+        :param _CalendarId: <p>日历调度 日历 ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CalendarId: str
-        :param _CalendarName: 日历调度 日历名称, 需要从 DescribeScheduleCalendarPageList 中获取
+        :param _CalendarName: <p>日历调度 日历名称, 需要从 DescribeScheduleCalendarPageList 中获取</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CalendarName: str
-        :param _SelfDepend: 自依赖, 默认值 serial, 取值为：parallel(并行), serial(串行), orderly(有序)
+        :param _SelfDepend: <p>自依赖, 默认值 serial, 取值为：parallel(并行), serial(串行), orderly(有序)</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SelfDepend: str
-        :param _UpstreamDependencyConfigList: 上游依赖数组
+        :param _UpstreamDependencyConfigList: <p>上游依赖数组</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpstreamDependencyConfigList: list of DependencyTaskBrief
-        :param _DownstreamDependencyConfigList: 下游依赖数组
+        :param _DownstreamDependencyConfigList: <p>下游依赖数组</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DownstreamDependencyConfigList: list of DependencyTaskBrief
-        :param _EventListenerList: 事件数组
+        :param _EventListenerList: <p>事件数组</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type EventListenerList: list of EventListener
-        :param _AllowRedoType: 重跑&补录配置, 默认为 ALL; , ALL 运行成功或失败后皆可重跑或补录, FAILURE 运行成功后不可重跑或补录，运行失败后可重跑或补录, NONE 运行成功或失败后皆不可重跑或补录;
+        :param _AllowRedoType: <p>重跑&amp;补录配置, 默认为 ALL; , ALL 运行成功或失败后皆可重跑或补录, FAILURE 运行成功后不可重跑或补录，运行失败后可重跑或补录, NONE 运行成功或失败后皆不可重跑或补录;</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AllowRedoType: str
-        :param _ParamTaskOutList: 输出参数数组
+        :param _ParamTaskOutList: <p>输出参数数组</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ParamTaskOutList: list of OutTaskParameter
-        :param _ParamTaskInList: 输入参数数组
+        :param _ParamTaskInList: <p>输入参数数组</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ParamTaskInList: list of InTaskParameter
-        :param _TaskOutputRegistryList: 产出登记
+        :param _TaskOutputRegistryList: <p>产出登记</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskOutputRegistryList: list of TaskDataRegistry
-        :param _InitStrategy: **实例生成策略**
-* T_PLUS_0: T+0生成,默认策略
-* T_PLUS_1: T+1生成
+        :param _InitStrategy: <p><strong>实例生成策略</strong></p><ul><li>T_PLUS_0: T+0生成,默认策略</li><li>T_PLUS_1: T+1生成</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type InitStrategy: str
-        :param _ScheduleRunType: 调度类型: 0 正常调度 1 空跑调度，默认为 0
+        :param _ScheduleRunType: <p>调度类型: 0 正常调度 1 空跑调度，默认为 0</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ScheduleRunType: int
-        :param _DownStreamDependencyConfigList: （废弃，建议使用 DownstreamDependencyConfigList）下游依赖数组
+        :param _DownStreamDependencyConfigList: <p>（废弃，建议使用 DownstreamDependencyConfigList）下游依赖数组</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DownStreamDependencyConfigList: list of DependencyTaskBrief
-        :param _RunPriority: 任务调度优先级 运行优先级 4高 5中 6低 , 默认:6
+        :param _RunPriority: <p>任务调度优先级 运行优先级 4高 5中 6低 , 默认:6</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RunPriority: int
-        :param _RetryWait: 重试策略 重试等待时间,单位分钟: 默认: 5
+        :param _RetryWait: <p>重试策略 重试等待时间,单位分钟: 默认: 5</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RetryWait: int
-        :param _MaxRetryAttempts: 重试策略 最大尝试次数, 默认: 4
+        :param _MaxRetryAttempts: <p>重试策略 最大尝试次数, 默认: 4</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type MaxRetryAttempts: int
-        :param _ExecutionTTL: 超时处理策略 运行耗时超时（单位：分钟）默认为 -1
+        :param _ExecutionTTL: <p>超时处理策略 运行耗时超时（单位：分钟）默认为 -1</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExecutionTTL: int
-        :param _WaitExecutionTotalTTL: 超时处理策略 等待总时长耗时超时（单位：分钟）默认为 -1
+        :param _WaitExecutionTotalTTL: <p>超时处理策略 等待总时长耗时超时（单位：分钟）默认为 -1</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WaitExecutionTotalTTL: str
-        :param _ScheduleType: 调度类型: 0 正常调度 1 空跑调度，默认为 0
+        :param _ScheduleType: <p>调度类型: 0 正常调度 1 空跑调度，默认为 0</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ScheduleType: int
-        :param _RunPriorityType: 任务调度优先级 运行优先级 4高 5中 6低 , 默认:6
+        :param _RunPriorityType: <p>任务调度优先级 运行优先级 4高 5中 6低 , 默认:6</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RunPriorityType: int
-        :param _RetryWaitMinute: 重试策略 重试等待时间,单位分钟: 默认: 5
+        :param _RetryWaitMinute: <p>重试策略 重试等待时间,单位分钟: 默认: 5</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RetryWaitMinute: int
-        :param _MaxRetryNumber: 重试策略 最大尝试次数, 默认: 4
+        :param _MaxRetryNumber: <p>重试策略 最大尝试次数, 默认: 4</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type MaxRetryNumber: int
-        :param _ExecutionTTLMinute: 超时处理策略 运行耗时超时（单位：分钟）默认为 -1
+        :param _ExecutionTTLMinute: <p>超时处理策略 运行耗时超时（单位：分钟）默认为 -1</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExecutionTTLMinute: int
-        :param _WaitExecutionTotalTTLMinute: 超时处理策略 等待总时长耗时超时（单位：分钟）默认为 -1
+        :param _WaitExecutionTotalTTLMinute: <p>超时处理策略 等待总时长耗时超时（单位：分钟）默认为 -1</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WaitExecutionTotalTTLMinute: int
-        :param _DependencyTriggerPolicy: - 任务依赖运行条件，默认为ALL_SUCCESS，暂时只支持工作流调度项目下配置
-- ALL_SUCCESS： 全部成功：所有上游依赖任务都达到终态时，进行依赖判断，如果上游全部都成功，则依赖判断成功，否则如果上游有一个跳过运行，则标记为跳过运行，其余情况标记为上游失败
-- ALL_FAILED：全部失败：所有上游依赖任务都达到终态时，进行依赖判断，如果上游状态都是失败或者上游失败，则依赖判断成功，否则就标记为跳过运行
-- ALL_DONE：全部完成：所有上游依赖任务都达到终态时，进行依赖判断，直接是依赖判断成功
-- ALL_DONE_AT_LEAST_ONE_SUCCESS：上游全部完成至少一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个成功，则依赖判断成功，否则就是跳过运行
-- ALL_SKIPPED：上游全部都跳过: 所有上游依赖任务都达到终态时，进行依赖判断，所有的上游都是跳过状态才算依赖判断成功，否则当前节点就是跳过运行
-- ONE_FAILED：至少一个失败: 上游只要有一个失败了，就进行依赖判断，且依赖判断成功，如果上游全部完成但是没有失败，则跳过运行
-- ONE_SUCCESS：至少一个成功：上游只要有一个成功，就进行依赖判断，且依赖判断成功，如果上游全部完成但是没有成功，则跳过运行
-- ONE_DONE：至少一个完成：上游只要有一个完成了，就进行依赖判断，且依赖判断成功，否则还是等待上游
-- NONE_FAILED：上游全部完成，没有失败: 所有上游依赖任务都达到终态时，进行依赖判断，如果上游都是成功或者跳过运行，则依赖判断成功，否则标记为上游失败
-- ALL_DONE_NONE_FAILED_AT_LEAST_ONE_SUCCESS：上游全部完成，没有失败，至少有一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，上游没有一个失败且至少有一个成功的情况下，依赖判断成功，否则就是跳过运行
-- NONE_SKIPPED：上游全部完成，没有跳过运行: 所有上游依赖任务都达到终态时，进行依赖判断, 如果上游状态全部都是成功、失败、上游失败状态，则依赖判断成功，否则为跳过运行
-- ALL_DONE_AT_LEAST_ONE_FAILED：上游全部完成至少一个失败: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个失败，则依赖判断成功，否则就是跳过运行
+        :param _DependencyTriggerPolicy: <ul><li>任务依赖运行条件，默认为ALL_SUCCESS，暂时只支持工作流调度项目下配置</li><li>ALL_SUCCESS： 全部成功：所有上游依赖任务都达到终态时，进行依赖判断，如果上游全部都成功，则依赖判断成功，否则如果上游有一个跳过运行，则标记为跳过运行，其余情况标记为上游失败</li><li>ALL_FAILED：全部失败：所有上游依赖任务都达到终态时，进行依赖判断，如果上游状态都是失败或者上游失败，则依赖判断成功，否则就标记为跳过运行</li><li>ALL_DONE：全部完成：所有上游依赖任务都达到终态时，进行依赖判断，直接是依赖判断成功</li><li>ALL_DONE_AT_LEAST_ONE_SUCCESS：上游全部完成至少一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个成功，则依赖判断成功，否则就是跳过运行</li><li>ALL_SKIPPED：上游全部都跳过: 所有上游依赖任务都达到终态时，进行依赖判断，所有的上游都是跳过状态才算依赖判断成功，否则当前节点就是跳过运行</li><li>ONE_FAILED：至少一个失败: 上游只要有一个失败了，就进行依赖判断，且依赖判断成功，如果上游全部完成但是没有失败，则跳过运行</li><li>ONE_SUCCESS：至少一个成功：上游只要有一个成功，就进行依赖判断，且依赖判断成功，如果上游全部完成但是没有成功，则跳过运行</li><li>ONE_DONE：至少一个完成：上游只要有一个完成了，就进行依赖判断，且依赖判断成功，否则还是等待上游</li><li>NONE_FAILED：上游全部完成，没有失败: 所有上游依赖任务都达到终态时，进行依赖判断，如果上游都是成功或者跳过运行，则依赖判断成功，否则标记为上游失败</li><li>ALL_DONE_NONE_FAILED_AT_LEAST_ONE_SUCCESS：上游全部完成，没有失败，至少有一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，上游没有一个失败且至少有一个成功的情况下，依赖判断成功，否则就是跳过运行</li><li>NONE_SKIPPED：上游全部完成，没有跳过运行: 所有上游依赖任务都达到终态时，进行依赖判断, 如果上游状态全部都是成功、失败、上游失败状态，则依赖判断成功，否则为跳过运行</li><li>ALL_DONE_AT_LEAST_ONE_FAILED：上游全部完成至少一个失败: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个失败，则依赖判断成功，否则就是跳过运行</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DependencyTriggerPolicy: str
+        :param _AllowDownstreamDependency: <p>是否允许下游依赖 1允许 0不允许</p><p>取值范围：[0, 1]</p><p>默认值：1</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AllowDownstreamDependency: int
         """
         self._CycleType = None
         self._ScheduleTimeZone = None
@@ -52467,19 +52880,11 @@ CRONTAB_CYCLE: crontab表达式类型
         self._ExecutionTTLMinute = None
         self._WaitExecutionTotalTTLMinute = None
         self._DependencyTriggerPolicy = None
+        self._AllowDownstreamDependency = None
 
     @property
     def CycleType(self):
-        r"""周期类型：支持的类型为
-
-ONEOFF_CYCLE: 一次性
-YEAR_CYCLE: 年
-MONTH_CYCLE: 月
-WEEK_CYCLE: 周
-DAY_CYCLE: 天
-HOUR_CYCLE: 小时
-MINUTE_CYCLE: 分钟
-CRONTAB_CYCLE: crontab表达式类型
+        r"""<p>周期类型：支持的类型为</p><p>ONEOFF_CYCLE: 一次性<br>YEAR_CYCLE: 年<br>MONTH_CYCLE: 月<br>WEEK_CYCLE: 周<br>DAY_CYCLE: 天<br>HOUR_CYCLE: 小时<br>MINUTE_CYCLE: 分钟<br>CRONTAB_CYCLE: crontab表达式类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -52491,7 +52896,7 @@ CRONTAB_CYCLE: crontab表达式类型
 
     @property
     def ScheduleTimeZone(self):
-        r"""时区
+        r"""<p>时区</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -52503,7 +52908,7 @@ CRONTAB_CYCLE: crontab表达式类型
 
     @property
     def CrontabExpression(self):
-        r"""0 2 3 1,L,2 * ?	
+        r"""<p>0 2 3 1,L,2 * ?</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -52515,7 +52920,7 @@ CRONTAB_CYCLE: crontab表达式类型
 
     @property
     def StartTime(self):
-        r"""生效日期
+        r"""<p>生效日期</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -52527,7 +52932,7 @@ CRONTAB_CYCLE: crontab表达式类型
 
     @property
     def EndTime(self):
-        r"""结束日期
+        r"""<p>结束日期</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -52539,7 +52944,7 @@ CRONTAB_CYCLE: crontab表达式类型
 
     @property
     def ExecutionStartTime(self):
-        r"""执行时间 左闭区间
+        r"""<p>执行时间 左闭区间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -52551,7 +52956,7 @@ CRONTAB_CYCLE: crontab表达式类型
 
     @property
     def ExecutionEndTime(self):
-        r"""执行时间 右闭区间
+        r"""<p>执行时间 右闭区间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -52563,7 +52968,7 @@ CRONTAB_CYCLE: crontab表达式类型
 
     @property
     def CalendarOpen(self):
-        r"""日历调度 取值为 0 和 1， 1为打开，0为关闭，默认为0
+        r"""<p>日历调度 取值为 0 和 1， 1为打开，0为关闭，默认为0</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -52575,7 +52980,7 @@ CRONTAB_CYCLE: crontab表达式类型
 
     @property
     def CalendarId(self):
-        r"""日历调度 日历 ID
+        r"""<p>日历调度 日历 ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -52587,7 +52992,7 @@ CRONTAB_CYCLE: crontab表达式类型
 
     @property
     def CalendarName(self):
-        r"""日历调度 日历名称, 需要从 DescribeScheduleCalendarPageList 中获取
+        r"""<p>日历调度 日历名称, 需要从 DescribeScheduleCalendarPageList 中获取</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -52599,7 +53004,7 @@ CRONTAB_CYCLE: crontab表达式类型
 
     @property
     def SelfDepend(self):
-        r"""自依赖, 默认值 serial, 取值为：parallel(并行), serial(串行), orderly(有序)
+        r"""<p>自依赖, 默认值 serial, 取值为：parallel(并行), serial(串行), orderly(有序)</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -52611,7 +53016,7 @@ CRONTAB_CYCLE: crontab表达式类型
 
     @property
     def UpstreamDependencyConfigList(self):
-        r"""上游依赖数组
+        r"""<p>上游依赖数组</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DependencyTaskBrief
         """
@@ -52623,7 +53028,7 @@ CRONTAB_CYCLE: crontab表达式类型
 
     @property
     def DownstreamDependencyConfigList(self):
-        r"""下游依赖数组
+        r"""<p>下游依赖数组</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DependencyTaskBrief
         """
@@ -52635,7 +53040,7 @@ CRONTAB_CYCLE: crontab表达式类型
 
     @property
     def EventListenerList(self):
-        r"""事件数组
+        r"""<p>事件数组</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of EventListener
         """
@@ -52647,7 +53052,7 @@ CRONTAB_CYCLE: crontab表达式类型
 
     @property
     def AllowRedoType(self):
-        r"""重跑&补录配置, 默认为 ALL; , ALL 运行成功或失败后皆可重跑或补录, FAILURE 运行成功后不可重跑或补录，运行失败后可重跑或补录, NONE 运行成功或失败后皆不可重跑或补录;
+        r"""<p>重跑&amp;补录配置, 默认为 ALL; , ALL 运行成功或失败后皆可重跑或补录, FAILURE 运行成功后不可重跑或补录，运行失败后可重跑或补录, NONE 运行成功或失败后皆不可重跑或补录;</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -52659,7 +53064,7 @@ CRONTAB_CYCLE: crontab表达式类型
 
     @property
     def ParamTaskOutList(self):
-        r"""输出参数数组
+        r"""<p>输出参数数组</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of OutTaskParameter
         """
@@ -52671,7 +53076,7 @@ CRONTAB_CYCLE: crontab表达式类型
 
     @property
     def ParamTaskInList(self):
-        r"""输入参数数组
+        r"""<p>输入参数数组</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of InTaskParameter
         """
@@ -52683,7 +53088,7 @@ CRONTAB_CYCLE: crontab表达式类型
 
     @property
     def TaskOutputRegistryList(self):
-        r"""产出登记
+        r"""<p>产出登记</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TaskDataRegistry
         """
@@ -52695,9 +53100,7 @@ CRONTAB_CYCLE: crontab表达式类型
 
     @property
     def InitStrategy(self):
-        r"""**实例生成策略**
-* T_PLUS_0: T+0生成,默认策略
-* T_PLUS_1: T+1生成
+        r"""<p><strong>实例生成策略</strong></p><ul><li>T_PLUS_0: T+0生成,默认策略</li><li>T_PLUS_1: T+1生成</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -52711,7 +53114,7 @@ CRONTAB_CYCLE: crontab表达式类型
     def ScheduleRunType(self):
         warnings.warn("parameter `ScheduleRunType` is deprecated", DeprecationWarning) 
 
-        r"""调度类型: 0 正常调度 1 空跑调度，默认为 0
+        r"""<p>调度类型: 0 正常调度 1 空跑调度，默认为 0</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -52727,7 +53130,7 @@ CRONTAB_CYCLE: crontab表达式类型
     def DownStreamDependencyConfigList(self):
         warnings.warn("parameter `DownStreamDependencyConfigList` is deprecated", DeprecationWarning) 
 
-        r"""（废弃，建议使用 DownstreamDependencyConfigList）下游依赖数组
+        r"""<p>（废弃，建议使用 DownstreamDependencyConfigList）下游依赖数组</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DependencyTaskBrief
         """
@@ -52743,7 +53146,7 @@ CRONTAB_CYCLE: crontab表达式类型
     def RunPriority(self):
         warnings.warn("parameter `RunPriority` is deprecated", DeprecationWarning) 
 
-        r"""任务调度优先级 运行优先级 4高 5中 6低 , 默认:6
+        r"""<p>任务调度优先级 运行优先级 4高 5中 6低 , 默认:6</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -52759,7 +53162,7 @@ CRONTAB_CYCLE: crontab表达式类型
     def RetryWait(self):
         warnings.warn("parameter `RetryWait` is deprecated", DeprecationWarning) 
 
-        r"""重试策略 重试等待时间,单位分钟: 默认: 5
+        r"""<p>重试策略 重试等待时间,单位分钟: 默认: 5</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -52775,7 +53178,7 @@ CRONTAB_CYCLE: crontab表达式类型
     def MaxRetryAttempts(self):
         warnings.warn("parameter `MaxRetryAttempts` is deprecated", DeprecationWarning) 
 
-        r"""重试策略 最大尝试次数, 默认: 4
+        r"""<p>重试策略 最大尝试次数, 默认: 4</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -52791,7 +53194,7 @@ CRONTAB_CYCLE: crontab表达式类型
     def ExecutionTTL(self):
         warnings.warn("parameter `ExecutionTTL` is deprecated", DeprecationWarning) 
 
-        r"""超时处理策略 运行耗时超时（单位：分钟）默认为 -1
+        r"""<p>超时处理策略 运行耗时超时（单位：分钟）默认为 -1</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -52807,7 +53210,7 @@ CRONTAB_CYCLE: crontab表达式类型
     def WaitExecutionTotalTTL(self):
         warnings.warn("parameter `WaitExecutionTotalTTL` is deprecated", DeprecationWarning) 
 
-        r"""超时处理策略 等待总时长耗时超时（单位：分钟）默认为 -1
+        r"""<p>超时处理策略 等待总时长耗时超时（单位：分钟）默认为 -1</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -52821,7 +53224,7 @@ CRONTAB_CYCLE: crontab表达式类型
 
     @property
     def ScheduleType(self):
-        r"""调度类型: 0 正常调度 1 空跑调度，默认为 0
+        r"""<p>调度类型: 0 正常调度 1 空跑调度，默认为 0</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -52833,7 +53236,7 @@ CRONTAB_CYCLE: crontab表达式类型
 
     @property
     def RunPriorityType(self):
-        r"""任务调度优先级 运行优先级 4高 5中 6低 , 默认:6
+        r"""<p>任务调度优先级 运行优先级 4高 5中 6低 , 默认:6</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -52845,7 +53248,7 @@ CRONTAB_CYCLE: crontab表达式类型
 
     @property
     def RetryWaitMinute(self):
-        r"""重试策略 重试等待时间,单位分钟: 默认: 5
+        r"""<p>重试策略 重试等待时间,单位分钟: 默认: 5</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -52857,7 +53260,7 @@ CRONTAB_CYCLE: crontab表达式类型
 
     @property
     def MaxRetryNumber(self):
-        r"""重试策略 最大尝试次数, 默认: 4
+        r"""<p>重试策略 最大尝试次数, 默认: 4</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -52869,7 +53272,7 @@ CRONTAB_CYCLE: crontab表达式类型
 
     @property
     def ExecutionTTLMinute(self):
-        r"""超时处理策略 运行耗时超时（单位：分钟）默认为 -1
+        r"""<p>超时处理策略 运行耗时超时（单位：分钟）默认为 -1</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -52881,7 +53284,7 @@ CRONTAB_CYCLE: crontab表达式类型
 
     @property
     def WaitExecutionTotalTTLMinute(self):
-        r"""超时处理策略 等待总时长耗时超时（单位：分钟）默认为 -1
+        r"""<p>超时处理策略 等待总时长耗时超时（单位：分钟）默认为 -1</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -52893,19 +53296,7 @@ CRONTAB_CYCLE: crontab表达式类型
 
     @property
     def DependencyTriggerPolicy(self):
-        r"""- 任务依赖运行条件，默认为ALL_SUCCESS，暂时只支持工作流调度项目下配置
-- ALL_SUCCESS： 全部成功：所有上游依赖任务都达到终态时，进行依赖判断，如果上游全部都成功，则依赖判断成功，否则如果上游有一个跳过运行，则标记为跳过运行，其余情况标记为上游失败
-- ALL_FAILED：全部失败：所有上游依赖任务都达到终态时，进行依赖判断，如果上游状态都是失败或者上游失败，则依赖判断成功，否则就标记为跳过运行
-- ALL_DONE：全部完成：所有上游依赖任务都达到终态时，进行依赖判断，直接是依赖判断成功
-- ALL_DONE_AT_LEAST_ONE_SUCCESS：上游全部完成至少一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个成功，则依赖判断成功，否则就是跳过运行
-- ALL_SKIPPED：上游全部都跳过: 所有上游依赖任务都达到终态时，进行依赖判断，所有的上游都是跳过状态才算依赖判断成功，否则当前节点就是跳过运行
-- ONE_FAILED：至少一个失败: 上游只要有一个失败了，就进行依赖判断，且依赖判断成功，如果上游全部完成但是没有失败，则跳过运行
-- ONE_SUCCESS：至少一个成功：上游只要有一个成功，就进行依赖判断，且依赖判断成功，如果上游全部完成但是没有成功，则跳过运行
-- ONE_DONE：至少一个完成：上游只要有一个完成了，就进行依赖判断，且依赖判断成功，否则还是等待上游
-- NONE_FAILED：上游全部完成，没有失败: 所有上游依赖任务都达到终态时，进行依赖判断，如果上游都是成功或者跳过运行，则依赖判断成功，否则标记为上游失败
-- ALL_DONE_NONE_FAILED_AT_LEAST_ONE_SUCCESS：上游全部完成，没有失败，至少有一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，上游没有一个失败且至少有一个成功的情况下，依赖判断成功，否则就是跳过运行
-- NONE_SKIPPED：上游全部完成，没有跳过运行: 所有上游依赖任务都达到终态时，进行依赖判断, 如果上游状态全部都是成功、失败、上游失败状态，则依赖判断成功，否则为跳过运行
-- ALL_DONE_AT_LEAST_ONE_FAILED：上游全部完成至少一个失败: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个失败，则依赖判断成功，否则就是跳过运行
+        r"""<ul><li>任务依赖运行条件，默认为ALL_SUCCESS，暂时只支持工作流调度项目下配置</li><li>ALL_SUCCESS： 全部成功：所有上游依赖任务都达到终态时，进行依赖判断，如果上游全部都成功，则依赖判断成功，否则如果上游有一个跳过运行，则标记为跳过运行，其余情况标记为上游失败</li><li>ALL_FAILED：全部失败：所有上游依赖任务都达到终态时，进行依赖判断，如果上游状态都是失败或者上游失败，则依赖判断成功，否则就标记为跳过运行</li><li>ALL_DONE：全部完成：所有上游依赖任务都达到终态时，进行依赖判断，直接是依赖判断成功</li><li>ALL_DONE_AT_LEAST_ONE_SUCCESS：上游全部完成至少一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个成功，则依赖判断成功，否则就是跳过运行</li><li>ALL_SKIPPED：上游全部都跳过: 所有上游依赖任务都达到终态时，进行依赖判断，所有的上游都是跳过状态才算依赖判断成功，否则当前节点就是跳过运行</li><li>ONE_FAILED：至少一个失败: 上游只要有一个失败了，就进行依赖判断，且依赖判断成功，如果上游全部完成但是没有失败，则跳过运行</li><li>ONE_SUCCESS：至少一个成功：上游只要有一个成功，就进行依赖判断，且依赖判断成功，如果上游全部完成但是没有成功，则跳过运行</li><li>ONE_DONE：至少一个完成：上游只要有一个完成了，就进行依赖判断，且依赖判断成功，否则还是等待上游</li><li>NONE_FAILED：上游全部完成，没有失败: 所有上游依赖任务都达到终态时，进行依赖判断，如果上游都是成功或者跳过运行，则依赖判断成功，否则标记为上游失败</li><li>ALL_DONE_NONE_FAILED_AT_LEAST_ONE_SUCCESS：上游全部完成，没有失败，至少有一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，上游没有一个失败且至少有一个成功的情况下，依赖判断成功，否则就是跳过运行</li><li>NONE_SKIPPED：上游全部完成，没有跳过运行: 所有上游依赖任务都达到终态时，进行依赖判断, 如果上游状态全部都是成功、失败、上游失败状态，则依赖判断成功，否则为跳过运行</li><li>ALL_DONE_AT_LEAST_ONE_FAILED：上游全部完成至少一个失败: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个失败，则依赖判断成功，否则就是跳过运行</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -52914,6 +53305,18 @@ CRONTAB_CYCLE: crontab表达式类型
     @DependencyTriggerPolicy.setter
     def DependencyTriggerPolicy(self, DependencyTriggerPolicy):
         self._DependencyTriggerPolicy = DependencyTriggerPolicy
+
+    @property
+    def AllowDownstreamDependency(self):
+        r"""<p>是否允许下游依赖 1允许 0不允许</p><p>取值范围：[0, 1]</p><p>默认值：1</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._AllowDownstreamDependency
+
+    @AllowDownstreamDependency.setter
+    def AllowDownstreamDependency(self, AllowDownstreamDependency):
+        self._AllowDownstreamDependency = AllowDownstreamDependency
 
 
     def _deserialize(self, params):
@@ -52985,6 +53388,7 @@ CRONTAB_CYCLE: crontab表达式类型
         self._ExecutionTTLMinute = params.get("ExecutionTTLMinute")
         self._WaitExecutionTotalTTLMinute = params.get("WaitExecutionTotalTTLMinute")
         self._DependencyTriggerPolicy = params.get("DependencyTriggerPolicy")
+        self._AllowDownstreamDependency = params.get("AllowDownstreamDependency")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -56245,51 +56649,42 @@ class TriggerTaskSchedulerConfiguration(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _UpstreamDependencyConfigList: 上游依赖数组
+        :param _UpstreamDependencyConfigList: <p>上游依赖数组</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpstreamDependencyConfigList: list of DependencyTriggerTaskBrief
-        :param _RunPriorityType: 任务调度优先级 运行优先级 4高 5中 6低 , 默认:6
+        :param _RunPriorityType: <p>任务调度优先级 运行优先级 4高 5中 6低 , 默认:6</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RunPriorityType: int
-        :param _RetryWaitMinute: 重试策略 重试等待时间,单位分钟: 默认: 5
+        :param _RetryWaitMinute: <p>重试策略 重试等待时间,单位分钟: 默认: 5</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RetryWaitMinute: int
-        :param _MaxRetryNumber: 重试策略 最大尝试次数, 默认: 4
+        :param _MaxRetryNumber: <p>重试策略 最大尝试次数, 默认: 4</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type MaxRetryNumber: int
-        :param _ExecutionTTLMinute: 超时处理策略 运行耗时超时（单位：分钟）默认为 -1
+        :param _ExecutionTTLMinute: <p>超时处理策略 运行耗时超时（单位：分钟）默认为 -1</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExecutionTTLMinute: int
-        :param _WaitExecutionTotalTTLMinute: 超时处理策略 等待总时长耗时超时（单位：分钟）默认为 -1
+        :param _WaitExecutionTotalTTLMinute: <p>超时处理策略 等待总时长耗时超时（单位：分钟）默认为 -1</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WaitExecutionTotalTTLMinute: int
-        :param _AllowRedoType: 重跑&补录配置, 默认为 ALL; , ALL 运行成功或失败后皆可重跑或补录, FAILURE 运行成功后不可重跑或补录，运行失败后可重跑或补录, NONE 运行成功或失败后皆不可重跑或补录;
+        :param _AllowRedoType: <p>重跑&amp;补录配置, 默认为 ALL; , ALL 运行成功或失败后皆可重跑或补录, FAILURE 运行成功后不可重跑或补录，运行失败后可重跑或补录, NONE 运行成功或失败后皆不可重跑或补录;</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AllowRedoType: str
-        :param _ParamTaskOutList: 输出参数数组
+        :param _ParamTaskOutList: <p>输出参数数组</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ParamTaskOutList: list of OutTaskParameter
-        :param _ParamTaskInList: 输入参数数组
+        :param _ParamTaskInList: <p>输入参数数组</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ParamTaskInList: list of InTaskParameter
-        :param _TaskOutputRegistryList: 产出登记
+        :param _TaskOutputRegistryList: <p>产出登记</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskOutputRegistryList: list of TaskDataRegistry
-        :param _DependencyTriggerPolicy: - 任务依赖运行条件，默认为ALL_SUCCESS，暂时只支持工作流调度项目下配置
-- ALL_SUCCESS： 全部成功：所有上游依赖任务都达到终态时，进行依赖判断，如果上游全部都成功，则依赖判断成功，否则如果上游有一个跳过运行，则标记为跳过运行，其余情况标记为上游失败
-- ALL_FAILED：全部失败：所有上游依赖任务都达到终态时，进行依赖判断，如果上游状态都是失败或者上游失败，则依赖判断成功，否则就标记为跳过运行
-- ALL_DONE：全部完成：所有上游依赖任务都达到终态时，进行依赖判断，直接是依赖判断成功
-- ALL_DONE_AT_LEAST_ONE_SUCCESS：上游全部完成至少一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个成功，则依赖判断成功，否则就是跳过运行
-- ALL_SKIPPED：上游全部都跳过: 所有上游依赖任务都达到终态时，进行依赖判断，所有的上游都是跳过状态才算依赖判断成功，否则当前节点就是跳过运行
-- ONE_FAILED：至少一个失败: 上游只要有一个失败了，就进行依赖判断，且依赖判断成功，如果上游全部完成但是没有失败，则跳过运行
-- ONE_SUCCESS：至少一个成功：上游只要有一个成功，就进行依赖判断，且依赖判断成功，如果上游全部完成但是没有成功，则跳过运行
-- ONE_DONE：至少一个完成：上游只要有一个完成了，就进行依赖判断，且依赖判断成功，否则还是等待上游
-- NONE_FAILED：上游全部完成，没有失败: 所有上游依赖任务都达到终态时，进行依赖判断，如果上游都是成功或者跳过运行，则依赖判断成功，否则标记为上游失败
-- ALL_DONE_NONE_FAILED_AT_LEAST_ONE_SUCCESS：上游全部完成，没有失败，至少有一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，上游没有一个失败且至少有一个成功的情况下，依赖判断成功，否则就是跳过运行
-- NONE_SKIPPED：上游全部完成，没有跳过运行: 所有上游依赖任务都达到终态时，进行依赖判断, 如果上游状态全部都是成功、失败、上游失败状态，则依赖判断成功，否则为跳过运行
-- ALL_DONE_AT_LEAST_ONE_FAILED：上游全部完成至少一个失败: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个失败，则依赖判断成功，否则就是跳过运行
+        :param _DependencyTriggerPolicy: <ul><li>任务依赖运行条件，默认为ALL_SUCCESS，暂时只支持工作流调度项目下配置</li><li>ALL_SUCCESS： 全部成功：所有上游依赖任务都达到终态时，进行依赖判断，如果上游全部都成功，则依赖判断成功，否则如果上游有一个跳过运行，则标记为跳过运行，其余情况标记为上游失败</li><li>ALL_FAILED：全部失败：所有上游依赖任务都达到终态时，进行依赖判断，如果上游状态都是失败或者上游失败，则依赖判断成功，否则就标记为跳过运行</li><li>ALL_DONE：全部完成：所有上游依赖任务都达到终态时，进行依赖判断，直接是依赖判断成功</li><li>ALL_DONE_AT_LEAST_ONE_SUCCESS：上游全部完成至少一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个成功，则依赖判断成功，否则就是跳过运行</li><li>ALL_SKIPPED：上游全部都跳过: 所有上游依赖任务都达到终态时，进行依赖判断，所有的上游都是跳过状态才算依赖判断成功，否则当前节点就是跳过运行</li><li>ONE_FAILED：至少一个失败: 上游只要有一个失败了，就进行依赖判断，且依赖判断成功，如果上游全部完成但是没有失败，则跳过运行</li><li>ONE_SUCCESS：至少一个成功：上游只要有一个成功，就进行依赖判断，且依赖判断成功，如果上游全部完成但是没有成功，则跳过运行</li><li>ONE_DONE：至少一个完成：上游只要有一个完成了，就进行依赖判断，且依赖判断成功，否则还是等待上游</li><li>NONE_FAILED：上游全部完成，没有失败: 所有上游依赖任务都达到终态时，进行依赖判断，如果上游都是成功或者跳过运行，则依赖判断成功，否则标记为上游失败</li><li>ALL_DONE_NONE_FAILED_AT_LEAST_ONE_SUCCESS：上游全部完成，没有失败，至少有一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，上游没有一个失败且至少有一个成功的情况下，依赖判断成功，否则就是跳过运行</li><li>NONE_SKIPPED：上游全部完成，没有跳过运行: 所有上游依赖任务都达到终态时，进行依赖判断, 如果上游状态全部都是成功、失败、上游失败状态，则依赖判断成功，否则为跳过运行</li><li>ALL_DONE_AT_LEAST_ONE_FAILED：上游全部完成至少一个失败: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个失败，则依赖判断成功，否则就是跳过运行</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DependencyTriggerPolicy: str
+        :param _AllowDownstreamDependency: <p>是否允许下游依赖 1允许 0不允许</p><p>取值范围：[0, 1]</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AllowDownstreamDependency: int
         """
         self._UpstreamDependencyConfigList = None
         self._RunPriorityType = None
@@ -56302,10 +56697,11 @@ class TriggerTaskSchedulerConfiguration(AbstractModel):
         self._ParamTaskInList = None
         self._TaskOutputRegistryList = None
         self._DependencyTriggerPolicy = None
+        self._AllowDownstreamDependency = None
 
     @property
     def UpstreamDependencyConfigList(self):
-        r"""上游依赖数组
+        r"""<p>上游依赖数组</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DependencyTriggerTaskBrief
         """
@@ -56317,7 +56713,7 @@ class TriggerTaskSchedulerConfiguration(AbstractModel):
 
     @property
     def RunPriorityType(self):
-        r"""任务调度优先级 运行优先级 4高 5中 6低 , 默认:6
+        r"""<p>任务调度优先级 运行优先级 4高 5中 6低 , 默认:6</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -56329,7 +56725,7 @@ class TriggerTaskSchedulerConfiguration(AbstractModel):
 
     @property
     def RetryWaitMinute(self):
-        r"""重试策略 重试等待时间,单位分钟: 默认: 5
+        r"""<p>重试策略 重试等待时间,单位分钟: 默认: 5</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -56341,7 +56737,7 @@ class TriggerTaskSchedulerConfiguration(AbstractModel):
 
     @property
     def MaxRetryNumber(self):
-        r"""重试策略 最大尝试次数, 默认: 4
+        r"""<p>重试策略 最大尝试次数, 默认: 4</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -56353,7 +56749,7 @@ class TriggerTaskSchedulerConfiguration(AbstractModel):
 
     @property
     def ExecutionTTLMinute(self):
-        r"""超时处理策略 运行耗时超时（单位：分钟）默认为 -1
+        r"""<p>超时处理策略 运行耗时超时（单位：分钟）默认为 -1</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -56365,7 +56761,7 @@ class TriggerTaskSchedulerConfiguration(AbstractModel):
 
     @property
     def WaitExecutionTotalTTLMinute(self):
-        r"""超时处理策略 等待总时长耗时超时（单位：分钟）默认为 -1
+        r"""<p>超时处理策略 等待总时长耗时超时（单位：分钟）默认为 -1</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -56377,7 +56773,7 @@ class TriggerTaskSchedulerConfiguration(AbstractModel):
 
     @property
     def AllowRedoType(self):
-        r"""重跑&补录配置, 默认为 ALL; , ALL 运行成功或失败后皆可重跑或补录, FAILURE 运行成功后不可重跑或补录，运行失败后可重跑或补录, NONE 运行成功或失败后皆不可重跑或补录;
+        r"""<p>重跑&amp;补录配置, 默认为 ALL; , ALL 运行成功或失败后皆可重跑或补录, FAILURE 运行成功后不可重跑或补录，运行失败后可重跑或补录, NONE 运行成功或失败后皆不可重跑或补录;</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -56389,7 +56785,7 @@ class TriggerTaskSchedulerConfiguration(AbstractModel):
 
     @property
     def ParamTaskOutList(self):
-        r"""输出参数数组
+        r"""<p>输出参数数组</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of OutTaskParameter
         """
@@ -56401,7 +56797,7 @@ class TriggerTaskSchedulerConfiguration(AbstractModel):
 
     @property
     def ParamTaskInList(self):
-        r"""输入参数数组
+        r"""<p>输入参数数组</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of InTaskParameter
         """
@@ -56413,7 +56809,7 @@ class TriggerTaskSchedulerConfiguration(AbstractModel):
 
     @property
     def TaskOutputRegistryList(self):
-        r"""产出登记
+        r"""<p>产出登记</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TaskDataRegistry
         """
@@ -56425,19 +56821,7 @@ class TriggerTaskSchedulerConfiguration(AbstractModel):
 
     @property
     def DependencyTriggerPolicy(self):
-        r"""- 任务依赖运行条件，默认为ALL_SUCCESS，暂时只支持工作流调度项目下配置
-- ALL_SUCCESS： 全部成功：所有上游依赖任务都达到终态时，进行依赖判断，如果上游全部都成功，则依赖判断成功，否则如果上游有一个跳过运行，则标记为跳过运行，其余情况标记为上游失败
-- ALL_FAILED：全部失败：所有上游依赖任务都达到终态时，进行依赖判断，如果上游状态都是失败或者上游失败，则依赖判断成功，否则就标记为跳过运行
-- ALL_DONE：全部完成：所有上游依赖任务都达到终态时，进行依赖判断，直接是依赖判断成功
-- ALL_DONE_AT_LEAST_ONE_SUCCESS：上游全部完成至少一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个成功，则依赖判断成功，否则就是跳过运行
-- ALL_SKIPPED：上游全部都跳过: 所有上游依赖任务都达到终态时，进行依赖判断，所有的上游都是跳过状态才算依赖判断成功，否则当前节点就是跳过运行
-- ONE_FAILED：至少一个失败: 上游只要有一个失败了，就进行依赖判断，且依赖判断成功，如果上游全部完成但是没有失败，则跳过运行
-- ONE_SUCCESS：至少一个成功：上游只要有一个成功，就进行依赖判断，且依赖判断成功，如果上游全部完成但是没有成功，则跳过运行
-- ONE_DONE：至少一个完成：上游只要有一个完成了，就进行依赖判断，且依赖判断成功，否则还是等待上游
-- NONE_FAILED：上游全部完成，没有失败: 所有上游依赖任务都达到终态时，进行依赖判断，如果上游都是成功或者跳过运行，则依赖判断成功，否则标记为上游失败
-- ALL_DONE_NONE_FAILED_AT_LEAST_ONE_SUCCESS：上游全部完成，没有失败，至少有一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，上游没有一个失败且至少有一个成功的情况下，依赖判断成功，否则就是跳过运行
-- NONE_SKIPPED：上游全部完成，没有跳过运行: 所有上游依赖任务都达到终态时，进行依赖判断, 如果上游状态全部都是成功、失败、上游失败状态，则依赖判断成功，否则为跳过运行
-- ALL_DONE_AT_LEAST_ONE_FAILED：上游全部完成至少一个失败: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个失败，则依赖判断成功，否则就是跳过运行
+        r"""<ul><li>任务依赖运行条件，默认为ALL_SUCCESS，暂时只支持工作流调度项目下配置</li><li>ALL_SUCCESS： 全部成功：所有上游依赖任务都达到终态时，进行依赖判断，如果上游全部都成功，则依赖判断成功，否则如果上游有一个跳过运行，则标记为跳过运行，其余情况标记为上游失败</li><li>ALL_FAILED：全部失败：所有上游依赖任务都达到终态时，进行依赖判断，如果上游状态都是失败或者上游失败，则依赖判断成功，否则就标记为跳过运行</li><li>ALL_DONE：全部完成：所有上游依赖任务都达到终态时，进行依赖判断，直接是依赖判断成功</li><li>ALL_DONE_AT_LEAST_ONE_SUCCESS：上游全部完成至少一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个成功，则依赖判断成功，否则就是跳过运行</li><li>ALL_SKIPPED：上游全部都跳过: 所有上游依赖任务都达到终态时，进行依赖判断，所有的上游都是跳过状态才算依赖判断成功，否则当前节点就是跳过运行</li><li>ONE_FAILED：至少一个失败: 上游只要有一个失败了，就进行依赖判断，且依赖判断成功，如果上游全部完成但是没有失败，则跳过运行</li><li>ONE_SUCCESS：至少一个成功：上游只要有一个成功，就进行依赖判断，且依赖判断成功，如果上游全部完成但是没有成功，则跳过运行</li><li>ONE_DONE：至少一个完成：上游只要有一个完成了，就进行依赖判断，且依赖判断成功，否则还是等待上游</li><li>NONE_FAILED：上游全部完成，没有失败: 所有上游依赖任务都达到终态时，进行依赖判断，如果上游都是成功或者跳过运行，则依赖判断成功，否则标记为上游失败</li><li>ALL_DONE_NONE_FAILED_AT_LEAST_ONE_SUCCESS：上游全部完成，没有失败，至少有一个成功: 所有上游依赖任务都达到终态时，进行依赖判断，上游没有一个失败且至少有一个成功的情况下，依赖判断成功，否则就是跳过运行</li><li>NONE_SKIPPED：上游全部完成，没有跳过运行: 所有上游依赖任务都达到终态时，进行依赖判断, 如果上游状态全部都是成功、失败、上游失败状态，则依赖判断成功，否则为跳过运行</li><li>ALL_DONE_AT_LEAST_ONE_FAILED：上游全部完成至少一个失败: 所有上游依赖任务都达到终态时，进行依赖判断，至少有一个失败，则依赖判断成功，否则就是跳过运行</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -56446,6 +56830,18 @@ class TriggerTaskSchedulerConfiguration(AbstractModel):
     @DependencyTriggerPolicy.setter
     def DependencyTriggerPolicy(self, DependencyTriggerPolicy):
         self._DependencyTriggerPolicy = DependencyTriggerPolicy
+
+    @property
+    def AllowDownstreamDependency(self):
+        r"""<p>是否允许下游依赖 1允许 0不允许</p><p>取值范围：[0, 1]</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._AllowDownstreamDependency
+
+    @AllowDownstreamDependency.setter
+    def AllowDownstreamDependency(self, AllowDownstreamDependency):
+        self._AllowDownstreamDependency = AllowDownstreamDependency
 
 
     def _deserialize(self, params):
@@ -56480,6 +56876,7 @@ class TriggerTaskSchedulerConfiguration(AbstractModel):
                 obj._deserialize(item)
                 self._TaskOutputRegistryList.append(obj)
         self._DependencyTriggerPolicy = params.get("DependencyTriggerPolicy")
+        self._AllowDownstreamDependency = params.get("AllowDownstreamDependency")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

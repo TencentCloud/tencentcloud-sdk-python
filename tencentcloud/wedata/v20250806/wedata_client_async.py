@@ -2422,6 +2422,24 @@ class WedataClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ListTriggerTaskRuns(
+            self,
+            request: models.ListTriggerTaskRunsRequest,
+            opts: Dict = None,
+    ) -> models.ListTriggerTaskRunsResponse:
+        """
+        查询工作流运行
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListTriggerTaskRuns"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListTriggerTaskRunsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ListTriggerTaskVersions(
             self,
             request: models.ListTriggerTaskVersionsRequest,

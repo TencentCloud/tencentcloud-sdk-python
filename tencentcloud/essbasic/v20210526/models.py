@@ -287,7 +287,7 @@ class ApproverOption(AbstractModel):
         :type FlowReadLimit: str
         :param _ForbidAddSignDate: <p>禁止在签署过程中添加签署日期控件<br> <br>前置条件：文件发起合同时，指定SignBeanTag=1（可以在签署过程中添加签署控件）：</p><ul><li> 默认值：false，在开启：签署过程中添加签署控件时，添加签署控件会默认自带签署日期控件</li><li> 可选值：true，在开启：签署过程中添加签署控件时，添加签署控件不会自带签署日期控件</li></ul>
         :type ForbidAddSignDate: bool
-        :param _ApproverMobileMode: <p>签署人手机号传参模式</p><p>枚举值：</p><ul><li>REPLACE： 接受已有认证手机号并替换</li><li>GIVEN： 以客户入参输入手机号为主</li><li>VALIDATE： 若与认证手机号不一致则报错</li></ul><p>默认值：REPLACE</p><p>会触发手机号传参模式的前提是：签署人是指定了具体身份信息的</p><ul><li>渠道方签署人不会触发</li><li>非渠道方签署人在指定签署人姓名，证件号的情况下会触发</li></ul>
+        :param _ApproverMobileMode: <p>签署人手机号传参模式</p><p>枚举值：</p><ul><li>REPLACE： 接受已有认证手机号并替换</li><li>GIVEN： 以客户入参输入手机号为主</li><li>VALIDATE： 若与认证手机号不一致则报错</li><li>&quot;&quot;： 不走手机号传参模式</li></ul><p>默认值：&quot;&quot;</p><p>会触发手机号传参模式的前提是：签署人是指定了具体身份信息的</p><ul><li>渠道方签署人不会触发</li><li>非渠道方签署人在指定签署人姓名，证件号的情况下会触发</li></ul>
         :type ApproverMobileMode: str
         """
         self._NoRefuse = None
@@ -366,7 +366,7 @@ class ApproverOption(AbstractModel):
 
     @property
     def ApproverMobileMode(self):
-        r"""<p>签署人手机号传参模式</p><p>枚举值：</p><ul><li>REPLACE： 接受已有认证手机号并替换</li><li>GIVEN： 以客户入参输入手机号为主</li><li>VALIDATE： 若与认证手机号不一致则报错</li></ul><p>默认值：REPLACE</p><p>会触发手机号传参模式的前提是：签署人是指定了具体身份信息的</p><ul><li>渠道方签署人不会触发</li><li>非渠道方签署人在指定签署人姓名，证件号的情况下会触发</li></ul>
+        r"""<p>签署人手机号传参模式</p><p>枚举值：</p><ul><li>REPLACE： 接受已有认证手机号并替换</li><li>GIVEN： 以客户入参输入手机号为主</li><li>VALIDATE： 若与认证手机号不一致则报错</li><li>&quot;&quot;： 不走手机号传参模式</li></ul><p>默认值：&quot;&quot;</p><p>会触发手机号传参模式的前提是：签署人是指定了具体身份信息的</p><ul><li>渠道方签署人不会触发</li><li>非渠道方签署人在指定签署人姓名，证件号的情况下会触发</li></ul>
         :rtype: str
         """
         return self._ApproverMobileMode

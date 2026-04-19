@@ -1547,12 +1547,15 @@ class AdaptiveFrequencyControl(AbstractModel):
         r"""
         :param _Enabled: 自适应频控是否开启。取值有：<li>on：开启；</li><li>off：关闭。</li>
         :type Enabled: str
+        :param _Id: 自适应频控的规则 ID，仅作为出参返回。
+        :type Id: str
         :param _Sensitivity: 自适应频控的限制等级，当 Enabled 为 on 时，此字段必填。取值有：<li>Loose：宽松；</li><li>Moderate：适中；</li><li>Strict：严格。</li>
         :type Sensitivity: str
         :param _Action: 自适应频控的处置方式，当 Enabled 为 on 时，此字段必填。SecurityAction 的 Name 取值支持：<li>Monitor：观察；</li><li>Deny：拦截；</li><li>Challenge：挑战，其中ChallengeActionParameters.Name仅支持JSChallenge。</li>
         :type Action: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
         """
         self._Enabled = None
+        self._Id = None
         self._Sensitivity = None
         self._Action = None
 
@@ -1566,6 +1569,17 @@ class AdaptiveFrequencyControl(AbstractModel):
     @Enabled.setter
     def Enabled(self, Enabled):
         self._Enabled = Enabled
+
+    @property
+    def Id(self):
+        r"""自适应频控的规则 ID，仅作为出参返回。
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
 
     @property
     def Sensitivity(self):
@@ -1592,6 +1606,7 @@ class AdaptiveFrequencyControl(AbstractModel):
 
     def _deserialize(self, params):
         self._Enabled = params.get("Enabled")
+        self._Id = params.get("Id")
         self._Sensitivity = params.get("Sensitivity")
         if params.get("Action") is not None:
             self._Action = SecurityAction()
@@ -3427,10 +3442,13 @@ class BandwidthAbuseDefense(AbstractModel):
         r"""
         :param _Enabled: 流量防盗刷（仅适用中国大陆地区）是否开启。取值有：<li>on：开启；</li><li>off：关闭。</li>
         :type Enabled: str
+        :param _Id: 流量防盗刷的规则 ID，仅作为出参返回。
+        :type Id: str
         :param _Action: 流量防盗刷（仅适用中国大陆地区）的处置方式，当 Enabled 为 on 时，此字段必填。SecurityAction 的 Name 取值支持：<li>Monitor：观察；</li><li>Deny：拦截；</li><li>Challenge：挑战，其中ChallengeActionParameters.Name仅支持JSChallenge。</li>
         :type Action: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
         """
         self._Enabled = None
+        self._Id = None
         self._Action = None
 
     @property
@@ -3443,6 +3461,17 @@ class BandwidthAbuseDefense(AbstractModel):
     @Enabled.setter
     def Enabled(self, Enabled):
         self._Enabled = Enabled
+
+    @property
+    def Id(self):
+        r"""流量防盗刷的规则 ID，仅作为出参返回。
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
 
     @property
     def Action(self):
@@ -3458,6 +3487,7 @@ class BandwidthAbuseDefense(AbstractModel):
 
     def _deserialize(self, params):
         self._Enabled = params.get("Enabled")
+        self._Id = params.get("Id")
         if params.get("Action") is not None:
             self._Action = SecurityAction()
             self._Action._deserialize(params.get("Action"))
@@ -4441,27 +4471,19 @@ class BotIntelligence(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BotRatings: 基于客户端和请求特征，将请求来源分为人类来源请求、合法 Bot 请求、疑似 Bot 请求和高风险 Bot 请求，并提供请求处置选项。
-        :type BotRatings: :class:`tencentcloud.teo.v20220901.models.BotRatings`
         :param _Enabled: Bot 智能分析的具体配置开关。取值有：
 
 on：开启；
 off：关闭。
         :type Enabled: str
+        :param _Id: Bot 智能分析的规则 ID，仅作为出参返回。
+        :type Id: str
+        :param _BotRatings: 基于客户端和请求特征，将请求来源分为人类来源请求、合法 Bot 请求、疑似 Bot 请求和高风险 Bot 请求，并提供请求处置选项。
+        :type BotRatings: :class:`tencentcloud.teo.v20220901.models.BotRatings`
         """
-        self._BotRatings = None
         self._Enabled = None
-
-    @property
-    def BotRatings(self):
-        r"""基于客户端和请求特征，将请求来源分为人类来源请求、合法 Bot 请求、疑似 Bot 请求和高风险 Bot 请求，并提供请求处置选项。
-        :rtype: :class:`tencentcloud.teo.v20220901.models.BotRatings`
-        """
-        return self._BotRatings
-
-    @BotRatings.setter
-    def BotRatings(self, BotRatings):
-        self._BotRatings = BotRatings
+        self._Id = None
+        self._BotRatings = None
 
     @property
     def Enabled(self):
@@ -4477,12 +4499,35 @@ off：关闭。
     def Enabled(self, Enabled):
         self._Enabled = Enabled
 
+    @property
+    def Id(self):
+        r"""Bot 智能分析的规则 ID，仅作为出参返回。
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def BotRatings(self):
+        r"""基于客户端和请求特征，将请求来源分为人类来源请求、合法 Bot 请求、疑似 Bot 请求和高风险 Bot 请求，并提供请求处置选项。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.BotRatings`
+        """
+        return self._BotRatings
+
+    @BotRatings.setter
+    def BotRatings(self, BotRatings):
+        self._BotRatings = BotRatings
+
 
     def _deserialize(self, params):
+        self._Enabled = params.get("Enabled")
+        self._Id = params.get("Id")
         if params.get("BotRatings") is not None:
             self._BotRatings = BotRatings()
             self._BotRatings._deserialize(params.get("BotRatings"))
-        self._Enabled = params.get("Enabled")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8017,10 +8062,13 @@ class ClientFiltering(AbstractModel):
         r"""
         :param _Enabled: 智能客户端过滤是否开启。取值有：<li>on：开启；</li><li>off：关闭。</li>
         :type Enabled: str
+        :param _Id: 智能客户端过滤的规则 ID，仅作为出参返回。
+        :type Id: str
         :param _Action: 智能客户端过滤的处置方式，当 Enabled 为 on 时，此字段必填。SecurityAction 的 Name 取值支持：<li>Monitor：观察；</li><li>Deny：拦截；</li><li>Challenge：挑战，其中ChallengeActionParameters.Name仅支持JSChallenge。</li>
         :type Action: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
         """
         self._Enabled = None
+        self._Id = None
         self._Action = None
 
     @property
@@ -8033,6 +8081,17 @@ class ClientFiltering(AbstractModel):
     @Enabled.setter
     def Enabled(self, Enabled):
         self._Enabled = Enabled
+
+    @property
+    def Id(self):
+        r"""智能客户端过滤的规则 ID，仅作为出参返回。
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
 
     @property
     def Action(self):
@@ -8048,6 +8107,7 @@ class ClientFiltering(AbstractModel):
 
     def _deserialize(self, params):
         self._Enabled = params.get("Enabled")
+        self._Id = params.get("Id")
         if params.get("Action") is not None:
             self._Action = SecurityAction()
             self._Action._deserialize(params.get("Action"))
@@ -33579,6 +33639,8 @@ class FrequentScanningProtection(AbstractModel):
         r"""
         :param _Enabled: 高频扫描防护规则是否开启。取值有：<li>on：开启，高频扫描防护规则生效；</li><li>off：关闭，高频扫描防护规则不生效。</li>	
         :type Enabled: str
+        :param _Id: 高频扫描防护的规则 ID，仅作为出参返回。
+        :type Id: str
         :param _Action: 高频扫描防护的处置动作。 当 Enabled 为 on 时，此字段必填。SecurityAction 的 Name 取值支持：<li>Deny：拦截，响应拦截页面；</li><li>Monitor：观察，不处理请求记录安全事件到日志中；</li><li>JSChallenge：JavaScript 挑战，响应 JavaScript 挑战页面。</li>
         :type Action: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
         :param _CountBy: 请求统计的匹配方式，当 Enabled 为 on 时，此字段必填。取值有：<li>http.request.xff_header_ip：客户端 IP（优先匹配 XFF 头部）；</li><li>http.request.ip：客户端 IP。</li> 
@@ -33591,6 +33653,7 @@ class FrequentScanningProtection(AbstractModel):
         :type ActionDuration: str
         """
         self._Enabled = None
+        self._Id = None
         self._Action = None
         self._CountBy = None
         self._BlockThreshold = None
@@ -33607,6 +33670,17 @@ class FrequentScanningProtection(AbstractModel):
     @Enabled.setter
     def Enabled(self, Enabled):
         self._Enabled = Enabled
+
+    @property
+    def Id(self):
+        r"""高频扫描防护的规则 ID，仅作为出参返回。
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
 
     @property
     def Action(self):
@@ -33666,6 +33740,7 @@ class FrequentScanningProtection(AbstractModel):
 
     def _deserialize(self, params):
         self._Enabled = params.get("Enabled")
+        self._Id = params.get("Id")
         if params.get("Action") is not None:
             self._Action = SecurityAction()
             self._Action._deserialize(params.get("Action"))
@@ -56641,6 +56716,8 @@ class SlowAttackDefense(AbstractModel):
         r"""
         :param _Enabled: 慢速攻击防护是否开启。取值有：<li>on：开启；</li><li>off：关闭。</li>
         :type Enabled: str
+        :param _Id: 慢速攻击防护的规则 ID，仅作为出参返回。
+        :type Id: str
         :param _Action: 慢速攻击防护的处置方式，当 Enabled 为 on 时，此字段必填。SecurityAction 的 Name 取值支持：<li>Monitor：观察；</li><li>Deny：拦截；</li>
         :type Action: :class:`tencentcloud.teo.v20220901.models.SecurityAction`
         :param _MinimalRequestBodyTransferRate: 正文传输最小速率阈值的具体配置，当 Enabled 为 on 时，此字段必填。
@@ -56649,6 +56726,7 @@ class SlowAttackDefense(AbstractModel):
         :type RequestBodyTransferTimeout: :class:`tencentcloud.teo.v20220901.models.RequestBodyTransferTimeout`
         """
         self._Enabled = None
+        self._Id = None
         self._Action = None
         self._MinimalRequestBodyTransferRate = None
         self._RequestBodyTransferTimeout = None
@@ -56663,6 +56741,17 @@ class SlowAttackDefense(AbstractModel):
     @Enabled.setter
     def Enabled(self, Enabled):
         self._Enabled = Enabled
+
+    @property
+    def Id(self):
+        r"""慢速攻击防护的规则 ID，仅作为出参返回。
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
 
     @property
     def Action(self):
@@ -56700,6 +56789,7 @@ class SlowAttackDefense(AbstractModel):
 
     def _deserialize(self, params):
         self._Enabled = params.get("Enabled")
+        self._Id = params.get("Id")
         if params.get("Action") is not None:
             self._Action = SecurityAction()
             self._Action._deserialize(params.get("Action"))

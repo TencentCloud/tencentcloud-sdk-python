@@ -2281,21 +2281,27 @@ class InputInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: 该字段表示文件访问类型，取值为**URL**（资源链接）和**COS** (腾讯云对象存储)。
+        :param _Type: <p>该字段表示文件访问类型，取值为<strong>URL</strong>（资源链接）和<strong>COS</strong> (腾讯云对象存储)。</p>
         :type Type: str
-        :param _Url: 该字段表示文件访问的链接地址，格式为标准URL格式。<br> 备注：当Type为URL时此字段不为空。
+        :param _Url: <p>该字段表示文件访问的链接地址，格式为标准URL格式。<br> 备注：当Type为URL时此字段不为空。</p>
         :type Url: str
-        :param _BucketInfo: 该字段表示文件访问的腾讯云存储桶信息。<br> 备注：当Type为COS时此字段不为空。
+        :param _BucketInfo: <p>该字段表示文件访问的腾讯云存储桶信息。<br> 备注：当Type为COS时此字段不为空。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type BucketInfo: :class:`tencentcloud.ams.v20201229.models.BucketInfo`
+        :param _ImageUrlList: <p>大模型审核可选输入图片列表</p>
+        :type ImageUrlList: list of str
+        :param _TextContent: <p>大模型审核场景下，base64编码的审核要求内容</p>
+        :type TextContent: str
         """
         self._Type = None
         self._Url = None
         self._BucketInfo = None
+        self._ImageUrlList = None
+        self._TextContent = None
 
     @property
     def Type(self):
-        r"""该字段表示文件访问类型，取值为**URL**（资源链接）和**COS** (腾讯云对象存储)。
+        r"""<p>该字段表示文件访问类型，取值为<strong>URL</strong>（资源链接）和<strong>COS</strong> (腾讯云对象存储)。</p>
         :rtype: str
         """
         return self._Type
@@ -2306,7 +2312,7 @@ class InputInfo(AbstractModel):
 
     @property
     def Url(self):
-        r"""该字段表示文件访问的链接地址，格式为标准URL格式。<br> 备注：当Type为URL时此字段不为空。
+        r"""<p>该字段表示文件访问的链接地址，格式为标准URL格式。<br> 备注：当Type为URL时此字段不为空。</p>
         :rtype: str
         """
         return self._Url
@@ -2317,7 +2323,7 @@ class InputInfo(AbstractModel):
 
     @property
     def BucketInfo(self):
-        r"""该字段表示文件访问的腾讯云存储桶信息。<br> 备注：当Type为COS时此字段不为空。
+        r"""<p>该字段表示文件访问的腾讯云存储桶信息。<br> 备注：当Type为COS时此字段不为空。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ams.v20201229.models.BucketInfo`
         """
@@ -2327,6 +2333,28 @@ class InputInfo(AbstractModel):
     def BucketInfo(self, BucketInfo):
         self._BucketInfo = BucketInfo
 
+    @property
+    def ImageUrlList(self):
+        r"""<p>大模型审核可选输入图片列表</p>
+        :rtype: list of str
+        """
+        return self._ImageUrlList
+
+    @ImageUrlList.setter
+    def ImageUrlList(self, ImageUrlList):
+        self._ImageUrlList = ImageUrlList
+
+    @property
+    def TextContent(self):
+        r"""<p>大模型审核场景下，base64编码的审核要求内容</p>
+        :rtype: str
+        """
+        return self._TextContent
+
+    @TextContent.setter
+    def TextContent(self, TextContent):
+        self._TextContent = TextContent
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
@@ -2334,6 +2362,8 @@ class InputInfo(AbstractModel):
         if params.get("BucketInfo") is not None:
             self._BucketInfo = BucketInfo()
             self._BucketInfo._deserialize(params.get("BucketInfo"))
+        self._ImageUrlList = params.get("ImageUrlList")
+        self._TextContent = params.get("TextContent")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

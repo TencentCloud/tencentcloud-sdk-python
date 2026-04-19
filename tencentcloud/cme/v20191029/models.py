@@ -25,25 +25,26 @@ class AccountInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _UserId: 用户 Id。
+        :param _UserId: <p>用户 Id。</p>
         :type UserId: str
-        :param _Phone: 用户手机号码。
+        :param _Phone: <p>用户手机号码。</p>
         :type Phone: str
-        :param _Nick: 用户昵称。
+        :param _Nick: <p>用户昵称。</p>
         :type Nick: str
-        :param _Status: 账号状态，取值：
-<li>Normal：有效；</li>
-<li>Stopped：无效。</li>
+        :param _Status: <p>账号状态，取值：</p><li>Normal：有效；</li><li>Stopped：无效。</li>
         :type Status: str
+        :param _CreateTime: <p>账户的创建时间。</p><p>参数格式：使用 ISO 日期格式。</p>
+        :type CreateTime: str
         """
         self._UserId = None
         self._Phone = None
         self._Nick = None
         self._Status = None
+        self._CreateTime = None
 
     @property
     def UserId(self):
-        r"""用户 Id。
+        r"""<p>用户 Id。</p>
         :rtype: str
         """
         return self._UserId
@@ -54,7 +55,7 @@ class AccountInfo(AbstractModel):
 
     @property
     def Phone(self):
-        r"""用户手机号码。
+        r"""<p>用户手机号码。</p>
         :rtype: str
         """
         return self._Phone
@@ -65,7 +66,7 @@ class AccountInfo(AbstractModel):
 
     @property
     def Nick(self):
-        r"""用户昵称。
+        r"""<p>用户昵称。</p>
         :rtype: str
         """
         return self._Nick
@@ -76,9 +77,7 @@ class AccountInfo(AbstractModel):
 
     @property
     def Status(self):
-        r"""账号状态，取值：
-<li>Normal：有效；</li>
-<li>Stopped：无效。</li>
+        r"""<p>账号状态，取值：</p><li>Normal：有效；</li><li>Stopped：无效。</li>
         :rtype: str
         """
         return self._Status
@@ -87,12 +86,24 @@ class AccountInfo(AbstractModel):
     def Status(self, Status):
         self._Status = Status
 
+    @property
+    def CreateTime(self):
+        r"""<p>账户的创建时间。</p><p>参数格式：使用 ISO 日期格式。</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
 
     def _deserialize(self, params):
         self._UserId = params.get("UserId")
         self._Phone = params.get("Phone")
         self._Nick = params.get("Nick")
         self._Status = params.get("Status")
+        self._CreateTime = params.get("CreateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

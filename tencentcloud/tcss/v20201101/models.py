@@ -7753,48 +7753,36 @@ class ComplianceAffectedAsset(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CustomerAssetId: 为客户分配的唯一的资产项的ID。
+        :param _CustomerAssetId: <p>为客户分配的唯一的资产项的ID。</p>
         :type CustomerAssetId: int
-        :param _AssetName: 资产项的名称。
+        :param _AssetName: <p>资产项的名称。</p>
         :type AssetName: str
-        :param _AssetType: 资产项的类型
+        :param _AssetType: <p>资产项的类型</p>
         :type AssetType: str
-        :param _CheckStatus: 检测状态
-
-CHECK_INIT, 待检测
-
-CHECK_RUNNING, 检测中
-
-CHECK_FINISHED, 检测完成
-
-CHECK_FAILED, 检测失败
+        :param _CheckStatus: <p>检测状态</p><p>CHECK_INIT, 待检测</p><p>CHECK_RUNNING, 检测中</p><p>CHECK_FINISHED, 检测完成</p><p>CHECK_FAILED, 检测失败</p>
         :type CheckStatus: str
-        :param _NodeName: 节点名称。
+        :param _NodeName: <p>节点名称。</p>
         :type NodeName: str
-        :param _LastCheckTime: 上次检测的时间，格式为”YYYY-MM-DD HH:m::SS“。
-
-如果没有检测过，此处为”0000-00-00 00:00:00“。
+        :param _LastCheckTime: <p>上次检测的时间，格式为”YYYY-MM-DD HH:m::SS“。</p><p>如果没有检测过，此处为”0000-00-00 00:00:00“。</p>
         :type LastCheckTime: str
-        :param _CheckResult: 检测结果。取值为：
-
-RESULT_FAILED: 未通过
-
-RESULT_PASSED: 通过
+        :param _CheckResult: <p>检测结果。取值为：</p><p>RESULT_FAILED: 未通过</p><p>RESULT_PASSED: 通过</p>
         :type CheckResult: str
-        :param _HostIP: 主机IP
+        :param _HostIP: <p>主机IP</p>
         :type HostIP: str
-        :param _ImageTag: 镜像的tag
+        :param _ImageTag: <p>镜像的tag</p>
         :type ImageTag: str
-        :param _VerifyInfo: 检查项验证信息
+        :param _VerifyInfo: <p>检查项验证信息</p>
         :type VerifyInfo: str
-        :param _InstanceId: 主机实例id
+        :param _InstanceId: <p>主机实例id</p>
         :type InstanceId: str
-        :param _ImageRegistryInfo: 镜像仓库信息
+        :param _ImageRegistryInfo: <p>镜像仓库信息</p>
         :type ImageRegistryInfo: :class:`tencentcloud.tcss.v20201101.models.ImageRegistryInfo`
-        :param _ClusterID: 集群id
+        :param _ClusterID: <p>集群id</p>
         :type ClusterID: str
-        :param _ClusterName: 集群名称
+        :param _ClusterName: <p>集群名称</p>
         :type ClusterName: str
+        :param _AssetUniqueID: <p>资产唯一ID</p><p>默认值：-</p>
+        :type AssetUniqueID: str
         """
         self._CustomerAssetId = None
         self._AssetName = None
@@ -7810,10 +7798,11 @@ RESULT_PASSED: 通过
         self._ImageRegistryInfo = None
         self._ClusterID = None
         self._ClusterName = None
+        self._AssetUniqueID = None
 
     @property
     def CustomerAssetId(self):
-        r"""为客户分配的唯一的资产项的ID。
+        r"""<p>为客户分配的唯一的资产项的ID。</p>
         :rtype: int
         """
         return self._CustomerAssetId
@@ -7824,7 +7813,7 @@ RESULT_PASSED: 通过
 
     @property
     def AssetName(self):
-        r"""资产项的名称。
+        r"""<p>资产项的名称。</p>
         :rtype: str
         """
         return self._AssetName
@@ -7835,7 +7824,7 @@ RESULT_PASSED: 通过
 
     @property
     def AssetType(self):
-        r"""资产项的类型
+        r"""<p>资产项的类型</p>
         :rtype: str
         """
         return self._AssetType
@@ -7846,15 +7835,7 @@ RESULT_PASSED: 通过
 
     @property
     def CheckStatus(self):
-        r"""检测状态
-
-CHECK_INIT, 待检测
-
-CHECK_RUNNING, 检测中
-
-CHECK_FINISHED, 检测完成
-
-CHECK_FAILED, 检测失败
+        r"""<p>检测状态</p><p>CHECK_INIT, 待检测</p><p>CHECK_RUNNING, 检测中</p><p>CHECK_FINISHED, 检测完成</p><p>CHECK_FAILED, 检测失败</p>
         :rtype: str
         """
         return self._CheckStatus
@@ -7865,7 +7846,7 @@ CHECK_FAILED, 检测失败
 
     @property
     def NodeName(self):
-        r"""节点名称。
+        r"""<p>节点名称。</p>
         :rtype: str
         """
         return self._NodeName
@@ -7876,9 +7857,7 @@ CHECK_FAILED, 检测失败
 
     @property
     def LastCheckTime(self):
-        r"""上次检测的时间，格式为”YYYY-MM-DD HH:m::SS“。
-
-如果没有检测过，此处为”0000-00-00 00:00:00“。
+        r"""<p>上次检测的时间，格式为”YYYY-MM-DD HH:m::SS“。</p><p>如果没有检测过，此处为”0000-00-00 00:00:00“。</p>
         :rtype: str
         """
         return self._LastCheckTime
@@ -7889,11 +7868,7 @@ CHECK_FAILED, 检测失败
 
     @property
     def CheckResult(self):
-        r"""检测结果。取值为：
-
-RESULT_FAILED: 未通过
-
-RESULT_PASSED: 通过
+        r"""<p>检测结果。取值为：</p><p>RESULT_FAILED: 未通过</p><p>RESULT_PASSED: 通过</p>
         :rtype: str
         """
         return self._CheckResult
@@ -7904,7 +7879,7 @@ RESULT_PASSED: 通过
 
     @property
     def HostIP(self):
-        r"""主机IP
+        r"""<p>主机IP</p>
         :rtype: str
         """
         return self._HostIP
@@ -7915,7 +7890,7 @@ RESULT_PASSED: 通过
 
     @property
     def ImageTag(self):
-        r"""镜像的tag
+        r"""<p>镜像的tag</p>
         :rtype: str
         """
         return self._ImageTag
@@ -7926,7 +7901,7 @@ RESULT_PASSED: 通过
 
     @property
     def VerifyInfo(self):
-        r"""检查项验证信息
+        r"""<p>检查项验证信息</p>
         :rtype: str
         """
         return self._VerifyInfo
@@ -7937,7 +7912,7 @@ RESULT_PASSED: 通过
 
     @property
     def InstanceId(self):
-        r"""主机实例id
+        r"""<p>主机实例id</p>
         :rtype: str
         """
         return self._InstanceId
@@ -7948,7 +7923,7 @@ RESULT_PASSED: 通过
 
     @property
     def ImageRegistryInfo(self):
-        r"""镜像仓库信息
+        r"""<p>镜像仓库信息</p>
         :rtype: :class:`tencentcloud.tcss.v20201101.models.ImageRegistryInfo`
         """
         return self._ImageRegistryInfo
@@ -7959,7 +7934,7 @@ RESULT_PASSED: 通过
 
     @property
     def ClusterID(self):
-        r"""集群id
+        r"""<p>集群id</p>
         :rtype: str
         """
         return self._ClusterID
@@ -7970,7 +7945,7 @@ RESULT_PASSED: 通过
 
     @property
     def ClusterName(self):
-        r"""集群名称
+        r"""<p>集群名称</p>
         :rtype: str
         """
         return self._ClusterName
@@ -7978,6 +7953,17 @@ RESULT_PASSED: 通过
     @ClusterName.setter
     def ClusterName(self, ClusterName):
         self._ClusterName = ClusterName
+
+    @property
+    def AssetUniqueID(self):
+        r"""<p>资产唯一ID</p><p>默认值：-</p>
+        :rtype: str
+        """
+        return self._AssetUniqueID
+
+    @AssetUniqueID.setter
+    def AssetUniqueID(self, AssetUniqueID):
+        self._AssetUniqueID = AssetUniqueID
 
 
     def _deserialize(self, params):
@@ -7997,6 +7983,7 @@ RESULT_PASSED: 通过
             self._ImageRegistryInfo._deserialize(params.get("ImageRegistryInfo"))
         self._ClusterID = params.get("ClusterID")
         self._ClusterName = params.get("ClusterName")
+        self._AssetUniqueID = params.get("AssetUniqueID")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8250,46 +8237,38 @@ class ComplianceAssetInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CustomerAssetId: 客户资产的ID。
+        :param _CustomerAssetId: <p>客户资产的ID。</p>
         :type CustomerAssetId: int
-        :param _AssetType: 资产类别。
+        :param _AssetType: <p>资产类别。</p>
         :type AssetType: str
-        :param _AssetName: 资产的名称。
+        :param _AssetName: <p>资产的名称。</p>
         :type AssetName: str
-        :param _ImageTag: 当资产为镜像时，这个字段为镜像Tag。
+        :param _ImageTag: <p>当资产为镜像时，这个字段为镜像Tag。</p>
         :type ImageTag: str
-        :param _HostIP: 资产所在的主机IP。
+        :param _HostIP: <p>资产所在的主机IP。</p>
         :type HostIP: str
-        :param _NodeName: 资产所属的节点的名称
+        :param _NodeName: <p>资产所属的节点的名称</p>
         :type NodeName: str
-        :param _CheckStatus: 检测状态
-
-CHECK_INIT, 待检测
-
-CHECK_RUNNING, 检测中
-
-CHECK_FINISHED, 检测完成
-
-CHECK_FAILED, 检测失败
+        :param _CheckStatus: <p>检测状态</p><p>CHECK_INIT, 待检测</p><p>CHECK_RUNNING, 检测中</p><p>CHECK_FINISHED, 检测完成</p><p>CHECK_FAILED, 检测失败</p>
         :type CheckStatus: str
-        :param _PassedPolicyItemCount: 此类资产通过的检测项的数目。
+        :param _PassedPolicyItemCount: <p>此类资产通过的检测项的数目。</p>
         :type PassedPolicyItemCount: int
-        :param _FailedPolicyItemCount: 此类资产未通过的检测的数目。
+        :param _FailedPolicyItemCount: <p>此类资产未通过的检测的数目。</p>
         :type FailedPolicyItemCount: int
-        :param _LastCheckTime: 上次检测的时间。
+        :param _LastCheckTime: <p>上次检测的时间。</p>
         :type LastCheckTime: str
-        :param _CheckResult: 检测结果：
-RESULT_FAILED: 未通过。
-RESULT_PASSED: 通过。
+        :param _CheckResult: <p>检测结果：<br>RESULT_FAILED: 未通过。<br>RESULT_PASSED: 通过。</p>
         :type CheckResult: str
-        :param _InstanceId: 主机节点的实例id
+        :param _InstanceId: <p>主机节点的实例id</p>
         :type InstanceId: str
-        :param _ImageRegistryInfo: 镜像仓库信息
+        :param _ImageRegistryInfo: <p>镜像仓库信息</p>
         :type ImageRegistryInfo: :class:`tencentcloud.tcss.v20201101.models.ImageRegistryInfo`
-        :param _ClusterID: 集群id
+        :param _ClusterID: <p>集群id</p>
         :type ClusterID: str
-        :param _ClusterName: 集群名称
+        :param _ClusterName: <p>集群名称</p>
         :type ClusterName: str
+        :param _AssetUniqueID: <p>资产唯一ID</p><p>默认值：-</p>
+        :type AssetUniqueID: str
         """
         self._CustomerAssetId = None
         self._AssetType = None
@@ -8306,10 +8285,11 @@ RESULT_PASSED: 通过。
         self._ImageRegistryInfo = None
         self._ClusterID = None
         self._ClusterName = None
+        self._AssetUniqueID = None
 
     @property
     def CustomerAssetId(self):
-        r"""客户资产的ID。
+        r"""<p>客户资产的ID。</p>
         :rtype: int
         """
         return self._CustomerAssetId
@@ -8320,7 +8300,7 @@ RESULT_PASSED: 通过。
 
     @property
     def AssetType(self):
-        r"""资产类别。
+        r"""<p>资产类别。</p>
         :rtype: str
         """
         return self._AssetType
@@ -8331,7 +8311,7 @@ RESULT_PASSED: 通过。
 
     @property
     def AssetName(self):
-        r"""资产的名称。
+        r"""<p>资产的名称。</p>
         :rtype: str
         """
         return self._AssetName
@@ -8342,7 +8322,7 @@ RESULT_PASSED: 通过。
 
     @property
     def ImageTag(self):
-        r"""当资产为镜像时，这个字段为镜像Tag。
+        r"""<p>当资产为镜像时，这个字段为镜像Tag。</p>
         :rtype: str
         """
         return self._ImageTag
@@ -8353,7 +8333,7 @@ RESULT_PASSED: 通过。
 
     @property
     def HostIP(self):
-        r"""资产所在的主机IP。
+        r"""<p>资产所在的主机IP。</p>
         :rtype: str
         """
         return self._HostIP
@@ -8364,7 +8344,7 @@ RESULT_PASSED: 通过。
 
     @property
     def NodeName(self):
-        r"""资产所属的节点的名称
+        r"""<p>资产所属的节点的名称</p>
         :rtype: str
         """
         return self._NodeName
@@ -8375,15 +8355,7 @@ RESULT_PASSED: 通过。
 
     @property
     def CheckStatus(self):
-        r"""检测状态
-
-CHECK_INIT, 待检测
-
-CHECK_RUNNING, 检测中
-
-CHECK_FINISHED, 检测完成
-
-CHECK_FAILED, 检测失败
+        r"""<p>检测状态</p><p>CHECK_INIT, 待检测</p><p>CHECK_RUNNING, 检测中</p><p>CHECK_FINISHED, 检测完成</p><p>CHECK_FAILED, 检测失败</p>
         :rtype: str
         """
         return self._CheckStatus
@@ -8394,7 +8366,7 @@ CHECK_FAILED, 检测失败
 
     @property
     def PassedPolicyItemCount(self):
-        r"""此类资产通过的检测项的数目。
+        r"""<p>此类资产通过的检测项的数目。</p>
         :rtype: int
         """
         return self._PassedPolicyItemCount
@@ -8405,7 +8377,7 @@ CHECK_FAILED, 检测失败
 
     @property
     def FailedPolicyItemCount(self):
-        r"""此类资产未通过的检测的数目。
+        r"""<p>此类资产未通过的检测的数目。</p>
         :rtype: int
         """
         return self._FailedPolicyItemCount
@@ -8416,7 +8388,7 @@ CHECK_FAILED, 检测失败
 
     @property
     def LastCheckTime(self):
-        r"""上次检测的时间。
+        r"""<p>上次检测的时间。</p>
         :rtype: str
         """
         return self._LastCheckTime
@@ -8427,9 +8399,7 @@ CHECK_FAILED, 检测失败
 
     @property
     def CheckResult(self):
-        r"""检测结果：
-RESULT_FAILED: 未通过。
-RESULT_PASSED: 通过。
+        r"""<p>检测结果：<br>RESULT_FAILED: 未通过。<br>RESULT_PASSED: 通过。</p>
         :rtype: str
         """
         return self._CheckResult
@@ -8440,7 +8410,7 @@ RESULT_PASSED: 通过。
 
     @property
     def InstanceId(self):
-        r"""主机节点的实例id
+        r"""<p>主机节点的实例id</p>
         :rtype: str
         """
         return self._InstanceId
@@ -8451,7 +8421,7 @@ RESULT_PASSED: 通过。
 
     @property
     def ImageRegistryInfo(self):
-        r"""镜像仓库信息
+        r"""<p>镜像仓库信息</p>
         :rtype: :class:`tencentcloud.tcss.v20201101.models.ImageRegistryInfo`
         """
         return self._ImageRegistryInfo
@@ -8462,7 +8432,7 @@ RESULT_PASSED: 通过。
 
     @property
     def ClusterID(self):
-        r"""集群id
+        r"""<p>集群id</p>
         :rtype: str
         """
         return self._ClusterID
@@ -8473,7 +8443,7 @@ RESULT_PASSED: 通过。
 
     @property
     def ClusterName(self):
-        r"""集群名称
+        r"""<p>集群名称</p>
         :rtype: str
         """
         return self._ClusterName
@@ -8481,6 +8451,17 @@ RESULT_PASSED: 通过。
     @ClusterName.setter
     def ClusterName(self, ClusterName):
         self._ClusterName = ClusterName
+
+    @property
+    def AssetUniqueID(self):
+        r"""<p>资产唯一ID</p><p>默认值：-</p>
+        :rtype: str
+        """
+        return self._AssetUniqueID
+
+    @AssetUniqueID.setter
+    def AssetUniqueID(self, AssetUniqueID):
+        self._AssetUniqueID = AssetUniqueID
 
 
     def _deserialize(self, params):
@@ -8501,6 +8482,7 @@ RESULT_PASSED: 通过。
             self._ImageRegistryInfo._deserialize(params.get("ImageRegistryInfo"))
         self._ClusterID = params.get("ClusterID")
         self._ClusterName = params.get("ClusterName")
+        self._AssetUniqueID = params.get("AssetUniqueID")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

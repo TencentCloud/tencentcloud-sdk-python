@@ -5362,6 +5362,29 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyLogConfig(self, request):
+        r"""修改日志采集配置
+
+        :param request: Request instance for ModifyLogConfig.
+        :type request: :class:`tencentcloud.tke.v20180525.models.ModifyLogConfigRequest`
+        :rtype: :class:`tencentcloud.tke.v20180525.models.ModifyLogConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyLogConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyLogConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyMasterComponent(self, request):
         r"""修改master组件，支持kube-apiserver、kube-scheduler、kube-controller-manager副本数调整为0和恢复
 

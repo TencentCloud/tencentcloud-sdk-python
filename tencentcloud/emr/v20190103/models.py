@@ -5075,6 +5075,8 @@ class CreateClusterRequest(AbstractModel):
         :type SgIP: str
         :param _PartitionNumber: <p>分区置放群组分区</p>
         :type PartitionNumber: int
+        :param _WebUiVersion: <p>服务ui地址</p><p>枚举值：</p><ul><li>0： 服务ui地址，只返回1条服务ui地址</li><li>1： 服务ui地址，如果服务含有多个ui地址将全部返回，例如impala的Impalad、StateStore、Catalogd</li></ul><p>默认值：0</p>
+        :type WebUiVersion: int
         """
         self._ProductVersion = None
         self._EnableSupportHAFlag = None
@@ -5103,6 +5105,7 @@ class CreateClusterRequest(AbstractModel):
         self._NeedCdbAudit = None
         self._SgIP = None
         self._PartitionNumber = None
+        self._WebUiVersion = None
 
     @property
     def ProductVersion(self):
@@ -5401,6 +5404,17 @@ class CreateClusterRequest(AbstractModel):
     def PartitionNumber(self, PartitionNumber):
         self._PartitionNumber = PartitionNumber
 
+    @property
+    def WebUiVersion(self):
+        r"""<p>服务ui地址</p><p>枚举值：</p><ul><li>0： 服务ui地址，只返回1条服务ui地址</li><li>1： 服务ui地址，如果服务含有多个ui地址将全部返回，例如impala的Impalad、StateStore、Catalogd</li></ul><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._WebUiVersion
+
+    @WebUiVersion.setter
+    def WebUiVersion(self, WebUiVersion):
+        self._WebUiVersion = WebUiVersion
+
 
     def _deserialize(self, params):
         self._ProductVersion = params.get("ProductVersion")
@@ -5463,6 +5477,7 @@ class CreateClusterRequest(AbstractModel):
         self._NeedCdbAudit = params.get("NeedCdbAudit")
         self._SgIP = params.get("SgIP")
         self._PartitionNumber = params.get("PartitionNumber")
+        self._WebUiVersion = params.get("WebUiVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5705,6 +5720,8 @@ class CreateInstanceRequest(AbstractModel):
         :type SgIP: str
         :param _PartitionNumber: <p>分区置放群组分区</p>
         :type PartitionNumber: int
+        :param _WebUiVersion: <p>服务ui地址</p><p>枚举值：</p><ul><li>0： 服务ui地址，只返回1条服务ui地址</li><li>1： 服务ui地址，如果服务含有多个ui地址将全部返回，例如impala的Impalad、StateStore、Catalogd</li></ul><p>默认值：0</p>
+        :type WebUiVersion: int
         """
         self._ProductId = None
         self._Software = None
@@ -5745,6 +5762,7 @@ class CreateInstanceRequest(AbstractModel):
         self._NeedCdbAudit = None
         self._SgIP = None
         self._PartitionNumber = None
+        self._WebUiVersion = None
 
     @property
     def ProductId(self):
@@ -6175,6 +6193,17 @@ class CreateInstanceRequest(AbstractModel):
     def PartitionNumber(self, PartitionNumber):
         self._PartitionNumber = PartitionNumber
 
+    @property
+    def WebUiVersion(self):
+        r"""<p>服务ui地址</p><p>枚举值：</p><ul><li>0： 服务ui地址，只返回1条服务ui地址</li><li>1： 服务ui地址，如果服务含有多个ui地址将全部返回，例如impala的Impalad、StateStore、Catalogd</li></ul><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._WebUiVersion
+
+    @WebUiVersion.setter
+    def WebUiVersion(self, WebUiVersion):
+        self._WebUiVersion = WebUiVersion
+
 
     def _deserialize(self, params):
         self._ProductId = params.get("ProductId")
@@ -6253,6 +6282,7 @@ class CreateInstanceRequest(AbstractModel):
         self._NeedCdbAudit = params.get("NeedCdbAudit")
         self._SgIP = params.get("SgIP")
         self._PartitionNumber = params.get("PartitionNumber")
+        self._WebUiVersion = params.get("WebUiVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
