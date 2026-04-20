@@ -7090,6 +7090,105 @@ class DescribeProductSKUListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeSharedSubscriptionGroupsRequest(AbstractModel):
+    r"""DescribeSharedSubscriptionGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        r"""腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSharedSubscriptionGroupsResponse(AbstractModel):
+    r"""DescribeSharedSubscriptionGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 集群下共享订阅组列表
+        :type Data: list of SharedGroup
+        :param _TotalCount: 	查询总数
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""集群下共享订阅组列表
+        :rtype: list of SharedGroup
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def TotalCount(self):
+        r"""	查询总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = SharedGroup()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeSharedSubscriptionLagRequest(AbstractModel):
     r"""DescribeSharedSubscriptionLag请求参数结构体
 
@@ -12667,6 +12766,136 @@ class RevokedDeviceCertificateResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class SharedGroup(AbstractModel):
+    r"""共享订阅组
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 腾讯云MQTT实例ID
+        :type InstanceId: str
+        :param _SharedName: 共享订阅组名
+        :type SharedName: str
+        :param _LbStrategy: 共享组消费负载均衡策略 1.RANDOM 2.HASH_PARTITION
+        :type LbStrategy: int
+        :param _ExpiryInterval: HASH_PARTITION 策略下生效，表示Client掉线或新Client上线加入共享订阅组消费的延迟时间。
+范围：0～600秒
+        :type ExpiryInterval: int
+        :param _Remark: 备注，长度不超过128个字符。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
+        :param _CreateTime: 创建时间，毫秒级时间戳 。
+        :type CreateTime: int
+        :param _UpdateTime: 上次更新时间，毫秒级时间戳 。
+        :type UpdateTime: int
+        """
+        self._InstanceId = None
+        self._SharedName = None
+        self._LbStrategy = None
+        self._ExpiryInterval = None
+        self._Remark = None
+        self._CreateTime = None
+        self._UpdateTime = None
+
+    @property
+    def InstanceId(self):
+        r"""腾讯云MQTT实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def SharedName(self):
+        r"""共享订阅组名
+        :rtype: str
+        """
+        return self._SharedName
+
+    @SharedName.setter
+    def SharedName(self, SharedName):
+        self._SharedName = SharedName
+
+    @property
+    def LbStrategy(self):
+        r"""共享组消费负载均衡策略 1.RANDOM 2.HASH_PARTITION
+        :rtype: int
+        """
+        return self._LbStrategy
+
+    @LbStrategy.setter
+    def LbStrategy(self, LbStrategy):
+        self._LbStrategy = LbStrategy
+
+    @property
+    def ExpiryInterval(self):
+        r"""HASH_PARTITION 策略下生效，表示Client掉线或新Client上线加入共享订阅组消费的延迟时间。
+范围：0～600秒
+        :rtype: int
+        """
+        return self._ExpiryInterval
+
+    @ExpiryInterval.setter
+    def ExpiryInterval(self, ExpiryInterval):
+        self._ExpiryInterval = ExpiryInterval
+
+    @property
+    def Remark(self):
+        r"""备注，长度不超过128个字符。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def CreateTime(self):
+        r"""创建时间，毫秒级时间戳 。
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""上次更新时间，毫秒级时间戳 。
+        :rtype: int
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._SharedName = params.get("SharedName")
+        self._LbStrategy = params.get("LbStrategy")
+        self._ExpiryInterval = params.get("ExpiryInterval")
+        self._Remark = params.get("Remark")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class SubscriptionUserProperty(AbstractModel):

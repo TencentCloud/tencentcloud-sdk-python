@@ -193,6 +193,29 @@ class CmeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteAccount(self, request):
+        r"""删除平台归属的账户。
+
+        :param request: Request instance for DeleteAccount.
+        :type request: :class:`tencentcloud.cme.v20191029.models.DeleteAccountRequest`
+        :rtype: :class:`tencentcloud.cme.v20191029.models.DeleteAccountResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteAccount", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteAccountResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteClass(self, request):
         r"""删除分类信息，删除时检验下述限制：
         <li>分类路径必须存在；</li>
@@ -791,6 +814,29 @@ class CmeClient(AbstractClient):
             body = self.call("FlattenListMedia", params, headers=headers)
             response = json.loads(body)
             model = models.FlattenListMediaResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ForbidAccount(self, request):
+        r"""禁用账号。
+
+        :param request: Request instance for ForbidAccount.
+        :type request: :class:`tencentcloud.cme.v20191029.models.ForbidAccountRequest`
+        :rtype: :class:`tencentcloud.cme.v20191029.models.ForbidAccountResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ForbidAccount", params, headers=headers)
+            response = json.loads(body)
+            model = models.ForbidAccountResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

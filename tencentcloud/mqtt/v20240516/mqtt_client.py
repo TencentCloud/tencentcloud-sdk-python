@@ -1066,6 +1066,29 @@ class MqttClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeSharedSubscriptionGroups(self, request):
+        r"""查询集群下共享订阅组列表
+
+        :param request: Request instance for DescribeSharedSubscriptionGroups.
+        :type request: :class:`tencentcloud.mqtt.v20240516.models.DescribeSharedSubscriptionGroupsRequest`
+        :rtype: :class:`tencentcloud.mqtt.v20240516.models.DescribeSharedSubscriptionGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSharedSubscriptionGroups", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSharedSubscriptionGroupsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeSharedSubscriptionLag(self, request):
         r"""查询共享订阅消息堆积量
 

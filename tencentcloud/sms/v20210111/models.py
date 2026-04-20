@@ -61,43 +61,23 @@ class AddSmsSignRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SignName: 签名名称。
-注：不能重复申请已通过或待审核的签名。
+        :param _SignName: <p>签名名称。<br>注：不能重复申请已通过或待审核的签名。</p>
         :type SignName: str
-        :param _SignType: 签名类型。其中每种类型后面标注了其可选的 DocumentType（证明类型）：
-0：公司，可选 DocumentType 有（0，1）。
-1：APP，可选 DocumentType 有（0，1，2，3，4） 。
-4：商标，可选 DocumentType 有（7）。
-5：政府/机关事业单位/其他机构，可选 DocumentType 有（2，3）。
-注1：必须按照对应关系选择证明类型，否则会审核失败。
-注2：签名类型2（网站）、3（公众号）、6（小程序）已不再支持，具体可参考 [关于腾讯云短信签名申请规则更新的公告](https://cloud.tencent.com/document/product/382/116397)。
+        :param _SignType: <p>签名类型。其中每种类型后面标注了其可选的 DocumentType（证明类型）：<br>0：公司，可选 DocumentType 有（0，1）。<br>1：APP，可选 DocumentType 有（0，1，2，3，4） 。<br>4：商标，可选 DocumentType 有（7）。<br>5：政府/机关事业单位/其他机构，可选 DocumentType 有（2，3）。<br>注1：必须按照对应关系选择证明类型，否则会审核失败。<br>注2：签名类型2（网站）、3（公众号）、6（小程序）已不再支持，具体可参考 <a href="https://cloud.tencent.com/document/product/382/116397">关于腾讯云短信签名申请规则更新的公告</a>。<br>注3：申请国内短信签名已不再支持签名类型1（APP），具体可参考 <a href="https://cloud.tencent.com/announce/detail/2256">关于腾讯云短信签名申请规则更新的公告</a>。</p>
         :type SignType: int
-        :param _DocumentType: 证明类型：
-0：三证合一。
-1：企业营业执照。
-2：组织机构代码证书。
-3：社会信用代码证书。
-4：应用后台管理截图（个人开发APP）。
-7：商标注册书。
-注：证明类型5（网站备案后台截图）、6（小程序设置页面截图）、8（公众号设置页面截图）已不再支持，具体可参考 [关于腾讯云短信签名申请规则更新的公告](https://cloud.tencent.com/document/product/382/116397)。
+        :param _DocumentType: <p>证明类型：<br>0：三证合一。<br>1：企业营业执照。<br>2：组织机构代码证书。<br>3：社会信用代码证书。<br>4：应用后台管理截图（个人开发APP）。<br>7：商标注册书。<br>注1：证明类型5（网站备案后台截图）、6（小程序设置页面截图）、8（公众号设置页面截图）已不再支持，具体可参考 <a href="https://cloud.tencent.com/document/product/382/116397">关于腾讯云短信签名申请规则更新的公告</a>。<br>注2：申请国内短信签名已不再支持证明类型4（应用后台管理截图），具体可参考 <a href="https://cloud.tencent.com/announce/detail/2256">关于腾讯云短信签名申请规则更新的公告</a>。</p>
         :type DocumentType: int
-        :param _International: 是否国际/港澳台短信：
-0：表示国内短信。
-1：表示国际/港澳台短信。
+        :param _International: <p>是否国际/港澳台短信：<br>0：表示国内短信。<br>1：表示国际/港澳台短信。</p>
         :type International: int
-        :param _SignPurpose: 签名用途：
-0：自用。
-1：他用。
+        :param _SignPurpose: <p>签名用途：<br>0：自用。<br>1：他用。</p>
         :type SignPurpose: int
-        :param _ProofImage: 签名对应的资质证明图片需先进行 base64 编码格式转换，将转换后的字符串去掉前缀`data:image/jpeg;base64,`再赋值给该参数。
+        :param _ProofImage: <p>签名对应的资质证明图片需先进行 base64 编码格式转换，将转换后的字符串去掉前缀<code>data:image/jpeg;base64,</code>再赋值给该参数。</p>
         :type ProofImage: str
-        :param _CommissionImage: 委托授权证明。选择 SignPurpose 为他用之后需要提交委托的授权证明。
-图片需先进行 base64 编码格式转换，将转换后的字符串去掉前缀`data:image/jpeg;base64,`再赋值给该参数。
-注：只有 SignPurpose 在选择为 1（他用）时，这个字段才会生效。
+        :param _CommissionImage: <p>委托授权证明。选择 SignPurpose 为他用之后需要提交委托的授权证明。<br>图片需先进行 base64 编码格式转换，将转换后的字符串去掉前缀<code>data:image/jpeg;base64,</code>再赋值给该参数。<br>注：只有 SignPurpose 在选择为 1（他用）时，这个字段才会生效。</p>
         :type CommissionImage: str
-        :param _Remark: 签名的申请备注。
+        :param _Remark: <p>签名的申请备注。</p>
         :type Remark: str
-        :param _QualificationId: 已审核通过的国内短信的资质 ID。资质 ID 信息可前往国内短信的 [实名资质管理](https://console.cloud.tencent.com/smsv2/enterprise) 页查看。<dx-alert infotype="notice" title="说明"><ul><li>国内短信需填写资质ID，国际短信无需填写。</li></ul></dx-alert>
+        :param _QualificationId: <p>已审核通过的国内短信的资质 ID。资质 ID 信息可前往国内短信的 <a href="https://console.cloud.tencent.com/smsv2/enterprise">实名资质管理</a> 页查看。<blockquote class="rno-document-tips rno-document-tips-notice">    <div class="rno-document-tips-body">        <i class="rno-document-tip-icon"></i>        <div class="rno-document-tip-title">说明</div>        <div class="rno-document-tip-desc"><ul><li>国内短信需填写资质ID，国际短信无需填写。</li></ul></div>    </div></blockquote></p>
         :type QualificationId: int
         """
         self._SignName = None
@@ -112,8 +92,7 @@ class AddSmsSignRequest(AbstractModel):
 
     @property
     def SignName(self):
-        r"""签名名称。
-注：不能重复申请已通过或待审核的签名。
+        r"""<p>签名名称。<br>注：不能重复申请已通过或待审核的签名。</p>
         :rtype: str
         """
         return self._SignName
@@ -124,13 +103,7 @@ class AddSmsSignRequest(AbstractModel):
 
     @property
     def SignType(self):
-        r"""签名类型。其中每种类型后面标注了其可选的 DocumentType（证明类型）：
-0：公司，可选 DocumentType 有（0，1）。
-1：APP，可选 DocumentType 有（0，1，2，3，4） 。
-4：商标，可选 DocumentType 有（7）。
-5：政府/机关事业单位/其他机构，可选 DocumentType 有（2，3）。
-注1：必须按照对应关系选择证明类型，否则会审核失败。
-注2：签名类型2（网站）、3（公众号）、6（小程序）已不再支持，具体可参考 [关于腾讯云短信签名申请规则更新的公告](https://cloud.tencent.com/document/product/382/116397)。
+        r"""<p>签名类型。其中每种类型后面标注了其可选的 DocumentType（证明类型）：<br>0：公司，可选 DocumentType 有（0，1）。<br>1：APP，可选 DocumentType 有（0，1，2，3，4） 。<br>4：商标，可选 DocumentType 有（7）。<br>5：政府/机关事业单位/其他机构，可选 DocumentType 有（2，3）。<br>注1：必须按照对应关系选择证明类型，否则会审核失败。<br>注2：签名类型2（网站）、3（公众号）、6（小程序）已不再支持，具体可参考 <a href="https://cloud.tencent.com/document/product/382/116397">关于腾讯云短信签名申请规则更新的公告</a>。<br>注3：申请国内短信签名已不再支持签名类型1（APP），具体可参考 <a href="https://cloud.tencent.com/announce/detail/2256">关于腾讯云短信签名申请规则更新的公告</a>。</p>
         :rtype: int
         """
         return self._SignType
@@ -141,14 +114,7 @@ class AddSmsSignRequest(AbstractModel):
 
     @property
     def DocumentType(self):
-        r"""证明类型：
-0：三证合一。
-1：企业营业执照。
-2：组织机构代码证书。
-3：社会信用代码证书。
-4：应用后台管理截图（个人开发APP）。
-7：商标注册书。
-注：证明类型5（网站备案后台截图）、6（小程序设置页面截图）、8（公众号设置页面截图）已不再支持，具体可参考 [关于腾讯云短信签名申请规则更新的公告](https://cloud.tencent.com/document/product/382/116397)。
+        r"""<p>证明类型：<br>0：三证合一。<br>1：企业营业执照。<br>2：组织机构代码证书。<br>3：社会信用代码证书。<br>4：应用后台管理截图（个人开发APP）。<br>7：商标注册书。<br>注1：证明类型5（网站备案后台截图）、6（小程序设置页面截图）、8（公众号设置页面截图）已不再支持，具体可参考 <a href="https://cloud.tencent.com/document/product/382/116397">关于腾讯云短信签名申请规则更新的公告</a>。<br>注2：申请国内短信签名已不再支持证明类型4（应用后台管理截图），具体可参考 <a href="https://cloud.tencent.com/announce/detail/2256">关于腾讯云短信签名申请规则更新的公告</a>。</p>
         :rtype: int
         """
         return self._DocumentType
@@ -159,9 +125,7 @@ class AddSmsSignRequest(AbstractModel):
 
     @property
     def International(self):
-        r"""是否国际/港澳台短信：
-0：表示国内短信。
-1：表示国际/港澳台短信。
+        r"""<p>是否国际/港澳台短信：<br>0：表示国内短信。<br>1：表示国际/港澳台短信。</p>
         :rtype: int
         """
         return self._International
@@ -172,9 +136,7 @@ class AddSmsSignRequest(AbstractModel):
 
     @property
     def SignPurpose(self):
-        r"""签名用途：
-0：自用。
-1：他用。
+        r"""<p>签名用途：<br>0：自用。<br>1：他用。</p>
         :rtype: int
         """
         return self._SignPurpose
@@ -185,7 +147,7 @@ class AddSmsSignRequest(AbstractModel):
 
     @property
     def ProofImage(self):
-        r"""签名对应的资质证明图片需先进行 base64 编码格式转换，将转换后的字符串去掉前缀`data:image/jpeg;base64,`再赋值给该参数。
+        r"""<p>签名对应的资质证明图片需先进行 base64 编码格式转换，将转换后的字符串去掉前缀<code>data:image/jpeg;base64,</code>再赋值给该参数。</p>
         :rtype: str
         """
         return self._ProofImage
@@ -196,9 +158,7 @@ class AddSmsSignRequest(AbstractModel):
 
     @property
     def CommissionImage(self):
-        r"""委托授权证明。选择 SignPurpose 为他用之后需要提交委托的授权证明。
-图片需先进行 base64 编码格式转换，将转换后的字符串去掉前缀`data:image/jpeg;base64,`再赋值给该参数。
-注：只有 SignPurpose 在选择为 1（他用）时，这个字段才会生效。
+        r"""<p>委托授权证明。选择 SignPurpose 为他用之后需要提交委托的授权证明。<br>图片需先进行 base64 编码格式转换，将转换后的字符串去掉前缀<code>data:image/jpeg;base64,</code>再赋值给该参数。<br>注：只有 SignPurpose 在选择为 1（他用）时，这个字段才会生效。</p>
         :rtype: str
         """
         return self._CommissionImage
@@ -209,7 +169,7 @@ class AddSmsSignRequest(AbstractModel):
 
     @property
     def Remark(self):
-        r"""签名的申请备注。
+        r"""<p>签名的申请备注。</p>
         :rtype: str
         """
         return self._Remark
@@ -220,7 +180,7 @@ class AddSmsSignRequest(AbstractModel):
 
     @property
     def QualificationId(self):
-        r"""已审核通过的国内短信的资质 ID。资质 ID 信息可前往国内短信的 [实名资质管理](https://console.cloud.tencent.com/smsv2/enterprise) 页查看。<dx-alert infotype="notice" title="说明"><ul><li>国内短信需填写资质ID，国际短信无需填写。</li></ul></dx-alert>
+        r"""<p>已审核通过的国内短信的资质 ID。资质 ID 信息可前往国内短信的 <a href="https://console.cloud.tencent.com/smsv2/enterprise">实名资质管理</a> 页查看。<blockquote class="rno-document-tips rno-document-tips-notice">    <div class="rno-document-tips-body">        <i class="rno-document-tip-icon"></i>        <div class="rno-document-tip-title">说明</div>        <div class="rno-document-tip-desc"><ul><li>国内短信需填写资质ID，国际短信无需填写。</li></ul></div>    </div></blockquote></p>
         :rtype: int
         """
         return self._QualificationId
@@ -257,7 +217,7 @@ class AddSmsSignResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AddSignStatus: 添加签名响应
+        :param _AddSignStatus: <p>添加签名响应</p>
         :type AddSignStatus: :class:`tencentcloud.sms.v20210111.models.AddSignStatus`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -267,7 +227,7 @@ class AddSmsSignResponse(AbstractModel):
 
     @property
     def AddSignStatus(self):
-        r"""添加签名响应
+        r"""<p>添加签名响应</p>
         :rtype: :class:`tencentcloud.sms.v20210111.models.AddSignStatus`
         """
         return self._AddSignStatus
@@ -1710,45 +1670,25 @@ class ModifySmsSignRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SignId: 待修改的签名 ID。
+        :param _SignId: <p>待修改的签名 ID。</p>
         :type SignId: int
-        :param _SignName: 签名名称。
+        :param _SignName: <p>签名名称。</p>
         :type SignName: str
-        :param _SignType: 签名类型。其中每种类型后面标注了其可选的 DocumentType（证明类型）：
-0：公司，可选 DocumentType 有（0，1）。
-1：APP，可选 DocumentType 有（0，1，2，3，4） 。
-4：商标，可选 DocumentType 有（7）。
-5：政府/机关事业单位/其他机构，可选 DocumentType 有（2，3）。
-注1：必须按照对应关系选择证明类型，否则会审核失败。
-注2：签名类型2（网站）、3（公众号）、6（小程序）已不再支持，具体可参考 [关于腾讯云短信签名申请规则更新的公告](https://cloud.tencent.com/document/product/382/116397)。
+        :param _SignType: <p>签名类型。其中每种类型后面标注了其可选的 DocumentType（证明类型）：<br>0：公司，可选 DocumentType 有（0，1）。<br>1：APP，可选 DocumentType 有（0，1，2，3，4） 。<br>4：商标，可选 DocumentType 有（7）。<br>5：政府/机关事业单位/其他机构，可选 DocumentType 有（2，3）。<br>注1：必须按照对应关系选择证明类型，否则会审核失败。<br>注2：签名类型2（网站）、3（公众号）、6（小程序）已不再支持，具体可参考 <a href="https://cloud.tencent.com/document/product/382/116397">关于腾讯云短信签名申请规则更新的公告</a>。<br>注3：申请国内短信签名已不再支持签名类型1（APP），具体可参考 <a href="https://cloud.tencent.com/announce/detail/2256">关于腾讯云短信签名申请规则更新的公告</a>。</p>
         :type SignType: int
-        :param _DocumentType: 证明类型：
-0：三证合一。
-1：企业营业执照。
-2：组织机构代码证书。
-3：社会信用代码证书。
-4：应用后台管理截图（个人开发APP）。
-7：商标注册书。
-注：证明类型5（网站备案后台截图）、6（小程序设置页面截图）、8（公众号设置页面截图）已不再支持，具体可参考 [关于腾讯云短信签名申请规则更新的公告](https://cloud.tencent.com/document/product/382/116397)。
+        :param _DocumentType: <p>证明类型：<br>0：三证合一。<br>1：企业营业执照。<br>2：组织机构代码证书。<br>3：社会信用代码证书。<br>4：应用后台管理截图（个人开发APP）。<br>7：商标注册书。<br>注1：证明类型5（网站备案后台截图）、6（小程序设置页面截图）、8（公众号设置页面截图）已不再支持，具体可参考 <a href="https://cloud.tencent.com/document/product/382/116397">关于腾讯云短信签名申请规则更新的公告</a>。<br>注2：申请国内短信签名已不再支持证明类型4（应用后台管理截图），具体可参考 <a href="https://cloud.tencent.com/announce/detail/2256">关于腾讯云短信签名申请规则更新的公告</a>。</p>
         :type DocumentType: int
-        :param _International: 是否国际/港澳台短信：
-0：表示国内短信。
-1：表示国际/港澳台短信。
-注：需要和待修改签名International值保持一致，该参数不能直接修改国内签名到国际签名。
+        :param _International: <p>是否国际/港澳台短信：<br>0：表示国内短信。<br>1：表示国际/港澳台短信。<br>注：需要和待修改签名International值保持一致，该参数不能直接修改国内签名到国际签名。</p>
         :type International: int
-        :param _SignPurpose: 签名用途：
-0：自用。
-1：他用。
+        :param _SignPurpose: <p>签名用途：<br>0：自用。<br>1：他用。</p>
         :type SignPurpose: int
-        :param _ProofImage: 签名对应的资质证明图片需先进行 base64 编码格式转换，将转换后的字符串去掉前缀`data:image/jpeg;base64,`再赋值给该参数。
+        :param _ProofImage: <p>签名对应的资质证明图片需先进行 base64 编码格式转换，将转换后的字符串去掉前缀<code>data:image/jpeg;base64,</code>再赋值给该参数。</p>
         :type ProofImage: str
-        :param _CommissionImage: 委托授权证明。选择 SignPurpose 为他用之后需要提交委托的授权证明。
-图片需先进行 base64 编码格式转换，将转换后的字符串去掉前缀`data:image/jpeg;base64,`再赋值给该参数。
-注：只有 SignPurpose 在选择为 1（他用）时，这个字段才会生效。
+        :param _CommissionImage: <p>委托授权证明。选择 SignPurpose 为他用之后需要提交委托的授权证明。<br>图片需先进行 base64 编码格式转换，将转换后的字符串去掉前缀<code>data:image/jpeg;base64,</code>再赋值给该参数。<br>注：只有 SignPurpose 在选择为 1（他用）时，这个字段才会生效。</p>
         :type CommissionImage: str
-        :param _Remark: 签名的申请备注。
+        :param _Remark: <p>签名的申请备注。</p>
         :type Remark: str
-        :param _QualificationId: 已审核通过的国内短信的资质 ID。资质 ID 信息可前往国内短信的 [实名资质管理](https://console.cloud.tencent.com/smsv2/enterprise) 页查看。<dx-alert infotype="notice" title="说明"><ul><li>国内短信需填写资质ID，国际短信无需填写。</li></ul></dx-alert>
+        :param _QualificationId: <p>已审核通过的国内短信的资质 ID。资质 ID 信息可前往国内短信的 <a href="https://console.cloud.tencent.com/smsv2/enterprise">实名资质管理</a> 页查看。<blockquote class="rno-document-tips rno-document-tips-notice">    <div class="rno-document-tips-body">        <i class="rno-document-tip-icon"></i>        <div class="rno-document-tip-title">说明</div>        <div class="rno-document-tip-desc"><ul><li>国内短信需填写资质ID，国际短信无需填写。</li></ul></div>    </div></blockquote></p>
         :type QualificationId: int
         """
         self._SignId = None
@@ -1764,7 +1704,7 @@ class ModifySmsSignRequest(AbstractModel):
 
     @property
     def SignId(self):
-        r"""待修改的签名 ID。
+        r"""<p>待修改的签名 ID。</p>
         :rtype: int
         """
         return self._SignId
@@ -1775,7 +1715,7 @@ class ModifySmsSignRequest(AbstractModel):
 
     @property
     def SignName(self):
-        r"""签名名称。
+        r"""<p>签名名称。</p>
         :rtype: str
         """
         return self._SignName
@@ -1786,13 +1726,7 @@ class ModifySmsSignRequest(AbstractModel):
 
     @property
     def SignType(self):
-        r"""签名类型。其中每种类型后面标注了其可选的 DocumentType（证明类型）：
-0：公司，可选 DocumentType 有（0，1）。
-1：APP，可选 DocumentType 有（0，1，2，3，4） 。
-4：商标，可选 DocumentType 有（7）。
-5：政府/机关事业单位/其他机构，可选 DocumentType 有（2，3）。
-注1：必须按照对应关系选择证明类型，否则会审核失败。
-注2：签名类型2（网站）、3（公众号）、6（小程序）已不再支持，具体可参考 [关于腾讯云短信签名申请规则更新的公告](https://cloud.tencent.com/document/product/382/116397)。
+        r"""<p>签名类型。其中每种类型后面标注了其可选的 DocumentType（证明类型）：<br>0：公司，可选 DocumentType 有（0，1）。<br>1：APP，可选 DocumentType 有（0，1，2，3，4） 。<br>4：商标，可选 DocumentType 有（7）。<br>5：政府/机关事业单位/其他机构，可选 DocumentType 有（2，3）。<br>注1：必须按照对应关系选择证明类型，否则会审核失败。<br>注2：签名类型2（网站）、3（公众号）、6（小程序）已不再支持，具体可参考 <a href="https://cloud.tencent.com/document/product/382/116397">关于腾讯云短信签名申请规则更新的公告</a>。<br>注3：申请国内短信签名已不再支持签名类型1（APP），具体可参考 <a href="https://cloud.tencent.com/announce/detail/2256">关于腾讯云短信签名申请规则更新的公告</a>。</p>
         :rtype: int
         """
         return self._SignType
@@ -1803,14 +1737,7 @@ class ModifySmsSignRequest(AbstractModel):
 
     @property
     def DocumentType(self):
-        r"""证明类型：
-0：三证合一。
-1：企业营业执照。
-2：组织机构代码证书。
-3：社会信用代码证书。
-4：应用后台管理截图（个人开发APP）。
-7：商标注册书。
-注：证明类型5（网站备案后台截图）、6（小程序设置页面截图）、8（公众号设置页面截图）已不再支持，具体可参考 [关于腾讯云短信签名申请规则更新的公告](https://cloud.tencent.com/document/product/382/116397)。
+        r"""<p>证明类型：<br>0：三证合一。<br>1：企业营业执照。<br>2：组织机构代码证书。<br>3：社会信用代码证书。<br>4：应用后台管理截图（个人开发APP）。<br>7：商标注册书。<br>注1：证明类型5（网站备案后台截图）、6（小程序设置页面截图）、8（公众号设置页面截图）已不再支持，具体可参考 <a href="https://cloud.tencent.com/document/product/382/116397">关于腾讯云短信签名申请规则更新的公告</a>。<br>注2：申请国内短信签名已不再支持证明类型4（应用后台管理截图），具体可参考 <a href="https://cloud.tencent.com/announce/detail/2256">关于腾讯云短信签名申请规则更新的公告</a>。</p>
         :rtype: int
         """
         return self._DocumentType
@@ -1821,10 +1748,7 @@ class ModifySmsSignRequest(AbstractModel):
 
     @property
     def International(self):
-        r"""是否国际/港澳台短信：
-0：表示国内短信。
-1：表示国际/港澳台短信。
-注：需要和待修改签名International值保持一致，该参数不能直接修改国内签名到国际签名。
+        r"""<p>是否国际/港澳台短信：<br>0：表示国内短信。<br>1：表示国际/港澳台短信。<br>注：需要和待修改签名International值保持一致，该参数不能直接修改国内签名到国际签名。</p>
         :rtype: int
         """
         return self._International
@@ -1835,9 +1759,7 @@ class ModifySmsSignRequest(AbstractModel):
 
     @property
     def SignPurpose(self):
-        r"""签名用途：
-0：自用。
-1：他用。
+        r"""<p>签名用途：<br>0：自用。<br>1：他用。</p>
         :rtype: int
         """
         return self._SignPurpose
@@ -1848,7 +1770,7 @@ class ModifySmsSignRequest(AbstractModel):
 
     @property
     def ProofImage(self):
-        r"""签名对应的资质证明图片需先进行 base64 编码格式转换，将转换后的字符串去掉前缀`data:image/jpeg;base64,`再赋值给该参数。
+        r"""<p>签名对应的资质证明图片需先进行 base64 编码格式转换，将转换后的字符串去掉前缀<code>data:image/jpeg;base64,</code>再赋值给该参数。</p>
         :rtype: str
         """
         return self._ProofImage
@@ -1859,9 +1781,7 @@ class ModifySmsSignRequest(AbstractModel):
 
     @property
     def CommissionImage(self):
-        r"""委托授权证明。选择 SignPurpose 为他用之后需要提交委托的授权证明。
-图片需先进行 base64 编码格式转换，将转换后的字符串去掉前缀`data:image/jpeg;base64,`再赋值给该参数。
-注：只有 SignPurpose 在选择为 1（他用）时，这个字段才会生效。
+        r"""<p>委托授权证明。选择 SignPurpose 为他用之后需要提交委托的授权证明。<br>图片需先进行 base64 编码格式转换，将转换后的字符串去掉前缀<code>data:image/jpeg;base64,</code>再赋值给该参数。<br>注：只有 SignPurpose 在选择为 1（他用）时，这个字段才会生效。</p>
         :rtype: str
         """
         return self._CommissionImage
@@ -1872,7 +1792,7 @@ class ModifySmsSignRequest(AbstractModel):
 
     @property
     def Remark(self):
-        r"""签名的申请备注。
+        r"""<p>签名的申请备注。</p>
         :rtype: str
         """
         return self._Remark
@@ -1883,7 +1803,7 @@ class ModifySmsSignRequest(AbstractModel):
 
     @property
     def QualificationId(self):
-        r"""已审核通过的国内短信的资质 ID。资质 ID 信息可前往国内短信的 [实名资质管理](https://console.cloud.tencent.com/smsv2/enterprise) 页查看。<dx-alert infotype="notice" title="说明"><ul><li>国内短信需填写资质ID，国际短信无需填写。</li></ul></dx-alert>
+        r"""<p>已审核通过的国内短信的资质 ID。资质 ID 信息可前往国内短信的 <a href="https://console.cloud.tencent.com/smsv2/enterprise">实名资质管理</a> 页查看。<blockquote class="rno-document-tips rno-document-tips-notice">    <div class="rno-document-tips-body">        <i class="rno-document-tip-icon"></i>        <div class="rno-document-tip-title">说明</div>        <div class="rno-document-tip-desc"><ul><li>国内短信需填写资质ID，国际短信无需填写。</li></ul></div>    </div></blockquote></p>
         :rtype: int
         """
         return self._QualificationId
@@ -1921,7 +1841,7 @@ class ModifySmsSignResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ModifySignStatus: 修改签名响应
+        :param _ModifySignStatus: <p>修改签名响应</p>
         :type ModifySignStatus: :class:`tencentcloud.sms.v20210111.models.ModifySignStatus`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1931,7 +1851,7 @@ class ModifySmsSignResponse(AbstractModel):
 
     @property
     def ModifySignStatus(self):
-        r"""修改签名响应
+        r"""<p>修改签名响应</p>
         :rtype: :class:`tencentcloud.sms.v20210111.models.ModifySignStatus`
         """
         return self._ModifySignStatus

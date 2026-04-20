@@ -157,6 +157,24 @@ class CmeClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteAccount(
+            self,
+            request: models.DeleteAccountRequest,
+            opts: Dict = None,
+    ) -> models.DeleteAccountResponse:
+        """
+        删除平台归属的账户。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteAccount"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteAccountResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteClass(
             self,
             request: models.DeleteClassRequest,
@@ -629,6 +647,24 @@ class CmeClient(AbstractClient):
         kwargs["action"] = "FlattenListMedia"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.FlattenListMediaResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ForbidAccount(
+            self,
+            request: models.ForbidAccountRequest,
+            opts: Dict = None,
+    ) -> models.ForbidAccountResponse:
+        """
+        禁用账号。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ForbidAccount"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ForbidAccountResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

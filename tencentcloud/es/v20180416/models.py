@@ -165,31 +165,34 @@ class BackingIndexMetaField(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _IndexName: 后备索引名
+        :param _IndexName: <p>后备索引名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IndexName: str
-        :param _IndexStatus: 后备索引状态
+        :param _IndexStatus: <p>后备索引状态</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IndexStatus: str
-        :param _IndexStorage: 后备索引存储大小
+        :param _IndexStorage: <p>后备索引存储大小</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IndexStorage: int
-        :param _IndexPhrase: 后备索引当前生命周期
+        :param _IndexPhrase: <p>后备索引当前生命周期</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IndexPhrase: str
-        :param _IndexCreateTime: 后备索引创建时间
+        :param _IndexCreateTime: <p>后备索引创建时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IndexCreateTime: str
+        :param _IndexUuid: <p>索引Uuid</p>
+        :type IndexUuid: str
         """
         self._IndexName = None
         self._IndexStatus = None
         self._IndexStorage = None
         self._IndexPhrase = None
         self._IndexCreateTime = None
+        self._IndexUuid = None
 
     @property
     def IndexName(self):
-        r"""后备索引名
+        r"""<p>后备索引名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -201,7 +204,7 @@ class BackingIndexMetaField(AbstractModel):
 
     @property
     def IndexStatus(self):
-        r"""后备索引状态
+        r"""<p>后备索引状态</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -213,7 +216,7 @@ class BackingIndexMetaField(AbstractModel):
 
     @property
     def IndexStorage(self):
-        r"""后备索引存储大小
+        r"""<p>后备索引存储大小</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -225,7 +228,7 @@ class BackingIndexMetaField(AbstractModel):
 
     @property
     def IndexPhrase(self):
-        r"""后备索引当前生命周期
+        r"""<p>后备索引当前生命周期</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -237,7 +240,7 @@ class BackingIndexMetaField(AbstractModel):
 
     @property
     def IndexCreateTime(self):
-        r"""后备索引创建时间
+        r"""<p>后备索引创建时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -247,6 +250,17 @@ class BackingIndexMetaField(AbstractModel):
     def IndexCreateTime(self, IndexCreateTime):
         self._IndexCreateTime = IndexCreateTime
 
+    @property
+    def IndexUuid(self):
+        r"""<p>索引Uuid</p>
+        :rtype: str
+        """
+        return self._IndexUuid
+
+    @IndexUuid.setter
+    def IndexUuid(self, IndexUuid):
+        self._IndexUuid = IndexUuid
+
 
     def _deserialize(self, params):
         self._IndexName = params.get("IndexName")
@@ -254,6 +268,7 @@ class BackingIndexMetaField(AbstractModel):
         self._IndexStorage = params.get("IndexStorage")
         self._IndexPhrase = params.get("IndexPhrase")
         self._IndexCreateTime = params.get("IndexCreateTime")
+        self._IndexUuid = params.get("IndexUuid")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11749,27 +11764,33 @@ class IndexOptionsField(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ExpireMaxAge: 过期时间
+        :param _ExpireMaxAge: <p>过期时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExpireMaxAge: str
-        :param _ExpireMaxSize: 过期大小
+        :param _ExpireMaxSize: <p>过期大小</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExpireMaxSize: str
-        :param _RolloverMaxAge: 滚动周期
+        :param _RolloverMaxAge: <p>滚动周期</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RolloverMaxAge: str
-        :param _RolloverDynamic: 是否开启动态滚动
+        :param _RolloverDynamic: <p>是否开启动态滚动</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RolloverDynamic: str
-        :param _ShardNumDynamic: 是否开启动态分片
+        :param _ShardNumDynamic: <p>是否开启动态分片</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ShardNumDynamic: str
-        :param _TimestampField: 时间分区字段
+        :param _TimestampField: <p>时间分区字段</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TimestampField: str
-        :param _WriteMode: 写入模式
+        :param _WriteMode: <p>写入模式</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WriteMode: str
+        :param _FullOffloadedEnable: <p>是否开启完全卸载</p><p>枚举值：</p><ul><li>true： 开启完全卸载</li><li>false： 关闭完全卸载</li></ul>
+        :type FullOffloadedEnable: str
+        :param _FullOffloadedMaxAge: <p>完全卸载生命周期</p>
+        :type FullOffloadedMaxAge: str
+        :param _FullOffloadedRetrieveMaxAge: <p>完全卸载后备索引取回后生命周期</p>
+        :type FullOffloadedRetrieveMaxAge: str
         """
         self._ExpireMaxAge = None
         self._ExpireMaxSize = None
@@ -11778,10 +11799,13 @@ class IndexOptionsField(AbstractModel):
         self._ShardNumDynamic = None
         self._TimestampField = None
         self._WriteMode = None
+        self._FullOffloadedEnable = None
+        self._FullOffloadedMaxAge = None
+        self._FullOffloadedRetrieveMaxAge = None
 
     @property
     def ExpireMaxAge(self):
-        r"""过期时间
+        r"""<p>过期时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11793,7 +11817,7 @@ class IndexOptionsField(AbstractModel):
 
     @property
     def ExpireMaxSize(self):
-        r"""过期大小
+        r"""<p>过期大小</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11805,7 +11829,7 @@ class IndexOptionsField(AbstractModel):
 
     @property
     def RolloverMaxAge(self):
-        r"""滚动周期
+        r"""<p>滚动周期</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11817,7 +11841,7 @@ class IndexOptionsField(AbstractModel):
 
     @property
     def RolloverDynamic(self):
-        r"""是否开启动态滚动
+        r"""<p>是否开启动态滚动</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11829,7 +11853,7 @@ class IndexOptionsField(AbstractModel):
 
     @property
     def ShardNumDynamic(self):
-        r"""是否开启动态分片
+        r"""<p>是否开启动态分片</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11841,7 +11865,7 @@ class IndexOptionsField(AbstractModel):
 
     @property
     def TimestampField(self):
-        r"""时间分区字段
+        r"""<p>时间分区字段</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11853,7 +11877,7 @@ class IndexOptionsField(AbstractModel):
 
     @property
     def WriteMode(self):
-        r"""写入模式
+        r"""<p>写入模式</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11862,6 +11886,39 @@ class IndexOptionsField(AbstractModel):
     @WriteMode.setter
     def WriteMode(self, WriteMode):
         self._WriteMode = WriteMode
+
+    @property
+    def FullOffloadedEnable(self):
+        r"""<p>是否开启完全卸载</p><p>枚举值：</p><ul><li>true： 开启完全卸载</li><li>false： 关闭完全卸载</li></ul>
+        :rtype: str
+        """
+        return self._FullOffloadedEnable
+
+    @FullOffloadedEnable.setter
+    def FullOffloadedEnable(self, FullOffloadedEnable):
+        self._FullOffloadedEnable = FullOffloadedEnable
+
+    @property
+    def FullOffloadedMaxAge(self):
+        r"""<p>完全卸载生命周期</p>
+        :rtype: str
+        """
+        return self._FullOffloadedMaxAge
+
+    @FullOffloadedMaxAge.setter
+    def FullOffloadedMaxAge(self, FullOffloadedMaxAge):
+        self._FullOffloadedMaxAge = FullOffloadedMaxAge
+
+    @property
+    def FullOffloadedRetrieveMaxAge(self):
+        r"""<p>完全卸载后备索引取回后生命周期</p>
+        :rtype: str
+        """
+        return self._FullOffloadedRetrieveMaxAge
+
+    @FullOffloadedRetrieveMaxAge.setter
+    def FullOffloadedRetrieveMaxAge(self, FullOffloadedRetrieveMaxAge):
+        self._FullOffloadedRetrieveMaxAge = FullOffloadedRetrieveMaxAge
 
 
     def _deserialize(self, params):
@@ -11872,6 +11929,9 @@ class IndexOptionsField(AbstractModel):
         self._ShardNumDynamic = params.get("ShardNumDynamic")
         self._TimestampField = params.get("TimestampField")
         self._WriteMode = params.get("WriteMode")
+        self._FullOffloadedEnable = params.get("FullOffloadedEnable")
+        self._FullOffloadedMaxAge = params.get("FullOffloadedMaxAge")
+        self._FullOffloadedRetrieveMaxAge = params.get("FullOffloadedRetrieveMaxAge")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21923,20 +21983,26 @@ class UpdateIndexRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: ES集群ID
+        :param _InstanceId: <p>ES集群ID</p>
         :type InstanceId: str
-        :param _IndexType: 更新的索引类型。auto：自治索引；normal：普通索引
+        :param _IndexType: <p>更新的索引类型。auto：自治索引；normal：普通索引</p>
         :type IndexType: str
-        :param _IndexName: 更新的索引名
+        :param _IndexName: <p>更新的索引名</p>
         :type IndexName: str
-        :param _UpdateMetaJson: 更新的索引元数据JSON，如mappings、settings
+        :param _UpdateMetaJson: <p>更新的索引元数据JSON，如mappings、settings</p>
         :type UpdateMetaJson: str
-        :param _Username: 集群访问用户名
+        :param _Username: <p>集群访问用户名</p>
         :type Username: str
-        :param _Password: 集群访问密码
+        :param _Password: <p>集群访问密码</p>
         :type Password: str
-        :param _RolloverBackingIndex: 是否滚动后备索引
+        :param _RolloverBackingIndex: <p>是否滚动后备索引</p>
         :type RolloverBackingIndex: bool
+        :param _MountIndex: <p>是否为取回完全卸载索引</p>
+        :type MountIndex: bool
+        :param _IndexUuid: <p>索引Uuid</p>
+        :type IndexUuid: str
+        :param _BackingIndexName: <p>后备索引名</p>
+        :type BackingIndexName: str
         """
         self._InstanceId = None
         self._IndexType = None
@@ -21945,10 +22011,13 @@ class UpdateIndexRequest(AbstractModel):
         self._Username = None
         self._Password = None
         self._RolloverBackingIndex = None
+        self._MountIndex = None
+        self._IndexUuid = None
+        self._BackingIndexName = None
 
     @property
     def InstanceId(self):
-        r"""ES集群ID
+        r"""<p>ES集群ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -21959,7 +22028,7 @@ class UpdateIndexRequest(AbstractModel):
 
     @property
     def IndexType(self):
-        r"""更新的索引类型。auto：自治索引；normal：普通索引
+        r"""<p>更新的索引类型。auto：自治索引；normal：普通索引</p>
         :rtype: str
         """
         return self._IndexType
@@ -21970,7 +22039,7 @@ class UpdateIndexRequest(AbstractModel):
 
     @property
     def IndexName(self):
-        r"""更新的索引名
+        r"""<p>更新的索引名</p>
         :rtype: str
         """
         return self._IndexName
@@ -21981,7 +22050,7 @@ class UpdateIndexRequest(AbstractModel):
 
     @property
     def UpdateMetaJson(self):
-        r"""更新的索引元数据JSON，如mappings、settings
+        r"""<p>更新的索引元数据JSON，如mappings、settings</p>
         :rtype: str
         """
         return self._UpdateMetaJson
@@ -21992,7 +22061,7 @@ class UpdateIndexRequest(AbstractModel):
 
     @property
     def Username(self):
-        r"""集群访问用户名
+        r"""<p>集群访问用户名</p>
         :rtype: str
         """
         return self._Username
@@ -22003,7 +22072,7 @@ class UpdateIndexRequest(AbstractModel):
 
     @property
     def Password(self):
-        r"""集群访问密码
+        r"""<p>集群访问密码</p>
         :rtype: str
         """
         return self._Password
@@ -22014,7 +22083,7 @@ class UpdateIndexRequest(AbstractModel):
 
     @property
     def RolloverBackingIndex(self):
-        r"""是否滚动后备索引
+        r"""<p>是否滚动后备索引</p>
         :rtype: bool
         """
         return self._RolloverBackingIndex
@@ -22022,6 +22091,39 @@ class UpdateIndexRequest(AbstractModel):
     @RolloverBackingIndex.setter
     def RolloverBackingIndex(self, RolloverBackingIndex):
         self._RolloverBackingIndex = RolloverBackingIndex
+
+    @property
+    def MountIndex(self):
+        r"""<p>是否为取回完全卸载索引</p>
+        :rtype: bool
+        """
+        return self._MountIndex
+
+    @MountIndex.setter
+    def MountIndex(self, MountIndex):
+        self._MountIndex = MountIndex
+
+    @property
+    def IndexUuid(self):
+        r"""<p>索引Uuid</p>
+        :rtype: str
+        """
+        return self._IndexUuid
+
+    @IndexUuid.setter
+    def IndexUuid(self, IndexUuid):
+        self._IndexUuid = IndexUuid
+
+    @property
+    def BackingIndexName(self):
+        r"""<p>后备索引名</p>
+        :rtype: str
+        """
+        return self._BackingIndexName
+
+    @BackingIndexName.setter
+    def BackingIndexName(self, BackingIndexName):
+        self._BackingIndexName = BackingIndexName
 
 
     def _deserialize(self, params):
@@ -22032,6 +22134,9 @@ class UpdateIndexRequest(AbstractModel):
         self._Username = params.get("Username")
         self._Password = params.get("Password")
         self._RolloverBackingIndex = params.get("RolloverBackingIndex")
+        self._MountIndex = params.get("MountIndex")
+        self._IndexUuid = params.get("IndexUuid")
+        self._BackingIndexName = params.get("BackingIndexName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

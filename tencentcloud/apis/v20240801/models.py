@@ -1938,44 +1938,48 @@ class CreateModelServiceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceID: 实例
+        :param _InstanceID: <p>实例</p>
         :type InstanceID: str
-        :param _Name: 模型服务名称
+        :param _Name: <p>模型服务名称</p>
         :type Name: str
-        :param _Description: 描述
+        :param _Description: <p>描述</p>
         :type Description: str
-        :param _PubPath: 访问路径
+        :param _PubPath: <p>访问路径</p>
         :type PubPath: str
-        :param _TargetModels: 模型ID列表
+        :param _TargetModels: <p>模型ID列表</p>
         :type TargetModels: list of TargetModelDTO
-        :param _PathMatchType: 路径匹配类型: prefix 前缀匹配(不送默认); absolute 绝对匹配; regex正则匹配;
+        :param _PathMatchType: <p>路径匹配类型: prefix 前缀匹配(不送默认); absolute 绝对匹配; regex正则匹配;</p>
         :type PathMatchType: str
-        :param _InvokeLimitConfigStatus: 是否开启限流
+        :param _InvokeLimitConfigStatus: <p>是否开启限流</p>
         :type InvokeLimitConfigStatus: bool
-        :param _InvokeLimitConfig: 限流配置
+        :param _InvokeLimitConfig: <p>限流配置</p>
         :type InvokeLimitConfig: :class:`tencentcloud.apis.v20240801.models.InvokeLimitConfigDTO`
-        :param _TokenLimitStatus: 是否开启token控制
+        :param _TokenLimitStatus: <p>是否开启token控制</p>
         :type TokenLimitStatus: bool
-        :param _TokenLimitConfig: token控制
+        :param _TokenLimitConfig: <p>token控制</p>
         :type TokenLimitConfig: :class:`tencentcloud.apis.v20240801.models.TokenLimitConfigDTO`
-        :param _TmsStatus: 是否开启内容安全
+        :param _TmsStatus: <p>是否开启内容安全</p>
         :type TmsStatus: bool
-        :param _TmsConfig: 内容安全配置
+        :param _TmsConfig: <p>内容安全配置</p>
         :type TmsConfig: :class:`tencentcloud.apis.v20240801.models.TmsConfigDTO`
-        :param _IpWhiteStatus: 是否开启IP白名单
+        :param _IpWhiteStatus: <p>是否开启IP白名单</p>
         :type IpWhiteStatus: bool
-        :param _IpWhiteList: IP白名单
+        :param _IpWhiteList: <p>IP白名单</p>
         :type IpWhiteList: list of str
-        :param _IpBlackList: IP黑名单
+        :param _IpBlackList: <p>IP黑名单</p>
         :type IpBlackList: list of str
-        :param _PluginConfigs: 插件配置
+        :param _PluginConfigs: <p>插件配置</p>
         :type PluginConfigs: list of PluginConfigDTO
-        :param _Timeout: 超时配置，秒
+        :param _Timeout: <p>超时配置，秒</p>
         :type Timeout: int
-        :param _PromptModerateStatus: 是否开启提示词安全检测
+        :param _PromptModerateStatus: <p>是否开启提示词安全检测</p>
         :type PromptModerateStatus: bool
-        :param _PromptModerateConfig: 提示词安全检测配置
+        :param _PromptModerateConfig: <p>提示词安全检测配置</p>
         :type PromptModerateConfig: :class:`tencentcloud.apis.v20240801.models.PromptModerateConfigDTO`
+        :param _SensitiveDataCheckStatus: <p>是否开启敏感数据检测</p>
+        :type SensitiveDataCheckStatus: bool
+        :param _SensitiveDataCheckConfig: <p>敏感数据检测配置</p>
+        :type SensitiveDataCheckConfig: :class:`tencentcloud.apis.v20240801.models.SensitiveDataCheckConfigDTO`
         """
         self._InstanceID = None
         self._Name = None
@@ -1996,10 +2000,12 @@ class CreateModelServiceRequest(AbstractModel):
         self._Timeout = None
         self._PromptModerateStatus = None
         self._PromptModerateConfig = None
+        self._SensitiveDataCheckStatus = None
+        self._SensitiveDataCheckConfig = None
 
     @property
     def InstanceID(self):
-        r"""实例
+        r"""<p>实例</p>
         :rtype: str
         """
         return self._InstanceID
@@ -2010,7 +2016,7 @@ class CreateModelServiceRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""模型服务名称
+        r"""<p>模型服务名称</p>
         :rtype: str
         """
         return self._Name
@@ -2021,7 +2027,7 @@ class CreateModelServiceRequest(AbstractModel):
 
     @property
     def Description(self):
-        r"""描述
+        r"""<p>描述</p>
         :rtype: str
         """
         return self._Description
@@ -2032,7 +2038,7 @@ class CreateModelServiceRequest(AbstractModel):
 
     @property
     def PubPath(self):
-        r"""访问路径
+        r"""<p>访问路径</p>
         :rtype: str
         """
         return self._PubPath
@@ -2043,7 +2049,7 @@ class CreateModelServiceRequest(AbstractModel):
 
     @property
     def TargetModels(self):
-        r"""模型ID列表
+        r"""<p>模型ID列表</p>
         :rtype: list of TargetModelDTO
         """
         return self._TargetModels
@@ -2054,7 +2060,7 @@ class CreateModelServiceRequest(AbstractModel):
 
     @property
     def PathMatchType(self):
-        r"""路径匹配类型: prefix 前缀匹配(不送默认); absolute 绝对匹配; regex正则匹配;
+        r"""<p>路径匹配类型: prefix 前缀匹配(不送默认); absolute 绝对匹配; regex正则匹配;</p>
         :rtype: str
         """
         return self._PathMatchType
@@ -2065,7 +2071,7 @@ class CreateModelServiceRequest(AbstractModel):
 
     @property
     def InvokeLimitConfigStatus(self):
-        r"""是否开启限流
+        r"""<p>是否开启限流</p>
         :rtype: bool
         """
         return self._InvokeLimitConfigStatus
@@ -2076,7 +2082,7 @@ class CreateModelServiceRequest(AbstractModel):
 
     @property
     def InvokeLimitConfig(self):
-        r"""限流配置
+        r"""<p>限流配置</p>
         :rtype: :class:`tencentcloud.apis.v20240801.models.InvokeLimitConfigDTO`
         """
         return self._InvokeLimitConfig
@@ -2087,7 +2093,7 @@ class CreateModelServiceRequest(AbstractModel):
 
     @property
     def TokenLimitStatus(self):
-        r"""是否开启token控制
+        r"""<p>是否开启token控制</p>
         :rtype: bool
         """
         return self._TokenLimitStatus
@@ -2098,7 +2104,7 @@ class CreateModelServiceRequest(AbstractModel):
 
     @property
     def TokenLimitConfig(self):
-        r"""token控制
+        r"""<p>token控制</p>
         :rtype: :class:`tencentcloud.apis.v20240801.models.TokenLimitConfigDTO`
         """
         return self._TokenLimitConfig
@@ -2109,7 +2115,7 @@ class CreateModelServiceRequest(AbstractModel):
 
     @property
     def TmsStatus(self):
-        r"""是否开启内容安全
+        r"""<p>是否开启内容安全</p>
         :rtype: bool
         """
         return self._TmsStatus
@@ -2120,7 +2126,7 @@ class CreateModelServiceRequest(AbstractModel):
 
     @property
     def TmsConfig(self):
-        r"""内容安全配置
+        r"""<p>内容安全配置</p>
         :rtype: :class:`tencentcloud.apis.v20240801.models.TmsConfigDTO`
         """
         return self._TmsConfig
@@ -2131,7 +2137,7 @@ class CreateModelServiceRequest(AbstractModel):
 
     @property
     def IpWhiteStatus(self):
-        r"""是否开启IP白名单
+        r"""<p>是否开启IP白名单</p>
         :rtype: bool
         """
         return self._IpWhiteStatus
@@ -2142,7 +2148,7 @@ class CreateModelServiceRequest(AbstractModel):
 
     @property
     def IpWhiteList(self):
-        r"""IP白名单
+        r"""<p>IP白名单</p>
         :rtype: list of str
         """
         return self._IpWhiteList
@@ -2153,7 +2159,7 @@ class CreateModelServiceRequest(AbstractModel):
 
     @property
     def IpBlackList(self):
-        r"""IP黑名单
+        r"""<p>IP黑名单</p>
         :rtype: list of str
         """
         return self._IpBlackList
@@ -2164,7 +2170,7 @@ class CreateModelServiceRequest(AbstractModel):
 
     @property
     def PluginConfigs(self):
-        r"""插件配置
+        r"""<p>插件配置</p>
         :rtype: list of PluginConfigDTO
         """
         return self._PluginConfigs
@@ -2175,7 +2181,7 @@ class CreateModelServiceRequest(AbstractModel):
 
     @property
     def Timeout(self):
-        r"""超时配置，秒
+        r"""<p>超时配置，秒</p>
         :rtype: int
         """
         return self._Timeout
@@ -2186,7 +2192,7 @@ class CreateModelServiceRequest(AbstractModel):
 
     @property
     def PromptModerateStatus(self):
-        r"""是否开启提示词安全检测
+        r"""<p>是否开启提示词安全检测</p>
         :rtype: bool
         """
         return self._PromptModerateStatus
@@ -2197,7 +2203,7 @@ class CreateModelServiceRequest(AbstractModel):
 
     @property
     def PromptModerateConfig(self):
-        r"""提示词安全检测配置
+        r"""<p>提示词安全检测配置</p>
         :rtype: :class:`tencentcloud.apis.v20240801.models.PromptModerateConfigDTO`
         """
         return self._PromptModerateConfig
@@ -2205,6 +2211,28 @@ class CreateModelServiceRequest(AbstractModel):
     @PromptModerateConfig.setter
     def PromptModerateConfig(self, PromptModerateConfig):
         self._PromptModerateConfig = PromptModerateConfig
+
+    @property
+    def SensitiveDataCheckStatus(self):
+        r"""<p>是否开启敏感数据检测</p>
+        :rtype: bool
+        """
+        return self._SensitiveDataCheckStatus
+
+    @SensitiveDataCheckStatus.setter
+    def SensitiveDataCheckStatus(self, SensitiveDataCheckStatus):
+        self._SensitiveDataCheckStatus = SensitiveDataCheckStatus
+
+    @property
+    def SensitiveDataCheckConfig(self):
+        r"""<p>敏感数据检测配置</p>
+        :rtype: :class:`tencentcloud.apis.v20240801.models.SensitiveDataCheckConfigDTO`
+        """
+        return self._SensitiveDataCheckConfig
+
+    @SensitiveDataCheckConfig.setter
+    def SensitiveDataCheckConfig(self, SensitiveDataCheckConfig):
+        self._SensitiveDataCheckConfig = SensitiveDataCheckConfig
 
 
     def _deserialize(self, params):
@@ -2245,6 +2273,10 @@ class CreateModelServiceRequest(AbstractModel):
         if params.get("PromptModerateConfig") is not None:
             self._PromptModerateConfig = PromptModerateConfigDTO()
             self._PromptModerateConfig._deserialize(params.get("PromptModerateConfig"))
+        self._SensitiveDataCheckStatus = params.get("SensitiveDataCheckStatus")
+        if params.get("SensitiveDataCheckConfig") is not None:
+            self._SensitiveDataCheckConfig = SensitiveDataCheckConfigDTO()
+            self._SensitiveDataCheckConfig._deserialize(params.get("SensitiveDataCheckConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2262,7 +2294,7 @@ class CreateModelServiceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 结果集
+        :param _Data: <p>结果集</p>
         :type Data: :class:`tencentcloud.apis.v20240801.models.ResultIDVO`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2272,7 +2304,7 @@ class CreateModelServiceResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""结果集
+        r"""<p>结果集</p>
         :rtype: :class:`tencentcloud.apis.v20240801.models.ResultIDVO`
         """
         return self._Data
@@ -5762,71 +5794,77 @@ class DescribeModelServiceResponseVO(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AppID: 腾讯云AppID
+        :param _AppID: <p>腾讯云AppID</p>
         :type AppID: int
-        :param _Uin: 腾讯云Uin
+        :param _Uin: <p>腾讯云Uin</p>
         :type Uin: str
-        :param _InstanceID: 实例ID
+        :param _InstanceID: <p>实例ID</p>
         :type InstanceID: str
-        :param _ID: 模型ID
+        :param _ID: <p>模型ID</p>
         :type ID: str
-        :param _Name: 模型名称
+        :param _Name: <p>模型名称</p>
         :type Name: str
-        :param _Description: 描述
+        :param _Description: <p>描述</p>
         :type Description: str
-        :param _PubPath: 访问路径
+        :param _PubPath: <p>访问路径</p>
         :type PubPath: str
-        :param _PathMatchType: 路径匹配方式：absolute，prefix，regex
+        :param _PathMatchType: <p>路径匹配方式：absolute，prefix，regex</p>
         :type PathMatchType: str
-        :param _TargetModels: 目标模型列表
+        :param _TargetModels: <p>目标模型列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TargetModels: list of TargetModelDTO
-        :param _ModelNames: 模板模型的名称列表
+        :param _ModelNames: <p>模板模型的名称列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ModelNames: list of str
-        :param _InvokeLimitConfigStatus: 是否开启限流
+        :param _InvokeLimitConfigStatus: <p>是否开启限流</p>
         :type InvokeLimitConfigStatus: bool
-        :param _InvokeLimitConfig: 限流配置
+        :param _InvokeLimitConfig: <p>限流配置</p>
         :type InvokeLimitConfig: :class:`tencentcloud.apis.v20240801.models.InvokeLimitConfigDTO`
-        :param _CreateTime: 创建时间
+        :param _CreateTime: <p>创建时间</p>
         :type CreateTime: str
-        :param _LastUpdateTime: 最后修改时间
+        :param _LastUpdateTime: <p>最后修改时间</p>
         :type LastUpdateTime: str
-        :param _TokenLimitStatus: 是否开启token控制
+        :param _TokenLimitStatus: <p>是否开启token控制</p>
         :type TokenLimitStatus: bool
-        :param _TokenLimitConfig: token控制
+        :param _TokenLimitConfig: <p>token控制</p>
         :type TokenLimitConfig: :class:`tencentcloud.apis.v20240801.models.TokenLimitConfigDTO`
-        :param _TmsStatus: 是否开启tms配置
+        :param _TmsStatus: <p>是否开启tms配置</p>
         :type TmsStatus: bool
-        :param _TmsConfig: tms配置
+        :param _TmsConfig: <p>tms配置</p>
         :type TmsConfig: :class:`tencentcloud.apis.v20240801.models.TmsConfigDTO`
-        :param _IpWhiteStatus: 是否开启IP白名单
+        :param _IpWhiteStatus: <p>是否开启IP白名单</p>
         :type IpWhiteStatus: bool
-        :param _IpWhiteList: IP白名单列表
+        :param _IpWhiteList: <p>IP白名单列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IpWhiteList: list of str
-        :param _IpBlackStatus: 是否开启IP黑名单
+        :param _IpBlackStatus: <p>是否开启IP黑名单</p>
         :type IpBlackStatus: bool
-        :param _IpBlackList: IP黑名单列表
+        :param _IpBlackList: <p>IP黑名单列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IpBlackList: list of str
-        :param _PluginConfigs: 插件配置
+        :param _PluginConfigs: <p>插件配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type PluginConfigs: list of PluginConfigDTO
-        :param _Timeout: 超时配置，单位秒
+        :param _Timeout: <p>超时配置，单位秒</p>
         :type Timeout: int
-        :param _Status: 状态：normal，disabled
+        :param _Status: <p>状态：normal，disabled</p>
         :type Status: str
-        :param _RelateAgentAppNum: 关联应用数
+        :param _RelateAgentAppNum: <p>关联应用数</p>
         :type RelateAgentAppNum: int
-        :param _Url: 请求路径
+        :param _Url: <p>请求路径</p>
         :type Url: str
-        :param _PromptModerateStatus: 是否开启提示词安全检测
+        :param _PromptModerateStatus: <p>是否开启提示词安全检测</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type PromptModerateStatus: bool
-        :param _PromptModerateConfig: 提示词安全检测配置
+        :param _PromptModerateConfig: <p>提示词安全检测配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type PromptModerateConfig: :class:`tencentcloud.apis.v20240801.models.PromptModerateConfigDTO`
+        :param _SensitiveDataCheckStatus: <p>是否开启敏感数据检测</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SensitiveDataCheckStatus: bool
+        :param _SensitiveDataCheckConfig: <p>敏感数据检测配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SensitiveDataCheckConfig: :class:`tencentcloud.apis.v20240801.models.SensitiveDataCheckConfigDTO`
         """
         self._AppID = None
         self._Uin = None
@@ -5857,10 +5895,12 @@ class DescribeModelServiceResponseVO(AbstractModel):
         self._Url = None
         self._PromptModerateStatus = None
         self._PromptModerateConfig = None
+        self._SensitiveDataCheckStatus = None
+        self._SensitiveDataCheckConfig = None
 
     @property
     def AppID(self):
-        r"""腾讯云AppID
+        r"""<p>腾讯云AppID</p>
         :rtype: int
         """
         return self._AppID
@@ -5871,7 +5911,7 @@ class DescribeModelServiceResponseVO(AbstractModel):
 
     @property
     def Uin(self):
-        r"""腾讯云Uin
+        r"""<p>腾讯云Uin</p>
         :rtype: str
         """
         return self._Uin
@@ -5882,7 +5922,7 @@ class DescribeModelServiceResponseVO(AbstractModel):
 
     @property
     def InstanceID(self):
-        r"""实例ID
+        r"""<p>实例ID</p>
         :rtype: str
         """
         return self._InstanceID
@@ -5893,7 +5933,7 @@ class DescribeModelServiceResponseVO(AbstractModel):
 
     @property
     def ID(self):
-        r"""模型ID
+        r"""<p>模型ID</p>
         :rtype: str
         """
         return self._ID
@@ -5904,7 +5944,7 @@ class DescribeModelServiceResponseVO(AbstractModel):
 
     @property
     def Name(self):
-        r"""模型名称
+        r"""<p>模型名称</p>
         :rtype: str
         """
         return self._Name
@@ -5915,7 +5955,7 @@ class DescribeModelServiceResponseVO(AbstractModel):
 
     @property
     def Description(self):
-        r"""描述
+        r"""<p>描述</p>
         :rtype: str
         """
         return self._Description
@@ -5926,7 +5966,7 @@ class DescribeModelServiceResponseVO(AbstractModel):
 
     @property
     def PubPath(self):
-        r"""访问路径
+        r"""<p>访问路径</p>
         :rtype: str
         """
         return self._PubPath
@@ -5937,7 +5977,7 @@ class DescribeModelServiceResponseVO(AbstractModel):
 
     @property
     def PathMatchType(self):
-        r"""路径匹配方式：absolute，prefix，regex
+        r"""<p>路径匹配方式：absolute，prefix，regex</p>
         :rtype: str
         """
         return self._PathMatchType
@@ -5948,7 +5988,7 @@ class DescribeModelServiceResponseVO(AbstractModel):
 
     @property
     def TargetModels(self):
-        r"""目标模型列表
+        r"""<p>目标模型列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TargetModelDTO
         """
@@ -5960,7 +6000,7 @@ class DescribeModelServiceResponseVO(AbstractModel):
 
     @property
     def ModelNames(self):
-        r"""模板模型的名称列表
+        r"""<p>模板模型的名称列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -5972,7 +6012,7 @@ class DescribeModelServiceResponseVO(AbstractModel):
 
     @property
     def InvokeLimitConfigStatus(self):
-        r"""是否开启限流
+        r"""<p>是否开启限流</p>
         :rtype: bool
         """
         return self._InvokeLimitConfigStatus
@@ -5983,7 +6023,7 @@ class DescribeModelServiceResponseVO(AbstractModel):
 
     @property
     def InvokeLimitConfig(self):
-        r"""限流配置
+        r"""<p>限流配置</p>
         :rtype: :class:`tencentcloud.apis.v20240801.models.InvokeLimitConfigDTO`
         """
         return self._InvokeLimitConfig
@@ -5994,7 +6034,7 @@ class DescribeModelServiceResponseVO(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
         :rtype: str
         """
         return self._CreateTime
@@ -6005,7 +6045,7 @@ class DescribeModelServiceResponseVO(AbstractModel):
 
     @property
     def LastUpdateTime(self):
-        r"""最后修改时间
+        r"""<p>最后修改时间</p>
         :rtype: str
         """
         return self._LastUpdateTime
@@ -6016,7 +6056,7 @@ class DescribeModelServiceResponseVO(AbstractModel):
 
     @property
     def TokenLimitStatus(self):
-        r"""是否开启token控制
+        r"""<p>是否开启token控制</p>
         :rtype: bool
         """
         return self._TokenLimitStatus
@@ -6027,7 +6067,7 @@ class DescribeModelServiceResponseVO(AbstractModel):
 
     @property
     def TokenLimitConfig(self):
-        r"""token控制
+        r"""<p>token控制</p>
         :rtype: :class:`tencentcloud.apis.v20240801.models.TokenLimitConfigDTO`
         """
         return self._TokenLimitConfig
@@ -6038,7 +6078,7 @@ class DescribeModelServiceResponseVO(AbstractModel):
 
     @property
     def TmsStatus(self):
-        r"""是否开启tms配置
+        r"""<p>是否开启tms配置</p>
         :rtype: bool
         """
         return self._TmsStatus
@@ -6049,7 +6089,7 @@ class DescribeModelServiceResponseVO(AbstractModel):
 
     @property
     def TmsConfig(self):
-        r"""tms配置
+        r"""<p>tms配置</p>
         :rtype: :class:`tencentcloud.apis.v20240801.models.TmsConfigDTO`
         """
         return self._TmsConfig
@@ -6060,7 +6100,7 @@ class DescribeModelServiceResponseVO(AbstractModel):
 
     @property
     def IpWhiteStatus(self):
-        r"""是否开启IP白名单
+        r"""<p>是否开启IP白名单</p>
         :rtype: bool
         """
         return self._IpWhiteStatus
@@ -6071,7 +6111,7 @@ class DescribeModelServiceResponseVO(AbstractModel):
 
     @property
     def IpWhiteList(self):
-        r"""IP白名单列表
+        r"""<p>IP白名单列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -6083,7 +6123,7 @@ class DescribeModelServiceResponseVO(AbstractModel):
 
     @property
     def IpBlackStatus(self):
-        r"""是否开启IP黑名单
+        r"""<p>是否开启IP黑名单</p>
         :rtype: bool
         """
         return self._IpBlackStatus
@@ -6094,7 +6134,7 @@ class DescribeModelServiceResponseVO(AbstractModel):
 
     @property
     def IpBlackList(self):
-        r"""IP黑名单列表
+        r"""<p>IP黑名单列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -6106,7 +6146,7 @@ class DescribeModelServiceResponseVO(AbstractModel):
 
     @property
     def PluginConfigs(self):
-        r"""插件配置
+        r"""<p>插件配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of PluginConfigDTO
         """
@@ -6118,7 +6158,7 @@ class DescribeModelServiceResponseVO(AbstractModel):
 
     @property
     def Timeout(self):
-        r"""超时配置，单位秒
+        r"""<p>超时配置，单位秒</p>
         :rtype: int
         """
         return self._Timeout
@@ -6129,7 +6169,7 @@ class DescribeModelServiceResponseVO(AbstractModel):
 
     @property
     def Status(self):
-        r"""状态：normal，disabled
+        r"""<p>状态：normal，disabled</p>
         :rtype: str
         """
         return self._Status
@@ -6140,7 +6180,7 @@ class DescribeModelServiceResponseVO(AbstractModel):
 
     @property
     def RelateAgentAppNum(self):
-        r"""关联应用数
+        r"""<p>关联应用数</p>
         :rtype: int
         """
         return self._RelateAgentAppNum
@@ -6151,7 +6191,7 @@ class DescribeModelServiceResponseVO(AbstractModel):
 
     @property
     def Url(self):
-        r"""请求路径
+        r"""<p>请求路径</p>
         :rtype: str
         """
         return self._Url
@@ -6162,7 +6202,7 @@ class DescribeModelServiceResponseVO(AbstractModel):
 
     @property
     def PromptModerateStatus(self):
-        r"""是否开启提示词安全检测
+        r"""<p>是否开启提示词安全检测</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -6174,7 +6214,7 @@ class DescribeModelServiceResponseVO(AbstractModel):
 
     @property
     def PromptModerateConfig(self):
-        r"""提示词安全检测配置
+        r"""<p>提示词安全检测配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.apis.v20240801.models.PromptModerateConfigDTO`
         """
@@ -6183,6 +6223,30 @@ class DescribeModelServiceResponseVO(AbstractModel):
     @PromptModerateConfig.setter
     def PromptModerateConfig(self, PromptModerateConfig):
         self._PromptModerateConfig = PromptModerateConfig
+
+    @property
+    def SensitiveDataCheckStatus(self):
+        r"""<p>是否开启敏感数据检测</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._SensitiveDataCheckStatus
+
+    @SensitiveDataCheckStatus.setter
+    def SensitiveDataCheckStatus(self, SensitiveDataCheckStatus):
+        self._SensitiveDataCheckStatus = SensitiveDataCheckStatus
+
+    @property
+    def SensitiveDataCheckConfig(self):
+        r"""<p>敏感数据检测配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.apis.v20240801.models.SensitiveDataCheckConfigDTO`
+        """
+        return self._SensitiveDataCheckConfig
+
+    @SensitiveDataCheckConfig.setter
+    def SensitiveDataCheckConfig(self, SensitiveDataCheckConfig):
+        self._SensitiveDataCheckConfig = SensitiveDataCheckConfig
 
 
     def _deserialize(self, params):
@@ -6233,6 +6297,10 @@ class DescribeModelServiceResponseVO(AbstractModel):
         if params.get("PromptModerateConfig") is not None:
             self._PromptModerateConfig = PromptModerateConfigDTO()
             self._PromptModerateConfig._deserialize(params.get("PromptModerateConfig"))
+        self._SensitiveDataCheckStatus = params.get("SensitiveDataCheckStatus")
+        if params.get("SensitiveDataCheckConfig") is not None:
+            self._SensitiveDataCheckConfig = SensitiveDataCheckConfigDTO()
+            self._SensitiveDataCheckConfig._deserialize(params.get("SensitiveDataCheckConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8886,44 +8954,48 @@ class ModifyModelServiceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceID: 实例
+        :param _InstanceID: <p>实例</p>
         :type InstanceID: str
-        :param _ID: 模型服务ID
+        :param _ID: <p>模型服务ID</p>
         :type ID: str
-        :param _Name: 模型服务名称
+        :param _Name: <p>模型服务名称</p>
         :type Name: str
-        :param _Description: 描述
+        :param _Description: <p>描述</p>
         :type Description: str
-        :param _TargetModels: 模板模型列表
+        :param _TargetModels: <p>模板模型列表</p>
         :type TargetModels: list of TargetModelDTO
-        :param _InvokeLimitConfigStatus: 是否开启限流
+        :param _InvokeLimitConfigStatus: <p>是否开启限流</p>
         :type InvokeLimitConfigStatus: bool
-        :param _InvokeLimitConfig: 限流配置
+        :param _InvokeLimitConfig: <p>限流配置</p>
         :type InvokeLimitConfig: :class:`tencentcloud.apis.v20240801.models.InvokeLimitConfigDTO`
-        :param _TokenLimitStatus: 是否开启token控制
+        :param _TokenLimitStatus: <p>是否开启token控制</p>
         :type TokenLimitStatus: bool
-        :param _TokenLimitConfig: token控制
+        :param _TokenLimitConfig: <p>token控制</p>
         :type TokenLimitConfig: :class:`tencentcloud.apis.v20240801.models.TokenLimitConfigDTO`
-        :param _TmsStatus: 是否开启内容安全
+        :param _TmsStatus: <p>是否开启内容安全</p>
         :type TmsStatus: bool
-        :param _TmsConfig: 内容安全配置
+        :param _TmsConfig: <p>内容安全配置</p>
         :type TmsConfig: :class:`tencentcloud.apis.v20240801.models.TmsConfigDTO`
-        :param _IpWhiteStatus: 是否开启IP白名单
+        :param _IpWhiteStatus: <p>是否开启IP白名单</p>
         :type IpWhiteStatus: bool
-        :param _IpWhiteList: IP白名单
+        :param _IpWhiteList: <p>IP白名单</p>
         :type IpWhiteList: list of str
-        :param _IpBlackStatus: 是否开启IP黑名单
+        :param _IpBlackStatus: <p>是否开启IP黑名单</p>
         :type IpBlackStatus: bool
-        :param _IpBlackList: IP黑名单
+        :param _IpBlackList: <p>IP黑名单</p>
         :type IpBlackList: list of str
-        :param _PluginConfigs: 插件配置
+        :param _PluginConfigs: <p>插件配置</p>
         :type PluginConfigs: list of PluginConfigDTO
-        :param _Timeout: 超时配置，秒
+        :param _Timeout: <p>超时配置，秒</p>
         :type Timeout: int
-        :param _PromptModerateStatus: 是否开启提示词安全检测配置
+        :param _PromptModerateStatus: <p>是否开启提示词安全检测配置</p>
         :type PromptModerateStatus: bool
-        :param _PromptModerateConfig: 提示词安全检测配置
+        :param _PromptModerateConfig: <p>提示词安全检测配置</p>
         :type PromptModerateConfig: :class:`tencentcloud.apis.v20240801.models.PromptModerateConfigDTO`
+        :param _SensitiveDataCheckStatus: <p>是否开启敏感数据检测</p>
+        :type SensitiveDataCheckStatus: bool
+        :param _SensitiveDataCheckConfig: <p>敏感数据检测配置</p>
+        :type SensitiveDataCheckConfig: :class:`tencentcloud.apis.v20240801.models.SensitiveDataCheckConfigDTO`
         """
         self._InstanceID = None
         self._ID = None
@@ -8944,10 +9016,12 @@ class ModifyModelServiceRequest(AbstractModel):
         self._Timeout = None
         self._PromptModerateStatus = None
         self._PromptModerateConfig = None
+        self._SensitiveDataCheckStatus = None
+        self._SensitiveDataCheckConfig = None
 
     @property
     def InstanceID(self):
-        r"""实例
+        r"""<p>实例</p>
         :rtype: str
         """
         return self._InstanceID
@@ -8958,7 +9032,7 @@ class ModifyModelServiceRequest(AbstractModel):
 
     @property
     def ID(self):
-        r"""模型服务ID
+        r"""<p>模型服务ID</p>
         :rtype: str
         """
         return self._ID
@@ -8969,7 +9043,7 @@ class ModifyModelServiceRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""模型服务名称
+        r"""<p>模型服务名称</p>
         :rtype: str
         """
         return self._Name
@@ -8980,7 +9054,7 @@ class ModifyModelServiceRequest(AbstractModel):
 
     @property
     def Description(self):
-        r"""描述
+        r"""<p>描述</p>
         :rtype: str
         """
         return self._Description
@@ -8991,7 +9065,7 @@ class ModifyModelServiceRequest(AbstractModel):
 
     @property
     def TargetModels(self):
-        r"""模板模型列表
+        r"""<p>模板模型列表</p>
         :rtype: list of TargetModelDTO
         """
         return self._TargetModels
@@ -9002,7 +9076,7 @@ class ModifyModelServiceRequest(AbstractModel):
 
     @property
     def InvokeLimitConfigStatus(self):
-        r"""是否开启限流
+        r"""<p>是否开启限流</p>
         :rtype: bool
         """
         return self._InvokeLimitConfigStatus
@@ -9013,7 +9087,7 @@ class ModifyModelServiceRequest(AbstractModel):
 
     @property
     def InvokeLimitConfig(self):
-        r"""限流配置
+        r"""<p>限流配置</p>
         :rtype: :class:`tencentcloud.apis.v20240801.models.InvokeLimitConfigDTO`
         """
         return self._InvokeLimitConfig
@@ -9024,7 +9098,7 @@ class ModifyModelServiceRequest(AbstractModel):
 
     @property
     def TokenLimitStatus(self):
-        r"""是否开启token控制
+        r"""<p>是否开启token控制</p>
         :rtype: bool
         """
         return self._TokenLimitStatus
@@ -9035,7 +9109,7 @@ class ModifyModelServiceRequest(AbstractModel):
 
     @property
     def TokenLimitConfig(self):
-        r"""token控制
+        r"""<p>token控制</p>
         :rtype: :class:`tencentcloud.apis.v20240801.models.TokenLimitConfigDTO`
         """
         return self._TokenLimitConfig
@@ -9046,7 +9120,7 @@ class ModifyModelServiceRequest(AbstractModel):
 
     @property
     def TmsStatus(self):
-        r"""是否开启内容安全
+        r"""<p>是否开启内容安全</p>
         :rtype: bool
         """
         return self._TmsStatus
@@ -9057,7 +9131,7 @@ class ModifyModelServiceRequest(AbstractModel):
 
     @property
     def TmsConfig(self):
-        r"""内容安全配置
+        r"""<p>内容安全配置</p>
         :rtype: :class:`tencentcloud.apis.v20240801.models.TmsConfigDTO`
         """
         return self._TmsConfig
@@ -9068,7 +9142,7 @@ class ModifyModelServiceRequest(AbstractModel):
 
     @property
     def IpWhiteStatus(self):
-        r"""是否开启IP白名单
+        r"""<p>是否开启IP白名单</p>
         :rtype: bool
         """
         return self._IpWhiteStatus
@@ -9079,7 +9153,7 @@ class ModifyModelServiceRequest(AbstractModel):
 
     @property
     def IpWhiteList(self):
-        r"""IP白名单
+        r"""<p>IP白名单</p>
         :rtype: list of str
         """
         return self._IpWhiteList
@@ -9090,7 +9164,7 @@ class ModifyModelServiceRequest(AbstractModel):
 
     @property
     def IpBlackStatus(self):
-        r"""是否开启IP黑名单
+        r"""<p>是否开启IP黑名单</p>
         :rtype: bool
         """
         return self._IpBlackStatus
@@ -9101,7 +9175,7 @@ class ModifyModelServiceRequest(AbstractModel):
 
     @property
     def IpBlackList(self):
-        r"""IP黑名单
+        r"""<p>IP黑名单</p>
         :rtype: list of str
         """
         return self._IpBlackList
@@ -9112,7 +9186,7 @@ class ModifyModelServiceRequest(AbstractModel):
 
     @property
     def PluginConfigs(self):
-        r"""插件配置
+        r"""<p>插件配置</p>
         :rtype: list of PluginConfigDTO
         """
         return self._PluginConfigs
@@ -9123,7 +9197,7 @@ class ModifyModelServiceRequest(AbstractModel):
 
     @property
     def Timeout(self):
-        r"""超时配置，秒
+        r"""<p>超时配置，秒</p>
         :rtype: int
         """
         return self._Timeout
@@ -9134,7 +9208,7 @@ class ModifyModelServiceRequest(AbstractModel):
 
     @property
     def PromptModerateStatus(self):
-        r"""是否开启提示词安全检测配置
+        r"""<p>是否开启提示词安全检测配置</p>
         :rtype: bool
         """
         return self._PromptModerateStatus
@@ -9145,7 +9219,7 @@ class ModifyModelServiceRequest(AbstractModel):
 
     @property
     def PromptModerateConfig(self):
-        r"""提示词安全检测配置
+        r"""<p>提示词安全检测配置</p>
         :rtype: :class:`tencentcloud.apis.v20240801.models.PromptModerateConfigDTO`
         """
         return self._PromptModerateConfig
@@ -9153,6 +9227,28 @@ class ModifyModelServiceRequest(AbstractModel):
     @PromptModerateConfig.setter
     def PromptModerateConfig(self, PromptModerateConfig):
         self._PromptModerateConfig = PromptModerateConfig
+
+    @property
+    def SensitiveDataCheckStatus(self):
+        r"""<p>是否开启敏感数据检测</p>
+        :rtype: bool
+        """
+        return self._SensitiveDataCheckStatus
+
+    @SensitiveDataCheckStatus.setter
+    def SensitiveDataCheckStatus(self, SensitiveDataCheckStatus):
+        self._SensitiveDataCheckStatus = SensitiveDataCheckStatus
+
+    @property
+    def SensitiveDataCheckConfig(self):
+        r"""<p>敏感数据检测配置</p>
+        :rtype: :class:`tencentcloud.apis.v20240801.models.SensitiveDataCheckConfigDTO`
+        """
+        return self._SensitiveDataCheckConfig
+
+    @SensitiveDataCheckConfig.setter
+    def SensitiveDataCheckConfig(self, SensitiveDataCheckConfig):
+        self._SensitiveDataCheckConfig = SensitiveDataCheckConfig
 
 
     def _deserialize(self, params):
@@ -9193,6 +9289,10 @@ class ModifyModelServiceRequest(AbstractModel):
         if params.get("PromptModerateConfig") is not None:
             self._PromptModerateConfig = PromptModerateConfigDTO()
             self._PromptModerateConfig._deserialize(params.get("PromptModerateConfig"))
+        self._SensitiveDataCheckStatus = params.get("SensitiveDataCheckStatus")
+        if params.get("SensitiveDataCheckConfig") is not None:
+            self._SensitiveDataCheckConfig = SensitiveDataCheckConfigDTO()
+            self._SensitiveDataCheckConfig._deserialize(params.get("SensitiveDataCheckConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9210,7 +9310,7 @@ class ModifyModelServiceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 结果集
+        :param _Data: <p>结果集</p>
         :type Data: :class:`tencentcloud.apis.v20240801.models.ResultIDVO`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -9220,7 +9320,7 @@ class ModifyModelServiceResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""结果集
+        r"""<p>结果集</p>
         :rtype: :class:`tencentcloud.apis.v20240801.models.ResultIDVO`
         """
         return self._Data
@@ -9552,6 +9652,78 @@ class ResultIDsVO(AbstractModel):
 
     def _deserialize(self, params):
         self._IDs = params.get("IDs")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SensitiveDataCheckConfigDTO(AbstractModel):
+    r"""敏感数据检测配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Action: <p>执行动作</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Action: str
+        :param _InterceptMessage: <p>响应拦截内容</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InterceptMessage: str
+        :param _CheckItems: <p>检测项</p><p>枚举值：</p><ul><li>birthday： 生日</li><li>email： 邮箱</li><li>identity_number： 身份证</li><li>phone_number： 电话号码</li><li>secret： 秘钥</li><li>password： 密码</li><li>private_key： 私钥</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CheckItems: list of str
+        """
+        self._Action = None
+        self._InterceptMessage = None
+        self._CheckItems = None
+
+    @property
+    def Action(self):
+        r"""<p>执行动作</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
+
+    @property
+    def InterceptMessage(self):
+        r"""<p>响应拦截内容</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._InterceptMessage
+
+    @InterceptMessage.setter
+    def InterceptMessage(self, InterceptMessage):
+        self._InterceptMessage = InterceptMessage
+
+    @property
+    def CheckItems(self):
+        r"""<p>检测项</p><p>枚举值：</p><ul><li>birthday： 生日</li><li>email： 邮箱</li><li>identity_number： 身份证</li><li>phone_number： 电话号码</li><li>secret： 秘钥</li><li>password： 密码</li><li>private_key： 私钥</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._CheckItems
+
+    @CheckItems.setter
+    def CheckItems(self, CheckItems):
+        self._CheckItems = CheckItems
+
+
+    def _deserialize(self, params):
+        self._Action = params.get("Action")
+        self._InterceptMessage = params.get("InterceptMessage")
+        self._CheckItems = params.get("CheckItems")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

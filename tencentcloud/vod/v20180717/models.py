@@ -12080,6 +12080,153 @@ class AigcVideoOutputConfig(AbstractModel):
         
 
 
+class AigcVideoRedrawOutputConfig(AbstractModel):
+    r"""AIGC 视频转绘任务的输出媒体文件配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StorageMode: <p>存储模式。取值有： <li>Permanent：永久存储，生成的视频文件将存储到云点播，可在事件通知中获取到 FileId；</li> <li>Temporary：临时存储，生成的视频文件不会存储到云点播，可在事件通知中获取到临时访问的 URL；</li>默认值：Temporary</p>
+        :type StorageMode: str
+        :param _MediaName: <p>输出媒体文件名，最长 64 个字符。缺省由系统指定生成文件名。</p>
+        :type MediaName: str
+        :param _ClassId: <p>分类ID，用于对媒体进行分类管理，可通过 <a href="/document/product/266/7812">创建分类</a> 接口，创建分类，获得分类 ID。<li>默认值：0，表示其他分类。</li></p>
+        :type ClassId: int
+        :param _ExpireTime: <p>输出文件的过期时间，超过该时间文件将被删除，默认为永久不过期，格式按照 ISO 8601标准表示，详见 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式说明</a>。</p><p>参数格式：2025-12-28T00:35:00Z</p>
+        :type ExpireTime: str
+        """
+        self._StorageMode = None
+        self._MediaName = None
+        self._ClassId = None
+        self._ExpireTime = None
+
+    @property
+    def StorageMode(self):
+        r"""<p>存储模式。取值有： <li>Permanent：永久存储，生成的视频文件将存储到云点播，可在事件通知中获取到 FileId；</li> <li>Temporary：临时存储，生成的视频文件不会存储到云点播，可在事件通知中获取到临时访问的 URL；</li>默认值：Temporary</p>
+        :rtype: str
+        """
+        return self._StorageMode
+
+    @StorageMode.setter
+    def StorageMode(self, StorageMode):
+        self._StorageMode = StorageMode
+
+    @property
+    def MediaName(self):
+        r"""<p>输出媒体文件名，最长 64 个字符。缺省由系统指定生成文件名。</p>
+        :rtype: str
+        """
+        return self._MediaName
+
+    @MediaName.setter
+    def MediaName(self, MediaName):
+        self._MediaName = MediaName
+
+    @property
+    def ClassId(self):
+        r"""<p>分类ID，用于对媒体进行分类管理，可通过 <a href="/document/product/266/7812">创建分类</a> 接口，创建分类，获得分类 ID。<li>默认值：0，表示其他分类。</li></p>
+        :rtype: int
+        """
+        return self._ClassId
+
+    @ClassId.setter
+    def ClassId(self, ClassId):
+        self._ClassId = ClassId
+
+    @property
+    def ExpireTime(self):
+        r"""<p>输出文件的过期时间，超过该时间文件将被删除，默认为永久不过期，格式按照 ISO 8601标准表示，详见 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式说明</a>。</p><p>参数格式：2025-12-28T00:35:00Z</p>
+        :rtype: str
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+
+    def _deserialize(self, params):
+        self._StorageMode = params.get("StorageMode")
+        self._MediaName = params.get("MediaName")
+        self._ClassId = params.get("ClassId")
+        self._ExpireTime = params.get("ExpireTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AigcVideoRedrawTaskInputFileInfo(AbstractModel):
+    r"""AIGC 视频转绘任务输入文件信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: <p>输入的视频文件类型。取值有： <li>File：点播媒体文件；</li> <li>Url：可访问的 Url；</li></p>
+        :type Type: str
+        :param _FileId: <p>媒体文件 ID，即该文件在云点播上的全局唯一标识符，在上传成功后由云点播后台分配。可以在 <a href="/document/product/266/7830">视频上传完成事件通知</a> 或 <a href="https://console.cloud.tencent.com/vod/media">云点播控制台</a> 获取该字段。当 Type 取值为 File 时，本参数有效。说明：1. 推荐使用小于10M的图片；2. 图片格式的取值为：jpeg，jpg, png。</p>
+        :type FileId: str
+        :param _Url: <p>可访问的文件 URL。当 Type 取值为 Url 时，本参数有效。说明：1. 推荐使用小于10M的图片；2. 图片格式的取值为：jpeg，jpg, png。</p>
+        :type Url: str
+        """
+        self._Type = None
+        self._FileId = None
+        self._Url = None
+
+    @property
+    def Type(self):
+        r"""<p>输入的视频文件类型。取值有： <li>File：点播媒体文件；</li> <li>Url：可访问的 Url；</li></p>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def FileId(self):
+        r"""<p>媒体文件 ID，即该文件在云点播上的全局唯一标识符，在上传成功后由云点播后台分配。可以在 <a href="/document/product/266/7830">视频上传完成事件通知</a> 或 <a href="https://console.cloud.tencent.com/vod/media">云点播控制台</a> 获取该字段。当 Type 取值为 File 时，本参数有效。说明：1. 推荐使用小于10M的图片；2. 图片格式的取值为：jpeg，jpg, png。</p>
+        :rtype: str
+        """
+        return self._FileId
+
+    @FileId.setter
+    def FileId(self, FileId):
+        self._FileId = FileId
+
+    @property
+    def Url(self):
+        r"""<p>可访问的文件 URL。当 Type 取值为 Url 时，本参数有效。说明：1. 推荐使用小于10M的图片；2. 图片格式的取值为：jpeg，jpg, png。</p>
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._FileId = params.get("FileId")
+        self._Url = params.get("Url")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AigcVideoSceneInfo(AbstractModel):
     r"""场景化 AIGC 生图配置。
 
@@ -21848,6 +21995,179 @@ class CreateAigcSubjectTask(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class CreateAigcVideoRedrawTaskRequest(AbstractModel):
+    r"""CreateAigcVideoRedrawTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubAppId: <p><b>点播<a href="https://cloud.tencent.com/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
+        :type SubAppId: int
+        :param _FileInfo: <p>AIGC 视频转绘任务的输入视频的文件信息。</p>
+        :type FileInfo: :class:`tencentcloud.vod.v20180717.models.AigcVideoRedrawTaskInputFileInfo`
+        :param _OutputConfig: <p>AIGC 视频转绘任务的输出媒体文件配置。</p>
+        :type OutputConfig: :class:`tencentcloud.vod.v20180717.models.AigcVideoRedrawOutputConfig`
+        :param _SessionId: <p>用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。</p>
+        :type SessionId: str
+        :param _SessionContext: <p>来源上下文，用于透传用户请求信息，音画质重生完成回调将返回该字段值，最长 1000 个字符。</p>
+        :type SessionContext: str
+        :param _TasksPriority: <p>任务的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。</p>
+        :type TasksPriority: int
+        :param _ExtInfo: <p>保留字段，特殊用途时使用。</p>
+        :type ExtInfo: str
+        """
+        self._SubAppId = None
+        self._FileInfo = None
+        self._OutputConfig = None
+        self._SessionId = None
+        self._SessionContext = None
+        self._TasksPriority = None
+        self._ExtInfo = None
+
+    @property
+    def SubAppId(self):
+        r"""<p><b>点播<a href="https://cloud.tencent.com/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
+        :rtype: int
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def FileInfo(self):
+        r"""<p>AIGC 视频转绘任务的输入视频的文件信息。</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.AigcVideoRedrawTaskInputFileInfo`
+        """
+        return self._FileInfo
+
+    @FileInfo.setter
+    def FileInfo(self, FileInfo):
+        self._FileInfo = FileInfo
+
+    @property
+    def OutputConfig(self):
+        r"""<p>AIGC 视频转绘任务的输出媒体文件配置。</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.AigcVideoRedrawOutputConfig`
+        """
+        return self._OutputConfig
+
+    @OutputConfig.setter
+    def OutputConfig(self, OutputConfig):
+        self._OutputConfig = OutputConfig
+
+    @property
+    def SessionId(self):
+        r"""<p>用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。</p>
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def SessionContext(self):
+        r"""<p>来源上下文，用于透传用户请求信息，音画质重生完成回调将返回该字段值，最长 1000 个字符。</p>
+        :rtype: str
+        """
+        return self._SessionContext
+
+    @SessionContext.setter
+    def SessionContext(self, SessionContext):
+        self._SessionContext = SessionContext
+
+    @property
+    def TasksPriority(self):
+        r"""<p>任务的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。</p>
+        :rtype: int
+        """
+        return self._TasksPriority
+
+    @TasksPriority.setter
+    def TasksPriority(self, TasksPriority):
+        self._TasksPriority = TasksPriority
+
+    @property
+    def ExtInfo(self):
+        r"""<p>保留字段，特殊用途时使用。</p>
+        :rtype: str
+        """
+        return self._ExtInfo
+
+    @ExtInfo.setter
+    def ExtInfo(self, ExtInfo):
+        self._ExtInfo = ExtInfo
+
+
+    def _deserialize(self, params):
+        self._SubAppId = params.get("SubAppId")
+        if params.get("FileInfo") is not None:
+            self._FileInfo = AigcVideoRedrawTaskInputFileInfo()
+            self._FileInfo._deserialize(params.get("FileInfo"))
+        if params.get("OutputConfig") is not None:
+            self._OutputConfig = AigcVideoRedrawOutputConfig()
+            self._OutputConfig._deserialize(params.get("OutputConfig"))
+        self._SessionId = params.get("SessionId")
+        self._SessionContext = params.get("SessionContext")
+        self._TasksPriority = params.get("TasksPriority")
+        self._ExtInfo = params.get("ExtInfo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAigcVideoRedrawTaskResponse(AbstractModel):
+    r"""CreateAigcVideoRedrawTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务 ID。</p>
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务 ID。</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateAigcVideoTaskRequest(AbstractModel):

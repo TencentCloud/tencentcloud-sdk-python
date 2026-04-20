@@ -840,6 +840,24 @@ class MqttClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeSharedSubscriptionGroups(
+            self,
+            request: models.DescribeSharedSubscriptionGroupsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeSharedSubscriptionGroupsResponse:
+        """
+        查询集群下共享订阅组列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeSharedSubscriptionGroups"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeSharedSubscriptionGroupsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeSharedSubscriptionLag(
             self,
             request: models.DescribeSharedSubscriptionLagRequest,

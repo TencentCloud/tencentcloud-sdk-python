@@ -102940,32 +102940,38 @@ class SystemRole(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RoleId: 角色id
+        :param _RoleId: <p>角色id</p>
         :type RoleId: str
-        :param _Name: 角色名称
+        :param _Name: <p>角色名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
-        :param _NameCn: 角色昵称
+        :param _NameCn: <p>角色昵称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type NameCn: str
-        :param _Description: 描述
+        :param _Description: <p>描述</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
-        :param _Privileges: 角色权限
+        :param _Privileges: <p>角色权限</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Privileges: list of RolePrivilege
-        :param _MethodPaths: 方法路径
+        :param _MethodPaths: <p>方法路径</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type MethodPaths: list of str
-        :param _RoleType: 角色类型, 分为System,Tenant,Project,Commercial
+        :param _RoleType: <p>角色类型, 分为System,Tenant,Project,Commercial</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RoleType: str
-        :param _SystemInit: 是否系统默认
+        :param _SystemInit: <p>是否系统默认</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SystemInit: bool
-        :param _Params: 自定义参数
+        :param _Params: <p>自定义参数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Params: str
+        :param _CreateTimeStr: <p>创建时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTimeStr: str
+        :param _Creator: <p>创建人</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Creator: str
         """
         self._RoleId = None
         self._Name = None
@@ -102976,10 +102982,12 @@ class SystemRole(AbstractModel):
         self._RoleType = None
         self._SystemInit = None
         self._Params = None
+        self._CreateTimeStr = None
+        self._Creator = None
 
     @property
     def RoleId(self):
-        r"""角色id
+        r"""<p>角色id</p>
         :rtype: str
         """
         return self._RoleId
@@ -102990,7 +102998,7 @@ class SystemRole(AbstractModel):
 
     @property
     def Name(self):
-        r"""角色名称
+        r"""<p>角色名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -103002,7 +103010,7 @@ class SystemRole(AbstractModel):
 
     @property
     def NameCn(self):
-        r"""角色昵称
+        r"""<p>角色昵称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -103014,7 +103022,7 @@ class SystemRole(AbstractModel):
 
     @property
     def Description(self):
-        r"""描述
+        r"""<p>描述</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -103026,7 +103034,7 @@ class SystemRole(AbstractModel):
 
     @property
     def Privileges(self):
-        r"""角色权限
+        r"""<p>角色权限</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of RolePrivilege
         """
@@ -103038,7 +103046,7 @@ class SystemRole(AbstractModel):
 
     @property
     def MethodPaths(self):
-        r"""方法路径
+        r"""<p>方法路径</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -103050,7 +103058,7 @@ class SystemRole(AbstractModel):
 
     @property
     def RoleType(self):
-        r"""角色类型, 分为System,Tenant,Project,Commercial
+        r"""<p>角色类型, 分为System,Tenant,Project,Commercial</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -103062,7 +103070,7 @@ class SystemRole(AbstractModel):
 
     @property
     def SystemInit(self):
-        r"""是否系统默认
+        r"""<p>是否系统默认</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -103074,7 +103082,7 @@ class SystemRole(AbstractModel):
 
     @property
     def Params(self):
-        r"""自定义参数
+        r"""<p>自定义参数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -103083,6 +103091,30 @@ class SystemRole(AbstractModel):
     @Params.setter
     def Params(self, Params):
         self._Params = Params
+
+    @property
+    def CreateTimeStr(self):
+        r"""<p>创建时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreateTimeStr
+
+    @CreateTimeStr.setter
+    def CreateTimeStr(self, CreateTimeStr):
+        self._CreateTimeStr = CreateTimeStr
+
+    @property
+    def Creator(self):
+        r"""<p>创建人</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Creator
+
+    @Creator.setter
+    def Creator(self, Creator):
+        self._Creator = Creator
 
 
     def _deserialize(self, params):
@@ -103100,6 +103132,8 @@ class SystemRole(AbstractModel):
         self._RoleType = params.get("RoleType")
         self._SystemInit = params.get("SystemInit")
         self._Params = params.get("Params")
+        self._CreateTimeStr = params.get("CreateTimeStr")
+        self._Creator = params.get("Creator")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

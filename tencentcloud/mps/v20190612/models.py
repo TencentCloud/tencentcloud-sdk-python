@@ -25734,20 +25734,22 @@ class CreateStreamPackageLinearAssemblyProgramRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: Program名称。
+        :param _Name: <p>Program名称。</p>
         :type Name: str
-        :param _AttachedChannel: 绑定的channel。
+        :param _AttachedChannel: <p>绑定的channel。</p>
         :type AttachedChannel: str
-        :param _SourceType: 编排的目标source的类型，分直播Live和点播VOD。Tier为Basic时只支持VOD，Tier为Standard时支持Live和VOD
+        :param _SourceType: <p>编排的目标source的类型，分直播Live和点播VOD。Tier为Basic时只支持VOD，Tier为Standard时支持Live和VOD</p>
         :type SourceType: str
-        :param _SourceLocationId: 关联的source location。
+        :param _SourceLocationId: <p>关联的source location。</p>
         :type SourceLocationId: str
-        :param _SourceName: 关联的直播or点播，source名称，location下全局唯一。
+        :param _SourceName: <p>关联的直播or点播，source名称，location下全局唯一。</p>
         :type SourceName: str
-        :param _PlaybackConf: PlaybackConf。
+        :param _PlaybackConf: <p>PlaybackConf。</p>
         :type PlaybackConf: :class:`tencentcloud.mps.v20190612.models.PlaybackInfoReq`
-        :param _AdBreaks: AdBreaks，只有source类型为Vod时有效。
+        :param _AdBreaks: <p>AdBreaks，只有source类型为Vod时有效。</p>
         :type AdBreaks: list of AdBreakInfo
+        :param _VodAcquisitionMethod: <p>VOD获取方式，支持PreCaching和DynamicUpdating，默认PreCaching，仅Linear频道支持</p>
+        :type VodAcquisitionMethod: str
         """
         self._Name = None
         self._AttachedChannel = None
@@ -25756,10 +25758,11 @@ class CreateStreamPackageLinearAssemblyProgramRequest(AbstractModel):
         self._SourceName = None
         self._PlaybackConf = None
         self._AdBreaks = None
+        self._VodAcquisitionMethod = None
 
     @property
     def Name(self):
-        r"""Program名称。
+        r"""<p>Program名称。</p>
         :rtype: str
         """
         return self._Name
@@ -25770,7 +25773,7 @@ class CreateStreamPackageLinearAssemblyProgramRequest(AbstractModel):
 
     @property
     def AttachedChannel(self):
-        r"""绑定的channel。
+        r"""<p>绑定的channel。</p>
         :rtype: str
         """
         return self._AttachedChannel
@@ -25781,7 +25784,7 @@ class CreateStreamPackageLinearAssemblyProgramRequest(AbstractModel):
 
     @property
     def SourceType(self):
-        r"""编排的目标source的类型，分直播Live和点播VOD。Tier为Basic时只支持VOD，Tier为Standard时支持Live和VOD
+        r"""<p>编排的目标source的类型，分直播Live和点播VOD。Tier为Basic时只支持VOD，Tier为Standard时支持Live和VOD</p>
         :rtype: str
         """
         return self._SourceType
@@ -25792,7 +25795,7 @@ class CreateStreamPackageLinearAssemblyProgramRequest(AbstractModel):
 
     @property
     def SourceLocationId(self):
-        r"""关联的source location。
+        r"""<p>关联的source location。</p>
         :rtype: str
         """
         return self._SourceLocationId
@@ -25803,7 +25806,7 @@ class CreateStreamPackageLinearAssemblyProgramRequest(AbstractModel):
 
     @property
     def SourceName(self):
-        r"""关联的直播or点播，source名称，location下全局唯一。
+        r"""<p>关联的直播or点播，source名称，location下全局唯一。</p>
         :rtype: str
         """
         return self._SourceName
@@ -25814,7 +25817,7 @@ class CreateStreamPackageLinearAssemblyProgramRequest(AbstractModel):
 
     @property
     def PlaybackConf(self):
-        r"""PlaybackConf。
+        r"""<p>PlaybackConf。</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.PlaybackInfoReq`
         """
         return self._PlaybackConf
@@ -25825,7 +25828,7 @@ class CreateStreamPackageLinearAssemblyProgramRequest(AbstractModel):
 
     @property
     def AdBreaks(self):
-        r"""AdBreaks，只有source类型为Vod时有效。
+        r"""<p>AdBreaks，只有source类型为Vod时有效。</p>
         :rtype: list of AdBreakInfo
         """
         return self._AdBreaks
@@ -25833,6 +25836,17 @@ class CreateStreamPackageLinearAssemblyProgramRequest(AbstractModel):
     @AdBreaks.setter
     def AdBreaks(self, AdBreaks):
         self._AdBreaks = AdBreaks
+
+    @property
+    def VodAcquisitionMethod(self):
+        r"""<p>VOD获取方式，支持PreCaching和DynamicUpdating，默认PreCaching，仅Linear频道支持</p>
+        :rtype: str
+        """
+        return self._VodAcquisitionMethod
+
+    @VodAcquisitionMethod.setter
+    def VodAcquisitionMethod(self, VodAcquisitionMethod):
+        self._VodAcquisitionMethod = VodAcquisitionMethod
 
 
     def _deserialize(self, params):
@@ -25850,6 +25864,7 @@ class CreateStreamPackageLinearAssemblyProgramRequest(AbstractModel):
                 obj = AdBreakInfo()
                 obj._deserialize(item)
                 self._AdBreaks.append(obj)
+        self._VodAcquisitionMethod = params.get("VodAcquisitionMethod")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25867,7 +25882,7 @@ class CreateStreamPackageLinearAssemblyProgramResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Info: channel信息。
+        :param _Info: <p>channel信息。</p>
         :type Info: :class:`tencentcloud.mps.v20190612.models.LinearAssemblyProgramInfo`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -25877,7 +25892,7 @@ class CreateStreamPackageLinearAssemblyProgramResponse(AbstractModel):
 
     @property
     def Info(self):
-        r"""channel信息。
+        r"""<p>channel信息。</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.LinearAssemblyProgramInfo`
         """
         return self._Info
@@ -49975,28 +49990,30 @@ class LinearAssemblyProgramInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: program名称。
+        :param _Name: <p>program名称。</p>
         :type Name: str
-        :param _SourceType: 编排的目标source的类型，分直播和点播。
+        :param _SourceType: <p>编排的目标source的类型，分直播和点播。</p>
         :type SourceType: str
-        :param _SourceLocationId: 关联的source location id。
+        :param _SourceLocationId: <p>关联的source location id。</p>
         :type SourceLocationId: str
-        :param _SourceId: SourceId，唯一标识一个source。
+        :param _SourceId: <p>SourceId，唯一标识一个source。</p>
         :type SourceId: str
-        :param _SourceName: 关联的直播or点播，source名称，location下全局唯一。
+        :param _SourceName: <p>关联的直播or点播，source名称，location下全局唯一。</p>
         :type SourceName: str
-        :param _AttachedChannel: 绑定的channel。
+        :param _AttachedChannel: <p>绑定的channel。</p>
         :type AttachedChannel: str
-        :param _PlaybackConf: 播放配置。
+        :param _PlaybackConf: <p>播放配置。</p>
         :type PlaybackConf: :class:`tencentcloud.mps.v20190612.models.PlaybackInfo`
-        :param _AdBreaks: AdBreaks。
+        :param _AdBreaks: <p>AdBreaks。</p>
         :type AdBreaks: list of AdBreakInfo
-        :param _Id: Id。
+        :param _Id: <p>Id。</p>
         :type Id: str
-        :param _Region: Region。
+        :param _Region: <p>Region。</p>
         :type Region: str
-        :param _SourceLocationName: SourceLocation名称。
+        :param _SourceLocationName: <p>SourceLocation名称。</p>
         :type SourceLocationName: str
+        :param _VodAcquisitionMethod: <p>VOD获取方式，支持PreCaching和DynamicUpdating，默认PreCaching，仅Linear频道支持</p>
+        :type VodAcquisitionMethod: str
         """
         self._Name = None
         self._SourceType = None
@@ -50009,10 +50026,11 @@ class LinearAssemblyProgramInfo(AbstractModel):
         self._Id = None
         self._Region = None
         self._SourceLocationName = None
+        self._VodAcquisitionMethod = None
 
     @property
     def Name(self):
-        r"""program名称。
+        r"""<p>program名称。</p>
         :rtype: str
         """
         return self._Name
@@ -50023,7 +50041,7 @@ class LinearAssemblyProgramInfo(AbstractModel):
 
     @property
     def SourceType(self):
-        r"""编排的目标source的类型，分直播和点播。
+        r"""<p>编排的目标source的类型，分直播和点播。</p>
         :rtype: str
         """
         return self._SourceType
@@ -50034,7 +50052,7 @@ class LinearAssemblyProgramInfo(AbstractModel):
 
     @property
     def SourceLocationId(self):
-        r"""关联的source location id。
+        r"""<p>关联的source location id。</p>
         :rtype: str
         """
         return self._SourceLocationId
@@ -50045,7 +50063,7 @@ class LinearAssemblyProgramInfo(AbstractModel):
 
     @property
     def SourceId(self):
-        r"""SourceId，唯一标识一个source。
+        r"""<p>SourceId，唯一标识一个source。</p>
         :rtype: str
         """
         return self._SourceId
@@ -50056,7 +50074,7 @@ class LinearAssemblyProgramInfo(AbstractModel):
 
     @property
     def SourceName(self):
-        r"""关联的直播or点播，source名称，location下全局唯一。
+        r"""<p>关联的直播or点播，source名称，location下全局唯一。</p>
         :rtype: str
         """
         return self._SourceName
@@ -50067,7 +50085,7 @@ class LinearAssemblyProgramInfo(AbstractModel):
 
     @property
     def AttachedChannel(self):
-        r"""绑定的channel。
+        r"""<p>绑定的channel。</p>
         :rtype: str
         """
         return self._AttachedChannel
@@ -50078,7 +50096,7 @@ class LinearAssemblyProgramInfo(AbstractModel):
 
     @property
     def PlaybackConf(self):
-        r"""播放配置。
+        r"""<p>播放配置。</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.PlaybackInfo`
         """
         return self._PlaybackConf
@@ -50089,7 +50107,7 @@ class LinearAssemblyProgramInfo(AbstractModel):
 
     @property
     def AdBreaks(self):
-        r"""AdBreaks。
+        r"""<p>AdBreaks。</p>
         :rtype: list of AdBreakInfo
         """
         return self._AdBreaks
@@ -50100,7 +50118,7 @@ class LinearAssemblyProgramInfo(AbstractModel):
 
     @property
     def Id(self):
-        r"""Id。
+        r"""<p>Id。</p>
         :rtype: str
         """
         return self._Id
@@ -50111,7 +50129,7 @@ class LinearAssemblyProgramInfo(AbstractModel):
 
     @property
     def Region(self):
-        r"""Region。
+        r"""<p>Region。</p>
         :rtype: str
         """
         return self._Region
@@ -50122,7 +50140,7 @@ class LinearAssemblyProgramInfo(AbstractModel):
 
     @property
     def SourceLocationName(self):
-        r"""SourceLocation名称。
+        r"""<p>SourceLocation名称。</p>
         :rtype: str
         """
         return self._SourceLocationName
@@ -50130,6 +50148,17 @@ class LinearAssemblyProgramInfo(AbstractModel):
     @SourceLocationName.setter
     def SourceLocationName(self, SourceLocationName):
         self._SourceLocationName = SourceLocationName
+
+    @property
+    def VodAcquisitionMethod(self):
+        r"""<p>VOD获取方式，支持PreCaching和DynamicUpdating，默认PreCaching，仅Linear频道支持</p>
+        :rtype: str
+        """
+        return self._VodAcquisitionMethod
+
+    @VodAcquisitionMethod.setter
+    def VodAcquisitionMethod(self, VodAcquisitionMethod):
+        self._VodAcquisitionMethod = VodAcquisitionMethod
 
 
     def _deserialize(self, params):
@@ -50151,6 +50180,7 @@ class LinearAssemblyProgramInfo(AbstractModel):
         self._Id = params.get("Id")
         self._Region = params.get("Region")
         self._SourceLocationName = params.get("SourceLocationName")
+        self._VodAcquisitionMethod = params.get("VodAcquisitionMethod")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -62389,20 +62419,22 @@ class ModifyStreamPackageLinearAssemblyProgramRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: Program Id。
+        :param _Id: <p>Program Id。</p>
         :type Id: str
-        :param _Name: 修改后的名称。
+        :param _Name: <p>修改后的名称。</p>
         :type Name: str
-        :param _SourceType: 编排的目标source的类型，分直播和点播。Tier为Basic时只支持VOD，Tier为Standard时支持Live和VOD
+        :param _SourceType: <p>编排的目标source的类型，分直播和点播。Tier为Basic时只支持VOD，Tier为Standard时支持Live和VOD</p>
         :type SourceType: str
-        :param _SourceLocationId: 关联的source location。	
+        :param _SourceLocationId: <p>关联的source location。</p>
         :type SourceLocationId: str
-        :param _SourceName: 关联的直播or点播，source名称，location下全局唯一。
+        :param _SourceName: <p>关联的直播or点播，source名称，location下全局唯一。</p>
         :type SourceName: str
-        :param _PlaybackConf: PlaybackConf。
+        :param _PlaybackConf: <p>PlaybackConf。</p>
         :type PlaybackConf: :class:`tencentcloud.mps.v20190612.models.PlaybackInfoReq`
-        :param _AdBreaks: AdBreaks。
+        :param _AdBreaks: <p>AdBreaks。</p>
         :type AdBreaks: list of AdBreakInfo
+        :param _VodAcquisitionMethod: <p>VOD获取方式，支持PreCaching和DynamicUpdating，默认PreCaching，仅Linear频道支持</p>
+        :type VodAcquisitionMethod: str
         """
         self._Id = None
         self._Name = None
@@ -62411,10 +62443,11 @@ class ModifyStreamPackageLinearAssemblyProgramRequest(AbstractModel):
         self._SourceName = None
         self._PlaybackConf = None
         self._AdBreaks = None
+        self._VodAcquisitionMethod = None
 
     @property
     def Id(self):
-        r"""Program Id。
+        r"""<p>Program Id。</p>
         :rtype: str
         """
         return self._Id
@@ -62425,7 +62458,7 @@ class ModifyStreamPackageLinearAssemblyProgramRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""修改后的名称。
+        r"""<p>修改后的名称。</p>
         :rtype: str
         """
         return self._Name
@@ -62436,7 +62469,7 @@ class ModifyStreamPackageLinearAssemblyProgramRequest(AbstractModel):
 
     @property
     def SourceType(self):
-        r"""编排的目标source的类型，分直播和点播。Tier为Basic时只支持VOD，Tier为Standard时支持Live和VOD
+        r"""<p>编排的目标source的类型，分直播和点播。Tier为Basic时只支持VOD，Tier为Standard时支持Live和VOD</p>
         :rtype: str
         """
         return self._SourceType
@@ -62447,7 +62480,7 @@ class ModifyStreamPackageLinearAssemblyProgramRequest(AbstractModel):
 
     @property
     def SourceLocationId(self):
-        r"""关联的source location。	
+        r"""<p>关联的source location。</p>
         :rtype: str
         """
         return self._SourceLocationId
@@ -62458,7 +62491,7 @@ class ModifyStreamPackageLinearAssemblyProgramRequest(AbstractModel):
 
     @property
     def SourceName(self):
-        r"""关联的直播or点播，source名称，location下全局唯一。
+        r"""<p>关联的直播or点播，source名称，location下全局唯一。</p>
         :rtype: str
         """
         return self._SourceName
@@ -62469,7 +62502,7 @@ class ModifyStreamPackageLinearAssemblyProgramRequest(AbstractModel):
 
     @property
     def PlaybackConf(self):
-        r"""PlaybackConf。
+        r"""<p>PlaybackConf。</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.PlaybackInfoReq`
         """
         return self._PlaybackConf
@@ -62480,7 +62513,7 @@ class ModifyStreamPackageLinearAssemblyProgramRequest(AbstractModel):
 
     @property
     def AdBreaks(self):
-        r"""AdBreaks。
+        r"""<p>AdBreaks。</p>
         :rtype: list of AdBreakInfo
         """
         return self._AdBreaks
@@ -62488,6 +62521,17 @@ class ModifyStreamPackageLinearAssemblyProgramRequest(AbstractModel):
     @AdBreaks.setter
     def AdBreaks(self, AdBreaks):
         self._AdBreaks = AdBreaks
+
+    @property
+    def VodAcquisitionMethod(self):
+        r"""<p>VOD获取方式，支持PreCaching和DynamicUpdating，默认PreCaching，仅Linear频道支持</p>
+        :rtype: str
+        """
+        return self._VodAcquisitionMethod
+
+    @VodAcquisitionMethod.setter
+    def VodAcquisitionMethod(self, VodAcquisitionMethod):
+        self._VodAcquisitionMethod = VodAcquisitionMethod
 
 
     def _deserialize(self, params):
@@ -62505,6 +62549,7 @@ class ModifyStreamPackageLinearAssemblyProgramRequest(AbstractModel):
                 obj = AdBreakInfo()
                 obj._deserialize(item)
                 self._AdBreaks.append(obj)
+        self._VodAcquisitionMethod = params.get("VodAcquisitionMethod")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -43762,8 +43762,8 @@ class ModifyOriginParameters(AbstractModel):
 <li>当 OriginType = IPDomain 时，该参数请填写 IPV4、IPV6 地址或域名；</li>
 <li>当 OriginType = COS 时，该参数请填写 COS 桶的访问域名；</li>
 <li>当 OriginType = AWSS3，该参数请填写 S3 桶的访问域名；</li>
-<li>当 OriginType = OriginGroup 时，该参数请填写源站组 ID；</li>
-<li>当 OriginType = LoadBalance 时，该参数请填写负载均衡实例 ID，该功能当前仅白名单开放。</li>
+<li>当 OriginType = OriginGroup 时，该参数请填写源站组 ID；当为出参的时候，如果引用了其它站点的源站组，格式为{源站组 ID}@{ZoneID}。例如：og-testorigin@zone-38moq1z10wwwy；</li>
+<li>当 OriginType = LoadBalance 时，该参数请填写负载均衡实例 ID，该功能当前仅白名单开放；当为出参的时候，如果引用了其它站点的负载均衡，格式为{负载均衡 ID}@{ZoneID}。例如：lb-2rxpamcyqfzg@zone-38moq1z10wwwy。</li>
         :type Origin: str
         :param _OriginProtocol: 回源协议配置。当 OriginType 取值为 IPDomain、OriginGroup、LoadBalance 时该参数必填。取值有：
 <li>http：使用 HTTP 协议；</li>
@@ -43812,8 +43812,8 @@ class ModifyOriginParameters(AbstractModel):
 <li>当 OriginType = IPDomain 时，该参数请填写 IPV4、IPV6 地址或域名；</li>
 <li>当 OriginType = COS 时，该参数请填写 COS 桶的访问域名；</li>
 <li>当 OriginType = AWSS3，该参数请填写 S3 桶的访问域名；</li>
-<li>当 OriginType = OriginGroup 时，该参数请填写源站组 ID；</li>
-<li>当 OriginType = LoadBalance 时，该参数请填写负载均衡实例 ID，该功能当前仅白名单开放。</li>
+<li>当 OriginType = OriginGroup 时，该参数请填写源站组 ID；当为出参的时候，如果引用了其它站点的源站组，格式为{源站组 ID}@{ZoneID}。例如：og-testorigin@zone-38moq1z10wwwy；</li>
+<li>当 OriginType = LoadBalance 时，该参数请填写负载均衡实例 ID，该功能当前仅白名单开放；当为出参的时候，如果引用了其它站点的负载均衡，格式为{负载均衡 ID}@{ZoneID}。例如：lb-2rxpamcyqfzg@zone-38moq1z10wwwy。</li>
         :rtype: str
         """
         return self._Origin
@@ -53515,6 +53515,7 @@ class RuleEngineAction(AbstractModel):
 <li>ClientIPCountry：回源时携带客户端 IP 所属地域信息；</li>
 <li>UpstreamFollowRedirect：回源跟随重定向参数配置；</li>
 <li>UpstreamRequest：回源请求参数；</li>
+<li>Shield：源站卸载配置；</li>
 <li>TLSConfig：SSL/TLS 安全；</li>
 <li>ModifyOrigin：修改源站；</li>
 <li>HTTPUpstreamTimeout：七层回源超时配置；</li>
@@ -53606,6 +53607,9 @@ class RuleEngineAction(AbstractModel):
         :param _UpstreamRequestParameters: 回源请求参数配置参数，当 Name 取值为 UpstreamRequest 时，该参数必填。
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpstreamRequestParameters: :class:`tencentcloud.teo.v20220901.models.UpstreamRequestParameters`
+        :param _ShieldParameters: 源站卸载配置参数，当 Name 取值为 Shield 时，该参数必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ShieldParameters: :class:`tencentcloud.teo.v20220901.models.ShieldParameters`
         :param _TLSConfigParameters: SSL/TLS 安全配置参数，当 Name 取值为 TLSConfig 时，该参数必填。
 注意：此字段可能返回 null，表示取不到有效值。
         :type TLSConfigParameters: :class:`tencentcloud.teo.v20220901.models.TLSConfigParameters`
@@ -53668,6 +53672,7 @@ class RuleEngineAction(AbstractModel):
         self._ClientIPCountryParameters = None
         self._UpstreamFollowRedirectParameters = None
         self._UpstreamRequestParameters = None
+        self._ShieldParameters = None
         self._TLSConfigParameters = None
         self._ModifyOriginParameters = None
         self._HTTPUpstreamTimeoutParameters = None
@@ -53710,6 +53715,7 @@ class RuleEngineAction(AbstractModel):
 <li>ClientIPCountry：回源时携带客户端 IP 所属地域信息；</li>
 <li>UpstreamFollowRedirect：回源跟随重定向参数配置；</li>
 <li>UpstreamRequest：回源请求参数；</li>
+<li>Shield：源站卸载配置；</li>
 <li>TLSConfig：SSL/TLS 安全；</li>
 <li>ModifyOrigin：修改源站；</li>
 <li>HTTPUpstreamTimeout：七层回源超时配置；</li>
@@ -54043,6 +54049,18 @@ class RuleEngineAction(AbstractModel):
         self._UpstreamRequestParameters = UpstreamRequestParameters
 
     @property
+    def ShieldParameters(self):
+        r"""源站卸载配置参数，当 Name 取值为 Shield 时，该参数必填。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ShieldParameters`
+        """
+        return self._ShieldParameters
+
+    @ShieldParameters.setter
+    def ShieldParameters(self, ShieldParameters):
+        self._ShieldParameters = ShieldParameters
+
+    @property
     def TLSConfigParameters(self):
         r"""SSL/TLS 安全配置参数，当 Name 取值为 TLSConfig 时，该参数必填。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -54265,6 +54283,9 @@ class RuleEngineAction(AbstractModel):
         if params.get("UpstreamRequestParameters") is not None:
             self._UpstreamRequestParameters = UpstreamRequestParameters()
             self._UpstreamRequestParameters._deserialize(params.get("UpstreamRequestParameters"))
+        if params.get("ShieldParameters") is not None:
+            self._ShieldParameters = ShieldParameters()
+            self._ShieldParameters._deserialize(params.get("ShieldParameters"))
         if params.get("TLSConfigParameters") is not None:
             self._TLSConfigParameters = TLSConfigParameters()
             self._TLSConfigParameters._deserialize(params.get("TLSConfigParameters"))
@@ -56552,6 +56573,42 @@ class SharedCNAMEInfo(AbstractModel):
                 obj = ReferenceHolder()
                 obj._deserialize(item)
                 self._AccelerationDomains.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ShieldParameters(AbstractModel):
+    r"""源站卸载配置参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ShieldSpaceId: 源站卸载空间 ID。
+        :type ShieldSpaceId: str
+        """
+        self._ShieldSpaceId = None
+
+    @property
+    def ShieldSpaceId(self):
+        r"""源站卸载空间 ID。
+        :rtype: str
+        """
+        return self._ShieldSpaceId
+
+    @ShieldSpaceId.setter
+    def ShieldSpaceId(self, ShieldSpaceId):
+        self._ShieldSpaceId = ShieldSpaceId
+
+
+    def _deserialize(self, params):
+        self._ShieldSpaceId = params.get("ShieldSpaceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

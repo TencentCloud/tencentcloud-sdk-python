@@ -357,30 +357,44 @@ class AgentInstance(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 智能体实例ID
+        :param _InstanceId: <p>智能体实例ID</p>
         :type InstanceId: str
-        :param _InstanceName: 智能体实例名称
+        :param _InstanceName: <p>智能体实例名称</p>
         :type InstanceName: str
-        :param _AgentId: 智能体ID
+        :param _AgentId: <p>智能体ID</p>
         :type AgentId: str
-        :param _AgentName: 智能体名称
+        :param _AgentName: <p>智能体名称</p>
         :type AgentName: str
-        :param _AgentInternalName: 智能体类型
+        :param _AgentInternalName: <p>智能体类型</p>
         :type AgentInternalName: str
-        :param _AgentType: 智能体服务模式
+        :param _AgentType: <p>智能体服务模式</p>
         :type AgentType: str
-        :param _AgentVersion: 智能体版本
+        :param _AgentVersion: <p>智能体版本</p>
         :type AgentVersion: str
-        :param _Status: 智能体实例状态
+        :param _Status: <p>智能体实例状态</p>
         :type Status: str
-        :param _Parameters: 智能体实例参数列表
+        :param _Parameters: <p>智能体实例参数列表</p>
         :type Parameters: list of Parameter
-        :param _CreateTime: 创建时间
+        :param _CreateTime: <p>创建时间</p>
         :type CreateTime: str
-        :param _UpdateTime: 修改时间
+        :param _UpdateTime: <p>修改时间</p>
         :type UpdateTime: str
-        :param _Tags: 资源绑定Tag列表
+        :param _Tags: <p>资源绑定Tag列表</p>
         :type Tags: list of TagItem
+        :param _DeployPlace: <p>部署位置,intranet-共享版，userVpc-专享版</p>
+        :type DeployPlace: str
+        :param _PolicyIds: <p>关联的告警策略ID。</p>
+        :type PolicyIds: list of str
+        :param _ClawConfig: <p>无</p>
+        :type ClawConfig: :class:`tencentcloud.tdai.v20250717.models.ClawConfigInfo`
+        :param _InstanceType: <p>无</p>
+        :type InstanceType: str
+        :param _AllowedActions: <p>无</p>
+        :type AllowedActions: list of str
+        :param _LastActiveTime: <p>无</p>
+        :type LastActiveTime: str
+        :param _Description: <p>无</p>
+        :type Description: str
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -394,10 +408,17 @@ class AgentInstance(AbstractModel):
         self._CreateTime = None
         self._UpdateTime = None
         self._Tags = None
+        self._DeployPlace = None
+        self._PolicyIds = None
+        self._ClawConfig = None
+        self._InstanceType = None
+        self._AllowedActions = None
+        self._LastActiveTime = None
+        self._Description = None
 
     @property
     def InstanceId(self):
-        r"""智能体实例ID
+        r"""<p>智能体实例ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -408,7 +429,7 @@ class AgentInstance(AbstractModel):
 
     @property
     def InstanceName(self):
-        r"""智能体实例名称
+        r"""<p>智能体实例名称</p>
         :rtype: str
         """
         return self._InstanceName
@@ -419,7 +440,7 @@ class AgentInstance(AbstractModel):
 
     @property
     def AgentId(self):
-        r"""智能体ID
+        r"""<p>智能体ID</p>
         :rtype: str
         """
         return self._AgentId
@@ -430,7 +451,7 @@ class AgentInstance(AbstractModel):
 
     @property
     def AgentName(self):
-        r"""智能体名称
+        r"""<p>智能体名称</p>
         :rtype: str
         """
         return self._AgentName
@@ -441,7 +462,7 @@ class AgentInstance(AbstractModel):
 
     @property
     def AgentInternalName(self):
-        r"""智能体类型
+        r"""<p>智能体类型</p>
         :rtype: str
         """
         return self._AgentInternalName
@@ -452,7 +473,7 @@ class AgentInstance(AbstractModel):
 
     @property
     def AgentType(self):
-        r"""智能体服务模式
+        r"""<p>智能体服务模式</p>
         :rtype: str
         """
         return self._AgentType
@@ -463,7 +484,7 @@ class AgentInstance(AbstractModel):
 
     @property
     def AgentVersion(self):
-        r"""智能体版本
+        r"""<p>智能体版本</p>
         :rtype: str
         """
         return self._AgentVersion
@@ -474,7 +495,7 @@ class AgentInstance(AbstractModel):
 
     @property
     def Status(self):
-        r"""智能体实例状态
+        r"""<p>智能体实例状态</p>
         :rtype: str
         """
         return self._Status
@@ -485,7 +506,7 @@ class AgentInstance(AbstractModel):
 
     @property
     def Parameters(self):
-        r"""智能体实例参数列表
+        r"""<p>智能体实例参数列表</p>
         :rtype: list of Parameter
         """
         return self._Parameters
@@ -496,7 +517,7 @@ class AgentInstance(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
         :rtype: str
         """
         return self._CreateTime
@@ -507,7 +528,7 @@ class AgentInstance(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""修改时间
+        r"""<p>修改时间</p>
         :rtype: str
         """
         return self._UpdateTime
@@ -518,7 +539,7 @@ class AgentInstance(AbstractModel):
 
     @property
     def Tags(self):
-        r"""资源绑定Tag列表
+        r"""<p>资源绑定Tag列表</p>
         :rtype: list of TagItem
         """
         return self._Tags
@@ -526,6 +547,83 @@ class AgentInstance(AbstractModel):
     @Tags.setter
     def Tags(self, Tags):
         self._Tags = Tags
+
+    @property
+    def DeployPlace(self):
+        r"""<p>部署位置,intranet-共享版，userVpc-专享版</p>
+        :rtype: str
+        """
+        return self._DeployPlace
+
+    @DeployPlace.setter
+    def DeployPlace(self, DeployPlace):
+        self._DeployPlace = DeployPlace
+
+    @property
+    def PolicyIds(self):
+        r"""<p>关联的告警策略ID。</p>
+        :rtype: list of str
+        """
+        return self._PolicyIds
+
+    @PolicyIds.setter
+    def PolicyIds(self, PolicyIds):
+        self._PolicyIds = PolicyIds
+
+    @property
+    def ClawConfig(self):
+        r"""<p>无</p>
+        :rtype: :class:`tencentcloud.tdai.v20250717.models.ClawConfigInfo`
+        """
+        return self._ClawConfig
+
+    @ClawConfig.setter
+    def ClawConfig(self, ClawConfig):
+        self._ClawConfig = ClawConfig
+
+    @property
+    def InstanceType(self):
+        r"""<p>无</p>
+        :rtype: str
+        """
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def AllowedActions(self):
+        r"""<p>无</p>
+        :rtype: list of str
+        """
+        return self._AllowedActions
+
+    @AllowedActions.setter
+    def AllowedActions(self, AllowedActions):
+        self._AllowedActions = AllowedActions
+
+    @property
+    def LastActiveTime(self):
+        r"""<p>无</p>
+        :rtype: str
+        """
+        return self._LastActiveTime
+
+    @LastActiveTime.setter
+    def LastActiveTime(self, LastActiveTime):
+        self._LastActiveTime = LastActiveTime
+
+    @property
+    def Description(self):
+        r"""<p>无</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
 
 
     def _deserialize(self, params):
@@ -551,6 +649,15 @@ class AgentInstance(AbstractModel):
                 obj = TagItem()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        self._DeployPlace = params.get("DeployPlace")
+        self._PolicyIds = params.get("PolicyIds")
+        if params.get("ClawConfig") is not None:
+            self._ClawConfig = ClawConfigInfo()
+            self._ClawConfig._deserialize(params.get("ClawConfig"))
+        self._InstanceType = params.get("InstanceType")
+        self._AllowedActions = params.get("AllowedActions")
+        self._LastActiveTime = params.get("LastActiveTime")
+        self._Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -805,6 +912,140 @@ class ChatDetail(AbstractModel):
         
 
 
+class ClawConfigInfo(AbstractModel):
+    r"""databaseClaw实例配置信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TemplateId: <p>无</p>
+        :type TemplateId: int
+        :param _DbTypes: <p>无</p>
+        :type DbTypes: list of str
+        :param _Deploy: <p>无</p>
+        :type Deploy: :class:`tencentcloud.tdai.v20250717.models.ClawDeployInfo`
+        """
+        self._TemplateId = None
+        self._DbTypes = None
+        self._Deploy = None
+
+    @property
+    def TemplateId(self):
+        r"""<p>无</p>
+        :rtype: int
+        """
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def DbTypes(self):
+        r"""<p>无</p>
+        :rtype: list of str
+        """
+        return self._DbTypes
+
+    @DbTypes.setter
+    def DbTypes(self, DbTypes):
+        self._DbTypes = DbTypes
+
+    @property
+    def Deploy(self):
+        r"""<p>无</p>
+        :rtype: :class:`tencentcloud.tdai.v20250717.models.ClawDeployInfo`
+        """
+        return self._Deploy
+
+    @Deploy.setter
+    def Deploy(self, Deploy):
+        self._Deploy = Deploy
+
+
+    def _deserialize(self, params):
+        self._TemplateId = params.get("TemplateId")
+        self._DbTypes = params.get("DbTypes")
+        if params.get("Deploy") is not None:
+            self._Deploy = ClawDeployInfo()
+            self._Deploy._deserialize(params.get("Deploy"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ClawDeployInfo(AbstractModel):
+    r"""databaseClaw实例部署详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UserVpcId: <p>无</p>
+        :type UserVpcId: str
+        :param _UserSubnetId: <p>无</p>
+        :type UserSubnetId: str
+        :param _UserVpcRegion: <p>无</p>
+        :type UserVpcRegion: str
+        """
+        self._UserVpcId = None
+        self._UserSubnetId = None
+        self._UserVpcRegion = None
+
+    @property
+    def UserVpcId(self):
+        r"""<p>无</p>
+        :rtype: str
+        """
+        return self._UserVpcId
+
+    @UserVpcId.setter
+    def UserVpcId(self, UserVpcId):
+        self._UserVpcId = UserVpcId
+
+    @property
+    def UserSubnetId(self):
+        r"""<p>无</p>
+        :rtype: str
+        """
+        return self._UserSubnetId
+
+    @UserSubnetId.setter
+    def UserSubnetId(self, UserSubnetId):
+        self._UserSubnetId = UserSubnetId
+
+    @property
+    def UserVpcRegion(self):
+        r"""<p>无</p>
+        :rtype: str
+        """
+        return self._UserVpcRegion
+
+    @UserVpcRegion.setter
+    def UserVpcRegion(self, UserVpcRegion):
+        self._UserVpcRegion = UserVpcRegion
+
+
+    def _deserialize(self, params):
+        self._UserVpcId = params.get("UserVpcId")
+        self._UserSubnetId = params.get("UserSubnetId")
+        self._UserVpcRegion = params.get("UserVpcRegion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CodeRepo(AbstractModel):
     r"""仓库信息
 
@@ -997,12 +1238,27 @@ class CreateAgentInstanceRequest(AbstractModel):
         :type Parameters: list of Parameter
         :param _Tags: <p>资源的标签信息</p>
         :type Tags: list of TagItem
+        :param _InstanceType: <p>无</p>
+        :type InstanceType: str
+        :param _TemplateId: <p>无</p>
+        :type TemplateId: int
+        :param _Skills: <p>无</p>
+        :type Skills: list of str
+        :param _SoulId: <p>无</p>
+        :type SoulId: int
+        :param _Description: <p>无</p>
+        :type Description: str
         """
         self._AgentId = None
         self._AgentVersion = None
         self._InstanceName = None
         self._Parameters = None
         self._Tags = None
+        self._InstanceType = None
+        self._TemplateId = None
+        self._Skills = None
+        self._SoulId = None
+        self._Description = None
 
     @property
     def AgentId(self):
@@ -1059,6 +1315,61 @@ class CreateAgentInstanceRequest(AbstractModel):
     def Tags(self, Tags):
         self._Tags = Tags
 
+    @property
+    def InstanceType(self):
+        r"""<p>无</p>
+        :rtype: str
+        """
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def TemplateId(self):
+        r"""<p>无</p>
+        :rtype: int
+        """
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def Skills(self):
+        r"""<p>无</p>
+        :rtype: list of str
+        """
+        return self._Skills
+
+    @Skills.setter
+    def Skills(self, Skills):
+        self._Skills = Skills
+
+    @property
+    def SoulId(self):
+        r"""<p>无</p>
+        :rtype: int
+        """
+        return self._SoulId
+
+    @SoulId.setter
+    def SoulId(self, SoulId):
+        self._SoulId = SoulId
+
+    @property
+    def Description(self):
+        r"""<p>无</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
 
     def _deserialize(self, params):
         self._AgentId = params.get("AgentId")
@@ -1076,6 +1387,11 @@ class CreateAgentInstanceRequest(AbstractModel):
                 obj = TagItem()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        self._InstanceType = params.get("InstanceType")
+        self._TemplateId = params.get("TemplateId")
+        self._Skills = params.get("Skills")
+        self._SoulId = params.get("SoulId")
+        self._Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1803,20 +2119,22 @@ class DescribeAgentInstancesRequest(AbstractModel):
         :type Offset: int
         :param _Limit: 列表查询数量
         :type Limit: int
-        :param _InstanceId: 实例ID，为空时查询所有，如果填写则会根据InstanceId筛选
+        :param _InstanceId: <p>实例ID，为空时查询所有，如果填写则会根据InstanceId筛选</p>
         :type InstanceId: str
-        :param _InstanceName: 实例名，为空时查询所有，如果填写则会根据InstanceName筛选
+        :param _InstanceName: <p>实例名，为空时查询所有，如果填写则会根据InstanceName筛选</p>
         :type InstanceName: str
-        :param _AgentId: 智能体ID，为空时查询所有，如果填写则会根据AgentId筛选
+        :param _AgentId: <p>智能体ID，为空时查询所有，如果填写则会根据AgentId筛选</p>
         :type AgentId: str
-        :param _AgentName: 智能体名称，为空时查询所有，如果填写则会根据AgentName筛选
+        :param _AgentName: <p>智能体名称，为空时查询所有，如果填写则会根据AgentName筛选</p>
         :type AgentName: str
-        :param _AgentInternalName: 智能体类型，为空时查询所有，如果填写则会根据AgentName筛选
+        :param _AgentInternalName: <p>智能体类型，为空时查询所有，如果填写则会根据AgentName筛选</p>
         :type AgentInternalName: str
-        :param _Status: 智能体实例状态，为空时查询所有，如果填写则会根据Status筛选
+        :param _Status: <p>智能体实例状态，为空时查询所有，如果填写则会根据Status筛选</p>
         :type Status: str
-        :param _TagFilter: 标签过滤信息
+        :param _TagFilter: <p>标签过滤信息</p>
         :type TagFilter: list of TagFilter
+        :param _InstanceType: <p>实例类型</p>
+        :type InstanceType: str
         """
         self._Offset = None
         self._Limit = None
@@ -1827,6 +2145,7 @@ class DescribeAgentInstancesRequest(AbstractModel):
         self._AgentInternalName = None
         self._Status = None
         self._TagFilter = None
+        self._InstanceType = None
 
     @property
     def Offset(self):
@@ -1852,7 +2171,7 @@ class DescribeAgentInstancesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例ID，为空时查询所有，如果填写则会根据InstanceId筛选
+        r"""<p>实例ID，为空时查询所有，如果填写则会根据InstanceId筛选</p>
         :rtype: str
         """
         return self._InstanceId
@@ -1863,7 +2182,7 @@ class DescribeAgentInstancesRequest(AbstractModel):
 
     @property
     def InstanceName(self):
-        r"""实例名，为空时查询所有，如果填写则会根据InstanceName筛选
+        r"""<p>实例名，为空时查询所有，如果填写则会根据InstanceName筛选</p>
         :rtype: str
         """
         return self._InstanceName
@@ -1874,7 +2193,7 @@ class DescribeAgentInstancesRequest(AbstractModel):
 
     @property
     def AgentId(self):
-        r"""智能体ID，为空时查询所有，如果填写则会根据AgentId筛选
+        r"""<p>智能体ID，为空时查询所有，如果填写则会根据AgentId筛选</p>
         :rtype: str
         """
         return self._AgentId
@@ -1885,7 +2204,7 @@ class DescribeAgentInstancesRequest(AbstractModel):
 
     @property
     def AgentName(self):
-        r"""智能体名称，为空时查询所有，如果填写则会根据AgentName筛选
+        r"""<p>智能体名称，为空时查询所有，如果填写则会根据AgentName筛选</p>
         :rtype: str
         """
         return self._AgentName
@@ -1896,7 +2215,7 @@ class DescribeAgentInstancesRequest(AbstractModel):
 
     @property
     def AgentInternalName(self):
-        r"""智能体类型，为空时查询所有，如果填写则会根据AgentName筛选
+        r"""<p>智能体类型，为空时查询所有，如果填写则会根据AgentName筛选</p>
         :rtype: str
         """
         return self._AgentInternalName
@@ -1907,7 +2226,7 @@ class DescribeAgentInstancesRequest(AbstractModel):
 
     @property
     def Status(self):
-        r"""智能体实例状态，为空时查询所有，如果填写则会根据Status筛选
+        r"""<p>智能体实例状态，为空时查询所有，如果填写则会根据Status筛选</p>
         :rtype: str
         """
         return self._Status
@@ -1918,7 +2237,7 @@ class DescribeAgentInstancesRequest(AbstractModel):
 
     @property
     def TagFilter(self):
-        r"""标签过滤信息
+        r"""<p>标签过滤信息</p>
         :rtype: list of TagFilter
         """
         return self._TagFilter
@@ -1926,6 +2245,17 @@ class DescribeAgentInstancesRequest(AbstractModel):
     @TagFilter.setter
     def TagFilter(self, TagFilter):
         self._TagFilter = TagFilter
+
+    @property
+    def InstanceType(self):
+        r"""<p>实例类型</p>
+        :rtype: str
+        """
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
 
 
     def _deserialize(self, params):
@@ -1943,6 +2273,7 @@ class DescribeAgentInstancesRequest(AbstractModel):
                 obj = TagFilter()
                 obj._deserialize(item)
                 self._TagFilter.append(obj)
+        self._InstanceType = params.get("InstanceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1962,13 +2293,16 @@ class DescribeAgentInstancesResponse(AbstractModel):
         r"""
         :param _TotalCount: 查询结果总数量
         :type TotalCount: int
-        :param _Items: 智能体实例列表
+        :param _Items: <p>智能体实例列表</p>
         :type Items: list of AgentInstance
+        :param _StatusCounts: <p>无</p>
+        :type StatusCounts: list of StatusItem
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
         self._Items = None
+        self._StatusCounts = None
         self._RequestId = None
 
     @property
@@ -1984,7 +2318,7 @@ class DescribeAgentInstancesResponse(AbstractModel):
 
     @property
     def Items(self):
-        r"""智能体实例列表
+        r"""<p>智能体实例列表</p>
         :rtype: list of AgentInstance
         """
         return self._Items
@@ -1992,6 +2326,17 @@ class DescribeAgentInstancesResponse(AbstractModel):
     @Items.setter
     def Items(self, Items):
         self._Items = Items
+
+    @property
+    def StatusCounts(self):
+        r"""<p>无</p>
+        :rtype: list of StatusItem
+        """
+        return self._StatusCounts
+
+    @StatusCounts.setter
+    def StatusCounts(self, StatusCounts):
+        self._StatusCounts = StatusCounts
 
     @property
     def RequestId(self):
@@ -2013,6 +2358,12 @@ class DescribeAgentInstancesResponse(AbstractModel):
                 obj = AgentInstance()
                 obj._deserialize(item)
                 self._Items.append(obj)
+        if params.get("StatusCounts") is not None:
+            self._StatusCounts = []
+            for item in params.get("StatusCounts"):
+                obj = StatusItem()
+                obj._deserialize(item)
+                self._StatusCounts.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -3509,6 +3860,57 @@ class StartAgentTaskResponse(AbstractModel):
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
+
+
+class StatusItem(AbstractModel):
+    r"""实例状态描述
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: <p>无</p>
+        :type Status: str
+        :param _Count: <p>无</p>
+        :type Count: int
+        """
+        self._Status = None
+        self._Count = None
+
+    @property
+    def Status(self):
+        r"""<p>无</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Count(self):
+        r"""<p>无</p>
+        :rtype: int
+        """
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._Count = params.get("Count")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class TagFilter(AbstractModel):

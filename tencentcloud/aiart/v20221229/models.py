@@ -2299,13 +2299,13 @@ class Rect(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _X: 人脸框左上角横坐标。
+        :param _X: <p>人脸框左上角横坐标。</p>
         :type X: int
-        :param _Y: 人脸框左上角纵坐标。
+        :param _Y: <p>人脸框左上角纵坐标。</p>
         :type Y: int
-        :param _Width: 人脸框宽度。
+        :param _Width: <p>人脸框宽度。<br>单位：px</p>
         :type Width: int
-        :param _Height: 人脸框高度。
+        :param _Height: <p>人脸框高度。<br>单位：px</p>
         :type Height: int
         """
         self._X = None
@@ -2315,7 +2315,7 @@ class Rect(AbstractModel):
 
     @property
     def X(self):
-        r"""人脸框左上角横坐标。
+        r"""<p>人脸框左上角横坐标。</p>
         :rtype: int
         """
         return self._X
@@ -2326,7 +2326,7 @@ class Rect(AbstractModel):
 
     @property
     def Y(self):
-        r"""人脸框左上角纵坐标。
+        r"""<p>人脸框左上角纵坐标。</p>
         :rtype: int
         """
         return self._Y
@@ -2337,7 +2337,7 @@ class Rect(AbstractModel):
 
     @property
     def Width(self):
-        r"""人脸框宽度。
+        r"""<p>人脸框宽度。<br>单位：px</p>
         :rtype: int
         """
         return self._Width
@@ -2348,7 +2348,7 @@ class Rect(AbstractModel):
 
     @property
     def Height(self):
-        r"""人脸框高度。
+        r"""<p>人脸框高度。<br>单位：px</p>
         :rtype: int
         """
         return self._Height

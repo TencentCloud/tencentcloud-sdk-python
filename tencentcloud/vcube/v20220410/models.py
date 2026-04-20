@@ -735,34 +735,37 @@ class CreateApplicationAndBindLicenseRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AppName: 应用名
+        :param _AppName: <p>应用名</p>
         :type AppName: str
-        :param _BundleId: 应用ID
+        :param _BundleId: <p>应用ID</p>
         :type BundleId: str
-        :param _PackageName: 包名
+        :param _PackageName: <p>包名</p>
         :type PackageName: str
-        :param _ResourceIds: 资源包ID
+        :param _BundleName: <p>鸿蒙包包名</p>
+        :type BundleName: str
+        :param _ResourceIds: <p>资源包ID</p>
         :type ResourceIds: list of str
-        :param _CompanyPermit: 营业执照
+        :param _CompanyPermit: <p>营业执照</p>
         :type CompanyPermit: str
-        :param _CompanyType: 公司类型
+        :param _CompanyType: <p>公司类型</p>
         :type CompanyType: str
-        :param _CompanyName: 公司名称
+        :param _CompanyName: <p>公司名称</p>
         :type CompanyName: str
-        :param _XMagicResourceIds: 优图资源id列表
+        :param _XMagicResourceIds: <p>优图资源id列表</p>
         :type XMagicResourceIds: list of str
-        :param _MacBundleId: Mac 进程名
+        :param _MacBundleId: <p>Mac 进程名</p>
         :type MacBundleId: str
-        :param _WinProcessName: Windows 进程名
+        :param _WinProcessName: <p>Windows 进程名</p>
         :type WinProcessName: str
-        :param _DomainList: 要开通的域名列表
+        :param _DomainList: <p>要开通的域名列表</p>
         :type DomainList: list of str
-        :param _Platform: 要开通的端，web/mobile/pc
+        :param _Platform: <p>要开通的端，web/mobile/pc</p>
         :type Platform: str
         """
         self._AppName = None
         self._BundleId = None
         self._PackageName = None
+        self._BundleName = None
         self._ResourceIds = None
         self._CompanyPermit = None
         self._CompanyType = None
@@ -775,7 +778,7 @@ class CreateApplicationAndBindLicenseRequest(AbstractModel):
 
     @property
     def AppName(self):
-        r"""应用名
+        r"""<p>应用名</p>
         :rtype: str
         """
         return self._AppName
@@ -786,7 +789,7 @@ class CreateApplicationAndBindLicenseRequest(AbstractModel):
 
     @property
     def BundleId(self):
-        r"""应用ID
+        r"""<p>应用ID</p>
         :rtype: str
         """
         return self._BundleId
@@ -797,7 +800,7 @@ class CreateApplicationAndBindLicenseRequest(AbstractModel):
 
     @property
     def PackageName(self):
-        r"""包名
+        r"""<p>包名</p>
         :rtype: str
         """
         return self._PackageName
@@ -807,8 +810,19 @@ class CreateApplicationAndBindLicenseRequest(AbstractModel):
         self._PackageName = PackageName
 
     @property
+    def BundleName(self):
+        r"""<p>鸿蒙包包名</p>
+        :rtype: str
+        """
+        return self._BundleName
+
+    @BundleName.setter
+    def BundleName(self, BundleName):
+        self._BundleName = BundleName
+
+    @property
     def ResourceIds(self):
-        r"""资源包ID
+        r"""<p>资源包ID</p>
         :rtype: list of str
         """
         return self._ResourceIds
@@ -819,7 +833,7 @@ class CreateApplicationAndBindLicenseRequest(AbstractModel):
 
     @property
     def CompanyPermit(self):
-        r"""营业执照
+        r"""<p>营业执照</p>
         :rtype: str
         """
         return self._CompanyPermit
@@ -830,7 +844,7 @@ class CreateApplicationAndBindLicenseRequest(AbstractModel):
 
     @property
     def CompanyType(self):
-        r"""公司类型
+        r"""<p>公司类型</p>
         :rtype: str
         """
         return self._CompanyType
@@ -841,7 +855,7 @@ class CreateApplicationAndBindLicenseRequest(AbstractModel):
 
     @property
     def CompanyName(self):
-        r"""公司名称
+        r"""<p>公司名称</p>
         :rtype: str
         """
         return self._CompanyName
@@ -852,7 +866,7 @@ class CreateApplicationAndBindLicenseRequest(AbstractModel):
 
     @property
     def XMagicResourceIds(self):
-        r"""优图资源id列表
+        r"""<p>优图资源id列表</p>
         :rtype: list of str
         """
         return self._XMagicResourceIds
@@ -863,7 +877,7 @@ class CreateApplicationAndBindLicenseRequest(AbstractModel):
 
     @property
     def MacBundleId(self):
-        r"""Mac 进程名
+        r"""<p>Mac 进程名</p>
         :rtype: str
         """
         return self._MacBundleId
@@ -874,7 +888,7 @@ class CreateApplicationAndBindLicenseRequest(AbstractModel):
 
     @property
     def WinProcessName(self):
-        r"""Windows 进程名
+        r"""<p>Windows 进程名</p>
         :rtype: str
         """
         return self._WinProcessName
@@ -885,7 +899,7 @@ class CreateApplicationAndBindLicenseRequest(AbstractModel):
 
     @property
     def DomainList(self):
-        r"""要开通的域名列表
+        r"""<p>要开通的域名列表</p>
         :rtype: list of str
         """
         return self._DomainList
@@ -896,7 +910,7 @@ class CreateApplicationAndBindLicenseRequest(AbstractModel):
 
     @property
     def Platform(self):
-        r"""要开通的端，web/mobile/pc
+        r"""<p>要开通的端，web/mobile/pc</p>
         :rtype: str
         """
         return self._Platform
@@ -910,6 +924,7 @@ class CreateApplicationAndBindLicenseRequest(AbstractModel):
         self._AppName = params.get("AppName")
         self._BundleId = params.get("BundleId")
         self._PackageName = params.get("PackageName")
+        self._BundleName = params.get("BundleName")
         self._ResourceIds = params.get("ResourceIds")
         self._CompanyPermit = params.get("CompanyPermit")
         self._CompanyType = params.get("CompanyType")
@@ -1385,36 +1400,39 @@ class CreateTrialApplicationAndLicenseRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AppName: 应用名
+        :param _AppName: <p>应用名</p>
         :type AppName: str
-        :param _BundleId: 应用ID
+        :param _BundleId: <p>应用ID</p>
         :type BundleId: str
-        :param _PackageName: 包名
+        :param _PackageName: <p>包名</p>
         :type PackageName: str
-        :param _FeatureIds: 功能 id 数组
+        :param _BundleName: <p>鸿蒙包包名</p>
+        :type BundleName: str
+        :param _FeatureIds: <p>功能 id 数组</p>
         :type FeatureIds: list of int
-        :param _XMagic: 是否要开通优图功能
+        :param _XMagic: <p>是否要开通优图功能</p>
         :type XMagic: bool
-        :param _CompanyPermit: 营业执照
+        :param _CompanyPermit: <p>营业执照</p>
         :type CompanyPermit: str
-        :param _CompanyType: 公司类型
+        :param _CompanyType: <p>公司类型</p>
         :type CompanyType: str
-        :param _CompanyName: 公司名称
+        :param _CompanyName: <p>公司名称</p>
         :type CompanyName: str
-        :param _PlanList: 要开通的测试功能名称，基础套餐只能有一个
+        :param _PlanList: <p>要开通的测试功能名称，基础套餐只能有一个</p>
         :type PlanList: list of str
-        :param _MacBundleId: Mac 进程名
+        :param _MacBundleId: <p>Mac 进程名</p>
         :type MacBundleId: str
-        :param _WinProcessName: Windows 进程名
+        :param _WinProcessName: <p>Windows 进程名</p>
         :type WinProcessName: str
-        :param _Platform: 要创建到哪个平台，web、mobile、pc，默认mobile
+        :param _Platform: <p>要创建到哪个平台，web、mobile、pc，默认mobile</p>
         :type Platform: str
-        :param _DomainList: 授权域名列表
+        :param _DomainList: <p>授权域名列表</p>
         :type DomainList: list of str
         """
         self._AppName = None
         self._BundleId = None
         self._PackageName = None
+        self._BundleName = None
         self._FeatureIds = None
         self._XMagic = None
         self._CompanyPermit = None
@@ -1428,7 +1446,7 @@ class CreateTrialApplicationAndLicenseRequest(AbstractModel):
 
     @property
     def AppName(self):
-        r"""应用名
+        r"""<p>应用名</p>
         :rtype: str
         """
         return self._AppName
@@ -1439,7 +1457,7 @@ class CreateTrialApplicationAndLicenseRequest(AbstractModel):
 
     @property
     def BundleId(self):
-        r"""应用ID
+        r"""<p>应用ID</p>
         :rtype: str
         """
         return self._BundleId
@@ -1450,7 +1468,7 @@ class CreateTrialApplicationAndLicenseRequest(AbstractModel):
 
     @property
     def PackageName(self):
-        r"""包名
+        r"""<p>包名</p>
         :rtype: str
         """
         return self._PackageName
@@ -1460,8 +1478,19 @@ class CreateTrialApplicationAndLicenseRequest(AbstractModel):
         self._PackageName = PackageName
 
     @property
+    def BundleName(self):
+        r"""<p>鸿蒙包包名</p>
+        :rtype: str
+        """
+        return self._BundleName
+
+    @BundleName.setter
+    def BundleName(self, BundleName):
+        self._BundleName = BundleName
+
+    @property
     def FeatureIds(self):
-        r"""功能 id 数组
+        r"""<p>功能 id 数组</p>
         :rtype: list of int
         """
         return self._FeatureIds
@@ -1472,7 +1501,7 @@ class CreateTrialApplicationAndLicenseRequest(AbstractModel):
 
     @property
     def XMagic(self):
-        r"""是否要开通优图功能
+        r"""<p>是否要开通优图功能</p>
         :rtype: bool
         """
         return self._XMagic
@@ -1483,7 +1512,7 @@ class CreateTrialApplicationAndLicenseRequest(AbstractModel):
 
     @property
     def CompanyPermit(self):
-        r"""营业执照
+        r"""<p>营业执照</p>
         :rtype: str
         """
         return self._CompanyPermit
@@ -1494,7 +1523,7 @@ class CreateTrialApplicationAndLicenseRequest(AbstractModel):
 
     @property
     def CompanyType(self):
-        r"""公司类型
+        r"""<p>公司类型</p>
         :rtype: str
         """
         return self._CompanyType
@@ -1505,7 +1534,7 @@ class CreateTrialApplicationAndLicenseRequest(AbstractModel):
 
     @property
     def CompanyName(self):
-        r"""公司名称
+        r"""<p>公司名称</p>
         :rtype: str
         """
         return self._CompanyName
@@ -1516,7 +1545,7 @@ class CreateTrialApplicationAndLicenseRequest(AbstractModel):
 
     @property
     def PlanList(self):
-        r"""要开通的测试功能名称，基础套餐只能有一个
+        r"""<p>要开通的测试功能名称，基础套餐只能有一个</p>
         :rtype: list of str
         """
         return self._PlanList
@@ -1527,7 +1556,7 @@ class CreateTrialApplicationAndLicenseRequest(AbstractModel):
 
     @property
     def MacBundleId(self):
-        r"""Mac 进程名
+        r"""<p>Mac 进程名</p>
         :rtype: str
         """
         return self._MacBundleId
@@ -1538,7 +1567,7 @@ class CreateTrialApplicationAndLicenseRequest(AbstractModel):
 
     @property
     def WinProcessName(self):
-        r"""Windows 进程名
+        r"""<p>Windows 进程名</p>
         :rtype: str
         """
         return self._WinProcessName
@@ -1549,7 +1578,7 @@ class CreateTrialApplicationAndLicenseRequest(AbstractModel):
 
     @property
     def Platform(self):
-        r"""要创建到哪个平台，web、mobile、pc，默认mobile
+        r"""<p>要创建到哪个平台，web、mobile、pc，默认mobile</p>
         :rtype: str
         """
         return self._Platform
@@ -1560,7 +1589,7 @@ class CreateTrialApplicationAndLicenseRequest(AbstractModel):
 
     @property
     def DomainList(self):
-        r"""授权域名列表
+        r"""<p>授权域名列表</p>
         :rtype: list of str
         """
         return self._DomainList
@@ -1574,6 +1603,7 @@ class CreateTrialApplicationAndLicenseRequest(AbstractModel):
         self._AppName = params.get("AppName")
         self._BundleId = params.get("BundleId")
         self._PackageName = params.get("PackageName")
+        self._BundleName = params.get("BundleName")
         self._FeatureIds = params.get("FeatureIds")
         self._XMagic = params.get("XMagic")
         self._CompanyPermit = params.get("CompanyPermit")

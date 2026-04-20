@@ -193,7 +193,7 @@ class CkafkaClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateConnectResourceResponse:
         """
-        创建Datahub连接源
+        创建连接器连接
         """
         
         kwargs = {}
@@ -229,7 +229,7 @@ class CkafkaClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateDatahubTaskResponse:
         """
-        创建DIP转储任务
+        创建连接器任务
         """
         
         kwargs = {}
@@ -463,7 +463,7 @@ class CkafkaClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DeleteConnectResourceResponse:
         """
-        删除Datahub连接源
+        删除连接器连接
         """
         
         kwargs = {}
@@ -481,7 +481,7 @@ class CkafkaClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DeleteDatahubTaskResponse:
         """
-        删除Dip任务
+        删除连接器任务
         """
         
         kwargs = {}
@@ -691,6 +691,24 @@ class CkafkaClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeAccessPolicy(
+            self,
+            request: models.DescribeAccessPolicyRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAccessPolicyResponse:
+        """
+        查询实例公网IP白名单列表接口
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAccessPolicy"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAccessPolicyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeAclRule(
             self,
             request: models.DescribeAclRuleRequest,
@@ -751,7 +769,7 @@ class CkafkaClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeConnectResourceResponse:
         """
-        查询Datahub连接源
+        查询连接器连接详情
         """
         
         kwargs = {}
@@ -769,7 +787,7 @@ class CkafkaClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeConnectResourcesResponse:
         """
-        查询Datahub连接源列表
+        查询连接器连接列表
         """
         
         kwargs = {}
@@ -841,7 +859,7 @@ class CkafkaClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeDatahubTaskResponse:
         """
-        查询Datahub任务信息
+        查询连接器任务详情
         """
         
         kwargs = {}
@@ -859,7 +877,7 @@ class CkafkaClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeDatahubTasksResponse:
         """
-        查询Datahub任务列表
+        查询连接器任务列表
         """
         
         kwargs = {}
@@ -1412,6 +1430,24 @@ class CkafkaClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyAccessPolicy(
+            self,
+            request: models.ModifyAccessPolicyRequest,
+            opts: Dict = None,
+    ) -> models.ModifyAccessPolicyResponse:
+        """
+        修改实例公网IP白名单列表接口
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyAccessPolicy"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyAccessPolicyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyAclRule(
             self,
             request: models.ModifyAclRuleRequest,
@@ -1436,7 +1472,7 @@ class CkafkaClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyConnectResourceResponse:
         """
-        编辑Datahub连接源
+        编辑连接器连接
         """
         
         kwargs = {}
@@ -1454,7 +1490,7 @@ class CkafkaClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyDatahubTaskResponse:
         """
-        修改Datahub任务
+        修改连接器任务
         """
         
         kwargs = {}
@@ -1598,7 +1634,7 @@ class CkafkaClient(AbstractClient):
             opts: Dict = None,
     ) -> models.PauseDatahubTaskResponse:
         """
-        暂停Dip任务
+        暂停连接器任务
         """
         
         kwargs = {}
@@ -1634,7 +1670,7 @@ class CkafkaClient(AbstractClient):
             opts: Dict = None,
     ) -> models.RestartDatahubTaskResponse:
         """
-        Datahub任务异常时，重启Datahub任务
+        连接器任务异常时，重启连接器任务
         """
         
         kwargs = {}
@@ -1652,7 +1688,7 @@ class CkafkaClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ResumeDatahubTaskResponse:
         """
-        恢复Dip任务
+        恢复连接器任务
         """
         
         kwargs = {}

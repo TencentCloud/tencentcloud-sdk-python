@@ -3520,21 +3520,21 @@ class CosParam(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BucketName: cos 存储桶名称
+        :param _BucketName: <p>cos 存储桶名称</p>
         :type BucketName: str
-        :param _Region: 地域代码
+        :param _Region: <p>地域代码</p>
         :type Region: str
-        :param _ObjectKey: 对象名称
+        :param _ObjectKey: <p>对象名称</p>
         :type ObjectKey: str
-        :param _AggregateBatchSize: 汇聚消息量的大小（单位：MB)
+        :param _AggregateBatchSize: <p>汇聚消息量的大小（单位：MB)</p>
         :type AggregateBatchSize: int
-        :param _AggregateInterval: 汇聚的时间间隔（单位：小时）
+        :param _AggregateInterval: <p>汇聚的时间间隔（单位：小时）</p>
         :type AggregateInterval: int
-        :param _FormatOutputType: 消息汇聚后的文件格式（支持csv, json）
+        :param _FormatOutputType: <p>消息汇聚后的文件格式（支持csv, json）</p>
         :type FormatOutputType: str
-        :param _ObjectKeyPrefix: 转储的对象目录前缀
+        :param _ObjectKeyPrefix: <p>转储的对象目录前缀</p>
         :type ObjectKeyPrefix: str
-        :param _DirectoryTimeFormat: 根据strptime 时间格式化的分区格式
+        :param _DirectoryTimeFormat: <p>根据strptime 时间格式化的分区格式</p>
         :type DirectoryTimeFormat: str
         """
         self._BucketName = None
@@ -3548,7 +3548,7 @@ class CosParam(AbstractModel):
 
     @property
     def BucketName(self):
-        r"""cos 存储桶名称
+        r"""<p>cos 存储桶名称</p>
         :rtype: str
         """
         return self._BucketName
@@ -3559,7 +3559,7 @@ class CosParam(AbstractModel):
 
     @property
     def Region(self):
-        r"""地域代码
+        r"""<p>地域代码</p>
         :rtype: str
         """
         return self._Region
@@ -3570,7 +3570,7 @@ class CosParam(AbstractModel):
 
     @property
     def ObjectKey(self):
-        r"""对象名称
+        r"""<p>对象名称</p>
         :rtype: str
         """
         return self._ObjectKey
@@ -3581,7 +3581,7 @@ class CosParam(AbstractModel):
 
     @property
     def AggregateBatchSize(self):
-        r"""汇聚消息量的大小（单位：MB)
+        r"""<p>汇聚消息量的大小（单位：MB)</p>
         :rtype: int
         """
         return self._AggregateBatchSize
@@ -3592,7 +3592,7 @@ class CosParam(AbstractModel):
 
     @property
     def AggregateInterval(self):
-        r"""汇聚的时间间隔（单位：小时）
+        r"""<p>汇聚的时间间隔（单位：小时）</p>
         :rtype: int
         """
         return self._AggregateInterval
@@ -3603,7 +3603,7 @@ class CosParam(AbstractModel):
 
     @property
     def FormatOutputType(self):
-        r"""消息汇聚后的文件格式（支持csv, json）
+        r"""<p>消息汇聚后的文件格式（支持csv, json）</p>
         :rtype: str
         """
         return self._FormatOutputType
@@ -3614,7 +3614,7 @@ class CosParam(AbstractModel):
 
     @property
     def ObjectKeyPrefix(self):
-        r"""转储的对象目录前缀
+        r"""<p>转储的对象目录前缀</p>
         :rtype: str
         """
         return self._ObjectKeyPrefix
@@ -3625,7 +3625,7 @@ class CosParam(AbstractModel):
 
     @property
     def DirectoryTimeFormat(self):
-        r"""根据strptime 时间格式化的分区格式
+        r"""<p>根据strptime 时间格式化的分区格式</p>
         :rtype: str
         """
         return self._DirectoryTimeFormat
@@ -4222,34 +4222,36 @@ class CreateConnectResourceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ResourceName: 连接源名称
+        :param _ResourceName: <p>连接源名称</p>
         :type ResourceName: str
-        :param _Type: 连接源类型
+        :param _Type: <p>连接源类型</p>
         :type Type: str
-        :param _Description: 连接源描述
+        :param _Description: <p>连接源描述</p>
         :type Description: str
-        :param _DtsConnectParam: Dts配置，Type为DTS时必填
+        :param _DtsConnectParam: <p>Dts配置，Type为DTS时必填</p>
         :type DtsConnectParam: :class:`tencentcloud.ckafka.v20190819.models.DtsConnectParam`
-        :param _MongoDBConnectParam: MongoDB配置，Type为MONGODB时必填
+        :param _MongoDBConnectParam: <p>MongoDB配置，Type为MONGODB时必填</p>
         :type MongoDBConnectParam: :class:`tencentcloud.ckafka.v20190819.models.MongoDBConnectParam`
-        :param _EsConnectParam: Es配置，Type为ES时必填
+        :param _EsConnectParam: <p>Es配置，Type为ES时必填</p>
         :type EsConnectParam: :class:`tencentcloud.ckafka.v20190819.models.EsConnectParam`
-        :param _ClickHouseConnectParam: ClickHouse配置，Type为CLICKHOUSE时必填
+        :param _ClickHouseConnectParam: <p>ClickHouse配置，Type为CLICKHOUSE时必填</p>
         :type ClickHouseConnectParam: :class:`tencentcloud.ckafka.v20190819.models.ClickHouseConnectParam`
-        :param _MySQLConnectParam: MySQL配置，Type为MYSQL或TDSQL_C_MYSQL时必填
+        :param _MySQLConnectParam: <p>MySQL配置，Type为MYSQL或TDSQL_C_MYSQL时必填</p>
         :type MySQLConnectParam: :class:`tencentcloud.ckafka.v20190819.models.MySQLConnectParam`
-        :param _PostgreSQLConnectParam: PostgreSQL配置，Type为POSTGRESQL或TDSQL_C_POSTGRESQL时必填
+        :param _PostgreSQLConnectParam: <p>PostgreSQL配置，Type为POSTGRESQL或TDSQL_C_POSTGRESQL时必填</p>
         :type PostgreSQLConnectParam: :class:`tencentcloud.ckafka.v20190819.models.PostgreSQLConnectParam`
-        :param _MariaDBConnectParam: MariaDB配置，Type为MARIADB时必填
+        :param _MariaDBConnectParam: <p>MariaDB配置，Type为MARIADB时必填</p>
         :type MariaDBConnectParam: :class:`tencentcloud.ckafka.v20190819.models.MariaDBConnectParam`
-        :param _SQLServerConnectParam: SQLServer配置，Type为SQLSERVER时必填
+        :param _SQLServerConnectParam: <p>SQLServer配置，Type为SQLSERVER时必填</p>
         :type SQLServerConnectParam: :class:`tencentcloud.ckafka.v20190819.models.SQLServerConnectParam`
-        :param _DorisConnectParam: Doris 配置，Type为 DORIS 时必填
+        :param _DorisConnectParam: <p>Doris 配置，Type为 DORIS 时必填</p>
         :type DorisConnectParam: :class:`tencentcloud.ckafka.v20190819.models.DorisConnectParam`
-        :param _KafkaConnectParam: Kafka配置，Type为 KAFKA 时必填
+        :param _KafkaConnectParam: <p>Kafka配置，Type为 KAFKA 时必填</p>
         :type KafkaConnectParam: :class:`tencentcloud.ckafka.v20190819.models.KafkaConnectParam`
-        :param _MqttConnectParam: MQTT配置，Type为 MQTT 时必填
+        :param _MqttConnectParam: <p>MQTT配置，Type为 MQTT 时必填</p>
         :type MqttConnectParam: :class:`tencentcloud.ckafka.v20190819.models.MqttConnectParam`
+        :param _Tags: <p>标签列表</p>
+        :type Tags: list of Tag
         """
         self._ResourceName = None
         self._Type = None
@@ -4265,10 +4267,11 @@ class CreateConnectResourceRequest(AbstractModel):
         self._DorisConnectParam = None
         self._KafkaConnectParam = None
         self._MqttConnectParam = None
+        self._Tags = None
 
     @property
     def ResourceName(self):
-        r"""连接源名称
+        r"""<p>连接源名称</p>
         :rtype: str
         """
         return self._ResourceName
@@ -4279,7 +4282,7 @@ class CreateConnectResourceRequest(AbstractModel):
 
     @property
     def Type(self):
-        r"""连接源类型
+        r"""<p>连接源类型</p>
         :rtype: str
         """
         return self._Type
@@ -4290,7 +4293,7 @@ class CreateConnectResourceRequest(AbstractModel):
 
     @property
     def Description(self):
-        r"""连接源描述
+        r"""<p>连接源描述</p>
         :rtype: str
         """
         return self._Description
@@ -4301,7 +4304,7 @@ class CreateConnectResourceRequest(AbstractModel):
 
     @property
     def DtsConnectParam(self):
-        r"""Dts配置，Type为DTS时必填
+        r"""<p>Dts配置，Type为DTS时必填</p>
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.DtsConnectParam`
         """
         return self._DtsConnectParam
@@ -4312,7 +4315,7 @@ class CreateConnectResourceRequest(AbstractModel):
 
     @property
     def MongoDBConnectParam(self):
-        r"""MongoDB配置，Type为MONGODB时必填
+        r"""<p>MongoDB配置，Type为MONGODB时必填</p>
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.MongoDBConnectParam`
         """
         return self._MongoDBConnectParam
@@ -4323,7 +4326,7 @@ class CreateConnectResourceRequest(AbstractModel):
 
     @property
     def EsConnectParam(self):
-        r"""Es配置，Type为ES时必填
+        r"""<p>Es配置，Type为ES时必填</p>
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.EsConnectParam`
         """
         return self._EsConnectParam
@@ -4334,7 +4337,7 @@ class CreateConnectResourceRequest(AbstractModel):
 
     @property
     def ClickHouseConnectParam(self):
-        r"""ClickHouse配置，Type为CLICKHOUSE时必填
+        r"""<p>ClickHouse配置，Type为CLICKHOUSE时必填</p>
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.ClickHouseConnectParam`
         """
         return self._ClickHouseConnectParam
@@ -4345,7 +4348,7 @@ class CreateConnectResourceRequest(AbstractModel):
 
     @property
     def MySQLConnectParam(self):
-        r"""MySQL配置，Type为MYSQL或TDSQL_C_MYSQL时必填
+        r"""<p>MySQL配置，Type为MYSQL或TDSQL_C_MYSQL时必填</p>
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.MySQLConnectParam`
         """
         return self._MySQLConnectParam
@@ -4356,7 +4359,7 @@ class CreateConnectResourceRequest(AbstractModel):
 
     @property
     def PostgreSQLConnectParam(self):
-        r"""PostgreSQL配置，Type为POSTGRESQL或TDSQL_C_POSTGRESQL时必填
+        r"""<p>PostgreSQL配置，Type为POSTGRESQL或TDSQL_C_POSTGRESQL时必填</p>
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.PostgreSQLConnectParam`
         """
         return self._PostgreSQLConnectParam
@@ -4367,7 +4370,7 @@ class CreateConnectResourceRequest(AbstractModel):
 
     @property
     def MariaDBConnectParam(self):
-        r"""MariaDB配置，Type为MARIADB时必填
+        r"""<p>MariaDB配置，Type为MARIADB时必填</p>
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.MariaDBConnectParam`
         """
         return self._MariaDBConnectParam
@@ -4378,7 +4381,7 @@ class CreateConnectResourceRequest(AbstractModel):
 
     @property
     def SQLServerConnectParam(self):
-        r"""SQLServer配置，Type为SQLSERVER时必填
+        r"""<p>SQLServer配置，Type为SQLSERVER时必填</p>
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.SQLServerConnectParam`
         """
         return self._SQLServerConnectParam
@@ -4389,7 +4392,7 @@ class CreateConnectResourceRequest(AbstractModel):
 
     @property
     def DorisConnectParam(self):
-        r"""Doris 配置，Type为 DORIS 时必填
+        r"""<p>Doris 配置，Type为 DORIS 时必填</p>
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.DorisConnectParam`
         """
         return self._DorisConnectParam
@@ -4400,7 +4403,7 @@ class CreateConnectResourceRequest(AbstractModel):
 
     @property
     def KafkaConnectParam(self):
-        r"""Kafka配置，Type为 KAFKA 时必填
+        r"""<p>Kafka配置，Type为 KAFKA 时必填</p>
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.KafkaConnectParam`
         """
         return self._KafkaConnectParam
@@ -4411,7 +4414,7 @@ class CreateConnectResourceRequest(AbstractModel):
 
     @property
     def MqttConnectParam(self):
-        r"""MQTT配置，Type为 MQTT 时必填
+        r"""<p>MQTT配置，Type为 MQTT 时必填</p>
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.MqttConnectParam`
         """
         return self._MqttConnectParam
@@ -4419,6 +4422,17 @@ class CreateConnectResourceRequest(AbstractModel):
     @MqttConnectParam.setter
     def MqttConnectParam(self, MqttConnectParam):
         self._MqttConnectParam = MqttConnectParam
+
+    @property
+    def Tags(self):
+        r"""<p>标签列表</p>
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
 
 
     def _deserialize(self, params):
@@ -4458,6 +4472,12 @@ class CreateConnectResourceRequest(AbstractModel):
         if params.get("MqttConnectParam") is not None:
             self._MqttConnectParam = MqttConnectParam()
             self._MqttConnectParam._deserialize(params.get("MqttConnectParam"))
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4475,7 +4495,7 @@ class CreateConnectResourceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 连接源的Id
+        :param _Result: <p>连接源的Id</p>
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.ConnectResourceResourceIdResp`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4485,7 +4505,7 @@ class CreateConnectResourceResponse(AbstractModel):
 
     @property
     def Result(self):
-        r"""连接源的Id
+        r"""<p>连接源的Id</p>
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.ConnectResourceResourceIdResp`
         """
         return self._Result
@@ -4646,27 +4666,27 @@ class CreateDatahubTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskName: 任务名称,只能以字母起始,允许包含字母、数字、- 、.  、 下划线且长度不超过64 (、为分割符号规则不包含)
+        :param _TaskName: <p>任务名称,只能以字母起始,允许包含字母、数字、- 、.  、 下划线且长度不超过64 (、为分割符号规则不包含)</p>
         :type TaskName: str
-        :param _TaskType: 任务类型，SOURCE数据接入，SINK数据流出
+        :param _TaskType: <p>任务类型，SOURCE数据接入，SINK数据流出</p>
         :type TaskType: str
-        :param _SourceResource: 数据源
+        :param _SourceResource: <p>数据源</p>
         :type SourceResource: :class:`tencentcloud.ckafka.v20190819.models.DatahubResource`
-        :param _TargetResource: 数据目标
+        :param _TargetResource: <p>数据目标</p>
         :type TargetResource: :class:`tencentcloud.ckafka.v20190819.models.DatahubResource`
-        :param _TransformParam: 数据处理规则
+        :param _TransformParam: <p>数据处理规则</p>
         :type TransformParam: :class:`tencentcloud.ckafka.v20190819.models.TransformParam`
-        :param _PrivateLinkParam: 实例连接参数【已废弃】
+        :param _PrivateLinkParam: <p>实例连接参数【已废弃】</p>
         :type PrivateLinkParam: :class:`tencentcloud.ckafka.v20190819.models.PrivateLinkParam`
-        :param _SchemaId: 选择所要绑定的SchemaId
+        :param _SchemaId: <p>选择所要绑定的SchemaId</p>
         :type SchemaId: str
-        :param _TransformsParam: 数据处理规则
+        :param _TransformsParam: <p>数据处理规则</p>
         :type TransformsParam: :class:`tencentcloud.ckafka.v20190819.models.TransformsParam`
-        :param _TaskId: 任务Id
+        :param _TaskId: <p>任务Id</p>
         :type TaskId: str
-        :param _Tags: 标签列表
+        :param _Tags: <p>标签列表</p>
         :type Tags: list of Tag
-        :param _Description: 任务描述信息
+        :param _Description: <p>任务描述信息</p>
         :type Description: str
         """
         self._TaskName = None
@@ -4683,7 +4703,7 @@ class CreateDatahubTaskRequest(AbstractModel):
 
     @property
     def TaskName(self):
-        r"""任务名称,只能以字母起始,允许包含字母、数字、- 、.  、 下划线且长度不超过64 (、为分割符号规则不包含)
+        r"""<p>任务名称,只能以字母起始,允许包含字母、数字、- 、.  、 下划线且长度不超过64 (、为分割符号规则不包含)</p>
         :rtype: str
         """
         return self._TaskName
@@ -4694,7 +4714,7 @@ class CreateDatahubTaskRequest(AbstractModel):
 
     @property
     def TaskType(self):
-        r"""任务类型，SOURCE数据接入，SINK数据流出
+        r"""<p>任务类型，SOURCE数据接入，SINK数据流出</p>
         :rtype: str
         """
         return self._TaskType
@@ -4705,7 +4725,7 @@ class CreateDatahubTaskRequest(AbstractModel):
 
     @property
     def SourceResource(self):
-        r"""数据源
+        r"""<p>数据源</p>
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.DatahubResource`
         """
         return self._SourceResource
@@ -4716,7 +4736,7 @@ class CreateDatahubTaskRequest(AbstractModel):
 
     @property
     def TargetResource(self):
-        r"""数据目标
+        r"""<p>数据目标</p>
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.DatahubResource`
         """
         return self._TargetResource
@@ -4727,7 +4747,7 @@ class CreateDatahubTaskRequest(AbstractModel):
 
     @property
     def TransformParam(self):
-        r"""数据处理规则
+        r"""<p>数据处理规则</p>
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.TransformParam`
         """
         return self._TransformParam
@@ -4740,7 +4760,7 @@ class CreateDatahubTaskRequest(AbstractModel):
     def PrivateLinkParam(self):
         warnings.warn("parameter `PrivateLinkParam` is deprecated", DeprecationWarning) 
 
-        r"""实例连接参数【已废弃】
+        r"""<p>实例连接参数【已废弃】</p>
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.PrivateLinkParam`
         """
         return self._PrivateLinkParam
@@ -4753,7 +4773,7 @@ class CreateDatahubTaskRequest(AbstractModel):
 
     @property
     def SchemaId(self):
-        r"""选择所要绑定的SchemaId
+        r"""<p>选择所要绑定的SchemaId</p>
         :rtype: str
         """
         return self._SchemaId
@@ -4764,7 +4784,7 @@ class CreateDatahubTaskRequest(AbstractModel):
 
     @property
     def TransformsParam(self):
-        r"""数据处理规则
+        r"""<p>数据处理规则</p>
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.TransformsParam`
         """
         return self._TransformsParam
@@ -4775,7 +4795,7 @@ class CreateDatahubTaskRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""任务Id
+        r"""<p>任务Id</p>
         :rtype: str
         """
         return self._TaskId
@@ -4786,7 +4806,7 @@ class CreateDatahubTaskRequest(AbstractModel):
 
     @property
     def Tags(self):
-        r"""标签列表
+        r"""<p>标签列表</p>
         :rtype: list of Tag
         """
         return self._Tags
@@ -4797,7 +4817,7 @@ class CreateDatahubTaskRequest(AbstractModel):
 
     @property
     def Description(self):
-        r"""任务描述信息
+        r"""<p>任务描述信息</p>
         :rtype: str
         """
         return self._Description
@@ -4902,7 +4922,7 @@ class CreateDatahubTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 返回结果
+        :param _Result: <p>返回结果</p>
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.CreateDatahubTaskRes`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4912,7 +4932,7 @@ class CreateDatahubTaskResponse(AbstractModel):
 
     @property
     def Result(self):
-        r"""返回结果
+        r"""<p>返回结果</p>
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.CreateDatahubTaskRes`
         """
         return self._Result
@@ -4947,15 +4967,15 @@ class CreateDatahubTopicRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 名称，是一个不超过 128 个字符的字符串，必须以“AppId-”为首字符，剩余部分可以包含字母、数字和横划线(-)
+        :param _Name: <p>名称，是一个不超过 128 个字符的字符串，必须以“AppId-”为首字符，剩余部分可以包含字母、数字和横划线(-)，可通过接口DescribeAppInfo获取。</p>
         :type Name: str
-        :param _PartitionNum: Partition个数，大于0
+        :param _PartitionNum: <p>Partition个数，最大值为500，大于0</p>
         :type PartitionNum: int
-        :param _RetentionMs: 消息保留时间，单位ms，当前最小值为60000ms
+        :param _RetentionMs: <p>消息保留时间，单位ms，当前最小值为60000ms</p>
         :type RetentionMs: int
-        :param _Note: 主题备注，是一个不超过 64 个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)
+        :param _Note: <p>主题备注，是一个不超过 64 个字符的字符串，可以包含字母、数字和横划线(-)。</p>
         :type Note: str
-        :param _Tags: 标签列表
+        :param _Tags: <p>标签列表</p>
         :type Tags: list of Tag
         """
         self._Name = None
@@ -4966,7 +4986,7 @@ class CreateDatahubTopicRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""名称，是一个不超过 128 个字符的字符串，必须以“AppId-”为首字符，剩余部分可以包含字母、数字和横划线(-)
+        r"""<p>名称，是一个不超过 128 个字符的字符串，必须以“AppId-”为首字符，剩余部分可以包含字母、数字和横划线(-)，可通过接口DescribeAppInfo获取。</p>
         :rtype: str
         """
         return self._Name
@@ -4977,7 +4997,7 @@ class CreateDatahubTopicRequest(AbstractModel):
 
     @property
     def PartitionNum(self):
-        r"""Partition个数，大于0
+        r"""<p>Partition个数，最大值为500，大于0</p>
         :rtype: int
         """
         return self._PartitionNum
@@ -4988,7 +5008,7 @@ class CreateDatahubTopicRequest(AbstractModel):
 
     @property
     def RetentionMs(self):
-        r"""消息保留时间，单位ms，当前最小值为60000ms
+        r"""<p>消息保留时间，单位ms，当前最小值为60000ms</p>
         :rtype: int
         """
         return self._RetentionMs
@@ -4999,7 +5019,7 @@ class CreateDatahubTopicRequest(AbstractModel):
 
     @property
     def Note(self):
-        r"""主题备注，是一个不超过 64 个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线(-)
+        r"""<p>主题备注，是一个不超过 64 个字符的字符串，可以包含字母、数字和横划线(-)。</p>
         :rtype: str
         """
         return self._Note
@@ -5010,7 +5030,7 @@ class CreateDatahubTopicRequest(AbstractModel):
 
     @property
     def Tags(self):
-        r"""标签列表
+        r"""<p>标签列表</p>
         :rtype: list of Tag
         """
         return self._Tags
@@ -5048,7 +5068,7 @@ class CreateDatahubTopicResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 返回创建结果
+        :param _Result: <p>返回创建结果</p>
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.DatahubTopicResp`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5058,7 +5078,7 @@ class CreateDatahubTopicResponse(AbstractModel):
 
     @property
     def Result(self):
-        r"""返回创建结果
+        r"""<p>返回创建结果</p>
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.DatahubTopicResp`
         """
         return self._Result
@@ -8214,32 +8234,38 @@ class DatahubTaskInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务Id
+        :param _TaskId: <p>任务Id</p>
         :type TaskId: str
-        :param _TaskName: 任务名称
+        :param _TaskName: <p>任务名称</p>
         :type TaskName: str
-        :param _TaskType: 任务类型，SOURCE数据接入，SINK数据流出
+        :param _TaskType: <p>任务类型，SOURCE数据接入，SINK数据流出</p>
         :type TaskType: str
-        :param _Status: 状态，-1创建失败，0创建中，1运行中，2删除中，3已删除，4删除失败，5暂停中，6已暂停，7暂停失败，8恢复中，9恢复失败
+        :param _Status: <p>状态，-1创建失败，0创建中，1运行中，2删除中，3已删除，4删除失败，5暂停中，6已暂停，7暂停失败，8恢复中，9恢复失败</p>
         :type Status: int
-        :param _SourceResource: 数据源
+        :param _SourceResource: <p>数据源</p>
         :type SourceResource: :class:`tencentcloud.ckafka.v20190819.models.DatahubResource`
-        :param _TargetResource: 数据目标
+        :param _TargetResource: <p>数据目标</p>
         :type TargetResource: :class:`tencentcloud.ckafka.v20190819.models.DatahubResource`
-        :param _CreateTime: 任务创建时间
+        :param _CreateTime: <p>任务创建时间</p>
         :type CreateTime: str
-        :param _ErrorMessage: 异常信息
+        :param _ErrorMessage: <p>异常信息</p>
         :type ErrorMessage: str
-        :param _TaskProgress: 创建进度百分比
+        :param _TaskProgress: <p>创建进度百分比</p>
         :type TaskProgress: float
-        :param _TaskCurrentStep: 任务当前处于的步骤
+        :param _TaskCurrentStep: <p>任务当前处于的步骤</p>
         :type TaskCurrentStep: str
-        :param _DatahubId: Datahub转储Id
+        :param _DatahubId: <p>Datahub转储Id</p>
         :type DatahubId: str
-        :param _StepList: 步骤列表
+        :param _StepList: <p>步骤列表</p>
         :type StepList: list of str
-        :param _Description: 任务描述信息
+        :param _Description: <p>任务描述信息</p>
         :type Description: str
+        :param _TaskMax: <p>任务并发数</p><p>默认值：1</p>
+        :type TaskMax: int
+        :param _SyncThrottleLimit: <p>任务同步限流值,单位MB/s</p><p>默认值：20MB/s</p>
+        :type SyncThrottleLimit: int
+        :param _AutoExpandFlag: <p>任务是否自动扩容标识</p><p>枚举值：</p><ul><li>true： 自动扩容</li><li>false： 手动扩容</li></ul><p>默认值：true</p>
+        :type AutoExpandFlag: bool
         """
         self._TaskId = None
         self._TaskName = None
@@ -8254,10 +8280,13 @@ class DatahubTaskInfo(AbstractModel):
         self._DatahubId = None
         self._StepList = None
         self._Description = None
+        self._TaskMax = None
+        self._SyncThrottleLimit = None
+        self._AutoExpandFlag = None
 
     @property
     def TaskId(self):
-        r"""任务Id
+        r"""<p>任务Id</p>
         :rtype: str
         """
         return self._TaskId
@@ -8268,7 +8297,7 @@ class DatahubTaskInfo(AbstractModel):
 
     @property
     def TaskName(self):
-        r"""任务名称
+        r"""<p>任务名称</p>
         :rtype: str
         """
         return self._TaskName
@@ -8279,7 +8308,7 @@ class DatahubTaskInfo(AbstractModel):
 
     @property
     def TaskType(self):
-        r"""任务类型，SOURCE数据接入，SINK数据流出
+        r"""<p>任务类型，SOURCE数据接入，SINK数据流出</p>
         :rtype: str
         """
         return self._TaskType
@@ -8290,7 +8319,7 @@ class DatahubTaskInfo(AbstractModel):
 
     @property
     def Status(self):
-        r"""状态，-1创建失败，0创建中，1运行中，2删除中，3已删除，4删除失败，5暂停中，6已暂停，7暂停失败，8恢复中，9恢复失败
+        r"""<p>状态，-1创建失败，0创建中，1运行中，2删除中，3已删除，4删除失败，5暂停中，6已暂停，7暂停失败，8恢复中，9恢复失败</p>
         :rtype: int
         """
         return self._Status
@@ -8301,7 +8330,7 @@ class DatahubTaskInfo(AbstractModel):
 
     @property
     def SourceResource(self):
-        r"""数据源
+        r"""<p>数据源</p>
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.DatahubResource`
         """
         return self._SourceResource
@@ -8312,7 +8341,7 @@ class DatahubTaskInfo(AbstractModel):
 
     @property
     def TargetResource(self):
-        r"""数据目标
+        r"""<p>数据目标</p>
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.DatahubResource`
         """
         return self._TargetResource
@@ -8323,7 +8352,7 @@ class DatahubTaskInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""任务创建时间
+        r"""<p>任务创建时间</p>
         :rtype: str
         """
         return self._CreateTime
@@ -8334,7 +8363,7 @@ class DatahubTaskInfo(AbstractModel):
 
     @property
     def ErrorMessage(self):
-        r"""异常信息
+        r"""<p>异常信息</p>
         :rtype: str
         """
         return self._ErrorMessage
@@ -8345,7 +8374,7 @@ class DatahubTaskInfo(AbstractModel):
 
     @property
     def TaskProgress(self):
-        r"""创建进度百分比
+        r"""<p>创建进度百分比</p>
         :rtype: float
         """
         return self._TaskProgress
@@ -8356,7 +8385,7 @@ class DatahubTaskInfo(AbstractModel):
 
     @property
     def TaskCurrentStep(self):
-        r"""任务当前处于的步骤
+        r"""<p>任务当前处于的步骤</p>
         :rtype: str
         """
         return self._TaskCurrentStep
@@ -8367,7 +8396,7 @@ class DatahubTaskInfo(AbstractModel):
 
     @property
     def DatahubId(self):
-        r"""Datahub转储Id
+        r"""<p>Datahub转储Id</p>
         :rtype: str
         """
         return self._DatahubId
@@ -8378,7 +8407,7 @@ class DatahubTaskInfo(AbstractModel):
 
     @property
     def StepList(self):
-        r"""步骤列表
+        r"""<p>步骤列表</p>
         :rtype: list of str
         """
         return self._StepList
@@ -8389,7 +8418,7 @@ class DatahubTaskInfo(AbstractModel):
 
     @property
     def Description(self):
-        r"""任务描述信息
+        r"""<p>任务描述信息</p>
         :rtype: str
         """
         return self._Description
@@ -8397,6 +8426,39 @@ class DatahubTaskInfo(AbstractModel):
     @Description.setter
     def Description(self, Description):
         self._Description = Description
+
+    @property
+    def TaskMax(self):
+        r"""<p>任务并发数</p><p>默认值：1</p>
+        :rtype: int
+        """
+        return self._TaskMax
+
+    @TaskMax.setter
+    def TaskMax(self, TaskMax):
+        self._TaskMax = TaskMax
+
+    @property
+    def SyncThrottleLimit(self):
+        r"""<p>任务同步限流值,单位MB/s</p><p>默认值：20MB/s</p>
+        :rtype: int
+        """
+        return self._SyncThrottleLimit
+
+    @SyncThrottleLimit.setter
+    def SyncThrottleLimit(self, SyncThrottleLimit):
+        self._SyncThrottleLimit = SyncThrottleLimit
+
+    @property
+    def AutoExpandFlag(self):
+        r"""<p>任务是否自动扩容标识</p><p>枚举值：</p><ul><li>true： 自动扩容</li><li>false： 手动扩容</li></ul><p>默认值：true</p>
+        :rtype: bool
+        """
+        return self._AutoExpandFlag
+
+    @AutoExpandFlag.setter
+    def AutoExpandFlag(self, AutoExpandFlag):
+        self._AutoExpandFlag = AutoExpandFlag
 
 
     def _deserialize(self, params):
@@ -8417,6 +8479,9 @@ class DatahubTaskInfo(AbstractModel):
         self._DatahubId = params.get("DatahubId")
         self._StepList = params.get("StepList")
         self._Description = params.get("Description")
+        self._TaskMax = params.get("TaskMax")
+        self._SyncThrottleLimit = params.get("SyncThrottleLimit")
+        self._AutoExpandFlag = params.get("AutoExpandFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8993,14 +9058,14 @@ class DeleteConnectResourceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ResourceId: 连接源的Id
+        :param _ResourceId: <p>连接源的Id</p>
         :type ResourceId: str
         """
         self._ResourceId = None
 
     @property
     def ResourceId(self):
-        r"""连接源的Id
+        r"""<p>连接源的Id</p>
         :rtype: str
         """
         return self._ResourceId
@@ -9029,7 +9094,7 @@ class DeleteConnectResourceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 连接源的Id
+        :param _Result: <p>连接源的Id</p>
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.ConnectResourceResourceIdResp`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -9039,7 +9104,7 @@ class DeleteConnectResourceResponse(AbstractModel):
 
     @property
     def Result(self):
-        r"""连接源的Id
+        r"""<p>连接源的Id</p>
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.ConnectResourceResourceIdResp`
         """
         return self._Result
@@ -9074,14 +9139,14 @@ class DeleteDatahubTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务id
+        :param _TaskId: <p>任务id</p>
         :type TaskId: str
         """
         self._TaskId = None
 
     @property
     def TaskId(self):
-        r"""任务id
+        r"""<p>任务id</p>
         :rtype: str
         """
         return self._TaskId
@@ -9110,7 +9175,7 @@ class DeleteDatahubTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 操作结果
+        :param _Result: <p>操作结果</p>
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.DatahubTaskIdRes`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -9120,7 +9185,7 @@ class DeleteDatahubTaskResponse(AbstractModel):
 
     @property
     def Result(self):
-        r"""操作结果
+        r"""<p>操作结果</p>
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.DatahubTaskIdRes`
         """
         return self._Result
@@ -10317,6 +10382,102 @@ class DescribeACLResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeAccessPolicyRequest(AbstractModel):
+    r"""DescribeAccessPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>实例ID</p>
+        :type InstanceId: str
+        :param _RouteId: <p>路由ID</p>
+        :type RouteId: int
+        """
+        self._InstanceId = None
+        self._RouteId = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例ID</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def RouteId(self):
+        r"""<p>路由ID</p>
+        :rtype: int
+        """
+        return self._RouteId
+
+    @RouteId.setter
+    def RouteId(self, RouteId):
+        self._RouteId = RouteId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._RouteId = params.get("RouteId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAccessPolicyResponse(AbstractModel):
+    r"""DescribeAccessPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: <p>实例公网IP白名单配置列表</p>
+        :type Result: :class:`tencentcloud.ckafka.v20190819.models.ExternalAccessInfoWrapper`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""<p>实例公网IP白名单配置列表</p>
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.ExternalAccessInfoWrapper`
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = ExternalAccessInfoWrapper()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeAclRuleRequest(AbstractModel):
     r"""DescribeAclRule请求参数结构体
 
@@ -10682,64 +10843,66 @@ class DescribeConnectResource(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ResourceId: 连接源的Id
+        :param _ResourceId: <p>连接源的Id</p>
         :type ResourceId: str
-        :param _ResourceName: 连接源名称
+        :param _ResourceName: <p>连接源名称</p>
         :type ResourceName: str
-        :param _Description: 连接源描述
+        :param _Description: <p>连接源描述</p>
         :type Description: str
-        :param _Type: 连接源类型
+        :param _Type: <p>连接源类型</p>
         :type Type: str
-        :param _Status: 连接源的状态
+        :param _Status: <p>连接源的状态</p>
         :type Status: int
-        :param _CreateTime: 连接源的创建时间
+        :param _CreateTime: <p>连接源的创建时间</p>
         :type CreateTime: str
-        :param _ErrorMessage: 连接源的异常信息
+        :param _ErrorMessage: <p>连接源的异常信息</p>
         :type ErrorMessage: str
-        :param _DatahubTaskCount: 该连接源关联的Datahub任务数
+        :param _DatahubTaskCount: <p>该连接源关联的Datahub任务数</p>
         :type DatahubTaskCount: int
-        :param _CurrentStep: 连接源的当前所处步骤
+        :param _CurrentStep: <p>连接源的当前所处步骤</p>
         :type CurrentStep: str
-        :param _TaskProgress: 创建进度百分比
+        :param _TaskProgress: <p>创建进度百分比</p>
         :type TaskProgress: float
-        :param _StepList: 步骤列表
+        :param _StepList: <p>步骤列表</p>
         :type StepList: list of str
-        :param _DtsConnectParam: Dts配置，Type为DTS时返回
+        :param _DtsConnectParam: <p>Dts配置，Type为DTS时返回</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DtsConnectParam: :class:`tencentcloud.ckafka.v20190819.models.DtsConnectParam`
-        :param _MongoDBConnectParam: MongoDB配置，Type为MONGODB时返回
+        :param _MongoDBConnectParam: <p>MongoDB配置，Type为MONGODB时返回</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type MongoDBConnectParam: :class:`tencentcloud.ckafka.v20190819.models.MongoDBConnectParam`
-        :param _EsConnectParam: Es配置，Type为ES时返回
+        :param _EsConnectParam: <p>Es配置，Type为ES时返回</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type EsConnectParam: :class:`tencentcloud.ckafka.v20190819.models.EsConnectParam`
-        :param _ClickHouseConnectParam: ClickHouse配置，Type为CLICKHOUSE时返回
+        :param _ClickHouseConnectParam: <p>ClickHouse配置，Type为CLICKHOUSE时返回</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClickHouseConnectParam: :class:`tencentcloud.ckafka.v20190819.models.ClickHouseConnectParam`
-        :param _MySQLConnectParam: MySQL配置，Type为MYSQL或TDSQL_C_MYSQL时返回
+        :param _MySQLConnectParam: <p>MySQL配置，Type为MYSQL或TDSQL_C_MYSQL时返回</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type MySQLConnectParam: :class:`tencentcloud.ckafka.v20190819.models.MySQLConnectParam`
-        :param _PostgreSQLConnectParam: PostgreSQL配置，Type为POSTGRESQL或TDSQL_C_POSTGRESQL时返回
+        :param _PostgreSQLConnectParam: <p>PostgreSQL配置，Type为POSTGRESQL或TDSQL_C_POSTGRESQL时返回</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type PostgreSQLConnectParam: :class:`tencentcloud.ckafka.v20190819.models.PostgreSQLConnectParam`
-        :param _MariaDBConnectParam: MariaDB配置，Type为MARIADB时返回
+        :param _MariaDBConnectParam: <p>MariaDB配置，Type为MARIADB时返回</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type MariaDBConnectParam: :class:`tencentcloud.ckafka.v20190819.models.MariaDBConnectParam`
-        :param _SQLServerConnectParam: SQLServer配置，Type为SQLSERVER时返回
+        :param _SQLServerConnectParam: <p>SQLServer配置，Type为SQLSERVER时返回</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SQLServerConnectParam: :class:`tencentcloud.ckafka.v20190819.models.SQLServerConnectParam`
-        :param _CtsdbConnectParam: Ctsdb配置，Type为CTSDB时返回
+        :param _CtsdbConnectParam: <p>Ctsdb配置，Type为CTSDB时返回</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CtsdbConnectParam: :class:`tencentcloud.ckafka.v20190819.models.CtsdbConnectParam`
-        :param _DorisConnectParam: Doris 配置，Type 为 DORIS 时返回
+        :param _DorisConnectParam: <p>Doris 配置，Type 为 DORIS 时返回</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DorisConnectParam: :class:`tencentcloud.ckafka.v20190819.models.DorisConnectParam`
-        :param _KafkaConnectParam: Kafka配置，Type 为 KAFKA 时返回
+        :param _KafkaConnectParam: <p>Kafka配置，Type 为 KAFKA 时返回</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type KafkaConnectParam: :class:`tencentcloud.ckafka.v20190819.models.KafkaConnectParam`
-        :param _MqttConnectParam: MQTT配置，Type 为 MQTT 时返回
+        :param _MqttConnectParam: <p>MQTT配置，Type 为 MQTT 时返回</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type MqttConnectParam: :class:`tencentcloud.ckafka.v20190819.models.MqttConnectParam`
+        :param _Tags: <p>标签列表</p>
+        :type Tags: list of Tag
         """
         self._ResourceId = None
         self._ResourceName = None
@@ -10764,10 +10927,11 @@ class DescribeConnectResource(AbstractModel):
         self._DorisConnectParam = None
         self._KafkaConnectParam = None
         self._MqttConnectParam = None
+        self._Tags = None
 
     @property
     def ResourceId(self):
-        r"""连接源的Id
+        r"""<p>连接源的Id</p>
         :rtype: str
         """
         return self._ResourceId
@@ -10778,7 +10942,7 @@ class DescribeConnectResource(AbstractModel):
 
     @property
     def ResourceName(self):
-        r"""连接源名称
+        r"""<p>连接源名称</p>
         :rtype: str
         """
         return self._ResourceName
@@ -10789,7 +10953,7 @@ class DescribeConnectResource(AbstractModel):
 
     @property
     def Description(self):
-        r"""连接源描述
+        r"""<p>连接源描述</p>
         :rtype: str
         """
         return self._Description
@@ -10800,7 +10964,7 @@ class DescribeConnectResource(AbstractModel):
 
     @property
     def Type(self):
-        r"""连接源类型
+        r"""<p>连接源类型</p>
         :rtype: str
         """
         return self._Type
@@ -10811,7 +10975,7 @@ class DescribeConnectResource(AbstractModel):
 
     @property
     def Status(self):
-        r"""连接源的状态
+        r"""<p>连接源的状态</p>
         :rtype: int
         """
         return self._Status
@@ -10822,7 +10986,7 @@ class DescribeConnectResource(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""连接源的创建时间
+        r"""<p>连接源的创建时间</p>
         :rtype: str
         """
         return self._CreateTime
@@ -10833,7 +10997,7 @@ class DescribeConnectResource(AbstractModel):
 
     @property
     def ErrorMessage(self):
-        r"""连接源的异常信息
+        r"""<p>连接源的异常信息</p>
         :rtype: str
         """
         return self._ErrorMessage
@@ -10844,7 +11008,7 @@ class DescribeConnectResource(AbstractModel):
 
     @property
     def DatahubTaskCount(self):
-        r"""该连接源关联的Datahub任务数
+        r"""<p>该连接源关联的Datahub任务数</p>
         :rtype: int
         """
         return self._DatahubTaskCount
@@ -10855,7 +11019,7 @@ class DescribeConnectResource(AbstractModel):
 
     @property
     def CurrentStep(self):
-        r"""连接源的当前所处步骤
+        r"""<p>连接源的当前所处步骤</p>
         :rtype: str
         """
         return self._CurrentStep
@@ -10866,7 +11030,7 @@ class DescribeConnectResource(AbstractModel):
 
     @property
     def TaskProgress(self):
-        r"""创建进度百分比
+        r"""<p>创建进度百分比</p>
         :rtype: float
         """
         return self._TaskProgress
@@ -10877,7 +11041,7 @@ class DescribeConnectResource(AbstractModel):
 
     @property
     def StepList(self):
-        r"""步骤列表
+        r"""<p>步骤列表</p>
         :rtype: list of str
         """
         return self._StepList
@@ -10888,7 +11052,7 @@ class DescribeConnectResource(AbstractModel):
 
     @property
     def DtsConnectParam(self):
-        r"""Dts配置，Type为DTS时返回
+        r"""<p>Dts配置，Type为DTS时返回</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.DtsConnectParam`
         """
@@ -10900,7 +11064,7 @@ class DescribeConnectResource(AbstractModel):
 
     @property
     def MongoDBConnectParam(self):
-        r"""MongoDB配置，Type为MONGODB时返回
+        r"""<p>MongoDB配置，Type为MONGODB时返回</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.MongoDBConnectParam`
         """
@@ -10912,7 +11076,7 @@ class DescribeConnectResource(AbstractModel):
 
     @property
     def EsConnectParam(self):
-        r"""Es配置，Type为ES时返回
+        r"""<p>Es配置，Type为ES时返回</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.EsConnectParam`
         """
@@ -10924,7 +11088,7 @@ class DescribeConnectResource(AbstractModel):
 
     @property
     def ClickHouseConnectParam(self):
-        r"""ClickHouse配置，Type为CLICKHOUSE时返回
+        r"""<p>ClickHouse配置，Type为CLICKHOUSE时返回</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.ClickHouseConnectParam`
         """
@@ -10936,7 +11100,7 @@ class DescribeConnectResource(AbstractModel):
 
     @property
     def MySQLConnectParam(self):
-        r"""MySQL配置，Type为MYSQL或TDSQL_C_MYSQL时返回
+        r"""<p>MySQL配置，Type为MYSQL或TDSQL_C_MYSQL时返回</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.MySQLConnectParam`
         """
@@ -10948,7 +11112,7 @@ class DescribeConnectResource(AbstractModel):
 
     @property
     def PostgreSQLConnectParam(self):
-        r"""PostgreSQL配置，Type为POSTGRESQL或TDSQL_C_POSTGRESQL时返回
+        r"""<p>PostgreSQL配置，Type为POSTGRESQL或TDSQL_C_POSTGRESQL时返回</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.PostgreSQLConnectParam`
         """
@@ -10960,7 +11124,7 @@ class DescribeConnectResource(AbstractModel):
 
     @property
     def MariaDBConnectParam(self):
-        r"""MariaDB配置，Type为MARIADB时返回
+        r"""<p>MariaDB配置，Type为MARIADB时返回</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.MariaDBConnectParam`
         """
@@ -10972,7 +11136,7 @@ class DescribeConnectResource(AbstractModel):
 
     @property
     def SQLServerConnectParam(self):
-        r"""SQLServer配置，Type为SQLSERVER时返回
+        r"""<p>SQLServer配置，Type为SQLSERVER时返回</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.SQLServerConnectParam`
         """
@@ -10984,7 +11148,7 @@ class DescribeConnectResource(AbstractModel):
 
     @property
     def CtsdbConnectParam(self):
-        r"""Ctsdb配置，Type为CTSDB时返回
+        r"""<p>Ctsdb配置，Type为CTSDB时返回</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.CtsdbConnectParam`
         """
@@ -10996,7 +11160,7 @@ class DescribeConnectResource(AbstractModel):
 
     @property
     def DorisConnectParam(self):
-        r"""Doris 配置，Type 为 DORIS 时返回
+        r"""<p>Doris 配置，Type 为 DORIS 时返回</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.DorisConnectParam`
         """
@@ -11008,7 +11172,7 @@ class DescribeConnectResource(AbstractModel):
 
     @property
     def KafkaConnectParam(self):
-        r"""Kafka配置，Type 为 KAFKA 时返回
+        r"""<p>Kafka配置，Type 为 KAFKA 时返回</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.KafkaConnectParam`
         """
@@ -11020,7 +11184,7 @@ class DescribeConnectResource(AbstractModel):
 
     @property
     def MqttConnectParam(self):
-        r"""MQTT配置，Type 为 MQTT 时返回
+        r"""<p>MQTT配置，Type 为 MQTT 时返回</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.MqttConnectParam`
         """
@@ -11029,6 +11193,17 @@ class DescribeConnectResource(AbstractModel):
     @MqttConnectParam.setter
     def MqttConnectParam(self, MqttConnectParam):
         self._MqttConnectParam = MqttConnectParam
+
+    @property
+    def Tags(self):
+        r"""<p>标签列表</p>
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
 
 
     def _deserialize(self, params):
@@ -11079,6 +11254,12 @@ class DescribeConnectResource(AbstractModel):
         if params.get("MqttConnectParam") is not None:
             self._MqttConnectParam = MqttConnectParam()
             self._MqttConnectParam._deserialize(params.get("MqttConnectParam"))
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11096,14 +11277,14 @@ class DescribeConnectResourceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ResourceId: 连接源的Id
+        :param _ResourceId: <p>连接源的Id</p>
         :type ResourceId: str
         """
         self._ResourceId = None
 
     @property
     def ResourceId(self):
-        r"""连接源的Id
+        r"""<p>连接源的Id</p>
         :rtype: str
         """
         return self._ResourceId
@@ -11132,61 +11313,63 @@ class DescribeConnectResourceResp(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ResourceId: 连接源的Id
+        :param _ResourceId: <p>连接源的Id</p>
         :type ResourceId: str
-        :param _ResourceName: 连接源名称
+        :param _ResourceName: <p>连接源名称</p>
         :type ResourceName: str
-        :param _Description: 连接源描述
+        :param _Description: <p>连接源描述</p>
         :type Description: str
-        :param _Type: 连接源类型
+        :param _Type: <p>连接源类型</p>
         :type Type: str
-        :param _Status: 连接源的状态  枚举值: -1 (创建失败) 、0 (创建中) 、 1 (运行中)、 2 (删除中) 、 4 (删除失败) 、 5 (配置更改中) 、 6 (配置更改失败) 、 7 (异常)
+        :param _Status: <p>连接源的状态  枚举值: -1 (创建失败) 、0 (创建中) 、 1 (运行中)、 2 (删除中) 、 4 (删除失败) 、 5 (配置更改中) 、 6 (配置更改失败) 、 7 (异常)</p>
         :type Status: int
-        :param _CreateTime: 连接源的创建时间
+        :param _CreateTime: <p>连接源的创建时间</p>
         :type CreateTime: str
-        :param _ErrorMessage: 连接源的异常信息
+        :param _ErrorMessage: <p>连接源的异常信息</p>
         :type ErrorMessage: str
-        :param _CurrentStep: 连接源的当前所处步骤
+        :param _CurrentStep: <p>连接源的当前所处步骤</p>
         :type CurrentStep: str
-        :param _StepList: 步骤列表
+        :param _StepList: <p>步骤列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type StepList: list of str
-        :param _MySQLConnectParam: MySQL配置，Type为MYSQL或TDSQL_C_MYSQL时返回
+        :param _MySQLConnectParam: <p>MySQL配置，Type为MYSQL或TDSQL_C_MYSQL时返回</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type MySQLConnectParam: :class:`tencentcloud.ckafka.v20190819.models.MySQLConnectParam`
-        :param _PostgreSQLConnectParam: PostgreSQL配置，Type为POSTGRESQL或TDSQL_C_POSTGRESQL时返回
+        :param _PostgreSQLConnectParam: <p>PostgreSQL配置，Type为POSTGRESQL或TDSQL_C_POSTGRESQL时返回</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type PostgreSQLConnectParam: :class:`tencentcloud.ckafka.v20190819.models.PostgreSQLConnectParam`
-        :param _DtsConnectParam: Dts配置，Type为DTS时返回
+        :param _DtsConnectParam: <p>Dts配置，Type为DTS时返回</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DtsConnectParam: :class:`tencentcloud.ckafka.v20190819.models.DtsConnectParam`
-        :param _MongoDBConnectParam: MongoDB配置，Type为MONGODB时返回
+        :param _MongoDBConnectParam: <p>MongoDB配置，Type为MONGODB时返回</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type MongoDBConnectParam: :class:`tencentcloud.ckafka.v20190819.models.MongoDBConnectParam`
-        :param _EsConnectParam: Es配置，Type为ES时返回
+        :param _EsConnectParam: <p>Es配置，Type为ES时返回</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type EsConnectParam: :class:`tencentcloud.ckafka.v20190819.models.EsConnectParam`
-        :param _ClickHouseConnectParam: ClickHouse配置，Type为CLICKHOUSE时返回
+        :param _ClickHouseConnectParam: <p>ClickHouse配置，Type为CLICKHOUSE时返回</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClickHouseConnectParam: :class:`tencentcloud.ckafka.v20190819.models.ClickHouseConnectParam`
-        :param _MariaDBConnectParam: MariaDB配置，Type为MARIADB时返回
+        :param _MariaDBConnectParam: <p>MariaDB配置，Type为MARIADB时返回</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type MariaDBConnectParam: :class:`tencentcloud.ckafka.v20190819.models.MariaDBConnectParam`
-        :param _SQLServerConnectParam: SQLServer配置，Type为SQLSERVER时返回
+        :param _SQLServerConnectParam: <p>SQLServer配置，Type为SQLSERVER时返回</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SQLServerConnectParam: :class:`tencentcloud.ckafka.v20190819.models.SQLServerConnectParam`
-        :param _CtsdbConnectParam: Ctsdb配置，Type为CTSDB时返回
+        :param _CtsdbConnectParam: <p>Ctsdb配置，Type为CTSDB时返回</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CtsdbConnectParam: :class:`tencentcloud.ckafka.v20190819.models.CtsdbConnectParam`
-        :param _DorisConnectParam: Doris 配置，Type 为 DORIS 时返回
+        :param _DorisConnectParam: <p>Doris 配置，Type 为 DORIS 时返回</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DorisConnectParam: :class:`tencentcloud.ckafka.v20190819.models.DorisConnectParam`
-        :param _KafkaConnectParam: Kafka配置，Type 为 KAFKA 时返回
+        :param _KafkaConnectParam: <p>Kafka配置，Type 为 KAFKA 时返回</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type KafkaConnectParam: :class:`tencentcloud.ckafka.v20190819.models.KafkaConnectParam`
-        :param _MqttConnectParam: MQTT配置，Type 为 MQTT 时返回
+        :param _MqttConnectParam: <p>MQTT配置，Type 为 MQTT 时返回</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type MqttConnectParam: :class:`tencentcloud.ckafka.v20190819.models.MqttConnectParam`
+        :param _Tags: <p>标签列表</p>
+        :type Tags: list of Tag
         """
         self._ResourceId = None
         self._ResourceName = None
@@ -11209,10 +11392,11 @@ class DescribeConnectResourceResp(AbstractModel):
         self._DorisConnectParam = None
         self._KafkaConnectParam = None
         self._MqttConnectParam = None
+        self._Tags = None
 
     @property
     def ResourceId(self):
-        r"""连接源的Id
+        r"""<p>连接源的Id</p>
         :rtype: str
         """
         return self._ResourceId
@@ -11223,7 +11407,7 @@ class DescribeConnectResourceResp(AbstractModel):
 
     @property
     def ResourceName(self):
-        r"""连接源名称
+        r"""<p>连接源名称</p>
         :rtype: str
         """
         return self._ResourceName
@@ -11234,7 +11418,7 @@ class DescribeConnectResourceResp(AbstractModel):
 
     @property
     def Description(self):
-        r"""连接源描述
+        r"""<p>连接源描述</p>
         :rtype: str
         """
         return self._Description
@@ -11245,7 +11429,7 @@ class DescribeConnectResourceResp(AbstractModel):
 
     @property
     def Type(self):
-        r"""连接源类型
+        r"""<p>连接源类型</p>
         :rtype: str
         """
         return self._Type
@@ -11256,7 +11440,7 @@ class DescribeConnectResourceResp(AbstractModel):
 
     @property
     def Status(self):
-        r"""连接源的状态  枚举值: -1 (创建失败) 、0 (创建中) 、 1 (运行中)、 2 (删除中) 、 4 (删除失败) 、 5 (配置更改中) 、 6 (配置更改失败) 、 7 (异常)
+        r"""<p>连接源的状态  枚举值: -1 (创建失败) 、0 (创建中) 、 1 (运行中)、 2 (删除中) 、 4 (删除失败) 、 5 (配置更改中) 、 6 (配置更改失败) 、 7 (异常)</p>
         :rtype: int
         """
         return self._Status
@@ -11267,7 +11451,7 @@ class DescribeConnectResourceResp(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""连接源的创建时间
+        r"""<p>连接源的创建时间</p>
         :rtype: str
         """
         return self._CreateTime
@@ -11278,7 +11462,7 @@ class DescribeConnectResourceResp(AbstractModel):
 
     @property
     def ErrorMessage(self):
-        r"""连接源的异常信息
+        r"""<p>连接源的异常信息</p>
         :rtype: str
         """
         return self._ErrorMessage
@@ -11289,7 +11473,7 @@ class DescribeConnectResourceResp(AbstractModel):
 
     @property
     def CurrentStep(self):
-        r"""连接源的当前所处步骤
+        r"""<p>连接源的当前所处步骤</p>
         :rtype: str
         """
         return self._CurrentStep
@@ -11300,7 +11484,7 @@ class DescribeConnectResourceResp(AbstractModel):
 
     @property
     def StepList(self):
-        r"""步骤列表
+        r"""<p>步骤列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -11312,7 +11496,7 @@ class DescribeConnectResourceResp(AbstractModel):
 
     @property
     def MySQLConnectParam(self):
-        r"""MySQL配置，Type为MYSQL或TDSQL_C_MYSQL时返回
+        r"""<p>MySQL配置，Type为MYSQL或TDSQL_C_MYSQL时返回</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.MySQLConnectParam`
         """
@@ -11324,7 +11508,7 @@ class DescribeConnectResourceResp(AbstractModel):
 
     @property
     def PostgreSQLConnectParam(self):
-        r"""PostgreSQL配置，Type为POSTGRESQL或TDSQL_C_POSTGRESQL时返回
+        r"""<p>PostgreSQL配置，Type为POSTGRESQL或TDSQL_C_POSTGRESQL时返回</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.PostgreSQLConnectParam`
         """
@@ -11336,7 +11520,7 @@ class DescribeConnectResourceResp(AbstractModel):
 
     @property
     def DtsConnectParam(self):
-        r"""Dts配置，Type为DTS时返回
+        r"""<p>Dts配置，Type为DTS时返回</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.DtsConnectParam`
         """
@@ -11348,7 +11532,7 @@ class DescribeConnectResourceResp(AbstractModel):
 
     @property
     def MongoDBConnectParam(self):
-        r"""MongoDB配置，Type为MONGODB时返回
+        r"""<p>MongoDB配置，Type为MONGODB时返回</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.MongoDBConnectParam`
         """
@@ -11360,7 +11544,7 @@ class DescribeConnectResourceResp(AbstractModel):
 
     @property
     def EsConnectParam(self):
-        r"""Es配置，Type为ES时返回
+        r"""<p>Es配置，Type为ES时返回</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.EsConnectParam`
         """
@@ -11372,7 +11556,7 @@ class DescribeConnectResourceResp(AbstractModel):
 
     @property
     def ClickHouseConnectParam(self):
-        r"""ClickHouse配置，Type为CLICKHOUSE时返回
+        r"""<p>ClickHouse配置，Type为CLICKHOUSE时返回</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.ClickHouseConnectParam`
         """
@@ -11384,7 +11568,7 @@ class DescribeConnectResourceResp(AbstractModel):
 
     @property
     def MariaDBConnectParam(self):
-        r"""MariaDB配置，Type为MARIADB时返回
+        r"""<p>MariaDB配置，Type为MARIADB时返回</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.MariaDBConnectParam`
         """
@@ -11396,7 +11580,7 @@ class DescribeConnectResourceResp(AbstractModel):
 
     @property
     def SQLServerConnectParam(self):
-        r"""SQLServer配置，Type为SQLSERVER时返回
+        r"""<p>SQLServer配置，Type为SQLSERVER时返回</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.SQLServerConnectParam`
         """
@@ -11408,7 +11592,7 @@ class DescribeConnectResourceResp(AbstractModel):
 
     @property
     def CtsdbConnectParam(self):
-        r"""Ctsdb配置，Type为CTSDB时返回
+        r"""<p>Ctsdb配置，Type为CTSDB时返回</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.CtsdbConnectParam`
         """
@@ -11420,7 +11604,7 @@ class DescribeConnectResourceResp(AbstractModel):
 
     @property
     def DorisConnectParam(self):
-        r"""Doris 配置，Type 为 DORIS 时返回
+        r"""<p>Doris 配置，Type 为 DORIS 时返回</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.DorisConnectParam`
         """
@@ -11432,7 +11616,7 @@ class DescribeConnectResourceResp(AbstractModel):
 
     @property
     def KafkaConnectParam(self):
-        r"""Kafka配置，Type 为 KAFKA 时返回
+        r"""<p>Kafka配置，Type 为 KAFKA 时返回</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.KafkaConnectParam`
         """
@@ -11444,7 +11628,7 @@ class DescribeConnectResourceResp(AbstractModel):
 
     @property
     def MqttConnectParam(self):
-        r"""MQTT配置，Type 为 MQTT 时返回
+        r"""<p>MQTT配置，Type 为 MQTT 时返回</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.MqttConnectParam`
         """
@@ -11453,6 +11637,17 @@ class DescribeConnectResourceResp(AbstractModel):
     @MqttConnectParam.setter
     def MqttConnectParam(self, MqttConnectParam):
         self._MqttConnectParam = MqttConnectParam
+
+    @property
+    def Tags(self):
+        r"""<p>标签列表</p>
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
 
 
     def _deserialize(self, params):
@@ -11501,6 +11696,12 @@ class DescribeConnectResourceResp(AbstractModel):
         if params.get("MqttConnectParam") is not None:
             self._MqttConnectParam = MqttConnectParam()
             self._MqttConnectParam._deserialize(params.get("MqttConnectParam"))
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11518,7 +11719,7 @@ class DescribeConnectResourceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 连接源数据信息
+        :param _Result: <p>连接源数据信息</p>
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.DescribeConnectResourceResp`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -11528,7 +11729,7 @@ class DescribeConnectResourceResponse(AbstractModel):
 
     @property
     def Result(self):
-        r"""连接源数据信息
+        r"""<p>连接源数据信息</p>
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.DescribeConnectResourceResp`
         """
         return self._Result
@@ -11563,15 +11764,15 @@ class DescribeConnectResourcesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: 连接源类型
+        :param _Type: <p>连接源类型</p>
         :type Type: str
-        :param _SearchWord: 连接源名称的关键字查询,支持模糊匹配
+        :param _SearchWord: <p>连接源名称的关键字查询,支持模糊匹配</p>
         :type SearchWord: str
-        :param _Offset: 分页偏移量，默认为0
+        :param _Offset: <p>分页偏移量，默认为0</p>
         :type Offset: int
-        :param _Limit: 返回数量，默认为20，最大值为1000 (超过1000,则限制为1000)
+        :param _Limit: <p>返回数量，默认为20，最大值为1000 (超过1000,则限制为1000)</p>
         :type Limit: int
-        :param _ResourceRegion: 连接源的关键字查询, 根据地域查询本地域内连接管理列表中的连接(仅支持包含region输入的连接源)
+        :param _ResourceRegion: <p>连接源的关键字查询, 根据地域查询本地域内连接管理列表中的连接(仅支持包含region输入的连接源)</p>
         :type ResourceRegion: str
         """
         self._Type = None
@@ -11582,7 +11783,7 @@ class DescribeConnectResourcesRequest(AbstractModel):
 
     @property
     def Type(self):
-        r"""连接源类型
+        r"""<p>连接源类型</p>
         :rtype: str
         """
         return self._Type
@@ -11593,7 +11794,7 @@ class DescribeConnectResourcesRequest(AbstractModel):
 
     @property
     def SearchWord(self):
-        r"""连接源名称的关键字查询,支持模糊匹配
+        r"""<p>连接源名称的关键字查询,支持模糊匹配</p>
         :rtype: str
         """
         return self._SearchWord
@@ -11604,7 +11805,7 @@ class DescribeConnectResourcesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""分页偏移量，默认为0
+        r"""<p>分页偏移量，默认为0</p>
         :rtype: int
         """
         return self._Offset
@@ -11615,7 +11816,7 @@ class DescribeConnectResourcesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""返回数量，默认为20，最大值为1000 (超过1000,则限制为1000)
+        r"""<p>返回数量，默认为20，最大值为1000 (超过1000,则限制为1000)</p>
         :rtype: int
         """
         return self._Limit
@@ -11626,7 +11827,7 @@ class DescribeConnectResourcesRequest(AbstractModel):
 
     @property
     def ResourceRegion(self):
-        r"""连接源的关键字查询, 根据地域查询本地域内连接管理列表中的连接(仅支持包含region输入的连接源)
+        r"""<p>连接源的关键字查询, 根据地域查询本地域内连接管理列表中的连接(仅支持包含region输入的连接源)</p>
         :rtype: str
         """
         return self._ResourceRegion
@@ -11715,7 +11916,7 @@ class DescribeConnectResourcesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 连接源列表
+        :param _Result: <p>连接源列表</p>
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.DescribeConnectResourcesResp`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -11725,7 +11926,7 @@ class DescribeConnectResourcesResponse(AbstractModel):
 
     @property
     def Result(self):
-        r"""连接源列表
+        r"""<p>连接源列表</p>
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.DescribeConnectResourcesResp`
         """
         return self._Result
@@ -12123,14 +12324,14 @@ class DescribeDatahubTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务id
+        :param _TaskId: <p>任务id</p>
         :type TaskId: str
         """
         self._TaskId = None
 
     @property
     def TaskId(self):
-        r"""任务id
+        r"""<p>任务id</p>
         :rtype: str
         """
         return self._TaskId
@@ -12159,42 +12360,48 @@ class DescribeDatahubTaskRes(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务ID
+        :param _TaskId: <p>任务ID</p>
         :type TaskId: str
-        :param _TaskName: 任务名称
+        :param _TaskName: <p>任务名称</p>
         :type TaskName: str
-        :param _TaskType: 任务类型，SOURCE数据接入，SINK数据流出
+        :param _TaskType: <p>任务类型，SOURCE数据接入，SINK数据流出</p>
         :type TaskType: str
-        :param _Status: 状态，-1创建失败，0创建中，1运行中，2删除中，3已删除，4删除失败，5暂停中，6已暂停，7暂停失败，8恢复中，9恢复失败
+        :param _Status: <p>状态，-1创建失败，0创建中，1运行中，2删除中，3已删除，4删除失败，5暂停中，6已暂停，7暂停失败，8恢复中，9恢复失败</p>
         :type Status: int
-        :param _SourceResource: 数据源
+        :param _SourceResource: <p>数据源</p>
         :type SourceResource: :class:`tencentcloud.ckafka.v20190819.models.DatahubResource`
-        :param _TargetResource: 数据目标
+        :param _TargetResource: <p>数据目标</p>
         :type TargetResource: :class:`tencentcloud.ckafka.v20190819.models.DatahubResource`
-        :param _Connections: Connection列表
+        :param _Connections: <p>Connection列表</p>
         :type Connections: list of Connection
-        :param _CreateTime: 任务创建时间
+        :param _CreateTime: <p>任务创建时间</p>
         :type CreateTime: str
-        :param _TransformParam: 消息处理规则
+        :param _TransformParam: <p>消息处理规则</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TransformParam: :class:`tencentcloud.ckafka.v20190819.models.TransformParam`
-        :param _DatahubId: 数据接入ID
+        :param _DatahubId: <p>数据接入ID</p>
         :type DatahubId: str
-        :param _SchemaId: 绑定的SchemaId
+        :param _SchemaId: <p>绑定的SchemaId</p>
         :type SchemaId: str
-        :param _SchemaName: 绑定的Schema名称
+        :param _SchemaName: <p>绑定的Schema名称</p>
         :type SchemaName: str
-        :param _TransformsParam: 数据处理规则
+        :param _TransformsParam: <p>数据处理规则</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TransformsParam: :class:`tencentcloud.ckafka.v20190819.models.TransformsParam`
-        :param _ErrorMessage: 异常信息
+        :param _ErrorMessage: <p>异常信息</p>
         :type ErrorMessage: str
-        :param _Tags: 任务标签列表
+        :param _Tags: <p>任务标签列表</p>
         :type Tags: list of Tag
-        :param _Description: 任务描述信息	
+        :param _Description: <p>任务描述信息</p>
         :type Description: str
-        :param _IsolateStatus: 1:正常 2:隔离中
+        :param _IsolateStatus: <p>1:正常 2:隔离中</p>
         :type IsolateStatus: int
+        :param _TaskMax: <p>并发数</p><p>默认值：1</p>
+        :type TaskMax: int
+        :param _SyncThrottleLimit: <p>并发流量预估参考上限，MB/s</p>
+        :type SyncThrottleLimit: int
+        :param _AutoExpandFlag: <p>自动扩容 true:自动扩容 false:手动扩容</p><p>默认值：true</p>
+        :type AutoExpandFlag: bool
         """
         self._TaskId = None
         self._TaskName = None
@@ -12213,10 +12420,13 @@ class DescribeDatahubTaskRes(AbstractModel):
         self._Tags = None
         self._Description = None
         self._IsolateStatus = None
+        self._TaskMax = None
+        self._SyncThrottleLimit = None
+        self._AutoExpandFlag = None
 
     @property
     def TaskId(self):
-        r"""任务ID
+        r"""<p>任务ID</p>
         :rtype: str
         """
         return self._TaskId
@@ -12227,7 +12437,7 @@ class DescribeDatahubTaskRes(AbstractModel):
 
     @property
     def TaskName(self):
-        r"""任务名称
+        r"""<p>任务名称</p>
         :rtype: str
         """
         return self._TaskName
@@ -12238,7 +12448,7 @@ class DescribeDatahubTaskRes(AbstractModel):
 
     @property
     def TaskType(self):
-        r"""任务类型，SOURCE数据接入，SINK数据流出
+        r"""<p>任务类型，SOURCE数据接入，SINK数据流出</p>
         :rtype: str
         """
         return self._TaskType
@@ -12249,7 +12459,7 @@ class DescribeDatahubTaskRes(AbstractModel):
 
     @property
     def Status(self):
-        r"""状态，-1创建失败，0创建中，1运行中，2删除中，3已删除，4删除失败，5暂停中，6已暂停，7暂停失败，8恢复中，9恢复失败
+        r"""<p>状态，-1创建失败，0创建中，1运行中，2删除中，3已删除，4删除失败，5暂停中，6已暂停，7暂停失败，8恢复中，9恢复失败</p>
         :rtype: int
         """
         return self._Status
@@ -12260,7 +12470,7 @@ class DescribeDatahubTaskRes(AbstractModel):
 
     @property
     def SourceResource(self):
-        r"""数据源
+        r"""<p>数据源</p>
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.DatahubResource`
         """
         return self._SourceResource
@@ -12271,7 +12481,7 @@ class DescribeDatahubTaskRes(AbstractModel):
 
     @property
     def TargetResource(self):
-        r"""数据目标
+        r"""<p>数据目标</p>
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.DatahubResource`
         """
         return self._TargetResource
@@ -12282,7 +12492,7 @@ class DescribeDatahubTaskRes(AbstractModel):
 
     @property
     def Connections(self):
-        r"""Connection列表
+        r"""<p>Connection列表</p>
         :rtype: list of Connection
         """
         return self._Connections
@@ -12293,7 +12503,7 @@ class DescribeDatahubTaskRes(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""任务创建时间
+        r"""<p>任务创建时间</p>
         :rtype: str
         """
         return self._CreateTime
@@ -12304,7 +12514,7 @@ class DescribeDatahubTaskRes(AbstractModel):
 
     @property
     def TransformParam(self):
-        r"""消息处理规则
+        r"""<p>消息处理规则</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.TransformParam`
         """
@@ -12316,7 +12526,7 @@ class DescribeDatahubTaskRes(AbstractModel):
 
     @property
     def DatahubId(self):
-        r"""数据接入ID
+        r"""<p>数据接入ID</p>
         :rtype: str
         """
         return self._DatahubId
@@ -12327,7 +12537,7 @@ class DescribeDatahubTaskRes(AbstractModel):
 
     @property
     def SchemaId(self):
-        r"""绑定的SchemaId
+        r"""<p>绑定的SchemaId</p>
         :rtype: str
         """
         return self._SchemaId
@@ -12338,7 +12548,7 @@ class DescribeDatahubTaskRes(AbstractModel):
 
     @property
     def SchemaName(self):
-        r"""绑定的Schema名称
+        r"""<p>绑定的Schema名称</p>
         :rtype: str
         """
         return self._SchemaName
@@ -12349,7 +12559,7 @@ class DescribeDatahubTaskRes(AbstractModel):
 
     @property
     def TransformsParam(self):
-        r"""数据处理规则
+        r"""<p>数据处理规则</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.TransformsParam`
         """
@@ -12361,7 +12571,7 @@ class DescribeDatahubTaskRes(AbstractModel):
 
     @property
     def ErrorMessage(self):
-        r"""异常信息
+        r"""<p>异常信息</p>
         :rtype: str
         """
         return self._ErrorMessage
@@ -12372,7 +12582,7 @@ class DescribeDatahubTaskRes(AbstractModel):
 
     @property
     def Tags(self):
-        r"""任务标签列表
+        r"""<p>任务标签列表</p>
         :rtype: list of Tag
         """
         return self._Tags
@@ -12383,7 +12593,7 @@ class DescribeDatahubTaskRes(AbstractModel):
 
     @property
     def Description(self):
-        r"""任务描述信息	
+        r"""<p>任务描述信息</p>
         :rtype: str
         """
         return self._Description
@@ -12394,7 +12604,7 @@ class DescribeDatahubTaskRes(AbstractModel):
 
     @property
     def IsolateStatus(self):
-        r"""1:正常 2:隔离中
+        r"""<p>1:正常 2:隔离中</p>
         :rtype: int
         """
         return self._IsolateStatus
@@ -12402,6 +12612,39 @@ class DescribeDatahubTaskRes(AbstractModel):
     @IsolateStatus.setter
     def IsolateStatus(self, IsolateStatus):
         self._IsolateStatus = IsolateStatus
+
+    @property
+    def TaskMax(self):
+        r"""<p>并发数</p><p>默认值：1</p>
+        :rtype: int
+        """
+        return self._TaskMax
+
+    @TaskMax.setter
+    def TaskMax(self, TaskMax):
+        self._TaskMax = TaskMax
+
+    @property
+    def SyncThrottleLimit(self):
+        r"""<p>并发流量预估参考上限，MB/s</p>
+        :rtype: int
+        """
+        return self._SyncThrottleLimit
+
+    @SyncThrottleLimit.setter
+    def SyncThrottleLimit(self, SyncThrottleLimit):
+        self._SyncThrottleLimit = SyncThrottleLimit
+
+    @property
+    def AutoExpandFlag(self):
+        r"""<p>自动扩容 true:自动扩容 false:手动扩容</p><p>默认值：true</p>
+        :rtype: bool
+        """
+        return self._AutoExpandFlag
+
+    @AutoExpandFlag.setter
+    def AutoExpandFlag(self, AutoExpandFlag):
+        self._AutoExpandFlag = AutoExpandFlag
 
 
     def _deserialize(self, params):
@@ -12440,6 +12683,9 @@ class DescribeDatahubTaskRes(AbstractModel):
                 self._Tags.append(obj)
         self._Description = params.get("Description")
         self._IsolateStatus = params.get("IsolateStatus")
+        self._TaskMax = params.get("TaskMax")
+        self._SyncThrottleLimit = params.get("SyncThrottleLimit")
+        self._AutoExpandFlag = params.get("AutoExpandFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12457,7 +12703,7 @@ class DescribeDatahubTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 返回结果
+        :param _Result: <p>返回结果</p>
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.DescribeDatahubTaskRes`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -12467,7 +12713,7 @@ class DescribeDatahubTaskResponse(AbstractModel):
 
     @property
     def Result(self):
-        r"""返回结果
+        r"""<p>返回结果</p>
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.DescribeDatahubTaskRes`
         """
         return self._Result
@@ -12502,19 +12748,19 @@ class DescribeDatahubTasksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Limit: 返回数量，默认为20，最大值为100 (超过100限制为100)
+        :param _Limit: <p>返回数量，默认为20，最大值为100 (超过100限制为100)</p>
         :type Limit: int
-        :param _Offset: 分页偏移量，默认为0
+        :param _Offset: <p>分页偏移量，默认为0</p>
         :type Offset: int
-        :param _SearchWord: 过滤条件，按照 TaskName 过滤，支持模糊查询
+        :param _SearchWord: <p>过滤条件，按照 TaskName 过滤，支持模糊查询</p>
         :type SearchWord: str
-        :param _TargetType: 转储的目标类型
+        :param _TargetType: <p>转储的目标类型</p>
         :type TargetType: str
-        :param _TaskType: 任务类型，SOURCE数据接入，SINK数据流出
+        :param _TaskType: <p>任务类型，SOURCE数据接入，SINK数据流出</p>
         :type TaskType: str
-        :param _SourceType: 转储的源类型
+        :param _SourceType: <p>转储的源类型</p>
         :type SourceType: str
-        :param _Resource: 转储的资源
+        :param _Resource: <p>转储的资源</p>
         :type Resource: str
         """
         self._Limit = None
@@ -12527,7 +12773,7 @@ class DescribeDatahubTasksRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""返回数量，默认为20，最大值为100 (超过100限制为100)
+        r"""<p>返回数量，默认为20，最大值为100 (超过100限制为100)</p>
         :rtype: int
         """
         return self._Limit
@@ -12538,7 +12784,7 @@ class DescribeDatahubTasksRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""分页偏移量，默认为0
+        r"""<p>分页偏移量，默认为0</p>
         :rtype: int
         """
         return self._Offset
@@ -12549,7 +12795,7 @@ class DescribeDatahubTasksRequest(AbstractModel):
 
     @property
     def SearchWord(self):
-        r"""过滤条件，按照 TaskName 过滤，支持模糊查询
+        r"""<p>过滤条件，按照 TaskName 过滤，支持模糊查询</p>
         :rtype: str
         """
         return self._SearchWord
@@ -12560,7 +12806,7 @@ class DescribeDatahubTasksRequest(AbstractModel):
 
     @property
     def TargetType(self):
-        r"""转储的目标类型
+        r"""<p>转储的目标类型</p>
         :rtype: str
         """
         return self._TargetType
@@ -12571,7 +12817,7 @@ class DescribeDatahubTasksRequest(AbstractModel):
 
     @property
     def TaskType(self):
-        r"""任务类型，SOURCE数据接入，SINK数据流出
+        r"""<p>任务类型，SOURCE数据接入，SINK数据流出</p>
         :rtype: str
         """
         return self._TaskType
@@ -12582,7 +12828,7 @@ class DescribeDatahubTasksRequest(AbstractModel):
 
     @property
     def SourceType(self):
-        r"""转储的源类型
+        r"""<p>转储的源类型</p>
         :rtype: str
         """
         return self._SourceType
@@ -12593,7 +12839,7 @@ class DescribeDatahubTasksRequest(AbstractModel):
 
     @property
     def Resource(self):
-        r"""转储的资源
+        r"""<p>转储的资源</p>
         :rtype: str
         """
         return self._Resource
@@ -12684,7 +12930,7 @@ class DescribeDatahubTasksResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 返回任务查询结果
+        :param _Result: <p>返回任务查询结果</p>
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.DescribeDatahubTasksRes`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -12694,7 +12940,7 @@ class DescribeDatahubTasksResponse(AbstractModel):
 
     @property
     def Result(self):
-        r"""返回任务查询结果
+        r"""<p>返回任务查询结果</p>
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.DescribeDatahubTasksRes`
         """
         return self._Result
@@ -17850,6 +18096,62 @@ class EventBusParam(AbstractModel):
         
 
 
+class ExternalAccessInfoWrapper(AbstractModel):
+    r"""实例公网路由IP白名单返回结果对象
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>IP白名单放通规则数</p>
+        :type TotalCount: int
+        :param _IpWhitelist: <p>IP白名单</p>
+        :type IpWhitelist: list of IpWhitelistDTO
+        """
+        self._TotalCount = None
+        self._IpWhitelist = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>IP白名单放通规则数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def IpWhitelist(self):
+        r"""<p>IP白名单</p>
+        :rtype: list of IpWhitelistDTO
+        """
+        return self._IpWhitelist
+
+    @IpWhitelist.setter
+    def IpWhitelist(self, IpWhitelist):
+        self._IpWhitelist = IpWhitelist
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("IpWhitelist") is not None:
+            self._IpWhitelist = []
+            for item in params.get("IpWhitelist"):
+                obj = IpWhitelistDTO()
+                obj._deserialize(item)
+                self._IpWhitelist.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class FailureParam(AbstractModel):
     r"""数据处理规则失败处理
 
@@ -22912,56 +23214,58 @@ class KafkaParam(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SelfBuilt: 是否为自建集群
+        :param _SelfBuilt: <p>是否为自建集群</p>
         :type SelfBuilt: bool
-        :param _Resource: ckafka集群实例Id
+        :param _Resource: <p>ckafka集群实例Id</p>
         :type Resource: str
-        :param _Topic: 主题名，多个以“,”分隔
+        :param _Topic: <p>主题名，多个以“,”分隔</p>
         :type Topic: str
-        :param _OffsetType: Offset类型，最开始位置earliest，最新位置latest，时间点位置timestamp
+        :param _OffsetType: <p>Offset类型，最开始位置earliest，最新位置latest，时间点位置timestamp</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type OffsetType: str
-        :param _StartTime: Offset类型为timestamp时必传，传时间戳，精确到秒
+        :param _StartTime: <p>Offset类型为timestamp时必传，传时间戳，精确到秒</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: int
-        :param _ResourceName: 实例资源名称
+        :param _ResourceName: <p>实例资源名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceName: str
-        :param _ZoneId: 可用区
+        :param _ZoneId: <p>可用区</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ZoneId: int
-        :param _TopicId: 主题Id
+        :param _TopicId: <p>主题Id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TopicId: str
-        :param _PartitionNum: Topic的分区数
+        :param _PartitionNum: <p>Topic的分区数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type PartitionNum: int
-        :param _EnableToleration: 启用容错实例/开启死信队列
+        :param _EnableToleration: <p>启用容错实例/开启死信队列</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type EnableToleration: bool
-        :param _QpsLimit: Qps 限制
+        :param _QpsLimit: <p>Qps 限制</p>
         :type QpsLimit: int
-        :param _TableMappings: Table到Topic的路由，「分发到多个topic」开关打开时必传
+        :param _TableMappings: <p>Table到Topic的路由，「分发到多个topic」开关打开时必传</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TableMappings: list of TableMapping
-        :param _UseTableMapping: 「分发到多个topic」开关，默认为false
+        :param _UseTableMapping: <p>「分发到多个topic」开关，默认为false</p>
         :type UseTableMapping: bool
-        :param _UseAutoCreateTopic: 使用的Topic是否需要自动创建（目前只支持SOURCE流入任务，如果不使用分发到多个topic，需要在Topic字段填写需要自动创建的topic名）
+        :param _UseAutoCreateTopic: <p>使用的Topic是否需要自动创建（目前只支持SOURCE流入任务，如果不使用分发到多个topic，需要在Topic字段填写需要自动创建的topic名）</p>
         :type UseAutoCreateTopic: bool
-        :param _CompressionType: 写入Topic时是否进行压缩，不开启填"none"，开启的话，填写"open"。
+        :param _CompressionType: <p>写入Topic时是否进行压缩，不开启填&quot;none&quot;，开启的话，填写&quot;open&quot;。</p>
         :type CompressionType: str
-        :param _MsgMultiple: 源topic消息1条扩增成msgMultiple条写入目标topic(该参数目前只有ckafka流入ckafka适用)
+        :param _MsgMultiple: <p>源topic消息1条扩增成msgMultiple条写入目标topic(该参数目前只有ckafka流入ckafka适用)</p>
         :type MsgMultiple: int
-        :param _ConnectorSyncType: 数据同步专用参数, 正常数据处理可为空, 实例级别同步: 仅同步元数据填写"META_SYNC_INSTANCE_TYPE", 同步元数据及全部topic内消息的填写"META_AND_DATA_SYNC_INSTANCE_TYPE"; topic级别同步: 选中的源和目标topic中的消息(需要目标实例也包含该topic)填写"DATA_SYNC_TYPE"
+        :param _ConnectorSyncType: <p>数据同步专用参数, 正常数据处理可为空, 实例级别同步: 仅同步元数据填写&quot;META_SYNC_INSTANCE_TYPE&quot;, 同步元数据及全部topic内消息的填写&quot;META_AND_DATA_SYNC_INSTANCE_TYPE&quot;; topic级别同步: 选中的源和目标topic中的消息(需要目标实例也包含该topic)填写&quot;DATA_SYNC_TYPE&quot;</p>
         :type ConnectorSyncType: str
-        :param _KeepPartition: 数据同步专用参数, 当通过时,希望下游的消息写入分区与上游的一致,则填true,但下游分区小于上游时,会报错; 不需要一致则为false, 默认为false
+        :param _KeepPartition: <p>数据同步专用参数, 当通过时,希望下游的消息写入分区与上游的一致,则填true,但下游分区小于上游时,会报错; 不需要一致则为false, 默认为false</p>
         :type KeepPartition: bool
-        :param _TopicRegularExpression: 正则匹配Topic列表
+        :param _TopicRegularExpression: <p>正则匹配Topic列表</p>
         :type TopicRegularExpression: str
-        :param _Prefix: Topic 前缀
+        :param _Prefix: <p>Topic 前缀</p>
         :type Prefix: str
-        :param _Separator: Topic前缀分隔符
+        :param _Separator: <p>Topic前缀分隔符</p>
         :type Separator: str
+        :param _TopicList: <p>多选topic列表</p>
+        :type TopicList: list of str
         """
         self._SelfBuilt = None
         self._Resource = None
@@ -22984,10 +23288,11 @@ class KafkaParam(AbstractModel):
         self._TopicRegularExpression = None
         self._Prefix = None
         self._Separator = None
+        self._TopicList = None
 
     @property
     def SelfBuilt(self):
-        r"""是否为自建集群
+        r"""<p>是否为自建集群</p>
         :rtype: bool
         """
         return self._SelfBuilt
@@ -22998,7 +23303,7 @@ class KafkaParam(AbstractModel):
 
     @property
     def Resource(self):
-        r"""ckafka集群实例Id
+        r"""<p>ckafka集群实例Id</p>
         :rtype: str
         """
         return self._Resource
@@ -23009,7 +23314,7 @@ class KafkaParam(AbstractModel):
 
     @property
     def Topic(self):
-        r"""主题名，多个以“,”分隔
+        r"""<p>主题名，多个以“,”分隔</p>
         :rtype: str
         """
         return self._Topic
@@ -23020,7 +23325,7 @@ class KafkaParam(AbstractModel):
 
     @property
     def OffsetType(self):
-        r"""Offset类型，最开始位置earliest，最新位置latest，时间点位置timestamp
+        r"""<p>Offset类型，最开始位置earliest，最新位置latest，时间点位置timestamp</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -23032,7 +23337,7 @@ class KafkaParam(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""Offset类型为timestamp时必传，传时间戳，精确到秒
+        r"""<p>Offset类型为timestamp时必传，传时间戳，精确到秒</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -23044,7 +23349,7 @@ class KafkaParam(AbstractModel):
 
     @property
     def ResourceName(self):
-        r"""实例资源名称
+        r"""<p>实例资源名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -23056,7 +23361,7 @@ class KafkaParam(AbstractModel):
 
     @property
     def ZoneId(self):
-        r"""可用区
+        r"""<p>可用区</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -23068,7 +23373,7 @@ class KafkaParam(AbstractModel):
 
     @property
     def TopicId(self):
-        r"""主题Id
+        r"""<p>主题Id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -23080,7 +23385,7 @@ class KafkaParam(AbstractModel):
 
     @property
     def PartitionNum(self):
-        r"""Topic的分区数
+        r"""<p>Topic的分区数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -23092,7 +23397,7 @@ class KafkaParam(AbstractModel):
 
     @property
     def EnableToleration(self):
-        r"""启用容错实例/开启死信队列
+        r"""<p>启用容错实例/开启死信队列</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -23104,7 +23409,7 @@ class KafkaParam(AbstractModel):
 
     @property
     def QpsLimit(self):
-        r"""Qps 限制
+        r"""<p>Qps 限制</p>
         :rtype: int
         """
         return self._QpsLimit
@@ -23115,7 +23420,7 @@ class KafkaParam(AbstractModel):
 
     @property
     def TableMappings(self):
-        r"""Table到Topic的路由，「分发到多个topic」开关打开时必传
+        r"""<p>Table到Topic的路由，「分发到多个topic」开关打开时必传</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TableMapping
         """
@@ -23127,7 +23432,7 @@ class KafkaParam(AbstractModel):
 
     @property
     def UseTableMapping(self):
-        r"""「分发到多个topic」开关，默认为false
+        r"""<p>「分发到多个topic」开关，默认为false</p>
         :rtype: bool
         """
         return self._UseTableMapping
@@ -23138,7 +23443,7 @@ class KafkaParam(AbstractModel):
 
     @property
     def UseAutoCreateTopic(self):
-        r"""使用的Topic是否需要自动创建（目前只支持SOURCE流入任务，如果不使用分发到多个topic，需要在Topic字段填写需要自动创建的topic名）
+        r"""<p>使用的Topic是否需要自动创建（目前只支持SOURCE流入任务，如果不使用分发到多个topic，需要在Topic字段填写需要自动创建的topic名）</p>
         :rtype: bool
         """
         return self._UseAutoCreateTopic
@@ -23149,7 +23454,7 @@ class KafkaParam(AbstractModel):
 
     @property
     def CompressionType(self):
-        r"""写入Topic时是否进行压缩，不开启填"none"，开启的话，填写"open"。
+        r"""<p>写入Topic时是否进行压缩，不开启填&quot;none&quot;，开启的话，填写&quot;open&quot;。</p>
         :rtype: str
         """
         return self._CompressionType
@@ -23160,7 +23465,7 @@ class KafkaParam(AbstractModel):
 
     @property
     def MsgMultiple(self):
-        r"""源topic消息1条扩增成msgMultiple条写入目标topic(该参数目前只有ckafka流入ckafka适用)
+        r"""<p>源topic消息1条扩增成msgMultiple条写入目标topic(该参数目前只有ckafka流入ckafka适用)</p>
         :rtype: int
         """
         return self._MsgMultiple
@@ -23171,7 +23476,7 @@ class KafkaParam(AbstractModel):
 
     @property
     def ConnectorSyncType(self):
-        r"""数据同步专用参数, 正常数据处理可为空, 实例级别同步: 仅同步元数据填写"META_SYNC_INSTANCE_TYPE", 同步元数据及全部topic内消息的填写"META_AND_DATA_SYNC_INSTANCE_TYPE"; topic级别同步: 选中的源和目标topic中的消息(需要目标实例也包含该topic)填写"DATA_SYNC_TYPE"
+        r"""<p>数据同步专用参数, 正常数据处理可为空, 实例级别同步: 仅同步元数据填写&quot;META_SYNC_INSTANCE_TYPE&quot;, 同步元数据及全部topic内消息的填写&quot;META_AND_DATA_SYNC_INSTANCE_TYPE&quot;; topic级别同步: 选中的源和目标topic中的消息(需要目标实例也包含该topic)填写&quot;DATA_SYNC_TYPE&quot;</p>
         :rtype: str
         """
         return self._ConnectorSyncType
@@ -23182,7 +23487,7 @@ class KafkaParam(AbstractModel):
 
     @property
     def KeepPartition(self):
-        r"""数据同步专用参数, 当通过时,希望下游的消息写入分区与上游的一致,则填true,但下游分区小于上游时,会报错; 不需要一致则为false, 默认为false
+        r"""<p>数据同步专用参数, 当通过时,希望下游的消息写入分区与上游的一致,则填true,但下游分区小于上游时,会报错; 不需要一致则为false, 默认为false</p>
         :rtype: bool
         """
         return self._KeepPartition
@@ -23193,7 +23498,7 @@ class KafkaParam(AbstractModel):
 
     @property
     def TopicRegularExpression(self):
-        r"""正则匹配Topic列表
+        r"""<p>正则匹配Topic列表</p>
         :rtype: str
         """
         return self._TopicRegularExpression
@@ -23204,7 +23509,7 @@ class KafkaParam(AbstractModel):
 
     @property
     def Prefix(self):
-        r"""Topic 前缀
+        r"""<p>Topic 前缀</p>
         :rtype: str
         """
         return self._Prefix
@@ -23215,7 +23520,7 @@ class KafkaParam(AbstractModel):
 
     @property
     def Separator(self):
-        r"""Topic前缀分隔符
+        r"""<p>Topic前缀分隔符</p>
         :rtype: str
         """
         return self._Separator
@@ -23223,6 +23528,17 @@ class KafkaParam(AbstractModel):
     @Separator.setter
     def Separator(self, Separator):
         self._Separator = Separator
+
+    @property
+    def TopicList(self):
+        r"""<p>多选topic列表</p>
+        :rtype: list of str
+        """
+        return self._TopicList
+
+    @TopicList.setter
+    def TopicList(self, TopicList):
+        self._TopicList = TopicList
 
 
     def _deserialize(self, params):
@@ -23252,6 +23568,7 @@ class KafkaParam(AbstractModel):
         self._TopicRegularExpression = params.get("TopicRegularExpression")
         self._Prefix = params.get("Prefix")
         self._Separator = params.get("Separator")
+        self._TopicList = params.get("TopicList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -23864,6 +24181,120 @@ class MariaDBParam(AbstractModel):
         
 
 
+class ModifyAccessPolicyRequest(AbstractModel):
+    r"""ModifyAccessPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>实例ID</p>
+        :type InstanceId: str
+        :param _RouteId: <p>路由ID</p>
+        :type RouteId: int
+        :param _IpWhitelist: <p>公网IP白名单配置</p><p>不传默认删除全部配置</p>
+        :type IpWhitelist: list of IpWhitelistDTO
+        """
+        self._InstanceId = None
+        self._RouteId = None
+        self._IpWhitelist = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例ID</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def RouteId(self):
+        r"""<p>路由ID</p>
+        :rtype: int
+        """
+        return self._RouteId
+
+    @RouteId.setter
+    def RouteId(self, RouteId):
+        self._RouteId = RouteId
+
+    @property
+    def IpWhitelist(self):
+        r"""<p>公网IP白名单配置</p><p>不传默认删除全部配置</p>
+        :rtype: list of IpWhitelistDTO
+        """
+        return self._IpWhitelist
+
+    @IpWhitelist.setter
+    def IpWhitelist(self, IpWhitelist):
+        self._IpWhitelist = IpWhitelist
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._RouteId = params.get("RouteId")
+        if params.get("IpWhitelist") is not None:
+            self._IpWhitelist = []
+            for item in params.get("IpWhitelist"):
+                obj = IpWhitelistDTO()
+                obj._deserialize(item)
+                self._IpWhitelist.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyAccessPolicyResponse(AbstractModel):
+    r"""ModifyAccessPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: <p>修改公网IP白名单结果</p>
+        :type Result: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""<p>修改公网IP白名单结果</p>
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyAclRuleRequest(AbstractModel):
     r"""ModifyAclRule请求参数结构体
 
@@ -23980,37 +24411,37 @@ class ModifyConnectResourceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ResourceId: 连接源的Id
+        :param _ResourceId: <p>连接源的Id</p>
         :type ResourceId: str
-        :param _ResourceName: 连接源名称，为空时不修改
+        :param _ResourceName: <p>连接源名称，为空时不修改</p>
         :type ResourceName: str
-        :param _Description: 连接源描述，为空时不修改
+        :param _Description: <p>连接源描述，为空时不修改</p>
         :type Description: str
-        :param _Type: 连接源类型，修改数据源参数时，需要与原Type相同，否则编辑数据源无效
+        :param _Type: <p>连接源类型，修改数据源参数时，需要与原Type相同，否则编辑数据源无效</p>
         :type Type: str
-        :param _DtsConnectParam: Dts配置，Type为DTS时必填
+        :param _DtsConnectParam: <p>Dts配置，Type为DTS时必填</p>
         :type DtsConnectParam: :class:`tencentcloud.ckafka.v20190819.models.DtsModifyConnectParam`
-        :param _MongoDBConnectParam: MongoDB配置，Type为MONGODB时必填
+        :param _MongoDBConnectParam: <p>MongoDB配置，Type为MONGODB时必填</p>
         :type MongoDBConnectParam: :class:`tencentcloud.ckafka.v20190819.models.MongoDBModifyConnectParam`
-        :param _EsConnectParam: Es配置，Type为ES时必填
+        :param _EsConnectParam: <p>Es配置，Type为ES时必填</p>
         :type EsConnectParam: :class:`tencentcloud.ckafka.v20190819.models.EsModifyConnectParam`
-        :param _ClickHouseConnectParam: ClickHouse配置，Type为CLICKHOUSE时必填
+        :param _ClickHouseConnectParam: <p>ClickHouse配置，Type为CLICKHOUSE时必填</p>
         :type ClickHouseConnectParam: :class:`tencentcloud.ckafka.v20190819.models.ClickHouseModifyConnectParam`
-        :param _MySQLConnectParam: MySQL配置，Type为MYSQL或TDSQL_C_MYSQL时必填
+        :param _MySQLConnectParam: <p>MySQL配置，Type为MYSQL或TDSQL_C_MYSQL时必填</p>
         :type MySQLConnectParam: :class:`tencentcloud.ckafka.v20190819.models.MySQLModifyConnectParam`
-        :param _PostgreSQLConnectParam: PostgreSQL配置，Type为POSTGRESQL或TDSQL_C_POSTGRESQL时必填
+        :param _PostgreSQLConnectParam: <p>PostgreSQL配置，Type为POSTGRESQL或TDSQL_C_POSTGRESQL时必填</p>
         :type PostgreSQLConnectParam: :class:`tencentcloud.ckafka.v20190819.models.PostgreSQLModifyConnectParam`
-        :param _MariaDBConnectParam: MariaDB配置，Type为MARIADB时必填
+        :param _MariaDBConnectParam: <p>MariaDB配置，Type为MARIADB时必填</p>
         :type MariaDBConnectParam: :class:`tencentcloud.ckafka.v20190819.models.MariaDBModifyConnectParam`
-        :param _SQLServerConnectParam: SQLServer配置，Type为SQLSERVER时必填
+        :param _SQLServerConnectParam: <p>SQLServer配置，Type为SQLSERVER时必填</p>
         :type SQLServerConnectParam: :class:`tencentcloud.ckafka.v20190819.models.SQLServerModifyConnectParam`
-        :param _CtsdbConnectParam: Ctsdb配置，Type为CTSDB
+        :param _CtsdbConnectParam: <p>Ctsdb配置，Type为CTSDB</p>
         :type CtsdbConnectParam: :class:`tencentcloud.ckafka.v20190819.models.CtsdbModifyConnectParam`
-        :param _DorisConnectParam: Doris配置，Type为DORIS
+        :param _DorisConnectParam: <p>Doris配置，Type为DORIS</p>
         :type DorisConnectParam: :class:`tencentcloud.ckafka.v20190819.models.DorisModifyConnectParam`
-        :param _KafkaConnectParam: Kafka配置，Type为 KAFKA 时必填
+        :param _KafkaConnectParam: <p>Kafka配置，Type为 KAFKA 时必填</p>
         :type KafkaConnectParam: :class:`tencentcloud.ckafka.v20190819.models.KafkaConnectParam`
-        :param _MqttConnectParam: MQTT配置，Type为 MQTT 时必填
+        :param _MqttConnectParam: <p>MQTT配置，Type为 MQTT 时必填</p>
         :type MqttConnectParam: :class:`tencentcloud.ckafka.v20190819.models.MqttConnectParam`
         """
         self._ResourceId = None
@@ -24032,7 +24463,7 @@ class ModifyConnectResourceRequest(AbstractModel):
 
     @property
     def ResourceId(self):
-        r"""连接源的Id
+        r"""<p>连接源的Id</p>
         :rtype: str
         """
         return self._ResourceId
@@ -24043,7 +24474,7 @@ class ModifyConnectResourceRequest(AbstractModel):
 
     @property
     def ResourceName(self):
-        r"""连接源名称，为空时不修改
+        r"""<p>连接源名称，为空时不修改</p>
         :rtype: str
         """
         return self._ResourceName
@@ -24054,7 +24485,7 @@ class ModifyConnectResourceRequest(AbstractModel):
 
     @property
     def Description(self):
-        r"""连接源描述，为空时不修改
+        r"""<p>连接源描述，为空时不修改</p>
         :rtype: str
         """
         return self._Description
@@ -24065,7 +24496,7 @@ class ModifyConnectResourceRequest(AbstractModel):
 
     @property
     def Type(self):
-        r"""连接源类型，修改数据源参数时，需要与原Type相同，否则编辑数据源无效
+        r"""<p>连接源类型，修改数据源参数时，需要与原Type相同，否则编辑数据源无效</p>
         :rtype: str
         """
         return self._Type
@@ -24076,7 +24507,7 @@ class ModifyConnectResourceRequest(AbstractModel):
 
     @property
     def DtsConnectParam(self):
-        r"""Dts配置，Type为DTS时必填
+        r"""<p>Dts配置，Type为DTS时必填</p>
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.DtsModifyConnectParam`
         """
         return self._DtsConnectParam
@@ -24087,7 +24518,7 @@ class ModifyConnectResourceRequest(AbstractModel):
 
     @property
     def MongoDBConnectParam(self):
-        r"""MongoDB配置，Type为MONGODB时必填
+        r"""<p>MongoDB配置，Type为MONGODB时必填</p>
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.MongoDBModifyConnectParam`
         """
         return self._MongoDBConnectParam
@@ -24098,7 +24529,7 @@ class ModifyConnectResourceRequest(AbstractModel):
 
     @property
     def EsConnectParam(self):
-        r"""Es配置，Type为ES时必填
+        r"""<p>Es配置，Type为ES时必填</p>
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.EsModifyConnectParam`
         """
         return self._EsConnectParam
@@ -24109,7 +24540,7 @@ class ModifyConnectResourceRequest(AbstractModel):
 
     @property
     def ClickHouseConnectParam(self):
-        r"""ClickHouse配置，Type为CLICKHOUSE时必填
+        r"""<p>ClickHouse配置，Type为CLICKHOUSE时必填</p>
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.ClickHouseModifyConnectParam`
         """
         return self._ClickHouseConnectParam
@@ -24120,7 +24551,7 @@ class ModifyConnectResourceRequest(AbstractModel):
 
     @property
     def MySQLConnectParam(self):
-        r"""MySQL配置，Type为MYSQL或TDSQL_C_MYSQL时必填
+        r"""<p>MySQL配置，Type为MYSQL或TDSQL_C_MYSQL时必填</p>
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.MySQLModifyConnectParam`
         """
         return self._MySQLConnectParam
@@ -24131,7 +24562,7 @@ class ModifyConnectResourceRequest(AbstractModel):
 
     @property
     def PostgreSQLConnectParam(self):
-        r"""PostgreSQL配置，Type为POSTGRESQL或TDSQL_C_POSTGRESQL时必填
+        r"""<p>PostgreSQL配置，Type为POSTGRESQL或TDSQL_C_POSTGRESQL时必填</p>
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.PostgreSQLModifyConnectParam`
         """
         return self._PostgreSQLConnectParam
@@ -24142,7 +24573,7 @@ class ModifyConnectResourceRequest(AbstractModel):
 
     @property
     def MariaDBConnectParam(self):
-        r"""MariaDB配置，Type为MARIADB时必填
+        r"""<p>MariaDB配置，Type为MARIADB时必填</p>
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.MariaDBModifyConnectParam`
         """
         return self._MariaDBConnectParam
@@ -24153,7 +24584,7 @@ class ModifyConnectResourceRequest(AbstractModel):
 
     @property
     def SQLServerConnectParam(self):
-        r"""SQLServer配置，Type为SQLSERVER时必填
+        r"""<p>SQLServer配置，Type为SQLSERVER时必填</p>
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.SQLServerModifyConnectParam`
         """
         return self._SQLServerConnectParam
@@ -24164,7 +24595,7 @@ class ModifyConnectResourceRequest(AbstractModel):
 
     @property
     def CtsdbConnectParam(self):
-        r"""Ctsdb配置，Type为CTSDB
+        r"""<p>Ctsdb配置，Type为CTSDB</p>
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.CtsdbModifyConnectParam`
         """
         return self._CtsdbConnectParam
@@ -24175,7 +24606,7 @@ class ModifyConnectResourceRequest(AbstractModel):
 
     @property
     def DorisConnectParam(self):
-        r"""Doris配置，Type为DORIS
+        r"""<p>Doris配置，Type为DORIS</p>
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.DorisModifyConnectParam`
         """
         return self._DorisConnectParam
@@ -24186,7 +24617,7 @@ class ModifyConnectResourceRequest(AbstractModel):
 
     @property
     def KafkaConnectParam(self):
-        r"""Kafka配置，Type为 KAFKA 时必填
+        r"""<p>Kafka配置，Type为 KAFKA 时必填</p>
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.KafkaConnectParam`
         """
         return self._KafkaConnectParam
@@ -24197,7 +24628,7 @@ class ModifyConnectResourceRequest(AbstractModel):
 
     @property
     def MqttConnectParam(self):
-        r"""MQTT配置，Type为 MQTT 时必填
+        r"""<p>MQTT配置，Type为 MQTT 时必填</p>
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.MqttConnectParam`
         """
         return self._MqttConnectParam
@@ -24265,7 +24696,7 @@ class ModifyConnectResourceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 连接源的Id
+        :param _Result: <p>连接源的Id</p>
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.ConnectResourceResourceIdResp`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -24275,7 +24706,7 @@ class ModifyConnectResourceResponse(AbstractModel):
 
     @property
     def Result(self):
-        r"""连接源的Id
+        r"""<p>连接源的Id</p>
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.ConnectResourceResourceIdResp`
         """
         return self._Result
@@ -24310,20 +24741,29 @@ class ModifyDatahubTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务id
+        :param _TaskId: <p>任务id</p>
         :type TaskId: str
-        :param _TaskName: 任务名称
+        :param _TaskName: <p>任务名称</p>
         :type TaskName: str
-        :param _Description: 任务描述信息
+        :param _Description: <p>任务描述信息</p>
         :type Description: str
+        :param _TasksMax: <p>任务并发上限</p>
+        :type TasksMax: int
+        :param _SyncThrottleLimit: <p>数据同步限流值上限</p>单位：MB/s
+        :type SyncThrottleLimit: int
+        :param _AutoExpandFlag: <p>开启自动扩容</p>枚举值：<ul><li> true： 自动扩容</li><li> false： 手动扩容</li></ul>
+        :type AutoExpandFlag: bool
         """
         self._TaskId = None
         self._TaskName = None
         self._Description = None
+        self._TasksMax = None
+        self._SyncThrottleLimit = None
+        self._AutoExpandFlag = None
 
     @property
     def TaskId(self):
-        r"""任务id
+        r"""<p>任务id</p>
         :rtype: str
         """
         return self._TaskId
@@ -24334,7 +24774,7 @@ class ModifyDatahubTaskRequest(AbstractModel):
 
     @property
     def TaskName(self):
-        r"""任务名称
+        r"""<p>任务名称</p>
         :rtype: str
         """
         return self._TaskName
@@ -24345,7 +24785,7 @@ class ModifyDatahubTaskRequest(AbstractModel):
 
     @property
     def Description(self):
-        r"""任务描述信息
+        r"""<p>任务描述信息</p>
         :rtype: str
         """
         return self._Description
@@ -24354,11 +24794,47 @@ class ModifyDatahubTaskRequest(AbstractModel):
     def Description(self, Description):
         self._Description = Description
 
+    @property
+    def TasksMax(self):
+        r"""<p>任务并发上限</p>
+        :rtype: int
+        """
+        return self._TasksMax
+
+    @TasksMax.setter
+    def TasksMax(self, TasksMax):
+        self._TasksMax = TasksMax
+
+    @property
+    def SyncThrottleLimit(self):
+        r"""<p>数据同步限流值上限</p>单位：MB/s
+        :rtype: int
+        """
+        return self._SyncThrottleLimit
+
+    @SyncThrottleLimit.setter
+    def SyncThrottleLimit(self, SyncThrottleLimit):
+        self._SyncThrottleLimit = SyncThrottleLimit
+
+    @property
+    def AutoExpandFlag(self):
+        r"""<p>开启自动扩容</p>枚举值：<ul><li> true： 自动扩容</li><li> false： 手动扩容</li></ul>
+        :rtype: bool
+        """
+        return self._AutoExpandFlag
+
+    @AutoExpandFlag.setter
+    def AutoExpandFlag(self, AutoExpandFlag):
+        self._AutoExpandFlag = AutoExpandFlag
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
         self._TaskName = params.get("TaskName")
         self._Description = params.get("Description")
+        self._TasksMax = params.get("TasksMax")
+        self._SyncThrottleLimit = params.get("SyncThrottleLimit")
+        self._AutoExpandFlag = params.get("AutoExpandFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -24376,7 +24852,7 @@ class ModifyDatahubTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 任务id
+        :param _Result: <p>任务id</p>
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.DatahubTaskIdRes`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -24386,7 +24862,7 @@ class ModifyDatahubTaskResponse(AbstractModel):
 
     @property
     def Result(self):
-        r"""任务id
+        r"""<p>任务id</p>
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.DatahubTaskIdRes`
         """
         return self._Result
@@ -24421,13 +24897,13 @@ class ModifyDatahubTopicRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 弹性topic名称
+        :param _Name: <p>弹性topic名称</p><p>取值参考：<a href="https://cloud.tencent.com/document/api/597/86863">DescribeDatahubTopics</a></p>
         :type Name: str
-        :param _RetentionMs: 消息保留时间，单位：ms，当前最小值为60000ms。
+        :param _RetentionMs: <p>消息保留时间，单位：ms，当前最小值为60000ms。</p>
         :type RetentionMs: int
-        :param _Note: 主题备注，是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线-。
+        :param _Note: <p>主题备注</p><p>入参限制：不超过64个字符</p>
         :type Note: str
-        :param _Tags: 标签列表
+        :param _Tags: <p>标签列表</p>
         :type Tags: list of Tag
         """
         self._Name = None
@@ -24437,7 +24913,7 @@ class ModifyDatahubTopicRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""弹性topic名称
+        r"""<p>弹性topic名称</p><p>取值参考：<a href="https://cloud.tencent.com/document/api/597/86863">DescribeDatahubTopics</a></p>
         :rtype: str
         """
         return self._Name
@@ -24448,7 +24924,7 @@ class ModifyDatahubTopicRequest(AbstractModel):
 
     @property
     def RetentionMs(self):
-        r"""消息保留时间，单位：ms，当前最小值为60000ms。
+        r"""<p>消息保留时间，单位：ms，当前最小值为60000ms。</p>
         :rtype: int
         """
         return self._RetentionMs
@@ -24459,7 +24935,7 @@ class ModifyDatahubTopicRequest(AbstractModel):
 
     @property
     def Note(self):
-        r"""主题备注，是一个不超过64个字符的字符串，必须以字母为首字符，剩余部分可以包含字母、数字和横划线-。
+        r"""<p>主题备注</p><p>入参限制：不超过64个字符</p>
         :rtype: str
         """
         return self._Note
@@ -24470,7 +24946,7 @@ class ModifyDatahubTopicRequest(AbstractModel):
 
     @property
     def Tags(self):
-        r"""标签列表
+        r"""<p>标签列表</p>
         :rtype: list of Tag
         """
         return self._Tags
@@ -24507,7 +24983,7 @@ class ModifyDatahubTopicResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 返回结果集
+        :param _Result: <p>返回结果集</p>
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -24517,7 +24993,7 @@ class ModifyDatahubTopicResponse(AbstractModel):
 
     @property
     def Result(self):
-        r"""返回结果集
+        r"""<p>返回结果集</p>
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
         """
         return self._Result
@@ -27741,14 +28217,14 @@ class PauseDatahubTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务id
+        :param _TaskId: <p>任务id</p>
         :type TaskId: str
         """
         self._TaskId = None
 
     @property
     def TaskId(self):
-        r"""任务id
+        r"""<p>任务id</p>
         :rtype: str
         """
         return self._TaskId
@@ -27777,7 +28253,7 @@ class PauseDatahubTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 任务id
+        :param _Result: <p>任务id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.DatahubTaskIdRes`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -27788,7 +28264,7 @@ class PauseDatahubTaskResponse(AbstractModel):
 
     @property
     def Result(self):
-        r"""任务id
+        r"""<p>任务id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.DatahubTaskIdRes`
         """
@@ -29200,14 +29676,14 @@ class RestartDatahubTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务id
+        :param _TaskId: <p>任务id</p>
         :type TaskId: str
         """
         self._TaskId = None
 
     @property
     def TaskId(self):
-        r"""任务id
+        r"""<p>任务id</p>
         :rtype: str
         """
         return self._TaskId
@@ -29236,7 +29712,7 @@ class RestartDatahubTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 任务id
+        :param _Result: <p>任务id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.DatahubTaskIdRes`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -29247,7 +29723,7 @@ class RestartDatahubTaskResponse(AbstractModel):
 
     @property
     def Result(self):
-        r"""任务id
+        r"""<p>任务id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.DatahubTaskIdRes`
         """
@@ -29283,14 +29759,14 @@ class ResumeDatahubTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务id
+        :param _TaskId: <p>任务id</p>
         :type TaskId: str
         """
         self._TaskId = None
 
     @property
     def TaskId(self):
-        r"""任务id
+        r"""<p>任务id</p>
         :rtype: str
         """
         return self._TaskId
@@ -29319,7 +29795,7 @@ class ResumeDatahubTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 任务id
+        :param _Result: <p>任务id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.DatahubTaskIdRes`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -29330,7 +29806,7 @@ class ResumeDatahubTaskResponse(AbstractModel):
 
     @property
     def Result(self):
-        r"""任务id
+        r"""<p>任务id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.DatahubTaskIdRes`
         """
@@ -31128,15 +31604,15 @@ class TdwParam(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Bid: Tdw的bid
+        :param _Bid: <p>Tdw的bid</p>
         :type Bid: str
-        :param _Tid: Tdw的tid
+        :param _Tid: <p>Tdw的tid</p>
         :type Tid: str
-        :param _IsDomestic: 默认true
+        :param _IsDomestic: <p>默认true</p>
         :type IsDomestic: bool
-        :param _TdwHost: TDW地址，默认tl-tdbank-tdmanager.tencent-distribute.com
+        :param _TdwHost: <p>TDW地址，默认tl-tdbank-tdmanager.tencent-distribute.com</p>
         :type TdwHost: str
-        :param _TdwPort: TDW端口，默认8099
+        :param _TdwPort: <p>TDW端口，默认8099</p>
         :type TdwPort: int
         """
         self._Bid = None
@@ -31147,7 +31623,7 @@ class TdwParam(AbstractModel):
 
     @property
     def Bid(self):
-        r"""Tdw的bid
+        r"""<p>Tdw的bid</p>
         :rtype: str
         """
         return self._Bid
@@ -31158,7 +31634,7 @@ class TdwParam(AbstractModel):
 
     @property
     def Tid(self):
-        r"""Tdw的tid
+        r"""<p>Tdw的tid</p>
         :rtype: str
         """
         return self._Tid
@@ -31169,7 +31645,7 @@ class TdwParam(AbstractModel):
 
     @property
     def IsDomestic(self):
-        r"""默认true
+        r"""<p>默认true</p>
         :rtype: bool
         """
         return self._IsDomestic
@@ -31180,7 +31656,7 @@ class TdwParam(AbstractModel):
 
     @property
     def TdwHost(self):
-        r"""TDW地址，默认tl-tdbank-tdmanager.tencent-distribute.com
+        r"""<p>TDW地址，默认tl-tdbank-tdmanager.tencent-distribute.com</p>
         :rtype: str
         """
         return self._TdwHost
@@ -31191,7 +31667,7 @@ class TdwParam(AbstractModel):
 
     @property
     def TdwPort(self):
-        r"""TDW端口，默认8099
+        r"""<p>TDW端口，默认8099</p>
         :rtype: int
         """
         return self._TdwPort

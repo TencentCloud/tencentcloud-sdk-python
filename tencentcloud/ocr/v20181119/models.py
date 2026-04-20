@@ -14176,15 +14176,13 @@ class HmtResidentPermitOCRRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ImageBase64: 图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :param _ImageBase64: <p>图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。</p>
         :type ImageBase64: str
-        :param _ImageUrl: 图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        :param _ImageUrl: <p>图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。</p>
         :type ImageUrl: str
-        :param _CardSide: FRONT：有照片的一面（人像面），
-BACK：无照片的一面（国徽面），
-该参数如果不填或填错，将为您自动判断正反面。
+        :param _CardSide: <p>FRONT：有照片的一面（人像面），<br>BACK：无照片的一面（国徽面），<br>该参数如果不填或填错，将为您自动判断正反面。</p>
         :type CardSide: str
-        :param _CropPortrait: 是否返回头像和位置坐标
+        :param _CropPortrait: <p>是否返回头像和位置坐标</p>
         :type CropPortrait: bool
         """
         self._ImageBase64 = None
@@ -14194,7 +14192,7 @@ BACK：无照片的一面（国徽面），
 
     @property
     def ImageBase64(self):
-        r"""图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        r"""<p>图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。</p>
         :rtype: str
         """
         return self._ImageBase64
@@ -14205,7 +14203,7 @@ BACK：无照片的一面（国徽面），
 
     @property
     def ImageUrl(self):
-        r"""图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        r"""<p>图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。</p>
         :rtype: str
         """
         return self._ImageUrl
@@ -14216,9 +14214,7 @@ BACK：无照片的一面（国徽面），
 
     @property
     def CardSide(self):
-        r"""FRONT：有照片的一面（人像面），
-BACK：无照片的一面（国徽面），
-该参数如果不填或填错，将为您自动判断正反面。
+        r"""<p>FRONT：有照片的一面（人像面），<br>BACK：无照片的一面（国徽面），<br>该参数如果不填或填错，将为您自动判断正反面。</p>
         :rtype: str
         """
         return self._CardSide
@@ -14229,7 +14225,7 @@ BACK：无照片的一面（国徽面），
 
     @property
     def CropPortrait(self):
-        r"""是否返回头像和位置坐标
+        r"""<p>是否返回头像和位置坐标</p>
         :rtype: bool
         """
         return self._CropPortrait
@@ -14261,28 +14257,27 @@ class HmtResidentPermitOCRResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 证件姓名
+        :param _Name: <p>证件姓名</p>
         :type Name: str
-        :param _Sex: 性别
+        :param _Sex: <p>性别</p>
         :type Sex: str
-        :param _Birth: 出生日期
+        :param _Birth: <p>出生日期</p>
         :type Birth: str
-        :param _Address: 地址
+        :param _Address: <p>地址</p>
         :type Address: str
-        :param _IdCardNo: 身份证号
+        :param _IdCardNo: <p>身份证号</p>
         :type IdCardNo: str
-        :param _CardType: 0-正面
-1-反面
+        :param _CardType: <p>0-正面<br>1-反面</p>
         :type CardType: int
-        :param _ValidDate: 证件有效期限
+        :param _ValidDate: <p>证件有效期限</p>
         :type ValidDate: str
-        :param _Authority: 签发机关
+        :param _Authority: <p>签发机关</p>
         :type Authority: str
-        :param _VisaNum: 签发次数
+        :param _VisaNum: <p>签发次数</p>
         :type VisaNum: str
-        :param _PassNo: 通行证号码
+        :param _PassNo: <p>通行证号码</p>
         :type PassNo: str
-        :param _PortraitImageInfo: 头像和坐标信息
+        :param _PortraitImageInfo: <p>头像和坐标信息</p>
         :type PortraitImageInfo: :class:`tencentcloud.ocr.v20181119.models.PortraitImageInfo`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -14302,7 +14297,7 @@ class HmtResidentPermitOCRResponse(AbstractModel):
 
     @property
     def Name(self):
-        r"""证件姓名
+        r"""<p>证件姓名</p>
         :rtype: str
         """
         return self._Name
@@ -14313,7 +14308,7 @@ class HmtResidentPermitOCRResponse(AbstractModel):
 
     @property
     def Sex(self):
-        r"""性别
+        r"""<p>性别</p>
         :rtype: str
         """
         return self._Sex
@@ -14324,7 +14319,7 @@ class HmtResidentPermitOCRResponse(AbstractModel):
 
     @property
     def Birth(self):
-        r"""出生日期
+        r"""<p>出生日期</p>
         :rtype: str
         """
         return self._Birth
@@ -14335,7 +14330,7 @@ class HmtResidentPermitOCRResponse(AbstractModel):
 
     @property
     def Address(self):
-        r"""地址
+        r"""<p>地址</p>
         :rtype: str
         """
         return self._Address
@@ -14346,7 +14341,7 @@ class HmtResidentPermitOCRResponse(AbstractModel):
 
     @property
     def IdCardNo(self):
-        r"""身份证号
+        r"""<p>身份证号</p>
         :rtype: str
         """
         return self._IdCardNo
@@ -14357,8 +14352,7 @@ class HmtResidentPermitOCRResponse(AbstractModel):
 
     @property
     def CardType(self):
-        r"""0-正面
-1-反面
+        r"""<p>0-正面<br>1-反面</p>
         :rtype: int
         """
         return self._CardType
@@ -14369,7 +14363,7 @@ class HmtResidentPermitOCRResponse(AbstractModel):
 
     @property
     def ValidDate(self):
-        r"""证件有效期限
+        r"""<p>证件有效期限</p>
         :rtype: str
         """
         return self._ValidDate
@@ -14380,7 +14374,7 @@ class HmtResidentPermitOCRResponse(AbstractModel):
 
     @property
     def Authority(self):
-        r"""签发机关
+        r"""<p>签发机关</p>
         :rtype: str
         """
         return self._Authority
@@ -14391,7 +14385,7 @@ class HmtResidentPermitOCRResponse(AbstractModel):
 
     @property
     def VisaNum(self):
-        r"""签发次数
+        r"""<p>签发次数</p>
         :rtype: str
         """
         return self._VisaNum
@@ -14402,7 +14396,7 @@ class HmtResidentPermitOCRResponse(AbstractModel):
 
     @property
     def PassNo(self):
-        r"""通行证号码
+        r"""<p>通行证号码</p>
         :rtype: str
         """
         return self._PassNo
@@ -14413,7 +14407,7 @@ class HmtResidentPermitOCRResponse(AbstractModel):
 
     @property
     def PortraitImageInfo(self):
-        r"""头像和坐标信息
+        r"""<p>头像和坐标信息</p>
         :rtype: :class:`tencentcloud.ocr.v20181119.models.PortraitImageInfo`
         """
         return self._PortraitImageInfo
@@ -18549,16 +18543,13 @@ class MainlandPermitOCRRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ImageBase64: 图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :param _ImageBase64: <p>图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。</p>
         :type ImageBase64: str
-        :param _ImageUrl: 图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        :param _ImageUrl: <p>图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。</p>
         :type ImageUrl: str
-        :param _RetProfile: 是否返回头像。默认不返回。
+        :param _RetProfile: <p>是否返回头像。默认不返回。</p>
         :type RetProfile: bool
-        :param _CardSide: 图片正反面
-FRONT：正面
-BACK：反面 （仅支持来往内地通行证反面识别，不支持港澳台通行证反面识别）
-默认为FRONT
+        :param _CardSide: <p>图片正反面<br>FRONT：正面<br>BACK：反面 （仅支持来往内地通行证反面识别，不支持港澳台通行证反面识别）<br>默认为FRONT</p>
         :type CardSide: str
         """
         self._ImageBase64 = None
@@ -18568,7 +18559,7 @@ BACK：反面 （仅支持来往内地通行证反面识别，不支持港澳台
 
     @property
     def ImageBase64(self):
-        r"""图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        r"""<p>图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。</p>
         :rtype: str
         """
         return self._ImageBase64
@@ -18579,7 +18570,7 @@ BACK：反面 （仅支持来往内地通行证反面识别，不支持港澳台
 
     @property
     def ImageUrl(self):
-        r"""图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        r"""<p>图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。</p>
         :rtype: str
         """
         return self._ImageUrl
@@ -18590,7 +18581,7 @@ BACK：反面 （仅支持来往内地通行证反面识别，不支持港澳台
 
     @property
     def RetProfile(self):
-        r"""是否返回头像。默认不返回。
+        r"""<p>是否返回头像。默认不返回。</p>
         :rtype: bool
         """
         return self._RetProfile
@@ -18601,10 +18592,7 @@ BACK：反面 （仅支持来往内地通行证反面识别，不支持港澳台
 
     @property
     def CardSide(self):
-        r"""图片正反面
-FRONT：正面
-BACK：反面 （仅支持来往内地通行证反面识别，不支持港澳台通行证反面识别）
-默认为FRONT
+        r"""<p>图片正反面<br>FRONT：正面<br>BACK：反面 （仅支持来往内地通行证反面识别，不支持港澳台通行证反面识别）<br>默认为FRONT</p>
         :rtype: str
         """
         return self._CardSide
@@ -18636,31 +18624,31 @@ class MainlandPermitOCRResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 中文姓名
+        :param _Name: <p>中文姓名</p>
         :type Name: str
-        :param _EnglishName: 英文姓名
+        :param _EnglishName: <p>英文姓名</p>
         :type EnglishName: str
-        :param _Sex: 性别
+        :param _Sex: <p>性别</p>
         :type Sex: str
-        :param _Birthday: 出生日期
+        :param _Birthday: <p>出生日期</p>
         :type Birthday: str
-        :param _IssueAuthority: 签发机关
+        :param _IssueAuthority: <p>签发机关</p>
         :type IssueAuthority: str
-        :param _ValidDate: 有效期限
+        :param _ValidDate: <p>有效期限</p>
         :type ValidDate: str
-        :param _Number: 证件号
+        :param _Number: <p>证件号</p>
         :type Number: str
-        :param _IssueAddress: 签发地点
+        :param _IssueAddress: <p>签发地点</p>
         :type IssueAddress: str
-        :param _IssueNumber: 签发次数
+        :param _IssueNumber: <p>签发次数</p>
         :type IssueNumber: str
-        :param _Type: 证件类别， 如：台湾居民来往大陆通行证、港澳居民来往内地通行证、往来港澳通行证。
+        :param _Type: <p>证件类别， 如：台湾居民来往大陆通行证、港澳居民来往内地通行证、往来港澳通行证。</p>
         :type Type: str
-        :param _Profile: RetProfile为True时返回头像字段， Base64编码
+        :param _Profile: <p>RetProfile为True时返回头像字段， Base64编码</p>
         :type Profile: str
-        :param _Nationality: 国籍
+        :param _Nationality: <p>国籍</p>
         :type Nationality: str
-        :param _MainlandTravelPermitBackInfos: 背面字段信息
+        :param _MainlandTravelPermitBackInfos: <p>背面字段信息</p>
         :type MainlandTravelPermitBackInfos: :class:`tencentcloud.ocr.v20181119.models.MainlandTravelPermitBackInfos`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -18682,7 +18670,7 @@ class MainlandPermitOCRResponse(AbstractModel):
 
     @property
     def Name(self):
-        r"""中文姓名
+        r"""<p>中文姓名</p>
         :rtype: str
         """
         return self._Name
@@ -18693,7 +18681,7 @@ class MainlandPermitOCRResponse(AbstractModel):
 
     @property
     def EnglishName(self):
-        r"""英文姓名
+        r"""<p>英文姓名</p>
         :rtype: str
         """
         return self._EnglishName
@@ -18704,7 +18692,7 @@ class MainlandPermitOCRResponse(AbstractModel):
 
     @property
     def Sex(self):
-        r"""性别
+        r"""<p>性别</p>
         :rtype: str
         """
         return self._Sex
@@ -18715,7 +18703,7 @@ class MainlandPermitOCRResponse(AbstractModel):
 
     @property
     def Birthday(self):
-        r"""出生日期
+        r"""<p>出生日期</p>
         :rtype: str
         """
         return self._Birthday
@@ -18726,7 +18714,7 @@ class MainlandPermitOCRResponse(AbstractModel):
 
     @property
     def IssueAuthority(self):
-        r"""签发机关
+        r"""<p>签发机关</p>
         :rtype: str
         """
         return self._IssueAuthority
@@ -18737,7 +18725,7 @@ class MainlandPermitOCRResponse(AbstractModel):
 
     @property
     def ValidDate(self):
-        r"""有效期限
+        r"""<p>有效期限</p>
         :rtype: str
         """
         return self._ValidDate
@@ -18748,7 +18736,7 @@ class MainlandPermitOCRResponse(AbstractModel):
 
     @property
     def Number(self):
-        r"""证件号
+        r"""<p>证件号</p>
         :rtype: str
         """
         return self._Number
@@ -18759,7 +18747,7 @@ class MainlandPermitOCRResponse(AbstractModel):
 
     @property
     def IssueAddress(self):
-        r"""签发地点
+        r"""<p>签发地点</p>
         :rtype: str
         """
         return self._IssueAddress
@@ -18770,7 +18758,7 @@ class MainlandPermitOCRResponse(AbstractModel):
 
     @property
     def IssueNumber(self):
-        r"""签发次数
+        r"""<p>签发次数</p>
         :rtype: str
         """
         return self._IssueNumber
@@ -18781,7 +18769,7 @@ class MainlandPermitOCRResponse(AbstractModel):
 
     @property
     def Type(self):
-        r"""证件类别， 如：台湾居民来往大陆通行证、港澳居民来往内地通行证、往来港澳通行证。
+        r"""<p>证件类别， 如：台湾居民来往大陆通行证、港澳居民来往内地通行证、往来港澳通行证。</p>
         :rtype: str
         """
         return self._Type
@@ -18792,7 +18780,7 @@ class MainlandPermitOCRResponse(AbstractModel):
 
     @property
     def Profile(self):
-        r"""RetProfile为True时返回头像字段， Base64编码
+        r"""<p>RetProfile为True时返回头像字段， Base64编码</p>
         :rtype: str
         """
         return self._Profile
@@ -18803,7 +18791,7 @@ class MainlandPermitOCRResponse(AbstractModel):
 
     @property
     def Nationality(self):
-        r"""国籍
+        r"""<p>国籍</p>
         :rtype: str
         """
         return self._Nationality
@@ -18814,7 +18802,7 @@ class MainlandPermitOCRResponse(AbstractModel):
 
     @property
     def MainlandTravelPermitBackInfos(self):
-        r"""背面字段信息
+        r"""<p>背面字段信息</p>
         :rtype: :class:`tencentcloud.ocr.v20181119.models.MainlandTravelPermitBackInfos`
         """
         return self._MainlandTravelPermitBackInfos

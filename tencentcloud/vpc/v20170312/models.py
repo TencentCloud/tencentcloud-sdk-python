@@ -75699,48 +75699,50 @@ class VpnGateway(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _VpnGatewayId: 网关实例ID。
+        :param _VpnGatewayId: <p>网关实例ID。</p>
         :type VpnGatewayId: str
-        :param _VpcId: VPC实例ID。
+        :param _VpcId: <p>VPC实例ID。</p>
         :type VpcId: str
-        :param _VpnGatewayName: 网关实例名称。
+        :param _VpnGatewayName: <p>网关实例名称。</p>
         :type VpnGatewayName: str
-        :param _Type: 网关实例类型：'IPSEC', 'SSL','CCN','SSL_CCN'。
+        :param _Type: <p>网关实例类型</p><p>枚举值：</p><ul><li>IPSEC： IPSEC VPC类型VPN</li><li>SSL： SSL VPC类型VPN</li><li>CCN： IPSEC CCN类型VPN</li><li>SSL_CCN： SSL CCN类型VPN</li></ul><p>默认值：IPSEC</p>
         :type Type: str
-        :param _State: 网关实例状态， 'PENDING'：生产中，'PENDING_ERROR'：生产失败，'DELETING'：删除中，'DELETING_ERROR'：删除失败，'AVAILABLE'：运行中。
+        :param _State: <p>网关实例状态。</p><p>枚举值：</p><ul><li>PENDING： 生产中</li><li>PENDING_ERROR： 生产失败</li><li>DELETING： 删除中</li><li>DELETING_ERROR： 生产失败</li><li>AVAILABLE： 运行中</li></ul>
         :type State: str
-        :param _PublicIpAddress: 网关公网IP。
+        :param _PublicIpAddress: <p>网关公网IP。</p>
         :type PublicIpAddress: str
-        :param _RenewFlag: 网关续费类型：'NOTIFY_AND_MANUAL_RENEW'：手动续费，'NOTIFY_AND_AUTO_RENEW'：自动续费，'NOT_NOTIFY_AND_NOT_RENEW'：到期不续费。
+        :param _RenewFlag: <p>网关续费类型：&#39;NOTIFY_AND_MANUAL_RENEW&#39;：手动续费，&#39;NOTIFY_AND_AUTO_RENEW&#39;：自动续费，&#39;NOT_NOTIFY_AND_NOT_RENEW&#39;：到期不续费。</p>
         :type RenewFlag: str
-        :param _InstanceChargeType: 网关付费类型：POSTPAID_BY_HOUR：按量计费，PREPAID：包年包月预付费。
+        :param _InstanceChargeType: <p>网关付费类型：POSTPAID_BY_HOUR：按量计费，PREPAID：包年包月预付费。</p>
         :type InstanceChargeType: str
-        :param _InternetMaxBandwidthOut: 网关出带宽，单位：Mbps。
+        :param _InternetMaxBandwidthOut: <p>网关出带宽</p><p>单位：Mbps</p>
         :type InternetMaxBandwidthOut: int
-        :param _CreatedTime: 创建时间。
+        :param _CreatedTime: <p>创建时间。</p>
         :type CreatedTime: str
-        :param _ExpiredTime: 预付费网关过期时间。
+        :param _ExpiredTime: <p>预付费网关过期时间。</p>
         :type ExpiredTime: str
-        :param _IsAddressBlocked: 公网IP是否被封堵。
+        :param _IsAddressBlocked: <p>公网IP是否被封堵。</p>
         :type IsAddressBlocked: bool
-        :param _NewPurchasePlan: 计费模式变更，PREPAID_TO_POSTPAID：包年包月预付费到期转按小时后付费。
+        :param _NewPurchasePlan: <p>计费模式变更，PREPAID_TO_POSTPAID：包年包月预付费到期转按小时后付费。</p>
         :type NewPurchasePlan: str
-        :param _RestrictState: 网关计费状态，PROTECTIVELY_ISOLATED：被安全隔离的实例，NORMAL：正常。
+        :param _RestrictState: <p>网关计费状态，PROTECTIVELY_ISOLATED：被安全隔离的实例，NORMAL：正常。</p>
         :type RestrictState: str
-        :param _Zone: 可用区，如：ap-guangzhou-2。
+        :param _Zone: <p>可用区，如：ap-guangzhou-2。</p>
         :type Zone: str
-        :param _VpnGatewayQuotaSet: 网关带宽配额信息。
+        :param _VpnGatewayQuotaSet: <p>网关带宽配额信息。</p>
         :type VpnGatewayQuotaSet: list of VpnGatewayQuota
-        :param _Version: 网关实例版本信息。
+        :param _Version: <p>网关实例版本信息。</p>
         :type Version: str
-        :param _NetworkInstanceId: Type值为CCN时，该值表示云联网实例ID。
+        :param _NetworkInstanceId: <p>Type值为CCN/SSL_CCN时，该值表示云联网实例ID。</p>
         :type NetworkInstanceId: str
-        :param _CdcId: CDC 实例ID。
+        :param _CdcId: <p>CDC 实例ID。</p>
         :type CdcId: str
-        :param _MaxConnection: SSL-VPN 客户端连接数。
+        :param _MaxConnection: <p>SSL-VPN 客户端连接数。</p>
         :type MaxConnection: int
-        :param _BgpAsn: Bgp ASN
+        :param _BgpAsn: <p>Bgp ASN</p>
         :type BgpAsn: int
+        :param _TagSet: <p>标签列表</p>
+        :type TagSet: list of Tag
         """
         self._VpnGatewayId = None
         self._VpcId = None
@@ -75763,10 +75765,11 @@ class VpnGateway(AbstractModel):
         self._CdcId = None
         self._MaxConnection = None
         self._BgpAsn = None
+        self._TagSet = None
 
     @property
     def VpnGatewayId(self):
-        r"""网关实例ID。
+        r"""<p>网关实例ID。</p>
         :rtype: str
         """
         return self._VpnGatewayId
@@ -75777,7 +75780,7 @@ class VpnGateway(AbstractModel):
 
     @property
     def VpcId(self):
-        r"""VPC实例ID。
+        r"""<p>VPC实例ID。</p>
         :rtype: str
         """
         return self._VpcId
@@ -75788,7 +75791,7 @@ class VpnGateway(AbstractModel):
 
     @property
     def VpnGatewayName(self):
-        r"""网关实例名称。
+        r"""<p>网关实例名称。</p>
         :rtype: str
         """
         return self._VpnGatewayName
@@ -75799,7 +75802,7 @@ class VpnGateway(AbstractModel):
 
     @property
     def Type(self):
-        r"""网关实例类型：'IPSEC', 'SSL','CCN','SSL_CCN'。
+        r"""<p>网关实例类型</p><p>枚举值：</p><ul><li>IPSEC： IPSEC VPC类型VPN</li><li>SSL： SSL VPC类型VPN</li><li>CCN： IPSEC CCN类型VPN</li><li>SSL_CCN： SSL CCN类型VPN</li></ul><p>默认值：IPSEC</p>
         :rtype: str
         """
         return self._Type
@@ -75810,7 +75813,7 @@ class VpnGateway(AbstractModel):
 
     @property
     def State(self):
-        r"""网关实例状态， 'PENDING'：生产中，'PENDING_ERROR'：生产失败，'DELETING'：删除中，'DELETING_ERROR'：删除失败，'AVAILABLE'：运行中。
+        r"""<p>网关实例状态。</p><p>枚举值：</p><ul><li>PENDING： 生产中</li><li>PENDING_ERROR： 生产失败</li><li>DELETING： 删除中</li><li>DELETING_ERROR： 生产失败</li><li>AVAILABLE： 运行中</li></ul>
         :rtype: str
         """
         return self._State
@@ -75821,7 +75824,7 @@ class VpnGateway(AbstractModel):
 
     @property
     def PublicIpAddress(self):
-        r"""网关公网IP。
+        r"""<p>网关公网IP。</p>
         :rtype: str
         """
         return self._PublicIpAddress
@@ -75832,7 +75835,7 @@ class VpnGateway(AbstractModel):
 
     @property
     def RenewFlag(self):
-        r"""网关续费类型：'NOTIFY_AND_MANUAL_RENEW'：手动续费，'NOTIFY_AND_AUTO_RENEW'：自动续费，'NOT_NOTIFY_AND_NOT_RENEW'：到期不续费。
+        r"""<p>网关续费类型：&#39;NOTIFY_AND_MANUAL_RENEW&#39;：手动续费，&#39;NOTIFY_AND_AUTO_RENEW&#39;：自动续费，&#39;NOT_NOTIFY_AND_NOT_RENEW&#39;：到期不续费。</p>
         :rtype: str
         """
         return self._RenewFlag
@@ -75843,7 +75846,7 @@ class VpnGateway(AbstractModel):
 
     @property
     def InstanceChargeType(self):
-        r"""网关付费类型：POSTPAID_BY_HOUR：按量计费，PREPAID：包年包月预付费。
+        r"""<p>网关付费类型：POSTPAID_BY_HOUR：按量计费，PREPAID：包年包月预付费。</p>
         :rtype: str
         """
         return self._InstanceChargeType
@@ -75854,7 +75857,7 @@ class VpnGateway(AbstractModel):
 
     @property
     def InternetMaxBandwidthOut(self):
-        r"""网关出带宽，单位：Mbps。
+        r"""<p>网关出带宽</p><p>单位：Mbps</p>
         :rtype: int
         """
         return self._InternetMaxBandwidthOut
@@ -75865,7 +75868,7 @@ class VpnGateway(AbstractModel):
 
     @property
     def CreatedTime(self):
-        r"""创建时间。
+        r"""<p>创建时间。</p>
         :rtype: str
         """
         return self._CreatedTime
@@ -75876,7 +75879,7 @@ class VpnGateway(AbstractModel):
 
     @property
     def ExpiredTime(self):
-        r"""预付费网关过期时间。
+        r"""<p>预付费网关过期时间。</p>
         :rtype: str
         """
         return self._ExpiredTime
@@ -75887,7 +75890,7 @@ class VpnGateway(AbstractModel):
 
     @property
     def IsAddressBlocked(self):
-        r"""公网IP是否被封堵。
+        r"""<p>公网IP是否被封堵。</p>
         :rtype: bool
         """
         return self._IsAddressBlocked
@@ -75898,7 +75901,7 @@ class VpnGateway(AbstractModel):
 
     @property
     def NewPurchasePlan(self):
-        r"""计费模式变更，PREPAID_TO_POSTPAID：包年包月预付费到期转按小时后付费。
+        r"""<p>计费模式变更，PREPAID_TO_POSTPAID：包年包月预付费到期转按小时后付费。</p>
         :rtype: str
         """
         return self._NewPurchasePlan
@@ -75909,7 +75912,7 @@ class VpnGateway(AbstractModel):
 
     @property
     def RestrictState(self):
-        r"""网关计费状态，PROTECTIVELY_ISOLATED：被安全隔离的实例，NORMAL：正常。
+        r"""<p>网关计费状态，PROTECTIVELY_ISOLATED：被安全隔离的实例，NORMAL：正常。</p>
         :rtype: str
         """
         return self._RestrictState
@@ -75920,7 +75923,7 @@ class VpnGateway(AbstractModel):
 
     @property
     def Zone(self):
-        r"""可用区，如：ap-guangzhou-2。
+        r"""<p>可用区，如：ap-guangzhou-2。</p>
         :rtype: str
         """
         return self._Zone
@@ -75931,7 +75934,7 @@ class VpnGateway(AbstractModel):
 
     @property
     def VpnGatewayQuotaSet(self):
-        r"""网关带宽配额信息。
+        r"""<p>网关带宽配额信息。</p>
         :rtype: list of VpnGatewayQuota
         """
         return self._VpnGatewayQuotaSet
@@ -75942,7 +75945,7 @@ class VpnGateway(AbstractModel):
 
     @property
     def Version(self):
-        r"""网关实例版本信息。
+        r"""<p>网关实例版本信息。</p>
         :rtype: str
         """
         return self._Version
@@ -75953,7 +75956,7 @@ class VpnGateway(AbstractModel):
 
     @property
     def NetworkInstanceId(self):
-        r"""Type值为CCN时，该值表示云联网实例ID。
+        r"""<p>Type值为CCN/SSL_CCN时，该值表示云联网实例ID。</p>
         :rtype: str
         """
         return self._NetworkInstanceId
@@ -75964,7 +75967,7 @@ class VpnGateway(AbstractModel):
 
     @property
     def CdcId(self):
-        r"""CDC 实例ID。
+        r"""<p>CDC 实例ID。</p>
         :rtype: str
         """
         return self._CdcId
@@ -75975,7 +75978,7 @@ class VpnGateway(AbstractModel):
 
     @property
     def MaxConnection(self):
-        r"""SSL-VPN 客户端连接数。
+        r"""<p>SSL-VPN 客户端连接数。</p>
         :rtype: int
         """
         return self._MaxConnection
@@ -75986,7 +75989,7 @@ class VpnGateway(AbstractModel):
 
     @property
     def BgpAsn(self):
-        r"""Bgp ASN
+        r"""<p>Bgp ASN</p>
         :rtype: int
         """
         return self._BgpAsn
@@ -75994,6 +75997,17 @@ class VpnGateway(AbstractModel):
     @BgpAsn.setter
     def BgpAsn(self, BgpAsn):
         self._BgpAsn = BgpAsn
+
+    @property
+    def TagSet(self):
+        r"""<p>标签列表</p>
+        :rtype: list of Tag
+        """
+        return self._TagSet
+
+    @TagSet.setter
+    def TagSet(self, TagSet):
+        self._TagSet = TagSet
 
 
     def _deserialize(self, params):
@@ -76023,6 +76037,12 @@ class VpnGateway(AbstractModel):
         self._CdcId = params.get("CdcId")
         self._MaxConnection = params.get("MaxConnection")
         self._BgpAsn = params.get("BgpAsn")
+        if params.get("TagSet") is not None:
+            self._TagSet = []
+            for item in params.get("TagSet"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._TagSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

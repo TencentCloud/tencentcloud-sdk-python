@@ -5900,98 +5900,23 @@ class DescribeCurveDataRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EnvId: 环境ID
+        :param _EnvId: <p>环境ID</p>
         :type EnvId: str
-        :param _MetricName: <h4>文档型数据库相关指标</h4>
-<li> DbRead: 数据库读请求数 </li>
-<li> DbWrite: 数据库写请求数 </li>
-<li> DbCostTime10ms: 数据库耗时在10ms-50ms请求数 </li>
-<li> DbCostTime50ms: 数据库耗时在50ms-100ms请求数 </li>
-<li> DbCostTime100ms: 数据库耗时在100ms以上请求数 </li>
-<li> DbSizepkg: 数据库容量，单位MB </li>
-
-<h4>SQL型数据库相关指标</h4>
-<li> MysqlStorageUsage: 关系型数据库容量，单位MB </li>
-<li> MysqlCCU: CCU </li>
-<li> MysqlCpuUsageRate:CPU利用率 </li>
-<li> MysqlDbConnections:数据库连接数 </li>
-<li> MysqlMemoryUse: 内存使用量，单位MB </li>
-<li> MysqlSlowQueries:慢查询数 </li>
-<li> MysqlTps: 提交数 </li>
-<li> MysqlQps: QPS </li>
-
-<h4>云函数相关指标</h4>
-<li> FunctionCU: 资源用量</li>
-<li> FunctionInvocation: 调用次数 </li>
-<li> FunctionFlux: 外网出流量, 单位千字节(KB) </li>
-<li> FunctionThrottle: 受限次数 </li>
-<li> FunctionConcurrentExecutions: 并发执行个数</li>
-<li> FunctionTimeout: 函数执行超时次数</li>
-<li> FunctionGBs: 资源用量, 单位Mb*Ms </li>
-<li> FunctionError: 云错误次数 </li>
-<li> FunctionDuration: 运行时间, 单位毫秒 </li>
-<li> FunctionConcurrencyMemoryMB: 并发执行内存量 </li>
-<li>FunctionMemOverFlow：内存超限次数</li>
-<li> FunctionIdleProvisioned: 预置并发闲置量 </li>
-<li> FunctionProvisionedConcurrency: 预置并发个数 </li>
-
-<h4>云托管相关指标</h4>
-<li>TkeRspTimeService ： 响应时间，单位毫秒</li>
-<li>TkeCpuUsedService ： CPU使用量</li>
-<li>TkeMemUsedService ： 内存使用量</li>
-<li>TkeQPSService ： QPS</li>
-<li>TkePodNumService ： 实例个数</li>
-<li>TkeHttpServiceNatPkg ： 外网出流量，单位byte</li>
-<li>TkeCUUsedService ： 内存使用量(CU单位)</li>
-<li>TkeInvokeNumService ： 调用量</li>
-<li>TkeHttpErrorService ： 错误响应（404、500等）</li>
-
-<h4>静态网站托管相关指标</h4>
-<li>StaticFsFluxPkg：流量，单位byte</li>
-<li>StaticFsSizePkg：存储容量，单位MB</li>
-
-<h4>身份认证相关指标</h4>
-<li>AuthInvocationNumPkg：调用次数</li>
-
-<h4>API调用相关指标</h4>
-<li>GwCloudDevelopmentSecureCallsInvocation：云开发API调用次数</li>
-<li>GwWXInvocation：小程序API调用次数</li>
-
-<h4>HTTP网关相关指标</h4>
-<li>GwCloudDevelopmentStandardCallsInvocation：HTTP调用次数</li>
-
-<h4>大模型相关指标</h4>
-<li>AIPromptTokenNumPkg：输入Token</li>
-<li>AICompletionTokenNumPkg：输出Token</li>
-<li>AITotalTokenNumPkg：总Token</li>
-
-<h4>知识库相关指标</h4>
-<li>KnowledgeBaseCapacity：容量，单位bytes</li>
-
-
-<h4>用户登录相关指标</h4>
-<li>DayActiveLoginAnonymousUser：匿名用户登陆日活</li>
-<li>DayActiveLoginAllUser ： 全部用户登陆日活</li>
-<li>DayActiveLoginExternalUser ： 外部用户登陆日活</li>
-<li>DayActiveLoginInternalUser ： 内部用户登陆日活</li>
+        :param _MetricName: <h4>文档型数据库相关指标</h4><li> DbRead: 数据库读请求数 </li><li> DbWrite: 数据库写请求数 </li><li> DbCostTime10ms: 数据库耗时在10ms-50ms请求数 </li><li> DbCostTime50ms: 数据库耗时在50ms-100ms请求数 </li><li> DbCostTime100ms: 数据库耗时在100ms以上请求数 </li><li> DbSizepkg: 数据库容量，单位MB </li><h4>SQL型数据库相关指标</h4><li> MysqlStorageUsage: 关系型数据库容量，单位MB </li><li> MysqlCCU: CCU </li><li> MysqlCpuUsageRate:CPU利用率 </li><li> MysqlDbConnections:数据库连接数 </li><li> MysqlMemoryUse: 内存使用量，单位MB </li><li> MysqlSlowQueries:慢查询数 </li><li> MysqlTps: 提交数 </li><li> MysqlQps: QPS </li><h4>云函数相关指标</h4><li> FunctionCU: 资源用量</li><li> FunctionInvocation: 调用次数 </li><li> FunctionFlux: 外网出流量, 单位千字节(KB) </li><li> FunctionThrottle: 受限次数 </li><li> FunctionConcurrentExecutions: 并发执行个数</li><li> FunctionTimeout: 函数执行超时次数</li><li> FunctionGBs: 资源用量, 单位Mb*Ms </li><li> FunctionError: 云错误次数 </li><li> FunctionDuration: 运行时间, 单位毫秒 </li><li> FunctionConcurrencyMemoryMB: 并发执行内存量 </li><li>FunctionMemOverFlow：内存超限次数</li><li> FunctionIdleProvisioned: 预置并发闲置量 </li><li> FunctionProvisionedConcurrency: 预置并发个数 </li><h4>云托管相关指标</h4><li>TkeRspTimeService ： 响应时间，单位毫秒</li><li>TkeCpuUsedService ： CPU使用量</li><li>TkeMemUsedService ： 内存使用量</li><li>TkeQPSService ： QPS</li><li>TkePodNumService ： 实例个数</li><li>TkeHttpServiceNatPkg ： 外网出流量，单位byte</li><li>TkeCUUsedService ： 内存使用量(CU单位)</li><li>TkeInvokeNumService ： 调用量</li><li>TkeHttpErrorService ： 错误响应（404、500等）</li><h4>静态网站托管相关指标</h4><li>StaticFsFluxPkg：流量，单位byte</li><li>StaticFsSizePkg：存储容量，单位MB</li><h4>身份认证相关指标</h4><li>AuthInvocationNumPkg：调用次数</li><h4>API调用相关指标</h4><li>GwCloudDevelopmentSecureCallsInvocation：云开发API调用次数</li><li>GwWXInvocation：小程序API调用次数</li><h4>HTTP网关相关指标</h4><li>GwCloudDevelopmentStandardCallsInvocation：HTTP调用次数</li><h4>大模型相关指标</h4><li>AIPromptTokenNumPkg：输入Token</li><li>AICompletionTokenNumPkg：输出Token</li><li>AITotalTokenNumPkg：总Token</li><h4>知识库相关指标</h4><li>KnowledgeBaseCapacity：容量，单位bytes</li><h4>用户登录相关指标</h4><li>DayActiveLoginAnonymousUser：匿名用户登录日活</li><li>DayActiveLoginAllUser ： 全部用户登录日活</li><li>DayActiveLoginExternalUser ： 外部用户登录日活</li><li>DayActiveLoginInternalUser ： 内部用户登录日活</li><h4>环境QPS相关指标</h4><li>EnvQPSAll：环境总QPS</li><h4>数据库连接器相关指标</h4><li> MongoConnectorRead: 数据库连接器读请求数 </li><li> MongoConnectorWrite: 数据库连接器写请求数 </li><li> MongoConnectorCostTime10ms: 数据库连接器耗时在10ms-50ms请求数 </li><li> MongoConnectorCostTime50ms: 数据库连接器耗时在50ms-100ms请求数 </li><li> MongoConnectorCostTime100ms: 数据库连接器耗时在100ms以上请求数 </li><li> MongoConnectorInvokeNum: 数据库连接器调用次数</li>
         :type MetricName: str
-        :param _StartTime: 开始时间，如2018-08-24 10:50:00, 开始时间需要早于结束时间至少五分钟(原因是因为目前统计粒度最小是5分钟)
+        :param _StartTime: <p>开始时间，如2018-08-24 10:50:00, 开始时间需要早于结束时间至少五分钟(原因是因为目前统计粒度最小是5分钟)</p>
         :type StartTime: str
-        :param _EndTime: 结束时间，如2018-08-24 10:50:00, 结束时间需要晚于开始时间至少五分钟(原因是因为目前统计粒度最小是5分钟)
+        :param _EndTime: <p>结束时间，如2018-08-24 10:50:00, 结束时间需要晚于开始时间至少五分钟(原因是因为目前统计粒度最小是5分钟)</p>
         :type EndTime: str
-        :param _ResourceID: 资源ID, 目前仅对文档型数据库、云函数、云托管相关的指标有意义。
-如果想查询某个具体云函数/具体数据库集合的指标，则需传入对应的云函数名称/集合名称；如果只想查询整个namespace的指标, 则留空或不传。
-云托管相关指标的查询，必须传入云托管服务名称。
+        :param _ResourceID: <p>资源ID, 目前仅对文档型数据库、云函数、云托管、数据库连接器相关的指标有意义。<br>如果想查询某个具体云函数/具体数据库集合的指标，则需传入对应的云函数名称/集合名称；如果只想查询整个namespace的指标, 则留空或不传。<br>云托管相关指标的查询，必须传入云托管服务名称。<br>数据库连接器相关指标的查询，必须传入数据库连接器实例id</p>
         :type ResourceID: str
-        :param _WxAppId: 微信AppId，微信必传
+        :param _WxAppId: <p>微信AppId，微信必传</p>
         :type WxAppId: str
-        :param _SubresourceID: 子资源信息。
-查询云托管相关指标的具体版本的监控数据，需传入。
+        :param _SubresourceID: <p>子资源信息。<br>查询云托管相关指标的具体版本的监控数据，需传入。</p>
         :type SubresourceID: str
-        :param _ThirdResource: 网关路由
+        :param _ThirdResource: <p>网关路由</p>
         :type ThirdResource: str
-        :param _Period: 统计周期(单位秒)，非必传，传入时仅支持传入300，3600，86400。不传采用默认以下默认规则：当时间区间为1天内, 统计周期为300；当时间区间选择为1天以上, 15天以下, 统计周期为3600； 当时间区间选择为15天以上, 180天以下, 统计周期为86400。
-如果传入period，需遵循以下规则。EndTime-StartTime的时间范围不超过1 天，Period可以取300或3600；EndTime-StartTime的时间范围满足超过1天且不超过3 天，Period可以取300或3600或86400；EndTime-StartTime的时间范围超过3天时，Period可以取3600或86400。
+        :param _Period: <p>统计周期(单位秒)，非必传，传入时仅支持传入300，3600，86400。不传采用默认以下默认规则：当时间区间为1天内, 统计周期为300；当时间区间选择为1天以上, 15天以下, 统计周期为3600； 当时间区间选择为15天以上, 180天以下, 统计周期为86400。<br>如果传入period，需遵循以下规则。EndTime-StartTime的时间范围不超过1 天，Period可以取300或3600；EndTime-StartTime的时间范围满足超过1天且不超过3 天，Period可以取300或3600或86400；EndTime-StartTime的时间范围超过3天时，Period可以取3600或86400。</p>
         :type Period: int
         """
         self._EnvId = None
@@ -6006,7 +5931,7 @@ class DescribeCurveDataRequest(AbstractModel):
 
     @property
     def EnvId(self):
-        r"""环境ID
+        r"""<p>环境ID</p>
         :rtype: str
         """
         return self._EnvId
@@ -6017,78 +5942,7 @@ class DescribeCurveDataRequest(AbstractModel):
 
     @property
     def MetricName(self):
-        r"""<h4>文档型数据库相关指标</h4>
-<li> DbRead: 数据库读请求数 </li>
-<li> DbWrite: 数据库写请求数 </li>
-<li> DbCostTime10ms: 数据库耗时在10ms-50ms请求数 </li>
-<li> DbCostTime50ms: 数据库耗时在50ms-100ms请求数 </li>
-<li> DbCostTime100ms: 数据库耗时在100ms以上请求数 </li>
-<li> DbSizepkg: 数据库容量，单位MB </li>
-
-<h4>SQL型数据库相关指标</h4>
-<li> MysqlStorageUsage: 关系型数据库容量，单位MB </li>
-<li> MysqlCCU: CCU </li>
-<li> MysqlCpuUsageRate:CPU利用率 </li>
-<li> MysqlDbConnections:数据库连接数 </li>
-<li> MysqlMemoryUse: 内存使用量，单位MB </li>
-<li> MysqlSlowQueries:慢查询数 </li>
-<li> MysqlTps: 提交数 </li>
-<li> MysqlQps: QPS </li>
-
-<h4>云函数相关指标</h4>
-<li> FunctionCU: 资源用量</li>
-<li> FunctionInvocation: 调用次数 </li>
-<li> FunctionFlux: 外网出流量, 单位千字节(KB) </li>
-<li> FunctionThrottle: 受限次数 </li>
-<li> FunctionConcurrentExecutions: 并发执行个数</li>
-<li> FunctionTimeout: 函数执行超时次数</li>
-<li> FunctionGBs: 资源用量, 单位Mb*Ms </li>
-<li> FunctionError: 云错误次数 </li>
-<li> FunctionDuration: 运行时间, 单位毫秒 </li>
-<li> FunctionConcurrencyMemoryMB: 并发执行内存量 </li>
-<li>FunctionMemOverFlow：内存超限次数</li>
-<li> FunctionIdleProvisioned: 预置并发闲置量 </li>
-<li> FunctionProvisionedConcurrency: 预置并发个数 </li>
-
-<h4>云托管相关指标</h4>
-<li>TkeRspTimeService ： 响应时间，单位毫秒</li>
-<li>TkeCpuUsedService ： CPU使用量</li>
-<li>TkeMemUsedService ： 内存使用量</li>
-<li>TkeQPSService ： QPS</li>
-<li>TkePodNumService ： 实例个数</li>
-<li>TkeHttpServiceNatPkg ： 外网出流量，单位byte</li>
-<li>TkeCUUsedService ： 内存使用量(CU单位)</li>
-<li>TkeInvokeNumService ： 调用量</li>
-<li>TkeHttpErrorService ： 错误响应（404、500等）</li>
-
-<h4>静态网站托管相关指标</h4>
-<li>StaticFsFluxPkg：流量，单位byte</li>
-<li>StaticFsSizePkg：存储容量，单位MB</li>
-
-<h4>身份认证相关指标</h4>
-<li>AuthInvocationNumPkg：调用次数</li>
-
-<h4>API调用相关指标</h4>
-<li>GwCloudDevelopmentSecureCallsInvocation：云开发API调用次数</li>
-<li>GwWXInvocation：小程序API调用次数</li>
-
-<h4>HTTP网关相关指标</h4>
-<li>GwCloudDevelopmentStandardCallsInvocation：HTTP调用次数</li>
-
-<h4>大模型相关指标</h4>
-<li>AIPromptTokenNumPkg：输入Token</li>
-<li>AICompletionTokenNumPkg：输出Token</li>
-<li>AITotalTokenNumPkg：总Token</li>
-
-<h4>知识库相关指标</h4>
-<li>KnowledgeBaseCapacity：容量，单位bytes</li>
-
-
-<h4>用户登录相关指标</h4>
-<li>DayActiveLoginAnonymousUser：匿名用户登陆日活</li>
-<li>DayActiveLoginAllUser ： 全部用户登陆日活</li>
-<li>DayActiveLoginExternalUser ： 外部用户登陆日活</li>
-<li>DayActiveLoginInternalUser ： 内部用户登陆日活</li>
+        r"""<h4>文档型数据库相关指标</h4><li> DbRead: 数据库读请求数 </li><li> DbWrite: 数据库写请求数 </li><li> DbCostTime10ms: 数据库耗时在10ms-50ms请求数 </li><li> DbCostTime50ms: 数据库耗时在50ms-100ms请求数 </li><li> DbCostTime100ms: 数据库耗时在100ms以上请求数 </li><li> DbSizepkg: 数据库容量，单位MB </li><h4>SQL型数据库相关指标</h4><li> MysqlStorageUsage: 关系型数据库容量，单位MB </li><li> MysqlCCU: CCU </li><li> MysqlCpuUsageRate:CPU利用率 </li><li> MysqlDbConnections:数据库连接数 </li><li> MysqlMemoryUse: 内存使用量，单位MB </li><li> MysqlSlowQueries:慢查询数 </li><li> MysqlTps: 提交数 </li><li> MysqlQps: QPS </li><h4>云函数相关指标</h4><li> FunctionCU: 资源用量</li><li> FunctionInvocation: 调用次数 </li><li> FunctionFlux: 外网出流量, 单位千字节(KB) </li><li> FunctionThrottle: 受限次数 </li><li> FunctionConcurrentExecutions: 并发执行个数</li><li> FunctionTimeout: 函数执行超时次数</li><li> FunctionGBs: 资源用量, 单位Mb*Ms </li><li> FunctionError: 云错误次数 </li><li> FunctionDuration: 运行时间, 单位毫秒 </li><li> FunctionConcurrencyMemoryMB: 并发执行内存量 </li><li>FunctionMemOverFlow：内存超限次数</li><li> FunctionIdleProvisioned: 预置并发闲置量 </li><li> FunctionProvisionedConcurrency: 预置并发个数 </li><h4>云托管相关指标</h4><li>TkeRspTimeService ： 响应时间，单位毫秒</li><li>TkeCpuUsedService ： CPU使用量</li><li>TkeMemUsedService ： 内存使用量</li><li>TkeQPSService ： QPS</li><li>TkePodNumService ： 实例个数</li><li>TkeHttpServiceNatPkg ： 外网出流量，单位byte</li><li>TkeCUUsedService ： 内存使用量(CU单位)</li><li>TkeInvokeNumService ： 调用量</li><li>TkeHttpErrorService ： 错误响应（404、500等）</li><h4>静态网站托管相关指标</h4><li>StaticFsFluxPkg：流量，单位byte</li><li>StaticFsSizePkg：存储容量，单位MB</li><h4>身份认证相关指标</h4><li>AuthInvocationNumPkg：调用次数</li><h4>API调用相关指标</h4><li>GwCloudDevelopmentSecureCallsInvocation：云开发API调用次数</li><li>GwWXInvocation：小程序API调用次数</li><h4>HTTP网关相关指标</h4><li>GwCloudDevelopmentStandardCallsInvocation：HTTP调用次数</li><h4>大模型相关指标</h4><li>AIPromptTokenNumPkg：输入Token</li><li>AICompletionTokenNumPkg：输出Token</li><li>AITotalTokenNumPkg：总Token</li><h4>知识库相关指标</h4><li>KnowledgeBaseCapacity：容量，单位bytes</li><h4>用户登录相关指标</h4><li>DayActiveLoginAnonymousUser：匿名用户登录日活</li><li>DayActiveLoginAllUser ： 全部用户登录日活</li><li>DayActiveLoginExternalUser ： 外部用户登录日活</li><li>DayActiveLoginInternalUser ： 内部用户登录日活</li><h4>环境QPS相关指标</h4><li>EnvQPSAll：环境总QPS</li><h4>数据库连接器相关指标</h4><li> MongoConnectorRead: 数据库连接器读请求数 </li><li> MongoConnectorWrite: 数据库连接器写请求数 </li><li> MongoConnectorCostTime10ms: 数据库连接器耗时在10ms-50ms请求数 </li><li> MongoConnectorCostTime50ms: 数据库连接器耗时在50ms-100ms请求数 </li><li> MongoConnectorCostTime100ms: 数据库连接器耗时在100ms以上请求数 </li><li> MongoConnectorInvokeNum: 数据库连接器调用次数</li>
         :rtype: str
         """
         return self._MetricName
@@ -6099,7 +5953,7 @@ class DescribeCurveDataRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""开始时间，如2018-08-24 10:50:00, 开始时间需要早于结束时间至少五分钟(原因是因为目前统计粒度最小是5分钟)
+        r"""<p>开始时间，如2018-08-24 10:50:00, 开始时间需要早于结束时间至少五分钟(原因是因为目前统计粒度最小是5分钟)</p>
         :rtype: str
         """
         return self._StartTime
@@ -6110,7 +5964,7 @@ class DescribeCurveDataRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""结束时间，如2018-08-24 10:50:00, 结束时间需要晚于开始时间至少五分钟(原因是因为目前统计粒度最小是5分钟)
+        r"""<p>结束时间，如2018-08-24 10:50:00, 结束时间需要晚于开始时间至少五分钟(原因是因为目前统计粒度最小是5分钟)</p>
         :rtype: str
         """
         return self._EndTime
@@ -6121,9 +5975,7 @@ class DescribeCurveDataRequest(AbstractModel):
 
     @property
     def ResourceID(self):
-        r"""资源ID, 目前仅对文档型数据库、云函数、云托管相关的指标有意义。
-如果想查询某个具体云函数/具体数据库集合的指标，则需传入对应的云函数名称/集合名称；如果只想查询整个namespace的指标, 则留空或不传。
-云托管相关指标的查询，必须传入云托管服务名称。
+        r"""<p>资源ID, 目前仅对文档型数据库、云函数、云托管、数据库连接器相关的指标有意义。<br>如果想查询某个具体云函数/具体数据库集合的指标，则需传入对应的云函数名称/集合名称；如果只想查询整个namespace的指标, 则留空或不传。<br>云托管相关指标的查询，必须传入云托管服务名称。<br>数据库连接器相关指标的查询，必须传入数据库连接器实例id</p>
         :rtype: str
         """
         return self._ResourceID
@@ -6134,7 +5986,7 @@ class DescribeCurveDataRequest(AbstractModel):
 
     @property
     def WxAppId(self):
-        r"""微信AppId，微信必传
+        r"""<p>微信AppId，微信必传</p>
         :rtype: str
         """
         return self._WxAppId
@@ -6145,8 +5997,7 @@ class DescribeCurveDataRequest(AbstractModel):
 
     @property
     def SubresourceID(self):
-        r"""子资源信息。
-查询云托管相关指标的具体版本的监控数据，需传入。
+        r"""<p>子资源信息。<br>查询云托管相关指标的具体版本的监控数据，需传入。</p>
         :rtype: str
         """
         return self._SubresourceID
@@ -6157,7 +6008,7 @@ class DescribeCurveDataRequest(AbstractModel):
 
     @property
     def ThirdResource(self):
-        r"""网关路由
+        r"""<p>网关路由</p>
         :rtype: str
         """
         return self._ThirdResource
@@ -6168,8 +6019,7 @@ class DescribeCurveDataRequest(AbstractModel):
 
     @property
     def Period(self):
-        r"""统计周期(单位秒)，非必传，传入时仅支持传入300，3600，86400。不传采用默认以下默认规则：当时间区间为1天内, 统计周期为300；当时间区间选择为1天以上, 15天以下, 统计周期为3600； 当时间区间选择为15天以上, 180天以下, 统计周期为86400。
-如果传入period，需遵循以下规则。EndTime-StartTime的时间范围不超过1 天，Period可以取300或3600；EndTime-StartTime的时间范围满足超过1天且不超过3 天，Period可以取300或3600或86400；EndTime-StartTime的时间范围超过3天时，Period可以取3600或86400。
+        r"""<p>统计周期(单位秒)，非必传，传入时仅支持传入300，3600，86400。不传采用默认以下默认规则：当时间区间为1天内, 统计周期为300；当时间区间选择为1天以上, 15天以下, 统计周期为3600； 当时间区间选择为15天以上, 180天以下, 统计周期为86400。<br>如果传入period，需遵循以下规则。EndTime-StartTime的时间范围不超过1 天，Period可以取300或3600；EndTime-StartTime的时间范围满足超过1天且不超过3 天，Period可以取300或3600或86400；EndTime-StartTime的时间范围超过3天时，Period可以取3600或86400。</p>
         :rtype: int
         """
         return self._Period
@@ -6206,21 +6056,21 @@ class DescribeCurveDataResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StartTime: 开始时间, 会根据数据的统计周期进行取整
+        :param _StartTime: <p>开始时间, 会根据数据的统计周期进行取整</p>
         :type StartTime: str
-        :param _EndTime: 结束时间, 会根据数据的统计周期进行取整
+        :param _EndTime: <p>结束时间, 会根据数据的统计周期进行取整</p>
         :type EndTime: str
-        :param _MetricName: 指标名
+        :param _MetricName: <p>指标名</p>
         :type MetricName: str
-        :param _Period: 统计周期(单位秒), 当时间区间为1天内, 统计周期为5分钟; 当时间区间选择为1天以上, 15天以下, 统计周期为1小时; 当时间区间选择为15天以上, 180天以下, 统计周期为1天
+        :param _Period: <p>统计周期(单位秒), 当时间区间为1天内, 统计周期为5分钟; 当时间区间选择为1天以上, 15天以下, 统计周期为1小时; 当时间区间选择为15天以上, 180天以下, 统计周期为1天</p>
         :type Period: int
-        :param _Values: 有效的监控数据, 每个有效监控数据的上报时间可以从时间数组中的对应位置上获取到
+        :param _Values: <p>有效的监控数据, 每个有效监控数据的上报时间可以从时间数组中的对应位置上获取到</p>
         :type Values: list of int
-        :param _Time: 各数据点的时间戳数组（Unix 时间戳，秒级），与  ⁠Values⁠  一一对应
+        :param _Time: <p>各数据点的时间戳数组（Unix 时间戳，秒级），与  ⁠Values⁠  一一对应</p>
         :type Time: list of int
-        :param _NewValues: 有效的监控数据, 每个有效监控数据的上报时间可以从时间数组中的对应位置上获取到
+        :param _NewValues: <p>有效的监控数据, 每个有效监控数据的上报时间可以从时间数组中的对应位置上获取到</p>
         :type NewValues: list of float
-        :param _Statistics:  聚合方式， ⁠"last"⁠  表示取时间段内最后一个值，“max”表示取时间段内最大值，“avg”表示取时间段内的平均值
+        :param _Statistics: <p>聚合方式， ⁠&quot;last&quot;⁠  表示取时间段内最后一个值，“max”表示取时间段内最大值，“avg”表示取时间段内的平均值</p>
         :type Statistics: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6237,7 +6087,7 @@ class DescribeCurveDataResponse(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""开始时间, 会根据数据的统计周期进行取整
+        r"""<p>开始时间, 会根据数据的统计周期进行取整</p>
         :rtype: str
         """
         return self._StartTime
@@ -6248,7 +6098,7 @@ class DescribeCurveDataResponse(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""结束时间, 会根据数据的统计周期进行取整
+        r"""<p>结束时间, 会根据数据的统计周期进行取整</p>
         :rtype: str
         """
         return self._EndTime
@@ -6259,7 +6109,7 @@ class DescribeCurveDataResponse(AbstractModel):
 
     @property
     def MetricName(self):
-        r"""指标名
+        r"""<p>指标名</p>
         :rtype: str
         """
         return self._MetricName
@@ -6270,7 +6120,7 @@ class DescribeCurveDataResponse(AbstractModel):
 
     @property
     def Period(self):
-        r"""统计周期(单位秒), 当时间区间为1天内, 统计周期为5分钟; 当时间区间选择为1天以上, 15天以下, 统计周期为1小时; 当时间区间选择为15天以上, 180天以下, 统计周期为1天
+        r"""<p>统计周期(单位秒), 当时间区间为1天内, 统计周期为5分钟; 当时间区间选择为1天以上, 15天以下, 统计周期为1小时; 当时间区间选择为15天以上, 180天以下, 统计周期为1天</p>
         :rtype: int
         """
         return self._Period
@@ -6281,7 +6131,7 @@ class DescribeCurveDataResponse(AbstractModel):
 
     @property
     def Values(self):
-        r"""有效的监控数据, 每个有效监控数据的上报时间可以从时间数组中的对应位置上获取到
+        r"""<p>有效的监控数据, 每个有效监控数据的上报时间可以从时间数组中的对应位置上获取到</p>
         :rtype: list of int
         """
         return self._Values
@@ -6292,7 +6142,7 @@ class DescribeCurveDataResponse(AbstractModel):
 
     @property
     def Time(self):
-        r"""各数据点的时间戳数组（Unix 时间戳，秒级），与  ⁠Values⁠  一一对应
+        r"""<p>各数据点的时间戳数组（Unix 时间戳，秒级），与  ⁠Values⁠  一一对应</p>
         :rtype: list of int
         """
         return self._Time
@@ -6303,7 +6153,7 @@ class DescribeCurveDataResponse(AbstractModel):
 
     @property
     def NewValues(self):
-        r"""有效的监控数据, 每个有效监控数据的上报时间可以从时间数组中的对应位置上获取到
+        r"""<p>有效的监控数据, 每个有效监控数据的上报时间可以从时间数组中的对应位置上获取到</p>
         :rtype: list of float
         """
         return self._NewValues
@@ -6314,7 +6164,7 @@ class DescribeCurveDataResponse(AbstractModel):
 
     @property
     def Statistics(self):
-        r""" 聚合方式， ⁠"last"⁠  表示取时间段内最后一个值，“max”表示取时间段内最大值，“avg”表示取时间段内的平均值
+        r"""<p>聚合方式， ⁠&quot;last&quot;⁠  表示取时间段内最后一个值，“max”表示取时间段内最大值，“avg”表示取时间段内的平均值</p>
         :rtype: str
         """
         return self._Statistics

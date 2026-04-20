@@ -234,7 +234,7 @@ class CkafkaClient(AbstractClient):
 
 
     def CreateConnectResource(self, request):
-        r"""创建Datahub连接源
+        r"""创建连接器连接
 
         :param request: Request instance for CreateConnectResource.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.CreateConnectResourceRequest`
@@ -280,7 +280,7 @@ class CkafkaClient(AbstractClient):
 
 
     def CreateDatahubTask(self, request):
-        r"""创建DIP转储任务
+        r"""创建连接器任务
 
         :param request: Request instance for CreateDatahubTask.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.CreateDatahubTaskRequest`
@@ -579,7 +579,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DeleteConnectResource(self, request):
-        r"""删除Datahub连接源
+        r"""删除连接器连接
 
         :param request: Request instance for DeleteConnectResource.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.DeleteConnectResourceRequest`
@@ -602,7 +602,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DeleteDatahubTask(self, request):
-        r"""删除Dip任务
+        r"""删除连接器任务
 
         :param request: Request instance for DeleteDatahubTask.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.DeleteDatahubTaskRequest`
@@ -877,6 +877,29 @@ class CkafkaClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeAccessPolicy(self, request):
+        r"""查询实例公网IP白名单列表接口
+
+        :param request: Request instance for DescribeAccessPolicy.
+        :type request: :class:`tencentcloud.ckafka.v20190819.models.DescribeAccessPolicyRequest`
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.DescribeAccessPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAccessPolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAccessPolicyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeAclRule(self, request):
         r"""查询ACL规则列表
 
@@ -947,7 +970,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DescribeConnectResource(self, request):
-        r"""查询Datahub连接源
+        r"""查询连接器连接详情
 
         :param request: Request instance for DescribeConnectResource.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.DescribeConnectResourceRequest`
@@ -970,7 +993,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DescribeConnectResources(self, request):
-        r"""查询Datahub连接源列表
+        r"""查询连接器连接列表
 
         :param request: Request instance for DescribeConnectResources.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.DescribeConnectResourcesRequest`
@@ -1062,7 +1085,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DescribeDatahubTask(self, request):
-        r"""查询Datahub任务信息
+        r"""查询连接器任务详情
 
         :param request: Request instance for DescribeDatahubTask.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.DescribeDatahubTaskRequest`
@@ -1085,7 +1108,7 @@ class CkafkaClient(AbstractClient):
 
 
     def DescribeDatahubTasks(self, request):
-        r"""查询Datahub任务列表
+        r"""查询连接器任务列表
 
         :param request: Request instance for DescribeDatahubTasks.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.DescribeDatahubTasksRequest`
@@ -1798,6 +1821,29 @@ class CkafkaClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyAccessPolicy(self, request):
+        r"""修改实例公网IP白名单列表接口
+
+        :param request: Request instance for ModifyAccessPolicy.
+        :type request: :class:`tencentcloud.ckafka.v20190819.models.ModifyAccessPolicyRequest`
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.ModifyAccessPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyAccessPolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyAccessPolicyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyAclRule(self, request):
         r"""修改ACL策略，目前只支持预设规则的是否应用到新增topic这一项的修改
 
@@ -1822,7 +1868,7 @@ class CkafkaClient(AbstractClient):
 
 
     def ModifyConnectResource(self, request):
-        r"""编辑Datahub连接源
+        r"""编辑连接器连接
 
         :param request: Request instance for ModifyConnectResource.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.ModifyConnectResourceRequest`
@@ -1845,7 +1891,7 @@ class CkafkaClient(AbstractClient):
 
 
     def ModifyDatahubTask(self, request):
-        r"""修改Datahub任务
+        r"""修改连接器任务
 
         :param request: Request instance for ModifyDatahubTask.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.ModifyDatahubTaskRequest`
@@ -2029,7 +2075,7 @@ class CkafkaClient(AbstractClient):
 
 
     def PauseDatahubTask(self, request):
-        r"""暂停Dip任务
+        r"""暂停连接器任务
 
         :param request: Request instance for PauseDatahubTask.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.PauseDatahubTaskRequest`
@@ -2075,7 +2121,7 @@ class CkafkaClient(AbstractClient):
 
 
     def RestartDatahubTask(self, request):
-        r"""Datahub任务异常时，重启Datahub任务
+        r"""连接器任务异常时，重启连接器任务
 
         :param request: Request instance for RestartDatahubTask.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.RestartDatahubTaskRequest`
@@ -2098,7 +2144,7 @@ class CkafkaClient(AbstractClient):
 
 
     def ResumeDatahubTask(self, request):
-        r"""恢复Dip任务
+        r"""恢复连接器任务
 
         :param request: Request instance for ResumeDatahubTask.
         :type request: :class:`tencentcloud.ckafka.v20190819.models.ResumeDatahubTaskRequest`

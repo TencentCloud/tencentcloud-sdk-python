@@ -23210,18 +23210,14 @@ class DescribeKafkaConsumerRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FromTopicId: 日志主题Id。
-- 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。
-- 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。
+        :param _FromTopicId: <p>日志主题Id。</p><ul><li>通过 <a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a> 获取日志主题Id。</li><li>通过 <a href="https://cloud.tencent.com/document/product/614/56456">创建日志主题</a> 获取日志主题Id。</li></ul>
         :type FromTopicId: str
         """
         self._FromTopicId = None
 
     @property
     def FromTopicId(self):
-        r"""日志主题Id。
-- 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。
-- 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。
+        r"""<p>日志主题Id。</p><ul><li>通过 <a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a> 获取日志主题Id。</li><li>通过 <a href="https://cloud.tencent.com/document/product/614/56456">创建日志主题</a> 获取日志主题Id。</li></ul>
         :rtype: str
         """
         return self._FromTopicId
@@ -23250,14 +23246,18 @@ class DescribeKafkaConsumerResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Status: Kafka协议消费是否打开
+        :param _Status: <p>Kafka协议消费是否打开</p>
         :type Status: bool
-        :param _TopicID: KafkaConsumer 消费时使用的Topic参数
+        :param _TopicID: <p>KafkaConsumer 消费时使用的Topic参数</p>
         :type TopicID: str
-        :param _Compression: 压缩方式[0:NONE；2:SNAPPY；3:LZ4]
+        :param _Compression: <p>压缩方式[0:NONE；2:SNAPPY；3:LZ4]</p>
         :type Compression: int
-        :param _ConsumerContent: kafka协议消费数据格式
+        :param _ConsumerContent: <p>kafka协议消费数据格式</p>
         :type ConsumerContent: :class:`tencentcloud.cls.v20201016.models.KafkaConsumerContent`
+        :param _HasServicesLog: <p>是否开启投递服务日志。1：关闭，2：开启。</p>
+        :type HasServicesLog: int
+        :param _ScopeType: <p>消费范围类型，0:最新，1:历史+最新</p>
+        :type ScopeType: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -23265,11 +23265,13 @@ class DescribeKafkaConsumerResponse(AbstractModel):
         self._TopicID = None
         self._Compression = None
         self._ConsumerContent = None
+        self._HasServicesLog = None
+        self._ScopeType = None
         self._RequestId = None
 
     @property
     def Status(self):
-        r"""Kafka协议消费是否打开
+        r"""<p>Kafka协议消费是否打开</p>
         :rtype: bool
         """
         return self._Status
@@ -23280,7 +23282,7 @@ class DescribeKafkaConsumerResponse(AbstractModel):
 
     @property
     def TopicID(self):
-        r"""KafkaConsumer 消费时使用的Topic参数
+        r"""<p>KafkaConsumer 消费时使用的Topic参数</p>
         :rtype: str
         """
         return self._TopicID
@@ -23291,7 +23293,7 @@ class DescribeKafkaConsumerResponse(AbstractModel):
 
     @property
     def Compression(self):
-        r"""压缩方式[0:NONE；2:SNAPPY；3:LZ4]
+        r"""<p>压缩方式[0:NONE；2:SNAPPY；3:LZ4]</p>
         :rtype: int
         """
         return self._Compression
@@ -23302,7 +23304,7 @@ class DescribeKafkaConsumerResponse(AbstractModel):
 
     @property
     def ConsumerContent(self):
-        r"""kafka协议消费数据格式
+        r"""<p>kafka协议消费数据格式</p>
         :rtype: :class:`tencentcloud.cls.v20201016.models.KafkaConsumerContent`
         """
         return self._ConsumerContent
@@ -23310,6 +23312,28 @@ class DescribeKafkaConsumerResponse(AbstractModel):
     @ConsumerContent.setter
     def ConsumerContent(self, ConsumerContent):
         self._ConsumerContent = ConsumerContent
+
+    @property
+    def HasServicesLog(self):
+        r"""<p>是否开启投递服务日志。1：关闭，2：开启。</p>
+        :rtype: int
+        """
+        return self._HasServicesLog
+
+    @HasServicesLog.setter
+    def HasServicesLog(self, HasServicesLog):
+        self._HasServicesLog = HasServicesLog
+
+    @property
+    def ScopeType(self):
+        r"""<p>消费范围类型，0:最新，1:历史+最新</p>
+        :rtype: int
+        """
+        return self._ScopeType
+
+    @ScopeType.setter
+    def ScopeType(self, ScopeType):
+        self._ScopeType = ScopeType
 
     @property
     def RequestId(self):
@@ -23330,6 +23354,8 @@ class DescribeKafkaConsumerResponse(AbstractModel):
         if params.get("ConsumerContent") is not None:
             self._ConsumerContent = KafkaConsumerContent()
             self._ConsumerContent._deserialize(params.get("ConsumerContent"))
+        self._HasServicesLog = params.get("HasServicesLog")
+        self._ScopeType = params.get("ScopeType")
         self._RequestId = params.get("RequestId")
 
 
@@ -38565,24 +38591,26 @@ class ModifyKafkaConsumerRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FromTopicId: 日志主题Id。
-- 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。
-- 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。
+        :param _FromTopicId: <p>日志主题Id。</p><ul><li>通过 <a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a> 获取日志主题Id。</li><li>通过 <a href="https://cloud.tencent.com/document/product/614/56456">创建日志主题</a> 获取日志主题Id。</li></ul>
         :type FromTopicId: str
-        :param _Compression: 压缩方式。0：不压缩；2：使用Snappy压缩；3：使用LZ4压缩
+        :param _Compression: <p>压缩方式。0：不压缩；2：使用Snappy压缩；3：使用LZ4压缩</p>
         :type Compression: int
-        :param _ConsumerContent: kafka协议消费数据格式
+        :param _ConsumerContent: <p>kafka协议消费数据格式</p>
         :type ConsumerContent: :class:`tencentcloud.cls.v20201016.models.KafkaConsumerContent`
+        :param _HasServicesLog: <p>是否开启投递服务日志。1：关闭，2：开启。</p>
+        :type HasServicesLog: int
+        :param _ScopeType: <p>消费范围类型，0:最新，1:历史+最新</p>
+        :type ScopeType: int
         """
         self._FromTopicId = None
         self._Compression = None
         self._ConsumerContent = None
+        self._HasServicesLog = None
+        self._ScopeType = None
 
     @property
     def FromTopicId(self):
-        r"""日志主题Id。
-- 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。
-- 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。
+        r"""<p>日志主题Id。</p><ul><li>通过 <a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a> 获取日志主题Id。</li><li>通过 <a href="https://cloud.tencent.com/document/product/614/56456">创建日志主题</a> 获取日志主题Id。</li></ul>
         :rtype: str
         """
         return self._FromTopicId
@@ -38593,7 +38621,7 @@ class ModifyKafkaConsumerRequest(AbstractModel):
 
     @property
     def Compression(self):
-        r"""压缩方式。0：不压缩；2：使用Snappy压缩；3：使用LZ4压缩
+        r"""<p>压缩方式。0：不压缩；2：使用Snappy压缩；3：使用LZ4压缩</p>
         :rtype: int
         """
         return self._Compression
@@ -38604,7 +38632,7 @@ class ModifyKafkaConsumerRequest(AbstractModel):
 
     @property
     def ConsumerContent(self):
-        r"""kafka协议消费数据格式
+        r"""<p>kafka协议消费数据格式</p>
         :rtype: :class:`tencentcloud.cls.v20201016.models.KafkaConsumerContent`
         """
         return self._ConsumerContent
@@ -38613,6 +38641,28 @@ class ModifyKafkaConsumerRequest(AbstractModel):
     def ConsumerContent(self, ConsumerContent):
         self._ConsumerContent = ConsumerContent
 
+    @property
+    def HasServicesLog(self):
+        r"""<p>是否开启投递服务日志。1：关闭，2：开启。</p>
+        :rtype: int
+        """
+        return self._HasServicesLog
+
+    @HasServicesLog.setter
+    def HasServicesLog(self, HasServicesLog):
+        self._HasServicesLog = HasServicesLog
+
+    @property
+    def ScopeType(self):
+        r"""<p>消费范围类型，0:最新，1:历史+最新</p>
+        :rtype: int
+        """
+        return self._ScopeType
+
+    @ScopeType.setter
+    def ScopeType(self, ScopeType):
+        self._ScopeType = ScopeType
+
 
     def _deserialize(self, params):
         self._FromTopicId = params.get("FromTopicId")
@@ -38620,6 +38670,8 @@ class ModifyKafkaConsumerRequest(AbstractModel):
         if params.get("ConsumerContent") is not None:
             self._ConsumerContent = KafkaConsumerContent()
             self._ConsumerContent._deserialize(params.get("ConsumerContent"))
+        self._HasServicesLog = params.get("HasServicesLog")
+        self._ScopeType = params.get("ScopeType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -42890,24 +42942,26 @@ class OpenKafkaConsumerRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FromTopicId: 日志主题Id。
-- 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。
-- 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。
+        :param _FromTopicId: <p>日志主题Id。</p><ul><li>通过 <a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a> 获取日志主题Id。</li><li>通过 <a href="https://cloud.tencent.com/document/product/614/56456">创建日志主题</a> 获取日志主题Id。</li></ul>
         :type FromTopicId: str
-        :param _Compression: 压缩方式[0:NONE；2:SNAPPY；3:LZ4]，默认：0
+        :param _Compression: <p>压缩方式[0:NONE；2:SNAPPY；3:LZ4]，默认：0</p>
         :type Compression: int
-        :param _ConsumerContent: kafka协议消费数据格式
+        :param _ConsumerContent: <p>kafka协议消费数据格式</p>
         :type ConsumerContent: :class:`tencentcloud.cls.v20201016.models.KafkaConsumerContent`
+        :param _HasServicesLog: <p>是否开启投递服务日志。1：关闭，2：开启。 默认值：2</p>
+        :type HasServicesLog: int
+        :param _ScopeType: <p>消费范围类型，0:最新；1:历史+最新；默认值:0</p>
+        :type ScopeType: int
         """
         self._FromTopicId = None
         self._Compression = None
         self._ConsumerContent = None
+        self._HasServicesLog = None
+        self._ScopeType = None
 
     @property
     def FromTopicId(self):
-        r"""日志主题Id。
-- 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。
-- 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。
+        r"""<p>日志主题Id。</p><ul><li>通过 <a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a> 获取日志主题Id。</li><li>通过 <a href="https://cloud.tencent.com/document/product/614/56456">创建日志主题</a> 获取日志主题Id。</li></ul>
         :rtype: str
         """
         return self._FromTopicId
@@ -42918,7 +42972,7 @@ class OpenKafkaConsumerRequest(AbstractModel):
 
     @property
     def Compression(self):
-        r"""压缩方式[0:NONE；2:SNAPPY；3:LZ4]，默认：0
+        r"""<p>压缩方式[0:NONE；2:SNAPPY；3:LZ4]，默认：0</p>
         :rtype: int
         """
         return self._Compression
@@ -42929,7 +42983,7 @@ class OpenKafkaConsumerRequest(AbstractModel):
 
     @property
     def ConsumerContent(self):
-        r"""kafka协议消费数据格式
+        r"""<p>kafka协议消费数据格式</p>
         :rtype: :class:`tencentcloud.cls.v20201016.models.KafkaConsumerContent`
         """
         return self._ConsumerContent
@@ -42938,6 +42992,28 @@ class OpenKafkaConsumerRequest(AbstractModel):
     def ConsumerContent(self, ConsumerContent):
         self._ConsumerContent = ConsumerContent
 
+    @property
+    def HasServicesLog(self):
+        r"""<p>是否开启投递服务日志。1：关闭，2：开启。 默认值：2</p>
+        :rtype: int
+        """
+        return self._HasServicesLog
+
+    @HasServicesLog.setter
+    def HasServicesLog(self, HasServicesLog):
+        self._HasServicesLog = HasServicesLog
+
+    @property
+    def ScopeType(self):
+        r"""<p>消费范围类型，0:最新；1:历史+最新；默认值:0</p>
+        :rtype: int
+        """
+        return self._ScopeType
+
+    @ScopeType.setter
+    def ScopeType(self, ScopeType):
+        self._ScopeType = ScopeType
+
 
     def _deserialize(self, params):
         self._FromTopicId = params.get("FromTopicId")
@@ -42945,6 +43021,8 @@ class OpenKafkaConsumerRequest(AbstractModel):
         if params.get("ConsumerContent") is not None:
             self._ConsumerContent = KafkaConsumerContent()
             self._ConsumerContent._deserialize(params.get("ConsumerContent"))
+        self._HasServicesLog = params.get("HasServicesLog")
+        self._ScopeType = params.get("ScopeType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -42962,7 +43040,7 @@ class OpenKafkaConsumerResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TopicID: KafkaConsumer 消费时使用的Topic参数
+        :param _TopicID: <p>KafkaConsumer 消费时使用的Topic参数</p>
         :type TopicID: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -42972,7 +43050,7 @@ class OpenKafkaConsumerResponse(AbstractModel):
 
     @property
     def TopicID(self):
-        r"""KafkaConsumer 消费时使用的Topic参数
+        r"""<p>KafkaConsumer 消费时使用的Topic参数</p>
         :rtype: str
         """
         return self._TopicID
