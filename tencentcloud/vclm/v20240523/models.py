@@ -392,20 +392,22 @@ class CreateAigcElementRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 
+        :param _Name: <p>主体名称<br>不能超过20个字符</p>
         :type Name: str
-        :param _Description: 
+        :param _Description: <p>主体描述</p><p>不能超过100个字符</p>
         :type Description: str
-        :param _ReferenceType: 
+        :param _ReferenceType: <p>主体参考方式</p><p>枚举值：<br>video_refer<br>image_refer<br>video_refer: 视频角色主体，此时将参考element_video_list定义主体外表<br>image_refer: 多图主体，此时将参考element_image_list定义主体外表</p>
         :type ReferenceType: str
-        :param _ElementImageList: 
+        :param _ElementImageList: <p>主体参考图，可通过多张图片设定主体及其细节</p><p>包括正面参考图和其他角度或特写参考图，其中：至少包括1张正面参考图，由frontal_image参数定义；需包括1～3张其他参考图，需与正面参考图有差异，由image_url参数定义<br>支持传入图片Base64编码或图片URL（确保可访问）</p><p>图片格式支持.jpg / .jpeg / .png。图片文件大小不能超过10MB，图片宽高尺寸不小于300px，图片宽高比要在1:2.5 ~ 2.5:1之间</p><p>reference_type参数值为 image_refer 时，当前参数必填</p>
         :type ElementImageList: :class:`tencentcloud.vclm.v20240523.models.ElementImageList`
-        :param _VideoList: 
+        :param _VideoList: <p>主体参考视频，可通过视频设定主体及其细节</p><p>可上传有声视频，有声视频包含人声则触发音色定制（定制+入音色库+与主体绑定）</p><p>暂时仅支持通过视频定制写实风格的人形形象</p><p>参考视频时当前参数必填，参考图片时当前参数无效</p><p>用key:value承载。视频格式仅支持MP4/MOV。仅支持时长介于3s～8s之间、宽高比例需为16:9或9:16的1080P视频。至多仅支持上传1段视频，视频大小不超过200MB。video_url参数值不得为空</p>
         :type VideoList: list of str
-        :param _Provider: 
+        :param _Provider: <p>厂商</p>
         :type Provider: list of str
-        :param _TagList: 
+        :param _TagList: <p>为主体配置标签，一个主体可以配置多个标签</p><p>用key:value承载。tag的ID与名称：o_101 热梗, o_102 人物, o_103 动物, o_104 道具, o_105 服饰, o_106 场景, o_107 特效, o_108 其他</p>
         :type TagList: list of TagList
+        :param _ElementVoiceId: <p>主体音色ID，可绑定音色库中已有音色</p><p>当前参数为空时，当前主体不绑定音色<br>为多图主体绑定音色时，仅支持人物形象主体或类人形象主体</p>
+        :type ElementVoiceId: str
         """
         self._Name = None
         self._Description = None
@@ -414,10 +416,11 @@ class CreateAigcElementRequest(AbstractModel):
         self._VideoList = None
         self._Provider = None
         self._TagList = None
+        self._ElementVoiceId = None
 
     @property
     def Name(self):
-        r"""
+        r"""<p>主体名称<br>不能超过20个字符</p>
         :rtype: str
         """
         return self._Name
@@ -428,7 +431,7 @@ class CreateAigcElementRequest(AbstractModel):
 
     @property
     def Description(self):
-        r"""
+        r"""<p>主体描述</p><p>不能超过100个字符</p>
         :rtype: str
         """
         return self._Description
@@ -439,7 +442,7 @@ class CreateAigcElementRequest(AbstractModel):
 
     @property
     def ReferenceType(self):
-        r"""
+        r"""<p>主体参考方式</p><p>枚举值：<br>video_refer<br>image_refer<br>video_refer: 视频角色主体，此时将参考element_video_list定义主体外表<br>image_refer: 多图主体，此时将参考element_image_list定义主体外表</p>
         :rtype: str
         """
         return self._ReferenceType
@@ -450,7 +453,7 @@ class CreateAigcElementRequest(AbstractModel):
 
     @property
     def ElementImageList(self):
-        r"""
+        r"""<p>主体参考图，可通过多张图片设定主体及其细节</p><p>包括正面参考图和其他角度或特写参考图，其中：至少包括1张正面参考图，由frontal_image参数定义；需包括1～3张其他参考图，需与正面参考图有差异，由image_url参数定义<br>支持传入图片Base64编码或图片URL（确保可访问）</p><p>图片格式支持.jpg / .jpeg / .png。图片文件大小不能超过10MB，图片宽高尺寸不小于300px，图片宽高比要在1:2.5 ~ 2.5:1之间</p><p>reference_type参数值为 image_refer 时，当前参数必填</p>
         :rtype: :class:`tencentcloud.vclm.v20240523.models.ElementImageList`
         """
         return self._ElementImageList
@@ -461,7 +464,7 @@ class CreateAigcElementRequest(AbstractModel):
 
     @property
     def VideoList(self):
-        r"""
+        r"""<p>主体参考视频，可通过视频设定主体及其细节</p><p>可上传有声视频，有声视频包含人声则触发音色定制（定制+入音色库+与主体绑定）</p><p>暂时仅支持通过视频定制写实风格的人形形象</p><p>参考视频时当前参数必填，参考图片时当前参数无效</p><p>用key:value承载。视频格式仅支持MP4/MOV。仅支持时长介于3s～8s之间、宽高比例需为16:9或9:16的1080P视频。至多仅支持上传1段视频，视频大小不超过200MB。video_url参数值不得为空</p>
         :rtype: list of str
         """
         return self._VideoList
@@ -472,7 +475,7 @@ class CreateAigcElementRequest(AbstractModel):
 
     @property
     def Provider(self):
-        r"""
+        r"""<p>厂商</p>
         :rtype: list of str
         """
         return self._Provider
@@ -483,7 +486,7 @@ class CreateAigcElementRequest(AbstractModel):
 
     @property
     def TagList(self):
-        r"""
+        r"""<p>为主体配置标签，一个主体可以配置多个标签</p><p>用key:value承载。tag的ID与名称：o_101 热梗, o_102 人物, o_103 动物, o_104 道具, o_105 服饰, o_106 场景, o_107 特效, o_108 其他</p>
         :rtype: list of TagList
         """
         return self._TagList
@@ -491,6 +494,17 @@ class CreateAigcElementRequest(AbstractModel):
     @TagList.setter
     def TagList(self, TagList):
         self._TagList = TagList
+
+    @property
+    def ElementVoiceId(self):
+        r"""<p>主体音色ID，可绑定音色库中已有音色</p><p>当前参数为空时，当前主体不绑定音色<br>为多图主体绑定音色时，仅支持人物形象主体或类人形象主体</p>
+        :rtype: str
+        """
+        return self._ElementVoiceId
+
+    @ElementVoiceId.setter
+    def ElementVoiceId(self, ElementVoiceId):
+        self._ElementVoiceId = ElementVoiceId
 
 
     def _deserialize(self, params):
@@ -508,6 +522,7 @@ class CreateAigcElementRequest(AbstractModel):
                 obj = TagList()
                 obj._deserialize(item)
                 self._TagList.append(obj)
+        self._ElementVoiceId = params.get("ElementVoiceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -527,13 +542,13 @@ class CreateAigcElementResponse(AbstractModel):
         r"""
         :param _JobId: <p>任务ID。</p>
         :type JobId: str
-        :param _ElementId: 
+        :param _ElementId: <p>主体Id</p>
         :type ElementId: str
-        :param _Status: 
+        :param _Status: <p>任务状态</p><p>默认值：任务状态</p>
         :type Status: str
-        :param _Provider: 
+        :param _Provider: <p>厂商</p>
         :type Provider: list of str
-        :param _CreatedAt: 
+        :param _CreatedAt: <p>任务创建时间</p>
         :type CreatedAt: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -558,7 +573,7 @@ class CreateAigcElementResponse(AbstractModel):
 
     @property
     def ElementId(self):
-        r"""
+        r"""<p>主体Id</p>
         :rtype: str
         """
         return self._ElementId
@@ -569,7 +584,7 @@ class CreateAigcElementResponse(AbstractModel):
 
     @property
     def Status(self):
-        r"""
+        r"""<p>任务状态</p><p>默认值：任务状态</p>
         :rtype: str
         """
         return self._Status
@@ -580,7 +595,7 @@ class CreateAigcElementResponse(AbstractModel):
 
     @property
     def Provider(self):
-        r"""
+        r"""<p>厂商</p>
         :rtype: list of str
         """
         return self._Provider
@@ -591,7 +606,7 @@ class CreateAigcElementResponse(AbstractModel):
 
     @property
     def CreatedAt(self):
-        r"""
+        r"""<p>任务创建时间</p>
         :rtype: str
         """
         return self._CreatedAt
@@ -722,14 +737,14 @@ class DescribeAigcElementRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ElementId: 
+        :param _ElementId: <p>主体Id</p>
         :type ElementId: str
         """
         self._ElementId = None
 
     @property
     def ElementId(self):
-        r"""
+        r"""<p>主体Id</p>
         :rtype: str
         """
         return self._ElementId
@@ -782,6 +797,8 @@ class DescribeAigcElementResponse(AbstractModel):
         :type CreatedAt: str
         :param _UpdatedAt: <p>更新时间</p>
         :type UpdatedAt: str
+        :param _ElementVoiceId: <p>音色Id</p>
+        :type ElementVoiceId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -797,6 +814,7 @@ class DescribeAigcElementResponse(AbstractModel):
         self._ProviderDetails = None
         self._CreatedAt = None
         self._UpdatedAt = None
+        self._ElementVoiceId = None
         self._RequestId = None
 
     @property
@@ -932,6 +950,17 @@ class DescribeAigcElementResponse(AbstractModel):
         self._UpdatedAt = UpdatedAt
 
     @property
+    def ElementVoiceId(self):
+        r"""<p>音色Id</p>
+        :rtype: str
+        """
+        return self._ElementVoiceId
+
+    @ElementVoiceId.setter
+    def ElementVoiceId(self, ElementVoiceId):
+        self._ElementVoiceId = ElementVoiceId
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -968,6 +997,7 @@ class DescribeAigcElementResponse(AbstractModel):
                 self._ProviderDetails.append(obj)
         self._CreatedAt = params.get("CreatedAt")
         self._UpdatedAt = params.get("UpdatedAt")
+        self._ElementVoiceId = params.get("ElementVoiceId")
         self._RequestId = params.get("RequestId")
 
 
@@ -1629,8 +1659,11 @@ class DescribeImageToVideoJobRequest(AbstractModel):
         r"""
         :param _JobId: <p>任务ID。</p>
         :type JobId: str
+        :param _ExternalTaskId: 
+        :type ExternalTaskId: str
         """
         self._JobId = None
+        self._ExternalTaskId = None
 
     @property
     def JobId(self):
@@ -1643,9 +1676,21 @@ class DescribeImageToVideoJobRequest(AbstractModel):
     def JobId(self, JobId):
         self._JobId = JobId
 
+    @property
+    def ExternalTaskId(self):
+        r"""
+        :rtype: str
+        """
+        return self._ExternalTaskId
+
+    @ExternalTaskId.setter
+    def ExternalTaskId(self, ExternalTaskId):
+        self._ExternalTaskId = ExternalTaskId
+
 
     def _deserialize(self, params):
         self._JobId = params.get("JobId")
+        self._ExternalTaskId = params.get("ExternalTaskId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1677,6 +1722,8 @@ class DescribeImageToVideoJobResponse(AbstractModel):
         :type Duration: str
         :param _FinalUnitDeduction: <p>任务最终扣减积分数值</p>
         :type FinalUnitDeduction: str
+        :param _ExternalTaskId: 
+        :type ExternalTaskId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1687,6 +1734,7 @@ class DescribeImageToVideoJobResponse(AbstractModel):
         self._VideoId = None
         self._Duration = None
         self._FinalUnitDeduction = None
+        self._ExternalTaskId = None
         self._RequestId = None
 
     @property
@@ -1767,6 +1815,17 @@ class DescribeImageToVideoJobResponse(AbstractModel):
         self._FinalUnitDeduction = FinalUnitDeduction
 
     @property
+    def ExternalTaskId(self):
+        r"""
+        :rtype: str
+        """
+        return self._ExternalTaskId
+
+    @ExternalTaskId.setter
+    def ExternalTaskId(self, ExternalTaskId):
+        self._ExternalTaskId = ExternalTaskId
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -1786,6 +1845,7 @@ class DescribeImageToVideoJobResponse(AbstractModel):
         self._VideoId = params.get("VideoId")
         self._Duration = params.get("Duration")
         self._FinalUnitDeduction = params.get("FinalUnitDeduction")
+        self._ExternalTaskId = params.get("ExternalTaskId")
         self._RequestId = params.get("RequestId")
 
 
@@ -1952,8 +2012,11 @@ class DescribeMotionControlKlingJobRequest(AbstractModel):
         r"""
         :param _JobId: <p>任务ID</p>
         :type JobId: str
+        :param _ExternalTaskId: 
+        :type ExternalTaskId: str
         """
         self._JobId = None
+        self._ExternalTaskId = None
 
     @property
     def JobId(self):
@@ -1966,9 +2029,21 @@ class DescribeMotionControlKlingJobRequest(AbstractModel):
     def JobId(self, JobId):
         self._JobId = JobId
 
+    @property
+    def ExternalTaskId(self):
+        r"""
+        :rtype: str
+        """
+        return self._ExternalTaskId
+
+    @ExternalTaskId.setter
+    def ExternalTaskId(self, ExternalTaskId):
+        self._ExternalTaskId = ExternalTaskId
+
 
     def _deserialize(self, params):
         self._JobId = params.get("JobId")
+        self._ExternalTaskId = params.get("ExternalTaskId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2561,8 +2636,11 @@ class DescribeTextToVideoJobRequest(AbstractModel):
         r"""
         :param _JobId: <p>任务ID。</p>
         :type JobId: str
+        :param _ExternalTaskId: 
+        :type ExternalTaskId: str
         """
         self._JobId = None
+        self._ExternalTaskId = None
 
     @property
     def JobId(self):
@@ -2575,9 +2653,21 @@ class DescribeTextToVideoJobRequest(AbstractModel):
     def JobId(self, JobId):
         self._JobId = JobId
 
+    @property
+    def ExternalTaskId(self):
+        r"""
+        :rtype: str
+        """
+        return self._ExternalTaskId
+
+    @ExternalTaskId.setter
+    def ExternalTaskId(self, ExternalTaskId):
+        self._ExternalTaskId = ExternalTaskId
+
 
     def _deserialize(self, params):
         self._JobId = params.get("JobId")
+        self._ExternalTaskId = params.get("ExternalTaskId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2609,6 +2699,8 @@ class DescribeTextToVideoJobResponse(AbstractModel):
         :type Duration: str
         :param _FinalUnitDeduction: <p>任务最终扣减积分数值</p>
         :type FinalUnitDeduction: str
+        :param _ExternalTaskId: 
+        :type ExternalTaskId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2619,6 +2711,7 @@ class DescribeTextToVideoJobResponse(AbstractModel):
         self._VideoId = None
         self._Duration = None
         self._FinalUnitDeduction = None
+        self._ExternalTaskId = None
         self._RequestId = None
 
     @property
@@ -2699,6 +2792,17 @@ class DescribeTextToVideoJobResponse(AbstractModel):
         self._FinalUnitDeduction = FinalUnitDeduction
 
     @property
+    def ExternalTaskId(self):
+        r"""
+        :rtype: str
+        """
+        return self._ExternalTaskId
+
+    @ExternalTaskId.setter
+    def ExternalTaskId(self, ExternalTaskId):
+        self._ExternalTaskId = ExternalTaskId
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -2718,6 +2822,7 @@ class DescribeTextToVideoJobResponse(AbstractModel):
         self._VideoId = params.get("VideoId")
         self._Duration = params.get("Duration")
         self._FinalUnitDeduction = params.get("FinalUnitDeduction")
+        self._ExternalTaskId = params.get("ExternalTaskId")
         self._RequestId = params.get("RequestId")
 
 
@@ -3008,8 +3113,11 @@ class DescribeVideoEditKlingJobRequest(AbstractModel):
         r"""
         :param _JobId: <p>任务ID</p>
         :type JobId: str
+        :param _ExternalTaskId: 
+        :type ExternalTaskId: str
         """
         self._JobId = None
+        self._ExternalTaskId = None
 
     @property
     def JobId(self):
@@ -3022,9 +3130,21 @@ class DescribeVideoEditKlingJobRequest(AbstractModel):
     def JobId(self, JobId):
         self._JobId = JobId
 
+    @property
+    def ExternalTaskId(self):
+        r"""
+        :rtype: str
+        """
+        return self._ExternalTaskId
+
+    @ExternalTaskId.setter
+    def ExternalTaskId(self, ExternalTaskId):
+        self._ExternalTaskId = ExternalTaskId
+
 
     def _deserialize(self, params):
         self._JobId = params.get("JobId")
+        self._ExternalTaskId = params.get("ExternalTaskId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3177,8 +3297,11 @@ class DescribeVideoExtendKlingJobRequest(AbstractModel):
         r"""
         :param _JobId: <p>任务ID。</p>
         :type JobId: str
+        :param _ExternalTaskId: 
+        :type ExternalTaskId: str
         """
         self._JobId = None
+        self._ExternalTaskId = None
 
     @property
     def JobId(self):
@@ -3191,9 +3314,21 @@ class DescribeVideoExtendKlingJobRequest(AbstractModel):
     def JobId(self, JobId):
         self._JobId = JobId
 
+    @property
+    def ExternalTaskId(self):
+        r"""
+        :rtype: str
+        """
+        return self._ExternalTaskId
+
+    @ExternalTaskId.setter
+    def ExternalTaskId(self, ExternalTaskId):
+        self._ExternalTaskId = ExternalTaskId
+
 
     def _deserialize(self, params):
         self._JobId = params.get("JobId")
+        self._ExternalTaskId = params.get("ExternalTaskId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5770,6 +5905,8 @@ class SubmitImageToVideoJobRequest(AbstractModel):
         :type CallbackUrl: str
         :param _VoiceList: <p>生成视频时所引用的音色的列表</p><p>一次视频生成任务至多引用2个音色<br>当VoiceList参数不为空且Prompt参数中引用音色ID时，视频生成任务按“有指定音色”计量计费<br>VoiceId参数值通过音色定制接口返回，也可使用系统预置音色，详见音色定制相关API；非对口型API的VoiceId<br>ElementList参数与VoiceList参数互斥，不能共存<br>v3模型不支持指定音色<br>用key:value承载，如下：<br>&quot;VoiceList&quot;:[<br>  {&quot;VoiceId&quot;:&quot;VoiceId_1&quot;},<br>  {&quot;VoiceId&quot;:&quot;VoiceId_2&quot;}<br>]</p>
         :type VoiceList: list of Voice
+        :param _ExternalTaskId: 
+        :type ExternalTaskId: str
         """
         self._Model = None
         self._Image = None
@@ -5791,6 +5928,7 @@ class SubmitImageToVideoJobRequest(AbstractModel):
         self._CameraControl = None
         self._CallbackUrl = None
         self._VoiceList = None
+        self._ExternalTaskId = None
 
     @property
     def Model(self):
@@ -6012,6 +6150,17 @@ class SubmitImageToVideoJobRequest(AbstractModel):
     def VoiceList(self, VoiceList):
         self._VoiceList = VoiceList
 
+    @property
+    def ExternalTaskId(self):
+        r"""
+        :rtype: str
+        """
+        return self._ExternalTaskId
+
+    @ExternalTaskId.setter
+    def ExternalTaskId(self, ExternalTaskId):
+        self._ExternalTaskId = ExternalTaskId
+
 
     def _deserialize(self, params):
         self._Model = params.get("Model")
@@ -6062,6 +6211,7 @@ class SubmitImageToVideoJobRequest(AbstractModel):
                 obj = Voice()
                 obj._deserialize(item)
                 self._VoiceList.append(obj)
+        self._ExternalTaskId = params.get("ExternalTaskId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6081,10 +6231,13 @@ class SubmitImageToVideoJobResponse(AbstractModel):
         r"""
         :param _JobId: <p>任务ID。</p>
         :type JobId: str
+        :param _ExternalTaskId: 
+        :type ExternalTaskId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._JobId = None
+        self._ExternalTaskId = None
         self._RequestId = None
 
     @property
@@ -6097,6 +6250,17 @@ class SubmitImageToVideoJobResponse(AbstractModel):
     @JobId.setter
     def JobId(self, JobId):
         self._JobId = JobId
+
+    @property
+    def ExternalTaskId(self):
+        r"""
+        :rtype: str
+        """
+        return self._ExternalTaskId
+
+    @ExternalTaskId.setter
+    def ExternalTaskId(self, ExternalTaskId):
+        self._ExternalTaskId = ExternalTaskId
 
     @property
     def RequestId(self):
@@ -6112,6 +6276,7 @@ class SubmitImageToVideoJobResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._JobId = params.get("JobId")
+        self._ExternalTaskId = params.get("ExternalTaskId")
         self._RequestId = params.get("RequestId")
 
 
@@ -6447,6 +6612,8 @@ class SubmitMotionControlKlingJobRequest(AbstractModel):
         :type Model: str
         :param _Prompt: <p>文本提示词，可包含正向描述和负向描述</p><p>可将提示词模板化来满足不同的视频生成需求</p><p>不能超过2500个字</p>
         :type Prompt: str
+        :param _ExternalTaskId: 
+        :type ExternalTaskId: str
         :param _Image: <p>参考图像，生成视频中的人物、背景等元素均以参考图为准  视频内容需满足以下要求：  人物比例尽量与参考动作比例一致，尽量避免全身动作驱动半身人物进行生成  人物需要露出清晰的上半身或全身的肢体及头部，避免遮挡  画面中人物避免存在极端朝向，比如倒立、平卧等。人物占画面比例不得太低  支持真实/风格化的角色（包括人物/类人动物/部分纯动物/部分类人肢体比例的角色）通过  包含支持传入图片Base64编码或图片URL（确保可访问）。</p>
         :type Image: str
         :param _Video: <p>参考视频的获取链接。生成视频中的人物动作与参考视频一致。  视频内容需满足以下要求：  人物需要漏出清晰的上半身或全身的全部肢体及头部，避免遮挡  建议上传1人动作视频，2人及以上会取画面占比最大的人物动作进行生成  推荐使用真人动作，部分风格化的人物/类人肢体比例可以通过  动作视频一镜到底，角色始终出现在画面中，避免切镜、运镜等。否则会被截取  动作避免过快，相对平稳的动作生成效果更佳  视频文件支持.mp4/.mov，文件大小不超过100MB，仅支持长宽的边长均位于340px~3850px之间，上述校验不通过会返回错误码等信息  视频时长下限不短于3秒，时长上限与人物朝向参考（character_orientation）有关：  当人物朝向与视频中人物一致时，视频时长最长可达30秒；  当人物朝向与图片中人物一致时，视频时长最长可达10秒；  如果您的动作难度比较高、速度比较快，有一定概率生成不足上传视频时长的结果，因为模型只能提取有效动作时长进行生成，最短提取出3s可用连续动作即可生成。请注意，因此消耗的积分将无法退还，建议适当调整动作难度与速度  系统会校验视频内容，如有问题会返回错误码等信息。</p>
@@ -6468,6 +6635,7 @@ class SubmitMotionControlKlingJobRequest(AbstractModel):
         """
         self._Model = None
         self._Prompt = None
+        self._ExternalTaskId = None
         self._Image = None
         self._Video = None
         self._Mode = None
@@ -6499,6 +6667,17 @@ class SubmitMotionControlKlingJobRequest(AbstractModel):
     @Prompt.setter
     def Prompt(self, Prompt):
         self._Prompt = Prompt
+
+    @property
+    def ExternalTaskId(self):
+        r"""
+        :rtype: str
+        """
+        return self._ExternalTaskId
+
+    @ExternalTaskId.setter
+    def ExternalTaskId(self, ExternalTaskId):
+        self._ExternalTaskId = ExternalTaskId
 
     @property
     def Image(self):
@@ -6603,6 +6782,7 @@ class SubmitMotionControlKlingJobRequest(AbstractModel):
     def _deserialize(self, params):
         self._Model = params.get("Model")
         self._Prompt = params.get("Prompt")
+        self._ExternalTaskId = params.get("ExternalTaskId")
         self._Image = params.get("Image")
         self._Video = params.get("Video")
         self._Mode = params.get("Mode")
@@ -6638,10 +6818,13 @@ class SubmitMotionControlKlingJobResponse(AbstractModel):
         r"""
         :param _JobId: <p>任务ID</p>
         :type JobId: str
+        :param _ExternalTaskId: 
+        :type ExternalTaskId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._JobId = None
+        self._ExternalTaskId = None
         self._RequestId = None
 
     @property
@@ -6654,6 +6837,17 @@ class SubmitMotionControlKlingJobResponse(AbstractModel):
     @JobId.setter
     def JobId(self, JobId):
         self._JobId = JobId
+
+    @property
+    def ExternalTaskId(self):
+        r"""
+        :rtype: str
+        """
+        return self._ExternalTaskId
+
+    @ExternalTaskId.setter
+    def ExternalTaskId(self, ExternalTaskId):
+        self._ExternalTaskId = ExternalTaskId
 
     @property
     def RequestId(self):
@@ -6669,6 +6863,7 @@ class SubmitMotionControlKlingJobResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._JobId = params.get("JobId")
+        self._ExternalTaskId = params.get("ExternalTaskId")
         self._RequestId = params.get("RequestId")
 
 
@@ -7407,13 +7602,13 @@ class SubmitTextToVideoJobRequest(AbstractModel):
         r"""
         :param _Prompt: <p>正向文本提示词。不能超过2500个字符</p>
         :type Prompt: str
-        :param _Model: <p>模型名称。<br>v1.6：Kling-V1-6<br>v2.0：Kling-V2-Master<br>v2.5：Kling-V2-5-Turbo<br>v2.6：Kling-V2-6<br>v3.0：kling-v3</p>
+        :param _Model: <p>模型名称。<br>v1.0：Kling-V1<br>v1.5：Kling-V1-5<br>v1.6：Kling-V1-6<br>v2.0：Kling-V2-Master<br>v2.1m：Kling-V2-1-master<br>v2.5：Kling-V2-5-Turbo<br>v2.6：Kling-V2-6<br>v3.0：kling-v3</p>
         :type Model: str
         :param _NegativePrompt: <p>负向文本提示词。不能超过2500个字符</p>
         :type NegativePrompt: str
-        :param _Duration: <p>生成视频时长，单位s。默认值为5。<br>枚举值：3，4，5，6，7，8，9，10，11，12，13，14，15</p><p>不同模型支持时长不同</p><ul><li>模型v1.6、v2.0、v2.5、v2.6：支持5、10</li><li>模型v3.0：支持3～15s</li></ul>
+        :param _Duration: <p>生成视频时长，单位s。默认值为5。<br>枚举值：3，4，5，6，7，8，9，10，11，12，13，14，15不同模型支持时长不同<br>●模型v1.0、v1.6、v2.0、v2.1m、v2.5、v2.6：支持5、10<br>●模型v3.0：支持3～15s</p>
         :type Duration: str
-        :param _Mode: <p>生成视频的模式；</p><p>枚举值：std，pro</p><ul><li>其中std：标准模式（标准），基础模式，性价比高</li><li>其中pro：专家模式（高品质），高表现模式，生成视频质量更佳</li></ul><p>不同模型版本、视频模式支持范围不同</p><ul><li>v1.6：std、pro。</li><li>v2.0、v3.0：模型无需配置。</li><li>v2.5：首尾帧情况下支持pro。</li><li>v2.6：仅支持pro，选择v2.6模型时，默认自动生成高品质pro视频。</li></ul>
+        :param _Mode: <p>生成视频的模式；<br>枚举值：std，pro<br>●其中std：标准模式（标准），基础模式，性价比高<br>●其中pro：专家模式（高品质），高表现模式，生成视频质量更佳<br>不同模型版本、视频模式支持范围不同</p><p>●v1.6：std、pro。<br>●v1.0、v1.5：pro<br>●v2.0、v2.1m、v3.0：模型无需配置。<br>●v2.5：首尾帧情况下支持pro。<br>●v2.6：仅支持pro，选择v2.6模型时，默认自动生成高品质pro视频。</p>
         :type Mode: str
         :param _CfgScale: <p>生成视频的自由度；值越大，模型自由度越小，与用户输入的提示词相关性越强。<br>取值范围：[0, 1]<br>v2.0、v2.5、v2.6 模型不支持当前参数<br>默认值：0.5。</p>
         :type CfgScale: float
@@ -7435,6 +7630,8 @@ class SubmitTextToVideoJobRequest(AbstractModel):
         :type CameraControl: :class:`tencentcloud.vclm.v20240523.models.CameraControl`
         :param _CallbackUrl: <p>本次任务结果回调通知地址，如果配置，服务端会在任务状态发生变更时主动通知</p>
         :type CallbackUrl: str
+        :param _ExternalTaskId: 
+        :type ExternalTaskId: str
         """
         self._Prompt = None
         self._Model = None
@@ -7451,6 +7648,7 @@ class SubmitTextToVideoJobRequest(AbstractModel):
         self._MultiPrompt = None
         self._CameraControl = None
         self._CallbackUrl = None
+        self._ExternalTaskId = None
 
     @property
     def Prompt(self):
@@ -7465,7 +7663,7 @@ class SubmitTextToVideoJobRequest(AbstractModel):
 
     @property
     def Model(self):
-        r"""<p>模型名称。<br>v1.6：Kling-V1-6<br>v2.0：Kling-V2-Master<br>v2.5：Kling-V2-5-Turbo<br>v2.6：Kling-V2-6<br>v3.0：kling-v3</p>
+        r"""<p>模型名称。<br>v1.0：Kling-V1<br>v1.5：Kling-V1-5<br>v1.6：Kling-V1-6<br>v2.0：Kling-V2-Master<br>v2.1m：Kling-V2-1-master<br>v2.5：Kling-V2-5-Turbo<br>v2.6：Kling-V2-6<br>v3.0：kling-v3</p>
         :rtype: str
         """
         return self._Model
@@ -7487,7 +7685,7 @@ class SubmitTextToVideoJobRequest(AbstractModel):
 
     @property
     def Duration(self):
-        r"""<p>生成视频时长，单位s。默认值为5。<br>枚举值：3，4，5，6，7，8，9，10，11，12，13，14，15</p><p>不同模型支持时长不同</p><ul><li>模型v1.6、v2.0、v2.5、v2.6：支持5、10</li><li>模型v3.0：支持3～15s</li></ul>
+        r"""<p>生成视频时长，单位s。默认值为5。<br>枚举值：3，4，5，6，7，8，9，10，11，12，13，14，15不同模型支持时长不同<br>●模型v1.0、v1.6、v2.0、v2.1m、v2.5、v2.6：支持5、10<br>●模型v3.0：支持3～15s</p>
         :rtype: str
         """
         return self._Duration
@@ -7498,7 +7696,7 @@ class SubmitTextToVideoJobRequest(AbstractModel):
 
     @property
     def Mode(self):
-        r"""<p>生成视频的模式；</p><p>枚举值：std，pro</p><ul><li>其中std：标准模式（标准），基础模式，性价比高</li><li>其中pro：专家模式（高品质），高表现模式，生成视频质量更佳</li></ul><p>不同模型版本、视频模式支持范围不同</p><ul><li>v1.6：std、pro。</li><li>v2.0、v3.0：模型无需配置。</li><li>v2.5：首尾帧情况下支持pro。</li><li>v2.6：仅支持pro，选择v2.6模型时，默认自动生成高品质pro视频。</li></ul>
+        r"""<p>生成视频的模式；<br>枚举值：std，pro<br>●其中std：标准模式（标准），基础模式，性价比高<br>●其中pro：专家模式（高品质），高表现模式，生成视频质量更佳<br>不同模型版本、视频模式支持范围不同</p><p>●v1.6：std、pro。<br>●v1.0、v1.5：pro<br>●v2.0、v2.1m、v3.0：模型无需配置。<br>●v2.5：首尾帧情况下支持pro。<br>●v2.6：仅支持pro，选择v2.6模型时，默认自动生成高品质pro视频。</p>
         :rtype: str
         """
         return self._Mode
@@ -7617,6 +7815,17 @@ class SubmitTextToVideoJobRequest(AbstractModel):
     def CallbackUrl(self, CallbackUrl):
         self._CallbackUrl = CallbackUrl
 
+    @property
+    def ExternalTaskId(self):
+        r"""
+        :rtype: str
+        """
+        return self._ExternalTaskId
+
+    @ExternalTaskId.setter
+    def ExternalTaskId(self, ExternalTaskId):
+        self._ExternalTaskId = ExternalTaskId
+
 
     def _deserialize(self, params):
         self._Prompt = params.get("Prompt")
@@ -7643,6 +7852,7 @@ class SubmitTextToVideoJobRequest(AbstractModel):
             self._CameraControl = CameraControl()
             self._CameraControl._deserialize(params.get("CameraControl"))
         self._CallbackUrl = params.get("CallbackUrl")
+        self._ExternalTaskId = params.get("ExternalTaskId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7662,10 +7872,13 @@ class SubmitTextToVideoJobResponse(AbstractModel):
         r"""
         :param _JobId: <p>任务ID。</p>
         :type JobId: str
+        :param _ExternalTaskId: 
+        :type ExternalTaskId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._JobId = None
+        self._ExternalTaskId = None
         self._RequestId = None
 
     @property
@@ -7678,6 +7891,17 @@ class SubmitTextToVideoJobResponse(AbstractModel):
     @JobId.setter
     def JobId(self, JobId):
         self._JobId = JobId
+
+    @property
+    def ExternalTaskId(self):
+        r"""
+        :rtype: str
+        """
+        return self._ExternalTaskId
+
+    @ExternalTaskId.setter
+    def ExternalTaskId(self, ExternalTaskId):
+        self._ExternalTaskId = ExternalTaskId
 
     @property
     def RequestId(self):
@@ -7693,6 +7917,7 @@ class SubmitTextToVideoJobResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._JobId = params.get("JobId")
+        self._ExternalTaskId = params.get("ExternalTaskId")
         self._RequestId = params.get("RequestId")
 
 
@@ -8182,6 +8407,8 @@ class SubmitVideoEditKlingJobRequest(AbstractModel):
         :type Prompt: str
         :param _Model: <p>模型名称，支持kling-video-o1，kling-v3-omni。默认kling-video-o1。</p>
         :type Model: str
+        :param _ExternalTaskId: 
+        :type ExternalTaskId: str
         :param _ImageList: <p>参考图列表</p><p>包括主体、场景、风格等参考图片，也可作为首帧或尾帧生成视频；当作为首帧或尾帧生成视频时：</p><p>通过type参数来定义图片是否为首尾帧：first_frame为首帧，end_frame为尾帧</p><p>暂时不支持仅尾帧，即有尾帧图时必须有首帧图</p><p>首帧或首尾帧生视频时，不能使用视频编辑功能</p><p>用key:value承载，如下：</p><p>&quot;ImageInfo&quot;:[<br>    {<br>      &quot;ImageUrl&quot;:&quot;https://cos.ap-guangzhou.myqcloud.com/test.png&quot;,<br>    &quot;Type&quot;:&quot;first_frame&quot;<br>  },<br>  {<br>      &quot;ImageUrl&quot;:&quot;https://cos.ap-guangzhou.myqcloud.com/test.png&quot;,<br>    &quot;Type&quot;:&quot;end_frame&quot;<br>  }<br>]<br>支持传入图片URL（确保可访问）</p><p>图片格式支持.jpg / .jpeg / .png</p><p>图片文件大小不能超过10MB，图片宽高尺寸不小于300px，不大于8000px，图片宽高比要在1:2.5 ~ 2.5:1之间</p><p>有参考视频时，参考图片数量不得超过4；无参考视频时，参考图片数量不得超过7</p><p>数组中超过2张图片时，不支持设置尾帧</p>
         :type ImageList: list of ImageInfo
         :param _AspectRatio: <p>生成视频的画面纵横比（宽:高）</p><p>枚举值：16:9, 9:16, 1:1</p><p>未使用首帧参考或视频编辑功能时，当前参数必填</p>
@@ -8211,6 +8438,7 @@ class SubmitVideoEditKlingJobRequest(AbstractModel):
         """
         self._Prompt = None
         self._Model = None
+        self._ExternalTaskId = None
         self._ImageList = None
         self._AspectRatio = None
         self._Duration = None
@@ -8246,6 +8474,17 @@ class SubmitVideoEditKlingJobRequest(AbstractModel):
     @Model.setter
     def Model(self, Model):
         self._Model = Model
+
+    @property
+    def ExternalTaskId(self):
+        r"""
+        :rtype: str
+        """
+        return self._ExternalTaskId
+
+    @ExternalTaskId.setter
+    def ExternalTaskId(self, ExternalTaskId):
+        self._ExternalTaskId = ExternalTaskId
 
     @property
     def ImageList(self):
@@ -8394,6 +8633,7 @@ class SubmitVideoEditKlingJobRequest(AbstractModel):
     def _deserialize(self, params):
         self._Prompt = params.get("Prompt")
         self._Model = params.get("Model")
+        self._ExternalTaskId = params.get("ExternalTaskId")
         if params.get("ImageList") is not None:
             self._ImageList = []
             for item in params.get("ImageList"):
@@ -8448,10 +8688,13 @@ class SubmitVideoEditKlingJobResponse(AbstractModel):
         r"""
         :param _JobId: <p>任务ID</p>
         :type JobId: str
+        :param _ExternalTaskId: 
+        :type ExternalTaskId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._JobId = None
+        self._ExternalTaskId = None
         self._RequestId = None
 
     @property
@@ -8464,6 +8707,17 @@ class SubmitVideoEditKlingJobResponse(AbstractModel):
     @JobId.setter
     def JobId(self, JobId):
         self._JobId = JobId
+
+    @property
+    def ExternalTaskId(self):
+        r"""
+        :rtype: str
+        """
+        return self._ExternalTaskId
+
+    @ExternalTaskId.setter
+    def ExternalTaskId(self, ExternalTaskId):
+        self._ExternalTaskId = ExternalTaskId
 
     @property
     def RequestId(self):
@@ -8479,6 +8733,7 @@ class SubmitVideoEditKlingJobResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._JobId = params.get("JobId")
+        self._ExternalTaskId = params.get("ExternalTaskId")
         self._RequestId = params.get("RequestId")
 
 
@@ -8495,6 +8750,8 @@ class SubmitVideoExtendKlingJobRequest(AbstractModel):
         :type Prompt: str
         :param _NegativePrompt: <p>负向文本提示词  不能超过2500个字符</p>
         :type NegativePrompt: str
+        :param _ExternalTaskId: 
+        :type ExternalTaskId: str
         :param _CfgScale: <p>提示词参考强度  取值范围：[0,1]，数值越大参考强度越大</p>
         :type CfgScale: float
         :param _CallbackUrl: <p>本次任务结果回调通知地址，如果配置，服务端会在任务状态发生变更时主动通知</p>
@@ -8507,6 +8764,7 @@ class SubmitVideoExtendKlingJobRequest(AbstractModel):
         self._VideoId = None
         self._Prompt = None
         self._NegativePrompt = None
+        self._ExternalTaskId = None
         self._CfgScale = None
         self._CallbackUrl = None
         self._LogoAdd = None
@@ -8544,6 +8802,17 @@ class SubmitVideoExtendKlingJobRequest(AbstractModel):
     @NegativePrompt.setter
     def NegativePrompt(self, NegativePrompt):
         self._NegativePrompt = NegativePrompt
+
+    @property
+    def ExternalTaskId(self):
+        r"""
+        :rtype: str
+        """
+        return self._ExternalTaskId
+
+    @ExternalTaskId.setter
+    def ExternalTaskId(self, ExternalTaskId):
+        self._ExternalTaskId = ExternalTaskId
 
     @property
     def CfgScale(self):
@@ -8594,6 +8863,7 @@ class SubmitVideoExtendKlingJobRequest(AbstractModel):
         self._VideoId = params.get("VideoId")
         self._Prompt = params.get("Prompt")
         self._NegativePrompt = params.get("NegativePrompt")
+        self._ExternalTaskId = params.get("ExternalTaskId")
         self._CfgScale = params.get("CfgScale")
         self._CallbackUrl = params.get("CallbackUrl")
         self._LogoAdd = params.get("LogoAdd")
@@ -8619,10 +8889,13 @@ class SubmitVideoExtendKlingJobResponse(AbstractModel):
         r"""
         :param _JobId: <p>任务ID。</p>
         :type JobId: str
+        :param _ExternalTaskId: 
+        :type ExternalTaskId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._JobId = None
+        self._ExternalTaskId = None
         self._RequestId = None
 
     @property
@@ -8635,6 +8908,17 @@ class SubmitVideoExtendKlingJobResponse(AbstractModel):
     @JobId.setter
     def JobId(self, JobId):
         self._JobId = JobId
+
+    @property
+    def ExternalTaskId(self):
+        r"""
+        :rtype: str
+        """
+        return self._ExternalTaskId
+
+    @ExternalTaskId.setter
+    def ExternalTaskId(self, ExternalTaskId):
+        self._ExternalTaskId = ExternalTaskId
 
     @property
     def RequestId(self):
@@ -8650,6 +8934,7 @@ class SubmitVideoExtendKlingJobResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._JobId = params.get("JobId")
+        self._ExternalTaskId = params.get("ExternalTaskId")
         self._RequestId = params.get("RequestId")
 
 

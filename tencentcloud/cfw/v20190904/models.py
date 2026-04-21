@@ -2379,49 +2379,48 @@ class ClusterSwitchDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InsObj: 实例对象可以是ccnid类型:ccn-ad21xuds形式;nat网关类型:nat-da12daxd形式;ip类型:1.1.1.1形式等
+        :param _InsObj: <p>实例对象可以是ccnid类型:ccn-ad21xuds形式;nat网关类型:nat-da12daxd形式;ip类型:1.1.1.1形式等</p>
         :type InsObj: str
-        :param _ObjName: 实例对象名称
+        :param _ObjName: <p>实例对象名称</p>
         :type ObjName: str
-        :param _FwType: 防火墙类型，ew：vpc间防火墙；nat：nat防火墙；border：互联网边界防火墙
+        :param _FwType: <p>防火墙类型，ew：vpc间防火墙；nat：nat防火墙；border：互联网边界防火墙</p>
         :type FwType: str
-        :param _AssetType: 资产类型，ccn：ccn实例类型；nat：nat网关类型
+        :param _AssetType: <p>资产类型，ccn：ccn实例类型；nat：nat网关类型</p>
         :type AssetType: str
-        :param _Region: 地域
+        :param _Region: <p>地域</p>
         :type Region: str
-        :param _Status: 开关状态
-0 : 关闭
-1 : 开启
-2 : 开启中
-3 : 关闭中
-4 : 异常
+        :param _Status: <p>开关状态<br>0 : 关闭<br>1 : 开启<br>2 : 开启中<br>3 : 关闭中<br>4 : 异常</p>
         :type Status: int
-        :param _SwitchMode: 开关接入模式，1：自动接入；2，手动接入，0：未选择
+        :param _SwitchMode: <p>开关接入模式，1：自动接入；2，手动接入，0：未选择</p>
         :type SwitchMode: int
-        :param _NonCluster: 实例对象是否处于非集群接入场景（主备模式）
+        :param _NonCluster: <p>实例对象是否处于非集群接入场景（主备模式）</p>
         :type NonCluster: int
-        :param _IpVersion: ip版本，0：ipv4；1：ipv6
+        :param _IpVersion: <p>ip版本，0：ipv4；1：ipv6</p>
         :type IpVersion: int
-        :param _AttachIns: 关联实例
+        :param _AttachIns: <p>关联实例</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AttachIns: list of AttachInsInfo
-        :param _Endpoints: 引流私有网络端点信息
+        :param _Endpoints: <p>引流私有网络端点信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Endpoints: list of EndpointInfo
-        :param _Idpsaction: 入侵防护模式,0:观察;1:拦截;2:严格;3:关闭
+        :param _Idpsaction: <p>入侵防护模式,0:观察;1:拦截;2:严格;3:关闭</p>
         :type Idpsaction: int
-        :param _TransEnable: //透明模式开关,0:未开启,1:已开启
+        :param _TransEnable: <p>//透明模式开关,0:未开启,1:已开启</p>
         :type TransEnable: int
-        :param _Enable: 开关状态 0关闭 1开启
+        :param _Enable: <p>开关状态 0关闭 1开启</p>
         :type Enable: int
-        :param _RoutingMode: 路由模式：0：多路由表，1：策略路由
+        :param _RoutingMode: <p>路由模式：0：多路由表，1：策略路由</p>
         :type RoutingMode: int
-        :param _IsPeer: 是否跨租户开关 1是 0不是
+        :param _IsPeer: <p>是否跨租户开关 1是 0不是</p>
         :type IsPeer: int
-        :param _PeerAppid: 跨租户appid
+        :param _PeerAppid: <p>跨租户appid</p>
         :type PeerAppid: str
-        :param _PeerStatus: 跨租户操作状态 1不允许操作 0可以
+        :param _PeerStatus: <p>跨租户操作状态 1不允许操作 0可以</p>
         :type PeerStatus: int
+        :param _Bypass: <p>Bypass状态</p>
+        :type Bypass: int
+        :param _Progress: <p>防火墙开关操作时的进度状态：</p><p>// 开启 — 自动模式（3步）<br>&quot;AUTO_OPEN_ORCHESTRATING&quot; // 步骤1: 预编排策略路由<br>&quot;AUTO_OPEN_CREATING_RESOURCES&quot; // 步骤2: 创建引流网络和资源<br>&quot;AUTO_OPEN_PUSHING_ROUTES&quot; // 步骤3: 创建策略路由</p><p>// 开启 — 手动模式（1步）<br>&quot;MANUAL_OPEN_CREATING_RESOURCES&quot; // 步骤1: 创建引流网络和资源</p><p>// 关闭 — 自动模式（2步）<br>&quot;AUTO_CLOSE_DELETING_ROUTES&quot; // 步骤1: 删除策略路由<br>&quot;AUTO_CLOSE_DELETING_RESOURCES&quot; // 步骤2: 删除引流网络和资源<br>// 关闭 — 手动模式（1步）<br>&quot;MANUAL_CLOSE_DELETING_RESOURCES&quot; // 步骤1: 删除引流网络和资源</p><p>// 修改 — 自动模式（3步）<br>&quot;AUTO_MODIFY_ORCHESTRATING&quot; // 步骤1: 预编排策略路由<br>&quot;AUTO_MODIFY_DELETING_ROUTES&quot; // 步骤2: 删除旧策略路由<br>&quot;AUTO_MODIFY_PUSHING_ROUTES&quot; // 步骤3: 创建新策略路由</p><p>// 修改 — 手动模式（1步，仅 VPC 防火墙存在手动模式修改）<br>&quot;MANUAL_MODIFY_UPDATING_RESOURCES&quot; // 步骤1: 更新引流网络和资源</p>
+        :type Progress: str
         """
         self._InsObj = None
         self._ObjName = None
@@ -2441,10 +2440,12 @@ class ClusterSwitchDetail(AbstractModel):
         self._IsPeer = None
         self._PeerAppid = None
         self._PeerStatus = None
+        self._Bypass = None
+        self._Progress = None
 
     @property
     def InsObj(self):
-        r"""实例对象可以是ccnid类型:ccn-ad21xuds形式;nat网关类型:nat-da12daxd形式;ip类型:1.1.1.1形式等
+        r"""<p>实例对象可以是ccnid类型:ccn-ad21xuds形式;nat网关类型:nat-da12daxd形式;ip类型:1.1.1.1形式等</p>
         :rtype: str
         """
         return self._InsObj
@@ -2455,7 +2456,7 @@ class ClusterSwitchDetail(AbstractModel):
 
     @property
     def ObjName(self):
-        r"""实例对象名称
+        r"""<p>实例对象名称</p>
         :rtype: str
         """
         return self._ObjName
@@ -2466,7 +2467,7 @@ class ClusterSwitchDetail(AbstractModel):
 
     @property
     def FwType(self):
-        r"""防火墙类型，ew：vpc间防火墙；nat：nat防火墙；border：互联网边界防火墙
+        r"""<p>防火墙类型，ew：vpc间防火墙；nat：nat防火墙；border：互联网边界防火墙</p>
         :rtype: str
         """
         return self._FwType
@@ -2477,7 +2478,7 @@ class ClusterSwitchDetail(AbstractModel):
 
     @property
     def AssetType(self):
-        r"""资产类型，ccn：ccn实例类型；nat：nat网关类型
+        r"""<p>资产类型，ccn：ccn实例类型；nat：nat网关类型</p>
         :rtype: str
         """
         return self._AssetType
@@ -2488,7 +2489,7 @@ class ClusterSwitchDetail(AbstractModel):
 
     @property
     def Region(self):
-        r"""地域
+        r"""<p>地域</p>
         :rtype: str
         """
         return self._Region
@@ -2499,12 +2500,7 @@ class ClusterSwitchDetail(AbstractModel):
 
     @property
     def Status(self):
-        r"""开关状态
-0 : 关闭
-1 : 开启
-2 : 开启中
-3 : 关闭中
-4 : 异常
+        r"""<p>开关状态<br>0 : 关闭<br>1 : 开启<br>2 : 开启中<br>3 : 关闭中<br>4 : 异常</p>
         :rtype: int
         """
         return self._Status
@@ -2515,7 +2511,7 @@ class ClusterSwitchDetail(AbstractModel):
 
     @property
     def SwitchMode(self):
-        r"""开关接入模式，1：自动接入；2，手动接入，0：未选择
+        r"""<p>开关接入模式，1：自动接入；2，手动接入，0：未选择</p>
         :rtype: int
         """
         return self._SwitchMode
@@ -2526,7 +2522,7 @@ class ClusterSwitchDetail(AbstractModel):
 
     @property
     def NonCluster(self):
-        r"""实例对象是否处于非集群接入场景（主备模式）
+        r"""<p>实例对象是否处于非集群接入场景（主备模式）</p>
         :rtype: int
         """
         return self._NonCluster
@@ -2537,7 +2533,7 @@ class ClusterSwitchDetail(AbstractModel):
 
     @property
     def IpVersion(self):
-        r"""ip版本，0：ipv4；1：ipv6
+        r"""<p>ip版本，0：ipv4；1：ipv6</p>
         :rtype: int
         """
         return self._IpVersion
@@ -2548,7 +2544,7 @@ class ClusterSwitchDetail(AbstractModel):
 
     @property
     def AttachIns(self):
-        r"""关联实例
+        r"""<p>关联实例</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AttachInsInfo
         """
@@ -2560,7 +2556,7 @@ class ClusterSwitchDetail(AbstractModel):
 
     @property
     def Endpoints(self):
-        r"""引流私有网络端点信息
+        r"""<p>引流私有网络端点信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of EndpointInfo
         """
@@ -2572,7 +2568,7 @@ class ClusterSwitchDetail(AbstractModel):
 
     @property
     def Idpsaction(self):
-        r"""入侵防护模式,0:观察;1:拦截;2:严格;3:关闭
+        r"""<p>入侵防护模式,0:观察;1:拦截;2:严格;3:关闭</p>
         :rtype: int
         """
         return self._Idpsaction
@@ -2583,7 +2579,7 @@ class ClusterSwitchDetail(AbstractModel):
 
     @property
     def TransEnable(self):
-        r"""//透明模式开关,0:未开启,1:已开启
+        r"""<p>//透明模式开关,0:未开启,1:已开启</p>
         :rtype: int
         """
         return self._TransEnable
@@ -2594,7 +2590,7 @@ class ClusterSwitchDetail(AbstractModel):
 
     @property
     def Enable(self):
-        r"""开关状态 0关闭 1开启
+        r"""<p>开关状态 0关闭 1开启</p>
         :rtype: int
         """
         return self._Enable
@@ -2605,7 +2601,7 @@ class ClusterSwitchDetail(AbstractModel):
 
     @property
     def RoutingMode(self):
-        r"""路由模式：0：多路由表，1：策略路由
+        r"""<p>路由模式：0：多路由表，1：策略路由</p>
         :rtype: int
         """
         return self._RoutingMode
@@ -2616,7 +2612,7 @@ class ClusterSwitchDetail(AbstractModel):
 
     @property
     def IsPeer(self):
-        r"""是否跨租户开关 1是 0不是
+        r"""<p>是否跨租户开关 1是 0不是</p>
         :rtype: int
         """
         return self._IsPeer
@@ -2627,7 +2623,7 @@ class ClusterSwitchDetail(AbstractModel):
 
     @property
     def PeerAppid(self):
-        r"""跨租户appid
+        r"""<p>跨租户appid</p>
         :rtype: str
         """
         return self._PeerAppid
@@ -2638,7 +2634,7 @@ class ClusterSwitchDetail(AbstractModel):
 
     @property
     def PeerStatus(self):
-        r"""跨租户操作状态 1不允许操作 0可以
+        r"""<p>跨租户操作状态 1不允许操作 0可以</p>
         :rtype: int
         """
         return self._PeerStatus
@@ -2646,6 +2642,28 @@ class ClusterSwitchDetail(AbstractModel):
     @PeerStatus.setter
     def PeerStatus(self, PeerStatus):
         self._PeerStatus = PeerStatus
+
+    @property
+    def Bypass(self):
+        r"""<p>Bypass状态</p>
+        :rtype: int
+        """
+        return self._Bypass
+
+    @Bypass.setter
+    def Bypass(self, Bypass):
+        self._Bypass = Bypass
+
+    @property
+    def Progress(self):
+        r"""<p>防火墙开关操作时的进度状态：</p><p>// 开启 — 自动模式（3步）<br>&quot;AUTO_OPEN_ORCHESTRATING&quot; // 步骤1: 预编排策略路由<br>&quot;AUTO_OPEN_CREATING_RESOURCES&quot; // 步骤2: 创建引流网络和资源<br>&quot;AUTO_OPEN_PUSHING_ROUTES&quot; // 步骤3: 创建策略路由</p><p>// 开启 — 手动模式（1步）<br>&quot;MANUAL_OPEN_CREATING_RESOURCES&quot; // 步骤1: 创建引流网络和资源</p><p>// 关闭 — 自动模式（2步）<br>&quot;AUTO_CLOSE_DELETING_ROUTES&quot; // 步骤1: 删除策略路由<br>&quot;AUTO_CLOSE_DELETING_RESOURCES&quot; // 步骤2: 删除引流网络和资源<br>// 关闭 — 手动模式（1步）<br>&quot;MANUAL_CLOSE_DELETING_RESOURCES&quot; // 步骤1: 删除引流网络和资源</p><p>// 修改 — 自动模式（3步）<br>&quot;AUTO_MODIFY_ORCHESTRATING&quot; // 步骤1: 预编排策略路由<br>&quot;AUTO_MODIFY_DELETING_ROUTES&quot; // 步骤2: 删除旧策略路由<br>&quot;AUTO_MODIFY_PUSHING_ROUTES&quot; // 步骤3: 创建新策略路由</p><p>// 修改 — 手动模式（1步，仅 VPC 防火墙存在手动模式修改）<br>&quot;MANUAL_MODIFY_UPDATING_RESOURCES&quot; // 步骤1: 更新引流网络和资源</p>
+        :rtype: str
+        """
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
 
 
     def _deserialize(self, params):
@@ -2677,6 +2695,8 @@ class ClusterSwitchDetail(AbstractModel):
         self._IsPeer = params.get("IsPeer")
         self._PeerAppid = params.get("PeerAppid")
         self._PeerStatus = params.get("PeerStatus")
+        self._Bypass = params.get("Bypass")
+        self._Progress = params.get("Progress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10196,11 +10216,14 @@ class DescribeClusterVpcFwSwitchsResponse(AbstractModel):
         :param _Data: 防火墙开关列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: list of ClusterSwitchDetail
+        :param _FailData: 开关开启失败列表
+        :type FailData: list of SwitchFailInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Total = None
         self._Data = None
+        self._FailData = None
         self._RequestId = None
 
     @property
@@ -10227,6 +10250,17 @@ class DescribeClusterVpcFwSwitchsResponse(AbstractModel):
         self._Data = Data
 
     @property
+    def FailData(self):
+        r"""开关开启失败列表
+        :rtype: list of SwitchFailInfo
+        """
+        return self._FailData
+
+    @FailData.setter
+    def FailData(self, FailData):
+        self._FailData = FailData
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -10246,6 +10280,12 @@ class DescribeClusterVpcFwSwitchsResponse(AbstractModel):
                 obj = ClusterSwitchDetail()
                 obj._deserialize(item)
                 self._Data.append(obj)
+        if params.get("FailData") is not None:
+            self._FailData = []
+            for item in params.get("FailData"):
+                obj = SwitchFailInfo()
+                obj._deserialize(item)
+                self._FailData.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -13154,17 +13194,20 @@ class DescribeNatFwInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NatinsLst: 实例数组
+        :param _NatinsLst: <p>实例数组</p>
         :type NatinsLst: list of NatFwInstance
+        :param _NatClusterLst: <p>nat ccn集群防火墙列表</p>
+        :type NatClusterLst: list of NatClusterInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._NatinsLst = None
+        self._NatClusterLst = None
         self._RequestId = None
 
     @property
     def NatinsLst(self):
-        r"""实例数组
+        r"""<p>实例数组</p>
         :rtype: list of NatFwInstance
         """
         return self._NatinsLst
@@ -13172,6 +13215,17 @@ class DescribeNatFwInstanceResponse(AbstractModel):
     @NatinsLst.setter
     def NatinsLst(self, NatinsLst):
         self._NatinsLst = NatinsLst
+
+    @property
+    def NatClusterLst(self):
+        r"""<p>nat ccn集群防火墙列表</p>
+        :rtype: list of NatClusterInfo
+        """
+        return self._NatClusterLst
+
+    @NatClusterLst.setter
+    def NatClusterLst(self, NatClusterLst):
+        self._NatClusterLst = NatClusterLst
 
     @property
     def RequestId(self):
@@ -13192,6 +13246,12 @@ class DescribeNatFwInstanceResponse(AbstractModel):
                 obj = NatFwInstance()
                 obj._deserialize(item)
                 self._NatinsLst.append(obj)
+        if params.get("NatClusterLst") is not None:
+            self._NatClusterLst = []
+            for item in params.get("NatClusterLst"):
+                obj = NatClusterInfo()
+                obj._deserialize(item)
+                self._NatClusterLst.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -23531,6 +23591,57 @@ class NDRAssetServiceStats(AbstractModel):
         
 
 
+class NatClusterInfo(AbstractModel):
+    r"""NAT集群模式开关信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NatInsId: <p>nat网关ID</p>
+        :type NatInsId: str
+        :param _NatInsName: <p>nat网关名称</p>
+        :type NatInsName: str
+        """
+        self._NatInsId = None
+        self._NatInsName = None
+
+    @property
+    def NatInsId(self):
+        r"""<p>nat网关ID</p>
+        :rtype: str
+        """
+        return self._NatInsId
+
+    @NatInsId.setter
+    def NatInsId(self, NatInsId):
+        self._NatInsId = NatInsId
+
+    @property
+    def NatInsName(self):
+        r"""<p>nat网关名称</p>
+        :rtype: str
+        """
+        return self._NatInsName
+
+    @NatInsName.setter
+    def NatInsName(self, NatInsName):
+        self._NatInsName = NatInsName
+
+
+    def _deserialize(self, params):
+        self._NatInsId = params.get("NatInsId")
+        self._NatInsName = params.get("NatInsName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class NatFwEipsInfo(AbstractModel):
     r"""Nat防火墙弹性公网ip列表
 
@@ -28890,6 +29001,72 @@ class SwitchError(AbstractModel):
         self._ErrMsg = params.get("ErrMsg")
         self._ErrKey = params.get("ErrKey")
         self._InsertTime = params.get("InsertTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SwitchFailInfo(AbstractModel):
+    r"""开关开启错误码数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 自增唯一ID
+        :type Id: int
+        :param _Name: 开关名称
+        :type Name: str
+        :param _Status: 防火墙开关变动状态，小于0
+        :type Status: int
+        """
+        self._Id = None
+        self._Name = None
+        self._Status = None
+
+    @property
+    def Id(self):
+        r"""自增唯一ID
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        r"""开关名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Status(self):
+        r"""防火墙开关变动状态，小于0
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

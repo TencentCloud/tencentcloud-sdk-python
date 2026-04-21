@@ -1092,24 +1092,26 @@ class CreateCasInput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 敏捷上云名称
+        :param _Name: <p>敏捷上云名称</p>
         :type Name: str
-        :param _IdcAddress: 需要接入敏捷上云的IDC的地址
+        :param _IdcAddress: <p>需要接入敏捷上云的IDC的地址</p>
         :type IdcAddress: str
-        :param _IdcType: 需要接入敏捷上云的IDC的互联网服务提供商类型
+        :param _IdcType: <p>需要接入敏捷上云的IDC的互联网服务提供商类型</p>
         :type IdcType: str
-        :param _Bandwidth: 敏捷上云的带宽，单位为MB
+        :param _Bandwidth: <p>敏捷上云的带宽，单位为MB</p>
         :type Bandwidth: int
-        :param _Telephone: 联系电话
+        :param _Telephone: <p>联系电话</p>
         :type Telephone: str
-        :param _Remarks: 备注信息
+        :param _Remarks: <p>备注信息</p>
         :type Remarks: str
-        :param _ArRegion: 接入地域
+        :param _ArRegion: <p>接入地域</p>
         :type ArRegion: str
-        :param _IdcPointType: IDC侧类型，默认为OTHER。枚举值：CLOUD-云，ISP-运营商，OTHER-第三方
+        :param _IdcPointType: <p>IDC侧类型，默认为OTHER。枚举值：CLOUD-云，ISP-运营商，OTHER-第三方</p>
         :type IdcPointType: str
-        :param _BIapLinkProtected: 运营商链路是否有保护
+        :param _BIapLinkProtected: <p>运营商链路是否有保护</p>
         :type BIapLinkProtected: bool
+        :param _ServiceType: <p>服务类型，SHARE-共享型，EXCLUSIVE-独占型</p>
+        :type ServiceType: str
         """
         self._Name = None
         self._IdcAddress = None
@@ -1120,10 +1122,11 @@ class CreateCasInput(AbstractModel):
         self._ArRegion = None
         self._IdcPointType = None
         self._BIapLinkProtected = None
+        self._ServiceType = None
 
     @property
     def Name(self):
-        r"""敏捷上云名称
+        r"""<p>敏捷上云名称</p>
         :rtype: str
         """
         return self._Name
@@ -1134,7 +1137,7 @@ class CreateCasInput(AbstractModel):
 
     @property
     def IdcAddress(self):
-        r"""需要接入敏捷上云的IDC的地址
+        r"""<p>需要接入敏捷上云的IDC的地址</p>
         :rtype: str
         """
         return self._IdcAddress
@@ -1145,7 +1148,7 @@ class CreateCasInput(AbstractModel):
 
     @property
     def IdcType(self):
-        r"""需要接入敏捷上云的IDC的互联网服务提供商类型
+        r"""<p>需要接入敏捷上云的IDC的互联网服务提供商类型</p>
         :rtype: str
         """
         return self._IdcType
@@ -1156,7 +1159,7 @@ class CreateCasInput(AbstractModel):
 
     @property
     def Bandwidth(self):
-        r"""敏捷上云的带宽，单位为MB
+        r"""<p>敏捷上云的带宽，单位为MB</p>
         :rtype: int
         """
         return self._Bandwidth
@@ -1167,7 +1170,7 @@ class CreateCasInput(AbstractModel):
 
     @property
     def Telephone(self):
-        r"""联系电话
+        r"""<p>联系电话</p>
         :rtype: str
         """
         return self._Telephone
@@ -1178,7 +1181,7 @@ class CreateCasInput(AbstractModel):
 
     @property
     def Remarks(self):
-        r"""备注信息
+        r"""<p>备注信息</p>
         :rtype: str
         """
         return self._Remarks
@@ -1189,7 +1192,7 @@ class CreateCasInput(AbstractModel):
 
     @property
     def ArRegion(self):
-        r"""接入地域
+        r"""<p>接入地域</p>
         :rtype: str
         """
         return self._ArRegion
@@ -1200,7 +1203,7 @@ class CreateCasInput(AbstractModel):
 
     @property
     def IdcPointType(self):
-        r"""IDC侧类型，默认为OTHER。枚举值：CLOUD-云，ISP-运营商，OTHER-第三方
+        r"""<p>IDC侧类型，默认为OTHER。枚举值：CLOUD-云，ISP-运营商，OTHER-第三方</p>
         :rtype: str
         """
         return self._IdcPointType
@@ -1211,7 +1214,7 @@ class CreateCasInput(AbstractModel):
 
     @property
     def BIapLinkProtected(self):
-        r"""运营商链路是否有保护
+        r"""<p>运营商链路是否有保护</p>
         :rtype: bool
         """
         return self._BIapLinkProtected
@@ -1219,6 +1222,17 @@ class CreateCasInput(AbstractModel):
     @BIapLinkProtected.setter
     def BIapLinkProtected(self, BIapLinkProtected):
         self._BIapLinkProtected = BIapLinkProtected
+
+    @property
+    def ServiceType(self):
+        r"""<p>服务类型，SHARE-共享型，EXCLUSIVE-独占型</p>
+        :rtype: str
+        """
+        return self._ServiceType
+
+    @ServiceType.setter
+    def ServiceType(self, ServiceType):
+        self._ServiceType = ServiceType
 
 
     def _deserialize(self, params):
@@ -1231,6 +1245,7 @@ class CreateCasInput(AbstractModel):
         self._ArRegion = params.get("ArRegion")
         self._IdcPointType = params.get("IdcPointType")
         self._BIapLinkProtected = params.get("BIapLinkProtected")
+        self._ServiceType = params.get("ServiceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

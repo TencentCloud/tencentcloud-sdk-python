@@ -27369,9 +27369,9 @@ class CreateStorageRegionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StorageRegion: 待开通的存储地域，必须是系统支持的地域。
+        :param _StorageRegion: <p>待开通的存储地域，必须是系统支持的地域。</p><p>取值参考：<a href="https://cloud.tencent.com/document/product/266/9760">已支持地域列表</a></p>
         :type StorageRegion: str
-        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        :param _SubAppId: <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
         :type SubAppId: int
         """
         self._StorageRegion = None
@@ -27379,7 +27379,7 @@ class CreateStorageRegionRequest(AbstractModel):
 
     @property
     def StorageRegion(self):
-        r"""待开通的存储地域，必须是系统支持的地域。
+        r"""<p>待开通的存储地域，必须是系统支持的地域。</p><p>取值参考：<a href="https://cloud.tencent.com/document/product/266/9760">已支持地域列表</a></p>
         :rtype: str
         """
         return self._StorageRegion
@@ -27390,7 +27390,7 @@ class CreateStorageRegionRequest(AbstractModel):
 
     @property
     def SubAppId(self):
-        r"""<b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        r"""<p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
         :rtype: int
         """
         return self._SubAppId
@@ -27448,20 +27448,17 @@ class CreateSubAppIdRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 应用名称，长度限制：40个字符。
+        :param _Name: <p>应用名称，长度限制：40个字符。</p>
         :type Name: str
-        :param _Description: 应用简介，长度限制： 300个字符。不填则应用简介默认为空。
+        :param _Description: <p>应用简介，长度限制： 300个字符。不填则应用简介默认为空。</p>
         :type Description: str
-        :param _Type: 应用类型， 取值有：<li>AllInOne：一体化；</li><li>Professional：专业版。</li>默认值为 AllInOne。
+        :param _Type: <p>应用类型， 取值有：<li>AllInOne：一体化；</li><li>Professional：专业版。</li>默认值为 AllInOne。</p>
         :type Type: str
-        :param _Mode: 此应用的模式，可选值为：
-- fileid：仅FileID模式
-- fileid+path：FileID & Path模式
-留空时默认选择仅FileID模式
+        :param _Mode: <p>此应用的模式，可选值为：</p><ul><li>fileid：仅FileID模式</li><li>fileid+path：FileID &amp; Path模式<br>留空时默认选择仅FileID模式</li></ul>
         :type Mode: str
-        :param _StorageRegion: 存储地域
+        :param _StorageRegion: <p>Mode是仅fileid时，用于设置默认存储地域，可选。<br>Mode是fileid+path时，用于指定存储地域，必填。</p><p>取值参考：<a href="https://cloud.tencent.com/document/product/266/9760">已支持地域列表</a></p>
         :type StorageRegion: str
-        :param _Tags: 此应用需要绑定的tag
+        :param _Tags: <p>此应用需要绑定的tag</p>
         :type Tags: list of ResourceTag
         """
         self._Name = None
@@ -27473,7 +27470,7 @@ class CreateSubAppIdRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""应用名称，长度限制：40个字符。
+        r"""<p>应用名称，长度限制：40个字符。</p>
         :rtype: str
         """
         return self._Name
@@ -27484,7 +27481,7 @@ class CreateSubAppIdRequest(AbstractModel):
 
     @property
     def Description(self):
-        r"""应用简介，长度限制： 300个字符。不填则应用简介默认为空。
+        r"""<p>应用简介，长度限制： 300个字符。不填则应用简介默认为空。</p>
         :rtype: str
         """
         return self._Description
@@ -27495,7 +27492,7 @@ class CreateSubAppIdRequest(AbstractModel):
 
     @property
     def Type(self):
-        r"""应用类型， 取值有：<li>AllInOne：一体化；</li><li>Professional：专业版。</li>默认值为 AllInOne。
+        r"""<p>应用类型， 取值有：<li>AllInOne：一体化；</li><li>Professional：专业版。</li>默认值为 AllInOne。</p>
         :rtype: str
         """
         return self._Type
@@ -27506,10 +27503,7 @@ class CreateSubAppIdRequest(AbstractModel):
 
     @property
     def Mode(self):
-        r"""此应用的模式，可选值为：
-- fileid：仅FileID模式
-- fileid+path：FileID & Path模式
-留空时默认选择仅FileID模式
+        r"""<p>此应用的模式，可选值为：</p><ul><li>fileid：仅FileID模式</li><li>fileid+path：FileID &amp; Path模式<br>留空时默认选择仅FileID模式</li></ul>
         :rtype: str
         """
         return self._Mode
@@ -27520,7 +27514,7 @@ class CreateSubAppIdRequest(AbstractModel):
 
     @property
     def StorageRegion(self):
-        r"""存储地域
+        r"""<p>Mode是仅fileid时，用于设置默认存储地域，可选。<br>Mode是fileid+path时，用于指定存储地域，必填。</p><p>取值参考：<a href="https://cloud.tencent.com/document/product/266/9760">已支持地域列表</a></p>
         :rtype: str
         """
         return self._StorageRegion
@@ -27531,7 +27525,7 @@ class CreateSubAppIdRequest(AbstractModel):
 
     @property
     def Tags(self):
-        r"""此应用需要绑定的tag
+        r"""<p>此应用需要绑定的tag</p>
         :rtype: list of ResourceTag
         """
         return self._Tags
@@ -27570,7 +27564,7 @@ class CreateSubAppIdResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubAppId: 新创建的应用 ID。
+        :param _SubAppId: <p>新创建的应用 ID。</p>
         :type SubAppId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -27580,7 +27574,7 @@ class CreateSubAppIdResponse(AbstractModel):
 
     @property
     def SubAppId(self):
-        r"""新创建的应用 ID。
+        r"""<p>新创建的应用 ID。</p>
         :rtype: int
         """
         return self._SubAppId

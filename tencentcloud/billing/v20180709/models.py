@@ -5380,9 +5380,9 @@ class AnalyseActionTypeDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ActionType: 交易类型code
+        :param _ActionType: <p>交易类型code</p><p>枚举值：</p><ul><li>prepay_purchase： 包年包月新购</li><li>prepay_renew： 包年包月续费</li><li>prepay_modify： 包年包月配置变更</li><li>prepay_return： 包年包月退款</li><li>postpay_deduct_h： 按量计费小时结</li><li>postpay_deduct_d： 按量计费日结</li><li>postpay_deduct_m： 按量计费月结</li><li>offline_deduct： 线下项目扣费</li><li>online_deduct： 线下产品扣费</li><li>recon_deduct： 调账扣费</li><li>recon_increase： 调账补偿</li><li>postpay_deduct_s： 竞价实例小时结</li><li>recon_increase_f： 线下项目调账补偿</li><li>pre_to_post： 包年包月转按量</li><li>svp_hour_pay： 节省计划小时费用</li><li>recon_guarantee： 保底扣款</li><li>billVirtualId： 月度计费精度差异</li></ul>
         :type ActionType: str
-        :param _ActionTypeName: 交易类型Name
+        :param _ActionTypeName: <p>交易类型Name</p>
         :type ActionTypeName: str
         """
         self._ActionType = None
@@ -5390,7 +5390,7 @@ class AnalyseActionTypeDetail(AbstractModel):
 
     @property
     def ActionType(self):
-        r"""交易类型code
+        r"""<p>交易类型code</p><p>枚举值：</p><ul><li>prepay_purchase： 包年包月新购</li><li>prepay_renew： 包年包月续费</li><li>prepay_modify： 包年包月配置变更</li><li>prepay_return： 包年包月退款</li><li>postpay_deduct_h： 按量计费小时结</li><li>postpay_deduct_d： 按量计费日结</li><li>postpay_deduct_m： 按量计费月结</li><li>offline_deduct： 线下项目扣费</li><li>online_deduct： 线下产品扣费</li><li>recon_deduct： 调账扣费</li><li>recon_increase： 调账补偿</li><li>postpay_deduct_s： 竞价实例小时结</li><li>recon_increase_f： 线下项目调账补偿</li><li>pre_to_post： 包年包月转按量</li><li>svp_hour_pay： 节省计划小时费用</li><li>recon_guarantee： 保底扣款</li><li>billVirtualId： 月度计费精度差异</li></ul>
         :rtype: str
         """
         return self._ActionType
@@ -5401,7 +5401,7 @@ class AnalyseActionTypeDetail(AbstractModel):
 
     @property
     def ActionTypeName(self):
-        r"""交易类型Name
+        r"""<p>交易类型Name</p>
         :rtype: str
         """
         return self._ActionTypeName
@@ -6154,9 +6154,9 @@ class AnalysePayModeDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PayMode: 计费模式code
+        :param _PayMode: <p>计费模式code</p><p>枚举值：</p><ul><li>prePay： 包年包月</li><li>postPay： 按量计费</li></ul>
         :type PayMode: str
-        :param _PayModeName: 计费模式Name
+        :param _PayModeName: <p>计费模式Name</p>
         :type PayModeName: str
         """
         self._PayMode = None
@@ -6164,7 +6164,7 @@ class AnalysePayModeDetail(AbstractModel):
 
     @property
     def PayMode(self):
-        r"""计费模式code
+        r"""<p>计费模式code</p><p>枚举值：</p><ul><li>prePay： 包年包月</li><li>postPay： 按量计费</li></ul>
         :rtype: str
         """
         return self._PayMode
@@ -6175,7 +6175,7 @@ class AnalysePayModeDetail(AbstractModel):
 
     @property
     def PayModeName(self):
-        r"""计费模式Name
+        r"""<p>计费模式Name</p>
         :rtype: str
         """
         return self._PayModeName
@@ -9963,43 +9963,43 @@ class BudgetConditionsForm(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Business: 产品
+        :param _Business: <p>产品</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Business: list of str
-        :param _PayMode: 计费模式
+        :param _PayMode: <p>计费模式</p><p>枚举值：</p><ul><li>prePay： 包年包月</li><li>postPay： 按量计费</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type PayMode: list of str
-        :param _ProductCodes: 子产品
+        :param _ProductCodes: <p>子产品</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProductCodes: list of str
-        :param _ComponentCodes: 组件编码
+        :param _ComponentCodes: <p>组件编码</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ComponentCodes: list of str
-        :param _ZoneIds: 地域
+        :param _ZoneIds: <p>地域</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ZoneIds: list of str
-        :param _RegionIds: 可用区
+        :param _RegionIds: <p>可用区</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RegionIds: list of str
-        :param _ProjectIds: 项目
+        :param _ProjectIds: <p>项目</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectIds: list of str
-        :param _ActionTypes: 交易类型
+        :param _ActionTypes: <p>交易类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ActionTypes: list of str
-        :param _ConsumptionTypes: 消耗类型
+        :param _ConsumptionTypes: <p>消耗类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ConsumptionTypes: list of str
-        :param _Tags: 标签
+        :param _Tags: <p>标签</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of TagsForm
-        :param _PayerUins:  末级分账单元
+        :param _PayerUins: <p>末级分账单元</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type PayerUins: list of str
-        :param _OwnerUins: 主用户Uin
+        :param _OwnerUins: <p>主用户Uin</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type OwnerUins: list of str
-        :param _TreeNodeUniqKeys:  末级分账单元唯一键
+        :param _TreeNodeUniqKeys: <p>末级分账单元唯一键</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TreeNodeUniqKeys: list of str
         """
@@ -10019,7 +10019,7 @@ class BudgetConditionsForm(AbstractModel):
 
     @property
     def Business(self):
-        r"""产品
+        r"""<p>产品</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -10031,7 +10031,7 @@ class BudgetConditionsForm(AbstractModel):
 
     @property
     def PayMode(self):
-        r"""计费模式
+        r"""<p>计费模式</p><p>枚举值：</p><ul><li>prePay： 包年包月</li><li>postPay： 按量计费</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -10043,7 +10043,7 @@ class BudgetConditionsForm(AbstractModel):
 
     @property
     def ProductCodes(self):
-        r"""子产品
+        r"""<p>子产品</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -10055,7 +10055,7 @@ class BudgetConditionsForm(AbstractModel):
 
     @property
     def ComponentCodes(self):
-        r"""组件编码
+        r"""<p>组件编码</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -10067,7 +10067,7 @@ class BudgetConditionsForm(AbstractModel):
 
     @property
     def ZoneIds(self):
-        r"""地域
+        r"""<p>地域</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -10079,7 +10079,7 @@ class BudgetConditionsForm(AbstractModel):
 
     @property
     def RegionIds(self):
-        r"""可用区
+        r"""<p>可用区</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -10091,7 +10091,7 @@ class BudgetConditionsForm(AbstractModel):
 
     @property
     def ProjectIds(self):
-        r"""项目
+        r"""<p>项目</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -10103,7 +10103,7 @@ class BudgetConditionsForm(AbstractModel):
 
     @property
     def ActionTypes(self):
-        r"""交易类型
+        r"""<p>交易类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -10115,7 +10115,7 @@ class BudgetConditionsForm(AbstractModel):
 
     @property
     def ConsumptionTypes(self):
-        r"""消耗类型
+        r"""<p>消耗类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -10127,7 +10127,7 @@ class BudgetConditionsForm(AbstractModel):
 
     @property
     def Tags(self):
-        r"""标签
+        r"""<p>标签</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TagsForm
         """
@@ -10139,7 +10139,7 @@ class BudgetConditionsForm(AbstractModel):
 
     @property
     def PayerUins(self):
-        r""" 末级分账单元
+        r"""<p>末级分账单元</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -10151,7 +10151,7 @@ class BudgetConditionsForm(AbstractModel):
 
     @property
     def OwnerUins(self):
-        r"""主用户Uin
+        r"""<p>主用户Uin</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -10163,7 +10163,7 @@ class BudgetConditionsForm(AbstractModel):
 
     @property
     def TreeNodeUniqKeys(self):
-        r""" 末级分账单元唯一键
+        r"""<p>末级分账单元唯一键</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -12340,43 +12340,43 @@ class Conditions(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TimeRange: 只支持6和12两个值
+        :param _TimeRange: <p>只支持6个月和12个月两个值</p>
         :type TimeRange: int
-        :param _BusinessCode: 产品名称代码
+        :param _BusinessCode: <p>产品名称代码</p>
         :type BusinessCode: str
-        :param _ProjectId: 项目ID
+        :param _ProjectId: <p>项目ID</p>
         :type ProjectId: int
-        :param _RegionId: 地域ID
+        :param _RegionId: <p>地域ID</p>
         :type RegionId: int
-        :param _PayMode: 付费模式，可选prePay和postPay
+        :param _PayMode: <p>付费模式，可选prePay和postPay</p>
         :type PayMode: str
-        :param _ResourceKeyword: 资源关键字
+        :param _ResourceKeyword: <p>资源关键字</p>
         :type ResourceKeyword: str
-        :param _BusinessCodes: 产品名称代码
+        :param _BusinessCodes: <p>产品名称代码</p>
         :type BusinessCodes: list of str
-        :param _ProductCodes: 子产品名称代码
+        :param _ProductCodes: <p>子产品名称代码</p>
         :type ProductCodes: list of str
-        :param _RegionIds: 地域ID
+        :param _RegionIds: <p>地域ID</p>
         :type RegionIds: list of int
-        :param _ProjectIds: 项目ID
+        :param _ProjectIds: <p>项目ID</p>
         :type ProjectIds: list of int
-        :param _PayModes: 付费模式，可选prePay和postPay
+        :param _PayModes: <p>付费模式，可选prePay和postPay</p>
         :type PayModes: list of str
-        :param _ActionTypes: 交易类型
+        :param _ActionTypes: <p>交易类型</p>
         :type ActionTypes: list of str
-        :param _HideFreeCost: 是否隐藏0元流水
+        :param _HideFreeCost: <p>是否隐藏0元流水</p>
         :type HideFreeCost: int
-        :param _OrderByCost: 排序规则，可选desc和asc
+        :param _OrderByCost: <p>排序规则，可选desc和asc</p>
         :type OrderByCost: str
-        :param _BillIds: 交易ID
+        :param _BillIds: <p>交易ID</p>
         :type BillIds: list of str
-        :param _ComponentCodes: 组件编码
+        :param _ComponentCodes: <p>组件编码</p>
         :type ComponentCodes: list of str
-        :param _FileIds: 文件ID
+        :param _FileIds: <p>文件ID</p>
         :type FileIds: list of str
-        :param _FileTypes: 文件类型
+        :param _FileTypes: <p>文件类型</p>
         :type FileTypes: list of str
-        :param _Status: 状态
+        :param _Status: <p>状态</p>
         :type Status: list of int non-negative
         """
         self._TimeRange = None
@@ -12401,7 +12401,7 @@ class Conditions(AbstractModel):
 
     @property
     def TimeRange(self):
-        r"""只支持6和12两个值
+        r"""<p>只支持6个月和12个月两个值</p>
         :rtype: int
         """
         return self._TimeRange
@@ -12412,7 +12412,7 @@ class Conditions(AbstractModel):
 
     @property
     def BusinessCode(self):
-        r"""产品名称代码
+        r"""<p>产品名称代码</p>
         :rtype: str
         """
         return self._BusinessCode
@@ -12423,7 +12423,7 @@ class Conditions(AbstractModel):
 
     @property
     def ProjectId(self):
-        r"""项目ID
+        r"""<p>项目ID</p>
         :rtype: int
         """
         return self._ProjectId
@@ -12434,7 +12434,7 @@ class Conditions(AbstractModel):
 
     @property
     def RegionId(self):
-        r"""地域ID
+        r"""<p>地域ID</p>
         :rtype: int
         """
         return self._RegionId
@@ -12445,7 +12445,7 @@ class Conditions(AbstractModel):
 
     @property
     def PayMode(self):
-        r"""付费模式，可选prePay和postPay
+        r"""<p>付费模式，可选prePay和postPay</p>
         :rtype: str
         """
         return self._PayMode
@@ -12456,7 +12456,7 @@ class Conditions(AbstractModel):
 
     @property
     def ResourceKeyword(self):
-        r"""资源关键字
+        r"""<p>资源关键字</p>
         :rtype: str
         """
         return self._ResourceKeyword
@@ -12467,7 +12467,7 @@ class Conditions(AbstractModel):
 
     @property
     def BusinessCodes(self):
-        r"""产品名称代码
+        r"""<p>产品名称代码</p>
         :rtype: list of str
         """
         return self._BusinessCodes
@@ -12478,7 +12478,7 @@ class Conditions(AbstractModel):
 
     @property
     def ProductCodes(self):
-        r"""子产品名称代码
+        r"""<p>子产品名称代码</p>
         :rtype: list of str
         """
         return self._ProductCodes
@@ -12489,7 +12489,7 @@ class Conditions(AbstractModel):
 
     @property
     def RegionIds(self):
-        r"""地域ID
+        r"""<p>地域ID</p>
         :rtype: list of int
         """
         return self._RegionIds
@@ -12500,7 +12500,7 @@ class Conditions(AbstractModel):
 
     @property
     def ProjectIds(self):
-        r"""项目ID
+        r"""<p>项目ID</p>
         :rtype: list of int
         """
         return self._ProjectIds
@@ -12511,7 +12511,7 @@ class Conditions(AbstractModel):
 
     @property
     def PayModes(self):
-        r"""付费模式，可选prePay和postPay
+        r"""<p>付费模式，可选prePay和postPay</p>
         :rtype: list of str
         """
         return self._PayModes
@@ -12522,7 +12522,7 @@ class Conditions(AbstractModel):
 
     @property
     def ActionTypes(self):
-        r"""交易类型
+        r"""<p>交易类型</p>
         :rtype: list of str
         """
         return self._ActionTypes
@@ -12533,7 +12533,7 @@ class Conditions(AbstractModel):
 
     @property
     def HideFreeCost(self):
-        r"""是否隐藏0元流水
+        r"""<p>是否隐藏0元流水</p>
         :rtype: int
         """
         return self._HideFreeCost
@@ -12544,7 +12544,7 @@ class Conditions(AbstractModel):
 
     @property
     def OrderByCost(self):
-        r"""排序规则，可选desc和asc
+        r"""<p>排序规则，可选desc和asc</p>
         :rtype: str
         """
         return self._OrderByCost
@@ -12555,7 +12555,7 @@ class Conditions(AbstractModel):
 
     @property
     def BillIds(self):
-        r"""交易ID
+        r"""<p>交易ID</p>
         :rtype: list of str
         """
         return self._BillIds
@@ -12566,7 +12566,7 @@ class Conditions(AbstractModel):
 
     @property
     def ComponentCodes(self):
-        r"""组件编码
+        r"""<p>组件编码</p>
         :rtype: list of str
         """
         return self._ComponentCodes
@@ -12577,7 +12577,7 @@ class Conditions(AbstractModel):
 
     @property
     def FileIds(self):
-        r"""文件ID
+        r"""<p>文件ID</p>
         :rtype: list of str
         """
         return self._FileIds
@@ -12588,7 +12588,7 @@ class Conditions(AbstractModel):
 
     @property
     def FileTypes(self):
-        r"""文件类型
+        r"""<p>文件类型</p>
         :rtype: list of str
         """
         return self._FileTypes
@@ -12599,7 +12599,7 @@ class Conditions(AbstractModel):
 
     @property
     def Status(self):
-        r"""状态
+        r"""<p>状态</p>
         :rtype: list of int non-negative
         """
         return self._Status
@@ -14597,9 +14597,9 @@ class CreateAllocationRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuleList: 公摊规则列表
+        :param _RuleList: <p>公摊规则列表</p>
         :type RuleList: :class:`tencentcloud.billing.v20180709.models.AllocationRulesSummary`
-        :param _Month: 月份，不传默认当前月
+        :param _Month: <p>月份，不传默认当前月</p>
         :type Month: str
         """
         self._RuleList = None
@@ -14607,7 +14607,7 @@ class CreateAllocationRuleRequest(AbstractModel):
 
     @property
     def RuleList(self):
-        r"""公摊规则列表
+        r"""<p>公摊规则列表</p>
         :rtype: :class:`tencentcloud.billing.v20180709.models.AllocationRulesSummary`
         """
         return self._RuleList
@@ -14618,7 +14618,7 @@ class CreateAllocationRuleRequest(AbstractModel):
 
     @property
     def Month(self):
-        r"""月份，不传默认当前月
+        r"""<p>月份，不传默认当前月</p>
         :rtype: str
         """
         return self._Month
@@ -14650,7 +14650,7 @@ class CreateAllocationRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 新增公摊规则ID
+        :param _Id: <p>新增公摊规则ID</p>
         :type Id: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -14660,7 +14660,7 @@ class CreateAllocationRuleResponse(AbstractModel):
 
     @property
     def Id(self):
-        r"""新增公摊规则ID
+        r"""<p>新增公摊规则ID</p>
         :rtype: int
         """
         return self._Id
@@ -14757,11 +14757,11 @@ class CreateAllocationUnitRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ParentId: 新增分账单元父节点ID
+        :param _ParentId: <p>新增分账单元父节点ID</p>
         :type ParentId: int
-        :param _Name: 新增分账单元名称
+        :param _Name: <p>新增分账单元名称</p>
         :type Name: str
-        :param _Month: 月份，不传默认当前月
+        :param _Month: <p>月份，不传默认当前月</p>
         :type Month: str
         """
         self._ParentId = None
@@ -14770,7 +14770,7 @@ class CreateAllocationUnitRequest(AbstractModel):
 
     @property
     def ParentId(self):
-        r"""新增分账单元父节点ID
+        r"""<p>新增分账单元父节点ID</p>
         :rtype: int
         """
         return self._ParentId
@@ -14781,7 +14781,7 @@ class CreateAllocationUnitRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""新增分账单元名称
+        r"""<p>新增分账单元名称</p>
         :rtype: str
         """
         return self._Name
@@ -14792,7 +14792,7 @@ class CreateAllocationUnitRequest(AbstractModel):
 
     @property
     def Month(self):
-        r"""月份，不传默认当前月
+        r"""<p>月份，不传默认当前月</p>
         :rtype: str
         """
         return self._Month
@@ -14823,9 +14823,9 @@ class CreateAllocationUnitResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 新增分账单元ID
+        :param _Id: <p>新增分账单元ID</p>
         :type Id: int
-        :param _TreeNodeUniqKey: 分账单元唯一标识
+        :param _TreeNodeUniqKey: <p>分账单元唯一标识</p>
         :type TreeNodeUniqKey: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -14836,7 +14836,7 @@ class CreateAllocationUnitResponse(AbstractModel):
 
     @property
     def Id(self):
-        r"""新增分账单元ID
+        r"""<p>新增分账单元ID</p>
         :rtype: int
         """
         return self._Id
@@ -14847,7 +14847,7 @@ class CreateAllocationUnitResponse(AbstractModel):
 
     @property
     def TreeNodeUniqKey(self):
-        r"""分账单元唯一标识
+        r"""<p>分账单元唯一标识</p>
         :rtype: str
         """
         return self._TreeNodeUniqKey
@@ -15173,11 +15173,11 @@ class CreateGatherRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 规则所属分账单元ID
+        :param _Id: <p>规则所属分账单元ID</p>
         :type Id: int
-        :param _RuleList: 归集规则详情
+        :param _RuleList: <p>归集规则详情</p>
         :type RuleList: :class:`tencentcloud.billing.v20180709.models.GatherRuleSummary`
-        :param _Month: 月份，不传默认当前月
+        :param _Month: <p>月份，不传默认当前月</p>
         :type Month: str
         """
         self._Id = None
@@ -15186,7 +15186,7 @@ class CreateGatherRuleRequest(AbstractModel):
 
     @property
     def Id(self):
-        r"""规则所属分账单元ID
+        r"""<p>规则所属分账单元ID</p>
         :rtype: int
         """
         return self._Id
@@ -15197,7 +15197,7 @@ class CreateGatherRuleRequest(AbstractModel):
 
     @property
     def RuleList(self):
-        r"""归集规则详情
+        r"""<p>归集规则详情</p>
         :rtype: :class:`tencentcloud.billing.v20180709.models.GatherRuleSummary`
         """
         return self._RuleList
@@ -15208,7 +15208,7 @@ class CreateGatherRuleRequest(AbstractModel):
 
     @property
     def Month(self):
-        r"""月份，不传默认当前月
+        r"""<p>月份，不传默认当前月</p>
         :rtype: str
         """
         return self._Month
@@ -15241,7 +15241,7 @@ class CreateGatherRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 归集规则ID
+        :param _Id: <p>归集规则ID</p>
         :type Id: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -15251,7 +15251,7 @@ class CreateGatherRuleResponse(AbstractModel):
 
     @property
     def Id(self):
-        r"""归集规则ID
+        r"""<p>归集规则ID</p>
         :rtype: int
         """
         return self._Id
@@ -16208,9 +16208,9 @@ class DeleteAllocationRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuleId: 所删除公摊规则ID
+        :param _RuleId: <p>所删除公摊规则ID</p>
         :type RuleId: int
-        :param _Month: 月份，不传默认当前月
+        :param _Month: <p>月份，不传默认当前月</p>
         :type Month: str
         """
         self._RuleId = None
@@ -16218,7 +16218,7 @@ class DeleteAllocationRuleRequest(AbstractModel):
 
     @property
     def RuleId(self):
-        r"""所删除公摊规则ID
+        r"""<p>所删除公摊规则ID</p>
         :rtype: int
         """
         return self._RuleId
@@ -16229,7 +16229,7 @@ class DeleteAllocationRuleRequest(AbstractModel):
 
     @property
     def Month(self):
-        r"""月份，不传默认当前月
+        r"""<p>月份，不传默认当前月</p>
         :rtype: str
         """
         return self._Month
@@ -16351,9 +16351,9 @@ class DeleteAllocationUnitRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 所删除分账单元ID
+        :param _Id: <p>所删除分账单元ID</p>
         :type Id: int
-        :param _Month: 月份，不传默认当前月
+        :param _Month: <p>月份，不传默认当前月</p>
         :type Month: str
         """
         self._Id = None
@@ -16361,7 +16361,7 @@ class DeleteAllocationUnitRequest(AbstractModel):
 
     @property
     def Id(self):
-        r"""所删除分账单元ID
+        r"""<p>所删除分账单元ID</p>
         :rtype: int
         """
         return self._Id
@@ -16372,7 +16372,7 @@ class DeleteAllocationUnitRequest(AbstractModel):
 
     @property
     def Month(self):
-        r"""月份，不传默认当前月
+        r"""<p>月份，不传默认当前月</p>
         :rtype: str
         """
         return self._Month
@@ -16539,9 +16539,9 @@ class DeleteGatherRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuleId: 所删除归集规则ID
+        :param _RuleId: <p>所删除归集规则ID</p>
         :type RuleId: int
-        :param _Month: 月份，不传默认当前月
+        :param _Month: <p>月份，不传默认当前月</p>
         :type Month: str
         """
         self._RuleId = None
@@ -16549,7 +16549,7 @@ class DeleteGatherRuleRequest(AbstractModel):
 
     @property
     def RuleId(self):
-        r"""所删除归集规则ID
+        r"""<p>所删除归集规则ID</p>
         :rtype: int
         """
         return self._RuleId
@@ -16560,7 +16560,7 @@ class DeleteGatherRuleRequest(AbstractModel):
 
     @property
     def Month(self):
-        r"""月份，不传默认当前月
+        r"""<p>月份，不传默认当前月</p>
         :rtype: str
         """
         return self._Month
@@ -16920,14 +16920,14 @@ class DescribeAllocateConditionsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Month: 账单月份，格式为2024-02，不传默认当前月
+        :param _Month: <p>账单月份，格式为2024-02，不传默认当前月</p>
         :type Month: str
         """
         self._Month = None
 
     @property
     def Month(self):
-        r"""账单月份，格式为2024-02，不传默认当前月
+        r"""<p>账单月份，格式为2024-02，不传默认当前月</p>
         :rtype: str
         """
         return self._Month
@@ -16956,27 +16956,27 @@ class DescribeAllocateConditionsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Business: 产品筛选列表
+        :param _Business: <p>产品筛选列表</p>
         :type Business: list of BillBusinessLink
-        :param _Product: 子产品筛选列表
+        :param _Product: <p>子产品筛选列表</p>
         :type Product: list of BillProduct
-        :param _Item: 组件名称筛选列表
+        :param _Item: <p>组件名称筛选列表</p>
         :type Item: list of BillItem
-        :param _Region: 地域筛选列表
+        :param _Region: <p>地域筛选列表</p>
         :type Region: list of BillRegion
-        :param _InstanceType: 实例类型筛选列表
+        :param _InstanceType: <p>实例类型筛选列表</p>
         :type InstanceType: list of BillInstanceType
-        :param _PayMode: 计费模式筛选列表
+        :param _PayMode: <p>计费模式筛选列表</p>
         :type PayMode: list of BillPayMode
-        :param _Project: 项目筛选列表
+        :param _Project: <p>项目筛选列表</p>
         :type Project: list of BillProject
-        :param _Tag: 标签筛选列表
+        :param _Tag: <p>标签筛选列表</p>
         :type Tag: list of BillTag
-        :param _OwnerUin: 使用者 UIN 筛选列表
+        :param _OwnerUin: <p>使用者 UIN 筛选列表</p>
         :type OwnerUin: list of BillOwnerUin
-        :param _OperateUin: 操作者 UIN 筛选列表
+        :param _OperateUin: <p>操作者 UIN 筛选列表</p>
         :type OperateUin: list of BillOperateUin
-        :param _ActionType: 交易类型筛选列表
+        :param _ActionType: <p>交易类型筛选列表</p>
         :type ActionType: list of BillActionType
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -16996,7 +16996,7 @@ class DescribeAllocateConditionsResponse(AbstractModel):
 
     @property
     def Business(self):
-        r"""产品筛选列表
+        r"""<p>产品筛选列表</p>
         :rtype: list of BillBusinessLink
         """
         return self._Business
@@ -17007,7 +17007,7 @@ class DescribeAllocateConditionsResponse(AbstractModel):
 
     @property
     def Product(self):
-        r"""子产品筛选列表
+        r"""<p>子产品筛选列表</p>
         :rtype: list of BillProduct
         """
         return self._Product
@@ -17018,7 +17018,7 @@ class DescribeAllocateConditionsResponse(AbstractModel):
 
     @property
     def Item(self):
-        r"""组件名称筛选列表
+        r"""<p>组件名称筛选列表</p>
         :rtype: list of BillItem
         """
         return self._Item
@@ -17029,7 +17029,7 @@ class DescribeAllocateConditionsResponse(AbstractModel):
 
     @property
     def Region(self):
-        r"""地域筛选列表
+        r"""<p>地域筛选列表</p>
         :rtype: list of BillRegion
         """
         return self._Region
@@ -17040,7 +17040,7 @@ class DescribeAllocateConditionsResponse(AbstractModel):
 
     @property
     def InstanceType(self):
-        r"""实例类型筛选列表
+        r"""<p>实例类型筛选列表</p>
         :rtype: list of BillInstanceType
         """
         return self._InstanceType
@@ -17051,7 +17051,7 @@ class DescribeAllocateConditionsResponse(AbstractModel):
 
     @property
     def PayMode(self):
-        r"""计费模式筛选列表
+        r"""<p>计费模式筛选列表</p>
         :rtype: list of BillPayMode
         """
         return self._PayMode
@@ -17062,7 +17062,7 @@ class DescribeAllocateConditionsResponse(AbstractModel):
 
     @property
     def Project(self):
-        r"""项目筛选列表
+        r"""<p>项目筛选列表</p>
         :rtype: list of BillProject
         """
         return self._Project
@@ -17073,7 +17073,7 @@ class DescribeAllocateConditionsResponse(AbstractModel):
 
     @property
     def Tag(self):
-        r"""标签筛选列表
+        r"""<p>标签筛选列表</p>
         :rtype: list of BillTag
         """
         return self._Tag
@@ -17084,7 +17084,7 @@ class DescribeAllocateConditionsResponse(AbstractModel):
 
     @property
     def OwnerUin(self):
-        r"""使用者 UIN 筛选列表
+        r"""<p>使用者 UIN 筛选列表</p>
         :rtype: list of BillOwnerUin
         """
         return self._OwnerUin
@@ -17095,7 +17095,7 @@ class DescribeAllocateConditionsResponse(AbstractModel):
 
     @property
     def OperateUin(self):
-        r"""操作者 UIN 筛选列表
+        r"""<p>操作者 UIN 筛选列表</p>
         :rtype: list of BillOperateUin
         """
         return self._OperateUin
@@ -17106,7 +17106,7 @@ class DescribeAllocateConditionsResponse(AbstractModel):
 
     @property
     def ActionType(self):
-        r"""交易类型筛选列表
+        r"""<p>交易类型筛选列表</p>
         :rtype: list of BillActionType
         """
         return self._ActionType
@@ -17204,41 +17204,41 @@ class DescribeAllocationBillConditionsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Month: 账单月份，格式为2024-02，不传默认当前月
+        :param _Month: <p>账单月份，格式为2024-02，不传默认当前月</p>
         :type Month: str
-        :param _TreeNodeUniqKeys: 分账单元唯一标识，用作筛选
+        :param _TreeNodeUniqKeys: <p>分账单元唯一标识，用作筛选</p>
         :type TreeNodeUniqKeys: list of str
-        :param _BillDates: 日期
+        :param _BillDates: <p>日期</p>
         :type BillDates: list of str
-        :param _BusinessCodes: 产品编码
+        :param _BusinessCodes: <p>产品编码</p>
         :type BusinessCodes: list of str
-        :param _OwnerUins: 使用者UIN
+        :param _OwnerUins: <p>使用者UIN</p>
         :type OwnerUins: list of str
-        :param _OperateUins: 操作者UIN
+        :param _OperateUins: <p>操作者UIN</p>
         :type OperateUins: list of str
-        :param _PayModes: 计费模式编码
+        :param _PayModes: <p>计费模式编码</p>
         :type PayModes: list of str
-        :param _ActionTypes: 交易类型编码
+        :param _ActionTypes: <p>交易类型编码</p>
         :type ActionTypes: list of str
-        :param _ProductCodes: 子产品编码
+        :param _ProductCodes: <p>子产品编码</p>
         :type ProductCodes: list of str
-        :param _RegionIds: 地域ID
+        :param _RegionIds: <p>地域ID</p>
         :type RegionIds: list of str
-        :param _ZoneIds: 可用区ID
+        :param _ZoneIds: <p>可用区ID</p>
         :type ZoneIds: list of str
-        :param _InstanceTypes: 实例类型编码
+        :param _InstanceTypes: <p>实例类型编码</p>
         :type InstanceTypes: list of str
-        :param _Tag: 标签
+        :param _Tag: <p>标签</p>
         :type Tag: list of str
-        :param _ComponentCodes: 组件类型编码
+        :param _ComponentCodes: <p>组件类型编码</p>
         :type ComponentCodes: list of str
-        :param _ItemCodes: 组件名称编码
+        :param _ItemCodes: <p>组件名称编码</p>
         :type ItemCodes: list of str
-        :param _SearchKey: 模糊搜索条件
+        :param _SearchKey: <p>模糊搜索条件</p>
         :type SearchKey: str
-        :param _ProjectIds: 项目id
+        :param _ProjectIds: <p>项目id</p>
         :type ProjectIds: list of int non-negative
-        :param _AllocationType: 费用归集类型
+        :param _AllocationType: <p>费用归集类型</p><p>枚举值：</p><ul><li>0： 分摊</li><li>1： 归集</li><li>-1： 未分配</li></ul>
         :type AllocationType: list of int
         """
         self._Month = None
@@ -17262,7 +17262,7 @@ class DescribeAllocationBillConditionsRequest(AbstractModel):
 
     @property
     def Month(self):
-        r"""账单月份，格式为2024-02，不传默认当前月
+        r"""<p>账单月份，格式为2024-02，不传默认当前月</p>
         :rtype: str
         """
         return self._Month
@@ -17273,7 +17273,7 @@ class DescribeAllocationBillConditionsRequest(AbstractModel):
 
     @property
     def TreeNodeUniqKeys(self):
-        r"""分账单元唯一标识，用作筛选
+        r"""<p>分账单元唯一标识，用作筛选</p>
         :rtype: list of str
         """
         return self._TreeNodeUniqKeys
@@ -17284,7 +17284,7 @@ class DescribeAllocationBillConditionsRequest(AbstractModel):
 
     @property
     def BillDates(self):
-        r"""日期
+        r"""<p>日期</p>
         :rtype: list of str
         """
         return self._BillDates
@@ -17295,7 +17295,7 @@ class DescribeAllocationBillConditionsRequest(AbstractModel):
 
     @property
     def BusinessCodes(self):
-        r"""产品编码
+        r"""<p>产品编码</p>
         :rtype: list of str
         """
         return self._BusinessCodes
@@ -17306,7 +17306,7 @@ class DescribeAllocationBillConditionsRequest(AbstractModel):
 
     @property
     def OwnerUins(self):
-        r"""使用者UIN
+        r"""<p>使用者UIN</p>
         :rtype: list of str
         """
         return self._OwnerUins
@@ -17317,7 +17317,7 @@ class DescribeAllocationBillConditionsRequest(AbstractModel):
 
     @property
     def OperateUins(self):
-        r"""操作者UIN
+        r"""<p>操作者UIN</p>
         :rtype: list of str
         """
         return self._OperateUins
@@ -17328,7 +17328,7 @@ class DescribeAllocationBillConditionsRequest(AbstractModel):
 
     @property
     def PayModes(self):
-        r"""计费模式编码
+        r"""<p>计费模式编码</p>
         :rtype: list of str
         """
         return self._PayModes
@@ -17339,7 +17339,7 @@ class DescribeAllocationBillConditionsRequest(AbstractModel):
 
     @property
     def ActionTypes(self):
-        r"""交易类型编码
+        r"""<p>交易类型编码</p>
         :rtype: list of str
         """
         return self._ActionTypes
@@ -17350,7 +17350,7 @@ class DescribeAllocationBillConditionsRequest(AbstractModel):
 
     @property
     def ProductCodes(self):
-        r"""子产品编码
+        r"""<p>子产品编码</p>
         :rtype: list of str
         """
         return self._ProductCodes
@@ -17361,7 +17361,7 @@ class DescribeAllocationBillConditionsRequest(AbstractModel):
 
     @property
     def RegionIds(self):
-        r"""地域ID
+        r"""<p>地域ID</p>
         :rtype: list of str
         """
         return self._RegionIds
@@ -17372,7 +17372,7 @@ class DescribeAllocationBillConditionsRequest(AbstractModel):
 
     @property
     def ZoneIds(self):
-        r"""可用区ID
+        r"""<p>可用区ID</p>
         :rtype: list of str
         """
         return self._ZoneIds
@@ -17383,7 +17383,7 @@ class DescribeAllocationBillConditionsRequest(AbstractModel):
 
     @property
     def InstanceTypes(self):
-        r"""实例类型编码
+        r"""<p>实例类型编码</p>
         :rtype: list of str
         """
         return self._InstanceTypes
@@ -17394,7 +17394,7 @@ class DescribeAllocationBillConditionsRequest(AbstractModel):
 
     @property
     def Tag(self):
-        r"""标签
+        r"""<p>标签</p>
         :rtype: list of str
         """
         return self._Tag
@@ -17405,7 +17405,7 @@ class DescribeAllocationBillConditionsRequest(AbstractModel):
 
     @property
     def ComponentCodes(self):
-        r"""组件类型编码
+        r"""<p>组件类型编码</p>
         :rtype: list of str
         """
         return self._ComponentCodes
@@ -17416,7 +17416,7 @@ class DescribeAllocationBillConditionsRequest(AbstractModel):
 
     @property
     def ItemCodes(self):
-        r"""组件名称编码
+        r"""<p>组件名称编码</p>
         :rtype: list of str
         """
         return self._ItemCodes
@@ -17427,7 +17427,7 @@ class DescribeAllocationBillConditionsRequest(AbstractModel):
 
     @property
     def SearchKey(self):
-        r"""模糊搜索条件
+        r"""<p>模糊搜索条件</p>
         :rtype: str
         """
         return self._SearchKey
@@ -17438,7 +17438,7 @@ class DescribeAllocationBillConditionsRequest(AbstractModel):
 
     @property
     def ProjectIds(self):
-        r"""项目id
+        r"""<p>项目id</p>
         :rtype: list of int non-negative
         """
         return self._ProjectIds
@@ -17449,7 +17449,7 @@ class DescribeAllocationBillConditionsRequest(AbstractModel):
 
     @property
     def AllocationType(self):
-        r"""费用归集类型
+        r"""<p>费用归集类型</p><p>枚举值：</p><ul><li>0： 分摊</li><li>1： 归集</li><li>-1： 未分配</li></ul>
         :rtype: list of int
         """
         return self._AllocationType
@@ -17495,37 +17495,37 @@ class DescribeAllocationBillConditionsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Business: 产品筛选列表
+        :param _Business: <p>产品筛选列表</p>
         :type Business: list of BillBusiness
-        :param _Product: 子产品筛选列表
+        :param _Product: <p>子产品筛选列表</p>
         :type Product: list of BillProduct
-        :param _Item: 组件名称筛选列表
+        :param _Item: <p>组件名称筛选列表</p>
         :type Item: list of BillItem
-        :param _Region: 地域筛选列表
+        :param _Region: <p>地域筛选列表</p>
         :type Region: list of BillRegion
-        :param _InstanceType: 实例类型筛选列表
+        :param _InstanceType: <p>实例类型筛选列表</p>
         :type InstanceType: list of BillInstanceType
-        :param _PayMode: 计费模式筛选列表
+        :param _PayMode: <p>计费模式筛选列表</p>
         :type PayMode: list of BillPayMode
-        :param _Project: 项目筛选列表
+        :param _Project: <p>项目筛选列表</p>
         :type Project: list of BillProject
-        :param _Tag: 标签筛选列表
+        :param _Tag: <p>标签筛选列表</p>
         :type Tag: list of BillTag
-        :param _OwnerUin: 使用者 UIN 筛选列表
+        :param _OwnerUin: <p>使用者 UIN 筛选列表</p>
         :type OwnerUin: list of BillOwnerUin
-        :param _OperateUin: 操作者 UIN 筛选列表
+        :param _OperateUin: <p>操作者 UIN 筛选列表</p>
         :type OperateUin: list of BillOperateUin
-        :param _BillDay: 日期筛选列表
+        :param _BillDay: <p>日期筛选列表</p>
         :type BillDay: list of BillDays
-        :param _ActionType: 交易类型筛选列表
+        :param _ActionType: <p>交易类型筛选列表</p>
         :type ActionType: list of BillActionType
-        :param _Component: 组件类型筛选列表
+        :param _Component: <p>组件类型筛选列表</p>
         :type Component: list of BillComponent
-        :param _Zone: 可用区筛选列表
+        :param _Zone: <p>可用区筛选列表</p>
         :type Zone: list of BillZoneId
-        :param _AllocationTreeNode: 分账单元筛选列表
+        :param _AllocationTreeNode: <p>分账单元筛选列表</p>
         :type AllocationTreeNode: list of AllocationTreeNode
-        :param _TagKey: 分账标签键
+        :param _TagKey: <p>分账标签键</p>
         :type TagKey: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -17550,7 +17550,7 @@ class DescribeAllocationBillConditionsResponse(AbstractModel):
 
     @property
     def Business(self):
-        r"""产品筛选列表
+        r"""<p>产品筛选列表</p>
         :rtype: list of BillBusiness
         """
         return self._Business
@@ -17561,7 +17561,7 @@ class DescribeAllocationBillConditionsResponse(AbstractModel):
 
     @property
     def Product(self):
-        r"""子产品筛选列表
+        r"""<p>子产品筛选列表</p>
         :rtype: list of BillProduct
         """
         return self._Product
@@ -17572,7 +17572,7 @@ class DescribeAllocationBillConditionsResponse(AbstractModel):
 
     @property
     def Item(self):
-        r"""组件名称筛选列表
+        r"""<p>组件名称筛选列表</p>
         :rtype: list of BillItem
         """
         return self._Item
@@ -17583,7 +17583,7 @@ class DescribeAllocationBillConditionsResponse(AbstractModel):
 
     @property
     def Region(self):
-        r"""地域筛选列表
+        r"""<p>地域筛选列表</p>
         :rtype: list of BillRegion
         """
         return self._Region
@@ -17594,7 +17594,7 @@ class DescribeAllocationBillConditionsResponse(AbstractModel):
 
     @property
     def InstanceType(self):
-        r"""实例类型筛选列表
+        r"""<p>实例类型筛选列表</p>
         :rtype: list of BillInstanceType
         """
         return self._InstanceType
@@ -17605,7 +17605,7 @@ class DescribeAllocationBillConditionsResponse(AbstractModel):
 
     @property
     def PayMode(self):
-        r"""计费模式筛选列表
+        r"""<p>计费模式筛选列表</p>
         :rtype: list of BillPayMode
         """
         return self._PayMode
@@ -17616,7 +17616,7 @@ class DescribeAllocationBillConditionsResponse(AbstractModel):
 
     @property
     def Project(self):
-        r"""项目筛选列表
+        r"""<p>项目筛选列表</p>
         :rtype: list of BillProject
         """
         return self._Project
@@ -17627,7 +17627,7 @@ class DescribeAllocationBillConditionsResponse(AbstractModel):
 
     @property
     def Tag(self):
-        r"""标签筛选列表
+        r"""<p>标签筛选列表</p>
         :rtype: list of BillTag
         """
         return self._Tag
@@ -17638,7 +17638,7 @@ class DescribeAllocationBillConditionsResponse(AbstractModel):
 
     @property
     def OwnerUin(self):
-        r"""使用者 UIN 筛选列表
+        r"""<p>使用者 UIN 筛选列表</p>
         :rtype: list of BillOwnerUin
         """
         return self._OwnerUin
@@ -17649,7 +17649,7 @@ class DescribeAllocationBillConditionsResponse(AbstractModel):
 
     @property
     def OperateUin(self):
-        r"""操作者 UIN 筛选列表
+        r"""<p>操作者 UIN 筛选列表</p>
         :rtype: list of BillOperateUin
         """
         return self._OperateUin
@@ -17660,7 +17660,7 @@ class DescribeAllocationBillConditionsResponse(AbstractModel):
 
     @property
     def BillDay(self):
-        r"""日期筛选列表
+        r"""<p>日期筛选列表</p>
         :rtype: list of BillDays
         """
         return self._BillDay
@@ -17671,7 +17671,7 @@ class DescribeAllocationBillConditionsResponse(AbstractModel):
 
     @property
     def ActionType(self):
-        r"""交易类型筛选列表
+        r"""<p>交易类型筛选列表</p>
         :rtype: list of BillActionType
         """
         return self._ActionType
@@ -17682,7 +17682,7 @@ class DescribeAllocationBillConditionsResponse(AbstractModel):
 
     @property
     def Component(self):
-        r"""组件类型筛选列表
+        r"""<p>组件类型筛选列表</p>
         :rtype: list of BillComponent
         """
         return self._Component
@@ -17693,7 +17693,7 @@ class DescribeAllocationBillConditionsResponse(AbstractModel):
 
     @property
     def Zone(self):
-        r"""可用区筛选列表
+        r"""<p>可用区筛选列表</p>
         :rtype: list of BillZoneId
         """
         return self._Zone
@@ -17704,7 +17704,7 @@ class DescribeAllocationBillConditionsResponse(AbstractModel):
 
     @property
     def AllocationTreeNode(self):
-        r"""分账单元筛选列表
+        r"""<p>分账单元筛选列表</p>
         :rtype: list of AllocationTreeNode
         """
         return self._AllocationTreeNode
@@ -17715,7 +17715,7 @@ class DescribeAllocationBillConditionsResponse(AbstractModel):
 
     @property
     def TagKey(self):
-        r"""分账标签键
+        r"""<p>分账标签键</p>
         :rtype: list of str
         """
         return self._TagKey
@@ -17838,55 +17838,45 @@ class DescribeAllocationBillDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Limit: 数量，最大值为1000
+        :param _Limit: <p>数量，最大值为1000</p>
         :type Limit: int
-        :param _Offset: 分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，以此类推
+        :param _Offset: <p>分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，以此类推</p>
         :type Offset: int
-        :param _Month: 账单月份，格式为2024-02，不传默认当前月
+        :param _Month: <p>账单月份，格式为2024-02，不传默认当前月</p>
         :type Month: str
-        :param _TreeNodeUniqKeys: 分账单元唯一标识，用作筛选
+        :param _TreeNodeUniqKeys: <p>分账单元唯一标识，用作筛选</p>
         :type TreeNodeUniqKeys: list of str
-        :param _Sort: 排序字段，枚举值如下：
-RiTimeSpan - 预留实例抵扣时长
-ExtendPayAmount1 - 预留实例抵扣组件原价
-RealCost - 折后总价
-CashPayAmount - 现金金额
-VoucherPayAmount - 代金券金额
-IncentivePayAmount - 赠送金金额
-TransferPayAmount -分成金金额
-Cost - 组件原价
+        :param _Sort: <p>排序字段，枚举值如下：<br>RiTimeSpan - 预留实例抵扣时长<br>ExtendPayAmount1 - 预留实例抵扣组件原价<br>RealCost - 折后总价<br>CashPayAmount - 现金金额<br>VoucherPayAmount - 代金券金额<br>IncentivePayAmount - 赠送金金额<br>TransferPayAmount -分成金金额<br>Cost - 组件原价</p>
         :type Sort: str
-        :param _SortType: 排序类型，枚举值如下：
-asc - 升序
-desc - 降序
+        :param _SortType: <p>排序类型，枚举值如下：<br>asc - 升序<br>desc - 降序</p>
         :type SortType: str
-        :param _BusinessCodes: 产品编码，用作筛选
+        :param _BusinessCodes: <p>产品编码，用作筛选</p>
         :type BusinessCodes: list of str
-        :param _OwnerUins: 使用者UIN，用作筛选
+        :param _OwnerUins: <p>使用者UIN，用作筛选</p>
         :type OwnerUins: list of str
-        :param _OperateUins: 操作者UIN，用作筛选
+        :param _OperateUins: <p>操作者UIN，用作筛选</p>
         :type OperateUins: list of str
-        :param _PayModes: 计费模式编码，用作筛选
+        :param _PayModes: <p>计费模式编码，用作筛选</p>
         :type PayModes: list of str
-        :param _ActionTypes: 交易类型编码，用作筛选
+        :param _ActionTypes: <p>交易类型编码，用作筛选</p>
         :type ActionTypes: list of str
-        :param _ProductCodes: 子产品编码，用作筛选
+        :param _ProductCodes: <p>子产品编码，用作筛选</p>
         :type ProductCodes: list of str
-        :param _RegionIds: 地域ID，用作筛选
+        :param _RegionIds: <p>地域ID，用作筛选</p>
         :type RegionIds: list of str
-        :param _ZoneIds: 可用区ID，用作筛选
+        :param _ZoneIds: <p>可用区ID，用作筛选</p>
         :type ZoneIds: list of str
-        :param _InstanceTypes: 实例类型编码，用作筛选
+        :param _InstanceTypes: <p>实例类型编码，用作筛选</p>
         :type InstanceTypes: list of str
-        :param _Tag: 标签，用作筛选
+        :param _Tag: <p>标签，用作筛选</p>
         :type Tag: list of str
-        :param _ComponentCodes: 组件类型编码，用作筛选
+        :param _ComponentCodes: <p>组件类型编码，用作筛选</p>
         :type ComponentCodes: list of str
-        :param _ItemCodes: 组件名称编码，用作筛选
+        :param _ItemCodes: <p>组件名称编码，用作筛选</p>
         :type ItemCodes: list of str
-        :param _SearchKey: 模糊搜索：支持标签、资源id、资源别名
+        :param _SearchKey: <p>模糊搜索：支持标签、资源id、资源别名</p>
         :type SearchKey: str
-        :param _ProjectIds: 项目ID，用作筛选
+        :param _ProjectIds: <p>项目ID，用作筛选</p>
         :type ProjectIds: list of int non-negative
         """
         self._Limit = None
@@ -17912,7 +17902,7 @@ desc - 降序
 
     @property
     def Limit(self):
-        r"""数量，最大值为1000
+        r"""<p>数量，最大值为1000</p>
         :rtype: int
         """
         return self._Limit
@@ -17923,7 +17913,7 @@ desc - 降序
 
     @property
     def Offset(self):
-        r"""分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，以此类推
+        r"""<p>分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，以此类推</p>
         :rtype: int
         """
         return self._Offset
@@ -17934,7 +17924,7 @@ desc - 降序
 
     @property
     def Month(self):
-        r"""账单月份，格式为2024-02，不传默认当前月
+        r"""<p>账单月份，格式为2024-02，不传默认当前月</p>
         :rtype: str
         """
         return self._Month
@@ -17945,7 +17935,7 @@ desc - 降序
 
     @property
     def TreeNodeUniqKeys(self):
-        r"""分账单元唯一标识，用作筛选
+        r"""<p>分账单元唯一标识，用作筛选</p>
         :rtype: list of str
         """
         return self._TreeNodeUniqKeys
@@ -17956,15 +17946,7 @@ desc - 降序
 
     @property
     def Sort(self):
-        r"""排序字段，枚举值如下：
-RiTimeSpan - 预留实例抵扣时长
-ExtendPayAmount1 - 预留实例抵扣组件原价
-RealCost - 折后总价
-CashPayAmount - 现金金额
-VoucherPayAmount - 代金券金额
-IncentivePayAmount - 赠送金金额
-TransferPayAmount -分成金金额
-Cost - 组件原价
+        r"""<p>排序字段，枚举值如下：<br>RiTimeSpan - 预留实例抵扣时长<br>ExtendPayAmount1 - 预留实例抵扣组件原价<br>RealCost - 折后总价<br>CashPayAmount - 现金金额<br>VoucherPayAmount - 代金券金额<br>IncentivePayAmount - 赠送金金额<br>TransferPayAmount -分成金金额<br>Cost - 组件原价</p>
         :rtype: str
         """
         return self._Sort
@@ -17975,9 +17957,7 @@ Cost - 组件原价
 
     @property
     def SortType(self):
-        r"""排序类型，枚举值如下：
-asc - 升序
-desc - 降序
+        r"""<p>排序类型，枚举值如下：<br>asc - 升序<br>desc - 降序</p>
         :rtype: str
         """
         return self._SortType
@@ -17988,7 +17968,7 @@ desc - 降序
 
     @property
     def BusinessCodes(self):
-        r"""产品编码，用作筛选
+        r"""<p>产品编码，用作筛选</p>
         :rtype: list of str
         """
         return self._BusinessCodes
@@ -17999,7 +17979,7 @@ desc - 降序
 
     @property
     def OwnerUins(self):
-        r"""使用者UIN，用作筛选
+        r"""<p>使用者UIN，用作筛选</p>
         :rtype: list of str
         """
         return self._OwnerUins
@@ -18010,7 +17990,7 @@ desc - 降序
 
     @property
     def OperateUins(self):
-        r"""操作者UIN，用作筛选
+        r"""<p>操作者UIN，用作筛选</p>
         :rtype: list of str
         """
         return self._OperateUins
@@ -18021,7 +18001,7 @@ desc - 降序
 
     @property
     def PayModes(self):
-        r"""计费模式编码，用作筛选
+        r"""<p>计费模式编码，用作筛选</p>
         :rtype: list of str
         """
         return self._PayModes
@@ -18032,7 +18012,7 @@ desc - 降序
 
     @property
     def ActionTypes(self):
-        r"""交易类型编码，用作筛选
+        r"""<p>交易类型编码，用作筛选</p>
         :rtype: list of str
         """
         return self._ActionTypes
@@ -18043,7 +18023,7 @@ desc - 降序
 
     @property
     def ProductCodes(self):
-        r"""子产品编码，用作筛选
+        r"""<p>子产品编码，用作筛选</p>
         :rtype: list of str
         """
         return self._ProductCodes
@@ -18054,7 +18034,7 @@ desc - 降序
 
     @property
     def RegionIds(self):
-        r"""地域ID，用作筛选
+        r"""<p>地域ID，用作筛选</p>
         :rtype: list of str
         """
         return self._RegionIds
@@ -18065,7 +18045,7 @@ desc - 降序
 
     @property
     def ZoneIds(self):
-        r"""可用区ID，用作筛选
+        r"""<p>可用区ID，用作筛选</p>
         :rtype: list of str
         """
         return self._ZoneIds
@@ -18076,7 +18056,7 @@ desc - 降序
 
     @property
     def InstanceTypes(self):
-        r"""实例类型编码，用作筛选
+        r"""<p>实例类型编码，用作筛选</p>
         :rtype: list of str
         """
         return self._InstanceTypes
@@ -18087,7 +18067,7 @@ desc - 降序
 
     @property
     def Tag(self):
-        r"""标签，用作筛选
+        r"""<p>标签，用作筛选</p>
         :rtype: list of str
         """
         return self._Tag
@@ -18098,7 +18078,7 @@ desc - 降序
 
     @property
     def ComponentCodes(self):
-        r"""组件类型编码，用作筛选
+        r"""<p>组件类型编码，用作筛选</p>
         :rtype: list of str
         """
         return self._ComponentCodes
@@ -18109,7 +18089,7 @@ desc - 降序
 
     @property
     def ItemCodes(self):
-        r"""组件名称编码，用作筛选
+        r"""<p>组件名称编码，用作筛选</p>
         :rtype: list of str
         """
         return self._ItemCodes
@@ -18120,7 +18100,7 @@ desc - 降序
 
     @property
     def SearchKey(self):
-        r"""模糊搜索：支持标签、资源id、资源别名
+        r"""<p>模糊搜索：支持标签、资源id、资源别名</p>
         :rtype: str
         """
         return self._SearchKey
@@ -18131,7 +18111,7 @@ desc - 降序
 
     @property
     def ProjectIds(self):
-        r"""项目ID，用作筛选
+        r"""<p>项目ID，用作筛选</p>
         :rtype: list of int non-negative
         """
         return self._ProjectIds
@@ -18179,11 +18159,11 @@ class DescribeAllocationBillDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RecordNum: 总条数
+        :param _RecordNum: <p>总条数</p>
         :type RecordNum: int
-        :param _Total: 分账账单概览金额汇总
+        :param _Total: <p>分账账单概览金额汇总</p>
         :type Total: :class:`tencentcloud.billing.v20180709.models.AllocationOverviewTotal`
-        :param _Detail: 分账账单明细
+        :param _Detail: <p>分账账单明细</p>
         :type Detail: list of AllocationDetail
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -18195,7 +18175,7 @@ class DescribeAllocationBillDetailResponse(AbstractModel):
 
     @property
     def RecordNum(self):
-        r"""总条数
+        r"""<p>总条数</p>
         :rtype: int
         """
         return self._RecordNum
@@ -18206,7 +18186,7 @@ class DescribeAllocationBillDetailResponse(AbstractModel):
 
     @property
     def Total(self):
-        r"""分账账单概览金额汇总
+        r"""<p>分账账单概览金额汇总</p>
         :rtype: :class:`tencentcloud.billing.v20180709.models.AllocationOverviewTotal`
         """
         return self._Total
@@ -18217,7 +18197,7 @@ class DescribeAllocationBillDetailResponse(AbstractModel):
 
     @property
     def Detail(self):
-        r"""分账账单明细
+        r"""<p>分账账单明细</p>
         :rtype: list of AllocationDetail
         """
         return self._Detail
@@ -18259,14 +18239,14 @@ class DescribeAllocationMonthOverviewRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Month: 账单月份，格式为2024-02，不传默认当前月
+        :param _Month: <p>账单月份，格式为2024-02，不传默认当前月</p>
         :type Month: str
         """
         self._Month = None
 
     @property
     def Month(self):
-        r"""账单月份，格式为2024-02，不传默认当前月
+        r"""<p>账单月份，格式为2024-02，不传默认当前月</p>
         :rtype: str
         """
         return self._Month
@@ -18295,9 +18275,9 @@ class DescribeAllocationMonthOverviewResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Detail: 分账账单月概览详情
+        :param _Detail: <p>分账账单月概览详情</p>
         :type Detail: list of AllocationOverviewNode
-        :param _Total: 分账账单概览金额汇总
+        :param _Total: <p>分账账单概览金额汇总</p>
         :type Total: :class:`tencentcloud.billing.v20180709.models.AllocationOverviewTotal`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -18308,7 +18288,7 @@ class DescribeAllocationMonthOverviewResponse(AbstractModel):
 
     @property
     def Detail(self):
-        r"""分账账单月概览详情
+        r"""<p>分账账单月概览详情</p>
         :rtype: list of AllocationOverviewNode
         """
         return self._Detail
@@ -18319,7 +18299,7 @@ class DescribeAllocationMonthOverviewResponse(AbstractModel):
 
     @property
     def Total(self):
-        r"""分账账单概览金额汇总
+        r"""<p>分账账单概览金额汇总</p>
         :rtype: :class:`tencentcloud.billing.v20180709.models.AllocationOverviewTotal`
         """
         return self._Total
@@ -18360,41 +18340,21 @@ class DescribeAllocationOverviewRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Limit: 数量，最大值为1000
+        :param _Limit: <p>数量，最大值为1000</p>
         :type Limit: int
-        :param _Offset: 分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，以此类推
+        :param _Offset: <p>分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，以此类推</p>
         :type Offset: int
-        :param _Month: 账单月份，格式为2024-02，不传默认当前月
+        :param _Month: <p>账单月份，格式为2024-02，不传默认当前月</p>
         :type Month: str
-        :param _PeriodType: 统计周期，枚举值如下
-month - 月
-day - 日
+        :param _PeriodType: <p>统计周期，枚举值如下<br>month - 月<br>day - 日</p>
         :type PeriodType: str
-        :param _TreeNodeUniqKeys: 分账单元唯一标识，用作筛选
+        :param _TreeNodeUniqKeys: <p>分账单元唯一标识，用作筛选</p>
         :type TreeNodeUniqKeys: list of str
-        :param _Sort: 排序字段，枚举值如下： 
-GatherCashPayAmount - 归集费用(现金)
-GatherVoucherPayAmount- 归集费用(优惠券)
-GatherIncentivePayAmount -  归集费用(赠送金)
-GatherTransferPayAmount - 归集费用(分成金)
-AllocateCashPayAmount - 分摊费用(现金)
-AllocateVoucherPayAmount - 分摊费用(优惠券)
-AllocateIncentivePayAmount - 分摊费用(赠送金)
-AllocateTransferPayAmount - 分摊费用(分成金)
-TotalCashPayAmount - 合计费用(现金)
-TotalVoucherPayAmount - 合计费用(优惠券)
-TotalIncentivePayAmount - 合计费用(赠送金)
-TotalTransferPayAmount - 合计费用(分成金)
-GatherRealCost - 归集费用(折后总额)
-AllocateRealCost - 分摊费用(折后总额)
-RealTotalCost - 合计费用(折后总额)
-Ratio  - 占比(折后总额)
+        :param _Sort: <p>排序字段，枚举值如下：<br>GatherCashPayAmount - 归集费用(现金)<br>GatherVoucherPayAmount- 归集费用(优惠券)<br>GatherIncentivePayAmount -  归集费用(赠送金)<br>GatherTransferPayAmount - 归集费用(分成金)<br>AllocateCashPayAmount - 分摊费用(现金)<br>AllocateVoucherPayAmount - 分摊费用(优惠券)<br>AllocateIncentivePayAmount - 分摊费用(赠送金)<br>AllocateTransferPayAmount - 分摊费用(分成金)<br>TotalCashPayAmount - 合计费用(现金)<br>TotalVoucherPayAmount - 合计费用(优惠券)<br>TotalIncentivePayAmount - 合计费用(赠送金)<br>TotalTransferPayAmount - 合计费用(分成金)<br>GatherRealCost - 归集费用(折后总额)<br>AllocateRealCost - 分摊费用(折后总额)<br>RealTotalCost - 合计费用(折后总额)<br>Ratio  - 占比(折后总额)</p>
         :type Sort: str
-        :param _SortType: 排序类型，枚举值如下：
-asc - 升序
-desc - 降序
+        :param _SortType: <p>排序类型，枚举值如下：<br>asc - 升序<br>desc - 降序</p>
         :type SortType: str
-        :param _BillDates: 日期，用作筛选
+        :param _BillDates: <p>日期，用作筛选</p>
         :type BillDates: list of str
         """
         self._Limit = None
@@ -18408,7 +18368,7 @@ desc - 降序
 
     @property
     def Limit(self):
-        r"""数量，最大值为1000
+        r"""<p>数量，最大值为1000</p>
         :rtype: int
         """
         return self._Limit
@@ -18419,7 +18379,7 @@ desc - 降序
 
     @property
     def Offset(self):
-        r"""分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，以此类推
+        r"""<p>分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，以此类推</p>
         :rtype: int
         """
         return self._Offset
@@ -18430,7 +18390,7 @@ desc - 降序
 
     @property
     def Month(self):
-        r"""账单月份，格式为2024-02，不传默认当前月
+        r"""<p>账单月份，格式为2024-02，不传默认当前月</p>
         :rtype: str
         """
         return self._Month
@@ -18441,9 +18401,7 @@ desc - 降序
 
     @property
     def PeriodType(self):
-        r"""统计周期，枚举值如下
-month - 月
-day - 日
+        r"""<p>统计周期，枚举值如下<br>month - 月<br>day - 日</p>
         :rtype: str
         """
         return self._PeriodType
@@ -18454,7 +18412,7 @@ day - 日
 
     @property
     def TreeNodeUniqKeys(self):
-        r"""分账单元唯一标识，用作筛选
+        r"""<p>分账单元唯一标识，用作筛选</p>
         :rtype: list of str
         """
         return self._TreeNodeUniqKeys
@@ -18465,23 +18423,7 @@ day - 日
 
     @property
     def Sort(self):
-        r"""排序字段，枚举值如下： 
-GatherCashPayAmount - 归集费用(现金)
-GatherVoucherPayAmount- 归集费用(优惠券)
-GatherIncentivePayAmount -  归集费用(赠送金)
-GatherTransferPayAmount - 归集费用(分成金)
-AllocateCashPayAmount - 分摊费用(现金)
-AllocateVoucherPayAmount - 分摊费用(优惠券)
-AllocateIncentivePayAmount - 分摊费用(赠送金)
-AllocateTransferPayAmount - 分摊费用(分成金)
-TotalCashPayAmount - 合计费用(现金)
-TotalVoucherPayAmount - 合计费用(优惠券)
-TotalIncentivePayAmount - 合计费用(赠送金)
-TotalTransferPayAmount - 合计费用(分成金)
-GatherRealCost - 归集费用(折后总额)
-AllocateRealCost - 分摊费用(折后总额)
-RealTotalCost - 合计费用(折后总额)
-Ratio  - 占比(折后总额)
+        r"""<p>排序字段，枚举值如下：<br>GatherCashPayAmount - 归集费用(现金)<br>GatherVoucherPayAmount- 归集费用(优惠券)<br>GatherIncentivePayAmount -  归集费用(赠送金)<br>GatherTransferPayAmount - 归集费用(分成金)<br>AllocateCashPayAmount - 分摊费用(现金)<br>AllocateVoucherPayAmount - 分摊费用(优惠券)<br>AllocateIncentivePayAmount - 分摊费用(赠送金)<br>AllocateTransferPayAmount - 分摊费用(分成金)<br>TotalCashPayAmount - 合计费用(现金)<br>TotalVoucherPayAmount - 合计费用(优惠券)<br>TotalIncentivePayAmount - 合计费用(赠送金)<br>TotalTransferPayAmount - 合计费用(分成金)<br>GatherRealCost - 归集费用(折后总额)<br>AllocateRealCost - 分摊费用(折后总额)<br>RealTotalCost - 合计费用(折后总额)<br>Ratio  - 占比(折后总额)</p>
         :rtype: str
         """
         return self._Sort
@@ -18492,9 +18434,7 @@ Ratio  - 占比(折后总额)
 
     @property
     def SortType(self):
-        r"""排序类型，枚举值如下：
-asc - 升序
-desc - 降序
+        r"""<p>排序类型，枚举值如下：<br>asc - 升序<br>desc - 降序</p>
         :rtype: str
         """
         return self._SortType
@@ -18505,7 +18445,7 @@ desc - 降序
 
     @property
     def BillDates(self):
-        r"""日期，用作筛选
+        r"""<p>日期，用作筛选</p>
         :rtype: list of str
         """
         return self._BillDates
@@ -18541,11 +18481,11 @@ class DescribeAllocationOverviewResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RecordNum: 总条数
+        :param _RecordNum: <p>总条数</p>
         :type RecordNum: int
-        :param _Total: 分账账单概览金额汇总
+        :param _Total: <p>分账账单概览金额汇总</p>
         :type Total: :class:`tencentcloud.billing.v20180709.models.AllocationOverviewTotal`
-        :param _Detail: 分账概览明细
+        :param _Detail: <p>分账概览明细</p>
         :type Detail: list of AllocationOverviewDetail
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -18557,7 +18497,7 @@ class DescribeAllocationOverviewResponse(AbstractModel):
 
     @property
     def RecordNum(self):
-        r"""总条数
+        r"""<p>总条数</p>
         :rtype: int
         """
         return self._RecordNum
@@ -18568,7 +18508,7 @@ class DescribeAllocationOverviewResponse(AbstractModel):
 
     @property
     def Total(self):
-        r"""分账账单概览金额汇总
+        r"""<p>分账账单概览金额汇总</p>
         :rtype: :class:`tencentcloud.billing.v20180709.models.AllocationOverviewTotal`
         """
         return self._Total
@@ -18579,7 +18519,7 @@ class DescribeAllocationOverviewResponse(AbstractModel):
 
     @property
     def Detail(self):
-        r"""分账概览明细
+        r"""<p>分账概览明细</p>
         :rtype: list of AllocationOverviewDetail
         """
         return self._Detail
@@ -18621,9 +18561,9 @@ class DescribeAllocationRuleDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuleId: 所查询公摊规则ID
+        :param _RuleId: <p>所查询公摊规则ID</p>
         :type RuleId: int
-        :param _Month: 月份，不传默认当前月
+        :param _Month: <p>月份，不传默认当前月</p>
         :type Month: str
         """
         self._RuleId = None
@@ -18631,7 +18571,7 @@ class DescribeAllocationRuleDetailRequest(AbstractModel):
 
     @property
     def RuleId(self):
-        r"""所查询公摊规则ID
+        r"""<p>所查询公摊规则ID</p>
         :rtype: int
         """
         return self._RuleId
@@ -18642,7 +18582,7 @@ class DescribeAllocationRuleDetailRequest(AbstractModel):
 
     @property
     def Month(self):
-        r"""月份，不传默认当前月
+        r"""<p>月份，不传默认当前月</p>
         :rtype: str
         """
         return self._Month
@@ -18672,20 +18612,17 @@ class DescribeAllocationRuleDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 公摊规则ID
+        :param _Id: <p>公摊规则ID</p>
         :type Id: int
-        :param _Uin: 公摊规则所属UIN
+        :param _Uin: <p>公摊规则所属UIN</p>
         :type Uin: str
-        :param _Name: 公摊规则名称
+        :param _Name: <p>公摊规则名称</p>
         :type Name: str
-        :param _Type: 公摊策略类型，枚举值如下：
-1 - 自定义分摊占比 
-2 - 等比分摊 
-3 - 按占比分摊
+        :param _Type: <p>公摊策略类型，枚举值如下：<br>1 - 自定义分摊占比<br>2 - 等比分摊<br>3 - 按占比分摊</p>
         :type Type: int
-        :param _RuleDetail: 公摊规则表达式
+        :param _RuleDetail: <p>公摊规则表达式</p>
         :type RuleDetail: :class:`tencentcloud.billing.v20180709.models.AllocationRuleExpression`
-        :param _RatioDetail: 公摊比例表达式，Type为1和2时返回
+        :param _RatioDetail: <p>公摊比例表达式，Type为1和2时返回</p>
         :type RatioDetail: list of AllocationRationExpression
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -18700,7 +18637,7 @@ class DescribeAllocationRuleDetailResponse(AbstractModel):
 
     @property
     def Id(self):
-        r"""公摊规则ID
+        r"""<p>公摊规则ID</p>
         :rtype: int
         """
         return self._Id
@@ -18711,7 +18648,7 @@ class DescribeAllocationRuleDetailResponse(AbstractModel):
 
     @property
     def Uin(self):
-        r"""公摊规则所属UIN
+        r"""<p>公摊规则所属UIN</p>
         :rtype: str
         """
         return self._Uin
@@ -18722,7 +18659,7 @@ class DescribeAllocationRuleDetailResponse(AbstractModel):
 
     @property
     def Name(self):
-        r"""公摊规则名称
+        r"""<p>公摊规则名称</p>
         :rtype: str
         """
         return self._Name
@@ -18733,10 +18670,7 @@ class DescribeAllocationRuleDetailResponse(AbstractModel):
 
     @property
     def Type(self):
-        r"""公摊策略类型，枚举值如下：
-1 - 自定义分摊占比 
-2 - 等比分摊 
-3 - 按占比分摊
+        r"""<p>公摊策略类型，枚举值如下：<br>1 - 自定义分摊占比<br>2 - 等比分摊<br>3 - 按占比分摊</p>
         :rtype: int
         """
         return self._Type
@@ -18747,7 +18681,7 @@ class DescribeAllocationRuleDetailResponse(AbstractModel):
 
     @property
     def RuleDetail(self):
-        r"""公摊规则表达式
+        r"""<p>公摊规则表达式</p>
         :rtype: :class:`tencentcloud.billing.v20180709.models.AllocationRuleExpression`
         """
         return self._RuleDetail
@@ -18758,7 +18692,7 @@ class DescribeAllocationRuleDetailResponse(AbstractModel):
 
     @property
     def RatioDetail(self):
-        r"""公摊比例表达式，Type为1和2时返回
+        r"""<p>公摊比例表达式，Type为1和2时返回</p>
         :rtype: list of AllocationRationExpression
         """
         return self._RatioDetail
@@ -18803,19 +18737,15 @@ class DescribeAllocationRuleSummaryRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Limit: 每次获取数据量，最大值1000
+        :param _Limit: <p>每次获取数据量，最大值1000</p>
         :type Limit: int
-        :param _Offset: 分页偏移量
+        :param _Offset: <p>分页偏移量</p>
         :type Offset: int
-        :param _Month: 月份，不传默认当前月
+        :param _Month: <p>月份，不传默认当前月</p>
         :type Month: str
-        :param _Type: 公摊策略类型，用于筛选。
-枚举值如下： 
-1 - 自定义分摊占比 
-2 - 等比分摊 
-3 - 按占比分摊
+        :param _Type: <p>公摊策略类型，用于筛选。<br>枚举值如下：<br>1 - 自定义分摊占比<br>2 - 等比分摊<br>3 - 按占比分摊</p>
         :type Type: int
-        :param _Name: 公摊规则名称或分账单元名称，用于模糊筛选。
+        :param _Name: <p>公摊规则名称或分账单元名称，用于模糊筛选。</p>
         :type Name: str
         """
         self._Limit = None
@@ -18826,7 +18756,7 @@ class DescribeAllocationRuleSummaryRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""每次获取数据量，最大值1000
+        r"""<p>每次获取数据量，最大值1000</p>
         :rtype: int
         """
         return self._Limit
@@ -18837,7 +18767,7 @@ class DescribeAllocationRuleSummaryRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""分页偏移量
+        r"""<p>分页偏移量</p>
         :rtype: int
         """
         return self._Offset
@@ -18848,7 +18778,7 @@ class DescribeAllocationRuleSummaryRequest(AbstractModel):
 
     @property
     def Month(self):
-        r"""月份，不传默认当前月
+        r"""<p>月份，不传默认当前月</p>
         :rtype: str
         """
         return self._Month
@@ -18859,11 +18789,7 @@ class DescribeAllocationRuleSummaryRequest(AbstractModel):
 
     @property
     def Type(self):
-        r"""公摊策略类型，用于筛选。
-枚举值如下： 
-1 - 自定义分摊占比 
-2 - 等比分摊 
-3 - 按占比分摊
+        r"""<p>公摊策略类型，用于筛选。<br>枚举值如下：<br>1 - 自定义分摊占比<br>2 - 等比分摊<br>3 - 按占比分摊</p>
         :rtype: int
         """
         return self._Type
@@ -18874,7 +18800,7 @@ class DescribeAllocationRuleSummaryRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""公摊规则名称或分账单元名称，用于模糊筛选。
+        r"""<p>公摊规则名称或分账单元名称，用于模糊筛选。</p>
         :rtype: str
         """
         return self._Name
@@ -18907,9 +18833,9 @@ class DescribeAllocationRuleSummaryResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuleList: 公摊规则表达式
+        :param _RuleList: <p>公摊规则表达式</p>
         :type RuleList: list of AllocationRuleOverview
-        :param _Total: 规则总数
+        :param _Total: <p>规则总数</p>
         :type Total: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -18920,7 +18846,7 @@ class DescribeAllocationRuleSummaryResponse(AbstractModel):
 
     @property
     def RuleList(self):
-        r"""公摊规则表达式
+        r"""<p>公摊规则表达式</p>
         :rtype: list of AllocationRuleOverview
         """
         return self._RuleList
@@ -18931,7 +18857,7 @@ class DescribeAllocationRuleSummaryResponse(AbstractModel):
 
     @property
     def Total(self):
-        r"""规则总数
+        r"""<p>规则总数</p>
         :rtype: int
         """
         return self._Total
@@ -18970,50 +18896,25 @@ class DescribeAllocationSummaryByBusinessRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Limit: 数量，最大值为1000
+        :param _Limit: <p>数量，最大值为1000</p>
         :type Limit: int
-        :param _Offset: 分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，以此类推
+        :param _Offset: <p>分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，以此类推</p>
         :type Offset: int
-        :param _Month: 账单月份，格式为2024-02，不传默认当前月
-
+        :param _Month: <p>账单月份，格式为2024-02，不传默认当前月</p>
         :type Month: str
-        :param _PeriodType: 统计周期，枚举值如下
-month - 月
-day - 日
+        :param _PeriodType: <p>统计周期，枚举值如下<br>month - 月<br>day - 日</p>
         :type PeriodType: str
-        :param _TreeNodeUniqKeys: 分账单元唯一标识，用作筛选
-
+        :param _TreeNodeUniqKeys: <p>分账单元唯一标识，用作筛选</p>
         :type TreeNodeUniqKeys: list of str
-        :param _SortType: 排序类型，枚举值如下：
-asc - 升序
-desc - 降序
+        :param _SortType: <p>排序类型，枚举值如下：<br>asc - 升序<br>desc - 降序</p>
         :type SortType: str
-        :param _Sort: 排序字段，枚举值如下：
-GatherCashPayAmount - 归集费用(现金)
-GatherVoucherPayAmount- 归集费用(优惠券)
-GatherIncentivePayAmount - 归集费用(赠送金)
-GatherTransferPayAmount - 归集费用(分成金)
-AllocateCashPayAmount - 分摊费用(现金)
-AllocateVoucherPayAmount - 分摊费用(优惠券)
-AllocateIncentivePayAmount - 分摊费用(赠送金)
-AllocateTransferPayAmount - 分摊费用(分成金)
-TotalCashPayAmount - 合计费用(现金)
-TotalVoucherPayAmount - 合计费用(优惠券)
-TotalIncentivePayAmount - 合计费用(赠送金)
-TotalTransferPayAmount - 合计费用(分成金)
-GatherRealCost - 归集费用(折后总额)
-AllocateRealCost - 分摊费用(折后总额)
-RealTotalCost - 合计费用(折后总额)
-BusinessCode - 产品代码
-Ratio - 占比(折后总额)
-Trend - 环比(折后总额)
+        :param _Sort: <p>排序字段，枚举值如下：<br>GatherCashPayAmount - 归集费用(现金)<br>GatherVoucherPayAmount- 归集费用(优惠券)<br>GatherIncentivePayAmount - 归集费用(赠送金)<br>GatherTransferPayAmount - 归集费用(分成金)<br>AllocateCashPayAmount - 分摊费用(现金)<br>AllocateVoucherPayAmount - 分摊费用(优惠券)<br>AllocateIncentivePayAmount - 分摊费用(赠送金)<br>AllocateTransferPayAmount - 分摊费用(分成金)<br>TotalCashPayAmount - 合计费用(现金)<br>TotalVoucherPayAmount - 合计费用(优惠券)<br>TotalIncentivePayAmount - 合计费用(赠送金)<br>TotalTransferPayAmount - 合计费用(分成金)<br>GatherRealCost - 归集费用(折后总额)<br>AllocateRealCost - 分摊费用(折后总额)<br>RealTotalCost - 合计费用(折后总额)<br>BusinessCode - 产品代码<br>Ratio - 占比(折后总额)<br>Trend - 环比(折后总额)</p>
         :type Sort: str
-        :param _BillDates: 日期，用作筛选，PeriodType=day时可传
-
+        :param _BillDates: <p>日期，用作筛选，PeriodType=day时可传</p>
         :type BillDates: list of str
-        :param _BusinessCodes: 产品编码，用作筛选
+        :param _BusinessCodes: <p>产品编码，用作筛选</p>
         :type BusinessCodes: list of str
-        :param _SearchKey: 模糊搜索条件
+        :param _SearchKey: <p>模糊搜索条件</p>
         :type SearchKey: str
         """
         self._Limit = None
@@ -19029,7 +18930,7 @@ Trend - 环比(折后总额)
 
     @property
     def Limit(self):
-        r"""数量，最大值为1000
+        r"""<p>数量，最大值为1000</p>
         :rtype: int
         """
         return self._Limit
@@ -19040,7 +18941,7 @@ Trend - 环比(折后总额)
 
     @property
     def Offset(self):
-        r"""分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，以此类推
+        r"""<p>分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，以此类推</p>
         :rtype: int
         """
         return self._Offset
@@ -19051,8 +18952,7 @@ Trend - 环比(折后总额)
 
     @property
     def Month(self):
-        r"""账单月份，格式为2024-02，不传默认当前月
-
+        r"""<p>账单月份，格式为2024-02，不传默认当前月</p>
         :rtype: str
         """
         return self._Month
@@ -19063,9 +18963,7 @@ Trend - 环比(折后总额)
 
     @property
     def PeriodType(self):
-        r"""统计周期，枚举值如下
-month - 月
-day - 日
+        r"""<p>统计周期，枚举值如下<br>month - 月<br>day - 日</p>
         :rtype: str
         """
         return self._PeriodType
@@ -19076,8 +18974,7 @@ day - 日
 
     @property
     def TreeNodeUniqKeys(self):
-        r"""分账单元唯一标识，用作筛选
-
+        r"""<p>分账单元唯一标识，用作筛选</p>
         :rtype: list of str
         """
         return self._TreeNodeUniqKeys
@@ -19088,9 +18985,7 @@ day - 日
 
     @property
     def SortType(self):
-        r"""排序类型，枚举值如下：
-asc - 升序
-desc - 降序
+        r"""<p>排序类型，枚举值如下：<br>asc - 升序<br>desc - 降序</p>
         :rtype: str
         """
         return self._SortType
@@ -19101,25 +18996,7 @@ desc - 降序
 
     @property
     def Sort(self):
-        r"""排序字段，枚举值如下：
-GatherCashPayAmount - 归集费用(现金)
-GatherVoucherPayAmount- 归集费用(优惠券)
-GatherIncentivePayAmount - 归集费用(赠送金)
-GatherTransferPayAmount - 归集费用(分成金)
-AllocateCashPayAmount - 分摊费用(现金)
-AllocateVoucherPayAmount - 分摊费用(优惠券)
-AllocateIncentivePayAmount - 分摊费用(赠送金)
-AllocateTransferPayAmount - 分摊费用(分成金)
-TotalCashPayAmount - 合计费用(现金)
-TotalVoucherPayAmount - 合计费用(优惠券)
-TotalIncentivePayAmount - 合计费用(赠送金)
-TotalTransferPayAmount - 合计费用(分成金)
-GatherRealCost - 归集费用(折后总额)
-AllocateRealCost - 分摊费用(折后总额)
-RealTotalCost - 合计费用(折后总额)
-BusinessCode - 产品代码
-Ratio - 占比(折后总额)
-Trend - 环比(折后总额)
+        r"""<p>排序字段，枚举值如下：<br>GatherCashPayAmount - 归集费用(现金)<br>GatherVoucherPayAmount- 归集费用(优惠券)<br>GatherIncentivePayAmount - 归集费用(赠送金)<br>GatherTransferPayAmount - 归集费用(分成金)<br>AllocateCashPayAmount - 分摊费用(现金)<br>AllocateVoucherPayAmount - 分摊费用(优惠券)<br>AllocateIncentivePayAmount - 分摊费用(赠送金)<br>AllocateTransferPayAmount - 分摊费用(分成金)<br>TotalCashPayAmount - 合计费用(现金)<br>TotalVoucherPayAmount - 合计费用(优惠券)<br>TotalIncentivePayAmount - 合计费用(赠送金)<br>TotalTransferPayAmount - 合计费用(分成金)<br>GatherRealCost - 归集费用(折后总额)<br>AllocateRealCost - 分摊费用(折后总额)<br>RealTotalCost - 合计费用(折后总额)<br>BusinessCode - 产品代码<br>Ratio - 占比(折后总额)<br>Trend - 环比(折后总额)</p>
         :rtype: str
         """
         return self._Sort
@@ -19130,8 +19007,7 @@ Trend - 环比(折后总额)
 
     @property
     def BillDates(self):
-        r"""日期，用作筛选，PeriodType=day时可传
-
+        r"""<p>日期，用作筛选，PeriodType=day时可传</p>
         :rtype: list of str
         """
         return self._BillDates
@@ -19142,7 +19018,7 @@ Trend - 环比(折后总额)
 
     @property
     def BusinessCodes(self):
-        r"""产品编码，用作筛选
+        r"""<p>产品编码，用作筛选</p>
         :rtype: list of str
         """
         return self._BusinessCodes
@@ -19155,7 +19031,7 @@ Trend - 环比(折后总额)
     def SearchKey(self):
         warnings.warn("parameter `SearchKey` is deprecated", DeprecationWarning) 
 
-        r"""模糊搜索条件
+        r"""<p>模糊搜索条件</p>
         :rtype: str
         """
         return self._SearchKey
@@ -19195,12 +19071,11 @@ class DescribeAllocationSummaryByBusinessResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RecordNum: 总条数
+        :param _RecordNum: <p>总条数</p>
         :type RecordNum: int
-        :param _Total: 分账账单概览金额汇总
-
+        :param _Total: <p>分账账单概览金额汇总</p>
         :type Total: :class:`tencentcloud.billing.v20180709.models.AllocationOverviewTotal`
-        :param _Detail: 分账账单按产品汇总明细
+        :param _Detail: <p>分账账单按产品汇总明细</p>
         :type Detail: list of AllocationSummaryByBusiness
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -19212,7 +19087,7 @@ class DescribeAllocationSummaryByBusinessResponse(AbstractModel):
 
     @property
     def RecordNum(self):
-        r"""总条数
+        r"""<p>总条数</p>
         :rtype: int
         """
         return self._RecordNum
@@ -19223,8 +19098,7 @@ class DescribeAllocationSummaryByBusinessResponse(AbstractModel):
 
     @property
     def Total(self):
-        r"""分账账单概览金额汇总
-
+        r"""<p>分账账单概览金额汇总</p>
         :rtype: :class:`tencentcloud.billing.v20180709.models.AllocationOverviewTotal`
         """
         return self._Total
@@ -19235,7 +19109,7 @@ class DescribeAllocationSummaryByBusinessResponse(AbstractModel):
 
     @property
     def Detail(self):
-        r"""分账账单按产品汇总明细
+        r"""<p>分账账单按产品汇总明细</p>
         :rtype: list of AllocationSummaryByBusiness
         """
         return self._Detail
@@ -19277,81 +19151,51 @@ class DescribeAllocationSummaryByItemRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Limit: 数量，最大值为1000
-
+        :param _Limit: <p>数量，最大值为1000</p>
         :type Limit: int
-        :param _Offset: 分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，以此类推
+        :param _Offset: <p>分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，以此类推</p>
         :type Offset: int
-        :param _Month: 账单月份，格式为2024-02，不传默认当前月
-
+        :param _Month: <p>账单月份，格式为2024-02，不传默认当前月</p>
         :type Month: str
-        :param _PeriodType: 统计周期，枚举值如下
-month - 月
-day - 日
+        :param _PeriodType: <p>统计周期，枚举值如下<br>month - 月<br>day - 日</p>
         :type PeriodType: str
-        :param _TreeNodeUniqKeys: 分账单元唯一标识，用作筛选
-
+        :param _TreeNodeUniqKeys: <p>分账单元唯一标识，用作筛选</p>
         :type TreeNodeUniqKeys: list of str
-        :param _Sort: 排序字段，枚举值如下：
-RiTimeSpan - 预留实例抵扣时长
-ExtendPayAmount1 - 预留实例抵扣组件原价
-RealCost - 折后总价
-CashPayAmount - 现金金额
-VoucherPayAmount - 代金券金额
-IncentivePayAmount - 赠送金金额
-TransferPayAmount -分成金金额
-Cost - 组件原价
+        :param _Sort: <p>排序字段，枚举值如下：<br>RiTimeSpan - 预留实例抵扣时长<br>ExtendPayAmount1 - 预留实例抵扣组件原价<br>RealCost - 折后总价<br>CashPayAmount - 现金金额<br>VoucherPayAmount - 代金券金额<br>IncentivePayAmount - 赠送金金额<br>TransferPayAmount -分成金金额<br>Cost - 组件原价</p>
         :type Sort: str
-        :param _SortType: 排序类型，枚举值如下：
-asc - 升序
-desc - 降序
+        :param _SortType: <p>排序类型，枚举值如下：<br>asc - 升序<br>desc - 降序</p>
         :type SortType: str
-        :param _BillDates: 日期，用作筛选
-
+        :param _BillDates: <p>日期，用作筛选</p>
         :type BillDates: list of str
-        :param _BusinessCodes: 产品编码，用作筛选
-
+        :param _BusinessCodes: <p>产品编码，用作筛选</p>
         :type BusinessCodes: list of str
-        :param _OwnerUins: 使用者UIN，用作筛选
-
+        :param _OwnerUins: <p>使用者UIN，用作筛选</p>
         :type OwnerUins: list of str
-        :param _OperateUins: 操作者UIN，用作筛选
-
+        :param _OperateUins: <p>操作者UIN，用作筛选</p>
         :type OperateUins: list of str
-        :param _PayModes: 计费模式编码，用作筛选
-
+        :param _PayModes: <p>计费模式编码，用作筛选</p>
         :type PayModes: list of str
-        :param _ActionTypes: 交易类型编码，用作筛选
-
+        :param _ActionTypes: <p>交易类型编码，用作筛选</p>
         :type ActionTypes: list of str
-        :param _ProductCodes: 子产品编码，用作筛选
-
+        :param _ProductCodes: <p>子产品编码，用作筛选</p>
         :type ProductCodes: list of str
-        :param _RegionIds: 地域ID，用作筛选
-
+        :param _RegionIds: <p>地域ID，用作筛选</p>
         :type RegionIds: list of str
-        :param _ZoneIds: 可用区ID，用作筛选
-
+        :param _ZoneIds: <p>可用区ID，用作筛选</p>
         :type ZoneIds: list of str
-        :param _InstanceTypes: 实例类型编码，用作筛选
-
+        :param _InstanceTypes: <p>实例类型编码，用作筛选</p>
         :type InstanceTypes: list of str
-        :param _Tag: 标签，用作筛选
-
+        :param _Tag: <p>标签，用作筛选</p>
         :type Tag: list of str
-        :param _ComponentCodes: 组件类型编码，用作筛选
+        :param _ComponentCodes: <p>组件类型编码，用作筛选</p>
         :type ComponentCodes: list of str
-        :param _ItemCodes: 组件名称编码，用作筛选
+        :param _ItemCodes: <p>组件名称编码，用作筛选</p>
         :type ItemCodes: list of str
-        :param _SearchKey: 模糊搜索：支持标签、资源id、资源别名
+        :param _SearchKey: <p>模糊搜索：支持标签、资源id、资源别名</p>
         :type SearchKey: str
-        :param _ProjectIds: 项目ID，用作筛选
-
+        :param _ProjectIds: <p>项目ID，用作筛选</p>
         :type ProjectIds: list of int non-negative
-        :param _AllocationType: 费用归集类型，枚举值如下：
-0 - 分摊
-1 - 归集
--1 - 未分配
+        :param _AllocationType: <p>费用归集类型，枚举值如下：<br>0 - 分摊<br>1 - 归集<br>-1 - 未分配</p>
         :type AllocationType: list of int
         """
         self._Limit = None
@@ -19380,8 +19224,7 @@ desc - 降序
 
     @property
     def Limit(self):
-        r"""数量，最大值为1000
-
+        r"""<p>数量，最大值为1000</p>
         :rtype: int
         """
         return self._Limit
@@ -19392,7 +19235,7 @@ desc - 降序
 
     @property
     def Offset(self):
-        r"""分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，以此类推
+        r"""<p>分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，以此类推</p>
         :rtype: int
         """
         return self._Offset
@@ -19403,8 +19246,7 @@ desc - 降序
 
     @property
     def Month(self):
-        r"""账单月份，格式为2024-02，不传默认当前月
-
+        r"""<p>账单月份，格式为2024-02，不传默认当前月</p>
         :rtype: str
         """
         return self._Month
@@ -19415,9 +19257,7 @@ desc - 降序
 
     @property
     def PeriodType(self):
-        r"""统计周期，枚举值如下
-month - 月
-day - 日
+        r"""<p>统计周期，枚举值如下<br>month - 月<br>day - 日</p>
         :rtype: str
         """
         return self._PeriodType
@@ -19428,8 +19268,7 @@ day - 日
 
     @property
     def TreeNodeUniqKeys(self):
-        r"""分账单元唯一标识，用作筛选
-
+        r"""<p>分账单元唯一标识，用作筛选</p>
         :rtype: list of str
         """
         return self._TreeNodeUniqKeys
@@ -19440,15 +19279,7 @@ day - 日
 
     @property
     def Sort(self):
-        r"""排序字段，枚举值如下：
-RiTimeSpan - 预留实例抵扣时长
-ExtendPayAmount1 - 预留实例抵扣组件原价
-RealCost - 折后总价
-CashPayAmount - 现金金额
-VoucherPayAmount - 代金券金额
-IncentivePayAmount - 赠送金金额
-TransferPayAmount -分成金金额
-Cost - 组件原价
+        r"""<p>排序字段，枚举值如下：<br>RiTimeSpan - 预留实例抵扣时长<br>ExtendPayAmount1 - 预留实例抵扣组件原价<br>RealCost - 折后总价<br>CashPayAmount - 现金金额<br>VoucherPayAmount - 代金券金额<br>IncentivePayAmount - 赠送金金额<br>TransferPayAmount -分成金金额<br>Cost - 组件原价</p>
         :rtype: str
         """
         return self._Sort
@@ -19459,9 +19290,7 @@ Cost - 组件原价
 
     @property
     def SortType(self):
-        r"""排序类型，枚举值如下：
-asc - 升序
-desc - 降序
+        r"""<p>排序类型，枚举值如下：<br>asc - 升序<br>desc - 降序</p>
         :rtype: str
         """
         return self._SortType
@@ -19472,8 +19301,7 @@ desc - 降序
 
     @property
     def BillDates(self):
-        r"""日期，用作筛选
-
+        r"""<p>日期，用作筛选</p>
         :rtype: list of str
         """
         return self._BillDates
@@ -19484,8 +19312,7 @@ desc - 降序
 
     @property
     def BusinessCodes(self):
-        r"""产品编码，用作筛选
-
+        r"""<p>产品编码，用作筛选</p>
         :rtype: list of str
         """
         return self._BusinessCodes
@@ -19496,8 +19323,7 @@ desc - 降序
 
     @property
     def OwnerUins(self):
-        r"""使用者UIN，用作筛选
-
+        r"""<p>使用者UIN，用作筛选</p>
         :rtype: list of str
         """
         return self._OwnerUins
@@ -19508,8 +19334,7 @@ desc - 降序
 
     @property
     def OperateUins(self):
-        r"""操作者UIN，用作筛选
-
+        r"""<p>操作者UIN，用作筛选</p>
         :rtype: list of str
         """
         return self._OperateUins
@@ -19520,8 +19345,7 @@ desc - 降序
 
     @property
     def PayModes(self):
-        r"""计费模式编码，用作筛选
-
+        r"""<p>计费模式编码，用作筛选</p>
         :rtype: list of str
         """
         return self._PayModes
@@ -19532,8 +19356,7 @@ desc - 降序
 
     @property
     def ActionTypes(self):
-        r"""交易类型编码，用作筛选
-
+        r"""<p>交易类型编码，用作筛选</p>
         :rtype: list of str
         """
         return self._ActionTypes
@@ -19544,8 +19367,7 @@ desc - 降序
 
     @property
     def ProductCodes(self):
-        r"""子产品编码，用作筛选
-
+        r"""<p>子产品编码，用作筛选</p>
         :rtype: list of str
         """
         return self._ProductCodes
@@ -19556,8 +19378,7 @@ desc - 降序
 
     @property
     def RegionIds(self):
-        r"""地域ID，用作筛选
-
+        r"""<p>地域ID，用作筛选</p>
         :rtype: list of str
         """
         return self._RegionIds
@@ -19568,8 +19389,7 @@ desc - 降序
 
     @property
     def ZoneIds(self):
-        r"""可用区ID，用作筛选
-
+        r"""<p>可用区ID，用作筛选</p>
         :rtype: list of str
         """
         return self._ZoneIds
@@ -19580,8 +19400,7 @@ desc - 降序
 
     @property
     def InstanceTypes(self):
-        r"""实例类型编码，用作筛选
-
+        r"""<p>实例类型编码，用作筛选</p>
         :rtype: list of str
         """
         return self._InstanceTypes
@@ -19592,8 +19411,7 @@ desc - 降序
 
     @property
     def Tag(self):
-        r"""标签，用作筛选
-
+        r"""<p>标签，用作筛选</p>
         :rtype: list of str
         """
         return self._Tag
@@ -19604,7 +19422,7 @@ desc - 降序
 
     @property
     def ComponentCodes(self):
-        r"""组件类型编码，用作筛选
+        r"""<p>组件类型编码，用作筛选</p>
         :rtype: list of str
         """
         return self._ComponentCodes
@@ -19615,7 +19433,7 @@ desc - 降序
 
     @property
     def ItemCodes(self):
-        r"""组件名称编码，用作筛选
+        r"""<p>组件名称编码，用作筛选</p>
         :rtype: list of str
         """
         return self._ItemCodes
@@ -19626,7 +19444,7 @@ desc - 降序
 
     @property
     def SearchKey(self):
-        r"""模糊搜索：支持标签、资源id、资源别名
+        r"""<p>模糊搜索：支持标签、资源id、资源别名</p>
         :rtype: str
         """
         return self._SearchKey
@@ -19637,8 +19455,7 @@ desc - 降序
 
     @property
     def ProjectIds(self):
-        r"""项目ID，用作筛选
-
+        r"""<p>项目ID，用作筛选</p>
         :rtype: list of int non-negative
         """
         return self._ProjectIds
@@ -19649,10 +19466,7 @@ desc - 降序
 
     @property
     def AllocationType(self):
-        r"""费用归集类型，枚举值如下：
-0 - 分摊
-1 - 归集
--1 - 未分配
+        r"""<p>费用归集类型，枚举值如下：<br>0 - 分摊<br>1 - 归集<br>-1 - 未分配</p>
         :rtype: list of int
         """
         return self._AllocationType
@@ -19703,13 +19517,11 @@ class DescribeAllocationSummaryByItemResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RecordNum: 总条数
-
+        :param _RecordNum: <p>总条数</p>
         :type RecordNum: int
-        :param _Total: 分账账单概览金额汇总
+        :param _Total: <p>分账账单概览金额汇总</p>
         :type Total: :class:`tencentcloud.billing.v20180709.models.AllocationOverviewTotal`
-        :param _Detail: 分账账单按组件汇总明细
-
+        :param _Detail: <p>分账账单按组件汇总明细</p>
         :type Detail: list of AllocationSummaryByItem
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -19721,8 +19533,7 @@ class DescribeAllocationSummaryByItemResponse(AbstractModel):
 
     @property
     def RecordNum(self):
-        r"""总条数
-
+        r"""<p>总条数</p>
         :rtype: int
         """
         return self._RecordNum
@@ -19733,7 +19544,7 @@ class DescribeAllocationSummaryByItemResponse(AbstractModel):
 
     @property
     def Total(self):
-        r"""分账账单概览金额汇总
+        r"""<p>分账账单概览金额汇总</p>
         :rtype: :class:`tencentcloud.billing.v20180709.models.AllocationOverviewTotal`
         """
         return self._Total
@@ -19744,8 +19555,7 @@ class DescribeAllocationSummaryByItemResponse(AbstractModel):
 
     @property
     def Detail(self):
-        r"""分账账单按组件汇总明细
-
+        r"""<p>分账账单按组件汇总明细</p>
         :rtype: list of AllocationSummaryByItem
         """
         return self._Detail
@@ -19787,64 +19597,47 @@ class DescribeAllocationSummaryByResourceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Limit: 数量，最大值为1000
-
+        :param _Limit: <p>数量，最大值为1000</p>
         :type Limit: int
-        :param _Offset: 分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，以此类推
+        :param _Offset: <p>分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，以此类推</p>
         :type Offset: int
-        :param _Month: 账单月份，格式为2024-02，不传默认当前月
-
+        :param _Month: <p>账单月份，格式为2024-02，不传默认当前月</p>
         :type Month: str
-        :param _PeriodType: 统计周期，枚举值如下
-month - 月
-day - 日
+        :param _PeriodType: <p>统计周期，枚举值如下<br>month - 月<br>day - 日</p>
         :type PeriodType: str
-        :param _TreeNodeUniqKeys: 分账单元唯一标识，用作筛选
+        :param _TreeNodeUniqKeys: <p>分账单元唯一标识，用作筛选</p>
         :type TreeNodeUniqKeys: list of str
-        :param _Sort: 排序字段，枚举值如下：
-RiTimeSpan - 预留实例抵扣时长
-ExtendPayAmount1 - 预留实例抵扣组件原价
-RealCost - 折后总价
-CashPayAmount - 现金金额
-VoucherPayAmount - 代金券金额
-IncentivePayAmount - 赠送金金额
-TransferPayAmount -分成金金额
-Cost - 组件原价
+        :param _Sort: <p>排序字段，枚举值如下：<br>RiTimeSpan - 预留实例抵扣时长<br>ExtendPayAmount1 - 预留实例抵扣组件原价<br>RealCost - 折后总价<br>CashPayAmount - 现金金额<br>VoucherPayAmount - 代金券金额<br>IncentivePayAmount - 赠送金金额<br>TransferPayAmount -分成金金额<br>Cost - 组件原价</p>
         :type Sort: str
-        :param _SortType: 排序类型，枚举值如下：
-asc - 升序
-desc - 降序
+        :param _SortType: <p>排序类型，枚举值如下：<br>asc - 升序<br>desc - 降序</p>
         :type SortType: str
-        :param _BillDates: 日期，用作筛选
+        :param _BillDates: <p>日期，用作筛选</p>
         :type BillDates: list of str
-        :param _BusinessCodes: 产品编码，用作筛选
+        :param _BusinessCodes: <p>产品编码，用作筛选</p>
         :type BusinessCodes: list of str
-        :param _OwnerUins: 使用者UIN，用作筛选
+        :param _OwnerUins: <p>使用者UIN，用作筛选</p>
         :type OwnerUins: list of str
-        :param _OperateUins: 操作者UIN，用作筛选
+        :param _OperateUins: <p>操作者UIN，用作筛选</p>
         :type OperateUins: list of str
-        :param _PayModes: 计费模式编码，用作筛选
+        :param _PayModes: <p>计费模式编码，用作筛选</p>
         :type PayModes: list of str
-        :param _ActionTypes: 交易类型编码，用作筛选
+        :param _ActionTypes: <p>交易类型编码，用作筛选</p>
         :type ActionTypes: list of str
-        :param _ProductCodes: 子产品编码，用作筛选
+        :param _ProductCodes: <p>子产品编码，用作筛选</p>
         :type ProductCodes: list of str
-        :param _RegionIds: 地域ID，用作筛选
+        :param _RegionIds: <p>地域ID，用作筛选</p>
         :type RegionIds: list of str
-        :param _ZoneIds: 可用区ID，用作筛选
+        :param _ZoneIds: <p>可用区ID，用作筛选</p>
         :type ZoneIds: list of str
-        :param _InstanceTypes: 实例类型编码，用作筛选
+        :param _InstanceTypes: <p>实例类型编码，用作筛选</p>
         :type InstanceTypes: list of str
-        :param _Tag: 标签，用作筛选
+        :param _Tag: <p>标签，用作筛选</p>
         :type Tag: list of str
-        :param _SearchKey: 模糊搜索：支持标签、资源id、资源别名
+        :param _SearchKey: <p>模糊搜索：支持标签、资源id、资源别名</p>
         :type SearchKey: str
-        :param _ProjectIds: 项目ID，用作筛选
+        :param _ProjectIds: <p>项目ID，用作筛选</p>
         :type ProjectIds: list of int non-negative
-        :param _AllocationType: 费用归集类型，枚举值如下：
-0 - 分摊 
-1 - 归集 
--1 -  未分配
+        :param _AllocationType: <p>费用归集类型，枚举值如下：<br>0 - 分摊<br>1 - 归集<br>-1 -  未分配</p>
         :type AllocationType: list of int
         """
         self._Limit = None
@@ -19871,8 +19664,7 @@ desc - 降序
 
     @property
     def Limit(self):
-        r"""数量，最大值为1000
-
+        r"""<p>数量，最大值为1000</p>
         :rtype: int
         """
         return self._Limit
@@ -19883,7 +19675,7 @@ desc - 降序
 
     @property
     def Offset(self):
-        r"""分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，以此类推
+        r"""<p>分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，以此类推</p>
         :rtype: int
         """
         return self._Offset
@@ -19894,8 +19686,7 @@ desc - 降序
 
     @property
     def Month(self):
-        r"""账单月份，格式为2024-02，不传默认当前月
-
+        r"""<p>账单月份，格式为2024-02，不传默认当前月</p>
         :rtype: str
         """
         return self._Month
@@ -19906,9 +19697,7 @@ desc - 降序
 
     @property
     def PeriodType(self):
-        r"""统计周期，枚举值如下
-month - 月
-day - 日
+        r"""<p>统计周期，枚举值如下<br>month - 月<br>day - 日</p>
         :rtype: str
         """
         return self._PeriodType
@@ -19919,7 +19708,7 @@ day - 日
 
     @property
     def TreeNodeUniqKeys(self):
-        r"""分账单元唯一标识，用作筛选
+        r"""<p>分账单元唯一标识，用作筛选</p>
         :rtype: list of str
         """
         return self._TreeNodeUniqKeys
@@ -19930,15 +19719,7 @@ day - 日
 
     @property
     def Sort(self):
-        r"""排序字段，枚举值如下：
-RiTimeSpan - 预留实例抵扣时长
-ExtendPayAmount1 - 预留实例抵扣组件原价
-RealCost - 折后总价
-CashPayAmount - 现金金额
-VoucherPayAmount - 代金券金额
-IncentivePayAmount - 赠送金金额
-TransferPayAmount -分成金金额
-Cost - 组件原价
+        r"""<p>排序字段，枚举值如下：<br>RiTimeSpan - 预留实例抵扣时长<br>ExtendPayAmount1 - 预留实例抵扣组件原价<br>RealCost - 折后总价<br>CashPayAmount - 现金金额<br>VoucherPayAmount - 代金券金额<br>IncentivePayAmount - 赠送金金额<br>TransferPayAmount -分成金金额<br>Cost - 组件原价</p>
         :rtype: str
         """
         return self._Sort
@@ -19949,9 +19730,7 @@ Cost - 组件原价
 
     @property
     def SortType(self):
-        r"""排序类型，枚举值如下：
-asc - 升序
-desc - 降序
+        r"""<p>排序类型，枚举值如下：<br>asc - 升序<br>desc - 降序</p>
         :rtype: str
         """
         return self._SortType
@@ -19962,7 +19741,7 @@ desc - 降序
 
     @property
     def BillDates(self):
-        r"""日期，用作筛选
+        r"""<p>日期，用作筛选</p>
         :rtype: list of str
         """
         return self._BillDates
@@ -19973,7 +19752,7 @@ desc - 降序
 
     @property
     def BusinessCodes(self):
-        r"""产品编码，用作筛选
+        r"""<p>产品编码，用作筛选</p>
         :rtype: list of str
         """
         return self._BusinessCodes
@@ -19984,7 +19763,7 @@ desc - 降序
 
     @property
     def OwnerUins(self):
-        r"""使用者UIN，用作筛选
+        r"""<p>使用者UIN，用作筛选</p>
         :rtype: list of str
         """
         return self._OwnerUins
@@ -19995,7 +19774,7 @@ desc - 降序
 
     @property
     def OperateUins(self):
-        r"""操作者UIN，用作筛选
+        r"""<p>操作者UIN，用作筛选</p>
         :rtype: list of str
         """
         return self._OperateUins
@@ -20006,7 +19785,7 @@ desc - 降序
 
     @property
     def PayModes(self):
-        r"""计费模式编码，用作筛选
+        r"""<p>计费模式编码，用作筛选</p>
         :rtype: list of str
         """
         return self._PayModes
@@ -20017,7 +19796,7 @@ desc - 降序
 
     @property
     def ActionTypes(self):
-        r"""交易类型编码，用作筛选
+        r"""<p>交易类型编码，用作筛选</p>
         :rtype: list of str
         """
         return self._ActionTypes
@@ -20028,7 +19807,7 @@ desc - 降序
 
     @property
     def ProductCodes(self):
-        r"""子产品编码，用作筛选
+        r"""<p>子产品编码，用作筛选</p>
         :rtype: list of str
         """
         return self._ProductCodes
@@ -20039,7 +19818,7 @@ desc - 降序
 
     @property
     def RegionIds(self):
-        r"""地域ID，用作筛选
+        r"""<p>地域ID，用作筛选</p>
         :rtype: list of str
         """
         return self._RegionIds
@@ -20050,7 +19829,7 @@ desc - 降序
 
     @property
     def ZoneIds(self):
-        r"""可用区ID，用作筛选
+        r"""<p>可用区ID，用作筛选</p>
         :rtype: list of str
         """
         return self._ZoneIds
@@ -20061,7 +19840,7 @@ desc - 降序
 
     @property
     def InstanceTypes(self):
-        r"""实例类型编码，用作筛选
+        r"""<p>实例类型编码，用作筛选</p>
         :rtype: list of str
         """
         return self._InstanceTypes
@@ -20072,7 +19851,7 @@ desc - 降序
 
     @property
     def Tag(self):
-        r"""标签，用作筛选
+        r"""<p>标签，用作筛选</p>
         :rtype: list of str
         """
         return self._Tag
@@ -20083,7 +19862,7 @@ desc - 降序
 
     @property
     def SearchKey(self):
-        r"""模糊搜索：支持标签、资源id、资源别名
+        r"""<p>模糊搜索：支持标签、资源id、资源别名</p>
         :rtype: str
         """
         return self._SearchKey
@@ -20094,7 +19873,7 @@ desc - 降序
 
     @property
     def ProjectIds(self):
-        r"""项目ID，用作筛选
+        r"""<p>项目ID，用作筛选</p>
         :rtype: list of int non-negative
         """
         return self._ProjectIds
@@ -20105,10 +19884,7 @@ desc - 降序
 
     @property
     def AllocationType(self):
-        r"""费用归集类型，枚举值如下：
-0 - 分摊 
-1 - 归集 
--1 -  未分配
+        r"""<p>费用归集类型，枚举值如下：<br>0 - 分摊<br>1 - 归集<br>-1 -  未分配</p>
         :rtype: list of int
         """
         return self._AllocationType
@@ -20157,14 +19933,11 @@ class DescribeAllocationSummaryByResourceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RecordNum: 总条数
-
+        :param _RecordNum: <p>总条数</p>
         :type RecordNum: int
-        :param _Total: 分账账单概览金额汇总
-
+        :param _Total: <p>分账账单概览金额汇总</p>
         :type Total: :class:`tencentcloud.billing.v20180709.models.AllocationOverviewTotal`
-        :param _Detail: 分账账单按资源汇总明细
-
+        :param _Detail: <p>分账账单按资源汇总明细</p>
         :type Detail: list of AllocationSummaryByResource
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -20176,8 +19949,7 @@ class DescribeAllocationSummaryByResourceResponse(AbstractModel):
 
     @property
     def RecordNum(self):
-        r"""总条数
-
+        r"""<p>总条数</p>
         :rtype: int
         """
         return self._RecordNum
@@ -20188,8 +19960,7 @@ class DescribeAllocationSummaryByResourceResponse(AbstractModel):
 
     @property
     def Total(self):
-        r"""分账账单概览金额汇总
-
+        r"""<p>分账账单概览金额汇总</p>
         :rtype: :class:`tencentcloud.billing.v20180709.models.AllocationOverviewTotal`
         """
         return self._Total
@@ -20200,8 +19971,7 @@ class DescribeAllocationSummaryByResourceResponse(AbstractModel):
 
     @property
     def Detail(self):
-        r"""分账账单按资源汇总明细
-
+        r"""<p>分账账单按资源汇总明细</p>
         :rtype: list of AllocationSummaryByResource
         """
         return self._Detail
@@ -20243,14 +20013,14 @@ class DescribeAllocationTreeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Month: 月份，不传默认当前月
+        :param _Month: <p>月份，不传默认当前月</p>
         :type Month: str
         """
         self._Month = None
 
     @property
     def Month(self):
-        r"""月份，不传默认当前月
+        r"""<p>月份，不传默认当前月</p>
         :rtype: str
         """
         return self._Month
@@ -20279,13 +20049,13 @@ class DescribeAllocationTreeResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 分账单元ID
+        :param _Id: <p>分账单元ID</p>
         :type Id: int
-        :param _Name: 分账单元名称
+        :param _Name: <p>分账单元名称</p>
         :type Name: str
-        :param _TreeNodeUniqKey: 分账单元唯一标识
+        :param _TreeNodeUniqKey: <p>分账单元唯一标识</p>
         :type TreeNodeUniqKey: str
-        :param _Children: 子树
+        :param _Children: <p>子树</p>
         :type Children: list of AllocationTree
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -20298,7 +20068,7 @@ class DescribeAllocationTreeResponse(AbstractModel):
 
     @property
     def Id(self):
-        r"""分账单元ID
+        r"""<p>分账单元ID</p>
         :rtype: int
         """
         return self._Id
@@ -20309,7 +20079,7 @@ class DescribeAllocationTreeResponse(AbstractModel):
 
     @property
     def Name(self):
-        r"""分账单元名称
+        r"""<p>分账单元名称</p>
         :rtype: str
         """
         return self._Name
@@ -20320,7 +20090,7 @@ class DescribeAllocationTreeResponse(AbstractModel):
 
     @property
     def TreeNodeUniqKey(self):
-        r"""分账单元唯一标识
+        r"""<p>分账单元唯一标识</p>
         :rtype: str
         """
         return self._TreeNodeUniqKey
@@ -20331,7 +20101,7 @@ class DescribeAllocationTreeResponse(AbstractModel):
 
     @property
     def Children(self):
-        r"""子树
+        r"""<p>子树</p>
         :rtype: list of AllocationTree
         """
         return self._Children
@@ -20372,11 +20142,11 @@ class DescribeAllocationTrendByMonthRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Month: 账单月份，格式为2024-02，不传默认当前月
+        :param _Month: <p>账单月份，格式为2024-02，不传默认当前月</p>
         :type Month: str
-        :param _TreeNodeUniqKey: 分账单元唯一标识
+        :param _TreeNodeUniqKey: <p>分账单元唯一标识</p>
         :type TreeNodeUniqKey: str
-        :param _BusinessCode: 产品编码，用作筛选
+        :param _BusinessCode: <p>产品编码，用作筛选</p>
         :type BusinessCode: str
         """
         self._Month = None
@@ -20385,7 +20155,7 @@ class DescribeAllocationTrendByMonthRequest(AbstractModel):
 
     @property
     def Month(self):
-        r"""账单月份，格式为2024-02，不传默认当前月
+        r"""<p>账单月份，格式为2024-02，不传默认当前月</p>
         :rtype: str
         """
         return self._Month
@@ -20396,7 +20166,7 @@ class DescribeAllocationTrendByMonthRequest(AbstractModel):
 
     @property
     def TreeNodeUniqKey(self):
-        r"""分账单元唯一标识
+        r"""<p>分账单元唯一标识</p>
         :rtype: str
         """
         return self._TreeNodeUniqKey
@@ -20407,7 +20177,7 @@ class DescribeAllocationTrendByMonthRequest(AbstractModel):
 
     @property
     def BusinessCode(self):
-        r"""产品编码，用作筛选
+        r"""<p>产品编码，用作筛选</p>
         :rtype: str
         """
         return self._BusinessCode
@@ -20438,11 +20208,11 @@ class DescribeAllocationTrendByMonthResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Current: 当月费用信息
+        :param _Current: <p>当月费用信息</p>
         :type Current: :class:`tencentcloud.billing.v20180709.models.AllocationBillTrendDetail`
-        :param _Previous: 之前月份费用信息
+        :param _Previous: <p>之前月份费用信息</p>
         :type Previous: list of AllocationBillTrendDetail
-        :param _Stat: 费用统计信息
+        :param _Stat: <p>费用统计信息</p>
         :type Stat: :class:`tencentcloud.billing.v20180709.models.AllocationStat`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -20454,7 +20224,7 @@ class DescribeAllocationTrendByMonthResponse(AbstractModel):
 
     @property
     def Current(self):
-        r"""当月费用信息
+        r"""<p>当月费用信息</p>
         :rtype: :class:`tencentcloud.billing.v20180709.models.AllocationBillTrendDetail`
         """
         return self._Current
@@ -20465,7 +20235,7 @@ class DescribeAllocationTrendByMonthResponse(AbstractModel):
 
     @property
     def Previous(self):
-        r"""之前月份费用信息
+        r"""<p>之前月份费用信息</p>
         :rtype: list of AllocationBillTrendDetail
         """
         return self._Previous
@@ -20476,7 +20246,7 @@ class DescribeAllocationTrendByMonthResponse(AbstractModel):
 
     @property
     def Stat(self):
-        r"""费用统计信息
+        r"""<p>费用统计信息</p>
         :rtype: :class:`tencentcloud.billing.v20180709.models.AllocationStat`
         """
         return self._Stat
@@ -20520,9 +20290,9 @@ class DescribeAllocationUnitDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 所查询分账单元Id
+        :param _Id: <p>所查询分账单元Id</p>
         :type Id: int
-        :param _Month: 月份，不传默认当前月
+        :param _Month: <p>月份，不传默认当前月</p>
         :type Month: str
         """
         self._Id = None
@@ -20530,7 +20300,7 @@ class DescribeAllocationUnitDetailRequest(AbstractModel):
 
     @property
     def Id(self):
-        r"""所查询分账单元Id
+        r"""<p>所查询分账单元Id</p>
         :rtype: int
         """
         return self._Id
@@ -20541,7 +20311,7 @@ class DescribeAllocationUnitDetailRequest(AbstractModel):
 
     @property
     def Month(self):
-        r"""月份，不传默认当前月
+        r"""<p>月份，不传默认当前月</p>
         :rtype: str
         """
         return self._Month
@@ -20571,23 +20341,23 @@ class DescribeAllocationUnitDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 分账单元ID
+        :param _Id: <p>分账单元ID</p>
         :type Id: int
-        :param _Uin: 分账单元所属UIN
+        :param _Uin: <p>分账单元所属UIN</p>
         :type Uin: str
-        :param _Name: 分账单元名称
+        :param _Name: <p>分账单元名称</p>
         :type Name: str
-        :param _ParentId: 分账单元父节点ID
+        :param _ParentId: <p>分账单元父节点ID</p>
         :type ParentId: int
-        :param _SourceName: 源组织名称
+        :param _SourceName: <p>源组织名称</p>
         :type SourceName: str
-        :param _SourceId: 源组织ID
+        :param _SourceId: <p>源组织ID</p>
         :type SourceId: str
-        :param _Remark: 备注说明
+        :param _Remark: <p>备注说明</p>
         :type Remark: str
-        :param _TreeNodeUniqKey: 分账单元标识
+        :param _TreeNodeUniqKey: <p>分账单元标识</p>
         :type TreeNodeUniqKey: str
-        :param _RuleId: 若分账单元设置归集规则，返回归集规则ID，若无分账规则，则不返回
+        :param _RuleId: <p>若分账单元设置归集规则，返回归集规则ID，若无分账规则，则不返回</p>
         :type RuleId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -20605,7 +20375,7 @@ class DescribeAllocationUnitDetailResponse(AbstractModel):
 
     @property
     def Id(self):
-        r"""分账单元ID
+        r"""<p>分账单元ID</p>
         :rtype: int
         """
         return self._Id
@@ -20616,7 +20386,7 @@ class DescribeAllocationUnitDetailResponse(AbstractModel):
 
     @property
     def Uin(self):
-        r"""分账单元所属UIN
+        r"""<p>分账单元所属UIN</p>
         :rtype: str
         """
         return self._Uin
@@ -20627,7 +20397,7 @@ class DescribeAllocationUnitDetailResponse(AbstractModel):
 
     @property
     def Name(self):
-        r"""分账单元名称
+        r"""<p>分账单元名称</p>
         :rtype: str
         """
         return self._Name
@@ -20638,7 +20408,7 @@ class DescribeAllocationUnitDetailResponse(AbstractModel):
 
     @property
     def ParentId(self):
-        r"""分账单元父节点ID
+        r"""<p>分账单元父节点ID</p>
         :rtype: int
         """
         return self._ParentId
@@ -20649,7 +20419,7 @@ class DescribeAllocationUnitDetailResponse(AbstractModel):
 
     @property
     def SourceName(self):
-        r"""源组织名称
+        r"""<p>源组织名称</p>
         :rtype: str
         """
         return self._SourceName
@@ -20660,7 +20430,7 @@ class DescribeAllocationUnitDetailResponse(AbstractModel):
 
     @property
     def SourceId(self):
-        r"""源组织ID
+        r"""<p>源组织ID</p>
         :rtype: str
         """
         return self._SourceId
@@ -20671,7 +20441,7 @@ class DescribeAllocationUnitDetailResponse(AbstractModel):
 
     @property
     def Remark(self):
-        r"""备注说明
+        r"""<p>备注说明</p>
         :rtype: str
         """
         return self._Remark
@@ -20682,7 +20452,7 @@ class DescribeAllocationUnitDetailResponse(AbstractModel):
 
     @property
     def TreeNodeUniqKey(self):
-        r"""分账单元标识
+        r"""<p>分账单元标识</p>
         :rtype: str
         """
         return self._TreeNodeUniqKey
@@ -20693,7 +20463,7 @@ class DescribeAllocationUnitDetailResponse(AbstractModel):
 
     @property
     def RuleId(self):
-        r"""若分账单元设置归集规则，返回归集规则ID，若无分账规则，则不返回
+        r"""<p>若分账单元设置归集规则，返回归集规则ID，若无分账规则，则不返回</p>
         :rtype: int
         """
         return self._RuleId
@@ -27000,52 +26770,43 @@ class DescribeGatherResourceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Limit: 数量，最大值为1000
+        :param _Limit: <p>数量，最大值为1000</p>
         :type Limit: int
-        :param _Offset: 分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，以此类推
+        :param _Offset: <p>分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，以此类推</p>
         :type Offset: int
-        :param _Month: 账单月份，格式为2024-02，不传默认当前月
+        :param _Month: <p>账单月份，格式为2024-02，不传默认当前月</p>
         :type Month: str
-        :param _TreeNodeUniqKey: 分账单元唯一标识，用作筛选
+        :param _TreeNodeUniqKey: <p>分账单元唯一标识，用作筛选</p>
         :type TreeNodeUniqKey: str
-        :param _GatherType: 资源目录类别，枚举值如下：
-all - 全部 
-none - 未归集
+        :param _GatherType: <p>资源目录类别，枚举值如下：<br>all - 全部<br>none - 未归集</p>
         :type GatherType: str
-        :param _Sort: 排序字段，枚举值如下：
-realCost  - 折后总价
-cashPayAmount - 现金金额
-voucherPayAmount - 代金券金额
-incentivePayAmount  - 赠送金金额
-transferPayAmount -分成金金额
+        :param _Sort: <p>排序字段，枚举值如下：<br>realCost  - 折后总价<br>cashPayAmount - 现金金额<br>voucherPayAmount - 代金券金额<br>incentivePayAmount  - 赠送金金额<br>transferPayAmount -分成金金额</p>
         :type Sort: str
-        :param _SortType: 排序类型，枚举值如下：
-asc - 升序
-desc - 降序
+        :param _SortType: <p>排序类型，枚举值如下：<br>asc - 升序<br>desc - 降序</p>
         :type SortType: str
-        :param _BusinessCodes: 产品编码，用作筛选
+        :param _BusinessCodes: <p>产品编码，用作筛选</p>
         :type BusinessCodes: list of str
-        :param _ProductCodes: 子产品编码，用作筛选
+        :param _ProductCodes: <p>子产品编码，用作筛选</p>
         :type ProductCodes: list of str
-        :param _ItemCodes: 组件名称编码，用作筛选
+        :param _ItemCodes: <p>组件名称编码，用作筛选</p>
         :type ItemCodes: list of str
-        :param _RegionIds: 地域ID，用作筛选
+        :param _RegionIds: <p>地域ID，用作筛选</p>
         :type RegionIds: list of int non-negative
-        :param _InstanceTypes: 实例类型编码，用作筛选
+        :param _InstanceTypes: <p>实例类型编码，用作筛选</p>
         :type InstanceTypes: list of str
-        :param _PayModes: 计费模式编码，用作筛选
+        :param _PayModes: <p>计费模式编码，用作筛选</p>
         :type PayModes: list of str
-        :param _OperateUins: 操作者UIN，用作筛选
+        :param _OperateUins: <p>操作者UIN，用作筛选</p>
         :type OperateUins: list of str
-        :param _OwnerUins: 使用者UIN，用作筛选
+        :param _OwnerUins: <p>使用者UIN，用作筛选</p>
         :type OwnerUins: list of str
-        :param _SearchKey: 模糊搜索：支持标签、资源id、资源别名
+        :param _SearchKey: <p>模糊搜索：支持标签、资源id、资源别名</p>
         :type SearchKey: str
-        :param _Tag: 标签，用作筛选
+        :param _Tag: <p>标签，用作筛选</p>
         :type Tag: list of str
-        :param _ProjectIds: 项目ID，用作筛选
+        :param _ProjectIds: <p>项目ID，用作筛选</p>
         :type ProjectIds: list of str
-        :param _ActionTypes: 交易类型编码，用作筛选
+        :param _ActionTypes: <p>交易类型编码，用作筛选</p>
         :type ActionTypes: list of str
         """
         self._Limit = None
@@ -27070,7 +26831,7 @@ desc - 降序
 
     @property
     def Limit(self):
-        r"""数量，最大值为1000
+        r"""<p>数量，最大值为1000</p>
         :rtype: int
         """
         return self._Limit
@@ -27081,7 +26842,7 @@ desc - 降序
 
     @property
     def Offset(self):
-        r"""分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，以此类推
+        r"""<p>分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，以此类推</p>
         :rtype: int
         """
         return self._Offset
@@ -27092,7 +26853,7 @@ desc - 降序
 
     @property
     def Month(self):
-        r"""账单月份，格式为2024-02，不传默认当前月
+        r"""<p>账单月份，格式为2024-02，不传默认当前月</p>
         :rtype: str
         """
         return self._Month
@@ -27103,7 +26864,7 @@ desc - 降序
 
     @property
     def TreeNodeUniqKey(self):
-        r"""分账单元唯一标识，用作筛选
+        r"""<p>分账单元唯一标识，用作筛选</p>
         :rtype: str
         """
         return self._TreeNodeUniqKey
@@ -27114,9 +26875,7 @@ desc - 降序
 
     @property
     def GatherType(self):
-        r"""资源目录类别，枚举值如下：
-all - 全部 
-none - 未归集
+        r"""<p>资源目录类别，枚举值如下：<br>all - 全部<br>none - 未归集</p>
         :rtype: str
         """
         return self._GatherType
@@ -27127,12 +26886,7 @@ none - 未归集
 
     @property
     def Sort(self):
-        r"""排序字段，枚举值如下：
-realCost  - 折后总价
-cashPayAmount - 现金金额
-voucherPayAmount - 代金券金额
-incentivePayAmount  - 赠送金金额
-transferPayAmount -分成金金额
+        r"""<p>排序字段，枚举值如下：<br>realCost  - 折后总价<br>cashPayAmount - 现金金额<br>voucherPayAmount - 代金券金额<br>incentivePayAmount  - 赠送金金额<br>transferPayAmount -分成金金额</p>
         :rtype: str
         """
         return self._Sort
@@ -27143,9 +26897,7 @@ transferPayAmount -分成金金额
 
     @property
     def SortType(self):
-        r"""排序类型，枚举值如下：
-asc - 升序
-desc - 降序
+        r"""<p>排序类型，枚举值如下：<br>asc - 升序<br>desc - 降序</p>
         :rtype: str
         """
         return self._SortType
@@ -27156,7 +26908,7 @@ desc - 降序
 
     @property
     def BusinessCodes(self):
-        r"""产品编码，用作筛选
+        r"""<p>产品编码，用作筛选</p>
         :rtype: list of str
         """
         return self._BusinessCodes
@@ -27167,7 +26919,7 @@ desc - 降序
 
     @property
     def ProductCodes(self):
-        r"""子产品编码，用作筛选
+        r"""<p>子产品编码，用作筛选</p>
         :rtype: list of str
         """
         return self._ProductCodes
@@ -27178,7 +26930,7 @@ desc - 降序
 
     @property
     def ItemCodes(self):
-        r"""组件名称编码，用作筛选
+        r"""<p>组件名称编码，用作筛选</p>
         :rtype: list of str
         """
         return self._ItemCodes
@@ -27189,7 +26941,7 @@ desc - 降序
 
     @property
     def RegionIds(self):
-        r"""地域ID，用作筛选
+        r"""<p>地域ID，用作筛选</p>
         :rtype: list of int non-negative
         """
         return self._RegionIds
@@ -27200,7 +26952,7 @@ desc - 降序
 
     @property
     def InstanceTypes(self):
-        r"""实例类型编码，用作筛选
+        r"""<p>实例类型编码，用作筛选</p>
         :rtype: list of str
         """
         return self._InstanceTypes
@@ -27211,7 +26963,7 @@ desc - 降序
 
     @property
     def PayModes(self):
-        r"""计费模式编码，用作筛选
+        r"""<p>计费模式编码，用作筛选</p>
         :rtype: list of str
         """
         return self._PayModes
@@ -27222,7 +26974,7 @@ desc - 降序
 
     @property
     def OperateUins(self):
-        r"""操作者UIN，用作筛选
+        r"""<p>操作者UIN，用作筛选</p>
         :rtype: list of str
         """
         return self._OperateUins
@@ -27233,7 +26985,7 @@ desc - 降序
 
     @property
     def OwnerUins(self):
-        r"""使用者UIN，用作筛选
+        r"""<p>使用者UIN，用作筛选</p>
         :rtype: list of str
         """
         return self._OwnerUins
@@ -27244,7 +26996,7 @@ desc - 降序
 
     @property
     def SearchKey(self):
-        r"""模糊搜索：支持标签、资源id、资源别名
+        r"""<p>模糊搜索：支持标签、资源id、资源别名</p>
         :rtype: str
         """
         return self._SearchKey
@@ -27255,7 +27007,7 @@ desc - 降序
 
     @property
     def Tag(self):
-        r"""标签，用作筛选
+        r"""<p>标签，用作筛选</p>
         :rtype: list of str
         """
         return self._Tag
@@ -27266,7 +27018,7 @@ desc - 降序
 
     @property
     def ProjectIds(self):
-        r"""项目ID，用作筛选
+        r"""<p>项目ID，用作筛选</p>
         :rtype: list of str
         """
         return self._ProjectIds
@@ -27277,7 +27029,7 @@ desc - 降序
 
     @property
     def ActionTypes(self):
-        r"""交易类型编码，用作筛选
+        r"""<p>交易类型编码，用作筛选</p>
         :rtype: list of str
         """
         return self._ActionTypes
@@ -27324,12 +27076,12 @@ class DescribeGatherResourceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RecordNum: 总条数
+        :param _RecordNum: <p>总条数</p>
         :type RecordNum: int
-        :param _GatherResourceSummary: 资源归集汇总
+        :param _GatherResourceSummary: <p>资源归集汇总</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type GatherResourceSummary: list of GatherResourceSummary
-        :param _LastUpdateTime: 数据更新时间
+        :param _LastUpdateTime: <p>数据更新时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type LastUpdateTime: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -27342,7 +27094,7 @@ class DescribeGatherResourceResponse(AbstractModel):
 
     @property
     def RecordNum(self):
-        r"""总条数
+        r"""<p>总条数</p>
         :rtype: int
         """
         return self._RecordNum
@@ -27353,7 +27105,7 @@ class DescribeGatherResourceResponse(AbstractModel):
 
     @property
     def GatherResourceSummary(self):
-        r"""资源归集汇总
+        r"""<p>资源归集汇总</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of GatherResourceSummary
         """
@@ -27365,7 +27117,7 @@ class DescribeGatherResourceResponse(AbstractModel):
 
     @property
     def LastUpdateTime(self):
-        r"""数据更新时间
+        r"""<p>数据更新时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -27406,9 +27158,9 @@ class DescribeGatherRuleDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 所查询归集规则ID
+        :param _Id: <p>所查询归集规则ID</p>
         :type Id: int
-        :param _Month: 月份，不传默认当前月
+        :param _Month: <p>月份，不传默认当前月</p>
         :type Month: str
         """
         self._Id = None
@@ -27416,7 +27168,7 @@ class DescribeGatherRuleDetailRequest(AbstractModel):
 
     @property
     def Id(self):
-        r"""所查询归集规则ID
+        r"""<p>所查询归集规则ID</p>
         :rtype: int
         """
         return self._Id
@@ -27427,7 +27179,7 @@ class DescribeGatherRuleDetailRequest(AbstractModel):
 
     @property
     def Month(self):
-        r"""月份，不传默认当前月
+        r"""<p>月份，不传默认当前月</p>
         :rtype: str
         """
         return self._Month
@@ -27457,13 +27209,13 @@ class DescribeGatherRuleDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 归集规则ID
+        :param _Id: <p>归集规则ID</p>
         :type Id: int
-        :param _Uin: 归集规则所属UIN
+        :param _Uin: <p>归集规则所属UIN</p>
         :type Uin: str
-        :param _UpdateTime: 归集规则最后更新时间
+        :param _UpdateTime: <p>归集规则最后更新时间</p>
         :type UpdateTime: str
-        :param _RuleDetail: 归集规则详情
+        :param _RuleDetail: <p>归集规则详情</p>
         :type RuleDetail: :class:`tencentcloud.billing.v20180709.models.AllocationRuleExpression`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -27476,7 +27228,7 @@ class DescribeGatherRuleDetailResponse(AbstractModel):
 
     @property
     def Id(self):
-        r"""归集规则ID
+        r"""<p>归集规则ID</p>
         :rtype: int
         """
         return self._Id
@@ -27487,7 +27239,7 @@ class DescribeGatherRuleDetailResponse(AbstractModel):
 
     @property
     def Uin(self):
-        r"""归集规则所属UIN
+        r"""<p>归集规则所属UIN</p>
         :rtype: str
         """
         return self._Uin
@@ -27498,7 +27250,7 @@ class DescribeGatherRuleDetailResponse(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""归集规则最后更新时间
+        r"""<p>归集规则最后更新时间</p>
         :rtype: str
         """
         return self._UpdateTime
@@ -27509,7 +27261,7 @@ class DescribeGatherRuleDetailResponse(AbstractModel):
 
     @property
     def RuleDetail(self):
-        r"""归集规则详情
+        r"""<p>归集规则详情</p>
         :rtype: :class:`tencentcloud.billing.v20180709.models.AllocationRuleExpression`
         """
         return self._RuleDetail
@@ -30022,17 +29774,17 @@ class ModifyAllocationRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuleId: 所编辑公摊规则ID
+        :param _RuleId: <p>所编辑公摊规则ID</p>
         :type RuleId: int
-        :param _Name: 编辑后公摊规则名称
+        :param _Name: <p>编辑后公摊规则名称</p>
         :type Name: str
-        :param _Type: 公摊策略类型，枚举值如下： 1 - 自定义分摊占比 2 - 等比分摊 3 - 按占比分摊
+        :param _Type: <p>公摊策略类型，枚举值如下： 1 - 自定义分摊占比 2 - 等比分摊 3 - 按占比分摊</p>
         :type Type: int
-        :param _RuleDetail: 编辑后公摊规则表达式
+        :param _RuleDetail: <p>编辑后公摊规则表达式</p>
         :type RuleDetail: :class:`tencentcloud.billing.v20180709.models.AllocationRuleExpression`
-        :param _RatioDetail: 编辑后公摊比例表达式
+        :param _RatioDetail: <p>编辑后公摊比例表达式</p>
         :type RatioDetail: list of AllocationRationExpression
-        :param _Month: 月份，不传默认当前月
+        :param _Month: <p>月份，不传默认当前月</p>
         :type Month: str
         """
         self._RuleId = None
@@ -30044,7 +29796,7 @@ class ModifyAllocationRuleRequest(AbstractModel):
 
     @property
     def RuleId(self):
-        r"""所编辑公摊规则ID
+        r"""<p>所编辑公摊规则ID</p>
         :rtype: int
         """
         return self._RuleId
@@ -30055,7 +29807,7 @@ class ModifyAllocationRuleRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""编辑后公摊规则名称
+        r"""<p>编辑后公摊规则名称</p>
         :rtype: str
         """
         return self._Name
@@ -30066,7 +29818,7 @@ class ModifyAllocationRuleRequest(AbstractModel):
 
     @property
     def Type(self):
-        r"""公摊策略类型，枚举值如下： 1 - 自定义分摊占比 2 - 等比分摊 3 - 按占比分摊
+        r"""<p>公摊策略类型，枚举值如下： 1 - 自定义分摊占比 2 - 等比分摊 3 - 按占比分摊</p>
         :rtype: int
         """
         return self._Type
@@ -30077,7 +29829,7 @@ class ModifyAllocationRuleRequest(AbstractModel):
 
     @property
     def RuleDetail(self):
-        r"""编辑后公摊规则表达式
+        r"""<p>编辑后公摊规则表达式</p>
         :rtype: :class:`tencentcloud.billing.v20180709.models.AllocationRuleExpression`
         """
         return self._RuleDetail
@@ -30088,7 +29840,7 @@ class ModifyAllocationRuleRequest(AbstractModel):
 
     @property
     def RatioDetail(self):
-        r"""编辑后公摊比例表达式
+        r"""<p>编辑后公摊比例表达式</p>
         :rtype: list of AllocationRationExpression
         """
         return self._RatioDetail
@@ -30099,7 +29851,7 @@ class ModifyAllocationRuleRequest(AbstractModel):
 
     @property
     def Month(self):
-        r"""月份，不传默认当前月
+        r"""<p>月份，不传默认当前月</p>
         :rtype: str
         """
         return self._Month
@@ -30168,17 +29920,17 @@ class ModifyAllocationUnitRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 所修改分账单元ID
+        :param _Id: <p>所修改分账单元ID</p>
         :type Id: int
-        :param _Name: 修改后分账单元名称
+        :param _Name: <p>修改后分账单元名称</p>
         :type Name: str
-        :param _SourceName: 修改后分账单元源组织名称
+        :param _SourceName: <p>修改后分账单元源组织名称</p>
         :type SourceName: str
-        :param _SourceId: 修改后分账单元源组织ID
+        :param _SourceId: <p>修改后分账单元源组织ID</p>
         :type SourceId: str
-        :param _Remark: 分账单元备注说明
+        :param _Remark: <p>分账单元备注说明</p>
         :type Remark: str
-        :param _Month: 月份，不传默认当前月
+        :param _Month: <p>月份，不传默认当前月</p>
         :type Month: str
         """
         self._Id = None
@@ -30190,7 +29942,7 @@ class ModifyAllocationUnitRequest(AbstractModel):
 
     @property
     def Id(self):
-        r"""所修改分账单元ID
+        r"""<p>所修改分账单元ID</p>
         :rtype: int
         """
         return self._Id
@@ -30201,7 +29953,7 @@ class ModifyAllocationUnitRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""修改后分账单元名称
+        r"""<p>修改后分账单元名称</p>
         :rtype: str
         """
         return self._Name
@@ -30212,7 +29964,7 @@ class ModifyAllocationUnitRequest(AbstractModel):
 
     @property
     def SourceName(self):
-        r"""修改后分账单元源组织名称
+        r"""<p>修改后分账单元源组织名称</p>
         :rtype: str
         """
         return self._SourceName
@@ -30223,7 +29975,7 @@ class ModifyAllocationUnitRequest(AbstractModel):
 
     @property
     def SourceId(self):
-        r"""修改后分账单元源组织ID
+        r"""<p>修改后分账单元源组织ID</p>
         :rtype: str
         """
         return self._SourceId
@@ -30234,7 +29986,7 @@ class ModifyAllocationUnitRequest(AbstractModel):
 
     @property
     def Remark(self):
-        r"""分账单元备注说明
+        r"""<p>分账单元备注说明</p>
         :rtype: str
         """
         return self._Remark
@@ -30245,7 +29997,7 @@ class ModifyAllocationUnitRequest(AbstractModel):
 
     @property
     def Month(self):
-        r"""月份，不传默认当前月
+        r"""<p>月份，不传默认当前月</p>
         :rtype: str
         """
         return self._Month
@@ -30616,11 +30368,11 @@ class ModifyGatherRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 所编辑归集规则ID
+        :param _Id: <p>所编辑归集规则ID</p>
         :type Id: int
-        :param _RuleDetail: 所编辑分账规则详情
+        :param _RuleDetail: <p>所编辑分账规则详情</p>
         :type RuleDetail: :class:`tencentcloud.billing.v20180709.models.AllocationRuleExpression`
-        :param _Month: 月份，不传默认当前月
+        :param _Month: <p>月份，不传默认当前月</p>
         :type Month: str
         """
         self._Id = None
@@ -30629,7 +30381,7 @@ class ModifyGatherRuleRequest(AbstractModel):
 
     @property
     def Id(self):
-        r"""所编辑归集规则ID
+        r"""<p>所编辑归集规则ID</p>
         :rtype: int
         """
         return self._Id
@@ -30640,7 +30392,7 @@ class ModifyGatherRuleRequest(AbstractModel):
 
     @property
     def RuleDetail(self):
-        r"""所编辑分账规则详情
+        r"""<p>所编辑分账规则详情</p>
         :rtype: :class:`tencentcloud.billing.v20180709.models.AllocationRuleExpression`
         """
         return self._RuleDetail
@@ -30651,7 +30403,7 @@ class ModifyGatherRuleRequest(AbstractModel):
 
     @property
     def Month(self):
-        r"""月份，不传默认当前月
+        r"""<p>月份，不传默认当前月</p>
         :rtype: str
         """
         return self._Month

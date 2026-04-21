@@ -1154,6 +1154,52 @@ class EsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def RequestInstances(self, request):
+        r"""请求集群实例
+
+        :param request: Request instance for RequestInstances.
+        :type request: :class:`tencentcloud.es.v20180416.models.RequestInstancesRequest`
+        :rtype: :class:`tencentcloud.es.v20180416.models.RequestInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RequestInstances", params, headers=headers)
+            response = json.loads(body)
+            model = models.RequestInstancesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def RequestInstancesByGet(self, request):
+        r"""GET请求集群实例
+
+        :param request: Request instance for RequestInstancesByGet.
+        :type request: :class:`tencentcloud.es.v20180416.models.RequestInstancesByGetRequest`
+        :rtype: :class:`tencentcloud.es.v20180416.models.RequestInstancesByGetResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RequestInstancesByGet", params, headers=headers)
+            response = json.loads(body)
+            model = models.RequestInstancesByGetResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def RestartInstance(self, request):
         r"""重启ES集群实例(用于系统版本更新等操作)
 

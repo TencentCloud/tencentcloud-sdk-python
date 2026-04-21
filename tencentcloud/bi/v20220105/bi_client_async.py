@@ -151,6 +151,42 @@ class BiClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateUserGroup(
+            self,
+            request: models.CreateUserGroupRequest,
+            opts: Dict = None,
+    ) -> models.CreateUserGroupResponse:
+        """
+        CreateUserGroup
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateUserGroup"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateUserGroupResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateUserGroupMember(
+            self,
+            request: models.CreateUserGroupMemberRequest,
+            opts: Dict = None,
+    ) -> models.CreateUserGroupMemberResponse:
+        """
+        CreateUserGroupMember
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateUserGroupMember"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateUserGroupMemberResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateUserRole(
             self,
             request: models.CreateUserRoleRequest,
@@ -218,6 +254,42 @@ class BiClient(AbstractClient):
         kwargs["action"] = "DeleteProject"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteProjectResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteUserGroup(
+            self,
+            request: models.DeleteUserGroupRequest,
+            opts: Dict = None,
+    ) -> models.DeleteUserGroupResponse:
+        """
+        DeleteUserGroup
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteUserGroup"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteUserGroupResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteUserGroupMember(
+            self,
+            request: models.DeleteUserGroupMemberRequest,
+            opts: Dict = None,
+    ) -> models.DeleteUserGroupMemberResponse:
+        """
+        DeleteUserGroupMember
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteUserGroupMember"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteUserGroupMemberResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -385,6 +457,78 @@ class BiClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeResourceUserGroupPageList(
+            self,
+            request: models.DescribeResourceUserGroupPageListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeResourceUserGroupPageListResponse:
+        """
+        用户组资源权限查询接口
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeResourceUserGroupPageList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeResourceUserGroupPageListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeUserGroupInfo(
+            self,
+            request: models.DescribeUserGroupInfoRequest,
+            opts: Dict = None,
+    ) -> models.DescribeUserGroupInfoResponse:
+        """
+        DescribeUserGroupInfo
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeUserGroupInfo"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeUserGroupInfoResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeUserGroupMemberList(
+            self,
+            request: models.DescribeUserGroupMemberListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeUserGroupMemberListResponse:
+        """
+        DescribeUserGroupMemberList
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeUserGroupMemberList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeUserGroupMemberListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeUserGroupTreeList(
+            self,
+            request: models.DescribeUserGroupTreeListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeUserGroupTreeListResponse:
+        """
+        用户组数查询接口
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeUserGroupTreeList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeUserGroupTreeListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeUserProjectList(
             self,
             request: models.DescribeUserProjectListRequest,
@@ -511,6 +655,78 @@ class BiClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyResourceUserGroup(
+            self,
+            request: models.ModifyResourceUserGroupRequest,
+            opts: Dict = None,
+    ) -> models.ModifyResourceUserGroupResponse:
+        """
+        更新用户组权限
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyResourceUserGroup"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyResourceUserGroupResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyResourceUserGroupResource(
+            self,
+            request: models.ModifyResourceUserGroupResourceRequest,
+            opts: Dict = None,
+    ) -> models.ModifyResourceUserGroupResourceResponse:
+        """
+        按资源 - 更新用户组权限
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyResourceUserGroupResource"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyResourceUserGroupResourceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyUserDetailInfo(
+            self,
+            request: models.ModifyUserDetailInfoRequest,
+            opts: Dict = None,
+    ) -> models.ModifyUserDetailInfoResponse:
+        """
+        修改用户角色信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyUserDetailInfo"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyUserDetailInfoResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyUserGroup(
+            self,
+            request: models.ModifyUserGroupRequest,
+            opts: Dict = None,
+    ) -> models.ModifyUserGroupResponse:
+        """
+        ModifyUserGroup
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyUserGroup"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyUserGroupResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyUserRole(
             self,
             request: models.ModifyUserRoleRequest,
@@ -542,6 +758,24 @@ class BiClient(AbstractClient):
         kwargs["action"] = "ModifyUserRoleProject"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyUserRoleProjectResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def QueryUserGroupMember(
+            self,
+            request: models.QueryUserGroupMemberRequest,
+            opts: Dict = None,
+    ) -> models.QueryUserGroupMemberResponse:
+        """
+        QueryUserGroupMember
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "QueryUserGroupMember"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.QueryUserGroupMemberResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

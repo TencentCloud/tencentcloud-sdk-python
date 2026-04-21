@@ -42700,8 +42700,11 @@ class OpenClawServiceRequest(AbstractModel):
         r"""
         :param _Tag: <p>标签类型</p><p>枚举值：</p><ul><li>OpenClaw： OpenClaw类型</li><li>ClawPro： ClawPro类型</li></ul>
         :type Tag: str
+        :param _EnableTrace: <p>是否创建 trace 主题，默认为 false</p><p>枚举值：</p><ul><li>true： 创建trace 主题</li><li>false： 不创建trace 主题</li></ul>
+        :type EnableTrace: bool
         """
         self._Tag = None
+        self._EnableTrace = None
 
     @property
     def Tag(self):
@@ -42714,9 +42717,21 @@ class OpenClawServiceRequest(AbstractModel):
     def Tag(self, Tag):
         self._Tag = Tag
 
+    @property
+    def EnableTrace(self):
+        r"""<p>是否创建 trace 主题，默认为 false</p><p>枚举值：</p><ul><li>true： 创建trace 主题</li><li>false： 不创建trace 主题</li></ul>
+        :rtype: bool
+        """
+        return self._EnableTrace
+
+    @EnableTrace.setter
+    def EnableTrace(self, EnableTrace):
+        self._EnableTrace = EnableTrace
+
 
     def _deserialize(self, params):
         self._Tag = params.get("Tag")
+        self._EnableTrace = params.get("EnableTrace")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -42758,6 +42773,10 @@ class OpenClawServiceResponse(AbstractModel):
         :type SessionLogConfigId: str
         :param _SessionLogConfigName: <p>采集配置名称。会话日志</p>
         :type SessionLogConfigName: str
+        :param _TraceTopicId: <p>trace 主题 ID</p>
+        :type TraceTopicId: str
+        :param _TraceTopicName: <p>trace 主题名称</p>
+        :type TraceTopicName: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -42773,6 +42792,8 @@ class OpenClawServiceResponse(AbstractModel):
         self._AppLogConfigName = None
         self._SessionLogConfigId = None
         self._SessionLogConfigName = None
+        self._TraceTopicId = None
+        self._TraceTopicName = None
         self._RequestId = None
 
     @property
@@ -42908,6 +42929,28 @@ class OpenClawServiceResponse(AbstractModel):
         self._SessionLogConfigName = SessionLogConfigName
 
     @property
+    def TraceTopicId(self):
+        r"""<p>trace 主题 ID</p>
+        :rtype: str
+        """
+        return self._TraceTopicId
+
+    @TraceTopicId.setter
+    def TraceTopicId(self, TraceTopicId):
+        self._TraceTopicId = TraceTopicId
+
+    @property
+    def TraceTopicName(self):
+        r"""<p>trace 主题名称</p>
+        :rtype: str
+        """
+        return self._TraceTopicName
+
+    @TraceTopicName.setter
+    def TraceTopicName(self, TraceTopicName):
+        self._TraceTopicName = TraceTopicName
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -42932,6 +42975,8 @@ class OpenClawServiceResponse(AbstractModel):
         self._AppLogConfigName = params.get("AppLogConfigName")
         self._SessionLogConfigId = params.get("SessionLogConfigId")
         self._SessionLogConfigName = params.get("SessionLogConfigName")
+        self._TraceTopicId = params.get("TraceTopicId")
+        self._TraceTopicName = params.get("TraceTopicName")
         self._RequestId = params.get("RequestId")
 
 

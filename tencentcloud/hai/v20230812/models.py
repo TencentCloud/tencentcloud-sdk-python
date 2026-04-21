@@ -2860,14 +2860,20 @@ class ImageInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ImageRegistryUrl: tcr仓库地址
+        :param _ImageRegistryUrl: <p>tcr仓库地址</p>
         :type ImageRegistryUrl: str
+        :param _ImageRegistryUsername: <p>仓库用户名</p>
+        :type ImageRegistryUsername: str
+        :param _ImageRegistryPassword: <p>仓库密码</p>
+        :type ImageRegistryPassword: str
         """
         self._ImageRegistryUrl = None
+        self._ImageRegistryUsername = None
+        self._ImageRegistryPassword = None
 
     @property
     def ImageRegistryUrl(self):
-        r"""tcr仓库地址
+        r"""<p>tcr仓库地址</p>
         :rtype: str
         """
         return self._ImageRegistryUrl
@@ -2876,9 +2882,33 @@ class ImageInfo(AbstractModel):
     def ImageRegistryUrl(self, ImageRegistryUrl):
         self._ImageRegistryUrl = ImageRegistryUrl
 
+    @property
+    def ImageRegistryUsername(self):
+        r"""<p>仓库用户名</p>
+        :rtype: str
+        """
+        return self._ImageRegistryUsername
+
+    @ImageRegistryUsername.setter
+    def ImageRegistryUsername(self, ImageRegistryUsername):
+        self._ImageRegistryUsername = ImageRegistryUsername
+
+    @property
+    def ImageRegistryPassword(self):
+        r"""<p>仓库密码</p>
+        :rtype: str
+        """
+        return self._ImageRegistryPassword
+
+    @ImageRegistryPassword.setter
+    def ImageRegistryPassword(self, ImageRegistryPassword):
+        self._ImageRegistryPassword = ImageRegistryPassword
+
 
     def _deserialize(self, params):
         self._ImageRegistryUrl = params.get("ImageRegistryUrl")
+        self._ImageRegistryUsername = params.get("ImageRegistryUsername")
+        self._ImageRegistryPassword = params.get("ImageRegistryPassword")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

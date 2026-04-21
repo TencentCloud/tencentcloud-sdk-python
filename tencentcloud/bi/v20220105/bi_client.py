@@ -187,6 +187,52 @@ class BiClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateUserGroup(self, request):
+        r"""CreateUserGroup
+
+        :param request: Request instance for CreateUserGroup.
+        :type request: :class:`tencentcloud.bi.v20220105.models.CreateUserGroupRequest`
+        :rtype: :class:`tencentcloud.bi.v20220105.models.CreateUserGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateUserGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateUserGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateUserGroupMember(self, request):
+        r"""CreateUserGroupMember
+
+        :param request: Request instance for CreateUserGroupMember.
+        :type request: :class:`tencentcloud.bi.v20220105.models.CreateUserGroupMemberRequest`
+        :rtype: :class:`tencentcloud.bi.v20220105.models.CreateUserGroupMemberResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateUserGroupMember", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateUserGroupMemberResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateUserRole(self, request):
         r"""创建用户角色
 
@@ -270,6 +316,52 @@ class BiClient(AbstractClient):
             body = self.call("DeleteProject", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteProjectResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteUserGroup(self, request):
+        r"""DeleteUserGroup
+
+        :param request: Request instance for DeleteUserGroup.
+        :type request: :class:`tencentcloud.bi.v20220105.models.DeleteUserGroupRequest`
+        :rtype: :class:`tencentcloud.bi.v20220105.models.DeleteUserGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteUserGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteUserGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteUserGroupMember(self, request):
+        r"""DeleteUserGroupMember
+
+        :param request: Request instance for DeleteUserGroupMember.
+        :type request: :class:`tencentcloud.bi.v20220105.models.DeleteUserGroupMemberRequest`
+        :rtype: :class:`tencentcloud.bi.v20220105.models.DeleteUserGroupMemberResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteUserGroupMember", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteUserGroupMemberResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -486,6 +578,98 @@ class BiClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeResourceUserGroupPageList(self, request):
+        r"""用户组资源权限查询接口
+
+        :param request: Request instance for DescribeResourceUserGroupPageList.
+        :type request: :class:`tencentcloud.bi.v20220105.models.DescribeResourceUserGroupPageListRequest`
+        :rtype: :class:`tencentcloud.bi.v20220105.models.DescribeResourceUserGroupPageListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeResourceUserGroupPageList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeResourceUserGroupPageListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeUserGroupInfo(self, request):
+        r"""DescribeUserGroupInfo
+
+        :param request: Request instance for DescribeUserGroupInfo.
+        :type request: :class:`tencentcloud.bi.v20220105.models.DescribeUserGroupInfoRequest`
+        :rtype: :class:`tencentcloud.bi.v20220105.models.DescribeUserGroupInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeUserGroupInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeUserGroupInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeUserGroupMemberList(self, request):
+        r"""DescribeUserGroupMemberList
+
+        :param request: Request instance for DescribeUserGroupMemberList.
+        :type request: :class:`tencentcloud.bi.v20220105.models.DescribeUserGroupMemberListRequest`
+        :rtype: :class:`tencentcloud.bi.v20220105.models.DescribeUserGroupMemberListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeUserGroupMemberList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeUserGroupMemberListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeUserGroupTreeList(self, request):
+        r"""用户组数查询接口
+
+        :param request: Request instance for DescribeUserGroupTreeList.
+        :type request: :class:`tencentcloud.bi.v20220105.models.DescribeUserGroupTreeListRequest`
+        :rtype: :class:`tencentcloud.bi.v20220105.models.DescribeUserGroupTreeListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeUserGroupTreeList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeUserGroupTreeListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeUserProjectList(self, request):
         r"""项目内-用户接口
 
@@ -647,6 +831,98 @@ class BiClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyResourceUserGroup(self, request):
+        r"""更新用户组权限
+
+        :param request: Request instance for ModifyResourceUserGroup.
+        :type request: :class:`tencentcloud.bi.v20220105.models.ModifyResourceUserGroupRequest`
+        :rtype: :class:`tencentcloud.bi.v20220105.models.ModifyResourceUserGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyResourceUserGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyResourceUserGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyResourceUserGroupResource(self, request):
+        r"""按资源 - 更新用户组权限
+
+        :param request: Request instance for ModifyResourceUserGroupResource.
+        :type request: :class:`tencentcloud.bi.v20220105.models.ModifyResourceUserGroupResourceRequest`
+        :rtype: :class:`tencentcloud.bi.v20220105.models.ModifyResourceUserGroupResourceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyResourceUserGroupResource", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyResourceUserGroupResourceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyUserDetailInfo(self, request):
+        r"""修改用户角色信息
+
+        :param request: Request instance for ModifyUserDetailInfo.
+        :type request: :class:`tencentcloud.bi.v20220105.models.ModifyUserDetailInfoRequest`
+        :rtype: :class:`tencentcloud.bi.v20220105.models.ModifyUserDetailInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyUserDetailInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyUserDetailInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyUserGroup(self, request):
+        r"""ModifyUserGroup
+
+        :param request: Request instance for ModifyUserGroup.
+        :type request: :class:`tencentcloud.bi.v20220105.models.ModifyUserGroupRequest`
+        :rtype: :class:`tencentcloud.bi.v20220105.models.ModifyUserGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyUserGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyUserGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyUserRole(self, request):
         r"""修改用户角色信息
 
@@ -684,6 +960,29 @@ class BiClient(AbstractClient):
             body = self.call("ModifyUserRoleProject", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyUserRoleProjectResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def QueryUserGroupMember(self, request):
+        r"""QueryUserGroupMember
+
+        :param request: Request instance for QueryUserGroupMember.
+        :type request: :class:`tencentcloud.bi.v20220105.models.QueryUserGroupMemberRequest`
+        :rtype: :class:`tencentcloud.bi.v20220105.models.QueryUserGroupMemberResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("QueryUserGroupMember", params, headers=headers)
+            response = json.loads(body)
+            model = models.QueryUserGroupMemberResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

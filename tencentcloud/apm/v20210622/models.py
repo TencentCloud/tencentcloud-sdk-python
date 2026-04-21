@@ -6926,31 +6926,21 @@ class DescribeGeneralOTSpanListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 业务系统 ID
+        :param _InstanceId: <p>业务系统 ID</p>
         :type InstanceId: str
-        :param _StartTime: Span 查询开始时间戳（单位：秒）
+        :param _StartTime: <p>Span 查询开始时间戳（单位：秒）</p>
         :type StartTime: int
-        :param _EndTime: Span 查询结束时间戳（单位：秒）
+        :param _EndTime: <p>Span 查询结束时间戳（单位：秒）</p>
         :type EndTime: int
-        :param _Filters: 通用过滤参数
+        :param _Filters: <p>通用过滤参数 支持的过滤key如service.name</p>
         :type Filters: list of Filter
-        :param _OrderBy: 排序
-现支持的 Key 有：
-
-- startTime(开始时间)
-- endTime(结束时间)
-- duration(响应时间)
-
-现支持的 Value 有：
-
-- desc(降序排序)
-- asc(升序排序)
+        :param _OrderBy: <p>排序<br>现支持的 Key 有：</p><ul><li>startTime(开始时间)</li><li>endTime(结束时间)</li><li>duration(响应时间)</li></ul><p>现支持的 Value 有：</p><ul><li>desc(降序排序)</li><li>asc(升序排序)</li></ul>
         :type OrderBy: :class:`tencentcloud.apm.v20210622.models.OrderBy`
-        :param _BusinessName: 业务自身服务名，控制台用户请填写taw
+        :param _BusinessName: <p>业务自身服务名，控制台用户请填写taw</p>
         :type BusinessName: str
-        :param _Limit: 单页项目个数，默认为10000，合法取值范围为0～10000
+        :param _Limit: <p>单页项目个数，默认为10000，合法取值范围为0～10000</p>
         :type Limit: int
-        :param _Offset: 分页
+        :param _Offset: <p>分页</p>
         :type Offset: int
         """
         self._InstanceId = None
@@ -6964,7 +6954,7 @@ class DescribeGeneralOTSpanListRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""业务系统 ID
+        r"""<p>业务系统 ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -6975,7 +6965,7 @@ class DescribeGeneralOTSpanListRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""Span 查询开始时间戳（单位：秒）
+        r"""<p>Span 查询开始时间戳（单位：秒）</p>
         :rtype: int
         """
         return self._StartTime
@@ -6986,7 +6976,7 @@ class DescribeGeneralOTSpanListRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""Span 查询结束时间戳（单位：秒）
+        r"""<p>Span 查询结束时间戳（单位：秒）</p>
         :rtype: int
         """
         return self._EndTime
@@ -6997,7 +6987,7 @@ class DescribeGeneralOTSpanListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""通用过滤参数
+        r"""<p>通用过滤参数 支持的过滤key如service.name</p>
         :rtype: list of Filter
         """
         return self._Filters
@@ -7008,17 +6998,7 @@ class DescribeGeneralOTSpanListRequest(AbstractModel):
 
     @property
     def OrderBy(self):
-        r"""排序
-现支持的 Key 有：
-
-- startTime(开始时间)
-- endTime(结束时间)
-- duration(响应时间)
-
-现支持的 Value 有：
-
-- desc(降序排序)
-- asc(升序排序)
+        r"""<p>排序<br>现支持的 Key 有：</p><ul><li>startTime(开始时间)</li><li>endTime(结束时间)</li><li>duration(响应时间)</li></ul><p>现支持的 Value 有：</p><ul><li>desc(降序排序)</li><li>asc(升序排序)</li></ul>
         :rtype: :class:`tencentcloud.apm.v20210622.models.OrderBy`
         """
         return self._OrderBy
@@ -7029,7 +7009,7 @@ class DescribeGeneralOTSpanListRequest(AbstractModel):
 
     @property
     def BusinessName(self):
-        r"""业务自身服务名，控制台用户请填写taw
+        r"""<p>业务自身服务名，控制台用户请填写taw</p>
         :rtype: str
         """
         return self._BusinessName
@@ -7040,7 +7020,7 @@ class DescribeGeneralOTSpanListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""单页项目个数，默认为10000，合法取值范围为0～10000
+        r"""<p>单页项目个数，默认为10000，合法取值范围为0～10000</p>
         :rtype: int
         """
         return self._Limit
@@ -7051,7 +7031,7 @@ class DescribeGeneralOTSpanListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""分页
+        r"""<p>分页</p>
         :rtype: int
         """
         return self._Offset
@@ -7094,13 +7074,9 @@ class DescribeGeneralOTSpanListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 总数量
+        :param _TotalCount: <p>总数量</p>
         :type TotalCount: int
-        :param _Spans: Spans字段中包含了链路数据的全部内容，由于数据经过了压缩，需要对结果进行如下三步转换，以还原始的文本。
-1. 将Spans字段中的文本进行 Base64 解码，得到经过压缩后字节数组。
-2. 使用 gzip 对压缩后的字节数组进行解压，得到压缩前的字节数组。
-3. 使用 UTF-8 字符集，将压缩前的字节数组转换为文本。
-
+        :param _Spans: <p>Spans字段中包含了链路数据的全部内容，由于数据经过了压缩，需要对结果进行如下三步转换，以还原始的文本。</p><ol><li>将Spans字段中的文本进行 Base64 解码，得到经过压缩后字节数组。</li><li>使用 gzip 对压缩后的字节数组进行解压，得到压缩前的字节数组。</li><li>使用 UTF-8 字符集，将压缩前的字节数组转换为文本。</li></ol>
         :type Spans: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7111,7 +7087,7 @@ class DescribeGeneralOTSpanListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""总数量
+        r"""<p>总数量</p>
         :rtype: int
         """
         return self._TotalCount
@@ -7122,11 +7098,7 @@ class DescribeGeneralOTSpanListResponse(AbstractModel):
 
     @property
     def Spans(self):
-        r"""Spans字段中包含了链路数据的全部内容，由于数据经过了压缩，需要对结果进行如下三步转换，以还原始的文本。
-1. 将Spans字段中的文本进行 Base64 解码，得到经过压缩后字节数组。
-2. 使用 gzip 对压缩后的字节数组进行解压，得到压缩前的字节数组。
-3. 使用 UTF-8 字符集，将压缩前的字节数组转换为文本。
-
+        r"""<p>Spans字段中包含了链路数据的全部内容，由于数据经过了压缩，需要对结果进行如下三步转换，以还原始的文本。</p><ol><li>将Spans字段中的文本进行 Base64 解码，得到经过压缩后字节数组。</li><li>使用 gzip 对压缩后的字节数组进行解压，得到压缩前的字节数组。</li><li>使用 UTF-8 字符集，将压缩前的字节数组转换为文本。</li></ol>
         :rtype: str
         """
         return self._Spans
@@ -7160,31 +7132,21 @@ class DescribeGeneralSpanListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 业务系统 ID
+        :param _InstanceId: <p>业务系统 ID</p>
         :type InstanceId: str
-        :param _StartTime: Span 查询开始时间戳（单位：秒）
+        :param _StartTime: <p>Span 查询开始时间戳（单位：秒）</p>
         :type StartTime: int
-        :param _EndTime: Span 查询结束时间戳（单位：秒）
+        :param _EndTime: <p>Span 查询结束时间戳（单位：秒）</p>
         :type EndTime: int
-        :param _Filters: 通用过滤参数
+        :param _Filters: <p>通用过滤参数 支持的过滤key如service.name</p>
         :type Filters: list of Filter
-        :param _OrderBy: 排序
-现支持的 Key 有：
-
-- startTime(开始时间)
-- endTime(结束时间)
-- duration(响应时间)
-
-现支持的 Value 有：
-
-- desc(降序排序)
-- asc(升序排序)
+        :param _OrderBy: <p>排序<br>现支持的 Key 有：</p><ul><li>startTime(开始时间)</li><li>endTime(结束时间)</li><li>duration(响应时间)</li></ul><p>现支持的 Value 有：</p><ul><li>desc(降序排序)</li><li>asc(升序排序)</li></ul>
         :type OrderBy: :class:`tencentcloud.apm.v20210622.models.OrderBy`
-        :param _BusinessName: 业务自身服务名，控制台用户请填写taw
+        :param _BusinessName: <p>业务自身服务名，控制台用户请填写taw</p>
         :type BusinessName: str
-        :param _Limit: 单页项目个数，默认为1000，合法取值范围为1～1000
+        :param _Limit: <p>单页项目个数，默认为1000，合法取值范围为1～1000</p>
         :type Limit: int
-        :param _Offset: 分页
+        :param _Offset: <p>分页</p>
         :type Offset: int
         """
         self._InstanceId = None
@@ -7198,7 +7160,7 @@ class DescribeGeneralSpanListRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""业务系统 ID
+        r"""<p>业务系统 ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -7209,7 +7171,7 @@ class DescribeGeneralSpanListRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""Span 查询开始时间戳（单位：秒）
+        r"""<p>Span 查询开始时间戳（单位：秒）</p>
         :rtype: int
         """
         return self._StartTime
@@ -7220,7 +7182,7 @@ class DescribeGeneralSpanListRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""Span 查询结束时间戳（单位：秒）
+        r"""<p>Span 查询结束时间戳（单位：秒）</p>
         :rtype: int
         """
         return self._EndTime
@@ -7231,7 +7193,7 @@ class DescribeGeneralSpanListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""通用过滤参数
+        r"""<p>通用过滤参数 支持的过滤key如service.name</p>
         :rtype: list of Filter
         """
         return self._Filters
@@ -7242,17 +7204,7 @@ class DescribeGeneralSpanListRequest(AbstractModel):
 
     @property
     def OrderBy(self):
-        r"""排序
-现支持的 Key 有：
-
-- startTime(开始时间)
-- endTime(结束时间)
-- duration(响应时间)
-
-现支持的 Value 有：
-
-- desc(降序排序)
-- asc(升序排序)
+        r"""<p>排序<br>现支持的 Key 有：</p><ul><li>startTime(开始时间)</li><li>endTime(结束时间)</li><li>duration(响应时间)</li></ul><p>现支持的 Value 有：</p><ul><li>desc(降序排序)</li><li>asc(升序排序)</li></ul>
         :rtype: :class:`tencentcloud.apm.v20210622.models.OrderBy`
         """
         return self._OrderBy
@@ -7263,7 +7215,7 @@ class DescribeGeneralSpanListRequest(AbstractModel):
 
     @property
     def BusinessName(self):
-        r"""业务自身服务名，控制台用户请填写taw
+        r"""<p>业务自身服务名，控制台用户请填写taw</p>
         :rtype: str
         """
         return self._BusinessName
@@ -7274,7 +7226,7 @@ class DescribeGeneralSpanListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""单页项目个数，默认为1000，合法取值范围为1～1000
+        r"""<p>单页项目个数，默认为1000，合法取值范围为1～1000</p>
         :rtype: int
         """
         return self._Limit
@@ -7285,7 +7237,7 @@ class DescribeGeneralSpanListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""分页
+        r"""<p>分页</p>
         :rtype: int
         """
         return self._Offset
@@ -7328,9 +7280,9 @@ class DescribeGeneralSpanListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 总数量
+        :param _TotalCount: <p>总数量</p>
         :type TotalCount: int
-        :param _Spans: Span 分页列表
+        :param _Spans: <p>Span 分页列表</p>
         :type Spans: list of Span
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7341,7 +7293,7 @@ class DescribeGeneralSpanListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""总数量
+        r"""<p>总数量</p>
         :rtype: int
         """
         return self._TotalCount
@@ -7352,7 +7304,7 @@ class DescribeGeneralSpanListResponse(AbstractModel):
 
     @property
     def Spans(self):
-        r"""Span 分页列表
+        r"""<p>Span 分页列表</p>
         :rtype: list of Span
         """
         return self._Spans
@@ -8663,11 +8615,11 @@ class Filter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: 过滤方式（=, !=, in）
+        :param _Type: <p>过滤方式（=, !=, in）</p>
         :type Type: str
-        :param _Key: 过滤维度名
+        :param _Key: <p>过滤维度名</p><p>详情参考实际接口字段描述</p>
         :type Key: str
-        :param _Value: 过滤值，in过滤方式用逗号分割多个值
+        :param _Value: <p>过滤值，in过滤方式用逗号分割多个值</p>
         :type Value: str
         """
         self._Type = None
@@ -8676,7 +8628,7 @@ class Filter(AbstractModel):
 
     @property
     def Type(self):
-        r"""过滤方式（=, !=, in）
+        r"""<p>过滤方式（=, !=, in）</p>
         :rtype: str
         """
         return self._Type
@@ -8687,7 +8639,7 @@ class Filter(AbstractModel):
 
     @property
     def Key(self):
-        r"""过滤维度名
+        r"""<p>过滤维度名</p><p>详情参考实际接口字段描述</p>
         :rtype: str
         """
         return self._Key
@@ -8698,7 +8650,7 @@ class Filter(AbstractModel):
 
     @property
     def Value(self):
-        r"""过滤值，in过滤方式用逗号分割多个值
+        r"""<p>过滤值，in过滤方式用逗号分割多个值</p>
         :rtype: str
         """
         return self._Value

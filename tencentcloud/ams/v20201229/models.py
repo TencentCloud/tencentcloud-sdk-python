@@ -18,6 +18,177 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AIGCRecognitionResult(AbstractModel):
+    r"""aigc片段审核结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Label: <p>一级标签名</p>
+        :type Label: str
+        :param _LabelCode: <p>一级标签码</p>
+        :type LabelCode: str
+        :param _Score: <p>分数</p>
+        :type Score: int
+        :param _StartTime: <p>该vad片段在原始音频片段中的起始时间偏移</p>
+        :type StartTime: float
+        :param _EndTime: <p>该vad片段在原始音频片段中的结束时间偏移</p>
+        :type EndTime: float
+        :param _Suggestion: <p>建议值</p>
+        :type Suggestion: str
+        :param _SubLabel: <p>二级标签名</p>
+        :type SubLabel: str
+        :param _SubLabelCode: <p>二级标签码</p>
+        :type SubLabelCode: str
+        :param _SubTag: <p>三级标签名</p>
+        :type SubTag: str
+        :param _SubTagCode: <p>三级标签码</p>
+        :type SubTagCode: str
+        """
+        self._Label = None
+        self._LabelCode = None
+        self._Score = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Suggestion = None
+        self._SubLabel = None
+        self._SubLabelCode = None
+        self._SubTag = None
+        self._SubTagCode = None
+
+    @property
+    def Label(self):
+        r"""<p>一级标签名</p>
+        :rtype: str
+        """
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
+
+    @property
+    def LabelCode(self):
+        r"""<p>一级标签码</p>
+        :rtype: str
+        """
+        return self._LabelCode
+
+    @LabelCode.setter
+    def LabelCode(self, LabelCode):
+        self._LabelCode = LabelCode
+
+    @property
+    def Score(self):
+        r"""<p>分数</p>
+        :rtype: int
+        """
+        return self._Score
+
+    @Score.setter
+    def Score(self, Score):
+        self._Score = Score
+
+    @property
+    def StartTime(self):
+        r"""<p>该vad片段在原始音频片段中的起始时间偏移</p>
+        :rtype: float
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>该vad片段在原始音频片段中的结束时间偏移</p>
+        :rtype: float
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Suggestion(self):
+        r"""<p>建议值</p>
+        :rtype: str
+        """
+        return self._Suggestion
+
+    @Suggestion.setter
+    def Suggestion(self, Suggestion):
+        self._Suggestion = Suggestion
+
+    @property
+    def SubLabel(self):
+        r"""<p>二级标签名</p>
+        :rtype: str
+        """
+        return self._SubLabel
+
+    @SubLabel.setter
+    def SubLabel(self, SubLabel):
+        self._SubLabel = SubLabel
+
+    @property
+    def SubLabelCode(self):
+        r"""<p>二级标签码</p>
+        :rtype: str
+        """
+        return self._SubLabelCode
+
+    @SubLabelCode.setter
+    def SubLabelCode(self, SubLabelCode):
+        self._SubLabelCode = SubLabelCode
+
+    @property
+    def SubTag(self):
+        r"""<p>三级标签名</p>
+        :rtype: str
+        """
+        return self._SubTag
+
+    @SubTag.setter
+    def SubTag(self, SubTag):
+        self._SubTag = SubTag
+
+    @property
+    def SubTagCode(self):
+        r"""<p>三级标签码</p>
+        :rtype: str
+        """
+        return self._SubTagCode
+
+    @SubTagCode.setter
+    def SubTagCode(self, SubTagCode):
+        self._SubTagCode = SubTagCode
+
+
+    def _deserialize(self, params):
+        self._Label = params.get("Label")
+        self._LabelCode = params.get("LabelCode")
+        self._Score = params.get("Score")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Suggestion = params.get("Suggestion")
+        self._SubLabel = params.get("SubLabel")
+        self._SubLabelCode = params.get("SubLabelCode")
+        self._SubTag = params.get("SubTag")
+        self._SubTagCode = params.get("SubTagCode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AudioResult(AbstractModel):
     r"""音频审核输出参数
 
@@ -25,49 +196,50 @@ class AudioResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _HitFlag: 该字段用于返回审核内容是否命中审核模型；取值：0（**未命中**）、1（**命中**）。
+        :param _HitFlag: <p>该字段用于返回审核内容是否命中审核模型；取值：0（<strong>未命中</strong>）、1（<strong>命中</strong>）。</p>
         :type HitFlag: int
-        :param _Label: 该字段用于返回检测结果所对应的恶意标签。<br>返回值：**Normal**：正常，**Porn**：色情，**Abuse**：谩骂，**Ad**：广告，**Custom**：自定义违规；以及其他令人反感、不安全或不适宜的内容类型。
+        :param _Label: <p>该字段用于返回检测结果所对应的恶意标签。<br>返回值：<strong>Normal</strong>：正常，<strong>Porn</strong>：色情，<strong>Abuse</strong>：谩骂，<strong>Ad</strong>：广告，<strong>Custom</strong>：自定义违规；以及其他令人反感、不安全或不适宜的内容类型。</p>
         :type Label: str
-        :param _Suggestion: 该字段用于返回后续操作建议。当您获取到判定结果后，返回值表示具体的后续建议操作。<br>
-返回值：**Block**：建议屏蔽，**Review** ：建议人工复审，**Pass**：建议通过
+        :param _Suggestion: <p>该字段用于返回后续操作建议。当您获取到判定结果后，返回值表示具体的后续建议操作。<br><br>返回值：<strong>Block</strong>：建议屏蔽，<strong>Review</strong> ：建议人工复审，<strong>Pass</strong>：建议通过</p>
         :type Suggestion: str
-        :param _Score: 该字段用于返回当前标签下的置信度，取值范围：0（**置信度最低**）-100（**置信度最高** ），越高代表文本越有可能属于当前返回的标签；如：*色情 99*，则表明该文本非常有可能属于色情内容。
+        :param _Score: <p>该字段用于返回当前标签下的置信度，取值范围：0（<strong>置信度最低</strong>）-100（<strong>置信度最高</strong> ），越高代表文本越有可能属于当前返回的标签；如：<em>色情 99</em>，则表明该文本非常有可能属于色情内容。</p>
         :type Score: int
-        :param _Text: 该字段用于返回音频文件经ASR识别后的文本信息。最长可识别**5小时**的音频文件，若超出时长限制，接口将会报错。
+        :param _Text: <p>该字段用于返回音频文件经ASR识别后的文本信息。最长可识别<strong>5小时</strong>的音频文件，若超出时长限制，接口将会报错。</p>
         :type Text: str
-        :param _Url: 该字段用于返回审核结果的访问链接（URL）。<br>备注：链接默认有效期为12小时。如果您需要更长时效的链接，请使用[COS预签名](https://cloud.tencent.com/document/product/1265/104001)功能更新签名时效。
+        :param _Url: <p>该字段用于返回审核结果的访问链接（URL）。<br>备注：链接默认有效期为12小时。如果您需要更长时效的链接，请使用<a href="https://cloud.tencent.com/document/product/1265/104001">COS预签名</a>功能更新签名时效。</p>
         :type Url: str
-        :param _Duration: 该字段用于返回音频文件的时长，单位为毫秒。
+        :param _Duration: <p>该字段用于返回音频文件的时长，单位为毫秒。</p>
         :type Duration: str
-        :param _Extra: 该字段用于返回额外附加信息，不同客户或Biztype下返回信息不同。
+        :param _Extra: <p>该字段用于返回额外附加信息，不同客户或Biztype下返回信息不同。</p>
         :type Extra: str
-        :param _TextResults: 该字段用于返回音频文件经ASR识别后产生的文本的详细审核结果。具体结果内容请参见AudioResultDetailLanguageResult数据结构的细节描述。
+        :param _TextResults: <p>该字段用于返回音频文件经ASR识别后产生的文本的详细审核结果。具体结果内容请参见AudioResultDetailLanguageResult数据结构的细节描述。</p>
         :type TextResults: list of AudioResultDetailTextResult
-        :param _MoanResults: 该字段用于返回音频文件呻吟检测的详细审核结果。具体结果内容请参见AudioResultDetailMoanResult数据结构的细节描述。
+        :param _MoanResults: <p>该字段用于返回音频文件呻吟检测的详细审核结果。具体结果内容请参见AudioResultDetailMoanResult数据结构的细节描述。</p>
         :type MoanResults: list of AudioResultDetailMoanResult
-        :param _LanguageResults: 该字段用于返回音频小语种检测的详细审核结果。具体结果内容请参见AudioResultDetailLanguageResult数据结构的细节描述。
+        :param _LanguageResults: <p>该字段用于返回音频小语种检测的详细审核结果。具体结果内容请参见AudioResultDetailLanguageResult数据结构的细节描述。</p>
         :type LanguageResults: list of AudioResultDetailLanguageResult
-        :param _SubLabel: 该字段用于返回当前标签（Lable）下的二级标签。
+        :param _SubLabel: <p>该字段用于返回当前标签（Lable）下的二级标签。</p>
         :type SubLabel: str
-        :param _RecognitionResults: 识别类标签结果信息列表
+        :param _RecognitionResults: <p>识别类标签结果信息列表</p>
         :type RecognitionResults: list of RecognitionResult
-        :param _SpeakerResults: 说话人结果
+        :param _SpeakerResults: <p>说话人结果</p>
         :type SpeakerResults: list of SpeakerResults
-        :param _LabelResults: 歌曲识别结果
+        :param _LabelResults: <p>歌曲识别结果</p>
         :type LabelResults: list of LabelResults
-        :param _TravelResults: 出行结果
+        :param _TravelResults: <p>出行结果</p>
         :type TravelResults: list of TravelResults
-        :param _SubTag: 三级标签
+        :param _SubTag: <p>三级标签</p>
         :type SubTag: str
-        :param _SubTagCode: 三级标签码
+        :param _SubTagCode: <p>三级标签码</p>
         :type SubTagCode: str
-        :param _HitType: 审核检测类型
+        :param _HitType: <p>审核检测类型</p>
         :type HitType: str
-        :param _Sentences: ASR句子的起止时间
+        :param _Sentences: <p>ASR句子的起止时间</p>
         :type Sentences: list of Sentence
-        :param _RequestId: 切片请求ID
+        :param _RequestId: <p>切片请求ID</p>
         :type RequestId: str
+        :param _AIGCRecognitionResults: <p>AIGC音频片段审核结果</p>
+        :type AIGCRecognitionResults: list of AIGCRecognitionResult
         """
         self._HitFlag = None
         self._Label = None
@@ -90,10 +262,11 @@ class AudioResult(AbstractModel):
         self._HitType = None
         self._Sentences = None
         self._RequestId = None
+        self._AIGCRecognitionResults = None
 
     @property
     def HitFlag(self):
-        r"""该字段用于返回审核内容是否命中审核模型；取值：0（**未命中**）、1（**命中**）。
+        r"""<p>该字段用于返回审核内容是否命中审核模型；取值：0（<strong>未命中</strong>）、1（<strong>命中</strong>）。</p>
         :rtype: int
         """
         return self._HitFlag
@@ -104,7 +277,7 @@ class AudioResult(AbstractModel):
 
     @property
     def Label(self):
-        r"""该字段用于返回检测结果所对应的恶意标签。<br>返回值：**Normal**：正常，**Porn**：色情，**Abuse**：谩骂，**Ad**：广告，**Custom**：自定义违规；以及其他令人反感、不安全或不适宜的内容类型。
+        r"""<p>该字段用于返回检测结果所对应的恶意标签。<br>返回值：<strong>Normal</strong>：正常，<strong>Porn</strong>：色情，<strong>Abuse</strong>：谩骂，<strong>Ad</strong>：广告，<strong>Custom</strong>：自定义违规；以及其他令人反感、不安全或不适宜的内容类型。</p>
         :rtype: str
         """
         return self._Label
@@ -115,8 +288,7 @@ class AudioResult(AbstractModel):
 
     @property
     def Suggestion(self):
-        r"""该字段用于返回后续操作建议。当您获取到判定结果后，返回值表示具体的后续建议操作。<br>
-返回值：**Block**：建议屏蔽，**Review** ：建议人工复审，**Pass**：建议通过
+        r"""<p>该字段用于返回后续操作建议。当您获取到判定结果后，返回值表示具体的后续建议操作。<br><br>返回值：<strong>Block</strong>：建议屏蔽，<strong>Review</strong> ：建议人工复审，<strong>Pass</strong>：建议通过</p>
         :rtype: str
         """
         return self._Suggestion
@@ -127,7 +299,7 @@ class AudioResult(AbstractModel):
 
     @property
     def Score(self):
-        r"""该字段用于返回当前标签下的置信度，取值范围：0（**置信度最低**）-100（**置信度最高** ），越高代表文本越有可能属于当前返回的标签；如：*色情 99*，则表明该文本非常有可能属于色情内容。
+        r"""<p>该字段用于返回当前标签下的置信度，取值范围：0（<strong>置信度最低</strong>）-100（<strong>置信度最高</strong> ），越高代表文本越有可能属于当前返回的标签；如：<em>色情 99</em>，则表明该文本非常有可能属于色情内容。</p>
         :rtype: int
         """
         return self._Score
@@ -138,7 +310,7 @@ class AudioResult(AbstractModel):
 
     @property
     def Text(self):
-        r"""该字段用于返回音频文件经ASR识别后的文本信息。最长可识别**5小时**的音频文件，若超出时长限制，接口将会报错。
+        r"""<p>该字段用于返回音频文件经ASR识别后的文本信息。最长可识别<strong>5小时</strong>的音频文件，若超出时长限制，接口将会报错。</p>
         :rtype: str
         """
         return self._Text
@@ -149,7 +321,7 @@ class AudioResult(AbstractModel):
 
     @property
     def Url(self):
-        r"""该字段用于返回审核结果的访问链接（URL）。<br>备注：链接默认有效期为12小时。如果您需要更长时效的链接，请使用[COS预签名](https://cloud.tencent.com/document/product/1265/104001)功能更新签名时效。
+        r"""<p>该字段用于返回审核结果的访问链接（URL）。<br>备注：链接默认有效期为12小时。如果您需要更长时效的链接，请使用<a href="https://cloud.tencent.com/document/product/1265/104001">COS预签名</a>功能更新签名时效。</p>
         :rtype: str
         """
         return self._Url
@@ -160,7 +332,7 @@ class AudioResult(AbstractModel):
 
     @property
     def Duration(self):
-        r"""该字段用于返回音频文件的时长，单位为毫秒。
+        r"""<p>该字段用于返回音频文件的时长，单位为毫秒。</p>
         :rtype: str
         """
         return self._Duration
@@ -171,7 +343,7 @@ class AudioResult(AbstractModel):
 
     @property
     def Extra(self):
-        r"""该字段用于返回额外附加信息，不同客户或Biztype下返回信息不同。
+        r"""<p>该字段用于返回额外附加信息，不同客户或Biztype下返回信息不同。</p>
         :rtype: str
         """
         return self._Extra
@@ -182,7 +354,7 @@ class AudioResult(AbstractModel):
 
     @property
     def TextResults(self):
-        r"""该字段用于返回音频文件经ASR识别后产生的文本的详细审核结果。具体结果内容请参见AudioResultDetailLanguageResult数据结构的细节描述。
+        r"""<p>该字段用于返回音频文件经ASR识别后产生的文本的详细审核结果。具体结果内容请参见AudioResultDetailLanguageResult数据结构的细节描述。</p>
         :rtype: list of AudioResultDetailTextResult
         """
         return self._TextResults
@@ -193,7 +365,7 @@ class AudioResult(AbstractModel):
 
     @property
     def MoanResults(self):
-        r"""该字段用于返回音频文件呻吟检测的详细审核结果。具体结果内容请参见AudioResultDetailMoanResult数据结构的细节描述。
+        r"""<p>该字段用于返回音频文件呻吟检测的详细审核结果。具体结果内容请参见AudioResultDetailMoanResult数据结构的细节描述。</p>
         :rtype: list of AudioResultDetailMoanResult
         """
         return self._MoanResults
@@ -204,7 +376,7 @@ class AudioResult(AbstractModel):
 
     @property
     def LanguageResults(self):
-        r"""该字段用于返回音频小语种检测的详细审核结果。具体结果内容请参见AudioResultDetailLanguageResult数据结构的细节描述。
+        r"""<p>该字段用于返回音频小语种检测的详细审核结果。具体结果内容请参见AudioResultDetailLanguageResult数据结构的细节描述。</p>
         :rtype: list of AudioResultDetailLanguageResult
         """
         return self._LanguageResults
@@ -215,7 +387,7 @@ class AudioResult(AbstractModel):
 
     @property
     def SubLabel(self):
-        r"""该字段用于返回当前标签（Lable）下的二级标签。
+        r"""<p>该字段用于返回当前标签（Lable）下的二级标签。</p>
         :rtype: str
         """
         return self._SubLabel
@@ -226,7 +398,7 @@ class AudioResult(AbstractModel):
 
     @property
     def RecognitionResults(self):
-        r"""识别类标签结果信息列表
+        r"""<p>识别类标签结果信息列表</p>
         :rtype: list of RecognitionResult
         """
         return self._RecognitionResults
@@ -237,7 +409,7 @@ class AudioResult(AbstractModel):
 
     @property
     def SpeakerResults(self):
-        r"""说话人结果
+        r"""<p>说话人结果</p>
         :rtype: list of SpeakerResults
         """
         return self._SpeakerResults
@@ -248,7 +420,7 @@ class AudioResult(AbstractModel):
 
     @property
     def LabelResults(self):
-        r"""歌曲识别结果
+        r"""<p>歌曲识别结果</p>
         :rtype: list of LabelResults
         """
         return self._LabelResults
@@ -259,7 +431,7 @@ class AudioResult(AbstractModel):
 
     @property
     def TravelResults(self):
-        r"""出行结果
+        r"""<p>出行结果</p>
         :rtype: list of TravelResults
         """
         return self._TravelResults
@@ -270,7 +442,7 @@ class AudioResult(AbstractModel):
 
     @property
     def SubTag(self):
-        r"""三级标签
+        r"""<p>三级标签</p>
         :rtype: str
         """
         return self._SubTag
@@ -281,7 +453,7 @@ class AudioResult(AbstractModel):
 
     @property
     def SubTagCode(self):
-        r"""三级标签码
+        r"""<p>三级标签码</p>
         :rtype: str
         """
         return self._SubTagCode
@@ -292,7 +464,7 @@ class AudioResult(AbstractModel):
 
     @property
     def HitType(self):
-        r"""审核检测类型
+        r"""<p>审核检测类型</p>
         :rtype: str
         """
         return self._HitType
@@ -303,7 +475,7 @@ class AudioResult(AbstractModel):
 
     @property
     def Sentences(self):
-        r"""ASR句子的起止时间
+        r"""<p>ASR句子的起止时间</p>
         :rtype: list of Sentence
         """
         return self._Sentences
@@ -314,7 +486,7 @@ class AudioResult(AbstractModel):
 
     @property
     def RequestId(self):
-        r"""切片请求ID
+        r"""<p>切片请求ID</p>
         :rtype: str
         """
         return self._RequestId
@@ -322,6 +494,17 @@ class AudioResult(AbstractModel):
     @RequestId.setter
     def RequestId(self, RequestId):
         self._RequestId = RequestId
+
+    @property
+    def AIGCRecognitionResults(self):
+        r"""<p>AIGC音频片段审核结果</p>
+        :rtype: list of AIGCRecognitionResult
+        """
+        return self._AIGCRecognitionResults
+
+    @AIGCRecognitionResults.setter
+    def AIGCRecognitionResults(self, AIGCRecognitionResults):
+        self._AIGCRecognitionResults = AIGCRecognitionResults
 
 
     def _deserialize(self, params):
@@ -386,6 +569,12 @@ class AudioResult(AbstractModel):
                 obj._deserialize(item)
                 self._Sentences.append(obj)
         self._RequestId = params.get("RequestId")
+        if params.get("AIGCRecognitionResults") is not None:
+            self._AIGCRecognitionResults = []
+            for item in params.get("AIGCRecognitionResults"):
+                obj = AIGCRecognitionResult()
+                obj._deserialize(item)
+                self._AIGCRecognitionResults.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

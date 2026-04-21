@@ -4563,18 +4563,20 @@ class DeleteIndexRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: ES集群ID
+        :param _InstanceId: <p>ES集群ID</p>
         :type InstanceId: str
-        :param _IndexType: 删除的索引类型。auto：自治索引；normal：普通索引
+        :param _IndexType: <p>删除的索引类型。auto：自治索引；normal：普通索引</p>
         :type IndexType: str
-        :param _IndexName: 删除的索引名
+        :param _IndexName: <p>删除的索引名</p>
         :type IndexName: str
-        :param _Username: 集群访问用户名
+        :param _Username: <p>集群访问用户名</p>
         :type Username: str
-        :param _Password: 集群访问密码
+        :param _Password: <p>集群访问密码</p>
         :type Password: str
-        :param _BackingIndexName: 后备索引名
+        :param _BackingIndexName: <p>后备索引名</p>
         :type BackingIndexName: str
+        :param _IndexPhrase: <p>索引生命阶段</p>
+        :type IndexPhrase: str
         """
         self._InstanceId = None
         self._IndexType = None
@@ -4582,10 +4584,11 @@ class DeleteIndexRequest(AbstractModel):
         self._Username = None
         self._Password = None
         self._BackingIndexName = None
+        self._IndexPhrase = None
 
     @property
     def InstanceId(self):
-        r"""ES集群ID
+        r"""<p>ES集群ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -4596,7 +4599,7 @@ class DeleteIndexRequest(AbstractModel):
 
     @property
     def IndexType(self):
-        r"""删除的索引类型。auto：自治索引；normal：普通索引
+        r"""<p>删除的索引类型。auto：自治索引；normal：普通索引</p>
         :rtype: str
         """
         return self._IndexType
@@ -4607,7 +4610,7 @@ class DeleteIndexRequest(AbstractModel):
 
     @property
     def IndexName(self):
-        r"""删除的索引名
+        r"""<p>删除的索引名</p>
         :rtype: str
         """
         return self._IndexName
@@ -4618,7 +4621,7 @@ class DeleteIndexRequest(AbstractModel):
 
     @property
     def Username(self):
-        r"""集群访问用户名
+        r"""<p>集群访问用户名</p>
         :rtype: str
         """
         return self._Username
@@ -4629,7 +4632,7 @@ class DeleteIndexRequest(AbstractModel):
 
     @property
     def Password(self):
-        r"""集群访问密码
+        r"""<p>集群访问密码</p>
         :rtype: str
         """
         return self._Password
@@ -4640,7 +4643,7 @@ class DeleteIndexRequest(AbstractModel):
 
     @property
     def BackingIndexName(self):
-        r"""后备索引名
+        r"""<p>后备索引名</p>
         :rtype: str
         """
         return self._BackingIndexName
@@ -4648,6 +4651,17 @@ class DeleteIndexRequest(AbstractModel):
     @BackingIndexName.setter
     def BackingIndexName(self, BackingIndexName):
         self._BackingIndexName = BackingIndexName
+
+    @property
+    def IndexPhrase(self):
+        r"""<p>索引生命阶段</p>
+        :rtype: str
+        """
+        return self._IndexPhrase
+
+    @IndexPhrase.setter
+    def IndexPhrase(self, IndexPhrase):
+        self._IndexPhrase = IndexPhrase
 
 
     def _deserialize(self, params):
@@ -4657,6 +4671,7 @@ class DeleteIndexRequest(AbstractModel):
         self._Username = params.get("Username")
         self._Password = params.get("Password")
         self._BackingIndexName = params.get("BackingIndexName")
+        self._IndexPhrase = params.get("IndexPhrase")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18641,6 +18656,74 @@ class QueryIpTraceLogResponse(AbstractModel):
                 obj = IpTraceLogEntry()
                 obj._deserialize(item)
                 self._IpTraceLogList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class RequestInstancesByGetRequest(AbstractModel):
+    r"""RequestInstancesByGet请求参数结构体
+
+    """
+
+
+class RequestInstancesByGetResponse(AbstractModel):
+    r"""RequestInstancesByGet返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class RequestInstancesRequest(AbstractModel):
+    r"""RequestInstances请求参数结构体
+
+    """
+
+
+class RequestInstancesResponse(AbstractModel):
+    r"""RequestInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 

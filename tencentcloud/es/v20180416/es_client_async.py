@@ -908,6 +908,42 @@ class EsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def RequestInstances(
+            self,
+            request: models.RequestInstancesRequest,
+            opts: Dict = None,
+    ) -> models.RequestInstancesResponse:
+        """
+        请求集群实例
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "RequestInstances"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.RequestInstancesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def RequestInstancesByGet(
+            self,
+            request: models.RequestInstancesByGetRequest,
+            opts: Dict = None,
+    ) -> models.RequestInstancesByGetResponse:
+        """
+        GET请求集群实例
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "RequestInstancesByGet"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.RequestInstancesByGetResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def RestartInstance(
             self,
             request: models.RestartInstanceRequest,
