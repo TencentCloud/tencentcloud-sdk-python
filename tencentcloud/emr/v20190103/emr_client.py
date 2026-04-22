@@ -1502,6 +1502,29 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def InstallSoftware(self, request):
+        r"""安装组件。对于依赖元数据库的组件，有可能会需要下单一个cdb。可根据InstallSoftWareInfo查看当前集群可安装的组件，以及哪些组件有可能需要cdb。
+
+        :param request: Request instance for InstallSoftware.
+        :type request: :class:`tencentcloud.emr.v20190103.models.InstallSoftwareRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.InstallSoftwareResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("InstallSoftware", params, headers=headers)
+            response = json.loads(body)
+            model = models.InstallSoftwareResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyAutoRenewFlag(self, request):
         r"""前提：预付费集群
         资源级别开启或关闭自动续费

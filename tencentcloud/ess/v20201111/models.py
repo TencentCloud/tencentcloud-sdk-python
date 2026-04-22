@@ -26356,19 +26356,13 @@ class DescribeFlowInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Operator: 执行本接口操作的员工信息。 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`	
+        :param _Operator: <p>执行本接口操作的员工信息。 注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param _FlowIds: 需要查询的流程ID列表，最多可传入100个ID。
-如果要查询合同组的信息，则不需要传入此参数，只需传入 FlowGroupId 参数即可。
-
-
-可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。
-
-[点击查看FlowId在控制台中的位置](https://qcloudimg.tencent-cloud.cn/raw/0a83015166cfe1cb043d14f9ec4bd75e.png)
+        :param _FlowIds: <p>需要查询的流程ID列表，最多可传入100个ID。<br>如果要查询合同组的信息，则不需要传入此参数，只需传入 FlowGroupId 参数即可。</p><p>可登录腾讯电子签控制台，在 &quot;合同&quot;-&gt;&quot;合同中心&quot; 中查看某个合同的FlowId(在页面中展示为合同ID)。</p><p><a href="https://qcloudimg.tencent-cloud.cn/raw/0a83015166cfe1cb043d14f9ec4bd75e.png">点击查看FlowId在控制台中的位置</a></p>
         :type FlowIds: list of str
-        :param _Agent: 代理企业和员工的信息。 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。	
+        :param _Agent: <p>代理企业和员工的信息。 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
-        :param _FlowGroupId: 需要查询的流程组ID，如果传入此参数，则会忽略 FlowIds 参数。该合同组由<a href="https://qian.tencent.com/developers/companyApis/startFlows/CreateFlowGroupByFiles" target="_blank">通过多文件创建合同组签署流程</a>等接口创建。
+        :param _FlowGroupId: <p>需要查询的流程组ID，如果传入此参数，则会忽略 FlowIds 参数。该合同组由<a href="https://qian.tencent.com/developers/companyApis/startFlows/CreateFlowGroupByFiles" target="_blank">通过多文件创建合同组签署流程</a>等接口创建。</p>
         :type FlowGroupId: str
         """
         self._Operator = None
@@ -26378,7 +26372,7 @@ class DescribeFlowInfoRequest(AbstractModel):
 
     @property
     def Operator(self):
-        r"""执行本接口操作的员工信息。 注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`	
+        r"""<p>执行本接口操作的员工信息。 注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
         :rtype: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         """
         return self._Operator
@@ -26389,13 +26383,7 @@ class DescribeFlowInfoRequest(AbstractModel):
 
     @property
     def FlowIds(self):
-        r"""需要查询的流程ID列表，最多可传入100个ID。
-如果要查询合同组的信息，则不需要传入此参数，只需传入 FlowGroupId 参数即可。
-
-
-可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。
-
-[点击查看FlowId在控制台中的位置](https://qcloudimg.tencent-cloud.cn/raw/0a83015166cfe1cb043d14f9ec4bd75e.png)
+        r"""<p>需要查询的流程ID列表，最多可传入100个ID。<br>如果要查询合同组的信息，则不需要传入此参数，只需传入 FlowGroupId 参数即可。</p><p>可登录腾讯电子签控制台，在 &quot;合同&quot;-&gt;&quot;合同中心&quot; 中查看某个合同的FlowId(在页面中展示为合同ID)。</p><p><a href="https://qcloudimg.tencent-cloud.cn/raw/0a83015166cfe1cb043d14f9ec4bd75e.png">点击查看FlowId在控制台中的位置</a></p>
         :rtype: list of str
         """
         return self._FlowIds
@@ -26406,7 +26394,7 @@ class DescribeFlowInfoRequest(AbstractModel):
 
     @property
     def Agent(self):
-        r"""代理企业和员工的信息。 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。	
+        r"""<p>代理企业和员工的信息。 在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
         :rtype: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
         return self._Agent
@@ -26417,7 +26405,7 @@ class DescribeFlowInfoRequest(AbstractModel):
 
     @property
     def FlowGroupId(self):
-        r"""需要查询的流程组ID，如果传入此参数，则会忽略 FlowIds 参数。该合同组由<a href="https://qian.tencent.com/developers/companyApis/startFlows/CreateFlowGroupByFiles" target="_blank">通过多文件创建合同组签署流程</a>等接口创建。
+        r"""<p>需要查询的流程组ID，如果传入此参数，则会忽略 FlowIds 参数。该合同组由<a href="https://qian.tencent.com/developers/companyApis/startFlows/CreateFlowGroupByFiles" target="_blank">通过多文件创建合同组签署流程</a>等接口创建。</p>
         :rtype: str
         """
         return self._FlowGroupId
@@ -26453,25 +26441,26 @@ class DescribeFlowInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowDetailInfos: 合同流程的详细信息。
-如果查询的是合同组信息，则返回的是组内所有子合同流程的详细信息。
+        :param _FlowDetailInfos: <p>合同流程的详细信息。<br>如果查询的是合同组信息，则返回的是组内所有子合同流程的详细信息。</p>
         :type FlowDetailInfos: list of FlowDetailInfo
-        :param _FlowGroupId: 合同组ID，只有在查询合同组信息时才会返回。
+        :param _FlowGroupId: <p>合同组ID，只有在查询合同组信息时才会返回。</p>
         :type FlowGroupId: str
-        :param _FlowGroupName: 合同组名称，只有在查询合同组信息时才会返回。
+        :param _FlowGroupName: <p>合同组名称，只有在查询合同组信息时才会返回。</p>
         :type FlowGroupName: str
+        :param _FlowGroupRemarks: <p>合同组合同备注列表</p>
+        :type FlowGroupRemarks: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._FlowDetailInfos = None
         self._FlowGroupId = None
         self._FlowGroupName = None
+        self._FlowGroupRemarks = None
         self._RequestId = None
 
     @property
     def FlowDetailInfos(self):
-        r"""合同流程的详细信息。
-如果查询的是合同组信息，则返回的是组内所有子合同流程的详细信息。
+        r"""<p>合同流程的详细信息。<br>如果查询的是合同组信息，则返回的是组内所有子合同流程的详细信息。</p>
         :rtype: list of FlowDetailInfo
         """
         return self._FlowDetailInfos
@@ -26482,7 +26471,7 @@ class DescribeFlowInfoResponse(AbstractModel):
 
     @property
     def FlowGroupId(self):
-        r"""合同组ID，只有在查询合同组信息时才会返回。
+        r"""<p>合同组ID，只有在查询合同组信息时才会返回。</p>
         :rtype: str
         """
         return self._FlowGroupId
@@ -26493,7 +26482,7 @@ class DescribeFlowInfoResponse(AbstractModel):
 
     @property
     def FlowGroupName(self):
-        r"""合同组名称，只有在查询合同组信息时才会返回。
+        r"""<p>合同组名称，只有在查询合同组信息时才会返回。</p>
         :rtype: str
         """
         return self._FlowGroupName
@@ -26501,6 +26490,17 @@ class DescribeFlowInfoResponse(AbstractModel):
     @FlowGroupName.setter
     def FlowGroupName(self, FlowGroupName):
         self._FlowGroupName = FlowGroupName
+
+    @property
+    def FlowGroupRemarks(self):
+        r"""<p>合同组合同备注列表</p>
+        :rtype: list of str
+        """
+        return self._FlowGroupRemarks
+
+    @FlowGroupRemarks.setter
+    def FlowGroupRemarks(self, FlowGroupRemarks):
+        self._FlowGroupRemarks = FlowGroupRemarks
 
     @property
     def RequestId(self):
@@ -26523,6 +26523,7 @@ class DescribeFlowInfoResponse(AbstractModel):
                 self._FlowDetailInfos.append(obj)
         self._FlowGroupId = params.get("FlowGroupId")
         self._FlowGroupName = params.get("FlowGroupName")
+        self._FlowGroupRemarks = params.get("FlowGroupRemarks")
         self._RequestId = params.get("RequestId")
 
 
@@ -33639,48 +33640,32 @@ class FlowDetailInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowId: 合同流程ID，为32位字符串。
+        :param _FlowId: <p>合同流程ID，为32位字符串。</p>
         :type FlowId: str
-        :param _FlowName: 合同流程的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。
+        :param _FlowName: <p>合同流程的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。</p>
         :type FlowName: str
-        :param _FlowType: 合同流程的类别分类（如销售合同/入职合同等）。
-该字段将被废弃，不建议使用。	
+        :param _FlowType: <p>合同流程的类别分类（如销售合同/入职合同等）。<br>该字段将被废弃，不建议使用。</p>
         :type FlowType: str
-        :param _FlowStatus: 合同流程当前的签署状态, 会存在下列的状态值 
-<ul>
-<li> **0** : 未开启流程(合同中不存在填写环节)</li> 
-<li> **1** : 待签署</li>
- <li> **2** : 部分签署</li>
- <li> **3** : 已拒签</li>
- <li> **4** : 已签署</li> 
-<li> **5** : 已过期</li>
- <li> **6** : 已撤销</li> 
-<li> **7** : 未开启流程(合同中存在填写环节)</li>
- <li> **8** : 等待填写</li>
- <li> **9** : 部分填写</li>
- <li> **10** : 已拒填</li> 
-<li> **16** : 已失效（可能因为参与方修改姓名等原因）</li>
- <li> **21** : 已解除</li></ul>	
+        :param _FlowStatus: <p>合同流程当前的签署状态, 会存在下列的状态值 </p><ul><li> **0** : 未开启流程(合同中不存在填写环节)</li> <li> **1** : 待签署</li> <li> **2** : 部分签署</li> <li> **3** : 已拒签</li> <li> **4** : 已签署</li> <li> **5** : 已过期</li> <li> **6** : 已撤销</li> <li> **7** : 未开启流程(合同中存在填写环节)</li> <li> **8** : 等待填写</li> <li> **9** : 部分填写</li> <li> **10** : 已拒填</li> <li> **16** : 已失效（可能因为参与方修改姓名等原因）</li> <li> **21** : 已解除</li></ul>
         :type FlowStatus: int
-        :param _FlowMessage: 当合同流程状态为已拒签（即 FlowStatus=3）或已撤销（即 FlowStatus=6）时，此字段 FlowMessage 为拒签或撤销原因。	
+        :param _FlowMessage: <p>当合同流程状态为已拒签（即 FlowStatus=3）或已撤销（即 FlowStatus=6）时，此字段 FlowMessage 为拒签或撤销原因。</p>
         :type FlowMessage: str
-        :param _FlowDescription: 合同流程描述信息。	
+        :param _FlowDescription: <p>合同流程描述信息。</p>
         :type FlowDescription: str
-        :param _CreatedOn: 合同流程的创建时间戳，格式为Unix标准时间戳（秒）。	
+        :param _CreatedOn: <p>合同流程的创建时间戳，格式为Unix标准时间戳（秒）。</p>
         :type CreatedOn: int
-        :param _FlowApproverInfos: 合同流程的签署方数组
+        :param _FlowApproverInfos: <p>合同流程的签署方数组</p>
         :type FlowApproverInfos: list of FlowApproverDetail
-        :param _CcInfos: 合同流程的关注方信息数组
+        :param _CcInfos: <p>合同流程的关注方信息数组</p>
         :type CcInfos: list of FlowApproverDetail
-        :param _Creator: 合同流程发起方的员工编号, 即员工在腾讯电子签平台的唯一身份标识。	
+        :param _Creator: <p>合同流程发起方的员工编号, 即员工在腾讯电子签平台的唯一身份标识。</p>
         :type Creator: str
-        :param _UserFlowType: 用户合同的自定义分类。
-
-自定义合同类型的位置，在下图所示地方:
-![image](https://qcloudimg.tencent-cloud.cn/raw/00d72934c31bd49115a566e4e1a4530d.png)
+        :param _UserFlowType: <p>用户合同的自定义分类。</p><p>自定义合同类型的位置，在下图所示地方:<br><img src="https://qcloudimg.tencent-cloud.cn/raw/00d72934c31bd49115a566e4e1a4530d.png" alt="image"></p>
         :type UserFlowType: :class:`tencentcloud.ess.v20201111.models.UserFlowType`
-        :param _TemplateId: 发起模板时,使用的模板Id
+        :param _TemplateId: <p>发起模板时,使用的模板Id</p>
         :type TemplateId: str
+        :param _FlowRemarks: <p>合同备注列表</p>
+        :type FlowRemarks: list of str
         """
         self._FlowId = None
         self._FlowName = None
@@ -33694,10 +33679,11 @@ class FlowDetailInfo(AbstractModel):
         self._Creator = None
         self._UserFlowType = None
         self._TemplateId = None
+        self._FlowRemarks = None
 
     @property
     def FlowId(self):
-        r"""合同流程ID，为32位字符串。
+        r"""<p>合同流程ID，为32位字符串。</p>
         :rtype: str
         """
         return self._FlowId
@@ -33708,7 +33694,7 @@ class FlowDetailInfo(AbstractModel):
 
     @property
     def FlowName(self):
-        r"""合同流程的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。
+        r"""<p>合同流程的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。</p>
         :rtype: str
         """
         return self._FlowName
@@ -33719,8 +33705,7 @@ class FlowDetailInfo(AbstractModel):
 
     @property
     def FlowType(self):
-        r"""合同流程的类别分类（如销售合同/入职合同等）。
-该字段将被废弃，不建议使用。	
+        r"""<p>合同流程的类别分类（如销售合同/入职合同等）。<br>该字段将被废弃，不建议使用。</p>
         :rtype: str
         """
         return self._FlowType
@@ -33731,21 +33716,7 @@ class FlowDetailInfo(AbstractModel):
 
     @property
     def FlowStatus(self):
-        r"""合同流程当前的签署状态, 会存在下列的状态值 
-<ul>
-<li> **0** : 未开启流程(合同中不存在填写环节)</li> 
-<li> **1** : 待签署</li>
- <li> **2** : 部分签署</li>
- <li> **3** : 已拒签</li>
- <li> **4** : 已签署</li> 
-<li> **5** : 已过期</li>
- <li> **6** : 已撤销</li> 
-<li> **7** : 未开启流程(合同中存在填写环节)</li>
- <li> **8** : 等待填写</li>
- <li> **9** : 部分填写</li>
- <li> **10** : 已拒填</li> 
-<li> **16** : 已失效（可能因为参与方修改姓名等原因）</li>
- <li> **21** : 已解除</li></ul>	
+        r"""<p>合同流程当前的签署状态, 会存在下列的状态值 </p><ul><li> **0** : 未开启流程(合同中不存在填写环节)</li> <li> **1** : 待签署</li> <li> **2** : 部分签署</li> <li> **3** : 已拒签</li> <li> **4** : 已签署</li> <li> **5** : 已过期</li> <li> **6** : 已撤销</li> <li> **7** : 未开启流程(合同中存在填写环节)</li> <li> **8** : 等待填写</li> <li> **9** : 部分填写</li> <li> **10** : 已拒填</li> <li> **16** : 已失效（可能因为参与方修改姓名等原因）</li> <li> **21** : 已解除</li></ul>
         :rtype: int
         """
         return self._FlowStatus
@@ -33756,7 +33727,7 @@ class FlowDetailInfo(AbstractModel):
 
     @property
     def FlowMessage(self):
-        r"""当合同流程状态为已拒签（即 FlowStatus=3）或已撤销（即 FlowStatus=6）时，此字段 FlowMessage 为拒签或撤销原因。	
+        r"""<p>当合同流程状态为已拒签（即 FlowStatus=3）或已撤销（即 FlowStatus=6）时，此字段 FlowMessage 为拒签或撤销原因。</p>
         :rtype: str
         """
         return self._FlowMessage
@@ -33767,7 +33738,7 @@ class FlowDetailInfo(AbstractModel):
 
     @property
     def FlowDescription(self):
-        r"""合同流程描述信息。	
+        r"""<p>合同流程描述信息。</p>
         :rtype: str
         """
         return self._FlowDescription
@@ -33778,7 +33749,7 @@ class FlowDetailInfo(AbstractModel):
 
     @property
     def CreatedOn(self):
-        r"""合同流程的创建时间戳，格式为Unix标准时间戳（秒）。	
+        r"""<p>合同流程的创建时间戳，格式为Unix标准时间戳（秒）。</p>
         :rtype: int
         """
         return self._CreatedOn
@@ -33789,7 +33760,7 @@ class FlowDetailInfo(AbstractModel):
 
     @property
     def FlowApproverInfos(self):
-        r"""合同流程的签署方数组
+        r"""<p>合同流程的签署方数组</p>
         :rtype: list of FlowApproverDetail
         """
         return self._FlowApproverInfos
@@ -33800,7 +33771,7 @@ class FlowDetailInfo(AbstractModel):
 
     @property
     def CcInfos(self):
-        r"""合同流程的关注方信息数组
+        r"""<p>合同流程的关注方信息数组</p>
         :rtype: list of FlowApproverDetail
         """
         return self._CcInfos
@@ -33811,7 +33782,7 @@ class FlowDetailInfo(AbstractModel):
 
     @property
     def Creator(self):
-        r"""合同流程发起方的员工编号, 即员工在腾讯电子签平台的唯一身份标识。	
+        r"""<p>合同流程发起方的员工编号, 即员工在腾讯电子签平台的唯一身份标识。</p>
         :rtype: str
         """
         return self._Creator
@@ -33822,10 +33793,7 @@ class FlowDetailInfo(AbstractModel):
 
     @property
     def UserFlowType(self):
-        r"""用户合同的自定义分类。
-
-自定义合同类型的位置，在下图所示地方:
-![image](https://qcloudimg.tencent-cloud.cn/raw/00d72934c31bd49115a566e4e1a4530d.png)
+        r"""<p>用户合同的自定义分类。</p><p>自定义合同类型的位置，在下图所示地方:<br><img src="https://qcloudimg.tencent-cloud.cn/raw/00d72934c31bd49115a566e4e1a4530d.png" alt="image"></p>
         :rtype: :class:`tencentcloud.ess.v20201111.models.UserFlowType`
         """
         return self._UserFlowType
@@ -33836,7 +33804,7 @@ class FlowDetailInfo(AbstractModel):
 
     @property
     def TemplateId(self):
-        r"""发起模板时,使用的模板Id
+        r"""<p>发起模板时,使用的模板Id</p>
         :rtype: str
         """
         return self._TemplateId
@@ -33844,6 +33812,17 @@ class FlowDetailInfo(AbstractModel):
     @TemplateId.setter
     def TemplateId(self, TemplateId):
         self._TemplateId = TemplateId
+
+    @property
+    def FlowRemarks(self):
+        r"""<p>合同备注列表</p>
+        :rtype: list of str
+        """
+        return self._FlowRemarks
+
+    @FlowRemarks.setter
+    def FlowRemarks(self, FlowRemarks):
+        self._FlowRemarks = FlowRemarks
 
 
     def _deserialize(self, params):
@@ -33871,6 +33850,7 @@ class FlowDetailInfo(AbstractModel):
             self._UserFlowType = UserFlowType()
             self._UserFlowType._deserialize(params.get("UserFlowType"))
         self._TemplateId = params.get("TemplateId")
+        self._FlowRemarks = params.get("FlowRemarks")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -34547,6 +34527,57 @@ class FlowOperateLimit(AbstractModel):
 
     def _deserialize(self, params):
         self._NoRelease = params.get("NoRelease")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FlowRemarkItem(AbstractModel):
+    r"""合同备注
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RemarkId: <p>合同备注下标，对应最多5个备注位</p><p>取值范围：[0, 4]</p>
+        :type RemarkId: int
+        :param _RemarkValue: <p>合同备注内容，不超过 50 个字符，DELETE 时无需传入</p>
+        :type RemarkValue: str
+        """
+        self._RemarkId = None
+        self._RemarkValue = None
+
+    @property
+    def RemarkId(self):
+        r"""<p>合同备注下标，对应最多5个备注位</p><p>取值范围：[0, 4]</p>
+        :rtype: int
+        """
+        return self._RemarkId
+
+    @RemarkId.setter
+    def RemarkId(self, RemarkId):
+        self._RemarkId = RemarkId
+
+    @property
+    def RemarkValue(self):
+        r"""<p>合同备注内容，不超过 50 个字符，DELETE 时无需传入</p>
+        :rtype: str
+        """
+        return self._RemarkValue
+
+    @RemarkValue.setter
+    def RemarkValue(self, RemarkValue):
+        self._RemarkValue = RemarkValue
+
+
+    def _deserialize(self, params):
+        self._RemarkId = params.get("RemarkId")
+        self._RemarkValue = params.get("RemarkValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -38839,6 +38870,166 @@ class OccupiedSeal(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class OperateFlowRemarksRequest(AbstractModel):
+    r"""OperateFlowRemarks请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Operator: <p>执行本接口操作的员工信息。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param _OperateType: <p>操作类型，可取值如下:</p><ul><li>DELETE:  删除</li><li>ENABLE: 启用</li><li>DISABLE: 停用</li><li>COPY: 复制新建</li></ul>
+        :type OperateType: str
+        :param _FlowId: <p>对应的合同流程id</p><p>目标合同为合同组时此参数不填</p>
+        :type FlowId: str
+        :param _Agent: <p>代理企业和员工的信息。<br>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
+        :param _FlowGroupId: <p>对应合同组id</p><p>目标合同为单份合同时此参数不填</p>
+        :type FlowGroupId: str
+        :param _FlowItem: <p>合同备注信息。</p><p>入参限制：当OperateType为UPDATE和DELETE时，通过该结构体进行对应备注操作，合同备注数量范围为 1 - 5个。</p>
+        :type FlowItem: :class:`tencentcloud.ess.v20201111.models.FlowRemarkItem`
+        :param _FlowItems: <p>合同备注列表。</p><p>入参限制：当OperateType为CREATE时，通过该参数进行全量的合同备注创建。</p>
+        :type FlowItems: list of str
+        """
+        self._Operator = None
+        self._OperateType = None
+        self._FlowId = None
+        self._Agent = None
+        self._FlowGroupId = None
+        self._FlowItem = None
+        self._FlowItems = None
+
+    @property
+    def Operator(self):
+        r"""<p>执行本接口操作的员工信息。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
+        :rtype: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def OperateType(self):
+        r"""<p>操作类型，可取值如下:</p><ul><li>DELETE:  删除</li><li>ENABLE: 启用</li><li>DISABLE: 停用</li><li>COPY: 复制新建</li></ul>
+        :rtype: str
+        """
+        return self._OperateType
+
+    @OperateType.setter
+    def OperateType(self, OperateType):
+        self._OperateType = OperateType
+
+    @property
+    def FlowId(self):
+        r"""<p>对应的合同流程id</p><p>目标合同为合同组时此参数不填</p>
+        :rtype: str
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def Agent(self):
+        r"""<p>代理企业和员工的信息。<br>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
+        :rtype: :class:`tencentcloud.ess.v20201111.models.Agent`
+        """
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+    @property
+    def FlowGroupId(self):
+        r"""<p>对应合同组id</p><p>目标合同为单份合同时此参数不填</p>
+        :rtype: str
+        """
+        return self._FlowGroupId
+
+    @FlowGroupId.setter
+    def FlowGroupId(self, FlowGroupId):
+        self._FlowGroupId = FlowGroupId
+
+    @property
+    def FlowItem(self):
+        r"""<p>合同备注信息。</p><p>入参限制：当OperateType为UPDATE和DELETE时，通过该结构体进行对应备注操作，合同备注数量范围为 1 - 5个。</p>
+        :rtype: :class:`tencentcloud.ess.v20201111.models.FlowRemarkItem`
+        """
+        return self._FlowItem
+
+    @FlowItem.setter
+    def FlowItem(self, FlowItem):
+        self._FlowItem = FlowItem
+
+    @property
+    def FlowItems(self):
+        r"""<p>合同备注列表。</p><p>入参限制：当OperateType为CREATE时，通过该参数进行全量的合同备注创建。</p>
+        :rtype: list of str
+        """
+        return self._FlowItems
+
+    @FlowItems.setter
+    def FlowItems(self, FlowItems):
+        self._FlowItems = FlowItems
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._OperateType = params.get("OperateType")
+        self._FlowId = params.get("FlowId")
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        self._FlowGroupId = params.get("FlowGroupId")
+        if params.get("FlowItem") is not None:
+            self._FlowItem = FlowRemarkItem()
+            self._FlowItem._deserialize(params.get("FlowItem"))
+        self._FlowItems = params.get("FlowItems")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OperateFlowRemarksResponse(AbstractModel):
+    r"""OperateFlowRemarks返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class OperateSealsRequest(AbstractModel):

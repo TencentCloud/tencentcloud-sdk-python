@@ -97,6 +97,42 @@ class WafClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def AddBatchCustomRule(
+            self,
+            request: models.AddBatchCustomRuleRequest,
+            opts: Dict = None,
+    ) -> models.AddBatchCustomRuleResponse:
+        """
+        批量新增自定义规则接口
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "AddBatchCustomRule"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.AddBatchCustomRuleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def AddBatchCustomWhiteRule(
+            self,
+            request: models.AddBatchCustomWhiteRuleRequest,
+            opts: Dict = None,
+    ) -> models.AddBatchCustomWhiteRuleResponse:
+        """
+        增加批量精准白名单规则
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "AddBatchCustomWhiteRule"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.AddBatchCustomWhiteRuleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def AddBypassAllRule(
             self,
             request: models.AddBypassAllRuleRequest,
@@ -385,6 +421,24 @@ class WafClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateProtectGroup(
+            self,
+            request: models.CreateProtectGroupRequest,
+            opts: Dict = None,
+    ) -> models.CreateProtectGroupResponse:
+        """
+        新建防护对象组
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateProtectGroup"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateProtectGroupResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateRateLimitV2(
             self,
             request: models.CreateRateLimitV2Request,
@@ -488,6 +542,42 @@ class WafClient(AbstractClient):
         kwargs["action"] = "DeleteAttackWhiteRule"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteAttackWhiteRuleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteBatchCustomRule(
+            self,
+            request: models.DeleteBatchCustomRuleRequest,
+            opts: Dict = None,
+    ) -> models.DeleteBatchCustomRuleResponse:
+        """
+        [自定义规则]-批量删除接口
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteBatchCustomRule"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteBatchCustomRuleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteBatchCustomWhiteRule(
+            self,
+            request: models.DeleteBatchCustomWhiteRuleRequest,
+            opts: Dict = None,
+    ) -> models.DeleteBatchCustomWhiteRuleResponse:
+        """
+        删除批量精准白名单规则
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteBatchCustomWhiteRule"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteBatchCustomWhiteRuleResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -704,6 +794,42 @@ class WafClient(AbstractClient):
         kwargs["action"] = "DeleteOwaspWhiteRule"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteOwaspWhiteRuleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteProtectGroup(
+            self,
+            request: models.DeleteProtectGroupRequest,
+            opts: Dict = None,
+    ) -> models.DeleteProtectGroupResponse:
+        """
+        删除防护对象组
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteProtectGroup"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteProtectGroupResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteProtectGroupDomain(
+            self,
+            request: models.DeleteProtectGroupDomainRequest,
+            opts: Dict = None,
+    ) -> models.DeleteProtectGroupDomainResponse:
+        """
+        解除防护对象组中的域名绑定
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteProtectGroupDomain"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteProtectGroupDomainResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1064,6 +1190,42 @@ class WafClient(AbstractClient):
         kwargs["action"] = "DescribeAutoDenyIP"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeAutoDenyIPResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeBatchCustomRuleList(
+            self,
+            request: models.DescribeBatchCustomRuleListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeBatchCustomRuleListResponse:
+        """
+        批量自定义规则列表接口
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeBatchCustomRuleList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeBatchCustomRuleListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeBatchCustomWhiteRules(
+            self,
+            request: models.DescribeBatchCustomWhiteRulesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeBatchCustomWhiteRulesResponse:
+        """
+        获取批量精准白名单的规则列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeBatchCustomWhiteRules"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeBatchCustomWhiteRulesResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1820,6 +1982,24 @@ class WafClient(AbstractClient):
         kwargs["action"] = "DescribePostCLSFlows"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribePostCLSFlowsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeProtectGroup(
+            self,
+            request: models.DescribeProtectGroupRequest,
+            opts: Dict = None,
+    ) -> models.DescribeProtectGroupResponse:
+        """
+        获取防护对象组详情
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeProtectGroup"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeProtectGroupResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2601,6 +2781,78 @@ class WafClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyBatchCustomRule(
+            self,
+            request: models.ModifyBatchCustomRuleRequest,
+            opts: Dict = None,
+    ) -> models.ModifyBatchCustomRuleResponse:
+        """
+        批量编辑自定义规则接口
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyBatchCustomRule"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyBatchCustomRuleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyBatchCustomRuleStatus(
+            self,
+            request: models.ModifyBatchCustomRuleStatusRequest,
+            opts: Dict = None,
+    ) -> models.ModifyBatchCustomRuleStatusResponse:
+        """
+        批量自定义规则开关接口
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyBatchCustomRuleStatus"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyBatchCustomRuleStatusResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyBatchCustomWhiteRule(
+            self,
+            request: models.ModifyBatchCustomWhiteRuleRequest,
+            opts: Dict = None,
+    ) -> models.ModifyBatchCustomWhiteRuleResponse:
+        """
+        修改批量精准白名单规则
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyBatchCustomWhiteRule"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyBatchCustomWhiteRuleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyBatchCustomWhiteRuleStatus(
+            self,
+            request: models.ModifyBatchCustomWhiteRuleStatusRequest,
+            opts: Dict = None,
+    ) -> models.ModifyBatchCustomWhiteRuleStatusResponse:
+        """
+        更新批量精准白名单规则
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyBatchCustomWhiteRuleStatus"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyBatchCustomWhiteRuleStatusResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyBatchIpAccessControl(
             self,
             request: models.ModifyBatchIpAccessControlRequest,
@@ -3173,6 +3425,24 @@ class WafClient(AbstractClient):
         kwargs["action"] = "ModifyOwaspWhiteRule"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyOwaspWhiteRuleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyProtectGroup(
+            self,
+            request: models.ModifyProtectGroupRequest,
+            opts: Dict = None,
+    ) -> models.ModifyProtectGroupResponse:
+        """
+        编辑防护对象组
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyProtectGroup"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyProtectGroupResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

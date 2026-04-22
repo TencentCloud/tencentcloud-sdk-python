@@ -1381,6 +1381,508 @@ class AddAttackWhiteRuleResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class AddBatchCustomRuleRequest(AbstractModel):
+    r"""AddBatchCustomRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 规则名称
+        :type Name: str
+        :param _ExpireTime: 如果没有设置JobDateTime字段则用此字段，0表示永久生效，其它表示定时生效的截止时间（单位为秒）
+        :type ExpireTime: int
+        :param _SortId: 优先级
+        :type SortId: int
+        :param _ActionType: 动作类型，1代表阻断，2代表人机识别，3代表观察，4代表重定向
+        :type ActionType: int
+        :param _Redirect: 重定向地址
+        :type Redirect: str
+        :param _Bypass: 加白模块
+        :type Bypass: str
+        :param _Remark: 备注
+        :type Remark: str
+        :param _EventId: 事件Id
+        :type EventId: str
+        :param _Domains: 域名列表
+        :type Domains: list of str
+        :param _Strategies: 策略详情列表
+        :type Strategies: list of Strategy
+        :param _JobType: 规则执行的方式，TimedJob为定时执行，CronJob为周期执行
+        :type JobType: str
+        :param _JobDateTime: 定时任务配置
+        :type JobDateTime: :class:`tencentcloud.waf.v20180125.models.JobDateTime`
+        :param _LogicalOp: 匹配条件的逻辑关系，支持and、or，分别表示多个逻辑匹配条件是与、或的关系
+        :type LogicalOp: str
+        :param _PageId: 页面ID
+        :type PageId: str
+        :param _ActionRatio: 动作灰度比例
+        :type ActionRatio: int
+        """
+        self._Name = None
+        self._ExpireTime = None
+        self._SortId = None
+        self._ActionType = None
+        self._Redirect = None
+        self._Bypass = None
+        self._Remark = None
+        self._EventId = None
+        self._Domains = None
+        self._Strategies = None
+        self._JobType = None
+        self._JobDateTime = None
+        self._LogicalOp = None
+        self._PageId = None
+        self._ActionRatio = None
+
+    @property
+    def Name(self):
+        r"""规则名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ExpireTime(self):
+        r"""如果没有设置JobDateTime字段则用此字段，0表示永久生效，其它表示定时生效的截止时间（单位为秒）
+        :rtype: int
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def SortId(self):
+        r"""优先级
+        :rtype: int
+        """
+        return self._SortId
+
+    @SortId.setter
+    def SortId(self, SortId):
+        self._SortId = SortId
+
+    @property
+    def ActionType(self):
+        r"""动作类型，1代表阻断，2代表人机识别，3代表观察，4代表重定向
+        :rtype: int
+        """
+        return self._ActionType
+
+    @ActionType.setter
+    def ActionType(self, ActionType):
+        self._ActionType = ActionType
+
+    @property
+    def Redirect(self):
+        r"""重定向地址
+        :rtype: str
+        """
+        return self._Redirect
+
+    @Redirect.setter
+    def Redirect(self, Redirect):
+        self._Redirect = Redirect
+
+    @property
+    def Bypass(self):
+        r"""加白模块
+        :rtype: str
+        """
+        return self._Bypass
+
+    @Bypass.setter
+    def Bypass(self, Bypass):
+        self._Bypass = Bypass
+
+    @property
+    def Remark(self):
+        r"""备注
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def EventId(self):
+        r"""事件Id
+        :rtype: str
+        """
+        return self._EventId
+
+    @EventId.setter
+    def EventId(self, EventId):
+        self._EventId = EventId
+
+    @property
+    def Domains(self):
+        r"""域名列表
+        :rtype: list of str
+        """
+        return self._Domains
+
+    @Domains.setter
+    def Domains(self, Domains):
+        self._Domains = Domains
+
+    @property
+    def Strategies(self):
+        r"""策略详情列表
+        :rtype: list of Strategy
+        """
+        return self._Strategies
+
+    @Strategies.setter
+    def Strategies(self, Strategies):
+        self._Strategies = Strategies
+
+    @property
+    def JobType(self):
+        r"""规则执行的方式，TimedJob为定时执行，CronJob为周期执行
+        :rtype: str
+        """
+        return self._JobType
+
+    @JobType.setter
+    def JobType(self, JobType):
+        self._JobType = JobType
+
+    @property
+    def JobDateTime(self):
+        r"""定时任务配置
+        :rtype: :class:`tencentcloud.waf.v20180125.models.JobDateTime`
+        """
+        return self._JobDateTime
+
+    @JobDateTime.setter
+    def JobDateTime(self, JobDateTime):
+        self._JobDateTime = JobDateTime
+
+    @property
+    def LogicalOp(self):
+        r"""匹配条件的逻辑关系，支持and、or，分别表示多个逻辑匹配条件是与、或的关系
+        :rtype: str
+        """
+        return self._LogicalOp
+
+    @LogicalOp.setter
+    def LogicalOp(self, LogicalOp):
+        self._LogicalOp = LogicalOp
+
+    @property
+    def PageId(self):
+        r"""页面ID
+        :rtype: str
+        """
+        return self._PageId
+
+    @PageId.setter
+    def PageId(self, PageId):
+        self._PageId = PageId
+
+    @property
+    def ActionRatio(self):
+        r"""动作灰度比例
+        :rtype: int
+        """
+        return self._ActionRatio
+
+    @ActionRatio.setter
+    def ActionRatio(self, ActionRatio):
+        self._ActionRatio = ActionRatio
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._ExpireTime = params.get("ExpireTime")
+        self._SortId = params.get("SortId")
+        self._ActionType = params.get("ActionType")
+        self._Redirect = params.get("Redirect")
+        self._Bypass = params.get("Bypass")
+        self._Remark = params.get("Remark")
+        self._EventId = params.get("EventId")
+        self._Domains = params.get("Domains")
+        if params.get("Strategies") is not None:
+            self._Strategies = []
+            for item in params.get("Strategies"):
+                obj = Strategy()
+                obj._deserialize(item)
+                self._Strategies.append(obj)
+        self._JobType = params.get("JobType")
+        if params.get("JobDateTime") is not None:
+            self._JobDateTime = JobDateTime()
+            self._JobDateTime._deserialize(params.get("JobDateTime"))
+        self._LogicalOp = params.get("LogicalOp")
+        self._PageId = params.get("PageId")
+        self._ActionRatio = params.get("ActionRatio")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AddBatchCustomRuleResponse(AbstractModel):
+    r"""AddBatchCustomRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Res: 操作成功
+        :type Res: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Res = None
+        self._RequestId = None
+
+    @property
+    def Res(self):
+        r"""操作成功
+        :rtype: str
+        """
+        return self._Res
+
+    @Res.setter
+    def Res(self, Res):
+        self._Res = Res
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Res = params.get("Res")
+        self._RequestId = params.get("RequestId")
+
+
+class AddBatchCustomWhiteRuleRequest(AbstractModel):
+    r"""AddBatchCustomWhiteRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 规则名称
+        :type Name: str
+        :param _SortId: 优先级
+        :type SortId: int
+        :param _Strategies: 策略详情
+        :type Strategies: list of Strategy
+        :param _Bypass: 加白的模块，owasp：Web防护-规则引擎、ai：Web防护-AI引擎、ip_auto_deny：IP封禁、geoip：访问控制-地域封禁、acl：访问控制-自定义规则、cc：CC防护、antileakage：信息防泄漏防护、bwip：IP黑白名单、botrpc：BOT防护、api：API安全、applet：小程序防护
+        :type Bypass: list of str
+        :param _JobType: 规则执行的方式，TimedJob为定时执行，CronJob为周期执行
+        :type JobType: str
+        :param _JobDateTime: 定时任务配置
+        :type JobDateTime: :class:`tencentcloud.waf.v20180125.models.JobDateTime`
+        :param _Domains: 域名列表，如果绑定的是批量域名，和GroupIds参数二选一
+        :type Domains: list of str
+        :param _GroupIds: 防护对象组ID列表，如果绑定的是防护对象组，和Domains参数二选一
+        :type GroupIds: list of int non-negative
+        :param _LogicalOp: 匹配条件的逻辑关系，支持and、or，分别表示多个逻辑匹配条件是与、或的关系
+        :type LogicalOp: str
+        """
+        self._Name = None
+        self._SortId = None
+        self._Strategies = None
+        self._Bypass = None
+        self._JobType = None
+        self._JobDateTime = None
+        self._Domains = None
+        self._GroupIds = None
+        self._LogicalOp = None
+
+    @property
+    def Name(self):
+        r"""规则名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def SortId(self):
+        r"""优先级
+        :rtype: int
+        """
+        return self._SortId
+
+    @SortId.setter
+    def SortId(self, SortId):
+        self._SortId = SortId
+
+    @property
+    def Strategies(self):
+        r"""策略详情
+        :rtype: list of Strategy
+        """
+        return self._Strategies
+
+    @Strategies.setter
+    def Strategies(self, Strategies):
+        self._Strategies = Strategies
+
+    @property
+    def Bypass(self):
+        r"""加白的模块，owasp：Web防护-规则引擎、ai：Web防护-AI引擎、ip_auto_deny：IP封禁、geoip：访问控制-地域封禁、acl：访问控制-自定义规则、cc：CC防护、antileakage：信息防泄漏防护、bwip：IP黑白名单、botrpc：BOT防护、api：API安全、applet：小程序防护
+        :rtype: list of str
+        """
+        return self._Bypass
+
+    @Bypass.setter
+    def Bypass(self, Bypass):
+        self._Bypass = Bypass
+
+    @property
+    def JobType(self):
+        r"""规则执行的方式，TimedJob为定时执行，CronJob为周期执行
+        :rtype: str
+        """
+        return self._JobType
+
+    @JobType.setter
+    def JobType(self, JobType):
+        self._JobType = JobType
+
+    @property
+    def JobDateTime(self):
+        r"""定时任务配置
+        :rtype: :class:`tencentcloud.waf.v20180125.models.JobDateTime`
+        """
+        return self._JobDateTime
+
+    @JobDateTime.setter
+    def JobDateTime(self, JobDateTime):
+        self._JobDateTime = JobDateTime
+
+    @property
+    def Domains(self):
+        r"""域名列表，如果绑定的是批量域名，和GroupIds参数二选一
+        :rtype: list of str
+        """
+        return self._Domains
+
+    @Domains.setter
+    def Domains(self, Domains):
+        self._Domains = Domains
+
+    @property
+    def GroupIds(self):
+        r"""防护对象组ID列表，如果绑定的是防护对象组，和Domains参数二选一
+        :rtype: list of int non-negative
+        """
+        return self._GroupIds
+
+    @GroupIds.setter
+    def GroupIds(self, GroupIds):
+        self._GroupIds = GroupIds
+
+    @property
+    def LogicalOp(self):
+        r"""匹配条件的逻辑关系，支持and、or，分别表示多个逻辑匹配条件是与、或的关系
+        :rtype: str
+        """
+        return self._LogicalOp
+
+    @LogicalOp.setter
+    def LogicalOp(self, LogicalOp):
+        self._LogicalOp = LogicalOp
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._SortId = params.get("SortId")
+        if params.get("Strategies") is not None:
+            self._Strategies = []
+            for item in params.get("Strategies"):
+                obj = Strategy()
+                obj._deserialize(item)
+                self._Strategies.append(obj)
+        self._Bypass = params.get("Bypass")
+        self._JobType = params.get("JobType")
+        if params.get("JobDateTime") is not None:
+            self._JobDateTime = JobDateTime()
+            self._JobDateTime._deserialize(params.get("JobDateTime"))
+        self._Domains = params.get("Domains")
+        self._GroupIds = params.get("GroupIds")
+        self._LogicalOp = params.get("LogicalOp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AddBatchCustomWhiteRuleResponse(AbstractModel):
+    r"""AddBatchCustomWhiteRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleId: 添加成功的规则ID
+        :type RuleId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RuleId = None
+        self._RequestId = None
+
+    @property
+    def RuleId(self):
+        r"""添加成功的规则ID
+        :rtype: int
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RuleId = params.get("RuleId")
+        self._RequestId = params.get("RequestId")
+
+
 class AddBypassAllRuleRequest(AbstractModel):
     r"""AddBypassAllRule请求参数结构体
 
@@ -5414,6 +5916,673 @@ class AutoDenyDetail(AbstractModel):
         self._TimeThreshold = params.get("TimeThreshold")
         self._DenyTimeThreshold = params.get("DenyTimeThreshold")
         self._LastUpdateTime = params.get("LastUpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BatchCustomRuleListData(AbstractModel):
+    r"""批量自定义规则列表信息数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _List: 规则列表
+        :type List: list of BatchCustomRuleListItem
+        :param _Total: 列表总数
+        :type Total: int
+        """
+        self._List = None
+        self._Total = None
+
+    @property
+    def List(self):
+        r"""规则列表
+        :rtype: list of BatchCustomRuleListItem
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def Total(self):
+        r"""列表总数
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = BatchCustomRuleListItem()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._Total = params.get("Total")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BatchCustomRuleListItem(AbstractModel):
+    r"""批量自定义规则列表信息Item
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 规则Id
+        :type Id: int
+        :param _ActionType: 动作类型，1代表阻断，2代表人机识别，3代表观察，4代表重定向，5代表JS校验
+        :type ActionType: int
+        :param _Bypass: 加白模块
+        :type Bypass: str
+        :param _ExpireTime: 有效期
+        :type ExpireTime: int
+        :param _Name: 规则名称
+        :type Name: str
+        :param _Redirect: 重定向地址
+        :type Redirect: str
+        :param _SortId: 优先级
+        :type SortId: int
+        :param _Status: 开关状态
+        :type Status: int
+        :param _Domains: 域名列表
+        :type Domains: list of str
+        :param _Remark: 备注
+        :type Remark: str
+        :param _Strategies: 策略列表
+        :type Strategies: list of Strategy
+        :param _EventId: 事件Id
+        :type EventId: str
+        :param _ValidStatus: 生效状态
+        :type ValidStatus: int
+        :param _CreateTime: 创建时间
+        :type CreateTime: str
+        :param _UpdateTime: 更新时间
+        :type UpdateTime: str
+        :param _JobType: 规则执行的方式，TimedJob为定时执行，CronJob为周期执行
+        :type JobType: str
+        :param _JobDateTime: 定时任务配置
+        :type JobDateTime: :class:`tencentcloud.waf.v20180125.models.JobDateTime`
+        :param _CronType: 周期任务粒度
+        :type CronType: str
+        :param _Label: 标签
+        :type Label: str
+        :param _PageId: 页面ID
+        :type PageId: str
+        :param _LogicalOp: 匹配条件的逻辑关系，支持and、or，分别表示多个逻辑匹配条件是与、或的关系
+        :type LogicalOp: str
+        :param _ActionRatio: 动作灰度的比例
+        :type ActionRatio: int
+        """
+        self._Id = None
+        self._ActionType = None
+        self._Bypass = None
+        self._ExpireTime = None
+        self._Name = None
+        self._Redirect = None
+        self._SortId = None
+        self._Status = None
+        self._Domains = None
+        self._Remark = None
+        self._Strategies = None
+        self._EventId = None
+        self._ValidStatus = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._JobType = None
+        self._JobDateTime = None
+        self._CronType = None
+        self._Label = None
+        self._PageId = None
+        self._LogicalOp = None
+        self._ActionRatio = None
+
+    @property
+    def Id(self):
+        r"""规则Id
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def ActionType(self):
+        r"""动作类型，1代表阻断，2代表人机识别，3代表观察，4代表重定向，5代表JS校验
+        :rtype: int
+        """
+        return self._ActionType
+
+    @ActionType.setter
+    def ActionType(self, ActionType):
+        self._ActionType = ActionType
+
+    @property
+    def Bypass(self):
+        r"""加白模块
+        :rtype: str
+        """
+        return self._Bypass
+
+    @Bypass.setter
+    def Bypass(self, Bypass):
+        self._Bypass = Bypass
+
+    @property
+    def ExpireTime(self):
+        r"""有效期
+        :rtype: int
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def Name(self):
+        r"""规则名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Redirect(self):
+        r"""重定向地址
+        :rtype: str
+        """
+        return self._Redirect
+
+    @Redirect.setter
+    def Redirect(self, Redirect):
+        self._Redirect = Redirect
+
+    @property
+    def SortId(self):
+        r"""优先级
+        :rtype: int
+        """
+        return self._SortId
+
+    @SortId.setter
+    def SortId(self, SortId):
+        self._SortId = SortId
+
+    @property
+    def Status(self):
+        r"""开关状态
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Domains(self):
+        r"""域名列表
+        :rtype: list of str
+        """
+        return self._Domains
+
+    @Domains.setter
+    def Domains(self, Domains):
+        self._Domains = Domains
+
+    @property
+    def Remark(self):
+        r"""备注
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def Strategies(self):
+        r"""策略列表
+        :rtype: list of Strategy
+        """
+        return self._Strategies
+
+    @Strategies.setter
+    def Strategies(self, Strategies):
+        self._Strategies = Strategies
+
+    @property
+    def EventId(self):
+        r"""事件Id
+        :rtype: str
+        """
+        return self._EventId
+
+    @EventId.setter
+    def EventId(self, EventId):
+        self._EventId = EventId
+
+    @property
+    def ValidStatus(self):
+        r"""生效状态
+        :rtype: int
+        """
+        return self._ValidStatus
+
+    @ValidStatus.setter
+    def ValidStatus(self, ValidStatus):
+        self._ValidStatus = ValidStatus
+
+    @property
+    def CreateTime(self):
+        r"""创建时间
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""更新时间
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def JobType(self):
+        r"""规则执行的方式，TimedJob为定时执行，CronJob为周期执行
+        :rtype: str
+        """
+        return self._JobType
+
+    @JobType.setter
+    def JobType(self, JobType):
+        self._JobType = JobType
+
+    @property
+    def JobDateTime(self):
+        r"""定时任务配置
+        :rtype: :class:`tencentcloud.waf.v20180125.models.JobDateTime`
+        """
+        return self._JobDateTime
+
+    @JobDateTime.setter
+    def JobDateTime(self, JobDateTime):
+        self._JobDateTime = JobDateTime
+
+    @property
+    def CronType(self):
+        r"""周期任务粒度
+        :rtype: str
+        """
+        return self._CronType
+
+    @CronType.setter
+    def CronType(self, CronType):
+        self._CronType = CronType
+
+    @property
+    def Label(self):
+        r"""标签
+        :rtype: str
+        """
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
+
+    @property
+    def PageId(self):
+        r"""页面ID
+        :rtype: str
+        """
+        return self._PageId
+
+    @PageId.setter
+    def PageId(self, PageId):
+        self._PageId = PageId
+
+    @property
+    def LogicalOp(self):
+        r"""匹配条件的逻辑关系，支持and、or，分别表示多个逻辑匹配条件是与、或的关系
+        :rtype: str
+        """
+        return self._LogicalOp
+
+    @LogicalOp.setter
+    def LogicalOp(self, LogicalOp):
+        self._LogicalOp = LogicalOp
+
+    @property
+    def ActionRatio(self):
+        r"""动作灰度的比例
+        :rtype: int
+        """
+        return self._ActionRatio
+
+    @ActionRatio.setter
+    def ActionRatio(self, ActionRatio):
+        self._ActionRatio = ActionRatio
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._ActionType = params.get("ActionType")
+        self._Bypass = params.get("Bypass")
+        self._ExpireTime = params.get("ExpireTime")
+        self._Name = params.get("Name")
+        self._Redirect = params.get("Redirect")
+        self._SortId = params.get("SortId")
+        self._Status = params.get("Status")
+        self._Domains = params.get("Domains")
+        self._Remark = params.get("Remark")
+        if params.get("Strategies") is not None:
+            self._Strategies = []
+            for item in params.get("Strategies"):
+                obj = Strategy()
+                obj._deserialize(item)
+                self._Strategies.append(obj)
+        self._EventId = params.get("EventId")
+        self._ValidStatus = params.get("ValidStatus")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._JobType = params.get("JobType")
+        if params.get("JobDateTime") is not None:
+            self._JobDateTime = JobDateTime()
+            self._JobDateTime._deserialize(params.get("JobDateTime"))
+        self._CronType = params.get("CronType")
+        self._Label = params.get("Label")
+        self._PageId = params.get("PageId")
+        self._LogicalOp = params.get("LogicalOp")
+        self._ActionRatio = params.get("ActionRatio")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BatchCustomWhiteRule(AbstractModel):
+    r"""批量精准白名单规则详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: 规则ID
+        :type ID: int
+        :param _Name: 规则名
+        :type Name: str
+        :param _SortId: 优先级
+        :type SortId: int
+        :param _Strategies: 策略详情
+        :type Strategies: list of Strategy
+        :param _Bypass: 加白的模块，owasp：Web防护-规则引擎、ai：Web防护-AI引擎、ip_auto_deny：IP封禁、geoip：访问控制-地域封禁、acl：访问控制-自定义规则、cc：CC防护、antileakage：信息防泄漏防护、bwip：IP黑白名单、botrpc：BOT防护、api：API安全、applet：小程序防护
+        :type Bypass: list of str
+        :param _JobType: 规则执行的方式，TimedJob为定时执行，CronJob为周期执行
+        :type JobType: str
+        :param _JobDateTime: 定时任务配置
+        :type JobDateTime: :class:`tencentcloud.waf.v20180125.models.JobDateTime`
+        :param _CronType: 周期任务的类型
+        :type CronType: str
+        :param _Domains: 域名列表，如果绑定的是批量域名
+        :type Domains: list of str
+        :param _GroupIds: 防护对象组ID列表，如果绑定的是防护对象组
+        :type GroupIds: list of int non-negative
+        :param _ValidStatus: 生效状态，1：生效中、0：未生效
+        :type ValidStatus: int
+        :param _CreateTime: 规则创建时间
+        :type CreateTime: str
+        :param _UpdateTime: 规则更新时间
+        :type UpdateTime: str
+        :param _Status: 规则开关状态，1：开启、0：关闭
+        :type Status: int
+        :param _LogicalOp: 匹配条件的逻辑关系，支持and、or，分别表示多个逻辑匹配条件是与、或的关系
+        :type LogicalOp: str
+        """
+        self._ID = None
+        self._Name = None
+        self._SortId = None
+        self._Strategies = None
+        self._Bypass = None
+        self._JobType = None
+        self._JobDateTime = None
+        self._CronType = None
+        self._Domains = None
+        self._GroupIds = None
+        self._ValidStatus = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._Status = None
+        self._LogicalOp = None
+
+    @property
+    def ID(self):
+        r"""规则ID
+        :rtype: int
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def Name(self):
+        r"""规则名
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def SortId(self):
+        r"""优先级
+        :rtype: int
+        """
+        return self._SortId
+
+    @SortId.setter
+    def SortId(self, SortId):
+        self._SortId = SortId
+
+    @property
+    def Strategies(self):
+        r"""策略详情
+        :rtype: list of Strategy
+        """
+        return self._Strategies
+
+    @Strategies.setter
+    def Strategies(self, Strategies):
+        self._Strategies = Strategies
+
+    @property
+    def Bypass(self):
+        r"""加白的模块，owasp：Web防护-规则引擎、ai：Web防护-AI引擎、ip_auto_deny：IP封禁、geoip：访问控制-地域封禁、acl：访问控制-自定义规则、cc：CC防护、antileakage：信息防泄漏防护、bwip：IP黑白名单、botrpc：BOT防护、api：API安全、applet：小程序防护
+        :rtype: list of str
+        """
+        return self._Bypass
+
+    @Bypass.setter
+    def Bypass(self, Bypass):
+        self._Bypass = Bypass
+
+    @property
+    def JobType(self):
+        r"""规则执行的方式，TimedJob为定时执行，CronJob为周期执行
+        :rtype: str
+        """
+        return self._JobType
+
+    @JobType.setter
+    def JobType(self, JobType):
+        self._JobType = JobType
+
+    @property
+    def JobDateTime(self):
+        r"""定时任务配置
+        :rtype: :class:`tencentcloud.waf.v20180125.models.JobDateTime`
+        """
+        return self._JobDateTime
+
+    @JobDateTime.setter
+    def JobDateTime(self, JobDateTime):
+        self._JobDateTime = JobDateTime
+
+    @property
+    def CronType(self):
+        r"""周期任务的类型
+        :rtype: str
+        """
+        return self._CronType
+
+    @CronType.setter
+    def CronType(self, CronType):
+        self._CronType = CronType
+
+    @property
+    def Domains(self):
+        r"""域名列表，如果绑定的是批量域名
+        :rtype: list of str
+        """
+        return self._Domains
+
+    @Domains.setter
+    def Domains(self, Domains):
+        self._Domains = Domains
+
+    @property
+    def GroupIds(self):
+        r"""防护对象组ID列表，如果绑定的是防护对象组
+        :rtype: list of int non-negative
+        """
+        return self._GroupIds
+
+    @GroupIds.setter
+    def GroupIds(self, GroupIds):
+        self._GroupIds = GroupIds
+
+    @property
+    def ValidStatus(self):
+        r"""生效状态，1：生效中、0：未生效
+        :rtype: int
+        """
+        return self._ValidStatus
+
+    @ValidStatus.setter
+    def ValidStatus(self, ValidStatus):
+        self._ValidStatus = ValidStatus
+
+    @property
+    def CreateTime(self):
+        r"""规则创建时间
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""规则更新时间
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def Status(self):
+        r"""规则开关状态，1：开启、0：关闭
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def LogicalOp(self):
+        r"""匹配条件的逻辑关系，支持and、or，分别表示多个逻辑匹配条件是与、或的关系
+        :rtype: str
+        """
+        return self._LogicalOp
+
+    @LogicalOp.setter
+    def LogicalOp(self, LogicalOp):
+        self._LogicalOp = LogicalOp
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        self._Name = params.get("Name")
+        self._SortId = params.get("SortId")
+        if params.get("Strategies") is not None:
+            self._Strategies = []
+            for item in params.get("Strategies"):
+                obj = Strategy()
+                obj._deserialize(item)
+                self._Strategies.append(obj)
+        self._Bypass = params.get("Bypass")
+        self._JobType = params.get("JobType")
+        if params.get("JobDateTime") is not None:
+            self._JobDateTime = JobDateTime()
+            self._JobDateTime._deserialize(params.get("JobDateTime"))
+        self._CronType = params.get("CronType")
+        self._Domains = params.get("Domains")
+        self._GroupIds = params.get("GroupIds")
+        self._ValidStatus = params.get("ValidStatus")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._Status = params.get("Status")
+        self._LogicalOp = params.get("LogicalOp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12635,6 +13804,115 @@ class CreatePostCLSFlowResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateProtectGroupRequest(AbstractModel):
+    r"""CreateProtectGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 防护对象组名称
+        :type Name: str
+        :param _Domains: 防护对象组的应用范围
+        :type Domains: list of str
+        :param _Remark: 防护对象组备注
+        :type Remark: str
+        """
+        self._Name = None
+        self._Domains = None
+        self._Remark = None
+
+    @property
+    def Name(self):
+        r"""防护对象组名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Domains(self):
+        r"""防护对象组的应用范围
+        :rtype: list of str
+        """
+        return self._Domains
+
+    @Domains.setter
+    def Domains(self, Domains):
+        self._Domains = Domains
+
+    @property
+    def Remark(self):
+        r"""防护对象组备注
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Domains = params.get("Domains")
+        self._Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateProtectGroupResponse(AbstractModel):
+    r"""CreateProtectGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GroupId: 防护对象组的ID
+        :type GroupId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._GroupId = None
+        self._RequestId = None
+
+    @property
+    def GroupId(self):
+        r"""防护对象组的ID
+        :rtype: int
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._GroupId = params.get("GroupId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateRateLimitV2Request(AbstractModel):
     r"""CreateRateLimitV2请求参数结构体
 
@@ -13771,6 +15049,205 @@ class DeleteAttackWhiteRuleResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._FailIds = params.get("FailIds")
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteBatchCustomRuleRequest(AbstractModel):
+    r"""DeleteBatchCustomRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataType: 数据类型 
+"custom-rule"-自定义规则、"custom-white-rule"-精准白名单
+
+        :type DataType: str
+        :param _IsDeleteAll: 0-指定Id删除、1-删除全部（除部分排除的Id）
+
+        :type IsDeleteAll: int
+        :param _Ids: 具体Ids 由IsDeleteAll而定
+        :type Ids: list of int non-negative
+        :param _Filters: 筛选条件
+        :type Filters: list of FiltersItemNew
+        """
+        self._DataType = None
+        self._IsDeleteAll = None
+        self._Ids = None
+        self._Filters = None
+
+    @property
+    def DataType(self):
+        r"""数据类型 
+"custom-rule"-自定义规则、"custom-white-rule"-精准白名单
+
+        :rtype: str
+        """
+        return self._DataType
+
+    @DataType.setter
+    def DataType(self, DataType):
+        self._DataType = DataType
+
+    @property
+    def IsDeleteAll(self):
+        r"""0-指定Id删除、1-删除全部（除部分排除的Id）
+
+        :rtype: int
+        """
+        return self._IsDeleteAll
+
+    @IsDeleteAll.setter
+    def IsDeleteAll(self, IsDeleteAll):
+        self._IsDeleteAll = IsDeleteAll
+
+    @property
+    def Ids(self):
+        r"""具体Ids 由IsDeleteAll而定
+        :rtype: list of int non-negative
+        """
+        return self._Ids
+
+    @Ids.setter
+    def Ids(self, Ids):
+        self._Ids = Ids
+
+    @property
+    def Filters(self):
+        r"""筛选条件
+        :rtype: list of FiltersItemNew
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._DataType = params.get("DataType")
+        self._IsDeleteAll = params.get("IsDeleteAll")
+        self._Ids = params.get("Ids")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = FiltersItemNew()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteBatchCustomRuleResponse(AbstractModel):
+    r"""DeleteBatchCustomRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Res: 操作成功
+        :type Res: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Res = None
+        self._RequestId = None
+
+    @property
+    def Res(self):
+        r"""操作成功
+        :rtype: str
+        """
+        return self._Res
+
+    @Res.setter
+    def Res(self, Res):
+        self._Res = Res
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Res = params.get("Res")
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteBatchCustomWhiteRuleRequest(AbstractModel):
+    r"""DeleteBatchCustomWhiteRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Ids: 要删除的规则ID列表
+        :type Ids: list of int non-negative
+        """
+        self._Ids = None
+
+    @property
+    def Ids(self):
+        r"""要删除的规则ID列表
+        :rtype: list of int non-negative
+        """
+        return self._Ids
+
+    @Ids.setter
+    def Ids(self, Ids):
+        self._Ids = Ids
+
+
+    def _deserialize(self, params):
+        self._Ids = params.get("Ids")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteBatchCustomWhiteRuleResponse(AbstractModel):
+    r"""DeleteBatchCustomWhiteRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -14997,6 +16474,149 @@ class DeleteOwaspWhiteRuleRequest(AbstractModel):
 
 class DeleteOwaspWhiteRuleResponse(AbstractModel):
     r"""DeleteOwaspWhiteRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteProtectGroupDomainRequest(AbstractModel):
+    r"""DeleteProtectGroupDomain请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GroupId: 防护对象组ID
+        :type GroupId: int
+        :param _Domain: 解除绑定的域名
+        :type Domain: str
+        """
+        self._GroupId = None
+        self._Domain = None
+
+    @property
+    def GroupId(self):
+        r"""防护对象组ID
+        :rtype: int
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def Domain(self):
+        r"""解除绑定的域名
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+
+    def _deserialize(self, params):
+        self._GroupId = params.get("GroupId")
+        self._Domain = params.get("Domain")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteProtectGroupDomainResponse(AbstractModel):
+    r"""DeleteProtectGroupDomain返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteProtectGroupRequest(AbstractModel):
+    r"""DeleteProtectGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GroupIds: 防护对象组ID列表，支持批量删除
+        :type GroupIds: list of int non-negative
+        """
+        self._GroupIds = None
+
+    @property
+    def GroupIds(self):
+        r"""防护对象组ID列表，支持批量删除
+        :rtype: list of int non-negative
+        """
+        return self._GroupIds
+
+    @GroupIds.setter
+    def GroupIds(self, GroupIds):
+        self._GroupIds = GroupIds
+
+
+    def _deserialize(self, params):
+        self._GroupIds = params.get("GroupIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteProtectGroupResponse(AbstractModel):
+    r"""DeleteProtectGroup返回参数结构体
 
     """
 
@@ -18736,6 +20356,337 @@ class DescribeAutoDenyIPResponse(AbstractModel):
         if params.get("Data") is not None:
             self._Data = IpHitItemsData()
             self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeBatchCustomRuleListRequest(AbstractModel):
+    r"""DescribeBatchCustomRuleList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Offset: 偏移量
+        :type Offset: int
+        :param _Limit: 页尺寸
+
+        :type Limit: int
+        :param _By: 排序字段
+"update_time"-更新时间、"expire_time"-过期时间、"sort_id"-优先级、"id"-规则Id、"create_time"-创建时间
+        :type By: str
+        :param _Order: 排序类型
+desc-降序、asc-升序
+        :type Order: str
+        :param _DataType: 数据类型 "custom-rule"-自定义规则、"custom-white-rule"-精准白名单
+        :type DataType: str
+        :param _Filters: 筛选列表
+        :type Filters: list of FiltersItemNew
+        """
+        self._Offset = None
+        self._Limit = None
+        self._By = None
+        self._Order = None
+        self._DataType = None
+        self._Filters = None
+
+    @property
+    def Offset(self):
+        r"""偏移量
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""页尺寸
+
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def By(self):
+        r"""排序字段
+"update_time"-更新时间、"expire_time"-过期时间、"sort_id"-优先级、"id"-规则Id、"create_time"-创建时间
+        :rtype: str
+        """
+        return self._By
+
+    @By.setter
+    def By(self, By):
+        self._By = By
+
+    @property
+    def Order(self):
+        r"""排序类型
+desc-降序、asc-升序
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def DataType(self):
+        r"""数据类型 "custom-rule"-自定义规则、"custom-white-rule"-精准白名单
+        :rtype: str
+        """
+        return self._DataType
+
+    @DataType.setter
+    def DataType(self, DataType):
+        self._DataType = DataType
+
+    @property
+    def Filters(self):
+        r"""筛选列表
+        :rtype: list of FiltersItemNew
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._By = params.get("By")
+        self._Order = params.get("Order")
+        self._DataType = params.get("DataType")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = FiltersItemNew()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBatchCustomRuleListResponse(AbstractModel):
+    r"""DescribeBatchCustomRuleList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 操作成功
+        :type Data: :class:`tencentcloud.waf.v20180125.models.BatchCustomRuleListData`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""操作成功
+        :rtype: :class:`tencentcloud.waf.v20180125.models.BatchCustomRuleListData`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = BatchCustomRuleListData()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeBatchCustomWhiteRulesRequest(AbstractModel):
+    r"""DescribeBatchCustomWhiteRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Offset: 偏移量，默认为0
+        :type Offset: int
+        :param _Limit: 页尺寸，默认为10
+        :type Limit: int
+        :param _By: 排序字段"modify_time"-更新时间、"sort_id"-优先级、"id"-规则Id、"create_time"-创建时间，默认为update_time
+        :type By: str
+        :param _Order: 排序类型desc-降序、asc-升序，默认为desc
+        :type Order: str
+        :param _Filters: 筛选列表，支持按照 ID：规则RuleId、Domain：生效的域名、Name：规则名称来筛选、ValidStatus：生效状态、Status：开关状态、TimerType：生效方式
+        :type Filters: list of FiltersItemNew
+        """
+        self._Offset = None
+        self._Limit = None
+        self._By = None
+        self._Order = None
+        self._Filters = None
+
+    @property
+    def Offset(self):
+        r"""偏移量，默认为0
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""页尺寸，默认为10
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def By(self):
+        r"""排序字段"modify_time"-更新时间、"sort_id"-优先级、"id"-规则Id、"create_time"-创建时间，默认为update_time
+        :rtype: str
+        """
+        return self._By
+
+    @By.setter
+    def By(self, By):
+        self._By = By
+
+    @property
+    def Order(self):
+        r"""排序类型desc-降序、asc-升序，默认为desc
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def Filters(self):
+        r"""筛选列表，支持按照 ID：规则RuleId、Domain：生效的域名、Name：规则名称来筛选、ValidStatus：生效状态、Status：开关状态、TimerType：生效方式
+        :rtype: list of FiltersItemNew
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._By = params.get("By")
+        self._Order = params.get("Order")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = FiltersItemNew()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBatchCustomWhiteRulesResponse(AbstractModel):
+    r"""DescribeBatchCustomWhiteRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 批量规则列表  
+        :type Data: list of BatchCustomWhiteRule
+        :param _Total: 总数
+        :type Total: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""批量规则列表  
+        :rtype: list of BatchCustomWhiteRule
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Total(self):
+        r"""总数
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = BatchCustomWhiteRule()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._Total = params.get("Total")
         self._RequestId = params.get("RequestId")
 
 
@@ -25824,6 +27775,170 @@ class DescribePostCLSFlowsResponse(AbstractModel):
                 obj = PostCLSFlowInfo()
                 obj._deserialize(item)
                 self._PostCLSFlows.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeProtectGroupRequest(AbstractModel):
+    r"""DescribeProtectGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filter: 查询防护对象的查询条件，如果为空则获取所有的防护对象组，支持按照 Name：对象组名称、Domain：绑定的域名、InstanceID：实例ID、ID：对象组ID、InstanceName：实例名称
+        :type Filter: list of FiltersItemNew
+        :param _OffSet: 偏移量，默认为0
+        :type OffSet: int
+        :param _Limit: 页尺寸，默认为10
+        :type Limit: int
+        :param _By: 排序字段，支持按照 "update_time"-更新时间、"create_time"-创建时间
+        :type By: str
+        :param _Order: 排序类型desc-降序、asc-升序
+        :type Order: str
+        """
+        self._Filter = None
+        self._OffSet = None
+        self._Limit = None
+        self._By = None
+        self._Order = None
+
+    @property
+    def Filter(self):
+        r"""查询防护对象的查询条件，如果为空则获取所有的防护对象组，支持按照 Name：对象组名称、Domain：绑定的域名、InstanceID：实例ID、ID：对象组ID、InstanceName：实例名称
+        :rtype: list of FiltersItemNew
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+    @property
+    def OffSet(self):
+        r"""偏移量，默认为0
+        :rtype: int
+        """
+        return self._OffSet
+
+    @OffSet.setter
+    def OffSet(self, OffSet):
+        self._OffSet = OffSet
+
+    @property
+    def Limit(self):
+        r"""页尺寸，默认为10
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def By(self):
+        r"""排序字段，支持按照 "update_time"-更新时间、"create_time"-创建时间
+        :rtype: str
+        """
+        return self._By
+
+    @By.setter
+    def By(self, By):
+        self._By = By
+
+    @property
+    def Order(self):
+        r"""排序类型desc-降序、asc-升序
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+
+    def _deserialize(self, params):
+        if params.get("Filter") is not None:
+            self._Filter = []
+            for item in params.get("Filter"):
+                obj = FiltersItemNew()
+                obj._deserialize(item)
+                self._Filter.append(obj)
+        self._OffSet = params.get("OffSet")
+        self._Limit = params.get("Limit")
+        self._By = params.get("By")
+        self._Order = params.get("Order")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeProtectGroupResponse(AbstractModel):
+    r"""DescribeProtectGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 防护对象组的详情
+        :type Data: list of ProtectGroupInfo
+        :param _Total: 对象组的总数
+        :type Total: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""防护对象组的详情
+        :rtype: list of ProtectGroupInfo
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Total(self):
+        r"""对象组的总数
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = ProtectGroupInfo()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._Total = params.get("Total")
         self._RequestId = params.get("RequestId")
 
 
@@ -35238,6 +37353,57 @@ class InOutputUCBRuleEntry(AbstractModel):
         
 
 
+class InstanceBriefInfo(AbstractModel):
+    r"""实例对象的简略结构，只包含实例ID和实例名
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: 实例ID
+        :type ID: str
+        :param _Name: 实例名
+        :type Name: str
+        """
+        self._ID = None
+        self._Name = None
+
+    @property
+    def ID(self):
+        r"""实例ID
+        :rtype: str
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def Name(self):
+        r"""实例名
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        self._Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class InstanceInfo(AbstractModel):
     r"""一个实例的详细信息
 
@@ -41347,6 +43513,717 @@ class ModifyAttackWhiteRuleResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyBatchCustomRuleRequest(AbstractModel):
+    r"""ModifyBatchCustomRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 批量规则Id
+        :type Id: int
+        :param _Name: 规则名称
+        :type Name: str
+        :param _ExpireTime: 如果没有设置JobDateTime字段则用此字段，0表示永久生效，其它表示定时生效的截止时间（单位为秒）
+        :type ExpireTime: int
+        :param _SortId: 优先级
+        :type SortId: int
+        :param _ActionType: 动作类型，1代表阻断，2代表人机识别，3代表观察，4代表重定向，5代表JS校验
+        :type ActionType: int
+        :param _Redirect: 重定向地址
+        :type Redirect: str
+        :param _Remark: 备注
+        :type Remark: str
+        :param _EventId: 事件Id
+        :type EventId: str
+        :param _Strategies: 策略详情列表
+        :type Strategies: list of Strategy
+        :param _Bypass: 加白模块
+        :type Bypass: str
+        :param _Domains: 域名列表
+        :type Domains: list of str
+        :param _JobType: 规则执行的方式，TimedJob为定时执行，CronJob为周期执行
+        :type JobType: str
+        :param _JobDateTime: 定时任务配置
+        :type JobDateTime: :class:`tencentcloud.waf.v20180125.models.JobDateTime`
+        :param _GroupIds: 防护对象组ID列表
+        :type GroupIds: list of int non-negative
+        :param _LogicalOp: 匹配条件的逻辑关系，支持and、or，分别表示多个逻辑匹配条件是与、或的关系
+        :type LogicalOp: str
+        :param _PageId: 页面ID
+        :type PageId: str
+        :param _ActionRatio: 动作灰度的比例，1-100，默认是100
+        :type ActionRatio: int
+        """
+        self._Id = None
+        self._Name = None
+        self._ExpireTime = None
+        self._SortId = None
+        self._ActionType = None
+        self._Redirect = None
+        self._Remark = None
+        self._EventId = None
+        self._Strategies = None
+        self._Bypass = None
+        self._Domains = None
+        self._JobType = None
+        self._JobDateTime = None
+        self._GroupIds = None
+        self._LogicalOp = None
+        self._PageId = None
+        self._ActionRatio = None
+
+    @property
+    def Id(self):
+        r"""批量规则Id
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        r"""规则名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ExpireTime(self):
+        r"""如果没有设置JobDateTime字段则用此字段，0表示永久生效，其它表示定时生效的截止时间（单位为秒）
+        :rtype: int
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def SortId(self):
+        r"""优先级
+        :rtype: int
+        """
+        return self._SortId
+
+    @SortId.setter
+    def SortId(self, SortId):
+        self._SortId = SortId
+
+    @property
+    def ActionType(self):
+        r"""动作类型，1代表阻断，2代表人机识别，3代表观察，4代表重定向，5代表JS校验
+        :rtype: int
+        """
+        return self._ActionType
+
+    @ActionType.setter
+    def ActionType(self, ActionType):
+        self._ActionType = ActionType
+
+    @property
+    def Redirect(self):
+        r"""重定向地址
+        :rtype: str
+        """
+        return self._Redirect
+
+    @Redirect.setter
+    def Redirect(self, Redirect):
+        self._Redirect = Redirect
+
+    @property
+    def Remark(self):
+        r"""备注
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def EventId(self):
+        r"""事件Id
+        :rtype: str
+        """
+        return self._EventId
+
+    @EventId.setter
+    def EventId(self, EventId):
+        self._EventId = EventId
+
+    @property
+    def Strategies(self):
+        r"""策略详情列表
+        :rtype: list of Strategy
+        """
+        return self._Strategies
+
+    @Strategies.setter
+    def Strategies(self, Strategies):
+        self._Strategies = Strategies
+
+    @property
+    def Bypass(self):
+        warnings.warn("parameter `Bypass` is deprecated", DeprecationWarning) 
+
+        r"""加白模块
+        :rtype: str
+        """
+        return self._Bypass
+
+    @Bypass.setter
+    def Bypass(self, Bypass):
+        warnings.warn("parameter `Bypass` is deprecated", DeprecationWarning) 
+
+        self._Bypass = Bypass
+
+    @property
+    def Domains(self):
+        r"""域名列表
+        :rtype: list of str
+        """
+        return self._Domains
+
+    @Domains.setter
+    def Domains(self, Domains):
+        self._Domains = Domains
+
+    @property
+    def JobType(self):
+        r"""规则执行的方式，TimedJob为定时执行，CronJob为周期执行
+        :rtype: str
+        """
+        return self._JobType
+
+    @JobType.setter
+    def JobType(self, JobType):
+        self._JobType = JobType
+
+    @property
+    def JobDateTime(self):
+        r"""定时任务配置
+        :rtype: :class:`tencentcloud.waf.v20180125.models.JobDateTime`
+        """
+        return self._JobDateTime
+
+    @JobDateTime.setter
+    def JobDateTime(self, JobDateTime):
+        self._JobDateTime = JobDateTime
+
+    @property
+    def GroupIds(self):
+        r"""防护对象组ID列表
+        :rtype: list of int non-negative
+        """
+        return self._GroupIds
+
+    @GroupIds.setter
+    def GroupIds(self, GroupIds):
+        self._GroupIds = GroupIds
+
+    @property
+    def LogicalOp(self):
+        r"""匹配条件的逻辑关系，支持and、or，分别表示多个逻辑匹配条件是与、或的关系
+        :rtype: str
+        """
+        return self._LogicalOp
+
+    @LogicalOp.setter
+    def LogicalOp(self, LogicalOp):
+        self._LogicalOp = LogicalOp
+
+    @property
+    def PageId(self):
+        r"""页面ID
+        :rtype: str
+        """
+        return self._PageId
+
+    @PageId.setter
+    def PageId(self, PageId):
+        self._PageId = PageId
+
+    @property
+    def ActionRatio(self):
+        r"""动作灰度的比例，1-100，默认是100
+        :rtype: int
+        """
+        return self._ActionRatio
+
+    @ActionRatio.setter
+    def ActionRatio(self, ActionRatio):
+        self._ActionRatio = ActionRatio
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._ExpireTime = params.get("ExpireTime")
+        self._SortId = params.get("SortId")
+        self._ActionType = params.get("ActionType")
+        self._Redirect = params.get("Redirect")
+        self._Remark = params.get("Remark")
+        self._EventId = params.get("EventId")
+        if params.get("Strategies") is not None:
+            self._Strategies = []
+            for item in params.get("Strategies"):
+                obj = Strategy()
+                obj._deserialize(item)
+                self._Strategies.append(obj)
+        self._Bypass = params.get("Bypass")
+        self._Domains = params.get("Domains")
+        self._JobType = params.get("JobType")
+        if params.get("JobDateTime") is not None:
+            self._JobDateTime = JobDateTime()
+            self._JobDateTime._deserialize(params.get("JobDateTime"))
+        self._GroupIds = params.get("GroupIds")
+        self._LogicalOp = params.get("LogicalOp")
+        self._PageId = params.get("PageId")
+        self._ActionRatio = params.get("ActionRatio")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyBatchCustomRuleResponse(AbstractModel):
+    r"""ModifyBatchCustomRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Res: 操作成功
+        :type Res: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Res = None
+        self._RequestId = None
+
+    @property
+    def Res(self):
+        r"""操作成功
+        :rtype: str
+        """
+        return self._Res
+
+    @Res.setter
+    def Res(self, Res):
+        self._Res = Res
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Res = params.get("Res")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyBatchCustomRuleStatusRequest(AbstractModel):
+    r"""ModifyBatchCustomRuleStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 批量Id
+        :type Id: int
+        :param _Status: 开关状态 0-关、1-开
+
+        :type Status: int
+        """
+        self._Id = None
+        self._Status = None
+
+    @property
+    def Id(self):
+        r"""批量Id
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Status(self):
+        r"""开关状态 0-关、1-开
+
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyBatchCustomRuleStatusResponse(AbstractModel):
+    r"""ModifyBatchCustomRuleStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Res: 操作成功
+        :type Res: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Res = None
+        self._RequestId = None
+
+    @property
+    def Res(self):
+        r"""操作成功
+        :rtype: str
+        """
+        return self._Res
+
+    @Res.setter
+    def Res(self, Res):
+        self._Res = Res
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Res = params.get("Res")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyBatchCustomWhiteRuleRequest(AbstractModel):
+    r"""ModifyBatchCustomWhiteRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: 规则ID
+        :type ID: int
+        :param _Name: 规则名称
+        :type Name: str
+        :param _SortId: 优先级
+        :type SortId: int
+        :param _Strategies: 策略详情
+        :type Strategies: list of Strategy
+        :param _Bypass: 加白的模块，owasp：Web防护-规则引擎、ai：Web防护-AI引擎、ip_auto_deny：IP封禁、geoip：访问控制-地域封禁、acl：访问控制-自定义规则、cc：CC防护、antileakage：信息防泄漏防护、bwip：IP黑白名单、botrpc：BOT防护、api：API安全、applet：小程序防护
+        :type Bypass: list of str
+        :param _JobType: 规则执行的方式，TimedJob为定时执行，CronJob为周期执行
+        :type JobType: str
+        :param _JobDateTime: 定时任务配置
+        :type JobDateTime: :class:`tencentcloud.waf.v20180125.models.JobDateTime`
+        :param _Domains: 域名列表，如果绑定的是批量域名
+        :type Domains: list of str
+        :param _GroupIds: 防护对象组ID列表，如果绑定的是防护对象组
+        :type GroupIds: list of int non-negative
+        :param _LogicalOp: 匹配条件的逻辑关系，支持and、or，分别表示多个逻辑匹配条件是与、或的关系
+        :type LogicalOp: str
+        """
+        self._ID = None
+        self._Name = None
+        self._SortId = None
+        self._Strategies = None
+        self._Bypass = None
+        self._JobType = None
+        self._JobDateTime = None
+        self._Domains = None
+        self._GroupIds = None
+        self._LogicalOp = None
+
+    @property
+    def ID(self):
+        r"""规则ID
+        :rtype: int
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def Name(self):
+        r"""规则名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def SortId(self):
+        r"""优先级
+        :rtype: int
+        """
+        return self._SortId
+
+    @SortId.setter
+    def SortId(self, SortId):
+        self._SortId = SortId
+
+    @property
+    def Strategies(self):
+        r"""策略详情
+        :rtype: list of Strategy
+        """
+        return self._Strategies
+
+    @Strategies.setter
+    def Strategies(self, Strategies):
+        self._Strategies = Strategies
+
+    @property
+    def Bypass(self):
+        r"""加白的模块，owasp：Web防护-规则引擎、ai：Web防护-AI引擎、ip_auto_deny：IP封禁、geoip：访问控制-地域封禁、acl：访问控制-自定义规则、cc：CC防护、antileakage：信息防泄漏防护、bwip：IP黑白名单、botrpc：BOT防护、api：API安全、applet：小程序防护
+        :rtype: list of str
+        """
+        return self._Bypass
+
+    @Bypass.setter
+    def Bypass(self, Bypass):
+        self._Bypass = Bypass
+
+    @property
+    def JobType(self):
+        r"""规则执行的方式，TimedJob为定时执行，CronJob为周期执行
+        :rtype: str
+        """
+        return self._JobType
+
+    @JobType.setter
+    def JobType(self, JobType):
+        self._JobType = JobType
+
+    @property
+    def JobDateTime(self):
+        r"""定时任务配置
+        :rtype: :class:`tencentcloud.waf.v20180125.models.JobDateTime`
+        """
+        return self._JobDateTime
+
+    @JobDateTime.setter
+    def JobDateTime(self, JobDateTime):
+        self._JobDateTime = JobDateTime
+
+    @property
+    def Domains(self):
+        r"""域名列表，如果绑定的是批量域名
+        :rtype: list of str
+        """
+        return self._Domains
+
+    @Domains.setter
+    def Domains(self, Domains):
+        self._Domains = Domains
+
+    @property
+    def GroupIds(self):
+        r"""防护对象组ID列表，如果绑定的是防护对象组
+        :rtype: list of int non-negative
+        """
+        return self._GroupIds
+
+    @GroupIds.setter
+    def GroupIds(self, GroupIds):
+        self._GroupIds = GroupIds
+
+    @property
+    def LogicalOp(self):
+        r"""匹配条件的逻辑关系，支持and、or，分别表示多个逻辑匹配条件是与、或的关系
+        :rtype: str
+        """
+        return self._LogicalOp
+
+    @LogicalOp.setter
+    def LogicalOp(self, LogicalOp):
+        self._LogicalOp = LogicalOp
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        self._Name = params.get("Name")
+        self._SortId = params.get("SortId")
+        if params.get("Strategies") is not None:
+            self._Strategies = []
+            for item in params.get("Strategies"):
+                obj = Strategy()
+                obj._deserialize(item)
+                self._Strategies.append(obj)
+        self._Bypass = params.get("Bypass")
+        self._JobType = params.get("JobType")
+        if params.get("JobDateTime") is not None:
+            self._JobDateTime = JobDateTime()
+            self._JobDateTime._deserialize(params.get("JobDateTime"))
+        self._Domains = params.get("Domains")
+        self._GroupIds = params.get("GroupIds")
+        self._LogicalOp = params.get("LogicalOp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyBatchCustomWhiteRuleResponse(AbstractModel):
+    r"""ModifyBatchCustomWhiteRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyBatchCustomWhiteRuleStatusRequest(AbstractModel):
+    r"""ModifyBatchCustomWhiteRuleStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Ids: 要更新的规则ID列表
+        :type Ids: list of int non-negative
+        :param _Status: 开关，1：开启、0：关闭
+        :type Status: int
+        """
+        self._Ids = None
+        self._Status = None
+
+    @property
+    def Ids(self):
+        r"""要更新的规则ID列表
+        :rtype: list of int non-negative
+        """
+        return self._Ids
+
+    @Ids.setter
+    def Ids(self, Ids):
+        self._Ids = Ids
+
+    @property
+    def Status(self):
+        r"""开关，1：开启、0：关闭
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._Ids = params.get("Ids")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyBatchCustomWhiteRuleStatusResponse(AbstractModel):
+    r"""ModifyBatchCustomWhiteRuleStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyBatchIpAccessControlRequest(AbstractModel):
     r"""ModifyBatchIpAccessControl请求参数结构体
 
@@ -45769,6 +48646,130 @@ class ModifyOwaspWhiteRuleResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyProtectGroupRequest(AbstractModel):
+    r"""ModifyProtectGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 防护对象组名称
+        :type Name: str
+        :param _GroupId: 防护对象组ID
+        :type GroupId: int
+        :param _Remark: 防护对象组备注
+        :type Remark: str
+        :param _Domains: 防护对象组的应用范围
+        :type Domains: list of str
+        """
+        self._Name = None
+        self._GroupId = None
+        self._Remark = None
+        self._Domains = None
+
+    @property
+    def Name(self):
+        r"""防护对象组名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def GroupId(self):
+        r"""防护对象组ID
+        :rtype: int
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def Remark(self):
+        r"""防护对象组备注
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def Domains(self):
+        r"""防护对象组的应用范围
+        :rtype: list of str
+        """
+        return self._Domains
+
+    @Domains.setter
+    def Domains(self, Domains):
+        self._Domains = Domains
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._GroupId = params.get("GroupId")
+        self._Remark = params.get("Remark")
+        self._Domains = params.get("Domains")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyProtectGroupResponse(AbstractModel):
+    r"""ModifyProtectGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GroupId: 防护对象组的ID
+        :type GroupId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._GroupId = None
+        self._RequestId = None
+
+    @property
+    def GroupId(self):
+        r"""防护对象组的ID
+        :rtype: int
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._GroupId = params.get("GroupId")
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyProtectionLevelRequest(AbstractModel):
     r"""ModifyProtectionLevel请求参数结构体
 
@@ -49717,6 +52718,193 @@ class PromptDetectResult(AbstractModel):
     def _deserialize(self, params):
         self._Result = params.get("Result")
         self._Confidence = params.get("Confidence")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProtectGroupDomainInfo(AbstractModel):
+    r"""防护对象组的域名详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: 防护对象组中绑定的域名
+        :type Domain: str
+        :param _Instances: 防护对象组中绑定的域名对应所属的实例信息，一个域名可能存在多个实例中
+        :type Instances: list of InstanceBriefInfo
+        """
+        self._Domain = None
+        self._Instances = None
+
+    @property
+    def Domain(self):
+        r"""防护对象组中绑定的域名
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Instances(self):
+        r"""防护对象组中绑定的域名对应所属的实例信息，一个域名可能存在多个实例中
+        :rtype: list of InstanceBriefInfo
+        """
+        return self._Instances
+
+    @Instances.setter
+    def Instances(self, Instances):
+        self._Instances = Instances
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        if params.get("Instances") is not None:
+            self._Instances = []
+            for item in params.get("Instances"):
+                obj = InstanceBriefInfo()
+                obj._deserialize(item)
+                self._Instances.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProtectGroupInfo(AbstractModel):
+    r"""防护对象组对象详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: 防护对象组ID
+        :type ID: int
+        :param _Name: 防护对象组名称
+        :type Name: str
+        :param _Remark: 防护对象组备注
+        :type Remark: str
+        :param _Domains: 防护对象组中绑定的域名详情
+        :type Domains: list of ProtectGroupDomainInfo
+        :param _RuleNum: 关联的批量规则数
+        :type RuleNum: int
+        :param _CreateTime: 创建时间
+        :type CreateTime: str
+        :param _UpdateTime: 更新时间
+        :type UpdateTime: str
+        """
+        self._ID = None
+        self._Name = None
+        self._Remark = None
+        self._Domains = None
+        self._RuleNum = None
+        self._CreateTime = None
+        self._UpdateTime = None
+
+    @property
+    def ID(self):
+        r"""防护对象组ID
+        :rtype: int
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def Name(self):
+        r"""防护对象组名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Remark(self):
+        r"""防护对象组备注
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def Domains(self):
+        r"""防护对象组中绑定的域名详情
+        :rtype: list of ProtectGroupDomainInfo
+        """
+        return self._Domains
+
+    @Domains.setter
+    def Domains(self, Domains):
+        self._Domains = Domains
+
+    @property
+    def RuleNum(self):
+        r"""关联的批量规则数
+        :rtype: int
+        """
+        return self._RuleNum
+
+    @RuleNum.setter
+    def RuleNum(self, RuleNum):
+        self._RuleNum = RuleNum
+
+    @property
+    def CreateTime(self):
+        r"""创建时间
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""更新时间
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        self._Name = params.get("Name")
+        self._Remark = params.get("Remark")
+        if params.get("Domains") is not None:
+            self._Domains = []
+            for item in params.get("Domains"):
+                obj = ProtectGroupDomainInfo()
+                obj._deserialize(item)
+                self._Domains.append(obj)
+        self._RuleNum = params.get("RuleNum")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

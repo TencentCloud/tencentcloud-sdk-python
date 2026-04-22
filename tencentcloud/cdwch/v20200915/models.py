@@ -5083,6 +5083,8 @@ class InstanceConfigInfo(AbstractModel):
         :type ValueRange: str
         :param _AbnormalParam: <p>标记异常</p>
         :type AbnormalParam: str
+        :param _ConfigEffective: <p>是否生效</p>
+        :type ConfigEffective: str
         """
         self._ConfKey = None
         self._ConfValue = None
@@ -5097,6 +5099,7 @@ class InstanceConfigInfo(AbstractModel):
         self._ModifyTime = None
         self._ValueRange = None
         self._AbnormalParam = None
+        self._ConfigEffective = None
 
     @property
     def ConfKey(self):
@@ -5241,6 +5244,17 @@ class InstanceConfigInfo(AbstractModel):
     def AbnormalParam(self, AbnormalParam):
         self._AbnormalParam = AbnormalParam
 
+    @property
+    def ConfigEffective(self):
+        r"""<p>是否生效</p>
+        :rtype: str
+        """
+        return self._ConfigEffective
+
+    @ConfigEffective.setter
+    def ConfigEffective(self, ConfigEffective):
+        self._ConfigEffective = ConfigEffective
+
 
     def _deserialize(self, params):
         self._ConfKey = params.get("ConfKey")
@@ -5256,6 +5270,7 @@ class InstanceConfigInfo(AbstractModel):
         self._ModifyTime = params.get("ModifyTime")
         self._ValueRange = params.get("ValueRange")
         self._AbnormalParam = params.get("AbnormalParam")
+        self._ConfigEffective = params.get("ConfigEffective")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

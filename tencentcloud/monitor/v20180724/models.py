@@ -1023,47 +1023,49 @@ class AlarmNotice(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 告警通知模板 ID
+        :param _Id: <p>告警通知模板 ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Id: str
-        :param _Name: 告警通知模板名称
+        :param _Name: <p>告警通知模板名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
-        :param _UpdatedAt: 上次修改时间
+        :param _UpdatedAt: <p>上次修改时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdatedAt: str
-        :param _UpdatedBy: 上次修改人
+        :param _UpdatedBy: <p>上次修改人</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdatedBy: str
-        :param _NoticeType: 告警通知类型 ALARM=未恢复通知 OK=已恢复通知 ALL=全部通知
+        :param _NoticeType: <p>告警通知类型 ALARM=未恢复通知 OK=已恢复通知 ALL=全部通知</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type NoticeType: str
-        :param _UserNotices: 用户通知列表
+        :param _UserNotices: <p>用户通知列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UserNotices: list of UserNotice
-        :param _URLNotices: 回调通知列表
+        :param _URLNotices: <p>回调通知列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type URLNotices: list of URLNotice
-        :param _IsPreset: 是否是系统预设通知模板 0=否 1=是
+        :param _IsPreset: <p>是否是系统预设通知模板 0=否 1=是</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsPreset: int
-        :param _NoticeLanguage: 通知语言 zh-CN=中文 en-US=英文
+        :param _NoticeLanguage: <p>通知语言 zh-CN=中文 en-US=英文</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type NoticeLanguage: str
-        :param _PolicyIds: 告警通知模板绑定的告警策略ID列表
+        :param _PolicyIds: <p>告警通知模板绑定的告警策略ID列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type PolicyIds: list of str
-        :param _AMPConsumerId: 后台 amp consumer id
+        :param _AMPConsumerId: <p>后台 amp consumer id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AMPConsumerId: str
-        :param _CLSNotices: 推送cls渠道
+        :param _CLSNotices: <p>推送cls渠道</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CLSNotices: list of CLSNotice
-        :param _Tags: 通知模板绑定的标签
+        :param _Tags: <p>通知模板绑定的标签</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
-        :param _IsLoginFree: 是否免登录，0-否，1-是
+        :param _IsLoginFree: <p>是否免登录，0-否，1-是</p>
         :type IsLoginFree: int
+        :param _TimeZoneName: <p>IANA 时区名</p>
+        :type TimeZoneName: str
         """
         self._Id = None
         self._Name = None
@@ -1079,10 +1081,11 @@ class AlarmNotice(AbstractModel):
         self._CLSNotices = None
         self._Tags = None
         self._IsLoginFree = None
+        self._TimeZoneName = None
 
     @property
     def Id(self):
-        r"""告警通知模板 ID
+        r"""<p>告警通知模板 ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1094,7 +1097,7 @@ class AlarmNotice(AbstractModel):
 
     @property
     def Name(self):
-        r"""告警通知模板名称
+        r"""<p>告警通知模板名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1106,7 +1109,7 @@ class AlarmNotice(AbstractModel):
 
     @property
     def UpdatedAt(self):
-        r"""上次修改时间
+        r"""<p>上次修改时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1118,7 +1121,7 @@ class AlarmNotice(AbstractModel):
 
     @property
     def UpdatedBy(self):
-        r"""上次修改人
+        r"""<p>上次修改人</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1130,7 +1133,7 @@ class AlarmNotice(AbstractModel):
 
     @property
     def NoticeType(self):
-        r"""告警通知类型 ALARM=未恢复通知 OK=已恢复通知 ALL=全部通知
+        r"""<p>告警通知类型 ALARM=未恢复通知 OK=已恢复通知 ALL=全部通知</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1142,7 +1145,7 @@ class AlarmNotice(AbstractModel):
 
     @property
     def UserNotices(self):
-        r"""用户通知列表
+        r"""<p>用户通知列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of UserNotice
         """
@@ -1154,7 +1157,7 @@ class AlarmNotice(AbstractModel):
 
     @property
     def URLNotices(self):
-        r"""回调通知列表
+        r"""<p>回调通知列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of URLNotice
         """
@@ -1166,7 +1169,7 @@ class AlarmNotice(AbstractModel):
 
     @property
     def IsPreset(self):
-        r"""是否是系统预设通知模板 0=否 1=是
+        r"""<p>是否是系统预设通知模板 0=否 1=是</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -1178,7 +1181,7 @@ class AlarmNotice(AbstractModel):
 
     @property
     def NoticeLanguage(self):
-        r"""通知语言 zh-CN=中文 en-US=英文
+        r"""<p>通知语言 zh-CN=中文 en-US=英文</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1190,7 +1193,7 @@ class AlarmNotice(AbstractModel):
 
     @property
     def PolicyIds(self):
-        r"""告警通知模板绑定的告警策略ID列表
+        r"""<p>告警通知模板绑定的告警策略ID列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -1202,7 +1205,7 @@ class AlarmNotice(AbstractModel):
 
     @property
     def AMPConsumerId(self):
-        r"""后台 amp consumer id
+        r"""<p>后台 amp consumer id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1214,7 +1217,7 @@ class AlarmNotice(AbstractModel):
 
     @property
     def CLSNotices(self):
-        r"""推送cls渠道
+        r"""<p>推送cls渠道</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CLSNotice
         """
@@ -1226,7 +1229,7 @@ class AlarmNotice(AbstractModel):
 
     @property
     def Tags(self):
-        r"""通知模板绑定的标签
+        r"""<p>通知模板绑定的标签</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Tag
         """
@@ -1238,7 +1241,7 @@ class AlarmNotice(AbstractModel):
 
     @property
     def IsLoginFree(self):
-        r"""是否免登录，0-否，1-是
+        r"""<p>是否免登录，0-否，1-是</p>
         :rtype: int
         """
         return self._IsLoginFree
@@ -1246,6 +1249,17 @@ class AlarmNotice(AbstractModel):
     @IsLoginFree.setter
     def IsLoginFree(self, IsLoginFree):
         self._IsLoginFree = IsLoginFree
+
+    @property
+    def TimeZoneName(self):
+        r"""<p>IANA 时区名</p>
+        :rtype: str
+        """
+        return self._TimeZoneName
+
+    @TimeZoneName.setter
+    def TimeZoneName(self, TimeZoneName):
+        self._TimeZoneName = TimeZoneName
 
 
     def _deserialize(self, params):
@@ -1283,6 +1297,7 @@ class AlarmNotice(AbstractModel):
                 obj._deserialize(item)
                 self._Tags.append(obj)
         self._IsLoginFree = params.get("IsLoginFree")
+        self._TimeZoneName = params.get("TimeZoneName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4186,24 +4201,26 @@ class CreateAlarmNoticeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Module: 模块名，这里填“monitor”
+        :param _Module: <p>模块名，这里填“monitor”</p>
         :type Module: str
-        :param _Name: 通知模板名称 60字符以内
+        :param _Name: <p>通知模板名称 60字符以内</p>
         :type Name: str
-        :param _NoticeType: 通知类型 ALARM=未恢复通知 OK=已恢复通知 ALL=都通知
+        :param _NoticeType: <p>通知类型 ALARM=未恢复通知 OK=已恢复通知 ALL=都通知</p>
         :type NoticeType: str
-        :param _NoticeLanguage: 通知语言 zh-CN=中文 en-US=英文
+        :param _NoticeLanguage: <p>通知语言 zh-CN=中文 en-US=英文</p>
         :type NoticeLanguage: str
-        :param _UserNotices: 用户通知 最多5个
+        :param _UserNotices: <p>用户通知 最多5个</p>
         :type UserNotices: list of UserNotice
-        :param _URLNotices: 回调通知 最多6个
+        :param _URLNotices: <p>回调通知 最多6个</p>
         :type URLNotices: list of URLNotice
-        :param _CLSNotices: 推送CLS日志服务的操作 最多1个
+        :param _CLSNotices: <p>推送CLS日志服务的操作 最多1个</p>
         :type CLSNotices: list of CLSNotice
-        :param _Tags: 模板绑定的标签
+        :param _Tags: <p>模板绑定的标签</p>
         :type Tags: list of Tag
-        :param _IsLoginFree: 是否免登录，0-否，1-是
+        :param _IsLoginFree: <p>是否免登录，0-否，1-是</p>
         :type IsLoginFree: int
+        :param _TimeZoneName: <p>IANA 时区名</p>
+        :type TimeZoneName: str
         """
         self._Module = None
         self._Name = None
@@ -4214,10 +4231,11 @@ class CreateAlarmNoticeRequest(AbstractModel):
         self._CLSNotices = None
         self._Tags = None
         self._IsLoginFree = None
+        self._TimeZoneName = None
 
     @property
     def Module(self):
-        r"""模块名，这里填“monitor”
+        r"""<p>模块名，这里填“monitor”</p>
         :rtype: str
         """
         return self._Module
@@ -4228,7 +4246,7 @@ class CreateAlarmNoticeRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""通知模板名称 60字符以内
+        r"""<p>通知模板名称 60字符以内</p>
         :rtype: str
         """
         return self._Name
@@ -4239,7 +4257,7 @@ class CreateAlarmNoticeRequest(AbstractModel):
 
     @property
     def NoticeType(self):
-        r"""通知类型 ALARM=未恢复通知 OK=已恢复通知 ALL=都通知
+        r"""<p>通知类型 ALARM=未恢复通知 OK=已恢复通知 ALL=都通知</p>
         :rtype: str
         """
         return self._NoticeType
@@ -4250,7 +4268,7 @@ class CreateAlarmNoticeRequest(AbstractModel):
 
     @property
     def NoticeLanguage(self):
-        r"""通知语言 zh-CN=中文 en-US=英文
+        r"""<p>通知语言 zh-CN=中文 en-US=英文</p>
         :rtype: str
         """
         return self._NoticeLanguage
@@ -4261,7 +4279,7 @@ class CreateAlarmNoticeRequest(AbstractModel):
 
     @property
     def UserNotices(self):
-        r"""用户通知 最多5个
+        r"""<p>用户通知 最多5个</p>
         :rtype: list of UserNotice
         """
         return self._UserNotices
@@ -4272,7 +4290,7 @@ class CreateAlarmNoticeRequest(AbstractModel):
 
     @property
     def URLNotices(self):
-        r"""回调通知 最多6个
+        r"""<p>回调通知 最多6个</p>
         :rtype: list of URLNotice
         """
         return self._URLNotices
@@ -4283,7 +4301,7 @@ class CreateAlarmNoticeRequest(AbstractModel):
 
     @property
     def CLSNotices(self):
-        r"""推送CLS日志服务的操作 最多1个
+        r"""<p>推送CLS日志服务的操作 最多1个</p>
         :rtype: list of CLSNotice
         """
         return self._CLSNotices
@@ -4294,7 +4312,7 @@ class CreateAlarmNoticeRequest(AbstractModel):
 
     @property
     def Tags(self):
-        r"""模板绑定的标签
+        r"""<p>模板绑定的标签</p>
         :rtype: list of Tag
         """
         return self._Tags
@@ -4305,7 +4323,7 @@ class CreateAlarmNoticeRequest(AbstractModel):
 
     @property
     def IsLoginFree(self):
-        r"""是否免登录，0-否，1-是
+        r"""<p>是否免登录，0-否，1-是</p>
         :rtype: int
         """
         return self._IsLoginFree
@@ -4313,6 +4331,17 @@ class CreateAlarmNoticeRequest(AbstractModel):
     @IsLoginFree.setter
     def IsLoginFree(self, IsLoginFree):
         self._IsLoginFree = IsLoginFree
+
+    @property
+    def TimeZoneName(self):
+        r"""<p>IANA 时区名</p>
+        :rtype: str
+        """
+        return self._TimeZoneName
+
+    @TimeZoneName.setter
+    def TimeZoneName(self, TimeZoneName):
+        self._TimeZoneName = TimeZoneName
 
 
     def _deserialize(self, params):
@@ -4345,6 +4374,7 @@ class CreateAlarmNoticeRequest(AbstractModel):
                 obj._deserialize(item)
                 self._Tags.append(obj)
         self._IsLoginFree = params.get("IsLoginFree")
+        self._TimeZoneName = params.get("TimeZoneName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4362,7 +4392,7 @@ class CreateAlarmNoticeResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NoticeId: 告警通知模板ID
+        :param _NoticeId: <p>告警通知模板ID</p>
         :type NoticeId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4372,7 +4402,7 @@ class CreateAlarmNoticeResponse(AbstractModel):
 
     @property
     def NoticeId(self):
-        r"""告警通知模板ID
+        r"""<p>告警通知模板ID</p>
         :rtype: str
         """
         return self._NoticeId
@@ -29179,26 +29209,28 @@ class ModifyAlarmNoticeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Module: 模块名，这里填“monitor”
+        :param _Module: <p>模块名，这里填“monitor”</p>
         :type Module: str
-        :param _Name: 告警通知规则名称 60字符以内
+        :param _Name: <p>告警通知规则名称 60字符以内</p>
         :type Name: str
-        :param _NoticeType: 通知类型 ALARM=未恢复通知 OK=已恢复通知 ALL=都通知
+        :param _NoticeType: <p>通知类型 ALARM=未恢复通知 OK=已恢复通知 ALL=都通知</p>
         :type NoticeType: str
-        :param _NoticeLanguage: 通知语言 zh-CN=中文 en-US=英文
+        :param _NoticeLanguage: <p>通知语言 zh-CN=中文 en-US=英文</p>
         :type NoticeLanguage: str
-        :param _NoticeId: 告警通知模板 ID
+        :param _NoticeId: <p>告警通知模板 ID</p>
         :type NoticeId: str
-        :param _UserNotices: 用户通知 最多5个
+        :param _UserNotices: <p>用户通知 最多5个</p>
         :type UserNotices: list of UserNotice
-        :param _URLNotices: 回调通知 最多6个
+        :param _URLNotices: <p>回调通知 最多6个</p>
         :type URLNotices: list of URLNotice
-        :param _CLSNotices: 告警通知推送到CLS服务 最多1个
+        :param _CLSNotices: <p>告警通知推送到CLS服务 最多1个</p>
         :type CLSNotices: list of CLSNotice
-        :param _PolicyIds: 告警通知模板绑定的告警策略ID列表
+        :param _PolicyIds: <p>告警通知模板绑定的告警策略ID列表</p>
         :type PolicyIds: list of str
-        :param _IsLoginFree: 是否免登录，0-否，1-是
+        :param _IsLoginFree: <p>是否免登录，0-否，1-是</p>
         :type IsLoginFree: int
+        :param _TimeZoneName: <p>IANA 时区名</p>
+        :type TimeZoneName: str
         """
         self._Module = None
         self._Name = None
@@ -29210,10 +29242,11 @@ class ModifyAlarmNoticeRequest(AbstractModel):
         self._CLSNotices = None
         self._PolicyIds = None
         self._IsLoginFree = None
+        self._TimeZoneName = None
 
     @property
     def Module(self):
-        r"""模块名，这里填“monitor”
+        r"""<p>模块名，这里填“monitor”</p>
         :rtype: str
         """
         return self._Module
@@ -29224,7 +29257,7 @@ class ModifyAlarmNoticeRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""告警通知规则名称 60字符以内
+        r"""<p>告警通知规则名称 60字符以内</p>
         :rtype: str
         """
         return self._Name
@@ -29235,7 +29268,7 @@ class ModifyAlarmNoticeRequest(AbstractModel):
 
     @property
     def NoticeType(self):
-        r"""通知类型 ALARM=未恢复通知 OK=已恢复通知 ALL=都通知
+        r"""<p>通知类型 ALARM=未恢复通知 OK=已恢复通知 ALL=都通知</p>
         :rtype: str
         """
         return self._NoticeType
@@ -29246,7 +29279,7 @@ class ModifyAlarmNoticeRequest(AbstractModel):
 
     @property
     def NoticeLanguage(self):
-        r"""通知语言 zh-CN=中文 en-US=英文
+        r"""<p>通知语言 zh-CN=中文 en-US=英文</p>
         :rtype: str
         """
         return self._NoticeLanguage
@@ -29257,7 +29290,7 @@ class ModifyAlarmNoticeRequest(AbstractModel):
 
     @property
     def NoticeId(self):
-        r"""告警通知模板 ID
+        r"""<p>告警通知模板 ID</p>
         :rtype: str
         """
         return self._NoticeId
@@ -29268,7 +29301,7 @@ class ModifyAlarmNoticeRequest(AbstractModel):
 
     @property
     def UserNotices(self):
-        r"""用户通知 最多5个
+        r"""<p>用户通知 最多5个</p>
         :rtype: list of UserNotice
         """
         return self._UserNotices
@@ -29279,7 +29312,7 @@ class ModifyAlarmNoticeRequest(AbstractModel):
 
     @property
     def URLNotices(self):
-        r"""回调通知 最多6个
+        r"""<p>回调通知 最多6个</p>
         :rtype: list of URLNotice
         """
         return self._URLNotices
@@ -29290,7 +29323,7 @@ class ModifyAlarmNoticeRequest(AbstractModel):
 
     @property
     def CLSNotices(self):
-        r"""告警通知推送到CLS服务 最多1个
+        r"""<p>告警通知推送到CLS服务 最多1个</p>
         :rtype: list of CLSNotice
         """
         return self._CLSNotices
@@ -29301,7 +29334,7 @@ class ModifyAlarmNoticeRequest(AbstractModel):
 
     @property
     def PolicyIds(self):
-        r"""告警通知模板绑定的告警策略ID列表
+        r"""<p>告警通知模板绑定的告警策略ID列表</p>
         :rtype: list of str
         """
         return self._PolicyIds
@@ -29312,7 +29345,7 @@ class ModifyAlarmNoticeRequest(AbstractModel):
 
     @property
     def IsLoginFree(self):
-        r"""是否免登录，0-否，1-是
+        r"""<p>是否免登录，0-否，1-是</p>
         :rtype: int
         """
         return self._IsLoginFree
@@ -29320,6 +29353,17 @@ class ModifyAlarmNoticeRequest(AbstractModel):
     @IsLoginFree.setter
     def IsLoginFree(self, IsLoginFree):
         self._IsLoginFree = IsLoginFree
+
+    @property
+    def TimeZoneName(self):
+        r"""<p>IANA 时区名</p>
+        :rtype: str
+        """
+        return self._TimeZoneName
+
+    @TimeZoneName.setter
+    def TimeZoneName(self, TimeZoneName):
+        self._TimeZoneName = TimeZoneName
 
 
     def _deserialize(self, params):
@@ -29348,6 +29392,7 @@ class ModifyAlarmNoticeRequest(AbstractModel):
                 self._CLSNotices.append(obj)
         self._PolicyIds = params.get("PolicyIds")
         self._IsLoginFree = params.get("IsLoginFree")
+        self._TimeZoneName = params.get("TimeZoneName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

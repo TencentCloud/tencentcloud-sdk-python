@@ -118,6 +118,52 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def AddBatchCustomRule(self, request):
+        r"""批量新增自定义规则接口
+
+        :param request: Request instance for AddBatchCustomRule.
+        :type request: :class:`tencentcloud.waf.v20180125.models.AddBatchCustomRuleRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.AddBatchCustomRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AddBatchCustomRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.AddBatchCustomRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def AddBatchCustomWhiteRule(self, request):
+        r"""增加批量精准白名单规则
+
+        :param request: Request instance for AddBatchCustomWhiteRule.
+        :type request: :class:`tencentcloud.waf.v20180125.models.AddBatchCustomWhiteRuleRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.AddBatchCustomWhiteRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AddBatchCustomWhiteRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.AddBatchCustomWhiteRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def AddBypassAllRule(self, request):
         r"""添加一键bypass能力支持,直接添加APPID
 
@@ -486,6 +532,29 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateProtectGroup(self, request):
+        r"""新建防护对象组
+
+        :param request: Request instance for CreateProtectGroup.
+        :type request: :class:`tencentcloud.waf.v20180125.models.CreateProtectGroupRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.CreateProtectGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateProtectGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateProtectGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateRateLimitV2(self, request):
         r"""创建限流规则
 
@@ -615,6 +684,52 @@ class WafClient(AbstractClient):
             body = self.call("DeleteAttackWhiteRule", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteAttackWhiteRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteBatchCustomRule(self, request):
+        r"""[自定义规则]-批量删除接口
+
+        :param request: Request instance for DeleteBatchCustomRule.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DeleteBatchCustomRuleRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DeleteBatchCustomRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteBatchCustomRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteBatchCustomRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteBatchCustomWhiteRule(self, request):
+        r"""删除批量精准白名单规则
+
+        :param request: Request instance for DeleteBatchCustomWhiteRule.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DeleteBatchCustomWhiteRuleRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DeleteBatchCustomWhiteRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteBatchCustomWhiteRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteBatchCustomWhiteRuleResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -891,6 +1006,52 @@ class WafClient(AbstractClient):
             body = self.call("DeleteOwaspWhiteRule", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteOwaspWhiteRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteProtectGroup(self, request):
+        r"""删除防护对象组
+
+        :param request: Request instance for DeleteProtectGroup.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DeleteProtectGroupRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DeleteProtectGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteProtectGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteProtectGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteProtectGroupDomain(self, request):
+        r"""解除防护对象组中的域名绑定
+
+        :param request: Request instance for DeleteProtectGroupDomain.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DeleteProtectGroupDomainRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DeleteProtectGroupDomainResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteProtectGroupDomain", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteProtectGroupDomainResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1351,6 +1512,52 @@ class WafClient(AbstractClient):
             body = self.call("DescribeAutoDenyIP", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeAutoDenyIPResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeBatchCustomRuleList(self, request):
+        r"""批量自定义规则列表接口
+
+        :param request: Request instance for DescribeBatchCustomRuleList.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeBatchCustomRuleListRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeBatchCustomRuleListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBatchCustomRuleList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBatchCustomRuleListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeBatchCustomWhiteRules(self, request):
+        r"""获取批量精准白名单的规则列表
+
+        :param request: Request instance for DescribeBatchCustomWhiteRules.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeBatchCustomWhiteRulesRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeBatchCustomWhiteRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBatchCustomWhiteRules", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBatchCustomWhiteRulesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2317,6 +2524,29 @@ class WafClient(AbstractClient):
             body = self.call("DescribePostCLSFlows", params, headers=headers)
             response = json.loads(body)
             model = models.DescribePostCLSFlowsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeProtectGroup(self, request):
+        r"""获取防护对象组详情
+
+        :param request: Request instance for DescribeProtectGroup.
+        :type request: :class:`tencentcloud.waf.v20180125.models.DescribeProtectGroupRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.DescribeProtectGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeProtectGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeProtectGroupResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -3317,6 +3547,98 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyBatchCustomRule(self, request):
+        r"""批量编辑自定义规则接口
+
+        :param request: Request instance for ModifyBatchCustomRule.
+        :type request: :class:`tencentcloud.waf.v20180125.models.ModifyBatchCustomRuleRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.ModifyBatchCustomRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyBatchCustomRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyBatchCustomRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyBatchCustomRuleStatus(self, request):
+        r"""批量自定义规则开关接口
+
+        :param request: Request instance for ModifyBatchCustomRuleStatus.
+        :type request: :class:`tencentcloud.waf.v20180125.models.ModifyBatchCustomRuleStatusRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.ModifyBatchCustomRuleStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyBatchCustomRuleStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyBatchCustomRuleStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyBatchCustomWhiteRule(self, request):
+        r"""修改批量精准白名单规则
+
+        :param request: Request instance for ModifyBatchCustomWhiteRule.
+        :type request: :class:`tencentcloud.waf.v20180125.models.ModifyBatchCustomWhiteRuleRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.ModifyBatchCustomWhiteRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyBatchCustomWhiteRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyBatchCustomWhiteRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyBatchCustomWhiteRuleStatus(self, request):
+        r"""更新批量精准白名单规则
+
+        :param request: Request instance for ModifyBatchCustomWhiteRuleStatus.
+        :type request: :class:`tencentcloud.waf.v20180125.models.ModifyBatchCustomWhiteRuleStatusRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.ModifyBatchCustomWhiteRuleStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyBatchCustomWhiteRuleStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyBatchCustomWhiteRuleStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyBatchIpAccessControl(self, request):
         r"""批量IP黑白名单新增接口
 
@@ -4045,6 +4367,29 @@ class WafClient(AbstractClient):
             body = self.call("ModifyOwaspWhiteRule", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyOwaspWhiteRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyProtectGroup(self, request):
+        r"""编辑防护对象组
+
+        :param request: Request instance for ModifyProtectGroup.
+        :type request: :class:`tencentcloud.waf.v20180125.models.ModifyProtectGroupRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.ModifyProtectGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyProtectGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyProtectGroupResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

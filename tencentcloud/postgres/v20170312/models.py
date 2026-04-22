@@ -8177,20 +8177,22 @@ class DescribeDBErrlogsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DBInstanceId: 实例ID。	可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
+        :param _DBInstanceId: <p>实例ID。    可通过<a href="https://cloud.tencent.com/document/api/409/16773">DescribeDBInstances</a>接口获取</p>
         :type DBInstanceId: str
-        :param _StartTime: 查询起始时间，形如2018-01-01 00:00:00。日志保留时间默认为7天，起始时间不能超出保留时间范围。	
+        :param _StartTime: <p>查询起始时间，形如2018-01-01 00:00:00。日志保留时间默认为7天，起始时间不能超出保留时间范围。</p>
         :type StartTime: str
-        :param _EndTime: 查询结束时间，形如2018-01-01 00:00:00。	
+        :param _EndTime: <p>查询结束时间，形如2018-01-01 00:00:00。</p>
         :type EndTime: str
-        :param _DatabaseName: 数据库名字。
+        :param _DatabaseName: <p>数据库名字。</p>
         :type DatabaseName: str
-        :param _SearchKeys: 搜索关键字。
+        :param _SearchKeys: <p>搜索关键字。</p>
         :type SearchKeys: list of str
-        :param _Limit: 每页显示数量，取值范围为1-100。默认值为50。	
+        :param _Limit: <p>每页显示数量，取值范围为1-100。默认值为50。</p>
         :type Limit: int
-        :param _Offset: 数据偏移量，从0开始。默认值为0。	
+        :param _Offset: <p>数据偏移量，从0开始。默认值为0。</p>
         :type Offset: int
+        :param _LogFilters: <p>日志过滤条件。格式为  [{Type: &quot;ApplicationName&quot;, Compare: &quot;INC&quot;, Value: [&quot;123&quot;]}]。</p>
+        :type LogFilters: list of LogFilter
         """
         self._DBInstanceId = None
         self._StartTime = None
@@ -8199,10 +8201,11 @@ class DescribeDBErrlogsRequest(AbstractModel):
         self._SearchKeys = None
         self._Limit = None
         self._Offset = None
+        self._LogFilters = None
 
     @property
     def DBInstanceId(self):
-        r"""实例ID。	可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
+        r"""<p>实例ID。    可通过<a href="https://cloud.tencent.com/document/api/409/16773">DescribeDBInstances</a>接口获取</p>
         :rtype: str
         """
         return self._DBInstanceId
@@ -8213,7 +8216,7 @@ class DescribeDBErrlogsRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""查询起始时间，形如2018-01-01 00:00:00。日志保留时间默认为7天，起始时间不能超出保留时间范围。	
+        r"""<p>查询起始时间，形如2018-01-01 00:00:00。日志保留时间默认为7天，起始时间不能超出保留时间范围。</p>
         :rtype: str
         """
         return self._StartTime
@@ -8224,7 +8227,7 @@ class DescribeDBErrlogsRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""查询结束时间，形如2018-01-01 00:00:00。	
+        r"""<p>查询结束时间，形如2018-01-01 00:00:00。</p>
         :rtype: str
         """
         return self._EndTime
@@ -8235,7 +8238,7 @@ class DescribeDBErrlogsRequest(AbstractModel):
 
     @property
     def DatabaseName(self):
-        r"""数据库名字。
+        r"""<p>数据库名字。</p>
         :rtype: str
         """
         return self._DatabaseName
@@ -8246,7 +8249,7 @@ class DescribeDBErrlogsRequest(AbstractModel):
 
     @property
     def SearchKeys(self):
-        r"""搜索关键字。
+        r"""<p>搜索关键字。</p>
         :rtype: list of str
         """
         return self._SearchKeys
@@ -8257,7 +8260,7 @@ class DescribeDBErrlogsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""每页显示数量，取值范围为1-100。默认值为50。	
+        r"""<p>每页显示数量，取值范围为1-100。默认值为50。</p>
         :rtype: int
         """
         return self._Limit
@@ -8268,7 +8271,7 @@ class DescribeDBErrlogsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""数据偏移量，从0开始。默认值为0。	
+        r"""<p>数据偏移量，从0开始。默认值为0。</p>
         :rtype: int
         """
         return self._Offset
@@ -8276,6 +8279,17 @@ class DescribeDBErrlogsRequest(AbstractModel):
     @Offset.setter
     def Offset(self, Offset):
         self._Offset = Offset
+
+    @property
+    def LogFilters(self):
+        r"""<p>日志过滤条件。格式为  [{Type: &quot;ApplicationName&quot;, Compare: &quot;INC&quot;, Value: [&quot;123&quot;]}]。</p>
+        :rtype: list of LogFilter
+        """
+        return self._LogFilters
+
+    @LogFilters.setter
+    def LogFilters(self, LogFilters):
+        self._LogFilters = LogFilters
 
 
     def _deserialize(self, params):
@@ -8286,6 +8300,12 @@ class DescribeDBErrlogsRequest(AbstractModel):
         self._SearchKeys = params.get("SearchKeys")
         self._Limit = params.get("Limit")
         self._Offset = params.get("Offset")
+        if params.get("LogFilters") is not None:
+            self._LogFilters = []
+            for item in params.get("LogFilters"):
+                obj = LogFilter()
+                obj._deserialize(item)
+                self._LogFilters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8303,9 +8323,9 @@ class DescribeDBErrlogsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 查询到的日志数量，最大值为10000条。
+        :param _TotalCount: <p>查询到的日志数量，最大值为10000条。</p>
         :type TotalCount: int
-        :param _Details: 错误日志详细信息集合。
+        :param _Details: <p>错误日志详细信息集合。</p>
         :type Details: list of ErrLogDetail
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -8316,7 +8336,7 @@ class DescribeDBErrlogsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""查询到的日志数量，最大值为10000条。
+        r"""<p>查询到的日志数量，最大值为10000条。</p>
         :rtype: int
         """
         return self._TotalCount
@@ -8327,7 +8347,7 @@ class DescribeDBErrlogsResponse(AbstractModel):
 
     @property
     def Details(self):
-        r"""错误日志详细信息集合。
+        r"""<p>错误日志详细信息集合。</p>
         :rtype: list of ErrLogDetail
         """
         return self._Details
@@ -12333,23 +12353,51 @@ class ErrLogDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _UserName: 用户名
+        :param _UserName: <p>用户名</p>
         :type UserName: str
-        :param _Database: 数据库名字
+        :param _Database: <p>数据库名字</p>
         :type Database: str
-        :param _ErrTime: 错误发生时间
+        :param _ErrTime: <p>错误发生时间</p>
         :type ErrTime: str
-        :param _ErrMsg: 错误消息
+        :param _ErrMsg: <p>错误消息</p>
         :type ErrMsg: str
+        :param _ProcessId: <p>进程ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProcessId: int
+        :param _ClientAddr: <p>客户端地址</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClientAddr: str
+        :param _SessionId: <p>会话ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SessionId: str
+        :param _SessionStartTime: <p>会话开始时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SessionStartTime: str
+        :param _VirtualTransactionId: <p>虚拟事务ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VirtualTransactionId: str
+        :param _SqlStateCode: <p>SQLSTATE错误码</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SqlStateCode: str
+        :param _ApplicationName: <p>客户端应用名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplicationName: str
         """
         self._UserName = None
         self._Database = None
         self._ErrTime = None
         self._ErrMsg = None
+        self._ProcessId = None
+        self._ClientAddr = None
+        self._SessionId = None
+        self._SessionStartTime = None
+        self._VirtualTransactionId = None
+        self._SqlStateCode = None
+        self._ApplicationName = None
 
     @property
     def UserName(self):
-        r"""用户名
+        r"""<p>用户名</p>
         :rtype: str
         """
         return self._UserName
@@ -12360,7 +12408,7 @@ class ErrLogDetail(AbstractModel):
 
     @property
     def Database(self):
-        r"""数据库名字
+        r"""<p>数据库名字</p>
         :rtype: str
         """
         return self._Database
@@ -12371,7 +12419,7 @@ class ErrLogDetail(AbstractModel):
 
     @property
     def ErrTime(self):
-        r"""错误发生时间
+        r"""<p>错误发生时间</p>
         :rtype: str
         """
         return self._ErrTime
@@ -12382,7 +12430,7 @@ class ErrLogDetail(AbstractModel):
 
     @property
     def ErrMsg(self):
-        r"""错误消息
+        r"""<p>错误消息</p>
         :rtype: str
         """
         return self._ErrMsg
@@ -12391,12 +12439,103 @@ class ErrLogDetail(AbstractModel):
     def ErrMsg(self, ErrMsg):
         self._ErrMsg = ErrMsg
 
+    @property
+    def ProcessId(self):
+        r"""<p>进程ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ProcessId
+
+    @ProcessId.setter
+    def ProcessId(self, ProcessId):
+        self._ProcessId = ProcessId
+
+    @property
+    def ClientAddr(self):
+        r"""<p>客户端地址</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ClientAddr
+
+    @ClientAddr.setter
+    def ClientAddr(self, ClientAddr):
+        self._ClientAddr = ClientAddr
+
+    @property
+    def SessionId(self):
+        r"""<p>会话ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def SessionStartTime(self):
+        r"""<p>会话开始时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SessionStartTime
+
+    @SessionStartTime.setter
+    def SessionStartTime(self, SessionStartTime):
+        self._SessionStartTime = SessionStartTime
+
+    @property
+    def VirtualTransactionId(self):
+        r"""<p>虚拟事务ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._VirtualTransactionId
+
+    @VirtualTransactionId.setter
+    def VirtualTransactionId(self, VirtualTransactionId):
+        self._VirtualTransactionId = VirtualTransactionId
+
+    @property
+    def SqlStateCode(self):
+        r"""<p>SQLSTATE错误码</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SqlStateCode
+
+    @SqlStateCode.setter
+    def SqlStateCode(self, SqlStateCode):
+        self._SqlStateCode = SqlStateCode
+
+    @property
+    def ApplicationName(self):
+        r"""<p>客户端应用名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ApplicationName
+
+    @ApplicationName.setter
+    def ApplicationName(self, ApplicationName):
+        self._ApplicationName = ApplicationName
+
 
     def _deserialize(self, params):
         self._UserName = params.get("UserName")
         self._Database = params.get("Database")
         self._ErrTime = params.get("ErrTime")
         self._ErrMsg = params.get("ErrMsg")
+        self._ProcessId = params.get("ProcessId")
+        self._ClientAddr = params.get("ClientAddr")
+        self._SessionId = params.get("SessionId")
+        self._SessionStartTime = params.get("SessionStartTime")
+        self._VirtualTransactionId = params.get("VirtualTransactionId")
+        self._SqlStateCode = params.get("SqlStateCode")
+        self._ApplicationName = params.get("ApplicationName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13521,6 +13660,72 @@ class LogBackup(AbstractModel):
         self._StartTime = params.get("StartTime")
         self._FinishTime = params.get("FinishTime")
         self._ExpireTime = params.get("ExpireTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LogFilter(AbstractModel):
+    r"""日志过滤条件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: <p>过滤条件名称。</p><p>如：sql - SQL命令详情</p><p>host – 客户端 IP；<br>user – 数据库账户。</p>
+        :type Type: str
+        :param _Compare: <p>过滤条件匹配类型。支持：<br>INC – 包含；     （多个值之间是||的关系）<br>EXC – 不包含； （多个值之间是&amp;&amp;的关系）<br>EQS – 等于；     （多个值之间是||的关系）<br>NEQ – 不等于；（多个值之间是&amp;&amp;的关系）<br>RG – 范围；</p>
+        :type Compare: str
+        :param _Value: <p>过滤条件匹配值。当Compare=RG时，例：[&quot;1-100&quot;,&quot;200-300&quot;]</p>
+        :type Value: list of str
+        """
+        self._Type = None
+        self._Compare = None
+        self._Value = None
+
+    @property
+    def Type(self):
+        r"""<p>过滤条件名称。</p><p>如：sql - SQL命令详情</p><p>host – 客户端 IP；<br>user – 数据库账户。</p>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Compare(self):
+        r"""<p>过滤条件匹配类型。支持：<br>INC – 包含；     （多个值之间是||的关系）<br>EXC – 不包含； （多个值之间是&amp;&amp;的关系）<br>EQS – 等于；     （多个值之间是||的关系）<br>NEQ – 不等于；（多个值之间是&amp;&amp;的关系）<br>RG – 范围；</p>
+        :rtype: str
+        """
+        return self._Compare
+
+    @Compare.setter
+    def Compare(self, Compare):
+        self._Compare = Compare
+
+    @property
+    def Value(self):
+        r"""<p>过滤条件匹配值。当Compare=RG时，例：[&quot;1-100&quot;,&quot;200-300&quot;]</p>
+        :rtype: list of str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Compare = params.get("Compare")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17555,18 +17760,33 @@ class RawSlowQuery(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RawQuery: 慢SQL 语句
+        :param _RawQuery: <p>慢SQL 语句</p>
         :type RawQuery: str
-        :param _DatabaseName: 慢SQL 查询的数据库
+        :param _DatabaseName: <p>慢SQL 查询的数据库</p>
         :type DatabaseName: str
-        :param _Duration: 慢SQL执行 耗时
+        :param _Duration: <p>慢SQL执行 耗时</p>
         :type Duration: float
-        :param _ClientAddr: 执行慢SQL的客户端
+        :param _ClientAddr: <p>执行慢SQL的客户端</p>
         :type ClientAddr: str
-        :param _UserName: 执行慢SQL的用户名
+        :param _UserName: <p>执行慢SQL的用户名</p>
         :type UserName: str
-        :param _SessionStartTime: 慢SQL执行的开始时间
+        :param _SessionStartTime: <p>慢SQL执行的开始时间</p>
         :type SessionStartTime: str
+        :param _ProcessId: <p>执行慢SQL的进程ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProcessId: int
+        :param _SessionId: <p>执行慢SQL的会话ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SessionId: str
+        :param _VirtualTransactionId: <p>执行慢SQL的事务ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VirtualTransactionId: str
+        :param _SqlStateCode: <p>执行慢SQL的状态码</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SqlStateCode: str
+        :param _ApplicationName: <p>执行慢SQL的客户端名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApplicationName: str
         """
         self._RawQuery = None
         self._DatabaseName = None
@@ -17574,10 +17794,15 @@ class RawSlowQuery(AbstractModel):
         self._ClientAddr = None
         self._UserName = None
         self._SessionStartTime = None
+        self._ProcessId = None
+        self._SessionId = None
+        self._VirtualTransactionId = None
+        self._SqlStateCode = None
+        self._ApplicationName = None
 
     @property
     def RawQuery(self):
-        r"""慢SQL 语句
+        r"""<p>慢SQL 语句</p>
         :rtype: str
         """
         return self._RawQuery
@@ -17588,7 +17813,7 @@ class RawSlowQuery(AbstractModel):
 
     @property
     def DatabaseName(self):
-        r"""慢SQL 查询的数据库
+        r"""<p>慢SQL 查询的数据库</p>
         :rtype: str
         """
         return self._DatabaseName
@@ -17599,7 +17824,7 @@ class RawSlowQuery(AbstractModel):
 
     @property
     def Duration(self):
-        r"""慢SQL执行 耗时
+        r"""<p>慢SQL执行 耗时</p>
         :rtype: float
         """
         return self._Duration
@@ -17610,7 +17835,7 @@ class RawSlowQuery(AbstractModel):
 
     @property
     def ClientAddr(self):
-        r"""执行慢SQL的客户端
+        r"""<p>执行慢SQL的客户端</p>
         :rtype: str
         """
         return self._ClientAddr
@@ -17621,7 +17846,7 @@ class RawSlowQuery(AbstractModel):
 
     @property
     def UserName(self):
-        r"""执行慢SQL的用户名
+        r"""<p>执行慢SQL的用户名</p>
         :rtype: str
         """
         return self._UserName
@@ -17632,7 +17857,7 @@ class RawSlowQuery(AbstractModel):
 
     @property
     def SessionStartTime(self):
-        r"""慢SQL执行的开始时间
+        r"""<p>慢SQL执行的开始时间</p>
         :rtype: str
         """
         return self._SessionStartTime
@@ -17640,6 +17865,66 @@ class RawSlowQuery(AbstractModel):
     @SessionStartTime.setter
     def SessionStartTime(self, SessionStartTime):
         self._SessionStartTime = SessionStartTime
+
+    @property
+    def ProcessId(self):
+        r"""<p>执行慢SQL的进程ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ProcessId
+
+    @ProcessId.setter
+    def ProcessId(self, ProcessId):
+        self._ProcessId = ProcessId
+
+    @property
+    def SessionId(self):
+        r"""<p>执行慢SQL的会话ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def VirtualTransactionId(self):
+        r"""<p>执行慢SQL的事务ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._VirtualTransactionId
+
+    @VirtualTransactionId.setter
+    def VirtualTransactionId(self, VirtualTransactionId):
+        self._VirtualTransactionId = VirtualTransactionId
+
+    @property
+    def SqlStateCode(self):
+        r"""<p>执行慢SQL的状态码</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SqlStateCode
+
+    @SqlStateCode.setter
+    def SqlStateCode(self, SqlStateCode):
+        self._SqlStateCode = SqlStateCode
+
+    @property
+    def ApplicationName(self):
+        r"""<p>执行慢SQL的客户端名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ApplicationName
+
+    @ApplicationName.setter
+    def ApplicationName(self, ApplicationName):
+        self._ApplicationName = ApplicationName
 
 
     def _deserialize(self, params):
@@ -17649,6 +17934,11 @@ class RawSlowQuery(AbstractModel):
         self._ClientAddr = params.get("ClientAddr")
         self._UserName = params.get("UserName")
         self._SessionStartTime = params.get("SessionStartTime")
+        self._ProcessId = params.get("ProcessId")
+        self._SessionId = params.get("SessionId")
+        self._VirtualTransactionId = params.get("VirtualTransactionId")
+        self._SqlStateCode = params.get("SqlStateCode")
+        self._ApplicationName = params.get("ApplicationName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -45,6 +45,10 @@ class CreateImageModerationAsyncTaskRequest(AbstractModel):
         :type Device: :class:`tencentcloud.ims.v20201229.models.Device`
         :param _Type: <p>服务类型，可为空，默认为 IMAGE。</p><p>枚举值：</p><ul><li>IMAGE： 一般图片异步检测</li><li>IMAGE_LLM： 大模型图片异步检测</li></ul>
         :type Type: str
+        :param _FileUrlList: <p>该字段表示待审核的图片资源链接，最多支持传入4张图片</p>
+        :type FileUrlList: list of str
+        :param _TextContent: <p>待审核的文本内容，需为UTF-8编码并以Base64格式传入，字数限制5000字内。</p>
+        :type TextContent: str
         """
         self._CallbackUrl = None
         self._BizType = None
@@ -56,6 +60,8 @@ class CreateImageModerationAsyncTaskRequest(AbstractModel):
         self._User = None
         self._Device = None
         self._Type = None
+        self._FileUrlList = None
+        self._TextContent = None
 
     @property
     def CallbackUrl(self):
@@ -167,6 +173,28 @@ class CreateImageModerationAsyncTaskRequest(AbstractModel):
     def Type(self, Type):
         self._Type = Type
 
+    @property
+    def FileUrlList(self):
+        r"""<p>该字段表示待审核的图片资源链接，最多支持传入4张图片</p>
+        :rtype: list of str
+        """
+        return self._FileUrlList
+
+    @FileUrlList.setter
+    def FileUrlList(self, FileUrlList):
+        self._FileUrlList = FileUrlList
+
+    @property
+    def TextContent(self):
+        r"""<p>待审核的文本内容，需为UTF-8编码并以Base64格式传入，字数限制5000字内。</p>
+        :rtype: str
+        """
+        return self._TextContent
+
+    @TextContent.setter
+    def TextContent(self, TextContent):
+        self._TextContent = TextContent
+
 
     def _deserialize(self, params):
         self._CallbackUrl = params.get("CallbackUrl")
@@ -183,6 +211,8 @@ class CreateImageModerationAsyncTaskRequest(AbstractModel):
             self._Device = Device()
             self._Device._deserialize(params.get("Device"))
         self._Type = params.get("Type")
+        self._FileUrlList = params.get("FileUrlList")
+        self._TextContent = params.get("TextContent")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

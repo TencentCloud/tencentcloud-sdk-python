@@ -47,8 +47,14 @@ FAILEDOPERATION_GETCVMSERVERFAILED = 'FailedOperation.GetCvmServerFailed'
 # 调去询价中心服务失败
 FAILEDOPERATION_GETTRADESERVERFAILED = 'FailedOperation.GetTradeServerFailed'
 
+# 余额不足
+FAILEDOPERATION_INSUFFICIENTACCOUNTBALANCE = 'FailedOperation.InsufficientAccountBalance'
+
 # 不允许更多的扩缩容规则。
 FAILEDOPERATION_MORESTRATEGYNOTALLOWED = 'FailedOperation.MoreStrategyNotAllowed'
+
+# Namespace中有用户手动拉起的pod
+FAILEDOPERATION_NAMESPACEHASUSERCUSTOMPODS = 'FailedOperation.NamespaceHasUserCustomPods'
 
 # 未授权操作。
 FAILEDOPERATION_NOTAUTHENTICATED = 'FailedOperation.NotAuthenticated'
@@ -197,6 +203,9 @@ INVALIDPARAMETER_INVALIDCOMPONENT = 'InvalidParameter.InvalidComponent'
 # 至少需要一个触发条件。
 INVALIDPARAMETER_INVALIDCONDITIONNUM = 'InvalidParameter.InvalidConditionNum'
 
+# 无效的下发配置文件类型。
+INVALIDPARAMETER_INVALIDCONFIGTYPE = 'InvalidParameter.InvalidConfigType'
+
 # Core节点数量无效。
 INVALIDPARAMETER_INVALIDCORECOUNT = 'InvalidParameter.InvalidCoreCount'
 
@@ -230,17 +239,29 @@ INVALIDPARAMETER_INVALIDDISKSIZE = 'InvalidParameter.InvalidDiskSize'
 # 参数错误。
 INVALIDPARAMETER_INVALIDDISKTYPE = 'InvalidParameter.InvalidDiskType'
 
+# 下载对象参数值无效。
+INVALIDPARAMETER_INVALIDDOWNLOADOBJ = 'InvalidParameter.InvalidDownloadObj'
+
 # 无效的EKS实例。
 INVALIDPARAMETER_INVALIDEKSINSTANCE = 'InvalidParameter.InvalidEksInstance'
 
+# 指定的将导出配置文件参数有误。
+INVALIDPARAMETER_INVALIDEXPORTCONFCONTEXTS = 'InvalidParameter.InvalidExportConfContexts'
+
 # CustomConfig参数值无效。
 INVALIDPARAMETER_INVALIDEXTENDFIELD = 'InvalidParameter.InvalidExtendField'
+
+# NameServiceName参数值无效。
+INVALIDPARAMETER_INVALIDEXTENDNAMESERVICE = 'InvalidParameter.InvalidExtendNameService'
 
 # 无效组件依赖集群vpc。
 INVALIDPARAMETER_INVALIDEXTERNALSERVICEVPCID = 'InvalidParameter.InvalidExternalServiceVpcId'
 
 # 无效的任务失败处理策略。
 INVALIDPARAMETER_INVALIDFAILUREPOLICY = 'InvalidParameter.InvalidFailurePolicy'
+
+# 文件路径参数值无效。
+INVALIDPARAMETER_INVALIDFILEPATH = 'InvalidParameter.InvalidFilePath'
 
 # 无效过滤参数。
 INVALIDPARAMETER_INVALIDFILTERKEY = 'InvalidParameter.InvalidFilterKey'
@@ -259,6 +280,9 @@ INVALIDPARAMETER_INVALIDINSTANCEPOLICY = 'InvalidParameter.InvalidInstancePolicy
 
 # 无效的机型。
 INVALIDPARAMETER_INVALIDINSTANCETYPE = 'InvalidParameter.InvalidInstanceType'
+
+# 指定的销毁IP无效。
+INVALIDPARAMETER_INVALIDIPLIST = 'InvalidParameter.InvalidIpList'
 
 # 无效的流程任务。
 INVALIDPARAMETER_INVALIDJOBFLOW = 'InvalidParameter.InvalidJobFlow'
@@ -305,6 +329,9 @@ INVALIDPARAMETER_INVALIDPASSWORD = 'InvalidParameter.InvalidPassword'
 # 无效的付费类型。
 INVALIDPARAMETER_INVALIDPAYMODE = 'InvalidParameter.InvalidPaymode'
 
+# PodNum参数无效。
+INVALIDPARAMETER_INVALIDPODNUM = 'InvalidParameter.InvalidPodNum'
+
 # 无效的引导操作脚本。
 INVALIDPARAMETER_INVALIDPREEXECUTEDFILE = 'InvalidParameter.InvalidPreExecutedFile'
 
@@ -323,8 +350,14 @@ INVALIDPARAMETER_INVALIDPRODUCTVERSION = 'InvalidParameter.InvalidProductVersion
 # 无效的项目ID。
 INVALIDPARAMETER_INVALIDPROJECTID = 'InvalidParameter.InvalidProjectId'
 
+# Region参数值无效。
+INVALIDPARAMETER_INVALIDREGION = 'InvalidParameter.InvalidRegion'
+
 # 不合法自动续费标识。
 INVALIDPARAMETER_INVALIDRENEWFLAG = 'InvalidParameter.InvalidRenewFlag'
+
+# ResType值无效。
+INVALIDPARAMETER_INVALIDRESTYPE = 'InvalidParameter.InvalidResType'
 
 # 无效资源ID。
 INVALIDPARAMETER_INVALIDRESOURCEID = 'InvalidParameter.InvalidResourceId'
@@ -334,6 +367,9 @@ INVALIDPARAMETER_INVALIDRESOURCEIDS = 'InvalidParameter.InvalidResourceIds'
 
 # 无效的资源规格。
 INVALIDPARAMETER_INVALIDRESOURCESPEC = 'InvalidParameter.InvalidResourceSpec'
+
+# 扩容Router节点数量无效。
+INVALIDPARAMETER_INVALIDROUTERCOUNT = 'InvalidParameter.InvalidRouterCount'
 
 # 无效的扩缩容动作。
 INVALIDPARAMETER_INVALIDSCALEACTION = 'InvalidParameter.InvalidScaleAction'
@@ -427,6 +463,9 @@ INVALIDPARAMETER_INVALIDVOLUMETYPE = 'InvalidParameter.InvalidVolumeType'
 
 # 无效的私有网络ID。
 INVALIDPARAMETER_INVALIDVPCID = 'InvalidParameter.InvalidVpcId'
+
+# cosFileUri中的WriteFile参数值无效。
+INVALIDPARAMETER_INVALIDWRITEFILE = 'InvalidParameter.InvalidWriteFile'
 
 # 无效的可用区。
 INVALIDPARAMETER_INVALIDZONE = 'InvalidParameter.InvalidZone'
@@ -555,10 +594,22 @@ RESOURCENOTFOUND_HARDWAREINFONOTFOUND = 'ResourceNotFound.HardwareInfoNotFound'
 RESOURCENOTFOUND_INSTANCENOTFOUND = 'ResourceNotFound.InstanceNotFound'
 
 # 无法找到监控元数据。
+RESOURCENOTFOUND_METRICSMETANOTFOUND = 'ResourceNotFound.MetricsMetaNotFound'
+
+# 该集群没有备选规格。
+RESOURCENOTFOUND_OPTIONALSPECFOUND = 'ResourceNotFound.OptionalSpecFound'
+
+# 无法找到监控元数据。
 RESOURCENOTFOUND_RESOURCENOTFOUND = 'ResourceNotFound.ResourceNotFound'
+
+# 无法找到服务组件配置。
+RESOURCENOTFOUND_SERVICECONFNOTFOUND = 'ResourceNotFound.ServiceConfNotFound'
 
 # 无法找到该服务组件。
 RESOURCENOTFOUND_SERVICEGROUPNOTFOUND = 'ResourceNotFound.ServiceGroupNotFound'
+
+# 服务节点没有找到。
+RESOURCENOTFOUND_SERVICENODENOTFOUND = 'ResourceNotFound.ServiceNodeNotFound'
 
 # 不存在的规格。
 RESOURCENOTFOUND_SPECNOTFOUND = 'ResourceNotFound.SpecNotFound'

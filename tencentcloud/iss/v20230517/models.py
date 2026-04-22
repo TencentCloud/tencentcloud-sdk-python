@@ -1765,7 +1765,7 @@ class AddRecordBackupTemplateRequest(AbstractModel):
         :type DevTimeSections: list of RecordTemplateTimeSections
         :param _Scale: <p>上云倍速（支持1，2，4倍速）</p>
         :type Scale: int
-        :param _DayOffset: <p>周期偏移量，默认1，表示拉取昨天的设备录像，0表示取去今天的设备录像，3表示拉取前天的设备录像</p><p>取值范围：[0, 90]</p><p>默认值：1</p>
+        :param _DayOffset: <p>周期偏移量，默认1，表示拉取昨天的设备录像，0表示拉取今天的设备录像，3表示拉取前天的设备录像</p><p>取值范围：[0, 90]</p><p>默认值：1</p>
         :type DayOffset: int
         """
         self._TemplateName = None
@@ -1820,7 +1820,7 @@ class AddRecordBackupTemplateRequest(AbstractModel):
 
     @property
     def DayOffset(self):
-        r"""<p>周期偏移量，默认1，表示拉取昨天的设备录像，0表示取去今天的设备录像，3表示拉取前天的设备录像</p><p>取值范围：[0, 90]</p><p>默认值：1</p>
+        r"""<p>周期偏移量，默认1，表示拉取昨天的设备录像，0表示拉取今天的设备录像，3表示拉取前天的设备录像</p><p>取值范围：[0, 90]</p><p>默认值：1</p>
         :rtype: int
         """
         return self._DayOffset

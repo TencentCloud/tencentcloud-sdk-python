@@ -3620,7 +3620,7 @@ class DescribeDLPFileDetectResultRequest(AbstractModel):
         r"""
         :param _DomainInstanceId: 管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
         :type DomainInstanceId: str
-        :param _QueryID: 查询ID，即提交送检任务接口（CreateDLPFileDetectionTask）返回的任务ID（DLPFileDetectionTaskID）
+        :param _QueryID: <p>查询ID，即提交送检任务接口（CreateDLPFileDetectionTask）返回的任务ID（DLPFileDetectionTaskID）</p>
         :type QueryID: str
         """
         self._DomainInstanceId = None
@@ -3639,7 +3639,7 @@ class DescribeDLPFileDetectResultRequest(AbstractModel):
 
     @property
     def QueryID(self):
-        r"""查询ID，即提交送检任务接口（CreateDLPFileDetectionTask）返回的任务ID（DLPFileDetectionTaskID）
+        r"""<p>查询ID，即提交送检任务接口（CreateDLPFileDetectionTask）返回的任务ID（DLPFileDetectionTaskID）</p>
         :rtype: str
         """
         return self._QueryID
@@ -3669,7 +3669,7 @@ class DescribeDLPFileDetectResultResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 文件鉴定任务结果数据。详情查看具体数据结构
+        :param _Data: <p>文件鉴定任务结果数据。详情查看具体数据结构</p>
         :type Data: :class:`tencentcloud.ioa.v20220601.models.DescribeDLPFileDetectResultData`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3679,7 +3679,7 @@ class DescribeDLPFileDetectResultResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""文件鉴定任务结果数据。详情查看具体数据结构
+        r"""<p>文件鉴定任务结果数据。详情查看具体数据结构</p>
         :rtype: :class:`tencentcloud.ioa.v20220601.models.DescribeDLPFileDetectResultData`
         """
         return self._Data

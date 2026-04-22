@@ -1181,6 +1181,24 @@ class EmrClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def InstallSoftware(
+            self,
+            request: models.InstallSoftwareRequest,
+            opts: Dict = None,
+    ) -> models.InstallSoftwareResponse:
+        """
+        安装组件。对于依赖元数据库的组件，有可能会需要下单一个cdb。可根据InstallSoftWareInfo查看当前集群可安装的组件，以及哪些组件有可能需要cdb。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "InstallSoftware"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.InstallSoftwareResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyAutoRenewFlag(
             self,
             request: models.ModifyAutoRenewFlagRequest,
