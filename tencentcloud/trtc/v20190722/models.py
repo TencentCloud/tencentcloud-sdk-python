@@ -720,12 +720,24 @@ class AsrParam(AbstractModel):
         :type AlternativeLanguage: list of str
         :param _VadLevel: vad的远场人声抑制能力（不会对asr识别效果造成影响），范围为[0, 3]，默认为0。推荐设置为2，有较好的远场人声抑制能力。
         :type VadLevel: int
+        :param _FilterDirty: 是否过滤脏词（目前仅支持填写基础语言引擎和标准语言引擎），范围为[0, 2]，默认值为 0。
+0：不过滤脏词；1：过滤脏词；2：将脏词替换为 " * "。
+        :type FilterDirty: int
+        :param _FilterModal: 是否过滤语气词（目前仅支持填写基础语言引擎和标准语言引擎），范围为[0, 2]，默认值为 0。
+0：不过滤语气词；1：部分过滤；2：严格过滤。
+        :type FilterModal: int
+        :param _FilterPunc: 是否过滤句末的句号（目前仅支持填写基础语言引擎和标准语言引擎），范围为[0, 1]，默认值为 0。
+0：不过滤句末的句号；1：过滤句末的句号。
+        :type FilterPunc: int
         """
         self._Lang = None
         self._VadSilenceTime = None
         self._HotWordList = None
         self._AlternativeLanguage = None
         self._VadLevel = None
+        self._FilterDirty = None
+        self._FilterModal = None
+        self._FilterPunc = None
 
     @property
     def Lang(self):
@@ -824,6 +836,42 @@ class AsrParam(AbstractModel):
     def VadLevel(self, VadLevel):
         self._VadLevel = VadLevel
 
+    @property
+    def FilterDirty(self):
+        r"""是否过滤脏词（目前仅支持填写基础语言引擎和标准语言引擎），范围为[0, 2]，默认值为 0。
+0：不过滤脏词；1：过滤脏词；2：将脏词替换为 " * "。
+        :rtype: int
+        """
+        return self._FilterDirty
+
+    @FilterDirty.setter
+    def FilterDirty(self, FilterDirty):
+        self._FilterDirty = FilterDirty
+
+    @property
+    def FilterModal(self):
+        r"""是否过滤语气词（目前仅支持填写基础语言引擎和标准语言引擎），范围为[0, 2]，默认值为 0。
+0：不过滤语气词；1：部分过滤；2：严格过滤。
+        :rtype: int
+        """
+        return self._FilterModal
+
+    @FilterModal.setter
+    def FilterModal(self, FilterModal):
+        self._FilterModal = FilterModal
+
+    @property
+    def FilterPunc(self):
+        r"""是否过滤句末的句号（目前仅支持填写基础语言引擎和标准语言引擎），范围为[0, 1]，默认值为 0。
+0：不过滤句末的句号；1：过滤句末的句号。
+        :rtype: int
+        """
+        return self._FilterPunc
+
+    @FilterPunc.setter
+    def FilterPunc(self, FilterPunc):
+        self._FilterPunc = FilterPunc
+
 
     def _deserialize(self, params):
         self._Lang = params.get("Lang")
@@ -831,6 +879,9 @@ class AsrParam(AbstractModel):
         self._HotWordList = params.get("HotWordList")
         self._AlternativeLanguage = params.get("AlternativeLanguage")
         self._VadLevel = params.get("VadLevel")
+        self._FilterDirty = params.get("FilterDirty")
+        self._FilterModal = params.get("FilterModal")
+        self._FilterPunc = params.get("FilterPunc")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

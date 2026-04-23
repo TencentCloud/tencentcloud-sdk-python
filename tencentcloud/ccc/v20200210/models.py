@@ -1403,6 +1403,149 @@ class AutoCalloutTaskInfo(AbstractModel):
         
 
 
+class AvailableTimeConfig(AbstractModel):
+    r"""工作时间配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DayType: <p>日期类型，默认为每天</p><p>枚举值：</p><ul><li>EveryDay： 每天</li><li>BusinessDay： 法定工作日</li><li>Holiday： 法定休息日</li><li>Custom： 自定义</li></ul>
+        :type DayType: str
+        :param _DaysOfWeek: <p>仅在 DayType 为 Custom 时生效，指定适用的星期几</p><p>枚举值：</p><ul><li>Monday： 星期一</li><li>Tuesday： 星期二</li><li>Wednesday： 星期三</li><li>Thursday： 星期四</li><li>Friday： 星期五</li><li>Saturday： 星期六</li><li>Sunday： 星期日</li></ul>
+        :type DaysOfWeek: list of str
+        :param _TimeRanges: <p>该日期类型下的时间段列表</p>
+        :type TimeRanges: list of TimeRange
+        """
+        self._DayType = None
+        self._DaysOfWeek = None
+        self._TimeRanges = None
+
+    @property
+    def DayType(self):
+        r"""<p>日期类型，默认为每天</p><p>枚举值：</p><ul><li>EveryDay： 每天</li><li>BusinessDay： 法定工作日</li><li>Holiday： 法定休息日</li><li>Custom： 自定义</li></ul>
+        :rtype: str
+        """
+        return self._DayType
+
+    @DayType.setter
+    def DayType(self, DayType):
+        self._DayType = DayType
+
+    @property
+    def DaysOfWeek(self):
+        r"""<p>仅在 DayType 为 Custom 时生效，指定适用的星期几</p><p>枚举值：</p><ul><li>Monday： 星期一</li><li>Tuesday： 星期二</li><li>Wednesday： 星期三</li><li>Thursday： 星期四</li><li>Friday： 星期五</li><li>Saturday： 星期六</li><li>Sunday： 星期日</li></ul>
+        :rtype: list of str
+        """
+        return self._DaysOfWeek
+
+    @DaysOfWeek.setter
+    def DaysOfWeek(self, DaysOfWeek):
+        self._DaysOfWeek = DaysOfWeek
+
+    @property
+    def TimeRanges(self):
+        r"""<p>该日期类型下的时间段列表</p>
+        :rtype: list of TimeRange
+        """
+        return self._TimeRanges
+
+    @TimeRanges.setter
+    def TimeRanges(self, TimeRanges):
+        self._TimeRanges = TimeRanges
+
+
+    def _deserialize(self, params):
+        self._DayType = params.get("DayType")
+        self._DaysOfWeek = params.get("DaysOfWeek")
+        if params.get("TimeRanges") is not None:
+            self._TimeRanges = []
+            for item in params.get("TimeRanges"):
+                obj = TimeRange()
+                obj._deserialize(item)
+                self._TimeRanges.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BasicAuth(AbstractModel):
+    r"""basic 鉴权
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BasicToken: 
+        :type BasicToken: str
+        """
+        self._BasicToken = None
+
+    @property
+    def BasicToken(self):
+        r"""
+        :rtype: str
+        """
+        return self._BasicToken
+
+    @BasicToken.setter
+    def BasicToken(self, BasicToken):
+        self._BasicToken = BasicToken
+
+
+    def _deserialize(self, params):
+        self._BasicToken = params.get("BasicToken")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BearerAuth(AbstractModel):
+    r"""Bearer 鉴权
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BearerToken: 
+        :type BearerToken: str
+        """
+        self._BearerToken = None
+
+    @property
+    def BearerToken(self):
+        r"""
+        :rtype: str
+        """
+        return self._BearerToken
+
+    @BearerToken.setter
+    def BearerToken(self, BearerToken):
+        self._BearerToken = BearerToken
+
+
+    def _deserialize(self, params):
+        self._BearerToken = params.get("BearerToken")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BindNumberCallInInterfaceRequest(AbstractModel):
     r"""BindNumberCallInInterface请求参数结构体
 
@@ -4512,40 +4655,48 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkAppId: 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :param _SdkAppId: <p>应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc</p>
         :type SdkAppId: int
-        :param _NotBefore: 任务起始时间戳，Unix 秒级时间戳
+        :param _NotBefore: <p>任务起始时间戳，Unix 秒级时间戳</p>
         :type NotBefore: int
-        :param _Callees: 被叫号码列表
+        :param _Callees: <p>被叫号码列表</p>
         :type Callees: list of str
-        :param _Callers: 主叫号码列表
+        :param _Callers: <p>主叫号码列表</p>
         :type Callers: list of str
-        :param _IvrId: 呼叫使用的 IVR Id，不填时需要填写 AIAgentId
+        :param _IvrId: <p>呼叫使用的 IVR Id，不填时需要填写 AIAgentId</p>
         :type IvrId: int
-        :param _Name: 任务名
+        :param _Name: <p>任务名</p>
         :type Name: str
-        :param _Description: 任务描述
+        :param _Description: <p>任务描述</p>
         :type Description: str
-        :param _NotAfter: 任务停止时间戳，Unix 秒级时间戳
+        :param _NotAfter: <p>任务停止时间戳，Unix 秒级时间戳</p>
         :type NotAfter: int
-        :param _Tries: 最大尝试次数，1-3 次
+        :param _Tries: <p>最大尝试次数，1-3 次</p>
         :type Tries: int
-        :param _Variables: 自定义变量（仅高级版支持），CalleeAttributes 字段中使用相同变量会覆盖此处
+        :param _Variables: <p>自定义变量（仅高级版支持），CalleeAttributes 字段中使用相同变量会覆盖此处</p>
         :type Variables: list of Variable
-        :param _UUI: 用户自定义数据，CalleeAttributes 字段中使用 UUI 会覆盖此处
+        :param _UUI: <p>用户自定义数据，CalleeAttributes 字段中使用 UUI 会覆盖此处</p>
         :type UUI: str
-        :param _CalleeAttributes: 被叫属性
+        :param _CalleeAttributes: <p>被叫属性</p>
         :type CalleeAttributes: list of CalleeAttribute
-        :param _TimeZone: IANA 时区名称，参考 https://datatracker.ietf.org/doc/html/draft-ietf-netmod-iana-timezones
+        :param _TimeZone: <p>IANA 时区名称，参考 https://datatracker.ietf.org/doc/html/draft-ietf-netmod-iana-timezones</p>
         :type TimeZone: str
-        :param _AvailableTime: 可用时间段
+        :param _AvailableTime: <p>可用时间段</p>
         :type AvailableTime: list of TimeRange
-        :param _AIAgentId: 智能体 ID，不填写时需要填写 IvrId
+        :param _AIAgentId: <p>智能体 ID，不填写时需要填写 IvrId</p>
         :type AIAgentId: int
-        :param _RetryInterval: 任务失败重试时间间隔，重试间隔 600秒～86400 秒
+        :param _RetryInterval: <p>任务失败重试时间间隔，重试间隔 600秒～86400 秒</p>
         :type RetryInterval: int
-        :param _MaxRingTimeoutSecond: 最大振铃时长，达到时长阈值自动挂断。 仅自携号码支持当前参数
+        :param _MaxRingTimeoutSecond: <p>最大振铃时长，达到时长阈值自动挂断。 仅自携号码支持当前参数</p>
         :type MaxRingTimeoutSecond: int
+        :param _RetryHangupTypes: <p>根据限定的挂断原因(可选挂断状态码:202,203,204,205,206,207,208,210,212,213,215,216,217,218,219,221,222,234)进行重试，只对使用AIAgentID的任务有效，挂断状态码说明</p><p><a href="https://cloud.tencent.com/document/product/679/123938">详见</a></p>
+        :type RetryHangupTypes: list of str
+        :param _RetryTags: <p>根据限定的话后标签进行重试，只对使用对话模型的AIAgentID任务有效，标签信息可在智能体配置中查询</p>
+        :type RetryTags: list of RetryTagItem
+        :param _AvailableWorkTimeConfig: <p>生效的工作时间配置。建议使用此字段代替AvailableTime 字段，当同时使用时，优先生效AvailableTime。</p>
+        :type AvailableWorkTimeConfig: list of AvailableTimeConfig
+        :param _TriggerStrategy: <p>触发策略</p>
+        :type TriggerStrategy: list of TriggerStrategyItem
         """
         self._SdkAppId = None
         self._NotBefore = None
@@ -4564,10 +4715,14 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
         self._AIAgentId = None
         self._RetryInterval = None
         self._MaxRingTimeoutSecond = None
+        self._RetryHangupTypes = None
+        self._RetryTags = None
+        self._AvailableWorkTimeConfig = None
+        self._TriggerStrategy = None
 
     @property
     def SdkAppId(self):
-        r"""应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        r"""<p>应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc</p>
         :rtype: int
         """
         return self._SdkAppId
@@ -4578,7 +4733,7 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
 
     @property
     def NotBefore(self):
-        r"""任务起始时间戳，Unix 秒级时间戳
+        r"""<p>任务起始时间戳，Unix 秒级时间戳</p>
         :rtype: int
         """
         return self._NotBefore
@@ -4589,7 +4744,7 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
 
     @property
     def Callees(self):
-        r"""被叫号码列表
+        r"""<p>被叫号码列表</p>
         :rtype: list of str
         """
         return self._Callees
@@ -4600,7 +4755,7 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
 
     @property
     def Callers(self):
-        r"""主叫号码列表
+        r"""<p>主叫号码列表</p>
         :rtype: list of str
         """
         return self._Callers
@@ -4611,7 +4766,7 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
 
     @property
     def IvrId(self):
-        r"""呼叫使用的 IVR Id，不填时需要填写 AIAgentId
+        r"""<p>呼叫使用的 IVR Id，不填时需要填写 AIAgentId</p>
         :rtype: int
         """
         return self._IvrId
@@ -4622,7 +4777,7 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""任务名
+        r"""<p>任务名</p>
         :rtype: str
         """
         return self._Name
@@ -4633,7 +4788,7 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
 
     @property
     def Description(self):
-        r"""任务描述
+        r"""<p>任务描述</p>
         :rtype: str
         """
         return self._Description
@@ -4644,7 +4799,7 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
 
     @property
     def NotAfter(self):
-        r"""任务停止时间戳，Unix 秒级时间戳
+        r"""<p>任务停止时间戳，Unix 秒级时间戳</p>
         :rtype: int
         """
         return self._NotAfter
@@ -4655,7 +4810,7 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
 
     @property
     def Tries(self):
-        r"""最大尝试次数，1-3 次
+        r"""<p>最大尝试次数，1-3 次</p>
         :rtype: int
         """
         return self._Tries
@@ -4666,7 +4821,7 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
 
     @property
     def Variables(self):
-        r"""自定义变量（仅高级版支持），CalleeAttributes 字段中使用相同变量会覆盖此处
+        r"""<p>自定义变量（仅高级版支持），CalleeAttributes 字段中使用相同变量会覆盖此处</p>
         :rtype: list of Variable
         """
         return self._Variables
@@ -4677,7 +4832,7 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
 
     @property
     def UUI(self):
-        r"""用户自定义数据，CalleeAttributes 字段中使用 UUI 会覆盖此处
+        r"""<p>用户自定义数据，CalleeAttributes 字段中使用 UUI 会覆盖此处</p>
         :rtype: str
         """
         return self._UUI
@@ -4688,7 +4843,7 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
 
     @property
     def CalleeAttributes(self):
-        r"""被叫属性
+        r"""<p>被叫属性</p>
         :rtype: list of CalleeAttribute
         """
         return self._CalleeAttributes
@@ -4699,7 +4854,7 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
 
     @property
     def TimeZone(self):
-        r"""IANA 时区名称，参考 https://datatracker.ietf.org/doc/html/draft-ietf-netmod-iana-timezones
+        r"""<p>IANA 时区名称，参考 https://datatracker.ietf.org/doc/html/draft-ietf-netmod-iana-timezones</p>
         :rtype: str
         """
         return self._TimeZone
@@ -4710,7 +4865,7 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
 
     @property
     def AvailableTime(self):
-        r"""可用时间段
+        r"""<p>可用时间段</p>
         :rtype: list of TimeRange
         """
         return self._AvailableTime
@@ -4721,7 +4876,7 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
 
     @property
     def AIAgentId(self):
-        r"""智能体 ID，不填写时需要填写 IvrId
+        r"""<p>智能体 ID，不填写时需要填写 IvrId</p>
         :rtype: int
         """
         return self._AIAgentId
@@ -4732,7 +4887,7 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
 
     @property
     def RetryInterval(self):
-        r"""任务失败重试时间间隔，重试间隔 600秒～86400 秒
+        r"""<p>任务失败重试时间间隔，重试间隔 600秒～86400 秒</p>
         :rtype: int
         """
         return self._RetryInterval
@@ -4743,7 +4898,7 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
 
     @property
     def MaxRingTimeoutSecond(self):
-        r"""最大振铃时长，达到时长阈值自动挂断。 仅自携号码支持当前参数
+        r"""<p>最大振铃时长，达到时长阈值自动挂断。 仅自携号码支持当前参数</p>
         :rtype: int
         """
         return self._MaxRingTimeoutSecond
@@ -4751,6 +4906,50 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
     @MaxRingTimeoutSecond.setter
     def MaxRingTimeoutSecond(self, MaxRingTimeoutSecond):
         self._MaxRingTimeoutSecond = MaxRingTimeoutSecond
+
+    @property
+    def RetryHangupTypes(self):
+        r"""<p>根据限定的挂断原因(可选挂断状态码:202,203,204,205,206,207,208,210,212,213,215,216,217,218,219,221,222,234)进行重试，只对使用AIAgentID的任务有效，挂断状态码说明</p><p><a href="https://cloud.tencent.com/document/product/679/123938">详见</a></p>
+        :rtype: list of str
+        """
+        return self._RetryHangupTypes
+
+    @RetryHangupTypes.setter
+    def RetryHangupTypes(self, RetryHangupTypes):
+        self._RetryHangupTypes = RetryHangupTypes
+
+    @property
+    def RetryTags(self):
+        r"""<p>根据限定的话后标签进行重试，只对使用对话模型的AIAgentID任务有效，标签信息可在智能体配置中查询</p>
+        :rtype: list of RetryTagItem
+        """
+        return self._RetryTags
+
+    @RetryTags.setter
+    def RetryTags(self, RetryTags):
+        self._RetryTags = RetryTags
+
+    @property
+    def AvailableWorkTimeConfig(self):
+        r"""<p>生效的工作时间配置。建议使用此字段代替AvailableTime 字段，当同时使用时，优先生效AvailableTime。</p>
+        :rtype: list of AvailableTimeConfig
+        """
+        return self._AvailableWorkTimeConfig
+
+    @AvailableWorkTimeConfig.setter
+    def AvailableWorkTimeConfig(self, AvailableWorkTimeConfig):
+        self._AvailableWorkTimeConfig = AvailableWorkTimeConfig
+
+    @property
+    def TriggerStrategy(self):
+        r"""<p>触发策略</p>
+        :rtype: list of TriggerStrategyItem
+        """
+        return self._TriggerStrategy
+
+    @TriggerStrategy.setter
+    def TriggerStrategy(self, TriggerStrategy):
+        self._TriggerStrategy = TriggerStrategy
 
 
     def _deserialize(self, params):
@@ -4786,6 +4985,25 @@ class CreateAutoCalloutTaskRequest(AbstractModel):
         self._AIAgentId = params.get("AIAgentId")
         self._RetryInterval = params.get("RetryInterval")
         self._MaxRingTimeoutSecond = params.get("MaxRingTimeoutSecond")
+        self._RetryHangupTypes = params.get("RetryHangupTypes")
+        if params.get("RetryTags") is not None:
+            self._RetryTags = []
+            for item in params.get("RetryTags"):
+                obj = RetryTagItem()
+                obj._deserialize(item)
+                self._RetryTags.append(obj)
+        if params.get("AvailableWorkTimeConfig") is not None:
+            self._AvailableWorkTimeConfig = []
+            for item in params.get("AvailableWorkTimeConfig"):
+                obj = AvailableTimeConfig()
+                obj._deserialize(item)
+                self._AvailableWorkTimeConfig.append(obj)
+        if params.get("TriggerStrategy") is not None:
+            self._TriggerStrategy = []
+            for item in params.get("TriggerStrategy"):
+                obj = TriggerStrategyItem()
+                obj._deserialize(item)
+                self._TriggerStrategy.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4803,7 +5021,7 @@ class CreateAutoCalloutTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务Id
+        :param _TaskId: <p>任务Id</p>
         :type TaskId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4813,7 +5031,7 @@ class CreateAutoCalloutTaskResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""任务Id
+        r"""<p>任务Id</p>
         :rtype: int
         """
         return self._TaskId
@@ -13982,6 +14200,317 @@ class HangUpCallResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class HeaderParams(AbstractModel):
+    r"""http header 参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 
+        :type Key: str
+        :param _Value: 
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        r"""
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        r"""
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HttpCallbackConfig(AbstractModel):
+    r"""http 回调包体参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Url: <p>http 标准 url</p>
+        :type Url: str
+        :param _HeaderParams: <p>http header 参数</p>
+        :type HeaderParams: list of HeaderParams
+        :param _Params: <p>http 请求包参数</p>
+        :type Params: list of HttpParams
+        :param _Returns: <p>对端输出值，由对端 url 返回的 json 包里包含该字段就行</p>
+        :type Returns: list of ReturnKey
+        :param _Async: <p>是否异步</p>
+        :type Async: bool
+        :param _AuthType: <p>是否鉴权</p><p>枚举值：</p><ul><li>0： 不开启鉴权</li><li>1： 启用鉴权</li></ul>
+        :type AuthType: int
+        :param _BasicAuth: <p>basic token 鉴权</p>
+        :type BasicAuth: :class:`tencentcloud.ccc.v20200210.models.BasicAuth`
+        :param _BearerAuth: <p>bearer token 鉴权</p>
+        :type BearerAuth: :class:`tencentcloud.ccc.v20200210.models.BearerAuth`
+        :param _CustomAuth: <p>自定义鉴权</p>
+        :type CustomAuth: :class:`tencentcloud.ccc.v20200210.models.HttpParams`
+        :param _Oauth2Auth: <p>oauth2 鉴权</p>
+        :type Oauth2Auth: :class:`tencentcloud.ccc.v20200210.models.OauthConfig`
+        """
+        self._Url = None
+        self._HeaderParams = None
+        self._Params = None
+        self._Returns = None
+        self._Async = None
+        self._AuthType = None
+        self._BasicAuth = None
+        self._BearerAuth = None
+        self._CustomAuth = None
+        self._Oauth2Auth = None
+
+    @property
+    def Url(self):
+        r"""<p>http 标准 url</p>
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def HeaderParams(self):
+        r"""<p>http header 参数</p>
+        :rtype: list of HeaderParams
+        """
+        return self._HeaderParams
+
+    @HeaderParams.setter
+    def HeaderParams(self, HeaderParams):
+        self._HeaderParams = HeaderParams
+
+    @property
+    def Params(self):
+        r"""<p>http 请求包参数</p>
+        :rtype: list of HttpParams
+        """
+        return self._Params
+
+    @Params.setter
+    def Params(self, Params):
+        self._Params = Params
+
+    @property
+    def Returns(self):
+        r"""<p>对端输出值，由对端 url 返回的 json 包里包含该字段就行</p>
+        :rtype: list of ReturnKey
+        """
+        return self._Returns
+
+    @Returns.setter
+    def Returns(self, Returns):
+        self._Returns = Returns
+
+    @property
+    def Async(self):
+        r"""<p>是否异步</p>
+        :rtype: bool
+        """
+        return self._Async
+
+    @Async.setter
+    def Async(self, Async):
+        self._Async = Async
+
+    @property
+    def AuthType(self):
+        r"""<p>是否鉴权</p><p>枚举值：</p><ul><li>0： 不开启鉴权</li><li>1： 启用鉴权</li></ul>
+        :rtype: int
+        """
+        return self._AuthType
+
+    @AuthType.setter
+    def AuthType(self, AuthType):
+        self._AuthType = AuthType
+
+    @property
+    def BasicAuth(self):
+        r"""<p>basic token 鉴权</p>
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.BasicAuth`
+        """
+        return self._BasicAuth
+
+    @BasicAuth.setter
+    def BasicAuth(self, BasicAuth):
+        self._BasicAuth = BasicAuth
+
+    @property
+    def BearerAuth(self):
+        r"""<p>bearer token 鉴权</p>
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.BearerAuth`
+        """
+        return self._BearerAuth
+
+    @BearerAuth.setter
+    def BearerAuth(self, BearerAuth):
+        self._BearerAuth = BearerAuth
+
+    @property
+    def CustomAuth(self):
+        r"""<p>自定义鉴权</p>
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.HttpParams`
+        """
+        return self._CustomAuth
+
+    @CustomAuth.setter
+    def CustomAuth(self, CustomAuth):
+        self._CustomAuth = CustomAuth
+
+    @property
+    def Oauth2Auth(self):
+        r"""<p>oauth2 鉴权</p>
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.OauthConfig`
+        """
+        return self._Oauth2Auth
+
+    @Oauth2Auth.setter
+    def Oauth2Auth(self, Oauth2Auth):
+        self._Oauth2Auth = Oauth2Auth
+
+
+    def _deserialize(self, params):
+        self._Url = params.get("Url")
+        if params.get("HeaderParams") is not None:
+            self._HeaderParams = []
+            for item in params.get("HeaderParams"):
+                obj = HeaderParams()
+                obj._deserialize(item)
+                self._HeaderParams.append(obj)
+        if params.get("Params") is not None:
+            self._Params = []
+            for item in params.get("Params"):
+                obj = HttpParams()
+                obj._deserialize(item)
+                self._Params.append(obj)
+        if params.get("Returns") is not None:
+            self._Returns = []
+            for item in params.get("Returns"):
+                obj = ReturnKey()
+                obj._deserialize(item)
+                self._Returns.append(obj)
+        self._Async = params.get("Async")
+        self._AuthType = params.get("AuthType")
+        if params.get("BasicAuth") is not None:
+            self._BasicAuth = BasicAuth()
+            self._BasicAuth._deserialize(params.get("BasicAuth"))
+        if params.get("BearerAuth") is not None:
+            self._BearerAuth = BearerAuth()
+            self._BearerAuth._deserialize(params.get("BearerAuth"))
+        if params.get("CustomAuth") is not None:
+            self._CustomAuth = HttpParams()
+            self._CustomAuth._deserialize(params.get("CustomAuth"))
+        if params.get("Oauth2Auth") is not None:
+            self._Oauth2Auth = OauthConfig()
+            self._Oauth2Auth._deserialize(params.get("Oauth2Auth"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HttpParams(AbstractModel):
+    r"""http 请求包体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 
+        :type Key: str
+        :param _Value: 
+        :type Value: str
+        :param _ValueType: 
+        :type ValueType: str
+        """
+        self._Key = None
+        self._Value = None
+        self._ValueType = None
+
+    @property
+    def Key(self):
+        r"""
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        r"""
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def ValueType(self):
+        r"""
+        :rtype: str
+        """
+        return self._ValueType
+
+    @ValueType.setter
+    def ValueType(self, ValueType):
+        self._ValueType = ValueType
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        self._ValueType = params.get("ValueType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class IMCdrInfo(AbstractModel):
     r"""文本会话服务记录信息
 
@@ -15351,6 +15880,72 @@ class NumberInfo(AbstractModel):
         self._CallOutSkillGroupIds = params.get("CallOutSkillGroupIds")
         self._State = params.get("State")
         self._CostType = params.get("CostType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OauthConfig(AbstractModel):
+    r"""Oauth2鉴权
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TokenURL: 
+        :type TokenURL: str
+        :param _ClientId: 
+        :type ClientId: str
+        :param _ClientSecret: 
+        :type ClientSecret: str
+        """
+        self._TokenURL = None
+        self._ClientId = None
+        self._ClientSecret = None
+
+    @property
+    def TokenURL(self):
+        r"""
+        :rtype: str
+        """
+        return self._TokenURL
+
+    @TokenURL.setter
+    def TokenURL(self, TokenURL):
+        self._TokenURL = TokenURL
+
+    @property
+    def ClientId(self):
+        r"""
+        :rtype: str
+        """
+        return self._ClientId
+
+    @ClientId.setter
+    def ClientId(self, ClientId):
+        self._ClientId = ClientId
+
+    @property
+    def ClientSecret(self):
+        r"""
+        :rtype: str
+        """
+        return self._ClientSecret
+
+    @ClientSecret.setter
+    def ClientSecret(self, ClientSecret):
+        self._ClientSecret = ClientSecret
+
+
+    def _deserialize(self, params):
+        self._TokenURL = params.get("TokenURL")
+        self._ClientId = params.get("ClientId")
+        self._ClientSecret = params.get("ClientSecret")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16762,6 +17357,93 @@ class ResumePredictiveDialingCampaignResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class RetryTagItem(AbstractModel):
+    r"""自动外呼限定重呼标签
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TagName: <p>标签名称</p>
+        :type TagName: str
+        :param _TagValue: <p>标签值</p>
+        :type TagValue: str
+        """
+        self._TagName = None
+        self._TagValue = None
+
+    @property
+    def TagName(self):
+        r"""<p>标签名称</p>
+        :rtype: str
+        """
+        return self._TagName
+
+    @TagName.setter
+    def TagName(self, TagName):
+        self._TagName = TagName
+
+    @property
+    def TagValue(self):
+        r"""<p>标签值</p>
+        :rtype: str
+        """
+        return self._TagValue
+
+    @TagValue.setter
+    def TagValue(self, TagValue):
+        self._TagValue = TagValue
+
+
+    def _deserialize(self, params):
+        self._TagName = params.get("TagName")
+        self._TagValue = params.get("TagValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReturnKey(AbstractModel):
+    r"""http return key
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 
+        :type Key: str
+        """
+        self._Key = None
+
+    @property
+    def Key(self):
+        r"""
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class SdkAppIdBuyInfo(AbstractModel):
@@ -20033,6 +20715,94 @@ class TransferToManualResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class TriggerStrategyItem(AbstractModel):
+    r"""触发策略数组，每个策略里包含接口调用信息，挂断类型，通话标签，触发模式
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InterfaceConfig: <p>http 接口相关参数</p>
+        :type InterfaceConfig: :class:`tencentcloud.ccc.v20200210.models.HttpCallbackConfig`
+        :param _HangupTypes: <p>挂断类型</p>
+        :type HangupTypes: list of str
+        :param _CallTags: <p>通话标签</p>
+        :type CallTags: list of RetryTagItem
+        :param _TriggerMode: <p>触发模式</p><p>枚举值：</p><ul><li>ONCE_PER_NUMBER： 每个号码仅第一次命中条件时触发</li><li>ALWAYS_ON_MATCH： 每次命中条件均触发</li></ul>
+        :type TriggerMode: str
+        """
+        self._InterfaceConfig = None
+        self._HangupTypes = None
+        self._CallTags = None
+        self._TriggerMode = None
+
+    @property
+    def InterfaceConfig(self):
+        r"""<p>http 接口相关参数</p>
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.HttpCallbackConfig`
+        """
+        return self._InterfaceConfig
+
+    @InterfaceConfig.setter
+    def InterfaceConfig(self, InterfaceConfig):
+        self._InterfaceConfig = InterfaceConfig
+
+    @property
+    def HangupTypes(self):
+        r"""<p>挂断类型</p>
+        :rtype: list of str
+        """
+        return self._HangupTypes
+
+    @HangupTypes.setter
+    def HangupTypes(self, HangupTypes):
+        self._HangupTypes = HangupTypes
+
+    @property
+    def CallTags(self):
+        r"""<p>通话标签</p>
+        :rtype: list of RetryTagItem
+        """
+        return self._CallTags
+
+    @CallTags.setter
+    def CallTags(self, CallTags):
+        self._CallTags = CallTags
+
+    @property
+    def TriggerMode(self):
+        r"""<p>触发模式</p><p>枚举值：</p><ul><li>ONCE_PER_NUMBER： 每个号码仅第一次命中条件时触发</li><li>ALWAYS_ON_MATCH： 每次命中条件均触发</li></ul>
+        :rtype: str
+        """
+        return self._TriggerMode
+
+    @TriggerMode.setter
+    def TriggerMode(self, TriggerMode):
+        self._TriggerMode = TriggerMode
+
+
+    def _deserialize(self, params):
+        if params.get("InterfaceConfig") is not None:
+            self._InterfaceConfig = HttpCallbackConfig()
+            self._InterfaceConfig._deserialize(params.get("InterfaceConfig"))
+        self._HangupTypes = params.get("HangupTypes")
+        if params.get("CallTags") is not None:
+            self._CallTags = []
+            for item in params.get("CallTags"):
+                obj = RetryTagItem()
+                obj._deserialize(item)
+                self._CallTags.append(obj)
+        self._TriggerMode = params.get("TriggerMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class UnbindNumberCallOutSkillGroupRequest(AbstractModel):

@@ -309,6 +309,24 @@ class SmsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def SendMultiGlobalSms(
+            self,
+            request: models.SendMultiGlobalSmsRequest,
+            opts: Dict = None,
+    ) -> models.SendMultiGlobalSmsResponse:
+        """
+        本接口 (SendMultiGlobalSms) 用于批量发送国际/港澳台短信，相比 SendSms 接口，支持在单次请求中向多个手机号发送不同内容的短信，并支持指定不同的SenderId。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "SendMultiGlobalSms"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.SendMultiGlobalSmsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def SendSms(
             self,
             request: models.SendSmsRequest,

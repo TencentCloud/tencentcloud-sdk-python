@@ -5599,32 +5599,33 @@ class JobView(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 作业ID
+        :param _JobId: <p>作业ID</p>
         :type JobId: str
-        :param _JobName: 作业名称
+        :param _JobName: <p>作业名称</p>
         :type JobName: str
-        :param _JobDescription: 作业描述
+        :param _JobDescription: <p>作业描述</p>
         :type JobDescription: str
-        :param _Priority: 作业优先级
+        :param _Creator: <p>作业创建者</p>
+        :type Creator: str
+        :param _Priority: <p>作业优先级</p>
         :type Priority: int
-        :param _JobState: 作业状态，包括CREATED, QUEING, STARTNG, RUNING, TERMINATING, TERMINATED, SUCCESS, 
-FAILED
-
+        :param _JobState: <p>作业状态，包括CREATED, QUEING, STARTNG, RUNING, TERMINATING, TERMINATED, SUCCESS,<br>FAILED</p>
         :type JobState: str
-        :param _ClusterId: 作业所属集群ID
+        :param _ClusterId: <p>作业所属集群ID</p>
         :type ClusterId: str
-        :param _QueueName: 作业所属队列名称
+        :param _QueueName: <p>作业所属队列名称</p>
         :type QueueName: str
-        :param _OccupyResources: 完成作业任务所需资源
+        :param _OccupyResources: <p>完成作业任务所需资源</p>
         :type OccupyResources: str
-        :param _CreateTime: 作业任务创建时间
+        :param _CreateTime: <p>作业任务创建时间</p>
         :type CreateTime: str
-        :param _EndTime: 作业任务结束时间
+        :param _EndTime: <p>作业任务结束时间</p>
         :type EndTime: str
         """
         self._JobId = None
         self._JobName = None
         self._JobDescription = None
+        self._Creator = None
         self._Priority = None
         self._JobState = None
         self._ClusterId = None
@@ -5635,7 +5636,7 @@ FAILED
 
     @property
     def JobId(self):
-        r"""作业ID
+        r"""<p>作业ID</p>
         :rtype: str
         """
         return self._JobId
@@ -5646,7 +5647,7 @@ FAILED
 
     @property
     def JobName(self):
-        r"""作业名称
+        r"""<p>作业名称</p>
         :rtype: str
         """
         return self._JobName
@@ -5657,7 +5658,7 @@ FAILED
 
     @property
     def JobDescription(self):
-        r"""作业描述
+        r"""<p>作业描述</p>
         :rtype: str
         """
         return self._JobDescription
@@ -5667,8 +5668,19 @@ FAILED
         self._JobDescription = JobDescription
 
     @property
+    def Creator(self):
+        r"""<p>作业创建者</p>
+        :rtype: str
+        """
+        return self._Creator
+
+    @Creator.setter
+    def Creator(self, Creator):
+        self._Creator = Creator
+
+    @property
     def Priority(self):
-        r"""作业优先级
+        r"""<p>作业优先级</p>
         :rtype: int
         """
         return self._Priority
@@ -5679,9 +5691,7 @@ FAILED
 
     @property
     def JobState(self):
-        r"""作业状态，包括CREATED, QUEING, STARTNG, RUNING, TERMINATING, TERMINATED, SUCCESS, 
-FAILED
-
+        r"""<p>作业状态，包括CREATED, QUEING, STARTNG, RUNING, TERMINATING, TERMINATED, SUCCESS,<br>FAILED</p>
         :rtype: str
         """
         return self._JobState
@@ -5692,7 +5702,7 @@ FAILED
 
     @property
     def ClusterId(self):
-        r"""作业所属集群ID
+        r"""<p>作业所属集群ID</p>
         :rtype: str
         """
         return self._ClusterId
@@ -5703,7 +5713,7 @@ FAILED
 
     @property
     def QueueName(self):
-        r"""作业所属队列名称
+        r"""<p>作业所属队列名称</p>
         :rtype: str
         """
         return self._QueueName
@@ -5714,7 +5724,7 @@ FAILED
 
     @property
     def OccupyResources(self):
-        r"""完成作业任务所需资源
+        r"""<p>完成作业任务所需资源</p>
         :rtype: str
         """
         return self._OccupyResources
@@ -5725,7 +5735,7 @@ FAILED
 
     @property
     def CreateTime(self):
-        r"""作业任务创建时间
+        r"""<p>作业任务创建时间</p>
         :rtype: str
         """
         return self._CreateTime
@@ -5736,7 +5746,7 @@ FAILED
 
     @property
     def EndTime(self):
-        r"""作业任务结束时间
+        r"""<p>作业任务结束时间</p>
         :rtype: str
         """
         return self._EndTime
@@ -5750,6 +5760,7 @@ FAILED
         self._JobId = params.get("JobId")
         self._JobName = params.get("JobName")
         self._JobDescription = params.get("JobDescription")
+        self._Creator = params.get("Creator")
         self._Priority = params.get("Priority")
         self._JobState = params.get("JobState")
         self._ClusterId = params.get("ClusterId")

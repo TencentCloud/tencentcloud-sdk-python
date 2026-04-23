@@ -558,6 +558,29 @@ class TioneClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeBillingResourceGroupAttachedWorkspaces(self, request):
+        r"""查询资源组关联的工作空间列表
+
+        :param request: Request instance for DescribeBillingResourceGroupAttachedWorkspaces.
+        :type request: :class:`tencentcloud.tione.v20211111.models.DescribeBillingResourceGroupAttachedWorkspacesRequest`
+        :rtype: :class:`tencentcloud.tione.v20211111.models.DescribeBillingResourceGroupAttachedWorkspacesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBillingResourceGroupAttachedWorkspaces", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBillingResourceGroupAttachedWorkspacesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeBillingResourceGroups(self, request):
         r"""查询资源组列表
 

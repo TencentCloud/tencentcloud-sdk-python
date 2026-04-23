@@ -323,6 +323,42 @@ class TcssClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def AddOrModifyMaliciousConnectionWhiteList(
+            self,
+            request: models.AddOrModifyMaliciousConnectionWhiteListRequest,
+            opts: Dict = None,
+    ) -> models.AddOrModifyMaliciousConnectionWhiteListResponse:
+        """
+        增加或修改恶意外连的白名单
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "AddOrModifyMaliciousConnectionWhiteList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.AddOrModifyMaliciousConnectionWhiteListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def AddOrModifyVirusWhiteListRule(
+            self,
+            request: models.AddOrModifyVirusWhiteListRuleRequest,
+            opts: Dict = None,
+    ) -> models.AddOrModifyVirusWhiteListRuleResponse:
+        """
+        新增或修改木马白名单规则
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "AddOrModifyVirusWhiteListRule"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.AddOrModifyVirusWhiteListRuleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CheckNetworkFirewallPolicyYaml(
             self,
             request: models.CheckNetworkFirewallPolicyYamlRequest,
@@ -1415,6 +1451,24 @@ class TcssClient(AbstractClient):
         kwargs["action"] = "DeleteSearchTemplate"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteSearchTemplateResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteVirusWhiteListRule(
+            self,
+            request: models.DeleteVirusWhiteListRuleRequest,
+            opts: Dict = None,
+    ) -> models.DeleteVirusWhiteListRuleResponse:
+        """
+        删除木马白名单规则
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteVirusWhiteListRule"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteVirusWhiteListRuleResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -4808,6 +4862,24 @@ class TcssClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeVirusMonitorConfig(
+            self,
+            request: models.DescribeVirusMonitorConfigRequest,
+            opts: Dict = None,
+    ) -> models.DescribeVirusMonitorConfigResponse:
+        """
+        运行时查询文件查杀实时监控设置信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeVirusMonitorConfig"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeVirusMonitorConfigResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeVirusMonitorSetting(
             self,
             request: models.DescribeVirusMonitorSettingRequest,
@@ -4839,6 +4911,24 @@ class TcssClient(AbstractClient):
         kwargs["action"] = "DescribeVirusSampleDownloadUrl"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeVirusSampleDownloadUrlResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeVirusScanConfig(
+            self,
+            request: models.DescribeVirusScanConfigRequest,
+            opts: Dict = None,
+    ) -> models.DescribeVirusScanConfigResponse:
+        """
+        运行时查询文件查杀新设置
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeVirusScanConfig"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeVirusScanConfigResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -4929,6 +5019,24 @@ class TcssClient(AbstractClient):
         kwargs["action"] = "DescribeVirusTaskList"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeVirusTaskListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeVirusWhiteListRules(
+            self,
+            request: models.DescribeVirusWhiteListRulesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeVirusWhiteListRulesResponse:
+        """
+        查询木马白名单规则列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeVirusWhiteListRules"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeVirusWhiteListRulesResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

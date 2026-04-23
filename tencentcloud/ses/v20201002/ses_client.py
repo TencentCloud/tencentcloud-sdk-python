@@ -327,7 +327,8 @@ class SesClient(AbstractClient):
 
 
     def DeleteEmailIdentity(self, request):
-        r"""删除发信域名，删除后，将不可再使用该域名进行发信
+        r"""**发信域名删除接口仅限于企业用户使用**
+        删除发信域名，删除后，将不可再使用该域名进行发信
 
         :param request: Request instance for DeleteEmailIdentity.
         :type request: :class:`tencentcloud.ses.v20201002.models.DeleteEmailIdentityRequest`

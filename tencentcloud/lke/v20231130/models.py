@@ -2427,40 +2427,40 @@ class AgentReference(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DocId: 来源文档ID
+        :param _DocId: <p>来源文档ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DocId: str
-        :param _Id: id
+        :param _Id: <p>id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Id: str
-        :param _Name: 名称
+        :param _Name: <p>名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
-        :param _Type: 类型
+        :param _Type: <p>类型</p><p>枚举值：</p><ul><li>1： 问答</li><li>2： 文档片段</li><li>4： 联网检索到的内容</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Type: int
-        :param _Url: 链接
+        :param _Url: <p>链接</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Url: str
-        :param _DocBizId: 文档业务ID
+        :param _DocBizId: <p>文档业务ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DocBizId: str
-        :param _DocName: 文档名称
+        :param _DocName: <p>文档名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DocName: str
-        :param _QaBizId: 问答业务ID
+        :param _QaBizId: <p>问答业务ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type QaBizId: str
-        :param _Index: 搜索引擎索引
+        :param _Index: <p>搜索引擎索引</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Index: int
-        :param _Title: 标题
+        :param _Title: <p>标题</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Title: str
-        :param _KnowledgeName: 知识库名称
+        :param _KnowledgeName: <p>知识库名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type KnowledgeName: str
-        :param _KnowledgeBizId: 知识库标识
+        :param _KnowledgeBizId: <p>知识库标识</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type KnowledgeBizId: str
         """
@@ -2479,7 +2479,7 @@ class AgentReference(AbstractModel):
 
     @property
     def DocId(self):
-        r"""来源文档ID
+        r"""<p>来源文档ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2491,7 +2491,7 @@ class AgentReference(AbstractModel):
 
     @property
     def Id(self):
-        r"""id
+        r"""<p>id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2503,7 +2503,7 @@ class AgentReference(AbstractModel):
 
     @property
     def Name(self):
-        r"""名称
+        r"""<p>名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2515,7 +2515,7 @@ class AgentReference(AbstractModel):
 
     @property
     def Type(self):
-        r"""类型
+        r"""<p>类型</p><p>枚举值：</p><ul><li>1： 问答</li><li>2： 文档片段</li><li>4： 联网检索到的内容</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -2527,7 +2527,7 @@ class AgentReference(AbstractModel):
 
     @property
     def Url(self):
-        r"""链接
+        r"""<p>链接</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2539,7 +2539,7 @@ class AgentReference(AbstractModel):
 
     @property
     def DocBizId(self):
-        r"""文档业务ID
+        r"""<p>文档业务ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2551,7 +2551,7 @@ class AgentReference(AbstractModel):
 
     @property
     def DocName(self):
-        r"""文档名称
+        r"""<p>文档名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2563,7 +2563,7 @@ class AgentReference(AbstractModel):
 
     @property
     def QaBizId(self):
-        r"""问答业务ID
+        r"""<p>问答业务ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2575,7 +2575,7 @@ class AgentReference(AbstractModel):
 
     @property
     def Index(self):
-        r"""搜索引擎索引
+        r"""<p>搜索引擎索引</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -2587,7 +2587,7 @@ class AgentReference(AbstractModel):
 
     @property
     def Title(self):
-        r"""标题
+        r"""<p>标题</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2599,7 +2599,7 @@ class AgentReference(AbstractModel):
 
     @property
     def KnowledgeName(self):
-        r"""知识库名称
+        r"""<p>知识库名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -2611,7 +2611,7 @@ class AgentReference(AbstractModel):
 
     @property
     def KnowledgeBizId(self):
-        r"""知识库标识
+        r"""<p>知识库标识</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4336,23 +4336,45 @@ class AppModelDetailInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ModelName: 模型名称
-        :type ModelName: str
-        :param _ModelParams: 模型参数
-        :type ModelParams: :class:`tencentcloud.lke.v20231130.models.ModelParams`
-        :param _HistoryLimit: 限制
-        :type HistoryLimit: int
-        :param _AliasName: 模型别名
+        :param _AliasName: <p>模型别名</p>
         :type AliasName: str
+        :param _HistoryLimit: <p>限制</p>
+        :type HistoryLimit: int
+        :param _ModelName: <p>模型名称</p>
+        :type ModelName: str
+        :param _ModelParams: <p>模型参数</p>
+        :type ModelParams: :class:`tencentcloud.lke.v20231130.models.ModelParams`
         """
+        self._AliasName = None
+        self._HistoryLimit = None
         self._ModelName = None
         self._ModelParams = None
-        self._HistoryLimit = None
-        self._AliasName = None
+
+    @property
+    def AliasName(self):
+        r"""<p>模型别名</p>
+        :rtype: str
+        """
+        return self._AliasName
+
+    @AliasName.setter
+    def AliasName(self, AliasName):
+        self._AliasName = AliasName
+
+    @property
+    def HistoryLimit(self):
+        r"""<p>限制</p>
+        :rtype: int
+        """
+        return self._HistoryLimit
+
+    @HistoryLimit.setter
+    def HistoryLimit(self, HistoryLimit):
+        self._HistoryLimit = HistoryLimit
 
     @property
     def ModelName(self):
-        r"""模型名称
+        r"""<p>模型名称</p>
         :rtype: str
         """
         return self._ModelName
@@ -4363,7 +4385,7 @@ class AppModelDetailInfo(AbstractModel):
 
     @property
     def ModelParams(self):
-        r"""模型参数
+        r"""<p>模型参数</p>
         :rtype: :class:`tencentcloud.lke.v20231130.models.ModelParams`
         """
         return self._ModelParams
@@ -4372,36 +4394,14 @@ class AppModelDetailInfo(AbstractModel):
     def ModelParams(self, ModelParams):
         self._ModelParams = ModelParams
 
-    @property
-    def HistoryLimit(self):
-        r"""限制
-        :rtype: int
-        """
-        return self._HistoryLimit
-
-    @HistoryLimit.setter
-    def HistoryLimit(self, HistoryLimit):
-        self._HistoryLimit = HistoryLimit
-
-    @property
-    def AliasName(self):
-        r"""模型别名
-        :rtype: str
-        """
-        return self._AliasName
-
-    @AliasName.setter
-    def AliasName(self, AliasName):
-        self._AliasName = AliasName
-
 
     def _deserialize(self, params):
+        self._AliasName = params.get("AliasName")
+        self._HistoryLimit = params.get("HistoryLimit")
         self._ModelName = params.get("ModelName")
         if params.get("ModelParams") is not None:
             self._ModelParams = ModelParams()
             self._ModelParams._deserialize(params.get("ModelParams"))
-        self._HistoryLimit = params.get("HistoryLimit")
-        self._AliasName = params.get("AliasName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8159,27 +8159,26 @@ class CreateRejectedQuestionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BotBizId: 应用ID, 获取方式参看如何获取[BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
+        :param _BotBizId: <p>应用ID, 获取方式参看如何获取<a href="https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa">BotBizId</a></p>
         :type BotBizId: str
-        :param _Question: 拒答问题
-
-
+        :param _Question: <p>拒答问题</p>
         :type Question: str
-        :param _BusinessSource: 拒答问题来源， 1- 来源于不满意回复;  2 - 来源于手动添加
+        :param _BusinessSource: <p>拒答问题来源， 1- 来源于不满意回复;  2 - 来源于手动添加</p>
         :type BusinessSource: int
-        :param _BusinessId: 拒答问题来源的数据源唯一id
-
-
+        :param _BusinessId: <p>拒答问题来源的数据源唯一id</p>
         :type BusinessId: str
+        :param _EnableScope: <p>拒答生效域: 1-不生效；2-仅开发域生效；3-仅发布域生效；4-开发域和发布域均生效 默认值：2。</p>
+        :type EnableScope: int
         """
         self._BotBizId = None
         self._Question = None
         self._BusinessSource = None
         self._BusinessId = None
+        self._EnableScope = None
 
     @property
     def BotBizId(self):
-        r"""应用ID, 获取方式参看如何获取[BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)
+        r"""<p>应用ID, 获取方式参看如何获取<a href="https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa">BotBizId</a></p>
         :rtype: str
         """
         return self._BotBizId
@@ -8190,9 +8189,7 @@ class CreateRejectedQuestionRequest(AbstractModel):
 
     @property
     def Question(self):
-        r"""拒答问题
-
-
+        r"""<p>拒答问题</p>
         :rtype: str
         """
         return self._Question
@@ -8203,7 +8200,7 @@ class CreateRejectedQuestionRequest(AbstractModel):
 
     @property
     def BusinessSource(self):
-        r"""拒答问题来源， 1- 来源于不满意回复;  2 - 来源于手动添加
+        r"""<p>拒答问题来源， 1- 来源于不满意回复;  2 - 来源于手动添加</p>
         :rtype: int
         """
         return self._BusinessSource
@@ -8214,9 +8211,7 @@ class CreateRejectedQuestionRequest(AbstractModel):
 
     @property
     def BusinessId(self):
-        r"""拒答问题来源的数据源唯一id
-
-
+        r"""<p>拒答问题来源的数据源唯一id</p>
         :rtype: str
         """
         return self._BusinessId
@@ -8225,12 +8220,24 @@ class CreateRejectedQuestionRequest(AbstractModel):
     def BusinessId(self, BusinessId):
         self._BusinessId = BusinessId
 
+    @property
+    def EnableScope(self):
+        r"""<p>拒答生效域: 1-不生效；2-仅开发域生效；3-仅发布域生效；4-开发域和发布域均生效 默认值：2。</p>
+        :rtype: int
+        """
+        return self._EnableScope
+
+    @EnableScope.setter
+    def EnableScope(self, EnableScope):
+        self._EnableScope = EnableScope
+
 
     def _deserialize(self, params):
         self._BotBizId = params.get("BotBizId")
         self._Question = params.get("Question")
         self._BusinessSource = params.get("BusinessSource")
         self._BusinessId = params.get("BusinessId")
+        self._EnableScope = params.get("EnableScope")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8385,23 +8392,26 @@ class CreateSharedKnowledgeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _KnowledgeName: 共享知识库名称，字符数量范围：[1, 50]
+        :param _KnowledgeName: <p>共享知识库名称，字符数量范围：[1, 50]</p>
         :type KnowledgeName: str
-        :param _KnowledgeDescription: 共享知识库描述，字符数量上限2000
+        :param _KnowledgeDescription: <p>共享知识库描述，字符数量上限2000</p>
         :type KnowledgeDescription: str
-        :param _EmbeddingModel: Embedding模型，字符数量上限128
+        :param _EmbeddingModel: <p>Embedding模型，字符数量上限128</p>
         :type EmbeddingModel: str
-        :param _KnowledgeType: 共享知识库类型，0普通，1公众号
+        :param _KnowledgeType: <p>共享知识库类型，0普通，1公众号</p>
         :type KnowledgeType: int
+        :param _EsConfig: <p>ES存储配置</p>
+        :type EsConfig: :class:`tencentcloud.lke.v20231130.models.ESConfig`
         """
         self._KnowledgeName = None
         self._KnowledgeDescription = None
         self._EmbeddingModel = None
         self._KnowledgeType = None
+        self._EsConfig = None
 
     @property
     def KnowledgeName(self):
-        r"""共享知识库名称，字符数量范围：[1, 50]
+        r"""<p>共享知识库名称，字符数量范围：[1, 50]</p>
         :rtype: str
         """
         return self._KnowledgeName
@@ -8412,7 +8422,7 @@ class CreateSharedKnowledgeRequest(AbstractModel):
 
     @property
     def KnowledgeDescription(self):
-        r"""共享知识库描述，字符数量上限2000
+        r"""<p>共享知识库描述，字符数量上限2000</p>
         :rtype: str
         """
         return self._KnowledgeDescription
@@ -8425,7 +8435,7 @@ class CreateSharedKnowledgeRequest(AbstractModel):
     def EmbeddingModel(self):
         warnings.warn("parameter `EmbeddingModel` is deprecated", DeprecationWarning) 
 
-        r"""Embedding模型，字符数量上限128
+        r"""<p>Embedding模型，字符数量上限128</p>
         :rtype: str
         """
         return self._EmbeddingModel
@@ -8438,7 +8448,7 @@ class CreateSharedKnowledgeRequest(AbstractModel):
 
     @property
     def KnowledgeType(self):
-        r"""共享知识库类型，0普通，1公众号
+        r"""<p>共享知识库类型，0普通，1公众号</p>
         :rtype: int
         """
         return self._KnowledgeType
@@ -8447,12 +8457,26 @@ class CreateSharedKnowledgeRequest(AbstractModel):
     def KnowledgeType(self, KnowledgeType):
         self._KnowledgeType = KnowledgeType
 
+    @property
+    def EsConfig(self):
+        r"""<p>ES存储配置</p>
+        :rtype: :class:`tencentcloud.lke.v20231130.models.ESConfig`
+        """
+        return self._EsConfig
+
+    @EsConfig.setter
+    def EsConfig(self, EsConfig):
+        self._EsConfig = EsConfig
+
 
     def _deserialize(self, params):
         self._KnowledgeName = params.get("KnowledgeName")
         self._KnowledgeDescription = params.get("KnowledgeDescription")
         self._EmbeddingModel = params.get("EmbeddingModel")
         self._KnowledgeType = params.get("KnowledgeType")
+        if params.get("EsConfig") is not None:
+            self._EsConfig = ESConfig()
+            self._EsConfig._deserialize(params.get("EsConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8470,7 +8494,7 @@ class CreateSharedKnowledgeResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _KnowledgeBizId: 共享知识库业务ID
+        :param _KnowledgeBizId: <p>共享知识库业务ID</p>
         :type KnowledgeBizId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -8480,7 +8504,7 @@ class CreateSharedKnowledgeResponse(AbstractModel):
 
     @property
     def KnowledgeBizId(self):
-        r"""共享知识库业务ID
+        r"""<p>共享知识库业务ID</p>
         :rtype: str
         """
         return self._KnowledgeBizId
@@ -15535,6 +15559,117 @@ class DuplicateFileHandle(AbstractModel):
         
 
 
+class ESConfig(AbstractModel):
+    r"""ES存储配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StorageType: <p>存储类型，0: 未知类型， 1:默认存储(平台提供)，2: 自定义存储(用户自建ES)</p>
+        :type StorageType: int
+        :param _InstanceName: <p>ES集群名称(自定义存储时必填)</p>
+        :type InstanceName: str
+        :param _InstanceId: <p>ES集群ID(自定义存储时必填)</p>
+        :type InstanceId: str
+        :param _Username: <p>ES用户名(自定义存储时必填)</p>
+        :type Username: str
+        :param _Password: <p>ES密码(自定义存储时必填)</p>
+        :type Password: str
+        :param _CanModify: <p>允许修改存储方式</p>
+        :type CanModify: bool
+        """
+        self._StorageType = None
+        self._InstanceName = None
+        self._InstanceId = None
+        self._Username = None
+        self._Password = None
+        self._CanModify = None
+
+    @property
+    def StorageType(self):
+        r"""<p>存储类型，0: 未知类型， 1:默认存储(平台提供)，2: 自定义存储(用户自建ES)</p>
+        :rtype: int
+        """
+        return self._StorageType
+
+    @StorageType.setter
+    def StorageType(self, StorageType):
+        self._StorageType = StorageType
+
+    @property
+    def InstanceName(self):
+        r"""<p>ES集群名称(自定义存储时必填)</p>
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def InstanceId(self):
+        r"""<p>ES集群ID(自定义存储时必填)</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Username(self):
+        r"""<p>ES用户名(自定义存储时必填)</p>
+        :rtype: str
+        """
+        return self._Username
+
+    @Username.setter
+    def Username(self, Username):
+        self._Username = Username
+
+    @property
+    def Password(self):
+        r"""<p>ES密码(自定义存储时必填)</p>
+        :rtype: str
+        """
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def CanModify(self):
+        r"""<p>允许修改存储方式</p>
+        :rtype: bool
+        """
+        return self._CanModify
+
+    @CanModify.setter
+    def CanModify(self, CanModify):
+        self._CanModify = CanModify
+
+
+    def _deserialize(self, params):
+        self._StorageType = params.get("StorageType")
+        self._InstanceName = params.get("InstanceName")
+        self._InstanceId = params.get("InstanceId")
+        self._Username = params.get("Username")
+        self._Password = params.get("Password")
+        self._CanModify = params.get("CanModify")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ExportAttributeLabelRequest(AbstractModel):
     r"""ExportAttributeLabel请求参数结构体
 
@@ -16264,6 +16399,67 @@ class FileInfoContent(AbstractModel):
         self._FileUrl = params.get("FileUrl")
         self._DocId = params.get("DocId")
         self._CreateTime = params.get("CreateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FilterItem(AbstractModel):
+    r"""筛选条件。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FilterKey: 筛选内容。
+例如筛选审核状态可以使用"AuditStatus"
+        :type FilterKey: str
+        :param _FilterValue: 筛选条件。
+例如对于筛选内容"AuditStatus"，可使用筛选条件:
+"ContentFailed":"内容审核失败",
+"PictureFailed":"图片审核失败",
+"ContentAndPictureFailed":"图片和内容审核失败",
+        :type FilterValue: list of str
+        """
+        self._FilterKey = None
+        self._FilterValue = None
+
+    @property
+    def FilterKey(self):
+        r"""筛选内容。
+例如筛选审核状态可以使用"AuditStatus"
+        :rtype: str
+        """
+        return self._FilterKey
+
+    @FilterKey.setter
+    def FilterKey(self, FilterKey):
+        self._FilterKey = FilterKey
+
+    @property
+    def FilterValue(self):
+        r"""筛选条件。
+例如对于筛选内容"AuditStatus"，可使用筛选条件:
+"ContentFailed":"内容审核失败",
+"PictureFailed":"图片审核失败",
+"ContentAndPictureFailed":"图片和内容审核失败",
+        :rtype: list of str
+        """
+        return self._FilterValue
+
+    @FilterValue.setter
+    def FilterValue(self, FilterValue):
+        self._FilterValue = FilterValue
+
+
+    def _deserialize(self, params):
+        self._FilterKey = params.get("FilterKey")
+        self._FilterValue = params.get("FilterValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -24481,24 +24677,26 @@ class ListRejectedQuestionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BotBizId: 应用ID, 获取方法参看如何获取   [BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)。
+        :param _BotBizId: <p>应用ID, 获取方法参看如何获取   <a href="https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa">BotBizId</a>。</p>
         :type BotBizId: str
-        :param _PageNumber: 页码（必须大于0）
+        :param _PageNumber: <p>页码（必须大于0）</p><p>默认值：1</p>
         :type PageNumber: int
-        :param _PageSize: 每页数量（取值范围1-200）
+        :param _PageSize: <p>每页数量（取值范围1-200）</p><p>默认值：15</p>
         :type PageSize: int
-        :param _Query: 查询内容
-
+        :param _Query: <p>查询内容</p>
         :type Query: str
+        :param _Filters: <p>过滤条件：<br>生效： EnableScope: 1,2,3,4</p>
+        :type Filters: list of FilterItem
         """
         self._BotBizId = None
         self._PageNumber = None
         self._PageSize = None
         self._Query = None
+        self._Filters = None
 
     @property
     def BotBizId(self):
-        r"""应用ID, 获取方法参看如何获取   [BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)。
+        r"""<p>应用ID, 获取方法参看如何获取   <a href="https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa">BotBizId</a>。</p>
         :rtype: str
         """
         return self._BotBizId
@@ -24509,7 +24707,7 @@ class ListRejectedQuestionRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        r"""页码（必须大于0）
+        r"""<p>页码（必须大于0）</p><p>默认值：1</p>
         :rtype: int
         """
         return self._PageNumber
@@ -24520,7 +24718,7 @@ class ListRejectedQuestionRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        r"""每页数量（取值范围1-200）
+        r"""<p>每页数量（取值范围1-200）</p><p>默认值：15</p>
         :rtype: int
         """
         return self._PageSize
@@ -24531,8 +24729,7 @@ class ListRejectedQuestionRequest(AbstractModel):
 
     @property
     def Query(self):
-        r"""查询内容
-
+        r"""<p>查询内容</p>
         :rtype: str
         """
         return self._Query
@@ -24541,12 +24738,29 @@ class ListRejectedQuestionRequest(AbstractModel):
     def Query(self, Query):
         self._Query = Query
 
+    @property
+    def Filters(self):
+        r"""<p>过滤条件：<br>生效： EnableScope: 1,2,3,4</p>
+        :rtype: list of FilterItem
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
 
     def _deserialize(self, params):
         self._BotBizId = params.get("BotBizId")
         self._PageNumber = params.get("PageNumber")
         self._PageSize = params.get("PageSize")
         self._Query = params.get("Query")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = FilterItem()
+                obj._deserialize(item)
+                self._Filters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -24564,9 +24778,9 @@ class ListRejectedQuestionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Total: 总数
+        :param _Total: <p>总数</p>
         :type Total: str
-        :param _List: 拒答问题列表
+        :param _List: <p>拒答问题列表</p>
         :type List: list of RejectedQuestion
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -24577,7 +24791,7 @@ class ListRejectedQuestionResponse(AbstractModel):
 
     @property
     def Total(self):
-        r"""总数
+        r"""<p>总数</p>
         :rtype: str
         """
         return self._Total
@@ -24588,7 +24802,7 @@ class ListRejectedQuestionResponse(AbstractModel):
 
     @property
     def List(self):
-        r"""拒答问题列表
+        r"""<p>拒答问题列表</p>
         :rtype: list of RejectedQuestion
         """
         return self._List
@@ -26371,6 +26585,8 @@ class ListWorkflowRunsRequest(AbstractModel):
         :type LoginUin: str
         :param _LoginSubAccountUin: 登录用户子账号(集成商模式必填)
         :type LoginSubAccountUin: str
+        :param _Query: 查询内容
+        :type Query: str
         """
         self._AppBizId = None
         self._PageSize = None
@@ -26378,6 +26594,7 @@ class ListWorkflowRunsRequest(AbstractModel):
         self._Page = None
         self._LoginUin = None
         self._LoginSubAccountUin = None
+        self._Query = None
 
     @property
     def AppBizId(self):
@@ -26445,6 +26662,17 @@ class ListWorkflowRunsRequest(AbstractModel):
     def LoginSubAccountUin(self, LoginSubAccountUin):
         self._LoginSubAccountUin = LoginSubAccountUin
 
+    @property
+    def Query(self):
+        r"""查询内容
+        :rtype: str
+        """
+        return self._Query
+
+    @Query.setter
+    def Query(self, Query):
+        self._Query = Query
+
 
     def _deserialize(self, params):
         self._AppBizId = params.get("AppBizId")
@@ -26453,6 +26681,7 @@ class ListWorkflowRunsRequest(AbstractModel):
         self._Page = params.get("Page")
         self._LoginUin = params.get("LoginUin")
         self._LoginSubAccountUin = params.get("LoginSubAccountUin")
+        self._Query = params.get("Query")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -26533,69 +26762,69 @@ class ModelInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ModelName: 模型名称
+        :param _ModelName: <p>模型名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ModelName: str
-        :param _ModelDesc: 模型描述
+        :param _ModelDesc: <p>模型描述</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ModelDesc: str
-        :param _AliasName: 模型名称
+        :param _AliasName: <p>模型名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AliasName: str
-        :param _ResourceStatus: 资源状态 1：资源可用；2：资源已用尽
+        :param _ResourceStatus: <p>资源状态 1：资源可用；2：资源已用尽</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceStatus: int
-        :param _PromptWordsLimit: 提示词内容字符限制
+        :param _PromptWordsLimit: <p>提示词内容字符限制</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type PromptWordsLimit: str
-        :param _TopP: 通过核心采样控制内容生成的多样性，较高的Top P值会导致生成更多样的内容
+        :param _TopP: <p>通过核心采样控制内容生成的多样性，较高的Top P值会导致生成更多样的内容</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TopP: :class:`tencentcloud.lke.v20231130.models.ModelParameter`
-        :param _Temperature: 温度控制随机性
+        :param _Temperature: <p>温度控制随机性</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Temperature: :class:`tencentcloud.lke.v20231130.models.ModelParameter`
-        :param _MaxTokens: 最多能生成的token数量
+        :param _MaxTokens: <p>最多能生成的token数量</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type MaxTokens: :class:`tencentcloud.lke.v20231130.models.ModelParameter`
-        :param _Source: 模型来源 Hunyuan：腾讯混元大模型,Industry：腾讯云行业大模型,Experience：新模型体验,Custom自定义模型
+        :param _Source: <p>模型来源 Hunyuan：腾讯混元大模型,Industry：腾讯云行业大模型,Experience：新模型体验,Custom自定义模型</p>
         :type Source: str
-        :param _Icon: 模型图标
+        :param _Icon: <p>模型图标</p>
         :type Icon: str
-        :param _IsFree: 是否免费
+        :param _IsFree: <p>是否免费</p>
         :type IsFree: bool
-        :param _InputLenLimit: 模型对话框可输入的上限
+        :param _InputLenLimit: <p>模型对话框可输入的上限</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type InputLenLimit: int
-        :param _SupportWorkflowStatus: 支持工作流的类型 0:模型不支持; 1: 模型支持工作流； 2： 模型支持效果不佳；
+        :param _SupportWorkflowStatus: <p>支持工作流的类型 0:模型不支持; 1: 模型支持工作流； 2： 模型支持效果不佳；</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SupportWorkflowStatus: int
-        :param _ModelCategory: 模型类别 generate：生成模型，thought：思考模型
+        :param _ModelCategory: <p>模型类别 generate：生成模型，thought：思考模型</p>
         :type ModelCategory: str
-        :param _IsDefault: 是否默认模型
+        :param _IsDefault: <p>是否默认模型</p>
         :type IsDefault: bool
-        :param _RoleLenLimit: 角色提示词输入长度限制
+        :param _RoleLenLimit: <p>角色提示词输入长度限制</p>
         :type RoleLenLimit: int
-        :param _IsExclusive: 是否专属并发模型
+        :param _IsExclusive: <p>是否专属并发模型</p>
         :type IsExclusive: bool
-        :param _SupportAiCallStatus: 模型支持智能通话效果
+        :param _SupportAiCallStatus: <p>模型支持智能通话效果</p><p>枚举值：</p><ul><li>0： 模型不支持</li><li>1： 模型支持ai通话</li><li>2： 模型ai通话支持效果不佳</li></ul>
         :type SupportAiCallStatus: int
-        :param _Concurrency: 专属并发数
+        :param _Concurrency: <p>专属并发数</p>
         :type Concurrency: int
-        :param _ModelTags: 模型标签
+        :param _ModelTags: <p>模型标签</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ModelTags: list of str
-        :param _ModelParams: 模型超参定义
+        :param _ModelParams: <p>模型超参定义</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ModelParams: list of ModelParameter
-        :param _ProviderName: 提供商名称
+        :param _ProviderName: <p>提供商名称</p>
         :type ProviderName: str
-        :param _ProviderAliasName: 提供商别名
+        :param _ProviderAliasName: <p>提供商别名</p>
         :type ProviderAliasName: str
-        :param _ProviderType: 提供商类型 Self:提供商，Custom：自定义模型提供商，Third：第三方模型提供商
+        :param _ProviderType: <p>提供商类型 Self:提供商，Custom：自定义模型提供商，Third：第三方模型提供商</p>
         :type ProviderType: str
-        :param _IsCloseModelParams: 是否关闭模型超参
+        :param _IsCloseModelParams: <p>是否关闭模型超参</p>
         :type IsCloseModelParams: bool
-        :param _IsDeepThinking: 是否支持深度思考
+        :param _IsDeepThinking: <p>是否支持深度思考</p>
         :type IsDeepThinking: bool
         """
         self._ModelName = None
@@ -26627,7 +26856,7 @@ class ModelInfo(AbstractModel):
 
     @property
     def ModelName(self):
-        r"""模型名称
+        r"""<p>模型名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -26639,7 +26868,7 @@ class ModelInfo(AbstractModel):
 
     @property
     def ModelDesc(self):
-        r"""模型描述
+        r"""<p>模型描述</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -26651,7 +26880,7 @@ class ModelInfo(AbstractModel):
 
     @property
     def AliasName(self):
-        r"""模型名称
+        r"""<p>模型名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -26663,7 +26892,7 @@ class ModelInfo(AbstractModel):
 
     @property
     def ResourceStatus(self):
-        r"""资源状态 1：资源可用；2：资源已用尽
+        r"""<p>资源状态 1：资源可用；2：资源已用尽</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -26675,7 +26904,7 @@ class ModelInfo(AbstractModel):
 
     @property
     def PromptWordsLimit(self):
-        r"""提示词内容字符限制
+        r"""<p>提示词内容字符限制</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -26687,7 +26916,7 @@ class ModelInfo(AbstractModel):
 
     @property
     def TopP(self):
-        r"""通过核心采样控制内容生成的多样性，较高的Top P值会导致生成更多样的内容
+        r"""<p>通过核心采样控制内容生成的多样性，较高的Top P值会导致生成更多样的内容</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.lke.v20231130.models.ModelParameter`
         """
@@ -26699,7 +26928,7 @@ class ModelInfo(AbstractModel):
 
     @property
     def Temperature(self):
-        r"""温度控制随机性
+        r"""<p>温度控制随机性</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.lke.v20231130.models.ModelParameter`
         """
@@ -26711,7 +26940,7 @@ class ModelInfo(AbstractModel):
 
     @property
     def MaxTokens(self):
-        r"""最多能生成的token数量
+        r"""<p>最多能生成的token数量</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.lke.v20231130.models.ModelParameter`
         """
@@ -26723,7 +26952,7 @@ class ModelInfo(AbstractModel):
 
     @property
     def Source(self):
-        r"""模型来源 Hunyuan：腾讯混元大模型,Industry：腾讯云行业大模型,Experience：新模型体验,Custom自定义模型
+        r"""<p>模型来源 Hunyuan：腾讯混元大模型,Industry：腾讯云行业大模型,Experience：新模型体验,Custom自定义模型</p>
         :rtype: str
         """
         return self._Source
@@ -26734,7 +26963,7 @@ class ModelInfo(AbstractModel):
 
     @property
     def Icon(self):
-        r"""模型图标
+        r"""<p>模型图标</p>
         :rtype: str
         """
         return self._Icon
@@ -26745,7 +26974,7 @@ class ModelInfo(AbstractModel):
 
     @property
     def IsFree(self):
-        r"""是否免费
+        r"""<p>是否免费</p>
         :rtype: bool
         """
         return self._IsFree
@@ -26756,7 +26985,7 @@ class ModelInfo(AbstractModel):
 
     @property
     def InputLenLimit(self):
-        r"""模型对话框可输入的上限
+        r"""<p>模型对话框可输入的上限</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -26768,7 +26997,7 @@ class ModelInfo(AbstractModel):
 
     @property
     def SupportWorkflowStatus(self):
-        r"""支持工作流的类型 0:模型不支持; 1: 模型支持工作流； 2： 模型支持效果不佳；
+        r"""<p>支持工作流的类型 0:模型不支持; 1: 模型支持工作流； 2： 模型支持效果不佳；</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -26780,7 +27009,7 @@ class ModelInfo(AbstractModel):
 
     @property
     def ModelCategory(self):
-        r"""模型类别 generate：生成模型，thought：思考模型
+        r"""<p>模型类别 generate：生成模型，thought：思考模型</p>
         :rtype: str
         """
         return self._ModelCategory
@@ -26791,7 +27020,7 @@ class ModelInfo(AbstractModel):
 
     @property
     def IsDefault(self):
-        r"""是否默认模型
+        r"""<p>是否默认模型</p>
         :rtype: bool
         """
         return self._IsDefault
@@ -26802,7 +27031,7 @@ class ModelInfo(AbstractModel):
 
     @property
     def RoleLenLimit(self):
-        r"""角色提示词输入长度限制
+        r"""<p>角色提示词输入长度限制</p>
         :rtype: int
         """
         return self._RoleLenLimit
@@ -26813,7 +27042,7 @@ class ModelInfo(AbstractModel):
 
     @property
     def IsExclusive(self):
-        r"""是否专属并发模型
+        r"""<p>是否专属并发模型</p>
         :rtype: bool
         """
         return self._IsExclusive
@@ -26824,7 +27053,7 @@ class ModelInfo(AbstractModel):
 
     @property
     def SupportAiCallStatus(self):
-        r"""模型支持智能通话效果
+        r"""<p>模型支持智能通话效果</p><p>枚举值：</p><ul><li>0： 模型不支持</li><li>1： 模型支持ai通话</li><li>2： 模型ai通话支持效果不佳</li></ul>
         :rtype: int
         """
         return self._SupportAiCallStatus
@@ -26835,7 +27064,7 @@ class ModelInfo(AbstractModel):
 
     @property
     def Concurrency(self):
-        r"""专属并发数
+        r"""<p>专属并发数</p>
         :rtype: int
         """
         return self._Concurrency
@@ -26846,7 +27075,7 @@ class ModelInfo(AbstractModel):
 
     @property
     def ModelTags(self):
-        r"""模型标签
+        r"""<p>模型标签</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -26858,7 +27087,7 @@ class ModelInfo(AbstractModel):
 
     @property
     def ModelParams(self):
-        r"""模型超参定义
+        r"""<p>模型超参定义</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ModelParameter
         """
@@ -26870,7 +27099,7 @@ class ModelInfo(AbstractModel):
 
     @property
     def ProviderName(self):
-        r"""提供商名称
+        r"""<p>提供商名称</p>
         :rtype: str
         """
         return self._ProviderName
@@ -26881,7 +27110,7 @@ class ModelInfo(AbstractModel):
 
     @property
     def ProviderAliasName(self):
-        r"""提供商别名
+        r"""<p>提供商别名</p>
         :rtype: str
         """
         return self._ProviderAliasName
@@ -26892,7 +27121,7 @@ class ModelInfo(AbstractModel):
 
     @property
     def ProviderType(self):
-        r"""提供商类型 Self:提供商，Custom：自定义模型提供商，Third：第三方模型提供商
+        r"""<p>提供商类型 Self:提供商，Custom：自定义模型提供商，Third：第三方模型提供商</p>
         :rtype: str
         """
         return self._ProviderType
@@ -26903,7 +27132,7 @@ class ModelInfo(AbstractModel):
 
     @property
     def IsCloseModelParams(self):
-        r"""是否关闭模型超参
+        r"""<p>是否关闭模型超参</p>
         :rtype: bool
         """
         return self._IsCloseModelParams
@@ -26914,7 +27143,7 @@ class ModelInfo(AbstractModel):
 
     @property
     def IsDeepThinking(self):
-        r"""是否支持深度思考
+        r"""<p>是否支持深度思考</p>
         :rtype: bool
         """
         return self._IsDeepThinking
@@ -26979,22 +27208,22 @@ class ModelParameter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 超参名称
+        :param _Name: <p>超参名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
-        :param _Type: 类型
+        :param _Type: <p>类型</p><p>枚举值：</p><ul><li>string： 字符类型</li><li>int： 整数类型</li><li>float： 浮点数类型</li><li>array： 数组类型</li></ul>
         :type Type: str
-        :param _DefaultValue: 默认值
+        :param _DefaultValue: <p>默认值</p>
         :type DefaultValue: str
-        :param _EnumValues: 枚举值
+        :param _EnumValues: <p>枚举值</p>
         :type EnumValues: list of str
-        :param _Default: 默认值
+        :param _Default: <p>默认值</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Default: float
-        :param _Min: 最小值
+        :param _Min: <p>最小值</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Min: float
-        :param _Max: 最大值
+        :param _Max: <p>最大值</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Max: float
         """
@@ -27008,7 +27237,7 @@ class ModelParameter(AbstractModel):
 
     @property
     def Name(self):
-        r"""超参名称
+        r"""<p>超参名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -27020,7 +27249,7 @@ class ModelParameter(AbstractModel):
 
     @property
     def Type(self):
-        r"""类型
+        r"""<p>类型</p><p>枚举值：</p><ul><li>string： 字符类型</li><li>int： 整数类型</li><li>float： 浮点数类型</li><li>array： 数组类型</li></ul>
         :rtype: str
         """
         return self._Type
@@ -27031,7 +27260,7 @@ class ModelParameter(AbstractModel):
 
     @property
     def DefaultValue(self):
-        r"""默认值
+        r"""<p>默认值</p>
         :rtype: str
         """
         return self._DefaultValue
@@ -27042,7 +27271,7 @@ class ModelParameter(AbstractModel):
 
     @property
     def EnumValues(self):
-        r"""枚举值
+        r"""<p>枚举值</p>
         :rtype: list of str
         """
         return self._EnumValues
@@ -27053,7 +27282,7 @@ class ModelParameter(AbstractModel):
 
     @property
     def Default(self):
-        r"""默认值
+        r"""<p>默认值</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -27065,7 +27294,7 @@ class ModelParameter(AbstractModel):
 
     @property
     def Min(self):
-        r"""最小值
+        r"""<p>最小值</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -27077,7 +27306,7 @@ class ModelParameter(AbstractModel):
 
     @property
     def Max(self):
-        r"""最大值
+        r"""<p>最大值</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -27113,149 +27342,46 @@ class ModelParams(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Temperature: 温度
-        :type Temperature: float
-        :param _TopP: Top_P
-        :type TopP: float
-        :param _Seed: 随机种子
-        :type Seed: int
-        :param _PresencePenalty: 存在惩罚
-        :type PresencePenalty: float
-        :param _FrequencyPenalty: 频率惩罚
-        :type FrequencyPenalty: float
-        :param _RepetitionPenalty: 重复惩罚
-        :type RepetitionPenalty: float
-        :param _MaxTokens: 最大输出长度
-        :type MaxTokens: int
-        :param _StopSequences: 停止序列
-        :type StopSequences: list of str
-        :param _ReplyFormat: 输出格式
-        :type ReplyFormat: str
-        :param _DeepThinking: 深度思考值
-disabled
-enabled
+        :param _DeepThinking: <p>深度思考值<br>disabled<br>enabled</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeepThinking: str
-        :param _ReasoningEffort: 效果 disabled low medium high
+        :param _FrequencyPenalty: <p>频率惩罚</p>
+        :type FrequencyPenalty: float
+        :param _MaxTokens: <p>最大输出长度</p>
+        :type MaxTokens: int
+        :param _PresencePenalty: <p>存在惩罚</p>
+        :type PresencePenalty: float
+        :param _ReasoningEffort: <p>效果 disabled low medium high</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReasoningEffort: str
+        :param _RepetitionPenalty: <p>重复惩罚</p>
+        :type RepetitionPenalty: float
+        :param _ReplyFormat: <p>输出格式</p>
+        :type ReplyFormat: str
+        :param _Seed: <p>随机种子</p>
+        :type Seed: int
+        :param _StopSequences: <p>停止序列</p>
+        :type StopSequences: list of str
+        :param _Temperature: <p>温度</p>
+        :type Temperature: float
+        :param _TopP: <p>Top_P</p>
+        :type TopP: float
         """
+        self._DeepThinking = None
+        self._FrequencyPenalty = None
+        self._MaxTokens = None
+        self._PresencePenalty = None
+        self._ReasoningEffort = None
+        self._RepetitionPenalty = None
+        self._ReplyFormat = None
+        self._Seed = None
+        self._StopSequences = None
         self._Temperature = None
         self._TopP = None
-        self._Seed = None
-        self._PresencePenalty = None
-        self._FrequencyPenalty = None
-        self._RepetitionPenalty = None
-        self._MaxTokens = None
-        self._StopSequences = None
-        self._ReplyFormat = None
-        self._DeepThinking = None
-        self._ReasoningEffort = None
-
-    @property
-    def Temperature(self):
-        r"""温度
-        :rtype: float
-        """
-        return self._Temperature
-
-    @Temperature.setter
-    def Temperature(self, Temperature):
-        self._Temperature = Temperature
-
-    @property
-    def TopP(self):
-        r"""Top_P
-        :rtype: float
-        """
-        return self._TopP
-
-    @TopP.setter
-    def TopP(self, TopP):
-        self._TopP = TopP
-
-    @property
-    def Seed(self):
-        r"""随机种子
-        :rtype: int
-        """
-        return self._Seed
-
-    @Seed.setter
-    def Seed(self, Seed):
-        self._Seed = Seed
-
-    @property
-    def PresencePenalty(self):
-        r"""存在惩罚
-        :rtype: float
-        """
-        return self._PresencePenalty
-
-    @PresencePenalty.setter
-    def PresencePenalty(self, PresencePenalty):
-        self._PresencePenalty = PresencePenalty
-
-    @property
-    def FrequencyPenalty(self):
-        r"""频率惩罚
-        :rtype: float
-        """
-        return self._FrequencyPenalty
-
-    @FrequencyPenalty.setter
-    def FrequencyPenalty(self, FrequencyPenalty):
-        self._FrequencyPenalty = FrequencyPenalty
-
-    @property
-    def RepetitionPenalty(self):
-        r"""重复惩罚
-        :rtype: float
-        """
-        return self._RepetitionPenalty
-
-    @RepetitionPenalty.setter
-    def RepetitionPenalty(self, RepetitionPenalty):
-        self._RepetitionPenalty = RepetitionPenalty
-
-    @property
-    def MaxTokens(self):
-        r"""最大输出长度
-        :rtype: int
-        """
-        return self._MaxTokens
-
-    @MaxTokens.setter
-    def MaxTokens(self, MaxTokens):
-        self._MaxTokens = MaxTokens
-
-    @property
-    def StopSequences(self):
-        r"""停止序列
-        :rtype: list of str
-        """
-        return self._StopSequences
-
-    @StopSequences.setter
-    def StopSequences(self, StopSequences):
-        self._StopSequences = StopSequences
-
-    @property
-    def ReplyFormat(self):
-        r"""输出格式
-        :rtype: str
-        """
-        return self._ReplyFormat
-
-    @ReplyFormat.setter
-    def ReplyFormat(self, ReplyFormat):
-        self._ReplyFormat = ReplyFormat
 
     @property
     def DeepThinking(self):
-        r"""深度思考值
-disabled
-enabled
+        r"""<p>深度思考值<br>disabled<br>enabled</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -27266,8 +27392,41 @@ enabled
         self._DeepThinking = DeepThinking
 
     @property
+    def FrequencyPenalty(self):
+        r"""<p>频率惩罚</p>
+        :rtype: float
+        """
+        return self._FrequencyPenalty
+
+    @FrequencyPenalty.setter
+    def FrequencyPenalty(self, FrequencyPenalty):
+        self._FrequencyPenalty = FrequencyPenalty
+
+    @property
+    def MaxTokens(self):
+        r"""<p>最大输出长度</p>
+        :rtype: int
+        """
+        return self._MaxTokens
+
+    @MaxTokens.setter
+    def MaxTokens(self, MaxTokens):
+        self._MaxTokens = MaxTokens
+
+    @property
+    def PresencePenalty(self):
+        r"""<p>存在惩罚</p>
+        :rtype: float
+        """
+        return self._PresencePenalty
+
+    @PresencePenalty.setter
+    def PresencePenalty(self, PresencePenalty):
+        self._PresencePenalty = PresencePenalty
+
+    @property
     def ReasoningEffort(self):
-        r"""效果 disabled low medium high
+        r"""<p>效果 disabled low medium high</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -27277,19 +27436,85 @@ enabled
     def ReasoningEffort(self, ReasoningEffort):
         self._ReasoningEffort = ReasoningEffort
 
+    @property
+    def RepetitionPenalty(self):
+        r"""<p>重复惩罚</p>
+        :rtype: float
+        """
+        return self._RepetitionPenalty
+
+    @RepetitionPenalty.setter
+    def RepetitionPenalty(self, RepetitionPenalty):
+        self._RepetitionPenalty = RepetitionPenalty
+
+    @property
+    def ReplyFormat(self):
+        r"""<p>输出格式</p>
+        :rtype: str
+        """
+        return self._ReplyFormat
+
+    @ReplyFormat.setter
+    def ReplyFormat(self, ReplyFormat):
+        self._ReplyFormat = ReplyFormat
+
+    @property
+    def Seed(self):
+        r"""<p>随机种子</p>
+        :rtype: int
+        """
+        return self._Seed
+
+    @Seed.setter
+    def Seed(self, Seed):
+        self._Seed = Seed
+
+    @property
+    def StopSequences(self):
+        r"""<p>停止序列</p>
+        :rtype: list of str
+        """
+        return self._StopSequences
+
+    @StopSequences.setter
+    def StopSequences(self, StopSequences):
+        self._StopSequences = StopSequences
+
+    @property
+    def Temperature(self):
+        r"""<p>温度</p>
+        :rtype: float
+        """
+        return self._Temperature
+
+    @Temperature.setter
+    def Temperature(self, Temperature):
+        self._Temperature = Temperature
+
+    @property
+    def TopP(self):
+        r"""<p>Top_P</p>
+        :rtype: float
+        """
+        return self._TopP
+
+    @TopP.setter
+    def TopP(self, TopP):
+        self._TopP = TopP
+
 
     def _deserialize(self, params):
+        self._DeepThinking = params.get("DeepThinking")
+        self._FrequencyPenalty = params.get("FrequencyPenalty")
+        self._MaxTokens = params.get("MaxTokens")
+        self._PresencePenalty = params.get("PresencePenalty")
+        self._ReasoningEffort = params.get("ReasoningEffort")
+        self._RepetitionPenalty = params.get("RepetitionPenalty")
+        self._ReplyFormat = params.get("ReplyFormat")
+        self._Seed = params.get("Seed")
+        self._StopSequences = params.get("StopSequences")
         self._Temperature = params.get("Temperature")
         self._TopP = params.get("TopP")
-        self._Seed = params.get("Seed")
-        self._PresencePenalty = params.get("PresencePenalty")
-        self._FrequencyPenalty = params.get("FrequencyPenalty")
-        self._RepetitionPenalty = params.get("RepetitionPenalty")
-        self._MaxTokens = params.get("MaxTokens")
-        self._StopSequences = params.get("StopSequences")
-        self._ReplyFormat = params.get("ReplyFormat")
-        self._DeepThinking = params.get("DeepThinking")
-        self._ReasoningEffort = params.get("ReasoningEffort")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -28895,93 +29120,81 @@ class MsgRecord(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Content: 内容
+        :param _Content: <p>内容</p>
         :type Content: str
-        :param _SessionId: 当前记录所对应的 Session ID
+        :param _SessionId: <p>当前记录所对应的 Session ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SessionId: str
-        :param _RecordId: 记录ID
+        :param _RecordId: <p>记录ID</p>
         :type RecordId: str
-        :param _RelatedRecordId: 关联记录ID
+        :param _RelatedRecordId: <p>关联记录ID</p>
         :type RelatedRecordId: str
-        :param _IsFromSelf: 是否来自自己
+        :param _IsFromSelf: <p>是否来自自己</p>
         :type IsFromSelf: bool
-        :param _FromName: 发送者名称
+        :param _FromName: <p>发送者名称</p>
         :type FromName: str
-        :param _FromAvatar: 发送者头像
+        :param _FromAvatar: <p>发送者头像</p>
         :type FromAvatar: str
-        :param _Timestamp: 时间戳
+        :param _Timestamp: <p>时间戳</p>
         :type Timestamp: str
-        :param _HasRead: 是否已读
+        :param _HasRead: <p>是否已读</p>
         :type HasRead: bool
-        :param _Score: 评价
+        :param _Score: <p>评价</p>
         :type Score: int
-        :param _CanRating: 是否评分
+        :param _CanRating: <p>是否评分</p>
         :type CanRating: bool
-        :param _CanFeedback: 是否展示反馈按钮
+        :param _CanFeedback: <p>是否展示反馈按钮</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CanFeedback: bool
-        :param _Type: 记录类型
+        :param _Type: <p>记录类型</p>
         :type Type: int
-        :param _References: 引用来源
+        :param _References: <p>引用来源</p>
         :type References: list of MsgRecordReference
-        :param _Reasons: 评价原因
+        :param _Reasons: <p>评价原因</p>
         :type Reasons: list of str
-        :param _IsLlmGenerated: 是否大模型
+        :param _IsLlmGenerated: <p>是否大模型</p>
         :type IsLlmGenerated: bool
-        :param _ImageUrls: 图片链接，可公有读
+        :param _ImageUrls: <p>图片链接，可公有读</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ImageUrls: list of str
-        :param _TokenStat: 当次 token 统计信息
+        :param _TokenStat: <p>当次 token 统计信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TokenStat: :class:`tencentcloud.lke.v20231130.models.TokenStat`
-        :param _ReplyMethod: 回复方式
-1:大模型直接回复;
-2:保守回复, 未知问题回复;
-3:拒答问题回复;
-4:敏感回复;
-5:问答对直接回复, 已采纳问答对优先回复;
-6:欢迎语回复;
-7:并发超限回复;
-8:全局干预知识;
-9:任务流程过程回复, 当历史记录中 task_flow.type = 0 时, 为大模型回复;
-10:任务流程答案回复;
-11:搜索引擎回复;
-12:知识润色后回复;
-13:图片理解回复;
-14:实时文档回复;
+        :param _ReplyMethod: <p>回复方式<br>1:大模型直接回复;<br>2:保守回复, 未知问题回复;<br>3:拒答问题回复;<br>4:敏感回复;<br>5:问答对直接回复, 已采纳问答对优先回复;<br>6:欢迎语回复;<br>7:并发超限回复;<br>8:全局干预知识;<br>9:任务流程过程回复, 当历史记录中 task_flow.type = 0 时, 为大模型回复;<br>10:任务流程答案回复;<br>11:搜索引擎回复;<br>12:知识润色后回复;<br>13:图片理解回复;<br>14:实时文档回复;</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReplyMethod: int
-        :param _OptionCards: 选项卡, 用于多轮对话
+        :param _OptionCards: <p>选项卡, 用于多轮对话</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type OptionCards: list of str
-        :param _TaskFlow: 任务信息
+        :param _TaskFlow: <p>任务信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskFlow: :class:`tencentcloud.lke.v20231130.models.TaskFlowInfo`
-        :param _FileInfos: 用户传入的文件信息
+        :param _FileInfos: <p>用户传入的文件信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FileInfos: list of FileInfo
-        :param _QuoteInfos: 参考来源引用位置信息
+        :param _QuoteInfos: <p>参考来源引用位置信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type QuoteInfos: list of QuoteInfo
-        :param _AgentThought: Agent的思考过程信息
+        :param _AgentThought: <p>Agent的思考过程信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AgentThought: :class:`tencentcloud.lke.v20231130.models.AgentThought`
-        :param _ExtraInfo: 扩展信息
+        :param _ExtraInfo: <p>扩展信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExtraInfo: :class:`tencentcloud.lke.v20231130.models.ExtraInfo`
-        :param _WorkFlow: 工作流信息
+        :param _WorkFlow: <p>工作流信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WorkFlow: :class:`tencentcloud.lke.v20231130.models.WorkflowInfo`
-        :param _Widgets: Widget信息
+        :param _Widgets: <p>Widget信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Widgets: list of Widget
-        :param _WidgetAction: Widget动作信息
+        :param _WidgetAction: <p>Widget动作信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WidgetAction: :class:`tencentcloud.lke.v20231130.models.WidgetAction`
-        :param _Audios: 音频信息
+        :param _Audios: <p>音频信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Audios: list of Audio
+        :param _OptionMode: <p>标识选项卡为单选还是双选</p><p>枚举值：</p><ul><li>0： 单选</li><li>1： 双选</li></ul>
+        :type OptionMode: int
         """
         self._Content = None
         self._SessionId = None
@@ -29012,10 +29225,11 @@ class MsgRecord(AbstractModel):
         self._Widgets = None
         self._WidgetAction = None
         self._Audios = None
+        self._OptionMode = None
 
     @property
     def Content(self):
-        r"""内容
+        r"""<p>内容</p>
         :rtype: str
         """
         return self._Content
@@ -29026,7 +29240,7 @@ class MsgRecord(AbstractModel):
 
     @property
     def SessionId(self):
-        r"""当前记录所对应的 Session ID
+        r"""<p>当前记录所对应的 Session ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -29038,7 +29252,7 @@ class MsgRecord(AbstractModel):
 
     @property
     def RecordId(self):
-        r"""记录ID
+        r"""<p>记录ID</p>
         :rtype: str
         """
         return self._RecordId
@@ -29049,7 +29263,7 @@ class MsgRecord(AbstractModel):
 
     @property
     def RelatedRecordId(self):
-        r"""关联记录ID
+        r"""<p>关联记录ID</p>
         :rtype: str
         """
         return self._RelatedRecordId
@@ -29060,7 +29274,7 @@ class MsgRecord(AbstractModel):
 
     @property
     def IsFromSelf(self):
-        r"""是否来自自己
+        r"""<p>是否来自自己</p>
         :rtype: bool
         """
         return self._IsFromSelf
@@ -29071,7 +29285,7 @@ class MsgRecord(AbstractModel):
 
     @property
     def FromName(self):
-        r"""发送者名称
+        r"""<p>发送者名称</p>
         :rtype: str
         """
         return self._FromName
@@ -29082,7 +29296,7 @@ class MsgRecord(AbstractModel):
 
     @property
     def FromAvatar(self):
-        r"""发送者头像
+        r"""<p>发送者头像</p>
         :rtype: str
         """
         return self._FromAvatar
@@ -29093,7 +29307,7 @@ class MsgRecord(AbstractModel):
 
     @property
     def Timestamp(self):
-        r"""时间戳
+        r"""<p>时间戳</p>
         :rtype: str
         """
         return self._Timestamp
@@ -29104,7 +29318,7 @@ class MsgRecord(AbstractModel):
 
     @property
     def HasRead(self):
-        r"""是否已读
+        r"""<p>是否已读</p>
         :rtype: bool
         """
         return self._HasRead
@@ -29115,7 +29329,7 @@ class MsgRecord(AbstractModel):
 
     @property
     def Score(self):
-        r"""评价
+        r"""<p>评价</p>
         :rtype: int
         """
         return self._Score
@@ -29126,7 +29340,7 @@ class MsgRecord(AbstractModel):
 
     @property
     def CanRating(self):
-        r"""是否评分
+        r"""<p>是否评分</p>
         :rtype: bool
         """
         return self._CanRating
@@ -29137,7 +29351,7 @@ class MsgRecord(AbstractModel):
 
     @property
     def CanFeedback(self):
-        r"""是否展示反馈按钮
+        r"""<p>是否展示反馈按钮</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -29149,7 +29363,7 @@ class MsgRecord(AbstractModel):
 
     @property
     def Type(self):
-        r"""记录类型
+        r"""<p>记录类型</p>
         :rtype: int
         """
         return self._Type
@@ -29160,7 +29374,7 @@ class MsgRecord(AbstractModel):
 
     @property
     def References(self):
-        r"""引用来源
+        r"""<p>引用来源</p>
         :rtype: list of MsgRecordReference
         """
         return self._References
@@ -29171,7 +29385,7 @@ class MsgRecord(AbstractModel):
 
     @property
     def Reasons(self):
-        r"""评价原因
+        r"""<p>评价原因</p>
         :rtype: list of str
         """
         return self._Reasons
@@ -29182,7 +29396,7 @@ class MsgRecord(AbstractModel):
 
     @property
     def IsLlmGenerated(self):
-        r"""是否大模型
+        r"""<p>是否大模型</p>
         :rtype: bool
         """
         return self._IsLlmGenerated
@@ -29193,7 +29407,7 @@ class MsgRecord(AbstractModel):
 
     @property
     def ImageUrls(self):
-        r"""图片链接，可公有读
+        r"""<p>图片链接，可公有读</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -29205,7 +29419,7 @@ class MsgRecord(AbstractModel):
 
     @property
     def TokenStat(self):
-        r"""当次 token 统计信息
+        r"""<p>当次 token 统计信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.lke.v20231130.models.TokenStat`
         """
@@ -29217,21 +29431,7 @@ class MsgRecord(AbstractModel):
 
     @property
     def ReplyMethod(self):
-        r"""回复方式
-1:大模型直接回复;
-2:保守回复, 未知问题回复;
-3:拒答问题回复;
-4:敏感回复;
-5:问答对直接回复, 已采纳问答对优先回复;
-6:欢迎语回复;
-7:并发超限回复;
-8:全局干预知识;
-9:任务流程过程回复, 当历史记录中 task_flow.type = 0 时, 为大模型回复;
-10:任务流程答案回复;
-11:搜索引擎回复;
-12:知识润色后回复;
-13:图片理解回复;
-14:实时文档回复;
+        r"""<p>回复方式<br>1:大模型直接回复;<br>2:保守回复, 未知问题回复;<br>3:拒答问题回复;<br>4:敏感回复;<br>5:问答对直接回复, 已采纳问答对优先回复;<br>6:欢迎语回复;<br>7:并发超限回复;<br>8:全局干预知识;<br>9:任务流程过程回复, 当历史记录中 task_flow.type = 0 时, 为大模型回复;<br>10:任务流程答案回复;<br>11:搜索引擎回复;<br>12:知识润色后回复;<br>13:图片理解回复;<br>14:实时文档回复;</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -29243,7 +29443,7 @@ class MsgRecord(AbstractModel):
 
     @property
     def OptionCards(self):
-        r"""选项卡, 用于多轮对话
+        r"""<p>选项卡, 用于多轮对话</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -29255,7 +29455,7 @@ class MsgRecord(AbstractModel):
 
     @property
     def TaskFlow(self):
-        r"""任务信息
+        r"""<p>任务信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.lke.v20231130.models.TaskFlowInfo`
         """
@@ -29267,7 +29467,7 @@ class MsgRecord(AbstractModel):
 
     @property
     def FileInfos(self):
-        r"""用户传入的文件信息
+        r"""<p>用户传入的文件信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of FileInfo
         """
@@ -29279,7 +29479,7 @@ class MsgRecord(AbstractModel):
 
     @property
     def QuoteInfos(self):
-        r"""参考来源引用位置信息
+        r"""<p>参考来源引用位置信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of QuoteInfo
         """
@@ -29291,7 +29491,7 @@ class MsgRecord(AbstractModel):
 
     @property
     def AgentThought(self):
-        r"""Agent的思考过程信息
+        r"""<p>Agent的思考过程信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.lke.v20231130.models.AgentThought`
         """
@@ -29303,7 +29503,7 @@ class MsgRecord(AbstractModel):
 
     @property
     def ExtraInfo(self):
-        r"""扩展信息
+        r"""<p>扩展信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.lke.v20231130.models.ExtraInfo`
         """
@@ -29315,7 +29515,7 @@ class MsgRecord(AbstractModel):
 
     @property
     def WorkFlow(self):
-        r"""工作流信息
+        r"""<p>工作流信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.lke.v20231130.models.WorkflowInfo`
         """
@@ -29327,7 +29527,7 @@ class MsgRecord(AbstractModel):
 
     @property
     def Widgets(self):
-        r"""Widget信息
+        r"""<p>Widget信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Widget
         """
@@ -29339,7 +29539,7 @@ class MsgRecord(AbstractModel):
 
     @property
     def WidgetAction(self):
-        r"""Widget动作信息
+        r"""<p>Widget动作信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.lke.v20231130.models.WidgetAction`
         """
@@ -29351,7 +29551,7 @@ class MsgRecord(AbstractModel):
 
     @property
     def Audios(self):
-        r"""音频信息
+        r"""<p>音频信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Audio
         """
@@ -29360,6 +29560,17 @@ class MsgRecord(AbstractModel):
     @Audios.setter
     def Audios(self, Audios):
         self._Audios = Audios
+
+    @property
+    def OptionMode(self):
+        r"""<p>标识选项卡为单选还是双选</p><p>枚举值：</p><ul><li>0： 单选</li><li>1： 双选</li></ul>
+        :rtype: int
+        """
+        return self._OptionMode
+
+    @OptionMode.setter
+    def OptionMode(self, OptionMode):
+        self._OptionMode = OptionMode
 
 
     def _deserialize(self, params):
@@ -29429,6 +29640,7 @@ class MsgRecord(AbstractModel):
                 obj = Audio()
                 obj._deserialize(item)
                 self._Audios.append(obj)
+        self._OptionMode = params.get("OptionMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -29446,25 +29658,25 @@ class MsgRecordReference(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: id
+        :param _Id: <p>id</p>
         :type Id: str
-        :param _Url: 链接
+        :param _Url: <p>链接</p>
         :type Url: str
-        :param _Type: 类型
+        :param _Type: <p>类型</p><p>枚举值：</p><ul><li>1： 问答</li><li>2： 文档片段</li><li>4： 联网检索到的内容</li></ul>
         :type Type: int
-        :param _Name: 名称
+        :param _Name: <p>名称</p>
         :type Name: str
-        :param _DocId: 来源文档ID
+        :param _DocId: <p>来源文档ID</p>
         :type DocId: str
-        :param _KnowledgeName: 知识库名称
+        :param _KnowledgeName: <p>知识库名称</p>
         :type KnowledgeName: str
-        :param _KnowledgeBizId: 知识库业务id
+        :param _KnowledgeBizId: <p>知识库业务id</p>
         :type KnowledgeBizId: str
-        :param _DocBizId: 文档业务id
+        :param _DocBizId: <p>文档业务id</p>
         :type DocBizId: str
-        :param _QaBizId: 问答业务id
+        :param _QaBizId: <p>问答业务id</p>
         :type QaBizId: str
-        :param _Index: 文档索引id
+        :param _Index: <p>文档索引id</p>
         :type Index: int
         """
         self._Id = None
@@ -29480,7 +29692,7 @@ class MsgRecordReference(AbstractModel):
 
     @property
     def Id(self):
-        r"""id
+        r"""<p>id</p>
         :rtype: str
         """
         return self._Id
@@ -29491,7 +29703,7 @@ class MsgRecordReference(AbstractModel):
 
     @property
     def Url(self):
-        r"""链接
+        r"""<p>链接</p>
         :rtype: str
         """
         return self._Url
@@ -29502,7 +29714,7 @@ class MsgRecordReference(AbstractModel):
 
     @property
     def Type(self):
-        r"""类型
+        r"""<p>类型</p><p>枚举值：</p><ul><li>1： 问答</li><li>2： 文档片段</li><li>4： 联网检索到的内容</li></ul>
         :rtype: int
         """
         return self._Type
@@ -29513,7 +29725,7 @@ class MsgRecordReference(AbstractModel):
 
     @property
     def Name(self):
-        r"""名称
+        r"""<p>名称</p>
         :rtype: str
         """
         return self._Name
@@ -29524,7 +29736,7 @@ class MsgRecordReference(AbstractModel):
 
     @property
     def DocId(self):
-        r"""来源文档ID
+        r"""<p>来源文档ID</p>
         :rtype: str
         """
         return self._DocId
@@ -29535,7 +29747,7 @@ class MsgRecordReference(AbstractModel):
 
     @property
     def KnowledgeName(self):
-        r"""知识库名称
+        r"""<p>知识库名称</p>
         :rtype: str
         """
         return self._KnowledgeName
@@ -29546,7 +29758,7 @@ class MsgRecordReference(AbstractModel):
 
     @property
     def KnowledgeBizId(self):
-        r"""知识库业务id
+        r"""<p>知识库业务id</p>
         :rtype: str
         """
         return self._KnowledgeBizId
@@ -29557,7 +29769,7 @@ class MsgRecordReference(AbstractModel):
 
     @property
     def DocBizId(self):
-        r"""文档业务id
+        r"""<p>文档业务id</p>
         :rtype: str
         """
         return self._DocBizId
@@ -29568,7 +29780,7 @@ class MsgRecordReference(AbstractModel):
 
     @property
     def QaBizId(self):
-        r"""问答业务id
+        r"""<p>问答业务id</p>
         :rtype: str
         """
         return self._QaBizId
@@ -29579,7 +29791,7 @@ class MsgRecordReference(AbstractModel):
 
     @property
     def Index(self):
-        r"""文档索引id
+        r"""<p>文档索引id</p>
         :rtype: int
         """
         return self._Index
@@ -30576,78 +30788,45 @@ class PluginToolReqParam(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 参数名称
-        :type Name: str
-        :param _Desc: 参数描述
-        :type Desc: str
-        :param _Type: 参数类型，0:string, 1:int, 2:float，3:bool 4:object 5:array_string, 6:array_int, 7:array_float, 8:array_bool, 9:array_object, 99:null, 100:upspecified
-        :type Type: int
-        :param _IsRequired: 参数是否必填
-        :type IsRequired: bool
-        :param _DefaultValue: 参数默认值
-        :type DefaultValue: str
-        :param _SubParams: 子参数,ParamType 是OBJECT 或 ARRAY<>类型有用
-        :type SubParams: list of PluginToolReqParam
-        :param _GlobalHidden: 插件参数配置是否隐藏不可见，true-隐藏不可见，false-可见
-        :type GlobalHidden: bool
-        :param _OneOf: OneOf类型参数
-        :type OneOf: list of PluginToolReqParam
         :param _AnyOf: AnyOf类型参数
         :type AnyOf: list of PluginToolReqParam
+        :param _DefaultValue: 参数默认值
+        :type DefaultValue: str
+        :param _Desc: 参数描述
+        :type Desc: str
+        :param _GlobalHidden: 插件参数配置是否隐藏不可见，true-隐藏不可见，false-可见
+        :type GlobalHidden: bool
+        :param _IsRequired: 参数是否必填
+        :type IsRequired: bool
+        :param _Name: 参数名称
+        :type Name: str
+        :param _OneOf: OneOf类型参数
+        :type OneOf: list of PluginToolReqParam
+        :param _SubParams: 子参数,ParamType 是OBJECT 或 ARRAY<>类型有用
+        :type SubParams: list of PluginToolReqParam
+        :param _Type: 参数类型，0:string, 1:int, 2:float，3:bool 4:object 5:array_string, 6:array_int, 7:array_float, 8:array_bool, 9:array_object, 99:null, 100:upspecified
+        :type Type: int
         """
-        self._Name = None
-        self._Desc = None
-        self._Type = None
-        self._IsRequired = None
-        self._DefaultValue = None
-        self._SubParams = None
-        self._GlobalHidden = None
-        self._OneOf = None
         self._AnyOf = None
+        self._DefaultValue = None
+        self._Desc = None
+        self._GlobalHidden = None
+        self._IsRequired = None
+        self._Name = None
+        self._OneOf = None
+        self._SubParams = None
+        self._Type = None
 
     @property
-    def Name(self):
-        r"""参数名称
-        :rtype: str
+    def AnyOf(self):
+        r"""AnyOf类型参数
+        :rtype: list of PluginToolReqParam
         """
-        return self._Name
+        return self._AnyOf
 
-    @Name.setter
-    def Name(self, Name):
-        self._Name = Name
-
-    @property
-    def Desc(self):
-        r"""参数描述
-        :rtype: str
-        """
-        return self._Desc
-
-    @Desc.setter
-    def Desc(self, Desc):
-        self._Desc = Desc
-
-    @property
-    def Type(self):
-        r"""参数类型，0:string, 1:int, 2:float，3:bool 4:object 5:array_string, 6:array_int, 7:array_float, 8:array_bool, 9:array_object, 99:null, 100:upspecified
-        :rtype: int
-        """
-        return self._Type
-
-    @Type.setter
-    def Type(self, Type):
-        self._Type = Type
-
-    @property
-    def IsRequired(self):
-        r"""参数是否必填
-        :rtype: bool
-        """
-        return self._IsRequired
-
-    @IsRequired.setter
-    def IsRequired(self, IsRequired):
-        self._IsRequired = IsRequired
+    @AnyOf.setter
+    def AnyOf(self, AnyOf):
+        self._AnyOf = AnyOf
 
     @property
     def DefaultValue(self):
@@ -30661,15 +30840,15 @@ class PluginToolReqParam(AbstractModel):
         self._DefaultValue = DefaultValue
 
     @property
-    def SubParams(self):
-        r"""子参数,ParamType 是OBJECT 或 ARRAY<>类型有用
-        :rtype: list of PluginToolReqParam
+    def Desc(self):
+        r"""参数描述
+        :rtype: str
         """
-        return self._SubParams
+        return self._Desc
 
-    @SubParams.setter
-    def SubParams(self, SubParams):
-        self._SubParams = SubParams
+    @Desc.setter
+    def Desc(self, Desc):
+        self._Desc = Desc
 
     @property
     def GlobalHidden(self):
@@ -30683,6 +30862,28 @@ class PluginToolReqParam(AbstractModel):
         self._GlobalHidden = GlobalHidden
 
     @property
+    def IsRequired(self):
+        r"""参数是否必填
+        :rtype: bool
+        """
+        return self._IsRequired
+
+    @IsRequired.setter
+    def IsRequired(self, IsRequired):
+        self._IsRequired = IsRequired
+
+    @property
+    def Name(self):
+        r"""参数名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
     def OneOf(self):
         r"""OneOf类型参数
         :rtype: list of PluginToolReqParam
@@ -30694,42 +30895,53 @@ class PluginToolReqParam(AbstractModel):
         self._OneOf = OneOf
 
     @property
-    def AnyOf(self):
-        r"""AnyOf类型参数
+    def SubParams(self):
+        r"""子参数,ParamType 是OBJECT 或 ARRAY<>类型有用
         :rtype: list of PluginToolReqParam
         """
-        return self._AnyOf
+        return self._SubParams
 
-    @AnyOf.setter
-    def AnyOf(self, AnyOf):
-        self._AnyOf = AnyOf
+    @SubParams.setter
+    def SubParams(self, SubParams):
+        self._SubParams = SubParams
+
+    @property
+    def Type(self):
+        r"""参数类型，0:string, 1:int, 2:float，3:bool 4:object 5:array_string, 6:array_int, 7:array_float, 8:array_bool, 9:array_object, 99:null, 100:upspecified
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
 
 
     def _deserialize(self, params):
-        self._Name = params.get("Name")
-        self._Desc = params.get("Desc")
-        self._Type = params.get("Type")
-        self._IsRequired = params.get("IsRequired")
-        self._DefaultValue = params.get("DefaultValue")
-        if params.get("SubParams") is not None:
-            self._SubParams = []
-            for item in params.get("SubParams"):
-                obj = PluginToolReqParam()
-                obj._deserialize(item)
-                self._SubParams.append(obj)
-        self._GlobalHidden = params.get("GlobalHidden")
-        if params.get("OneOf") is not None:
-            self._OneOf = []
-            for item in params.get("OneOf"):
-                obj = PluginToolReqParam()
-                obj._deserialize(item)
-                self._OneOf.append(obj)
         if params.get("AnyOf") is not None:
             self._AnyOf = []
             for item in params.get("AnyOf"):
                 obj = PluginToolReqParam()
                 obj._deserialize(item)
                 self._AnyOf.append(obj)
+        self._DefaultValue = params.get("DefaultValue")
+        self._Desc = params.get("Desc")
+        self._GlobalHidden = params.get("GlobalHidden")
+        self._IsRequired = params.get("IsRequired")
+        self._Name = params.get("Name")
+        if params.get("OneOf") is not None:
+            self._OneOf = []
+            for item in params.get("OneOf"):
+                obj = PluginToolReqParam()
+                obj._deserialize(item)
+                self._OneOf.append(obj)
+        if params.get("SubParams") is not None:
+            self._SubParams = []
+            for item in params.get("SubParams"):
+                obj = PluginToolReqParam()
+                obj._deserialize(item)
+                self._SubParams.append(obj)
+        self._Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -32535,6 +32747,9 @@ class RejectedQuestion(AbstractModel):
         :param _Operator: 操作人
 注意：此字段可能返回 null，表示取不到有效值。
         :type Operator: str
+        :param _EnableScope: 拒答生效域: 1-不生效；2-仅开发域生效；3-仅发布域生效；4-开发域和发布域均生效
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnableScope: int
         """
         self._RejectedBizId = None
         self._Question = None
@@ -32544,6 +32759,7 @@ class RejectedQuestion(AbstractModel):
         self._IsAllowEdit = None
         self._IsAllowDelete = None
         self._Operator = None
+        self._EnableScope = None
 
     @property
     def RejectedBizId(self):
@@ -32647,6 +32863,18 @@ class RejectedQuestion(AbstractModel):
     def Operator(self, Operator):
         self._Operator = Operator
 
+    @property
+    def EnableScope(self):
+        r"""拒答生效域: 1-不生效；2-仅开发域生效；3-仅发布域生效；4-开发域和发布域均生效
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._EnableScope
+
+    @EnableScope.setter
+    def EnableScope(self, EnableScope):
+        self._EnableScope = EnableScope
+
 
     def _deserialize(self, params):
         self._RejectedBizId = params.get("RejectedBizId")
@@ -32657,6 +32885,7 @@ class RejectedQuestion(AbstractModel):
         self._IsAllowEdit = params.get("IsAllowEdit")
         self._IsAllowDelete = params.get("IsAllowDelete")
         self._Operator = params.get("Operator")
+        self._EnableScope = params.get("EnableScope")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -35032,22 +35261,22 @@ class StatisticInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ModelName: 模型名称
+        :param _ModelName: <p>模型名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ModelName: str
-        :param _FirstTokenCost: 首Token耗时
+        :param _FirstTokenCost: <p>首Token耗时</p><p>单位：ms</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FirstTokenCost: int
-        :param _TotalCost: 总耗时
+        :param _TotalCost: <p>总耗时</p><p>单位：ms</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCost: int
-        :param _InputTokens: 输入Token数量
+        :param _InputTokens: <p>输入Token数量</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type InputTokens: int
-        :param _OutputTokens: 输出Token数量
+        :param _OutputTokens: <p>输出Token数量</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type OutputTokens: int
-        :param _TotalTokens: 总Token数量
+        :param _TotalTokens: <p>总Token数量</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalTokens: int
         """
@@ -35060,7 +35289,7 @@ class StatisticInfo(AbstractModel):
 
     @property
     def ModelName(self):
-        r"""模型名称
+        r"""<p>模型名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -35072,7 +35301,7 @@ class StatisticInfo(AbstractModel):
 
     @property
     def FirstTokenCost(self):
-        r"""首Token耗时
+        r"""<p>首Token耗时</p><p>单位：ms</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -35084,7 +35313,7 @@ class StatisticInfo(AbstractModel):
 
     @property
     def TotalCost(self):
-        r"""总耗时
+        r"""<p>总耗时</p><p>单位：ms</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -35096,7 +35325,7 @@ class StatisticInfo(AbstractModel):
 
     @property
     def InputTokens(self):
-        r"""输入Token数量
+        r"""<p>输入Token数量</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -35108,7 +35337,7 @@ class StatisticInfo(AbstractModel):
 
     @property
     def OutputTokens(self):
-        r"""输出Token数量
+        r"""<p>输出Token数量</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -35120,7 +35349,7 @@ class StatisticInfo(AbstractModel):
 
     @property
     def TotalTokens(self):
-        r"""总Token数量
+        r"""<p>总Token数量</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -37777,34 +38006,36 @@ class WorkFlowSummary(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _WorkflowId: 工作流ID
+        :param _WorkflowId: <p>工作流ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WorkflowId: str
-        :param _WorkflowName: 工作流名称
+        :param _WorkflowName: <p>工作流名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WorkflowName: str
-        :param _WorkflowRunId: 工作流运行ID
+        :param _WorkflowRunId: <p>工作流运行ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WorkflowRunId: str
-        :param _RunNodes: 节点信息
+        :param _RunNodes: <p>节点信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RunNodes: list of WorkflowRunNodeInfo
-        :param _OptionCards: 选项卡
+        :param _OptionCards: <p>选项卡</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type OptionCards: list of str
-        :param _Outputs: 多气泡的输出结果
+        :param _Outputs: <p>多气泡的输出结果</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Outputs: list of str
-        :param _WorkflowReleaseTime: 工作流发布时间，unix时间戳
+        :param _WorkflowReleaseTime: <p>工作流发布时间，unix时间戳</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WorkflowReleaseTime: str
-        :param _PendingMessages: 中间消息
+        :param _PendingMessages: <p>中间消息</p>
         :type PendingMessages: list of str
-        :param _OptionCardIndex: 选项卡索引
+        :param _OptionCardIndex: <p>选项卡索引</p>
         :type OptionCardIndex: :class:`tencentcloud.lke.v20231130.models.OptionCardIndex`
-        :param _Contents: 工作流多气泡输出
+        :param _Contents: <p>工作流多气泡输出</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Contents: list of Content
+        :param _OptionMode: <p>标识选项卡为单选还是双选</p><p>枚举值：</p><ul><li>0： 单选</li><li>1： 多选</li></ul>
+        :type OptionMode: int
         """
         self._WorkflowId = None
         self._WorkflowName = None
@@ -37816,10 +38047,11 @@ class WorkFlowSummary(AbstractModel):
         self._PendingMessages = None
         self._OptionCardIndex = None
         self._Contents = None
+        self._OptionMode = None
 
     @property
     def WorkflowId(self):
-        r"""工作流ID
+        r"""<p>工作流ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -37831,7 +38063,7 @@ class WorkFlowSummary(AbstractModel):
 
     @property
     def WorkflowName(self):
-        r"""工作流名称
+        r"""<p>工作流名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -37843,7 +38075,7 @@ class WorkFlowSummary(AbstractModel):
 
     @property
     def WorkflowRunId(self):
-        r"""工作流运行ID
+        r"""<p>工作流运行ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -37855,7 +38087,7 @@ class WorkFlowSummary(AbstractModel):
 
     @property
     def RunNodes(self):
-        r"""节点信息
+        r"""<p>节点信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of WorkflowRunNodeInfo
         """
@@ -37867,7 +38099,7 @@ class WorkFlowSummary(AbstractModel):
 
     @property
     def OptionCards(self):
-        r"""选项卡
+        r"""<p>选项卡</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -37879,7 +38111,7 @@ class WorkFlowSummary(AbstractModel):
 
     @property
     def Outputs(self):
-        r"""多气泡的输出结果
+        r"""<p>多气泡的输出结果</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -37891,7 +38123,7 @@ class WorkFlowSummary(AbstractModel):
 
     @property
     def WorkflowReleaseTime(self):
-        r"""工作流发布时间，unix时间戳
+        r"""<p>工作流发布时间，unix时间戳</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -37903,7 +38135,7 @@ class WorkFlowSummary(AbstractModel):
 
     @property
     def PendingMessages(self):
-        r"""中间消息
+        r"""<p>中间消息</p>
         :rtype: list of str
         """
         return self._PendingMessages
@@ -37914,7 +38146,7 @@ class WorkFlowSummary(AbstractModel):
 
     @property
     def OptionCardIndex(self):
-        r"""选项卡索引
+        r"""<p>选项卡索引</p>
         :rtype: :class:`tencentcloud.lke.v20231130.models.OptionCardIndex`
         """
         return self._OptionCardIndex
@@ -37925,7 +38157,7 @@ class WorkFlowSummary(AbstractModel):
 
     @property
     def Contents(self):
-        r"""工作流多气泡输出
+        r"""<p>工作流多气泡输出</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Content
         """
@@ -37934,6 +38166,17 @@ class WorkFlowSummary(AbstractModel):
     @Contents.setter
     def Contents(self, Contents):
         self._Contents = Contents
+
+    @property
+    def OptionMode(self):
+        r"""<p>标识选项卡为单选还是双选</p><p>枚举值：</p><ul><li>0： 单选</li><li>1： 多选</li></ul>
+        :rtype: int
+        """
+        return self._OptionMode
+
+    @OptionMode.setter
+    def OptionMode(self, OptionMode):
+        self._OptionMode = OptionMode
 
 
     def _deserialize(self, params):
@@ -37959,6 +38202,7 @@ class WorkFlowSummary(AbstractModel):
                 obj = Content()
                 obj._deserialize(item)
                 self._Contents.append(obj)
+        self._OptionMode = params.get("OptionMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -37976,27 +38220,29 @@ class WorkflowInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _WorkflowId: 工作流ID
+        :param _WorkflowId: <p>工作流ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WorkflowId: str
-        :param _WorkflowName: 工作流名称
+        :param _WorkflowName: <p>工作流名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WorkflowName: str
-        :param _WorkflowRunId: 工作流运行ID
+        :param _WorkflowRunId: <p>工作流运行ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WorkflowRunId: str
-        :param _OptionCards: 选项卡
+        :param _OptionCards: <p>选项卡</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type OptionCards: list of str
-        :param _Outputs: 多气泡的输出结果
+        :param _Outputs: <p>多气泡的输出结果</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Outputs: list of str
-        :param _WorkflowReleaseTime: 工作流发布时间，unix时间戳
+        :param _WorkflowReleaseTime: <p>工作流发布时间，unix时间戳</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WorkflowReleaseTime: str
-        :param _Contents: 工作流多气泡输出
+        :param _Contents: <p>工作流多气泡输出</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Contents: list of Content
+        :param _OptionMode: <p>标识选项卡为单选还是双选</p><p>枚举值：</p><ul><li>0： 单选</li><li>1： 多选</li></ul>
+        :type OptionMode: int
         """
         self._WorkflowId = None
         self._WorkflowName = None
@@ -38005,10 +38251,11 @@ class WorkflowInfo(AbstractModel):
         self._Outputs = None
         self._WorkflowReleaseTime = None
         self._Contents = None
+        self._OptionMode = None
 
     @property
     def WorkflowId(self):
-        r"""工作流ID
+        r"""<p>工作流ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -38020,7 +38267,7 @@ class WorkflowInfo(AbstractModel):
 
     @property
     def WorkflowName(self):
-        r"""工作流名称
+        r"""<p>工作流名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -38032,7 +38279,7 @@ class WorkflowInfo(AbstractModel):
 
     @property
     def WorkflowRunId(self):
-        r"""工作流运行ID
+        r"""<p>工作流运行ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -38044,7 +38291,7 @@ class WorkflowInfo(AbstractModel):
 
     @property
     def OptionCards(self):
-        r"""选项卡
+        r"""<p>选项卡</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -38056,7 +38303,7 @@ class WorkflowInfo(AbstractModel):
 
     @property
     def Outputs(self):
-        r"""多气泡的输出结果
+        r"""<p>多气泡的输出结果</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -38068,7 +38315,7 @@ class WorkflowInfo(AbstractModel):
 
     @property
     def WorkflowReleaseTime(self):
-        r"""工作流发布时间，unix时间戳
+        r"""<p>工作流发布时间，unix时间戳</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -38080,7 +38327,7 @@ class WorkflowInfo(AbstractModel):
 
     @property
     def Contents(self):
-        r"""工作流多气泡输出
+        r"""<p>工作流多气泡输出</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Content
         """
@@ -38089,6 +38336,17 @@ class WorkflowInfo(AbstractModel):
     @Contents.setter
     def Contents(self, Contents):
         self._Contents = Contents
+
+    @property
+    def OptionMode(self):
+        r"""<p>标识选项卡为单选还是双选</p><p>枚举值：</p><ul><li>0： 单选</li><li>1： 多选</li></ul>
+        :rtype: int
+        """
+        return self._OptionMode
+
+    @OptionMode.setter
+    def OptionMode(self, OptionMode):
+        self._OptionMode = OptionMode
 
 
     def _deserialize(self, params):
@@ -38104,6 +38362,7 @@ class WorkflowInfo(AbstractModel):
                 obj = Content()
                 obj._deserialize(item)
                 self._Contents.append(obj)
+        self._OptionMode = params.get("OptionMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -38710,13 +38969,13 @@ class WorkflowRunNodeInfo(AbstractModel):
         :param _NodeId: <p>节点ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type NodeId: str
-        :param _NodeType: <p>节点类型</p>
+        :param _NodeType: <p>节点类型</p><p>枚举值：</p><ul><li>0： 未指定</li><li>1： 开始节点</li><li>2： 参数提取节点</li><li>3： 大模型节点</li><li>4： 知识问答节点</li><li>5： 知识检索节点</li><li>6： 标签提取节点</li><li>7： 代码执行节点</li><li>8： 工具节点</li><li>9： 逻辑判断节点</li><li>10： 消息节点</li><li>11： 选项卡节点</li><li>12： 循环节点</li><li>13： 意图识别节点</li><li>14： 工作流节点</li><li>15： 插件节点</li><li>16： 结束节点</li><li>17： 变量聚合节点</li><li>18： 批处理节点</li><li>19： 消息队列节点</li><li>20： 数据库节点</li><li>21： 变量赋值节点</li><li>22： 变量转换节点</li><li>23： Agent节点</li><li>24： 注释节点</li><li>25： 文件收集节点</li><li>26： 文本收集节点</li><li>27： Widget 节点</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type NodeType: int
         :param _NodeName: <p>节点名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type NodeName: str
-        :param _Status: <p>状态</p>
+        :param _Status: <p>状态</p><p>枚举值：</p><ul><li>0： 初始状态</li><li>1： 运行中</li><li>2： 运行成功</li><li>3： 运行失败</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
         :param _Input: <p>输入</p>
@@ -38767,7 +39026,7 @@ class WorkflowRunNodeInfo(AbstractModel):
 
     @property
     def NodeType(self):
-        r"""<p>节点类型</p>
+        r"""<p>节点类型</p><p>枚举值：</p><ul><li>0： 未指定</li><li>1： 开始节点</li><li>2： 参数提取节点</li><li>3： 大模型节点</li><li>4： 知识问答节点</li><li>5： 知识检索节点</li><li>6： 标签提取节点</li><li>7： 代码执行节点</li><li>8： 工具节点</li><li>9： 逻辑判断节点</li><li>10： 消息节点</li><li>11： 选项卡节点</li><li>12： 循环节点</li><li>13： 意图识别节点</li><li>14： 工作流节点</li><li>15： 插件节点</li><li>16： 结束节点</li><li>17： 变量聚合节点</li><li>18： 批处理节点</li><li>19： 消息队列节点</li><li>20： 数据库节点</li><li>21： 变量赋值节点</li><li>22： 变量转换节点</li><li>23： Agent节点</li><li>24： 注释节点</li><li>25： 文件收集节点</li><li>26： 文本收集节点</li><li>27： Widget 节点</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -38791,7 +39050,7 @@ class WorkflowRunNodeInfo(AbstractModel):
 
     @property
     def Status(self):
-        r"""<p>状态</p>
+        r"""<p>状态</p><p>枚举值：</p><ul><li>0： 初始状态</li><li>1： 运行中</li><li>2： 运行成功</li><li>3： 运行失败</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """

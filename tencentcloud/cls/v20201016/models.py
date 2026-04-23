@@ -13207,6 +13207,180 @@ class CreateScheduledSqlResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateSearchViewRequest(AbstractModel):
+    r"""CreateSearchView请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LogsetId: <p>日志集id</p><p>标记视图所属该日志集，用于查询日志集下的查询视图配置</p>
+        :type LogsetId: str
+        :param _LogsetRegion: <p>日志集所属地域</p><p>参数格式：ap-guangzhou</p>
+        :type LogsetRegion: str
+        :param _ViewName: <p>视图名称</p><p>入参限制：最大支持255字符，不能包含&quot;|&quot;字符。</p>
+        :type ViewName: str
+        :param _ViewType: <p>视图类型</p><p>枚举值：</p><ul><li>log： 日志主题</li><li>metric： 指标主题</li></ul><p>Topics字段中配置的主题信息应该与ViewType类型匹配</p>
+        :type ViewType: str
+        :param _Topics: <p>视图主题配置信息</p><p>Topics字段中配置的主题信息应该与ViewType类型匹配</p>
+        :type Topics: list of ViewSearchTopic
+        :param _Description: <p>配置描述信息</p>
+        :type Description: str
+        :param _ViewIdPrefix: <p>自定义视图id前缀</p><p>参数格式：<code>^[a-z0-9][a-z0-9_-]{1,61}[a-z0-9]$</code></p><p>配置成功之后ViewId格式: ${ViewIdPrefix}-view</p>
+        :type ViewIdPrefix: str
+        """
+        self._LogsetId = None
+        self._LogsetRegion = None
+        self._ViewName = None
+        self._ViewType = None
+        self._Topics = None
+        self._Description = None
+        self._ViewIdPrefix = None
+
+    @property
+    def LogsetId(self):
+        r"""<p>日志集id</p><p>标记视图所属该日志集，用于查询日志集下的查询视图配置</p>
+        :rtype: str
+        """
+        return self._LogsetId
+
+    @LogsetId.setter
+    def LogsetId(self, LogsetId):
+        self._LogsetId = LogsetId
+
+    @property
+    def LogsetRegion(self):
+        r"""<p>日志集所属地域</p><p>参数格式：ap-guangzhou</p>
+        :rtype: str
+        """
+        return self._LogsetRegion
+
+    @LogsetRegion.setter
+    def LogsetRegion(self, LogsetRegion):
+        self._LogsetRegion = LogsetRegion
+
+    @property
+    def ViewName(self):
+        r"""<p>视图名称</p><p>入参限制：最大支持255字符，不能包含&quot;|&quot;字符。</p>
+        :rtype: str
+        """
+        return self._ViewName
+
+    @ViewName.setter
+    def ViewName(self, ViewName):
+        self._ViewName = ViewName
+
+    @property
+    def ViewType(self):
+        r"""<p>视图类型</p><p>枚举值：</p><ul><li>log： 日志主题</li><li>metric： 指标主题</li></ul><p>Topics字段中配置的主题信息应该与ViewType类型匹配</p>
+        :rtype: str
+        """
+        return self._ViewType
+
+    @ViewType.setter
+    def ViewType(self, ViewType):
+        self._ViewType = ViewType
+
+    @property
+    def Topics(self):
+        r"""<p>视图主题配置信息</p><p>Topics字段中配置的主题信息应该与ViewType类型匹配</p>
+        :rtype: list of ViewSearchTopic
+        """
+        return self._Topics
+
+    @Topics.setter
+    def Topics(self, Topics):
+        self._Topics = Topics
+
+    @property
+    def Description(self):
+        r"""<p>配置描述信息</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def ViewIdPrefix(self):
+        r"""<p>自定义视图id前缀</p><p>参数格式：<code>^[a-z0-9][a-z0-9_-]{1,61}[a-z0-9]$</code></p><p>配置成功之后ViewId格式: ${ViewIdPrefix}-view</p>
+        :rtype: str
+        """
+        return self._ViewIdPrefix
+
+    @ViewIdPrefix.setter
+    def ViewIdPrefix(self, ViewIdPrefix):
+        self._ViewIdPrefix = ViewIdPrefix
+
+
+    def _deserialize(self, params):
+        self._LogsetId = params.get("LogsetId")
+        self._LogsetRegion = params.get("LogsetRegion")
+        self._ViewName = params.get("ViewName")
+        self._ViewType = params.get("ViewType")
+        if params.get("Topics") is not None:
+            self._Topics = []
+            for item in params.get("Topics"):
+                obj = ViewSearchTopic()
+                obj._deserialize(item)
+                self._Topics.append(obj)
+        self._Description = params.get("Description")
+        self._ViewIdPrefix = params.get("ViewIdPrefix")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateSearchViewResponse(AbstractModel):
+    r"""CreateSearchView返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ViewId: <p>视图ID</p>
+        :type ViewId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ViewId = None
+        self._RequestId = None
+
+    @property
+    def ViewId(self):
+        r"""<p>视图ID</p>
+        :rtype: str
+        """
+        return self._ViewId
+
+    @ViewId.setter
+    def ViewId(self, ViewId):
+        self._ViewId = ViewId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ViewId = params.get("ViewId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateShipperRequest(AbstractModel):
     r"""CreateShipper请求参数结构体
 
@@ -18163,6 +18337,70 @@ class DeleteScheduledSqlRequest(AbstractModel):
 
 class DeleteScheduledSqlResponse(AbstractModel):
     r"""DeleteScheduledSql返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteSearchViewRequest(AbstractModel):
+    r"""DeleteSearchView请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ViewId: <p>视图ID</p>
+        :type ViewId: str
+        """
+        self._ViewId = None
+
+    @property
+    def ViewId(self):
+        r"""<p>视图ID</p>
+        :rtype: str
+        """
+        return self._ViewId
+
+    @ViewId.setter
+    def ViewId(self, ViewId):
+        self._ViewId = ViewId
+
+
+    def _deserialize(self, params):
+        self._ViewId = params.get("ViewId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteSearchViewResponse(AbstractModel):
+    r"""DeleteSearchView返回参数结构体
 
     """
 
@@ -25864,6 +26102,140 @@ class DescribeScheduledSqlInfoResponse(AbstractModel):
                 obj._deserialize(item)
                 self._ScheduledSqlTaskInfos.append(obj)
         self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeSearchViewsRequest(AbstractModel):
+    r"""DescribeSearchViews请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filters: <ul><li>viewId 按照【视图ID】进行过滤。 类型：String 必选：否  </li><li>viewName 按照【视图名称】进行过滤。 类型：String 必选：否  </li><li>logsetId 按照【日志集ID】进行过滤。 类型：String 必选：否<br>每次请求的Filters的上限为10，Filter.Values的上限为10。</li></ul>
+        :type Filters: list of Filter
+        :param _Offset: <p>分页的偏移量，默认值为0。</p>
+        :type Offset: int
+        :param _Limit: <p>分页单页限制数目，默认值为20，最大值100。</p>
+        :type Limit: int
+        """
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def Filters(self):
+        r"""<ul><li>viewId 按照【视图ID】进行过滤。 类型：String 必选：否  </li><li>viewName 按照【视图名称】进行过滤。 类型：String 必选：否  </li><li>logsetId 按照【日志集ID】进行过滤。 类型：String 必选：否<br>每次请求的Filters的上限为10，Filter.Values的上限为10。</li></ul>
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        r"""<p>分页的偏移量，默认值为0。</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>分页单页限制数目，默认值为20，最大值100。</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSearchViewsResponse(AbstractModel):
+    r"""DescribeSearchViews返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Infos: <p>Splunk投递任务信息列表</p>
+        :type Infos: list of SearchViewInfo
+        :param _Total: <p>符合条件的任务总数。</p>
+        :type Total: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Infos = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def Infos(self):
+        r"""<p>Splunk投递任务信息列表</p>
+        :rtype: list of SearchViewInfo
+        """
+        return self._Infos
+
+    @Infos.setter
+    def Infos(self, Infos):
+        self._Infos = Infos
+
+    @property
+    def Total(self):
+        r"""<p>符合条件的任务总数。</p>
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Infos") is not None:
+            self._Infos = []
+            for item in params.get("Infos"):
+                obj = SearchViewInfo()
+                obj._deserialize(item)
+                self._Infos.append(obj)
+        self._Total = params.get("Total")
         self._RequestId = params.get("RequestId")
 
 
@@ -40155,6 +40527,135 @@ class ModifyScheduledSqlResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifySearchViewRequest(AbstractModel):
+    r"""ModifySearchView请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ViewId: <p>视图ID</p>
+        :type ViewId: str
+        :param _ViewName: <p>视图名称</p><p>参数格式：<code>^[a-z0-9][a-z0-9_-]{1,61}[a-z0-9]$</code></p>
+        :type ViewName: str
+        :param _ViewType: <p>视图类型</p><p>枚举值：</p><ul><li>log： 日志主题</li><li>metric： 指标主题</li></ul>
+        :type ViewType: str
+        :param _Topics: <p>视图主题配置信息</p>
+        :type Topics: list of ViewSearchTopic
+        :param _Description: <p>配置描述信息</p>
+        :type Description: str
+        """
+        self._ViewId = None
+        self._ViewName = None
+        self._ViewType = None
+        self._Topics = None
+        self._Description = None
+
+    @property
+    def ViewId(self):
+        r"""<p>视图ID</p>
+        :rtype: str
+        """
+        return self._ViewId
+
+    @ViewId.setter
+    def ViewId(self, ViewId):
+        self._ViewId = ViewId
+
+    @property
+    def ViewName(self):
+        r"""<p>视图名称</p><p>参数格式：<code>^[a-z0-9][a-z0-9_-]{1,61}[a-z0-9]$</code></p>
+        :rtype: str
+        """
+        return self._ViewName
+
+    @ViewName.setter
+    def ViewName(self, ViewName):
+        self._ViewName = ViewName
+
+    @property
+    def ViewType(self):
+        r"""<p>视图类型</p><p>枚举值：</p><ul><li>log： 日志主题</li><li>metric： 指标主题</li></ul>
+        :rtype: str
+        """
+        return self._ViewType
+
+    @ViewType.setter
+    def ViewType(self, ViewType):
+        self._ViewType = ViewType
+
+    @property
+    def Topics(self):
+        r"""<p>视图主题配置信息</p>
+        :rtype: list of ViewSearchTopic
+        """
+        return self._Topics
+
+    @Topics.setter
+    def Topics(self, Topics):
+        self._Topics = Topics
+
+    @property
+    def Description(self):
+        r"""<p>配置描述信息</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._ViewId = params.get("ViewId")
+        self._ViewName = params.get("ViewName")
+        self._ViewType = params.get("ViewType")
+        if params.get("Topics") is not None:
+            self._Topics = []
+            for item in params.get("Topics"):
+                obj = ViewSearchTopic()
+                obj._deserialize(item)
+                self._Topics.append(obj)
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifySearchViewResponse(AbstractModel):
+    r"""ModifySearchView返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyShipperRequest(AbstractModel):
     r"""ModifyShipper请求参数结构体
 
@@ -46218,6 +46719,167 @@ class SearchLogTopics(AbstractModel):
         
 
 
+class SearchViewInfo(AbstractModel):
+    r"""检索视图信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ViewId: <p>视图ID</p>
+        :type ViewId: str
+        :param _ViewName: <p>视图名称</p>
+        :type ViewName: str
+        :param _ViewType: <p>视图类型</p><p>枚举值：</p><ul><li>log： 日志主题</li><li>metric： 指标主题</li></ul>
+        :type ViewType: str
+        :param _LogsetId: <p>日志集id</p><p>视图所属日志集</p>
+        :type LogsetId: str
+        :param _LogsetRegion: <p>日志集所属地域</p><p>参数格式：ap-guangzhou</p>
+        :type LogsetRegion: str
+        :param _Topics: <p>视图日志主题信息</p>
+        :type Topics: list of ViewSearchTopic
+        :param _Description: <p>视图描述</p>
+        :type Description: str
+        :param _CreateTime: <p>创建时间</p><p>单位：秒级别时间戳</p>
+        :type CreateTime: int
+        :param _UpdateTime: <p>更新时间</p><p>单位：秒级别时间戳</p>
+        :type UpdateTime: int
+        """
+        self._ViewId = None
+        self._ViewName = None
+        self._ViewType = None
+        self._LogsetId = None
+        self._LogsetRegion = None
+        self._Topics = None
+        self._Description = None
+        self._CreateTime = None
+        self._UpdateTime = None
+
+    @property
+    def ViewId(self):
+        r"""<p>视图ID</p>
+        :rtype: str
+        """
+        return self._ViewId
+
+    @ViewId.setter
+    def ViewId(self, ViewId):
+        self._ViewId = ViewId
+
+    @property
+    def ViewName(self):
+        r"""<p>视图名称</p>
+        :rtype: str
+        """
+        return self._ViewName
+
+    @ViewName.setter
+    def ViewName(self, ViewName):
+        self._ViewName = ViewName
+
+    @property
+    def ViewType(self):
+        r"""<p>视图类型</p><p>枚举值：</p><ul><li>log： 日志主题</li><li>metric： 指标主题</li></ul>
+        :rtype: str
+        """
+        return self._ViewType
+
+    @ViewType.setter
+    def ViewType(self, ViewType):
+        self._ViewType = ViewType
+
+    @property
+    def LogsetId(self):
+        r"""<p>日志集id</p><p>视图所属日志集</p>
+        :rtype: str
+        """
+        return self._LogsetId
+
+    @LogsetId.setter
+    def LogsetId(self, LogsetId):
+        self._LogsetId = LogsetId
+
+    @property
+    def LogsetRegion(self):
+        r"""<p>日志集所属地域</p><p>参数格式：ap-guangzhou</p>
+        :rtype: str
+        """
+        return self._LogsetRegion
+
+    @LogsetRegion.setter
+    def LogsetRegion(self, LogsetRegion):
+        self._LogsetRegion = LogsetRegion
+
+    @property
+    def Topics(self):
+        r"""<p>视图日志主题信息</p>
+        :rtype: list of ViewSearchTopic
+        """
+        return self._Topics
+
+    @Topics.setter
+    def Topics(self, Topics):
+        self._Topics = Topics
+
+    @property
+    def Description(self):
+        r"""<p>视图描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间</p><p>单位：秒级别时间戳</p>
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""<p>更新时间</p><p>单位：秒级别时间戳</p>
+        :rtype: int
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._ViewId = params.get("ViewId")
+        self._ViewName = params.get("ViewName")
+        self._ViewType = params.get("ViewType")
+        self._LogsetId = params.get("LogsetId")
+        self._LogsetRegion = params.get("LogsetRegion")
+        if params.get("Topics") is not None:
+            self._Topics = []
+            for item in params.get("Topics"):
+                obj = ViewSearchTopic()
+                obj._deserialize(item)
+                self._Topics.append(obj)
+        self._Description = params.get("Description")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SendConsumerHeartbeatRequest(AbstractModel):
     r"""SendConsumerHeartbeat请求参数结构体
 
@@ -48544,6 +49206,72 @@ long及double类型字段需为空；
                 obj = KeyValueInfo()
                 obj._deserialize(item)
                 self._ChildNode.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ViewSearchTopic(AbstractModel):
+    r"""视图检索日志主题配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Region: <p>日志集与日志主题所属地域</p><p>参数格式：ap-guangzhou</p>
+        :type Region: str
+        :param _LogsetId: <p>日志集id</p>
+        :type LogsetId: str
+        :param _TopicId: <p>日志主题id</p>
+        :type TopicId: str
+        """
+        self._Region = None
+        self._LogsetId = None
+        self._TopicId = None
+
+    @property
+    def Region(self):
+        r"""<p>日志集与日志主题所属地域</p><p>参数格式：ap-guangzhou</p>
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def LogsetId(self):
+        r"""<p>日志集id</p>
+        :rtype: str
+        """
+        return self._LogsetId
+
+    @LogsetId.setter
+    def LogsetId(self, LogsetId):
+        self._LogsetId = LogsetId
+
+    @property
+    def TopicId(self):
+        r"""<p>日志主题id</p>
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+
+    def _deserialize(self, params):
+        self._Region = params.get("Region")
+        self._LogsetId = params.get("LogsetId")
+        self._TopicId = params.get("TopicId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

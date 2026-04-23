@@ -385,6 +385,29 @@ class SmsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def SendMultiGlobalSms(self, request):
+        r"""本接口 (SendMultiGlobalSms) 用于批量发送国际/港澳台短信，相比 SendSms 接口，支持在单次请求中向多个手机号发送不同内容的短信，并支持指定不同的SenderId。
+
+        :param request: Request instance for SendMultiGlobalSms.
+        :type request: :class:`tencentcloud.sms.v20210111.models.SendMultiGlobalSmsRequest`
+        :rtype: :class:`tencentcloud.sms.v20210111.models.SendMultiGlobalSmsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SendMultiGlobalSms", params, headers=headers)
+            response = json.loads(body)
+            model = models.SendMultiGlobalSmsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def SendSms(self, request):
         r"""本接口 (SendSms) 用于发送验证码、通知类短信和营销短信。支持国内短信与国际/港澳台短信。
         - 当前接口属于 2021-01-11 版本，如果您仍在使用 [2019-07-11 版本](https://cloud.tencent.com/document/product/382/38778)，建议您使用当前最新版本的接口，版本差异可参考[版本描述](https://cloud.tencent.com/document/product/382/63195#.E7.89.88.E6.9C.AC.E6.8F.8F.E8.BF.B0)。

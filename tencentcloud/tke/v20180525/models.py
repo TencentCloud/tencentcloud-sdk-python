@@ -11057,10 +11057,24 @@ class CreateRollOutSequenceResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _ID: 发布序列ID
+        :type ID: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._ID = None
         self._RequestId = None
+
+    @property
+    def ID(self):
+        r"""发布序列ID
+        :rtype: int
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
 
     @property
     def RequestId(self):
@@ -11075,6 +11089,7 @@ class CreateRollOutSequenceResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._ID = params.get("ID")
         self._RequestId = params.get("RequestId")
 
 

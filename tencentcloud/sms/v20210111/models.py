@@ -2079,6 +2079,102 @@ class ModifyTemplateStatus(AbstractModel):
         
 
 
+class MultiSmsInfo(AbstractModel):
+    r"""批量发送中每个手机号的发送信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PhoneNumber: <p>下发手机号码，采用 E.164 标准，格式为+[国家或地区码][手机号]，单次请求最多支持200个手机号且要求全为国际/港澳台手机号。 例如：+60198890000， 其中前面有一个+号 ，60为国家码，198890000为手机号。</p>
+        :type PhoneNumber: str
+        :param _TemplateId: <p>模板 ID，必须填写已审核通过的模板 ID。模板 ID 可前往 <a href="https://console.cloud.tencent.com/smsv2/isms-template">国际/港澳台短信</a> 的正文模板管理查看，仅支持使用国际/港澳台短信模板。</p>
+        :type TemplateId: str
+        :param _TemplateParamSet: <p>模板参数，若无模板参数，则设置为空。<blockquote class="rno-document-tips rno-document-tips-notice">    <div class="rno-document-tips-body">        <i class="rno-document-tip-icon"></i>        <div class="rno-document-tip-title">注意</div>        <div class="rno-document-tip-desc"><p>模板参数的个数需要与 TemplateId 对应模板的变量个数保持一致。</p></div>    </div></blockquote></p>
+        :type TemplateParamSet: list of str
+        :param _SenderId: <p>国际/港澳台短信 Sender ID。可参考 <a href="https://cloud.tencent.com/document/product/382/102831">Sender ID 说明</a>。注：国际/港澳台短信已申请独立 SenderId 需要填写该字段，默认使用公共 SenderId，无需填写该字段。</p>
+        :type SenderId: str
+        :param _SessionContext: <p>用户的 session 内容，可以携带用户侧 ID 等上下文信息，server 会原样返回。注意长度需小于512字节。</p>
+        :type SessionContext: str
+        """
+        self._PhoneNumber = None
+        self._TemplateId = None
+        self._TemplateParamSet = None
+        self._SenderId = None
+        self._SessionContext = None
+
+    @property
+    def PhoneNumber(self):
+        r"""<p>下发手机号码，采用 E.164 标准，格式为+[国家或地区码][手机号]，单次请求最多支持200个手机号且要求全为国际/港澳台手机号。 例如：+60198890000， 其中前面有一个+号 ，60为国家码，198890000为手机号。</p>
+        :rtype: str
+        """
+        return self._PhoneNumber
+
+    @PhoneNumber.setter
+    def PhoneNumber(self, PhoneNumber):
+        self._PhoneNumber = PhoneNumber
+
+    @property
+    def TemplateId(self):
+        r"""<p>模板 ID，必须填写已审核通过的模板 ID。模板 ID 可前往 <a href="https://console.cloud.tencent.com/smsv2/isms-template">国际/港澳台短信</a> 的正文模板管理查看，仅支持使用国际/港澳台短信模板。</p>
+        :rtype: str
+        """
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def TemplateParamSet(self):
+        r"""<p>模板参数，若无模板参数，则设置为空。<blockquote class="rno-document-tips rno-document-tips-notice">    <div class="rno-document-tips-body">        <i class="rno-document-tip-icon"></i>        <div class="rno-document-tip-title">注意</div>        <div class="rno-document-tip-desc"><p>模板参数的个数需要与 TemplateId 对应模板的变量个数保持一致。</p></div>    </div></blockquote></p>
+        :rtype: list of str
+        """
+        return self._TemplateParamSet
+
+    @TemplateParamSet.setter
+    def TemplateParamSet(self, TemplateParamSet):
+        self._TemplateParamSet = TemplateParamSet
+
+    @property
+    def SenderId(self):
+        r"""<p>国际/港澳台短信 Sender ID。可参考 <a href="https://cloud.tencent.com/document/product/382/102831">Sender ID 说明</a>。注：国际/港澳台短信已申请独立 SenderId 需要填写该字段，默认使用公共 SenderId，无需填写该字段。</p>
+        :rtype: str
+        """
+        return self._SenderId
+
+    @SenderId.setter
+    def SenderId(self, SenderId):
+        self._SenderId = SenderId
+
+    @property
+    def SessionContext(self):
+        r"""<p>用户的 session 内容，可以携带用户侧 ID 等上下文信息，server 会原样返回。注意长度需小于512字节。</p>
+        :rtype: str
+        """
+        return self._SessionContext
+
+    @SessionContext.setter
+    def SessionContext(self, SessionContext):
+        self._SessionContext = SessionContext
+
+
+    def _deserialize(self, params):
+        self._PhoneNumber = params.get("PhoneNumber")
+        self._TemplateId = params.get("TemplateId")
+        self._TemplateParamSet = params.get("TemplateParamSet")
+        self._SenderId = params.get("SenderId")
+        self._SessionContext = params.get("SessionContext")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PhoneNumberInfo(AbstractModel):
     r"""号码信息。
 
@@ -3150,6 +3246,236 @@ class ReportConversionStatus(AbstractModel):
     def _deserialize(self, params):
         self._Code = params.get("Code")
         self._Message = params.get("Message")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SendMultiGlobalSmsRequest(AbstractModel):
+    r"""SendMultiGlobalSms请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SmsSdkAppId: <p>短信 SdkAppId，在 <a href="https://console.cloud.tencent.com/smsv2/app-manage">短信控制台</a>  添加应用后生成的实际 SdkAppId。</p>
+        :type SmsSdkAppId: str
+        :param _MultiSmsInfoSet: <p>批量发送信息列表，单次请求最多支持200个号码且要求全为国际/港澳台号码。每个元素包含一个手机号码及其对应的模板、模板参数等信息。</p>
+        :type MultiSmsInfoSet: list of MultiSmsInfo
+        """
+        self._SmsSdkAppId = None
+        self._MultiSmsInfoSet = None
+
+    @property
+    def SmsSdkAppId(self):
+        r"""<p>短信 SdkAppId，在 <a href="https://console.cloud.tencent.com/smsv2/app-manage">短信控制台</a>  添加应用后生成的实际 SdkAppId。</p>
+        :rtype: str
+        """
+        return self._SmsSdkAppId
+
+    @SmsSdkAppId.setter
+    def SmsSdkAppId(self, SmsSdkAppId):
+        self._SmsSdkAppId = SmsSdkAppId
+
+    @property
+    def MultiSmsInfoSet(self):
+        r"""<p>批量发送信息列表，单次请求最多支持200个号码且要求全为国际/港澳台号码。每个元素包含一个手机号码及其对应的模板、模板参数等信息。</p>
+        :rtype: list of MultiSmsInfo
+        """
+        return self._MultiSmsInfoSet
+
+    @MultiSmsInfoSet.setter
+    def MultiSmsInfoSet(self, MultiSmsInfoSet):
+        self._MultiSmsInfoSet = MultiSmsInfoSet
+
+
+    def _deserialize(self, params):
+        self._SmsSdkAppId = params.get("SmsSdkAppId")
+        if params.get("MultiSmsInfoSet") is not None:
+            self._MultiSmsInfoSet = []
+            for item in params.get("MultiSmsInfoSet"):
+                obj = MultiSmsInfo()
+                obj._deserialize(item)
+                self._MultiSmsInfoSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SendMultiGlobalSmsResponse(AbstractModel):
+    r"""SendMultiGlobalSms返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SendMultiStatusSet: <p>短信批量发送状态。</p>
+        :type SendMultiStatusSet: list of SendMultiStatus
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._SendMultiStatusSet = None
+        self._RequestId = None
+
+    @property
+    def SendMultiStatusSet(self):
+        r"""<p>短信批量发送状态。</p>
+        :rtype: list of SendMultiStatus
+        """
+        return self._SendMultiStatusSet
+
+    @SendMultiStatusSet.setter
+    def SendMultiStatusSet(self, SendMultiStatusSet):
+        self._SendMultiStatusSet = SendMultiStatusSet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("SendMultiStatusSet") is not None:
+            self._SendMultiStatusSet = []
+            for item in params.get("SendMultiStatusSet"):
+                obj = SendMultiStatus()
+                obj._deserialize(item)
+                self._SendMultiStatusSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class SendMultiStatus(AbstractModel):
+    r"""发送短信状态
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SerialNo: <p>发送流水号。</p>
+        :type SerialNo: str
+        :param _PhoneNumber: <p>手机号码，E.164标准，+[国家或地区码][手机号] ，示例如：+60198890000， 其中前面有一个+号 ，60为国家码，198890000为手机号。</p>
+        :type PhoneNumber: str
+        :param _Fee: <p>计费条数，计费规则请查询 <a href="https://cloud.tencent.com/document/product/382/36135">计费策略</a>。</p>
+        :type Fee: int
+        :param _SessionContext: <p>用户 session 内容。</p>
+        :type SessionContext: str
+        :param _Code: <p>短信请求错误码，具体含义请参考 <a href="https://cloud.tencent.com/document/product/382/59177#.E7.9F.AD.E4.BF.A1-API-3.0-.E5.8F.91.E9.80.81.E9.94.99.E8.AF.AF.E7.A0.81">错误码</a>，发送成功返回 &quot;Ok&quot;。</p>
+        :type Code: str
+        :param _Message: <p>短信请求错误码描述。</p>
+        :type Message: str
+        :param _IsoCode: <p>国家码或地区码，例如 US、MY 等，对于未识别出国家码或者地区码，默认返回 DEF，具体支持列表请参考 <a href="https://cloud.tencent.com/document/product/382/18051">国际/港澳台短信价格总览</a>。</p>
+        :type IsoCode: str
+        """
+        self._SerialNo = None
+        self._PhoneNumber = None
+        self._Fee = None
+        self._SessionContext = None
+        self._Code = None
+        self._Message = None
+        self._IsoCode = None
+
+    @property
+    def SerialNo(self):
+        r"""<p>发送流水号。</p>
+        :rtype: str
+        """
+        return self._SerialNo
+
+    @SerialNo.setter
+    def SerialNo(self, SerialNo):
+        self._SerialNo = SerialNo
+
+    @property
+    def PhoneNumber(self):
+        r"""<p>手机号码，E.164标准，+[国家或地区码][手机号] ，示例如：+60198890000， 其中前面有一个+号 ，60为国家码，198890000为手机号。</p>
+        :rtype: str
+        """
+        return self._PhoneNumber
+
+    @PhoneNumber.setter
+    def PhoneNumber(self, PhoneNumber):
+        self._PhoneNumber = PhoneNumber
+
+    @property
+    def Fee(self):
+        r"""<p>计费条数，计费规则请查询 <a href="https://cloud.tencent.com/document/product/382/36135">计费策略</a>。</p>
+        :rtype: int
+        """
+        return self._Fee
+
+    @Fee.setter
+    def Fee(self, Fee):
+        self._Fee = Fee
+
+    @property
+    def SessionContext(self):
+        r"""<p>用户 session 内容。</p>
+        :rtype: str
+        """
+        return self._SessionContext
+
+    @SessionContext.setter
+    def SessionContext(self, SessionContext):
+        self._SessionContext = SessionContext
+
+    @property
+    def Code(self):
+        r"""<p>短信请求错误码，具体含义请参考 <a href="https://cloud.tencent.com/document/product/382/59177#.E7.9F.AD.E4.BF.A1-API-3.0-.E5.8F.91.E9.80.81.E9.94.99.E8.AF.AF.E7.A0.81">错误码</a>，发送成功返回 &quot;Ok&quot;。</p>
+        :rtype: str
+        """
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def Message(self):
+        r"""<p>短信请求错误码描述。</p>
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def IsoCode(self):
+        r"""<p>国家码或地区码，例如 US、MY 等，对于未识别出国家码或者地区码，默认返回 DEF，具体支持列表请参考 <a href="https://cloud.tencent.com/document/product/382/18051">国际/港澳台短信价格总览</a>。</p>
+        :rtype: str
+        """
+        return self._IsoCode
+
+    @IsoCode.setter
+    def IsoCode(self, IsoCode):
+        self._IsoCode = IsoCode
+
+
+    def _deserialize(self, params):
+        self._SerialNo = params.get("SerialNo")
+        self._PhoneNumber = params.get("PhoneNumber")
+        self._Fee = params.get("Fee")
+        self._SessionContext = params.get("SessionContext")
+        self._Code = params.get("Code")
+        self._Message = params.get("Message")
+        self._IsoCode = params.get("IsoCode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

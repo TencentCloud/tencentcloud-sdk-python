@@ -266,6 +266,7 @@ class SesClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DeleteEmailIdentityResponse:
         """
+        **发信域名删除接口仅限于企业用户使用**
         删除发信域名，删除后，将不可再使用该域名进行发信
         """
         

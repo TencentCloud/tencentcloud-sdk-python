@@ -2543,6 +2543,24 @@ class MpsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeTextToSpeechAsyncTask(
+            self,
+            request: models.DescribeTextToSpeechAsyncTaskRequest,
+            opts: Dict = None,
+    ) -> models.DescribeTextToSpeechAsyncTaskResponse:
+        """
+        查询异步语音合成任务结果
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeTextToSpeechAsyncTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeTextToSpeechAsyncTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeTranscodeTemplates(
             self,
             request: models.DescribeTranscodeTemplatesRequest,
@@ -3713,6 +3731,24 @@ class MpsClient(AbstractClient):
         kwargs["action"] = "SyncDubbing"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.SyncDubbingResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def TextToSpeechAsync(
+            self,
+            request: models.TextToSpeechAsyncRequest,
+            opts: Dict = None,
+    ) -> models.TextToSpeechAsyncResponse:
+        """
+        异步语音合成接口，支持长文本转语音
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "TextToSpeechAsync"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.TextToSpeechAsyncResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

@@ -13756,86 +13756,78 @@ class CynosdbInstanceDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Uin: 用户Uin
+        :param _Uin: <p>用户Uin</p>
         :type Uin: str
-        :param _AppId: 用户AppId
+        :param _AppId: <p>用户AppId</p>
         :type AppId: int
-        :param _ClusterId: 集群ID
+        :param _ClusterId: <p>集群ID</p>
         :type ClusterId: str
-        :param _ClusterName: 集群名称
+        :param _ClusterName: <p>集群名称</p>
         :type ClusterName: str
-        :param _InstanceId: 实例ID
+        :param _InstanceId: <p>实例ID</p>
         :type InstanceId: str
-        :param _InstanceName: 实例名称
+        :param _InstanceName: <p>实例名称</p>
         :type InstanceName: str
-        :param _ProjectId: 项目ID
+        :param _ProjectId: <p>项目ID</p>
         :type ProjectId: int
-        :param _Region: 地域
+        :param _Region: <p>地域</p>
         :type Region: str
-        :param _Zone: 可用区
+        :param _Zone: <p>可用区</p>
         :type Zone: str
-        :param _Status: 实例状态
-creating：创建中
-running：运行中
-isolating：隔离中
-isolated：已隔离
-activating：恢复中
-offlining：下线中
-offlined：已下线
-
+        :param _Status: <p>实例状态<br>creating：创建中<br>running：运行中<br>isolating：隔离中<br>isolated：已隔离<br>activating：恢复中<br>offlining：下线中<br>offlined：已下线</p>
         :type Status: str
-        :param _StatusDesc: 实例状态中文描述
+        :param _StatusDesc: <p>实例状态中文描述</p>
         :type StatusDesc: str
-        :param _ServerlessStatus: serverless实例状态, 可能值：
-resume
-pause
+        :param _ServerlessStatus: <p>serverless实例状态, 可能值：<br>resume<br>pause</p>
         :type ServerlessStatus: str
-        :param _DbType: 数据库类型
+        :param _DbType: <p>数据库类型</p>
         :type DbType: str
-        :param _DbVersion: 数据库版本
+        :param _DbVersion: <p>数据库版本</p>
         :type DbVersion: str
-        :param _Cpu: Cpu，单位：核
+        :param _Cpu: <p>Cpu，单位：核</p>
         :type Cpu: int
-        :param _Memory: 内存，单位：GB
+        :param _Memory: <p>内存，单位：GB</p>
         :type Memory: int
-        :param _Storage: 存储量，单位：GB
+        :param _Storage: <p>存储量，单位：GB</p>
         :type Storage: int
-        :param _InstanceType: 实例类型
+        :param _InstanceType: <p>实例类型</p>
         :type InstanceType: str
-        :param _InstanceRole: 实例当前角色
+        :param _InstanceRole: <p>实例当前角色</p>
         :type InstanceRole: str
-        :param _UpdateTime: 更新时间
+        :param _UpdateTime: <p>更新时间</p>
         :type UpdateTime: str
-        :param _CreateTime: 创建时间
+        :param _CreateTime: <p>创建时间</p>
         :type CreateTime: str
-        :param _PayMode: 付费模式
+        :param _PayMode: <p>付费模式</p>
         :type PayMode: int
-        :param _PeriodEndTime: 实例过期时间
+        :param _PeriodEndTime: <p>实例过期时间</p>
         :type PeriodEndTime: str
-        :param _NetType: 网络类型
+        :param _NetType: <p>网络类型</p>
         :type NetType: int
-        :param _VpcId: VPC网络ID
+        :param _VpcId: <p>VPC网络ID</p>
         :type VpcId: str
-        :param _SubnetId: 子网ID
+        :param _SubnetId: <p>子网ID</p>
         :type SubnetId: str
-        :param _Vip: 实例内网IP
+        :param _Vip: <p>实例内网IP</p>
         :type Vip: str
-        :param _Vport: 实例内网端口
+        :param _Vport: <p>实例内网端口</p>
         :type Vport: int
-        :param _WanDomain: 实例外网域名
+        :param _WanDomain: <p>实例外网域名</p>
         :type WanDomain: str
-        :param _Charset: 字符集
+        :param _Charset: <p>字符集</p>
         :type Charset: str
-        :param _CynosVersion: Cynos内核版本
+        :param _CynosVersion: <p>Cynos内核版本</p>
         :type CynosVersion: str
-        :param _RenewFlag: 续费标志
+        :param _RenewFlag: <p>续费标志</p>
         :type RenewFlag: int
-        :param _MinCpu: serverless实例cpu下限
+        :param _MinCpu: <p>serverless实例cpu下限</p>
         :type MinCpu: float
-        :param _MaxCpu: serverless实例cpu上限
+        :param _MaxCpu: <p>serverless实例cpu上限</p>
         :type MaxCpu: float
-        :param _DbMode: Db类型:<li>NORMAL</li><li>SERVERLESS</li>
+        :param _DbMode: <p>Db类型:<li>NORMAL</li><li>SERVERLESS</li></p>
         :type DbMode: str
+        :param _MasterZone: <p>集群的读写实例所在可用区</p>
+        :type MasterZone: str
         """
         self._Uin = None
         self._AppId = None
@@ -13872,10 +13864,11 @@ pause
         self._MinCpu = None
         self._MaxCpu = None
         self._DbMode = None
+        self._MasterZone = None
 
     @property
     def Uin(self):
-        r"""用户Uin
+        r"""<p>用户Uin</p>
         :rtype: str
         """
         return self._Uin
@@ -13886,7 +13879,7 @@ pause
 
     @property
     def AppId(self):
-        r"""用户AppId
+        r"""<p>用户AppId</p>
         :rtype: int
         """
         return self._AppId
@@ -13897,7 +13890,7 @@ pause
 
     @property
     def ClusterId(self):
-        r"""集群ID
+        r"""<p>集群ID</p>
         :rtype: str
         """
         return self._ClusterId
@@ -13908,7 +13901,7 @@ pause
 
     @property
     def ClusterName(self):
-        r"""集群名称
+        r"""<p>集群名称</p>
         :rtype: str
         """
         return self._ClusterName
@@ -13919,7 +13912,7 @@ pause
 
     @property
     def InstanceId(self):
-        r"""实例ID
+        r"""<p>实例ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -13930,7 +13923,7 @@ pause
 
     @property
     def InstanceName(self):
-        r"""实例名称
+        r"""<p>实例名称</p>
         :rtype: str
         """
         return self._InstanceName
@@ -13941,7 +13934,7 @@ pause
 
     @property
     def ProjectId(self):
-        r"""项目ID
+        r"""<p>项目ID</p>
         :rtype: int
         """
         return self._ProjectId
@@ -13952,7 +13945,7 @@ pause
 
     @property
     def Region(self):
-        r"""地域
+        r"""<p>地域</p>
         :rtype: str
         """
         return self._Region
@@ -13963,7 +13956,7 @@ pause
 
     @property
     def Zone(self):
-        r"""可用区
+        r"""<p>可用区</p>
         :rtype: str
         """
         return self._Zone
@@ -13974,15 +13967,7 @@ pause
 
     @property
     def Status(self):
-        r"""实例状态
-creating：创建中
-running：运行中
-isolating：隔离中
-isolated：已隔离
-activating：恢复中
-offlining：下线中
-offlined：已下线
-
+        r"""<p>实例状态<br>creating：创建中<br>running：运行中<br>isolating：隔离中<br>isolated：已隔离<br>activating：恢复中<br>offlining：下线中<br>offlined：已下线</p>
         :rtype: str
         """
         return self._Status
@@ -13993,7 +13978,7 @@ offlined：已下线
 
     @property
     def StatusDesc(self):
-        r"""实例状态中文描述
+        r"""<p>实例状态中文描述</p>
         :rtype: str
         """
         return self._StatusDesc
@@ -14004,9 +13989,7 @@ offlined：已下线
 
     @property
     def ServerlessStatus(self):
-        r"""serverless实例状态, 可能值：
-resume
-pause
+        r"""<p>serverless实例状态, 可能值：<br>resume<br>pause</p>
         :rtype: str
         """
         return self._ServerlessStatus
@@ -14017,7 +14000,7 @@ pause
 
     @property
     def DbType(self):
-        r"""数据库类型
+        r"""<p>数据库类型</p>
         :rtype: str
         """
         return self._DbType
@@ -14028,7 +14011,7 @@ pause
 
     @property
     def DbVersion(self):
-        r"""数据库版本
+        r"""<p>数据库版本</p>
         :rtype: str
         """
         return self._DbVersion
@@ -14039,7 +14022,7 @@ pause
 
     @property
     def Cpu(self):
-        r"""Cpu，单位：核
+        r"""<p>Cpu，单位：核</p>
         :rtype: int
         """
         return self._Cpu
@@ -14050,7 +14033,7 @@ pause
 
     @property
     def Memory(self):
-        r"""内存，单位：GB
+        r"""<p>内存，单位：GB</p>
         :rtype: int
         """
         return self._Memory
@@ -14061,7 +14044,7 @@ pause
 
     @property
     def Storage(self):
-        r"""存储量，单位：GB
+        r"""<p>存储量，单位：GB</p>
         :rtype: int
         """
         return self._Storage
@@ -14072,7 +14055,7 @@ pause
 
     @property
     def InstanceType(self):
-        r"""实例类型
+        r"""<p>实例类型</p>
         :rtype: str
         """
         return self._InstanceType
@@ -14083,7 +14066,7 @@ pause
 
     @property
     def InstanceRole(self):
-        r"""实例当前角色
+        r"""<p>实例当前角色</p>
         :rtype: str
         """
         return self._InstanceRole
@@ -14094,7 +14077,7 @@ pause
 
     @property
     def UpdateTime(self):
-        r"""更新时间
+        r"""<p>更新时间</p>
         :rtype: str
         """
         return self._UpdateTime
@@ -14105,7 +14088,7 @@ pause
 
     @property
     def CreateTime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
         :rtype: str
         """
         return self._CreateTime
@@ -14116,7 +14099,7 @@ pause
 
     @property
     def PayMode(self):
-        r"""付费模式
+        r"""<p>付费模式</p>
         :rtype: int
         """
         return self._PayMode
@@ -14127,7 +14110,7 @@ pause
 
     @property
     def PeriodEndTime(self):
-        r"""实例过期时间
+        r"""<p>实例过期时间</p>
         :rtype: str
         """
         return self._PeriodEndTime
@@ -14138,7 +14121,7 @@ pause
 
     @property
     def NetType(self):
-        r"""网络类型
+        r"""<p>网络类型</p>
         :rtype: int
         """
         return self._NetType
@@ -14149,7 +14132,7 @@ pause
 
     @property
     def VpcId(self):
-        r"""VPC网络ID
+        r"""<p>VPC网络ID</p>
         :rtype: str
         """
         return self._VpcId
@@ -14160,7 +14143,7 @@ pause
 
     @property
     def SubnetId(self):
-        r"""子网ID
+        r"""<p>子网ID</p>
         :rtype: str
         """
         return self._SubnetId
@@ -14171,7 +14154,7 @@ pause
 
     @property
     def Vip(self):
-        r"""实例内网IP
+        r"""<p>实例内网IP</p>
         :rtype: str
         """
         return self._Vip
@@ -14182,7 +14165,7 @@ pause
 
     @property
     def Vport(self):
-        r"""实例内网端口
+        r"""<p>实例内网端口</p>
         :rtype: int
         """
         return self._Vport
@@ -14193,7 +14176,7 @@ pause
 
     @property
     def WanDomain(self):
-        r"""实例外网域名
+        r"""<p>实例外网域名</p>
         :rtype: str
         """
         return self._WanDomain
@@ -14204,7 +14187,7 @@ pause
 
     @property
     def Charset(self):
-        r"""字符集
+        r"""<p>字符集</p>
         :rtype: str
         """
         return self._Charset
@@ -14215,7 +14198,7 @@ pause
 
     @property
     def CynosVersion(self):
-        r"""Cynos内核版本
+        r"""<p>Cynos内核版本</p>
         :rtype: str
         """
         return self._CynosVersion
@@ -14226,7 +14209,7 @@ pause
 
     @property
     def RenewFlag(self):
-        r"""续费标志
+        r"""<p>续费标志</p>
         :rtype: int
         """
         return self._RenewFlag
@@ -14237,7 +14220,7 @@ pause
 
     @property
     def MinCpu(self):
-        r"""serverless实例cpu下限
+        r"""<p>serverless实例cpu下限</p>
         :rtype: float
         """
         return self._MinCpu
@@ -14248,7 +14231,7 @@ pause
 
     @property
     def MaxCpu(self):
-        r"""serverless实例cpu上限
+        r"""<p>serverless实例cpu上限</p>
         :rtype: float
         """
         return self._MaxCpu
@@ -14259,7 +14242,7 @@ pause
 
     @property
     def DbMode(self):
-        r"""Db类型:<li>NORMAL</li><li>SERVERLESS</li>
+        r"""<p>Db类型:<li>NORMAL</li><li>SERVERLESS</li></p>
         :rtype: str
         """
         return self._DbMode
@@ -14267,6 +14250,17 @@ pause
     @DbMode.setter
     def DbMode(self, DbMode):
         self._DbMode = DbMode
+
+    @property
+    def MasterZone(self):
+        r"""<p>集群的读写实例所在可用区</p>
+        :rtype: str
+        """
+        return self._MasterZone
+
+    @MasterZone.setter
+    def MasterZone(self, MasterZone):
+        self._MasterZone = MasterZone
 
 
     def _deserialize(self, params):
@@ -14305,6 +14299,7 @@ pause
         self._MinCpu = params.get("MinCpu")
         self._MaxCpu = params.get("MaxCpu")
         self._DbMode = params.get("DbMode")
+        self._MasterZone = params.get("MasterZone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -40233,18 +40228,17 @@ class ModifyDBInstanceSecurityGroupsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 网络组id(cynosdbmysql-grp-前缀开头)或集群id（例如 cynosdbmysql-xxxxxxxx前缀）,当通过实例IP地址三元组（UniqVpcId、Vip、Vport）配置安全组时，该字段必须设置为集群ID（例如 cynosdbmysql-xxxxxxxx前缀）。
+        :param _InstanceId: <p>网络组id(cynosdbmysql-grp-前缀开头)或集群id（例如 cynosdbmysql-xxxxxxxx前缀）,当通过实例IP地址三元组（UniqVpcId、Vip、Vport）配置安全组时，该字段必须设置为集群ID（例如 cynosdbmysql-xxxxxxxx前缀）。</p>
         :type InstanceId: str
-        :param _SecurityGroupIds: 要修改的安全组ID列表，一个或者多个安全组ID组成的数组。
-注意：该入参会全量替换存量已有集合，非增量更新。修改需传入预期的全量集合。
+        :param _SecurityGroupIds: <p>要修改的安全组ID列表，一个或者多个安全组ID组成的数组。<br>注意：该入参会全量替换存量已有集合，非增量更新。修改需传入预期的全量集合。</p>
         :type SecurityGroupIds: list of str
-        :param _Zone: 可用区
+        :param _Zone: <p>可用区</p>
         :type Zone: str
-        :param _UniqVpcId: 实例所属VPC网络ID,（UniqVpcId、Vip 和 Vport 三个参数需同时指定，用于唯一标识网络实例）
+        :param _UniqVpcId: <p>实例所属VPC网络ID,（UniqVpcId、Vip 和 Vport 三个参数需同时指定，用于唯一标识网络实例）</p>
         :type UniqVpcId: str
-        :param _Vip: 实例IP地址,实例IP地址三元组UniqVpcId、Vip 和 Vport) 三个参数需同时指定，用于唯一标识网络实实例
+        :param _Vip: <p>实例IP地址,实例IP地址三元组UniqVpcId、Vip 和 Vport) 三个参数需同时指定，用于唯一标识网络实实例</p>
         :type Vip: str
-        :param _Vport: 实例端口,实例IP地址三元组UniqVpcId、Vip 和 Vport) 三个参数需同时指定，用于唯一标识网络实实例
+        :param _Vport: <p>实例端口,实例IP地址三元组UniqVpcId、Vip 和 Vport) 三个参数需同时指定，用于唯一标识网络实实例</p>
         :type Vport: int
         """
         self._InstanceId = None
@@ -40256,7 +40250,7 @@ class ModifyDBInstanceSecurityGroupsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""网络组id(cynosdbmysql-grp-前缀开头)或集群id（例如 cynosdbmysql-xxxxxxxx前缀）,当通过实例IP地址三元组（UniqVpcId、Vip、Vport）配置安全组时，该字段必须设置为集群ID（例如 cynosdbmysql-xxxxxxxx前缀）。
+        r"""<p>网络组id(cynosdbmysql-grp-前缀开头)或集群id（例如 cynosdbmysql-xxxxxxxx前缀）,当通过实例IP地址三元组（UniqVpcId、Vip、Vport）配置安全组时，该字段必须设置为集群ID（例如 cynosdbmysql-xxxxxxxx前缀）。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -40267,8 +40261,7 @@ class ModifyDBInstanceSecurityGroupsRequest(AbstractModel):
 
     @property
     def SecurityGroupIds(self):
-        r"""要修改的安全组ID列表，一个或者多个安全组ID组成的数组。
-注意：该入参会全量替换存量已有集合，非增量更新。修改需传入预期的全量集合。
+        r"""<p>要修改的安全组ID列表，一个或者多个安全组ID组成的数组。<br>注意：该入参会全量替换存量已有集合，非增量更新。修改需传入预期的全量集合。</p>
         :rtype: list of str
         """
         return self._SecurityGroupIds
@@ -40279,7 +40272,7 @@ class ModifyDBInstanceSecurityGroupsRequest(AbstractModel):
 
     @property
     def Zone(self):
-        r"""可用区
+        r"""<p>可用区</p>
         :rtype: str
         """
         return self._Zone
@@ -40290,7 +40283,7 @@ class ModifyDBInstanceSecurityGroupsRequest(AbstractModel):
 
     @property
     def UniqVpcId(self):
-        r"""实例所属VPC网络ID,（UniqVpcId、Vip 和 Vport 三个参数需同时指定，用于唯一标识网络实例）
+        r"""<p>实例所属VPC网络ID,（UniqVpcId、Vip 和 Vport 三个参数需同时指定，用于唯一标识网络实例）</p>
         :rtype: str
         """
         return self._UniqVpcId
@@ -40301,7 +40294,7 @@ class ModifyDBInstanceSecurityGroupsRequest(AbstractModel):
 
     @property
     def Vip(self):
-        r"""实例IP地址,实例IP地址三元组UniqVpcId、Vip 和 Vport) 三个参数需同时指定，用于唯一标识网络实实例
+        r"""<p>实例IP地址,实例IP地址三元组UniqVpcId、Vip 和 Vport) 三个参数需同时指定，用于唯一标识网络实实例</p>
         :rtype: str
         """
         return self._Vip
@@ -40312,7 +40305,7 @@ class ModifyDBInstanceSecurityGroupsRequest(AbstractModel):
 
     @property
     def Vport(self):
-        r"""实例端口,实例IP地址三元组UniqVpcId、Vip 和 Vport) 三个参数需同时指定，用于唯一标识网络实实例
+        r"""<p>实例端口,实例IP地址三元组UniqVpcId、Vip 和 Vport) 三个参数需同时指定，用于唯一标识网络实实例</p>
         :rtype: int
         """
         return self._Vport

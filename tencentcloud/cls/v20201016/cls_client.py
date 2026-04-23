@@ -887,6 +887,29 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateSearchView(self, request):
+        r"""新建查询视图
+
+        :param request: Request instance for CreateSearchView.
+        :type request: :class:`tencentcloud.cls.v20201016.models.CreateSearchViewRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.CreateSearchViewResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateSearchView", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateSearchViewResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateShipper(self, request):
         r"""新建投递到COS的任务，【！！！注意】使用此接口，需要检查是否配置了投递COS的角色和权限。如果没有配置，请参考文档投递权限查看和配置https://cloud.tencent.com/document/product/614/71623。
 
@@ -1637,6 +1660,29 @@ class ClsClient(AbstractClient):
             body = self.call("DeleteScheduledSql", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteScheduledSqlResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteSearchView(self, request):
+        r"""删除查询视图
+
+        :param request: Request instance for DeleteSearchView.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DeleteSearchViewRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DeleteSearchViewResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteSearchView", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteSearchViewResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2843,6 +2889,29 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeSearchViews(self, request):
+        r"""获取查询视图列表
+
+        :param request: Request instance for DescribeSearchViews.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DescribeSearchViewsRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DescribeSearchViewsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSearchViews", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSearchViewsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeShipperTasks(self, request):
         r"""获取投递任务列表
 
@@ -3755,6 +3824,29 @@ class ClsClient(AbstractClient):
             body = self.call("ModifyScheduledSql", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyScheduledSqlResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifySearchView(self, request):
+        r"""修改查询视图
+
+        :param request: Request instance for ModifySearchView.
+        :type request: :class:`tencentcloud.cls.v20201016.models.ModifySearchViewRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.ModifySearchViewResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifySearchView", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifySearchViewResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

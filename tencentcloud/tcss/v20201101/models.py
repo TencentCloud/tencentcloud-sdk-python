@@ -4406,6 +4406,273 @@ class AddNetworkFirewallPolicyYamlDetailResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class AddOrModifyMaliciousConnectionWhiteListRequest(AbstractModel):
+    r"""AddOrModifyMaliciousConnectionWhiteList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestType: 枚举
+IP: IP
+域名：DOMAIN
+        :type RequestType: str
+        :param _WhiteDomainList: 白名单域名
+        :type WhiteDomainList: list of str
+        :param _WhiteIPList: 白名单IP
+        :type WhiteIPList: list of str
+        :param _Remark: 备注
+        :type Remark: str
+        :param _ID: 白名单记录id，只有修改时需要
+        :type ID: int
+        """
+        self._RequestType = None
+        self._WhiteDomainList = None
+        self._WhiteIPList = None
+        self._Remark = None
+        self._ID = None
+
+    @property
+    def RequestType(self):
+        r"""枚举
+IP: IP
+域名：DOMAIN
+        :rtype: str
+        """
+        return self._RequestType
+
+    @RequestType.setter
+    def RequestType(self, RequestType):
+        self._RequestType = RequestType
+
+    @property
+    def WhiteDomainList(self):
+        r"""白名单域名
+        :rtype: list of str
+        """
+        return self._WhiteDomainList
+
+    @WhiteDomainList.setter
+    def WhiteDomainList(self, WhiteDomainList):
+        self._WhiteDomainList = WhiteDomainList
+
+    @property
+    def WhiteIPList(self):
+        r"""白名单IP
+        :rtype: list of str
+        """
+        return self._WhiteIPList
+
+    @WhiteIPList.setter
+    def WhiteIPList(self, WhiteIPList):
+        self._WhiteIPList = WhiteIPList
+
+    @property
+    def Remark(self):
+        r"""备注
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def ID(self):
+        r"""白名单记录id，只有修改时需要
+        :rtype: int
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+
+    def _deserialize(self, params):
+        self._RequestType = params.get("RequestType")
+        self._WhiteDomainList = params.get("WhiteDomainList")
+        self._WhiteIPList = params.get("WhiteIPList")
+        self._Remark = params.get("Remark")
+        self._ID = params.get("ID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AddOrModifyMaliciousConnectionWhiteListResponse(AbstractModel):
+    r"""AddOrModifyMaliciousConnectionWhiteList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class AddOrModifyVirusWhiteListRuleRequest(AbstractModel):
+    r"""AddOrModifyVirusWhiteListRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Md5List: <p>MD5列表</p>
+        :type Md5List: list of str
+        :param _Scope: <p>生效范围：1=全部镜像，0=自选镜像</p>
+        :type Scope: int
+        :param _Id: <p>规则ID，有值为修改，无值为新增</p>
+        :type Id: int
+        :param _ImageIds: <p>镜像ID列表，最大1000个。Scope为0（自选镜像）时必填</p>
+        :type ImageIds: list of str
+        :param _Remark: <p>规则备注，最大256字符</p>
+        :type Remark: str
+        :param _EventId: <p>事件id</p>
+        :type EventId: int
+        """
+        self._Md5List = None
+        self._Scope = None
+        self._Id = None
+        self._ImageIds = None
+        self._Remark = None
+        self._EventId = None
+
+    @property
+    def Md5List(self):
+        r"""<p>MD5列表</p>
+        :rtype: list of str
+        """
+        return self._Md5List
+
+    @Md5List.setter
+    def Md5List(self, Md5List):
+        self._Md5List = Md5List
+
+    @property
+    def Scope(self):
+        r"""<p>生效范围：1=全部镜像，0=自选镜像</p>
+        :rtype: int
+        """
+        return self._Scope
+
+    @Scope.setter
+    def Scope(self, Scope):
+        self._Scope = Scope
+
+    @property
+    def Id(self):
+        r"""<p>规则ID，有值为修改，无值为新增</p>
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def ImageIds(self):
+        r"""<p>镜像ID列表，最大1000个。Scope为0（自选镜像）时必填</p>
+        :rtype: list of str
+        """
+        return self._ImageIds
+
+    @ImageIds.setter
+    def ImageIds(self, ImageIds):
+        self._ImageIds = ImageIds
+
+    @property
+    def Remark(self):
+        r"""<p>规则备注，最大256字符</p>
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def EventId(self):
+        r"""<p>事件id</p>
+        :rtype: int
+        """
+        return self._EventId
+
+    @EventId.setter
+    def EventId(self, EventId):
+        self._EventId = EventId
+
+
+    def _deserialize(self, params):
+        self._Md5List = params.get("Md5List")
+        self._Scope = params.get("Scope")
+        self._Id = params.get("Id")
+        self._ImageIds = params.get("ImageIds")
+        self._Remark = params.get("Remark")
+        self._EventId = params.get("EventId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AddOrModifyVirusWhiteListRuleResponse(AbstractModel):
+    r"""AddOrModifyVirusWhiteListRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class AffectedNodeItem(AbstractModel):
     r"""受影响的节点类型结构体
 
@@ -18692,6 +18959,70 @@ class DeleteSearchTemplateRequest(AbstractModel):
 
 class DeleteSearchTemplateResponse(AbstractModel):
     r"""DeleteSearchTemplate返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteVirusWhiteListRuleRequest(AbstractModel):
+    r"""DeleteVirusWhiteListRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleIdSet: 规则ID列表
+        :type RuleIdSet: list of int non-negative
+        """
+        self._RuleIdSet = None
+
+    @property
+    def RuleIdSet(self):
+        r"""规则ID列表
+        :rtype: list of int non-negative
+        """
+        return self._RuleIdSet
+
+    @RuleIdSet.setter
+    def RuleIdSet(self, RuleIdSet):
+        self._RuleIdSet = RuleIdSet
+
+
+    def _deserialize(self, params):
+        self._RuleIdSet = params.get("RuleIdSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteVirusWhiteListRuleResponse(AbstractModel):
+    r"""DeleteVirusWhiteListRule返回参数结构体
 
     """
 
@@ -51190,6 +51521,110 @@ class DescribeVirusManualScanEstimateTimeoutResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeVirusMonitorConfigRequest(AbstractModel):
+    r"""DescribeVirusMonitorConfig请求参数结构体
+
+    """
+
+
+class DescribeVirusMonitorConfigResponse(AbstractModel):
+    r"""DescribeVirusMonitorConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnableScan: 是否开启实时监控
+        :type EnableScan: bool
+        :param _IsIncludePath: true:包含路径 false:排除路径
+        :type IsIncludePath: bool
+        :param _ScanPath: 自选排除或扫描的地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScanPath: list of str
+        :param _ScanPathMode: 扫描路径模式：
+SCAN_PATH_ALL：全部路径
+SCAN_PATH_DEFAULT：默认路径
+SCAN_PATH_USER_DEFINE：用户自定义路径
+
+        :type ScanPathMode: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._EnableScan = None
+        self._IsIncludePath = None
+        self._ScanPath = None
+        self._ScanPathMode = None
+        self._RequestId = None
+
+    @property
+    def EnableScan(self):
+        r"""是否开启实时监控
+        :rtype: bool
+        """
+        return self._EnableScan
+
+    @EnableScan.setter
+    def EnableScan(self, EnableScan):
+        self._EnableScan = EnableScan
+
+    @property
+    def IsIncludePath(self):
+        r"""true:包含路径 false:排除路径
+        :rtype: bool
+        """
+        return self._IsIncludePath
+
+    @IsIncludePath.setter
+    def IsIncludePath(self, IsIncludePath):
+        self._IsIncludePath = IsIncludePath
+
+    @property
+    def ScanPath(self):
+        r"""自选排除或扫描的地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._ScanPath
+
+    @ScanPath.setter
+    def ScanPath(self, ScanPath):
+        self._ScanPath = ScanPath
+
+    @property
+    def ScanPathMode(self):
+        r"""扫描路径模式：
+SCAN_PATH_ALL：全部路径
+SCAN_PATH_DEFAULT：默认路径
+SCAN_PATH_USER_DEFINE：用户自定义路径
+
+        :rtype: str
+        """
+        return self._ScanPathMode
+
+    @ScanPathMode.setter
+    def ScanPathMode(self, ScanPathMode):
+        self._ScanPathMode = ScanPathMode
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._EnableScan = params.get("EnableScan")
+        self._IsIncludePath = params.get("IsIncludePath")
+        self._ScanPath = params.get("ScanPath")
+        self._ScanPathMode = params.get("ScanPathMode")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeVirusMonitorSettingRequest(AbstractModel):
     r"""DescribeVirusMonitorSetting请求参数结构体
 
@@ -51383,6 +51818,192 @@ class DescribeVirusSampleDownloadUrlResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._FileUrl = params.get("FileUrl")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeVirusScanConfigRequest(AbstractModel):
+    r"""DescribeVirusScanConfig请求参数结构体
+
+    """
+
+
+class DescribeVirusScanConfigResponse(AbstractModel):
+    r"""DescribeVirusScanConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnableScan: 是否开启定期扫描
+        :type EnableScan: bool
+        :param _Cycle: 检测周期每隔多少天
+        :type Cycle: int
+        :param _BeginScanAt: 扫描开始时间
+        :type BeginScanAt: str
+        :param _Timeout: 超时时长，单位小时
+        :type Timeout: int
+        :param _ScanRangeType: SCAN_NODE:扫描节点
+SCAN_CONTAINER:扫描容器
+        :type ScanRangeType: str
+        :param _ScanIDs: 自选扫描范围的容器id或者节点id 
+        :type ScanIDs: list of ScanRangeInfo
+        :param _ScanPath: 自选排除或扫描的地址
+        :type ScanPath: list of str
+        :param _ScanPathMode: 扫描路径模式：
+SCAN_PATH_ALL：全部路径
+SCAN_PATH_DEFAULT：默认路径
+SCAN_PATH_USER_DEFINE：用户自定义路径
+
+        :type ScanPathMode: str
+        :param _IsIncludePath: true:包含路径
+false:排除路径
+        :type IsIncludePath: bool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._EnableScan = None
+        self._Cycle = None
+        self._BeginScanAt = None
+        self._Timeout = None
+        self._ScanRangeType = None
+        self._ScanIDs = None
+        self._ScanPath = None
+        self._ScanPathMode = None
+        self._IsIncludePath = None
+        self._RequestId = None
+
+    @property
+    def EnableScan(self):
+        r"""是否开启定期扫描
+        :rtype: bool
+        """
+        return self._EnableScan
+
+    @EnableScan.setter
+    def EnableScan(self, EnableScan):
+        self._EnableScan = EnableScan
+
+    @property
+    def Cycle(self):
+        r"""检测周期每隔多少天
+        :rtype: int
+        """
+        return self._Cycle
+
+    @Cycle.setter
+    def Cycle(self, Cycle):
+        self._Cycle = Cycle
+
+    @property
+    def BeginScanAt(self):
+        r"""扫描开始时间
+        :rtype: str
+        """
+        return self._BeginScanAt
+
+    @BeginScanAt.setter
+    def BeginScanAt(self, BeginScanAt):
+        self._BeginScanAt = BeginScanAt
+
+    @property
+    def Timeout(self):
+        r"""超时时长，单位小时
+        :rtype: int
+        """
+        return self._Timeout
+
+    @Timeout.setter
+    def Timeout(self, Timeout):
+        self._Timeout = Timeout
+
+    @property
+    def ScanRangeType(self):
+        r"""SCAN_NODE:扫描节点
+SCAN_CONTAINER:扫描容器
+        :rtype: str
+        """
+        return self._ScanRangeType
+
+    @ScanRangeType.setter
+    def ScanRangeType(self, ScanRangeType):
+        self._ScanRangeType = ScanRangeType
+
+    @property
+    def ScanIDs(self):
+        r"""自选扫描范围的容器id或者节点id 
+        :rtype: list of ScanRangeInfo
+        """
+        return self._ScanIDs
+
+    @ScanIDs.setter
+    def ScanIDs(self, ScanIDs):
+        self._ScanIDs = ScanIDs
+
+    @property
+    def ScanPath(self):
+        r"""自选排除或扫描的地址
+        :rtype: list of str
+        """
+        return self._ScanPath
+
+    @ScanPath.setter
+    def ScanPath(self, ScanPath):
+        self._ScanPath = ScanPath
+
+    @property
+    def ScanPathMode(self):
+        r"""扫描路径模式：
+SCAN_PATH_ALL：全部路径
+SCAN_PATH_DEFAULT：默认路径
+SCAN_PATH_USER_DEFINE：用户自定义路径
+
+        :rtype: str
+        """
+        return self._ScanPathMode
+
+    @ScanPathMode.setter
+    def ScanPathMode(self, ScanPathMode):
+        self._ScanPathMode = ScanPathMode
+
+    @property
+    def IsIncludePath(self):
+        r"""true:包含路径
+false:排除路径
+        :rtype: bool
+        """
+        return self._IsIncludePath
+
+    @IsIncludePath.setter
+    def IsIncludePath(self, IsIncludePath):
+        self._IsIncludePath = IsIncludePath
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._EnableScan = params.get("EnableScan")
+        self._Cycle = params.get("Cycle")
+        self._BeginScanAt = params.get("BeginScanAt")
+        self._Timeout = params.get("Timeout")
+        self._ScanRangeType = params.get("ScanRangeType")
+        if params.get("ScanIDs") is not None:
+            self._ScanIDs = []
+            for item in params.get("ScanIDs"):
+                obj = ScanRangeInfo()
+                obj._deserialize(item)
+                self._ScanIDs.append(obj)
+        self._ScanPath = params.get("ScanPath")
+        self._ScanPathMode = params.get("ScanPathMode")
+        self._IsIncludePath = params.get("IsIncludePath")
         self._RequestId = params.get("RequestId")
 
 
@@ -52257,6 +52878,170 @@ class DescribeVirusTaskListResponse(AbstractModel):
                 obj._deserialize(item)
                 self._List.append(obj)
         self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeVirusWhiteListRulesRequest(AbstractModel):
+    r"""DescribeVirusWhiteListRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Limit: <p>分页大小，默认为10</p>
+        :type Limit: int
+        :param _Offset: <p>分页偏移量，默认为0</p>
+        :type Offset: int
+        :param _Order: <p>排序方向，ASC/DESC，默认DESC</p>
+        :type Order: str
+        :param _By: <p>排序字段，支持 InsertTime/UpdateTime</p>
+        :type By: str
+        :param _Filters: <p>过滤</p>
+        :type Filters: list of RunTimeFilters
+        """
+        self._Limit = None
+        self._Offset = None
+        self._Order = None
+        self._By = None
+        self._Filters = None
+
+    @property
+    def Limit(self):
+        r"""<p>分页大小，默认为10</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""<p>分页偏移量，默认为0</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Order(self):
+        r"""<p>排序方向，ASC/DESC，默认DESC</p>
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def By(self):
+        r"""<p>排序字段，支持 InsertTime/UpdateTime</p>
+        :rtype: str
+        """
+        return self._By
+
+    @By.setter
+    def By(self, By):
+        self._By = By
+
+    @property
+    def Filters(self):
+        r"""<p>过滤</p>
+        :rtype: list of RunTimeFilters
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._Order = params.get("Order")
+        self._By = params.get("By")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = RunTimeFilters()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVirusWhiteListRulesResponse(AbstractModel):
+    r"""DescribeVirusWhiteListRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>总数</p>
+        :type TotalCount: int
+        :param _List: <p>白名单规则列表</p>
+        :type List: list of VirusWhiteListRuleInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._List = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>总数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def List(self):
+        r"""<p>白名单规则列表</p>
+        :rtype: list of VirusWhiteListRuleInfo
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = VirusWhiteListRuleInfo()
+                obj._deserialize(item)
+                self._List.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -57733,55 +58518,57 @@ class HostInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _HostID: 主机id
+        :param _HostID: <p>主机id</p>
         :type HostID: str
-        :param _HostIP: 主机ip即内网ip
+        :param _HostIP: <p>主机ip即内网ip</p>
         :type HostIP: str
-        :param _HostName: 主机名称
+        :param _HostName: <p>主机名称</p>
         :type HostName: str
-        :param _Group: 业务组
+        :param _Group: <p>业务组</p>
         :type Group: str
-        :param _DockerVersion: docker 版本
+        :param _DockerVersion: <p>docker 版本</p>
         :type DockerVersion: str
-        :param _DockerFileSystemDriver: docker 文件系统类型
+        :param _DockerFileSystemDriver: <p>docker 文件系统类型</p>
         :type DockerFileSystemDriver: str
-        :param _ImageCnt: 镜像个数
+        :param _ImageCnt: <p>镜像个数</p>
         :type ImageCnt: int
-        :param _ContainerCnt: 容器个数
+        :param _ContainerCnt: <p>容器个数</p>
         :type ContainerCnt: int
-        :param _Status: agent运行状态
+        :param _Status: <p>agent运行状态</p>
         :type Status: str
-        :param _IsContainerd: 是否是Containerd
+        :param _IsContainerd: <p>是否是Containerd</p>
         :type IsContainerd: bool
-        :param _MachineType: 主机来源：["CVM", "ECM", "LH", "BM"]  中的之一为腾讯云服务器；["Other"]之一非腾讯云服务器；
+        :param _MachineType: <p>主机来源：[&quot;CVM&quot;, &quot;ECM&quot;, &quot;LH&quot;, &quot;BM&quot;]  中的之一为腾讯云服务器；[&quot;Other&quot;]之一非腾讯云服务器；</p>
         :type MachineType: str
-        :param _PublicIp: 外网ip
+        :param _PublicIp: <p>外网ip</p>
         :type PublicIp: str
-        :param _Uuid: 主机uuid
+        :param _Uuid: <p>主机uuid</p>
         :type Uuid: str
-        :param _InstanceID: 主机实例ID
+        :param _InstanceID: <p>主机实例ID</p>
         :type InstanceID: str
-        :param _RegionID: 地域ID
+        :param _RegionID: <p>地域ID</p>
         :type RegionID: int
-        :param _Project: 所属项目
+        :param _Project: <p>所属项目</p>
         :type Project: :class:`tencentcloud.tcss.v20201101.models.ProjectInfo`
-        :param _Tags: 标签
+        :param _Tags: <p>标签</p>
         :type Tags: list of TagInfo
-        :param _ClusterID: 集群id
+        :param _ClusterID: <p>集群id</p>
         :type ClusterID: str
-        :param _ClusterName: 集群名称
+        :param _ClusterName: <p>集群名称</p>
         :type ClusterName: str
-        :param _ClusterAccessedStatus: 集群接入状态
+        :param _ClusterAccessedStatus: <p>集群接入状态</p>
         :type ClusterAccessedStatus: str
-        :param _ChargeCoresCnt: 计费核数
+        :param _ClusterAccessedSubStatus: <p>集群接入子状态</p><p>枚举值：</p><ul><li>AccessedSubNone： 无</li><li>AccessedSubUninstallException： 卸载异常</li><li>AccessedSubTimeout： 接入超时</li><li>AccessedSubUninstallTimeout： 卸载超时</li><li>AccessedSubResourceException： 集群组件检查异常-Deployment/DaemonSet等异常</li><li>AccessedSubCAMPermissionDenied： CAM权限不够</li></ul>
+        :type ClusterAccessedSubStatus: str
+        :param _ClusterAccessedErrorReason: <p>失败具体原因描述</p>
+        :type ClusterAccessedErrorReason: str
+        :param _ChargeCoresCnt: <p>计费核数</p>
         :type ChargeCoresCnt: int
-        :param _DefendStatus: 防护状态:
-已防护: Defended
-未防护: UnDefended
+        :param _DefendStatus: <p>防护状态:<br>已防护: Defended<br>未防护: UnDefended</p>
         :type DefendStatus: str
-        :param _CoresCnt: 核数
+        :param _CoresCnt: <p>核数</p>
         :type CoresCnt: int
-        :param _LastOnlineTime: 最近在线时间
+        :param _LastOnlineTime: <p>最近在线时间</p>
         :type LastOnlineTime: str
         """
         self._HostID = None
@@ -57804,6 +58591,8 @@ class HostInfo(AbstractModel):
         self._ClusterID = None
         self._ClusterName = None
         self._ClusterAccessedStatus = None
+        self._ClusterAccessedSubStatus = None
+        self._ClusterAccessedErrorReason = None
         self._ChargeCoresCnt = None
         self._DefendStatus = None
         self._CoresCnt = None
@@ -57811,7 +58600,7 @@ class HostInfo(AbstractModel):
 
     @property
     def HostID(self):
-        r"""主机id
+        r"""<p>主机id</p>
         :rtype: str
         """
         return self._HostID
@@ -57822,7 +58611,7 @@ class HostInfo(AbstractModel):
 
     @property
     def HostIP(self):
-        r"""主机ip即内网ip
+        r"""<p>主机ip即内网ip</p>
         :rtype: str
         """
         return self._HostIP
@@ -57833,7 +58622,7 @@ class HostInfo(AbstractModel):
 
     @property
     def HostName(self):
-        r"""主机名称
+        r"""<p>主机名称</p>
         :rtype: str
         """
         return self._HostName
@@ -57844,7 +58633,7 @@ class HostInfo(AbstractModel):
 
     @property
     def Group(self):
-        r"""业务组
+        r"""<p>业务组</p>
         :rtype: str
         """
         return self._Group
@@ -57855,7 +58644,7 @@ class HostInfo(AbstractModel):
 
     @property
     def DockerVersion(self):
-        r"""docker 版本
+        r"""<p>docker 版本</p>
         :rtype: str
         """
         return self._DockerVersion
@@ -57866,7 +58655,7 @@ class HostInfo(AbstractModel):
 
     @property
     def DockerFileSystemDriver(self):
-        r"""docker 文件系统类型
+        r"""<p>docker 文件系统类型</p>
         :rtype: str
         """
         return self._DockerFileSystemDriver
@@ -57877,7 +58666,7 @@ class HostInfo(AbstractModel):
 
     @property
     def ImageCnt(self):
-        r"""镜像个数
+        r"""<p>镜像个数</p>
         :rtype: int
         """
         return self._ImageCnt
@@ -57888,7 +58677,7 @@ class HostInfo(AbstractModel):
 
     @property
     def ContainerCnt(self):
-        r"""容器个数
+        r"""<p>容器个数</p>
         :rtype: int
         """
         return self._ContainerCnt
@@ -57899,7 +58688,7 @@ class HostInfo(AbstractModel):
 
     @property
     def Status(self):
-        r"""agent运行状态
+        r"""<p>agent运行状态</p>
         :rtype: str
         """
         return self._Status
@@ -57910,7 +58699,7 @@ class HostInfo(AbstractModel):
 
     @property
     def IsContainerd(self):
-        r"""是否是Containerd
+        r"""<p>是否是Containerd</p>
         :rtype: bool
         """
         return self._IsContainerd
@@ -57921,7 +58710,7 @@ class HostInfo(AbstractModel):
 
     @property
     def MachineType(self):
-        r"""主机来源：["CVM", "ECM", "LH", "BM"]  中的之一为腾讯云服务器；["Other"]之一非腾讯云服务器；
+        r"""<p>主机来源：[&quot;CVM&quot;, &quot;ECM&quot;, &quot;LH&quot;, &quot;BM&quot;]  中的之一为腾讯云服务器；[&quot;Other&quot;]之一非腾讯云服务器；</p>
         :rtype: str
         """
         return self._MachineType
@@ -57932,7 +58721,7 @@ class HostInfo(AbstractModel):
 
     @property
     def PublicIp(self):
-        r"""外网ip
+        r"""<p>外网ip</p>
         :rtype: str
         """
         return self._PublicIp
@@ -57943,7 +58732,7 @@ class HostInfo(AbstractModel):
 
     @property
     def Uuid(self):
-        r"""主机uuid
+        r"""<p>主机uuid</p>
         :rtype: str
         """
         return self._Uuid
@@ -57954,7 +58743,7 @@ class HostInfo(AbstractModel):
 
     @property
     def InstanceID(self):
-        r"""主机实例ID
+        r"""<p>主机实例ID</p>
         :rtype: str
         """
         return self._InstanceID
@@ -57965,7 +58754,7 @@ class HostInfo(AbstractModel):
 
     @property
     def RegionID(self):
-        r"""地域ID
+        r"""<p>地域ID</p>
         :rtype: int
         """
         return self._RegionID
@@ -57976,7 +58765,7 @@ class HostInfo(AbstractModel):
 
     @property
     def Project(self):
-        r"""所属项目
+        r"""<p>所属项目</p>
         :rtype: :class:`tencentcloud.tcss.v20201101.models.ProjectInfo`
         """
         return self._Project
@@ -57987,7 +58776,7 @@ class HostInfo(AbstractModel):
 
     @property
     def Tags(self):
-        r"""标签
+        r"""<p>标签</p>
         :rtype: list of TagInfo
         """
         return self._Tags
@@ -57998,7 +58787,7 @@ class HostInfo(AbstractModel):
 
     @property
     def ClusterID(self):
-        r"""集群id
+        r"""<p>集群id</p>
         :rtype: str
         """
         return self._ClusterID
@@ -58009,7 +58798,7 @@ class HostInfo(AbstractModel):
 
     @property
     def ClusterName(self):
-        r"""集群名称
+        r"""<p>集群名称</p>
         :rtype: str
         """
         return self._ClusterName
@@ -58020,7 +58809,7 @@ class HostInfo(AbstractModel):
 
     @property
     def ClusterAccessedStatus(self):
-        r"""集群接入状态
+        r"""<p>集群接入状态</p>
         :rtype: str
         """
         return self._ClusterAccessedStatus
@@ -58030,8 +58819,30 @@ class HostInfo(AbstractModel):
         self._ClusterAccessedStatus = ClusterAccessedStatus
 
     @property
+    def ClusterAccessedSubStatus(self):
+        r"""<p>集群接入子状态</p><p>枚举值：</p><ul><li>AccessedSubNone： 无</li><li>AccessedSubUninstallException： 卸载异常</li><li>AccessedSubTimeout： 接入超时</li><li>AccessedSubUninstallTimeout： 卸载超时</li><li>AccessedSubResourceException： 集群组件检查异常-Deployment/DaemonSet等异常</li><li>AccessedSubCAMPermissionDenied： CAM权限不够</li></ul>
+        :rtype: str
+        """
+        return self._ClusterAccessedSubStatus
+
+    @ClusterAccessedSubStatus.setter
+    def ClusterAccessedSubStatus(self, ClusterAccessedSubStatus):
+        self._ClusterAccessedSubStatus = ClusterAccessedSubStatus
+
+    @property
+    def ClusterAccessedErrorReason(self):
+        r"""<p>失败具体原因描述</p>
+        :rtype: str
+        """
+        return self._ClusterAccessedErrorReason
+
+    @ClusterAccessedErrorReason.setter
+    def ClusterAccessedErrorReason(self, ClusterAccessedErrorReason):
+        self._ClusterAccessedErrorReason = ClusterAccessedErrorReason
+
+    @property
     def ChargeCoresCnt(self):
-        r"""计费核数
+        r"""<p>计费核数</p>
         :rtype: int
         """
         return self._ChargeCoresCnt
@@ -58042,9 +58853,7 @@ class HostInfo(AbstractModel):
 
     @property
     def DefendStatus(self):
-        r"""防护状态:
-已防护: Defended
-未防护: UnDefended
+        r"""<p>防护状态:<br>已防护: Defended<br>未防护: UnDefended</p>
         :rtype: str
         """
         return self._DefendStatus
@@ -58055,7 +58864,7 @@ class HostInfo(AbstractModel):
 
     @property
     def CoresCnt(self):
-        r"""核数
+        r"""<p>核数</p>
         :rtype: int
         """
         return self._CoresCnt
@@ -58066,7 +58875,7 @@ class HostInfo(AbstractModel):
 
     @property
     def LastOnlineTime(self):
-        r"""最近在线时间
+        r"""<p>最近在线时间</p>
         :rtype: str
         """
         return self._LastOnlineTime
@@ -58104,6 +58913,8 @@ class HostInfo(AbstractModel):
         self._ClusterID = params.get("ClusterID")
         self._ClusterName = params.get("ClusterName")
         self._ClusterAccessedStatus = params.get("ClusterAccessedStatus")
+        self._ClusterAccessedSubStatus = params.get("ClusterAccessedSubStatus")
+        self._ClusterAccessedErrorReason = params.get("ClusterAccessedErrorReason")
         self._ChargeCoresCnt = params.get("ChargeCoresCnt")
         self._DefendStatus = params.get("DefendStatus")
         self._CoresCnt = params.get("CoresCnt")
@@ -75246,6 +76057,78 @@ class ScanIgnoreVul(AbstractModel):
         
 
 
+class ScanRangeInfo(AbstractModel):
+    r"""扫描范围信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IsAll: true:选择全部；
+false:部分选择
+        :type IsAll: bool
+        :param _RangeType: SCAN_NORMAL:普通节点；
+SCAN_SUPER:超级节点
+SCAN_CONTAINER:容器
+        :type RangeType: str
+        :param _IDs: 选择的ID
+        :type IDs: list of str
+        """
+        self._IsAll = None
+        self._RangeType = None
+        self._IDs = None
+
+    @property
+    def IsAll(self):
+        r"""true:选择全部；
+false:部分选择
+        :rtype: bool
+        """
+        return self._IsAll
+
+    @IsAll.setter
+    def IsAll(self, IsAll):
+        self._IsAll = IsAll
+
+    @property
+    def RangeType(self):
+        r"""SCAN_NORMAL:普通节点；
+SCAN_SUPER:超级节点
+SCAN_CONTAINER:容器
+        :rtype: str
+        """
+        return self._RangeType
+
+    @RangeType.setter
+    def RangeType(self, RangeType):
+        self._RangeType = RangeType
+
+    @property
+    def IDs(self):
+        r"""选择的ID
+        :rtype: list of str
+        """
+        return self._IDs
+
+    @IDs.setter
+    def IDs(self, IDs):
+        self._IDs = IDs
+
+
+    def _deserialize(self, params):
+        self._IsAll = params.get("IsAll")
+        self._RangeType = params.get("RangeType")
+        self._IDs = params.get("IDs")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SearchTemplate(AbstractModel):
     r"""快速搜索模板
 
@@ -76876,44 +77759,46 @@ class SuperNodeListItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NodeID: 超级节点ID
+        :param _NodeID: <p>超级节点ID</p>
         :type NodeID: str
-        :param _NodeName: 超级节点名称
+        :param _NodeName: <p>超级节点名称</p>
         :type NodeName: str
-        :param _ClusterName: 所属集群名
+        :param _ClusterName: <p>所属集群名</p>
         :type ClusterName: str
-        :param _ClusterID: 所属集群ID
+        :param _ClusterID: <p>所属集群ID</p>
         :type ClusterID: str
-        :param _Status: 节点状态:Running,Ready,Notready,Initializing,Failed,Error
+        :param _Status: <p>节点状态:Running,Ready,Notready,Initializing,Failed,Error</p>
         :type Status: str
-        :param _SubNetID: 子网ID
+        :param _SubNetID: <p>子网ID</p>
         :type SubNetID: str
-        :param _SubNetName: 子网名称
+        :param _SubNetName: <p>子网名称</p>
         :type SubNetName: str
-        :param _SubNetCidr: 子网网段
+        :param _SubNetCidr: <p>子网网段</p>
         :type SubNetCidr: str
-        :param _ZoneID: 可用区ID
+        :param _ZoneID: <p>可用区ID</p>
         :type ZoneID: str
-        :param _Zone: 可用区
+        :param _Zone: <p>可用区</p>
         :type Zone: str
-        :param _CreateTime: 创建时间
+        :param _CreateTime: <p>创建时间</p>
         :type CreateTime: str
-        :param _RelatePodCount: 关联pod数
+        :param _RelatePodCount: <p>关联pod数</p>
         :type RelatePodCount: int
-        :param _RelateContainerCount: 关联容器数
+        :param _RelateContainerCount: <p>关联容器数</p>
         :type RelateContainerCount: int
-        :param _AgentStatus: agent安装状态UNINSTALL:未安装;INSTALLED:已安装;INSTALLING:安装中;
+        :param _AgentStatus: <p>agent安装状态UNINSTALL:未安装;INSTALLED:已安装;INSTALLING:安装中;</p>
         :type AgentStatus: str
-        :param _NodeUniqueID: 节点唯一id
+        :param _NodeUniqueID: <p>节点唯一id</p>
         :type NodeUniqueID: str
-        :param _ClusterAccessedStatus: 集群接入状态
+        :param _ClusterAccessedStatus: <p>集群接入状态</p>
         :type ClusterAccessedStatus: str
-        :param _ChargeCoresCnt: 计费核数
+        :param _ChargeCoresCnt: <p>计费核数</p>
         :type ChargeCoresCnt: int
-        :param _DefendStatus: 防护状态:
-已防护: Defended
-未防护: UnDefended
+        :param _DefendStatus: <p>防护状态:<br>已防护: Defended<br>未防护: UnDefended</p>
         :type DefendStatus: str
+        :param _ClusterAccessedSubStatus: <p>集群接入子状态</p><p>枚举值：</p><ul><li>AccessedSubNone： 无</li><li>AccessedSubUninstallException： 卸载异常</li><li>AccessedSubTimeout： 接入超时</li><li>AccessedSubUninstallTimeout： 卸载超时</li><li>AccessedSubResourceException： 集群组件检查异常-Deployment/DaemonSet等异常</li><li>AccessedSubCAMPermissionDenied： CAM权限不够</li></ul>
+        :type ClusterAccessedSubStatus: str
+        :param _ClusterAccessedErrorReason: <p>失败具体原因描述</p>
+        :type ClusterAccessedErrorReason: str
         """
         self._NodeID = None
         self._NodeName = None
@@ -76933,10 +77818,12 @@ class SuperNodeListItem(AbstractModel):
         self._ClusterAccessedStatus = None
         self._ChargeCoresCnt = None
         self._DefendStatus = None
+        self._ClusterAccessedSubStatus = None
+        self._ClusterAccessedErrorReason = None
 
     @property
     def NodeID(self):
-        r"""超级节点ID
+        r"""<p>超级节点ID</p>
         :rtype: str
         """
         return self._NodeID
@@ -76947,7 +77834,7 @@ class SuperNodeListItem(AbstractModel):
 
     @property
     def NodeName(self):
-        r"""超级节点名称
+        r"""<p>超级节点名称</p>
         :rtype: str
         """
         return self._NodeName
@@ -76958,7 +77845,7 @@ class SuperNodeListItem(AbstractModel):
 
     @property
     def ClusterName(self):
-        r"""所属集群名
+        r"""<p>所属集群名</p>
         :rtype: str
         """
         return self._ClusterName
@@ -76969,7 +77856,7 @@ class SuperNodeListItem(AbstractModel):
 
     @property
     def ClusterID(self):
-        r"""所属集群ID
+        r"""<p>所属集群ID</p>
         :rtype: str
         """
         return self._ClusterID
@@ -76980,7 +77867,7 @@ class SuperNodeListItem(AbstractModel):
 
     @property
     def Status(self):
-        r"""节点状态:Running,Ready,Notready,Initializing,Failed,Error
+        r"""<p>节点状态:Running,Ready,Notready,Initializing,Failed,Error</p>
         :rtype: str
         """
         return self._Status
@@ -76991,7 +77878,7 @@ class SuperNodeListItem(AbstractModel):
 
     @property
     def SubNetID(self):
-        r"""子网ID
+        r"""<p>子网ID</p>
         :rtype: str
         """
         return self._SubNetID
@@ -77002,7 +77889,7 @@ class SuperNodeListItem(AbstractModel):
 
     @property
     def SubNetName(self):
-        r"""子网名称
+        r"""<p>子网名称</p>
         :rtype: str
         """
         return self._SubNetName
@@ -77013,7 +77900,7 @@ class SuperNodeListItem(AbstractModel):
 
     @property
     def SubNetCidr(self):
-        r"""子网网段
+        r"""<p>子网网段</p>
         :rtype: str
         """
         return self._SubNetCidr
@@ -77024,7 +77911,7 @@ class SuperNodeListItem(AbstractModel):
 
     @property
     def ZoneID(self):
-        r"""可用区ID
+        r"""<p>可用区ID</p>
         :rtype: str
         """
         return self._ZoneID
@@ -77035,7 +77922,7 @@ class SuperNodeListItem(AbstractModel):
 
     @property
     def Zone(self):
-        r"""可用区
+        r"""<p>可用区</p>
         :rtype: str
         """
         return self._Zone
@@ -77046,7 +77933,7 @@ class SuperNodeListItem(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
         :rtype: str
         """
         return self._CreateTime
@@ -77057,7 +77944,7 @@ class SuperNodeListItem(AbstractModel):
 
     @property
     def RelatePodCount(self):
-        r"""关联pod数
+        r"""<p>关联pod数</p>
         :rtype: int
         """
         return self._RelatePodCount
@@ -77068,7 +77955,7 @@ class SuperNodeListItem(AbstractModel):
 
     @property
     def RelateContainerCount(self):
-        r"""关联容器数
+        r"""<p>关联容器数</p>
         :rtype: int
         """
         return self._RelateContainerCount
@@ -77079,7 +77966,7 @@ class SuperNodeListItem(AbstractModel):
 
     @property
     def AgentStatus(self):
-        r"""agent安装状态UNINSTALL:未安装;INSTALLED:已安装;INSTALLING:安装中;
+        r"""<p>agent安装状态UNINSTALL:未安装;INSTALLED:已安装;INSTALLING:安装中;</p>
         :rtype: str
         """
         return self._AgentStatus
@@ -77090,7 +77977,7 @@ class SuperNodeListItem(AbstractModel):
 
     @property
     def NodeUniqueID(self):
-        r"""节点唯一id
+        r"""<p>节点唯一id</p>
         :rtype: str
         """
         return self._NodeUniqueID
@@ -77101,7 +77988,7 @@ class SuperNodeListItem(AbstractModel):
 
     @property
     def ClusterAccessedStatus(self):
-        r"""集群接入状态
+        r"""<p>集群接入状态</p>
         :rtype: str
         """
         return self._ClusterAccessedStatus
@@ -77112,7 +77999,7 @@ class SuperNodeListItem(AbstractModel):
 
     @property
     def ChargeCoresCnt(self):
-        r"""计费核数
+        r"""<p>计费核数</p>
         :rtype: int
         """
         return self._ChargeCoresCnt
@@ -77123,9 +78010,7 @@ class SuperNodeListItem(AbstractModel):
 
     @property
     def DefendStatus(self):
-        r"""防护状态:
-已防护: Defended
-未防护: UnDefended
+        r"""<p>防护状态:<br>已防护: Defended<br>未防护: UnDefended</p>
         :rtype: str
         """
         return self._DefendStatus
@@ -77133,6 +78018,28 @@ class SuperNodeListItem(AbstractModel):
     @DefendStatus.setter
     def DefendStatus(self, DefendStatus):
         self._DefendStatus = DefendStatus
+
+    @property
+    def ClusterAccessedSubStatus(self):
+        r"""<p>集群接入子状态</p><p>枚举值：</p><ul><li>AccessedSubNone： 无</li><li>AccessedSubUninstallException： 卸载异常</li><li>AccessedSubTimeout： 接入超时</li><li>AccessedSubUninstallTimeout： 卸载超时</li><li>AccessedSubResourceException： 集群组件检查异常-Deployment/DaemonSet等异常</li><li>AccessedSubCAMPermissionDenied： CAM权限不够</li></ul>
+        :rtype: str
+        """
+        return self._ClusterAccessedSubStatus
+
+    @ClusterAccessedSubStatus.setter
+    def ClusterAccessedSubStatus(self, ClusterAccessedSubStatus):
+        self._ClusterAccessedSubStatus = ClusterAccessedSubStatus
+
+    @property
+    def ClusterAccessedErrorReason(self):
+        r"""<p>失败具体原因描述</p>
+        :rtype: str
+        """
+        return self._ClusterAccessedErrorReason
+
+    @ClusterAccessedErrorReason.setter
+    def ClusterAccessedErrorReason(self, ClusterAccessedErrorReason):
+        self._ClusterAccessedErrorReason = ClusterAccessedErrorReason
 
 
     def _deserialize(self, params):
@@ -77154,6 +78061,8 @@ class SuperNodeListItem(AbstractModel):
         self._ClusterAccessedStatus = params.get("ClusterAccessedStatus")
         self._ChargeCoresCnt = params.get("ChargeCoresCnt")
         self._DefendStatus = params.get("DefendStatus")
+        self._ClusterAccessedSubStatus = params.get("ClusterAccessedSubStatus")
+        self._ClusterAccessedErrorReason = params.get("ClusterAccessedErrorReason")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -80414,6 +81323,162 @@ class VirusTendencyInfo(AbstractModel):
         self._RiskContainerCount = params.get("RiskContainerCount")
         self._EventCount = params.get("EventCount")
         self._IsolateEventCount = params.get("IsolateEventCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VirusWhiteListRuleInfo(AbstractModel):
+    r"""VirusWhiteListRuleInfo
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>白名单id</p>
+        :type Id: int
+        :param _Md5List: <p>md5加白内容</p>
+        :type Md5List: list of str
+        :param _ImageIds: <p>镜像id</p>
+        :type ImageIds: list of str
+        :param _Scope: <p>范围</p>
+        :type Scope: int
+        :param _ImageCount: <p>镜像数</p>
+        :type ImageCount: int
+        :param _Md5Count: <p>md5数</p>
+        :type Md5Count: int
+        :param _Remark: <p>标记</p>
+        :type Remark: str
+        :param _InsertTime: <p>插入时间</p>
+        :type InsertTime: str
+        :param _UpdateTime: <p>更新时间</p>
+        :type UpdateTime: str
+        """
+        self._Id = None
+        self._Md5List = None
+        self._ImageIds = None
+        self._Scope = None
+        self._ImageCount = None
+        self._Md5Count = None
+        self._Remark = None
+        self._InsertTime = None
+        self._UpdateTime = None
+
+    @property
+    def Id(self):
+        r"""<p>白名单id</p>
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Md5List(self):
+        r"""<p>md5加白内容</p>
+        :rtype: list of str
+        """
+        return self._Md5List
+
+    @Md5List.setter
+    def Md5List(self, Md5List):
+        self._Md5List = Md5List
+
+    @property
+    def ImageIds(self):
+        r"""<p>镜像id</p>
+        :rtype: list of str
+        """
+        return self._ImageIds
+
+    @ImageIds.setter
+    def ImageIds(self, ImageIds):
+        self._ImageIds = ImageIds
+
+    @property
+    def Scope(self):
+        r"""<p>范围</p>
+        :rtype: int
+        """
+        return self._Scope
+
+    @Scope.setter
+    def Scope(self, Scope):
+        self._Scope = Scope
+
+    @property
+    def ImageCount(self):
+        r"""<p>镜像数</p>
+        :rtype: int
+        """
+        return self._ImageCount
+
+    @ImageCount.setter
+    def ImageCount(self, ImageCount):
+        self._ImageCount = ImageCount
+
+    @property
+    def Md5Count(self):
+        r"""<p>md5数</p>
+        :rtype: int
+        """
+        return self._Md5Count
+
+    @Md5Count.setter
+    def Md5Count(self, Md5Count):
+        self._Md5Count = Md5Count
+
+    @property
+    def Remark(self):
+        r"""<p>标记</p>
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def InsertTime(self):
+        r"""<p>插入时间</p>
+        :rtype: str
+        """
+        return self._InsertTime
+
+    @InsertTime.setter
+    def InsertTime(self, InsertTime):
+        self._InsertTime = InsertTime
+
+    @property
+    def UpdateTime(self):
+        r"""<p>更新时间</p>
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Md5List = params.get("Md5List")
+        self._ImageIds = params.get("ImageIds")
+        self._Scope = params.get("Scope")
+        self._ImageCount = params.get("ImageCount")
+        self._Md5Count = params.get("Md5Count")
+        self._Remark = params.get("Remark")
+        self._InsertTime = params.get("InsertTime")
+        self._UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

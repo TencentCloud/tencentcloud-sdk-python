@@ -404,6 +404,52 @@ class TcssClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def AddOrModifyMaliciousConnectionWhiteList(self, request):
+        r"""增加或修改恶意外连的白名单
+
+        :param request: Request instance for AddOrModifyMaliciousConnectionWhiteList.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.AddOrModifyMaliciousConnectionWhiteListRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.AddOrModifyMaliciousConnectionWhiteListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AddOrModifyMaliciousConnectionWhiteList", params, headers=headers)
+            response = json.loads(body)
+            model = models.AddOrModifyMaliciousConnectionWhiteListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def AddOrModifyVirusWhiteListRule(self, request):
+        r"""新增或修改木马白名单规则
+
+        :param request: Request instance for AddOrModifyVirusWhiteListRule.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.AddOrModifyVirusWhiteListRuleRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.AddOrModifyVirusWhiteListRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AddOrModifyVirusWhiteListRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.AddOrModifyVirusWhiteListRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CheckNetworkFirewallPolicyYaml(self, request):
         r"""功能已下线待三合一重构
 
@@ -1792,6 +1838,29 @@ class TcssClient(AbstractClient):
             body = self.call("DeleteSearchTemplate", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteSearchTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteVirusWhiteListRule(self, request):
+        r"""删除木马白名单规则
+
+        :param request: Request instance for DeleteVirusWhiteListRule.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DeleteVirusWhiteListRuleRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DeleteVirusWhiteListRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteVirusWhiteListRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteVirusWhiteListRuleResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -6124,6 +6193,29 @@ class TcssClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeVirusMonitorConfig(self, request):
+        r"""运行时查询文件查杀实时监控设置信息
+
+        :param request: Request instance for DescribeVirusMonitorConfig.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVirusMonitorConfigRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeVirusMonitorConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVirusMonitorConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeVirusMonitorConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeVirusMonitorSetting(self, request):
         r"""运行时查询文件查杀实时监控设置
 
@@ -6161,6 +6253,29 @@ class TcssClient(AbstractClient):
             body = self.call("DescribeVirusSampleDownloadUrl", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeVirusSampleDownloadUrlResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeVirusScanConfig(self, request):
+        r"""运行时查询文件查杀新设置
+
+        :param request: Request instance for DescribeVirusScanConfig.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVirusScanConfigRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeVirusScanConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVirusScanConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeVirusScanConfigResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -6276,6 +6391,29 @@ class TcssClient(AbstractClient):
             body = self.call("DescribeVirusTaskList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeVirusTaskListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeVirusWhiteListRules(self, request):
+        r"""查询木马白名单规则列表
+
+        :param request: Request instance for DescribeVirusWhiteListRules.
+        :type request: :class:`tencentcloud.tcss.v20201101.models.DescribeVirusWhiteListRulesRequest`
+        :rtype: :class:`tencentcloud.tcss.v20201101.models.DescribeVirusWhiteListRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVirusWhiteListRules", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeVirusWhiteListRulesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

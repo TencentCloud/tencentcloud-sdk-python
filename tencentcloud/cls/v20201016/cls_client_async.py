@@ -706,6 +706,24 @@ class ClsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateSearchView(
+            self,
+            request: models.CreateSearchViewRequest,
+            opts: Dict = None,
+    ) -> models.CreateSearchViewResponse:
+        """
+        新建查询视图
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateSearchView"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateSearchViewResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateShipper(
             self,
             request: models.CreateShipperRequest,
@@ -1295,6 +1313,24 @@ class ClsClient(AbstractClient):
         kwargs["action"] = "DeleteScheduledSql"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteScheduledSqlResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteSearchView(
+            self,
+            request: models.DeleteSearchViewRequest,
+            opts: Dict = None,
+    ) -> models.DeleteSearchViewResponse:
+        """
+        删除查询视图
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteSearchView"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteSearchViewResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2237,6 +2273,24 @@ class ClsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeSearchViews(
+            self,
+            request: models.DescribeSearchViewsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeSearchViewsResponse:
+        """
+        获取查询视图列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeSearchViews"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeSearchViewsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeShipperTasks(
             self,
             request: models.DescribeShipperTasksRequest,
@@ -2953,6 +3007,24 @@ class ClsClient(AbstractClient):
         kwargs["action"] = "ModifyScheduledSql"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyScheduledSqlResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifySearchView(
+            self,
+            request: models.ModifySearchViewRequest,
+            opts: Dict = None,
+    ) -> models.ModifySearchViewResponse:
+        """
+        修改查询视图
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifySearchView"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifySearchViewResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

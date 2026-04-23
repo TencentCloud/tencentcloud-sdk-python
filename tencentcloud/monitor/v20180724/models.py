@@ -38371,23 +38371,26 @@ class RemoteWrite(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _URL: 多写url
+        :param _URL: <p>多写url</p>
         :type URL: str
-        :param _URLRelabelConfig: RelabelConfig
+        :param _URLRelabelConfig: <p>RelabelConfig</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type URLRelabelConfig: str
-        :param _BasicAuth: 鉴权
+        :param _BasicAuth: <p>鉴权</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type BasicAuth: :class:`tencentcloud.monitor.v20180724.models.BasicAuth`
-        :param _MaxBlockSize: 最大block
+        :param _MaxBlockSize: <p>最大block</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type MaxBlockSize: str
-        :param _Label: Label
+        :param _Label: <p>Label</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Label: str
-        :param _Headers: HTTP 额外添加的头
+        :param _Headers: <p>HTTP 额外添加的头</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Headers: list of RemoteWriteHeader
+        :param _RemoteWriteType: <p>数据多写类型:<br>1- 只多写采集指标<br>2- 只多写预聚合指标<br>3- 同时多写采集和预聚合指标</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RemoteWriteType: int
         """
         self._URL = None
         self._URLRelabelConfig = None
@@ -38395,10 +38398,11 @@ class RemoteWrite(AbstractModel):
         self._MaxBlockSize = None
         self._Label = None
         self._Headers = None
+        self._RemoteWriteType = None
 
     @property
     def URL(self):
-        r"""多写url
+        r"""<p>多写url</p>
         :rtype: str
         """
         return self._URL
@@ -38409,7 +38413,7 @@ class RemoteWrite(AbstractModel):
 
     @property
     def URLRelabelConfig(self):
-        r"""RelabelConfig
+        r"""<p>RelabelConfig</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -38421,7 +38425,7 @@ class RemoteWrite(AbstractModel):
 
     @property
     def BasicAuth(self):
-        r"""鉴权
+        r"""<p>鉴权</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.monitor.v20180724.models.BasicAuth`
         """
@@ -38435,7 +38439,7 @@ class RemoteWrite(AbstractModel):
     def MaxBlockSize(self):
         warnings.warn("parameter `MaxBlockSize` is deprecated", DeprecationWarning) 
 
-        r"""最大block
+        r"""<p>最大block</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -38451,7 +38455,7 @@ class RemoteWrite(AbstractModel):
     def Label(self):
         warnings.warn("parameter `Label` is deprecated", DeprecationWarning) 
 
-        r"""Label
+        r"""<p>Label</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -38465,7 +38469,7 @@ class RemoteWrite(AbstractModel):
 
     @property
     def Headers(self):
-        r"""HTTP 额外添加的头
+        r"""<p>HTTP 额外添加的头</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of RemoteWriteHeader
         """
@@ -38474,6 +38478,18 @@ class RemoteWrite(AbstractModel):
     @Headers.setter
     def Headers(self, Headers):
         self._Headers = Headers
+
+    @property
+    def RemoteWriteType(self):
+        r"""<p>数据多写类型:<br>1- 只多写采集指标<br>2- 只多写预聚合指标<br>3- 同时多写采集和预聚合指标</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._RemoteWriteType
+
+    @RemoteWriteType.setter
+    def RemoteWriteType(self, RemoteWriteType):
+        self._RemoteWriteType = RemoteWriteType
 
 
     def _deserialize(self, params):
@@ -38490,6 +38506,7 @@ class RemoteWrite(AbstractModel):
                 obj = RemoteWriteHeader()
                 obj._deserialize(item)
                 self._Headers.append(obj)
+        self._RemoteWriteType = params.get("RemoteWriteType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

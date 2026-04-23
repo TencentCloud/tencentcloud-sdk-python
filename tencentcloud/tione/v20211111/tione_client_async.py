@@ -442,6 +442,24 @@ class TioneClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeBillingResourceGroupAttachedWorkspaces(
+            self,
+            request: models.DescribeBillingResourceGroupAttachedWorkspacesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeBillingResourceGroupAttachedWorkspacesResponse:
+        """
+        查询资源组关联的工作空间列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeBillingResourceGroupAttachedWorkspaces"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeBillingResourceGroupAttachedWorkspacesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeBillingResourceGroups(
             self,
             request: models.DescribeBillingResourceGroupsRequest,

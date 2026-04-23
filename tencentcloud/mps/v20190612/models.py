@@ -12655,31 +12655,20 @@ class AigcImageExtraParam(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AspectRatio: 指定所生成视频的宽高比。
-
-不同模型支持的宽高比:
-1. GEM支持：1:1、3:2、2:3、3:4、4:3、4:5、5:4、9:16、16:9 和 21:9。
-
-注：具体模型的宽高比参数，可查看相应模型官网获取更完整描述。
+        :param _AspectRatio: <p>指定所生成视频的宽高比。</p><p>不同模型支持的宽高比:</p><ol><li>GEM支持：1:1、3:2、2:3、3:4、4:3、4:5、5:4、9:16、16:9 和 21:9。</li></ol><p>注：具体模型的宽高比参数，可查看相应模型官网获取更完整描述。</p>
         :type AspectRatio: str
-        :param _Resolution: 指定图片输出分辨率。
-
-支持该参数的模型：
-支持选择: 720P, 1080P, 2K, 4K。
-
+        :param _Resolution: <p>指定图片输出分辨率。</p><p>支持该参数的模型：<br>支持选择: 720P, 1080P, 2K, 4K。</p>
         :type Resolution: str
+        :param _LogoAdd: <p>是否添加图标水印。默认不加。1-添加，0-不添加。</p><p>取值范围：[0, 1]</p><p>默认值：0</p>
+        :type LogoAdd: int
         """
         self._AspectRatio = None
         self._Resolution = None
+        self._LogoAdd = None
 
     @property
     def AspectRatio(self):
-        r"""指定所生成视频的宽高比。
-
-不同模型支持的宽高比:
-1. GEM支持：1:1、3:2、2:3、3:4、4:3、4:5、5:4、9:16、16:9 和 21:9。
-
-注：具体模型的宽高比参数，可查看相应模型官网获取更完整描述。
+        r"""<p>指定所生成视频的宽高比。</p><p>不同模型支持的宽高比:</p><ol><li>GEM支持：1:1、3:2、2:3、3:4、4:3、4:5、5:4、9:16、16:9 和 21:9。</li></ol><p>注：具体模型的宽高比参数，可查看相应模型官网获取更完整描述。</p>
         :rtype: str
         """
         return self._AspectRatio
@@ -12690,11 +12679,7 @@ class AigcImageExtraParam(AbstractModel):
 
     @property
     def Resolution(self):
-        r"""指定图片输出分辨率。
-
-支持该参数的模型：
-支持选择: 720P, 1080P, 2K, 4K。
-
+        r"""<p>指定图片输出分辨率。</p><p>支持该参数的模型：<br>支持选择: 720P, 1080P, 2K, 4K。</p>
         :rtype: str
         """
         return self._Resolution
@@ -12703,10 +12688,22 @@ class AigcImageExtraParam(AbstractModel):
     def Resolution(self, Resolution):
         self._Resolution = Resolution
 
+    @property
+    def LogoAdd(self):
+        r"""<p>是否添加图标水印。默认不加。1-添加，0-不添加。</p><p>取值范围：[0, 1]</p><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._LogoAdd
+
+    @LogoAdd.setter
+    def LogoAdd(self, LogoAdd):
+        self._LogoAdd = LogoAdd
+
 
     def _deserialize(self, params):
         self._AspectRatio = params.get("AspectRatio")
         self._Resolution = params.get("Resolution")
+        self._LogoAdd = params.get("LogoAdd")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20322,9 +20319,9 @@ class CreateAigcVideoTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ModelName: <p>模型名称。<br>当前支持的模型列表:<br>Hunyuan,<br>Hailuo，<br>Kling，<br>Vidu，<br>OS，<br>GV。</p>
+        :param _ModelName: <p>模型名称。<br>当前支持的模型列表:<br>Hunyuan,<br>Hailuo，<br>Kling，<br>Vidu，<br>OS，<br>GV，<br>PixVerse。</p>
         :type ModelName: str
-        :param _ModelVersion: <p>指定模型特定版本号。默认使用系统当前所支持的模型稳定版本。</p><ol><li>Hailuo， 可选[02、2.3]。</li><li>Kling，可选[2.0、2.1、2.5、O1、2.6、3.0、3.0-Omni]。</li><li>Vidu,可选[q2、q2-pro、q2-turbo、q3-pro、q3-turbo]。</li><li>GV, 可选[3.1]。</li><li>OS，可选[2.0]。</li></ol>
+        :param _ModelVersion: <p>指定模型特定版本号。默认使用系统当前所支持的模型稳定版本。</p><ol><li>Hailuo， 可选[02、2.3、2.3-fast]。</li><li>Kling，可选[1.6、2.0、2.1、2.5、O1、2.6、3.0、3.0-Omni]。</li><li>Vidu,可选[q2、q2-pro、q2-turbo、q3-pro、q3-turbo、q3、q3-mix]。</li><li>GV, 可选[3.1、3.1-fast]。</li><li>OS，可选[2.0]。</li><li>PixVerse，可选[v5.6、v6、c1]</li></ol>
         :type ModelVersion: str
         :param _SceneType: <p>指定场景生视频。<br>注意：仅部分模型支持指定场景。</p><ol><li>Kling支持动作控制，motion_control。</li><li>Mingmou支持横转竖，land2port。</li><li>Vidu支持特效模板，template_effect。</li></ol>
         :type SceneType: str
@@ -20371,7 +20368,7 @@ class CreateAigcVideoTaskRequest(AbstractModel):
 
     @property
     def ModelName(self):
-        r"""<p>模型名称。<br>当前支持的模型列表:<br>Hunyuan,<br>Hailuo，<br>Kling，<br>Vidu，<br>OS，<br>GV。</p>
+        r"""<p>模型名称。<br>当前支持的模型列表:<br>Hunyuan,<br>Hailuo，<br>Kling，<br>Vidu，<br>OS，<br>GV，<br>PixVerse。</p>
         :rtype: str
         """
         return self._ModelName
@@ -20382,7 +20379,7 @@ class CreateAigcVideoTaskRequest(AbstractModel):
 
     @property
     def ModelVersion(self):
-        r"""<p>指定模型特定版本号。默认使用系统当前所支持的模型稳定版本。</p><ol><li>Hailuo， 可选[02、2.3]。</li><li>Kling，可选[2.0、2.1、2.5、O1、2.6、3.0、3.0-Omni]。</li><li>Vidu,可选[q2、q2-pro、q2-turbo、q3-pro、q3-turbo]。</li><li>GV, 可选[3.1]。</li><li>OS，可选[2.0]。</li></ol>
+        r"""<p>指定模型特定版本号。默认使用系统当前所支持的模型稳定版本。</p><ol><li>Hailuo， 可选[02、2.3、2.3-fast]。</li><li>Kling，可选[1.6、2.0、2.1、2.5、O1、2.6、3.0、3.0-Omni]。</li><li>Vidu,可选[q2、q2-pro、q2-turbo、q3-pro、q3-turbo、q3、q3-mix]。</li><li>GV, 可选[3.1、3.1-fast]。</li><li>OS，可选[2.0]。</li><li>PixVerse，可选[v5.6、v6、c1]</li></ol>
         :rtype: str
         """
         return self._ModelVersion
@@ -41130,6 +41127,160 @@ class DescribeTasksResponse(AbstractModel):
                 self._TaskSet.append(obj)
         self._ScrollToken = params.get("ScrollToken")
         self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeTextToSpeechAsyncTaskRequest(AbstractModel):
+    r"""DescribeTextToSpeechAsyncTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务ID</p>
+        :type TaskId: str
+        """
+        self._TaskId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务ID</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTextToSpeechAsyncTaskResponse(AbstractModel):
+    r"""DescribeTextToSpeechAsyncTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorCode: <p>错误码，成功时返回0</p>
+        :type ErrorCode: int
+        :param _Msg: <p>错误信息，成功时返回success</p>
+        :type Msg: str
+        :param _Status: <p>任务状态</p><p>枚举值：</p><ul><li>success： 成功</li><li>fail： 失败</li><li>processing： 处理中</li></ul>
+        :type Status: str
+        :param _AudioUrl: <p>合成音频url</p>
+        :type AudioUrl: str
+        :param _VoiceId: <p>使用的音色ID</p>
+        :type VoiceId: str
+        :param _ExtInfo: <p>扩展信息</p>
+        :type ExtInfo: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ErrorCode = None
+        self._Msg = None
+        self._Status = None
+        self._AudioUrl = None
+        self._VoiceId = None
+        self._ExtInfo = None
+        self._RequestId = None
+
+    @property
+    def ErrorCode(self):
+        r"""<p>错误码，成功时返回0</p>
+        :rtype: int
+        """
+        return self._ErrorCode
+
+    @ErrorCode.setter
+    def ErrorCode(self, ErrorCode):
+        self._ErrorCode = ErrorCode
+
+    @property
+    def Msg(self):
+        r"""<p>错误信息，成功时返回success</p>
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def Status(self):
+        r"""<p>任务状态</p><p>枚举值：</p><ul><li>success： 成功</li><li>fail： 失败</li><li>processing： 处理中</li></ul>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def AudioUrl(self):
+        r"""<p>合成音频url</p>
+        :rtype: str
+        """
+        return self._AudioUrl
+
+    @AudioUrl.setter
+    def AudioUrl(self, AudioUrl):
+        self._AudioUrl = AudioUrl
+
+    @property
+    def VoiceId(self):
+        r"""<p>使用的音色ID</p>
+        :rtype: str
+        """
+        return self._VoiceId
+
+    @VoiceId.setter
+    def VoiceId(self, VoiceId):
+        self._VoiceId = VoiceId
+
+    @property
+    def ExtInfo(self):
+        r"""<p>扩展信息</p>
+        :rtype: str
+        """
+        return self._ExtInfo
+
+    @ExtInfo.setter
+    def ExtInfo(self, ExtInfo):
+        self._ExtInfo = ExtInfo
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ErrorCode = params.get("ErrorCode")
+        self._Msg = params.get("Msg")
+        self._Status = params.get("Status")
+        self._AudioUrl = params.get("AudioUrl")
+        self._VoiceId = params.get("VoiceId")
+        self._ExtInfo = params.get("ExtInfo")
         self._RequestId = params.get("RequestId")
 
 
@@ -72400,32 +72551,38 @@ class SSAIChannelInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ID: 频道ID，全局唯一标识。
+        :param _ID: <p>频道ID，全局唯一标识。</p>
         :type ID: str
-        :param _Name: 频道名称。
+        :param _Name: <p>频道名称。</p>
         :type Name: str
-        :param _ContentSource: 广告源信息。
+        :param _ContentSource: <p>广告源信息。</p>
         :type ContentSource: str
-        :param _PlaybackPrefix: 播放地址。
+        :param _PlaybackPrefix: <p>播放地址。兼容旧版本参数，推荐使用HlsPlaybackPrefix或DashPlaybackPrefix</p>
         :type PlaybackPrefix: str
-        :param _SSAIInfo: 广告插入SSAI配置信息。
+        :param _HlsPlaybackPrefix: <p>hls播放地址</p>
+        :type HlsPlaybackPrefix: str
+        :param _DashPlaybackPrefix: <p>dash播放地址</p>
+        :type DashPlaybackPrefix: str
+        :param _SSAIInfo: <p>广告插入SSAI配置信息。</p>
         :type SSAIInfo: :class:`tencentcloud.mps.v20190612.models.SSAIConf`
-        :param _Region: 地域信息。
+        :param _Region: <p>地域信息。</p>
         :type Region: str
-        :param _SessionInitPrefix: 用于clickthrough地址
+        :param _SessionInitPrefix: <p>用于clickthrough地址</p>
         :type SessionInitPrefix: str
         """
         self._ID = None
         self._Name = None
         self._ContentSource = None
         self._PlaybackPrefix = None
+        self._HlsPlaybackPrefix = None
+        self._DashPlaybackPrefix = None
         self._SSAIInfo = None
         self._Region = None
         self._SessionInitPrefix = None
 
     @property
     def ID(self):
-        r"""频道ID，全局唯一标识。
+        r"""<p>频道ID，全局唯一标识。</p>
         :rtype: str
         """
         return self._ID
@@ -72436,7 +72593,7 @@ class SSAIChannelInfo(AbstractModel):
 
     @property
     def Name(self):
-        r"""频道名称。
+        r"""<p>频道名称。</p>
         :rtype: str
         """
         return self._Name
@@ -72447,7 +72604,7 @@ class SSAIChannelInfo(AbstractModel):
 
     @property
     def ContentSource(self):
-        r"""广告源信息。
+        r"""<p>广告源信息。</p>
         :rtype: str
         """
         return self._ContentSource
@@ -72458,7 +72615,7 @@ class SSAIChannelInfo(AbstractModel):
 
     @property
     def PlaybackPrefix(self):
-        r"""播放地址。
+        r"""<p>播放地址。兼容旧版本参数，推荐使用HlsPlaybackPrefix或DashPlaybackPrefix</p>
         :rtype: str
         """
         return self._PlaybackPrefix
@@ -72468,8 +72625,30 @@ class SSAIChannelInfo(AbstractModel):
         self._PlaybackPrefix = PlaybackPrefix
 
     @property
+    def HlsPlaybackPrefix(self):
+        r"""<p>hls播放地址</p>
+        :rtype: str
+        """
+        return self._HlsPlaybackPrefix
+
+    @HlsPlaybackPrefix.setter
+    def HlsPlaybackPrefix(self, HlsPlaybackPrefix):
+        self._HlsPlaybackPrefix = HlsPlaybackPrefix
+
+    @property
+    def DashPlaybackPrefix(self):
+        r"""<p>dash播放地址</p>
+        :rtype: str
+        """
+        return self._DashPlaybackPrefix
+
+    @DashPlaybackPrefix.setter
+    def DashPlaybackPrefix(self, DashPlaybackPrefix):
+        self._DashPlaybackPrefix = DashPlaybackPrefix
+
+    @property
     def SSAIInfo(self):
-        r"""广告插入SSAI配置信息。
+        r"""<p>广告插入SSAI配置信息。</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.SSAIConf`
         """
         return self._SSAIInfo
@@ -72480,7 +72659,7 @@ class SSAIChannelInfo(AbstractModel):
 
     @property
     def Region(self):
-        r"""地域信息。
+        r"""<p>地域信息。</p>
         :rtype: str
         """
         return self._Region
@@ -72491,7 +72670,7 @@ class SSAIChannelInfo(AbstractModel):
 
     @property
     def SessionInitPrefix(self):
-        r"""用于clickthrough地址
+        r"""<p>用于clickthrough地址</p>
         :rtype: str
         """
         return self._SessionInitPrefix
@@ -72506,6 +72685,8 @@ class SSAIChannelInfo(AbstractModel):
         self._Name = params.get("Name")
         self._ContentSource = params.get("ContentSource")
         self._PlaybackPrefix = params.get("PlaybackPrefix")
+        self._HlsPlaybackPrefix = params.get("HlsPlaybackPrefix")
+        self._DashPlaybackPrefix = params.get("DashPlaybackPrefix")
         if params.get("SSAIInfo") is not None:
             self._SSAIInfo = SSAIConf()
             self._SSAIInfo._deserialize(params.get("SSAIInfo"))
@@ -72564,6 +72745,14 @@ class SSAIConf(AbstractModel):
         :type PreRollMaxAllowedDuration: int
         :param _MultiRequest: <p>是否开启多次请求ADS,开启后将优先请求ADS，请求失败后再请求兜底广告</p>
         :type MultiRequest: bool
+        :param _DashOriginManifestType: <p>dash周期类型：SinglePeriod 或 MultiPeriod，默认 MultiPeriod</p>
+        :type DashOriginManifestType: str
+        :param _SlateOnEmptyVast: <p>Empty VAST时是否播放Slate，默认开启(true)</p>
+        :type SlateOnEmptyVast: bool
+        :param _SCTEMarkerDuration: <p>SCTE marker duration，默认180，范围0-3600</p>
+        :type SCTEMarkerDuration: int
+        :param _SecurityGroupId: <p>安全组Id</p>
+        :type SecurityGroupId: str
         """
         self._AdsUrl = None
         self._AdsUrls = None
@@ -72581,6 +72770,10 @@ class SSAIConf(AbstractModel):
         self._PreRollAdsUrls = None
         self._PreRollMaxAllowedDuration = None
         self._MultiRequest = None
+        self._DashOriginManifestType = None
+        self._SlateOnEmptyVast = None
+        self._SCTEMarkerDuration = None
+        self._SecurityGroupId = None
 
     @property
     def AdsUrl(self):
@@ -72762,6 +72955,50 @@ class SSAIConf(AbstractModel):
     def MultiRequest(self, MultiRequest):
         self._MultiRequest = MultiRequest
 
+    @property
+    def DashOriginManifestType(self):
+        r"""<p>dash周期类型：SinglePeriod 或 MultiPeriod，默认 MultiPeriod</p>
+        :rtype: str
+        """
+        return self._DashOriginManifestType
+
+    @DashOriginManifestType.setter
+    def DashOriginManifestType(self, DashOriginManifestType):
+        self._DashOriginManifestType = DashOriginManifestType
+
+    @property
+    def SlateOnEmptyVast(self):
+        r"""<p>Empty VAST时是否播放Slate，默认开启(true)</p>
+        :rtype: bool
+        """
+        return self._SlateOnEmptyVast
+
+    @SlateOnEmptyVast.setter
+    def SlateOnEmptyVast(self, SlateOnEmptyVast):
+        self._SlateOnEmptyVast = SlateOnEmptyVast
+
+    @property
+    def SCTEMarkerDuration(self):
+        r"""<p>SCTE marker duration，默认180，范围0-3600</p>
+        :rtype: int
+        """
+        return self._SCTEMarkerDuration
+
+    @SCTEMarkerDuration.setter
+    def SCTEMarkerDuration(self, SCTEMarkerDuration):
+        self._SCTEMarkerDuration = SCTEMarkerDuration
+
+    @property
+    def SecurityGroupId(self):
+        r"""<p>安全组Id</p>
+        :rtype: str
+        """
+        return self._SecurityGroupId
+
+    @SecurityGroupId.setter
+    def SecurityGroupId(self, SecurityGroupId):
+        self._SecurityGroupId = SecurityGroupId
+
 
     def _deserialize(self, params):
         self._AdsUrl = params.get("AdsUrl")
@@ -72785,6 +73022,10 @@ class SSAIConf(AbstractModel):
         self._PreRollAdsUrls = params.get("PreRollAdsUrls")
         self._PreRollMaxAllowedDuration = params.get("PreRollMaxAllowedDuration")
         self._MultiRequest = params.get("MultiRequest")
+        self._DashOriginManifestType = params.get("DashOriginManifestType")
+        self._SlateOnEmptyVast = params.get("SlateOnEmptyVast")
+        self._SCTEMarkerDuration = params.get("SCTEMarkerDuration")
+        self._SecurityGroupId = params.get("SecurityGroupId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -83796,6 +84037,160 @@ class TerrorismOcrReviewTemplateInfoForUpdate(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class TextToSpeechAsyncRequest(AbstractModel):
+    r"""TextToSpeechAsync请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: <p>语音合成文本</p>
+        :type Text: str
+        :param _VoiceId: <p>音色ID</p>
+        :type VoiceId: str
+        :param _TextLang: <p>文本语言，默认中文</p>
+        :type TextLang: str
+        :param _ExtParam: <p>扩展参数，json字符串</p><p>synExt Object 语音合成扩展参数<br>  duration Float 合成音频时长，单位秒，示例：5.2<br>  sampleRate Integer 合成音频采样率，默认16000，支持[8000,16000,22050,32000,44100]<br>  pitch Integer 音调，默认0原音色输出，取值[-12, 12]</p><p>transExt Object 翻译扩展参数<br>  transInfo Object<br>   transDst String 目标语言，如en<br>  transRequirement String 翻译要求</p>
+        :type ExtParam: str
+        """
+        self._Text = None
+        self._VoiceId = None
+        self._TextLang = None
+        self._ExtParam = None
+
+    @property
+    def Text(self):
+        r"""<p>语音合成文本</p>
+        :rtype: str
+        """
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def VoiceId(self):
+        r"""<p>音色ID</p>
+        :rtype: str
+        """
+        return self._VoiceId
+
+    @VoiceId.setter
+    def VoiceId(self, VoiceId):
+        self._VoiceId = VoiceId
+
+    @property
+    def TextLang(self):
+        r"""<p>文本语言，默认中文</p>
+        :rtype: str
+        """
+        return self._TextLang
+
+    @TextLang.setter
+    def TextLang(self, TextLang):
+        self._TextLang = TextLang
+
+    @property
+    def ExtParam(self):
+        r"""<p>扩展参数，json字符串</p><p>synExt Object 语音合成扩展参数<br>  duration Float 合成音频时长，单位秒，示例：5.2<br>  sampleRate Integer 合成音频采样率，默认16000，支持[8000,16000,22050,32000,44100]<br>  pitch Integer 音调，默认0原音色输出，取值[-12, 12]</p><p>transExt Object 翻译扩展参数<br>  transInfo Object<br>   transDst String 目标语言，如en<br>  transRequirement String 翻译要求</p>
+        :rtype: str
+        """
+        return self._ExtParam
+
+    @ExtParam.setter
+    def ExtParam(self, ExtParam):
+        self._ExtParam = ExtParam
+
+
+    def _deserialize(self, params):
+        self._Text = params.get("Text")
+        self._VoiceId = params.get("VoiceId")
+        self._TextLang = params.get("TextLang")
+        self._ExtParam = params.get("ExtParam")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TextToSpeechAsyncResponse(AbstractModel):
+    r"""TextToSpeechAsync返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorCode: <p>错误码，成功时返回0</p>
+        :type ErrorCode: int
+        :param _Msg: <p>错误信息，成功时返回success</p>
+        :type Msg: str
+        :param _TaskId: <p>任务ID，使用该ID查询结果</p>
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ErrorCode = None
+        self._Msg = None
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def ErrorCode(self):
+        r"""<p>错误码，成功时返回0</p>
+        :rtype: int
+        """
+        return self._ErrorCode
+
+    @ErrorCode.setter
+    def ErrorCode(self, ErrorCode):
+        self._ErrorCode = ErrorCode
+
+    @property
+    def Msg(self):
+        r"""<p>错误信息，成功时返回success</p>
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def TaskId(self):
+        r"""<p>任务ID，使用该ID查询结果</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ErrorCode = params.get("ErrorCode")
+        self._Msg = params.get("Msg")
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
 
 
 class TextTranslationRequest(AbstractModel):

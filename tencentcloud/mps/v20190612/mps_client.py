@@ -3234,6 +3234,29 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeTextToSpeechAsyncTask(self, request):
+        r"""查询异步语音合成任务结果
+
+        :param request: Request instance for DescribeTextToSpeechAsyncTask.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DescribeTextToSpeechAsyncTaskRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeTextToSpeechAsyncTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTextToSpeechAsyncTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTextToSpeechAsyncTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeTranscodeTemplates(self, request):
         r"""根据转码模板唯一标识，获取转码模板详情列表。返回结果包含符合条件的所有用户自定义模板及[系统预置转码模板](https://cloud.tencent.com/document/product/266/33476#.E9.A2.84.E7.BD.AE.E8.BD.AC.E7.A0.81.E6.A8.A1.E6.9D.BF)。
 
@@ -4715,6 +4738,29 @@ class MpsClient(AbstractClient):
             body = self.call("SyncDubbing", params, headers=headers)
             response = json.loads(body)
             model = models.SyncDubbingResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def TextToSpeechAsync(self, request):
+        r"""异步语音合成接口，支持长文本转语音
+
+        :param request: Request instance for TextToSpeechAsync.
+        :type request: :class:`tencentcloud.mps.v20190612.models.TextToSpeechAsyncRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TextToSpeechAsyncResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("TextToSpeechAsync", params, headers=headers)
+            response = json.loads(body)
+            model = models.TextToSpeechAsyncResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
