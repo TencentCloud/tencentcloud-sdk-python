@@ -13214,32 +13214,32 @@ class CreateSearchViewRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LogsetId: <p>日志集id</p><p>标记视图所属该日志集，用于查询日志集下的查询视图配置</p>
+        :param _LogsetId: <p>日志集id</p><p>查询视图所属的日志集，仅用于管理查询视图，查询视图中包含的主题可与该日志集无关</p>
         :type LogsetId: str
         :param _LogsetRegion: <p>日志集所属地域</p><p>参数格式：ap-guangzhou</p>
         :type LogsetRegion: str
         :param _ViewName: <p>视图名称</p><p>入参限制：最大支持255字符，不能包含&quot;|&quot;字符。</p>
         :type ViewName: str
-        :param _ViewType: <p>视图类型</p><p>枚举值：</p><ul><li>log： 日志主题</li><li>metric： 指标主题</li></ul><p>Topics字段中配置的主题信息应该与ViewType类型匹配</p>
+        :param _ViewType: <p>视图类型</p><p>枚举值：</p><ul><li>log： 日志主题</li><li>metric： 指标主题</li></ul><p>Topics字段中配置的主题类型应该与ViewType类型匹配</p>
         :type ViewType: str
-        :param _Topics: <p>视图主题配置信息</p><p>Topics字段中配置的主题信息应该与ViewType类型匹配</p>
+        :param _Topics: <p>查询视图中包含的主题，最大可包含10个主题</p><p>Topics字段中配置的主题信息应该与ViewType类型匹配</p>
         :type Topics: list of ViewSearchTopic
-        :param _Description: <p>配置描述信息</p>
-        :type Description: str
-        :param _ViewIdPrefix: <p>自定义视图id前缀</p><p>参数格式：<code>^[a-z0-9][a-z0-9_-]{1,61}[a-z0-9]$</code></p><p>配置成功之后ViewId格式: ${ViewIdPrefix}-view</p>
+        :param _ViewIdPrefix: <p>自定义查询视图id前缀</p><p>参数格式：<code>^[a-z0-9][a-z0-9_-]{1,61}[a-z0-9]$</code></p><p>创建成功的查询视图 ViewId 格式为 ${ViewIdPrefix}-view</p>
         :type ViewIdPrefix: str
+        :param _Description: <p>描述信息</p>
+        :type Description: str
         """
         self._LogsetId = None
         self._LogsetRegion = None
         self._ViewName = None
         self._ViewType = None
         self._Topics = None
-        self._Description = None
         self._ViewIdPrefix = None
+        self._Description = None
 
     @property
     def LogsetId(self):
-        r"""<p>日志集id</p><p>标记视图所属该日志集，用于查询日志集下的查询视图配置</p>
+        r"""<p>日志集id</p><p>查询视图所属的日志集，仅用于管理查询视图，查询视图中包含的主题可与该日志集无关</p>
         :rtype: str
         """
         return self._LogsetId
@@ -13272,7 +13272,7 @@ class CreateSearchViewRequest(AbstractModel):
 
     @property
     def ViewType(self):
-        r"""<p>视图类型</p><p>枚举值：</p><ul><li>log： 日志主题</li><li>metric： 指标主题</li></ul><p>Topics字段中配置的主题信息应该与ViewType类型匹配</p>
+        r"""<p>视图类型</p><p>枚举值：</p><ul><li>log： 日志主题</li><li>metric： 指标主题</li></ul><p>Topics字段中配置的主题类型应该与ViewType类型匹配</p>
         :rtype: str
         """
         return self._ViewType
@@ -13283,7 +13283,7 @@ class CreateSearchViewRequest(AbstractModel):
 
     @property
     def Topics(self):
-        r"""<p>视图主题配置信息</p><p>Topics字段中配置的主题信息应该与ViewType类型匹配</p>
+        r"""<p>查询视图中包含的主题，最大可包含10个主题</p><p>Topics字段中配置的主题信息应该与ViewType类型匹配</p>
         :rtype: list of ViewSearchTopic
         """
         return self._Topics
@@ -13293,19 +13293,8 @@ class CreateSearchViewRequest(AbstractModel):
         self._Topics = Topics
 
     @property
-    def Description(self):
-        r"""<p>配置描述信息</p>
-        :rtype: str
-        """
-        return self._Description
-
-    @Description.setter
-    def Description(self, Description):
-        self._Description = Description
-
-    @property
     def ViewIdPrefix(self):
-        r"""<p>自定义视图id前缀</p><p>参数格式：<code>^[a-z0-9][a-z0-9_-]{1,61}[a-z0-9]$</code></p><p>配置成功之后ViewId格式: ${ViewIdPrefix}-view</p>
+        r"""<p>自定义查询视图id前缀</p><p>参数格式：<code>^[a-z0-9][a-z0-9_-]{1,61}[a-z0-9]$</code></p><p>创建成功的查询视图 ViewId 格式为 ${ViewIdPrefix}-view</p>
         :rtype: str
         """
         return self._ViewIdPrefix
@@ -13313,6 +13302,17 @@ class CreateSearchViewRequest(AbstractModel):
     @ViewIdPrefix.setter
     def ViewIdPrefix(self, ViewIdPrefix):
         self._ViewIdPrefix = ViewIdPrefix
+
+    @property
+    def Description(self):
+        r"""<p>描述信息</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
 
 
     def _deserialize(self, params):
@@ -13326,8 +13326,8 @@ class CreateSearchViewRequest(AbstractModel):
                 obj = ViewSearchTopic()
                 obj._deserialize(item)
                 self._Topics.append(obj)
-        self._Description = params.get("Description")
         self._ViewIdPrefix = params.get("ViewIdPrefix")
+        self._Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -26183,7 +26183,7 @@ class DescribeSearchViewsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Infos: <p>Splunk投递任务信息列表</p>
+        :param _Infos: <p>查询视图详细信息</p>
         :type Infos: list of SearchViewInfo
         :param _Total: <p>符合条件的任务总数。</p>
         :type Total: int
@@ -26196,7 +26196,7 @@ class DescribeSearchViewsResponse(AbstractModel):
 
     @property
     def Infos(self):
-        r"""<p>Splunk投递任务信息列表</p>
+        r"""<p>查询视图详细信息</p>
         :rtype: list of SearchViewInfo
         """
         return self._Infos
@@ -40538,11 +40538,11 @@ class ModifySearchViewRequest(AbstractModel):
         :type ViewId: str
         :param _ViewName: <p>视图名称</p><p>参数格式：<code>^[a-z0-9][a-z0-9_-]{1,61}[a-z0-9]$</code></p>
         :type ViewName: str
-        :param _ViewType: <p>视图类型</p><p>枚举值：</p><ul><li>log： 日志主题</li><li>metric： 指标主题</li></ul>
+        :param _ViewType: <p>视图类型</p><p>枚举值：</p><ul><li>log： 日志主题</li><li>metric： 指标主题</li></ul><p>Topics字段中配置的主题信息应该与ViewType类型匹配</p>
         :type ViewType: str
-        :param _Topics: <p>视图主题配置信息</p>
+        :param _Topics: <p>查询视图中包含的主题，最大可包含10个主题</p>
         :type Topics: list of ViewSearchTopic
-        :param _Description: <p>配置描述信息</p>
+        :param _Description: <p>描述信息</p>
         :type Description: str
         """
         self._ViewId = None
@@ -40575,7 +40575,7 @@ class ModifySearchViewRequest(AbstractModel):
 
     @property
     def ViewType(self):
-        r"""<p>视图类型</p><p>枚举值：</p><ul><li>log： 日志主题</li><li>metric： 指标主题</li></ul>
+        r"""<p>视图类型</p><p>枚举值：</p><ul><li>log： 日志主题</li><li>metric： 指标主题</li></ul><p>Topics字段中配置的主题信息应该与ViewType类型匹配</p>
         :rtype: str
         """
         return self._ViewType
@@ -40586,7 +40586,7 @@ class ModifySearchViewRequest(AbstractModel):
 
     @property
     def Topics(self):
-        r"""<p>视图主题配置信息</p>
+        r"""<p>查询视图中包含的主题，最大可包含10个主题</p>
         :rtype: list of ViewSearchTopic
         """
         return self._Topics
@@ -40597,7 +40597,7 @@ class ModifySearchViewRequest(AbstractModel):
 
     @property
     def Description(self):
-        r"""<p>配置描述信息</p>
+        r"""<p>描述信息</p>
         :rtype: str
         """
         return self._Description
@@ -46720,7 +46720,7 @@ class SearchLogTopics(AbstractModel):
 
 
 class SearchViewInfo(AbstractModel):
-    r"""检索视图信息
+    r"""查询视图信息
 
     """
 
@@ -49217,13 +49217,13 @@ long及double类型字段需为空；
 
 
 class ViewSearchTopic(AbstractModel):
-    r"""视图检索日志主题配置
+    r"""查询视图主题配置
 
     """
 
     def __init__(self):
         r"""
-        :param _Region: <p>日志集与日志主题所属地域</p><p>参数格式：ap-guangzhou</p>
+        :param _Region: <p>日志集与主题所属地域</p><p>参数格式：ap-guangzhou</p><p>同一查询视图内，包含的各个主题需为相同地域</p>
         :type Region: str
         :param _LogsetId: <p>日志集id</p>
         :type LogsetId: str
@@ -49236,7 +49236,7 @@ class ViewSearchTopic(AbstractModel):
 
     @property
     def Region(self):
-        r"""<p>日志集与日志主题所属地域</p><p>参数格式：ap-guangzhou</p>
+        r"""<p>日志集与主题所属地域</p><p>参数格式：ap-guangzhou</p><p>同一查询视图内，包含的各个主题需为相同地域</p>
         :rtype: str
         """
         return self._Region

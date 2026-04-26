@@ -4486,9 +4486,9 @@ class Coord(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _X: 横坐标
+        :param _X: <p>横坐标。</p>
         :type X: int
-        :param _Y: 纵坐标
+        :param _Y: <p>纵坐标。</p>
         :type Y: int
         """
         self._X = None
@@ -4496,7 +4496,7 @@ class Coord(AbstractModel):
 
     @property
     def X(self):
-        r"""横坐标
+        r"""<p>横坐标。</p>
         :rtype: int
         """
         return self._X
@@ -4507,7 +4507,7 @@ class Coord(AbstractModel):
 
     @property
     def Y(self):
-        r"""纵坐标
+        r"""<p>纵坐标。</p>
         :rtype: int
         """
         return self._Y
@@ -5604,9 +5604,9 @@ class DetectedWords(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Confidence: 置信度 0 ~100
+        :param _Confidence: <p>置信度 0 ~100。</p>
         :type Confidence: int
-        :param _Character: 候选字Character
+        :param _Character: <p>候选字Character。</p>
         :type Character: str
         """
         self._Confidence = None
@@ -5614,7 +5614,7 @@ class DetectedWords(AbstractModel):
 
     @property
     def Confidence(self):
-        r"""置信度 0 ~100
+        r"""<p>置信度 0 ~100。</p>
         :rtype: int
         """
         return self._Confidence
@@ -5625,7 +5625,7 @@ class DetectedWords(AbstractModel):
 
     @property
     def Character(self):
-        r"""候选字Character
+        r"""<p>候选字Character。</p>
         :rtype: str
         """
         return self._Character
@@ -16624,13 +16624,13 @@ class ItemCoord(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _X: 左上角x
+        :param _X: <p>左上角x。</p>
         :type X: int
-        :param _Y: 左上角y
+        :param _Y: <p>左上角y。</p>
         :type Y: int
-        :param _Width: 宽width
+        :param _Width: <p>宽width。</p>
         :type Width: int
-        :param _Height: 高height
+        :param _Height: <p>高height。</p>
         :type Height: int
         """
         self._X = None
@@ -16640,7 +16640,7 @@ class ItemCoord(AbstractModel):
 
     @property
     def X(self):
-        r"""左上角x
+        r"""<p>左上角x。</p>
         :rtype: int
         """
         return self._X
@@ -16651,7 +16651,7 @@ class ItemCoord(AbstractModel):
 
     @property
     def Y(self):
-        r"""左上角y
+        r"""<p>左上角y。</p>
         :rtype: int
         """
         return self._Y
@@ -16662,7 +16662,7 @@ class ItemCoord(AbstractModel):
 
     @property
     def Width(self):
-        r"""宽width
+        r"""<p>宽width。</p>
         :rtype: int
         """
         return self._Width
@@ -16673,7 +16673,7 @@ class ItemCoord(AbstractModel):
 
     @property
     def Height(self):
-        r"""高height
+        r"""<p>高height。</p>
         :rtype: int
         """
         return self._Height
@@ -34230,22 +34230,22 @@ class TextDetection(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DetectedText: <p>识别出的文本行内容</p>
+        :param _DetectedText: <p>识别出的文本行内容。</p>
         :type DetectedText: str
-        :param _Confidence: <p>置信度 0 ~100</p>
+        :param _Confidence: <p>置信度 0 ~100。</p>
         :type Confidence: int
-        :param _Polygon: <p>文本行坐标，以四个顶点坐标表示</p>
+        :param _Polygon: <p>文本行坐标，以四个顶点坐标表示。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Polygon: list of Coord
-        :param _AdvancedInfo: <p>此字段为扩展字段。<br>GeneralBasicOcr接口返回段落信息Parag，包含ParagNo。</p>
+        :param _AdvancedInfo: <p>此字段为扩展字段。GeneralBasicOcr接口返回段落信息Parag，包含ParagNo。</p>
         :type AdvancedInfo: str
-        :param _ItemPolygon: <p>文本行在旋转纠正之后的图像中的像素坐标，表示为（左上角x, 左上角y，宽width，高height）</p>
+        :param _ItemPolygon: <p>文本行在旋转纠正之后的图像中的像素坐标，表示为（左上角x, 左上角y，宽width，高height）。</p>
         :type ItemPolygon: :class:`tencentcloud.ocr.v20181119.models.ItemCoord`
-        :param _Words: <p>识别出来的单字信息包括单字（包括单字Character和单字置信度confidence）， 支持识别的接口：GeneralBasicOCR、GeneralAccurateOCR</p>
+        :param _Words: <p>识别出来的单字信息包括单字（包括单字Character和单字置信度confidence）， 支持识别的接口：GeneralBasicOCR、GeneralAccurateOCR。</p>
         :type Words: list of DetectedWords
-        :param _WordCoordPoint: <p>单字在原图中的四点坐标， 支持识别的接口：GeneralBasicOCR、GeneralAccurateOCR</p>
+        :param _WordCoordPoint: <p>单字在原图中的四点坐标， 支持识别的接口：GeneralBasicOCR、GeneralAccurateOCR。</p>
         :type WordCoordPoint: list of DetectedWordCoordPoint
-        :param _Language: <p>语种信息。zh:中文; en:英文; th:泰语; id:印尼语; ja:日语; ko:韩语; es:西班牙语; fr:法语; de:德语; pt:葡萄牙语; vi:越南语; ms:马来语; ru:俄语; it:意大利语; nl:荷兰语; sv:瑞典语; fi:芬兰语; no:挪威语; hu:匈牙利语; ar:阿拉伯语; hi:印地语</p>
+        :param _Language: <p>语种信息。注：仅ConfigID配置为MulOCR时支持。zh:中文; en:英文; tha:泰语; may:印尼语; jap:日语; kor:韩语; spa:西班牙语; fre:法语; ger:德语; por:葡萄牙语; vie:越南语; may:马来语; rus:俄语; ita:意大利语; hol:荷兰语; swe:瑞典语; fin:芬兰语; nor:挪威语; hun:匈牙利语; ara:阿拉伯语; hi:印地语。</p>
         :type Language: str
         """
         self._DetectedText = None
@@ -34259,7 +34259,7 @@ class TextDetection(AbstractModel):
 
     @property
     def DetectedText(self):
-        r"""<p>识别出的文本行内容</p>
+        r"""<p>识别出的文本行内容。</p>
         :rtype: str
         """
         return self._DetectedText
@@ -34270,7 +34270,7 @@ class TextDetection(AbstractModel):
 
     @property
     def Confidence(self):
-        r"""<p>置信度 0 ~100</p>
+        r"""<p>置信度 0 ~100。</p>
         :rtype: int
         """
         return self._Confidence
@@ -34281,7 +34281,7 @@ class TextDetection(AbstractModel):
 
     @property
     def Polygon(self):
-        r"""<p>文本行坐标，以四个顶点坐标表示</p>
+        r"""<p>文本行坐标，以四个顶点坐标表示。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Coord
         """
@@ -34293,7 +34293,7 @@ class TextDetection(AbstractModel):
 
     @property
     def AdvancedInfo(self):
-        r"""<p>此字段为扩展字段。<br>GeneralBasicOcr接口返回段落信息Parag，包含ParagNo。</p>
+        r"""<p>此字段为扩展字段。GeneralBasicOcr接口返回段落信息Parag，包含ParagNo。</p>
         :rtype: str
         """
         return self._AdvancedInfo
@@ -34304,7 +34304,7 @@ class TextDetection(AbstractModel):
 
     @property
     def ItemPolygon(self):
-        r"""<p>文本行在旋转纠正之后的图像中的像素坐标，表示为（左上角x, 左上角y，宽width，高height）</p>
+        r"""<p>文本行在旋转纠正之后的图像中的像素坐标，表示为（左上角x, 左上角y，宽width，高height）。</p>
         :rtype: :class:`tencentcloud.ocr.v20181119.models.ItemCoord`
         """
         return self._ItemPolygon
@@ -34315,7 +34315,7 @@ class TextDetection(AbstractModel):
 
     @property
     def Words(self):
-        r"""<p>识别出来的单字信息包括单字（包括单字Character和单字置信度confidence）， 支持识别的接口：GeneralBasicOCR、GeneralAccurateOCR</p>
+        r"""<p>识别出来的单字信息包括单字（包括单字Character和单字置信度confidence）， 支持识别的接口：GeneralBasicOCR、GeneralAccurateOCR。</p>
         :rtype: list of DetectedWords
         """
         return self._Words
@@ -34326,7 +34326,7 @@ class TextDetection(AbstractModel):
 
     @property
     def WordCoordPoint(self):
-        r"""<p>单字在原图中的四点坐标， 支持识别的接口：GeneralBasicOCR、GeneralAccurateOCR</p>
+        r"""<p>单字在原图中的四点坐标， 支持识别的接口：GeneralBasicOCR、GeneralAccurateOCR。</p>
         :rtype: list of DetectedWordCoordPoint
         """
         return self._WordCoordPoint
@@ -34337,7 +34337,7 @@ class TextDetection(AbstractModel):
 
     @property
     def Language(self):
-        r"""<p>语种信息。zh:中文; en:英文; th:泰语; id:印尼语; ja:日语; ko:韩语; es:西班牙语; fr:法语; de:德语; pt:葡萄牙语; vi:越南语; ms:马来语; ru:俄语; it:意大利语; nl:荷兰语; sv:瑞典语; fi:芬兰语; no:挪威语; hu:匈牙利语; ar:阿拉伯语; hi:印地语</p>
+        r"""<p>语种信息。注：仅ConfigID配置为MulOCR时支持。zh:中文; en:英文; tha:泰语; may:印尼语; jap:日语; kor:韩语; spa:西班牙语; fre:法语; ger:德语; por:葡萄牙语; vie:越南语; may:马来语; rus:俄语; ita:意大利语; hol:荷兰语; swe:瑞典语; fin:芬兰语; nor:挪威语; hun:匈牙利语; ara:阿拉伯语; hi:印地语。</p>
         :rtype: str
         """
         return self._Language

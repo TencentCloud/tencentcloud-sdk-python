@@ -999,34 +999,26 @@ class CreateReconstructDocumentFlowConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TableResultType: Markdown文件中表格返回的形式
-0，表格以MD形式返回
-1，表格以HTML形式返回
-默认为0
+        :param _TableResultType: <p>Markdown文件中表格返回的形式<br>0，表格以MD形式返回<br>1，表格以HTML形式返回<br>默认为0</p>
         :type TableResultType: str
-        :param _ResultType: 智能文档解析返回结果的格式
-0：只返回全文MD；
-1：只返回每一页的OCR原始Json；
-2：只返回每一页的MD，
-3：返回全文MD + 每一页的OCR原始Json；
-4：返回全文MD + 每一页的MD
-5: 返回全文md，每一页ocr原始json，每一页md
-默认值为0
-
+        :param _ResultType: <p>智能文档解析返回结果的格式<br>0：只返回全文MD；<br>1：只返回每一页的OCR原始Json；<br>2：只返回每一页的MD，<br>3：返回全文MD + 每一页的OCR原始Json；<br>4：返回全文MD + 每一页的MD<br>5: 返回全文md，每一页ocr原始json，每一页md<br>默认值为0</p>
         :type ResultType: str
-        :param _IgnoreFailedPage: 是否忽略失败页，返回已成功的页数据。默认为true。
+        :param _IgnoreFailedPage: <p>是否忽略失败页，返回已成功的页数据。默认为true。</p>
         :type IgnoreFailedPage: bool
+        :param _ReturnPageFormat: <p>Markdown文件中是否包含页码信息</p>
+        :type ReturnPageFormat: bool
+        :param _PageFormat: <p>自定义输出页码样式,{{p}}为页码占位符，开启ReturnPageFormat生效。未填默认样式:<page_num>page {{p}}</page_num></p>
+        :type PageFormat: str
         """
         self._TableResultType = None
         self._ResultType = None
         self._IgnoreFailedPage = None
+        self._ReturnPageFormat = None
+        self._PageFormat = None
 
     @property
     def TableResultType(self):
-        r"""Markdown文件中表格返回的形式
-0，表格以MD形式返回
-1，表格以HTML形式返回
-默认为0
+        r"""<p>Markdown文件中表格返回的形式<br>0，表格以MD形式返回<br>1，表格以HTML形式返回<br>默认为0</p>
         :rtype: str
         """
         return self._TableResultType
@@ -1037,15 +1029,7 @@ class CreateReconstructDocumentFlowConfig(AbstractModel):
 
     @property
     def ResultType(self):
-        r"""智能文档解析返回结果的格式
-0：只返回全文MD；
-1：只返回每一页的OCR原始Json；
-2：只返回每一页的MD，
-3：返回全文MD + 每一页的OCR原始Json；
-4：返回全文MD + 每一页的MD
-5: 返回全文md，每一页ocr原始json，每一页md
-默认值为0
-
+        r"""<p>智能文档解析返回结果的格式<br>0：只返回全文MD；<br>1：只返回每一页的OCR原始Json；<br>2：只返回每一页的MD，<br>3：返回全文MD + 每一页的OCR原始Json；<br>4：返回全文MD + 每一页的MD<br>5: 返回全文md，每一页ocr原始json，每一页md<br>默认值为0</p>
         :rtype: str
         """
         return self._ResultType
@@ -1056,7 +1040,7 @@ class CreateReconstructDocumentFlowConfig(AbstractModel):
 
     @property
     def IgnoreFailedPage(self):
-        r"""是否忽略失败页，返回已成功的页数据。默认为true。
+        r"""<p>是否忽略失败页，返回已成功的页数据。默认为true。</p>
         :rtype: bool
         """
         return self._IgnoreFailedPage
@@ -1065,11 +1049,35 @@ class CreateReconstructDocumentFlowConfig(AbstractModel):
     def IgnoreFailedPage(self, IgnoreFailedPage):
         self._IgnoreFailedPage = IgnoreFailedPage
 
+    @property
+    def ReturnPageFormat(self):
+        r"""<p>Markdown文件中是否包含页码信息</p>
+        :rtype: bool
+        """
+        return self._ReturnPageFormat
+
+    @ReturnPageFormat.setter
+    def ReturnPageFormat(self, ReturnPageFormat):
+        self._ReturnPageFormat = ReturnPageFormat
+
+    @property
+    def PageFormat(self):
+        r"""<p>自定义输出页码样式,{{p}}为页码占位符，开启ReturnPageFormat生效。未填默认样式:<page_num>page {{p}}</page_num></p>
+        :rtype: str
+        """
+        return self._PageFormat
+
+    @PageFormat.setter
+    def PageFormat(self, PageFormat):
+        self._PageFormat = PageFormat
+
 
     def _deserialize(self, params):
         self._TableResultType = params.get("TableResultType")
         self._ResultType = params.get("ResultType")
         self._IgnoreFailedPage = params.get("IgnoreFailedPage")
+        self._ReturnPageFormat = params.get("ReturnPageFormat")
+        self._PageFormat = params.get("PageFormat")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1267,42 +1275,24 @@ class CreateSplitDocumentFlowConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TableResultType: Markdown文件中表格返回的形式
-0，表格以MD形式返回
-1，表格以HTML形式返回
-默认为
+        :param _TableResultType: <p>Markdown文件中表格返回的形式<br>0，表格以MD形式返回<br>1，表格以HTML形式返回<br>默认为</p>
         :type TableResultType: str
-        :param _ResultType: 智能文档解析返回结果的格式
-0：只返回全文MD；
-1：只返回每一页的OCR原始Json；
-2：只返回每一页的MD；
-3：返回全文MD + 每一页的OCR原始Json；
-4：返回全文MD + 每一页的MD；
-5：返回全文md，每一页ocr原始json，每一页md。
-
-
+        :param _ResultType: <p>智能文档解析返回结果的格式<br>0：只返回全文MD；<br>1：只返回每一页的OCR原始Json；<br>2：只返回每一页的MD；<br>3：返回全文MD + 每一页的OCR原始Json；<br>4：返回全文MD + 每一页的MD；<br>5：返回全文md，每一页ocr原始json，每一页md。</p>
         :type ResultType: str
-        :param _EnableMllm: 是否开启mllm
+        :param _EnableMllm: <p>是否开启mllm</p>
         :type EnableMllm: bool
-        :param _MaxChunkSize: 最大分片长度
+        :param _MaxChunkSize: <p>最大分片长度</p>
         :type MaxChunkSize: int
-        :param _IgnoreFailedPage: 是否忽略返回失败页码
+        :param _IgnoreFailedPage: <p>是否忽略返回失败页码</p>
         :type IgnoreFailedPage: bool
-        :param _SplitResultType: 智能文档解析返回结果的格式
-0：只返回全文MD；
-1：只返回每一页的OCR原始Json；
-2：只返回每一页的MD；
-3：返回全文MD + 每一页的OCR原始Json；
-4：返回全文MD + 每一页的MD；
-5：返回全文md，每一页ocr原始json，每一页md。
-
-
+        :param _SplitResultType: <p>智能文档解析返回结果的格式<br>0：只返回全文MD；<br>1：只返回每一页的OCR原始Json；<br>2：只返回每一页的MD；<br>3：返回全文MD + 每一页的OCR原始Json；<br>4：返回全文MD + 每一页的MD；<br>5：返回全文md，每一页ocr原始json，每一页md。</p>
         :type SplitResultType: str
-        :param _SplitTableResultType: Markdown文件中表格返回的形式
-0，表格以MD形式返回
-1，表格以HTML形式返回
-默认为
+        :param _SplitTableResultType: <p>Markdown文件中表格返回的形式<br>0，表格以MD形式返回<br>1，表格以HTML形式返回<br>默认为</p>
         :type SplitTableResultType: str
+        :param _ReturnPageFormat: <p>Markdown文件中是否包含页码信息</p>
+        :type ReturnPageFormat: bool
+        :param _PageFormat: <p>自定义输出页码样式,{{p}}为页码占位符，开启ReturnPageFormat生效。未填默认样式:<page_num>page {{p}}</page_num></p>
+        :type PageFormat: str
         """
         self._TableResultType = None
         self._ResultType = None
@@ -1311,15 +1301,14 @@ class CreateSplitDocumentFlowConfig(AbstractModel):
         self._IgnoreFailedPage = None
         self._SplitResultType = None
         self._SplitTableResultType = None
+        self._ReturnPageFormat = None
+        self._PageFormat = None
 
     @property
     def TableResultType(self):
         warnings.warn("parameter `TableResultType` is deprecated", DeprecationWarning) 
 
-        r"""Markdown文件中表格返回的形式
-0，表格以MD形式返回
-1，表格以HTML形式返回
-默认为
+        r"""<p>Markdown文件中表格返回的形式<br>0，表格以MD形式返回<br>1，表格以HTML形式返回<br>默认为</p>
         :rtype: str
         """
         return self._TableResultType
@@ -1334,15 +1323,7 @@ class CreateSplitDocumentFlowConfig(AbstractModel):
     def ResultType(self):
         warnings.warn("parameter `ResultType` is deprecated", DeprecationWarning) 
 
-        r"""智能文档解析返回结果的格式
-0：只返回全文MD；
-1：只返回每一页的OCR原始Json；
-2：只返回每一页的MD；
-3：返回全文MD + 每一页的OCR原始Json；
-4：返回全文MD + 每一页的MD；
-5：返回全文md，每一页ocr原始json，每一页md。
-
-
+        r"""<p>智能文档解析返回结果的格式<br>0：只返回全文MD；<br>1：只返回每一页的OCR原始Json；<br>2：只返回每一页的MD；<br>3：返回全文MD + 每一页的OCR原始Json；<br>4：返回全文MD + 每一页的MD；<br>5：返回全文md，每一页ocr原始json，每一页md。</p>
         :rtype: str
         """
         return self._ResultType
@@ -1355,7 +1336,7 @@ class CreateSplitDocumentFlowConfig(AbstractModel):
 
     @property
     def EnableMllm(self):
-        r"""是否开启mllm
+        r"""<p>是否开启mllm</p>
         :rtype: bool
         """
         return self._EnableMllm
@@ -1366,7 +1347,7 @@ class CreateSplitDocumentFlowConfig(AbstractModel):
 
     @property
     def MaxChunkSize(self):
-        r"""最大分片长度
+        r"""<p>最大分片长度</p>
         :rtype: int
         """
         return self._MaxChunkSize
@@ -1377,7 +1358,7 @@ class CreateSplitDocumentFlowConfig(AbstractModel):
 
     @property
     def IgnoreFailedPage(self):
-        r"""是否忽略返回失败页码
+        r"""<p>是否忽略返回失败页码</p>
         :rtype: bool
         """
         return self._IgnoreFailedPage
@@ -1388,15 +1369,7 @@ class CreateSplitDocumentFlowConfig(AbstractModel):
 
     @property
     def SplitResultType(self):
-        r"""智能文档解析返回结果的格式
-0：只返回全文MD；
-1：只返回每一页的OCR原始Json；
-2：只返回每一页的MD；
-3：返回全文MD + 每一页的OCR原始Json；
-4：返回全文MD + 每一页的MD；
-5：返回全文md，每一页ocr原始json，每一页md。
-
-
+        r"""<p>智能文档解析返回结果的格式<br>0：只返回全文MD；<br>1：只返回每一页的OCR原始Json；<br>2：只返回每一页的MD；<br>3：返回全文MD + 每一页的OCR原始Json；<br>4：返回全文MD + 每一页的MD；<br>5：返回全文md，每一页ocr原始json，每一页md。</p>
         :rtype: str
         """
         return self._SplitResultType
@@ -1407,10 +1380,7 @@ class CreateSplitDocumentFlowConfig(AbstractModel):
 
     @property
     def SplitTableResultType(self):
-        r"""Markdown文件中表格返回的形式
-0，表格以MD形式返回
-1，表格以HTML形式返回
-默认为
+        r"""<p>Markdown文件中表格返回的形式<br>0，表格以MD形式返回<br>1，表格以HTML形式返回<br>默认为</p>
         :rtype: str
         """
         return self._SplitTableResultType
@@ -1418,6 +1388,28 @@ class CreateSplitDocumentFlowConfig(AbstractModel):
     @SplitTableResultType.setter
     def SplitTableResultType(self, SplitTableResultType):
         self._SplitTableResultType = SplitTableResultType
+
+    @property
+    def ReturnPageFormat(self):
+        r"""<p>Markdown文件中是否包含页码信息</p>
+        :rtype: bool
+        """
+        return self._ReturnPageFormat
+
+    @ReturnPageFormat.setter
+    def ReturnPageFormat(self, ReturnPageFormat):
+        self._ReturnPageFormat = ReturnPageFormat
+
+    @property
+    def PageFormat(self):
+        r"""<p>自定义输出页码样式,{{p}}为页码占位符，开启ReturnPageFormat生效。未填默认样式:<page_num>page {{p}}</page_num></p>
+        :rtype: str
+        """
+        return self._PageFormat
+
+    @PageFormat.setter
+    def PageFormat(self, PageFormat):
+        self._PageFormat = PageFormat
 
 
     def _deserialize(self, params):
@@ -1428,6 +1420,8 @@ class CreateSplitDocumentFlowConfig(AbstractModel):
         self._IgnoreFailedPage = params.get("IgnoreFailedPage")
         self._SplitResultType = params.get("SplitResultType")
         self._SplitTableResultType = params.get("SplitTableResultType")
+        self._ReturnPageFormat = params.get("ReturnPageFormat")
+        self._PageFormat = params.get("PageFormat")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

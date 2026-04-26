@@ -28921,10 +28921,13 @@ class ModifyRejectedQuestionRequest(AbstractModel):
 
 
         :type RejectedBizId: str
+        :param _EnableScope: 拒答生效域: 1-不生效；2-仅开发域生效；3-仅发布域生效；4-开发域和发布域均生效
+        :type EnableScope: int
         """
         self._BotBizId = None
         self._Question = None
         self._RejectedBizId = None
+        self._EnableScope = None
 
     @property
     def BotBizId(self):
@@ -28964,11 +28967,23 @@ class ModifyRejectedQuestionRequest(AbstractModel):
     def RejectedBizId(self, RejectedBizId):
         self._RejectedBizId = RejectedBizId
 
+    @property
+    def EnableScope(self):
+        r"""拒答生效域: 1-不生效；2-仅开发域生效；3-仅发布域生效；4-开发域和发布域均生效
+        :rtype: int
+        """
+        return self._EnableScope
+
+    @EnableScope.setter
+    def EnableScope(self, EnableScope):
+        self._EnableScope = EnableScope
+
 
     def _deserialize(self, params):
         self._BotBizId = params.get("BotBizId")
         self._Question = params.get("Question")
         self._RejectedBizId = params.get("RejectedBizId")
+        self._EnableScope = params.get("EnableScope")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -36497,31 +36512,31 @@ class UnsatisfiedReply(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ReplyBizId: 不满意回复ID
+        :param _ReplyBizId: <p>不满意回复ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReplyBizId: str
-        :param _RecordBizId: 消息记录ID
+        :param _RecordBizId: <p>消息记录ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RecordBizId: str
-        :param _Question: 用户问题
+        :param _Question: <p>用户问题</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Question: str
-        :param _Answer: 问题回复
+        :param _Answer: <p>问题回复</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Answer: str
-        :param _Reasons: 错误类型
+        :param _Reasons: <p>错误类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Reasons: list of str
-        :param _Status: 处理状态，0：待处理，1：已拒答，2：已忽略，3：已纠错
+        :param _Status: <p>处理状态，0：待处理，1：已拒答，2：已忽略，3：已纠错</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
-        :param _CreateTime: 创建时间，秒级时间戳
+        :param _CreateTime: <p>创建时间，秒级时间戳</p>
         :type CreateTime: str
-        :param _UpdateTime: 更新时间,秒级时间戳
+        :param _UpdateTime: <p>更新时间,秒级时间戳</p>
         :type UpdateTime: str
-        :param _Operator: 操作人
+        :param _Operator: <p>操作人</p>
         :type Operator: str
-        :param _FeedbackContent: 自定义反馈
+        :param _FeedbackContent: <p>自定义反馈</p>
         :type FeedbackContent: str
         """
         self._ReplyBizId = None
@@ -36537,7 +36552,7 @@ class UnsatisfiedReply(AbstractModel):
 
     @property
     def ReplyBizId(self):
-        r"""不满意回复ID
+        r"""<p>不满意回复ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -36549,7 +36564,7 @@ class UnsatisfiedReply(AbstractModel):
 
     @property
     def RecordBizId(self):
-        r"""消息记录ID
+        r"""<p>消息记录ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -36561,7 +36576,7 @@ class UnsatisfiedReply(AbstractModel):
 
     @property
     def Question(self):
-        r"""用户问题
+        r"""<p>用户问题</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -36573,7 +36588,7 @@ class UnsatisfiedReply(AbstractModel):
 
     @property
     def Answer(self):
-        r"""问题回复
+        r"""<p>问题回复</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -36585,7 +36600,7 @@ class UnsatisfiedReply(AbstractModel):
 
     @property
     def Reasons(self):
-        r"""错误类型
+        r"""<p>错误类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -36597,7 +36612,7 @@ class UnsatisfiedReply(AbstractModel):
 
     @property
     def Status(self):
-        r"""处理状态，0：待处理，1：已拒答，2：已忽略，3：已纠错
+        r"""<p>处理状态，0：待处理，1：已拒答，2：已忽略，3：已纠错</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -36609,7 +36624,7 @@ class UnsatisfiedReply(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""创建时间，秒级时间戳
+        r"""<p>创建时间，秒级时间戳</p>
         :rtype: str
         """
         return self._CreateTime
@@ -36620,7 +36635,7 @@ class UnsatisfiedReply(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""更新时间,秒级时间戳
+        r"""<p>更新时间,秒级时间戳</p>
         :rtype: str
         """
         return self._UpdateTime
@@ -36631,7 +36646,7 @@ class UnsatisfiedReply(AbstractModel):
 
     @property
     def Operator(self):
-        r"""操作人
+        r"""<p>操作人</p>
         :rtype: str
         """
         return self._Operator
@@ -36642,7 +36657,7 @@ class UnsatisfiedReply(AbstractModel):
 
     @property
     def FeedbackContent(self):
-        r"""自定义反馈
+        r"""<p>自定义反馈</p>
         :rtype: str
         """
         return self._FeedbackContent

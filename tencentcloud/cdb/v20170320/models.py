@@ -1773,6 +1773,9 @@ class AuditLog(AbstractModel):
         :type TemplateInfo: list of LogRuleTemplateInfo
         :param _TrxId:  事务ID
         :type TrxId: int
+        :param _ClientPort: 端口
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClientPort: int
         """
         self._AffectRows = None
         self._ErrCode = None
@@ -1794,6 +1797,7 @@ class AuditLog(AbstractModel):
         self._TrxLivingTime = None
         self._TemplateInfo = None
         self._TrxId = None
+        self._ClientPort = None
 
     @property
     def AffectRows(self):
@@ -2015,6 +2019,18 @@ class AuditLog(AbstractModel):
     def TrxId(self, TrxId):
         self._TrxId = TrxId
 
+    @property
+    def ClientPort(self):
+        r"""端口
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ClientPort
+
+    @ClientPort.setter
+    def ClientPort(self, ClientPort):
+        self._ClientPort = ClientPort
+
 
     def _deserialize(self, params):
         self._AffectRows = params.get("AffectRows")
@@ -2042,6 +2058,7 @@ class AuditLog(AbstractModel):
                 obj._deserialize(item)
                 self._TemplateInfo.append(obj)
         self._TrxId = params.get("TrxId")
+        self._ClientPort = params.get("ClientPort")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

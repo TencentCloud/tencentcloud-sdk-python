@@ -5242,42 +5242,48 @@ class GetServiceStatusResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ServiceEnabled: KMS服务是否开通， true 表示已开通
+        :param _ServiceEnabled: <p>KMS服务是否开通， true 表示已开通</p>
         :type ServiceEnabled: bool
-        :param _InvalidType: 服务不可用类型： 0-未购买，1-正常， 2-欠费停服， 3-资源释放
+        :param _InvalidType: <p>服务不可用类型： 0-未购买，1-正常， 2-欠费停服， 3-资源释放</p>
         :type InvalidType: int
-        :param _UserLevel: 0-普通版，1-旗舰版
+        :param _UserLevel: <p>0-普通版，1-旗舰版</p>
         :type UserLevel: int
-        :param _ProExpireTime: 旗舰版到期时间（Epoch Unix Timestamp）。
+        :param _ProExpireTime: <p>旗舰版到期时间（Epoch Unix Timestamp）。</p>
         :type ProExpireTime: int
-        :param _ProRenewFlag: 旗舰版是否自动续费：0-不自动续费，1-自动续费
+        :param _ProRenewFlag: <p>旗舰版是否自动续费：0-不自动续费，1-自动续费</p>
         :type ProRenewFlag: int
-        :param _ProResourceId: 旗舰版购买记录的唯一性标识。如果未开通旗舰版，则返回值为空
+        :param _ProResourceId: <p>旗舰版购买记录的唯一性标识。如果未开通旗舰版，则返回值为空</p>
         :type ProResourceId: str
-        :param _ExclusiveVSMEnabled: 是否开通 KMS 托管版
+        :param _ExclusiveVSMEnabled: <p>是否开通 KMS 托管版</p>
         :type ExclusiveVSMEnabled: bool
-        :param _ExclusiveHSMEnabled: 是否开通 KMS 独享版
+        :param _ExclusiveHSMEnabled: <p>是否开通 KMS 独享版</p>
         :type ExclusiveHSMEnabled: bool
-        :param _SubscriptionInfo: KMS 订阅信息。
+        :param _SubscriptionInfo: <p>KMS 订阅信息。</p>
         :type SubscriptionInfo: str
-        :param _CmkUserCount: 返回KMS用户密钥使用数量
+        :param _CmkUserCount: <p>返回KMS用户密钥使用数量</p>
         :type CmkUserCount: int
-        :param _CmkLimit: 返回KMS用户密钥规格数量
+        :param _CmkLimit: <p>返回KMS用户密钥规格数量</p>
         :type CmkLimit: int
-        :param _ExclusiveHSMList: 返回独享集群组
+        :param _ExclusiveHSMList: <p>返回独享集群组</p>
         :type ExclusiveHSMList: list of ExclusiveHSM
-        :param _IsAllowedDataKeyHosted: 是否支持数据密钥托管。1:支持，0:不支持。
+        :param _IsAllowedDataKeyHosted: <p>是否支持数据密钥托管。1:支持，0:不支持。</p>
         :type IsAllowedDataKeyHosted: bool
-        :param _DataKeyLimit: IsAllowedDataKeyHosted为1时有效，数据密钥的购买额度
+        :param _DataKeyLimit: <p>IsAllowedDataKeyHosted为1时有效，数据密钥的购买额度</p>
         :type DataKeyLimit: int
-        :param _FreeDataKeyLimit: IsAllowedDataKeyHosted为1时有效，数据密钥免费额度。
+        :param _FreeDataKeyLimit: <p>IsAllowedDataKeyHosted为1时有效，数据密钥免费额度。</p>
         :type FreeDataKeyLimit: int
-        :param _DataKeyUsedCount: IsAllowedDataKeyHosted为1时有效，已使用的数据密钥数量。
+        :param _DataKeyUsedCount: <p>IsAllowedDataKeyHosted为1时有效，已使用的数据密钥数量。</p>
         :type DataKeyUsedCount: int
-        :param _SyncTaskList: 同步任务的目标地域信息
+        :param _SyncTaskList: <p>同步任务的目标地域信息</p>
         :type SyncTaskList: list of DestinationSyncConfig
-        :param _IsAllowedSync: 是否支持同步任务。true:支持，false:不支持。
+        :param _IsAllowedSync: <p>是否支持同步任务。true:支持，false:不支持。</p>
         :type IsAllowedSync: bool
+        :param _QpsLimit: <p>地域下的QPS</p>
+        :type QpsLimit: int
+        :param _QpsTotalLimit: <p>总的QPS值</p>
+        :type QpsTotalLimit: int
+        :param _RegionsQps: <p>地域下的QPS</p>
+        :type RegionsQps: list of RegionQps
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -5299,11 +5305,14 @@ class GetServiceStatusResponse(AbstractModel):
         self._DataKeyUsedCount = None
         self._SyncTaskList = None
         self._IsAllowedSync = None
+        self._QpsLimit = None
+        self._QpsTotalLimit = None
+        self._RegionsQps = None
         self._RequestId = None
 
     @property
     def ServiceEnabled(self):
-        r"""KMS服务是否开通， true 表示已开通
+        r"""<p>KMS服务是否开通， true 表示已开通</p>
         :rtype: bool
         """
         return self._ServiceEnabled
@@ -5314,7 +5323,7 @@ class GetServiceStatusResponse(AbstractModel):
 
     @property
     def InvalidType(self):
-        r"""服务不可用类型： 0-未购买，1-正常， 2-欠费停服， 3-资源释放
+        r"""<p>服务不可用类型： 0-未购买，1-正常， 2-欠费停服， 3-资源释放</p>
         :rtype: int
         """
         return self._InvalidType
@@ -5325,7 +5334,7 @@ class GetServiceStatusResponse(AbstractModel):
 
     @property
     def UserLevel(self):
-        r"""0-普通版，1-旗舰版
+        r"""<p>0-普通版，1-旗舰版</p>
         :rtype: int
         """
         return self._UserLevel
@@ -5336,7 +5345,7 @@ class GetServiceStatusResponse(AbstractModel):
 
     @property
     def ProExpireTime(self):
-        r"""旗舰版到期时间（Epoch Unix Timestamp）。
+        r"""<p>旗舰版到期时间（Epoch Unix Timestamp）。</p>
         :rtype: int
         """
         return self._ProExpireTime
@@ -5347,7 +5356,7 @@ class GetServiceStatusResponse(AbstractModel):
 
     @property
     def ProRenewFlag(self):
-        r"""旗舰版是否自动续费：0-不自动续费，1-自动续费
+        r"""<p>旗舰版是否自动续费：0-不自动续费，1-自动续费</p>
         :rtype: int
         """
         return self._ProRenewFlag
@@ -5358,7 +5367,7 @@ class GetServiceStatusResponse(AbstractModel):
 
     @property
     def ProResourceId(self):
-        r"""旗舰版购买记录的唯一性标识。如果未开通旗舰版，则返回值为空
+        r"""<p>旗舰版购买记录的唯一性标识。如果未开通旗舰版，则返回值为空</p>
         :rtype: str
         """
         return self._ProResourceId
@@ -5369,7 +5378,7 @@ class GetServiceStatusResponse(AbstractModel):
 
     @property
     def ExclusiveVSMEnabled(self):
-        r"""是否开通 KMS 托管版
+        r"""<p>是否开通 KMS 托管版</p>
         :rtype: bool
         """
         return self._ExclusiveVSMEnabled
@@ -5380,7 +5389,7 @@ class GetServiceStatusResponse(AbstractModel):
 
     @property
     def ExclusiveHSMEnabled(self):
-        r"""是否开通 KMS 独享版
+        r"""<p>是否开通 KMS 独享版</p>
         :rtype: bool
         """
         return self._ExclusiveHSMEnabled
@@ -5391,7 +5400,7 @@ class GetServiceStatusResponse(AbstractModel):
 
     @property
     def SubscriptionInfo(self):
-        r"""KMS 订阅信息。
+        r"""<p>KMS 订阅信息。</p>
         :rtype: str
         """
         return self._SubscriptionInfo
@@ -5402,7 +5411,7 @@ class GetServiceStatusResponse(AbstractModel):
 
     @property
     def CmkUserCount(self):
-        r"""返回KMS用户密钥使用数量
+        r"""<p>返回KMS用户密钥使用数量</p>
         :rtype: int
         """
         return self._CmkUserCount
@@ -5413,7 +5422,7 @@ class GetServiceStatusResponse(AbstractModel):
 
     @property
     def CmkLimit(self):
-        r"""返回KMS用户密钥规格数量
+        r"""<p>返回KMS用户密钥规格数量</p>
         :rtype: int
         """
         return self._CmkLimit
@@ -5424,7 +5433,7 @@ class GetServiceStatusResponse(AbstractModel):
 
     @property
     def ExclusiveHSMList(self):
-        r"""返回独享集群组
+        r"""<p>返回独享集群组</p>
         :rtype: list of ExclusiveHSM
         """
         return self._ExclusiveHSMList
@@ -5435,7 +5444,7 @@ class GetServiceStatusResponse(AbstractModel):
 
     @property
     def IsAllowedDataKeyHosted(self):
-        r"""是否支持数据密钥托管。1:支持，0:不支持。
+        r"""<p>是否支持数据密钥托管。1:支持，0:不支持。</p>
         :rtype: bool
         """
         return self._IsAllowedDataKeyHosted
@@ -5446,7 +5455,7 @@ class GetServiceStatusResponse(AbstractModel):
 
     @property
     def DataKeyLimit(self):
-        r"""IsAllowedDataKeyHosted为1时有效，数据密钥的购买额度
+        r"""<p>IsAllowedDataKeyHosted为1时有效，数据密钥的购买额度</p>
         :rtype: int
         """
         return self._DataKeyLimit
@@ -5457,7 +5466,7 @@ class GetServiceStatusResponse(AbstractModel):
 
     @property
     def FreeDataKeyLimit(self):
-        r"""IsAllowedDataKeyHosted为1时有效，数据密钥免费额度。
+        r"""<p>IsAllowedDataKeyHosted为1时有效，数据密钥免费额度。</p>
         :rtype: int
         """
         return self._FreeDataKeyLimit
@@ -5468,7 +5477,7 @@ class GetServiceStatusResponse(AbstractModel):
 
     @property
     def DataKeyUsedCount(self):
-        r"""IsAllowedDataKeyHosted为1时有效，已使用的数据密钥数量。
+        r"""<p>IsAllowedDataKeyHosted为1时有效，已使用的数据密钥数量。</p>
         :rtype: int
         """
         return self._DataKeyUsedCount
@@ -5479,7 +5488,7 @@ class GetServiceStatusResponse(AbstractModel):
 
     @property
     def SyncTaskList(self):
-        r"""同步任务的目标地域信息
+        r"""<p>同步任务的目标地域信息</p>
         :rtype: list of DestinationSyncConfig
         """
         return self._SyncTaskList
@@ -5490,7 +5499,7 @@ class GetServiceStatusResponse(AbstractModel):
 
     @property
     def IsAllowedSync(self):
-        r"""是否支持同步任务。true:支持，false:不支持。
+        r"""<p>是否支持同步任务。true:支持，false:不支持。</p>
         :rtype: bool
         """
         return self._IsAllowedSync
@@ -5498,6 +5507,39 @@ class GetServiceStatusResponse(AbstractModel):
     @IsAllowedSync.setter
     def IsAllowedSync(self, IsAllowedSync):
         self._IsAllowedSync = IsAllowedSync
+
+    @property
+    def QpsLimit(self):
+        r"""<p>地域下的QPS</p>
+        :rtype: int
+        """
+        return self._QpsLimit
+
+    @QpsLimit.setter
+    def QpsLimit(self, QpsLimit):
+        self._QpsLimit = QpsLimit
+
+    @property
+    def QpsTotalLimit(self):
+        r"""<p>总的QPS值</p>
+        :rtype: int
+        """
+        return self._QpsTotalLimit
+
+    @QpsTotalLimit.setter
+    def QpsTotalLimit(self, QpsTotalLimit):
+        self._QpsTotalLimit = QpsTotalLimit
+
+    @property
+    def RegionsQps(self):
+        r"""<p>地域下的QPS</p>
+        :rtype: list of RegionQps
+        """
+        return self._RegionsQps
+
+    @RegionsQps.setter
+    def RegionsQps(self, RegionsQps):
+        self._RegionsQps = RegionsQps
 
     @property
     def RequestId(self):
@@ -5540,6 +5582,14 @@ class GetServiceStatusResponse(AbstractModel):
                 obj._deserialize(item)
                 self._SyncTaskList.append(obj)
         self._IsAllowedSync = params.get("IsAllowedSync")
+        self._QpsLimit = params.get("QpsLimit")
+        self._QpsTotalLimit = params.get("QpsTotalLimit")
+        if params.get("RegionsQps") is not None:
+            self._RegionsQps = []
+            for item in params.get("RegionsQps"):
+                obj = RegionQps()
+                obj._deserialize(item)
+                self._RegionsQps.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -8007,6 +8057,57 @@ class ReEncryptResponse(AbstractModel):
         self._SourceKeyId = params.get("SourceKeyId")
         self._ReEncrypted = params.get("ReEncrypted")
         self._RequestId = params.get("RequestId")
+
+
+class RegionQps(AbstractModel):
+    r"""地域的QPS扩展包
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Region: <p>地域</p>
+        :type Region: str
+        :param _Qps: <p>qps的大小</p>
+        :type Qps: int
+        """
+        self._Region = None
+        self._Qps = None
+
+    @property
+    def Region(self):
+        r"""<p>地域</p>
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Qps(self):
+        r"""<p>qps的大小</p>
+        :rtype: int
+        """
+        return self._Qps
+
+    @Qps.setter
+    def Qps(self, Qps):
+        self._Qps = Qps
+
+
+    def _deserialize(self, params):
+        self._Region = params.get("Region")
+        self._Qps = params.get("Qps")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ScheduleDataKeyDeletionRequest(AbstractModel):

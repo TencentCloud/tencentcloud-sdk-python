@@ -121,14 +121,14 @@ class AcquireSandboxInstanceTokenRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 沙箱实例ID，生成的访问Token将仅可用于访问此沙箱实例
+        :param _InstanceId: <p>沙箱实例ID，生成的访问Token将仅可用于访问此沙箱实例</p>
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        r"""沙箱实例ID，生成的访问Token将仅可用于访问此沙箱实例
+        r"""<p>沙箱实例ID，生成的访问Token将仅可用于访问此沙箱实例</p>
         :rtype: str
         """
         return self._InstanceId
@@ -157,20 +157,23 @@ class AcquireSandboxInstanceTokenResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Token: 访问Token
+        :param _Token: <p>访问Token</p>
         :type Token: str
-        :param _ExpiresAt: 过期时间
+        :param _ExpiresAt: <p>过期时间</p>
         :type ExpiresAt: str
+        :param _TrafficToken: <p>非管控面（envd）的访问Token</p>
+        :type TrafficToken: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Token = None
         self._ExpiresAt = None
+        self._TrafficToken = None
         self._RequestId = None
 
     @property
     def Token(self):
-        r"""访问Token
+        r"""<p>访问Token</p>
         :rtype: str
         """
         return self._Token
@@ -181,7 +184,7 @@ class AcquireSandboxInstanceTokenResponse(AbstractModel):
 
     @property
     def ExpiresAt(self):
-        r"""过期时间
+        r"""<p>过期时间</p>
         :rtype: str
         """
         return self._ExpiresAt
@@ -189,6 +192,17 @@ class AcquireSandboxInstanceTokenResponse(AbstractModel):
     @ExpiresAt.setter
     def ExpiresAt(self, ExpiresAt):
         self._ExpiresAt = ExpiresAt
+
+    @property
+    def TrafficToken(self):
+        r"""<p>非管控面（envd）的访问Token</p>
+        :rtype: str
+        """
+        return self._TrafficToken
+
+    @TrafficToken.setter
+    def TrafficToken(self, TrafficToken):
+        self._TrafficToken = TrafficToken
 
     @property
     def RequestId(self):
@@ -205,6 +219,7 @@ class AcquireSandboxInstanceTokenResponse(AbstractModel):
     def _deserialize(self, params):
         self._Token = params.get("Token")
         self._ExpiresAt = params.get("ExpiresAt")
+        self._TrafficToken = params.get("TrafficToken")
         self._RequestId = params.get("RequestId")
 
 
@@ -2878,6 +2893,8 @@ class SandboxInstance(AbstractModel):
         :type NetworkMode: str
         :param _Metadata: <p>沙箱实例元数据</p>
         :type Metadata: list of MetadataVar
+        :param _AuthMode: <p>沙箱访问认证模式</p><p>枚举值：</p><ul><li>DEFAULT： 默认，即 TOKEN 认证</li><li>TOKEN： Token认证，即所有端口访问都需携带TOKEN</li><li>NONE： 免认证，即所有端口访问无需携带TOKEN</li><li>PUBLIC： 公开模式，即ENVD管理端口（49983）访问需携带TOKEN，其他端口无需携带TOKEN</li></ul><p>默认值：DEFAULT</p>
+        :type AuthMode: str
         """
         self._InstanceId = None
         self._ToolId = None
@@ -2893,6 +2910,7 @@ class SandboxInstance(AbstractModel):
         self._CustomConfiguration = None
         self._NetworkMode = None
         self._Metadata = None
+        self._AuthMode = None
 
     @property
     def InstanceId(self):
@@ -3048,6 +3066,17 @@ class SandboxInstance(AbstractModel):
     def Metadata(self, Metadata):
         self._Metadata = Metadata
 
+    @property
+    def AuthMode(self):
+        r"""<p>沙箱访问认证模式</p><p>枚举值：</p><ul><li>DEFAULT： 默认，即 TOKEN 认证</li><li>TOKEN： Token认证，即所有端口访问都需携带TOKEN</li><li>NONE： 免认证，即所有端口访问无需携带TOKEN</li><li>PUBLIC： 公开模式，即ENVD管理端口（49983）访问需携带TOKEN，其他端口无需携带TOKEN</li></ul><p>默认值：DEFAULT</p>
+        :rtype: str
+        """
+        return self._AuthMode
+
+    @AuthMode.setter
+    def AuthMode(self, AuthMode):
+        self._AuthMode = AuthMode
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -3076,6 +3105,7 @@ class SandboxInstance(AbstractModel):
                 obj = MetadataVar()
                 obj._deserialize(item)
                 self._Metadata.append(obj)
+        self._AuthMode = params.get("AuthMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3382,7 +3412,7 @@ class StartSandboxInstanceRequest(AbstractModel):
         :type MountOptions: list of MountOption
         :param _CustomConfiguration: <p>沙箱实例自定义配置</p>
         :type CustomConfiguration: :class:`tencentcloud.ags.v20250920.models.CustomConfiguration`
-        :param _AuthMode: <p>沙箱访问认证模式</p><p>枚举值：</p><ul><li>DEFAULT： 跟随系统策略</li><li>TOKEN： Token认证</li><li>NONE： 免认证 </li></ul><p>默认值：DEFAULT</p>
+        :param _AuthMode: <p>沙箱访问认证模式</p><p>枚举值：</p><ul><li>DEFAULT： 默认，即 TOKEN 认证</li><li>TOKEN： Token认证，即所有端口访问都需携带TOKEN</li><li>NONE： 免认证，即所有端口访问无需携带TOKEN</li><li>PUBLIC： 公开模式，即ENVD管理端口（49983）访问需携带TOKEN，其他端口无需携带TOKEN</li></ul><p>默认值：DEFAULT</p>
         :type AuthMode: str
         :param _Metadata: <p>沙箱元数据</p>
         :type Metadata: list of MetadataVar
@@ -3464,7 +3494,7 @@ class StartSandboxInstanceRequest(AbstractModel):
 
     @property
     def AuthMode(self):
-        r"""<p>沙箱访问认证模式</p><p>枚举值：</p><ul><li>DEFAULT： 跟随系统策略</li><li>TOKEN： Token认证</li><li>NONE： 免认证 </li></ul><p>默认值：DEFAULT</p>
+        r"""<p>沙箱访问认证模式</p><p>枚举值：</p><ul><li>DEFAULT： 默认，即 TOKEN 认证</li><li>TOKEN： Token认证，即所有端口访问都需携带TOKEN</li><li>NONE： 免认证，即所有端口访问无需携带TOKEN</li><li>PUBLIC： 公开模式，即ENVD管理端口（49983）访问需携带TOKEN，其他端口无需携带TOKEN</li></ul><p>默认值：DEFAULT</p>
         :rtype: str
         """
         return self._AuthMode

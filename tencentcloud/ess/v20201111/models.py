@@ -34664,6 +34664,13 @@ class FormField(AbstractModel):
         "ComponentValue": "选择的内容"
     }
     ```
+    多选需要用“、”分割选项
+    ```
+    {
+        "ComponentId": "componentId1",
+        "ComponentValue": "选项1、选项2"
+    }
+    ```
 
     当控件的 ComponentType='DATE'时，FormField.ComponentValue填入日期内容；
 
@@ -38881,7 +38888,7 @@ class OperateFlowRemarksRequest(AbstractModel):
         r"""
         :param _Operator: <p>执行本接口操作的员工信息。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param _OperateType: <p>操作类型，可取值如下:</p><ul><li>DELETE:  删除</li><li>ENABLE: 启用</li><li>DISABLE: 停用</li><li>COPY: 复制新建</li></ul>
+        :param _OperateType: <p>指定对合同备注的操作</p><p>枚举值：</p><ul><li>CREATE： 创建合同备注</li><li>UPDATE： 更新合同备注</li><li>DELETE： 删除合同备注</li></ul>
         :type OperateType: str
         :param _FlowId: <p>对应的合同流程id</p><p>目标合同为合同组时此参数不填</p>
         :type FlowId: str
@@ -38915,7 +38922,7 @@ class OperateFlowRemarksRequest(AbstractModel):
 
     @property
     def OperateType(self):
-        r"""<p>操作类型，可取值如下:</p><ul><li>DELETE:  删除</li><li>ENABLE: 启用</li><li>DISABLE: 停用</li><li>COPY: 复制新建</li></ul>
+        r"""<p>指定对合同备注的操作</p><p>枚举值：</p><ul><li>CREATE： 创建合同备注</li><li>UPDATE： 更新合同备注</li><li>DELETE： 删除合同备注</li></ul>
         :rtype: str
         """
         return self._OperateType

@@ -8227,6 +8227,8 @@ class CreateTriggerTaskSchedulerConfiguration(AbstractModel):
         :type DependencyTriggerPolicy: str
         :param _AllowDownstreamDependency: <p>是否允许下游依赖 1允许 0不允许</p><p>取值范围：[0, 1]</p><p>默认值：1</p>
         :type AllowDownstreamDependency: int
+        :param _ScheduleType: <p>调度类型: 0 正常调度 1 空跑调度</p><p>枚举值：</p><ul><li>0： 正常调度</li><li>1： 空跑调度</li></ul><p>默认值：0</p>
+        :type ScheduleType: int
         """
         self._UpstreamDependencyConfigList = None
         self._RunPriorityType = None
@@ -8240,6 +8242,7 @@ class CreateTriggerTaskSchedulerConfiguration(AbstractModel):
         self._TaskOutputRegistryList = None
         self._DependencyTriggerPolicy = None
         self._AllowDownstreamDependency = None
+        self._ScheduleType = None
 
     @property
     def UpstreamDependencyConfigList(self):
@@ -8373,6 +8376,17 @@ class CreateTriggerTaskSchedulerConfiguration(AbstractModel):
     def AllowDownstreamDependency(self, AllowDownstreamDependency):
         self._AllowDownstreamDependency = AllowDownstreamDependency
 
+    @property
+    def ScheduleType(self):
+        r"""<p>调度类型: 0 正常调度 1 空跑调度</p><p>枚举值：</p><ul><li>0： 正常调度</li><li>1： 空跑调度</li></ul><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._ScheduleType
+
+    @ScheduleType.setter
+    def ScheduleType(self, ScheduleType):
+        self._ScheduleType = ScheduleType
+
 
     def _deserialize(self, params):
         if params.get("UpstreamDependencyConfigList") is not None:
@@ -8407,6 +8421,7 @@ class CreateTriggerTaskSchedulerConfiguration(AbstractModel):
                 self._TaskOutputRegistryList.append(obj)
         self._DependencyTriggerPolicy = params.get("DependencyTriggerPolicy")
         self._AllowDownstreamDependency = params.get("AllowDownstreamDependency")
+        self._ScheduleType = params.get("ScheduleType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19414,27 +19429,31 @@ class InTaskParameter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ParamKey: 参数名
+        :param _ParamKey: <p>参数名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ParamKey: str
-        :param _ParamDesc: 参数描述：格式为 项目标识.任务名称.参数名；例：project_wedata_1.sh_250820_104107.pp_out
+        :param _ParamDesc: <p>参数描述：格式为 项目标识.任务名称.参数名；例：project_wedata_1.sh_250820_104107.pp_out</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ParamDesc: str
-        :param _FromTaskId: 父任务ID
+        :param _FromTaskId: <p>父任务ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FromTaskId: str
-        :param _FromParamKey: 父任务参数key
+        :param _FromParamKey: <p>父任务参数key</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FromParamKey: str
+        :param _Type: <p>任务输入类型，默认使用TASK</p><p>枚举值：</p><ul><li>TASK： 来源为父任务</li><li>CONSTANT： 常量值，目前仅for-each节点支持</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
         """
         self._ParamKey = None
         self._ParamDesc = None
         self._FromTaskId = None
         self._FromParamKey = None
+        self._Type = None
 
     @property
     def ParamKey(self):
-        r"""参数名
+        r"""<p>参数名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -19446,7 +19465,7 @@ class InTaskParameter(AbstractModel):
 
     @property
     def ParamDesc(self):
-        r"""参数描述：格式为 项目标识.任务名称.参数名；例：project_wedata_1.sh_250820_104107.pp_out
+        r"""<p>参数描述：格式为 项目标识.任务名称.参数名；例：project_wedata_1.sh_250820_104107.pp_out</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -19458,7 +19477,7 @@ class InTaskParameter(AbstractModel):
 
     @property
     def FromTaskId(self):
-        r"""父任务ID
+        r"""<p>父任务ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -19470,7 +19489,7 @@ class InTaskParameter(AbstractModel):
 
     @property
     def FromParamKey(self):
-        r"""父任务参数key
+        r"""<p>父任务参数key</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -19480,12 +19499,25 @@ class InTaskParameter(AbstractModel):
     def FromParamKey(self, FromParamKey):
         self._FromParamKey = FromParamKey
 
+    @property
+    def Type(self):
+        r"""<p>任务输入类型，默认使用TASK</p><p>枚举值：</p><ul><li>TASK： 来源为父任务</li><li>CONSTANT： 常量值，目前仅for-each节点支持</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
 
     def _deserialize(self, params):
         self._ParamKey = params.get("ParamKey")
         self._ParamDesc = params.get("ParamDesc")
         self._FromTaskId = params.get("FromTaskId")
         self._FromParamKey = params.get("FromParamKey")
+        self._Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -56685,6 +56717,9 @@ class TriggerTaskSchedulerConfiguration(AbstractModel):
         :param _AllowDownstreamDependency: <p>是否允许下游依赖 1允许 0不允许</p><p>取值范围：[0, 1]</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AllowDownstreamDependency: int
+        :param _ScheduleType: <p>调度类型: 0 正常调度 1 空跑调度</p><p>枚举值：</p><ul><li>0： 正常调度</li><li>1： 空跑调度</li></ul><p>默认值：0</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScheduleType: int
         """
         self._UpstreamDependencyConfigList = None
         self._RunPriorityType = None
@@ -56698,6 +56733,7 @@ class TriggerTaskSchedulerConfiguration(AbstractModel):
         self._TaskOutputRegistryList = None
         self._DependencyTriggerPolicy = None
         self._AllowDownstreamDependency = None
+        self._ScheduleType = None
 
     @property
     def UpstreamDependencyConfigList(self):
@@ -56843,6 +56879,18 @@ class TriggerTaskSchedulerConfiguration(AbstractModel):
     def AllowDownstreamDependency(self, AllowDownstreamDependency):
         self._AllowDownstreamDependency = AllowDownstreamDependency
 
+    @property
+    def ScheduleType(self):
+        r"""<p>调度类型: 0 正常调度 1 空跑调度</p><p>枚举值：</p><ul><li>0： 正常调度</li><li>1： 空跑调度</li></ul><p>默认值：0</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ScheduleType
+
+    @ScheduleType.setter
+    def ScheduleType(self, ScheduleType):
+        self._ScheduleType = ScheduleType
+
 
     def _deserialize(self, params):
         if params.get("UpstreamDependencyConfigList") is not None:
@@ -56877,6 +56925,7 @@ class TriggerTaskSchedulerConfiguration(AbstractModel):
                 self._TaskOutputRegistryList.append(obj)
         self._DependencyTriggerPolicy = params.get("DependencyTriggerPolicy")
         self._AllowDownstreamDependency = params.get("AllowDownstreamDependency")
+        self._ScheduleType = params.get("ScheduleType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
