@@ -8537,19 +8537,19 @@ class CreateVarRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AppBizId: 应用ID
+        :param _AppBizId: <p>应用ID，获取方法参看如何获取   <a href="https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa">BotBizId</a>。</p>
         :type AppBizId: str
-        :param _VarName: 变量名称，不允许重复，最大支持50个字符
+        :param _VarName: <p>变量名称，不允许重复，最大支持50个字符，英文字母开头，支持英文数字与下划线”_”。</p>
         :type VarName: str
-        :param _VarDesc: 变量描述，最大支持120个字符
+        :param _VarDesc: <p>变量描述，最大支持120个字符</p>
         :type VarDesc: str
-        :param _VarType: 变量类型定义，支持类型如下：(STRING,INT,FLOAT,BOOL,OBJECT,ARRAY_STRING,ARRAY_INT,ARRAY_FLOAT,ARRAY_BOOL,ARRAY_OBJECT,FILE,DOCUMENT,IMAGE,AUDIO);传输过程是json字符串，标签中仅支持"STRING"类型使用
+        :param _VarType: <p>变量类型定义，支持类型如下：(STRING,INT,FLOAT,BOOL,OBJECT,ARRAY_STRING,ARRAY_INT,ARRAY_FLOAT,ARRAY_BOOL,ARRAY_OBJECT,FILE,DOCUMENT,IMAGE,AUDIO);传输过程是json字符串，标签中仅支持&quot;STRING&quot;类型使用</p>
         :type VarType: str
-        :param _VarDefaultValue: 自定义变量默认值
+        :param _VarDefaultValue: <p>自定义变量默认值，<code>VarDefaultValue</code>xa0默认为空</p>
         :type VarDefaultValue: str
-        :param _VarDefaultFileName: 自定义变量文件默认名称
+        :param _VarDefaultFileName: <p>自定义变量文件默认名称，<code>VarDefaultFileName</code>默认为空</p>
         :type VarDefaultFileName: str
-        :param _VarModuleType: 参数类型
+        :param _VarModuleType: <p>变量模块类型</p><p>枚举值：</p><ul><li>0： API参数</li><li>1： 环境参数</li><li>2： 应用参数</li><li>3： 系统参数</li></ul>
         :type VarModuleType: int
         """
         self._AppBizId = None
@@ -8562,7 +8562,7 @@ class CreateVarRequest(AbstractModel):
 
     @property
     def AppBizId(self):
-        r"""应用ID
+        r"""<p>应用ID，获取方法参看如何获取   <a href="https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa">BotBizId</a>。</p>
         :rtype: str
         """
         return self._AppBizId
@@ -8573,7 +8573,7 @@ class CreateVarRequest(AbstractModel):
 
     @property
     def VarName(self):
-        r"""变量名称，不允许重复，最大支持50个字符
+        r"""<p>变量名称，不允许重复，最大支持50个字符，英文字母开头，支持英文数字与下划线”_”。</p>
         :rtype: str
         """
         return self._VarName
@@ -8584,7 +8584,7 @@ class CreateVarRequest(AbstractModel):
 
     @property
     def VarDesc(self):
-        r"""变量描述，最大支持120个字符
+        r"""<p>变量描述，最大支持120个字符</p>
         :rtype: str
         """
         return self._VarDesc
@@ -8595,7 +8595,7 @@ class CreateVarRequest(AbstractModel):
 
     @property
     def VarType(self):
-        r"""变量类型定义，支持类型如下：(STRING,INT,FLOAT,BOOL,OBJECT,ARRAY_STRING,ARRAY_INT,ARRAY_FLOAT,ARRAY_BOOL,ARRAY_OBJECT,FILE,DOCUMENT,IMAGE,AUDIO);传输过程是json字符串，标签中仅支持"STRING"类型使用
+        r"""<p>变量类型定义，支持类型如下：(STRING,INT,FLOAT,BOOL,OBJECT,ARRAY_STRING,ARRAY_INT,ARRAY_FLOAT,ARRAY_BOOL,ARRAY_OBJECT,FILE,DOCUMENT,IMAGE,AUDIO);传输过程是json字符串，标签中仅支持&quot;STRING&quot;类型使用</p>
         :rtype: str
         """
         return self._VarType
@@ -8606,7 +8606,7 @@ class CreateVarRequest(AbstractModel):
 
     @property
     def VarDefaultValue(self):
-        r"""自定义变量默认值
+        r"""<p>自定义变量默认值，<code>VarDefaultValue</code>xa0默认为空</p>
         :rtype: str
         """
         return self._VarDefaultValue
@@ -8617,7 +8617,7 @@ class CreateVarRequest(AbstractModel):
 
     @property
     def VarDefaultFileName(self):
-        r"""自定义变量文件默认名称
+        r"""<p>自定义变量文件默认名称，<code>VarDefaultFileName</code>默认为空</p>
         :rtype: str
         """
         return self._VarDefaultFileName
@@ -8628,7 +8628,7 @@ class CreateVarRequest(AbstractModel):
 
     @property
     def VarModuleType(self):
-        r"""参数类型
+        r"""<p>变量模块类型</p><p>枚举值：</p><ul><li>0： API参数</li><li>1： 环境参数</li><li>2： 应用参数</li><li>3： 系统参数</li></ul>
         :rtype: int
         """
         return self._VarModuleType
@@ -8663,7 +8663,7 @@ class CreateVarResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _VarId: 变量ID
+        :param _VarId: <p>变量ID</p>
         :type VarId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -8673,7 +8673,7 @@ class CreateVarResponse(AbstractModel):
 
     @property
     def VarId(self):
-        r"""变量ID
+        r"""<p>变量ID</p>
         :rtype: str
         """
         return self._VarId
@@ -9834,11 +9834,11 @@ class DeleteVarRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AppBizId: 应用ID
+        :param _AppBizId: <p>应用ID，获取方法参看如何获取   <a href="https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa">BotBizId</a>。</p>
         :type AppBizId: str
-        :param _VarId: 变量ID
+        :param _VarId: <p>变量 ID，可通过 CreateVar；DescribeVar；DescribeVarList 接口返回结果中获取。DeleteVar</p>
         :type VarId: str
-        :param _VarModuleType: 参数类型
+        :param _VarModuleType: <p>变量模块类型</p><p>枚举值：</p><ul><li>0： API参数</li><li>1： 环境参数</li><li>2： 应用参数</li><li>3： 系统参数</li></ul><p>默认值：0</p>
         :type VarModuleType: int
         """
         self._AppBizId = None
@@ -9847,7 +9847,7 @@ class DeleteVarRequest(AbstractModel):
 
     @property
     def AppBizId(self):
-        r"""应用ID
+        r"""<p>应用ID，获取方法参看如何获取   <a href="https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa">BotBizId</a>。</p>
         :rtype: str
         """
         return self._AppBizId
@@ -9858,7 +9858,7 @@ class DeleteVarRequest(AbstractModel):
 
     @property
     def VarId(self):
-        r"""变量ID
+        r"""<p>变量 ID，可通过 CreateVar；DescribeVar；DescribeVarList 接口返回结果中获取。DeleteVar</p>
         :rtype: str
         """
         return self._VarId
@@ -9869,7 +9869,7 @@ class DeleteVarRequest(AbstractModel):
 
     @property
     def VarModuleType(self):
-        r"""参数类型
+        r"""<p>变量模块类型</p><p>枚举值：</p><ul><li>0： API参数</li><li>1： 环境参数</li><li>2： 应用参数</li><li>3： 系统参数</li></ul><p>默认值：0</p>
         :rtype: int
         """
         return self._VarModuleType
@@ -13336,9 +13336,9 @@ class DescribeSearchStatsGraphRequest(AbstractModel):
         :type LoginUin: str
         :param _LoginSubAccountUin: 登录用户子账号(集成商模式必填)
         :type LoginSubAccountUin: str
-        :param _UinAccount: uin列表
+        :param _UinAccount: 子账号标识列表，支持批量查询多个子账号。不填时查询主账号下所有子账号的汇总数据
         :type UinAccount: list of str
-        :param _SubBizType: 子业务类型
+        :param _SubBizType: 子业务类型，用于筛选不同业务场景的调用统计
         :type SubBizType: str
         :param _ModelName: 模型标识
         :type ModelName: str
@@ -13348,11 +13348,11 @@ class DescribeSearchStatsGraphRequest(AbstractModel):
         :type EndTime: str
         :param _AppBizIds: 应用id列表
         :type AppBizIds: list of str
-        :param _SpaceId: 空间id
+        :param _SpaceId: 空间ID，用于限定查询范围。不填时查询所有空间的数据
         :type SpaceId: str
-        :param _StatStartTime: 开始时间戳, 单位为秒
+        :param _StatStartTime: 开始时间。Unix 时间戳，单位是秒，默认为空。
         :type StatStartTime: int
-        :param _StatEndTime: 结束时间戳, 单位为秒
+        :param _StatEndTime: 结束时间。Unix 时间戳，单位是秒，默认为空。
         :type StatEndTime: int
         """
         self._LoginUin = None
@@ -13391,7 +13391,7 @@ class DescribeSearchStatsGraphRequest(AbstractModel):
 
     @property
     def UinAccount(self):
-        r"""uin列表
+        r"""子账号标识列表，支持批量查询多个子账号。不填时查询主账号下所有子账号的汇总数据
         :rtype: list of str
         """
         return self._UinAccount
@@ -13402,7 +13402,7 @@ class DescribeSearchStatsGraphRequest(AbstractModel):
 
     @property
     def SubBizType(self):
-        r"""子业务类型
+        r"""子业务类型，用于筛选不同业务场景的调用统计
         :rtype: str
         """
         return self._SubBizType
@@ -13424,6 +13424,8 @@ class DescribeSearchStatsGraphRequest(AbstractModel):
 
     @property
     def StartTime(self):
+        warnings.warn("parameter `StartTime` is deprecated", DeprecationWarning) 
+
         r"""开始时间戳, 单位为秒(废弃)
         :rtype: str
         """
@@ -13431,10 +13433,14 @@ class DescribeSearchStatsGraphRequest(AbstractModel):
 
     @StartTime.setter
     def StartTime(self, StartTime):
+        warnings.warn("parameter `StartTime` is deprecated", DeprecationWarning) 
+
         self._StartTime = StartTime
 
     @property
     def EndTime(self):
+        warnings.warn("parameter `EndTime` is deprecated", DeprecationWarning) 
+
         r"""结束时间戳, 单位为秒(废弃)
         :rtype: str
         """
@@ -13442,6 +13448,8 @@ class DescribeSearchStatsGraphRequest(AbstractModel):
 
     @EndTime.setter
     def EndTime(self, EndTime):
+        warnings.warn("parameter `EndTime` is deprecated", DeprecationWarning) 
+
         self._EndTime = EndTime
 
     @property
@@ -13457,7 +13465,7 @@ class DescribeSearchStatsGraphRequest(AbstractModel):
 
     @property
     def SpaceId(self):
-        r"""空间id
+        r"""空间ID，用于限定查询范围。不填时查询所有空间的数据
         :rtype: str
         """
         return self._SpaceId
@@ -13468,7 +13476,7 @@ class DescribeSearchStatsGraphRequest(AbstractModel):
 
     @property
     def StatStartTime(self):
-        r"""开始时间戳, 单位为秒
+        r"""开始时间。Unix 时间戳，单位是秒，默认为空。
         :rtype: int
         """
         return self._StatStartTime
@@ -13479,7 +13487,7 @@ class DescribeSearchStatsGraphRequest(AbstractModel):
 
     @property
     def StatEndTime(self):
-        r"""结束时间戳, 单位为秒
+        r"""结束时间。Unix 时间戳，单位是秒，默认为空。
         :rtype: int
         """
         return self._StatEndTime
@@ -13752,15 +13760,13 @@ class DescribeStorageCredentialRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BotBizId: 应用ID，参数非必填不代表不需要填写，下面不同的参数组合会获取到不同的权限，具体请参考 https://cloud.tencent.com/document/product/1759/116238
+        :param _BotBizId: <p>应用ID，参数非必填不代表不需要填写，下面不同的参数组合会获取到不同的权限，具体请参考 https://cloud.tencent.com/document/product/1759/116238</p>
         :type BotBizId: str
-        :param _FileType: 文件类型,正常的文件名类型后缀，支持 docx、doc、pdf、txt、md、wps、pages、html、mhtml、epub、xml、json、log、xlsx、xls、csv、tsv、numbers、pptx、ppt、ppsx、ppsm、key、png、jpg、jpeg、gif、bmp、tiff、webp、heif、heic、jp2、eps、icns、im、pcx、ppm、xbm、xmind
-
+        :param _FileType: <p>文件类型,正常的文件名类型后缀，支持 docx、doc、pdf、txt、md、wps、pages、html、mhtml、epub、xml、json、log、xlsx、xls、csv、tsv、numbers、pptx、ppt、ppsx、ppsm、key、png、jpg、jpeg、gif、bmp、tiff、webp、heif、heic、jp2、eps、icns、im、pcx、ppm、xbm、xmind</p>
         :type FileType: str
-        :param _IsPublic: IsPublic用于上传文件或图片时选择场景，当上传对话端图片时IsPublic为true，上传文件（包括文档库文件/图片等和对话端文件）时IsPublic为false
-
+        :param _IsPublic: <p>IsPublic用于上传文件或图片时选择场景，当上传对话端图片时IsPublic为true，上传文件（包括文档库文件/图片等和对话端文件）时IsPublic为false</p>
         :type IsPublic: bool
-        :param _TypeKey: 存储类型: offline:离线文件，realtime:实时文件；为空默认为offline
+        :param _TypeKey: <p>存储类型: offline:离线文件，realtime:实时文件；为空默认为offline</p>
         :type TypeKey: str
         """
         self._BotBizId = None
@@ -13770,7 +13776,7 @@ class DescribeStorageCredentialRequest(AbstractModel):
 
     @property
     def BotBizId(self):
-        r"""应用ID，参数非必填不代表不需要填写，下面不同的参数组合会获取到不同的权限，具体请参考 https://cloud.tencent.com/document/product/1759/116238
+        r"""<p>应用ID，参数非必填不代表不需要填写，下面不同的参数组合会获取到不同的权限，具体请参考 https://cloud.tencent.com/document/product/1759/116238</p>
         :rtype: str
         """
         return self._BotBizId
@@ -13781,8 +13787,7 @@ class DescribeStorageCredentialRequest(AbstractModel):
 
     @property
     def FileType(self):
-        r"""文件类型,正常的文件名类型后缀，支持 docx、doc、pdf、txt、md、wps、pages、html、mhtml、epub、xml、json、log、xlsx、xls、csv、tsv、numbers、pptx、ppt、ppsx、ppsm、key、png、jpg、jpeg、gif、bmp、tiff、webp、heif、heic、jp2、eps、icns、im、pcx、ppm、xbm、xmind
-
+        r"""<p>文件类型,正常的文件名类型后缀，支持 docx、doc、pdf、txt、md、wps、pages、html、mhtml、epub、xml、json、log、xlsx、xls、csv、tsv、numbers、pptx、ppt、ppsx、ppsm、key、png、jpg、jpeg、gif、bmp、tiff、webp、heif、heic、jp2、eps、icns、im、pcx、ppm、xbm、xmind</p>
         :rtype: str
         """
         return self._FileType
@@ -13793,8 +13798,7 @@ class DescribeStorageCredentialRequest(AbstractModel):
 
     @property
     def IsPublic(self):
-        r"""IsPublic用于上传文件或图片时选择场景，当上传对话端图片时IsPublic为true，上传文件（包括文档库文件/图片等和对话端文件）时IsPublic为false
-
+        r"""<p>IsPublic用于上传文件或图片时选择场景，当上传对话端图片时IsPublic为true，上传文件（包括文档库文件/图片等和对话端文件）时IsPublic为false</p>
         :rtype: bool
         """
         return self._IsPublic
@@ -13805,7 +13809,7 @@ class DescribeStorageCredentialRequest(AbstractModel):
 
     @property
     def TypeKey(self):
-        r"""存储类型: offline:离线文件，realtime:实时文件；为空默认为offline
+        r"""<p>存储类型: offline:离线文件，realtime:实时文件；为空默认为offline</p>
         :rtype: str
         """
         return self._TypeKey
@@ -13837,29 +13841,29 @@ class DescribeStorageCredentialResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Credentials: 密钥信息
+        :param _Credentials: <p>密钥信息</p>
         :type Credentials: :class:`tencentcloud.lke.v20231130.models.Credentials`
-        :param _ExpiredTime: 失效时间
+        :param _ExpiredTime: <p>失效时间，为 Unix 时间戳</p><p>单位：秒</p>
         :type ExpiredTime: int
-        :param _StartTime: 开始时间
+        :param _StartTime: <p>开始时间，为 Unix 时间戳</p><p>单位：秒</p>
         :type StartTime: int
-        :param _Bucket: 对象存储桶
+        :param _Bucket: <p>对象存储桶</p>
         :type Bucket: str
-        :param _Region: 对象存储可用区
+        :param _Region: <p>对象存储可用区</p>
         :type Region: str
-        :param _FilePath: 文件存储目录
+        :param _FilePath: <p>文件存储目录</p>
         :type FilePath: str
-        :param _Type: 存储类型
+        :param _Type: <p>存储类型</p>
         :type Type: str
-        :param _CorpUin: 企业主账号
+        :param _CorpUin: <p>企业主账号</p>
         :type CorpUin: str
-        :param _ImagePath: 图片存储目录
+        :param _ImagePath: <p>图片存储目录</p>
         :type ImagePath: str
-        :param _UploadPath: 上传存储路径，到具体文件
+        :param _UploadPath: <p>上传存储路径，到具体文件</p>
         :type UploadPath: str
-        :param _UploadUrl: 文件上传地址，使用put请求上传文件到该地址
+        :param _UploadUrl: <p>文件上传地址，使用put请求上传文件到该地址</p>
         :type UploadUrl: str
-        :param _FileUrl: 文件的预签名地址，支持下载
+        :param _FileUrl: <p>文件的预签名地址，支持下载</p>
         :type FileUrl: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -13880,7 +13884,7 @@ class DescribeStorageCredentialResponse(AbstractModel):
 
     @property
     def Credentials(self):
-        r"""密钥信息
+        r"""<p>密钥信息</p>
         :rtype: :class:`tencentcloud.lke.v20231130.models.Credentials`
         """
         return self._Credentials
@@ -13891,7 +13895,7 @@ class DescribeStorageCredentialResponse(AbstractModel):
 
     @property
     def ExpiredTime(self):
-        r"""失效时间
+        r"""<p>失效时间，为 Unix 时间戳</p><p>单位：秒</p>
         :rtype: int
         """
         return self._ExpiredTime
@@ -13902,7 +13906,7 @@ class DescribeStorageCredentialResponse(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""开始时间
+        r"""<p>开始时间，为 Unix 时间戳</p><p>单位：秒</p>
         :rtype: int
         """
         return self._StartTime
@@ -13913,7 +13917,7 @@ class DescribeStorageCredentialResponse(AbstractModel):
 
     @property
     def Bucket(self):
-        r"""对象存储桶
+        r"""<p>对象存储桶</p>
         :rtype: str
         """
         return self._Bucket
@@ -13924,7 +13928,7 @@ class DescribeStorageCredentialResponse(AbstractModel):
 
     @property
     def Region(self):
-        r"""对象存储可用区
+        r"""<p>对象存储可用区</p>
         :rtype: str
         """
         return self._Region
@@ -13935,7 +13939,7 @@ class DescribeStorageCredentialResponse(AbstractModel):
 
     @property
     def FilePath(self):
-        r"""文件存储目录
+        r"""<p>文件存储目录</p>
         :rtype: str
         """
         return self._FilePath
@@ -13946,7 +13950,7 @@ class DescribeStorageCredentialResponse(AbstractModel):
 
     @property
     def Type(self):
-        r"""存储类型
+        r"""<p>存储类型</p>
         :rtype: str
         """
         return self._Type
@@ -13957,7 +13961,7 @@ class DescribeStorageCredentialResponse(AbstractModel):
 
     @property
     def CorpUin(self):
-        r"""企业主账号
+        r"""<p>企业主账号</p>
         :rtype: str
         """
         return self._CorpUin
@@ -13968,7 +13972,7 @@ class DescribeStorageCredentialResponse(AbstractModel):
 
     @property
     def ImagePath(self):
-        r"""图片存储目录
+        r"""<p>图片存储目录</p>
         :rtype: str
         """
         return self._ImagePath
@@ -13979,7 +13983,7 @@ class DescribeStorageCredentialResponse(AbstractModel):
 
     @property
     def UploadPath(self):
-        r"""上传存储路径，到具体文件
+        r"""<p>上传存储路径，到具体文件</p>
         :rtype: str
         """
         return self._UploadPath
@@ -13990,7 +13994,7 @@ class DescribeStorageCredentialResponse(AbstractModel):
 
     @property
     def UploadUrl(self):
-        r"""文件上传地址，使用put请求上传文件到该地址
+        r"""<p>文件上传地址，使用put请求上传文件到该地址</p>
         :rtype: str
         """
         return self._UploadUrl
@@ -14001,7 +14005,7 @@ class DescribeStorageCredentialResponse(AbstractModel):
 
     @property
     def FileUrl(self):
-        r"""文件的预签名地址，支持下载
+        r"""<p>文件的预签名地址，支持下载</p>
         :rtype: str
         """
         return self._FileUrl
@@ -18019,21 +18023,21 @@ class GetVarListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AppBizId: 应用ID
+        :param _AppBizId: <p>应用ID，获取方法参看如何获取   <a href="https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa">BotBizId</a>。</p>
         :type AppBizId: str
-        :param _VarIds: 变量ID数组
+        :param _VarIds: <p>变量ID数组</p>
         :type VarIds: list of str
-        :param _Keyword: 按变量名称关键词搜索
+        :param _Keyword: <p>按变量名称关键词搜索</p>
         :type Keyword: str
-        :param _Offset: 起始偏移量（默认0）
+        :param _Offset: <p>起始偏移量（默认0），取值范围 &gt; 0</p>
         :type Offset: int
-        :param _Limit: 限定数量（默认15）
+        :param _Limit: <p>限定数量（默认15），取值范围 1-200</p>
         :type Limit: int
-        :param _VarType: 按变量类型过滤，默认查询所有类型(STRING,INT,FLOAT,BOOL,OBJECT,ARRAY_STRING,ARRAY_INT,ARRAY_FLOAT,ARRAY_BOOL,ARRAY_OBJECT,FILE,DOCUMENT,IMAGE,AUDIO)
+        :param _VarType: <p>按变量类型过滤，默认查询所有类型(STRING,INT,FLOAT,BOOL,OBJECT,ARRAY_STRING,ARRAY_INT,ARRAY_FLOAT,ARRAY_BOOL,ARRAY_OBJECT,FILE,DOCUMENT,IMAGE,AUDIO)</p>
         :type VarType: str
-        :param _NeedInternalVar: 是否需要内部变量(默认false)
+        :param _NeedInternalVar: <p>是否需要内部变量, 在结果中包含平台预置的“内置自定义变量” (默认false)。</p><ul><li>当&nbsp;<code>NeedInternalVar = true</code>&nbsp;且&nbsp;<code>VarModuleType</code>&nbsp;为&nbsp;<code>AllVar</code>&nbsp;或&nbsp;<code>ApiVar</code>&nbsp;时，返回列表会在用户变量之前拼入内置变量，并同样支持&nbsp;<code>Keyword</code>&nbsp;<code>VarType</code>&nbsp;<code>VarIds</code>&nbsp;过滤。</li><li>其他<code>VarModuleType</code>下，该开关不生效。</li></ul>
         :type NeedInternalVar: bool
-        :param _VarModuleType: 变量类型
+        :param _VarModuleType: <p>变量模块类型</p><p>枚举值：</p><ul><li>0： API参数</li><li>1： 环境参数</li><li>2： 应用参数</li><li>3： 系统参数</li></ul><p>默认值：0</p>
         :type VarModuleType: int
         """
         self._AppBizId = None
@@ -18047,7 +18051,7 @@ class GetVarListRequest(AbstractModel):
 
     @property
     def AppBizId(self):
-        r"""应用ID
+        r"""<p>应用ID，获取方法参看如何获取   <a href="https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa">BotBizId</a>。</p>
         :rtype: str
         """
         return self._AppBizId
@@ -18058,7 +18062,7 @@ class GetVarListRequest(AbstractModel):
 
     @property
     def VarIds(self):
-        r"""变量ID数组
+        r"""<p>变量ID数组</p>
         :rtype: list of str
         """
         return self._VarIds
@@ -18069,7 +18073,7 @@ class GetVarListRequest(AbstractModel):
 
     @property
     def Keyword(self):
-        r"""按变量名称关键词搜索
+        r"""<p>按变量名称关键词搜索</p>
         :rtype: str
         """
         return self._Keyword
@@ -18080,7 +18084,7 @@ class GetVarListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""起始偏移量（默认0）
+        r"""<p>起始偏移量（默认0），取值范围 &gt; 0</p>
         :rtype: int
         """
         return self._Offset
@@ -18091,7 +18095,7 @@ class GetVarListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""限定数量（默认15）
+        r"""<p>限定数量（默认15），取值范围 1-200</p>
         :rtype: int
         """
         return self._Limit
@@ -18102,7 +18106,7 @@ class GetVarListRequest(AbstractModel):
 
     @property
     def VarType(self):
-        r"""按变量类型过滤，默认查询所有类型(STRING,INT,FLOAT,BOOL,OBJECT,ARRAY_STRING,ARRAY_INT,ARRAY_FLOAT,ARRAY_BOOL,ARRAY_OBJECT,FILE,DOCUMENT,IMAGE,AUDIO)
+        r"""<p>按变量类型过滤，默认查询所有类型(STRING,INT,FLOAT,BOOL,OBJECT,ARRAY_STRING,ARRAY_INT,ARRAY_FLOAT,ARRAY_BOOL,ARRAY_OBJECT,FILE,DOCUMENT,IMAGE,AUDIO)</p>
         :rtype: str
         """
         return self._VarType
@@ -18113,7 +18117,7 @@ class GetVarListRequest(AbstractModel):
 
     @property
     def NeedInternalVar(self):
-        r"""是否需要内部变量(默认false)
+        r"""<p>是否需要内部变量, 在结果中包含平台预置的“内置自定义变量” (默认false)。</p><ul><li>当&nbsp;<code>NeedInternalVar = true</code>&nbsp;且&nbsp;<code>VarModuleType</code>&nbsp;为&nbsp;<code>AllVar</code>&nbsp;或&nbsp;<code>ApiVar</code>&nbsp;时，返回列表会在用户变量之前拼入内置变量，并同样支持&nbsp;<code>Keyword</code>&nbsp;<code>VarType</code>&nbsp;<code>VarIds</code>&nbsp;过滤。</li><li>其他<code>VarModuleType</code>下，该开关不生效。</li></ul>
         :rtype: bool
         """
         return self._NeedInternalVar
@@ -18124,7 +18128,7 @@ class GetVarListRequest(AbstractModel):
 
     @property
     def VarModuleType(self):
-        r"""变量类型
+        r"""<p>变量模块类型</p><p>枚举值：</p><ul><li>0： API参数</li><li>1： 环境参数</li><li>2： 应用参数</li><li>3： 系统参数</li></ul><p>默认值：0</p>
         :rtype: int
         """
         return self._VarModuleType
@@ -18160,9 +18164,9 @@ class GetVarListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Total: 变量总数
+        :param _Total: <p>变量总数</p>
         :type Total: int
-        :param _List: 变量信息列表
+        :param _List: <p>变量信息列表</p>
         :type List: list of TaskFLowVar
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -18173,7 +18177,7 @@ class GetVarListResponse(AbstractModel):
 
     @property
     def Total(self):
-        r"""变量总数
+        r"""<p>变量总数</p>
         :rtype: int
         """
         return self._Total
@@ -18184,7 +18188,7 @@ class GetVarListResponse(AbstractModel):
 
     @property
     def List(self):
-        r"""变量信息列表
+        r"""<p>变量信息列表</p>
         :rtype: list of TaskFLowVar
         """
         return self._List
@@ -22970,32 +22974,30 @@ class ListDocRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BotBizId: 应用ID, 获取方式参看 [BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)。
-查询知识库下文档时，该参数填入知识库ID。
+        :param _BotBizId: <p>应用ID, 获取方式参看 <a href="https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa">BotBizId</a>。<br>查询知识库下文档时，该参数填入知识库ID。</p>
         :type BotBizId: str
-        :param _PageNumber: 页码(必须大于0)
+        :param _PageNumber: <p>页码(必须大于0)</p>
         :type PageNumber: int
-        :param _PageSize: 每页数量(取值范围1-200)
+        :param _PageSize: <p>每页数量(取值范围1-200)</p>
         :type PageSize: int
-        :param _Query: 查询内容
-
-输入特定标识 lke:system:untagged  将查询所有未关联标签的文档
+        :param _Query: <p>查询内容</p><p>输入特定标识 lke:system:untagged  将查询所有未关联标签的文档</p>
         :type Query: str
-        :param _Status: 文档状态： 1-未生成 2-生成中 3-生成成功 4-生成失败 5-删除中 6-删除成功  7-审核中  8-审核失败 9-审核成功  10,12-导入成功  13-学习中  14-学习失败  15-更新中  16-更新失败  17-解析中  18-解析失败  19-导入失败   20-已过期 21-超量失效 22-超量失效恢复
+        :param _Status: <p>文档状态： 1-未生成 2-生成中 3-生成成功 4-生成失败 5-删除中 6-删除成功  7-审核中  8-审核失败 9-审核成功  10,12-导入成功  13-学习中  14-学习失败  15-更新中  16-更新失败  17-解析中  18-解析失败  19-导入失败   20-已过期 21-超量失效 22-超量失效恢复</p>
         :type Status: list of int
-        :param _QueryType: 查询类型 filename 文档、 attribute 标签
+        :param _QueryType: <p>查询类型 filename 文档、 attribute 标签</p>
         :type QueryType: str
-        :param _CateBizId: 分类ID, 可以通过调用ListDocCate接口,查看其返回结果获取
+        :param _CateBizId: <p>分类ID, 可以通过调用ListDocCate接口,查看其返回结果获取</p>
         :type CateBizId: str
-        :param _FileTypes: 文件类型分类筛选
+        :param _FileTypes: <p>文件类型分类筛选</p>
         :type FileTypes: list of str
-        :param _FilterFlag: 文档列表筛选标识位
+        :param _FilterFlag: <p>文档列表筛选标识位</p>
         :type FilterFlag: list of DocFilterFlag
-        :param _ShowCurrCate: 是否只展示当前分类的数据 0不是，1是
+        :param _ShowCurrCate: <p>是否只展示当前分类的数据 0不是，1是</p>
         :type ShowCurrCate: int
-        :param _EnableScope: 文档生效域；不检索默认为0。检索枚举值如下：
-1-不生效；2-仅开发域生效；3-仅发布域生效；4-开发域和发布域均生效
+        :param _EnableScope: <p>文档生效域；不检索默认为0。检索枚举值如下：<br>1-不生效；2-仅开发域生效；3-仅发布域生效；4-开发域和发布域均生效</p>
         :type EnableScope: int
+        :param _UpdateTime: <p>文档更新时间范围</p>
+        :type UpdateTime: :class:`tencentcloud.lke.v20231130.models.TimeRange`
         """
         self._BotBizId = None
         self._PageNumber = None
@@ -23008,11 +23010,11 @@ class ListDocRequest(AbstractModel):
         self._FilterFlag = None
         self._ShowCurrCate = None
         self._EnableScope = None
+        self._UpdateTime = None
 
     @property
     def BotBizId(self):
-        r"""应用ID, 获取方式参看 [BotBizId](https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa)。
-查询知识库下文档时，该参数填入知识库ID。
+        r"""<p>应用ID, 获取方式参看 <a href="https://cloud.tencent.com/document/product/1759/109469#4eecb8c1-6ce4-45f5-8fa2-b269449d8efa">BotBizId</a>。<br>查询知识库下文档时，该参数填入知识库ID。</p>
         :rtype: str
         """
         return self._BotBizId
@@ -23023,7 +23025,7 @@ class ListDocRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        r"""页码(必须大于0)
+        r"""<p>页码(必须大于0)</p>
         :rtype: int
         """
         return self._PageNumber
@@ -23034,7 +23036,7 @@ class ListDocRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        r"""每页数量(取值范围1-200)
+        r"""<p>每页数量(取值范围1-200)</p>
         :rtype: int
         """
         return self._PageSize
@@ -23045,9 +23047,7 @@ class ListDocRequest(AbstractModel):
 
     @property
     def Query(self):
-        r"""查询内容
-
-输入特定标识 lke:system:untagged  将查询所有未关联标签的文档
+        r"""<p>查询内容</p><p>输入特定标识 lke:system:untagged  将查询所有未关联标签的文档</p>
         :rtype: str
         """
         return self._Query
@@ -23058,7 +23058,7 @@ class ListDocRequest(AbstractModel):
 
     @property
     def Status(self):
-        r"""文档状态： 1-未生成 2-生成中 3-生成成功 4-生成失败 5-删除中 6-删除成功  7-审核中  8-审核失败 9-审核成功  10,12-导入成功  13-学习中  14-学习失败  15-更新中  16-更新失败  17-解析中  18-解析失败  19-导入失败   20-已过期 21-超量失效 22-超量失效恢复
+        r"""<p>文档状态： 1-未生成 2-生成中 3-生成成功 4-生成失败 5-删除中 6-删除成功  7-审核中  8-审核失败 9-审核成功  10,12-导入成功  13-学习中  14-学习失败  15-更新中  16-更新失败  17-解析中  18-解析失败  19-导入失败   20-已过期 21-超量失效 22-超量失效恢复</p>
         :rtype: list of int
         """
         return self._Status
@@ -23069,7 +23069,7 @@ class ListDocRequest(AbstractModel):
 
     @property
     def QueryType(self):
-        r"""查询类型 filename 文档、 attribute 标签
+        r"""<p>查询类型 filename 文档、 attribute 标签</p>
         :rtype: str
         """
         return self._QueryType
@@ -23080,7 +23080,7 @@ class ListDocRequest(AbstractModel):
 
     @property
     def CateBizId(self):
-        r"""分类ID, 可以通过调用ListDocCate接口,查看其返回结果获取
+        r"""<p>分类ID, 可以通过调用ListDocCate接口,查看其返回结果获取</p>
         :rtype: str
         """
         return self._CateBizId
@@ -23091,7 +23091,7 @@ class ListDocRequest(AbstractModel):
 
     @property
     def FileTypes(self):
-        r"""文件类型分类筛选
+        r"""<p>文件类型分类筛选</p>
         :rtype: list of str
         """
         return self._FileTypes
@@ -23102,7 +23102,7 @@ class ListDocRequest(AbstractModel):
 
     @property
     def FilterFlag(self):
-        r"""文档列表筛选标识位
+        r"""<p>文档列表筛选标识位</p>
         :rtype: list of DocFilterFlag
         """
         return self._FilterFlag
@@ -23113,7 +23113,7 @@ class ListDocRequest(AbstractModel):
 
     @property
     def ShowCurrCate(self):
-        r"""是否只展示当前分类的数据 0不是，1是
+        r"""<p>是否只展示当前分类的数据 0不是，1是</p>
         :rtype: int
         """
         return self._ShowCurrCate
@@ -23124,8 +23124,7 @@ class ListDocRequest(AbstractModel):
 
     @property
     def EnableScope(self):
-        r"""文档生效域；不检索默认为0。检索枚举值如下：
-1-不生效；2-仅开发域生效；3-仅发布域生效；4-开发域和发布域均生效
+        r"""<p>文档生效域；不检索默认为0。检索枚举值如下：<br>1-不生效；2-仅开发域生效；3-仅发布域生效；4-开发域和发布域均生效</p>
         :rtype: int
         """
         return self._EnableScope
@@ -23133,6 +23132,17 @@ class ListDocRequest(AbstractModel):
     @EnableScope.setter
     def EnableScope(self, EnableScope):
         self._EnableScope = EnableScope
+
+    @property
+    def UpdateTime(self):
+        r"""<p>文档更新时间范围</p>
+        :rtype: :class:`tencentcloud.lke.v20231130.models.TimeRange`
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
 
 
     def _deserialize(self, params):
@@ -23152,6 +23162,9 @@ class ListDocRequest(AbstractModel):
                 self._FilterFlag.append(obj)
         self._ShowCurrCate = params.get("ShowCurrCate")
         self._EnableScope = params.get("EnableScope")
+        if params.get("UpdateTime") is not None:
+            self._UpdateTime = TimeRange()
+            self._UpdateTime._deserialize(params.get("UpdateTime"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -23169,9 +23182,9 @@ class ListDocResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Total: 文档数量
+        :param _Total: <p>文档数量</p>
         :type Total: str
-        :param _List: 文档列表
+        :param _List: <p>文档列表</p>
         :type List: list of ListDocItem
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -23182,7 +23195,7 @@ class ListDocResponse(AbstractModel):
 
     @property
     def Total(self):
-        r"""文档数量
+        r"""<p>文档数量</p>
         :rtype: str
         """
         return self._Total
@@ -23193,7 +23206,7 @@ class ListDocResponse(AbstractModel):
 
     @property
     def List(self):
-        r"""文档列表
+        r"""<p>文档列表</p>
         :rtype: list of ListDocItem
         """
         return self._List
@@ -23537,42 +23550,38 @@ class ListQARequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BotBizId: 应用ID
-若要操作共享知识库，传KnowledgeBizId
+        :param _BotBizId: <p>应用ID<br>若要操作共享知识库，传KnowledgeBizId</p>
         :type BotBizId: str
-        :param _PageNumber: 页码（取值范围>0）
+        :param _PageNumber: <p>页码（取值范围&gt;0）</p>
         :type PageNumber: int
-        :param _PageSize: 每页大小(取值范围1-200)
+        :param _PageSize: <p>每页大小(取值范围1-200)</p>
         :type PageSize: int
-        :param _Query: 查询问题
-
-输入特定标识 lke:system:untagged  将查询所有未关联标签的问答
+        :param _Query: <p>查询问题</p><p>输入特定标识 lke:system:untagged  将查询所有未关联标签的问答</p>
         :type Query: str
-        :param _AcceptStatus: 校验状态(1未校验2采纳3不采纳)
-如果不填默认值为空数组，表示不筛选，返回所有状态
+        :param _AcceptStatus: <p>校验状态(1未校验2采纳3不采纳)<br>如果不填默认值为空数组，表示不筛选，返回所有状态</p>
         :type AcceptStatus: list of int
-        :param _ReleaseStatus: 发布状态(2,4导入成功 7审核中 8审核失败 9人工申述中 11人工申述失败 12已过期 13超量失效 14超量失效恢复)
-如果不填默认值为空数组，表示不筛选返回所有状态
+        :param _ReleaseStatus: <p>发布状态(2,4导入成功 7审核中 8审核失败 9人工申述中 11人工申述失败 12已过期 13超量失效 14超量失效恢复)<br>如果不填默认值为空数组，表示不筛选返回所有状态</p>
         :type ReleaseStatus: list of int
-        :param _DocBizId: 文档ID
+        :param _DocBizId: <p>文档ID</p>
         :type DocBizId: str
-        :param _Source: 来源(1 文档生成 2 批量导入 3 手动添加)
-不填默认值为0，表示不过滤，返回所有状态
+        :param _Source: <p>来源(1 文档生成 2 批量导入 3 手动添加)<br>不填默认值为0，表示不过滤，返回所有状态</p>
         :type Source: int
-        :param _QueryAnswer: 查询答案
+        :param _QueryAnswer: <p>查询答案</p>
         :type QueryAnswer: str
-        :param _CateBizId: 分类ID
+        :param _CateBizId: <p>分类ID</p>
         :type CateBizId: str
-        :param _QaBizIds: QA业务ID列表
+        :param _QaBizIds: <p>QA业务ID列表</p>
         :type QaBizIds: list of str
-        :param _QueryType: 查询类型 filename 名称、 attribute 标签
-如果不填默认值为"filename"
+        :param _QueryType: <p>查询类型 filename 名称、 attribute 标签<br>如果不填默认值为&quot;filename&quot;</p>
         :type QueryType: str
-        :param _ShowCurrCate: 是否只展示当前分类的数据 0不是，1是
+        :param _ShowCurrCate: <p>是否只展示当前分类的数据 0不是，1是</p>
         :type ShowCurrCate: int
-        :param _EnableScope: 问答生效域检索，不检索不传。枚举值如下：
-1-不生效；2-仅开发域生效；3-仅发布域生效；4-开发域和发布域均生效。
+        :param _EnableScope: <p>问答生效域检索，不检索不传。枚举值如下：<br>1-不生效；2-仅开发域生效；3-仅发布域生效；4-开发域和发布域均生效。</p>
         :type EnableScope: int
+        :param _CreateTime: <p>问答创建时间范围</p>
+        :type CreateTime: :class:`tencentcloud.lke.v20231130.models.TimeRange`
+        :param _UpdateTime: <p>问答更新时间范围</p>
+        :type UpdateTime: :class:`tencentcloud.lke.v20231130.models.TimeRange`
         """
         self._BotBizId = None
         self._PageNumber = None
@@ -23588,11 +23597,12 @@ class ListQARequest(AbstractModel):
         self._QueryType = None
         self._ShowCurrCate = None
         self._EnableScope = None
+        self._CreateTime = None
+        self._UpdateTime = None
 
     @property
     def BotBizId(self):
-        r"""应用ID
-若要操作共享知识库，传KnowledgeBizId
+        r"""<p>应用ID<br>若要操作共享知识库，传KnowledgeBizId</p>
         :rtype: str
         """
         return self._BotBizId
@@ -23603,7 +23613,7 @@ class ListQARequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        r"""页码（取值范围>0）
+        r"""<p>页码（取值范围&gt;0）</p>
         :rtype: int
         """
         return self._PageNumber
@@ -23614,7 +23624,7 @@ class ListQARequest(AbstractModel):
 
     @property
     def PageSize(self):
-        r"""每页大小(取值范围1-200)
+        r"""<p>每页大小(取值范围1-200)</p>
         :rtype: int
         """
         return self._PageSize
@@ -23625,9 +23635,7 @@ class ListQARequest(AbstractModel):
 
     @property
     def Query(self):
-        r"""查询问题
-
-输入特定标识 lke:system:untagged  将查询所有未关联标签的问答
+        r"""<p>查询问题</p><p>输入特定标识 lke:system:untagged  将查询所有未关联标签的问答</p>
         :rtype: str
         """
         return self._Query
@@ -23638,8 +23646,7 @@ class ListQARequest(AbstractModel):
 
     @property
     def AcceptStatus(self):
-        r"""校验状态(1未校验2采纳3不采纳)
-如果不填默认值为空数组，表示不筛选，返回所有状态
+        r"""<p>校验状态(1未校验2采纳3不采纳)<br>如果不填默认值为空数组，表示不筛选，返回所有状态</p>
         :rtype: list of int
         """
         return self._AcceptStatus
@@ -23650,8 +23657,7 @@ class ListQARequest(AbstractModel):
 
     @property
     def ReleaseStatus(self):
-        r"""发布状态(2,4导入成功 7审核中 8审核失败 9人工申述中 11人工申述失败 12已过期 13超量失效 14超量失效恢复)
-如果不填默认值为空数组，表示不筛选返回所有状态
+        r"""<p>发布状态(2,4导入成功 7审核中 8审核失败 9人工申述中 11人工申述失败 12已过期 13超量失效 14超量失效恢复)<br>如果不填默认值为空数组，表示不筛选返回所有状态</p>
         :rtype: list of int
         """
         return self._ReleaseStatus
@@ -23662,7 +23668,7 @@ class ListQARequest(AbstractModel):
 
     @property
     def DocBizId(self):
-        r"""文档ID
+        r"""<p>文档ID</p>
         :rtype: str
         """
         return self._DocBizId
@@ -23673,8 +23679,7 @@ class ListQARequest(AbstractModel):
 
     @property
     def Source(self):
-        r"""来源(1 文档生成 2 批量导入 3 手动添加)
-不填默认值为0，表示不过滤，返回所有状态
+        r"""<p>来源(1 文档生成 2 批量导入 3 手动添加)<br>不填默认值为0，表示不过滤，返回所有状态</p>
         :rtype: int
         """
         return self._Source
@@ -23685,7 +23690,7 @@ class ListQARequest(AbstractModel):
 
     @property
     def QueryAnswer(self):
-        r"""查询答案
+        r"""<p>查询答案</p>
         :rtype: str
         """
         return self._QueryAnswer
@@ -23696,7 +23701,7 @@ class ListQARequest(AbstractModel):
 
     @property
     def CateBizId(self):
-        r"""分类ID
+        r"""<p>分类ID</p>
         :rtype: str
         """
         return self._CateBizId
@@ -23707,7 +23712,7 @@ class ListQARequest(AbstractModel):
 
     @property
     def QaBizIds(self):
-        r"""QA业务ID列表
+        r"""<p>QA业务ID列表</p>
         :rtype: list of str
         """
         return self._QaBizIds
@@ -23718,8 +23723,7 @@ class ListQARequest(AbstractModel):
 
     @property
     def QueryType(self):
-        r"""查询类型 filename 名称、 attribute 标签
-如果不填默认值为"filename"
+        r"""<p>查询类型 filename 名称、 attribute 标签<br>如果不填默认值为&quot;filename&quot;</p>
         :rtype: str
         """
         return self._QueryType
@@ -23730,7 +23734,7 @@ class ListQARequest(AbstractModel):
 
     @property
     def ShowCurrCate(self):
-        r"""是否只展示当前分类的数据 0不是，1是
+        r"""<p>是否只展示当前分类的数据 0不是，1是</p>
         :rtype: int
         """
         return self._ShowCurrCate
@@ -23741,8 +23745,7 @@ class ListQARequest(AbstractModel):
 
     @property
     def EnableScope(self):
-        r"""问答生效域检索，不检索不传。枚举值如下：
-1-不生效；2-仅开发域生效；3-仅发布域生效；4-开发域和发布域均生效。
+        r"""<p>问答生效域检索，不检索不传。枚举值如下：<br>1-不生效；2-仅开发域生效；3-仅发布域生效；4-开发域和发布域均生效。</p>
         :rtype: int
         """
         return self._EnableScope
@@ -23750,6 +23753,28 @@ class ListQARequest(AbstractModel):
     @EnableScope.setter
     def EnableScope(self, EnableScope):
         self._EnableScope = EnableScope
+
+    @property
+    def CreateTime(self):
+        r"""<p>问答创建时间范围</p>
+        :rtype: :class:`tencentcloud.lke.v20231130.models.TimeRange`
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""<p>问答更新时间范围</p>
+        :rtype: :class:`tencentcloud.lke.v20231130.models.TimeRange`
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
 
 
     def _deserialize(self, params):
@@ -23767,6 +23792,12 @@ class ListQARequest(AbstractModel):
         self._QueryType = params.get("QueryType")
         self._ShowCurrCate = params.get("ShowCurrCate")
         self._EnableScope = params.get("EnableScope")
+        if params.get("CreateTime") is not None:
+            self._CreateTime = TimeRange()
+            self._CreateTime._deserialize(params.get("CreateTime"))
+        if params.get("UpdateTime") is not None:
+            self._UpdateTime = TimeRange()
+            self._UpdateTime._deserialize(params.get("UpdateTime"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -23784,17 +23815,17 @@ class ListQAResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Total: 问答数量
+        :param _Total: <p>问答数量</p>
         :type Total: str
-        :param _WaitVerifyTotal: 待校验问答数量
+        :param _WaitVerifyTotal: <p>待校验问答数量</p>
         :type WaitVerifyTotal: str
-        :param _NotAcceptedTotal: 未采纳问答数量
+        :param _NotAcceptedTotal: <p>未采纳问答数量</p>
         :type NotAcceptedTotal: str
-        :param _AcceptedTotal: 已采纳问答数量
+        :param _AcceptedTotal: <p>已采纳问答数量</p>
         :type AcceptedTotal: str
-        :param _PageNumber: 页码
+        :param _PageNumber: <p>页码</p>
         :type PageNumber: int
-        :param _List: 问答详情
+        :param _List: <p>问答详情</p>
         :type List: list of ListQaItem
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -23809,7 +23840,7 @@ class ListQAResponse(AbstractModel):
 
     @property
     def Total(self):
-        r"""问答数量
+        r"""<p>问答数量</p>
         :rtype: str
         """
         return self._Total
@@ -23820,7 +23851,7 @@ class ListQAResponse(AbstractModel):
 
     @property
     def WaitVerifyTotal(self):
-        r"""待校验问答数量
+        r"""<p>待校验问答数量</p>
         :rtype: str
         """
         return self._WaitVerifyTotal
@@ -23831,7 +23862,7 @@ class ListQAResponse(AbstractModel):
 
     @property
     def NotAcceptedTotal(self):
-        r"""未采纳问答数量
+        r"""<p>未采纳问答数量</p>
         :rtype: str
         """
         return self._NotAcceptedTotal
@@ -23842,7 +23873,7 @@ class ListQAResponse(AbstractModel):
 
     @property
     def AcceptedTotal(self):
-        r"""已采纳问答数量
+        r"""<p>已采纳问答数量</p>
         :rtype: str
         """
         return self._AcceptedTotal
@@ -23853,7 +23884,7 @@ class ListQAResponse(AbstractModel):
 
     @property
     def PageNumber(self):
-        r"""页码
+        r"""<p>页码</p>
         :rtype: int
         """
         return self._PageNumber
@@ -23864,7 +23895,7 @@ class ListQAResponse(AbstractModel):
 
     @property
     def List(self):
-        r"""问答详情
+        r"""<p>问答详情</p>
         :rtype: list of ListQaItem
         """
         return self._List
@@ -31570,43 +31601,36 @@ class QAQuery(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PageNumber: 页码 从1开始
-
+        :param _PageNumber: <p>页码 从1开始</p>
         :type PageNumber: int
-        :param _PageSize: 页大小 默认15 最大100
-
+        :param _PageSize: <p>页大小 默认15 最大100</p>
         :type PageSize: int
-        :param _BotBizId: 应用ID
+        :param _BotBizId: <p>应用ID</p>
         :type BotBizId: str
-        :param _Query: 查询内容
-
+        :param _Query: <p>查询内容</p>
         :type Query: str
-        :param _CateBizId: 分类ID
-
+        :param _CateBizId: <p>分类ID</p>
         :type CateBizId: str
-        :param _AcceptStatus: 校验状态的枚举值
-
+        :param _AcceptStatus: <p>校验状态的枚举值</p>
         :type AcceptStatus: list of int non-negative
-        :param _ReleaseStatus: 发布状态的枚举值
-
+        :param _ReleaseStatus: <p>发布状态的枚举值</p>
         :type ReleaseStatus: list of int non-negative
-        :param _DocBizId: 文档ID
-
+        :param _DocBizId: <p>文档ID</p>
         :type DocBizId: str
-        :param _QaBizId: QAID
-
+        :param _QaBizId: <p>QAID</p>
         :type QaBizId: str
-        :param _Source: 来源
-
+        :param _Source: <p>来源</p>
         :type Source: int
-        :param _QueryAnswer: 查询答案
-
+        :param _QueryAnswer: <p>查询答案</p>
         :type QueryAnswer: str
-        :param _QueryType: 查询类型 filename 名称、 attribute 标签
+        :param _QueryType: <p>查询类型 filename 名称、 attribute 标签</p>
         :type QueryType: str
-        :param _EnableScope: 问答生效域检索，不检索不传。枚举值如下：
-1-不生效；2-仅开发域生效；3-仅发布域生效；4-开发域和发布域均生效。
+        :param _EnableScope: <p>问答生效域检索，不检索不传。枚举值如下：<br>1-不生效；2-仅开发域生效；3-仅发布域生效；4-开发域和发布域均生效。</p>
         :type EnableScope: int
+        :param _CreateTime: <p>创建时间范围</p>
+        :type CreateTime: :class:`tencentcloud.lke.v20231130.models.TimeRange`
+        :param _UpdateTime: <p>更新时间范围</p>
+        :type UpdateTime: :class:`tencentcloud.lke.v20231130.models.TimeRange`
         """
         self._PageNumber = None
         self._PageSize = None
@@ -31621,11 +31645,12 @@ class QAQuery(AbstractModel):
         self._QueryAnswer = None
         self._QueryType = None
         self._EnableScope = None
+        self._CreateTime = None
+        self._UpdateTime = None
 
     @property
     def PageNumber(self):
-        r"""页码 从1开始
-
+        r"""<p>页码 从1开始</p>
         :rtype: int
         """
         return self._PageNumber
@@ -31636,8 +31661,7 @@ class QAQuery(AbstractModel):
 
     @property
     def PageSize(self):
-        r"""页大小 默认15 最大100
-
+        r"""<p>页大小 默认15 最大100</p>
         :rtype: int
         """
         return self._PageSize
@@ -31648,7 +31672,7 @@ class QAQuery(AbstractModel):
 
     @property
     def BotBizId(self):
-        r"""应用ID
+        r"""<p>应用ID</p>
         :rtype: str
         """
         return self._BotBizId
@@ -31659,8 +31683,7 @@ class QAQuery(AbstractModel):
 
     @property
     def Query(self):
-        r"""查询内容
-
+        r"""<p>查询内容</p>
         :rtype: str
         """
         return self._Query
@@ -31671,8 +31694,7 @@ class QAQuery(AbstractModel):
 
     @property
     def CateBizId(self):
-        r"""分类ID
-
+        r"""<p>分类ID</p>
         :rtype: str
         """
         return self._CateBizId
@@ -31683,8 +31705,7 @@ class QAQuery(AbstractModel):
 
     @property
     def AcceptStatus(self):
-        r"""校验状态的枚举值
-
+        r"""<p>校验状态的枚举值</p>
         :rtype: list of int non-negative
         """
         return self._AcceptStatus
@@ -31695,8 +31716,7 @@ class QAQuery(AbstractModel):
 
     @property
     def ReleaseStatus(self):
-        r"""发布状态的枚举值
-
+        r"""<p>发布状态的枚举值</p>
         :rtype: list of int non-negative
         """
         return self._ReleaseStatus
@@ -31707,8 +31727,7 @@ class QAQuery(AbstractModel):
 
     @property
     def DocBizId(self):
-        r"""文档ID
-
+        r"""<p>文档ID</p>
         :rtype: str
         """
         return self._DocBizId
@@ -31719,8 +31738,7 @@ class QAQuery(AbstractModel):
 
     @property
     def QaBizId(self):
-        r"""QAID
-
+        r"""<p>QAID</p>
         :rtype: str
         """
         return self._QaBizId
@@ -31731,8 +31749,7 @@ class QAQuery(AbstractModel):
 
     @property
     def Source(self):
-        r"""来源
-
+        r"""<p>来源</p>
         :rtype: int
         """
         return self._Source
@@ -31743,8 +31760,7 @@ class QAQuery(AbstractModel):
 
     @property
     def QueryAnswer(self):
-        r"""查询答案
-
+        r"""<p>查询答案</p>
         :rtype: str
         """
         return self._QueryAnswer
@@ -31755,7 +31771,7 @@ class QAQuery(AbstractModel):
 
     @property
     def QueryType(self):
-        r"""查询类型 filename 名称、 attribute 标签
+        r"""<p>查询类型 filename 名称、 attribute 标签</p>
         :rtype: str
         """
         return self._QueryType
@@ -31766,8 +31782,7 @@ class QAQuery(AbstractModel):
 
     @property
     def EnableScope(self):
-        r"""问答生效域检索，不检索不传。枚举值如下：
-1-不生效；2-仅开发域生效；3-仅发布域生效；4-开发域和发布域均生效。
+        r"""<p>问答生效域检索，不检索不传。枚举值如下：<br>1-不生效；2-仅开发域生效；3-仅发布域生效；4-开发域和发布域均生效。</p>
         :rtype: int
         """
         return self._EnableScope
@@ -31775,6 +31790,28 @@ class QAQuery(AbstractModel):
     @EnableScope.setter
     def EnableScope(self, EnableScope):
         self._EnableScope = EnableScope
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间范围</p>
+        :rtype: :class:`tencentcloud.lke.v20231130.models.TimeRange`
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""<p>更新时间范围</p>
+        :rtype: :class:`tencentcloud.lke.v20231130.models.TimeRange`
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
 
 
     def _deserialize(self, params):
@@ -31791,6 +31828,12 @@ class QAQuery(AbstractModel):
         self._QueryAnswer = params.get("QueryAnswer")
         self._QueryType = params.get("QueryType")
         self._EnableScope = params.get("EnableScope")
+        if params.get("CreateTime") is not None:
+            self._CreateTime = TimeRange()
+            self._CreateTime._deserialize(params.get("CreateTime"))
+        if params.get("UpdateTime") is not None:
+            self._UpdateTime = TimeRange()
+            self._UpdateTime._deserialize(params.get("UpdateTime"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -36167,6 +36210,57 @@ class TaskParams(AbstractModel):
 
     def _deserialize(self, params):
         self._CosPath = params.get("CosPath")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TimeRange(AbstractModel):
+    r"""时间范围
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Start: <p>开始时间</p><p>参数格式：YYYY-MM-DDThh:mm:ssZ</p>
+        :type Start: str
+        :param _End: <p>结束时间</p><p>参数格式：YYYY-MM-DDThh:mm:ssZ</p>
+        :type End: str
+        """
+        self._Start = None
+        self._End = None
+
+    @property
+    def Start(self):
+        r"""<p>开始时间</p><p>参数格式：YYYY-MM-DDThh:mm:ssZ</p>
+        :rtype: str
+        """
+        return self._Start
+
+    @Start.setter
+    def Start(self, Start):
+        self._Start = Start
+
+    @property
+    def End(self):
+        r"""<p>结束时间</p><p>参数格式：YYYY-MM-DDThh:mm:ssZ</p>
+        :rtype: str
+        """
+        return self._End
+
+    @End.setter
+    def End(self, End):
+        self._End = End
+
+
+    def _deserialize(self, params):
+        self._Start = params.get("Start")
+        self._End = params.get("End")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

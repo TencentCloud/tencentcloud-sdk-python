@@ -505,6 +505,727 @@ class AnalysisItems(AbstractModel):
         
 
 
+class AuditInstanceInfo(AbstractModel):
+    r"""审计实例信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>实例ID</p>
+        :type InstanceId: str
+        :param _AuditStatus: <p>开启状态</p><p>枚举值：</p><ul><li>OFF： 关闭</li><li>ON： 打开</li></ul>
+        :type AuditStatus: str
+        :param _LogExpireDay: <p>日志存储有效期</p><p>单位：天</p>
+        :type LogExpireDay: int
+        :param _HotLogExpireDay: <p>热存储有效期</p><p>单位：天</p>
+        :type HotLogExpireDay: int
+        :param _ColdLogExpireDay: <p>冷存储有效期</p><p>单位：天</p>
+        :type ColdLogExpireDay: int
+        :param _HotLogSize: <p>热存储大小</p><p>单位：MB</p>
+        :type HotLogSize: float
+        :param _ColdLogSize: <p>冷存储大小</p><p>单位：MB</p>
+        :type ColdLogSize: float
+        :param _CreateTime: <p>开启时间</p>
+        :type CreateTime: str
+        :param _Deliver: <p>投递状态</p>
+        :type Deliver: str
+        :param _DeliverSummary: <p>投递信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeliverSummary: list of DeliverSummary
+        :param _InstanceInfo: <p>实例信息</p>
+        :type InstanceInfo: :class:`tencentcloud.postgres.v20170312.models.LogInstanceInfo`
+        """
+        self._InstanceId = None
+        self._AuditStatus = None
+        self._LogExpireDay = None
+        self._HotLogExpireDay = None
+        self._ColdLogExpireDay = None
+        self._HotLogSize = None
+        self._ColdLogSize = None
+        self._CreateTime = None
+        self._Deliver = None
+        self._DeliverSummary = None
+        self._InstanceInfo = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例ID</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def AuditStatus(self):
+        r"""<p>开启状态</p><p>枚举值：</p><ul><li>OFF： 关闭</li><li>ON： 打开</li></ul>
+        :rtype: str
+        """
+        return self._AuditStatus
+
+    @AuditStatus.setter
+    def AuditStatus(self, AuditStatus):
+        self._AuditStatus = AuditStatus
+
+    @property
+    def LogExpireDay(self):
+        r"""<p>日志存储有效期</p><p>单位：天</p>
+        :rtype: int
+        """
+        return self._LogExpireDay
+
+    @LogExpireDay.setter
+    def LogExpireDay(self, LogExpireDay):
+        self._LogExpireDay = LogExpireDay
+
+    @property
+    def HotLogExpireDay(self):
+        r"""<p>热存储有效期</p><p>单位：天</p>
+        :rtype: int
+        """
+        return self._HotLogExpireDay
+
+    @HotLogExpireDay.setter
+    def HotLogExpireDay(self, HotLogExpireDay):
+        self._HotLogExpireDay = HotLogExpireDay
+
+    @property
+    def ColdLogExpireDay(self):
+        r"""<p>冷存储有效期</p><p>单位：天</p>
+        :rtype: int
+        """
+        return self._ColdLogExpireDay
+
+    @ColdLogExpireDay.setter
+    def ColdLogExpireDay(self, ColdLogExpireDay):
+        self._ColdLogExpireDay = ColdLogExpireDay
+
+    @property
+    def HotLogSize(self):
+        r"""<p>热存储大小</p><p>单位：MB</p>
+        :rtype: float
+        """
+        return self._HotLogSize
+
+    @HotLogSize.setter
+    def HotLogSize(self, HotLogSize):
+        self._HotLogSize = HotLogSize
+
+    @property
+    def ColdLogSize(self):
+        r"""<p>冷存储大小</p><p>单位：MB</p>
+        :rtype: float
+        """
+        return self._ColdLogSize
+
+    @ColdLogSize.setter
+    def ColdLogSize(self, ColdLogSize):
+        self._ColdLogSize = ColdLogSize
+
+    @property
+    def CreateTime(self):
+        r"""<p>开启时间</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def Deliver(self):
+        r"""<p>投递状态</p>
+        :rtype: str
+        """
+        return self._Deliver
+
+    @Deliver.setter
+    def Deliver(self, Deliver):
+        self._Deliver = Deliver
+
+    @property
+    def DeliverSummary(self):
+        r"""<p>投递信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DeliverSummary
+        """
+        return self._DeliverSummary
+
+    @DeliverSummary.setter
+    def DeliverSummary(self, DeliverSummary):
+        self._DeliverSummary = DeliverSummary
+
+    @property
+    def InstanceInfo(self):
+        r"""<p>实例信息</p>
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.LogInstanceInfo`
+        """
+        return self._InstanceInfo
+
+    @InstanceInfo.setter
+    def InstanceInfo(self, InstanceInfo):
+        self._InstanceInfo = InstanceInfo
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._AuditStatus = params.get("AuditStatus")
+        self._LogExpireDay = params.get("LogExpireDay")
+        self._HotLogExpireDay = params.get("HotLogExpireDay")
+        self._ColdLogExpireDay = params.get("ColdLogExpireDay")
+        self._HotLogSize = params.get("HotLogSize")
+        self._ColdLogSize = params.get("ColdLogSize")
+        self._CreateTime = params.get("CreateTime")
+        self._Deliver = params.get("Deliver")
+        if params.get("DeliverSummary") is not None:
+            self._DeliverSummary = []
+            for item in params.get("DeliverSummary"):
+                obj = DeliverSummary()
+                obj._deserialize(item)
+                self._DeliverSummary.append(obj)
+        if params.get("InstanceInfo") is not None:
+            self._InstanceInfo = LogInstanceInfo()
+            self._InstanceInfo._deserialize(params.get("InstanceInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AuditLog(AbstractModel):
+    r"""审计日志详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Timestamp: <p>日志时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Timestamp: str
+        :param _AffectRows: <p>影响行数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AffectRows: int
+        :param _DBName: <p>数据库</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DBName: str
+        :param _ErrCode: <p>错误码</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrCode: str
+        :param _ErrorMessage: <p>错误信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorMessage: str
+        :param _ExecTime: <p>执行时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecTime: int
+        :param _Host: <p>访问来源</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Host: str
+        :param _InstanceId: <p>实例Id</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param _ObjectName: <p>对象名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ObjectName: str
+        :param _ObjectType: <p>对象类型</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ObjectType: str
+        :param _Sql: <p>sql</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Sql: str
+        :param _SqlType: <p>sql类型</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SqlType: str
+        :param _ThreadId: <p>线程ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ThreadId: str
+        :param _User: <p>用户</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type User: str
+        """
+        self._Timestamp = None
+        self._AffectRows = None
+        self._DBName = None
+        self._ErrCode = None
+        self._ErrorMessage = None
+        self._ExecTime = None
+        self._Host = None
+        self._InstanceId = None
+        self._ObjectName = None
+        self._ObjectType = None
+        self._Sql = None
+        self._SqlType = None
+        self._ThreadId = None
+        self._User = None
+
+    @property
+    def Timestamp(self):
+        r"""<p>日志时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Timestamp
+
+    @Timestamp.setter
+    def Timestamp(self, Timestamp):
+        self._Timestamp = Timestamp
+
+    @property
+    def AffectRows(self):
+        r"""<p>影响行数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._AffectRows
+
+    @AffectRows.setter
+    def AffectRows(self, AffectRows):
+        self._AffectRows = AffectRows
+
+    @property
+    def DBName(self):
+        r"""<p>数据库</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DBName
+
+    @DBName.setter
+    def DBName(self, DBName):
+        self._DBName = DBName
+
+    @property
+    def ErrCode(self):
+        r"""<p>错误码</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ErrCode
+
+    @ErrCode.setter
+    def ErrCode(self, ErrCode):
+        self._ErrCode = ErrCode
+
+    @property
+    def ErrorMessage(self):
+        r"""<p>错误信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ErrorMessage
+
+    @ErrorMessage.setter
+    def ErrorMessage(self, ErrorMessage):
+        self._ErrorMessage = ErrorMessage
+
+    @property
+    def ExecTime(self):
+        r"""<p>执行时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ExecTime
+
+    @ExecTime.setter
+    def ExecTime(self, ExecTime):
+        self._ExecTime = ExecTime
+
+    @property
+    def Host(self):
+        r"""<p>访问来源</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例Id</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ObjectName(self):
+        r"""<p>对象名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ObjectName
+
+    @ObjectName.setter
+    def ObjectName(self, ObjectName):
+        self._ObjectName = ObjectName
+
+    @property
+    def ObjectType(self):
+        r"""<p>对象类型</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ObjectType
+
+    @ObjectType.setter
+    def ObjectType(self, ObjectType):
+        self._ObjectType = ObjectType
+
+    @property
+    def Sql(self):
+        r"""<p>sql</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Sql
+
+    @Sql.setter
+    def Sql(self, Sql):
+        self._Sql = Sql
+
+    @property
+    def SqlType(self):
+        r"""<p>sql类型</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SqlType
+
+    @SqlType.setter
+    def SqlType(self, SqlType):
+        self._SqlType = SqlType
+
+    @property
+    def ThreadId(self):
+        r"""<p>线程ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ThreadId
+
+    @ThreadId.setter
+    def ThreadId(self, ThreadId):
+        self._ThreadId = ThreadId
+
+    @property
+    def User(self):
+        r"""<p>用户</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._User
+
+    @User.setter
+    def User(self, User):
+        self._User = User
+
+
+    def _deserialize(self, params):
+        self._Timestamp = params.get("Timestamp")
+        self._AffectRows = params.get("AffectRows")
+        self._DBName = params.get("DBName")
+        self._ErrCode = params.get("ErrCode")
+        self._ErrorMessage = params.get("ErrorMessage")
+        self._ExecTime = params.get("ExecTime")
+        self._Host = params.get("Host")
+        self._InstanceId = params.get("InstanceId")
+        self._ObjectName = params.get("ObjectName")
+        self._ObjectType = params.get("ObjectType")
+        self._Sql = params.get("Sql")
+        self._SqlType = params.get("SqlType")
+        self._ThreadId = params.get("ThreadId")
+        self._User = params.get("User")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AuditLogFile(AbstractModel):
+    r"""数据库审计日志文件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileName: <p>文件名</p>
+        :type FileName: str
+        :param _Status: <p>任务状态</p><p>枚举值：</p><ul><li>success： 成功</li><li>running： 创建中</li><li>failed： 失败</li></ul>
+        :type Status: str
+        :param _FileSize: <p>文件大小</p><p>单位：MB</p>
+        :type FileSize: int
+        :param _CreateTime: <p>创建时间</p>
+        :type CreateTime: str
+        :param _DownloadUrl: <p>下载链接</p>
+        :type DownloadUrl: str
+        :param _ErrMsg: <p>错误信息</p>
+        :type ErrMsg: str
+        :param _Progress: <p>下载进度</p>
+        :type Progress: int
+        :param _FinishTime: <p>完成时间</p>
+        :type FinishTime: str
+        """
+        self._FileName = None
+        self._Status = None
+        self._FileSize = None
+        self._CreateTime = None
+        self._DownloadUrl = None
+        self._ErrMsg = None
+        self._Progress = None
+        self._FinishTime = None
+
+    @property
+    def FileName(self):
+        r"""<p>文件名</p>
+        :rtype: str
+        """
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def Status(self):
+        r"""<p>任务状态</p><p>枚举值：</p><ul><li>success： 成功</li><li>running： 创建中</li><li>failed： 失败</li></ul>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def FileSize(self):
+        r"""<p>文件大小</p><p>单位：MB</p>
+        :rtype: int
+        """
+        return self._FileSize
+
+    @FileSize.setter
+    def FileSize(self, FileSize):
+        self._FileSize = FileSize
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def DownloadUrl(self):
+        r"""<p>下载链接</p>
+        :rtype: str
+        """
+        return self._DownloadUrl
+
+    @DownloadUrl.setter
+    def DownloadUrl(self, DownloadUrl):
+        self._DownloadUrl = DownloadUrl
+
+    @property
+    def ErrMsg(self):
+        r"""<p>错误信息</p>
+        :rtype: str
+        """
+        return self._ErrMsg
+
+    @ErrMsg.setter
+    def ErrMsg(self, ErrMsg):
+        self._ErrMsg = ErrMsg
+
+    @property
+    def Progress(self):
+        r"""<p>下载进度</p>
+        :rtype: int
+        """
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
+    @property
+    def FinishTime(self):
+        r"""<p>完成时间</p>
+        :rtype: str
+        """
+        return self._FinishTime
+
+    @FinishTime.setter
+    def FinishTime(self, FinishTime):
+        self._FinishTime = FinishTime
+
+
+    def _deserialize(self, params):
+        self._FileName = params.get("FileName")
+        self._Status = params.get("Status")
+        self._FileSize = params.get("FileSize")
+        self._CreateTime = params.get("CreateTime")
+        self._DownloadUrl = params.get("DownloadUrl")
+        self._ErrMsg = params.get("ErrMsg")
+        self._Progress = params.get("Progress")
+        self._FinishTime = params.get("FinishTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AuditLogFilter(AbstractModel):
+    r"""审计日志过滤条件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AffectRows: <p>影响函数</p>
+        :type AffectRows: int
+        :param _DBName: <p>数据库名字</p>
+        :type DBName: list of str
+        :param _ExecTime: <p>执行时间</p>
+        :type ExecTime: int
+        :param _Host: <p>主机Host</p>
+        :type Host: list of str
+        :param _Sql: <p>sql语句</p>
+        :type Sql: str
+        :param _User: <p>登录名</p>
+        :type User: list of str
+        :param _SqlType: <p>审计类型</p>
+        :type SqlType: list of str
+        """
+        self._AffectRows = None
+        self._DBName = None
+        self._ExecTime = None
+        self._Host = None
+        self._Sql = None
+        self._User = None
+        self._SqlType = None
+
+    @property
+    def AffectRows(self):
+        r"""<p>影响函数</p>
+        :rtype: int
+        """
+        return self._AffectRows
+
+    @AffectRows.setter
+    def AffectRows(self, AffectRows):
+        self._AffectRows = AffectRows
+
+    @property
+    def DBName(self):
+        r"""<p>数据库名字</p>
+        :rtype: list of str
+        """
+        return self._DBName
+
+    @DBName.setter
+    def DBName(self, DBName):
+        self._DBName = DBName
+
+    @property
+    def ExecTime(self):
+        r"""<p>执行时间</p>
+        :rtype: int
+        """
+        return self._ExecTime
+
+    @ExecTime.setter
+    def ExecTime(self, ExecTime):
+        self._ExecTime = ExecTime
+
+    @property
+    def Host(self):
+        r"""<p>主机Host</p>
+        :rtype: list of str
+        """
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+    @property
+    def Sql(self):
+        r"""<p>sql语句</p>
+        :rtype: str
+        """
+        return self._Sql
+
+    @Sql.setter
+    def Sql(self, Sql):
+        self._Sql = Sql
+
+    @property
+    def User(self):
+        r"""<p>登录名</p>
+        :rtype: list of str
+        """
+        return self._User
+
+    @User.setter
+    def User(self, User):
+        self._User = User
+
+    @property
+    def SqlType(self):
+        r"""<p>审计类型</p>
+        :rtype: list of str
+        """
+        return self._SqlType
+
+    @SqlType.setter
+    def SqlType(self, SqlType):
+        self._SqlType = SqlType
+
+
+    def _deserialize(self, params):
+        self._AffectRows = params.get("AffectRows")
+        self._DBName = params.get("DBName")
+        self._ExecTime = params.get("ExecTime")
+        self._Host = params.get("Host")
+        self._Sql = params.get("Sql")
+        self._User = params.get("User")
+        self._SqlType = params.get("SqlType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BackupDownloadRestriction(AbstractModel):
     r"""备份下载限制信息
 
@@ -1790,6 +2511,85 @@ class CloseAccountCAMResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CloseAuditServiceRequest(AbstractModel):
+    r"""CloseAuditService请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>实例ID</p>
+        :type InstanceId: str
+        :param _Product: <p>产品名称</p><p>入参限制：postgres</p>
+        :type Product: str
+        """
+        self._InstanceId = None
+        self._Product = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例ID</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Product(self):
+        r"""<p>产品名称</p><p>入参限制：postgres</p>
+        :rtype: str
+        """
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Product = params.get("Product")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloseAuditServiceResponse(AbstractModel):
+    r"""CloseAuditService返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CloseDBExtranetAccessRequest(AbstractModel):
     r"""CloseDBExtranetAccess请求参数结构体
 
@@ -2030,6 +2830,132 @@ class CreateAccountRequest(AbstractModel):
 
 class CreateAccountResponse(AbstractModel):
     r"""CreateAccount返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class CreateAuditLogFileRequest(AbstractModel):
+    r"""CreateAuditLogFile请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>实例ID</p>
+        :type InstanceId: str
+        :param _StartTime: <p>开始时间</p><p>参数格式：2026-03-25 00:00:00</p>
+        :type StartTime: str
+        :param _EndTime: <p>结束时间</p><p>参数格式：2026-03-25 01:00:00</p>
+        :type EndTime: str
+        :param _Product: <p>产品名称</p><p>入参限制：postgres</p>
+        :type Product: str
+        :param _Filter: <p>过滤条件</p>
+        :type Filter: :class:`tencentcloud.postgres.v20170312.models.AuditLogFilter`
+        """
+        self._InstanceId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Product = None
+        self._Filter = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例ID</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def StartTime(self):
+        r"""<p>开始时间</p><p>参数格式：2026-03-25 00:00:00</p>
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>结束时间</p><p>参数格式：2026-03-25 01:00:00</p>
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Product(self):
+        r"""<p>产品名称</p><p>入参限制：postgres</p>
+        :rtype: str
+        """
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def Filter(self):
+        r"""<p>过滤条件</p>
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.AuditLogFilter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Product = params.get("Product")
+        if params.get("Filter") is not None:
+            self._Filter = AuditLogFilter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAuditLogFileResponse(AbstractModel):
+    r"""CreateAuditLogFile返回参数结构体
 
     """
 
@@ -5832,6 +6758,100 @@ class DeleteAccountResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteAuditLogFileRequest(AbstractModel):
+    r"""DeleteAuditLogFile请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>实例ID</p>
+        :type InstanceId: str
+        :param _Product: <p>产品名称，固定值：postgres</p>
+        :type Product: str
+        :param _FileName: <p>审计日志文件名称</p>
+        :type FileName: str
+        """
+        self._InstanceId = None
+        self._Product = None
+        self._FileName = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例ID</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Product(self):
+        r"""<p>产品名称，固定值：postgres</p>
+        :rtype: str
+        """
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def FileName(self):
+        r"""<p>审计日志文件名称</p>
+        :rtype: str
+        """
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Product = params.get("Product")
+        self._FileName = params.get("FileName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteAuditLogFileResponse(AbstractModel):
+    r"""DeleteAuditLogFile返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteBackupPlanRequest(AbstractModel):
     r"""DeleteBackupPlan请求参数结构体
 
@@ -6490,6 +7510,102 @@ class DeleteReadOnlyGroupResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeliverSummary(AbstractModel):
+    r"""日志投递信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeliverConsumer: <p>投递消费者，当前仅支持CLS</p>
+        :type DeliverConsumer: str
+        :param _DeliverConsumerName: <p>投递消费者名称，当前仅支持CLS</p>
+        :type DeliverConsumerName: str
+        :param _DeliverType: <p>投递类型当前仅支持mq</p>
+        :type DeliverType: str
+        :param _DeliverSubType: <p>投递子类型，当前仅支持CLS</p>
+        :type DeliverSubType: str
+        :param _DeliverError: <p>投递报错</p>
+        :type DeliverError: str
+        """
+        self._DeliverConsumer = None
+        self._DeliverConsumerName = None
+        self._DeliverType = None
+        self._DeliverSubType = None
+        self._DeliverError = None
+
+    @property
+    def DeliverConsumer(self):
+        r"""<p>投递消费者，当前仅支持CLS</p>
+        :rtype: str
+        """
+        return self._DeliverConsumer
+
+    @DeliverConsumer.setter
+    def DeliverConsumer(self, DeliverConsumer):
+        self._DeliverConsumer = DeliverConsumer
+
+    @property
+    def DeliverConsumerName(self):
+        r"""<p>投递消费者名称，当前仅支持CLS</p>
+        :rtype: str
+        """
+        return self._DeliverConsumerName
+
+    @DeliverConsumerName.setter
+    def DeliverConsumerName(self, DeliverConsumerName):
+        self._DeliverConsumerName = DeliverConsumerName
+
+    @property
+    def DeliverType(self):
+        r"""<p>投递类型当前仅支持mq</p>
+        :rtype: str
+        """
+        return self._DeliverType
+
+    @DeliverType.setter
+    def DeliverType(self, DeliverType):
+        self._DeliverType = DeliverType
+
+    @property
+    def DeliverSubType(self):
+        r"""<p>投递子类型，当前仅支持CLS</p>
+        :rtype: str
+        """
+        return self._DeliverSubType
+
+    @DeliverSubType.setter
+    def DeliverSubType(self, DeliverSubType):
+        self._DeliverSubType = DeliverSubType
+
+    @property
+    def DeliverError(self):
+        r"""<p>投递报错</p>
+        :rtype: str
+        """
+        return self._DeliverError
+
+    @DeliverError.setter
+    def DeliverError(self, DeliverError):
+        self._DeliverError = DeliverError
+
+
+    def _deserialize(self, params):
+        self._DeliverConsumer = params.get("DeliverConsumer")
+        self._DeliverConsumerName = params.get("DeliverConsumerName")
+        self._DeliverType = params.get("DeliverType")
+        self._DeliverSubType = params.get("DeliverSubType")
+        self._DeliverError = params.get("DeliverError")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DescribeAccountPrivilegesRequest(AbstractModel):
     r"""DescribeAccountPrivileges请求参数结构体
 
@@ -6769,6 +7885,556 @@ class DescribeAccountsResponse(AbstractModel):
                 obj = AccountInfo()
                 obj._deserialize(item)
                 self._Details.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAuditInstanceListRequest(AbstractModel):
+    r"""DescribeAuditInstanceList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Product: <p>产品名称：postgres</p>
+        :type Product: str
+        :param _AuditSwitch: <p>是否开通</p><p>枚举值：</p><ul><li>0： 未开通</li><li>1： 已开通</li></ul>
+        :type AuditSwitch: int
+        :param _Limit: <p>分页限制</p>
+        :type Limit: int
+        :param _Offset: <p>页偏移量</p>
+        :type Offset: int
+        :param _Filters: <p>实例过滤参数</p><p>入参限制：支持过滤条件：InstanceId-实例ID,InstanceName-实例名称</p>
+        :type Filters: list of Filter
+        """
+        self._Product = None
+        self._AuditSwitch = None
+        self._Limit = None
+        self._Offset = None
+        self._Filters = None
+
+    @property
+    def Product(self):
+        r"""<p>产品名称：postgres</p>
+        :rtype: str
+        """
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def AuditSwitch(self):
+        r"""<p>是否开通</p><p>枚举值：</p><ul><li>0： 未开通</li><li>1： 已开通</li></ul>
+        :rtype: int
+        """
+        return self._AuditSwitch
+
+    @AuditSwitch.setter
+    def AuditSwitch(self, AuditSwitch):
+        self._AuditSwitch = AuditSwitch
+
+    @property
+    def Limit(self):
+        r"""<p>分页限制</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""<p>页偏移量</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Filters(self):
+        r"""<p>实例过滤参数</p><p>入参限制：支持过滤条件：InstanceId-实例ID,InstanceName-实例名称</p>
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._Product = params.get("Product")
+        self._AuditSwitch = params.get("AuditSwitch")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAuditInstanceListResponse(AbstractModel):
+    r"""DescribeAuditInstanceList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>实例数量</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _Items: <p>实例日志信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of AuditInstanceInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Items = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>实例数量</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Items(self):
+        r"""<p>实例日志信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of AuditInstanceInfo
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = AuditInstanceInfo()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAuditLogFilesRequest(AbstractModel):
+    r"""DescribeAuditLogFiles请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>实例ID</p>
+        :type InstanceId: str
+        :param _Product: <p>产品名称</p><p>入参限制：postgres</p>
+        :type Product: str
+        :param _FileName: <p>日志文件名称</p>
+        :type FileName: str
+        :param _Limit: <p>查询限制</p><p>取值范围：[1, 300]</p>
+        :type Limit: int
+        :param _Offset: <p>偏移量</p><p>取值范围：[0, 1000]</p>
+        :type Offset: int
+        """
+        self._InstanceId = None
+        self._Product = None
+        self._FileName = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例ID</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Product(self):
+        r"""<p>产品名称</p><p>入参限制：postgres</p>
+        :rtype: str
+        """
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def FileName(self):
+        r"""<p>日志文件名称</p>
+        :rtype: str
+        """
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def Limit(self):
+        r"""<p>查询限制</p><p>取值范围：[1, 300]</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""<p>偏移量</p><p>取值范围：[0, 1000]</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Product = params.get("Product")
+        self._FileName = params.get("FileName")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAuditLogFilesResponse(AbstractModel):
+    r"""DescribeAuditLogFiles返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>查询总数</p>
+        :type TotalCount: int
+        :param _Items: <p>审计日志文件列表</p>
+        :type Items: list of AuditLogFile
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Items = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>查询总数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Items(self):
+        r"""<p>审计日志文件列表</p>
+        :rtype: list of AuditLogFile
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = AuditLogFile()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAuditLogsRequest(AbstractModel):
+    r"""DescribeAuditLogs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>实例ID</p>
+        :type InstanceId: str
+        :param _StartTime: <p>开始时间</p><p>参数格式：2026-03-25 00:00:00</p>
+        :type StartTime: str
+        :param _EndTime: <p>结束时间</p><p>参数格式：2026-03-25 01:00:00</p>
+        :type EndTime: str
+        :param _Limit: <p>查询限制</p><p>取值范围：[1, 100]</p>
+        :type Limit: int
+        :param _Product: <p>产品名称</p><p>参数格式：postgres</p>
+        :type Product: str
+        :param _Offset: <p>位移量</p><p>取值范围：[0, 10000]</p>
+        :type Offset: int
+        :param _Order: <p>排序方法</p><p>入参限制：Timestamp,AffectRows,ExecTime</p>
+        :type Order: str
+        :param _OrderBy: <p>排序字段</p><p>入参限制：ASC,DESC</p>
+        :type OrderBy: str
+        :param _Filter: <p>过滤条件</p>
+        :type Filter: :class:`tencentcloud.postgres.v20170312.models.AuditLogFilter`
+        """
+        self._InstanceId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Limit = None
+        self._Product = None
+        self._Offset = None
+        self._Order = None
+        self._OrderBy = None
+        self._Filter = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例ID</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def StartTime(self):
+        r"""<p>开始时间</p><p>参数格式：2026-03-25 00:00:00</p>
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>结束时间</p><p>参数格式：2026-03-25 01:00:00</p>
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Limit(self):
+        r"""<p>查询限制</p><p>取值范围：[1, 100]</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Product(self):
+        r"""<p>产品名称</p><p>参数格式：postgres</p>
+        :rtype: str
+        """
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def Offset(self):
+        r"""<p>位移量</p><p>取值范围：[0, 10000]</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Order(self):
+        r"""<p>排序方法</p><p>入参限制：Timestamp,AffectRows,ExecTime</p>
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def OrderBy(self):
+        r"""<p>排序字段</p><p>入参限制：ASC,DESC</p>
+        :rtype: str
+        """
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
+
+    @property
+    def Filter(self):
+        r"""<p>过滤条件</p>
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.AuditLogFilter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Limit = params.get("Limit")
+        self._Product = params.get("Product")
+        self._Offset = params.get("Offset")
+        self._Order = params.get("Order")
+        self._OrderBy = params.get("OrderBy")
+        if params.get("Filter") is not None:
+            self._Filter = AuditLogFilter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAuditLogsResponse(AbstractModel):
+    r"""DescribeAuditLogs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>日志条数</p>
+        :type TotalCount: int
+        :param _Items: <p>日志详情</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of AuditLog
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Items = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>日志条数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Items(self):
+        r"""<p>日志详情</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of AuditLog
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = AuditLog()
+                obj._deserialize(item)
+                self._Items.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -13736,6 +15402,181 @@ class LogFilter(AbstractModel):
         
 
 
+class LogInstanceInfo(AbstractModel):
+    r"""日志实例信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceName: <p>实例名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceName: str
+        :param _ProjectId: <p>项目ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProjectId: int
+        :param _TagList: <p>实例标签</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TagList: list of Tag
+        :param _Engine: <p>引擎</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Engine: str
+        :param _EngineVersion: <p>引擎版本</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EngineVersion: str
+        :param _InstanceStatus: <p>实例状态</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceStatus: str
+        :param _IsSupportAudit: <p>是否支持审计。1代表支持，0代表不支持。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsSupportAudit: int
+        :param _InstanceId: <p>实例ID</p>
+        :type InstanceId: str
+        :param _AuditType: <p>日志类型</p><p>枚举值：</p><ul><li>complex： 精细审计</li><li>simple： 极速审计</li></ul>
+        :type AuditType: str
+        """
+        self._InstanceName = None
+        self._ProjectId = None
+        self._TagList = None
+        self._Engine = None
+        self._EngineVersion = None
+        self._InstanceStatus = None
+        self._IsSupportAudit = None
+        self._InstanceId = None
+        self._AuditType = None
+
+    @property
+    def InstanceName(self):
+        r"""<p>实例名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def ProjectId(self):
+        r"""<p>项目ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def TagList(self):
+        r"""<p>实例标签</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Tag
+        """
+        return self._TagList
+
+    @TagList.setter
+    def TagList(self, TagList):
+        self._TagList = TagList
+
+    @property
+    def Engine(self):
+        r"""<p>引擎</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Engine
+
+    @Engine.setter
+    def Engine(self, Engine):
+        self._Engine = Engine
+
+    @property
+    def EngineVersion(self):
+        r"""<p>引擎版本</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._EngineVersion
+
+    @EngineVersion.setter
+    def EngineVersion(self, EngineVersion):
+        self._EngineVersion = EngineVersion
+
+    @property
+    def InstanceStatus(self):
+        r"""<p>实例状态</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._InstanceStatus
+
+    @InstanceStatus.setter
+    def InstanceStatus(self, InstanceStatus):
+        self._InstanceStatus = InstanceStatus
+
+    @property
+    def IsSupportAudit(self):
+        r"""<p>是否支持审计。1代表支持，0代表不支持。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._IsSupportAudit
+
+    @IsSupportAudit.setter
+    def IsSupportAudit(self, IsSupportAudit):
+        self._IsSupportAudit = IsSupportAudit
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例ID</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def AuditType(self):
+        r"""<p>日志类型</p><p>枚举值：</p><ul><li>complex： 精细审计</li><li>simple： 极速审计</li></ul>
+        :rtype: str
+        """
+        return self._AuditType
+
+    @AuditType.setter
+    def AuditType(self, AuditType):
+        self._AuditType = AuditType
+
+
+    def _deserialize(self, params):
+        self._InstanceName = params.get("InstanceName")
+        self._ProjectId = params.get("ProjectId")
+        if params.get("TagList") is not None:
+            self._TagList = []
+            for item in params.get("TagList"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._TagList.append(obj)
+        self._Engine = params.get("Engine")
+        self._EngineVersion = params.get("EngineVersion")
+        self._InstanceStatus = params.get("InstanceStatus")
+        self._IsSupportAudit = params.get("IsSupportAudit")
+        self._InstanceId = params.get("InstanceId")
+        self._AuditType = params.get("AuditType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ModifyAccountPrivilegesRequest(AbstractModel):
     r"""ModifyAccountPrivileges请求参数结构体
 
@@ -13903,6 +15744,130 @@ class ModifyAccountRemarkRequest(AbstractModel):
 
 class ModifyAccountRemarkResponse(AbstractModel):
     r"""ModifyAccountRemark返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyAuditServiceRequest(AbstractModel):
+    r"""ModifyAuditService请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>实例ID</p>
+        :type InstanceId: str
+        :param _LogExpireDay: <p>日志保存时长（天）</p><p>枚举值：</p><ul><li>7： 7天</li><li>30： 30天</li><li>90： 90天</li><li>180： 180天</li><li>365： 365天</li><li>1095： 1095天</li><li>1825： 1825天</li></ul>
+        :type LogExpireDay: int
+        :param _HotLogExpireDay: <p>高频存储时长（天）</p><p>枚举值：</p><ul><li>7： 7天</li><li>30： 30天</li><li>90： 90天</li><li>180： 180天</li><li>365： 365天</li><li>1095： 1095天</li><li>1825： 1825天</li></ul>
+        :type HotLogExpireDay: int
+        :param _AuditType: <p>审计类型</p><p>枚举值：</p><ul><li>complex： 精细审计，审计日志更全面，包含对象类型、对象等，开启后对性能有一定影响</li><li>simple： 极速审计，审计日志覆盖绝大多数字段，开启审计后对性能影响较小</li></ul>
+        :type AuditType: str
+        :param _Product: <p>产品名称</p><p>入参限制：postgres</p>
+        :type Product: str
+        """
+        self._InstanceId = None
+        self._LogExpireDay = None
+        self._HotLogExpireDay = None
+        self._AuditType = None
+        self._Product = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例ID</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def LogExpireDay(self):
+        r"""<p>日志保存时长（天）</p><p>枚举值：</p><ul><li>7： 7天</li><li>30： 30天</li><li>90： 90天</li><li>180： 180天</li><li>365： 365天</li><li>1095： 1095天</li><li>1825： 1825天</li></ul>
+        :rtype: int
+        """
+        return self._LogExpireDay
+
+    @LogExpireDay.setter
+    def LogExpireDay(self, LogExpireDay):
+        self._LogExpireDay = LogExpireDay
+
+    @property
+    def HotLogExpireDay(self):
+        r"""<p>高频存储时长（天）</p><p>枚举值：</p><ul><li>7： 7天</li><li>30： 30天</li><li>90： 90天</li><li>180： 180天</li><li>365： 365天</li><li>1095： 1095天</li><li>1825： 1825天</li></ul>
+        :rtype: int
+        """
+        return self._HotLogExpireDay
+
+    @HotLogExpireDay.setter
+    def HotLogExpireDay(self, HotLogExpireDay):
+        self._HotLogExpireDay = HotLogExpireDay
+
+    @property
+    def AuditType(self):
+        r"""<p>审计类型</p><p>枚举值：</p><ul><li>complex： 精细审计，审计日志更全面，包含对象类型、对象等，开启后对性能有一定影响</li><li>simple： 极速审计，审计日志覆盖绝大多数字段，开启审计后对性能影响较小</li></ul>
+        :rtype: str
+        """
+        return self._AuditType
+
+    @AuditType.setter
+    def AuditType(self, AuditType):
+        self._AuditType = AuditType
+
+    @property
+    def Product(self):
+        r"""<p>产品名称</p><p>入参限制：postgres</p>
+        :rtype: str
+        """
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._LogExpireDay = params.get("LogExpireDay")
+        self._HotLogExpireDay = params.get("HotLogExpireDay")
+        self._AuditType = params.get("AuditType")
+        self._Product = params.get("Product")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyAuditServiceResponse(AbstractModel):
+    r"""ModifyAuditService返回参数结构体
 
     """
 
@@ -16663,6 +18628,130 @@ class OpenAccountCAMRequest(AbstractModel):
 
 class OpenAccountCAMResponse(AbstractModel):
     r"""OpenAccountCAM返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class OpenAuditServiceRequest(AbstractModel):
+    r"""OpenAuditService请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>实例ID</p>
+        :type InstanceId: str
+        :param _LogExpireDay: <p>日志保存时长</p><p>枚举值：</p><ul><li>7： 7天</li><li>30： 30天</li><li>90： 90天</li><li>180： 180天</li><li>365： 365天</li><li>1095： 1095天</li><li>1825： 1825天</li></ul>
+        :type LogExpireDay: int
+        :param _HotLogExpireDay: <p>高频存储时长</p><p>枚举值：</p><ul><li>7： 7天</li><li>30： 30天</li><li>90： 90天</li><li>180： 180天</li><li>365： 365天</li><li>1095： 1095天</li><li>1825： 1825天</li></ul>
+        :type HotLogExpireDay: int
+        :param _AuditType: <p>审计类型</p><p>枚举值：</p><ul><li>complex： 精细审计，审计日志更全面，包含对象类型、对象等，开启后对性能有一定影响</li><li>simple： 极速审计，审计日志覆盖绝大多数字段，开启审计后对性能影响较小</li></ul>
+        :type AuditType: str
+        :param _Product: <p>产品名称</p><p>入参限制：postgres</p>
+        :type Product: str
+        """
+        self._InstanceId = None
+        self._LogExpireDay = None
+        self._HotLogExpireDay = None
+        self._AuditType = None
+        self._Product = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例ID</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def LogExpireDay(self):
+        r"""<p>日志保存时长</p><p>枚举值：</p><ul><li>7： 7天</li><li>30： 30天</li><li>90： 90天</li><li>180： 180天</li><li>365： 365天</li><li>1095： 1095天</li><li>1825： 1825天</li></ul>
+        :rtype: int
+        """
+        return self._LogExpireDay
+
+    @LogExpireDay.setter
+    def LogExpireDay(self, LogExpireDay):
+        self._LogExpireDay = LogExpireDay
+
+    @property
+    def HotLogExpireDay(self):
+        r"""<p>高频存储时长</p><p>枚举值：</p><ul><li>7： 7天</li><li>30： 30天</li><li>90： 90天</li><li>180： 180天</li><li>365： 365天</li><li>1095： 1095天</li><li>1825： 1825天</li></ul>
+        :rtype: int
+        """
+        return self._HotLogExpireDay
+
+    @HotLogExpireDay.setter
+    def HotLogExpireDay(self, HotLogExpireDay):
+        self._HotLogExpireDay = HotLogExpireDay
+
+    @property
+    def AuditType(self):
+        r"""<p>审计类型</p><p>枚举值：</p><ul><li>complex： 精细审计，审计日志更全面，包含对象类型、对象等，开启后对性能有一定影响</li><li>simple： 极速审计，审计日志覆盖绝大多数字段，开启审计后对性能影响较小</li></ul>
+        :rtype: str
+        """
+        return self._AuditType
+
+    @AuditType.setter
+    def AuditType(self, AuditType):
+        self._AuditType = AuditType
+
+    @property
+    def Product(self):
+        r"""<p>产品名称</p><p>入参限制：postgres</p>
+        :rtype: str
+        """
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._LogExpireDay = params.get("LogExpireDay")
+        self._HotLogExpireDay = params.get("HotLogExpireDay")
+        self._AuditType = params.get("AuditType")
+        self._Product = params.get("Product")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OpenAuditServiceResponse(AbstractModel):
+    r"""OpenAuditService返回参数结构体
 
     """
 

@@ -79,6 +79,24 @@ class PostgresClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CloseAuditService(
+            self,
+            request: models.CloseAuditServiceRequest,
+            opts: Dict = None,
+    ) -> models.CloseAuditServiceResponse:
+        """
+        关闭数据库实例的审计功能
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CloseAuditService"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CloseAuditServiceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CloseDBExtranetAccess(
             self,
             request: models.CloseDBExtranetAccessRequest,
@@ -110,6 +128,24 @@ class PostgresClient(AbstractClient):
         kwargs["action"] = "CreateAccount"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreateAccountResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateAuditLogFile(
+            self,
+            request: models.CreateAuditLogFileRequest,
+            opts: Dict = None,
+    ) -> models.CreateAuditLogFileResponse:
+        """
+        创建审计日志文件
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateAuditLogFile"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateAuditLogFileResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -297,6 +333,24 @@ class PostgresClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteAuditLogFile(
+            self,
+            request: models.DeleteAuditLogFileRequest,
+            opts: Dict = None,
+    ) -> models.DeleteAuditLogFileResponse:
+        """
+        删除审计日志文件
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteAuditLogFile"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteAuditLogFileResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteBackupPlan(
             self,
             request: models.DeleteBackupPlanRequest,
@@ -454,6 +508,60 @@ class PostgresClient(AbstractClient):
         kwargs["action"] = "DescribeAccounts"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeAccountsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAuditInstanceList(
+            self,
+            request: models.DescribeAuditInstanceListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAuditInstanceListResponse:
+        """
+        查询审计实例列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAuditInstanceList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAuditInstanceListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAuditLogFiles(
+            self,
+            request: models.DescribeAuditLogFilesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAuditLogFilesResponse:
+        """
+        查询审计日志文件
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAuditLogFiles"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAuditLogFilesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAuditLogs(
+            self,
+            request: models.DescribeAuditLogsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAuditLogsResponse:
+        """
+        查询数据库审计日志
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAuditLogs"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAuditLogsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1290,6 +1398,24 @@ class PostgresClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyAuditService(
+            self,
+            request: models.ModifyAuditServiceRequest,
+            opts: Dict = None,
+    ) -> models.ModifyAuditServiceResponse:
+        """
+        修改数据库实例的审计功能
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyAuditService"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyAuditServiceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyBackupDownloadRestriction(
             self,
             request: models.ModifyBackupDownloadRestrictionRequest,
@@ -1665,6 +1791,24 @@ class PostgresClient(AbstractClient):
         kwargs["action"] = "OpenAccountCAM"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.OpenAccountCAMResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def OpenAuditService(
+            self,
+            request: models.OpenAuditServiceRequest,
+            opts: Dict = None,
+    ) -> models.OpenAuditServiceResponse:
+        """
+        开启数据库实例的审计功能
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "OpenAuditService"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.OpenAuditServiceResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

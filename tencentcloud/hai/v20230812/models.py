@@ -3950,21 +3950,21 @@ class ModelDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ModelName: 模型名称
+        :param _ModelName: <p>模型名称</p>
         :type ModelName: str
-        :param _ModelId: 模型ID
+        :param _ModelId: <p>模型ID</p>
         :type ModelId: str
-        :param _Description: 应用描述	
+        :param _Description: <p>应用描述</p>
         :type Description: str
-        :param _CommunityUrl: 官方社区链接	
+        :param _CommunityUrl: <p>官方社区链接</p>
         :type CommunityUrl: str
-        :param _GuideUrl: 最佳实践链接
+        :param _GuideUrl: <p>最佳实践链接</p>
         :type GuideUrl: str
-        :param _ModelState: 模型状态
+        :param _ModelState: <p>模型状态</p>
         :type ModelState: str
-        :param _Tags: 应用对应的标签，如机器学习
+        :param _Tags: <p>应用对应的标签，如机器学习</p>
         :type Tags: list of str
-        :param _ConfigEnvironment: 配置环境
+        :param _ConfigEnvironment: <p>配置环境</p>
         :type ConfigEnvironment: str
         """
         self._ModelName = None
@@ -3978,7 +3978,7 @@ class ModelDetail(AbstractModel):
 
     @property
     def ModelName(self):
-        r"""模型名称
+        r"""<p>模型名称</p>
         :rtype: str
         """
         return self._ModelName
@@ -3989,7 +3989,7 @@ class ModelDetail(AbstractModel):
 
     @property
     def ModelId(self):
-        r"""模型ID
+        r"""<p>模型ID</p>
         :rtype: str
         """
         return self._ModelId
@@ -4000,7 +4000,7 @@ class ModelDetail(AbstractModel):
 
     @property
     def Description(self):
-        r"""应用描述	
+        r"""<p>应用描述</p>
         :rtype: str
         """
         return self._Description
@@ -4011,7 +4011,7 @@ class ModelDetail(AbstractModel):
 
     @property
     def CommunityUrl(self):
-        r"""官方社区链接	
+        r"""<p>官方社区链接</p>
         :rtype: str
         """
         return self._CommunityUrl
@@ -4022,7 +4022,7 @@ class ModelDetail(AbstractModel):
 
     @property
     def GuideUrl(self):
-        r"""最佳实践链接
+        r"""<p>最佳实践链接</p>
         :rtype: str
         """
         return self._GuideUrl
@@ -4033,7 +4033,7 @@ class ModelDetail(AbstractModel):
 
     @property
     def ModelState(self):
-        r"""模型状态
+        r"""<p>模型状态</p>
         :rtype: str
         """
         return self._ModelState
@@ -4044,7 +4044,7 @@ class ModelDetail(AbstractModel):
 
     @property
     def Tags(self):
-        r"""应用对应的标签，如机器学习
+        r"""<p>应用对应的标签，如机器学习</p>
         :rtype: list of str
         """
         return self._Tags
@@ -4055,7 +4055,7 @@ class ModelDetail(AbstractModel):
 
     @property
     def ConfigEnvironment(self):
-        r"""配置环境
+        r"""<p>配置环境</p>
         :rtype: str
         """
         return self._ConfigEnvironment

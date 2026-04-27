@@ -18,6 +18,240 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class ApiKeyAuthApplyVO(AbstractModel):
+    r"""创建ApiKey接口出参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>id</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: int
+        :param _CorpId: <p>企业id</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CorpId: str
+        :param _ApiKey: <p>apiKey</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApiKey: str
+        :param _DefaultUser: <p>默认用户</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DefaultUser: str
+        :param _CreatedUser: <p>创建人</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatedUser: str
+        :param _CreatedAt: <p>创建时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatedAt: str
+        :param _UpdatedUser: <p>更新人</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdatedUser: str
+        :param _UpdatedAt: <p>更新时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdatedAt: str
+        """
+        self._Id = None
+        self._CorpId = None
+        self._ApiKey = None
+        self._DefaultUser = None
+        self._CreatedUser = None
+        self._CreatedAt = None
+        self._UpdatedUser = None
+        self._UpdatedAt = None
+
+    @property
+    def Id(self):
+        r"""<p>id</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def CorpId(self):
+        r"""<p>企业id</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CorpId
+
+    @CorpId.setter
+    def CorpId(self, CorpId):
+        self._CorpId = CorpId
+
+    @property
+    def ApiKey(self):
+        r"""<p>apiKey</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ApiKey
+
+    @ApiKey.setter
+    def ApiKey(self, ApiKey):
+        self._ApiKey = ApiKey
+
+    @property
+    def DefaultUser(self):
+        r"""<p>默认用户</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DefaultUser
+
+    @DefaultUser.setter
+    def DefaultUser(self, DefaultUser):
+        self._DefaultUser = DefaultUser
+
+    @property
+    def CreatedUser(self):
+        r"""<p>创建人</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreatedUser
+
+    @CreatedUser.setter
+    def CreatedUser(self, CreatedUser):
+        self._CreatedUser = CreatedUser
+
+    @property
+    def CreatedAt(self):
+        r"""<p>创建时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreatedAt
+
+    @CreatedAt.setter
+    def CreatedAt(self, CreatedAt):
+        self._CreatedAt = CreatedAt
+
+    @property
+    def UpdatedUser(self):
+        r"""<p>更新人</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UpdatedUser
+
+    @UpdatedUser.setter
+    def UpdatedUser(self, UpdatedUser):
+        self._UpdatedUser = UpdatedUser
+
+    @property
+    def UpdatedAt(self):
+        r"""<p>更新时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UpdatedAt
+
+    @UpdatedAt.setter
+    def UpdatedAt(self, UpdatedAt):
+        self._UpdatedAt = UpdatedAt
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._CorpId = params.get("CorpId")
+        self._ApiKey = params.get("ApiKey")
+        self._DefaultUser = params.get("DefaultUser")
+        self._CreatedUser = params.get("CreatedUser")
+        self._CreatedAt = params.get("CreatedAt")
+        self._UpdatedUser = params.get("UpdatedUser")
+        self._UpdatedAt = params.get("UpdatedAt")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ApiKeyAuthApplyVOList(AbstractModel):
+    r"""ApiKey列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: <p>总数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: int
+        :param _TotalPages: <p>页数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalPages: int
+        :param _List: <p>列表数据</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type List: list of ApiKeyAuthApplyVO
+        """
+        self._Total = None
+        self._TotalPages = None
+        self._List = None
+
+    @property
+    def Total(self):
+        r"""<p>总数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def TotalPages(self):
+        r"""<p>页数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TotalPages
+
+    @TotalPages.setter
+    def TotalPages(self, TotalPages):
+        self._TotalPages = TotalPages
+
+    @property
+    def List(self):
+        r"""<p>列表数据</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ApiKeyAuthApplyVO
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        self._TotalPages = params.get("TotalPages")
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = ApiKeyAuthApplyVO()
+                obj._deserialize(item)
+                self._List.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ApplyEmbedIntervalRequest(AbstractModel):
     r"""ApplyEmbedInterval请求参数结构体
 
@@ -731,6 +965,142 @@ class CorpUserListData(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class CreateAuthApiKeyRequest(AbstractModel):
+    r"""CreateAuthApiKey请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DefaultUser: <p>默认用户</p>
+        :type DefaultUser: str
+        """
+        self._DefaultUser = None
+
+    @property
+    def DefaultUser(self):
+        r"""<p>默认用户</p>
+        :rtype: str
+        """
+        return self._DefaultUser
+
+    @DefaultUser.setter
+    def DefaultUser(self, DefaultUser):
+        self._DefaultUser = DefaultUser
+
+
+    def _deserialize(self, params):
+        self._DefaultUser = params.get("DefaultUser")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAuthApiKeyResponse(AbstractModel):
+    r"""CreateAuthApiKey返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorInfo: 自定义错误信息对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorInfo: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        :param _Extra: <p>&quot;&quot;</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Extra: str
+        :param _Msg: <p>&quot;success&quot;</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Msg: str
+        :param _Data: <p>数据</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.bi.v20220105.models.ApiKeyAuthApplyVO`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ErrorInfo = None
+        self._Extra = None
+        self._Msg = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def ErrorInfo(self):
+        r"""自定义错误信息对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        """
+        return self._ErrorInfo
+
+    @ErrorInfo.setter
+    def ErrorInfo(self, ErrorInfo):
+        self._ErrorInfo = ErrorInfo
+
+    @property
+    def Extra(self):
+        r"""<p>&quot;&quot;</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Extra
+
+    @Extra.setter
+    def Extra(self, Extra):
+        self._Extra = Extra
+
+    @property
+    def Msg(self):
+        r"""<p>&quot;success&quot;</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def Data(self):
+        r"""<p>数据</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.bi.v20220105.models.ApiKeyAuthApplyVO`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ErrorInfo") is not None:
+            self._ErrorInfo = ErrorInfo()
+            self._ErrorInfo._deserialize(params.get("ErrorInfo"))
+        self._Extra = params.get("Extra")
+        self._Msg = params.get("Msg")
+        if params.get("Data") is not None:
+            self._Data = ApiKeyAuthApplyVO()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
 
 
 class CreateDatasourceCloudRequest(AbstractModel):
@@ -4057,6 +4427,140 @@ class DatasourceInfoData(AbstractModel):
         
 
 
+class DeleteAuthApiKeyRequest(AbstractModel):
+    r"""DeleteAuthApiKey请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ApiKey: <p>ApiKey</p>
+        :type ApiKey: str
+        """
+        self._ApiKey = None
+
+    @property
+    def ApiKey(self):
+        r"""<p>ApiKey</p>
+        :rtype: str
+        """
+        return self._ApiKey
+
+    @ApiKey.setter
+    def ApiKey(self, ApiKey):
+        self._ApiKey = ApiKey
+
+
+    def _deserialize(self, params):
+        self._ApiKey = params.get("ApiKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteAuthApiKeyResponse(AbstractModel):
+    r"""DeleteAuthApiKey返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorInfo: 自定义错误信息对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorInfo: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        :param _Extra: <p>&quot;&quot;</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Extra: str
+        :param _Msg: <p>&quot;success&quot;</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Msg: str
+        :param _Data: <p>数据</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ErrorInfo = None
+        self._Extra = None
+        self._Msg = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def ErrorInfo(self):
+        r"""自定义错误信息对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        """
+        return self._ErrorInfo
+
+    @ErrorInfo.setter
+    def ErrorInfo(self, ErrorInfo):
+        self._ErrorInfo = ErrorInfo
+
+    @property
+    def Extra(self):
+        r"""<p>&quot;&quot;</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Extra
+
+    @Extra.setter
+    def Extra(self, Extra):
+        self._Extra = Extra
+
+    @property
+    def Msg(self):
+        r"""<p>&quot;success&quot;</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def Data(self):
+        r"""<p>数据</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ErrorInfo") is not None:
+            self._ErrorInfo = ErrorInfo()
+            self._ErrorInfo._deserialize(params.get("ErrorInfo"))
+        self._Extra = params.get("Extra")
+        self._Msg = params.get("Msg")
+        self._Data = params.get("Data")
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteDatasourceRequest(AbstractModel):
     r"""DeleteDatasource请求参数结构体
 
@@ -4831,6 +5335,323 @@ class DeleteUserRoleResponse(AbstractModel):
         self._Extra = params.get("Extra")
         self._Data = params.get("Data")
         self._Msg = params.get("Msg")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAuthApiKeyInfoRequest(AbstractModel):
+    r"""DescribeAuthApiKeyInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ApiKey: <p>ApiKey</p>
+        :type ApiKey: str
+        """
+        self._ApiKey = None
+
+    @property
+    def ApiKey(self):
+        r"""<p>ApiKey</p>
+        :rtype: str
+        """
+        return self._ApiKey
+
+    @ApiKey.setter
+    def ApiKey(self, ApiKey):
+        self._ApiKey = ApiKey
+
+
+    def _deserialize(self, params):
+        self._ApiKey = params.get("ApiKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAuthApiKeyInfoResponse(AbstractModel):
+    r"""DescribeAuthApiKeyInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorInfo: 自定义错误信息对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorInfo: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        :param _Extra: <p>&quot;&quot;</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Extra: str
+        :param _Msg: <p>&quot;success&quot;</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Msg: str
+        :param _Data: <p>数据</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.bi.v20220105.models.ApiKeyAuthApplyVO`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ErrorInfo = None
+        self._Extra = None
+        self._Msg = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def ErrorInfo(self):
+        r"""自定义错误信息对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        """
+        return self._ErrorInfo
+
+    @ErrorInfo.setter
+    def ErrorInfo(self, ErrorInfo):
+        self._ErrorInfo = ErrorInfo
+
+    @property
+    def Extra(self):
+        r"""<p>&quot;&quot;</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Extra
+
+    @Extra.setter
+    def Extra(self, Extra):
+        self._Extra = Extra
+
+    @property
+    def Msg(self):
+        r"""<p>&quot;success&quot;</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def Data(self):
+        r"""<p>数据</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.bi.v20220105.models.ApiKeyAuthApplyVO`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ErrorInfo") is not None:
+            self._ErrorInfo = ErrorInfo()
+            self._ErrorInfo._deserialize(params.get("ErrorInfo"))
+        self._Extra = params.get("Extra")
+        self._Msg = params.get("Msg")
+        if params.get("Data") is not None:
+            self._Data = ApiKeyAuthApplyVO()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAuthApiKeyListRequest(AbstractModel):
+    r"""DescribeAuthApiKeyList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AllPage: <p>全部</p><p>默认值：false</p>
+        :type AllPage: bool
+        :param _PageNo: <p>页码</p><p>默认值：0</p>
+        :type PageNo: int
+        :param _PageSize: <p>分页大小</p><p>默认值：10</p>
+        :type PageSize: int
+        :param _Keyword: <p>关键字过滤</p>
+        :type Keyword: str
+        """
+        self._AllPage = None
+        self._PageNo = None
+        self._PageSize = None
+        self._Keyword = None
+
+    @property
+    def AllPage(self):
+        r"""<p>全部</p><p>默认值：false</p>
+        :rtype: bool
+        """
+        return self._AllPage
+
+    @AllPage.setter
+    def AllPage(self, AllPage):
+        self._AllPage = AllPage
+
+    @property
+    def PageNo(self):
+        r"""<p>页码</p><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._PageNo
+
+    @PageNo.setter
+    def PageNo(self, PageNo):
+        self._PageNo = PageNo
+
+    @property
+    def PageSize(self):
+        r"""<p>分页大小</p><p>默认值：10</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def Keyword(self):
+        r"""<p>关键字过滤</p>
+        :rtype: str
+        """
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
+
+
+    def _deserialize(self, params):
+        self._AllPage = params.get("AllPage")
+        self._PageNo = params.get("PageNo")
+        self._PageSize = params.get("PageSize")
+        self._Keyword = params.get("Keyword")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAuthApiKeyListResponse(AbstractModel):
+    r"""DescribeAuthApiKeyList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorInfo: 自定义错误信息对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorInfo: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        :param _Extra: <p>{}</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Extra: str
+        :param _Msg: <p>信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Msg: str
+        :param _Data: <p>数据</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.bi.v20220105.models.ApiKeyAuthApplyVOList`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ErrorInfo = None
+        self._Extra = None
+        self._Msg = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def ErrorInfo(self):
+        r"""自定义错误信息对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        """
+        return self._ErrorInfo
+
+    @ErrorInfo.setter
+    def ErrorInfo(self, ErrorInfo):
+        self._ErrorInfo = ErrorInfo
+
+    @property
+    def Extra(self):
+        r"""<p>{}</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Extra
+
+    @Extra.setter
+    def Extra(self, Extra):
+        self._Extra = Extra
+
+    @property
+    def Msg(self):
+        r"""<p>信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def Data(self):
+        r"""<p>数据</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.bi.v20220105.models.ApiKeyAuthApplyVOList`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ErrorInfo") is not None:
+            self._ErrorInfo = ErrorInfo()
+            self._ErrorInfo._deserialize(params.get("ErrorInfo"))
+        self._Extra = params.get("Extra")
+        self._Msg = params.get("Msg")
+        if params.get("Data") is not None:
+            self._Data = ApiKeyAuthApplyVOList()
+            self._Data._deserialize(params.get("Data"))
         self._RequestId = params.get("RequestId")
 
 
@@ -8595,6 +9416,157 @@ class IdDTO(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ModifyAuthApiKeyRequest(AbstractModel):
+    r"""ModifyAuthApiKey请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ApiKey: <p>ApiKey</p>
+        :type ApiKey: str
+        :param _DefaultUser: <p>默认用户</p>
+        :type DefaultUser: str
+        """
+        self._ApiKey = None
+        self._DefaultUser = None
+
+    @property
+    def ApiKey(self):
+        r"""<p>ApiKey</p>
+        :rtype: str
+        """
+        return self._ApiKey
+
+    @ApiKey.setter
+    def ApiKey(self, ApiKey):
+        self._ApiKey = ApiKey
+
+    @property
+    def DefaultUser(self):
+        r"""<p>默认用户</p>
+        :rtype: str
+        """
+        return self._DefaultUser
+
+    @DefaultUser.setter
+    def DefaultUser(self, DefaultUser):
+        self._DefaultUser = DefaultUser
+
+
+    def _deserialize(self, params):
+        self._ApiKey = params.get("ApiKey")
+        self._DefaultUser = params.get("DefaultUser")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyAuthApiKeyResponse(AbstractModel):
+    r"""ModifyAuthApiKey返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorInfo: 自定义错误信息对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorInfo: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        :param _Extra: <p>&quot;&quot;</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Extra: str
+        :param _Msg: <p>&quot;success&quot;</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Msg: str
+        :param _Data: <p>数据</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.bi.v20220105.models.ApiKeyAuthApplyVO`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ErrorInfo = None
+        self._Extra = None
+        self._Msg = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def ErrorInfo(self):
+        r"""自定义错误信息对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
+        """
+        return self._ErrorInfo
+
+    @ErrorInfo.setter
+    def ErrorInfo(self, ErrorInfo):
+        self._ErrorInfo = ErrorInfo
+
+    @property
+    def Extra(self):
+        r"""<p>&quot;&quot;</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Extra
+
+    @Extra.setter
+    def Extra(self, Extra):
+        self._Extra = Extra
+
+    @property
+    def Msg(self):
+        r"""<p>&quot;success&quot;</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def Data(self):
+        r"""<p>数据</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.bi.v20220105.models.ApiKeyAuthApplyVO`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ErrorInfo") is not None:
+            self._ErrorInfo = ErrorInfo()
+            self._ErrorInfo._deserialize(params.get("ErrorInfo"))
+        self._Extra = params.get("Extra")
+        self._Msg = params.get("Msg")
+        if params.get("Data") is not None:
+            self._Data = ApiKeyAuthApplyVO()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyDatasourceCloudRequest(AbstractModel):

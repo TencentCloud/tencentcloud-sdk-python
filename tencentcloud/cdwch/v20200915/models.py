@@ -5414,7 +5414,7 @@ class InstanceDetail(AbstractModel):
 
 
 class InstanceInfo(AbstractModel):
-    r"""实例描述信息
+    r"""实例的描述信息
 
     """
 
@@ -5534,6 +5534,8 @@ class InstanceInfo(AbstractModel):
         :type InstanceType: str
         :param _EnableConfigKeyValue: <p>keyvalue视图</p>
         :type EnableConfigKeyValue: str
+        :param _HttpsEnabled: <p>实例是否开启HTTPS</p><p>枚举值：</p><ul><li>true： 已开启HTTPS</li><li>false： 未开启HTTPS</li></ul>
+        :type HttpsEnabled: bool
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -5592,6 +5594,7 @@ class InstanceInfo(AbstractModel):
         self._ShowRip = None
         self._InstanceType = None
         self._EnableConfigKeyValue = None
+        self._HttpsEnabled = None
 
     @property
     def InstanceId(self):
@@ -6220,6 +6223,17 @@ class InstanceInfo(AbstractModel):
     def EnableConfigKeyValue(self, EnableConfigKeyValue):
         self._EnableConfigKeyValue = EnableConfigKeyValue
 
+    @property
+    def HttpsEnabled(self):
+        r"""<p>实例是否开启HTTPS</p><p>枚举值：</p><ul><li>true： 已开启HTTPS</li><li>false： 未开启HTTPS</li></ul>
+        :rtype: bool
+        """
+        return self._HttpsEnabled
+
+    @HttpsEnabled.setter
+    def HttpsEnabled(self, HttpsEnabled):
+        self._HttpsEnabled = HttpsEnabled
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -6297,6 +6311,7 @@ class InstanceInfo(AbstractModel):
         self._ShowRip = params.get("ShowRip")
         self._InstanceType = params.get("InstanceType")
         self._EnableConfigKeyValue = params.get("EnableConfigKeyValue")
+        self._HttpsEnabled = params.get("HttpsEnabled")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

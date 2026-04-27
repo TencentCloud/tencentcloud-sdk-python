@@ -8907,28 +8907,20 @@ class CreateLivePadTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TemplateName: 模板名称。
-长度上限：255字节。
-仅支持中文、英文、数字、_、-。
+        :param _TemplateName: <p>模板名称。<br>长度上限：255字节。<br>仅支持中文、英文、数字、_、-。</p>
         :type TemplateName: str
-        :param _Url: 垫片内容。
+        :param _Url: <p>垫片内容。</p>
         :type Url: str
-        :param _Description: 描述信息。
-长度上限：1024字节。
-仅支持中文、英文、数字、_、-。
+        :param _Description: <p>描述信息。<br>长度上限：1024字节。<br>仅支持中文、英文、数字、_、-。</p>
         :type Description: str
-        :param _WaitDuration: 断流等待时间。
-取值范围：0-30000。
-单位：ms。
+        :param _WaitDuration: <p>断流等待时间。<br>取值范围：0-30000。<br>单位：ms。</p>
         :type WaitDuration: int
-        :param _MaxDuration: 最大垫片时长。
-取值范围：0 - 正无穷。
-单位：ms。
+        :param _MaxDuration: <p>最大垫片时长。<br>取值范围：0 - 正无穷。<br>单位：ms。</p>
         :type MaxDuration: int
-        :param _Type: 垫片内容类型：
-1：图片，2：视频。
-默认值：1。
+        :param _Type: <p>垫片内容类型：<br>1：图片，2：视频。<br>默认值：1。</p>
         :type Type: int
+        :param _TriggerCondition: <p>断流垫片触发条件</p><p>枚举值：</p><ul><li>0： 主动及异常断流</li><li>1： 异常断流</li></ul><p>默认值：0</p>
+        :type TriggerCondition: int
         """
         self._TemplateName = None
         self._Url = None
@@ -8936,12 +8928,11 @@ class CreateLivePadTemplateRequest(AbstractModel):
         self._WaitDuration = None
         self._MaxDuration = None
         self._Type = None
+        self._TriggerCondition = None
 
     @property
     def TemplateName(self):
-        r"""模板名称。
-长度上限：255字节。
-仅支持中文、英文、数字、_、-。
+        r"""<p>模板名称。<br>长度上限：255字节。<br>仅支持中文、英文、数字、_、-。</p>
         :rtype: str
         """
         return self._TemplateName
@@ -8952,7 +8943,7 @@ class CreateLivePadTemplateRequest(AbstractModel):
 
     @property
     def Url(self):
-        r"""垫片内容。
+        r"""<p>垫片内容。</p>
         :rtype: str
         """
         return self._Url
@@ -8963,9 +8954,7 @@ class CreateLivePadTemplateRequest(AbstractModel):
 
     @property
     def Description(self):
-        r"""描述信息。
-长度上限：1024字节。
-仅支持中文、英文、数字、_、-。
+        r"""<p>描述信息。<br>长度上限：1024字节。<br>仅支持中文、英文、数字、_、-。</p>
         :rtype: str
         """
         return self._Description
@@ -8976,9 +8965,7 @@ class CreateLivePadTemplateRequest(AbstractModel):
 
     @property
     def WaitDuration(self):
-        r"""断流等待时间。
-取值范围：0-30000。
-单位：ms。
+        r"""<p>断流等待时间。<br>取值范围：0-30000。<br>单位：ms。</p>
         :rtype: int
         """
         return self._WaitDuration
@@ -8989,9 +8976,7 @@ class CreateLivePadTemplateRequest(AbstractModel):
 
     @property
     def MaxDuration(self):
-        r"""最大垫片时长。
-取值范围：0 - 正无穷。
-单位：ms。
+        r"""<p>最大垫片时长。<br>取值范围：0 - 正无穷。<br>单位：ms。</p>
         :rtype: int
         """
         return self._MaxDuration
@@ -9002,9 +8987,7 @@ class CreateLivePadTemplateRequest(AbstractModel):
 
     @property
     def Type(self):
-        r"""垫片内容类型：
-1：图片，2：视频。
-默认值：1。
+        r"""<p>垫片内容类型：<br>1：图片，2：视频。<br>默认值：1。</p>
         :rtype: int
         """
         return self._Type
@@ -9012,6 +8995,17 @@ class CreateLivePadTemplateRequest(AbstractModel):
     @Type.setter
     def Type(self, Type):
         self._Type = Type
+
+    @property
+    def TriggerCondition(self):
+        r"""<p>断流垫片触发条件</p><p>枚举值：</p><ul><li>0： 主动及异常断流</li><li>1： 异常断流</li></ul><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._TriggerCondition
+
+    @TriggerCondition.setter
+    def TriggerCondition(self, TriggerCondition):
+        self._TriggerCondition = TriggerCondition
 
 
     def _deserialize(self, params):
@@ -9021,6 +9015,7 @@ class CreateLivePadTemplateRequest(AbstractModel):
         self._WaitDuration = params.get("WaitDuration")
         self._MaxDuration = params.get("MaxDuration")
         self._Type = params.get("Type")
+        self._TriggerCondition = params.get("TriggerCondition")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9038,7 +9033,7 @@ class CreateLivePadTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TemplateId: 模板Id。
+        :param _TemplateId: <p>模板Id。</p>
         :type TemplateId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -9048,7 +9043,7 @@ class CreateLivePadTemplateResponse(AbstractModel):
 
     @property
     def TemplateId(self):
-        r"""模板Id。
+        r"""<p>模板Id。</p>
         :rtype: int
         """
         return self._TemplateId
@@ -33853,28 +33848,22 @@ class ModifyLivePadTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TemplateId: 模板id。
+        :param _TemplateId: <p>模板id。</p>
         :type TemplateId: int
-        :param _Url: 垫片内容。
+        :param _Url: <p>垫片内容。</p>
         :type Url: str
-        :param _WaitDuration: 断流等待时间。
-取值范围：0-30000。
-单位：ms。
+        :param _WaitDuration: <p>断流等待时间。<br>取值范围：0-30000。<br>单位：ms。</p>
         :type WaitDuration: int
-        :param _MaxDuration: 最大垫片时长。
-取值范围：0 - 正无穷。
-单位：ms。
+        :param _MaxDuration: <p>最大垫片时长。<br>取值范围：0 - 正无穷。<br>单位：ms。</p>
         :type MaxDuration: int
-        :param _TemplateName: 模板名称。
-长度上限：255字节。
-仅支持中文、英文、数字、_、-。
+        :param _TemplateName: <p>模板名称。<br>长度上限：255字节。<br>仅支持中文、英文、数字、_、-。</p>
         :type TemplateName: str
-        :param _Description: 描述信息。
-长度上限：1024字节。
-仅支持中文、英文、数字、_、-。
+        :param _Description: <p>描述信息。<br>长度上限：1024字节。<br>仅支持中文、英文、数字、_、-。</p>
         :type Description: str
-        :param _Type: 垫片内容类型： 1：图片，2：视频。 默认值：1。
+        :param _Type: <p>垫片内容类型： 1：图片，2：视频。 默认值：1。</p>
         :type Type: int
+        :param _TriggerCondition: <p>断流垫片触发条件</p><p>枚举值：</p><ul><li>0： 主动及异常断流</li><li>1： 异常断流</li></ul><p>默认值：0</p>
+        :type TriggerCondition: int
         """
         self._TemplateId = None
         self._Url = None
@@ -33883,10 +33872,11 @@ class ModifyLivePadTemplateRequest(AbstractModel):
         self._TemplateName = None
         self._Description = None
         self._Type = None
+        self._TriggerCondition = None
 
     @property
     def TemplateId(self):
-        r"""模板id。
+        r"""<p>模板id。</p>
         :rtype: int
         """
         return self._TemplateId
@@ -33897,7 +33887,7 @@ class ModifyLivePadTemplateRequest(AbstractModel):
 
     @property
     def Url(self):
-        r"""垫片内容。
+        r"""<p>垫片内容。</p>
         :rtype: str
         """
         return self._Url
@@ -33908,9 +33898,7 @@ class ModifyLivePadTemplateRequest(AbstractModel):
 
     @property
     def WaitDuration(self):
-        r"""断流等待时间。
-取值范围：0-30000。
-单位：ms。
+        r"""<p>断流等待时间。<br>取值范围：0-30000。<br>单位：ms。</p>
         :rtype: int
         """
         return self._WaitDuration
@@ -33921,9 +33909,7 @@ class ModifyLivePadTemplateRequest(AbstractModel):
 
     @property
     def MaxDuration(self):
-        r"""最大垫片时长。
-取值范围：0 - 正无穷。
-单位：ms。
+        r"""<p>最大垫片时长。<br>取值范围：0 - 正无穷。<br>单位：ms。</p>
         :rtype: int
         """
         return self._MaxDuration
@@ -33934,9 +33920,7 @@ class ModifyLivePadTemplateRequest(AbstractModel):
 
     @property
     def TemplateName(self):
-        r"""模板名称。
-长度上限：255字节。
-仅支持中文、英文、数字、_、-。
+        r"""<p>模板名称。<br>长度上限：255字节。<br>仅支持中文、英文、数字、_、-。</p>
         :rtype: str
         """
         return self._TemplateName
@@ -33947,9 +33931,7 @@ class ModifyLivePadTemplateRequest(AbstractModel):
 
     @property
     def Description(self):
-        r"""描述信息。
-长度上限：1024字节。
-仅支持中文、英文、数字、_、-。
+        r"""<p>描述信息。<br>长度上限：1024字节。<br>仅支持中文、英文、数字、_、-。</p>
         :rtype: str
         """
         return self._Description
@@ -33960,7 +33942,7 @@ class ModifyLivePadTemplateRequest(AbstractModel):
 
     @property
     def Type(self):
-        r"""垫片内容类型： 1：图片，2：视频。 默认值：1。
+        r"""<p>垫片内容类型： 1：图片，2：视频。 默认值：1。</p>
         :rtype: int
         """
         return self._Type
@@ -33968,6 +33950,17 @@ class ModifyLivePadTemplateRequest(AbstractModel):
     @Type.setter
     def Type(self, Type):
         self._Type = Type
+
+    @property
+    def TriggerCondition(self):
+        r"""<p>断流垫片触发条件</p><p>枚举值：</p><ul><li>0： 主动及异常断流</li><li>1： 异常断流</li></ul><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._TriggerCondition
+
+    @TriggerCondition.setter
+    def TriggerCondition(self, TriggerCondition):
+        self._TriggerCondition = TriggerCondition
 
 
     def _deserialize(self, params):
@@ -33978,6 +33971,7 @@ class ModifyLivePadTemplateRequest(AbstractModel):
         self._TemplateName = params.get("TemplateName")
         self._Description = params.get("Description")
         self._Type = params.get("Type")
+        self._TriggerCondition = params.get("TriggerCondition")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

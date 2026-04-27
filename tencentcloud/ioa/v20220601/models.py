@@ -6324,6 +6324,8 @@ class DescribeLocalAccountsRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _DomainInstanceId: 管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
+        :type DomainInstanceId: str
         :param _Condition: 查询条件：过滤或排序
 1、UserName，string类型，姓名
 是否必填：否
@@ -6337,15 +6339,31 @@ class DescribeLocalAccountsRequest(AbstractModel):
 是否必填：否
 过滤支持：是，支持eq、like、ilike
 排序支持：否
+4、Email，string类型，邮箱
+是否必填：否
+过滤支持：是，支持eq、like、ilike
+排序支持：否
         :type Condition: :class:`tencentcloud.ioa.v20220601.models.Condition`
         :param _AccountGroupId: 获取账号的分组ID，不传默认获取全网根账号组
         :type AccountGroupId: int
         :param _ShowFlag: 是否仅展示当前目录下用户 1： 递归显示 2：仅显示当前目录下用户
         :type ShowFlag: int
         """
+        self._DomainInstanceId = None
         self._Condition = None
         self._AccountGroupId = None
         self._ShowFlag = None
+
+    @property
+    def DomainInstanceId(self):
+        r"""管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
+        :rtype: str
+        """
+        return self._DomainInstanceId
+
+    @DomainInstanceId.setter
+    def DomainInstanceId(self, DomainInstanceId):
+        self._DomainInstanceId = DomainInstanceId
 
     @property
     def Condition(self):
@@ -6359,6 +6377,10 @@ class DescribeLocalAccountsRequest(AbstractModel):
 过滤支持：是，支持eq、like、ilike
 排序支持：否
 3、Phone，string类型，手机号
+是否必填：否
+过滤支持：是，支持eq、like、ilike
+排序支持：否
+4、Email，string类型，邮箱
 是否必填：否
 过滤支持：是，支持eq、like、ilike
 排序支持：否
@@ -6394,6 +6416,7 @@ class DescribeLocalAccountsRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._DomainInstanceId = params.get("DomainInstanceId")
         if params.get("Condition") is not None:
             self._Condition = Condition()
             self._Condition._deserialize(params.get("Condition"))
@@ -7316,107 +7339,107 @@ class DeviceDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 设备ID
+        :param _Id: <p>设备ID</p>
         :type Id: int
-        :param _Mid: 设备唯一标识码，在ioa中每个设备有唯一标识码
+        :param _Mid: <p>设备唯一标识码，在ioa中每个设备有唯一标识码</p>
         :type Mid: str
-        :param _Name: 终端名（设备名）
+        :param _Name: <p>终端名（设备名）</p>
         :type Name: str
-        :param _GroupId: 设备所在分组ID
+        :param _GroupId: <p>设备所在分组ID</p>
         :type GroupId: int
-        :param _OsType: OS平台，0：Windows 、1： Linux、 2：macOS 、4： Android、 5: iOS。默认是0
+        :param _OsType: <p>OS平台，0：Windows 、1： Linux、 2：macOS 、4： Android、 5: iOS。默认是0</p>
         :type OsType: int
-        :param _Ip: 设备IP地址（出口IP）
+        :param _Ip: <p>设备IP地址（出口IP）</p>
         :type Ip: str
-        :param _OnlineStatus: 在线状态，2：在线、0或者1:离线
+        :param _OnlineStatus: <p>在线状态，2：在线、0或者1:离线</p>
         :type OnlineStatus: int
-        :param _Version: 客户端版本号-大整数
+        :param _Version: <p>客户端版本号-大整数</p>
         :type Version: str
-        :param _StrVersion: 客户端版本号-点分字符串
+        :param _StrVersion: <p>客户端版本号-点分字符串</p>
         :type StrVersion: str
-        :param _Itime: 首次在线时间
+        :param _Itime: <p>首次在线时间</p>
         :type Itime: str
-        :param _ConnActiveTime: 最后一次在线时间
+        :param _ConnActiveTime: <p>最后一次在线时间</p>
         :type ConnActiveTime: str
-        :param _Locked: 设备是否加锁 ，1：锁定 0或者2：未锁定。
+        :param _Locked: <p>设备是否加锁 ，1：锁定 0或者2：未锁定。</p>
         :type Locked: int
-        :param _LocalIpList: 设备本地IP列表, 包括IP
+        :param _LocalIpList: <p>设备本地IP列表, 包括IP</p>
         :type LocalIpList: str
-        :param _HostId: 宿主机id（需要宿主机也安装iOA才能显示）
+        :param _HostId: <p>宿主机id（需要宿主机也安装iOA才能显示）</p>
         :type HostId: int
-        :param _GroupName: 设备所属分组名
+        :param _GroupName: <p>设备所属分组名</p>
         :type GroupName: str
-        :param _GroupNamePath: 设备所属分组路径
+        :param _GroupNamePath: <p>设备所属分组路径</p>
         :type GroupNamePath: str
-        :param _CriticalVulListCount: 未修复高危漏洞数(只支持32位)
+        :param _CriticalVulListCount: <p>未修复高危漏洞数(只支持32位)</p>
         :type CriticalVulListCount: int
-        :param _Os: 操作系统名称
+        :param _Os: <p>操作系统名称</p>
         :type Os: str
-        :param _OsBits: 操作系统位数
+        :param _OsBits: <p>操作系统位数</p>
         :type OsBits: int
-        :param _OsVersion: 操作系统版本
+        :param _OsVersion: <p>操作系统版本</p>
         :type OsVersion: str
-        :param _OsLanguage: 操作系统语言
+        :param _OsLanguage: <p>操作系统语言</p>
         :type OsLanguage: str
-        :param _OsInstallDate: 操作系统安装时间
+        :param _OsInstallDate: <p>操作系统安装时间</p>
         :type OsInstallDate: str
-        :param _ComputerName: 设备名，和Name相同
+        :param _ComputerName: <p>设备名，和Name相同</p>
         :type ComputerName: str
-        :param _DomainName: 登录域名
+        :param _DomainName: <p>登录域名</p>
         :type DomainName: str
-        :param _MacAddr: MAC地址
+        :param _MacAddr: <p>MAC地址</p>
         :type MacAddr: str
-        :param _VulCount: 漏洞数
+        :param _VulCount: <p>漏洞数</p>
         :type VulCount: int
-        :param _RiskCount: 病毒风险数
+        :param _RiskCount: <p>病毒风险数</p>
         :type RiskCount: int
-        :param _VirusVer: 病毒库版本
+        :param _VirusVer: <p>病毒库版本</p>
         :type VirusVer: str
-        :param _VulVersion: 漏洞库版本
+        :param _VulVersion: <p>漏洞库版本</p>
         :type VulVersion: str
-        :param _SysRepVersion: 系统修复引擎版本
+        :param _SysRepVersion: <p>系统修复引擎版本</p>
         :type SysRepVersion: str
-        :param _VulCriticalList: 高危补丁列表
+        :param _VulCriticalList: <p>高危补丁列表</p>
         :type VulCriticalList: list of str
-        :param _Tags: 标签
+        :param _Tags: <p>标签</p>
         :type Tags: str
-        :param _UserName: 终端用户名
+        :param _UserName: <p>终端用户名</p>
         :type UserName: str
-        :param _FirewallStatus: 防火墙状态，不等于0表示开启
+        :param _FirewallStatus: <p>防火墙状态，不等于0表示开启</p>
         :type FirewallStatus: int
-        :param _SerialNum: SN序列号
+        :param _SerialNum: <p>SN序列号</p>
         :type SerialNum: str
-        :param _DeviceStrategyVer: 设备管控策略版本
+        :param _DeviceStrategyVer: <p>设备管控策略版本</p>
         :type DeviceStrategyVer: str
-        :param _NGNStrategyVer: NGN策略版本
+        :param _NGNStrategyVer: <p>NGN策略版本</p>
         :type NGNStrategyVer: str
-        :param _IOAUserName: 最近登录账户的账号(账号系统用户账号)
+        :param _IOAUserName: <p>最近登录账户的账号(账号系统用户账号)</p>
         :type IOAUserName: str
-        :param _DeviceNewStrategyVer: 设备管控新策略
+        :param _DeviceNewStrategyVer: <p>设备管控新策略</p>
         :type DeviceNewStrategyVer: str
-        :param _NGNNewStrategyVer: NGN策略新版本
+        :param _NGNNewStrategyVer: <p>NGN策略新版本</p>
         :type NGNNewStrategyVer: str
-        :param _HostName: 宿主机名称（需要宿主机也安装iOA才能显示）
+        :param _HostName: <p>宿主机名称（需要宿主机也安装iOA才能显示）</p>
         :type HostName: str
-        :param _BaseBoardSn: 主板序列号
+        :param _BaseBoardSn: <p>主板序列号</p>
         :type BaseBoardSn: str
-        :param _AccountUsers: 绑定账户名称
+        :param _AccountUsers: <p>绑定账户名称</p>
         :type AccountUsers: str
-        :param _IdentityStrategyVer: 身份策略版本
+        :param _IdentityStrategyVer: <p>身份策略版本</p>
         :type IdentityStrategyVer: str
-        :param _IdentityNewStrategyVer: 身份策略新版本
+        :param _IdentityNewStrategyVer: <p>身份策略新版本</p>
         :type IdentityNewStrategyVer: str
-        :param _AccountGroupName: 最近登录账号部门
+        :param _AccountGroupName: <p>最近登录账号部门</p>
         :type AccountGroupName: str
-        :param _AccountName: 最近登录账户的姓名(账号系统用户姓名)
+        :param _AccountName: <p>最近登录账户的姓名(账号系统用户姓名)</p>
         :type AccountName: str
-        :param _AccountGroupId: 账号组id
+        :param _AccountGroupId: <p>账号组id</p>
         :type AccountGroupId: int
-        :param _ScreenRecordingPermission: 是否开启录屏权限，仅macOS， 0： 未开启 、1： 开启
+        :param _ScreenRecordingPermission: <p>是否开启录屏权限，仅macOS， 0： 未开启 、1： 开启</p>
         :type ScreenRecordingPermission: int
-        :param _DiskAccessPermission: 是否开启磁盘访问权限，仅macOS， 0： 未开启、 1： 开启
+        :param _DiskAccessPermission: <p>是否开启磁盘访问权限，仅macOS， 0： 未开启、 1： 开启</p>
         :type DiskAccessPermission: int
-        :param _RemarkName: 终端备注名
+        :param _RemarkName: <p>终端备注名</p>
         :type RemarkName: str
         """
         self._Id = None
@@ -7473,7 +7496,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def Id(self):
-        r"""设备ID
+        r"""<p>设备ID</p>
         :rtype: int
         """
         return self._Id
@@ -7484,7 +7507,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def Mid(self):
-        r"""设备唯一标识码，在ioa中每个设备有唯一标识码
+        r"""<p>设备唯一标识码，在ioa中每个设备有唯一标识码</p>
         :rtype: str
         """
         return self._Mid
@@ -7495,7 +7518,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def Name(self):
-        r"""终端名（设备名）
+        r"""<p>终端名（设备名）</p>
         :rtype: str
         """
         return self._Name
@@ -7506,7 +7529,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def GroupId(self):
-        r"""设备所在分组ID
+        r"""<p>设备所在分组ID</p>
         :rtype: int
         """
         return self._GroupId
@@ -7517,7 +7540,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def OsType(self):
-        r"""OS平台，0：Windows 、1： Linux、 2：macOS 、4： Android、 5: iOS。默认是0
+        r"""<p>OS平台，0：Windows 、1： Linux、 2：macOS 、4： Android、 5: iOS。默认是0</p>
         :rtype: int
         """
         return self._OsType
@@ -7528,7 +7551,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def Ip(self):
-        r"""设备IP地址（出口IP）
+        r"""<p>设备IP地址（出口IP）</p>
         :rtype: str
         """
         return self._Ip
@@ -7539,7 +7562,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def OnlineStatus(self):
-        r"""在线状态，2：在线、0或者1:离线
+        r"""<p>在线状态，2：在线、0或者1:离线</p>
         :rtype: int
         """
         return self._OnlineStatus
@@ -7550,7 +7573,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def Version(self):
-        r"""客户端版本号-大整数
+        r"""<p>客户端版本号-大整数</p>
         :rtype: str
         """
         return self._Version
@@ -7561,7 +7584,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def StrVersion(self):
-        r"""客户端版本号-点分字符串
+        r"""<p>客户端版本号-点分字符串</p>
         :rtype: str
         """
         return self._StrVersion
@@ -7572,7 +7595,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def Itime(self):
-        r"""首次在线时间
+        r"""<p>首次在线时间</p>
         :rtype: str
         """
         return self._Itime
@@ -7583,7 +7606,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def ConnActiveTime(self):
-        r"""最后一次在线时间
+        r"""<p>最后一次在线时间</p>
         :rtype: str
         """
         return self._ConnActiveTime
@@ -7594,7 +7617,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def Locked(self):
-        r"""设备是否加锁 ，1：锁定 0或者2：未锁定。
+        r"""<p>设备是否加锁 ，1：锁定 0或者2：未锁定。</p>
         :rtype: int
         """
         return self._Locked
@@ -7605,7 +7628,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def LocalIpList(self):
-        r"""设备本地IP列表, 包括IP
+        r"""<p>设备本地IP列表, 包括IP</p>
         :rtype: str
         """
         return self._LocalIpList
@@ -7616,7 +7639,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def HostId(self):
-        r"""宿主机id（需要宿主机也安装iOA才能显示）
+        r"""<p>宿主机id（需要宿主机也安装iOA才能显示）</p>
         :rtype: int
         """
         return self._HostId
@@ -7627,7 +7650,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def GroupName(self):
-        r"""设备所属分组名
+        r"""<p>设备所属分组名</p>
         :rtype: str
         """
         return self._GroupName
@@ -7638,7 +7661,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def GroupNamePath(self):
-        r"""设备所属分组路径
+        r"""<p>设备所属分组路径</p>
         :rtype: str
         """
         return self._GroupNamePath
@@ -7649,7 +7672,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def CriticalVulListCount(self):
-        r"""未修复高危漏洞数(只支持32位)
+        r"""<p>未修复高危漏洞数(只支持32位)</p>
         :rtype: int
         """
         return self._CriticalVulListCount
@@ -7660,7 +7683,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def Os(self):
-        r"""操作系统名称
+        r"""<p>操作系统名称</p>
         :rtype: str
         """
         return self._Os
@@ -7671,7 +7694,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def OsBits(self):
-        r"""操作系统位数
+        r"""<p>操作系统位数</p>
         :rtype: int
         """
         return self._OsBits
@@ -7682,7 +7705,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def OsVersion(self):
-        r"""操作系统版本
+        r"""<p>操作系统版本</p>
         :rtype: str
         """
         return self._OsVersion
@@ -7693,7 +7716,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def OsLanguage(self):
-        r"""操作系统语言
+        r"""<p>操作系统语言</p>
         :rtype: str
         """
         return self._OsLanguage
@@ -7704,7 +7727,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def OsInstallDate(self):
-        r"""操作系统安装时间
+        r"""<p>操作系统安装时间</p>
         :rtype: str
         """
         return self._OsInstallDate
@@ -7715,7 +7738,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def ComputerName(self):
-        r"""设备名，和Name相同
+        r"""<p>设备名，和Name相同</p>
         :rtype: str
         """
         return self._ComputerName
@@ -7726,7 +7749,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def DomainName(self):
-        r"""登录域名
+        r"""<p>登录域名</p>
         :rtype: str
         """
         return self._DomainName
@@ -7737,7 +7760,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def MacAddr(self):
-        r"""MAC地址
+        r"""<p>MAC地址</p>
         :rtype: str
         """
         return self._MacAddr
@@ -7748,7 +7771,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def VulCount(self):
-        r"""漏洞数
+        r"""<p>漏洞数</p>
         :rtype: int
         """
         return self._VulCount
@@ -7759,7 +7782,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def RiskCount(self):
-        r"""病毒风险数
+        r"""<p>病毒风险数</p>
         :rtype: int
         """
         return self._RiskCount
@@ -7770,7 +7793,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def VirusVer(self):
-        r"""病毒库版本
+        r"""<p>病毒库版本</p>
         :rtype: str
         """
         return self._VirusVer
@@ -7781,7 +7804,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def VulVersion(self):
-        r"""漏洞库版本
+        r"""<p>漏洞库版本</p>
         :rtype: str
         """
         return self._VulVersion
@@ -7792,7 +7815,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def SysRepVersion(self):
-        r"""系统修复引擎版本
+        r"""<p>系统修复引擎版本</p>
         :rtype: str
         """
         return self._SysRepVersion
@@ -7803,7 +7826,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def VulCriticalList(self):
-        r"""高危补丁列表
+        r"""<p>高危补丁列表</p>
         :rtype: list of str
         """
         return self._VulCriticalList
@@ -7814,7 +7837,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def Tags(self):
-        r"""标签
+        r"""<p>标签</p>
         :rtype: str
         """
         return self._Tags
@@ -7825,7 +7848,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def UserName(self):
-        r"""终端用户名
+        r"""<p>终端用户名</p>
         :rtype: str
         """
         return self._UserName
@@ -7836,7 +7859,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def FirewallStatus(self):
-        r"""防火墙状态，不等于0表示开启
+        r"""<p>防火墙状态，不等于0表示开启</p>
         :rtype: int
         """
         return self._FirewallStatus
@@ -7847,7 +7870,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def SerialNum(self):
-        r"""SN序列号
+        r"""<p>SN序列号</p>
         :rtype: str
         """
         return self._SerialNum
@@ -7858,7 +7881,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def DeviceStrategyVer(self):
-        r"""设备管控策略版本
+        r"""<p>设备管控策略版本</p>
         :rtype: str
         """
         return self._DeviceStrategyVer
@@ -7869,7 +7892,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def NGNStrategyVer(self):
-        r"""NGN策略版本
+        r"""<p>NGN策略版本</p>
         :rtype: str
         """
         return self._NGNStrategyVer
@@ -7880,7 +7903,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def IOAUserName(self):
-        r"""最近登录账户的账号(账号系统用户账号)
+        r"""<p>最近登录账户的账号(账号系统用户账号)</p>
         :rtype: str
         """
         return self._IOAUserName
@@ -7891,7 +7914,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def DeviceNewStrategyVer(self):
-        r"""设备管控新策略
+        r"""<p>设备管控新策略</p>
         :rtype: str
         """
         return self._DeviceNewStrategyVer
@@ -7902,7 +7925,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def NGNNewStrategyVer(self):
-        r"""NGN策略新版本
+        r"""<p>NGN策略新版本</p>
         :rtype: str
         """
         return self._NGNNewStrategyVer
@@ -7913,7 +7936,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def HostName(self):
-        r"""宿主机名称（需要宿主机也安装iOA才能显示）
+        r"""<p>宿主机名称（需要宿主机也安装iOA才能显示）</p>
         :rtype: str
         """
         return self._HostName
@@ -7924,7 +7947,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def BaseBoardSn(self):
-        r"""主板序列号
+        r"""<p>主板序列号</p>
         :rtype: str
         """
         return self._BaseBoardSn
@@ -7935,7 +7958,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def AccountUsers(self):
-        r"""绑定账户名称
+        r"""<p>绑定账户名称</p>
         :rtype: str
         """
         return self._AccountUsers
@@ -7946,7 +7969,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def IdentityStrategyVer(self):
-        r"""身份策略版本
+        r"""<p>身份策略版本</p>
         :rtype: str
         """
         return self._IdentityStrategyVer
@@ -7957,7 +7980,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def IdentityNewStrategyVer(self):
-        r"""身份策略新版本
+        r"""<p>身份策略新版本</p>
         :rtype: str
         """
         return self._IdentityNewStrategyVer
@@ -7968,7 +7991,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def AccountGroupName(self):
-        r"""最近登录账号部门
+        r"""<p>最近登录账号部门</p>
         :rtype: str
         """
         return self._AccountGroupName
@@ -7979,7 +8002,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def AccountName(self):
-        r"""最近登录账户的姓名(账号系统用户姓名)
+        r"""<p>最近登录账户的姓名(账号系统用户姓名)</p>
         :rtype: str
         """
         return self._AccountName
@@ -7990,7 +8013,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def AccountGroupId(self):
-        r"""账号组id
+        r"""<p>账号组id</p>
         :rtype: int
         """
         return self._AccountGroupId
@@ -8001,7 +8024,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def ScreenRecordingPermission(self):
-        r"""是否开启录屏权限，仅macOS， 0： 未开启 、1： 开启
+        r"""<p>是否开启录屏权限，仅macOS， 0： 未开启 、1： 开启</p>
         :rtype: int
         """
         return self._ScreenRecordingPermission
@@ -8012,7 +8035,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def DiskAccessPermission(self):
-        r"""是否开启磁盘访问权限，仅macOS， 0： 未开启、 1： 开启
+        r"""<p>是否开启磁盘访问权限，仅macOS， 0： 未开启、 1： 开启</p>
         :rtype: int
         """
         return self._DiskAccessPermission
@@ -8023,7 +8046,7 @@ class DeviceDetail(AbstractModel):
 
     @property
     def RemarkName(self):
-        r"""终端备注名
+        r"""<p>终端备注名</p>
         :rtype: str
         """
         return self._RemarkName

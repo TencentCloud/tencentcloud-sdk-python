@@ -969,41 +969,42 @@ class AnalysisTaskResults(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 任务Id
+        :param _Id: <p>任务Id</p>
         :type Id: str
-        :param _InstanceStartTime: 任务创建时间，毫秒时间戳
+        :param _InstanceStartTime: <p>任务创建时间，毫秒时间戳</p>
         :type InstanceStartTime: int
-        :param _InstanceCompleteTime: 任务结束时间，毫秒时间戳
+        :param _InstanceCompleteTime: <p>任务结束时间，毫秒时间戳</p>
         :type InstanceCompleteTime: int
-        :param _State: 任务状态：0 初始化， 1 执行中， 2 执行成功，3 数据写入中，4 排队中。-1 执行失败，-3 已取消。
+        :param _State: <p>任务状态：0 初始化， 1 执行中， 2 执行成功，3 数据写入中，4 排队中。-1 执行失败，-3 已取消。</p>
         :type State: int
-        :param _SQL: 任务SQL语句
+        :param _SQL: <p>任务SQL语句</p>
         :type SQL: str
-        :param _DataEngineName: 计算资源名字
+        :param _DataEngineName: <p>计算资源名字</p>
         :type DataEngineName: str
-        :param _JobTimeSum: 单位毫秒，引擎内执行耗时, 反映真正用于计算所需的耗时，即从  Spark 任务第一个 Task  开始执行到任务结束之间的耗时。
-具体的：会统计任务的每个 Spark Stage 第一个 Task 到最后一个 Task 完成时长之和，不包含任务开始的排队耗时（即剔除从任务提交到 Spark Task 开始执行之间的调度等其他耗时），也不包含任务执行过程中多个 Spark Stage 之间因 executor 资源不足而等待执行 Task 所消耗的时间。
+        :param _JobTimeSum: <p>单位毫秒，引擎内执行耗时, 反映真正用于计算所需的耗时，即从  Spark 任务第一个 Task  开始执行到任务结束之间的耗时。<br>具体的：会统计任务的每个 Spark Stage 第一个 Task 到最后一个 Task 完成时长之和，不包含任务开始的排队耗时（即剔除从任务提交到 Spark Task 开始执行之间的调度等其他耗时），也不包含任务执行过程中多个 Spark Stage 之间因 executor 资源不足而等待执行 Task 所消耗的时间。</p>
         :type JobTimeSum: int
-        :param _TaskTimeSum: 单位秒，累计 CPU* 秒 ( 累计 CPU * 时 = 累计 CPU* 秒/ 3600)，统计参与计算所用 Spark Executor 每个 core 的 CPU 执行时长总和
+        :param _TaskTimeSum: <p>单位秒，累计 CPU* 秒 ( 累计 CPU * 时 = 累计 CPU* 秒/ 3600)，统计参与计算所用 Spark Executor 每个 core 的 CPU 执行时长总和</p>
         :type TaskTimeSum: int
-        :param _InputRecordsSum: 数据扫描总行数
+        :param _InputRecordsSum: <p>数据扫描总行数</p>
         :type InputRecordsSum: int
-        :param _InputBytesSum: 数据扫描总 bytes
+        :param _InputBytesSum: <p>数据扫描总 bytes</p>
         :type InputBytesSum: int
-        :param _OutputRecordsSum: 输出总行数
+        :param _OutputRecordsSum: <p>输出总行数</p>
         :type OutputRecordsSum: int
-        :param _OutputBytesSum: 输出总 bytes
+        :param _OutputBytesSum: <p>输出总 bytes</p>
         :type OutputBytesSum: int
-        :param _ShuffleReadBytesSum: shuffle read 总 bytes
+        :param _ShuffleReadBytesSum: <p>shuffle read 总 bytes</p>
         :type ShuffleReadBytesSum: int
-        :param _ShuffleReadRecordsSum: shuffle read 总行数
+        :param _ShuffleReadRecordsSum: <p>shuffle read 总行数</p>
         :type ShuffleReadRecordsSum: int
-        :param _AnalysisStatus: 洞察结果类型分类，一个 json 数组，有如下几种类型：SPARK-StageScheduleDelay（资源抢占）, SPARK-ShuffleFailure（Shuffle异常）, SPARK-SlowTask（慢task）, SPARK-DataSkew（数据倾斜）, SPARK-InsufficientResource（磁盘或内存不足）
+        :param _AnalysisStatus: <p>洞察结果类型分类，一个 json 数组，有如下几种类型：SPARK-StageScheduleDelay（资源抢占）, SPARK-ShuffleFailure（Shuffle异常）, SPARK-SlowTask（慢task）, SPARK-DataSkew（数据倾斜）, SPARK-InsufficientResource（磁盘或内存不足）</p>
         :type AnalysisStatus: str
-        :param _OutputFilesNum: 任务输出文件总数
+        :param _OutputFilesNum: <p>任务输出文件总数</p>
         :type OutputFilesNum: int
-        :param _OutputSmallFilesNum: 任务输出小文件总数
+        :param _OutputSmallFilesNum: <p>任务输出小文件总数</p>
         :type OutputSmallFilesNum: int
+        :param _ShuffleWriteBytesSum: <p>shuffle write 总 Bytes 大小</p><p>单位：Bytes</p><p>默认值：无</p>
+        :type ShuffleWriteBytesSum: int
         """
         self._Id = None
         self._InstanceStartTime = None
@@ -1022,10 +1023,11 @@ class AnalysisTaskResults(AbstractModel):
         self._AnalysisStatus = None
         self._OutputFilesNum = None
         self._OutputSmallFilesNum = None
+        self._ShuffleWriteBytesSum = None
 
     @property
     def Id(self):
-        r"""任务Id
+        r"""<p>任务Id</p>
         :rtype: str
         """
         return self._Id
@@ -1036,7 +1038,7 @@ class AnalysisTaskResults(AbstractModel):
 
     @property
     def InstanceStartTime(self):
-        r"""任务创建时间，毫秒时间戳
+        r"""<p>任务创建时间，毫秒时间戳</p>
         :rtype: int
         """
         return self._InstanceStartTime
@@ -1047,7 +1049,7 @@ class AnalysisTaskResults(AbstractModel):
 
     @property
     def InstanceCompleteTime(self):
-        r"""任务结束时间，毫秒时间戳
+        r"""<p>任务结束时间，毫秒时间戳</p>
         :rtype: int
         """
         return self._InstanceCompleteTime
@@ -1058,7 +1060,7 @@ class AnalysisTaskResults(AbstractModel):
 
     @property
     def State(self):
-        r"""任务状态：0 初始化， 1 执行中， 2 执行成功，3 数据写入中，4 排队中。-1 执行失败，-3 已取消。
+        r"""<p>任务状态：0 初始化， 1 执行中， 2 执行成功，3 数据写入中，4 排队中。-1 执行失败，-3 已取消。</p>
         :rtype: int
         """
         return self._State
@@ -1069,7 +1071,7 @@ class AnalysisTaskResults(AbstractModel):
 
     @property
     def SQL(self):
-        r"""任务SQL语句
+        r"""<p>任务SQL语句</p>
         :rtype: str
         """
         return self._SQL
@@ -1080,7 +1082,7 @@ class AnalysisTaskResults(AbstractModel):
 
     @property
     def DataEngineName(self):
-        r"""计算资源名字
+        r"""<p>计算资源名字</p>
         :rtype: str
         """
         return self._DataEngineName
@@ -1091,8 +1093,7 @@ class AnalysisTaskResults(AbstractModel):
 
     @property
     def JobTimeSum(self):
-        r"""单位毫秒，引擎内执行耗时, 反映真正用于计算所需的耗时，即从  Spark 任务第一个 Task  开始执行到任务结束之间的耗时。
-具体的：会统计任务的每个 Spark Stage 第一个 Task 到最后一个 Task 完成时长之和，不包含任务开始的排队耗时（即剔除从任务提交到 Spark Task 开始执行之间的调度等其他耗时），也不包含任务执行过程中多个 Spark Stage 之间因 executor 资源不足而等待执行 Task 所消耗的时间。
+        r"""<p>单位毫秒，引擎内执行耗时, 反映真正用于计算所需的耗时，即从  Spark 任务第一个 Task  开始执行到任务结束之间的耗时。<br>具体的：会统计任务的每个 Spark Stage 第一个 Task 到最后一个 Task 完成时长之和，不包含任务开始的排队耗时（即剔除从任务提交到 Spark Task 开始执行之间的调度等其他耗时），也不包含任务执行过程中多个 Spark Stage 之间因 executor 资源不足而等待执行 Task 所消耗的时间。</p>
         :rtype: int
         """
         return self._JobTimeSum
@@ -1103,7 +1104,7 @@ class AnalysisTaskResults(AbstractModel):
 
     @property
     def TaskTimeSum(self):
-        r"""单位秒，累计 CPU* 秒 ( 累计 CPU * 时 = 累计 CPU* 秒/ 3600)，统计参与计算所用 Spark Executor 每个 core 的 CPU 执行时长总和
+        r"""<p>单位秒，累计 CPU* 秒 ( 累计 CPU * 时 = 累计 CPU* 秒/ 3600)，统计参与计算所用 Spark Executor 每个 core 的 CPU 执行时长总和</p>
         :rtype: int
         """
         return self._TaskTimeSum
@@ -1114,7 +1115,7 @@ class AnalysisTaskResults(AbstractModel):
 
     @property
     def InputRecordsSum(self):
-        r"""数据扫描总行数
+        r"""<p>数据扫描总行数</p>
         :rtype: int
         """
         return self._InputRecordsSum
@@ -1125,7 +1126,7 @@ class AnalysisTaskResults(AbstractModel):
 
     @property
     def InputBytesSum(self):
-        r"""数据扫描总 bytes
+        r"""<p>数据扫描总 bytes</p>
         :rtype: int
         """
         return self._InputBytesSum
@@ -1136,7 +1137,7 @@ class AnalysisTaskResults(AbstractModel):
 
     @property
     def OutputRecordsSum(self):
-        r"""输出总行数
+        r"""<p>输出总行数</p>
         :rtype: int
         """
         return self._OutputRecordsSum
@@ -1147,7 +1148,7 @@ class AnalysisTaskResults(AbstractModel):
 
     @property
     def OutputBytesSum(self):
-        r"""输出总 bytes
+        r"""<p>输出总 bytes</p>
         :rtype: int
         """
         return self._OutputBytesSum
@@ -1158,7 +1159,7 @@ class AnalysisTaskResults(AbstractModel):
 
     @property
     def ShuffleReadBytesSum(self):
-        r"""shuffle read 总 bytes
+        r"""<p>shuffle read 总 bytes</p>
         :rtype: int
         """
         return self._ShuffleReadBytesSum
@@ -1169,7 +1170,7 @@ class AnalysisTaskResults(AbstractModel):
 
     @property
     def ShuffleReadRecordsSum(self):
-        r"""shuffle read 总行数
+        r"""<p>shuffle read 总行数</p>
         :rtype: int
         """
         return self._ShuffleReadRecordsSum
@@ -1180,7 +1181,7 @@ class AnalysisTaskResults(AbstractModel):
 
     @property
     def AnalysisStatus(self):
-        r"""洞察结果类型分类，一个 json 数组，有如下几种类型：SPARK-StageScheduleDelay（资源抢占）, SPARK-ShuffleFailure（Shuffle异常）, SPARK-SlowTask（慢task）, SPARK-DataSkew（数据倾斜）, SPARK-InsufficientResource（磁盘或内存不足）
+        r"""<p>洞察结果类型分类，一个 json 数组，有如下几种类型：SPARK-StageScheduleDelay（资源抢占）, SPARK-ShuffleFailure（Shuffle异常）, SPARK-SlowTask（慢task）, SPARK-DataSkew（数据倾斜）, SPARK-InsufficientResource（磁盘或内存不足）</p>
         :rtype: str
         """
         return self._AnalysisStatus
@@ -1191,7 +1192,7 @@ class AnalysisTaskResults(AbstractModel):
 
     @property
     def OutputFilesNum(self):
-        r"""任务输出文件总数
+        r"""<p>任务输出文件总数</p>
         :rtype: int
         """
         return self._OutputFilesNum
@@ -1202,7 +1203,7 @@ class AnalysisTaskResults(AbstractModel):
 
     @property
     def OutputSmallFilesNum(self):
-        r"""任务输出小文件总数
+        r"""<p>任务输出小文件总数</p>
         :rtype: int
         """
         return self._OutputSmallFilesNum
@@ -1210,6 +1211,17 @@ class AnalysisTaskResults(AbstractModel):
     @OutputSmallFilesNum.setter
     def OutputSmallFilesNum(self, OutputSmallFilesNum):
         self._OutputSmallFilesNum = OutputSmallFilesNum
+
+    @property
+    def ShuffleWriteBytesSum(self):
+        r"""<p>shuffle write 总 Bytes 大小</p><p>单位：Bytes</p><p>默认值：无</p>
+        :rtype: int
+        """
+        return self._ShuffleWriteBytesSum
+
+    @ShuffleWriteBytesSum.setter
+    def ShuffleWriteBytesSum(self, ShuffleWriteBytesSum):
+        self._ShuffleWriteBytesSum = ShuffleWriteBytesSum
 
 
     def _deserialize(self, params):
@@ -1230,6 +1242,7 @@ class AnalysisTaskResults(AbstractModel):
         self._AnalysisStatus = params.get("AnalysisStatus")
         self._OutputFilesNum = params.get("OutputFilesNum")
         self._OutputSmallFilesNum = params.get("OutputSmallFilesNum")
+        self._ShuffleWriteBytesSum = params.get("ShuffleWriteBytesSum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -41428,171 +41441,174 @@ class TaskFullRespInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DatabaseName: 任务所属Database的名称。
+        :param _DatabaseName: <p>任务所属Database的名称。</p>
         :type DatabaseName: str
-        :param _DataAmount: 任务数据量。
+        :param _DataAmount: <p>任务数据量。</p>
         :type DataAmount: int
-        :param _Id: 任务Id。
+        :param _Id: <p>任务Id。</p>
         :type Id: str
-        :param _UsedTime: 计算耗时，单位： ms
+        :param _UsedTime: <p>计算耗时，单位： ms</p>
         :type UsedTime: int
-        :param _OutputPath: 任务输出路径。
+        :param _OutputPath: <p>任务输出路径。</p>
         :type OutputPath: str
-        :param _CreateTime: 任务创建时间。
+        :param _CreateTime: <p>任务创建时间。</p>
         :type CreateTime: str
-        :param _State: 任务状态：0 初始化， 1 执行中， 2 执行成功，3 数据写入中，4 排队中。-1 执行失败，-3 已取消。
+        :param _State: <p>任务状态：0 初始化， 1 执行中， 2 执行成功，3 数据写入中，4 排队中。-1 执行失败，-3 已取消。</p>
         :type State: int
-        :param _SQLType: 任务SQL类型，DDL|DML等
+        :param _SQLType: <p>任务SQL类型，DDL|DML等</p>
         :type SQLType: str
-        :param _SQL: 任务SQL语句
+        :param _SQL: <p>任务SQL语句</p>
         :type SQL: str
-        :param _ResultExpired: 结果是否过期。
+        :param _ResultExpired: <p>结果是否过期。</p>
         :type ResultExpired: bool
-        :param _RowAffectInfo: 数据影响统计信息。
+        :param _RowAffectInfo: <p>数据影响统计信息。</p>
         :type RowAffectInfo: str
-        :param _DataSet: 任务结果数据表。
+        :param _DataSet: <p>任务结果数据表。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DataSet: str
-        :param _Error: 失败信息, 例如：errorMessage。该字段已废弃。
+        :param _Error: <p>失败信息, 例如：errorMessage。该字段已废弃。</p>
         :type Error: str
-        :param _Percentage: 任务执行进度num/100(%)
+        :param _Percentage: <p>任务执行进度num/100(%)</p>
         :type Percentage: int
-        :param _OutputMessage: 任务执行输出信息。
+        :param _OutputMessage: <p>任务执行输出信息。</p>
         :type OutputMessage: str
-        :param _TaskType: 执行SQL的引擎类型
+        :param _TaskType: <p>执行SQL的引擎类型</p>
         :type TaskType: str
-        :param _ProgressDetail: 任务进度明细
+        :param _ProgressDetail: <p>任务进度明细</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProgressDetail: str
-        :param _UpdateTime: 任务结束时间
+        :param _UpdateTime: <p>任务结束时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
-        :param _DataEngineId: 计算资源id
+        :param _DataEngineId: <p>计算资源id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DataEngineId: str
-        :param _OperateUin: 执行sql的子uin
+        :param _OperateUin: <p>执行sql的子uin</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type OperateUin: str
-        :param _DataEngineName: 计算资源名字
+        :param _DataEngineName: <p>计算资源名字</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DataEngineName: str
-        :param _InputType: 导入类型是本地导入还是cos
+        :param _InputType: <p>导入类型是本地导入还是cos</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type InputType: str
-        :param _InputConf: 导入配置
+        :param _InputConf: <p>导入配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type InputConf: str
-        :param _DataNumber: 数据条数
+        :param _DataNumber: <p>数据条数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DataNumber: int
-        :param _CanDownload: 查询数据能不能下载
+        :param _CanDownload: <p>查询数据能不能下载</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CanDownload: bool
-        :param _UserAlias: 用户别名
+        :param _UserAlias: <p>用户别名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UserAlias: str
-        :param _SparkJobName: spark应用作业名
+        :param _SparkJobName: <p>spark应用作业名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SparkJobName: str
-        :param _SparkJobId: spark应用作业Id
+        :param _SparkJobId: <p>spark应用作业Id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SparkJobId: str
-        :param _SparkJobFile: spark应用入口jar文件
+        :param _SparkJobFile: <p>spark应用入口jar文件</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SparkJobFile: str
-        :param _UiUrl: spark ui url
+        :param _UiUrl: <p>spark ui url</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UiUrl: str
-        :param _TotalTime: 任务耗时，单位： ms
+        :param _TotalTime: <p>任务耗时，单位： ms</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalTime: int
-        :param _CmdArgs: spark app job执行task的程序入口参数
+        :param _CmdArgs: <p>spark app job执行task的程序入口参数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CmdArgs: str
-        :param _ImageVersion: 集群镜像大版本名称
+        :param _ImageVersion: <p>集群镜像大版本名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ImageVersion: str
-        :param _DriverSize: driver规格：small,medium,large,xlarge；内存型(引擎类型)：m.small,m.medium,m.large,m.xlarge
+        :param _DriverSize: <p>driver规格：small,medium,large,xlarge；内存型(引擎类型)：m.small,m.medium,m.large,m.xlarge</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DriverSize: str
-        :param _ExecutorSize: executor规格：small,medium,large,xlarge；内存型(引擎类型)：m.small,m.medium,m.large,m.xlarge
+        :param _ExecutorSize: <p>executor规格：small,medium,large,xlarge；内存型(引擎类型)：m.small,m.medium,m.large,m.xlarge</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExecutorSize: str
-        :param _ExecutorNums: 指定executor数量，最小值为1，最大值小于集群规格
+        :param _ExecutorNums: <p>指定executor数量，最小值为1，最大值小于集群规格</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExecutorNums: int
-        :param _ExecutorMaxNumbers: 指定executor max数量（动态配置场景下），最小值为1，最大值小于集群规格（当ExecutorMaxNumbers小于ExecutorNums时，改值设定为ExecutorNums）
+        :param _ExecutorMaxNumbers: <p>指定executor max数量（动态配置场景下），最小值为1，最大值小于集群规格（当ExecutorMaxNumbers小于ExecutorNums时，改值设定为ExecutorNums）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExecutorMaxNumbers: int
-        :param _CommonMetrics: 任务公共指标数据
+        :param _CommonMetrics: <p>任务公共指标数据</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CommonMetrics: :class:`tencentcloud.dlc.v20210125.models.CommonMetrics`
-        :param _SparkMonitorMetrics: spark任务指标数据
+        :param _SparkMonitorMetrics: <p>spark任务指标数据</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SparkMonitorMetrics: :class:`tencentcloud.dlc.v20210125.models.SparkMonitorMetrics`
-        :param _PrestoMonitorMetrics: presto任务指标数据
+        :param _PrestoMonitorMetrics: <p>presto任务指标数据</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type PrestoMonitorMetrics: :class:`tencentcloud.dlc.v20210125.models.PrestoMonitorMetrics`
-        :param _ResultFormat: 结果文件格式：默认为csv
+        :param _ResultFormat: <p>结果文件格式：默认为csv</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResultFormat: str
-        :param _EngineTypeDetail: 引擎类型，SparkSQL：SparkSQL 引擎；SparkBatch：Spark作业引擎；PrestoSQL：Presto引擎
+        :param _EngineTypeDetail: <p>引擎类型，SparkSQL：SparkSQL 引擎；SparkBatch：Spark作业引擎；PrestoSQL：Presto引擎</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type EngineTypeDetail: str
-        :param _ResourceGroupName: spark引擎资源组名称
+        :param _ResourceGroupName: <p>spark引擎资源组名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceGroupName: str
-        :param _Source: 任务来源信息,如thirdPartyApi,dataExploration, sparkAppTask等
+        :param _Source: <p>任务来源信息,如thirdPartyApi,dataExploration, sparkAppTask等</p>
         :type Source: str
-        :param _SourceExtra: 子渠道信息，一般由第三方调用定义
+        :param _SourceExtra: <p>子渠道信息，一般由第三方调用定义</p>
         :type SourceExtra: str
-        :param _CreatorUin: 创建人uin
+        :param _CreatorUin: <p>创建人uin</p>
         :type CreatorUin: str
-        :param _CreatorAlias: 创建人名字
+        :param _CreatorAlias: <p>创建人名字</p>
         :type CreatorAlias: str
-        :param _CustomizedConf: 引擎参数
+        :param _CustomizedConf: <p>引擎参数</p>
         :type CustomizedConf: str
-        :param _TaskTimeSum: 单位秒，累计 CPU* 秒 ( 累计 CPU * 时 = 累计 CPU* 秒/ 3600)，统计参与计算所用 Spark Executor 每个 core 的 CPU 执行时长总和
-示例值：4329
+        :param _TaskTimeSum: <p>单位秒，累计 CPU* 秒 ( 累计 CPU * 时 = 累计 CPU* 秒/ 3600)，统计参与计算所用 Spark Executor 每个 core 的 CPU 执行时长总和<br>示例值：4329</p>
         :type TaskTimeSum: int
-        :param _StageStartTime: 引擎执行时间
+        :param _StageStartTime: <p>引擎执行时间</p>
         :type StageStartTime: int
-        :param _InputRecordsSum: 数据扫描条数
+        :param _InputRecordsSum: <p>数据扫描条数</p>
         :type InputRecordsSum: int
-        :param _AnalysisStatusType: 健康状态
+        :param _AnalysisStatusType: <p>健康状态</p>
         :type AnalysisStatusType: int
-        :param _OutputRecordsSum: 输出总行数
+        :param _OutputRecordsSum: <p>输出总行数</p>
         :type OutputRecordsSum: int
-        :param _OutputBytesSum: 输出总大小
+        :param _OutputBytesSum: <p>输出总大小</p>
         :type OutputBytesSum: int
-        :param _OutputFilesNum: 输出文件个数
+        :param _OutputFilesNum: <p>输出文件个数</p>
         :type OutputFilesNum: int
-        :param _OutputSmallFilesNum: 输出小文件个数
+        :param _OutputSmallFilesNum: <p>输出小文件个数</p>
         :type OutputSmallFilesNum: int
-        :param _ShuffleReadRecordsSum: 数据shuffle行数
+        :param _ShuffleReadRecordsSum: <p>数据shuffle行数</p>
         :type ShuffleReadRecordsSum: int
-        :param _ShuffleReadBytesSum: 数据shuffle大小
+        :param _ShuffleReadBytesSum: <p>数据shuffle大小</p>
         :type ShuffleReadBytesSum: int
-        :param _SparkAppId: spark作业id
+        :param _SparkAppId: <p>spark作业id</p>
         :type SparkAppId: str
-        :param _TaskCategory: 任务大类，DLC2.0中任务区分为两大类，sql任务和作业任务
+        :param _TaskCategory: <p>任务大类，DLC2.0中任务区分为两大类，sql任务和作业任务</p>
         :type TaskCategory: str
-        :param _TaskName: 任务名称
+        :param _TaskName: <p>任务名称</p>
         :type TaskName: str
-        :param _EngineType: 引擎类型，用做任务详情页跳转引擎tab
+        :param _EngineType: <p>引擎类型，用做任务详情页跳转引擎tab</p>
         :type EngineType: str
-        :param _EngineHasListenerConfig: 引擎是否支持洞察数据采集
+        :param _EngineHasListenerConfig: <p>引擎是否支持洞察数据采集</p>
         :type EngineHasListenerConfig: bool
-        :param _ResourceGroupId: spark引擎资源组id
+        :param _ResourceGroupId: <p>spark引擎资源组id</p>
         :type ResourceGroupId: str
-        :param _JobTimeSum: 任务计算耗时
+        :param _JobTimeSum: <p>任务计算耗时</p>
         :type JobTimeSum: int
-        :param _LaunchTime: 任务启动耗时
+        :param _LaunchTime: <p>任务启动耗时</p>
         :type LaunchTime: str
-        :param _GpuDriverSize: Gpu Driver 规格
+        :param _GpuDriverSize: <p>Gpu Driver 规格</p>
         :type GpuDriverSize: int
-        :param _GpuExecutorSize: Gpu Executor 规格
+        :param _GpuExecutorSize: <p>Gpu Executor 规格</p>
         :type GpuExecutorSize: int
+        :param _ShuffleWriteBytesSum: <p>ShuffleWrite数据量</p>
+        :type ShuffleWriteBytesSum: int
+        :param _ActiveCore: <p>活跃core</p>
+        :type ActiveCore: int
         """
         self._DatabaseName = None
         self._DataAmount = None
@@ -41662,10 +41678,12 @@ class TaskFullRespInfo(AbstractModel):
         self._LaunchTime = None
         self._GpuDriverSize = None
         self._GpuExecutorSize = None
+        self._ShuffleWriteBytesSum = None
+        self._ActiveCore = None
 
     @property
     def DatabaseName(self):
-        r"""任务所属Database的名称。
+        r"""<p>任务所属Database的名称。</p>
         :rtype: str
         """
         return self._DatabaseName
@@ -41676,7 +41694,7 @@ class TaskFullRespInfo(AbstractModel):
 
     @property
     def DataAmount(self):
-        r"""任务数据量。
+        r"""<p>任务数据量。</p>
         :rtype: int
         """
         return self._DataAmount
@@ -41687,7 +41705,7 @@ class TaskFullRespInfo(AbstractModel):
 
     @property
     def Id(self):
-        r"""任务Id。
+        r"""<p>任务Id。</p>
         :rtype: str
         """
         return self._Id
@@ -41698,7 +41716,7 @@ class TaskFullRespInfo(AbstractModel):
 
     @property
     def UsedTime(self):
-        r"""计算耗时，单位： ms
+        r"""<p>计算耗时，单位： ms</p>
         :rtype: int
         """
         return self._UsedTime
@@ -41709,7 +41727,7 @@ class TaskFullRespInfo(AbstractModel):
 
     @property
     def OutputPath(self):
-        r"""任务输出路径。
+        r"""<p>任务输出路径。</p>
         :rtype: str
         """
         return self._OutputPath
@@ -41720,7 +41738,7 @@ class TaskFullRespInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""任务创建时间。
+        r"""<p>任务创建时间。</p>
         :rtype: str
         """
         return self._CreateTime
@@ -41731,7 +41749,7 @@ class TaskFullRespInfo(AbstractModel):
 
     @property
     def State(self):
-        r"""任务状态：0 初始化， 1 执行中， 2 执行成功，3 数据写入中，4 排队中。-1 执行失败，-3 已取消。
+        r"""<p>任务状态：0 初始化， 1 执行中， 2 执行成功，3 数据写入中，4 排队中。-1 执行失败，-3 已取消。</p>
         :rtype: int
         """
         return self._State
@@ -41742,7 +41760,7 @@ class TaskFullRespInfo(AbstractModel):
 
     @property
     def SQLType(self):
-        r"""任务SQL类型，DDL|DML等
+        r"""<p>任务SQL类型，DDL|DML等</p>
         :rtype: str
         """
         return self._SQLType
@@ -41753,7 +41771,7 @@ class TaskFullRespInfo(AbstractModel):
 
     @property
     def SQL(self):
-        r"""任务SQL语句
+        r"""<p>任务SQL语句</p>
         :rtype: str
         """
         return self._SQL
@@ -41764,7 +41782,7 @@ class TaskFullRespInfo(AbstractModel):
 
     @property
     def ResultExpired(self):
-        r"""结果是否过期。
+        r"""<p>结果是否过期。</p>
         :rtype: bool
         """
         return self._ResultExpired
@@ -41775,7 +41793,7 @@ class TaskFullRespInfo(AbstractModel):
 
     @property
     def RowAffectInfo(self):
-        r"""数据影响统计信息。
+        r"""<p>数据影响统计信息。</p>
         :rtype: str
         """
         return self._RowAffectInfo
@@ -41786,7 +41804,7 @@ class TaskFullRespInfo(AbstractModel):
 
     @property
     def DataSet(self):
-        r"""任务结果数据表。
+        r"""<p>任务结果数据表。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -41798,7 +41816,7 @@ class TaskFullRespInfo(AbstractModel):
 
     @property
     def Error(self):
-        r"""失败信息, 例如：errorMessage。该字段已废弃。
+        r"""<p>失败信息, 例如：errorMessage。该字段已废弃。</p>
         :rtype: str
         """
         return self._Error
@@ -41809,7 +41827,7 @@ class TaskFullRespInfo(AbstractModel):
 
     @property
     def Percentage(self):
-        r"""任务执行进度num/100(%)
+        r"""<p>任务执行进度num/100(%)</p>
         :rtype: int
         """
         return self._Percentage
@@ -41820,7 +41838,7 @@ class TaskFullRespInfo(AbstractModel):
 
     @property
     def OutputMessage(self):
-        r"""任务执行输出信息。
+        r"""<p>任务执行输出信息。</p>
         :rtype: str
         """
         return self._OutputMessage
@@ -41831,7 +41849,7 @@ class TaskFullRespInfo(AbstractModel):
 
     @property
     def TaskType(self):
-        r"""执行SQL的引擎类型
+        r"""<p>执行SQL的引擎类型</p>
         :rtype: str
         """
         return self._TaskType
@@ -41842,7 +41860,7 @@ class TaskFullRespInfo(AbstractModel):
 
     @property
     def ProgressDetail(self):
-        r"""任务进度明细
+        r"""<p>任务进度明细</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -41854,7 +41872,7 @@ class TaskFullRespInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""任务结束时间
+        r"""<p>任务结束时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -41866,7 +41884,7 @@ class TaskFullRespInfo(AbstractModel):
 
     @property
     def DataEngineId(self):
-        r"""计算资源id
+        r"""<p>计算资源id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -41878,7 +41896,7 @@ class TaskFullRespInfo(AbstractModel):
 
     @property
     def OperateUin(self):
-        r"""执行sql的子uin
+        r"""<p>执行sql的子uin</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -41890,7 +41908,7 @@ class TaskFullRespInfo(AbstractModel):
 
     @property
     def DataEngineName(self):
-        r"""计算资源名字
+        r"""<p>计算资源名字</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -41902,7 +41920,7 @@ class TaskFullRespInfo(AbstractModel):
 
     @property
     def InputType(self):
-        r"""导入类型是本地导入还是cos
+        r"""<p>导入类型是本地导入还是cos</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -41914,7 +41932,7 @@ class TaskFullRespInfo(AbstractModel):
 
     @property
     def InputConf(self):
-        r"""导入配置
+        r"""<p>导入配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -41926,7 +41944,7 @@ class TaskFullRespInfo(AbstractModel):
 
     @property
     def DataNumber(self):
-        r"""数据条数
+        r"""<p>数据条数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -41938,7 +41956,7 @@ class TaskFullRespInfo(AbstractModel):
 
     @property
     def CanDownload(self):
-        r"""查询数据能不能下载
+        r"""<p>查询数据能不能下载</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -41950,7 +41968,7 @@ class TaskFullRespInfo(AbstractModel):
 
     @property
     def UserAlias(self):
-        r"""用户别名
+        r"""<p>用户别名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -41962,7 +41980,7 @@ class TaskFullRespInfo(AbstractModel):
 
     @property
     def SparkJobName(self):
-        r"""spark应用作业名
+        r"""<p>spark应用作业名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -41974,7 +41992,7 @@ class TaskFullRespInfo(AbstractModel):
 
     @property
     def SparkJobId(self):
-        r"""spark应用作业Id
+        r"""<p>spark应用作业Id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -41986,7 +42004,7 @@ class TaskFullRespInfo(AbstractModel):
 
     @property
     def SparkJobFile(self):
-        r"""spark应用入口jar文件
+        r"""<p>spark应用入口jar文件</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -41998,7 +42016,7 @@ class TaskFullRespInfo(AbstractModel):
 
     @property
     def UiUrl(self):
-        r"""spark ui url
+        r"""<p>spark ui url</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -42010,7 +42028,7 @@ class TaskFullRespInfo(AbstractModel):
 
     @property
     def TotalTime(self):
-        r"""任务耗时，单位： ms
+        r"""<p>任务耗时，单位： ms</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -42022,7 +42040,7 @@ class TaskFullRespInfo(AbstractModel):
 
     @property
     def CmdArgs(self):
-        r"""spark app job执行task的程序入口参数
+        r"""<p>spark app job执行task的程序入口参数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -42034,7 +42052,7 @@ class TaskFullRespInfo(AbstractModel):
 
     @property
     def ImageVersion(self):
-        r"""集群镜像大版本名称
+        r"""<p>集群镜像大版本名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -42046,7 +42064,7 @@ class TaskFullRespInfo(AbstractModel):
 
     @property
     def DriverSize(self):
-        r"""driver规格：small,medium,large,xlarge；内存型(引擎类型)：m.small,m.medium,m.large,m.xlarge
+        r"""<p>driver规格：small,medium,large,xlarge；内存型(引擎类型)：m.small,m.medium,m.large,m.xlarge</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -42058,7 +42076,7 @@ class TaskFullRespInfo(AbstractModel):
 
     @property
     def ExecutorSize(self):
-        r"""executor规格：small,medium,large,xlarge；内存型(引擎类型)：m.small,m.medium,m.large,m.xlarge
+        r"""<p>executor规格：small,medium,large,xlarge；内存型(引擎类型)：m.small,m.medium,m.large,m.xlarge</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -42070,7 +42088,7 @@ class TaskFullRespInfo(AbstractModel):
 
     @property
     def ExecutorNums(self):
-        r"""指定executor数量，最小值为1，最大值小于集群规格
+        r"""<p>指定executor数量，最小值为1，最大值小于集群规格</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -42082,7 +42100,7 @@ class TaskFullRespInfo(AbstractModel):
 
     @property
     def ExecutorMaxNumbers(self):
-        r"""指定executor max数量（动态配置场景下），最小值为1，最大值小于集群规格（当ExecutorMaxNumbers小于ExecutorNums时，改值设定为ExecutorNums）
+        r"""<p>指定executor max数量（动态配置场景下），最小值为1，最大值小于集群规格（当ExecutorMaxNumbers小于ExecutorNums时，改值设定为ExecutorNums）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -42094,7 +42112,7 @@ class TaskFullRespInfo(AbstractModel):
 
     @property
     def CommonMetrics(self):
-        r"""任务公共指标数据
+        r"""<p>任务公共指标数据</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dlc.v20210125.models.CommonMetrics`
         """
@@ -42106,7 +42124,7 @@ class TaskFullRespInfo(AbstractModel):
 
     @property
     def SparkMonitorMetrics(self):
-        r"""spark任务指标数据
+        r"""<p>spark任务指标数据</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dlc.v20210125.models.SparkMonitorMetrics`
         """
@@ -42118,7 +42136,7 @@ class TaskFullRespInfo(AbstractModel):
 
     @property
     def PrestoMonitorMetrics(self):
-        r"""presto任务指标数据
+        r"""<p>presto任务指标数据</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dlc.v20210125.models.PrestoMonitorMetrics`
         """
@@ -42130,7 +42148,7 @@ class TaskFullRespInfo(AbstractModel):
 
     @property
     def ResultFormat(self):
-        r"""结果文件格式：默认为csv
+        r"""<p>结果文件格式：默认为csv</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -42142,7 +42160,7 @@ class TaskFullRespInfo(AbstractModel):
 
     @property
     def EngineTypeDetail(self):
-        r"""引擎类型，SparkSQL：SparkSQL 引擎；SparkBatch：Spark作业引擎；PrestoSQL：Presto引擎
+        r"""<p>引擎类型，SparkSQL：SparkSQL 引擎；SparkBatch：Spark作业引擎；PrestoSQL：Presto引擎</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -42154,7 +42172,7 @@ class TaskFullRespInfo(AbstractModel):
 
     @property
     def ResourceGroupName(self):
-        r"""spark引擎资源组名称
+        r"""<p>spark引擎资源组名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -42166,7 +42184,7 @@ class TaskFullRespInfo(AbstractModel):
 
     @property
     def Source(self):
-        r"""任务来源信息,如thirdPartyApi,dataExploration, sparkAppTask等
+        r"""<p>任务来源信息,如thirdPartyApi,dataExploration, sparkAppTask等</p>
         :rtype: str
         """
         return self._Source
@@ -42177,7 +42195,7 @@ class TaskFullRespInfo(AbstractModel):
 
     @property
     def SourceExtra(self):
-        r"""子渠道信息，一般由第三方调用定义
+        r"""<p>子渠道信息，一般由第三方调用定义</p>
         :rtype: str
         """
         return self._SourceExtra
@@ -42188,7 +42206,7 @@ class TaskFullRespInfo(AbstractModel):
 
     @property
     def CreatorUin(self):
-        r"""创建人uin
+        r"""<p>创建人uin</p>
         :rtype: str
         """
         return self._CreatorUin
@@ -42199,7 +42217,7 @@ class TaskFullRespInfo(AbstractModel):
 
     @property
     def CreatorAlias(self):
-        r"""创建人名字
+        r"""<p>创建人名字</p>
         :rtype: str
         """
         return self._CreatorAlias
@@ -42210,7 +42228,7 @@ class TaskFullRespInfo(AbstractModel):
 
     @property
     def CustomizedConf(self):
-        r"""引擎参数
+        r"""<p>引擎参数</p>
         :rtype: str
         """
         return self._CustomizedConf
@@ -42221,8 +42239,7 @@ class TaskFullRespInfo(AbstractModel):
 
     @property
     def TaskTimeSum(self):
-        r"""单位秒，累计 CPU* 秒 ( 累计 CPU * 时 = 累计 CPU* 秒/ 3600)，统计参与计算所用 Spark Executor 每个 core 的 CPU 执行时长总和
-示例值：4329
+        r"""<p>单位秒，累计 CPU* 秒 ( 累计 CPU * 时 = 累计 CPU* 秒/ 3600)，统计参与计算所用 Spark Executor 每个 core 的 CPU 执行时长总和<br>示例值：4329</p>
         :rtype: int
         """
         return self._TaskTimeSum
@@ -42233,7 +42250,7 @@ class TaskFullRespInfo(AbstractModel):
 
     @property
     def StageStartTime(self):
-        r"""引擎执行时间
+        r"""<p>引擎执行时间</p>
         :rtype: int
         """
         return self._StageStartTime
@@ -42244,7 +42261,7 @@ class TaskFullRespInfo(AbstractModel):
 
     @property
     def InputRecordsSum(self):
-        r"""数据扫描条数
+        r"""<p>数据扫描条数</p>
         :rtype: int
         """
         return self._InputRecordsSum
@@ -42255,7 +42272,7 @@ class TaskFullRespInfo(AbstractModel):
 
     @property
     def AnalysisStatusType(self):
-        r"""健康状态
+        r"""<p>健康状态</p>
         :rtype: int
         """
         return self._AnalysisStatusType
@@ -42266,7 +42283,7 @@ class TaskFullRespInfo(AbstractModel):
 
     @property
     def OutputRecordsSum(self):
-        r"""输出总行数
+        r"""<p>输出总行数</p>
         :rtype: int
         """
         return self._OutputRecordsSum
@@ -42277,7 +42294,7 @@ class TaskFullRespInfo(AbstractModel):
 
     @property
     def OutputBytesSum(self):
-        r"""输出总大小
+        r"""<p>输出总大小</p>
         :rtype: int
         """
         return self._OutputBytesSum
@@ -42288,7 +42305,7 @@ class TaskFullRespInfo(AbstractModel):
 
     @property
     def OutputFilesNum(self):
-        r"""输出文件个数
+        r"""<p>输出文件个数</p>
         :rtype: int
         """
         return self._OutputFilesNum
@@ -42299,7 +42316,7 @@ class TaskFullRespInfo(AbstractModel):
 
     @property
     def OutputSmallFilesNum(self):
-        r"""输出小文件个数
+        r"""<p>输出小文件个数</p>
         :rtype: int
         """
         return self._OutputSmallFilesNum
@@ -42310,7 +42327,7 @@ class TaskFullRespInfo(AbstractModel):
 
     @property
     def ShuffleReadRecordsSum(self):
-        r"""数据shuffle行数
+        r"""<p>数据shuffle行数</p>
         :rtype: int
         """
         return self._ShuffleReadRecordsSum
@@ -42321,7 +42338,7 @@ class TaskFullRespInfo(AbstractModel):
 
     @property
     def ShuffleReadBytesSum(self):
-        r"""数据shuffle大小
+        r"""<p>数据shuffle大小</p>
         :rtype: int
         """
         return self._ShuffleReadBytesSum
@@ -42332,7 +42349,7 @@ class TaskFullRespInfo(AbstractModel):
 
     @property
     def SparkAppId(self):
-        r"""spark作业id
+        r"""<p>spark作业id</p>
         :rtype: str
         """
         return self._SparkAppId
@@ -42343,7 +42360,7 @@ class TaskFullRespInfo(AbstractModel):
 
     @property
     def TaskCategory(self):
-        r"""任务大类，DLC2.0中任务区分为两大类，sql任务和作业任务
+        r"""<p>任务大类，DLC2.0中任务区分为两大类，sql任务和作业任务</p>
         :rtype: str
         """
         return self._TaskCategory
@@ -42354,7 +42371,7 @@ class TaskFullRespInfo(AbstractModel):
 
     @property
     def TaskName(self):
-        r"""任务名称
+        r"""<p>任务名称</p>
         :rtype: str
         """
         return self._TaskName
@@ -42365,7 +42382,7 @@ class TaskFullRespInfo(AbstractModel):
 
     @property
     def EngineType(self):
-        r"""引擎类型，用做任务详情页跳转引擎tab
+        r"""<p>引擎类型，用做任务详情页跳转引擎tab</p>
         :rtype: str
         """
         return self._EngineType
@@ -42376,7 +42393,7 @@ class TaskFullRespInfo(AbstractModel):
 
     @property
     def EngineHasListenerConfig(self):
-        r"""引擎是否支持洞察数据采集
+        r"""<p>引擎是否支持洞察数据采集</p>
         :rtype: bool
         """
         return self._EngineHasListenerConfig
@@ -42387,7 +42404,7 @@ class TaskFullRespInfo(AbstractModel):
 
     @property
     def ResourceGroupId(self):
-        r"""spark引擎资源组id
+        r"""<p>spark引擎资源组id</p>
         :rtype: str
         """
         return self._ResourceGroupId
@@ -42398,7 +42415,7 @@ class TaskFullRespInfo(AbstractModel):
 
     @property
     def JobTimeSum(self):
-        r"""任务计算耗时
+        r"""<p>任务计算耗时</p>
         :rtype: int
         """
         return self._JobTimeSum
@@ -42409,7 +42426,7 @@ class TaskFullRespInfo(AbstractModel):
 
     @property
     def LaunchTime(self):
-        r"""任务启动耗时
+        r"""<p>任务启动耗时</p>
         :rtype: str
         """
         return self._LaunchTime
@@ -42420,7 +42437,7 @@ class TaskFullRespInfo(AbstractModel):
 
     @property
     def GpuDriverSize(self):
-        r"""Gpu Driver 规格
+        r"""<p>Gpu Driver 规格</p>
         :rtype: int
         """
         return self._GpuDriverSize
@@ -42431,7 +42448,7 @@ class TaskFullRespInfo(AbstractModel):
 
     @property
     def GpuExecutorSize(self):
-        r"""Gpu Executor 规格
+        r"""<p>Gpu Executor 规格</p>
         :rtype: int
         """
         return self._GpuExecutorSize
@@ -42439,6 +42456,28 @@ class TaskFullRespInfo(AbstractModel):
     @GpuExecutorSize.setter
     def GpuExecutorSize(self, GpuExecutorSize):
         self._GpuExecutorSize = GpuExecutorSize
+
+    @property
+    def ShuffleWriteBytesSum(self):
+        r"""<p>ShuffleWrite数据量</p>
+        :rtype: int
+        """
+        return self._ShuffleWriteBytesSum
+
+    @ShuffleWriteBytesSum.setter
+    def ShuffleWriteBytesSum(self, ShuffleWriteBytesSum):
+        self._ShuffleWriteBytesSum = ShuffleWriteBytesSum
+
+    @property
+    def ActiveCore(self):
+        r"""<p>活跃core</p>
+        :rtype: int
+        """
+        return self._ActiveCore
+
+    @ActiveCore.setter
+    def ActiveCore(self, ActiveCore):
+        self._ActiveCore = ActiveCore
 
 
     def _deserialize(self, params):
@@ -42516,6 +42555,8 @@ class TaskFullRespInfo(AbstractModel):
         self._LaunchTime = params.get("LaunchTime")
         self._GpuDriverSize = params.get("GpuDriverSize")
         self._GpuExecutorSize = params.get("GpuExecutorSize")
+        self._ShuffleWriteBytesSum = params.get("ShuffleWriteBytesSum")
+        self._ActiveCore = params.get("ActiveCore")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

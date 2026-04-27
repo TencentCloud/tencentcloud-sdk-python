@@ -24125,17 +24125,17 @@ class ListLineageRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ResourceUniqueId: 实体唯一ID
+        :param _ResourceUniqueId: <p>实体唯一ID</p>
         :type ResourceUniqueId: str
-        :param _ResourceType: 实体类型 TABLE|METRIC|MODEL|SERVICE|COLUMN
+        :param _ResourceType: <p>实体类型 TABLE|METRIC|MODEL|SERVICE|COLUMN</p>
         :type ResourceType: str
-        :param _Direction: 血缘方向 INPUT｜OUTPUT
+        :param _Direction: <p>血缘方向 INPUT｜OUTPUT</p>
         :type Direction: str
-        :param _PageNumber: 页码
+        :param _PageNumber: <p>页码</p>
         :type PageNumber: int
-        :param _PageSize: 分页大小
+        :param _PageSize: <p>分页大小</p>
         :type PageSize: int
-        :param _Platform: 来源：WEDATA|THIRD 默认WEDATA
+        :param _Platform: <p>来源：WEDATA|THIRD 默认WEDATA</p>
         :type Platform: str
         """
         self._ResourceUniqueId = None
@@ -24147,7 +24147,7 @@ class ListLineageRequest(AbstractModel):
 
     @property
     def ResourceUniqueId(self):
-        r"""实体唯一ID
+        r"""<p>实体唯一ID</p>
         :rtype: str
         """
         return self._ResourceUniqueId
@@ -24158,7 +24158,7 @@ class ListLineageRequest(AbstractModel):
 
     @property
     def ResourceType(self):
-        r"""实体类型 TABLE|METRIC|MODEL|SERVICE|COLUMN
+        r"""<p>实体类型 TABLE|METRIC|MODEL|SERVICE|COLUMN</p>
         :rtype: str
         """
         return self._ResourceType
@@ -24169,7 +24169,7 @@ class ListLineageRequest(AbstractModel):
 
     @property
     def Direction(self):
-        r"""血缘方向 INPUT｜OUTPUT
+        r"""<p>血缘方向 INPUT｜OUTPUT</p>
         :rtype: str
         """
         return self._Direction
@@ -24180,7 +24180,7 @@ class ListLineageRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        r"""页码
+        r"""<p>页码</p>
         :rtype: int
         """
         return self._PageNumber
@@ -24191,7 +24191,7 @@ class ListLineageRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        r"""分页大小
+        r"""<p>分页大小</p>
         :rtype: int
         """
         return self._PageSize
@@ -24202,7 +24202,7 @@ class ListLineageRequest(AbstractModel):
 
     @property
     def Platform(self):
-        r"""来源：WEDATA|THIRD 默认WEDATA
+        r"""<p>来源：WEDATA|THIRD 默认WEDATA</p>
         :rtype: str
         """
         return self._Platform
@@ -24236,7 +24236,7 @@ class ListLineageResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 分页数据
+        :param _Data: <p>分页数据</p>
         :type Data: :class:`tencentcloud.wedata.v20250806.models.ListLineagePage`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -24246,7 +24246,7 @@ class ListLineageResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""分页数据
+        r"""<p>分页数据</p>
         :rtype: :class:`tencentcloud.wedata.v20250806.models.ListLineagePage`
         """
         return self._Data
@@ -25709,15 +25709,15 @@ class ListProcessLineageRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProcessId: 任务唯一ID
+        :param _ProcessId: <p>任务唯一ID</p>
         :type ProcessId: str
-        :param _ProcessType: 任务类型    //调度任务     SCHEDULE_TASK,     //集成任务     INTEGRATION_TASK,     //第三方上报     THIRD_REPORT,     //数据建模     TABLE_MODEL,     //模型创建指标     MODEL_METRIC,     //原子指标创建衍生指标     METRIC_METRIC,     //数据服务     DATA_SERVICE
+        :param _ProcessType: <p>任务类型    //调度任务     SCHEDULE_TASK,     //集成任务     INTEGRATION_TASK,     //第三方上报     THIRD_REPORT,     //数据建模     TABLE_MODEL,     //模型创建指标     MODEL_METRIC,     //原子指标创建衍生指标     METRIC_METRIC,     //数据服务     DATA_SERVICE</p>
         :type ProcessType: str
-        :param _PageNumber: 页码
+        :param _PageNumber: <p>页码</p>
         :type PageNumber: int
-        :param _PageSize: 分页大小
+        :param _PageSize: <p>分页大小</p>
         :type PageSize: int
-        :param _Platform: 来源：WEDATA|THIRD 默认WEDATA
+        :param _Platform: <p>来源：WEDATA|THIRD 默认WEDATA</p>
         :type Platform: str
         """
         self._ProcessId = None
@@ -25728,7 +25728,7 @@ class ListProcessLineageRequest(AbstractModel):
 
     @property
     def ProcessId(self):
-        r"""任务唯一ID
+        r"""<p>任务唯一ID</p>
         :rtype: str
         """
         return self._ProcessId
@@ -25739,7 +25739,7 @@ class ListProcessLineageRequest(AbstractModel):
 
     @property
     def ProcessType(self):
-        r"""任务类型    //调度任务     SCHEDULE_TASK,     //集成任务     INTEGRATION_TASK,     //第三方上报     THIRD_REPORT,     //数据建模     TABLE_MODEL,     //模型创建指标     MODEL_METRIC,     //原子指标创建衍生指标     METRIC_METRIC,     //数据服务     DATA_SERVICE
+        r"""<p>任务类型    //调度任务     SCHEDULE_TASK,     //集成任务     INTEGRATION_TASK,     //第三方上报     THIRD_REPORT,     //数据建模     TABLE_MODEL,     //模型创建指标     MODEL_METRIC,     //原子指标创建衍生指标     METRIC_METRIC,     //数据服务     DATA_SERVICE</p>
         :rtype: str
         """
         return self._ProcessType
@@ -25750,7 +25750,7 @@ class ListProcessLineageRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        r"""页码
+        r"""<p>页码</p>
         :rtype: int
         """
         return self._PageNumber
@@ -25761,7 +25761,7 @@ class ListProcessLineageRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        r"""分页大小
+        r"""<p>分页大小</p>
         :rtype: int
         """
         return self._PageSize
@@ -25772,7 +25772,7 @@ class ListProcessLineageRequest(AbstractModel):
 
     @property
     def Platform(self):
-        r"""来源：WEDATA|THIRD 默认WEDATA
+        r"""<p>来源：WEDATA|THIRD 默认WEDATA</p>
         :rtype: str
         """
         return self._Platform
@@ -25805,7 +25805,7 @@ class ListProcessLineageResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 分页数据
+        :param _Data: <p>分页数据</p>
         :type Data: :class:`tencentcloud.wedata.v20250806.models.ListProcessLineagePage`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -25815,7 +25815,7 @@ class ListProcessLineageResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""分页数据
+        r"""<p>分页数据</p>
         :rtype: :class:`tencentcloud.wedata.v20250806.models.ListProcessLineagePage`
         """
         return self._Data

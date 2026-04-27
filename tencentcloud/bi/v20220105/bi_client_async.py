@@ -61,6 +61,24 @@ class BiClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateAuthApiKey(
+            self,
+            request: models.CreateAuthApiKeyRequest,
+            opts: Dict = None,
+    ) -> models.CreateAuthApiKeyResponse:
+        """
+        创建ApiKey
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateAuthApiKey"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateAuthApiKeyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateDatasource(
             self,
             request: models.CreateDatasourceRequest,
@@ -223,6 +241,24 @@ class BiClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteAuthApiKey(
+            self,
+            request: models.DeleteAuthApiKeyRequest,
+            opts: Dict = None,
+    ) -> models.DeleteAuthApiKeyResponse:
+        """
+        删除ApiKey
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteAuthApiKey"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteAuthApiKeyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteDatasource(
             self,
             request: models.DeleteDatasourceRequest,
@@ -326,6 +362,42 @@ class BiClient(AbstractClient):
         kwargs["action"] = "DeleteUserRoleProject"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteUserRoleProjectResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAuthApiKeyInfo(
+            self,
+            request: models.DescribeAuthApiKeyInfoRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAuthApiKeyInfoResponse:
+        """
+        ApiKey信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAuthApiKeyInfo"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAuthApiKeyInfoResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAuthApiKeyList(
+            self,
+            request: models.DescribeAuthApiKeyListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAuthApiKeyListResponse:
+        """
+        ApiKey列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAuthApiKeyList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAuthApiKeyListResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -596,6 +668,24 @@ class BiClient(AbstractClient):
         kwargs["action"] = "ExportScreenPage"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ExportScreenPageResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyAuthApiKey(
+            self,
+            request: models.ModifyAuthApiKeyRequest,
+            opts: Dict = None,
+    ) -> models.ModifyAuthApiKeyResponse:
+        """
+        更新ApiKey
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyAuthApiKey"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyAuthApiKeyResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

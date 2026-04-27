@@ -25788,32 +25788,35 @@ class DescribeLLMContentSecCheckRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ServiceId:  服务id,使用哪一套防护策略，就需要传哪一套服务id，模型会检测该服务id下的所有规则
+        :param _ServiceId: <p>服务id,使用哪一套防护策略，就需要传哪一套服务id，模型会检测该服务id下的所有规则</p>
         :type ServiceId: str
-        :param _Content: 要审核的内容
-        :type Content: str
-        :param _Type: 流量类型，是入向流量还是出向流量，入向：1，出向：2；入向和出向必填
+        :param _Type: <p>流量类型，是入向流量还是出向流量，入向：1，出向：2；入向和出向必填</p>
         :type Type: int
-        :param _InstanceId: 实例id，必传
+        :param _InstanceId: <p>实例id，必传</p>
         :type InstanceId: str
-        :param _ChatId: 对话的id
+        :param _Content: <p>要审核的内容</p>
+        :type Content: str
+        :param _ChatId: <p>对话的id</p>
         :type ChatId: str
-        :param _UserId: 标识用户的id，限速使用，不填，则限速会不生效
+        :param _UserId: <p>标识用户的id，限速使用，不填，则限速会不生效</p>
         :type UserId: str
-        :param _TokenUsage: token使用量，不填，会采用默认的token计算方法，计算的是模型的消耗，因为该值时在出向方向上添加，即Type=2
+        :param _TokenUsage: <p>token使用量，不填，会采用默认的token计算方法，计算的是模型的消耗，因为该值时在出向方向上添加，即Type=2</p>
         :type TokenUsage: int
+        :param _ImageEncode: <p>图片base64编码后的数据,body大小最大支持10M</p>
+        :type ImageEncode: str
         """
         self._ServiceId = None
-        self._Content = None
         self._Type = None
         self._InstanceId = None
+        self._Content = None
         self._ChatId = None
         self._UserId = None
         self._TokenUsage = None
+        self._ImageEncode = None
 
     @property
     def ServiceId(self):
-        r""" 服务id,使用哪一套防护策略，就需要传哪一套服务id，模型会检测该服务id下的所有规则
+        r"""<p>服务id,使用哪一套防护策略，就需要传哪一套服务id，模型会检测该服务id下的所有规则</p>
         :rtype: str
         """
         return self._ServiceId
@@ -25823,19 +25826,8 @@ class DescribeLLMContentSecCheckRequest(AbstractModel):
         self._ServiceId = ServiceId
 
     @property
-    def Content(self):
-        r"""要审核的内容
-        :rtype: str
-        """
-        return self._Content
-
-    @Content.setter
-    def Content(self, Content):
-        self._Content = Content
-
-    @property
     def Type(self):
-        r"""流量类型，是入向流量还是出向流量，入向：1，出向：2；入向和出向必填
+        r"""<p>流量类型，是入向流量还是出向流量，入向：1，出向：2；入向和出向必填</p>
         :rtype: int
         """
         return self._Type
@@ -25846,7 +25838,7 @@ class DescribeLLMContentSecCheckRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例id，必传
+        r"""<p>实例id，必传</p>
         :rtype: str
         """
         return self._InstanceId
@@ -25856,8 +25848,19 @@ class DescribeLLMContentSecCheckRequest(AbstractModel):
         self._InstanceId = InstanceId
 
     @property
+    def Content(self):
+        r"""<p>要审核的内容</p>
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
     def ChatId(self):
-        r"""对话的id
+        r"""<p>对话的id</p>
         :rtype: str
         """
         return self._ChatId
@@ -25868,7 +25871,7 @@ class DescribeLLMContentSecCheckRequest(AbstractModel):
 
     @property
     def UserId(self):
-        r"""标识用户的id，限速使用，不填，则限速会不生效
+        r"""<p>标识用户的id，限速使用，不填，则限速会不生效</p>
         :rtype: str
         """
         return self._UserId
@@ -25879,7 +25882,7 @@ class DescribeLLMContentSecCheckRequest(AbstractModel):
 
     @property
     def TokenUsage(self):
-        r"""token使用量，不填，会采用默认的token计算方法，计算的是模型的消耗，因为该值时在出向方向上添加，即Type=2
+        r"""<p>token使用量，不填，会采用默认的token计算方法，计算的是模型的消耗，因为该值时在出向方向上添加，即Type=2</p>
         :rtype: int
         """
         return self._TokenUsage
@@ -25888,15 +25891,27 @@ class DescribeLLMContentSecCheckRequest(AbstractModel):
     def TokenUsage(self, TokenUsage):
         self._TokenUsage = TokenUsage
 
+    @property
+    def ImageEncode(self):
+        r"""<p>图片base64编码后的数据,body大小最大支持10M</p>
+        :rtype: str
+        """
+        return self._ImageEncode
+
+    @ImageEncode.setter
+    def ImageEncode(self, ImageEncode):
+        self._ImageEncode = ImageEncode
+
 
     def _deserialize(self, params):
         self._ServiceId = params.get("ServiceId")
-        self._Content = params.get("Content")
         self._Type = params.get("Type")
         self._InstanceId = params.get("InstanceId")
+        self._Content = params.get("Content")
         self._ChatId = params.get("ChatId")
         self._UserId = params.get("UserId")
         self._TokenUsage = params.get("TokenUsage")
+        self._ImageEncode = params.get("ImageEncode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25914,7 +25929,7 @@ class DescribeLLMContentSecCheckResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 检测结果
+        :param _Data: <p>检测结果</p>
         :type Data: :class:`tencentcloud.waf.v20180125.models.LLMDetectResult`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -25924,7 +25939,7 @@ class DescribeLLMContentSecCheckResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""检测结果
+        r"""<p>检测结果</p>
         :rtype: :class:`tencentcloud.waf.v20180125.models.LLMDetectResult`
         """
         return self._Data
@@ -34493,6 +34508,87 @@ class GenerateDealsAndPayNewResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class GenerateLLMSecAnswerRequest(AbstractModel):
+    r"""GenerateLLMSecAnswer请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Message: <p>消息结构体内容</p>
+        :type Message: :class:`tencentcloud.waf.v20180125.models.SSEClientMessage`
+        :param _MsgID: <p>消息id，传入 要回答的MsgID ，用于匹配自定义回答模板，最终可得到优化的代答结果</p>
+        :type MsgID: str
+        """
+        self._Message = None
+        self._MsgID = None
+
+    @property
+    def Message(self):
+        r"""<p>消息结构体内容</p>
+        :rtype: :class:`tencentcloud.waf.v20180125.models.SSEClientMessage`
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def MsgID(self):
+        r"""<p>消息id，传入 要回答的MsgID ，用于匹配自定义回答模板，最终可得到优化的代答结果</p>
+        :rtype: str
+        """
+        return self._MsgID
+
+    @MsgID.setter
+    def MsgID(self, MsgID):
+        self._MsgID = MsgID
+
+
+    def _deserialize(self, params):
+        if params.get("Message") is not None:
+            self._Message = SSEClientMessage()
+            self._Message._deserialize(params.get("Message"))
+        self._MsgID = params.get("MsgID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GenerateLLMSecAnswerResponse(AbstractModel):
+    r"""GenerateLLMSecAnswer返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class GetAttackDownloadRecordsRequest(AbstractModel):
     r"""GetAttackDownloadRecords请求参数结构体
 
@@ -36576,6 +36672,57 @@ class HybridPkg(AbstractModel):
         self._InquireNum = params.get("InquireNum")
         self._UsedNum = params.get("UsedNum")
         self._RenewFlag = params.get("RenewFlag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ImageResult(AbstractModel):
+    r"""llm要检测的图片的检测结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Category: <p>命中类别标识</p>
+        :type Category: str
+        :param _CategoryName: <p>类别的名称</p>
+        :type CategoryName: str
+        """
+        self._Category = None
+        self._CategoryName = None
+
+    @property
+    def Category(self):
+        r"""<p>命中类别标识</p>
+        :rtype: str
+        """
+        return self._Category
+
+    @Category.setter
+    def Category(self, Category):
+        self._Category = Category
+
+    @property
+    def CategoryName(self):
+        r"""<p>类别的名称</p>
+        :rtype: str
+        """
+        return self._CategoryName
+
+    @CategoryName.setter
+    def CategoryName(self, CategoryName):
+        self._CategoryName = CategoryName
+
+
+    def _deserialize(self, params):
+        self._Category = params.get("Category")
+        self._CategoryName = params.get("CategoryName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -39166,6 +39313,8 @@ class LLMDetectResult(AbstractModel):
         :type Action: str
         :param _Payload: <p>攻击payload</p>
         :type Payload: str
+        :param _ImageResult: <p>图片检测结果</p>
+        :type ImageResult: list of ImageResult
         """
         self._SensitiveResult = None
         self._KeyWordsResult = None
@@ -39175,6 +39324,7 @@ class LLMDetectResult(AbstractModel):
         self._RuleName = None
         self._Action = None
         self._Payload = None
+        self._ImageResult = None
 
     @property
     def SensitiveResult(self):
@@ -39264,6 +39414,17 @@ class LLMDetectResult(AbstractModel):
     def Payload(self, Payload):
         self._Payload = Payload
 
+    @property
+    def ImageResult(self):
+        r"""<p>图片检测结果</p>
+        :rtype: list of ImageResult
+        """
+        return self._ImageResult
+
+    @ImageResult.setter
+    def ImageResult(self, ImageResult):
+        self._ImageResult = ImageResult
+
 
     def _deserialize(self, params):
         if params.get("SensitiveResult") is not None:
@@ -39286,6 +39447,12 @@ class LLMDetectResult(AbstractModel):
         self._RuleName = params.get("RuleName")
         self._Action = params.get("Action")
         self._Payload = params.get("Payload")
+        if params.get("ImageResult") is not None:
+            self._ImageResult = []
+            for item in params.get("ImageResult"):
+                obj = ImageResult()
+                obj._deserialize(item)
+                self._ImageResult.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -54051,6 +54218,72 @@ class RuleType(AbstractModel):
         self._RuleTypeStatus = params.get("RuleTypeStatus")
         self._ActiveRuleCount = params.get("ActiveRuleCount")
         self._TotalRuleCount = params.get("TotalRuleCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SSEClientMessage(AbstractModel):
+    r"""对话消息结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Role: <p>对话角色，填user</p>
+        :type Role: str
+        :param _Content: <p>prompt内容</p>
+        :type Content: str
+        :param _ContentType: <p>检测类型，0是文本内容代答，目前只支持0，可以不传，默认值是0</p><p>枚举值：</p><ul><li>0： 文件内容代答</li></ul>
+        :type ContentType: int
+        """
+        self._Role = None
+        self._Content = None
+        self._ContentType = None
+
+    @property
+    def Role(self):
+        r"""<p>对话角色，填user</p>
+        :rtype: str
+        """
+        return self._Role
+
+    @Role.setter
+    def Role(self, Role):
+        self._Role = Role
+
+    @property
+    def Content(self):
+        r"""<p>prompt内容</p>
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def ContentType(self):
+        r"""<p>检测类型，0是文本内容代答，目前只支持0，可以不传，默认值是0</p><p>枚举值：</p><ul><li>0： 文件内容代答</li></ul>
+        :rtype: int
+        """
+        return self._ContentType
+
+    @ContentType.setter
+    def ContentType(self, ContentType):
+        self._ContentType = ContentType
+
+
+    def _deserialize(self, params):
+        self._Role = params.get("Role")
+        self._Content = params.get("Content")
+        self._ContentType = params.get("ContentType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

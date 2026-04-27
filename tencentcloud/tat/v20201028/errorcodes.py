@@ -26,6 +26,9 @@ FAILEDOPERATION_CVMERROR = 'FailedOperation.CVMError'
 # 调用 Lighthouse 失败。
 FAILEDOPERATION_LIGHTHOUSEERROR = 'FailedOperation.LighthouseError'
 
+# 标签操作失败。
+FAILEDOPERATION_TAGOPERATIONFAILED = 'FailedOperation.TagOperationFailed'
+
 # 内部错误。
 INTERNALERROR = 'InternalError'
 

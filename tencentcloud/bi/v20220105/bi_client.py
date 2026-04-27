@@ -72,6 +72,29 @@ class BiClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateAuthApiKey(self, request):
+        r"""创建ApiKey
+
+        :param request: Request instance for CreateAuthApiKey.
+        :type request: :class:`tencentcloud.bi.v20220105.models.CreateAuthApiKeyRequest`
+        :rtype: :class:`tencentcloud.bi.v20220105.models.CreateAuthApiKeyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAuthApiKey", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateAuthApiKeyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateDatasource(self, request):
         r"""创建数据源
 
@@ -279,6 +302,29 @@ class BiClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteAuthApiKey(self, request):
+        r"""删除ApiKey
+
+        :param request: Request instance for DeleteAuthApiKey.
+        :type request: :class:`tencentcloud.bi.v20220105.models.DeleteAuthApiKeyRequest`
+        :rtype: :class:`tencentcloud.bi.v20220105.models.DeleteAuthApiKeyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteAuthApiKey", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteAuthApiKeyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteDatasource(self, request):
         r"""删除数据源
 
@@ -408,6 +454,52 @@ class BiClient(AbstractClient):
             body = self.call("DeleteUserRoleProject", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteUserRoleProjectResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAuthApiKeyInfo(self, request):
+        r"""ApiKey信息
+
+        :param request: Request instance for DescribeAuthApiKeyInfo.
+        :type request: :class:`tencentcloud.bi.v20220105.models.DescribeAuthApiKeyInfoRequest`
+        :rtype: :class:`tencentcloud.bi.v20220105.models.DescribeAuthApiKeyInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAuthApiKeyInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAuthApiKeyInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAuthApiKeyList(self, request):
+        r"""ApiKey列表
+
+        :param request: Request instance for DescribeAuthApiKeyList.
+        :type request: :class:`tencentcloud.bi.v20220105.models.DescribeAuthApiKeyListRequest`
+        :rtype: :class:`tencentcloud.bi.v20220105.models.DescribeAuthApiKeyListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAuthApiKeyList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAuthApiKeyListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -753,6 +845,29 @@ class BiClient(AbstractClient):
             body = self.call("ExportScreenPage", params, headers=headers)
             response = json.loads(body)
             model = models.ExportScreenPageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyAuthApiKey(self, request):
+        r"""更新ApiKey
+
+        :param request: Request instance for ModifyAuthApiKey.
+        :type request: :class:`tencentcloud.bi.v20220105.models.ModifyAuthApiKeyRequest`
+        :rtype: :class:`tencentcloud.bi.v20220105.models.ModifyAuthApiKeyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyAuthApiKey", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyAuthApiKeyResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

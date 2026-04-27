@@ -79,6 +79,24 @@ class MonitorClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CheckAddressByPrometheus(
+            self,
+            request: models.CheckAddressByPrometheusRequest,
+            opts: Dict = None,
+    ) -> models.CheckAddressByPrometheusResponse:
+        """
+        检查用户地址联通性
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CheckAddressByPrometheus"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CheckAddressByPrometheusResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CleanGrafanaInstance(
             self,
             request: models.CleanGrafanaInstanceRequest,

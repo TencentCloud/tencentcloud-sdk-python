@@ -22703,12 +22703,16 @@ class DatabaseRealViewVOPageVO(AbstractModel):
         :param _Rows: 记录
 注意：此字段可能返回 null，表示取不到有效值。
         :type Rows: list of DatabaseRealViewVO
+        :param _SnapshotId: 分页快照id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SnapshotId: str
         """
         self._PageNumber = None
         self._PageSize = None
         self._TotalCount = None
         self._TotalPageNumber = None
         self._Rows = None
+        self._SnapshotId = None
 
     @property
     def PageNumber(self):
@@ -22770,6 +22774,18 @@ class DatabaseRealViewVOPageVO(AbstractModel):
     def Rows(self, Rows):
         self._Rows = Rows
 
+    @property
+    def SnapshotId(self):
+        r"""分页快照id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SnapshotId
+
+    @SnapshotId.setter
+    def SnapshotId(self, SnapshotId):
+        self._SnapshotId = SnapshotId
+
 
     def _deserialize(self, params):
         self._PageNumber = params.get("PageNumber")
@@ -22782,6 +22798,7 @@ class DatabaseRealViewVOPageVO(AbstractModel):
                 obj = DatabaseRealViewVO()
                 obj._deserialize(item)
                 self._Rows.append(obj)
+        self._SnapshotId = params.get("SnapshotId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

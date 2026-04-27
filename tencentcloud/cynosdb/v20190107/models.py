@@ -2756,38 +2756,40 @@ class BackupFileInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SnapshotId: 快照文件ID，已废弃，请使用BackupId
+        :param _SnapshotId: <p>快照文件ID，已废弃，请使用BackupId</p>
         :type SnapshotId: int
-        :param _FileName: 备份文件名
+        :param _FileName: <p>备份文件名</p>
         :type FileName: str
-        :param _FileSize: 备份文件大小
+        :param _FileSize: <p>备份文件大小</p>
         :type FileSize: int
-        :param _StartTime: 备份开始时间
+        :param _StartTime: <p>备份开始时间</p>
         :type StartTime: str
-        :param _FinishTime: 备份完成时间
+        :param _FinishTime: <p>备份完成时间</p>
         :type FinishTime: str
-        :param _BackupType: 备份类型：snapshot，快照备份；logic，逻辑备份
+        :param _BackupType: <p>备份类型：snapshot，快照备份；logic，逻辑备份</p>
         :type BackupType: str
-        :param _BackupMethod: 备份方式：auto，自动备份；manual，手动备份
+        :param _BackupMethod: <p>备份方式：auto，自动备份；manual，手动备份</p>
         :type BackupMethod: str
-        :param _BackupStatus: 备份文件状态：success：备份成功；fail：备份失败；creating：备份文件创建中；deleting：备份文件删除中
+        :param _BackupStatus: <p>备份文件状态：success：备份成功；fail：备份失败；creating：备份文件创建中；deleting：备份文件删除中</p>
         :type BackupStatus: str
-        :param _SnapshotTime: 备份文件时间
+        :param _SnapshotTime: <p>备份文件时间</p>
         :type SnapshotTime: str
-        :param _BackupId: 备份ID
+        :param _BackupId: <p>备份ID</p>
         :type BackupId: int
-        :param _SnapShotType: 快照类型，可选值：full，全量；increment，增量
+        :param _SnapShotType: <p>快照类型，可选值：full，全量；increment，增量</p>
         :type SnapShotType: str
-        :param _BackupName: 备份文件备注
+        :param _BackupName: <p>备份文件备注</p>
         :type BackupName: str
-        :param _CopyStatus: 投递状态
+        :param _CopyStatus: <p>投递状态</p>
         :type CopyStatus: str
-        :param _EncryptKeyId: 秘钥id
+        :param _EncryptKeyId: <p>秘钥id</p>
         :type EncryptKeyId: str
-        :param _EncryptRegion: 秘钥地域
+        :param _EncryptRegion: <p>秘钥地域</p>
         :type EncryptRegion: str
-        :param _VaultInfos: 保险箱信息
+        :param _VaultInfos: <p>保险箱信息</p>
         :type VaultInfos: list of VaultInfo
+        :param _BackupPeriodStrategy: <p>备份周期策略</p>
+        :type BackupPeriodStrategy: str
         """
         self._SnapshotId = None
         self._FileName = None
@@ -2805,10 +2807,11 @@ class BackupFileInfo(AbstractModel):
         self._EncryptKeyId = None
         self._EncryptRegion = None
         self._VaultInfos = None
+        self._BackupPeriodStrategy = None
 
     @property
     def SnapshotId(self):
-        r"""快照文件ID，已废弃，请使用BackupId
+        r"""<p>快照文件ID，已废弃，请使用BackupId</p>
         :rtype: int
         """
         return self._SnapshotId
@@ -2819,7 +2822,7 @@ class BackupFileInfo(AbstractModel):
 
     @property
     def FileName(self):
-        r"""备份文件名
+        r"""<p>备份文件名</p>
         :rtype: str
         """
         return self._FileName
@@ -2830,7 +2833,7 @@ class BackupFileInfo(AbstractModel):
 
     @property
     def FileSize(self):
-        r"""备份文件大小
+        r"""<p>备份文件大小</p>
         :rtype: int
         """
         return self._FileSize
@@ -2841,7 +2844,7 @@ class BackupFileInfo(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""备份开始时间
+        r"""<p>备份开始时间</p>
         :rtype: str
         """
         return self._StartTime
@@ -2852,7 +2855,7 @@ class BackupFileInfo(AbstractModel):
 
     @property
     def FinishTime(self):
-        r"""备份完成时间
+        r"""<p>备份完成时间</p>
         :rtype: str
         """
         return self._FinishTime
@@ -2863,7 +2866,7 @@ class BackupFileInfo(AbstractModel):
 
     @property
     def BackupType(self):
-        r"""备份类型：snapshot，快照备份；logic，逻辑备份
+        r"""<p>备份类型：snapshot，快照备份；logic，逻辑备份</p>
         :rtype: str
         """
         return self._BackupType
@@ -2874,7 +2877,7 @@ class BackupFileInfo(AbstractModel):
 
     @property
     def BackupMethod(self):
-        r"""备份方式：auto，自动备份；manual，手动备份
+        r"""<p>备份方式：auto，自动备份；manual，手动备份</p>
         :rtype: str
         """
         return self._BackupMethod
@@ -2885,7 +2888,7 @@ class BackupFileInfo(AbstractModel):
 
     @property
     def BackupStatus(self):
-        r"""备份文件状态：success：备份成功；fail：备份失败；creating：备份文件创建中；deleting：备份文件删除中
+        r"""<p>备份文件状态：success：备份成功；fail：备份失败；creating：备份文件创建中；deleting：备份文件删除中</p>
         :rtype: str
         """
         return self._BackupStatus
@@ -2896,7 +2899,7 @@ class BackupFileInfo(AbstractModel):
 
     @property
     def SnapshotTime(self):
-        r"""备份文件时间
+        r"""<p>备份文件时间</p>
         :rtype: str
         """
         return self._SnapshotTime
@@ -2907,7 +2910,7 @@ class BackupFileInfo(AbstractModel):
 
     @property
     def BackupId(self):
-        r"""备份ID
+        r"""<p>备份ID</p>
         :rtype: int
         """
         return self._BackupId
@@ -2918,7 +2921,7 @@ class BackupFileInfo(AbstractModel):
 
     @property
     def SnapShotType(self):
-        r"""快照类型，可选值：full，全量；increment，增量
+        r"""<p>快照类型，可选值：full，全量；increment，增量</p>
         :rtype: str
         """
         return self._SnapShotType
@@ -2929,7 +2932,7 @@ class BackupFileInfo(AbstractModel):
 
     @property
     def BackupName(self):
-        r"""备份文件备注
+        r"""<p>备份文件备注</p>
         :rtype: str
         """
         return self._BackupName
@@ -2940,7 +2943,7 @@ class BackupFileInfo(AbstractModel):
 
     @property
     def CopyStatus(self):
-        r"""投递状态
+        r"""<p>投递状态</p>
         :rtype: str
         """
         return self._CopyStatus
@@ -2951,7 +2954,7 @@ class BackupFileInfo(AbstractModel):
 
     @property
     def EncryptKeyId(self):
-        r"""秘钥id
+        r"""<p>秘钥id</p>
         :rtype: str
         """
         return self._EncryptKeyId
@@ -2962,7 +2965,7 @@ class BackupFileInfo(AbstractModel):
 
     @property
     def EncryptRegion(self):
-        r"""秘钥地域
+        r"""<p>秘钥地域</p>
         :rtype: str
         """
         return self._EncryptRegion
@@ -2973,7 +2976,7 @@ class BackupFileInfo(AbstractModel):
 
     @property
     def VaultInfos(self):
-        r"""保险箱信息
+        r"""<p>保险箱信息</p>
         :rtype: list of VaultInfo
         """
         return self._VaultInfos
@@ -2981,6 +2984,17 @@ class BackupFileInfo(AbstractModel):
     @VaultInfos.setter
     def VaultInfos(self, VaultInfos):
         self._VaultInfos = VaultInfos
+
+    @property
+    def BackupPeriodStrategy(self):
+        r"""<p>备份周期策略</p>
+        :rtype: str
+        """
+        return self._BackupPeriodStrategy
+
+    @BackupPeriodStrategy.setter
+    def BackupPeriodStrategy(self, BackupPeriodStrategy):
+        self._BackupPeriodStrategy = BackupPeriodStrategy
 
 
     def _deserialize(self, params):
@@ -3005,6 +3019,7 @@ class BackupFileInfo(AbstractModel):
                 obj = VaultInfo()
                 obj._deserialize(item)
                 self._VaultInfos.append(obj)
+        self._BackupPeriodStrategy = params.get("BackupPeriodStrategy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16633,11 +16648,14 @@ class DeliverSummary(AbstractModel):
         :type DeliverConsumer: str
         :param _DeliverConsumerName: 投递者名称
         :type DeliverConsumerName: str
+        :param _DeliverError: 投递异常错误
+        :type DeliverError: str
         """
         self._DeliverType = None
         self._DeliverSubType = None
         self._DeliverConsumer = None
         self._DeliverConsumerName = None
+        self._DeliverError = None
 
     @property
     def DeliverType(self):
@@ -16683,12 +16701,24 @@ class DeliverSummary(AbstractModel):
     def DeliverConsumerName(self, DeliverConsumerName):
         self._DeliverConsumerName = DeliverConsumerName
 
+    @property
+    def DeliverError(self):
+        r"""投递异常错误
+        :rtype: str
+        """
+        return self._DeliverError
+
+    @DeliverError.setter
+    def DeliverError(self, DeliverError):
+        self._DeliverError = DeliverError
+
 
     def _deserialize(self, params):
         self._DeliverType = params.get("DeliverType")
         self._DeliverSubType = params.get("DeliverSubType")
         self._DeliverConsumer = params.get("DeliverConsumer")
         self._DeliverConsumerName = params.get("DeliverConsumerName")
+        self._DeliverError = params.get("DeliverError")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18029,14 +18059,14 @@ class DescribeBackupConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群ID
+        :param _ClusterId: <p>集群ID</p>
         :type ClusterId: str
         """
         self._ClusterId = None
 
     @property
     def ClusterId(self):
-        r"""集群ID
+        r"""<p>集群ID</p>
         :rtype: str
         """
         return self._ClusterId
@@ -18065,23 +18095,25 @@ class DescribeBackupConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BackupTimeBeg: 表示全备开始时间，[0-24*3600]， 如0:00, 1:00, 2:00 分别为 0，3600， 7200
+        :param _BackupTimeBeg: <p>表示全备开始时间，[0-24*3600]， 如0:00, 1:00, 2:00 分别为 0，3600， 7200</p>
         :type BackupTimeBeg: int
-        :param _BackupTimeEnd: 表示全备开始时间，[0-24*3600]， 如0:00, 1:00, 2:00 分别为 0，3600， 7200
+        :param _BackupTimeEnd: <p>表示全备开始时间，[0-24*3600]， 如0:00, 1:00, 2:00 分别为 0，3600， 7200</p>
         :type BackupTimeEnd: int
-        :param _ReserveDuration: 表示保留备份时长, 单位秒，超过该时间将被清理, 七天表示为3600*24*7=604800
+        :param _ReserveDuration: <p>表示保留备份时长, 单位秒，超过该时间将被清理, 七天表示为3600<em>24</em>7=604800</p>
         :type ReserveDuration: int
-        :param _BackupFreq: 备份频率，长度为7的数组，分别对应周一到周日的备份方式，full-全量备份，increment-增量备份
+        :param _BackupFreq: <p>备份频率，长度为7的数组，分别对应周一到周日的备份方式，full-全量备份，increment-增量备份</p>
         :type BackupFreq: list of str
-        :param _BackupType: 备份方式，logic-逻辑备份，snapshot-快照备份
+        :param _BackupType: <p>备份方式，logic-逻辑备份，snapshot-快照备份</p>
         :type BackupType: str
-        :param _LogicCrossRegionsConfigUpdateTime: 跨地域逻辑备份配置修改时间
+        :param _LogicCrossRegionsConfigUpdateTime: <p>跨地域逻辑备份配置修改时间</p>
         :type LogicCrossRegionsConfigUpdateTime: str
-        :param _LogicBackupConfig: 自动逻辑备份配置
+        :param _LogicBackupConfig: <p>自动逻辑备份配置</p>
         :type LogicBackupConfig: :class:`tencentcloud.cynosdb.v20190107.models.LogicBackupConfigInfo`
-        :param _SnapshotSecondaryBackupConfig: 二级快照备份配置信息
+        :param _SnapshotSecondaryBackupConfig: <p>二级快照备份配置信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SnapshotSecondaryBackupConfig: :class:`tencentcloud.cynosdb.v20190107.models.BackupConfigInfo`
+        :param _SparseBackupConfig: <p>稀疏备份配置</p>
+        :type SparseBackupConfig: :class:`tencentcloud.cynosdb.v20190107.models.SparseBackupConfigRsp`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -18093,11 +18125,12 @@ class DescribeBackupConfigResponse(AbstractModel):
         self._LogicCrossRegionsConfigUpdateTime = None
         self._LogicBackupConfig = None
         self._SnapshotSecondaryBackupConfig = None
+        self._SparseBackupConfig = None
         self._RequestId = None
 
     @property
     def BackupTimeBeg(self):
-        r"""表示全备开始时间，[0-24*3600]， 如0:00, 1:00, 2:00 分别为 0，3600， 7200
+        r"""<p>表示全备开始时间，[0-24*3600]， 如0:00, 1:00, 2:00 分别为 0，3600， 7200</p>
         :rtype: int
         """
         return self._BackupTimeBeg
@@ -18108,7 +18141,7 @@ class DescribeBackupConfigResponse(AbstractModel):
 
     @property
     def BackupTimeEnd(self):
-        r"""表示全备开始时间，[0-24*3600]， 如0:00, 1:00, 2:00 分别为 0，3600， 7200
+        r"""<p>表示全备开始时间，[0-24*3600]， 如0:00, 1:00, 2:00 分别为 0，3600， 7200</p>
         :rtype: int
         """
         return self._BackupTimeEnd
@@ -18119,7 +18152,7 @@ class DescribeBackupConfigResponse(AbstractModel):
 
     @property
     def ReserveDuration(self):
-        r"""表示保留备份时长, 单位秒，超过该时间将被清理, 七天表示为3600*24*7=604800
+        r"""<p>表示保留备份时长, 单位秒，超过该时间将被清理, 七天表示为3600<em>24</em>7=604800</p>
         :rtype: int
         """
         return self._ReserveDuration
@@ -18130,7 +18163,7 @@ class DescribeBackupConfigResponse(AbstractModel):
 
     @property
     def BackupFreq(self):
-        r"""备份频率，长度为7的数组，分别对应周一到周日的备份方式，full-全量备份，increment-增量备份
+        r"""<p>备份频率，长度为7的数组，分别对应周一到周日的备份方式，full-全量备份，increment-增量备份</p>
         :rtype: list of str
         """
         return self._BackupFreq
@@ -18141,7 +18174,7 @@ class DescribeBackupConfigResponse(AbstractModel):
 
     @property
     def BackupType(self):
-        r"""备份方式，logic-逻辑备份，snapshot-快照备份
+        r"""<p>备份方式，logic-逻辑备份，snapshot-快照备份</p>
         :rtype: str
         """
         return self._BackupType
@@ -18152,7 +18185,7 @@ class DescribeBackupConfigResponse(AbstractModel):
 
     @property
     def LogicCrossRegionsConfigUpdateTime(self):
-        r"""跨地域逻辑备份配置修改时间
+        r"""<p>跨地域逻辑备份配置修改时间</p>
         :rtype: str
         """
         return self._LogicCrossRegionsConfigUpdateTime
@@ -18163,7 +18196,7 @@ class DescribeBackupConfigResponse(AbstractModel):
 
     @property
     def LogicBackupConfig(self):
-        r"""自动逻辑备份配置
+        r"""<p>自动逻辑备份配置</p>
         :rtype: :class:`tencentcloud.cynosdb.v20190107.models.LogicBackupConfigInfo`
         """
         return self._LogicBackupConfig
@@ -18174,7 +18207,7 @@ class DescribeBackupConfigResponse(AbstractModel):
 
     @property
     def SnapshotSecondaryBackupConfig(self):
-        r"""二级快照备份配置信息
+        r"""<p>二级快照备份配置信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cynosdb.v20190107.models.BackupConfigInfo`
         """
@@ -18183,6 +18216,17 @@ class DescribeBackupConfigResponse(AbstractModel):
     @SnapshotSecondaryBackupConfig.setter
     def SnapshotSecondaryBackupConfig(self, SnapshotSecondaryBackupConfig):
         self._SnapshotSecondaryBackupConfig = SnapshotSecondaryBackupConfig
+
+    @property
+    def SparseBackupConfig(self):
+        r"""<p>稀疏备份配置</p>
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.SparseBackupConfigRsp`
+        """
+        return self._SparseBackupConfig
+
+    @SparseBackupConfig.setter
+    def SparseBackupConfig(self, SparseBackupConfig):
+        self._SparseBackupConfig = SparseBackupConfig
 
     @property
     def RequestId(self):
@@ -18209,6 +18253,9 @@ class DescribeBackupConfigResponse(AbstractModel):
         if params.get("SnapshotSecondaryBackupConfig") is not None:
             self._SnapshotSecondaryBackupConfig = BackupConfigInfo()
             self._SnapshotSecondaryBackupConfig._deserialize(params.get("SnapshotSecondaryBackupConfig"))
+        if params.get("SparseBackupConfig") is not None:
+            self._SparseBackupConfig = SparseBackupConfigRsp()
+            self._SparseBackupConfig._deserialize(params.get("SparseBackupConfig"))
         self._RequestId = params.get("RequestId")
 
 
@@ -38417,24 +38464,26 @@ class ModifyBackupConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群ID
+        :param _ClusterId: <p>集群ID</p>
         :type ClusterId: str
-        :param _BackupTimeBeg: 表示全备开始时间，[0-24*3600]， 如0:00, 1:00, 2:00 分别为 0，3600， 7200
+        :param _BackupTimeBeg: <p>表示全备开始时间，[0-24*3600]， 如0:00, 1:00, 2:00 分别为 0，3600， 7200</p>
         :type BackupTimeBeg: int
-        :param _BackupTimeEnd: 表示全备结束时间，[0-24*3600]， 如0:00, 1:00, 2:00 分别为 0，3600， 7200
+        :param _BackupTimeEnd: <p>表示全备结束时间，[0-24*3600]， 如0:00, 1:00, 2:00 分别为 0，3600， 7200</p>
         :type BackupTimeEnd: int
-        :param _ReserveDuration: 表示保留备份时长, 单位秒，超过该时间将被清理, 七天表示为3600*24*7=604800，最大为158112000
+        :param _ReserveDuration: <p>表示保留备份时长, 单位秒，超过该时间将被清理, 七天表示为3600<em>24</em>7=604800，最大为158112000</p>
         :type ReserveDuration: int
-        :param _BackupFreq: 该参数目前不支持修改，无需填写。备份频率，长度为7的数组，分别对应周一到周日的备份方式，full-全量备份，increment-增量备份
+        :param _BackupFreq: <p>该参数目前不支持修改，无需填写。备份频率，长度为7的数组，分别对应周一到周日的备份方式，full-全量备份，increment-增量备份</p>
         :type BackupFreq: list of str
-        :param _BackupType: 该参数目前不支持修改，无需填写。
+        :param _BackupType: <p>该参数目前不支持修改，无需填写。</p>
         :type BackupType: str
-        :param _LogicBackupConfig: 逻辑备份配置
+        :param _LogicBackupConfig: <p>逻辑备份配置</p>
         :type LogicBackupConfig: :class:`tencentcloud.cynosdb.v20190107.models.LogicBackupConfigInfo`
-        :param _DeleteAutoLogicBackup: 是否删除自动逻辑备份
+        :param _DeleteAutoLogicBackup: <p>是否删除自动逻辑备份</p>
         :type DeleteAutoLogicBackup: bool
-        :param _SnapshotSecondaryBackupConfig: 二级快照备份参数
+        :param _SnapshotSecondaryBackupConfig: <p>二级快照备份参数</p>
         :type SnapshotSecondaryBackupConfig: :class:`tencentcloud.cynosdb.v20190107.models.SnapshotBackupConfig`
+        :param _SparseBackupConfig: <p>稀疏备份配置</p>
+        :type SparseBackupConfig: :class:`tencentcloud.cynosdb.v20190107.models.SparseBackupConfig`
         """
         self._ClusterId = None
         self._BackupTimeBeg = None
@@ -38445,10 +38494,11 @@ class ModifyBackupConfigRequest(AbstractModel):
         self._LogicBackupConfig = None
         self._DeleteAutoLogicBackup = None
         self._SnapshotSecondaryBackupConfig = None
+        self._SparseBackupConfig = None
 
     @property
     def ClusterId(self):
-        r"""集群ID
+        r"""<p>集群ID</p>
         :rtype: str
         """
         return self._ClusterId
@@ -38459,7 +38509,7 @@ class ModifyBackupConfigRequest(AbstractModel):
 
     @property
     def BackupTimeBeg(self):
-        r"""表示全备开始时间，[0-24*3600]， 如0:00, 1:00, 2:00 分别为 0，3600， 7200
+        r"""<p>表示全备开始时间，[0-24*3600]， 如0:00, 1:00, 2:00 分别为 0，3600， 7200</p>
         :rtype: int
         """
         return self._BackupTimeBeg
@@ -38470,7 +38520,7 @@ class ModifyBackupConfigRequest(AbstractModel):
 
     @property
     def BackupTimeEnd(self):
-        r"""表示全备结束时间，[0-24*3600]， 如0:00, 1:00, 2:00 分别为 0，3600， 7200
+        r"""<p>表示全备结束时间，[0-24*3600]， 如0:00, 1:00, 2:00 分别为 0，3600， 7200</p>
         :rtype: int
         """
         return self._BackupTimeEnd
@@ -38481,7 +38531,7 @@ class ModifyBackupConfigRequest(AbstractModel):
 
     @property
     def ReserveDuration(self):
-        r"""表示保留备份时长, 单位秒，超过该时间将被清理, 七天表示为3600*24*7=604800，最大为158112000
+        r"""<p>表示保留备份时长, 单位秒，超过该时间将被清理, 七天表示为3600<em>24</em>7=604800，最大为158112000</p>
         :rtype: int
         """
         return self._ReserveDuration
@@ -38492,7 +38542,7 @@ class ModifyBackupConfigRequest(AbstractModel):
 
     @property
     def BackupFreq(self):
-        r"""该参数目前不支持修改，无需填写。备份频率，长度为7的数组，分别对应周一到周日的备份方式，full-全量备份，increment-增量备份
+        r"""<p>该参数目前不支持修改，无需填写。备份频率，长度为7的数组，分别对应周一到周日的备份方式，full-全量备份，increment-增量备份</p>
         :rtype: list of str
         """
         return self._BackupFreq
@@ -38503,7 +38553,7 @@ class ModifyBackupConfigRequest(AbstractModel):
 
     @property
     def BackupType(self):
-        r"""该参数目前不支持修改，无需填写。
+        r"""<p>该参数目前不支持修改，无需填写。</p>
         :rtype: str
         """
         return self._BackupType
@@ -38514,7 +38564,7 @@ class ModifyBackupConfigRequest(AbstractModel):
 
     @property
     def LogicBackupConfig(self):
-        r"""逻辑备份配置
+        r"""<p>逻辑备份配置</p>
         :rtype: :class:`tencentcloud.cynosdb.v20190107.models.LogicBackupConfigInfo`
         """
         return self._LogicBackupConfig
@@ -38525,7 +38575,7 @@ class ModifyBackupConfigRequest(AbstractModel):
 
     @property
     def DeleteAutoLogicBackup(self):
-        r"""是否删除自动逻辑备份
+        r"""<p>是否删除自动逻辑备份</p>
         :rtype: bool
         """
         return self._DeleteAutoLogicBackup
@@ -38536,7 +38586,7 @@ class ModifyBackupConfigRequest(AbstractModel):
 
     @property
     def SnapshotSecondaryBackupConfig(self):
-        r"""二级快照备份参数
+        r"""<p>二级快照备份参数</p>
         :rtype: :class:`tencentcloud.cynosdb.v20190107.models.SnapshotBackupConfig`
         """
         return self._SnapshotSecondaryBackupConfig
@@ -38544,6 +38594,17 @@ class ModifyBackupConfigRequest(AbstractModel):
     @SnapshotSecondaryBackupConfig.setter
     def SnapshotSecondaryBackupConfig(self, SnapshotSecondaryBackupConfig):
         self._SnapshotSecondaryBackupConfig = SnapshotSecondaryBackupConfig
+
+    @property
+    def SparseBackupConfig(self):
+        r"""<p>稀疏备份配置</p>
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.SparseBackupConfig`
+        """
+        return self._SparseBackupConfig
+
+    @SparseBackupConfig.setter
+    def SparseBackupConfig(self, SparseBackupConfig):
+        self._SparseBackupConfig = SparseBackupConfig
 
 
     def _deserialize(self, params):
@@ -38560,6 +38621,9 @@ class ModifyBackupConfigRequest(AbstractModel):
         if params.get("SnapshotSecondaryBackupConfig") is not None:
             self._SnapshotSecondaryBackupConfig = SnapshotBackupConfig()
             self._SnapshotSecondaryBackupConfig._deserialize(params.get("SnapshotSecondaryBackupConfig"))
+        if params.get("SparseBackupConfig") is not None:
+            self._SparseBackupConfig = SparseBackupConfig()
+            self._SparseBackupConfig._deserialize(params.get("SparseBackupConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -43762,6 +43826,57 @@ class Module(AbstractModel):
     def _deserialize(self, params):
         self._IsDisable = params.get("IsDisable")
         self._ModuleName = params.get("ModuleName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MonthDay(AbstractModel):
+    r"""月份日期信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Month: 月份信息
+        :type Month: int
+        :param _Day: 日期信息
+        :type Day: int
+        """
+        self._Month = None
+        self._Day = None
+
+    @property
+    def Month(self):
+        r"""月份信息
+        :rtype: int
+        """
+        return self._Month
+
+    @Month.setter
+    def Month(self, Month):
+        self._Month = Month
+
+    @property
+    def Day(self):
+        r"""日期信息
+        :rtype: int
+        """
+        return self._Day
+
+    @Day.setter
+    def Day(self, Day):
+        self._Day = Day
+
+
+    def _deserialize(self, params):
+        self._Month = params.get("Month")
+        self._Day = params.get("Day")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -54677,6 +54792,291 @@ class SnapshotBackupConfig(AbstractModel):
                 obj = CreateBackupVaultItem()
                 obj._deserialize(item)
                 self._AutoCopyVaults.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SparseBackupConfig(AbstractModel):
+    r"""稀疏备份配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SparseBackupSwitch: 稀疏备份开关：ON/OFF
+        :type SparseBackupSwitch: str
+        :param _SparseBackupConfigInfos: 稀疏备份策略列表（1-3条）
+        :type SparseBackupConfigInfos: list of SparseBackupConfigInfo
+        """
+        self._SparseBackupSwitch = None
+        self._SparseBackupConfigInfos = None
+
+    @property
+    def SparseBackupSwitch(self):
+        r"""稀疏备份开关：ON/OFF
+        :rtype: str
+        """
+        return self._SparseBackupSwitch
+
+    @SparseBackupSwitch.setter
+    def SparseBackupSwitch(self, SparseBackupSwitch):
+        self._SparseBackupSwitch = SparseBackupSwitch
+
+    @property
+    def SparseBackupConfigInfos(self):
+        r"""稀疏备份策略列表（1-3条）
+        :rtype: list of SparseBackupConfigInfo
+        """
+        return self._SparseBackupConfigInfos
+
+    @SparseBackupConfigInfos.setter
+    def SparseBackupConfigInfos(self, SparseBackupConfigInfos):
+        self._SparseBackupConfigInfos = SparseBackupConfigInfos
+
+
+    def _deserialize(self, params):
+        self._SparseBackupSwitch = params.get("SparseBackupSwitch")
+        if params.get("SparseBackupConfigInfos") is not None:
+            self._SparseBackupConfigInfos = []
+            for item in params.get("SparseBackupConfigInfos"):
+                obj = SparseBackupConfigInfo()
+                obj._deserialize(item)
+                self._SparseBackupConfigInfos.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SparseBackupConfigInfo(AbstractModel):
+    r"""稀疏备份策略配置信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OpType: 操作类型:add,modify,remove
+        :type OpType: str
+        :param _ConfigId: 配置 ID
+        :type ConfigId: str
+        :param _SparsePeriodConfig: 周期策略类型：weekly/monthly/yearly
+        :type SparsePeriodConfig: str
+        :param _SparsePeriodTime: 周期时间配置
+        :type SparsePeriodTime: :class:`tencentcloud.cynosdb.v20190107.models.SparsePeriodTime`
+        :param _SparseBackupSaveDays: 保留天数（7-7320天，最长20年）
+        :type SparseBackupSaveDays: int
+        """
+        self._OpType = None
+        self._ConfigId = None
+        self._SparsePeriodConfig = None
+        self._SparsePeriodTime = None
+        self._SparseBackupSaveDays = None
+
+    @property
+    def OpType(self):
+        r"""操作类型:add,modify,remove
+        :rtype: str
+        """
+        return self._OpType
+
+    @OpType.setter
+    def OpType(self, OpType):
+        self._OpType = OpType
+
+    @property
+    def ConfigId(self):
+        r"""配置 ID
+        :rtype: str
+        """
+        return self._ConfigId
+
+    @ConfigId.setter
+    def ConfigId(self, ConfigId):
+        self._ConfigId = ConfigId
+
+    @property
+    def SparsePeriodConfig(self):
+        r"""周期策略类型：weekly/monthly/yearly
+        :rtype: str
+        """
+        return self._SparsePeriodConfig
+
+    @SparsePeriodConfig.setter
+    def SparsePeriodConfig(self, SparsePeriodConfig):
+        self._SparsePeriodConfig = SparsePeriodConfig
+
+    @property
+    def SparsePeriodTime(self):
+        r"""周期时间配置
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.SparsePeriodTime`
+        """
+        return self._SparsePeriodTime
+
+    @SparsePeriodTime.setter
+    def SparsePeriodTime(self, SparsePeriodTime):
+        self._SparsePeriodTime = SparsePeriodTime
+
+    @property
+    def SparseBackupSaveDays(self):
+        r"""保留天数（7-7320天，最长20年）
+        :rtype: int
+        """
+        return self._SparseBackupSaveDays
+
+    @SparseBackupSaveDays.setter
+    def SparseBackupSaveDays(self, SparseBackupSaveDays):
+        self._SparseBackupSaveDays = SparseBackupSaveDays
+
+
+    def _deserialize(self, params):
+        self._OpType = params.get("OpType")
+        self._ConfigId = params.get("ConfigId")
+        self._SparsePeriodConfig = params.get("SparsePeriodConfig")
+        if params.get("SparsePeriodTime") is not None:
+            self._SparsePeriodTime = SparsePeriodTime()
+            self._SparsePeriodTime._deserialize(params.get("SparsePeriodTime"))
+        self._SparseBackupSaveDays = params.get("SparseBackupSaveDays")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SparseBackupConfigRsp(AbstractModel):
+    r"""稀疏备份配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SparseBackupSwitch: 稀疏备份开关：ON/OFF
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SparseBackupSwitch: str
+        :param _SparseBackupConfigInfos: 稀疏备份策略列表（1-3条）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SparseBackupConfigInfos: list of SparseBackupConfigInfo
+        """
+        self._SparseBackupSwitch = None
+        self._SparseBackupConfigInfos = None
+
+    @property
+    def SparseBackupSwitch(self):
+        r"""稀疏备份开关：ON/OFF
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SparseBackupSwitch
+
+    @SparseBackupSwitch.setter
+    def SparseBackupSwitch(self, SparseBackupSwitch):
+        self._SparseBackupSwitch = SparseBackupSwitch
+
+    @property
+    def SparseBackupConfigInfos(self):
+        r"""稀疏备份策略列表（1-3条）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of SparseBackupConfigInfo
+        """
+        return self._SparseBackupConfigInfos
+
+    @SparseBackupConfigInfos.setter
+    def SparseBackupConfigInfos(self, SparseBackupConfigInfos):
+        self._SparseBackupConfigInfos = SparseBackupConfigInfos
+
+
+    def _deserialize(self, params):
+        self._SparseBackupSwitch = params.get("SparseBackupSwitch")
+        if params.get("SparseBackupConfigInfos") is not None:
+            self._SparseBackupConfigInfos = []
+            for item in params.get("SparseBackupConfigInfos"):
+                obj = SparseBackupConfigInfo()
+                obj._deserialize(item)
+                self._SparseBackupConfigInfos.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SparsePeriodTime(AbstractModel):
+    r"""稀疏备份周期信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WeekDays: 按周：星期几列表，1-7，1=周一，7=周日（仅 weekly 周期使用，最多7个）
+        :type WeekDays: list of int
+        :param _Days: 按月：日期列表，1-31（仅 monthly 周期使用，最多7个）
+        :type Days: list of int
+        :param _MonthDays: 按年：月日组合列表（仅 yearly 周期使用，最多7个）
+        :type MonthDays: list of MonthDay
+        """
+        self._WeekDays = None
+        self._Days = None
+        self._MonthDays = None
+
+    @property
+    def WeekDays(self):
+        r"""按周：星期几列表，1-7，1=周一，7=周日（仅 weekly 周期使用，最多7个）
+        :rtype: list of int
+        """
+        return self._WeekDays
+
+    @WeekDays.setter
+    def WeekDays(self, WeekDays):
+        self._WeekDays = WeekDays
+
+    @property
+    def Days(self):
+        r"""按月：日期列表，1-31（仅 monthly 周期使用，最多7个）
+        :rtype: list of int
+        """
+        return self._Days
+
+    @Days.setter
+    def Days(self, Days):
+        self._Days = Days
+
+    @property
+    def MonthDays(self):
+        r"""按年：月日组合列表（仅 yearly 周期使用，最多7个）
+        :rtype: list of MonthDay
+        """
+        return self._MonthDays
+
+    @MonthDays.setter
+    def MonthDays(self, MonthDays):
+        self._MonthDays = MonthDays
+
+
+    def _deserialize(self, params):
+        self._WeekDays = params.get("WeekDays")
+        self._Days = params.get("Days")
+        if params.get("MonthDays") is not None:
+            self._MonthDays = []
+            for item in params.get("MonthDays"):
+                obj = MonthDay()
+                obj._deserialize(item)
+                self._MonthDays.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

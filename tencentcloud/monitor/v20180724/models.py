@@ -3567,6 +3567,145 @@ class CLSNotice(AbstractModel):
         
 
 
+class CheckAddressByPrometheusRequest(AbstractModel):
+    r"""CheckAddressByPrometheus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>实例id</p>
+        :type InstanceId: str
+        :param _Target: <p>探测地址</p>
+        :type Target: str
+        :param _ProbeProtocol: <p>探测方式。tcp或http，默认是tcp</p>
+        :type ProbeProtocol: str
+        """
+        self._InstanceId = None
+        self._Target = None
+        self._ProbeProtocol = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例id</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Target(self):
+        r"""<p>探测地址</p>
+        :rtype: str
+        """
+        return self._Target
+
+    @Target.setter
+    def Target(self, Target):
+        self._Target = Target
+
+    @property
+    def ProbeProtocol(self):
+        r"""<p>探测方式。tcp或http，默认是tcp</p>
+        :rtype: str
+        """
+        return self._ProbeProtocol
+
+    @ProbeProtocol.setter
+    def ProbeProtocol(self, ProbeProtocol):
+        self._ProbeProtocol = ProbeProtocol
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Target = params.get("Target")
+        self._ProbeProtocol = params.get("ProbeProtocol")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CheckAddressByPrometheusResponse(AbstractModel):
+    r"""CheckAddressByPrometheus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Target: <p>实际探测的地址</p>
+        :type Target: str
+        :param _Success: <p>探测是否成功</p>
+        :type Success: bool
+        :param _Message: <p>探测失败时返回错误信息</p>
+        :type Message: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Target = None
+        self._Success = None
+        self._Message = None
+        self._RequestId = None
+
+    @property
+    def Target(self):
+        r"""<p>实际探测的地址</p>
+        :rtype: str
+        """
+        return self._Target
+
+    @Target.setter
+    def Target(self, Target):
+        self._Target = Target
+
+    @property
+    def Success(self):
+        r"""<p>探测是否成功</p>
+        :rtype: bool
+        """
+        return self._Success
+
+    @Success.setter
+    def Success(self, Success):
+        self._Success = Success
+
+    @property
+    def Message(self):
+        r"""<p>探测失败时返回错误信息</p>
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Target = params.get("Target")
+        self._Success = params.get("Success")
+        self._Message = params.get("Message")
+        self._RequestId = params.get("RequestId")
+
+
 class CleanGrafanaInstanceRequest(AbstractModel):
     r"""CleanGrafanaInstance请求参数结构体
 

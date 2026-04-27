@@ -95,6 +95,29 @@ class MonitorClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CheckAddressByPrometheus(self, request):
+        r"""检查用户地址联通性
+
+        :param request: Request instance for CheckAddressByPrometheus.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.CheckAddressByPrometheusRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.CheckAddressByPrometheusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CheckAddressByPrometheus", params, headers=headers)
+            response = json.loads(body)
+            model = models.CheckAddressByPrometheusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CleanGrafanaInstance(self, request):
         r"""强制销毁 Grafana 实例
 

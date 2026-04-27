@@ -95,6 +95,29 @@ class PostgresClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CloseAuditService(self, request):
+        r"""关闭数据库实例的审计功能
+
+        :param request: Request instance for CloseAuditService.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.CloseAuditServiceRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.CloseAuditServiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CloseAuditService", params, headers=headers)
+            response = json.loads(body)
+            model = models.CloseAuditServiceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CloseDBExtranetAccess(self, request):
         r"""本接口（CloseDBExtranetAccess）用于关闭实例公网地址。
 
@@ -132,6 +155,29 @@ class PostgresClient(AbstractClient):
             body = self.call("CreateAccount", params, headers=headers)
             response = json.loads(body)
             model = models.CreateAccountResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateAuditLogFile(self, request):
+        r"""创建审计日志文件
+
+        :param request: Request instance for CreateAuditLogFile.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.CreateAuditLogFileRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.CreateAuditLogFileResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAuditLogFile", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateAuditLogFileResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -373,6 +419,29 @@ class PostgresClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteAuditLogFile(self, request):
+        r"""删除审计日志文件
+
+        :param request: Request instance for DeleteAuditLogFile.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.DeleteAuditLogFileRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.DeleteAuditLogFileResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteAuditLogFile", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteAuditLogFileResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteBackupPlan(self, request):
         r"""删除备份策略
 
@@ -571,6 +640,75 @@ class PostgresClient(AbstractClient):
             body = self.call("DescribeAccounts", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeAccountsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAuditInstanceList(self, request):
+        r"""查询审计实例列表
+
+        :param request: Request instance for DescribeAuditInstanceList.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeAuditInstanceListRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.DescribeAuditInstanceListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAuditInstanceList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAuditInstanceListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAuditLogFiles(self, request):
+        r"""查询审计日志文件
+
+        :param request: Request instance for DescribeAuditLogFiles.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeAuditLogFilesRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.DescribeAuditLogFilesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAuditLogFiles", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAuditLogFilesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAuditLogs(self, request):
+        r"""查询数据库审计日志
+
+        :param request: Request instance for DescribeAuditLogs.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeAuditLogsRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.DescribeAuditLogsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAuditLogs", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAuditLogsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1641,6 +1779,29 @@ class PostgresClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyAuditService(self, request):
+        r"""修改数据库实例的审计功能
+
+        :param request: Request instance for ModifyAuditService.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.ModifyAuditServiceRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.ModifyAuditServiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyAuditService", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyAuditServiceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyBackupDownloadRestriction(self, request):
         r"""本接口（ModifyBackupDownloadRestriction）用于修改备份文件下载限制。
 
@@ -2117,6 +2278,29 @@ class PostgresClient(AbstractClient):
             body = self.call("OpenAccountCAM", params, headers=headers)
             response = json.loads(body)
             model = models.OpenAccountCAMResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def OpenAuditService(self, request):
+        r"""开启数据库实例的审计功能
+
+        :param request: Request instance for OpenAuditService.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.OpenAuditServiceRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.OpenAuditServiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("OpenAuditService", params, headers=headers)
+            response = json.loads(body)
+            model = models.OpenAuditServiceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

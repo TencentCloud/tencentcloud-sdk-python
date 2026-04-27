@@ -2045,22 +2045,26 @@ class CreateSubDomainRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CustomerId: 企业Id
+        :param _CustomerId: <p>企业Id</p>
         :type CustomerId: int
-        :param _SubDomain: 子域名
+        :param _SubDomain: <p>子域名</p>
         :type SubDomain: str
-        :param _Ip: Ip
+        :param _Ip: <p>Ip</p>
         :type Ip: str
-        :param _Country: 国家
+        :param _Country: <p>国家</p>
         :type Country: str
-        :param _Province: 省
+        :param _Province: <p>省</p>
         :type Province: str
-        :param _City: 城市
+        :param _City: <p>城市</p>
         :type City: str
-        :param _Isp: Isp
+        :param _Isp: <p>Isp</p>
         :type Isp: str
-        :param _EnterpriseUid: 子公司
+        :param _EnterpriseUid: <p>子公司</p>
         :type EnterpriseUid: str
+        :param _DnsType: <p>DNS解析类型。A、AAAA、CNAME等</p>
+        :type DnsType: str
+        :param _DnsValue: <p>DNS解析值。域名或者ip</p>
+        :type DnsValue: str
         """
         self._CustomerId = None
         self._SubDomain = None
@@ -2070,10 +2074,12 @@ class CreateSubDomainRequest(AbstractModel):
         self._City = None
         self._Isp = None
         self._EnterpriseUid = None
+        self._DnsType = None
+        self._DnsValue = None
 
     @property
     def CustomerId(self):
-        r"""企业Id
+        r"""<p>企业Id</p>
         :rtype: int
         """
         return self._CustomerId
@@ -2084,7 +2090,7 @@ class CreateSubDomainRequest(AbstractModel):
 
     @property
     def SubDomain(self):
-        r"""子域名
+        r"""<p>子域名</p>
         :rtype: str
         """
         return self._SubDomain
@@ -2095,7 +2101,7 @@ class CreateSubDomainRequest(AbstractModel):
 
     @property
     def Ip(self):
-        r"""Ip
+        r"""<p>Ip</p>
         :rtype: str
         """
         return self._Ip
@@ -2106,7 +2112,7 @@ class CreateSubDomainRequest(AbstractModel):
 
     @property
     def Country(self):
-        r"""国家
+        r"""<p>国家</p>
         :rtype: str
         """
         return self._Country
@@ -2117,7 +2123,7 @@ class CreateSubDomainRequest(AbstractModel):
 
     @property
     def Province(self):
-        r"""省
+        r"""<p>省</p>
         :rtype: str
         """
         return self._Province
@@ -2128,7 +2134,7 @@ class CreateSubDomainRequest(AbstractModel):
 
     @property
     def City(self):
-        r"""城市
+        r"""<p>城市</p>
         :rtype: str
         """
         return self._City
@@ -2139,7 +2145,7 @@ class CreateSubDomainRequest(AbstractModel):
 
     @property
     def Isp(self):
-        r"""Isp
+        r"""<p>Isp</p>
         :rtype: str
         """
         return self._Isp
@@ -2150,7 +2156,7 @@ class CreateSubDomainRequest(AbstractModel):
 
     @property
     def EnterpriseUid(self):
-        r"""子公司
+        r"""<p>子公司</p>
         :rtype: str
         """
         return self._EnterpriseUid
@@ -2158,6 +2164,28 @@ class CreateSubDomainRequest(AbstractModel):
     @EnterpriseUid.setter
     def EnterpriseUid(self, EnterpriseUid):
         self._EnterpriseUid = EnterpriseUid
+
+    @property
+    def DnsType(self):
+        r"""<p>DNS解析类型。A、AAAA、CNAME等</p>
+        :rtype: str
+        """
+        return self._DnsType
+
+    @DnsType.setter
+    def DnsType(self, DnsType):
+        self._DnsType = DnsType
+
+    @property
+    def DnsValue(self):
+        r"""<p>DNS解析值。域名或者ip</p>
+        :rtype: str
+        """
+        return self._DnsValue
+
+    @DnsValue.setter
+    def DnsValue(self, DnsValue):
+        self._DnsValue = DnsValue
 
 
     def _deserialize(self, params):
@@ -2169,6 +2197,8 @@ class CreateSubDomainRequest(AbstractModel):
         self._City = params.get("City")
         self._Isp = params.get("Isp")
         self._EnterpriseUid = params.get("EnterpriseUid")
+        self._DnsType = params.get("DnsType")
+        self._DnsValue = params.get("DnsValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2186,7 +2216,7 @@ class CreateSubDomainResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: Id
+        :param _Id: <p>Id</p>
         :type Id: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2196,7 +2226,7 @@ class CreateSubDomainResponse(AbstractModel):
 
     @property
     def Id(self):
-        r"""Id
+        r"""<p>Id</p>
         :rtype: int
         """
         return self._Id
@@ -16560,36 +16590,40 @@ class DisplaySubDomain(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 主键ID
+        :param _Id: <p>主键ID</p>
         :type Id: int
-        :param _SubDomain: 子域名
+        :param _SubDomain: <p>子域名</p>
         :type SubDomain: str
-        :param _Ip: Ip
+        :param _Ip: <p>Ip</p>
         :type Ip: str
-        :param _Country: 国家
+        :param _Country: <p>国家</p>
         :type Country: str
-        :param _Province: 省份
+        :param _Province: <p>省份</p>
         :type Province: str
-        :param _City: 城市
+        :param _City: <p>城市</p>
         :type City: str
-        :param _Isp: 互联网服务提供商
+        :param _Isp: <p>互联网服务提供商</p>
         :type Isp: str
-        :param _DisplayToolCommon: 公共字段
+        :param _DisplayToolCommon: <p>公共字段</p>
         :type DisplayToolCommon: :class:`tencentcloud.ctem.v20231128.models.DisplayToolCommon`
-        :param _IsCloudAsset: 是否为云资产：0-非云资产 1-是云资产
+        :param _IsCloudAsset: <p>是否为云资产：0-非云资产 1-是云资产</p>
         :type IsCloudAsset: int
-        :param _CloudAssetStatus: 云资产是否下线：-1-已下线 0-正常
+        :param _CloudAssetStatus: <p>云资产是否下线：-1-已下线 0-正常</p>
         :type CloudAssetStatus: int
-        :param _AvailabilityRate: 可用率（百分比）
+        :param _AvailabilityRate: <p>可用率（百分比）</p>
         :type AvailabilityRate: int
-        :param _AvailabilityState: 可用状态 1:异常 0:正常
+        :param _AvailabilityState: <p>可用状态 1:异常 0:正常</p>
         :type AvailabilityState: int
-        :param _AnalysisState: 域名解析状态 1:异常 0:正常
+        :param _AnalysisState: <p>域名解析状态 1:异常 0:正常</p>
         :type AnalysisState: int
-        :param _AverageDelay: 平均时延：单位ms
+        :param _AverageDelay: <p>平均时延：单位ms</p>
         :type AverageDelay: int
-        :param _LossRate: 丢包率（百分比）
+        :param _LossRate: <p>丢包率（百分比）</p>
         :type LossRate: int
+        :param _DnsType: <p>DNS解析类型</p><p>A、AAAA、MX、CNAME、NX</p>
+        :type DnsType: str
+        :param _DnsValue: <p>DNS解析值</p>
+        :type DnsValue: str
         """
         self._Id = None
         self._SubDomain = None
@@ -16606,10 +16640,12 @@ class DisplaySubDomain(AbstractModel):
         self._AnalysisState = None
         self._AverageDelay = None
         self._LossRate = None
+        self._DnsType = None
+        self._DnsValue = None
 
     @property
     def Id(self):
-        r"""主键ID
+        r"""<p>主键ID</p>
         :rtype: int
         """
         return self._Id
@@ -16620,7 +16656,7 @@ class DisplaySubDomain(AbstractModel):
 
     @property
     def SubDomain(self):
-        r"""子域名
+        r"""<p>子域名</p>
         :rtype: str
         """
         return self._SubDomain
@@ -16631,7 +16667,7 @@ class DisplaySubDomain(AbstractModel):
 
     @property
     def Ip(self):
-        r"""Ip
+        r"""<p>Ip</p>
         :rtype: str
         """
         return self._Ip
@@ -16642,7 +16678,7 @@ class DisplaySubDomain(AbstractModel):
 
     @property
     def Country(self):
-        r"""国家
+        r"""<p>国家</p>
         :rtype: str
         """
         return self._Country
@@ -16653,7 +16689,7 @@ class DisplaySubDomain(AbstractModel):
 
     @property
     def Province(self):
-        r"""省份
+        r"""<p>省份</p>
         :rtype: str
         """
         return self._Province
@@ -16664,7 +16700,7 @@ class DisplaySubDomain(AbstractModel):
 
     @property
     def City(self):
-        r"""城市
+        r"""<p>城市</p>
         :rtype: str
         """
         return self._City
@@ -16675,7 +16711,7 @@ class DisplaySubDomain(AbstractModel):
 
     @property
     def Isp(self):
-        r"""互联网服务提供商
+        r"""<p>互联网服务提供商</p>
         :rtype: str
         """
         return self._Isp
@@ -16686,7 +16722,7 @@ class DisplaySubDomain(AbstractModel):
 
     @property
     def DisplayToolCommon(self):
-        r"""公共字段
+        r"""<p>公共字段</p>
         :rtype: :class:`tencentcloud.ctem.v20231128.models.DisplayToolCommon`
         """
         return self._DisplayToolCommon
@@ -16697,7 +16733,7 @@ class DisplaySubDomain(AbstractModel):
 
     @property
     def IsCloudAsset(self):
-        r"""是否为云资产：0-非云资产 1-是云资产
+        r"""<p>是否为云资产：0-非云资产 1-是云资产</p>
         :rtype: int
         """
         return self._IsCloudAsset
@@ -16708,7 +16744,7 @@ class DisplaySubDomain(AbstractModel):
 
     @property
     def CloudAssetStatus(self):
-        r"""云资产是否下线：-1-已下线 0-正常
+        r"""<p>云资产是否下线：-1-已下线 0-正常</p>
         :rtype: int
         """
         return self._CloudAssetStatus
@@ -16719,7 +16755,7 @@ class DisplaySubDomain(AbstractModel):
 
     @property
     def AvailabilityRate(self):
-        r"""可用率（百分比）
+        r"""<p>可用率（百分比）</p>
         :rtype: int
         """
         return self._AvailabilityRate
@@ -16730,7 +16766,7 @@ class DisplaySubDomain(AbstractModel):
 
     @property
     def AvailabilityState(self):
-        r"""可用状态 1:异常 0:正常
+        r"""<p>可用状态 1:异常 0:正常</p>
         :rtype: int
         """
         return self._AvailabilityState
@@ -16741,7 +16777,7 @@ class DisplaySubDomain(AbstractModel):
 
     @property
     def AnalysisState(self):
-        r"""域名解析状态 1:异常 0:正常
+        r"""<p>域名解析状态 1:异常 0:正常</p>
         :rtype: int
         """
         return self._AnalysisState
@@ -16752,7 +16788,7 @@ class DisplaySubDomain(AbstractModel):
 
     @property
     def AverageDelay(self):
-        r"""平均时延：单位ms
+        r"""<p>平均时延：单位ms</p>
         :rtype: int
         """
         return self._AverageDelay
@@ -16763,7 +16799,7 @@ class DisplaySubDomain(AbstractModel):
 
     @property
     def LossRate(self):
-        r"""丢包率（百分比）
+        r"""<p>丢包率（百分比）</p>
         :rtype: int
         """
         return self._LossRate
@@ -16771,6 +16807,28 @@ class DisplaySubDomain(AbstractModel):
     @LossRate.setter
     def LossRate(self, LossRate):
         self._LossRate = LossRate
+
+    @property
+    def DnsType(self):
+        r"""<p>DNS解析类型</p><p>A、AAAA、MX、CNAME、NX</p>
+        :rtype: str
+        """
+        return self._DnsType
+
+    @DnsType.setter
+    def DnsType(self, DnsType):
+        self._DnsType = DnsType
+
+    @property
+    def DnsValue(self):
+        r"""<p>DNS解析值</p>
+        :rtype: str
+        """
+        return self._DnsValue
+
+    @DnsValue.setter
+    def DnsValue(self, DnsValue):
+        self._DnsValue = DnsValue
 
 
     def _deserialize(self, params):
@@ -16791,6 +16849,8 @@ class DisplaySubDomain(AbstractModel):
         self._AnalysisState = params.get("AnalysisState")
         self._AverageDelay = params.get("AverageDelay")
         self._LossRate = params.get("LossRate")
+        self._DnsType = params.get("DnsType")
+        self._DnsValue = params.get("DnsValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
