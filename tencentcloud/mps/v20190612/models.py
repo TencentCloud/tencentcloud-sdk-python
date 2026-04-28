@@ -72839,7 +72839,7 @@ class SSAIConf(AbstractModel):
         :type MultiRequest: bool
         :param _DashOriginManifestType: <p>dash周期类型：SinglePeriod 或 MultiPeriod，默认 MultiPeriod</p>
         :type DashOriginManifestType: str
-        :param _SlateOnEmptyVast: <p>Empty VAST时是否播放Slate，默认开启(true)</p>
+        :param _SlateOnEmptyVast: <p>广告为空时是否插入Slate，默认开启(true)</p>
         :type SlateOnEmptyVast: bool
         :param _SCTEMarkerDuration: <p>SCTE marker duration，默认180，范围0-3600</p>
         :type SCTEMarkerDuration: int
@@ -73060,7 +73060,7 @@ class SSAIConf(AbstractModel):
 
     @property
     def SlateOnEmptyVast(self):
-        r"""<p>Empty VAST时是否播放Slate，默认开启(true)</p>
+        r"""<p>广告为空时是否插入Slate，默认开启(true)</p>
         :rtype: bool
         """
         return self._SlateOnEmptyVast

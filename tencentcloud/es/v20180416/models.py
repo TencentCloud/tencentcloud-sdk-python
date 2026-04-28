@@ -20210,64 +20210,64 @@ class ServerlessSpace(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SpaceId: Serverless索引空间ID
+        :param _SpaceId: <p>Serverless索引空间ID</p>
         :type SpaceId: str
-        :param _SpaceName: Serverless索引空间名
+        :param _SpaceName: <p>Serverless索引空间名</p>
         :type SpaceName: str
-        :param _Status: Serverless索引空间状态，0正常，-1已删除
+        :param _Status: <p>Serverless索引空间状态</p><p>枚举值：</p><ul><li>0： 创建中</li><li>1： 正常</li><li>2： 流程中</li><li>-3： 已删除</li><li>-4： 隔离中</li></ul>
         :type Status: int
-        :param _CreateTime: 创建日期
+        :param _CreateTime: <p>创建日期</p>
         :type CreateTime: str
-        :param _IndexCount: 空间内索引数量
+        :param _IndexCount: <p>空间内索引数量</p>
         :type IndexCount: int
-        :param _KibanaUrl: kibana公网uri
+        :param _KibanaUrl: <p>kibana公网uri</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type KibanaUrl: str
-        :param _KibanaPrivateUrl: kibana内网url
+        :param _KibanaPrivateUrl: <p>kibana内网url</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type KibanaPrivateUrl: str
-        :param _IndexAccessUrl: 空间内网访问地址
+        :param _IndexAccessUrl: <p>空间内网访问地址</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IndexAccessUrl: str
-        :param _KibanaPublicAcl: 空间白名单
+        :param _KibanaPublicAcl: <p>空间白名单</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type KibanaPublicAcl: :class:`tencentcloud.es.v20180416.models.EsAcl`
-        :param _KibanaEmbedUrl: 空间检索分析域名
+        :param _KibanaEmbedUrl: <p>空间检索分析域名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type KibanaEmbedUrl: str
-        :param _DiDataList: 数据联路
+        :param _DiDataList: <p>数据联路</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DiDataList: :class:`tencentcloud.es.v20180416.models.DiData`
-        :param _VpcInfo: 空间vpc信息
+        :param _VpcInfo: <p>空间vpc信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type VpcInfo: list of VpcInfo
-        :param _Region: 地域
+        :param _Region: <p>地域</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Region: str
-        :param _Zone: 可用区
+        :param _Zone: <p>可用区</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Zone: str
-        :param _EnableKibanaPublicAccess: kibana公网开关，0关闭，1开启
+        :param _EnableKibanaPublicAccess: <p>kibana公网开关，0关闭，1开启</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type EnableKibanaPublicAccess: int
-        :param _EnableKibanaPrivateAccess: kibana内网开关，0关闭，1开启
+        :param _EnableKibanaPrivateAccess: <p>kibana内网开关，0关闭，1开启</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type EnableKibanaPrivateAccess: int
-        :param _AppId: 空间所属appid
+        :param _AppId: <p>空间所属appid</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AppId: int
-        :param _KibanaLanguage: //默认en， 可选zh-CN
+        :param _KibanaLanguage: <p>//默认en， 可选zh-CN</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type KibanaLanguage: str
-        :param _ClusterType: 0
+        :param _ClusterType: <p>0</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterType: int
-        :param _TagList: 空间标签信息
+        :param _TagList: <p>空间标签信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TagList: list of TagInfo
-        :param _EnableMcpAccess: 是否开启mcp服务
+        :param _EnableMcpAccess: <p>是否开启mcp服务</p>
         :type EnableMcpAccess: int
-        :param _McpAccess: mcp的访问地址
+        :param _McpAccess: <p>mcp的访问地址</p>
         :type McpAccess: str
         """
         self._SpaceId = None
@@ -20295,7 +20295,7 @@ class ServerlessSpace(AbstractModel):
 
     @property
     def SpaceId(self):
-        r"""Serverless索引空间ID
+        r"""<p>Serverless索引空间ID</p>
         :rtype: str
         """
         return self._SpaceId
@@ -20306,7 +20306,7 @@ class ServerlessSpace(AbstractModel):
 
     @property
     def SpaceName(self):
-        r"""Serverless索引空间名
+        r"""<p>Serverless索引空间名</p>
         :rtype: str
         """
         return self._SpaceName
@@ -20317,7 +20317,7 @@ class ServerlessSpace(AbstractModel):
 
     @property
     def Status(self):
-        r"""Serverless索引空间状态，0正常，-1已删除
+        r"""<p>Serverless索引空间状态</p><p>枚举值：</p><ul><li>0： 创建中</li><li>1： 正常</li><li>2： 流程中</li><li>-3： 已删除</li><li>-4： 隔离中</li></ul>
         :rtype: int
         """
         return self._Status
@@ -20328,7 +20328,7 @@ class ServerlessSpace(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""创建日期
+        r"""<p>创建日期</p>
         :rtype: str
         """
         return self._CreateTime
@@ -20339,7 +20339,7 @@ class ServerlessSpace(AbstractModel):
 
     @property
     def IndexCount(self):
-        r"""空间内索引数量
+        r"""<p>空间内索引数量</p>
         :rtype: int
         """
         return self._IndexCount
@@ -20350,7 +20350,7 @@ class ServerlessSpace(AbstractModel):
 
     @property
     def KibanaUrl(self):
-        r"""kibana公网uri
+        r"""<p>kibana公网uri</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -20362,7 +20362,7 @@ class ServerlessSpace(AbstractModel):
 
     @property
     def KibanaPrivateUrl(self):
-        r"""kibana内网url
+        r"""<p>kibana内网url</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -20374,7 +20374,7 @@ class ServerlessSpace(AbstractModel):
 
     @property
     def IndexAccessUrl(self):
-        r"""空间内网访问地址
+        r"""<p>空间内网访问地址</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -20386,7 +20386,7 @@ class ServerlessSpace(AbstractModel):
 
     @property
     def KibanaPublicAcl(self):
-        r"""空间白名单
+        r"""<p>空间白名单</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.es.v20180416.models.EsAcl`
         """
@@ -20398,7 +20398,7 @@ class ServerlessSpace(AbstractModel):
 
     @property
     def KibanaEmbedUrl(self):
-        r"""空间检索分析域名
+        r"""<p>空间检索分析域名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -20410,7 +20410,7 @@ class ServerlessSpace(AbstractModel):
 
     @property
     def DiDataList(self):
-        r"""数据联路
+        r"""<p>数据联路</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.es.v20180416.models.DiData`
         """
@@ -20422,7 +20422,7 @@ class ServerlessSpace(AbstractModel):
 
     @property
     def VpcInfo(self):
-        r"""空间vpc信息
+        r"""<p>空间vpc信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of VpcInfo
         """
@@ -20434,7 +20434,7 @@ class ServerlessSpace(AbstractModel):
 
     @property
     def Region(self):
-        r"""地域
+        r"""<p>地域</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -20446,7 +20446,7 @@ class ServerlessSpace(AbstractModel):
 
     @property
     def Zone(self):
-        r"""可用区
+        r"""<p>可用区</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -20458,7 +20458,7 @@ class ServerlessSpace(AbstractModel):
 
     @property
     def EnableKibanaPublicAccess(self):
-        r"""kibana公网开关，0关闭，1开启
+        r"""<p>kibana公网开关，0关闭，1开启</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -20470,7 +20470,7 @@ class ServerlessSpace(AbstractModel):
 
     @property
     def EnableKibanaPrivateAccess(self):
-        r"""kibana内网开关，0关闭，1开启
+        r"""<p>kibana内网开关，0关闭，1开启</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -20482,7 +20482,7 @@ class ServerlessSpace(AbstractModel):
 
     @property
     def AppId(self):
-        r"""空间所属appid
+        r"""<p>空间所属appid</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -20494,7 +20494,7 @@ class ServerlessSpace(AbstractModel):
 
     @property
     def KibanaLanguage(self):
-        r"""//默认en， 可选zh-CN
+        r"""<p>//默认en， 可选zh-CN</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -20506,7 +20506,7 @@ class ServerlessSpace(AbstractModel):
 
     @property
     def ClusterType(self):
-        r"""0
+        r"""<p>0</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -20518,7 +20518,7 @@ class ServerlessSpace(AbstractModel):
 
     @property
     def TagList(self):
-        r"""空间标签信息
+        r"""<p>空间标签信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TagInfo
         """
@@ -20530,7 +20530,7 @@ class ServerlessSpace(AbstractModel):
 
     @property
     def EnableMcpAccess(self):
-        r"""是否开启mcp服务
+        r"""<p>是否开启mcp服务</p>
         :rtype: int
         """
         return self._EnableMcpAccess
@@ -20541,7 +20541,7 @@ class ServerlessSpace(AbstractModel):
 
     @property
     def McpAccess(self):
-        r"""mcp的访问地址
+        r"""<p>mcp的访问地址</p>
         :rtype: str
         """
         return self._McpAccess

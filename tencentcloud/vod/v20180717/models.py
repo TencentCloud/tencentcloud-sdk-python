@@ -61063,21 +61063,20 @@ class ModifyEventConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        :param _SubAppId: <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
         :type SubAppId: int
-        :param _Mode: 接收事件通知的方式。
-<li>PUSH：[HTTP 回调通知](https://cloud.tencent.com/document/product/266/33779)；</li>
-<li>PULL：[基于消息队列的可靠通知](https://cloud.tencent.com/document/product/266/33779)。</li>
+        :param _Mode: <p>接收事件通知的方式。</p><li>PUSH：[HTTP 回调通知](https://cloud.tencent.com/document/product/266/33779)；</li><li>PULL：[基于消息队列的可靠通知](https://cloud.tencent.com/document/product/266/33779)。</li>
         :type Mode: str
-        :param _NotificationUrl: 采用 [HTTP 回调通知](https://cloud.tencent.com/document/product/266/33779) 接收方式时，用于接收 3.0 格式回调的地址。
-注意：如果带 NotificationUrl  参数且值为空字符串时将会清空 3.0 格式回调地址。
+        :param _NotificationUrl: <p>采用 <a href="https://cloud.tencent.com/document/product/266/33779">HTTP 回调通知</a> 接收方式时，用于接收 3.0 格式回调的地址。<br>注意：如果带 NotificationUrl  参数且值为空字符串时将会清空 3.0 格式回调地址。</p>
         :type NotificationUrl: str
-        :param _UploadMediaCompleteEventSwitch: 是否接收 [视频上传完成](https://cloud.tencent.com/document/product/266/7830) 事件通知， 默认 "OFF" 为忽略该事件通知，"ON" 为接收事件通知。
+        :param _UploadMediaCompleteEventSwitch: <p>是否接收 <a href="https://cloud.tencent.com/document/product/266/7830">视频上传完成</a> 事件通知， 默认 &quot;OFF&quot; 为忽略该事件通知，&quot;ON&quot; 为接收事件通知。</p>
         :type UploadMediaCompleteEventSwitch: str
-        :param _DeleteMediaCompleteEventSwitch: 是否接收 [视频删除完成](https://cloud.tencent.com/document/product/266/13434) 事件通知，  默认 "OFF" 为忽略该事件通知，"ON" 为接收事件通知。
+        :param _DeleteMediaCompleteEventSwitch: <p>是否接收 <a href="https://cloud.tencent.com/document/product/266/13434">视频删除完成</a> 事件通知，  默认 &quot;OFF&quot; 为忽略该事件通知，&quot;ON&quot; 为接收事件通知。</p>
         :type DeleteMediaCompleteEventSwitch: str
-        :param _PersistenceCompleteEventSwitch: 是否接收剪辑固化完成事件通知，  默认 "OFF" 为忽略该事件通知，"ON" 为接收事件通知。
+        :param _PersistenceCompleteEventSwitch: <p>是否接收剪辑固化完成事件通知，  默认 &quot;OFF&quot; 为忽略该事件通知，&quot;ON&quot; 为接收事件通知。</p>
         :type PersistenceCompleteEventSwitch: str
+        :param _SignKey: <p>回调密钥，由大小写字母及数字组成，最长32字符。配置后将在回调中发送<code>Sign</code>与<code>T</code>字段，可用于鉴权。</p><ul><li><code>Sign</code>：string类型。事件通知安全签名 Sign = MD5（SignKey + T）。说明：腾讯云把加密 SignKey 和 T 进行字符串拼接后通过 MD5 计算得出 Sign 值，并将其放在通知消息里，您的后台服务器在收到通知消息后可以根据同样的算法确认 Sign 是否正确，进而确认消息是否确实来自腾讯云后台。</li><li><code>T</code>：int64类型。过期时间，事件通知签名过期 UNIX 时间戳。来自腾讯云的消息通知默认过期时间是10分钟，如果一条消息通知中的 t 值所指定的时间已经过期，则可以判定这条通知无效，进而可以防止网络重放攻击。T 的格式为十进制 UNIX 时间戳，即从1970年01月01日（UTC/GMT 的午夜）开始所经过的秒数。</li></ul>
+        :type SignKey: str
         """
         self._SubAppId = None
         self._Mode = None
@@ -61085,10 +61084,11 @@ class ModifyEventConfigRequest(AbstractModel):
         self._UploadMediaCompleteEventSwitch = None
         self._DeleteMediaCompleteEventSwitch = None
         self._PersistenceCompleteEventSwitch = None
+        self._SignKey = None
 
     @property
     def SubAppId(self):
-        r"""<b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        r"""<p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
         :rtype: int
         """
         return self._SubAppId
@@ -61099,9 +61099,7 @@ class ModifyEventConfigRequest(AbstractModel):
 
     @property
     def Mode(self):
-        r"""接收事件通知的方式。
-<li>PUSH：[HTTP 回调通知](https://cloud.tencent.com/document/product/266/33779)；</li>
-<li>PULL：[基于消息队列的可靠通知](https://cloud.tencent.com/document/product/266/33779)。</li>
+        r"""<p>接收事件通知的方式。</p><li>PUSH：[HTTP 回调通知](https://cloud.tencent.com/document/product/266/33779)；</li><li>PULL：[基于消息队列的可靠通知](https://cloud.tencent.com/document/product/266/33779)。</li>
         :rtype: str
         """
         return self._Mode
@@ -61112,8 +61110,7 @@ class ModifyEventConfigRequest(AbstractModel):
 
     @property
     def NotificationUrl(self):
-        r"""采用 [HTTP 回调通知](https://cloud.tencent.com/document/product/266/33779) 接收方式时，用于接收 3.0 格式回调的地址。
-注意：如果带 NotificationUrl  参数且值为空字符串时将会清空 3.0 格式回调地址。
+        r"""<p>采用 <a href="https://cloud.tencent.com/document/product/266/33779">HTTP 回调通知</a> 接收方式时，用于接收 3.0 格式回调的地址。<br>注意：如果带 NotificationUrl  参数且值为空字符串时将会清空 3.0 格式回调地址。</p>
         :rtype: str
         """
         return self._NotificationUrl
@@ -61124,7 +61121,7 @@ class ModifyEventConfigRequest(AbstractModel):
 
     @property
     def UploadMediaCompleteEventSwitch(self):
-        r"""是否接收 [视频上传完成](https://cloud.tencent.com/document/product/266/7830) 事件通知， 默认 "OFF" 为忽略该事件通知，"ON" 为接收事件通知。
+        r"""<p>是否接收 <a href="https://cloud.tencent.com/document/product/266/7830">视频上传完成</a> 事件通知， 默认 &quot;OFF&quot; 为忽略该事件通知，&quot;ON&quot; 为接收事件通知。</p>
         :rtype: str
         """
         return self._UploadMediaCompleteEventSwitch
@@ -61135,7 +61132,7 @@ class ModifyEventConfigRequest(AbstractModel):
 
     @property
     def DeleteMediaCompleteEventSwitch(self):
-        r"""是否接收 [视频删除完成](https://cloud.tencent.com/document/product/266/13434) 事件通知，  默认 "OFF" 为忽略该事件通知，"ON" 为接收事件通知。
+        r"""<p>是否接收 <a href="https://cloud.tencent.com/document/product/266/13434">视频删除完成</a> 事件通知，  默认 &quot;OFF&quot; 为忽略该事件通知，&quot;ON&quot; 为接收事件通知。</p>
         :rtype: str
         """
         return self._DeleteMediaCompleteEventSwitch
@@ -61146,7 +61143,7 @@ class ModifyEventConfigRequest(AbstractModel):
 
     @property
     def PersistenceCompleteEventSwitch(self):
-        r"""是否接收剪辑固化完成事件通知，  默认 "OFF" 为忽略该事件通知，"ON" 为接收事件通知。
+        r"""<p>是否接收剪辑固化完成事件通知，  默认 &quot;OFF&quot; 为忽略该事件通知，&quot;ON&quot; 为接收事件通知。</p>
         :rtype: str
         """
         return self._PersistenceCompleteEventSwitch
@@ -61154,6 +61151,17 @@ class ModifyEventConfigRequest(AbstractModel):
     @PersistenceCompleteEventSwitch.setter
     def PersistenceCompleteEventSwitch(self, PersistenceCompleteEventSwitch):
         self._PersistenceCompleteEventSwitch = PersistenceCompleteEventSwitch
+
+    @property
+    def SignKey(self):
+        r"""<p>回调密钥，由大小写字母及数字组成，最长32字符。配置后将在回调中发送<code>Sign</code>与<code>T</code>字段，可用于鉴权。</p><ul><li><code>Sign</code>：string类型。事件通知安全签名 Sign = MD5（SignKey + T）。说明：腾讯云把加密 SignKey 和 T 进行字符串拼接后通过 MD5 计算得出 Sign 值，并将其放在通知消息里，您的后台服务器在收到通知消息后可以根据同样的算法确认 Sign 是否正确，进而确认消息是否确实来自腾讯云后台。</li><li><code>T</code>：int64类型。过期时间，事件通知签名过期 UNIX 时间戳。来自腾讯云的消息通知默认过期时间是10分钟，如果一条消息通知中的 t 值所指定的时间已经过期，则可以判定这条通知无效，进而可以防止网络重放攻击。T 的格式为十进制 UNIX 时间戳，即从1970年01月01日（UTC/GMT 的午夜）开始所经过的秒数。</li></ul>
+        :rtype: str
+        """
+        return self._SignKey
+
+    @SignKey.setter
+    def SignKey(self, SignKey):
+        self._SignKey = SignKey
 
 
     def _deserialize(self, params):
@@ -61163,6 +61171,7 @@ class ModifyEventConfigRequest(AbstractModel):
         self._UploadMediaCompleteEventSwitch = params.get("UploadMediaCompleteEventSwitch")
         self._DeleteMediaCompleteEventSwitch = params.get("DeleteMediaCompleteEventSwitch")
         self._PersistenceCompleteEventSwitch = params.get("PersistenceCompleteEventSwitch")
+        self._SignKey = params.get("SignKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

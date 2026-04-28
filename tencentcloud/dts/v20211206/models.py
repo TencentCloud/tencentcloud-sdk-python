@@ -6324,25 +6324,25 @@ class DescribeMigrateDBInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DatabaseType: 数据库类型，如mysql,percona,mariadb,tdsqlmysql,mariadb,postgresql,cynosdbmysql,redis,tendis,keewidb,tdstore,mongodb,clickhouse,sqlserver等。
+        :param _DatabaseType: <p>数据库类型，如mysql,percona,mariadb,tdsqlmysql,mariadb,postgresql,cynosdbmysql,redis,tendis,keewidb,tdstore,mongodb,clickhouse,sqlserver等。</p>
         :type DatabaseType: str
-        :param _MigrateRole: 实例作为迁移的源还是目标,src(表示源)，dst(表示目标)
+        :param _MigrateRole: <p>实例作为迁移的源还是目标,src(表示源)，dst(表示目标)</p>
         :type MigrateRole: str
-        :param _InstanceId: 云数据库实例ID，可通过对应业务实例列表获取实例信息。
+        :param _InstanceId: <p>云数据库实例ID，可通过对应业务实例列表获取实例信息。</p>
         :type InstanceId: str
-        :param _InstanceName: 云数据库名称，可通过对应业务实例列表获取实例信息。
+        :param _InstanceName: <p>云数据库名称，可通过对应业务实例列表获取实例信息。</p>
         :type InstanceName: str
-        :param _Limit: 返回数量限制
+        :param _Limit: <p>返回数量限制</p>
         :type Limit: int
-        :param _Offset: 偏移量
+        :param _Offset: <p>偏移量</p>
         :type Offset: int
-        :param _AccountMode: 资源所属账号 为空值或self(表示本账号内资源)、other(表示其他账户资源)
+        :param _AccountMode: <p>资源所属账号 为空值或self(表示本账号内资源)、other(表示其他账户资源)</p>
         :type AccountMode: str
-        :param _TmpSecretId: 临时密钥Id，可通过申请扮演角色临时访问凭证获取临时密钥https://cloud.tencent.com/document/product/1312/48197，其中角色资源RoleArn的定义可参考DTS跨账号迁移文档(https://cloud.tencent.com/document/product/571/54117)第4节中关于角色的定义。
+        :param _TmpSecretId: <p>临时密钥Id，可通过申请扮演角色临时访问凭证获取临时密钥https://cloud.tencent.com/document/product/1312/48197，其中角色资源RoleArn的定义可参考DTS跨账号迁移文档(https://cloud.tencent.com/document/product/571/54117)第4节中关于角色的定义。</p>
         :type TmpSecretId: str
-        :param _TmpSecretKey: 临时密钥Id，可通过申请扮演角色临时访问凭证获取临时密钥https://cloud.tencent.com/document/product/1312/48197，其中角色资源RoleArn的定义可参考DTS跨账号迁移文档(https://cloud.tencent.com/document/product/571/54117)第4节中关于角色的定义。
+        :param _TmpSecretKey: <p>临时密钥Id，可通过申请扮演角色临时访问凭证获取临时密钥https://cloud.tencent.com/document/product/1312/48197，其中角色资源RoleArn的定义可参考DTS跨账号迁移文档(https://cloud.tencent.com/document/product/571/54117)第4节中关于角色的定义。</p>
         :type TmpSecretKey: str
-        :param _TmpToken: 临时密钥Id，可通过申请扮演角色临时访问凭证获取临时密钥https://cloud.tencent.com/document/product/1312/48197，其中角色资源RoleArn的定义可参考DTS跨账号迁移文档(https://cloud.tencent.com/document/product/571/54117)第4节中关于角色的定义。
+        :param _TmpToken: <p>临时密钥Id，可通过申请扮演角色临时访问凭证获取临时密钥https://cloud.tencent.com/document/product/1312/48197，其中角色资源RoleArn的定义可参考DTS跨账号迁移文档(https://cloud.tencent.com/document/product/571/54117)第4节中关于角色的定义。</p>
         :type TmpToken: str
         """
         self._DatabaseType = None
@@ -6358,7 +6358,7 @@ class DescribeMigrateDBInstancesRequest(AbstractModel):
 
     @property
     def DatabaseType(self):
-        r"""数据库类型，如mysql,percona,mariadb,tdsqlmysql,mariadb,postgresql,cynosdbmysql,redis,tendis,keewidb,tdstore,mongodb,clickhouse,sqlserver等。
+        r"""<p>数据库类型，如mysql,percona,mariadb,tdsqlmysql,mariadb,postgresql,cynosdbmysql,redis,tendis,keewidb,tdstore,mongodb,clickhouse,sqlserver等。</p>
         :rtype: str
         """
         return self._DatabaseType
@@ -6369,7 +6369,7 @@ class DescribeMigrateDBInstancesRequest(AbstractModel):
 
     @property
     def MigrateRole(self):
-        r"""实例作为迁移的源还是目标,src(表示源)，dst(表示目标)
+        r"""<p>实例作为迁移的源还是目标,src(表示源)，dst(表示目标)</p>
         :rtype: str
         """
         return self._MigrateRole
@@ -6380,7 +6380,7 @@ class DescribeMigrateDBInstancesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""云数据库实例ID，可通过对应业务实例列表获取实例信息。
+        r"""<p>云数据库实例ID，可通过对应业务实例列表获取实例信息。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -6391,7 +6391,7 @@ class DescribeMigrateDBInstancesRequest(AbstractModel):
 
     @property
     def InstanceName(self):
-        r"""云数据库名称，可通过对应业务实例列表获取实例信息。
+        r"""<p>云数据库名称，可通过对应业务实例列表获取实例信息。</p>
         :rtype: str
         """
         return self._InstanceName
@@ -6402,7 +6402,7 @@ class DescribeMigrateDBInstancesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""返回数量限制
+        r"""<p>返回数量限制</p>
         :rtype: int
         """
         return self._Limit
@@ -6413,7 +6413,7 @@ class DescribeMigrateDBInstancesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""偏移量
+        r"""<p>偏移量</p>
         :rtype: int
         """
         return self._Offset
@@ -6424,7 +6424,7 @@ class DescribeMigrateDBInstancesRequest(AbstractModel):
 
     @property
     def AccountMode(self):
-        r"""资源所属账号 为空值或self(表示本账号内资源)、other(表示其他账户资源)
+        r"""<p>资源所属账号 为空值或self(表示本账号内资源)、other(表示其他账户资源)</p>
         :rtype: str
         """
         return self._AccountMode
@@ -6435,7 +6435,7 @@ class DescribeMigrateDBInstancesRequest(AbstractModel):
 
     @property
     def TmpSecretId(self):
-        r"""临时密钥Id，可通过申请扮演角色临时访问凭证获取临时密钥https://cloud.tencent.com/document/product/1312/48197，其中角色资源RoleArn的定义可参考DTS跨账号迁移文档(https://cloud.tencent.com/document/product/571/54117)第4节中关于角色的定义。
+        r"""<p>临时密钥Id，可通过申请扮演角色临时访问凭证获取临时密钥https://cloud.tencent.com/document/product/1312/48197，其中角色资源RoleArn的定义可参考DTS跨账号迁移文档(https://cloud.tencent.com/document/product/571/54117)第4节中关于角色的定义。</p>
         :rtype: str
         """
         return self._TmpSecretId
@@ -6446,7 +6446,7 @@ class DescribeMigrateDBInstancesRequest(AbstractModel):
 
     @property
     def TmpSecretKey(self):
-        r"""临时密钥Id，可通过申请扮演角色临时访问凭证获取临时密钥https://cloud.tencent.com/document/product/1312/48197，其中角色资源RoleArn的定义可参考DTS跨账号迁移文档(https://cloud.tencent.com/document/product/571/54117)第4节中关于角色的定义。
+        r"""<p>临时密钥Id，可通过申请扮演角色临时访问凭证获取临时密钥https://cloud.tencent.com/document/product/1312/48197，其中角色资源RoleArn的定义可参考DTS跨账号迁移文档(https://cloud.tencent.com/document/product/571/54117)第4节中关于角色的定义。</p>
         :rtype: str
         """
         return self._TmpSecretKey
@@ -6457,7 +6457,7 @@ class DescribeMigrateDBInstancesRequest(AbstractModel):
 
     @property
     def TmpToken(self):
-        r"""临时密钥Id，可通过申请扮演角色临时访问凭证获取临时密钥https://cloud.tencent.com/document/product/1312/48197，其中角色资源RoleArn的定义可参考DTS跨账号迁移文档(https://cloud.tencent.com/document/product/571/54117)第4节中关于角色的定义。
+        r"""<p>临时密钥Id，可通过申请扮演角色临时访问凭证获取临时密钥https://cloud.tencent.com/document/product/1312/48197，其中角色资源RoleArn的定义可参考DTS跨账号迁移文档(https://cloud.tencent.com/document/product/571/54117)第4节中关于角色的定义。</p>
         :rtype: str
         """
         return self._TmpToken
@@ -6495,9 +6495,9 @@ class DescribeMigrateDBInstancesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 符合筛选条件的数量
+        :param _TotalCount: <p>符合筛选条件的数量</p>
         :type TotalCount: int
-        :param _Instances: 实例列表
+        :param _Instances: <p>实例列表</p>
         :type Instances: list of MigrateDBItem
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6508,7 +6508,7 @@ class DescribeMigrateDBInstancesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""符合筛选条件的数量
+        r"""<p>符合筛选条件的数量</p>
         :rtype: int
         """
         return self._TotalCount
@@ -6519,7 +6519,7 @@ class DescribeMigrateDBInstancesResponse(AbstractModel):
 
     @property
     def Instances(self):
-        r"""实例列表
+        r"""<p>实例列表</p>
         :rtype: list of MigrateDBItem
         """
         return self._Instances

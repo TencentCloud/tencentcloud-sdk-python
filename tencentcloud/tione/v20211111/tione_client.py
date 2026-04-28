@@ -535,6 +535,29 @@ class TioneClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeAnnotatedTaskList(self, request):
+        r"""本接口（DescribeAnnotatedTaskList）用于查询用户标注任务详细信息列表；支持各种过滤条件；
+
+        :param request: Request instance for DescribeAnnotatedTaskList.
+        :type request: :class:`tencentcloud.tione.v20211111.models.DescribeAnnotatedTaskListRequest`
+        :rtype: :class:`tencentcloud.tione.v20211111.models.DescribeAnnotatedTaskListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAnnotatedTaskList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAnnotatedTaskListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeBillingResourceGroup(self, request):
         r"""查询资源组节点列表
 
@@ -1310,6 +1333,29 @@ class TioneClient(AbstractClient):
             body = self.call("DescribeTrainingTasks", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeTrainingTasksResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeWorkspaces(self, request):
+        r"""查询工作空间列表
+
+        :param request: Request instance for DescribeWorkspaces.
+        :type request: :class:`tencentcloud.tione.v20211111.models.DescribeWorkspacesRequest`
+        :rtype: :class:`tencentcloud.tione.v20211111.models.DescribeWorkspacesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeWorkspaces", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeWorkspacesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

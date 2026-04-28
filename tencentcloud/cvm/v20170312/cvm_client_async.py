@@ -1434,6 +1434,30 @@ class CvmClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyChcNetworkMode(
+            self,
+            request: models.ModifyChcNetworkModeRequest,
+            opts: Dict = None,
+    ) -> models.ModifyChcNetworkModeResponse:
+        """
+        ModifyChcNetworkMode接口用于切换CHC物理服务器的网络模式，适用于客户使用自建pxe环境装机，调用此接口切换部署网络和业务网络。**调用此接口会影响到业务网络，请明确使用方法后再调用**。
+        - 切换部署网络：传入参数NetworkMode=DEPLOY。只有当CHC服务器状态为“可生产”或“已生产”，并且配置了部署网络才可以切换，否则API直接报错。
+        - 切换业务网络：传入参数NetworkMode=BUSINESS。只有当CHC服务器状态为“已生产”时才可以切换，否则API直接报错。
+
+        切换网络模式是一个异步操作，可以通过DescribeChcHosts轮询查询设备的NetworkMode和操作状态来判断是否切换成功
+        - 切换部署网络：chc物理服务器如下参数值为以下值是判断切换成功：NetworkMode=DEPLOY，LatestOperation=SwitchChcDeployNetwork, LatestOperationState=SUCCESS。
+        - 切换业务网络：chc物理服务器如下参数值为以下值是判断切换成功：NetworkMode=BUSINESS，LatestOperation=SwitchChcBusinessNetwork, LatestOperationState=SUCCESS。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyChcNetworkMode"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyChcNetworkModeResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyDisasterRecoverGroupAttribute(
             self,
             request: models.ModifyDisasterRecoverGroupAttributeRequest,

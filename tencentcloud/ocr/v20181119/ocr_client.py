@@ -276,31 +276,6 @@ class OcrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def CropEnhanceImageOCR(self, request):
-        r"""图像切边矫正增强是面向文档类图片提供的图像增强处理能力，包括切边增强、图像矫正、阴影去除、摩尔纹去除等；可以有效优化文档类的图片质量，提升文字的清晰度，可以作为所有识别场景的图像预处理原子能力，从而提升识别效果。
-
-        默认接口请求频率限制：5次/秒。
-
-        :param request: Request instance for CropEnhanceImageOCR.
-        :type request: :class:`tencentcloud.ocr.v20181119.models.CropEnhanceImageOCRRequest`
-        :rtype: :class:`tencentcloud.ocr.v20181119.models.CropEnhanceImageOCRResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("CropEnhanceImageOCR", params, headers=headers)
-            response = json.loads(body)
-            model = models.CropEnhanceImageOCRResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DescribeExtractDocAgentJob(self, request):
         r"""模型参数更大，速度更慢。推荐场景：可以接受异步（超过30s返回），样本输入输出token大于2000，长文本类文档建议用异步模型。需要 SubmitExtractDocAgentJob（提交任务）、DescribeExtractDocAgentJob（查询任务）两个接口配套使用，计费发生在提交任务后。【备注：1.固定价格不限抽取字段数，2.自适应价格抽取字段大于10记两次费用，小于等于10记一次费用】
 
@@ -499,31 +474,6 @@ class OcrClient(AbstractClient):
             body = self.call("EnterpriseLicenseOCR", params, headers=headers)
             response = json.loads(body)
             model = models.EnterpriseLicenseOCRResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def EraseHandwrittenImageOCR(self, request):
-        r"""本功能可自动清除试卷图片中的手写与批改痕迹，并输出洁净的空白试卷。也可以配合集成图像切边矫正技术，能自动定位、拉平试卷区域，从而在最优预处理基础上实现更佳的擦除效果。
-
-        默认接口请求频率限制：5次/秒。
-
-        :param request: Request instance for EraseHandwrittenImageOCR.
-        :type request: :class:`tencentcloud.ocr.v20181119.models.EraseHandwrittenImageOCRRequest`
-        :rtype: :class:`tencentcloud.ocr.v20181119.models.EraseHandwrittenImageOCRResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("EraseHandwrittenImageOCR", params, headers=headers)
-            response = json.loads(body)
-            model = models.EraseHandwrittenImageOCRResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

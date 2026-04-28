@@ -3157,7 +3157,7 @@ class WafClient(AbstractClient):
 
 
     def GenerateLLMSecAnswer(self, request):
-        r"""大模型安全代答生成接口。当用户输入或模型输出命中内容安全风险检测规则时，调用本接口由大模型实时生成安全合规的替代回答。
+        r"""大模型安全代答生成接口。当用户输入命中内容安全风险检测规则时，调用本接口由大模型实时生成安全合规的替代回答。
 
         :param request: Request instance for GenerateLLMSecAnswer.
         :type request: :class:`tencentcloud.waf.v20180125.models.GenerateLLMSecAnswerRequest`

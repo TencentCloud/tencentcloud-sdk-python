@@ -24958,9 +24958,9 @@ class DescribeLibraDBInstanceDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群ID
+        :param _ClusterId: <p>集群ID</p>
         :type ClusterId: str
-        :param _InstanceId: 只读分析引擎实例 ID
+        :param _InstanceId: <p>只读分析引擎实例 ID</p>
         :type InstanceId: str
         """
         self._ClusterId = None
@@ -24968,7 +24968,7 @@ class DescribeLibraDBInstanceDetailRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        r"""集群ID
+        r"""<p>集群ID</p>
         :rtype: str
         """
         return self._ClusterId
@@ -24979,7 +24979,7 @@ class DescribeLibraDBInstanceDetailRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""只读分析引擎实例 ID
+        r"""<p>只读分析引擎实例 ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -25009,103 +25009,106 @@ class DescribeLibraDBInstanceDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Uin: 主账号
+        :param _Uin: <p>主账号</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Uin: str
-        :param _AppId: 账号唯一ID
+        :param _AppId: <p>账号唯一ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AppId: int
-        :param _ClusterId: 集群ID
+        :param _ClusterId: <p>集群ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterId: str
-        :param _ClusterName: 集群名称
+        :param _ClusterName: <p>集群名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterName: str
-        :param _InstanceId: 实例ID
+        :param _InstanceId: <p>实例ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
-        :param _InstanceName: 实例名称
+        :param _InstanceName: <p>实例名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceName: str
-        :param _ProjectId: 项目ID
+        :param _ProjectId: <p>项目ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectId: int
-        :param _Region: 地域
+        :param _Region: <p>地域</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Region: str
-        :param _Zone: 可用区
+        :param _Zone: <p>可用区</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Zone: str
-        :param _Status: 实例状态
+        :param _Status: <p>实例状态</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
-        :param _StatusDesc: 状态描述
+        :param _StatusDesc: <p>状态描述</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type StatusDesc: str
-        :param _LibraDBVersion: Libra分析引擎版本
+        :param _LibraDBVersion: <p>Libra分析引擎版本</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type LibraDBVersion: str
-        :param _Cpu: cpu核数
+        :param _Cpu: <p>cpu核数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Cpu: int
-        :param _Memory: 内存大小
+        :param _Memory: <p>内存大小</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Memory: int
-        :param _Storage: 存储大小
+        :param _Storage: <p>存储大小</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Storage: int
-        :param _StorageType: 存储类型
+        :param _StorageType: <p>存储类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type StorageType: str
-        :param _InstanceType: 实例类型
+        :param _InstanceType: <p>实例类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceType: str
-        :param _InstanceRole: 实例角色
+        :param _InstanceRole: <p>实例角色</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceRole: str
-        :param _UpdateTime: 更新时间
+        :param _UpdateTime: <p>更新时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
-        :param _CreateTime: 创建时间
+        :param _CreateTime: <p>创建时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
-        :param _PayMode: 售卖方式
+        :param _PayMode: <p>售卖方式</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type PayMode: int
-        :param _PeriodStartTime: 售卖开始时间
+        :param _PeriodStartTime: <p>售卖开始时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type PeriodStartTime: str
-        :param _PeriodEndTime: 售卖结束时间
+        :param _PeriodEndTime: <p>售卖结束时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type PeriodEndTime: str
-        :param _RenewFlag: 续费标识
+        :param _RenewFlag: <p>续费标识</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RenewFlag: int
-        :param _NetType: 网络类型
+        :param _NetType: <p>网络类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type NetType: int
-        :param _VpcId: 私有网络ID
+        :param _VpcId: <p>私有网络ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type VpcId: str
-        :param _SubnetId: 子网ID
+        :param _SubnetId: <p>子网ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubnetId: str
-        :param _Vip: 虚拟IP
+        :param _Vip: <p>虚拟IP</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Vip: str
-        :param _Vport: 端口
+        :param _Vport: <p>端口</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Vport: int
-        :param _InstanceNetInfo: 实例网络信息
+        :param _InstanceNetInfo: <p>实例网络信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceNetInfo: :class:`tencentcloud.cynosdb.v20190107.models.InstanceNetInfo`
-        :param _ResourceTags: 实例标签信息
+        :param _ResourceTags: <p>实例标签信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceTags: list of Tag
-        :param _NodeInfo: 实例节点信息
+        :param _NodeInfo: <p>实例节点信息</p>
         :type NodeInfo: list of LibraDBNodeInfo
-        :param _NodeCount: 实例节点个数
+        :param _NodeCount: <p>实例节点个数</p>
         :type NodeCount: int
+        :param _AnalysisUpgradeVersionInfo: <p>分析实例升级版本之后信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AnalysisUpgradeVersionInfo: :class:`tencentcloud.cynosdb.v20190107.models.UpgradeAnalysisInstanceVersionInfo`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -25142,11 +25145,12 @@ class DescribeLibraDBInstanceDetailResponse(AbstractModel):
         self._ResourceTags = None
         self._NodeInfo = None
         self._NodeCount = None
+        self._AnalysisUpgradeVersionInfo = None
         self._RequestId = None
 
     @property
     def Uin(self):
-        r"""主账号
+        r"""<p>主账号</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -25158,7 +25162,7 @@ class DescribeLibraDBInstanceDetailResponse(AbstractModel):
 
     @property
     def AppId(self):
-        r"""账号唯一ID
+        r"""<p>账号唯一ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -25170,7 +25174,7 @@ class DescribeLibraDBInstanceDetailResponse(AbstractModel):
 
     @property
     def ClusterId(self):
-        r"""集群ID
+        r"""<p>集群ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -25182,7 +25186,7 @@ class DescribeLibraDBInstanceDetailResponse(AbstractModel):
 
     @property
     def ClusterName(self):
-        r"""集群名称
+        r"""<p>集群名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -25194,7 +25198,7 @@ class DescribeLibraDBInstanceDetailResponse(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例ID
+        r"""<p>实例ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -25206,7 +25210,7 @@ class DescribeLibraDBInstanceDetailResponse(AbstractModel):
 
     @property
     def InstanceName(self):
-        r"""实例名称
+        r"""<p>实例名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -25218,7 +25222,7 @@ class DescribeLibraDBInstanceDetailResponse(AbstractModel):
 
     @property
     def ProjectId(self):
-        r"""项目ID
+        r"""<p>项目ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -25230,7 +25234,7 @@ class DescribeLibraDBInstanceDetailResponse(AbstractModel):
 
     @property
     def Region(self):
-        r"""地域
+        r"""<p>地域</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -25242,7 +25246,7 @@ class DescribeLibraDBInstanceDetailResponse(AbstractModel):
 
     @property
     def Zone(self):
-        r"""可用区
+        r"""<p>可用区</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -25254,7 +25258,7 @@ class DescribeLibraDBInstanceDetailResponse(AbstractModel):
 
     @property
     def Status(self):
-        r"""实例状态
+        r"""<p>实例状态</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -25266,7 +25270,7 @@ class DescribeLibraDBInstanceDetailResponse(AbstractModel):
 
     @property
     def StatusDesc(self):
-        r"""状态描述
+        r"""<p>状态描述</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -25278,7 +25282,7 @@ class DescribeLibraDBInstanceDetailResponse(AbstractModel):
 
     @property
     def LibraDBVersion(self):
-        r"""Libra分析引擎版本
+        r"""<p>Libra分析引擎版本</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -25290,7 +25294,7 @@ class DescribeLibraDBInstanceDetailResponse(AbstractModel):
 
     @property
     def Cpu(self):
-        r"""cpu核数
+        r"""<p>cpu核数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -25302,7 +25306,7 @@ class DescribeLibraDBInstanceDetailResponse(AbstractModel):
 
     @property
     def Memory(self):
-        r"""内存大小
+        r"""<p>内存大小</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -25314,7 +25318,7 @@ class DescribeLibraDBInstanceDetailResponse(AbstractModel):
 
     @property
     def Storage(self):
-        r"""存储大小
+        r"""<p>存储大小</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -25326,7 +25330,7 @@ class DescribeLibraDBInstanceDetailResponse(AbstractModel):
 
     @property
     def StorageType(self):
-        r"""存储类型
+        r"""<p>存储类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -25338,7 +25342,7 @@ class DescribeLibraDBInstanceDetailResponse(AbstractModel):
 
     @property
     def InstanceType(self):
-        r"""实例类型
+        r"""<p>实例类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -25350,7 +25354,7 @@ class DescribeLibraDBInstanceDetailResponse(AbstractModel):
 
     @property
     def InstanceRole(self):
-        r"""实例角色
+        r"""<p>实例角色</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -25362,7 +25366,7 @@ class DescribeLibraDBInstanceDetailResponse(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""更新时间
+        r"""<p>更新时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -25374,7 +25378,7 @@ class DescribeLibraDBInstanceDetailResponse(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -25386,7 +25390,7 @@ class DescribeLibraDBInstanceDetailResponse(AbstractModel):
 
     @property
     def PayMode(self):
-        r"""售卖方式
+        r"""<p>售卖方式</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -25398,7 +25402,7 @@ class DescribeLibraDBInstanceDetailResponse(AbstractModel):
 
     @property
     def PeriodStartTime(self):
-        r"""售卖开始时间
+        r"""<p>售卖开始时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -25410,7 +25414,7 @@ class DescribeLibraDBInstanceDetailResponse(AbstractModel):
 
     @property
     def PeriodEndTime(self):
-        r"""售卖结束时间
+        r"""<p>售卖结束时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -25422,7 +25426,7 @@ class DescribeLibraDBInstanceDetailResponse(AbstractModel):
 
     @property
     def RenewFlag(self):
-        r"""续费标识
+        r"""<p>续费标识</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -25434,7 +25438,7 @@ class DescribeLibraDBInstanceDetailResponse(AbstractModel):
 
     @property
     def NetType(self):
-        r"""网络类型
+        r"""<p>网络类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -25446,7 +25450,7 @@ class DescribeLibraDBInstanceDetailResponse(AbstractModel):
 
     @property
     def VpcId(self):
-        r"""私有网络ID
+        r"""<p>私有网络ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -25458,7 +25462,7 @@ class DescribeLibraDBInstanceDetailResponse(AbstractModel):
 
     @property
     def SubnetId(self):
-        r"""子网ID
+        r"""<p>子网ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -25470,7 +25474,7 @@ class DescribeLibraDBInstanceDetailResponse(AbstractModel):
 
     @property
     def Vip(self):
-        r"""虚拟IP
+        r"""<p>虚拟IP</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -25482,7 +25486,7 @@ class DescribeLibraDBInstanceDetailResponse(AbstractModel):
 
     @property
     def Vport(self):
-        r"""端口
+        r"""<p>端口</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -25494,7 +25498,7 @@ class DescribeLibraDBInstanceDetailResponse(AbstractModel):
 
     @property
     def InstanceNetInfo(self):
-        r"""实例网络信息
+        r"""<p>实例网络信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cynosdb.v20190107.models.InstanceNetInfo`
         """
@@ -25506,7 +25510,7 @@ class DescribeLibraDBInstanceDetailResponse(AbstractModel):
 
     @property
     def ResourceTags(self):
-        r"""实例标签信息
+        r"""<p>实例标签信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Tag
         """
@@ -25518,7 +25522,7 @@ class DescribeLibraDBInstanceDetailResponse(AbstractModel):
 
     @property
     def NodeInfo(self):
-        r"""实例节点信息
+        r"""<p>实例节点信息</p>
         :rtype: list of LibraDBNodeInfo
         """
         return self._NodeInfo
@@ -25529,7 +25533,7 @@ class DescribeLibraDBInstanceDetailResponse(AbstractModel):
 
     @property
     def NodeCount(self):
-        r"""实例节点个数
+        r"""<p>实例节点个数</p>
         :rtype: int
         """
         return self._NodeCount
@@ -25537,6 +25541,18 @@ class DescribeLibraDBInstanceDetailResponse(AbstractModel):
     @NodeCount.setter
     def NodeCount(self, NodeCount):
         self._NodeCount = NodeCount
+
+    @property
+    def AnalysisUpgradeVersionInfo(self):
+        r"""<p>分析实例升级版本之后信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.UpgradeAnalysisInstanceVersionInfo`
+        """
+        return self._AnalysisUpgradeVersionInfo
+
+    @AnalysisUpgradeVersionInfo.setter
+    def AnalysisUpgradeVersionInfo(self, AnalysisUpgradeVersionInfo):
+        self._AnalysisUpgradeVersionInfo = AnalysisUpgradeVersionInfo
 
     @property
     def RequestId(self):
@@ -25596,6 +25612,9 @@ class DescribeLibraDBInstanceDetailResponse(AbstractModel):
                 obj._deserialize(item)
                 self._NodeInfo.append(obj)
         self._NodeCount = params.get("NodeCount")
+        if params.get("AnalysisUpgradeVersionInfo") is not None:
+            self._AnalysisUpgradeVersionInfo = UpgradeAnalysisInstanceVersionInfo()
+            self._AnalysisUpgradeVersionInfo._deserialize(params.get("AnalysisUpgradeVersionInfo"))
         self._RequestId = params.get("RequestId")
 
 
@@ -35199,64 +35218,67 @@ class LibraDBClusterDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群id
+        :param _ClusterId: <p>集群id</p>
         :type ClusterId: str
-        :param _ClusterName: 集群名称
+        :param _ClusterName: <p>集群名称</p>
         :type ClusterName: str
-        :param _Region: 地域
+        :param _Region: <p>地域</p>
         :type Region: str
-        :param _Status: 状态
+        :param _Status: <p>状态</p>
         :type Status: str
-        :param _StatusDesc: 状态描述
+        :param _StatusDesc: <p>状态描述</p>
         :type StatusDesc: str
-        :param _Storage: 存储大小
+        :param _Storage: <p>存储大小</p>
         :type Storage: int
-        :param _VpcName: VPC名称
+        :param _VpcName: <p>VPC名称</p>
         :type VpcName: str
-        :param _VpcId: vpc唯一id
+        :param _VpcId: <p>vpc唯一id</p>
         :type VpcId: str
-        :param _SubnetName: 子网名称
+        :param _SubnetName: <p>子网名称</p>
         :type SubnetName: str
-        :param _SubnetId: 子网ID
+        :param _SubnetId: <p>子网ID</p>
         :type SubnetId: str
-        :param _CreateTime: 创建时间
+        :param _CreateTime: <p>创建时间</p>
         :type CreateTime: str
-        :param _DbVersion: 数据库版本
+        :param _DbVersion: <p>数据库版本</p>
         :type DbVersion: str
-        :param _UsedStorage: 使用容量
+        :param _UsedStorage: <p>使用容量</p>
         :type UsedStorage: int
-        :param _Vip: vip地址
+        :param _Vip: <p>vip地址</p>
         :type Vip: str
-        :param _Vport: vport端口
+        :param _Vport: <p>vport端口</p>
         :type Vport: int
-        :param _RoAddr: 集群只读实例的vip地址和vport端口
+        :param _RoAddr: <p>集群只读实例的vip地址和vport端口</p>
         :type RoAddr: list of RoAddr
-        :param _CynosVersion: cynos版本
+        :param _CynosVersion: <p>cynos版本</p>
         :type CynosVersion: str
-        :param _IsFreeze: 是否冻结
+        :param _IsFreeze: <p>是否冻结</p>
         :type IsFreeze: str
-        :param _Tasks: 任务列表
+        :param _Tasks: <p>任务列表</p>
         :type Tasks: list of ObjectTask
-        :param _MasterZone: 主可用区
+        :param _MasterZone: <p>主可用区</p>
         :type MasterZone: str
-        :param _InstanceSet: 实例集合
+        :param _InstanceSet: <p>实例集合</p>
         :type InstanceSet: list of InstanceSet
-        :param _PayMode: 付费模式
+        :param _PayMode: <p>付费模式</p>
         :type PayMode: int
-        :param _PeriodEndTime: 到期时间
+        :param _PeriodEndTime: <p>到期时间</p>
         :type PeriodEndTime: str
-        :param _ProjectID: 项目id
+        :param _ProjectID: <p>项目id</p>
         :type ProjectID: int
-        :param _RenewFlag: 自动续费标识
+        :param _RenewFlag: <p>自动续费标识</p>
         :type RenewFlag: int
-        :param _CynosVersionTag: 版本标签
+        :param _CynosVersionTag: <p>版本标签</p>
         :type CynosVersionTag: str
-        :param _NoSupportAddRo: 不支持添加ro yes-不支持添加ro， no/null/"" 支持添加ro
+        :param _NoSupportAddRo: <p>不支持添加ro yes-不支持添加ro， no/null/&quot;&quot; 支持添加ro</p>
         :type NoSupportAddRo: str
-        :param _Zone: 可用区
+        :param _Zone: <p>可用区</p>
         :type Zone: str
-        :param _PhysicalZone: 物理可用区
+        :param _PhysicalZone: <p>物理可用区</p>
         :type PhysicalZone: str
+        :param _AnalysisUpgradeVersionInfo: <p>版本升级灰度信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AnalysisUpgradeVersionInfo: :class:`tencentcloud.cynosdb.v20190107.models.UpgradeAnalysisInstanceVersionInfo`
         """
         self._ClusterId = None
         self._ClusterName = None
@@ -35287,10 +35309,11 @@ class LibraDBClusterDetail(AbstractModel):
         self._NoSupportAddRo = None
         self._Zone = None
         self._PhysicalZone = None
+        self._AnalysisUpgradeVersionInfo = None
 
     @property
     def ClusterId(self):
-        r"""集群id
+        r"""<p>集群id</p>
         :rtype: str
         """
         return self._ClusterId
@@ -35301,7 +35324,7 @@ class LibraDBClusterDetail(AbstractModel):
 
     @property
     def ClusterName(self):
-        r"""集群名称
+        r"""<p>集群名称</p>
         :rtype: str
         """
         return self._ClusterName
@@ -35312,7 +35335,7 @@ class LibraDBClusterDetail(AbstractModel):
 
     @property
     def Region(self):
-        r"""地域
+        r"""<p>地域</p>
         :rtype: str
         """
         return self._Region
@@ -35323,7 +35346,7 @@ class LibraDBClusterDetail(AbstractModel):
 
     @property
     def Status(self):
-        r"""状态
+        r"""<p>状态</p>
         :rtype: str
         """
         return self._Status
@@ -35334,7 +35357,7 @@ class LibraDBClusterDetail(AbstractModel):
 
     @property
     def StatusDesc(self):
-        r"""状态描述
+        r"""<p>状态描述</p>
         :rtype: str
         """
         return self._StatusDesc
@@ -35345,7 +35368,7 @@ class LibraDBClusterDetail(AbstractModel):
 
     @property
     def Storage(self):
-        r"""存储大小
+        r"""<p>存储大小</p>
         :rtype: int
         """
         return self._Storage
@@ -35356,7 +35379,7 @@ class LibraDBClusterDetail(AbstractModel):
 
     @property
     def VpcName(self):
-        r"""VPC名称
+        r"""<p>VPC名称</p>
         :rtype: str
         """
         return self._VpcName
@@ -35367,7 +35390,7 @@ class LibraDBClusterDetail(AbstractModel):
 
     @property
     def VpcId(self):
-        r"""vpc唯一id
+        r"""<p>vpc唯一id</p>
         :rtype: str
         """
         return self._VpcId
@@ -35378,7 +35401,7 @@ class LibraDBClusterDetail(AbstractModel):
 
     @property
     def SubnetName(self):
-        r"""子网名称
+        r"""<p>子网名称</p>
         :rtype: str
         """
         return self._SubnetName
@@ -35389,7 +35412,7 @@ class LibraDBClusterDetail(AbstractModel):
 
     @property
     def SubnetId(self):
-        r"""子网ID
+        r"""<p>子网ID</p>
         :rtype: str
         """
         return self._SubnetId
@@ -35400,7 +35423,7 @@ class LibraDBClusterDetail(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
         :rtype: str
         """
         return self._CreateTime
@@ -35411,7 +35434,7 @@ class LibraDBClusterDetail(AbstractModel):
 
     @property
     def DbVersion(self):
-        r"""数据库版本
+        r"""<p>数据库版本</p>
         :rtype: str
         """
         return self._DbVersion
@@ -35422,7 +35445,7 @@ class LibraDBClusterDetail(AbstractModel):
 
     @property
     def UsedStorage(self):
-        r"""使用容量
+        r"""<p>使用容量</p>
         :rtype: int
         """
         return self._UsedStorage
@@ -35433,7 +35456,7 @@ class LibraDBClusterDetail(AbstractModel):
 
     @property
     def Vip(self):
-        r"""vip地址
+        r"""<p>vip地址</p>
         :rtype: str
         """
         return self._Vip
@@ -35444,7 +35467,7 @@ class LibraDBClusterDetail(AbstractModel):
 
     @property
     def Vport(self):
-        r"""vport端口
+        r"""<p>vport端口</p>
         :rtype: int
         """
         return self._Vport
@@ -35455,7 +35478,7 @@ class LibraDBClusterDetail(AbstractModel):
 
     @property
     def RoAddr(self):
-        r"""集群只读实例的vip地址和vport端口
+        r"""<p>集群只读实例的vip地址和vport端口</p>
         :rtype: list of RoAddr
         """
         return self._RoAddr
@@ -35466,7 +35489,7 @@ class LibraDBClusterDetail(AbstractModel):
 
     @property
     def CynosVersion(self):
-        r"""cynos版本
+        r"""<p>cynos版本</p>
         :rtype: str
         """
         return self._CynosVersion
@@ -35477,7 +35500,7 @@ class LibraDBClusterDetail(AbstractModel):
 
     @property
     def IsFreeze(self):
-        r"""是否冻结
+        r"""<p>是否冻结</p>
         :rtype: str
         """
         return self._IsFreeze
@@ -35488,7 +35511,7 @@ class LibraDBClusterDetail(AbstractModel):
 
     @property
     def Tasks(self):
-        r"""任务列表
+        r"""<p>任务列表</p>
         :rtype: list of ObjectTask
         """
         return self._Tasks
@@ -35499,7 +35522,7 @@ class LibraDBClusterDetail(AbstractModel):
 
     @property
     def MasterZone(self):
-        r"""主可用区
+        r"""<p>主可用区</p>
         :rtype: str
         """
         return self._MasterZone
@@ -35510,7 +35533,7 @@ class LibraDBClusterDetail(AbstractModel):
 
     @property
     def InstanceSet(self):
-        r"""实例集合
+        r"""<p>实例集合</p>
         :rtype: list of InstanceSet
         """
         return self._InstanceSet
@@ -35521,7 +35544,7 @@ class LibraDBClusterDetail(AbstractModel):
 
     @property
     def PayMode(self):
-        r"""付费模式
+        r"""<p>付费模式</p>
         :rtype: int
         """
         return self._PayMode
@@ -35532,7 +35555,7 @@ class LibraDBClusterDetail(AbstractModel):
 
     @property
     def PeriodEndTime(self):
-        r"""到期时间
+        r"""<p>到期时间</p>
         :rtype: str
         """
         return self._PeriodEndTime
@@ -35543,7 +35566,7 @@ class LibraDBClusterDetail(AbstractModel):
 
     @property
     def ProjectID(self):
-        r"""项目id
+        r"""<p>项目id</p>
         :rtype: int
         """
         return self._ProjectID
@@ -35554,7 +35577,7 @@ class LibraDBClusterDetail(AbstractModel):
 
     @property
     def RenewFlag(self):
-        r"""自动续费标识
+        r"""<p>自动续费标识</p>
         :rtype: int
         """
         return self._RenewFlag
@@ -35565,7 +35588,7 @@ class LibraDBClusterDetail(AbstractModel):
 
     @property
     def CynosVersionTag(self):
-        r"""版本标签
+        r"""<p>版本标签</p>
         :rtype: str
         """
         return self._CynosVersionTag
@@ -35576,7 +35599,7 @@ class LibraDBClusterDetail(AbstractModel):
 
     @property
     def NoSupportAddRo(self):
-        r"""不支持添加ro yes-不支持添加ro， no/null/"" 支持添加ro
+        r"""<p>不支持添加ro yes-不支持添加ro， no/null/&quot;&quot; 支持添加ro</p>
         :rtype: str
         """
         return self._NoSupportAddRo
@@ -35587,7 +35610,7 @@ class LibraDBClusterDetail(AbstractModel):
 
     @property
     def Zone(self):
-        r"""可用区
+        r"""<p>可用区</p>
         :rtype: str
         """
         return self._Zone
@@ -35598,7 +35621,7 @@ class LibraDBClusterDetail(AbstractModel):
 
     @property
     def PhysicalZone(self):
-        r"""物理可用区
+        r"""<p>物理可用区</p>
         :rtype: str
         """
         return self._PhysicalZone
@@ -35606,6 +35629,18 @@ class LibraDBClusterDetail(AbstractModel):
     @PhysicalZone.setter
     def PhysicalZone(self, PhysicalZone):
         self._PhysicalZone = PhysicalZone
+
+    @property
+    def AnalysisUpgradeVersionInfo(self):
+        r"""<p>版本升级灰度信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.UpgradeAnalysisInstanceVersionInfo`
+        """
+        return self._AnalysisUpgradeVersionInfo
+
+    @AnalysisUpgradeVersionInfo.setter
+    def AnalysisUpgradeVersionInfo(self, AnalysisUpgradeVersionInfo):
+        self._AnalysisUpgradeVersionInfo = AnalysisUpgradeVersionInfo
 
 
     def _deserialize(self, params):
@@ -35653,6 +35688,9 @@ class LibraDBClusterDetail(AbstractModel):
         self._NoSupportAddRo = params.get("NoSupportAddRo")
         self._Zone = params.get("Zone")
         self._PhysicalZone = params.get("PhysicalZone")
+        if params.get("AnalysisUpgradeVersionInfo") is not None:
+            self._AnalysisUpgradeVersionInfo = UpgradeAnalysisInstanceVersionInfo()
+            self._AnalysisUpgradeVersionInfo._deserialize(params.get("AnalysisUpgradeVersionInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -56743,6 +56781,87 @@ class UnbindClusterResourcePackagesResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class UpgradeAnalysisInstanceVersionInfo(AbstractModel):
+    r"""分析实例版本升级，升级之后用于灰度的连接信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Vip: <p>ip</p>
+        :type Vip: str
+        :param _Vport: <p>端口</p>
+        :type Vport: int
+        :param _EngineVersion: <p>版本</p>
+        :type EngineVersion: str
+        :param _ExpiredTime: <p>到期时间</p>
+        :type ExpiredTime: int
+        """
+        self._Vip = None
+        self._Vport = None
+        self._EngineVersion = None
+        self._ExpiredTime = None
+
+    @property
+    def Vip(self):
+        r"""<p>ip</p>
+        :rtype: str
+        """
+        return self._Vip
+
+    @Vip.setter
+    def Vip(self, Vip):
+        self._Vip = Vip
+
+    @property
+    def Vport(self):
+        r"""<p>端口</p>
+        :rtype: int
+        """
+        return self._Vport
+
+    @Vport.setter
+    def Vport(self, Vport):
+        self._Vport = Vport
+
+    @property
+    def EngineVersion(self):
+        r"""<p>版本</p>
+        :rtype: str
+        """
+        return self._EngineVersion
+
+    @EngineVersion.setter
+    def EngineVersion(self, EngineVersion):
+        self._EngineVersion = EngineVersion
+
+    @property
+    def ExpiredTime(self):
+        r"""<p>到期时间</p>
+        :rtype: int
+        """
+        return self._ExpiredTime
+
+    @ExpiredTime.setter
+    def ExpiredTime(self, ExpiredTime):
+        self._ExpiredTime = ExpiredTime
+
+
+    def _deserialize(self, params):
+        self._Vip = params.get("Vip")
+        self._Vport = params.get("Vport")
+        self._EngineVersion = params.get("EngineVersion")
+        self._ExpiredTime = params.get("ExpiredTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class UpgradeClusterVersionRequest(AbstractModel):

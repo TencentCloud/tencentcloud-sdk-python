@@ -1980,6 +1980,16 @@ class CreateModelServiceRequest(AbstractModel):
         :type SensitiveDataCheckStatus: bool
         :param _SensitiveDataCheckConfig: <p>敏感数据检测配置</p>
         :type SensitiveDataCheckConfig: :class:`tencentcloud.apis.v20240801.models.SensitiveDataCheckConfigDTO`
+        :param _TargetSelect: <p>负载方式</p><p>枚举值：</p><ul><li>random： 随机</li><li>consistentHash： 会话保持</li></ul>
+        :type TargetSelect: str
+        :param _FindHostKeyMethod: <p>会话判断方式</p><p>枚举值：</p><ul><li>fromClientIP： 客户端IP</li><li>fromHeader： 通过header值</li><li>autoDetect： 自动探测</li></ul>
+        :type FindHostKeyMethod: str
+        :param _HostKeyHeaderName: <p>会话判定方式为fromHeader时会话的header名称</p>
+        :type HostKeyHeaderName: str
+        :param _FallbackStatus: <p>是否启用Fallback模型</p>
+        :type FallbackStatus: bool
+        :param _FallbackModels: <p>Fallback模型配置</p>
+        :type FallbackModels: list of TargetModelDTO
         """
         self._InstanceID = None
         self._Name = None
@@ -2002,6 +2012,11 @@ class CreateModelServiceRequest(AbstractModel):
         self._PromptModerateConfig = None
         self._SensitiveDataCheckStatus = None
         self._SensitiveDataCheckConfig = None
+        self._TargetSelect = None
+        self._FindHostKeyMethod = None
+        self._HostKeyHeaderName = None
+        self._FallbackStatus = None
+        self._FallbackModels = None
 
     @property
     def InstanceID(self):
@@ -2234,6 +2249,61 @@ class CreateModelServiceRequest(AbstractModel):
     def SensitiveDataCheckConfig(self, SensitiveDataCheckConfig):
         self._SensitiveDataCheckConfig = SensitiveDataCheckConfig
 
+    @property
+    def TargetSelect(self):
+        r"""<p>负载方式</p><p>枚举值：</p><ul><li>random： 随机</li><li>consistentHash： 会话保持</li></ul>
+        :rtype: str
+        """
+        return self._TargetSelect
+
+    @TargetSelect.setter
+    def TargetSelect(self, TargetSelect):
+        self._TargetSelect = TargetSelect
+
+    @property
+    def FindHostKeyMethod(self):
+        r"""<p>会话判断方式</p><p>枚举值：</p><ul><li>fromClientIP： 客户端IP</li><li>fromHeader： 通过header值</li><li>autoDetect： 自动探测</li></ul>
+        :rtype: str
+        """
+        return self._FindHostKeyMethod
+
+    @FindHostKeyMethod.setter
+    def FindHostKeyMethod(self, FindHostKeyMethod):
+        self._FindHostKeyMethod = FindHostKeyMethod
+
+    @property
+    def HostKeyHeaderName(self):
+        r"""<p>会话判定方式为fromHeader时会话的header名称</p>
+        :rtype: str
+        """
+        return self._HostKeyHeaderName
+
+    @HostKeyHeaderName.setter
+    def HostKeyHeaderName(self, HostKeyHeaderName):
+        self._HostKeyHeaderName = HostKeyHeaderName
+
+    @property
+    def FallbackStatus(self):
+        r"""<p>是否启用Fallback模型</p>
+        :rtype: bool
+        """
+        return self._FallbackStatus
+
+    @FallbackStatus.setter
+    def FallbackStatus(self, FallbackStatus):
+        self._FallbackStatus = FallbackStatus
+
+    @property
+    def FallbackModels(self):
+        r"""<p>Fallback模型配置</p>
+        :rtype: list of TargetModelDTO
+        """
+        return self._FallbackModels
+
+    @FallbackModels.setter
+    def FallbackModels(self, FallbackModels):
+        self._FallbackModels = FallbackModels
+
 
     def _deserialize(self, params):
         self._InstanceID = params.get("InstanceID")
@@ -2277,6 +2347,16 @@ class CreateModelServiceRequest(AbstractModel):
         if params.get("SensitiveDataCheckConfig") is not None:
             self._SensitiveDataCheckConfig = SensitiveDataCheckConfigDTO()
             self._SensitiveDataCheckConfig._deserialize(params.get("SensitiveDataCheckConfig"))
+        self._TargetSelect = params.get("TargetSelect")
+        self._FindHostKeyMethod = params.get("FindHostKeyMethod")
+        self._HostKeyHeaderName = params.get("HostKeyHeaderName")
+        self._FallbackStatus = params.get("FallbackStatus")
+        if params.get("FallbackModels") is not None:
+            self._FallbackModels = []
+            for item in params.get("FallbackModels"):
+                obj = TargetModelDTO()
+                obj._deserialize(item)
+                self._FallbackModels.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5865,6 +5945,21 @@ class DescribeModelServiceResponseVO(AbstractModel):
         :param _SensitiveDataCheckConfig: <p>敏感数据检测配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SensitiveDataCheckConfig: :class:`tencentcloud.apis.v20240801.models.SensitiveDataCheckConfigDTO`
+        :param _TargetSelect: <p>负载方式</p><p>枚举值：</p><ul><li>random： 随机</li><li>consistentHash： 会话保持</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetSelect: str
+        :param _FindHostKeyMethod: <p>会话判断方式</p><p>枚举值：</p><ul><li>fromClientIP： 从客户端IP判断</li><li>fromHeader： 从请求header判断</li><li>autoDetect： 自动探测</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FindHostKeyMethod: str
+        :param _HostKeyHeaderName: <p>会话判断header名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HostKeyHeaderName: str
+        :param _FallbackStatus: <p>是否开启备份模型</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FallbackStatus: bool
+        :param _FallbackModels: <p>备份模型</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FallbackModels: list of TargetModelDTO
         """
         self._AppID = None
         self._Uin = None
@@ -5897,6 +5992,11 @@ class DescribeModelServiceResponseVO(AbstractModel):
         self._PromptModerateConfig = None
         self._SensitiveDataCheckStatus = None
         self._SensitiveDataCheckConfig = None
+        self._TargetSelect = None
+        self._FindHostKeyMethod = None
+        self._HostKeyHeaderName = None
+        self._FallbackStatus = None
+        self._FallbackModels = None
 
     @property
     def AppID(self):
@@ -6248,6 +6348,66 @@ class DescribeModelServiceResponseVO(AbstractModel):
     def SensitiveDataCheckConfig(self, SensitiveDataCheckConfig):
         self._SensitiveDataCheckConfig = SensitiveDataCheckConfig
 
+    @property
+    def TargetSelect(self):
+        r"""<p>负载方式</p><p>枚举值：</p><ul><li>random： 随机</li><li>consistentHash： 会话保持</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TargetSelect
+
+    @TargetSelect.setter
+    def TargetSelect(self, TargetSelect):
+        self._TargetSelect = TargetSelect
+
+    @property
+    def FindHostKeyMethod(self):
+        r"""<p>会话判断方式</p><p>枚举值：</p><ul><li>fromClientIP： 从客户端IP判断</li><li>fromHeader： 从请求header判断</li><li>autoDetect： 自动探测</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FindHostKeyMethod
+
+    @FindHostKeyMethod.setter
+    def FindHostKeyMethod(self, FindHostKeyMethod):
+        self._FindHostKeyMethod = FindHostKeyMethod
+
+    @property
+    def HostKeyHeaderName(self):
+        r"""<p>会话判断header名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._HostKeyHeaderName
+
+    @HostKeyHeaderName.setter
+    def HostKeyHeaderName(self, HostKeyHeaderName):
+        self._HostKeyHeaderName = HostKeyHeaderName
+
+    @property
+    def FallbackStatus(self):
+        r"""<p>是否开启备份模型</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._FallbackStatus
+
+    @FallbackStatus.setter
+    def FallbackStatus(self, FallbackStatus):
+        self._FallbackStatus = FallbackStatus
+
+    @property
+    def FallbackModels(self):
+        r"""<p>备份模型</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TargetModelDTO
+        """
+        return self._FallbackModels
+
+    @FallbackModels.setter
+    def FallbackModels(self, FallbackModels):
+        self._FallbackModels = FallbackModels
+
 
     def _deserialize(self, params):
         self._AppID = params.get("AppID")
@@ -6301,6 +6461,16 @@ class DescribeModelServiceResponseVO(AbstractModel):
         if params.get("SensitiveDataCheckConfig") is not None:
             self._SensitiveDataCheckConfig = SensitiveDataCheckConfigDTO()
             self._SensitiveDataCheckConfig._deserialize(params.get("SensitiveDataCheckConfig"))
+        self._TargetSelect = params.get("TargetSelect")
+        self._FindHostKeyMethod = params.get("FindHostKeyMethod")
+        self._HostKeyHeaderName = params.get("HostKeyHeaderName")
+        self._FallbackStatus = params.get("FallbackStatus")
+        if params.get("FallbackModels") is not None:
+            self._FallbackModels = []
+            for item in params.get("FallbackModels"):
+                obj = TargetModelDTO()
+                obj._deserialize(item)
+                self._FallbackModels.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8996,6 +9166,16 @@ class ModifyModelServiceRequest(AbstractModel):
         :type SensitiveDataCheckStatus: bool
         :param _SensitiveDataCheckConfig: <p>敏感数据检测配置</p>
         :type SensitiveDataCheckConfig: :class:`tencentcloud.apis.v20240801.models.SensitiveDataCheckConfigDTO`
+        :param _TargetSelect: <p>负载方式</p><p>枚举值：</p><ul><li>random： 随机</li><li>consistentHash： 会话保持</li></ul>
+        :type TargetSelect: str
+        :param _FindHostKeyMethod: <p>会话判断方式</p><p>枚举值：</p><ul><li>fromClientIP： 从客户端IP判断</li><li>fromHeader： 从请求header判断</li><li>autoDetect： 自动探测</li></ul>
+        :type FindHostKeyMethod: str
+        :param _HostKeyHeaderName: <p>会话判断header名称</p>
+        :type HostKeyHeaderName: str
+        :param _FallbackStatus: <p>是否开启备份模型</p>
+        :type FallbackStatus: bool
+        :param _FallbackModels: <p>备份模型</p>
+        :type FallbackModels: list of TargetModelDTO
         """
         self._InstanceID = None
         self._ID = None
@@ -9018,6 +9198,11 @@ class ModifyModelServiceRequest(AbstractModel):
         self._PromptModerateConfig = None
         self._SensitiveDataCheckStatus = None
         self._SensitiveDataCheckConfig = None
+        self._TargetSelect = None
+        self._FindHostKeyMethod = None
+        self._HostKeyHeaderName = None
+        self._FallbackStatus = None
+        self._FallbackModels = None
 
     @property
     def InstanceID(self):
@@ -9250,6 +9435,61 @@ class ModifyModelServiceRequest(AbstractModel):
     def SensitiveDataCheckConfig(self, SensitiveDataCheckConfig):
         self._SensitiveDataCheckConfig = SensitiveDataCheckConfig
 
+    @property
+    def TargetSelect(self):
+        r"""<p>负载方式</p><p>枚举值：</p><ul><li>random： 随机</li><li>consistentHash： 会话保持</li></ul>
+        :rtype: str
+        """
+        return self._TargetSelect
+
+    @TargetSelect.setter
+    def TargetSelect(self, TargetSelect):
+        self._TargetSelect = TargetSelect
+
+    @property
+    def FindHostKeyMethod(self):
+        r"""<p>会话判断方式</p><p>枚举值：</p><ul><li>fromClientIP： 从客户端IP判断</li><li>fromHeader： 从请求header判断</li><li>autoDetect： 自动探测</li></ul>
+        :rtype: str
+        """
+        return self._FindHostKeyMethod
+
+    @FindHostKeyMethod.setter
+    def FindHostKeyMethod(self, FindHostKeyMethod):
+        self._FindHostKeyMethod = FindHostKeyMethod
+
+    @property
+    def HostKeyHeaderName(self):
+        r"""<p>会话判断header名称</p>
+        :rtype: str
+        """
+        return self._HostKeyHeaderName
+
+    @HostKeyHeaderName.setter
+    def HostKeyHeaderName(self, HostKeyHeaderName):
+        self._HostKeyHeaderName = HostKeyHeaderName
+
+    @property
+    def FallbackStatus(self):
+        r"""<p>是否开启备份模型</p>
+        :rtype: bool
+        """
+        return self._FallbackStatus
+
+    @FallbackStatus.setter
+    def FallbackStatus(self, FallbackStatus):
+        self._FallbackStatus = FallbackStatus
+
+    @property
+    def FallbackModels(self):
+        r"""<p>备份模型</p>
+        :rtype: list of TargetModelDTO
+        """
+        return self._FallbackModels
+
+    @FallbackModels.setter
+    def FallbackModels(self, FallbackModels):
+        self._FallbackModels = FallbackModels
+
 
     def _deserialize(self, params):
         self._InstanceID = params.get("InstanceID")
@@ -9293,6 +9533,16 @@ class ModifyModelServiceRequest(AbstractModel):
         if params.get("SensitiveDataCheckConfig") is not None:
             self._SensitiveDataCheckConfig = SensitiveDataCheckConfigDTO()
             self._SensitiveDataCheckConfig._deserialize(params.get("SensitiveDataCheckConfig"))
+        self._TargetSelect = params.get("TargetSelect")
+        self._FindHostKeyMethod = params.get("FindHostKeyMethod")
+        self._HostKeyHeaderName = params.get("HostKeyHeaderName")
+        self._FallbackStatus = params.get("FallbackStatus")
+        if params.get("FallbackModels") is not None:
+            self._FallbackModels = []
+            for item in params.get("FallbackModels"):
+                obj = TargetModelDTO()
+                obj._deserialize(item)
+                self._FallbackModels.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

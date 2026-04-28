@@ -23951,14 +23951,14 @@ class DescribeAssetImageDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ImageID: 镜像id
+        :param _ImageID: <p>镜像id</p>
         :type ImageID: str
         """
         self._ImageID = None
 
     @property
     def ImageID(self):
-        r"""镜像id
+        r"""<p>镜像id</p>
         :rtype: str
         """
         return self._ImageID
@@ -23987,70 +23987,72 @@ class DescribeAssetImageDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ImageID: 镜像ID
+        :param _ImageID: <p>镜像ID</p>
         :type ImageID: str
-        :param _ImageName: 镜像名称
+        :param _ImageName: <p>镜像名称</p>
         :type ImageName: str
-        :param _ImageDigest: 镜像摘要
+        :param _ImageDigest: <p>镜像摘要</p>
         :type ImageDigest: str
-        :param _CreateTime: 创建时间
+        :param _CreateTime: <p>创建时间</p>
         :type CreateTime: str
-        :param _Size: 镜像大小
+        :param _Size: <p>镜像大小</p>
         :type Size: int
-        :param _HostCnt: 关联主机个数(包含普通节点数和超级节点数)
+        :param _HostCnt: <p>关联主机个数(包含普通节点数和超级节点数)</p>
         :type HostCnt: int
-        :param _ContainerCnt: 关联容器个数
+        :param _ContainerCnt: <p>关联容器个数</p>
         :type ContainerCnt: int
-        :param _SuperNodeCnt: 超级节点数
+        :param _SuperNodeCnt: <p>超级节点数</p>
         :type SuperNodeCnt: int
-        :param _ScanTime: 最近扫描时间
+        :param _ScanTime: <p>最近扫描时间</p>
         :type ScanTime: str
-        :param _VulCnt: 漏洞个数
+        :param _VulCnt: <p>漏洞个数</p>
         :type VulCnt: int
-        :param _RiskCnt: 风险行为数
+        :param _RiskCnt: <p>风险行为数</p>
         :type RiskCnt: int
-        :param _SensitiveInfoCnt: 敏感信息数
+        :param _SensitiveInfoCnt: <p>敏感信息数</p>
         :type SensitiveInfoCnt: int
-        :param _IsTrustImage: 是否信任镜像
+        :param _IsTrustImage: <p>是否信任镜像</p>
         :type IsTrustImage: bool
-        :param _OsName: 镜像系统
+        :param _OsName: <p>镜像系统</p>
         :type OsName: str
-        :param _AgentError: agent镜像扫描错误
+        :param _AgentError: <p>agent镜像扫描错误</p>
         :type AgentError: str
-        :param _ScanError: 后端镜像扫描错误
+        :param _ScanError: <p>后端镜像扫描错误</p>
         :type ScanError: str
-        :param _Architecture: 系统架构
+        :param _Architecture: <p>系统架构</p>
         :type Architecture: str
-        :param _Author: 作者
+        :param _Author: <p>作者</p>
         :type Author: str
-        :param _BuildHistory: 构建历史
+        :param _BuildHistory: <p>构建历史</p>
         :type BuildHistory: str
-        :param _ScanVirusProgress: 木马扫描进度
+        :param _ScanVirusProgress: <p>木马扫描进度</p>
         :type ScanVirusProgress: int
-        :param _ScanVulProgress: 漏洞扫进度
+        :param _ScanVulProgress: <p>漏洞扫进度</p>
         :type ScanVulProgress: int
-        :param _ScanRiskProgress: 敏感信息扫描进度
+        :param _ScanRiskProgress: <p>敏感信息扫描进度</p>
         :type ScanRiskProgress: int
-        :param _ScanVirusError: 木马扫描错误
+        :param _ScanVirusError: <p>木马扫描错误</p>
         :type ScanVirusError: str
-        :param _ScanVulError: 漏洞扫描错误
+        :param _ScanVulError: <p>漏洞扫描错误</p>
         :type ScanVulError: str
-        :param _ScanRiskError: 敏感信息错误
+        :param _ScanRiskError: <p>敏感信息错误</p>
         :type ScanRiskError: str
-        :param _ScanStatus: 镜像扫描状态
+        :param _ScanStatus: <p>镜像扫描状态</p>
         :type ScanStatus: str
-        :param _VirusCnt: 木马病毒数
+        :param _VirusCnt: <p>木马病毒数</p>
         :type VirusCnt: int
-        :param _Status: 镜像扫描状态
+        :param _Status: <p>镜像扫描状态</p>
         :type Status: int
-        :param _RemainScanTime: 剩余扫描时间
+        :param _RemainScanTime: <p>剩余扫描时间</p>
         :type RemainScanTime: int
-        :param _IsAuthorized: 授权为：1，未授权为：0
+        :param _IsAuthorized: <p>授权为：1，未授权为：0</p>
         :type IsAuthorized: int
-        :param _Solution: 解决方案
+        :param _Solution: <p>解决方案</p>
         :type Solution: str
-        :param _Reason: 原因
+        :param _Reason: <p>原因</p>
         :type Reason: str
+        :param _RepoDigests: <p>仓库Digests</p>
+        :type RepoDigests: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -24086,11 +24088,12 @@ class DescribeAssetImageDetailResponse(AbstractModel):
         self._IsAuthorized = None
         self._Solution = None
         self._Reason = None
+        self._RepoDigests = None
         self._RequestId = None
 
     @property
     def ImageID(self):
-        r"""镜像ID
+        r"""<p>镜像ID</p>
         :rtype: str
         """
         return self._ImageID
@@ -24101,7 +24104,7 @@ class DescribeAssetImageDetailResponse(AbstractModel):
 
     @property
     def ImageName(self):
-        r"""镜像名称
+        r"""<p>镜像名称</p>
         :rtype: str
         """
         return self._ImageName
@@ -24112,7 +24115,7 @@ class DescribeAssetImageDetailResponse(AbstractModel):
 
     @property
     def ImageDigest(self):
-        r"""镜像摘要
+        r"""<p>镜像摘要</p>
         :rtype: str
         """
         return self._ImageDigest
@@ -24123,7 +24126,7 @@ class DescribeAssetImageDetailResponse(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
         :rtype: str
         """
         return self._CreateTime
@@ -24134,7 +24137,7 @@ class DescribeAssetImageDetailResponse(AbstractModel):
 
     @property
     def Size(self):
-        r"""镜像大小
+        r"""<p>镜像大小</p>
         :rtype: int
         """
         return self._Size
@@ -24145,7 +24148,7 @@ class DescribeAssetImageDetailResponse(AbstractModel):
 
     @property
     def HostCnt(self):
-        r"""关联主机个数(包含普通节点数和超级节点数)
+        r"""<p>关联主机个数(包含普通节点数和超级节点数)</p>
         :rtype: int
         """
         return self._HostCnt
@@ -24156,7 +24159,7 @@ class DescribeAssetImageDetailResponse(AbstractModel):
 
     @property
     def ContainerCnt(self):
-        r"""关联容器个数
+        r"""<p>关联容器个数</p>
         :rtype: int
         """
         return self._ContainerCnt
@@ -24167,7 +24170,7 @@ class DescribeAssetImageDetailResponse(AbstractModel):
 
     @property
     def SuperNodeCnt(self):
-        r"""超级节点数
+        r"""<p>超级节点数</p>
         :rtype: int
         """
         return self._SuperNodeCnt
@@ -24178,7 +24181,7 @@ class DescribeAssetImageDetailResponse(AbstractModel):
 
     @property
     def ScanTime(self):
-        r"""最近扫描时间
+        r"""<p>最近扫描时间</p>
         :rtype: str
         """
         return self._ScanTime
@@ -24189,7 +24192,7 @@ class DescribeAssetImageDetailResponse(AbstractModel):
 
     @property
     def VulCnt(self):
-        r"""漏洞个数
+        r"""<p>漏洞个数</p>
         :rtype: int
         """
         return self._VulCnt
@@ -24200,7 +24203,7 @@ class DescribeAssetImageDetailResponse(AbstractModel):
 
     @property
     def RiskCnt(self):
-        r"""风险行为数
+        r"""<p>风险行为数</p>
         :rtype: int
         """
         return self._RiskCnt
@@ -24211,7 +24214,7 @@ class DescribeAssetImageDetailResponse(AbstractModel):
 
     @property
     def SensitiveInfoCnt(self):
-        r"""敏感信息数
+        r"""<p>敏感信息数</p>
         :rtype: int
         """
         return self._SensitiveInfoCnt
@@ -24222,7 +24225,7 @@ class DescribeAssetImageDetailResponse(AbstractModel):
 
     @property
     def IsTrustImage(self):
-        r"""是否信任镜像
+        r"""<p>是否信任镜像</p>
         :rtype: bool
         """
         return self._IsTrustImage
@@ -24233,7 +24236,7 @@ class DescribeAssetImageDetailResponse(AbstractModel):
 
     @property
     def OsName(self):
-        r"""镜像系统
+        r"""<p>镜像系统</p>
         :rtype: str
         """
         return self._OsName
@@ -24244,7 +24247,7 @@ class DescribeAssetImageDetailResponse(AbstractModel):
 
     @property
     def AgentError(self):
-        r"""agent镜像扫描错误
+        r"""<p>agent镜像扫描错误</p>
         :rtype: str
         """
         return self._AgentError
@@ -24255,7 +24258,7 @@ class DescribeAssetImageDetailResponse(AbstractModel):
 
     @property
     def ScanError(self):
-        r"""后端镜像扫描错误
+        r"""<p>后端镜像扫描错误</p>
         :rtype: str
         """
         return self._ScanError
@@ -24266,7 +24269,7 @@ class DescribeAssetImageDetailResponse(AbstractModel):
 
     @property
     def Architecture(self):
-        r"""系统架构
+        r"""<p>系统架构</p>
         :rtype: str
         """
         return self._Architecture
@@ -24277,7 +24280,7 @@ class DescribeAssetImageDetailResponse(AbstractModel):
 
     @property
     def Author(self):
-        r"""作者
+        r"""<p>作者</p>
         :rtype: str
         """
         return self._Author
@@ -24288,7 +24291,7 @@ class DescribeAssetImageDetailResponse(AbstractModel):
 
     @property
     def BuildHistory(self):
-        r"""构建历史
+        r"""<p>构建历史</p>
         :rtype: str
         """
         return self._BuildHistory
@@ -24299,7 +24302,7 @@ class DescribeAssetImageDetailResponse(AbstractModel):
 
     @property
     def ScanVirusProgress(self):
-        r"""木马扫描进度
+        r"""<p>木马扫描进度</p>
         :rtype: int
         """
         return self._ScanVirusProgress
@@ -24310,7 +24313,7 @@ class DescribeAssetImageDetailResponse(AbstractModel):
 
     @property
     def ScanVulProgress(self):
-        r"""漏洞扫进度
+        r"""<p>漏洞扫进度</p>
         :rtype: int
         """
         return self._ScanVulProgress
@@ -24321,7 +24324,7 @@ class DescribeAssetImageDetailResponse(AbstractModel):
 
     @property
     def ScanRiskProgress(self):
-        r"""敏感信息扫描进度
+        r"""<p>敏感信息扫描进度</p>
         :rtype: int
         """
         return self._ScanRiskProgress
@@ -24332,7 +24335,7 @@ class DescribeAssetImageDetailResponse(AbstractModel):
 
     @property
     def ScanVirusError(self):
-        r"""木马扫描错误
+        r"""<p>木马扫描错误</p>
         :rtype: str
         """
         return self._ScanVirusError
@@ -24343,7 +24346,7 @@ class DescribeAssetImageDetailResponse(AbstractModel):
 
     @property
     def ScanVulError(self):
-        r"""漏洞扫描错误
+        r"""<p>漏洞扫描错误</p>
         :rtype: str
         """
         return self._ScanVulError
@@ -24354,7 +24357,7 @@ class DescribeAssetImageDetailResponse(AbstractModel):
 
     @property
     def ScanRiskError(self):
-        r"""敏感信息错误
+        r"""<p>敏感信息错误</p>
         :rtype: str
         """
         return self._ScanRiskError
@@ -24365,7 +24368,7 @@ class DescribeAssetImageDetailResponse(AbstractModel):
 
     @property
     def ScanStatus(self):
-        r"""镜像扫描状态
+        r"""<p>镜像扫描状态</p>
         :rtype: str
         """
         return self._ScanStatus
@@ -24376,7 +24379,7 @@ class DescribeAssetImageDetailResponse(AbstractModel):
 
     @property
     def VirusCnt(self):
-        r"""木马病毒数
+        r"""<p>木马病毒数</p>
         :rtype: int
         """
         return self._VirusCnt
@@ -24387,7 +24390,7 @@ class DescribeAssetImageDetailResponse(AbstractModel):
 
     @property
     def Status(self):
-        r"""镜像扫描状态
+        r"""<p>镜像扫描状态</p>
         :rtype: int
         """
         return self._Status
@@ -24398,7 +24401,7 @@ class DescribeAssetImageDetailResponse(AbstractModel):
 
     @property
     def RemainScanTime(self):
-        r"""剩余扫描时间
+        r"""<p>剩余扫描时间</p>
         :rtype: int
         """
         return self._RemainScanTime
@@ -24409,7 +24412,7 @@ class DescribeAssetImageDetailResponse(AbstractModel):
 
     @property
     def IsAuthorized(self):
-        r"""授权为：1，未授权为：0
+        r"""<p>授权为：1，未授权为：0</p>
         :rtype: int
         """
         return self._IsAuthorized
@@ -24420,7 +24423,7 @@ class DescribeAssetImageDetailResponse(AbstractModel):
 
     @property
     def Solution(self):
-        r"""解决方案
+        r"""<p>解决方案</p>
         :rtype: str
         """
         return self._Solution
@@ -24431,7 +24434,7 @@ class DescribeAssetImageDetailResponse(AbstractModel):
 
     @property
     def Reason(self):
-        r"""原因
+        r"""<p>原因</p>
         :rtype: str
         """
         return self._Reason
@@ -24439,6 +24442,17 @@ class DescribeAssetImageDetailResponse(AbstractModel):
     @Reason.setter
     def Reason(self, Reason):
         self._Reason = Reason
+
+    @property
+    def RepoDigests(self):
+        r"""<p>仓库Digests</p>
+        :rtype: list of str
+        """
+        return self._RepoDigests
+
+    @RepoDigests.setter
+    def RepoDigests(self, RepoDigests):
+        self._RepoDigests = RepoDigests
 
     @property
     def RequestId(self):
@@ -24485,6 +24499,7 @@ class DescribeAssetImageDetailResponse(AbstractModel):
         self._IsAuthorized = params.get("IsAuthorized")
         self._Solution = params.get("Solution")
         self._Reason = params.get("Reason")
+        self._RepoDigests = params.get("RepoDigests")
         self._RequestId = params.get("RequestId")
 
 

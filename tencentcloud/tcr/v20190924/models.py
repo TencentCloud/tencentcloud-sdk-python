@@ -1281,22 +1281,24 @@ class CreateInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RegistryName: 企业版实例名称
+        :param _RegistryName: <p>企业版实例名称</p>
         :type RegistryName: str
-        :param _RegistryType: 企业版实例类型（basic 基础版；standard 标准版；premium 高级版）
+        :param _RegistryType: <p>企业版实例类型（basic 基础版；standard 标准版；premium 高级版）</p>
         :type RegistryType: str
-        :param _TagSpecification: 云标签描述
+        :param _TagSpecification: <p>云标签描述</p>
         :type TagSpecification: :class:`tencentcloud.tcr.v20190924.models.TagSpecification`
-        :param _RegistryChargeType: 实例计费类型，0表示按量计费，1表示预付费，默认为按量计费
+        :param _RegistryChargeType: <p>实例计费类型，0表示按量计费，1表示预付费，默认为按量计费</p>
         :type RegistryChargeType: int
-        :param _RegistryChargePrepaid: 预付费自动续费标识和购买时长
+        :param _RegistryChargePrepaid: <p>预付费自动续费标识和购买时长</p>
         :type RegistryChargePrepaid: :class:`tencentcloud.tcr.v20190924.models.RegistryChargePrepaid`
-        :param _SyncTag: 是否同步TCR云标签至生成的COS Bucket
+        :param _SyncTag: <p>是否同步TCR云标签至生成的COS Bucket</p>
         :type SyncTag: bool
-        :param _EnableCosMAZ: 是否开启Cos桶多AZ特性
+        :param _EnableCosMAZ: <p>是否开启Cos桶多AZ特性</p>
         :type EnableCosMAZ: bool
-        :param _DeletionProtection: 是否开启实例删除保护
+        :param _DeletionProtection: <p>是否开启实例删除保护</p>
         :type DeletionProtection: bool
+        :param _EnableCosVersioning: <p>是否开启cos桶多版本控制</p>
+        :type EnableCosVersioning: bool
         """
         self._RegistryName = None
         self._RegistryType = None
@@ -1306,10 +1308,11 @@ class CreateInstanceRequest(AbstractModel):
         self._SyncTag = None
         self._EnableCosMAZ = None
         self._DeletionProtection = None
+        self._EnableCosVersioning = None
 
     @property
     def RegistryName(self):
-        r"""企业版实例名称
+        r"""<p>企业版实例名称</p>
         :rtype: str
         """
         return self._RegistryName
@@ -1320,7 +1323,7 @@ class CreateInstanceRequest(AbstractModel):
 
     @property
     def RegistryType(self):
-        r"""企业版实例类型（basic 基础版；standard 标准版；premium 高级版）
+        r"""<p>企业版实例类型（basic 基础版；standard 标准版；premium 高级版）</p>
         :rtype: str
         """
         return self._RegistryType
@@ -1331,7 +1334,7 @@ class CreateInstanceRequest(AbstractModel):
 
     @property
     def TagSpecification(self):
-        r"""云标签描述
+        r"""<p>云标签描述</p>
         :rtype: :class:`tencentcloud.tcr.v20190924.models.TagSpecification`
         """
         return self._TagSpecification
@@ -1342,7 +1345,7 @@ class CreateInstanceRequest(AbstractModel):
 
     @property
     def RegistryChargeType(self):
-        r"""实例计费类型，0表示按量计费，1表示预付费，默认为按量计费
+        r"""<p>实例计费类型，0表示按量计费，1表示预付费，默认为按量计费</p>
         :rtype: int
         """
         return self._RegistryChargeType
@@ -1353,7 +1356,7 @@ class CreateInstanceRequest(AbstractModel):
 
     @property
     def RegistryChargePrepaid(self):
-        r"""预付费自动续费标识和购买时长
+        r"""<p>预付费自动续费标识和购买时长</p>
         :rtype: :class:`tencentcloud.tcr.v20190924.models.RegistryChargePrepaid`
         """
         return self._RegistryChargePrepaid
@@ -1364,7 +1367,7 @@ class CreateInstanceRequest(AbstractModel):
 
     @property
     def SyncTag(self):
-        r"""是否同步TCR云标签至生成的COS Bucket
+        r"""<p>是否同步TCR云标签至生成的COS Bucket</p>
         :rtype: bool
         """
         return self._SyncTag
@@ -1375,7 +1378,7 @@ class CreateInstanceRequest(AbstractModel):
 
     @property
     def EnableCosMAZ(self):
-        r"""是否开启Cos桶多AZ特性
+        r"""<p>是否开启Cos桶多AZ特性</p>
         :rtype: bool
         """
         return self._EnableCosMAZ
@@ -1386,7 +1389,7 @@ class CreateInstanceRequest(AbstractModel):
 
     @property
     def DeletionProtection(self):
-        r"""是否开启实例删除保护
+        r"""<p>是否开启实例删除保护</p>
         :rtype: bool
         """
         return self._DeletionProtection
@@ -1394,6 +1397,17 @@ class CreateInstanceRequest(AbstractModel):
     @DeletionProtection.setter
     def DeletionProtection(self, DeletionProtection):
         self._DeletionProtection = DeletionProtection
+
+    @property
+    def EnableCosVersioning(self):
+        r"""<p>是否开启cos桶多版本控制</p>
+        :rtype: bool
+        """
+        return self._EnableCosVersioning
+
+    @EnableCosVersioning.setter
+    def EnableCosVersioning(self, EnableCosVersioning):
+        self._EnableCosVersioning = EnableCosVersioning
 
 
     def _deserialize(self, params):
@@ -1409,6 +1423,7 @@ class CreateInstanceRequest(AbstractModel):
         self._SyncTag = params.get("SyncTag")
         self._EnableCosMAZ = params.get("EnableCosMAZ")
         self._DeletionProtection = params.get("DeletionProtection")
+        self._EnableCosVersioning = params.get("EnableCosVersioning")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1426,7 +1441,7 @@ class CreateInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RegistryId: 企业版实例Id
+        :param _RegistryId: <p>企业版实例Id</p>
         :type RegistryId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1436,7 +1451,7 @@ class CreateInstanceResponse(AbstractModel):
 
     @property
     def RegistryId(self):
-        r"""企业版实例Id
+        r"""<p>企业版实例Id</p>
         :rtype: str
         """
         return self._RegistryId
@@ -14732,6 +14747,10 @@ class Registry(AbstractModel):
         :param _AIFeature: <p>是否支持AI特性</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AIFeature: bool
+        :param _EnableCosMAZ: <p>cos桶是否开启多AZ特性</p>
+        :type EnableCosMAZ: bool
+        :param _EnableCosVersioning: <p>cos桶是否开启版本控制</p>
+        :type EnableCosVersioning: bool
         """
         self._RegistryId = None
         self._RegistryName = None
@@ -14750,6 +14769,8 @@ class Registry(AbstractModel):
         self._RenewFlag = None
         self._DeletionProtection = None
         self._AIFeature = None
+        self._EnableCosMAZ = None
+        self._EnableCosVersioning = None
 
     @property
     def RegistryId(self):
@@ -14939,6 +14960,28 @@ class Registry(AbstractModel):
     def AIFeature(self, AIFeature):
         self._AIFeature = AIFeature
 
+    @property
+    def EnableCosMAZ(self):
+        r"""<p>cos桶是否开启多AZ特性</p>
+        :rtype: bool
+        """
+        return self._EnableCosMAZ
+
+    @EnableCosMAZ.setter
+    def EnableCosMAZ(self, EnableCosMAZ):
+        self._EnableCosMAZ = EnableCosMAZ
+
+    @property
+    def EnableCosVersioning(self):
+        r"""<p>cos桶是否开启版本控制</p>
+        :rtype: bool
+        """
+        return self._EnableCosVersioning
+
+    @EnableCosVersioning.setter
+    def EnableCosVersioning(self, EnableCosVersioning):
+        self._EnableCosVersioning = EnableCosVersioning
+
 
     def _deserialize(self, params):
         self._RegistryId = params.get("RegistryId")
@@ -14960,6 +15003,8 @@ class Registry(AbstractModel):
         self._RenewFlag = params.get("RenewFlag")
         self._DeletionProtection = params.get("DeletionProtection")
         self._AIFeature = params.get("AIFeature")
+        self._EnableCosMAZ = params.get("EnableCosMAZ")
+        self._EnableCosVersioning = params.get("EnableCosVersioning")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

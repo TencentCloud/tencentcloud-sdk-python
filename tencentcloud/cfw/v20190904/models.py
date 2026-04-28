@@ -1033,26 +1033,28 @@ class AssociatedInstanceInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: <p>实例ID</p>
         :type InstanceId: str
-        :param _InstanceName: 实例名称
+        :param _InstanceName: <p>实例名称</p>
         :type InstanceName: str
-        :param _Type: 实例类型，3是cvm实例,4是clb实例,5是eni实例,6是云数据库
+        :param _Type: <p>实例类型，3是cvm实例,4是clb实例,5是eni实例,6是云数据库</p>
         :type Type: int
-        :param _VpcId: 私有网络ID
+        :param _VpcId: <p>私有网络ID</p>
         :type VpcId: str
-        :param _VpcName: 私有网络名称
+        :param _VpcName: <p>私有网络名称</p>
         :type VpcName: str
-        :param _PublicIp: 公网IP
+        :param _PublicIp: <p>公网IP</p>
         :type PublicIp: str
-        :param _Ip: 内网IP
+        :param _Ip: <p>内网IP</p>
         :type Ip: str
-        :param _SecurityGroupCount: 关联安全组数量
+        :param _SecurityGroupCount: <p>关联安全组数量</p>
         :type SecurityGroupCount: int
-        :param _SecurityGroupRuleCount: 关联安全组规则数量
+        :param _SecurityGroupRuleCount: <p>关联安全组规则数量</p>
         :type SecurityGroupRuleCount: int
-        :param _CdbId: 关联数据库代理Id
+        :param _CdbId: <p>关联数据库代理Id</p>
         :type CdbId: str
+        :param _TkeClusterId: <p>容器服务集群ID</p>
+        :type TkeClusterId: str
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -1064,10 +1066,11 @@ class AssociatedInstanceInfo(AbstractModel):
         self._SecurityGroupCount = None
         self._SecurityGroupRuleCount = None
         self._CdbId = None
+        self._TkeClusterId = None
 
     @property
     def InstanceId(self):
-        r"""实例ID
+        r"""<p>实例ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -1078,7 +1081,7 @@ class AssociatedInstanceInfo(AbstractModel):
 
     @property
     def InstanceName(self):
-        r"""实例名称
+        r"""<p>实例名称</p>
         :rtype: str
         """
         return self._InstanceName
@@ -1089,7 +1092,7 @@ class AssociatedInstanceInfo(AbstractModel):
 
     @property
     def Type(self):
-        r"""实例类型，3是cvm实例,4是clb实例,5是eni实例,6是云数据库
+        r"""<p>实例类型，3是cvm实例,4是clb实例,5是eni实例,6是云数据库</p>
         :rtype: int
         """
         return self._Type
@@ -1100,7 +1103,7 @@ class AssociatedInstanceInfo(AbstractModel):
 
     @property
     def VpcId(self):
-        r"""私有网络ID
+        r"""<p>私有网络ID</p>
         :rtype: str
         """
         return self._VpcId
@@ -1111,7 +1114,7 @@ class AssociatedInstanceInfo(AbstractModel):
 
     @property
     def VpcName(self):
-        r"""私有网络名称
+        r"""<p>私有网络名称</p>
         :rtype: str
         """
         return self._VpcName
@@ -1122,7 +1125,7 @@ class AssociatedInstanceInfo(AbstractModel):
 
     @property
     def PublicIp(self):
-        r"""公网IP
+        r"""<p>公网IP</p>
         :rtype: str
         """
         return self._PublicIp
@@ -1133,7 +1136,7 @@ class AssociatedInstanceInfo(AbstractModel):
 
     @property
     def Ip(self):
-        r"""内网IP
+        r"""<p>内网IP</p>
         :rtype: str
         """
         return self._Ip
@@ -1144,7 +1147,7 @@ class AssociatedInstanceInfo(AbstractModel):
 
     @property
     def SecurityGroupCount(self):
-        r"""关联安全组数量
+        r"""<p>关联安全组数量</p>
         :rtype: int
         """
         return self._SecurityGroupCount
@@ -1155,7 +1158,7 @@ class AssociatedInstanceInfo(AbstractModel):
 
     @property
     def SecurityGroupRuleCount(self):
-        r"""关联安全组规则数量
+        r"""<p>关联安全组规则数量</p>
         :rtype: int
         """
         return self._SecurityGroupRuleCount
@@ -1166,7 +1169,7 @@ class AssociatedInstanceInfo(AbstractModel):
 
     @property
     def CdbId(self):
-        r"""关联数据库代理Id
+        r"""<p>关联数据库代理Id</p>
         :rtype: str
         """
         return self._CdbId
@@ -1174,6 +1177,17 @@ class AssociatedInstanceInfo(AbstractModel):
     @CdbId.setter
     def CdbId(self, CdbId):
         self._CdbId = CdbId
+
+    @property
+    def TkeClusterId(self):
+        r"""<p>容器服务集群ID</p>
+        :rtype: str
+        """
+        return self._TkeClusterId
+
+    @TkeClusterId.setter
+    def TkeClusterId(self, TkeClusterId):
+        self._TkeClusterId = TkeClusterId
 
 
     def _deserialize(self, params):
@@ -1187,6 +1201,7 @@ class AssociatedInstanceInfo(AbstractModel):
         self._SecurityGroupCount = params.get("SecurityGroupCount")
         self._SecurityGroupRuleCount = params.get("SecurityGroupRuleCount")
         self._CdbId = params.get("CdbId")
+        self._TkeClusterId = params.get("TkeClusterId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

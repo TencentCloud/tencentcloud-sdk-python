@@ -424,6 +424,24 @@ class TioneClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeAnnotatedTaskList(
+            self,
+            request: models.DescribeAnnotatedTaskListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAnnotatedTaskListResponse:
+        """
+        本接口（DescribeAnnotatedTaskList）用于查询用户标注任务详细信息列表；支持各种过滤条件；
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAnnotatedTaskList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAnnotatedTaskListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeBillingResourceGroup(
             self,
             request: models.DescribeBillingResourceGroupRequest,
@@ -1033,6 +1051,24 @@ class TioneClient(AbstractClient):
         kwargs["action"] = "DescribeTrainingTasks"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeTrainingTasksResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeWorkspaces(
+            self,
+            request: models.DescribeWorkspacesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeWorkspacesResponse:
+        """
+        查询工作空间列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeWorkspaces"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeWorkspacesResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

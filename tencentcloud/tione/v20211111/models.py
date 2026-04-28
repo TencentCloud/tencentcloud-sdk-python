@@ -78,6 +78,435 @@ class AggregatePublicAlgoVersion(AbstractModel):
         
 
 
+class AnnotationTaskInfo(AbstractModel):
+    r"""描述标注任务详细信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>标注任务id</p>
+        :type TaskId: str
+        :param _TaskName: <p>标注任务名称</p>
+        :type TaskName: str
+        :param _DatasetId: <p>数据集id</p>
+        :type DatasetId: str
+        :param _DatasetName: <p>数据集名称</p>
+        :type DatasetName: str
+        :param _SceneName: <p>标注场景名称</p>
+        :type SceneName: str
+        :param _LabelValueList: <p>标注任务的label信息数组</p>
+        :type LabelValueList: list of LabelValue
+        :param _CamTagList: <p>tag详情数组</p>
+        :type CamTagList: list of CamTag
+        :param _Status: <p>任务状态</p>
+        :type Status: int
+        :param _AbnormalMsg: <p>创建任务失败原因说明</p>
+        :type AbnormalMsg: str
+        :param _IsSubmitting: <p>标注任务是否正在提交</p>
+        :type IsSubmitting: bool
+        :param _TaskNote: <p>任务详情描述</p>
+        :type TaskNote: str
+        :param _DataSetVersion: <p>数据集版本</p>
+        :type DataSetVersion: str
+        :param _NumAnnotated: <p>已经标注的图片数量</p>
+        :type NumAnnotated: int
+        :param _NumTotal: <p>标注的总图片数量</p>
+        :type NumTotal: int
+        :param _CreateTime: <p>创建任务的时间戳</p>
+        :type CreateTime: int
+        :param _OcrToolType: <p>Ocr Tool Type</p>
+        :type OcrToolType: int
+        :param _OcrTextAttributeAnnotateEnable: <p>Ocr Text Attribute Annotate Enable</p>
+        :type OcrTextAttributeAnnotateEnable: bool
+        :param _ExportFormat: <p>导出格式</p>
+        :type ExportFormat: str
+        :param _SubmittingErrorMsg: <p>提交错误说明</p>
+        :type SubmittingErrorMsg: str
+        :param _OcrAnnotationContentType: <p>ocr任务类型：1-识别。2-智能结构化</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OcrAnnotationContentType: int
+        :param _EnableAuxiliaryAnnotation: <p>OCR任务：是否启用辅助标注</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnableAuxiliaryAnnotation: bool
+        :param _DatasetCreator: <p>数据集创建者UIN</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatasetCreator: str
+        :param _Creator: <p>任务创建者UIN</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Creator: str
+        :param _DatasetCreatorName: <p>数据集创建者名称</p>
+        :type DatasetCreatorName: str
+        :param _CreatorName: <p>任务创建者名称</p>
+        :type CreatorName: str
+        :param _TaskStatus: <p>标注任务状态枚举</p><p>枚举值：</p><ul><li>CREATING： 创建中</li><li>CREATE_SUCCESS： 创建成功，可标注</li><li>CREATE_FAILED： 创建失败</li><li>SUBMITTING： 提交中</li><li>SUBMIT_SUCCESS： 提交成功，需重启才可标注</li><li>SUBMIT_FAILED： 提交失败</li><li>ABNORMAL： 数据版本异常，需删除重建（大模型场景）</li></ul>
+        :type TaskStatus: str
+        """
+        self._TaskId = None
+        self._TaskName = None
+        self._DatasetId = None
+        self._DatasetName = None
+        self._SceneName = None
+        self._LabelValueList = None
+        self._CamTagList = None
+        self._Status = None
+        self._AbnormalMsg = None
+        self._IsSubmitting = None
+        self._TaskNote = None
+        self._DataSetVersion = None
+        self._NumAnnotated = None
+        self._NumTotal = None
+        self._CreateTime = None
+        self._OcrToolType = None
+        self._OcrTextAttributeAnnotateEnable = None
+        self._ExportFormat = None
+        self._SubmittingErrorMsg = None
+        self._OcrAnnotationContentType = None
+        self._EnableAuxiliaryAnnotation = None
+        self._DatasetCreator = None
+        self._Creator = None
+        self._DatasetCreatorName = None
+        self._CreatorName = None
+        self._TaskStatus = None
+
+    @property
+    def TaskId(self):
+        r"""<p>标注任务id</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TaskName(self):
+        r"""<p>标注任务名称</p>
+        :rtype: str
+        """
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def DatasetId(self):
+        r"""<p>数据集id</p>
+        :rtype: str
+        """
+        return self._DatasetId
+
+    @DatasetId.setter
+    def DatasetId(self, DatasetId):
+        self._DatasetId = DatasetId
+
+    @property
+    def DatasetName(self):
+        r"""<p>数据集名称</p>
+        :rtype: str
+        """
+        return self._DatasetName
+
+    @DatasetName.setter
+    def DatasetName(self, DatasetName):
+        self._DatasetName = DatasetName
+
+    @property
+    def SceneName(self):
+        r"""<p>标注场景名称</p>
+        :rtype: str
+        """
+        return self._SceneName
+
+    @SceneName.setter
+    def SceneName(self, SceneName):
+        self._SceneName = SceneName
+
+    @property
+    def LabelValueList(self):
+        r"""<p>标注任务的label信息数组</p>
+        :rtype: list of LabelValue
+        """
+        return self._LabelValueList
+
+    @LabelValueList.setter
+    def LabelValueList(self, LabelValueList):
+        self._LabelValueList = LabelValueList
+
+    @property
+    def CamTagList(self):
+        r"""<p>tag详情数组</p>
+        :rtype: list of CamTag
+        """
+        return self._CamTagList
+
+    @CamTagList.setter
+    def CamTagList(self, CamTagList):
+        self._CamTagList = CamTagList
+
+    @property
+    def Status(self):
+        r"""<p>任务状态</p>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def AbnormalMsg(self):
+        r"""<p>创建任务失败原因说明</p>
+        :rtype: str
+        """
+        return self._AbnormalMsg
+
+    @AbnormalMsg.setter
+    def AbnormalMsg(self, AbnormalMsg):
+        self._AbnormalMsg = AbnormalMsg
+
+    @property
+    def IsSubmitting(self):
+        r"""<p>标注任务是否正在提交</p>
+        :rtype: bool
+        """
+        return self._IsSubmitting
+
+    @IsSubmitting.setter
+    def IsSubmitting(self, IsSubmitting):
+        self._IsSubmitting = IsSubmitting
+
+    @property
+    def TaskNote(self):
+        r"""<p>任务详情描述</p>
+        :rtype: str
+        """
+        return self._TaskNote
+
+    @TaskNote.setter
+    def TaskNote(self, TaskNote):
+        self._TaskNote = TaskNote
+
+    @property
+    def DataSetVersion(self):
+        r"""<p>数据集版本</p>
+        :rtype: str
+        """
+        return self._DataSetVersion
+
+    @DataSetVersion.setter
+    def DataSetVersion(self, DataSetVersion):
+        self._DataSetVersion = DataSetVersion
+
+    @property
+    def NumAnnotated(self):
+        r"""<p>已经标注的图片数量</p>
+        :rtype: int
+        """
+        return self._NumAnnotated
+
+    @NumAnnotated.setter
+    def NumAnnotated(self, NumAnnotated):
+        self._NumAnnotated = NumAnnotated
+
+    @property
+    def NumTotal(self):
+        r"""<p>标注的总图片数量</p>
+        :rtype: int
+        """
+        return self._NumTotal
+
+    @NumTotal.setter
+    def NumTotal(self, NumTotal):
+        self._NumTotal = NumTotal
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建任务的时间戳</p>
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def OcrToolType(self):
+        r"""<p>Ocr Tool Type</p>
+        :rtype: int
+        """
+        return self._OcrToolType
+
+    @OcrToolType.setter
+    def OcrToolType(self, OcrToolType):
+        self._OcrToolType = OcrToolType
+
+    @property
+    def OcrTextAttributeAnnotateEnable(self):
+        r"""<p>Ocr Text Attribute Annotate Enable</p>
+        :rtype: bool
+        """
+        return self._OcrTextAttributeAnnotateEnable
+
+    @OcrTextAttributeAnnotateEnable.setter
+    def OcrTextAttributeAnnotateEnable(self, OcrTextAttributeAnnotateEnable):
+        self._OcrTextAttributeAnnotateEnable = OcrTextAttributeAnnotateEnable
+
+    @property
+    def ExportFormat(self):
+        r"""<p>导出格式</p>
+        :rtype: str
+        """
+        return self._ExportFormat
+
+    @ExportFormat.setter
+    def ExportFormat(self, ExportFormat):
+        self._ExportFormat = ExportFormat
+
+    @property
+    def SubmittingErrorMsg(self):
+        r"""<p>提交错误说明</p>
+        :rtype: str
+        """
+        return self._SubmittingErrorMsg
+
+    @SubmittingErrorMsg.setter
+    def SubmittingErrorMsg(self, SubmittingErrorMsg):
+        self._SubmittingErrorMsg = SubmittingErrorMsg
+
+    @property
+    def OcrAnnotationContentType(self):
+        r"""<p>ocr任务类型：1-识别。2-智能结构化</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._OcrAnnotationContentType
+
+    @OcrAnnotationContentType.setter
+    def OcrAnnotationContentType(self, OcrAnnotationContentType):
+        self._OcrAnnotationContentType = OcrAnnotationContentType
+
+    @property
+    def EnableAuxiliaryAnnotation(self):
+        r"""<p>OCR任务：是否启用辅助标注</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._EnableAuxiliaryAnnotation
+
+    @EnableAuxiliaryAnnotation.setter
+    def EnableAuxiliaryAnnotation(self, EnableAuxiliaryAnnotation):
+        self._EnableAuxiliaryAnnotation = EnableAuxiliaryAnnotation
+
+    @property
+    def DatasetCreator(self):
+        r"""<p>数据集创建者UIN</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DatasetCreator
+
+    @DatasetCreator.setter
+    def DatasetCreator(self, DatasetCreator):
+        self._DatasetCreator = DatasetCreator
+
+    @property
+    def Creator(self):
+        r"""<p>任务创建者UIN</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Creator
+
+    @Creator.setter
+    def Creator(self, Creator):
+        self._Creator = Creator
+
+    @property
+    def DatasetCreatorName(self):
+        r"""<p>数据集创建者名称</p>
+        :rtype: str
+        """
+        return self._DatasetCreatorName
+
+    @DatasetCreatorName.setter
+    def DatasetCreatorName(self, DatasetCreatorName):
+        self._DatasetCreatorName = DatasetCreatorName
+
+    @property
+    def CreatorName(self):
+        r"""<p>任务创建者名称</p>
+        :rtype: str
+        """
+        return self._CreatorName
+
+    @CreatorName.setter
+    def CreatorName(self, CreatorName):
+        self._CreatorName = CreatorName
+
+    @property
+    def TaskStatus(self):
+        r"""<p>标注任务状态枚举</p><p>枚举值：</p><ul><li>CREATING： 创建中</li><li>CREATE_SUCCESS： 创建成功，可标注</li><li>CREATE_FAILED： 创建失败</li><li>SUBMITTING： 提交中</li><li>SUBMIT_SUCCESS： 提交成功，需重启才可标注</li><li>SUBMIT_FAILED： 提交失败</li><li>ABNORMAL： 数据版本异常，需删除重建（大模型场景）</li></ul>
+        :rtype: str
+        """
+        return self._TaskStatus
+
+    @TaskStatus.setter
+    def TaskStatus(self, TaskStatus):
+        self._TaskStatus = TaskStatus
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._TaskName = params.get("TaskName")
+        self._DatasetId = params.get("DatasetId")
+        self._DatasetName = params.get("DatasetName")
+        self._SceneName = params.get("SceneName")
+        if params.get("LabelValueList") is not None:
+            self._LabelValueList = []
+            for item in params.get("LabelValueList"):
+                obj = LabelValue()
+                obj._deserialize(item)
+                self._LabelValueList.append(obj)
+        if params.get("CamTagList") is not None:
+            self._CamTagList = []
+            for item in params.get("CamTagList"):
+                obj = CamTag()
+                obj._deserialize(item)
+                self._CamTagList.append(obj)
+        self._Status = params.get("Status")
+        self._AbnormalMsg = params.get("AbnormalMsg")
+        self._IsSubmitting = params.get("IsSubmitting")
+        self._TaskNote = params.get("TaskNote")
+        self._DataSetVersion = params.get("DataSetVersion")
+        self._NumAnnotated = params.get("NumAnnotated")
+        self._NumTotal = params.get("NumTotal")
+        self._CreateTime = params.get("CreateTime")
+        self._OcrToolType = params.get("OcrToolType")
+        self._OcrTextAttributeAnnotateEnable = params.get("OcrTextAttributeAnnotateEnable")
+        self._ExportFormat = params.get("ExportFormat")
+        self._SubmittingErrorMsg = params.get("SubmittingErrorMsg")
+        self._OcrAnnotationContentType = params.get("OcrAnnotationContentType")
+        self._EnableAuxiliaryAnnotation = params.get("EnableAuxiliaryAnnotation")
+        self._DatasetCreator = params.get("DatasetCreator")
+        self._Creator = params.get("Creator")
+        self._DatasetCreatorName = params.get("DatasetCreatorName")
+        self._CreatorName = params.get("CreatorName")
+        self._TaskStatus = params.get("TaskStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Attribute(AbstractModel):
     r"""镜像属性
 
@@ -555,6 +984,57 @@ class CFSTurbo(AbstractModel):
     def _deserialize(self, params):
         self._Id = params.get("Id")
         self._Path = params.get("Path")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CamTag(AbstractModel):
+    r"""cam详细信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: tag键值
+        :type Key: str
+        :param _Value: tag值
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        r"""tag键值
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        r"""tag值
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3882,6 +4362,8 @@ class CreateTrainingTaskRequest(AbstractModel):
         :type ChargeType: str
         :param _ResourceConfigInfos: <p>资源配置，需填写对应算力规格ID和节点数量，算力规格ID查询接口为DescribeBillingSpecsPrice，eg：[{&quot;Role&quot;:&quot;WORKER&quot;, &quot;InstanceType&quot;: &quot;TI.S.MEDIUM.POST&quot;, &quot;InstanceNum&quot;: 1}]</p>
         :type ResourceConfigInfos: list of ResourceConfigInfo
+        :param _TiProjectId: <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :type TiProjectId: str
         :param _FrameworkName: <p>训练框架名称，通过DescribeTrainingFrameworks接口查询，eg：SPARK、PYSPARK、TENSORFLOW、PYTORCH</p>
         :type FrameworkName: str
         :param _FrameworkVersion: <p>训练框架版本，通过DescribeTrainingFrameworks接口查询，eg：1.15、1.9</p>
@@ -3932,6 +4414,7 @@ class CreateTrainingTaskRequest(AbstractModel):
         self._Name = None
         self._ChargeType = None
         self._ResourceConfigInfos = None
+        self._TiProjectId = None
         self._FrameworkName = None
         self._FrameworkVersion = None
         self._FrameworkEnvironment = None
@@ -3988,6 +4471,17 @@ class CreateTrainingTaskRequest(AbstractModel):
     @ResourceConfigInfos.setter
     def ResourceConfigInfos(self, ResourceConfigInfos):
         self._ResourceConfigInfos = ResourceConfigInfos
+
+    @property
+    def TiProjectId(self):
+        r"""<p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :rtype: str
+        """
+        return self._TiProjectId
+
+    @TiProjectId.setter
+    def TiProjectId(self, TiProjectId):
+        self._TiProjectId = TiProjectId
 
     @property
     def FrameworkName(self):
@@ -4252,6 +4746,7 @@ class CreateTrainingTaskRequest(AbstractModel):
                 obj = ResourceConfigInfo()
                 obj._deserialize(item)
                 self._ResourceConfigInfos.append(obj)
+        self._TiProjectId = params.get("TiProjectId")
         self._FrameworkName = params.get("FrameworkName")
         self._FrameworkVersion = params.get("FrameworkVersion")
         self._FrameworkEnvironment = params.get("FrameworkEnvironment")
@@ -7199,8 +7694,11 @@ class DeleteTrainingTaskRequest(AbstractModel):
         r"""
         :param _Id: 训练任务ID
         :type Id: str
+        :param _TiProjectId: <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :type TiProjectId: str
         """
         self._Id = None
+        self._TiProjectId = None
 
     @property
     def Id(self):
@@ -7213,9 +7711,21 @@ class DeleteTrainingTaskRequest(AbstractModel):
     def Id(self, Id):
         self._Id = Id
 
+    @property
+    def TiProjectId(self):
+        r"""<p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :rtype: str
+        """
+        return self._TiProjectId
+
+    @TiProjectId.setter
+    def TiProjectId(self, TiProjectId):
+        self._TiProjectId = TiProjectId
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
+        self._TiProjectId = params.get("TiProjectId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7251,6 +7761,192 @@ class DeleteTrainingTaskResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAnnotatedTaskListRequest(AbstractModel):
+    r"""DescribeAnnotatedTaskList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Offset: 偏移量，默认为0
+        :type Offset: int
+        :param _Limit: 页面大小，默认为10
+        :type Limit: int
+        :param _Filters: 过滤条件数组，支持数据集ID，标注场景、任务状态、数据集名称、人物名称的过滤，后面两个支持模糊查询
+        :type Filters: list of Filter
+        :param _TagFilters: 标签过滤条件
+        :type TagFilters: list of TagFilter
+        :param _Order: 排序方向：Asc Desc
+        :type Order: str
+        :param _OrderField: 排序字段
+        :type OrderField: str
+        """
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+        self._TagFilters = None
+        self._Order = None
+        self._OrderField = None
+
+    @property
+    def Offset(self):
+        r"""偏移量，默认为0
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""页面大小，默认为10
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        r"""过滤条件数组，支持数据集ID，标注场景、任务状态、数据集名称、人物名称的过滤，后面两个支持模糊查询
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def TagFilters(self):
+        r"""标签过滤条件
+        :rtype: list of TagFilter
+        """
+        return self._TagFilters
+
+    @TagFilters.setter
+    def TagFilters(self, TagFilters):
+        self._TagFilters = TagFilters
+
+    @property
+    def Order(self):
+        r"""排序方向：Asc Desc
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def OrderField(self):
+        r"""排序字段
+        :rtype: str
+        """
+        return self._OrderField
+
+    @OrderField.setter
+    def OrderField(self, OrderField):
+        self._OrderField = OrderField
+
+
+    def _deserialize(self, params):
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        if params.get("TagFilters") is not None:
+            self._TagFilters = []
+            for item in params.get("TagFilters"):
+                obj = TagFilter()
+                obj._deserialize(item)
+                self._TagFilters.append(obj)
+        self._Order = params.get("Order")
+        self._OrderField = params.get("OrderField")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAnnotatedTaskListResponse(AbstractModel):
+    r"""DescribeAnnotatedTaskList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 任务列表总数量
+        :type TotalCount: int
+        :param _TaskList: 标注任务详情列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskList: list of AnnotationTaskInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._TaskList = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""任务列表总数量
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def TaskList(self):
+        r"""标注任务详情列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of AnnotationTaskInfo
+        """
+        return self._TaskList
+
+    @TaskList.setter
+    def TaskList(self, TaskList):
+        self._TaskList = TaskList
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("TaskList") is not None:
+            self._TaskList = []
+            for item in params.get("TaskList"):
+                obj = AnnotationTaskInfo()
+                obj._deserialize(item)
+                self._TaskList.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -12328,6 +13024,185 @@ class DescribeTrainingTasksResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeWorkspacesRequest(AbstractModel):
+    r"""DescribeWorkspaces请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TiProjectId: <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :type TiProjectId: str
+        :param _Filters: <p>过滤条件</p>
+        :type Filters: list of Filter
+        :param _Offset: <p>偏移量</p>
+        :type Offset: int
+        :param _Limit: <p>数量</p>
+        :type Limit: int
+        :param _OrderField: <p>排序字段</p>
+        :type OrderField: str
+        :param _Order: <p>排序方式</p>
+        :type Order: str
+        """
+        self._TiProjectId = None
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+        self._OrderField = None
+        self._Order = None
+
+    @property
+    def TiProjectId(self):
+        r"""<p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :rtype: str
+        """
+        return self._TiProjectId
+
+    @TiProjectId.setter
+    def TiProjectId(self, TiProjectId):
+        self._TiProjectId = TiProjectId
+
+    @property
+    def Filters(self):
+        r"""<p>过滤条件</p>
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        r"""<p>偏移量</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>数量</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def OrderField(self):
+        r"""<p>排序字段</p>
+        :rtype: str
+        """
+        return self._OrderField
+
+    @OrderField.setter
+    def OrderField(self, OrderField):
+        self._OrderField = OrderField
+
+    @property
+    def Order(self):
+        r"""<p>排序方式</p>
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+
+    def _deserialize(self, params):
+        self._TiProjectId = params.get("TiProjectId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._OrderField = params.get("OrderField")
+        self._Order = params.get("Order")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeWorkspacesResponse(AbstractModel):
+    r"""DescribeWorkspaces返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>总数</p>
+        :type TotalCount: int
+        :param _Workspaces: <p>工作空间列表</p>
+        :type Workspaces: list of Workspace
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Workspaces = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>总数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Workspaces(self):
+        r"""<p>工作空间列表</p>
+        :rtype: list of Workspace
+        """
+        return self._Workspaces
+
+    @Workspaces.setter
+    def Workspaces(self, Workspaces):
+        self._Workspaces = Workspaces
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Workspaces") is not None:
+            self._Workspaces = []
+            for item in params.get("Workspaces"):
+                obj = Workspace()
+                obj._deserialize(item)
+                self._Workspaces.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DeviceImageInfo(AbstractModel):
     r"""设备对应的镜像信息
 
@@ -14835,6 +15710,57 @@ class IntranetCallInfo(AbstractModel):
                 obj = PrivateLinkInfo()
                 obj._deserialize(item)
                 self._PrivateLinkInfosV2.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LabelValue(AbstractModel):
+    r"""描述label详细信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LabelName: 标签名称
+        :type LabelName: str
+        :param _LabelColor: 标签的颜色
+        :type LabelColor: str
+        """
+        self._LabelName = None
+        self._LabelColor = None
+
+    @property
+    def LabelName(self):
+        r"""标签名称
+        :rtype: str
+        """
+        return self._LabelName
+
+    @LabelName.setter
+    def LabelName(self, LabelName):
+        self._LabelName = LabelName
+
+    @property
+    def LabelColor(self):
+        r"""标签的颜色
+        :rtype: str
+        """
+        return self._LabelColor
+
+    @LabelColor.setter
+    def LabelColor(self, LabelColor):
+        self._LabelColor = LabelColor
+
+
+    def _deserialize(self, params):
+        self._LabelName = params.get("LabelName")
+        self._LabelColor = params.get("LabelColor")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21822,10 +22748,24 @@ class PushTrainingMetricsRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _TiProjectId: <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :type TiProjectId: str
         :param _Data: 指标数据
         :type Data: list of MetricData
         """
+        self._TiProjectId = None
         self._Data = None
+
+    @property
+    def TiProjectId(self):
+        r"""<p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :rtype: str
+        """
+        return self._TiProjectId
+
+    @TiProjectId.setter
+    def TiProjectId(self, TiProjectId):
+        self._TiProjectId = TiProjectId
 
     @property
     def Data(self):
@@ -21840,6 +22780,7 @@ class PushTrainingMetricsRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._TiProjectId = params.get("TiProjectId")
         if params.get("Data") is not None:
             self._Data = []
             for item in params.get("Data"):
@@ -22441,6 +23382,87 @@ class ResourceGroup(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self._TagSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResourceGroupInWorkspace(AbstractModel):
+    r"""工作空间绑定的资源组信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceGroupId: <p>资源组ID</p>
+        :type ResourceGroupId: str
+        :param _ResourceGroupName: <p>资源组名称</p>
+        :type ResourceGroupName: str
+        :param _Region: <p>地域</p>
+        :type Region: str
+        :param _Occupied: <p>是否有运行中的任务/服务占用</p>
+        :type Occupied: bool
+        """
+        self._ResourceGroupId = None
+        self._ResourceGroupName = None
+        self._Region = None
+        self._Occupied = None
+
+    @property
+    def ResourceGroupId(self):
+        r"""<p>资源组ID</p>
+        :rtype: str
+        """
+        return self._ResourceGroupId
+
+    @ResourceGroupId.setter
+    def ResourceGroupId(self, ResourceGroupId):
+        self._ResourceGroupId = ResourceGroupId
+
+    @property
+    def ResourceGroupName(self):
+        r"""<p>资源组名称</p>
+        :rtype: str
+        """
+        return self._ResourceGroupName
+
+    @ResourceGroupName.setter
+    def ResourceGroupName(self, ResourceGroupName):
+        self._ResourceGroupName = ResourceGroupName
+
+    @property
+    def Region(self):
+        r"""<p>地域</p>
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Occupied(self):
+        r"""<p>是否有运行中的任务/服务占用</p>
+        :rtype: bool
+        """
+        return self._Occupied
+
+    @Occupied.setter
+    def Occupied(self, Occupied):
+        self._Occupied = Occupied
+
+
+    def _deserialize(self, params):
+        self._ResourceGroupId = params.get("ResourceGroupId")
+        self._ResourceGroupName = params.get("ResourceGroupName")
+        self._Region = params.get("Region")
+        self._Occupied = params.get("Occupied")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -26073,8 +27095,11 @@ class StartTrainingTaskRequest(AbstractModel):
         r"""
         :param _Id: 训练任务ID
         :type Id: str
+        :param _TiProjectId: <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :type TiProjectId: str
         """
         self._Id = None
+        self._TiProjectId = None
 
     @property
     def Id(self):
@@ -26087,9 +27112,21 @@ class StartTrainingTaskRequest(AbstractModel):
     def Id(self, Id):
         self._Id = Id
 
+    @property
+    def TiProjectId(self):
+        r"""<p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :rtype: str
+        """
+        return self._TiProjectId
+
+    @TiProjectId.setter
+    def TiProjectId(self, TiProjectId):
+        self._TiProjectId = TiProjectId
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
+        self._TiProjectId = params.get("TiProjectId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -26422,8 +27459,11 @@ class StopTrainingTaskRequest(AbstractModel):
         r"""
         :param _Id: 训练任务ID
         :type Id: str
+        :param _TiProjectId: <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :type TiProjectId: str
         """
         self._Id = None
+        self._TiProjectId = None
 
     @property
     def Id(self):
@@ -26436,9 +27476,21 @@ class StopTrainingTaskRequest(AbstractModel):
     def Id(self, Id):
         self._Id = Id
 
+    @property
+    def TiProjectId(self):
+        r"""<p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :rtype: str
+        """
+        return self._TiProjectId
+
+    @TiProjectId.setter
+    def TiProjectId(self, TiProjectId):
+        self._TiProjectId = TiProjectId
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
+        self._TiProjectId = params.get("TiProjectId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -29473,6 +30525,137 @@ Stopping 停止中
                 obj._deserialize(item)
                 self._Conditions.append(obj)
         self._Reason = params.get("Reason")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Workspace(AbstractModel):
+    r"""工作空间
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TiProjectId: <p>项目ID</p>
+        :type TiProjectId: str
+        :param _Name: <p>名称</p>
+        :type Name: str
+        :param _Description: <p>描述</p>
+        :type Description: str
+        :param _CreateTime: <p>创建时间</p>
+        :type CreateTime: str
+        :param _ResourceGroups: <p>绑定的资源组信息</p>
+        :type ResourceGroups: list of ResourceGroupInWorkspace
+        :param _ActionType: <p>当前用户对此空间拥有的权限</p>
+        :type ActionType: list of str
+        :param _Status: <p>工作空间状态</p>
+        :type Status: str
+        """
+        self._TiProjectId = None
+        self._Name = None
+        self._Description = None
+        self._CreateTime = None
+        self._ResourceGroups = None
+        self._ActionType = None
+        self._Status = None
+
+    @property
+    def TiProjectId(self):
+        r"""<p>项目ID</p>
+        :rtype: str
+        """
+        return self._TiProjectId
+
+    @TiProjectId.setter
+    def TiProjectId(self, TiProjectId):
+        self._TiProjectId = TiProjectId
+
+    @property
+    def Name(self):
+        r"""<p>名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ResourceGroups(self):
+        r"""<p>绑定的资源组信息</p>
+        :rtype: list of ResourceGroupInWorkspace
+        """
+        return self._ResourceGroups
+
+    @ResourceGroups.setter
+    def ResourceGroups(self, ResourceGroups):
+        self._ResourceGroups = ResourceGroups
+
+    @property
+    def ActionType(self):
+        r"""<p>当前用户对此空间拥有的权限</p>
+        :rtype: list of str
+        """
+        return self._ActionType
+
+    @ActionType.setter
+    def ActionType(self, ActionType):
+        self._ActionType = ActionType
+
+    @property
+    def Status(self):
+        r"""<p>工作空间状态</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._TiProjectId = params.get("TiProjectId")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._CreateTime = params.get("CreateTime")
+        if params.get("ResourceGroups") is not None:
+            self._ResourceGroups = []
+            for item in params.get("ResourceGroups"):
+                obj = ResourceGroupInWorkspace()
+                obj._deserialize(item)
+                self._ResourceGroups.append(obj)
+        self._ActionType = params.get("ActionType")
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -1290,6 +1290,8 @@ class FileInfo(AbstractModel):
         :type DocumentSummary: str
         :param _WebUrl: <p>网页地址</p>
         :type WebUrl: str
+        :param _Capabilities: <p>文件能力标识列表</p>
+        :type Capabilities: list of str
         """
         self._FileName = None
         self._FileSize = None
@@ -1304,6 +1306,7 @@ class FileInfo(AbstractModel):
         self._IsShowCase = None
         self._DocumentSummary = None
         self._WebUrl = None
+        self._Capabilities = None
 
     @property
     def FileName(self):
@@ -1448,6 +1451,17 @@ class FileInfo(AbstractModel):
     def WebUrl(self, WebUrl):
         self._WebUrl = WebUrl
 
+    @property
+    def Capabilities(self):
+        r"""<p>文件能力标识列表</p>
+        :rtype: list of str
+        """
+        return self._Capabilities
+
+    @Capabilities.setter
+    def Capabilities(self, Capabilities):
+        self._Capabilities = Capabilities
+
 
     def _deserialize(self, params):
         self._FileName = params.get("FileName")
@@ -1465,6 +1479,7 @@ class FileInfo(AbstractModel):
         self._IsShowCase = params.get("IsShowCase")
         self._DocumentSummary = params.get("DocumentSummary")
         self._WebUrl = params.get("WebUrl")
+        self._Capabilities = params.get("Capabilities")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2034,21 +2049,22 @@ class KnowledgeBase(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _KnowledgeBaseId: 知识库id
+        :param _KnowledgeBaseId: <p>知识库id</p>
         :type KnowledgeBaseId: str
-        :param _KnowledgeBaseName: 知识库名称
-
+        :param _KnowledgeBaseName: <p>知识库名称</p>
         :type KnowledgeBaseName: str
-        :param _KnowledgeBaseDesc: 知识库描述
+        :param _KnowledgeBaseDesc: <p>知识库描述</p>
         :type KnowledgeBaseDesc: str
-        :param _Creator: 创建者subuin
+        :param _Creator: <p>创建者subuin</p>
         :type Creator: str
-        :param _CreateTime: 创建时间
+        :param _CreateTime: <p>创建时间</p>
         :type CreateTime: str
-        :param _FileNum: 文件数量
+        :param _FileNum: <p>文件数量</p>
         :type FileNum: int
-        :param _DatasourceIds: 知识库关联的数据库列表，目前是只绑定一个数据源，数组预留拓展
+        :param _DatasourceIds: <p>知识库关联的数据库列表，目前是只绑定一个数据源，数组预留拓展</p>
         :type DatasourceIds: list of str
+        :param _Config: <p>知识库任务配置</p>
+        :type Config: :class:`tencentcloud.dataagent.v20250513.models.KnowledgeTaskConfig`
         """
         self._KnowledgeBaseId = None
         self._KnowledgeBaseName = None
@@ -2057,10 +2073,11 @@ class KnowledgeBase(AbstractModel):
         self._CreateTime = None
         self._FileNum = None
         self._DatasourceIds = None
+        self._Config = None
 
     @property
     def KnowledgeBaseId(self):
-        r"""知识库id
+        r"""<p>知识库id</p>
         :rtype: str
         """
         return self._KnowledgeBaseId
@@ -2071,8 +2088,7 @@ class KnowledgeBase(AbstractModel):
 
     @property
     def KnowledgeBaseName(self):
-        r"""知识库名称
-
+        r"""<p>知识库名称</p>
         :rtype: str
         """
         return self._KnowledgeBaseName
@@ -2083,7 +2099,7 @@ class KnowledgeBase(AbstractModel):
 
     @property
     def KnowledgeBaseDesc(self):
-        r"""知识库描述
+        r"""<p>知识库描述</p>
         :rtype: str
         """
         return self._KnowledgeBaseDesc
@@ -2094,7 +2110,7 @@ class KnowledgeBase(AbstractModel):
 
     @property
     def Creator(self):
-        r"""创建者subuin
+        r"""<p>创建者subuin</p>
         :rtype: str
         """
         return self._Creator
@@ -2105,7 +2121,7 @@ class KnowledgeBase(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
         :rtype: str
         """
         return self._CreateTime
@@ -2116,7 +2132,7 @@ class KnowledgeBase(AbstractModel):
 
     @property
     def FileNum(self):
-        r"""文件数量
+        r"""<p>文件数量</p>
         :rtype: int
         """
         return self._FileNum
@@ -2127,7 +2143,7 @@ class KnowledgeBase(AbstractModel):
 
     @property
     def DatasourceIds(self):
-        r"""知识库关联的数据库列表，目前是只绑定一个数据源，数组预留拓展
+        r"""<p>知识库关联的数据库列表，目前是只绑定一个数据源，数组预留拓展</p>
         :rtype: list of str
         """
         return self._DatasourceIds
@@ -2135,6 +2151,17 @@ class KnowledgeBase(AbstractModel):
     @DatasourceIds.setter
     def DatasourceIds(self, DatasourceIds):
         self._DatasourceIds = DatasourceIds
+
+    @property
+    def Config(self):
+        r"""<p>知识库任务配置</p>
+        :rtype: :class:`tencentcloud.dataagent.v20250513.models.KnowledgeTaskConfig`
+        """
+        return self._Config
+
+    @Config.setter
+    def Config(self, Config):
+        self._Config = Config
 
 
     def _deserialize(self, params):
@@ -2145,6 +2172,9 @@ class KnowledgeBase(AbstractModel):
         self._CreateTime = params.get("CreateTime")
         self._FileNum = params.get("FileNum")
         self._DatasourceIds = params.get("DatasourceIds")
+        if params.get("Config") is not None:
+            self._Config = KnowledgeTaskConfig()
+            self._Config._deserialize(params.get("Config"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2162,23 +2192,25 @@ class KnowledgeTaskConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ChunkType: 切片类型  0:自定义切片，1：智能切片
+        :param _ChunkType: <p>切片类型  0:自定义切片，1：智能切片</p>
         :type ChunkType: int
-        :param _MaxChunkSize: /智能切片：最小值 1000，默认 4800 自定义切片：正整数即可,默认值 1000
+        :param _MaxChunkSize: <p>/智能切片：最小值 1000，默认 4800 自定义切片：正整数即可,默认值 1000</p>
         :type MaxChunkSize: int
-        :param _Delimiters:  切片分隔符,自定义切片使用：默认值为：["\n\n", "\n", "。", "！", "？", "，", ""]
+        :param _Delimiters: <p>切片分隔符,自定义切片使用：默认值为：[&quot;\n\n&quot;, &quot;\n&quot;, &quot;。&quot;, &quot;！&quot;, &quot;？&quot;, &quot;，&quot;, &quot;&quot;]</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Delimiters: list of str
-        :param _ChunkOverlap: 自定义切片使用:默认0 可重叠字符长度
+        :param _ChunkOverlap: <p>自定义切片使用:默认0 可重叠字符长度</p>
         :type ChunkOverlap: int
-        :param _Columns: 表格类文档解析
+        :param _Columns: <p>表格类文档解析</p>
         :type Columns: list of ColumnInfo
-        :param _Indexes: 带检索的索引列表
+        :param _Indexes: <p>带检索的索引列表</p>
         :type Indexes: list of int
-        :param _GenDocSummary: 0：不生成文档摘要，1：生成文档概要。默认0，当取1时，GenParaSummary必须也为1
+        :param _GenDocSummary: <p>0：不生成文档摘要，1：生成文档概要。默认0，当取1时，GenParaSummary必须也为1</p>
         :type GenDocSummary: int
-        :param _GenParaSummary: 0：不生成段落摘要，1：生成段落概要。默认0
+        :param _GenParaSummary: <p>0：不生成段落摘要，1：生成段落概要。默认0</p>
         :type GenParaSummary: int
+        :param _EnableImageUnderstanding: <p>0：不开启图片理解，1：开启图片理解。默认1</p><p>取值范围：[1, 10000]</p><p>默认值：1</p>
+        :type EnableImageUnderstanding: int
         """
         self._ChunkType = None
         self._MaxChunkSize = None
@@ -2188,10 +2220,11 @@ class KnowledgeTaskConfig(AbstractModel):
         self._Indexes = None
         self._GenDocSummary = None
         self._GenParaSummary = None
+        self._EnableImageUnderstanding = None
 
     @property
     def ChunkType(self):
-        r"""切片类型  0:自定义切片，1：智能切片
+        r"""<p>切片类型  0:自定义切片，1：智能切片</p>
         :rtype: int
         """
         return self._ChunkType
@@ -2202,7 +2235,7 @@ class KnowledgeTaskConfig(AbstractModel):
 
     @property
     def MaxChunkSize(self):
-        r"""/智能切片：最小值 1000，默认 4800 自定义切片：正整数即可,默认值 1000
+        r"""<p>/智能切片：最小值 1000，默认 4800 自定义切片：正整数即可,默认值 1000</p>
         :rtype: int
         """
         return self._MaxChunkSize
@@ -2213,7 +2246,7 @@ class KnowledgeTaskConfig(AbstractModel):
 
     @property
     def Delimiters(self):
-        r""" 切片分隔符,自定义切片使用：默认值为：["\n\n", "\n", "。", "！", "？", "，", ""]
+        r"""<p>切片分隔符,自定义切片使用：默认值为：[&quot;\n\n&quot;, &quot;\n&quot;, &quot;。&quot;, &quot;！&quot;, &quot;？&quot;, &quot;，&quot;, &quot;&quot;]</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -2225,7 +2258,7 @@ class KnowledgeTaskConfig(AbstractModel):
 
     @property
     def ChunkOverlap(self):
-        r"""自定义切片使用:默认0 可重叠字符长度
+        r"""<p>自定义切片使用:默认0 可重叠字符长度</p>
         :rtype: int
         """
         return self._ChunkOverlap
@@ -2236,7 +2269,7 @@ class KnowledgeTaskConfig(AbstractModel):
 
     @property
     def Columns(self):
-        r"""表格类文档解析
+        r"""<p>表格类文档解析</p>
         :rtype: list of ColumnInfo
         """
         return self._Columns
@@ -2247,7 +2280,7 @@ class KnowledgeTaskConfig(AbstractModel):
 
     @property
     def Indexes(self):
-        r"""带检索的索引列表
+        r"""<p>带检索的索引列表</p>
         :rtype: list of int
         """
         return self._Indexes
@@ -2258,7 +2291,7 @@ class KnowledgeTaskConfig(AbstractModel):
 
     @property
     def GenDocSummary(self):
-        r"""0：不生成文档摘要，1：生成文档概要。默认0，当取1时，GenParaSummary必须也为1
+        r"""<p>0：不生成文档摘要，1：生成文档概要。默认0，当取1时，GenParaSummary必须也为1</p>
         :rtype: int
         """
         return self._GenDocSummary
@@ -2269,7 +2302,7 @@ class KnowledgeTaskConfig(AbstractModel):
 
     @property
     def GenParaSummary(self):
-        r"""0：不生成段落摘要，1：生成段落概要。默认0
+        r"""<p>0：不生成段落摘要，1：生成段落概要。默认0</p>
         :rtype: int
         """
         return self._GenParaSummary
@@ -2277,6 +2310,17 @@ class KnowledgeTaskConfig(AbstractModel):
     @GenParaSummary.setter
     def GenParaSummary(self, GenParaSummary):
         self._GenParaSummary = GenParaSummary
+
+    @property
+    def EnableImageUnderstanding(self):
+        r"""<p>0：不开启图片理解，1：开启图片理解。默认1</p><p>取值范围：[1, 10000]</p><p>默认值：1</p>
+        :rtype: int
+        """
+        return self._EnableImageUnderstanding
+
+    @EnableImageUnderstanding.setter
+    def EnableImageUnderstanding(self, EnableImageUnderstanding):
+        self._EnableImageUnderstanding = EnableImageUnderstanding
 
 
     def _deserialize(self, params):
@@ -2293,6 +2337,7 @@ class KnowledgeTaskConfig(AbstractModel):
         self._Indexes = params.get("Indexes")
         self._GenDocSummary = params.get("GenDocSummary")
         self._GenParaSummary = params.get("GenParaSummary")
+        self._EnableImageUnderstanding = params.get("EnableImageUnderstanding")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2575,20 +2620,22 @@ class ModifyKnowledgeBaseRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例id
+        :param _InstanceId: <p>实例id</p>
         :type InstanceId: str
-        :param _OperateType: 操作类型：Create，Update，Delete
+        :param _OperateType: <p>操作类型：Create，Update，Delete</p>
         :type OperateType: str
-        :param _KnowledgeBaseId: 知识库id，update和delete时必填
+        :param _KnowledgeBaseId: <p>知识库id，update和delete时必填</p>
         :type KnowledgeBaseId: str
-        :param _KnowledgeBaseName: 知识库名称，create和update时必填。只允许字母、数字、汉字、下划线
+        :param _KnowledgeBaseName: <p>知识库名称，create和update时必填。只允许字母、数字、汉字、下划线</p>
         :type KnowledgeBaseName: str
-        :param _KnowledgeBaseDesc: 知识库描述，create和update时必填
+        :param _KnowledgeBaseDesc: <p>知识库描述，create和update时必填</p>
         :type KnowledgeBaseDesc: str
-        :param _UseScope: 1仅自己使用，2指定用户，0全员
+        :param _UseScope: <p>1仅自己使用，2指定用户，0全员</p>
         :type UseScope: int
-        :param _AuthorityUins: 可使用用户列表
+        :param _AuthorityUins: <p>可使用用户列表</p>
         :type AuthorityUins: list of str
+        :param _Config: <p>知识库任务配置</p>
+        :type Config: :class:`tencentcloud.dataagent.v20250513.models.KnowledgeTaskConfig`
         """
         self._InstanceId = None
         self._OperateType = None
@@ -2597,10 +2644,11 @@ class ModifyKnowledgeBaseRequest(AbstractModel):
         self._KnowledgeBaseDesc = None
         self._UseScope = None
         self._AuthorityUins = None
+        self._Config = None
 
     @property
     def InstanceId(self):
-        r"""实例id
+        r"""<p>实例id</p>
         :rtype: str
         """
         return self._InstanceId
@@ -2611,7 +2659,7 @@ class ModifyKnowledgeBaseRequest(AbstractModel):
 
     @property
     def OperateType(self):
-        r"""操作类型：Create，Update，Delete
+        r"""<p>操作类型：Create，Update，Delete</p>
         :rtype: str
         """
         return self._OperateType
@@ -2622,7 +2670,7 @@ class ModifyKnowledgeBaseRequest(AbstractModel):
 
     @property
     def KnowledgeBaseId(self):
-        r"""知识库id，update和delete时必填
+        r"""<p>知识库id，update和delete时必填</p>
         :rtype: str
         """
         return self._KnowledgeBaseId
@@ -2633,7 +2681,7 @@ class ModifyKnowledgeBaseRequest(AbstractModel):
 
     @property
     def KnowledgeBaseName(self):
-        r"""知识库名称，create和update时必填。只允许字母、数字、汉字、下划线
+        r"""<p>知识库名称，create和update时必填。只允许字母、数字、汉字、下划线</p>
         :rtype: str
         """
         return self._KnowledgeBaseName
@@ -2644,7 +2692,7 @@ class ModifyKnowledgeBaseRequest(AbstractModel):
 
     @property
     def KnowledgeBaseDesc(self):
-        r"""知识库描述，create和update时必填
+        r"""<p>知识库描述，create和update时必填</p>
         :rtype: str
         """
         return self._KnowledgeBaseDesc
@@ -2655,7 +2703,7 @@ class ModifyKnowledgeBaseRequest(AbstractModel):
 
     @property
     def UseScope(self):
-        r"""1仅自己使用，2指定用户，0全员
+        r"""<p>1仅自己使用，2指定用户，0全员</p>
         :rtype: int
         """
         return self._UseScope
@@ -2666,7 +2714,7 @@ class ModifyKnowledgeBaseRequest(AbstractModel):
 
     @property
     def AuthorityUins(self):
-        r"""可使用用户列表
+        r"""<p>可使用用户列表</p>
         :rtype: list of str
         """
         return self._AuthorityUins
@@ -2674,6 +2722,17 @@ class ModifyKnowledgeBaseRequest(AbstractModel):
     @AuthorityUins.setter
     def AuthorityUins(self, AuthorityUins):
         self._AuthorityUins = AuthorityUins
+
+    @property
+    def Config(self):
+        r"""<p>知识库任务配置</p>
+        :rtype: :class:`tencentcloud.dataagent.v20250513.models.KnowledgeTaskConfig`
+        """
+        return self._Config
+
+    @Config.setter
+    def Config(self, Config):
+        self._Config = Config
 
 
     def _deserialize(self, params):
@@ -2684,6 +2743,9 @@ class ModifyKnowledgeBaseRequest(AbstractModel):
         self._KnowledgeBaseDesc = params.get("KnowledgeBaseDesc")
         self._UseScope = params.get("UseScope")
         self._AuthorityUins = params.get("AuthorityUins")
+        if params.get("Config") is not None:
+            self._Config = KnowledgeTaskConfig()
+            self._Config._deserialize(params.get("Config"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2701,7 +2763,7 @@ class ModifyKnowledgeBaseResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _KnowledgeBaseId: 知识库id
+        :param _KnowledgeBaseId: <p>知识库id</p>
         :type KnowledgeBaseId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2711,7 +2773,7 @@ class ModifyKnowledgeBaseResponse(AbstractModel):
 
     @property
     def KnowledgeBaseId(self):
-        r"""知识库id
+        r"""<p>知识库id</p>
         :rtype: str
         """
         return self._KnowledgeBaseId
@@ -3518,26 +3580,28 @@ class Scene(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SceneId: 场景ID
+        :param _SceneId: <p>场景ID</p>
         :type SceneId: str
-        :param _SceneName: 场景名称
+        :param _SceneName: <p>场景名称</p>
         :type SceneName: str
-        :param _Skills: 技能列表，包含：rag（知识检索）、data_analytics（数据分析）、data_prediction（数据预测）
+        :param _Skills: <p>技能列表，包含：rag（知识检索）、data_analytics（数据分析）、data_prediction（数据预测）</p>
         :type Skills: list of str
-        :param _Prompt: 提示词文本
+        :param _Prompt: <p>提示词文本</p>
         :type Prompt: str
-        :param _Description: 描述
+        :param _Description: <p>描述</p>
         :type Description: str
-        :param _SearchConfig: 检索配置
+        :param _SearchConfig: <p>检索配置</p>
         :type SearchConfig: :class:`tencentcloud.dataagent.v20250513.models.SearchConfig`
-        :param _ExampleQAList: 示例问答列表
+        :param _ExampleQAList: <p>示例问答列表</p>
         :type ExampleQAList: list of ExampleQA
-        :param _CreateTime: 记录的创建时间
+        :param _CreateTime: <p>记录的创建时间</p>
         :type CreateTime: str
-        :param _UpdateTime: 记录的最后更新时间
+        :param _UpdateTime: <p>记录的最后更新时间</p>
         :type UpdateTime: str
-        :param _CreatorUin: 创建者Uin
+        :param _CreatorUin: <p>创建者Uin</p>
         :type CreatorUin: str
+        :param _Knowledge: <p>知识</p>
+        :type Knowledge: str
         """
         self._SceneId = None
         self._SceneName = None
@@ -3549,10 +3613,11 @@ class Scene(AbstractModel):
         self._CreateTime = None
         self._UpdateTime = None
         self._CreatorUin = None
+        self._Knowledge = None
 
     @property
     def SceneId(self):
-        r"""场景ID
+        r"""<p>场景ID</p>
         :rtype: str
         """
         return self._SceneId
@@ -3563,7 +3628,7 @@ class Scene(AbstractModel):
 
     @property
     def SceneName(self):
-        r"""场景名称
+        r"""<p>场景名称</p>
         :rtype: str
         """
         return self._SceneName
@@ -3574,7 +3639,7 @@ class Scene(AbstractModel):
 
     @property
     def Skills(self):
-        r"""技能列表，包含：rag（知识检索）、data_analytics（数据分析）、data_prediction（数据预测）
+        r"""<p>技能列表，包含：rag（知识检索）、data_analytics（数据分析）、data_prediction（数据预测）</p>
         :rtype: list of str
         """
         return self._Skills
@@ -3585,7 +3650,7 @@ class Scene(AbstractModel):
 
     @property
     def Prompt(self):
-        r"""提示词文本
+        r"""<p>提示词文本</p>
         :rtype: str
         """
         return self._Prompt
@@ -3596,7 +3661,7 @@ class Scene(AbstractModel):
 
     @property
     def Description(self):
-        r"""描述
+        r"""<p>描述</p>
         :rtype: str
         """
         return self._Description
@@ -3607,7 +3672,7 @@ class Scene(AbstractModel):
 
     @property
     def SearchConfig(self):
-        r"""检索配置
+        r"""<p>检索配置</p>
         :rtype: :class:`tencentcloud.dataagent.v20250513.models.SearchConfig`
         """
         return self._SearchConfig
@@ -3618,7 +3683,7 @@ class Scene(AbstractModel):
 
     @property
     def ExampleQAList(self):
-        r"""示例问答列表
+        r"""<p>示例问答列表</p>
         :rtype: list of ExampleQA
         """
         return self._ExampleQAList
@@ -3629,7 +3694,7 @@ class Scene(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""记录的创建时间
+        r"""<p>记录的创建时间</p>
         :rtype: str
         """
         return self._CreateTime
@@ -3640,7 +3705,7 @@ class Scene(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""记录的最后更新时间
+        r"""<p>记录的最后更新时间</p>
         :rtype: str
         """
         return self._UpdateTime
@@ -3651,7 +3716,7 @@ class Scene(AbstractModel):
 
     @property
     def CreatorUin(self):
-        r"""创建者Uin
+        r"""<p>创建者Uin</p>
         :rtype: str
         """
         return self._CreatorUin
@@ -3659,6 +3724,17 @@ class Scene(AbstractModel):
     @CreatorUin.setter
     def CreatorUin(self, CreatorUin):
         self._CreatorUin = CreatorUin
+
+    @property
+    def Knowledge(self):
+        r"""<p>知识</p>
+        :rtype: str
+        """
+        return self._Knowledge
+
+    @Knowledge.setter
+    def Knowledge(self, Knowledge):
+        self._Knowledge = Knowledge
 
 
     def _deserialize(self, params):
@@ -3679,6 +3755,7 @@ class Scene(AbstractModel):
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
         self._CreatorUin = params.get("CreatorUin")
+        self._Knowledge = params.get("Knowledge")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

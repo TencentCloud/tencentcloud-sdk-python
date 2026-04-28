@@ -25,14 +25,14 @@ class SearchByTextRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Query: 查询词
+        :param _Query: <p>查询词</p>
         :type Query: str
         """
         self._Query = None
 
     @property
     def Query(self):
-        r"""查询词
+        r"""<p>查询词</p>
         :rtype: str
         """
         return self._Query
@@ -61,19 +61,9 @@ class SearchByTextResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Query: 原始查询词
+        :param _Query: <p>原始查询词</p>
         :type Query: str
-        :param _Images: 搜索结果图片列表，格式为json字符串。
-
-- thumbnailUrl：缩略图地址。
-- thumbnailWidth：缩略图宽度。
-- thumbnailHeight：缩略图高度。
-- origPicUrl：原图地址。
--  origPicWidth：原图宽度。
-- siteUrl：站点地址，原图来源网页URL。
-- siteName：站点名称。
-- title：标题，原图标题或原图来源网页标题。
-- date：内容发布时间。
+        :param _Images: <p>搜索结果图片列表，格式为json字符串。</p><ul><li>thumbnailUrl：缩略图地址。</li><li>thumbnailWidth：缩略图宽度。</li><li>thumbnailHeight：缩略图高度。</li><li>origPicUrl：原图地址。</li><li>origPicWidth：原图宽度。</li><li>origPicHeight：原图高度。</li><li>siteUrl：站点地址，原图来源网页URL。</li><li>siteName：站点名称。</li><li>title：标题，原图标题或原图来源网页标题。</li><li>date：内容发布时间。</li></ul>
         :type Images: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -84,7 +74,7 @@ class SearchByTextResponse(AbstractModel):
 
     @property
     def Query(self):
-        r"""原始查询词
+        r"""<p>原始查询词</p>
         :rtype: str
         """
         return self._Query
@@ -95,17 +85,7 @@ class SearchByTextResponse(AbstractModel):
 
     @property
     def Images(self):
-        r"""搜索结果图片列表，格式为json字符串。
-
-- thumbnailUrl：缩略图地址。
-- thumbnailWidth：缩略图宽度。
-- thumbnailHeight：缩略图高度。
-- origPicUrl：原图地址。
--  origPicWidth：原图宽度。
-- siteUrl：站点地址，原图来源网页URL。
-- siteName：站点名称。
-- title：标题，原图标题或原图来源网页标题。
-- date：内容发布时间。
+        r"""<p>搜索结果图片列表，格式为json字符串。</p><ul><li>thumbnailUrl：缩略图地址。</li><li>thumbnailWidth：缩略图宽度。</li><li>thumbnailHeight：缩略图高度。</li><li>origPicUrl：原图地址。</li><li>origPicWidth：原图宽度。</li><li>origPicHeight：原图高度。</li><li>siteUrl：站点地址，原图来源网页URL。</li><li>siteName：站点名称。</li><li>title：标题，原图标题或原图来源网页标题。</li><li>date：内容发布时间。</li></ul>
         :rtype: list of str
         """
         return self._Images

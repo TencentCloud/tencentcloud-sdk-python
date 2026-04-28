@@ -3538,8 +3538,6 @@ class CreateInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Zone: <p>实例所属主可用区， 如：ap-guangzhou-3；若需要支持多可用区，在DBNodeSet.N字段中进行添加主可用区和备可用区信息；<br>可用区信息可以通过调用 <a href="https://cloud.tencent.com/document/api/409/16769">DescribeZones</a> 接口的返回值中的Zone字段来获取。</p>
-        :type Zone: str
         :param _SpecCode: <p>售卖规格码。该参数可以通过调用<a href="https://cloud.tencent.com/document/api/409/89019">DescribeClasses</a>的返回值中的SpecCode字段来获取。</p>
         :type SpecCode: str
         :param _Storage: <p>实例磁盘容量大小，单位：GB。该参数的设置步长为10。</p>
@@ -3554,6 +3552,8 @@ class CreateInstancesRequest(AbstractModel):
         :type AdminName: str
         :param _AdminPassword: <p>实例根账号用户名对应的密码，长度8 ~ 32位，推荐使用12位以上的密码;不能以&quot; / &quot;开头;<br>必须包含以下四项，字符种类:</p><li>小写字母： [a ~ z]</li><li>大写字母：[A ～ Z]</li><li>数字：0 - 9</li><li>特殊字符：()`~!@#$%^&amp;*-+=_|{}[]:;'&lt;&gt;,.?/</li>
         :type AdminPassword: str
+        :param _Zone: <p>实例所属主可用区， 如：ap-guangzhou-3；若需要支持多可用区，在DBNodeSet.N字段中进行添加主可用区和备可用区信息；<br>可用区信息可以通过调用 <a href="https://cloud.tencent.com/document/api/409/16769">DescribeZones</a> 接口的返回值中的Zone字段来获取。</p>
+        :type Zone: str
         :param _DBMajorVersion: <p>PostgreSQL大版本号（该参数当前必传），版本信息可从<a href="https://cloud.tencent.com/document/api/409/89018">DescribeDBVersions</a>获取。目前支持10，11，12，13，14，15这几个大版本，详情见<a href="https://cloud.tencent.com/document/product/409/67018">内核版本概述</a>。<br>输入该参数时，会基于此大版本号创建对应的最新小版本的最新内核版本号实例。</p>
         :type DBMajorVersion: str
         :param _DBVersion: <p>PostgreSQL社区大版本+小版本号。<br>一般场景不推荐传入该参数。如需指定，只能传当前大版本号下最新小版本号。</p>
@@ -3605,7 +3605,6 @@ class CreateInstancesRequest(AbstractModel):
         :param _StorageType: <p>实例存储类型，可选值：PHYSICAL_LOCAL_SSD：物理机本地ssd硬盘 CLOUD_PREMIUM：高性能云硬盘 CLOUD_SSD：ssd云硬盘 CLOUD_HSSD：增强型ssd云硬盘</p>
         :type StorageType: str
         """
-        self._Zone = None
         self._SpecCode = None
         self._Storage = None
         self._InstanceCount = None
@@ -3613,6 +3612,7 @@ class CreateInstancesRequest(AbstractModel):
         self._Charset = None
         self._AdminName = None
         self._AdminPassword = None
+        self._Zone = None
         self._DBMajorVersion = None
         self._DBVersion = None
         self._DBKernelVersion = None
@@ -3638,17 +3638,6 @@ class CreateInstancesRequest(AbstractModel):
         self._NeedSupportIpv6 = None
         self._DeletionProtection = None
         self._StorageType = None
-
-    @property
-    def Zone(self):
-        r"""<p>实例所属主可用区， 如：ap-guangzhou-3；若需要支持多可用区，在DBNodeSet.N字段中进行添加主可用区和备可用区信息；<br>可用区信息可以通过调用 <a href="https://cloud.tencent.com/document/api/409/16769">DescribeZones</a> 接口的返回值中的Zone字段来获取。</p>
-        :rtype: str
-        """
-        return self._Zone
-
-    @Zone.setter
-    def Zone(self, Zone):
-        self._Zone = Zone
 
     @property
     def SpecCode(self):
@@ -3726,6 +3715,17 @@ class CreateInstancesRequest(AbstractModel):
     @AdminPassword.setter
     def AdminPassword(self, AdminPassword):
         self._AdminPassword = AdminPassword
+
+    @property
+    def Zone(self):
+        r"""<p>实例所属主可用区， 如：ap-guangzhou-3；若需要支持多可用区，在DBNodeSet.N字段中进行添加主可用区和备可用区信息；<br>可用区信息可以通过调用 <a href="https://cloud.tencent.com/document/api/409/16769">DescribeZones</a> 接口的返回值中的Zone字段来获取。</p>
+        :rtype: str
+        """
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
 
     @property
     def DBMajorVersion(self):
@@ -4004,7 +4004,6 @@ class CreateInstancesRequest(AbstractModel):
 
 
     def _deserialize(self, params):
-        self._Zone = params.get("Zone")
         self._SpecCode = params.get("SpecCode")
         self._Storage = params.get("Storage")
         self._InstanceCount = params.get("InstanceCount")
@@ -4012,6 +4011,7 @@ class CreateInstancesRequest(AbstractModel):
         self._Charset = params.get("Charset")
         self._AdminName = params.get("AdminName")
         self._AdminPassword = params.get("AdminPassword")
+        self._Zone = params.get("Zone")
         self._DBMajorVersion = params.get("DBMajorVersion")
         self._DBVersion = params.get("DBVersion")
         self._DBKernelVersion = params.get("DBKernelVersion")
@@ -13588,14 +13588,14 @@ class DestroyDBInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DBInstanceId: 待下线实例ID
+        :param _DBInstanceId: <p>待下线实例ID</p>
         :type DBInstanceId: str
         """
         self._DBInstanceId = None
 
     @property
     def DBInstanceId(self):
-        r"""待下线实例ID
+        r"""<p>待下线实例ID</p>
         :rtype: str
         """
         return self._DBInstanceId
@@ -13723,18 +13723,13 @@ class DisIsolateDBInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DBInstanceIdSet: 实例ID列表。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取。支持同时解隔离多个实例。
+        :param _DBInstanceIdSet: <p>实例ID列表。可通过<a href="https://cloud.tencent.com/document/api/409/16773">DescribeDBInstances</a>接口获取。支持同时解隔离多个实例。</p>
         :type DBInstanceIdSet: list of str
-        :param _Period: 购买时长，单位：月。
-<li>预付费：支持1,2,3,4,5,6,7,8,9,10,11,12,24,36</li>
-<li>后付费：该参数不生效</li>
+        :param _Period: <p>购买时长，单位：月。</p><li>预付费：支持1,2,3,4,5,6,7,8,9,10,11,12,24,36</li><li>后付费：该参数不生效</li>
         :type Period: int
-        :param _AutoVoucher: 是否使用代金券：
-<li>true：使用</li>
-<li>false：不使用</li>
-默认值：false
+        :param _AutoVoucher: <p>是否使用代金券：</p><li>true：使用</li><li>false：不使用</li>默认值：false
         :type AutoVoucher: bool
-        :param _VoucherIds: 代金券id列表。
+        :param _VoucherIds: <p>代金券id列表。</p>
         :type VoucherIds: list of str
         """
         self._DBInstanceIdSet = None
@@ -13744,7 +13739,7 @@ class DisIsolateDBInstancesRequest(AbstractModel):
 
     @property
     def DBInstanceIdSet(self):
-        r"""实例ID列表。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取。支持同时解隔离多个实例。
+        r"""<p>实例ID列表。可通过<a href="https://cloud.tencent.com/document/api/409/16773">DescribeDBInstances</a>接口获取。支持同时解隔离多个实例。</p>
         :rtype: list of str
         """
         return self._DBInstanceIdSet
@@ -13755,9 +13750,7 @@ class DisIsolateDBInstancesRequest(AbstractModel):
 
     @property
     def Period(self):
-        r"""购买时长，单位：月。
-<li>预付费：支持1,2,3,4,5,6,7,8,9,10,11,12,24,36</li>
-<li>后付费：该参数不生效</li>
+        r"""<p>购买时长，单位：月。</p><li>预付费：支持1,2,3,4,5,6,7,8,9,10,11,12,24,36</li><li>后付费：该参数不生效</li>
         :rtype: int
         """
         return self._Period
@@ -13768,10 +13761,7 @@ class DisIsolateDBInstancesRequest(AbstractModel):
 
     @property
     def AutoVoucher(self):
-        r"""是否使用代金券：
-<li>true：使用</li>
-<li>false：不使用</li>
-默认值：false
+        r"""<p>是否使用代金券：</p><li>true：使用</li><li>false：不使用</li>默认值：false
         :rtype: bool
         """
         return self._AutoVoucher
@@ -13782,7 +13772,7 @@ class DisIsolateDBInstancesRequest(AbstractModel):
 
     @property
     def VoucherIds(self):
-        r"""代金券id列表。
+        r"""<p>代金券id列表。</p>
         :rtype: list of str
         """
         return self._VoucherIds
@@ -15029,14 +15019,14 @@ class IsolateDBInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DBInstanceIdSet: 实例ID集合。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取。注意：不推荐同时隔离多个实例。建议每次操作仅传入单个实例ID。
+        :param _DBInstanceIdSet: <p>实例ID集合。可通过<a href="https://cloud.tencent.com/document/api/409/16773">DescribeDBInstances</a>接口获取。注意：不推荐同时隔离多个实例。建议每次操作仅传入单个实例ID。</p>
         :type DBInstanceIdSet: list of str
         """
         self._DBInstanceIdSet = None
 
     @property
     def DBInstanceIdSet(self):
-        r"""实例ID集合。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取。注意：不推荐同时隔离多个实例。建议每次操作仅传入单个实例ID。
+        r"""<p>实例ID集合。可通过<a href="https://cloud.tencent.com/document/api/409/16773">DescribeDBInstances</a>接口获取。注意：不推荐同时隔离多个实例。建议每次操作仅传入单个实例ID。</p>
         :rtype: list of str
         """
         return self._DBInstanceIdSet

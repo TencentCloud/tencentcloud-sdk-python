@@ -1429,6 +1429,24 @@ class OrganizationClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def GetIPWhitelist(
+            self,
+            request: models.GetIPWhitelistRequest,
+            opts: Dict = None,
+    ) -> models.GetIPWhitelistResponse:
+        """
+        获取CIC的ip白名单
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetIPWhitelist"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetIPWhitelistResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def GetProvisioningTaskStatus(
             self,
             request: models.GetProvisioningTaskStatusRequest,
