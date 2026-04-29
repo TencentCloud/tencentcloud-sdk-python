@@ -188,6 +188,29 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateDynamicInstance(self, request):
+        r"""创建容器EMR-TKE集群DynamicInstance
+
+        :param request: Request instance for CreateDynamicInstance.
+        :type request: :class:`tencentcloud.emr.v20190103.models.CreateDynamicInstanceRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.CreateDynamicInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateDynamicInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateDynamicInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateGroupsSTD(self, request):
         r"""用户管理-批量创建用户组
 
@@ -549,6 +572,29 @@ class EmrClient(AbstractClient):
             body = self.call("DescribeDAGInfo", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeDAGInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDynamicInstanceList(self, request):
+        r"""描述容器EMR-TKE集群DynamicInstance列表
+
+        :param request: Request instance for DescribeDynamicInstanceList.
+        :type request: :class:`tencentcloud.emr.v20190103.models.DescribeDynamicInstanceListRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.DescribeDynamicInstanceListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDynamicInstanceList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDynamicInstanceListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1595,6 +1641,29 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyDynamicInstance(self, request):
+        r"""更新容器EMR-TKE集群DynamicInstance
+
+        :param request: Request instance for ModifyDynamicInstance.
+        :type request: :class:`tencentcloud.emr.v20190103.models.ModifyDynamicInstanceRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.ModifyDynamicInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDynamicInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDynamicInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyGlobalConfig(self, request):
         r"""修改YARN资源调度的全局配置
 
@@ -2169,6 +2238,29 @@ class EmrClient(AbstractClient):
             body = self.call("TerminateClusterNodes", params, headers=headers)
             response = json.loads(body)
             model = models.TerminateClusterNodesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def TerminateDynamicInstances(self, request):
+        r"""销毁容器EMR-TKE集群DynamicInstance
+
+        :param request: Request instance for TerminateDynamicInstances.
+        :type request: :class:`tencentcloud.emr.v20190103.models.TerminateDynamicInstancesRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.TerminateDynamicInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("TerminateDynamicInstances", params, headers=headers)
+            response = json.loads(body)
+            model = models.TerminateDynamicInstancesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

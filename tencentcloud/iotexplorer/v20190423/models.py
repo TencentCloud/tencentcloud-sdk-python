@@ -25169,6 +25169,12 @@ class InvokeAISearchServiceRequest(AbstractModel):
         :type VectorSearchRadius: float
         :param _VectorSearchTopK: 指定向量搜索最相似的 Top K；仅当SearchMode为2时支持自定义设置，默认为100
         :type VectorSearchTopK: int
+        :param _Order: 搜索结果的排序方式，可选值：
+
+- `CORRELATION`：按相关性（默认）
+- `TIME_ASC`：按时间升序
+- `TIME_DESC`：按时间降序
+        :type Order: str
         """
         self._ProductId = None
         self._DeviceName = None
@@ -25183,6 +25189,7 @@ class InvokeAISearchServiceRequest(AbstractModel):
         self._Limit = None
         self._VectorSearchRadius = None
         self._VectorSearchTopK = None
+        self._Order = None
 
     @property
     def ProductId(self):
@@ -25341,6 +25348,21 @@ class InvokeAISearchServiceRequest(AbstractModel):
     def VectorSearchTopK(self, VectorSearchTopK):
         self._VectorSearchTopK = VectorSearchTopK
 
+    @property
+    def Order(self):
+        r"""搜索结果的排序方式，可选值：
+
+- `CORRELATION`：按相关性（默认）
+- `TIME_ASC`：按时间升序
+- `TIME_DESC`：按时间降序
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
 
     def _deserialize(self, params):
         self._ProductId = params.get("ProductId")
@@ -25356,6 +25378,7 @@ class InvokeAISearchServiceRequest(AbstractModel):
         self._Limit = params.get("Limit")
         self._VectorSearchRadius = params.get("VectorSearchRadius")
         self._VectorSearchTopK = params.get("VectorSearchTopK")
+        self._Order = params.get("Order")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -26578,14 +26601,17 @@ class InvokeVideosKeywordsAnalyzerRequest(AbstractModel):
 1. 单位为毫秒（ms）
 2. 时间区间必须控制在某一个自然天内，不支持跨天
         :type EndTimeMs: int
-        :param _KeywordsMaxNum: 返回的关键字最大数量，默认为5；最大不能超过10
+        :param _KeywordsMaxNum: 返回的关键词的最大数量，默认为5；最大不能超过10
         :type KeywordsMaxNum: int
+        :param _KeywordsLang: 返回的关键词的语言类型，支持的类型有：en-US、zh-CN
+        :type KeywordsLang: str
         """
         self._ProductId = None
         self._DeviceName = None
         self._StartTimeMs = None
         self._EndTimeMs = None
         self._KeywordsMaxNum = None
+        self._KeywordsLang = None
 
     @property
     def ProductId(self):
@@ -26641,7 +26667,7 @@ class InvokeVideosKeywordsAnalyzerRequest(AbstractModel):
 
     @property
     def KeywordsMaxNum(self):
-        r"""返回的关键字最大数量，默认为5；最大不能超过10
+        r"""返回的关键词的最大数量，默认为5；最大不能超过10
         :rtype: int
         """
         return self._KeywordsMaxNum
@@ -26650,6 +26676,17 @@ class InvokeVideosKeywordsAnalyzerRequest(AbstractModel):
     def KeywordsMaxNum(self, KeywordsMaxNum):
         self._KeywordsMaxNum = KeywordsMaxNum
 
+    @property
+    def KeywordsLang(self):
+        r"""返回的关键词的语言类型，支持的类型有：en-US、zh-CN
+        :rtype: str
+        """
+        return self._KeywordsLang
+
+    @KeywordsLang.setter
+    def KeywordsLang(self, KeywordsLang):
+        self._KeywordsLang = KeywordsLang
+
 
     def _deserialize(self, params):
         self._ProductId = params.get("ProductId")
@@ -26657,6 +26694,7 @@ class InvokeVideosKeywordsAnalyzerRequest(AbstractModel):
         self._StartTimeMs = params.get("StartTimeMs")
         self._EndTimeMs = params.get("EndTimeMs")
         self._KeywordsMaxNum = params.get("KeywordsMaxNum")
+        self._KeywordsLang = params.get("KeywordsLang")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -26674,7 +26712,7 @@ class InvokeVideosKeywordsAnalyzerResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Keywords: 基于搜索结果的总结
+        :param _Keywords: 根据视频内容生成的关键词
         :type Keywords: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -26684,7 +26722,7 @@ class InvokeVideosKeywordsAnalyzerResponse(AbstractModel):
 
     @property
     def Keywords(self):
-        r"""基于搜索结果的总结
+        r"""根据视频内容生成的关键词
         :rtype: list of str
         """
         return self._Keywords

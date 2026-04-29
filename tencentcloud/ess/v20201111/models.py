@@ -3145,6 +3145,233 @@ class Checklist(AbstractModel):
         
 
 
+class ChecklistCategory(AbstractModel):
+    r"""合同审查清单大类
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>合同风险审查清单分组名称，每个分组下可以包含多个检查点</p>
+        :type Name: str
+        :param _Points: <p>合同风险审查清单检查点列表，每个检查点定义了一个具体的风险项</p>
+        :type Points: list of ChecklistPoint
+        """
+        self._Name = None
+        self._Points = None
+
+    @property
+    def Name(self):
+        r"""<p>合同风险审查清单分组名称，每个分组下可以包含多个检查点</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Points(self):
+        r"""<p>合同风险审查清单检查点列表，每个检查点定义了一个具体的风险项</p>
+        :rtype: list of ChecklistPoint
+        """
+        return self._Points
+
+    @Points.setter
+    def Points(self, Points):
+        self._Points = Points
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        if params.get("Points") is not None:
+            self._Points = []
+            for item in params.get("Points"):
+                obj = ChecklistPoint()
+                obj._deserialize(item)
+                self._Points.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChecklistPoint(AbstractModel):
+    r"""合同审查清单检查点
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Summary: <p>合同风险审查清单检查点名称</p>
+        :type Summary: str
+        :param _Explanation: <p>合同风险审查清单检查点详细描述，说明具体风险信息</p>
+        :type Explanation: str
+        :param _RiskLevel: <p>合同风险审查清单检查点对应的风险等级，一般分为 高风险、中风险、一般风险</p>
+        :type RiskLevel: str
+        :param _Id: <p>合同风险审查清单检查点ID，创建清单时无需填写</p>
+        :type Id: str
+        :param _IsIndispensable: <p>合同风险审查清单检查点是否不可缺失，若为true，相关条款未出现在内容中，视作风险</p>
+        :type IsIndispensable: bool
+        :param _IsConsistentWithReferenceItem: <p>合同风险审查清单检查点是否要求和参考条款一致</p>
+        :type IsConsistentWithReferenceItem: bool
+        :param _ReferenceItem: <p>合同风险审查清单检查点参考条款，用于辅助审查</p>
+        :type ReferenceItem: str
+        :param _Suggestion: <p>合同风险审查清单检查点固定修改建议，优先级高于AiSuggestion</p>
+        :type Suggestion: str
+        :param _AiSuggestion: <p>合同风险审查清单检查点AI修改建议提示，会参考该配置生成对应的修改建议</p>
+        :type AiSuggestion: str
+        :param _RiskPresentation: <p>合同风险审查清单检查点表现标签，用于自定义不同的风险类型</p>
+        :type RiskPresentation: list of str
+        """
+        self._Summary = None
+        self._Explanation = None
+        self._RiskLevel = None
+        self._Id = None
+        self._IsIndispensable = None
+        self._IsConsistentWithReferenceItem = None
+        self._ReferenceItem = None
+        self._Suggestion = None
+        self._AiSuggestion = None
+        self._RiskPresentation = None
+
+    @property
+    def Summary(self):
+        r"""<p>合同风险审查清单检查点名称</p>
+        :rtype: str
+        """
+        return self._Summary
+
+    @Summary.setter
+    def Summary(self, Summary):
+        self._Summary = Summary
+
+    @property
+    def Explanation(self):
+        r"""<p>合同风险审查清单检查点详细描述，说明具体风险信息</p>
+        :rtype: str
+        """
+        return self._Explanation
+
+    @Explanation.setter
+    def Explanation(self, Explanation):
+        self._Explanation = Explanation
+
+    @property
+    def RiskLevel(self):
+        r"""<p>合同风险审查清单检查点对应的风险等级，一般分为 高风险、中风险、一般风险</p>
+        :rtype: str
+        """
+        return self._RiskLevel
+
+    @RiskLevel.setter
+    def RiskLevel(self, RiskLevel):
+        self._RiskLevel = RiskLevel
+
+    @property
+    def Id(self):
+        r"""<p>合同风险审查清单检查点ID，创建清单时无需填写</p>
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def IsIndispensable(self):
+        r"""<p>合同风险审查清单检查点是否不可缺失，若为true，相关条款未出现在内容中，视作风险</p>
+        :rtype: bool
+        """
+        return self._IsIndispensable
+
+    @IsIndispensable.setter
+    def IsIndispensable(self, IsIndispensable):
+        self._IsIndispensable = IsIndispensable
+
+    @property
+    def IsConsistentWithReferenceItem(self):
+        r"""<p>合同风险审查清单检查点是否要求和参考条款一致</p>
+        :rtype: bool
+        """
+        return self._IsConsistentWithReferenceItem
+
+    @IsConsistentWithReferenceItem.setter
+    def IsConsistentWithReferenceItem(self, IsConsistentWithReferenceItem):
+        self._IsConsistentWithReferenceItem = IsConsistentWithReferenceItem
+
+    @property
+    def ReferenceItem(self):
+        r"""<p>合同风险审查清单检查点参考条款，用于辅助审查</p>
+        :rtype: str
+        """
+        return self._ReferenceItem
+
+    @ReferenceItem.setter
+    def ReferenceItem(self, ReferenceItem):
+        self._ReferenceItem = ReferenceItem
+
+    @property
+    def Suggestion(self):
+        r"""<p>合同风险审查清单检查点固定修改建议，优先级高于AiSuggestion</p>
+        :rtype: str
+        """
+        return self._Suggestion
+
+    @Suggestion.setter
+    def Suggestion(self, Suggestion):
+        self._Suggestion = Suggestion
+
+    @property
+    def AiSuggestion(self):
+        r"""<p>合同风险审查清单检查点AI修改建议提示，会参考该配置生成对应的修改建议</p>
+        :rtype: str
+        """
+        return self._AiSuggestion
+
+    @AiSuggestion.setter
+    def AiSuggestion(self, AiSuggestion):
+        self._AiSuggestion = AiSuggestion
+
+    @property
+    def RiskPresentation(self):
+        r"""<p>合同风险审查清单检查点表现标签，用于自定义不同的风险类型</p>
+        :rtype: list of str
+        """
+        return self._RiskPresentation
+
+    @RiskPresentation.setter
+    def RiskPresentation(self, RiskPresentation):
+        self._RiskPresentation = RiskPresentation
+
+
+    def _deserialize(self, params):
+        self._Summary = params.get("Summary")
+        self._Explanation = params.get("Explanation")
+        self._RiskLevel = params.get("RiskLevel")
+        self._Id = params.get("Id")
+        self._IsIndispensable = params.get("IsIndispensable")
+        self._IsConsistentWithReferenceItem = params.get("IsConsistentWithReferenceItem")
+        self._ReferenceItem = params.get("ReferenceItem")
+        self._Suggestion = params.get("Suggestion")
+        self._AiSuggestion = params.get("AiSuggestion")
+        self._RiskPresentation = params.get("RiskPresentation")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ComparisonDetail(AbstractModel):
     r"""合同对比差异结果详情。
 
@@ -23864,6 +24091,169 @@ class DescribeContractDiffTaskWebUrlResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeContractReviewChecklistRequest(AbstractModel):
+    r"""DescribeContractReviewChecklist请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Operator: <p>执行本接口操作的员工信息。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param _ChecklistId: <p>需要获取的合同风险审查清单ID</p>
+        :type ChecklistId: str
+        :param _Agent: <p>代理企业和员工的信息。<br>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
+        """
+        self._Operator = None
+        self._ChecklistId = None
+        self._Agent = None
+
+    @property
+    def Operator(self):
+        r"""<p>执行本接口操作的员工信息。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
+        :rtype: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def ChecklistId(self):
+        r"""<p>需要获取的合同风险审查清单ID</p>
+        :rtype: str
+        """
+        return self._ChecklistId
+
+    @ChecklistId.setter
+    def ChecklistId(self, ChecklistId):
+        self._ChecklistId = ChecklistId
+
+    @property
+    def Agent(self):
+        r"""<p>代理企业和员工的信息。<br>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
+        :rtype: :class:`tencentcloud.ess.v20201111.models.Agent`
+        """
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._ChecklistId = params.get("ChecklistId")
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeContractReviewChecklistResponse(AbstractModel):
+    r"""DescribeContractReviewChecklist返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ChecklistId: <p>获取的合同风险审查清单ID</p>
+        :type ChecklistId: str
+        :param _Name: <p>获取的合同风险审查清单名称</p>
+        :type Name: str
+        :param _Enabled: <p>获取的合同风险审查清单是否启用</p>
+        :type Enabled: bool
+        :param _Categories: <p>获取的合同风险审查清单审查点列表</p>
+        :type Categories: list of ChecklistCategory
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ChecklistId = None
+        self._Name = None
+        self._Enabled = None
+        self._Categories = None
+        self._RequestId = None
+
+    @property
+    def ChecklistId(self):
+        r"""<p>获取的合同风险审查清单ID</p>
+        :rtype: str
+        """
+        return self._ChecklistId
+
+    @ChecklistId.setter
+    def ChecklistId(self, ChecklistId):
+        self._ChecklistId = ChecklistId
+
+    @property
+    def Name(self):
+        r"""<p>获取的合同风险审查清单名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Enabled(self):
+        r"""<p>获取的合同风险审查清单是否启用</p>
+        :rtype: bool
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+    @property
+    def Categories(self):
+        r"""<p>获取的合同风险审查清单审查点列表</p>
+        :rtype: list of ChecklistCategory
+        """
+        return self._Categories
+
+    @Categories.setter
+    def Categories(self, Categories):
+        self._Categories = Categories
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ChecklistId = params.get("ChecklistId")
+        self._Name = params.get("Name")
+        self._Enabled = params.get("Enabled")
+        if params.get("Categories") is not None:
+            self._Categories = []
+            for item in params.get("Categories"):
+                obj = ChecklistCategory()
+                obj._deserialize(item)
+                self._Categories.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeContractReviewChecklistWebUrlRequest(AbstractModel):
     r"""DescribeContractReviewChecklistWebUrl请求参数结构体
 
@@ -36269,6 +36659,169 @@ class Identity(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ImportContractReviewChecklistRequest(AbstractModel):
+    r"""ImportContractReviewChecklist请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Operator: <p>执行本接口操作的员工信息。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
+        :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        :param _Name: <p>导入的合同审查清单名称</p>
+        :type Name: str
+        :param _Categories: <p>导入的合同审查清单审查点列表</p>
+        :type Categories: list of ChecklistCategory
+        :param _Agent: <p>代理企业和员工的信息。<br>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
+        :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
+        :param _ChecklistID: <p>如果传值，则更新对应的合同审查清单，否则创建新的合同审查清单</p>
+        :type ChecklistID: str
+        :param _Enabled: <p>设置为true则启动清单，否则禁用清单</p>
+        :type Enabled: bool
+        """
+        self._Operator = None
+        self._Name = None
+        self._Categories = None
+        self._Agent = None
+        self._ChecklistID = None
+        self._Enabled = None
+
+    @property
+    def Operator(self):
+        r"""<p>执行本接口操作的员工信息。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
+        :rtype: :class:`tencentcloud.ess.v20201111.models.UserInfo`
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+    @property
+    def Name(self):
+        r"""<p>导入的合同审查清单名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Categories(self):
+        r"""<p>导入的合同审查清单审查点列表</p>
+        :rtype: list of ChecklistCategory
+        """
+        return self._Categories
+
+    @Categories.setter
+    def Categories(self, Categories):
+        self._Categories = Categories
+
+    @property
+    def Agent(self):
+        r"""<p>代理企业和员工的信息。<br>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
+        :rtype: :class:`tencentcloud.ess.v20201111.models.Agent`
+        """
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+    @property
+    def ChecklistID(self):
+        r"""<p>如果传值，则更新对应的合同审查清单，否则创建新的合同审查清单</p>
+        :rtype: str
+        """
+        return self._ChecklistID
+
+    @ChecklistID.setter
+    def ChecklistID(self, ChecklistID):
+        self._ChecklistID = ChecklistID
+
+    @property
+    def Enabled(self):
+        r"""<p>设置为true则启动清单，否则禁用清单</p>
+        :rtype: bool
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+
+    def _deserialize(self, params):
+        if params.get("Operator") is not None:
+            self._Operator = UserInfo()
+            self._Operator._deserialize(params.get("Operator"))
+        self._Name = params.get("Name")
+        if params.get("Categories") is not None:
+            self._Categories = []
+            for item in params.get("Categories"):
+                obj = ChecklistCategory()
+                obj._deserialize(item)
+                self._Categories.append(obj)
+        if params.get("Agent") is not None:
+            self._Agent = Agent()
+            self._Agent._deserialize(params.get("Agent"))
+        self._ChecklistID = params.get("ChecklistID")
+        self._Enabled = params.get("Enabled")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ImportContractReviewChecklistResponse(AbstractModel):
+    r"""ImportContractReviewChecklist返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ChecklistId: <p>导入成功的合同审查清单ID</p>
+        :type ChecklistId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ChecklistId = None
+        self._RequestId = None
+
+    @property
+    def ChecklistId(self):
+        r"""<p>导入成功的合同审查清单ID</p>
+        :rtype: str
+        """
+        return self._ChecklistId
+
+    @ChecklistId.setter
+    def ChecklistId(self, ChecklistId):
+        self._ChecklistId = ChecklistId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ChecklistId = params.get("ChecklistId")
+        self._RequestId = params.get("RequestId")
 
 
 class IntegrateRole(AbstractModel):

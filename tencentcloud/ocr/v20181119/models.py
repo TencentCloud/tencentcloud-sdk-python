@@ -4530,6 +4530,95 @@ class Coord(AbstractModel):
         
 
 
+class CoordList(AbstractModel):
+    r"""坐标数组
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TopLeft: <p>左上角坐标。</p>
+        :type TopLeft: :class:`tencentcloud.ocr.v20181119.models.Coord`
+        :param _TopRight: <p>右上角坐标。</p>
+        :type TopRight: :class:`tencentcloud.ocr.v20181119.models.Coord`
+        :param _BottomLeft: <p>左下角坐标。</p>
+        :type BottomLeft: :class:`tencentcloud.ocr.v20181119.models.Coord`
+        :param _BottomRight: <p>右下角坐标。</p>
+        :type BottomRight: :class:`tencentcloud.ocr.v20181119.models.Coord`
+        """
+        self._TopLeft = None
+        self._TopRight = None
+        self._BottomLeft = None
+        self._BottomRight = None
+
+    @property
+    def TopLeft(self):
+        r"""<p>左上角坐标。</p>
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.Coord`
+        """
+        return self._TopLeft
+
+    @TopLeft.setter
+    def TopLeft(self, TopLeft):
+        self._TopLeft = TopLeft
+
+    @property
+    def TopRight(self):
+        r"""<p>右上角坐标。</p>
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.Coord`
+        """
+        return self._TopRight
+
+    @TopRight.setter
+    def TopRight(self, TopRight):
+        self._TopRight = TopRight
+
+    @property
+    def BottomLeft(self):
+        r"""<p>左下角坐标。</p>
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.Coord`
+        """
+        return self._BottomLeft
+
+    @BottomLeft.setter
+    def BottomLeft(self, BottomLeft):
+        self._BottomLeft = BottomLeft
+
+    @property
+    def BottomRight(self):
+        r"""<p>右下角坐标。</p>
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.Coord`
+        """
+        return self._BottomRight
+
+    @BottomRight.setter
+    def BottomRight(self, BottomRight):
+        self._BottomRight = BottomRight
+
+
+    def _deserialize(self, params):
+        if params.get("TopLeft") is not None:
+            self._TopLeft = Coord()
+            self._TopLeft._deserialize(params.get("TopLeft"))
+        if params.get("TopRight") is not None:
+            self._TopRight = Coord()
+            self._TopRight._deserialize(params.get("TopRight"))
+        if params.get("BottomLeft") is not None:
+            self._BottomLeft = Coord()
+            self._BottomLeft._deserialize(params.get("BottomLeft"))
+        if params.get("BottomRight") is not None:
+            self._BottomRight = Coord()
+            self._BottomRight._deserialize(params.get("BottomRight"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CustomsDeclaration(AbstractModel):
     r"""海关进/出口货物报关单
 
@@ -10061,6 +10150,124 @@ class ExtractDocMultiResponse(AbstractModel):
                 self._WordList.append(obj)
         self._TokenNum = params.get("TokenNum")
         self._RequestId = params.get("RequestId")
+
+
+class FieldsInfo(AbstractModel):
+    r"""用于展示抽取出的信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _KeyName: <p>用户自定义的提取字段名。</p>
+        :type KeyName: str
+        :param _KeyPrompt: <p>用户自定义的提取字段名的提示词。</p>
+        :type KeyPrompt: str
+        :param _KeyValue: <p>出参字段对应的值。</p><p>注意：此字段可能返回 null，表示取不到有效值。</p>
+        :type KeyValue: str
+        :param _KeyType: <p>出参类型。</p><p>注：与入参对应同个值。</p>
+        :type KeyType: int
+        :param _Polygon: <p>文本行坐标，以四个顶点坐标表示。</p><p>注：仅当入参EnableCoord不为null时生效，默认是false。</p>
+        :type Polygon: :class:`tencentcloud.ocr.v20181119.models.CoordList`
+        :param _SubItems: <p>嵌套FieldsInfo结构，仅当KeyType=1时有效。</p>
+        :type SubItems: list of SubItemGroup
+        """
+        self._KeyName = None
+        self._KeyPrompt = None
+        self._KeyValue = None
+        self._KeyType = None
+        self._Polygon = None
+        self._SubItems = None
+
+    @property
+    def KeyName(self):
+        r"""<p>用户自定义的提取字段名。</p>
+        :rtype: str
+        """
+        return self._KeyName
+
+    @KeyName.setter
+    def KeyName(self, KeyName):
+        self._KeyName = KeyName
+
+    @property
+    def KeyPrompt(self):
+        r"""<p>用户自定义的提取字段名的提示词。</p>
+        :rtype: str
+        """
+        return self._KeyPrompt
+
+    @KeyPrompt.setter
+    def KeyPrompt(self, KeyPrompt):
+        self._KeyPrompt = KeyPrompt
+
+    @property
+    def KeyValue(self):
+        r"""<p>出参字段对应的值。</p><p>注意：此字段可能返回 null，表示取不到有效值。</p>
+        :rtype: str
+        """
+        return self._KeyValue
+
+    @KeyValue.setter
+    def KeyValue(self, KeyValue):
+        self._KeyValue = KeyValue
+
+    @property
+    def KeyType(self):
+        r"""<p>出参类型。</p><p>注：与入参对应同个值。</p>
+        :rtype: int
+        """
+        return self._KeyType
+
+    @KeyType.setter
+    def KeyType(self, KeyType):
+        self._KeyType = KeyType
+
+    @property
+    def Polygon(self):
+        r"""<p>文本行坐标，以四个顶点坐标表示。</p><p>注：仅当入参EnableCoord不为null时生效，默认是false。</p>
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.CoordList`
+        """
+        return self._Polygon
+
+    @Polygon.setter
+    def Polygon(self, Polygon):
+        self._Polygon = Polygon
+
+    @property
+    def SubItems(self):
+        r"""<p>嵌套FieldsInfo结构，仅当KeyType=1时有效。</p>
+        :rtype: list of SubItemGroup
+        """
+        return self._SubItems
+
+    @SubItems.setter
+    def SubItems(self, SubItems):
+        self._SubItems = SubItems
+
+
+    def _deserialize(self, params):
+        self._KeyName = params.get("KeyName")
+        self._KeyPrompt = params.get("KeyPrompt")
+        self._KeyValue = params.get("KeyValue")
+        self._KeyType = params.get("KeyType")
+        if params.get("Polygon") is not None:
+            self._Polygon = CoordList()
+            self._Polygon._deserialize(params.get("Polygon"))
+        if params.get("SubItems") is not None:
+            self._SubItems = []
+            for item in params.get("SubItems"):
+                obj = SubItemGroup()
+                obj._deserialize(item)
+                self._SubItems.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class FinanBillInfo(AbstractModel):
@@ -16845,6 +17052,97 @@ class LineInfo(AbstractModel):
                 obj = ItemInfo()
                 obj._deserialize(item)
                 self._Lines.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListInfo(AbstractModel):
+    r"""用于展示结构化提取出的结果与输入给模型的提示词和模型的输出
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _QueryInfo: <p>推理任务的完整提示词。注：仅当QueryType=1/2/3时有效，否则返回为null。</p>
+        :type QueryInfo: str
+        :param _Answer: <p>根据QueryType对应任务的返回内容。注：仅当QueryType=1/2/3时有效，其他情况为null。</p>
+        :type Answer: str
+        :param _ExtractFields: <p>结构化提取结果。注：仅当QueryType=4时有效，否则返回null。</p>
+        :type ExtractFields: list of FieldsInfo
+        :param _TextDetections: <p>检测到的文本信息，包括内容、坐标以及旋转纠正后的坐标等，具体内容请参见 TextDetection。注：仅当QueryType=0时TextDetections不为空，否则返回null。</p>
+        :type TextDetections: list of TextDetection
+        """
+        self._QueryInfo = None
+        self._Answer = None
+        self._ExtractFields = None
+        self._TextDetections = None
+
+    @property
+    def QueryInfo(self):
+        r"""<p>推理任务的完整提示词。注：仅当QueryType=1/2/3时有效，否则返回为null。</p>
+        :rtype: str
+        """
+        return self._QueryInfo
+
+    @QueryInfo.setter
+    def QueryInfo(self, QueryInfo):
+        self._QueryInfo = QueryInfo
+
+    @property
+    def Answer(self):
+        r"""<p>根据QueryType对应任务的返回内容。注：仅当QueryType=1/2/3时有效，其他情况为null。</p>
+        :rtype: str
+        """
+        return self._Answer
+
+    @Answer.setter
+    def Answer(self, Answer):
+        self._Answer = Answer
+
+    @property
+    def ExtractFields(self):
+        r"""<p>结构化提取结果。注：仅当QueryType=4时有效，否则返回null。</p>
+        :rtype: list of FieldsInfo
+        """
+        return self._ExtractFields
+
+    @ExtractFields.setter
+    def ExtractFields(self, ExtractFields):
+        self._ExtractFields = ExtractFields
+
+    @property
+    def TextDetections(self):
+        r"""<p>检测到的文本信息，包括内容、坐标以及旋转纠正后的坐标等，具体内容请参见 TextDetection。注：仅当QueryType=0时TextDetections不为空，否则返回null。</p>
+        :rtype: list of TextDetection
+        """
+        return self._TextDetections
+
+    @TextDetections.setter
+    def TextDetections(self, TextDetections):
+        self._TextDetections = TextDetections
+
+
+    def _deserialize(self, params):
+        self._QueryInfo = params.get("QueryInfo")
+        self._Answer = params.get("Answer")
+        if params.get("ExtractFields") is not None:
+            self._ExtractFields = []
+            for item in params.get("ExtractFields"):
+                obj = FieldsInfo()
+                obj._deserialize(item)
+                self._ExtractFields.append(obj)
+        if params.get("TextDetections") is not None:
+            self._TextDetections = []
+            for item in params.get("TextDetections"):
+                obj = TextDetection()
+                obj._deserialize(item)
+                self._TextDetections.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -24556,6 +24854,215 @@ class RailwayTicketInfo(AbstractModel):
         
 
 
+class RecognizeAgentRequest(AbstractModel):
+    r"""RecognizeAgent请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImageUrl: <p>图片/PDF的 Url 地址。要求图片经Base64编码后不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP格式。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。</p>
+        :type ImageUrl: str
+        :param _ImageBase64: <p>图片/PDF的 Base64 值。要求图片经Base64编码后不超过 10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP格式。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。</p>
+        :type ImageBase64: str
+        :param _PdfPageNumber: <p>需识别的PDF页码。仅支持PDF单页识别，当上传文件为PDF时有效。</p><p>默认值：1</p>
+        :type PdfPageNumber: int
+        :param _SelectModel: <p>模型选择。</p><p>枚举值：</p><ul><li>0： 推理模型。</li><li>1： 识别、推理模型。</li></ul><p>默认值：0</p>
+        :type SelectModel: int
+        :param _QueryType: <p>任务类型。</p><p>枚举值：</p><ul><li><p>0： 全文识别。识别且输出全文内容。</p></li><li><p>1： 判断。判断输入图的内容是否为Query中的内容，返回结果为是或否。如Query:&quot;增值税发票&quot;，该任务类型下，将判断输入图是否为增值税发票，返回&quot;是&quot;或&quot;否&quot;。</p></li><li><p>2： 分类。判断输入图属于Query中具体哪个分类项。如Query:[&quot;营业执照&quot;,&quot;合同&quot;,&quot;票据&quot;]，在该任务类型下，将判断输入图是否属于&quot;营业执照&quot;、&quot;合同&quot;、&quot;票据&quot;，返回&quot;营业执照&quot;/&quot;合同&quot;/&quot;票据&quot;或&quot;均不符合&quot;。</p></li><li><p>3： 总结提炼。总结输入图与Query相关的内容。如Query:&quot;工作经历&quot;，在该任务类型下，将输出输入图中和&quot;工作经历&quot;相关的内容，或&quot;无相关内容&quot;。</p></li><li><p>4： 信息提取。按照自定义字段提取Key-Value，且支持多层级提取，详见入参SchemaItems说明。入参可参考下面的接口示例QueryType=4场景</p></li></ul><p>默认值：0</p>
+        :type QueryType: int
+        :param _SchemaItems: <p>自定义提取字段的结构，详见SchemaList结构。仅当QueryType=4时生效。</p><p>注：.N表示数组型参数。</p>
+        :type SchemaItems: list of SchemaList
+        :param _Query: <p>推理任务的提示词。与QueryType搭配使用，具体说明见QueryType描述。1）仅当QueryType=1/2/3时生效，且QueryType=1/3时，长度必须为1；2）QueryType=2，Query长度必须符合2≤x≤5。</p><p>注：.N表示数组型参数。</p>
+        :type Query: list of str
+        :param _EnableCoord: <p>是否需要返回坐标。</p><p>默认值：false</p><p>注：仅对QueryType=4时生效，且坐标位置为 Response.ExtractFields.Polygon。</p>
+        :type EnableCoord: bool
+        """
+        self._ImageUrl = None
+        self._ImageBase64 = None
+        self._PdfPageNumber = None
+        self._SelectModel = None
+        self._QueryType = None
+        self._SchemaItems = None
+        self._Query = None
+        self._EnableCoord = None
+
+    @property
+    def ImageUrl(self):
+        r"""<p>图片/PDF的 Url 地址。要求图片经Base64编码后不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP格式。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。</p>
+        :rtype: str
+        """
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
+
+    @property
+    def ImageBase64(self):
+        r"""<p>图片/PDF的 Base64 值。要求图片经Base64编码后不超过 10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP格式。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。</p>
+        :rtype: str
+        """
+        return self._ImageBase64
+
+    @ImageBase64.setter
+    def ImageBase64(self, ImageBase64):
+        self._ImageBase64 = ImageBase64
+
+    @property
+    def PdfPageNumber(self):
+        r"""<p>需识别的PDF页码。仅支持PDF单页识别，当上传文件为PDF时有效。</p><p>默认值：1</p>
+        :rtype: int
+        """
+        return self._PdfPageNumber
+
+    @PdfPageNumber.setter
+    def PdfPageNumber(self, PdfPageNumber):
+        self._PdfPageNumber = PdfPageNumber
+
+    @property
+    def SelectModel(self):
+        r"""<p>模型选择。</p><p>枚举值：</p><ul><li>0： 推理模型。</li><li>1： 识别、推理模型。</li></ul><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._SelectModel
+
+    @SelectModel.setter
+    def SelectModel(self, SelectModel):
+        self._SelectModel = SelectModel
+
+    @property
+    def QueryType(self):
+        r"""<p>任务类型。</p><p>枚举值：</p><ul><li><p>0： 全文识别。识别且输出全文内容。</p></li><li><p>1： 判断。判断输入图的内容是否为Query中的内容，返回结果为是或否。如Query:&quot;增值税发票&quot;，该任务类型下，将判断输入图是否为增值税发票，返回&quot;是&quot;或&quot;否&quot;。</p></li><li><p>2： 分类。判断输入图属于Query中具体哪个分类项。如Query:[&quot;营业执照&quot;,&quot;合同&quot;,&quot;票据&quot;]，在该任务类型下，将判断输入图是否属于&quot;营业执照&quot;、&quot;合同&quot;、&quot;票据&quot;，返回&quot;营业执照&quot;/&quot;合同&quot;/&quot;票据&quot;或&quot;均不符合&quot;。</p></li><li><p>3： 总结提炼。总结输入图与Query相关的内容。如Query:&quot;工作经历&quot;，在该任务类型下，将输出输入图中和&quot;工作经历&quot;相关的内容，或&quot;无相关内容&quot;。</p></li><li><p>4： 信息提取。按照自定义字段提取Key-Value，且支持多层级提取，详见入参SchemaItems说明。入参可参考下面的接口示例QueryType=4场景</p></li></ul><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._QueryType
+
+    @QueryType.setter
+    def QueryType(self, QueryType):
+        self._QueryType = QueryType
+
+    @property
+    def SchemaItems(self):
+        r"""<p>自定义提取字段的结构，详见SchemaList结构。仅当QueryType=4时生效。</p><p>注：.N表示数组型参数。</p>
+        :rtype: list of SchemaList
+        """
+        return self._SchemaItems
+
+    @SchemaItems.setter
+    def SchemaItems(self, SchemaItems):
+        self._SchemaItems = SchemaItems
+
+    @property
+    def Query(self):
+        r"""<p>推理任务的提示词。与QueryType搭配使用，具体说明见QueryType描述。1）仅当QueryType=1/2/3时生效，且QueryType=1/3时，长度必须为1；2）QueryType=2，Query长度必须符合2≤x≤5。</p><p>注：.N表示数组型参数。</p>
+        :rtype: list of str
+        """
+        return self._Query
+
+    @Query.setter
+    def Query(self, Query):
+        self._Query = Query
+
+    @property
+    def EnableCoord(self):
+        r"""<p>是否需要返回坐标。</p><p>默认值：false</p><p>注：仅对QueryType=4时生效，且坐标位置为 Response.ExtractFields.Polygon。</p>
+        :rtype: bool
+        """
+        return self._EnableCoord
+
+    @EnableCoord.setter
+    def EnableCoord(self, EnableCoord):
+        self._EnableCoord = EnableCoord
+
+
+    def _deserialize(self, params):
+        self._ImageUrl = params.get("ImageUrl")
+        self._ImageBase64 = params.get("ImageBase64")
+        self._PdfPageNumber = params.get("PdfPageNumber")
+        self._SelectModel = params.get("SelectModel")
+        self._QueryType = params.get("QueryType")
+        if params.get("SchemaItems") is not None:
+            self._SchemaItems = []
+            for item in params.get("SchemaItems"):
+                obj = SchemaList()
+                obj._deserialize(item)
+                self._SchemaItems.append(obj)
+        self._Query = params.get("Query")
+        self._EnableCoord = params.get("EnableCoord")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RecognizeAgentResponse(AbstractModel):
+    r"""RecognizeAgent返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Response: <p>返回内容。详见ListInfo。</p>
+        :type Response: list of ListInfo
+        :param _Angle: <p>图片旋转角度(角度制)，文本的水平方向为 0；顺时针为正，逆时针为负。</p>
+        :type Angle: float
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Response = None
+        self._Angle = None
+        self._RequestId = None
+
+    @property
+    def Response(self):
+        r"""<p>返回内容。详见ListInfo。</p>
+        :rtype: list of ListInfo
+        """
+        return self._Response
+
+    @Response.setter
+    def Response(self, Response):
+        self._Response = Response
+
+    @property
+    def Angle(self):
+        r"""<p>图片旋转角度(角度制)，文本的水平方向为 0；顺时针为正，逆时针为负。</p>
+        :rtype: float
+        """
+        return self._Angle
+
+    @Angle.setter
+    def Angle(self, Angle):
+        self._Angle = Angle
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Response") is not None:
+            self._Response = []
+            for item in params.get("Response"):
+                obj = ListInfo()
+                obj._deserialize(item)
+                self._Response.append(obj)
+        self._Angle = params.get("Angle")
+        self._RequestId = params.get("RequestId")
+
+
 class RecognizeContainerOCRRequest(AbstractModel):
     r"""RecognizeContainerOCR请求参数结构体
 
@@ -29474,6 +29981,163 @@ class SaleInventory(AbstractModel):
         
 
 
+class SceneWarnInfo(AbstractModel):
+    r"""用于风险提示和表示不同场景下的风险程度
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IsWarn: <p>是否存在该提示</p>
+        :type IsWarn: bool
+        :param _RiskConfidence: <p>风险程度（0-1）</p>
+        :type RiskConfidence: float
+        :param _Polygon: <p>提示位置四点坐标，仅部分提示类型支持返回提示位置坐标</p>
+        :type Polygon: list of Polygon
+        """
+        self._IsWarn = None
+        self._RiskConfidence = None
+        self._Polygon = None
+
+    @property
+    def IsWarn(self):
+        r"""<p>是否存在该提示</p>
+        :rtype: bool
+        """
+        return self._IsWarn
+
+    @IsWarn.setter
+    def IsWarn(self, IsWarn):
+        self._IsWarn = IsWarn
+
+    @property
+    def RiskConfidence(self):
+        r"""<p>风险程度（0-1）</p>
+        :rtype: float
+        """
+        return self._RiskConfidence
+
+    @RiskConfidence.setter
+    def RiskConfidence(self, RiskConfidence):
+        self._RiskConfidence = RiskConfidence
+
+    @property
+    def Polygon(self):
+        r"""<p>提示位置四点坐标，仅部分提示类型支持返回提示位置坐标</p>
+        :rtype: list of Polygon
+        """
+        return self._Polygon
+
+    @Polygon.setter
+    def Polygon(self, Polygon):
+        self._Polygon = Polygon
+
+
+    def _deserialize(self, params):
+        self._IsWarn = params.get("IsWarn")
+        self._RiskConfidence = params.get("RiskConfidence")
+        if params.get("Polygon") is not None:
+            self._Polygon = []
+            for item in params.get("Polygon"):
+                obj = Polygon()
+                obj._deserialize(item)
+                self._Polygon.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SchemaList(AbstractModel):
+    r"""描述用户提供的出参结构的模板
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _KeyName: <p>自定义需提取的字段名称。注：若需提取多个字段，可定义多个KeyName。</p>
+        :type KeyName: str
+        :param _KeyType: <p>字段类型。</p><p>枚举值：</p><ul><li>0： 表示KeyName为简单字段（如姓名、性别等）。</li><li>1： 表示KeyName为数组对象（如工作经历、教育经历列表）。</li></ul>
+        :type KeyType: int
+        :param _KeyPrompt: <p>补充提取字段的描述。</p>
+        :type KeyPrompt: str
+        :param _SubItems: <p>嵌套SchemaList结构，最多支持嵌套三层。注：仅当KeyType=1时生效。</p>
+        :type SubItems: list of SchemaList
+        """
+        self._KeyName = None
+        self._KeyType = None
+        self._KeyPrompt = None
+        self._SubItems = None
+
+    @property
+    def KeyName(self):
+        r"""<p>自定义需提取的字段名称。注：若需提取多个字段，可定义多个KeyName。</p>
+        :rtype: str
+        """
+        return self._KeyName
+
+    @KeyName.setter
+    def KeyName(self, KeyName):
+        self._KeyName = KeyName
+
+    @property
+    def KeyType(self):
+        r"""<p>字段类型。</p><p>枚举值：</p><ul><li>0： 表示KeyName为简单字段（如姓名、性别等）。</li><li>1： 表示KeyName为数组对象（如工作经历、教育经历列表）。</li></ul>
+        :rtype: int
+        """
+        return self._KeyType
+
+    @KeyType.setter
+    def KeyType(self, KeyType):
+        self._KeyType = KeyType
+
+    @property
+    def KeyPrompt(self):
+        r"""<p>补充提取字段的描述。</p>
+        :rtype: str
+        """
+        return self._KeyPrompt
+
+    @KeyPrompt.setter
+    def KeyPrompt(self, KeyPrompt):
+        self._KeyPrompt = KeyPrompt
+
+    @property
+    def SubItems(self):
+        r"""<p>嵌套SchemaList结构，最多支持嵌套三层。注：仅当KeyType=1时生效。</p>
+        :rtype: list of SchemaList
+        """
+        return self._SubItems
+
+    @SubItems.setter
+    def SubItems(self, SubItems):
+        self._SubItems = SubItems
+
+
+    def _deserialize(self, params):
+        self._KeyName = params.get("KeyName")
+        self._KeyType = params.get("KeyType")
+        self._KeyPrompt = params.get("KeyPrompt")
+        if params.get("SubItems") is not None:
+            self._SubItems = []
+            for item in params.get("SubItems"):
+                obj = SchemaList()
+                obj._deserialize(item)
+                self._SubItems.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SealInfo(AbstractModel):
     r"""印章信息
 
@@ -31430,6 +32094,47 @@ class StructuralItem(AbstractModel):
             self._ItemCoord = ItemCoord()
             self._ItemCoord._deserialize(params.get("ItemCoord"))
         self._Row = params.get("Row")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SubItemGroup(AbstractModel):
+    r"""用于分层展示抽取出的信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Groups: <p>子结构嵌套FieldsInfo结构</p>
+        :type Groups: list of FieldsInfo
+        """
+        self._Groups = None
+
+    @property
+    def Groups(self):
+        r"""<p>子结构嵌套FieldsInfo结构</p>
+        :rtype: list of FieldsInfo
+        """
+        return self._Groups
+
+    @Groups.setter
+    def Groups(self, Groups):
+        self._Groups = Groups
+
+
+    def _deserialize(self, params):
+        if params.get("Groups") is not None:
+            self._Groups = []
+            for item in params.get("Groups"):
+                obj = FieldsInfo()
+                obj._deserialize(item)
+                self._Groups.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -43030,6 +43735,200 @@ class VerifyOfdVatInvoiceOCRResponse(AbstractModel):
             self._RailwayTicketInfo = RailwayTicketInfo()
             self._RailwayTicketInfo._deserialize(params.get("RailwayTicketInfo"))
         self._InvoiceTitle = params.get("InvoiceTitle")
+        self._RequestId = params.get("RequestId")
+
+
+class VerifyScenePhotoRequest(AbstractModel):
+    r"""VerifyScenePhoto请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Scene: <p>场景类型参数，如果场景无法细分请选用该大类的第一个子类，目前支持以下类型：<br><strong>经营场所照</strong><br>0101 门头照<br>0102 店内照<br>0103 流动经营照</p>
+        :type Scene: str
+        :param _ImageUrl: <p>图片的 Url 地址。要求图片经Base64编码后不超过 10M。</p>
+        :type ImageUrl: str
+        :param _ImageBase64: <p>图片的 Base64 值。要求图片经Base64编码后不超过 10M。</p>
+        :type ImageBase64: str
+        """
+        self._Scene = None
+        self._ImageUrl = None
+        self._ImageBase64 = None
+
+    @property
+    def Scene(self):
+        r"""<p>场景类型参数，如果场景无法细分请选用该大类的第一个子类，目前支持以下类型：<br><strong>经营场所照</strong><br>0101 门头照<br>0102 店内照<br>0103 流动经营照</p>
+        :rtype: str
+        """
+        return self._Scene
+
+    @Scene.setter
+    def Scene(self, Scene):
+        self._Scene = Scene
+
+    @property
+    def ImageUrl(self):
+        r"""<p>图片的 Url 地址。要求图片经Base64编码后不超过 10M。</p>
+        :rtype: str
+        """
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
+
+    @property
+    def ImageBase64(self):
+        r"""<p>图片的 Base64 值。要求图片经Base64编码后不超过 10M。</p>
+        :rtype: str
+        """
+        return self._ImageBase64
+
+    @ImageBase64.setter
+    def ImageBase64(self, ImageBase64):
+        self._ImageBase64 = ImageBase64
+
+
+    def _deserialize(self, params):
+        self._Scene = params.get("Scene")
+        self._ImageUrl = params.get("ImageUrl")
+        self._ImageBase64 = params.get("ImageBase64")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VerifyScenePhotoResponse(AbstractModel):
+    r"""VerifyScenePhoto返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Tamper: <p>区域篡改提示</p>
+        :type Tamper: :class:`tencentcloud.ocr.v20181119.models.SceneWarnInfo`
+        :param _Synthesis: <p>AIGC合成提示</p>
+        :type Synthesis: :class:`tencentcloud.ocr.v20181119.models.SceneWarnInfo`
+        :param _RemakeScreen: <p>屏幕翻拍提示</p>
+        :type RemakeScreen: :class:`tencentcloud.ocr.v20181119.models.SceneWarnInfo`
+        :param _Screenshot: <p>截图提示</p>
+        :type Screenshot: :class:`tencentcloud.ocr.v20181119.models.SceneWarnInfo`
+        :param _TextWatermark: <p>文字水印提示</p>
+        :type TextWatermark: :class:`tencentcloud.ocr.v20181119.models.SceneWarnInfo`
+        :param _WatermarkContent: <p>水印内容，当未检测到文字水印时不返回，返回多组水印时以 | 分隔。</p>
+        :type WatermarkContent: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Tamper = None
+        self._Synthesis = None
+        self._RemakeScreen = None
+        self._Screenshot = None
+        self._TextWatermark = None
+        self._WatermarkContent = None
+        self._RequestId = None
+
+    @property
+    def Tamper(self):
+        r"""<p>区域篡改提示</p>
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.SceneWarnInfo`
+        """
+        return self._Tamper
+
+    @Tamper.setter
+    def Tamper(self, Tamper):
+        self._Tamper = Tamper
+
+    @property
+    def Synthesis(self):
+        r"""<p>AIGC合成提示</p>
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.SceneWarnInfo`
+        """
+        return self._Synthesis
+
+    @Synthesis.setter
+    def Synthesis(self, Synthesis):
+        self._Synthesis = Synthesis
+
+    @property
+    def RemakeScreen(self):
+        r"""<p>屏幕翻拍提示</p>
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.SceneWarnInfo`
+        """
+        return self._RemakeScreen
+
+    @RemakeScreen.setter
+    def RemakeScreen(self, RemakeScreen):
+        self._RemakeScreen = RemakeScreen
+
+    @property
+    def Screenshot(self):
+        r"""<p>截图提示</p>
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.SceneWarnInfo`
+        """
+        return self._Screenshot
+
+    @Screenshot.setter
+    def Screenshot(self, Screenshot):
+        self._Screenshot = Screenshot
+
+    @property
+    def TextWatermark(self):
+        r"""<p>文字水印提示</p>
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.SceneWarnInfo`
+        """
+        return self._TextWatermark
+
+    @TextWatermark.setter
+    def TextWatermark(self, TextWatermark):
+        self._TextWatermark = TextWatermark
+
+    @property
+    def WatermarkContent(self):
+        r"""<p>水印内容，当未检测到文字水印时不返回，返回多组水印时以 | 分隔。</p>
+        :rtype: str
+        """
+        return self._WatermarkContent
+
+    @WatermarkContent.setter
+    def WatermarkContent(self, WatermarkContent):
+        self._WatermarkContent = WatermarkContent
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Tamper") is not None:
+            self._Tamper = SceneWarnInfo()
+            self._Tamper._deserialize(params.get("Tamper"))
+        if params.get("Synthesis") is not None:
+            self._Synthesis = SceneWarnInfo()
+            self._Synthesis._deserialize(params.get("Synthesis"))
+        if params.get("RemakeScreen") is not None:
+            self._RemakeScreen = SceneWarnInfo()
+            self._RemakeScreen._deserialize(params.get("RemakeScreen"))
+        if params.get("Screenshot") is not None:
+            self._Screenshot = SceneWarnInfo()
+            self._Screenshot._deserialize(params.get("Screenshot"))
+        if params.get("TextWatermark") is not None:
+            self._TextWatermark = SceneWarnInfo()
+            self._TextWatermark._deserialize(params.get("TextWatermark"))
+        self._WatermarkContent = params.get("WatermarkContent")
         self._RequestId = params.get("RequestId")
 
 

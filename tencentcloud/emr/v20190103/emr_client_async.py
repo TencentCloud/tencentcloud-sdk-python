@@ -152,6 +152,24 @@ class EmrClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateDynamicInstance(
+            self,
+            request: models.CreateDynamicInstanceRequest,
+            opts: Dict = None,
+    ) -> models.CreateDynamicInstanceResponse:
+        """
+        创建容器EMR-TKE集群DynamicInstance
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateDynamicInstance"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateDynamicInstanceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateGroupsSTD(
             self,
             request: models.CreateGroupsSTDRequest,
@@ -437,6 +455,24 @@ class EmrClient(AbstractClient):
         kwargs["action"] = "DescribeDAGInfo"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeDAGInfoResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeDynamicInstanceList(
+            self,
+            request: models.DescribeDynamicInstanceListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDynamicInstanceListResponse:
+        """
+        描述容器EMR-TKE集群DynamicInstance列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDynamicInstanceList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDynamicInstanceListResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1254,6 +1290,24 @@ class EmrClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyDynamicInstance(
+            self,
+            request: models.ModifyDynamicInstanceRequest,
+            opts: Dict = None,
+    ) -> models.ModifyDynamicInstanceResponse:
+        """
+        更新容器EMR-TKE集群DynamicInstance
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyDynamicInstance"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyDynamicInstanceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyGlobalConfig(
             self,
             request: models.ModifyGlobalConfigRequest,
@@ -1707,6 +1761,24 @@ class EmrClient(AbstractClient):
         kwargs["action"] = "TerminateClusterNodes"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.TerminateClusterNodesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def TerminateDynamicInstances(
+            self,
+            request: models.TerminateDynamicInstancesRequest,
+            opts: Dict = None,
+    ) -> models.TerminateDynamicInstancesResponse:
+        """
+        销毁容器EMR-TKE集群DynamicInstance
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "TerminateDynamicInstances"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.TerminateDynamicInstancesResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

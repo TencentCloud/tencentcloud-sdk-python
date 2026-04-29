@@ -227,6 +227,9 @@ INVALIDPARAMETER_CLSINVALIDCONTENT = 'InvalidParameter.ClsInvalidContent'
 # 无效的Content-Type。
 INVALIDPARAMETER_CLSINVALIDCONTENTTYPE = 'InvalidParameter.ClsInvalidContentType'
 
+# 无效的LogsetId
+INVALIDPARAMETER_CLSINVALIDLOGSETID = 'InvalidParameter.ClsInvalidLogsetId'
+
 # 参数错误，请检查后重试。
 INVALIDPARAMETER_CLSINVALIDPARAM = 'InvalidParameter.ClsInvalidParam'
 

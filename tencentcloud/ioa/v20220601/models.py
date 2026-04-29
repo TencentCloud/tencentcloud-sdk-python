@@ -822,6 +822,232 @@ class Condition(AbstractModel):
         
 
 
+class CreateBusinessResourceData(AbstractModel):
+    r"""创建业务资源响应的数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ServiceId: 创建成功的业务资源数据id
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceId: int
+        """
+        self._ServiceId = None
+
+    @property
+    def ServiceId(self):
+        r"""创建成功的业务资源数据id
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+
+    def _deserialize(self, params):
+        self._ServiceId = params.get("ServiceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateBusinessResourceRequest(AbstractModel):
+    r"""CreateBusinessResource请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AreaId: 业务资源所在的模块id，没有资源模块先创建资源模块(只支持32位)
+        :type AreaId: int
+        :param _Protocol: 业务资源协议类型, 1:UDP, 2:TCP, 3:所有协议(只支持32位)
+        :type Protocol: int
+        :param _ServiceName: 业务资源名称，同一个资源模块下面不可重复
+        :type ServiceName: str
+        :param _ServiceType: 业务资源类型:ip,domain,ip_section，对应ip、域名、ip段
+        :type ServiceType: str
+        :param _ServicePort: 业务资源端口 all,1-65535
+        :type ServicePort: str
+        :param _Levels: 业务资源优先级 1-65535(只支持32位)
+        :type Levels: int
+        :param _ServiceAddress: 业务资源地址(ip、域名、ip段)
+        :type ServiceAddress: str
+        :param _DirectConn: 是否走代理,该参数不传，默认为0, 2：内外网直连，1：内网直连， 0：不启用代理配置(只支持32位)
+        :type DirectConn: int
+        """
+        self._AreaId = None
+        self._Protocol = None
+        self._ServiceName = None
+        self._ServiceType = None
+        self._ServicePort = None
+        self._Levels = None
+        self._ServiceAddress = None
+        self._DirectConn = None
+
+    @property
+    def AreaId(self):
+        r"""业务资源所在的模块id，没有资源模块先创建资源模块(只支持32位)
+        :rtype: int
+        """
+        return self._AreaId
+
+    @AreaId.setter
+    def AreaId(self, AreaId):
+        self._AreaId = AreaId
+
+    @property
+    def Protocol(self):
+        r"""业务资源协议类型, 1:UDP, 2:TCP, 3:所有协议(只支持32位)
+        :rtype: int
+        """
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def ServiceName(self):
+        r"""业务资源名称，同一个资源模块下面不可重复
+        :rtype: str
+        """
+        return self._ServiceName
+
+    @ServiceName.setter
+    def ServiceName(self, ServiceName):
+        self._ServiceName = ServiceName
+
+    @property
+    def ServiceType(self):
+        r"""业务资源类型:ip,domain,ip_section，对应ip、域名、ip段
+        :rtype: str
+        """
+        return self._ServiceType
+
+    @ServiceType.setter
+    def ServiceType(self, ServiceType):
+        self._ServiceType = ServiceType
+
+    @property
+    def ServicePort(self):
+        r"""业务资源端口 all,1-65535
+        :rtype: str
+        """
+        return self._ServicePort
+
+    @ServicePort.setter
+    def ServicePort(self, ServicePort):
+        self._ServicePort = ServicePort
+
+    @property
+    def Levels(self):
+        r"""业务资源优先级 1-65535(只支持32位)
+        :rtype: int
+        """
+        return self._Levels
+
+    @Levels.setter
+    def Levels(self, Levels):
+        self._Levels = Levels
+
+    @property
+    def ServiceAddress(self):
+        r"""业务资源地址(ip、域名、ip段)
+        :rtype: str
+        """
+        return self._ServiceAddress
+
+    @ServiceAddress.setter
+    def ServiceAddress(self, ServiceAddress):
+        self._ServiceAddress = ServiceAddress
+
+    @property
+    def DirectConn(self):
+        r"""是否走代理,该参数不传，默认为0, 2：内外网直连，1：内网直连， 0：不启用代理配置(只支持32位)
+        :rtype: int
+        """
+        return self._DirectConn
+
+    @DirectConn.setter
+    def DirectConn(self, DirectConn):
+        self._DirectConn = DirectConn
+
+
+    def _deserialize(self, params):
+        self._AreaId = params.get("AreaId")
+        self._Protocol = params.get("Protocol")
+        self._ServiceName = params.get("ServiceName")
+        self._ServiceType = params.get("ServiceType")
+        self._ServicePort = params.get("ServicePort")
+        self._Levels = params.get("Levels")
+        self._ServiceAddress = params.get("ServiceAddress")
+        self._DirectConn = params.get("DirectConn")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateBusinessResourceResponse(AbstractModel):
+    r"""CreateBusinessResource返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 创建业务资源响应的数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.ioa.v20220601.models.CreateBusinessResourceData`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""创建业务资源响应的数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.CreateBusinessResourceData`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = CreateBusinessResourceData()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
 class CreateDLPFileDetectTaskData(AbstractModel):
     r"""文件鉴定任务分页数据
 
@@ -2176,6 +2402,291 @@ class DescribeAccountGroupsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeAccountResourcesData(AbstractModel):
+    r"""数据集
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Items: 资源对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of DescribeAccountResourcesItems
+        """
+        self._Items = None
+
+    @property
+    def Items(self):
+        r"""资源对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DescribeAccountResourcesItems
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+
+    def _deserialize(self, params):
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = DescribeAccountResourcesItems()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAccountResourcesItems(AbstractModel):
+    r"""资源对象
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AreaId: 资源组id(只支持32位)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AreaId: int
+        :param _Description: 描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param _ResourceType: 资源类型(只支持32位)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceType: int
+        :param _ResourceId: 资源id(只支持32位)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceId: int
+        :param _FromSourceId: 一般同id字段相同(只支持32位)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FromSourceId: int
+        :param _IsInherited: 是否继承过来的资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsInherited: bool
+        :param _ExpireTime: 资源过期时间(只支持32位)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExpireTime: int
+        :param _NamePath: 账户组的namepath
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NamePath: str
+        :param _AccessType: 访问类型:0-NGN 1-web(只支持32位)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccessType: int
+        :param _ResourceName: 资源名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceName: str
+        :param _IsInheritedSwitch: 继承开关状态(只支持32位)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsInheritedSwitch: int
+        :param _Id: 关系id(只支持32位)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: int
+        :param _AreaName: 资源名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AreaName: str
+        """
+        self._AreaId = None
+        self._Description = None
+        self._ResourceType = None
+        self._ResourceId = None
+        self._FromSourceId = None
+        self._IsInherited = None
+        self._ExpireTime = None
+        self._NamePath = None
+        self._AccessType = None
+        self._ResourceName = None
+        self._IsInheritedSwitch = None
+        self._Id = None
+        self._AreaName = None
+
+    @property
+    def AreaId(self):
+        r"""资源组id(只支持32位)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._AreaId
+
+    @AreaId.setter
+    def AreaId(self, AreaId):
+        self._AreaId = AreaId
+
+    @property
+    def Description(self):
+        r"""描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def ResourceType(self):
+        r"""资源类型(只支持32位)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def ResourceId(self):
+        r"""资源id(只支持32位)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def FromSourceId(self):
+        r"""一般同id字段相同(只支持32位)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._FromSourceId
+
+    @FromSourceId.setter
+    def FromSourceId(self, FromSourceId):
+        self._FromSourceId = FromSourceId
+
+    @property
+    def IsInherited(self):
+        r"""是否继承过来的资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._IsInherited
+
+    @IsInherited.setter
+    def IsInherited(self, IsInherited):
+        self._IsInherited = IsInherited
+
+    @property
+    def ExpireTime(self):
+        r"""资源过期时间(只支持32位)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def NamePath(self):
+        r"""账户组的namepath
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._NamePath
+
+    @NamePath.setter
+    def NamePath(self, NamePath):
+        self._NamePath = NamePath
+
+    @property
+    def AccessType(self):
+        r"""访问类型:0-NGN 1-web(只支持32位)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._AccessType
+
+    @AccessType.setter
+    def AccessType(self, AccessType):
+        self._AccessType = AccessType
+
+    @property
+    def ResourceName(self):
+        r"""资源名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ResourceName
+
+    @ResourceName.setter
+    def ResourceName(self, ResourceName):
+        self._ResourceName = ResourceName
+
+    @property
+    def IsInheritedSwitch(self):
+        r"""继承开关状态(只支持32位)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._IsInheritedSwitch
+
+    @IsInheritedSwitch.setter
+    def IsInheritedSwitch(self, IsInheritedSwitch):
+        self._IsInheritedSwitch = IsInheritedSwitch
+
+    @property
+    def Id(self):
+        r"""关系id(只支持32位)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def AreaName(self):
+        r"""资源名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AreaName
+
+    @AreaName.setter
+    def AreaName(self, AreaName):
+        self._AreaName = AreaName
+
+
+    def _deserialize(self, params):
+        self._AreaId = params.get("AreaId")
+        self._Description = params.get("Description")
+        self._ResourceType = params.get("ResourceType")
+        self._ResourceId = params.get("ResourceId")
+        self._FromSourceId = params.get("FromSourceId")
+        self._IsInherited = params.get("IsInherited")
+        self._ExpireTime = params.get("ExpireTime")
+        self._NamePath = params.get("NamePath")
+        self._AccessType = params.get("AccessType")
+        self._ResourceName = params.get("ResourceName")
+        self._IsInheritedSwitch = params.get("IsInheritedSwitch")
+        self._Id = params.get("Id")
+        self._AreaName = params.get("AreaName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DescribeAggrSoftCategorySoftListData(AbstractModel):
     r"""业务响应数据
 
@@ -2932,6 +3443,995 @@ class DescribeAggrSoftDeviceListResponse(AbstractModel):
     def _deserialize(self, params):
         if params.get("Data") is not None:
             self._Data = DescribeAggrSoftDeviceListData()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeBusinessResourceData(AbstractModel):
+    r"""业务资源列表数据对象集合
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ServiceId: <p>业务资源id(只支持32位)</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceId: int
+        :param _ServiceName: <p>业务资源名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceName: str
+        :param _ServiceType: <p>资源类型:ip,domain,ip_section，对应ip，域名，ip段</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceType: str
+        :param _ServiceAddress: <p>业务资源地址</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceAddress: str
+        :param _ServicePort: <p>业务资源端口 all,1-65535</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServicePort: str
+        :param _CreateTime: <p>业务资源创建时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _UpdateTime: <p>业务资源最后修改时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        :param _Remark: <p>说明字段</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Remark: str
+        :param _AreaId: <p>资源模块ID(只支持32位)</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AreaId: int
+        :param _SmartGateIds: <p>零信任网关id(只支持32位)</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SmartGateIds: list of int
+        :param _Protocol: <p>业务资源协议类型,3：所有,2：UDP，1：TCP(只支持32位)</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Protocol: int
+        :param _Levels: <p>业务资源等级(只支持32位)</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Levels: int
+        :param _SmartGateNames: <p>零信任网关名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SmartGateNames: str
+        :param _DirectConn: <p>网关连通性(只支持32位)</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DirectConn: int
+        :param _DetectState: <p>网关连通性状态(只支持32位)</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DetectState: int
+        :param _DetectInfo: <p>网关连通性信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DetectInfo: str
+        :param _DetectTime: <p>网关连通性创建时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DetectTime: str
+        :param _ConnectorGroupId: <p>绑定的连接器组Id</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConnectorGroupId: str
+        :param _ConnectorGroupName: <p>绑定的连接器组的名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ConnectorGroupName: str
+        :param _ReachableTime: <p>资源连通性可达最后的检测时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReachableTime: str
+        :param _ReachableState: <p>资源连通性可达状态,0：未检测，1：未连通，2：已连通</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReachableState: int
+        :param _AccessType: <p>访问类型:0-NGN 1-web(只支持32位)</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccessType: int
+        :param _BackendScheme: <p>web资源-后端协议</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BackendScheme: str
+        :param _BackendPath: <p>web资源-后端路径</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BackendPath: str
+        :param _FrontScheme: <p>web资源-前端协议</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FrontScheme: str
+        :param _FrontHost: <p>web资源-前端host</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FrontHost: str
+        :param _FrontPort: <p>web资源-前端host(只支持32位)</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FrontPort: int
+        :param _FrontPath: <p>web资源-前端路径 默认&quot;/&quot;</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FrontPath: str
+        :param _DisableFront: <p>web资源-是否禁用外网访问：0-可通过外网访问 1-不能通过外网访问(只支持32位)</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DisableFront: int
+        :param _CustomDomain: <p>web资源-租户自定义域名</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CustomDomain: str
+        :param _CustomHost: <p>web资源-自定义host</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CustomHost: str
+        :param _CnameStatus: <p>web资源-Cname状态(只支持32位)</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CnameStatus: int
+        :param _CertificateId: <p>web资源-关联证书ID(只支持32位)</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CertificateId: int
+        :param _WebGwResourceType: <p>web资源类型：0-应用 1-API(只支持32位)</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WebGwResourceType: int
+        :param _APISecretId: <p>web资源-如果选择API类型资源，则需要配置密钥(只支持32位)</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type APISecretId: int
+        :param _AreaName: <p>所属资源组名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AreaName: str
+        :param _SSLCertId: <p>web资源-前端协议是HTTPS类型，需要配置证书</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SSLCertId: str
+        :param _EnableDependentAddr: <p>web资源-是否启用依赖地址：0-不启用 1-启用(只支持32位)</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnableDependentAddr: int
+        :param _DependentAddr: <p>web资源-依赖地址的后端服务器地址</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DependentAddr: str
+        :param _WebGwNoAuth: <p>web免鉴权：1-鉴权 2-免鉴权</p>
+        :type WebGwNoAuth: int
+        :param _ConnectorGroupType: <p>通道类型</p><p>枚举值：</p><ul><li>vpc： vpc类型</li><li>native： 专线类型</li></ul><p>默认值：native</p>
+        :type ConnectorGroupType: str
+        :param _DomainSuffix: <p>域名后缀</p>
+        :type DomainSuffix: str
+        """
+        self._ServiceId = None
+        self._ServiceName = None
+        self._ServiceType = None
+        self._ServiceAddress = None
+        self._ServicePort = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._Remark = None
+        self._AreaId = None
+        self._SmartGateIds = None
+        self._Protocol = None
+        self._Levels = None
+        self._SmartGateNames = None
+        self._DirectConn = None
+        self._DetectState = None
+        self._DetectInfo = None
+        self._DetectTime = None
+        self._ConnectorGroupId = None
+        self._ConnectorGroupName = None
+        self._ReachableTime = None
+        self._ReachableState = None
+        self._AccessType = None
+        self._BackendScheme = None
+        self._BackendPath = None
+        self._FrontScheme = None
+        self._FrontHost = None
+        self._FrontPort = None
+        self._FrontPath = None
+        self._DisableFront = None
+        self._CustomDomain = None
+        self._CustomHost = None
+        self._CnameStatus = None
+        self._CertificateId = None
+        self._WebGwResourceType = None
+        self._APISecretId = None
+        self._AreaName = None
+        self._SSLCertId = None
+        self._EnableDependentAddr = None
+        self._DependentAddr = None
+        self._WebGwNoAuth = None
+        self._ConnectorGroupType = None
+        self._DomainSuffix = None
+
+    @property
+    def ServiceId(self):
+        r"""<p>业务资源id(只支持32位)</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def ServiceName(self):
+        r"""<p>业务资源名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ServiceName
+
+    @ServiceName.setter
+    def ServiceName(self, ServiceName):
+        self._ServiceName = ServiceName
+
+    @property
+    def ServiceType(self):
+        r"""<p>资源类型:ip,domain,ip_section，对应ip，域名，ip段</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ServiceType
+
+    @ServiceType.setter
+    def ServiceType(self, ServiceType):
+        self._ServiceType = ServiceType
+
+    @property
+    def ServiceAddress(self):
+        r"""<p>业务资源地址</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ServiceAddress
+
+    @ServiceAddress.setter
+    def ServiceAddress(self, ServiceAddress):
+        self._ServiceAddress = ServiceAddress
+
+    @property
+    def ServicePort(self):
+        r"""<p>业务资源端口 all,1-65535</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ServicePort
+
+    @ServicePort.setter
+    def ServicePort(self, ServicePort):
+        self._ServicePort = ServicePort
+
+    @property
+    def CreateTime(self):
+        r"""<p>业务资源创建时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""<p>业务资源最后修改时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def Remark(self):
+        r"""<p>说明字段</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def AreaId(self):
+        r"""<p>资源模块ID(只支持32位)</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._AreaId
+
+    @AreaId.setter
+    def AreaId(self, AreaId):
+        self._AreaId = AreaId
+
+    @property
+    def SmartGateIds(self):
+        r"""<p>零信任网关id(只支持32位)</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int
+        """
+        return self._SmartGateIds
+
+    @SmartGateIds.setter
+    def SmartGateIds(self, SmartGateIds):
+        self._SmartGateIds = SmartGateIds
+
+    @property
+    def Protocol(self):
+        r"""<p>业务资源协议类型,3：所有,2：UDP，1：TCP(只支持32位)</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def Levels(self):
+        r"""<p>业务资源等级(只支持32位)</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Levels
+
+    @Levels.setter
+    def Levels(self, Levels):
+        self._Levels = Levels
+
+    @property
+    def SmartGateNames(self):
+        r"""<p>零信任网关名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SmartGateNames
+
+    @SmartGateNames.setter
+    def SmartGateNames(self, SmartGateNames):
+        self._SmartGateNames = SmartGateNames
+
+    @property
+    def DirectConn(self):
+        r"""<p>网关连通性(只支持32位)</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._DirectConn
+
+    @DirectConn.setter
+    def DirectConn(self, DirectConn):
+        self._DirectConn = DirectConn
+
+    @property
+    def DetectState(self):
+        r"""<p>网关连通性状态(只支持32位)</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._DetectState
+
+    @DetectState.setter
+    def DetectState(self, DetectState):
+        self._DetectState = DetectState
+
+    @property
+    def DetectInfo(self):
+        r"""<p>网关连通性信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DetectInfo
+
+    @DetectInfo.setter
+    def DetectInfo(self, DetectInfo):
+        self._DetectInfo = DetectInfo
+
+    @property
+    def DetectTime(self):
+        r"""<p>网关连通性创建时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DetectTime
+
+    @DetectTime.setter
+    def DetectTime(self, DetectTime):
+        self._DetectTime = DetectTime
+
+    @property
+    def ConnectorGroupId(self):
+        r"""<p>绑定的连接器组Id</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ConnectorGroupId
+
+    @ConnectorGroupId.setter
+    def ConnectorGroupId(self, ConnectorGroupId):
+        self._ConnectorGroupId = ConnectorGroupId
+
+    @property
+    def ConnectorGroupName(self):
+        r"""<p>绑定的连接器组的名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ConnectorGroupName
+
+    @ConnectorGroupName.setter
+    def ConnectorGroupName(self, ConnectorGroupName):
+        self._ConnectorGroupName = ConnectorGroupName
+
+    @property
+    def ReachableTime(self):
+        r"""<p>资源连通性可达最后的检测时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ReachableTime
+
+    @ReachableTime.setter
+    def ReachableTime(self, ReachableTime):
+        self._ReachableTime = ReachableTime
+
+    @property
+    def ReachableState(self):
+        r"""<p>资源连通性可达状态,0：未检测，1：未连通，2：已连通</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ReachableState
+
+    @ReachableState.setter
+    def ReachableState(self, ReachableState):
+        self._ReachableState = ReachableState
+
+    @property
+    def AccessType(self):
+        r"""<p>访问类型:0-NGN 1-web(只支持32位)</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._AccessType
+
+    @AccessType.setter
+    def AccessType(self, AccessType):
+        self._AccessType = AccessType
+
+    @property
+    def BackendScheme(self):
+        r"""<p>web资源-后端协议</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BackendScheme
+
+    @BackendScheme.setter
+    def BackendScheme(self, BackendScheme):
+        self._BackendScheme = BackendScheme
+
+    @property
+    def BackendPath(self):
+        r"""<p>web资源-后端路径</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BackendPath
+
+    @BackendPath.setter
+    def BackendPath(self, BackendPath):
+        self._BackendPath = BackendPath
+
+    @property
+    def FrontScheme(self):
+        r"""<p>web资源-前端协议</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FrontScheme
+
+    @FrontScheme.setter
+    def FrontScheme(self, FrontScheme):
+        self._FrontScheme = FrontScheme
+
+    @property
+    def FrontHost(self):
+        r"""<p>web资源-前端host</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FrontHost
+
+    @FrontHost.setter
+    def FrontHost(self, FrontHost):
+        self._FrontHost = FrontHost
+
+    @property
+    def FrontPort(self):
+        r"""<p>web资源-前端host(只支持32位)</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._FrontPort
+
+    @FrontPort.setter
+    def FrontPort(self, FrontPort):
+        self._FrontPort = FrontPort
+
+    @property
+    def FrontPath(self):
+        r"""<p>web资源-前端路径 默认&quot;/&quot;</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FrontPath
+
+    @FrontPath.setter
+    def FrontPath(self, FrontPath):
+        self._FrontPath = FrontPath
+
+    @property
+    def DisableFront(self):
+        r"""<p>web资源-是否禁用外网访问：0-可通过外网访问 1-不能通过外网访问(只支持32位)</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._DisableFront
+
+    @DisableFront.setter
+    def DisableFront(self, DisableFront):
+        self._DisableFront = DisableFront
+
+    @property
+    def CustomDomain(self):
+        r"""<p>web资源-租户自定义域名</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CustomDomain
+
+    @CustomDomain.setter
+    def CustomDomain(self, CustomDomain):
+        self._CustomDomain = CustomDomain
+
+    @property
+    def CustomHost(self):
+        r"""<p>web资源-自定义host</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CustomHost
+
+    @CustomHost.setter
+    def CustomHost(self, CustomHost):
+        self._CustomHost = CustomHost
+
+    @property
+    def CnameStatus(self):
+        r"""<p>web资源-Cname状态(只支持32位)</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._CnameStatus
+
+    @CnameStatus.setter
+    def CnameStatus(self, CnameStatus):
+        self._CnameStatus = CnameStatus
+
+    @property
+    def CertificateId(self):
+        r"""<p>web资源-关联证书ID(只支持32位)</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._CertificateId
+
+    @CertificateId.setter
+    def CertificateId(self, CertificateId):
+        self._CertificateId = CertificateId
+
+    @property
+    def WebGwResourceType(self):
+        r"""<p>web资源类型：0-应用 1-API(只支持32位)</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._WebGwResourceType
+
+    @WebGwResourceType.setter
+    def WebGwResourceType(self, WebGwResourceType):
+        self._WebGwResourceType = WebGwResourceType
+
+    @property
+    def APISecretId(self):
+        r"""<p>web资源-如果选择API类型资源，则需要配置密钥(只支持32位)</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._APISecretId
+
+    @APISecretId.setter
+    def APISecretId(self, APISecretId):
+        self._APISecretId = APISecretId
+
+    @property
+    def AreaName(self):
+        r"""<p>所属资源组名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AreaName
+
+    @AreaName.setter
+    def AreaName(self, AreaName):
+        self._AreaName = AreaName
+
+    @property
+    def SSLCertId(self):
+        r"""<p>web资源-前端协议是HTTPS类型，需要配置证书</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SSLCertId
+
+    @SSLCertId.setter
+    def SSLCertId(self, SSLCertId):
+        self._SSLCertId = SSLCertId
+
+    @property
+    def EnableDependentAddr(self):
+        r"""<p>web资源-是否启用依赖地址：0-不启用 1-启用(只支持32位)</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._EnableDependentAddr
+
+    @EnableDependentAddr.setter
+    def EnableDependentAddr(self, EnableDependentAddr):
+        self._EnableDependentAddr = EnableDependentAddr
+
+    @property
+    def DependentAddr(self):
+        r"""<p>web资源-依赖地址的后端服务器地址</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DependentAddr
+
+    @DependentAddr.setter
+    def DependentAddr(self, DependentAddr):
+        self._DependentAddr = DependentAddr
+
+    @property
+    def WebGwNoAuth(self):
+        r"""<p>web免鉴权：1-鉴权 2-免鉴权</p>
+        :rtype: int
+        """
+        return self._WebGwNoAuth
+
+    @WebGwNoAuth.setter
+    def WebGwNoAuth(self, WebGwNoAuth):
+        self._WebGwNoAuth = WebGwNoAuth
+
+    @property
+    def ConnectorGroupType(self):
+        r"""<p>通道类型</p><p>枚举值：</p><ul><li>vpc： vpc类型</li><li>native： 专线类型</li></ul><p>默认值：native</p>
+        :rtype: str
+        """
+        return self._ConnectorGroupType
+
+    @ConnectorGroupType.setter
+    def ConnectorGroupType(self, ConnectorGroupType):
+        self._ConnectorGroupType = ConnectorGroupType
+
+    @property
+    def DomainSuffix(self):
+        r"""<p>域名后缀</p>
+        :rtype: str
+        """
+        return self._DomainSuffix
+
+    @DomainSuffix.setter
+    def DomainSuffix(self, DomainSuffix):
+        self._DomainSuffix = DomainSuffix
+
+
+    def _deserialize(self, params):
+        self._ServiceId = params.get("ServiceId")
+        self._ServiceName = params.get("ServiceName")
+        self._ServiceType = params.get("ServiceType")
+        self._ServiceAddress = params.get("ServiceAddress")
+        self._ServicePort = params.get("ServicePort")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._Remark = params.get("Remark")
+        self._AreaId = params.get("AreaId")
+        self._SmartGateIds = params.get("SmartGateIds")
+        self._Protocol = params.get("Protocol")
+        self._Levels = params.get("Levels")
+        self._SmartGateNames = params.get("SmartGateNames")
+        self._DirectConn = params.get("DirectConn")
+        self._DetectState = params.get("DetectState")
+        self._DetectInfo = params.get("DetectInfo")
+        self._DetectTime = params.get("DetectTime")
+        self._ConnectorGroupId = params.get("ConnectorGroupId")
+        self._ConnectorGroupName = params.get("ConnectorGroupName")
+        self._ReachableTime = params.get("ReachableTime")
+        self._ReachableState = params.get("ReachableState")
+        self._AccessType = params.get("AccessType")
+        self._BackendScheme = params.get("BackendScheme")
+        self._BackendPath = params.get("BackendPath")
+        self._FrontScheme = params.get("FrontScheme")
+        self._FrontHost = params.get("FrontHost")
+        self._FrontPort = params.get("FrontPort")
+        self._FrontPath = params.get("FrontPath")
+        self._DisableFront = params.get("DisableFront")
+        self._CustomDomain = params.get("CustomDomain")
+        self._CustomHost = params.get("CustomHost")
+        self._CnameStatus = params.get("CnameStatus")
+        self._CertificateId = params.get("CertificateId")
+        self._WebGwResourceType = params.get("WebGwResourceType")
+        self._APISecretId = params.get("APISecretId")
+        self._AreaName = params.get("AreaName")
+        self._SSLCertId = params.get("SSLCertId")
+        self._EnableDependentAddr = params.get("EnableDependentAddr")
+        self._DependentAddr = params.get("DependentAddr")
+        self._WebGwNoAuth = params.get("WebGwNoAuth")
+        self._ConnectorGroupType = params.get("ConnectorGroupType")
+        self._DomainSuffix = params.get("DomainSuffix")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBusinessResourcePageRsp(AbstractModel):
+    r"""业务资源分页返回对象
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Items: 业务资源列表数据对象集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of DescribeBusinessResourceData
+        :param _Page: 分页公共对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Page: :class:`tencentcloud.ioa.v20220601.models.Paging`
+        """
+        self._Items = None
+        self._Page = None
+
+    @property
+    def Items(self):
+        r"""业务资源列表数据对象集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DescribeBusinessResourceData
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def Page(self):
+        r"""分页公共对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.Paging`
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+
+    def _deserialize(self, params):
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = DescribeBusinessResourceData()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        if params.get("Page") is not None:
+            self._Page = Paging()
+            self._Page._deserialize(params.get("Page"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBusinessResourcesRequest(AbstractModel):
+    r"""DescribeBusinessResources请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AreaId: 资源模块Id
+        :type AreaId: int
+        :param _ServiceName: 搜索的业务资源名称
+        :type ServiceName: str
+        :param _StartTime: 获取业务资源列表的开始时间，时间格式：2006-01-02
+        :type StartTime: str
+        :param _Keywords: 搜索关键字
+        :type Keywords: str
+        :param _EndTime: 获取业务资源列表的结束时间，时间格式：2006-01-02
+        :type EndTime: str
+        :param _Condition: 滤条件、分页参数。分页内容不传，默认获取第1页，10条数据
+排序条件
+<li>CreateTime - string - 是否必填：否 - 排序支持：是 - 按业务资源创建时间排序。</li>
+<li>Levels - int - 是否必填：否 - 排序支持：是 - 按业务资源优先级排序。</li>
+<li>ReachableState - int - 是否必填：否 - 排序支持：是 - 按业务资源连通性排序(私有化版本不支持)。</li>
+        :type Condition: :class:`tencentcloud.ioa.v20220601.models.Condition`
+        :param _AccessType: 资源类型
+        :type AccessType: str
+        :param _FrontAddr: web资源前端地址
+        :type FrontAddr: str
+        """
+        self._AreaId = None
+        self._ServiceName = None
+        self._StartTime = None
+        self._Keywords = None
+        self._EndTime = None
+        self._Condition = None
+        self._AccessType = None
+        self._FrontAddr = None
+
+    @property
+    def AreaId(self):
+        r"""资源模块Id
+        :rtype: int
+        """
+        return self._AreaId
+
+    @AreaId.setter
+    def AreaId(self, AreaId):
+        self._AreaId = AreaId
+
+    @property
+    def ServiceName(self):
+        r"""搜索的业务资源名称
+        :rtype: str
+        """
+        return self._ServiceName
+
+    @ServiceName.setter
+    def ServiceName(self, ServiceName):
+        self._ServiceName = ServiceName
+
+    @property
+    def StartTime(self):
+        r"""获取业务资源列表的开始时间，时间格式：2006-01-02
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def Keywords(self):
+        r"""搜索关键字
+        :rtype: str
+        """
+        return self._Keywords
+
+    @Keywords.setter
+    def Keywords(self, Keywords):
+        self._Keywords = Keywords
+
+    @property
+    def EndTime(self):
+        r"""获取业务资源列表的结束时间，时间格式：2006-01-02
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Condition(self):
+        r"""滤条件、分页参数。分页内容不传，默认获取第1页，10条数据
+排序条件
+<li>CreateTime - string - 是否必填：否 - 排序支持：是 - 按业务资源创建时间排序。</li>
+<li>Levels - int - 是否必填：否 - 排序支持：是 - 按业务资源优先级排序。</li>
+<li>ReachableState - int - 是否必填：否 - 排序支持：是 - 按业务资源连通性排序(私有化版本不支持)。</li>
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.Condition`
+        """
+        return self._Condition
+
+    @Condition.setter
+    def Condition(self, Condition):
+        self._Condition = Condition
+
+    @property
+    def AccessType(self):
+        r"""资源类型
+        :rtype: str
+        """
+        return self._AccessType
+
+    @AccessType.setter
+    def AccessType(self, AccessType):
+        self._AccessType = AccessType
+
+    @property
+    def FrontAddr(self):
+        r"""web资源前端地址
+        :rtype: str
+        """
+        return self._FrontAddr
+
+    @FrontAddr.setter
+    def FrontAddr(self, FrontAddr):
+        self._FrontAddr = FrontAddr
+
+
+    def _deserialize(self, params):
+        self._AreaId = params.get("AreaId")
+        self._ServiceName = params.get("ServiceName")
+        self._StartTime = params.get("StartTime")
+        self._Keywords = params.get("Keywords")
+        self._EndTime = params.get("EndTime")
+        if params.get("Condition") is not None:
+            self._Condition = Condition()
+            self._Condition._deserialize(params.get("Condition"))
+        self._AccessType = params.get("AccessType")
+        self._FrontAddr = params.get("FrontAddr")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBusinessResourcesResponse(AbstractModel):
+    r"""DescribeBusinessResources返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 业务资源分页返回对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.ioa.v20220601.models.DescribeBusinessResourcePageRsp`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""业务资源分页返回对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.DescribeBusinessResourcePageRsp`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = DescribeBusinessResourcePageRsp()
             self._Data._deserialize(params.get("Data"))
         self._RequestId = params.get("RequestId")
 
@@ -5897,6 +7397,89 @@ class DescribeDevicesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeDirectAccountGroupResourcesRequest(AbstractModel):
+    r"""DescribeDirectAccountGroupResources请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AccountGroupId: 账户组Id(只支持32位)
+        :type AccountGroupId: int
+        """
+        self._AccountGroupId = None
+
+    @property
+    def AccountGroupId(self):
+        r"""账户组Id(只支持32位)
+        :rtype: int
+        """
+        return self._AccountGroupId
+
+    @AccountGroupId.setter
+    def AccountGroupId(self, AccountGroupId):
+        self._AccountGroupId = AccountGroupId
+
+
+    def _deserialize(self, params):
+        self._AccountGroupId = params.get("AccountGroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDirectAccountGroupResourcesResponse(AbstractModel):
+    r"""DescribeDirectAccountGroupResources返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 查询的数据集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.ioa.v20220601.models.DescribeAccountResourcesData`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""查询的数据集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.DescribeAccountResourcesData`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = DescribeAccountResourcesData()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeLocalAccountAccountGroupsData(AbstractModel):
     r"""所属组
 
@@ -6473,6 +8056,404 @@ class DescribeLocalAccountsResponse(AbstractModel):
     def _deserialize(self, params):
         if params.get("Data") is not None:
             self._Data = DescribeLocalAccountsPage()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeResourceGrantedAccountGroupsData(AbstractModel):
+    r"""DescribeResourceGrantedAccountsData
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Items:  
+        :type Items: list of GrantedAccountGroupItem
+        """
+        self._Items = None
+
+    @property
+    def Items(self):
+        r""" 
+        :rtype: list of GrantedAccountGroupItem
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+
+    def _deserialize(self, params):
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = GrantedAccountGroupItem()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeResourceGrantedAccountGroupsRequest(AbstractModel):
+    r"""DescribeResourceGrantedAccountGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceId: 资源或资源组Id;
+        :type ResourceId: int
+        """
+        self._ResourceId = None
+
+    @property
+    def ResourceId(self):
+        r"""资源或资源组Id;
+        :rtype: int
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+
+    def _deserialize(self, params):
+        self._ResourceId = params.get("ResourceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeResourceGrantedAccountGroupsResponse(AbstractModel):
+    r"""DescribeResourceGrantedAccountGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 查询的数据集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: :class:`tencentcloud.ioa.v20220601.models.DescribeResourceGrantedAccountGroupsData`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""查询的数据集合
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.DescribeResourceGrantedAccountGroupsData`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = DescribeResourceGrantedAccountGroupsData()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeResourceGrantedAccountsData(AbstractModel):
+    r"""DescribeResourceGrantedAccountsData
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 总数
+        :type TotalCount: int
+        :param _Items:  
+        :type Items: list of GrantedAccountItem
+        """
+        self._TotalCount = None
+        self._Items = None
+
+    @property
+    def TotalCount(self):
+        r"""总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Items(self):
+        r""" 
+        :rtype: list of GrantedAccountItem
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = GrantedAccountItem()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeResourceGrantedAccountsRequest(AbstractModel):
+    r"""DescribeResourceGrantedAccounts请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceId: 账户组Id(只支持32位)
+        :type ResourceId: int
+        """
+        self._ResourceId = None
+
+    @property
+    def ResourceId(self):
+        r"""账户组Id(只支持32位)
+        :rtype: int
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+
+    def _deserialize(self, params):
+        self._ResourceId = params.get("ResourceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeResourceGrantedAccountsResponse(AbstractModel):
+    r"""DescribeResourceGrantedAccounts返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 查询的数据集合
+        :type Data: :class:`tencentcloud.ioa.v20220601.models.DescribeResourceGrantedAccountsData`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""查询的数据集合
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.DescribeResourceGrantedAccountsData`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = DescribeResourceGrantedAccountsData()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeResourceGrantedVirtualGroupsData(AbstractModel):
+    r"""DescribeResourceGrantedAccountsData
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Items:  
+        :type Items: list of GrantedVirtualGroupItem
+        """
+        self._Items = None
+
+    @property
+    def Items(self):
+        r""" 
+        :rtype: list of GrantedVirtualGroupItem
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+
+    def _deserialize(self, params):
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = GrantedVirtualGroupItem()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeResourceGrantedVirtualGroupsRequest(AbstractModel):
+    r"""DescribeResourceGrantedVirtualGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceId: 资源ID
+        :type ResourceId: int
+        :param _ResourceType: 资源类型
+        :type ResourceType: int
+        """
+        self._ResourceId = None
+        self._ResourceType = None
+
+    @property
+    def ResourceId(self):
+        r"""资源ID
+        :rtype: int
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def ResourceType(self):
+        r"""资源类型
+        :rtype: int
+        """
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+
+    def _deserialize(self, params):
+        self._ResourceId = params.get("ResourceId")
+        self._ResourceType = params.get("ResourceType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeResourceGrantedVirtualGroupsResponse(AbstractModel):
+    r"""DescribeResourceGrantedVirtualGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 查询的数据集合
+        :type Data: :class:`tencentcloud.ioa.v20220601.models.DescribeResourceGrantedVirtualGroupsData`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""查询的数据集合
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.DescribeResourceGrantedVirtualGroupsData`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = DescribeResourceGrantedVirtualGroupsData()
             self._Data._deserialize(params.get("Data"))
         self._RequestId = params.get("RequestId")
 
@@ -9713,6 +11694,1033 @@ class GetAccountGroupData(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class GrantResourceOperationByAccountGroups(AbstractModel):
+    r"""授权操作
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OperationType: 操作类型: 1-增加授权 2-删除授权;
+        :type OperationType: int
+        :param _ResourceId: 资源或资源组Id
+        :type ResourceId: int
+        :param _ResourceType: 资源类型 ,1:资源 2:资源组
+        :type ResourceType: int
+        :param _ExpireTime: 过期时间,时间戳(秒)
+        :type ExpireTime: int
+        :param _AccountGroupId: 分组id
+        :type AccountGroupId: int
+        """
+        self._OperationType = None
+        self._ResourceId = None
+        self._ResourceType = None
+        self._ExpireTime = None
+        self._AccountGroupId = None
+
+    @property
+    def OperationType(self):
+        r"""操作类型: 1-增加授权 2-删除授权;
+        :rtype: int
+        """
+        return self._OperationType
+
+    @OperationType.setter
+    def OperationType(self, OperationType):
+        self._OperationType = OperationType
+
+    @property
+    def ResourceId(self):
+        r"""资源或资源组Id
+        :rtype: int
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def ResourceType(self):
+        r"""资源类型 ,1:资源 2:资源组
+        :rtype: int
+        """
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def ExpireTime(self):
+        r"""过期时间,时间戳(秒)
+        :rtype: int
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def AccountGroupId(self):
+        r"""分组id
+        :rtype: int
+        """
+        return self._AccountGroupId
+
+    @AccountGroupId.setter
+    def AccountGroupId(self, AccountGroupId):
+        self._AccountGroupId = AccountGroupId
+
+
+    def _deserialize(self, params):
+        self._OperationType = params.get("OperationType")
+        self._ResourceId = params.get("ResourceId")
+        self._ResourceType = params.get("ResourceType")
+        self._ExpireTime = params.get("ExpireTime")
+        self._AccountGroupId = params.get("AccountGroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GrantResourceOperationByAccounts(AbstractModel):
+    r"""授权操作
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OperationType: 操作类型: 1-增加授权 2-删除授权;
+        :type OperationType: int
+        :param _ResourceId: 资源或资源组Id
+        :type ResourceId: int
+        :param _ResourceType: 资源类型 ,1:资源 2:资源组
+        :type ResourceType: int
+        :param _ExpireTime: 过期时间,时间戳(秒)
+        :type ExpireTime: int
+        :param _AccountUserId: 账号userid
+        :type AccountUserId: str
+        :param _MenuId: 账号目录ID
+        :type MenuId: int
+        """
+        self._OperationType = None
+        self._ResourceId = None
+        self._ResourceType = None
+        self._ExpireTime = None
+        self._AccountUserId = None
+        self._MenuId = None
+
+    @property
+    def OperationType(self):
+        r"""操作类型: 1-增加授权 2-删除授权;
+        :rtype: int
+        """
+        return self._OperationType
+
+    @OperationType.setter
+    def OperationType(self, OperationType):
+        self._OperationType = OperationType
+
+    @property
+    def ResourceId(self):
+        r"""资源或资源组Id
+        :rtype: int
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def ResourceType(self):
+        r"""资源类型 ,1:资源 2:资源组
+        :rtype: int
+        """
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def ExpireTime(self):
+        r"""过期时间,时间戳(秒)
+        :rtype: int
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def AccountUserId(self):
+        r"""账号userid
+        :rtype: str
+        """
+        return self._AccountUserId
+
+    @AccountUserId.setter
+    def AccountUserId(self, AccountUserId):
+        self._AccountUserId = AccountUserId
+
+    @property
+    def MenuId(self):
+        r"""账号目录ID
+        :rtype: int
+        """
+        return self._MenuId
+
+    @MenuId.setter
+    def MenuId(self, MenuId):
+        self._MenuId = MenuId
+
+
+    def _deserialize(self, params):
+        self._OperationType = params.get("OperationType")
+        self._ResourceId = params.get("ResourceId")
+        self._ResourceType = params.get("ResourceType")
+        self._ExpireTime = params.get("ExpireTime")
+        self._AccountUserId = params.get("AccountUserId")
+        self._MenuId = params.get("MenuId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GrantResourceOperationByVirtualGroups(AbstractModel):
+    r"""授权操作
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OperationType: 操作类型: 1-增加授权 2-删除授权;
+        :type OperationType: int
+        :param _ResourceId: 资源或资源组Id
+        :type ResourceId: int
+        :param _ResourceType: 资源类型 ,1:资源 2:资源组
+        :type ResourceType: int
+        :param _ExpireTime: 过期时间,时间戳(秒)
+        :type ExpireTime: int
+        :param _VirtualAccountGroupId: 分组id
+        :type VirtualAccountGroupId: int
+        """
+        self._OperationType = None
+        self._ResourceId = None
+        self._ResourceType = None
+        self._ExpireTime = None
+        self._VirtualAccountGroupId = None
+
+    @property
+    def OperationType(self):
+        r"""操作类型: 1-增加授权 2-删除授权;
+        :rtype: int
+        """
+        return self._OperationType
+
+    @OperationType.setter
+    def OperationType(self, OperationType):
+        self._OperationType = OperationType
+
+    @property
+    def ResourceId(self):
+        r"""资源或资源组Id
+        :rtype: int
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def ResourceType(self):
+        r"""资源类型 ,1:资源 2:资源组
+        :rtype: int
+        """
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def ExpireTime(self):
+        r"""过期时间,时间戳(秒)
+        :rtype: int
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def VirtualAccountGroupId(self):
+        r"""分组id
+        :rtype: int
+        """
+        return self._VirtualAccountGroupId
+
+    @VirtualAccountGroupId.setter
+    def VirtualAccountGroupId(self, VirtualAccountGroupId):
+        self._VirtualAccountGroupId = VirtualAccountGroupId
+
+
+    def _deserialize(self, params):
+        self._OperationType = params.get("OperationType")
+        self._ResourceId = params.get("ResourceId")
+        self._ResourceType = params.get("ResourceType")
+        self._ExpireTime = params.get("ExpireTime")
+        self._VirtualAccountGroupId = params.get("VirtualAccountGroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GrantResourcesByAccountGroupsRequest(AbstractModel):
+    r"""GrantResourcesByAccountGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Operations:  
+        :type Operations: list of GrantResourceOperationByAccountGroups
+        """
+        self._Operations = None
+
+    @property
+    def Operations(self):
+        r""" 
+        :rtype: list of GrantResourceOperationByAccountGroups
+        """
+        return self._Operations
+
+    @Operations.setter
+    def Operations(self, Operations):
+        self._Operations = Operations
+
+
+    def _deserialize(self, params):
+        if params.get("Operations") is not None:
+            self._Operations = []
+            for item in params.get("Operations"):
+                obj = GrantResourceOperationByAccountGroups()
+                obj._deserialize(item)
+                self._Operations.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GrantResourcesByAccountGroupsResponse(AbstractModel):
+    r"""GrantResourcesByAccountGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class GrantResourcesByAccountsRequest(AbstractModel):
+    r"""GrantResourcesByAccounts请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Operations:  
+        :type Operations: list of GrantResourceOperationByAccounts
+        """
+        self._Operations = None
+
+    @property
+    def Operations(self):
+        r""" 
+        :rtype: list of GrantResourceOperationByAccounts
+        """
+        return self._Operations
+
+    @Operations.setter
+    def Operations(self, Operations):
+        self._Operations = Operations
+
+
+    def _deserialize(self, params):
+        if params.get("Operations") is not None:
+            self._Operations = []
+            for item in params.get("Operations"):
+                obj = GrantResourceOperationByAccounts()
+                obj._deserialize(item)
+                self._Operations.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GrantResourcesByAccountsResponse(AbstractModel):
+    r"""GrantResourcesByAccounts返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class GrantResourcesByVirtualGroupsRequest(AbstractModel):
+    r"""GrantResourcesByVirtualGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Operations:  
+        :type Operations: list of GrantResourceOperationByVirtualGroups
+        """
+        self._Operations = None
+
+    @property
+    def Operations(self):
+        r""" 
+        :rtype: list of GrantResourceOperationByVirtualGroups
+        """
+        return self._Operations
+
+    @Operations.setter
+    def Operations(self, Operations):
+        self._Operations = Operations
+
+
+    def _deserialize(self, params):
+        if params.get("Operations") is not None:
+            self._Operations = []
+            for item in params.get("Operations"):
+                obj = GrantResourceOperationByVirtualGroups()
+                obj._deserialize(item)
+                self._Operations.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GrantResourcesByVirtualGroupsResponse(AbstractModel):
+    r"""GrantResourcesByVirtualGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class GrantedAccountGroupItem(AbstractModel):
+    r"""GrantedAccountItem
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AccountGroupId: 账户组Id
+        :type AccountGroupId: int
+        :param _Name: 分组名称
+        :type Name: str
+        :param _IdPathArray: 所属分组Id
+        :type IdPathArray: list of int non-negative
+        :param _NamePathArray: 所属分组NamePathArray
+        :type NamePathArray: list of str
+        :param _AccountCount: 目录id
+        :type AccountCount: int
+        :param _ExpireTime: 过期时间
+        :type ExpireTime: int
+        :param _RelationId: 关联id
+        :type RelationId: int
+        """
+        self._AccountGroupId = None
+        self._Name = None
+        self._IdPathArray = None
+        self._NamePathArray = None
+        self._AccountCount = None
+        self._ExpireTime = None
+        self._RelationId = None
+
+    @property
+    def AccountGroupId(self):
+        r"""账户组Id
+        :rtype: int
+        """
+        return self._AccountGroupId
+
+    @AccountGroupId.setter
+    def AccountGroupId(self, AccountGroupId):
+        self._AccountGroupId = AccountGroupId
+
+    @property
+    def Name(self):
+        r"""分组名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def IdPathArray(self):
+        r"""所属分组Id
+        :rtype: list of int non-negative
+        """
+        return self._IdPathArray
+
+    @IdPathArray.setter
+    def IdPathArray(self, IdPathArray):
+        self._IdPathArray = IdPathArray
+
+    @property
+    def NamePathArray(self):
+        r"""所属分组NamePathArray
+        :rtype: list of str
+        """
+        return self._NamePathArray
+
+    @NamePathArray.setter
+    def NamePathArray(self, NamePathArray):
+        self._NamePathArray = NamePathArray
+
+    @property
+    def AccountCount(self):
+        r"""目录id
+        :rtype: int
+        """
+        return self._AccountCount
+
+    @AccountCount.setter
+    def AccountCount(self, AccountCount):
+        self._AccountCount = AccountCount
+
+    @property
+    def ExpireTime(self):
+        r"""过期时间
+        :rtype: int
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def RelationId(self):
+        r"""关联id
+        :rtype: int
+        """
+        return self._RelationId
+
+    @RelationId.setter
+    def RelationId(self, RelationId):
+        self._RelationId = RelationId
+
+
+    def _deserialize(self, params):
+        self._AccountGroupId = params.get("AccountGroupId")
+        self._Name = params.get("Name")
+        self._IdPathArray = params.get("IdPathArray")
+        self._NamePathArray = params.get("NamePathArray")
+        self._AccountCount = params.get("AccountCount")
+        self._ExpireTime = params.get("ExpireTime")
+        self._RelationId = params.get("RelationId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GrantedAccountItem(AbstractModel):
+    r"""GrantedAccountItem
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AccountId: 账户Id
+        :type AccountId: int
+        :param _UserId: 用户UserId
+        :type UserId: str
+        :param _UserName: 用户名称
+        :type UserName: str
+        :param _GroupId: 所属分组Id
+        :type GroupId: int
+        :param _GroupIdPathArray: 分组路劲GroupIdPathArray
+        :type GroupIdPathArray: list of int non-negative
+        :param _GroupNamePathArray: 所属分组NamePathArray
+        :type GroupNamePathArray: list of str
+        :param _MenuId: 目录id
+        :type MenuId: int
+        :param _ExpireTime: 过期时间
+        :type ExpireTime: int
+        :param _RelationId: 关联id
+        :type RelationId: int
+        """
+        self._AccountId = None
+        self._UserId = None
+        self._UserName = None
+        self._GroupId = None
+        self._GroupIdPathArray = None
+        self._GroupNamePathArray = None
+        self._MenuId = None
+        self._ExpireTime = None
+        self._RelationId = None
+
+    @property
+    def AccountId(self):
+        r"""账户Id
+        :rtype: int
+        """
+        return self._AccountId
+
+    @AccountId.setter
+    def AccountId(self, AccountId):
+        self._AccountId = AccountId
+
+    @property
+    def UserId(self):
+        r"""用户UserId
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def UserName(self):
+        r"""用户名称
+        :rtype: str
+        """
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def GroupId(self):
+        r"""所属分组Id
+        :rtype: int
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def GroupIdPathArray(self):
+        r"""分组路劲GroupIdPathArray
+        :rtype: list of int non-negative
+        """
+        return self._GroupIdPathArray
+
+    @GroupIdPathArray.setter
+    def GroupIdPathArray(self, GroupIdPathArray):
+        self._GroupIdPathArray = GroupIdPathArray
+
+    @property
+    def GroupNamePathArray(self):
+        r"""所属分组NamePathArray
+        :rtype: list of str
+        """
+        return self._GroupNamePathArray
+
+    @GroupNamePathArray.setter
+    def GroupNamePathArray(self, GroupNamePathArray):
+        self._GroupNamePathArray = GroupNamePathArray
+
+    @property
+    def MenuId(self):
+        r"""目录id
+        :rtype: int
+        """
+        return self._MenuId
+
+    @MenuId.setter
+    def MenuId(self, MenuId):
+        self._MenuId = MenuId
+
+    @property
+    def ExpireTime(self):
+        r"""过期时间
+        :rtype: int
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def RelationId(self):
+        r"""关联id
+        :rtype: int
+        """
+        return self._RelationId
+
+    @RelationId.setter
+    def RelationId(self, RelationId):
+        self._RelationId = RelationId
+
+
+    def _deserialize(self, params):
+        self._AccountId = params.get("AccountId")
+        self._UserId = params.get("UserId")
+        self._UserName = params.get("UserName")
+        self._GroupId = params.get("GroupId")
+        self._GroupIdPathArray = params.get("GroupIdPathArray")
+        self._GroupNamePathArray = params.get("GroupNamePathArray")
+        self._MenuId = params.get("MenuId")
+        self._ExpireTime = params.get("ExpireTime")
+        self._RelationId = params.get("RelationId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GrantedVirtualGroupItem(AbstractModel):
+    r"""GrantedAccountItem
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VirtualGroupId: 账户组Id
+        :type VirtualGroupId: int
+        :param _Name: 分组名称
+        :type Name: str
+        :param _Description: 描述信息
+        :type Description: str
+        :param _AccountCount: 目录id
+        :type AccountCount: int
+        :param _ExpireTime: 过期时间
+        :type ExpireTime: int
+        :param _RelationId: 关联id
+        :type RelationId: int
+        """
+        self._VirtualGroupId = None
+        self._Name = None
+        self._Description = None
+        self._AccountCount = None
+        self._ExpireTime = None
+        self._RelationId = None
+
+    @property
+    def VirtualGroupId(self):
+        r"""账户组Id
+        :rtype: int
+        """
+        return self._VirtualGroupId
+
+    @VirtualGroupId.setter
+    def VirtualGroupId(self, VirtualGroupId):
+        self._VirtualGroupId = VirtualGroupId
+
+    @property
+    def Name(self):
+        r"""分组名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""描述信息
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def AccountCount(self):
+        r"""目录id
+        :rtype: int
+        """
+        return self._AccountCount
+
+    @AccountCount.setter
+    def AccountCount(self, AccountCount):
+        self._AccountCount = AccountCount
+
+    @property
+    def ExpireTime(self):
+        r"""过期时间
+        :rtype: int
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def RelationId(self):
+        r"""关联id
+        :rtype: int
+        """
+        return self._RelationId
+
+    @RelationId.setter
+    def RelationId(self, RelationId):
+        self._RelationId = RelationId
+
+
+    def _deserialize(self, params):
+        self._VirtualGroupId = params.get("VirtualGroupId")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._AccountCount = params.get("AccountCount")
+        self._ExpireTime = params.get("ExpireTime")
+        self._RelationId = params.get("RelationId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDeviceTrustStatusRequest(AbstractModel):
+    r"""ModifyDeviceTrustStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: <p>设备状态，1表示拉黑，0表示加白</p>
+        :type Status: int
+        :param _DeviceIDList: <p>设备MID列表</p>
+        :type DeviceIDList: list of str
+        :param _BlackStatusDeadline: <p>设备拉黑有效期，UnixTime, 单位是 ms,0表示永久有效，默认值是0</p>
+        :type BlackStatusDeadline: int
+        :param _IdList: <p>DescribeAccuserList返回的Id 列表</p>
+        :type IdList: list of int
+        :param _UpdateFlags: <p>默认值：0，根据id更新，1根据DeviceIDList</p>
+        :type UpdateFlags: int
+        """
+        self._Status = None
+        self._DeviceIDList = None
+        self._BlackStatusDeadline = None
+        self._IdList = None
+        self._UpdateFlags = None
+
+    @property
+    def Status(self):
+        r"""<p>设备状态，1表示拉黑，0表示加白</p>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def DeviceIDList(self):
+        r"""<p>设备MID列表</p>
+        :rtype: list of str
+        """
+        return self._DeviceIDList
+
+    @DeviceIDList.setter
+    def DeviceIDList(self, DeviceIDList):
+        self._DeviceIDList = DeviceIDList
+
+    @property
+    def BlackStatusDeadline(self):
+        r"""<p>设备拉黑有效期，UnixTime, 单位是 ms,0表示永久有效，默认值是0</p>
+        :rtype: int
+        """
+        return self._BlackStatusDeadline
+
+    @BlackStatusDeadline.setter
+    def BlackStatusDeadline(self, BlackStatusDeadline):
+        self._BlackStatusDeadline = BlackStatusDeadline
+
+    @property
+    def IdList(self):
+        r"""<p>DescribeAccuserList返回的Id 列表</p>
+        :rtype: list of int
+        """
+        return self._IdList
+
+    @IdList.setter
+    def IdList(self, IdList):
+        self._IdList = IdList
+
+    @property
+    def UpdateFlags(self):
+        r"""<p>默认值：0，根据id更新，1根据DeviceIDList</p>
+        :rtype: int
+        """
+        return self._UpdateFlags
+
+    @UpdateFlags.setter
+    def UpdateFlags(self, UpdateFlags):
+        self._UpdateFlags = UpdateFlags
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._DeviceIDList = params.get("DeviceIDList")
+        self._BlackStatusDeadline = params.get("BlackStatusDeadline")
+        self._IdList = params.get("IdList")
+        self._UpdateFlags = params.get("UpdateFlags")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDeviceTrustStatusResponse(AbstractModel):
+    r"""ModifyDeviceTrustStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyVirtualDeviceGroupsReqItem(AbstractModel):

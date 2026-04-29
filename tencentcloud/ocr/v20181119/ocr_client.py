@@ -1606,6 +1606,29 @@ class OcrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def RecognizeAgent(self, request):
+        r"""支持对输入图的内容进行判断、分类以及总结；支持用户对通用文字识别输出结构进行自定义。
+
+        :param request: Request instance for RecognizeAgent.
+        :type request: :class:`tencentcloud.ocr.v20181119.models.RecognizeAgentRequest`
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.RecognizeAgentResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RecognizeAgent", params, headers=headers)
+            response = json.loads(body)
+            model = models.RecognizeAgentResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def RecognizeContainerOCR(self, request):
         r"""本接口支持集装箱箱门信息识别，识别字段包括集装箱箱号、类型、总重量、有效承重、容量、自身重量，具备集装箱箱号、类型不完整或者不清晰的告警功能。
         默认接口请求频率限制：5次/秒。
@@ -2743,6 +2766,29 @@ class OcrClient(AbstractClient):
             body = self.call("VerifyOfdVatInvoiceOCR", params, headers=headers)
             response = json.loads(body)
             model = models.VerifyOfdVatInvoiceOCRResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def VerifyScenePhoto(self, request):
+        r"""提供针对特定场景（如商户门头照、车牌等）图片的PS篡改、AIGC合成、图片质量检测能力，可应用于业务流程中对特定场景图片真实性、有效性校验的场景。
+
+        :param request: Request instance for VerifyScenePhoto.
+        :type request: :class:`tencentcloud.ocr.v20181119.models.VerifyScenePhotoRequest`
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.VerifyScenePhotoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("VerifyScenePhoto", params, headers=headers)
+            response = json.loads(body)
+            model = models.VerifyScenePhotoResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

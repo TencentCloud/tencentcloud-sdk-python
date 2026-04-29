@@ -26,6 +26,29 @@ class IoaClient(AbstractClient):
     _service = 'ioa'
 
 
+    def CreateBusinessResource(self, request):
+        r"""创建业务资源，会对一些必填参数进行校验和参数合法性校验，创建业务资源时，先调用下校验相同业务资源接口，看资源是不是有冲突。创建时也会做校验，但没有返回对应的异常信息，私有化调用path为：capi/GatewayResource/CreateBusinessResource
+
+        :param request: Request instance for CreateBusinessResource.
+        :type request: :class:`tencentcloud.ioa.v20220601.models.CreateBusinessResourceRequest`
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.CreateBusinessResourceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateBusinessResource", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateBusinessResourceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateDLPFileDetectTask(self, request):
         r"""创建文件鉴定任务，私有化调用path为：capi/DlpOpenApi/CreateDLPFileDetectTask
 
@@ -224,6 +247,29 @@ class IoaClient(AbstractClient):
             body = self.call("DescribeAggrSoftDeviceList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeAggrSoftDeviceListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeBusinessResources(self, request):
+        r"""获取业务资源列表,支持分页，如果分页信息不传递会有默认分页，支持排序，不传排序字段，按业务资源创建时间排序,私有化调用path为：capi/GatewayResource/DescribeBusinessResources
+
+        :param request: Request instance for DescribeBusinessResources.
+        :type request: :class:`tencentcloud.ioa.v20220601.models.DescribeBusinessResourcesRequest`
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.DescribeBusinessResourcesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBusinessResources", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBusinessResourcesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -463,6 +509,29 @@ class IoaClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDirectAccountGroupResources(self, request):
+        r"""列表账户组直接关联的资源，私有化调用path为：capi/Assets/DescribeDirectAccountGroupResources
+
+        :param request: Request instance for DescribeDirectAccountGroupResources.
+        :type request: :class:`tencentcloud.ioa.v20220601.models.DescribeDirectAccountGroupResourcesRequest`
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.DescribeDirectAccountGroupResourcesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDirectAccountGroupResources", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDirectAccountGroupResourcesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeLocalAccounts(self, request):
         r"""获取账号列表，支持分页，模糊搜索，私有化调用path为：/capi/Assets/Account/DescribeLocalAccounts
 
@@ -477,6 +546,75 @@ class IoaClient(AbstractClient):
             body = self.call("DescribeLocalAccounts", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeLocalAccountsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeResourceGrantedAccountGroups(self, request):
+        r"""列表账户组直接关联的资源，私有化调用path为：capi/NGN/DescribeResourceGrantedAccounts
+
+        :param request: Request instance for DescribeResourceGrantedAccountGroups.
+        :type request: :class:`tencentcloud.ioa.v20220601.models.DescribeResourceGrantedAccountGroupsRequest`
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.DescribeResourceGrantedAccountGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeResourceGrantedAccountGroups", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeResourceGrantedAccountGroupsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeResourceGrantedAccounts(self, request):
+        r"""列表账户组直接关联的资源，私有化调用path为：capi/NGN/DescribeResourceGrantedAccounts
+
+        :param request: Request instance for DescribeResourceGrantedAccounts.
+        :type request: :class:`tencentcloud.ioa.v20220601.models.DescribeResourceGrantedAccountsRequest`
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.DescribeResourceGrantedAccountsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeResourceGrantedAccounts", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeResourceGrantedAccountsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeResourceGrantedVirtualGroups(self, request):
+        r"""列表账户组直接关联的资源，私有化调用path为：capi/NGN/DescribeResourceGrantedVirtualGroups
+
+        :param request: Request instance for DescribeResourceGrantedVirtualGroups.
+        :type request: :class:`tencentcloud.ioa.v20220601.models.DescribeResourceGrantedVirtualGroupsRequest`
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.DescribeResourceGrantedVirtualGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeResourceGrantedVirtualGroups", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeResourceGrantedVirtualGroupsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -615,6 +753,98 @@ class IoaClient(AbstractClient):
             body = self.call("ExportSoftwareInformationList", params, headers=headers)
             response = json.loads(body)
             model = models.ExportSoftwareInformationListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GrantResourcesByAccountGroups(self, request):
+        r"""添加资源授权到账号组
+
+        :param request: Request instance for GrantResourcesByAccountGroups.
+        :type request: :class:`tencentcloud.ioa.v20220601.models.GrantResourcesByAccountGroupsRequest`
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.GrantResourcesByAccountGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GrantResourcesByAccountGroups", params, headers=headers)
+            response = json.loads(body)
+            model = models.GrantResourcesByAccountGroupsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GrantResourcesByAccounts(self, request):
+        r"""添加资源授权到账号组
+
+        :param request: Request instance for GrantResourcesByAccounts.
+        :type request: :class:`tencentcloud.ioa.v20220601.models.GrantResourcesByAccountsRequest`
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.GrantResourcesByAccountsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GrantResourcesByAccounts", params, headers=headers)
+            response = json.loads(body)
+            model = models.GrantResourcesByAccountsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GrantResourcesByVirtualGroups(self, request):
+        r"""添加资源授权到账号组
+
+        :param request: Request instance for GrantResourcesByVirtualGroups.
+        :type request: :class:`tencentcloud.ioa.v20220601.models.GrantResourcesByVirtualGroupsRequest`
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.GrantResourcesByVirtualGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GrantResourcesByVirtualGroups", params, headers=headers)
+            response = json.loads(body)
+            model = models.GrantResourcesByVirtualGroupsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyDeviceTrustStatus(self, request):
+        r"""给接入设备加黑加白,私有化调用path为：capi/NGN/ModifyDeviceTrustStatus
+
+        :param request: Request instance for ModifyDeviceTrustStatus.
+        :type request: :class:`tencentcloud.ioa.v20220601.models.ModifyDeviceTrustStatusRequest`
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.ModifyDeviceTrustStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDeviceTrustStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDeviceTrustStatusResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

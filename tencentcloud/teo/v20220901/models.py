@@ -13010,7 +13010,7 @@ class CreatePurgeTaskRequest(AbstractModel):
         :param _EncodeUrl: 若有编码转换，仅清除编码转换后匹配的资源。
 若内容含有非 ASCII 字符集的字符，请开启此开关进行编码转换（编码规则遵循 RFC3986）。
         :type EncodeUrl: bool
-        :param _CacheTag: 节点缓存清除类型取值为 purge_cache_tag 时附带的信息。
+        :param _CacheTag: 节点缓存清除类型取值为 purge_cache_tag 时，该参数必填，入参值为域名。
         :type CacheTag: :class:`tencentcloud.teo.v20220901.models.CacheTag`
         """
         self._ZoneId = None
@@ -13088,7 +13088,7 @@ class CreatePurgeTaskRequest(AbstractModel):
 
     @property
     def CacheTag(self):
-        r"""节点缓存清除类型取值为 purge_cache_tag 时附带的信息。
+        r"""节点缓存清除类型取值为 purge_cache_tag 时，该参数必填，入参值为域名。
         :rtype: :class:`tencentcloud.teo.v20220901.models.CacheTag`
         """
         return self._CacheTag
@@ -15409,9 +15409,9 @@ class DDoSAttackEvent(AbstractModel):
         :type AttackType: str
         :param _AttackStatus: 攻击状态。
         :type AttackStatus: int
-        :param _AttackMaxBandWidth: 攻击最大带宽。
+        :param _AttackMaxBandWidth: 攻击最大带宽，单位为 bps。
         :type AttackMaxBandWidth: int
-        :param _AttackPacketMaxRate: 攻击包速率峰值。
+        :param _AttackPacketMaxRate: 攻击包速率峰值，单位为 pps。
         :type AttackPacketMaxRate: int
         :param _AttackStartTime: 攻击开始时间，单位为s。
         :type AttackStartTime: int
@@ -15479,7 +15479,7 @@ class DDoSAttackEvent(AbstractModel):
 
     @property
     def AttackMaxBandWidth(self):
-        r"""攻击最大带宽。
+        r"""攻击最大带宽，单位为 bps。
         :rtype: int
         """
         return self._AttackMaxBandWidth
@@ -15490,7 +15490,7 @@ class DDoSAttackEvent(AbstractModel):
 
     @property
     def AttackPacketMaxRate(self):
-        r"""攻击包速率峰值。
+        r"""攻击包速率峰值，单位为 pps。
         :rtype: int
         """
         return self._AttackPacketMaxRate

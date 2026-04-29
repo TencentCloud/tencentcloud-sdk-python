@@ -2431,6 +2431,24 @@ class EssClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeContractReviewChecklist(
+            self,
+            request: models.DescribeContractReviewChecklistRequest,
+            opts: Dict = None,
+    ) -> models.DescribeContractReviewChecklistResponse:
+        """
+        此接口（DescribeContractReviewChecklist）用于获取已有的合同风险审查清单详情。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeContractReviewChecklist"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeContractReviewChecklistResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeContractReviewChecklistWebUrl(
             self,
             request: models.DescribeContractReviewChecklistWebUrlRequest,
@@ -3314,6 +3332,24 @@ class EssClient(AbstractClient):
         kwargs["action"] = "GetTaskResultApi"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.GetTaskResultApiResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ImportContractReviewChecklist(
+            self,
+            request: models.ImportContractReviewChecklistRequest,
+            opts: Dict = None,
+    ) -> models.ImportContractReviewChecklistResponse:
+        """
+        此接口（ImportRiskIdentificationChecklist）用于创建或更新合同审查清单。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ImportContractReviewChecklist"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ImportContractReviewChecklistResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

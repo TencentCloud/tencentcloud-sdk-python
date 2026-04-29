@@ -42048,17 +42048,52 @@ class DescribeVoicesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _VoiceType: <p>音色类别</p><p>枚举值：</p><ul><li>system： 系统音色</li></ul>
+        :param _VoiceId: <p>音色ID</p>
+        :type VoiceId: str
+        :param _VoiceType: <p>音色类别</p><p>枚举值：</p><ul><li>system： 系统音色</li><li>clone： 克隆音色</li><li>design： 设计音色</li><li>all： 所有音色（默认）</li></ul>
         :type VoiceType: str
+        :param _VoiceName: <p>音色名</p>
+        :type VoiceName: str
+        :param _Description: <p>音色描述</p>
+        :type Description: str
+        :param _Gender: <p>性别</p><p>枚举值：</p><ul><li>male： 男</li><li>female： 女</li><li>unknown： 未知</li></ul>
+        :type Gender: str
+        :param _Age: <p>年龄</p><p>枚举值：</p><ul><li>child： 儿童</li><li>teenager： 少年</li><li>youth： 青年</li><li>middle_aged： 中年</li><li>senior： 老年</li><li>unknown： 未知</li></ul>
+        :type Age: str
+        :param _Languages: <p>语言</p>
+        :type Languages: list of str
+        :param _Labels: <p>标签</p>
+        :type Labels: list of str
+        :param _Scenes: <p>场景</p>
+        :type Scenes: list of str
         :param _ExtParam: <p>扩展参数，json字符串</p><p>其他筛选条件voiceName String 音色名，模糊匹配labels Array of String 标签，匹配包含这些标签的音色</p>
         :type ExtParam: str
         """
+        self._VoiceId = None
         self._VoiceType = None
+        self._VoiceName = None
+        self._Description = None
+        self._Gender = None
+        self._Age = None
+        self._Languages = None
+        self._Labels = None
+        self._Scenes = None
         self._ExtParam = None
 
     @property
+    def VoiceId(self):
+        r"""<p>音色ID</p>
+        :rtype: str
+        """
+        return self._VoiceId
+
+    @VoiceId.setter
+    def VoiceId(self, VoiceId):
+        self._VoiceId = VoiceId
+
+    @property
     def VoiceType(self):
-        r"""<p>音色类别</p><p>枚举值：</p><ul><li>system： 系统音色</li></ul>
+        r"""<p>音色类别</p><p>枚举值：</p><ul><li>system： 系统音色</li><li>clone： 克隆音色</li><li>design： 设计音色</li><li>all： 所有音色（默认）</li></ul>
         :rtype: str
         """
         return self._VoiceType
@@ -42066,6 +42101,83 @@ class DescribeVoicesRequest(AbstractModel):
     @VoiceType.setter
     def VoiceType(self, VoiceType):
         self._VoiceType = VoiceType
+
+    @property
+    def VoiceName(self):
+        r"""<p>音色名</p>
+        :rtype: str
+        """
+        return self._VoiceName
+
+    @VoiceName.setter
+    def VoiceName(self, VoiceName):
+        self._VoiceName = VoiceName
+
+    @property
+    def Description(self):
+        r"""<p>音色描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Gender(self):
+        r"""<p>性别</p><p>枚举值：</p><ul><li>male： 男</li><li>female： 女</li><li>unknown： 未知</li></ul>
+        :rtype: str
+        """
+        return self._Gender
+
+    @Gender.setter
+    def Gender(self, Gender):
+        self._Gender = Gender
+
+    @property
+    def Age(self):
+        r"""<p>年龄</p><p>枚举值：</p><ul><li>child： 儿童</li><li>teenager： 少年</li><li>youth： 青年</li><li>middle_aged： 中年</li><li>senior： 老年</li><li>unknown： 未知</li></ul>
+        :rtype: str
+        """
+        return self._Age
+
+    @Age.setter
+    def Age(self, Age):
+        self._Age = Age
+
+    @property
+    def Languages(self):
+        r"""<p>语言</p>
+        :rtype: list of str
+        """
+        return self._Languages
+
+    @Languages.setter
+    def Languages(self, Languages):
+        self._Languages = Languages
+
+    @property
+    def Labels(self):
+        r"""<p>标签</p>
+        :rtype: list of str
+        """
+        return self._Labels
+
+    @Labels.setter
+    def Labels(self, Labels):
+        self._Labels = Labels
+
+    @property
+    def Scenes(self):
+        r"""<p>场景</p>
+        :rtype: list of str
+        """
+        return self._Scenes
+
+    @Scenes.setter
+    def Scenes(self, Scenes):
+        self._Scenes = Scenes
 
     @property
     def ExtParam(self):
@@ -42080,7 +42192,15 @@ class DescribeVoicesRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._VoiceId = params.get("VoiceId")
         self._VoiceType = params.get("VoiceType")
+        self._VoiceName = params.get("VoiceName")
+        self._Description = params.get("Description")
+        self._Gender = params.get("Gender")
+        self._Age = params.get("Age")
+        self._Languages = params.get("Languages")
+        self._Labels = params.get("Labels")
+        self._Scenes = params.get("Scenes")
         self._ExtParam = params.get("ExtParam")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -42675,10 +42795,13 @@ class DesignVoiceAsyncRequest(AbstractModel):
         r"""
         :param _Prompt: <p>音色描述</p>
         :type Prompt: str
+        :param _VoiceProfile: <p>音色属性</p>
+        :type VoiceProfile: :class:`tencentcloud.mps.v20190612.models.VoiceProfile`
         :param _ExtParam: <p>扩展参数，json字符串</p>
         :type ExtParam: str
         """
         self._Prompt = None
+        self._VoiceProfile = None
         self._ExtParam = None
 
     @property
@@ -42691,6 +42814,17 @@ class DesignVoiceAsyncRequest(AbstractModel):
     @Prompt.setter
     def Prompt(self, Prompt):
         self._Prompt = Prompt
+
+    @property
+    def VoiceProfile(self):
+        r"""<p>音色属性</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.VoiceProfile`
+        """
+        return self._VoiceProfile
+
+    @VoiceProfile.setter
+    def VoiceProfile(self, VoiceProfile):
+        self._VoiceProfile = VoiceProfile
 
     @property
     def ExtParam(self):
@@ -42706,6 +42840,9 @@ class DesignVoiceAsyncRequest(AbstractModel):
 
     def _deserialize(self, params):
         self._Prompt = params.get("Prompt")
+        if params.get("VoiceProfile") is not None:
+            self._VoiceProfile = VoiceProfile()
+            self._VoiceProfile._deserialize(params.get("VoiceProfile"))
         self._ExtParam = params.get("ExtParam")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -82364,8 +82501,12 @@ class SyncDubbingRequest(AbstractModel):
         :type AudioUrl: str
         :param _AudioLang: <p>克隆音频语言，默认中文。<br>当前支持语言同TextLang</p>
         :type AudioLang: str
+        :param _VoiceProfile: <p>音色属性</p>
+        :type VoiceProfile: :class:`tencentcloud.mps.v20190612.models.VoiceProfile`
         :param _Output: <p>输出相关参数</p><p>可以指定输出形式等</p>
         :type Output: :class:`tencentcloud.mps.v20190612.models.SyncDubbingOutputOption`
+        :param _ResourceId: <p>资源ID，需要保证对应资源是开启状态。默认为账号主资源ID。</p>
+        :type ResourceId: str
         :param _ExtParam: <p>扩展参数，json字符串</p><p>synExt    Object    语音合成扩展参数<br>    -duration    Float    合成音频时长，单位秒，示例：5.2<br>    -sampleRate    Integer    合成音频采样率，默认16000，支持[8000,16000,22050,32000,44100]<br>    -pitch    Integer    音调，默认0原音色输出，取值[-12, 12]<br>cloneExt    Object    音色克隆扩展参数<br>    -timeRanges    Float[][]    指定克隆音频时间范围，默认[[0, 20]]，示例[[5.2, 10], [45, 59.8]]</p>
         :type ExtParam: str
         """
@@ -82375,7 +82516,9 @@ class SyncDubbingRequest(AbstractModel):
         self._AudioData = None
         self._AudioUrl = None
         self._AudioLang = None
+        self._VoiceProfile = None
         self._Output = None
+        self._ResourceId = None
         self._ExtParam = None
 
     @property
@@ -82445,6 +82588,17 @@ class SyncDubbingRequest(AbstractModel):
         self._AudioLang = AudioLang
 
     @property
+    def VoiceProfile(self):
+        r"""<p>音色属性</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.VoiceProfile`
+        """
+        return self._VoiceProfile
+
+    @VoiceProfile.setter
+    def VoiceProfile(self, VoiceProfile):
+        self._VoiceProfile = VoiceProfile
+
+    @property
     def Output(self):
         r"""<p>输出相关参数</p><p>可以指定输出形式等</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.SyncDubbingOutputOption`
@@ -82454,6 +82608,17 @@ class SyncDubbingRequest(AbstractModel):
     @Output.setter
     def Output(self, Output):
         self._Output = Output
+
+    @property
+    def ResourceId(self):
+        r"""<p>资源ID，需要保证对应资源是开启状态。默认为账号主资源ID。</p>
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
 
     @property
     def ExtParam(self):
@@ -82474,9 +82639,13 @@ class SyncDubbingRequest(AbstractModel):
         self._AudioData = params.get("AudioData")
         self._AudioUrl = params.get("AudioUrl")
         self._AudioLang = params.get("AudioLang")
+        if params.get("VoiceProfile") is not None:
+            self._VoiceProfile = VoiceProfile()
+            self._VoiceProfile._deserialize(params.get("VoiceProfile"))
         if params.get("Output") is not None:
             self._Output = SyncDubbingOutputOption()
             self._Output._deserialize(params.get("Output"))
+        self._ResourceId = params.get("ResourceId")
         self._ExtParam = params.get("ExtParam")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -89533,6 +89702,8 @@ class VoiceInfo(AbstractModel):
         :type Category: str
         :param _Gender: <p>性别</p><p>枚举值：</p><ul><li>male： 男</li><li>famale： 女</li></ul>
         :type Gender: str
+        :param _Age: <p>年龄</p><p>枚举值：</p><ul><li>child： 儿童</li><li>teenager： 少年</li><li>youth： 青年</li><li>middle_aged： 中年</li><li>senior： 老年</li><li>unknown： 未知</li></ul>
+        :type Age: str
         :param _Languages: <p>支持语种列表</p><p>如：en</p>
         :type Languages: list of str
         :param _AudioUrl: <p>试听音频URL</p>
@@ -89547,6 +89718,7 @@ class VoiceInfo(AbstractModel):
         self._Description = None
         self._Category = None
         self._Gender = None
+        self._Age = None
         self._Languages = None
         self._AudioUrl = None
         self._Labels = None
@@ -89608,6 +89780,17 @@ class VoiceInfo(AbstractModel):
         self._Gender = Gender
 
     @property
+    def Age(self):
+        r"""<p>年龄</p><p>枚举值：</p><ul><li>child： 儿童</li><li>teenager： 少年</li><li>youth： 青年</li><li>middle_aged： 中年</li><li>senior： 老年</li><li>unknown： 未知</li></ul>
+        :rtype: str
+        """
+        return self._Age
+
+    @Age.setter
+    def Age(self, Age):
+        self._Age = Age
+
+    @property
     def Languages(self):
         r"""<p>支持语种列表</p><p>如：en</p>
         :rtype: list of str
@@ -89658,8 +89841,120 @@ class VoiceInfo(AbstractModel):
         self._Description = params.get("Description")
         self._Category = params.get("Category")
         self._Gender = params.get("Gender")
+        self._Age = params.get("Age")
         self._Languages = params.get("Languages")
         self._AudioUrl = params.get("AudioUrl")
+        self._Labels = params.get("Labels")
+        self._Scenes = params.get("Scenes")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VoiceProfile(AbstractModel):
+    r"""音色属性
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>音色名</p>
+        :type Name: str
+        :param _Description: <p>音色描述</p>
+        :type Description: str
+        :param _Gender: <p>性别</p><p>枚举值：</p><ul><li>male： 男性</li><li>female： 女性</li><li>unknown： 未知</li></ul>
+        :type Gender: str
+        :param _Age: <p>年龄</p><p>枚举值：</p><ul><li>child： 儿童</li><li>teenager： 少年</li><li>youth： 青年</li><li>middle_aged： 中年</li><li>senior： 老年</li><li>unknown： 未知</li></ul>
+        :type Age: str
+        :param _Labels: <p>标签</p>
+        :type Labels: list of str
+        :param _Scenes: <p>使用场景</p>
+        :type Scenes: list of str
+        """
+        self._Name = None
+        self._Description = None
+        self._Gender = None
+        self._Age = None
+        self._Labels = None
+        self._Scenes = None
+
+    @property
+    def Name(self):
+        r"""<p>音色名</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>音色描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Gender(self):
+        r"""<p>性别</p><p>枚举值：</p><ul><li>male： 男性</li><li>female： 女性</li><li>unknown： 未知</li></ul>
+        :rtype: str
+        """
+        return self._Gender
+
+    @Gender.setter
+    def Gender(self, Gender):
+        self._Gender = Gender
+
+    @property
+    def Age(self):
+        r"""<p>年龄</p><p>枚举值：</p><ul><li>child： 儿童</li><li>teenager： 少年</li><li>youth： 青年</li><li>middle_aged： 中年</li><li>senior： 老年</li><li>unknown： 未知</li></ul>
+        :rtype: str
+        """
+        return self._Age
+
+    @Age.setter
+    def Age(self, Age):
+        self._Age = Age
+
+    @property
+    def Labels(self):
+        r"""<p>标签</p>
+        :rtype: list of str
+        """
+        return self._Labels
+
+    @Labels.setter
+    def Labels(self, Labels):
+        self._Labels = Labels
+
+    @property
+    def Scenes(self):
+        r"""<p>使用场景</p>
+        :rtype: list of str
+        """
+        return self._Scenes
+
+    @Scenes.setter
+    def Scenes(self, Scenes):
+        self._Scenes = Scenes
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._Gender = params.get("Gender")
+        self._Age = params.get("Age")
         self._Labels = params.get("Labels")
         self._Scenes = params.get("Scenes")
         memeber_set = set(params.keys())

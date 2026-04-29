@@ -2877,6 +2877,29 @@ class EssClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeContractReviewChecklist(self, request):
+        r"""此接口（DescribeContractReviewChecklist）用于获取已有的合同风险审查清单详情。
+
+        :param request: Request instance for DescribeContractReviewChecklist.
+        :type request: :class:`tencentcloud.ess.v20201111.models.DescribeContractReviewChecklistRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.DescribeContractReviewChecklistResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeContractReviewChecklist", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeContractReviewChecklistResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeContractReviewChecklistWebUrl(self, request):
         r"""此接口（DescribeContractReviewChecklistWebUrl）用来创建查看审查要点清单web页面链接（此web页面可以通过iframe方式嵌入到贵方系统的网页中）。
 
@@ -3956,6 +3979,29 @@ class EssClient(AbstractClient):
             body = self.call("GetTaskResultApi", params, headers=headers)
             response = json.loads(body)
             model = models.GetTaskResultApiResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ImportContractReviewChecklist(self, request):
+        r"""此接口（ImportRiskIdentificationChecklist）用于创建或更新合同审查清单。
+
+        :param request: Request instance for ImportContractReviewChecklist.
+        :type request: :class:`tencentcloud.ess.v20201111.models.ImportContractReviewChecklistRequest`
+        :rtype: :class:`tencentcloud.ess.v20201111.models.ImportContractReviewChecklistResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ImportContractReviewChecklist", params, headers=headers)
+            response = json.loads(body)
+            model = models.ImportContractReviewChecklistResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

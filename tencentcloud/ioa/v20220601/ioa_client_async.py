@@ -25,6 +25,24 @@ class IoaClient(AbstractClient):
     _endpoint = 'ioa.tencentcloudapi.com'
     _service = 'ioa'
 
+    async def CreateBusinessResource(
+            self,
+            request: models.CreateBusinessResourceRequest,
+            opts: Dict = None,
+    ) -> models.CreateBusinessResourceResponse:
+        """
+        创建业务资源，会对一些必填参数进行校验和参数合法性校验，创建业务资源时，先调用下校验相同业务资源接口，看资源是不是有冲突。创建时也会做校验，但没有返回对应的异常信息，私有化调用path为：capi/GatewayResource/CreateBusinessResource
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateBusinessResource"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateBusinessResourceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateDLPFileDetectTask(
             self,
             request: models.CreateDLPFileDetectTaskRequest,
@@ -182,6 +200,24 @@ class IoaClient(AbstractClient):
         kwargs["action"] = "DescribeAggrSoftDeviceList"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeAggrSoftDeviceListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeBusinessResources(
+            self,
+            request: models.DescribeBusinessResourcesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeBusinessResourcesResponse:
+        """
+        获取业务资源列表,支持分页，如果分页信息不传递会有默认分页，支持排序，不传排序字段，按业务资源创建时间排序,私有化调用path为：capi/GatewayResource/DescribeBusinessResources
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeBusinessResources"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeBusinessResourcesResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -367,6 +403,24 @@ class IoaClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeDirectAccountGroupResources(
+            self,
+            request: models.DescribeDirectAccountGroupResourcesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDirectAccountGroupResourcesResponse:
+        """
+        列表账户组直接关联的资源，私有化调用path为：capi/Assets/DescribeDirectAccountGroupResources
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDirectAccountGroupResources"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDirectAccountGroupResourcesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeLocalAccounts(
             self,
             request: models.DescribeLocalAccountsRequest,
@@ -380,6 +434,60 @@ class IoaClient(AbstractClient):
         kwargs["action"] = "DescribeLocalAccounts"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeLocalAccountsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeResourceGrantedAccountGroups(
+            self,
+            request: models.DescribeResourceGrantedAccountGroupsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeResourceGrantedAccountGroupsResponse:
+        """
+        列表账户组直接关联的资源，私有化调用path为：capi/NGN/DescribeResourceGrantedAccounts
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeResourceGrantedAccountGroups"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeResourceGrantedAccountGroupsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeResourceGrantedAccounts(
+            self,
+            request: models.DescribeResourceGrantedAccountsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeResourceGrantedAccountsResponse:
+        """
+        列表账户组直接关联的资源，私有化调用path为：capi/NGN/DescribeResourceGrantedAccounts
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeResourceGrantedAccounts"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeResourceGrantedAccountsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeResourceGrantedVirtualGroups(
+            self,
+            request: models.DescribeResourceGrantedVirtualGroupsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeResourceGrantedVirtualGroupsResponse:
+        """
+        列表账户组直接关联的资源，私有化调用path为：capi/NGN/DescribeResourceGrantedVirtualGroups
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeResourceGrantedVirtualGroups"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeResourceGrantedVirtualGroupsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -488,6 +596,78 @@ class IoaClient(AbstractClient):
         kwargs["action"] = "ExportSoftwareInformationList"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ExportSoftwareInformationListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GrantResourcesByAccountGroups(
+            self,
+            request: models.GrantResourcesByAccountGroupsRequest,
+            opts: Dict = None,
+    ) -> models.GrantResourcesByAccountGroupsResponse:
+        """
+        添加资源授权到账号组
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GrantResourcesByAccountGroups"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GrantResourcesByAccountGroupsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GrantResourcesByAccounts(
+            self,
+            request: models.GrantResourcesByAccountsRequest,
+            opts: Dict = None,
+    ) -> models.GrantResourcesByAccountsResponse:
+        """
+        添加资源授权到账号组
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GrantResourcesByAccounts"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GrantResourcesByAccountsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GrantResourcesByVirtualGroups(
+            self,
+            request: models.GrantResourcesByVirtualGroupsRequest,
+            opts: Dict = None,
+    ) -> models.GrantResourcesByVirtualGroupsResponse:
+        """
+        添加资源授权到账号组
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GrantResourcesByVirtualGroups"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GrantResourcesByVirtualGroupsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyDeviceTrustStatus(
+            self,
+            request: models.ModifyDeviceTrustStatusRequest,
+            opts: Dict = None,
+    ) -> models.ModifyDeviceTrustStatusResponse:
+        """
+        给接入设备加黑加白,私有化调用path为：capi/NGN/ModifyDeviceTrustStatus
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyDeviceTrustStatus"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyDeviceTrustStatusResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

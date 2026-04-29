@@ -2007,6 +2007,294 @@ class CBSInstance(AbstractModel):
         
 
 
+class CBSVolume(AbstractModel):
+    r"""cbs 存储卷
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VolumeName: 存储卷名称
+        :type VolumeName: str
+        :param _DiskType:  cbs 盘类型
+        :type DiskType: str
+        :param _DiskSize: cbs 大小（GB）
+        :type DiskSize: int
+        :param _DiskCount: cbs 数量
+        :type DiskCount: int
+        """
+        self._VolumeName = None
+        self._DiskType = None
+        self._DiskSize = None
+        self._DiskCount = None
+
+    @property
+    def VolumeName(self):
+        r"""存储卷名称
+        :rtype: str
+        """
+        return self._VolumeName
+
+    @VolumeName.setter
+    def VolumeName(self, VolumeName):
+        self._VolumeName = VolumeName
+
+    @property
+    def DiskType(self):
+        r""" cbs 盘类型
+        :rtype: str
+        """
+        return self._DiskType
+
+    @DiskType.setter
+    def DiskType(self, DiskType):
+        self._DiskType = DiskType
+
+    @property
+    def DiskSize(self):
+        r"""cbs 大小（GB）
+        :rtype: int
+        """
+        return self._DiskSize
+
+    @DiskSize.setter
+    def DiskSize(self, DiskSize):
+        self._DiskSize = DiskSize
+
+    @property
+    def DiskCount(self):
+        r"""cbs 数量
+        :rtype: int
+        """
+        return self._DiskCount
+
+    @DiskCount.setter
+    def DiskCount(self, DiskCount):
+        self._DiskCount = DiskCount
+
+
+    def _deserialize(self, params):
+        self._VolumeName = params.get("VolumeName")
+        self._DiskType = params.get("DiskType")
+        self._DiskSize = params.get("DiskSize")
+        self._DiskCount = params.get("DiskCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CFSTurboVolume(AbstractModel):
+    r"""cfs trubo 存储卷
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VolumeName: <p>存储卷名称</p>
+        :type VolumeName: str
+        :param _FileSystemId: <p>文件系统 id</p>
+        :type FileSystemId: str
+        :param _FSId: <p>CFSId</p>
+        :type FSId: str
+        :param _Host: <p>挂载点 ip</p>
+        :type Host: str
+        :param _SubPath: <p>cfs子目录</p>
+        :type SubPath: str
+        :param _RootDir: <p>lustre挂载根目录，默认为/cfs</p>
+        :type RootDir: str
+        """
+        self._VolumeName = None
+        self._FileSystemId = None
+        self._FSId = None
+        self._Host = None
+        self._SubPath = None
+        self._RootDir = None
+
+    @property
+    def VolumeName(self):
+        r"""<p>存储卷名称</p>
+        :rtype: str
+        """
+        return self._VolumeName
+
+    @VolumeName.setter
+    def VolumeName(self, VolumeName):
+        self._VolumeName = VolumeName
+
+    @property
+    def FileSystemId(self):
+        r"""<p>文件系统 id</p>
+        :rtype: str
+        """
+        return self._FileSystemId
+
+    @FileSystemId.setter
+    def FileSystemId(self, FileSystemId):
+        self._FileSystemId = FileSystemId
+
+    @property
+    def FSId(self):
+        r"""<p>CFSId</p>
+        :rtype: str
+        """
+        return self._FSId
+
+    @FSId.setter
+    def FSId(self, FSId):
+        self._FSId = FSId
+
+    @property
+    def Host(self):
+        r"""<p>挂载点 ip</p>
+        :rtype: str
+        """
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+    @property
+    def SubPath(self):
+        r"""<p>cfs子目录</p>
+        :rtype: str
+        """
+        return self._SubPath
+
+    @SubPath.setter
+    def SubPath(self, SubPath):
+        self._SubPath = SubPath
+
+    @property
+    def RootDir(self):
+        r"""<p>lustre挂载根目录，默认为/cfs</p>
+        :rtype: str
+        """
+        return self._RootDir
+
+    @RootDir.setter
+    def RootDir(self, RootDir):
+        self._RootDir = RootDir
+
+
+    def _deserialize(self, params):
+        self._VolumeName = params.get("VolumeName")
+        self._FileSystemId = params.get("FileSystemId")
+        self._FSId = params.get("FSId")
+        self._Host = params.get("Host")
+        self._SubPath = params.get("SubPath")
+        self._RootDir = params.get("RootDir")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CFSVolume(AbstractModel):
+    r"""cfs 存储卷
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VolumeName: 存储卷名称
+        :type VolumeName: str
+        :param _FileSystemId: 文件系统 id
+        :type FileSystemId: str
+        :param _FSId: CFSId
+        :type FSId: str
+        :param _Host: 挂载点 ip
+        :type Host: str
+        :param _SubPath: cfs子目录
+        :type SubPath: str
+        """
+        self._VolumeName = None
+        self._FileSystemId = None
+        self._FSId = None
+        self._Host = None
+        self._SubPath = None
+
+    @property
+    def VolumeName(self):
+        r"""存储卷名称
+        :rtype: str
+        """
+        return self._VolumeName
+
+    @VolumeName.setter
+    def VolumeName(self, VolumeName):
+        self._VolumeName = VolumeName
+
+    @property
+    def FileSystemId(self):
+        r"""文件系统 id
+        :rtype: str
+        """
+        return self._FileSystemId
+
+    @FileSystemId.setter
+    def FileSystemId(self, FileSystemId):
+        self._FileSystemId = FileSystemId
+
+    @property
+    def FSId(self):
+        r"""CFSId
+        :rtype: str
+        """
+        return self._FSId
+
+    @FSId.setter
+    def FSId(self, FSId):
+        self._FSId = FSId
+
+    @property
+    def Host(self):
+        r"""挂载点 ip
+        :rtype: str
+        """
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+    @property
+    def SubPath(self):
+        r"""cfs子目录
+        :rtype: str
+        """
+        return self._SubPath
+
+    @SubPath.setter
+    def SubPath(self, SubPath):
+        self._SubPath = SubPath
+
+
+    def _deserialize(self, params):
+        self._VolumeName = params.get("VolumeName")
+        self._FileSystemId = params.get("FileSystemId")
+        self._FSId = params.get("FSId")
+        self._Host = params.get("Host")
+        self._SubPath = params.get("SubPath")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CLBSetting(AbstractModel):
     r"""容器集群Pod服务CLB设置
 
@@ -2118,6 +2406,102 @@ class COSSettings(AbstractModel):
         self._CosSecretId = params.get("CosSecretId")
         self._CosSecretKey = params.get("CosSecretKey")
         self._LogOnCosPath = params.get("LogOnCosPath")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class COSVolume(AbstractModel):
+    r"""cos 存储卷
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VolumeName: 存储卷名称
+        :type VolumeName: str
+        :param _Secret: 密钥名称
+        :type Secret: str
+        :param _Region: cos桶所在地域
+        :type Region: str
+        :param _Bucket: 存储桶名称
+        :type Bucket: str
+        :param _SubPath: cos 子目录
+        :type SubPath: str
+        """
+        self._VolumeName = None
+        self._Secret = None
+        self._Region = None
+        self._Bucket = None
+        self._SubPath = None
+
+    @property
+    def VolumeName(self):
+        r"""存储卷名称
+        :rtype: str
+        """
+        return self._VolumeName
+
+    @VolumeName.setter
+    def VolumeName(self, VolumeName):
+        self._VolumeName = VolumeName
+
+    @property
+    def Secret(self):
+        r"""密钥名称
+        :rtype: str
+        """
+        return self._Secret
+
+    @Secret.setter
+    def Secret(self, Secret):
+        self._Secret = Secret
+
+    @property
+    def Region(self):
+        r"""cos桶所在地域
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Bucket(self):
+        r"""存储桶名称
+        :rtype: str
+        """
+        return self._Bucket
+
+    @Bucket.setter
+    def Bucket(self, Bucket):
+        self._Bucket = Bucket
+
+    @property
+    def SubPath(self):
+        r"""cos 子目录
+        :rtype: str
+        """
+        return self._SubPath
+
+    @SubPath.setter
+    def SubPath(self, SubPath):
+        self._SubPath = SubPath
+
+
+    def _deserialize(self, params):
+        self._VolumeName = params.get("VolumeName")
+        self._Secret = params.get("Secret")
+        self._Region = params.get("Region")
+        self._Bucket = params.get("Bucket")
+        self._SubPath = params.get("SubPath")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5715,6 +6099,147 @@ class CreateClusterResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateDynamicInstanceRequest(AbstractModel):
+    r"""CreateDynamicInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>EMR集群id</p>
+        :type InstanceId: str
+        :param _ServiceName: <p>支持DynamicInstance的服务名称</p>
+        :type ServiceName: str
+        :param _DynamicInstanceType: <p>DynamicInstance类型</p><p>枚举值：</p><ul><li>RayCluster： RayCluster类型</li></ul>
+        :type DynamicInstanceType: str
+        :param _DynamicInstanceForm: <p>表单创建信息</p>
+        :type DynamicInstanceForm: :class:`tencentcloud.emr.v20190103.models.DynamicInstanceForm`
+        :param _DynamicInstanceYaml: <p>yaml创建信息</p>
+        :type DynamicInstanceYaml: str
+        """
+        self._InstanceId = None
+        self._ServiceName = None
+        self._DynamicInstanceType = None
+        self._DynamicInstanceForm = None
+        self._DynamicInstanceYaml = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>EMR集群id</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ServiceName(self):
+        r"""<p>支持DynamicInstance的服务名称</p>
+        :rtype: str
+        """
+        return self._ServiceName
+
+    @ServiceName.setter
+    def ServiceName(self, ServiceName):
+        self._ServiceName = ServiceName
+
+    @property
+    def DynamicInstanceType(self):
+        r"""<p>DynamicInstance类型</p><p>枚举值：</p><ul><li>RayCluster： RayCluster类型</li></ul>
+        :rtype: str
+        """
+        return self._DynamicInstanceType
+
+    @DynamicInstanceType.setter
+    def DynamicInstanceType(self, DynamicInstanceType):
+        self._DynamicInstanceType = DynamicInstanceType
+
+    @property
+    def DynamicInstanceForm(self):
+        r"""<p>表单创建信息</p>
+        :rtype: :class:`tencentcloud.emr.v20190103.models.DynamicInstanceForm`
+        """
+        return self._DynamicInstanceForm
+
+    @DynamicInstanceForm.setter
+    def DynamicInstanceForm(self, DynamicInstanceForm):
+        self._DynamicInstanceForm = DynamicInstanceForm
+
+    @property
+    def DynamicInstanceYaml(self):
+        r"""<p>yaml创建信息</p>
+        :rtype: str
+        """
+        return self._DynamicInstanceYaml
+
+    @DynamicInstanceYaml.setter
+    def DynamicInstanceYaml(self, DynamicInstanceYaml):
+        self._DynamicInstanceYaml = DynamicInstanceYaml
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._ServiceName = params.get("ServiceName")
+        self._DynamicInstanceType = params.get("DynamicInstanceType")
+        if params.get("DynamicInstanceForm") is not None:
+            self._DynamicInstanceForm = DynamicInstanceForm()
+            self._DynamicInstanceForm._deserialize(params.get("DynamicInstanceForm"))
+        self._DynamicInstanceYaml = params.get("DynamicInstanceYaml")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDynamicInstanceResponse(AbstractModel):
+    r"""CreateDynamicInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: <p>异步流程id</p>
+        :type FlowId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FlowId = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        r"""<p>异步流程id</p>
+        :rtype: int
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateGroupsSTDRequest(AbstractModel):
     r"""CreateGroupsSTD请求参数结构体
 
@@ -6759,6 +7284,80 @@ class CreateSLInstanceResponse(AbstractModel):
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._RequestId = params.get("RequestId")
+
+
+class CustomImage(AbstractModel):
+    r"""自定义镜像信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImageSourceType: 镜像来源。支持企业版镜像（tcr）、个人版镜像（ccrPersonal）、个人版共有镜像（ccrAllPersonal)
+        :type ImageSourceType: str
+        :param _ImageInfo: 镜像信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImageInfo: :class:`tencentcloud.emr.v20190103.models.ImageInfo`
+        :param _ImagePullSecret: 镜像获取密钥
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImagePullSecret: :class:`tencentcloud.emr.v20190103.models.ImagePullSecret`
+        """
+        self._ImageSourceType = None
+        self._ImageInfo = None
+        self._ImagePullSecret = None
+
+    @property
+    def ImageSourceType(self):
+        r"""镜像来源。支持企业版镜像（tcr）、个人版镜像（ccrPersonal）、个人版共有镜像（ccrAllPersonal)
+        :rtype: str
+        """
+        return self._ImageSourceType
+
+    @ImageSourceType.setter
+    def ImageSourceType(self, ImageSourceType):
+        self._ImageSourceType = ImageSourceType
+
+    @property
+    def ImageInfo(self):
+        r"""镜像信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.emr.v20190103.models.ImageInfo`
+        """
+        return self._ImageInfo
+
+    @ImageInfo.setter
+    def ImageInfo(self, ImageInfo):
+        self._ImageInfo = ImageInfo
+
+    @property
+    def ImagePullSecret(self):
+        r"""镜像获取密钥
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.emr.v20190103.models.ImagePullSecret`
+        """
+        return self._ImagePullSecret
+
+    @ImagePullSecret.setter
+    def ImagePullSecret(self, ImagePullSecret):
+        self._ImagePullSecret = ImagePullSecret
+
+
+    def _deserialize(self, params):
+        self._ImageSourceType = params.get("ImageSourceType")
+        if params.get("ImageInfo") is not None:
+            self._ImageInfo = ImageInfo()
+            self._ImageInfo._deserialize(params.get("ImageInfo"))
+        if params.get("ImagePullSecret") is not None:
+            self._ImagePullSecret = ImagePullSecret()
+            self._ImagePullSecret._deserialize(params.get("ImagePullSecret"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class CustomMetaDBInfo(AbstractModel):
@@ -9212,6 +9811,90 @@ class DescribeDAGInfoResponse(AbstractModel):
                 obj = DAGInfo()
                 obj._deserialize(item)
                 self._DAGInfoList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDynamicInstanceListRequest(AbstractModel):
+    r"""DescribeDynamicInstanceList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: emr 集群 id
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        r"""emr 集群 id
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDynamicInstanceListResponse(AbstractModel):
+    r"""DescribeDynamicInstanceList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DynamicInstanceList: RayCluster 集群列表
+        :type DynamicInstanceList: list of RayCluster
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DynamicInstanceList = None
+        self._RequestId = None
+
+    @property
+    def DynamicInstanceList(self):
+        r"""RayCluster 集群列表
+        :rtype: list of RayCluster
+        """
+        return self._DynamicInstanceList
+
+    @DynamicInstanceList.setter
+    def DynamicInstanceList(self, DynamicInstanceList):
+        self._DynamicInstanceList = DynamicInstanceList
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("DynamicInstanceList") is not None:
+            self._DynamicInstanceList = []
+            for item in params.get("DynamicInstanceList"):
+                obj = RayCluster()
+                obj._deserialize(item)
+                self._DynamicInstanceList.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -16842,6 +17525,695 @@ class Dps(AbstractModel):
         
 
 
+class DynamicInstanceForm(AbstractModel):
+    r"""创建DynamicInstance提交的表单数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DynamicInstanceName: <p>DynamicInstance名，长度限制1-64字符，只能包含小写字母</p>
+        :type DynamicInstanceName: str
+        :param _Namespace: <p>命名空间</p>
+        :type Namespace: str
+        :param _SupportHA: <p>是否支持高可用</p>
+        :type SupportHA: bool
+        :param _CustomImage: <p>自定义镜像信息</p>
+        :type CustomImage: :class:`tencentcloud.emr.v20190103.models.CustomImage`
+        :param _DynamicInstanceGroups: <p>资源组配置</p>
+        :type DynamicInstanceGroups: list of DynamicInstanceGroup
+        :param _SupportPV: <p>是否支持存储配置</p>
+        :type SupportPV: bool
+        :param _CBSVolumes: <p>cbs存储卷列表</p>
+        :type CBSVolumes: list of CBSVolume
+        :param _CFSVolumes: <p>cfs存储卷列表，只包含cfs，不包含cfs turbo</p>
+        :type CFSVolumes: list of CFSVolume
+        :param _COSVolumes: <p>cos存储卷列表</p>
+        :type COSVolumes: list of COSVolume
+        :param _VolumeMounts: <p>挂载卷列表</p>
+        :type VolumeMounts: list of VolumeMount
+        :param _Labels: <p>pod标签</p>
+        :type Labels: list of TkeLabel
+        :param _Tolerations: <p>Tolerations定义</p>
+        :type Tolerations: list of Toleration
+        :param _Envs: <p>环境变量</p>
+        :type Envs: list of NameValue
+        :param _DependServices: <p>依赖外部组件</p>
+        :type DependServices: list of DependService
+        :param _SupportToken: <p>是否开启token鉴权</p>
+        :type SupportToken: bool
+        :param _CFSTurboVolumes: <p>cfs trubo挂载列表，不包含标准版cfs</p>
+        :type CFSTurboVolumes: list of CFSTurboVolume
+        """
+        self._DynamicInstanceName = None
+        self._Namespace = None
+        self._SupportHA = None
+        self._CustomImage = None
+        self._DynamicInstanceGroups = None
+        self._SupportPV = None
+        self._CBSVolumes = None
+        self._CFSVolumes = None
+        self._COSVolumes = None
+        self._VolumeMounts = None
+        self._Labels = None
+        self._Tolerations = None
+        self._Envs = None
+        self._DependServices = None
+        self._SupportToken = None
+        self._CFSTurboVolumes = None
+
+    @property
+    def DynamicInstanceName(self):
+        r"""<p>DynamicInstance名，长度限制1-64字符，只能包含小写字母</p>
+        :rtype: str
+        """
+        return self._DynamicInstanceName
+
+    @DynamicInstanceName.setter
+    def DynamicInstanceName(self, DynamicInstanceName):
+        self._DynamicInstanceName = DynamicInstanceName
+
+    @property
+    def Namespace(self):
+        r"""<p>命名空间</p>
+        :rtype: str
+        """
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def SupportHA(self):
+        r"""<p>是否支持高可用</p>
+        :rtype: bool
+        """
+        return self._SupportHA
+
+    @SupportHA.setter
+    def SupportHA(self, SupportHA):
+        self._SupportHA = SupportHA
+
+    @property
+    def CustomImage(self):
+        r"""<p>自定义镜像信息</p>
+        :rtype: :class:`tencentcloud.emr.v20190103.models.CustomImage`
+        """
+        return self._CustomImage
+
+    @CustomImage.setter
+    def CustomImage(self, CustomImage):
+        self._CustomImage = CustomImage
+
+    @property
+    def DynamicInstanceGroups(self):
+        r"""<p>资源组配置</p>
+        :rtype: list of DynamicInstanceGroup
+        """
+        return self._DynamicInstanceGroups
+
+    @DynamicInstanceGroups.setter
+    def DynamicInstanceGroups(self, DynamicInstanceGroups):
+        self._DynamicInstanceGroups = DynamicInstanceGroups
+
+    @property
+    def SupportPV(self):
+        r"""<p>是否支持存储配置</p>
+        :rtype: bool
+        """
+        return self._SupportPV
+
+    @SupportPV.setter
+    def SupportPV(self, SupportPV):
+        self._SupportPV = SupportPV
+
+    @property
+    def CBSVolumes(self):
+        r"""<p>cbs存储卷列表</p>
+        :rtype: list of CBSVolume
+        """
+        return self._CBSVolumes
+
+    @CBSVolumes.setter
+    def CBSVolumes(self, CBSVolumes):
+        self._CBSVolumes = CBSVolumes
+
+    @property
+    def CFSVolumes(self):
+        r"""<p>cfs存储卷列表，只包含cfs，不包含cfs turbo</p>
+        :rtype: list of CFSVolume
+        """
+        return self._CFSVolumes
+
+    @CFSVolumes.setter
+    def CFSVolumes(self, CFSVolumes):
+        self._CFSVolumes = CFSVolumes
+
+    @property
+    def COSVolumes(self):
+        r"""<p>cos存储卷列表</p>
+        :rtype: list of COSVolume
+        """
+        return self._COSVolumes
+
+    @COSVolumes.setter
+    def COSVolumes(self, COSVolumes):
+        self._COSVolumes = COSVolumes
+
+    @property
+    def VolumeMounts(self):
+        r"""<p>挂载卷列表</p>
+        :rtype: list of VolumeMount
+        """
+        return self._VolumeMounts
+
+    @VolumeMounts.setter
+    def VolumeMounts(self, VolumeMounts):
+        self._VolumeMounts = VolumeMounts
+
+    @property
+    def Labels(self):
+        r"""<p>pod标签</p>
+        :rtype: list of TkeLabel
+        """
+        return self._Labels
+
+    @Labels.setter
+    def Labels(self, Labels):
+        self._Labels = Labels
+
+    @property
+    def Tolerations(self):
+        r"""<p>Tolerations定义</p>
+        :rtype: list of Toleration
+        """
+        return self._Tolerations
+
+    @Tolerations.setter
+    def Tolerations(self, Tolerations):
+        self._Tolerations = Tolerations
+
+    @property
+    def Envs(self):
+        r"""<p>环境变量</p>
+        :rtype: list of NameValue
+        """
+        return self._Envs
+
+    @Envs.setter
+    def Envs(self, Envs):
+        self._Envs = Envs
+
+    @property
+    def DependServices(self):
+        r"""<p>依赖外部组件</p>
+        :rtype: list of DependService
+        """
+        return self._DependServices
+
+    @DependServices.setter
+    def DependServices(self, DependServices):
+        self._DependServices = DependServices
+
+    @property
+    def SupportToken(self):
+        r"""<p>是否开启token鉴权</p>
+        :rtype: bool
+        """
+        return self._SupportToken
+
+    @SupportToken.setter
+    def SupportToken(self, SupportToken):
+        self._SupportToken = SupportToken
+
+    @property
+    def CFSTurboVolumes(self):
+        r"""<p>cfs trubo挂载列表，不包含标准版cfs</p>
+        :rtype: list of CFSTurboVolume
+        """
+        return self._CFSTurboVolumes
+
+    @CFSTurboVolumes.setter
+    def CFSTurboVolumes(self, CFSTurboVolumes):
+        self._CFSTurboVolumes = CFSTurboVolumes
+
+
+    def _deserialize(self, params):
+        self._DynamicInstanceName = params.get("DynamicInstanceName")
+        self._Namespace = params.get("Namespace")
+        self._SupportHA = params.get("SupportHA")
+        if params.get("CustomImage") is not None:
+            self._CustomImage = CustomImage()
+            self._CustomImage._deserialize(params.get("CustomImage"))
+        if params.get("DynamicInstanceGroups") is not None:
+            self._DynamicInstanceGroups = []
+            for item in params.get("DynamicInstanceGroups"):
+                obj = DynamicInstanceGroup()
+                obj._deserialize(item)
+                self._DynamicInstanceGroups.append(obj)
+        self._SupportPV = params.get("SupportPV")
+        if params.get("CBSVolumes") is not None:
+            self._CBSVolumes = []
+            for item in params.get("CBSVolumes"):
+                obj = CBSVolume()
+                obj._deserialize(item)
+                self._CBSVolumes.append(obj)
+        if params.get("CFSVolumes") is not None:
+            self._CFSVolumes = []
+            for item in params.get("CFSVolumes"):
+                obj = CFSVolume()
+                obj._deserialize(item)
+                self._CFSVolumes.append(obj)
+        if params.get("COSVolumes") is not None:
+            self._COSVolumes = []
+            for item in params.get("COSVolumes"):
+                obj = COSVolume()
+                obj._deserialize(item)
+                self._COSVolumes.append(obj)
+        if params.get("VolumeMounts") is not None:
+            self._VolumeMounts = []
+            for item in params.get("VolumeMounts"):
+                obj = VolumeMount()
+                obj._deserialize(item)
+                self._VolumeMounts.append(obj)
+        if params.get("Labels") is not None:
+            self._Labels = []
+            for item in params.get("Labels"):
+                obj = TkeLabel()
+                obj._deserialize(item)
+                self._Labels.append(obj)
+        if params.get("Tolerations") is not None:
+            self._Tolerations = []
+            for item in params.get("Tolerations"):
+                obj = Toleration()
+                obj._deserialize(item)
+                self._Tolerations.append(obj)
+        if params.get("Envs") is not None:
+            self._Envs = []
+            for item in params.get("Envs"):
+                obj = NameValue()
+                obj._deserialize(item)
+                self._Envs.append(obj)
+        if params.get("DependServices") is not None:
+            self._DependServices = []
+            for item in params.get("DependServices"):
+                obj = DependService()
+                obj._deserialize(item)
+                self._DependServices.append(obj)
+        self._SupportToken = params.get("SupportToken")
+        if params.get("CFSTurboVolumes") is not None:
+            self._CFSTurboVolumes = []
+            for item in params.get("CFSTurboVolumes"):
+                obj = CFSTurboVolume()
+                obj._deserialize(item)
+                self._CFSTurboVolumes.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DynamicInstanceGroup(AbstractModel):
+    r"""创建DynamicInstance提交的表单数据中的group部分
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GroupType: <p>资源组类型</p>
+        :type GroupType: str
+        :param _GroupName: <p>资源组名称</p>
+        :type GroupName: str
+        :param _PodCpu: <p>pod cpu核数</p>
+        :type PodCpu: int
+        :param _PodMem: <p>pod mem大小（GB）</p>
+        :type PodMem: int
+        :param _PodGpuType: <p>pod gpu类型</p>
+        :type PodGpuType: str
+        :param _PodGpu: <p>pod gpu块数</p>
+        :type PodGpu: int
+        :param _PodNum: <p>pod个数</p>
+        :type PodNum: int
+        :param _MinPodNum: <p>pod弹性最小个数</p>
+        :type MinPodNum: int
+        :param _MaxPodNum: <p>pod弹性最大个数，当MaxPodNum &gt; MinPodNum时，默认表示开启弹性扩缩容，将在范围内扩缩容</p>
+        :type MaxPodNum: int
+        :param _SupportPV: <p>是否支持存储配置</p>
+        :type SupportPV: bool
+        :param _CBSVolumes: <p>cbs存储卷列表</p>
+        :type CBSVolumes: list of CBSVolume
+        :param _CFSVolumes: <p>cfs存储卷列表</p>
+        :type CFSVolumes: list of CFSVolume
+        :param _COSVolumes: <p>cos存储卷列表</p>
+        :type COSVolumes: list of COSVolume
+        :param _VolumeMounts: <p>挂载卷列表</p>
+        :type VolumeMounts: list of VolumeMount
+        :param _Labels: <p>pod标签</p>
+        :type Labels: list of TkeLabel
+        :param _Tolerations: <p>Tolerations定义</p>
+        :type Tolerations: list of Toleration
+        :param _Envs: <p>环境变量</p>
+        :type Envs: list of NameValue
+        :param _SchedulingPolicy: <p>节点调度策略</p>
+        :type SchedulingPolicy: str
+        :param _ResourceLabel: <p>资源标签</p>
+        :type ResourceLabel: str
+        :param _PodGpuResourceKey: <p>GPU资源厂商key</p>
+        :type PodGpuResourceKey: str
+        :param _CFSTurboVolumes: <p>CFS Turbo 挂载列表</p>
+        :type CFSTurboVolumes: list of CFSTurboVolume
+        """
+        self._GroupType = None
+        self._GroupName = None
+        self._PodCpu = None
+        self._PodMem = None
+        self._PodGpuType = None
+        self._PodGpu = None
+        self._PodNum = None
+        self._MinPodNum = None
+        self._MaxPodNum = None
+        self._SupportPV = None
+        self._CBSVolumes = None
+        self._CFSVolumes = None
+        self._COSVolumes = None
+        self._VolumeMounts = None
+        self._Labels = None
+        self._Tolerations = None
+        self._Envs = None
+        self._SchedulingPolicy = None
+        self._ResourceLabel = None
+        self._PodGpuResourceKey = None
+        self._CFSTurboVolumes = None
+
+    @property
+    def GroupType(self):
+        r"""<p>资源组类型</p>
+        :rtype: str
+        """
+        return self._GroupType
+
+    @GroupType.setter
+    def GroupType(self, GroupType):
+        self._GroupType = GroupType
+
+    @property
+    def GroupName(self):
+        r"""<p>资源组名称</p>
+        :rtype: str
+        """
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def PodCpu(self):
+        r"""<p>pod cpu核数</p>
+        :rtype: int
+        """
+        return self._PodCpu
+
+    @PodCpu.setter
+    def PodCpu(self, PodCpu):
+        self._PodCpu = PodCpu
+
+    @property
+    def PodMem(self):
+        r"""<p>pod mem大小（GB）</p>
+        :rtype: int
+        """
+        return self._PodMem
+
+    @PodMem.setter
+    def PodMem(self, PodMem):
+        self._PodMem = PodMem
+
+    @property
+    def PodGpuType(self):
+        r"""<p>pod gpu类型</p>
+        :rtype: str
+        """
+        return self._PodGpuType
+
+    @PodGpuType.setter
+    def PodGpuType(self, PodGpuType):
+        self._PodGpuType = PodGpuType
+
+    @property
+    def PodGpu(self):
+        r"""<p>pod gpu块数</p>
+        :rtype: int
+        """
+        return self._PodGpu
+
+    @PodGpu.setter
+    def PodGpu(self, PodGpu):
+        self._PodGpu = PodGpu
+
+    @property
+    def PodNum(self):
+        r"""<p>pod个数</p>
+        :rtype: int
+        """
+        return self._PodNum
+
+    @PodNum.setter
+    def PodNum(self, PodNum):
+        self._PodNum = PodNum
+
+    @property
+    def MinPodNum(self):
+        r"""<p>pod弹性最小个数</p>
+        :rtype: int
+        """
+        return self._MinPodNum
+
+    @MinPodNum.setter
+    def MinPodNum(self, MinPodNum):
+        self._MinPodNum = MinPodNum
+
+    @property
+    def MaxPodNum(self):
+        r"""<p>pod弹性最大个数，当MaxPodNum &gt; MinPodNum时，默认表示开启弹性扩缩容，将在范围内扩缩容</p>
+        :rtype: int
+        """
+        return self._MaxPodNum
+
+    @MaxPodNum.setter
+    def MaxPodNum(self, MaxPodNum):
+        self._MaxPodNum = MaxPodNum
+
+    @property
+    def SupportPV(self):
+        r"""<p>是否支持存储配置</p>
+        :rtype: bool
+        """
+        return self._SupportPV
+
+    @SupportPV.setter
+    def SupportPV(self, SupportPV):
+        self._SupportPV = SupportPV
+
+    @property
+    def CBSVolumes(self):
+        r"""<p>cbs存储卷列表</p>
+        :rtype: list of CBSVolume
+        """
+        return self._CBSVolumes
+
+    @CBSVolumes.setter
+    def CBSVolumes(self, CBSVolumes):
+        self._CBSVolumes = CBSVolumes
+
+    @property
+    def CFSVolumes(self):
+        r"""<p>cfs存储卷列表</p>
+        :rtype: list of CFSVolume
+        """
+        return self._CFSVolumes
+
+    @CFSVolumes.setter
+    def CFSVolumes(self, CFSVolumes):
+        self._CFSVolumes = CFSVolumes
+
+    @property
+    def COSVolumes(self):
+        r"""<p>cos存储卷列表</p>
+        :rtype: list of COSVolume
+        """
+        return self._COSVolumes
+
+    @COSVolumes.setter
+    def COSVolumes(self, COSVolumes):
+        self._COSVolumes = COSVolumes
+
+    @property
+    def VolumeMounts(self):
+        r"""<p>挂载卷列表</p>
+        :rtype: list of VolumeMount
+        """
+        return self._VolumeMounts
+
+    @VolumeMounts.setter
+    def VolumeMounts(self, VolumeMounts):
+        self._VolumeMounts = VolumeMounts
+
+    @property
+    def Labels(self):
+        r"""<p>pod标签</p>
+        :rtype: list of TkeLabel
+        """
+        return self._Labels
+
+    @Labels.setter
+    def Labels(self, Labels):
+        self._Labels = Labels
+
+    @property
+    def Tolerations(self):
+        r"""<p>Tolerations定义</p>
+        :rtype: list of Toleration
+        """
+        return self._Tolerations
+
+    @Tolerations.setter
+    def Tolerations(self, Tolerations):
+        self._Tolerations = Tolerations
+
+    @property
+    def Envs(self):
+        r"""<p>环境变量</p>
+        :rtype: list of NameValue
+        """
+        return self._Envs
+
+    @Envs.setter
+    def Envs(self, Envs):
+        self._Envs = Envs
+
+    @property
+    def SchedulingPolicy(self):
+        r"""<p>节点调度策略</p>
+        :rtype: str
+        """
+        return self._SchedulingPolicy
+
+    @SchedulingPolicy.setter
+    def SchedulingPolicy(self, SchedulingPolicy):
+        self._SchedulingPolicy = SchedulingPolicy
+
+    @property
+    def ResourceLabel(self):
+        r"""<p>资源标签</p>
+        :rtype: str
+        """
+        return self._ResourceLabel
+
+    @ResourceLabel.setter
+    def ResourceLabel(self, ResourceLabel):
+        self._ResourceLabel = ResourceLabel
+
+    @property
+    def PodGpuResourceKey(self):
+        r"""<p>GPU资源厂商key</p>
+        :rtype: str
+        """
+        return self._PodGpuResourceKey
+
+    @PodGpuResourceKey.setter
+    def PodGpuResourceKey(self, PodGpuResourceKey):
+        self._PodGpuResourceKey = PodGpuResourceKey
+
+    @property
+    def CFSTurboVolumes(self):
+        r"""<p>CFS Turbo 挂载列表</p>
+        :rtype: list of CFSTurboVolume
+        """
+        return self._CFSTurboVolumes
+
+    @CFSTurboVolumes.setter
+    def CFSTurboVolumes(self, CFSTurboVolumes):
+        self._CFSTurboVolumes = CFSTurboVolumes
+
+
+    def _deserialize(self, params):
+        self._GroupType = params.get("GroupType")
+        self._GroupName = params.get("GroupName")
+        self._PodCpu = params.get("PodCpu")
+        self._PodMem = params.get("PodMem")
+        self._PodGpuType = params.get("PodGpuType")
+        self._PodGpu = params.get("PodGpu")
+        self._PodNum = params.get("PodNum")
+        self._MinPodNum = params.get("MinPodNum")
+        self._MaxPodNum = params.get("MaxPodNum")
+        self._SupportPV = params.get("SupportPV")
+        if params.get("CBSVolumes") is not None:
+            self._CBSVolumes = []
+            for item in params.get("CBSVolumes"):
+                obj = CBSVolume()
+                obj._deserialize(item)
+                self._CBSVolumes.append(obj)
+        if params.get("CFSVolumes") is not None:
+            self._CFSVolumes = []
+            for item in params.get("CFSVolumes"):
+                obj = CFSVolume()
+                obj._deserialize(item)
+                self._CFSVolumes.append(obj)
+        if params.get("COSVolumes") is not None:
+            self._COSVolumes = []
+            for item in params.get("COSVolumes"):
+                obj = COSVolume()
+                obj._deserialize(item)
+                self._COSVolumes.append(obj)
+        if params.get("VolumeMounts") is not None:
+            self._VolumeMounts = []
+            for item in params.get("VolumeMounts"):
+                obj = VolumeMount()
+                obj._deserialize(item)
+                self._VolumeMounts.append(obj)
+        if params.get("Labels") is not None:
+            self._Labels = []
+            for item in params.get("Labels"):
+                obj = TkeLabel()
+                obj._deserialize(item)
+                self._Labels.append(obj)
+        if params.get("Tolerations") is not None:
+            self._Tolerations = []
+            for item in params.get("Tolerations"):
+                obj = Toleration()
+                obj._deserialize(item)
+                self._Tolerations.append(obj)
+        if params.get("Envs") is not None:
+            self._Envs = []
+            for item in params.get("Envs"):
+                obj = NameValue()
+                obj._deserialize(item)
+                self._Envs.append(obj)
+        self._SchedulingPolicy = params.get("SchedulingPolicy")
+        self._ResourceLabel = params.get("ResourceLabel")
+        self._PodGpuResourceKey = params.get("PodGpuResourceKey")
+        if params.get("CFSTurboVolumes") is not None:
+            self._CFSTurboVolumes = []
+            for item in params.get("CFSTurboVolumes"):
+                obj = CFSTurboVolume()
+                obj._deserialize(item)
+                self._CFSTurboVolumes.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DynamicPodSpec(AbstractModel):
     r"""POD浮动规格
 
@@ -19458,6 +20830,200 @@ class HostVolumeContext(AbstractModel):
 
     def _deserialize(self, params):
         self._VolumePath = params.get("VolumePath")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ImageInfo(AbstractModel):
+    r"""镜像信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Region: 镜像所属地域
+        :type Region: str
+        :param _RegistryId: tcr实例Id
+        :type RegistryId: str
+        :param _DomainName: 域名
+        :type DomainName: str
+        :param _NamespaceName: 命名空间
+        :type NamespaceName: str
+        :param _RepositoryName: 镜像仓库名称
+        :type RepositoryName: str
+        :param _ImageVersion: 镜像版本
+        :type ImageVersion: str
+        :param _ImagePullPolicy: 镜像拉取策略
+        :type ImagePullPolicy: str
+        :param _Image: 镜像地址
+        :type Image: str
+        """
+        self._Region = None
+        self._RegistryId = None
+        self._DomainName = None
+        self._NamespaceName = None
+        self._RepositoryName = None
+        self._ImageVersion = None
+        self._ImagePullPolicy = None
+        self._Image = None
+
+    @property
+    def Region(self):
+        r"""镜像所属地域
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def RegistryId(self):
+        r"""tcr实例Id
+        :rtype: str
+        """
+        return self._RegistryId
+
+    @RegistryId.setter
+    def RegistryId(self, RegistryId):
+        self._RegistryId = RegistryId
+
+    @property
+    def DomainName(self):
+        r"""域名
+        :rtype: str
+        """
+        return self._DomainName
+
+    @DomainName.setter
+    def DomainName(self, DomainName):
+        self._DomainName = DomainName
+
+    @property
+    def NamespaceName(self):
+        r"""命名空间
+        :rtype: str
+        """
+        return self._NamespaceName
+
+    @NamespaceName.setter
+    def NamespaceName(self, NamespaceName):
+        self._NamespaceName = NamespaceName
+
+    @property
+    def RepositoryName(self):
+        r"""镜像仓库名称
+        :rtype: str
+        """
+        return self._RepositoryName
+
+    @RepositoryName.setter
+    def RepositoryName(self, RepositoryName):
+        self._RepositoryName = RepositoryName
+
+    @property
+    def ImageVersion(self):
+        r"""镜像版本
+        :rtype: str
+        """
+        return self._ImageVersion
+
+    @ImageVersion.setter
+    def ImageVersion(self, ImageVersion):
+        self._ImageVersion = ImageVersion
+
+    @property
+    def ImagePullPolicy(self):
+        r"""镜像拉取策略
+        :rtype: str
+        """
+        return self._ImagePullPolicy
+
+    @ImagePullPolicy.setter
+    def ImagePullPolicy(self, ImagePullPolicy):
+        self._ImagePullPolicy = ImagePullPolicy
+
+    @property
+    def Image(self):
+        r"""镜像地址
+        :rtype: str
+        """
+        return self._Image
+
+    @Image.setter
+    def Image(self, Image):
+        self._Image = Image
+
+
+    def _deserialize(self, params):
+        self._Region = params.get("Region")
+        self._RegistryId = params.get("RegistryId")
+        self._DomainName = params.get("DomainName")
+        self._NamespaceName = params.get("NamespaceName")
+        self._RepositoryName = params.get("RepositoryName")
+        self._ImageVersion = params.get("ImageVersion")
+        self._ImagePullPolicy = params.get("ImagePullPolicy")
+        self._Image = params.get("Image")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ImagePullSecret(AbstractModel):
+    r"""镜像获取密钥
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SourceNamespace: 源密钥所在命名空间
+        :type SourceNamespace: str
+        :param _SecretNames: 密钥名称列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecretNames: list of str
+        """
+        self._SourceNamespace = None
+        self._SecretNames = None
+
+    @property
+    def SourceNamespace(self):
+        r"""源密钥所在命名空间
+        :rtype: str
+        """
+        return self._SourceNamespace
+
+    @SourceNamespace.setter
+    def SourceNamespace(self, SourceNamespace):
+        self._SourceNamespace = SourceNamespace
+
+    @property
+    def SecretNames(self):
+        r"""密钥名称列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._SecretNames
+
+    @SecretNames.setter
+    def SecretNames(self, SecretNames):
+        self._SecretNames = SecretNames
+
+
+    def _deserialize(self, params):
+        self._SourceNamespace = params.get("SourceNamespace")
+        self._SecretNames = params.get("SecretNames")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -24153,6 +25719,442 @@ class ModifyBootScriptResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyDynamicInstanceForm(AbstractModel):
+    r"""更新DynamicInstance提交的表单数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModifyScope: <p>更新作用域：<br>1：添加workerGroup（DynamicInstance级别）<br>2：更新存储配置（DynamicInstance级别）<br>3：更新标签配置（DynamicInstance级别）<br>4：更新高级配置（DynamicInstance级别）<br>5：更新PodCpu、PodMem（DynamicInstance-group级别）<br>6：更新PodNum、MinPodNum、MaxPodNum（DynamicInstance-group级别）<br>7：更新存储配置（DynamicInstance-group级别）<br>8：更新标签配置（DynamicInstance-group级别）</p>
+        :type ModifyScope: int
+        :param _AddDynamicInstanceGroup: <p>添加的workerGroup信息</p>
+        :type AddDynamicInstanceGroup: :class:`tencentcloud.emr.v20190103.models.DynamicInstanceGroup`
+        :param _SupportPV: <p>是否支持存储配置</p>
+        :type SupportPV: bool
+        :param _CBSVolumes: <p>cbs存储卷列表</p>
+        :type CBSVolumes: list of CBSVolume
+        :param _CFSVolumes: <p>cfs存储卷列表，不包含cfs turbo列表</p>
+        :type CFSVolumes: list of CFSVolume
+        :param _COSVolumes: <p>cos存储卷列表</p>
+        :type COSVolumes: list of COSVolume
+        :param _VolumeMounts: <p>挂载卷列表</p>
+        :type VolumeMounts: list of VolumeMount
+        :param _Labels: <p>pod标签</p>
+        :type Labels: list of TkeLabel
+        :param _Tolerations: <p>Tolerations定义</p>
+        :type Tolerations: list of Toleration
+        :param _Envs: <p>环境变量</p>
+        :type Envs: list of NameValue
+        :param _DependServices: <p>依赖外部组件</p>
+        :type DependServices: list of DependService
+        :param _SupportNewToken: <p>是否生成新token鉴权</p>
+        :type SupportNewToken: bool
+        :param _ModifyDynamicInstanceGroup: <p>DynamicInstance-group级别的更新信息</p>
+        :type ModifyDynamicInstanceGroup: :class:`tencentcloud.emr.v20190103.models.DynamicInstanceGroup`
+        :param _CFSTurboVolumes: <p>cfs turbo挂载列表，不包含标准版</p>
+        :type CFSTurboVolumes: list of CFSTurboVolume
+        """
+        self._ModifyScope = None
+        self._AddDynamicInstanceGroup = None
+        self._SupportPV = None
+        self._CBSVolumes = None
+        self._CFSVolumes = None
+        self._COSVolumes = None
+        self._VolumeMounts = None
+        self._Labels = None
+        self._Tolerations = None
+        self._Envs = None
+        self._DependServices = None
+        self._SupportNewToken = None
+        self._ModifyDynamicInstanceGroup = None
+        self._CFSTurboVolumes = None
+
+    @property
+    def ModifyScope(self):
+        r"""<p>更新作用域：<br>1：添加workerGroup（DynamicInstance级别）<br>2：更新存储配置（DynamicInstance级别）<br>3：更新标签配置（DynamicInstance级别）<br>4：更新高级配置（DynamicInstance级别）<br>5：更新PodCpu、PodMem（DynamicInstance-group级别）<br>6：更新PodNum、MinPodNum、MaxPodNum（DynamicInstance-group级别）<br>7：更新存储配置（DynamicInstance-group级别）<br>8：更新标签配置（DynamicInstance-group级别）</p>
+        :rtype: int
+        """
+        return self._ModifyScope
+
+    @ModifyScope.setter
+    def ModifyScope(self, ModifyScope):
+        self._ModifyScope = ModifyScope
+
+    @property
+    def AddDynamicInstanceGroup(self):
+        r"""<p>添加的workerGroup信息</p>
+        :rtype: :class:`tencentcloud.emr.v20190103.models.DynamicInstanceGroup`
+        """
+        return self._AddDynamicInstanceGroup
+
+    @AddDynamicInstanceGroup.setter
+    def AddDynamicInstanceGroup(self, AddDynamicInstanceGroup):
+        self._AddDynamicInstanceGroup = AddDynamicInstanceGroup
+
+    @property
+    def SupportPV(self):
+        r"""<p>是否支持存储配置</p>
+        :rtype: bool
+        """
+        return self._SupportPV
+
+    @SupportPV.setter
+    def SupportPV(self, SupportPV):
+        self._SupportPV = SupportPV
+
+    @property
+    def CBSVolumes(self):
+        r"""<p>cbs存储卷列表</p>
+        :rtype: list of CBSVolume
+        """
+        return self._CBSVolumes
+
+    @CBSVolumes.setter
+    def CBSVolumes(self, CBSVolumes):
+        self._CBSVolumes = CBSVolumes
+
+    @property
+    def CFSVolumes(self):
+        r"""<p>cfs存储卷列表，不包含cfs turbo列表</p>
+        :rtype: list of CFSVolume
+        """
+        return self._CFSVolumes
+
+    @CFSVolumes.setter
+    def CFSVolumes(self, CFSVolumes):
+        self._CFSVolumes = CFSVolumes
+
+    @property
+    def COSVolumes(self):
+        r"""<p>cos存储卷列表</p>
+        :rtype: list of COSVolume
+        """
+        return self._COSVolumes
+
+    @COSVolumes.setter
+    def COSVolumes(self, COSVolumes):
+        self._COSVolumes = COSVolumes
+
+    @property
+    def VolumeMounts(self):
+        r"""<p>挂载卷列表</p>
+        :rtype: list of VolumeMount
+        """
+        return self._VolumeMounts
+
+    @VolumeMounts.setter
+    def VolumeMounts(self, VolumeMounts):
+        self._VolumeMounts = VolumeMounts
+
+    @property
+    def Labels(self):
+        r"""<p>pod标签</p>
+        :rtype: list of TkeLabel
+        """
+        return self._Labels
+
+    @Labels.setter
+    def Labels(self, Labels):
+        self._Labels = Labels
+
+    @property
+    def Tolerations(self):
+        r"""<p>Tolerations定义</p>
+        :rtype: list of Toleration
+        """
+        return self._Tolerations
+
+    @Tolerations.setter
+    def Tolerations(self, Tolerations):
+        self._Tolerations = Tolerations
+
+    @property
+    def Envs(self):
+        r"""<p>环境变量</p>
+        :rtype: list of NameValue
+        """
+        return self._Envs
+
+    @Envs.setter
+    def Envs(self, Envs):
+        self._Envs = Envs
+
+    @property
+    def DependServices(self):
+        r"""<p>依赖外部组件</p>
+        :rtype: list of DependService
+        """
+        return self._DependServices
+
+    @DependServices.setter
+    def DependServices(self, DependServices):
+        self._DependServices = DependServices
+
+    @property
+    def SupportNewToken(self):
+        r"""<p>是否生成新token鉴权</p>
+        :rtype: bool
+        """
+        return self._SupportNewToken
+
+    @SupportNewToken.setter
+    def SupportNewToken(self, SupportNewToken):
+        self._SupportNewToken = SupportNewToken
+
+    @property
+    def ModifyDynamicInstanceGroup(self):
+        r"""<p>DynamicInstance-group级别的更新信息</p>
+        :rtype: :class:`tencentcloud.emr.v20190103.models.DynamicInstanceGroup`
+        """
+        return self._ModifyDynamicInstanceGroup
+
+    @ModifyDynamicInstanceGroup.setter
+    def ModifyDynamicInstanceGroup(self, ModifyDynamicInstanceGroup):
+        self._ModifyDynamicInstanceGroup = ModifyDynamicInstanceGroup
+
+    @property
+    def CFSTurboVolumes(self):
+        r"""<p>cfs turbo挂载列表，不包含标准版</p>
+        :rtype: list of CFSTurboVolume
+        """
+        return self._CFSTurboVolumes
+
+    @CFSTurboVolumes.setter
+    def CFSTurboVolumes(self, CFSTurboVolumes):
+        self._CFSTurboVolumes = CFSTurboVolumes
+
+
+    def _deserialize(self, params):
+        self._ModifyScope = params.get("ModifyScope")
+        if params.get("AddDynamicInstanceGroup") is not None:
+            self._AddDynamicInstanceGroup = DynamicInstanceGroup()
+            self._AddDynamicInstanceGroup._deserialize(params.get("AddDynamicInstanceGroup"))
+        self._SupportPV = params.get("SupportPV")
+        if params.get("CBSVolumes") is not None:
+            self._CBSVolumes = []
+            for item in params.get("CBSVolumes"):
+                obj = CBSVolume()
+                obj._deserialize(item)
+                self._CBSVolumes.append(obj)
+        if params.get("CFSVolumes") is not None:
+            self._CFSVolumes = []
+            for item in params.get("CFSVolumes"):
+                obj = CFSVolume()
+                obj._deserialize(item)
+                self._CFSVolumes.append(obj)
+        if params.get("COSVolumes") is not None:
+            self._COSVolumes = []
+            for item in params.get("COSVolumes"):
+                obj = COSVolume()
+                obj._deserialize(item)
+                self._COSVolumes.append(obj)
+        if params.get("VolumeMounts") is not None:
+            self._VolumeMounts = []
+            for item in params.get("VolumeMounts"):
+                obj = VolumeMount()
+                obj._deserialize(item)
+                self._VolumeMounts.append(obj)
+        if params.get("Labels") is not None:
+            self._Labels = []
+            for item in params.get("Labels"):
+                obj = TkeLabel()
+                obj._deserialize(item)
+                self._Labels.append(obj)
+        if params.get("Tolerations") is not None:
+            self._Tolerations = []
+            for item in params.get("Tolerations"):
+                obj = Toleration()
+                obj._deserialize(item)
+                self._Tolerations.append(obj)
+        if params.get("Envs") is not None:
+            self._Envs = []
+            for item in params.get("Envs"):
+                obj = NameValue()
+                obj._deserialize(item)
+                self._Envs.append(obj)
+        if params.get("DependServices") is not None:
+            self._DependServices = []
+            for item in params.get("DependServices"):
+                obj = DependService()
+                obj._deserialize(item)
+                self._DependServices.append(obj)
+        self._SupportNewToken = params.get("SupportNewToken")
+        if params.get("ModifyDynamicInstanceGroup") is not None:
+            self._ModifyDynamicInstanceGroup = DynamicInstanceGroup()
+            self._ModifyDynamicInstanceGroup._deserialize(params.get("ModifyDynamicInstanceGroup"))
+        if params.get("CFSTurboVolumes") is not None:
+            self._CFSTurboVolumes = []
+            for item in params.get("CFSTurboVolumes"):
+                obj = CFSTurboVolume()
+                obj._deserialize(item)
+                self._CFSTurboVolumes.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDynamicInstanceRequest(AbstractModel):
+    r"""ModifyDynamicInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>EMR集群id</p>
+        :type InstanceId: str
+        :param _ServiceName: <p>支持DynamicInstance的服务名称</p>
+        :type ServiceName: str
+        :param _DynamicInstanceType: <p>DynamicInstance类型</p><p>枚举值：</p><ul><li>RayCluster： RayCluster类型</li></ul>
+        :type DynamicInstanceType: str
+        :param _DynamicInstanceId: <p>DynamicInstance的id</p>
+        :type DynamicInstanceId: int
+        :param _DynamicInstanceForm: <p>更新表单配置（每个更新域都传递最新的内容，要完整）</p>
+        :type DynamicInstanceForm: :class:`tencentcloud.emr.v20190103.models.ModifyDynamicInstanceForm`
+        :param _DynamicInstanceYaml: <p>更新YAML配置</p>
+        :type DynamicInstanceYaml: str
+        """
+        self._InstanceId = None
+        self._ServiceName = None
+        self._DynamicInstanceType = None
+        self._DynamicInstanceId = None
+        self._DynamicInstanceForm = None
+        self._DynamicInstanceYaml = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>EMR集群id</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ServiceName(self):
+        r"""<p>支持DynamicInstance的服务名称</p>
+        :rtype: str
+        """
+        return self._ServiceName
+
+    @ServiceName.setter
+    def ServiceName(self, ServiceName):
+        self._ServiceName = ServiceName
+
+    @property
+    def DynamicInstanceType(self):
+        r"""<p>DynamicInstance类型</p><p>枚举值：</p><ul><li>RayCluster： RayCluster类型</li></ul>
+        :rtype: str
+        """
+        return self._DynamicInstanceType
+
+    @DynamicInstanceType.setter
+    def DynamicInstanceType(self, DynamicInstanceType):
+        self._DynamicInstanceType = DynamicInstanceType
+
+    @property
+    def DynamicInstanceId(self):
+        r"""<p>DynamicInstance的id</p>
+        :rtype: int
+        """
+        return self._DynamicInstanceId
+
+    @DynamicInstanceId.setter
+    def DynamicInstanceId(self, DynamicInstanceId):
+        self._DynamicInstanceId = DynamicInstanceId
+
+    @property
+    def DynamicInstanceForm(self):
+        r"""<p>更新表单配置（每个更新域都传递最新的内容，要完整）</p>
+        :rtype: :class:`tencentcloud.emr.v20190103.models.ModifyDynamicInstanceForm`
+        """
+        return self._DynamicInstanceForm
+
+    @DynamicInstanceForm.setter
+    def DynamicInstanceForm(self, DynamicInstanceForm):
+        self._DynamicInstanceForm = DynamicInstanceForm
+
+    @property
+    def DynamicInstanceYaml(self):
+        r"""<p>更新YAML配置</p>
+        :rtype: str
+        """
+        return self._DynamicInstanceYaml
+
+    @DynamicInstanceYaml.setter
+    def DynamicInstanceYaml(self, DynamicInstanceYaml):
+        self._DynamicInstanceYaml = DynamicInstanceYaml
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._ServiceName = params.get("ServiceName")
+        self._DynamicInstanceType = params.get("DynamicInstanceType")
+        self._DynamicInstanceId = params.get("DynamicInstanceId")
+        if params.get("DynamicInstanceForm") is not None:
+            self._DynamicInstanceForm = ModifyDynamicInstanceForm()
+            self._DynamicInstanceForm._deserialize(params.get("DynamicInstanceForm"))
+        self._DynamicInstanceYaml = params.get("DynamicInstanceYaml")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDynamicInstanceResponse(AbstractModel):
+    r"""ModifyDynamicInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: <p>异步流程id</p>
+        :type FlowId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FlowId = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        r"""<p>异步流程id</p>
+        :rtype: int
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyGlobalConfigRequest(AbstractModel):
     r"""ModifyGlobalConfig请求参数结构体
 
@@ -26675,6 +28677,57 @@ class MultiZoneSetting(AbstractModel):
         if params.get("ResourceSpec") is not None:
             self._ResourceSpec = NewResourceSpec()
             self._ResourceSpec._deserialize(params.get("ResourceSpec"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NameValue(AbstractModel):
+    r"""NameValue 键值
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: name
+        :type Name: str
+        :param _Value: value
+        :type Value: str
+        """
+        self._Name = None
+        self._Value = None
+
+    @property
+    def Name(self):
+        r"""name
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Value(self):
+        r"""value
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -32764,6 +34817,132 @@ class QuotaEntity(AbstractModel):
         self._RemainingQuota = params.get("RemainingQuota")
         self._TotalQuota = params.get("TotalQuota")
         self._Zone = params.get("Zone")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RayCluster(AbstractModel):
+    r"""RayCluster
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RayClusterName: <p>RayCluster 集群名</p>
+        :type RayClusterName: str
+        :param _RayClusterId: <p>RayCluster 集群 id</p>
+        :type RayClusterId: int
+        :param _PodCount: <p>pod 数量</p>
+        :type PodCount: int
+        :param _CreateTime: <p>集群创建时间</p>
+        :type CreateTime: str
+        :param _RedisCount: <p>redis 实例数量</p>
+        :type RedisCount: int
+        :param _SubmitType: <p>创建类型</p><p>枚举值：</p><ul><li>1： 表单创建</li><li>2： yaml创建</li></ul>
+        :type SubmitType: int
+        :param _DashboardUrl: <p>head访问地址,也是dashboard地址</p>
+        :type DashboardUrl: str
+        """
+        self._RayClusterName = None
+        self._RayClusterId = None
+        self._PodCount = None
+        self._CreateTime = None
+        self._RedisCount = None
+        self._SubmitType = None
+        self._DashboardUrl = None
+
+    @property
+    def RayClusterName(self):
+        r"""<p>RayCluster 集群名</p>
+        :rtype: str
+        """
+        return self._RayClusterName
+
+    @RayClusterName.setter
+    def RayClusterName(self, RayClusterName):
+        self._RayClusterName = RayClusterName
+
+    @property
+    def RayClusterId(self):
+        r"""<p>RayCluster 集群 id</p>
+        :rtype: int
+        """
+        return self._RayClusterId
+
+    @RayClusterId.setter
+    def RayClusterId(self, RayClusterId):
+        self._RayClusterId = RayClusterId
+
+    @property
+    def PodCount(self):
+        r"""<p>pod 数量</p>
+        :rtype: int
+        """
+        return self._PodCount
+
+    @PodCount.setter
+    def PodCount(self, PodCount):
+        self._PodCount = PodCount
+
+    @property
+    def CreateTime(self):
+        r"""<p>集群创建时间</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def RedisCount(self):
+        r"""<p>redis 实例数量</p>
+        :rtype: int
+        """
+        return self._RedisCount
+
+    @RedisCount.setter
+    def RedisCount(self, RedisCount):
+        self._RedisCount = RedisCount
+
+    @property
+    def SubmitType(self):
+        r"""<p>创建类型</p><p>枚举值：</p><ul><li>1： 表单创建</li><li>2： yaml创建</li></ul>
+        :rtype: int
+        """
+        return self._SubmitType
+
+    @SubmitType.setter
+    def SubmitType(self, SubmitType):
+        self._SubmitType = SubmitType
+
+    @property
+    def DashboardUrl(self):
+        r"""<p>head访问地址,也是dashboard地址</p>
+        :rtype: str
+        """
+        return self._DashboardUrl
+
+    @DashboardUrl.setter
+    def DashboardUrl(self, DashboardUrl):
+        self._DashboardUrl = DashboardUrl
+
+
+    def _deserialize(self, params):
+        self._RayClusterName = params.get("RayClusterName")
+        self._RayClusterId = params.get("RayClusterId")
+        self._PodCount = params.get("PodCount")
+        self._CreateTime = params.get("CreateTime")
+        self._RedisCount = params.get("RedisCount")
+        self._SubmitType = params.get("SubmitType")
+        self._DashboardUrl = params.get("DashboardUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -39712,6 +41891,115 @@ class TerminateClusterNodesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class TerminateDynamicInstancesRequest(AbstractModel):
+    r"""TerminateDynamicInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>EMR集群id</p>
+        :type InstanceId: str
+        :param _DynamicInstanceType: <p>DynamicInstance类型</p><p>枚举值：</p><ul><li>RayCluster： RayCluster类型</li></ul>
+        :type DynamicInstanceType: str
+        :param _DynamicInstanceIds: <p>yaml创建信息</p>
+        :type DynamicInstanceIds: list of int non-negative
+        """
+        self._InstanceId = None
+        self._DynamicInstanceType = None
+        self._DynamicInstanceIds = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>EMR集群id</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def DynamicInstanceType(self):
+        r"""<p>DynamicInstance类型</p><p>枚举值：</p><ul><li>RayCluster： RayCluster类型</li></ul>
+        :rtype: str
+        """
+        return self._DynamicInstanceType
+
+    @DynamicInstanceType.setter
+    def DynamicInstanceType(self, DynamicInstanceType):
+        self._DynamicInstanceType = DynamicInstanceType
+
+    @property
+    def DynamicInstanceIds(self):
+        r"""<p>yaml创建信息</p>
+        :rtype: list of int non-negative
+        """
+        return self._DynamicInstanceIds
+
+    @DynamicInstanceIds.setter
+    def DynamicInstanceIds(self, DynamicInstanceIds):
+        self._DynamicInstanceIds = DynamicInstanceIds
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._DynamicInstanceType = params.get("DynamicInstanceType")
+        self._DynamicInstanceIds = params.get("DynamicInstanceIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TerminateDynamicInstancesResponse(AbstractModel):
+    r"""TerminateDynamicInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: <p>异步流程id</p>
+        :type FlowId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FlowId = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        r"""<p>异步流程id</p>
+        :rtype: int
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        self._RequestId = params.get("RequestId")
+
+
 class TerminateInstanceRequest(AbstractModel):
     r"""TerminateInstance请求参数结构体
 
@@ -41627,6 +43915,102 @@ class VirtualPrivateCloud(AbstractModel):
     def _deserialize(self, params):
         self._VpcId = params.get("VpcId")
         self._SubnetId = params.get("SubnetId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VolumeMount(AbstractModel):
+    r"""挂载卷
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MountName: 挂载卷名称
+        :type MountName: str
+        :param _MountPath: 挂载路径
+        :type MountPath: str
+        :param _SubPathMode: 挂载类型
+        :type SubPathMode: str
+        :param _SubPath: 子路径
+        :type SubPath: str
+        :param _MountMode: 挂载模式，仅支持ReadWrite和OnlyRead
+        :type MountMode: str
+        """
+        self._MountName = None
+        self._MountPath = None
+        self._SubPathMode = None
+        self._SubPath = None
+        self._MountMode = None
+
+    @property
+    def MountName(self):
+        r"""挂载卷名称
+        :rtype: str
+        """
+        return self._MountName
+
+    @MountName.setter
+    def MountName(self, MountName):
+        self._MountName = MountName
+
+    @property
+    def MountPath(self):
+        r"""挂载路径
+        :rtype: str
+        """
+        return self._MountPath
+
+    @MountPath.setter
+    def MountPath(self, MountPath):
+        self._MountPath = MountPath
+
+    @property
+    def SubPathMode(self):
+        r"""挂载类型
+        :rtype: str
+        """
+        return self._SubPathMode
+
+    @SubPathMode.setter
+    def SubPathMode(self, SubPathMode):
+        self._SubPathMode = SubPathMode
+
+    @property
+    def SubPath(self):
+        r"""子路径
+        :rtype: str
+        """
+        return self._SubPath
+
+    @SubPath.setter
+    def SubPath(self, SubPath):
+        self._SubPath = SubPath
+
+    @property
+    def MountMode(self):
+        r"""挂载模式，仅支持ReadWrite和OnlyRead
+        :rtype: str
+        """
+        return self._MountMode
+
+    @MountMode.setter
+    def MountMode(self, MountMode):
+        self._MountMode = MountMode
+
+
+    def _deserialize(self, params):
+        self._MountName = params.get("MountName")
+        self._MountPath = params.get("MountPath")
+        self._SubPathMode = params.get("SubPathMode")
+        self._SubPath = params.get("SubPath")
+        self._MountMode = params.get("MountMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

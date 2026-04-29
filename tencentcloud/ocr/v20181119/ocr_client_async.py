@@ -1335,6 +1335,24 @@ class OcrClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def RecognizeAgent(
+            self,
+            request: models.RecognizeAgentRequest,
+            opts: Dict = None,
+    ) -> models.RecognizeAgentResponse:
+        """
+        支持对输入图的内容进行判断、分类以及总结；支持用户对通用文字识别输出结构进行自定义。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "RecognizeAgent"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.RecognizeAgentResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def RecognizeContainerOCR(
             self,
             request: models.RecognizeContainerOCRRequest,
@@ -2301,6 +2319,24 @@ class OcrClient(AbstractClient):
         kwargs["action"] = "VerifyOfdVatInvoiceOCR"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.VerifyOfdVatInvoiceOCRResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def VerifyScenePhoto(
+            self,
+            request: models.VerifyScenePhotoRequest,
+            opts: Dict = None,
+    ) -> models.VerifyScenePhotoResponse:
+        """
+        提供针对特定场景（如商户门头照、车牌等）图片的PS篡改、AIGC合成、图片质量检测能力，可应用于业务流程中对特定场景图片真实性、有效性校验的场景。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "VerifyScenePhoto"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.VerifyScenePhotoResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

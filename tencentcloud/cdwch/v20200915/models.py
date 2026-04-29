@@ -2906,26 +2906,15 @@ class DescribeCkSqlApisRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例id
+        :param _InstanceId: <p>实例id</p>
         :type InstanceId: str
-        :param _ApiType: api接口名称,GetClusters:获取集群cluster列表
-GetSystemUsers:获取系统用户列表
-CheckNodeCluster: 检查节点是否隶属一个cluster
-GetClusterDatabases: 获取一个cluster下的数据库列表
-GetClusterTables: 获取一个cluster下的数据库表列表
-GetPrivilegeUsers: 获取授权的用户列表
-GET_USER_CLUSTER_PRIVILEGES:获取用户cluster下的权限   
-GetUserClusterNewPrivileges:获取用户cluster下的权限 (新版）
-RevokeClusterUser:解绑cluster用户
-DeleteSystemUser:删除系统用户 —— 必须所有cluster先解绑
-GetUserOptionMessages:获取用户配置备注信息
-GET_USER_CONFIGS:获取用户配置列表  QUOTA、PROFILE、POLICY
+        :param _ApiType: <p>api接口名称,GetClusters:获取集群cluster列表<br>GetSystemUsers:获取系统用户列表<br>CheckNodeCluster: 检查节点是否隶属一个cluster<br>GetClusterDatabases: 获取一个cluster下的数据库列表<br>GetClusterTables: 获取一个cluster下的数据库表列表<br>GetPrivilegeUsers: 获取授权的用户列表<br>GET_USER_CLUSTER_PRIVILEGES:获取用户cluster下的权限<br>GetUserClusterNewPrivileges:获取用户cluster下的权限 (新版）<br>RevokeClusterUser:解绑cluster用户<br>DeleteSystemUser:删除系统用户 —— 必须所有cluster先解绑<br>GetUserOptionMessages:获取用户配置备注信息<br>GET_USER_CONFIGS:获取用户配置列表  QUOTA、PROFILE、POLICY</p>
         :type ApiType: str
-        :param _Cluster: 集群名称，当ApiType取值为GET_SYSTEM_USERS，GET_PRIVILEGE_USERS，GET_CLUSTER_DATABASES，GET_CLUSTER_TABLES 时，此参数必填
+        :param _Cluster: <p>clickhouse逻辑集群名称，可通过连接集群执行 <code>SHOW CLUSTERS</code> 查询获得。当 ApiType 取值为 GET_SYSTEM_USERS、GET_PRIVILEGE_USERS、GET_CLUSTER_DATABASES或GET_CLUSTER_TABLES 时，本参数必填。</p>
         :type Cluster: str
-        :param _UserName: 用户名称，api与user相关的必填
+        :param _UserName: <p>用户名称，api与user相关的必填</p>
         :type UserName: str
-        :param _UserType: 账户的类型
+        :param _UserType: <p>账户的类型</p>
         :type UserType: str
         """
         self._InstanceId = None
@@ -2936,7 +2925,7 @@ GET_USER_CONFIGS:获取用户配置列表  QUOTA、PROFILE、POLICY
 
     @property
     def InstanceId(self):
-        r"""实例id
+        r"""<p>实例id</p>
         :rtype: str
         """
         return self._InstanceId
@@ -2947,18 +2936,7 @@ GET_USER_CONFIGS:获取用户配置列表  QUOTA、PROFILE、POLICY
 
     @property
     def ApiType(self):
-        r"""api接口名称,GetClusters:获取集群cluster列表
-GetSystemUsers:获取系统用户列表
-CheckNodeCluster: 检查节点是否隶属一个cluster
-GetClusterDatabases: 获取一个cluster下的数据库列表
-GetClusterTables: 获取一个cluster下的数据库表列表
-GetPrivilegeUsers: 获取授权的用户列表
-GET_USER_CLUSTER_PRIVILEGES:获取用户cluster下的权限   
-GetUserClusterNewPrivileges:获取用户cluster下的权限 (新版）
-RevokeClusterUser:解绑cluster用户
-DeleteSystemUser:删除系统用户 —— 必须所有cluster先解绑
-GetUserOptionMessages:获取用户配置备注信息
-GET_USER_CONFIGS:获取用户配置列表  QUOTA、PROFILE、POLICY
+        r"""<p>api接口名称,GetClusters:获取集群cluster列表<br>GetSystemUsers:获取系统用户列表<br>CheckNodeCluster: 检查节点是否隶属一个cluster<br>GetClusterDatabases: 获取一个cluster下的数据库列表<br>GetClusterTables: 获取一个cluster下的数据库表列表<br>GetPrivilegeUsers: 获取授权的用户列表<br>GET_USER_CLUSTER_PRIVILEGES:获取用户cluster下的权限<br>GetUserClusterNewPrivileges:获取用户cluster下的权限 (新版）<br>RevokeClusterUser:解绑cluster用户<br>DeleteSystemUser:删除系统用户 —— 必须所有cluster先解绑<br>GetUserOptionMessages:获取用户配置备注信息<br>GET_USER_CONFIGS:获取用户配置列表  QUOTA、PROFILE、POLICY</p>
         :rtype: str
         """
         return self._ApiType
@@ -2969,7 +2947,7 @@ GET_USER_CONFIGS:获取用户配置列表  QUOTA、PROFILE、POLICY
 
     @property
     def Cluster(self):
-        r"""集群名称，当ApiType取值为GET_SYSTEM_USERS，GET_PRIVILEGE_USERS，GET_CLUSTER_DATABASES，GET_CLUSTER_TABLES 时，此参数必填
+        r"""<p>clickhouse逻辑集群名称，可通过连接集群执行 <code>SHOW CLUSTERS</code> 查询获得。当 ApiType 取值为 GET_SYSTEM_USERS、GET_PRIVILEGE_USERS、GET_CLUSTER_DATABASES或GET_CLUSTER_TABLES 时，本参数必填。</p>
         :rtype: str
         """
         return self._Cluster
@@ -2980,7 +2958,7 @@ GET_USER_CONFIGS:获取用户配置列表  QUOTA、PROFILE、POLICY
 
     @property
     def UserName(self):
-        r"""用户名称，api与user相关的必填
+        r"""<p>用户名称，api与user相关的必填</p>
         :rtype: str
         """
         return self._UserName
@@ -2991,7 +2969,7 @@ GET_USER_CONFIGS:获取用户配置列表  QUOTA、PROFILE、POLICY
 
     @property
     def UserType(self):
-        r"""账户的类型
+        r"""<p>账户的类型</p>
         :rtype: str
         """
         return self._UserType
@@ -3024,7 +3002,7 @@ class DescribeCkSqlApisResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ReturnData: 返回的查询数据，大部分情况是list，也可能是bool
+        :param _ReturnData: <p>返回的查询数据，大部分情况是list，也可能是bool</p>
         :type ReturnData: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3034,7 +3012,7 @@ class DescribeCkSqlApisResponse(AbstractModel):
 
     @property
     def ReturnData(self):
-        r"""返回的查询数据，大部分情况是list，也可能是bool
+        r"""<p>返回的查询数据，大部分情况是list，也可能是bool</p>
         :rtype: str
         """
         return self._ReturnData
@@ -7141,17 +7119,17 @@ class ModifyUserNewPrivilegeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例id
+        :param _InstanceId: <p>实例id</p>
         :type InstanceId: str
-        :param _Cluster: cluster名称
+        :param _Cluster: <p>clickhouse逻辑集群名称，可通过连接集群执行 <code>SHOW CLUSTERS</code> 查询获得</p>
         :type Cluster: str
-        :param _UserName: 用户名
+        :param _UserName: <p>用户名</p>
         :type UserName: str
-        :param _AllDatabase: 是否所有数据库表
+        :param _AllDatabase: <p>是否所有数据库表</p>
         :type AllDatabase: bool
-        :param _GlobalPrivileges: 全局权限
+        :param _GlobalPrivileges: <p>全局权限</p>
         :type GlobalPrivileges: list of str
-        :param _DatabasePrivilegeList: 数据库表权限
+        :param _DatabasePrivilegeList: <p>数据库表权限</p>
         :type DatabasePrivilegeList: list of DatabasePrivilegeInfo
         """
         self._InstanceId = None
@@ -7163,7 +7141,7 @@ class ModifyUserNewPrivilegeRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例id
+        r"""<p>实例id</p>
         :rtype: str
         """
         return self._InstanceId
@@ -7174,7 +7152,7 @@ class ModifyUserNewPrivilegeRequest(AbstractModel):
 
     @property
     def Cluster(self):
-        r"""cluster名称
+        r"""<p>clickhouse逻辑集群名称，可通过连接集群执行 <code>SHOW CLUSTERS</code> 查询获得</p>
         :rtype: str
         """
         return self._Cluster
@@ -7185,7 +7163,7 @@ class ModifyUserNewPrivilegeRequest(AbstractModel):
 
     @property
     def UserName(self):
-        r"""用户名
+        r"""<p>用户名</p>
         :rtype: str
         """
         return self._UserName
@@ -7196,7 +7174,7 @@ class ModifyUserNewPrivilegeRequest(AbstractModel):
 
     @property
     def AllDatabase(self):
-        r"""是否所有数据库表
+        r"""<p>是否所有数据库表</p>
         :rtype: bool
         """
         return self._AllDatabase
@@ -7207,7 +7185,7 @@ class ModifyUserNewPrivilegeRequest(AbstractModel):
 
     @property
     def GlobalPrivileges(self):
-        r"""全局权限
+        r"""<p>全局权限</p>
         :rtype: list of str
         """
         return self._GlobalPrivileges
@@ -7218,7 +7196,7 @@ class ModifyUserNewPrivilegeRequest(AbstractModel):
 
     @property
     def DatabasePrivilegeList(self):
-        r"""数据库表权限
+        r"""<p>数据库表权限</p>
         :rtype: list of DatabasePrivilegeInfo
         """
         return self._DatabasePrivilegeList
