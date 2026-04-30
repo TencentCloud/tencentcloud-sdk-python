@@ -93,8 +93,8 @@ class AbstractClient(object):
                 self.profile.region_breaker_profile = RegionBreakerProfile()
             self.circuit_breaker = CircuitBreaker(self.profile.region_breaker_profile)
 
-        # 域名级容灾管理器（默认启用，.com → .com.cn → .cn）
-        self.domain_failover = DomainFailoverManager(self.profile.domain_failover_profile)
+        # 域名级容灾管理器（SDK 内部机制，对用户完全透明，.com → .com.cn → .cn）
+        self.domain_failover = DomainFailoverManager()
 
         if self.profile.request_client:
             self.request_client = self._sdkVersion + "; " + self.profile.request_client
@@ -447,15 +447,6 @@ class AbstractClient(object):
             return self.request.send_request(req)
 
         origin_endpoint = self._get_endpoint(options=options)
-        # 未启用域名容灾：按原逻辑一次性请求
-        if not self.domain_failover.enabled:
-            req = RequestInternal(origin_endpoint,
-                                  self.profile.httpProfile.reqMethod,
-                                  self._requestPath,
-                                  header=headers)
-            self._build_req_inter(action, params, req, options)
-            return self.request.send_request(req)
-
         return self._call_with_domain_failover(origin_endpoint, action, params, options, headers)
 
     def _call_with_domain_failover(self, origin_endpoint, action, params, options, headers):

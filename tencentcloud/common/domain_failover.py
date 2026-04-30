@@ -44,6 +44,21 @@ _FAILOVER_SUFFIX_RULES = [
 _INTL_SUFFIX = ".intl.tencentcloudapi.com"
 
 
+class _InternalBreakerSetting(object):
+    """域名容灾用的断路器阈值（完全内部常量，不暴露给用户）。
+
+    字段名与 RegionBreakerProfile 保持一致，以便复用已有的 CircuitBreaker 实现。
+    每个候选域名的 CircuitBreaker 持有独立的 setting 实例，避免相互影响。
+    """
+
+    def __init__(self):
+        self.max_fail_num = 5
+        self.max_fail_percent = 0.75
+        self.window_interval = 60 * 5   # 5 分钟内累计窗口
+        self.timeout = 60               # OPEN 状态 60s 后进入 HALF_OPEN
+        self.max_requests = 5           # HALF_OPEN 下累计 5 次成功后回到 CLOSED
+
+
 def _classify_exception(exc):
     """沿 __cause__ / __context__ 链识别原始异常类型，返回可触发域名切换的 kind。
 
@@ -171,23 +186,21 @@ class DomainFailoverManager(object):
     生命周期：AbstractClient 持有一个实例；每个候选域名首次出现时动态
     创建 CircuitBreaker。不同 client 实例间不共享（与现有 region_breaker
     的作用域一致）。
+
+    本管理器为 SDK 内部组件，对用户完全透明：不暴露开关、不暴露阈值，
+    始终生效。仅当 host 未命中 `*.tencentcloudapi.com` 族（例如 intl 域名、
+    自定义 endpoint、IP）时等价于"不切换"，此时行为与改造前完全一致。
     """
 
-    def __init__(self, profile):
-        """:param profile: `DomainFailoverProfile`"""
-        self._profile = profile
+    def __init__(self):
         self._breakers = {}
         self._lock = threading.Lock()
-
-    @property
-    def enabled(self):
-        return self._profile is not None and self._profile.enabled
 
     def get_breaker(self, host):
         with self._lock:
             br = self._breakers.get(host)
             if br is None:
-                br = CircuitBreaker(self._profile.breaker_setting)
+                br = CircuitBreaker(_InternalBreakerSetting())
                 self._breakers[host] = br
             return br
 
