@@ -41,6 +41,9 @@ from tencentcloud.common.http.request import RequestInternal
 from tencentcloud.common.profile.client_profile import ClientProfile, RegionBreakerProfile
 from tencentcloud.common.sign import Sign
 from tencentcloud.common.circuit_breaker import CircuitBreaker
+from tencentcloud.common.domain_failover import (
+    DomainFailoverManager, _classify_exception, is_failover_triggered,
+)
 from tencentcloud.common.retry import NoopRetryer
 
 warnings.filterwarnings("ignore", module="tencentcloud", category=UserWarning)
@@ -89,6 +92,10 @@ class AbstractClient(object):
             if self.profile.region_breaker_profile is None:
                 self.profile.region_breaker_profile = RegionBreakerProfile()
             self.circuit_breaker = CircuitBreaker(self.profile.region_breaker_profile)
+
+        # 域名级容灾管理器（默认启用，.com → .com.cn → .cn）
+        self.domain_failover = DomainFailoverManager(self.profile.domain_failover_profile)
+
         if self.profile.request_client:
             self.request_client = self._sdkVersion + "; " + self.profile.request_client
         else:
@@ -427,16 +434,80 @@ class AbstractClient(object):
             headers["X-TC-TraceId"] = str(uuid.uuid4())
         if not self.profile.disable_region_breaker:
             return self._call_with_region_breaker(action, params, options, headers)
-        req = RequestInternal(self._get_endpoint(options=options),
-                              self.profile.httpProfile.reqMethod,
-                              self._requestPath,
-                              header=headers)
-        self._build_req_inter(action, params, req, options)
 
+        # apigw_endpoint 由用户显式指定，跳过域名切换
         if self.profile.httpProfile.apigw_endpoint:
+            req = RequestInternal(self._get_endpoint(options=options),
+                                  self.profile.httpProfile.reqMethod,
+                                  self._requestPath,
+                                  header=headers)
+            self._build_req_inter(action, params, req, options)
             req.host = self.profile.httpProfile.apigw_endpoint
             req.header["Host"] = req.host
-        return self.request.send_request(req)
+            return self.request.send_request(req)
+
+        origin_endpoint = self._get_endpoint(options=options)
+        # 未启用域名容灾：按原逻辑一次性请求
+        if not self.domain_failover.enabled:
+            req = RequestInternal(origin_endpoint,
+                                  self.profile.httpProfile.reqMethod,
+                                  self._requestPath,
+                                  header=headers)
+            self._build_req_inter(action, params, req, options)
+            return self.request.send_request(req)
+
+        return self._call_with_domain_failover(origin_endpoint, action, params, options, headers)
+
+    def _call_with_domain_failover(self, origin_endpoint, action, params, options, headers):
+        """按候选域名顺序串行尝试，首次可切换异常即切到下一个候选。
+
+        每个候选都携带独立的断路器；任何一次成功都会重置对应候选的失败计数。
+        全部候选失败，抛出最后一次的 TencentCloudSDKException（异常链保留）。
+        """
+        usable = self.domain_failover.iter_available_candidates(origin_endpoint)
+        last_err = None
+
+        for idx, (cand_host, breaker, generation) in enumerate(usable):
+            # 每个候选都需要重新构造 req 并重新签名（因为 Host 变了，TC3 签名里
+            # `host:` 也要跟着变）。注意 headers 是外部传入的字典，为避免签名残留
+            # 污染下个候选，这里深拷贝一份。
+            cand_headers = dict(headers)
+            req = RequestInternal(cand_host,
+                                  self.profile.httpProfile.reqMethod,
+                                  self._requestPath,
+                                  header=cand_headers)
+            self._build_req_inter(action, params, req, options)
+            # 覆写 Host，确保即便老签名版本 (HmacSHA1/256) 没设 Host 也能生效
+            req.header["Host"] = cand_host
+
+            # ProxyConnection.request_host 会在请求时作为 setdefault("Host") 的兜底；
+            # 为确保 HTTP 层也看到正确的 Host，这里一并同步（不影响 rootDomain 配置）。
+            prev_request_host = self.request.conn.request_host
+            self.request.conn.request_host = cand_host
+            try:
+                resp = self.request.send_request(req)
+                breaker.after_requests(generation, True)
+                return resp
+            except TencentCloudSDKException as e:
+                kind = _classify_exception(e)
+                if is_failover_triggered(kind):
+                    # 触发切换：反馈失败并尝试下一个候选
+                    breaker.after_requests(generation, False)
+                    last_err = e
+                    logger.debug(
+                        "domain_failover: candidate=%s kind=%s err=%s, try next",
+                        cand_host, kind, e)
+                    continue
+                # 非网络类异常：不切换，直接抛；不影响断路器计数（避免业务错误污染）
+                raise
+            finally:
+                self.request.conn.request_host = prev_request_host
+
+        # 全部候选失败：抛出最后一次的异常（异常链已经通过 `raise ... from e` 保留）
+        if last_err is not None:
+            raise last_err
+        # 理论上走不到这里
+        raise TencentCloudSDKException("ClientNetworkError", "all failover candidates failed")
 
     def call(self, action, params, options=None, headers=None):
 

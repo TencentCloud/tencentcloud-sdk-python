@@ -34,11 +34,14 @@ class ClientProfile(object):
     :type request_client: str
     :param retryer: Custom retry configuration.
     :type retryer: :class:`tencentcloud.common.retry.StandardRetryer`
+    :param domain_failover_profile: The domain-level failover profile.
+    :type domain_failover_profile: :class:`DomainFailoverProfile`
     """
     unsignedPayload = False
 
     def __init__(self, signMethod=None, httpProfile=None, language="zh-CN",
-                 disable_region_breaker=True, region_breaker_profile=None, request_client=None, retryer=None):
+                 disable_region_breaker=True, region_breaker_profile=None, request_client=None, retryer=None,
+                 domain_failover_profile=None):
         self.httpProfile = HttpProfile() if httpProfile is None else httpProfile
         self.signMethod = "TC3-HMAC-SHA256" if signMethod is None else signMethod
         valid_language = ["zh-CN", "en-US"]
@@ -58,6 +61,36 @@ class ClientProfile(object):
             warnings.warn("RequestClient not match the regexp: ^[0-9a-zA-Z-_,;.]+$, ignored")
 
         self.retryer = retryer
+
+        # 域名级容灾（*.tencentcloudapi.com → .com.cn → .cn）
+        self.domain_failover_profile = domain_failover_profile or DomainFailoverProfile()
+
+
+class DomainFailoverProfile(object):
+    """域名级容灾切换配置。
+
+    当请求发生 DNS / TCP / TLS 类故障时，自动按 ``tencentcloudapi.com →
+    tencentcloudapi.com.cn → tencentcloudapi.cn`` 的顺序串行切换域名重试。
+
+    - 对 ``*.intl.tencentcloudapi.com`` （严格后缀匹配）不切换。
+    - 切换仅在当次请求的 ``ApiRequest.host`` 上生效，不会改写 ``HttpProfile.rootDomain``。
+    - 每个候选域名都有独立的 ``CircuitBreaker``，失败到达阈值后在 ``timeout`` 时间内
+      跳过该候选，避免反复撞墙。
+
+    :param enabled: 是否启用，默认 ``True``。设置为 ``False`` 可完全关闭本机制。
+    :type enabled: bool
+    :param breaker_setting: 候选域名级断路器的阈值配置，未显式指定时使用默认 ``RegionBreakerProfile``
+        的阈值（max_fail_num=5, timeout=60s 等），详见 :class:`RegionBreakerProfile`。
+    :type breaker_setting: :class:`RegionBreakerProfile`
+    """
+
+    def __init__(self, enabled=True, breaker_setting=None):
+        self.enabled = enabled
+        # 复用 RegionBreakerProfile 的阈值字段（max_fail_num / max_fail_percent /
+        # window_interval / timeout / max_requests），断路器会从中读取配置
+        if breaker_setting is None:
+            breaker_setting = RegionBreakerProfile()
+        self.breaker_setting = breaker_setting
 
 
 class RegionBreakerProfile(object):
