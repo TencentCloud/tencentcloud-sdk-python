@@ -7247,13 +7247,13 @@ class CreateAppRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AppType: 应用类型；knowledge_qa-知识问答管理
+        :param _AppType: <p>应用类型；<code>&quot;knowledge_qa&quot;</code> 知识问答应用（包含标准模式 单工作流 Multi-Agent 等模式）</p>
         :type AppType: str
-        :param _BaseConfig: 应用基础配置
+        :param _BaseConfig: <p>应用基础配置</p>
         :type BaseConfig: :class:`tencentcloud.lke.v20231130.models.BaseConfig`
-        :param _Pattern: 应用模式 standard:标准模式, agent: agent模式，single_workflow：单工作流模式
+        :param _Pattern: <p>应用模式 standard:标准模式, agent: agent模式，single_workflow：单工作流模式,ClawAgent:Claw模式</p>
         :type Pattern: str
-        :param _AgentType: 智能体类型 dialogue 对话式智能体，wechat 公众号智能体
+        :param _AgentType: <p>智能体类型，用于区分应用最终以何种智能体形态对外服务（对话(&quot;dialogue&quot;) / 公众号(&quot;wechat&quot;)）。当前 ADP 创建页面不区分对话/公众号智能体，ADP 创建页默认走对话智能体。</p>
         :type AgentType: str
         """
         self._AppType = None
@@ -7263,7 +7263,7 @@ class CreateAppRequest(AbstractModel):
 
     @property
     def AppType(self):
-        r"""应用类型；knowledge_qa-知识问答管理
+        r"""<p>应用类型；<code>&quot;knowledge_qa&quot;</code> 知识问答应用（包含标准模式 单工作流 Multi-Agent 等模式）</p>
         :rtype: str
         """
         return self._AppType
@@ -7274,7 +7274,7 @@ class CreateAppRequest(AbstractModel):
 
     @property
     def BaseConfig(self):
-        r"""应用基础配置
+        r"""<p>应用基础配置</p>
         :rtype: :class:`tencentcloud.lke.v20231130.models.BaseConfig`
         """
         return self._BaseConfig
@@ -7285,7 +7285,7 @@ class CreateAppRequest(AbstractModel):
 
     @property
     def Pattern(self):
-        r"""应用模式 standard:标准模式, agent: agent模式，single_workflow：单工作流模式
+        r"""<p>应用模式 standard:标准模式, agent: agent模式，single_workflow：单工作流模式,ClawAgent:Claw模式</p>
         :rtype: str
         """
         return self._Pattern
@@ -7296,7 +7296,7 @@ class CreateAppRequest(AbstractModel):
 
     @property
     def AgentType(self):
-        r"""智能体类型 dialogue 对话式智能体，wechat 公众号智能体
+        r"""<p>智能体类型，用于区分应用最终以何种智能体形态对外服务（对话(&quot;dialogue&quot;) / 公众号(&quot;wechat&quot;)）。当前 ADP 创建页面不区分对话/公众号智能体，ADP 创建页默认走对话智能体。</p>
         :rtype: str
         """
         return self._AgentType
@@ -7330,10 +7330,10 @@ class CreateAppResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AppBizId: 应用ID
+        :param _AppBizId: <p>应用ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AppBizId: str
-        :param _IsCustomList: 判断账户应用列表权限是否是自定义的，用户交互提示
+        :param _IsCustomList: <p>判断账户应用列表权限是否是自定义的，用户交互提示</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsCustomList: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -7345,7 +7345,7 @@ class CreateAppResponse(AbstractModel):
 
     @property
     def AppBizId(self):
-        r"""应用ID
+        r"""<p>应用ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7357,7 +7357,7 @@ class CreateAppResponse(AbstractModel):
 
     @property
     def IsCustomList(self):
-        r"""判断账户应用列表权限是否是自定义的，用户交互提示
+        r"""<p>判断账户应用列表权限是否是自定义的，用户交互提示</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """

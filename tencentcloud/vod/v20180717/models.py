@@ -11344,6 +11344,8 @@ class AigcImageTaskInput(AbstractModel):
         :type OutputConfig: :class:`tencentcloud.vod.v20180717.models.AigcImageOutputConfig`
         :param _Seed: <p>模型随机种子。</p>
         :type Seed: int
+        :param _SceneType: <p>场景类型。取值如下：<li>当 ModelName 为 Hunyuan 时：   3d_panorama 表示全景图；</li><li>其他 ModelName 暂不支持。</li></p>
+        :type SceneType: str
         """
         self._ModelName = None
         self._ModelVersion = None
@@ -11354,6 +11356,7 @@ class AigcImageTaskInput(AbstractModel):
         self._GenerationMode = None
         self._OutputConfig = None
         self._Seed = None
+        self._SceneType = None
 
     @property
     def ModelName(self):
@@ -11454,6 +11457,17 @@ class AigcImageTaskInput(AbstractModel):
     def Seed(self, Seed):
         self._Seed = Seed
 
+    @property
+    def SceneType(self):
+        r"""<p>场景类型。取值如下：<li>当 ModelName 为 Hunyuan 时：   3d_panorama 表示全景图；</li><li>其他 ModelName 暂不支持。</li></p>
+        :rtype: str
+        """
+        return self._SceneType
+
+    @SceneType.setter
+    def SceneType(self, SceneType):
+        self._SceneType = SceneType
+
 
     def _deserialize(self, params):
         self._ModelName = params.get("ModelName")
@@ -11472,6 +11486,7 @@ class AigcImageTaskInput(AbstractModel):
             self._OutputConfig = AigcImageOutputConfig()
             self._OutputConfig._deserialize(params.get("OutputConfig"))
         self._Seed = params.get("Seed")
+        self._SceneType = params.get("SceneType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13411,24 +13426,26 @@ class AigcVideoTaskOutputFileInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StorageMode: 存储模式。取值有： <li>Permanent：永久存储；</li> <li>Temporary：临时存储；</li>
-默认值：Temporary
+        :param _StorageMode: <p>存储模式。取值有： <li>Permanent：永久存储；</li> <li>Temporary：临时存储；</li><br>默认值：Temporary</p>
         :type StorageMode: str
-        :param _MediaName: 输出文件名，最长 64 个字符。缺省由系统指定生成文件名。当 StorageMode 为 Permanent 时有效。
+        :param _MediaName: <p>输出文件名，最长 64 个字符。缺省由系统指定生成文件名。当 StorageMode 为 Permanent 时有效。</p>
         :type MediaName: str
-        :param _ClassId: 分类ID，用于对媒体进行分类管理，可通过 [创建分类](/document/product/266/7812) 接口，创建分类，获得分类 ID。当 StorageMode 为 Permanent 时有效。
-
+        :param _ClassId: <p>分类ID，用于对媒体进行分类管理，可通过 <a href="/document/product/266/7812">创建分类</a> 接口，创建分类，获得分类 ID。当 StorageMode 为 Permanent 时有效。</p>
         :type ClassId: int
-        :param _ExpireTime: 输出文件的过期时间，超过该时间文件将被删除，默认为永久不过期，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
+        :param _ExpireTime: <p>输出文件的过期时间，超过该时间文件将被删除，默认为永久不过期，格式按照 ISO 8601标准表示，详见 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式说明</a>。</p>
         :type ExpireTime: str
-        :param _FileType: 文件类型，例如 mp4、flv 等。
+        :param _FileType: <p>文件类型，例如 mp4、flv 等。</p>
         :type FileType: str
-        :param _FileUrl: 媒体文件播放地址。
+        :param _FileUrl: <p>媒体文件播放地址。</p>
         :type FileUrl: str
-        :param _FileId: 媒体文件 ID。当 StorageMode 为 Permanent 时有效。
+        :param _FileContent: <p>文件内容。当 UsageType 为 position_info 时有返回值。</p>
+        :type FileContent: str
+        :param _FileId: <p>媒体文件 ID。当 StorageMode 为 Permanent 时有效。</p>
         :type FileId: str
-        :param _MetaData: 输出视频的元信息。当 StorageMode 为 Permanent 时有效。
+        :param _MetaData: <p>输出视频的元信息。当 StorageMode 为 Permanent 时有效。</p>
         :type MetaData: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
+        :param _UsageType: <p>文件的用途类型。</p><p>枚举值：</p><ul><li>scene_url： 3D 场景文件，FileUrl 字段有返回值。</li><li>point_url： 点云文件，FileUrl 字段有返回值。</li><li>mesh_url： 原始网格模型文，FileUrl 字段有返回值。</li><li>mesh_simplified_url： 简化后的网格模型文件，FileUrl 字段有返回值。</li><li>position_info： 场景空间位置信息，FileContent 字段有返回值。</li><li>image_url： 生成的图片，FileUrl 字段有返回值。</li></ul>
+        :type UsageType: str
         """
         self._StorageMode = None
         self._MediaName = None
@@ -13436,13 +13453,14 @@ class AigcVideoTaskOutputFileInfo(AbstractModel):
         self._ExpireTime = None
         self._FileType = None
         self._FileUrl = None
+        self._FileContent = None
         self._FileId = None
         self._MetaData = None
+        self._UsageType = None
 
     @property
     def StorageMode(self):
-        r"""存储模式。取值有： <li>Permanent：永久存储；</li> <li>Temporary：临时存储；</li>
-默认值：Temporary
+        r"""<p>存储模式。取值有： <li>Permanent：永久存储；</li> <li>Temporary：临时存储；</li><br>默认值：Temporary</p>
         :rtype: str
         """
         return self._StorageMode
@@ -13453,7 +13471,7 @@ class AigcVideoTaskOutputFileInfo(AbstractModel):
 
     @property
     def MediaName(self):
-        r"""输出文件名，最长 64 个字符。缺省由系统指定生成文件名。当 StorageMode 为 Permanent 时有效。
+        r"""<p>输出文件名，最长 64 个字符。缺省由系统指定生成文件名。当 StorageMode 为 Permanent 时有效。</p>
         :rtype: str
         """
         return self._MediaName
@@ -13464,8 +13482,7 @@ class AigcVideoTaskOutputFileInfo(AbstractModel):
 
     @property
     def ClassId(self):
-        r"""分类ID，用于对媒体进行分类管理，可通过 [创建分类](/document/product/266/7812) 接口，创建分类，获得分类 ID。当 StorageMode 为 Permanent 时有效。
-
+        r"""<p>分类ID，用于对媒体进行分类管理，可通过 <a href="/document/product/266/7812">创建分类</a> 接口，创建分类，获得分类 ID。当 StorageMode 为 Permanent 时有效。</p>
         :rtype: int
         """
         return self._ClassId
@@ -13476,7 +13493,7 @@ class AigcVideoTaskOutputFileInfo(AbstractModel):
 
     @property
     def ExpireTime(self):
-        r"""输出文件的过期时间，超过该时间文件将被删除，默认为永久不过期，格式按照 ISO 8601标准表示，详见 [ISO 日期格式说明](https://cloud.tencent.com/document/product/266/11732#I)。
+        r"""<p>输出文件的过期时间，超过该时间文件将被删除，默认为永久不过期，格式按照 ISO 8601标准表示，详见 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式说明</a>。</p>
         :rtype: str
         """
         return self._ExpireTime
@@ -13487,7 +13504,7 @@ class AigcVideoTaskOutputFileInfo(AbstractModel):
 
     @property
     def FileType(self):
-        r"""文件类型，例如 mp4、flv 等。
+        r"""<p>文件类型，例如 mp4、flv 等。</p>
         :rtype: str
         """
         return self._FileType
@@ -13498,7 +13515,7 @@ class AigcVideoTaskOutputFileInfo(AbstractModel):
 
     @property
     def FileUrl(self):
-        r"""媒体文件播放地址。
+        r"""<p>媒体文件播放地址。</p>
         :rtype: str
         """
         return self._FileUrl
@@ -13508,8 +13525,19 @@ class AigcVideoTaskOutputFileInfo(AbstractModel):
         self._FileUrl = FileUrl
 
     @property
+    def FileContent(self):
+        r"""<p>文件内容。当 UsageType 为 position_info 时有返回值。</p>
+        :rtype: str
+        """
+        return self._FileContent
+
+    @FileContent.setter
+    def FileContent(self, FileContent):
+        self._FileContent = FileContent
+
+    @property
     def FileId(self):
-        r"""媒体文件 ID。当 StorageMode 为 Permanent 时有效。
+        r"""<p>媒体文件 ID。当 StorageMode 为 Permanent 时有效。</p>
         :rtype: str
         """
         return self._FileId
@@ -13520,7 +13548,7 @@ class AigcVideoTaskOutputFileInfo(AbstractModel):
 
     @property
     def MetaData(self):
-        r"""输出视频的元信息。当 StorageMode 为 Permanent 时有效。
+        r"""<p>输出视频的元信息。当 StorageMode 为 Permanent 时有效。</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
         """
         return self._MetaData
@@ -13528,6 +13556,17 @@ class AigcVideoTaskOutputFileInfo(AbstractModel):
     @MetaData.setter
     def MetaData(self, MetaData):
         self._MetaData = MetaData
+
+    @property
+    def UsageType(self):
+        r"""<p>文件的用途类型。</p><p>枚举值：</p><ul><li>scene_url： 3D 场景文件，FileUrl 字段有返回值。</li><li>point_url： 点云文件，FileUrl 字段有返回值。</li><li>mesh_url： 原始网格模型文，FileUrl 字段有返回值。</li><li>mesh_simplified_url： 简化后的网格模型文件，FileUrl 字段有返回值。</li><li>position_info： 场景空间位置信息，FileContent 字段有返回值。</li><li>image_url： 生成的图片，FileUrl 字段有返回值。</li></ul>
+        :rtype: str
+        """
+        return self._UsageType
+
+    @UsageType.setter
+    def UsageType(self, UsageType):
+        self._UsageType = UsageType
 
 
     def _deserialize(self, params):
@@ -13537,10 +13576,12 @@ class AigcVideoTaskOutputFileInfo(AbstractModel):
         self._ExpireTime = params.get("ExpireTime")
         self._FileType = params.get("FileType")
         self._FileUrl = params.get("FileUrl")
+        self._FileContent = params.get("FileContent")
         self._FileId = params.get("FileId")
         if params.get("MetaData") is not None:
             self._MetaData = MediaMetaData()
             self._MetaData._deserialize(params.get("MetaData"))
+        self._UsageType = params.get("UsageType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21672,6 +21713,8 @@ class CreateAigcImageTaskRequest(AbstractModel):
         :type OutputConfig: :class:`tencentcloud.vod.v20180717.models.AigcImageOutputConfig`
         :param _InputRegion: <p>输入的区域信息。可选值：</p><ul><li>Mainland：中国大陆；</li><li>Oversea：海外；</li><li>OverseaUSWest：海外-美西；</li></ul>
         :type InputRegion: str
+        :param _SceneType: <p>场景类型。取值如下：<li>当 ModelName 为 Hunyuan 时：   3d_panorama 表示全景图；</li><li>其他 ModelName 暂不支持。</li></p>
+        :type SceneType: str
         :param _Seed: <p>模型随机种子。</p>
         :type Seed: int
         :param _SessionId: <p>用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。</p>
@@ -21692,6 +21735,7 @@ class CreateAigcImageTaskRequest(AbstractModel):
         self._EnhancePrompt = None
         self._OutputConfig = None
         self._InputRegion = None
+        self._SceneType = None
         self._Seed = None
         self._SessionId = None
         self._SessionContext = None
@@ -21798,6 +21842,17 @@ class CreateAigcImageTaskRequest(AbstractModel):
         self._InputRegion = InputRegion
 
     @property
+    def SceneType(self):
+        r"""<p>场景类型。取值如下：<li>当 ModelName 为 Hunyuan 时：   3d_panorama 表示全景图；</li><li>其他 ModelName 暂不支持。</li></p>
+        :rtype: str
+        """
+        return self._SceneType
+
+    @SceneType.setter
+    def SceneType(self, SceneType):
+        self._SceneType = SceneType
+
+    @property
     def Seed(self):
         r"""<p>模型随机种子。</p>
         :rtype: int
@@ -21870,6 +21925,7 @@ class CreateAigcImageTaskRequest(AbstractModel):
             self._OutputConfig = AigcImageOutputConfig()
             self._OutputConfig._deserialize(params.get("OutputConfig"))
         self._InputRegion = params.get("InputRegion")
+        self._SceneType = params.get("SceneType")
         self._Seed = params.get("Seed")
         self._SessionId = params.get("SessionId")
         self._SessionContext = params.get("SessionContext")

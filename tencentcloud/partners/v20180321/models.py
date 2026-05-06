@@ -1944,9 +1944,9 @@ class DealGoodsPriceNewElem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RealTotalCost: 实付金额（单位：分）
+        :param _RealTotalCost: <p>实付金额</p><p>单位：分</p><p>该金额与控制台展示金额一致，为订单实付价 - 代金券之后的结果</p>
         :type RealTotalCost: int
-        :param _OriginalTotalCost: 原始金额（不含折扣，单位：分）
+        :param _OriginalTotalCost: <p>原始金额（不含折扣）</p><p>单位：分</p>
         :type OriginalTotalCost: int
         """
         self._RealTotalCost = None
@@ -1954,7 +1954,7 @@ class DealGoodsPriceNewElem(AbstractModel):
 
     @property
     def RealTotalCost(self):
-        r"""实付金额（单位：分）
+        r"""<p>实付金额</p><p>单位：分</p><p>该金额与控制台展示金额一致，为订单实付价 - 代金券之后的结果</p>
         :rtype: int
         """
         return self._RealTotalCost
@@ -1965,7 +1965,7 @@ class DealGoodsPriceNewElem(AbstractModel):
 
     @property
     def OriginalTotalCost(self):
-        r"""原始金额（不含折扣，单位：分）
+        r"""<p>原始金额（不含折扣）</p><p>单位：分</p>
         :rtype: int
         """
         return self._OriginalTotalCost
