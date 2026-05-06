@@ -39315,6 +39315,8 @@ class LLMDetectResult(AbstractModel):
         :type Payload: str
         :param _ImageResult: <p>图片检测结果</p>
         :type ImageResult: list of ImageResult
+        :param _MsgID: <p>要代答的消息id，此消息id用于作为GenerateLLMSecAnswer接口的入参</p>
+        :type MsgID: str
         """
         self._SensitiveResult = None
         self._KeyWordsResult = None
@@ -39325,6 +39327,7 @@ class LLMDetectResult(AbstractModel):
         self._Action = None
         self._Payload = None
         self._ImageResult = None
+        self._MsgID = None
 
     @property
     def SensitiveResult(self):
@@ -39425,6 +39428,17 @@ class LLMDetectResult(AbstractModel):
     def ImageResult(self, ImageResult):
         self._ImageResult = ImageResult
 
+    @property
+    def MsgID(self):
+        r"""<p>要代答的消息id，此消息id用于作为GenerateLLMSecAnswer接口的入参</p>
+        :rtype: str
+        """
+        return self._MsgID
+
+    @MsgID.setter
+    def MsgID(self, MsgID):
+        self._MsgID = MsgID
+
 
     def _deserialize(self, params):
         if params.get("SensitiveResult") is not None:
@@ -39453,6 +39467,7 @@ class LLMDetectResult(AbstractModel):
                 obj = ImageResult()
                 obj._deserialize(item)
                 self._ImageResult.append(obj)
+        self._MsgID = params.get("MsgID")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -43,6 +43,24 @@ class Ai3dClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeHunyuanTo3DMotionJob(
+            self,
+            request: models.DescribeHunyuanTo3DMotionJobRequest,
+            opts: Dict = None,
+    ) -> models.DescribeHunyuanTo3DMotionJobResponse:
+        """
+        查询组件生成任务。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeHunyuanTo3DMotionJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeHunyuanTo3DMotionJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeHunyuanTo3DUVJob(
             self,
             request: models.DescribeHunyuanTo3DUVJobRequest,
@@ -187,6 +205,25 @@ class Ai3dClient(AbstractClient):
         kwargs["action"] = "SubmitHunyuan3DPartJob"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.SubmitHunyuan3DPartJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def SubmitHunyuanTo3DMotionJob(
+            self,
+            request: models.SubmitHunyuanTo3DMotionJobRequest,
+            opts: Dict = None,
+    ) -> models.SubmitHunyuanTo3DMotionJobResponse:
+        """
+        输入文本后，可根据文本描述生成对应的 3D人物 动作数据，输出带动画数据的FBX文件。
+        默认提供1个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后，才能开始处理下一个任务。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "SubmitHunyuanTo3DMotionJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.SubmitHunyuanTo3DMotionJobResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

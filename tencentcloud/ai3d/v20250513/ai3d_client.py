@@ -49,6 +49,29 @@ class Ai3dClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeHunyuanTo3DMotionJob(self, request):
+        r"""查询组件生成任务。
+
+        :param request: Request instance for DescribeHunyuanTo3DMotionJob.
+        :type request: :class:`tencentcloud.ai3d.v20250513.models.DescribeHunyuanTo3DMotionJobRequest`
+        :rtype: :class:`tencentcloud.ai3d.v20250513.models.DescribeHunyuanTo3DMotionJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeHunyuanTo3DMotionJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeHunyuanTo3DMotionJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeHunyuanTo3DUVJob(self, request):
         r"""查询组件拆分任务。
 
@@ -229,6 +252,30 @@ class Ai3dClient(AbstractClient):
             body = self.call("SubmitHunyuan3DPartJob", params, headers=headers)
             response = json.loads(body)
             model = models.SubmitHunyuan3DPartJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def SubmitHunyuanTo3DMotionJob(self, request):
+        r"""输入文本后，可根据文本描述生成对应的 3D人物 动作数据，输出带动画数据的FBX文件。
+        默认提供1个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后，才能开始处理下一个任务。
+
+        :param request: Request instance for SubmitHunyuanTo3DMotionJob.
+        :type request: :class:`tencentcloud.ai3d.v20250513.models.SubmitHunyuanTo3DMotionJobRequest`
+        :rtype: :class:`tencentcloud.ai3d.v20250513.models.SubmitHunyuanTo3DMotionJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SubmitHunyuanTo3DMotionJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.SubmitHunyuanTo3DMotionJobResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

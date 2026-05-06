@@ -2886,9 +2886,12 @@ class CreateAndroidInstanceAcceleratorTokenRequest(AbstractModel):
         :type AndroidInstanceIds: list of str
         :param _UserIP: 用户IP，可以根据该 IP 选择就近加速点。如果不填，将自动选择就近加速点。
         :type UserIP: str
+        :param _ExpirationDuration: 有效期，默认为 12 小时，最长为 7 天，建议设置不要过长，否则泄漏风险越大。支持 s（秒）、m（分）、h（小时）、d（天）等单位，比如 1d、24h、86400s 都表示一天，1h2m3s 表示一小时两分三秒
+        :type ExpirationDuration: str
         """
         self._AndroidInstanceIds = None
         self._UserIP = None
+        self._ExpirationDuration = None
 
     @property
     def AndroidInstanceIds(self):
@@ -2912,10 +2915,22 @@ class CreateAndroidInstanceAcceleratorTokenRequest(AbstractModel):
     def UserIP(self, UserIP):
         self._UserIP = UserIP
 
+    @property
+    def ExpirationDuration(self):
+        r"""有效期，默认为 12 小时，最长为 7 天，建议设置不要过长，否则泄漏风险越大。支持 s（秒）、m（分）、h（小时）、d（天）等单位，比如 1d、24h、86400s 都表示一天，1h2m3s 表示一小时两分三秒
+        :rtype: str
+        """
+        return self._ExpirationDuration
+
+    @ExpirationDuration.setter
+    def ExpirationDuration(self, ExpirationDuration):
+        self._ExpirationDuration = ExpirationDuration
+
 
     def _deserialize(self, params):
         self._AndroidInstanceIds = params.get("AndroidInstanceIds")
         self._UserIP = params.get("UserIP")
+        self._ExpirationDuration = params.get("ExpirationDuration")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

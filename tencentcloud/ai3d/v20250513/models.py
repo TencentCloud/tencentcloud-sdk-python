@@ -112,6 +112,135 @@ class Convert3DFormatResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeHunyuanTo3DMotionJobRequest(AbstractModel):
+    r"""DescribeHunyuanTo3DMotionJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: <p>任务ID。</p>
+        :type JobId: str
+        """
+        self._JobId = None
+
+    @property
+    def JobId(self):
+        r"""<p>任务ID。</p>
+        :rtype: str
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeHunyuanTo3DMotionJobResponse(AbstractModel):
+    r"""DescribeHunyuanTo3DMotionJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: <p>任务状态。WAIT：等待中，RUN：执行中，FAIL：任务失败，DONE：任务成功 示例值：RUN。</p>
+        :type Status: str
+        :param _ErrorCode: <p>错误码。</p>
+        :type ErrorCode: str
+        :param _ErrorMessage: <p>错误信息。</p>
+        :type ErrorMessage: str
+        :param _ResultFile3Ds: <p>生成文件的URL地址，有效期1天。</p>
+        :type ResultFile3Ds: list of File3D
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Status = None
+        self._ErrorCode = None
+        self._ErrorMessage = None
+        self._ResultFile3Ds = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        r"""<p>任务状态。WAIT：等待中，RUN：执行中，FAIL：任务失败，DONE：任务成功 示例值：RUN。</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrorCode(self):
+        r"""<p>错误码。</p>
+        :rtype: str
+        """
+        return self._ErrorCode
+
+    @ErrorCode.setter
+    def ErrorCode(self, ErrorCode):
+        self._ErrorCode = ErrorCode
+
+    @property
+    def ErrorMessage(self):
+        r"""<p>错误信息。</p>
+        :rtype: str
+        """
+        return self._ErrorMessage
+
+    @ErrorMessage.setter
+    def ErrorMessage(self, ErrorMessage):
+        self._ErrorMessage = ErrorMessage
+
+    @property
+    def ResultFile3Ds(self):
+        r"""<p>生成文件的URL地址，有效期1天。</p>
+        :rtype: list of File3D
+        """
+        return self._ResultFile3Ds
+
+    @ResultFile3Ds.setter
+    def ResultFile3Ds(self, ResultFile3Ds):
+        self._ResultFile3Ds = ResultFile3Ds
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._ErrorCode = params.get("ErrorCode")
+        self._ErrorMessage = params.get("ErrorMessage")
+        if params.get("ResultFile3Ds") is not None:
+            self._ResultFile3Ds = []
+            for item in params.get("ResultFile3Ds"):
+                obj = File3D()
+                obj._deserialize(item)
+                self._ResultFile3Ds.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeHunyuanTo3DUVJobRequest(AbstractModel):
     r"""DescribeHunyuanTo3DUVJob请求参数结构体
 
@@ -1284,6 +1413,177 @@ class SubmitHunyuan3DPartJobResponse(AbstractModel):
     @property
     def JobId(self):
         r"""<p>任务ID。</p>
+        :rtype: str
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        self._RequestId = params.get("RequestId")
+
+
+class SubmitHunyuanTo3DMotionJobRequest(AbstractModel):
+    r"""SubmitHunyuanTo3DMotionJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Prompt: <p>输入文本prompt，限定最大字符为128。</p>
+        :type Prompt: str
+        :param _Model: <p>模型名称：HY-Motion-1.0，默认HY-Motion-1.0。</p>
+        :type Model: str
+        :param _RetargetFile: <p>需重定向的模型地址，只能支持混元生3D动画生成的模型（动画模板的接口）</p>
+        :type RetargetFile: :class:`tencentcloud.ai3d.v20250513.models.InputFile3D`
+        :param _Duration: <p>生成动画的时长，默认5，范围：1-12（单位s）</p>
+        :type Duration: int
+        :param _EnableMesh: <p>默认true，返回的fbx是否带蒙皮mesh</p>
+        :type EnableMesh: bool
+        :param _EnableRewrite: <p>是否开启prompt扩写，开启后将补充完善输入的prompt。<br>默认false。</p>
+        :type EnableRewrite: bool
+        :param _EnableDurationEst: <p>是否开启时长自动匹配，开启后将自动根据prompt匹配适合时长的动作数据<br>默认false。</p>
+        :type EnableDurationEst: bool
+        """
+        self._Prompt = None
+        self._Model = None
+        self._RetargetFile = None
+        self._Duration = None
+        self._EnableMesh = None
+        self._EnableRewrite = None
+        self._EnableDurationEst = None
+
+    @property
+    def Prompt(self):
+        r"""<p>输入文本prompt，限定最大字符为128。</p>
+        :rtype: str
+        """
+        return self._Prompt
+
+    @Prompt.setter
+    def Prompt(self, Prompt):
+        self._Prompt = Prompt
+
+    @property
+    def Model(self):
+        r"""<p>模型名称：HY-Motion-1.0，默认HY-Motion-1.0。</p>
+        :rtype: str
+        """
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+    @property
+    def RetargetFile(self):
+        r"""<p>需重定向的模型地址，只能支持混元生3D动画生成的模型（动画模板的接口）</p>
+        :rtype: :class:`tencentcloud.ai3d.v20250513.models.InputFile3D`
+        """
+        return self._RetargetFile
+
+    @RetargetFile.setter
+    def RetargetFile(self, RetargetFile):
+        self._RetargetFile = RetargetFile
+
+    @property
+    def Duration(self):
+        r"""<p>生成动画的时长，默认5，范围：1-12（单位s）</p>
+        :rtype: int
+        """
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def EnableMesh(self):
+        r"""<p>默认true，返回的fbx是否带蒙皮mesh</p>
+        :rtype: bool
+        """
+        return self._EnableMesh
+
+    @EnableMesh.setter
+    def EnableMesh(self, EnableMesh):
+        self._EnableMesh = EnableMesh
+
+    @property
+    def EnableRewrite(self):
+        r"""<p>是否开启prompt扩写，开启后将补充完善输入的prompt。<br>默认false。</p>
+        :rtype: bool
+        """
+        return self._EnableRewrite
+
+    @EnableRewrite.setter
+    def EnableRewrite(self, EnableRewrite):
+        self._EnableRewrite = EnableRewrite
+
+    @property
+    def EnableDurationEst(self):
+        r"""<p>是否开启时长自动匹配，开启后将自动根据prompt匹配适合时长的动作数据<br>默认false。</p>
+        :rtype: bool
+        """
+        return self._EnableDurationEst
+
+    @EnableDurationEst.setter
+    def EnableDurationEst(self, EnableDurationEst):
+        self._EnableDurationEst = EnableDurationEst
+
+
+    def _deserialize(self, params):
+        self._Prompt = params.get("Prompt")
+        self._Model = params.get("Model")
+        if params.get("RetargetFile") is not None:
+            self._RetargetFile = InputFile3D()
+            self._RetargetFile._deserialize(params.get("RetargetFile"))
+        self._Duration = params.get("Duration")
+        self._EnableMesh = params.get("EnableMesh")
+        self._EnableRewrite = params.get("EnableRewrite")
+        self._EnableDurationEst = params.get("EnableDurationEst")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SubmitHunyuanTo3DMotionJobResponse(AbstractModel):
+    r"""SubmitHunyuanTo3DMotionJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: <p>任务ID（有效期24小时）</p>
+        :type JobId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._JobId = None
+        self._RequestId = None
+
+    @property
+    def JobId(self):
+        r"""<p>任务ID（有效期24小时）</p>
         :rtype: str
         """
         return self._JobId
