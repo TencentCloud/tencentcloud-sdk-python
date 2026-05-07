@@ -581,7 +581,7 @@ class HaiClient(AbstractClient):
 
 
     def UpdateServiceConfigs(self, request):
-        r"""本接口(UpdateServiceConfigs)用于更新服务配置
+        r"""本接口(UpdateServiceConfigs)用于更新服务配置。
 
         :param request: Request instance for UpdateServiceConfigs.
         :type request: :class:`tencentcloud.hai.v20230812.models.UpdateServiceConfigsRequest`

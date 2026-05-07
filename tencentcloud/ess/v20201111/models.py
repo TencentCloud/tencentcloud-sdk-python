@@ -15155,52 +15155,39 @@ class CreateMultiFlowSignQRCodeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Operator: 执行本接口操作的员工信息。
-注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :param _Operator: <p>执行本接口操作的员工信息。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param _TemplateId: 合同模板ID，为32位字符串。
-可登录腾讯电子签控制台，在 "模板"->"模板中心"->"列表展示设置"选中模板 ID 中查看某个模板的TemplateId(在页面中展示为模板ID)。
+        :param _TemplateId: <p>合同模板ID，为32位字符串。<br>可登录腾讯电子签控制台，在 &quot;模板&quot;-&gt;&quot;模板中心&quot;-&gt;&quot;列表展示设置&quot;选中模板 ID 中查看某个模板的TemplateId(在页面中展示为模板ID)。</p>
         :type TemplateId: str
-        :param _FlowName: 合同流程的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。
-该名称还将用于合同签署完成后的下载文件名。
+        :param _FlowName: <p>合同流程的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。<br>该名称还将用于合同签署完成后的下载文件名。</p>
         :type FlowName: str
-        :param _MaxFlowNum: 通过此二维码可发起的流程最大限额，如未明确指定，默认为5份。
-一旦发起流程数超越该限制，该二维码将自动失效。
+        :param _MaxFlowNum: <p>通过此二维码可发起的流程最大限额，如未明确指定，默认为5份。<br>一旦发起流程数超越该限制，该二维码将自动失效。</p>
         :type MaxFlowNum: int
-        :param _QrEffectiveDay: 二维码的有效期限，默认为7天，最高设定不得超过90天。
-一旦超过二维码的有效期限，该二维码将自动失效。
+        :param _QrEffectiveDay: <p>二维码的有效期限，默认为7天，最高设定不得超过90天。<br>一旦超过二维码的有效期限，该二维码将自动失效。</p>
         :type QrEffectiveDay: int
-        :param _FlowEffectiveDay: 合同流程的签署有效期限，若未设定签署截止日期，则默认为自合同流程创建起的7天内截止。
-若在签署截止日期前未完成签署，合同状态将变更为已过期，从而导致合同无效。
-最长设定期限不得超过30天。
+        :param _FlowEffectiveDay: <p>合同流程的签署有效期限，若未设定签署截止日期，则默认为自合同流程创建起的7天内截止。<br>若在签署截止日期前未完成签署，合同状态将变更为已过期，从而导致合同无效。<br>最长设定期限不得超过30天。</p>
         :type FlowEffectiveDay: int
-        :param _Restrictions: 指定签署人信息。
-在指定签署人后，仅允许特定签署人通过扫描二维码进行签署。
+        :param _FlowDisplayType: <p>在短信通知、填写、签署流程中，若标题、按钮、合同详情等地方存在“合同”字样时，可根据此配置指定文案，可选文案如下：<br> <ul><li> <b>0</b> :合同（默认值）</li> <li> <b>1</b> :文件</li> <li> <b>2</b> :协议</li><li> <b>3</b> :文书</li></ul></p><p>效果如下:<br><img src="https://qcloudimg.tencent-cloud.cn/raw/e4a2c4d638717cc901d3dbd5137c9bbc.png" alt="FlowDisplayType"></p><p>枚举值：</p><ul><li>0： 合同</li><li>1： 文件</li><li>2： 协议</li><li>3： 文书</li></ul><p>默认值：0</p>
+        :type FlowDisplayType: int
+        :param _Restrictions: <p>指定签署人信息。<br>在指定签署人后，仅允许特定签署人通过扫描二维码进行签署。</p>
         :type Restrictions: list of ApproverRestriction
-        :param _UserData: 调用方自定义的个性化字段(可自定义此字段的值)，并以base64方式编码，支持的最大数据大小为 20480长度。
-在合同状态变更的回调信息等场景中，该字段的信息将原封不动地透传给贵方。
-回调的相关说明可参考开发者中心的<a href="https://qian.tencent.com/developers/company/callback_types_v2" target="_blank">回调通知</a>模块。
+        :param _UserData: <p>调用方自定义的个性化字段(可自定义此字段的值)，并以base64方式编码，支持的最大数据大小为 20480长度。<br>在合同状态变更的回调信息等场景中，该字段的信息将原封不动地透传给贵方。<br>回调的相关说明可参考开发者中心的<a href="https://qian.tencent.com/developers/company/callback_types_v2" target="_blank">回调通知</a>模块。</p>
         :type UserData: str
-        :param _CallbackUrl: 已废弃，回调配置统一使用企业应用管理-应用集成-企业版应用中的配置 
-<br/> 通过一码多扫二维码发起的合同，回调消息可参考文档 https://qian.tencent.com/developers/company/callback_types_contracts_sign
-<br/> 用户通过签署二维码发起合同时，因企业额度不足导致失败 会触发签署二维码相关回调,具体参考文档 https://qian.tencent.com/developers/company/callback_types_commons#%E7%AD%BE%E7%BD%B2%E4%BA%8C%E7%BB%B4%E7%A0%81%E7%9B%B8%E5%85%B3%E5%9B%9E%E8%B0%83
-
+        :param _CallbackUrl: <p>已废弃，回调配置统一使用企业应用管理-应用集成-企业版应用中的配置<br><br> 通过一码多扫二维码发起的合同，回调消息可参考文档 https://qian.tencent.com/developers/company/callback_types_contracts_sign<br><br> 用户通过签署二维码发起合同时，因企业额度不足导致失败 会触发签署二维码相关回调,具体参考文档 https://qian.tencent.com/developers/company/callback_types_commons#%E7%AD%BE%E7%BD%B2%E4%BA%8C%E7%BB%B4%E7%A0%81%E7%9B%B8%E5%85%B3%E5%9B%9E%E8%B0%83</p>
         :type CallbackUrl: str
-        :param _Agent: 代理企业和员工的信息。
-在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        :param _Agent: <p>代理企业和员工的信息。<br>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
-        :param _ApproverRestrictions: 限制二维码用户条件（已弃用）
+        :param _ApproverRestrictions: <p>限制二维码用户条件（已弃用）</p>
         :type ApproverRestrictions: :class:`tencentcloud.ess.v20201111.models.ApproverRestriction`
-        :param _ApproverComponentLimitTypes: 指定签署方在使用个人印章签署控件（SIGN_SIGNATURE） 时可使用的签署方式：自由书写、正楷临摹、系统签名、个人印章。
+        :param _ApproverComponentLimitTypes: <p>指定签署方在使用个人印章签署控件（SIGN_SIGNATURE） 时可使用的签署方式：自由书写、正楷临摹、系统签名、个人印章。</p>
         :type ApproverComponentLimitTypes: list of ApproverComponentLimitType
-        :param _ForbidPersonalMultipleSign: 禁止个人用户重复签署，默认不禁止，即同一用户可多次扫码签署多份合同。若要求同一用户仅能扫码签署一份合同，请传入true。
+        :param _ForbidPersonalMultipleSign: <p>禁止个人用户重复签署，默认不禁止，即同一用户可多次扫码签署多份合同。若要求同一用户仅能扫码签署一份合同，请传入true。</p>
         :type ForbidPersonalMultipleSign: bool
-        :param _FlowNameAppendScannerInfo: 合同流程名称是否应包含扫码签署人的信息，且遵循特定格式（flowname-姓名-手机号后四位）。
-例如，通过参数FlowName设定的扫码发起合同名称为“员工入职合同”，当扫码人张三（手机号18800009527）扫码签署时，合同名称将自动生成为“员工入职合同-张三-9527”。
+        :param _FlowNameAppendScannerInfo: <p>合同流程名称是否应包含扫码签署人的信息，且遵循特定格式（flowname-姓名-手机号后四位）。<br>例如，通过参数FlowName设定的扫码发起合同名称为“员工入职合同”，当扫码人张三（手机号18800009527）扫码签署时，合同名称将自动生成为“员工入职合同-张三-9527”。</p>
         :type FlowNameAppendScannerInfo: bool
-        :param _QrCodeName: 签署二维码的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成,会在生成的二维码图片上展示，若为空，则使用FlowName
+        :param _QrCodeName: <p>签署二维码的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成,会在生成的二维码图片上展示，若为空，则使用FlowName</p>
         :type QrCodeName: str
-        :param _QrCodeExpiredOn: 签署二维码截止时间，格式为Unix标准时间戳（秒），如果未设置签署截止时间，则默认为签署二维码创建后的7天时截止，最长可设置为签署二维码创建后的365天时截止。
+        :param _QrCodeExpiredOn: <p>签署二维码截止时间，格式为Unix标准时间戳（秒），如果未设置签署截止时间，则默认为签署二维码创建后的7天时截止，最长可设置为签署二维码创建后的365天时截止。</p>
         :type QrCodeExpiredOn: int
         """
         self._Operator = None
@@ -15209,6 +15196,7 @@ class CreateMultiFlowSignQRCodeRequest(AbstractModel):
         self._MaxFlowNum = None
         self._QrEffectiveDay = None
         self._FlowEffectiveDay = None
+        self._FlowDisplayType = None
         self._Restrictions = None
         self._UserData = None
         self._CallbackUrl = None
@@ -15222,8 +15210,7 @@ class CreateMultiFlowSignQRCodeRequest(AbstractModel):
 
     @property
     def Operator(self):
-        r"""执行本接口操作的员工信息。
-注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        r"""<p>执行本接口操作的员工信息。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
         :rtype: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         """
         return self._Operator
@@ -15234,8 +15221,7 @@ class CreateMultiFlowSignQRCodeRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        r"""合同模板ID，为32位字符串。
-可登录腾讯电子签控制台，在 "模板"->"模板中心"->"列表展示设置"选中模板 ID 中查看某个模板的TemplateId(在页面中展示为模板ID)。
+        r"""<p>合同模板ID，为32位字符串。<br>可登录腾讯电子签控制台，在 &quot;模板&quot;-&gt;&quot;模板中心&quot;-&gt;&quot;列表展示设置&quot;选中模板 ID 中查看某个模板的TemplateId(在页面中展示为模板ID)。</p>
         :rtype: str
         """
         return self._TemplateId
@@ -15246,8 +15232,7 @@ class CreateMultiFlowSignQRCodeRequest(AbstractModel):
 
     @property
     def FlowName(self):
-        r"""合同流程的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。
-该名称还将用于合同签署完成后的下载文件名。
+        r"""<p>合同流程的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。<br>该名称还将用于合同签署完成后的下载文件名。</p>
         :rtype: str
         """
         return self._FlowName
@@ -15258,8 +15243,7 @@ class CreateMultiFlowSignQRCodeRequest(AbstractModel):
 
     @property
     def MaxFlowNum(self):
-        r"""通过此二维码可发起的流程最大限额，如未明确指定，默认为5份。
-一旦发起流程数超越该限制，该二维码将自动失效。
+        r"""<p>通过此二维码可发起的流程最大限额，如未明确指定，默认为5份。<br>一旦发起流程数超越该限制，该二维码将自动失效。</p>
         :rtype: int
         """
         return self._MaxFlowNum
@@ -15272,8 +15256,7 @@ class CreateMultiFlowSignQRCodeRequest(AbstractModel):
     def QrEffectiveDay(self):
         warnings.warn("parameter `QrEffectiveDay` is deprecated", DeprecationWarning) 
 
-        r"""二维码的有效期限，默认为7天，最高设定不得超过90天。
-一旦超过二维码的有效期限，该二维码将自动失效。
+        r"""<p>二维码的有效期限，默认为7天，最高设定不得超过90天。<br>一旦超过二维码的有效期限，该二维码将自动失效。</p>
         :rtype: int
         """
         return self._QrEffectiveDay
@@ -15286,9 +15269,7 @@ class CreateMultiFlowSignQRCodeRequest(AbstractModel):
 
     @property
     def FlowEffectiveDay(self):
-        r"""合同流程的签署有效期限，若未设定签署截止日期，则默认为自合同流程创建起的7天内截止。
-若在签署截止日期前未完成签署，合同状态将变更为已过期，从而导致合同无效。
-最长设定期限不得超过30天。
+        r"""<p>合同流程的签署有效期限，若未设定签署截止日期，则默认为自合同流程创建起的7天内截止。<br>若在签署截止日期前未完成签署，合同状态将变更为已过期，从而导致合同无效。<br>最长设定期限不得超过30天。</p>
         :rtype: int
         """
         return self._FlowEffectiveDay
@@ -15298,9 +15279,19 @@ class CreateMultiFlowSignQRCodeRequest(AbstractModel):
         self._FlowEffectiveDay = FlowEffectiveDay
 
     @property
+    def FlowDisplayType(self):
+        r"""<p>在短信通知、填写、签署流程中，若标题、按钮、合同详情等地方存在“合同”字样时，可根据此配置指定文案，可选文案如下：<br> <ul><li> <b>0</b> :合同（默认值）</li> <li> <b>1</b> :文件</li> <li> <b>2</b> :协议</li><li> <b>3</b> :文书</li></ul></p><p>效果如下:<br><img src="https://qcloudimg.tencent-cloud.cn/raw/e4a2c4d638717cc901d3dbd5137c9bbc.png" alt="FlowDisplayType"></p><p>枚举值：</p><ul><li>0： 合同</li><li>1： 文件</li><li>2： 协议</li><li>3： 文书</li></ul><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._FlowDisplayType
+
+    @FlowDisplayType.setter
+    def FlowDisplayType(self, FlowDisplayType):
+        self._FlowDisplayType = FlowDisplayType
+
+    @property
     def Restrictions(self):
-        r"""指定签署人信息。
-在指定签署人后，仅允许特定签署人通过扫描二维码进行签署。
+        r"""<p>指定签署人信息。<br>在指定签署人后，仅允许特定签署人通过扫描二维码进行签署。</p>
         :rtype: list of ApproverRestriction
         """
         return self._Restrictions
@@ -15311,9 +15302,7 @@ class CreateMultiFlowSignQRCodeRequest(AbstractModel):
 
     @property
     def UserData(self):
-        r"""调用方自定义的个性化字段(可自定义此字段的值)，并以base64方式编码，支持的最大数据大小为 20480长度。
-在合同状态变更的回调信息等场景中，该字段的信息将原封不动地透传给贵方。
-回调的相关说明可参考开发者中心的<a href="https://qian.tencent.com/developers/company/callback_types_v2" target="_blank">回调通知</a>模块。
+        r"""<p>调用方自定义的个性化字段(可自定义此字段的值)，并以base64方式编码，支持的最大数据大小为 20480长度。<br>在合同状态变更的回调信息等场景中，该字段的信息将原封不动地透传给贵方。<br>回调的相关说明可参考开发者中心的<a href="https://qian.tencent.com/developers/company/callback_types_v2" target="_blank">回调通知</a>模块。</p>
         :rtype: str
         """
         return self._UserData
@@ -15326,10 +15315,7 @@ class CreateMultiFlowSignQRCodeRequest(AbstractModel):
     def CallbackUrl(self):
         warnings.warn("parameter `CallbackUrl` is deprecated", DeprecationWarning) 
 
-        r"""已废弃，回调配置统一使用企业应用管理-应用集成-企业版应用中的配置 
-<br/> 通过一码多扫二维码发起的合同，回调消息可参考文档 https://qian.tencent.com/developers/company/callback_types_contracts_sign
-<br/> 用户通过签署二维码发起合同时，因企业额度不足导致失败 会触发签署二维码相关回调,具体参考文档 https://qian.tencent.com/developers/company/callback_types_commons#%E7%AD%BE%E7%BD%B2%E4%BA%8C%E7%BB%B4%E7%A0%81%E7%9B%B8%E5%85%B3%E5%9B%9E%E8%B0%83
-
+        r"""<p>已废弃，回调配置统一使用企业应用管理-应用集成-企业版应用中的配置<br><br> 通过一码多扫二维码发起的合同，回调消息可参考文档 https://qian.tencent.com/developers/company/callback_types_contracts_sign<br><br> 用户通过签署二维码发起合同时，因企业额度不足导致失败 会触发签署二维码相关回调,具体参考文档 https://qian.tencent.com/developers/company/callback_types_commons#%E7%AD%BE%E7%BD%B2%E4%BA%8C%E7%BB%B4%E7%A0%81%E7%9B%B8%E5%85%B3%E5%9B%9E%E8%B0%83</p>
         :rtype: str
         """
         return self._CallbackUrl
@@ -15342,8 +15328,7 @@ class CreateMultiFlowSignQRCodeRequest(AbstractModel):
 
     @property
     def Agent(self):
-        r"""代理企业和员工的信息。
-在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        r"""<p>代理企业和员工的信息。<br>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
         :rtype: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
         return self._Agent
@@ -15356,7 +15341,7 @@ class CreateMultiFlowSignQRCodeRequest(AbstractModel):
     def ApproverRestrictions(self):
         warnings.warn("parameter `ApproverRestrictions` is deprecated", DeprecationWarning) 
 
-        r"""限制二维码用户条件（已弃用）
+        r"""<p>限制二维码用户条件（已弃用）</p>
         :rtype: :class:`tencentcloud.ess.v20201111.models.ApproverRestriction`
         """
         return self._ApproverRestrictions
@@ -15369,7 +15354,7 @@ class CreateMultiFlowSignQRCodeRequest(AbstractModel):
 
     @property
     def ApproverComponentLimitTypes(self):
-        r"""指定签署方在使用个人印章签署控件（SIGN_SIGNATURE） 时可使用的签署方式：自由书写、正楷临摹、系统签名、个人印章。
+        r"""<p>指定签署方在使用个人印章签署控件（SIGN_SIGNATURE） 时可使用的签署方式：自由书写、正楷临摹、系统签名、个人印章。</p>
         :rtype: list of ApproverComponentLimitType
         """
         return self._ApproverComponentLimitTypes
@@ -15380,7 +15365,7 @@ class CreateMultiFlowSignQRCodeRequest(AbstractModel):
 
     @property
     def ForbidPersonalMultipleSign(self):
-        r"""禁止个人用户重复签署，默认不禁止，即同一用户可多次扫码签署多份合同。若要求同一用户仅能扫码签署一份合同，请传入true。
+        r"""<p>禁止个人用户重复签署，默认不禁止，即同一用户可多次扫码签署多份合同。若要求同一用户仅能扫码签署一份合同，请传入true。</p>
         :rtype: bool
         """
         return self._ForbidPersonalMultipleSign
@@ -15391,8 +15376,7 @@ class CreateMultiFlowSignQRCodeRequest(AbstractModel):
 
     @property
     def FlowNameAppendScannerInfo(self):
-        r"""合同流程名称是否应包含扫码签署人的信息，且遵循特定格式（flowname-姓名-手机号后四位）。
-例如，通过参数FlowName设定的扫码发起合同名称为“员工入职合同”，当扫码人张三（手机号18800009527）扫码签署时，合同名称将自动生成为“员工入职合同-张三-9527”。
+        r"""<p>合同流程名称是否应包含扫码签署人的信息，且遵循特定格式（flowname-姓名-手机号后四位）。<br>例如，通过参数FlowName设定的扫码发起合同名称为“员工入职合同”，当扫码人张三（手机号18800009527）扫码签署时，合同名称将自动生成为“员工入职合同-张三-9527”。</p>
         :rtype: bool
         """
         return self._FlowNameAppendScannerInfo
@@ -15403,7 +15387,7 @@ class CreateMultiFlowSignQRCodeRequest(AbstractModel):
 
     @property
     def QrCodeName(self):
-        r"""签署二维码的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成,会在生成的二维码图片上展示，若为空，则使用FlowName
+        r"""<p>签署二维码的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成,会在生成的二维码图片上展示，若为空，则使用FlowName</p>
         :rtype: str
         """
         return self._QrCodeName
@@ -15414,7 +15398,7 @@ class CreateMultiFlowSignQRCodeRequest(AbstractModel):
 
     @property
     def QrCodeExpiredOn(self):
-        r"""签署二维码截止时间，格式为Unix标准时间戳（秒），如果未设置签署截止时间，则默认为签署二维码创建后的7天时截止，最长可设置为签署二维码创建后的365天时截止。
+        r"""<p>签署二维码截止时间，格式为Unix标准时间戳（秒），如果未设置签署截止时间，则默认为签署二维码创建后的7天时截止，最长可设置为签署二维码创建后的365天时截止。</p>
         :rtype: int
         """
         return self._QrCodeExpiredOn
@@ -15433,6 +15417,7 @@ class CreateMultiFlowSignQRCodeRequest(AbstractModel):
         self._MaxFlowNum = params.get("MaxFlowNum")
         self._QrEffectiveDay = params.get("QrEffectiveDay")
         self._FlowEffectiveDay = params.get("FlowEffectiveDay")
+        self._FlowDisplayType = params.get("FlowDisplayType")
         if params.get("Restrictions") is not None:
             self._Restrictions = []
             for item in params.get("Restrictions"):
@@ -15474,9 +15459,9 @@ class CreateMultiFlowSignQRCodeResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _QrCode: 一码多签签署码的基本信息，用户可扫描该二维码进行签署操作。
+        :param _QrCode: <p>一码多签签署码的基本信息，用户可扫描该二维码进行签署操作。</p>
         :type QrCode: :class:`tencentcloud.ess.v20201111.models.SignQrCode`
-        :param _SignUrls: 一码多签签署码的链接信息，适用于客户系统整合二维码功能。通过链接，用户可直接访问电子签名小程序并签署合同。
+        :param _SignUrls: <p>一码多签签署码的链接信息，适用于客户系统整合二维码功能。通过链接，用户可直接访问电子签名小程序并签署合同。</p>
         :type SignUrls: :class:`tencentcloud.ess.v20201111.models.SignUrl`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -15487,7 +15472,7 @@ class CreateMultiFlowSignQRCodeResponse(AbstractModel):
 
     @property
     def QrCode(self):
-        r"""一码多签签署码的基本信息，用户可扫描该二维码进行签署操作。
+        r"""<p>一码多签签署码的基本信息，用户可扫描该二维码进行签署操作。</p>
         :rtype: :class:`tencentcloud.ess.v20201111.models.SignQrCode`
         """
         return self._QrCode
@@ -15498,7 +15483,7 @@ class CreateMultiFlowSignQRCodeResponse(AbstractModel):
 
     @property
     def SignUrls(self):
-        r"""一码多签签署码的链接信息，适用于客户系统整合二维码功能。通过链接，用户可直接访问电子签名小程序并签署合同。
+        r"""<p>一码多签签署码的链接信息，适用于客户系统整合二维码功能。通过链接，用户可直接访问电子签名小程序并签署合同。</p>
         :rtype: :class:`tencentcloud.ess.v20201111.models.SignUrl`
         """
         return self._SignUrls
@@ -42107,30 +42092,26 @@ class RecipientComponentInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RecipientId: 签署方经办人在合同流程中的参与方ID，与控件绑定，是控件的归属方
+        :param _RecipientId: <p>签署方经办人在合同流程中的参与方ID，与控件绑定，是控件的归属方</p>
         :type RecipientId: str
-        :param _RecipientFillStatus: 参与方填写状态
-<ul>
-<li>**空值** : 此参与方没有填写控件</li>
-<li>**0**:  未填写, 表示此参与方还没有填写合同的填写控件</li>
-<li>**1**:  已填写, 表示此参与方已经填写所有的填写控件</li></ul>
-
+        :param _RecipientFillStatus: <p>参与方填写状态</p><ul><li>**空值** : 此参与方没有填写控件</li><li>**0**:  未填写, 表示此参与方还没有填写合同的填写控件</li><li>**1**:  已填写, 表示此参与方已经填写所有的填写控件</li></ul>
         :type RecipientFillStatus: str
-        :param _IsPromoter: 是否为发起方
-<ul><li>true-发起方</li>
-<li>false-参与方</li></ul>
+        :param _IsPromoter: <p>是否为发起方</p><ul><li>true-发起方</li><li>false-参与方</li></ul>
         :type IsPromoter: bool
-        :param _Components: 改参与方填写控件信息列表
+        :param _Components: <p>该参与方填写控件信息列表</p>
         :type Components: list of FilledComponent
+        :param _SignComponents: <p>该参与方签批控件信息</p>
+        :type SignComponents: list of FilledComponent
         """
         self._RecipientId = None
         self._RecipientFillStatus = None
         self._IsPromoter = None
         self._Components = None
+        self._SignComponents = None
 
     @property
     def RecipientId(self):
-        r"""签署方经办人在合同流程中的参与方ID，与控件绑定，是控件的归属方
+        r"""<p>签署方经办人在合同流程中的参与方ID，与控件绑定，是控件的归属方</p>
         :rtype: str
         """
         return self._RecipientId
@@ -42141,12 +42122,7 @@ class RecipientComponentInfo(AbstractModel):
 
     @property
     def RecipientFillStatus(self):
-        r"""参与方填写状态
-<ul>
-<li>**空值** : 此参与方没有填写控件</li>
-<li>**0**:  未填写, 表示此参与方还没有填写合同的填写控件</li>
-<li>**1**:  已填写, 表示此参与方已经填写所有的填写控件</li></ul>
-
+        r"""<p>参与方填写状态</p><ul><li>**空值** : 此参与方没有填写控件</li><li>**0**:  未填写, 表示此参与方还没有填写合同的填写控件</li><li>**1**:  已填写, 表示此参与方已经填写所有的填写控件</li></ul>
         :rtype: str
         """
         return self._RecipientFillStatus
@@ -42157,9 +42133,7 @@ class RecipientComponentInfo(AbstractModel):
 
     @property
     def IsPromoter(self):
-        r"""是否为发起方
-<ul><li>true-发起方</li>
-<li>false-参与方</li></ul>
+        r"""<p>是否为发起方</p><ul><li>true-发起方</li><li>false-参与方</li></ul>
         :rtype: bool
         """
         return self._IsPromoter
@@ -42170,7 +42144,7 @@ class RecipientComponentInfo(AbstractModel):
 
     @property
     def Components(self):
-        r"""改参与方填写控件信息列表
+        r"""<p>该参与方填写控件信息列表</p>
         :rtype: list of FilledComponent
         """
         return self._Components
@@ -42178,6 +42152,17 @@ class RecipientComponentInfo(AbstractModel):
     @Components.setter
     def Components(self, Components):
         self._Components = Components
+
+    @property
+    def SignComponents(self):
+        r"""<p>该参与方签批控件信息</p>
+        :rtype: list of FilledComponent
+        """
+        return self._SignComponents
+
+    @SignComponents.setter
+    def SignComponents(self, SignComponents):
+        self._SignComponents = SignComponents
 
 
     def _deserialize(self, params):
@@ -42190,6 +42175,12 @@ class RecipientComponentInfo(AbstractModel):
                 obj = FilledComponent()
                 obj._deserialize(item)
                 self._Components.append(obj)
+        if params.get("SignComponents") is not None:
+            self._SignComponents = []
+            for item in params.get("SignComponents"):
+                obj = FilledComponent()
+                obj._deserialize(item)
+                self._SignComponents.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -430,9 +430,9 @@ class ComputeInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ComputeResources: 资源类型及数量
+        :param _ComputeResources: <p>资源类型及数量</p>
         :type ComputeResources: list of ComputeResource
-        :param _Replicas: 副本数
+        :param _Replicas: <p>副本数</p>
         :type Replicas: int
         """
         self._ComputeResources = None
@@ -440,7 +440,7 @@ class ComputeInfo(AbstractModel):
 
     @property
     def ComputeResources(self):
-        r"""资源类型及数量
+        r"""<p>资源类型及数量</p>
         :rtype: list of ComputeResource
         """
         return self._ComputeResources
@@ -451,7 +451,7 @@ class ComputeInfo(AbstractModel):
 
     @property
     def Replicas(self):
-        r"""副本数
+        r"""<p>副本数</p>
         :rtype: int
         """
         return self._Replicas

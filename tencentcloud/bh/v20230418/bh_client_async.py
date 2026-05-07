@@ -79,6 +79,24 @@ class BhClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def BindDeviceAccountKubeconfig(
+            self,
+            request: models.BindDeviceAccountKubeconfigRequest,
+            opts: Dict = None,
+    ) -> models.BindDeviceAccountKubeconfigResponse:
+        """
+        绑定容器账号凭据
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "BindDeviceAccountKubeconfig"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.BindDeviceAccountKubeconfigResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def BindDeviceAccountPassword(
             self,
             request: models.BindDeviceAccountPasswordRequest,

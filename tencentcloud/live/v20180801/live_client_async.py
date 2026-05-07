@@ -2940,7 +2940,7 @@ class LiveClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeOriginStreamInfoResponse:
         """
-        获取直播源站配置信息，支持直播原站格式。
+        获取直播源站配置信息，支持直播源站格式。
         """
         
         kwargs = {}
@@ -3852,7 +3852,7 @@ class LiveClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyOriginStreamInfoResponse:
         """
-        变更直播源站配置，支持直播原站格式。
+        变更直播源站配置，支持直播源站格式。
         """
         
         kwargs = {}

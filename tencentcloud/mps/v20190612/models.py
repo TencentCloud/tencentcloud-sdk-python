@@ -20097,10 +20097,12 @@ class CreateAigcImageTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ModelName: <p>模型名称。<br>当前支持的模型列表：<br>Hunyuan,<br>GEM，<br>Qwen。</p>
+        :param _ModelName: <p>模型名称。<br>当前支持的模型列表：<br>Hunyuan,<br>GEM，<br>Qwen，<br>Vidu，<br>Kling。</p>
         :type ModelName: str
-        :param _ModelVersion: <p>指定模型特定版本号。默认使用系统当前所支持的模型稳定版本。</p><ol><li>GEM， 可选[2.5,3.0]。</li></ol>
+        :param _ModelVersion: <p>指定模型特定版本号。默认使用系统当前所支持的模型稳定版本。</p><ol><li>GEM，可选[2.5,3.0,3.1]。</li><li>Vidu，可选[q2]。</li><li>Kling，可选[2.1、O1、3.0、3.0-Omni]</li></ol>
         :type ModelVersion: str
+        :param _SceneType: <p>场景化生图使用，仅部分模型支持。</p><p>枚举值：</p><ul><li>3d_panorama： 全景图。仅Hunyuan支持。</li></ul>
+        :type SceneType: str
         :param _Prompt: <p>生成图片的描述。(注：最大支持1000字符)。当未传入参考图片时，此参数必填。</p>
         :type Prompt: str
         :param _NegativePrompt: <p>用于描述您想要阻止模型生成的内容。 注意：部分模型支持。 例如： 顶部照明、明亮的色彩 人物、动物 多辆汽车、风。</p>
@@ -20120,6 +20122,7 @@ class CreateAigcImageTaskRequest(AbstractModel):
         """
         self._ModelName = None
         self._ModelVersion = None
+        self._SceneType = None
         self._Prompt = None
         self._NegativePrompt = None
         self._EnhancePrompt = None
@@ -20131,7 +20134,7 @@ class CreateAigcImageTaskRequest(AbstractModel):
 
     @property
     def ModelName(self):
-        r"""<p>模型名称。<br>当前支持的模型列表：<br>Hunyuan,<br>GEM，<br>Qwen。</p>
+        r"""<p>模型名称。<br>当前支持的模型列表：<br>Hunyuan,<br>GEM，<br>Qwen，<br>Vidu，<br>Kling。</p>
         :rtype: str
         """
         return self._ModelName
@@ -20142,7 +20145,7 @@ class CreateAigcImageTaskRequest(AbstractModel):
 
     @property
     def ModelVersion(self):
-        r"""<p>指定模型特定版本号。默认使用系统当前所支持的模型稳定版本。</p><ol><li>GEM， 可选[2.5,3.0]。</li></ol>
+        r"""<p>指定模型特定版本号。默认使用系统当前所支持的模型稳定版本。</p><ol><li>GEM，可选[2.5,3.0,3.1]。</li><li>Vidu，可选[q2]。</li><li>Kling，可选[2.1、O1、3.0、3.0-Omni]</li></ol>
         :rtype: str
         """
         return self._ModelVersion
@@ -20150,6 +20153,17 @@ class CreateAigcImageTaskRequest(AbstractModel):
     @ModelVersion.setter
     def ModelVersion(self, ModelVersion):
         self._ModelVersion = ModelVersion
+
+    @property
+    def SceneType(self):
+        r"""<p>场景化生图使用，仅部分模型支持。</p><p>枚举值：</p><ul><li>3d_panorama： 全景图。仅Hunyuan支持。</li></ul>
+        :rtype: str
+        """
+        return self._SceneType
+
+    @SceneType.setter
+    def SceneType(self, SceneType):
+        self._SceneType = SceneType
 
     @property
     def Prompt(self):
@@ -20243,6 +20257,7 @@ class CreateAigcImageTaskRequest(AbstractModel):
     def _deserialize(self, params):
         self._ModelName = params.get("ModelName")
         self._ModelVersion = params.get("ModelVersion")
+        self._SceneType = params.get("SceneType")
         self._Prompt = params.get("Prompt")
         self._NegativePrompt = params.get("NegativePrompt")
         self._EnhancePrompt = params.get("EnhancePrompt")

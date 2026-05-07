@@ -63,6 +63,30 @@ class TcbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateAIModel(
+            self,
+            request: models.CreateAIModelRequest,
+            opts: Dict = None,
+    ) -> models.CreateAIModelResponse:
+        """
+        创建 AI 模型配置分组。云开发标准版及以上套餐才可使用
+
+        支持自定义类型（custom）：用户自行提供模型服务地址（baseUrl）和访问密钥，分组名可自由命名，适用于接入第三方或自建模型服务。
+
+        注意：内置类型（builtin）分组由云开发平台统一创建和管理，不支持通过此接口创建。如需修改内置分组的模型列表或启用状态，请使用 [UpdateAIModel]() 接口。
+
+        创建成功后，可通过 [DescribeAIModelList]() 接口查询分组信息，并在云开发 AI+ 功能中使用所配置的模型。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateAIModel"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateAIModelResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateApiKey(
             self,
             request: models.CreateApiKeyRequest,
@@ -334,6 +358,29 @@ class TcbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteAIModel(
+            self,
+            request: models.DeleteAIModelRequest,
+            opts: Dict = None,
+    ) -> models.DeleteAIModelResponse:
+        """
+        删除 AI 模型配置分组，支持批量删除。内置分组无法删除。分组删除后，该分组下的所有模型配置将同步移除，针对该分组模型的请求将会失败，请在删除前确认业务侧已停止对该分组的调用。
+
+        注意：
+        此操作不可逆，删除后数据无法恢复，请谨慎操作。
+
+        删除前建议通过 [DescribeAIModelList]() 接口确认分组当前状态。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteAIModel"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteAIModelResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteApiKey(
             self,
             request: models.DeleteApiKeyRequest,
@@ -462,6 +509,32 @@ class TcbClient(AbstractClient):
         kwargs["action"] = "DeleteVmInstance"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteVmInstanceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAIModels(
+            self,
+            request: models.DescribeAIModelsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAIModelsResponse:
+        """
+        查询指定云开发环境下已配置的 AI 模型分组列表。返回结果包含该环境下所有类型的模型分组（自定义类型 custom、内置类型 builtin），以及各分组下的模型列表、服务地址、启用状态等配置信息。
+
+        通常在以下场景中使用：
+
+        控制台展示：在云开发控制台 AI+ 功能 → 模型管理页面，展示当前环境已配置的模型分组列表。
+
+        模型管理：在调用 [UpdateAIModel]() 或 [DeleteAIModel]() 接口前，通过本接口查询当前分组配置。
+
+        业务集成：开发者查询可用模型列表，用于选择合适的模型接入 AI+ 功能。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAIModels"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAIModelsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -783,6 +856,30 @@ class TcbClient(AbstractClient):
         kwargs["action"] = "DescribeLoginConfig"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeLoginConfigResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeManagedAIModelList(
+            self,
+            request: models.DescribeManagedAIModelListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeManagedAIModelListResponse:
+        """
+        查询云开发平台支持的托管类型 AI 模型列表。
+
+        托管类型模型由云开发平台统一接入和管理，用户无需自行配置模型服务地址和访问密钥，开通后即可直接使用。返回结果按模型分组（Group）组织，包含各模型的规格参数（ModelSpec）和计费信息（ModelChargingInfo）。
+
+        通常在以下场景中使用：
+
+        开通托管模型前：通过本接口查询平台支持的托管模型及其规格，结合 [CreateAIModel]() 接口完成模型开通。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeManagedAIModelList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeManagedAIModelListResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1372,6 +1469,39 @@ class TcbClient(AbstractClient):
         kwargs["action"] = "SearchClsLog"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.SearchClsLogResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UpdateAIModel(
+            self,
+            request: models.UpdateAIModelRequest,
+            opts: Dict = None,
+    ) -> models.UpdateAIModelResponse:
+        """
+        更新 AI 模型配置分组。支持修改分组的模型列表、服务地址、访问密钥、备注及启用状态。
+
+        不同分组类型支持的更新操作如下：
+        自定义类型（custom）：可更新模型服务地址（BaseUrl）、访问密钥（Secret）、模型列表及分组备注。
+        内置类型（builtin）：默认由云开发平台统一管理服务地址和密钥。若同时传入自定义 BaseURL 和 Secret，该分组将自动转换为自定义类型（custom），后续使用用户自行提供的服务地址和访问密钥，平台不再托管其凭证。
+
+        分组类型转换说明:
+        调用本接口时，可通过传入 BaseURL 与 Secret 参数触发分组类型的自动转换，规则如下：
+        (1) builtin → custom（内置转自定义）
+        当分组当前类型（Type）为 builtin 时，若请求中同时传入有效的 BaseURL（非 http://default.tcb）和 Secret，系统将自动将该分组转换为自定义类型（Type = custom）。转换后，平台不再托管该分组的服务地址和访问密钥，后续将使用用户自行提供的 BaseUrl 与 Secret 对模型服务发起请求。
+
+        (2) custom → builtin（自定义恢复内置托管）
+        仅当分组的原始类型（OriginType）为 builtin 时，支持将分组恢复为内置托管类型。将 BaseUrl 传入固定值 http://default.tcb，且不传入 Secret，系统将自动将该分组转换回内置托管类型（Type = builtin），平台重新接管其服务地址和访问密钥。
+        若 OriginType 为 CUSTOM（即用户通过 CreateAIModel 接口自行创建的自定义分组），不支持恢复为内置托管类型。
+
+        更新成功后，可通过 [DescribeAIModelList]() 接口查询最新分组配置。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpdateAIModel"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpdateAIModelResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

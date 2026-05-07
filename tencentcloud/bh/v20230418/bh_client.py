@@ -95,6 +95,29 @@ class BhClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def BindDeviceAccountKubeconfig(self, request):
+        r"""绑定容器账号凭据
+
+        :param request: Request instance for BindDeviceAccountKubeconfig.
+        :type request: :class:`tencentcloud.bh.v20230418.models.BindDeviceAccountKubeconfigRequest`
+        :rtype: :class:`tencentcloud.bh.v20230418.models.BindDeviceAccountKubeconfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("BindDeviceAccountKubeconfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.BindDeviceAccountKubeconfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def BindDeviceAccountPassword(self, request):
         r"""绑定主机账号密码
 

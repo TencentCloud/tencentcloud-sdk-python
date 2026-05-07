@@ -13191,36 +13191,17 @@ class CreateRealtimeLogDeliveryTaskRequest(AbstractModel):
         r"""
         :param _ZoneId: 站点 ID。
         :type ZoneId: str
+        :param _Area: 数据投递区域，可选值：<ul><li>mainland：中国大陆境内；</li><li>overseas：全球（不含中国大陆）。</li></ul>
+        :type Area: str
+        :param _LogType: 数据投递类型，可选值：<ul><li>domain：站点加速日志；</li><li>application：四层代理日志；</li><li>function：边缘函数运行日志；</li><li>web-rateLiming：速率限制和 CC 攻击防护日志；</li><li>web-attack：托管规则日志；</li><li>web-rule：自定义规则日志；</li><li>web-bot：Bot管理日志。</li></ul>
+        :type LogType: str
         :param _TaskName: 实时日志投递任务的名称，格式为数字、英文、-和_组合，最多 200 个字符。
         :type TaskName: str
-        :param _TaskType: 实时日志投递任务类型，取值有：
-<li>cls: 推送到腾讯云 CLS；</li>
-<li>custom_endpoint：推送到自定义 HTTP(S) 地址；</li>
-<li>s3：推送到 AWS S3 兼容存储桶地址；</li>
-<li>log_analysis：推送到 EdgeOne 日志分析，该任务类型仅支持“站点加速日志”这一数据投递类型。</li>
+        :param _TaskType: 实时日志投递任务类型，取值有：<ul><li>cls: 推送到腾讯云 CLS；</li><li>custom_endpoint：推送到自定义 HTTP(S) 地址；</li><li>s3：推送到 AWS S3 兼容存储桶地址；</li><li>log_analysis：推送到 EdgeOne 日志分析，仅当 LogType = domain 或 web-attack 时支持。</li></ul>
         :type TaskType: str
-        :param _EntityList: 实时日志投递任务对应的实体列表。取值示例如下：
-<li>七层域名：domain.example.com</li>
-<li>四层代理实例：sid-2s69eb5wcms7</li>
-<li>边缘函数实例：test-zone-2mxigizoh9l9-1257626257</li>
+        :param _EntityList: 实时日志投递任务对应的实体列表。取值示例如下：<ul><li>七层域名：domain.example.com</li><li>四层代理实例：sid-2s69eb5wcms7</li><li>边缘函数实例：test-zone-2mxigizoh9l9-1257626257</li></ul>
         :type EntityList: list of str
-        :param _LogType: 数据投递类型，取值有：
-<li>domain：站点加速日志；</li>
-<li>application：四层代理日志；</li>
-<li>function：边缘函数运行日志；</li>
-<li>web-rateLiming：速率限制和 CC 攻击防护日志；</li>
-<li>web-attack：托管规则日志；</li>
-<li>web-rule：自定义规则日志；</li>
-<li>web-bot：Bot管理日志。</li>
-        :type LogType: str
-        :param _Area: 数据投递区域，取值有：
-<li>mainland：中国大陆境内；</li>
-<li>overseas：全球（不含中国大陆）。</li>
-        :type Area: str
-        :param _Fields: 投递的预设字段列表。取值参考：
-<li>[站点加速日志（七层访问日志）](https://cloud.tencent.com/document/product/1552/105791)</li>
-<li>[四层代理日志](https://cloud.tencent.com/document/product/1552/105792)</li>
-<li>[边缘函数运行日志](https://cloud.tencent.com/document/product/1552/115585)</li>
+        :param _Fields: 投递的预设字段列表。取值参考：<ul><li>[站点加速日志（七层访问日志）](https://cloud.tencent.com/document/product/1552/105791)</li><li>[四层代理日志](https://cloud.tencent.com/document/product/1552/105792)</li><li>[边缘函数运行日志](https://cloud.tencent.com/document/product/1552/115585)</li></ul>
         :type Fields: list of str
         :param _CustomFields: 投递的自定义字段列表，支持在 HTTP 请求头、响应头、Cookie、请求正文中提取指定内容。自定义字段名称不能重复，且最多不能超过 200 个字段。单个实时日志推送任务最多添加 5 个请求正文类型的自定义字段。目前仅站点加速日志（LogType=domain）支持添加自定义字段。
         :type CustomFields: list of CustomField
@@ -13228,9 +13209,7 @@ class CreateRealtimeLogDeliveryTaskRequest(AbstractModel):
         :type DeliveryConditions: list of DeliveryCondition
         :param _Sample: 采样比例，采用千分制，取值范围为1-1000，例如：填写 605 表示采样比例为 60.5%。不填表示采样比例为 100%。
         :type Sample: int
-        :param _LogFormat: 日志投递的输出格式。不填表示为默认格式，默认格式逻辑如下：
-<li>当 TaskType 取值为 custom_endpoint 时，默认格式为多个 JSON 对象组成的数组，每个 JSON 对象为一条日志；</li>
-<li>当 TaskType 取值为 s3 时，默认格式为 JSON Lines；</li>特别地，当 TaskType 取值为 cls 或 log_analysis 时，LogFormat.FormatType 的值只能为 json，且 LogFormat 中其他参数将被忽略，建议不传 LogFormat。
+        :param _LogFormat: 日志投递的输出格式。不填表示为默认格式，默认格式逻辑如下：<ul><li>当 TaskType 取值为 custom_endpoint 时，默认格式为多个 JSON 对象组成的数组，每个 JSON 对象为一条日志；</li><li>当 TaskType 取值为 s3 时，默认格式为 JSON Lines；</li></ul>特别地，当 TaskType 取值为 cls 或 log_analysis 时，LogFormat.FormatType 的值只能为 json，且 LogFormat 中其他参数将被忽略，建议不传 LogFormat。
         :type LogFormat: :class:`tencentcloud.teo.v20220901.models.LogFormat`
         :param _CLS: CLS 的配置信息。当 TaskType 取值为 cls 时，该参数必填。
         :type CLS: :class:`tencentcloud.teo.v20220901.models.CLSTopic`
@@ -13240,11 +13219,11 @@ class CreateRealtimeLogDeliveryTaskRequest(AbstractModel):
         :type S3: :class:`tencentcloud.teo.v20220901.models.S3`
         """
         self._ZoneId = None
+        self._Area = None
+        self._LogType = None
         self._TaskName = None
         self._TaskType = None
         self._EntityList = None
-        self._LogType = None
-        self._Area = None
         self._Fields = None
         self._CustomFields = None
         self._DeliveryConditions = None
@@ -13266,6 +13245,28 @@ class CreateRealtimeLogDeliveryTaskRequest(AbstractModel):
         self._ZoneId = ZoneId
 
     @property
+    def Area(self):
+        r"""数据投递区域，可选值：<ul><li>mainland：中国大陆境内；</li><li>overseas：全球（不含中国大陆）。</li></ul>
+        :rtype: str
+        """
+        return self._Area
+
+    @Area.setter
+    def Area(self, Area):
+        self._Area = Area
+
+    @property
+    def LogType(self):
+        r"""数据投递类型，可选值：<ul><li>domain：站点加速日志；</li><li>application：四层代理日志；</li><li>function：边缘函数运行日志；</li><li>web-rateLiming：速率限制和 CC 攻击防护日志；</li><li>web-attack：托管规则日志；</li><li>web-rule：自定义规则日志；</li><li>web-bot：Bot管理日志。</li></ul>
+        :rtype: str
+        """
+        return self._LogType
+
+    @LogType.setter
+    def LogType(self, LogType):
+        self._LogType = LogType
+
+    @property
     def TaskName(self):
         r"""实时日志投递任务的名称，格式为数字、英文、-和_组合，最多 200 个字符。
         :rtype: str
@@ -13278,11 +13279,7 @@ class CreateRealtimeLogDeliveryTaskRequest(AbstractModel):
 
     @property
     def TaskType(self):
-        r"""实时日志投递任务类型，取值有：
-<li>cls: 推送到腾讯云 CLS；</li>
-<li>custom_endpoint：推送到自定义 HTTP(S) 地址；</li>
-<li>s3：推送到 AWS S3 兼容存储桶地址；</li>
-<li>log_analysis：推送到 EdgeOne 日志分析，该任务类型仅支持“站点加速日志”这一数据投递类型。</li>
+        r"""实时日志投递任务类型，取值有：<ul><li>cls: 推送到腾讯云 CLS；</li><li>custom_endpoint：推送到自定义 HTTP(S) 地址；</li><li>s3：推送到 AWS S3 兼容存储桶地址；</li><li>log_analysis：推送到 EdgeOne 日志分析，仅当 LogType = domain 或 web-attack 时支持。</li></ul>
         :rtype: str
         """
         return self._TaskType
@@ -13293,10 +13290,7 @@ class CreateRealtimeLogDeliveryTaskRequest(AbstractModel):
 
     @property
     def EntityList(self):
-        r"""实时日志投递任务对应的实体列表。取值示例如下：
-<li>七层域名：domain.example.com</li>
-<li>四层代理实例：sid-2s69eb5wcms7</li>
-<li>边缘函数实例：test-zone-2mxigizoh9l9-1257626257</li>
+        r"""实时日志投递任务对应的实体列表。取值示例如下：<ul><li>七层域名：domain.example.com</li><li>四层代理实例：sid-2s69eb5wcms7</li><li>边缘函数实例：test-zone-2mxigizoh9l9-1257626257</li></ul>
         :rtype: list of str
         """
         return self._EntityList
@@ -13306,42 +13300,8 @@ class CreateRealtimeLogDeliveryTaskRequest(AbstractModel):
         self._EntityList = EntityList
 
     @property
-    def LogType(self):
-        r"""数据投递类型，取值有：
-<li>domain：站点加速日志；</li>
-<li>application：四层代理日志；</li>
-<li>function：边缘函数运行日志；</li>
-<li>web-rateLiming：速率限制和 CC 攻击防护日志；</li>
-<li>web-attack：托管规则日志；</li>
-<li>web-rule：自定义规则日志；</li>
-<li>web-bot：Bot管理日志。</li>
-        :rtype: str
-        """
-        return self._LogType
-
-    @LogType.setter
-    def LogType(self, LogType):
-        self._LogType = LogType
-
-    @property
-    def Area(self):
-        r"""数据投递区域，取值有：
-<li>mainland：中国大陆境内；</li>
-<li>overseas：全球（不含中国大陆）。</li>
-        :rtype: str
-        """
-        return self._Area
-
-    @Area.setter
-    def Area(self, Area):
-        self._Area = Area
-
-    @property
     def Fields(self):
-        r"""投递的预设字段列表。取值参考：
-<li>[站点加速日志（七层访问日志）](https://cloud.tencent.com/document/product/1552/105791)</li>
-<li>[四层代理日志](https://cloud.tencent.com/document/product/1552/105792)</li>
-<li>[边缘函数运行日志](https://cloud.tencent.com/document/product/1552/115585)</li>
+        r"""投递的预设字段列表。取值参考：<ul><li>[站点加速日志（七层访问日志）](https://cloud.tencent.com/document/product/1552/105791)</li><li>[四层代理日志](https://cloud.tencent.com/document/product/1552/105792)</li><li>[边缘函数运行日志](https://cloud.tencent.com/document/product/1552/115585)</li></ul>
         :rtype: list of str
         """
         return self._Fields
@@ -13385,9 +13345,7 @@ class CreateRealtimeLogDeliveryTaskRequest(AbstractModel):
 
     @property
     def LogFormat(self):
-        r"""日志投递的输出格式。不填表示为默认格式，默认格式逻辑如下：
-<li>当 TaskType 取值为 custom_endpoint 时，默认格式为多个 JSON 对象组成的数组，每个 JSON 对象为一条日志；</li>
-<li>当 TaskType 取值为 s3 时，默认格式为 JSON Lines；</li>特别地，当 TaskType 取值为 cls 或 log_analysis 时，LogFormat.FormatType 的值只能为 json，且 LogFormat 中其他参数将被忽略，建议不传 LogFormat。
+        r"""日志投递的输出格式。不填表示为默认格式，默认格式逻辑如下：<ul><li>当 TaskType 取值为 custom_endpoint 时，默认格式为多个 JSON 对象组成的数组，每个 JSON 对象为一条日志；</li><li>当 TaskType 取值为 s3 时，默认格式为 JSON Lines；</li></ul>特别地，当 TaskType 取值为 cls 或 log_analysis 时，LogFormat.FormatType 的值只能为 json，且 LogFormat 中其他参数将被忽略，建议不传 LogFormat。
         :rtype: :class:`tencentcloud.teo.v20220901.models.LogFormat`
         """
         return self._LogFormat
@@ -13432,11 +13390,11 @@ class CreateRealtimeLogDeliveryTaskRequest(AbstractModel):
 
     def _deserialize(self, params):
         self._ZoneId = params.get("ZoneId")
+        self._Area = params.get("Area")
+        self._LogType = params.get("LogType")
         self._TaskName = params.get("TaskName")
         self._TaskType = params.get("TaskType")
         self._EntityList = params.get("EntityList")
-        self._LogType = params.get("LogType")
-        self._Area = params.get("Area")
         self._Fields = params.get("Fields")
         if params.get("CustomFields") is not None:
             self._CustomFields = []
@@ -40482,7 +40440,7 @@ class ModifyApplicationProxyRuleRequest(AbstractModel):
 <li>true：开启；</li>
 <li>false：关闭。</li>不填为false。
         :type SessionPersist: bool
-        :param _SessionPersistTime: 会话保持的时间，只有当SessionPersist为true时，该值才会生效。
+        :param _SessionPersistTime: 会话保持的时间，单位为秒，只有当SessionPersist为true时，该值才会生效。
         :type SessionPersistTime: int
         :param _OriginPort: 源站端口，支持格式：
 <li>单端口：80；</li>
@@ -40621,7 +40579,7 @@ class ModifyApplicationProxyRuleRequest(AbstractModel):
 
     @property
     def SessionPersistTime(self):
-        r"""会话保持的时间，只有当SessionPersist为true时，该值才会生效。
+        r"""会话保持的时间，单位为秒，只有当SessionPersist为true时，该值才会生效。
         :rtype: int
         """
         return self._SessionPersistTime

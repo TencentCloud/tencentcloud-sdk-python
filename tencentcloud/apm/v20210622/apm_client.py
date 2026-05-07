@@ -737,6 +737,29 @@ class ApmClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyApmService(self, request):
+        r"""修改apm应用信息
+
+        :param request: Request instance for ModifyApmService.
+        :type request: :class:`tencentcloud.apm.v20210622.models.ModifyApmServiceRequest`
+        :rtype: :class:`tencentcloud.apm.v20210622.models.ModifyApmServiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyApmService", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyApmServiceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyGeneralApmApplicationConfig(self, request):
         r"""对外开放的openApi，客户可以灵活的指定需要修改的字段，再加入需要修改的服务列表.
 

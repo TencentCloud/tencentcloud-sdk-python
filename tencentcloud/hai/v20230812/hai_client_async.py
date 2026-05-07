@@ -465,7 +465,7 @@ class HaiClient(AbstractClient):
             opts: Dict = None,
     ) -> models.UpdateServiceConfigsResponse:
         """
-        本接口(UpdateServiceConfigs)用于更新服务配置
+        本接口(UpdateServiceConfigs)用于更新服务配置。
         """
         
         kwargs = {}

@@ -831,6 +831,29 @@ class IoaClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyBusinessResource(self, request):
+        r"""修改业务资源，会对一些必填参数进行校验和参数合法性校验，修改业务资源时，先调用下校验相同业务资源接口，看资源是不是有冲突。修改时也会做校验，但没有返回对应的异常信息,私有化调用path为：capi/GatewayResource/ModifyBusinessResource
+
+        :param request: Request instance for ModifyBusinessResource.
+        :type request: :class:`tencentcloud.ioa.v20220601.models.ModifyBusinessResourceRequest`
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.ModifyBusinessResourceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyBusinessResource", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyBusinessResourceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyDeviceTrustStatus(self, request):
         r"""给接入设备加黑加白,私有化调用path为：capi/NGN/ModifyDeviceTrustStatus
 

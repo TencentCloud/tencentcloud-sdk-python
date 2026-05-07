@@ -5911,45 +5911,37 @@ class ChannelCreateMultiFlowSignQRCodeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Agent: 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
-
-此接口下面信息必填。
-<ul>
-<li>渠道应用标识:  Agent.AppId</li>
-<li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
-<li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
-</ul>
-第三方平台子客企业和员工必须已经经过实名认证
+        :param _Agent: <p>关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。</p><p>此接口下面信息必填。</p><ul><li>渠道应用标识:  Agent.AppId</li><li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li><li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li></ul>第三方平台子客企业和员工必须已经经过实名认证
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
-        :param _TemplateId: 合同模板ID，为32位字符串。
+        :param _TemplateId: <p>合同模板ID，为32位字符串。</p>
         :type TemplateId: str
-        :param _FlowName: 合同流程的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。 该名称还将用于合同签署完成后的下载文件名。
+        :param _FlowName: <p>合同流程的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。 该名称还将用于合同签署完成后的下载文件名。</p>
         :type FlowName: str
-        :param _MaxFlowNum: 通过此二维码可发起的流程最大限额，如未明确指定，默认为5份。 一旦发起流程数超越该限制，该二维码将自动失效。	
+        :param _MaxFlowNum: <p>通过此二维码可发起的流程最大限额，如未明确指定，默认为5份。 一旦发起流程数超越该限制，该二维码将自动失效。</p>
         :type MaxFlowNum: int
-        :param _FlowEffectiveDay: 合同流程的签署有效期限，若未设定签署截止日期，则默认为自合同流程创建起的7天内截止。 若在签署截止日期前未完成签署，合同状态将变更为已过期，从而导致合同无效。 最长设定期限不得超过30天。	
+        :param _FlowEffectiveDay: <p>合同流程的签署有效期限，若未设定签署截止日期，则默认为自合同流程创建起的7天内截止。 若在签署截止日期前未完成签署，合同状态将变更为已过期，从而导致合同无效。 最长设定期限不得超过30天。</p>
         :type FlowEffectiveDay: int
-        :param _QrEffectiveDay: 二维码的有效期限，默认为7天，最高设定不得超过90天。 一旦超过二维码的有效期限，该二维码将自动失效。	
+        :param _FlowDisplayType: <p>在短信通知、填写、签署流程中，若标题、按钮、合同详情等地方存在“合同”字样时，可根据此配置指定文案，可选文案如下：<br> <ul><li> <b>0</b> :合同（默认值）</li> <li> <b>1</b> :文件</li> <li> <b>2</b> :协议</li><li> <b>3</b> :文书</li></ul></p><p>效果如下:<br><img src="https://qcloudimg.tencent-cloud.cn/raw/e4a2c4d638717cc901d3dbd5137c9bbc.png" alt="FlowDisplayType"></p><p>枚举值：</p><ul><li>0： 合同</li><li>1： 文件</li><li>2： 协议</li><li>3： 文书</li></ul><p>默认值：0</p>
+        :type FlowDisplayType: int
+        :param _QrEffectiveDay: <p>二维码的有效期限，默认为7天，最高设定不得超过90天。 一旦超过二维码的有效期限，该二维码将自动失效。</p>
         :type QrEffectiveDay: int
-        :param _Restrictions: 指定签署人信息。 在指定签署人后，仅允许特定签署人通过扫描二维码进行签署。	
+        :param _Restrictions: <p>指定签署人信息。 在指定签署人后，仅允许特定签署人通过扫描二维码进行签署。</p>
         :type Restrictions: list of ApproverRestriction
-        :param _ApproverComponentLimitTypes: 指定签署方经办人控件类型是个人印章签署控件（SIGN_SIGNATURE） 时，可选的签名方式。
+        :param _ApproverComponentLimitTypes: <p>指定签署方经办人控件类型是个人印章签署控件（SIGN_SIGNATURE） 时，可选的签名方式。</p>
         :type ApproverComponentLimitTypes: list of ApproverComponentLimitType
-        :param _CallbackUrl: 已废弃，回调配置统一使用企业应用管理-应用集成-第三方应用中的配置
-<br/> 通过一码多扫二维码发起的合同，回调消息可参考文档 https://qian.tencent.com/developers/partner/callback_types_contracts_sign
-<br/> 用户通过签署二维码发起合同时，因企业额度不足导致失败 会触发签署二维码相关回调,具体参考文档 https://qian.tencent.com/developers/partner/callback_types_commons#%E7%AD%BE%E7%BD%B2%E4%BA%8C%E7%BB%B4%E7%A0%81%E7%9B%B8%E5%85%B3%E5%9B%9E%E8%B0%83
+        :param _CallbackUrl: <p>已废弃，回调配置统一使用企业应用管理-应用集成-第三方应用中的配置<br><br> 通过一码多扫二维码发起的合同，回调消息可参考文档 https://qian.tencent.com/developers/partner/callback_types_contracts_sign<br><br> 用户通过签署二维码发起合同时，因企业额度不足导致失败 会触发签署二维码相关回调,具体参考文档 https://qian.tencent.com/developers/partner/callback_types_commons#%E7%AD%BE%E7%BD%B2%E4%BA%8C%E7%BB%B4%E7%A0%81%E7%9B%B8%E5%85%B3%E5%9B%9E%E8%B0%83</p>
         :type CallbackUrl: str
-        :param _ApproverRestrictions: 限制二维码用户条件（已弃用）
+        :param _ApproverRestrictions: <p>限制二维码用户条件（已弃用）</p>
         :type ApproverRestrictions: :class:`tencentcloud.essbasic.v20210526.models.ApproverRestriction`
-        :param _Operator: 暂未开放
+        :param _Operator: <p>暂未开放</p>
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
-        :param _ForbidPersonalMultipleSign: 禁止个人用户重复签署，默认不禁止，即同一用户可多次扫码签署多份合同。若要求同一用户仅能扫码签署一份合同，请传入true。
+        :param _ForbidPersonalMultipleSign: <p>禁止个人用户重复签署，默认不禁止，即同一用户可多次扫码签署多份合同。若要求同一用户仅能扫码签署一份合同，请传入true。</p>
         :type ForbidPersonalMultipleSign: bool
-        :param _FlowNameAppendScannerInfo: 合同流程名称是否应包含扫码签署人的信息，且遵循特定格式（flowname-姓名-手机号后四位）。 例如，通过参数FlowName设定的扫码发起合同名称为“员工入职合同”，当扫码人张三（手机号18800009527）扫码签署时，合同名称将自动生成为“员工入职合同-张三-9527”。
+        :param _FlowNameAppendScannerInfo: <p>合同流程名称是否应包含扫码签署人的信息，且遵循特定格式（flowname-姓名-手机号后四位）。 例如，通过参数FlowName设定的扫码发起合同名称为“员工入职合同”，当扫码人张三（手机号18800009527）扫码签署时，合同名称将自动生成为“员工入职合同-张三-9527”。</p>
         :type FlowNameAppendScannerInfo: bool
-        :param _QrCodeName: 签署二维码的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成,会在生成的二维码图片上展示，若为空，则使用FlowName	
+        :param _QrCodeName: <p>签署二维码的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成,会在生成的二维码图片上展示，若为空，则使用FlowName</p>
         :type QrCodeName: str
-        :param _QrCodeExpiredOn: 签署二维码截止时间，格式为Unix标准时间戳（秒），如果未设置签署截止时间，则默认为签署二维码创建后的7天时截止，最长可设置为签署二维码创建后的365天时截止。	
+        :param _QrCodeExpiredOn: <p>签署二维码截止时间，格式为Unix标准时间戳（秒），如果未设置签署截止时间，则默认为签署二维码创建后的7天时截止，最长可设置为签署二维码创建后的365天时截止。</p>
         :type QrCodeExpiredOn: int
         """
         self._Agent = None
@@ -5957,6 +5949,7 @@ class ChannelCreateMultiFlowSignQRCodeRequest(AbstractModel):
         self._FlowName = None
         self._MaxFlowNum = None
         self._FlowEffectiveDay = None
+        self._FlowDisplayType = None
         self._QrEffectiveDay = None
         self._Restrictions = None
         self._ApproverComponentLimitTypes = None
@@ -5970,15 +5963,7 @@ class ChannelCreateMultiFlowSignQRCodeRequest(AbstractModel):
 
     @property
     def Agent(self):
-        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
-
-此接口下面信息必填。
-<ul>
-<li>渠道应用标识:  Agent.AppId</li>
-<li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
-<li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
-</ul>
-第三方平台子客企业和员工必须已经经过实名认证
+        r"""<p>关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。</p><p>此接口下面信息必填。</p><ul><li>渠道应用标识:  Agent.AppId</li><li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li><li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li></ul>第三方平台子客企业和员工必须已经经过实名认证
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         """
         return self._Agent
@@ -5989,7 +5974,7 @@ class ChannelCreateMultiFlowSignQRCodeRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        r"""合同模板ID，为32位字符串。
+        r"""<p>合同模板ID，为32位字符串。</p>
         :rtype: str
         """
         return self._TemplateId
@@ -6000,7 +5985,7 @@ class ChannelCreateMultiFlowSignQRCodeRequest(AbstractModel):
 
     @property
     def FlowName(self):
-        r"""合同流程的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。 该名称还将用于合同签署完成后的下载文件名。
+        r"""<p>合同流程的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。 该名称还将用于合同签署完成后的下载文件名。</p>
         :rtype: str
         """
         return self._FlowName
@@ -6011,7 +5996,7 @@ class ChannelCreateMultiFlowSignQRCodeRequest(AbstractModel):
 
     @property
     def MaxFlowNum(self):
-        r"""通过此二维码可发起的流程最大限额，如未明确指定，默认为5份。 一旦发起流程数超越该限制，该二维码将自动失效。	
+        r"""<p>通过此二维码可发起的流程最大限额，如未明确指定，默认为5份。 一旦发起流程数超越该限制，该二维码将自动失效。</p>
         :rtype: int
         """
         return self._MaxFlowNum
@@ -6022,7 +6007,7 @@ class ChannelCreateMultiFlowSignQRCodeRequest(AbstractModel):
 
     @property
     def FlowEffectiveDay(self):
-        r"""合同流程的签署有效期限，若未设定签署截止日期，则默认为自合同流程创建起的7天内截止。 若在签署截止日期前未完成签署，合同状态将变更为已过期，从而导致合同无效。 最长设定期限不得超过30天。	
+        r"""<p>合同流程的签署有效期限，若未设定签署截止日期，则默认为自合同流程创建起的7天内截止。 若在签署截止日期前未完成签署，合同状态将变更为已过期，从而导致合同无效。 最长设定期限不得超过30天。</p>
         :rtype: int
         """
         return self._FlowEffectiveDay
@@ -6032,10 +6017,21 @@ class ChannelCreateMultiFlowSignQRCodeRequest(AbstractModel):
         self._FlowEffectiveDay = FlowEffectiveDay
 
     @property
+    def FlowDisplayType(self):
+        r"""<p>在短信通知、填写、签署流程中，若标题、按钮、合同详情等地方存在“合同”字样时，可根据此配置指定文案，可选文案如下：<br> <ul><li> <b>0</b> :合同（默认值）</li> <li> <b>1</b> :文件</li> <li> <b>2</b> :协议</li><li> <b>3</b> :文书</li></ul></p><p>效果如下:<br><img src="https://qcloudimg.tencent-cloud.cn/raw/e4a2c4d638717cc901d3dbd5137c9bbc.png" alt="FlowDisplayType"></p><p>枚举值：</p><ul><li>0： 合同</li><li>1： 文件</li><li>2： 协议</li><li>3： 文书</li></ul><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._FlowDisplayType
+
+    @FlowDisplayType.setter
+    def FlowDisplayType(self, FlowDisplayType):
+        self._FlowDisplayType = FlowDisplayType
+
+    @property
     def QrEffectiveDay(self):
         warnings.warn("parameter `QrEffectiveDay` is deprecated", DeprecationWarning) 
 
-        r"""二维码的有效期限，默认为7天，最高设定不得超过90天。 一旦超过二维码的有效期限，该二维码将自动失效。	
+        r"""<p>二维码的有效期限，默认为7天，最高设定不得超过90天。 一旦超过二维码的有效期限，该二维码将自动失效。</p>
         :rtype: int
         """
         return self._QrEffectiveDay
@@ -6048,7 +6044,7 @@ class ChannelCreateMultiFlowSignQRCodeRequest(AbstractModel):
 
     @property
     def Restrictions(self):
-        r"""指定签署人信息。 在指定签署人后，仅允许特定签署人通过扫描二维码进行签署。	
+        r"""<p>指定签署人信息。 在指定签署人后，仅允许特定签署人通过扫描二维码进行签署。</p>
         :rtype: list of ApproverRestriction
         """
         return self._Restrictions
@@ -6059,7 +6055,7 @@ class ChannelCreateMultiFlowSignQRCodeRequest(AbstractModel):
 
     @property
     def ApproverComponentLimitTypes(self):
-        r"""指定签署方经办人控件类型是个人印章签署控件（SIGN_SIGNATURE） 时，可选的签名方式。
+        r"""<p>指定签署方经办人控件类型是个人印章签署控件（SIGN_SIGNATURE） 时，可选的签名方式。</p>
         :rtype: list of ApproverComponentLimitType
         """
         return self._ApproverComponentLimitTypes
@@ -6072,9 +6068,7 @@ class ChannelCreateMultiFlowSignQRCodeRequest(AbstractModel):
     def CallbackUrl(self):
         warnings.warn("parameter `CallbackUrl` is deprecated", DeprecationWarning) 
 
-        r"""已废弃，回调配置统一使用企业应用管理-应用集成-第三方应用中的配置
-<br/> 通过一码多扫二维码发起的合同，回调消息可参考文档 https://qian.tencent.com/developers/partner/callback_types_contracts_sign
-<br/> 用户通过签署二维码发起合同时，因企业额度不足导致失败 会触发签署二维码相关回调,具体参考文档 https://qian.tencent.com/developers/partner/callback_types_commons#%E7%AD%BE%E7%BD%B2%E4%BA%8C%E7%BB%B4%E7%A0%81%E7%9B%B8%E5%85%B3%E5%9B%9E%E8%B0%83
+        r"""<p>已废弃，回调配置统一使用企业应用管理-应用集成-第三方应用中的配置<br><br> 通过一码多扫二维码发起的合同，回调消息可参考文档 https://qian.tencent.com/developers/partner/callback_types_contracts_sign<br><br> 用户通过签署二维码发起合同时，因企业额度不足导致失败 会触发签署二维码相关回调,具体参考文档 https://qian.tencent.com/developers/partner/callback_types_commons#%E7%AD%BE%E7%BD%B2%E4%BA%8C%E7%BB%B4%E7%A0%81%E7%9B%B8%E5%85%B3%E5%9B%9E%E8%B0%83</p>
         :rtype: str
         """
         return self._CallbackUrl
@@ -6089,7 +6083,7 @@ class ChannelCreateMultiFlowSignQRCodeRequest(AbstractModel):
     def ApproverRestrictions(self):
         warnings.warn("parameter `ApproverRestrictions` is deprecated", DeprecationWarning) 
 
-        r"""限制二维码用户条件（已弃用）
+        r"""<p>限制二维码用户条件（已弃用）</p>
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.ApproverRestriction`
         """
         return self._ApproverRestrictions
@@ -6104,7 +6098,7 @@ class ChannelCreateMultiFlowSignQRCodeRequest(AbstractModel):
     def Operator(self):
         warnings.warn("parameter `Operator` is deprecated", DeprecationWarning) 
 
-        r"""暂未开放
+        r"""<p>暂未开放</p>
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         """
         return self._Operator
@@ -6117,7 +6111,7 @@ class ChannelCreateMultiFlowSignQRCodeRequest(AbstractModel):
 
     @property
     def ForbidPersonalMultipleSign(self):
-        r"""禁止个人用户重复签署，默认不禁止，即同一用户可多次扫码签署多份合同。若要求同一用户仅能扫码签署一份合同，请传入true。
+        r"""<p>禁止个人用户重复签署，默认不禁止，即同一用户可多次扫码签署多份合同。若要求同一用户仅能扫码签署一份合同，请传入true。</p>
         :rtype: bool
         """
         return self._ForbidPersonalMultipleSign
@@ -6128,7 +6122,7 @@ class ChannelCreateMultiFlowSignQRCodeRequest(AbstractModel):
 
     @property
     def FlowNameAppendScannerInfo(self):
-        r"""合同流程名称是否应包含扫码签署人的信息，且遵循特定格式（flowname-姓名-手机号后四位）。 例如，通过参数FlowName设定的扫码发起合同名称为“员工入职合同”，当扫码人张三（手机号18800009527）扫码签署时，合同名称将自动生成为“员工入职合同-张三-9527”。
+        r"""<p>合同流程名称是否应包含扫码签署人的信息，且遵循特定格式（flowname-姓名-手机号后四位）。 例如，通过参数FlowName设定的扫码发起合同名称为“员工入职合同”，当扫码人张三（手机号18800009527）扫码签署时，合同名称将自动生成为“员工入职合同-张三-9527”。</p>
         :rtype: bool
         """
         return self._FlowNameAppendScannerInfo
@@ -6139,7 +6133,7 @@ class ChannelCreateMultiFlowSignQRCodeRequest(AbstractModel):
 
     @property
     def QrCodeName(self):
-        r"""签署二维码的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成,会在生成的二维码图片上展示，若为空，则使用FlowName	
+        r"""<p>签署二维码的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成,会在生成的二维码图片上展示，若为空，则使用FlowName</p>
         :rtype: str
         """
         return self._QrCodeName
@@ -6150,7 +6144,7 @@ class ChannelCreateMultiFlowSignQRCodeRequest(AbstractModel):
 
     @property
     def QrCodeExpiredOn(self):
-        r"""签署二维码截止时间，格式为Unix标准时间戳（秒），如果未设置签署截止时间，则默认为签署二维码创建后的7天时截止，最长可设置为签署二维码创建后的365天时截止。	
+        r"""<p>签署二维码截止时间，格式为Unix标准时间戳（秒），如果未设置签署截止时间，则默认为签署二维码创建后的7天时截止，最长可设置为签署二维码创建后的365天时截止。</p>
         :rtype: int
         """
         return self._QrCodeExpiredOn
@@ -6168,6 +6162,7 @@ class ChannelCreateMultiFlowSignQRCodeRequest(AbstractModel):
         self._FlowName = params.get("FlowName")
         self._MaxFlowNum = params.get("MaxFlowNum")
         self._FlowEffectiveDay = params.get("FlowEffectiveDay")
+        self._FlowDisplayType = params.get("FlowDisplayType")
         self._QrEffectiveDay = params.get("QrEffectiveDay")
         if params.get("Restrictions") is not None:
             self._Restrictions = []
@@ -6209,9 +6204,9 @@ class ChannelCreateMultiFlowSignQRCodeResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _QrCode: 一码多签签署码的基本信息，用户可扫描该二维码进行签署操作。	
+        :param _QrCode: <p>一码多签签署码的基本信息，用户可扫描该二维码进行签署操作。</p>
         :type QrCode: :class:`tencentcloud.essbasic.v20210526.models.SignQrCode`
-        :param _SignUrls: 一码多签签署码链接信息，适用于客户系统整合二维码功能。通过链接，用户可直接访问电子签名小程序并签署合同。	
+        :param _SignUrls: <p>一码多签签署码链接信息，适用于客户系统整合二维码功能。通过链接，用户可直接访问电子签名小程序并签署合同。</p>
         :type SignUrls: :class:`tencentcloud.essbasic.v20210526.models.SignUrl`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6222,7 +6217,7 @@ class ChannelCreateMultiFlowSignQRCodeResponse(AbstractModel):
 
     @property
     def QrCode(self):
-        r"""一码多签签署码的基本信息，用户可扫描该二维码进行签署操作。	
+        r"""<p>一码多签签署码的基本信息，用户可扫描该二维码进行签署操作。</p>
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.SignQrCode`
         """
         return self._QrCode
@@ -6233,7 +6228,7 @@ class ChannelCreateMultiFlowSignQRCodeResponse(AbstractModel):
 
     @property
     def SignUrls(self):
-        r"""一码多签签署码链接信息，适用于客户系统整合二维码功能。通过链接，用户可直接访问电子签名小程序并签署合同。	
+        r"""<p>一码多签签署码链接信息，适用于客户系统整合二维码功能。通过链接，用户可直接访问电子签名小程序并签署合同。</p>
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.SignUrl`
         """
         return self._SignUrls

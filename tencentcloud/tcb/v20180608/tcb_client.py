@@ -74,6 +74,35 @@ class TcbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateAIModel(self, request):
+        r"""创建 AI 模型配置分组。云开发标准版及以上套餐才可使用
+
+        支持自定义类型（custom）：用户自行提供模型服务地址（baseUrl）和访问密钥，分组名可自由命名，适用于接入第三方或自建模型服务。
+
+        注意：内置类型（builtin）分组由云开发平台统一创建和管理，不支持通过此接口创建。如需修改内置分组的模型列表或启用状态，请使用 [UpdateAIModel]() 接口。
+
+        创建成功后，可通过 [DescribeAIModelList]() 接口查询分组信息，并在云开发 AI+ 功能中使用所配置的模型。
+
+        :param request: Request instance for CreateAIModel.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.CreateAIModelRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.CreateAIModelResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAIModel", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateAIModelResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateApiKey(self, request):
         r"""创建云开发平台的API Key。在指定云开发环境下创建一个 API Key 访问凭证。支持两种类型：api_key（服务端管理员访问凭证，以管理员身份签发，可设置有效期，不设置有效期则永不过期，单个环境最多创建 5 个）和 publish_key（前端匿名访问凭证，固定有效期，每个环境仅保留一个）。创建成功后将返回 API Key 明文 Token，该值仅在创建时返回一次，请妥善保存。需要管理员权限。
 
@@ -410,6 +439,34 @@ class TcbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteAIModel(self, request):
+        r"""删除 AI 模型配置分组，支持批量删除。内置分组无法删除。分组删除后，该分组下的所有模型配置将同步移除，针对该分组模型的请求将会失败，请在删除前确认业务侧已停止对该分组的调用。
+
+        注意：
+        此操作不可逆，删除后数据无法恢复，请谨慎操作。
+
+        删除前建议通过 [DescribeAIModelList]() 接口确认分组当前状态。
+
+        :param request: Request instance for DeleteAIModel.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.DeleteAIModelRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DeleteAIModelResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteAIModel", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteAIModelResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteApiKey(self, request):
         r"""删除指定云开发环境下的某个 API Key 服务端访问凭证。删除后，该 API Key 对应的 Token 将被吊销，已使用该 Key 发起的请求将失败。该操作具有幂等性，若指定的 API Key 不存在则直接返回成功。需要管理员权限。
 
@@ -569,6 +626,37 @@ class TcbClient(AbstractClient):
             body = self.call("DeleteVmInstance", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteVmInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAIModels(self, request):
+        r"""查询指定云开发环境下已配置的 AI 模型分组列表。返回结果包含该环境下所有类型的模型分组（自定义类型 custom、内置类型 builtin），以及各分组下的模型列表、服务地址、启用状态等配置信息。
+
+        通常在以下场景中使用：
+
+        控制台展示：在云开发控制台 AI+ 功能 → 模型管理页面，展示当前环境已配置的模型分组列表。
+
+        模型管理：在调用 [UpdateAIModel]() 或 [DeleteAIModel]() 接口前，通过本接口查询当前分组配置。
+
+        业务集成：开发者查询可用模型列表，用于选择合适的模型接入 AI+ 功能。
+
+        :param request: Request instance for DescribeAIModels.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeAIModelsRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DescribeAIModelsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAIModels", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAIModelsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -975,6 +1063,35 @@ class TcbClient(AbstractClient):
             body = self.call("DescribeLoginConfig", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeLoginConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeManagedAIModelList(self, request):
+        r"""查询云开发平台支持的托管类型 AI 模型列表。
+
+        托管类型模型由云开发平台统一接入和管理，用户无需自行配置模型服务地址和访问密钥，开通后即可直接使用。返回结果按模型分组（Group）组织，包含各模型的规格参数（ModelSpec）和计费信息（ModelChargingInfo）。
+
+        通常在以下场景中使用：
+
+        开通托管模型前：通过本接口查询平台支持的托管模型及其规格，结合 [CreateAIModel]() 接口完成模型开通。
+
+        :param request: Request instance for DescribeManagedAIModelList.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeManagedAIModelListRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DescribeManagedAIModelListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeManagedAIModelList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeManagedAIModelListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1719,6 +1836,44 @@ class TcbClient(AbstractClient):
             body = self.call("SearchClsLog", params, headers=headers)
             response = json.loads(body)
             model = models.SearchClsLogResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateAIModel(self, request):
+        r"""更新 AI 模型配置分组。支持修改分组的模型列表、服务地址、访问密钥、备注及启用状态。
+
+        不同分组类型支持的更新操作如下：
+        自定义类型（custom）：可更新模型服务地址（BaseUrl）、访问密钥（Secret）、模型列表及分组备注。
+        内置类型（builtin）：默认由云开发平台统一管理服务地址和密钥。若同时传入自定义 BaseURL 和 Secret，该分组将自动转换为自定义类型（custom），后续使用用户自行提供的服务地址和访问密钥，平台不再托管其凭证。
+
+        分组类型转换说明:
+        调用本接口时，可通过传入 BaseURL 与 Secret 参数触发分组类型的自动转换，规则如下：
+        (1) builtin → custom（内置转自定义）
+        当分组当前类型（Type）为 builtin 时，若请求中同时传入有效的 BaseURL（非 http://default.tcb）和 Secret，系统将自动将该分组转换为自定义类型（Type = custom）。转换后，平台不再托管该分组的服务地址和访问密钥，后续将使用用户自行提供的 BaseUrl 与 Secret 对模型服务发起请求。
+
+        (2) custom → builtin（自定义恢复内置托管）
+        仅当分组的原始类型（OriginType）为 builtin 时，支持将分组恢复为内置托管类型。将 BaseUrl 传入固定值 http://default.tcb，且不传入 Secret，系统将自动将该分组转换回内置托管类型（Type = builtin），平台重新接管其服务地址和访问密钥。
+        若 OriginType 为 CUSTOM（即用户通过 CreateAIModel 接口自行创建的自定义分组），不支持恢复为内置托管类型。
+
+        更新成功后，可通过 [DescribeAIModelList]() 接口查询最新分组配置。
+
+        :param request: Request instance for UpdateAIModel.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.UpdateAIModelRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.UpdateAIModelResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateAIModel", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateAIModelResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

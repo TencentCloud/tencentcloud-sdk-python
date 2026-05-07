@@ -12599,6 +12599,190 @@ class GrantedVirtualGroupItem(AbstractModel):
         
 
 
+class ModifyBusinessResourceRequest(AbstractModel):
+    r"""ModifyBusinessResource请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AreaId: 业务资源所在的模块id，没有资源模块先创建资源模块(只支持32位)
+        :type AreaId: int
+        :param _Protocol: 业务资源协议类型,3：所有,2：UDP，1：TCP(只支持32位)
+        :type Protocol: int
+        :param _ServiceName: 业务资源名称，同一个资源模块下面不可重复
+        :type ServiceName: str
+        :param _Levels: 业务资源优先级 1-65535(只支持32位)
+        :type Levels: int
+        :param _ServiceType: 业务资源类型:ip,domain,ip_section，对应ip、域名、ip段
+        :type ServiceType: str
+        :param _ServicePort: 业务资源端口 all,1-65535
+        :type ServicePort: str
+        :param _ServiceId: 修改业务资源的id(只支持32位)
+        :type ServiceId: int
+        :param _ServiceAddress: 业务资源地址(ip、域名、ip段)
+        :type ServiceAddress: str
+        :param _DirectConn: 是否走代理,该参数不传，默认为0, 2：内外网直连，1：内网直连， 0：不启用代理配置(只支持32位)
+        :type DirectConn: int
+        """
+        self._AreaId = None
+        self._Protocol = None
+        self._ServiceName = None
+        self._Levels = None
+        self._ServiceType = None
+        self._ServicePort = None
+        self._ServiceId = None
+        self._ServiceAddress = None
+        self._DirectConn = None
+
+    @property
+    def AreaId(self):
+        r"""业务资源所在的模块id，没有资源模块先创建资源模块(只支持32位)
+        :rtype: int
+        """
+        return self._AreaId
+
+    @AreaId.setter
+    def AreaId(self, AreaId):
+        self._AreaId = AreaId
+
+    @property
+    def Protocol(self):
+        r"""业务资源协议类型,3：所有,2：UDP，1：TCP(只支持32位)
+        :rtype: int
+        """
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def ServiceName(self):
+        r"""业务资源名称，同一个资源模块下面不可重复
+        :rtype: str
+        """
+        return self._ServiceName
+
+    @ServiceName.setter
+    def ServiceName(self, ServiceName):
+        self._ServiceName = ServiceName
+
+    @property
+    def Levels(self):
+        r"""业务资源优先级 1-65535(只支持32位)
+        :rtype: int
+        """
+        return self._Levels
+
+    @Levels.setter
+    def Levels(self, Levels):
+        self._Levels = Levels
+
+    @property
+    def ServiceType(self):
+        r"""业务资源类型:ip,domain,ip_section，对应ip、域名、ip段
+        :rtype: str
+        """
+        return self._ServiceType
+
+    @ServiceType.setter
+    def ServiceType(self, ServiceType):
+        self._ServiceType = ServiceType
+
+    @property
+    def ServicePort(self):
+        r"""业务资源端口 all,1-65535
+        :rtype: str
+        """
+        return self._ServicePort
+
+    @ServicePort.setter
+    def ServicePort(self, ServicePort):
+        self._ServicePort = ServicePort
+
+    @property
+    def ServiceId(self):
+        r"""修改业务资源的id(只支持32位)
+        :rtype: int
+        """
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def ServiceAddress(self):
+        r"""业务资源地址(ip、域名、ip段)
+        :rtype: str
+        """
+        return self._ServiceAddress
+
+    @ServiceAddress.setter
+    def ServiceAddress(self, ServiceAddress):
+        self._ServiceAddress = ServiceAddress
+
+    @property
+    def DirectConn(self):
+        r"""是否走代理,该参数不传，默认为0, 2：内外网直连，1：内网直连， 0：不启用代理配置(只支持32位)
+        :rtype: int
+        """
+        return self._DirectConn
+
+    @DirectConn.setter
+    def DirectConn(self, DirectConn):
+        self._DirectConn = DirectConn
+
+
+    def _deserialize(self, params):
+        self._AreaId = params.get("AreaId")
+        self._Protocol = params.get("Protocol")
+        self._ServiceName = params.get("ServiceName")
+        self._Levels = params.get("Levels")
+        self._ServiceType = params.get("ServiceType")
+        self._ServicePort = params.get("ServicePort")
+        self._ServiceId = params.get("ServiceId")
+        self._ServiceAddress = params.get("ServiceAddress")
+        self._DirectConn = params.get("DirectConn")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyBusinessResourceResponse(AbstractModel):
+    r"""ModifyBusinessResource返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyDeviceTrustStatusRequest(AbstractModel):
     r"""ModifyDeviceTrustStatus请求参数结构体
 

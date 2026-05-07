@@ -586,6 +586,24 @@ class ApmClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyApmService(
+            self,
+            request: models.ModifyApmServiceRequest,
+            opts: Dict = None,
+    ) -> models.ModifyApmServiceResponse:
+        """
+        修改apm应用信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyApmService"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyApmServiceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyGeneralApmApplicationConfig(
             self,
             request: models.ModifyGeneralApmApplicationConfigRequest,

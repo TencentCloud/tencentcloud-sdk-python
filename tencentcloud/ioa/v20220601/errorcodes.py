@@ -104,6 +104,9 @@ REQUESTLIMITEXCEEDED_WAITFORTHELASTOPERATIONTOCOMPLETE = 'RequestLimitExceeded.W
 # 没有模块数据。
 RESOURCENOTFOUND_NOMODULEDATA = 'ResourceNotFound.NoModuleData'
 
+# 没有业务资源数据。
+RESOURCENOTFOUND_NORESOURCEDATA = 'ResourceNotFound.NoResourceData'
+
 # 资源不存在。
 RESOURCENOTFOUND_NOTFOUND = 'ResourceNotFound.NotFound'
 

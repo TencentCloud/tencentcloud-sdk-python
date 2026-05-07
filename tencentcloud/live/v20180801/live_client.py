@@ -3716,7 +3716,7 @@ class LiveClient(AbstractClient):
 
 
     def DescribeOriginStreamInfo(self, request):
-        r"""获取直播源站配置信息，支持直播原站格式。
+        r"""获取直播源站配置信息，支持直播源站格式。
 
         :param request: Request instance for DescribeOriginStreamInfo.
         :type request: :class:`tencentcloud.live.v20180801.models.DescribeOriginStreamInfoRequest`
@@ -4873,7 +4873,7 @@ class LiveClient(AbstractClient):
 
 
     def ModifyOriginStreamInfo(self, request):
-        r"""变更直播源站配置，支持直播原站格式。
+        r"""变更直播源站配置，支持直播源站格式。
 
         :param request: Request instance for ModifyOriginStreamInfo.
         :type request: :class:`tencentcloud.live.v20180801.models.ModifyOriginStreamInfoRequest`

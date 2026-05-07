@@ -11021,6 +11021,105 @@ class ModifyApmSampleConfigResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyApmServiceRequest(AbstractModel):
+    r"""ModifyApmService请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ServiceID: 应用ID
+        :type ServiceID: str
+        :param _ServiceDescription: 应用描述
+        :type ServiceDescription: str
+        :param _Tags: 标签列表
+        :type Tags: list of ApmTag
+        """
+        self._ServiceID = None
+        self._ServiceDescription = None
+        self._Tags = None
+
+    @property
+    def ServiceID(self):
+        r"""应用ID
+        :rtype: str
+        """
+        return self._ServiceID
+
+    @ServiceID.setter
+    def ServiceID(self, ServiceID):
+        self._ServiceID = ServiceID
+
+    @property
+    def ServiceDescription(self):
+        r"""应用描述
+        :rtype: str
+        """
+        return self._ServiceDescription
+
+    @ServiceDescription.setter
+    def ServiceDescription(self, ServiceDescription):
+        self._ServiceDescription = ServiceDescription
+
+    @property
+    def Tags(self):
+        r"""标签列表
+        :rtype: list of ApmTag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+
+    def _deserialize(self, params):
+        self._ServiceID = params.get("ServiceID")
+        self._ServiceDescription = params.get("ServiceDescription")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = ApmTag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyApmServiceResponse(AbstractModel):
+    r"""ModifyApmService返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyGeneralApmApplicationConfigRequest(AbstractModel):
     r"""ModifyGeneralApmApplicationConfig请求参数结构体
 

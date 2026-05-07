@@ -10700,6 +10700,624 @@ class AiSampleWordInfo(AbstractModel):
         
 
 
+class AigcAudioOutputConfig(AbstractModel):
+    r"""AIGC 生音效任务的输出媒体文件配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StorageMode: <p>存储模式</p><p>枚举值：</p><ul><li>Temporary： 临时存储，生成的视频文件不会存储到云点播，可在事件通知中获取到临时访问的 URL，有效期 7 天</li><li>Permanent： 永久存储，生成的视频文件将存储到云点播，可在事件通知中获取到 FileId</li></ul><p>默认值：Temporary</p>
+        :type StorageMode: str
+        :param _MediaName: <p>输出文件名，最长 64 个字符。缺省由系统指定生成文件名。</p>
+        :type MediaName: str
+        :param _ClassId: <p>分类ID，用于对媒体进行分类管理，可通过 <a href="/document/product/266/7812">创建分类</a> 接口，创建分类，获得分类 ID。</p><li>默认值：0，表示其他分类。</li>
+        :type ClassId: int
+        :param _ExpireTime: <p>输出文件的过期时间，超过该时间文件将被删除，默认为永久不过期，格式按照 ISO 8601标准表示，详见 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式说明</a>。</p>
+        :type ExpireTime: str
+        :param _Duration: <p>生成音频的时长。默认不填。  </p><p>取值范围：[0, 60]</p>
+        :type Duration: int
+        :param _OutputAudioFormat: <p>输出音频格式，默认不填</p>
+        :type OutputAudioFormat: str
+        """
+        self._StorageMode = None
+        self._MediaName = None
+        self._ClassId = None
+        self._ExpireTime = None
+        self._Duration = None
+        self._OutputAudioFormat = None
+
+    @property
+    def StorageMode(self):
+        r"""<p>存储模式</p><p>枚举值：</p><ul><li>Temporary： 临时存储，生成的视频文件不会存储到云点播，可在事件通知中获取到临时访问的 URL，有效期 7 天</li><li>Permanent： 永久存储，生成的视频文件将存储到云点播，可在事件通知中获取到 FileId</li></ul><p>默认值：Temporary</p>
+        :rtype: str
+        """
+        return self._StorageMode
+
+    @StorageMode.setter
+    def StorageMode(self, StorageMode):
+        self._StorageMode = StorageMode
+
+    @property
+    def MediaName(self):
+        r"""<p>输出文件名，最长 64 个字符。缺省由系统指定生成文件名。</p>
+        :rtype: str
+        """
+        return self._MediaName
+
+    @MediaName.setter
+    def MediaName(self, MediaName):
+        self._MediaName = MediaName
+
+    @property
+    def ClassId(self):
+        r"""<p>分类ID，用于对媒体进行分类管理，可通过 <a href="/document/product/266/7812">创建分类</a> 接口，创建分类，获得分类 ID。</p><li>默认值：0，表示其他分类。</li>
+        :rtype: int
+        """
+        return self._ClassId
+
+    @ClassId.setter
+    def ClassId(self, ClassId):
+        self._ClassId = ClassId
+
+    @property
+    def ExpireTime(self):
+        r"""<p>输出文件的过期时间，超过该时间文件将被删除，默认为永久不过期，格式按照 ISO 8601标准表示，详见 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式说明</a>。</p>
+        :rtype: str
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def Duration(self):
+        r"""<p>生成音频的时长。默认不填。  </p><p>取值范围：[0, 60]</p>
+        :rtype: int
+        """
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def OutputAudioFormat(self):
+        r"""<p>输出音频格式，默认不填</p>
+        :rtype: str
+        """
+        return self._OutputAudioFormat
+
+    @OutputAudioFormat.setter
+    def OutputAudioFormat(self, OutputAudioFormat):
+        self._OutputAudioFormat = OutputAudioFormat
+
+
+    def _deserialize(self, params):
+        self._StorageMode = params.get("StorageMode")
+        self._MediaName = params.get("MediaName")
+        self._ClassId = params.get("ClassId")
+        self._ExpireTime = params.get("ExpireTime")
+        self._Duration = params.get("Duration")
+        self._OutputAudioFormat = params.get("OutputAudioFormat")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AigcAudioTask(AbstractModel):
+    r"""创建 AIGC 音效任务信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务ID。</p>
+        :type TaskId: str
+        :param _Status: <p>任务状态，取值：<li>PROCESSING：处理中；</li><li>FINISH：已完成。</li></p>
+        :type Status: str
+        :param _ErrCode: <p>错误码。源异常时返回非0错误码，返回0时请使用各个具体任务的 ErrCode。</p>
+        :type ErrCode: int
+        :param _ErrCodeExt: <p>扩展错误码。空字符串表示成功，其它值表示失败。</p>
+        :type ErrCodeExt: str
+        :param _Message: <p>错误信息。</p>
+        :type Message: str
+        :param _Progress: <p>任务进度，取值范围 [0-100] 。</p>
+        :type Progress: int
+        :param _Input: <p>AIGC 音频任务的输入信息。</p>
+        :type Input: :class:`tencentcloud.vod.v20180717.models.AigcAudioTaskInput`
+        :param _Output: <p>AIGC 音频任务的输出信息。</p>
+        :type Output: :class:`tencentcloud.vod.v20180717.models.AigcAudioTaskOutput`
+        """
+        self._TaskId = None
+        self._Status = None
+        self._ErrCode = None
+        self._ErrCodeExt = None
+        self._Message = None
+        self._Progress = None
+        self._Input = None
+        self._Output = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务ID。</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Status(self):
+        r"""<p>任务状态，取值：<li>PROCESSING：处理中；</li><li>FINISH：已完成。</li></p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrCode(self):
+        r"""<p>错误码。源异常时返回非0错误码，返回0时请使用各个具体任务的 ErrCode。</p>
+        :rtype: int
+        """
+        return self._ErrCode
+
+    @ErrCode.setter
+    def ErrCode(self, ErrCode):
+        self._ErrCode = ErrCode
+
+    @property
+    def ErrCodeExt(self):
+        r"""<p>扩展错误码。空字符串表示成功，其它值表示失败。</p>
+        :rtype: str
+        """
+        return self._ErrCodeExt
+
+    @ErrCodeExt.setter
+    def ErrCodeExt(self, ErrCodeExt):
+        self._ErrCodeExt = ErrCodeExt
+
+    @property
+    def Message(self):
+        r"""<p>错误信息。</p>
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Progress(self):
+        r"""<p>任务进度，取值范围 [0-100] 。</p>
+        :rtype: int
+        """
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
+    @property
+    def Input(self):
+        r"""<p>AIGC 音频任务的输入信息。</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.AigcAudioTaskInput`
+        """
+        return self._Input
+
+    @Input.setter
+    def Input(self, Input):
+        self._Input = Input
+
+    @property
+    def Output(self):
+        r"""<p>AIGC 音频任务的输出信息。</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.AigcAudioTaskOutput`
+        """
+        return self._Output
+
+    @Output.setter
+    def Output(self, Output):
+        self._Output = Output
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._Status = params.get("Status")
+        self._ErrCode = params.get("ErrCode")
+        self._ErrCodeExt = params.get("ErrCodeExt")
+        self._Message = params.get("Message")
+        self._Progress = params.get("Progress")
+        if params.get("Input") is not None:
+            self._Input = AigcAudioTaskInput()
+            self._Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self._Output = AigcAudioTaskOutput()
+            self._Output._deserialize(params.get("Output"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AigcAudioTaskInput(AbstractModel):
+    r"""AIGC 生音效任务的输入。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModelName: <p>模型名称。</p>
+        :type ModelName: str
+        :param _ModelVersion: <p>模型版本。</p>
+        :type ModelVersion: str
+        :param _SceneType: <p>场景类型。取值如下：<li>当 ModelName 为 Kling 时，取值 motion_control 表示动作控制；</li><li>其他 ModelName 暂不支持。</li></p>
+        :type SceneType: str
+        :param _Prompt: <p>生成视频的提示词。最大支持1000字符，当 FileInfos 为空时，此参数必填。</p>
+        :type Prompt: str
+        :param _NegativePrompt: <p>要阻止模型生成视频的提示词。最大支持1000字符。</p>
+        :type NegativePrompt: str
+        :param _EnhancePrompt: <p>是否自动优化提示词。开启时将自动优化传入的Prompt，以提升生成质量。取值有： <li>Enabled：开启；</li> <li>Disabled：关闭；</li></p>
+        :type EnhancePrompt: bool
+        :param _OutputConfig: <p>AIGC 生图输出结果文件输出。</p>
+        :type OutputConfig: :class:`tencentcloud.vod.v20180717.models.AigcAudioOutputConfig`
+        :param _AdditionalParameters: <p>额外参数</p>
+        :type AdditionalParameters: str
+        """
+        self._ModelName = None
+        self._ModelVersion = None
+        self._SceneType = None
+        self._Prompt = None
+        self._NegativePrompt = None
+        self._EnhancePrompt = None
+        self._OutputConfig = None
+        self._AdditionalParameters = None
+
+    @property
+    def ModelName(self):
+        r"""<p>模型名称。</p>
+        :rtype: str
+        """
+        return self._ModelName
+
+    @ModelName.setter
+    def ModelName(self, ModelName):
+        self._ModelName = ModelName
+
+    @property
+    def ModelVersion(self):
+        r"""<p>模型版本。</p>
+        :rtype: str
+        """
+        return self._ModelVersion
+
+    @ModelVersion.setter
+    def ModelVersion(self, ModelVersion):
+        self._ModelVersion = ModelVersion
+
+    @property
+    def SceneType(self):
+        r"""<p>场景类型。取值如下：<li>当 ModelName 为 Kling 时，取值 motion_control 表示动作控制；</li><li>其他 ModelName 暂不支持。</li></p>
+        :rtype: str
+        """
+        return self._SceneType
+
+    @SceneType.setter
+    def SceneType(self, SceneType):
+        self._SceneType = SceneType
+
+    @property
+    def Prompt(self):
+        r"""<p>生成视频的提示词。最大支持1000字符，当 FileInfos 为空时，此参数必填。</p>
+        :rtype: str
+        """
+        return self._Prompt
+
+    @Prompt.setter
+    def Prompt(self, Prompt):
+        self._Prompt = Prompt
+
+    @property
+    def NegativePrompt(self):
+        r"""<p>要阻止模型生成视频的提示词。最大支持1000字符。</p>
+        :rtype: str
+        """
+        return self._NegativePrompt
+
+    @NegativePrompt.setter
+    def NegativePrompt(self, NegativePrompt):
+        self._NegativePrompt = NegativePrompt
+
+    @property
+    def EnhancePrompt(self):
+        r"""<p>是否自动优化提示词。开启时将自动优化传入的Prompt，以提升生成质量。取值有： <li>Enabled：开启；</li> <li>Disabled：关闭；</li></p>
+        :rtype: bool
+        """
+        return self._EnhancePrompt
+
+    @EnhancePrompt.setter
+    def EnhancePrompt(self, EnhancePrompt):
+        self._EnhancePrompt = EnhancePrompt
+
+    @property
+    def OutputConfig(self):
+        r"""<p>AIGC 生图输出结果文件输出。</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.AigcAudioOutputConfig`
+        """
+        return self._OutputConfig
+
+    @OutputConfig.setter
+    def OutputConfig(self, OutputConfig):
+        self._OutputConfig = OutputConfig
+
+    @property
+    def AdditionalParameters(self):
+        r"""<p>额外参数</p>
+        :rtype: str
+        """
+        return self._AdditionalParameters
+
+    @AdditionalParameters.setter
+    def AdditionalParameters(self, AdditionalParameters):
+        self._AdditionalParameters = AdditionalParameters
+
+
+    def _deserialize(self, params):
+        self._ModelName = params.get("ModelName")
+        self._ModelVersion = params.get("ModelVersion")
+        self._SceneType = params.get("SceneType")
+        self._Prompt = params.get("Prompt")
+        self._NegativePrompt = params.get("NegativePrompt")
+        self._EnhancePrompt = params.get("EnhancePrompt")
+        if params.get("OutputConfig") is not None:
+            self._OutputConfig = AigcAudioOutputConfig()
+            self._OutputConfig._deserialize(params.get("OutputConfig"))
+        self._AdditionalParameters = params.get("AdditionalParameters")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AigcAudioTaskOutput(AbstractModel):
+    r"""AIGC 音效任务的输出信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AudioInfos: <p>输出音频信息</p>
+        :type AudioInfos: list of AigcAudioTaskOutputFileInfo
+        :param _VideoInfos: <p>输出视频信息</p>
+        :type VideoInfos: list of AigcAudioTaskOutputFileInfo
+        """
+        self._AudioInfos = None
+        self._VideoInfos = None
+
+    @property
+    def AudioInfos(self):
+        r"""<p>输出音频信息</p>
+        :rtype: list of AigcAudioTaskOutputFileInfo
+        """
+        return self._AudioInfos
+
+    @AudioInfos.setter
+    def AudioInfos(self, AudioInfos):
+        self._AudioInfos = AudioInfos
+
+    @property
+    def VideoInfos(self):
+        r"""<p>输出视频信息</p>
+        :rtype: list of AigcAudioTaskOutputFileInfo
+        """
+        return self._VideoInfos
+
+    @VideoInfos.setter
+    def VideoInfos(self, VideoInfos):
+        self._VideoInfos = VideoInfos
+
+
+    def _deserialize(self, params):
+        if params.get("AudioInfos") is not None:
+            self._AudioInfos = []
+            for item in params.get("AudioInfos"):
+                obj = AigcAudioTaskOutputFileInfo()
+                obj._deserialize(item)
+                self._AudioInfos.append(obj)
+        if params.get("VideoInfos") is not None:
+            self._VideoInfos = []
+            for item in params.get("VideoInfos"):
+                obj = AigcAudioTaskOutputFileInfo()
+                obj._deserialize(item)
+                self._VideoInfos.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AigcAudioTaskOutputFileInfo(AbstractModel):
+    r"""AIGC 生音效任务的输出文件信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StorageMode: <p>存储模式。取值有： <li>Permanent：永久存储；</li> <li>Temporary：临时存储；</li><br>默认值：Temporary</p>
+        :type StorageMode: str
+        :param _MediaName: <p>输出文件名，最长 64 个字符。缺省由系统指定生成文件名。当 StorageMode 为 Permanent 时有效。</p>
+        :type MediaName: str
+        :param _ClassId: <p>分类ID，用于对媒体进行分类管理，可通过 <a href="/document/product/266/7812">创建分类</a> 接口，创建分类，获得分类 ID。当 StorageMode 为 Permanent 时有效。</p>
+        :type ClassId: int
+        :param _ExpireTime: <p>输出文件的过期时间，超过该时间文件将被删除，默认为永久不过期，格式按照 ISO 8601标准表示，详见 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式说明</a>。</p>
+        :type ExpireTime: str
+        :param _FileType: <p>文件类型，例如 mp4、flv 等。</p>
+        :type FileType: str
+        :param _FileUrl: <p>媒体文件播放地址。</p>
+        :type FileUrl: str
+        :param _FileId: <p>媒体文件 ID。当 StorageMode 为 Permanent 时有效。</p>
+        :type FileId: str
+        :param _MetaData: <p>输出视频的元信息。当 StorageMode 为 Permanent 时有效。</p>
+        :type MetaData: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
+        :param _Duration: <p>时长</p><p>单位：秒</p>
+        :type Duration: float
+        """
+        self._StorageMode = None
+        self._MediaName = None
+        self._ClassId = None
+        self._ExpireTime = None
+        self._FileType = None
+        self._FileUrl = None
+        self._FileId = None
+        self._MetaData = None
+        self._Duration = None
+
+    @property
+    def StorageMode(self):
+        r"""<p>存储模式。取值有： <li>Permanent：永久存储；</li> <li>Temporary：临时存储；</li><br>默认值：Temporary</p>
+        :rtype: str
+        """
+        return self._StorageMode
+
+    @StorageMode.setter
+    def StorageMode(self, StorageMode):
+        self._StorageMode = StorageMode
+
+    @property
+    def MediaName(self):
+        r"""<p>输出文件名，最长 64 个字符。缺省由系统指定生成文件名。当 StorageMode 为 Permanent 时有效。</p>
+        :rtype: str
+        """
+        return self._MediaName
+
+    @MediaName.setter
+    def MediaName(self, MediaName):
+        self._MediaName = MediaName
+
+    @property
+    def ClassId(self):
+        r"""<p>分类ID，用于对媒体进行分类管理，可通过 <a href="/document/product/266/7812">创建分类</a> 接口，创建分类，获得分类 ID。当 StorageMode 为 Permanent 时有效。</p>
+        :rtype: int
+        """
+        return self._ClassId
+
+    @ClassId.setter
+    def ClassId(self, ClassId):
+        self._ClassId = ClassId
+
+    @property
+    def ExpireTime(self):
+        r"""<p>输出文件的过期时间，超过该时间文件将被删除，默认为永久不过期，格式按照 ISO 8601标准表示，详见 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式说明</a>。</p>
+        :rtype: str
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def FileType(self):
+        r"""<p>文件类型，例如 mp4、flv 等。</p>
+        :rtype: str
+        """
+        return self._FileType
+
+    @FileType.setter
+    def FileType(self, FileType):
+        self._FileType = FileType
+
+    @property
+    def FileUrl(self):
+        r"""<p>媒体文件播放地址。</p>
+        :rtype: str
+        """
+        return self._FileUrl
+
+    @FileUrl.setter
+    def FileUrl(self, FileUrl):
+        self._FileUrl = FileUrl
+
+    @property
+    def FileId(self):
+        r"""<p>媒体文件 ID。当 StorageMode 为 Permanent 时有效。</p>
+        :rtype: str
+        """
+        return self._FileId
+
+    @FileId.setter
+    def FileId(self, FileId):
+        self._FileId = FileId
+
+    @property
+    def MetaData(self):
+        r"""<p>输出视频的元信息。当 StorageMode 为 Permanent 时有效。</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
+        """
+        return self._MetaData
+
+    @MetaData.setter
+    def MetaData(self, MetaData):
+        self._MetaData = MetaData
+
+    @property
+    def Duration(self):
+        r"""<p>时长</p><p>单位：秒</p>
+        :rtype: float
+        """
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+
+    def _deserialize(self, params):
+        self._StorageMode = params.get("StorageMode")
+        self._MediaName = params.get("MediaName")
+        self._ClassId = params.get("ClassId")
+        self._ExpireTime = params.get("ExpireTime")
+        self._FileType = params.get("FileType")
+        self._FileUrl = params.get("FileUrl")
+        self._FileId = params.get("FileId")
+        if params.get("MetaData") is not None:
+            self._MetaData = MediaMetaData()
+            self._MetaData._deserialize(params.get("MetaData"))
+        self._Duration = params.get("Duration")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AigcFaceIdentityInfo(AbstractModel):
     r"""人脸身份信息。
 
@@ -40120,7 +40738,7 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskType: <p>任务类型，取值：<li>Procedure：视频处理任务；</li><li>EditMedia：视频编辑任务；</li><li>SplitMedia：视频拆条任务；</li><li>ComposeMedia：制作媒体文件任务；</li><li>WechatPublish：微信发布任务；</li><li>WechatMiniProgramPublish：微信小程序视频发布任务；</li><li>PullUpload：拉取上传媒体文件任务；</li><li>FastClipMedia：快速剪辑任务；</li><li>RemoveWatermarkTask：智能去除水印任务；</li><li>DescribeFileAttributesTask：获取文件属性任务；</li><li>RebuildMedia：音画质重生任务（不推荐使用）；</li><li>ReviewAudioVideo：音视频审核任务；</li><li>ExtractTraceWatermark：提取溯源水印任务；</li><li>ExtractCopyRightWatermark：提取版权水印任务；</li><li>QualityInspect：音画质检测任务；</li><li>QualityEnhance：音画质重生任务；</li><li>ComplexAdaptiveDynamicStreaming：复杂自适应码流任务；</li><li>ProcessMediaByMPS：MPS 视频处理任务；</li><li>AigcImageTask：AIGC 生图任务；</li><li>SceneAigcImageTask：场景化 AIGC 生图任务；</li><li>AigcVideoTask：AIGC 生视频任务；</li><li>ImportMediaKnowledge：导入媒体知识任务。</li><li>SceneAigcVideoTask：场景化 AIGC 生视频任务；</li><li> ExtractBlindWatermark：提取数字水印任务。</li><li> ExtractBlindWatermark：提取数字水印任务。</li><li> CreateAigcAdvancedCustomElementTask：创建自定义主体任务</li><li>CreateAigcCustomVoiceTask：创建自定义音色任务</li><li>CreateAigcSubjectTask：创建主体任务</li><li>AigcVideoRedrawTask：AIGC 视频转绘任务</li></p>
+        :param _TaskType: <p>任务类型，取值：<li>Procedure：视频处理任务；</li><li>EditMedia：视频编辑任务；</li><li>SplitMedia：视频拆条任务；</li><li>ComposeMedia：制作媒体文件任务；</li><li>WechatPublish：微信发布任务；</li><li>WechatMiniProgramPublish：微信小程序视频发布任务；</li><li>PullUpload：拉取上传媒体文件任务；</li><li>FastClipMedia：快速剪辑任务；</li><li>RemoveWatermarkTask：智能去除水印任务；</li><li>DescribeFileAttributesTask：获取文件属性任务；</li><li>RebuildMedia：音画质重生任务（不推荐使用）；</li><li>ReviewAudioVideo：音视频审核任务；</li><li>ExtractTraceWatermark：提取溯源水印任务；</li><li>ExtractCopyRightWatermark：提取版权水印任务；</li><li>QualityInspect：音画质检测任务；</li><li>QualityEnhance：音画质重生任务；</li><li>ComplexAdaptiveDynamicStreaming：复杂自适应码流任务；</li><li>ProcessMediaByMPS：MPS 视频处理任务；</li><li>AigcImageTask：AIGC 生图任务；</li><li>SceneAigcImageTask：场景化 AIGC 生图任务；</li><li>AigcVideoTask：AIGC 生视频任务；</li><li>ImportMediaKnowledge：导入媒体知识任务。</li><li>SceneAigcVideoTask：场景化 AIGC 生视频任务；</li><li> ExtractBlindWatermark：提取数字水印任务。</li><li> ExtractBlindWatermark：提取数字水印任务。</li><li> CreateAigcAdvancedCustomElement：创建自定义主体任务</li><li>CreateAigcCustomVoice：创建自定义音色任务</li><li>CreateAigcSubject：创建主体任务</li><li>AigcVideoRedrawTask：AIGC 视频转绘任务</li><li>CreateAigcAudioClone：AIGC 音频复刻任务</li></p>
         :type TaskType: str
         :param _Status: <p>任务状态，取值：</p><li>WAITING：等待中；</li><li>PROCESSING：处理中；</li><li>FINISH：已完成；</li><li>ABORTED：已终止。</li>
         :type Status: str
@@ -40220,6 +40838,8 @@ class DescribeTaskDetailResponse(AbstractModel):
         :type CreateAigcSubjectTask: :class:`tencentcloud.vod.v20180717.models.CreateAigcSubjectTask`
         :param _AigcVideoRedrawTask: <p>AIGC 视频转绘信息，仅当 TaskType 为AigcVideoRedrawTask，该字段有值。</p>
         :type AigcVideoRedrawTask: :class:`tencentcloud.vod.v20180717.models.AigcVideoRedrawTask`
+        :param _AigcAudioTask: <p>AIGC音效信息，仅当TaskType为AigcAudioTask时，该字段有值。</p>
+        :type AigcAudioTask: :class:`tencentcloud.vod.v20180717.models.AigcAudioTask`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -40262,11 +40882,12 @@ class DescribeTaskDetailResponse(AbstractModel):
         self._CreateAigcCustomVoiceTask = None
         self._CreateAigcSubjectTask = None
         self._AigcVideoRedrawTask = None
+        self._AigcAudioTask = None
         self._RequestId = None
 
     @property
     def TaskType(self):
-        r"""<p>任务类型，取值：<li>Procedure：视频处理任务；</li><li>EditMedia：视频编辑任务；</li><li>SplitMedia：视频拆条任务；</li><li>ComposeMedia：制作媒体文件任务；</li><li>WechatPublish：微信发布任务；</li><li>WechatMiniProgramPublish：微信小程序视频发布任务；</li><li>PullUpload：拉取上传媒体文件任务；</li><li>FastClipMedia：快速剪辑任务；</li><li>RemoveWatermarkTask：智能去除水印任务；</li><li>DescribeFileAttributesTask：获取文件属性任务；</li><li>RebuildMedia：音画质重生任务（不推荐使用）；</li><li>ReviewAudioVideo：音视频审核任务；</li><li>ExtractTraceWatermark：提取溯源水印任务；</li><li>ExtractCopyRightWatermark：提取版权水印任务；</li><li>QualityInspect：音画质检测任务；</li><li>QualityEnhance：音画质重生任务；</li><li>ComplexAdaptiveDynamicStreaming：复杂自适应码流任务；</li><li>ProcessMediaByMPS：MPS 视频处理任务；</li><li>AigcImageTask：AIGC 生图任务；</li><li>SceneAigcImageTask：场景化 AIGC 生图任务；</li><li>AigcVideoTask：AIGC 生视频任务；</li><li>ImportMediaKnowledge：导入媒体知识任务。</li><li>SceneAigcVideoTask：场景化 AIGC 生视频任务；</li><li> ExtractBlindWatermark：提取数字水印任务。</li><li> ExtractBlindWatermark：提取数字水印任务。</li><li> CreateAigcAdvancedCustomElementTask：创建自定义主体任务</li><li>CreateAigcCustomVoiceTask：创建自定义音色任务</li><li>CreateAigcSubjectTask：创建主体任务</li><li>AigcVideoRedrawTask：AIGC 视频转绘任务</li></p>
+        r"""<p>任务类型，取值：<li>Procedure：视频处理任务；</li><li>EditMedia：视频编辑任务；</li><li>SplitMedia：视频拆条任务；</li><li>ComposeMedia：制作媒体文件任务；</li><li>WechatPublish：微信发布任务；</li><li>WechatMiniProgramPublish：微信小程序视频发布任务；</li><li>PullUpload：拉取上传媒体文件任务；</li><li>FastClipMedia：快速剪辑任务；</li><li>RemoveWatermarkTask：智能去除水印任务；</li><li>DescribeFileAttributesTask：获取文件属性任务；</li><li>RebuildMedia：音画质重生任务（不推荐使用）；</li><li>ReviewAudioVideo：音视频审核任务；</li><li>ExtractTraceWatermark：提取溯源水印任务；</li><li>ExtractCopyRightWatermark：提取版权水印任务；</li><li>QualityInspect：音画质检测任务；</li><li>QualityEnhance：音画质重生任务；</li><li>ComplexAdaptiveDynamicStreaming：复杂自适应码流任务；</li><li>ProcessMediaByMPS：MPS 视频处理任务；</li><li>AigcImageTask：AIGC 生图任务；</li><li>SceneAigcImageTask：场景化 AIGC 生图任务；</li><li>AigcVideoTask：AIGC 生视频任务；</li><li>ImportMediaKnowledge：导入媒体知识任务。</li><li>SceneAigcVideoTask：场景化 AIGC 生视频任务；</li><li> ExtractBlindWatermark：提取数字水印任务。</li><li> ExtractBlindWatermark：提取数字水印任务。</li><li> CreateAigcAdvancedCustomElement：创建自定义主体任务</li><li>CreateAigcCustomVoice：创建自定义音色任务</li><li>CreateAigcSubject：创建主体任务</li><li>AigcVideoRedrawTask：AIGC 视频转绘任务</li><li>CreateAigcAudioClone：AIGC 音频复刻任务</li></p>
         :rtype: str
         """
         return self._TaskType
@@ -40716,6 +41337,17 @@ class DescribeTaskDetailResponse(AbstractModel):
         self._AigcVideoRedrawTask = AigcVideoRedrawTask
 
     @property
+    def AigcAudioTask(self):
+        r"""<p>AIGC音效信息，仅当TaskType为AigcAudioTask时，该字段有值。</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.AigcAudioTask`
+        """
+        return self._AigcAudioTask
+
+    @AigcAudioTask.setter
+    def AigcAudioTask(self, AigcAudioTask):
+        self._AigcAudioTask = AigcAudioTask
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -40835,6 +41467,9 @@ class DescribeTaskDetailResponse(AbstractModel):
         if params.get("AigcVideoRedrawTask") is not None:
             self._AigcVideoRedrawTask = AigcVideoRedrawTask()
             self._AigcVideoRedrawTask._deserialize(params.get("AigcVideoRedrawTask"))
+        if params.get("AigcAudioTask") is not None:
+            self._AigcAudioTask = AigcAudioTask()
+            self._AigcAudioTask._deserialize(params.get("AigcAudioTask"))
         self._RequestId = params.get("RequestId")
 
 

@@ -1264,21 +1264,34 @@ class DescribeSmsSignListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SignIdSet: 签名 ID 数组。
-注：默认数组最大长度100。
-        :type SignIdSet: list of int non-negative
-        :param _International: 是否国际/港澳台短信：
-0：表示国内短信。
-1：表示国际/港澳台短信。
+        :param _International: <p>是否国际/港澳台短信：<br>0：表示国内短信。<br>1：表示国际/港澳台短信。</p>
         :type International: int
+        :param _SignIdSet: <p>签名 ID 数组。<br>注：默认数组最大长度100。</p>
+        :type SignIdSet: list of int non-negative
+        :param _Limit: <p>最大上限，最多100。注：默认为10，SignIdSet 为空时启用。</p>
+        :type Limit: int
+        :param _Offset: <p>偏移量。注：默认为0，SignIdSet 为空时启用。</p>
+        :type Offset: int
         """
-        self._SignIdSet = None
         self._International = None
+        self._SignIdSet = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def International(self):
+        r"""<p>是否国际/港澳台短信：<br>0：表示国内短信。<br>1：表示国际/港澳台短信。</p>
+        :rtype: int
+        """
+        return self._International
+
+    @International.setter
+    def International(self, International):
+        self._International = International
 
     @property
     def SignIdSet(self):
-        r"""签名 ID 数组。
-注：默认数组最大长度100。
+        r"""<p>签名 ID 数组。<br>注：默认数组最大长度100。</p>
         :rtype: list of int non-negative
         """
         return self._SignIdSet
@@ -1288,22 +1301,33 @@ class DescribeSmsSignListRequest(AbstractModel):
         self._SignIdSet = SignIdSet
 
     @property
-    def International(self):
-        r"""是否国际/港澳台短信：
-0：表示国内短信。
-1：表示国际/港澳台短信。
+    def Limit(self):
+        r"""<p>最大上限，最多100。注：默认为10，SignIdSet 为空时启用。</p>
         :rtype: int
         """
-        return self._International
+        return self._Limit
 
-    @International.setter
-    def International(self, International):
-        self._International = International
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""<p>偏移量。注：默认为0，SignIdSet 为空时启用。</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
 
 
     def _deserialize(self, params):
-        self._SignIdSet = params.get("SignIdSet")
         self._International = params.get("International")
+        self._SignIdSet = params.get("SignIdSet")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1321,7 +1345,7 @@ class DescribeSmsSignListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DescribeSignListStatusSet: 获取签名信息响应
+        :param _DescribeSignListStatusSet: <p>获取签名信息响应</p>
         :type DescribeSignListStatusSet: list of DescribeSignListStatus
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1331,7 +1355,7 @@ class DescribeSmsSignListResponse(AbstractModel):
 
     @property
     def DescribeSignListStatusSet(self):
-        r"""获取签名信息响应
+        r"""<p>获取签名信息响应</p>
         :rtype: list of DescribeSignListStatus
         """
         return self._DescribeSignListStatusSet

@@ -857,6 +857,24 @@ class MongodbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def EnableWanService(
+            self,
+            request: models.EnableWanServiceRequest,
+            opts: Dict = None,
+    ) -> models.EnableWanServiceResponse:
+        """
+        本接口(OpenWanService)用于开启当前实例的外网访问地址。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "EnableWanService"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.EnableWanServiceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def FlashBackDBInstance(
             self,
             request: models.FlashBackDBInstanceRequest,

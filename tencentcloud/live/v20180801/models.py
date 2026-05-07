@@ -24946,6 +24946,36 @@ class DescribeOriginStreamInfoRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _DomainName: <p>域名。</p>
+        :type DomainName: str
+        """
+        self._DomainName = None
+
+    @property
+    def DomainName(self):
+        r"""<p>域名。</p>
+        :rtype: str
+        """
+        return self._DomainName
+
+    @DomainName.setter
+    def DomainName(self, DomainName):
+        self._DomainName = DomainName
+
+
+    def _deserialize(self, params):
+        self._DomainName = params.get("DomainName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DescribeOriginStreamInfoResponse(AbstractModel):
     r"""DescribeOriginStreamInfo返回参数结构体
@@ -24954,23 +24984,531 @@ class DescribeOriginStreamInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CacheFormatRule: 缓存格式规则。 
-0：默认格式。
-1：云直播源站格式。
-当 OriginStreamPlayType 为 customization 时候生效。
+        :param _Status: <p>配置状态信息：0 配置中，1 成功，2 关闭中，3 关闭成功。</p>
+        :type Status: int
+        :param _CdnStreamPlayType: <p>播放类型。</p>
+        :type CdnStreamPlayType: list of str
+        :param _OriginStreamType: <p>原站配置类型：1 直播原站。<br>2 streamPackage。</p>
+        :type OriginStreamType: int
+        :param _OriginStreamPlayType: <p>原站播放类型。</p>
+        :type OriginStreamPlayType: str
+        :param _OriginAddressType: <p>原站地址类型：1 ip，2 域名。</p>
+        :type OriginAddressType: int
+        :param _OriginAddress: <p>原站地址信息，每项用分号分割域名（ip）、端口信息。<br>端口为空也要带上分号，表示取默认端口。</p>
+        :type OriginAddress: list of str
+        :param _OriginTimeout: <p>超时时间，单位 ms。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OriginTimeout: int
+        :param _OriginRetryTimes: <p>重试次数，单位 次。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OriginRetryTimes: int
+        :param _TimeJitter: <p>时间戳修正，可取值：on、off。<br>当原站播放协议为 rtmp、flv 时，传递该字段才会生效。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TimeJitter: str
+        :param _HlsPlayFragmentCount: <p>分片数，单位 个。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HlsPlayFragmentCount: int
+        :param _HlsPlayFragmentDuration: <p>分片时长，单位 ms。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HlsPlayFragmentDuration: int
+        :param _PassThroughHttpHeader: <p>是否透传 http 头信息，可取值：on、off。<br>当原站播放协议为 hls 时，传递该字段才会生效。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PassThroughHttpHeader: str
+        :param _PassThroughResponse: <p>是否透传相应，可取值：on、off。<br>当原站播放协议为 hls 时，传递该字段才会生效。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PassThroughResponse: str
+        :param _PassThroughParam: <p>是否透传参数，可取值：on、off。<br>当原站播放协议为 hls 时，传递该字段才会生效。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PassThroughParam: str
+        :param _OriginHost: <p>原站 host。<br>当原站播放协议为 hls 时，传递该字段才会生效。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OriginHost: str
+        :param _IndexerCache: <p>索引缓存，单位 ms。<br>当原站播放协议为 hls 时，传递该字段才会生效。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IndexerCache: int
+        :param _FragmentCache: <p>分片缓存，单位 ms。<br>当原站播放协议为 hls 时，传递该字段才会生效。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FragmentCache: int
+        :param _DomainName: <p>域名。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DomainName: str
+        :param _UsingHttps: <p>https 回源，可取值：on、off。<br>当原站播放协议为flv、hls时，传递此字段才会生效。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UsingHttps: str
+        :param _CacheFollowOrigin: <p>是否遵循原站，可取值：on、off。<br>当原站播放协议为hls时，此字段才会生效。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CacheFollowOrigin: str
+        :param _CacheStatusCode: <p>状态码缓存，数组元素格式：<br>cacheKey:interval<br>cacheKey 可取值：cache_400_sec、cache_403_sec、cache_404_sec、cache_405_sec、cache_500_sec、cache_503_sec、cache_504_sec。<br>interval 单位 ms。<br>当原站播放协议为hls时，此字段才会生效。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CacheStatusCode: list of str
+        :param _UrlReplaceRules: <p>url改写， 格式为： url1&lt;|&gt;url2; 其中，&lt;|&gt; 为分隔符。<br>url1、url2 长度限制100，不可包含特殊字符。<br>当原站播放协议为hls时，此字段才会生效。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UrlReplaceRules: list of str
+        :param _OptionsRequest: <p>是否 options 支持，可取值：on、off。<br>当原站播放协议为hls时，此字段才会生效。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OptionsRequest: str
+        :param _FollowRedirect: <p>是否 follow 301/302，可取值：on、off。<br>当原站播放协议为hls时，此字段才会生效。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FollowRedirect: str
+        :param _StreamPackageRegion: <p>源站类型 OriginStreamType 为 2 时，该字段有效。 代表源站地址 OriginAddress 对应的地区 region。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StreamPackageRegion: list of str
+        :param _CustomerName: <p>客户名。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CustomerName: str
+        :param _IndexerKeepParam: <p>当 OriginStreamPlayType 为 hls 时生效，设置索引缓存保留指定参数列表，最多支持 30 组，每个参数小于等于 20 字符。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IndexerKeepParam: list of str
+        :param _FragmentKeepParam: <p>当 OriginStreamPlayType 为 hls 时生效，设置分片缓存保留指定参数列表，最多支持 30 组，每个参数小于等于 20 字符。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FragmentKeepParam: list of str
+        :param _MediaPackageType: <p>当 OriginStreamType = 2 时有效，表示 mediapackage 具体类型：<br>media_package =&gt; 仅配置普通频道。<br>media_package_pure_ad =&gt; 仅配置广告。<br>media_package_mix_ad =&gt; 同时配置普通频道和广告。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MediaPackageType: str
+        :param _MediaPackageChannelTypes: <p>当 OriginStreamType = 2 且 MediaPackageType = media_package 时有效，表示 mediapackage 频道类型，可组合如下值：normal（频道）、ssai（广告）、linear_assembly（线性组装）。</p>
+        :type MediaPackageChannelTypes: list of str
+        :param _IndexerHeader: <p>当 OriginStreamPlayType 为 hls 时生效，设置索引自定义 header，每一组参数、取值用空格分开。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IndexerHeader: list of str
+        :param _FragmentHeader: <p>当 OriginStreamPlayType 为 hls 时生效，设置分片自定义 header，每一组参数、取值用空格分开。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FragmentHeader: list of str
+        :param _CustomizationRules: <p>自定义规则列表。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CustomizationRules: list of OriginStreamCustomizationRule
+        :param _CacheFormatRule: <p>缓存格式规则。<br>0：默认格式。<br>1：云直播源站格式。<br>当 OriginStreamPlayType 为 customization 时候生效。</p>
         :type CacheFormatRule: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._Status = None
+        self._CdnStreamPlayType = None
+        self._OriginStreamType = None
+        self._OriginStreamPlayType = None
+        self._OriginAddressType = None
+        self._OriginAddress = None
+        self._OriginTimeout = None
+        self._OriginRetryTimes = None
+        self._TimeJitter = None
+        self._HlsPlayFragmentCount = None
+        self._HlsPlayFragmentDuration = None
+        self._PassThroughHttpHeader = None
+        self._PassThroughResponse = None
+        self._PassThroughParam = None
+        self._OriginHost = None
+        self._IndexerCache = None
+        self._FragmentCache = None
+        self._DomainName = None
+        self._UsingHttps = None
+        self._CacheFollowOrigin = None
+        self._CacheStatusCode = None
+        self._UrlReplaceRules = None
+        self._OptionsRequest = None
+        self._FollowRedirect = None
+        self._StreamPackageRegion = None
+        self._CustomerName = None
+        self._IndexerKeepParam = None
+        self._FragmentKeepParam = None
+        self._MediaPackageType = None
+        self._MediaPackageChannelTypes = None
+        self._IndexerHeader = None
+        self._FragmentHeader = None
+        self._CustomizationRules = None
         self._CacheFormatRule = None
         self._RequestId = None
 
     @property
+    def Status(self):
+        r"""<p>配置状态信息：0 配置中，1 成功，2 关闭中，3 关闭成功。</p>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CdnStreamPlayType(self):
+        r"""<p>播放类型。</p>
+        :rtype: list of str
+        """
+        return self._CdnStreamPlayType
+
+    @CdnStreamPlayType.setter
+    def CdnStreamPlayType(self, CdnStreamPlayType):
+        self._CdnStreamPlayType = CdnStreamPlayType
+
+    @property
+    def OriginStreamType(self):
+        r"""<p>原站配置类型：1 直播原站。<br>2 streamPackage。</p>
+        :rtype: int
+        """
+        return self._OriginStreamType
+
+    @OriginStreamType.setter
+    def OriginStreamType(self, OriginStreamType):
+        self._OriginStreamType = OriginStreamType
+
+    @property
+    def OriginStreamPlayType(self):
+        r"""<p>原站播放类型。</p>
+        :rtype: str
+        """
+        return self._OriginStreamPlayType
+
+    @OriginStreamPlayType.setter
+    def OriginStreamPlayType(self, OriginStreamPlayType):
+        self._OriginStreamPlayType = OriginStreamPlayType
+
+    @property
+    def OriginAddressType(self):
+        r"""<p>原站地址类型：1 ip，2 域名。</p>
+        :rtype: int
+        """
+        return self._OriginAddressType
+
+    @OriginAddressType.setter
+    def OriginAddressType(self, OriginAddressType):
+        self._OriginAddressType = OriginAddressType
+
+    @property
+    def OriginAddress(self):
+        r"""<p>原站地址信息，每项用分号分割域名（ip）、端口信息。<br>端口为空也要带上分号，表示取默认端口。</p>
+        :rtype: list of str
+        """
+        return self._OriginAddress
+
+    @OriginAddress.setter
+    def OriginAddress(self, OriginAddress):
+        self._OriginAddress = OriginAddress
+
+    @property
+    def OriginTimeout(self):
+        r"""<p>超时时间，单位 ms。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._OriginTimeout
+
+    @OriginTimeout.setter
+    def OriginTimeout(self, OriginTimeout):
+        self._OriginTimeout = OriginTimeout
+
+    @property
+    def OriginRetryTimes(self):
+        r"""<p>重试次数，单位 次。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._OriginRetryTimes
+
+    @OriginRetryTimes.setter
+    def OriginRetryTimes(self, OriginRetryTimes):
+        self._OriginRetryTimes = OriginRetryTimes
+
+    @property
+    def TimeJitter(self):
+        r"""<p>时间戳修正，可取值：on、off。<br>当原站播放协议为 rtmp、flv 时，传递该字段才会生效。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TimeJitter
+
+    @TimeJitter.setter
+    def TimeJitter(self, TimeJitter):
+        self._TimeJitter = TimeJitter
+
+    @property
+    def HlsPlayFragmentCount(self):
+        r"""<p>分片数，单位 个。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._HlsPlayFragmentCount
+
+    @HlsPlayFragmentCount.setter
+    def HlsPlayFragmentCount(self, HlsPlayFragmentCount):
+        self._HlsPlayFragmentCount = HlsPlayFragmentCount
+
+    @property
+    def HlsPlayFragmentDuration(self):
+        r"""<p>分片时长，单位 ms。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._HlsPlayFragmentDuration
+
+    @HlsPlayFragmentDuration.setter
+    def HlsPlayFragmentDuration(self, HlsPlayFragmentDuration):
+        self._HlsPlayFragmentDuration = HlsPlayFragmentDuration
+
+    @property
+    def PassThroughHttpHeader(self):
+        r"""<p>是否透传 http 头信息，可取值：on、off。<br>当原站播放协议为 hls 时，传递该字段才会生效。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._PassThroughHttpHeader
+
+    @PassThroughHttpHeader.setter
+    def PassThroughHttpHeader(self, PassThroughHttpHeader):
+        self._PassThroughHttpHeader = PassThroughHttpHeader
+
+    @property
+    def PassThroughResponse(self):
+        r"""<p>是否透传相应，可取值：on、off。<br>当原站播放协议为 hls 时，传递该字段才会生效。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._PassThroughResponse
+
+    @PassThroughResponse.setter
+    def PassThroughResponse(self, PassThroughResponse):
+        self._PassThroughResponse = PassThroughResponse
+
+    @property
+    def PassThroughParam(self):
+        r"""<p>是否透传参数，可取值：on、off。<br>当原站播放协议为 hls 时，传递该字段才会生效。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._PassThroughParam
+
+    @PassThroughParam.setter
+    def PassThroughParam(self, PassThroughParam):
+        self._PassThroughParam = PassThroughParam
+
+    @property
+    def OriginHost(self):
+        r"""<p>原站 host。<br>当原站播放协议为 hls 时，传递该字段才会生效。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._OriginHost
+
+    @OriginHost.setter
+    def OriginHost(self, OriginHost):
+        self._OriginHost = OriginHost
+
+    @property
+    def IndexerCache(self):
+        r"""<p>索引缓存，单位 ms。<br>当原站播放协议为 hls 时，传递该字段才会生效。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._IndexerCache
+
+    @IndexerCache.setter
+    def IndexerCache(self, IndexerCache):
+        self._IndexerCache = IndexerCache
+
+    @property
+    def FragmentCache(self):
+        r"""<p>分片缓存，单位 ms。<br>当原站播放协议为 hls 时，传递该字段才会生效。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._FragmentCache
+
+    @FragmentCache.setter
+    def FragmentCache(self, FragmentCache):
+        self._FragmentCache = FragmentCache
+
+    @property
+    def DomainName(self):
+        r"""<p>域名。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DomainName
+
+    @DomainName.setter
+    def DomainName(self, DomainName):
+        self._DomainName = DomainName
+
+    @property
+    def UsingHttps(self):
+        r"""<p>https 回源，可取值：on、off。<br>当原站播放协议为flv、hls时，传递此字段才会生效。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UsingHttps
+
+    @UsingHttps.setter
+    def UsingHttps(self, UsingHttps):
+        self._UsingHttps = UsingHttps
+
+    @property
+    def CacheFollowOrigin(self):
+        r"""<p>是否遵循原站，可取值：on、off。<br>当原站播放协议为hls时，此字段才会生效。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CacheFollowOrigin
+
+    @CacheFollowOrigin.setter
+    def CacheFollowOrigin(self, CacheFollowOrigin):
+        self._CacheFollowOrigin = CacheFollowOrigin
+
+    @property
+    def CacheStatusCode(self):
+        r"""<p>状态码缓存，数组元素格式：<br>cacheKey:interval<br>cacheKey 可取值：cache_400_sec、cache_403_sec、cache_404_sec、cache_405_sec、cache_500_sec、cache_503_sec、cache_504_sec。<br>interval 单位 ms。<br>当原站播放协议为hls时，此字段才会生效。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._CacheStatusCode
+
+    @CacheStatusCode.setter
+    def CacheStatusCode(self, CacheStatusCode):
+        self._CacheStatusCode = CacheStatusCode
+
+    @property
+    def UrlReplaceRules(self):
+        r"""<p>url改写， 格式为： url1&lt;|&gt;url2; 其中，&lt;|&gt; 为分隔符。<br>url1、url2 长度限制100，不可包含特殊字符。<br>当原站播放协议为hls时，此字段才会生效。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._UrlReplaceRules
+
+    @UrlReplaceRules.setter
+    def UrlReplaceRules(self, UrlReplaceRules):
+        self._UrlReplaceRules = UrlReplaceRules
+
+    @property
+    def OptionsRequest(self):
+        r"""<p>是否 options 支持，可取值：on、off。<br>当原站播放协议为hls时，此字段才会生效。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._OptionsRequest
+
+    @OptionsRequest.setter
+    def OptionsRequest(self, OptionsRequest):
+        self._OptionsRequest = OptionsRequest
+
+    @property
+    def FollowRedirect(self):
+        r"""<p>是否 follow 301/302，可取值：on、off。<br>当原站播放协议为hls时，此字段才会生效。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FollowRedirect
+
+    @FollowRedirect.setter
+    def FollowRedirect(self, FollowRedirect):
+        self._FollowRedirect = FollowRedirect
+
+    @property
+    def StreamPackageRegion(self):
+        r"""<p>源站类型 OriginStreamType 为 2 时，该字段有效。 代表源站地址 OriginAddress 对应的地区 region。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._StreamPackageRegion
+
+    @StreamPackageRegion.setter
+    def StreamPackageRegion(self, StreamPackageRegion):
+        self._StreamPackageRegion = StreamPackageRegion
+
+    @property
+    def CustomerName(self):
+        r"""<p>客户名。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CustomerName
+
+    @CustomerName.setter
+    def CustomerName(self, CustomerName):
+        self._CustomerName = CustomerName
+
+    @property
+    def IndexerKeepParam(self):
+        r"""<p>当 OriginStreamPlayType 为 hls 时生效，设置索引缓存保留指定参数列表，最多支持 30 组，每个参数小于等于 20 字符。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._IndexerKeepParam
+
+    @IndexerKeepParam.setter
+    def IndexerKeepParam(self, IndexerKeepParam):
+        self._IndexerKeepParam = IndexerKeepParam
+
+    @property
+    def FragmentKeepParam(self):
+        r"""<p>当 OriginStreamPlayType 为 hls 时生效，设置分片缓存保留指定参数列表，最多支持 30 组，每个参数小于等于 20 字符。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._FragmentKeepParam
+
+    @FragmentKeepParam.setter
+    def FragmentKeepParam(self, FragmentKeepParam):
+        self._FragmentKeepParam = FragmentKeepParam
+
+    @property
+    def MediaPackageType(self):
+        r"""<p>当 OriginStreamType = 2 时有效，表示 mediapackage 具体类型：<br>media_package =&gt; 仅配置普通频道。<br>media_package_pure_ad =&gt; 仅配置广告。<br>media_package_mix_ad =&gt; 同时配置普通频道和广告。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._MediaPackageType
+
+    @MediaPackageType.setter
+    def MediaPackageType(self, MediaPackageType):
+        self._MediaPackageType = MediaPackageType
+
+    @property
+    def MediaPackageChannelTypes(self):
+        r"""<p>当 OriginStreamType = 2 且 MediaPackageType = media_package 时有效，表示 mediapackage 频道类型，可组合如下值：normal（频道）、ssai（广告）、linear_assembly（线性组装）。</p>
+        :rtype: list of str
+        """
+        return self._MediaPackageChannelTypes
+
+    @MediaPackageChannelTypes.setter
+    def MediaPackageChannelTypes(self, MediaPackageChannelTypes):
+        self._MediaPackageChannelTypes = MediaPackageChannelTypes
+
+    @property
+    def IndexerHeader(self):
+        r"""<p>当 OriginStreamPlayType 为 hls 时生效，设置索引自定义 header，每一组参数、取值用空格分开。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._IndexerHeader
+
+    @IndexerHeader.setter
+    def IndexerHeader(self, IndexerHeader):
+        self._IndexerHeader = IndexerHeader
+
+    @property
+    def FragmentHeader(self):
+        r"""<p>当 OriginStreamPlayType 为 hls 时生效，设置分片自定义 header，每一组参数、取值用空格分开。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._FragmentHeader
+
+    @FragmentHeader.setter
+    def FragmentHeader(self, FragmentHeader):
+        self._FragmentHeader = FragmentHeader
+
+    @property
+    def CustomizationRules(self):
+        r"""<p>自定义规则列表。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of OriginStreamCustomizationRule
+        """
+        return self._CustomizationRules
+
+    @CustomizationRules.setter
+    def CustomizationRules(self, CustomizationRules):
+        self._CustomizationRules = CustomizationRules
+
+    @property
     def CacheFormatRule(self):
-        r"""缓存格式规则。 
-0：默认格式。
-1：云直播源站格式。
-当 OriginStreamPlayType 为 customization 时候生效。
+        r"""<p>缓存格式规则。<br>0：默认格式。<br>1：云直播源站格式。<br>当 OriginStreamPlayType 为 customization 时候生效。</p>
         :rtype: int
         """
         return self._CacheFormatRule
@@ -24992,6 +25530,44 @@ class DescribeOriginStreamInfoResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._CdnStreamPlayType = params.get("CdnStreamPlayType")
+        self._OriginStreamType = params.get("OriginStreamType")
+        self._OriginStreamPlayType = params.get("OriginStreamPlayType")
+        self._OriginAddressType = params.get("OriginAddressType")
+        self._OriginAddress = params.get("OriginAddress")
+        self._OriginTimeout = params.get("OriginTimeout")
+        self._OriginRetryTimes = params.get("OriginRetryTimes")
+        self._TimeJitter = params.get("TimeJitter")
+        self._HlsPlayFragmentCount = params.get("HlsPlayFragmentCount")
+        self._HlsPlayFragmentDuration = params.get("HlsPlayFragmentDuration")
+        self._PassThroughHttpHeader = params.get("PassThroughHttpHeader")
+        self._PassThroughResponse = params.get("PassThroughResponse")
+        self._PassThroughParam = params.get("PassThroughParam")
+        self._OriginHost = params.get("OriginHost")
+        self._IndexerCache = params.get("IndexerCache")
+        self._FragmentCache = params.get("FragmentCache")
+        self._DomainName = params.get("DomainName")
+        self._UsingHttps = params.get("UsingHttps")
+        self._CacheFollowOrigin = params.get("CacheFollowOrigin")
+        self._CacheStatusCode = params.get("CacheStatusCode")
+        self._UrlReplaceRules = params.get("UrlReplaceRules")
+        self._OptionsRequest = params.get("OptionsRequest")
+        self._FollowRedirect = params.get("FollowRedirect")
+        self._StreamPackageRegion = params.get("StreamPackageRegion")
+        self._CustomerName = params.get("CustomerName")
+        self._IndexerKeepParam = params.get("IndexerKeepParam")
+        self._FragmentKeepParam = params.get("FragmentKeepParam")
+        self._MediaPackageType = params.get("MediaPackageType")
+        self._MediaPackageChannelTypes = params.get("MediaPackageChannelTypes")
+        self._IndexerHeader = params.get("IndexerHeader")
+        self._FragmentHeader = params.get("FragmentHeader")
+        if params.get("CustomizationRules") is not None:
+            self._CustomizationRules = []
+            for item in params.get("CustomizationRules"):
+                obj = OriginStreamCustomizationRule()
+                obj._deserialize(item)
+                self._CustomizationRules.append(obj)
         self._CacheFormatRule = params.get("CacheFormatRule")
         self._RequestId = params.get("RequestId")
 
@@ -36222,6 +36798,506 @@ class ModifyOriginStreamInfoRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _DomainName: <p>域名。</p>
+        :type DomainName: str
+        :param _OriginStreamPlayType: <p>源站播放协议，可取值：rtmp、flv、hls、dash、hls|dash、customization。</p>
+        :type OriginStreamPlayType: str
+        :param _CdnStreamPlayType: <p>播放协议，可取值：rtmp、flv、hls、dash、hls|dash、customization。<br>自定义回源协议填写 customization。</p>
+        :type CdnStreamPlayType: list of str
+        :param _OriginStreamType: <p>原站类型：<br>1 =&gt; 直播原站。<br>2 =&gt; mediaPackage。</p>
+        :type OriginStreamType: int
+        :param _OriginAddress: <p>原站地址信息，每项用冒号分割域名（ip）、端口信息。<br>端口为空也要带上分号，表示取默认端口。<br>自定义回源协议填写 customization。</p>
+        :type OriginAddress: list of str
+        :param _OriginAddressType: <p>原站地址类型：<br>1 =&gt; IP 类型。<br>2 =&gt; 域名类型。</p>
+        :type OriginAddressType: int
+        :param _CustomerName: <p>自定义名称</p>
+        :type CustomerName: str
+        :param _OriginHost: <p>原站 host。<br>当原站播放协议为 hls 时，传递该字段才会生效。</p>
+        :type OriginHost: str
+        :param _OriginTimeout: <p>超时时间，单位 ms，取值范围：1 ～ 60000，默认值：10000。</p>
+        :type OriginTimeout: int
+        :param _OriginRetryTimes: <p>重试次数，单位 次，取值范围：1 ～ 10，默认值：10。</p>
+        :type OriginRetryTimes: int
+        :param _PassThroughHttpHeader: <p>是否透传 http 头信息，可取值：on、off。<br>当原站播放协议为 hls 时，传递该字段才会生效。</p>
+        :type PassThroughHttpHeader: str
+        :param _PassThroughResponse: <p>是否透传相应，可取值：on、off。<br>当原站播放协议为 hls 时，传递该字段才会生效。</p>
+        :type PassThroughResponse: str
+        :param _PassThroughParam: <p>是否透传参数，可取值：on、off。<br>当原站播放协议为 hls 时，传递该字段才会生效。</p>
+        :type PassThroughParam: str
+        :param _IndexerCache: <p>索引缓存，单位 ms，取值范围：1 ～ 60000，默认值：10000。<br>当原站播放协议为 hls 时，传递该字段才会生效。</p>
+        :type IndexerCache: int
+        :param _FragmentCache: <p>分片缓存，单位 ms，取值范围：1 ～ 60000，默认值：10000。<br>当原站播放协议为 hls 时，传递该字段才会生效。</p>
+        :type FragmentCache: int
+        :param _HlsPlayFragmentCount: <p>分片数，单位 个，取值范围：1 ～ 10，默认值：3。</p>
+        :type HlsPlayFragmentCount: int
+        :param _HlsPlayFragmentDuration: <p>分片时长，单位 ms，取值范围：1 ～ 10000，默认值：3000。</p>
+        :type HlsPlayFragmentDuration: int
+        :param _TimeJitter: <p>时间戳修正，可取值：on、off，默认值：off。<br>当原站播放协议为 rtmp、flv 时，传递该字段才会生效。</p>
+        :type TimeJitter: str
+        :param _UsingHttps: <p>https 回源，可取值：on、off，默认值：off。<br>当原站播放协议为flv、hls时，传递此字段才会生效。</p>
+        :type UsingHttps: str
+        :param _CacheFollowOrigin: <p>遵循原站，可取值：on、off，默认值：off。<br>当原站播放协议为hls时，传递此字段才会生效。</p>
+        :type CacheFollowOrigin: str
+        :param _CacheStatusCode: <p>状态码缓存，数组元素格式：<br>cacheKey:interval<br>cacheKey 可取值：cache_400_sec、cache_403_sec、cache_404_sec、cache_405_sec、cache_500_sec、cache_503_sec、cache_504_sec。<br>interval 单位 ms。<br>当原站播放协议为hls时，传递此字段才会生效。</p>
+        :type CacheStatusCode: list of str
+        :param _UrlReplaceRules: <p>url改写， 格式为： url1&lt;|&gt;url2; 其中，&lt;|&gt; 为分隔符。<br>url1、url2 长度限制100，不可包含特殊字符。<br>当原站播放协议为hls时，传递此字段才会生效。</p>
+        :type UrlReplaceRules: list of str
+        :param _OptionsRequest: <p>options 支持，可取值：on、off，默认值：off。<br>当原站播放协议为hls时，传递此字段才会生效。</p>
+        :type OptionsRequest: str
+        :param _FollowRedirect: <p>follow 301/302，可取值：on、off，默认值：off。<br>当原站播放协议为hls时，传递此字段才会生效。</p>
+        :type FollowRedirect: str
+        :param _IndexerKeepParam: <p>当 OriginStreamPlayType 为 hls 时生效，设置索引缓存保留指定参数列表，最多支持 30 组，每个参数小于等于 20 字符。</p>
+        :type IndexerKeepParam: list of str
+        :param _FragmentKeepParam: <p>当 OriginStreamPlayType 为 hls 时生效，设置分片缓存保留指定参数列表，最多支持 30 组，每个参数小于等于 20 字符。</p>
+        :type FragmentKeepParam: list of str
+        :param _MediaPackageType: <p>当 OriginStreamType = 2 时有效，表示 mediapackage 具体类型：<br>media_package =&gt; 仅配置普通频道。<br>media_package_pure_ad =&gt; 仅配置广告。<br>media_package_mix_ad =&gt; 同时配置普通频道和广告。<br>注意：配置时候，优先使用 media_package。和 MediaPackageChannelTypes 字段配合使用。</p>
+        :type MediaPackageType: str
+        :param _MediaPackageChannelTypes: <p>当 OriginStreamType = 2 且 MediaPackageType = media_package 时有效，表示 mediapackage 频道类型，可组合如下值：normal（频道）、ssai（广告）、linear_assembly（线性组装）。</p>
+        :type MediaPackageChannelTypes: list of str
+        :param _IndexerHeader: <p>当 OriginStreamPlayType 为 hls 时生效，设置索引自定义 header，最大支持 10 组，每一组参数、取值用空格分开，允许字符规则如下：<br>头部参数：由大小写字母、数字及-组成，长度支持1 ～100个字符，黑名单：Host、Connection、Content-Length、Range。<br>头部取值：不支持中文、不支持以$开头，长度支持1 ～ 100个字符，不允许有空格。</p>
+        :type IndexerHeader: list of str
+        :param _FragmentHeader: <p>当 OriginStreamPlayType 为 hls 时生效，设置分片自定义 header，最大支持 10 组，每一组参数、取值用空格分开，允许字符规则如下：<br>头部参数：由大小写字母、数字及-组成，长度支持1 ～100个字符，黑名单：Host、Connection、Content-Length、Range。<br>头部取值：不支持中文、不支持以$开头，长度支持1 ～ 100个字符，不允许有空格。</p>
+        :type FragmentHeader: list of str
+        :param _CustomizationRules: <p>自定义回源规则列表，当 OriginStreamPlayType 为 customization 时候生效。</p>
+        :type CustomizationRules: list of OriginStreamCustomizationRule
+        :param _CacheFormatRule: <p>缓存格式规则。<br>0：默认格式。<br>1：云直播源站格式。<br>当 OriginStreamPlayType 为 customization 时候生效。</p>
+        :type CacheFormatRule: int
+        """
+        self._DomainName = None
+        self._OriginStreamPlayType = None
+        self._CdnStreamPlayType = None
+        self._OriginStreamType = None
+        self._OriginAddress = None
+        self._OriginAddressType = None
+        self._CustomerName = None
+        self._OriginHost = None
+        self._OriginTimeout = None
+        self._OriginRetryTimes = None
+        self._PassThroughHttpHeader = None
+        self._PassThroughResponse = None
+        self._PassThroughParam = None
+        self._IndexerCache = None
+        self._FragmentCache = None
+        self._HlsPlayFragmentCount = None
+        self._HlsPlayFragmentDuration = None
+        self._TimeJitter = None
+        self._UsingHttps = None
+        self._CacheFollowOrigin = None
+        self._CacheStatusCode = None
+        self._UrlReplaceRules = None
+        self._OptionsRequest = None
+        self._FollowRedirect = None
+        self._IndexerKeepParam = None
+        self._FragmentKeepParam = None
+        self._MediaPackageType = None
+        self._MediaPackageChannelTypes = None
+        self._IndexerHeader = None
+        self._FragmentHeader = None
+        self._CustomizationRules = None
+        self._CacheFormatRule = None
+
+    @property
+    def DomainName(self):
+        r"""<p>域名。</p>
+        :rtype: str
+        """
+        return self._DomainName
+
+    @DomainName.setter
+    def DomainName(self, DomainName):
+        self._DomainName = DomainName
+
+    @property
+    def OriginStreamPlayType(self):
+        r"""<p>源站播放协议，可取值：rtmp、flv、hls、dash、hls|dash、customization。</p>
+        :rtype: str
+        """
+        return self._OriginStreamPlayType
+
+    @OriginStreamPlayType.setter
+    def OriginStreamPlayType(self, OriginStreamPlayType):
+        self._OriginStreamPlayType = OriginStreamPlayType
+
+    @property
+    def CdnStreamPlayType(self):
+        r"""<p>播放协议，可取值：rtmp、flv、hls、dash、hls|dash、customization。<br>自定义回源协议填写 customization。</p>
+        :rtype: list of str
+        """
+        return self._CdnStreamPlayType
+
+    @CdnStreamPlayType.setter
+    def CdnStreamPlayType(self, CdnStreamPlayType):
+        self._CdnStreamPlayType = CdnStreamPlayType
+
+    @property
+    def OriginStreamType(self):
+        r"""<p>原站类型：<br>1 =&gt; 直播原站。<br>2 =&gt; mediaPackage。</p>
+        :rtype: int
+        """
+        return self._OriginStreamType
+
+    @OriginStreamType.setter
+    def OriginStreamType(self, OriginStreamType):
+        self._OriginStreamType = OriginStreamType
+
+    @property
+    def OriginAddress(self):
+        r"""<p>原站地址信息，每项用冒号分割域名（ip）、端口信息。<br>端口为空也要带上分号，表示取默认端口。<br>自定义回源协议填写 customization。</p>
+        :rtype: list of str
+        """
+        return self._OriginAddress
+
+    @OriginAddress.setter
+    def OriginAddress(self, OriginAddress):
+        self._OriginAddress = OriginAddress
+
+    @property
+    def OriginAddressType(self):
+        r"""<p>原站地址类型：<br>1 =&gt; IP 类型。<br>2 =&gt; 域名类型。</p>
+        :rtype: int
+        """
+        return self._OriginAddressType
+
+    @OriginAddressType.setter
+    def OriginAddressType(self, OriginAddressType):
+        self._OriginAddressType = OriginAddressType
+
+    @property
+    def CustomerName(self):
+        r"""<p>自定义名称</p>
+        :rtype: str
+        """
+        return self._CustomerName
+
+    @CustomerName.setter
+    def CustomerName(self, CustomerName):
+        self._CustomerName = CustomerName
+
+    @property
+    def OriginHost(self):
+        r"""<p>原站 host。<br>当原站播放协议为 hls 时，传递该字段才会生效。</p>
+        :rtype: str
+        """
+        return self._OriginHost
+
+    @OriginHost.setter
+    def OriginHost(self, OriginHost):
+        self._OriginHost = OriginHost
+
+    @property
+    def OriginTimeout(self):
+        r"""<p>超时时间，单位 ms，取值范围：1 ～ 60000，默认值：10000。</p>
+        :rtype: int
+        """
+        return self._OriginTimeout
+
+    @OriginTimeout.setter
+    def OriginTimeout(self, OriginTimeout):
+        self._OriginTimeout = OriginTimeout
+
+    @property
+    def OriginRetryTimes(self):
+        r"""<p>重试次数，单位 次，取值范围：1 ～ 10，默认值：10。</p>
+        :rtype: int
+        """
+        return self._OriginRetryTimes
+
+    @OriginRetryTimes.setter
+    def OriginRetryTimes(self, OriginRetryTimes):
+        self._OriginRetryTimes = OriginRetryTimes
+
+    @property
+    def PassThroughHttpHeader(self):
+        r"""<p>是否透传 http 头信息，可取值：on、off。<br>当原站播放协议为 hls 时，传递该字段才会生效。</p>
+        :rtype: str
+        """
+        return self._PassThroughHttpHeader
+
+    @PassThroughHttpHeader.setter
+    def PassThroughHttpHeader(self, PassThroughHttpHeader):
+        self._PassThroughHttpHeader = PassThroughHttpHeader
+
+    @property
+    def PassThroughResponse(self):
+        r"""<p>是否透传相应，可取值：on、off。<br>当原站播放协议为 hls 时，传递该字段才会生效。</p>
+        :rtype: str
+        """
+        return self._PassThroughResponse
+
+    @PassThroughResponse.setter
+    def PassThroughResponse(self, PassThroughResponse):
+        self._PassThroughResponse = PassThroughResponse
+
+    @property
+    def PassThroughParam(self):
+        r"""<p>是否透传参数，可取值：on、off。<br>当原站播放协议为 hls 时，传递该字段才会生效。</p>
+        :rtype: str
+        """
+        return self._PassThroughParam
+
+    @PassThroughParam.setter
+    def PassThroughParam(self, PassThroughParam):
+        self._PassThroughParam = PassThroughParam
+
+    @property
+    def IndexerCache(self):
+        r"""<p>索引缓存，单位 ms，取值范围：1 ～ 60000，默认值：10000。<br>当原站播放协议为 hls 时，传递该字段才会生效。</p>
+        :rtype: int
+        """
+        return self._IndexerCache
+
+    @IndexerCache.setter
+    def IndexerCache(self, IndexerCache):
+        self._IndexerCache = IndexerCache
+
+    @property
+    def FragmentCache(self):
+        r"""<p>分片缓存，单位 ms，取值范围：1 ～ 60000，默认值：10000。<br>当原站播放协议为 hls 时，传递该字段才会生效。</p>
+        :rtype: int
+        """
+        return self._FragmentCache
+
+    @FragmentCache.setter
+    def FragmentCache(self, FragmentCache):
+        self._FragmentCache = FragmentCache
+
+    @property
+    def HlsPlayFragmentCount(self):
+        r"""<p>分片数，单位 个，取值范围：1 ～ 10，默认值：3。</p>
+        :rtype: int
+        """
+        return self._HlsPlayFragmentCount
+
+    @HlsPlayFragmentCount.setter
+    def HlsPlayFragmentCount(self, HlsPlayFragmentCount):
+        self._HlsPlayFragmentCount = HlsPlayFragmentCount
+
+    @property
+    def HlsPlayFragmentDuration(self):
+        r"""<p>分片时长，单位 ms，取值范围：1 ～ 10000，默认值：3000。</p>
+        :rtype: int
+        """
+        return self._HlsPlayFragmentDuration
+
+    @HlsPlayFragmentDuration.setter
+    def HlsPlayFragmentDuration(self, HlsPlayFragmentDuration):
+        self._HlsPlayFragmentDuration = HlsPlayFragmentDuration
+
+    @property
+    def TimeJitter(self):
+        r"""<p>时间戳修正，可取值：on、off，默认值：off。<br>当原站播放协议为 rtmp、flv 时，传递该字段才会生效。</p>
+        :rtype: str
+        """
+        return self._TimeJitter
+
+    @TimeJitter.setter
+    def TimeJitter(self, TimeJitter):
+        self._TimeJitter = TimeJitter
+
+    @property
+    def UsingHttps(self):
+        r"""<p>https 回源，可取值：on、off，默认值：off。<br>当原站播放协议为flv、hls时，传递此字段才会生效。</p>
+        :rtype: str
+        """
+        return self._UsingHttps
+
+    @UsingHttps.setter
+    def UsingHttps(self, UsingHttps):
+        self._UsingHttps = UsingHttps
+
+    @property
+    def CacheFollowOrigin(self):
+        r"""<p>遵循原站，可取值：on、off，默认值：off。<br>当原站播放协议为hls时，传递此字段才会生效。</p>
+        :rtype: str
+        """
+        return self._CacheFollowOrigin
+
+    @CacheFollowOrigin.setter
+    def CacheFollowOrigin(self, CacheFollowOrigin):
+        self._CacheFollowOrigin = CacheFollowOrigin
+
+    @property
+    def CacheStatusCode(self):
+        r"""<p>状态码缓存，数组元素格式：<br>cacheKey:interval<br>cacheKey 可取值：cache_400_sec、cache_403_sec、cache_404_sec、cache_405_sec、cache_500_sec、cache_503_sec、cache_504_sec。<br>interval 单位 ms。<br>当原站播放协议为hls时，传递此字段才会生效。</p>
+        :rtype: list of str
+        """
+        return self._CacheStatusCode
+
+    @CacheStatusCode.setter
+    def CacheStatusCode(self, CacheStatusCode):
+        self._CacheStatusCode = CacheStatusCode
+
+    @property
+    def UrlReplaceRules(self):
+        r"""<p>url改写， 格式为： url1&lt;|&gt;url2; 其中，&lt;|&gt; 为分隔符。<br>url1、url2 长度限制100，不可包含特殊字符。<br>当原站播放协议为hls时，传递此字段才会生效。</p>
+        :rtype: list of str
+        """
+        return self._UrlReplaceRules
+
+    @UrlReplaceRules.setter
+    def UrlReplaceRules(self, UrlReplaceRules):
+        self._UrlReplaceRules = UrlReplaceRules
+
+    @property
+    def OptionsRequest(self):
+        r"""<p>options 支持，可取值：on、off，默认值：off。<br>当原站播放协议为hls时，传递此字段才会生效。</p>
+        :rtype: str
+        """
+        return self._OptionsRequest
+
+    @OptionsRequest.setter
+    def OptionsRequest(self, OptionsRequest):
+        self._OptionsRequest = OptionsRequest
+
+    @property
+    def FollowRedirect(self):
+        r"""<p>follow 301/302，可取值：on、off，默认值：off。<br>当原站播放协议为hls时，传递此字段才会生效。</p>
+        :rtype: str
+        """
+        return self._FollowRedirect
+
+    @FollowRedirect.setter
+    def FollowRedirect(self, FollowRedirect):
+        self._FollowRedirect = FollowRedirect
+
+    @property
+    def IndexerKeepParam(self):
+        r"""<p>当 OriginStreamPlayType 为 hls 时生效，设置索引缓存保留指定参数列表，最多支持 30 组，每个参数小于等于 20 字符。</p>
+        :rtype: list of str
+        """
+        return self._IndexerKeepParam
+
+    @IndexerKeepParam.setter
+    def IndexerKeepParam(self, IndexerKeepParam):
+        self._IndexerKeepParam = IndexerKeepParam
+
+    @property
+    def FragmentKeepParam(self):
+        r"""<p>当 OriginStreamPlayType 为 hls 时生效，设置分片缓存保留指定参数列表，最多支持 30 组，每个参数小于等于 20 字符。</p>
+        :rtype: list of str
+        """
+        return self._FragmentKeepParam
+
+    @FragmentKeepParam.setter
+    def FragmentKeepParam(self, FragmentKeepParam):
+        self._FragmentKeepParam = FragmentKeepParam
+
+    @property
+    def MediaPackageType(self):
+        r"""<p>当 OriginStreamType = 2 时有效，表示 mediapackage 具体类型：<br>media_package =&gt; 仅配置普通频道。<br>media_package_pure_ad =&gt; 仅配置广告。<br>media_package_mix_ad =&gt; 同时配置普通频道和广告。<br>注意：配置时候，优先使用 media_package。和 MediaPackageChannelTypes 字段配合使用。</p>
+        :rtype: str
+        """
+        return self._MediaPackageType
+
+    @MediaPackageType.setter
+    def MediaPackageType(self, MediaPackageType):
+        self._MediaPackageType = MediaPackageType
+
+    @property
+    def MediaPackageChannelTypes(self):
+        r"""<p>当 OriginStreamType = 2 且 MediaPackageType = media_package 时有效，表示 mediapackage 频道类型，可组合如下值：normal（频道）、ssai（广告）、linear_assembly（线性组装）。</p>
+        :rtype: list of str
+        """
+        return self._MediaPackageChannelTypes
+
+    @MediaPackageChannelTypes.setter
+    def MediaPackageChannelTypes(self, MediaPackageChannelTypes):
+        self._MediaPackageChannelTypes = MediaPackageChannelTypes
+
+    @property
+    def IndexerHeader(self):
+        r"""<p>当 OriginStreamPlayType 为 hls 时生效，设置索引自定义 header，最大支持 10 组，每一组参数、取值用空格分开，允许字符规则如下：<br>头部参数：由大小写字母、数字及-组成，长度支持1 ～100个字符，黑名单：Host、Connection、Content-Length、Range。<br>头部取值：不支持中文、不支持以$开头，长度支持1 ～ 100个字符，不允许有空格。</p>
+        :rtype: list of str
+        """
+        return self._IndexerHeader
+
+    @IndexerHeader.setter
+    def IndexerHeader(self, IndexerHeader):
+        self._IndexerHeader = IndexerHeader
+
+    @property
+    def FragmentHeader(self):
+        r"""<p>当 OriginStreamPlayType 为 hls 时生效，设置分片自定义 header，最大支持 10 组，每一组参数、取值用空格分开，允许字符规则如下：<br>头部参数：由大小写字母、数字及-组成，长度支持1 ～100个字符，黑名单：Host、Connection、Content-Length、Range。<br>头部取值：不支持中文、不支持以$开头，长度支持1 ～ 100个字符，不允许有空格。</p>
+        :rtype: list of str
+        """
+        return self._FragmentHeader
+
+    @FragmentHeader.setter
+    def FragmentHeader(self, FragmentHeader):
+        self._FragmentHeader = FragmentHeader
+
+    @property
+    def CustomizationRules(self):
+        r"""<p>自定义回源规则列表，当 OriginStreamPlayType 为 customization 时候生效。</p>
+        :rtype: list of OriginStreamCustomizationRule
+        """
+        return self._CustomizationRules
+
+    @CustomizationRules.setter
+    def CustomizationRules(self, CustomizationRules):
+        self._CustomizationRules = CustomizationRules
+
+    @property
+    def CacheFormatRule(self):
+        r"""<p>缓存格式规则。<br>0：默认格式。<br>1：云直播源站格式。<br>当 OriginStreamPlayType 为 customization 时候生效。</p>
+        :rtype: int
+        """
+        return self._CacheFormatRule
+
+    @CacheFormatRule.setter
+    def CacheFormatRule(self, CacheFormatRule):
+        self._CacheFormatRule = CacheFormatRule
+
+
+    def _deserialize(self, params):
+        self._DomainName = params.get("DomainName")
+        self._OriginStreamPlayType = params.get("OriginStreamPlayType")
+        self._CdnStreamPlayType = params.get("CdnStreamPlayType")
+        self._OriginStreamType = params.get("OriginStreamType")
+        self._OriginAddress = params.get("OriginAddress")
+        self._OriginAddressType = params.get("OriginAddressType")
+        self._CustomerName = params.get("CustomerName")
+        self._OriginHost = params.get("OriginHost")
+        self._OriginTimeout = params.get("OriginTimeout")
+        self._OriginRetryTimes = params.get("OriginRetryTimes")
+        self._PassThroughHttpHeader = params.get("PassThroughHttpHeader")
+        self._PassThroughResponse = params.get("PassThroughResponse")
+        self._PassThroughParam = params.get("PassThroughParam")
+        self._IndexerCache = params.get("IndexerCache")
+        self._FragmentCache = params.get("FragmentCache")
+        self._HlsPlayFragmentCount = params.get("HlsPlayFragmentCount")
+        self._HlsPlayFragmentDuration = params.get("HlsPlayFragmentDuration")
+        self._TimeJitter = params.get("TimeJitter")
+        self._UsingHttps = params.get("UsingHttps")
+        self._CacheFollowOrigin = params.get("CacheFollowOrigin")
+        self._CacheStatusCode = params.get("CacheStatusCode")
+        self._UrlReplaceRules = params.get("UrlReplaceRules")
+        self._OptionsRequest = params.get("OptionsRequest")
+        self._FollowRedirect = params.get("FollowRedirect")
+        self._IndexerKeepParam = params.get("IndexerKeepParam")
+        self._FragmentKeepParam = params.get("FragmentKeepParam")
+        self._MediaPackageType = params.get("MediaPackageType")
+        self._MediaPackageChannelTypes = params.get("MediaPackageChannelTypes")
+        self._IndexerHeader = params.get("IndexerHeader")
+        self._FragmentHeader = params.get("FragmentHeader")
+        if params.get("CustomizationRules") is not None:
+            self._CustomizationRules = []
+            for item in params.get("CustomizationRules"):
+                obj = OriginStreamCustomizationRule()
+                obj._deserialize(item)
+                self._CustomizationRules.append(obj)
+        self._CacheFormatRule = params.get("CacheFormatRule")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class ModifyOriginStreamInfoResponse(AbstractModel):
     r"""ModifyOriginStreamInfo返回参数结构体
@@ -36600,6 +37676,282 @@ class MonitorStreamPlayInfo(AbstractModel):
         self._Bandwidth = params.get("Bandwidth")
         self._Online = params.get("Online")
         self._Request = params.get("Request")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OriginStreamCustomizationRule(AbstractModel):
+    r"""播放域名回源自定义协议规则。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MatchRule: <p>匹配规则，可选项如下：<br>.m3u8、.mpd、.ts、.mp4、.m4s、.m4a、.m4i、.m4v、.m4f、.aac、.webm。</p>
+        :type MatchRule: str
+        :param _OriginAddressType: <p>原站地址类型： 1 =&gt; IP 类型。 2 =&gt; 域名类型。</p>
+        :type OriginAddressType: int
+        :param _OriginHost: <p>原站 host。</p>
+        :type OriginHost: str
+        :param _OriginAddress: <p>原站地址信息，每项用冒号分割域名（ip）、端口信息。 端口为空也要带上分号，表示取默认端口。</p>
+        :type OriginAddress: list of str
+        :param _PassThroughHttpHeader: <p>是否透传 http 头信息，可取值：on、off。</p>
+        :type PassThroughHttpHeader: str
+        :param _PassThroughResponse: <p>是否透传相应，可取值：on、off。</p>
+        :type PassThroughResponse: str
+        :param _PassThroughParam: <p>是否透传参数，可取值：on、off。</p>
+        :type PassThroughParam: str
+        :param _UrlReplaceRules: <p>url改写， 格式为： url1&lt;|&gt;url2; 其中，&lt;|&gt; 为分隔符。 url1、url2 长度限制100，不可包含特殊字符。</p>
+        :type UrlReplaceRules: list of str
+        :param _OptionsRequest: <p>options 支持，可取值：on、off，默认值：off。</p>
+        :type OptionsRequest: str
+        :param _OriginTimeout: <p>回源超时时间，单位 ms，取值范围：1 ～ 60000，默认值：10000。</p>
+        :type OriginTimeout: int
+        :param _OriginRetryTimes: <p>重试次数，单位 次，取值范围：1 ～ 10。</p>
+        :type OriginRetryTimes: int
+        :param _CacheStatusCode: <p>状态码缓存，数组元素格式： cacheKey:interval cacheKey 可取值：cache_400_sec、cache_403_sec、cache_404_sec、cache_405_sec、cache_500_sec、cache_503_sec、cache_504_sec。 interval 单位 s。</p>
+        :type CacheStatusCode: list of str
+        :param _Cache: <p>缓存时间，单位 s，取值范围：0 ～ 31536000。</p>
+        :type Cache: int
+        :param _KeepParam: <p>缓存键。</p>
+        :type KeepParam: list of str
+        :param _HttpHeader: <p>设置索引自定义 header，最大支持 10 组，每一组参数、取值用空格分开，允许字符规则如下： 头部参数：由大小写字母、数字及-组成，长度支持1 ～100个字符，黑名单：Host、Connection、Content-Length、Range。 头部取值：不支持中文、不支持以$开头，长度支持1 ～ 100个字符，不允许有空格。</p>
+        :type HttpHeader: list of str
+        :param _CustomizationCacheFollowOrigin: <p>自定义回源缓存随源配置。<br>0：不开启。<br>1：开启。</p>
+        :type CustomizationCacheFollowOrigin: int
+        :param _KeepHttpHeader: <p>缓存 Http 头部键。</p>
+        :type KeepHttpHeader: list of str
+        """
+        self._MatchRule = None
+        self._OriginAddressType = None
+        self._OriginHost = None
+        self._OriginAddress = None
+        self._PassThroughHttpHeader = None
+        self._PassThroughResponse = None
+        self._PassThroughParam = None
+        self._UrlReplaceRules = None
+        self._OptionsRequest = None
+        self._OriginTimeout = None
+        self._OriginRetryTimes = None
+        self._CacheStatusCode = None
+        self._Cache = None
+        self._KeepParam = None
+        self._HttpHeader = None
+        self._CustomizationCacheFollowOrigin = None
+        self._KeepHttpHeader = None
+
+    @property
+    def MatchRule(self):
+        r"""<p>匹配规则，可选项如下：<br>.m3u8、.mpd、.ts、.mp4、.m4s、.m4a、.m4i、.m4v、.m4f、.aac、.webm。</p>
+        :rtype: str
+        """
+        return self._MatchRule
+
+    @MatchRule.setter
+    def MatchRule(self, MatchRule):
+        self._MatchRule = MatchRule
+
+    @property
+    def OriginAddressType(self):
+        r"""<p>原站地址类型： 1 =&gt; IP 类型。 2 =&gt; 域名类型。</p>
+        :rtype: int
+        """
+        return self._OriginAddressType
+
+    @OriginAddressType.setter
+    def OriginAddressType(self, OriginAddressType):
+        self._OriginAddressType = OriginAddressType
+
+    @property
+    def OriginHost(self):
+        r"""<p>原站 host。</p>
+        :rtype: str
+        """
+        return self._OriginHost
+
+    @OriginHost.setter
+    def OriginHost(self, OriginHost):
+        self._OriginHost = OriginHost
+
+    @property
+    def OriginAddress(self):
+        r"""<p>原站地址信息，每项用冒号分割域名（ip）、端口信息。 端口为空也要带上分号，表示取默认端口。</p>
+        :rtype: list of str
+        """
+        return self._OriginAddress
+
+    @OriginAddress.setter
+    def OriginAddress(self, OriginAddress):
+        self._OriginAddress = OriginAddress
+
+    @property
+    def PassThroughHttpHeader(self):
+        r"""<p>是否透传 http 头信息，可取值：on、off。</p>
+        :rtype: str
+        """
+        return self._PassThroughHttpHeader
+
+    @PassThroughHttpHeader.setter
+    def PassThroughHttpHeader(self, PassThroughHttpHeader):
+        self._PassThroughHttpHeader = PassThroughHttpHeader
+
+    @property
+    def PassThroughResponse(self):
+        r"""<p>是否透传相应，可取值：on、off。</p>
+        :rtype: str
+        """
+        return self._PassThroughResponse
+
+    @PassThroughResponse.setter
+    def PassThroughResponse(self, PassThroughResponse):
+        self._PassThroughResponse = PassThroughResponse
+
+    @property
+    def PassThroughParam(self):
+        r"""<p>是否透传参数，可取值：on、off。</p>
+        :rtype: str
+        """
+        return self._PassThroughParam
+
+    @PassThroughParam.setter
+    def PassThroughParam(self, PassThroughParam):
+        self._PassThroughParam = PassThroughParam
+
+    @property
+    def UrlReplaceRules(self):
+        r"""<p>url改写， 格式为： url1&lt;|&gt;url2; 其中，&lt;|&gt; 为分隔符。 url1、url2 长度限制100，不可包含特殊字符。</p>
+        :rtype: list of str
+        """
+        return self._UrlReplaceRules
+
+    @UrlReplaceRules.setter
+    def UrlReplaceRules(self, UrlReplaceRules):
+        self._UrlReplaceRules = UrlReplaceRules
+
+    @property
+    def OptionsRequest(self):
+        r"""<p>options 支持，可取值：on、off，默认值：off。</p>
+        :rtype: str
+        """
+        return self._OptionsRequest
+
+    @OptionsRequest.setter
+    def OptionsRequest(self, OptionsRequest):
+        self._OptionsRequest = OptionsRequest
+
+    @property
+    def OriginTimeout(self):
+        r"""<p>回源超时时间，单位 ms，取值范围：1 ～ 60000，默认值：10000。</p>
+        :rtype: int
+        """
+        return self._OriginTimeout
+
+    @OriginTimeout.setter
+    def OriginTimeout(self, OriginTimeout):
+        self._OriginTimeout = OriginTimeout
+
+    @property
+    def OriginRetryTimes(self):
+        r"""<p>重试次数，单位 次，取值范围：1 ～ 10。</p>
+        :rtype: int
+        """
+        return self._OriginRetryTimes
+
+    @OriginRetryTimes.setter
+    def OriginRetryTimes(self, OriginRetryTimes):
+        self._OriginRetryTimes = OriginRetryTimes
+
+    @property
+    def CacheStatusCode(self):
+        r"""<p>状态码缓存，数组元素格式： cacheKey:interval cacheKey 可取值：cache_400_sec、cache_403_sec、cache_404_sec、cache_405_sec、cache_500_sec、cache_503_sec、cache_504_sec。 interval 单位 s。</p>
+        :rtype: list of str
+        """
+        return self._CacheStatusCode
+
+    @CacheStatusCode.setter
+    def CacheStatusCode(self, CacheStatusCode):
+        self._CacheStatusCode = CacheStatusCode
+
+    @property
+    def Cache(self):
+        r"""<p>缓存时间，单位 s，取值范围：0 ～ 31536000。</p>
+        :rtype: int
+        """
+        return self._Cache
+
+    @Cache.setter
+    def Cache(self, Cache):
+        self._Cache = Cache
+
+    @property
+    def KeepParam(self):
+        r"""<p>缓存键。</p>
+        :rtype: list of str
+        """
+        return self._KeepParam
+
+    @KeepParam.setter
+    def KeepParam(self, KeepParam):
+        self._KeepParam = KeepParam
+
+    @property
+    def HttpHeader(self):
+        r"""<p>设置索引自定义 header，最大支持 10 组，每一组参数、取值用空格分开，允许字符规则如下： 头部参数：由大小写字母、数字及-组成，长度支持1 ～100个字符，黑名单：Host、Connection、Content-Length、Range。 头部取值：不支持中文、不支持以$开头，长度支持1 ～ 100个字符，不允许有空格。</p>
+        :rtype: list of str
+        """
+        return self._HttpHeader
+
+    @HttpHeader.setter
+    def HttpHeader(self, HttpHeader):
+        self._HttpHeader = HttpHeader
+
+    @property
+    def CustomizationCacheFollowOrigin(self):
+        r"""<p>自定义回源缓存随源配置。<br>0：不开启。<br>1：开启。</p>
+        :rtype: int
+        """
+        return self._CustomizationCacheFollowOrigin
+
+    @CustomizationCacheFollowOrigin.setter
+    def CustomizationCacheFollowOrigin(self, CustomizationCacheFollowOrigin):
+        self._CustomizationCacheFollowOrigin = CustomizationCacheFollowOrigin
+
+    @property
+    def KeepHttpHeader(self):
+        r"""<p>缓存 Http 头部键。</p>
+        :rtype: list of str
+        """
+        return self._KeepHttpHeader
+
+    @KeepHttpHeader.setter
+    def KeepHttpHeader(self, KeepHttpHeader):
+        self._KeepHttpHeader = KeepHttpHeader
+
+
+    def _deserialize(self, params):
+        self._MatchRule = params.get("MatchRule")
+        self._OriginAddressType = params.get("OriginAddressType")
+        self._OriginHost = params.get("OriginHost")
+        self._OriginAddress = params.get("OriginAddress")
+        self._PassThroughHttpHeader = params.get("PassThroughHttpHeader")
+        self._PassThroughResponse = params.get("PassThroughResponse")
+        self._PassThroughParam = params.get("PassThroughParam")
+        self._UrlReplaceRules = params.get("UrlReplaceRules")
+        self._OptionsRequest = params.get("OptionsRequest")
+        self._OriginTimeout = params.get("OriginTimeout")
+        self._OriginRetryTimes = params.get("OriginRetryTimes")
+        self._CacheStatusCode = params.get("CacheStatusCode")
+        self._Cache = params.get("Cache")
+        self._KeepParam = params.get("KeepParam")
+        self._HttpHeader = params.get("HttpHeader")
+        self._CustomizationCacheFollowOrigin = params.get("CustomizationCacheFollowOrigin")
+        self._KeepHttpHeader = params.get("KeepHttpHeader")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -3128,19 +3128,19 @@ class BindingPolicyObjectRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Module: 必填。固定值"monitor"
+        :param _Module: <p>必填。固定值&quot;monitor&quot;</p>
         :type Module: str
-        :param _GroupId: 策略组id，例如 4739573。逐渐弃用，建议使用 PolicyId 参数
+        :param _GroupId: <p>策略组id，例如 4739573。逐渐弃用，建议使用 PolicyId 参数</p>
         :type GroupId: int
-        :param _PolicyId: 告警策略ID，例如“policy-gh892hg0”。PolicyId 参数与 GroupId 参数至少要填一个，否则会报参数错误，建议使用该参数。若两者同时存在则以该参数为准
+        :param _PolicyId: <p>告警策略ID，例如“policy-gh892hg0”。PolicyId 参数与 GroupId 参数至少要填一个，否则会报参数错误，建议使用该参数。若两者同时存在则以该参数为准</p>
         :type PolicyId: str
-        :param _InstanceGroupId: 实例分组ID
+        :param _InstanceGroupId: <p>实例分组ID</p>
         :type InstanceGroupId: int
-        :param _Dimensions: 需要绑定的对象维度信息，当为实例绑定渠道时，此处为必填信息
+        :param _Dimensions: <p>需要绑定的对象维度信息。当告警对象选择为实例绑定方式时，该参数为必填参数；当告警对象选择为标签绑定、实例分组方式时，该参数为选填参数。</p>
         :type Dimensions: list of BindingPolicyObjectDimension
-        :param _EbSubject: 事件配置的告警
+        :param _EbSubject: <p>事件配置的告警</p>
         :type EbSubject: str
-        :param _EbEventFlag: 是否配置了事件告警
+        :param _EbEventFlag: <p>是否配置了事件告警</p>
         :type EbEventFlag: int
         """
         self._Module = None
@@ -3153,7 +3153,7 @@ class BindingPolicyObjectRequest(AbstractModel):
 
     @property
     def Module(self):
-        r"""必填。固定值"monitor"
+        r"""<p>必填。固定值&quot;monitor&quot;</p>
         :rtype: str
         """
         return self._Module
@@ -3164,7 +3164,7 @@ class BindingPolicyObjectRequest(AbstractModel):
 
     @property
     def GroupId(self):
-        r"""策略组id，例如 4739573。逐渐弃用，建议使用 PolicyId 参数
+        r"""<p>策略组id，例如 4739573。逐渐弃用，建议使用 PolicyId 参数</p>
         :rtype: int
         """
         return self._GroupId
@@ -3175,7 +3175,7 @@ class BindingPolicyObjectRequest(AbstractModel):
 
     @property
     def PolicyId(self):
-        r"""告警策略ID，例如“policy-gh892hg0”。PolicyId 参数与 GroupId 参数至少要填一个，否则会报参数错误，建议使用该参数。若两者同时存在则以该参数为准
+        r"""<p>告警策略ID，例如“policy-gh892hg0”。PolicyId 参数与 GroupId 参数至少要填一个，否则会报参数错误，建议使用该参数。若两者同时存在则以该参数为准</p>
         :rtype: str
         """
         return self._PolicyId
@@ -3186,7 +3186,7 @@ class BindingPolicyObjectRequest(AbstractModel):
 
     @property
     def InstanceGroupId(self):
-        r"""实例分组ID
+        r"""<p>实例分组ID</p>
         :rtype: int
         """
         return self._InstanceGroupId
@@ -3197,7 +3197,7 @@ class BindingPolicyObjectRequest(AbstractModel):
 
     @property
     def Dimensions(self):
-        r"""需要绑定的对象维度信息，当为实例绑定渠道时，此处为必填信息
+        r"""<p>需要绑定的对象维度信息。当告警对象选择为实例绑定方式时，该参数为必填参数；当告警对象选择为标签绑定、实例分组方式时，该参数为选填参数。</p>
         :rtype: list of BindingPolicyObjectDimension
         """
         return self._Dimensions
@@ -3208,7 +3208,7 @@ class BindingPolicyObjectRequest(AbstractModel):
 
     @property
     def EbSubject(self):
-        r"""事件配置的告警
+        r"""<p>事件配置的告警</p>
         :rtype: str
         """
         return self._EbSubject
@@ -3219,7 +3219,7 @@ class BindingPolicyObjectRequest(AbstractModel):
 
     @property
     def EbEventFlag(self):
-        r"""是否配置了事件告警
+        r"""<p>是否配置了事件告警</p>
         :rtype: int
         """
         return self._EbEventFlag

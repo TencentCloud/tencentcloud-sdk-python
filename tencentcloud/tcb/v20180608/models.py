@@ -18,6 +18,335 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AIModel(AbstractModel):
+    r"""AI 模型信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Model: 模型名
+        :type Model: str
+        :param _EnableMCP: 是否开启MCP
+        :type EnableMCP: bool
+        :param _Tags: 标签
+        :type Tags: list of str
+        """
+        self._Model = None
+        self._EnableMCP = None
+        self._Tags = None
+
+    @property
+    def Model(self):
+        r"""模型名
+        :rtype: str
+        """
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+    @property
+    def EnableMCP(self):
+        r"""是否开启MCP
+        :rtype: bool
+        """
+        return self._EnableMCP
+
+    @EnableMCP.setter
+    def EnableMCP(self, EnableMCP):
+        self._EnableMCP = EnableMCP
+
+    @property
+    def Tags(self):
+        r"""标签
+        :rtype: list of str
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+
+    def _deserialize(self, params):
+        self._Model = params.get("Model")
+        self._EnableMCP = params.get("EnableMCP")
+        self._Tags = params.get("Tags")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AIModelGroup(AbstractModel):
+    r"""AI 模型信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GroupName: <p>模型分组</p><p>枚举值：</p><ul><li>hunyuan-exp： 内置 hunyuan 分组，Models 中包含混元生文模型</li><li>hunyuan-image： 内置 hunyuan 分组，Models 中包含混元生图模型</li><li>deepseek： 内置 deepseek 分组，Models 中包含Deepseek生文模型</li><li>cloudbase： 内置 cloudbase 分组，Models 中包含云开发提供的模型，支持的所有模型可从 DescribeManagedAIModelList 获取</li><li>custom-xxxx： 自定义模型分组，Models 中包含用户自行配置的模型</li></ul>
+        :type GroupName: str
+        :param _Models: <p>模型列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Models: list of AIModel
+        :param _Type: <p>模型类型</p><p>枚举值：</p><ul><li>builtin： 内置模型分组类别</li><li>custom： 用户自定义模型分组类别</li></ul>
+        :type Type: str
+        :param _OriginType: <p>原始模型类型</p><p>枚举值：</p><ul><li>builtin： 内置模型类型</li><li>custom： 用户自定义模型类型</li></ul>
+        :type OriginType: str
+        :param _Remark: <p>备注</p>
+        :type Remark: str
+        :param _BaseUrl: <p>模型地址</p>
+        :type BaseUrl: str
+        :param _Status: <p>模型状态, 1: 开启, 2: 关闭</p>
+        :type Status: int
+        :param _Secret: <p>模型密钥</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Secret: :class:`tencentcloud.tcb.v20180608.models.AIModelSecret`
+        :param _CreateTime: <p>创建时间</p>
+        :type CreateTime: str
+        :param _UpdateTime: <p>更新时间</p>
+        :type UpdateTime: str
+        """
+        self._GroupName = None
+        self._Models = None
+        self._Type = None
+        self._OriginType = None
+        self._Remark = None
+        self._BaseUrl = None
+        self._Status = None
+        self._Secret = None
+        self._CreateTime = None
+        self._UpdateTime = None
+
+    @property
+    def GroupName(self):
+        r"""<p>模型分组</p><p>枚举值：</p><ul><li>hunyuan-exp： 内置 hunyuan 分组，Models 中包含混元生文模型</li><li>hunyuan-image： 内置 hunyuan 分组，Models 中包含混元生图模型</li><li>deepseek： 内置 deepseek 分组，Models 中包含Deepseek生文模型</li><li>cloudbase： 内置 cloudbase 分组，Models 中包含云开发提供的模型，支持的所有模型可从 DescribeManagedAIModelList 获取</li><li>custom-xxxx： 自定义模型分组，Models 中包含用户自行配置的模型</li></ul>
+        :rtype: str
+        """
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def Models(self):
+        r"""<p>模型列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of AIModel
+        """
+        return self._Models
+
+    @Models.setter
+    def Models(self, Models):
+        self._Models = Models
+
+    @property
+    def Type(self):
+        r"""<p>模型类型</p><p>枚举值：</p><ul><li>builtin： 内置模型分组类别</li><li>custom： 用户自定义模型分组类别</li></ul>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def OriginType(self):
+        r"""<p>原始模型类型</p><p>枚举值：</p><ul><li>builtin： 内置模型类型</li><li>custom： 用户自定义模型类型</li></ul>
+        :rtype: str
+        """
+        return self._OriginType
+
+    @OriginType.setter
+    def OriginType(self, OriginType):
+        self._OriginType = OriginType
+
+    @property
+    def Remark(self):
+        r"""<p>备注</p>
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def BaseUrl(self):
+        r"""<p>模型地址</p>
+        :rtype: str
+        """
+        return self._BaseUrl
+
+    @BaseUrl.setter
+    def BaseUrl(self, BaseUrl):
+        self._BaseUrl = BaseUrl
+
+    @property
+    def Status(self):
+        r"""<p>模型状态, 1: 开启, 2: 关闭</p>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Secret(self):
+        r"""<p>模型密钥</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.AIModelSecret`
+        """
+        return self._Secret
+
+    @Secret.setter
+    def Secret(self, Secret):
+        self._Secret = Secret
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""<p>更新时间</p>
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._GroupName = params.get("GroupName")
+        if params.get("Models") is not None:
+            self._Models = []
+            for item in params.get("Models"):
+                obj = AIModel()
+                obj._deserialize(item)
+                self._Models.append(obj)
+        self._Type = params.get("Type")
+        self._OriginType = params.get("OriginType")
+        self._Remark = params.get("Remark")
+        self._BaseUrl = params.get("BaseUrl")
+        self._Status = params.get("Status")
+        if params.get("Secret") is not None:
+            self._Secret = AIModelSecret()
+            self._Secret._deserialize(params.get("Secret"))
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AIModelSecret(AbstractModel):
+    r"""AI模型密钥信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SecretSource: 密钥来源
+        :type SecretSource: str
+        :param _SecretId: 密钥ID, 和SecretKey一一对应
+        :type SecretId: str
+        :param _SecretKey: 密钥Key, 和SecretId一一对应
+        :type SecretKey: str
+        :param _ApiKey: ApiKey,SecretKey和ApiKey二选一
+        :type ApiKey: str
+        """
+        self._SecretSource = None
+        self._SecretId = None
+        self._SecretKey = None
+        self._ApiKey = None
+
+    @property
+    def SecretSource(self):
+        r"""密钥来源
+        :rtype: str
+        """
+        return self._SecretSource
+
+    @SecretSource.setter
+    def SecretSource(self, SecretSource):
+        self._SecretSource = SecretSource
+
+    @property
+    def SecretId(self):
+        r"""密钥ID, 和SecretKey一一对应
+        :rtype: str
+        """
+        return self._SecretId
+
+    @SecretId.setter
+    def SecretId(self, SecretId):
+        self._SecretId = SecretId
+
+    @property
+    def SecretKey(self):
+        r"""密钥Key, 和SecretId一一对应
+        :rtype: str
+        """
+        return self._SecretKey
+
+    @SecretKey.setter
+    def SecretKey(self, SecretKey):
+        self._SecretKey = SecretKey
+
+    @property
+    def ApiKey(self):
+        r"""ApiKey,SecretKey和ApiKey二选一
+        :rtype: str
+        """
+        return self._ApiKey
+
+    @ApiKey.setter
+    def ApiKey(self, ApiKey):
+        self._ApiKey = ApiKey
+
+
+    def _deserialize(self, params):
+        self._SecretSource = params.get("SecretSource")
+        self._SecretId = params.get("SecretId")
+        self._SecretKey = params.get("SecretKey")
+        self._ApiKey = params.get("ApiKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AddProviderRequest(AbstractModel):
     r"""AddProvider请求参数结构体
 
@@ -1086,6 +1415,182 @@ class ClusterDetail(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class CreateAIModelRequest(AbstractModel):
+    r"""CreateAIModel请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: <p>环境id</p>
+        :type EnvId: str
+        :param _GroupName: <p>分组名</p><p>入参限制：不允许以 cloudbase 为前缀</p>
+        :type GroupName: str
+        :param _BaseUrl: <p>模型服务地址</p>
+        :type BaseUrl: str
+        :param _Models: <p>模型名列表</p>
+        :type Models: list of AIModel
+        :param _Remark: <p>分组备注</p>
+        :type Remark: str
+        :param _Status: <p>模型状态,  1: 开启, 2: 关闭</p>
+        :type Status: int
+        :param _Secret: <p>模型密钥</p>
+        :type Secret: :class:`tencentcloud.tcb.v20180608.models.AIModelSecret`
+        """
+        self._EnvId = None
+        self._GroupName = None
+        self._BaseUrl = None
+        self._Models = None
+        self._Remark = None
+        self._Status = None
+        self._Secret = None
+
+    @property
+    def EnvId(self):
+        r"""<p>环境id</p>
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def GroupName(self):
+        r"""<p>分组名</p><p>入参限制：不允许以 cloudbase 为前缀</p>
+        :rtype: str
+        """
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def BaseUrl(self):
+        r"""<p>模型服务地址</p>
+        :rtype: str
+        """
+        return self._BaseUrl
+
+    @BaseUrl.setter
+    def BaseUrl(self, BaseUrl):
+        self._BaseUrl = BaseUrl
+
+    @property
+    def Models(self):
+        r"""<p>模型名列表</p>
+        :rtype: list of AIModel
+        """
+        return self._Models
+
+    @Models.setter
+    def Models(self, Models):
+        self._Models = Models
+
+    @property
+    def Remark(self):
+        r"""<p>分组备注</p>
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def Status(self):
+        r"""<p>模型状态,  1: 开启, 2: 关闭</p>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Secret(self):
+        r"""<p>模型密钥</p>
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.AIModelSecret`
+        """
+        return self._Secret
+
+    @Secret.setter
+    def Secret(self, Secret):
+        self._Secret = Secret
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        self._GroupName = params.get("GroupName")
+        self._BaseUrl = params.get("BaseUrl")
+        if params.get("Models") is not None:
+            self._Models = []
+            for item in params.get("Models"):
+                obj = AIModel()
+                obj._deserialize(item)
+                self._Models.append(obj)
+        self._Remark = params.get("Remark")
+        self._Status = params.get("Status")
+        if params.get("Secret") is not None:
+            self._Secret = AIModelSecret()
+            self._Secret._deserialize(params.get("Secret"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAIModelResponse(AbstractModel):
+    r"""CreateAIModel返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Count: <p>创建数量</p>
+        :type Count: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Count = None
+        self._RequestId = None
+
+    @property
+    def Count(self):
+        r"""<p>创建数量</p>
+        :rtype: int
+        """
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Count = params.get("Count")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateApiKeyRequest(AbstractModel):
@@ -3423,6 +3928,100 @@ class DbInstance(AbstractModel):
         
 
 
+class DeleteAIModelRequest(AbstractModel):
+    r"""DeleteAIModel请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: <p>环境id</p>
+        :type EnvId: str
+        :param _GroupNames: <p>分组名列表</p>
+        :type GroupNames: list of str
+        """
+        self._EnvId = None
+        self._GroupNames = None
+
+    @property
+    def EnvId(self):
+        r"""<p>环境id</p>
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def GroupNames(self):
+        r"""<p>分组名列表</p>
+        :rtype: list of str
+        """
+        return self._GroupNames
+
+    @GroupNames.setter
+    def GroupNames(self, GroupNames):
+        self._GroupNames = GroupNames
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        self._GroupNames = params.get("GroupNames")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteAIModelResponse(AbstractModel):
+    r"""DeleteAIModel返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Count: <p>成功删除数量</p>
+        :type Count: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Count = None
+        self._RequestId = None
+
+    @property
+    def Count(self):
+        r"""<p>成功删除数量</p>
+        :rtype: int
+        """
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Count = params.get("Count")
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteApiKeyRequest(AbstractModel):
     r"""DeleteApiKey请求参数结构体
 
@@ -4103,6 +4702,92 @@ class DeleteVmInstanceResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAIModelsRequest(AbstractModel):
+    r"""DescribeAIModels请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: 环境id
+        :type EnvId: str
+        """
+        self._EnvId = None
+
+    @property
+    def EnvId(self):
+        r"""环境id
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAIModelsResponse(AbstractModel):
+    r"""DescribeAIModels返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AIModels: 模型列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AIModels: list of AIModelGroup
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._AIModels = None
+        self._RequestId = None
+
+    @property
+    def AIModels(self):
+        r"""模型列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of AIModelGroup
+        """
+        return self._AIModels
+
+    @AIModels.setter
+    def AIModels(self, AIModels):
+        self._AIModels = AIModels
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("AIModels") is not None:
+            self._AIModels = []
+            for item in params.get("AIModels"):
+                obj = AIModelGroup()
+                obj._deserialize(item)
+                self._AIModels.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -7361,6 +8046,92 @@ class DescribeLoginConfigResponse(AbstractModel):
         if params.get("PwdUpdateStrategy") is not None:
             self._PwdUpdateStrategy = PasswordUpdateLoginConfig()
             self._PwdUpdateStrategy._deserialize(params.get("PwdUpdateStrategy"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeManagedAIModelListRequest(AbstractModel):
+    r"""DescribeManagedAIModelList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: <p>环境id</p>
+        :type EnvId: str
+        """
+        self._EnvId = None
+
+    @property
+    def EnvId(self):
+        r"""<p>环境id</p>
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeManagedAIModelListResponse(AbstractModel):
+    r"""DescribeManagedAIModelList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ManagedAIModelList: <p>托管模型列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ManagedAIModelList: list of ManagedAIModelGroup
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ManagedAIModelList = None
+        self._RequestId = None
+
+    @property
+    def ManagedAIModelList(self):
+        r"""<p>托管模型列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ManagedAIModelGroup
+        """
+        return self._ManagedAIModelList
+
+    @ManagedAIModelList.setter
+    def ManagedAIModelList(self, ManagedAIModelList):
+        self._ManagedAIModelList = ManagedAIModelList
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ManagedAIModelList") is not None:
+            self._ManagedAIModelList = []
+            for item in params.get("ManagedAIModelList"):
+                obj = ManagedAIModelGroup()
+                obj._deserialize(item)
+                self._ManagedAIModelList.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -13048,6 +13819,344 @@ FALSE：不要求绑定手机号
         
 
 
+class ManagedAIModel(AbstractModel):
+    r"""托管型AI 模型信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Model: <p>模型名</p>
+        :type Model: str
+        :param _EnableMCP: <p>是否开启MCP</p>
+        :type EnableMCP: bool
+        :param _ModelSpec: <p>模型规格</p>
+        :type ModelSpec: :class:`tencentcloud.tcb.v20180608.models.ManagedAIModelSpec`
+        :param _ModelChargingInfo: <p>模型计费信息</p>
+        :type ModelChargingInfo: list of ManagedAIModelChargingInfo
+        """
+        self._Model = None
+        self._EnableMCP = None
+        self._ModelSpec = None
+        self._ModelChargingInfo = None
+
+    @property
+    def Model(self):
+        r"""<p>模型名</p>
+        :rtype: str
+        """
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+    @property
+    def EnableMCP(self):
+        r"""<p>是否开启MCP</p>
+        :rtype: bool
+        """
+        return self._EnableMCP
+
+    @EnableMCP.setter
+    def EnableMCP(self, EnableMCP):
+        self._EnableMCP = EnableMCP
+
+    @property
+    def ModelSpec(self):
+        r"""<p>模型规格</p>
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.ManagedAIModelSpec`
+        """
+        return self._ModelSpec
+
+    @ModelSpec.setter
+    def ModelSpec(self, ModelSpec):
+        self._ModelSpec = ModelSpec
+
+    @property
+    def ModelChargingInfo(self):
+        r"""<p>模型计费信息</p>
+        :rtype: list of ManagedAIModelChargingInfo
+        """
+        return self._ModelChargingInfo
+
+    @ModelChargingInfo.setter
+    def ModelChargingInfo(self, ModelChargingInfo):
+        self._ModelChargingInfo = ModelChargingInfo
+
+
+    def _deserialize(self, params):
+        self._Model = params.get("Model")
+        self._EnableMCP = params.get("EnableMCP")
+        if params.get("ModelSpec") is not None:
+            self._ModelSpec = ManagedAIModelSpec()
+            self._ModelSpec._deserialize(params.get("ModelSpec"))
+        if params.get("ModelChargingInfo") is not None:
+            self._ModelChargingInfo = []
+            for item in params.get("ModelChargingInfo"):
+                obj = ManagedAIModelChargingInfo()
+                obj._deserialize(item)
+                self._ModelChargingInfo.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ManagedAIModelChargingInfo(AbstractModel):
+    r"""托管 AI 模型计费信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: <p>计费类型</p><p>枚举值：</p><ul><li>Uniform： 固定计费</li><li>Tiered： 分段计费</li></ul>
+        :type Type: str
+        :param _Name: <p>分组名称</p>
+        :type Name: str
+        :param _InputPrice: <p>输入 Token 价格</p>
+        :type InputPrice: str
+        :param _OutputPrice: <p>输出 Token 价格</p>
+        :type OutputPrice: str
+        :param _CachePrice: <p>命中缓存价格</p>
+        :type CachePrice: str
+        :param _InputOutputUnit: <p>计费单位</p>
+        :type InputOutputUnit: str
+        """
+        self._Type = None
+        self._Name = None
+        self._InputPrice = None
+        self._OutputPrice = None
+        self._CachePrice = None
+        self._InputOutputUnit = None
+
+    @property
+    def Type(self):
+        r"""<p>计费类型</p><p>枚举值：</p><ul><li>Uniform： 固定计费</li><li>Tiered： 分段计费</li></ul>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Name(self):
+        r"""<p>分组名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def InputPrice(self):
+        r"""<p>输入 Token 价格</p>
+        :rtype: str
+        """
+        return self._InputPrice
+
+    @InputPrice.setter
+    def InputPrice(self, InputPrice):
+        self._InputPrice = InputPrice
+
+    @property
+    def OutputPrice(self):
+        r"""<p>输出 Token 价格</p>
+        :rtype: str
+        """
+        return self._OutputPrice
+
+    @OutputPrice.setter
+    def OutputPrice(self, OutputPrice):
+        self._OutputPrice = OutputPrice
+
+    @property
+    def CachePrice(self):
+        r"""<p>命中缓存价格</p>
+        :rtype: str
+        """
+        return self._CachePrice
+
+    @CachePrice.setter
+    def CachePrice(self, CachePrice):
+        self._CachePrice = CachePrice
+
+    @property
+    def InputOutputUnit(self):
+        r"""<p>计费单位</p>
+        :rtype: str
+        """
+        return self._InputOutputUnit
+
+    @InputOutputUnit.setter
+    def InputOutputUnit(self, InputOutputUnit):
+        self._InputOutputUnit = InputOutputUnit
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Name = params.get("Name")
+        self._InputPrice = params.get("InputPrice")
+        self._OutputPrice = params.get("OutputPrice")
+        self._CachePrice = params.get("CachePrice")
+        self._InputOutputUnit = params.get("InputOutputUnit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ManagedAIModelGroup(AbstractModel):
+    r"""云开发内置 AI 模型信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GroupName: <p>模型分组</p>
+        :type GroupName: str
+        :param _Models: <p>模型列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Models: list of ManagedAIModel
+        :param _Remark: <p>备注</p>
+        :type Remark: str
+        """
+        self._GroupName = None
+        self._Models = None
+        self._Remark = None
+
+    @property
+    def GroupName(self):
+        r"""<p>模型分组</p>
+        :rtype: str
+        """
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def Models(self):
+        r"""<p>模型列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ManagedAIModel
+        """
+        return self._Models
+
+    @Models.setter
+    def Models(self, Models):
+        self._Models = Models
+
+    @property
+    def Remark(self):
+        r"""<p>备注</p>
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+
+    def _deserialize(self, params):
+        self._GroupName = params.get("GroupName")
+        if params.get("Models") is not None:
+            self._Models = []
+            for item in params.get("Models"):
+                obj = ManagedAIModel()
+                obj._deserialize(item)
+                self._Models.append(obj)
+        self._Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ManagedAIModelSpec(AbstractModel):
+    r"""托管 AI 模型参数规格
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MaxInputToken: <p>最大输入 Token</p>
+        :type MaxInputToken: str
+        :param _MaxOutputToken: <p>最大输出 Token</p>
+        :type MaxOutputToken: str
+        :param _ContextLength: <p>上下文长度</p>
+        :type ContextLength: str
+        """
+        self._MaxInputToken = None
+        self._MaxOutputToken = None
+        self._ContextLength = None
+
+    @property
+    def MaxInputToken(self):
+        r"""<p>最大输入 Token</p>
+        :rtype: str
+        """
+        return self._MaxInputToken
+
+    @MaxInputToken.setter
+    def MaxInputToken(self, MaxInputToken):
+        self._MaxInputToken = MaxInputToken
+
+    @property
+    def MaxOutputToken(self):
+        r"""<p>最大输出 Token</p>
+        :rtype: str
+        """
+        return self._MaxOutputToken
+
+    @MaxOutputToken.setter
+    def MaxOutputToken(self, MaxOutputToken):
+        self._MaxOutputToken = MaxOutputToken
+
+    @property
+    def ContextLength(self):
+        r"""<p>上下文长度</p>
+        :rtype: str
+        """
+        return self._ContextLength
+
+    @ContextLength.setter
+    def ContextLength(self, ContextLength):
+        self._ContextLength = ContextLength
+
+
+    def _deserialize(self, params):
+        self._MaxInputToken = params.get("MaxInputToken")
+        self._MaxOutputToken = params.get("MaxOutputToken")
+        self._ContextLength = params.get("ContextLength")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class MessageLocalized(AbstractModel):
     r"""多语言文字，在 Locale 中 展示的 Message
 
@@ -17514,6 +18623,182 @@ class TkeClusterInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class UpdateAIModelRequest(AbstractModel):
+    r"""UpdateAIModel请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: <p>环境id</p>
+        :type EnvId: str
+        :param _GroupName: <p>分组名</p>
+        :type GroupName: str
+        :param _BaseUrl: <p>模型地址</p><p>枚举值：</p><ul><li>http://default.tcb： 默认模型地址，custom模型切换为builtin模型时使用</li></ul>
+        :type BaseUrl: str
+        :param _Models: <p>模型名列表</p><p>Models 列表更新采用全量替换</p>
+        :type Models: list of AIModel
+        :param _Remark: <p>备注</p>
+        :type Remark: str
+        :param _Status: <p>模型状态, 1: 开启, 2: 关闭</p>
+        :type Status: int
+        :param _Secret: <p>模型密钥</p>
+        :type Secret: :class:`tencentcloud.tcb.v20180608.models.AIModelSecret`
+        """
+        self._EnvId = None
+        self._GroupName = None
+        self._BaseUrl = None
+        self._Models = None
+        self._Remark = None
+        self._Status = None
+        self._Secret = None
+
+    @property
+    def EnvId(self):
+        r"""<p>环境id</p>
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def GroupName(self):
+        r"""<p>分组名</p>
+        :rtype: str
+        """
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def BaseUrl(self):
+        r"""<p>模型地址</p><p>枚举值：</p><ul><li>http://default.tcb： 默认模型地址，custom模型切换为builtin模型时使用</li></ul>
+        :rtype: str
+        """
+        return self._BaseUrl
+
+    @BaseUrl.setter
+    def BaseUrl(self, BaseUrl):
+        self._BaseUrl = BaseUrl
+
+    @property
+    def Models(self):
+        r"""<p>模型名列表</p><p>Models 列表更新采用全量替换</p>
+        :rtype: list of AIModel
+        """
+        return self._Models
+
+    @Models.setter
+    def Models(self, Models):
+        self._Models = Models
+
+    @property
+    def Remark(self):
+        r"""<p>备注</p>
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def Status(self):
+        r"""<p>模型状态, 1: 开启, 2: 关闭</p>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Secret(self):
+        r"""<p>模型密钥</p>
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.AIModelSecret`
+        """
+        return self._Secret
+
+    @Secret.setter
+    def Secret(self, Secret):
+        self._Secret = Secret
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        self._GroupName = params.get("GroupName")
+        self._BaseUrl = params.get("BaseUrl")
+        if params.get("Models") is not None:
+            self._Models = []
+            for item in params.get("Models"):
+                obj = AIModel()
+                obj._deserialize(item)
+                self._Models.append(obj)
+        self._Remark = params.get("Remark")
+        self._Status = params.get("Status")
+        if params.get("Secret") is not None:
+            self._Secret = AIModelSecret()
+            self._Secret._deserialize(params.get("Secret"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateAIModelResponse(AbstractModel):
+    r"""UpdateAIModel返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Count: <p>更新数量</p>
+        :type Count: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Count = None
+        self._RequestId = None
+
+    @property
+    def Count(self):
+        r"""<p>更新数量</p>
+        :rtype: int
+        """
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Count = params.get("Count")
+        self._RequestId = params.get("RequestId")
 
 
 class UpdateTableRequest(AbstractModel):
