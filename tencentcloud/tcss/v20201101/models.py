@@ -25669,20 +25669,19 @@ class DescribeAssetImageRegistryListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Limit: 需要返回的数量，默认为10，最大值为100
+        :param _Limit: <p>需要返回的数量，默认为10，最大值为100</p>
         :type Limit: int
-        :param _Offset: 偏移量，默认为0
+        :param _Offset: <p>偏移量，默认为0</p>
         :type Offset: int
-        :param _Filters: 过滤字段
-IsAuthorized是否授权，取值全部all，未授权0，已授权1
+        :param _Filters: <p>过滤字段<br>IsAuthorized是否授权，取值全部all，未授权0，已授权1</p>
         :type Filters: list of AssetFilters
-        :param _By: 排序字段
+        :param _By: <p>排序字段</p>
         :type By: str
-        :param _Order: 排序方式，asc，desc
+        :param _Order: <p>排序方式，asc，desc</p>
         :type Order: str
-        :param _OnlyShowLatest: 是否仅展示各repository最新的镜像, 默认为false
+        :param _OnlyShowLatest: <p>是否仅展示各repository最新的镜像, 默认为false</p>
         :type OnlyShowLatest: bool
-        :param _IsRunning: 是否仅展示运行中容器镜像
+        :param _IsRunning: <p>是否仅展示运行中容器镜像</p>
         :type IsRunning: bool
         """
         self._Limit = None
@@ -25695,7 +25694,7 @@ IsAuthorized是否授权，取值全部all，未授权0，已授权1
 
     @property
     def Limit(self):
-        r"""需要返回的数量，默认为10，最大值为100
+        r"""<p>需要返回的数量，默认为10，最大值为100</p>
         :rtype: int
         """
         return self._Limit
@@ -25706,7 +25705,7 @@ IsAuthorized是否授权，取值全部all，未授权0，已授权1
 
     @property
     def Offset(self):
-        r"""偏移量，默认为0
+        r"""<p>偏移量，默认为0</p>
         :rtype: int
         """
         return self._Offset
@@ -25717,8 +25716,7 @@ IsAuthorized是否授权，取值全部all，未授权0，已授权1
 
     @property
     def Filters(self):
-        r"""过滤字段
-IsAuthorized是否授权，取值全部all，未授权0，已授权1
+        r"""<p>过滤字段<br>IsAuthorized是否授权，取值全部all，未授权0，已授权1</p>
         :rtype: list of AssetFilters
         """
         return self._Filters
@@ -25729,7 +25727,7 @@ IsAuthorized是否授权，取值全部all，未授权0，已授权1
 
     @property
     def By(self):
-        r"""排序字段
+        r"""<p>排序字段</p>
         :rtype: str
         """
         return self._By
@@ -25740,7 +25738,7 @@ IsAuthorized是否授权，取值全部all，未授权0，已授权1
 
     @property
     def Order(self):
-        r"""排序方式，asc，desc
+        r"""<p>排序方式，asc，desc</p>
         :rtype: str
         """
         return self._Order
@@ -25751,7 +25749,7 @@ IsAuthorized是否授权，取值全部all，未授权0，已授权1
 
     @property
     def OnlyShowLatest(self):
-        r"""是否仅展示各repository最新的镜像, 默认为false
+        r"""<p>是否仅展示各repository最新的镜像, 默认为false</p>
         :rtype: bool
         """
         return self._OnlyShowLatest
@@ -25762,7 +25760,7 @@ IsAuthorized是否授权，取值全部all，未授权0，已授权1
 
     @property
     def IsRunning(self):
-        r"""是否仅展示运行中容器镜像
+        r"""<p>是否仅展示运行中容器镜像</p>
         :rtype: bool
         """
         return self._IsRunning
@@ -25802,9 +25800,9 @@ class DescribeAssetImageRegistryListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _List: 镜像仓库列表
+        :param _List: <p>镜像仓库列表</p>
         :type List: list of ImageRepoInfo
-        :param _TotalCount: 总数量
+        :param _TotalCount: <p>总数量</p>
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -25815,7 +25813,7 @@ class DescribeAssetImageRegistryListResponse(AbstractModel):
 
     @property
     def List(self):
-        r"""镜像仓库列表
+        r"""<p>镜像仓库列表</p>
         :rtype: list of ImageRepoInfo
         """
         return self._List
@@ -25826,7 +25824,7 @@ class DescribeAssetImageRegistryListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""总数量
+        r"""<p>总数量</p>
         :rtype: int
         """
         return self._TotalCount

@@ -6753,7 +6753,9 @@ class WedataClient(AbstractClient):
 
 
     def SubmitWorkflow(self, request):
-        r"""提交工作流。本接口已废弃，请使用接口BatchCreateTaskVersionAsync。
+        r"""接口已经废弃，调用会产生脏数据
+
+        提交工作流。本接口已废弃，请使用接口BatchCreateTaskVersionAsync。
 
         :param request: Request instance for SubmitWorkflow.
         :type request: :class:`tencentcloud.wedata.v20210820.models.SubmitWorkflowRequest`

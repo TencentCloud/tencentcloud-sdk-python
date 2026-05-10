@@ -391,6 +391,24 @@ class TdmqClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateRocketMQRouterRule(
+            self,
+            request: models.CreateRocketMQRouterRuleRequest,
+            opts: Dict = None,
+    ) -> models.CreateRocketMQRouterRuleResponse:
+        """
+        创建RocketMQ Router规则
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateRocketMQRouterRule"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateRocketMQRouterRuleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateRocketMQTopic(
             self,
             request: models.CreateRocketMQTopicRequest,

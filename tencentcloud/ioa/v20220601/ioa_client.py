@@ -26,6 +26,29 @@ class IoaClient(AbstractClient):
     _service = 'ioa'
 
 
+    def BindBusinessResourceConnectorGroup(self, request):
+        r"""saas版本，创建/修改业务资源后，调用绑定连接器接口,私有化调用path为：capi/GatewayResource/BindBusinessResourceConnectorGroup
+
+        :param request: Request instance for BindBusinessResourceConnectorGroup.
+        :type request: :class:`tencentcloud.ioa.v20220601.models.BindBusinessResourceConnectorGroupRequest`
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.BindBusinessResourceConnectorGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("BindBusinessResourceConnectorGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.BindBusinessResourceConnectorGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateBusinessResource(self, request):
         r"""创建业务资源，会对一些必填参数进行校验和参数合法性校验，创建业务资源时，先调用下校验相同业务资源接口，看资源是不是有冲突。创建时也会做校验，但没有返回对应的异常信息，私有化调用path为：capi/GatewayResource/CreateBusinessResource
 

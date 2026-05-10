@@ -4240,12 +4240,15 @@ class DescribeAsyncTextToSpeechResponse(AbstractModel):
         :type AudioDownloadUrl: str
         :param _SubtitleDownloadUrl: 字幕下载url
         :type SubtitleDownloadUrl: str
+        :param _TotalDurationMs: 音频时长
+        :type TotalDurationMs: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Status = None
         self._AudioDownloadUrl = None
         self._SubtitleDownloadUrl = None
+        self._TotalDurationMs = None
         self._RequestId = None
 
     @property
@@ -4286,6 +4289,17 @@ class DescribeAsyncTextToSpeechResponse(AbstractModel):
         self._SubtitleDownloadUrl = SubtitleDownloadUrl
 
     @property
+    def TotalDurationMs(self):
+        r"""音频时长
+        :rtype: int
+        """
+        return self._TotalDurationMs
+
+    @TotalDurationMs.setter
+    def TotalDurationMs(self, TotalDurationMs):
+        self._TotalDurationMs = TotalDurationMs
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -4301,6 +4315,7 @@ class DescribeAsyncTextToSpeechResponse(AbstractModel):
         self._Status = params.get("Status")
         self._AudioDownloadUrl = params.get("AudioDownloadUrl")
         self._SubtitleDownloadUrl = params.get("SubtitleDownloadUrl")
+        self._TotalDurationMs = params.get("TotalDurationMs")
         self._RequestId = params.get("RequestId")
 
 
@@ -17970,11 +17985,14 @@ class TextToSpeechResponse(AbstractModel):
         :type Audio: str
         :param _Alignments: 字幕对齐数据
         :type Alignments: list of AlignmentItem
+        :param _TotalDurationMs: 音频时长
+        :type TotalDurationMs: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Audio = None
         self._Alignments = None
+        self._TotalDurationMs = None
         self._RequestId = None
 
     @property
@@ -18000,6 +18018,17 @@ class TextToSpeechResponse(AbstractModel):
         self._Alignments = Alignments
 
     @property
+    def TotalDurationMs(self):
+        r"""音频时长
+        :rtype: int
+        """
+        return self._TotalDurationMs
+
+    @TotalDurationMs.setter
+    def TotalDurationMs(self, TotalDurationMs):
+        self._TotalDurationMs = TotalDurationMs
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -18019,6 +18048,7 @@ class TextToSpeechResponse(AbstractModel):
                 obj = AlignmentItem()
                 obj._deserialize(item)
                 self._Alignments.append(obj)
+        self._TotalDurationMs = params.get("TotalDurationMs")
         self._RequestId = params.get("RequestId")
 
 

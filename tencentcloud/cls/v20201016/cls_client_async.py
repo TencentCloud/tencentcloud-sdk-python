@@ -688,6 +688,42 @@ class ClsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateRecordingRuleTask(
+            self,
+            request: models.CreateRecordingRuleTaskRequest,
+            opts: Dict = None,
+    ) -> models.CreateRecordingRuleTaskResponse:
+        """
+        创建指标预聚合任务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateRecordingRuleTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateRecordingRuleTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateRecordingRuleYamlTask(
+            self,
+            request: models.CreateRecordingRuleYamlTaskRequest,
+            opts: Dict = None,
+    ) -> models.CreateRecordingRuleYamlTaskResponse:
+        """
+        通过yaml文件创建指标预聚合任务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateRecordingRuleYamlTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateRecordingRuleYamlTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateScheduledSql(
             self,
             request: models.CreateScheduledSqlRequest,
@@ -1295,6 +1331,42 @@ class ClsClient(AbstractClient):
         kwargs["action"] = "DeleteNoticeContent"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteNoticeContentResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteRecordingRuleTask(
+            self,
+            request: models.DeleteRecordingRuleTaskRequest,
+            opts: Dict = None,
+    ) -> models.DeleteRecordingRuleTaskResponse:
+        """
+        本接口用于删除预聚合分析任务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteRecordingRuleTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteRecordingRuleTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteRecordingRuleYamlTask(
+            self,
+            request: models.DeleteRecordingRuleYamlTaskRequest,
+            opts: Dict = None,
+    ) -> models.DeleteRecordingRuleYamlTaskResponse:
+        """
+        本接口用于删除yaml预聚合任务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteRecordingRuleYamlTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteRecordingRuleYamlTaskResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2255,6 +2327,42 @@ class ClsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeRecordingRuleTask(
+            self,
+            request: models.DescribeRecordingRuleTaskRequest,
+            opts: Dict = None,
+    ) -> models.DescribeRecordingRuleTaskResponse:
+        """
+        本接口用于获取预聚合任务列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeRecordingRuleTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeRecordingRuleTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeRecordingRuleYamlTask(
+            self,
+            request: models.DescribeRecordingRuleYamlTaskRequest,
+            opts: Dict = None,
+    ) -> models.DescribeRecordingRuleYamlTaskResponse:
+        """
+        本接口用于获取yaml预聚合任务列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeRecordingRuleYamlTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeRecordingRuleYamlTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeScheduledSqlInfo(
             self,
             request: models.DescribeScheduledSqlInfoRequest,
@@ -2989,6 +3097,42 @@ class ClsClient(AbstractClient):
         kwargs["action"] = "ModifyNoticeContent"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyNoticeContentResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyRecordingRuleTask(
+            self,
+            request: models.ModifyRecordingRuleTaskRequest,
+            opts: Dict = None,
+    ) -> models.ModifyRecordingRuleTaskResponse:
+        """
+        本接口用于修改定时预聚合任务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyRecordingRuleTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyRecordingRuleTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyRecordingRuleYamlTask(
+            self,
+            request: models.ModifyRecordingRuleYamlTaskRequest,
+            opts: Dict = None,
+    ) -> models.ModifyRecordingRuleYamlTaskResponse:
+        """
+        通过yaml文件修改指标预聚合任务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyRecordingRuleYamlTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyRecordingRuleYamlTaskResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

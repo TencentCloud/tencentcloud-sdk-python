@@ -1066,6 +1066,29 @@ class MqttClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeSharedSubscriptionClient(self, request):
+        r"""查询共享订阅组详情信息
+
+        :param request: Request instance for DescribeSharedSubscriptionClient.
+        :type request: :class:`tencentcloud.mqtt.v20240516.models.DescribeSharedSubscriptionClientRequest`
+        :rtype: :class:`tencentcloud.mqtt.v20240516.models.DescribeSharedSubscriptionClientResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSharedSubscriptionClient", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSharedSubscriptionClientResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeSharedSubscriptionGroups(self, request):
         r"""查询集群下共享订阅组列表
 
@@ -1103,6 +1126,29 @@ class MqttClient(AbstractClient):
             body = self.call("DescribeSharedSubscriptionLag", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeSharedSubscriptionLagResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeSharedSubscriptions(self, request):
+        r"""查询共享订阅组订阅列表
+
+        :param request: Request instance for DescribeSharedSubscriptions.
+        :type request: :class:`tencentcloud.mqtt.v20240516.models.DescribeSharedSubscriptionsRequest`
+        :rtype: :class:`tencentcloud.mqtt.v20240516.models.DescribeSharedSubscriptionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSharedSubscriptions", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSharedSubscriptionsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

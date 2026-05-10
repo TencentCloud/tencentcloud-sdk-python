@@ -1016,6 +1016,36 @@ class DescribeClusterDetailRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _ClusterID: <p>实例ID</p>
+        :type ClusterID: str
+        """
+        self._ClusterID = None
+
+    @property
+    def ClusterID(self):
+        r"""<p>实例ID</p>
+        :rtype: str
+        """
+        return self._ClusterID
+
+    @ClusterID.setter
+    def ClusterID(self, ClusterID):
+        self._ClusterID = ClusterID
+
+
+    def _deserialize(self, params):
+        self._ClusterID = params.get("ClusterID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DescribeClusterDetailResponse(AbstractModel):
     r"""DescribeClusterDetail返回参数结构体

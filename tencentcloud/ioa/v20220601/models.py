@@ -622,6 +622,85 @@ class AggrSoftDeviceRow(AbstractModel):
         
 
 
+class BindBusinessResourceConnectorGroupRequest(AbstractModel):
+    r"""BindBusinessResourceConnectorGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ServiceId: 要绑定连接器的业务资源id，创建时候响应会返回，修改调用端自己获取传递
+        :type ServiceId: int
+        :param _ConnectorGroupId: 业务资源要绑定的连接器id
+        :type ConnectorGroupId: str
+        """
+        self._ServiceId = None
+        self._ConnectorGroupId = None
+
+    @property
+    def ServiceId(self):
+        r"""要绑定连接器的业务资源id，创建时候响应会返回，修改调用端自己获取传递
+        :rtype: int
+        """
+        return self._ServiceId
+
+    @ServiceId.setter
+    def ServiceId(self, ServiceId):
+        self._ServiceId = ServiceId
+
+    @property
+    def ConnectorGroupId(self):
+        r"""业务资源要绑定的连接器id
+        :rtype: str
+        """
+        return self._ConnectorGroupId
+
+    @ConnectorGroupId.setter
+    def ConnectorGroupId(self, ConnectorGroupId):
+        self._ConnectorGroupId = ConnectorGroupId
+
+
+    def _deserialize(self, params):
+        self._ServiceId = params.get("ServiceId")
+        self._ConnectorGroupId = params.get("ConnectorGroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BindBusinessResourceConnectorGroupResponse(AbstractModel):
+    r"""BindBusinessResourceConnectorGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ComplexRule(AbstractModel):
     r"""自动划分规则数据
 

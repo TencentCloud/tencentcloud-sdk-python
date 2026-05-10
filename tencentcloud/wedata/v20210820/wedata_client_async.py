@@ -5297,6 +5297,8 @@ class WedataClient(AbstractClient):
             opts: Dict = None,
     ) -> models.SubmitWorkflowResponse:
         """
+        接口已经废弃，调用会产生脏数据
+
         提交工作流。本接口已废弃，请使用接口BatchCreateTaskVersionAsync。
         """
         

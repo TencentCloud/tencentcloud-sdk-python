@@ -1638,6 +1638,8 @@ class CreateDataSourceRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _TiProjectId: <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :type TiProjectId: str
         :param _Name: 数据源名称
         :type Name: str
         :param _Type: 数据源类型英文名
@@ -1651,12 +1653,24 @@ class CreateDataSourceRequest(AbstractModel):
         :param _Tags: 标签配置
         :type Tags: list of Tag
         """
+        self._TiProjectId = None
         self._Name = None
         self._Type = None
         self._Permission = None
         self._StorageId = None
         self._MountConfigure = None
         self._Tags = None
+
+    @property
+    def TiProjectId(self):
+        r"""<p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :rtype: str
+        """
+        return self._TiProjectId
+
+    @TiProjectId.setter
+    def TiProjectId(self, TiProjectId):
+        self._TiProjectId = TiProjectId
 
     @property
     def Name(self):
@@ -1726,6 +1740,7 @@ class CreateDataSourceRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._TiProjectId = params.get("TiProjectId")
         self._Name = params.get("Name")
         self._Type = params.get("Type")
         self._Permission = params.get("Permission")
@@ -3236,11 +3251,14 @@ class CreateMountLimitRequest(AbstractModel):
         :type Type: str
         :param _StorageId: 存储实例ID
         :type StorageId: str
+        :param _TiProjectId: <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :type TiProjectId: str
         :param _LimitMount: 限制开关是否开启，只有开启时才有限制，默认关闭
         :type LimitMount: bool
         """
         self._Type = None
         self._StorageId = None
+        self._TiProjectId = None
         self._LimitMount = None
 
     @property
@@ -3266,6 +3284,17 @@ class CreateMountLimitRequest(AbstractModel):
         self._StorageId = StorageId
 
     @property
+    def TiProjectId(self):
+        r"""<p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :rtype: str
+        """
+        return self._TiProjectId
+
+    @TiProjectId.setter
+    def TiProjectId(self, TiProjectId):
+        self._TiProjectId = TiProjectId
+
+    @property
     def LimitMount(self):
         r"""限制开关是否开启，只有开启时才有限制，默认关闭
         :rtype: bool
@@ -3280,6 +3309,7 @@ class CreateMountLimitRequest(AbstractModel):
     def _deserialize(self, params):
         self._Type = params.get("Type")
         self._StorageId = params.get("StorageId")
+        self._TiProjectId = params.get("TiProjectId")
         self._LimitMount = params.get("LimitMount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -6928,10 +6958,24 @@ class DeleteDataSourceRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _TiProjectId: <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :type TiProjectId: str
         :param _Id: 数据源ID
         :type Id: str
         """
+        self._TiProjectId = None
         self._Id = None
+
+    @property
+    def TiProjectId(self):
+        r"""<p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :rtype: str
+        """
+        return self._TiProjectId
+
+    @TiProjectId.setter
+    def TiProjectId(self, TiProjectId):
+        self._TiProjectId = TiProjectId
 
     @property
     def Id(self):
@@ -6946,6 +6990,7 @@ class DeleteDataSourceRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._TiProjectId = params.get("TiProjectId")
         self._Id = params.get("Id")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -7376,13 +7421,27 @@ class DeleteMountLimitRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _TiProjectId: <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :type TiProjectId: str
         :param _Type: 数据源类型英文名
         :type Type: str
         :param _StorageId: 存储实例ID
         :type StorageId: str
         """
+        self._TiProjectId = None
         self._Type = None
         self._StorageId = None
+
+    @property
+    def TiProjectId(self):
+        r"""<p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :rtype: str
+        """
+        return self._TiProjectId
+
+    @TiProjectId.setter
+    def TiProjectId(self, TiProjectId):
+        self._TiProjectId = TiProjectId
 
     @property
     def Type(self):
@@ -7408,6 +7467,7 @@ class DeleteMountLimitRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._TiProjectId = params.get("TiProjectId")
         self._Type = params.get("Type")
         self._StorageId = params.get("StorageId")
         memeber_set = set(params.keys())
@@ -8959,6 +9019,8 @@ class DescribeDataSourcesRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _TiProjectId: <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :type TiProjectId: str
         :param _Filters: 过滤条件
         :type Filters: list of Filter
         :param _TagFilters: 标签过滤条件
@@ -8972,12 +9034,24 @@ class DescribeDataSourcesRequest(AbstractModel):
         :param _Order: 输出列表的排列顺序。取值范围：ASC：升序排列 DESC：降序排列
         :type Order: str
         """
+        self._TiProjectId = None
         self._Filters = None
         self._TagFilters = None
         self._Offset = None
         self._Limit = None
         self._OrderField = None
         self._Order = None
+
+    @property
+    def TiProjectId(self):
+        r"""<p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :rtype: str
+        """
+        return self._TiProjectId
+
+    @TiProjectId.setter
+    def TiProjectId(self, TiProjectId):
+        self._TiProjectId = TiProjectId
 
     @property
     def Filters(self):
@@ -9047,6 +9121,7 @@ class DescribeDataSourcesRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._TiProjectId = params.get("TiProjectId")
         if params.get("Filters") is not None:
             self._Filters = []
             for item in params.get("Filters"):
@@ -11226,10 +11301,13 @@ class DescribeMountInstanceRequest(AbstractModel):
         r"""
         :param _Type: 数据源类型英文名
         :type Type: str
+        :param _TiProjectId: <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :type TiProjectId: str
         :param _StorageId: 存储实例ID
         :type StorageId: str
         """
         self._Type = None
+        self._TiProjectId = None
         self._StorageId = None
 
     @property
@@ -11242,6 +11320,17 @@ class DescribeMountInstanceRequest(AbstractModel):
     @Type.setter
     def Type(self, Type):
         self._Type = Type
+
+    @property
+    def TiProjectId(self):
+        r"""<p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :rtype: str
+        """
+        return self._TiProjectId
+
+    @TiProjectId.setter
+    def TiProjectId(self, TiProjectId):
+        self._TiProjectId = TiProjectId
 
     @property
     def StorageId(self):
@@ -11257,6 +11346,7 @@ class DescribeMountInstanceRequest(AbstractModel):
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
+        self._TiProjectId = params.get("TiProjectId")
         self._StorageId = params.get("StorageId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -11322,12 +11412,15 @@ class DescribeMountInstancesRequest(AbstractModel):
         r"""
         :param _Type: 数据源类型英文名
         :type Type: str
+        :param _TiProjectId: <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :type TiProjectId: str
         :param _Offset: 偏移量
         :type Offset: int
         :param _Limit: 分页大小
         :type Limit: int
         """
         self._Type = None
+        self._TiProjectId = None
         self._Offset = None
         self._Limit = None
 
@@ -11341,6 +11434,17 @@ class DescribeMountInstancesRequest(AbstractModel):
     @Type.setter
     def Type(self, Type):
         self._Type = Type
+
+    @property
+    def TiProjectId(self):
+        r"""<p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :rtype: str
+        """
+        return self._TiProjectId
+
+    @TiProjectId.setter
+    def TiProjectId(self, TiProjectId):
+        self._TiProjectId = TiProjectId
 
     @property
     def Offset(self):
@@ -11367,6 +11471,7 @@ class DescribeMountInstancesRequest(AbstractModel):
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
+        self._TiProjectId = params.get("TiProjectId")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
         memeber_set = set(params.keys())
@@ -11449,6 +11554,8 @@ class DescribeMountLimitsRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _TiProjectId: <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :type TiProjectId: str
         :param _Filters: 过滤条件
         :type Filters: list of Filter
         :param _Offset: 偏移量
@@ -11460,11 +11567,23 @@ class DescribeMountLimitsRequest(AbstractModel):
         :param _OrderField: 排序的依据字段
         :type OrderField: str
         """
+        self._TiProjectId = None
         self._Filters = None
         self._Offset = None
         self._Limit = None
         self._Order = None
         self._OrderField = None
+
+    @property
+    def TiProjectId(self):
+        r"""<p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :rtype: str
+        """
+        return self._TiProjectId
+
+    @TiProjectId.setter
+    def TiProjectId(self, TiProjectId):
+        self._TiProjectId = TiProjectId
 
     @property
     def Filters(self):
@@ -11523,6 +11642,7 @@ class DescribeMountLimitsRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._TiProjectId = params.get("TiProjectId")
         if params.get("Filters") is not None:
             self._Filters = []
             for item in params.get("Filters"):
@@ -29882,6 +30002,8 @@ class UpdateDataSourceRequest(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _TiProjectId: <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :type TiProjectId: str
         :param _Id: 数据源ID
         :type Id: str
         :param _Name: 数据源名称
@@ -29891,10 +30013,22 @@ class UpdateDataSourceRequest(AbstractModel):
         :param _MountConfigure: 数据源挂载配置
         :type MountConfigure: :class:`tencentcloud.tione.v20211111.models.MountConfigureInfo`
         """
+        self._TiProjectId = None
         self._Id = None
         self._Name = None
         self._Permission = None
         self._MountConfigure = None
+
+    @property
+    def TiProjectId(self):
+        r"""<p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :rtype: str
+        """
+        return self._TiProjectId
+
+    @TiProjectId.setter
+    def TiProjectId(self, TiProjectId):
+        self._TiProjectId = TiProjectId
 
     @property
     def Id(self):
@@ -29942,6 +30076,7 @@ class UpdateDataSourceRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._TiProjectId = params.get("TiProjectId")
         self._Id = params.get("Id")
         self._Name = params.get("Name")
         self._Permission = params.get("Permission")
@@ -29999,10 +30134,13 @@ class UpdateMountLimitRequest(AbstractModel):
         :type StorageId: str
         :param _LimitMount: 限制开关是否开启，只有开启时才有限制，默认关闭
         :type LimitMount: bool
+        :param _TiProjectId: <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :type TiProjectId: str
         """
         self._Type = None
         self._StorageId = None
         self._LimitMount = None
+        self._TiProjectId = None
 
     @property
     def Type(self):
@@ -30037,11 +30175,23 @@ class UpdateMountLimitRequest(AbstractModel):
     def LimitMount(self, LimitMount):
         self._LimitMount = LimitMount
 
+    @property
+    def TiProjectId(self):
+        r"""<p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :rtype: str
+        """
+        return self._TiProjectId
+
+    @TiProjectId.setter
+    def TiProjectId(self, TiProjectId):
+        self._TiProjectId = TiProjectId
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
         self._StorageId = params.get("StorageId")
         self._LimitMount = params.get("LimitMount")
+        self._TiProjectId = params.get("TiProjectId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

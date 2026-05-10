@@ -12661,10 +12661,13 @@ class AigcImageExtraParam(AbstractModel):
         :type Resolution: str
         :param _LogoAdd: <p>是否添加图标水印。默认不加。1-添加，0-不添加。</p><p>取值范围：[0, 1]</p><p>默认值：0</p>
         :type LogoAdd: int
+        :param _OutputFormat: <p>指定图片的输出格式，支持jpeg, png。</p>
+        :type OutputFormat: str
         """
         self._AspectRatio = None
         self._Resolution = None
         self._LogoAdd = None
+        self._OutputFormat = None
 
     @property
     def AspectRatio(self):
@@ -12699,11 +12702,23 @@ class AigcImageExtraParam(AbstractModel):
     def LogoAdd(self, LogoAdd):
         self._LogoAdd = LogoAdd
 
+    @property
+    def OutputFormat(self):
+        r"""<p>指定图片的输出格式，支持jpeg, png。</p>
+        :rtype: str
+        """
+        return self._OutputFormat
+
+    @OutputFormat.setter
+    def OutputFormat(self, OutputFormat):
+        self._OutputFormat = OutputFormat
+
 
     def _deserialize(self, params):
         self._AspectRatio = params.get("AspectRatio")
         self._Resolution = params.get("Resolution")
         self._LogoAdd = params.get("LogoAdd")
+        self._OutputFormat = params.get("OutputFormat")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

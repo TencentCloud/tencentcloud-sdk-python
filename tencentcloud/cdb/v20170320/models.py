@@ -17094,79 +17094,77 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProjectId: 项目 ID。
+        :param _ProjectId: <p>项目 ID。</p>
         :type ProjectId: int
-        :param _InstanceTypes: 实例类型，可取值：1 - 主实例，2 - 灾备实例，3 - 只读实例。
+        :param _InstanceTypes: <p>实例类型，可取值：1 - 主实例，2 - 灾备实例，3 - 只读实例。</p>
         :type InstanceTypes: list of int non-negative
-        :param _Vips: 实例的内网 IP 地址。
+        :param _Vips: <p>实例的内网 IP 地址。</p>
         :type Vips: list of str
-        :param _Status: 实例状态，可取值：<br>0 - 创建中<br>1 - 运行中<br>4 - 正在进行隔离操作<br>5 - 已隔离（可在回收站恢复开机）
+        :param _Status: <p>实例状态，可取值：<br>0 - 创建中<br>1 - 运行中<br>4 - 正在进行隔离操作<br>5 - 已隔离（可在回收站恢复开机）</p>
         :type Status: list of int non-negative
-        :param _Offset: 偏移量，默认值为 0。
+        :param _Offset: <p>偏移量，默认值为 0。</p>
         :type Offset: int
-        :param _Limit: 单次请求返回的数量，默认值为 20，最大值为 2000。
+        :param _Limit: <p>单次请求返回的数量，默认值为 20，最大值为 2000。</p>
         :type Limit: int
-        :param _SecurityGroupId: 安全组 ID。当使用安全组 ID 为过滤条件时，需指定 WithSecurityGroup 参数为 1。
+        :param _SecurityGroupId: <p>安全组 ID。当使用安全组 ID 为过滤条件时，需指定 WithSecurityGroup 参数为 1。</p>
         :type SecurityGroupId: str
-        :param _PayTypes: 付费类型，可取值：0 - 包年包月，1 - 小时计费。
+        :param _PayTypes: <p>付费类型，可取值：0 - 包年包月，1 - 小时计费。</p>
         :type PayTypes: list of int non-negative
-        :param _InstanceNames: 实例名称。
+        :param _InstanceNames: <p>实例名称。</p>
         :type InstanceNames: list of str
-        :param _TaskStatus: 实例任务状态，可能取值：<br>0 - 没有任务<br>1 - 升级中<br>2 - 数据导入中<br>3 - 开放Slave中<br>4 - 外网访问开通中<br>5 - 批量操作执行中<br>6 - 回档中<br>7 - 外网访问关闭中<br>8 - 密码修改中<br>9 - 实例名修改中<br>10 - 重启中<br>12 - 自建迁移中<br>13 - 删除库表中<br>14 - 灾备实例创建同步中<br>15 - 升级待切换<br>16 - 升级切换中<br>17 - 升级切换完成<br>19 - 参数设置待执行<br>34 - 原地升级待执行
+        :param _TaskStatus: <p>实例任务状态，可能取值：<br>0 - 没有任务<br>1 - 升级中<br>2 - 数据导入中<br>3 - 开放Slave中<br>4 - 外网访问开通中<br>5 - 批量操作执行中<br>6 - 回档中<br>7 - 外网访问关闭中<br>8 - 密码修改中<br>9 - 实例名修改中<br>10 - 重启中<br>12 - 自建迁移中<br>13 - 删除库表中<br>14 - 灾备实例创建同步中<br>15 - 升级待切换<br>16 - 升级切换中<br>17 - 升级切换完成<br>19 - 参数设置待执行<br>34 - 原地升级待执行</p>
         :type TaskStatus: list of int non-negative
-        :param _EngineVersions: 实例数据库引擎版本，可能取值：5.1、5.5、5.6 和 5.7。
+        :param _EngineVersions: <p>实例数据库引擎版本，可能取值：5.1、5.5、5.6 和 5.7。</p>
         :type EngineVersions: list of str
-        :param _VpcIds: 私有网络的 ID。
+        :param _VpcIds: <p>私有网络的 ID。</p>
         :type VpcIds: list of int non-negative
-        :param _ZoneIds: 可用区的 ID。
+        :param _ZoneIds: <p>可用区的 ID。</p>
         :type ZoneIds: list of int non-negative
-        :param _SubnetIds: 子网 ID。
+        :param _SubnetIds: <p>子网 ID。</p>
         :type SubnetIds: list of int non-negative
-        :param _CdbErrors: 是否锁定标记，可选值：0 - 不锁定，1 - 锁定，默认为0。
+        :param _CdbErrors: <p>是否锁定标记，可选值：0 - 不锁定，1 - 锁定，默认为0。</p>
         :type CdbErrors: list of int
-        :param _OrderBy: 返回结果集排序的字段，目前支持："instanceId"，"instanceName"，"createTime"，"deadlineTime"。
+        :param _OrderBy: <p>返回结果集排序的字段，目前支持：&quot;instanceId&quot;，&quot;instanceName&quot;，&quot;createTime&quot;，&quot;deadlineTime&quot;。</p>
         :type OrderBy: str
-        :param _OrderDirection: 返回结果集排序方式。目前支持值："ASC" - 表示升序，"DESC" - 表示降序，默认为 "DESC"。
+        :param _OrderDirection: <p>返回结果集排序方式。目前支持值：&quot;ASC&quot; - 表示升序，&quot;DESC&quot; - 表示降序，默认为 &quot;DESC&quot;。</p>
         :type OrderDirection: str
-        :param _WithSecurityGroup: 是否以安全组 ID 为过滤条件。
-说明：0表示否，1表示是。
+        :param _WithSecurityGroup: <p>是否以安全组 ID 为过滤条件。<br>说明：0表示否，1表示是。</p>
         :type WithSecurityGroup: int
-        :param _WithExCluster: 是否包含独享集群详细信息，可取值：0 - 不包含，1 - 包含。
+        :param _WithExCluster: <p>是否包含独享集群详细信息，可取值：0 - 不包含，1 - 包含。</p>
         :type WithExCluster: int
-        :param _ExClusterId: 独享集群 ID。
+        :param _ExClusterId: <p>独享集群 ID。</p>
         :type ExClusterId: str
-        :param _InstanceIds: 实例 ID。
+        :param _InstanceIds: <p>实例 ID。</p>
         :type InstanceIds: list of str
-        :param _InitFlag: 初始化标记，可取值：0 - 未初始化，1 - 初始化。
+        :param _InitFlag: <p>初始化标记，可取值：0 - 未初始化，1 - 初始化。</p>
         :type InitFlag: int
-        :param _WithDr: 是否包含灾备关系对应的实例，可取值：0 - 不包含，1 - 包含。默认取值为1。如果拉取主实例，则灾备关系的数据在DrInfo字段中， 如果拉取灾备实例， 则灾备关系的数据在MasterInfo字段中。灾备关系中只包含部分基本的数据，详细的数据需要自行调接口拉取。
+        :param _WithDr: <p>是否包含灾备关系对应的实例，可取值：0 - 不包含，1 - 包含。默认取值为1。如果拉取主实例，则灾备关系的数据在DrInfo字段中， 如果拉取灾备实例， 则灾备关系的数据在MasterInfo字段中。灾备关系中只包含部分基本的数据，详细的数据需要自行调接口拉取。</p>
         :type WithDr: int
-        :param _WithRo: 是否包含只读实例，可取值：0 - 不包含，1 - 包含。默认取值为1。
+        :param _WithRo: <p>是否包含只读实例，可取值：0 - 不包含，1 - 包含。默认取值为1。</p>
         :type WithRo: int
-        :param _WithMaster: 是否包含主实例，可取值：0 - 不包含，1 - 包含。默认取值为1。
+        :param _WithMaster: <p>是否包含主实例，可取值：0 - 不包含，1 - 包含。默认取值为1。</p>
         :type WithMaster: int
-        :param _DeployGroupIds: 置放群组ID列表。
+        :param _DeployGroupIds: <p>置放群组ID列表。</p>
         :type DeployGroupIds: list of str
-        :param _TagKeysForSearch: 是否以标签键为过滤条件。
+        :param _TagKeysForSearch: <p>是否以标签键为过滤条件。</p>
         :type TagKeysForSearch: list of str
-        :param _CageIds: 金融围拢 ID 。
+        :param _CageIds: <p>金融围拢 ID 。</p>
         :type CageIds: list of str
-        :param _TagValues: 标签值
+        :param _TagValues: <p>标签值</p>
         :type TagValues: list of str
-        :param _UniqueVpcIds: 私有网络字符型vpcId
+        :param _UniqueVpcIds: <p>私有网络字符型vpcId</p>
         :type UniqueVpcIds: list of str
-        :param _UniqSubnetIds: 私有网络字符型subnetId
+        :param _UniqSubnetIds: <p>私有网络字符型subnetId</p>
         :type UniqSubnetIds: list of str
-        :param _Tags: 标签键值
-请注意，创建中的实例无法查询到标签。
+        :param _Tags: <p>标签键值<br>请注意，创建中的实例无法查询到标签。</p>
         :type Tags: list of Tag
-        :param _ProxyVips: 数据库代理 IP 。
+        :param _ProxyVips: <p>数据库代理 IP 。</p>
         :type ProxyVips: list of str
-        :param _ProxyIds: 数据库代理 ID 。
+        :param _ProxyIds: <p>数据库代理 ID 。</p>
         :type ProxyIds: list of str
-        :param _EngineTypes: 数据库引擎类型。可选值为：InnoDB、RocksDB。
+        :param _EngineTypes: <p>数据库引擎类型。可选值为：InnoDB、RocksDB。</p>
         :type EngineTypes: list of str
-        :param _QueryClusterInfo: 是否获取云盘版实例节点信息，可填：true 或 false。默认为 false。
+        :param _QueryClusterInfo: <p>是否获取云盘版实例节点信息，可填：true 或 false。默认为 false。</p>
         :type QueryClusterInfo: bool
         """
         self._ProjectId = None
@@ -17208,7 +17206,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        r"""项目 ID。
+        r"""<p>项目 ID。</p>
         :rtype: int
         """
         return self._ProjectId
@@ -17219,7 +17217,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def InstanceTypes(self):
-        r"""实例类型，可取值：1 - 主实例，2 - 灾备实例，3 - 只读实例。
+        r"""<p>实例类型，可取值：1 - 主实例，2 - 灾备实例，3 - 只读实例。</p>
         :rtype: list of int non-negative
         """
         return self._InstanceTypes
@@ -17230,7 +17228,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def Vips(self):
-        r"""实例的内网 IP 地址。
+        r"""<p>实例的内网 IP 地址。</p>
         :rtype: list of str
         """
         return self._Vips
@@ -17241,7 +17239,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def Status(self):
-        r"""实例状态，可取值：<br>0 - 创建中<br>1 - 运行中<br>4 - 正在进行隔离操作<br>5 - 已隔离（可在回收站恢复开机）
+        r"""<p>实例状态，可取值：<br>0 - 创建中<br>1 - 运行中<br>4 - 正在进行隔离操作<br>5 - 已隔离（可在回收站恢复开机）</p>
         :rtype: list of int non-negative
         """
         return self._Status
@@ -17252,7 +17250,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""偏移量，默认值为 0。
+        r"""<p>偏移量，默认值为 0。</p>
         :rtype: int
         """
         return self._Offset
@@ -17263,7 +17261,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""单次请求返回的数量，默认值为 20，最大值为 2000。
+        r"""<p>单次请求返回的数量，默认值为 20，最大值为 2000。</p>
         :rtype: int
         """
         return self._Limit
@@ -17274,7 +17272,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def SecurityGroupId(self):
-        r"""安全组 ID。当使用安全组 ID 为过滤条件时，需指定 WithSecurityGroup 参数为 1。
+        r"""<p>安全组 ID。当使用安全组 ID 为过滤条件时，需指定 WithSecurityGroup 参数为 1。</p>
         :rtype: str
         """
         return self._SecurityGroupId
@@ -17285,7 +17283,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def PayTypes(self):
-        r"""付费类型，可取值：0 - 包年包月，1 - 小时计费。
+        r"""<p>付费类型，可取值：0 - 包年包月，1 - 小时计费。</p>
         :rtype: list of int non-negative
         """
         return self._PayTypes
@@ -17296,7 +17294,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def InstanceNames(self):
-        r"""实例名称。
+        r"""<p>实例名称。</p>
         :rtype: list of str
         """
         return self._InstanceNames
@@ -17307,7 +17305,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def TaskStatus(self):
-        r"""实例任务状态，可能取值：<br>0 - 没有任务<br>1 - 升级中<br>2 - 数据导入中<br>3 - 开放Slave中<br>4 - 外网访问开通中<br>5 - 批量操作执行中<br>6 - 回档中<br>7 - 外网访问关闭中<br>8 - 密码修改中<br>9 - 实例名修改中<br>10 - 重启中<br>12 - 自建迁移中<br>13 - 删除库表中<br>14 - 灾备实例创建同步中<br>15 - 升级待切换<br>16 - 升级切换中<br>17 - 升级切换完成<br>19 - 参数设置待执行<br>34 - 原地升级待执行
+        r"""<p>实例任务状态，可能取值：<br>0 - 没有任务<br>1 - 升级中<br>2 - 数据导入中<br>3 - 开放Slave中<br>4 - 外网访问开通中<br>5 - 批量操作执行中<br>6 - 回档中<br>7 - 外网访问关闭中<br>8 - 密码修改中<br>9 - 实例名修改中<br>10 - 重启中<br>12 - 自建迁移中<br>13 - 删除库表中<br>14 - 灾备实例创建同步中<br>15 - 升级待切换<br>16 - 升级切换中<br>17 - 升级切换完成<br>19 - 参数设置待执行<br>34 - 原地升级待执行</p>
         :rtype: list of int non-negative
         """
         return self._TaskStatus
@@ -17318,7 +17316,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def EngineVersions(self):
-        r"""实例数据库引擎版本，可能取值：5.1、5.5、5.6 和 5.7。
+        r"""<p>实例数据库引擎版本，可能取值：5.1、5.5、5.6 和 5.7。</p>
         :rtype: list of str
         """
         return self._EngineVersions
@@ -17329,7 +17327,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def VpcIds(self):
-        r"""私有网络的 ID。
+        r"""<p>私有网络的 ID。</p>
         :rtype: list of int non-negative
         """
         return self._VpcIds
@@ -17340,7 +17338,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def ZoneIds(self):
-        r"""可用区的 ID。
+        r"""<p>可用区的 ID。</p>
         :rtype: list of int non-negative
         """
         return self._ZoneIds
@@ -17351,7 +17349,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def SubnetIds(self):
-        r"""子网 ID。
+        r"""<p>子网 ID。</p>
         :rtype: list of int non-negative
         """
         return self._SubnetIds
@@ -17362,7 +17360,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def CdbErrors(self):
-        r"""是否锁定标记，可选值：0 - 不锁定，1 - 锁定，默认为0。
+        r"""<p>是否锁定标记，可选值：0 - 不锁定，1 - 锁定，默认为0。</p>
         :rtype: list of int
         """
         return self._CdbErrors
@@ -17373,7 +17371,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def OrderBy(self):
-        r"""返回结果集排序的字段，目前支持："instanceId"，"instanceName"，"createTime"，"deadlineTime"。
+        r"""<p>返回结果集排序的字段，目前支持：&quot;instanceId&quot;，&quot;instanceName&quot;，&quot;createTime&quot;，&quot;deadlineTime&quot;。</p>
         :rtype: str
         """
         return self._OrderBy
@@ -17384,7 +17382,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def OrderDirection(self):
-        r"""返回结果集排序方式。目前支持值："ASC" - 表示升序，"DESC" - 表示降序，默认为 "DESC"。
+        r"""<p>返回结果集排序方式。目前支持值：&quot;ASC&quot; - 表示升序，&quot;DESC&quot; - 表示降序，默认为 &quot;DESC&quot;。</p>
         :rtype: str
         """
         return self._OrderDirection
@@ -17395,8 +17393,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def WithSecurityGroup(self):
-        r"""是否以安全组 ID 为过滤条件。
-说明：0表示否，1表示是。
+        r"""<p>是否以安全组 ID 为过滤条件。<br>说明：0表示否，1表示是。</p>
         :rtype: int
         """
         return self._WithSecurityGroup
@@ -17407,7 +17404,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def WithExCluster(self):
-        r"""是否包含独享集群详细信息，可取值：0 - 不包含，1 - 包含。
+        r"""<p>是否包含独享集群详细信息，可取值：0 - 不包含，1 - 包含。</p>
         :rtype: int
         """
         return self._WithExCluster
@@ -17418,7 +17415,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def ExClusterId(self):
-        r"""独享集群 ID。
+        r"""<p>独享集群 ID。</p>
         :rtype: str
         """
         return self._ExClusterId
@@ -17429,7 +17426,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        r"""实例 ID。
+        r"""<p>实例 ID。</p>
         :rtype: list of str
         """
         return self._InstanceIds
@@ -17440,7 +17437,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def InitFlag(self):
-        r"""初始化标记，可取值：0 - 未初始化，1 - 初始化。
+        r"""<p>初始化标记，可取值：0 - 未初始化，1 - 初始化。</p>
         :rtype: int
         """
         return self._InitFlag
@@ -17451,7 +17448,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def WithDr(self):
-        r"""是否包含灾备关系对应的实例，可取值：0 - 不包含，1 - 包含。默认取值为1。如果拉取主实例，则灾备关系的数据在DrInfo字段中， 如果拉取灾备实例， 则灾备关系的数据在MasterInfo字段中。灾备关系中只包含部分基本的数据，详细的数据需要自行调接口拉取。
+        r"""<p>是否包含灾备关系对应的实例，可取值：0 - 不包含，1 - 包含。默认取值为1。如果拉取主实例，则灾备关系的数据在DrInfo字段中， 如果拉取灾备实例， 则灾备关系的数据在MasterInfo字段中。灾备关系中只包含部分基本的数据，详细的数据需要自行调接口拉取。</p>
         :rtype: int
         """
         return self._WithDr
@@ -17462,7 +17459,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def WithRo(self):
-        r"""是否包含只读实例，可取值：0 - 不包含，1 - 包含。默认取值为1。
+        r"""<p>是否包含只读实例，可取值：0 - 不包含，1 - 包含。默认取值为1。</p>
         :rtype: int
         """
         return self._WithRo
@@ -17473,7 +17470,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def WithMaster(self):
-        r"""是否包含主实例，可取值：0 - 不包含，1 - 包含。默认取值为1。
+        r"""<p>是否包含主实例，可取值：0 - 不包含，1 - 包含。默认取值为1。</p>
         :rtype: int
         """
         return self._WithMaster
@@ -17484,7 +17481,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def DeployGroupIds(self):
-        r"""置放群组ID列表。
+        r"""<p>置放群组ID列表。</p>
         :rtype: list of str
         """
         return self._DeployGroupIds
@@ -17495,7 +17492,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def TagKeysForSearch(self):
-        r"""是否以标签键为过滤条件。
+        r"""<p>是否以标签键为过滤条件。</p>
         :rtype: list of str
         """
         return self._TagKeysForSearch
@@ -17506,7 +17503,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def CageIds(self):
-        r"""金融围拢 ID 。
+        r"""<p>金融围拢 ID 。</p>
         :rtype: list of str
         """
         return self._CageIds
@@ -17517,7 +17514,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def TagValues(self):
-        r"""标签值
+        r"""<p>标签值</p>
         :rtype: list of str
         """
         return self._TagValues
@@ -17528,7 +17525,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def UniqueVpcIds(self):
-        r"""私有网络字符型vpcId
+        r"""<p>私有网络字符型vpcId</p>
         :rtype: list of str
         """
         return self._UniqueVpcIds
@@ -17539,7 +17536,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def UniqSubnetIds(self):
-        r"""私有网络字符型subnetId
+        r"""<p>私有网络字符型subnetId</p>
         :rtype: list of str
         """
         return self._UniqSubnetIds
@@ -17550,8 +17547,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def Tags(self):
-        r"""标签键值
-请注意，创建中的实例无法查询到标签。
+        r"""<p>标签键值<br>请注意，创建中的实例无法查询到标签。</p>
         :rtype: list of Tag
         """
         return self._Tags
@@ -17562,7 +17558,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def ProxyVips(self):
-        r"""数据库代理 IP 。
+        r"""<p>数据库代理 IP 。</p>
         :rtype: list of str
         """
         return self._ProxyVips
@@ -17573,7 +17569,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def ProxyIds(self):
-        r"""数据库代理 ID 。
+        r"""<p>数据库代理 ID 。</p>
         :rtype: list of str
         """
         return self._ProxyIds
@@ -17584,7 +17580,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def EngineTypes(self):
-        r"""数据库引擎类型。可选值为：InnoDB、RocksDB。
+        r"""<p>数据库引擎类型。可选值为：InnoDB、RocksDB。</p>
         :rtype: list of str
         """
         return self._EngineTypes
@@ -17595,7 +17591,7 @@ class DescribeDBInstancesRequest(AbstractModel):
 
     @property
     def QueryClusterInfo(self):
-        r"""是否获取云盘版实例节点信息，可填：true 或 false。默认为 false。
+        r"""<p>是否获取云盘版实例节点信息，可填：true 或 false。默认为 false。</p>
         :rtype: bool
         """
         return self._QueryClusterInfo
@@ -17664,9 +17660,9 @@ class DescribeDBInstancesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 符合查询条件的实例总数。
+        :param _TotalCount: <p>符合查询条件的实例总数。</p>
         :type TotalCount: int
-        :param _Items: 实例详细信息列表。
+        :param _Items: <p>实例详细信息列表。</p>
         :type Items: list of InstanceInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -17677,7 +17673,7 @@ class DescribeDBInstancesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""符合查询条件的实例总数。
+        r"""<p>符合查询条件的实例总数。</p>
         :rtype: int
         """
         return self._TotalCount
@@ -17688,7 +17684,7 @@ class DescribeDBInstancesResponse(AbstractModel):
 
     @property
     def Items(self):
-        r"""实例详细信息列表。
+        r"""<p>实例详细信息列表。</p>
         :rtype: list of InstanceInfo
         """
         return self._Items
@@ -25305,114 +25301,113 @@ class InstanceInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _WanStatus: 外网状态，可能的返回值为：0-未开通外网；1-已开通外网；2-已关闭外网
+        :param _WanStatus: <p>外网状态，可能的返回值为：0-未开通外网；1-已开通外网；2-已关闭外网</p>
         :type WanStatus: int
-        :param _Zone: 可用区信息
+        :param _Zone: <p>可用区信息</p>
         :type Zone: str
-        :param _InitFlag: 初始化标志，可能的返回值为：0-未初始化；1-已初始化
+        :param _InitFlag: <p>初始化标志，可能的返回值为：0-未初始化；1-已初始化</p>
         :type InitFlag: int
-        :param _RoVipInfo: 只读vip信息。单独开通只读实例访问的只读实例才有该字段
+        :param _RoVipInfo: <p>只读vip信息。单独开通只读实例访问的只读实例才有该字段</p>
         :type RoVipInfo: :class:`tencentcloud.cdb.v20170320.models.RoVipInfo`
-        :param _Memory: 内存容量，单位为 MB
+        :param _Memory: <p>内存容量，单位为 MB</p>
         :type Memory: int
-        :param _Status: 实例状态，可能的返回值：0-创建中；1-运行中；4-正在进行隔离操作；5-已隔离
+        :param _Status: <p>实例状态，可能的返回值：0-创建中；1-运行中；4-正在进行隔离操作；5-已隔离</p>
         :type Status: int
-        :param _VpcId: 私有网络 ID，例如：51102
+        :param _VpcId: <p>私有网络 ID，例如：51102</p>
         :type VpcId: int
-        :param _SlaveInfo: 备机信息
+        :param _SlaveInfo: <p>备机信息</p>
         :type SlaveInfo: :class:`tencentcloud.cdb.v20170320.models.SlaveInfo`
-        :param _InstanceId: 实例 ID
+        :param _InstanceId: <p>实例 ID</p>
         :type InstanceId: str
-        :param _Volume: 硬盘容量，单位为 GB
+        :param _Volume: <p>硬盘容量，单位为 GB</p>
         :type Volume: int
-        :param _AutoRenew: 自动续费标志，可能的返回值：0-未开通自动续费；1-已开通自动续费；2-已关闭自动续费
+        :param _AutoRenew: <p>自动续费标志，可能的返回值：0-未开通自动续费；1-已开通自动续费；2-已关闭自动续费</p>
         :type AutoRenew: int
-        :param _ProtectMode: 数据复制方式。0 - 异步复制；1 - 半同步复制；2 - 强同步复制
+        :param _ProtectMode: <p>数据复制方式。0 - 异步复制；1 - 半同步复制；2 - 强同步复制</p>
         :type ProtectMode: int
-        :param _RoGroups: 只读组详细信息
+        :param _RoGroups: <p>只读组详细信息</p>
         :type RoGroups: list of RoGroup
-        :param _SubnetId: 子网 ID，例如：2333
+        :param _SubnetId: <p>子网 ID，例如：2333</p>
         :type SubnetId: int
-        :param _InstanceType: 实例类型，可能的返回值：1-主实例；2-灾备实例；3-只读实例
+        :param _InstanceType: <p>实例类型，可能的返回值：1-主实例；2-灾备实例；3-只读实例</p>
         :type InstanceType: int
-        :param _ProjectId: 项目 ID
+        :param _ProjectId: <p>项目 ID</p>
         :type ProjectId: int
-        :param _Region: 地域信息
+        :param _Region: <p>地域信息</p>
         :type Region: str
-        :param _DeadlineTime: 实例到期时间
+        :param _DeadlineTime: <p>实例到期时间</p>
         :type DeadlineTime: str
-        :param _DeployMode: 可用区部署方式。可能的值为：0 - 单可用区；1 - 多可用区
+        :param _DeployMode: <p>可用区部署方式。可能的值为：0 - 单可用区；1 - 多可用区</p>
         :type DeployMode: int
-        :param _TaskStatus: 实例任务状态。0 - 没有任务 ,1 - 升级中,2 - 数据导入中,3 - 开放Slave中,4 - 外网访问开通中,5 - 批量操作执行中,6 - 回档中,7 - 外网访问关闭中,8 - 密码修改中,9 - 实例名修改中,10 - 重启中,12 - 自建迁移中,13 - 删除库表中,14 - 灾备实例创建同步中,15 - 升级待切换,16 - 升级切换中,17 - 升级切换完成
+        :param _TaskStatus: <p>实例任务状态。0 - 没有任务 ,1 - 升级中,2 - 数据导入中,3 - 开放Slave中,4 - 外网访问开通中,5 - 批量操作执行中,6 - 回档中,7 - 外网访问关闭中,8 - 密码修改中,9 - 实例名修改中,10 - 重启中,12 - 自建迁移中,13 - 删除库表中,14 - 灾备实例创建同步中,15 - 升级待切换,16 - 升级切换中,17 - 升级切换完成</p>
         :type TaskStatus: int
-        :param _MasterInfo: 主实例详细信息
+        :param _MasterInfo: <p>主实例详细信息</p>
         :type MasterInfo: :class:`tencentcloud.cdb.v20170320.models.MasterInfo`
-        :param _DeviceType: 实例类型
+        :param _DeviceType: <p>实例类型</p>
         :type DeviceType: str
-        :param _EngineVersion: 内核版本
+        :param _EngineVersion: <p>内核版本</p>
         :type EngineVersion: str
-        :param _InstanceName: 实例名称
+        :param _InstanceName: <p>实例名称</p>
         :type InstanceName: str
-        :param _DrInfo: 灾备实例详细信息
+        :param _DrInfo: <p>灾备实例详细信息</p>
         :type DrInfo: list of DrInfo
-        :param _WanDomain: 外网域名
+        :param _WanDomain: <p>外网域名</p>
         :type WanDomain: str
-        :param _WanPort: 外网端口号
+        :param _WanPort: <p>外网端口号</p>
         :type WanPort: int
-        :param _PayType: 付费类型，可能的返回值：0-包年包月；1-按量计费
+        :param _PayType: <p>付费类型，可能的返回值：0-包年包月；1-按量计费</p>
         :type PayType: int
-        :param _CreateTime: 实例创建时间
+        :param _CreateTime: <p>实例创建时间</p>
         :type CreateTime: str
-        :param _Vip: 实例 IP
+        :param _Vip: <p>实例 IP</p>
         :type Vip: str
-        :param _Vport: 端口号
+        :param _Vport: <p>端口号</p>
         :type Vport: int
-        :param _CdbError: 磁盘写入是否被锁定（实例数据写入量已经超过磁盘配额）。0 -未被锁定 1 -已被锁定
+        :param _CdbError: <p>磁盘写入是否被锁定（实例数据写入量已经超过磁盘配额）。0 -未被锁定 1 -已被锁定</p>
         :type CdbError: int
-        :param _UniqVpcId: 私有网络描述符，例如：“vpc-5v8wn9mg”
+        :param _UniqVpcId: <p>私有网络描述符，例如：“vpc-5v8wn9mg”</p>
         :type UniqVpcId: str
-        :param _UniqSubnetId: 子网描述符，例如：“subnet-1typ0s7d”
+        :param _UniqSubnetId: <p>子网描述符，例如：“subnet-1typ0s7d”</p>
         :type UniqSubnetId: str
-        :param _PhysicalId: 物理 ID
+        :param _PhysicalId: <p>物理 ID</p>
         :type PhysicalId: str
-        :param _Cpu: 核心数
+        :param _Cpu: <p>核心数</p>
         :type Cpu: int
-        :param _Qps: 每秒查询数量
+        :param _Qps: <p>每秒查询数量</p>
         :type Qps: int
-        :param _ZoneName: 可用区中文名称
+        :param _ZoneName: <p>可用区中文名称</p>
         :type ZoneName: str
-        :param _DeviceClass: 物理机型
+        :param _DeviceClass: <p>物理机型</p>
         :type DeviceClass: str
-        :param _DeployGroupId: 置放群组 ID
+        :param _DeployGroupId: <p>置放群组 ID</p>
         :type DeployGroupId: str
-        :param _ZoneId: 可用区 ID
+        :param _ZoneId: <p>可用区 ID</p>
         :type ZoneId: int
-        :param _InstanceNodes: 节点数
+        :param _InstanceNodes: <p>节点数</p>
         :type InstanceNodes: int
-        :param _TagList: 标签列表
+        :param _TagList: <p>标签列表</p>
         :type TagList: list of TagInfoItem
-        :param _EngineType: 引擎类型
+        :param _EngineType: <p>引擎类型</p>
         :type EngineType: str
-        :param _MaxDelayTime: 最大延迟阈值
+        :param _MaxDelayTime: <p>最大延迟阈值</p>
         :type MaxDelayTime: int
-        :param _DiskType: 实例磁盘类型，仅云盘版和单节点（云盘）实例才会返回有效值。
-说明：
-1. 若返回："DiskType": "CLOUD_HSSD"，则表示该实例磁盘类型为增强型 SSD 云硬盘。
-2. 若返回："DiskType": "CLOUD_SSD"，则表示该实例磁盘类型为 SSD 云硬盘。
-3. 若返回："DiskType": ""，且参数 DeviceType 值为 UNIVERSAL 或 EXCLUSIVE，则表示该实例采用的是本地 SSD 盘。
+        :param _DiskType: <p>实例磁盘类型，仅云盘版和单节点（云盘）实例才会返回有效值。<br>说明：</p><ol><li>若返回：&quot;DiskType&quot;: &quot;CLOUD_HSSD&quot;，则表示该实例磁盘类型为增强型 SSD 云硬盘。</li><li>若返回：&quot;DiskType&quot;: &quot;CLOUD_SSD&quot;，则表示该实例磁盘类型为 SSD 云硬盘。</li><li>若返回：&quot;DiskType&quot;: &quot;&quot;，且参数 DeviceType 值为 UNIVERSAL 或 EXCLUSIVE，则表示该实例采用的是本地 SSD 盘。</li></ol>
         :type DiskType: str
-        :param _ExpandCpu: 当前扩容的CPU核心数。
+        :param _ExpandCpu: <p>当前扩容的CPU核心数。</p>
         :type ExpandCpu: int
-        :param _ClusterInfo: 云盘版实例节点信息
+        :param _ClusterInfo: <p>云盘版实例节点信息</p>
         :type ClusterInfo: list of ClusterInfo
-        :param _AnalysisNodeInfos: 分析引擎节点列表
+        :param _AnalysisNodeInfos: <p>分析引擎节点列表</p>
         :type AnalysisNodeInfos: list of AnalysisNodeInfo
-        :param _DeviceBandwidth: 设备带宽，单位G。当DeviceClass不为空时此参数才有效。例：25-表示当前设备带宽为25G；10-表示当前设备带宽为10G。
+        :param _DeviceBandwidth: <p>设备带宽，单位G。当DeviceClass不为空时此参数才有效。例：25-表示当前设备带宽为25G；10-表示当前设备带宽为10G。</p>
         :type DeviceBandwidth: int
-        :param _DestroyProtect: 实例销毁保护状态，on表示开启保护，否则为关闭保护
+        :param _DestroyProtect: <p>实例销毁保护状态，on表示开启保护，否则为关闭保护</p>
         :type DestroyProtect: str
-        :param _CpuModel: TDSQL引擎参数
+        :param _CpuModel: <p>TDSQL引擎参数</p>
         :type CpuModel: str
+        :param _AnalysisUpgradeVersionInfo: <p>分析引擎实例版本升级信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AnalysisUpgradeVersionInfo: :class:`tencentcloud.cdb.v20170320.models.UpgradeAnalysisInstanceVersionInfo`
         """
         self._WanStatus = None
         self._Zone = None
@@ -25466,10 +25461,11 @@ class InstanceInfo(AbstractModel):
         self._DeviceBandwidth = None
         self._DestroyProtect = None
         self._CpuModel = None
+        self._AnalysisUpgradeVersionInfo = None
 
     @property
     def WanStatus(self):
-        r"""外网状态，可能的返回值为：0-未开通外网；1-已开通外网；2-已关闭外网
+        r"""<p>外网状态，可能的返回值为：0-未开通外网；1-已开通外网；2-已关闭外网</p>
         :rtype: int
         """
         return self._WanStatus
@@ -25480,7 +25476,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def Zone(self):
-        r"""可用区信息
+        r"""<p>可用区信息</p>
         :rtype: str
         """
         return self._Zone
@@ -25491,7 +25487,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def InitFlag(self):
-        r"""初始化标志，可能的返回值为：0-未初始化；1-已初始化
+        r"""<p>初始化标志，可能的返回值为：0-未初始化；1-已初始化</p>
         :rtype: int
         """
         return self._InitFlag
@@ -25502,7 +25498,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def RoVipInfo(self):
-        r"""只读vip信息。单独开通只读实例访问的只读实例才有该字段
+        r"""<p>只读vip信息。单独开通只读实例访问的只读实例才有该字段</p>
         :rtype: :class:`tencentcloud.cdb.v20170320.models.RoVipInfo`
         """
         return self._RoVipInfo
@@ -25513,7 +25509,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def Memory(self):
-        r"""内存容量，单位为 MB
+        r"""<p>内存容量，单位为 MB</p>
         :rtype: int
         """
         return self._Memory
@@ -25524,7 +25520,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def Status(self):
-        r"""实例状态，可能的返回值：0-创建中；1-运行中；4-正在进行隔离操作；5-已隔离
+        r"""<p>实例状态，可能的返回值：0-创建中；1-运行中；4-正在进行隔离操作；5-已隔离</p>
         :rtype: int
         """
         return self._Status
@@ -25535,7 +25531,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def VpcId(self):
-        r"""私有网络 ID，例如：51102
+        r"""<p>私有网络 ID，例如：51102</p>
         :rtype: int
         """
         return self._VpcId
@@ -25546,7 +25542,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def SlaveInfo(self):
-        r"""备机信息
+        r"""<p>备机信息</p>
         :rtype: :class:`tencentcloud.cdb.v20170320.models.SlaveInfo`
         """
         return self._SlaveInfo
@@ -25557,7 +25553,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例 ID
+        r"""<p>实例 ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -25568,7 +25564,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def Volume(self):
-        r"""硬盘容量，单位为 GB
+        r"""<p>硬盘容量，单位为 GB</p>
         :rtype: int
         """
         return self._Volume
@@ -25579,7 +25575,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def AutoRenew(self):
-        r"""自动续费标志，可能的返回值：0-未开通自动续费；1-已开通自动续费；2-已关闭自动续费
+        r"""<p>自动续费标志，可能的返回值：0-未开通自动续费；1-已开通自动续费；2-已关闭自动续费</p>
         :rtype: int
         """
         return self._AutoRenew
@@ -25590,7 +25586,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def ProtectMode(self):
-        r"""数据复制方式。0 - 异步复制；1 - 半同步复制；2 - 强同步复制
+        r"""<p>数据复制方式。0 - 异步复制；1 - 半同步复制；2 - 强同步复制</p>
         :rtype: int
         """
         return self._ProtectMode
@@ -25601,7 +25597,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def RoGroups(self):
-        r"""只读组详细信息
+        r"""<p>只读组详细信息</p>
         :rtype: list of RoGroup
         """
         return self._RoGroups
@@ -25612,7 +25608,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def SubnetId(self):
-        r"""子网 ID，例如：2333
+        r"""<p>子网 ID，例如：2333</p>
         :rtype: int
         """
         return self._SubnetId
@@ -25623,7 +25619,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def InstanceType(self):
-        r"""实例类型，可能的返回值：1-主实例；2-灾备实例；3-只读实例
+        r"""<p>实例类型，可能的返回值：1-主实例；2-灾备实例；3-只读实例</p>
         :rtype: int
         """
         return self._InstanceType
@@ -25634,7 +25630,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def ProjectId(self):
-        r"""项目 ID
+        r"""<p>项目 ID</p>
         :rtype: int
         """
         return self._ProjectId
@@ -25645,7 +25641,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def Region(self):
-        r"""地域信息
+        r"""<p>地域信息</p>
         :rtype: str
         """
         return self._Region
@@ -25656,7 +25652,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def DeadlineTime(self):
-        r"""实例到期时间
+        r"""<p>实例到期时间</p>
         :rtype: str
         """
         return self._DeadlineTime
@@ -25667,7 +25663,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def DeployMode(self):
-        r"""可用区部署方式。可能的值为：0 - 单可用区；1 - 多可用区
+        r"""<p>可用区部署方式。可能的值为：0 - 单可用区；1 - 多可用区</p>
         :rtype: int
         """
         return self._DeployMode
@@ -25678,7 +25674,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def TaskStatus(self):
-        r"""实例任务状态。0 - 没有任务 ,1 - 升级中,2 - 数据导入中,3 - 开放Slave中,4 - 外网访问开通中,5 - 批量操作执行中,6 - 回档中,7 - 外网访问关闭中,8 - 密码修改中,9 - 实例名修改中,10 - 重启中,12 - 自建迁移中,13 - 删除库表中,14 - 灾备实例创建同步中,15 - 升级待切换,16 - 升级切换中,17 - 升级切换完成
+        r"""<p>实例任务状态。0 - 没有任务 ,1 - 升级中,2 - 数据导入中,3 - 开放Slave中,4 - 外网访问开通中,5 - 批量操作执行中,6 - 回档中,7 - 外网访问关闭中,8 - 密码修改中,9 - 实例名修改中,10 - 重启中,12 - 自建迁移中,13 - 删除库表中,14 - 灾备实例创建同步中,15 - 升级待切换,16 - 升级切换中,17 - 升级切换完成</p>
         :rtype: int
         """
         return self._TaskStatus
@@ -25689,7 +25685,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def MasterInfo(self):
-        r"""主实例详细信息
+        r"""<p>主实例详细信息</p>
         :rtype: :class:`tencentcloud.cdb.v20170320.models.MasterInfo`
         """
         return self._MasterInfo
@@ -25700,7 +25696,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def DeviceType(self):
-        r"""实例类型
+        r"""<p>实例类型</p>
         :rtype: str
         """
         return self._DeviceType
@@ -25711,7 +25707,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def EngineVersion(self):
-        r"""内核版本
+        r"""<p>内核版本</p>
         :rtype: str
         """
         return self._EngineVersion
@@ -25722,7 +25718,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def InstanceName(self):
-        r"""实例名称
+        r"""<p>实例名称</p>
         :rtype: str
         """
         return self._InstanceName
@@ -25733,7 +25729,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def DrInfo(self):
-        r"""灾备实例详细信息
+        r"""<p>灾备实例详细信息</p>
         :rtype: list of DrInfo
         """
         return self._DrInfo
@@ -25744,7 +25740,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def WanDomain(self):
-        r"""外网域名
+        r"""<p>外网域名</p>
         :rtype: str
         """
         return self._WanDomain
@@ -25755,7 +25751,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def WanPort(self):
-        r"""外网端口号
+        r"""<p>外网端口号</p>
         :rtype: int
         """
         return self._WanPort
@@ -25766,7 +25762,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def PayType(self):
-        r"""付费类型，可能的返回值：0-包年包月；1-按量计费
+        r"""<p>付费类型，可能的返回值：0-包年包月；1-按量计费</p>
         :rtype: int
         """
         return self._PayType
@@ -25777,7 +25773,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""实例创建时间
+        r"""<p>实例创建时间</p>
         :rtype: str
         """
         return self._CreateTime
@@ -25788,7 +25784,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def Vip(self):
-        r"""实例 IP
+        r"""<p>实例 IP</p>
         :rtype: str
         """
         return self._Vip
@@ -25799,7 +25795,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def Vport(self):
-        r"""端口号
+        r"""<p>端口号</p>
         :rtype: int
         """
         return self._Vport
@@ -25810,7 +25806,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def CdbError(self):
-        r"""磁盘写入是否被锁定（实例数据写入量已经超过磁盘配额）。0 -未被锁定 1 -已被锁定
+        r"""<p>磁盘写入是否被锁定（实例数据写入量已经超过磁盘配额）。0 -未被锁定 1 -已被锁定</p>
         :rtype: int
         """
         return self._CdbError
@@ -25821,7 +25817,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def UniqVpcId(self):
-        r"""私有网络描述符，例如：“vpc-5v8wn9mg”
+        r"""<p>私有网络描述符，例如：“vpc-5v8wn9mg”</p>
         :rtype: str
         """
         return self._UniqVpcId
@@ -25832,7 +25828,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def UniqSubnetId(self):
-        r"""子网描述符，例如：“subnet-1typ0s7d”
+        r"""<p>子网描述符，例如：“subnet-1typ0s7d”</p>
         :rtype: str
         """
         return self._UniqSubnetId
@@ -25843,7 +25839,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def PhysicalId(self):
-        r"""物理 ID
+        r"""<p>物理 ID</p>
         :rtype: str
         """
         return self._PhysicalId
@@ -25854,7 +25850,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def Cpu(self):
-        r"""核心数
+        r"""<p>核心数</p>
         :rtype: int
         """
         return self._Cpu
@@ -25865,7 +25861,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def Qps(self):
-        r"""每秒查询数量
+        r"""<p>每秒查询数量</p>
         :rtype: int
         """
         return self._Qps
@@ -25876,7 +25872,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def ZoneName(self):
-        r"""可用区中文名称
+        r"""<p>可用区中文名称</p>
         :rtype: str
         """
         return self._ZoneName
@@ -25887,7 +25883,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def DeviceClass(self):
-        r"""物理机型
+        r"""<p>物理机型</p>
         :rtype: str
         """
         return self._DeviceClass
@@ -25898,7 +25894,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def DeployGroupId(self):
-        r"""置放群组 ID
+        r"""<p>置放群组 ID</p>
         :rtype: str
         """
         return self._DeployGroupId
@@ -25909,7 +25905,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def ZoneId(self):
-        r"""可用区 ID
+        r"""<p>可用区 ID</p>
         :rtype: int
         """
         return self._ZoneId
@@ -25920,7 +25916,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def InstanceNodes(self):
-        r"""节点数
+        r"""<p>节点数</p>
         :rtype: int
         """
         return self._InstanceNodes
@@ -25931,7 +25927,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def TagList(self):
-        r"""标签列表
+        r"""<p>标签列表</p>
         :rtype: list of TagInfoItem
         """
         return self._TagList
@@ -25942,7 +25938,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def EngineType(self):
-        r"""引擎类型
+        r"""<p>引擎类型</p>
         :rtype: str
         """
         return self._EngineType
@@ -25953,7 +25949,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def MaxDelayTime(self):
-        r"""最大延迟阈值
+        r"""<p>最大延迟阈值</p>
         :rtype: int
         """
         return self._MaxDelayTime
@@ -25964,11 +25960,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def DiskType(self):
-        r"""实例磁盘类型，仅云盘版和单节点（云盘）实例才会返回有效值。
-说明：
-1. 若返回："DiskType": "CLOUD_HSSD"，则表示该实例磁盘类型为增强型 SSD 云硬盘。
-2. 若返回："DiskType": "CLOUD_SSD"，则表示该实例磁盘类型为 SSD 云硬盘。
-3. 若返回："DiskType": ""，且参数 DeviceType 值为 UNIVERSAL 或 EXCLUSIVE，则表示该实例采用的是本地 SSD 盘。
+        r"""<p>实例磁盘类型，仅云盘版和单节点（云盘）实例才会返回有效值。<br>说明：</p><ol><li>若返回：&quot;DiskType&quot;: &quot;CLOUD_HSSD&quot;，则表示该实例磁盘类型为增强型 SSD 云硬盘。</li><li>若返回：&quot;DiskType&quot;: &quot;CLOUD_SSD&quot;，则表示该实例磁盘类型为 SSD 云硬盘。</li><li>若返回：&quot;DiskType&quot;: &quot;&quot;，且参数 DeviceType 值为 UNIVERSAL 或 EXCLUSIVE，则表示该实例采用的是本地 SSD 盘。</li></ol>
         :rtype: str
         """
         return self._DiskType
@@ -25979,7 +25971,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def ExpandCpu(self):
-        r"""当前扩容的CPU核心数。
+        r"""<p>当前扩容的CPU核心数。</p>
         :rtype: int
         """
         return self._ExpandCpu
@@ -25990,7 +25982,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def ClusterInfo(self):
-        r"""云盘版实例节点信息
+        r"""<p>云盘版实例节点信息</p>
         :rtype: list of ClusterInfo
         """
         return self._ClusterInfo
@@ -26001,7 +25993,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def AnalysisNodeInfos(self):
-        r"""分析引擎节点列表
+        r"""<p>分析引擎节点列表</p>
         :rtype: list of AnalysisNodeInfo
         """
         return self._AnalysisNodeInfos
@@ -26012,7 +26004,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def DeviceBandwidth(self):
-        r"""设备带宽，单位G。当DeviceClass不为空时此参数才有效。例：25-表示当前设备带宽为25G；10-表示当前设备带宽为10G。
+        r"""<p>设备带宽，单位G。当DeviceClass不为空时此参数才有效。例：25-表示当前设备带宽为25G；10-表示当前设备带宽为10G。</p>
         :rtype: int
         """
         return self._DeviceBandwidth
@@ -26023,7 +26015,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def DestroyProtect(self):
-        r"""实例销毁保护状态，on表示开启保护，否则为关闭保护
+        r"""<p>实例销毁保护状态，on表示开启保护，否则为关闭保护</p>
         :rtype: str
         """
         return self._DestroyProtect
@@ -26034,7 +26026,7 @@ class InstanceInfo(AbstractModel):
 
     @property
     def CpuModel(self):
-        r"""TDSQL引擎参数
+        r"""<p>TDSQL引擎参数</p>
         :rtype: str
         """
         return self._CpuModel
@@ -26042,6 +26034,18 @@ class InstanceInfo(AbstractModel):
     @CpuModel.setter
     def CpuModel(self, CpuModel):
         self._CpuModel = CpuModel
+
+    @property
+    def AnalysisUpgradeVersionInfo(self):
+        r"""<p>分析引擎实例版本升级信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.UpgradeAnalysisInstanceVersionInfo`
+        """
+        return self._AnalysisUpgradeVersionInfo
+
+    @AnalysisUpgradeVersionInfo.setter
+    def AnalysisUpgradeVersionInfo(self, AnalysisUpgradeVersionInfo):
+        self._AnalysisUpgradeVersionInfo = AnalysisUpgradeVersionInfo
 
 
     def _deserialize(self, params):
@@ -26128,6 +26132,9 @@ class InstanceInfo(AbstractModel):
         self._DeviceBandwidth = params.get("DeviceBandwidth")
         self._DestroyProtect = params.get("DestroyProtect")
         self._CpuModel = params.get("CpuModel")
+        if params.get("AnalysisUpgradeVersionInfo") is not None:
+            self._AnalysisUpgradeVersionInfo = UpgradeAnalysisInstanceVersionInfo()
+            self._AnalysisUpgradeVersionInfo._deserialize(params.get("AnalysisUpgradeVersionInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -26629,41 +26636,41 @@ class MasterInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Region: 地域信息
+        :param _Region: <p>地域信息</p>
         :type Region: str
-        :param _RegionId: 地域ID
+        :param _RegionId: <p>地域ID</p>
         :type RegionId: int
-        :param _ZoneId: 可用区ID
+        :param _ZoneId: <p>可用区ID</p>
         :type ZoneId: int
-        :param _Zone: 可用区信息
+        :param _Zone: <p>可用区信息</p>
         :type Zone: str
-        :param _InstanceId: 实例ID
+        :param _InstanceId: <p>实例ID</p>
         :type InstanceId: str
-        :param _ResourceId: 实例长ID
+        :param _ResourceId: <p>实例长ID</p>
         :type ResourceId: str
-        :param _Status: 实例状态
+        :param _Status: <p>实例状态</p>
         :type Status: int
-        :param _InstanceName: 实例名称
+        :param _InstanceName: <p>实例名称</p>
         :type InstanceName: str
-        :param _InstanceType: 实例类型
+        :param _InstanceType: <p>实例类型</p>
         :type InstanceType: int
-        :param _TaskStatus: 任务状态
+        :param _TaskStatus: <p>任务状态</p>
         :type TaskStatus: int
-        :param _Memory: 内存容量
+        :param _Memory: <p>内存容量</p>
         :type Memory: int
-        :param _Volume: 硬盘容量
+        :param _Volume: <p>硬盘容量</p>
         :type Volume: int
-        :param _DeviceType: 实例机型
+        :param _DeviceType: <p>实例机型</p>
         :type DeviceType: str
-        :param _Qps: 每秒查询数
+        :param _Qps: <p>每秒查询数</p>
         :type Qps: int
-        :param _VpcId: 私有网络ID
+        :param _VpcId: <p>私有网络ID</p>
         :type VpcId: int
-        :param _SubnetId: 子网ID
+        :param _SubnetId: <p>子网ID</p>
         :type SubnetId: int
-        :param _ExClusterId: 独享集群ID
+        :param _ExClusterId: <p>独享集群ID</p>
         :type ExClusterId: str
-        :param _ExClusterName: 独享集群名称
+        :param _ExClusterName: <p>独享集群名称</p>
         :type ExClusterName: str
         """
         self._Region = None
@@ -26687,7 +26694,7 @@ class MasterInfo(AbstractModel):
 
     @property
     def Region(self):
-        r"""地域信息
+        r"""<p>地域信息</p>
         :rtype: str
         """
         return self._Region
@@ -26698,7 +26705,7 @@ class MasterInfo(AbstractModel):
 
     @property
     def RegionId(self):
-        r"""地域ID
+        r"""<p>地域ID</p>
         :rtype: int
         """
         return self._RegionId
@@ -26709,7 +26716,7 @@ class MasterInfo(AbstractModel):
 
     @property
     def ZoneId(self):
-        r"""可用区ID
+        r"""<p>可用区ID</p>
         :rtype: int
         """
         return self._ZoneId
@@ -26720,7 +26727,7 @@ class MasterInfo(AbstractModel):
 
     @property
     def Zone(self):
-        r"""可用区信息
+        r"""<p>可用区信息</p>
         :rtype: str
         """
         return self._Zone
@@ -26731,7 +26738,7 @@ class MasterInfo(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例ID
+        r"""<p>实例ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -26742,7 +26749,7 @@ class MasterInfo(AbstractModel):
 
     @property
     def ResourceId(self):
-        r"""实例长ID
+        r"""<p>实例长ID</p>
         :rtype: str
         """
         return self._ResourceId
@@ -26753,7 +26760,7 @@ class MasterInfo(AbstractModel):
 
     @property
     def Status(self):
-        r"""实例状态
+        r"""<p>实例状态</p>
         :rtype: int
         """
         return self._Status
@@ -26764,7 +26771,7 @@ class MasterInfo(AbstractModel):
 
     @property
     def InstanceName(self):
-        r"""实例名称
+        r"""<p>实例名称</p>
         :rtype: str
         """
         return self._InstanceName
@@ -26775,7 +26782,7 @@ class MasterInfo(AbstractModel):
 
     @property
     def InstanceType(self):
-        r"""实例类型
+        r"""<p>实例类型</p>
         :rtype: int
         """
         return self._InstanceType
@@ -26786,7 +26793,7 @@ class MasterInfo(AbstractModel):
 
     @property
     def TaskStatus(self):
-        r"""任务状态
+        r"""<p>任务状态</p>
         :rtype: int
         """
         return self._TaskStatus
@@ -26797,7 +26804,7 @@ class MasterInfo(AbstractModel):
 
     @property
     def Memory(self):
-        r"""内存容量
+        r"""<p>内存容量</p>
         :rtype: int
         """
         return self._Memory
@@ -26808,7 +26815,7 @@ class MasterInfo(AbstractModel):
 
     @property
     def Volume(self):
-        r"""硬盘容量
+        r"""<p>硬盘容量</p>
         :rtype: int
         """
         return self._Volume
@@ -26819,7 +26826,7 @@ class MasterInfo(AbstractModel):
 
     @property
     def DeviceType(self):
-        r"""实例机型
+        r"""<p>实例机型</p>
         :rtype: str
         """
         return self._DeviceType
@@ -26830,7 +26837,7 @@ class MasterInfo(AbstractModel):
 
     @property
     def Qps(self):
-        r"""每秒查询数
+        r"""<p>每秒查询数</p>
         :rtype: int
         """
         return self._Qps
@@ -26841,7 +26848,7 @@ class MasterInfo(AbstractModel):
 
     @property
     def VpcId(self):
-        r"""私有网络ID
+        r"""<p>私有网络ID</p>
         :rtype: int
         """
         return self._VpcId
@@ -26852,7 +26859,7 @@ class MasterInfo(AbstractModel):
 
     @property
     def SubnetId(self):
-        r"""子网ID
+        r"""<p>子网ID</p>
         :rtype: int
         """
         return self._SubnetId
@@ -26863,7 +26870,7 @@ class MasterInfo(AbstractModel):
 
     @property
     def ExClusterId(self):
-        r"""独享集群ID
+        r"""<p>独享集群ID</p>
         :rtype: str
         """
         return self._ExClusterId
@@ -26874,7 +26881,7 @@ class MasterInfo(AbstractModel):
 
     @property
     def ExClusterName(self):
-        r"""独享集群名称
+        r"""<p>独享集群名称</p>
         :rtype: str
         """
         return self._ExClusterName
@@ -36547,9 +36554,9 @@ class SlaveInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _First: 第一备机信息
+        :param _First: <p>第一备机信息</p>
         :type First: :class:`tencentcloud.cdb.v20170320.models.SlaveInstanceInfo`
-        :param _Second: 第二备机信息
+        :param _Second: <p>第二备机信息</p>
         :type Second: :class:`tencentcloud.cdb.v20170320.models.SlaveInstanceInfo`
         """
         self._First = None
@@ -36557,7 +36564,7 @@ class SlaveInfo(AbstractModel):
 
     @property
     def First(self):
-        r"""第一备机信息
+        r"""<p>第一备机信息</p>
         :rtype: :class:`tencentcloud.cdb.v20170320.models.SlaveInstanceInfo`
         """
         return self._First
@@ -36568,7 +36575,7 @@ class SlaveInfo(AbstractModel):
 
     @property
     def Second(self):
-        r"""第二备机信息
+        r"""<p>第二备机信息</p>
         :rtype: :class:`tencentcloud.cdb.v20170320.models.SlaveInstanceInfo`
         """
         return self._Second
@@ -39040,6 +39047,87 @@ class TimeIntervalStrategy(AbstractModel):
     def _deserialize(self, params):
         self._StartTime = params.get("StartTime")
         self._EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpgradeAnalysisInstanceVersionInfo(AbstractModel):
+    r"""分析引擎实例版本升级信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Vip: <p>版本升级灰度ip</p>
+        :type Vip: str
+        :param _Vport: <p>版本升级灰度port</p>
+        :type Vport: int
+        :param _EngineVersion: <p>升级之后版本</p>
+        :type EngineVersion: str
+        :param _ExpireTime: <p>实例升级灰度事件</p><p>单位：天</p>
+        :type ExpireTime: int
+        """
+        self._Vip = None
+        self._Vport = None
+        self._EngineVersion = None
+        self._ExpireTime = None
+
+    @property
+    def Vip(self):
+        r"""<p>版本升级灰度ip</p>
+        :rtype: str
+        """
+        return self._Vip
+
+    @Vip.setter
+    def Vip(self, Vip):
+        self._Vip = Vip
+
+    @property
+    def Vport(self):
+        r"""<p>版本升级灰度port</p>
+        :rtype: int
+        """
+        return self._Vport
+
+    @Vport.setter
+    def Vport(self, Vport):
+        self._Vport = Vport
+
+    @property
+    def EngineVersion(self):
+        r"""<p>升级之后版本</p>
+        :rtype: str
+        """
+        return self._EngineVersion
+
+    @EngineVersion.setter
+    def EngineVersion(self, EngineVersion):
+        self._EngineVersion = EngineVersion
+
+    @property
+    def ExpireTime(self):
+        r"""<p>实例升级灰度事件</p><p>单位：天</p>
+        :rtype: int
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+
+    def _deserialize(self, params):
+        self._Vip = params.get("Vip")
+        self._Vport = params.get("Vport")
+        self._EngineVersion = params.get("EngineVersion")
+        self._ExpireTime = params.get("ExpireTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

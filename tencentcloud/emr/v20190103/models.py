@@ -5645,6 +5645,8 @@ class CreateClusterRequest(AbstractModel):
         :type PartitionNumber: int
         :param _WebUiVersion: <p>服务ui地址</p><p>枚举值：</p><ul><li>0： 服务ui地址，只返回1条服务ui地址</li><li>1： 服务ui地址，如果服务含有多个ui地址将全部返回，例如impala的Impalad、StateStore、Catalogd</li></ul><p>默认值：0</p>
         :type WebUiVersion: int
+        :param _EnableCbsSysEncryptFlag: <p>系统盘是否加密</p>
+        :type EnableCbsSysEncryptFlag: bool
         """
         self._ProductVersion = None
         self._EnableSupportHAFlag = None
@@ -5674,6 +5676,7 @@ class CreateClusterRequest(AbstractModel):
         self._SgIP = None
         self._PartitionNumber = None
         self._WebUiVersion = None
+        self._EnableCbsSysEncryptFlag = None
 
     @property
     def ProductVersion(self):
@@ -5983,6 +5986,17 @@ class CreateClusterRequest(AbstractModel):
     def WebUiVersion(self, WebUiVersion):
         self._WebUiVersion = WebUiVersion
 
+    @property
+    def EnableCbsSysEncryptFlag(self):
+        r"""<p>系统盘是否加密</p>
+        :rtype: bool
+        """
+        return self._EnableCbsSysEncryptFlag
+
+    @EnableCbsSysEncryptFlag.setter
+    def EnableCbsSysEncryptFlag(self, EnableCbsSysEncryptFlag):
+        self._EnableCbsSysEncryptFlag = EnableCbsSysEncryptFlag
+
 
     def _deserialize(self, params):
         self._ProductVersion = params.get("ProductVersion")
@@ -6046,6 +6060,7 @@ class CreateClusterRequest(AbstractModel):
         self._SgIP = params.get("SgIP")
         self._PartitionNumber = params.get("PartitionNumber")
         self._WebUiVersion = params.get("WebUiVersion")
+        self._EnableCbsSysEncryptFlag = params.get("EnableCbsSysEncryptFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6431,6 +6446,8 @@ class CreateInstanceRequest(AbstractModel):
         :type PartitionNumber: int
         :param _WebUiVersion: <p>服务ui地址</p><p>枚举值：</p><ul><li>0： 服务ui地址，只返回1条服务ui地址</li><li>1： 服务ui地址，如果服务含有多个ui地址将全部返回，例如impala的Impalad、StateStore、Catalogd</li></ul><p>默认值：0</p>
         :type WebUiVersion: int
+        :param _CbsSysEncrypt: <p>是否开启集群维度cbs系统盘加密,0关闭1开启</p>
+        :type CbsSysEncrypt: int
         """
         self._ProductId = None
         self._Software = None
@@ -6472,6 +6489,7 @@ class CreateInstanceRequest(AbstractModel):
         self._SgIP = None
         self._PartitionNumber = None
         self._WebUiVersion = None
+        self._CbsSysEncrypt = None
 
     @property
     def ProductId(self):
@@ -6913,6 +6931,17 @@ class CreateInstanceRequest(AbstractModel):
     def WebUiVersion(self, WebUiVersion):
         self._WebUiVersion = WebUiVersion
 
+    @property
+    def CbsSysEncrypt(self):
+        r"""<p>是否开启集群维度cbs系统盘加密,0关闭1开启</p>
+        :rtype: int
+        """
+        return self._CbsSysEncrypt
+
+    @CbsSysEncrypt.setter
+    def CbsSysEncrypt(self, CbsSysEncrypt):
+        self._CbsSysEncrypt = CbsSysEncrypt
+
 
     def _deserialize(self, params):
         self._ProductId = params.get("ProductId")
@@ -6992,6 +7021,7 @@ class CreateInstanceRequest(AbstractModel):
         self._SgIP = params.get("SgIP")
         self._PartitionNumber = params.get("PartitionNumber")
         self._WebUiVersion = params.get("WebUiVersion")
+        self._CbsSysEncrypt = params.get("CbsSysEncrypt")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

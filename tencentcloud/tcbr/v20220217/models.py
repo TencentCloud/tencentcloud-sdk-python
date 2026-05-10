@@ -7694,18 +7694,24 @@ class VolumeConf(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: 存储类型
+        :param _Type: <p>存储类型</p>
         :type Type: str
-        :param _BucketName: 对象存储桶名称
+        :param _BucketName: <p>对象存储桶名称</p>
         :type BucketName: str
-        :param _Endpoint: 存储连接地址
+        :param _Endpoint: <p>存储连接地址</p>
         :type Endpoint: str
-        :param _KeyID: 存储连接用户密码
+        :param _KeyID: <p>存储连接用户密码</p>
         :type KeyID: str
-        :param _DstPath: 存储挂载目的目录
+        :param _DstPath: <p>存储挂载目的目录</p>
         :type DstPath: str
-        :param _SrcPath: 存储挂载源目录
+        :param _SrcPath: <p>存储挂载源目录</p>
         :type SrcPath: str
+        :param _MountIP: <p>cfs 实例ip</p>
+        :type MountIP: str
+        :param _ReadOnly: <p>默认读写</p>
+        :type ReadOnly: bool
+        :param _InstanceId: <p>CFS 实例 ID</p>
+        :type InstanceId: str
         """
         self._Type = None
         self._BucketName = None
@@ -7713,10 +7719,13 @@ class VolumeConf(AbstractModel):
         self._KeyID = None
         self._DstPath = None
         self._SrcPath = None
+        self._MountIP = None
+        self._ReadOnly = None
+        self._InstanceId = None
 
     @property
     def Type(self):
-        r"""存储类型
+        r"""<p>存储类型</p>
         :rtype: str
         """
         return self._Type
@@ -7727,7 +7736,7 @@ class VolumeConf(AbstractModel):
 
     @property
     def BucketName(self):
-        r"""对象存储桶名称
+        r"""<p>对象存储桶名称</p>
         :rtype: str
         """
         return self._BucketName
@@ -7738,7 +7747,7 @@ class VolumeConf(AbstractModel):
 
     @property
     def Endpoint(self):
-        r"""存储连接地址
+        r"""<p>存储连接地址</p>
         :rtype: str
         """
         return self._Endpoint
@@ -7749,7 +7758,7 @@ class VolumeConf(AbstractModel):
 
     @property
     def KeyID(self):
-        r"""存储连接用户密码
+        r"""<p>存储连接用户密码</p>
         :rtype: str
         """
         return self._KeyID
@@ -7760,7 +7769,7 @@ class VolumeConf(AbstractModel):
 
     @property
     def DstPath(self):
-        r"""存储挂载目的目录
+        r"""<p>存储挂载目的目录</p>
         :rtype: str
         """
         return self._DstPath
@@ -7771,7 +7780,7 @@ class VolumeConf(AbstractModel):
 
     @property
     def SrcPath(self):
-        r"""存储挂载源目录
+        r"""<p>存储挂载源目录</p>
         :rtype: str
         """
         return self._SrcPath
@@ -7779,6 +7788,39 @@ class VolumeConf(AbstractModel):
     @SrcPath.setter
     def SrcPath(self, SrcPath):
         self._SrcPath = SrcPath
+
+    @property
+    def MountIP(self):
+        r"""<p>cfs 实例ip</p>
+        :rtype: str
+        """
+        return self._MountIP
+
+    @MountIP.setter
+    def MountIP(self, MountIP):
+        self._MountIP = MountIP
+
+    @property
+    def ReadOnly(self):
+        r"""<p>默认读写</p>
+        :rtype: bool
+        """
+        return self._ReadOnly
+
+    @ReadOnly.setter
+    def ReadOnly(self, ReadOnly):
+        self._ReadOnly = ReadOnly
+
+    @property
+    def InstanceId(self):
+        r"""<p>CFS 实例 ID</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
 
 
     def _deserialize(self, params):
@@ -7788,6 +7830,9 @@ class VolumeConf(AbstractModel):
         self._KeyID = params.get("KeyID")
         self._DstPath = params.get("DstPath")
         self._SrcPath = params.get("SrcPath")
+        self._MountIP = params.get("MountIP")
+        self._ReadOnly = params.get("ReadOnly")
+        self._InstanceId = params.get("InstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

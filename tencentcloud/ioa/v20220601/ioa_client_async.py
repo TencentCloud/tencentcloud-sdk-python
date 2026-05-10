@@ -25,6 +25,24 @@ class IoaClient(AbstractClient):
     _endpoint = 'ioa.tencentcloudapi.com'
     _service = 'ioa'
 
+    async def BindBusinessResourceConnectorGroup(
+            self,
+            request: models.BindBusinessResourceConnectorGroupRequest,
+            opts: Dict = None,
+    ) -> models.BindBusinessResourceConnectorGroupResponse:
+        """
+        saas版本，创建/修改业务资源后，调用绑定连接器接口,私有化调用path为：capi/GatewayResource/BindBusinessResourceConnectorGroup
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "BindBusinessResourceConnectorGroup"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.BindBusinessResourceConnectorGroupResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateBusinessResource(
             self,
             request: models.CreateBusinessResourceRequest,

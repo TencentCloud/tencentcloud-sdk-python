@@ -12946,6 +12946,439 @@ class CreateRebuildIndexTaskResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateRecordingRuleTaskRequest(AbstractModel):
+    r"""CreateRecordingRuleTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TopicId: <p>源指标主题id</p><p>取值参考：</p><ul><li><a href="https://cloud.tencent.com/document/api/614/56454">DescribeTopics</a></li><li><a href="https://console.cloud.tencent.com/cls/metric">指标主题</a></li></ul>
+        :type TopicId: str
+        :param _DstTopicId: <p>目标指标主题id，可与 TopicId 相同</p>
+        :type DstTopicId: str
+        :param _Name: <p>预聚合任务名称</p><p>入参限制：仅支持字母、数字、及下划线，不允许下划线开头，小于256个字符</p>
+        :type Name: str
+        :param _EnableFlag: <p>任务状态； 1:开启；2:关闭</p>
+        :type EnableFlag: int
+        :param _ProcessStartTime: <p>任务执行开始时间 ,Unix时间戳</p><p>单位：ms</p>
+        :type ProcessStartTime: int
+        :param _ProcessPeriod: <p>调度周期(分钟)，支持范围(0,1440]分钟。</p>
+        :type ProcessPeriod: int
+        :param _ProcessDelay: <p>执行延迟，建议设置为30秒，避免指标上报延迟导致预聚合任务计算结果不精确</p><p>单位：秒</p>
+        :type ProcessDelay: int
+        :param _RecordingRuleContent: <p>执行语句(PromQL)</p>
+        :type RecordingRuleContent: str
+        :param _MetricName: <p>指标名称</p>
+        :type MetricName: str
+        :param _CustomMetricLabels: <p>指标自定义维度</p>
+        :type CustomMetricLabels: list of MetricLabel
+        :param _HasServicesLog: <p>是否开启投递服务日志。1：关闭，2：开启。</p>
+        :type HasServicesLog: int
+        """
+        self._TopicId = None
+        self._DstTopicId = None
+        self._Name = None
+        self._EnableFlag = None
+        self._ProcessStartTime = None
+        self._ProcessPeriod = None
+        self._ProcessDelay = None
+        self._RecordingRuleContent = None
+        self._MetricName = None
+        self._CustomMetricLabels = None
+        self._HasServicesLog = None
+
+    @property
+    def TopicId(self):
+        r"""<p>源指标主题id</p><p>取值参考：</p><ul><li><a href="https://cloud.tencent.com/document/api/614/56454">DescribeTopics</a></li><li><a href="https://console.cloud.tencent.com/cls/metric">指标主题</a></li></ul>
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def DstTopicId(self):
+        r"""<p>目标指标主题id，可与 TopicId 相同</p>
+        :rtype: str
+        """
+        return self._DstTopicId
+
+    @DstTopicId.setter
+    def DstTopicId(self, DstTopicId):
+        self._DstTopicId = DstTopicId
+
+    @property
+    def Name(self):
+        r"""<p>预聚合任务名称</p><p>入参限制：仅支持字母、数字、及下划线，不允许下划线开头，小于256个字符</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def EnableFlag(self):
+        r"""<p>任务状态； 1:开启；2:关闭</p>
+        :rtype: int
+        """
+        return self._EnableFlag
+
+    @EnableFlag.setter
+    def EnableFlag(self, EnableFlag):
+        self._EnableFlag = EnableFlag
+
+    @property
+    def ProcessStartTime(self):
+        r"""<p>任务执行开始时间 ,Unix时间戳</p><p>单位：ms</p>
+        :rtype: int
+        """
+        return self._ProcessStartTime
+
+    @ProcessStartTime.setter
+    def ProcessStartTime(self, ProcessStartTime):
+        self._ProcessStartTime = ProcessStartTime
+
+    @property
+    def ProcessPeriod(self):
+        r"""<p>调度周期(分钟)，支持范围(0,1440]分钟。</p>
+        :rtype: int
+        """
+        return self._ProcessPeriod
+
+    @ProcessPeriod.setter
+    def ProcessPeriod(self, ProcessPeriod):
+        self._ProcessPeriod = ProcessPeriod
+
+    @property
+    def ProcessDelay(self):
+        r"""<p>执行延迟，建议设置为30秒，避免指标上报延迟导致预聚合任务计算结果不精确</p><p>单位：秒</p>
+        :rtype: int
+        """
+        return self._ProcessDelay
+
+    @ProcessDelay.setter
+    def ProcessDelay(self, ProcessDelay):
+        self._ProcessDelay = ProcessDelay
+
+    @property
+    def RecordingRuleContent(self):
+        r"""<p>执行语句(PromQL)</p>
+        :rtype: str
+        """
+        return self._RecordingRuleContent
+
+    @RecordingRuleContent.setter
+    def RecordingRuleContent(self, RecordingRuleContent):
+        self._RecordingRuleContent = RecordingRuleContent
+
+    @property
+    def MetricName(self):
+        r"""<p>指标名称</p>
+        :rtype: str
+        """
+        return self._MetricName
+
+    @MetricName.setter
+    def MetricName(self, MetricName):
+        self._MetricName = MetricName
+
+    @property
+    def CustomMetricLabels(self):
+        r"""<p>指标自定义维度</p>
+        :rtype: list of MetricLabel
+        """
+        return self._CustomMetricLabels
+
+    @CustomMetricLabels.setter
+    def CustomMetricLabels(self, CustomMetricLabels):
+        self._CustomMetricLabels = CustomMetricLabels
+
+    @property
+    def HasServicesLog(self):
+        r"""<p>是否开启投递服务日志。1：关闭，2：开启。</p>
+        :rtype: int
+        """
+        return self._HasServicesLog
+
+    @HasServicesLog.setter
+    def HasServicesLog(self, HasServicesLog):
+        self._HasServicesLog = HasServicesLog
+
+
+    def _deserialize(self, params):
+        self._TopicId = params.get("TopicId")
+        self._DstTopicId = params.get("DstTopicId")
+        self._Name = params.get("Name")
+        self._EnableFlag = params.get("EnableFlag")
+        self._ProcessStartTime = params.get("ProcessStartTime")
+        self._ProcessPeriod = params.get("ProcessPeriod")
+        self._ProcessDelay = params.get("ProcessDelay")
+        self._RecordingRuleContent = params.get("RecordingRuleContent")
+        self._MetricName = params.get("MetricName")
+        if params.get("CustomMetricLabels") is not None:
+            self._CustomMetricLabels = []
+            for item in params.get("CustomMetricLabels"):
+                obj = MetricLabel()
+                obj._deserialize(item)
+                self._CustomMetricLabels.append(obj)
+        self._HasServicesLog = params.get("HasServicesLog")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateRecordingRuleTaskResponse(AbstractModel):
+    r"""CreateRecordingRuleTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务id</p>
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务id</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateRecordingRuleYamlTaskRequest(AbstractModel):
+    r"""CreateRecordingRuleYamlTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TopicId: <p>源指标主题id</p><p>取值参考：</p><ul><li><a href="https://cloud.tencent.com/document/api/614/56454">DescribeTopics</a></li><li><a href="https://console.cloud.tencent.com/cls/metric">指标主题</a></li></ul>
+        :type TopicId: str
+        :param _DstTopicId: <p>目标指标主题id，可与 TopicId 相同</p>
+        :type DstTopicId: str
+        :param _EnableFlag: <p>任务状态； 1:开启；2:关闭</p>
+        :type EnableFlag: int
+        :param _ProcessStartTime: <p>任务执行开始时间 ,Unix时间戳</p><p>单位：ms</p>
+        :type ProcessStartTime: int
+        :param _ProcessPeriod: <p>调度周期(分钟)，支持范围(0,1440]分钟。</p><p>单位：分钟</p><p>也可在YAML中使用 interval: duration 为每个group单独设置执行间隔</p>
+        :type ProcessPeriod: int
+        :param _ProcessDelay: <p>执行延迟，建议设置为30秒，避免指标上报延迟导致预聚合任务计算结果不精确</p><p>单位：秒</p>
+        :type ProcessDelay: int
+        :param _YamlConfigName: <p>yaml配置名称</p>
+        :type YamlConfigName: str
+        :param _YamlContent: <p>yaml配置内容</p><p>兼容 Prometheus Recording Rules 配置文件，API调用时请注意字符串中的换行与缩进。</p>
+        :type YamlContent: str
+        :param _HasServicesLog: <p>是否开启投递服务日志。1：关闭，2：开启。</p>
+        :type HasServicesLog: int
+        """
+        self._TopicId = None
+        self._DstTopicId = None
+        self._EnableFlag = None
+        self._ProcessStartTime = None
+        self._ProcessPeriod = None
+        self._ProcessDelay = None
+        self._YamlConfigName = None
+        self._YamlContent = None
+        self._HasServicesLog = None
+
+    @property
+    def TopicId(self):
+        r"""<p>源指标主题id</p><p>取值参考：</p><ul><li><a href="https://cloud.tencent.com/document/api/614/56454">DescribeTopics</a></li><li><a href="https://console.cloud.tencent.com/cls/metric">指标主题</a></li></ul>
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def DstTopicId(self):
+        r"""<p>目标指标主题id，可与 TopicId 相同</p>
+        :rtype: str
+        """
+        return self._DstTopicId
+
+    @DstTopicId.setter
+    def DstTopicId(self, DstTopicId):
+        self._DstTopicId = DstTopicId
+
+    @property
+    def EnableFlag(self):
+        r"""<p>任务状态； 1:开启；2:关闭</p>
+        :rtype: int
+        """
+        return self._EnableFlag
+
+    @EnableFlag.setter
+    def EnableFlag(self, EnableFlag):
+        self._EnableFlag = EnableFlag
+
+    @property
+    def ProcessStartTime(self):
+        r"""<p>任务执行开始时间 ,Unix时间戳</p><p>单位：ms</p>
+        :rtype: int
+        """
+        return self._ProcessStartTime
+
+    @ProcessStartTime.setter
+    def ProcessStartTime(self, ProcessStartTime):
+        self._ProcessStartTime = ProcessStartTime
+
+    @property
+    def ProcessPeriod(self):
+        r"""<p>调度周期(分钟)，支持范围(0,1440]分钟。</p><p>单位：分钟</p><p>也可在YAML中使用 interval: duration 为每个group单独设置执行间隔</p>
+        :rtype: int
+        """
+        return self._ProcessPeriod
+
+    @ProcessPeriod.setter
+    def ProcessPeriod(self, ProcessPeriod):
+        self._ProcessPeriod = ProcessPeriod
+
+    @property
+    def ProcessDelay(self):
+        r"""<p>执行延迟，建议设置为30秒，避免指标上报延迟导致预聚合任务计算结果不精确</p><p>单位：秒</p>
+        :rtype: int
+        """
+        return self._ProcessDelay
+
+    @ProcessDelay.setter
+    def ProcessDelay(self, ProcessDelay):
+        self._ProcessDelay = ProcessDelay
+
+    @property
+    def YamlConfigName(self):
+        r"""<p>yaml配置名称</p>
+        :rtype: str
+        """
+        return self._YamlConfigName
+
+    @YamlConfigName.setter
+    def YamlConfigName(self, YamlConfigName):
+        self._YamlConfigName = YamlConfigName
+
+    @property
+    def YamlContent(self):
+        r"""<p>yaml配置内容</p><p>兼容 Prometheus Recording Rules 配置文件，API调用时请注意字符串中的换行与缩进。</p>
+        :rtype: str
+        """
+        return self._YamlContent
+
+    @YamlContent.setter
+    def YamlContent(self, YamlContent):
+        self._YamlContent = YamlContent
+
+    @property
+    def HasServicesLog(self):
+        r"""<p>是否开启投递服务日志。1：关闭，2：开启。</p>
+        :rtype: int
+        """
+        return self._HasServicesLog
+
+    @HasServicesLog.setter
+    def HasServicesLog(self, HasServicesLog):
+        self._HasServicesLog = HasServicesLog
+
+
+    def _deserialize(self, params):
+        self._TopicId = params.get("TopicId")
+        self._DstTopicId = params.get("DstTopicId")
+        self._EnableFlag = params.get("EnableFlag")
+        self._ProcessStartTime = params.get("ProcessStartTime")
+        self._ProcessPeriod = params.get("ProcessPeriod")
+        self._ProcessDelay = params.get("ProcessDelay")
+        self._YamlConfigName = params.get("YamlConfigName")
+        self._YamlContent = params.get("YamlContent")
+        self._HasServicesLog = params.get("HasServicesLog")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateRecordingRuleYamlTaskResponse(AbstractModel):
+    r"""CreateRecordingRuleYamlTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _YamlId: <p>Yaml配置id， 可以关联多子任务</p>
+        :type YamlId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._YamlId = None
+        self._RequestId = None
+
+    @property
+    def YamlId(self):
+        r"""<p>Yaml配置id， 可以关联多子任务</p>
+        :rtype: str
+        """
+        return self._YamlId
+
+    @YamlId.setter
+    def YamlId(self, YamlId):
+        self._YamlId = YamlId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._YamlId = params.get("YamlId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateScheduledSqlRequest(AbstractModel):
     r"""CreateScheduledSql请求参数结构体
 
@@ -13981,59 +14414,40 @@ class CreateTopicRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LogsetId: 日志集ID
-- 通过[获取日志集列表](https://cloud.tencent.com/document/product/614/58624)获取日志集Id。
+        :param _LogsetId: <p>日志集ID</p><ul><li>通过<a href="https://cloud.tencent.com/document/product/614/58624">获取日志集列表</a>获取日志集Id。</li></ul>
         :type LogsetId: str
-        :param _TopicName: 主题名称
-名称限制
-- 不能为空字符串
-- 不能包含字符'|'
-- 不能使用以下名称["cls_service_log","loglistener_status","loglistener_alarm","loglistener_business","cls_service_metric"]
-
+        :param _TopicName: <p>主题名称<br>名称限制</p><ul><li>不能为空字符串</li><li>不能包含字符&#39;|&#39;</li><li>不能使用以下名称[&quot;cls_service_log&quot;,&quot;loglistener_status&quot;,&quot;loglistener_alarm&quot;,&quot;loglistener_business&quot;,&quot;cls_service_metric&quot;]</li></ul>
         :type TopicName: str
-        :param _PartitionCount: 主题分区个数。默认创建1个，最大支持创建10个分区。
+        :param _PartitionCount: <p>主题分区个数。默认创建1个，最大支持创建10个分区。</p>
         :type PartitionCount: int
-        :param _Tags: 标签描述列表，通过指定该参数可以同时绑定标签到相应的主题。最大支持10个标签键值对，同一个资源只能绑定到同一个标签键下。
+        :param _Tags: <p>标签描述列表，通过指定该参数可以同时绑定标签到相应的主题。最大支持10个标签键值对，同一个资源只能绑定到同一个标签键下。</p>
         :type Tags: list of Tag
-        :param _AutoSplit: 是否开启自动分裂，默认值为true
+        :param _AutoSplit: <p>是否开启自动分裂，默认值为true</p>
         :type AutoSplit: bool
-        :param _MaxSplitPartitions: 开启自动分裂后，每个主题能够允许的最大分区数，默认值为50
+        :param _MaxSplitPartitions: <p>开启自动分裂后，每个主题能够允许的最大分区数，默认值为50</p>
         :type MaxSplitPartitions: int
-        :param _StorageType: 日志主题的存储类型，可选值 hot（标准存储），cold（低频存储）；默认为hot。指标主题不支持该配置。
+        :param _StorageType: <p>日志主题的存储类型，可选值 hot（标准存储），cold（低频存储）；默认为hot。指标主题不支持该配置。</p>
         :type StorageType: str
-        :param _Period: 存储时间，单位天。
-- 日志主题：日志接入标准存储时，支持1至3600天，值为3640时代表永久保存。
-- 日志主题：日志接入低频存储时，支持7至3600天，值为3640时代表永久保存。
-- 指标主题：支持1至3600天，值为3640时代表永久保存。
+        :param _Period: <p>存储时间，单位天。</p><ul><li>日志主题：日志接入标准存储时，支持1至3600天，值为3640时代表永久保存。</li><li>日志主题：日志接入低频存储时，支持7至3600天，值为3640时代表永久保存。</li><li>指标主题：支持1至3600天，值为3640时代表永久保存。</li></ul>
         :type Period: int
-        :param _Describes: 主题描述
+        :param _Describes: <p>主题描述</p>
         :type Describes: str
-        :param _HotPeriod: 0：日志主题关闭日志沉降。
-非0：日志主题开启日志沉降后标准存储的天数，HotPeriod需要大于等于7，且小于Period。
-仅在StorageType为 hot 时生效，指标主题不支持该配置。
+        :param _HotPeriod: <p>0：日志主题关闭日志沉降。<br>非0：日志主题开启日志沉降后标准存储的天数，HotPeriod需要大于等于7，且小于Period。<br>仅在StorageType为 hot 时生效，指标主题不支持该配置。</p>
         :type HotPeriod: int
-        :param _Encryption: 加密相关参数。 支持加密地域并且开白用户可以传此参数，其他场景不能传递该参数。
-0或者不传： 不加密
-1：kms-cls 云产品密钥加密
-
-支持地域：ap-beijing,ap-guangzhou,ap-shanghai,ap-singapore,ap-bangkok,ap-jakarta,eu-frankfurt,ap-seoul,ap-tokyo
+        :param _Encryption: <p>加密相关参数。 支持加密地域并且开白用户可以传此参数，其他场景不能传递该参数。<br>0或者不传： 不加密<br>1：kms-cls 云产品密钥加密</p><p>支持地域：ap-beijing,ap-guangzhou,ap-shanghai,ap-singapore,ap-bangkok,ap-jakarta,eu-frankfurt,ap-seoul,ap-tokyo</p>
         :type Encryption: int
-        :param _BizType: 主题类型
-- 0:日志主题，默认值
-- 1:指标主题
+        :param _BizType: <p>主题类型</p><ul><li>0:日志主题，默认值</li><li>1:指标主题</li></ul>
         :type BizType: int
-        :param _TopicId: 主题自定义ID，格式为：用户自定义部分-用户APPID。未填写该参数时将自动生成ID。
-- 用户自定义部分仅支持小写字母、数字和-，且不能以-开头和结尾，长度为3至40字符
-- 尾部需要使用-拼接用户APPID，APPID可在https://console.cloud.tencent.com/developer页面查询。
-- 如果指定该字段，需保证全地域唯一
+        :param _TopicId: <p>主题自定义ID，格式为：用户自定义部分-用户APPID。未填写该参数时将自动生成ID。</p><ul><li>用户自定义部分仅支持小写字母、数字和-，且不能以-开头和结尾，长度为3至40字符</li><li>尾部需要使用-拼接用户APPID，APPID可在https://console.cloud.tencent.com/developer页面查询。</li><li>如果指定该字段，需保证全地域唯一</li></ul>
         :type TopicId: str
-        :param _IsWebTracking: 免鉴权开关。 false：关闭； true：开启。默认为false。
-开启后将支持指定操作匿名访问该日志主题。详情请参见[日志主题](https://cloud.tencent.com/document/product/614/41035)。指标主题不支持该配置。
+        :param _IsWebTracking: <p>免鉴权开关。 false：关闭； true：开启。默认为false。<br>开启后将支持指定操作匿名访问该日志主题。详情请参见<a href="https://cloud.tencent.com/document/product/614/41035">日志主题</a>。指标主题不支持该配置。</p>
         :type IsWebTracking: bool
-        :param _Extends: 主题扩展信息
+        :param _Extends: <p>主题扩展信息</p>
         :type Extends: :class:`tencentcloud.cls.v20201016.models.TopicExtendInfo`
-        :param _IsSourceFrom: 开启记录公网来源ip和服务端接收时间
+        :param _IsSourceFrom: <p>开启记录公网来源ip和服务端接收时间</p>
         :type IsSourceFrom: bool
+        :param _BillingMode: <p>计费模式</p><p>枚举值：</p><ul><li>0： 按功能项计费</li><li>1： 原始日志量计费</li></ul><p>默认值：0</p><p>通过接口调用时默认值为0，通过控制台调用时默认值为1</p>
+        :type BillingMode: int
         """
         self._LogsetId = None
         self._TopicName = None
@@ -14051,11 +14465,11 @@ class CreateTopicRequest(AbstractModel):
         self._IsWebTracking = None
         self._Extends = None
         self._IsSourceFrom = None
+        self._BillingMode = None
 
     @property
     def LogsetId(self):
-        r"""日志集ID
-- 通过[获取日志集列表](https://cloud.tencent.com/document/product/614/58624)获取日志集Id。
+        r"""<p>日志集ID</p><ul><li>通过<a href="https://cloud.tencent.com/document/product/614/58624">获取日志集列表</a>获取日志集Id。</li></ul>
         :rtype: str
         """
         return self._LogsetId
@@ -14066,12 +14480,7 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def TopicName(self):
-        r"""主题名称
-名称限制
-- 不能为空字符串
-- 不能包含字符'|'
-- 不能使用以下名称["cls_service_log","loglistener_status","loglistener_alarm","loglistener_business","cls_service_metric"]
-
+        r"""<p>主题名称<br>名称限制</p><ul><li>不能为空字符串</li><li>不能包含字符&#39;|&#39;</li><li>不能使用以下名称[&quot;cls_service_log&quot;,&quot;loglistener_status&quot;,&quot;loglistener_alarm&quot;,&quot;loglistener_business&quot;,&quot;cls_service_metric&quot;]</li></ul>
         :rtype: str
         """
         return self._TopicName
@@ -14082,7 +14491,7 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def PartitionCount(self):
-        r"""主题分区个数。默认创建1个，最大支持创建10个分区。
+        r"""<p>主题分区个数。默认创建1个，最大支持创建10个分区。</p>
         :rtype: int
         """
         return self._PartitionCount
@@ -14093,7 +14502,7 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def Tags(self):
-        r"""标签描述列表，通过指定该参数可以同时绑定标签到相应的主题。最大支持10个标签键值对，同一个资源只能绑定到同一个标签键下。
+        r"""<p>标签描述列表，通过指定该参数可以同时绑定标签到相应的主题。最大支持10个标签键值对，同一个资源只能绑定到同一个标签键下。</p>
         :rtype: list of Tag
         """
         return self._Tags
@@ -14104,7 +14513,7 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def AutoSplit(self):
-        r"""是否开启自动分裂，默认值为true
+        r"""<p>是否开启自动分裂，默认值为true</p>
         :rtype: bool
         """
         return self._AutoSplit
@@ -14115,7 +14524,7 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def MaxSplitPartitions(self):
-        r"""开启自动分裂后，每个主题能够允许的最大分区数，默认值为50
+        r"""<p>开启自动分裂后，每个主题能够允许的最大分区数，默认值为50</p>
         :rtype: int
         """
         return self._MaxSplitPartitions
@@ -14126,7 +14535,7 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def StorageType(self):
-        r"""日志主题的存储类型，可选值 hot（标准存储），cold（低频存储）；默认为hot。指标主题不支持该配置。
+        r"""<p>日志主题的存储类型，可选值 hot（标准存储），cold（低频存储）；默认为hot。指标主题不支持该配置。</p>
         :rtype: str
         """
         return self._StorageType
@@ -14137,10 +14546,7 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def Period(self):
-        r"""存储时间，单位天。
-- 日志主题：日志接入标准存储时，支持1至3600天，值为3640时代表永久保存。
-- 日志主题：日志接入低频存储时，支持7至3600天，值为3640时代表永久保存。
-- 指标主题：支持1至3600天，值为3640时代表永久保存。
+        r"""<p>存储时间，单位天。</p><ul><li>日志主题：日志接入标准存储时，支持1至3600天，值为3640时代表永久保存。</li><li>日志主题：日志接入低频存储时，支持7至3600天，值为3640时代表永久保存。</li><li>指标主题：支持1至3600天，值为3640时代表永久保存。</li></ul>
         :rtype: int
         """
         return self._Period
@@ -14151,7 +14557,7 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def Describes(self):
-        r"""主题描述
+        r"""<p>主题描述</p>
         :rtype: str
         """
         return self._Describes
@@ -14162,9 +14568,7 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def HotPeriod(self):
-        r"""0：日志主题关闭日志沉降。
-非0：日志主题开启日志沉降后标准存储的天数，HotPeriod需要大于等于7，且小于Period。
-仅在StorageType为 hot 时生效，指标主题不支持该配置。
+        r"""<p>0：日志主题关闭日志沉降。<br>非0：日志主题开启日志沉降后标准存储的天数，HotPeriod需要大于等于7，且小于Period。<br>仅在StorageType为 hot 时生效，指标主题不支持该配置。</p>
         :rtype: int
         """
         return self._HotPeriod
@@ -14175,11 +14579,7 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def Encryption(self):
-        r"""加密相关参数。 支持加密地域并且开白用户可以传此参数，其他场景不能传递该参数。
-0或者不传： 不加密
-1：kms-cls 云产品密钥加密
-
-支持地域：ap-beijing,ap-guangzhou,ap-shanghai,ap-singapore,ap-bangkok,ap-jakarta,eu-frankfurt,ap-seoul,ap-tokyo
+        r"""<p>加密相关参数。 支持加密地域并且开白用户可以传此参数，其他场景不能传递该参数。<br>0或者不传： 不加密<br>1：kms-cls 云产品密钥加密</p><p>支持地域：ap-beijing,ap-guangzhou,ap-shanghai,ap-singapore,ap-bangkok,ap-jakarta,eu-frankfurt,ap-seoul,ap-tokyo</p>
         :rtype: int
         """
         return self._Encryption
@@ -14190,9 +14590,7 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def BizType(self):
-        r"""主题类型
-- 0:日志主题，默认值
-- 1:指标主题
+        r"""<p>主题类型</p><ul><li>0:日志主题，默认值</li><li>1:指标主题</li></ul>
         :rtype: int
         """
         return self._BizType
@@ -14203,10 +14601,7 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def TopicId(self):
-        r"""主题自定义ID，格式为：用户自定义部分-用户APPID。未填写该参数时将自动生成ID。
-- 用户自定义部分仅支持小写字母、数字和-，且不能以-开头和结尾，长度为3至40字符
-- 尾部需要使用-拼接用户APPID，APPID可在https://console.cloud.tencent.com/developer页面查询。
-- 如果指定该字段，需保证全地域唯一
+        r"""<p>主题自定义ID，格式为：用户自定义部分-用户APPID。未填写该参数时将自动生成ID。</p><ul><li>用户自定义部分仅支持小写字母、数字和-，且不能以-开头和结尾，长度为3至40字符</li><li>尾部需要使用-拼接用户APPID，APPID可在https://console.cloud.tencent.com/developer页面查询。</li><li>如果指定该字段，需保证全地域唯一</li></ul>
         :rtype: str
         """
         return self._TopicId
@@ -14217,8 +14612,7 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def IsWebTracking(self):
-        r"""免鉴权开关。 false：关闭； true：开启。默认为false。
-开启后将支持指定操作匿名访问该日志主题。详情请参见[日志主题](https://cloud.tencent.com/document/product/614/41035)。指标主题不支持该配置。
+        r"""<p>免鉴权开关。 false：关闭； true：开启。默认为false。<br>开启后将支持指定操作匿名访问该日志主题。详情请参见<a href="https://cloud.tencent.com/document/product/614/41035">日志主题</a>。指标主题不支持该配置。</p>
         :rtype: bool
         """
         return self._IsWebTracking
@@ -14229,7 +14623,7 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def Extends(self):
-        r"""主题扩展信息
+        r"""<p>主题扩展信息</p>
         :rtype: :class:`tencentcloud.cls.v20201016.models.TopicExtendInfo`
         """
         return self._Extends
@@ -14240,7 +14634,7 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def IsSourceFrom(self):
-        r"""开启记录公网来源ip和服务端接收时间
+        r"""<p>开启记录公网来源ip和服务端接收时间</p>
         :rtype: bool
         """
         return self._IsSourceFrom
@@ -14248,6 +14642,17 @@ class CreateTopicRequest(AbstractModel):
     @IsSourceFrom.setter
     def IsSourceFrom(self, IsSourceFrom):
         self._IsSourceFrom = IsSourceFrom
+
+    @property
+    def BillingMode(self):
+        r"""<p>计费模式</p><p>枚举值：</p><ul><li>0： 按功能项计费</li><li>1： 原始日志量计费</li></ul><p>默认值：0</p><p>通过接口调用时默认值为0，通过控制台调用时默认值为1</p>
+        :rtype: int
+        """
+        return self._BillingMode
+
+    @BillingMode.setter
+    def BillingMode(self, BillingMode):
+        self._BillingMode = BillingMode
 
 
     def _deserialize(self, params):
@@ -14274,6 +14679,7 @@ class CreateTopicRequest(AbstractModel):
             self._Extends = TopicExtendInfo()
             self._Extends._deserialize(params.get("Extends"))
         self._IsSourceFrom = params.get("IsSourceFrom")
+        self._BillingMode = params.get("BillingMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14291,7 +14697,7 @@ class CreateTopicResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TopicId: 主题ID
+        :param _TopicId: <p>主题ID</p>
         :type TopicId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -14301,7 +14707,7 @@ class CreateTopicResponse(AbstractModel):
 
     @property
     def TopicId(self):
-        r"""主题ID
+        r"""<p>主题ID</p>
         :rtype: str
         """
         return self._TopicId
@@ -18258,6 +18664,164 @@ class DeleteNoticeContentRequest(AbstractModel):
 
 class DeleteNoticeContentResponse(AbstractModel):
     r"""DeleteNoticeContent返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteRecordingRuleTaskRequest(AbstractModel):
+    r"""DeleteRecordingRuleTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务ID</p>
+        :type TaskId: str
+        :param _TopicId: <p>源指标主题id</p>
+        :type TopicId: str
+        """
+        self._TaskId = None
+        self._TopicId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务ID</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TopicId(self):
+        r"""<p>源指标主题id</p>
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._TopicId = params.get("TopicId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteRecordingRuleTaskResponse(AbstractModel):
+    r"""DeleteRecordingRuleTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteRecordingRuleYamlTaskRequest(AbstractModel):
+    r"""DeleteRecordingRuleYamlTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _YamlId: <p>任务ID</p>
+        :type YamlId: str
+        :param _TopicId: <p>源指标主题id</p>
+        :type TopicId: str
+        """
+        self._YamlId = None
+        self._TopicId = None
+
+    @property
+    def YamlId(self):
+        r"""<p>任务ID</p>
+        :rtype: str
+        """
+        return self._YamlId
+
+    @YamlId.setter
+    def YamlId(self, YamlId):
+        self._YamlId = YamlId
+
+    @property
+    def TopicId(self):
+        r"""<p>源指标主题id</p>
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+
+    def _deserialize(self, params):
+        self._YamlId = params.get("YamlId")
+        self._TopicId = params.get("TopicId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteRecordingRuleYamlTaskResponse(AbstractModel):
+    r"""DeleteRecordingRuleYamlTask返回参数结构体
 
     """
 
@@ -25924,6 +26488,304 @@ class DescribeRebuildIndexTasksResponse(AbstractModel):
                 obj = RebuildIndexTaskInfo()
                 obj._deserialize(item)
                 self._RebuildTasks.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeRecordingRuleTaskRequest(AbstractModel):
+    r"""DescribeRecordingRuleTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TopicId: <p>源指标主题id</p>
+        :type TopicId: str
+        :param _Offset: <p>分页的偏移量，默认值为0。</p>
+        :type Offset: int
+        :param _Limit: <p>分页单页限制数目，默认值为20，最大值100。</p>
+        :type Limit: int
+        :param _Filters: <li>yamlId【关联yaml配置ID】进行过滤，模糊匹配。类型：String。必选：否</li> <li>taskName按照【任务名称】进行过滤，模糊匹配。类型：String。必选：否</li> <li>taskId按照【任务ID】进行过滤，模糊匹配。类型：String。必选：否</li>
+        :type Filters: list of Filter
+        """
+        self._TopicId = None
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+
+    @property
+    def TopicId(self):
+        r"""<p>源指标主题id</p>
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def Offset(self):
+        r"""<p>分页的偏移量，默认值为0。</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>分页单页限制数目，默认值为20，最大值100。</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        r"""<li>yamlId【关联yaml配置ID】进行过滤，模糊匹配。类型：String。必选：否</li> <li>taskName按照【任务名称】进行过滤，模糊匹配。类型：String。必选：否</li> <li>taskId按照【任务ID】进行过滤，模糊匹配。类型：String。必选：否</li>
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._TopicId = params.get("TopicId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRecordingRuleTaskResponse(AbstractModel):
+    r"""DescribeRecordingRuleTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RecordingRuleTaskInfos: <p>RecordingRule任务列表信息</p>
+        :type RecordingRuleTaskInfos: list of RecordingRuleTaskInfo
+        :param _TotalCount: <p>任务总条数</p>
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RecordingRuleTaskInfos = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def RecordingRuleTaskInfos(self):
+        r"""<p>RecordingRule任务列表信息</p>
+        :rtype: list of RecordingRuleTaskInfo
+        """
+        return self._RecordingRuleTaskInfos
+
+    @RecordingRuleTaskInfos.setter
+    def RecordingRuleTaskInfos(self, RecordingRuleTaskInfos):
+        self._RecordingRuleTaskInfos = RecordingRuleTaskInfos
+
+    @property
+    def TotalCount(self):
+        r"""<p>任务总条数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("RecordingRuleTaskInfos") is not None:
+            self._RecordingRuleTaskInfos = []
+            for item in params.get("RecordingRuleTaskInfos"):
+                obj = RecordingRuleTaskInfo()
+                obj._deserialize(item)
+                self._RecordingRuleTaskInfos.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeRecordingRuleYamlTaskRequest(AbstractModel):
+    r"""DescribeRecordingRuleYamlTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TopicId: <p>源指标主题id</p>
+        :type TopicId: str
+        :param _Offset: <p>分页的偏移量，默认值为0。</p>
+        :type Offset: int
+        :param _Limit: <p>分页单页限制数目，默认值为20，最大值100。</p>
+        :type Limit: int
+        :param _Filters: <li>yamlConfigName【配置文件名称】进行过滤，模糊匹配。类型：String。必选：否</li> <li>yamlId按照【yamlID】进行过滤，模糊匹配。类型：String。必选：否</li>
+        :type Filters: list of Filter
+        """
+        self._TopicId = None
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+
+    @property
+    def TopicId(self):
+        r"""<p>源指标主题id</p>
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def Offset(self):
+        r"""<p>分页的偏移量，默认值为0。</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>分页单页限制数目，默认值为20，最大值100。</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        r"""<li>yamlConfigName【配置文件名称】进行过滤，模糊匹配。类型：String。必选：否</li> <li>yamlId按照【yamlID】进行过滤，模糊匹配。类型：String。必选：否</li>
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._TopicId = params.get("TopicId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRecordingRuleYamlTaskResponse(AbstractModel):
+    r"""DescribeRecordingRuleYamlTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RecordingRuleYamlTaskInfos: <p>RecordingRule任务列表信息</p>
+        :type RecordingRuleYamlTaskInfos: list of RecordingRuleYamlTaskInfo
+        :param _TotalCount: <p>任务总条数</p>
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RecordingRuleYamlTaskInfos = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def RecordingRuleYamlTaskInfos(self):
+        r"""<p>RecordingRule任务列表信息</p>
+        :rtype: list of RecordingRuleYamlTaskInfo
+        """
+        return self._RecordingRuleYamlTaskInfos
+
+    @RecordingRuleYamlTaskInfos.setter
+    def RecordingRuleYamlTaskInfos(self, RecordingRuleYamlTaskInfos):
+        self._RecordingRuleYamlTaskInfos = RecordingRuleYamlTaskInfos
+
+    @property
+    def TotalCount(self):
+        r"""<p>任务总条数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("RecordingRuleYamlTaskInfos") is not None:
+            self._RecordingRuleYamlTaskInfos = []
+            for item in params.get("RecordingRuleYamlTaskInfos"):
+                obj = RecordingRuleYamlTaskInfo()
+                obj._deserialize(item)
+                self._RecordingRuleYamlTaskInfos.append(obj)
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -40311,6 +41173,454 @@ class ModifyNoticeContentResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyRecordingRuleTaskRequest(AbstractModel):
+    r"""ModifyRecordingRuleTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务ID</p>
+        :type TaskId: str
+        :param _TopicId: <p>源指标主题id</p>
+        :type TopicId: str
+        :param _DstTopicId: <p>目标指标主题id</p>
+        :type DstTopicId: str
+        :param _Name: <p>任务名称</p>
+        :type Name: str
+        :param _EnableFlag: <p>任务启动状态.   1开启,  2关闭</p>
+        :type EnableFlag: int
+        :param _ProcessStartTime: <p>调度开始时间,Unix时间戳，单位ms</p>
+        :type ProcessStartTime: int
+        :param _ProcessPeriod: <p>调度周期(分钟)，支持范围(0,1440]分钟。</p>
+        :type ProcessPeriod: int
+        :param _ProcessDelay: <p>执行延迟(秒)</p>
+        :type ProcessDelay: int
+        :param _MetricName: <p>指标名称</p>
+        :type MetricName: str
+        :param _RecordingRuleContent: <p>执行语句(PromQL)</p>
+        :type RecordingRuleContent: str
+        :param _CustomMetricLabels: <p>自定义指标名称</p>
+        :type CustomMetricLabels: list of MetricLabel
+        :param _HasServicesLog: <p>是否开启投递服务日志。1：关闭，2：开启。</p>
+        :type HasServicesLog: int
+        """
+        self._TaskId = None
+        self._TopicId = None
+        self._DstTopicId = None
+        self._Name = None
+        self._EnableFlag = None
+        self._ProcessStartTime = None
+        self._ProcessPeriod = None
+        self._ProcessDelay = None
+        self._MetricName = None
+        self._RecordingRuleContent = None
+        self._CustomMetricLabels = None
+        self._HasServicesLog = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务ID</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TopicId(self):
+        r"""<p>源指标主题id</p>
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def DstTopicId(self):
+        r"""<p>目标指标主题id</p>
+        :rtype: str
+        """
+        return self._DstTopicId
+
+    @DstTopicId.setter
+    def DstTopicId(self, DstTopicId):
+        self._DstTopicId = DstTopicId
+
+    @property
+    def Name(self):
+        r"""<p>任务名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def EnableFlag(self):
+        r"""<p>任务启动状态.   1开启,  2关闭</p>
+        :rtype: int
+        """
+        return self._EnableFlag
+
+    @EnableFlag.setter
+    def EnableFlag(self, EnableFlag):
+        self._EnableFlag = EnableFlag
+
+    @property
+    def ProcessStartTime(self):
+        r"""<p>调度开始时间,Unix时间戳，单位ms</p>
+        :rtype: int
+        """
+        return self._ProcessStartTime
+
+    @ProcessStartTime.setter
+    def ProcessStartTime(self, ProcessStartTime):
+        self._ProcessStartTime = ProcessStartTime
+
+    @property
+    def ProcessPeriod(self):
+        r"""<p>调度周期(分钟)，支持范围(0,1440]分钟。</p>
+        :rtype: int
+        """
+        return self._ProcessPeriod
+
+    @ProcessPeriod.setter
+    def ProcessPeriod(self, ProcessPeriod):
+        self._ProcessPeriod = ProcessPeriod
+
+    @property
+    def ProcessDelay(self):
+        r"""<p>执行延迟(秒)</p>
+        :rtype: int
+        """
+        return self._ProcessDelay
+
+    @ProcessDelay.setter
+    def ProcessDelay(self, ProcessDelay):
+        self._ProcessDelay = ProcessDelay
+
+    @property
+    def MetricName(self):
+        r"""<p>指标名称</p>
+        :rtype: str
+        """
+        return self._MetricName
+
+    @MetricName.setter
+    def MetricName(self, MetricName):
+        self._MetricName = MetricName
+
+    @property
+    def RecordingRuleContent(self):
+        r"""<p>执行语句(PromQL)</p>
+        :rtype: str
+        """
+        return self._RecordingRuleContent
+
+    @RecordingRuleContent.setter
+    def RecordingRuleContent(self, RecordingRuleContent):
+        self._RecordingRuleContent = RecordingRuleContent
+
+    @property
+    def CustomMetricLabels(self):
+        r"""<p>自定义指标名称</p>
+        :rtype: list of MetricLabel
+        """
+        return self._CustomMetricLabels
+
+    @CustomMetricLabels.setter
+    def CustomMetricLabels(self, CustomMetricLabels):
+        self._CustomMetricLabels = CustomMetricLabels
+
+    @property
+    def HasServicesLog(self):
+        r"""<p>是否开启投递服务日志。1：关闭，2：开启。</p>
+        :rtype: int
+        """
+        return self._HasServicesLog
+
+    @HasServicesLog.setter
+    def HasServicesLog(self, HasServicesLog):
+        self._HasServicesLog = HasServicesLog
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._TopicId = params.get("TopicId")
+        self._DstTopicId = params.get("DstTopicId")
+        self._Name = params.get("Name")
+        self._EnableFlag = params.get("EnableFlag")
+        self._ProcessStartTime = params.get("ProcessStartTime")
+        self._ProcessPeriod = params.get("ProcessPeriod")
+        self._ProcessDelay = params.get("ProcessDelay")
+        self._MetricName = params.get("MetricName")
+        self._RecordingRuleContent = params.get("RecordingRuleContent")
+        if params.get("CustomMetricLabels") is not None:
+            self._CustomMetricLabels = []
+            for item in params.get("CustomMetricLabels"):
+                obj = MetricLabel()
+                obj._deserialize(item)
+                self._CustomMetricLabels.append(obj)
+        self._HasServicesLog = params.get("HasServicesLog")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyRecordingRuleTaskResponse(AbstractModel):
+    r"""ModifyRecordingRuleTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>预聚合任务id</p>
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>预聚合任务id</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyRecordingRuleYamlTaskRequest(AbstractModel):
+    r"""ModifyRecordingRuleYamlTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _YamlID: <p>Yaml配置id</p>
+        :type YamlID: str
+        :param _TopicId: <p>源指标主题id</p>
+        :type TopicId: str
+        :param _DstTopicId: <p>目标指标主题id</p>
+        :type DstTopicId: str
+        :param _EnableFlag: <p>任务状态； 1:开启；2:关闭</p>
+        :type EnableFlag: int
+        :param _ProcessStartTime: <p>调度开始时间,Unix时间戳，单位ms</p>
+        :type ProcessStartTime: int
+        :param _ProcessPeriod: <p>调度周期(分钟)，支持范围(0,1440]分钟。</p>
+        :type ProcessPeriod: int
+        :param _ProcessDelay: <p>执行延迟(秒)</p>
+        :type ProcessDelay: int
+        :param _YamlConfigName: <p>yaml配置名称</p>
+        :type YamlConfigName: str
+        :param _YamlContent: <p>yaml配置内容</p>
+        :type YamlContent: str
+        :param _HasServicesLog: <p>是否开启投递服务日志。1：关闭，2：开启。</p>
+        :type HasServicesLog: int
+        """
+        self._YamlID = None
+        self._TopicId = None
+        self._DstTopicId = None
+        self._EnableFlag = None
+        self._ProcessStartTime = None
+        self._ProcessPeriod = None
+        self._ProcessDelay = None
+        self._YamlConfigName = None
+        self._YamlContent = None
+        self._HasServicesLog = None
+
+    @property
+    def YamlID(self):
+        r"""<p>Yaml配置id</p>
+        :rtype: str
+        """
+        return self._YamlID
+
+    @YamlID.setter
+    def YamlID(self, YamlID):
+        self._YamlID = YamlID
+
+    @property
+    def TopicId(self):
+        r"""<p>源指标主题id</p>
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def DstTopicId(self):
+        r"""<p>目标指标主题id</p>
+        :rtype: str
+        """
+        return self._DstTopicId
+
+    @DstTopicId.setter
+    def DstTopicId(self, DstTopicId):
+        self._DstTopicId = DstTopicId
+
+    @property
+    def EnableFlag(self):
+        r"""<p>任务状态； 1:开启；2:关闭</p>
+        :rtype: int
+        """
+        return self._EnableFlag
+
+    @EnableFlag.setter
+    def EnableFlag(self, EnableFlag):
+        self._EnableFlag = EnableFlag
+
+    @property
+    def ProcessStartTime(self):
+        r"""<p>调度开始时间,Unix时间戳，单位ms</p>
+        :rtype: int
+        """
+        return self._ProcessStartTime
+
+    @ProcessStartTime.setter
+    def ProcessStartTime(self, ProcessStartTime):
+        self._ProcessStartTime = ProcessStartTime
+
+    @property
+    def ProcessPeriod(self):
+        r"""<p>调度周期(分钟)，支持范围(0,1440]分钟。</p>
+        :rtype: int
+        """
+        return self._ProcessPeriod
+
+    @ProcessPeriod.setter
+    def ProcessPeriod(self, ProcessPeriod):
+        self._ProcessPeriod = ProcessPeriod
+
+    @property
+    def ProcessDelay(self):
+        r"""<p>执行延迟(秒)</p>
+        :rtype: int
+        """
+        return self._ProcessDelay
+
+    @ProcessDelay.setter
+    def ProcessDelay(self, ProcessDelay):
+        self._ProcessDelay = ProcessDelay
+
+    @property
+    def YamlConfigName(self):
+        r"""<p>yaml配置名称</p>
+        :rtype: str
+        """
+        return self._YamlConfigName
+
+    @YamlConfigName.setter
+    def YamlConfigName(self, YamlConfigName):
+        self._YamlConfigName = YamlConfigName
+
+    @property
+    def YamlContent(self):
+        r"""<p>yaml配置内容</p>
+        :rtype: str
+        """
+        return self._YamlContent
+
+    @YamlContent.setter
+    def YamlContent(self, YamlContent):
+        self._YamlContent = YamlContent
+
+    @property
+    def HasServicesLog(self):
+        r"""<p>是否开启投递服务日志。1：关闭，2：开启。</p>
+        :rtype: int
+        """
+        return self._HasServicesLog
+
+    @HasServicesLog.setter
+    def HasServicesLog(self, HasServicesLog):
+        self._HasServicesLog = HasServicesLog
+
+
+    def _deserialize(self, params):
+        self._YamlID = params.get("YamlID")
+        self._TopicId = params.get("TopicId")
+        self._DstTopicId = params.get("DstTopicId")
+        self._EnableFlag = params.get("EnableFlag")
+        self._ProcessStartTime = params.get("ProcessStartTime")
+        self._ProcessPeriod = params.get("ProcessPeriod")
+        self._ProcessDelay = params.get("ProcessDelay")
+        self._YamlConfigName = params.get("YamlConfigName")
+        self._YamlContent = params.get("YamlContent")
+        self._HasServicesLog = params.get("HasServicesLog")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyRecordingRuleYamlTaskResponse(AbstractModel):
+    r"""ModifyRecordingRuleYamlTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyScheduledSqlRequest(AbstractModel):
     r"""ModifyScheduledSql请求参数结构体
 
@@ -41241,54 +42551,40 @@ class ModifyTopicRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TopicId:  主题ID- 通过[获取主题列表](https://cloud.tencent.com/document/product/614/56454)获取主题Id。
+        :param _TopicId: <p>主题ID- 通过<a href="https://cloud.tencent.com/document/product/614/56454">获取主题列表</a>获取主题Id。</p>
         :type TopicId: str
-        :param _TopicName: 主题名称
-输入限制：
-- 不能为空字符串
-- 不能包含字符'|'
-- 不能使用以下名称["cls_service_log","loglistener_status","loglistener_alarm","loglistener_business","cls_service_metric"]
+        :param _TopicName: <p>主题名称<br>输入限制：</p><ul><li>不能为空字符串</li><li>不能包含字符&#39;|&#39;</li><li>不能使用以下名称[&quot;cls_service_log&quot;,&quot;loglistener_status&quot;,&quot;loglistener_alarm&quot;,&quot;loglistener_business&quot;,&quot;cls_service_metric&quot;]</li></ul>
         :type TopicName: str
-        :param _Tags: 标签描述列表，通过指定该参数可以同时绑定标签到相应的主题。最大支持10个标签键值对，并且不能有重复的键值对。
+        :param _Tags: <p>标签描述列表，通过指定该参数可以同时绑定标签到相应的主题。最大支持10个标签键值对，并且不能有重复的键值对。</p>
         :type Tags: list of Tag
-        :param _Status: 主题是否开启采集，true：开启采集；false：关闭采集。
-控制台目前不支持修改此参数。
+        :param _Status: <p>主题是否开启采集，true：开启采集；false：关闭采集。<br>控制台目前不支持修改此参数。</p>
         :type Status: bool
-        :param _AutoSplit: 是否开启自动分裂
+        :param _AutoSplit: <p>是否开启自动分裂</p>
         :type AutoSplit: bool
-        :param _MaxSplitPartitions: 若开启最大分裂，该主题能够允许的最大分区数；
-默认为50；必须为正数
+        :param _MaxSplitPartitions: <p>若开启最大分裂，该主题能够允许的最大分区数；<br>默认为50；必须为正数</p>
         :type MaxSplitPartitions: int
-        :param _Period: 生命周期，单位天，标准存储取值范围1\~3600，低频存储取值范围7\~3600。取值为3640时代表永久保存
+        :param _Period: <p>生命周期，单位天，标准存储取值范围1~3600，低频存储取值范围7~3600。取值为3640时代表永久保存</p>
         :type Period: int
-        :param _StorageType: 存储类型：cold 低频存储，hot 标准存储
+        :param _StorageType: <p>存储类型：cold 低频存储，hot 标准存储</p>
         :type StorageType: str
-        :param _Describes: 主题描述
+        :param _Describes: <p>主题描述</p>
         :type Describes: str
-        :param _HotPeriod: 0：日志主题关闭日志沉降。
-非0：日志主题开启日志沉降后标准存储的天数。HotPeriod需要大于等于7，且小于Period。
-仅在StorageType为 hot 时生效，指标主题不支持该配置。
+        :param _HotPeriod: <p>0：日志主题关闭日志沉降。<br>非0：日志主题开启日志沉降后标准存储的天数。HotPeriod需要大于等于7，且小于Period。<br>仅在StorageType为 hot 时生效，指标主题不支持该配置。</p>
         :type HotPeriod: int
-        :param _IsWebTracking: 免鉴权开关。 false：关闭； true：开启。
-开启后将支持指定操作匿名访问该日志主题。详情请参见[日志主题](https://cloud.tencent.com/document/product/614/41035)。
+        :param _IsWebTracking: <p>免鉴权开关。 false：关闭； true：开启。<br>开启后将支持指定操作匿名访问该日志主题。详情请参见<a href="https://cloud.tencent.com/document/product/614/41035">日志主题</a>。</p>
         :type IsWebTracking: bool
-        :param _Extends: 主题扩展信息
+        :param _Extends: <p>主题扩展信息</p>
         :type Extends: :class:`tencentcloud.cls.v20201016.models.TopicExtendInfo`
-        :param _PartitionCount: 主题分区数量。
-默认为1；
-取值范围及约束：
-- 当输入值<=0，系统自动调整为1。
-- 如果未传MaxSplitPartitions，需要PartitionCount<=50；
-- 如果传递了MaxSplitPartitions，需要PartitionCount<=MaxSplitPartitions；
+        :param _PartitionCount: <p>主题分区数量。<br>默认为1；<br>取值范围及约束：</p><ul><li>当输入值&lt;=0，系统自动调整为1。</li><li>如果未传MaxSplitPartitions，需要PartitionCount&lt;=50；</li><li>如果传递了MaxSplitPartitions，需要PartitionCount&lt;=MaxSplitPartitions；</li></ul>
         :type PartitionCount: int
-        :param _CancelTopicAsyncTaskID: 取消切换存储任务的id
-- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取取消切换存储任务的id【Topics中的TopicAsyncTaskID字段】。
+        :param _CancelTopicAsyncTaskID: <p>取消切换存储任务的id</p><ul><li>通过<a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a>获取取消切换存储任务的id【Topics中的TopicAsyncTaskID字段】。</li></ul>
         :type CancelTopicAsyncTaskID: str
-        :param _Encryption: 加密相关参数。 支持加密地域并且开白用户可以传此参数，其他场景不能传递该参数。
-只支持传入1：kms-cls 云产品秘钥加密
+        :param _Encryption: <p>加密相关参数。 支持加密地域并且开白用户可以传此参数，其他场景不能传递该参数。<br>只支持传入1：kms-cls 云产品秘钥加密</p>
         :type Encryption: int
-        :param _IsSourceFrom: 开启记录公网来源ip和服务端接收时间
+        :param _IsSourceFrom: <p>开启记录公网来源ip和服务端接收时间</p>
         :type IsSourceFrom: bool
+        :param _BillingMode: <p>计费模式</p><p>枚举值：</p><ul><li>0： 按功能项计费</li><li>1： 原始日志量计费</li></ul>
+        :type BillingMode: int
         """
         self._TopicId = None
         self._TopicName = None
@@ -41306,10 +42602,11 @@ class ModifyTopicRequest(AbstractModel):
         self._CancelTopicAsyncTaskID = None
         self._Encryption = None
         self._IsSourceFrom = None
+        self._BillingMode = None
 
     @property
     def TopicId(self):
-        r""" 主题ID- 通过[获取主题列表](https://cloud.tencent.com/document/product/614/56454)获取主题Id。
+        r"""<p>主题ID- 通过<a href="https://cloud.tencent.com/document/product/614/56454">获取主题列表</a>获取主题Id。</p>
         :rtype: str
         """
         return self._TopicId
@@ -41320,11 +42617,7 @@ class ModifyTopicRequest(AbstractModel):
 
     @property
     def TopicName(self):
-        r"""主题名称
-输入限制：
-- 不能为空字符串
-- 不能包含字符'|'
-- 不能使用以下名称["cls_service_log","loglistener_status","loglistener_alarm","loglistener_business","cls_service_metric"]
+        r"""<p>主题名称<br>输入限制：</p><ul><li>不能为空字符串</li><li>不能包含字符&#39;|&#39;</li><li>不能使用以下名称[&quot;cls_service_log&quot;,&quot;loglistener_status&quot;,&quot;loglistener_alarm&quot;,&quot;loglistener_business&quot;,&quot;cls_service_metric&quot;]</li></ul>
         :rtype: str
         """
         return self._TopicName
@@ -41335,7 +42628,7 @@ class ModifyTopicRequest(AbstractModel):
 
     @property
     def Tags(self):
-        r"""标签描述列表，通过指定该参数可以同时绑定标签到相应的主题。最大支持10个标签键值对，并且不能有重复的键值对。
+        r"""<p>标签描述列表，通过指定该参数可以同时绑定标签到相应的主题。最大支持10个标签键值对，并且不能有重复的键值对。</p>
         :rtype: list of Tag
         """
         return self._Tags
@@ -41346,8 +42639,7 @@ class ModifyTopicRequest(AbstractModel):
 
     @property
     def Status(self):
-        r"""主题是否开启采集，true：开启采集；false：关闭采集。
-控制台目前不支持修改此参数。
+        r"""<p>主题是否开启采集，true：开启采集；false：关闭采集。<br>控制台目前不支持修改此参数。</p>
         :rtype: bool
         """
         return self._Status
@@ -41358,7 +42650,7 @@ class ModifyTopicRequest(AbstractModel):
 
     @property
     def AutoSplit(self):
-        r"""是否开启自动分裂
+        r"""<p>是否开启自动分裂</p>
         :rtype: bool
         """
         return self._AutoSplit
@@ -41369,8 +42661,7 @@ class ModifyTopicRequest(AbstractModel):
 
     @property
     def MaxSplitPartitions(self):
-        r"""若开启最大分裂，该主题能够允许的最大分区数；
-默认为50；必须为正数
+        r"""<p>若开启最大分裂，该主题能够允许的最大分区数；<br>默认为50；必须为正数</p>
         :rtype: int
         """
         return self._MaxSplitPartitions
@@ -41381,7 +42672,7 @@ class ModifyTopicRequest(AbstractModel):
 
     @property
     def Period(self):
-        r"""生命周期，单位天，标准存储取值范围1\~3600，低频存储取值范围7\~3600。取值为3640时代表永久保存
+        r"""<p>生命周期，单位天，标准存储取值范围1~3600，低频存储取值范围7~3600。取值为3640时代表永久保存</p>
         :rtype: int
         """
         return self._Period
@@ -41392,7 +42683,7 @@ class ModifyTopicRequest(AbstractModel):
 
     @property
     def StorageType(self):
-        r"""存储类型：cold 低频存储，hot 标准存储
+        r"""<p>存储类型：cold 低频存储，hot 标准存储</p>
         :rtype: str
         """
         return self._StorageType
@@ -41403,7 +42694,7 @@ class ModifyTopicRequest(AbstractModel):
 
     @property
     def Describes(self):
-        r"""主题描述
+        r"""<p>主题描述</p>
         :rtype: str
         """
         return self._Describes
@@ -41414,9 +42705,7 @@ class ModifyTopicRequest(AbstractModel):
 
     @property
     def HotPeriod(self):
-        r"""0：日志主题关闭日志沉降。
-非0：日志主题开启日志沉降后标准存储的天数。HotPeriod需要大于等于7，且小于Period。
-仅在StorageType为 hot 时生效，指标主题不支持该配置。
+        r"""<p>0：日志主题关闭日志沉降。<br>非0：日志主题开启日志沉降后标准存储的天数。HotPeriod需要大于等于7，且小于Period。<br>仅在StorageType为 hot 时生效，指标主题不支持该配置。</p>
         :rtype: int
         """
         return self._HotPeriod
@@ -41427,8 +42716,7 @@ class ModifyTopicRequest(AbstractModel):
 
     @property
     def IsWebTracking(self):
-        r"""免鉴权开关。 false：关闭； true：开启。
-开启后将支持指定操作匿名访问该日志主题。详情请参见[日志主题](https://cloud.tencent.com/document/product/614/41035)。
+        r"""<p>免鉴权开关。 false：关闭； true：开启。<br>开启后将支持指定操作匿名访问该日志主题。详情请参见<a href="https://cloud.tencent.com/document/product/614/41035">日志主题</a>。</p>
         :rtype: bool
         """
         return self._IsWebTracking
@@ -41439,7 +42727,7 @@ class ModifyTopicRequest(AbstractModel):
 
     @property
     def Extends(self):
-        r"""主题扩展信息
+        r"""<p>主题扩展信息</p>
         :rtype: :class:`tencentcloud.cls.v20201016.models.TopicExtendInfo`
         """
         return self._Extends
@@ -41450,12 +42738,7 @@ class ModifyTopicRequest(AbstractModel):
 
     @property
     def PartitionCount(self):
-        r"""主题分区数量。
-默认为1；
-取值范围及约束：
-- 当输入值<=0，系统自动调整为1。
-- 如果未传MaxSplitPartitions，需要PartitionCount<=50；
-- 如果传递了MaxSplitPartitions，需要PartitionCount<=MaxSplitPartitions；
+        r"""<p>主题分区数量。<br>默认为1；<br>取值范围及约束：</p><ul><li>当输入值&lt;=0，系统自动调整为1。</li><li>如果未传MaxSplitPartitions，需要PartitionCount&lt;=50；</li><li>如果传递了MaxSplitPartitions，需要PartitionCount&lt;=MaxSplitPartitions；</li></ul>
         :rtype: int
         """
         return self._PartitionCount
@@ -41466,8 +42749,7 @@ class ModifyTopicRequest(AbstractModel):
 
     @property
     def CancelTopicAsyncTaskID(self):
-        r"""取消切换存储任务的id
-- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取取消切换存储任务的id【Topics中的TopicAsyncTaskID字段】。
+        r"""<p>取消切换存储任务的id</p><ul><li>通过<a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a>获取取消切换存储任务的id【Topics中的TopicAsyncTaskID字段】。</li></ul>
         :rtype: str
         """
         return self._CancelTopicAsyncTaskID
@@ -41478,8 +42760,7 @@ class ModifyTopicRequest(AbstractModel):
 
     @property
     def Encryption(self):
-        r"""加密相关参数。 支持加密地域并且开白用户可以传此参数，其他场景不能传递该参数。
-只支持传入1：kms-cls 云产品秘钥加密
+        r"""<p>加密相关参数。 支持加密地域并且开白用户可以传此参数，其他场景不能传递该参数。<br>只支持传入1：kms-cls 云产品秘钥加密</p>
         :rtype: int
         """
         return self._Encryption
@@ -41490,7 +42771,7 @@ class ModifyTopicRequest(AbstractModel):
 
     @property
     def IsSourceFrom(self):
-        r"""开启记录公网来源ip和服务端接收时间
+        r"""<p>开启记录公网来源ip和服务端接收时间</p>
         :rtype: bool
         """
         return self._IsSourceFrom
@@ -41498,6 +42779,17 @@ class ModifyTopicRequest(AbstractModel):
     @IsSourceFrom.setter
     def IsSourceFrom(self, IsSourceFrom):
         self._IsSourceFrom = IsSourceFrom
+
+    @property
+    def BillingMode(self):
+        r"""<p>计费模式</p><p>枚举值：</p><ul><li>0： 按功能项计费</li><li>1： 原始日志量计费</li></ul>
+        :rtype: int
+        """
+        return self._BillingMode
+
+    @BillingMode.setter
+    def BillingMode(self, BillingMode):
+        self._BillingMode = BillingMode
 
 
     def _deserialize(self, params):
@@ -41524,6 +42816,7 @@ class ModifyTopicRequest(AbstractModel):
         self._CancelTopicAsyncTaskID = params.get("CancelTopicAsyncTaskID")
         self._Encryption = params.get("Encryption")
         self._IsSourceFrom = params.get("IsSourceFrom")
+        self._BillingMode = params.get("BillingMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -44740,6 +46033,526 @@ class RebuildIndexTaskInfo(AbstractModel):
         self._Progress = params.get("Progress")
         self._UpdateTime = params.get("UpdateTime")
         self._StatusMessage = params.get("StatusMessage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RecordingRuleTaskInfo(AbstractModel):
+    r"""预聚合任务详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 预聚合任务id
+        :type TaskId: str
+        :param _TopicId: 源日志主题id
+        :type TopicId: str
+        :param _Name: 预聚合任务名称
+        :type Name: str
+        :param _CreateTime: 任务创建时间
+        :type CreateTime: str
+        :param _UpdateTime: 任务更新时间
+        :type UpdateTime: str
+        :param _Status: 任务状态，1:运行 2:停止 3:异常-找不到源日志主题 4:异常-找不到目标主题
+
+5: 访问权限问题 6:内部故障 7:其他故障
+        :type Status: int
+        :param _EnableFlag: 任务启用状态，1开启,  2关闭
+        :type EnableFlag: int
+        :param _ProcessStartTime: 调度开始时间
+        :type ProcessStartTime: int
+        :param _ProcessPeriod: 调度周期(分钟)
+        :type ProcessPeriod: int
+        :param _ProcessDelay: 执行延迟(秒)
+        :type ProcessDelay: int
+        :param _HasServicesLog: 是否开启投递服务日志。1：关闭，2：开启。
+        :type HasServicesLog: int
+        :param _RecordingRuleContent: 预聚合检索语句
+        :type RecordingRuleContent: str
+        :param _MetricName: 指标名称
+        :type MetricName: str
+        :param _CustomMetricLabels: 自定义指标名称
+        :type CustomMetricLabels: list of MetricLabel
+        :param _YamlId: yaml配置文件id
+        :type YamlId: str
+        :param _YamlConfigName: yaml配置文件名称
+        :type YamlConfigName: str
+        :param _DstTopicId: 目标日志主题id
+        :type DstTopicId: str
+        """
+        self._TaskId = None
+        self._TopicId = None
+        self._Name = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._Status = None
+        self._EnableFlag = None
+        self._ProcessStartTime = None
+        self._ProcessPeriod = None
+        self._ProcessDelay = None
+        self._HasServicesLog = None
+        self._RecordingRuleContent = None
+        self._MetricName = None
+        self._CustomMetricLabels = None
+        self._YamlId = None
+        self._YamlConfigName = None
+        self._DstTopicId = None
+
+    @property
+    def TaskId(self):
+        r"""预聚合任务id
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TopicId(self):
+        r"""源日志主题id
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def Name(self):
+        r"""预聚合任务名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def CreateTime(self):
+        r"""任务创建时间
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""任务更新时间
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def Status(self):
+        r"""任务状态，1:运行 2:停止 3:异常-找不到源日志主题 4:异常-找不到目标主题
+
+5: 访问权限问题 6:内部故障 7:其他故障
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def EnableFlag(self):
+        r"""任务启用状态，1开启,  2关闭
+        :rtype: int
+        """
+        return self._EnableFlag
+
+    @EnableFlag.setter
+    def EnableFlag(self, EnableFlag):
+        self._EnableFlag = EnableFlag
+
+    @property
+    def ProcessStartTime(self):
+        r"""调度开始时间
+        :rtype: int
+        """
+        return self._ProcessStartTime
+
+    @ProcessStartTime.setter
+    def ProcessStartTime(self, ProcessStartTime):
+        self._ProcessStartTime = ProcessStartTime
+
+    @property
+    def ProcessPeriod(self):
+        r"""调度周期(分钟)
+        :rtype: int
+        """
+        return self._ProcessPeriod
+
+    @ProcessPeriod.setter
+    def ProcessPeriod(self, ProcessPeriod):
+        self._ProcessPeriod = ProcessPeriod
+
+    @property
+    def ProcessDelay(self):
+        r"""执行延迟(秒)
+        :rtype: int
+        """
+        return self._ProcessDelay
+
+    @ProcessDelay.setter
+    def ProcessDelay(self, ProcessDelay):
+        self._ProcessDelay = ProcessDelay
+
+    @property
+    def HasServicesLog(self):
+        r"""是否开启投递服务日志。1：关闭，2：开启。
+        :rtype: int
+        """
+        return self._HasServicesLog
+
+    @HasServicesLog.setter
+    def HasServicesLog(self, HasServicesLog):
+        self._HasServicesLog = HasServicesLog
+
+    @property
+    def RecordingRuleContent(self):
+        r"""预聚合检索语句
+        :rtype: str
+        """
+        return self._RecordingRuleContent
+
+    @RecordingRuleContent.setter
+    def RecordingRuleContent(self, RecordingRuleContent):
+        self._RecordingRuleContent = RecordingRuleContent
+
+    @property
+    def MetricName(self):
+        r"""指标名称
+        :rtype: str
+        """
+        return self._MetricName
+
+    @MetricName.setter
+    def MetricName(self, MetricName):
+        self._MetricName = MetricName
+
+    @property
+    def CustomMetricLabels(self):
+        r"""自定义指标名称
+        :rtype: list of MetricLabel
+        """
+        return self._CustomMetricLabels
+
+    @CustomMetricLabels.setter
+    def CustomMetricLabels(self, CustomMetricLabels):
+        self._CustomMetricLabels = CustomMetricLabels
+
+    @property
+    def YamlId(self):
+        r"""yaml配置文件id
+        :rtype: str
+        """
+        return self._YamlId
+
+    @YamlId.setter
+    def YamlId(self, YamlId):
+        self._YamlId = YamlId
+
+    @property
+    def YamlConfigName(self):
+        r"""yaml配置文件名称
+        :rtype: str
+        """
+        return self._YamlConfigName
+
+    @YamlConfigName.setter
+    def YamlConfigName(self, YamlConfigName):
+        self._YamlConfigName = YamlConfigName
+
+    @property
+    def DstTopicId(self):
+        r"""目标日志主题id
+        :rtype: str
+        """
+        return self._DstTopicId
+
+    @DstTopicId.setter
+    def DstTopicId(self, DstTopicId):
+        self._DstTopicId = DstTopicId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._TopicId = params.get("TopicId")
+        self._Name = params.get("Name")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._Status = params.get("Status")
+        self._EnableFlag = params.get("EnableFlag")
+        self._ProcessStartTime = params.get("ProcessStartTime")
+        self._ProcessPeriod = params.get("ProcessPeriod")
+        self._ProcessDelay = params.get("ProcessDelay")
+        self._HasServicesLog = params.get("HasServicesLog")
+        self._RecordingRuleContent = params.get("RecordingRuleContent")
+        self._MetricName = params.get("MetricName")
+        if params.get("CustomMetricLabels") is not None:
+            self._CustomMetricLabels = []
+            for item in params.get("CustomMetricLabels"):
+                obj = MetricLabel()
+                obj._deserialize(item)
+                self._CustomMetricLabels.append(obj)
+        self._YamlId = params.get("YamlId")
+        self._YamlConfigName = params.get("YamlConfigName")
+        self._DstTopicId = params.get("DstTopicId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RecordingRuleYamlTaskInfo(AbstractModel):
+    r"""预聚合Yaml任务详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _YamlId: yaml配置文件id
+        :type YamlId: str
+        :param _TopicId: 源日志主题id
+        :type TopicId: str
+        :param _DstTopicId: 写入描述的日志主题id
+        :type DstTopicId: str
+        :param _CreateTime: 任务创建时间
+        :type CreateTime: str
+        :param _UpdateTime: 任务更新时间
+        :type UpdateTime: str
+        :param _Status: 任务状态，1:运行 2:停止 3:异常-找不到源日志主题 4:异常-找不到目标主题
+
+5: 访问权限问题 6:内部故障 7:其他故障
+        :type Status: int
+        :param _EnableFlag: 任务启用状态，1开启,  2关闭
+        :type EnableFlag: int
+        :param _ProcessStartTime: 调度开始时间
+        :type ProcessStartTime: int
+        :param _ProcessPeriod: 调度周期(分钟)
+        :type ProcessPeriod: int
+        :param _ProcessDelay: 执行延迟(秒)
+        :type ProcessDelay: int
+        :param _HasServicesLog: 是否开启投递服务日志。1：关闭，2：开启。
+        :type HasServicesLog: int
+        :param _YamlConfigName: yaml配置文件名称
+        :type YamlConfigName: str
+        :param _YamlContent: yaml配置文件内容
+        :type YamlContent: str
+        :param _SubTaskCount: yaml文件子任务数量
+        :type SubTaskCount: int
+        """
+        self._YamlId = None
+        self._TopicId = None
+        self._DstTopicId = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._Status = None
+        self._EnableFlag = None
+        self._ProcessStartTime = None
+        self._ProcessPeriod = None
+        self._ProcessDelay = None
+        self._HasServicesLog = None
+        self._YamlConfigName = None
+        self._YamlContent = None
+        self._SubTaskCount = None
+
+    @property
+    def YamlId(self):
+        r"""yaml配置文件id
+        :rtype: str
+        """
+        return self._YamlId
+
+    @YamlId.setter
+    def YamlId(self, YamlId):
+        self._YamlId = YamlId
+
+    @property
+    def TopicId(self):
+        r"""源日志主题id
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def DstTopicId(self):
+        r"""写入描述的日志主题id
+        :rtype: str
+        """
+        return self._DstTopicId
+
+    @DstTopicId.setter
+    def DstTopicId(self, DstTopicId):
+        self._DstTopicId = DstTopicId
+
+    @property
+    def CreateTime(self):
+        r"""任务创建时间
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""任务更新时间
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def Status(self):
+        r"""任务状态，1:运行 2:停止 3:异常-找不到源日志主题 4:异常-找不到目标主题
+
+5: 访问权限问题 6:内部故障 7:其他故障
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def EnableFlag(self):
+        r"""任务启用状态，1开启,  2关闭
+        :rtype: int
+        """
+        return self._EnableFlag
+
+    @EnableFlag.setter
+    def EnableFlag(self, EnableFlag):
+        self._EnableFlag = EnableFlag
+
+    @property
+    def ProcessStartTime(self):
+        r"""调度开始时间
+        :rtype: int
+        """
+        return self._ProcessStartTime
+
+    @ProcessStartTime.setter
+    def ProcessStartTime(self, ProcessStartTime):
+        self._ProcessStartTime = ProcessStartTime
+
+    @property
+    def ProcessPeriod(self):
+        r"""调度周期(分钟)
+        :rtype: int
+        """
+        return self._ProcessPeriod
+
+    @ProcessPeriod.setter
+    def ProcessPeriod(self, ProcessPeriod):
+        self._ProcessPeriod = ProcessPeriod
+
+    @property
+    def ProcessDelay(self):
+        r"""执行延迟(秒)
+        :rtype: int
+        """
+        return self._ProcessDelay
+
+    @ProcessDelay.setter
+    def ProcessDelay(self, ProcessDelay):
+        self._ProcessDelay = ProcessDelay
+
+    @property
+    def HasServicesLog(self):
+        r"""是否开启投递服务日志。1：关闭，2：开启。
+        :rtype: int
+        """
+        return self._HasServicesLog
+
+    @HasServicesLog.setter
+    def HasServicesLog(self, HasServicesLog):
+        self._HasServicesLog = HasServicesLog
+
+    @property
+    def YamlConfigName(self):
+        r"""yaml配置文件名称
+        :rtype: str
+        """
+        return self._YamlConfigName
+
+    @YamlConfigName.setter
+    def YamlConfigName(self, YamlConfigName):
+        self._YamlConfigName = YamlConfigName
+
+    @property
+    def YamlContent(self):
+        r"""yaml配置文件内容
+        :rtype: str
+        """
+        return self._YamlContent
+
+    @YamlContent.setter
+    def YamlContent(self, YamlContent):
+        self._YamlContent = YamlContent
+
+    @property
+    def SubTaskCount(self):
+        r"""yaml文件子任务数量
+        :rtype: int
+        """
+        return self._SubTaskCount
+
+    @SubTaskCount.setter
+    def SubTaskCount(self, SubTaskCount):
+        self._SubTaskCount = SubTaskCount
+
+
+    def _deserialize(self, params):
+        self._YamlId = params.get("YamlId")
+        self._TopicId = params.get("TopicId")
+        self._DstTopicId = params.get("DstTopicId")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._Status = params.get("Status")
+        self._EnableFlag = params.get("EnableFlag")
+        self._ProcessStartTime = params.get("ProcessStartTime")
+        self._ProcessPeriod = params.get("ProcessPeriod")
+        self._ProcessDelay = params.get("ProcessDelay")
+        self._HasServicesLog = params.get("HasServicesLog")
+        self._YamlConfigName = params.get("YamlConfigName")
+        self._YamlContent = params.get("YamlContent")
+        self._SubTaskCount = params.get("SubTaskCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -48355,73 +50168,62 @@ class TopicInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LogsetId: 日志集ID
+        :param _LogsetId: <p>日志集ID</p>
         :type LogsetId: str
-        :param _TopicId: 主题ID
+        :param _TopicId: <p>主题ID</p>
         :type TopicId: str
-        :param _TopicName: 主题名称
+        :param _TopicName: <p>主题名称</p>
         :type TopicName: str
-        :param _PartitionCount: 主题分区个数
+        :param _PartitionCount: <p>主题分区个数</p>
         :type PartitionCount: int
-        :param _Index: 主题是否开启索引（主题类型需为日志主题）
+        :param _Index: <p>主题是否开启索引（主题类型需为日志主题）</p>
         :type Index: bool
-        :param _AssumerUin: AssumerUin非空则表示创建该日志主题的服务方Uin
+        :param _AssumerUin: <p>AssumerUin非空则表示创建该日志主题的服务方Uin</p>
         :type AssumerUin: int
-        :param _AssumerName: 云产品标识，主题由其它云产品创建时，该字段会显示云产品名称，例如CDN、TKE
+        :param _AssumerName: <p>云产品标识，主题由其它云产品创建时，该字段会显示云产品名称，例如CDN、TKE</p>
         :type AssumerName: str
-        :param _CreateTime: 创建时间。格式：yyyy-MM-dd HH:mm:ss
+        :param _CreateTime: <p>创建时间。格式：yyyy-MM-dd HH:mm:ss</p>
         :type CreateTime: str
-        :param _Status: 主题是否开启采集，true：开启采集；false：关闭采集。
-创建日志主题时默认开启，可通过SDK调用ModifyTopic修改此字段。
-控制台目前不支持修改此参数。
+        :param _Status: <p>主题是否开启采集，true：开启采集；false：关闭采集。<br>创建日志主题时默认开启，可通过SDK调用ModifyTopic修改此字段。<br>控制台目前不支持修改此参数。</p>
         :type Status: bool
-        :param _Tags: 主题绑定的标签信息
+        :param _Tags: <p>主题绑定的标签信息</p>
         :type Tags: list of Tag
-        :param _RoleName: RoleName非空则表示创建该日志主题的服务方使用的角色
+        :param _RoleName: <p>RoleName非空则表示创建该日志主题的服务方使用的角色</p>
         :type RoleName: str
-        :param _AutoSplit: 该主题是否开启自动分裂
+        :param _AutoSplit: <p>该主题是否开启自动分裂</p>
         :type AutoSplit: bool
-        :param _MaxSplitPartitions: 若开启自动分裂的话，该主题能够允许的最大分区数
+        :param _MaxSplitPartitions: <p>若开启自动分裂的话，该主题能够允许的最大分区数</p>
         :type MaxSplitPartitions: int
-        :param _StorageType: 主题的存储类型
-
-- hot: 标准存储
-- cold: 低频存储
+        :param _StorageType: <p>主题的存储类型</p><ul><li>hot: 标准存储</li><li>cold: 低频存储</li></ul>
         :type StorageType: str
-        :param _Period: 生命周期，单位天，可取值范围1~3600。取值为3640时代表永久保存
+        :param _Period: <p>生命周期，单位天，可取值范围1~3600。取值为3640时代表永久保存</p>
         :type Period: int
-        :param _SubAssumerName: 云产品二级标识，日志主题由其它云产品创建时，该字段会显示云产品名称及其日志类型的二级分类，例如TKE-Audit、TKE-Event。部分云产品仅有云产品标识(AssumerName)，无该字段。
+        :param _SubAssumerName: <p>云产品二级标识，日志主题由其它云产品创建时，该字段会显示云产品名称及其日志类型的二级分类，例如TKE-Audit、TKE-Event。部分云产品仅有云产品标识(AssumerName)，无该字段。</p>
         :type SubAssumerName: str
-        :param _Describes: 主题描述
+        :param _Describes: <p>主题描述</p>
         :type Describes: str
-        :param _HotPeriod: 开启日志沉降，标准存储的生命周期， hotPeriod < Period。
-标准存储为 hotPeriod, 低频存储则为 Period-hotPeriod。（主题类型需为日志主题）
-HotPeriod=0为没有开启日志沉降。
+        :param _HotPeriod: <p>开启日志沉降，标准存储的生命周期， hotPeriod &lt; Period。<br>标准存储为 hotPeriod, 低频存储则为 Period-hotPeriod。（主题类型需为日志主题）<br>HotPeriod=0为没有开启日志沉降。</p>
         :type HotPeriod: int
-        :param _KeyId: kms-cls服务秘钥id
+        :param _KeyId: <p>kms-cls服务秘钥id</p>
         :type KeyId: str
-        :param _BizType: 主题类型。
-- 0: 日志主题 
-- 1: 指标主题
+        :param _BizType: <p>主题类型。</p><ul><li>0: 日志主题 </li><li>1: 指标主题</li></ul>
         :type BizType: int
-        :param _IsWebTracking: 免鉴权开关。 false：关闭； true：开启。
-开启后将支持指定操作匿名访问该日志主题。详情请参见[日志主题](https://cloud.tencent.com/document/product/614/41035)。
+        :param _IsWebTracking: <p>免鉴权开关。 false：关闭； true：开启。<br>开启后将支持指定操作匿名访问该日志主题。详情请参见<a href="https://cloud.tencent.com/document/product/614/41035">日志主题</a>。</p>
         :type IsWebTracking: bool
-        :param _Extends: 日志主题扩展信息
+        :param _Extends: <p>日志主题扩展信息</p>
         :type Extends: :class:`tencentcloud.cls.v20201016.models.TopicExtendInfo`
-        :param _TopicAsyncTaskID: 异步迁移任务ID
+        :param _TopicAsyncTaskID: <p>异步迁移任务ID</p>
         :type TopicAsyncTaskID: str
-        :param _MigrationStatus: 异步迁移状态
-- 1：进行中
-- 2：已完成
-- 3：失败
-- 4：已取消
+        :param _MigrationStatus: <p>异步迁移状态</p><ul><li>1：进行中</li><li>2：已完成</li><li>3：失败</li><li>4：已取消</li></ul>
         :type MigrationStatus: int
-        :param _EffectiveDate: 异步迁移完成后，预计生效日期
-时间格式：yyyy-MM-dd HH:mm:ss
+        :param _EffectiveDate: <p>异步迁移完成后，预计生效日期<br>时间格式：yyyy-MM-dd HH:mm:ss</p>
         :type EffectiveDate: str
-        :param _IsSourceFrom: IsSourceFrom 开启记录公网来源ip和服务端接收时间
+        :param _IsSourceFrom: <p>IsSourceFrom 开启记录公网来源ip和服务端接收时间</p>
         :type IsSourceFrom: bool
+        :param _BillingMode: <p>当前计费模式</p><p>枚举值：</p><ul><li>0： 按功能项计费</li><li>1： 原始日志量计费</li></ul>
+        :type BillingMode: int
+        :param _NewBillingMode: <p>如果有异步任务，任务成功后的新计费模式</p><p>枚举值：</p><ul><li>0： 按功能项计费</li><li>1： 原始日志量计费</li></ul>
+        :type NewBillingMode: int
         """
         self._LogsetId = None
         self._TopicId = None
@@ -48449,10 +50251,12 @@ HotPeriod=0为没有开启日志沉降。
         self._MigrationStatus = None
         self._EffectiveDate = None
         self._IsSourceFrom = None
+        self._BillingMode = None
+        self._NewBillingMode = None
 
     @property
     def LogsetId(self):
-        r"""日志集ID
+        r"""<p>日志集ID</p>
         :rtype: str
         """
         return self._LogsetId
@@ -48463,7 +50267,7 @@ HotPeriod=0为没有开启日志沉降。
 
     @property
     def TopicId(self):
-        r"""主题ID
+        r"""<p>主题ID</p>
         :rtype: str
         """
         return self._TopicId
@@ -48474,7 +50278,7 @@ HotPeriod=0为没有开启日志沉降。
 
     @property
     def TopicName(self):
-        r"""主题名称
+        r"""<p>主题名称</p>
         :rtype: str
         """
         return self._TopicName
@@ -48485,7 +50289,7 @@ HotPeriod=0为没有开启日志沉降。
 
     @property
     def PartitionCount(self):
-        r"""主题分区个数
+        r"""<p>主题分区个数</p>
         :rtype: int
         """
         return self._PartitionCount
@@ -48496,7 +50300,7 @@ HotPeriod=0为没有开启日志沉降。
 
     @property
     def Index(self):
-        r"""主题是否开启索引（主题类型需为日志主题）
+        r"""<p>主题是否开启索引（主题类型需为日志主题）</p>
         :rtype: bool
         """
         return self._Index
@@ -48507,7 +50311,7 @@ HotPeriod=0为没有开启日志沉降。
 
     @property
     def AssumerUin(self):
-        r"""AssumerUin非空则表示创建该日志主题的服务方Uin
+        r"""<p>AssumerUin非空则表示创建该日志主题的服务方Uin</p>
         :rtype: int
         """
         return self._AssumerUin
@@ -48518,7 +50322,7 @@ HotPeriod=0为没有开启日志沉降。
 
     @property
     def AssumerName(self):
-        r"""云产品标识，主题由其它云产品创建时，该字段会显示云产品名称，例如CDN、TKE
+        r"""<p>云产品标识，主题由其它云产品创建时，该字段会显示云产品名称，例如CDN、TKE</p>
         :rtype: str
         """
         return self._AssumerName
@@ -48529,7 +50333,7 @@ HotPeriod=0为没有开启日志沉降。
 
     @property
     def CreateTime(self):
-        r"""创建时间。格式：yyyy-MM-dd HH:mm:ss
+        r"""<p>创建时间。格式：yyyy-MM-dd HH:mm:ss</p>
         :rtype: str
         """
         return self._CreateTime
@@ -48540,9 +50344,7 @@ HotPeriod=0为没有开启日志沉降。
 
     @property
     def Status(self):
-        r"""主题是否开启采集，true：开启采集；false：关闭采集。
-创建日志主题时默认开启，可通过SDK调用ModifyTopic修改此字段。
-控制台目前不支持修改此参数。
+        r"""<p>主题是否开启采集，true：开启采集；false：关闭采集。<br>创建日志主题时默认开启，可通过SDK调用ModifyTopic修改此字段。<br>控制台目前不支持修改此参数。</p>
         :rtype: bool
         """
         return self._Status
@@ -48553,7 +50355,7 @@ HotPeriod=0为没有开启日志沉降。
 
     @property
     def Tags(self):
-        r"""主题绑定的标签信息
+        r"""<p>主题绑定的标签信息</p>
         :rtype: list of Tag
         """
         return self._Tags
@@ -48564,7 +50366,7 @@ HotPeriod=0为没有开启日志沉降。
 
     @property
     def RoleName(self):
-        r"""RoleName非空则表示创建该日志主题的服务方使用的角色
+        r"""<p>RoleName非空则表示创建该日志主题的服务方使用的角色</p>
         :rtype: str
         """
         return self._RoleName
@@ -48575,7 +50377,7 @@ HotPeriod=0为没有开启日志沉降。
 
     @property
     def AutoSplit(self):
-        r"""该主题是否开启自动分裂
+        r"""<p>该主题是否开启自动分裂</p>
         :rtype: bool
         """
         return self._AutoSplit
@@ -48586,7 +50388,7 @@ HotPeriod=0为没有开启日志沉降。
 
     @property
     def MaxSplitPartitions(self):
-        r"""若开启自动分裂的话，该主题能够允许的最大分区数
+        r"""<p>若开启自动分裂的话，该主题能够允许的最大分区数</p>
         :rtype: int
         """
         return self._MaxSplitPartitions
@@ -48597,10 +50399,7 @@ HotPeriod=0为没有开启日志沉降。
 
     @property
     def StorageType(self):
-        r"""主题的存储类型
-
-- hot: 标准存储
-- cold: 低频存储
+        r"""<p>主题的存储类型</p><ul><li>hot: 标准存储</li><li>cold: 低频存储</li></ul>
         :rtype: str
         """
         return self._StorageType
@@ -48611,7 +50410,7 @@ HotPeriod=0为没有开启日志沉降。
 
     @property
     def Period(self):
-        r"""生命周期，单位天，可取值范围1~3600。取值为3640时代表永久保存
+        r"""<p>生命周期，单位天，可取值范围1~3600。取值为3640时代表永久保存</p>
         :rtype: int
         """
         return self._Period
@@ -48622,7 +50421,7 @@ HotPeriod=0为没有开启日志沉降。
 
     @property
     def SubAssumerName(self):
-        r"""云产品二级标识，日志主题由其它云产品创建时，该字段会显示云产品名称及其日志类型的二级分类，例如TKE-Audit、TKE-Event。部分云产品仅有云产品标识(AssumerName)，无该字段。
+        r"""<p>云产品二级标识，日志主题由其它云产品创建时，该字段会显示云产品名称及其日志类型的二级分类，例如TKE-Audit、TKE-Event。部分云产品仅有云产品标识(AssumerName)，无该字段。</p>
         :rtype: str
         """
         return self._SubAssumerName
@@ -48633,7 +50432,7 @@ HotPeriod=0为没有开启日志沉降。
 
     @property
     def Describes(self):
-        r"""主题描述
+        r"""<p>主题描述</p>
         :rtype: str
         """
         return self._Describes
@@ -48644,9 +50443,7 @@ HotPeriod=0为没有开启日志沉降。
 
     @property
     def HotPeriod(self):
-        r"""开启日志沉降，标准存储的生命周期， hotPeriod < Period。
-标准存储为 hotPeriod, 低频存储则为 Period-hotPeriod。（主题类型需为日志主题）
-HotPeriod=0为没有开启日志沉降。
+        r"""<p>开启日志沉降，标准存储的生命周期， hotPeriod &lt; Period。<br>标准存储为 hotPeriod, 低频存储则为 Period-hotPeriod。（主题类型需为日志主题）<br>HotPeriod=0为没有开启日志沉降。</p>
         :rtype: int
         """
         return self._HotPeriod
@@ -48657,7 +50454,7 @@ HotPeriod=0为没有开启日志沉降。
 
     @property
     def KeyId(self):
-        r"""kms-cls服务秘钥id
+        r"""<p>kms-cls服务秘钥id</p>
         :rtype: str
         """
         return self._KeyId
@@ -48668,9 +50465,7 @@ HotPeriod=0为没有开启日志沉降。
 
     @property
     def BizType(self):
-        r"""主题类型。
-- 0: 日志主题 
-- 1: 指标主题
+        r"""<p>主题类型。</p><ul><li>0: 日志主题 </li><li>1: 指标主题</li></ul>
         :rtype: int
         """
         return self._BizType
@@ -48681,8 +50476,7 @@ HotPeriod=0为没有开启日志沉降。
 
     @property
     def IsWebTracking(self):
-        r"""免鉴权开关。 false：关闭； true：开启。
-开启后将支持指定操作匿名访问该日志主题。详情请参见[日志主题](https://cloud.tencent.com/document/product/614/41035)。
+        r"""<p>免鉴权开关。 false：关闭； true：开启。<br>开启后将支持指定操作匿名访问该日志主题。详情请参见<a href="https://cloud.tencent.com/document/product/614/41035">日志主题</a>。</p>
         :rtype: bool
         """
         return self._IsWebTracking
@@ -48693,7 +50487,7 @@ HotPeriod=0为没有开启日志沉降。
 
     @property
     def Extends(self):
-        r"""日志主题扩展信息
+        r"""<p>日志主题扩展信息</p>
         :rtype: :class:`tencentcloud.cls.v20201016.models.TopicExtendInfo`
         """
         return self._Extends
@@ -48704,7 +50498,7 @@ HotPeriod=0为没有开启日志沉降。
 
     @property
     def TopicAsyncTaskID(self):
-        r"""异步迁移任务ID
+        r"""<p>异步迁移任务ID</p>
         :rtype: str
         """
         return self._TopicAsyncTaskID
@@ -48715,11 +50509,7 @@ HotPeriod=0为没有开启日志沉降。
 
     @property
     def MigrationStatus(self):
-        r"""异步迁移状态
-- 1：进行中
-- 2：已完成
-- 3：失败
-- 4：已取消
+        r"""<p>异步迁移状态</p><ul><li>1：进行中</li><li>2：已完成</li><li>3：失败</li><li>4：已取消</li></ul>
         :rtype: int
         """
         return self._MigrationStatus
@@ -48730,8 +50520,7 @@ HotPeriod=0为没有开启日志沉降。
 
     @property
     def EffectiveDate(self):
-        r"""异步迁移完成后，预计生效日期
-时间格式：yyyy-MM-dd HH:mm:ss
+        r"""<p>异步迁移完成后，预计生效日期<br>时间格式：yyyy-MM-dd HH:mm:ss</p>
         :rtype: str
         """
         return self._EffectiveDate
@@ -48742,7 +50531,7 @@ HotPeriod=0为没有开启日志沉降。
 
     @property
     def IsSourceFrom(self):
-        r"""IsSourceFrom 开启记录公网来源ip和服务端接收时间
+        r"""<p>IsSourceFrom 开启记录公网来源ip和服务端接收时间</p>
         :rtype: bool
         """
         return self._IsSourceFrom
@@ -48750,6 +50539,28 @@ HotPeriod=0为没有开启日志沉降。
     @IsSourceFrom.setter
     def IsSourceFrom(self, IsSourceFrom):
         self._IsSourceFrom = IsSourceFrom
+
+    @property
+    def BillingMode(self):
+        r"""<p>当前计费模式</p><p>枚举值：</p><ul><li>0： 按功能项计费</li><li>1： 原始日志量计费</li></ul>
+        :rtype: int
+        """
+        return self._BillingMode
+
+    @BillingMode.setter
+    def BillingMode(self, BillingMode):
+        self._BillingMode = BillingMode
+
+    @property
+    def NewBillingMode(self):
+        r"""<p>如果有异步任务，任务成功后的新计费模式</p><p>枚举值：</p><ul><li>0： 按功能项计费</li><li>1： 原始日志量计费</li></ul>
+        :rtype: int
+        """
+        return self._NewBillingMode
+
+    @NewBillingMode.setter
+    def NewBillingMode(self, NewBillingMode):
+        self._NewBillingMode = NewBillingMode
 
 
     def _deserialize(self, params):
@@ -48786,6 +50597,8 @@ HotPeriod=0为没有开启日志沉降。
         self._MigrationStatus = params.get("MigrationStatus")
         self._EffectiveDate = params.get("EffectiveDate")
         self._IsSourceFrom = params.get("IsSourceFrom")
+        self._BillingMode = params.get("BillingMode")
+        self._NewBillingMode = params.get("NewBillingMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

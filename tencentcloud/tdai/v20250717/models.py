@@ -395,6 +395,8 @@ class AgentInstance(AbstractModel):
         :type LastActiveTime: str
         :param _Description: <p>无</p>
         :type Description: str
+        :param _CreatingProgress: <p>发货进度详情</p>
+        :type CreatingProgress: :class:`tencentcloud.tdai.v20250717.models.CreatingProgress`
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -415,6 +417,7 @@ class AgentInstance(AbstractModel):
         self._AllowedActions = None
         self._LastActiveTime = None
         self._Description = None
+        self._CreatingProgress = None
 
     @property
     def InstanceId(self):
@@ -625,6 +628,17 @@ class AgentInstance(AbstractModel):
     def Description(self, Description):
         self._Description = Description
 
+    @property
+    def CreatingProgress(self):
+        r"""<p>发货进度详情</p>
+        :rtype: :class:`tencentcloud.tdai.v20250717.models.CreatingProgress`
+        """
+        return self._CreatingProgress
+
+    @CreatingProgress.setter
+    def CreatingProgress(self, CreatingProgress):
+        self._CreatingProgress = CreatingProgress
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -658,6 +672,9 @@ class AgentInstance(AbstractModel):
         self._AllowedActions = params.get("AllowedActions")
         self._LastActiveTime = params.get("LastActiveTime")
         self._Description = params.get("Description")
+        if params.get("CreatingProgress") is not None:
+            self._CreatingProgress = CreatingProgress()
+            self._CreatingProgress._deserialize(params.get("CreatingProgress"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1730,6 +1747,173 @@ class CreateChatCompletionResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class CreatingProgress(AbstractModel):
+    r"""发货步骤描述
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalSteps: <p>总步骤数</p>
+        :type TotalSteps: int
+        :param _CurrentStep: <p>当前步骤</p>
+        :type CurrentStep: int
+        :param _Steps: <p>步骤详情</p>
+        :type Steps: list of CreatingStepInfo
+        """
+        self._TotalSteps = None
+        self._CurrentStep = None
+        self._Steps = None
+
+    @property
+    def TotalSteps(self):
+        r"""<p>总步骤数</p>
+        :rtype: int
+        """
+        return self._TotalSteps
+
+    @TotalSteps.setter
+    def TotalSteps(self, TotalSteps):
+        self._TotalSteps = TotalSteps
+
+    @property
+    def CurrentStep(self):
+        r"""<p>当前步骤</p>
+        :rtype: int
+        """
+        return self._CurrentStep
+
+    @CurrentStep.setter
+    def CurrentStep(self, CurrentStep):
+        self._CurrentStep = CurrentStep
+
+    @property
+    def Steps(self):
+        r"""<p>步骤详情</p>
+        :rtype: list of CreatingStepInfo
+        """
+        return self._Steps
+
+    @Steps.setter
+    def Steps(self, Steps):
+        self._Steps = Steps
+
+
+    def _deserialize(self, params):
+        self._TotalSteps = params.get("TotalSteps")
+        self._CurrentStep = params.get("CurrentStep")
+        if params.get("Steps") is not None:
+            self._Steps = []
+            for item in params.get("Steps"):
+                obj = CreatingStepInfo()
+                obj._deserialize(item)
+                self._Steps.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreatingStepInfo(AbstractModel):
+    r"""发货步骤详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StepName: <p>步骤名称</p>
+        :type StepName: str
+        :param _StepDesc: <p>步骤描述</p>
+        :type StepDesc: str
+        :param _Status: <p>步骤状态</p>
+        :type Status: str
+        :param _FinishTime: <p>完成时间</p>
+        :type FinishTime: str
+        :param _ErrMsg: <p>错误信息描述</p>
+        :type ErrMsg: str
+        """
+        self._StepName = None
+        self._StepDesc = None
+        self._Status = None
+        self._FinishTime = None
+        self._ErrMsg = None
+
+    @property
+    def StepName(self):
+        r"""<p>步骤名称</p>
+        :rtype: str
+        """
+        return self._StepName
+
+    @StepName.setter
+    def StepName(self, StepName):
+        self._StepName = StepName
+
+    @property
+    def StepDesc(self):
+        r"""<p>步骤描述</p>
+        :rtype: str
+        """
+        return self._StepDesc
+
+    @StepDesc.setter
+    def StepDesc(self, StepDesc):
+        self._StepDesc = StepDesc
+
+    @property
+    def Status(self):
+        r"""<p>步骤状态</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def FinishTime(self):
+        r"""<p>完成时间</p>
+        :rtype: str
+        """
+        return self._FinishTime
+
+    @FinishTime.setter
+    def FinishTime(self, FinishTime):
+        self._FinishTime = FinishTime
+
+    @property
+    def ErrMsg(self):
+        r"""<p>错误信息描述</p>
+        :rtype: str
+        """
+        return self._ErrMsg
+
+    @ErrMsg.setter
+    def ErrMsg(self, ErrMsg):
+        self._ErrMsg = ErrMsg
+
+
+    def _deserialize(self, params):
+        self._StepName = params.get("StepName")
+        self._StepDesc = params.get("StepDesc")
+        self._Status = params.get("Status")
+        self._FinishTime = params.get("FinishTime")
+        self._ErrMsg = params.get("ErrMsg")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DescribeAgentDutyTaskDetailRequest(AbstractModel):

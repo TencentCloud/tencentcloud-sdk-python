@@ -1759,6 +1759,16 @@ class AgentPluginInfo(AbstractModel):
         :type Query: list of AgentPluginQuery
         :param _McpType: <p>MCP类型</p><p>枚举值：</p><ul><li>0： SSE 模式</li><li>1： Streamable Http 模式</li></ul>
         :type McpType: int
+        :param _AuthMode: <p>OAuth授权主体</p><p>枚举值：</p><ul><li>0： 开发者授权</li><li>1： 使用者授权</li></ul>
+        :type AuthMode: int
+        :param _AuthType: <p>授权方式</p><p>枚举值：</p><ul><li>0： 无鉴权</li><li>1： api key鉴权</li><li>2： 支持CAM授权</li><li>3： 支持Oauth2.0授权</li></ul>
+        :type AuthType: int
+        :param _AuthConfigStatus: <p>授权配置状态</p><p>枚举值：</p><ul><li>0： 不需要授权</li><li>1： 未配置</li><li>2： 已配置</li></ul>
+        :type AuthConfigStatus: int
+        :param _PluginClass: <p>插件用途类型</p><p>枚举值：</p><ul><li>0： 工具类</li><li>1： 连接器类</li></ul>
+        :type PluginClass: int
+        :param _PluginStatus: <p>插件状态</p><p>枚举值：</p><ul><li>1： 成功</li><li>2： 不可用</li></ul>
+        :type PluginStatus: int
         """
         self._PluginId = None
         self._Headers = None
@@ -1768,6 +1778,11 @@ class AgentPluginInfo(AbstractModel):
         self._EnableRoleAuth = None
         self._Query = None
         self._McpType = None
+        self._AuthMode = None
+        self._AuthType = None
+        self._AuthConfigStatus = None
+        self._PluginClass = None
+        self._PluginStatus = None
 
     @property
     def PluginId(self):
@@ -1860,6 +1875,61 @@ class AgentPluginInfo(AbstractModel):
     def McpType(self, McpType):
         self._McpType = McpType
 
+    @property
+    def AuthMode(self):
+        r"""<p>OAuth授权主体</p><p>枚举值：</p><ul><li>0： 开发者授权</li><li>1： 使用者授权</li></ul>
+        :rtype: int
+        """
+        return self._AuthMode
+
+    @AuthMode.setter
+    def AuthMode(self, AuthMode):
+        self._AuthMode = AuthMode
+
+    @property
+    def AuthType(self):
+        r"""<p>授权方式</p><p>枚举值：</p><ul><li>0： 无鉴权</li><li>1： api key鉴权</li><li>2： 支持CAM授权</li><li>3： 支持Oauth2.0授权</li></ul>
+        :rtype: int
+        """
+        return self._AuthType
+
+    @AuthType.setter
+    def AuthType(self, AuthType):
+        self._AuthType = AuthType
+
+    @property
+    def AuthConfigStatus(self):
+        r"""<p>授权配置状态</p><p>枚举值：</p><ul><li>0： 不需要授权</li><li>1： 未配置</li><li>2： 已配置</li></ul>
+        :rtype: int
+        """
+        return self._AuthConfigStatus
+
+    @AuthConfigStatus.setter
+    def AuthConfigStatus(self, AuthConfigStatus):
+        self._AuthConfigStatus = AuthConfigStatus
+
+    @property
+    def PluginClass(self):
+        r"""<p>插件用途类型</p><p>枚举值：</p><ul><li>0： 工具类</li><li>1： 连接器类</li></ul>
+        :rtype: int
+        """
+        return self._PluginClass
+
+    @PluginClass.setter
+    def PluginClass(self, PluginClass):
+        self._PluginClass = PluginClass
+
+    @property
+    def PluginStatus(self):
+        r"""<p>插件状态</p><p>枚举值：</p><ul><li>1： 成功</li><li>2： 不可用</li></ul>
+        :rtype: int
+        """
+        return self._PluginStatus
+
+    @PluginStatus.setter
+    def PluginStatus(self, PluginStatus):
+        self._PluginStatus = PluginStatus
+
 
     def _deserialize(self, params):
         self._PluginId = params.get("PluginId")
@@ -1884,6 +1954,11 @@ class AgentPluginInfo(AbstractModel):
                 obj._deserialize(item)
                 self._Query.append(obj)
         self._McpType = params.get("McpType")
+        self._AuthMode = params.get("AuthMode")
+        self._AuthType = params.get("AuthType")
+        self._AuthConfigStatus = params.get("AuthConfigStatus")
+        self._PluginClass = params.get("PluginClass")
+        self._PluginStatus = params.get("PluginStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2902,55 +2977,57 @@ class AgentToolInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PluginId: 插件id
+        :param _PluginId: <p>插件id</p>
         :type PluginId: str
-        :param _PluginName: 插件名称
+        :param _PluginName: <p>插件名称</p>
         :type PluginName: str
-        :param _IconUrl: 插件图标url
+        :param _IconUrl: <p>插件图标url</p>
         :type IconUrl: str
-        :param _PluginType: 0 自定义插件
-1 官方插件
-2 第三方插件 目前用于第三方实现的mcp server
+        :param _PluginType: <p>0 自定义插件<br>1 官方插件<br>2 第三方插件 目前用于第三方实现的mcp server</p>
         :type PluginType: int
-        :param _ToolId: 工具id
+        :param _ToolId: <p>工具id</p>
         :type ToolId: str
-        :param _ToolName: 工具名称
+        :param _ToolName: <p>工具名称</p>
         :type ToolName: str
-        :param _ToolDesc: 工具描述
+        :param _ToolDesc: <p>工具描述</p>
         :type ToolDesc: str
-        :param _Inputs: 输入参数
+        :param _Inputs: <p>输入参数</p>
         :type Inputs: list of AgentToolReqParam
-        :param _Outputs: 输出参数
+        :param _Outputs: <p>输出参数</p>
         :type Outputs: list of AgentToolRspParam
-        :param _CreateType: 创建方式，0:服务创建，1:代码创建，2:MCP创建	
+        :param _CreateType: <p>创建方式，0:服务创建，1:代码创建，2:MCP创建</p>
         :type CreateType: int
-        :param _McpServer: MCP插件的配置信息
+        :param _McpServer: <p>MCP插件的配置信息</p>
         :type McpServer: :class:`tencentcloud.lke.v20231130.models.AgentMCPServerInfo`
-        :param _IsBindingKnowledge: 该工具是否和知识库绑定
+        :param _IsBindingKnowledge: <p>该工具是否和知识库绑定</p>
         :type IsBindingKnowledge: bool
-        :param _Status: 插件状态，1:可用，2:不可用	
+        :param _Status: <p>插件状态，1:可用，2:不可用</p>
         :type Status: int
-        :param _Headers: header信息
+        :param _Headers: <p>header信息</p>
         :type Headers: list of AgentPluginHeader
-        :param _CallingMethod: NON_STREAMING: 非流式  STREAMIN: 流式
+        :param _CallingMethod: <p>NON_STREAMING: 非流式  STREAMIN: 流式</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CallingMethod: str
-        :param _Query: query信息
+        :param _Query: <p>query信息</p>
         :type Query: list of AgentPluginQuery
-        :param _FinanceStatus: 工具计费状态 0-不计费 1-可用 2-不可用（欠费、无资源等）
+        :param _FinanceStatus: <p>工具计费状态 0-不计费 1-可用 2-不可用（欠费、无资源等）</p>
         :type FinanceStatus: int
-        :param _ToolSource: 工具来源: 0-来自插件，1-来自工作流
+        :param _ToolSource: <p>工具来源: 0-来自插件，1-来自工作流</p>
         :type ToolSource: int
-        :param _FinanceType: 计费状态；0-不计费，1-限时免费，2-官方收费
+        :param _FinanceType: <p>计费状态；0-不计费，1-限时免费，2-官方收费</p>
         :type FinanceType: int
-        :param _ToolAdvanceConfig: 工具高级设置
+        :param _ToolAdvanceConfig: <p>工具高级设置</p>
         :type ToolAdvanceConfig: :class:`tencentcloud.lke.v20231130.models.ToolAdvanceConfig`
-        :param _AuthMode: 授权模式； 0-开发者授权；1-使用者授权
+        :param _AuthMode: <p>授权模式； 0-开发者授权；1-使用者授权</p>
         :type AuthMode: int
-        :param _AuthType: 授权类型; 0-无鉴权；1-APIKey；2-CAM授权；3-Oauth2.0授权；
+        :param _AuthType: <p>授权类型; 0-无鉴权；1-APIKey；2-CAM授权；3-Oauth2.0授权；</p>
         :type AuthType: int
-        :param _AuthConfigStatus: 工具授权配置状态；0：不需要授权，1：需要授权-未配置，2：需要授权-已配置
+        :param _AuthConfigStatus: <p>工具授权配置状态；0：不需要授权，1：需要授权-未配置，2：需要授权-已配置</p>
         :type AuthConfigStatus: int
+        :param _ToolAccessMode: <p>连接器工具 API 类型</p><p>枚举值：</p><ul><li>1： 只读</li><li>2： 写/删除</li></ul>
+        :type ToolAccessMode: int
+        :param _IsDisabled: <p>是否禁用该工具</p>
+        :type IsDisabled: bool
         """
         self._PluginId = None
         self._PluginName = None
@@ -2975,10 +3052,12 @@ class AgentToolInfo(AbstractModel):
         self._AuthMode = None
         self._AuthType = None
         self._AuthConfigStatus = None
+        self._ToolAccessMode = None
+        self._IsDisabled = None
 
     @property
     def PluginId(self):
-        r"""插件id
+        r"""<p>插件id</p>
         :rtype: str
         """
         return self._PluginId
@@ -2989,7 +3068,7 @@ class AgentToolInfo(AbstractModel):
 
     @property
     def PluginName(self):
-        r"""插件名称
+        r"""<p>插件名称</p>
         :rtype: str
         """
         return self._PluginName
@@ -3000,7 +3079,7 @@ class AgentToolInfo(AbstractModel):
 
     @property
     def IconUrl(self):
-        r"""插件图标url
+        r"""<p>插件图标url</p>
         :rtype: str
         """
         return self._IconUrl
@@ -3011,9 +3090,7 @@ class AgentToolInfo(AbstractModel):
 
     @property
     def PluginType(self):
-        r"""0 自定义插件
-1 官方插件
-2 第三方插件 目前用于第三方实现的mcp server
+        r"""<p>0 自定义插件<br>1 官方插件<br>2 第三方插件 目前用于第三方实现的mcp server</p>
         :rtype: int
         """
         return self._PluginType
@@ -3024,7 +3101,7 @@ class AgentToolInfo(AbstractModel):
 
     @property
     def ToolId(self):
-        r"""工具id
+        r"""<p>工具id</p>
         :rtype: str
         """
         return self._ToolId
@@ -3035,7 +3112,7 @@ class AgentToolInfo(AbstractModel):
 
     @property
     def ToolName(self):
-        r"""工具名称
+        r"""<p>工具名称</p>
         :rtype: str
         """
         return self._ToolName
@@ -3046,7 +3123,7 @@ class AgentToolInfo(AbstractModel):
 
     @property
     def ToolDesc(self):
-        r"""工具描述
+        r"""<p>工具描述</p>
         :rtype: str
         """
         return self._ToolDesc
@@ -3057,7 +3134,7 @@ class AgentToolInfo(AbstractModel):
 
     @property
     def Inputs(self):
-        r"""输入参数
+        r"""<p>输入参数</p>
         :rtype: list of AgentToolReqParam
         """
         return self._Inputs
@@ -3068,7 +3145,7 @@ class AgentToolInfo(AbstractModel):
 
     @property
     def Outputs(self):
-        r"""输出参数
+        r"""<p>输出参数</p>
         :rtype: list of AgentToolRspParam
         """
         return self._Outputs
@@ -3079,7 +3156,7 @@ class AgentToolInfo(AbstractModel):
 
     @property
     def CreateType(self):
-        r"""创建方式，0:服务创建，1:代码创建，2:MCP创建	
+        r"""<p>创建方式，0:服务创建，1:代码创建，2:MCP创建</p>
         :rtype: int
         """
         return self._CreateType
@@ -3090,7 +3167,7 @@ class AgentToolInfo(AbstractModel):
 
     @property
     def McpServer(self):
-        r"""MCP插件的配置信息
+        r"""<p>MCP插件的配置信息</p>
         :rtype: :class:`tencentcloud.lke.v20231130.models.AgentMCPServerInfo`
         """
         return self._McpServer
@@ -3101,7 +3178,7 @@ class AgentToolInfo(AbstractModel):
 
     @property
     def IsBindingKnowledge(self):
-        r"""该工具是否和知识库绑定
+        r"""<p>该工具是否和知识库绑定</p>
         :rtype: bool
         """
         return self._IsBindingKnowledge
@@ -3112,7 +3189,7 @@ class AgentToolInfo(AbstractModel):
 
     @property
     def Status(self):
-        r"""插件状态，1:可用，2:不可用	
+        r"""<p>插件状态，1:可用，2:不可用</p>
         :rtype: int
         """
         return self._Status
@@ -3123,7 +3200,7 @@ class AgentToolInfo(AbstractModel):
 
     @property
     def Headers(self):
-        r"""header信息
+        r"""<p>header信息</p>
         :rtype: list of AgentPluginHeader
         """
         return self._Headers
@@ -3134,7 +3211,7 @@ class AgentToolInfo(AbstractModel):
 
     @property
     def CallingMethod(self):
-        r"""NON_STREAMING: 非流式  STREAMIN: 流式
+        r"""<p>NON_STREAMING: 非流式  STREAMIN: 流式</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -3146,7 +3223,7 @@ class AgentToolInfo(AbstractModel):
 
     @property
     def Query(self):
-        r"""query信息
+        r"""<p>query信息</p>
         :rtype: list of AgentPluginQuery
         """
         return self._Query
@@ -3157,7 +3234,7 @@ class AgentToolInfo(AbstractModel):
 
     @property
     def FinanceStatus(self):
-        r"""工具计费状态 0-不计费 1-可用 2-不可用（欠费、无资源等）
+        r"""<p>工具计费状态 0-不计费 1-可用 2-不可用（欠费、无资源等）</p>
         :rtype: int
         """
         return self._FinanceStatus
@@ -3168,7 +3245,7 @@ class AgentToolInfo(AbstractModel):
 
     @property
     def ToolSource(self):
-        r"""工具来源: 0-来自插件，1-来自工作流
+        r"""<p>工具来源: 0-来自插件，1-来自工作流</p>
         :rtype: int
         """
         return self._ToolSource
@@ -3179,7 +3256,7 @@ class AgentToolInfo(AbstractModel):
 
     @property
     def FinanceType(self):
-        r"""计费状态；0-不计费，1-限时免费，2-官方收费
+        r"""<p>计费状态；0-不计费，1-限时免费，2-官方收费</p>
         :rtype: int
         """
         return self._FinanceType
@@ -3190,7 +3267,7 @@ class AgentToolInfo(AbstractModel):
 
     @property
     def ToolAdvanceConfig(self):
-        r"""工具高级设置
+        r"""<p>工具高级设置</p>
         :rtype: :class:`tencentcloud.lke.v20231130.models.ToolAdvanceConfig`
         """
         return self._ToolAdvanceConfig
@@ -3201,7 +3278,7 @@ class AgentToolInfo(AbstractModel):
 
     @property
     def AuthMode(self):
-        r"""授权模式； 0-开发者授权；1-使用者授权
+        r"""<p>授权模式； 0-开发者授权；1-使用者授权</p>
         :rtype: int
         """
         return self._AuthMode
@@ -3212,7 +3289,7 @@ class AgentToolInfo(AbstractModel):
 
     @property
     def AuthType(self):
-        r"""授权类型; 0-无鉴权；1-APIKey；2-CAM授权；3-Oauth2.0授权；
+        r"""<p>授权类型; 0-无鉴权；1-APIKey；2-CAM授权；3-Oauth2.0授权；</p>
         :rtype: int
         """
         return self._AuthType
@@ -3223,7 +3300,7 @@ class AgentToolInfo(AbstractModel):
 
     @property
     def AuthConfigStatus(self):
-        r"""工具授权配置状态；0：不需要授权，1：需要授权-未配置，2：需要授权-已配置
+        r"""<p>工具授权配置状态；0：不需要授权，1：需要授权-未配置，2：需要授权-已配置</p>
         :rtype: int
         """
         return self._AuthConfigStatus
@@ -3231,6 +3308,28 @@ class AgentToolInfo(AbstractModel):
     @AuthConfigStatus.setter
     def AuthConfigStatus(self, AuthConfigStatus):
         self._AuthConfigStatus = AuthConfigStatus
+
+    @property
+    def ToolAccessMode(self):
+        r"""<p>连接器工具 API 类型</p><p>枚举值：</p><ul><li>1： 只读</li><li>2： 写/删除</li></ul>
+        :rtype: int
+        """
+        return self._ToolAccessMode
+
+    @ToolAccessMode.setter
+    def ToolAccessMode(self, ToolAccessMode):
+        self._ToolAccessMode = ToolAccessMode
+
+    @property
+    def IsDisabled(self):
+        r"""<p>是否禁用该工具</p>
+        :rtype: bool
+        """
+        return self._IsDisabled
+
+    @IsDisabled.setter
+    def IsDisabled(self, IsDisabled):
+        self._IsDisabled = IsDisabled
 
 
     def _deserialize(self, params):
@@ -3281,6 +3380,8 @@ class AgentToolInfo(AbstractModel):
         self._AuthMode = params.get("AuthMode")
         self._AuthType = params.get("AuthType")
         self._AuthConfigStatus = params.get("AuthConfigStatus")
+        self._ToolAccessMode = params.get("ToolAccessMode")
+        self._IsDisabled = params.get("IsDisabled")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -38012,15 +38113,15 @@ class WidgetParam(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 参数名称
+        :param _Name: <p>参数名称</p>
         :type Name: str
-        :param _Type: 参数类型
+        :param _Type: <p>参数类型</p><p>枚举值：</p><ul><li>0： string</li><li>1： int</li><li>2： float</li><li>3： bool</li><li>4： object</li><li>5： array_string</li><li>6： array_int</li><li>7： array_float</li><li>8： array_bool</li><li>9： array_object</li><li>20： array_array</li></ul>
         :type Type: int
-        :param _SubParams: 子参数
+        :param _SubParams: <p>子参数</p>
         :type SubParams: list of WidgetParam
-        :param _DefaultValue: 默认值, Input未指定时，使用该值
+        :param _DefaultValue: <p>默认值, Input未指定时，使用该值</p>
         :type DefaultValue: str
-        :param _Input: 输入的值
+        :param _Input: <p>输入的值</p>
         :type Input: :class:`tencentcloud.lke.v20231130.models.AgentInput`
         """
         self._Name = None
@@ -38031,7 +38132,7 @@ class WidgetParam(AbstractModel):
 
     @property
     def Name(self):
-        r"""参数名称
+        r"""<p>参数名称</p>
         :rtype: str
         """
         return self._Name
@@ -38042,7 +38143,7 @@ class WidgetParam(AbstractModel):
 
     @property
     def Type(self):
-        r"""参数类型
+        r"""<p>参数类型</p><p>枚举值：</p><ul><li>0： string</li><li>1： int</li><li>2： float</li><li>3： bool</li><li>4： object</li><li>5： array_string</li><li>6： array_int</li><li>7： array_float</li><li>8： array_bool</li><li>9： array_object</li><li>20： array_array</li></ul>
         :rtype: int
         """
         return self._Type
@@ -38053,7 +38154,7 @@ class WidgetParam(AbstractModel):
 
     @property
     def SubParams(self):
-        r"""子参数
+        r"""<p>子参数</p>
         :rtype: list of WidgetParam
         """
         return self._SubParams
@@ -38064,7 +38165,7 @@ class WidgetParam(AbstractModel):
 
     @property
     def DefaultValue(self):
-        r"""默认值, Input未指定时，使用该值
+        r"""<p>默认值, Input未指定时，使用该值</p>
         :rtype: str
         """
         return self._DefaultValue
@@ -38075,7 +38176,7 @@ class WidgetParam(AbstractModel):
 
     @property
     def Input(self):
-        r"""输入的值
+        r"""<p>输入的值</p>
         :rtype: :class:`tencentcloud.lke.v20231130.models.AgentInput`
         """
         return self._Input

@@ -864,6 +864,52 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateRecordingRuleTask(self, request):
+        r"""创建指标预聚合任务
+
+        :param request: Request instance for CreateRecordingRuleTask.
+        :type request: :class:`tencentcloud.cls.v20201016.models.CreateRecordingRuleTaskRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.CreateRecordingRuleTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateRecordingRuleTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateRecordingRuleTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateRecordingRuleYamlTask(self, request):
+        r"""通过yaml文件创建指标预聚合任务
+
+        :param request: Request instance for CreateRecordingRuleYamlTask.
+        :type request: :class:`tencentcloud.cls.v20201016.models.CreateRecordingRuleYamlTaskRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.CreateRecordingRuleYamlTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateRecordingRuleYamlTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateRecordingRuleYamlTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateScheduledSql(self, request):
         r"""本接口用于创建定时SQL分析任务
 
@@ -1637,6 +1683,52 @@ class ClsClient(AbstractClient):
             body = self.call("DeleteNoticeContent", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteNoticeContentResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteRecordingRuleTask(self, request):
+        r"""本接口用于删除预聚合分析任务
+
+        :param request: Request instance for DeleteRecordingRuleTask.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DeleteRecordingRuleTaskRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DeleteRecordingRuleTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteRecordingRuleTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteRecordingRuleTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteRecordingRuleYamlTask(self, request):
+        r"""本接口用于删除yaml预聚合任务
+
+        :param request: Request instance for DeleteRecordingRuleYamlTask.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DeleteRecordingRuleYamlTaskRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DeleteRecordingRuleYamlTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteRecordingRuleYamlTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteRecordingRuleYamlTaskResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2866,6 +2958,52 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeRecordingRuleTask(self, request):
+        r"""本接口用于获取预聚合任务列表
+
+        :param request: Request instance for DescribeRecordingRuleTask.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DescribeRecordingRuleTaskRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DescribeRecordingRuleTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRecordingRuleTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRecordingRuleTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeRecordingRuleYamlTask(self, request):
+        r"""本接口用于获取yaml预聚合任务列表
+
+        :param request: Request instance for DescribeRecordingRuleYamlTask.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DescribeRecordingRuleYamlTaskRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DescribeRecordingRuleYamlTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRecordingRuleYamlTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRecordingRuleYamlTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeScheduledSqlInfo(self, request):
         r"""本接口用于获取定时SQL分析任务列表
 
@@ -3801,6 +3939,52 @@ class ClsClient(AbstractClient):
             body = self.call("ModifyNoticeContent", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyNoticeContentResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyRecordingRuleTask(self, request):
+        r"""本接口用于修改定时预聚合任务
+
+        :param request: Request instance for ModifyRecordingRuleTask.
+        :type request: :class:`tencentcloud.cls.v20201016.models.ModifyRecordingRuleTaskRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.ModifyRecordingRuleTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyRecordingRuleTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyRecordingRuleTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyRecordingRuleYamlTask(self, request):
+        r"""通过yaml文件修改指标预聚合任务
+
+        :param request: Request instance for ModifyRecordingRuleYamlTask.
+        :type request: :class:`tencentcloud.cls.v20201016.models.ModifyRecordingRuleYamlTaskRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.ModifyRecordingRuleYamlTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyRecordingRuleYamlTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyRecordingRuleYamlTaskResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -125,27 +125,6 @@ class OcrClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def BusInvoiceOCR(
-            self,
-            request: models.BusInvoiceOCRRequest,
-            opts: Dict = None,
-    ) -> models.BusInvoiceOCRResponse:
-        """
-        <b>此接口不再进行服务升级，建议您使用识别能力更强、服务性能更优的<a href="https://cloud.tencent.com/document/product/866/90802">通用票据识别（高级版）</a>。</b>
-        本接口支持识别公路汽车客票关键字段的识别，包括发票代码、发票号码、日期、票价、始发地、目的地、姓名、时间、发票消费类型、身份证号、省、市、开票日期、乘车地点、检票口、客票类型、车型、座位号、车次等。
-
-        默认接口请求频率限制：5次/秒。
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "BusInvoiceOCR"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.BusInvoiceOCRResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def BusinessCardOCR(
             self,
             request: models.BusinessCardOCRRequest,
@@ -311,27 +290,6 @@ class OcrClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def DutyPaidProofOCR(
-            self,
-            request: models.DutyPaidProofOCRRequest,
-            opts: Dict = None,
-    ) -> models.DutyPaidProofOCRResponse:
-        """
-        <b>此接口不再进行服务升级，建议您使用识别能力更强、服务性能更优的<a href="https://cloud.tencent.com/document/product/866/90802">通用票据识别（高级版）</a>。</b>
-        本接口支持对完税证明的税号、纳税人识别号、纳税人名称、金额合计大写、金额合计小写、填发日期、税务机关、填票人等关键字段的识别。
-
-        默认接口请求频率限制：5次/秒。
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DutyPaidProofOCR"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DutyPaidProofOCRResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def EduPaperOCR(
             self,
             request: models.EduPaperOCRRequest,
@@ -491,48 +449,6 @@ class OcrClient(AbstractClient):
         kwargs["action"] = "ExtractDocMultiPro"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ExtractDocMultiProResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def FinanBillOCR(
-            self,
-            request: models.FinanBillOCRRequest,
-            opts: Dict = None,
-    ) -> models.FinanBillOCRResponse:
-        """
-        <b>此接口不再进行服务升级，建议您使用识别能力更强、服务性能更优的<a href="https://cloud.tencent.com/document/product/866/90802">通用票据识别（高级版）</a>。</b>
-        本接口支持常见银行票据的自动分类和识别。整单识别包括支票（含现金支票、普通支票、转账支票），承兑汇票（含银行承兑汇票、商业承兑汇票）以及进账单等，适用于中国人民银行印发的 2010 版银行票据凭证版式（银发[2010]299 号）。
-
-        默认接口请求频率限制：5次/秒。
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "FinanBillOCR"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.FinanBillOCRResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def FinanBillSliceOCR(
-            self,
-            request: models.FinanBillSliceOCRRequest,
-            opts: Dict = None,
-    ) -> models.FinanBillSliceOCRResponse:
-        """
-        <b>此接口不再进行服务升级，建议您使用识别能力更强、服务性能更优的<a href="https://cloud.tencent.com/document/product/866/90802">通用票据识别（高级版）</a>。</b>
-        本接口支持常见银行票据的自动分类和识别。切片识别包括金融行业常见票据的重要切片字段识别，包括金额、账号、日期、凭证号码等。（金融票据切片：金融票据中待识别字段及其周围局部区域的裁剪图像。）
-
-        默认接口请求频率限制：5次/秒。
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "FinanBillSliceOCR"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.FinanBillSliceOCRResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1052,27 +968,6 @@ class OcrClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def InvoiceGeneralOCR(
-            self,
-            request: models.InvoiceGeneralOCRRequest,
-            opts: Dict = None,
-    ) -> models.InvoiceGeneralOCRResponse:
-        """
-        <b>此接口不再进行服务升级，建议您使用识别能力更强、服务性能更优的<a href="https://cloud.tencent.com/document/product/866/90802">通用票据识别（高级版）</a>。</b>
-        本接口支持对通用机打发票的发票代码、发票号码、日期、合计金额(小写)、合计金额(大写)、购买方识别号、销售方识别号、校验码、购买方名称、销售方名称、时间、种类、发票消费类型、省、市、是否有公司印章、发票名称、购买方地址、电话、销售方地址、电话、购买方开户行及账号、销售方开户行及账号、经办人取票用户、经办人支付信息、经办人商户号、经办人订单号、货物或应税劳务、服务名称、数量、单价、税率、税额、金额、单位、规格型号、合计税额、合计金额、备注、收款人、复核、开票人、密码区、行业分类等字段的识别。
-
-        默认接口请求频率限制：5次/秒。
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "InvoiceGeneralOCR"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.InvoiceGeneralOCRResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def LicensePlateOCR(
             self,
             request: models.LicensePlateOCRRequest,
@@ -1309,27 +1204,6 @@ class OcrClient(AbstractClient):
         kwargs["action"] = "QuestionSplitOCR"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.QuestionSplitOCRResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def QuotaInvoiceOCR(
-            self,
-            request: models.QuotaInvoiceOCRRequest,
-            opts: Dict = None,
-    ) -> models.QuotaInvoiceOCRResponse:
-        """
-        <b>此接口不再进行服务升级，建议您使用识别能力更强、服务性能更优的<a href="https://cloud.tencent.com/document/product/866/90802">通用票据识别（高级版）</a>。</b>
-        本接口支持定额发票的发票号码、发票代码、金额(大小写)、发票消费类型、地区及是否有公司印章等关键字段的识别。
-
-        默认接口请求频率限制：5次/秒。
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "QuotaInvoiceOCR"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.QuotaInvoiceOCRResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1976,27 +1850,6 @@ class OcrClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def ShipInvoiceOCR(
-            self,
-            request: models.ShipInvoiceOCRRequest,
-            opts: Dict = None,
-    ) -> models.ShipInvoiceOCRResponse:
-        """
-        <b>此接口不再进行服务升级，建议您使用识别能力更强、服务性能更优的<a href="https://cloud.tencent.com/document/product/866/90802">通用票据识别（高级版）</a>。</b>
-        本接口支持识别轮船票的发票代码、发票号码、日期、姓名、票价、始发地、目的地、姓名、时间、发票消费类型、省、市、币种字段。
-
-        默认接口请求频率限制：5次/秒。
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "ShipInvoiceOCR"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.ShipInvoiceOCRResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def SmartStructuralOCR(
             self,
             request: models.SmartStructuralOCRRequest,
@@ -2137,27 +1990,6 @@ class OcrClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def TollInvoiceOCR(
-            self,
-            request: models.TollInvoiceOCRRequest,
-            opts: Dict = None,
-    ) -> models.TollInvoiceOCRResponse:
-        """
-        <b>此接口不再进行服务升级，建议您使用识别能力更强、服务性能更优的<a href="https://cloud.tencent.com/document/product/866/90802">通用票据识别（高级版）</a>。</b>
-        本接口支持过路过桥费发票关键字段的识别，包括发票代码、发票号码、日期、金额、入口、出口、时间、发票消费类型、高速标志等。
-
-        默认接口请求频率限制：5次/秒。
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "TollInvoiceOCR"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.TollInvoiceOCRResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def TrainTicketOCR(
             self,
             request: models.TrainTicketOCRRequest,
@@ -2213,27 +2045,6 @@ class OcrClient(AbstractClient):
         kwargs["action"] = "VatInvoiceVerifyNew"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.VatInvoiceVerifyNewResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def VatRollInvoiceOCR(
-            self,
-            request: models.VatRollInvoiceOCRRequest,
-            opts: Dict = None,
-    ) -> models.VatRollInvoiceOCRResponse:
-        """
-        <b>此接口不再进行服务升级，建议您使用识别能力更强、服务性能更优的<a href="https://cloud.tencent.com/document/product/866/90802">通用票据识别（高级版）</a>。</b>
-        本接口支持对增值税发票（卷票）关键字段的识别，包括的发票代码、合计金额(小写)、合计金额(大写)、开票日期、发票号码、购买方识别号、销售方识别号、校验码、销售方名称、购买方名称、发票消费类型、省、市、是否有公司印章、单价、金额、数量、服务类型、品名、种类等。
-
-        默认接口请求频率限制：5次/秒。
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "VatRollInvoiceOCR"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.VatRollInvoiceOCRResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

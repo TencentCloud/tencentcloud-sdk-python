@@ -52866,17 +52866,20 @@ class PromptDetectResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 检测结果
+        :param _Result: <p>检测结果</p>
         :type Result: str
-        :param _Confidence: 置信度
+        :param _Confidence: <p>置信度</p>
         :type Confidence: int
+        :param _Category: <p>检出类别</p>
+        :type Category: list of str
         """
         self._Result = None
         self._Confidence = None
+        self._Category = None
 
     @property
     def Result(self):
-        r"""检测结果
+        r"""<p>检测结果</p>
         :rtype: str
         """
         return self._Result
@@ -52887,7 +52890,7 @@ class PromptDetectResult(AbstractModel):
 
     @property
     def Confidence(self):
-        r"""置信度
+        r"""<p>置信度</p>
         :rtype: int
         """
         return self._Confidence
@@ -52896,10 +52899,22 @@ class PromptDetectResult(AbstractModel):
     def Confidence(self, Confidence):
         self._Confidence = Confidence
 
+    @property
+    def Category(self):
+        r"""<p>检出类别</p>
+        :rtype: list of str
+        """
+        return self._Category
+
+    @Category.setter
+    def Category(self, Category):
+        self._Category = Category
+
 
     def _deserialize(self, params):
         self._Result = params.get("Result")
         self._Confidence = params.get("Confidence")
+        self._Category = params.get("Category")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

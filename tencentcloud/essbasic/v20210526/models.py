@@ -3973,61 +3973,19 @@ class ChannelCreateEmbedWebUrlRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Agent: 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
-
-此接口下面信息必填。
-<ul>
-<li>渠道应用标识:  Agent.AppId</li>
-<li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
-<li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
-</ul>
-第三方平台子客企业和员工必须已经经过实名认证
+        :param _Agent: <p>关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。</p><p>此接口下面信息必填。</p><ul><li>渠道应用标识:  Agent.AppId</li><li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li><li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li></ul>第三方平台子客企业和员工必须已经经过实名认证
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
-        :param _EmbedType: 要生成WEB嵌入界面的类型, 可以选择的值如下: 
-
-<ul>
-<li>CREATE_SEAL: 生成创建印章的嵌入页面</li>
-<li>CREATE_TEMPLATE：生成创建模板的嵌入页面</li>
-<li>MODIFY_TEMPLATE：生成修改模板的嵌入页面</li>
-<li>PREVIEW_TEMPLATE：生成预览模板的嵌入页面</li>
-<li>PREVIEW_FLOW：生成预览合同文档的嵌入页面（H5链接，支持移动端的浏览器中打开）</li>
-<li>PREVIEW_FLOW_DETAIL：生成预览合同详情的嵌入页面（仅支持PC的浏览器中打开）</li>
-<li>PREVIEW_SEAL_LIST：生成预览印章列表的嵌入页面</li>
-<li>PREVIEW_SEAL_DETAIL：生成预览印章详情的嵌入页面</li>
-<li>EXTEND_SERVICE：生成扩展服务的嵌入页面</li>
-</ul>
+        :param _EmbedType: <p>要生成WEB嵌入界面的类型, 可以选择的值如下: </p><ul><li>CREATE_SEAL: 生成创建印章的嵌入页面</li><li>CREATE_TEMPLATE：生成创建模板的嵌入页面</li><li>MODIFY_TEMPLATE：生成修改模板的嵌入页面</li><li>PREVIEW_TEMPLATE：生成预览模板的嵌入页面</li><li>PREVIEW_FLOW：生成预览合同文档的嵌入页面（H5链接，支持移动端的浏览器中打开）</li><li>PREVIEW_FLOW_DETAIL：生成预览合同详情的嵌入页面（仅支持PC的浏览器中打开）</li><li>PREVIEW_SEAL_LIST：生成预览印章列表的嵌入页面</li><li>PREVIEW_SEAL_DETAIL：生成预览印章详情的嵌入页面</li><li>EXTEND_SERVICE：生成扩展服务的嵌入页面</li></ul>
         :type EmbedType: str
-        :param _BusinessId: WEB嵌入的业务资源ID
-
-当EmbedType取值
-<ul>
-<li>为MODIFY_TEMPLATE，PREVIEW_TEMPLATE必填，取值为模板id</li>
-<li>为CREATE_TEMPLATE，非必填，取值为资源id。*资源Id获取可使用接口[上传文件](https://qian.tencent.com/developers/partnerApis/files/UploadFiles)*</li>
-<li>为PREVIEW_FLOW，PREVIEW_FLOW_DETAIL必填，取值为合同id</li>
-<li>为PREVIEW_SEAL_DETAIL必填，取值为印章id</li>
-</ul>
-
-
-注意：
- 1. CREATE_TEMPLATE中的BusinessId仅支持PDF文件类型， 如果您的文件不是PDF， 请使用接口[创建文件转换任务](https://qian.tencent.com/developers/partnerApis/files/ChannelCreateConvertTaskApi) 和[查询转换任务状态](https://qian.tencent.com/developers/partnerApis/files/ChannelGetTaskResultApi) 来进行转换成PDF资源。
+        :param _BusinessId: <p>WEB嵌入的业务资源ID</p><p>当EmbedType取值</p><ul><li>为MODIFY_TEMPLATE，PREVIEW_TEMPLATE必填，取值为模板id</li><li>为CREATE_TEMPLATE，非必填，取值为资源id。*资源Id获取可使用接口[上传文件](https://qian.tencent.com/developers/partnerApis/files/UploadFiles)*</li><li>为PREVIEW_FLOW，PREVIEW_FLOW_DETAIL必填，取值为合同id</li><li>为PREVIEW_SEAL_DETAIL必填，取值为印章id</li></ul><p>注意：</p><ol><li>CREATE_TEMPLATE中的BusinessId仅支持PDF文件类型， 如果您的文件不是PDF， 请使用接口<a href="https://qian.tencent.com/developers/partnerApis/files/ChannelCreateConvertTaskApi">创建文件转换任务</a> 和<a href="https://qian.tencent.com/developers/partnerApis/files/ChannelGetTaskResultApi">查询转换任务状态</a> 来进行转换成PDF资源。</li></ol>
         :type BusinessId: str
-        :param _HiddenComponents: 是否隐藏控件，只有预览模板时生效
+        :param _HiddenComponents: <p>是否隐藏控件，只有预览模板时生效，目前字段已废弃，请使用<a href="https://qian.tencent.com/developers/partnerApis/dataTypes#embedurloption">嵌入式页面url个性化参数Option</a> 的ShowTemplateComponent来指定是否展示or隐藏控件</p>
         :type HiddenComponents: bool
-        :param _Operator: 渠道操作者信息
+        :param _Operator: <p>渠道操作者信息</p>
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
-        :param _UserData: 用户自定义参数
-<ul>
-<li>目前仅支持EmbedType=CREATE_TEMPLATE时传入</li>
-<li>指定后，创建，编辑，删除模板时，回调都会携带该userData</li>
-<li>支持的格式：json字符串的BASE64编码字符串</li>
-<li>示例：<ul>
-                 <li>json字符串：{"ComeFrom":"xxx"}，BASE64编码：eyJDb21lRnJvbSI6Inh4eCJ9</li>
-                 <li>eyJDb21lRnJvbSI6Inh4eCJ9，为符合要求的userData数据格式</li>
-</ul>
-</li>
-</ul>
+        :param _UserData: <p>用户自定义参数</p><ul><li>目前仅支持EmbedType=CREATE_TEMPLATE时传入</li><li>指定后，创建，编辑，删除模板时，回调都会携带该userData</li><li>支持的格式：json字符串的BASE64编码字符串</li><li>示例：<ul>                 <li>json字符串：{"ComeFrom":"xxx"}，BASE64编码：eyJDb21lRnJvbSI6Inh4eCJ9</li>                 <li>eyJDb21lRnJvbSI6Inh4eCJ9，为符合要求的userData数据格式</li></ul></li></ul>
         :type UserData: str
-        :param _Option: 个性化参数，用于控制页面展示内容
+        :param _Option: <p>个性化参数，用于控制页面展示内容</p>
         :type Option: :class:`tencentcloud.essbasic.v20210526.models.EmbedUrlOption`
         """
         self._Agent = None
@@ -4040,15 +3998,7 @@ class ChannelCreateEmbedWebUrlRequest(AbstractModel):
 
     @property
     def Agent(self):
-        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
-
-此接口下面信息必填。
-<ul>
-<li>渠道应用标识:  Agent.AppId</li>
-<li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
-<li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
-</ul>
-第三方平台子客企业和员工必须已经经过实名认证
+        r"""<p>关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。</p><p>此接口下面信息必填。</p><ul><li>渠道应用标识:  Agent.AppId</li><li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li><li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li></ul>第三方平台子客企业和员工必须已经经过实名认证
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         """
         return self._Agent
@@ -4059,19 +4009,7 @@ class ChannelCreateEmbedWebUrlRequest(AbstractModel):
 
     @property
     def EmbedType(self):
-        r"""要生成WEB嵌入界面的类型, 可以选择的值如下: 
-
-<ul>
-<li>CREATE_SEAL: 生成创建印章的嵌入页面</li>
-<li>CREATE_TEMPLATE：生成创建模板的嵌入页面</li>
-<li>MODIFY_TEMPLATE：生成修改模板的嵌入页面</li>
-<li>PREVIEW_TEMPLATE：生成预览模板的嵌入页面</li>
-<li>PREVIEW_FLOW：生成预览合同文档的嵌入页面（H5链接，支持移动端的浏览器中打开）</li>
-<li>PREVIEW_FLOW_DETAIL：生成预览合同详情的嵌入页面（仅支持PC的浏览器中打开）</li>
-<li>PREVIEW_SEAL_LIST：生成预览印章列表的嵌入页面</li>
-<li>PREVIEW_SEAL_DETAIL：生成预览印章详情的嵌入页面</li>
-<li>EXTEND_SERVICE：生成扩展服务的嵌入页面</li>
-</ul>
+        r"""<p>要生成WEB嵌入界面的类型, 可以选择的值如下: </p><ul><li>CREATE_SEAL: 生成创建印章的嵌入页面</li><li>CREATE_TEMPLATE：生成创建模板的嵌入页面</li><li>MODIFY_TEMPLATE：生成修改模板的嵌入页面</li><li>PREVIEW_TEMPLATE：生成预览模板的嵌入页面</li><li>PREVIEW_FLOW：生成预览合同文档的嵌入页面（H5链接，支持移动端的浏览器中打开）</li><li>PREVIEW_FLOW_DETAIL：生成预览合同详情的嵌入页面（仅支持PC的浏览器中打开）</li><li>PREVIEW_SEAL_LIST：生成预览印章列表的嵌入页面</li><li>PREVIEW_SEAL_DETAIL：生成预览印章详情的嵌入页面</li><li>EXTEND_SERVICE：生成扩展服务的嵌入页面</li></ul>
         :rtype: str
         """
         return self._EmbedType
@@ -4082,19 +4020,7 @@ class ChannelCreateEmbedWebUrlRequest(AbstractModel):
 
     @property
     def BusinessId(self):
-        r"""WEB嵌入的业务资源ID
-
-当EmbedType取值
-<ul>
-<li>为MODIFY_TEMPLATE，PREVIEW_TEMPLATE必填，取值为模板id</li>
-<li>为CREATE_TEMPLATE，非必填，取值为资源id。*资源Id获取可使用接口[上传文件](https://qian.tencent.com/developers/partnerApis/files/UploadFiles)*</li>
-<li>为PREVIEW_FLOW，PREVIEW_FLOW_DETAIL必填，取值为合同id</li>
-<li>为PREVIEW_SEAL_DETAIL必填，取值为印章id</li>
-</ul>
-
-
-注意：
- 1. CREATE_TEMPLATE中的BusinessId仅支持PDF文件类型， 如果您的文件不是PDF， 请使用接口[创建文件转换任务](https://qian.tencent.com/developers/partnerApis/files/ChannelCreateConvertTaskApi) 和[查询转换任务状态](https://qian.tencent.com/developers/partnerApis/files/ChannelGetTaskResultApi) 来进行转换成PDF资源。
+        r"""<p>WEB嵌入的业务资源ID</p><p>当EmbedType取值</p><ul><li>为MODIFY_TEMPLATE，PREVIEW_TEMPLATE必填，取值为模板id</li><li>为CREATE_TEMPLATE，非必填，取值为资源id。*资源Id获取可使用接口[上传文件](https://qian.tencent.com/developers/partnerApis/files/UploadFiles)*</li><li>为PREVIEW_FLOW，PREVIEW_FLOW_DETAIL必填，取值为合同id</li><li>为PREVIEW_SEAL_DETAIL必填，取值为印章id</li></ul><p>注意：</p><ol><li>CREATE_TEMPLATE中的BusinessId仅支持PDF文件类型， 如果您的文件不是PDF， 请使用接口<a href="https://qian.tencent.com/developers/partnerApis/files/ChannelCreateConvertTaskApi">创建文件转换任务</a> 和<a href="https://qian.tencent.com/developers/partnerApis/files/ChannelGetTaskResultApi">查询转换任务状态</a> 来进行转换成PDF资源。</li></ol>
         :rtype: str
         """
         return self._BusinessId
@@ -4105,20 +4031,24 @@ class ChannelCreateEmbedWebUrlRequest(AbstractModel):
 
     @property
     def HiddenComponents(self):
-        r"""是否隐藏控件，只有预览模板时生效
+        warnings.warn("parameter `HiddenComponents` is deprecated", DeprecationWarning) 
+
+        r"""<p>是否隐藏控件，只有预览模板时生效，目前字段已废弃，请使用<a href="https://qian.tencent.com/developers/partnerApis/dataTypes#embedurloption">嵌入式页面url个性化参数Option</a> 的ShowTemplateComponent来指定是否展示or隐藏控件</p>
         :rtype: bool
         """
         return self._HiddenComponents
 
     @HiddenComponents.setter
     def HiddenComponents(self, HiddenComponents):
+        warnings.warn("parameter `HiddenComponents` is deprecated", DeprecationWarning) 
+
         self._HiddenComponents = HiddenComponents
 
     @property
     def Operator(self):
         warnings.warn("parameter `Operator` is deprecated", DeprecationWarning) 
 
-        r"""渠道操作者信息
+        r"""<p>渠道操作者信息</p>
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         """
         return self._Operator
@@ -4131,17 +4061,7 @@ class ChannelCreateEmbedWebUrlRequest(AbstractModel):
 
     @property
     def UserData(self):
-        r"""用户自定义参数
-<ul>
-<li>目前仅支持EmbedType=CREATE_TEMPLATE时传入</li>
-<li>指定后，创建，编辑，删除模板时，回调都会携带该userData</li>
-<li>支持的格式：json字符串的BASE64编码字符串</li>
-<li>示例：<ul>
-                 <li>json字符串：{"ComeFrom":"xxx"}，BASE64编码：eyJDb21lRnJvbSI6Inh4eCJ9</li>
-                 <li>eyJDb21lRnJvbSI6Inh4eCJ9，为符合要求的userData数据格式</li>
-</ul>
-</li>
-</ul>
+        r"""<p>用户自定义参数</p><ul><li>目前仅支持EmbedType=CREATE_TEMPLATE时传入</li><li>指定后，创建，编辑，删除模板时，回调都会携带该userData</li><li>支持的格式：json字符串的BASE64编码字符串</li><li>示例：<ul>                 <li>json字符串：{"ComeFrom":"xxx"}，BASE64编码：eyJDb21lRnJvbSI6Inh4eCJ9</li>                 <li>eyJDb21lRnJvbSI6Inh4eCJ9，为符合要求的userData数据格式</li></ul></li></ul>
         :rtype: str
         """
         return self._UserData
@@ -4152,7 +4072,7 @@ class ChannelCreateEmbedWebUrlRequest(AbstractModel):
 
     @property
     def Option(self):
-        r"""个性化参数，用于控制页面展示内容
+        r"""<p>个性化参数，用于控制页面展示内容</p>
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.EmbedUrlOption`
         """
         return self._Option
@@ -4193,7 +4113,7 @@ class ChannelCreateEmbedWebUrlResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _WebUrl: 嵌入的web链接，5分钟有效
+        :param _WebUrl: <p>嵌入的web链接，5分钟有效</p>
         :type WebUrl: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4203,7 +4123,7 @@ class ChannelCreateEmbedWebUrlResponse(AbstractModel):
 
     @property
     def WebUrl(self):
-        r"""嵌入的web链接，5分钟有效
+        r"""<p>嵌入的web链接，5分钟有效</p>
         :rtype: str
         """
         return self._WebUrl

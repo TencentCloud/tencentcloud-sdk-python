@@ -7090,6 +7090,135 @@ class DescribeProductSKUListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeSharedSubscriptionClientRequest(AbstractModel):
+    r"""DescribeSharedSubscriptionClient请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        :type InstanceId: str
+        :param _SharedName: 共享订阅组名
+        :type SharedName: str
+        :param _TopicFilter: 订阅表达式
+        :type TopicFilter: str
+        """
+        self._InstanceId = None
+        self._SharedName = None
+        self._TopicFilter = None
+
+    @property
+    def InstanceId(self):
+        r"""腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def SharedName(self):
+        r"""共享订阅组名
+        :rtype: str
+        """
+        return self._SharedName
+
+    @SharedName.setter
+    def SharedName(self, SharedName):
+        self._SharedName = SharedName
+
+    @property
+    def TopicFilter(self):
+        r"""订阅表达式
+        :rtype: str
+        """
+        return self._TopicFilter
+
+    @TopicFilter.setter
+    def TopicFilter(self, TopicFilter):
+        self._TopicFilter = TopicFilter
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._SharedName = params.get("SharedName")
+        self._TopicFilter = params.get("TopicFilter")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSharedSubscriptionClientResponse(AbstractModel):
+    r"""DescribeSharedSubscriptionClient返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 共享订阅组下Client信息
+        :type Data: list of SharedSubscriptionClient
+        :param _TotalCount: 查询总数
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""共享订阅组下Client信息
+        :rtype: list of SharedSubscriptionClient
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def TotalCount(self):
+        r"""查询总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = SharedSubscriptionClient()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeSharedSubscriptionGroupsRequest(AbstractModel):
     r"""DescribeSharedSubscriptionGroups请求参数结构体
 
@@ -7280,6 +7409,130 @@ class DescribeSharedSubscriptionLagResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._Lag = params.get("Lag")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeSharedSubscriptionsRequest(AbstractModel):
+    r"""DescribeSharedSubscriptions请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        :type InstanceId: str
+        :param _SharedName: 共享订阅组名
+        :type SharedName: str
+        """
+        self._InstanceId = None
+        self._SharedName = None
+
+    @property
+    def InstanceId(self):
+        r"""腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def SharedName(self):
+        r"""共享订阅组名
+        :rtype: str
+        """
+        return self._SharedName
+
+    @SharedName.setter
+    def SharedName(self, SharedName):
+        self._SharedName = SharedName
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._SharedName = params.get("SharedName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSharedSubscriptionsResponse(AbstractModel):
+    r"""DescribeSharedSubscriptions返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 集群id
+        :type InstanceId: str
+        :param _SharedName: 共享组名
+        :type SharedName: str
+        :param _TopicFilter: 共享组下的订阅表达式列表
+        :type TopicFilter: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._InstanceId = None
+        self._SharedName = None
+        self._TopicFilter = None
+        self._RequestId = None
+
+    @property
+    def InstanceId(self):
+        r"""集群id
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def SharedName(self):
+        r"""共享组名
+        :rtype: str
+        """
+        return self._SharedName
+
+    @SharedName.setter
+    def SharedName(self, SharedName):
+        self._SharedName = SharedName
+
+    @property
+    def TopicFilter(self):
+        r"""共享组下的订阅表达式列表
+        :rtype: list of str
+        """
+        return self._TopicFilter
+
+    @TopicFilter.setter
+    def TopicFilter(self, TopicFilter):
+        self._TopicFilter = TopicFilter
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._SharedName = params.get("SharedName")
+        self._TopicFilter = params.get("TopicFilter")
         self._RequestId = params.get("RequestId")
 
 
@@ -12888,6 +13141,87 @@ class SharedGroup(AbstractModel):
         self._Remark = params.get("Remark")
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SharedSubscriptionClient(AbstractModel):
+    r"""共享订阅组下客户端
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClientId: 客户端ID
+        :type ClientId: str
+        :param _SharedName: 共享订阅组名
+        :type SharedName: str
+        :param _TopicFilter: 共享组下的订阅表达式列表
+        :type TopicFilter: str
+        :param _Online: 在线状态
+        :type Online: bool
+        """
+        self._ClientId = None
+        self._SharedName = None
+        self._TopicFilter = None
+        self._Online = None
+
+    @property
+    def ClientId(self):
+        r"""客户端ID
+        :rtype: str
+        """
+        return self._ClientId
+
+    @ClientId.setter
+    def ClientId(self, ClientId):
+        self._ClientId = ClientId
+
+    @property
+    def SharedName(self):
+        r"""共享订阅组名
+        :rtype: str
+        """
+        return self._SharedName
+
+    @SharedName.setter
+    def SharedName(self, SharedName):
+        self._SharedName = SharedName
+
+    @property
+    def TopicFilter(self):
+        r"""共享组下的订阅表达式列表
+        :rtype: str
+        """
+        return self._TopicFilter
+
+    @TopicFilter.setter
+    def TopicFilter(self, TopicFilter):
+        self._TopicFilter = TopicFilter
+
+    @property
+    def Online(self):
+        r"""在线状态
+        :rtype: bool
+        """
+        return self._Online
+
+    @Online.setter
+    def Online(self, Online):
+        self._Online = Online
+
+
+    def _deserialize(self, params):
+        self._ClientId = params.get("ClientId")
+        self._SharedName = params.get("SharedName")
+        self._TopicFilter = params.get("TopicFilter")
+        self._Online = params.get("Online")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -1254,9 +1254,9 @@ class DeploymentConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Container: 容器配置
+        :param _Container: <p>容器配置</p>
         :type Container: :class:`tencentcloud.hai.v20230812.models.ContainerInfo`
-        :param _ContainerCount: 容器数量
+        :param _ContainerCount: <p>容器数量</p>
         :type ContainerCount: int
         """
         self._Container = None
@@ -1264,7 +1264,7 @@ class DeploymentConfig(AbstractModel):
 
     @property
     def Container(self):
-        r"""容器配置
+        r"""<p>容器配置</p>
         :rtype: :class:`tencentcloud.hai.v20230812.models.ContainerInfo`
         """
         return self._Container
@@ -1275,7 +1275,7 @@ class DeploymentConfig(AbstractModel):
 
     @property
     def ContainerCount(self):
-        r"""容器数量
+        r"""<p>容器数量</p>
         :rtype: int
         """
         return self._ContainerCount

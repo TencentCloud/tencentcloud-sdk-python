@@ -6544,6 +6544,102 @@ class CreateRocketMQRoleResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateRocketMQRouterRuleRequest(AbstractModel):
+    r"""CreateRocketMQRouterRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartNow: <p>true: 立即启动任务<br>false: 创建任务后不立即启动，可以在控制台操作启动</p>
+        :type StartNow: bool
+        :param _Rule: <p>规则数据结构</p>
+        :type Rule: :class:`tencentcloud.tdmq.v20200217.models.RocketMQRouterRuleInfo`
+        :param _SyncType: <p>数据同步类型。<br>Topic：按照topic维度同步</p>
+        :type SyncType: str
+        """
+        self._StartNow = None
+        self._Rule = None
+        self._SyncType = None
+
+    @property
+    def StartNow(self):
+        r"""<p>true: 立即启动任务<br>false: 创建任务后不立即启动，可以在控制台操作启动</p>
+        :rtype: bool
+        """
+        return self._StartNow
+
+    @StartNow.setter
+    def StartNow(self, StartNow):
+        self._StartNow = StartNow
+
+    @property
+    def Rule(self):
+        r"""<p>规则数据结构</p>
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.RocketMQRouterRuleInfo`
+        """
+        return self._Rule
+
+    @Rule.setter
+    def Rule(self, Rule):
+        self._Rule = Rule
+
+    @property
+    def SyncType(self):
+        r"""<p>数据同步类型。<br>Topic：按照topic维度同步</p>
+        :rtype: str
+        """
+        return self._SyncType
+
+    @SyncType.setter
+    def SyncType(self, SyncType):
+        self._SyncType = SyncType
+
+
+    def _deserialize(self, params):
+        self._StartNow = params.get("StartNow")
+        if params.get("Rule") is not None:
+            self._Rule = RocketMQRouterRuleInfo()
+            self._Rule._deserialize(params.get("Rule"))
+        self._SyncType = params.get("SyncType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateRocketMQRouterRuleResponse(AbstractModel):
+    r"""CreateRocketMQRouterRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CreateRocketMQTopicRequest(AbstractModel):
     r"""CreateRocketMQTopic请求参数结构体
 
@@ -35653,6 +35749,223 @@ class RocketMQRoleConfig(AbstractModel):
         
 
 
+class RocketMQRouterRuleInfo(AbstractModel):
+    r"""rocketmq router规则基本信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SourceType: <p>源类型。<br>OPEN_SOURCE_ROCKETMQ：开源rocketmq<br>ALI_ROCKETMQ：阿里云rocketmq<br>TENCENT_ROCKETMQ：腾讯云rocketmq<br>TENCENT_MQTT：腾讯云MQTT<br>ALI_MNS：阿里云mns</p>
+        :type SourceType: str
+        :param _TargetType: <p>目标类型。<br>枚举和SourceType字段一样</p>
+        :type TargetType: str
+        :param _RemarkName: <p>规则备注，创建后任务后可以修改</p>
+        :type RemarkName: str
+        :param _AliRocketMQSource: <p>阿里云rocketmq源信息</p>
+        :type AliRocketMQSource: :class:`tencentcloud.tdmq.v20200217.models.RouterRocketMQSource`
+        :param _AliRocketMQTarget: <p>阿里云rocketmq目标信息</p>
+        :type AliRocketMQTarget: :class:`tencentcloud.tdmq.v20200217.models.RouterRocketMQTarget`
+        :param _AliMessageServiceSource: <p>阿里云mns源信息</p>
+        :type AliMessageServiceSource: :class:`tencentcloud.tdmq.v20200217.models.RouterMessageServiceSource`
+        :param _AliMessageServiceTarget: <p>阿里云mns目标信息</p>
+        :type AliMessageServiceTarget: :class:`tencentcloud.tdmq.v20200217.models.RouterMessageServiceTarget`
+        :param _TenRocketMQSource: <p>腾讯云rocketmq源信息</p>
+        :type TenRocketMQSource: :class:`tencentcloud.tdmq.v20200217.models.RouterTencentRocketMQSource`
+        :param _TenRocketMQTarget: <p>腾讯云rocketmq目标信息</p>
+        :type TenRocketMQTarget: :class:`tencentcloud.tdmq.v20200217.models.RouterTencentRocketMQTarget`
+        :param _AliasName: <p>任务别名</p>
+        :type AliasName: str
+        :param _TenMQTTSource: <p>腾讯云 MQTT 源集群信息</p>
+        :type TenMQTTSource: :class:`tencentcloud.tdmq.v20200217.models.RouterTencentMQTTSource`
+        :param _TenMQTTTarget: <p>腾讯云 MQTT 目标集群信息</p>
+        :type TenMQTTTarget: :class:`tencentcloud.tdmq.v20200217.models.RouterTencentMQTTTarget`
+        """
+        self._SourceType = None
+        self._TargetType = None
+        self._RemarkName = None
+        self._AliRocketMQSource = None
+        self._AliRocketMQTarget = None
+        self._AliMessageServiceSource = None
+        self._AliMessageServiceTarget = None
+        self._TenRocketMQSource = None
+        self._TenRocketMQTarget = None
+        self._AliasName = None
+        self._TenMQTTSource = None
+        self._TenMQTTTarget = None
+
+    @property
+    def SourceType(self):
+        r"""<p>源类型。<br>OPEN_SOURCE_ROCKETMQ：开源rocketmq<br>ALI_ROCKETMQ：阿里云rocketmq<br>TENCENT_ROCKETMQ：腾讯云rocketmq<br>TENCENT_MQTT：腾讯云MQTT<br>ALI_MNS：阿里云mns</p>
+        :rtype: str
+        """
+        return self._SourceType
+
+    @SourceType.setter
+    def SourceType(self, SourceType):
+        self._SourceType = SourceType
+
+    @property
+    def TargetType(self):
+        r"""<p>目标类型。<br>枚举和SourceType字段一样</p>
+        :rtype: str
+        """
+        return self._TargetType
+
+    @TargetType.setter
+    def TargetType(self, TargetType):
+        self._TargetType = TargetType
+
+    @property
+    def RemarkName(self):
+        r"""<p>规则备注，创建后任务后可以修改</p>
+        :rtype: str
+        """
+        return self._RemarkName
+
+    @RemarkName.setter
+    def RemarkName(self, RemarkName):
+        self._RemarkName = RemarkName
+
+    @property
+    def AliRocketMQSource(self):
+        r"""<p>阿里云rocketmq源信息</p>
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.RouterRocketMQSource`
+        """
+        return self._AliRocketMQSource
+
+    @AliRocketMQSource.setter
+    def AliRocketMQSource(self, AliRocketMQSource):
+        self._AliRocketMQSource = AliRocketMQSource
+
+    @property
+    def AliRocketMQTarget(self):
+        r"""<p>阿里云rocketmq目标信息</p>
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.RouterRocketMQTarget`
+        """
+        return self._AliRocketMQTarget
+
+    @AliRocketMQTarget.setter
+    def AliRocketMQTarget(self, AliRocketMQTarget):
+        self._AliRocketMQTarget = AliRocketMQTarget
+
+    @property
+    def AliMessageServiceSource(self):
+        r"""<p>阿里云mns源信息</p>
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.RouterMessageServiceSource`
+        """
+        return self._AliMessageServiceSource
+
+    @AliMessageServiceSource.setter
+    def AliMessageServiceSource(self, AliMessageServiceSource):
+        self._AliMessageServiceSource = AliMessageServiceSource
+
+    @property
+    def AliMessageServiceTarget(self):
+        r"""<p>阿里云mns目标信息</p>
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.RouterMessageServiceTarget`
+        """
+        return self._AliMessageServiceTarget
+
+    @AliMessageServiceTarget.setter
+    def AliMessageServiceTarget(self, AliMessageServiceTarget):
+        self._AliMessageServiceTarget = AliMessageServiceTarget
+
+    @property
+    def TenRocketMQSource(self):
+        r"""<p>腾讯云rocketmq源信息</p>
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.RouterTencentRocketMQSource`
+        """
+        return self._TenRocketMQSource
+
+    @TenRocketMQSource.setter
+    def TenRocketMQSource(self, TenRocketMQSource):
+        self._TenRocketMQSource = TenRocketMQSource
+
+    @property
+    def TenRocketMQTarget(self):
+        r"""<p>腾讯云rocketmq目标信息</p>
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.RouterTencentRocketMQTarget`
+        """
+        return self._TenRocketMQTarget
+
+    @TenRocketMQTarget.setter
+    def TenRocketMQTarget(self, TenRocketMQTarget):
+        self._TenRocketMQTarget = TenRocketMQTarget
+
+    @property
+    def AliasName(self):
+        r"""<p>任务别名</p>
+        :rtype: str
+        """
+        return self._AliasName
+
+    @AliasName.setter
+    def AliasName(self, AliasName):
+        self._AliasName = AliasName
+
+    @property
+    def TenMQTTSource(self):
+        r"""<p>腾讯云 MQTT 源集群信息</p>
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.RouterTencentMQTTSource`
+        """
+        return self._TenMQTTSource
+
+    @TenMQTTSource.setter
+    def TenMQTTSource(self, TenMQTTSource):
+        self._TenMQTTSource = TenMQTTSource
+
+    @property
+    def TenMQTTTarget(self):
+        r"""<p>腾讯云 MQTT 目标集群信息</p>
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.RouterTencentMQTTTarget`
+        """
+        return self._TenMQTTTarget
+
+    @TenMQTTTarget.setter
+    def TenMQTTTarget(self, TenMQTTTarget):
+        self._TenMQTTTarget = TenMQTTTarget
+
+
+    def _deserialize(self, params):
+        self._SourceType = params.get("SourceType")
+        self._TargetType = params.get("TargetType")
+        self._RemarkName = params.get("RemarkName")
+        if params.get("AliRocketMQSource") is not None:
+            self._AliRocketMQSource = RouterRocketMQSource()
+            self._AliRocketMQSource._deserialize(params.get("AliRocketMQSource"))
+        if params.get("AliRocketMQTarget") is not None:
+            self._AliRocketMQTarget = RouterRocketMQTarget()
+            self._AliRocketMQTarget._deserialize(params.get("AliRocketMQTarget"))
+        if params.get("AliMessageServiceSource") is not None:
+            self._AliMessageServiceSource = RouterMessageServiceSource()
+            self._AliMessageServiceSource._deserialize(params.get("AliMessageServiceSource"))
+        if params.get("AliMessageServiceTarget") is not None:
+            self._AliMessageServiceTarget = RouterMessageServiceTarget()
+            self._AliMessageServiceTarget._deserialize(params.get("AliMessageServiceTarget"))
+        if params.get("TenRocketMQSource") is not None:
+            self._TenRocketMQSource = RouterTencentRocketMQSource()
+            self._TenRocketMQSource._deserialize(params.get("TenRocketMQSource"))
+        if params.get("TenRocketMQTarget") is not None:
+            self._TenRocketMQTarget = RouterTencentRocketMQTarget()
+            self._TenRocketMQTarget._deserialize(params.get("TenRocketMQTarget"))
+        self._AliasName = params.get("AliasName")
+        if params.get("TenMQTTSource") is not None:
+            self._TenMQTTSource = RouterTencentMQTTSource()
+            self._TenMQTTSource._deserialize(params.get("TenMQTTSource"))
+        if params.get("TenMQTTTarget") is not None:
+            self._TenMQTTTarget = RouterTencentMQTTTarget()
+            self._TenMQTTTarget._deserialize(params.get("TenMQTTTarget"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RocketMQSubscription(AbstractModel):
     r"""RocketMQ消费组订阅信息
 
@@ -36818,6 +37131,1277 @@ class Role(AbstractModel):
         self._TokenType = params.get("TokenType")
         self._SecretName = params.get("SecretName")
         self._RotateFreq = params.get("RotateFreq")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RouterMessageServiceSource(AbstractModel):
+    r"""rocketmq router mns 源信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AccessKey: <p>access key</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccessKey: str
+        :param _Endpoint: <p>mns接入点。<br>需要和router内网联通，一般是公网接入点</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Endpoint: str
+        :param _Queue: <p>mns queue名字。<br>可以在https://mns.console.aliyun.com/region/cn-shenzhen/queues 看到</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Queue: str
+        :param _SecretKey: <p>secret key</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecretKey: str
+        :param _EnableDecodeBody: <p>是否自动解码mns body。<br>ON：自动解码，复制后的消息内容为解码后的明文。<br>OFF：不用解码，保持Mns消息体原始状态</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnableDecodeBody: str
+        :param _SourceConsumeConcurrentThreadCount: <p>mns消费并发数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceConsumeConcurrentThreadCount: int
+        :param _FilterFromTimestampMs: <p>过滤时间戳，毫秒级时间戳</p>
+        :type FilterFromTimestampMs: int
+        """
+        self._AccessKey = None
+        self._Endpoint = None
+        self._Queue = None
+        self._SecretKey = None
+        self._EnableDecodeBody = None
+        self._SourceConsumeConcurrentThreadCount = None
+        self._FilterFromTimestampMs = None
+
+    @property
+    def AccessKey(self):
+        r"""<p>access key</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AccessKey
+
+    @AccessKey.setter
+    def AccessKey(self, AccessKey):
+        self._AccessKey = AccessKey
+
+    @property
+    def Endpoint(self):
+        r"""<p>mns接入点。<br>需要和router内网联通，一般是公网接入点</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Endpoint
+
+    @Endpoint.setter
+    def Endpoint(self, Endpoint):
+        self._Endpoint = Endpoint
+
+    @property
+    def Queue(self):
+        r"""<p>mns queue名字。<br>可以在https://mns.console.aliyun.com/region/cn-shenzhen/queues 看到</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Queue
+
+    @Queue.setter
+    def Queue(self, Queue):
+        self._Queue = Queue
+
+    @property
+    def SecretKey(self):
+        r"""<p>secret key</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SecretKey
+
+    @SecretKey.setter
+    def SecretKey(self, SecretKey):
+        self._SecretKey = SecretKey
+
+    @property
+    def EnableDecodeBody(self):
+        r"""<p>是否自动解码mns body。<br>ON：自动解码，复制后的消息内容为解码后的明文。<br>OFF：不用解码，保持Mns消息体原始状态</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._EnableDecodeBody
+
+    @EnableDecodeBody.setter
+    def EnableDecodeBody(self, EnableDecodeBody):
+        self._EnableDecodeBody = EnableDecodeBody
+
+    @property
+    def SourceConsumeConcurrentThreadCount(self):
+        r"""<p>mns消费并发数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._SourceConsumeConcurrentThreadCount
+
+    @SourceConsumeConcurrentThreadCount.setter
+    def SourceConsumeConcurrentThreadCount(self, SourceConsumeConcurrentThreadCount):
+        self._SourceConsumeConcurrentThreadCount = SourceConsumeConcurrentThreadCount
+
+    @property
+    def FilterFromTimestampMs(self):
+        r"""<p>过滤时间戳，毫秒级时间戳</p>
+        :rtype: int
+        """
+        return self._FilterFromTimestampMs
+
+    @FilterFromTimestampMs.setter
+    def FilterFromTimestampMs(self, FilterFromTimestampMs):
+        self._FilterFromTimestampMs = FilterFromTimestampMs
+
+
+    def _deserialize(self, params):
+        self._AccessKey = params.get("AccessKey")
+        self._Endpoint = params.get("Endpoint")
+        self._Queue = params.get("Queue")
+        self._SecretKey = params.get("SecretKey")
+        self._EnableDecodeBody = params.get("EnableDecodeBody")
+        self._SourceConsumeConcurrentThreadCount = params.get("SourceConsumeConcurrentThreadCount")
+        self._FilterFromTimestampMs = params.get("FilterFromTimestampMs")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RouterMessageServiceTarget(AbstractModel):
+    r"""rocketmq router mns 目标信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AccessKey: <p>access key</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccessKey: str
+        :param _Endpoint: <p>mns接入点，需要和router内网联通，一般是公网接入点</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Endpoint: str
+        :param _SecretKey: <p>secret key</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecretKey: str
+        :param _Queue: <p>mns queue名字。可以在https://mns.console.aliyun.com/region/cn-shenzhen/queues 看到</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Queue: str
+        :param _SendWithBase64: <p>是否用base64编码发送mns消息。<br> ON：发送base64编码的消息体到mns</p><p>OFF：将原始消息体发送到mns</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SendWithBase64: str
+        :param _TargetProduceConcurrentThreadCount: <p>发送mns的并发数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetProduceConcurrentThreadCount: int
+        :param _Topic: <p>topic名字。可以在https://mns.console.aliyun.com/region/cn-shenzhen/topics 看到</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Topic: str
+        """
+        self._AccessKey = None
+        self._Endpoint = None
+        self._SecretKey = None
+        self._Queue = None
+        self._SendWithBase64 = None
+        self._TargetProduceConcurrentThreadCount = None
+        self._Topic = None
+
+    @property
+    def AccessKey(self):
+        r"""<p>access key</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AccessKey
+
+    @AccessKey.setter
+    def AccessKey(self, AccessKey):
+        self._AccessKey = AccessKey
+
+    @property
+    def Endpoint(self):
+        r"""<p>mns接入点，需要和router内网联通，一般是公网接入点</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Endpoint
+
+    @Endpoint.setter
+    def Endpoint(self, Endpoint):
+        self._Endpoint = Endpoint
+
+    @property
+    def SecretKey(self):
+        r"""<p>secret key</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SecretKey
+
+    @SecretKey.setter
+    def SecretKey(self, SecretKey):
+        self._SecretKey = SecretKey
+
+    @property
+    def Queue(self):
+        r"""<p>mns queue名字。可以在https://mns.console.aliyun.com/region/cn-shenzhen/queues 看到</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Queue
+
+    @Queue.setter
+    def Queue(self, Queue):
+        self._Queue = Queue
+
+    @property
+    def SendWithBase64(self):
+        r"""<p>是否用base64编码发送mns消息。<br> ON：发送base64编码的消息体到mns</p><p>OFF：将原始消息体发送到mns</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SendWithBase64
+
+    @SendWithBase64.setter
+    def SendWithBase64(self, SendWithBase64):
+        self._SendWithBase64 = SendWithBase64
+
+    @property
+    def TargetProduceConcurrentThreadCount(self):
+        r"""<p>发送mns的并发数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TargetProduceConcurrentThreadCount
+
+    @TargetProduceConcurrentThreadCount.setter
+    def TargetProduceConcurrentThreadCount(self, TargetProduceConcurrentThreadCount):
+        self._TargetProduceConcurrentThreadCount = TargetProduceConcurrentThreadCount
+
+    @property
+    def Topic(self):
+        r"""<p>topic名字。可以在https://mns.console.aliyun.com/region/cn-shenzhen/topics 看到</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Topic
+
+    @Topic.setter
+    def Topic(self, Topic):
+        self._Topic = Topic
+
+
+    def _deserialize(self, params):
+        self._AccessKey = params.get("AccessKey")
+        self._Endpoint = params.get("Endpoint")
+        self._SecretKey = params.get("SecretKey")
+        self._Queue = params.get("Queue")
+        self._SendWithBase64 = params.get("SendWithBase64")
+        self._TargetProduceConcurrentThreadCount = params.get("TargetProduceConcurrentThreadCount")
+        self._Topic = params.get("Topic")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RouterRocketMQSource(AbstractModel):
+    r"""rocketmq router的rocketmq源信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AccessKey: <p>access key</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccessKey: str
+        :param _FilterExpression: <p>过滤表达式, 参考：https://github.com/apache/rocketmq/blob/develop/common/src/main/java/org/apache/rocketmq/common/filter/ExpressionType.java</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FilterExpression: str
+        :param _FilterFromTimestampMs: <p>过滤时间，毫秒时间戳</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FilterFromTimestampMs: int
+        :param _FilterType: <p>过滤类型，参考：https://github.com/apache/rocketmq/blob/develop/common/src/main/java/org/apache/rocketmq/common/filter/ExpressionType.java</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FilterType: str
+        :param _Group: <p>消费者组名。会使用该消费者来消费消息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Group: str
+        :param _NameServerAddressList: <p>namesrv地址列表，也可以是云厂商提供的接入点信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NameServerAddressList: str
+        :param _SecretKey: <p>secret key</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecretKey: str
+        :param _Topic: <p>topic名字</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Topic: str
+        :param _Namespace: <p>4.X的命名空间，没有使用则留空，5.X也留空。<br> naemspace 需要包含MQ_INST那部分. 比如：MQ_INST_rocketmxxx57d53rnn5_tiger_namespace</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Namespace: str
+        :param _SourceConsumeConcurrentThreadCount: <p>消费者并发数，0 ～ 100</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceConsumeConcurrentThreadCount: int
+        """
+        self._AccessKey = None
+        self._FilterExpression = None
+        self._FilterFromTimestampMs = None
+        self._FilterType = None
+        self._Group = None
+        self._NameServerAddressList = None
+        self._SecretKey = None
+        self._Topic = None
+        self._Namespace = None
+        self._SourceConsumeConcurrentThreadCount = None
+
+    @property
+    def AccessKey(self):
+        r"""<p>access key</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AccessKey
+
+    @AccessKey.setter
+    def AccessKey(self, AccessKey):
+        self._AccessKey = AccessKey
+
+    @property
+    def FilterExpression(self):
+        r"""<p>过滤表达式, 参考：https://github.com/apache/rocketmq/blob/develop/common/src/main/java/org/apache/rocketmq/common/filter/ExpressionType.java</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FilterExpression
+
+    @FilterExpression.setter
+    def FilterExpression(self, FilterExpression):
+        self._FilterExpression = FilterExpression
+
+    @property
+    def FilterFromTimestampMs(self):
+        r"""<p>过滤时间，毫秒时间戳</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._FilterFromTimestampMs
+
+    @FilterFromTimestampMs.setter
+    def FilterFromTimestampMs(self, FilterFromTimestampMs):
+        self._FilterFromTimestampMs = FilterFromTimestampMs
+
+    @property
+    def FilterType(self):
+        r"""<p>过滤类型，参考：https://github.com/apache/rocketmq/blob/develop/common/src/main/java/org/apache/rocketmq/common/filter/ExpressionType.java</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FilterType
+
+    @FilterType.setter
+    def FilterType(self, FilterType):
+        self._FilterType = FilterType
+
+    @property
+    def Group(self):
+        r"""<p>消费者组名。会使用该消费者来消费消息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Group
+
+    @Group.setter
+    def Group(self, Group):
+        self._Group = Group
+
+    @property
+    def NameServerAddressList(self):
+        r"""<p>namesrv地址列表，也可以是云厂商提供的接入点信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._NameServerAddressList
+
+    @NameServerAddressList.setter
+    def NameServerAddressList(self, NameServerAddressList):
+        self._NameServerAddressList = NameServerAddressList
+
+    @property
+    def SecretKey(self):
+        r"""<p>secret key</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SecretKey
+
+    @SecretKey.setter
+    def SecretKey(self, SecretKey):
+        self._SecretKey = SecretKey
+
+    @property
+    def Topic(self):
+        r"""<p>topic名字</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Topic
+
+    @Topic.setter
+    def Topic(self, Topic):
+        self._Topic = Topic
+
+    @property
+    def Namespace(self):
+        r"""<p>4.X的命名空间，没有使用则留空，5.X也留空。<br> naemspace 需要包含MQ_INST那部分. 比如：MQ_INST_rocketmxxx57d53rnn5_tiger_namespace</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def SourceConsumeConcurrentThreadCount(self):
+        r"""<p>消费者并发数，0 ～ 100</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._SourceConsumeConcurrentThreadCount
+
+    @SourceConsumeConcurrentThreadCount.setter
+    def SourceConsumeConcurrentThreadCount(self, SourceConsumeConcurrentThreadCount):
+        self._SourceConsumeConcurrentThreadCount = SourceConsumeConcurrentThreadCount
+
+
+    def _deserialize(self, params):
+        self._AccessKey = params.get("AccessKey")
+        self._FilterExpression = params.get("FilterExpression")
+        self._FilterFromTimestampMs = params.get("FilterFromTimestampMs")
+        self._FilterType = params.get("FilterType")
+        self._Group = params.get("Group")
+        self._NameServerAddressList = params.get("NameServerAddressList")
+        self._SecretKey = params.get("SecretKey")
+        self._Topic = params.get("Topic")
+        self._Namespace = params.get("Namespace")
+        self._SourceConsumeConcurrentThreadCount = params.get("SourceConsumeConcurrentThreadCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RouterRocketMQTarget(AbstractModel):
+    r"""rocketmq router任务的目标信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AccessKey: <p>access key</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccessKey: str
+        :param _NameServerAddressList: <p>namesrv地址列表，也可以是云厂商提供的接入点信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NameServerAddressList: str
+        :param _SecretKey: <p>secret key</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecretKey: str
+        :param _Topic: <p>topic名字</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Topic: str
+        :param _Namespace: <p>4.X的命名空间，没有使用则留空，5.X也留空。 naemspace 需要包含MQ_INST那部分. 比如：MQ_INST_rocketmqka57d53rnn5_tiger_namespace</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Namespace: str
+        :param _TargetProduceConcurrentThreadCount: <p>生产者并发数，可以不用填，可以在规则创建后修改</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetProduceConcurrentThreadCount: int
+        """
+        self._AccessKey = None
+        self._NameServerAddressList = None
+        self._SecretKey = None
+        self._Topic = None
+        self._Namespace = None
+        self._TargetProduceConcurrentThreadCount = None
+
+    @property
+    def AccessKey(self):
+        r"""<p>access key</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AccessKey
+
+    @AccessKey.setter
+    def AccessKey(self, AccessKey):
+        self._AccessKey = AccessKey
+
+    @property
+    def NameServerAddressList(self):
+        r"""<p>namesrv地址列表，也可以是云厂商提供的接入点信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._NameServerAddressList
+
+    @NameServerAddressList.setter
+    def NameServerAddressList(self, NameServerAddressList):
+        self._NameServerAddressList = NameServerAddressList
+
+    @property
+    def SecretKey(self):
+        r"""<p>secret key</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SecretKey
+
+    @SecretKey.setter
+    def SecretKey(self, SecretKey):
+        self._SecretKey = SecretKey
+
+    @property
+    def Topic(self):
+        r"""<p>topic名字</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Topic
+
+    @Topic.setter
+    def Topic(self, Topic):
+        self._Topic = Topic
+
+    @property
+    def Namespace(self):
+        r"""<p>4.X的命名空间，没有使用则留空，5.X也留空。 naemspace 需要包含MQ_INST那部分. 比如：MQ_INST_rocketmqka57d53rnn5_tiger_namespace</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def TargetProduceConcurrentThreadCount(self):
+        r"""<p>生产者并发数，可以不用填，可以在规则创建后修改</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TargetProduceConcurrentThreadCount
+
+    @TargetProduceConcurrentThreadCount.setter
+    def TargetProduceConcurrentThreadCount(self, TargetProduceConcurrentThreadCount):
+        self._TargetProduceConcurrentThreadCount = TargetProduceConcurrentThreadCount
+
+
+    def _deserialize(self, params):
+        self._AccessKey = params.get("AccessKey")
+        self._NameServerAddressList = params.get("NameServerAddressList")
+        self._SecretKey = params.get("SecretKey")
+        self._Topic = params.get("Topic")
+        self._Namespace = params.get("Namespace")
+        self._TargetProduceConcurrentThreadCount = params.get("TargetProduceConcurrentThreadCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RouterTencentMQTTSource(AbstractModel):
+    r"""待复制的 MQTT 源集群信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: <p>MQTT 集群ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterId: str
+        :param _Topic: <p>主题名</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Topic: str
+        :param _SourceRegion: <p>地域</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceRegion: str
+        :param _UserName: <p>用户名</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserName: str
+        :param _Password: <p>用户密码</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Password: str
+        :param _SourceConsumeConcurrentThreadCount: <p>消费者并发数，0 ～ 100</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceConsumeConcurrentThreadCount: int
+        :param _FilterFromTimestampMs: <p>过滤时间，毫秒时间戳</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FilterFromTimestampMs: int
+        :param _Endpoint: <p>MQTT集群接入点信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Endpoint: str
+        """
+        self._ClusterId = None
+        self._Topic = None
+        self._SourceRegion = None
+        self._UserName = None
+        self._Password = None
+        self._SourceConsumeConcurrentThreadCount = None
+        self._FilterFromTimestampMs = None
+        self._Endpoint = None
+
+    @property
+    def ClusterId(self):
+        r"""<p>MQTT 集群ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def Topic(self):
+        r"""<p>主题名</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Topic
+
+    @Topic.setter
+    def Topic(self, Topic):
+        self._Topic = Topic
+
+    @property
+    def SourceRegion(self):
+        r"""<p>地域</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SourceRegion
+
+    @SourceRegion.setter
+    def SourceRegion(self, SourceRegion):
+        self._SourceRegion = SourceRegion
+
+    @property
+    def UserName(self):
+        r"""<p>用户名</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def Password(self):
+        r"""<p>用户密码</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def SourceConsumeConcurrentThreadCount(self):
+        r"""<p>消费者并发数，0 ～ 100</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._SourceConsumeConcurrentThreadCount
+
+    @SourceConsumeConcurrentThreadCount.setter
+    def SourceConsumeConcurrentThreadCount(self, SourceConsumeConcurrentThreadCount):
+        self._SourceConsumeConcurrentThreadCount = SourceConsumeConcurrentThreadCount
+
+    @property
+    def FilterFromTimestampMs(self):
+        r"""<p>过滤时间，毫秒时间戳</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._FilterFromTimestampMs
+
+    @FilterFromTimestampMs.setter
+    def FilterFromTimestampMs(self, FilterFromTimestampMs):
+        self._FilterFromTimestampMs = FilterFromTimestampMs
+
+    @property
+    def Endpoint(self):
+        r"""<p>MQTT集群接入点信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Endpoint
+
+    @Endpoint.setter
+    def Endpoint(self, Endpoint):
+        self._Endpoint = Endpoint
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._Topic = params.get("Topic")
+        self._SourceRegion = params.get("SourceRegion")
+        self._UserName = params.get("UserName")
+        self._Password = params.get("Password")
+        self._SourceConsumeConcurrentThreadCount = params.get("SourceConsumeConcurrentThreadCount")
+        self._FilterFromTimestampMs = params.get("FilterFromTimestampMs")
+        self._Endpoint = params.get("Endpoint")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RouterTencentMQTTTarget(AbstractModel):
+    r"""MQTT 目标集群信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: <p>MQTT 集群ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterId: str
+        :param _Topic: <p>主题名</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Topic: str
+        :param _SourceRegion: <p>地域</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceRegion: str
+        :param _UserName: <p>用户名</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserName: str
+        :param _Password: <p>用户密码</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Password: str
+        :param _TargetProduceConcurrentThreadCount: <p>消费者并发数，0 ～ 100</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetProduceConcurrentThreadCount: int
+        :param _FilterFromTimestampMs: <p>过滤时间，毫秒时间戳</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FilterFromTimestampMs: int
+        :param _Endpoint: <p>MQTT集群接入点信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Endpoint: str
+        """
+        self._ClusterId = None
+        self._Topic = None
+        self._SourceRegion = None
+        self._UserName = None
+        self._Password = None
+        self._TargetProduceConcurrentThreadCount = None
+        self._FilterFromTimestampMs = None
+        self._Endpoint = None
+
+    @property
+    def ClusterId(self):
+        r"""<p>MQTT 集群ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def Topic(self):
+        r"""<p>主题名</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Topic
+
+    @Topic.setter
+    def Topic(self, Topic):
+        self._Topic = Topic
+
+    @property
+    def SourceRegion(self):
+        r"""<p>地域</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SourceRegion
+
+    @SourceRegion.setter
+    def SourceRegion(self, SourceRegion):
+        self._SourceRegion = SourceRegion
+
+    @property
+    def UserName(self):
+        r"""<p>用户名</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def Password(self):
+        r"""<p>用户密码</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def TargetProduceConcurrentThreadCount(self):
+        r"""<p>消费者并发数，0 ～ 100</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TargetProduceConcurrentThreadCount
+
+    @TargetProduceConcurrentThreadCount.setter
+    def TargetProduceConcurrentThreadCount(self, TargetProduceConcurrentThreadCount):
+        self._TargetProduceConcurrentThreadCount = TargetProduceConcurrentThreadCount
+
+    @property
+    def FilterFromTimestampMs(self):
+        r"""<p>过滤时间，毫秒时间戳</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._FilterFromTimestampMs
+
+    @FilterFromTimestampMs.setter
+    def FilterFromTimestampMs(self, FilterFromTimestampMs):
+        self._FilterFromTimestampMs = FilterFromTimestampMs
+
+    @property
+    def Endpoint(self):
+        r"""<p>MQTT集群接入点信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Endpoint
+
+    @Endpoint.setter
+    def Endpoint(self, Endpoint):
+        self._Endpoint = Endpoint
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._Topic = params.get("Topic")
+        self._SourceRegion = params.get("SourceRegion")
+        self._UserName = params.get("UserName")
+        self._Password = params.get("Password")
+        self._TargetProduceConcurrentThreadCount = params.get("TargetProduceConcurrentThreadCount")
+        self._FilterFromTimestampMs = params.get("FilterFromTimestampMs")
+        self._Endpoint = params.get("Endpoint")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RouterTencentRocketMQSource(AbstractModel):
+    r"""rocketmq router腾讯云源
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FilterExpression: <p>过滤表达式, 参考：https://github.com/apache/rocketmq/blob/develop/common/src/main/java/org/apache/rocketmq/common/filter/ExpressionType.java</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FilterExpression: str
+        :param _FilterFromTimestampMs: <p>过滤时间，毫秒时间戳</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FilterFromTimestampMs: int
+        :param _FilterType: <p>过滤类型</p><p>枚举值：</p><ul><li>SQL92： 按SQL92表达式过滤</li><li>TAG： 按TAG表达式过滤</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FilterType: str
+        :param _Topic: <p>topic名字</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Topic: str
+        :param _ClusterId: <p>rocketmq实例id</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterId: str
+        :param _Namespace: <p>4.X的命名空间，没有使用则留空，5.X也留空。 naemspace 需要包含MQ_INST那部分. 比如：MQ_INST_rocketmqka57d53rnn5_tiger_namespace</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Namespace: str
+        :param _SourceConsumeConcurrentThreadCount: <p>消费者并发数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceConsumeConcurrentThreadCount: int
+        :param _SourceRegion: <p>源地域</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SourceRegion: str
+        :param _RoleName: <p>选择TDMQ RocketMQ时，选择一个角色来完成数据同步</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RoleName: str
+        :param _AccessKey: <p>选择腾讯云版RockeMQ类型后，RoleName对应的AssessKey值</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccessKey: str
+        :param _SecretKey: <p>选择腾讯云版RockeMQ类型后，RoleName对应的SecretKey值</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecretKey: str
+        """
+        self._FilterExpression = None
+        self._FilterFromTimestampMs = None
+        self._FilterType = None
+        self._Topic = None
+        self._ClusterId = None
+        self._Namespace = None
+        self._SourceConsumeConcurrentThreadCount = None
+        self._SourceRegion = None
+        self._RoleName = None
+        self._AccessKey = None
+        self._SecretKey = None
+
+    @property
+    def FilterExpression(self):
+        r"""<p>过滤表达式, 参考：https://github.com/apache/rocketmq/blob/develop/common/src/main/java/org/apache/rocketmq/common/filter/ExpressionType.java</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FilterExpression
+
+    @FilterExpression.setter
+    def FilterExpression(self, FilterExpression):
+        self._FilterExpression = FilterExpression
+
+    @property
+    def FilterFromTimestampMs(self):
+        r"""<p>过滤时间，毫秒时间戳</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._FilterFromTimestampMs
+
+    @FilterFromTimestampMs.setter
+    def FilterFromTimestampMs(self, FilterFromTimestampMs):
+        self._FilterFromTimestampMs = FilterFromTimestampMs
+
+    @property
+    def FilterType(self):
+        r"""<p>过滤类型</p><p>枚举值：</p><ul><li>SQL92： 按SQL92表达式过滤</li><li>TAG： 按TAG表达式过滤</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FilterType
+
+    @FilterType.setter
+    def FilterType(self, FilterType):
+        self._FilterType = FilterType
+
+    @property
+    def Topic(self):
+        r"""<p>topic名字</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Topic
+
+    @Topic.setter
+    def Topic(self, Topic):
+        self._Topic = Topic
+
+    @property
+    def ClusterId(self):
+        r"""<p>rocketmq实例id</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def Namespace(self):
+        r"""<p>4.X的命名空间，没有使用则留空，5.X也留空。 naemspace 需要包含MQ_INST那部分. 比如：MQ_INST_rocketmqka57d53rnn5_tiger_namespace</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def SourceConsumeConcurrentThreadCount(self):
+        r"""<p>消费者并发数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._SourceConsumeConcurrentThreadCount
+
+    @SourceConsumeConcurrentThreadCount.setter
+    def SourceConsumeConcurrentThreadCount(self, SourceConsumeConcurrentThreadCount):
+        self._SourceConsumeConcurrentThreadCount = SourceConsumeConcurrentThreadCount
+
+    @property
+    def SourceRegion(self):
+        r"""<p>源地域</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SourceRegion
+
+    @SourceRegion.setter
+    def SourceRegion(self, SourceRegion):
+        self._SourceRegion = SourceRegion
+
+    @property
+    def RoleName(self):
+        r"""<p>选择TDMQ RocketMQ时，选择一个角色来完成数据同步</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RoleName
+
+    @RoleName.setter
+    def RoleName(self, RoleName):
+        self._RoleName = RoleName
+
+    @property
+    def AccessKey(self):
+        r"""<p>选择腾讯云版RockeMQ类型后，RoleName对应的AssessKey值</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AccessKey
+
+    @AccessKey.setter
+    def AccessKey(self, AccessKey):
+        self._AccessKey = AccessKey
+
+    @property
+    def SecretKey(self):
+        r"""<p>选择腾讯云版RockeMQ类型后，RoleName对应的SecretKey值</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SecretKey
+
+    @SecretKey.setter
+    def SecretKey(self, SecretKey):
+        self._SecretKey = SecretKey
+
+
+    def _deserialize(self, params):
+        self._FilterExpression = params.get("FilterExpression")
+        self._FilterFromTimestampMs = params.get("FilterFromTimestampMs")
+        self._FilterType = params.get("FilterType")
+        self._Topic = params.get("Topic")
+        self._ClusterId = params.get("ClusterId")
+        self._Namespace = params.get("Namespace")
+        self._SourceConsumeConcurrentThreadCount = params.get("SourceConsumeConcurrentThreadCount")
+        self._SourceRegion = params.get("SourceRegion")
+        self._RoleName = params.get("RoleName")
+        self._AccessKey = params.get("AccessKey")
+        self._SecretKey = params.get("SecretKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RouterTencentRocketMQTarget(AbstractModel):
+    r"""rocketmq router腾讯云目标
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Topic: <p>topic名字</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Topic: str
+        :param _ClusterId: <p>rocketmq实例id</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterId: str
+        :param _Namespace: <p>4.X的命名空间，没有使用则留空，5.X也留空。 naemspace 需要包含MQ_INST那部分. 比如：MQ_INST_rocket2mq3ka57d53rnn5_tiger_namespace</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Namespace: str
+        :param _TargetProduceConcurrentThreadCount: <p>消费者并发数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetProduceConcurrentThreadCount: int
+        :param _TargetRegion: <p>目标region</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetRegion: str
+        :param _RoleName: <p>选择TDMQ RocketMQ时，选择一个角色来完成数据同步</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RoleName: str
+        :param _AccessKey: <p>选择腾讯云版RockeMQ类型后，RoleName对应的AssessKey值</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccessKey: str
+        :param _SecretKey: <p>选择腾讯云版RockeMQ类型后，RoleName对应的SecretKey值</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecretKey: str
+        """
+        self._Topic = None
+        self._ClusterId = None
+        self._Namespace = None
+        self._TargetProduceConcurrentThreadCount = None
+        self._TargetRegion = None
+        self._RoleName = None
+        self._AccessKey = None
+        self._SecretKey = None
+
+    @property
+    def Topic(self):
+        r"""<p>topic名字</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Topic
+
+    @Topic.setter
+    def Topic(self, Topic):
+        self._Topic = Topic
+
+    @property
+    def ClusterId(self):
+        r"""<p>rocketmq实例id</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def Namespace(self):
+        r"""<p>4.X的命名空间，没有使用则留空，5.X也留空。 naemspace 需要包含MQ_INST那部分. 比如：MQ_INST_rocket2mq3ka57d53rnn5_tiger_namespace</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def TargetProduceConcurrentThreadCount(self):
+        r"""<p>消费者并发数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TargetProduceConcurrentThreadCount
+
+    @TargetProduceConcurrentThreadCount.setter
+    def TargetProduceConcurrentThreadCount(self, TargetProduceConcurrentThreadCount):
+        self._TargetProduceConcurrentThreadCount = TargetProduceConcurrentThreadCount
+
+    @property
+    def TargetRegion(self):
+        r"""<p>目标region</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TargetRegion
+
+    @TargetRegion.setter
+    def TargetRegion(self, TargetRegion):
+        self._TargetRegion = TargetRegion
+
+    @property
+    def RoleName(self):
+        r"""<p>选择TDMQ RocketMQ时，选择一个角色来完成数据同步</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RoleName
+
+    @RoleName.setter
+    def RoleName(self, RoleName):
+        self._RoleName = RoleName
+
+    @property
+    def AccessKey(self):
+        r"""<p>选择腾讯云版RockeMQ类型后，RoleName对应的AssessKey值</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AccessKey
+
+    @AccessKey.setter
+    def AccessKey(self, AccessKey):
+        self._AccessKey = AccessKey
+
+    @property
+    def SecretKey(self):
+        r"""<p>选择腾讯云版RockeMQ类型后，RoleName对应的SecretKey值</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SecretKey
+
+    @SecretKey.setter
+    def SecretKey(self, SecretKey):
+        self._SecretKey = SecretKey
+
+
+    def _deserialize(self, params):
+        self._Topic = params.get("Topic")
+        self._ClusterId = params.get("ClusterId")
+        self._Namespace = params.get("Namespace")
+        self._TargetProduceConcurrentThreadCount = params.get("TargetProduceConcurrentThreadCount")
+        self._TargetRegion = params.get("TargetRegion")
+        self._RoleName = params.get("RoleName")
+        self._AccessKey = params.get("AccessKey")
+        self._SecretKey = params.get("SecretKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

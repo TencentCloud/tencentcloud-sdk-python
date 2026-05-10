@@ -492,6 +492,29 @@ class TdmqClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateRocketMQRouterRule(self, request):
+        r"""创建RocketMQ Router规则
+
+        :param request: Request instance for CreateRocketMQRouterRule.
+        :type request: :class:`tencentcloud.tdmq.v20200217.models.CreateRocketMQRouterRuleRequest`
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.CreateRocketMQRouterRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateRocketMQRouterRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateRocketMQRouterRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateRocketMQTopic(self, request):
         r"""批量创建 RocketMQ 主题。
         当前云 API 适用集群：4.x 虚拟集群，4.x 专享集群 和 4.x 通用集群。5.x 集群的创建 Topic 接口文档见 [CreateTopic](https://cloud.tencent.com/document/api/1493/97947)。
