@@ -638,6 +638,48 @@ class TrtcClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeTRTCAIRecognitionUsage(
+            self,
+            request: models.DescribeTRTCAIRecognitionUsageRequest,
+            opts: Dict = None,
+    ) -> models.DescribeTRTCAIRecognitionUsageResponse:
+        """
+        AI 智能识别与对话用量查询（AI对话/语音转文本/实时翻译/实时语音合成）
+        - 查询时间小于等于1天时，返回每5分钟粒度的数据；查询时间大于1天时，返回按天汇总的数据。
+        - 单次查询统计区间最多不能超过31天。
+        - 若查询当天用量，由于统计延迟等原因，返回数据可能不够准确。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeTRTCAIRecognitionUsage"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeTRTCAIRecognitionUsageResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeTRTCDedicatedCloudAccUsage(
+            self,
+            request: models.DescribeTRTCDedicatedCloudAccUsageRequest,
+            opts: Dict = None,
+    ) -> models.DescribeTRTCDedicatedCloudAccUsageResponse:
+        """
+        TRTC专属云网络加速用量查询
+        - 查询时间小于等于1天时，返回每5分钟粒度的数据；查询时间大于1天时，返回按天汇总的数据。
+        - 单次查询统计区间最多不能超过31天。
+        - 若查询当天用量，由于统计延迟等原因，返回数据可能不够准确。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeTRTCDedicatedCloudAccUsage"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeTRTCDedicatedCloudAccUsageResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeTRTCMarketQualityData(
             self,
             request: models.DescribeTRTCMarketQualityDataRequest,
@@ -757,6 +799,27 @@ class TrtcClient(AbstractClient):
         kwargs["action"] = "DescribeTRTCRealTimeScaleData"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeTRTCRealTimeScaleDataResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeTRTCSegmentModerationUsage(
+            self,
+            request: models.DescribeTRTCSegmentModerationUsageRequest,
+            opts: Dict = None,
+    ) -> models.DescribeTRTCSegmentModerationUsageResponse:
+        """
+        切片截图与内容理解用量查询，支持查询音视频切片（云端切片场景）和 AI 内容理解（审核场景）两种业务类型
+        - 查询时间小于等于1天时，返回每5分钟粒度的数据；查询时间大于1天时，返回按天汇总的数据。
+        - 单次查询统计区间最多不能超过31天。
+        - 若查询当天用量，由于统计延迟等原因，返回数据可能不够准确。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeTRTCSegmentModerationUsage"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeTRTCSegmentModerationUsageResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

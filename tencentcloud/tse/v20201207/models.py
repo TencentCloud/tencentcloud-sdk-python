@@ -17351,30 +17351,32 @@ class DescribeGovernanceServicesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 按照服务名过滤，精确匹配。
+        :param _Name: <p>按照服务名过滤，精确匹配。</p>
         :type Name: str
-        :param _Namespace: 按照命名空间过滤，精确匹配。
+        :param _Namespace: <p>按照命名空间过滤，精确匹配。</p>
         :type Namespace: str
-        :param _Metadatas: 使用元数据过滤，目前只支持一组元组数，若传了多条，只会使用第一条元数据过滤。
+        :param _Metadatas: <p>使用元数据过滤，目前只支持一组元组数，若传了多条，只会使用第一条元数据过滤。</p>
         :type Metadatas: list of Metadata
-        :param _Offset: 偏移量，默认为0。
+        :param _Offset: <p>偏移量，默认为0。</p>
         :type Offset: int
-        :param _Limit: 返回数量，默认为20，最大值为100。
+        :param _Limit: <p>返回数量，默认为20，最大值为100。</p>
         :type Limit: int
-        :param _InstanceId: tse 实例 id。
+        :param _InstanceId: <p>tse 实例 id。</p>
         :type InstanceId: str
-        :param _Department: 服务所属部门。
+        :param _Department: <p>服务所属部门。</p>
         :type Department: str
-        :param _Business: 服务所属业务。
+        :param _Business: <p>服务所属业务。</p>
         :type Business: str
-        :param _Host: 服务中实例的ip，用来过滤服务。
+        :param _Host: <p>服务中实例的ip，用来过滤服务。</p>
         :type Host: str
-        :param _OnlyExistHealthyInstance: 是否只查询存在健康实例的服务
+        :param _OnlyExistHealthyInstance: <p>是否只查询存在健康实例的服务</p>
         :type OnlyExistHealthyInstance: bool
-        :param _SyncToGlobalRegistry: 是否开启同步到全局注册中心	
+        :param _SyncToGlobalRegistry: <p>是否开启同步到全局注册中心</p>
         :type SyncToGlobalRegistry: str
-        :param _StatusFilter: 过滤筛选条件
+        :param _StatusFilter: <p>过滤筛选条件</p>
         :type StatusFilter: list of Filter
+        :param _Type: <p>服务类型</p><p>枚举值：</p><ul><li>0： 微服务（默认）</li><li>1： MCP Server</li><li>2： AI Agent</li></ul>
+        :type Type: int
         """
         self._Name = None
         self._Namespace = None
@@ -17388,10 +17390,11 @@ class DescribeGovernanceServicesRequest(AbstractModel):
         self._OnlyExistHealthyInstance = None
         self._SyncToGlobalRegistry = None
         self._StatusFilter = None
+        self._Type = None
 
     @property
     def Name(self):
-        r"""按照服务名过滤，精确匹配。
+        r"""<p>按照服务名过滤，精确匹配。</p>
         :rtype: str
         """
         return self._Name
@@ -17402,7 +17405,7 @@ class DescribeGovernanceServicesRequest(AbstractModel):
 
     @property
     def Namespace(self):
-        r"""按照命名空间过滤，精确匹配。
+        r"""<p>按照命名空间过滤，精确匹配。</p>
         :rtype: str
         """
         return self._Namespace
@@ -17413,7 +17416,7 @@ class DescribeGovernanceServicesRequest(AbstractModel):
 
     @property
     def Metadatas(self):
-        r"""使用元数据过滤，目前只支持一组元组数，若传了多条，只会使用第一条元数据过滤。
+        r"""<p>使用元数据过滤，目前只支持一组元组数，若传了多条，只会使用第一条元数据过滤。</p>
         :rtype: list of Metadata
         """
         return self._Metadatas
@@ -17424,7 +17427,7 @@ class DescribeGovernanceServicesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""偏移量，默认为0。
+        r"""<p>偏移量，默认为0。</p>
         :rtype: int
         """
         return self._Offset
@@ -17435,7 +17438,7 @@ class DescribeGovernanceServicesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""返回数量，默认为20，最大值为100。
+        r"""<p>返回数量，默认为20，最大值为100。</p>
         :rtype: int
         """
         return self._Limit
@@ -17446,7 +17449,7 @@ class DescribeGovernanceServicesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""tse 实例 id。
+        r"""<p>tse 实例 id。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -17457,7 +17460,7 @@ class DescribeGovernanceServicesRequest(AbstractModel):
 
     @property
     def Department(self):
-        r"""服务所属部门。
+        r"""<p>服务所属部门。</p>
         :rtype: str
         """
         return self._Department
@@ -17468,7 +17471,7 @@ class DescribeGovernanceServicesRequest(AbstractModel):
 
     @property
     def Business(self):
-        r"""服务所属业务。
+        r"""<p>服务所属业务。</p>
         :rtype: str
         """
         return self._Business
@@ -17479,7 +17482,7 @@ class DescribeGovernanceServicesRequest(AbstractModel):
 
     @property
     def Host(self):
-        r"""服务中实例的ip，用来过滤服务。
+        r"""<p>服务中实例的ip，用来过滤服务。</p>
         :rtype: str
         """
         return self._Host
@@ -17490,7 +17493,7 @@ class DescribeGovernanceServicesRequest(AbstractModel):
 
     @property
     def OnlyExistHealthyInstance(self):
-        r"""是否只查询存在健康实例的服务
+        r"""<p>是否只查询存在健康实例的服务</p>
         :rtype: bool
         """
         return self._OnlyExistHealthyInstance
@@ -17501,7 +17504,7 @@ class DescribeGovernanceServicesRequest(AbstractModel):
 
     @property
     def SyncToGlobalRegistry(self):
-        r"""是否开启同步到全局注册中心	
+        r"""<p>是否开启同步到全局注册中心</p>
         :rtype: str
         """
         return self._SyncToGlobalRegistry
@@ -17512,7 +17515,7 @@ class DescribeGovernanceServicesRequest(AbstractModel):
 
     @property
     def StatusFilter(self):
-        r"""过滤筛选条件
+        r"""<p>过滤筛选条件</p>
         :rtype: list of Filter
         """
         return self._StatusFilter
@@ -17520,6 +17523,17 @@ class DescribeGovernanceServicesRequest(AbstractModel):
     @StatusFilter.setter
     def StatusFilter(self, StatusFilter):
         self._StatusFilter = StatusFilter
+
+    @property
+    def Type(self):
+        r"""<p>服务类型</p><p>枚举值：</p><ul><li>0： 微服务（默认）</li><li>1： MCP Server</li><li>2： AI Agent</li></ul>
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
 
 
     def _deserialize(self, params):
@@ -17545,6 +17559,7 @@ class DescribeGovernanceServicesRequest(AbstractModel):
                 obj = Filter()
                 obj._deserialize(item)
                 self._StatusFilter.append(obj)
+        self._Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17562,9 +17577,9 @@ class DescribeGovernanceServicesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 服务数总量。
+        :param _TotalCount: <p>服务数总量。</p>
         :type TotalCount: int
-        :param _Content: 服务信息详情。
+        :param _Content: <p>服务信息详情。</p>
         :type Content: list of GovernanceService
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -17575,7 +17590,7 @@ class DescribeGovernanceServicesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""服务数总量。
+        r"""<p>服务数总量。</p>
         :rtype: int
         """
         return self._TotalCount
@@ -17586,7 +17601,7 @@ class DescribeGovernanceServicesResponse(AbstractModel):
 
     @property
     def Content(self):
-        r"""服务信息详情。
+        r"""<p>服务信息详情。</p>
         :rtype: list of GovernanceService
         """
         return self._Content
@@ -23112,48 +23127,50 @@ class GovernanceService(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 服务名称。
+        :param _Name: <p>服务名称。</p>
         :type Name: str
-        :param _Namespace: 命名空间名称。
+        :param _Namespace: <p>命名空间名称。</p>
         :type Namespace: str
-        :param _Metadatas: 元数据信息数组。
+        :param _Metadatas: <p>元数据信息数组。</p>
         :type Metadatas: list of Metadata
-        :param _Comment: 描述信息。
+        :param _Comment: <p>描述信息。</p>
         :type Comment: str
-        :param _CreateTime: 创建时间。
+        :param _CreateTime: <p>创建时间。</p>
         :type CreateTime: str
-        :param _ModifyTime: 修改时间。
+        :param _ModifyTime: <p>修改时间。</p>
         :type ModifyTime: str
-        :param _Department: 服务所属部门。
+        :param _Department: <p>服务所属部门。</p>
         :type Department: str
-        :param _Business: 服务所属业务。
+        :param _Business: <p>服务所属业务。</p>
         :type Business: str
-        :param _HealthyInstanceCount: 健康服务实例数
+        :param _HealthyInstanceCount: <p>健康服务实例数</p>
         :type HealthyInstanceCount: int
-        :param _TotalInstanceCount: 服务实例总数
+        :param _TotalInstanceCount: <p>服务实例总数</p>
         :type TotalInstanceCount: int
-        :param _Id: 服务ID
+        :param _Id: <p>服务ID</p>
         :type Id: str
-        :param _Editable: 是否可以编辑
+        :param _Editable: <p>是否可以编辑</p>
         :type Editable: bool
-        :param _UserIds: 可以编辑该资源的用户ID
+        :param _UserIds: <p>可以编辑该资源的用户ID</p>
         :type UserIds: list of str
-        :param _GroupIds: 可以编辑该资源的用户组ID
+        :param _GroupIds: <p>可以编辑该资源的用户组ID</p>
         :type GroupIds: list of str
-        :param _RemoveUserIds: 移除可以编辑该资源的用户ID
+        :param _RemoveUserIds: <p>移除可以编辑该资源的用户ID</p>
         :type RemoveUserIds: list of str
-        :param _RemoveGroupIds: 移除可以编辑该资源的用户组ID
+        :param _RemoveGroupIds: <p>移除可以编辑该资源的用户组ID</p>
         :type RemoveGroupIds: list of str
-        :param _ExportTo: 该服务对哪些命名空间可见	
+        :param _ExportTo: <p>该服务对哪些命名空间可见</p>
         :type ExportTo: list of str
-        :param _Revision: 该服务信息摘要签名
+        :param _Revision: <p>该服务信息摘要签名</p>
         :type Revision: str
-        :param _SyncToGlobalRegistry: 是否开启同步到全局注册中心
+        :param _SyncToGlobalRegistry: <p>是否开启同步到全局注册中心</p>
         :type SyncToGlobalRegistry: bool
-        :param _IsolateInstanceCount: 隔离实例数
+        :param _IsolateInstanceCount: <p>隔离实例数</p>
         :type IsolateInstanceCount: int
-        :param _ServiceStatus: 服务健康状态
+        :param _ServiceStatus: <p>服务健康状态</p>
         :type ServiceStatus: int
+        :param _Type: <p>服务类型</p><p>枚举值：</p><ul><li>0： 微服务（默认）</li><li>1： MCP Server</li><li>2： AI Agent</li></ul>
+        :type Type: int
         """
         self._Name = None
         self._Namespace = None
@@ -23176,10 +23193,11 @@ class GovernanceService(AbstractModel):
         self._SyncToGlobalRegistry = None
         self._IsolateInstanceCount = None
         self._ServiceStatus = None
+        self._Type = None
 
     @property
     def Name(self):
-        r"""服务名称。
+        r"""<p>服务名称。</p>
         :rtype: str
         """
         return self._Name
@@ -23190,7 +23208,7 @@ class GovernanceService(AbstractModel):
 
     @property
     def Namespace(self):
-        r"""命名空间名称。
+        r"""<p>命名空间名称。</p>
         :rtype: str
         """
         return self._Namespace
@@ -23201,7 +23219,7 @@ class GovernanceService(AbstractModel):
 
     @property
     def Metadatas(self):
-        r"""元数据信息数组。
+        r"""<p>元数据信息数组。</p>
         :rtype: list of Metadata
         """
         return self._Metadatas
@@ -23212,7 +23230,7 @@ class GovernanceService(AbstractModel):
 
     @property
     def Comment(self):
-        r"""描述信息。
+        r"""<p>描述信息。</p>
         :rtype: str
         """
         return self._Comment
@@ -23223,7 +23241,7 @@ class GovernanceService(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""创建时间。
+        r"""<p>创建时间。</p>
         :rtype: str
         """
         return self._CreateTime
@@ -23234,7 +23252,7 @@ class GovernanceService(AbstractModel):
 
     @property
     def ModifyTime(self):
-        r"""修改时间。
+        r"""<p>修改时间。</p>
         :rtype: str
         """
         return self._ModifyTime
@@ -23245,7 +23263,7 @@ class GovernanceService(AbstractModel):
 
     @property
     def Department(self):
-        r"""服务所属部门。
+        r"""<p>服务所属部门。</p>
         :rtype: str
         """
         return self._Department
@@ -23256,7 +23274,7 @@ class GovernanceService(AbstractModel):
 
     @property
     def Business(self):
-        r"""服务所属业务。
+        r"""<p>服务所属业务。</p>
         :rtype: str
         """
         return self._Business
@@ -23267,7 +23285,7 @@ class GovernanceService(AbstractModel):
 
     @property
     def HealthyInstanceCount(self):
-        r"""健康服务实例数
+        r"""<p>健康服务实例数</p>
         :rtype: int
         """
         return self._HealthyInstanceCount
@@ -23278,7 +23296,7 @@ class GovernanceService(AbstractModel):
 
     @property
     def TotalInstanceCount(self):
-        r"""服务实例总数
+        r"""<p>服务实例总数</p>
         :rtype: int
         """
         return self._TotalInstanceCount
@@ -23289,7 +23307,7 @@ class GovernanceService(AbstractModel):
 
     @property
     def Id(self):
-        r"""服务ID
+        r"""<p>服务ID</p>
         :rtype: str
         """
         return self._Id
@@ -23300,7 +23318,7 @@ class GovernanceService(AbstractModel):
 
     @property
     def Editable(self):
-        r"""是否可以编辑
+        r"""<p>是否可以编辑</p>
         :rtype: bool
         """
         return self._Editable
@@ -23311,7 +23329,7 @@ class GovernanceService(AbstractModel):
 
     @property
     def UserIds(self):
-        r"""可以编辑该资源的用户ID
+        r"""<p>可以编辑该资源的用户ID</p>
         :rtype: list of str
         """
         return self._UserIds
@@ -23322,7 +23340,7 @@ class GovernanceService(AbstractModel):
 
     @property
     def GroupIds(self):
-        r"""可以编辑该资源的用户组ID
+        r"""<p>可以编辑该资源的用户组ID</p>
         :rtype: list of str
         """
         return self._GroupIds
@@ -23333,7 +23351,7 @@ class GovernanceService(AbstractModel):
 
     @property
     def RemoveUserIds(self):
-        r"""移除可以编辑该资源的用户ID
+        r"""<p>移除可以编辑该资源的用户ID</p>
         :rtype: list of str
         """
         return self._RemoveUserIds
@@ -23344,7 +23362,7 @@ class GovernanceService(AbstractModel):
 
     @property
     def RemoveGroupIds(self):
-        r"""移除可以编辑该资源的用户组ID
+        r"""<p>移除可以编辑该资源的用户组ID</p>
         :rtype: list of str
         """
         return self._RemoveGroupIds
@@ -23355,7 +23373,7 @@ class GovernanceService(AbstractModel):
 
     @property
     def ExportTo(self):
-        r"""该服务对哪些命名空间可见	
+        r"""<p>该服务对哪些命名空间可见</p>
         :rtype: list of str
         """
         return self._ExportTo
@@ -23366,7 +23384,7 @@ class GovernanceService(AbstractModel):
 
     @property
     def Revision(self):
-        r"""该服务信息摘要签名
+        r"""<p>该服务信息摘要签名</p>
         :rtype: str
         """
         return self._Revision
@@ -23377,7 +23395,7 @@ class GovernanceService(AbstractModel):
 
     @property
     def SyncToGlobalRegistry(self):
-        r"""是否开启同步到全局注册中心
+        r"""<p>是否开启同步到全局注册中心</p>
         :rtype: bool
         """
         return self._SyncToGlobalRegistry
@@ -23388,7 +23406,7 @@ class GovernanceService(AbstractModel):
 
     @property
     def IsolateInstanceCount(self):
-        r"""隔离实例数
+        r"""<p>隔离实例数</p>
         :rtype: int
         """
         return self._IsolateInstanceCount
@@ -23399,7 +23417,7 @@ class GovernanceService(AbstractModel):
 
     @property
     def ServiceStatus(self):
-        r"""服务健康状态
+        r"""<p>服务健康状态</p>
         :rtype: int
         """
         return self._ServiceStatus
@@ -23407,6 +23425,17 @@ class GovernanceService(AbstractModel):
     @ServiceStatus.setter
     def ServiceStatus(self, ServiceStatus):
         self._ServiceStatus = ServiceStatus
+
+    @property
+    def Type(self):
+        r"""<p>服务类型</p><p>枚举值：</p><ul><li>0： 微服务（默认）</li><li>1： MCP Server</li><li>2： AI Agent</li></ul>
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
 
 
     def _deserialize(self, params):
@@ -23436,6 +23465,7 @@ class GovernanceService(AbstractModel):
         self._SyncToGlobalRegistry = params.get("SyncToGlobalRegistry")
         self._IsolateInstanceCount = params.get("IsolateInstanceCount")
         self._ServiceStatus = params.get("ServiceStatus")
+        self._Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -23807,30 +23837,32 @@ class GovernanceServiceInput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 服务名。
+        :param _Name: <p>服务名。</p>
         :type Name: str
-        :param _Namespace: 服务所属命名空间。
+        :param _Namespace: <p>服务所属命名空间。</p>
         :type Namespace: str
-        :param _Comment: 服务描述信息。
+        :param _Comment: <p>服务描述信息。</p>
         :type Comment: str
-        :param _Metadatas: 服务元数据。
+        :param _Metadatas: <p>服务元数据。</p>
         :type Metadatas: list of Metadata
-        :param _Department: 服务所属部门。
+        :param _Department: <p>服务所属部门。</p>
         :type Department: str
-        :param _Business: 服务所属业务。
+        :param _Business: <p>服务所属业务。</p>
         :type Business: str
-        :param _UserIds: 被添加进来可以操作此命名空间的用户ID列表
+        :param _UserIds: <p>被添加进来可以操作此命名空间的用户ID列表</p>
         :type UserIds: list of str
-        :param _GroupIds: 被添加进来可以操作此命名空间的用户组ID列表
+        :param _GroupIds: <p>被添加进来可以操作此命名空间的用户组ID列表</p>
         :type GroupIds: list of str
-        :param _RemoveUserIds: 从操作此命名空间的用户组ID列表被移除的ID列表
+        :param _RemoveUserIds: <p>从操作此命名空间的用户组ID列表被移除的ID列表</p>
         :type RemoveUserIds: list of str
-        :param _RemoveGroupIds: 从可以操作此命名空间的用户组ID列表中被移除的ID列表
+        :param _RemoveGroupIds: <p>从可以操作此命名空间的用户组ID列表中被移除的ID列表</p>
         :type RemoveGroupIds: list of str
-        :param _ExportTo: 该服务对哪些命名空间可见
+        :param _ExportTo: <p>该服务对哪些命名空间可见</p>
         :type ExportTo: list of str
-        :param _SyncToGlobalRegistry: 是否开启同步到全局注册中心
+        :param _SyncToGlobalRegistry: <p>是否开启同步到全局注册中心</p>
         :type SyncToGlobalRegistry: bool
+        :param _Type: <p>服务类型</p><p>枚举值：</p><ul><li>0： 微服务（默认）</li><li>1： MCP Server</li><li>2： AI Agent</li></ul><p>默认值：0</p>
+        :type Type: int
         """
         self._Name = None
         self._Namespace = None
@@ -23844,10 +23876,11 @@ class GovernanceServiceInput(AbstractModel):
         self._RemoveGroupIds = None
         self._ExportTo = None
         self._SyncToGlobalRegistry = None
+        self._Type = None
 
     @property
     def Name(self):
-        r"""服务名。
+        r"""<p>服务名。</p>
         :rtype: str
         """
         return self._Name
@@ -23858,7 +23891,7 @@ class GovernanceServiceInput(AbstractModel):
 
     @property
     def Namespace(self):
-        r"""服务所属命名空间。
+        r"""<p>服务所属命名空间。</p>
         :rtype: str
         """
         return self._Namespace
@@ -23869,7 +23902,7 @@ class GovernanceServiceInput(AbstractModel):
 
     @property
     def Comment(self):
-        r"""服务描述信息。
+        r"""<p>服务描述信息。</p>
         :rtype: str
         """
         return self._Comment
@@ -23880,7 +23913,7 @@ class GovernanceServiceInput(AbstractModel):
 
     @property
     def Metadatas(self):
-        r"""服务元数据。
+        r"""<p>服务元数据。</p>
         :rtype: list of Metadata
         """
         return self._Metadatas
@@ -23891,7 +23924,7 @@ class GovernanceServiceInput(AbstractModel):
 
     @property
     def Department(self):
-        r"""服务所属部门。
+        r"""<p>服务所属部门。</p>
         :rtype: str
         """
         return self._Department
@@ -23902,7 +23935,7 @@ class GovernanceServiceInput(AbstractModel):
 
     @property
     def Business(self):
-        r"""服务所属业务。
+        r"""<p>服务所属业务。</p>
         :rtype: str
         """
         return self._Business
@@ -23913,7 +23946,7 @@ class GovernanceServiceInput(AbstractModel):
 
     @property
     def UserIds(self):
-        r"""被添加进来可以操作此命名空间的用户ID列表
+        r"""<p>被添加进来可以操作此命名空间的用户ID列表</p>
         :rtype: list of str
         """
         return self._UserIds
@@ -23924,7 +23957,7 @@ class GovernanceServiceInput(AbstractModel):
 
     @property
     def GroupIds(self):
-        r"""被添加进来可以操作此命名空间的用户组ID列表
+        r"""<p>被添加进来可以操作此命名空间的用户组ID列表</p>
         :rtype: list of str
         """
         return self._GroupIds
@@ -23935,7 +23968,7 @@ class GovernanceServiceInput(AbstractModel):
 
     @property
     def RemoveUserIds(self):
-        r"""从操作此命名空间的用户组ID列表被移除的ID列表
+        r"""<p>从操作此命名空间的用户组ID列表被移除的ID列表</p>
         :rtype: list of str
         """
         return self._RemoveUserIds
@@ -23946,7 +23979,7 @@ class GovernanceServiceInput(AbstractModel):
 
     @property
     def RemoveGroupIds(self):
-        r"""从可以操作此命名空间的用户组ID列表中被移除的ID列表
+        r"""<p>从可以操作此命名空间的用户组ID列表中被移除的ID列表</p>
         :rtype: list of str
         """
         return self._RemoveGroupIds
@@ -23957,7 +23990,7 @@ class GovernanceServiceInput(AbstractModel):
 
     @property
     def ExportTo(self):
-        r"""该服务对哪些命名空间可见
+        r"""<p>该服务对哪些命名空间可见</p>
         :rtype: list of str
         """
         return self._ExportTo
@@ -23968,7 +24001,7 @@ class GovernanceServiceInput(AbstractModel):
 
     @property
     def SyncToGlobalRegistry(self):
-        r"""是否开启同步到全局注册中心
+        r"""<p>是否开启同步到全局注册中心</p>
         :rtype: bool
         """
         return self._SyncToGlobalRegistry
@@ -23976,6 +24009,17 @@ class GovernanceServiceInput(AbstractModel):
     @SyncToGlobalRegistry.setter
     def SyncToGlobalRegistry(self, SyncToGlobalRegistry):
         self._SyncToGlobalRegistry = SyncToGlobalRegistry
+
+    @property
+    def Type(self):
+        r"""<p>服务类型</p><p>枚举值：</p><ul><li>0： 微服务（默认）</li><li>1： MCP Server</li><li>2： AI Agent</li></ul><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
 
 
     def _deserialize(self, params):
@@ -23996,6 +24040,7 @@ class GovernanceServiceInput(AbstractModel):
         self._RemoveGroupIds = params.get("RemoveGroupIds")
         self._ExportTo = params.get("ExportTo")
         self._SyncToGlobalRegistry = params.get("SyncToGlobalRegistry")
+        self._Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

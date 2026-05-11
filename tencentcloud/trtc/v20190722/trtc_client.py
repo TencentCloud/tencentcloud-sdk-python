@@ -794,6 +794,58 @@ class TrtcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeTRTCAIRecognitionUsage(self, request):
+        r"""AI 智能识别与对话用量查询（AI对话/语音转文本/实时翻译/实时语音合成）
+        - 查询时间小于等于1天时，返回每5分钟粒度的数据；查询时间大于1天时，返回按天汇总的数据。
+        - 单次查询统计区间最多不能超过31天。
+        - 若查询当天用量，由于统计延迟等原因，返回数据可能不够准确。
+
+        :param request: Request instance for DescribeTRTCAIRecognitionUsage.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeTRTCAIRecognitionUsageRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.DescribeTRTCAIRecognitionUsageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTRTCAIRecognitionUsage", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTRTCAIRecognitionUsageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeTRTCDedicatedCloudAccUsage(self, request):
+        r"""TRTC专属云网络加速用量查询
+        - 查询时间小于等于1天时，返回每5分钟粒度的数据；查询时间大于1天时，返回按天汇总的数据。
+        - 单次查询统计区间最多不能超过31天。
+        - 若查询当天用量，由于统计延迟等原因，返回数据可能不够准确。
+
+        :param request: Request instance for DescribeTRTCDedicatedCloudAccUsage.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeTRTCDedicatedCloudAccUsageRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.DescribeTRTCDedicatedCloudAccUsageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTRTCDedicatedCloudAccUsage", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTRTCDedicatedCloudAccUsageResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeTRTCMarketQualityData(self, request):
         r"""查询TRTC监控仪表盘-数据大盘质量指标（包括下列指标）
         joinSuccessRate：加入频道成功率。
@@ -934,6 +986,32 @@ class TrtcClient(AbstractClient):
             body = self.call("DescribeTRTCRealTimeScaleData", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeTRTCRealTimeScaleDataResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeTRTCSegmentModerationUsage(self, request):
+        r"""切片截图与内容理解用量查询，支持查询音视频切片（云端切片场景）和 AI 内容理解（审核场景）两种业务类型
+        - 查询时间小于等于1天时，返回每5分钟粒度的数据；查询时间大于1天时，返回按天汇总的数据。
+        - 单次查询统计区间最多不能超过31天。
+        - 若查询当天用量，由于统计延迟等原因，返回数据可能不够准确。
+
+        :param request: Request instance for DescribeTRTCSegmentModerationUsage.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.DescribeTRTCSegmentModerationUsageRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.DescribeTRTCSegmentModerationUsageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTRTCSegmentModerationUsage", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTRTCSegmentModerationUsageResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

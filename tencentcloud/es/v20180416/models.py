@@ -1422,42 +1422,48 @@ class CosBackup(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _IsAutoBackup: 是否开启cos自动备份
+        :param _IsAutoBackup: <p>是否开启cos自动备份</p>
         :type IsAutoBackup: bool
-        :param _BackupTime: 自动备份执行时间（精确到小时）, e.g. "22:00"
+        :param _BackupTime: <p>自动备份执行时间（精确到小时）, e.g. &quot;22:00&quot;</p>
         :type BackupTime: str
-        :param _SnapshotName: 备份快照前缀
+        :param _SnapshotName: <p>备份快照前缀</p>
         :type SnapshotName: str
-        :param _EsRepositoryType: 0 腾讯云仓库; 1 客户仓库
+        :param _EsRepositoryType: <p>0 腾讯云仓库; 1 客户仓库</p>
         :type EsRepositoryType: int
-        :param _PaasEsRepository: 托管快照仓库名称
+        :param _PaasEsRepository: <p>托管快照仓库名称</p>
         :type PaasEsRepository: str
-        :param _UserEsRepository: 客户快照仓库名称
+        :param _UserEsRepository: <p>客户快照仓库名称</p>
         :type UserEsRepository: str
-        :param _CosBasePath: cos存储文件夹目录
+        :param _CosBasePath: <p>cos存储文件夹目录</p>
         :type CosBasePath: str
-        :param _StorageDuration: 快照存储周期 单位天
+        :param _StorageDuration: <p>快照存储周期 单位天</p>
         :type StorageDuration: int
-        :param _AutoBackupInterval: 自动备份频率单位小时
+        :param _AutoBackupInterval: <p>自动备份频率单位小时</p>
         :type AutoBackupInterval: int
-        :param _CosRetention: 备份锁定 0 不锁定; 1 锁定
+        :param _CosRetention: <p>备份锁定 0 不锁定; 1 锁定</p>
         :type CosRetention: int
-        :param _RetainUntilDate: 锁定截止日期 2022-12-10T08:34:48.000Z
+        :param _RetainUntilDate: <p>锁定截止日期 2022-12-10T08:34:48.000Z</p>
         :type RetainUntilDate: str
-        :param _RetentionGraceTime: 锁定宽限期
+        :param _RetentionGraceTime: <p>锁定宽限期</p>
         :type RetentionGraceTime: int
-        :param _RemoteCos: 跨地域备份 0 不跨地域; 1 跨地域
+        :param _RemoteCos: <p>跨地域备份 0 不跨地域; 1 跨地域</p>
         :type RemoteCos: int
-        :param _RemoteCosRegion: 跨地域备份地域名称 ap-guangzhou
+        :param _RemoteCosRegion: <p>跨地域备份地域名称 ap-guangzhou</p>
         :type RemoteCosRegion: str
-        :param _StrategyName: 策略名称
+        :param _StrategyName: <p>策略名称</p>
         :type StrategyName: str
-        :param _Indices: 备份索引列表，如果不填表示备份所有索引
+        :param _Indices: <p>备份索引列表，如果不填表示备份所有索引</p>
         :type Indices: str
-        :param _MultiAz: cos多AZ备份 0 单AZ; 1 多AZ
+        :param _MultiAz: <p>cos多AZ备份 0 单AZ; 1 多AZ</p>
         :type MultiAz: int
-        :param _CreateTime: 策略创建时间
+        :param _MaxSnapshotPerSec: <p>每节点写入仓库的最大速度 max_snapshot_bytes_per_sec, 默认40m</p>
+        :type MaxSnapshotPerSec: str
+        :param _MaxRestorePerSec: <p>每节点读取仓库的最大速度 max_restore_bytes_per_sec, 710前默认40m, 710及以后默认无限制</p>
+        :type MaxRestorePerSec: str
+        :param _CreateTime: <p>策略创建时间</p>
         :type CreateTime: str
+        :param _InstanceId: <p>实例ID</p>
+        :type InstanceId: str
         """
         self._IsAutoBackup = None
         self._BackupTime = None
@@ -1476,11 +1482,14 @@ class CosBackup(AbstractModel):
         self._StrategyName = None
         self._Indices = None
         self._MultiAz = None
+        self._MaxSnapshotPerSec = None
+        self._MaxRestorePerSec = None
         self._CreateTime = None
+        self._InstanceId = None
 
     @property
     def IsAutoBackup(self):
-        r"""是否开启cos自动备份
+        r"""<p>是否开启cos自动备份</p>
         :rtype: bool
         """
         return self._IsAutoBackup
@@ -1491,7 +1500,7 @@ class CosBackup(AbstractModel):
 
     @property
     def BackupTime(self):
-        r"""自动备份执行时间（精确到小时）, e.g. "22:00"
+        r"""<p>自动备份执行时间（精确到小时）, e.g. &quot;22:00&quot;</p>
         :rtype: str
         """
         return self._BackupTime
@@ -1502,7 +1511,7 @@ class CosBackup(AbstractModel):
 
     @property
     def SnapshotName(self):
-        r"""备份快照前缀
+        r"""<p>备份快照前缀</p>
         :rtype: str
         """
         return self._SnapshotName
@@ -1513,7 +1522,7 @@ class CosBackup(AbstractModel):
 
     @property
     def EsRepositoryType(self):
-        r"""0 腾讯云仓库; 1 客户仓库
+        r"""<p>0 腾讯云仓库; 1 客户仓库</p>
         :rtype: int
         """
         return self._EsRepositoryType
@@ -1524,7 +1533,7 @@ class CosBackup(AbstractModel):
 
     @property
     def PaasEsRepository(self):
-        r"""托管快照仓库名称
+        r"""<p>托管快照仓库名称</p>
         :rtype: str
         """
         return self._PaasEsRepository
@@ -1535,7 +1544,7 @@ class CosBackup(AbstractModel):
 
     @property
     def UserEsRepository(self):
-        r"""客户快照仓库名称
+        r"""<p>客户快照仓库名称</p>
         :rtype: str
         """
         return self._UserEsRepository
@@ -1546,7 +1555,7 @@ class CosBackup(AbstractModel):
 
     @property
     def CosBasePath(self):
-        r"""cos存储文件夹目录
+        r"""<p>cos存储文件夹目录</p>
         :rtype: str
         """
         return self._CosBasePath
@@ -1557,7 +1566,7 @@ class CosBackup(AbstractModel):
 
     @property
     def StorageDuration(self):
-        r"""快照存储周期 单位天
+        r"""<p>快照存储周期 单位天</p>
         :rtype: int
         """
         return self._StorageDuration
@@ -1568,7 +1577,7 @@ class CosBackup(AbstractModel):
 
     @property
     def AutoBackupInterval(self):
-        r"""自动备份频率单位小时
+        r"""<p>自动备份频率单位小时</p>
         :rtype: int
         """
         return self._AutoBackupInterval
@@ -1579,7 +1588,7 @@ class CosBackup(AbstractModel):
 
     @property
     def CosRetention(self):
-        r"""备份锁定 0 不锁定; 1 锁定
+        r"""<p>备份锁定 0 不锁定; 1 锁定</p>
         :rtype: int
         """
         return self._CosRetention
@@ -1590,7 +1599,7 @@ class CosBackup(AbstractModel):
 
     @property
     def RetainUntilDate(self):
-        r"""锁定截止日期 2022-12-10T08:34:48.000Z
+        r"""<p>锁定截止日期 2022-12-10T08:34:48.000Z</p>
         :rtype: str
         """
         return self._RetainUntilDate
@@ -1601,7 +1610,7 @@ class CosBackup(AbstractModel):
 
     @property
     def RetentionGraceTime(self):
-        r"""锁定宽限期
+        r"""<p>锁定宽限期</p>
         :rtype: int
         """
         return self._RetentionGraceTime
@@ -1612,7 +1621,7 @@ class CosBackup(AbstractModel):
 
     @property
     def RemoteCos(self):
-        r"""跨地域备份 0 不跨地域; 1 跨地域
+        r"""<p>跨地域备份 0 不跨地域; 1 跨地域</p>
         :rtype: int
         """
         return self._RemoteCos
@@ -1623,7 +1632,7 @@ class CosBackup(AbstractModel):
 
     @property
     def RemoteCosRegion(self):
-        r"""跨地域备份地域名称 ap-guangzhou
+        r"""<p>跨地域备份地域名称 ap-guangzhou</p>
         :rtype: str
         """
         return self._RemoteCosRegion
@@ -1634,7 +1643,7 @@ class CosBackup(AbstractModel):
 
     @property
     def StrategyName(self):
-        r"""策略名称
+        r"""<p>策略名称</p>
         :rtype: str
         """
         return self._StrategyName
@@ -1645,7 +1654,7 @@ class CosBackup(AbstractModel):
 
     @property
     def Indices(self):
-        r"""备份索引列表，如果不填表示备份所有索引
+        r"""<p>备份索引列表，如果不填表示备份所有索引</p>
         :rtype: str
         """
         return self._Indices
@@ -1656,7 +1665,7 @@ class CosBackup(AbstractModel):
 
     @property
     def MultiAz(self):
-        r"""cos多AZ备份 0 单AZ; 1 多AZ
+        r"""<p>cos多AZ备份 0 单AZ; 1 多AZ</p>
         :rtype: int
         """
         return self._MultiAz
@@ -1666,8 +1675,30 @@ class CosBackup(AbstractModel):
         self._MultiAz = MultiAz
 
     @property
+    def MaxSnapshotPerSec(self):
+        r"""<p>每节点写入仓库的最大速度 max_snapshot_bytes_per_sec, 默认40m</p>
+        :rtype: str
+        """
+        return self._MaxSnapshotPerSec
+
+    @MaxSnapshotPerSec.setter
+    def MaxSnapshotPerSec(self, MaxSnapshotPerSec):
+        self._MaxSnapshotPerSec = MaxSnapshotPerSec
+
+    @property
+    def MaxRestorePerSec(self):
+        r"""<p>每节点读取仓库的最大速度 max_restore_bytes_per_sec, 710前默认40m, 710及以后默认无限制</p>
+        :rtype: str
+        """
+        return self._MaxRestorePerSec
+
+    @MaxRestorePerSec.setter
+    def MaxRestorePerSec(self, MaxRestorePerSec):
+        self._MaxRestorePerSec = MaxRestorePerSec
+
+    @property
     def CreateTime(self):
-        r"""策略创建时间
+        r"""<p>策略创建时间</p>
         :rtype: str
         """
         return self._CreateTime
@@ -1675,6 +1706,17 @@ class CosBackup(AbstractModel):
     @CreateTime.setter
     def CreateTime(self, CreateTime):
         self._CreateTime = CreateTime
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例ID</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
 
 
     def _deserialize(self, params):
@@ -1695,7 +1737,10 @@ class CosBackup(AbstractModel):
         self._StrategyName = params.get("StrategyName")
         self._Indices = params.get("Indices")
         self._MultiAz = params.get("MultiAz")
+        self._MaxSnapshotPerSec = params.get("MaxSnapshotPerSec")
+        self._MaxRestorePerSec = params.get("MaxRestorePerSec")
         self._CreateTime = params.get("CreateTime")
+        self._InstanceId = params.get("InstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1959,30 +2004,32 @@ class CreateClusterSnapshotRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例名称
+        :param _InstanceId: <p>实例名称</p>
         :type InstanceId: str
-        :param _SnapshotName: 快照名称
+        :param _SnapshotName: <p>快照名称</p>
         :type SnapshotName: str
-        :param _Indices: 索引名称
+        :param _Indices: <p>索引名称</p>
         :type Indices: str
-        :param _EsRepositoryType: 0 腾讯云仓库; 1 客户仓库
+        :param _EsRepositoryType: <p>0 腾讯云仓库; 1 客户仓库</p>
         :type EsRepositoryType: int
-        :param _UserEsRepository: 客户快照仓库名称
+        :param _UserEsRepository: <p>客户快照仓库名称</p>
         :type UserEsRepository: str
-        :param _StorageDuration: 快照存储周期 单位天，范围[0, INF), 如果没有设置则默认7天
+        :param _StorageDuration: <p>快照存储周期 单位天，范围[0, INF), 如果没有设置则默认7天</p>
         :type StorageDuration: int
-        :param _CosRetention: 备份锁定 0 不锁定; 1 锁定
+        :param _CosRetention: <p>备份锁定 0 不锁定; 1 锁定</p>
         :type CosRetention: int
-        :param _RetainUntilDate: 锁定截止日期 2022-12-10T08:34:48.000Z
+        :param _RetainUntilDate: <p>锁定截止日期 2022-12-10T08:34:48.000Z</p>
         :type RetainUntilDate: str
-        :param _RetentionGraceTime: 锁定宽限期,单位天
+        :param _RetentionGraceTime: <p>锁定宽限期,单位天</p>
         :type RetentionGraceTime: int
-        :param _RemoteCos: 跨地域备份 0 不跨地域; 1 跨地域
+        :param _RemoteCos: <p>跨地域备份 0 不跨地域; 1 跨地域</p>
         :type RemoteCos: int
-        :param _RemoteCosRegion: 跨地域备份地域名称 ap-guangzhou
+        :param _RemoteCosRegion: <p>跨地域备份地域名称 ap-guangzhou</p>
         :type RemoteCosRegion: str
-        :param _MultiAz: cos多AZ备份 0 单AZ; 1 多AZ
+        :param _MultiAz: <p>cos多AZ备份 0 单AZ; 1 多AZ</p>
         :type MultiAz: int
+        :param _MaxSnapshotPerSec: <p>快照创建速率（单位mb）</p>
+        :type MaxSnapshotPerSec: str
         """
         self._InstanceId = None
         self._SnapshotName = None
@@ -1996,10 +2043,11 @@ class CreateClusterSnapshotRequest(AbstractModel):
         self._RemoteCos = None
         self._RemoteCosRegion = None
         self._MultiAz = None
+        self._MaxSnapshotPerSec = None
 
     @property
     def InstanceId(self):
-        r"""实例名称
+        r"""<p>实例名称</p>
         :rtype: str
         """
         return self._InstanceId
@@ -2010,7 +2058,7 @@ class CreateClusterSnapshotRequest(AbstractModel):
 
     @property
     def SnapshotName(self):
-        r"""快照名称
+        r"""<p>快照名称</p>
         :rtype: str
         """
         return self._SnapshotName
@@ -2021,7 +2069,7 @@ class CreateClusterSnapshotRequest(AbstractModel):
 
     @property
     def Indices(self):
-        r"""索引名称
+        r"""<p>索引名称</p>
         :rtype: str
         """
         return self._Indices
@@ -2032,7 +2080,7 @@ class CreateClusterSnapshotRequest(AbstractModel):
 
     @property
     def EsRepositoryType(self):
-        r"""0 腾讯云仓库; 1 客户仓库
+        r"""<p>0 腾讯云仓库; 1 客户仓库</p>
         :rtype: int
         """
         return self._EsRepositoryType
@@ -2043,7 +2091,7 @@ class CreateClusterSnapshotRequest(AbstractModel):
 
     @property
     def UserEsRepository(self):
-        r"""客户快照仓库名称
+        r"""<p>客户快照仓库名称</p>
         :rtype: str
         """
         return self._UserEsRepository
@@ -2054,7 +2102,7 @@ class CreateClusterSnapshotRequest(AbstractModel):
 
     @property
     def StorageDuration(self):
-        r"""快照存储周期 单位天，范围[0, INF), 如果没有设置则默认7天
+        r"""<p>快照存储周期 单位天，范围[0, INF), 如果没有设置则默认7天</p>
         :rtype: int
         """
         return self._StorageDuration
@@ -2065,7 +2113,7 @@ class CreateClusterSnapshotRequest(AbstractModel):
 
     @property
     def CosRetention(self):
-        r"""备份锁定 0 不锁定; 1 锁定
+        r"""<p>备份锁定 0 不锁定; 1 锁定</p>
         :rtype: int
         """
         return self._CosRetention
@@ -2076,7 +2124,7 @@ class CreateClusterSnapshotRequest(AbstractModel):
 
     @property
     def RetainUntilDate(self):
-        r"""锁定截止日期 2022-12-10T08:34:48.000Z
+        r"""<p>锁定截止日期 2022-12-10T08:34:48.000Z</p>
         :rtype: str
         """
         return self._RetainUntilDate
@@ -2087,7 +2135,7 @@ class CreateClusterSnapshotRequest(AbstractModel):
 
     @property
     def RetentionGraceTime(self):
-        r"""锁定宽限期,单位天
+        r"""<p>锁定宽限期,单位天</p>
         :rtype: int
         """
         return self._RetentionGraceTime
@@ -2098,7 +2146,7 @@ class CreateClusterSnapshotRequest(AbstractModel):
 
     @property
     def RemoteCos(self):
-        r"""跨地域备份 0 不跨地域; 1 跨地域
+        r"""<p>跨地域备份 0 不跨地域; 1 跨地域</p>
         :rtype: int
         """
         return self._RemoteCos
@@ -2109,7 +2157,7 @@ class CreateClusterSnapshotRequest(AbstractModel):
 
     @property
     def RemoteCosRegion(self):
-        r"""跨地域备份地域名称 ap-guangzhou
+        r"""<p>跨地域备份地域名称 ap-guangzhou</p>
         :rtype: str
         """
         return self._RemoteCosRegion
@@ -2120,7 +2168,7 @@ class CreateClusterSnapshotRequest(AbstractModel):
 
     @property
     def MultiAz(self):
-        r"""cos多AZ备份 0 单AZ; 1 多AZ
+        r"""<p>cos多AZ备份 0 单AZ; 1 多AZ</p>
         :rtype: int
         """
         return self._MultiAz
@@ -2128,6 +2176,17 @@ class CreateClusterSnapshotRequest(AbstractModel):
     @MultiAz.setter
     def MultiAz(self, MultiAz):
         self._MultiAz = MultiAz
+
+    @property
+    def MaxSnapshotPerSec(self):
+        r"""<p>快照创建速率（单位mb）</p>
+        :rtype: str
+        """
+        return self._MaxSnapshotPerSec
+
+    @MaxSnapshotPerSec.setter
+    def MaxSnapshotPerSec(self, MaxSnapshotPerSec):
+        self._MaxSnapshotPerSec = MaxSnapshotPerSec
 
 
     def _deserialize(self, params):
@@ -2143,6 +2202,7 @@ class CreateClusterSnapshotRequest(AbstractModel):
         self._RemoteCos = params.get("RemoteCos")
         self._RemoteCosRegion = params.get("RemoteCosRegion")
         self._MultiAz = params.get("MultiAz")
+        self._MaxSnapshotPerSec = params.get("MaxSnapshotPerSec")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2160,7 +2220,7 @@ class CreateClusterSnapshotResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例名称
+        :param _InstanceId: <p>实例名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2171,7 +2231,7 @@ class CreateClusterSnapshotResponse(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例名称
+        r"""<p>实例名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4717,14 +4777,20 @@ class DeleteInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: <p>实例ID</p>
         :type InstanceId: str
+        :param _LockEnabled: <p>回收站锁定设置，true时不可手动销毁，到预设时间后自动销毁</p><p>默认值：false</p>
+        :type LockEnabled: bool
+        :param _LockDuration: <p>放入回收站的锁定时间</p><p>取值范围：[1, 7]</p><p>单位：天</p><p>默认值：1</p>
+        :type LockDuration: int
         """
         self._InstanceId = None
+        self._LockEnabled = None
+        self._LockDuration = None
 
     @property
     def InstanceId(self):
-        r"""实例ID
+        r"""<p>实例ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -4733,9 +4799,33 @@ class DeleteInstanceRequest(AbstractModel):
     def InstanceId(self, InstanceId):
         self._InstanceId = InstanceId
 
+    @property
+    def LockEnabled(self):
+        r"""<p>回收站锁定设置，true时不可手动销毁，到预设时间后自动销毁</p><p>默认值：false</p>
+        :rtype: bool
+        """
+        return self._LockEnabled
+
+    @LockEnabled.setter
+    def LockEnabled(self, LockEnabled):
+        self._LockEnabled = LockEnabled
+
+    @property
+    def LockDuration(self):
+        r"""<p>放入回收站的锁定时间</p><p>取值范围：[1, 7]</p><p>单位：天</p><p>默认值：1</p>
+        :rtype: int
+        """
+        return self._LockDuration
+
+    @LockDuration.setter
+    def LockDuration(self, LockDuration):
+        self._LockDuration = LockDuration
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
+        self._LockEnabled = params.get("LockEnabled")
+        self._LockDuration = params.get("LockDuration")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12499,263 +12589,266 @@ class InstanceInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: <p>实例ID</p>
         :type InstanceId: str
-        :param _InstanceName: 实例名称
+        :param _InstanceName: <p>实例名称</p>
         :type InstanceName: str
-        :param _Region: 地域
+        :param _Region: <p>地域</p>
         :type Region: str
-        :param _Zone: 可用区
+        :param _Zone: <p>可用区</p>
         :type Zone: str
-        :param _AppId: 用户ID
+        :param _AppId: <p>用户ID</p>
         :type AppId: int
-        :param _Uin: 用户UIN
+        :param _Uin: <p>用户UIN</p>
         :type Uin: str
-        :param _VpcUid: 实例所属VPC的UID
+        :param _VpcUid: <p>实例所属VPC的UID</p>
         :type VpcUid: str
-        :param _SubnetUid: 实例所属子网的UID
+        :param _SubnetUid: <p>实例所属子网的UID</p>
         :type SubnetUid: str
-        :param _Status: 实例状态，0:处理中,1:正常,-1:停止,-2:销毁中,-3:已销毁, -4:隔离中,2:创建集群时初始化中
+        :param _Status: <p>实例状态，0:处理中,1:正常,-1:停止,-2:销毁中,-3:已销毁, -4:隔离中,2:创建集群时初始化中</p>
         :type Status: int
-        :param _RenewFlag: 自动续费标识。取值范围：
-RENEW_FLAG_AUTO：自动续费  
-RENEW_FLAG_MANUAL：不自动续费
-默认取值：
-RENEW_FLAG_DEFAULT：不自动续费
-若该参数指定为 RENEW_FLAG_AUTO，在账户余额充足的情况下，实例到期后将按月自动续费。
+        :param _RenewFlag: <p>自动续费标识。取值范围：<br>RENEW_FLAG_AUTO：自动续费<br>RENEW_FLAG_MANUAL：不自动续费<br>默认取值：<br>RENEW_FLAG_DEFAULT：不自动续费<br>若该参数指定为 RENEW_FLAG_AUTO，在账户余额充足的情况下，实例到期后将按月自动续费。</p>
         :type RenewFlag: str
-        :param _ChargeType: 实例计费模式。取值范围：  PREPAID：表示预付费，即包年包月  POSTPAID_BY_HOUR：表示后付费，即按量计费  CDHPAID：CDH付费，即只对CDH计费，不对CDH上的实例计费。
+        :param _ChargeType: <p>实例计费模式。取值范围：  PREPAID：表示预付费，即包年包月  POSTPAID_BY_HOUR：表示后付费，即按量计费  CDHPAID：CDH付费，即只对CDH计费，不对CDH上的实例计费。</p>
         :type ChargeType: str
-        :param _ChargePeriod: 包年包月购买时长,单位:月
+        :param _ChargePeriod: <p>包年包月购买时长,单位:月</p>
         :type ChargePeriod: int
-        :param _NodeType: 节点规格<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE32：16核32G</li><li>ES.S1.4XLARGE64：16核64G</li>
+        :param _NodeType: <p>节点规格<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE32：16核32G</li><li>ES.S1.4XLARGE64：16核64G</li></p>
         :type NodeType: str
-        :param _NodeNum: 节点个数
+        :param _NodeNum: <p>节点个数</p>
         :type NodeNum: int
-        :param _CpuNum: 节点CPU核数
+        :param _CpuNum: <p>节点CPU核数</p>
         :type CpuNum: int
-        :param _MemSize: 节点内存大小，单位GB
+        :param _MemSize: <p>节点内存大小，单位GB</p>
         :type MemSize: int
-        :param _DiskType: 节点磁盘类型
+        :param _DiskType: <p>节点磁盘类型</p>
         :type DiskType: str
-        :param _DiskSize: 节点磁盘大小，单位GB
+        :param _DiskSize: <p>节点磁盘大小，单位GB</p>
         :type DiskSize: int
-        :param _EsDomain: ES域名
+        :param _EsDomain: <p>ES域名</p>
         :type EsDomain: str
-        :param _EsVip: ES VIP
+        :param _EsVip: <p>ES VIP</p>
         :type EsVip: str
-        :param _EsPort: ES端口
+        :param _EsPort: <p>ES端口</p>
         :type EsPort: int
-        :param _KibanaUrl: Kibana访问url
+        :param _KibanaUrl: <p>Kibana访问url</p>
         :type KibanaUrl: str
-        :param _EsVersion: ES版本号
+        :param _EsVersion: <p>ES版本号</p>
         :type EsVersion: str
-        :param _EsConfig: ES配置项
+        :param _EsConfig: <p>ES配置项</p>
         :type EsConfig: str
-        :param _EsAcl: Kibana访问控制配置
+        :param _EsAcl: <p>Kibana访问控制配置</p>
         :type EsAcl: :class:`tencentcloud.es.v20180416.models.EsAcl`
-        :param _CreateTime: 实例创建时间
+        :param _CreateTime: <p>实例创建时间</p>
         :type CreateTime: str
-        :param _UpdateTime: 实例最后修改操作时间
+        :param _UpdateTime: <p>实例最后修改操作时间</p>
         :type UpdateTime: str
-        :param _Deadline: 实例到期时间
+        :param _Deadline: <p>实例到期时间</p>
         :type Deadline: str
-        :param _InstanceType: 实例类型（实例类型标识，当前只有1,2两种）
+        :param _InstanceType: <p>实例类型（实例类型标识，当前只有1,2两种）</p>
         :type InstanceType: int
-        :param _IkConfig: Ik分词器配置
+        :param _IkConfig: <p>Ik分词器配置</p>
         :type IkConfig: :class:`tencentcloud.es.v20180416.models.EsDictionaryInfo`
-        :param _MasterNodeInfo: 专用主节点配置
+        :param _MasterNodeInfo: <p>专用主节点配置</p>
         :type MasterNodeInfo: :class:`tencentcloud.es.v20180416.models.MasterNodeInfo`
-        :param _CosBackup: cos自动备份配置
+        :param _CosBackup: <p>cos自动备份配置</p>
         :type CosBackup: :class:`tencentcloud.es.v20180416.models.CosBackup`
-        :param _AllowCosBackup: 是否允许cos自动备份
+        :param _AllowCosBackup: <p>是否允许cos自动备份</p>
         :type AllowCosBackup: bool
-        :param _TagList: 实例拥有的标签列表
+        :param _TagList: <p>实例拥有的标签列表</p>
         :type TagList: list of TagInfo
-        :param _LicenseType: License类型<li>oss：开源版</li><li>basic：基础版</li><li>platinum：白金版</li>默认值platinum
+        :param _LicenseType: <p>License类型<li>oss：开源版</li><li>basic：基础版</li><li>platinum：白金版</li>默认值platinum</p>
         :type LicenseType: str
-        :param _EnableHotWarmMode: 是否为冷热集群<li>true: 冷热集群</li><li>false: 非冷热集群</li>
+        :param _EnableHotWarmMode: <p>是否为冷热集群<li>true: 冷热集群</li><li>false: 非冷热集群</li></p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type EnableHotWarmMode: bool
-        :param _WarmNodeType: 温节点规格<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE32：16核32G</li><li>ES.S1.4XLARGE64：16核64G</li>
+        :param _WarmNodeType: <p>温节点规格<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE32：16核32G</li><li>ES.S1.4XLARGE64：16核64G</li></p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WarmNodeType: str
-        :param _WarmNodeNum: 温节点个数
+        :param _WarmNodeNum: <p>温节点个数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WarmNodeNum: int
-        :param _WarmCpuNum: 温节点CPU核数
+        :param _WarmCpuNum: <p>温节点CPU核数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WarmCpuNum: int
-        :param _WarmMemSize: 温节点内存内存大小，单位GB
+        :param _WarmMemSize: <p>温节点内存内存大小，单位GB</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WarmMemSize: int
-        :param _WarmDiskType: 温节点磁盘类型
+        :param _WarmDiskType: <p>温节点磁盘类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WarmDiskType: str
-        :param _WarmDiskSize: 温节点磁盘大小，单位GB
+        :param _WarmDiskSize: <p>温节点磁盘大小，单位GB</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WarmDiskSize: int
-        :param _NodeInfoList: 集群节点信息列表
+        :param _NodeInfoList: <p>集群节点信息列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type NodeInfoList: list of NodeInfo
-        :param _EsPublicUrl: Es公网地址
+        :param _EsPublicUrl: <p>Es公网地址</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type EsPublicUrl: str
-        :param _MultiZoneInfo: 多可用区网络信息
+        :param _MultiZoneInfo: <p>多可用区网络信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type MultiZoneInfo: list of ZoneDetail
-        :param _DeployMode: 部署模式<li>0：单可用区</li><li>1：多可用区，北京、上海、上海金融、广州、南京、香港、新加坡、法兰克福（白名单控制）</li>
+        :param _DeployMode: <p>部署模式<li>0：单可用区</li><li>1：多可用区，北京、上海、上海金融、广州、南京、香港、新加坡、法兰克福（白名单控制）</li></p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeployMode: int
-        :param _PublicAccess: ES公网访问状态<li>OPEN：开启</li><li>CLOSE：关闭</li>
+        :param _PublicAccess: <p>ES公网访问状态<li>OPEN：开启</li><li>CLOSE：关闭</li></p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type PublicAccess: str
-        :param _EsPublicAcl: ES公网访问控制配置
+        :param _EsPublicAcl: <p>ES公网访问控制配置</p>
         :type EsPublicAcl: :class:`tencentcloud.es.v20180416.models.EsAcl`
-        :param _KibanaPrivateUrl: Kibana内网地址
+        :param _KibanaPrivateUrl: <p>Kibana内网地址</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type KibanaPrivateUrl: str
-        :param _KibanaPublicAccess: Kibana公网访问状态<li>OPEN：开启</li><li>CLOSE：关闭</li>
+        :param _KibanaPublicAccess: <p>Kibana公网访问状态<li>OPEN：开启</li><li>CLOSE：关闭</li></p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type KibanaPublicAccess: str
-        :param _KibanaPrivateAccess: Kibana内网访问状态<li>OPEN：开启</li><li>CLOSE：关闭</li>
+        :param _KibanaPrivateAccess: <p>Kibana内网访问状态<li>OPEN：开启</li><li>CLOSE：关闭</li></p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type KibanaPrivateAccess: str
-        :param _SecurityType: 6.8（及以上版本）基础版是否开启xpack security认证<li>1：不开启</li><li>2：开启</li>
+        :param _SecurityType: <p>6.8（及以上版本）基础版是否开启xpack security认证<li>1：不开启</li><li>2：开启</li></p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SecurityType: int
-        :param _SceneType: 场景化模板类型：0、不开启；1、通用场景；2、日志场景；3、搜索场景
+        :param _SceneType: <p>场景化模板类型：0、不开启；1、通用场景；2、日志场景；3、搜索场景</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SceneType: int
-        :param _KibanaConfig: Kibana配置项
+        :param _KibanaConfig: <p>Kibana配置项</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type KibanaConfig: str
-        :param _KibanaNodeInfo: Kibana节点信息
+        :param _KibanaNodeInfo: <p>Kibana节点信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type KibanaNodeInfo: :class:`tencentcloud.es.v20180416.models.KibanaNodeInfo`
-        :param _WebNodeTypeInfo: 可视化节点配置
+        :param _WebNodeTypeInfo: <p>可视化节点配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WebNodeTypeInfo: :class:`tencentcloud.es.v20180416.models.WebNodeTypeInfo`
-        :param _Jdk: JDK类型，oracle或kona
+        :param _Jdk: <p>JDK类型，oracle或kona</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Jdk: str
-        :param _Protocol: 集群网络通讯协议
+        :param _Protocol: <p>集群网络通讯协议</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Protocol: str
-        :param _SecurityGroups: 安全组id
+        :param _SecurityGroups: <p>安全组id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SecurityGroups: list of str
-        :param _ColdNodeType: 冷节点规格<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE32：16核32G</li><li>ES.S1.4XLARGE64：16核64G</li>
+        :param _ColdNodeType: <p>冷节点规格<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE32：16核32G</li><li>ES.S1.4XLARGE64：16核64G</li></p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ColdNodeType: str
-        :param _ColdNodeNum: 冷节点个数
+        :param _ColdNodeNum: <p>冷节点个数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ColdNodeNum: int
-        :param _ColdCpuNum: 冷节点CPU核数
+        :param _ColdCpuNum: <p>冷节点CPU核数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ColdCpuNum: int
-        :param _ColdMemSize: 冷节点内存大小，单位GB
+        :param _ColdMemSize: <p>冷节点内存大小，单位GB</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ColdMemSize: int
-        :param _ColdDiskType: 冷节点磁盘类型
+        :param _ColdDiskType: <p>冷节点磁盘类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ColdDiskType: str
-        :param _ColdDiskSize: 冷节点磁盘大小，单位GB
+        :param _ColdDiskSize: <p>冷节点磁盘大小，单位GB</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ColdDiskSize: int
-        :param _FrozenNodeType: 冻节点规格<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE32：16核32G</li><li>ES.S1.4XLARGE64：16核64G</li>
+        :param _FrozenNodeType: <p>冻节点规格<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE32：16核32G</li><li>ES.S1.4XLARGE64：16核64G</li></p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FrozenNodeType: str
-        :param _FrozenNodeNum: 冻节点个数
+        :param _FrozenNodeNum: <p>冻节点个数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FrozenNodeNum: int
-        :param _FrozenCpuNum: 冻节点CPU核数
+        :param _FrozenCpuNum: <p>冻节点CPU核数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FrozenCpuNum: int
-        :param _FrozenMemSize: 冻节点内存大小，单位GB
+        :param _FrozenMemSize: <p>冻节点内存大小，单位GB</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FrozenMemSize: int
-        :param _FrozenDiskType: 冻节点磁盘类型
+        :param _FrozenDiskType: <p>冻节点磁盘类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FrozenDiskType: str
-        :param _FrozenDiskSize: 冻节点磁盘大小，单位GB
+        :param _FrozenDiskSize: <p>冻节点磁盘大小，单位GB</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FrozenDiskSize: int
-        :param _HealthStatus: 集群健康状态 -1 未知；0 Green; 1 Yellow; 2 Red
+        :param _HealthStatus: <p>集群健康状态 -1 未知；0 Green; 1 Yellow; 2 Red</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type HealthStatus: int
-        :param _EsPrivateUrl: https集群内网url
+        :param _EsPrivateUrl: <p>https集群内网url</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type EsPrivateUrl: str
-        :param _EsPrivateDomain: https集群内网域名
+        :param _EsPrivateDomain: <p>https集群内网域名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type EsPrivateDomain: str
-        :param _EsConfigSets: 集群的配置组信息
+        :param _EsConfigSets: <p>集群的配置组信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type EsConfigSets: list of EsConfigSetInfo
-        :param _OperationDuration: 集群可维护时间段
+        :param _OperationDuration: <p>集群可维护时间段</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type OperationDuration: :class:`tencentcloud.es.v20180416.models.OperationDuration`
-        :param _OptionalWebServiceInfos: web节点列表
+        :param _OptionalWebServiceInfos: <p>web节点列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type OptionalWebServiceInfos: list of OptionalWebServiceInfo
-        :param _AutoIndexEnabled: 自治索引开关
+        :param _AutoIndexEnabled: <p>自治索引开关</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AutoIndexEnabled: bool
-        :param _EnableHybridStorage: 是否支持存储计算分离
+        :param _EnableHybridStorage: <p>是否支持存储计算分离</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type EnableHybridStorage: bool
-        :param _ProcessPercent: 流程进度
+        :param _ProcessPercent: <p>流程进度</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProcessPercent: float
-        :param _KibanaAlteringPublicAccess: Kibana的alerting外网告警策略<li>OPEN：开启</li><li>CLOSE：关闭</li>
+        :param _KibanaAlteringPublicAccess: <p>Kibana的alerting外网告警策略<li>OPEN：开启</li><li>CLOSE：关闭</li></p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type KibanaAlteringPublicAccess: str
-        :param _HasKernelUpgrade: 本月是否有内核可以更新：false-无，true-有
+        :param _HasKernelUpgrade: <p>本月是否有内核可以更新：false-无，true-有</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type HasKernelUpgrade: bool
-        :param _CdcId: cdcId，使用cdc子网时传递
+        :param _CdcId: <p>cdcId，使用cdc子网时传递</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CdcId: str
-        :param _KibanaPrivateVip: kibana内网vip
+        :param _KibanaPrivateVip: <p>kibana内网vip</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type KibanaPrivateVip: str
-        :param _CustomKibanaPrivateUrl: 自定义kibana内网url
+        :param _CustomKibanaPrivateUrl: <p>自定义kibana内网url</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CustomKibanaPrivateUrl: str
-        :param _OutboundPublicAcls: 节点出站访问详细信息
+        :param _OutboundPublicAcls: <p>节点出站访问详细信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type OutboundPublicAcls: list of OutboundPublicAcl
-        :param _NetConnectScheme: 网络连接方案
+        :param _NetConnectScheme: <p>网络连接方案</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type NetConnectScheme: str
-        :param _DisasterRecoverGroupAffinity: 置放群组相关参数
+        :param _DisasterRecoverGroupAffinity: <p>置放群组相关参数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DisasterRecoverGroupAffinity: int
-        :param _SubProductCode: 子产品ID枚举值： 开源版："sp_es_io2"， 基础版："sp_es_basic"，白金版："sp_es_platinum"，企业版："sp_es_enterprise"，CDC白金版："sp_es_cdc_platinum"，日志增强版："sp_es_enlogging"，tsearch："sp_tsearch_io2"，logstash："sp_es_logstash" ，可以为空，为空的时候后台取LicenseType映射该字段
+        :param _SubProductCode: <p>子产品ID枚举值： 开源版：&quot;sp_es_io2&quot;， 基础版：&quot;sp_es_basic&quot;，白金版：&quot;sp_es_platinum&quot;，企业版：&quot;sp_es_enterprise&quot;，CDC白金版：&quot;sp_es_cdc_platinum&quot;，日志增强版：&quot;sp_es_enlogging&quot;，tsearch：&quot;sp_tsearch_io2&quot;，logstash：&quot;sp_es_logstash&quot; ，可以为空，为空的时候后台取LicenseType映射该字段</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubProductCode: str
-        :param _CosBucketStorageSize: 存算分离cos用量，单位M
+        :param _CosBucketStorageSize: <p>存算分离cos用量，单位M</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CosBucketStorageSize: int
-        :param _ReadWriteMode: 读写分离模式：0-不开启，1-本地读写分离，2-远端读写分离
+        :param _ReadWriteMode: <p>读写分离模式：0-不开启，1-本地读写分离，2-远端读写分离</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReadWriteMode: int
-        :param _EnableScheduleRecoverGroup: 是否有置放群组异步调度任务
+        :param _EnableScheduleRecoverGroup: <p>是否有置放群组异步调度任务</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type EnableScheduleRecoverGroup: bool
-        :param _EnableScheduleOperationDuration: 异步调度任务的时间
+        :param _EnableScheduleOperationDuration: <p>异步调度任务的时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type EnableScheduleOperationDuration: :class:`tencentcloud.es.v20180416.models.EnableScheduleOperationDuration`
-        :param _EnableDestroyProtection: 开启集群保护：OPEN-开启，CLOSE-关闭
+        :param _EnableDestroyProtection: <p>开启集群保护：OPEN-开启，CLOSE-关闭</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type EnableDestroyProtection: str
-        :param _ShowKibanaIpPort: kibana内网访问地址
+        :param _ShowKibanaIpPort: <p>kibana内网访问地址</p>
         :type ShowKibanaIpPort: str
-        :param _IsCdzLite: 是否为CDZLite可用区
+        :param _IsCdzLite: <p>是否为CDZLite可用区</p>
         :type IsCdzLite: bool
-        :param _EsPrivateTcpUrl: 集群内网tcp地址
+        :param _EsPrivateTcpUrl: <p>集群内网tcp地址</p>
         :type EsPrivateTcpUrl: str
+        :param _IsInRecycleBin: <p>是否在回收站内</p><p>默认值：false</p>
+        :type IsInRecycleBin: bool
+        :param _RecycleLockEnabled: <p>回收站内是否锁定</p><p>默认值：false</p>
+        :type RecycleLockEnabled: bool
+        :param _MayDestroyPoint: <p>预计销毁的时间</p><p>参数格式：YYYY-MM-DD hh:mm:ss</p>
+        :type MayDestroyPoint: str
+        :param _DelayDestroyInterval: <p>延迟销毁的时间</p><p>单位：天</p>
+        :type DelayDestroyInterval: int
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -12854,10 +12947,14 @@ RENEW_FLAG_DEFAULT：不自动续费
         self._ShowKibanaIpPort = None
         self._IsCdzLite = None
         self._EsPrivateTcpUrl = None
+        self._IsInRecycleBin = None
+        self._RecycleLockEnabled = None
+        self._MayDestroyPoint = None
+        self._DelayDestroyInterval = None
 
     @property
     def InstanceId(self):
-        r"""实例ID
+        r"""<p>实例ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -12868,7 +12965,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def InstanceName(self):
-        r"""实例名称
+        r"""<p>实例名称</p>
         :rtype: str
         """
         return self._InstanceName
@@ -12879,7 +12976,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def Region(self):
-        r"""地域
+        r"""<p>地域</p>
         :rtype: str
         """
         return self._Region
@@ -12890,7 +12987,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def Zone(self):
-        r"""可用区
+        r"""<p>可用区</p>
         :rtype: str
         """
         return self._Zone
@@ -12901,7 +12998,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def AppId(self):
-        r"""用户ID
+        r"""<p>用户ID</p>
         :rtype: int
         """
         return self._AppId
@@ -12912,7 +13009,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def Uin(self):
-        r"""用户UIN
+        r"""<p>用户UIN</p>
         :rtype: str
         """
         return self._Uin
@@ -12923,7 +13020,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def VpcUid(self):
-        r"""实例所属VPC的UID
+        r"""<p>实例所属VPC的UID</p>
         :rtype: str
         """
         return self._VpcUid
@@ -12934,7 +13031,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def SubnetUid(self):
-        r"""实例所属子网的UID
+        r"""<p>实例所属子网的UID</p>
         :rtype: str
         """
         return self._SubnetUid
@@ -12945,7 +13042,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def Status(self):
-        r"""实例状态，0:处理中,1:正常,-1:停止,-2:销毁中,-3:已销毁, -4:隔离中,2:创建集群时初始化中
+        r"""<p>实例状态，0:处理中,1:正常,-1:停止,-2:销毁中,-3:已销毁, -4:隔离中,2:创建集群时初始化中</p>
         :rtype: int
         """
         return self._Status
@@ -12956,12 +13053,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def RenewFlag(self):
-        r"""自动续费标识。取值范围：
-RENEW_FLAG_AUTO：自动续费  
-RENEW_FLAG_MANUAL：不自动续费
-默认取值：
-RENEW_FLAG_DEFAULT：不自动续费
-若该参数指定为 RENEW_FLAG_AUTO，在账户余额充足的情况下，实例到期后将按月自动续费。
+        r"""<p>自动续费标识。取值范围：<br>RENEW_FLAG_AUTO：自动续费<br>RENEW_FLAG_MANUAL：不自动续费<br>默认取值：<br>RENEW_FLAG_DEFAULT：不自动续费<br>若该参数指定为 RENEW_FLAG_AUTO，在账户余额充足的情况下，实例到期后将按月自动续费。</p>
         :rtype: str
         """
         return self._RenewFlag
@@ -12972,7 +13064,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def ChargeType(self):
-        r"""实例计费模式。取值范围：  PREPAID：表示预付费，即包年包月  POSTPAID_BY_HOUR：表示后付费，即按量计费  CDHPAID：CDH付费，即只对CDH计费，不对CDH上的实例计费。
+        r"""<p>实例计费模式。取值范围：  PREPAID：表示预付费，即包年包月  POSTPAID_BY_HOUR：表示后付费，即按量计费  CDHPAID：CDH付费，即只对CDH计费，不对CDH上的实例计费。</p>
         :rtype: str
         """
         return self._ChargeType
@@ -12983,7 +13075,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def ChargePeriod(self):
-        r"""包年包月购买时长,单位:月
+        r"""<p>包年包月购买时长,单位:月</p>
         :rtype: int
         """
         return self._ChargePeriod
@@ -12994,7 +13086,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def NodeType(self):
-        r"""节点规格<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE32：16核32G</li><li>ES.S1.4XLARGE64：16核64G</li>
+        r"""<p>节点规格<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE32：16核32G</li><li>ES.S1.4XLARGE64：16核64G</li></p>
         :rtype: str
         """
         return self._NodeType
@@ -13005,7 +13097,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def NodeNum(self):
-        r"""节点个数
+        r"""<p>节点个数</p>
         :rtype: int
         """
         return self._NodeNum
@@ -13016,7 +13108,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def CpuNum(self):
-        r"""节点CPU核数
+        r"""<p>节点CPU核数</p>
         :rtype: int
         """
         return self._CpuNum
@@ -13027,7 +13119,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def MemSize(self):
-        r"""节点内存大小，单位GB
+        r"""<p>节点内存大小，单位GB</p>
         :rtype: int
         """
         return self._MemSize
@@ -13038,7 +13130,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def DiskType(self):
-        r"""节点磁盘类型
+        r"""<p>节点磁盘类型</p>
         :rtype: str
         """
         return self._DiskType
@@ -13049,7 +13141,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def DiskSize(self):
-        r"""节点磁盘大小，单位GB
+        r"""<p>节点磁盘大小，单位GB</p>
         :rtype: int
         """
         return self._DiskSize
@@ -13060,7 +13152,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def EsDomain(self):
-        r"""ES域名
+        r"""<p>ES域名</p>
         :rtype: str
         """
         return self._EsDomain
@@ -13071,7 +13163,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def EsVip(self):
-        r"""ES VIP
+        r"""<p>ES VIP</p>
         :rtype: str
         """
         return self._EsVip
@@ -13082,7 +13174,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def EsPort(self):
-        r"""ES端口
+        r"""<p>ES端口</p>
         :rtype: int
         """
         return self._EsPort
@@ -13093,7 +13185,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def KibanaUrl(self):
-        r"""Kibana访问url
+        r"""<p>Kibana访问url</p>
         :rtype: str
         """
         return self._KibanaUrl
@@ -13104,7 +13196,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def EsVersion(self):
-        r"""ES版本号
+        r"""<p>ES版本号</p>
         :rtype: str
         """
         return self._EsVersion
@@ -13115,7 +13207,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def EsConfig(self):
-        r"""ES配置项
+        r"""<p>ES配置项</p>
         :rtype: str
         """
         return self._EsConfig
@@ -13126,7 +13218,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def EsAcl(self):
-        r"""Kibana访问控制配置
+        r"""<p>Kibana访问控制配置</p>
         :rtype: :class:`tencentcloud.es.v20180416.models.EsAcl`
         """
         return self._EsAcl
@@ -13137,7 +13229,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def CreateTime(self):
-        r"""实例创建时间
+        r"""<p>实例创建时间</p>
         :rtype: str
         """
         return self._CreateTime
@@ -13148,7 +13240,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def UpdateTime(self):
-        r"""实例最后修改操作时间
+        r"""<p>实例最后修改操作时间</p>
         :rtype: str
         """
         return self._UpdateTime
@@ -13159,7 +13251,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def Deadline(self):
-        r"""实例到期时间
+        r"""<p>实例到期时间</p>
         :rtype: str
         """
         return self._Deadline
@@ -13170,7 +13262,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def InstanceType(self):
-        r"""实例类型（实例类型标识，当前只有1,2两种）
+        r"""<p>实例类型（实例类型标识，当前只有1,2两种）</p>
         :rtype: int
         """
         return self._InstanceType
@@ -13181,7 +13273,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def IkConfig(self):
-        r"""Ik分词器配置
+        r"""<p>Ik分词器配置</p>
         :rtype: :class:`tencentcloud.es.v20180416.models.EsDictionaryInfo`
         """
         return self._IkConfig
@@ -13192,7 +13284,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def MasterNodeInfo(self):
-        r"""专用主节点配置
+        r"""<p>专用主节点配置</p>
         :rtype: :class:`tencentcloud.es.v20180416.models.MasterNodeInfo`
         """
         return self._MasterNodeInfo
@@ -13203,7 +13295,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def CosBackup(self):
-        r"""cos自动备份配置
+        r"""<p>cos自动备份配置</p>
         :rtype: :class:`tencentcloud.es.v20180416.models.CosBackup`
         """
         return self._CosBackup
@@ -13214,7 +13306,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def AllowCosBackup(self):
-        r"""是否允许cos自动备份
+        r"""<p>是否允许cos自动备份</p>
         :rtype: bool
         """
         return self._AllowCosBackup
@@ -13225,7 +13317,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def TagList(self):
-        r"""实例拥有的标签列表
+        r"""<p>实例拥有的标签列表</p>
         :rtype: list of TagInfo
         """
         return self._TagList
@@ -13236,7 +13328,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def LicenseType(self):
-        r"""License类型<li>oss：开源版</li><li>basic：基础版</li><li>platinum：白金版</li>默认值platinum
+        r"""<p>License类型<li>oss：开源版</li><li>basic：基础版</li><li>platinum：白金版</li>默认值platinum</p>
         :rtype: str
         """
         return self._LicenseType
@@ -13247,7 +13339,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def EnableHotWarmMode(self):
-        r"""是否为冷热集群<li>true: 冷热集群</li><li>false: 非冷热集群</li>
+        r"""<p>是否为冷热集群<li>true: 冷热集群</li><li>false: 非冷热集群</li></p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -13259,7 +13351,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def WarmNodeType(self):
-        r"""温节点规格<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE32：16核32G</li><li>ES.S1.4XLARGE64：16核64G</li>
+        r"""<p>温节点规格<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE32：16核32G</li><li>ES.S1.4XLARGE64：16核64G</li></p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -13271,7 +13363,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def WarmNodeNum(self):
-        r"""温节点个数
+        r"""<p>温节点个数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -13283,7 +13375,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def WarmCpuNum(self):
-        r"""温节点CPU核数
+        r"""<p>温节点CPU核数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -13295,7 +13387,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def WarmMemSize(self):
-        r"""温节点内存内存大小，单位GB
+        r"""<p>温节点内存内存大小，单位GB</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -13307,7 +13399,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def WarmDiskType(self):
-        r"""温节点磁盘类型
+        r"""<p>温节点磁盘类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -13319,7 +13411,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def WarmDiskSize(self):
-        r"""温节点磁盘大小，单位GB
+        r"""<p>温节点磁盘大小，单位GB</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -13331,7 +13423,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def NodeInfoList(self):
-        r"""集群节点信息列表
+        r"""<p>集群节点信息列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of NodeInfo
         """
@@ -13343,7 +13435,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def EsPublicUrl(self):
-        r"""Es公网地址
+        r"""<p>Es公网地址</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -13355,7 +13447,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def MultiZoneInfo(self):
-        r"""多可用区网络信息
+        r"""<p>多可用区网络信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ZoneDetail
         """
@@ -13367,7 +13459,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def DeployMode(self):
-        r"""部署模式<li>0：单可用区</li><li>1：多可用区，北京、上海、上海金融、广州、南京、香港、新加坡、法兰克福（白名单控制）</li>
+        r"""<p>部署模式<li>0：单可用区</li><li>1：多可用区，北京、上海、上海金融、广州、南京、香港、新加坡、法兰克福（白名单控制）</li></p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -13379,7 +13471,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def PublicAccess(self):
-        r"""ES公网访问状态<li>OPEN：开启</li><li>CLOSE：关闭</li>
+        r"""<p>ES公网访问状态<li>OPEN：开启</li><li>CLOSE：关闭</li></p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -13391,7 +13483,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def EsPublicAcl(self):
-        r"""ES公网访问控制配置
+        r"""<p>ES公网访问控制配置</p>
         :rtype: :class:`tencentcloud.es.v20180416.models.EsAcl`
         """
         return self._EsPublicAcl
@@ -13402,7 +13494,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def KibanaPrivateUrl(self):
-        r"""Kibana内网地址
+        r"""<p>Kibana内网地址</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -13414,7 +13506,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def KibanaPublicAccess(self):
-        r"""Kibana公网访问状态<li>OPEN：开启</li><li>CLOSE：关闭</li>
+        r"""<p>Kibana公网访问状态<li>OPEN：开启</li><li>CLOSE：关闭</li></p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -13426,7 +13518,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def KibanaPrivateAccess(self):
-        r"""Kibana内网访问状态<li>OPEN：开启</li><li>CLOSE：关闭</li>
+        r"""<p>Kibana内网访问状态<li>OPEN：开启</li><li>CLOSE：关闭</li></p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -13438,7 +13530,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def SecurityType(self):
-        r"""6.8（及以上版本）基础版是否开启xpack security认证<li>1：不开启</li><li>2：开启</li>
+        r"""<p>6.8（及以上版本）基础版是否开启xpack security认证<li>1：不开启</li><li>2：开启</li></p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -13450,7 +13542,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def SceneType(self):
-        r"""场景化模板类型：0、不开启；1、通用场景；2、日志场景；3、搜索场景
+        r"""<p>场景化模板类型：0、不开启；1、通用场景；2、日志场景；3、搜索场景</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -13462,7 +13554,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def KibanaConfig(self):
-        r"""Kibana配置项
+        r"""<p>Kibana配置项</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -13474,7 +13566,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def KibanaNodeInfo(self):
-        r"""Kibana节点信息
+        r"""<p>Kibana节点信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.es.v20180416.models.KibanaNodeInfo`
         """
@@ -13486,7 +13578,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def WebNodeTypeInfo(self):
-        r"""可视化节点配置
+        r"""<p>可视化节点配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.es.v20180416.models.WebNodeTypeInfo`
         """
@@ -13498,7 +13590,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def Jdk(self):
-        r"""JDK类型，oracle或kona
+        r"""<p>JDK类型，oracle或kona</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -13510,7 +13602,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def Protocol(self):
-        r"""集群网络通讯协议
+        r"""<p>集群网络通讯协议</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -13522,7 +13614,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def SecurityGroups(self):
-        r"""安全组id
+        r"""<p>安全组id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -13534,7 +13626,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def ColdNodeType(self):
-        r"""冷节点规格<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE32：16核32G</li><li>ES.S1.4XLARGE64：16核64G</li>
+        r"""<p>冷节点规格<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE32：16核32G</li><li>ES.S1.4XLARGE64：16核64G</li></p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -13546,7 +13638,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def ColdNodeNum(self):
-        r"""冷节点个数
+        r"""<p>冷节点个数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -13558,7 +13650,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def ColdCpuNum(self):
-        r"""冷节点CPU核数
+        r"""<p>冷节点CPU核数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -13570,7 +13662,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def ColdMemSize(self):
-        r"""冷节点内存大小，单位GB
+        r"""<p>冷节点内存大小，单位GB</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -13582,7 +13674,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def ColdDiskType(self):
-        r"""冷节点磁盘类型
+        r"""<p>冷节点磁盘类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -13594,7 +13686,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def ColdDiskSize(self):
-        r"""冷节点磁盘大小，单位GB
+        r"""<p>冷节点磁盘大小，单位GB</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -13606,7 +13698,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def FrozenNodeType(self):
-        r"""冻节点规格<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE32：16核32G</li><li>ES.S1.4XLARGE64：16核64G</li>
+        r"""<p>冻节点规格<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE32：16核32G</li><li>ES.S1.4XLARGE64：16核64G</li></p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -13618,7 +13710,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def FrozenNodeNum(self):
-        r"""冻节点个数
+        r"""<p>冻节点个数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -13630,7 +13722,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def FrozenCpuNum(self):
-        r"""冻节点CPU核数
+        r"""<p>冻节点CPU核数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -13642,7 +13734,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def FrozenMemSize(self):
-        r"""冻节点内存大小，单位GB
+        r"""<p>冻节点内存大小，单位GB</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -13654,7 +13746,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def FrozenDiskType(self):
-        r"""冻节点磁盘类型
+        r"""<p>冻节点磁盘类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -13666,7 +13758,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def FrozenDiskSize(self):
-        r"""冻节点磁盘大小，单位GB
+        r"""<p>冻节点磁盘大小，单位GB</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -13678,7 +13770,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def HealthStatus(self):
-        r"""集群健康状态 -1 未知；0 Green; 1 Yellow; 2 Red
+        r"""<p>集群健康状态 -1 未知；0 Green; 1 Yellow; 2 Red</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -13690,7 +13782,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def EsPrivateUrl(self):
-        r"""https集群内网url
+        r"""<p>https集群内网url</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -13702,7 +13794,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def EsPrivateDomain(self):
-        r"""https集群内网域名
+        r"""<p>https集群内网域名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -13714,7 +13806,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def EsConfigSets(self):
-        r"""集群的配置组信息
+        r"""<p>集群的配置组信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of EsConfigSetInfo
         """
@@ -13726,7 +13818,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def OperationDuration(self):
-        r"""集群可维护时间段
+        r"""<p>集群可维护时间段</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.es.v20180416.models.OperationDuration`
         """
@@ -13738,7 +13830,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def OptionalWebServiceInfos(self):
-        r"""web节点列表
+        r"""<p>web节点列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of OptionalWebServiceInfo
         """
@@ -13750,7 +13842,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def AutoIndexEnabled(self):
-        r"""自治索引开关
+        r"""<p>自治索引开关</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -13762,7 +13854,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def EnableHybridStorage(self):
-        r"""是否支持存储计算分离
+        r"""<p>是否支持存储计算分离</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -13774,7 +13866,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def ProcessPercent(self):
-        r"""流程进度
+        r"""<p>流程进度</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -13786,7 +13878,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def KibanaAlteringPublicAccess(self):
-        r"""Kibana的alerting外网告警策略<li>OPEN：开启</li><li>CLOSE：关闭</li>
+        r"""<p>Kibana的alerting外网告警策略<li>OPEN：开启</li><li>CLOSE：关闭</li></p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -13798,7 +13890,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def HasKernelUpgrade(self):
-        r"""本月是否有内核可以更新：false-无，true-有
+        r"""<p>本月是否有内核可以更新：false-无，true-有</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -13810,7 +13902,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def CdcId(self):
-        r"""cdcId，使用cdc子网时传递
+        r"""<p>cdcId，使用cdc子网时传递</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -13822,7 +13914,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def KibanaPrivateVip(self):
-        r"""kibana内网vip
+        r"""<p>kibana内网vip</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -13834,7 +13926,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def CustomKibanaPrivateUrl(self):
-        r"""自定义kibana内网url
+        r"""<p>自定义kibana内网url</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -13846,7 +13938,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def OutboundPublicAcls(self):
-        r"""节点出站访问详细信息
+        r"""<p>节点出站访问详细信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of OutboundPublicAcl
         """
@@ -13858,7 +13950,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def NetConnectScheme(self):
-        r"""网络连接方案
+        r"""<p>网络连接方案</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -13870,7 +13962,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def DisasterRecoverGroupAffinity(self):
-        r"""置放群组相关参数
+        r"""<p>置放群组相关参数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -13882,7 +13974,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def SubProductCode(self):
-        r"""子产品ID枚举值： 开源版："sp_es_io2"， 基础版："sp_es_basic"，白金版："sp_es_platinum"，企业版："sp_es_enterprise"，CDC白金版："sp_es_cdc_platinum"，日志增强版："sp_es_enlogging"，tsearch："sp_tsearch_io2"，logstash："sp_es_logstash" ，可以为空，为空的时候后台取LicenseType映射该字段
+        r"""<p>子产品ID枚举值： 开源版：&quot;sp_es_io2&quot;， 基础版：&quot;sp_es_basic&quot;，白金版：&quot;sp_es_platinum&quot;，企业版：&quot;sp_es_enterprise&quot;，CDC白金版：&quot;sp_es_cdc_platinum&quot;，日志增强版：&quot;sp_es_enlogging&quot;，tsearch：&quot;sp_tsearch_io2&quot;，logstash：&quot;sp_es_logstash&quot; ，可以为空，为空的时候后台取LicenseType映射该字段</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -13894,7 +13986,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def CosBucketStorageSize(self):
-        r"""存算分离cos用量，单位M
+        r"""<p>存算分离cos用量，单位M</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -13906,7 +13998,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def ReadWriteMode(self):
-        r"""读写分离模式：0-不开启，1-本地读写分离，2-远端读写分离
+        r"""<p>读写分离模式：0-不开启，1-本地读写分离，2-远端读写分离</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -13918,7 +14010,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def EnableScheduleRecoverGroup(self):
-        r"""是否有置放群组异步调度任务
+        r"""<p>是否有置放群组异步调度任务</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -13930,7 +14022,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def EnableScheduleOperationDuration(self):
-        r"""异步调度任务的时间
+        r"""<p>异步调度任务的时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.es.v20180416.models.EnableScheduleOperationDuration`
         """
@@ -13942,7 +14034,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def EnableDestroyProtection(self):
-        r"""开启集群保护：OPEN-开启，CLOSE-关闭
+        r"""<p>开启集群保护：OPEN-开启，CLOSE-关闭</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -13954,7 +14046,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def ShowKibanaIpPort(self):
-        r"""kibana内网访问地址
+        r"""<p>kibana内网访问地址</p>
         :rtype: str
         """
         return self._ShowKibanaIpPort
@@ -13965,7 +14057,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def IsCdzLite(self):
-        r"""是否为CDZLite可用区
+        r"""<p>是否为CDZLite可用区</p>
         :rtype: bool
         """
         return self._IsCdzLite
@@ -13976,7 +14068,7 @@ RENEW_FLAG_DEFAULT：不自动续费
 
     @property
     def EsPrivateTcpUrl(self):
-        r"""集群内网tcp地址
+        r"""<p>集群内网tcp地址</p>
         :rtype: str
         """
         return self._EsPrivateTcpUrl
@@ -13984,6 +14076,50 @@ RENEW_FLAG_DEFAULT：不自动续费
     @EsPrivateTcpUrl.setter
     def EsPrivateTcpUrl(self, EsPrivateTcpUrl):
         self._EsPrivateTcpUrl = EsPrivateTcpUrl
+
+    @property
+    def IsInRecycleBin(self):
+        r"""<p>是否在回收站内</p><p>默认值：false</p>
+        :rtype: bool
+        """
+        return self._IsInRecycleBin
+
+    @IsInRecycleBin.setter
+    def IsInRecycleBin(self, IsInRecycleBin):
+        self._IsInRecycleBin = IsInRecycleBin
+
+    @property
+    def RecycleLockEnabled(self):
+        r"""<p>回收站内是否锁定</p><p>默认值：false</p>
+        :rtype: bool
+        """
+        return self._RecycleLockEnabled
+
+    @RecycleLockEnabled.setter
+    def RecycleLockEnabled(self, RecycleLockEnabled):
+        self._RecycleLockEnabled = RecycleLockEnabled
+
+    @property
+    def MayDestroyPoint(self):
+        r"""<p>预计销毁的时间</p><p>参数格式：YYYY-MM-DD hh:mm:ss</p>
+        :rtype: str
+        """
+        return self._MayDestroyPoint
+
+    @MayDestroyPoint.setter
+    def MayDestroyPoint(self, MayDestroyPoint):
+        self._MayDestroyPoint = MayDestroyPoint
+
+    @property
+    def DelayDestroyInterval(self):
+        r"""<p>延迟销毁的时间</p><p>单位：天</p>
+        :rtype: int
+        """
+        return self._DelayDestroyInterval
+
+    @DelayDestroyInterval.setter
+    def DelayDestroyInterval(self, DelayDestroyInterval):
+        self._DelayDestroyInterval = DelayDestroyInterval
 
 
     def _deserialize(self, params):
@@ -14132,6 +14268,10 @@ RENEW_FLAG_DEFAULT：不自动续费
         self._ShowKibanaIpPort = params.get("ShowKibanaIpPort")
         self._IsCdzLite = params.get("IsCdzLite")
         self._EsPrivateTcpUrl = params.get("EsPrivateTcpUrl")
+        self._IsInRecycleBin = params.get("IsInRecycleBin")
+        self._RecycleLockEnabled = params.get("RecycleLockEnabled")
+        self._MayDestroyPoint = params.get("MayDestroyPoint")
+        self._DelayDestroyInterval = params.get("DelayDestroyInterval")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17556,27 +17696,29 @@ class Operation(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 操作唯一id
+        :param _Id: <p>操作唯一id</p>
         :type Id: int
-        :param _StartTime: 操作开始时间
+        :param _StartTime: <p>操作开始时间</p>
         :type StartTime: str
-        :param _Type: 操作类型
+        :param _Type: <p>操作类型</p>
         :type Type: str
-        :param _Detail: 操作详情
+        :param _Detail: <p>操作详情</p>
         :type Detail: :class:`tencentcloud.es.v20180416.models.OperationDetail`
-        :param _Result: 操作结果
+        :param _Result: <p>操作结果</p>
         :type Result: str
-        :param _Tasks: 流程任务信息
+        :param _Tasks: <p>流程任务信息</p>
         :type Tasks: list of TaskDetail
-        :param _Progress: 操作进度
+        :param _Progress: <p>操作进度</p>
         :type Progress: float
-        :param _RollbackTag: 回滚标记， 0未回滚 ，1回滚中，2已回滚
+        :param _RollbackTag: <p>回滚标记， 0未回滚 ，1回滚中，2已回滚</p>
         :type RollbackTag: int
-        :param _SubAccountUin: 操作者Uin
+        :param _SubAccountUin: <p>操作者Uin</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubAccountUin: str
-        :param _AutoScaleTag: 自动扩容标识：0-非自动，1-自动
+        :param _AutoScaleTag: <p>自动扩容标识：0-非自动，1-自动</p>
         :type AutoScaleTag: int
+        :param _SuspendedReason: <p>流程异常原因</p>
+        :type SuspendedReason: str
         """
         self._Id = None
         self._StartTime = None
@@ -17588,10 +17730,11 @@ class Operation(AbstractModel):
         self._RollbackTag = None
         self._SubAccountUin = None
         self._AutoScaleTag = None
+        self._SuspendedReason = None
 
     @property
     def Id(self):
-        r"""操作唯一id
+        r"""<p>操作唯一id</p>
         :rtype: int
         """
         return self._Id
@@ -17602,7 +17745,7 @@ class Operation(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""操作开始时间
+        r"""<p>操作开始时间</p>
         :rtype: str
         """
         return self._StartTime
@@ -17613,7 +17756,7 @@ class Operation(AbstractModel):
 
     @property
     def Type(self):
-        r"""操作类型
+        r"""<p>操作类型</p>
         :rtype: str
         """
         return self._Type
@@ -17624,7 +17767,7 @@ class Operation(AbstractModel):
 
     @property
     def Detail(self):
-        r"""操作详情
+        r"""<p>操作详情</p>
         :rtype: :class:`tencentcloud.es.v20180416.models.OperationDetail`
         """
         return self._Detail
@@ -17635,7 +17778,7 @@ class Operation(AbstractModel):
 
     @property
     def Result(self):
-        r"""操作结果
+        r"""<p>操作结果</p>
         :rtype: str
         """
         return self._Result
@@ -17646,7 +17789,7 @@ class Operation(AbstractModel):
 
     @property
     def Tasks(self):
-        r"""流程任务信息
+        r"""<p>流程任务信息</p>
         :rtype: list of TaskDetail
         """
         return self._Tasks
@@ -17657,7 +17800,7 @@ class Operation(AbstractModel):
 
     @property
     def Progress(self):
-        r"""操作进度
+        r"""<p>操作进度</p>
         :rtype: float
         """
         return self._Progress
@@ -17668,7 +17811,7 @@ class Operation(AbstractModel):
 
     @property
     def RollbackTag(self):
-        r"""回滚标记， 0未回滚 ，1回滚中，2已回滚
+        r"""<p>回滚标记， 0未回滚 ，1回滚中，2已回滚</p>
         :rtype: int
         """
         return self._RollbackTag
@@ -17679,7 +17822,7 @@ class Operation(AbstractModel):
 
     @property
     def SubAccountUin(self):
-        r"""操作者Uin
+        r"""<p>操作者Uin</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -17691,7 +17834,7 @@ class Operation(AbstractModel):
 
     @property
     def AutoScaleTag(self):
-        r"""自动扩容标识：0-非自动，1-自动
+        r"""<p>自动扩容标识：0-非自动，1-自动</p>
         :rtype: int
         """
         return self._AutoScaleTag
@@ -17699,6 +17842,17 @@ class Operation(AbstractModel):
     @AutoScaleTag.setter
     def AutoScaleTag(self, AutoScaleTag):
         self._AutoScaleTag = AutoScaleTag
+
+    @property
+    def SuspendedReason(self):
+        r"""<p>流程异常原因</p>
+        :rtype: str
+        """
+        return self._SuspendedReason
+
+    @SuspendedReason.setter
+    def SuspendedReason(self, SuspendedReason):
+        self._SuspendedReason = SuspendedReason
 
 
     def _deserialize(self, params):
@@ -17719,6 +17873,7 @@ class Operation(AbstractModel):
         self._RollbackTag = params.get("RollbackTag")
         self._SubAccountUin = params.get("SubAccountUin")
         self._AutoScaleTag = params.get("AutoScaleTag")
+        self._SuspendedReason = params.get("SuspendedReason")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18307,30 +18462,30 @@ class ProcessDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Completed: 已完成数量
+        :param _Completed: <p>已完成数量</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Completed: int
-        :param _Remain: 剩余数量
+        :param _Remain: <p>剩余数量</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Remain: int
-        :param _Total: 总数量
+        :param _Total: <p>总数量</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
-        :param _TaskType: 任务类型：
-60：重启型任务
-70：分片迁移型任务
-80：节点变配任务
+        :param _TaskType: <p>任务类型：<br>60：重启型任务<br>70：分片迁移型任务<br>80：节点变配任务</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskType: int
+        :param _EstimatedTimeRemaining: <p>预估剩余时间</p><p>单位：秒</p>
+        :type EstimatedTimeRemaining: int
         """
         self._Completed = None
         self._Remain = None
         self._Total = None
         self._TaskType = None
+        self._EstimatedTimeRemaining = None
 
     @property
     def Completed(self):
-        r"""已完成数量
+        r"""<p>已完成数量</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -18342,7 +18497,7 @@ class ProcessDetail(AbstractModel):
 
     @property
     def Remain(self):
-        r"""剩余数量
+        r"""<p>剩余数量</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -18354,7 +18509,7 @@ class ProcessDetail(AbstractModel):
 
     @property
     def Total(self):
-        r"""总数量
+        r"""<p>总数量</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -18366,10 +18521,7 @@ class ProcessDetail(AbstractModel):
 
     @property
     def TaskType(self):
-        r"""任务类型：
-60：重启型任务
-70：分片迁移型任务
-80：节点变配任务
+        r"""<p>任务类型：<br>60：重启型任务<br>70：分片迁移型任务<br>80：节点变配任务</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -18379,12 +18531,24 @@ class ProcessDetail(AbstractModel):
     def TaskType(self, TaskType):
         self._TaskType = TaskType
 
+    @property
+    def EstimatedTimeRemaining(self):
+        r"""<p>预估剩余时间</p><p>单位：秒</p>
+        :rtype: int
+        """
+        return self._EstimatedTimeRemaining
+
+    @EstimatedTimeRemaining.setter
+    def EstimatedTimeRemaining(self, EstimatedTimeRemaining):
+        self._EstimatedTimeRemaining = EstimatedTimeRemaining
+
 
     def _deserialize(self, params):
         self._Completed = params.get("Completed")
         self._Remain = params.get("Remain")
         self._Total = params.get("Total")
         self._TaskType = params.get("TaskType")
+        self._EstimatedTimeRemaining = params.get("EstimatedTimeRemaining")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19202,28 +19366,26 @@ class RestoreClusterSnapshotRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 集群实例Id，格式：es-xxxx
+        :param _InstanceId: <p>集群实例Id，格式：es-xxxx</p>
         :type InstanceId: str
-        :param _RepositoryName: 仓库名称
+        :param _RepositoryName: <p>仓库名称</p>
         :type RepositoryName: str
-        :param _SnapshotName: 集群快照名称
+        :param _SnapshotName: <p>集群快照名称</p>
         :type SnapshotName: str
-        :param _TargetInstanceId: 目标集群实例Id，格式：es-xxxx，如果是恢复到本地，则和InstanceId一致
+        :param _TargetInstanceId: <p>目标集群实例Id，格式：es-xxxx，如果是恢复到本地，则和InstanceId一致</p>
         :type TargetInstanceId: str
-        :param _Password: elastic用户名对应的密码信息
+        :param _Password: <p>elastic用户名对应的密码信息</p>
         :type Password: str
-        :param _IndexSettings: 要在所有恢复的索引中添加或更改的设置的逗号分隔列表。使用此参数可以在恢复快照时覆盖索引设置。
+        :param _IndexSettings: <p>要在所有恢复的索引中添加或更改的设置的逗号分隔列表。使用此参数可以在恢复快照时覆盖索引设置。</p>
         :type IndexSettings: str
-        :param _IncludeGlobalState: 不应从快照还原的以逗号分隔的索引设置列表。
+        :param _IncludeGlobalState: <p>不应从快照还原的以逗号分隔的索引设置列表。</p>
         :type IncludeGlobalState: list of str
-        :param _Indices: 需要恢复的索引名称，非必填，为空则表示恢复所有
-
-支持传多个索引名称
+        :param _Indices: <p>需要恢复的索引名称，非必填，为空则表示恢复所有</p><p>支持传多个索引名称</p>
         :type Indices: str
-        :param _Partial: 如果为 false，则如果快照中包含的一个或多个索引没有所有主分片可用，则整个恢复操作将失败。默认为 false,
-
-如果为 true，则允许恢复具有不可用分片的索引的部分快照。只有成功包含在快照中的分片才会被恢复。所有丢失的碎片将被重新创建为空
+        :param _Partial: <p>如果为 false，则如果快照中包含的一个或多个索引没有所有主分片可用，则整个恢复操作将失败。默认为 false,</p><p>如果为 true，则允许恢复具有不可用分片的索引的部分快照。只有成功包含在快照中的分片才会被恢复。所有丢失的碎片将被重新创建为空</p>
         :type Partial: str
+        :param _MaxRestorePerSec: <p>快照恢复速率（单位mb）</p>
+        :type MaxRestorePerSec: str
         """
         self._InstanceId = None
         self._RepositoryName = None
@@ -19234,10 +19396,11 @@ class RestoreClusterSnapshotRequest(AbstractModel):
         self._IncludeGlobalState = None
         self._Indices = None
         self._Partial = None
+        self._MaxRestorePerSec = None
 
     @property
     def InstanceId(self):
-        r"""集群实例Id，格式：es-xxxx
+        r"""<p>集群实例Id，格式：es-xxxx</p>
         :rtype: str
         """
         return self._InstanceId
@@ -19248,7 +19411,7 @@ class RestoreClusterSnapshotRequest(AbstractModel):
 
     @property
     def RepositoryName(self):
-        r"""仓库名称
+        r"""<p>仓库名称</p>
         :rtype: str
         """
         return self._RepositoryName
@@ -19259,7 +19422,7 @@ class RestoreClusterSnapshotRequest(AbstractModel):
 
     @property
     def SnapshotName(self):
-        r"""集群快照名称
+        r"""<p>集群快照名称</p>
         :rtype: str
         """
         return self._SnapshotName
@@ -19270,7 +19433,7 @@ class RestoreClusterSnapshotRequest(AbstractModel):
 
     @property
     def TargetInstanceId(self):
-        r"""目标集群实例Id，格式：es-xxxx，如果是恢复到本地，则和InstanceId一致
+        r"""<p>目标集群实例Id，格式：es-xxxx，如果是恢复到本地，则和InstanceId一致</p>
         :rtype: str
         """
         return self._TargetInstanceId
@@ -19281,7 +19444,7 @@ class RestoreClusterSnapshotRequest(AbstractModel):
 
     @property
     def Password(self):
-        r"""elastic用户名对应的密码信息
+        r"""<p>elastic用户名对应的密码信息</p>
         :rtype: str
         """
         return self._Password
@@ -19292,7 +19455,7 @@ class RestoreClusterSnapshotRequest(AbstractModel):
 
     @property
     def IndexSettings(self):
-        r"""要在所有恢复的索引中添加或更改的设置的逗号分隔列表。使用此参数可以在恢复快照时覆盖索引设置。
+        r"""<p>要在所有恢复的索引中添加或更改的设置的逗号分隔列表。使用此参数可以在恢复快照时覆盖索引设置。</p>
         :rtype: str
         """
         return self._IndexSettings
@@ -19303,7 +19466,7 @@ class RestoreClusterSnapshotRequest(AbstractModel):
 
     @property
     def IncludeGlobalState(self):
-        r"""不应从快照还原的以逗号分隔的索引设置列表。
+        r"""<p>不应从快照还原的以逗号分隔的索引设置列表。</p>
         :rtype: list of str
         """
         return self._IncludeGlobalState
@@ -19314,9 +19477,7 @@ class RestoreClusterSnapshotRequest(AbstractModel):
 
     @property
     def Indices(self):
-        r"""需要恢复的索引名称，非必填，为空则表示恢复所有
-
-支持传多个索引名称
+        r"""<p>需要恢复的索引名称，非必填，为空则表示恢复所有</p><p>支持传多个索引名称</p>
         :rtype: str
         """
         return self._Indices
@@ -19327,9 +19488,7 @@ class RestoreClusterSnapshotRequest(AbstractModel):
 
     @property
     def Partial(self):
-        r"""如果为 false，则如果快照中包含的一个或多个索引没有所有主分片可用，则整个恢复操作将失败。默认为 false,
-
-如果为 true，则允许恢复具有不可用分片的索引的部分快照。只有成功包含在快照中的分片才会被恢复。所有丢失的碎片将被重新创建为空
+        r"""<p>如果为 false，则如果快照中包含的一个或多个索引没有所有主分片可用，则整个恢复操作将失败。默认为 false,</p><p>如果为 true，则允许恢复具有不可用分片的索引的部分快照。只有成功包含在快照中的分片才会被恢复。所有丢失的碎片将被重新创建为空</p>
         :rtype: str
         """
         return self._Partial
@@ -19337,6 +19496,17 @@ class RestoreClusterSnapshotRequest(AbstractModel):
     @Partial.setter
     def Partial(self, Partial):
         self._Partial = Partial
+
+    @property
+    def MaxRestorePerSec(self):
+        r"""<p>快照恢复速率（单位mb）</p>
+        :rtype: str
+        """
+        return self._MaxRestorePerSec
+
+    @MaxRestorePerSec.setter
+    def MaxRestorePerSec(self, MaxRestorePerSec):
+        self._MaxRestorePerSec = MaxRestorePerSec
 
 
     def _deserialize(self, params):
@@ -19349,6 +19519,7 @@ class RestoreClusterSnapshotRequest(AbstractModel):
         self._IncludeGlobalState = params.get("IncludeGlobalState")
         self._Indices = params.get("Indices")
         self._Partial = params.get("Partial")
+        self._MaxRestorePerSec = params.get("MaxRestorePerSec")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19366,7 +19537,7 @@ class RestoreClusterSnapshotResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 集群实例id
+        :param _InstanceId: <p>集群实例id</p>
         :type InstanceId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -19376,7 +19547,7 @@ class RestoreClusterSnapshotResponse(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""集群实例id
+        r"""<p>集群实例id</p>
         :rtype: str
         """
         return self._InstanceId
@@ -20794,104 +20965,102 @@ class Snapshots(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SnapshotName: 快照名称
+        :param _SnapshotName: <p>快照名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SnapshotName: str
-        :param _Uuid: 快照Uuid
+        :param _Uuid: <p>快照Uuid</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Uuid: str
-        :param _Repository: 仓库名称
+        :param _Repository: <p>仓库名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Repository: str
-        :param _Version: 该快照所属集群的版本号
+        :param _Version: <p>该快照所属集群的版本号</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Version: str
-        :param _Indices: 备份的索引列表
+        :param _Indices: <p>备份的索引列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Indices: list of str
-        :param _DataStreams: 备份的datastream列表
+        :param _DataStreams: <p>备份的datastream列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DataStreams: list of str
-        :param _State: 备份的状态
-
-FAILED            备份失败
-
-IN_PROGRESS 备份执行中
-
-PARTIAL          备份部分成功，部分失败，备份失败的索引和原因会在Failures字段中展示
-
-SUCCESS     备份成功
+        :param _State: <p>备份的状态</p><p>FAILED            备份失败</p><p>IN_PROGRESS 备份执行中</p><p>PARTIAL          备份部分成功，部分失败，备份失败的索引和原因会在Failures字段中展示</p><p>SUCCESS     备份成功</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type State: str
-        :param _StartTime: 快照备份的开始时间
+        :param _StartTime: <p>快照备份的开始时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: str
-        :param _EndTime: 快照备份的结束时间
+        :param _EndTime: <p>快照备份的结束时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: str
-        :param _DurationInMillis: 快照备份的耗时时间
+        :param _DurationInMillis: <p>快照备份的耗时时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DurationInMillis: int
-        :param _TotalShards: 备份的总分片数
+        :param _TotalShards: <p>备份的总分片数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalShards: int
-        :param _FailedShards: 备份失败的分片数量
+        :param _FailedShards: <p>备份失败的分片数量</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FailedShards: int
-        :param _SuccessfulShards: 备份成功的分片数量
+        :param _SuccessfulShards: <p>备份成功的分片数量</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SuccessfulShards: int
-        :param _Failures: 备份失败的索引分片和失败原因
+        :param _Failures: <p>备份失败的索引分片和失败原因</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Failures: list of Failures
-        :param _UserBackUp: 是否用户备份
+        :param _UserBackUp: <p>是否用户备份</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UserBackUp: str
-        :param _EsRepositoryType: 0 腾讯云仓库; 1 客户仓库
+        :param _EsRepositoryType: <p>0 腾讯云仓库; 1 客户仓库</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type EsRepositoryType: int
-        :param _PaasEsRepository: 托管快照仓库名称
+        :param _PaasEsRepository: <p>托管快照仓库名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type PaasEsRepository: str
-        :param _UserEsRepository: 客户快照仓库名称
+        :param _UserEsRepository: <p>客户快照仓库名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UserEsRepository: str
-        :param _StorageDuration: 快照存储周期 单位天，范围[0, INF), 如果没有设置则默认7天
+        :param _StorageDuration: <p>快照存储周期 单位天，范围[0, INF), 如果没有设置则默认7天</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type StorageDuration: int
-        :param _AutoBackupInterval: 自动备份频率, 如果是0,则等效24
+        :param _AutoBackupInterval: <p>自动备份频率, 如果是0,则等效24</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AutoBackupInterval: int
-        :param _CosRetention: 备份锁定 0 不锁定; 1 锁定
+        :param _CosRetention: <p>备份锁定 0 不锁定; 1 锁定</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CosRetention: int
-        :param _RetainUntilDate: 锁定截止日期 2022-12-10T08:34:48.000Z
+        :param _RetainUntilDate: <p>锁定截止日期 2022-12-10T08:34:48.000Z</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RetainUntilDate: str
-        :param _RetentionGraceTime: 锁定宽限期,单位天
+        :param _RetentionGraceTime: <p>锁定宽限期,单位天</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RetentionGraceTime: int
-        :param _IsLocked: 是否已经备份锁定 0 不锁定; 1 锁定
+        :param _IsLocked: <p>是否已经备份锁定 0 不锁定; 1 锁定</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsLocked: int
-        :param _RemoteCos: 跨地域备份 0 不跨地域; 1 跨地域
+        :param _RemoteCos: <p>跨地域备份 0 不跨地域; 1 跨地域</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RemoteCos: int
-        :param _RemoteCosRegion: 跨地域备份地域名称 ap-guangzhou
+        :param _RemoteCosRegion: <p>跨地域备份地域名称 ap-guangzhou</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RemoteCosRegion: str
-        :param _CosEncryption: 备份加密 0 不加密; 1 加密
+        :param _CosEncryption: <p>备份加密 0 不加密; 1 加密</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CosEncryption: int
-        :param _KmsKey: kms密钥
+        :param _KmsKey: <p>kms密钥</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type KmsKey: str
-        :param _StrategyName: 策略名称
+        :param _StrategyName: <p>策略名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type StrategyName: str
-        :param _MultiAz: cos多AZ备份 0 单AZ; 1 多AZ
+        :param _MultiAz: <p>cos多AZ备份 0 单AZ; 1 多AZ</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type MultiAz: int
+        :param _MaxSnapshotPerSec: <p>每节点写入仓库的最大速度 max_snapshot_bytes_per_sec, 默认40m</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxSnapshotPerSec: str
+        :param _InstanceId: <p>实例ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
         """
         self._SnapshotName = None
         self._Uuid = None
@@ -20923,10 +21092,12 @@ SUCCESS     备份成功
         self._KmsKey = None
         self._StrategyName = None
         self._MultiAz = None
+        self._MaxSnapshotPerSec = None
+        self._InstanceId = None
 
     @property
     def SnapshotName(self):
-        r"""快照名称
+        r"""<p>快照名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -20938,7 +21109,7 @@ SUCCESS     备份成功
 
     @property
     def Uuid(self):
-        r"""快照Uuid
+        r"""<p>快照Uuid</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -20950,7 +21121,7 @@ SUCCESS     备份成功
 
     @property
     def Repository(self):
-        r"""仓库名称
+        r"""<p>仓库名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -20962,7 +21133,7 @@ SUCCESS     备份成功
 
     @property
     def Version(self):
-        r"""该快照所属集群的版本号
+        r"""<p>该快照所属集群的版本号</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -20974,7 +21145,7 @@ SUCCESS     备份成功
 
     @property
     def Indices(self):
-        r"""备份的索引列表
+        r"""<p>备份的索引列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -20986,7 +21157,7 @@ SUCCESS     备份成功
 
     @property
     def DataStreams(self):
-        r"""备份的datastream列表
+        r"""<p>备份的datastream列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -20998,15 +21169,7 @@ SUCCESS     备份成功
 
     @property
     def State(self):
-        r"""备份的状态
-
-FAILED            备份失败
-
-IN_PROGRESS 备份执行中
-
-PARTIAL          备份部分成功，部分失败，备份失败的索引和原因会在Failures字段中展示
-
-SUCCESS     备份成功
+        r"""<p>备份的状态</p><p>FAILED            备份失败</p><p>IN_PROGRESS 备份执行中</p><p>PARTIAL          备份部分成功，部分失败，备份失败的索引和原因会在Failures字段中展示</p><p>SUCCESS     备份成功</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -21018,7 +21181,7 @@ SUCCESS     备份成功
 
     @property
     def StartTime(self):
-        r"""快照备份的开始时间
+        r"""<p>快照备份的开始时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -21030,7 +21193,7 @@ SUCCESS     备份成功
 
     @property
     def EndTime(self):
-        r"""快照备份的结束时间
+        r"""<p>快照备份的结束时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -21042,7 +21205,7 @@ SUCCESS     备份成功
 
     @property
     def DurationInMillis(self):
-        r"""快照备份的耗时时间
+        r"""<p>快照备份的耗时时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -21054,7 +21217,7 @@ SUCCESS     备份成功
 
     @property
     def TotalShards(self):
-        r"""备份的总分片数
+        r"""<p>备份的总分片数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -21066,7 +21229,7 @@ SUCCESS     备份成功
 
     @property
     def FailedShards(self):
-        r"""备份失败的分片数量
+        r"""<p>备份失败的分片数量</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -21078,7 +21241,7 @@ SUCCESS     备份成功
 
     @property
     def SuccessfulShards(self):
-        r"""备份成功的分片数量
+        r"""<p>备份成功的分片数量</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -21090,7 +21253,7 @@ SUCCESS     备份成功
 
     @property
     def Failures(self):
-        r"""备份失败的索引分片和失败原因
+        r"""<p>备份失败的索引分片和失败原因</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Failures
         """
@@ -21102,7 +21265,7 @@ SUCCESS     备份成功
 
     @property
     def UserBackUp(self):
-        r"""是否用户备份
+        r"""<p>是否用户备份</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -21114,7 +21277,7 @@ SUCCESS     备份成功
 
     @property
     def EsRepositoryType(self):
-        r"""0 腾讯云仓库; 1 客户仓库
+        r"""<p>0 腾讯云仓库; 1 客户仓库</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -21126,7 +21289,7 @@ SUCCESS     备份成功
 
     @property
     def PaasEsRepository(self):
-        r"""托管快照仓库名称
+        r"""<p>托管快照仓库名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -21138,7 +21301,7 @@ SUCCESS     备份成功
 
     @property
     def UserEsRepository(self):
-        r"""客户快照仓库名称
+        r"""<p>客户快照仓库名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -21150,7 +21313,7 @@ SUCCESS     备份成功
 
     @property
     def StorageDuration(self):
-        r"""快照存储周期 单位天，范围[0, INF), 如果没有设置则默认7天
+        r"""<p>快照存储周期 单位天，范围[0, INF), 如果没有设置则默认7天</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -21162,7 +21325,7 @@ SUCCESS     备份成功
 
     @property
     def AutoBackupInterval(self):
-        r"""自动备份频率, 如果是0,则等效24
+        r"""<p>自动备份频率, 如果是0,则等效24</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -21174,7 +21337,7 @@ SUCCESS     备份成功
 
     @property
     def CosRetention(self):
-        r"""备份锁定 0 不锁定; 1 锁定
+        r"""<p>备份锁定 0 不锁定; 1 锁定</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -21186,7 +21349,7 @@ SUCCESS     备份成功
 
     @property
     def RetainUntilDate(self):
-        r"""锁定截止日期 2022-12-10T08:34:48.000Z
+        r"""<p>锁定截止日期 2022-12-10T08:34:48.000Z</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -21198,7 +21361,7 @@ SUCCESS     备份成功
 
     @property
     def RetentionGraceTime(self):
-        r"""锁定宽限期,单位天
+        r"""<p>锁定宽限期,单位天</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -21210,7 +21373,7 @@ SUCCESS     备份成功
 
     @property
     def IsLocked(self):
-        r"""是否已经备份锁定 0 不锁定; 1 锁定
+        r"""<p>是否已经备份锁定 0 不锁定; 1 锁定</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -21222,7 +21385,7 @@ SUCCESS     备份成功
 
     @property
     def RemoteCos(self):
-        r"""跨地域备份 0 不跨地域; 1 跨地域
+        r"""<p>跨地域备份 0 不跨地域; 1 跨地域</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -21234,7 +21397,7 @@ SUCCESS     备份成功
 
     @property
     def RemoteCosRegion(self):
-        r"""跨地域备份地域名称 ap-guangzhou
+        r"""<p>跨地域备份地域名称 ap-guangzhou</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -21246,7 +21409,7 @@ SUCCESS     备份成功
 
     @property
     def CosEncryption(self):
-        r"""备份加密 0 不加密; 1 加密
+        r"""<p>备份加密 0 不加密; 1 加密</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -21258,7 +21421,7 @@ SUCCESS     备份成功
 
     @property
     def KmsKey(self):
-        r"""kms密钥
+        r"""<p>kms密钥</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -21270,7 +21433,7 @@ SUCCESS     备份成功
 
     @property
     def StrategyName(self):
-        r"""策略名称
+        r"""<p>策略名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -21282,7 +21445,7 @@ SUCCESS     备份成功
 
     @property
     def MultiAz(self):
-        r"""cos多AZ备份 0 单AZ; 1 多AZ
+        r"""<p>cos多AZ备份 0 单AZ; 1 多AZ</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -21291,6 +21454,30 @@ SUCCESS     备份成功
     @MultiAz.setter
     def MultiAz(self, MultiAz):
         self._MultiAz = MultiAz
+
+    @property
+    def MaxSnapshotPerSec(self):
+        r"""<p>每节点写入仓库的最大速度 max_snapshot_bytes_per_sec, 默认40m</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._MaxSnapshotPerSec
+
+    @MaxSnapshotPerSec.setter
+    def MaxSnapshotPerSec(self, MaxSnapshotPerSec):
+        self._MaxSnapshotPerSec = MaxSnapshotPerSec
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
 
 
     def _deserialize(self, params):
@@ -21329,6 +21516,8 @@ SUCCESS     备份成功
         self._KmsKey = params.get("KmsKey")
         self._StrategyName = params.get("StrategyName")
         self._MultiAz = params.get("MultiAz")
+        self._MaxSnapshotPerSec = params.get("MaxSnapshotPerSec")
+        self._InstanceId = params.get("InstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

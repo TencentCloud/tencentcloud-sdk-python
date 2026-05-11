@@ -12218,22 +12218,24 @@ class CommitIntegrationTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务id
+        :param _TaskId: <p>任务id</p>
         :type TaskId: str
-        :param _ProjectId: 项目id
+        :param _ProjectId: <p>项目id</p>
         :type ProjectId: str
-        :param _CommitType: 0.仅提交，1.立即启动，2.停止线上作业，丢弃作业状态数据，重新启动运行，3.暂停线上作业，保留作业状态数据，继续运行，4.保留作业状态数据，继续运行
+        :param _CommitType: <p>0.仅提交，1.立即启动，2.停止线上作业，丢弃作业状态数据，重新启动运行，3.暂停线上作业，保留作业状态数据，继续运行，4.保留作业状态数据，继续运行</p>
         :type CommitType: int
-        :param _TaskType: 实时任务 201   离线任务 202  默认实时任务
+        :param _TaskType: <p>实时任务 201   离线任务 202  默认实时任务</p>
         :type TaskType: int
-        :param _ExtConfig: 额外参数
+        :param _ExtConfig: <p>额外参数</p>
         :type ExtConfig: list of RecordField
-        :param _VersionDesc: 提交版本描述
+        :param _VersionDesc: <p>提交版本描述</p>
         :type VersionDesc: str
-        :param _InstanceVersion: 提交版本号
+        :param _InstanceVersion: <p>提交版本号</p>
         :type InstanceVersion: int
-        :param _EventDesc: 前端操作类型描述
+        :param _EventDesc: <p>前端操作类型描述</p>
         :type EventDesc: str
+        :param _CurrentStatus: <p>提交时任务状态</p><p>枚举值：</p><ul><li>3： 运行中</li></ul>
+        :type CurrentStatus: int
         """
         self._TaskId = None
         self._ProjectId = None
@@ -12243,10 +12245,11 @@ class CommitIntegrationTaskRequest(AbstractModel):
         self._VersionDesc = None
         self._InstanceVersion = None
         self._EventDesc = None
+        self._CurrentStatus = None
 
     @property
     def TaskId(self):
-        r"""任务id
+        r"""<p>任务id</p>
         :rtype: str
         """
         return self._TaskId
@@ -12257,7 +12260,7 @@ class CommitIntegrationTaskRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        r"""项目id
+        r"""<p>项目id</p>
         :rtype: str
         """
         return self._ProjectId
@@ -12268,7 +12271,7 @@ class CommitIntegrationTaskRequest(AbstractModel):
 
     @property
     def CommitType(self):
-        r"""0.仅提交，1.立即启动，2.停止线上作业，丢弃作业状态数据，重新启动运行，3.暂停线上作业，保留作业状态数据，继续运行，4.保留作业状态数据，继续运行
+        r"""<p>0.仅提交，1.立即启动，2.停止线上作业，丢弃作业状态数据，重新启动运行，3.暂停线上作业，保留作业状态数据，继续运行，4.保留作业状态数据，继续运行</p>
         :rtype: int
         """
         return self._CommitType
@@ -12279,7 +12282,7 @@ class CommitIntegrationTaskRequest(AbstractModel):
 
     @property
     def TaskType(self):
-        r"""实时任务 201   离线任务 202  默认实时任务
+        r"""<p>实时任务 201   离线任务 202  默认实时任务</p>
         :rtype: int
         """
         return self._TaskType
@@ -12290,7 +12293,7 @@ class CommitIntegrationTaskRequest(AbstractModel):
 
     @property
     def ExtConfig(self):
-        r"""额外参数
+        r"""<p>额外参数</p>
         :rtype: list of RecordField
         """
         return self._ExtConfig
@@ -12301,7 +12304,7 @@ class CommitIntegrationTaskRequest(AbstractModel):
 
     @property
     def VersionDesc(self):
-        r"""提交版本描述
+        r"""<p>提交版本描述</p>
         :rtype: str
         """
         return self._VersionDesc
@@ -12312,7 +12315,7 @@ class CommitIntegrationTaskRequest(AbstractModel):
 
     @property
     def InstanceVersion(self):
-        r"""提交版本号
+        r"""<p>提交版本号</p>
         :rtype: int
         """
         return self._InstanceVersion
@@ -12323,7 +12326,7 @@ class CommitIntegrationTaskRequest(AbstractModel):
 
     @property
     def EventDesc(self):
-        r"""前端操作类型描述
+        r"""<p>前端操作类型描述</p>
         :rtype: str
         """
         return self._EventDesc
@@ -12331,6 +12334,17 @@ class CommitIntegrationTaskRequest(AbstractModel):
     @EventDesc.setter
     def EventDesc(self, EventDesc):
         self._EventDesc = EventDesc
+
+    @property
+    def CurrentStatus(self):
+        r"""<p>提交时任务状态</p><p>枚举值：</p><ul><li>3： 运行中</li></ul>
+        :rtype: int
+        """
+        return self._CurrentStatus
+
+    @CurrentStatus.setter
+    def CurrentStatus(self, CurrentStatus):
+        self._CurrentStatus = CurrentStatus
 
 
     def _deserialize(self, params):
@@ -12347,6 +12361,7 @@ class CommitIntegrationTaskRequest(AbstractModel):
         self._VersionDesc = params.get("VersionDesc")
         self._InstanceVersion = params.get("InstanceVersion")
         self._EventDesc = params.get("EventDesc")
+        self._CurrentStatus = params.get("CurrentStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12364,9 +12379,9 @@ class CommitIntegrationTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 操作成功与否标识
+        :param _Data: <p>操作成功与否标识</p>
         :type Data: bool
-        :param _DataDto: 数据结构
+        :param _DataDto: <p>数据结构</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DataDto: :class:`tencentcloud.wedata.v20210820.models.CommitTaskDataDto`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -12378,7 +12393,7 @@ class CommitIntegrationTaskResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""操作成功与否标识
+        r"""<p>操作成功与否标识</p>
         :rtype: bool
         """
         return self._Data
@@ -12389,7 +12404,7 @@ class CommitIntegrationTaskResponse(AbstractModel):
 
     @property
     def DataDto(self):
-        r"""数据结构
+        r"""<p>数据结构</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.wedata.v20210820.models.CommitTaskDataDto`
         """

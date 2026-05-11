@@ -1251,6 +1251,24 @@ class CfwClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeSerialRegion(
+            self,
+            request: models.DescribeSerialRegionRequest,
+            opts: Dict = None,
+    ) -> models.DescribeSerialRegionResponse:
+        """
+        查询串行防火墙地域带宽分配信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeSerialRegion"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeSerialRegionResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeSourceAsset(
             self,
             request: models.DescribeSourceAssetRequest,

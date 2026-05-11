@@ -2713,13 +2713,31 @@ class MpsClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DesignVoiceAsyncResponse:
         """
-        音色设计，根据prompt生成音色ID
+        音色设计，根据prompt生成音色ID。克隆/设计音色数量上限默认100
         """
         
         kwargs = {}
         kwargs["action"] = "DesignVoiceAsync"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DesignVoiceAsyncResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DetectVideoSubtitleArea(
+            self,
+            request: models.DetectVideoSubtitleAreaRequest,
+            opts: Dict = None,
+    ) -> models.DetectVideoSubtitleAreaResponse:
+        """
+        快速探测视频文件的硬字幕区域
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DetectVideoSubtitleArea"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DetectVideoSubtitleAreaResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -3724,7 +3742,7 @@ class MpsClient(AbstractClient):
             opts: Dict = None,
     ) -> models.SyncDubbingResponse:
         """
-        同步接口，返回克隆音色Id或合成音频结果
+        同步接口，返回克隆音色ID或合成音频结果。克隆/设计音色数量上限默认100
         """
         
         kwargs = {}

@@ -1592,6 +1592,29 @@ class CfwClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeSerialRegion(self, request):
+        r"""查询串行防火墙地域带宽分配信息
+
+        :param request: Request instance for DescribeSerialRegion.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeSerialRegionRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.DescribeSerialRegionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSerialRegion", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSerialRegionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeSourceAsset(self, request):
         r"""DescribeSourceAsset-查询全部资产信息
 

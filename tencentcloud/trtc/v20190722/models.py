@@ -6194,6 +6194,317 @@ NotExist：表示当前任务不存在。
         self._RequestId = params.get("RequestId")
 
 
+class DescribeTRTCAIRecognitionUsageRequest(AbstractModel):
+    r"""DescribeTRTCAIRecognitionUsage请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: 查询开始时间，格式为YYYY-MM-DD HH:mm:ss。
+        :type StartTime: str
+        :param _EndTime: 查询结束时间，格式为YYYY-MM-DD HH:mm:ss。单次查询统计区间最多不能超过31天。
+        :type EndTime: str
+        :param _AuType: 用量类型列表。
+- conversation AI 实时对话
+- asr 语音转文本
+- translation 实时翻译
+- tts 实时语音合成
+        :type AuType: list of str
+        :param _SdkAppId: 应用ID，可不传。传应用ID时返回的是该应用的用量，不传时返回多个应用的合计值。
+        :type SdkAppId: str
+        """
+        self._StartTime = None
+        self._EndTime = None
+        self._AuType = None
+        self._SdkAppId = None
+
+    @property
+    def StartTime(self):
+        r"""查询开始时间，格式为YYYY-MM-DD HH:mm:ss。
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""查询结束时间，格式为YYYY-MM-DD HH:mm:ss。单次查询统计区间最多不能超过31天。
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def AuType(self):
+        r"""用量类型列表。
+- conversation AI 实时对话
+- asr 语音转文本
+- translation 实时翻译
+- tts 实时语音合成
+        :rtype: list of str
+        """
+        return self._AuType
+
+    @AuType.setter
+    def AuType(self, AuType):
+        self._AuType = AuType
+
+    @property
+    def SdkAppId(self):
+        r"""应用ID，可不传。传应用ID时返回的是该应用的用量，不传时返回多个应用的合计值。
+        :rtype: str
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._AuType = params.get("AuType")
+        self._SdkAppId = params.get("SdkAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTRTCAIRecognitionUsageResponse(AbstractModel):
+    r"""DescribeTRTCAIRecognitionUsage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UsageKey: 用量类型列表
+        :type UsageKey: list of str
+        :param _UsageList: 用量列表
+        :type UsageList: list of UsageList
+        :param _TotalUsage: 总用量列表
+        :type TotalUsage: list of float
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._UsageKey = None
+        self._UsageList = None
+        self._TotalUsage = None
+        self._RequestId = None
+
+    @property
+    def UsageKey(self):
+        r"""用量类型列表
+        :rtype: list of str
+        """
+        return self._UsageKey
+
+    @UsageKey.setter
+    def UsageKey(self, UsageKey):
+        self._UsageKey = UsageKey
+
+    @property
+    def UsageList(self):
+        r"""用量列表
+        :rtype: list of UsageList
+        """
+        return self._UsageList
+
+    @UsageList.setter
+    def UsageList(self, UsageList):
+        self._UsageList = UsageList
+
+    @property
+    def TotalUsage(self):
+        r"""总用量列表
+        :rtype: list of float
+        """
+        return self._TotalUsage
+
+    @TotalUsage.setter
+    def TotalUsage(self, TotalUsage):
+        self._TotalUsage = TotalUsage
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._UsageKey = params.get("UsageKey")
+        if params.get("UsageList") is not None:
+            self._UsageList = []
+            for item in params.get("UsageList"):
+                obj = UsageList()
+                obj._deserialize(item)
+                self._UsageList.append(obj)
+        self._TotalUsage = params.get("TotalUsage")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeTRTCDedicatedCloudAccUsageRequest(AbstractModel):
+    r"""DescribeTRTCDedicatedCloudAccUsage请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: 查询开始时间，格式为YYYY-MM-DD HH:mm:ss。
+        :type StartTime: str
+        :param _EndTime: 查询结束时间，格式为YYYY-MM-DD HH:mm:ss。单次查询统计区间最多不能超过31天。
+        :type EndTime: str
+        :param _SdkAppId: 应用ID，可不传。传应用ID时返回的是该应用的用量，不传时返回多个应用的合计值。
+        :type SdkAppId: int
+        """
+        self._StartTime = None
+        self._EndTime = None
+        self._SdkAppId = None
+
+    @property
+    def StartTime(self):
+        r"""查询开始时间，格式为YYYY-MM-DD HH:mm:ss。
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""查询结束时间，格式为YYYY-MM-DD HH:mm:ss。单次查询统计区间最多不能超过31天。
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def SdkAppId(self):
+        r"""应用ID，可不传。传应用ID时返回的是该应用的用量，不传时返回多个应用的合计值。
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._SdkAppId = params.get("SdkAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTRTCDedicatedCloudAccUsageResponse(AbstractModel):
+    r"""DescribeTRTCDedicatedCloudAccUsage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UsageKey: 用量指标名列表
+        :type UsageKey: list of str
+        :param _UsageList: 用量明细列表
+        :type UsageList: list of UsageList
+        :param _TotalUsage: 汇总用量列表
+        :type TotalUsage: list of int non-negative
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._UsageKey = None
+        self._UsageList = None
+        self._TotalUsage = None
+        self._RequestId = None
+
+    @property
+    def UsageKey(self):
+        r"""用量指标名列表
+        :rtype: list of str
+        """
+        return self._UsageKey
+
+    @UsageKey.setter
+    def UsageKey(self, UsageKey):
+        self._UsageKey = UsageKey
+
+    @property
+    def UsageList(self):
+        r"""用量明细列表
+        :rtype: list of UsageList
+        """
+        return self._UsageList
+
+    @UsageList.setter
+    def UsageList(self, UsageList):
+        self._UsageList = UsageList
+
+    @property
+    def TotalUsage(self):
+        r"""汇总用量列表
+        :rtype: list of int non-negative
+        """
+        return self._TotalUsage
+
+    @TotalUsage.setter
+    def TotalUsage(self, TotalUsage):
+        self._TotalUsage = TotalUsage
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._UsageKey = params.get("UsageKey")
+        if params.get("UsageList") is not None:
+            self._UsageList = []
+            for item in params.get("UsageList"):
+                obj = UsageList()
+                obj._deserialize(item)
+                self._UsageList.append(obj)
+        self._TotalUsage = params.get("TotalUsage")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeTRTCMarketQualityDataRequest(AbstractModel):
     r"""DescribeTRTCMarketQualityData请求参数结构体
 
@@ -6858,6 +7169,180 @@ class DescribeTRTCRealTimeScaleDataResponse(AbstractModel):
         if params.get("Data") is not None:
             self._Data = TRTCDataResult()
             self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeTRTCSegmentModerationUsageRequest(AbstractModel):
+    r"""DescribeTRTCSegmentModerationUsage请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: 查询开始时间，格式为YYYY-MM-DD HH:mm:ss。
+        :type StartTime: str
+        :param _EndTime: 查询结束时间，格式为YYYY-MM-DD HH:mm:ss。单次查询统计区间最多不能超过31天。
+        :type EndTime: str
+        :param _Type: 媒体类型，枚举值：audio（音频）、picture（图片）
+        :type Type: str
+        :param _Business: 使用场景（业务类型），枚举值：0 = AI 内容理解（审核场景）、1 = 音视频切片（云端切片场景）
+        :type Business: int
+        :param _SdkAppId: 应用ID，可不传。传应用ID时返回的是该应用的用量，不传时返回多个应用的合计值。
+        :type SdkAppId: int
+        """
+        self._StartTime = None
+        self._EndTime = None
+        self._Type = None
+        self._Business = None
+        self._SdkAppId = None
+
+    @property
+    def StartTime(self):
+        r"""查询开始时间，格式为YYYY-MM-DD HH:mm:ss。
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""查询结束时间，格式为YYYY-MM-DD HH:mm:ss。单次查询统计区间最多不能超过31天。
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Type(self):
+        r"""媒体类型，枚举值：audio（音频）、picture（图片）
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Business(self):
+        r"""使用场景（业务类型），枚举值：0 = AI 内容理解（审核场景）、1 = 音视频切片（云端切片场景）
+        :rtype: int
+        """
+        return self._Business
+
+    @Business.setter
+    def Business(self, Business):
+        self._Business = Business
+
+    @property
+    def SdkAppId(self):
+        r"""应用ID，可不传。传应用ID时返回的是该应用的用量，不传时返回多个应用的合计值。
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Type = params.get("Type")
+        self._Business = params.get("Business")
+        self._SdkAppId = params.get("SdkAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTRTCSegmentModerationUsageResponse(AbstractModel):
+    r"""DescribeTRTCSegmentModerationUsage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UsageKey: 用量指标名列表
+        :type UsageKey: list of str
+        :param _UsageList: 用量明细列表
+        :type UsageList: list of UsageList
+        :param _TotalUsage: 汇总用量列表
+        :type TotalUsage: list of int non-negative
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._UsageKey = None
+        self._UsageList = None
+        self._TotalUsage = None
+        self._RequestId = None
+
+    @property
+    def UsageKey(self):
+        r"""用量指标名列表
+        :rtype: list of str
+        """
+        return self._UsageKey
+
+    @UsageKey.setter
+    def UsageKey(self, UsageKey):
+        self._UsageKey = UsageKey
+
+    @property
+    def UsageList(self):
+        r"""用量明细列表
+        :rtype: list of UsageList
+        """
+        return self._UsageList
+
+    @UsageList.setter
+    def UsageList(self, UsageList):
+        self._UsageList = UsageList
+
+    @property
+    def TotalUsage(self):
+        r"""汇总用量列表
+        :rtype: list of int non-negative
+        """
+        return self._TotalUsage
+
+    @TotalUsage.setter
+    def TotalUsage(self, TotalUsage):
+        self._TotalUsage = TotalUsage
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._UsageKey = params.get("UsageKey")
+        if params.get("UsageList") is not None:
+            self._UsageList = []
+            for item in params.get("UsageList"):
+                obj = UsageList()
+                obj._deserialize(item)
+                self._UsageList.append(obj)
+        self._TotalUsage = params.get("TotalUsage")
         self._RequestId = params.get("RequestId")
 
 
@@ -19592,6 +20077,57 @@ class UpdateVoicePrintResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class UsageList(AbstractModel):
+    r"""用量列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TimeKey: 时间
+        :type TimeKey: str
+        :param _UsageValue: 用量数值
+        :type UsageValue: list of float
+        """
+        self._TimeKey = None
+        self._UsageValue = None
+
+    @property
+    def TimeKey(self):
+        r"""时间
+        :rtype: str
+        """
+        return self._TimeKey
+
+    @TimeKey.setter
+    def TimeKey(self, TimeKey):
+        self._TimeKey = TimeKey
+
+    @property
+    def UsageValue(self):
+        r"""用量数值
+        :rtype: list of float
+        """
+        return self._UsageValue
+
+    @UsageValue.setter
+    def UsageValue(self, UsageValue):
+        self._UsageValue = UsageValue
+
+
+    def _deserialize(self, params):
+        self._TimeKey = params.get("TimeKey")
+        self._UsageValue = params.get("UsageValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class UserInformation(AbstractModel):

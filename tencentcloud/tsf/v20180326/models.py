@@ -29624,20 +29624,23 @@ class DescribeProgramsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SearchWord: 模糊查询数据集ID，数据集名称，不传入时查询全量
+        :param _SearchWord: <p>模糊查询数据集ID，数据集名称，不传入时查询全量</p>
         :type SearchWord: str
-        :param _Limit: 每页数量，默认值20
+        :param _Limit: <p>每页数量，默认值20</p>
         :type Limit: int
-        :param _Offset: 起始偏移量，默认值0
+        :param _Offset: <p>起始偏移量，默认值0</p>
         :type Offset: int
+        :param _SearchFilters: <p>模糊查询，传递模糊查询字段和对应的值</p>
+        :type SearchFilters: :class:`tencentcloud.tsf.v20180326.models.SearchFiltersProgram`
         """
         self._SearchWord = None
         self._Limit = None
         self._Offset = None
+        self._SearchFilters = None
 
     @property
     def SearchWord(self):
-        r"""模糊查询数据集ID，数据集名称，不传入时查询全量
+        r"""<p>模糊查询数据集ID，数据集名称，不传入时查询全量</p>
         :rtype: str
         """
         return self._SearchWord
@@ -29648,7 +29651,7 @@ class DescribeProgramsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""每页数量，默认值20
+        r"""<p>每页数量，默认值20</p>
         :rtype: int
         """
         return self._Limit
@@ -29659,7 +29662,7 @@ class DescribeProgramsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""起始偏移量，默认值0
+        r"""<p>起始偏移量，默认值0</p>
         :rtype: int
         """
         return self._Offset
@@ -29668,11 +29671,25 @@ class DescribeProgramsRequest(AbstractModel):
     def Offset(self, Offset):
         self._Offset = Offset
 
+    @property
+    def SearchFilters(self):
+        r"""<p>模糊查询，传递模糊查询字段和对应的值</p>
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.SearchFiltersProgram`
+        """
+        return self._SearchFilters
+
+    @SearchFilters.setter
+    def SearchFilters(self, SearchFilters):
+        self._SearchFilters = SearchFilters
+
 
     def _deserialize(self, params):
         self._SearchWord = params.get("SearchWord")
         self._Limit = params.get("Limit")
         self._Offset = params.get("Offset")
+        if params.get("SearchFilters") is not None:
+            self._SearchFilters = SearchFiltersProgram()
+            self._SearchFilters._deserialize(params.get("SearchFilters"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -29690,7 +29707,7 @@ class DescribeProgramsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 数据集列表
+        :param _Result: <p>数据集列表</p>
         :type Result: :class:`tencentcloud.tsf.v20180326.models.PagedProgram`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -29700,7 +29717,7 @@ class DescribeProgramsResponse(AbstractModel):
 
     @property
     def Result(self):
-        r"""数据集列表
+        r"""<p>数据集列表</p>
         :rtype: :class:`tencentcloud.tsf.v20180326.models.PagedProgram`
         """
         return self._Result
@@ -50307,6 +50324,57 @@ class SearchBusinessLogResponse(AbstractModel):
             self._Result = TsfPageBusinessLogV2()
             self._Result._deserialize(params.get("Result"))
         self._RequestId = params.get("RequestId")
+
+
+class SearchFiltersProgram(AbstractModel):
+    r"""模糊查询数据集信息指定字段和值
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProgramId: <p>数据集ID</p>
+        :type ProgramId: str
+        :param _ProgramName: <p>数据集名称</p>
+        :type ProgramName: str
+        """
+        self._ProgramId = None
+        self._ProgramName = None
+
+    @property
+    def ProgramId(self):
+        r"""<p>数据集ID</p>
+        :rtype: str
+        """
+        return self._ProgramId
+
+    @ProgramId.setter
+    def ProgramId(self, ProgramId):
+        self._ProgramId = ProgramId
+
+    @property
+    def ProgramName(self):
+        r"""<p>数据集名称</p>
+        :rtype: str
+        """
+        return self._ProgramName
+
+    @ProgramName.setter
+    def ProgramName(self, ProgramName):
+        self._ProgramName = ProgramName
+
+
+    def _deserialize(self, params):
+        self._ProgramId = params.get("ProgramId")
+        self._ProgramName = params.get("ProgramName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class SearchStdoutLogRequest(AbstractModel):

@@ -14528,6 +14528,130 @@ class DescribeSecurityGroupListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeSerialRegionRequest(AbstractModel):
+    r"""DescribeSerialRegion请求参数结构体
+
+    """
+
+
+class DescribeSerialRegionResponse(AbstractModel):
+    r"""DescribeSerialRegion返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SerialRegionLst: 串行地域带宽分配
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SerialRegionLst: list of SerialRegionInfo
+        :param _UnUsedWidth: 剩余可分配通用带宽 单位M
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UnUsedWidth: int
+        :param _UnUsedQuota: 可配置实例个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UnUsedQuota: int
+        :param _BypassWidth: 旁路带宽数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BypassWidth: int
+        :param _SendBypassWidth: 赠送的旁路带宽数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SendBypassWidth: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._SerialRegionLst = None
+        self._UnUsedWidth = None
+        self._UnUsedQuota = None
+        self._BypassWidth = None
+        self._SendBypassWidth = None
+        self._RequestId = None
+
+    @property
+    def SerialRegionLst(self):
+        r"""串行地域带宽分配
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of SerialRegionInfo
+        """
+        return self._SerialRegionLst
+
+    @SerialRegionLst.setter
+    def SerialRegionLst(self, SerialRegionLst):
+        self._SerialRegionLst = SerialRegionLst
+
+    @property
+    def UnUsedWidth(self):
+        r"""剩余可分配通用带宽 单位M
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._UnUsedWidth
+
+    @UnUsedWidth.setter
+    def UnUsedWidth(self, UnUsedWidth):
+        self._UnUsedWidth = UnUsedWidth
+
+    @property
+    def UnUsedQuota(self):
+        r"""可配置实例个数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._UnUsedQuota
+
+    @UnUsedQuota.setter
+    def UnUsedQuota(self, UnUsedQuota):
+        self._UnUsedQuota = UnUsedQuota
+
+    @property
+    def BypassWidth(self):
+        r"""旁路带宽数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._BypassWidth
+
+    @BypassWidth.setter
+    def BypassWidth(self, BypassWidth):
+        self._BypassWidth = BypassWidth
+
+    @property
+    def SendBypassWidth(self):
+        r"""赠送的旁路带宽数据
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._SendBypassWidth
+
+    @SendBypassWidth.setter
+    def SendBypassWidth(self, SendBypassWidth):
+        self._SendBypassWidth = SendBypassWidth
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("SerialRegionLst") is not None:
+            self._SerialRegionLst = []
+            for item in params.get("SerialRegionLst"):
+                obj = SerialRegionInfo()
+                obj._deserialize(item)
+                self._SerialRegionLst.append(obj)
+        self._UnUsedWidth = params.get("UnUsedWidth")
+        self._UnUsedQuota = params.get("UnUsedQuota")
+        self._BypassWidth = params.get("BypassWidth")
+        self._SendBypassWidth = params.get("SendBypassWidth")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeSourceAssetRequest(AbstractModel):
     r"""DescribeSourceAsset请求参数结构体
 
@@ -28231,6 +28355,125 @@ class SequenceData(AbstractModel):
         self._Id = params.get("Id")
         self._OrderIndex = params.get("OrderIndex")
         self._NewOrderIndex = params.get("NewOrderIndex")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SerialRegionInfo(AbstractModel):
+    r"""防火墙串行地域带宽分配情况
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Region: 地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: str
+        :param _Width: 分配带宽值 单位Mbps
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Width: int
+        :param _ElasticSwitch: 弹性开关
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ElasticSwitch: int
+        :param _ElasticBandwidth: 弹性带宽上限，单位Mbps
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ElasticBandwidth: int
+        :param _InFlowMax: 七天入向峰值带宽，单位bps
+        :type InFlowMax: int
+        :param _OutFlowMax: 七天出向峰值带宽，单位bps
+        :type OutFlowMax: int
+        """
+        self._Region = None
+        self._Width = None
+        self._ElasticSwitch = None
+        self._ElasticBandwidth = None
+        self._InFlowMax = None
+        self._OutFlowMax = None
+
+    @property
+    def Region(self):
+        r"""地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Width(self):
+        r"""分配带宽值 单位Mbps
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Width
+
+    @Width.setter
+    def Width(self, Width):
+        self._Width = Width
+
+    @property
+    def ElasticSwitch(self):
+        r"""弹性开关
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ElasticSwitch
+
+    @ElasticSwitch.setter
+    def ElasticSwitch(self, ElasticSwitch):
+        self._ElasticSwitch = ElasticSwitch
+
+    @property
+    def ElasticBandwidth(self):
+        r"""弹性带宽上限，单位Mbps
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ElasticBandwidth
+
+    @ElasticBandwidth.setter
+    def ElasticBandwidth(self, ElasticBandwidth):
+        self._ElasticBandwidth = ElasticBandwidth
+
+    @property
+    def InFlowMax(self):
+        r"""七天入向峰值带宽，单位bps
+        :rtype: int
+        """
+        return self._InFlowMax
+
+    @InFlowMax.setter
+    def InFlowMax(self, InFlowMax):
+        self._InFlowMax = InFlowMax
+
+    @property
+    def OutFlowMax(self):
+        r"""七天出向峰值带宽，单位bps
+        :rtype: int
+        """
+        return self._OutFlowMax
+
+    @OutFlowMax.setter
+    def OutFlowMax(self, OutFlowMax):
+        self._OutFlowMax = OutFlowMax
+
+
+    def _deserialize(self, params):
+        self._Region = params.get("Region")
+        self._Width = params.get("Width")
+        self._ElasticSwitch = params.get("ElasticSwitch")
+        self._ElasticBandwidth = params.get("ElasticBandwidth")
+        self._InFlowMax = params.get("InFlowMax")
+        self._OutFlowMax = params.get("OutFlowMax")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

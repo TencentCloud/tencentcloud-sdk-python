@@ -1045,6 +1045,29 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateSceneVideoTask(self, request):
+        r"""该接口用于创建场景化视频任务。
+
+        :param request: Request instance for CreateSceneVideoTask.
+        :type request: :class:`tencentcloud.live.v20180801.models.CreateSceneVideoTaskRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.CreateSceneVideoTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateSceneVideoTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateSceneVideoTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateScreenshotTask(self, request):
         r"""创建一个在指定时间启动、结束的截图任务，并使用指定截图模板ID对应的配置进行截图。
         - 注意事项
@@ -3944,6 +3967,29 @@ class LiveClient(AbstractClient):
             body = self.call("DescribeRecordTask", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeRecordTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeSceneVideoTask(self, request):
+        r"""该接口用于查询场景化视频任务进展及结果。
+
+        :param request: Request instance for DescribeSceneVideoTask.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeSceneVideoTaskRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeSceneVideoTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSceneVideoTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSceneVideoTaskResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

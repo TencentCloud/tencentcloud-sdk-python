@@ -7753,121 +7753,97 @@ class CreateClustersRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Zone: 可用区
+        :param _Zone: <p>可用区</p>
         :type Zone: str
-        :param _VpcId: 所属VPC网络ID
+        :param _VpcId: <p>所属VPC网络ID</p>
         :type VpcId: str
-        :param _SubnetId: 所属子网ID
+        :param _SubnetId: <p>所属子网ID</p>
         :type SubnetId: str
-        :param _DbType: 数据库类型，取值范围: 
-<li> MYSQL </li>
+        :param _DbType: <p>数据库类型</p><p>枚举值：</p><ul><li>MYSQL： MYSQL</li></ul>
         :type DbType: str
-        :param _DbVersion: 数据库版本，取值范围: 
-<li> MYSQL可选值：5.7，8.0 </li>
+        :param _DbVersion: <p>数据库版本</p><p>枚举值：</p><ul><li>5.7： MySQL5.7版本</li><li>8.0： MySQL8.0版本</li></ul>
         :type DbVersion: str
-        :param _ProjectId: 所属项目ID
+        :param _ProjectId: <p>所属项目ID</p>
         :type ProjectId: int
-        :param _Cpu: 当DbMode为NORMAL或不填时必选
-普通实例Cpu核数
+        :param _Cpu: <p>当DbMode为NORMAL或不填时必选<br>普通实例Cpu核数</p>
         :type Cpu: int
-        :param _Memory: 当DbMode为NORMAL或不填时必选
-普通实例内存,单位GB
+        :param _Memory: <p>当DbMode为NORMAL或不填时必选<br>普通实例内存,单位GB</p>
         :type Memory: int
-        :param _InstanceCount: 实例数量，数量范围为(0,16]，默认值为2（即一个rw实例+一个ro实例），传递的n表示1个rw实例+n-1个ro实例（规格相同），如需要更精确的集群组成搭配，请使用InstanceInitInfos
+        :param _InstanceCount: <p>实例数量，数量范围为(0,16]，默认值为2（即一个rw实例+一个ro实例），传递的n表示1个rw实例+n-1个ro实例（规格相同），如需要更精确的集群组成搭配，请使用InstanceInitInfos</p>
         :type InstanceCount: int
-        :param _Storage: 该参数无实际意义，已废弃。
-存储大小，单位GB。
+        :param _Storage: <p>该参数无实际意义，已废弃。<br>存储大小，单位GB。</p>
         :type Storage: int
-        :param _ClusterName: 集群名称，长度小于64个字符，每个字符取值范围：大/小写字母，数字，特殊符号（'-','_','.'）
+        :param _ClusterName: <p>集群名称，长度小于64个字符，每个字符取值范围：大/小写字母，数字，特殊符号（&#39;-&#39;,&#39;_&#39;,&#39;.&#39;）</p>
         :type ClusterName: str
-        :param _AdminPassword: 账号密码(8-64个字符，包含大小写英文字母、数字和符号~!@#$%^&*_-+=`|\(){}[]:;'<>,.?/中的任意三种)
+        :param _AdminPassword: <p>账号密码(8-64个字符，包含大小写英文字母、数字和符号~!@#$%^&amp;*_-+=`|(){}[]:;&#39;&lt;&gt;,.?/中的任意三种)</p>
         :type AdminPassword: str
-        :param _Port: 端口，默认3306，取值范围[0, 65535)
+        :param _Port: <p>端口，默认3306，取值范围[0, 65535)</p>
         :type Port: int
-        :param _PayMode: 计费模式，支持值为0和1，默认值为0。
-取值为0，表示按量计费。
-取值为1，表示包年包月。
+        :param _PayMode: <p>计费模式</p><p>枚举值：</p><ul><li>0： 表示按量计费</li><li>1： 表示包年包月</li></ul><p>默认值：0</p>
         :type PayMode: int
-        :param _Count: 购买集群数，可选值范围[1,50]，默认为1
+        :param _Count: <p>购买集群数，可选值范围[1,50]，默认为1</p>
         :type Count: int
-        :param _RollbackStrategy: 回档类型：
-noneRollback：不回档；
-snapRollback，快照回档；
-timeRollback，时间点回档
+        :param _RollbackStrategy: <p>回档类型</p><p>枚举值：</p><ul><li>noneRollback： 不回档</li><li>snapRollback： 快照回档</li><li>timeRollback： 时间点回档</li></ul>
         :type RollbackStrategy: str
-        :param _RollbackId: 快照回档，表示snapshotId；时间点回档，表示queryId，为0，表示需要判断时间点是否有效
+        :param _RollbackId: <p>快照回档，表示snapshotId；时间点回档，表示queryId，为0，表示需要判断时间点是否有效</p>
         :type RollbackId: int
-        :param _OriginalClusterId: 回档时，传入源集群ID，用于查找源poolId
+        :param _OriginalClusterId: <p>回档时，传入源集群ID，用于查找源poolId</p>
         :type OriginalClusterId: str
-        :param _ExpectTime: 时间点回档，指定时间；快照回档，快照时间
+        :param _ExpectTime: <p>时间点回档，指定时间；快照回档，快照时间</p>
         :type ExpectTime: str
-        :param _ExpectTimeThresh: 该参数无实际意义，已废弃。
-时间点回档，指定时间允许范围
+        :param _ExpectTimeThresh: <p>该参数无实际意义，已废弃。<br>时间点回档，指定时间允许范围</p>
         :type ExpectTimeThresh: int
-        :param _StorageLimit: 普通实例存储上限，单位GB
-当DbType为MYSQL，且存储计费模式为预付费时，该参数需不大于cpu与memory对应存储规格上限
+        :param _StorageLimit: <p>普通实例存储上限，单位GB<br>当DbType为MYSQL，且存储计费模式为预付费时，该参数需不大于cpu与memory对应存储规格上限</p>
         :type StorageLimit: int
-        :param _TimeSpan: 包年包月购买时长
+        :param _TimeSpan: <p>包年包月购买时长</p>
         :type TimeSpan: int
-        :param _TimeUnit: 包年包月购买时长单位，['s','d','m','y']
+        :param _TimeUnit: <p>包年包月购买时长单位，[&#39;s&#39;,&#39;d&#39;,&#39;m&#39;,&#39;y&#39;]</p>
         :type TimeUnit: str
-        :param _AutoRenewFlag: 包年包月购买是否自动续费，默认为0。
-0标识默认续费方式，1表示自动续费，2表示不自动续费。
+        :param _AutoRenewFlag: <p>包年包月购买是否自动续费</p><p>枚举值：</p><ul><li>0： 默认续费方式</li><li>1： 自动续费</li><li>2： 不自动续费</li></ul><p>默认值：0</p>
         :type AutoRenewFlag: int
-        :param _AutoVoucher: 是否自动选择代金券 1是 0否 默认为0
+        :param _AutoVoucher: <p>是否自动选择代金券 1是 0否 默认为0</p><p>枚举值：</p><ul><li>1： 是</li><li>0： 否</li></ul><p>默认值：0</p>
         :type AutoVoucher: int
-        :param _HaCount: 实例数量（该参数已不再使用，只做存量兼容处理）
+        :param _HaCount: <p>实例数量（该参数已不再使用，只做存量兼容处理）</p>
         :type HaCount: int
-        :param _OrderSource: 订单来源
+        :param _OrderSource: <p>订单来源</p>
         :type OrderSource: str
-        :param _ResourceTags: 集群创建需要绑定的tag数组信息
+        :param _ResourceTags: <p>集群创建需要绑定的tag数组信息</p>
         :type ResourceTags: list of Tag
-        :param _DbMode: Db类型
-当DbType为MYSQL时可选(默认NORMAL)：
-<li>NORMAL</li>
-<li>SERVERLESS</li>
+        :param _DbMode: <p>Db类型</p><p>枚举值：</p><ul><li>NORMAL： 普通实例</li><li>SERVERLESS： serverless实例</li></ul><p>默认值：NORMAL</p><p>当DbType为MYSQL时可选(默认NORMAL)</p>
         :type DbMode: str
-        :param _MinCpu: 当DbMode为SERVERLESS时必填
-cpu最小值，可选范围参考DescribeServerlessInstanceSpecs接口返回
+        :param _MinCpu: <p>当DbMode为SERVERLESS时必填<br>cpu最小值，可选范围参考DescribeServerlessInstanceSpecs接口返回</p>
         :type MinCpu: float
-        :param _MaxCpu: 当DbMode为SERVERLESS时必填：
-cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
+        :param _MaxCpu: <p>当DbMode为SERVERLESS时必填：<br>cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回</p>
         :type MaxCpu: float
-        :param _AutoPause: 当DbMode为SERVERLESS时，指定集群是否自动暂停，可选范围
-<li>yes</li>
-<li>no</li>
-默认值:yes
+        :param _AutoPause: <p>否自动暂停</p><p>枚举值：</p><ul><li>yes： 是</li><li>no： 否</li></ul><p>默认值：yes</p><p>DbMode为SERVERLESS生效</p>
         :type AutoPause: str
-        :param _AutoPauseDelay: 当DbMode为SERVERLESS时，指定集群自动暂停的延迟，单位秒，可选范围[600,691200]
-默认值:600
+        :param _AutoPauseDelay: <p>当DbMode为SERVERLESS时，指定集群自动暂停的延迟，单位秒，可选范围[600,691200]<br>默认值:600</p>
         :type AutoPauseDelay: int
-        :param _StoragePayMode: 集群存储计费模式，按量计费：0，包年包月：1。默认按量计费
-当DbType为MYSQL时，在集群计算计费模式为后付费（包括DbMode为SERVERLESS）时，存储计费模式仅可为按量计费
-回档与克隆均不支持包年包月存储
+        :param _StoragePayMode: <p>集群存储计费模式，按量计费：0，包年包月：1。默认按量计费<br>当DbType为MYSQL时，在集群计算计费模式为后付费（包括DbMode为SERVERLESS）时，存储计费模式仅可为按量计费<br>回档与克隆均不支持包年包月存储</p>
         :type StoragePayMode: int
-        :param _SecurityGroupIds: 安全组id数组
+        :param _SecurityGroupIds: <p>安全组id数组</p>
         :type SecurityGroupIds: list of str
-        :param _AlarmPolicyIds: 告警策略Id数组
+        :param _AlarmPolicyIds: <p>告警策略Id数组</p>
         :type AlarmPolicyIds: list of str
-        :param _ClusterParams: 参数数组，暂时支持character_set_server （utf8｜latin1｜gbk｜utf8mb4） ，lower_case_table_names，1-大小写不敏感，0-大小写敏感
+        :param _ClusterParams: <p>参数数组，暂时支持character_set_server （utf8｜latin1｜gbk｜utf8mb4） ，lower_case_table_names，1-大小写不敏感，0-大小写敏感</p>
         :type ClusterParams: list of ParamItem
-        :param _DealMode: 交易模式，0-下单且支付，1-下单
+        :param _DealMode: <p>交易模式</p><p>枚举值：</p><ul><li>0： 下单且支付</li><li>1： 下单</li></ul><p>默认值：0</p>
         :type DealMode: int
-        :param _ParamTemplateId: 参数模板ID，可以通过查询参数模板信息DescribeParamTemplates获得参数模板ID
+        :param _ParamTemplateId: <p>参数模板ID，可以通过查询参数模板信息DescribeParamTemplates获得参数模板ID</p>
         :type ParamTemplateId: int
-        :param _SlaveZone: 多可用区地址
+        :param _SlaveZone: <p>多可用区地址</p>
         :type SlaveZone: str
-        :param _InstanceInitInfos: 实例初始化配置信息，主要用于购买集群时选不同规格实例
+        :param _InstanceInitInfos: <p>实例初始化配置信息，主要用于购买集群时选不同规格实例</p>
         :type InstanceInitInfos: list of InstanceInitInfo
-        :param _GdnId: 全球数据库唯一标识
+        :param _GdnId: <p>全球数据库唯一标识</p>
         :type GdnId: str
-        :param _ProxyConfig: 数据库代理配置
+        :param _ProxyConfig: <p>数据库代理配置</p>
         :type ProxyConfig: :class:`tencentcloud.cynosdb.v20190107.models.ProxyConfig`
-        :param _AutoArchive: 是否自动归档
+        :param _AutoArchive: <p>是否自动归档</p><p>枚举值：</p><ul><li>yes： 是</li><li>no： 否</li></ul><p>默认值：no</p><p>仅当前集群主实例为SERVERLESS时，该参数生效</p>
         :type AutoArchive: str
-        :param _AutoArchiveDelayHours: 暂停后的归档处理时间
+        :param _AutoArchiveDelayHours: <p>暂停后的归档处理时间</p><p>单位：时</p><p>默认值：12</p><p>仅当前集群主实例为SERVERLESS时，该参数生效</p>
         :type AutoArchiveDelayHours: int
-        :param _CynosVersion: 内核小版本号
+        :param _CynosVersion: <p>内核小版本号</p>
         :type CynosVersion: str
         """
         self._Zone = None
@@ -7919,7 +7895,7 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
 
     @property
     def Zone(self):
-        r"""可用区
+        r"""<p>可用区</p>
         :rtype: str
         """
         return self._Zone
@@ -7930,7 +7906,7 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
 
     @property
     def VpcId(self):
-        r"""所属VPC网络ID
+        r"""<p>所属VPC网络ID</p>
         :rtype: str
         """
         return self._VpcId
@@ -7941,7 +7917,7 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
 
     @property
     def SubnetId(self):
-        r"""所属子网ID
+        r"""<p>所属子网ID</p>
         :rtype: str
         """
         return self._SubnetId
@@ -7952,8 +7928,7 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
 
     @property
     def DbType(self):
-        r"""数据库类型，取值范围: 
-<li> MYSQL </li>
+        r"""<p>数据库类型</p><p>枚举值：</p><ul><li>MYSQL： MYSQL</li></ul>
         :rtype: str
         """
         return self._DbType
@@ -7964,8 +7939,7 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
 
     @property
     def DbVersion(self):
-        r"""数据库版本，取值范围: 
-<li> MYSQL可选值：5.7，8.0 </li>
+        r"""<p>数据库版本</p><p>枚举值：</p><ul><li>5.7： MySQL5.7版本</li><li>8.0： MySQL8.0版本</li></ul>
         :rtype: str
         """
         return self._DbVersion
@@ -7976,7 +7950,7 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
 
     @property
     def ProjectId(self):
-        r"""所属项目ID
+        r"""<p>所属项目ID</p>
         :rtype: int
         """
         return self._ProjectId
@@ -7987,8 +7961,7 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
 
     @property
     def Cpu(self):
-        r"""当DbMode为NORMAL或不填时必选
-普通实例Cpu核数
+        r"""<p>当DbMode为NORMAL或不填时必选<br>普通实例Cpu核数</p>
         :rtype: int
         """
         return self._Cpu
@@ -7999,8 +7972,7 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
 
     @property
     def Memory(self):
-        r"""当DbMode为NORMAL或不填时必选
-普通实例内存,单位GB
+        r"""<p>当DbMode为NORMAL或不填时必选<br>普通实例内存,单位GB</p>
         :rtype: int
         """
         return self._Memory
@@ -8011,7 +7983,7 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
 
     @property
     def InstanceCount(self):
-        r"""实例数量，数量范围为(0,16]，默认值为2（即一个rw实例+一个ro实例），传递的n表示1个rw实例+n-1个ro实例（规格相同），如需要更精确的集群组成搭配，请使用InstanceInitInfos
+        r"""<p>实例数量，数量范围为(0,16]，默认值为2（即一个rw实例+一个ro实例），传递的n表示1个rw实例+n-1个ro实例（规格相同），如需要更精确的集群组成搭配，请使用InstanceInitInfos</p>
         :rtype: int
         """
         return self._InstanceCount
@@ -8022,8 +7994,7 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
 
     @property
     def Storage(self):
-        r"""该参数无实际意义，已废弃。
-存储大小，单位GB。
+        r"""<p>该参数无实际意义，已废弃。<br>存储大小，单位GB。</p>
         :rtype: int
         """
         return self._Storage
@@ -8034,7 +8005,7 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
 
     @property
     def ClusterName(self):
-        r"""集群名称，长度小于64个字符，每个字符取值范围：大/小写字母，数字，特殊符号（'-','_','.'）
+        r"""<p>集群名称，长度小于64个字符，每个字符取值范围：大/小写字母，数字，特殊符号（&#39;-&#39;,&#39;_&#39;,&#39;.&#39;）</p>
         :rtype: str
         """
         return self._ClusterName
@@ -8045,7 +8016,7 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
 
     @property
     def AdminPassword(self):
-        r"""账号密码(8-64个字符，包含大小写英文字母、数字和符号~!@#$%^&*_-+=`|\(){}[]:;'<>,.?/中的任意三种)
+        r"""<p>账号密码(8-64个字符，包含大小写英文字母、数字和符号~!@#$%^&amp;*_-+=`|(){}[]:;&#39;&lt;&gt;,.?/中的任意三种)</p>
         :rtype: str
         """
         return self._AdminPassword
@@ -8056,7 +8027,7 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
 
     @property
     def Port(self):
-        r"""端口，默认3306，取值范围[0, 65535)
+        r"""<p>端口，默认3306，取值范围[0, 65535)</p>
         :rtype: int
         """
         return self._Port
@@ -8067,9 +8038,7 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
 
     @property
     def PayMode(self):
-        r"""计费模式，支持值为0和1，默认值为0。
-取值为0，表示按量计费。
-取值为1，表示包年包月。
+        r"""<p>计费模式</p><p>枚举值：</p><ul><li>0： 表示按量计费</li><li>1： 表示包年包月</li></ul><p>默认值：0</p>
         :rtype: int
         """
         return self._PayMode
@@ -8080,7 +8049,7 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
 
     @property
     def Count(self):
-        r"""购买集群数，可选值范围[1,50]，默认为1
+        r"""<p>购买集群数，可选值范围[1,50]，默认为1</p>
         :rtype: int
         """
         return self._Count
@@ -8091,10 +8060,7 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
 
     @property
     def RollbackStrategy(self):
-        r"""回档类型：
-noneRollback：不回档；
-snapRollback，快照回档；
-timeRollback，时间点回档
+        r"""<p>回档类型</p><p>枚举值：</p><ul><li>noneRollback： 不回档</li><li>snapRollback： 快照回档</li><li>timeRollback： 时间点回档</li></ul>
         :rtype: str
         """
         return self._RollbackStrategy
@@ -8105,7 +8071,7 @@ timeRollback，时间点回档
 
     @property
     def RollbackId(self):
-        r"""快照回档，表示snapshotId；时间点回档，表示queryId，为0，表示需要判断时间点是否有效
+        r"""<p>快照回档，表示snapshotId；时间点回档，表示queryId，为0，表示需要判断时间点是否有效</p>
         :rtype: int
         """
         return self._RollbackId
@@ -8116,7 +8082,7 @@ timeRollback，时间点回档
 
     @property
     def OriginalClusterId(self):
-        r"""回档时，传入源集群ID，用于查找源poolId
+        r"""<p>回档时，传入源集群ID，用于查找源poolId</p>
         :rtype: str
         """
         return self._OriginalClusterId
@@ -8127,7 +8093,7 @@ timeRollback，时间点回档
 
     @property
     def ExpectTime(self):
-        r"""时间点回档，指定时间；快照回档，快照时间
+        r"""<p>时间点回档，指定时间；快照回档，快照时间</p>
         :rtype: str
         """
         return self._ExpectTime
@@ -8138,8 +8104,7 @@ timeRollback，时间点回档
 
     @property
     def ExpectTimeThresh(self):
-        r"""该参数无实际意义，已废弃。
-时间点回档，指定时间允许范围
+        r"""<p>该参数无实际意义，已废弃。<br>时间点回档，指定时间允许范围</p>
         :rtype: int
         """
         return self._ExpectTimeThresh
@@ -8150,8 +8115,7 @@ timeRollback，时间点回档
 
     @property
     def StorageLimit(self):
-        r"""普通实例存储上限，单位GB
-当DbType为MYSQL，且存储计费模式为预付费时，该参数需不大于cpu与memory对应存储规格上限
+        r"""<p>普通实例存储上限，单位GB<br>当DbType为MYSQL，且存储计费模式为预付费时，该参数需不大于cpu与memory对应存储规格上限</p>
         :rtype: int
         """
         return self._StorageLimit
@@ -8162,7 +8126,7 @@ timeRollback，时间点回档
 
     @property
     def TimeSpan(self):
-        r"""包年包月购买时长
+        r"""<p>包年包月购买时长</p>
         :rtype: int
         """
         return self._TimeSpan
@@ -8173,7 +8137,7 @@ timeRollback，时间点回档
 
     @property
     def TimeUnit(self):
-        r"""包年包月购买时长单位，['s','d','m','y']
+        r"""<p>包年包月购买时长单位，[&#39;s&#39;,&#39;d&#39;,&#39;m&#39;,&#39;y&#39;]</p>
         :rtype: str
         """
         return self._TimeUnit
@@ -8184,8 +8148,7 @@ timeRollback，时间点回档
 
     @property
     def AutoRenewFlag(self):
-        r"""包年包月购买是否自动续费，默认为0。
-0标识默认续费方式，1表示自动续费，2表示不自动续费。
+        r"""<p>包年包月购买是否自动续费</p><p>枚举值：</p><ul><li>0： 默认续费方式</li><li>1： 自动续费</li><li>2： 不自动续费</li></ul><p>默认值：0</p>
         :rtype: int
         """
         return self._AutoRenewFlag
@@ -8196,7 +8159,7 @@ timeRollback，时间点回档
 
     @property
     def AutoVoucher(self):
-        r"""是否自动选择代金券 1是 0否 默认为0
+        r"""<p>是否自动选择代金券 1是 0否 默认为0</p><p>枚举值：</p><ul><li>1： 是</li><li>0： 否</li></ul><p>默认值：0</p>
         :rtype: int
         """
         return self._AutoVoucher
@@ -8207,7 +8170,7 @@ timeRollback，时间点回档
 
     @property
     def HaCount(self):
-        r"""实例数量（该参数已不再使用，只做存量兼容处理）
+        r"""<p>实例数量（该参数已不再使用，只做存量兼容处理）</p>
         :rtype: int
         """
         return self._HaCount
@@ -8218,7 +8181,7 @@ timeRollback，时间点回档
 
     @property
     def OrderSource(self):
-        r"""订单来源
+        r"""<p>订单来源</p>
         :rtype: str
         """
         return self._OrderSource
@@ -8229,7 +8192,7 @@ timeRollback，时间点回档
 
     @property
     def ResourceTags(self):
-        r"""集群创建需要绑定的tag数组信息
+        r"""<p>集群创建需要绑定的tag数组信息</p>
         :rtype: list of Tag
         """
         return self._ResourceTags
@@ -8240,10 +8203,7 @@ timeRollback，时间点回档
 
     @property
     def DbMode(self):
-        r"""Db类型
-当DbType为MYSQL时可选(默认NORMAL)：
-<li>NORMAL</li>
-<li>SERVERLESS</li>
+        r"""<p>Db类型</p><p>枚举值：</p><ul><li>NORMAL： 普通实例</li><li>SERVERLESS： serverless实例</li></ul><p>默认值：NORMAL</p><p>当DbType为MYSQL时可选(默认NORMAL)</p>
         :rtype: str
         """
         return self._DbMode
@@ -8254,8 +8214,7 @@ timeRollback，时间点回档
 
     @property
     def MinCpu(self):
-        r"""当DbMode为SERVERLESS时必填
-cpu最小值，可选范围参考DescribeServerlessInstanceSpecs接口返回
+        r"""<p>当DbMode为SERVERLESS时必填<br>cpu最小值，可选范围参考DescribeServerlessInstanceSpecs接口返回</p>
         :rtype: float
         """
         return self._MinCpu
@@ -8266,8 +8225,7 @@ cpu最小值，可选范围参考DescribeServerlessInstanceSpecs接口返回
 
     @property
     def MaxCpu(self):
-        r"""当DbMode为SERVERLESS时必填：
-cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
+        r"""<p>当DbMode为SERVERLESS时必填：<br>cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回</p>
         :rtype: float
         """
         return self._MaxCpu
@@ -8278,10 +8236,7 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
 
     @property
     def AutoPause(self):
-        r"""当DbMode为SERVERLESS时，指定集群是否自动暂停，可选范围
-<li>yes</li>
-<li>no</li>
-默认值:yes
+        r"""<p>否自动暂停</p><p>枚举值：</p><ul><li>yes： 是</li><li>no： 否</li></ul><p>默认值：yes</p><p>DbMode为SERVERLESS生效</p>
         :rtype: str
         """
         return self._AutoPause
@@ -8292,8 +8247,7 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
 
     @property
     def AutoPauseDelay(self):
-        r"""当DbMode为SERVERLESS时，指定集群自动暂停的延迟，单位秒，可选范围[600,691200]
-默认值:600
+        r"""<p>当DbMode为SERVERLESS时，指定集群自动暂停的延迟，单位秒，可选范围[600,691200]<br>默认值:600</p>
         :rtype: int
         """
         return self._AutoPauseDelay
@@ -8304,9 +8258,7 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
 
     @property
     def StoragePayMode(self):
-        r"""集群存储计费模式，按量计费：0，包年包月：1。默认按量计费
-当DbType为MYSQL时，在集群计算计费模式为后付费（包括DbMode为SERVERLESS）时，存储计费模式仅可为按量计费
-回档与克隆均不支持包年包月存储
+        r"""<p>集群存储计费模式，按量计费：0，包年包月：1。默认按量计费<br>当DbType为MYSQL时，在集群计算计费模式为后付费（包括DbMode为SERVERLESS）时，存储计费模式仅可为按量计费<br>回档与克隆均不支持包年包月存储</p>
         :rtype: int
         """
         return self._StoragePayMode
@@ -8317,7 +8269,7 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
 
     @property
     def SecurityGroupIds(self):
-        r"""安全组id数组
+        r"""<p>安全组id数组</p>
         :rtype: list of str
         """
         return self._SecurityGroupIds
@@ -8328,7 +8280,7 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
 
     @property
     def AlarmPolicyIds(self):
-        r"""告警策略Id数组
+        r"""<p>告警策略Id数组</p>
         :rtype: list of str
         """
         return self._AlarmPolicyIds
@@ -8339,7 +8291,7 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
 
     @property
     def ClusterParams(self):
-        r"""参数数组，暂时支持character_set_server （utf8｜latin1｜gbk｜utf8mb4） ，lower_case_table_names，1-大小写不敏感，0-大小写敏感
+        r"""<p>参数数组，暂时支持character_set_server （utf8｜latin1｜gbk｜utf8mb4） ，lower_case_table_names，1-大小写不敏感，0-大小写敏感</p>
         :rtype: list of ParamItem
         """
         return self._ClusterParams
@@ -8350,7 +8302,7 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
 
     @property
     def DealMode(self):
-        r"""交易模式，0-下单且支付，1-下单
+        r"""<p>交易模式</p><p>枚举值：</p><ul><li>0： 下单且支付</li><li>1： 下单</li></ul><p>默认值：0</p>
         :rtype: int
         """
         return self._DealMode
@@ -8361,7 +8313,7 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
 
     @property
     def ParamTemplateId(self):
-        r"""参数模板ID，可以通过查询参数模板信息DescribeParamTemplates获得参数模板ID
+        r"""<p>参数模板ID，可以通过查询参数模板信息DescribeParamTemplates获得参数模板ID</p>
         :rtype: int
         """
         return self._ParamTemplateId
@@ -8372,7 +8324,7 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
 
     @property
     def SlaveZone(self):
-        r"""多可用区地址
+        r"""<p>多可用区地址</p>
         :rtype: str
         """
         return self._SlaveZone
@@ -8383,7 +8335,7 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
 
     @property
     def InstanceInitInfos(self):
-        r"""实例初始化配置信息，主要用于购买集群时选不同规格实例
+        r"""<p>实例初始化配置信息，主要用于购买集群时选不同规格实例</p>
         :rtype: list of InstanceInitInfo
         """
         return self._InstanceInitInfos
@@ -8394,7 +8346,7 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
 
     @property
     def GdnId(self):
-        r"""全球数据库唯一标识
+        r"""<p>全球数据库唯一标识</p>
         :rtype: str
         """
         return self._GdnId
@@ -8405,7 +8357,7 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
 
     @property
     def ProxyConfig(self):
-        r"""数据库代理配置
+        r"""<p>数据库代理配置</p>
         :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ProxyConfig`
         """
         return self._ProxyConfig
@@ -8416,7 +8368,7 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
 
     @property
     def AutoArchive(self):
-        r"""是否自动归档
+        r"""<p>是否自动归档</p><p>枚举值：</p><ul><li>yes： 是</li><li>no： 否</li></ul><p>默认值：no</p><p>仅当前集群主实例为SERVERLESS时，该参数生效</p>
         :rtype: str
         """
         return self._AutoArchive
@@ -8427,7 +8379,7 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
 
     @property
     def AutoArchiveDelayHours(self):
-        r"""暂停后的归档处理时间
+        r"""<p>暂停后的归档处理时间</p><p>单位：时</p><p>默认值：12</p><p>仅当前集群主实例为SERVERLESS时，该参数生效</p>
         :rtype: int
         """
         return self._AutoArchiveDelayHours
@@ -8438,7 +8390,7 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
 
     @property
     def CynosVersion(self):
-        r"""内核小版本号
+        r"""<p>内核小版本号</p>
         :rtype: str
         """
         return self._CynosVersion
@@ -8529,15 +8481,15 @@ class CreateClustersResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TranId: 冻结流水ID
+        :param _TranId: <p>冻结流水ID</p>
         :type TranId: str
-        :param _DealNames: 订单号
+        :param _DealNames: <p>订单号</p>
         :type DealNames: list of str
-        :param _ResourceIds: 资源ID列表（该字段已不再维护，请使用dealNames字段查询接口DescribeResourcesByDealName获取资源ID）
+        :param _ResourceIds: <p>资源ID列表（该字段已不再维护，请使用dealNames字段查询接口DescribeResourcesByDealName获取资源ID）</p>
         :type ResourceIds: list of str
-        :param _ClusterIds: 集群ID列表（该字段已不再维护，请使用dealNames字段查询接口DescribeResourcesByDealName获取集群ID）
+        :param _ClusterIds: <p>集群ID列表（该字段已不再维护，请使用dealNames字段查询接口DescribeResourcesByDealName获取集群ID）</p>
         :type ClusterIds: list of str
-        :param _BigDealIds: 大订单号
+        :param _BigDealIds: <p>大订单号</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type BigDealIds: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -8552,7 +8504,7 @@ class CreateClustersResponse(AbstractModel):
 
     @property
     def TranId(self):
-        r"""冻结流水ID
+        r"""<p>冻结流水ID</p>
         :rtype: str
         """
         return self._TranId
@@ -8563,7 +8515,7 @@ class CreateClustersResponse(AbstractModel):
 
     @property
     def DealNames(self):
-        r"""订单号
+        r"""<p>订单号</p>
         :rtype: list of str
         """
         return self._DealNames
@@ -8574,7 +8526,7 @@ class CreateClustersResponse(AbstractModel):
 
     @property
     def ResourceIds(self):
-        r"""资源ID列表（该字段已不再维护，请使用dealNames字段查询接口DescribeResourcesByDealName获取资源ID）
+        r"""<p>资源ID列表（该字段已不再维护，请使用dealNames字段查询接口DescribeResourcesByDealName获取资源ID）</p>
         :rtype: list of str
         """
         return self._ResourceIds
@@ -8585,7 +8537,7 @@ class CreateClustersResponse(AbstractModel):
 
     @property
     def ClusterIds(self):
-        r"""集群ID列表（该字段已不再维护，请使用dealNames字段查询接口DescribeResourcesByDealName获取集群ID）
+        r"""<p>集群ID列表（该字段已不再维护，请使用dealNames字段查询接口DescribeResourcesByDealName获取集群ID）</p>
         :rtype: list of str
         """
         return self._ClusterIds
@@ -8596,7 +8548,7 @@ class CreateClustersResponse(AbstractModel):
 
     @property
     def BigDealIds(self):
-        r"""大订单号
+        r"""<p>大订单号</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -12829,130 +12781,126 @@ class CynosdbInstance(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Uin: 用户Uin
+        :param _Uin: <p>用户Uin</p>
         :type Uin: str
-        :param _AppId: 用户AppId
+        :param _AppId: <p>用户AppId</p>
         :type AppId: int
-        :param _ClusterId: 集群ID
+        :param _ClusterId: <p>集群ID</p>
         :type ClusterId: str
-        :param _ClusterName: 集群名称
+        :param _ClusterName: <p>集群名称</p>
         :type ClusterName: str
-        :param _InstanceId: 实例ID
+        :param _InstanceId: <p>实例ID</p>
         :type InstanceId: str
-        :param _InstanceName: 实例名称
+        :param _InstanceName: <p>实例名称</p>
         :type InstanceName: str
-        :param _ProjectId: 项目ID
+        :param _ProjectId: <p>项目ID</p>
         :type ProjectId: int
-        :param _Region: 地域
+        :param _Region: <p>地域</p>
         :type Region: str
-        :param _Zone: 可用区
+        :param _Zone: <p>可用区</p>
         :type Zone: str
-        :param _Status: 实例状态
+        :param _Status: <p>实例状态</p>
         :type Status: str
-        :param _StatusDesc: 实例状态中文描述
+        :param _StatusDesc: <p>实例状态中文描述</p>
         :type StatusDesc: str
-        :param _DbMode: 实例形态，是否为serverless实例
+        :param _DbMode: <p>实例形态，是否为serverless实例</p>
         :type DbMode: str
-        :param _DbType: 数据库类型
+        :param _DbType: <p>数据库类型</p>
         :type DbType: str
-        :param _DbVersion: 数据库版本
+        :param _DbVersion: <p>数据库版本</p>
         :type DbVersion: str
-        :param _Cpu: Cpu，单位：核
+        :param _Cpu: <p>Cpu，单位：核</p>
         :type Cpu: int
-        :param _Memory: 内存，单位：GB
+        :param _Memory: <p>内存，单位：GB</p>
         :type Memory: int
-        :param _Storage: 存储量，单位：GB
+        :param _Storage: <p>存储量，单位：GB</p>
         :type Storage: int
-        :param _InstanceType: 实例类型
+        :param _InstanceType: <p>实例类型</p>
         :type InstanceType: str
-        :param _InstanceRole: 实例当前角色
+        :param _InstanceRole: <p>实例当前角色</p>
         :type InstanceRole: str
-        :param _UpdateTime: 更新时间
+        :param _UpdateTime: <p>更新时间</p>
         :type UpdateTime: str
-        :param _CreateTime: 创建时间
+        :param _CreateTime: <p>创建时间</p>
         :type CreateTime: str
-        :param _VpcId: VPC网络ID
+        :param _VpcId: <p>VPC网络ID</p>
         :type VpcId: str
-        :param _SubnetId: 子网ID
+        :param _SubnetId: <p>子网ID</p>
         :type SubnetId: str
-        :param _Vip: 实例内网IP
+        :param _Vip: <p>实例内网IP</p>
         :type Vip: str
-        :param _Vport: 实例内网端口
+        :param _Vport: <p>实例内网端口</p>
         :type Vport: int
-        :param _PayMode: 付费模式
+        :param _PayMode: <p>付费模式</p>
         :type PayMode: int
-        :param _PeriodEndTime: 实例过期时间
+        :param _PeriodEndTime: <p>实例过期时间</p>
         :type PeriodEndTime: str
-        :param _DestroyDeadlineText: 销毁期限
+        :param _DestroyDeadlineText: <p>销毁期限</p>
         :type DestroyDeadlineText: str
-        :param _IsolateTime: 隔离时间
+        :param _IsolateTime: <p>隔离时间</p>
         :type IsolateTime: str
-        :param _NetType: 网络类型
+        :param _NetType: <p>网络类型</p>
         :type NetType: int
-        :param _WanDomain: 外网域名
+        :param _WanDomain: <p>外网域名</p>
         :type WanDomain: str
-        :param _WanIP: 外网IP
+        :param _WanIP: <p>外网IP</p>
         :type WanIP: str
-        :param _WanPort: 外网端口
+        :param _WanPort: <p>外网端口</p>
         :type WanPort: int
-        :param _WanStatus: 外网状态
+        :param _WanStatus: <p>外网状态</p>
         :type WanStatus: str
-        :param _DestroyTime: 实例销毁时间
+        :param _DestroyTime: <p>实例销毁时间</p>
         :type DestroyTime: str
-        :param _CynosVersion: Cynos内核版本
+        :param _CynosVersion: <p>Cynos内核版本</p>
         :type CynosVersion: str
-        :param _ProcessingTask: 正在处理的任务
+        :param _ProcessingTask: <p>正在处理的任务</p>
         :type ProcessingTask: str
-        :param _RenewFlag: 续费标志
+        :param _RenewFlag: <p>续费标志</p>
         :type RenewFlag: int
-        :param _MinCpu: serverless实例cpu下限
+        :param _MinCpu: <p>serverless实例cpu下限</p>
         :type MinCpu: float
-        :param _MaxCpu: serverless实例cpu上限
+        :param _MaxCpu: <p>serverless实例cpu上限</p>
         :type MaxCpu: float
-        :param _ServerlessStatus: serverless实例状态, 可选值：
-resume
-pause
+        :param _ServerlessStatus: <p>serverless实例状态, 可选值：<br>resume<br>pause</p>
         :type ServerlessStatus: str
-        :param _StorageId: 预付费存储Id
+        :param _StorageId: <p>预付费存储Id</p>
         :type StorageId: str
-        :param _StoragePayMode: 存储付费类型
+        :param _StoragePayMode: <p>存储付费类型</p>
         :type StoragePayMode: int
-        :param _PhysicalZone: 物理区
+        :param _PhysicalZone: <p>物理区</p>
         :type PhysicalZone: str
-        :param _BusinessType: 商业类型
+        :param _BusinessType: <p>商业类型</p>
         :type BusinessType: str
-        :param _Tasks: 任务
+        :param _Tasks: <p>任务</p>
         :type Tasks: list of ObjectTask
-        :param _IsFreeze: 是否冻结
+        :param _IsFreeze: <p>是否冻结</p>
         :type IsFreeze: str
-        :param _ResourceTags: 资源标签
+        :param _ResourceTags: <p>资源标签</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceTags: list of Tag
-        :param _MasterZone: 主可用区
+        :param _MasterZone: <p>主可用区</p>
         :type MasterZone: str
-        :param _SlaveZones: 备可用区
+        :param _SlaveZones: <p>备可用区</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SlaveZones: list of str
-        :param _InstanceNetInfo: 实例网络信息
+        :param _InstanceNetInfo: <p>实例网络信息</p>
         :type InstanceNetInfo: list of InstanceNetInfo
-        :param _ResourcePackages: 实例绑定资源包信息（此处只返回计算资源包，即packageType=CCU）
+        :param _ResourcePackages: <p>实例绑定资源包信息（此处只返回计算资源包，即packageType=CCU）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourcePackages: list of ResourcePackage
-        :param _InstanceIndexMode: 实例索引形态,可选值【mixedRowColumn（行列混存），onlyRowIndex（仅行存）】
+        :param _InstanceIndexMode: <p>实例索引形态,可选值【mixedRowColumn（行列混存），onlyRowIndex（仅行存）】</p>
         :type InstanceIndexMode: str
-        :param _InstanceAbility: 当前实例支持的能力
+        :param _InstanceAbility: <p>当前实例支持的能力</p>
         :type InstanceAbility: :class:`tencentcloud.cynosdb.v20190107.models.InstanceAbility`
-        :param _DeviceType: 实例机器类型
-1. common，通用型。
-2. exclusive，独享型。
+        :param _DeviceType: <p>实例机器类型</p><ol><li>common，通用型。</li><li>exclusive，独享型。</li></ol>
         :type DeviceType: str
-        :param _InstanceStorageType: 实例存储类型
+        :param _InstanceStorageType: <p>实例存储类型</p>
         :type InstanceStorageType: str
-        :param _CynosVersionTag: 未知字段
+        :param _CynosVersionTag: <p>未知字段</p>
         :type CynosVersionTag: str
-        :param _NodeList: libradb 节点信息
+        :param _NodeList: <p>libradb 节点信息</p>
         :type NodeList: list of str
-        :param _GdnId: 全球数据库唯一标识
+        :param _GdnId: <p>全球数据库唯一标识</p>
         :type GdnId: str
         """
         self._Uin = None
@@ -13017,7 +12965,7 @@ pause
 
     @property
     def Uin(self):
-        r"""用户Uin
+        r"""<p>用户Uin</p>
         :rtype: str
         """
         return self._Uin
@@ -13028,7 +12976,7 @@ pause
 
     @property
     def AppId(self):
-        r"""用户AppId
+        r"""<p>用户AppId</p>
         :rtype: int
         """
         return self._AppId
@@ -13039,7 +12987,7 @@ pause
 
     @property
     def ClusterId(self):
-        r"""集群ID
+        r"""<p>集群ID</p>
         :rtype: str
         """
         return self._ClusterId
@@ -13050,7 +12998,7 @@ pause
 
     @property
     def ClusterName(self):
-        r"""集群名称
+        r"""<p>集群名称</p>
         :rtype: str
         """
         return self._ClusterName
@@ -13061,7 +13009,7 @@ pause
 
     @property
     def InstanceId(self):
-        r"""实例ID
+        r"""<p>实例ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -13072,7 +13020,7 @@ pause
 
     @property
     def InstanceName(self):
-        r"""实例名称
+        r"""<p>实例名称</p>
         :rtype: str
         """
         return self._InstanceName
@@ -13083,7 +13031,7 @@ pause
 
     @property
     def ProjectId(self):
-        r"""项目ID
+        r"""<p>项目ID</p>
         :rtype: int
         """
         return self._ProjectId
@@ -13094,7 +13042,7 @@ pause
 
     @property
     def Region(self):
-        r"""地域
+        r"""<p>地域</p>
         :rtype: str
         """
         return self._Region
@@ -13105,7 +13053,7 @@ pause
 
     @property
     def Zone(self):
-        r"""可用区
+        r"""<p>可用区</p>
         :rtype: str
         """
         return self._Zone
@@ -13116,7 +13064,7 @@ pause
 
     @property
     def Status(self):
-        r"""实例状态
+        r"""<p>实例状态</p>
         :rtype: str
         """
         return self._Status
@@ -13127,7 +13075,7 @@ pause
 
     @property
     def StatusDesc(self):
-        r"""实例状态中文描述
+        r"""<p>实例状态中文描述</p>
         :rtype: str
         """
         return self._StatusDesc
@@ -13138,7 +13086,7 @@ pause
 
     @property
     def DbMode(self):
-        r"""实例形态，是否为serverless实例
+        r"""<p>实例形态，是否为serverless实例</p>
         :rtype: str
         """
         return self._DbMode
@@ -13149,7 +13097,7 @@ pause
 
     @property
     def DbType(self):
-        r"""数据库类型
+        r"""<p>数据库类型</p>
         :rtype: str
         """
         return self._DbType
@@ -13160,7 +13108,7 @@ pause
 
     @property
     def DbVersion(self):
-        r"""数据库版本
+        r"""<p>数据库版本</p>
         :rtype: str
         """
         return self._DbVersion
@@ -13171,7 +13119,7 @@ pause
 
     @property
     def Cpu(self):
-        r"""Cpu，单位：核
+        r"""<p>Cpu，单位：核</p>
         :rtype: int
         """
         return self._Cpu
@@ -13182,7 +13130,7 @@ pause
 
     @property
     def Memory(self):
-        r"""内存，单位：GB
+        r"""<p>内存，单位：GB</p>
         :rtype: int
         """
         return self._Memory
@@ -13193,7 +13141,7 @@ pause
 
     @property
     def Storage(self):
-        r"""存储量，单位：GB
+        r"""<p>存储量，单位：GB</p>
         :rtype: int
         """
         return self._Storage
@@ -13204,7 +13152,7 @@ pause
 
     @property
     def InstanceType(self):
-        r"""实例类型
+        r"""<p>实例类型</p>
         :rtype: str
         """
         return self._InstanceType
@@ -13215,7 +13163,7 @@ pause
 
     @property
     def InstanceRole(self):
-        r"""实例当前角色
+        r"""<p>实例当前角色</p>
         :rtype: str
         """
         return self._InstanceRole
@@ -13226,7 +13174,7 @@ pause
 
     @property
     def UpdateTime(self):
-        r"""更新时间
+        r"""<p>更新时间</p>
         :rtype: str
         """
         return self._UpdateTime
@@ -13237,7 +13185,7 @@ pause
 
     @property
     def CreateTime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
         :rtype: str
         """
         return self._CreateTime
@@ -13248,7 +13196,7 @@ pause
 
     @property
     def VpcId(self):
-        r"""VPC网络ID
+        r"""<p>VPC网络ID</p>
         :rtype: str
         """
         return self._VpcId
@@ -13259,7 +13207,7 @@ pause
 
     @property
     def SubnetId(self):
-        r"""子网ID
+        r"""<p>子网ID</p>
         :rtype: str
         """
         return self._SubnetId
@@ -13270,7 +13218,7 @@ pause
 
     @property
     def Vip(self):
-        r"""实例内网IP
+        r"""<p>实例内网IP</p>
         :rtype: str
         """
         return self._Vip
@@ -13281,7 +13229,7 @@ pause
 
     @property
     def Vport(self):
-        r"""实例内网端口
+        r"""<p>实例内网端口</p>
         :rtype: int
         """
         return self._Vport
@@ -13292,7 +13240,7 @@ pause
 
     @property
     def PayMode(self):
-        r"""付费模式
+        r"""<p>付费模式</p>
         :rtype: int
         """
         return self._PayMode
@@ -13303,7 +13251,7 @@ pause
 
     @property
     def PeriodEndTime(self):
-        r"""实例过期时间
+        r"""<p>实例过期时间</p>
         :rtype: str
         """
         return self._PeriodEndTime
@@ -13314,7 +13262,7 @@ pause
 
     @property
     def DestroyDeadlineText(self):
-        r"""销毁期限
+        r"""<p>销毁期限</p>
         :rtype: str
         """
         return self._DestroyDeadlineText
@@ -13325,7 +13273,7 @@ pause
 
     @property
     def IsolateTime(self):
-        r"""隔离时间
+        r"""<p>隔离时间</p>
         :rtype: str
         """
         return self._IsolateTime
@@ -13336,7 +13284,7 @@ pause
 
     @property
     def NetType(self):
-        r"""网络类型
+        r"""<p>网络类型</p>
         :rtype: int
         """
         return self._NetType
@@ -13347,7 +13295,7 @@ pause
 
     @property
     def WanDomain(self):
-        r"""外网域名
+        r"""<p>外网域名</p>
         :rtype: str
         """
         return self._WanDomain
@@ -13358,7 +13306,7 @@ pause
 
     @property
     def WanIP(self):
-        r"""外网IP
+        r"""<p>外网IP</p>
         :rtype: str
         """
         return self._WanIP
@@ -13369,7 +13317,7 @@ pause
 
     @property
     def WanPort(self):
-        r"""外网端口
+        r"""<p>外网端口</p>
         :rtype: int
         """
         return self._WanPort
@@ -13380,7 +13328,7 @@ pause
 
     @property
     def WanStatus(self):
-        r"""外网状态
+        r"""<p>外网状态</p>
         :rtype: str
         """
         return self._WanStatus
@@ -13391,7 +13339,7 @@ pause
 
     @property
     def DestroyTime(self):
-        r"""实例销毁时间
+        r"""<p>实例销毁时间</p>
         :rtype: str
         """
         return self._DestroyTime
@@ -13402,7 +13350,7 @@ pause
 
     @property
     def CynosVersion(self):
-        r"""Cynos内核版本
+        r"""<p>Cynos内核版本</p>
         :rtype: str
         """
         return self._CynosVersion
@@ -13413,7 +13361,7 @@ pause
 
     @property
     def ProcessingTask(self):
-        r"""正在处理的任务
+        r"""<p>正在处理的任务</p>
         :rtype: str
         """
         return self._ProcessingTask
@@ -13424,7 +13372,7 @@ pause
 
     @property
     def RenewFlag(self):
-        r"""续费标志
+        r"""<p>续费标志</p>
         :rtype: int
         """
         return self._RenewFlag
@@ -13435,7 +13383,7 @@ pause
 
     @property
     def MinCpu(self):
-        r"""serverless实例cpu下限
+        r"""<p>serverless实例cpu下限</p>
         :rtype: float
         """
         return self._MinCpu
@@ -13446,7 +13394,7 @@ pause
 
     @property
     def MaxCpu(self):
-        r"""serverless实例cpu上限
+        r"""<p>serverless实例cpu上限</p>
         :rtype: float
         """
         return self._MaxCpu
@@ -13457,9 +13405,7 @@ pause
 
     @property
     def ServerlessStatus(self):
-        r"""serverless实例状态, 可选值：
-resume
-pause
+        r"""<p>serverless实例状态, 可选值：<br>resume<br>pause</p>
         :rtype: str
         """
         return self._ServerlessStatus
@@ -13470,7 +13416,7 @@ pause
 
     @property
     def StorageId(self):
-        r"""预付费存储Id
+        r"""<p>预付费存储Id</p>
         :rtype: str
         """
         return self._StorageId
@@ -13481,7 +13427,7 @@ pause
 
     @property
     def StoragePayMode(self):
-        r"""存储付费类型
+        r"""<p>存储付费类型</p>
         :rtype: int
         """
         return self._StoragePayMode
@@ -13492,7 +13438,7 @@ pause
 
     @property
     def PhysicalZone(self):
-        r"""物理区
+        r"""<p>物理区</p>
         :rtype: str
         """
         return self._PhysicalZone
@@ -13503,7 +13449,7 @@ pause
 
     @property
     def BusinessType(self):
-        r"""商业类型
+        r"""<p>商业类型</p>
         :rtype: str
         """
         return self._BusinessType
@@ -13514,7 +13460,7 @@ pause
 
     @property
     def Tasks(self):
-        r"""任务
+        r"""<p>任务</p>
         :rtype: list of ObjectTask
         """
         return self._Tasks
@@ -13525,7 +13471,7 @@ pause
 
     @property
     def IsFreeze(self):
-        r"""是否冻结
+        r"""<p>是否冻结</p>
         :rtype: str
         """
         return self._IsFreeze
@@ -13536,7 +13482,7 @@ pause
 
     @property
     def ResourceTags(self):
-        r"""资源标签
+        r"""<p>资源标签</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Tag
         """
@@ -13548,7 +13494,7 @@ pause
 
     @property
     def MasterZone(self):
-        r"""主可用区
+        r"""<p>主可用区</p>
         :rtype: str
         """
         return self._MasterZone
@@ -13559,7 +13505,7 @@ pause
 
     @property
     def SlaveZones(self):
-        r"""备可用区
+        r"""<p>备可用区</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -13571,7 +13517,7 @@ pause
 
     @property
     def InstanceNetInfo(self):
-        r"""实例网络信息
+        r"""<p>实例网络信息</p>
         :rtype: list of InstanceNetInfo
         """
         return self._InstanceNetInfo
@@ -13582,7 +13528,7 @@ pause
 
     @property
     def ResourcePackages(self):
-        r"""实例绑定资源包信息（此处只返回计算资源包，即packageType=CCU）
+        r"""<p>实例绑定资源包信息（此处只返回计算资源包，即packageType=CCU）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ResourcePackage
         """
@@ -13594,7 +13540,7 @@ pause
 
     @property
     def InstanceIndexMode(self):
-        r"""实例索引形态,可选值【mixedRowColumn（行列混存），onlyRowIndex（仅行存）】
+        r"""<p>实例索引形态,可选值【mixedRowColumn（行列混存），onlyRowIndex（仅行存）】</p>
         :rtype: str
         """
         return self._InstanceIndexMode
@@ -13605,7 +13551,7 @@ pause
 
     @property
     def InstanceAbility(self):
-        r"""当前实例支持的能力
+        r"""<p>当前实例支持的能力</p>
         :rtype: :class:`tencentcloud.cynosdb.v20190107.models.InstanceAbility`
         """
         return self._InstanceAbility
@@ -13616,9 +13562,7 @@ pause
 
     @property
     def DeviceType(self):
-        r"""实例机器类型
-1. common，通用型。
-2. exclusive，独享型。
+        r"""<p>实例机器类型</p><ol><li>common，通用型。</li><li>exclusive，独享型。</li></ol>
         :rtype: str
         """
         return self._DeviceType
@@ -13629,7 +13573,7 @@ pause
 
     @property
     def InstanceStorageType(self):
-        r"""实例存储类型
+        r"""<p>实例存储类型</p>
         :rtype: str
         """
         return self._InstanceStorageType
@@ -13640,7 +13584,7 @@ pause
 
     @property
     def CynosVersionTag(self):
-        r"""未知字段
+        r"""<p>未知字段</p>
         :rtype: str
         """
         return self._CynosVersionTag
@@ -13651,7 +13595,7 @@ pause
 
     @property
     def NodeList(self):
-        r"""libradb 节点信息
+        r"""<p>libradb 节点信息</p>
         :rtype: list of str
         """
         return self._NodeList
@@ -13662,7 +13606,7 @@ pause
 
     @property
     def GdnId(self):
-        r"""全球数据库唯一标识
+        r"""<p>全球数据库唯一标识</p>
         :rtype: str
         """
         return self._GdnId
@@ -33206,25 +33150,23 @@ class InstanceInitInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Cpu: 实例cpu
+        :param _Cpu: <p>实例cpu</p>
         :type Cpu: int
-        :param _Memory: 实例内存
+        :param _Memory: <p>实例内存</p>
         :type Memory: int
-        :param _InstanceType: 实例类型 rw/ro
+        :param _InstanceType: <p>实例类型 rw/ro</p>
         :type InstanceType: str
-        :param _InstanceCount: 实例个数,范围[1,15]
+        :param _InstanceCount: <p>实例个数,范围[1,15]</p>
         :type InstanceCount: int
-        :param _MinRoCount: Serverless实例个数最小值，范围[1,15]
+        :param _MinRoCount: <p>Serverless实例个数最小值，范围[1,15]</p>
         :type MinRoCount: int
-        :param _MaxRoCount: Serverless实例个数最大值，范围[1,15]
+        :param _MaxRoCount: <p>Serverless实例个数最大值，范围[1,15]</p>
         :type MaxRoCount: int
-        :param _MinRoCpu: Serverless实例最小规格
+        :param _MinRoCpu: <p>Serverless实例最小规格</p>
         :type MinRoCpu: float
-        :param _MaxRoCpu: Serverless实例最大规格
+        :param _MaxRoCpu: <p>Serverless实例最大规格</p>
         :type MaxRoCpu: float
-        :param _DeviceType: 实例机器类型
-1. common，通用型。
-2. exclusive，独享型。
+        :param _DeviceType: <p>实例机器类型</p><ol><li>common，通用型。</li><li>exclusive，独享型。</li></ol>
         :type DeviceType: str
         """
         self._Cpu = None
@@ -33239,7 +33181,7 @@ class InstanceInitInfo(AbstractModel):
 
     @property
     def Cpu(self):
-        r"""实例cpu
+        r"""<p>实例cpu</p>
         :rtype: int
         """
         return self._Cpu
@@ -33250,7 +33192,7 @@ class InstanceInitInfo(AbstractModel):
 
     @property
     def Memory(self):
-        r"""实例内存
+        r"""<p>实例内存</p>
         :rtype: int
         """
         return self._Memory
@@ -33261,7 +33203,7 @@ class InstanceInitInfo(AbstractModel):
 
     @property
     def InstanceType(self):
-        r"""实例类型 rw/ro
+        r"""<p>实例类型 rw/ro</p>
         :rtype: str
         """
         return self._InstanceType
@@ -33272,7 +33214,7 @@ class InstanceInitInfo(AbstractModel):
 
     @property
     def InstanceCount(self):
-        r"""实例个数,范围[1,15]
+        r"""<p>实例个数,范围[1,15]</p>
         :rtype: int
         """
         return self._InstanceCount
@@ -33283,7 +33225,7 @@ class InstanceInitInfo(AbstractModel):
 
     @property
     def MinRoCount(self):
-        r"""Serverless实例个数最小值，范围[1,15]
+        r"""<p>Serverless实例个数最小值，范围[1,15]</p>
         :rtype: int
         """
         return self._MinRoCount
@@ -33294,7 +33236,7 @@ class InstanceInitInfo(AbstractModel):
 
     @property
     def MaxRoCount(self):
-        r"""Serverless实例个数最大值，范围[1,15]
+        r"""<p>Serverless实例个数最大值，范围[1,15]</p>
         :rtype: int
         """
         return self._MaxRoCount
@@ -33305,7 +33247,7 @@ class InstanceInitInfo(AbstractModel):
 
     @property
     def MinRoCpu(self):
-        r"""Serverless实例最小规格
+        r"""<p>Serverless实例最小规格</p>
         :rtype: float
         """
         return self._MinRoCpu
@@ -33316,7 +33258,7 @@ class InstanceInitInfo(AbstractModel):
 
     @property
     def MaxRoCpu(self):
-        r"""Serverless实例最大规格
+        r"""<p>Serverless实例最大规格</p>
         :rtype: float
         """
         return self._MaxRoCpu
@@ -33327,9 +33269,7 @@ class InstanceInitInfo(AbstractModel):
 
     @property
     def DeviceType(self):
-        r"""实例机器类型
-1. common，通用型。
-2. exclusive，独享型。
+        r"""<p>实例机器类型</p><ol><li>common，通用型。</li><li>exclusive，独享型。</li></ol>
         :rtype: str
         """
         return self._DeviceType
@@ -43035,35 +42975,33 @@ class ModifyServerlessStrategyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: serverless集群id
+        :param _ClusterId: <p>serverless集群id</p>
         :type ClusterId: str
-        :param _AutoPause: 集群是否自动暂停，可选范围
-<li>yes</li>
-<li>no</li>
+        :param _AutoPause: <p>集群是否自动暂停，可选范围</p><li>yes</li><li>no</li>
         :type AutoPause: str
-        :param _AutoPauseDelay: 集群自动暂停的延迟，单位秒，可选范围[600,691200]，默认600
+        :param _AutoPauseDelay: <p>集群自动暂停的延迟，单位秒，可选范围[600,691200]，默认600</p>
         :type AutoPauseDelay: int
-        :param _AutoScaleUpDelay: 该参数暂时无效
+        :param _AutoScaleUpDelay: <p>该参数暂时无效</p>
         :type AutoScaleUpDelay: int
-        :param _AutoScaleDownDelay: 该参数暂时无效
+        :param _AutoScaleDownDelay: <p>该参数暂时无效</p>
         :type AutoScaleDownDelay: int
-        :param _MinCpu: cpu最小值，可选范围参考DescribeServerlessInstanceSpecs接口返回
+        :param _MinCpu: <p>cpu最小值，可选范围参考DescribeServerlessInstanceSpecs接口返回</p>
         :type MinCpu: float
-        :param _MaxCpu: cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
+        :param _MaxCpu: <p>cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回</p>
         :type MaxCpu: float
-        :param _MinRoCpu: 只读实例cpu最小值，可选范围参考DescribeServerlessInstanceSpecs接口返回
+        :param _MinRoCpu: <p>只读实例cpu最小值，可选范围参考DescribeServerlessInstanceSpecs接口返回</p>
         :type MinRoCpu: float
-        :param _MaxRoCpu: 只读cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
+        :param _MaxRoCpu: <p>只读cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回</p>
         :type MaxRoCpu: float
-        :param _MinRoCount: 只读节点最小个数
+        :param _MinRoCount: <p>只读节点最小个数</p>
         :type MinRoCount: int
-        :param _MaxRoCount: 只读节点最大个数
+        :param _MaxRoCount: <p>只读节点最大个数</p>
         :type MaxRoCount: int
-        :param _AutoArchive: 是否开启归档，可选范围<li>yes</li><li>no</li>默认值:yes
+        :param _AutoArchive: <p>是否开启归档，可选范围<li>yes</li><li>no</li>默认值:yes</p>
         :type AutoArchive: str
-        :param _UpgradeType: 升级类型。 默认值：upgradeImmediate。 可选值： upgradeImmediate：立即完成修改 upgradeInMaintain：在维护时间窗口内完成修改
+        :param _UpgradeType: <p>升级类型。 默认值：upgradeImmediate。 可选值： upgradeImmediate：立即完成修改 upgradeInMaintain：在维护时间窗口内完成修改</p>
         :type UpgradeType: str
-        :param _SecurityGroupIdsForNewRo: 新增的只读实例需要绑定的安全组列表。仅仅针对于在这次调整策略过程中新产生的只读实例绑定安全组，存量的实例不绑定。
+        :param _SecurityGroupIdsForNewRo: <p>新增的只读实例需要绑定的安全组列表。仅仅针对于在这次调整策略过程中新产生的只读实例绑定安全组，存量的实例不绑定。</p>
         :type SecurityGroupIdsForNewRo: list of str
         """
         self._ClusterId = None
@@ -43083,7 +43021,7 @@ class ModifyServerlessStrategyRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        r"""serverless集群id
+        r"""<p>serverless集群id</p>
         :rtype: str
         """
         return self._ClusterId
@@ -43094,9 +43032,7 @@ class ModifyServerlessStrategyRequest(AbstractModel):
 
     @property
     def AutoPause(self):
-        r"""集群是否自动暂停，可选范围
-<li>yes</li>
-<li>no</li>
+        r"""<p>集群是否自动暂停，可选范围</p><li>yes</li><li>no</li>
         :rtype: str
         """
         return self._AutoPause
@@ -43107,7 +43043,7 @@ class ModifyServerlessStrategyRequest(AbstractModel):
 
     @property
     def AutoPauseDelay(self):
-        r"""集群自动暂停的延迟，单位秒，可选范围[600,691200]，默认600
+        r"""<p>集群自动暂停的延迟，单位秒，可选范围[600,691200]，默认600</p>
         :rtype: int
         """
         return self._AutoPauseDelay
@@ -43118,7 +43054,7 @@ class ModifyServerlessStrategyRequest(AbstractModel):
 
     @property
     def AutoScaleUpDelay(self):
-        r"""该参数暂时无效
+        r"""<p>该参数暂时无效</p>
         :rtype: int
         """
         return self._AutoScaleUpDelay
@@ -43129,7 +43065,7 @@ class ModifyServerlessStrategyRequest(AbstractModel):
 
     @property
     def AutoScaleDownDelay(self):
-        r"""该参数暂时无效
+        r"""<p>该参数暂时无效</p>
         :rtype: int
         """
         return self._AutoScaleDownDelay
@@ -43140,7 +43076,7 @@ class ModifyServerlessStrategyRequest(AbstractModel):
 
     @property
     def MinCpu(self):
-        r"""cpu最小值，可选范围参考DescribeServerlessInstanceSpecs接口返回
+        r"""<p>cpu最小值，可选范围参考DescribeServerlessInstanceSpecs接口返回</p>
         :rtype: float
         """
         return self._MinCpu
@@ -43151,7 +43087,7 @@ class ModifyServerlessStrategyRequest(AbstractModel):
 
     @property
     def MaxCpu(self):
-        r"""cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
+        r"""<p>cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回</p>
         :rtype: float
         """
         return self._MaxCpu
@@ -43162,7 +43098,7 @@ class ModifyServerlessStrategyRequest(AbstractModel):
 
     @property
     def MinRoCpu(self):
-        r"""只读实例cpu最小值，可选范围参考DescribeServerlessInstanceSpecs接口返回
+        r"""<p>只读实例cpu最小值，可选范围参考DescribeServerlessInstanceSpecs接口返回</p>
         :rtype: float
         """
         return self._MinRoCpu
@@ -43173,7 +43109,7 @@ class ModifyServerlessStrategyRequest(AbstractModel):
 
     @property
     def MaxRoCpu(self):
-        r"""只读cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
+        r"""<p>只读cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回</p>
         :rtype: float
         """
         return self._MaxRoCpu
@@ -43184,7 +43120,7 @@ class ModifyServerlessStrategyRequest(AbstractModel):
 
     @property
     def MinRoCount(self):
-        r"""只读节点最小个数
+        r"""<p>只读节点最小个数</p>
         :rtype: int
         """
         return self._MinRoCount
@@ -43195,7 +43131,7 @@ class ModifyServerlessStrategyRequest(AbstractModel):
 
     @property
     def MaxRoCount(self):
-        r"""只读节点最大个数
+        r"""<p>只读节点最大个数</p>
         :rtype: int
         """
         return self._MaxRoCount
@@ -43206,7 +43142,7 @@ class ModifyServerlessStrategyRequest(AbstractModel):
 
     @property
     def AutoArchive(self):
-        r"""是否开启归档，可选范围<li>yes</li><li>no</li>默认值:yes
+        r"""<p>是否开启归档，可选范围<li>yes</li><li>no</li>默认值:yes</p>
         :rtype: str
         """
         return self._AutoArchive
@@ -43217,7 +43153,7 @@ class ModifyServerlessStrategyRequest(AbstractModel):
 
     @property
     def UpgradeType(self):
-        r"""升级类型。 默认值：upgradeImmediate。 可选值： upgradeImmediate：立即完成修改 upgradeInMaintain：在维护时间窗口内完成修改
+        r"""<p>升级类型。 默认值：upgradeImmediate。 可选值： upgradeImmediate：立即完成修改 upgradeInMaintain：在维护时间窗口内完成修改</p>
         :rtype: str
         """
         return self._UpgradeType
@@ -43228,7 +43164,7 @@ class ModifyServerlessStrategyRequest(AbstractModel):
 
     @property
     def SecurityGroupIdsForNewRo(self):
-        r"""新增的只读实例需要绑定的安全组列表。仅仅针对于在这次调整策略过程中新产生的只读实例绑定安全组，存量的实例不绑定。
+        r"""<p>新增的只读实例需要绑定的安全组列表。仅仅针对于在这次调整策略过程中新产生的只读实例绑定安全组，存量的实例不绑定。</p>
         :rtype: list of str
         """
         return self._SecurityGroupIdsForNewRo
@@ -43270,9 +43206,9 @@ class ModifyServerlessStrategyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowId: 异步流程id
+        :param _FlowId: <p>异步流程id</p>
         :type FlowId: int
-        :param _TaskId: 任务id
+        :param _TaskId: <p>任务id</p>
         :type TaskId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -43285,7 +43221,7 @@ class ModifyServerlessStrategyResponse(AbstractModel):
     def FlowId(self):
         warnings.warn("parameter `FlowId` is deprecated", DeprecationWarning) 
 
-        r"""异步流程id
+        r"""<p>异步流程id</p>
         :rtype: int
         """
         return self._FlowId
@@ -43298,7 +43234,7 @@ class ModifyServerlessStrategyResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""任务id
+        r"""<p>任务id</p>
         :rtype: int
         """
         return self._TaskId
@@ -47379,21 +47315,21 @@ class ProxyConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProxyCount: 数据库代理组节点个数。该参数不再建议使用,建议使用ProxyZones
+        :param _ProxyCount: <p>数据库代理组节点个数。该参数不再建议使用,建议使用ProxyZones</p>
         :type ProxyCount: int
-        :param _Cpu: cpu核数
+        :param _Cpu: <p>cpu核数</p>
         :type Cpu: int
-        :param _Mem: 内存
+        :param _Mem: <p>内存</p>
         :type Mem: int
-        :param _ConnectionPoolType: 连接池类型:SessionConnectionPool(会话级别连接池 )
+        :param _ConnectionPoolType: <p>连接池类型:SessionConnectionPool(会话级别连接池 )</p>
         :type ConnectionPoolType: str
-        :param _OpenConnectionPool: 是否开启连接池,yes-开启，no-不开启
+        :param _OpenConnectionPool: <p>是否开启连接池,yes-开启，no-不开启</p>
         :type OpenConnectionPool: str
-        :param _ConnectionPoolTimeOut: 连接池阈值:单位（秒）
+        :param _ConnectionPoolTimeOut: <p>连接池阈值:单位（秒）</p>
         :type ConnectionPoolTimeOut: int
-        :param _Description: 描述说明
+        :param _Description: <p>描述说明</p>
         :type Description: str
-        :param _ProxyZones: 数据库节点信息（该参数与ProxyCount需要任选一个输入）
+        :param _ProxyZones: <p>数据库节点信息（该参数与ProxyCount需要任选一个输入）</p>
         :type ProxyZones: list of ProxyZone
         """
         self._ProxyCount = None
@@ -47407,18 +47343,22 @@ class ProxyConfig(AbstractModel):
 
     @property
     def ProxyCount(self):
-        r"""数据库代理组节点个数。该参数不再建议使用,建议使用ProxyZones
+        warnings.warn("parameter `ProxyCount` is deprecated", DeprecationWarning) 
+
+        r"""<p>数据库代理组节点个数。该参数不再建议使用,建议使用ProxyZones</p>
         :rtype: int
         """
         return self._ProxyCount
 
     @ProxyCount.setter
     def ProxyCount(self, ProxyCount):
+        warnings.warn("parameter `ProxyCount` is deprecated", DeprecationWarning) 
+
         self._ProxyCount = ProxyCount
 
     @property
     def Cpu(self):
-        r"""cpu核数
+        r"""<p>cpu核数</p>
         :rtype: int
         """
         return self._Cpu
@@ -47429,7 +47369,7 @@ class ProxyConfig(AbstractModel):
 
     @property
     def Mem(self):
-        r"""内存
+        r"""<p>内存</p>
         :rtype: int
         """
         return self._Mem
@@ -47440,7 +47380,7 @@ class ProxyConfig(AbstractModel):
 
     @property
     def ConnectionPoolType(self):
-        r"""连接池类型:SessionConnectionPool(会话级别连接池 )
+        r"""<p>连接池类型:SessionConnectionPool(会话级别连接池 )</p>
         :rtype: str
         """
         return self._ConnectionPoolType
@@ -47451,7 +47391,7 @@ class ProxyConfig(AbstractModel):
 
     @property
     def OpenConnectionPool(self):
-        r"""是否开启连接池,yes-开启，no-不开启
+        r"""<p>是否开启连接池,yes-开启，no-不开启</p>
         :rtype: str
         """
         return self._OpenConnectionPool
@@ -47462,7 +47402,7 @@ class ProxyConfig(AbstractModel):
 
     @property
     def ConnectionPoolTimeOut(self):
-        r"""连接池阈值:单位（秒）
+        r"""<p>连接池阈值:单位（秒）</p>
         :rtype: int
         """
         return self._ConnectionPoolTimeOut
@@ -47473,7 +47413,7 @@ class ProxyConfig(AbstractModel):
 
     @property
     def Description(self):
-        r"""描述说明
+        r"""<p>描述说明</p>
         :rtype: str
         """
         return self._Description
@@ -47484,7 +47424,7 @@ class ProxyConfig(AbstractModel):
 
     @property
     def ProxyZones(self):
-        r"""数据库节点信息（该参数与ProxyCount需要任选一个输入）
+        r"""<p>数据库节点信息（该参数与ProxyCount需要任选一个输入）</p>
         :rtype: list of ProxyZone
         """
         return self._ProxyZones
@@ -53857,19 +53797,19 @@ class ServerlessSpec(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MinCpu: cpu最小值
+        :param _MinCpu: <p>cpu最小值</p>
         :type MinCpu: float
-        :param _MaxCpu: cpu最大值
+        :param _MaxCpu: <p>cpu最大值</p>
         :type MaxCpu: float
-        :param _MaxStorageSize: 最大存储空间
+        :param _MaxStorageSize: <p>最大存储空间</p>
         :type MaxStorageSize: int
-        :param _IsDefault: 是否为默认规格
+        :param _IsDefault: <p>是否为默认规格</p>
         :type IsDefault: int
-        :param _HasStock: 是否有库存
+        :param _HasStock: <p>是否有库存</p>
         :type HasStock: bool
-        :param _StockCount: 库存数量
+        :param _StockCount: <p>库存数量</p>
         :type StockCount: int
-        :param _ZoneStockInfos: 可用区库存信息
+        :param _ZoneStockInfos: <p>可用区库存信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ZoneStockInfos: list of ServerlessZoneStockInfo
         """
@@ -53883,7 +53823,7 @@ class ServerlessSpec(AbstractModel):
 
     @property
     def MinCpu(self):
-        r"""cpu最小值
+        r"""<p>cpu最小值</p>
         :rtype: float
         """
         return self._MinCpu
@@ -53894,7 +53834,7 @@ class ServerlessSpec(AbstractModel):
 
     @property
     def MaxCpu(self):
-        r"""cpu最大值
+        r"""<p>cpu最大值</p>
         :rtype: float
         """
         return self._MaxCpu
@@ -53905,7 +53845,7 @@ class ServerlessSpec(AbstractModel):
 
     @property
     def MaxStorageSize(self):
-        r"""最大存储空间
+        r"""<p>最大存储空间</p>
         :rtype: int
         """
         return self._MaxStorageSize
@@ -53916,7 +53856,7 @@ class ServerlessSpec(AbstractModel):
 
     @property
     def IsDefault(self):
-        r"""是否为默认规格
+        r"""<p>是否为默认规格</p>
         :rtype: int
         """
         return self._IsDefault
@@ -53927,7 +53867,7 @@ class ServerlessSpec(AbstractModel):
 
     @property
     def HasStock(self):
-        r"""是否有库存
+        r"""<p>是否有库存</p>
         :rtype: bool
         """
         return self._HasStock
@@ -53938,7 +53878,7 @@ class ServerlessSpec(AbstractModel):
 
     @property
     def StockCount(self):
-        r"""库存数量
+        r"""<p>库存数量</p>
         :rtype: int
         """
         return self._StockCount
@@ -53949,7 +53889,7 @@ class ServerlessSpec(AbstractModel):
 
     @property
     def ZoneStockInfos(self):
-        r"""可用区库存信息
+        r"""<p>可用区库存信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ServerlessZoneStockInfo
         """

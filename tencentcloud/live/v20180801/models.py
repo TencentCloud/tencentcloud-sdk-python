@@ -12382,6 +12382,279 @@ class CreateRecordTaskResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateSceneVideoTaskRequest(AbstractModel):
+    r"""CreateSceneVideoTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModelName: <p>模型名称。</p>
+        :type ModelName: str
+        :param _ModelVersion: <p>模型版本号。</p>
+        :type ModelVersion: str
+        :param _SceneType: <p>场景化类型。</p><p>枚举值：</p><ul><li>template_effect： 模板特效。</li></ul>
+        :type SceneType: str
+        :param _Prompt: <p>输入的Prompt。避免出现违规词汇，审核会进行拦截。</p>
+        :type Prompt: str
+        :param _Duration: <p>指定输出的视频时长。</p><p>部分场景不支持指定时长。</p>
+        :type Duration: int
+        :param _ImageUrl: <p>输入的首帧参考图片Url。需外网可访问。</p>
+        :type ImageUrl: str
+        :param _LastImageUrl: <p>输入的尾帧参考图片Url。</p>
+        :type LastImageUrl: str
+        :param _ImageInfos: <p>多图参考生视频时，通过该参数指定多张参考图。</p>
+        :type ImageInfos: list of SceneVideoReferenceImageInfo
+        :param _VideoInfos: <p>视频编辑时，指定参考视频信息。</p>
+        :type VideoInfos: list of SceneVideoReferenceVideoInfo
+        :param _ExtraParameters: <p>常规扩展参数。</p>
+        :type ExtraParameters: :class:`tencentcloud.live.v20180801.models.SceneVideoExtraParam`
+        :param _AdditionalParameters: <p>模型扩展参数，用于透传到模型侧。</p>
+        :type AdditionalParameters: str
+        :param _StoreCosParam: <p>输出结果存储到私有cos，需授权响应角色权限。</p>
+        :type StoreCosParam: :class:`tencentcloud.live.v20180801.models.SceneStoreCosParam`
+        :param _Operator: <p>操作者名称。</p>
+        :type Operator: str
+        """
+        self._ModelName = None
+        self._ModelVersion = None
+        self._SceneType = None
+        self._Prompt = None
+        self._Duration = None
+        self._ImageUrl = None
+        self._LastImageUrl = None
+        self._ImageInfos = None
+        self._VideoInfos = None
+        self._ExtraParameters = None
+        self._AdditionalParameters = None
+        self._StoreCosParam = None
+        self._Operator = None
+
+    @property
+    def ModelName(self):
+        r"""<p>模型名称。</p>
+        :rtype: str
+        """
+        return self._ModelName
+
+    @ModelName.setter
+    def ModelName(self, ModelName):
+        self._ModelName = ModelName
+
+    @property
+    def ModelVersion(self):
+        r"""<p>模型版本号。</p>
+        :rtype: str
+        """
+        return self._ModelVersion
+
+    @ModelVersion.setter
+    def ModelVersion(self, ModelVersion):
+        self._ModelVersion = ModelVersion
+
+    @property
+    def SceneType(self):
+        r"""<p>场景化类型。</p><p>枚举值：</p><ul><li>template_effect： 模板特效。</li></ul>
+        :rtype: str
+        """
+        return self._SceneType
+
+    @SceneType.setter
+    def SceneType(self, SceneType):
+        self._SceneType = SceneType
+
+    @property
+    def Prompt(self):
+        r"""<p>输入的Prompt。避免出现违规词汇，审核会进行拦截。</p>
+        :rtype: str
+        """
+        return self._Prompt
+
+    @Prompt.setter
+    def Prompt(self, Prompt):
+        self._Prompt = Prompt
+
+    @property
+    def Duration(self):
+        r"""<p>指定输出的视频时长。</p><p>部分场景不支持指定时长。</p>
+        :rtype: int
+        """
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def ImageUrl(self):
+        r"""<p>输入的首帧参考图片Url。需外网可访问。</p>
+        :rtype: str
+        """
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
+
+    @property
+    def LastImageUrl(self):
+        r"""<p>输入的尾帧参考图片Url。</p>
+        :rtype: str
+        """
+        return self._LastImageUrl
+
+    @LastImageUrl.setter
+    def LastImageUrl(self, LastImageUrl):
+        self._LastImageUrl = LastImageUrl
+
+    @property
+    def ImageInfos(self):
+        r"""<p>多图参考生视频时，通过该参数指定多张参考图。</p>
+        :rtype: list of SceneVideoReferenceImageInfo
+        """
+        return self._ImageInfos
+
+    @ImageInfos.setter
+    def ImageInfos(self, ImageInfos):
+        self._ImageInfos = ImageInfos
+
+    @property
+    def VideoInfos(self):
+        r"""<p>视频编辑时，指定参考视频信息。</p>
+        :rtype: list of SceneVideoReferenceVideoInfo
+        """
+        return self._VideoInfos
+
+    @VideoInfos.setter
+    def VideoInfos(self, VideoInfos):
+        self._VideoInfos = VideoInfos
+
+    @property
+    def ExtraParameters(self):
+        r"""<p>常规扩展参数。</p>
+        :rtype: :class:`tencentcloud.live.v20180801.models.SceneVideoExtraParam`
+        """
+        return self._ExtraParameters
+
+    @ExtraParameters.setter
+    def ExtraParameters(self, ExtraParameters):
+        self._ExtraParameters = ExtraParameters
+
+    @property
+    def AdditionalParameters(self):
+        r"""<p>模型扩展参数，用于透传到模型侧。</p>
+        :rtype: str
+        """
+        return self._AdditionalParameters
+
+    @AdditionalParameters.setter
+    def AdditionalParameters(self, AdditionalParameters):
+        self._AdditionalParameters = AdditionalParameters
+
+    @property
+    def StoreCosParam(self):
+        r"""<p>输出结果存储到私有cos，需授权响应角色权限。</p>
+        :rtype: :class:`tencentcloud.live.v20180801.models.SceneStoreCosParam`
+        """
+        return self._StoreCosParam
+
+    @StoreCosParam.setter
+    def StoreCosParam(self, StoreCosParam):
+        self._StoreCosParam = StoreCosParam
+
+    @property
+    def Operator(self):
+        r"""<p>操作者名称。</p>
+        :rtype: str
+        """
+        return self._Operator
+
+    @Operator.setter
+    def Operator(self, Operator):
+        self._Operator = Operator
+
+
+    def _deserialize(self, params):
+        self._ModelName = params.get("ModelName")
+        self._ModelVersion = params.get("ModelVersion")
+        self._SceneType = params.get("SceneType")
+        self._Prompt = params.get("Prompt")
+        self._Duration = params.get("Duration")
+        self._ImageUrl = params.get("ImageUrl")
+        self._LastImageUrl = params.get("LastImageUrl")
+        if params.get("ImageInfos") is not None:
+            self._ImageInfos = []
+            for item in params.get("ImageInfos"):
+                obj = SceneVideoReferenceImageInfo()
+                obj._deserialize(item)
+                self._ImageInfos.append(obj)
+        if params.get("VideoInfos") is not None:
+            self._VideoInfos = []
+            for item in params.get("VideoInfos"):
+                obj = SceneVideoReferenceVideoInfo()
+                obj._deserialize(item)
+                self._VideoInfos.append(obj)
+        if params.get("ExtraParameters") is not None:
+            self._ExtraParameters = SceneVideoExtraParam()
+            self._ExtraParameters._deserialize(params.get("ExtraParameters"))
+        self._AdditionalParameters = params.get("AdditionalParameters")
+        if params.get("StoreCosParam") is not None:
+            self._StoreCosParam = SceneStoreCosParam()
+            self._StoreCosParam._deserialize(params.get("StoreCosParam"))
+        self._Operator = params.get("Operator")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateSceneVideoTaskResponse(AbstractModel):
+    r"""CreateSceneVideoTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>输出的任务ID。</p>
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>输出的任务ID。</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateScreenshotTaskRequest(AbstractModel):
     r"""CreateScreenshotTask请求参数结构体
 
@@ -27546,6 +27819,150 @@ class DescribeRecordTaskResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeSceneVideoTaskRequest(AbstractModel):
+    r"""DescribeSceneVideoTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务ID。</p>
+        :type TaskId: str
+        """
+        self._TaskId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务ID。</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSceneVideoTaskResponse(AbstractModel):
+    r"""DescribeSceneVideoTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InfoList: <p>一些特殊场景的返回信息。</p>
+        :type InfoList: list of SceneVideoOutputInfo
+        :param _Status: <p>任务状态。</p><p>枚举值：</p><ul><li>DONE： 任务结束。</li><li>RUN： 任务运行中。</li><li>WAIT： 任务准备中。</li><li>FAIL： 任务失败。</li></ul>
+        :type Status: str
+        :param _Resolution: <p>输出视频的分辨率。示例：720x1280。</p>
+        :type Resolution: str
+        :param _Message: <p>错误信息。</p>
+        :type Message: str
+        :param _VideoUrls: <p>输出的视频Url。默认过期时间:12小时，请尽快拉取并转存。也可以使用私有Cos桶长期存储。</p>
+        :type VideoUrls: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._InfoList = None
+        self._Status = None
+        self._Resolution = None
+        self._Message = None
+        self._VideoUrls = None
+        self._RequestId = None
+
+    @property
+    def InfoList(self):
+        r"""<p>一些特殊场景的返回信息。</p>
+        :rtype: list of SceneVideoOutputInfo
+        """
+        return self._InfoList
+
+    @InfoList.setter
+    def InfoList(self, InfoList):
+        self._InfoList = InfoList
+
+    @property
+    def Status(self):
+        r"""<p>任务状态。</p><p>枚举值：</p><ul><li>DONE： 任务结束。</li><li>RUN： 任务运行中。</li><li>WAIT： 任务准备中。</li><li>FAIL： 任务失败。</li></ul>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Resolution(self):
+        r"""<p>输出视频的分辨率。示例：720x1280。</p>
+        :rtype: str
+        """
+        return self._Resolution
+
+    @Resolution.setter
+    def Resolution(self, Resolution):
+        self._Resolution = Resolution
+
+    @property
+    def Message(self):
+        r"""<p>错误信息。</p>
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def VideoUrls(self):
+        r"""<p>输出的视频Url。默认过期时间:12小时，请尽快拉取并转存。也可以使用私有Cos桶长期存储。</p>
+        :rtype: list of str
+        """
+        return self._VideoUrls
+
+    @VideoUrls.setter
+    def VideoUrls(self, VideoUrls):
+        self._VideoUrls = VideoUrls
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("InfoList") is not None:
+            self._InfoList = []
+            for item in params.get("InfoList"):
+                obj = SceneVideoOutputInfo()
+                obj._deserialize(item)
+                self._InfoList.append(obj)
+        self._Status = params.get("Status")
+        self._Resolution = params.get("Resolution")
+        self._Message = params.get("Message")
+        self._VideoUrls = params.get("VideoUrls")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeScreenShotSheetNumListRequest(AbstractModel):
     r"""DescribeScreenShotSheetNumList请求参数结构体
 
@@ -41738,6 +42155,366 @@ class RuleInfo(AbstractModel):
         self._DomainName = params.get("DomainName")
         self._AppName = params.get("AppName")
         self._StreamName = params.get("StreamName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SceneStoreCosParam(AbstractModel):
+    r"""场景化视频结果文件上传COS时，需传入的信息。 需创建并授权LVB_QCSRole角色。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CosBucketName: <p>Cos桶名称。</p>
+        :type CosBucketName: str
+        :param _CosBucketRegion: <p>Cos桶地域。</p>
+        :type CosBucketRegion: str
+        :param _CosBucketPath: <p>存储路径。</p>
+        :type CosBucketPath: str
+        """
+        self._CosBucketName = None
+        self._CosBucketRegion = None
+        self._CosBucketPath = None
+
+    @property
+    def CosBucketName(self):
+        r"""<p>Cos桶名称。</p>
+        :rtype: str
+        """
+        return self._CosBucketName
+
+    @CosBucketName.setter
+    def CosBucketName(self, CosBucketName):
+        self._CosBucketName = CosBucketName
+
+    @property
+    def CosBucketRegion(self):
+        r"""<p>Cos桶地域。</p>
+        :rtype: str
+        """
+        return self._CosBucketRegion
+
+    @CosBucketRegion.setter
+    def CosBucketRegion(self, CosBucketRegion):
+        self._CosBucketRegion = CosBucketRegion
+
+    @property
+    def CosBucketPath(self):
+        r"""<p>存储路径。</p>
+        :rtype: str
+        """
+        return self._CosBucketPath
+
+    @CosBucketPath.setter
+    def CosBucketPath(self, CosBucketPath):
+        self._CosBucketPath = CosBucketPath
+
+
+    def _deserialize(self, params):
+        self._CosBucketName = params.get("CosBucketName")
+        self._CosBucketRegion = params.get("CosBucketRegion")
+        self._CosBucketPath = params.get("CosBucketPath")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SceneVideoExtraParam(AbstractModel):
+    r"""用于场景化创作视频时用到的扩展参数信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Resolution: <p>指定输出分辨率。选项:720P, 1080P, 2K, 4K。</p>
+        :type Resolution: str
+        :param _AspectRatio: <p>指定输出视频的宽高比，示例：16:9。</p>
+        :type AspectRatio: str
+        :param _OffPeak: <p>错峰模型，仅支持的模型可使用。</p>
+        :type OffPeak: bool
+        :param _LogoAdd: <p>自动添加水印，默认左上角添加 &quot;AI生成&quot; 标识。</p>
+        :type LogoAdd: bool
+        :param _EnableAudio: <p>使用音画同出。</p>
+        :type EnableAudio: bool
+        :param _EnableBgm: <p>生成背景音乐。</p>
+        :type EnableBgm: bool
+        :param _EnablePromptEnhance: <p>对输入的Prompt进行优化。</p>
+        :type EnablePromptEnhance: bool
+        :param _CallbackUrl: <p>回调URL。</p>
+        :type CallbackUrl: str
+        """
+        self._Resolution = None
+        self._AspectRatio = None
+        self._OffPeak = None
+        self._LogoAdd = None
+        self._EnableAudio = None
+        self._EnableBgm = None
+        self._EnablePromptEnhance = None
+        self._CallbackUrl = None
+
+    @property
+    def Resolution(self):
+        r"""<p>指定输出分辨率。选项:720P, 1080P, 2K, 4K。</p>
+        :rtype: str
+        """
+        return self._Resolution
+
+    @Resolution.setter
+    def Resolution(self, Resolution):
+        self._Resolution = Resolution
+
+    @property
+    def AspectRatio(self):
+        r"""<p>指定输出视频的宽高比，示例：16:9。</p>
+        :rtype: str
+        """
+        return self._AspectRatio
+
+    @AspectRatio.setter
+    def AspectRatio(self, AspectRatio):
+        self._AspectRatio = AspectRatio
+
+    @property
+    def OffPeak(self):
+        r"""<p>错峰模型，仅支持的模型可使用。</p>
+        :rtype: bool
+        """
+        return self._OffPeak
+
+    @OffPeak.setter
+    def OffPeak(self, OffPeak):
+        self._OffPeak = OffPeak
+
+    @property
+    def LogoAdd(self):
+        r"""<p>自动添加水印，默认左上角添加 &quot;AI生成&quot; 标识。</p>
+        :rtype: bool
+        """
+        return self._LogoAdd
+
+    @LogoAdd.setter
+    def LogoAdd(self, LogoAdd):
+        self._LogoAdd = LogoAdd
+
+    @property
+    def EnableAudio(self):
+        r"""<p>使用音画同出。</p>
+        :rtype: bool
+        """
+        return self._EnableAudio
+
+    @EnableAudio.setter
+    def EnableAudio(self, EnableAudio):
+        self._EnableAudio = EnableAudio
+
+    @property
+    def EnableBgm(self):
+        r"""<p>生成背景音乐。</p>
+        :rtype: bool
+        """
+        return self._EnableBgm
+
+    @EnableBgm.setter
+    def EnableBgm(self, EnableBgm):
+        self._EnableBgm = EnableBgm
+
+    @property
+    def EnablePromptEnhance(self):
+        r"""<p>对输入的Prompt进行优化。</p>
+        :rtype: bool
+        """
+        return self._EnablePromptEnhance
+
+    @EnablePromptEnhance.setter
+    def EnablePromptEnhance(self, EnablePromptEnhance):
+        self._EnablePromptEnhance = EnablePromptEnhance
+
+    @property
+    def CallbackUrl(self):
+        r"""<p>回调URL。</p>
+        :rtype: str
+        """
+        return self._CallbackUrl
+
+    @CallbackUrl.setter
+    def CallbackUrl(self, CallbackUrl):
+        self._CallbackUrl = CallbackUrl
+
+
+    def _deserialize(self, params):
+        self._Resolution = params.get("Resolution")
+        self._AspectRatio = params.get("AspectRatio")
+        self._OffPeak = params.get("OffPeak")
+        self._LogoAdd = params.get("LogoAdd")
+        self._EnableAudio = params.get("EnableAudio")
+        self._EnableBgm = params.get("EnableBgm")
+        self._EnablePromptEnhance = params.get("EnablePromptEnhance")
+        self._CallbackUrl = params.get("CallbackUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SceneVideoOutputInfo(AbstractModel):
+    r"""场景化视频输出信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Info: <p>输出信息。</p>
+        :type Info: str
+        :param _Type: <p>输出类型。</p>
+        :type Type: str
+        """
+        self._Info = None
+        self._Type = None
+
+    @property
+    def Info(self):
+        r"""<p>输出信息。</p>
+        :rtype: str
+        """
+        return self._Info
+
+    @Info.setter
+    def Info(self, Info):
+        self._Info = Info
+
+    @property
+    def Type(self):
+        r"""<p>输出类型。</p>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._Info = params.get("Info")
+        self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SceneVideoReferenceImageInfo(AbstractModel):
+    r"""用于场景化生视频创作的参考图片信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImageUrl: <p>输入的参考图Url，需外网可访问。</p>
+        :type ImageUrl: str
+        :param _Text: <p>针对该参考图的Prompt描述，仅部分模型是支持。</p>
+        :type Text: str
+        :param _ReferenceType: <p>参考类型。</p>
+        :type ReferenceType: str
+        """
+        self._ImageUrl = None
+        self._Text = None
+        self._ReferenceType = None
+
+    @property
+    def ImageUrl(self):
+        r"""<p>输入的参考图Url，需外网可访问。</p>
+        :rtype: str
+        """
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
+
+    @property
+    def Text(self):
+        r"""<p>针对该参考图的Prompt描述，仅部分模型是支持。</p>
+        :rtype: str
+        """
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def ReferenceType(self):
+        r"""<p>参考类型。</p>
+        :rtype: str
+        """
+        return self._ReferenceType
+
+    @ReferenceType.setter
+    def ReferenceType(self, ReferenceType):
+        self._ReferenceType = ReferenceType
+
+
+    def _deserialize(self, params):
+        self._ImageUrl = params.get("ImageUrl")
+        self._Text = params.get("Text")
+        self._ReferenceType = params.get("ReferenceType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SceneVideoReferenceVideoInfo(AbstractModel):
+    r"""用于场景化视频生成的参考视频素材。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VideoUrl: <p>参考视频Url，需外网可访问。</p>
+        :type VideoUrl: str
+        """
+        self._VideoUrl = None
+
+    @property
+    def VideoUrl(self):
+        r"""<p>参考视频Url，需外网可访问。</p>
+        :rtype: str
+        """
+        return self._VideoUrl
+
+    @VideoUrl.setter
+    def VideoUrl(self, VideoUrl):
+        self._VideoUrl = VideoUrl
+
+
+    def _deserialize(self, params):
+        self._VideoUrl = params.get("VideoUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

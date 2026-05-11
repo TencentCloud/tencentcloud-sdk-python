@@ -3444,7 +3444,7 @@ class MpsClient(AbstractClient):
 
 
     def DesignVoiceAsync(self, request):
-        r"""音色设计，根据prompt生成音色ID
+        r"""音色设计，根据prompt生成音色ID。克隆/设计音色数量上限默认100
 
         :param request: Request instance for DesignVoiceAsync.
         :type request: :class:`tencentcloud.mps.v20190612.models.DesignVoiceAsyncRequest`
@@ -3457,6 +3457,29 @@ class MpsClient(AbstractClient):
             body = self.call("DesignVoiceAsync", params, headers=headers)
             response = json.loads(body)
             model = models.DesignVoiceAsyncResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DetectVideoSubtitleArea(self, request):
+        r"""快速探测视频文件的硬字幕区域
+
+        :param request: Request instance for DetectVideoSubtitleArea.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DetectVideoSubtitleAreaRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DetectVideoSubtitleAreaResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DetectVideoSubtitleArea", params, headers=headers)
+            response = json.loads(body)
+            model = models.DetectVideoSubtitleAreaResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -4725,7 +4748,7 @@ class MpsClient(AbstractClient):
 
 
     def SyncDubbing(self, request):
-        r"""同步接口，返回克隆音色Id或合成音频结果
+        r"""同步接口，返回克隆音色ID或合成音频结果。克隆/设计音色数量上限默认100
 
         :param request: Request instance for SyncDubbing.
         :type request: :class:`tencentcloud.mps.v20190612.models.SyncDubbingRequest`

@@ -834,6 +834,24 @@ class LiveClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateSceneVideoTask(
+            self,
+            request: models.CreateSceneVideoTaskRequest,
+            opts: Dict = None,
+    ) -> models.CreateSceneVideoTaskResponse:
+        """
+        该接口用于创建场景化视频任务。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateSceneVideoTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateSceneVideoTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateScreenshotTask(
             self,
             request: models.CreateScreenshotTaskRequest,
@@ -3117,6 +3135,24 @@ class LiveClient(AbstractClient):
         kwargs["action"] = "DescribeRecordTask"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeRecordTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeSceneVideoTask(
+            self,
+            request: models.DescribeSceneVideoTaskRequest,
+            opts: Dict = None,
+    ) -> models.DescribeSceneVideoTaskResponse:
+        """
+        该接口用于查询场景化视频任务进展及结果。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeSceneVideoTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeSceneVideoTaskResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
