@@ -1040,6 +1040,29 @@ class CfwClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeEdgeIpSimple(self, request):
+        r"""互联网边界防火墙开关列表(轻量)
+
+        :param request: Request instance for DescribeEdgeIpSimple.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeEdgeIpSimpleRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.DescribeEdgeIpSimpleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeEdgeIpSimple", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeEdgeIpSimpleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeEnterpriseSGRuleProgress(self, request):
         r"""查询新版安全组下发进度
 

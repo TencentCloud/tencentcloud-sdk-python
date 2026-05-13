@@ -1617,23 +1617,26 @@ class OcrHitInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: 标识模型命中还是关键词命中
+        :param _Type: <p>标识模型命中还是关键词命中</p>
         :type Type: str
-        :param _Keyword: 命中关键词
+        :param _Keyword: <p>命中关键词</p>
         :type Keyword: str
-        :param _LibName: 自定义词库名称
+        :param _LibName: <p>自定义词库名称</p>
         :type LibName: str
-        :param _Positions: 位置信息
+        :param _Positions: <p>位置信息</p>
         :type Positions: list of Positions
+        :param _Label: <p>命中标签</p>
+        :type Label: str
         """
         self._Type = None
         self._Keyword = None
         self._LibName = None
         self._Positions = None
+        self._Label = None
 
     @property
     def Type(self):
-        r"""标识模型命中还是关键词命中
+        r"""<p>标识模型命中还是关键词命中</p>
         :rtype: str
         """
         return self._Type
@@ -1644,7 +1647,7 @@ class OcrHitInfo(AbstractModel):
 
     @property
     def Keyword(self):
-        r"""命中关键词
+        r"""<p>命中关键词</p>
         :rtype: str
         """
         return self._Keyword
@@ -1655,7 +1658,7 @@ class OcrHitInfo(AbstractModel):
 
     @property
     def LibName(self):
-        r"""自定义词库名称
+        r"""<p>自定义词库名称</p>
         :rtype: str
         """
         return self._LibName
@@ -1666,7 +1669,7 @@ class OcrHitInfo(AbstractModel):
 
     @property
     def Positions(self):
-        r"""位置信息
+        r"""<p>位置信息</p>
         :rtype: list of Positions
         """
         return self._Positions
@@ -1674,6 +1677,17 @@ class OcrHitInfo(AbstractModel):
     @Positions.setter
     def Positions(self, Positions):
         self._Positions = Positions
+
+    @property
+    def Label(self):
+        r"""<p>命中标签</p>
+        :rtype: str
+        """
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
 
 
     def _deserialize(self, params):
@@ -1686,6 +1700,7 @@ class OcrHitInfo(AbstractModel):
                 obj = Positions()
                 obj._deserialize(item)
                 self._Positions.append(obj)
+        self._Label = params.get("Label")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

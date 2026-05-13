@@ -51,6 +51,52 @@ class TcbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def AllocateEnv(self, request):
+        r"""从环境池里立即取出1个环境
+
+        :param request: Request instance for AllocateEnv.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.AllocateEnvRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.AllocateEnvResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AllocateEnv", params, headers=headers)
+            response = json.loads(body)
+            model = models.AllocateEnvResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def AssumeRoleForAllocatedEnv(self, request):
+        r"""白名单接口，申请Tcb角色临时凭证
+
+        :param request: Request instance for AssumeRoleForAllocatedEnv.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.AssumeRoleForAllocatedEnvRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.AssumeRoleForAllocatedEnvResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AssumeRoleForAllocatedEnv", params, headers=headers)
+            response = json.loads(body)
+            model = models.AssumeRoleForAllocatedEnvResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CheckTcbService(self, request):
         r"""检查是否开通Tcb服务
 
@@ -1738,6 +1784,29 @@ class TcbClient(AbstractClient):
             body = self.call("ModifyUser", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyUserResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ReleaseEnv(self, request):
+        r"""从环境池里立即取出1个环境
+
+        :param request: Request instance for ReleaseEnv.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.ReleaseEnvRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.ReleaseEnvResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ReleaseEnv", params, headers=headers)
+            response = json.loads(body)
+            model = models.ReleaseEnvResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

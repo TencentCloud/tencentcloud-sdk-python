@@ -45,6 +45,42 @@ class TcbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def AllocateEnv(
+            self,
+            request: models.AllocateEnvRequest,
+            opts: Dict = None,
+    ) -> models.AllocateEnvResponse:
+        """
+        从环境池里立即取出1个环境
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "AllocateEnv"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.AllocateEnvResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def AssumeRoleForAllocatedEnv(
+            self,
+            request: models.AssumeRoleForAllocatedEnvRequest,
+            opts: Dict = None,
+    ) -> models.AssumeRoleForAllocatedEnvResponse:
+        """
+        白名单接口，申请Tcb角色临时凭证
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "AssumeRoleForAllocatedEnv"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.AssumeRoleForAllocatedEnvResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CheckTcbService(
             self,
             request: models.CheckTcbServiceRequest,
@@ -1391,6 +1427,24 @@ class TcbClient(AbstractClient):
         kwargs["action"] = "ModifyUser"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyUserResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ReleaseEnv(
+            self,
+            request: models.ReleaseEnvRequest,
+            opts: Dict = None,
+    ) -> models.ReleaseEnvResponse:
+        """
+        从环境池里立即取出1个环境
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ReleaseEnv"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ReleaseEnvResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

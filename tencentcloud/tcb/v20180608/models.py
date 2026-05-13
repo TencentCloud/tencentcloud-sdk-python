@@ -625,6 +625,115 @@ class AddProviderResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class AllocateEnvRequest(AbstractModel):
+    r"""AllocateEnv请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AllocateId: <p>分配请求ID，会按这个值做幂等</p><p>入参限制：长度不超过64</p>
+        :type AllocateId: str
+        :param _ExternalAppId: <p>客户平台的应用标识，如果没有则不传</p>
+        :type ExternalAppId: str
+        """
+        self._AllocateId = None
+        self._ExternalAppId = None
+
+    @property
+    def AllocateId(self):
+        r"""<p>分配请求ID，会按这个值做幂等</p><p>入参限制：长度不超过64</p>
+        :rtype: str
+        """
+        return self._AllocateId
+
+    @AllocateId.setter
+    def AllocateId(self, AllocateId):
+        self._AllocateId = AllocateId
+
+    @property
+    def ExternalAppId(self):
+        r"""<p>客户平台的应用标识，如果没有则不传</p>
+        :rtype: str
+        """
+        return self._ExternalAppId
+
+    @ExternalAppId.setter
+    def ExternalAppId(self, ExternalAppId):
+        self._ExternalAppId = ExternalAppId
+
+
+    def _deserialize(self, params):
+        self._AllocateId = params.get("AllocateId")
+        self._ExternalAppId = params.get("ExternalAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AllocateEnvResponse(AbstractModel):
+    r"""AllocateEnv返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: <p>环境ID</p>
+        :type EnvId: str
+        :param _ExternalAppId: <p>回显    客户平台的应用标识，如果没有则不传</p>
+        :type ExternalAppId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._EnvId = None
+        self._ExternalAppId = None
+        self._RequestId = None
+
+    @property
+    def EnvId(self):
+        r"""<p>环境ID</p>
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def ExternalAppId(self):
+        r"""<p>回显    客户平台的应用标识，如果没有则不传</p>
+        :rtype: str
+        """
+        return self._ExternalAppId
+
+    @ExternalAppId.setter
+    def ExternalAppId(self, ExternalAppId):
+        self._ExternalAppId = ExternalAppId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        self._ExternalAppId = params.get("ExternalAppId")
+        self._RequestId = params.get("RequestId")
+
+
 class ApiKeyToken(AbstractModel):
     r"""API Key 访问凭证信息。描述云开发环境下 API Key 的完整信息，包括标识符、名称、令牌值、创建时间和过期时间。支持两种类型：api_key（服务端管理员访问凭证，用于服务端接口调用的身份认证，可设置有效期，单个环境最多 5 个）和 publish_key（前端匿名访问凭证，固定有效期，每个环境仅保留一个）。注意：令牌值（ApiKey 字段）仅在创建时返回完整明文，列表查询时将进行脱敏处理。
 
@@ -725,6 +834,149 @@ class ApiKeyToken(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class AssumeRoleForAllocatedEnvRequest(AbstractModel):
+    r"""AssumeRoleForAllocatedEnv请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: <p>环境ID</p>
+        :type EnvId: str
+        """
+        self._EnvId = None
+
+    @property
+    def EnvId(self):
+        r"""<p>环境ID</p>
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AssumeRoleForAllocatedEnvResponse(AbstractModel):
+    r"""AssumeRoleForAllocatedEnv返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SecretId: <p>SecretId</p>
+        :type SecretId: str
+        :param _SecretKey: <p>SecretKey</p>
+        :type SecretKey: str
+        :param _Token: <p>Token值</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Token: str
+        :param _ExpiredTime: <p>过期时间戳</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExpiredTime: int
+        :param _IsCache: <p>是否从缓存中加载。标明该值是否实时从sts服务获取，还是从缓存中获取。调用方可不关心</p>
+        :type IsCache: bool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._SecretId = None
+        self._SecretKey = None
+        self._Token = None
+        self._ExpiredTime = None
+        self._IsCache = None
+        self._RequestId = None
+
+    @property
+    def SecretId(self):
+        r"""<p>SecretId</p>
+        :rtype: str
+        """
+        return self._SecretId
+
+    @SecretId.setter
+    def SecretId(self, SecretId):
+        self._SecretId = SecretId
+
+    @property
+    def SecretKey(self):
+        r"""<p>SecretKey</p>
+        :rtype: str
+        """
+        return self._SecretKey
+
+    @SecretKey.setter
+    def SecretKey(self, SecretKey):
+        self._SecretKey = SecretKey
+
+    @property
+    def Token(self):
+        r"""<p>Token值</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Token
+
+    @Token.setter
+    def Token(self, Token):
+        self._Token = Token
+
+    @property
+    def ExpiredTime(self):
+        r"""<p>过期时间戳</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ExpiredTime
+
+    @ExpiredTime.setter
+    def ExpiredTime(self, ExpiredTime):
+        self._ExpiredTime = ExpiredTime
+
+    @property
+    def IsCache(self):
+        r"""<p>是否从缓存中加载。标明该值是否实时从sts服务获取，还是从缓存中获取。调用方可不关心</p>
+        :rtype: bool
+        """
+        return self._IsCache
+
+    @IsCache.setter
+    def IsCache(self, IsCache):
+        self._IsCache = IsCache
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._SecretId = params.get("SecretId")
+        self._SecretKey = params.get("SecretKey")
+        self._Token = params.get("Token")
+        self._ExpiredTime = params.get("ExpiredTime")
+        self._IsCache = params.get("IsCache")
+        self._RequestId = params.get("RequestId")
 
 
 class AuthDomain(AbstractModel):
@@ -17476,6 +17728,85 @@ class ProviderResponseParametersMap(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ReleaseEnvRequest(AbstractModel):
+    r"""ReleaseEnv请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: <p>环境ID</p>
+        :type EnvId: str
+        :param _AllocateId: <p>分配请求ID</p>
+        :type AllocateId: str
+        """
+        self._EnvId = None
+        self._AllocateId = None
+
+    @property
+    def EnvId(self):
+        r"""<p>环境ID</p>
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def AllocateId(self):
+        r"""<p>分配请求ID</p>
+        :rtype: str
+        """
+        return self._AllocateId
+
+    @AllocateId.setter
+    def AllocateId(self, AllocateId):
+        self._AllocateId = AllocateId
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        self._AllocateId = params.get("AllocateId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReleaseEnvResponse(AbstractModel):
+    r"""ReleaseEnv返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class RenewEnvRequest(AbstractModel):

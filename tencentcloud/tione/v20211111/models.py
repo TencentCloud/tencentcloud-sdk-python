@@ -30761,6 +30761,8 @@ class Workspace(AbstractModel):
 
     @property
     def ResourceGroups(self):
+        warnings.warn("parameter `ResourceGroups` is deprecated", DeprecationWarning) 
+
         r"""<p>绑定的资源组信息</p>
         :rtype: list of ResourceGroupInWorkspace
         """
@@ -30768,6 +30770,8 @@ class Workspace(AbstractModel):
 
     @ResourceGroups.setter
     def ResourceGroups(self, ResourceGroups):
+        warnings.warn("parameter `ResourceGroups` is deprecated", DeprecationWarning) 
+
         self._ResourceGroups = ResourceGroups
 
     @property

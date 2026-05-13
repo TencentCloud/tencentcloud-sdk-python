@@ -36733,6 +36733,8 @@ class UnsatisfiedReply(AbstractModel):
         :type Operator: str
         :param _FeedbackContent: <p>自定义反馈</p>
         :type FeedbackContent: str
+        :param _Visitor: <p>用户</p>
+        :type Visitor: str
         """
         self._ReplyBizId = None
         self._RecordBizId = None
@@ -36744,6 +36746,7 @@ class UnsatisfiedReply(AbstractModel):
         self._UpdateTime = None
         self._Operator = None
         self._FeedbackContent = None
+        self._Visitor = None
 
     @property
     def ReplyBizId(self):
@@ -36861,6 +36864,17 @@ class UnsatisfiedReply(AbstractModel):
     def FeedbackContent(self, FeedbackContent):
         self._FeedbackContent = FeedbackContent
 
+    @property
+    def Visitor(self):
+        r"""<p>用户</p>
+        :rtype: str
+        """
+        return self._Visitor
+
+    @Visitor.setter
+    def Visitor(self, Visitor):
+        self._Visitor = Visitor
+
 
     def _deserialize(self, params):
         self._ReplyBizId = params.get("ReplyBizId")
@@ -36873,6 +36887,7 @@ class UnsatisfiedReply(AbstractModel):
         self._UpdateTime = params.get("UpdateTime")
         self._Operator = params.get("Operator")
         self._FeedbackContent = params.get("FeedbackContent")
+        self._Visitor = params.get("Visitor")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

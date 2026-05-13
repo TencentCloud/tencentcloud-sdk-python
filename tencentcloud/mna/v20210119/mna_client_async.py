@@ -493,6 +493,24 @@ class MnaClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def GetHardwareInfo(
+            self,
+            request: models.GetHardwareInfoRequest,
+            opts: Dict = None,
+    ) -> models.GetHardwareInfoResponse:
+        """
+        获取硬件设备信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetHardwareInfo"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetHardwareInfoResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def GetHardwareList(
             self,
             request: models.GetHardwareListRequest,

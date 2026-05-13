@@ -30203,22 +30203,26 @@ class NodeResource(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ResourceConfigId: 配置Id
+        :param _ResourceConfigId: <p>配置Id</p>
         :type ResourceConfigId: int
-        :param _Resource: Resource
+        :param _Resource: <p>Resource</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Resource: :class:`tencentcloud.emr.v20190103.models.Resource`
-        :param _CreateTime: 创建时间
+        :param _CreateTime: <p>创建时间</p>
         :type CreateTime: str
-        :param _UpdateTime: 更新时间
+        :param _UpdateTime: <p>更新时间</p>
         :type UpdateTime: str
-        :param _IsDefault: 是否默认配置,DEFAULT,BACKUP
+        :param _IsDefault: <p>是否默认配置,DEFAULT,BACKUP</p>
         :type IsDefault: str
-        :param _MaxResourceNum: 该类型剩余
+        :param _MaxResourceNum: <p>该类型剩余</p>
         :type MaxResourceNum: int
-        :param _PrepaidUnderwritePeriods: 支持的包销时长
+        :param _PrepaidUnderwritePeriods: <p>支持的包销时长</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type PrepaidUnderwritePeriods: list of int
+        :param _QuotaNum: <p>配额数量</p>
+        :type QuotaNum: int
+        :param _QuotaUnit: <p>配额单位</p>
+        :type QuotaUnit: str
         """
         self._ResourceConfigId = None
         self._Resource = None
@@ -30227,10 +30231,12 @@ class NodeResource(AbstractModel):
         self._IsDefault = None
         self._MaxResourceNum = None
         self._PrepaidUnderwritePeriods = None
+        self._QuotaNum = None
+        self._QuotaUnit = None
 
     @property
     def ResourceConfigId(self):
-        r"""配置Id
+        r"""<p>配置Id</p>
         :rtype: int
         """
         return self._ResourceConfigId
@@ -30241,7 +30247,7 @@ class NodeResource(AbstractModel):
 
     @property
     def Resource(self):
-        r"""Resource
+        r"""<p>Resource</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.emr.v20190103.models.Resource`
         """
@@ -30253,7 +30259,7 @@ class NodeResource(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
         :rtype: str
         """
         return self._CreateTime
@@ -30264,7 +30270,7 @@ class NodeResource(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""更新时间
+        r"""<p>更新时间</p>
         :rtype: str
         """
         return self._UpdateTime
@@ -30275,7 +30281,7 @@ class NodeResource(AbstractModel):
 
     @property
     def IsDefault(self):
-        r"""是否默认配置,DEFAULT,BACKUP
+        r"""<p>是否默认配置,DEFAULT,BACKUP</p>
         :rtype: str
         """
         return self._IsDefault
@@ -30286,7 +30292,7 @@ class NodeResource(AbstractModel):
 
     @property
     def MaxResourceNum(self):
-        r"""该类型剩余
+        r"""<p>该类型剩余</p>
         :rtype: int
         """
         return self._MaxResourceNum
@@ -30297,7 +30303,7 @@ class NodeResource(AbstractModel):
 
     @property
     def PrepaidUnderwritePeriods(self):
-        r"""支持的包销时长
+        r"""<p>支持的包销时长</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int
         """
@@ -30306,6 +30312,28 @@ class NodeResource(AbstractModel):
     @PrepaidUnderwritePeriods.setter
     def PrepaidUnderwritePeriods(self, PrepaidUnderwritePeriods):
         self._PrepaidUnderwritePeriods = PrepaidUnderwritePeriods
+
+    @property
+    def QuotaNum(self):
+        r"""<p>配额数量</p>
+        :rtype: int
+        """
+        return self._QuotaNum
+
+    @QuotaNum.setter
+    def QuotaNum(self, QuotaNum):
+        self._QuotaNum = QuotaNum
+
+    @property
+    def QuotaUnit(self):
+        r"""<p>配额单位</p>
+        :rtype: str
+        """
+        return self._QuotaUnit
+
+    @QuotaUnit.setter
+    def QuotaUnit(self, QuotaUnit):
+        self._QuotaUnit = QuotaUnit
 
 
     def _deserialize(self, params):
@@ -30318,6 +30346,8 @@ class NodeResource(AbstractModel):
         self._IsDefault = params.get("IsDefault")
         self._MaxResourceNum = params.get("MaxResourceNum")
         self._PrepaidUnderwritePeriods = params.get("PrepaidUnderwritePeriods")
+        self._QuotaNum = params.get("QuotaNum")
+        self._QuotaUnit = params.get("QuotaUnit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -30878,52 +30908,56 @@ class NodeSpecInstanceType(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceType: 规格
+        :param _InstanceType: <p>规格</p>
         :type InstanceType: str
-        :param _Cpu: 4
+        :param _Cpu: <p>4</p>
         :type Cpu: int
-        :param _Memory: 8，单位G
+        :param _Memory: <p>8，单位G</p>
         :type Memory: int
-        :param _Order: 排序，越小排的越前
+        :param _Order: <p>排序，越小排的越前</p>
         :type Order: int
-        :param _Num: 数量
+        :param _Num: <p>数量</p>
         :type Num: int
-        :param _SellOutReason: 售罄原因
+        :param _SellOutReason: <p>售罄原因</p>
         :type SellOutReason: str
-        :param _SystemDisk: 系统盘
+        :param _SystemDisk: <p>系统盘</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SystemDisk: list of NodeSpecDisk
-        :param _DataDisk: 数据盘
+        :param _DataDisk: <p>数据盘</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DataDisk: list of NodeSpecDisk
-        :param _LocalDataDisk: 本地数据盘
+        :param _LocalDataDisk: <p>本地数据盘</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type LocalDataDisk: list of NodeSpecDisk
-        :param _SoldOutReason: 售罄原因
+        :param _SoldOutReason: <p>售罄原因</p>
         :type SoldOutReason: str
-        :param _InstanceFamily: 机型类别
+        :param _InstanceFamily: <p>机型类别</p>
         :type InstanceFamily: str
-        :param _NodeName: 节点名称
+        :param _NodeName: <p>节点名称</p>
         :type NodeName: str
-        :param _NodeType: 节点类型
+        :param _NodeType: <p>节点类型</p>
         :type NodeType: str
-        :param _Type: 类别
+        :param _Type: <p>类别</p>
         :type Type: str
-        :param _TypeName: 类别名称
+        :param _TypeName: <p>类别名称</p>
         :type TypeName: str
-        :param _FamilyName: 类别分类
+        :param _FamilyName: <p>类别分类</p>
         :type FamilyName: str
-        :param _CpuType: cpu类型
+        :param _CpuType: <p>cpu类型</p>
         :type CpuType: str
-        :param _Remark: 售罄 RunOut、库存少 Less、充足 Enough
+        :param _Remark: <p>售罄 RunOut、库存少 Less、充足 Enough</p>
         :type Remark: str
-        :param _OriginPrice: 原价
+        :param _OriginPrice: <p>原价</p>
         :type OriginPrice: float
-        :param _PrepaidUnderwritePeriods: 包销计费机型支持的购买时长
+        :param _PrepaidUnderwritePeriods: <p>包销计费机型支持的购买时长</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type PrepaidUnderwritePeriods: list of int
-        :param _GpuDesc: GPU信息
+        :param _GpuDesc: <p>GPU信息</p>
         :type GpuDesc: str
+        :param _QuotaNum: <p>配额数量</p>
+        :type QuotaNum: int
+        :param _QuotaUnit: <p>配额单位</p>
+        :type QuotaUnit: str
         """
         self._InstanceType = None
         self._Cpu = None
@@ -30946,10 +30980,12 @@ class NodeSpecInstanceType(AbstractModel):
         self._OriginPrice = None
         self._PrepaidUnderwritePeriods = None
         self._GpuDesc = None
+        self._QuotaNum = None
+        self._QuotaUnit = None
 
     @property
     def InstanceType(self):
-        r"""规格
+        r"""<p>规格</p>
         :rtype: str
         """
         return self._InstanceType
@@ -30960,7 +30996,7 @@ class NodeSpecInstanceType(AbstractModel):
 
     @property
     def Cpu(self):
-        r"""4
+        r"""<p>4</p>
         :rtype: int
         """
         return self._Cpu
@@ -30971,7 +31007,7 @@ class NodeSpecInstanceType(AbstractModel):
 
     @property
     def Memory(self):
-        r"""8，单位G
+        r"""<p>8，单位G</p>
         :rtype: int
         """
         return self._Memory
@@ -30982,7 +31018,7 @@ class NodeSpecInstanceType(AbstractModel):
 
     @property
     def Order(self):
-        r"""排序，越小排的越前
+        r"""<p>排序，越小排的越前</p>
         :rtype: int
         """
         return self._Order
@@ -30993,7 +31029,7 @@ class NodeSpecInstanceType(AbstractModel):
 
     @property
     def Num(self):
-        r"""数量
+        r"""<p>数量</p>
         :rtype: int
         """
         return self._Num
@@ -31004,7 +31040,7 @@ class NodeSpecInstanceType(AbstractModel):
 
     @property
     def SellOutReason(self):
-        r"""售罄原因
+        r"""<p>售罄原因</p>
         :rtype: str
         """
         return self._SellOutReason
@@ -31015,7 +31051,7 @@ class NodeSpecInstanceType(AbstractModel):
 
     @property
     def SystemDisk(self):
-        r"""系统盘
+        r"""<p>系统盘</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of NodeSpecDisk
         """
@@ -31027,7 +31063,7 @@ class NodeSpecInstanceType(AbstractModel):
 
     @property
     def DataDisk(self):
-        r"""数据盘
+        r"""<p>数据盘</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of NodeSpecDisk
         """
@@ -31039,7 +31075,7 @@ class NodeSpecInstanceType(AbstractModel):
 
     @property
     def LocalDataDisk(self):
-        r"""本地数据盘
+        r"""<p>本地数据盘</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of NodeSpecDisk
         """
@@ -31051,7 +31087,7 @@ class NodeSpecInstanceType(AbstractModel):
 
     @property
     def SoldOutReason(self):
-        r"""售罄原因
+        r"""<p>售罄原因</p>
         :rtype: str
         """
         return self._SoldOutReason
@@ -31062,7 +31098,7 @@ class NodeSpecInstanceType(AbstractModel):
 
     @property
     def InstanceFamily(self):
-        r"""机型类别
+        r"""<p>机型类别</p>
         :rtype: str
         """
         return self._InstanceFamily
@@ -31073,7 +31109,7 @@ class NodeSpecInstanceType(AbstractModel):
 
     @property
     def NodeName(self):
-        r"""节点名称
+        r"""<p>节点名称</p>
         :rtype: str
         """
         return self._NodeName
@@ -31084,7 +31120,7 @@ class NodeSpecInstanceType(AbstractModel):
 
     @property
     def NodeType(self):
-        r"""节点类型
+        r"""<p>节点类型</p>
         :rtype: str
         """
         return self._NodeType
@@ -31095,7 +31131,7 @@ class NodeSpecInstanceType(AbstractModel):
 
     @property
     def Type(self):
-        r"""类别
+        r"""<p>类别</p>
         :rtype: str
         """
         return self._Type
@@ -31106,7 +31142,7 @@ class NodeSpecInstanceType(AbstractModel):
 
     @property
     def TypeName(self):
-        r"""类别名称
+        r"""<p>类别名称</p>
         :rtype: str
         """
         return self._TypeName
@@ -31117,7 +31153,7 @@ class NodeSpecInstanceType(AbstractModel):
 
     @property
     def FamilyName(self):
-        r"""类别分类
+        r"""<p>类别分类</p>
         :rtype: str
         """
         return self._FamilyName
@@ -31128,7 +31164,7 @@ class NodeSpecInstanceType(AbstractModel):
 
     @property
     def CpuType(self):
-        r"""cpu类型
+        r"""<p>cpu类型</p>
         :rtype: str
         """
         return self._CpuType
@@ -31139,7 +31175,7 @@ class NodeSpecInstanceType(AbstractModel):
 
     @property
     def Remark(self):
-        r"""售罄 RunOut、库存少 Less、充足 Enough
+        r"""<p>售罄 RunOut、库存少 Less、充足 Enough</p>
         :rtype: str
         """
         return self._Remark
@@ -31150,7 +31186,7 @@ class NodeSpecInstanceType(AbstractModel):
 
     @property
     def OriginPrice(self):
-        r"""原价
+        r"""<p>原价</p>
         :rtype: float
         """
         return self._OriginPrice
@@ -31161,7 +31197,7 @@ class NodeSpecInstanceType(AbstractModel):
 
     @property
     def PrepaidUnderwritePeriods(self):
-        r"""包销计费机型支持的购买时长
+        r"""<p>包销计费机型支持的购买时长</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int
         """
@@ -31173,7 +31209,7 @@ class NodeSpecInstanceType(AbstractModel):
 
     @property
     def GpuDesc(self):
-        r"""GPU信息
+        r"""<p>GPU信息</p>
         :rtype: str
         """
         return self._GpuDesc
@@ -31181,6 +31217,28 @@ class NodeSpecInstanceType(AbstractModel):
     @GpuDesc.setter
     def GpuDesc(self, GpuDesc):
         self._GpuDesc = GpuDesc
+
+    @property
+    def QuotaNum(self):
+        r"""<p>配额数量</p>
+        :rtype: int
+        """
+        return self._QuotaNum
+
+    @QuotaNum.setter
+    def QuotaNum(self, QuotaNum):
+        self._QuotaNum = QuotaNum
+
+    @property
+    def QuotaUnit(self):
+        r"""<p>配额单位</p>
+        :rtype: str
+        """
+        return self._QuotaUnit
+
+    @QuotaUnit.setter
+    def QuotaUnit(self, QuotaUnit):
+        self._QuotaUnit = QuotaUnit
 
 
     def _deserialize(self, params):
@@ -31220,6 +31278,8 @@ class NodeSpecInstanceType(AbstractModel):
         self._OriginPrice = params.get("OriginPrice")
         self._PrepaidUnderwritePeriods = params.get("PrepaidUnderwritePeriods")
         self._GpuDesc = params.get("GpuDesc")
+        self._QuotaNum = params.get("QuotaNum")
+        self._QuotaUnit = params.get("QuotaUnit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

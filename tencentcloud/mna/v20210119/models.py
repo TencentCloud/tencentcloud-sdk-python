@@ -5004,6 +5004,151 @@ class GetGroupListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class GetHardwareInfoRequest(AbstractModel):
+    r"""GetHardwareInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Vendor: 厂商名称
+        :type Vendor: str
+        :param _SN: 设备SN序列号
+        :type SN: str
+        """
+        self._Vendor = None
+        self._SN = None
+
+    @property
+    def Vendor(self):
+        r"""厂商名称
+        :rtype: str
+        """
+        return self._Vendor
+
+    @Vendor.setter
+    def Vendor(self, Vendor):
+        self._Vendor = Vendor
+
+    @property
+    def SN(self):
+        r"""设备SN序列号
+        :rtype: str
+        """
+        return self._SN
+
+    @SN.setter
+    def SN(self, SN):
+        self._SN = SN
+
+
+    def _deserialize(self, params):
+        self._Vendor = params.get("Vendor")
+        self._SN = params.get("SN")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetHardwareInfoResponse(AbstractModel):
+    r"""GetHardwareInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LicensePayMode: license授权有效期 
+0：月度授权 
+1：永久授权 
+-1：未知
+        :type LicensePayMode: int
+        :param _Payer: 付费方 0：客户付费 1：厂商付费
+        :type Payer: int
+        :param _SN: 硬件序列号
+        :type SN: str
+        :param _Vendor: 厂商名称
+        :type Vendor: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._LicensePayMode = None
+        self._Payer = None
+        self._SN = None
+        self._Vendor = None
+        self._RequestId = None
+
+    @property
+    def LicensePayMode(self):
+        r"""license授权有效期 
+0：月度授权 
+1：永久授权 
+-1：未知
+        :rtype: int
+        """
+        return self._LicensePayMode
+
+    @LicensePayMode.setter
+    def LicensePayMode(self, LicensePayMode):
+        self._LicensePayMode = LicensePayMode
+
+    @property
+    def Payer(self):
+        r"""付费方 0：客户付费 1：厂商付费
+        :rtype: int
+        """
+        return self._Payer
+
+    @Payer.setter
+    def Payer(self, Payer):
+        self._Payer = Payer
+
+    @property
+    def SN(self):
+        r"""硬件序列号
+        :rtype: str
+        """
+        return self._SN
+
+    @SN.setter
+    def SN(self, SN):
+        self._SN = SN
+
+    @property
+    def Vendor(self):
+        r"""厂商名称
+        :rtype: str
+        """
+        return self._Vendor
+
+    @Vendor.setter
+    def Vendor(self, Vendor):
+        self._Vendor = Vendor
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._LicensePayMode = params.get("LicensePayMode")
+        self._Payer = params.get("Payer")
+        self._SN = params.get("SN")
+        self._Vendor = params.get("Vendor")
+        self._RequestId = params.get("RequestId")
+
+
 class GetHardwareListRequest(AbstractModel):
     r"""GetHardwareList请求参数结构体
 

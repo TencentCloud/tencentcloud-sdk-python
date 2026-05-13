@@ -394,6 +394,29 @@ class CsipClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateSkillScan(self, request):
+        r"""上传 Skill ZIP 文件，触发异步安全检测。上传成功后应使用返回的 ContentHash + EngineVersion 轮询 DescribeSkillScanResult 接口获取结果。上传接口具备幂等性，同一 Hash 的文件重复上传不会创建重复任务。检测结果保留90天，超期后需重新上传检测。
+
+        :param request: Request instance for CreateSkillScan.
+        :type request: :class:`tencentcloud.csip.v20221121.models.CreateSkillScanRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.CreateSkillScanResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateSkillScan", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateSkillScanResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteDomainAndIp(self, request):
         r"""删除域名和ip请求
 
@@ -2915,6 +2938,29 @@ class CsipClient(AbstractClient):
             body = self.call("DescribeSearchBugInfo", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeSearchBugInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeSkillScanResult(self, request):
+        r"""查询 Skill 安全检测结果。调用 CreateSkillScan 成功后使用返回的 ContentHash + EngineVersion 轮询本接口获取结果。上传成功后建议5分钟后首次轮询，如未检测完成之后每隔1分钟轮询一次。响应通过 Status 字段区分四种状态：检测完成（SUCCESS）、检测中（SCANNING）、无记录（NOT_FOUND）、检测失败（FAILED）。注意：检测结果保留90天，超期后将返回 NOT_FOUND。
+
+        :param request: Request instance for DescribeSkillScanResult.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeSkillScanResultRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeSkillScanResultResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSkillScanResult", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSkillScanResultResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

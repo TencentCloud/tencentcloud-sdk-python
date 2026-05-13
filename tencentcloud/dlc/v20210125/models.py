@@ -25145,28 +25145,23 @@ class DescribeTasksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Limit: 返回数量，默认为10，最大值为100。
+        :param _Limit: <p>返回数量，默认为10，最大值为100。</p>
         :type Limit: int
-        :param _Offset: 偏移量，默认为0。
+        :param _Offset: <p>偏移量，默认为0。</p>
         :type Offset: int
-        :param _Filters: 过滤条件，如下支持的过滤类型，传参Name应为以下其中一个,其中task-id支持最大50个过滤个数，其他过滤参数支持的总数不超过5个。
-task-id - String - （任务ID准确过滤）task-id取值形如：e386471f-139a-4e59-877f-50ece8135b99。
-task-state - String - （任务状态过滤）取值范围 0(初始化)， 1(运行中)， 2(成功)， -1(失败)。
-task-sql-keyword - String - （SQL语句关键字模糊过滤）取值形如：DROP TABLE。
-task-operator- string （子uin过滤）
-task-kind - string （任务类型过滤）
+        :param _Filters: <p>过滤条件，如下支持的过滤类型，传参Name应为以下其中一个,其中task-id支持最大50个过滤个数，其他过滤参数支持的总数不超过5个。<br>task-id - String - （任务ID准确过滤）task-id取值形如：e386471f-139a-4e59-877f-50ece8135b99。<br>task-state - String - （任务状态过滤）取值范围 0(初始化)， 1(运行中)， 2(成功)， -1(失败)。<br>task-sql-keyword - String - （SQL语句关键字模糊过滤）取值形如：DROP TABLE。<br>task-operator- string （子uin过滤）<br>task-kind - string （任务类型过滤）</p>
         :type Filters: list of Filter
-        :param _SortBy: 排序字段，支持如下字段类型，create-time（创建时间，默认）、update-time（更新时间）
+        :param _SortBy: <p>排序字段，支持如下字段类型，create-time（创建时间，默认）、update-time（更新时间）</p>
         :type SortBy: str
-        :param _Sorting: 排序方式，desc表示正序，asc表示反序， 默认为asc。
+        :param _Sorting: <p>排序方式，desc表示正序，asc表示反序， 默认为asc。</p>
         :type Sorting: str
-        :param _StartTime: 起始时间点，格式为yyyy-mm-dd HH:MM:SS。默认为45天前的当前时刻
+        :param _StartTime: <p>起始时间点，格式为yyyy-mm-dd HH:MM:SS。默认为45天前的当前时刻</p>
         :type StartTime: str
-        :param _EndTime: 结束时间点，格式为yyyy-mm-dd HH:MM:SS时间跨度在(0,30天]，支持最近45天数据查询。默认为当前时刻
+        :param _EndTime: <p>结束时间点，格式为yyyy-mm-dd HH:MM:SS时间跨度在(0,30天]，支持最近45天数据查询。默认为当前时刻</p>
         :type EndTime: str
-        :param _DataEngineName: 数据引擎名称，用于筛选
+        :param _DataEngineName: <p>数据引擎名称，用于筛选</p>
         :type DataEngineName: str
-        :param _ResourceGroupName: spark引擎资源组名称
+        :param _ResourceGroupName: <p>spark引擎资源组名称</p>
         :type ResourceGroupName: str
         """
         self._Limit = None
@@ -25181,7 +25176,7 @@ task-kind - string （任务类型过滤）
 
     @property
     def Limit(self):
-        r"""返回数量，默认为10，最大值为100。
+        r"""<p>返回数量，默认为10，最大值为100。</p>
         :rtype: int
         """
         return self._Limit
@@ -25192,7 +25187,7 @@ task-kind - string （任务类型过滤）
 
     @property
     def Offset(self):
-        r"""偏移量，默认为0。
+        r"""<p>偏移量，默认为0。</p>
         :rtype: int
         """
         return self._Offset
@@ -25203,12 +25198,7 @@ task-kind - string （任务类型过滤）
 
     @property
     def Filters(self):
-        r"""过滤条件，如下支持的过滤类型，传参Name应为以下其中一个,其中task-id支持最大50个过滤个数，其他过滤参数支持的总数不超过5个。
-task-id - String - （任务ID准确过滤）task-id取值形如：e386471f-139a-4e59-877f-50ece8135b99。
-task-state - String - （任务状态过滤）取值范围 0(初始化)， 1(运行中)， 2(成功)， -1(失败)。
-task-sql-keyword - String - （SQL语句关键字模糊过滤）取值形如：DROP TABLE。
-task-operator- string （子uin过滤）
-task-kind - string （任务类型过滤）
+        r"""<p>过滤条件，如下支持的过滤类型，传参Name应为以下其中一个,其中task-id支持最大50个过滤个数，其他过滤参数支持的总数不超过5个。<br>task-id - String - （任务ID准确过滤）task-id取值形如：e386471f-139a-4e59-877f-50ece8135b99。<br>task-state - String - （任务状态过滤）取值范围 0(初始化)， 1(运行中)， 2(成功)， -1(失败)。<br>task-sql-keyword - String - （SQL语句关键字模糊过滤）取值形如：DROP TABLE。<br>task-operator- string （子uin过滤）<br>task-kind - string （任务类型过滤）</p>
         :rtype: list of Filter
         """
         return self._Filters
@@ -25219,7 +25209,7 @@ task-kind - string （任务类型过滤）
 
     @property
     def SortBy(self):
-        r"""排序字段，支持如下字段类型，create-time（创建时间，默认）、update-time（更新时间）
+        r"""<p>排序字段，支持如下字段类型，create-time（创建时间，默认）、update-time（更新时间）</p>
         :rtype: str
         """
         return self._SortBy
@@ -25230,7 +25220,7 @@ task-kind - string （任务类型过滤）
 
     @property
     def Sorting(self):
-        r"""排序方式，desc表示正序，asc表示反序， 默认为asc。
+        r"""<p>排序方式，desc表示正序，asc表示反序， 默认为asc。</p>
         :rtype: str
         """
         return self._Sorting
@@ -25241,7 +25231,7 @@ task-kind - string （任务类型过滤）
 
     @property
     def StartTime(self):
-        r"""起始时间点，格式为yyyy-mm-dd HH:MM:SS。默认为45天前的当前时刻
+        r"""<p>起始时间点，格式为yyyy-mm-dd HH:MM:SS。默认为45天前的当前时刻</p>
         :rtype: str
         """
         return self._StartTime
@@ -25252,7 +25242,7 @@ task-kind - string （任务类型过滤）
 
     @property
     def EndTime(self):
-        r"""结束时间点，格式为yyyy-mm-dd HH:MM:SS时间跨度在(0,30天]，支持最近45天数据查询。默认为当前时刻
+        r"""<p>结束时间点，格式为yyyy-mm-dd HH:MM:SS时间跨度在(0,30天]，支持最近45天数据查询。默认为当前时刻</p>
         :rtype: str
         """
         return self._EndTime
@@ -25263,7 +25253,7 @@ task-kind - string （任务类型过滤）
 
     @property
     def DataEngineName(self):
-        r"""数据引擎名称，用于筛选
+        r"""<p>数据引擎名称，用于筛选</p>
         :rtype: str
         """
         return self._DataEngineName
@@ -25274,7 +25264,7 @@ task-kind - string （任务类型过滤）
 
     @property
     def ResourceGroupName(self):
-        r"""spark引擎资源组名称
+        r"""<p>spark引擎资源组名称</p>
         :rtype: str
         """
         return self._ResourceGroupName
@@ -25316,11 +25306,11 @@ class DescribeTasksResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskList: 任务对象列表。
+        :param _TaskList: <p>任务对象列表。</p>
         :type TaskList: list of TaskResponseInfo
-        :param _TotalCount: 实例总数。
+        :param _TotalCount: <p>实例总数。</p>
         :type TotalCount: int
-        :param _TasksOverview: 任务概览信息
+        :param _TasksOverview: <p>任务概览信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TasksOverview: :class:`tencentcloud.dlc.v20210125.models.TasksOverview`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -25333,7 +25323,7 @@ class DescribeTasksResponse(AbstractModel):
 
     @property
     def TaskList(self):
-        r"""任务对象列表。
+        r"""<p>任务对象列表。</p>
         :rtype: list of TaskResponseInfo
         """
         return self._TaskList
@@ -25344,7 +25334,7 @@ class DescribeTasksResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""实例总数。
+        r"""<p>实例总数。</p>
         :rtype: int
         """
         return self._TotalCount
@@ -25355,7 +25345,7 @@ class DescribeTasksResponse(AbstractModel):
 
     @property
     def TasksOverview(self):
-        r"""任务概览信息
+        r"""<p>任务概览信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dlc.v20210125.models.TasksOverview`
         """

@@ -624,6 +624,29 @@ class MnaClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def GetHardwareInfo(self, request):
+        r"""获取硬件设备信息
+
+        :param request: Request instance for GetHardwareInfo.
+        :type request: :class:`tencentcloud.mna.v20210119.models.GetHardwareInfoRequest`
+        :rtype: :class:`tencentcloud.mna.v20210119.models.GetHardwareInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetHardwareInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetHardwareInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def GetHardwareList(self, request):
         r"""获取厂商硬件列表
 

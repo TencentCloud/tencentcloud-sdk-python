@@ -49,6 +49,12 @@ class AIAgentAsset(AbstractModel):
         :type MetadataRiskURL: str
         :param _SkillState: <p>无</p>
         :type SkillState: :class:`tencentcloud.csip.v20221121.models.SkillState`
+        :param _TrafficPluginState: <p>流量沙箱插件状态</p>
+        :type TrafficPluginState: :class:`tencentcloud.csip.v20221121.models.TrafficPluginState`
+        :param _TrafficRuleState: <p>流量沙箱规则状态</p>
+        :type TrafficRuleState: list of TrafficRuleState
+        :param _CommandPluginState: <p>命令沙箱插件状态</p>
+        :type CommandPluginState: :class:`tencentcloud.csip.v20221121.models.CommandPluginState`
         """
         self._ID = None
         self._AgentName = None
@@ -62,6 +68,9 @@ class AIAgentAsset(AbstractModel):
         self._ExposureStatus = None
         self._MetadataRiskURL = None
         self._SkillState = None
+        self._TrafficPluginState = None
+        self._TrafficRuleState = None
+        self._CommandPluginState = None
 
     @property
     def ID(self):
@@ -195,6 +204,39 @@ class AIAgentAsset(AbstractModel):
     def SkillState(self, SkillState):
         self._SkillState = SkillState
 
+    @property
+    def TrafficPluginState(self):
+        r"""<p>流量沙箱插件状态</p>
+        :rtype: :class:`tencentcloud.csip.v20221121.models.TrafficPluginState`
+        """
+        return self._TrafficPluginState
+
+    @TrafficPluginState.setter
+    def TrafficPluginState(self, TrafficPluginState):
+        self._TrafficPluginState = TrafficPluginState
+
+    @property
+    def TrafficRuleState(self):
+        r"""<p>流量沙箱规则状态</p>
+        :rtype: list of TrafficRuleState
+        """
+        return self._TrafficRuleState
+
+    @TrafficRuleState.setter
+    def TrafficRuleState(self, TrafficRuleState):
+        self._TrafficRuleState = TrafficRuleState
+
+    @property
+    def CommandPluginState(self):
+        r"""<p>命令沙箱插件状态</p>
+        :rtype: :class:`tencentcloud.csip.v20221121.models.CommandPluginState`
+        """
+        return self._CommandPluginState
+
+    @CommandPluginState.setter
+    def CommandPluginState(self, CommandPluginState):
+        self._CommandPluginState = CommandPluginState
+
 
     def _deserialize(self, params):
         self._ID = params.get("ID")
@@ -211,6 +253,18 @@ class AIAgentAsset(AbstractModel):
         if params.get("SkillState") is not None:
             self._SkillState = SkillState()
             self._SkillState._deserialize(params.get("SkillState"))
+        if params.get("TrafficPluginState") is not None:
+            self._TrafficPluginState = TrafficPluginState()
+            self._TrafficPluginState._deserialize(params.get("TrafficPluginState"))
+        if params.get("TrafficRuleState") is not None:
+            self._TrafficRuleState = []
+            for item in params.get("TrafficRuleState"):
+                obj = TrafficRuleState()
+                obj._deserialize(item)
+                self._TrafficRuleState.append(obj)
+        if params.get("CommandPluginState") is not None:
+            self._CommandPluginState = CommandPluginState()
+            self._CommandPluginState._deserialize(params.get("CommandPluginState"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11728,6 +11782,42 @@ class CloudCountDesc(AbstractModel):
         
 
 
+class CommandPluginState(AbstractModel):
+    r"""AI Agent 命令沙箱插件状态
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstallStatus: <p>插件安装状态（上层聚合）<br>枚举值：<br>NONE：未安装<br>INSTALLING：安装中<br>INSTALLED：已安装<br>INSTALL_FAIL：安装失败</p>
+        :type InstallStatus: str
+        """
+        self._InstallStatus = None
+
+    @property
+    def InstallStatus(self):
+        r"""<p>插件安装状态（上层聚合）<br>枚举值：<br>NONE：未安装<br>INSTALLING：安装中<br>INSTALLED：已安装<br>INSTALL_FAIL：安装失败</p>
+        :rtype: str
+        """
+        return self._InstallStatus
+
+    @InstallStatus.setter
+    def InstallStatus(self, InstallStatus):
+        self._InstallStatus = InstallStatus
+
+
+    def _deserialize(self, params):
+        self._InstallStatus = params.get("InstallStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateAccessKeyCheckTaskRequest(AbstractModel):
     r"""CreateAccessKeyCheckTask请求参数结构体
 
@@ -14046,6 +14136,151 @@ class CreateRiskCenterScanTaskResponse(AbstractModel):
         self._TaskId = params.get("TaskId")
         self._Status = params.get("Status")
         self._UnAuthAsset = params.get("UnAuthAsset")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateSkillScanRequest(AbstractModel):
+    r"""CreateSkillScan请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileBase64: ZIP 文件内容的 Base64 编码
+入参限制：文件大小上限 7MB（编码前），仅接受有效的 ZIP 格式
+        :type FileBase64: str
+        :param _FileName: 文件名，用于服务端日志记录
+参数格式：形如 my-skill.zip
+        :type FileName: str
+        """
+        self._FileBase64 = None
+        self._FileName = None
+
+    @property
+    def FileBase64(self):
+        r"""ZIP 文件内容的 Base64 编码
+入参限制：文件大小上限 7MB（编码前），仅接受有效的 ZIP 格式
+        :rtype: str
+        """
+        return self._FileBase64
+
+    @FileBase64.setter
+    def FileBase64(self, FileBase64):
+        self._FileBase64 = FileBase64
+
+    @property
+    def FileName(self):
+        r"""文件名，用于服务端日志记录
+参数格式：形如 my-skill.zip
+        :rtype: str
+        """
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+
+    def _deserialize(self, params):
+        self._FileBase64 = params.get("FileBase64")
+        self._FileName = params.get("FileName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateSkillScanResponse(AbstractModel):
+    r"""CreateSkillScan返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ContentHash: 文件的 SHA256 Hash，用于轮询 DescribeSkillScanResult 接口
+参数格式：sha256:<64位hex>
+        :type ContentHash: str
+        :param _EngineVersion: 本次请求实际绑定的引擎版本号。调用方应保存并在后续 DescribeSkillScanResult 时显式传入
+        :type EngineVersion: int
+        :param _Status: 任务状态，固定为 SCANNING，表示任务已接收
+        :type Status: str
+        :param _Message: 可读的操作结果描述
+        :type Message: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ContentHash = None
+        self._EngineVersion = None
+        self._Status = None
+        self._Message = None
+        self._RequestId = None
+
+    @property
+    def ContentHash(self):
+        r"""文件的 SHA256 Hash，用于轮询 DescribeSkillScanResult 接口
+参数格式：sha256:<64位hex>
+        :rtype: str
+        """
+        return self._ContentHash
+
+    @ContentHash.setter
+    def ContentHash(self, ContentHash):
+        self._ContentHash = ContentHash
+
+    @property
+    def EngineVersion(self):
+        r"""本次请求实际绑定的引擎版本号。调用方应保存并在后续 DescribeSkillScanResult 时显式传入
+        :rtype: int
+        """
+        return self._EngineVersion
+
+    @EngineVersion.setter
+    def EngineVersion(self, EngineVersion):
+        self._EngineVersion = EngineVersion
+
+    @property
+    def Status(self):
+        r"""任务状态，固定为 SCANNING，表示任务已接收
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Message(self):
+        r"""可读的操作结果描述
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ContentHash = params.get("ContentHash")
+        self._EngineVersion = params.get("EngineVersion")
+        self._Status = params.get("Status")
+        self._Message = params.get("Message")
         self._RequestId = params.get("RequestId")
 
 
@@ -32579,6 +32814,152 @@ class DescribeSearchBugInfoResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeSkillScanResultRequest(AbstractModel):
+    r"""DescribeSkillScanResult请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ContentHash: ZIP 文件的 SHA256 Hash
+参数格式：sha256:<64位hex>
+        :type ContentHash: str
+        :param _EngineVersion: 指定引擎版本号
+取值参考：由 CreateSkillScan 接口返回
+        :type EngineVersion: int
+        :param _ReportURLExpireHours: 报告签名地址有效期
+单位：小时
+默认值：8760（1年）
+补充说明：对返回的 ReportURL 生效
+        :type ReportURLExpireHours: int
+        """
+        self._ContentHash = None
+        self._EngineVersion = None
+        self._ReportURLExpireHours = None
+
+    @property
+    def ContentHash(self):
+        r"""ZIP 文件的 SHA256 Hash
+参数格式：sha256:<64位hex>
+        :rtype: str
+        """
+        return self._ContentHash
+
+    @ContentHash.setter
+    def ContentHash(self, ContentHash):
+        self._ContentHash = ContentHash
+
+    @property
+    def EngineVersion(self):
+        r"""指定引擎版本号
+取值参考：由 CreateSkillScan 接口返回
+        :rtype: int
+        """
+        return self._EngineVersion
+
+    @EngineVersion.setter
+    def EngineVersion(self, EngineVersion):
+        self._EngineVersion = EngineVersion
+
+    @property
+    def ReportURLExpireHours(self):
+        r"""报告签名地址有效期
+单位：小时
+默认值：8760（1年）
+补充说明：对返回的 ReportURL 生效
+        :rtype: int
+        """
+        return self._ReportURLExpireHours
+
+    @ReportURLExpireHours.setter
+    def ReportURLExpireHours(self, ReportURLExpireHours):
+        self._ReportURLExpireHours = ReportURLExpireHours
+
+
+    def _deserialize(self, params):
+        self._ContentHash = params.get("ContentHash")
+        self._EngineVersion = params.get("EngineVersion")
+        self._ReportURLExpireHours = params.get("ReportURLExpireHours")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSkillScanResultResponse(AbstractModel):
+    r"""DescribeSkillScanResult返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 检测状态
+枚举值：
+SUCCESS：检测完成，有结果
+SCANNING：检测进行中
+NOT_FOUND：无检测记录
+FAILED：检测失败
+        :type Status: str
+        :param _Data: 检测结果详情。Status=SUCCESS 时大部分字段有值；Status=SCANNING 时仅包含 ContentHash 和 CreatedAt；Status=FAILED 时仅包含 ContentHash、FailedAt 和 Message；Status=NOT_FOUND 时仅包含 ContentHash
+        :type Data: :class:`tencentcloud.csip.v20221121.models.SkillScanItem`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Status = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        r"""检测状态
+枚举值：
+SUCCESS：检测完成，有结果
+SCANNING：检测进行中
+NOT_FOUND：无检测记录
+FAILED：检测失败
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Data(self):
+        r"""检测结果详情。Status=SUCCESS 时大部分字段有值；Status=SCANNING 时仅包含 ContentHash 和 CreatedAt；Status=FAILED 时仅包含 ContentHash、FailedAt 和 Message；Status=NOT_FOUND 时仅包含 ContentHash
+        :rtype: :class:`tencentcloud.csip.v20221121.models.SkillScanItem`
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        if params.get("Data") is not None:
+            self._Data = SkillScanItem()
+            self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeSourceIPAssetRequest(AbstractModel):
     r"""DescribeSourceIPAsset请求参数结构体
 
@@ -44155,17 +44536,17 @@ class FilterDataObject(AbstractModel):
 
 
 class Filters(AbstractModel):
-    r"""filter过滤条件
+    r"""过滤条件。同一 Name 下多个 Values 为或关系；不同 Name 之间为且关系
 
     """
 
     def __init__(self):
         r"""
-        :param _Name: 实例ID
+        :param _Name: 过滤条件名称
         :type Name: str
-        :param _Values: 实例ID内容
+        :param _Values: 过滤条件值列表
         :type Values: list of str
-        :param _ExactMatch: 模糊匹配
+        :param _ExactMatch: 是否精确匹配：1 精确匹配；默认模糊匹配
         :type ExactMatch: str
         """
         self._Name = None
@@ -44174,7 +44555,7 @@ class Filters(AbstractModel):
 
     @property
     def Name(self):
-        r"""实例ID
+        r"""过滤条件名称
         :rtype: str
         """
         return self._Name
@@ -44185,7 +44566,7 @@ class Filters(AbstractModel):
 
     @property
     def Values(self):
-        r"""实例ID内容
+        r"""过滤条件值列表
         :rtype: list of str
         """
         return self._Values
@@ -44196,7 +44577,7 @@ class Filters(AbstractModel):
 
     @property
     def ExactMatch(self):
-        r"""模糊匹配
+        r"""是否精确匹配：1 精确匹配；默认模糊匹配
         :rtype: str
         """
         return self._ExactMatch
@@ -53635,6 +54016,547 @@ class ServiceSupport(AbstractModel):
         
 
 
+class SkillCapabilityTag(AbstractModel):
+    r"""Skill 能力标签
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: 能力标签标识，适合程序判定、过滤或聚合使用
+        :type ID: str
+        :param _Name: 能力标签展示名称
+        :type Name: str
+        """
+        self._ID = None
+        self._Name = None
+
+    @property
+    def ID(self):
+        r"""能力标签标识，适合程序判定、过滤或聚合使用
+        :rtype: str
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def Name(self):
+        r"""能力标签展示名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        self._Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SkillRuleCatalogItem(AbstractModel):
+    r"""融合规则目录项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleID: 融合规则 ID（9xxxx）
+        :type RuleID: str
+        :param _RuleName: 风险类别名称
+        :type RuleName: str
+        """
+        self._RuleID = None
+        self._RuleName = None
+
+    @property
+    def RuleID(self):
+        r"""融合规则 ID（9xxxx）
+        :rtype: str
+        """
+        return self._RuleID
+
+    @RuleID.setter
+    def RuleID(self, RuleID):
+        self._RuleID = RuleID
+
+    @property
+    def RuleName(self):
+        r"""风险类别名称
+        :rtype: str
+        """
+        return self._RuleName
+
+    @RuleName.setter
+    def RuleName(self, RuleName):
+        self._RuleName = RuleName
+
+
+    def _deserialize(self, params):
+        self._RuleID = params.get("RuleID")
+        self._RuleName = params.get("RuleName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SkillScanEngineResult(AbstractModel):
+    r"""子引擎扫描结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ScanType: 子引擎类型
+枚举值：
+AI：AI 引擎
+STATIC：静态分析引擎
+        :type ScanType: str
+        :param _RuleList: 该引擎命中的规则列表
+        :type RuleList: list of SkillScanRuleHit
+        """
+        self._ScanType = None
+        self._RuleList = None
+
+    @property
+    def ScanType(self):
+        r"""子引擎类型
+枚举值：
+AI：AI 引擎
+STATIC：静态分析引擎
+        :rtype: str
+        """
+        return self._ScanType
+
+    @ScanType.setter
+    def ScanType(self, ScanType):
+        self._ScanType = ScanType
+
+    @property
+    def RuleList(self):
+        r"""该引擎命中的规则列表
+        :rtype: list of SkillScanRuleHit
+        """
+        return self._RuleList
+
+    @RuleList.setter
+    def RuleList(self, RuleList):
+        self._RuleList = RuleList
+
+
+    def _deserialize(self, params):
+        self._ScanType = params.get("ScanType")
+        if params.get("RuleList") is not None:
+            self._RuleList = []
+            for item in params.get("RuleList"):
+                obj = SkillScanRuleHit()
+                obj._deserialize(item)
+                self._RuleList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SkillScanItem(AbstractModel):
+    r"""Skill 安全检测结果详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SkillName: Skill 名称
+        :type SkillName: str
+        :param _SkillDescription: Skill 描述，帮助理解 Skill 的主要用途
+        :type SkillDescription: str
+        :param _ContentHash: ZIP 文件的 SHA256 Hash
+参数格式：sha256:<64位hex>
+        :type ContentHash: str
+        :param _UploadFileCount: 原始上传 ZIP 文件解压后的实际文件数，也是计费的范围，扫描成功后1个文件计为1次额度
+        :type UploadFileCount: int
+        :param _RiskLevel: 综合风险等级
+枚举值：
+malicious：恶意
+suspicious：可疑
+benign：可信
+        :type RiskLevel: str
+        :param _PrimaryRuleID: 风险主标签融合规则 ID（9xxxx），由服务端从命中的融合风险标签中生成；benign 且无规则命中时为空。展示名称可通过 RuleCatalog 获取
+        :type PrimaryRuleID: str
+        :param _Mitigation: 综合处置建议，用于指导调用方优先执行下线、隔离、修复、复检等动作。历史结果中可能为空。传 Language=en-US 时返回英文文案
+        :type Mitigation: str
+        :param _RiskDescription: 风险综合描述，对本次检测发现的风险进行概括性说明。传 Language=en-US 时返回英文文案
+        :type RiskDescription: str
+        :param _SecurityScore: 安全评分
+取值范围：[0, 100]
+补充说明：100 为最安全
+        :type SecurityScore: int
+        :param _EngineVersion: 本次扫描使用的引擎版本号
+        :type EngineVersion: int
+        :param _CapabilityTags: Skill 能力标签列表，描述 Skill 具备的能力特征或适用场景。不等同于风险标签，也不参与风险等级判定。传 Language=en-US 时 Name 切换为英文，ID 保持不变
+        :type CapabilityTags: list of SkillCapabilityTag
+        :param _RuleCatalog: 融合规则目录全集，包含所有融合规则类别（9xxxx），调用方可据此展示分类标签，无需本地维护映射表。传 Language=en-US 时返回英文名称
+        :type RuleCatalog: list of SkillRuleCatalogItem
+        :param _ScanItems: 扫描结果详情，按子引擎分组。每个元素包含 ScanType（引擎类型）和 RuleList（命中规则列表）。规则中的 RuleID 使用融合编码（9xxxx），可与 RuleCatalog 交叉引用。传 Language=en-US 时 Description 返回英文文本
+        :type ScanItems: list of SkillScanEngineResult
+        :param _ReportURL: 综合安全审计报告地址（签名 URL）。有效期由请求参数 ReportURLExpireHours 控制
+        :type ReportURL: str
+        :param _ScannedAt: 扫描完成时间。仅 Status=SUCCESS 时有值
+参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）
+        :type ScannedAt: str
+        :param _CreatedAt: 任务创建时间。仅 Status=SCANNING 时有值
+参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）
+        :type CreatedAt: str
+        :param _FailedAt: 失败时间。仅 Status=FAILED 时有值
+参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）
+        :type FailedAt: str
+        :param _Message: 失败原因描述。仅 Status=FAILED 时有值
+        :type Message: str
+        """
+        self._SkillName = None
+        self._SkillDescription = None
+        self._ContentHash = None
+        self._UploadFileCount = None
+        self._RiskLevel = None
+        self._PrimaryRuleID = None
+        self._Mitigation = None
+        self._RiskDescription = None
+        self._SecurityScore = None
+        self._EngineVersion = None
+        self._CapabilityTags = None
+        self._RuleCatalog = None
+        self._ScanItems = None
+        self._ReportURL = None
+        self._ScannedAt = None
+        self._CreatedAt = None
+        self._FailedAt = None
+        self._Message = None
+
+    @property
+    def SkillName(self):
+        r"""Skill 名称
+        :rtype: str
+        """
+        return self._SkillName
+
+    @SkillName.setter
+    def SkillName(self, SkillName):
+        self._SkillName = SkillName
+
+    @property
+    def SkillDescription(self):
+        r"""Skill 描述，帮助理解 Skill 的主要用途
+        :rtype: str
+        """
+        return self._SkillDescription
+
+    @SkillDescription.setter
+    def SkillDescription(self, SkillDescription):
+        self._SkillDescription = SkillDescription
+
+    @property
+    def ContentHash(self):
+        r"""ZIP 文件的 SHA256 Hash
+参数格式：sha256:<64位hex>
+        :rtype: str
+        """
+        return self._ContentHash
+
+    @ContentHash.setter
+    def ContentHash(self, ContentHash):
+        self._ContentHash = ContentHash
+
+    @property
+    def UploadFileCount(self):
+        r"""原始上传 ZIP 文件解压后的实际文件数，也是计费的范围，扫描成功后1个文件计为1次额度
+        :rtype: int
+        """
+        return self._UploadFileCount
+
+    @UploadFileCount.setter
+    def UploadFileCount(self, UploadFileCount):
+        self._UploadFileCount = UploadFileCount
+
+    @property
+    def RiskLevel(self):
+        r"""综合风险等级
+枚举值：
+malicious：恶意
+suspicious：可疑
+benign：可信
+        :rtype: str
+        """
+        return self._RiskLevel
+
+    @RiskLevel.setter
+    def RiskLevel(self, RiskLevel):
+        self._RiskLevel = RiskLevel
+
+    @property
+    def PrimaryRuleID(self):
+        r"""风险主标签融合规则 ID（9xxxx），由服务端从命中的融合风险标签中生成；benign 且无规则命中时为空。展示名称可通过 RuleCatalog 获取
+        :rtype: str
+        """
+        return self._PrimaryRuleID
+
+    @PrimaryRuleID.setter
+    def PrimaryRuleID(self, PrimaryRuleID):
+        self._PrimaryRuleID = PrimaryRuleID
+
+    @property
+    def Mitigation(self):
+        r"""综合处置建议，用于指导调用方优先执行下线、隔离、修复、复检等动作。历史结果中可能为空。传 Language=en-US 时返回英文文案
+        :rtype: str
+        """
+        return self._Mitigation
+
+    @Mitigation.setter
+    def Mitigation(self, Mitigation):
+        self._Mitigation = Mitigation
+
+    @property
+    def RiskDescription(self):
+        r"""风险综合描述，对本次检测发现的风险进行概括性说明。传 Language=en-US 时返回英文文案
+        :rtype: str
+        """
+        return self._RiskDescription
+
+    @RiskDescription.setter
+    def RiskDescription(self, RiskDescription):
+        self._RiskDescription = RiskDescription
+
+    @property
+    def SecurityScore(self):
+        r"""安全评分
+取值范围：[0, 100]
+补充说明：100 为最安全
+        :rtype: int
+        """
+        return self._SecurityScore
+
+    @SecurityScore.setter
+    def SecurityScore(self, SecurityScore):
+        self._SecurityScore = SecurityScore
+
+    @property
+    def EngineVersion(self):
+        r"""本次扫描使用的引擎版本号
+        :rtype: int
+        """
+        return self._EngineVersion
+
+    @EngineVersion.setter
+    def EngineVersion(self, EngineVersion):
+        self._EngineVersion = EngineVersion
+
+    @property
+    def CapabilityTags(self):
+        r"""Skill 能力标签列表，描述 Skill 具备的能力特征或适用场景。不等同于风险标签，也不参与风险等级判定。传 Language=en-US 时 Name 切换为英文，ID 保持不变
+        :rtype: list of SkillCapabilityTag
+        """
+        return self._CapabilityTags
+
+    @CapabilityTags.setter
+    def CapabilityTags(self, CapabilityTags):
+        self._CapabilityTags = CapabilityTags
+
+    @property
+    def RuleCatalog(self):
+        r"""融合规则目录全集，包含所有融合规则类别（9xxxx），调用方可据此展示分类标签，无需本地维护映射表。传 Language=en-US 时返回英文名称
+        :rtype: list of SkillRuleCatalogItem
+        """
+        return self._RuleCatalog
+
+    @RuleCatalog.setter
+    def RuleCatalog(self, RuleCatalog):
+        self._RuleCatalog = RuleCatalog
+
+    @property
+    def ScanItems(self):
+        r"""扫描结果详情，按子引擎分组。每个元素包含 ScanType（引擎类型）和 RuleList（命中规则列表）。规则中的 RuleID 使用融合编码（9xxxx），可与 RuleCatalog 交叉引用。传 Language=en-US 时 Description 返回英文文本
+        :rtype: list of SkillScanEngineResult
+        """
+        return self._ScanItems
+
+    @ScanItems.setter
+    def ScanItems(self, ScanItems):
+        self._ScanItems = ScanItems
+
+    @property
+    def ReportURL(self):
+        r"""综合安全审计报告地址（签名 URL）。有效期由请求参数 ReportURLExpireHours 控制
+        :rtype: str
+        """
+        return self._ReportURL
+
+    @ReportURL.setter
+    def ReportURL(self, ReportURL):
+        self._ReportURL = ReportURL
+
+    @property
+    def ScannedAt(self):
+        r"""扫描完成时间。仅 Status=SUCCESS 时有值
+参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）
+        :rtype: str
+        """
+        return self._ScannedAt
+
+    @ScannedAt.setter
+    def ScannedAt(self, ScannedAt):
+        self._ScannedAt = ScannedAt
+
+    @property
+    def CreatedAt(self):
+        r"""任务创建时间。仅 Status=SCANNING 时有值
+参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）
+        :rtype: str
+        """
+        return self._CreatedAt
+
+    @CreatedAt.setter
+    def CreatedAt(self, CreatedAt):
+        self._CreatedAt = CreatedAt
+
+    @property
+    def FailedAt(self):
+        r"""失败时间。仅 Status=FAILED 时有值
+参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）
+        :rtype: str
+        """
+        return self._FailedAt
+
+    @FailedAt.setter
+    def FailedAt(self, FailedAt):
+        self._FailedAt = FailedAt
+
+    @property
+    def Message(self):
+        r"""失败原因描述。仅 Status=FAILED 时有值
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+
+    def _deserialize(self, params):
+        self._SkillName = params.get("SkillName")
+        self._SkillDescription = params.get("SkillDescription")
+        self._ContentHash = params.get("ContentHash")
+        self._UploadFileCount = params.get("UploadFileCount")
+        self._RiskLevel = params.get("RiskLevel")
+        self._PrimaryRuleID = params.get("PrimaryRuleID")
+        self._Mitigation = params.get("Mitigation")
+        self._RiskDescription = params.get("RiskDescription")
+        self._SecurityScore = params.get("SecurityScore")
+        self._EngineVersion = params.get("EngineVersion")
+        if params.get("CapabilityTags") is not None:
+            self._CapabilityTags = []
+            for item in params.get("CapabilityTags"):
+                obj = SkillCapabilityTag()
+                obj._deserialize(item)
+                self._CapabilityTags.append(obj)
+        if params.get("RuleCatalog") is not None:
+            self._RuleCatalog = []
+            for item in params.get("RuleCatalog"):
+                obj = SkillRuleCatalogItem()
+                obj._deserialize(item)
+                self._RuleCatalog.append(obj)
+        if params.get("ScanItems") is not None:
+            self._ScanItems = []
+            for item in params.get("ScanItems"):
+                obj = SkillScanEngineResult()
+                obj._deserialize(item)
+                self._ScanItems.append(obj)
+        self._ReportURL = params.get("ReportURL")
+        self._ScannedAt = params.get("ScannedAt")
+        self._CreatedAt = params.get("CreatedAt")
+        self._FailedAt = params.get("FailedAt")
+        self._Message = params.get("Message")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SkillScanRuleHit(AbstractModel):
+    r"""命中规则项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleID: 融合规则编号（9xxxx），可与 RuleCatalog 交叉引用
+        :type RuleID: str
+        :param _Description: 当前命中规则的具体发现描述，包含文件位置、行为特征、风险点等信息
+        :type Description: str
+        """
+        self._RuleID = None
+        self._Description = None
+
+    @property
+    def RuleID(self):
+        r"""融合规则编号（9xxxx），可与 RuleCatalog 交叉引用
+        :rtype: str
+        """
+        return self._RuleID
+
+    @RuleID.setter
+    def RuleID(self, RuleID):
+        self._RuleID = RuleID
+
+    @property
+    def Description(self):
+        r"""当前命中规则的具体发现描述，包含文件位置、行为特征、风险点等信息
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._RuleID = params.get("RuleID")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SkillState(AbstractModel):
     r"""SKILL安装状态信息
 
@@ -56077,6 +56999,166 @@ class TaskLogURL(AbstractModel):
         self._LogId = params.get("LogId")
         self._TaskLogName = params.get("TaskLogName")
         self._AppId = params.get("AppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TrafficPluginState(AbstractModel):
+    r"""AI Agent 流量沙箱插件状态
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstallStatus: 插件安装状态（上层聚合）
+枚举值：
+NONE：未安装
+INSTALLING：安装中
+INSTALLED：已安装
+INSTALL_FAIL：安装失败
+        :type InstallStatus: str
+        :param _Status: 插件安装细分状态。取值与 InstallStatus 对应：未安装（InstallStatus=UNINSTALL）时为空字符串；安装成功（InstallStatus=INSTALLED）时为 SUCCESS；安装失败（InstallStatus=INSTALL_FAIL）时为具体失败原因
+枚举值：
+NOT_SUPPORT：环境不支持
+CONTAINER_NOT_FOUND：容器不存在
+REQUIRE_RESTART：需要重启
+CA_FAILED：CA 失败
+EBPF_FAILED：eBPF 失败
+IPTABLE_FAILED：iptables 失败
+REDIRECT_FAILED：流量重定向失败
+        :type Status: str
+        :param _Message: 状态文案（由 Status 根据请求语言派生的国际化描述）
+        :type Message: str
+        :param _ActivityTime: 插件最近活跃时间
+参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）
+        :type ActivityTime: str
+        """
+        self._InstallStatus = None
+        self._Status = None
+        self._Message = None
+        self._ActivityTime = None
+
+    @property
+    def InstallStatus(self):
+        r"""插件安装状态（上层聚合）
+枚举值：
+NONE：未安装
+INSTALLING：安装中
+INSTALLED：已安装
+INSTALL_FAIL：安装失败
+        :rtype: str
+        """
+        return self._InstallStatus
+
+    @InstallStatus.setter
+    def InstallStatus(self, InstallStatus):
+        self._InstallStatus = InstallStatus
+
+    @property
+    def Status(self):
+        r"""插件安装细分状态。取值与 InstallStatus 对应：未安装（InstallStatus=UNINSTALL）时为空字符串；安装成功（InstallStatus=INSTALLED）时为 SUCCESS；安装失败（InstallStatus=INSTALL_FAIL）时为具体失败原因
+枚举值：
+NOT_SUPPORT：环境不支持
+CONTAINER_NOT_FOUND：容器不存在
+REQUIRE_RESTART：需要重启
+CA_FAILED：CA 失败
+EBPF_FAILED：eBPF 失败
+IPTABLE_FAILED：iptables 失败
+REDIRECT_FAILED：流量重定向失败
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Message(self):
+        r"""状态文案（由 Status 根据请求语言派生的国际化描述）
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def ActivityTime(self):
+        r"""插件最近活跃时间
+参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）
+        :rtype: str
+        """
+        return self._ActivityTime
+
+    @ActivityTime.setter
+    def ActivityTime(self, ActivityTime):
+        self._ActivityTime = ActivityTime
+
+
+    def _deserialize(self, params):
+        self._InstallStatus = params.get("InstallStatus")
+        self._Status = params.get("Status")
+        self._Message = params.get("Message")
+        self._ActivityTime = params.get("ActivityTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TrafficRuleState(AbstractModel):
+    r"""流量沙箱规则状态
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Module: <p>沙箱插件模块名</p>
+        :type Module: str
+        :param _Status: <p>沙箱规则状态</p><p>枚举值：</p><ul><li>ON： 开启</li><li>OFF： 关闭</li></ul>
+        :type Status: str
+        """
+        self._Module = None
+        self._Status = None
+
+    @property
+    def Module(self):
+        r"""<p>沙箱插件模块名</p>
+        :rtype: str
+        """
+        return self._Module
+
+    @Module.setter
+    def Module(self, Module):
+        self._Module = Module
+
+    @property
+    def Status(self):
+        r"""<p>沙箱规则状态</p><p>枚举值：</p><ul><li>ON： 开启</li><li>OFF： 关闭</li></ul>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._Module = params.get("Module")
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

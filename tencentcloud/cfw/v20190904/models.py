@@ -10443,6 +10443,170 @@ class DescribeDefenseSwitchResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeEdgeIpSimpleRequest(AbstractModel):
+    r"""DescribeEdgeIpSimple请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filters: 过滤条件组合
+        :type Filters: list of CommonFilter
+        :param _Limit: 每页条数
+        :type Limit: int
+        :param _Offset: 偏移值
+        :type Offset: int
+        :param _Order: desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值
+        :type Order: str
+        :param _By: 排序所用到的字段
+        :type By: str
+        """
+        self._Filters = None
+        self._Limit = None
+        self._Offset = None
+        self._Order = None
+        self._By = None
+
+    @property
+    def Filters(self):
+        r"""过滤条件组合
+        :rtype: list of CommonFilter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Limit(self):
+        r"""每页条数
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""偏移值
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Order(self):
+        r"""desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def By(self):
+        r"""排序所用到的字段
+        :rtype: str
+        """
+        return self._By
+
+    @By.setter
+    def By(self, By):
+        self._By = By
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = CommonFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._Order = params.get("Order")
+        self._By = params.get("By")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeEdgeIpSimpleResponse(AbstractModel):
+    r"""DescribeEdgeIpSimple返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: ip 开关列表
+        :type Data: list of EdgeIpInfoSimple
+        :param _Total: ip 开关列表个数
+        :type Total: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""ip 开关列表
+        :rtype: list of EdgeIpInfoSimple
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Total(self):
+        r"""ip 开关列表个数
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = EdgeIpInfoSimple()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._Total = params.get("Total")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeEnterpriseSGRuleProgressRequest(AbstractModel):
     r"""DescribeEnterpriseSGRuleProgress请求参数结构体
 
@@ -16657,6 +16821,157 @@ class EdgeIpInfo(AbstractModel):
         self._Domain = params.get("Domain")
         self._OverUsedStatus = params.get("OverUsedStatus")
         self._SwitchSupportType = params.get("SwitchSupportType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EdgeIpInfoSimple(AbstractModel):
+    r"""边界防火墙公网IP开关列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PublicIp: 公网IP
+        :type PublicIp: str
+        :param _PublicIpType: 公网 IP 类型 1 公网,2 弹性,3 弹性ipv6,4 anycastIP, 6 HighQualityEIP
+        :type PublicIpType: int
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _InstanceName: 实例名
+        :type InstanceName: str
+        :param _Status: 开关状态
+0 : 关闭
+1 : 开启
+2 : 开启中
+3 : 关闭中
+4 : 异常
+        :type Status: int
+        :param _SwitchMode: 0 : 旁路 1 : 串行 2 : 正在模式切换
+        :type SwitchMode: int
+        :param _Region: 地域
+        :type Region: str
+        :param _AssetType: 资产类型
+        :type AssetType: str
+        """
+        self._PublicIp = None
+        self._PublicIpType = None
+        self._InstanceId = None
+        self._InstanceName = None
+        self._Status = None
+        self._SwitchMode = None
+        self._Region = None
+        self._AssetType = None
+
+    @property
+    def PublicIp(self):
+        r"""公网IP
+        :rtype: str
+        """
+        return self._PublicIp
+
+    @PublicIp.setter
+    def PublicIp(self, PublicIp):
+        self._PublicIp = PublicIp
+
+    @property
+    def PublicIpType(self):
+        r"""公网 IP 类型 1 公网,2 弹性,3 弹性ipv6,4 anycastIP, 6 HighQualityEIP
+        :rtype: int
+        """
+        return self._PublicIpType
+
+    @PublicIpType.setter
+    def PublicIpType(self, PublicIpType):
+        self._PublicIpType = PublicIpType
+
+    @property
+    def InstanceId(self):
+        r"""实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceName(self):
+        r"""实例名
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def Status(self):
+        r"""开关状态
+0 : 关闭
+1 : 开启
+2 : 开启中
+3 : 关闭中
+4 : 异常
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def SwitchMode(self):
+        r"""0 : 旁路 1 : 串行 2 : 正在模式切换
+        :rtype: int
+        """
+        return self._SwitchMode
+
+    @SwitchMode.setter
+    def SwitchMode(self, SwitchMode):
+        self._SwitchMode = SwitchMode
+
+    @property
+    def Region(self):
+        r"""地域
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def AssetType(self):
+        r"""资产类型
+        :rtype: str
+        """
+        return self._AssetType
+
+    @AssetType.setter
+    def AssetType(self, AssetType):
+        self._AssetType = AssetType
+
+
+    def _deserialize(self, params):
+        self._PublicIp = params.get("PublicIp")
+        self._PublicIpType = params.get("PublicIpType")
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceName = params.get("InstanceName")
+        self._Status = params.get("Status")
+        self._SwitchMode = params.get("SwitchMode")
+        self._Region = params.get("Region")
+        self._AssetType = params.get("AssetType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

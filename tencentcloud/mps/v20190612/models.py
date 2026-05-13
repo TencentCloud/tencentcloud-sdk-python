@@ -26389,31 +26389,25 @@ class CreateTranscodeTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Container: 封装格式，可选值：mp4、flv、hls、ts、webm、mkv、mxf、mov、mp3、flac、ogg、m4a。其中，mp3、flac、ogg、m4a 为纯音频文件。
+        :param _Container: <p>封装格式，可选值：mp4、flv、hls、ts、webm、mkv、mxf、mov、mp3、flac、ogg、m4a、wav。其中，mp3、flac、ogg、m4a、wav 为纯音频文件。</p>
         :type Container: str
-        :param _Name: 转码模板名称，长度限制：64 个字符。
+        :param _Name: <p>转码模板名称，长度限制：64 个字符。</p>
         :type Name: str
-        :param _Comment: 模板描述信息，长度限制：256 个字符。
+        :param _Comment: <p>模板描述信息，长度限制：256 个字符。</p>
         :type Comment: str
-        :param _RemoveVideo: 是否去除视频数据，可选值：
-<li>0：保留</li>
-<li>1：去除</li>
-默认值：0。
+        :param _RemoveVideo: <p>是否去除视频数据，可选值：</p><li>0：保留</li><li>1：去除</li>默认值：0。
         :type RemoveVideo: int
-        :param _RemoveAudio: 是否去除音频数据，可选值：
-<li>0：保留</li>
-<li>1：去除</li>
-默认值：0。
+        :param _RemoveAudio: <p>是否去除音频数据，可选值：</p><li>0：保留</li><li>1：去除</li>默认值：0。
         :type RemoveAudio: int
-        :param _VideoTemplate: 视频流配置参数，当 RemoveVideo 为 0，该字段必填。
+        :param _VideoTemplate: <p>视频流配置参数，当 RemoveVideo 为 0，该字段必填。</p>
         :type VideoTemplate: :class:`tencentcloud.mps.v20190612.models.VideoTemplateInfo`
-        :param _AudioTemplate: 音频流配置参数，当 RemoveAudio 为 0，该字段必填。
+        :param _AudioTemplate: <p>音频流配置参数，当 RemoveAudio 为 0，该字段必填。</p>
         :type AudioTemplate: :class:`tencentcloud.mps.v20190612.models.AudioTemplateInfo`
-        :param _TEHDConfig: 极速高清转码参数。
+        :param _TEHDConfig: <p>极速高清转码参数。</p>
         :type TEHDConfig: :class:`tencentcloud.mps.v20190612.models.TEHDConfig`
-        :param _EnhanceConfig: 音视频增强配置。
+        :param _EnhanceConfig: <p>音视频增强配置。</p>
         :type EnhanceConfig: :class:`tencentcloud.mps.v20190612.models.EnhanceConfig`
-        :param _StdExtInfo: 扩展参数，序列化的 json 字符串。
+        :param _StdExtInfo: <p>扩展参数，序列化的 json 字符串。</p>
         :type StdExtInfo: str
         """
         self._Container = None
@@ -26429,7 +26423,7 @@ class CreateTranscodeTemplateRequest(AbstractModel):
 
     @property
     def Container(self):
-        r"""封装格式，可选值：mp4、flv、hls、ts、webm、mkv、mxf、mov、mp3、flac、ogg、m4a。其中，mp3、flac、ogg、m4a 为纯音频文件。
+        r"""<p>封装格式，可选值：mp4、flv、hls、ts、webm、mkv、mxf、mov、mp3、flac、ogg、m4a、wav。其中，mp3、flac、ogg、m4a、wav 为纯音频文件。</p>
         :rtype: str
         """
         return self._Container
@@ -26440,7 +26434,7 @@ class CreateTranscodeTemplateRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""转码模板名称，长度限制：64 个字符。
+        r"""<p>转码模板名称，长度限制：64 个字符。</p>
         :rtype: str
         """
         return self._Name
@@ -26451,7 +26445,7 @@ class CreateTranscodeTemplateRequest(AbstractModel):
 
     @property
     def Comment(self):
-        r"""模板描述信息，长度限制：256 个字符。
+        r"""<p>模板描述信息，长度限制：256 个字符。</p>
         :rtype: str
         """
         return self._Comment
@@ -26462,10 +26456,7 @@ class CreateTranscodeTemplateRequest(AbstractModel):
 
     @property
     def RemoveVideo(self):
-        r"""是否去除视频数据，可选值：
-<li>0：保留</li>
-<li>1：去除</li>
-默认值：0。
+        r"""<p>是否去除视频数据，可选值：</p><li>0：保留</li><li>1：去除</li>默认值：0。
         :rtype: int
         """
         return self._RemoveVideo
@@ -26476,10 +26467,7 @@ class CreateTranscodeTemplateRequest(AbstractModel):
 
     @property
     def RemoveAudio(self):
-        r"""是否去除音频数据，可选值：
-<li>0：保留</li>
-<li>1：去除</li>
-默认值：0。
+        r"""<p>是否去除音频数据，可选值：</p><li>0：保留</li><li>1：去除</li>默认值：0。
         :rtype: int
         """
         return self._RemoveAudio
@@ -26490,7 +26478,7 @@ class CreateTranscodeTemplateRequest(AbstractModel):
 
     @property
     def VideoTemplate(self):
-        r"""视频流配置参数，当 RemoveVideo 为 0，该字段必填。
+        r"""<p>视频流配置参数，当 RemoveVideo 为 0，该字段必填。</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.VideoTemplateInfo`
         """
         return self._VideoTemplate
@@ -26501,7 +26489,7 @@ class CreateTranscodeTemplateRequest(AbstractModel):
 
     @property
     def AudioTemplate(self):
-        r"""音频流配置参数，当 RemoveAudio 为 0，该字段必填。
+        r"""<p>音频流配置参数，当 RemoveAudio 为 0，该字段必填。</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.AudioTemplateInfo`
         """
         return self._AudioTemplate
@@ -26512,7 +26500,7 @@ class CreateTranscodeTemplateRequest(AbstractModel):
 
     @property
     def TEHDConfig(self):
-        r"""极速高清转码参数。
+        r"""<p>极速高清转码参数。</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.TEHDConfig`
         """
         return self._TEHDConfig
@@ -26523,7 +26511,7 @@ class CreateTranscodeTemplateRequest(AbstractModel):
 
     @property
     def EnhanceConfig(self):
-        r"""音视频增强配置。
+        r"""<p>音视频增强配置。</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.EnhanceConfig`
         """
         return self._EnhanceConfig
@@ -26534,7 +26522,7 @@ class CreateTranscodeTemplateRequest(AbstractModel):
 
     @property
     def StdExtInfo(self):
-        r"""扩展参数，序列化的 json 字符串。
+        r"""<p>扩展参数，序列化的 json 字符串。</p>
         :rtype: str
         """
         return self._StdExtInfo
@@ -26580,7 +26568,7 @@ class CreateTranscodeTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: 转码模板唯一标识。
+        :param _Definition: <p>转码模板唯一标识。</p>
         :type Definition: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -26590,7 +26578,7 @@ class CreateTranscodeTemplateResponse(AbstractModel):
 
     @property
     def Definition(self):
-        r"""转码模板唯一标识。
+        r"""<p>转码模板唯一标识。</p>
         :rtype: int
         """
         return self._Definition
@@ -63504,29 +63492,25 @@ class ModifyTranscodeTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: 转码模板唯一标识。
+        :param _Definition: <p>转码模板唯一标识。</p>
         :type Definition: int
-        :param _Container: 封装格式，可选值：mp4、flv、hls、mp3、flac、ogg、m4a。其中，mp3、flac、ogg、m4a 为纯音频文件。
+        :param _Container: <p>封装格式，可选值：mp4、flv、hls、mp3、flac、ogg、m4a、wav。其中，mp3、flac、ogg、m4a、wav 为纯音频文件。</p>
         :type Container: str
-        :param _Name: 转码模板名称，长度限制：64 个字符。
+        :param _Name: <p>转码模板名称，长度限制：64 个字符。</p>
         :type Name: str
-        :param _Comment: 模板描述信息，长度限制：256 个字符。
+        :param _Comment: <p>模板描述信息，长度限制：256 个字符。</p>
         :type Comment: str
-        :param _RemoveVideo: 是否去除视频数据，可选值：
-<li>0：保留</li>
-<li>1：去除</li>
+        :param _RemoveVideo: <p>是否去除视频数据，可选值：</p><li>0：保留</li><li>1：去除</li>
         :type RemoveVideo: int
-        :param _RemoveAudio: 是否去除音频数据，可选值：
-<li>0：保留</li>
-<li>1：去除</li>
+        :param _RemoveAudio: <p>是否去除音频数据，可选值：</p><li>0：保留</li><li>1：去除</li>
         :type RemoveAudio: int
-        :param _VideoTemplate: 视频流配置参数。
+        :param _VideoTemplate: <p>视频流配置参数。</p>
         :type VideoTemplate: :class:`tencentcloud.mps.v20190612.models.VideoTemplateInfoForUpdate`
-        :param _AudioTemplate: 音频流配置参数。
+        :param _AudioTemplate: <p>音频流配置参数。</p>
         :type AudioTemplate: :class:`tencentcloud.mps.v20190612.models.AudioTemplateInfoForUpdate`
-        :param _TEHDConfig: 极速高清转码参数。
+        :param _TEHDConfig: <p>极速高清转码参数。</p>
         :type TEHDConfig: :class:`tencentcloud.mps.v20190612.models.TEHDConfigForUpdate`
-        :param _EnhanceConfig: 音视频增强参数。
+        :param _EnhanceConfig: <p>音视频增强参数。</p>
         :type EnhanceConfig: :class:`tencentcloud.mps.v20190612.models.EnhanceConfig`
         """
         self._Definition = None
@@ -63542,7 +63526,7 @@ class ModifyTranscodeTemplateRequest(AbstractModel):
 
     @property
     def Definition(self):
-        r"""转码模板唯一标识。
+        r"""<p>转码模板唯一标识。</p>
         :rtype: int
         """
         return self._Definition
@@ -63553,7 +63537,7 @@ class ModifyTranscodeTemplateRequest(AbstractModel):
 
     @property
     def Container(self):
-        r"""封装格式，可选值：mp4、flv、hls、mp3、flac、ogg、m4a。其中，mp3、flac、ogg、m4a 为纯音频文件。
+        r"""<p>封装格式，可选值：mp4、flv、hls、mp3、flac、ogg、m4a、wav。其中，mp3、flac、ogg、m4a、wav 为纯音频文件。</p>
         :rtype: str
         """
         return self._Container
@@ -63564,7 +63548,7 @@ class ModifyTranscodeTemplateRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""转码模板名称，长度限制：64 个字符。
+        r"""<p>转码模板名称，长度限制：64 个字符。</p>
         :rtype: str
         """
         return self._Name
@@ -63575,7 +63559,7 @@ class ModifyTranscodeTemplateRequest(AbstractModel):
 
     @property
     def Comment(self):
-        r"""模板描述信息，长度限制：256 个字符。
+        r"""<p>模板描述信息，长度限制：256 个字符。</p>
         :rtype: str
         """
         return self._Comment
@@ -63586,9 +63570,7 @@ class ModifyTranscodeTemplateRequest(AbstractModel):
 
     @property
     def RemoveVideo(self):
-        r"""是否去除视频数据，可选值：
-<li>0：保留</li>
-<li>1：去除</li>
+        r"""<p>是否去除视频数据，可选值：</p><li>0：保留</li><li>1：去除</li>
         :rtype: int
         """
         return self._RemoveVideo
@@ -63599,9 +63581,7 @@ class ModifyTranscodeTemplateRequest(AbstractModel):
 
     @property
     def RemoveAudio(self):
-        r"""是否去除音频数据，可选值：
-<li>0：保留</li>
-<li>1：去除</li>
+        r"""<p>是否去除音频数据，可选值：</p><li>0：保留</li><li>1：去除</li>
         :rtype: int
         """
         return self._RemoveAudio
@@ -63612,7 +63592,7 @@ class ModifyTranscodeTemplateRequest(AbstractModel):
 
     @property
     def VideoTemplate(self):
-        r"""视频流配置参数。
+        r"""<p>视频流配置参数。</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.VideoTemplateInfoForUpdate`
         """
         return self._VideoTemplate
@@ -63623,7 +63603,7 @@ class ModifyTranscodeTemplateRequest(AbstractModel):
 
     @property
     def AudioTemplate(self):
-        r"""音频流配置参数。
+        r"""<p>音频流配置参数。</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.AudioTemplateInfoForUpdate`
         """
         return self._AudioTemplate
@@ -63634,7 +63614,7 @@ class ModifyTranscodeTemplateRequest(AbstractModel):
 
     @property
     def TEHDConfig(self):
-        r"""极速高清转码参数。
+        r"""<p>极速高清转码参数。</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.TEHDConfigForUpdate`
         """
         return self._TEHDConfig
@@ -63645,7 +63625,7 @@ class ModifyTranscodeTemplateRequest(AbstractModel):
 
     @property
     def EnhanceConfig(self):
-        r"""音视频增强参数。
+        r"""<p>音视频增强参数。</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.EnhanceConfig`
         """
         return self._EnhanceConfig

@@ -31655,6 +31655,72 @@ class RabbitMQUserQuota(AbstractModel):
         
 
 
+class RabbitMQVHostBaseQuota(AbstractModel):
+    r"""RabbitMQ 虚拟主机基础配额信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MaxConnectionPerVhost: 单个 vhost 下允许的最大连接数
+        :type MaxConnectionPerVhost: int
+        :param _MaxExchangePerVhost: 单个 vhost 下允许的最大交换机数
+        :type MaxExchangePerVhost: int
+        :param _MaxQueuePerVhost: 单个 vhost 下允许的最大队列数
+        :type MaxQueuePerVhost: int
+        """
+        self._MaxConnectionPerVhost = None
+        self._MaxExchangePerVhost = None
+        self._MaxQueuePerVhost = None
+
+    @property
+    def MaxConnectionPerVhost(self):
+        r"""单个 vhost 下允许的最大连接数
+        :rtype: int
+        """
+        return self._MaxConnectionPerVhost
+
+    @MaxConnectionPerVhost.setter
+    def MaxConnectionPerVhost(self, MaxConnectionPerVhost):
+        self._MaxConnectionPerVhost = MaxConnectionPerVhost
+
+    @property
+    def MaxExchangePerVhost(self):
+        r"""单个 vhost 下允许的最大交换机数
+        :rtype: int
+        """
+        return self._MaxExchangePerVhost
+
+    @MaxExchangePerVhost.setter
+    def MaxExchangePerVhost(self, MaxExchangePerVhost):
+        self._MaxExchangePerVhost = MaxExchangePerVhost
+
+    @property
+    def MaxQueuePerVhost(self):
+        r"""单个 vhost 下允许的最大队列数
+        :rtype: int
+        """
+        return self._MaxQueuePerVhost
+
+    @MaxQueuePerVhost.setter
+    def MaxQueuePerVhost(self, MaxQueuePerVhost):
+        self._MaxQueuePerVhost = MaxQueuePerVhost
+
+
+    def _deserialize(self, params):
+        self._MaxConnectionPerVhost = params.get("MaxConnectionPerVhost")
+        self._MaxExchangePerVhost = params.get("MaxExchangePerVhost")
+        self._MaxQueuePerVhost = params.get("MaxQueuePerVhost")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RabbitMQVipInstance(AbstractModel):
     r"""RabbitMQ 托管版实例信息
 
@@ -32092,6 +32158,8 @@ class RabbitMQVirtualHostInfo(AbstractModel):
         :type CreateTs: int
         :param _ModifyTs: 修改时间时间戳
         :type ModifyTs: int
+        :param _Quota: 基础配额信息
+        :type Quota: :class:`tencentcloud.tdmq.v20200217.models.RabbitMQVHostBaseQuota`
         """
         self._InstanceId = None
         self._VirtualHost = None
@@ -32108,6 +32176,7 @@ class RabbitMQVirtualHostInfo(AbstractModel):
         self._MirrorQueuePolicyFlag = None
         self._CreateTs = None
         self._ModifyTs = None
+        self._Quota = None
 
     @property
     def InstanceId(self):
@@ -32274,6 +32343,17 @@ class RabbitMQVirtualHostInfo(AbstractModel):
     def ModifyTs(self, ModifyTs):
         self._ModifyTs = ModifyTs
 
+    @property
+    def Quota(self):
+        r"""基础配额信息
+        :rtype: :class:`tencentcloud.tdmq.v20200217.models.RabbitMQVHostBaseQuota`
+        """
+        return self._Quota
+
+    @Quota.setter
+    def Quota(self, Quota):
+        self._Quota = Quota
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -32293,6 +32373,9 @@ class RabbitMQVirtualHostInfo(AbstractModel):
         self._MirrorQueuePolicyFlag = params.get("MirrorQueuePolicyFlag")
         self._CreateTs = params.get("CreateTs")
         self._ModifyTs = params.get("ModifyTs")
+        if params.get("Quota") is not None:
+            self._Quota = RabbitMQVHostBaseQuota()
+            self._Quota._deserialize(params.get("Quota"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

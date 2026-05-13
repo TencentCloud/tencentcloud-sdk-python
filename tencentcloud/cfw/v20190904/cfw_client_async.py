@@ -819,6 +819,24 @@ class CfwClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeEdgeIpSimple(
+            self,
+            request: models.DescribeEdgeIpSimpleRequest,
+            opts: Dict = None,
+    ) -> models.DescribeEdgeIpSimpleResponse:
+        """
+        互联网边界防火墙开关列表(轻量)
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeEdgeIpSimple"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeEdgeIpSimpleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeEnterpriseSGRuleProgress(
             self,
             request: models.DescribeEnterpriseSGRuleProgressRequest,
