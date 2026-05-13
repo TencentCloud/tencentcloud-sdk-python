@@ -619,6 +619,24 @@ class OceanusClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeWorkSpaceUsers(
+            self,
+            request: models.DescribeWorkSpaceUsersRequest,
+            opts: Dict = None,
+    ) -> models.DescribeWorkSpaceUsersResponse:
+        """
+        工作空间用户列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeWorkSpaceUsers"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeWorkSpaceUsersResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeWorkSpaces(
             self,
             request: models.DescribeWorkSpacesRequest,

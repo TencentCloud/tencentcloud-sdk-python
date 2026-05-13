@@ -12231,93 +12231,46 @@ class CommonFlowApprover(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NotChannelOrganization: 指定签署人非第三方平台子客企业下员工还是SaaS平台企业，在ApproverType为ORGANIZATION时指定。
-<ul>
-<li>false: 默认值，第三方平台子客企业下员工</li>
-<li>true: SaaS平台企业下的员工</li>
-</ul>
-
+        :param _NotChannelOrganization: <p>指定签署人非第三方平台子客企业下员工还是SaaS平台企业，在ApproverType为ORGANIZATION时指定。</p><ul><li>false: 默认值，第三方平台子客企业下员工</li><li>true: SaaS平台企业下的员工</li></ul>
         :type NotChannelOrganization: bool
-        :param _ApproverType: 在指定签署方时，可选择企业B端或个人C端等不同的参与者类型，可选类型如下:
-
- **0** :企业/企业员工（企业签署方或模板发起时的企业静默签）
- **1** :个人/自然人
-**3** :企业/企业员工自动签（他方企业自动签署或文件发起时的本方企业自动签）
-
-注：类型为3（企业/企业员工自动签）时，此接口会默认完成该签署方的签署。静默签署仅进行盖章操作，不能自动签名。
-使用自动签时，请确保企业已经开通自动签功能，开通方式：控制台 -> 企业设置 -> 扩展服务 -> 企业自动签。
-使用文件发起自动签时使用前请联系对接的客户经理沟通。
-
+        :param _ApproverType: <p>在指定签署方时，可选择企业B端或个人C端等不同的参与者类型，可选类型如下:</p><p> <strong>0</strong> :企业/企业员工（企业签署方或模板发起时的企业静默签）<br> <strong>1</strong> :个人/自然人<br><strong>3</strong> :企业/企业员工自动签（他方企业自动签署或文件发起时的本方企业自动签）</p><p>注：类型为3（企业/企业员工自动签）时，此接口会默认完成该签署方的签署。静默签署仅进行盖章操作，不能自动签名。<br>使用自动签时，请确保企业已经开通自动签功能，开通方式：控制台 -&gt; 企业设置 -&gt; 扩展服务 -&gt; 企业自动签。<br>使用文件发起自动签时使用前请联系对接的客户经理沟通。</p>
         :type ApproverType: int
-        :param _OrganizationId: 电子签平台给企业生成的企业id
+        :param _OrganizationId: <p>电子签平台给企业生成的企业id</p>
         :type OrganizationId: str
-        :param _OrganizationOpenId: 企业OpenId，第三方应用集成非静默签子客企业签署人发起合同必传
+        :param _OrganizationOpenId: <p>企业OpenId，第三方应用集成非静默签子客企业签署人发起合同必传</p>
         :type OrganizationOpenId: str
-        :param _OrganizationName: 企业名称，第三方应用集成非静默签子客企业签署人必传，saas企业签署人必传
+        :param _OrganizationName: <p>企业名称，第三方应用集成非静默签子客企业签署人必传，saas企业签署人必传</p>
         :type OrganizationName: str
-        :param _UserId: 电子签平台给企业员工或者自热人生成的用户id
+        :param _UserId: <p>电子签平台给企业员工或者自热人生成的用户id</p>
         :type UserId: str
-        :param _OpenId: 第三方平台子客企业员工的唯一标识
+        :param _OpenId: <p>第三方平台子客企业员工的唯一标识</p>
         :type OpenId: str
-        :param _ApproverName: 签署方经办人的姓名。
-经办人的姓名将用于身份认证和电子签名，请确保填写的姓名为签署方的真实姓名，而非昵称等代名。
+        :param _ApproverName: <p>签署方经办人的姓名。<br>经办人的姓名将用于身份认证和电子签名，请确保填写的姓名为签署方的真实姓名，而非昵称等代名。</p>
         :type ApproverName: str
-        :param _ApproverMobile: 签署人手机号，saas企业签署人，个人签署人必传
+        :param _ApproverMobile: <p>签署人手机号，saas企业签署人，个人签署人必传</p>
         :type ApproverMobile: str
-        :param _ApproverIdCardType: 签署方经办人的证件类型，支持以下类型
-<ul><li>ID_CARD : 中国大陆居民身份证  (默认值)</li>
-<li>HONGKONG_AND_MACAO : 中国港澳居民来往内地通行证</li>
-<li>HONGKONG_MACAO_AND_TAIWAN : 中国港澳台居民居住证(格式同中国大陆居民身份证)</li>
-<li>OTHER_CARD_TYPE : 其他证件</li></ul>
-
-注: `其他证件类型为白名单功能，使用前请联系对接的客户经理沟通。`
+        :param _ApproverIdCardType: <p>签署方经办人的证件类型，支持以下类型</p><ul><li>ID_CARD : 中国大陆居民身份证  (默认值)</li><li>HONGKONG_AND_MACAO : 中国港澳居民来往内地通行证</li><li>HONGKONG_MACAO_AND_TAIWAN : 中国港澳台居民居住证(格式同中国大陆居民身份证)</li><li>OTHER_CARD_TYPE : 其他证件</li></ul><p>注: <code>其他证件类型为白名单功能，使用前请联系对接的客户经理沟通。</code></p>
         :type ApproverIdCardType: str
-        :param _ApproverIdCardNumber: 签署方经办人的证件号码，应符合以下规则
-<ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
-<li>中国港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。
-</li>
-<li>中国港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
+        :param _ApproverIdCardNumber: <p>签署方经办人的证件号码，应符合以下规则</p><ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li><li>中国港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li><li>中国港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
         :type ApproverIdCardNumber: str
-        :param _RecipientId: 签署人Id，使用模板发起是，对应模板配置中的签署人RecipientId
-注意：模板发起时该字段必填
+        :param _RecipientId: <p>签署人Id，使用模板发起是，对应模板配置中的签署人RecipientId<br>注意：模板发起时该字段必填</p>
         :type RecipientId: str
-        :param _PreReadTime: 签署前置条件：阅读时长限制，不传默认10s,最大300s，最小3s
+        :param _PreReadTime: <p>签署前置条件：阅读时长限制，不传默认10s,最大300s，最小3s</p>
         :type PreReadTime: int
-        :param _IsFullText: 签署前置条件：阅读全文限制
+        :param _IsFullText: <p>签署前置条件：阅读全文限制</p>
         :type IsFullText: bool
-        :param _NotifyType: 通知签署方经办人的方式, 有以下途径:
-<ul><li> **SMS** :(默认)短信</li>
-<li> **NONE** : 不通知</li></ul>
-
-注: `签署方为第三方子客企业时会被置为NONE,   不会发短信通知`
+        :param _NotifyType: <p>通知签署方经办人的方式, 有以下途径:</p><ul><li> **SMS** :(默认)短信</li><li> **NONE** : 不通知</li></ul><p>注: <code>签署方为第三方子客企业时会被置为NONE,   不会发短信通知</code></p>
         :type NotifyType: str
-        :param _ApproverOption: 签署人配置，用于控制签署人相关属性
+        :param _ApproverOption: <p>签署人配置，用于控制签署人相关属性</p>
         :type ApproverOption: :class:`tencentcloud.essbasic.v20210526.models.CommonApproverOption`
-        :param _SignComponents: 使用PDF文件直接发起合同时，签署人指定的签署控件；<br/>使用模板发起合同时，指定本企业印章签署控件的印章ID: <br/>通过ComponentId或ComponenetName指定签署控件，ComponentValue为印章ID。
+        :param _SignComponents: <p>使用PDF文件直接发起合同时，签署人指定的签署控件；<br>使用模板发起合同时，指定本企业印章签署控件的印章ID: <br>通过ComponentId或ComponenetName指定签署控件，ComponentValue为印章ID。</p>
         :type SignComponents: list of Component
-        :param _ApproverVerifyTypes: 指定个人签署方查看合同的校验方式,可以传值如下:
-<ul><li>  **1**   : （默认）人脸识别,人脸识别后才能合同内容</li>
-<li>  **2**  : 手机号验证, 用户手机号和参与方手机号(ApproverMobile)相同即可查看合同内容（当手写签名方式为OCR_ESIGN时，该校验方式无效，因为这种签名方式依赖实名认证）
-</li></ul>
-注: 
-<ul><li>如果合同流程设置ApproverVerifyType查看合同的校验方式,    则忽略此签署人的查看合同的校验方式</li>
-<li>此字段可传多个校验方式</li></ul>
+        :param _ApproverVerifyTypes: <p>指定个人签署方查看合同的校验方式,可以传值如下:</p><ul><li>  **1**   : （默认）人脸识别,人脸识别后才能合同内容</li><li>  **2**  : 手机号验证, 用户手机号和参与方手机号(ApproverMobile)相同即可查看合同内容（当手写签名方式为OCR_ESIGN时，该校验方式无效，因为这种签名方式依赖实名认证）</li></ul>注: <ul><li>如果合同流程设置ApproverVerifyType查看合同的校验方式,    则忽略此签署人的查看合同的校验方式</li><li>此字段可传多个校验方式</li></ul>
         :type ApproverVerifyTypes: list of int
-        :param _ApproverSignTypes: 签署人签署合同时的认证方式
-<ul><li> **1** :人脸认证</li>
-<li> **2** :签署密码</li>
-<li> **3** :运营商三要素</li>
-<li> **5** :设备指纹识别</li>
-<li> **6** :设备面容识别</li></ul>
-
-默认为1(人脸认证 ),2(签署密码),3(运营商三要素),5(设备指纹识别),6(设备面容识别)
-
-注: 
-1. 用<font color='red'>模板创建合同场景</font>, 签署人的认证方式需要在配置模板的时候指定, <font color='red'>在创建合同重新指定无效</font>
-2. 运营商三要素认证方式对手机号运营商及前缀有限制,可以参考[运营商支持列表类](https://qian.tencent.com/developers/partner/mobile_support)得到具体的支持说明
-3. 校验方式不允许只包含<font color='red'>设备指纹识别</font>和<font color='red'>设备面容识别</font>，至少需要再增加一种其他校验方式。
-4. <font color='red'>设备指纹识别</font>和<font color='red'>设备面容识别</font>只支持小程序使用，其他端暂不支持。
+        :param _ApproverSignTypes: <p>签署人签署合同时的认证方式</p><ul><li> **1** :人脸认证</li><li> **2** :签署密码</li><li> **3** :运营商三要素</li><li> **5** :设备指纹识别</li><li> **6** :设备面容识别</li></ul><p>默认为1(人脸认证 ),2(签署密码),3(运营商三要素),5(设备指纹识别),6(设备面容识别)</p><p>注: </p><ol><li>用<font color="red">模板创建合同场景</font>, 签署人的认证方式需要在配置模板的时候指定, <font color="red">在创建合同重新指定无效</font></li><li>运营商三要素认证方式对手机号运营商及前缀有限制,可以参考<a href="https://qian.tencent.com/developers/partner/mobile_support">运营商支持列表类</a>得到具体的支持说明</li><li>校验方式不允许只包含<font color="red">设备指纹识别</font>和<font color="red">设备面容识别</font>，至少需要再增加一种其他校验方式。</li><li><font color="red">设备指纹识别</font>和<font color="red">设备面容识别</font>只支持小程序使用，其他端暂不支持。</li></ol>
         :type ApproverSignTypes: list of int
+        :param _ComponentLimitType: <p>签署方经办人控件类型是个人印章签署控件（SIGN_SIGNATURE） 时，可选的签名方式。</p><p>枚举值：</p><ul><li>HANDWRITE： 手写签名</li><li>ESIGN： 个人印章类型</li><li>OCR_ESIGN： AI智能识别手写签名</li><li>SYSTEM_ESIGN： 系统签名</li></ul>
+        :type ComponentLimitType: list of str
         """
         self._NotChannelOrganization = None
         self._ApproverType = None
@@ -12338,15 +12291,11 @@ class CommonFlowApprover(AbstractModel):
         self._SignComponents = None
         self._ApproverVerifyTypes = None
         self._ApproverSignTypes = None
+        self._ComponentLimitType = None
 
     @property
     def NotChannelOrganization(self):
-        r"""指定签署人非第三方平台子客企业下员工还是SaaS平台企业，在ApproverType为ORGANIZATION时指定。
-<ul>
-<li>false: 默认值，第三方平台子客企业下员工</li>
-<li>true: SaaS平台企业下的员工</li>
-</ul>
-
+        r"""<p>指定签署人非第三方平台子客企业下员工还是SaaS平台企业，在ApproverType为ORGANIZATION时指定。</p><ul><li>false: 默认值，第三方平台子客企业下员工</li><li>true: SaaS平台企业下的员工</li></ul>
         :rtype: bool
         """
         return self._NotChannelOrganization
@@ -12357,16 +12306,7 @@ class CommonFlowApprover(AbstractModel):
 
     @property
     def ApproverType(self):
-        r"""在指定签署方时，可选择企业B端或个人C端等不同的参与者类型，可选类型如下:
-
- **0** :企业/企业员工（企业签署方或模板发起时的企业静默签）
- **1** :个人/自然人
-**3** :企业/企业员工自动签（他方企业自动签署或文件发起时的本方企业自动签）
-
-注：类型为3（企业/企业员工自动签）时，此接口会默认完成该签署方的签署。静默签署仅进行盖章操作，不能自动签名。
-使用自动签时，请确保企业已经开通自动签功能，开通方式：控制台 -> 企业设置 -> 扩展服务 -> 企业自动签。
-使用文件发起自动签时使用前请联系对接的客户经理沟通。
-
+        r"""<p>在指定签署方时，可选择企业B端或个人C端等不同的参与者类型，可选类型如下:</p><p> <strong>0</strong> :企业/企业员工（企业签署方或模板发起时的企业静默签）<br> <strong>1</strong> :个人/自然人<br><strong>3</strong> :企业/企业员工自动签（他方企业自动签署或文件发起时的本方企业自动签）</p><p>注：类型为3（企业/企业员工自动签）时，此接口会默认完成该签署方的签署。静默签署仅进行盖章操作，不能自动签名。<br>使用自动签时，请确保企业已经开通自动签功能，开通方式：控制台 -&gt; 企业设置 -&gt; 扩展服务 -&gt; 企业自动签。<br>使用文件发起自动签时使用前请联系对接的客户经理沟通。</p>
         :rtype: int
         """
         return self._ApproverType
@@ -12377,7 +12317,7 @@ class CommonFlowApprover(AbstractModel):
 
     @property
     def OrganizationId(self):
-        r"""电子签平台给企业生成的企业id
+        r"""<p>电子签平台给企业生成的企业id</p>
         :rtype: str
         """
         return self._OrganizationId
@@ -12388,7 +12328,7 @@ class CommonFlowApprover(AbstractModel):
 
     @property
     def OrganizationOpenId(self):
-        r"""企业OpenId，第三方应用集成非静默签子客企业签署人发起合同必传
+        r"""<p>企业OpenId，第三方应用集成非静默签子客企业签署人发起合同必传</p>
         :rtype: str
         """
         return self._OrganizationOpenId
@@ -12399,7 +12339,7 @@ class CommonFlowApprover(AbstractModel):
 
     @property
     def OrganizationName(self):
-        r"""企业名称，第三方应用集成非静默签子客企业签署人必传，saas企业签署人必传
+        r"""<p>企业名称，第三方应用集成非静默签子客企业签署人必传，saas企业签署人必传</p>
         :rtype: str
         """
         return self._OrganizationName
@@ -12410,7 +12350,7 @@ class CommonFlowApprover(AbstractModel):
 
     @property
     def UserId(self):
-        r"""电子签平台给企业员工或者自热人生成的用户id
+        r"""<p>电子签平台给企业员工或者自热人生成的用户id</p>
         :rtype: str
         """
         return self._UserId
@@ -12421,7 +12361,7 @@ class CommonFlowApprover(AbstractModel):
 
     @property
     def OpenId(self):
-        r"""第三方平台子客企业员工的唯一标识
+        r"""<p>第三方平台子客企业员工的唯一标识</p>
         :rtype: str
         """
         return self._OpenId
@@ -12432,8 +12372,7 @@ class CommonFlowApprover(AbstractModel):
 
     @property
     def ApproverName(self):
-        r"""签署方经办人的姓名。
-经办人的姓名将用于身份认证和电子签名，请确保填写的姓名为签署方的真实姓名，而非昵称等代名。
+        r"""<p>签署方经办人的姓名。<br>经办人的姓名将用于身份认证和电子签名，请确保填写的姓名为签署方的真实姓名，而非昵称等代名。</p>
         :rtype: str
         """
         return self._ApproverName
@@ -12444,7 +12383,7 @@ class CommonFlowApprover(AbstractModel):
 
     @property
     def ApproverMobile(self):
-        r"""签署人手机号，saas企业签署人，个人签署人必传
+        r"""<p>签署人手机号，saas企业签署人，个人签署人必传</p>
         :rtype: str
         """
         return self._ApproverMobile
@@ -12455,13 +12394,7 @@ class CommonFlowApprover(AbstractModel):
 
     @property
     def ApproverIdCardType(self):
-        r"""签署方经办人的证件类型，支持以下类型
-<ul><li>ID_CARD : 中国大陆居民身份证  (默认值)</li>
-<li>HONGKONG_AND_MACAO : 中国港澳居民来往内地通行证</li>
-<li>HONGKONG_MACAO_AND_TAIWAN : 中国港澳台居民居住证(格式同中国大陆居民身份证)</li>
-<li>OTHER_CARD_TYPE : 其他证件</li></ul>
-
-注: `其他证件类型为白名单功能，使用前请联系对接的客户经理沟通。`
+        r"""<p>签署方经办人的证件类型，支持以下类型</p><ul><li>ID_CARD : 中国大陆居民身份证  (默认值)</li><li>HONGKONG_AND_MACAO : 中国港澳居民来往内地通行证</li><li>HONGKONG_MACAO_AND_TAIWAN : 中国港澳台居民居住证(格式同中国大陆居民身份证)</li><li>OTHER_CARD_TYPE : 其他证件</li></ul><p>注: <code>其他证件类型为白名单功能，使用前请联系对接的客户经理沟通。</code></p>
         :rtype: str
         """
         return self._ApproverIdCardType
@@ -12472,11 +12405,7 @@ class CommonFlowApprover(AbstractModel):
 
     @property
     def ApproverIdCardNumber(self):
-        r"""签署方经办人的证件号码，应符合以下规则
-<ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li>
-<li>中国港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。
-</li>
-<li>中国港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
+        r"""<p>签署方经办人的证件号码，应符合以下规则</p><ul><li>中国大陆居民身份证号码应为18位字符串，由数字和大写字母X组成（如存在X，请大写）。</li><li>中国港澳居民来往内地通行证号码共11位。第1位为字母，“H”字头签发给中国香港居民，“M”字头签发给中国澳门居民；第2位至第11位为数字。</li><li>中国港澳台居民居住证号码编码规则与中国大陆身份证相同，应为18位字符串。</li></ul>
         :rtype: str
         """
         return self._ApproverIdCardNumber
@@ -12487,8 +12416,7 @@ class CommonFlowApprover(AbstractModel):
 
     @property
     def RecipientId(self):
-        r"""签署人Id，使用模板发起是，对应模板配置中的签署人RecipientId
-注意：模板发起时该字段必填
+        r"""<p>签署人Id，使用模板发起是，对应模板配置中的签署人RecipientId<br>注意：模板发起时该字段必填</p>
         :rtype: str
         """
         return self._RecipientId
@@ -12499,7 +12427,7 @@ class CommonFlowApprover(AbstractModel):
 
     @property
     def PreReadTime(self):
-        r"""签署前置条件：阅读时长限制，不传默认10s,最大300s，最小3s
+        r"""<p>签署前置条件：阅读时长限制，不传默认10s,最大300s，最小3s</p>
         :rtype: int
         """
         return self._PreReadTime
@@ -12510,7 +12438,7 @@ class CommonFlowApprover(AbstractModel):
 
     @property
     def IsFullText(self):
-        r"""签署前置条件：阅读全文限制
+        r"""<p>签署前置条件：阅读全文限制</p>
         :rtype: bool
         """
         return self._IsFullText
@@ -12521,11 +12449,7 @@ class CommonFlowApprover(AbstractModel):
 
     @property
     def NotifyType(self):
-        r"""通知签署方经办人的方式, 有以下途径:
-<ul><li> **SMS** :(默认)短信</li>
-<li> **NONE** : 不通知</li></ul>
-
-注: `签署方为第三方子客企业时会被置为NONE,   不会发短信通知`
+        r"""<p>通知签署方经办人的方式, 有以下途径:</p><ul><li> **SMS** :(默认)短信</li><li> **NONE** : 不通知</li></ul><p>注: <code>签署方为第三方子客企业时会被置为NONE,   不会发短信通知</code></p>
         :rtype: str
         """
         return self._NotifyType
@@ -12536,7 +12460,7 @@ class CommonFlowApprover(AbstractModel):
 
     @property
     def ApproverOption(self):
-        r"""签署人配置，用于控制签署人相关属性
+        r"""<p>签署人配置，用于控制签署人相关属性</p>
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.CommonApproverOption`
         """
         return self._ApproverOption
@@ -12547,7 +12471,7 @@ class CommonFlowApprover(AbstractModel):
 
     @property
     def SignComponents(self):
-        r"""使用PDF文件直接发起合同时，签署人指定的签署控件；<br/>使用模板发起合同时，指定本企业印章签署控件的印章ID: <br/>通过ComponentId或ComponenetName指定签署控件，ComponentValue为印章ID。
+        r"""<p>使用PDF文件直接发起合同时，签署人指定的签署控件；<br>使用模板发起合同时，指定本企业印章签署控件的印章ID: <br>通过ComponentId或ComponenetName指定签署控件，ComponentValue为印章ID。</p>
         :rtype: list of Component
         """
         return self._SignComponents
@@ -12558,13 +12482,7 @@ class CommonFlowApprover(AbstractModel):
 
     @property
     def ApproverVerifyTypes(self):
-        r"""指定个人签署方查看合同的校验方式,可以传值如下:
-<ul><li>  **1**   : （默认）人脸识别,人脸识别后才能合同内容</li>
-<li>  **2**  : 手机号验证, 用户手机号和参与方手机号(ApproverMobile)相同即可查看合同内容（当手写签名方式为OCR_ESIGN时，该校验方式无效，因为这种签名方式依赖实名认证）
-</li></ul>
-注: 
-<ul><li>如果合同流程设置ApproverVerifyType查看合同的校验方式,    则忽略此签署人的查看合同的校验方式</li>
-<li>此字段可传多个校验方式</li></ul>
+        r"""<p>指定个人签署方查看合同的校验方式,可以传值如下:</p><ul><li>  **1**   : （默认）人脸识别,人脸识别后才能合同内容</li><li>  **2**  : 手机号验证, 用户手机号和参与方手机号(ApproverMobile)相同即可查看合同内容（当手写签名方式为OCR_ESIGN时，该校验方式无效，因为这种签名方式依赖实名认证）</li></ul>注: <ul><li>如果合同流程设置ApproverVerifyType查看合同的校验方式,    则忽略此签署人的查看合同的校验方式</li><li>此字段可传多个校验方式</li></ul>
         :rtype: list of int
         """
         return self._ApproverVerifyTypes
@@ -12575,20 +12493,7 @@ class CommonFlowApprover(AbstractModel):
 
     @property
     def ApproverSignTypes(self):
-        r"""签署人签署合同时的认证方式
-<ul><li> **1** :人脸认证</li>
-<li> **2** :签署密码</li>
-<li> **3** :运营商三要素</li>
-<li> **5** :设备指纹识别</li>
-<li> **6** :设备面容识别</li></ul>
-
-默认为1(人脸认证 ),2(签署密码),3(运营商三要素),5(设备指纹识别),6(设备面容识别)
-
-注: 
-1. 用<font color='red'>模板创建合同场景</font>, 签署人的认证方式需要在配置模板的时候指定, <font color='red'>在创建合同重新指定无效</font>
-2. 运营商三要素认证方式对手机号运营商及前缀有限制,可以参考[运营商支持列表类](https://qian.tencent.com/developers/partner/mobile_support)得到具体的支持说明
-3. 校验方式不允许只包含<font color='red'>设备指纹识别</font>和<font color='red'>设备面容识别</font>，至少需要再增加一种其他校验方式。
-4. <font color='red'>设备指纹识别</font>和<font color='red'>设备面容识别</font>只支持小程序使用，其他端暂不支持。
+        r"""<p>签署人签署合同时的认证方式</p><ul><li> **1** :人脸认证</li><li> **2** :签署密码</li><li> **3** :运营商三要素</li><li> **5** :设备指纹识别</li><li> **6** :设备面容识别</li></ul><p>默认为1(人脸认证 ),2(签署密码),3(运营商三要素),5(设备指纹识别),6(设备面容识别)</p><p>注: </p><ol><li>用<font color="red">模板创建合同场景</font>, 签署人的认证方式需要在配置模板的时候指定, <font color="red">在创建合同重新指定无效</font></li><li>运营商三要素认证方式对手机号运营商及前缀有限制,可以参考<a href="https://qian.tencent.com/developers/partner/mobile_support">运营商支持列表类</a>得到具体的支持说明</li><li>校验方式不允许只包含<font color="red">设备指纹识别</font>和<font color="red">设备面容识别</font>，至少需要再增加一种其他校验方式。</li><li><font color="red">设备指纹识别</font>和<font color="red">设备面容识别</font>只支持小程序使用，其他端暂不支持。</li></ol>
         :rtype: list of int
         """
         return self._ApproverSignTypes
@@ -12596,6 +12501,17 @@ class CommonFlowApprover(AbstractModel):
     @ApproverSignTypes.setter
     def ApproverSignTypes(self, ApproverSignTypes):
         self._ApproverSignTypes = ApproverSignTypes
+
+    @property
+    def ComponentLimitType(self):
+        r"""<p>签署方经办人控件类型是个人印章签署控件（SIGN_SIGNATURE） 时，可选的签名方式。</p><p>枚举值：</p><ul><li>HANDWRITE： 手写签名</li><li>ESIGN： 个人印章类型</li><li>OCR_ESIGN： AI智能识别手写签名</li><li>SYSTEM_ESIGN： 系统签名</li></ul>
+        :rtype: list of str
+        """
+        return self._ComponentLimitType
+
+    @ComponentLimitType.setter
+    def ComponentLimitType(self, ComponentLimitType):
+        self._ComponentLimitType = ComponentLimitType
 
 
     def _deserialize(self, params):
@@ -12625,6 +12541,7 @@ class CommonFlowApprover(AbstractModel):
                 self._SignComponents.append(obj)
         self._ApproverVerifyTypes = params.get("ApproverVerifyTypes")
         self._ApproverSignTypes = params.get("ApproverSignTypes")
+        self._ComponentLimitType = params.get("ComponentLimitType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

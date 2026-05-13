@@ -415,6 +415,193 @@ class AICallExtractResultInfo(AbstractModel):
         
 
 
+class AICallInteractionRound(AbstractModel):
+    r"""表示一轮完整的对话交互
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RoundId: <p>本轮对话的唯一标识 Id</p>
+        :type RoundId: str
+        :param _RoundIndex: <p>轮次</p>
+        :type RoundIndex: int
+        :param _Tags: <p>用户回复分类的标签， json序列化后的表示</p>
+        :type Tags: str
+        :param _Messages: <p>本轮涉及到的消息内容</p>
+        :type Messages: list of AIRoundMessage
+        :param _Paths: <p>本轮对话在画布中经过的节点路径</p>
+        :type Paths: list of AIRoundPath
+        """
+        self._RoundId = None
+        self._RoundIndex = None
+        self._Tags = None
+        self._Messages = None
+        self._Paths = None
+
+    @property
+    def RoundId(self):
+        r"""<p>本轮对话的唯一标识 Id</p>
+        :rtype: str
+        """
+        return self._RoundId
+
+    @RoundId.setter
+    def RoundId(self, RoundId):
+        self._RoundId = RoundId
+
+    @property
+    def RoundIndex(self):
+        r"""<p>轮次</p>
+        :rtype: int
+        """
+        return self._RoundIndex
+
+    @RoundIndex.setter
+    def RoundIndex(self, RoundIndex):
+        self._RoundIndex = RoundIndex
+
+    @property
+    def Tags(self):
+        r"""<p>用户回复分类的标签， json序列化后的表示</p>
+        :rtype: str
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def Messages(self):
+        r"""<p>本轮涉及到的消息内容</p>
+        :rtype: list of AIRoundMessage
+        """
+        return self._Messages
+
+    @Messages.setter
+    def Messages(self, Messages):
+        self._Messages = Messages
+
+    @property
+    def Paths(self):
+        r"""<p>本轮对话在画布中经过的节点路径</p>
+        :rtype: list of AIRoundPath
+        """
+        return self._Paths
+
+    @Paths.setter
+    def Paths(self, Paths):
+        self._Paths = Paths
+
+
+    def _deserialize(self, params):
+        self._RoundId = params.get("RoundId")
+        self._RoundIndex = params.get("RoundIndex")
+        self._Tags = params.get("Tags")
+        if params.get("Messages") is not None:
+            self._Messages = []
+            for item in params.get("Messages"):
+                obj = AIRoundMessage()
+                obj._deserialize(item)
+                self._Messages.append(obj)
+        if params.get("Paths") is not None:
+            self._Paths = []
+            for item in params.get("Paths"):
+                obj = AIRoundPath()
+                obj._deserialize(item)
+                self._Paths.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AICallLatencyMetrics(AbstractModel):
+    r"""智能体的响应延时
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AsrLatency: <p>asr时延（毫秒）</p><p>-1 表示无 asr时延</p>
+        :type AsrLatency: int
+        :param _LLMFirstTokenLatency: <p>llm首token时延(毫秒)</p>
+        :type LLMFirstTokenLatency: int
+        :param _TTSLatency: <p>tts时延（毫秒）</p><p>-1 表示无 tts时延</p>
+        :type TTSLatency: int
+        :param _TotalLatency: <p>总时延</p>
+        :type TotalLatency: int
+        """
+        self._AsrLatency = None
+        self._LLMFirstTokenLatency = None
+        self._TTSLatency = None
+        self._TotalLatency = None
+
+    @property
+    def AsrLatency(self):
+        r"""<p>asr时延（毫秒）</p><p>-1 表示无 asr时延</p>
+        :rtype: int
+        """
+        return self._AsrLatency
+
+    @AsrLatency.setter
+    def AsrLatency(self, AsrLatency):
+        self._AsrLatency = AsrLatency
+
+    @property
+    def LLMFirstTokenLatency(self):
+        r"""<p>llm首token时延(毫秒)</p>
+        :rtype: int
+        """
+        return self._LLMFirstTokenLatency
+
+    @LLMFirstTokenLatency.setter
+    def LLMFirstTokenLatency(self, LLMFirstTokenLatency):
+        self._LLMFirstTokenLatency = LLMFirstTokenLatency
+
+    @property
+    def TTSLatency(self):
+        r"""<p>tts时延（毫秒）</p><p>-1 表示无 tts时延</p>
+        :rtype: int
+        """
+        return self._TTSLatency
+
+    @TTSLatency.setter
+    def TTSLatency(self, TTSLatency):
+        self._TTSLatency = TTSLatency
+
+    @property
+    def TotalLatency(self):
+        r"""<p>总时延</p>
+        :rtype: int
+        """
+        return self._TotalLatency
+
+    @TotalLatency.setter
+    def TotalLatency(self, TotalLatency):
+        self._TotalLatency = TotalLatency
+
+
+    def _deserialize(self, params):
+        self._AsrLatency = params.get("AsrLatency")
+        self._LLMFirstTokenLatency = params.get("LLMFirstTokenLatency")
+        self._TTSLatency = params.get("TTSLatency")
+        self._TotalLatency = params.get("TotalLatency")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AILatencyDetail(AbstractModel):
     r"""AI时延明细
 
@@ -671,6 +858,227 @@ class AILatencyStatisticsInfo(AbstractModel):
         self._MinLatency = params.get("MinLatency")
         self._MiddleLatency = params.get("MiddleLatency")
         self._P90Latency = params.get("P90Latency")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AIRoundMessage(AbstractModel):
+    r"""表示一轮对话中的用户和 AI 消息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Timestamp: <p>消息的毫秒级时间戳</p><p>单位：ms</p>
+        :type Timestamp: int
+        :param _UserReply: <p>用户消息</p>
+        :type UserReply: :class:`tencentcloud.ccc.v20200210.models.UserReplyEvent`
+        :param _AISpeak: <p>智能体响应消息</p>
+        :type AISpeak: :class:`tencentcloud.ccc.v20200210.models.AISpeakEvent`
+        """
+        self._Timestamp = None
+        self._UserReply = None
+        self._AISpeak = None
+
+    @property
+    def Timestamp(self):
+        r"""<p>消息的毫秒级时间戳</p><p>单位：ms</p>
+        :rtype: int
+        """
+        return self._Timestamp
+
+    @Timestamp.setter
+    def Timestamp(self, Timestamp):
+        self._Timestamp = Timestamp
+
+    @property
+    def UserReply(self):
+        r"""<p>用户消息</p>
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.UserReplyEvent`
+        """
+        return self._UserReply
+
+    @UserReply.setter
+    def UserReply(self, UserReply):
+        self._UserReply = UserReply
+
+    @property
+    def AISpeak(self):
+        r"""<p>智能体响应消息</p>
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.AISpeakEvent`
+        """
+        return self._AISpeak
+
+    @AISpeak.setter
+    def AISpeak(self, AISpeak):
+        self._AISpeak = AISpeak
+
+
+    def _deserialize(self, params):
+        self._Timestamp = params.get("Timestamp")
+        if params.get("UserReply") is not None:
+            self._UserReply = UserReplyEvent()
+            self._UserReply._deserialize(params.get("UserReply"))
+        if params.get("AISpeak") is not None:
+            self._AISpeak = AISpeakEvent()
+            self._AISpeak._deserialize(params.get("AISpeak"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AIRoundPath(AbstractModel):
+    r"""本轮对话在画布中经过的节点路径
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NodeName: <p>画布中的节点名称</p>
+        :type NodeName: str
+        :param _NodeType: <p>画布中的节点类型</p><p>枚举值：</p><ul><li>DIALOGUE： 对话节点</li><li>API_CALL： 接口调用节点</li><li>TRANSFER： 转接节点</li><li>KEY_PRESS： 按键节点</li><li>END_CALL： 挂断节点</li></ul>
+        :type NodeType: str
+        :param _Timestamp: <p>经过当前节点的时间戳</p><p>单位：ms</p>
+        :type Timestamp: int
+        """
+        self._NodeName = None
+        self._NodeType = None
+        self._Timestamp = None
+
+    @property
+    def NodeName(self):
+        r"""<p>画布中的节点名称</p>
+        :rtype: str
+        """
+        return self._NodeName
+
+    @NodeName.setter
+    def NodeName(self, NodeName):
+        self._NodeName = NodeName
+
+    @property
+    def NodeType(self):
+        r"""<p>画布中的节点类型</p><p>枚举值：</p><ul><li>DIALOGUE： 对话节点</li><li>API_CALL： 接口调用节点</li><li>TRANSFER： 转接节点</li><li>KEY_PRESS： 按键节点</li><li>END_CALL： 挂断节点</li></ul>
+        :rtype: str
+        """
+        return self._NodeType
+
+    @NodeType.setter
+    def NodeType(self, NodeType):
+        self._NodeType = NodeType
+
+    @property
+    def Timestamp(self):
+        r"""<p>经过当前节点的时间戳</p><p>单位：ms</p>
+        :rtype: int
+        """
+        return self._Timestamp
+
+    @Timestamp.setter
+    def Timestamp(self, Timestamp):
+        self._Timestamp = Timestamp
+
+
+    def _deserialize(self, params):
+        self._NodeName = params.get("NodeName")
+        self._NodeType = params.get("NodeType")
+        self._Timestamp = params.get("Timestamp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AISpeakEvent(AbstractModel):
+    r"""智能体发言事件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CanBeInterrupted: <p>本次话术是否允许被用户VAD打断</p>
+        :type CanBeInterrupted: bool
+        :param _SpokenText: <p>智能体播报的话术文本内容</p>
+        :type SpokenText: str
+        :param _SpokenType: <p>智能体发言类型</p><p>枚举值：</p><ul><li>Script： 智能体话术</li><li>KnowledgeBase： 知识库</li><li>LLMFallback： 大模型兜底</li><li>NoResponseTip： 无响应提示</li><li>智能追问： SmartFollowUp</li><li>FAQ： FAQ</li><li>转人工 - 排队等待音： TransferWaitingPrompt</li><li>无响应挂断前放音： PlayNoResponseEndPrompt</li><li>转人工 - 排队前放音： PlayQueuePrompt</li><li>转人工 - 接待前放音： PlayPromptBeforeReception</li><li>转人工 - 排队超时放音： PlayQueueTimeoutPrompt</li><li>转人工 - 转人工失败放音： PlayTransferFailPrompt</li><li>DTMF收号（按键用户输入）： Dtmf</li><li>按键节点 - 播放提示音： PlayDtmfPrompt</li><li>按键节点 - 输入错误提示音： PlayInvalidDtmfPrompt</li><li>按键节点 - 超时提示音： PlayDtmfTimeoutPrompt</li><li>其他类型： Other</li></ul>
+        :type SpokenType: str
+        :param _LatencyMetrics: <p>本次响应生成的时延结果</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LatencyMetrics: :class:`tencentcloud.ccc.v20200210.models.AICallLatencyMetrics`
+        """
+        self._CanBeInterrupted = None
+        self._SpokenText = None
+        self._SpokenType = None
+        self._LatencyMetrics = None
+
+    @property
+    def CanBeInterrupted(self):
+        r"""<p>本次话术是否允许被用户VAD打断</p>
+        :rtype: bool
+        """
+        return self._CanBeInterrupted
+
+    @CanBeInterrupted.setter
+    def CanBeInterrupted(self, CanBeInterrupted):
+        self._CanBeInterrupted = CanBeInterrupted
+
+    @property
+    def SpokenText(self):
+        r"""<p>智能体播报的话术文本内容</p>
+        :rtype: str
+        """
+        return self._SpokenText
+
+    @SpokenText.setter
+    def SpokenText(self, SpokenText):
+        self._SpokenText = SpokenText
+
+    @property
+    def SpokenType(self):
+        r"""<p>智能体发言类型</p><p>枚举值：</p><ul><li>Script： 智能体话术</li><li>KnowledgeBase： 知识库</li><li>LLMFallback： 大模型兜底</li><li>NoResponseTip： 无响应提示</li><li>智能追问： SmartFollowUp</li><li>FAQ： FAQ</li><li>转人工 - 排队等待音： TransferWaitingPrompt</li><li>无响应挂断前放音： PlayNoResponseEndPrompt</li><li>转人工 - 排队前放音： PlayQueuePrompt</li><li>转人工 - 接待前放音： PlayPromptBeforeReception</li><li>转人工 - 排队超时放音： PlayQueueTimeoutPrompt</li><li>转人工 - 转人工失败放音： PlayTransferFailPrompt</li><li>DTMF收号（按键用户输入）： Dtmf</li><li>按键节点 - 播放提示音： PlayDtmfPrompt</li><li>按键节点 - 输入错误提示音： PlayInvalidDtmfPrompt</li><li>按键节点 - 超时提示音： PlayDtmfTimeoutPrompt</li><li>其他类型： Other</li></ul>
+        :rtype: str
+        """
+        return self._SpokenType
+
+    @SpokenType.setter
+    def SpokenType(self, SpokenType):
+        self._SpokenType = SpokenType
+
+    @property
+    def LatencyMetrics(self):
+        r"""<p>本次响应生成的时延结果</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.AICallLatencyMetrics`
+        """
+        return self._LatencyMetrics
+
+    @LatencyMetrics.setter
+    def LatencyMetrics(self, LatencyMetrics):
+        self._LatencyMetrics = LatencyMetrics
+
+
+    def _deserialize(self, params):
+        self._CanBeInterrupted = params.get("CanBeInterrupted")
+        self._SpokenText = params.get("SpokenText")
+        self._SpokenType = params.get("SpokenType")
+        if params.get("LatencyMetrics") is not None:
+            self._LatencyMetrics = AICallLatencyMetrics()
+            self._LatencyMetrics._deserialize(params.get("LatencyMetrics"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7539,6 +7947,105 @@ class DescribeAICallExtractResultResponse(AbstractModel):
                 obj = AICallExtractResultElement()
                 obj._deserialize(item)
                 self._ResultList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAICallInteractionRecordsRequest(AbstractModel):
+    r"""DescribeAICallInteractionRecords请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: <p>应用 ID，可以查看 https://console.cloud.tencent.com/ccc。</p>
+        :type SdkAppId: int
+        :param _SessionId: <p>查询的会话SessionID</p>
+        :type SessionId: str
+        """
+        self._SdkAppId = None
+        self._SessionId = None
+
+    @property
+    def SdkAppId(self):
+        r"""<p>应用 ID，可以查看 https://console.cloud.tencent.com/ccc。</p>
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def SessionId(self):
+        r"""<p>查询的会话SessionID</p>
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._SessionId = params.get("SessionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAICallInteractionRecordsResponse(AbstractModel):
+    r"""DescribeAICallInteractionRecords返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InteractionEventList: <p>返回的会话交互结果</p>
+        :type InteractionEventList: list of AICallInteractionRound
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._InteractionEventList = None
+        self._RequestId = None
+
+    @property
+    def InteractionEventList(self):
+        r"""<p>返回的会话交互结果</p>
+        :rtype: list of AICallInteractionRound
+        """
+        return self._InteractionEventList
+
+    @InteractionEventList.setter
+    def InteractionEventList(self, InteractionEventList):
+        self._InteractionEventList = InteractionEventList
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("InteractionEventList") is not None:
+            self._InteractionEventList = []
+            for item in params.get("InteractionEventList"):
+                obj = AICallInteractionRound()
+                obj._deserialize(item)
+                self._InteractionEventList.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -21655,6 +22162,87 @@ class UploadIvrAudioResponse(AbstractModel):
                 obj._deserialize(item)
                 self._SuccessFileList.append(obj)
         self._RequestId = params.get("RequestId")
+
+
+class UserReplyEvent(AbstractModel):
+    r"""用户发言事件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ASRTranscript: <p>ASR语音识别引擎将用户语音转换成的原始文本结果</p>
+        :type ASRTranscript: str
+        :param _MatchedIntent: <p>命中画布中该对话节点配置的回复分类</p>
+        :type MatchedIntent: str
+        :param _ExtractedSlots: <p>用户回复分类的标签， json序列化后的信息</p>
+        :type ExtractedSlots: str
+        :param _BranchType: <p>用户回复命中的分支类型</p><p>枚举值：</p><ul><li>Intent： 用户意图</li><li>Fallback： 兜底分支</li><li>NoResponse： 无响应跳转分支</li><li>SlotCollectionSuccess： 词槽收集完成跳转分支</li><li>SlotCollectionFail： 词槽收集失败跳转分支</li><li>GlobalIntent： 全局节点意图</li><li>LogicAnd： 逻辑判断节点 and</li><li>LogicOr： 逻辑判断节点 or</li><li>DTMF成功： DTMFSuccess</li><li>DTMF失败： DTMFFail</li><li>DTMF导航： DTMFNavigation</li><li>DTMF分机： DTMFExtension</li><li>DTMF收号： DTMFCollection</li><li>转接智能体节点失败： TransferAgentFail</li></ul>
+        :type BranchType: str
+        """
+        self._ASRTranscript = None
+        self._MatchedIntent = None
+        self._ExtractedSlots = None
+        self._BranchType = None
+
+    @property
+    def ASRTranscript(self):
+        r"""<p>ASR语音识别引擎将用户语音转换成的原始文本结果</p>
+        :rtype: str
+        """
+        return self._ASRTranscript
+
+    @ASRTranscript.setter
+    def ASRTranscript(self, ASRTranscript):
+        self._ASRTranscript = ASRTranscript
+
+    @property
+    def MatchedIntent(self):
+        r"""<p>命中画布中该对话节点配置的回复分类</p>
+        :rtype: str
+        """
+        return self._MatchedIntent
+
+    @MatchedIntent.setter
+    def MatchedIntent(self, MatchedIntent):
+        self._MatchedIntent = MatchedIntent
+
+    @property
+    def ExtractedSlots(self):
+        r"""<p>用户回复分类的标签， json序列化后的信息</p>
+        :rtype: str
+        """
+        return self._ExtractedSlots
+
+    @ExtractedSlots.setter
+    def ExtractedSlots(self, ExtractedSlots):
+        self._ExtractedSlots = ExtractedSlots
+
+    @property
+    def BranchType(self):
+        r"""<p>用户回复命中的分支类型</p><p>枚举值：</p><ul><li>Intent： 用户意图</li><li>Fallback： 兜底分支</li><li>NoResponse： 无响应跳转分支</li><li>SlotCollectionSuccess： 词槽收集完成跳转分支</li><li>SlotCollectionFail： 词槽收集失败跳转分支</li><li>GlobalIntent： 全局节点意图</li><li>LogicAnd： 逻辑判断节点 and</li><li>LogicOr： 逻辑判断节点 or</li><li>DTMF成功： DTMFSuccess</li><li>DTMF失败： DTMFFail</li><li>DTMF导航： DTMFNavigation</li><li>DTMF分机： DTMFExtension</li><li>DTMF收号： DTMFCollection</li><li>转接智能体节点失败： TransferAgentFail</li></ul>
+        :rtype: str
+        """
+        return self._BranchType
+
+    @BranchType.setter
+    def BranchType(self, BranchType):
+        self._BranchType = BranchType
+
+
+    def _deserialize(self, params):
+        self._ASRTranscript = params.get("ASRTranscript")
+        self._MatchedIntent = params.get("MatchedIntent")
+        self._ExtractedSlots = params.get("ExtractedSlots")
+        self._BranchType = params.get("BranchType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class Variable(AbstractModel):

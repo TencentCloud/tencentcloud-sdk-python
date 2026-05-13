@@ -16143,8 +16143,11 @@ class StartPublishCdnStreamRequest(AbstractModel):
         :type RoomIdType: int
         :param _AgentParams: 转推服务加入TRTC房间的机器人参数。
         :type AgentParams: :class:`tencentcloud.trtc.v20190722.models.AgentParams`
-        :param _WithTranscoding: 是否转码，0表示无需转码，1表示需要转码。是否收取转码费是由WithTranscoding参数决定的，WithTranscoding为0，表示旁路转推，不会收取转码费用，WithTranscoding为1，表示混流转推，会收取转码费用。
-注：混流是必须转码，这个参数需设置为1。
+        :param _WithTranscoding: 是否转码，0表示无需转码，1表示需要转码。
+WithTranscoding为0，表示旁路转推，默认不转码；WithTranscoding为1，表示混流转推，此时一定会转码，并收取转码费用。
+注：
+1，混流是必须转码的，这个参数需设置为1。
+2，WithTranscoding=0时，视频输出Codec默认跟随上行视频Codec，如果上行视频Codec发生变化，CDN会断流重推。
         :type WithTranscoding: int
         :param _AudioParams: 转推流的音频编码参数。由于音频是必转码的（不会收取转码费用），所以启动任务的时候，必须填写。
         :type AudioParams: :class:`tencentcloud.trtc.v20190722.models.McuAudioParams`
@@ -16220,8 +16223,11 @@ class StartPublishCdnStreamRequest(AbstractModel):
 
     @property
     def WithTranscoding(self):
-        r"""是否转码，0表示无需转码，1表示需要转码。是否收取转码费是由WithTranscoding参数决定的，WithTranscoding为0，表示旁路转推，不会收取转码费用，WithTranscoding为1，表示混流转推，会收取转码费用。
-注：混流是必须转码，这个参数需设置为1。
+        r"""是否转码，0表示无需转码，1表示需要转码。
+WithTranscoding为0，表示旁路转推，默认不转码；WithTranscoding为1，表示混流转推，此时一定会转码，并收取转码费用。
+注：
+1，混流是必须转码的，这个参数需设置为1。
+2，WithTranscoding=0时，视频输出Codec默认跟随上行视频Codec，如果上行视频Codec发生变化，CDN会断流重推。
         :rtype: int
         """
         return self._WithTranscoding

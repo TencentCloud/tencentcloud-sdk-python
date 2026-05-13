@@ -2011,6 +2011,85 @@ class AccessKeyUser(AbstractModel):
         
 
 
+class AddDspmAssetManagerRequest(AbstractModel):
+    r"""AddDspmAssetManager请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IdentifyIds: 管理员uin
+        :type IdentifyIds: list of str
+        :param _AssetId: 资产id
+        :type AssetId: list of str
+        """
+        self._IdentifyIds = None
+        self._AssetId = None
+
+    @property
+    def IdentifyIds(self):
+        r"""管理员uin
+        :rtype: list of str
+        """
+        return self._IdentifyIds
+
+    @IdentifyIds.setter
+    def IdentifyIds(self, IdentifyIds):
+        self._IdentifyIds = IdentifyIds
+
+    @property
+    def AssetId(self):
+        r"""资产id
+        :rtype: list of str
+        """
+        return self._AssetId
+
+    @AssetId.setter
+    def AssetId(self, AssetId):
+        self._AssetId = AssetId
+
+
+    def _deserialize(self, params):
+        self._IdentifyIds = params.get("IdentifyIds")
+        self._AssetId = params.get("AssetId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AddDspmAssetManagerResponse(AbstractModel):
+    r"""AddDspmAssetManager返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class AddNewBindRoleUserRequest(AbstractModel):
     r"""AddNewBindRoleUser请求参数结构体
 
@@ -8149,6 +8228,870 @@ class AttributeOptionSet(AbstractModel):
         
 
 
+class AuditLogInfo(AbstractModel):
+    r"""审计日志列表信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AiScore: ai分数
+        :type AiScore: float
+        :param _AppUser: 应用用户
+        :type AppUser: str
+        :param _BackPacket: 备份数据包
+        :type BackPacket: str
+        :param _ClientIp: 客户端 IP
+        :type ClientIp: str
+        :param _ClientMac: 客户端 Mac
+        :type ClientMac: str
+        :param _ClientName: 终端名称，取值Proxy时为casb代理流量，其它为Agent流量
+        :type ClientName: str
+        :param _ClientUser: 客户端用户
+        :type ClientUser: str
+        :param _ClientPort: 客户端端口
+        :type ClientPort: int
+        :param _DangerLevel: 风险等级
+        :type DangerLevel: int
+        :param _DbIp: 数据库 IP
+        :type DbIp: str
+        :param _DbName: 数据库名称
+        :type DbName: str
+        :param _DbPort: 数据库端口
+        :type DbPort: int
+        :param _DbUser: 数据库用户
+        :type DbUser: str
+        :param _EffectRow: 影响行数
+        :type EffectRow: int
+        :param _ExecTime: 执行时间
+        :type ExecTime: int
+        :param _HitRule: 命中规则
+        :type HitRule: str
+        :param _Id: 日志 ID
+        :type Id: int
+        :param _InstanceId: 数据资产名称
+        :type InstanceId: int
+        :param _InstanceName: 审计单元名
+        :type InstanceName: str
+        :param _OpSql: 操作语句(sql 语句)
+        :type OpSql: str
+        :param _OpTime: 操作时间(时间)
+        :type OpTime: int
+        :param _RetMsg: 返回消息
+        :type RetMsg: str
+        :param _RetNo: 返回码
+        :type RetNo: int
+        :param _SessionId: 会话ID
+        :type SessionId: str
+        :param _SqlType: 操作类型
+        :type SqlType: str
+        :param _TableName: 表名
+        :type TableName: str
+        :param _AssetName: 数据资产名称
+        :type AssetName: str
+        :param _HitRules: 规则集合
+        :type HitRules: list of HitRules
+        :param _SourceType: 流量来源
+        :type SourceType: str
+        :param _ReqId: 单条审计日志id
+        :type ReqId: str
+        :param _SqlMainType: SQL 主要类型，DML/DDL/DCL/TCL
+        :type SqlMainType: str
+        :param _TableNames: 表名集合
+        :type TableNames: list of str
+        :param _FieldNames: 字段名集合
+        :type FieldNames: list of str
+        :param _FieldName: 字段名
+        :type FieldName: str
+        :param _DbType: 数据库类型
+        :type DbType: str
+        :param _ClientDriverName: 客户端工具
+        :type ClientDriverName: str
+        :param _Location: 位置信息
+        :type Location: :class:`tencentcloud.csip.v20221121.models.Location`
+        :param _FieldDetails: 字段信息（包含敏感信息）
+        :type FieldDetails: list of TableField
+        :param _AppId: 资产所属账号app id
+        :type AppId: int
+        :param _NickName: 账号昵称
+        :type NickName: str
+        :param _Uin: 资产所属账号uin
+        :type Uin: str
+        """
+        self._AiScore = None
+        self._AppUser = None
+        self._BackPacket = None
+        self._ClientIp = None
+        self._ClientMac = None
+        self._ClientName = None
+        self._ClientUser = None
+        self._ClientPort = None
+        self._DangerLevel = None
+        self._DbIp = None
+        self._DbName = None
+        self._DbPort = None
+        self._DbUser = None
+        self._EffectRow = None
+        self._ExecTime = None
+        self._HitRule = None
+        self._Id = None
+        self._InstanceId = None
+        self._InstanceName = None
+        self._OpSql = None
+        self._OpTime = None
+        self._RetMsg = None
+        self._RetNo = None
+        self._SessionId = None
+        self._SqlType = None
+        self._TableName = None
+        self._AssetName = None
+        self._HitRules = None
+        self._SourceType = None
+        self._ReqId = None
+        self._SqlMainType = None
+        self._TableNames = None
+        self._FieldNames = None
+        self._FieldName = None
+        self._DbType = None
+        self._ClientDriverName = None
+        self._Location = None
+        self._FieldDetails = None
+        self._AppId = None
+        self._NickName = None
+        self._Uin = None
+
+    @property
+    def AiScore(self):
+        r"""ai分数
+        :rtype: float
+        """
+        return self._AiScore
+
+    @AiScore.setter
+    def AiScore(self, AiScore):
+        self._AiScore = AiScore
+
+    @property
+    def AppUser(self):
+        r"""应用用户
+        :rtype: str
+        """
+        return self._AppUser
+
+    @AppUser.setter
+    def AppUser(self, AppUser):
+        self._AppUser = AppUser
+
+    @property
+    def BackPacket(self):
+        r"""备份数据包
+        :rtype: str
+        """
+        return self._BackPacket
+
+    @BackPacket.setter
+    def BackPacket(self, BackPacket):
+        self._BackPacket = BackPacket
+
+    @property
+    def ClientIp(self):
+        r"""客户端 IP
+        :rtype: str
+        """
+        return self._ClientIp
+
+    @ClientIp.setter
+    def ClientIp(self, ClientIp):
+        self._ClientIp = ClientIp
+
+    @property
+    def ClientMac(self):
+        r"""客户端 Mac
+        :rtype: str
+        """
+        return self._ClientMac
+
+    @ClientMac.setter
+    def ClientMac(self, ClientMac):
+        self._ClientMac = ClientMac
+
+    @property
+    def ClientName(self):
+        r"""终端名称，取值Proxy时为casb代理流量，其它为Agent流量
+        :rtype: str
+        """
+        return self._ClientName
+
+    @ClientName.setter
+    def ClientName(self, ClientName):
+        self._ClientName = ClientName
+
+    @property
+    def ClientUser(self):
+        r"""客户端用户
+        :rtype: str
+        """
+        return self._ClientUser
+
+    @ClientUser.setter
+    def ClientUser(self, ClientUser):
+        self._ClientUser = ClientUser
+
+    @property
+    def ClientPort(self):
+        r"""客户端端口
+        :rtype: int
+        """
+        return self._ClientPort
+
+    @ClientPort.setter
+    def ClientPort(self, ClientPort):
+        self._ClientPort = ClientPort
+
+    @property
+    def DangerLevel(self):
+        r"""风险等级
+        :rtype: int
+        """
+        return self._DangerLevel
+
+    @DangerLevel.setter
+    def DangerLevel(self, DangerLevel):
+        self._DangerLevel = DangerLevel
+
+    @property
+    def DbIp(self):
+        r"""数据库 IP
+        :rtype: str
+        """
+        return self._DbIp
+
+    @DbIp.setter
+    def DbIp(self, DbIp):
+        self._DbIp = DbIp
+
+    @property
+    def DbName(self):
+        r"""数据库名称
+        :rtype: str
+        """
+        return self._DbName
+
+    @DbName.setter
+    def DbName(self, DbName):
+        self._DbName = DbName
+
+    @property
+    def DbPort(self):
+        r"""数据库端口
+        :rtype: int
+        """
+        return self._DbPort
+
+    @DbPort.setter
+    def DbPort(self, DbPort):
+        self._DbPort = DbPort
+
+    @property
+    def DbUser(self):
+        r"""数据库用户
+        :rtype: str
+        """
+        return self._DbUser
+
+    @DbUser.setter
+    def DbUser(self, DbUser):
+        self._DbUser = DbUser
+
+    @property
+    def EffectRow(self):
+        r"""影响行数
+        :rtype: int
+        """
+        return self._EffectRow
+
+    @EffectRow.setter
+    def EffectRow(self, EffectRow):
+        self._EffectRow = EffectRow
+
+    @property
+    def ExecTime(self):
+        r"""执行时间
+        :rtype: int
+        """
+        return self._ExecTime
+
+    @ExecTime.setter
+    def ExecTime(self, ExecTime):
+        self._ExecTime = ExecTime
+
+    @property
+    def HitRule(self):
+        r"""命中规则
+        :rtype: str
+        """
+        return self._HitRule
+
+    @HitRule.setter
+    def HitRule(self, HitRule):
+        self._HitRule = HitRule
+
+    @property
+    def Id(self):
+        r"""日志 ID
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def InstanceId(self):
+        r"""数据资产名称
+        :rtype: int
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceName(self):
+        r"""审计单元名
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def OpSql(self):
+        r"""操作语句(sql 语句)
+        :rtype: str
+        """
+        return self._OpSql
+
+    @OpSql.setter
+    def OpSql(self, OpSql):
+        self._OpSql = OpSql
+
+    @property
+    def OpTime(self):
+        r"""操作时间(时间)
+        :rtype: int
+        """
+        return self._OpTime
+
+    @OpTime.setter
+    def OpTime(self, OpTime):
+        self._OpTime = OpTime
+
+    @property
+    def RetMsg(self):
+        r"""返回消息
+        :rtype: str
+        """
+        return self._RetMsg
+
+    @RetMsg.setter
+    def RetMsg(self, RetMsg):
+        self._RetMsg = RetMsg
+
+    @property
+    def RetNo(self):
+        r"""返回码
+        :rtype: int
+        """
+        return self._RetNo
+
+    @RetNo.setter
+    def RetNo(self, RetNo):
+        self._RetNo = RetNo
+
+    @property
+    def SessionId(self):
+        r"""会话ID
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def SqlType(self):
+        r"""操作类型
+        :rtype: str
+        """
+        return self._SqlType
+
+    @SqlType.setter
+    def SqlType(self, SqlType):
+        self._SqlType = SqlType
+
+    @property
+    def TableName(self):
+        r"""表名
+        :rtype: str
+        """
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def AssetName(self):
+        r"""数据资产名称
+        :rtype: str
+        """
+        return self._AssetName
+
+    @AssetName.setter
+    def AssetName(self, AssetName):
+        self._AssetName = AssetName
+
+    @property
+    def HitRules(self):
+        r"""规则集合
+        :rtype: list of HitRules
+        """
+        return self._HitRules
+
+    @HitRules.setter
+    def HitRules(self, HitRules):
+        self._HitRules = HitRules
+
+    @property
+    def SourceType(self):
+        r"""流量来源
+        :rtype: str
+        """
+        return self._SourceType
+
+    @SourceType.setter
+    def SourceType(self, SourceType):
+        self._SourceType = SourceType
+
+    @property
+    def ReqId(self):
+        r"""单条审计日志id
+        :rtype: str
+        """
+        return self._ReqId
+
+    @ReqId.setter
+    def ReqId(self, ReqId):
+        self._ReqId = ReqId
+
+    @property
+    def SqlMainType(self):
+        r"""SQL 主要类型，DML/DDL/DCL/TCL
+        :rtype: str
+        """
+        return self._SqlMainType
+
+    @SqlMainType.setter
+    def SqlMainType(self, SqlMainType):
+        self._SqlMainType = SqlMainType
+
+    @property
+    def TableNames(self):
+        r"""表名集合
+        :rtype: list of str
+        """
+        return self._TableNames
+
+    @TableNames.setter
+    def TableNames(self, TableNames):
+        self._TableNames = TableNames
+
+    @property
+    def FieldNames(self):
+        r"""字段名集合
+        :rtype: list of str
+        """
+        return self._FieldNames
+
+    @FieldNames.setter
+    def FieldNames(self, FieldNames):
+        self._FieldNames = FieldNames
+
+    @property
+    def FieldName(self):
+        r"""字段名
+        :rtype: str
+        """
+        return self._FieldName
+
+    @FieldName.setter
+    def FieldName(self, FieldName):
+        self._FieldName = FieldName
+
+    @property
+    def DbType(self):
+        r"""数据库类型
+        :rtype: str
+        """
+        return self._DbType
+
+    @DbType.setter
+    def DbType(self, DbType):
+        self._DbType = DbType
+
+    @property
+    def ClientDriverName(self):
+        r"""客户端工具
+        :rtype: str
+        """
+        return self._ClientDriverName
+
+    @ClientDriverName.setter
+    def ClientDriverName(self, ClientDriverName):
+        self._ClientDriverName = ClientDriverName
+
+    @property
+    def Location(self):
+        r"""位置信息
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Location`
+        """
+        return self._Location
+
+    @Location.setter
+    def Location(self, Location):
+        self._Location = Location
+
+    @property
+    def FieldDetails(self):
+        r"""字段信息（包含敏感信息）
+        :rtype: list of TableField
+        """
+        return self._FieldDetails
+
+    @FieldDetails.setter
+    def FieldDetails(self, FieldDetails):
+        self._FieldDetails = FieldDetails
+
+    @property
+    def AppId(self):
+        r"""资产所属账号app id
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def NickName(self):
+        r"""账号昵称
+        :rtype: str
+        """
+        return self._NickName
+
+    @NickName.setter
+    def NickName(self, NickName):
+        self._NickName = NickName
+
+    @property
+    def Uin(self):
+        r"""资产所属账号uin
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+
+    def _deserialize(self, params):
+        self._AiScore = params.get("AiScore")
+        self._AppUser = params.get("AppUser")
+        self._BackPacket = params.get("BackPacket")
+        self._ClientIp = params.get("ClientIp")
+        self._ClientMac = params.get("ClientMac")
+        self._ClientName = params.get("ClientName")
+        self._ClientUser = params.get("ClientUser")
+        self._ClientPort = params.get("ClientPort")
+        self._DangerLevel = params.get("DangerLevel")
+        self._DbIp = params.get("DbIp")
+        self._DbName = params.get("DbName")
+        self._DbPort = params.get("DbPort")
+        self._DbUser = params.get("DbUser")
+        self._EffectRow = params.get("EffectRow")
+        self._ExecTime = params.get("ExecTime")
+        self._HitRule = params.get("HitRule")
+        self._Id = params.get("Id")
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceName = params.get("InstanceName")
+        self._OpSql = params.get("OpSql")
+        self._OpTime = params.get("OpTime")
+        self._RetMsg = params.get("RetMsg")
+        self._RetNo = params.get("RetNo")
+        self._SessionId = params.get("SessionId")
+        self._SqlType = params.get("SqlType")
+        self._TableName = params.get("TableName")
+        self._AssetName = params.get("AssetName")
+        if params.get("HitRules") is not None:
+            self._HitRules = []
+            for item in params.get("HitRules"):
+                obj = HitRules()
+                obj._deserialize(item)
+                self._HitRules.append(obj)
+        self._SourceType = params.get("SourceType")
+        self._ReqId = params.get("ReqId")
+        self._SqlMainType = params.get("SqlMainType")
+        self._TableNames = params.get("TableNames")
+        self._FieldNames = params.get("FieldNames")
+        self._FieldName = params.get("FieldName")
+        self._DbType = params.get("DbType")
+        self._ClientDriverName = params.get("ClientDriverName")
+        if params.get("Location") is not None:
+            self._Location = Location()
+            self._Location._deserialize(params.get("Location"))
+        if params.get("FieldDetails") is not None:
+            self._FieldDetails = []
+            for item in params.get("FieldDetails"):
+                obj = TableField()
+                obj._deserialize(item)
+                self._FieldDetails.append(obj)
+        self._AppId = params.get("AppId")
+        self._NickName = params.get("NickName")
+        self._Uin = params.get("Uin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BackupLog(AbstractModel):
+    r"""日志备份
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 索引
+        :type Id: int
+        :param _IndexStartTime: 索引开始时间
+        :type IndexStartTime: int
+        :param _IndexEndTime: 索引结束时间
+        :type IndexEndTime: int
+        :param _BackupSize: 备份后压缩的大小，单位M
+        :type BackupSize: int
+        :param _Status: 日志状态 0备份未完成， 1备份文件，2恢复中，3已恢复，4.已删除
+        :type Status: int
+        :param _RestoreProcessRemindTime: 恢复剩余的分钟数，分钟，需要前端转换
+        :type RestoreProcessRemindTime: int
+        :param _RestoreRemindTime: 恢复日志保留的时间
+        :type RestoreRemindTime: int
+        :param _RestoreIndexSize: 恢复索引大小
+        :type RestoreIndexSize: int
+        :param _RestoreEndTime: 恢复日志执行结束时间
+        :type RestoreEndTime: int
+        :param _AppId: 备份所属的appId
+        :type AppId: int
+        :param _AssetId: 备份所属的资产ID
+        :type AssetId: int
+        :param _NickName: 账号昵称
+        :type NickName: str
+        :param _Uin: 资产所属账号uin
+        :type Uin: str
+        """
+        self._Id = None
+        self._IndexStartTime = None
+        self._IndexEndTime = None
+        self._BackupSize = None
+        self._Status = None
+        self._RestoreProcessRemindTime = None
+        self._RestoreRemindTime = None
+        self._RestoreIndexSize = None
+        self._RestoreEndTime = None
+        self._AppId = None
+        self._AssetId = None
+        self._NickName = None
+        self._Uin = None
+
+    @property
+    def Id(self):
+        r"""索引
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def IndexStartTime(self):
+        r"""索引开始时间
+        :rtype: int
+        """
+        return self._IndexStartTime
+
+    @IndexStartTime.setter
+    def IndexStartTime(self, IndexStartTime):
+        self._IndexStartTime = IndexStartTime
+
+    @property
+    def IndexEndTime(self):
+        r"""索引结束时间
+        :rtype: int
+        """
+        return self._IndexEndTime
+
+    @IndexEndTime.setter
+    def IndexEndTime(self, IndexEndTime):
+        self._IndexEndTime = IndexEndTime
+
+    @property
+    def BackupSize(self):
+        r"""备份后压缩的大小，单位M
+        :rtype: int
+        """
+        return self._BackupSize
+
+    @BackupSize.setter
+    def BackupSize(self, BackupSize):
+        self._BackupSize = BackupSize
+
+    @property
+    def Status(self):
+        r"""日志状态 0备份未完成， 1备份文件，2恢复中，3已恢复，4.已删除
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RestoreProcessRemindTime(self):
+        r"""恢复剩余的分钟数，分钟，需要前端转换
+        :rtype: int
+        """
+        return self._RestoreProcessRemindTime
+
+    @RestoreProcessRemindTime.setter
+    def RestoreProcessRemindTime(self, RestoreProcessRemindTime):
+        self._RestoreProcessRemindTime = RestoreProcessRemindTime
+
+    @property
+    def RestoreRemindTime(self):
+        r"""恢复日志保留的时间
+        :rtype: int
+        """
+        return self._RestoreRemindTime
+
+    @RestoreRemindTime.setter
+    def RestoreRemindTime(self, RestoreRemindTime):
+        self._RestoreRemindTime = RestoreRemindTime
+
+    @property
+    def RestoreIndexSize(self):
+        r"""恢复索引大小
+        :rtype: int
+        """
+        return self._RestoreIndexSize
+
+    @RestoreIndexSize.setter
+    def RestoreIndexSize(self, RestoreIndexSize):
+        self._RestoreIndexSize = RestoreIndexSize
+
+    @property
+    def RestoreEndTime(self):
+        r"""恢复日志执行结束时间
+        :rtype: int
+        """
+        return self._RestoreEndTime
+
+    @RestoreEndTime.setter
+    def RestoreEndTime(self, RestoreEndTime):
+        self._RestoreEndTime = RestoreEndTime
+
+    @property
+    def AppId(self):
+        r"""备份所属的appId
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def AssetId(self):
+        r"""备份所属的资产ID
+        :rtype: int
+        """
+        return self._AssetId
+
+    @AssetId.setter
+    def AssetId(self, AssetId):
+        self._AssetId = AssetId
+
+    @property
+    def NickName(self):
+        r"""账号昵称
+        :rtype: str
+        """
+        return self._NickName
+
+    @NickName.setter
+    def NickName(self, NickName):
+        self._NickName = NickName
+
+    @property
+    def Uin(self):
+        r"""资产所属账号uin
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._IndexStartTime = params.get("IndexStartTime")
+        self._IndexEndTime = params.get("IndexEndTime")
+        self._BackupSize = params.get("BackupSize")
+        self._Status = params.get("Status")
+        self._RestoreProcessRemindTime = params.get("RestoreProcessRemindTime")
+        self._RestoreRemindTime = params.get("RestoreRemindTime")
+        self._RestoreIndexSize = params.get("RestoreIndexSize")
+        self._RestoreEndTime = params.get("RestoreEndTime")
+        self._AppId = params.get("AppId")
+        self._AssetId = params.get("AssetId")
+        self._NickName = params.get("NickName")
+        self._Uin = params.get("Uin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BugInfoDetail(AbstractModel):
     r"""漏洞详细信息
 
@@ -11162,6 +12105,1652 @@ class CreateDomainAndIpResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateDspmAccessExportJobRequest(AbstractModel):
+    r"""CreateDspmAccessExportJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        :param _View: 视图类型
+        :type View: str
+        :param _Filter: 过滤器
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._MemberId = None
+        self._View = None
+        self._Filter = None
+
+    @property
+    def MemberId(self):
+        r"""集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def View(self):
+        r"""视图类型
+        :rtype: str
+        """
+        return self._View
+
+    @View.setter
+    def View(self, View):
+        self._View = View
+
+    @property
+    def Filter(self):
+        r"""过滤器
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        self._View = params.get("View")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDspmAccessExportJobResponse(AbstractModel):
+    r"""CreateDspmAccessExportJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobID: 任务ID
+        :type JobID: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._JobID = None
+        self._RequestId = None
+
+    @property
+    def JobID(self):
+        r"""任务ID
+        :rtype: str
+        """
+        return self._JobID
+
+    @JobID.setter
+    def JobID(self, JobID):
+        self._JobID = JobID
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._JobID = params.get("JobID")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateDspmApplyOrderRequest(AbstractModel):
+    r"""CreateDspmApplyOrder请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AssetId: 资产id
+        :type AssetId: str
+        :param _ApplyType: 申请类型。0-子账号授权 1-访客授权。
+        :type ApplyType: int
+        :param _Privilege: 权限信息。
+        :type Privilege: :class:`tencentcloud.csip.v20221121.models.DspmDbAccountPrivilege`
+        :param _Host: 主机地址。当前仅支持'%'。默认'%'。
+        :type Host: str
+        :param _ValidatePeriod: 从审批完成后开始计算的访问权限失效时间，临时账号有效。单位毫秒。
+        :type ValidatePeriod: int
+        :param _ApproverUin: 审批人列表。为空使用资产全部管理员。
+        :type ApproverUin: list of str
+        :param _Reason: 申请原因
+        :type Reason: str
+        :param _ManagerType: 管理类型。0-普通成员 1-管理员
+        :type ManagerType: int
+        :param _Subject: 被授权者。子账号授权时，传目标uin，为空时默认使用当前uin；访客授权时传访客身份id。
+        :type Subject: str
+        """
+        self._AssetId = None
+        self._ApplyType = None
+        self._Privilege = None
+        self._Host = None
+        self._ValidatePeriod = None
+        self._ApproverUin = None
+        self._Reason = None
+        self._ManagerType = None
+        self._Subject = None
+
+    @property
+    def AssetId(self):
+        r"""资产id
+        :rtype: str
+        """
+        return self._AssetId
+
+    @AssetId.setter
+    def AssetId(self, AssetId):
+        self._AssetId = AssetId
+
+    @property
+    def ApplyType(self):
+        r"""申请类型。0-子账号授权 1-访客授权。
+        :rtype: int
+        """
+        return self._ApplyType
+
+    @ApplyType.setter
+    def ApplyType(self, ApplyType):
+        self._ApplyType = ApplyType
+
+    @property
+    def Privilege(self):
+        r"""权限信息。
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DspmDbAccountPrivilege`
+        """
+        return self._Privilege
+
+    @Privilege.setter
+    def Privilege(self, Privilege):
+        self._Privilege = Privilege
+
+    @property
+    def Host(self):
+        r"""主机地址。当前仅支持'%'。默认'%'。
+        :rtype: str
+        """
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+    @property
+    def ValidatePeriod(self):
+        r"""从审批完成后开始计算的访问权限失效时间，临时账号有效。单位毫秒。
+        :rtype: int
+        """
+        return self._ValidatePeriod
+
+    @ValidatePeriod.setter
+    def ValidatePeriod(self, ValidatePeriod):
+        self._ValidatePeriod = ValidatePeriod
+
+    @property
+    def ApproverUin(self):
+        r"""审批人列表。为空使用资产全部管理员。
+        :rtype: list of str
+        """
+        return self._ApproverUin
+
+    @ApproverUin.setter
+    def ApproverUin(self, ApproverUin):
+        self._ApproverUin = ApproverUin
+
+    @property
+    def Reason(self):
+        r"""申请原因
+        :rtype: str
+        """
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
+
+    @property
+    def ManagerType(self):
+        r"""管理类型。0-普通成员 1-管理员
+        :rtype: int
+        """
+        return self._ManagerType
+
+    @ManagerType.setter
+    def ManagerType(self, ManagerType):
+        self._ManagerType = ManagerType
+
+    @property
+    def Subject(self):
+        r"""被授权者。子账号授权时，传目标uin，为空时默认使用当前uin；访客授权时传访客身份id。
+        :rtype: str
+        """
+        return self._Subject
+
+    @Subject.setter
+    def Subject(self, Subject):
+        self._Subject = Subject
+
+
+    def _deserialize(self, params):
+        self._AssetId = params.get("AssetId")
+        self._ApplyType = params.get("ApplyType")
+        if params.get("Privilege") is not None:
+            self._Privilege = DspmDbAccountPrivilege()
+            self._Privilege._deserialize(params.get("Privilege"))
+        self._Host = params.get("Host")
+        self._ValidatePeriod = params.get("ValidatePeriod")
+        self._ApproverUin = params.get("ApproverUin")
+        self._Reason = params.get("Reason")
+        self._ManagerType = params.get("ManagerType")
+        self._Subject = params.get("Subject")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDspmApplyOrderResponse(AbstractModel):
+    r"""CreateDspmApplyOrder返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OrderId: 申请单id
+        :type OrderId: str
+        :param _AutoApproval: 自动审批
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AutoApproval: bool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._OrderId = None
+        self._AutoApproval = None
+        self._RequestId = None
+
+    @property
+    def OrderId(self):
+        r"""申请单id
+        :rtype: str
+        """
+        return self._OrderId
+
+    @OrderId.setter
+    def OrderId(self, OrderId):
+        self._OrderId = OrderId
+
+    @property
+    def AutoApproval(self):
+        r"""自动审批
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._AutoApproval
+
+    @AutoApproval.setter
+    def AutoApproval(self, AutoApproval):
+        self._AutoApproval = AutoApproval
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._OrderId = params.get("OrderId")
+        self._AutoApproval = params.get("AutoApproval")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateDspmApproveHistoryExportJobRequest(AbstractModel):
+    r"""CreateDspmApproveHistoryExportJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filter: 过滤器
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._Filter = None
+
+    @property
+    def Filter(self):
+        r"""过滤器
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDspmApproveHistoryExportJobResponse(AbstractModel):
+    r"""CreateDspmApproveHistoryExportJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobID: 任务ID
+        :type JobID: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._JobID = None
+        self._RequestId = None
+
+    @property
+    def JobID(self):
+        r"""任务ID
+        :rtype: str
+        """
+        return self._JobID
+
+    @JobID.setter
+    def JobID(self, JobID):
+        self._JobID = JobID
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._JobID = params.get("JobID")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateDspmAssetAccessTopologyExportJobRequest(AbstractModel):
+    r"""CreateDspmAssetAccessTopologyExportJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        :param _View: 视图类型。ip或instance
+        :type View: str
+        :param _Filter: 过滤器
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._MemberId = None
+        self._View = None
+        self._Filter = None
+
+    @property
+    def MemberId(self):
+        r"""集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def View(self):
+        r"""视图类型。ip或instance
+        :rtype: str
+        """
+        return self._View
+
+    @View.setter
+    def View(self, View):
+        self._View = View
+
+    @property
+    def Filter(self):
+        r"""过滤器
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        self._View = params.get("View")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDspmAssetAccessTopologyExportJobResponse(AbstractModel):
+    r"""CreateDspmAssetAccessTopologyExportJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobID: 任务ID
+        :type JobID: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._JobID = None
+        self._RequestId = None
+
+    @property
+    def JobID(self):
+        r"""任务ID
+        :rtype: str
+        """
+        return self._JobID
+
+    @JobID.setter
+    def JobID(self, JobID):
+        self._JobID = JobID
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._JobID = params.get("JobID")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateDspmAssetsExportJobRequest(AbstractModel):
+    r"""CreateDspmAssetsExportJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        :param _Filter: 过滤器
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._MemberId = None
+        self._Filter = None
+
+    @property
+    def MemberId(self):
+        r"""集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filter(self):
+        r"""过滤器
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDspmAssetsExportJobResponse(AbstractModel):
+    r"""CreateDspmAssetsExportJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobID: 任务ID
+        :type JobID: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._JobID = None
+        self._RequestId = None
+
+    @property
+    def JobID(self):
+        r"""任务ID
+        :rtype: str
+        """
+        return self._JobID
+
+    @JobID.setter
+    def JobID(self, JobID):
+        self._JobID = JobID
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._JobID = params.get("JobID")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateDspmExportTaskRequest(AbstractModel):
+    r"""CreateDspmExportTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        :param _DangerLevel: 风险等级(0-安全,1-低风险,2-中风险,3-高风险,-1-全部)
+        :type DangerLevel: int
+        :param _DbName: 数据库名称
+        :type DbName: str
+        :param _DbPort: 数据库端口
+        :type DbPort: int
+        :param _DbIp: 数据库 IP
+        :type DbIp: str
+        :param _AssetsId: 资产 ID
+        :type AssetsId: int
+        :param _SessionId: 会话 ID
+        :type SessionId: str
+        :param _ClientSideIp: 客户端 IP
+        :type ClientSideIp: str
+        :param _EndTime: 结束时间
+        :type EndTime: int
+        :param _HitRule: 命中规则
+        :type HitRule: int
+        :param _StartTime: 开始时间
+        :type StartTime: int
+        :param _FuzzySearch: 模糊查询
+        :type FuzzySearch: str
+        :param _UserName: 用户名
+        :type UserName: str
+        :param _ClientName: 客户端
+        :type ClientName: str
+        :param _SourceTypes: 流量来源，取值 Agent/Proxy/空；传Agent会返回Agent的日志，传Proxy会返回Proxy日志，两都都传或不传则返回所有
+        :type SourceTypes: list of str
+        :param _TableName: 表名，长度限制64，多个表名查询的话可以用空格连接	
+        :type TableName: str
+        :param _FieldName: 字段名，长度限制64，多个字段名查询的话可以用空格连接
+        :type FieldName: str
+        :param _SqlMainTypes: SQL 主要类型，DDL, DML, DCL, TCL	
+        :type SqlMainTypes: list of str
+        :param _SqlType: 操作类型	
+        :type SqlType: str
+        :param _RowNumMin: 影响行数最小值	
+        :type RowNumMin: int
+        :param _RowNumMax: 影响行数最大值	
+        :type RowNumMax: int
+        :param _DbTypes: 数据库类型	
+        :type DbTypes: list of str
+        :param _RetNo: 返回码	
+        :type RetNo: int
+        :param _ClientDriverName: 客户端工具	
+        :type ClientDriverName: str
+        :param _ClientPort: 客户端端口	
+        :type ClientPort: int
+        :param _LogId: 审计日志 ID
+        :type LogId: str
+        :param _DangerLevels: 风险等级数组(0-安全,1-低风险,2-中风险,3-高风险), 如果要全部，则需要将所有的值都传入。如果为空，则会参考：DangerLevel 入参
+        :type DangerLevels: list of int
+        :param _SensitiveCategoryRule: 字段分类
+        :type SensitiveCategoryRule: str
+        :param _SensitiveLevelRisk: 字段分级
+        :type SensitiveLevelRisk: str
+        :param _TrxId: 事务Id
+        :type TrxId: int
+        :param _ClientMac: clientMac
+        :type ClientMac: str
+        """
+        self._MemberId = None
+        self._DangerLevel = None
+        self._DbName = None
+        self._DbPort = None
+        self._DbIp = None
+        self._AssetsId = None
+        self._SessionId = None
+        self._ClientSideIp = None
+        self._EndTime = None
+        self._HitRule = None
+        self._StartTime = None
+        self._FuzzySearch = None
+        self._UserName = None
+        self._ClientName = None
+        self._SourceTypes = None
+        self._TableName = None
+        self._FieldName = None
+        self._SqlMainTypes = None
+        self._SqlType = None
+        self._RowNumMin = None
+        self._RowNumMax = None
+        self._DbTypes = None
+        self._RetNo = None
+        self._ClientDriverName = None
+        self._ClientPort = None
+        self._LogId = None
+        self._DangerLevels = None
+        self._SensitiveCategoryRule = None
+        self._SensitiveLevelRisk = None
+        self._TrxId = None
+        self._ClientMac = None
+
+    @property
+    def MemberId(self):
+        r"""集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def DangerLevel(self):
+        r"""风险等级(0-安全,1-低风险,2-中风险,3-高风险,-1-全部)
+        :rtype: int
+        """
+        return self._DangerLevel
+
+    @DangerLevel.setter
+    def DangerLevel(self, DangerLevel):
+        self._DangerLevel = DangerLevel
+
+    @property
+    def DbName(self):
+        r"""数据库名称
+        :rtype: str
+        """
+        return self._DbName
+
+    @DbName.setter
+    def DbName(self, DbName):
+        self._DbName = DbName
+
+    @property
+    def DbPort(self):
+        r"""数据库端口
+        :rtype: int
+        """
+        return self._DbPort
+
+    @DbPort.setter
+    def DbPort(self, DbPort):
+        self._DbPort = DbPort
+
+    @property
+    def DbIp(self):
+        r"""数据库 IP
+        :rtype: str
+        """
+        return self._DbIp
+
+    @DbIp.setter
+    def DbIp(self, DbIp):
+        self._DbIp = DbIp
+
+    @property
+    def AssetsId(self):
+        r"""资产 ID
+        :rtype: int
+        """
+        return self._AssetsId
+
+    @AssetsId.setter
+    def AssetsId(self, AssetsId):
+        self._AssetsId = AssetsId
+
+    @property
+    def SessionId(self):
+        r"""会话 ID
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def ClientSideIp(self):
+        r"""客户端 IP
+        :rtype: str
+        """
+        return self._ClientSideIp
+
+    @ClientSideIp.setter
+    def ClientSideIp(self, ClientSideIp):
+        self._ClientSideIp = ClientSideIp
+
+    @property
+    def EndTime(self):
+        r"""结束时间
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def HitRule(self):
+        r"""命中规则
+        :rtype: int
+        """
+        return self._HitRule
+
+    @HitRule.setter
+    def HitRule(self, HitRule):
+        self._HitRule = HitRule
+
+    @property
+    def StartTime(self):
+        r"""开始时间
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def FuzzySearch(self):
+        r"""模糊查询
+        :rtype: str
+        """
+        return self._FuzzySearch
+
+    @FuzzySearch.setter
+    def FuzzySearch(self, FuzzySearch):
+        self._FuzzySearch = FuzzySearch
+
+    @property
+    def UserName(self):
+        r"""用户名
+        :rtype: str
+        """
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def ClientName(self):
+        r"""客户端
+        :rtype: str
+        """
+        return self._ClientName
+
+    @ClientName.setter
+    def ClientName(self, ClientName):
+        self._ClientName = ClientName
+
+    @property
+    def SourceTypes(self):
+        r"""流量来源，取值 Agent/Proxy/空；传Agent会返回Agent的日志，传Proxy会返回Proxy日志，两都都传或不传则返回所有
+        :rtype: list of str
+        """
+        return self._SourceTypes
+
+    @SourceTypes.setter
+    def SourceTypes(self, SourceTypes):
+        self._SourceTypes = SourceTypes
+
+    @property
+    def TableName(self):
+        r"""表名，长度限制64，多个表名查询的话可以用空格连接	
+        :rtype: str
+        """
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def FieldName(self):
+        r"""字段名，长度限制64，多个字段名查询的话可以用空格连接
+        :rtype: str
+        """
+        return self._FieldName
+
+    @FieldName.setter
+    def FieldName(self, FieldName):
+        self._FieldName = FieldName
+
+    @property
+    def SqlMainTypes(self):
+        r"""SQL 主要类型，DDL, DML, DCL, TCL	
+        :rtype: list of str
+        """
+        return self._SqlMainTypes
+
+    @SqlMainTypes.setter
+    def SqlMainTypes(self, SqlMainTypes):
+        self._SqlMainTypes = SqlMainTypes
+
+    @property
+    def SqlType(self):
+        r"""操作类型	
+        :rtype: str
+        """
+        return self._SqlType
+
+    @SqlType.setter
+    def SqlType(self, SqlType):
+        self._SqlType = SqlType
+
+    @property
+    def RowNumMin(self):
+        r"""影响行数最小值	
+        :rtype: int
+        """
+        return self._RowNumMin
+
+    @RowNumMin.setter
+    def RowNumMin(self, RowNumMin):
+        self._RowNumMin = RowNumMin
+
+    @property
+    def RowNumMax(self):
+        r"""影响行数最大值	
+        :rtype: int
+        """
+        return self._RowNumMax
+
+    @RowNumMax.setter
+    def RowNumMax(self, RowNumMax):
+        self._RowNumMax = RowNumMax
+
+    @property
+    def DbTypes(self):
+        r"""数据库类型	
+        :rtype: list of str
+        """
+        return self._DbTypes
+
+    @DbTypes.setter
+    def DbTypes(self, DbTypes):
+        self._DbTypes = DbTypes
+
+    @property
+    def RetNo(self):
+        r"""返回码	
+        :rtype: int
+        """
+        return self._RetNo
+
+    @RetNo.setter
+    def RetNo(self, RetNo):
+        self._RetNo = RetNo
+
+    @property
+    def ClientDriverName(self):
+        r"""客户端工具	
+        :rtype: str
+        """
+        return self._ClientDriverName
+
+    @ClientDriverName.setter
+    def ClientDriverName(self, ClientDriverName):
+        self._ClientDriverName = ClientDriverName
+
+    @property
+    def ClientPort(self):
+        r"""客户端端口	
+        :rtype: int
+        """
+        return self._ClientPort
+
+    @ClientPort.setter
+    def ClientPort(self, ClientPort):
+        self._ClientPort = ClientPort
+
+    @property
+    def LogId(self):
+        r"""审计日志 ID
+        :rtype: str
+        """
+        return self._LogId
+
+    @LogId.setter
+    def LogId(self, LogId):
+        self._LogId = LogId
+
+    @property
+    def DangerLevels(self):
+        r"""风险等级数组(0-安全,1-低风险,2-中风险,3-高风险), 如果要全部，则需要将所有的值都传入。如果为空，则会参考：DangerLevel 入参
+        :rtype: list of int
+        """
+        return self._DangerLevels
+
+    @DangerLevels.setter
+    def DangerLevels(self, DangerLevels):
+        self._DangerLevels = DangerLevels
+
+    @property
+    def SensitiveCategoryRule(self):
+        r"""字段分类
+        :rtype: str
+        """
+        return self._SensitiveCategoryRule
+
+    @SensitiveCategoryRule.setter
+    def SensitiveCategoryRule(self, SensitiveCategoryRule):
+        self._SensitiveCategoryRule = SensitiveCategoryRule
+
+    @property
+    def SensitiveLevelRisk(self):
+        r"""字段分级
+        :rtype: str
+        """
+        return self._SensitiveLevelRisk
+
+    @SensitiveLevelRisk.setter
+    def SensitiveLevelRisk(self, SensitiveLevelRisk):
+        self._SensitiveLevelRisk = SensitiveLevelRisk
+
+    @property
+    def TrxId(self):
+        r"""事务Id
+        :rtype: int
+        """
+        return self._TrxId
+
+    @TrxId.setter
+    def TrxId(self, TrxId):
+        self._TrxId = TrxId
+
+    @property
+    def ClientMac(self):
+        r"""clientMac
+        :rtype: str
+        """
+        return self._ClientMac
+
+    @ClientMac.setter
+    def ClientMac(self, ClientMac):
+        self._ClientMac = ClientMac
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        self._DangerLevel = params.get("DangerLevel")
+        self._DbName = params.get("DbName")
+        self._DbPort = params.get("DbPort")
+        self._DbIp = params.get("DbIp")
+        self._AssetsId = params.get("AssetsId")
+        self._SessionId = params.get("SessionId")
+        self._ClientSideIp = params.get("ClientSideIp")
+        self._EndTime = params.get("EndTime")
+        self._HitRule = params.get("HitRule")
+        self._StartTime = params.get("StartTime")
+        self._FuzzySearch = params.get("FuzzySearch")
+        self._UserName = params.get("UserName")
+        self._ClientName = params.get("ClientName")
+        self._SourceTypes = params.get("SourceTypes")
+        self._TableName = params.get("TableName")
+        self._FieldName = params.get("FieldName")
+        self._SqlMainTypes = params.get("SqlMainTypes")
+        self._SqlType = params.get("SqlType")
+        self._RowNumMin = params.get("RowNumMin")
+        self._RowNumMax = params.get("RowNumMax")
+        self._DbTypes = params.get("DbTypes")
+        self._RetNo = params.get("RetNo")
+        self._ClientDriverName = params.get("ClientDriverName")
+        self._ClientPort = params.get("ClientPort")
+        self._LogId = params.get("LogId")
+        self._DangerLevels = params.get("DangerLevels")
+        self._SensitiveCategoryRule = params.get("SensitiveCategoryRule")
+        self._SensitiveLevelRisk = params.get("SensitiveLevelRisk")
+        self._TrxId = params.get("TrxId")
+        self._ClientMac = params.get("ClientMac")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDspmExportTaskResponse(AbstractModel):
+    r"""CreateDspmExportTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class CreateDspmIdentifyInfoListExportJobRequest(AbstractModel):
+    r"""CreateDspmIdentifyInfoListExportJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        :param _Filter: 过滤器
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._MemberId = None
+        self._Filter = None
+
+    @property
+    def MemberId(self):
+        r"""集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filter(self):
+        r"""过滤器
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDspmIdentifyInfoListExportJobResponse(AbstractModel):
+    r"""CreateDspmIdentifyInfoListExportJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobID: 任务ID
+        :type JobID: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._JobID = None
+        self._RequestId = None
+
+    @property
+    def JobID(self):
+        r"""任务ID
+        :rtype: str
+        """
+        return self._JobID
+
+    @JobID.setter
+    def JobID(self, JobID):
+        self._JobID = JobID
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._JobID = params.get("JobID")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateDspmPersonalIdentifyRequest(AbstractModel):
+    r"""CreateDspmPersonalIdentify请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Phone: 手机号
+        :type Phone: str
+        :param _Name: 姓名
+        :type Name: str
+        :param _Remark: 备注
+        :type Remark: str
+        """
+        self._Phone = None
+        self._Name = None
+        self._Remark = None
+
+    @property
+    def Phone(self):
+        r"""手机号
+        :rtype: str
+        """
+        return self._Phone
+
+    @Phone.setter
+    def Phone(self, Phone):
+        self._Phone = Phone
+
+    @property
+    def Name(self):
+        r"""姓名
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Remark(self):
+        r"""备注
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+
+    def _deserialize(self, params):
+        self._Phone = params.get("Phone")
+        self._Name = params.get("Name")
+        self._Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDspmPersonalIdentifyResponse(AbstractModel):
+    r"""CreateDspmPersonalIdentify返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PersonId: 个人id
+        :type PersonId: str
+        :param _IdentifyId: 身份id
+        :type IdentifyId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._PersonId = None
+        self._IdentifyId = None
+        self._RequestId = None
+
+    @property
+    def PersonId(self):
+        r"""个人id
+        :rtype: str
+        """
+        return self._PersonId
+
+    @PersonId.setter
+    def PersonId(self, PersonId):
+        self._PersonId = PersonId
+
+    @property
+    def IdentifyId(self):
+        r"""身份id
+        :rtype: str
+        """
+        return self._IdentifyId
+
+    @IdentifyId.setter
+    def IdentifyId(self, IdentifyId):
+        self._IdentifyId = IdentifyId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._PersonId = params.get("PersonId")
+        self._IdentifyId = params.get("IdentifyId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateDspmRiskExportJobRequest(AbstractModel):
+    r"""CreateDspmRiskExportJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        :param _Filter: 过滤器
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._MemberId = None
+        self._Filter = None
+
+    @property
+    def MemberId(self):
+        r"""集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filter(self):
+        r"""过滤器
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDspmRiskExportJobResponse(AbstractModel):
+    r"""CreateDspmRiskExportJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobID: 任务ID
+        :type JobID: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._JobID = None
+        self._RequestId = None
+
+    @property
+    def JobID(self):
+        r"""任务ID
+        :rtype: str
+        """
+        return self._JobID
+
+    @JobID.setter
+    def JobID(self, JobID):
+        self._JobID = JobID
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._JobID = params.get("JobID")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateDspmWhitelistStrategyRequest(AbstractModel):
+    r"""CreateDspmWhitelistStrategy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StrategyType: 策略类型
+        :type StrategyType: str
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        :param _Name: 白名单
+        :type Name: str
+        :param _Rule: 规则
+        :type Rule: str
+        :param _AssetId: 资产id
+        :type AssetId: str
+        :param _Account: 账号
+        :type Account: str
+        :param _Host: 主机
+        :type Host: str
+        :param _RiskId: 风险id
+        :type RiskId: str
+        :param _Remark: 备注
+        :type Remark: str
+        """
+        self._StrategyType = None
+        self._MemberId = None
+        self._Name = None
+        self._Rule = None
+        self._AssetId = None
+        self._Account = None
+        self._Host = None
+        self._RiskId = None
+        self._Remark = None
+
+    @property
+    def StrategyType(self):
+        r"""策略类型
+        :rtype: str
+        """
+        return self._StrategyType
+
+    @StrategyType.setter
+    def StrategyType(self, StrategyType):
+        self._StrategyType = StrategyType
+
+    @property
+    def MemberId(self):
+        r"""集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Name(self):
+        r"""白名单
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Rule(self):
+        r"""规则
+        :rtype: str
+        """
+        return self._Rule
+
+    @Rule.setter
+    def Rule(self, Rule):
+        self._Rule = Rule
+
+    @property
+    def AssetId(self):
+        r"""资产id
+        :rtype: str
+        """
+        return self._AssetId
+
+    @AssetId.setter
+    def AssetId(self, AssetId):
+        self._AssetId = AssetId
+
+    @property
+    def Account(self):
+        r"""账号
+        :rtype: str
+        """
+        return self._Account
+
+    @Account.setter
+    def Account(self, Account):
+        self._Account = Account
+
+    @property
+    def Host(self):
+        r"""主机
+        :rtype: str
+        """
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+    @property
+    def RiskId(self):
+        r"""风险id
+        :rtype: str
+        """
+        return self._RiskId
+
+    @RiskId.setter
+    def RiskId(self, RiskId):
+        self._RiskId = RiskId
+
+    @property
+    def Remark(self):
+        r"""备注
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+
+    def _deserialize(self, params):
+        self._StrategyType = params.get("StrategyType")
+        self._MemberId = params.get("MemberId")
+        self._Name = params.get("Name")
+        self._Rule = params.get("Rule")
+        self._AssetId = params.get("AssetId")
+        self._Account = params.get("Account")
+        self._Host = params.get("Host")
+        self._RiskId = params.get("RiskId")
+        self._Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDspmWhitelistStrategyResponse(AbstractModel):
+    r"""CreateDspmWhitelistStrategy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WhitelistStrategyId: 白名单id
+        :type WhitelistStrategyId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._WhitelistStrategyId = None
+        self._RequestId = None
+
+    @property
+    def WhitelistStrategyId(self):
+        r"""白名单id
+        :rtype: str
+        """
+        return self._WhitelistStrategyId
+
+    @WhitelistStrategyId.setter
+    def WhitelistStrategyId(self, WhitelistStrategyId):
+        self._WhitelistStrategyId = WhitelistStrategyId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._WhitelistStrategyId = params.get("WhitelistStrategyId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateRiskCenterScanTaskRequest(AbstractModel):
     r"""CreateRiskCenterScanTask请求参数结构体
 
@@ -12708,6 +15297,559 @@ class DeleteDomainAndIpResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._Data = params.get("Data")
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteDspmApplyOrderRequest(AbstractModel):
+    r"""DeleteDspmApplyOrder请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OrderId: 申请单id
+        :type OrderId: list of str
+        """
+        self._OrderId = None
+
+    @property
+    def OrderId(self):
+        r"""申请单id
+        :rtype: list of str
+        """
+        return self._OrderId
+
+    @OrderId.setter
+    def OrderId(self, OrderId):
+        self._OrderId = OrderId
+
+
+    def _deserialize(self, params):
+        self._OrderId = params.get("OrderId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteDspmApplyOrderResponse(AbstractModel):
+    r"""DeleteDspmApplyOrder返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteDspmAssetAccountRequest(AbstractModel):
+    r"""DeleteDspmAssetAccount请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AssetId: 实例id
+        :type AssetId: str
+        :param _Account: 账号名
+        :type Account: str
+        :param _Host: 主机地址
+        :type Host: str
+        :param _RiskId: 风险id
+        :type RiskId: str
+        """
+        self._AssetId = None
+        self._Account = None
+        self._Host = None
+        self._RiskId = None
+
+    @property
+    def AssetId(self):
+        r"""实例id
+        :rtype: str
+        """
+        return self._AssetId
+
+    @AssetId.setter
+    def AssetId(self, AssetId):
+        self._AssetId = AssetId
+
+    @property
+    def Account(self):
+        r"""账号名
+        :rtype: str
+        """
+        return self._Account
+
+    @Account.setter
+    def Account(self, Account):
+        self._Account = Account
+
+    @property
+    def Host(self):
+        r"""主机地址
+        :rtype: str
+        """
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+    @property
+    def RiskId(self):
+        r"""风险id
+        :rtype: str
+        """
+        return self._RiskId
+
+    @RiskId.setter
+    def RiskId(self, RiskId):
+        self._RiskId = RiskId
+
+
+    def _deserialize(self, params):
+        self._AssetId = params.get("AssetId")
+        self._Account = params.get("Account")
+        self._Host = params.get("Host")
+        self._RiskId = params.get("RiskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteDspmAssetAccountResponse(AbstractModel):
+    r"""DeleteDspmAssetAccount返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteDspmBackupLogListRequest(AbstractModel):
+    r"""DeleteDspmBackupLogList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 备份日志Id
+        :type Id: int
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        """
+        self._Id = None
+        self._MemberId = None
+
+    @property
+    def Id(self):
+        r"""备份日志Id
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def MemberId(self):
+        r"""集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteDspmBackupLogListResponse(AbstractModel):
+    r"""DeleteDspmBackupLogList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteDspmExportTaskRequest(AbstractModel):
+    r"""DeleteDspmExportTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        :param _TaskIds: 要删除的导出任务ID
+        :type TaskIds: list of int
+        """
+        self._MemberId = None
+        self._TaskIds = None
+
+    @property
+    def MemberId(self):
+        r"""集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def TaskIds(self):
+        r"""要删除的导出任务ID
+        :rtype: list of int
+        """
+        return self._TaskIds
+
+    @TaskIds.setter
+    def TaskIds(self, TaskIds):
+        self._TaskIds = TaskIds
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        self._TaskIds = params.get("TaskIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteDspmExportTaskResponse(AbstractModel):
+    r"""DeleteDspmExportTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteDspmPersonalIdentifyRequest(AbstractModel):
+    r"""DeleteDspmPersonalIdentify请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PersonId: 个人id
+        :type PersonId: str
+        """
+        self._PersonId = None
+
+    @property
+    def PersonId(self):
+        r"""个人id
+        :rtype: str
+        """
+        return self._PersonId
+
+    @PersonId.setter
+    def PersonId(self, PersonId):
+        self._PersonId = PersonId
+
+
+    def _deserialize(self, params):
+        self._PersonId = params.get("PersonId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteDspmPersonalIdentifyResponse(AbstractModel):
+    r"""DeleteDspmPersonalIdentify返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteDspmRestoreLogListRequest(AbstractModel):
+    r"""DeleteDspmRestoreLogList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 日志Id
+        :type Id: int
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        """
+        self._Id = None
+        self._MemberId = None
+
+    @property
+    def Id(self):
+        r"""日志Id
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def MemberId(self):
+        r"""集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteDspmRestoreLogListResponse(AbstractModel):
+    r"""DeleteDspmRestoreLogList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteDspmWhitelistStrategyRequest(AbstractModel):
+    r"""DeleteDspmWhitelistStrategy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        :param _WhitelistStrategyId: 白名单id
+        :type WhitelistStrategyId: list of str
+        """
+        self._MemberId = None
+        self._WhitelistStrategyId = None
+
+    @property
+    def MemberId(self):
+        r"""集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def WhitelistStrategyId(self):
+        r"""白名单id
+        :rtype: list of str
+        """
+        return self._WhitelistStrategyId
+
+    @WhitelistStrategyId.setter
+    def WhitelistStrategyId(self, WhitelistStrategyId):
+        self._WhitelistStrategyId = WhitelistStrategyId
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        self._WhitelistStrategyId = params.get("WhitelistStrategyId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteDspmWhitelistStrategyResponse(AbstractModel):
+    r"""DeleteDspmWhitelistStrategy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -15070,6 +18212,85 @@ class DescribeAssetViewVulRiskListResponse(AbstractModel):
                 obj = FilterDataObject()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAssumeRoleRequest(AbstractModel):
+    r"""DescribeAssumeRole请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RoleName: 角色名
+        :type RoleName: str
+        """
+        self._RoleName = None
+
+    @property
+    def RoleName(self):
+        r"""角色名
+        :rtype: str
+        """
+        return self._RoleName
+
+    @RoleName.setter
+    def RoleName(self, RoleName):
+        self._RoleName = RoleName
+
+
+    def _deserialize(self, params):
+        self._RoleName = params.get("RoleName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAssumeRoleResponse(AbstractModel):
+    r"""DescribeAssumeRole返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Bind: 是否绑定角色。0-未绑定 1-已绑定
+        :type Bind: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Bind = None
+        self._RequestId = None
+
+    @property
+    def Bind(self):
+        r"""是否绑定角色。0-未绑定 1-已绑定
+        :rtype: int
+        """
+        return self._Bind
+
+    @Bind.setter
+    def Bind(self, Bind):
+        self._Bind = Bind
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Bind = params.get("Bind")
         self._RequestId = params.get("RequestId")
 
 
@@ -17438,6 +20659,6316 @@ class DescribeDomainAssetsResponse(AbstractModel):
                 obj = FilterDataObject()
                 obj._deserialize(item)
                 self._RegionList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDspmAccessRecordRequest(AbstractModel):
+    r"""DescribeDspmAccessRecord请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        :param _View: 视图类型。ip或instance
+        :type View: str
+        :param _Filter: 过滤器
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._MemberId = None
+        self._View = None
+        self._Filter = None
+
+    @property
+    def MemberId(self):
+        r"""集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def View(self):
+        r"""视图类型。ip或instance
+        :rtype: str
+        """
+        return self._View
+
+    @View.setter
+    def View(self, View):
+        self._View = View
+
+    @property
+    def Filter(self):
+        r"""过滤器
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        self._View = params.get("View")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDspmAccessRecordResponse(AbstractModel):
+    r"""DescribeDspmAccessRecord返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AccessSet: 访问记录
+        :type AccessSet: list of DspmAccessRecord
+        :param _TotalCount: 记录总数
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._AccessSet = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def AccessSet(self):
+        r"""访问记录
+        :rtype: list of DspmAccessRecord
+        """
+        return self._AccessSet
+
+    @AccessSet.setter
+    def AccessSet(self, AccessSet):
+        self._AccessSet = AccessSet
+
+    @property
+    def TotalCount(self):
+        r"""记录总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("AccessSet") is not None:
+            self._AccessSet = []
+            for item in params.get("AccessSet"):
+                obj = DspmAccessRecord()
+                obj._deserialize(item)
+                self._AccessSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDspmAccessTopologyAccountsRequest(AbstractModel):
+    r"""DescribeDspmAccessTopologyAccounts请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        :param _Filter: 过滤器。 支持的FilterName: Ip/AssetId
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._MemberId = None
+        self._Filter = None
+
+    @property
+    def MemberId(self):
+        r"""集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filter(self):
+        r"""过滤器。 支持的FilterName: Ip/AssetId
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDspmAccessTopologyAccountsResponse(AbstractModel):
+    r"""DescribeDspmAccessTopologyAccounts返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Items: 资产账号列表
+        :type Items: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Items = None
+        self._RequestId = None
+
+    @property
+    def Items(self):
+        r"""资产账号列表
+        :rtype: list of str
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Items = params.get("Items")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDspmAccessTopologyAssetsRequest(AbstractModel):
+    r"""DescribeDspmAccessTopologyAssets请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        :param _Filter: 过滤器。 支持的FilterName:  Ip/Account
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._MemberId = None
+        self._Filter = None
+
+    @property
+    def MemberId(self):
+        r"""集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filter(self):
+        r"""过滤器。 支持的FilterName:  Ip/Account
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDspmAccessTopologyAssetsResponse(AbstractModel):
+    r"""DescribeDspmAccessTopologyAssets返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Items: 资产id列表
+        :type Items: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Items = None
+        self._RequestId = None
+
+    @property
+    def Items(self):
+        r"""资产id列表
+        :rtype: list of str
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Items = params.get("Items")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDspmAccessTopologyIpsRequest(AbstractModel):
+    r"""DescribeDspmAccessTopologyIps请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        :param _Filter: 过滤器。 支持的FilterName: AssetId/Account
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._MemberId = None
+        self._Filter = None
+
+    @property
+    def MemberId(self):
+        r"""集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filter(self):
+        r"""过滤器。 支持的FilterName: AssetId/Account
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDspmAccessTopologyIpsResponse(AbstractModel):
+    r"""DescribeDspmAccessTopologyIps返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Items: ip列表
+        :type Items: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Items = None
+        self._RequestId = None
+
+    @property
+    def Items(self):
+        r"""ip列表
+        :rtype: list of str
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Items = params.get("Items")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDspmApplyHistoryRequest(AbstractModel):
+    r"""DescribeDspmApplyHistory请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filter: 筛选项
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._Filter = None
+
+    @property
+    def Filter(self):
+        r"""筛选项
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDspmApplyHistoryResponse(AbstractModel):
+    r"""DescribeDspmApplyHistory返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 申请记录总数
+        :type TotalCount: int
+        :param _ApplySet: 申请记录信息
+        :type ApplySet: list of DspmApplyOrder
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._ApplySet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""申请记录总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def ApplySet(self):
+        r"""申请记录信息
+        :rtype: list of DspmApplyOrder
+        """
+        return self._ApplySet
+
+    @ApplySet.setter
+    def ApplySet(self, ApplySet):
+        self._ApplySet = ApplySet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("ApplySet") is not None:
+            self._ApplySet = []
+            for item in params.get("ApplySet"):
+                obj = DspmApplyOrder()
+                obj._deserialize(item)
+                self._ApplySet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDspmApplyOrderListRequest(AbstractModel):
+    r"""DescribeDspmApplyOrderList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filter: 过滤器
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._Filter = None
+
+    @property
+    def Filter(self):
+        r"""过滤器
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDspmApplyOrderListResponse(AbstractModel):
+    r"""DescribeDspmApplyOrderList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 申请单总数
+        :type TotalCount: int
+        :param _OrderSet: 申请单详情
+        :type OrderSet: list of DspmApplyOrder
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._OrderSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""申请单总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def OrderSet(self):
+        r"""申请单详情
+        :rtype: list of DspmApplyOrder
+        """
+        return self._OrderSet
+
+    @OrderSet.setter
+    def OrderSet(self, OrderSet):
+        self._OrderSet = OrderSet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("OrderSet") is not None:
+            self._OrderSet = []
+            for item in params.get("OrderSet"):
+                obj = DspmApplyOrder()
+                obj._deserialize(item)
+                self._OrderSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDspmApproveHistoryRequest(AbstractModel):
+    r"""DescribeDspmApproveHistory请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filter: 筛选项
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._Filter = None
+
+    @property
+    def Filter(self):
+        r"""筛选项
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDspmApproveHistoryResponse(AbstractModel):
+    r"""DescribeDspmApproveHistory返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 审批记录总数
+        :type TotalCount: int
+        :param _ApproveSet: 审批记录信息
+        :type ApproveSet: list of DspmApplyOrder
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._ApproveSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""审批记录总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def ApproveSet(self):
+        r"""审批记录信息
+        :rtype: list of DspmApplyOrder
+        """
+        return self._ApproveSet
+
+    @ApproveSet.setter
+    def ApproveSet(self, ApproveSet):
+        self._ApproveSet = ApproveSet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("ApproveSet") is not None:
+            self._ApproveSet = []
+            for item in params.get("ApproveSet"):
+                obj = DspmApplyOrder()
+                obj._deserialize(item)
+                self._ApproveSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDspmApproveOrderListRequest(AbstractModel):
+    r"""DescribeDspmApproveOrderList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filter: 过滤器
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._Filter = None
+
+    @property
+    def Filter(self):
+        r"""过滤器
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDspmApproveOrderListResponse(AbstractModel):
+    r"""DescribeDspmApproveOrderList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 审批单总数
+        :type TotalCount: int
+        :param _OrderSet: 审批单详情
+        :type OrderSet: list of DspmApproverOrder
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._OrderSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""审批单总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def OrderSet(self):
+        r"""审批单详情
+        :rtype: list of DspmApproverOrder
+        """
+        return self._OrderSet
+
+    @OrderSet.setter
+    def OrderSet(self, OrderSet):
+        self._OrderSet = OrderSet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("OrderSet") is not None:
+            self._OrderSet = []
+            for item in params.get("OrderSet"):
+                obj = DspmApproverOrder()
+                obj._deserialize(item)
+                self._OrderSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDspmAssetAccessTopologyRequest(AbstractModel):
+    r"""DescribeDspmAssetAccessTopology请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        :param _View: 视图类型。ip或instance
+        :type View: str
+        :param _Filter: - 来源ip方式查看
+View: "ip"
+
+Filter:{
+	{
+		"Name":"Ip",
+		"Values":["172.1.1.1"]
+	},
+	{
+		"Name":"AssetId",
+		"Values":["cdb-1111|ap-guangzhou","cdb-2222|ap-guangzhou","cdb-3333|ap-guangzhou"]
+	},
+	{
+		"Name":"Account",
+		"Values":["root|%","test|%"]
+	}
+}
+
+
+- 实例方式查看
+View: "instance"
+
+Filter:{
+	{
+		"Name":"AssetId",
+		"Values":["cdb-1111|ap-guangzhou"]
+	},
+	{
+		"Name":"Ip",
+		"Values":["172.1.1.1","172.1.1.2","172.1.1.3"]
+	},
+	{
+		"Name":"Account",
+		"Values":["root|%","test|%"]
+	}
+}
+
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._MemberId = None
+        self._View = None
+        self._Filter = None
+
+    @property
+    def MemberId(self):
+        r"""集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def View(self):
+        r"""视图类型。ip或instance
+        :rtype: str
+        """
+        return self._View
+
+    @View.setter
+    def View(self, View):
+        self._View = View
+
+    @property
+    def Filter(self):
+        r"""- 来源ip方式查看
+View: "ip"
+
+Filter:{
+	{
+		"Name":"Ip",
+		"Values":["172.1.1.1"]
+	},
+	{
+		"Name":"AssetId",
+		"Values":["cdb-1111|ap-guangzhou","cdb-2222|ap-guangzhou","cdb-3333|ap-guangzhou"]
+	},
+	{
+		"Name":"Account",
+		"Values":["root|%","test|%"]
+	}
+}
+
+
+- 实例方式查看
+View: "instance"
+
+Filter:{
+	{
+		"Name":"AssetId",
+		"Values":["cdb-1111|ap-guangzhou"]
+	},
+	{
+		"Name":"Ip",
+		"Values":["172.1.1.1","172.1.1.2","172.1.1.3"]
+	},
+	{
+		"Name":"Account",
+		"Values":["root|%","test|%"]
+	}
+}
+
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        self._View = params.get("View")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDspmAssetAccessTopologyResponse(AbstractModel):
+    r"""DescribeDspmAssetAccessTopology返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ItemSet: 拓扑数据
+        :type ItemSet: list of DspmAssetAccessTopologyItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ItemSet = None
+        self._RequestId = None
+
+    @property
+    def ItemSet(self):
+        r"""拓扑数据
+        :rtype: list of DspmAssetAccessTopologyItem
+        """
+        return self._ItemSet
+
+    @ItemSet.setter
+    def ItemSet(self, ItemSet):
+        self._ItemSet = ItemSet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ItemSet") is not None:
+            self._ItemSet = []
+            for item in params.get("ItemSet"):
+                obj = DspmAssetAccessTopologyItem()
+                obj._deserialize(item)
+                self._ItemSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDspmAssetAccountIdentifyRequest(AbstractModel):
+    r"""DescribeDspmAssetAccountIdentify请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        :param _AssetId: 资产id
+        :type AssetId: str
+        :param _Filter: 筛选项
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._MemberId = None
+        self._AssetId = None
+        self._Filter = None
+
+    @property
+    def MemberId(self):
+        r"""集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def AssetId(self):
+        r"""资产id
+        :rtype: str
+        """
+        return self._AssetId
+
+    @AssetId.setter
+    def AssetId(self, AssetId):
+        self._AssetId = AssetId
+
+    @property
+    def Filter(self):
+        r"""筛选项
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        self._AssetId = params.get("AssetId")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDspmAssetAccountIdentifyResponse(AbstractModel):
+    r"""DescribeDspmAssetAccountIdentify返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 资产账号身份总数
+        :type TotalCount: int
+        :param _IdentifySet: 资产账号身份信息
+        :type IdentifySet: list of DspmAssetAccountIdentify
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._IdentifySet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""资产账号身份总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def IdentifySet(self):
+        r"""资产账号身份信息
+        :rtype: list of DspmAssetAccountIdentify
+        """
+        return self._IdentifySet
+
+    @IdentifySet.setter
+    def IdentifySet(self, IdentifySet):
+        self._IdentifySet = IdentifySet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("IdentifySet") is not None:
+            self._IdentifySet = []
+            for item in params.get("IdentifySet"):
+                obj = DspmAssetAccountIdentify()
+                obj._deserialize(item)
+                self._IdentifySet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDspmAssetAccountPresetPrivilegesRequest(AbstractModel):
+    r"""DescribeDspmAssetAccountPresetPrivileges请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AssetId: 资产id
+        :type AssetId: str
+        :param _Account: 账号
+        :type Account: str
+        :param _Host: 地址
+        :type Host: str
+        :param _Filter: 过滤器
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._AssetId = None
+        self._Account = None
+        self._Host = None
+        self._Filter = None
+
+    @property
+    def AssetId(self):
+        r"""资产id
+        :rtype: str
+        """
+        return self._AssetId
+
+    @AssetId.setter
+    def AssetId(self, AssetId):
+        self._AssetId = AssetId
+
+    @property
+    def Account(self):
+        r"""账号
+        :rtype: str
+        """
+        return self._Account
+
+    @Account.setter
+    def Account(self, Account):
+        self._Account = Account
+
+    @property
+    def Host(self):
+        r"""地址
+        :rtype: str
+        """
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+    @property
+    def Filter(self):
+        r"""过滤器
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._AssetId = params.get("AssetId")
+        self._Account = params.get("Account")
+        self._Host = params.get("Host")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDspmAssetAccountPresetPrivilegesResponse(AbstractModel):
+    r"""DescribeDspmAssetAccountPresetPrivileges返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Privilege: 权限信息
+        :type Privilege: :class:`tencentcloud.csip.v20221121.models.DspmDbAccountPrivilege`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Privilege = None
+        self._RequestId = None
+
+    @property
+    def Privilege(self):
+        r"""权限信息
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DspmDbAccountPrivilege`
+        """
+        return self._Privilege
+
+    @Privilege.setter
+    def Privilege(self, Privilege):
+        self._Privilege = Privilege
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Privilege") is not None:
+            self._Privilege = DspmDbAccountPrivilege()
+            self._Privilege._deserialize(params.get("Privilege"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDspmAssetAccountRecycledPrivilegesRequest(AbstractModel):
+    r"""DescribeDspmAssetAccountRecycledPrivileges请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RiskId: 风险id
+        :type RiskId: str
+        """
+        self._RiskId = None
+
+    @property
+    def RiskId(self):
+        r"""风险id
+        :rtype: str
+        """
+        return self._RiskId
+
+    @RiskId.setter
+    def RiskId(self, RiskId):
+        self._RiskId = RiskId
+
+
+    def _deserialize(self, params):
+        self._RiskId = params.get("RiskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDspmAssetAccountRecycledPrivilegesResponse(AbstractModel):
+    r"""DescribeDspmAssetAccountRecycledPrivileges返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Privilege: 权限信息
+        :type Privilege: :class:`tencentcloud.csip.v20221121.models.DspmDbAccountPrivilege`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Privilege = None
+        self._RequestId = None
+
+    @property
+    def Privilege(self):
+        r"""权限信息
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DspmDbAccountPrivilege`
+        """
+        return self._Privilege
+
+    @Privilege.setter
+    def Privilege(self, Privilege):
+        self._Privilege = Privilege
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Privilege") is not None:
+            self._Privilege = DspmDbAccountPrivilege()
+            self._Privilege._deserialize(params.get("Privilege"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDspmAssetAccountsRequest(AbstractModel):
+    r"""DescribeDspmAssetAccounts请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        :param _AssetId: 资产id
+        :type AssetId: str
+        :param _Filter: 筛选项
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._MemberId = None
+        self._AssetId = None
+        self._Filter = None
+
+    @property
+    def MemberId(self):
+        r"""集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def AssetId(self):
+        r"""资产id
+        :rtype: str
+        """
+        return self._AssetId
+
+    @AssetId.setter
+    def AssetId(self, AssetId):
+        self._AssetId = AssetId
+
+    @property
+    def Filter(self):
+        r"""筛选项
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        self._AssetId = params.get("AssetId")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDspmAssetAccountsResponse(AbstractModel):
+    r"""DescribeDspmAssetAccounts返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 资产账号总数
+        :type TotalCount: int
+        :param _AccountSet: 账号信息
+        :type AccountSet: list of DspmAssetAccount
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._AccountSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""资产账号总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def AccountSet(self):
+        r"""账号信息
+        :rtype: list of DspmAssetAccount
+        """
+        return self._AccountSet
+
+    @AccountSet.setter
+    def AccountSet(self, AccountSet):
+        self._AccountSet = AccountSet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("AccountSet") is not None:
+            self._AccountSet = []
+            for item in params.get("AccountSet"):
+                obj = DspmAssetAccount()
+                obj._deserialize(item)
+                self._AccountSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDspmAssetDatabaseListRequest(AbstractModel):
+    r"""DescribeDspmAssetDatabaseList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AssetId: 资产实例id
+        :type AssetId: str
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        :param _Filter: 筛选项
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._AssetId = None
+        self._MemberId = None
+        self._Filter = None
+
+    @property
+    def AssetId(self):
+        r"""资产实例id
+        :rtype: str
+        """
+        return self._AssetId
+
+    @AssetId.setter
+    def AssetId(self, AssetId):
+        self._AssetId = AssetId
+
+    @property
+    def MemberId(self):
+        r"""集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filter(self):
+        r"""筛选项
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._AssetId = params.get("AssetId")
+        self._MemberId = params.get("MemberId")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDspmAssetDatabaseListResponse(AbstractModel):
+    r"""DescribeDspmAssetDatabaseList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 总数
+        :type TotalCount: int
+        :param _DataSet: 结果集
+        :type DataSet: list of DspmAssetDatabaseInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._DataSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def DataSet(self):
+        r"""结果集
+        :rtype: list of DspmAssetDatabaseInfo
+        """
+        return self._DataSet
+
+    @DataSet.setter
+    def DataSet(self, DataSet):
+        self._DataSet = DataSet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("DataSet") is not None:
+            self._DataSet = []
+            for item in params.get("DataSet"):
+                obj = DspmAssetDatabaseInfo()
+                obj._deserialize(item)
+                self._DataSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDspmAssetDatabasesRequest(AbstractModel):
+    r"""DescribeDspmAssetDatabases请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AssetId: 资产id
+        :type AssetId: str
+        """
+        self._AssetId = None
+
+    @property
+    def AssetId(self):
+        r"""资产id
+        :rtype: str
+        """
+        return self._AssetId
+
+    @AssetId.setter
+    def AssetId(self, AssetId):
+        self._AssetId = AssetId
+
+
+    def _deserialize(self, params):
+        self._AssetId = params.get("AssetId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDspmAssetDatabasesResponse(AbstractModel):
+    r"""DescribeDspmAssetDatabases返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Items: 数据库列表
+        :type Items: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Items = None
+        self._RequestId = None
+
+    @property
+    def Items(self):
+        r"""数据库列表
+        :rtype: list of str
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Items = params.get("Items")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDspmAssetFieldListRequest(AbstractModel):
+    r"""DescribeDspmAssetFieldList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AssetId: 资产实例id
+        :type AssetId: str
+        :param _DbName: 数据库名称
+        :type DbName: str
+        :param _TableName: 表名
+        :type TableName: str
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        :param _Filter: 筛选项
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._AssetId = None
+        self._DbName = None
+        self._TableName = None
+        self._MemberId = None
+        self._Filter = None
+
+    @property
+    def AssetId(self):
+        r"""资产实例id
+        :rtype: str
+        """
+        return self._AssetId
+
+    @AssetId.setter
+    def AssetId(self, AssetId):
+        self._AssetId = AssetId
+
+    @property
+    def DbName(self):
+        r"""数据库名称
+        :rtype: str
+        """
+        return self._DbName
+
+    @DbName.setter
+    def DbName(self, DbName):
+        self._DbName = DbName
+
+    @property
+    def TableName(self):
+        r"""表名
+        :rtype: str
+        """
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def MemberId(self):
+        r"""集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filter(self):
+        r"""筛选项
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._AssetId = params.get("AssetId")
+        self._DbName = params.get("DbName")
+        self._TableName = params.get("TableName")
+        self._MemberId = params.get("MemberId")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDspmAssetFieldListResponse(AbstractModel):
+    r"""DescribeDspmAssetFieldList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 总数
+        :type TotalCount: int
+        :param _DataSet: 结果集
+        :type DataSet: list of DspmAssetFieldInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._DataSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def DataSet(self):
+        r"""结果集
+        :rtype: list of DspmAssetFieldInfo
+        """
+        return self._DataSet
+
+    @DataSet.setter
+    def DataSet(self, DataSet):
+        self._DataSet = DataSet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("DataSet") is not None:
+            self._DataSet = []
+            for item in params.get("DataSet"):
+                obj = DspmAssetFieldInfo()
+                obj._deserialize(item)
+                self._DataSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDspmAssetIdsRequest(AbstractModel):
+    r"""DescribeDspmAssetIds请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        :param _Filter: 筛选项
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._MemberId = None
+        self._Filter = None
+
+    @property
+    def MemberId(self):
+        r"""集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filter(self):
+        r"""筛选项
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDspmAssetIdsResponse(AbstractModel):
+    r"""DescribeDspmAssetIds返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 数据库资产总数
+        :type TotalCount: int
+        :param _AssetSet: 资产id信息
+        :type AssetSet: list of DspmDbAssetId
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._AssetSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""数据库资产总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def AssetSet(self):
+        r"""资产id信息
+        :rtype: list of DspmDbAssetId
+        """
+        return self._AssetSet
+
+    @AssetSet.setter
+    def AssetSet(self, AssetSet):
+        self._AssetSet = AssetSet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("AssetSet") is not None:
+            self._AssetSet = []
+            for item in params.get("AssetSet"):
+                obj = DspmDbAssetId()
+                obj._deserialize(item)
+                self._AssetSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDspmAssetLoginCredentialRequest(AbstractModel):
+    r"""DescribeDspmAssetLoginCredential请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AssetId: 数据库资产id
+        :type AssetId: str
+        :param _Host: 主机。默认'%'
+        :type Host: str
+        :param _EncryptMethod: 加密算法
+        :type EncryptMethod: str
+        """
+        self._AssetId = None
+        self._Host = None
+        self._EncryptMethod = None
+
+    @property
+    def AssetId(self):
+        r"""数据库资产id
+        :rtype: str
+        """
+        return self._AssetId
+
+    @AssetId.setter
+    def AssetId(self, AssetId):
+        self._AssetId = AssetId
+
+    @property
+    def Host(self):
+        r"""主机。默认'%'
+        :rtype: str
+        """
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+    @property
+    def EncryptMethod(self):
+        r"""加密算法
+        :rtype: str
+        """
+        return self._EncryptMethod
+
+    @EncryptMethod.setter
+    def EncryptMethod(self, EncryptMethod):
+        self._EncryptMethod = EncryptMethod
+
+
+    def _deserialize(self, params):
+        self._AssetId = params.get("AssetId")
+        self._Host = params.get("Host")
+        self._EncryptMethod = params.get("EncryptMethod")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDspmAssetLoginCredentialResponse(AbstractModel):
+    r"""DescribeDspmAssetLoginCredential返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Account: 账号
+        :type Account: str
+        :param _Password: 密码信息
+        :type Password: str
+        :param _ValidateStart: 有效期开始时间
+        :type ValidateStart: str
+        :param _ValidateEnd: 有效期结束时间
+        :type ValidateEnd: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Account = None
+        self._Password = None
+        self._ValidateStart = None
+        self._ValidateEnd = None
+        self._RequestId = None
+
+    @property
+    def Account(self):
+        r"""账号
+        :rtype: str
+        """
+        return self._Account
+
+    @Account.setter
+    def Account(self, Account):
+        self._Account = Account
+
+    @property
+    def Password(self):
+        r"""密码信息
+        :rtype: str
+        """
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def ValidateStart(self):
+        r"""有效期开始时间
+        :rtype: str
+        """
+        return self._ValidateStart
+
+    @ValidateStart.setter
+    def ValidateStart(self, ValidateStart):
+        self._ValidateStart = ValidateStart
+
+    @property
+    def ValidateEnd(self):
+        r"""有效期结束时间
+        :rtype: str
+        """
+        return self._ValidateEnd
+
+    @ValidateEnd.setter
+    def ValidateEnd(self, ValidateEnd):
+        self._ValidateEnd = ValidateEnd
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Account = params.get("Account")
+        self._Password = params.get("Password")
+        self._ValidateStart = params.get("ValidateStart")
+        self._ValidateEnd = params.get("ValidateEnd")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDspmAssetSecurityAnalyseStatusRequest(AbstractModel):
+    r"""DescribeDspmAssetSecurityAnalyseStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        :param _Filter: 筛选项
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._MemberId = None
+        self._Filter = None
+
+    @property
+    def MemberId(self):
+        r"""集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filter(self):
+        r"""筛选项
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDspmAssetSecurityAnalyseStatusResponse(AbstractModel):
+    r"""DescribeDspmAssetSecurityAnalyseStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 数据库资产总数
+        :type TotalCount: int
+        :param _AssetSet: 资产安全分析状态信息
+        :type AssetSet: list of DspmAssetSecurityAnalyseStatus
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._AssetSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""数据库资产总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def AssetSet(self):
+        r"""资产安全分析状态信息
+        :rtype: list of DspmAssetSecurityAnalyseStatus
+        """
+        return self._AssetSet
+
+    @AssetSet.setter
+    def AssetSet(self, AssetSet):
+        self._AssetSet = AssetSet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("AssetSet") is not None:
+            self._AssetSet = []
+            for item in params.get("AssetSet"):
+                obj = DspmAssetSecurityAnalyseStatus()
+                obj._deserialize(item)
+                self._AssetSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDspmAssetSupportedPrivilegesRequest(AbstractModel):
+    r"""DescribeDspmAssetSupportedPrivileges请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AssetId: 资产id
+        :type AssetId: str
+        """
+        self._AssetId = None
+
+    @property
+    def AssetId(self):
+        r"""资产id
+        :rtype: str
+        """
+        return self._AssetId
+
+    @AssetId.setter
+    def AssetId(self, AssetId):
+        self._AssetId = AssetId
+
+
+    def _deserialize(self, params):
+        self._AssetId = params.get("AssetId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDspmAssetSupportedPrivilegesResponse(AbstractModel):
+    r"""DescribeDspmAssetSupportedPrivileges返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GlobalSupportedPrivileges: 实例支持的全局权限。
+        :type GlobalSupportedPrivileges: list of str
+        :param _DatabaseSupportedPrivileges: 实例支持的数据库权限。
+        :type DatabaseSupportedPrivileges: list of str
+        :param _TableSupportedPrivileges: 实例支持的数据库表权限。
+        :type TableSupportedPrivileges: list of str
+        :param _ColumnSupportedPrivileges: 实例支持的数据库列权限。
+        :type ColumnSupportedPrivileges: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._GlobalSupportedPrivileges = None
+        self._DatabaseSupportedPrivileges = None
+        self._TableSupportedPrivileges = None
+        self._ColumnSupportedPrivileges = None
+        self._RequestId = None
+
+    @property
+    def GlobalSupportedPrivileges(self):
+        r"""实例支持的全局权限。
+        :rtype: list of str
+        """
+        return self._GlobalSupportedPrivileges
+
+    @GlobalSupportedPrivileges.setter
+    def GlobalSupportedPrivileges(self, GlobalSupportedPrivileges):
+        self._GlobalSupportedPrivileges = GlobalSupportedPrivileges
+
+    @property
+    def DatabaseSupportedPrivileges(self):
+        r"""实例支持的数据库权限。
+        :rtype: list of str
+        """
+        return self._DatabaseSupportedPrivileges
+
+    @DatabaseSupportedPrivileges.setter
+    def DatabaseSupportedPrivileges(self, DatabaseSupportedPrivileges):
+        self._DatabaseSupportedPrivileges = DatabaseSupportedPrivileges
+
+    @property
+    def TableSupportedPrivileges(self):
+        r"""实例支持的数据库表权限。
+        :rtype: list of str
+        """
+        return self._TableSupportedPrivileges
+
+    @TableSupportedPrivileges.setter
+    def TableSupportedPrivileges(self, TableSupportedPrivileges):
+        self._TableSupportedPrivileges = TableSupportedPrivileges
+
+    @property
+    def ColumnSupportedPrivileges(self):
+        r"""实例支持的数据库列权限。
+        :rtype: list of str
+        """
+        return self._ColumnSupportedPrivileges
+
+    @ColumnSupportedPrivileges.setter
+    def ColumnSupportedPrivileges(self, ColumnSupportedPrivileges):
+        self._ColumnSupportedPrivileges = ColumnSupportedPrivileges
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._GlobalSupportedPrivileges = params.get("GlobalSupportedPrivileges")
+        self._DatabaseSupportedPrivileges = params.get("DatabaseSupportedPrivileges")
+        self._TableSupportedPrivileges = params.get("TableSupportedPrivileges")
+        self._ColumnSupportedPrivileges = params.get("ColumnSupportedPrivileges")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDspmAssetTableListRequest(AbstractModel):
+    r"""DescribeDspmAssetTableList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AssetId: 资产实例id
+        :type AssetId: str
+        :param _DbName: 数据库名称
+        :type DbName: str
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        :param _Filter: 筛选项
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._AssetId = None
+        self._DbName = None
+        self._MemberId = None
+        self._Filter = None
+
+    @property
+    def AssetId(self):
+        r"""资产实例id
+        :rtype: str
+        """
+        return self._AssetId
+
+    @AssetId.setter
+    def AssetId(self, AssetId):
+        self._AssetId = AssetId
+
+    @property
+    def DbName(self):
+        r"""数据库名称
+        :rtype: str
+        """
+        return self._DbName
+
+    @DbName.setter
+    def DbName(self, DbName):
+        self._DbName = DbName
+
+    @property
+    def MemberId(self):
+        r"""集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filter(self):
+        r"""筛选项
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._AssetId = params.get("AssetId")
+        self._DbName = params.get("DbName")
+        self._MemberId = params.get("MemberId")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDspmAssetTableListResponse(AbstractModel):
+    r"""DescribeDspmAssetTableList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 总数
+        :type TotalCount: int
+        :param _DataSet: 结果集
+        :type DataSet: list of DspmAssetTableInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._DataSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def DataSet(self):
+        r"""结果集
+        :rtype: list of DspmAssetTableInfo
+        """
+        return self._DataSet
+
+    @DataSet.setter
+    def DataSet(self, DataSet):
+        self._DataSet = DataSet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("DataSet") is not None:
+            self._DataSet = []
+            for item in params.get("DataSet"):
+                obj = DspmAssetTableInfo()
+                obj._deserialize(item)
+                self._DataSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDspmAssetsRequest(AbstractModel):
+    r"""DescribeDspmAssets请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        :param _Filter: 筛选项
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._MemberId = None
+        self._Filter = None
+
+    @property
+    def MemberId(self):
+        r"""集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filter(self):
+        r"""筛选项
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDspmAssetsResponse(AbstractModel):
+    r"""DescribeDspmAssets返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 数据库资产总数
+        :type TotalCount: int
+        :param _AssetSet: 资产信息
+        :type AssetSet: list of DspmDbAsset
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._AssetSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""数据库资产总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def AssetSet(self):
+        r"""资产信息
+        :rtype: list of DspmDbAsset
+        """
+        return self._AssetSet
+
+    @AssetSet.setter
+    def AssetSet(self, AssetSet):
+        self._AssetSet = AssetSet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("AssetSet") is not None:
+            self._AssetSet = []
+            for item in params.get("AssetSet"):
+                obj = DspmDbAsset()
+                obj._deserialize(item)
+                self._AssetSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDspmBackupLogListRequest(AbstractModel):
+    r"""DescribeDspmBackupLogList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Limit: <p>限制数目</p>
+        :type Limit: int
+        :param _Offset: <p>偏移量</p>
+        :type Offset: int
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        :param _Sort: <p>排序方式(desc=倒叙,asc=升序)</p>
+        :type Sort: str
+        :param _Field: <p>排序字段(支持&#39;StartTime&#39;)</p>
+        :type Field: str
+        :param _StartTime: <p>开始时间</p>
+        :type StartTime: int
+        :param _EndTime: <p>结束时间</p>
+        :type EndTime: int
+        :param _Status: <p>备份日志状态0未完成的,1备份文件，2恢复中，3已恢复，4.已删除,全部查询-1</p>
+        :type Status: int
+        :param _DbTypes: <p>数据库类型,如：cdb, mariadb</p>
+        :type DbTypes: list of str
+        """
+        self._Limit = None
+        self._Offset = None
+        self._MemberId = None
+        self._Sort = None
+        self._Field = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Status = None
+        self._DbTypes = None
+
+    @property
+    def Limit(self):
+        r"""<p>限制数目</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""<p>偏移量</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Sort(self):
+        r"""<p>排序方式(desc=倒叙,asc=升序)</p>
+        :rtype: str
+        """
+        return self._Sort
+
+    @Sort.setter
+    def Sort(self, Sort):
+        self._Sort = Sort
+
+    @property
+    def Field(self):
+        r"""<p>排序字段(支持&#39;StartTime&#39;)</p>
+        :rtype: str
+        """
+        return self._Field
+
+    @Field.setter
+    def Field(self, Field):
+        self._Field = Field
+
+    @property
+    def StartTime(self):
+        r"""<p>开始时间</p>
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>结束时间</p>
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Status(self):
+        r"""<p>备份日志状态0未完成的,1备份文件，2恢复中，3已恢复，4.已删除,全部查询-1</p>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def DbTypes(self):
+        r"""<p>数据库类型,如：cdb, mariadb</p>
+        :rtype: list of str
+        """
+        return self._DbTypes
+
+    @DbTypes.setter
+    def DbTypes(self, DbTypes):
+        self._DbTypes = DbTypes
+
+
+    def _deserialize(self, params):
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._MemberId = params.get("MemberId")
+        self._Sort = params.get("Sort")
+        self._Field = params.get("Field")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Status = params.get("Status")
+        self._DbTypes = params.get("DbTypes")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDspmBackupLogListResponse(AbstractModel):
+    r"""DescribeDspmBackupLogList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>总共多少条</p>
+        :type TotalCount: int
+        :param _List: <p>备份日志列表</p>
+        :type List: list of BackupLog
+        :param _HasRestoringTask: <p>当前是否存在恢复中任务</p>
+        :type HasRestoringTask: bool
+        :param _MaxRestoreSizeInGB: <p>最大恢复空间</p>
+        :type MaxRestoreSizeInGB: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._List = None
+        self._HasRestoringTask = None
+        self._MaxRestoreSizeInGB = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>总共多少条</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def List(self):
+        r"""<p>备份日志列表</p>
+        :rtype: list of BackupLog
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def HasRestoringTask(self):
+        r"""<p>当前是否存在恢复中任务</p>
+        :rtype: bool
+        """
+        return self._HasRestoringTask
+
+    @HasRestoringTask.setter
+    def HasRestoringTask(self, HasRestoringTask):
+        self._HasRestoringTask = HasRestoringTask
+
+    @property
+    def MaxRestoreSizeInGB(self):
+        r"""<p>最大恢复空间</p>
+        :rtype: int
+        """
+        return self._MaxRestoreSizeInGB
+
+    @MaxRestoreSizeInGB.setter
+    def MaxRestoreSizeInGB(self, MaxRestoreSizeInGB):
+        self._MaxRestoreSizeInGB = MaxRestoreSizeInGB
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = BackupLog()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._HasRestoringTask = params.get("HasRestoringTask")
+        self._MaxRestoreSizeInGB = params.get("MaxRestoreSizeInGB")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDspmBackupSettingRequest(AbstractModel):
+    r"""DescribeDspmBackupSetting请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        """
+        self._MemberId = None
+
+    @property
+    def MemberId(self):
+        r"""集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDspmBackupSettingResponse(AbstractModel):
+    r"""DescribeDspmBackupSetting返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BackupLogSaveTime: 备份日志保留时长
+        :type BackupLogSaveTime: int
+        :param _RestoreLogSaveTime: 恢复日志保留时长
+        :type RestoreLogSaveTime: int
+        :param _LogMaxSaveTime: 日志最大生命周期限制
+        :type LogMaxSaveTime: int
+        :param _OnlineLogMaxSaveTime: 在线日志最大天数限制
+        :type OnlineLogMaxSaveTime: int
+        :param _MaxOnlineLogCount: 最大在线日志条数，单位是：个
+        :type MaxOnlineLogCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._BackupLogSaveTime = None
+        self._RestoreLogSaveTime = None
+        self._LogMaxSaveTime = None
+        self._OnlineLogMaxSaveTime = None
+        self._MaxOnlineLogCount = None
+        self._RequestId = None
+
+    @property
+    def BackupLogSaveTime(self):
+        r"""备份日志保留时长
+        :rtype: int
+        """
+        return self._BackupLogSaveTime
+
+    @BackupLogSaveTime.setter
+    def BackupLogSaveTime(self, BackupLogSaveTime):
+        self._BackupLogSaveTime = BackupLogSaveTime
+
+    @property
+    def RestoreLogSaveTime(self):
+        r"""恢复日志保留时长
+        :rtype: int
+        """
+        return self._RestoreLogSaveTime
+
+    @RestoreLogSaveTime.setter
+    def RestoreLogSaveTime(self, RestoreLogSaveTime):
+        self._RestoreLogSaveTime = RestoreLogSaveTime
+
+    @property
+    def LogMaxSaveTime(self):
+        r"""日志最大生命周期限制
+        :rtype: int
+        """
+        return self._LogMaxSaveTime
+
+    @LogMaxSaveTime.setter
+    def LogMaxSaveTime(self, LogMaxSaveTime):
+        self._LogMaxSaveTime = LogMaxSaveTime
+
+    @property
+    def OnlineLogMaxSaveTime(self):
+        r"""在线日志最大天数限制
+        :rtype: int
+        """
+        return self._OnlineLogMaxSaveTime
+
+    @OnlineLogMaxSaveTime.setter
+    def OnlineLogMaxSaveTime(self, OnlineLogMaxSaveTime):
+        self._OnlineLogMaxSaveTime = OnlineLogMaxSaveTime
+
+    @property
+    def MaxOnlineLogCount(self):
+        r"""最大在线日志条数，单位是：个
+        :rtype: int
+        """
+        return self._MaxOnlineLogCount
+
+    @MaxOnlineLogCount.setter
+    def MaxOnlineLogCount(self, MaxOnlineLogCount):
+        self._MaxOnlineLogCount = MaxOnlineLogCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._BackupLogSaveTime = params.get("BackupLogSaveTime")
+        self._RestoreLogSaveTime = params.get("RestoreLogSaveTime")
+        self._LogMaxSaveTime = params.get("LogMaxSaveTime")
+        self._OnlineLogMaxSaveTime = params.get("OnlineLogMaxSaveTime")
+        self._MaxOnlineLogCount = params.get("MaxOnlineLogCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDspmDictionaryListRequest(AbstractModel):
+    r"""DescribeDspmDictionaryList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DictType: 字典类型（RootCategory：一级分类，IdentifyRule:敏感识别数据项）
+        :type DictType: str
+        :param _Filters: 筛选条件
+        :type Filters: list of WhereFilter
+        """
+        self._DictType = None
+        self._Filters = None
+
+    @property
+    def DictType(self):
+        r"""字典类型（RootCategory：一级分类，IdentifyRule:敏感识别数据项）
+        :rtype: str
+        """
+        return self._DictType
+
+    @DictType.setter
+    def DictType(self, DictType):
+        self._DictType = DictType
+
+    @property
+    def Filters(self):
+        r"""筛选条件
+        :rtype: list of WhereFilter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._DictType = params.get("DictType")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = WhereFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDspmDictionaryListResponse(AbstractModel):
+    r"""DescribeDspmDictionaryList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataSet: 结果集
+        :type DataSet: list of DspmDictionary
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DataSet = None
+        self._RequestId = None
+
+    @property
+    def DataSet(self):
+        r"""结果集
+        :rtype: list of DspmDictionary
+        """
+        return self._DataSet
+
+    @DataSet.setter
+    def DataSet(self, DataSet):
+        self._DataSet = DataSet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("DataSet") is not None:
+            self._DataSet = []
+            for item in params.get("DataSet"):
+                obj = DspmDictionary()
+                obj._deserialize(item)
+                self._DataSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDspmExportTaskRequest(AbstractModel):
+    r"""DescribeDspmExportTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        :param _TaskStatus: 任务状态：0.未开始 1.执行中 2.执行成功 3.执行超时 4.执行失败
+        :type TaskStatus: int
+        :param _StartTime: 开始时间
+        :type StartTime: int
+        :param _EndTime: 结束时间
+        :type EndTime: int
+        """
+        self._MemberId = None
+        self._TaskStatus = None
+        self._StartTime = None
+        self._EndTime = None
+
+    @property
+    def MemberId(self):
+        r"""集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def TaskStatus(self):
+        r"""任务状态：0.未开始 1.执行中 2.执行成功 3.执行超时 4.执行失败
+        :rtype: int
+        """
+        return self._TaskStatus
+
+    @TaskStatus.setter
+    def TaskStatus(self, TaskStatus):
+        self._TaskStatus = TaskStatus
+
+    @property
+    def StartTime(self):
+        r"""开始时间
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""结束时间
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        self._TaskStatus = params.get("TaskStatus")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDspmExportTaskResponse(AbstractModel):
+    r"""DescribeDspmExportTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _List: 任务列表
+        :type List: list of ExportTask
+        :param _TotalCount: 任务总数
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._List = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def List(self):
+        r"""任务列表
+        :rtype: list of ExportTask
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def TotalCount(self):
+        r"""任务总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = ExportTask()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDspmIdentifyIdListRequest(AbstractModel):
+    r"""DescribeDspmIdentifyIdList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filter: 筛选项
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._Filter = None
+
+    @property
+    def Filter(self):
+        r"""筛选项
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDspmIdentifyIdListResponse(AbstractModel):
+    r"""DescribeDspmIdentifyIdList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: id总数
+        :type TotalCount: int
+        :param _IdSet: 身份id列表
+        :type IdSet: list of DspmIdentifyIdItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._IdSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""id总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def IdSet(self):
+        r"""身份id列表
+        :rtype: list of DspmIdentifyIdItem
+        """
+        return self._IdSet
+
+    @IdSet.setter
+    def IdSet(self, IdSet):
+        self._IdSet = IdSet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("IdSet") is not None:
+            self._IdSet = []
+            for item in params.get("IdSet"):
+                obj = DspmIdentifyIdItem()
+                obj._deserialize(item)
+                self._IdSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDspmIdentifyInfoListRequest(AbstractModel):
+    r"""DescribeDspmIdentifyInfoList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        :param _Filter: 筛选项
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._MemberId = None
+        self._Filter = None
+
+    @property
+    def MemberId(self):
+        r"""集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filter(self):
+        r"""筛选项
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDspmIdentifyInfoListResponse(AbstractModel):
+    r"""DescribeDspmIdentifyInfoList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 身份总数
+        :type TotalCount: int
+        :param _InfoSet: 身份 信息
+        :type InfoSet: list of DspmIdentifyInfoItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._InfoSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""身份总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def InfoSet(self):
+        r"""身份 信息
+        :rtype: list of DspmIdentifyInfoItem
+        """
+        return self._InfoSet
+
+    @InfoSet.setter
+    def InfoSet(self, InfoSet):
+        self._InfoSet = InfoSet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("InfoSet") is not None:
+            self._InfoSet = []
+            for item in params.get("InfoSet"):
+                obj = DspmIdentifyInfoItem()
+                obj._deserialize(item)
+                self._InfoSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDspmIdentifyInfoRequest(AbstractModel):
+    r"""DescribeDspmIdentifyInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        """
+        self._MemberId = None
+
+    @property
+    def MemberId(self):
+        r"""集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDspmIdentifyInfoResponse(AbstractModel):
+    r"""DescribeDspmIdentifyInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IdentifyId: 身份id
+        :type IdentifyId: str
+        :param _IdentifyCount: 身份统计信息
+        :type IdentifyCount: list of DspmIdentifyCount
+        :param _ApplyOrderCount: 申请单个数
+        :type ApplyOrderCount: int
+        :param _ApproveOrderCount: 审批单个数
+        :type ApproveOrderCount: int
+        :param _ApproveHistoryCount: 已审批个数
+        :type ApproveHistoryCount: int
+        :param _AssetCount: 资产总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssetCount: int
+        :param _UinAccountCount: 云账号总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UinAccountCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._IdentifyId = None
+        self._IdentifyCount = None
+        self._ApplyOrderCount = None
+        self._ApproveOrderCount = None
+        self._ApproveHistoryCount = None
+        self._AssetCount = None
+        self._UinAccountCount = None
+        self._RequestId = None
+
+    @property
+    def IdentifyId(self):
+        r"""身份id
+        :rtype: str
+        """
+        return self._IdentifyId
+
+    @IdentifyId.setter
+    def IdentifyId(self, IdentifyId):
+        self._IdentifyId = IdentifyId
+
+    @property
+    def IdentifyCount(self):
+        r"""身份统计信息
+        :rtype: list of DspmIdentifyCount
+        """
+        return self._IdentifyCount
+
+    @IdentifyCount.setter
+    def IdentifyCount(self, IdentifyCount):
+        self._IdentifyCount = IdentifyCount
+
+    @property
+    def ApplyOrderCount(self):
+        r"""申请单个数
+        :rtype: int
+        """
+        return self._ApplyOrderCount
+
+    @ApplyOrderCount.setter
+    def ApplyOrderCount(self, ApplyOrderCount):
+        self._ApplyOrderCount = ApplyOrderCount
+
+    @property
+    def ApproveOrderCount(self):
+        r"""审批单个数
+        :rtype: int
+        """
+        return self._ApproveOrderCount
+
+    @ApproveOrderCount.setter
+    def ApproveOrderCount(self, ApproveOrderCount):
+        self._ApproveOrderCount = ApproveOrderCount
+
+    @property
+    def ApproveHistoryCount(self):
+        r"""已审批个数
+        :rtype: int
+        """
+        return self._ApproveHistoryCount
+
+    @ApproveHistoryCount.setter
+    def ApproveHistoryCount(self, ApproveHistoryCount):
+        self._ApproveHistoryCount = ApproveHistoryCount
+
+    @property
+    def AssetCount(self):
+        r"""资产总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._AssetCount
+
+    @AssetCount.setter
+    def AssetCount(self, AssetCount):
+        self._AssetCount = AssetCount
+
+    @property
+    def UinAccountCount(self):
+        r"""云账号总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._UinAccountCount
+
+    @UinAccountCount.setter
+    def UinAccountCount(self, UinAccountCount):
+        self._UinAccountCount = UinAccountCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._IdentifyId = params.get("IdentifyId")
+        if params.get("IdentifyCount") is not None:
+            self._IdentifyCount = []
+            for item in params.get("IdentifyCount"):
+                obj = DspmIdentifyCount()
+                obj._deserialize(item)
+                self._IdentifyCount.append(obj)
+        self._ApplyOrderCount = params.get("ApplyOrderCount")
+        self._ApproveOrderCount = params.get("ApproveOrderCount")
+        self._ApproveHistoryCount = params.get("ApproveHistoryCount")
+        self._AssetCount = params.get("AssetCount")
+        self._UinAccountCount = params.get("UinAccountCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDspmLogListRequest(AbstractModel):
+    r"""DescribeDspmLogList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        :param _Limit: 限制数目
+        :type Limit: int
+        :param _Offset: 偏移量
+        :type Offset: int
+        :param _Sort: 排序方式(desc=倒叙,asc=升序)
+        :type Sort: str
+        :param _Field: 排序字段(opTime=时间,dangerLvl=风险等级)
+        :type Field: str
+        :param _DangerLevel: 风险等级(0-安全,1-低风险,2-中风险,3-高风险,不传全部)
+        :type DangerLevel: str
+        :param _DbName: 数据库名称
+        :type DbName: str
+        :param _DbPort: 数据库端口
+        :type DbPort: int
+        :param _DbIp: 数据库 IP
+        :type DbIp: str
+        :param _AssetsId: 资产 ID
+        :type AssetsId: int
+        :param _SessionId: 会话 ID
+        :type SessionId: str
+        :param _ClientSideIp: 客户端 IP
+        :type ClientSideIp: str
+        :param _EndTime: 结束时间
+        :type EndTime: int
+        :param _HitRule: 命中规则
+        :type HitRule: int
+        :param _StartTime: 开始时间
+        :type StartTime: int
+        :param _FuzzySearch: 模糊查询
+        :type FuzzySearch: str
+        :param _UserName: 用户名
+        :type UserName: str
+        :param _RestoreLogId: 恢复日志id
+        :type RestoreLogId: int
+        :param _ClientName: 客户端
+        :type ClientName: str
+        :param _SourceTypes: 流量来源，取值 Agent/Proxy/空；传Agent会返回Agent的日志，传Proxy会返回Proxy日志，两者都传或不传则返回所有
+        :type SourceTypes: list of str
+        :param _TableName: 表名，长度限制64，多个表名查询的话可以用空格连接
+        :type TableName: str
+        :param _FieldName: 字段名，长度限制64，多个字段名查询的话可以用空格连接
+        :type FieldName: str
+        :param _SqlMainTypes: SQL 主要类型，DDL, DML, DCL, TCL
+        :type SqlMainTypes: list of str
+        :param _SqlType: 操作类型
+        :type SqlType: str
+        :param _RowNumMin: 影响行数最小值 
+        :type RowNumMin: int
+        :param _RowNumMax: 影响行数最大值
+        :type RowNumMax: int
+        :param _DbTypes: 数据库类型
+        :type DbTypes: list of str
+        :param _RetNo: 返回码
+        :type RetNo: int
+        :param _ClientDriverName: 客户端工具
+        :type ClientDriverName: str
+        :param _ClientPort: 客户端端口
+        :type ClientPort: int
+        :param _LogId: 审计日志 ID
+        :type LogId: str
+        :param _DangerLevels: 风险等级数组(0-安全,1-低风险,2-中风险,3-高风险)
+        :type DangerLevels: list of int
+        :param _SensitiveCategoryRule: 字段分类
+        :type SensitiveCategoryRule: str
+        :param _SensitiveLevelRisk: 字段分级
+        :type SensitiveLevelRisk: str
+        :param _ClientMac: 客户端MAC
+        :type ClientMac: str
+        """
+        self._MemberId = None
+        self._Limit = None
+        self._Offset = None
+        self._Sort = None
+        self._Field = None
+        self._DangerLevel = None
+        self._DbName = None
+        self._DbPort = None
+        self._DbIp = None
+        self._AssetsId = None
+        self._SessionId = None
+        self._ClientSideIp = None
+        self._EndTime = None
+        self._HitRule = None
+        self._StartTime = None
+        self._FuzzySearch = None
+        self._UserName = None
+        self._RestoreLogId = None
+        self._ClientName = None
+        self._SourceTypes = None
+        self._TableName = None
+        self._FieldName = None
+        self._SqlMainTypes = None
+        self._SqlType = None
+        self._RowNumMin = None
+        self._RowNumMax = None
+        self._DbTypes = None
+        self._RetNo = None
+        self._ClientDriverName = None
+        self._ClientPort = None
+        self._LogId = None
+        self._DangerLevels = None
+        self._SensitiveCategoryRule = None
+        self._SensitiveLevelRisk = None
+        self._ClientMac = None
+
+    @property
+    def MemberId(self):
+        r"""集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Limit(self):
+        r"""限制数目
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""偏移量
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Sort(self):
+        r"""排序方式(desc=倒叙,asc=升序)
+        :rtype: str
+        """
+        return self._Sort
+
+    @Sort.setter
+    def Sort(self, Sort):
+        self._Sort = Sort
+
+    @property
+    def Field(self):
+        r"""排序字段(opTime=时间,dangerLvl=风险等级)
+        :rtype: str
+        """
+        return self._Field
+
+    @Field.setter
+    def Field(self, Field):
+        self._Field = Field
+
+    @property
+    def DangerLevel(self):
+        r"""风险等级(0-安全,1-低风险,2-中风险,3-高风险,不传全部)
+        :rtype: str
+        """
+        return self._DangerLevel
+
+    @DangerLevel.setter
+    def DangerLevel(self, DangerLevel):
+        self._DangerLevel = DangerLevel
+
+    @property
+    def DbName(self):
+        r"""数据库名称
+        :rtype: str
+        """
+        return self._DbName
+
+    @DbName.setter
+    def DbName(self, DbName):
+        self._DbName = DbName
+
+    @property
+    def DbPort(self):
+        r"""数据库端口
+        :rtype: int
+        """
+        return self._DbPort
+
+    @DbPort.setter
+    def DbPort(self, DbPort):
+        self._DbPort = DbPort
+
+    @property
+    def DbIp(self):
+        r"""数据库 IP
+        :rtype: str
+        """
+        return self._DbIp
+
+    @DbIp.setter
+    def DbIp(self, DbIp):
+        self._DbIp = DbIp
+
+    @property
+    def AssetsId(self):
+        r"""资产 ID
+        :rtype: int
+        """
+        return self._AssetsId
+
+    @AssetsId.setter
+    def AssetsId(self, AssetsId):
+        self._AssetsId = AssetsId
+
+    @property
+    def SessionId(self):
+        r"""会话 ID
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def ClientSideIp(self):
+        r"""客户端 IP
+        :rtype: str
+        """
+        return self._ClientSideIp
+
+    @ClientSideIp.setter
+    def ClientSideIp(self, ClientSideIp):
+        self._ClientSideIp = ClientSideIp
+
+    @property
+    def EndTime(self):
+        r"""结束时间
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def HitRule(self):
+        r"""命中规则
+        :rtype: int
+        """
+        return self._HitRule
+
+    @HitRule.setter
+    def HitRule(self, HitRule):
+        self._HitRule = HitRule
+
+    @property
+    def StartTime(self):
+        r"""开始时间
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def FuzzySearch(self):
+        r"""模糊查询
+        :rtype: str
+        """
+        return self._FuzzySearch
+
+    @FuzzySearch.setter
+    def FuzzySearch(self, FuzzySearch):
+        self._FuzzySearch = FuzzySearch
+
+    @property
+    def UserName(self):
+        r"""用户名
+        :rtype: str
+        """
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def RestoreLogId(self):
+        r"""恢复日志id
+        :rtype: int
+        """
+        return self._RestoreLogId
+
+    @RestoreLogId.setter
+    def RestoreLogId(self, RestoreLogId):
+        self._RestoreLogId = RestoreLogId
+
+    @property
+    def ClientName(self):
+        r"""客户端
+        :rtype: str
+        """
+        return self._ClientName
+
+    @ClientName.setter
+    def ClientName(self, ClientName):
+        self._ClientName = ClientName
+
+    @property
+    def SourceTypes(self):
+        r"""流量来源，取值 Agent/Proxy/空；传Agent会返回Agent的日志，传Proxy会返回Proxy日志，两者都传或不传则返回所有
+        :rtype: list of str
+        """
+        return self._SourceTypes
+
+    @SourceTypes.setter
+    def SourceTypes(self, SourceTypes):
+        self._SourceTypes = SourceTypes
+
+    @property
+    def TableName(self):
+        r"""表名，长度限制64，多个表名查询的话可以用空格连接
+        :rtype: str
+        """
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def FieldName(self):
+        r"""字段名，长度限制64，多个字段名查询的话可以用空格连接
+        :rtype: str
+        """
+        return self._FieldName
+
+    @FieldName.setter
+    def FieldName(self, FieldName):
+        self._FieldName = FieldName
+
+    @property
+    def SqlMainTypes(self):
+        r"""SQL 主要类型，DDL, DML, DCL, TCL
+        :rtype: list of str
+        """
+        return self._SqlMainTypes
+
+    @SqlMainTypes.setter
+    def SqlMainTypes(self, SqlMainTypes):
+        self._SqlMainTypes = SqlMainTypes
+
+    @property
+    def SqlType(self):
+        r"""操作类型
+        :rtype: str
+        """
+        return self._SqlType
+
+    @SqlType.setter
+    def SqlType(self, SqlType):
+        self._SqlType = SqlType
+
+    @property
+    def RowNumMin(self):
+        r"""影响行数最小值 
+        :rtype: int
+        """
+        return self._RowNumMin
+
+    @RowNumMin.setter
+    def RowNumMin(self, RowNumMin):
+        self._RowNumMin = RowNumMin
+
+    @property
+    def RowNumMax(self):
+        r"""影响行数最大值
+        :rtype: int
+        """
+        return self._RowNumMax
+
+    @RowNumMax.setter
+    def RowNumMax(self, RowNumMax):
+        self._RowNumMax = RowNumMax
+
+    @property
+    def DbTypes(self):
+        r"""数据库类型
+        :rtype: list of str
+        """
+        return self._DbTypes
+
+    @DbTypes.setter
+    def DbTypes(self, DbTypes):
+        self._DbTypes = DbTypes
+
+    @property
+    def RetNo(self):
+        r"""返回码
+        :rtype: int
+        """
+        return self._RetNo
+
+    @RetNo.setter
+    def RetNo(self, RetNo):
+        self._RetNo = RetNo
+
+    @property
+    def ClientDriverName(self):
+        r"""客户端工具
+        :rtype: str
+        """
+        return self._ClientDriverName
+
+    @ClientDriverName.setter
+    def ClientDriverName(self, ClientDriverName):
+        self._ClientDriverName = ClientDriverName
+
+    @property
+    def ClientPort(self):
+        r"""客户端端口
+        :rtype: int
+        """
+        return self._ClientPort
+
+    @ClientPort.setter
+    def ClientPort(self, ClientPort):
+        self._ClientPort = ClientPort
+
+    @property
+    def LogId(self):
+        r"""审计日志 ID
+        :rtype: str
+        """
+        return self._LogId
+
+    @LogId.setter
+    def LogId(self, LogId):
+        self._LogId = LogId
+
+    @property
+    def DangerLevels(self):
+        r"""风险等级数组(0-安全,1-低风险,2-中风险,3-高风险)
+        :rtype: list of int
+        """
+        return self._DangerLevels
+
+    @DangerLevels.setter
+    def DangerLevels(self, DangerLevels):
+        self._DangerLevels = DangerLevels
+
+    @property
+    def SensitiveCategoryRule(self):
+        r"""字段分类
+        :rtype: str
+        """
+        return self._SensitiveCategoryRule
+
+    @SensitiveCategoryRule.setter
+    def SensitiveCategoryRule(self, SensitiveCategoryRule):
+        self._SensitiveCategoryRule = SensitiveCategoryRule
+
+    @property
+    def SensitiveLevelRisk(self):
+        r"""字段分级
+        :rtype: str
+        """
+        return self._SensitiveLevelRisk
+
+    @SensitiveLevelRisk.setter
+    def SensitiveLevelRisk(self, SensitiveLevelRisk):
+        self._SensitiveLevelRisk = SensitiveLevelRisk
+
+    @property
+    def ClientMac(self):
+        r"""客户端MAC
+        :rtype: str
+        """
+        return self._ClientMac
+
+    @ClientMac.setter
+    def ClientMac(self, ClientMac):
+        self._ClientMac = ClientMac
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._Sort = params.get("Sort")
+        self._Field = params.get("Field")
+        self._DangerLevel = params.get("DangerLevel")
+        self._DbName = params.get("DbName")
+        self._DbPort = params.get("DbPort")
+        self._DbIp = params.get("DbIp")
+        self._AssetsId = params.get("AssetsId")
+        self._SessionId = params.get("SessionId")
+        self._ClientSideIp = params.get("ClientSideIp")
+        self._EndTime = params.get("EndTime")
+        self._HitRule = params.get("HitRule")
+        self._StartTime = params.get("StartTime")
+        self._FuzzySearch = params.get("FuzzySearch")
+        self._UserName = params.get("UserName")
+        self._RestoreLogId = params.get("RestoreLogId")
+        self._ClientName = params.get("ClientName")
+        self._SourceTypes = params.get("SourceTypes")
+        self._TableName = params.get("TableName")
+        self._FieldName = params.get("FieldName")
+        self._SqlMainTypes = params.get("SqlMainTypes")
+        self._SqlType = params.get("SqlType")
+        self._RowNumMin = params.get("RowNumMin")
+        self._RowNumMax = params.get("RowNumMax")
+        self._DbTypes = params.get("DbTypes")
+        self._RetNo = params.get("RetNo")
+        self._ClientDriverName = params.get("ClientDriverName")
+        self._ClientPort = params.get("ClientPort")
+        self._LogId = params.get("LogId")
+        self._DangerLevels = params.get("DangerLevels")
+        self._SensitiveCategoryRule = params.get("SensitiveCategoryRule")
+        self._SensitiveLevelRisk = params.get("SensitiveLevelRisk")
+        self._ClientMac = params.get("ClientMac")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDspmLogListResponse(AbstractModel):
+    r"""DescribeDspmLogList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 总数目
+        :type TotalCount: int
+        :param _List: 日志信息列表
+        :type List: list of AuditLogInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._List = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""总数目
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def List(self):
+        r"""日志信息列表
+        :rtype: list of AuditLogInfo
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = AuditLogInfo()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDspmPayInfoRequest(AbstractModel):
+    r"""DescribeDspmPayInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        """
+        self._MemberId = None
+
+    @property
+    def MemberId(self):
+        r"""集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDspmPayInfoResponse(AbstractModel):
+    r"""DescribeDspmPayInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppID: APPID
+        :type AppID: int
+        :param _OrderStatus: 订单状态 0未购买 1正常，2隔离，3销毁，6试用中，7到期
+        :type OrderStatus: int
+        :param _AssetNum: 已购数据库实例数量
+        :type AssetNum: int
+        :param _LogStorage: 已购审计日志量（TB）
+        :type LogStorage: float
+        :param _UsedAssetNum: 已使用数据库实例数量
+        :type UsedAssetNum: int
+        :param _UsedLogStorage: 已使用审计日志量（TB）
+        :type UsedLogStorage: float
+        :param _SqlTotal: 已购sql存储总量（单位百万）
+        :type SqlTotal: int
+        :param _SqlQps: 已购sql qps
+        :type SqlQps: int
+        :param _PayMode: 支付模式，0-后付费 1-预付费
+        :type PayMode: int
+        :param _IsSelfBuy: 是否单独购买，1-单独购买，2-被其它账号共享
+        :type IsSelfBuy: int
+        :param _BeginTime: 订单开始时间
+        :type BeginTime: str
+        :param _EndTime: 订单到期时间
+        :type EndTime: str
+        :param _AutoRenew: 0-用户未设置,1-用户设置自动续费,2-用户设置不自动续费
+        :type AutoRenew: int
+        :param _TimeSpan: 订单时长
+        :type TimeSpan: int
+        :param _TimeUnit: 时长单位
+        :type TimeUnit: str
+        :param _ResourceId: 资源id
+        :type ResourceId: str
+        :param _BetaEndTime: 公测结束时间
+        :type BetaEndTime: str
+        :param _TimeNow: 系统当前时间
+        :type TimeNow: str
+        :param _IsShareToOther: 是否分享给其它账号，1-是，2-否
+        :type IsShareToOther: int
+        :param _Uin: uin
+        :type Uin: str
+        :param _NickName: 昵称
+        :type NickName: str
+        :param _InquireData: 购买信息
+        :type InquireData: list of InquireInfo
+        :param _Version: 版本(专业版：professional 试用版：trial)
+        :type Version: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._AppID = None
+        self._OrderStatus = None
+        self._AssetNum = None
+        self._LogStorage = None
+        self._UsedAssetNum = None
+        self._UsedLogStorage = None
+        self._SqlTotal = None
+        self._SqlQps = None
+        self._PayMode = None
+        self._IsSelfBuy = None
+        self._BeginTime = None
+        self._EndTime = None
+        self._AutoRenew = None
+        self._TimeSpan = None
+        self._TimeUnit = None
+        self._ResourceId = None
+        self._BetaEndTime = None
+        self._TimeNow = None
+        self._IsShareToOther = None
+        self._Uin = None
+        self._NickName = None
+        self._InquireData = None
+        self._Version = None
+        self._RequestId = None
+
+    @property
+    def AppID(self):
+        r"""APPID
+        :rtype: int
+        """
+        return self._AppID
+
+    @AppID.setter
+    def AppID(self, AppID):
+        self._AppID = AppID
+
+    @property
+    def OrderStatus(self):
+        r"""订单状态 0未购买 1正常，2隔离，3销毁，6试用中，7到期
+        :rtype: int
+        """
+        return self._OrderStatus
+
+    @OrderStatus.setter
+    def OrderStatus(self, OrderStatus):
+        self._OrderStatus = OrderStatus
+
+    @property
+    def AssetNum(self):
+        r"""已购数据库实例数量
+        :rtype: int
+        """
+        return self._AssetNum
+
+    @AssetNum.setter
+    def AssetNum(self, AssetNum):
+        self._AssetNum = AssetNum
+
+    @property
+    def LogStorage(self):
+        r"""已购审计日志量（TB）
+        :rtype: float
+        """
+        return self._LogStorage
+
+    @LogStorage.setter
+    def LogStorage(self, LogStorage):
+        self._LogStorage = LogStorage
+
+    @property
+    def UsedAssetNum(self):
+        r"""已使用数据库实例数量
+        :rtype: int
+        """
+        return self._UsedAssetNum
+
+    @UsedAssetNum.setter
+    def UsedAssetNum(self, UsedAssetNum):
+        self._UsedAssetNum = UsedAssetNum
+
+    @property
+    def UsedLogStorage(self):
+        r"""已使用审计日志量（TB）
+        :rtype: float
+        """
+        return self._UsedLogStorage
+
+    @UsedLogStorage.setter
+    def UsedLogStorage(self, UsedLogStorage):
+        self._UsedLogStorage = UsedLogStorage
+
+    @property
+    def SqlTotal(self):
+        r"""已购sql存储总量（单位百万）
+        :rtype: int
+        """
+        return self._SqlTotal
+
+    @SqlTotal.setter
+    def SqlTotal(self, SqlTotal):
+        self._SqlTotal = SqlTotal
+
+    @property
+    def SqlQps(self):
+        r"""已购sql qps
+        :rtype: int
+        """
+        return self._SqlQps
+
+    @SqlQps.setter
+    def SqlQps(self, SqlQps):
+        self._SqlQps = SqlQps
+
+    @property
+    def PayMode(self):
+        r"""支付模式，0-后付费 1-预付费
+        :rtype: int
+        """
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def IsSelfBuy(self):
+        r"""是否单独购买，1-单独购买，2-被其它账号共享
+        :rtype: int
+        """
+        return self._IsSelfBuy
+
+    @IsSelfBuy.setter
+    def IsSelfBuy(self, IsSelfBuy):
+        self._IsSelfBuy = IsSelfBuy
+
+    @property
+    def BeginTime(self):
+        r"""订单开始时间
+        :rtype: str
+        """
+        return self._BeginTime
+
+    @BeginTime.setter
+    def BeginTime(self, BeginTime):
+        self._BeginTime = BeginTime
+
+    @property
+    def EndTime(self):
+        r"""订单到期时间
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def AutoRenew(self):
+        r"""0-用户未设置,1-用户设置自动续费,2-用户设置不自动续费
+        :rtype: int
+        """
+        return self._AutoRenew
+
+    @AutoRenew.setter
+    def AutoRenew(self, AutoRenew):
+        self._AutoRenew = AutoRenew
+
+    @property
+    def TimeSpan(self):
+        r"""订单时长
+        :rtype: int
+        """
+        return self._TimeSpan
+
+    @TimeSpan.setter
+    def TimeSpan(self, TimeSpan):
+        self._TimeSpan = TimeSpan
+
+    @property
+    def TimeUnit(self):
+        r"""时长单位
+        :rtype: str
+        """
+        return self._TimeUnit
+
+    @TimeUnit.setter
+    def TimeUnit(self, TimeUnit):
+        self._TimeUnit = TimeUnit
+
+    @property
+    def ResourceId(self):
+        r"""资源id
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def BetaEndTime(self):
+        r"""公测结束时间
+        :rtype: str
+        """
+        return self._BetaEndTime
+
+    @BetaEndTime.setter
+    def BetaEndTime(self, BetaEndTime):
+        self._BetaEndTime = BetaEndTime
+
+    @property
+    def TimeNow(self):
+        r"""系统当前时间
+        :rtype: str
+        """
+        return self._TimeNow
+
+    @TimeNow.setter
+    def TimeNow(self, TimeNow):
+        self._TimeNow = TimeNow
+
+    @property
+    def IsShareToOther(self):
+        r"""是否分享给其它账号，1-是，2-否
+        :rtype: int
+        """
+        return self._IsShareToOther
+
+    @IsShareToOther.setter
+    def IsShareToOther(self, IsShareToOther):
+        self._IsShareToOther = IsShareToOther
+
+    @property
+    def Uin(self):
+        r"""uin
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def NickName(self):
+        r"""昵称
+        :rtype: str
+        """
+        return self._NickName
+
+    @NickName.setter
+    def NickName(self, NickName):
+        self._NickName = NickName
+
+    @property
+    def InquireData(self):
+        r"""购买信息
+        :rtype: list of InquireInfo
+        """
+        return self._InquireData
+
+    @InquireData.setter
+    def InquireData(self, InquireData):
+        self._InquireData = InquireData
+
+    @property
+    def Version(self):
+        r"""版本(专业版：professional 试用版：trial)
+        :rtype: str
+        """
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._AppID = params.get("AppID")
+        self._OrderStatus = params.get("OrderStatus")
+        self._AssetNum = params.get("AssetNum")
+        self._LogStorage = params.get("LogStorage")
+        self._UsedAssetNum = params.get("UsedAssetNum")
+        self._UsedLogStorage = params.get("UsedLogStorage")
+        self._SqlTotal = params.get("SqlTotal")
+        self._SqlQps = params.get("SqlQps")
+        self._PayMode = params.get("PayMode")
+        self._IsSelfBuy = params.get("IsSelfBuy")
+        self._BeginTime = params.get("BeginTime")
+        self._EndTime = params.get("EndTime")
+        self._AutoRenew = params.get("AutoRenew")
+        self._TimeSpan = params.get("TimeSpan")
+        self._TimeUnit = params.get("TimeUnit")
+        self._ResourceId = params.get("ResourceId")
+        self._BetaEndTime = params.get("BetaEndTime")
+        self._TimeNow = params.get("TimeNow")
+        self._IsShareToOther = params.get("IsShareToOther")
+        self._Uin = params.get("Uin")
+        self._NickName = params.get("NickName")
+        if params.get("InquireData") is not None:
+            self._InquireData = []
+            for item in params.get("InquireData"):
+                obj = InquireInfo()
+                obj._deserialize(item)
+                self._InquireData.append(obj)
+        self._Version = params.get("Version")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDspmPersonApplyHistoryRequest(AbstractModel):
+    r"""DescribeDspmPersonApplyHistory请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Subject: 对象
+        :type Subject: str
+        :param _AssetId: 资产id
+        :type AssetId: str
+        :param _Filter: 筛选项
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._Subject = None
+        self._AssetId = None
+        self._Filter = None
+
+    @property
+    def Subject(self):
+        r"""对象
+        :rtype: str
+        """
+        return self._Subject
+
+    @Subject.setter
+    def Subject(self, Subject):
+        self._Subject = Subject
+
+    @property
+    def AssetId(self):
+        r"""资产id
+        :rtype: str
+        """
+        return self._AssetId
+
+    @AssetId.setter
+    def AssetId(self, AssetId):
+        self._AssetId = AssetId
+
+    @property
+    def Filter(self):
+        r"""筛选项
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._Subject = params.get("Subject")
+        self._AssetId = params.get("AssetId")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDspmPersonApplyHistoryResponse(AbstractModel):
+    r"""DescribeDspmPersonApplyHistory返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 申请记录总数
+        :type TotalCount: int
+        :param _ApplySet: 申请记录信息
+        :type ApplySet: list of DspmPersonApplyHistoryItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._ApplySet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""申请记录总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def ApplySet(self):
+        r"""申请记录信息
+        :rtype: list of DspmPersonApplyHistoryItem
+        """
+        return self._ApplySet
+
+    @ApplySet.setter
+    def ApplySet(self, ApplySet):
+        self._ApplySet = ApplySet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("ApplySet") is not None:
+            self._ApplySet = []
+            for item in params.get("ApplySet"):
+                obj = DspmPersonApplyHistoryItem()
+                obj._deserialize(item)
+                self._ApplySet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDspmPersonalIdentifyListRequest(AbstractModel):
+    r"""DescribeDspmPersonalIdentifyList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filter: 筛选项
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._Filter = None
+
+    @property
+    def Filter(self):
+        r"""筛选项
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDspmPersonalIdentifyListResponse(AbstractModel):
+    r"""DescribeDspmPersonalIdentifyList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 身份总数
+        :type TotalCount: int
+        :param _InfoSet: 个人身份信息
+        :type InfoSet: list of DspmPersonIdentifyItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._InfoSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""身份总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def InfoSet(self):
+        r"""个人身份信息
+        :rtype: list of DspmPersonIdentifyItem
+        """
+        return self._InfoSet
+
+    @InfoSet.setter
+    def InfoSet(self, InfoSet):
+        self._InfoSet = InfoSet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("InfoSet") is not None:
+            self._InfoSet = []
+            for item in params.get("InfoSet"):
+                obj = DspmPersonIdentifyItem()
+                obj._deserialize(item)
+                self._InfoSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDspmRiskDetailRequest(AbstractModel):
+    r"""DescribeDspmRiskDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        :param _Filter: 过滤器
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        :param _RiskId: 风险id
+        :type RiskId: str
+        """
+        self._MemberId = None
+        self._Filter = None
+        self._RiskId = None
+
+    @property
+    def MemberId(self):
+        r"""集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filter(self):
+        r"""过滤器
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+    @property
+    def RiskId(self):
+        r"""风险id
+        :rtype: str
+        """
+        return self._RiskId
+
+    @RiskId.setter
+    def RiskId(self, RiskId):
+        self._RiskId = RiskId
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        self._RiskId = params.get("RiskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDspmRiskDetailResponse(AbstractModel):
+    r"""DescribeDspmRiskDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RiskLevel: 风险等级
+        :type RiskLevel: str
+        :param _DetectTime: 风险检出时间
+        :type DetectTime: str
+        :param _AssetId: 资产实例Id
+        :type AssetId: str
+        :param _AssetName: 资产名
+        :type AssetName: str
+        :param _AssetType: 资产类型
+        :type AssetType: str
+        :param _Region: 地域
+        :type Region: str
+        :param _PublicIp: 公网访问地址
+        :type PublicIp: str
+        :param _PrivateIp: 内网访问地址
+        :type PrivateIp: str
+        :param _Account: 账号
+        :type Account: str
+        :param _Host: 主机地址
+        :type Host: str
+        :param _IdentifyId: 身份id
+        :type IdentifyId: str
+        :param _OwnerUin: 所属云账号uin用户
+        :type OwnerUin: :class:`tencentcloud.csip.v20221121.models.DspmUinUser`
+        :param _Person: 所属个人用户信息
+        :type Person: :class:`tencentcloud.csip.v20221121.models.DspmPersonUser`
+        :param _RiskName: 风险名称
+        :type RiskName: str
+        :param _RiskNameEn: 风险英文名称
+        :type RiskNameEn: str
+        :param _RiskData: 风险数据
+        :type RiskData: str
+        :param _BaselineData: 基线数据
+        :type BaselineData: str
+        :param _RiskId: 风险id
+        :type RiskId: str
+        :param _StrategyType: 策略类型
+        :type StrategyType: str
+        :param _StrategyCategory: 策略类别
+        :type StrategyCategory: str
+        :param _AccountType: 账号类型
+        :type AccountType: int
+        :param _Status: 风险状态
+        :type Status: int
+        :param _IsAssetManager: 是否资产管理员
+        :type IsAssetManager: int
+        :param _DataBeginTime: 数据起始时间
+        :type DataBeginTime: str
+        :param _DataEndTime: 数据结束时间
+        :type DataEndTime: str
+        :param _RiskType: 风险类型。risk-风险；alarm-告警。
+        :type RiskType: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RiskLevel = None
+        self._DetectTime = None
+        self._AssetId = None
+        self._AssetName = None
+        self._AssetType = None
+        self._Region = None
+        self._PublicIp = None
+        self._PrivateIp = None
+        self._Account = None
+        self._Host = None
+        self._IdentifyId = None
+        self._OwnerUin = None
+        self._Person = None
+        self._RiskName = None
+        self._RiskNameEn = None
+        self._RiskData = None
+        self._BaselineData = None
+        self._RiskId = None
+        self._StrategyType = None
+        self._StrategyCategory = None
+        self._AccountType = None
+        self._Status = None
+        self._IsAssetManager = None
+        self._DataBeginTime = None
+        self._DataEndTime = None
+        self._RiskType = None
+        self._RequestId = None
+
+    @property
+    def RiskLevel(self):
+        r"""风险等级
+        :rtype: str
+        """
+        return self._RiskLevel
+
+    @RiskLevel.setter
+    def RiskLevel(self, RiskLevel):
+        self._RiskLevel = RiskLevel
+
+    @property
+    def DetectTime(self):
+        r"""风险检出时间
+        :rtype: str
+        """
+        return self._DetectTime
+
+    @DetectTime.setter
+    def DetectTime(self, DetectTime):
+        self._DetectTime = DetectTime
+
+    @property
+    def AssetId(self):
+        r"""资产实例Id
+        :rtype: str
+        """
+        return self._AssetId
+
+    @AssetId.setter
+    def AssetId(self, AssetId):
+        self._AssetId = AssetId
+
+    @property
+    def AssetName(self):
+        r"""资产名
+        :rtype: str
+        """
+        return self._AssetName
+
+    @AssetName.setter
+    def AssetName(self, AssetName):
+        self._AssetName = AssetName
+
+    @property
+    def AssetType(self):
+        r"""资产类型
+        :rtype: str
+        """
+        return self._AssetType
+
+    @AssetType.setter
+    def AssetType(self, AssetType):
+        self._AssetType = AssetType
+
+    @property
+    def Region(self):
+        r"""地域
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def PublicIp(self):
+        r"""公网访问地址
+        :rtype: str
+        """
+        return self._PublicIp
+
+    @PublicIp.setter
+    def PublicIp(self, PublicIp):
+        self._PublicIp = PublicIp
+
+    @property
+    def PrivateIp(self):
+        r"""内网访问地址
+        :rtype: str
+        """
+        return self._PrivateIp
+
+    @PrivateIp.setter
+    def PrivateIp(self, PrivateIp):
+        self._PrivateIp = PrivateIp
+
+    @property
+    def Account(self):
+        r"""账号
+        :rtype: str
+        """
+        return self._Account
+
+    @Account.setter
+    def Account(self, Account):
+        self._Account = Account
+
+    @property
+    def Host(self):
+        r"""主机地址
+        :rtype: str
+        """
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+    @property
+    def IdentifyId(self):
+        r"""身份id
+        :rtype: str
+        """
+        return self._IdentifyId
+
+    @IdentifyId.setter
+    def IdentifyId(self, IdentifyId):
+        self._IdentifyId = IdentifyId
+
+    @property
+    def OwnerUin(self):
+        r"""所属云账号uin用户
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DspmUinUser`
+        """
+        return self._OwnerUin
+
+    @OwnerUin.setter
+    def OwnerUin(self, OwnerUin):
+        self._OwnerUin = OwnerUin
+
+    @property
+    def Person(self):
+        r"""所属个人用户信息
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DspmPersonUser`
+        """
+        return self._Person
+
+    @Person.setter
+    def Person(self, Person):
+        self._Person = Person
+
+    @property
+    def RiskName(self):
+        r"""风险名称
+        :rtype: str
+        """
+        return self._RiskName
+
+    @RiskName.setter
+    def RiskName(self, RiskName):
+        self._RiskName = RiskName
+
+    @property
+    def RiskNameEn(self):
+        r"""风险英文名称
+        :rtype: str
+        """
+        return self._RiskNameEn
+
+    @RiskNameEn.setter
+    def RiskNameEn(self, RiskNameEn):
+        self._RiskNameEn = RiskNameEn
+
+    @property
+    def RiskData(self):
+        r"""风险数据
+        :rtype: str
+        """
+        return self._RiskData
+
+    @RiskData.setter
+    def RiskData(self, RiskData):
+        self._RiskData = RiskData
+
+    @property
+    def BaselineData(self):
+        r"""基线数据
+        :rtype: str
+        """
+        return self._BaselineData
+
+    @BaselineData.setter
+    def BaselineData(self, BaselineData):
+        self._BaselineData = BaselineData
+
+    @property
+    def RiskId(self):
+        r"""风险id
+        :rtype: str
+        """
+        return self._RiskId
+
+    @RiskId.setter
+    def RiskId(self, RiskId):
+        self._RiskId = RiskId
+
+    @property
+    def StrategyType(self):
+        r"""策略类型
+        :rtype: str
+        """
+        return self._StrategyType
+
+    @StrategyType.setter
+    def StrategyType(self, StrategyType):
+        self._StrategyType = StrategyType
+
+    @property
+    def StrategyCategory(self):
+        r"""策略类别
+        :rtype: str
+        """
+        return self._StrategyCategory
+
+    @StrategyCategory.setter
+    def StrategyCategory(self, StrategyCategory):
+        self._StrategyCategory = StrategyCategory
+
+    @property
+    def AccountType(self):
+        r"""账号类型
+        :rtype: int
+        """
+        return self._AccountType
+
+    @AccountType.setter
+    def AccountType(self, AccountType):
+        self._AccountType = AccountType
+
+    @property
+    def Status(self):
+        r"""风险状态
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def IsAssetManager(self):
+        r"""是否资产管理员
+        :rtype: int
+        """
+        return self._IsAssetManager
+
+    @IsAssetManager.setter
+    def IsAssetManager(self, IsAssetManager):
+        self._IsAssetManager = IsAssetManager
+
+    @property
+    def DataBeginTime(self):
+        r"""数据起始时间
+        :rtype: str
+        """
+        return self._DataBeginTime
+
+    @DataBeginTime.setter
+    def DataBeginTime(self, DataBeginTime):
+        self._DataBeginTime = DataBeginTime
+
+    @property
+    def DataEndTime(self):
+        r"""数据结束时间
+        :rtype: str
+        """
+        return self._DataEndTime
+
+    @DataEndTime.setter
+    def DataEndTime(self, DataEndTime):
+        self._DataEndTime = DataEndTime
+
+    @property
+    def RiskType(self):
+        r"""风险类型。risk-风险；alarm-告警。
+        :rtype: str
+        """
+        return self._RiskType
+
+    @RiskType.setter
+    def RiskType(self, RiskType):
+        self._RiskType = RiskType
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RiskLevel = params.get("RiskLevel")
+        self._DetectTime = params.get("DetectTime")
+        self._AssetId = params.get("AssetId")
+        self._AssetName = params.get("AssetName")
+        self._AssetType = params.get("AssetType")
+        self._Region = params.get("Region")
+        self._PublicIp = params.get("PublicIp")
+        self._PrivateIp = params.get("PrivateIp")
+        self._Account = params.get("Account")
+        self._Host = params.get("Host")
+        self._IdentifyId = params.get("IdentifyId")
+        if params.get("OwnerUin") is not None:
+            self._OwnerUin = DspmUinUser()
+            self._OwnerUin._deserialize(params.get("OwnerUin"))
+        if params.get("Person") is not None:
+            self._Person = DspmPersonUser()
+            self._Person._deserialize(params.get("Person"))
+        self._RiskName = params.get("RiskName")
+        self._RiskNameEn = params.get("RiskNameEn")
+        self._RiskData = params.get("RiskData")
+        self._BaselineData = params.get("BaselineData")
+        self._RiskId = params.get("RiskId")
+        self._StrategyType = params.get("StrategyType")
+        self._StrategyCategory = params.get("StrategyCategory")
+        self._AccountType = params.get("AccountType")
+        self._Status = params.get("Status")
+        self._IsAssetManager = params.get("IsAssetManager")
+        self._DataBeginTime = params.get("DataBeginTime")
+        self._DataEndTime = params.get("DataEndTime")
+        self._RiskType = params.get("RiskType")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDspmRiskRequest(AbstractModel):
+    r"""DescribeDspmRisk请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        :param _Filter: 过滤器
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._MemberId = None
+        self._Filter = None
+
+    @property
+    def MemberId(self):
+        r"""集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filter(self):
+        r"""过滤器
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDspmRiskResponse(AbstractModel):
+    r"""DescribeDspmRisk返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RiskSet: 风险列表
+        :type RiskSet: list of DspmRisk
+        :param _TotalCount: 风险总数
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RiskSet = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def RiskSet(self):
+        r"""风险列表
+        :rtype: list of DspmRisk
+        """
+        return self._RiskSet
+
+    @RiskSet.setter
+    def RiskSet(self, RiskSet):
+        self._RiskSet = RiskSet
+
+    @property
+    def TotalCount(self):
+        r"""风险总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("RiskSet") is not None:
+            self._RiskSet = []
+            for item in params.get("RiskSet"):
+                obj = DspmRisk()
+                obj._deserialize(item)
+                self._RiskSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDspmRiskStrategyGroupRequest(AbstractModel):
+    r"""DescribeDspmRiskStrategyGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        :param _Filter: 过滤器
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._MemberId = None
+        self._Filter = None
+
+    @property
+    def MemberId(self):
+        r"""集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filter(self):
+        r"""过滤器
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDspmRiskStrategyGroupResponse(AbstractModel):
+    r"""DescribeDspmRiskStrategyGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StrategyGroupSet: 分组策略列表
+        :type StrategyGroupSet: list of DspmRiskStrategyGroup
+        :param _TotalCount: 分组策略总数
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._StrategyGroupSet = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def StrategyGroupSet(self):
+        r"""分组策略列表
+        :rtype: list of DspmRiskStrategyGroup
+        """
+        return self._StrategyGroupSet
+
+    @StrategyGroupSet.setter
+    def StrategyGroupSet(self, StrategyGroupSet):
+        self._StrategyGroupSet = StrategyGroupSet
+
+    @property
+    def TotalCount(self):
+        r"""分组策略总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("StrategyGroupSet") is not None:
+            self._StrategyGroupSet = []
+            for item in params.get("StrategyGroupSet"):
+                obj = DspmRiskStrategyGroup()
+                obj._deserialize(item)
+                self._StrategyGroupSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDspmRiskStrategyRequest(AbstractModel):
+    r"""DescribeDspmRiskStrategy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        :param _Filter: 过滤器
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._MemberId = None
+        self._Filter = None
+
+    @property
+    def MemberId(self):
+        r"""集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filter(self):
+        r"""过滤器
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDspmRiskStrategyResponse(AbstractModel):
+    r"""DescribeDspmRiskStrategy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StrategySet: 策略列表
+        :type StrategySet: list of DspmRiskStrategy
+        :param _TotalCount: 策略总数
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._StrategySet = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def StrategySet(self):
+        r"""策略列表
+        :rtype: list of DspmRiskStrategy
+        """
+        return self._StrategySet
+
+    @StrategySet.setter
+    def StrategySet(self, StrategySet):
+        self._StrategySet = StrategySet
+
+    @property
+    def TotalCount(self):
+        r"""策略总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("StrategySet") is not None:
+            self._StrategySet = []
+            for item in params.get("StrategySet"):
+                obj = DspmRiskStrategy()
+                obj._deserialize(item)
+                self._StrategySet.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDspmRiskTendencyRequest(AbstractModel):
+    r"""DescribeDspmRiskTendency请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        :param _StartDate: 起始日期
+        :type StartDate: str
+        :param _EndDate: 结束日期
+        :type EndDate: str
+        """
+        self._MemberId = None
+        self._StartDate = None
+        self._EndDate = None
+
+    @property
+    def MemberId(self):
+        r"""集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def StartDate(self):
+        r"""起始日期
+        :rtype: str
+        """
+        return self._StartDate
+
+    @StartDate.setter
+    def StartDate(self, StartDate):
+        self._StartDate = StartDate
+
+    @property
+    def EndDate(self):
+        r"""结束日期
+        :rtype: str
+        """
+        return self._EndDate
+
+    @EndDate.setter
+    def EndDate(self, EndDate):
+        self._EndDate = EndDate
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        self._StartDate = params.get("StartDate")
+        self._EndDate = params.get("EndDate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDspmRiskTendencyResponse(AbstractModel):
+    r"""DescribeDspmRiskTendency返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RiskTendencySet: 风险趋势
+        :type RiskTendencySet: list of DspmRiskTendency
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RiskTendencySet = None
+        self._RequestId = None
+
+    @property
+    def RiskTendencySet(self):
+        r"""风险趋势
+        :rtype: list of DspmRiskTendency
+        """
+        return self._RiskTendencySet
+
+    @RiskTendencySet.setter
+    def RiskTendencySet(self, RiskTendencySet):
+        self._RiskTendencySet = RiskTendencySet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("RiskTendencySet") is not None:
+            self._RiskTendencySet = []
+            for item in params.get("RiskTendencySet"):
+                obj = DspmRiskTendency()
+                obj._deserialize(item)
+                self._RiskTendencySet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDspmStatisticsRequest(AbstractModel):
+    r"""DescribeDspmStatistics请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        """
+        self._MemberId = None
+
+    @property
+    def MemberId(self):
+        r"""集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDspmStatisticsResponse(AbstractModel):
+    r"""DescribeDspmStatistics返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AssetCount: 资产统计信息
+        :type AssetCount: :class:`tencentcloud.csip.v20221121.models.DspmAssetCount`
+        :param _IpCount: 访问Ip统计信息
+        :type IpCount: :class:`tencentcloud.csip.v20221121.models.DspmIpCount`
+        :param _UserCount: 用户账号统计信息
+        :type UserCount: :class:`tencentcloud.csip.v20221121.models.DspmAccountCount`
+        :param _RiskCount: 风险统计信息
+        :type RiskCount: :class:`tencentcloud.csip.v20221121.models.DspmRiskCount`
+        :param _AnalyseAssetStatusCount: 资产安全分析统计信息
+        :type AnalyseAssetStatusCount: :class:`tencentcloud.csip.v20221121.models.DspmSecurityAnalyseStatusCount`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._AssetCount = None
+        self._IpCount = None
+        self._UserCount = None
+        self._RiskCount = None
+        self._AnalyseAssetStatusCount = None
+        self._RequestId = None
+
+    @property
+    def AssetCount(self):
+        r"""资产统计信息
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DspmAssetCount`
+        """
+        return self._AssetCount
+
+    @AssetCount.setter
+    def AssetCount(self, AssetCount):
+        self._AssetCount = AssetCount
+
+    @property
+    def IpCount(self):
+        r"""访问Ip统计信息
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DspmIpCount`
+        """
+        return self._IpCount
+
+    @IpCount.setter
+    def IpCount(self, IpCount):
+        self._IpCount = IpCount
+
+    @property
+    def UserCount(self):
+        r"""用户账号统计信息
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DspmAccountCount`
+        """
+        return self._UserCount
+
+    @UserCount.setter
+    def UserCount(self, UserCount):
+        self._UserCount = UserCount
+
+    @property
+    def RiskCount(self):
+        r"""风险统计信息
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DspmRiskCount`
+        """
+        return self._RiskCount
+
+    @RiskCount.setter
+    def RiskCount(self, RiskCount):
+        self._RiskCount = RiskCount
+
+    @property
+    def AnalyseAssetStatusCount(self):
+        r"""资产安全分析统计信息
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DspmSecurityAnalyseStatusCount`
+        """
+        return self._AnalyseAssetStatusCount
+
+    @AnalyseAssetStatusCount.setter
+    def AnalyseAssetStatusCount(self, AnalyseAssetStatusCount):
+        self._AnalyseAssetStatusCount = AnalyseAssetStatusCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("AssetCount") is not None:
+            self._AssetCount = DspmAssetCount()
+            self._AssetCount._deserialize(params.get("AssetCount"))
+        if params.get("IpCount") is not None:
+            self._IpCount = DspmIpCount()
+            self._IpCount._deserialize(params.get("IpCount"))
+        if params.get("UserCount") is not None:
+            self._UserCount = DspmAccountCount()
+            self._UserCount._deserialize(params.get("UserCount"))
+        if params.get("RiskCount") is not None:
+            self._RiskCount = DspmRiskCount()
+            self._RiskCount._deserialize(params.get("RiskCount"))
+        if params.get("AnalyseAssetStatusCount") is not None:
+            self._AnalyseAssetStatusCount = DspmSecurityAnalyseStatusCount()
+            self._AnalyseAssetStatusCount._deserialize(params.get("AnalyseAssetStatusCount"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDspmSupportedAssetTypeRequest(AbstractModel):
+    r"""DescribeDspmSupportedAssetType请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        """
+        self._MemberId = None
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDspmSupportedAssetTypeResponse(AbstractModel):
+    r"""DescribeDspmSupportedAssetType返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AssetTypeSet: <p>实例支持的全局权限。</p>
+        :type AssetTypeSet: list of DspmSupportedAssetType
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._AssetTypeSet = None
+        self._RequestId = None
+
+    @property
+    def AssetTypeSet(self):
+        r"""<p>实例支持的全局权限。</p>
+        :rtype: list of DspmSupportedAssetType
+        """
+        return self._AssetTypeSet
+
+    @AssetTypeSet.setter
+    def AssetTypeSet(self, AssetTypeSet):
+        self._AssetTypeSet = AssetTypeSet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("AssetTypeSet") is not None:
+            self._AssetTypeSet = []
+            for item in params.get("AssetTypeSet"):
+                obj = DspmSupportedAssetType()
+                obj._deserialize(item)
+                self._AssetTypeSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDspmSyncAssetsStatusRequest(AbstractModel):
+    r"""DescribeDspmSyncAssetsStatus请求参数结构体
+
+    """
+
+
+class DescribeDspmSyncAssetsStatusResponse(AbstractModel):
+    r"""DescribeDspmSyncAssetsStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 资产同步任务状态。0-未执行。1-执行中
+        :type Status: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Status = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        r"""资产同步任务状态。0-未执行。1-执行中
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDspmSyncUsersStatusRequest(AbstractModel):
+    r"""DescribeDspmSyncUsersStatus请求参数结构体
+
+    """
+
+
+class DescribeDspmSyncUsersStatusResponse(AbstractModel):
+    r"""DescribeDspmSyncUsersStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 用户同步任务状态。0-未执行。1-执行中
+        :type Status: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Status = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        r"""用户同步任务状态。0-未执行。1-执行中
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDspmWhitelistStrategyRequest(AbstractModel):
+    r"""DescribeDspmWhitelistStrategy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        :param _Filter: 过滤器
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._MemberId = None
+        self._Filter = None
+
+    @property
+    def MemberId(self):
+        r"""集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filter(self):
+        r"""过滤器
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDspmWhitelistStrategyResponse(AbstractModel):
+    r"""DescribeDspmWhitelistStrategy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WhitelistSet: 白名单列表
+        :type WhitelistSet: list of DspmWhitelistStrategy
+        :param _TotalCount: 白名单总数
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._WhitelistSet = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def WhitelistSet(self):
+        r"""白名单列表
+        :rtype: list of DspmWhitelistStrategy
+        """
+        return self._WhitelistSet
+
+    @WhitelistSet.setter
+    def WhitelistSet(self, WhitelistSet):
+        self._WhitelistSet = WhitelistSet
+
+    @property
+    def TotalCount(self):
+        r"""白名单总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("WhitelistSet") is not None:
+            self._WhitelistSet = []
+            for item in params.get("WhitelistSet"):
+                obj = DspmWhitelistStrategy()
+                obj._deserialize(item)
+                self._WhitelistSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -24242,6 +33773,137 @@ class DescribeUserCallRecordResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeUserDspmInfoListRequest(AbstractModel):
+    r"""DescribeUserDspmInfoList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        :param _Filter: 过滤条件
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._MemberId = None
+        self._Filter = None
+
+    @property
+    def MemberId(self):
+        r"""集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filter(self):
+        r"""过滤条件
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeUserDspmInfoListResponse(AbstractModel):
+    r"""DescribeUserDspmInfoList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _List: 账号dspm信息列表
+        :type List: list of UserDspmInfo
+        :param _SelectedAssetNum: 已勾选数据库资产总数
+        :type SelectedAssetNum: int
+        :param _Count: 账号总数
+        :type Count: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._List = None
+        self._SelectedAssetNum = None
+        self._Count = None
+        self._RequestId = None
+
+    @property
+    def List(self):
+        r"""账号dspm信息列表
+        :rtype: list of UserDspmInfo
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def SelectedAssetNum(self):
+        r"""已勾选数据库资产总数
+        :rtype: int
+        """
+        return self._SelectedAssetNum
+
+    @SelectedAssetNum.setter
+    def SelectedAssetNum(self, SelectedAssetNum):
+        self._SelectedAssetNum = SelectedAssetNum
+
+    @property
+    def Count(self):
+        r"""账号总数
+        :rtype: int
+        """
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = UserDspmInfo()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._SelectedAssetNum = params.get("SelectedAssetNum")
+        self._Count = params.get("Count")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeVULListRequest(AbstractModel):
     r"""DescribeVULList请求参数结构体
 
@@ -26082,6 +35744,7385 @@ class DomainAssetVO(AbstractModel):
         
 
 
+class DownloadDspmExportLogRequest(AbstractModel):
+    r"""DownloadDspmExportLog请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        :param _TaskId: 要下载的导出任务ID
+        :type TaskId: int
+        """
+        self._MemberId = None
+        self._TaskId = None
+
+    @property
+    def MemberId(self):
+        r"""集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def TaskId(self):
+        r"""要下载的导出任务ID
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DownloadDspmExportLogResponse(AbstractModel):
+    r"""DownloadDspmExportLog返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Url: 下载URL
+        :type Url: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Url = None
+        self._RequestId = None
+
+    @property
+    def Url(self):
+        r"""下载URL
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Url = params.get("Url")
+        self._RequestId = params.get("RequestId")
+
+
+class DspmAccessRecord(AbstractModel):
+    r"""Dspm访问记录
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Asset: 资产信息
+        :type Asset: :class:`tencentcloud.csip.v20221121.models.DspmDbAsset`
+        :param _Accounts: 账号
+        :type Accounts: list of DspmAssetAccount
+        :param _SourceIpList: 来源ip信息
+        :type SourceIpList: list of DspmIp
+        :param _RecordTime: 记录时间
+        :type RecordTime: str
+        :param _LoginSuccessCount: 登录成功次数
+        :type LoginSuccessCount: int
+        :param _LoginFailedCount: 登录失败次数
+        :type LoginFailedCount: int
+        """
+        self._Asset = None
+        self._Accounts = None
+        self._SourceIpList = None
+        self._RecordTime = None
+        self._LoginSuccessCount = None
+        self._LoginFailedCount = None
+
+    @property
+    def Asset(self):
+        r"""资产信息
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DspmDbAsset`
+        """
+        return self._Asset
+
+    @Asset.setter
+    def Asset(self, Asset):
+        self._Asset = Asset
+
+    @property
+    def Accounts(self):
+        r"""账号
+        :rtype: list of DspmAssetAccount
+        """
+        return self._Accounts
+
+    @Accounts.setter
+    def Accounts(self, Accounts):
+        self._Accounts = Accounts
+
+    @property
+    def SourceIpList(self):
+        r"""来源ip信息
+        :rtype: list of DspmIp
+        """
+        return self._SourceIpList
+
+    @SourceIpList.setter
+    def SourceIpList(self, SourceIpList):
+        self._SourceIpList = SourceIpList
+
+    @property
+    def RecordTime(self):
+        r"""记录时间
+        :rtype: str
+        """
+        return self._RecordTime
+
+    @RecordTime.setter
+    def RecordTime(self, RecordTime):
+        self._RecordTime = RecordTime
+
+    @property
+    def LoginSuccessCount(self):
+        r"""登录成功次数
+        :rtype: int
+        """
+        return self._LoginSuccessCount
+
+    @LoginSuccessCount.setter
+    def LoginSuccessCount(self, LoginSuccessCount):
+        self._LoginSuccessCount = LoginSuccessCount
+
+    @property
+    def LoginFailedCount(self):
+        r"""登录失败次数
+        :rtype: int
+        """
+        return self._LoginFailedCount
+
+    @LoginFailedCount.setter
+    def LoginFailedCount(self, LoginFailedCount):
+        self._LoginFailedCount = LoginFailedCount
+
+
+    def _deserialize(self, params):
+        if params.get("Asset") is not None:
+            self._Asset = DspmDbAsset()
+            self._Asset._deserialize(params.get("Asset"))
+        if params.get("Accounts") is not None:
+            self._Accounts = []
+            for item in params.get("Accounts"):
+                obj = DspmAssetAccount()
+                obj._deserialize(item)
+                self._Accounts.append(obj)
+        if params.get("SourceIpList") is not None:
+            self._SourceIpList = []
+            for item in params.get("SourceIpList"):
+                obj = DspmIp()
+                obj._deserialize(item)
+                self._SourceIpList.append(obj)
+        self._RecordTime = params.get("RecordTime")
+        self._LoginSuccessCount = params.get("LoginSuccessCount")
+        self._LoginFailedCount = params.get("LoginFailedCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DspmAccessRecordId(AbstractModel):
+    r"""Dspm访问管理记录Id
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SourceIp: 来源ip
+        :type SourceIp: str
+        :param _AssetId: 资产列表
+        :type AssetId: str
+        :param _Region: 资产所在地域
+        :type Region: str
+        :param _Account: 资产账号
+        :type Account: str
+        :param _Host: 主机地址
+        :type Host: str
+        :param _RecordTime: 记录时间
+        :type RecordTime: str
+        """
+        self._SourceIp = None
+        self._AssetId = None
+        self._Region = None
+        self._Account = None
+        self._Host = None
+        self._RecordTime = None
+
+    @property
+    def SourceIp(self):
+        r"""来源ip
+        :rtype: str
+        """
+        return self._SourceIp
+
+    @SourceIp.setter
+    def SourceIp(self, SourceIp):
+        self._SourceIp = SourceIp
+
+    @property
+    def AssetId(self):
+        r"""资产列表
+        :rtype: str
+        """
+        return self._AssetId
+
+    @AssetId.setter
+    def AssetId(self, AssetId):
+        self._AssetId = AssetId
+
+    @property
+    def Region(self):
+        r"""资产所在地域
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Account(self):
+        r"""资产账号
+        :rtype: str
+        """
+        return self._Account
+
+    @Account.setter
+    def Account(self, Account):
+        self._Account = Account
+
+    @property
+    def Host(self):
+        r"""主机地址
+        :rtype: str
+        """
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+    @property
+    def RecordTime(self):
+        r"""记录时间
+        :rtype: str
+        """
+        return self._RecordTime
+
+    @RecordTime.setter
+    def RecordTime(self, RecordTime):
+        self._RecordTime = RecordTime
+
+
+    def _deserialize(self, params):
+        self._SourceIp = params.get("SourceIp")
+        self._AssetId = params.get("AssetId")
+        self._Region = params.get("Region")
+        self._Account = params.get("Account")
+        self._Host = params.get("Host")
+        self._RecordTime = params.get("RecordTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DspmAccountCount(AbstractModel):
+    r"""Dspm 账号统计数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UinAccountCount: 云账号个数
+        :type UinAccountCount: int
+        :param _PersonCount: 访客账号个数
+        :type PersonCount: int
+        :param _UncontrolledAccountCount: 未管控账号个数
+        :type UncontrolledAccountCount: int
+        :param _TotalAccountCount: 总账号个数
+        :type TotalAccountCount: int
+        """
+        self._UinAccountCount = None
+        self._PersonCount = None
+        self._UncontrolledAccountCount = None
+        self._TotalAccountCount = None
+
+    @property
+    def UinAccountCount(self):
+        r"""云账号个数
+        :rtype: int
+        """
+        return self._UinAccountCount
+
+    @UinAccountCount.setter
+    def UinAccountCount(self, UinAccountCount):
+        self._UinAccountCount = UinAccountCount
+
+    @property
+    def PersonCount(self):
+        r"""访客账号个数
+        :rtype: int
+        """
+        return self._PersonCount
+
+    @PersonCount.setter
+    def PersonCount(self, PersonCount):
+        self._PersonCount = PersonCount
+
+    @property
+    def UncontrolledAccountCount(self):
+        r"""未管控账号个数
+        :rtype: int
+        """
+        return self._UncontrolledAccountCount
+
+    @UncontrolledAccountCount.setter
+    def UncontrolledAccountCount(self, UncontrolledAccountCount):
+        self._UncontrolledAccountCount = UncontrolledAccountCount
+
+    @property
+    def TotalAccountCount(self):
+        r"""总账号个数
+        :rtype: int
+        """
+        return self._TotalAccountCount
+
+    @TotalAccountCount.setter
+    def TotalAccountCount(self, TotalAccountCount):
+        self._TotalAccountCount = TotalAccountCount
+
+
+    def _deserialize(self, params):
+        self._UinAccountCount = params.get("UinAccountCount")
+        self._PersonCount = params.get("PersonCount")
+        self._UncontrolledAccountCount = params.get("UncontrolledAccountCount")
+        self._TotalAccountCount = params.get("TotalAccountCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DspmApplyOrder(AbstractModel):
+    r"""申请单信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OrderId: 申请单id
+        :type OrderId: str
+        :param _IdentifyId: 身份id。
+        :type IdentifyId: str
+        :param _ApplicantUin: 申请人账号uin
+        :type ApplicantUin: :class:`tencentcloud.csip.v20221121.models.DspmUinUser`
+        :param _AssetId: 资产id
+        :type AssetId: str
+        :param _AssetName: 资产名
+        :type AssetName: str
+        :param _Region: 资产所属地域
+        :type Region: str
+        :param _ApplyType: 申请类型。0-关联身份 1-编辑身份 2-创建临时身份
+        :type ApplyType: int
+        :param _Privilege: 申请权限。
+        :type Privilege: :class:`tencentcloud.csip.v20221121.models.DspmDbAccountPrivilege`
+        :param _ValidatePeriod: 从审批完成后开始计算的访问权限失效时间，临时账号有效。单位毫秒。
+        :type ValidatePeriod: int
+        :param _Reason: 申请原因。
+        :type Reason: str
+        :param _ApproverSteps: 审批步骤
+        :type ApproverSteps: list of DspmApproverStep
+        :param _ManagerType: 管理类型。0-普通成员 1-管理员
+        :type ManagerType: int
+        :param _Person: 个人用户信息
+        :type Person: :class:`tencentcloud.csip.v20221121.models.DspmPersonUser`
+        :param _SubjectUser: 云账号用户信息
+        :type SubjectUser: :class:`tencentcloud.csip.v20221121.models.DspmUinUser`
+        :param _Status: 审批状态。 0-未审批 1-通过 2-拒绝
+        :type Status: int
+        :param _CreateTime: 申请单创建时间。
+        :type CreateTime: str
+        """
+        self._OrderId = None
+        self._IdentifyId = None
+        self._ApplicantUin = None
+        self._AssetId = None
+        self._AssetName = None
+        self._Region = None
+        self._ApplyType = None
+        self._Privilege = None
+        self._ValidatePeriod = None
+        self._Reason = None
+        self._ApproverSteps = None
+        self._ManagerType = None
+        self._Person = None
+        self._SubjectUser = None
+        self._Status = None
+        self._CreateTime = None
+
+    @property
+    def OrderId(self):
+        r"""申请单id
+        :rtype: str
+        """
+        return self._OrderId
+
+    @OrderId.setter
+    def OrderId(self, OrderId):
+        self._OrderId = OrderId
+
+    @property
+    def IdentifyId(self):
+        r"""身份id。
+        :rtype: str
+        """
+        return self._IdentifyId
+
+    @IdentifyId.setter
+    def IdentifyId(self, IdentifyId):
+        self._IdentifyId = IdentifyId
+
+    @property
+    def ApplicantUin(self):
+        r"""申请人账号uin
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DspmUinUser`
+        """
+        return self._ApplicantUin
+
+    @ApplicantUin.setter
+    def ApplicantUin(self, ApplicantUin):
+        self._ApplicantUin = ApplicantUin
+
+    @property
+    def AssetId(self):
+        r"""资产id
+        :rtype: str
+        """
+        return self._AssetId
+
+    @AssetId.setter
+    def AssetId(self, AssetId):
+        self._AssetId = AssetId
+
+    @property
+    def AssetName(self):
+        r"""资产名
+        :rtype: str
+        """
+        return self._AssetName
+
+    @AssetName.setter
+    def AssetName(self, AssetName):
+        self._AssetName = AssetName
+
+    @property
+    def Region(self):
+        r"""资产所属地域
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def ApplyType(self):
+        r"""申请类型。0-关联身份 1-编辑身份 2-创建临时身份
+        :rtype: int
+        """
+        return self._ApplyType
+
+    @ApplyType.setter
+    def ApplyType(self, ApplyType):
+        self._ApplyType = ApplyType
+
+    @property
+    def Privilege(self):
+        r"""申请权限。
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DspmDbAccountPrivilege`
+        """
+        return self._Privilege
+
+    @Privilege.setter
+    def Privilege(self, Privilege):
+        self._Privilege = Privilege
+
+    @property
+    def ValidatePeriod(self):
+        r"""从审批完成后开始计算的访问权限失效时间，临时账号有效。单位毫秒。
+        :rtype: int
+        """
+        return self._ValidatePeriod
+
+    @ValidatePeriod.setter
+    def ValidatePeriod(self, ValidatePeriod):
+        self._ValidatePeriod = ValidatePeriod
+
+    @property
+    def Reason(self):
+        r"""申请原因。
+        :rtype: str
+        """
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
+
+    @property
+    def ApproverSteps(self):
+        r"""审批步骤
+        :rtype: list of DspmApproverStep
+        """
+        return self._ApproverSteps
+
+    @ApproverSteps.setter
+    def ApproverSteps(self, ApproverSteps):
+        self._ApproverSteps = ApproverSteps
+
+    @property
+    def ManagerType(self):
+        r"""管理类型。0-普通成员 1-管理员
+        :rtype: int
+        """
+        return self._ManagerType
+
+    @ManagerType.setter
+    def ManagerType(self, ManagerType):
+        self._ManagerType = ManagerType
+
+    @property
+    def Person(self):
+        r"""个人用户信息
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DspmPersonUser`
+        """
+        return self._Person
+
+    @Person.setter
+    def Person(self, Person):
+        self._Person = Person
+
+    @property
+    def SubjectUser(self):
+        r"""云账号用户信息
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DspmUinUser`
+        """
+        return self._SubjectUser
+
+    @SubjectUser.setter
+    def SubjectUser(self, SubjectUser):
+        self._SubjectUser = SubjectUser
+
+    @property
+    def Status(self):
+        r"""审批状态。 0-未审批 1-通过 2-拒绝
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreateTime(self):
+        r"""申请单创建时间。
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+
+    def _deserialize(self, params):
+        self._OrderId = params.get("OrderId")
+        self._IdentifyId = params.get("IdentifyId")
+        if params.get("ApplicantUin") is not None:
+            self._ApplicantUin = DspmUinUser()
+            self._ApplicantUin._deserialize(params.get("ApplicantUin"))
+        self._AssetId = params.get("AssetId")
+        self._AssetName = params.get("AssetName")
+        self._Region = params.get("Region")
+        self._ApplyType = params.get("ApplyType")
+        if params.get("Privilege") is not None:
+            self._Privilege = DspmDbAccountPrivilege()
+            self._Privilege._deserialize(params.get("Privilege"))
+        self._ValidatePeriod = params.get("ValidatePeriod")
+        self._Reason = params.get("Reason")
+        if params.get("ApproverSteps") is not None:
+            self._ApproverSteps = []
+            for item in params.get("ApproverSteps"):
+                obj = DspmApproverStep()
+                obj._deserialize(item)
+                self._ApproverSteps.append(obj)
+        self._ManagerType = params.get("ManagerType")
+        if params.get("Person") is not None:
+            self._Person = DspmPersonUser()
+            self._Person._deserialize(params.get("Person"))
+        if params.get("SubjectUser") is not None:
+            self._SubjectUser = DspmUinUser()
+            self._SubjectUser._deserialize(params.get("SubjectUser"))
+        self._Status = params.get("Status")
+        self._CreateTime = params.get("CreateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DspmApproverOrder(AbstractModel):
+    r"""审批单信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OrderId: 对应申请单id
+        :type OrderId: str
+        :param _IdentifyId: 身份id。
+        :type IdentifyId: str
+        :param _ApplicantUin: 申请人账号uin
+        :type ApplicantUin: :class:`tencentcloud.csip.v20221121.models.DspmUinUser`
+        :param _AssetId: 资产id
+        :type AssetId: str
+        :param _AssetName: 资产名
+        :type AssetName: str
+        :param _ApplyType: 申请类型。0-关联身份 1-编辑身份 2-创建临时身份
+        :type ApplyType: int
+        :param _Privilege: 申请权限
+        :type Privilege: :class:`tencentcloud.csip.v20221121.models.DspmDbAccountPrivilege`
+        :param _ValidatePeriod: 从审批完成后开始计算的访问权限失效时间，临时账号有效。单位毫秒。
+        :type ValidatePeriod: int
+        :param _Reason: 申请原因
+        :type Reason: str
+        :param _ManagerType: 管理类型。0-普通成员 1-管理员
+        :type ManagerType: int
+        :param _Person: 个人用户信息
+        :type Person: :class:`tencentcloud.csip.v20221121.models.DspmPersonUser`
+        :param _SubjectUser: 云账号用户信息
+        :type SubjectUser: :class:`tencentcloud.csip.v20221121.models.DspmUinUser`
+        :param _CreateTime: 对应申请单创建时间。
+        :type CreateTime: str
+        """
+        self._OrderId = None
+        self._IdentifyId = None
+        self._ApplicantUin = None
+        self._AssetId = None
+        self._AssetName = None
+        self._ApplyType = None
+        self._Privilege = None
+        self._ValidatePeriod = None
+        self._Reason = None
+        self._ManagerType = None
+        self._Person = None
+        self._SubjectUser = None
+        self._CreateTime = None
+
+    @property
+    def OrderId(self):
+        r"""对应申请单id
+        :rtype: str
+        """
+        return self._OrderId
+
+    @OrderId.setter
+    def OrderId(self, OrderId):
+        self._OrderId = OrderId
+
+    @property
+    def IdentifyId(self):
+        r"""身份id。
+        :rtype: str
+        """
+        return self._IdentifyId
+
+    @IdentifyId.setter
+    def IdentifyId(self, IdentifyId):
+        self._IdentifyId = IdentifyId
+
+    @property
+    def ApplicantUin(self):
+        r"""申请人账号uin
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DspmUinUser`
+        """
+        return self._ApplicantUin
+
+    @ApplicantUin.setter
+    def ApplicantUin(self, ApplicantUin):
+        self._ApplicantUin = ApplicantUin
+
+    @property
+    def AssetId(self):
+        r"""资产id
+        :rtype: str
+        """
+        return self._AssetId
+
+    @AssetId.setter
+    def AssetId(self, AssetId):
+        self._AssetId = AssetId
+
+    @property
+    def AssetName(self):
+        r"""资产名
+        :rtype: str
+        """
+        return self._AssetName
+
+    @AssetName.setter
+    def AssetName(self, AssetName):
+        self._AssetName = AssetName
+
+    @property
+    def ApplyType(self):
+        r"""申请类型。0-关联身份 1-编辑身份 2-创建临时身份
+        :rtype: int
+        """
+        return self._ApplyType
+
+    @ApplyType.setter
+    def ApplyType(self, ApplyType):
+        self._ApplyType = ApplyType
+
+    @property
+    def Privilege(self):
+        r"""申请权限
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DspmDbAccountPrivilege`
+        """
+        return self._Privilege
+
+    @Privilege.setter
+    def Privilege(self, Privilege):
+        self._Privilege = Privilege
+
+    @property
+    def ValidatePeriod(self):
+        r"""从审批完成后开始计算的访问权限失效时间，临时账号有效。单位毫秒。
+        :rtype: int
+        """
+        return self._ValidatePeriod
+
+    @ValidatePeriod.setter
+    def ValidatePeriod(self, ValidatePeriod):
+        self._ValidatePeriod = ValidatePeriod
+
+    @property
+    def Reason(self):
+        r"""申请原因
+        :rtype: str
+        """
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
+
+    @property
+    def ManagerType(self):
+        r"""管理类型。0-普通成员 1-管理员
+        :rtype: int
+        """
+        return self._ManagerType
+
+    @ManagerType.setter
+    def ManagerType(self, ManagerType):
+        self._ManagerType = ManagerType
+
+    @property
+    def Person(self):
+        r"""个人用户信息
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DspmPersonUser`
+        """
+        return self._Person
+
+    @Person.setter
+    def Person(self, Person):
+        self._Person = Person
+
+    @property
+    def SubjectUser(self):
+        r"""云账号用户信息
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DspmUinUser`
+        """
+        return self._SubjectUser
+
+    @SubjectUser.setter
+    def SubjectUser(self, SubjectUser):
+        self._SubjectUser = SubjectUser
+
+    @property
+    def CreateTime(self):
+        r"""对应申请单创建时间。
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+
+    def _deserialize(self, params):
+        self._OrderId = params.get("OrderId")
+        self._IdentifyId = params.get("IdentifyId")
+        if params.get("ApplicantUin") is not None:
+            self._ApplicantUin = DspmUinUser()
+            self._ApplicantUin._deserialize(params.get("ApplicantUin"))
+        self._AssetId = params.get("AssetId")
+        self._AssetName = params.get("AssetName")
+        self._ApplyType = params.get("ApplyType")
+        if params.get("Privilege") is not None:
+            self._Privilege = DspmDbAccountPrivilege()
+            self._Privilege._deserialize(params.get("Privilege"))
+        self._ValidatePeriod = params.get("ValidatePeriod")
+        self._Reason = params.get("Reason")
+        self._ManagerType = params.get("ManagerType")
+        if params.get("Person") is not None:
+            self._Person = DspmPersonUser()
+            self._Person._deserialize(params.get("Person"))
+        if params.get("SubjectUser") is not None:
+            self._SubjectUser = DspmUinUser()
+            self._SubjectUser._deserialize(params.get("SubjectUser"))
+        self._CreateTime = params.get("CreateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DspmApproverStep(AbstractModel):
+    r"""审批步骤
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ApproverUinSet: 审批人列表
+        :type ApproverUinSet: list of DspmUinUser
+        :param _ApproverUin: 审批人
+        :type ApproverUin: str
+        :param _Status: 审批状态  0-未审批 1-通过 2-拒绝
+        :type Status: int
+        :param _Comment: 审批意见
+        :type Comment: str
+        :param _ApproveTime: 审批时间。
+        :type ApproveTime: str
+        """
+        self._ApproverUinSet = None
+        self._ApproverUin = None
+        self._Status = None
+        self._Comment = None
+        self._ApproveTime = None
+
+    @property
+    def ApproverUinSet(self):
+        r"""审批人列表
+        :rtype: list of DspmUinUser
+        """
+        return self._ApproverUinSet
+
+    @ApproverUinSet.setter
+    def ApproverUinSet(self, ApproverUinSet):
+        self._ApproverUinSet = ApproverUinSet
+
+    @property
+    def ApproverUin(self):
+        r"""审批人
+        :rtype: str
+        """
+        return self._ApproverUin
+
+    @ApproverUin.setter
+    def ApproverUin(self, ApproverUin):
+        self._ApproverUin = ApproverUin
+
+    @property
+    def Status(self):
+        r"""审批状态  0-未审批 1-通过 2-拒绝
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Comment(self):
+        r"""审批意见
+        :rtype: str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def ApproveTime(self):
+        r"""审批时间。
+        :rtype: str
+        """
+        return self._ApproveTime
+
+    @ApproveTime.setter
+    def ApproveTime(self, ApproveTime):
+        self._ApproveTime = ApproveTime
+
+
+    def _deserialize(self, params):
+        if params.get("ApproverUinSet") is not None:
+            self._ApproverUinSet = []
+            for item in params.get("ApproverUinSet"):
+                obj = DspmUinUser()
+                obj._deserialize(item)
+                self._ApproverUinSet.append(obj)
+        self._ApproverUin = params.get("ApproverUin")
+        self._Status = params.get("Status")
+        self._Comment = params.get("Comment")
+        self._ApproveTime = params.get("ApproveTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DspmArea(AbstractModel):
+    r"""Dspm地域信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Country: 国家
+        :type Country: str
+        :param _Province: 省
+        :type Province: str
+        :param _City: 市
+        :type City: str
+        """
+        self._Country = None
+        self._Province = None
+        self._City = None
+
+    @property
+    def Country(self):
+        r"""国家
+        :rtype: str
+        """
+        return self._Country
+
+    @Country.setter
+    def Country(self, Country):
+        self._Country = Country
+
+    @property
+    def Province(self):
+        r"""省
+        :rtype: str
+        """
+        return self._Province
+
+    @Province.setter
+    def Province(self, Province):
+        self._Province = Province
+
+    @property
+    def City(self):
+        r"""市
+        :rtype: str
+        """
+        return self._City
+
+    @City.setter
+    def City(self, City):
+        self._City = City
+
+
+    def _deserialize(self, params):
+        self._Country = params.get("Country")
+        self._Province = params.get("Province")
+        self._City = params.get("City")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DspmAssetAccessTopologyItem(AbstractModel):
+    r"""Dspm资产访问拓扑
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AssetId: 资产id
+        :type AssetId: str
+        :param _AssetType: 资产类型
+        :type AssetType: str
+        :param _AssetName: 资产名
+        :type AssetName: str
+        :param _AssetAccount: 资产账号
+        :type AssetAccount: str
+        :param _Host: 主机地址
+        :type Host: str
+        :param _AccountType: 账号类型
+        :type AccountType: int
+        :param _AssetIp: 资产地址
+        :type AssetIp: str
+        :param _SourceIp: 访问来源ip地址
+        :type SourceIp: str
+        :param _SourceIpType: 访问来源ip类型
+        :type SourceIpType: str
+        :param _AccessFrequency: 访问频率。次/天
+        :type AccessFrequency: :class:`tencentcloud.csip.v20221121.models.DspmFrequency`
+        :param _ExecSQLFrequency: 执行SQL频率。条/小时。
+        :type ExecSQLFrequency: :class:`tencentcloud.csip.v20221121.models.DspmFrequency`
+        :param _AccessBeginTime: 访问起始时间
+        :type AccessBeginTime: str
+        :param _AccessEndTime: 访问结束时间
+        :type AccessEndTime: str
+        :param _AccountRisk: 账号风险数
+        :type AccountRisk: int
+        :param _AssetRisk: 资产风险数
+        :type AssetRisk: int
+        :param _Region: 所属地域
+        :type Region: str
+        :param _IdentifyType: 身份类型。非身份账号为null。0-未定义 2-长期身份 3-临时身份
+        :type IdentifyType: int
+        :param _OwnerUin: 所属云账号uin用户。
+        :type OwnerUin: :class:`tencentcloud.csip.v20221121.models.DspmUinUser`
+        :param _Person: 所属个人用户信息。
+        :type Person: :class:`tencentcloud.csip.v20221121.models.DspmPersonUser`
+        :param _AccountAlarm: 账号告警数
+        :type AccountAlarm: int
+        :param _AssetAlarm: 资产告警数
+        :type AssetAlarm: int
+        """
+        self._AssetId = None
+        self._AssetType = None
+        self._AssetName = None
+        self._AssetAccount = None
+        self._Host = None
+        self._AccountType = None
+        self._AssetIp = None
+        self._SourceIp = None
+        self._SourceIpType = None
+        self._AccessFrequency = None
+        self._ExecSQLFrequency = None
+        self._AccessBeginTime = None
+        self._AccessEndTime = None
+        self._AccountRisk = None
+        self._AssetRisk = None
+        self._Region = None
+        self._IdentifyType = None
+        self._OwnerUin = None
+        self._Person = None
+        self._AccountAlarm = None
+        self._AssetAlarm = None
+
+    @property
+    def AssetId(self):
+        r"""资产id
+        :rtype: str
+        """
+        return self._AssetId
+
+    @AssetId.setter
+    def AssetId(self, AssetId):
+        self._AssetId = AssetId
+
+    @property
+    def AssetType(self):
+        r"""资产类型
+        :rtype: str
+        """
+        return self._AssetType
+
+    @AssetType.setter
+    def AssetType(self, AssetType):
+        self._AssetType = AssetType
+
+    @property
+    def AssetName(self):
+        r"""资产名
+        :rtype: str
+        """
+        return self._AssetName
+
+    @AssetName.setter
+    def AssetName(self, AssetName):
+        self._AssetName = AssetName
+
+    @property
+    def AssetAccount(self):
+        r"""资产账号
+        :rtype: str
+        """
+        return self._AssetAccount
+
+    @AssetAccount.setter
+    def AssetAccount(self, AssetAccount):
+        self._AssetAccount = AssetAccount
+
+    @property
+    def Host(self):
+        r"""主机地址
+        :rtype: str
+        """
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+    @property
+    def AccountType(self):
+        r"""账号类型
+        :rtype: int
+        """
+        return self._AccountType
+
+    @AccountType.setter
+    def AccountType(self, AccountType):
+        self._AccountType = AccountType
+
+    @property
+    def AssetIp(self):
+        r"""资产地址
+        :rtype: str
+        """
+        return self._AssetIp
+
+    @AssetIp.setter
+    def AssetIp(self, AssetIp):
+        self._AssetIp = AssetIp
+
+    @property
+    def SourceIp(self):
+        r"""访问来源ip地址
+        :rtype: str
+        """
+        return self._SourceIp
+
+    @SourceIp.setter
+    def SourceIp(self, SourceIp):
+        self._SourceIp = SourceIp
+
+    @property
+    def SourceIpType(self):
+        r"""访问来源ip类型
+        :rtype: str
+        """
+        return self._SourceIpType
+
+    @SourceIpType.setter
+    def SourceIpType(self, SourceIpType):
+        self._SourceIpType = SourceIpType
+
+    @property
+    def AccessFrequency(self):
+        r"""访问频率。次/天
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DspmFrequency`
+        """
+        return self._AccessFrequency
+
+    @AccessFrequency.setter
+    def AccessFrequency(self, AccessFrequency):
+        self._AccessFrequency = AccessFrequency
+
+    @property
+    def ExecSQLFrequency(self):
+        r"""执行SQL频率。条/小时。
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DspmFrequency`
+        """
+        return self._ExecSQLFrequency
+
+    @ExecSQLFrequency.setter
+    def ExecSQLFrequency(self, ExecSQLFrequency):
+        self._ExecSQLFrequency = ExecSQLFrequency
+
+    @property
+    def AccessBeginTime(self):
+        r"""访问起始时间
+        :rtype: str
+        """
+        return self._AccessBeginTime
+
+    @AccessBeginTime.setter
+    def AccessBeginTime(self, AccessBeginTime):
+        self._AccessBeginTime = AccessBeginTime
+
+    @property
+    def AccessEndTime(self):
+        r"""访问结束时间
+        :rtype: str
+        """
+        return self._AccessEndTime
+
+    @AccessEndTime.setter
+    def AccessEndTime(self, AccessEndTime):
+        self._AccessEndTime = AccessEndTime
+
+    @property
+    def AccountRisk(self):
+        r"""账号风险数
+        :rtype: int
+        """
+        return self._AccountRisk
+
+    @AccountRisk.setter
+    def AccountRisk(self, AccountRisk):
+        self._AccountRisk = AccountRisk
+
+    @property
+    def AssetRisk(self):
+        r"""资产风险数
+        :rtype: int
+        """
+        return self._AssetRisk
+
+    @AssetRisk.setter
+    def AssetRisk(self, AssetRisk):
+        self._AssetRisk = AssetRisk
+
+    @property
+    def Region(self):
+        r"""所属地域
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def IdentifyType(self):
+        r"""身份类型。非身份账号为null。0-未定义 2-长期身份 3-临时身份
+        :rtype: int
+        """
+        return self._IdentifyType
+
+    @IdentifyType.setter
+    def IdentifyType(self, IdentifyType):
+        self._IdentifyType = IdentifyType
+
+    @property
+    def OwnerUin(self):
+        r"""所属云账号uin用户。
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DspmUinUser`
+        """
+        return self._OwnerUin
+
+    @OwnerUin.setter
+    def OwnerUin(self, OwnerUin):
+        self._OwnerUin = OwnerUin
+
+    @property
+    def Person(self):
+        r"""所属个人用户信息。
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DspmPersonUser`
+        """
+        return self._Person
+
+    @Person.setter
+    def Person(self, Person):
+        self._Person = Person
+
+    @property
+    def AccountAlarm(self):
+        r"""账号告警数
+        :rtype: int
+        """
+        return self._AccountAlarm
+
+    @AccountAlarm.setter
+    def AccountAlarm(self, AccountAlarm):
+        self._AccountAlarm = AccountAlarm
+
+    @property
+    def AssetAlarm(self):
+        r"""资产告警数
+        :rtype: int
+        """
+        return self._AssetAlarm
+
+    @AssetAlarm.setter
+    def AssetAlarm(self, AssetAlarm):
+        self._AssetAlarm = AssetAlarm
+
+
+    def _deserialize(self, params):
+        self._AssetId = params.get("AssetId")
+        self._AssetType = params.get("AssetType")
+        self._AssetName = params.get("AssetName")
+        self._AssetAccount = params.get("AssetAccount")
+        self._Host = params.get("Host")
+        self._AccountType = params.get("AccountType")
+        self._AssetIp = params.get("AssetIp")
+        self._SourceIp = params.get("SourceIp")
+        self._SourceIpType = params.get("SourceIpType")
+        if params.get("AccessFrequency") is not None:
+            self._AccessFrequency = DspmFrequency()
+            self._AccessFrequency._deserialize(params.get("AccessFrequency"))
+        if params.get("ExecSQLFrequency") is not None:
+            self._ExecSQLFrequency = DspmFrequency()
+            self._ExecSQLFrequency._deserialize(params.get("ExecSQLFrequency"))
+        self._AccessBeginTime = params.get("AccessBeginTime")
+        self._AccessEndTime = params.get("AccessEndTime")
+        self._AccountRisk = params.get("AccountRisk")
+        self._AssetRisk = params.get("AssetRisk")
+        self._Region = params.get("Region")
+        self._IdentifyType = params.get("IdentifyType")
+        if params.get("OwnerUin") is not None:
+            self._OwnerUin = DspmUinUser()
+            self._OwnerUin._deserialize(params.get("OwnerUin"))
+        if params.get("Person") is not None:
+            self._Person = DspmPersonUser()
+            self._Person._deserialize(params.get("Person"))
+        self._AccountAlarm = params.get("AccountAlarm")
+        self._AssetAlarm = params.get("AssetAlarm")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DspmAssetAccount(AbstractModel):
+    r"""资产账号信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Account: 账号名
+        :type Account: str
+        :param _Host: 主机地址
+        :type Host: str
+        :param _AccountType: 账号类型。 0-未定义 1-服务账号 2-个人账号 3-临时账号
+        :type AccountType: int
+        :param _Subject: 所属对象。uin或个人id
+        :type Subject: str
+        :param _Privilege: 权限信息
+        :type Privilege: :class:`tencentcloud.csip.v20221121.models.DspmDbAccountPrivilege`
+        :param _Status: 状态。 0-不活跃 1-活跃 2-已删除
+        :type Status: int
+        :param _CreateTime: 账号创建时间。
+        :type CreateTime: str
+        :param _ValidateFrom: 访问权限生效时间。
+        :type ValidateFrom: str
+        :param _ValidateTo: 访问权限失效时间。
+        :type ValidateTo: str
+        :param _Remark: 备注
+        :type Remark: str
+        :param _AssetId: 资产id
+        :type AssetId: str
+        :param _IsNewAccount: 是否新账号
+        :type IsNewAccount: int
+        :param _IdentifyType: 身份类型。非身份账号为null。0-未定义 2-长期身份 3-临时身份
+        :type IdentifyType: int
+        :param _OwnerUin: 所属云账号uin用户。
+        :type OwnerUin: :class:`tencentcloud.csip.v20221121.models.DspmUinUser`
+        :param _Person: 所属个人用户信息。
+        :type Person: :class:`tencentcloud.csip.v20221121.models.DspmPersonUser`
+        :param _RiskCount: 风险统计信息
+        :type RiskCount: :class:`tencentcloud.csip.v20221121.models.DspmRiskCount`
+        :param _PresetPrivilege: 预设权限。
+        :type PresetPrivilege: :class:`tencentcloud.csip.v20221121.models.DspmDbAccountPrivilege`
+        """
+        self._Account = None
+        self._Host = None
+        self._AccountType = None
+        self._Subject = None
+        self._Privilege = None
+        self._Status = None
+        self._CreateTime = None
+        self._ValidateFrom = None
+        self._ValidateTo = None
+        self._Remark = None
+        self._AssetId = None
+        self._IsNewAccount = None
+        self._IdentifyType = None
+        self._OwnerUin = None
+        self._Person = None
+        self._RiskCount = None
+        self._PresetPrivilege = None
+
+    @property
+    def Account(self):
+        r"""账号名
+        :rtype: str
+        """
+        return self._Account
+
+    @Account.setter
+    def Account(self, Account):
+        self._Account = Account
+
+    @property
+    def Host(self):
+        r"""主机地址
+        :rtype: str
+        """
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+    @property
+    def AccountType(self):
+        r"""账号类型。 0-未定义 1-服务账号 2-个人账号 3-临时账号
+        :rtype: int
+        """
+        return self._AccountType
+
+    @AccountType.setter
+    def AccountType(self, AccountType):
+        self._AccountType = AccountType
+
+    @property
+    def Subject(self):
+        r"""所属对象。uin或个人id
+        :rtype: str
+        """
+        return self._Subject
+
+    @Subject.setter
+    def Subject(self, Subject):
+        self._Subject = Subject
+
+    @property
+    def Privilege(self):
+        r"""权限信息
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DspmDbAccountPrivilege`
+        """
+        return self._Privilege
+
+    @Privilege.setter
+    def Privilege(self, Privilege):
+        self._Privilege = Privilege
+
+    @property
+    def Status(self):
+        r"""状态。 0-不活跃 1-活跃 2-已删除
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreateTime(self):
+        r"""账号创建时间。
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ValidateFrom(self):
+        r"""访问权限生效时间。
+        :rtype: str
+        """
+        return self._ValidateFrom
+
+    @ValidateFrom.setter
+    def ValidateFrom(self, ValidateFrom):
+        self._ValidateFrom = ValidateFrom
+
+    @property
+    def ValidateTo(self):
+        r"""访问权限失效时间。
+        :rtype: str
+        """
+        return self._ValidateTo
+
+    @ValidateTo.setter
+    def ValidateTo(self, ValidateTo):
+        self._ValidateTo = ValidateTo
+
+    @property
+    def Remark(self):
+        r"""备注
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def AssetId(self):
+        r"""资产id
+        :rtype: str
+        """
+        return self._AssetId
+
+    @AssetId.setter
+    def AssetId(self, AssetId):
+        self._AssetId = AssetId
+
+    @property
+    def IsNewAccount(self):
+        r"""是否新账号
+        :rtype: int
+        """
+        return self._IsNewAccount
+
+    @IsNewAccount.setter
+    def IsNewAccount(self, IsNewAccount):
+        self._IsNewAccount = IsNewAccount
+
+    @property
+    def IdentifyType(self):
+        r"""身份类型。非身份账号为null。0-未定义 2-长期身份 3-临时身份
+        :rtype: int
+        """
+        return self._IdentifyType
+
+    @IdentifyType.setter
+    def IdentifyType(self, IdentifyType):
+        self._IdentifyType = IdentifyType
+
+    @property
+    def OwnerUin(self):
+        r"""所属云账号uin用户。
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DspmUinUser`
+        """
+        return self._OwnerUin
+
+    @OwnerUin.setter
+    def OwnerUin(self, OwnerUin):
+        self._OwnerUin = OwnerUin
+
+    @property
+    def Person(self):
+        r"""所属个人用户信息。
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DspmPersonUser`
+        """
+        return self._Person
+
+    @Person.setter
+    def Person(self, Person):
+        self._Person = Person
+
+    @property
+    def RiskCount(self):
+        r"""风险统计信息
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DspmRiskCount`
+        """
+        return self._RiskCount
+
+    @RiskCount.setter
+    def RiskCount(self, RiskCount):
+        self._RiskCount = RiskCount
+
+    @property
+    def PresetPrivilege(self):
+        r"""预设权限。
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DspmDbAccountPrivilege`
+        """
+        return self._PresetPrivilege
+
+    @PresetPrivilege.setter
+    def PresetPrivilege(self, PresetPrivilege):
+        self._PresetPrivilege = PresetPrivilege
+
+
+    def _deserialize(self, params):
+        self._Account = params.get("Account")
+        self._Host = params.get("Host")
+        self._AccountType = params.get("AccountType")
+        self._Subject = params.get("Subject")
+        if params.get("Privilege") is not None:
+            self._Privilege = DspmDbAccountPrivilege()
+            self._Privilege._deserialize(params.get("Privilege"))
+        self._Status = params.get("Status")
+        self._CreateTime = params.get("CreateTime")
+        self._ValidateFrom = params.get("ValidateFrom")
+        self._ValidateTo = params.get("ValidateTo")
+        self._Remark = params.get("Remark")
+        self._AssetId = params.get("AssetId")
+        self._IsNewAccount = params.get("IsNewAccount")
+        self._IdentifyType = params.get("IdentifyType")
+        if params.get("OwnerUin") is not None:
+            self._OwnerUin = DspmUinUser()
+            self._OwnerUin._deserialize(params.get("OwnerUin"))
+        if params.get("Person") is not None:
+            self._Person = DspmPersonUser()
+            self._Person._deserialize(params.get("Person"))
+        if params.get("RiskCount") is not None:
+            self._RiskCount = DspmRiskCount()
+            self._RiskCount._deserialize(params.get("RiskCount"))
+        if params.get("PresetPrivilege") is not None:
+            self._PresetPrivilege = DspmDbAccountPrivilege()
+            self._PresetPrivilege._deserialize(params.get("PresetPrivilege"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DspmAssetAccountIdentify(AbstractModel):
+    r"""资产账号身份信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AssetId: 资产id
+        :type AssetId: str
+        :param _OwnerUin: 所属云账号uin用户。
+        :type OwnerUin: :class:`tencentcloud.csip.v20221121.models.DspmUinUser`
+        :param _IsManager: 是否管理员
+        :type IsManager: int
+        :param _Host: 主机地址
+        :type Host: str
+        :param _AccountType: 账号类型。 0-未定义 1-服务账号 2-个人账号 3-临时账号
+        :type AccountType: int
+        :param _Privilege: 权限信息
+        :type Privilege: :class:`tencentcloud.csip.v20221121.models.DspmDbAccountPrivilege`
+        :param _Status: 活跃状态。 0-不活跃 1-活跃
+        :type Status: int
+        :param _CreateTime: 账号创建时间。
+        :type CreateTime: str
+        :param _ValidateFrom: 访问权限生效时间。
+        :type ValidateFrom: str
+        :param _ValidateTo: 访问权限失效时间。
+        :type ValidateTo: str
+        :param _Remark: 备注
+        :type Remark: str
+        :param _PersonApplyCount: 访客权限申请次数
+        :type PersonApplyCount: int
+        :param _AssetName: 资产名
+        :type AssetName: str
+        :param _AssetType: 资产类型
+        :type AssetType: str
+        :param _Region: 所属地域
+        :type Region: str
+        :param _RiskCount: 风险统计信息
+        :type RiskCount: :class:`tencentcloud.csip.v20221121.models.DspmRiskCount`
+        :param _IdentifyType: 身份类型。非身份账号为null。0-未定义 2-长期身份 3-临时身份
+        :type IdentifyType: int
+        :param _Person: 所属个人用户信息。
+        :type Person: :class:`tencentcloud.csip.v20221121.models.DspmPersonUser`
+        :param _CreatorUin: 创建者账号uin用户。
+        :type CreatorUin: :class:`tencentcloud.csip.v20221121.models.DspmUinUser`
+        :param _PresetPrivilege: 预设权限。
+        :type PresetPrivilege: :class:`tencentcloud.csip.v20221121.models.DspmDbAccountPrivilege`
+        :param _PrivateIp: 内网访问地址，如果有多个，使用';'分割
+        :type PrivateIp: str
+        :param _IdentifyId: 身份id
+        :type IdentifyId: str
+        :param _AppId: 资产所属账号app id
+        :type AppId: int
+        :param _NickName: 账号昵称
+        :type NickName: str
+        :param _Uin: 资产所属账号uin
+        :type Uin: str
+        """
+        self._AssetId = None
+        self._OwnerUin = None
+        self._IsManager = None
+        self._Host = None
+        self._AccountType = None
+        self._Privilege = None
+        self._Status = None
+        self._CreateTime = None
+        self._ValidateFrom = None
+        self._ValidateTo = None
+        self._Remark = None
+        self._PersonApplyCount = None
+        self._AssetName = None
+        self._AssetType = None
+        self._Region = None
+        self._RiskCount = None
+        self._IdentifyType = None
+        self._Person = None
+        self._CreatorUin = None
+        self._PresetPrivilege = None
+        self._PrivateIp = None
+        self._IdentifyId = None
+        self._AppId = None
+        self._NickName = None
+        self._Uin = None
+
+    @property
+    def AssetId(self):
+        r"""资产id
+        :rtype: str
+        """
+        return self._AssetId
+
+    @AssetId.setter
+    def AssetId(self, AssetId):
+        self._AssetId = AssetId
+
+    @property
+    def OwnerUin(self):
+        r"""所属云账号uin用户。
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DspmUinUser`
+        """
+        return self._OwnerUin
+
+    @OwnerUin.setter
+    def OwnerUin(self, OwnerUin):
+        self._OwnerUin = OwnerUin
+
+    @property
+    def IsManager(self):
+        r"""是否管理员
+        :rtype: int
+        """
+        return self._IsManager
+
+    @IsManager.setter
+    def IsManager(self, IsManager):
+        self._IsManager = IsManager
+
+    @property
+    def Host(self):
+        r"""主机地址
+        :rtype: str
+        """
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+    @property
+    def AccountType(self):
+        r"""账号类型。 0-未定义 1-服务账号 2-个人账号 3-临时账号
+        :rtype: int
+        """
+        return self._AccountType
+
+    @AccountType.setter
+    def AccountType(self, AccountType):
+        self._AccountType = AccountType
+
+    @property
+    def Privilege(self):
+        r"""权限信息
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DspmDbAccountPrivilege`
+        """
+        return self._Privilege
+
+    @Privilege.setter
+    def Privilege(self, Privilege):
+        self._Privilege = Privilege
+
+    @property
+    def Status(self):
+        r"""活跃状态。 0-不活跃 1-活跃
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreateTime(self):
+        r"""账号创建时间。
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ValidateFrom(self):
+        r"""访问权限生效时间。
+        :rtype: str
+        """
+        return self._ValidateFrom
+
+    @ValidateFrom.setter
+    def ValidateFrom(self, ValidateFrom):
+        self._ValidateFrom = ValidateFrom
+
+    @property
+    def ValidateTo(self):
+        r"""访问权限失效时间。
+        :rtype: str
+        """
+        return self._ValidateTo
+
+    @ValidateTo.setter
+    def ValidateTo(self, ValidateTo):
+        self._ValidateTo = ValidateTo
+
+    @property
+    def Remark(self):
+        r"""备注
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def PersonApplyCount(self):
+        r"""访客权限申请次数
+        :rtype: int
+        """
+        return self._PersonApplyCount
+
+    @PersonApplyCount.setter
+    def PersonApplyCount(self, PersonApplyCount):
+        self._PersonApplyCount = PersonApplyCount
+
+    @property
+    def AssetName(self):
+        r"""资产名
+        :rtype: str
+        """
+        return self._AssetName
+
+    @AssetName.setter
+    def AssetName(self, AssetName):
+        self._AssetName = AssetName
+
+    @property
+    def AssetType(self):
+        r"""资产类型
+        :rtype: str
+        """
+        return self._AssetType
+
+    @AssetType.setter
+    def AssetType(self, AssetType):
+        self._AssetType = AssetType
+
+    @property
+    def Region(self):
+        r"""所属地域
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def RiskCount(self):
+        r"""风险统计信息
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DspmRiskCount`
+        """
+        return self._RiskCount
+
+    @RiskCount.setter
+    def RiskCount(self, RiskCount):
+        self._RiskCount = RiskCount
+
+    @property
+    def IdentifyType(self):
+        r"""身份类型。非身份账号为null。0-未定义 2-长期身份 3-临时身份
+        :rtype: int
+        """
+        return self._IdentifyType
+
+    @IdentifyType.setter
+    def IdentifyType(self, IdentifyType):
+        self._IdentifyType = IdentifyType
+
+    @property
+    def Person(self):
+        r"""所属个人用户信息。
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DspmPersonUser`
+        """
+        return self._Person
+
+    @Person.setter
+    def Person(self, Person):
+        self._Person = Person
+
+    @property
+    def CreatorUin(self):
+        r"""创建者账号uin用户。
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DspmUinUser`
+        """
+        return self._CreatorUin
+
+    @CreatorUin.setter
+    def CreatorUin(self, CreatorUin):
+        self._CreatorUin = CreatorUin
+
+    @property
+    def PresetPrivilege(self):
+        r"""预设权限。
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DspmDbAccountPrivilege`
+        """
+        return self._PresetPrivilege
+
+    @PresetPrivilege.setter
+    def PresetPrivilege(self, PresetPrivilege):
+        self._PresetPrivilege = PresetPrivilege
+
+    @property
+    def PrivateIp(self):
+        r"""内网访问地址，如果有多个，使用';'分割
+        :rtype: str
+        """
+        return self._PrivateIp
+
+    @PrivateIp.setter
+    def PrivateIp(self, PrivateIp):
+        self._PrivateIp = PrivateIp
+
+    @property
+    def IdentifyId(self):
+        r"""身份id
+        :rtype: str
+        """
+        return self._IdentifyId
+
+    @IdentifyId.setter
+    def IdentifyId(self, IdentifyId):
+        self._IdentifyId = IdentifyId
+
+    @property
+    def AppId(self):
+        r"""资产所属账号app id
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def NickName(self):
+        r"""账号昵称
+        :rtype: str
+        """
+        return self._NickName
+
+    @NickName.setter
+    def NickName(self, NickName):
+        self._NickName = NickName
+
+    @property
+    def Uin(self):
+        r"""资产所属账号uin
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+
+    def _deserialize(self, params):
+        self._AssetId = params.get("AssetId")
+        if params.get("OwnerUin") is not None:
+            self._OwnerUin = DspmUinUser()
+            self._OwnerUin._deserialize(params.get("OwnerUin"))
+        self._IsManager = params.get("IsManager")
+        self._Host = params.get("Host")
+        self._AccountType = params.get("AccountType")
+        if params.get("Privilege") is not None:
+            self._Privilege = DspmDbAccountPrivilege()
+            self._Privilege._deserialize(params.get("Privilege"))
+        self._Status = params.get("Status")
+        self._CreateTime = params.get("CreateTime")
+        self._ValidateFrom = params.get("ValidateFrom")
+        self._ValidateTo = params.get("ValidateTo")
+        self._Remark = params.get("Remark")
+        self._PersonApplyCount = params.get("PersonApplyCount")
+        self._AssetName = params.get("AssetName")
+        self._AssetType = params.get("AssetType")
+        self._Region = params.get("Region")
+        if params.get("RiskCount") is not None:
+            self._RiskCount = DspmRiskCount()
+            self._RiskCount._deserialize(params.get("RiskCount"))
+        self._IdentifyType = params.get("IdentifyType")
+        if params.get("Person") is not None:
+            self._Person = DspmPersonUser()
+            self._Person._deserialize(params.get("Person"))
+        if params.get("CreatorUin") is not None:
+            self._CreatorUin = DspmUinUser()
+            self._CreatorUin._deserialize(params.get("CreatorUin"))
+        if params.get("PresetPrivilege") is not None:
+            self._PresetPrivilege = DspmDbAccountPrivilege()
+            self._PresetPrivilege._deserialize(params.get("PresetPrivilege"))
+        self._PrivateIp = params.get("PrivateIp")
+        self._IdentifyId = params.get("IdentifyId")
+        self._AppId = params.get("AppId")
+        self._NickName = params.get("NickName")
+        self._Uin = params.get("Uin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DspmAssetCount(AbstractModel):
+    r"""Dspm 资产统计数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AssetCount: 资产个数
+        :type AssetCount: int
+        :param _DangerRiskCount: 资产有危险风险的个数
+        :type DangerRiskCount: int
+        :param _LowRiskCount: 资产有低风险的个数
+        :type LowRiskCount: int
+        :param _RiskAssetCount: 有待处理风险的实例数
+        :type RiskAssetCount: int
+        :param _AlarmAssetCount: 有待处理告警的实例数
+        :type AlarmAssetCount: int
+        """
+        self._AssetCount = None
+        self._DangerRiskCount = None
+        self._LowRiskCount = None
+        self._RiskAssetCount = None
+        self._AlarmAssetCount = None
+
+    @property
+    def AssetCount(self):
+        r"""资产个数
+        :rtype: int
+        """
+        return self._AssetCount
+
+    @AssetCount.setter
+    def AssetCount(self, AssetCount):
+        self._AssetCount = AssetCount
+
+    @property
+    def DangerRiskCount(self):
+        r"""资产有危险风险的个数
+        :rtype: int
+        """
+        return self._DangerRiskCount
+
+    @DangerRiskCount.setter
+    def DangerRiskCount(self, DangerRiskCount):
+        self._DangerRiskCount = DangerRiskCount
+
+    @property
+    def LowRiskCount(self):
+        r"""资产有低风险的个数
+        :rtype: int
+        """
+        return self._LowRiskCount
+
+    @LowRiskCount.setter
+    def LowRiskCount(self, LowRiskCount):
+        self._LowRiskCount = LowRiskCount
+
+    @property
+    def RiskAssetCount(self):
+        r"""有待处理风险的实例数
+        :rtype: int
+        """
+        return self._RiskAssetCount
+
+    @RiskAssetCount.setter
+    def RiskAssetCount(self, RiskAssetCount):
+        self._RiskAssetCount = RiskAssetCount
+
+    @property
+    def AlarmAssetCount(self):
+        r"""有待处理告警的实例数
+        :rtype: int
+        """
+        return self._AlarmAssetCount
+
+    @AlarmAssetCount.setter
+    def AlarmAssetCount(self, AlarmAssetCount):
+        self._AlarmAssetCount = AlarmAssetCount
+
+
+    def _deserialize(self, params):
+        self._AssetCount = params.get("AssetCount")
+        self._DangerRiskCount = params.get("DangerRiskCount")
+        self._LowRiskCount = params.get("LowRiskCount")
+        self._RiskAssetCount = params.get("RiskAssetCount")
+        self._AlarmAssetCount = params.get("AlarmAssetCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DspmAssetDataScanDetail(AbstractModel):
+    r"""dspm资产数据识别详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 识别任务状态 0:未识别 1:识别中 2:识别终止 3:识别成功 4:识别失败
+        :type Status: int
+        :param _StatusInfo: 识别任务状态 0:未识别 1:识别中 2:识别终止 3:识别成功 4:识别失败
+        :type StatusInfo: str
+        :param _Progress: 识别进度
+        :type Progress: float
+        :param _LatestScanTime: 最近扫描时间
+        :type LatestScanTime: str
+        :param _ErrorInfo: 识别失败信息
+        :type ErrorInfo: str
+        :param _DbCount: 数据库数量
+        :type DbCount: int
+        :param _CategoryIds: 分类id集合
+        :type CategoryIds: list of int non-negative
+        :param _CategoryNames: 分类名称集合
+        :type CategoryNames: list of str
+        :param _TaskConfig: 扫描任务配置
+        :type TaskConfig: :class:`tencentcloud.csip.v20221121.models.DspmSensitiveScanTaskConfig`
+        :param _CategoryDetails: 识别结果分类详情
+        :type CategoryDetails: list of DspmIdentifyCategoryDetail
+        """
+        self._Status = None
+        self._StatusInfo = None
+        self._Progress = None
+        self._LatestScanTime = None
+        self._ErrorInfo = None
+        self._DbCount = None
+        self._CategoryIds = None
+        self._CategoryNames = None
+        self._TaskConfig = None
+        self._CategoryDetails = None
+
+    @property
+    def Status(self):
+        r"""识别任务状态 0:未识别 1:识别中 2:识别终止 3:识别成功 4:识别失败
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def StatusInfo(self):
+        r"""识别任务状态 0:未识别 1:识别中 2:识别终止 3:识别成功 4:识别失败
+        :rtype: str
+        """
+        return self._StatusInfo
+
+    @StatusInfo.setter
+    def StatusInfo(self, StatusInfo):
+        self._StatusInfo = StatusInfo
+
+    @property
+    def Progress(self):
+        r"""识别进度
+        :rtype: float
+        """
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
+    @property
+    def LatestScanTime(self):
+        r"""最近扫描时间
+        :rtype: str
+        """
+        return self._LatestScanTime
+
+    @LatestScanTime.setter
+    def LatestScanTime(self, LatestScanTime):
+        self._LatestScanTime = LatestScanTime
+
+    @property
+    def ErrorInfo(self):
+        r"""识别失败信息
+        :rtype: str
+        """
+        return self._ErrorInfo
+
+    @ErrorInfo.setter
+    def ErrorInfo(self, ErrorInfo):
+        self._ErrorInfo = ErrorInfo
+
+    @property
+    def DbCount(self):
+        r"""数据库数量
+        :rtype: int
+        """
+        return self._DbCount
+
+    @DbCount.setter
+    def DbCount(self, DbCount):
+        self._DbCount = DbCount
+
+    @property
+    def CategoryIds(self):
+        r"""分类id集合
+        :rtype: list of int non-negative
+        """
+        return self._CategoryIds
+
+    @CategoryIds.setter
+    def CategoryIds(self, CategoryIds):
+        self._CategoryIds = CategoryIds
+
+    @property
+    def CategoryNames(self):
+        r"""分类名称集合
+        :rtype: list of str
+        """
+        return self._CategoryNames
+
+    @CategoryNames.setter
+    def CategoryNames(self, CategoryNames):
+        self._CategoryNames = CategoryNames
+
+    @property
+    def TaskConfig(self):
+        r"""扫描任务配置
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DspmSensitiveScanTaskConfig`
+        """
+        return self._TaskConfig
+
+    @TaskConfig.setter
+    def TaskConfig(self, TaskConfig):
+        self._TaskConfig = TaskConfig
+
+    @property
+    def CategoryDetails(self):
+        r"""识别结果分类详情
+        :rtype: list of DspmIdentifyCategoryDetail
+        """
+        return self._CategoryDetails
+
+    @CategoryDetails.setter
+    def CategoryDetails(self, CategoryDetails):
+        self._CategoryDetails = CategoryDetails
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._StatusInfo = params.get("StatusInfo")
+        self._Progress = params.get("Progress")
+        self._LatestScanTime = params.get("LatestScanTime")
+        self._ErrorInfo = params.get("ErrorInfo")
+        self._DbCount = params.get("DbCount")
+        self._CategoryIds = params.get("CategoryIds")
+        self._CategoryNames = params.get("CategoryNames")
+        if params.get("TaskConfig") is not None:
+            self._TaskConfig = DspmSensitiveScanTaskConfig()
+            self._TaskConfig._deserialize(params.get("TaskConfig"))
+        if params.get("CategoryDetails") is not None:
+            self._CategoryDetails = []
+            for item in params.get("CategoryDetails"):
+                obj = DspmIdentifyCategoryDetail()
+                obj._deserialize(item)
+                self._CategoryDetails.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DspmAssetDatabaseInfo(AbstractModel):
+    r"""dspm资产数据库信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AssetId: 资产实例id
+        :type AssetId: str
+        :param _DbName: 数据库名称
+        :type DbName: str
+        :param _TableCount: 总表数
+        :type TableCount: int
+        :param _SensitiveTableCount: 敏感表数
+        :type SensitiveTableCount: int
+        :param _RuleIds: 数据项id集合
+        :type RuleIds: list of int non-negative
+        :param _RuleNames: 数据项名称集合
+        :type RuleNames: list of str
+        :param _CategoryIds: 分类id集合
+        :type CategoryIds: list of int non-negative
+        :param _CategoryNames: 分类名称集合
+        :type CategoryNames: list of str
+        :param _CategoryDetails: 分类详情
+        :type CategoryDetails: list of DspmIdentifyCategoryDetail
+        """
+        self._AssetId = None
+        self._DbName = None
+        self._TableCount = None
+        self._SensitiveTableCount = None
+        self._RuleIds = None
+        self._RuleNames = None
+        self._CategoryIds = None
+        self._CategoryNames = None
+        self._CategoryDetails = None
+
+    @property
+    def AssetId(self):
+        r"""资产实例id
+        :rtype: str
+        """
+        return self._AssetId
+
+    @AssetId.setter
+    def AssetId(self, AssetId):
+        self._AssetId = AssetId
+
+    @property
+    def DbName(self):
+        r"""数据库名称
+        :rtype: str
+        """
+        return self._DbName
+
+    @DbName.setter
+    def DbName(self, DbName):
+        self._DbName = DbName
+
+    @property
+    def TableCount(self):
+        r"""总表数
+        :rtype: int
+        """
+        return self._TableCount
+
+    @TableCount.setter
+    def TableCount(self, TableCount):
+        self._TableCount = TableCount
+
+    @property
+    def SensitiveTableCount(self):
+        r"""敏感表数
+        :rtype: int
+        """
+        return self._SensitiveTableCount
+
+    @SensitiveTableCount.setter
+    def SensitiveTableCount(self, SensitiveTableCount):
+        self._SensitiveTableCount = SensitiveTableCount
+
+    @property
+    def RuleIds(self):
+        r"""数据项id集合
+        :rtype: list of int non-negative
+        """
+        return self._RuleIds
+
+    @RuleIds.setter
+    def RuleIds(self, RuleIds):
+        self._RuleIds = RuleIds
+
+    @property
+    def RuleNames(self):
+        r"""数据项名称集合
+        :rtype: list of str
+        """
+        return self._RuleNames
+
+    @RuleNames.setter
+    def RuleNames(self, RuleNames):
+        self._RuleNames = RuleNames
+
+    @property
+    def CategoryIds(self):
+        r"""分类id集合
+        :rtype: list of int non-negative
+        """
+        return self._CategoryIds
+
+    @CategoryIds.setter
+    def CategoryIds(self, CategoryIds):
+        self._CategoryIds = CategoryIds
+
+    @property
+    def CategoryNames(self):
+        r"""分类名称集合
+        :rtype: list of str
+        """
+        return self._CategoryNames
+
+    @CategoryNames.setter
+    def CategoryNames(self, CategoryNames):
+        self._CategoryNames = CategoryNames
+
+    @property
+    def CategoryDetails(self):
+        r"""分类详情
+        :rtype: list of DspmIdentifyCategoryDetail
+        """
+        return self._CategoryDetails
+
+    @CategoryDetails.setter
+    def CategoryDetails(self, CategoryDetails):
+        self._CategoryDetails = CategoryDetails
+
+
+    def _deserialize(self, params):
+        self._AssetId = params.get("AssetId")
+        self._DbName = params.get("DbName")
+        self._TableCount = params.get("TableCount")
+        self._SensitiveTableCount = params.get("SensitiveTableCount")
+        self._RuleIds = params.get("RuleIds")
+        self._RuleNames = params.get("RuleNames")
+        self._CategoryIds = params.get("CategoryIds")
+        self._CategoryNames = params.get("CategoryNames")
+        if params.get("CategoryDetails") is not None:
+            self._CategoryDetails = []
+            for item in params.get("CategoryDetails"):
+                obj = DspmIdentifyCategoryDetail()
+                obj._deserialize(item)
+                self._CategoryDetails.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DspmAssetFieldInfo(AbstractModel):
+    r"""dspm资产字段信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AssetId: 资产实例id
+        :type AssetId: str
+        :param _DbName: 数据库名称
+        :type DbName: str
+        :param _SchemaName: schema名
+        :type SchemaName: str
+        :param _TableName: 表名
+        :type TableName: str
+        :param _FieldName: 字段名
+        :type FieldName: str
+        :param _RuleIds: 数据项id集合
+        :type RuleIds: list of int non-negative
+        :param _RuleNames: 数据项名称集合
+        :type RuleNames: list of str
+        :param _CategoryIds: 分类id集合
+        :type CategoryIds: list of int non-negative
+        :param _CategoryNames: 分类名称集合
+        :type CategoryNames: list of str
+        """
+        self._AssetId = None
+        self._DbName = None
+        self._SchemaName = None
+        self._TableName = None
+        self._FieldName = None
+        self._RuleIds = None
+        self._RuleNames = None
+        self._CategoryIds = None
+        self._CategoryNames = None
+
+    @property
+    def AssetId(self):
+        r"""资产实例id
+        :rtype: str
+        """
+        return self._AssetId
+
+    @AssetId.setter
+    def AssetId(self, AssetId):
+        self._AssetId = AssetId
+
+    @property
+    def DbName(self):
+        r"""数据库名称
+        :rtype: str
+        """
+        return self._DbName
+
+    @DbName.setter
+    def DbName(self, DbName):
+        self._DbName = DbName
+
+    @property
+    def SchemaName(self):
+        r"""schema名
+        :rtype: str
+        """
+        return self._SchemaName
+
+    @SchemaName.setter
+    def SchemaName(self, SchemaName):
+        self._SchemaName = SchemaName
+
+    @property
+    def TableName(self):
+        r"""表名
+        :rtype: str
+        """
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def FieldName(self):
+        r"""字段名
+        :rtype: str
+        """
+        return self._FieldName
+
+    @FieldName.setter
+    def FieldName(self, FieldName):
+        self._FieldName = FieldName
+
+    @property
+    def RuleIds(self):
+        r"""数据项id集合
+        :rtype: list of int non-negative
+        """
+        return self._RuleIds
+
+    @RuleIds.setter
+    def RuleIds(self, RuleIds):
+        self._RuleIds = RuleIds
+
+    @property
+    def RuleNames(self):
+        r"""数据项名称集合
+        :rtype: list of str
+        """
+        return self._RuleNames
+
+    @RuleNames.setter
+    def RuleNames(self, RuleNames):
+        self._RuleNames = RuleNames
+
+    @property
+    def CategoryIds(self):
+        r"""分类id集合
+        :rtype: list of int non-negative
+        """
+        return self._CategoryIds
+
+    @CategoryIds.setter
+    def CategoryIds(self, CategoryIds):
+        self._CategoryIds = CategoryIds
+
+    @property
+    def CategoryNames(self):
+        r"""分类名称集合
+        :rtype: list of str
+        """
+        return self._CategoryNames
+
+    @CategoryNames.setter
+    def CategoryNames(self, CategoryNames):
+        self._CategoryNames = CategoryNames
+
+
+    def _deserialize(self, params):
+        self._AssetId = params.get("AssetId")
+        self._DbName = params.get("DbName")
+        self._SchemaName = params.get("SchemaName")
+        self._TableName = params.get("TableName")
+        self._FieldName = params.get("FieldName")
+        self._RuleIds = params.get("RuleIds")
+        self._RuleNames = params.get("RuleNames")
+        self._CategoryIds = params.get("CategoryIds")
+        self._CategoryNames = params.get("CategoryNames")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DspmAssetInstance(AbstractModel):
+    r"""Dspm资产实例
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AssetId: 资产实例Id
+        :type AssetId: str
+        :param _AssetType: 资产类型
+        :type AssetType: str
+        :param _Region: 地域
+        :type Region: str
+        :param _AppId: 资产所属账号app id
+        :type AppId: int
+        """
+        self._AssetId = None
+        self._AssetType = None
+        self._Region = None
+        self._AppId = None
+
+    @property
+    def AssetId(self):
+        r"""资产实例Id
+        :rtype: str
+        """
+        return self._AssetId
+
+    @AssetId.setter
+    def AssetId(self, AssetId):
+        self._AssetId = AssetId
+
+    @property
+    def AssetType(self):
+        r"""资产类型
+        :rtype: str
+        """
+        return self._AssetType
+
+    @AssetType.setter
+    def AssetType(self, AssetType):
+        self._AssetType = AssetType
+
+    @property
+    def Region(self):
+        r"""地域
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def AppId(self):
+        r"""资产所属账号app id
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+
+    def _deserialize(self, params):
+        self._AssetId = params.get("AssetId")
+        self._AssetType = params.get("AssetType")
+        self._Region = params.get("Region")
+        self._AppId = params.get("AppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DspmAssetSecurityAnalyseStatus(AbstractModel):
+    r"""Dspm资产安全分析状态
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: 资产所属账号app id
+        :type AppId: int
+        :param _AssetId: 资产实例Id
+        :type AssetId: str
+        :param _AssetType: 资产类型
+        :type AssetType: str
+        :param _Region: 地域
+        :type Region: str
+        :param _IdentifyScanSupported: 是否支持敏感数据识别。0 不支持；1 支持
+        :type IdentifyScanSupported: int
+        :param _LogDeliverySupported: 是否支持日志投递。0-不支持 1-支持
+        :type LogDeliverySupported: int
+        :param _SecurityAnalyseStatus: 安全分析状态（0-关闭 1-打开 2-开通中 3-关闭中）
+
+        :type SecurityAnalyseStatus: int
+        :param _LogDeliveryStatus: 日志投递状态。
+0-投递关闭 1-投递打开 2-投递开通中 3-投递关闭中
+        :type LogDeliveryStatus: int
+        :param _LogDeliveryDisableReason: 日志审计禁止开通的原因，可选值：VersionNotSupportLogSubscription, InstanceIsUpgrading,CdbRuleAuditEnabled
+        :type LogDeliveryDisableReason: str
+        :param _TotalAuditLogs: 当前实例的总日志数
+        :type TotalAuditLogs: int
+        :param _DataScanDetailRuleCount: 已识别敏感数据项个数
+        :type DataScanDetailRuleCount: int
+        :param _OperationErrorMsg: 操作错误信息
+        :type OperationErrorMsg: str
+        """
+        self._AppId = None
+        self._AssetId = None
+        self._AssetType = None
+        self._Region = None
+        self._IdentifyScanSupported = None
+        self._LogDeliverySupported = None
+        self._SecurityAnalyseStatus = None
+        self._LogDeliveryStatus = None
+        self._LogDeliveryDisableReason = None
+        self._TotalAuditLogs = None
+        self._DataScanDetailRuleCount = None
+        self._OperationErrorMsg = None
+
+    @property
+    def AppId(self):
+        r"""资产所属账号app id
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def AssetId(self):
+        r"""资产实例Id
+        :rtype: str
+        """
+        return self._AssetId
+
+    @AssetId.setter
+    def AssetId(self, AssetId):
+        self._AssetId = AssetId
+
+    @property
+    def AssetType(self):
+        r"""资产类型
+        :rtype: str
+        """
+        return self._AssetType
+
+    @AssetType.setter
+    def AssetType(self, AssetType):
+        self._AssetType = AssetType
+
+    @property
+    def Region(self):
+        r"""地域
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def IdentifyScanSupported(self):
+        r"""是否支持敏感数据识别。0 不支持；1 支持
+        :rtype: int
+        """
+        return self._IdentifyScanSupported
+
+    @IdentifyScanSupported.setter
+    def IdentifyScanSupported(self, IdentifyScanSupported):
+        self._IdentifyScanSupported = IdentifyScanSupported
+
+    @property
+    def LogDeliverySupported(self):
+        r"""是否支持日志投递。0-不支持 1-支持
+        :rtype: int
+        """
+        return self._LogDeliverySupported
+
+    @LogDeliverySupported.setter
+    def LogDeliverySupported(self, LogDeliverySupported):
+        self._LogDeliverySupported = LogDeliverySupported
+
+    @property
+    def SecurityAnalyseStatus(self):
+        r"""安全分析状态（0-关闭 1-打开 2-开通中 3-关闭中）
+
+        :rtype: int
+        """
+        return self._SecurityAnalyseStatus
+
+    @SecurityAnalyseStatus.setter
+    def SecurityAnalyseStatus(self, SecurityAnalyseStatus):
+        self._SecurityAnalyseStatus = SecurityAnalyseStatus
+
+    @property
+    def LogDeliveryStatus(self):
+        r"""日志投递状态。
+0-投递关闭 1-投递打开 2-投递开通中 3-投递关闭中
+        :rtype: int
+        """
+        return self._LogDeliveryStatus
+
+    @LogDeliveryStatus.setter
+    def LogDeliveryStatus(self, LogDeliveryStatus):
+        self._LogDeliveryStatus = LogDeliveryStatus
+
+    @property
+    def LogDeliveryDisableReason(self):
+        r"""日志审计禁止开通的原因，可选值：VersionNotSupportLogSubscription, InstanceIsUpgrading,CdbRuleAuditEnabled
+        :rtype: str
+        """
+        return self._LogDeliveryDisableReason
+
+    @LogDeliveryDisableReason.setter
+    def LogDeliveryDisableReason(self, LogDeliveryDisableReason):
+        self._LogDeliveryDisableReason = LogDeliveryDisableReason
+
+    @property
+    def TotalAuditLogs(self):
+        r"""当前实例的总日志数
+        :rtype: int
+        """
+        return self._TotalAuditLogs
+
+    @TotalAuditLogs.setter
+    def TotalAuditLogs(self, TotalAuditLogs):
+        self._TotalAuditLogs = TotalAuditLogs
+
+    @property
+    def DataScanDetailRuleCount(self):
+        r"""已识别敏感数据项个数
+        :rtype: int
+        """
+        return self._DataScanDetailRuleCount
+
+    @DataScanDetailRuleCount.setter
+    def DataScanDetailRuleCount(self, DataScanDetailRuleCount):
+        self._DataScanDetailRuleCount = DataScanDetailRuleCount
+
+    @property
+    def OperationErrorMsg(self):
+        r"""操作错误信息
+        :rtype: str
+        """
+        return self._OperationErrorMsg
+
+    @OperationErrorMsg.setter
+    def OperationErrorMsg(self, OperationErrorMsg):
+        self._OperationErrorMsg = OperationErrorMsg
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._AssetId = params.get("AssetId")
+        self._AssetType = params.get("AssetType")
+        self._Region = params.get("Region")
+        self._IdentifyScanSupported = params.get("IdentifyScanSupported")
+        self._LogDeliverySupported = params.get("LogDeliverySupported")
+        self._SecurityAnalyseStatus = params.get("SecurityAnalyseStatus")
+        self._LogDeliveryStatus = params.get("LogDeliveryStatus")
+        self._LogDeliveryDisableReason = params.get("LogDeliveryDisableReason")
+        self._TotalAuditLogs = params.get("TotalAuditLogs")
+        self._DataScanDetailRuleCount = params.get("DataScanDetailRuleCount")
+        self._OperationErrorMsg = params.get("OperationErrorMsg")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DspmAssetTableInfo(AbstractModel):
+    r"""dspm资产表信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AssetId: 资产实例id
+        :type AssetId: str
+        :param _DbName: 数据库名称
+        :type DbName: str
+        :param _SchemaName: schema名称
+        :type SchemaName: str
+        :param _TableName: 表名
+        :type TableName: str
+        :param _FieldCount: 字段数
+        :type FieldCount: int
+        :param _SensitiveFieldCount: 敏感字段数
+        :type SensitiveFieldCount: int
+        :param _RuleIds: 数据项id集合
+        :type RuleIds: list of int non-negative
+        :param _RuleNames: 数据项名称集合
+        :type RuleNames: list of str
+        :param _CategoryIds: 分类id集合
+        :type CategoryIds: list of int non-negative
+        :param _CategoryNames: 分类名称集合
+        :type CategoryNames: list of str
+        """
+        self._AssetId = None
+        self._DbName = None
+        self._SchemaName = None
+        self._TableName = None
+        self._FieldCount = None
+        self._SensitiveFieldCount = None
+        self._RuleIds = None
+        self._RuleNames = None
+        self._CategoryIds = None
+        self._CategoryNames = None
+
+    @property
+    def AssetId(self):
+        r"""资产实例id
+        :rtype: str
+        """
+        return self._AssetId
+
+    @AssetId.setter
+    def AssetId(self, AssetId):
+        self._AssetId = AssetId
+
+    @property
+    def DbName(self):
+        r"""数据库名称
+        :rtype: str
+        """
+        return self._DbName
+
+    @DbName.setter
+    def DbName(self, DbName):
+        self._DbName = DbName
+
+    @property
+    def SchemaName(self):
+        r"""schema名称
+        :rtype: str
+        """
+        return self._SchemaName
+
+    @SchemaName.setter
+    def SchemaName(self, SchemaName):
+        self._SchemaName = SchemaName
+
+    @property
+    def TableName(self):
+        r"""表名
+        :rtype: str
+        """
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def FieldCount(self):
+        r"""字段数
+        :rtype: int
+        """
+        return self._FieldCount
+
+    @FieldCount.setter
+    def FieldCount(self, FieldCount):
+        self._FieldCount = FieldCount
+
+    @property
+    def SensitiveFieldCount(self):
+        r"""敏感字段数
+        :rtype: int
+        """
+        return self._SensitiveFieldCount
+
+    @SensitiveFieldCount.setter
+    def SensitiveFieldCount(self, SensitiveFieldCount):
+        self._SensitiveFieldCount = SensitiveFieldCount
+
+    @property
+    def RuleIds(self):
+        r"""数据项id集合
+        :rtype: list of int non-negative
+        """
+        return self._RuleIds
+
+    @RuleIds.setter
+    def RuleIds(self, RuleIds):
+        self._RuleIds = RuleIds
+
+    @property
+    def RuleNames(self):
+        r"""数据项名称集合
+        :rtype: list of str
+        """
+        return self._RuleNames
+
+    @RuleNames.setter
+    def RuleNames(self, RuleNames):
+        self._RuleNames = RuleNames
+
+    @property
+    def CategoryIds(self):
+        r"""分类id集合
+        :rtype: list of int non-negative
+        """
+        return self._CategoryIds
+
+    @CategoryIds.setter
+    def CategoryIds(self, CategoryIds):
+        self._CategoryIds = CategoryIds
+
+    @property
+    def CategoryNames(self):
+        r"""分类名称集合
+        :rtype: list of str
+        """
+        return self._CategoryNames
+
+    @CategoryNames.setter
+    def CategoryNames(self, CategoryNames):
+        self._CategoryNames = CategoryNames
+
+
+    def _deserialize(self, params):
+        self._AssetId = params.get("AssetId")
+        self._DbName = params.get("DbName")
+        self._SchemaName = params.get("SchemaName")
+        self._TableName = params.get("TableName")
+        self._FieldCount = params.get("FieldCount")
+        self._SensitiveFieldCount = params.get("SensitiveFieldCount")
+        self._RuleIds = params.get("RuleIds")
+        self._RuleNames = params.get("RuleNames")
+        self._CategoryIds = params.get("CategoryIds")
+        self._CategoryNames = params.get("CategoryNames")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DspmAssetTypeCount(AbstractModel):
+    r"""Dspm 资产按类型统计数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AssetType: 资产类型
+        :type AssetType: str
+        :param _OpenCount: 资产安全分析开启数
+        :type OpenCount: int
+        :param _OpeningCount: 资产安全分析开启中数
+        :type OpeningCount: int
+        :param _ClosingCount: 资产安全分析关闭中数
+        :type ClosingCount: int
+        :param _CloseCount: 资产安全分析未开启数
+        :type CloseCount: int
+        """
+        self._AssetType = None
+        self._OpenCount = None
+        self._OpeningCount = None
+        self._ClosingCount = None
+        self._CloseCount = None
+
+    @property
+    def AssetType(self):
+        r"""资产类型
+        :rtype: str
+        """
+        return self._AssetType
+
+    @AssetType.setter
+    def AssetType(self, AssetType):
+        self._AssetType = AssetType
+
+    @property
+    def OpenCount(self):
+        r"""资产安全分析开启数
+        :rtype: int
+        """
+        return self._OpenCount
+
+    @OpenCount.setter
+    def OpenCount(self, OpenCount):
+        self._OpenCount = OpenCount
+
+    @property
+    def OpeningCount(self):
+        r"""资产安全分析开启中数
+        :rtype: int
+        """
+        return self._OpeningCount
+
+    @OpeningCount.setter
+    def OpeningCount(self, OpeningCount):
+        self._OpeningCount = OpeningCount
+
+    @property
+    def ClosingCount(self):
+        r"""资产安全分析关闭中数
+        :rtype: int
+        """
+        return self._ClosingCount
+
+    @ClosingCount.setter
+    def ClosingCount(self, ClosingCount):
+        self._ClosingCount = ClosingCount
+
+    @property
+    def CloseCount(self):
+        r"""资产安全分析未开启数
+        :rtype: int
+        """
+        return self._CloseCount
+
+    @CloseCount.setter
+    def CloseCount(self, CloseCount):
+        self._CloseCount = CloseCount
+
+
+    def _deserialize(self, params):
+        self._AssetType = params.get("AssetType")
+        self._OpenCount = params.get("OpenCount")
+        self._OpeningCount = params.get("OpeningCount")
+        self._ClosingCount = params.get("ClosingCount")
+        self._CloseCount = params.get("CloseCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DspmColumnPrivilege(AbstractModel):
+    r"""列权限信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Database: 数据库名
+        :type Database: str
+        :param _Table: 数据库表名
+        :type Table: str
+        :param _Column: 数据库列名
+        :type Column: str
+        :param _Privileges: 权限信息
+        :type Privileges: list of str
+        """
+        self._Database = None
+        self._Table = None
+        self._Column = None
+        self._Privileges = None
+
+    @property
+    def Database(self):
+        r"""数据库名
+        :rtype: str
+        """
+        return self._Database
+
+    @Database.setter
+    def Database(self, Database):
+        self._Database = Database
+
+    @property
+    def Table(self):
+        r"""数据库表名
+        :rtype: str
+        """
+        return self._Table
+
+    @Table.setter
+    def Table(self, Table):
+        self._Table = Table
+
+    @property
+    def Column(self):
+        r"""数据库列名
+        :rtype: str
+        """
+        return self._Column
+
+    @Column.setter
+    def Column(self, Column):
+        self._Column = Column
+
+    @property
+    def Privileges(self):
+        r"""权限信息
+        :rtype: list of str
+        """
+        return self._Privileges
+
+    @Privileges.setter
+    def Privileges(self, Privileges):
+        self._Privileges = Privileges
+
+
+    def _deserialize(self, params):
+        self._Database = params.get("Database")
+        self._Table = params.get("Table")
+        self._Column = params.get("Column")
+        self._Privileges = params.get("Privileges")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DspmDatabasePrivilege(AbstractModel):
+    r"""数据库权限
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Privileges: 权限信息
+        :type Privileges: list of str
+        :param _Database: 数据库名
+        :type Database: str
+        """
+        self._Privileges = None
+        self._Database = None
+
+    @property
+    def Privileges(self):
+        r"""权限信息
+        :rtype: list of str
+        """
+        return self._Privileges
+
+    @Privileges.setter
+    def Privileges(self, Privileges):
+        self._Privileges = Privileges
+
+    @property
+    def Database(self):
+        r"""数据库名
+        :rtype: str
+        """
+        return self._Database
+
+    @Database.setter
+    def Database(self, Database):
+        self._Database = Database
+
+
+    def _deserialize(self, params):
+        self._Privileges = params.get("Privileges")
+        self._Database = params.get("Database")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DspmDbAccountPrivilege(AbstractModel):
+    r"""数据库账号权限信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UseDefaultPrivilege: 使用默认权限。0-未使用；1-只读权限，即SELECT权限；2-全部权限，即global级别全部权限。
+        :type UseDefaultPrivilege: int
+        :param _GlobalPrivileges: 全局权限数组。
+        :type GlobalPrivileges: list of str
+        :param _DatabasePrivilegesList: 数据库权限数组。
+        :type DatabasePrivilegesList: list of DspmDatabasePrivilege
+        :param _TablePrivileges: 数据库中的表权限数组。
+        :type TablePrivileges: list of DspmTablePrivilege
+        :param _ColumnPrivileges: 数据库表中的列权限数组。
+        :type ColumnPrivileges: list of DspmColumnPrivilege
+        """
+        self._UseDefaultPrivilege = None
+        self._GlobalPrivileges = None
+        self._DatabasePrivilegesList = None
+        self._TablePrivileges = None
+        self._ColumnPrivileges = None
+
+    @property
+    def UseDefaultPrivilege(self):
+        r"""使用默认权限。0-未使用；1-只读权限，即SELECT权限；2-全部权限，即global级别全部权限。
+        :rtype: int
+        """
+        return self._UseDefaultPrivilege
+
+    @UseDefaultPrivilege.setter
+    def UseDefaultPrivilege(self, UseDefaultPrivilege):
+        self._UseDefaultPrivilege = UseDefaultPrivilege
+
+    @property
+    def GlobalPrivileges(self):
+        r"""全局权限数组。
+        :rtype: list of str
+        """
+        return self._GlobalPrivileges
+
+    @GlobalPrivileges.setter
+    def GlobalPrivileges(self, GlobalPrivileges):
+        self._GlobalPrivileges = GlobalPrivileges
+
+    @property
+    def DatabasePrivilegesList(self):
+        r"""数据库权限数组。
+        :rtype: list of DspmDatabasePrivilege
+        """
+        return self._DatabasePrivilegesList
+
+    @DatabasePrivilegesList.setter
+    def DatabasePrivilegesList(self, DatabasePrivilegesList):
+        self._DatabasePrivilegesList = DatabasePrivilegesList
+
+    @property
+    def TablePrivileges(self):
+        r"""数据库中的表权限数组。
+        :rtype: list of DspmTablePrivilege
+        """
+        return self._TablePrivileges
+
+    @TablePrivileges.setter
+    def TablePrivileges(self, TablePrivileges):
+        self._TablePrivileges = TablePrivileges
+
+    @property
+    def ColumnPrivileges(self):
+        r"""数据库表中的列权限数组。
+        :rtype: list of DspmColumnPrivilege
+        """
+        return self._ColumnPrivileges
+
+    @ColumnPrivileges.setter
+    def ColumnPrivileges(self, ColumnPrivileges):
+        self._ColumnPrivileges = ColumnPrivileges
+
+
+    def _deserialize(self, params):
+        self._UseDefaultPrivilege = params.get("UseDefaultPrivilege")
+        self._GlobalPrivileges = params.get("GlobalPrivileges")
+        if params.get("DatabasePrivilegesList") is not None:
+            self._DatabasePrivilegesList = []
+            for item in params.get("DatabasePrivilegesList"):
+                obj = DspmDatabasePrivilege()
+                obj._deserialize(item)
+                self._DatabasePrivilegesList.append(obj)
+        if params.get("TablePrivileges") is not None:
+            self._TablePrivileges = []
+            for item in params.get("TablePrivileges"):
+                obj = DspmTablePrivilege()
+                obj._deserialize(item)
+                self._TablePrivileges.append(obj)
+        if params.get("ColumnPrivileges") is not None:
+            self._ColumnPrivileges = []
+            for item in params.get("ColumnPrivileges"):
+                obj = DspmColumnPrivilege()
+                obj._deserialize(item)
+                self._ColumnPrivileges.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DspmDbAsset(AbstractModel):
+    r"""数据库资产
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AssetId: 资产实例Id
+        :type AssetId: str
+        :param _AssetType: 资产类型
+        :type AssetType: str
+        :param _Name:  资产名
+        :type Name: str
+        :param _AccountCount: 账号数
+        :type AccountCount: int
+        :param _PublicIp: 公网访问地址，如果有多个，使用';'分割
+        :type PublicIp: str
+        :param _PrivateIp: 内网访问地址，如果有多个，使用';'分割
+        :type PrivateIp: str
+        :param _WanDomain: 广域网域名地址，如果有多个，使用';'分割
+        :type WanDomain: str
+        :param _Region: 地域
+        :type Region: str
+        :param _VpcId: 资产所在vpc的vpcid
+        :type VpcId: str
+        :param _VpcName: 资产所在vpc的vpc名
+        :type VpcName: str
+        :param _SubnetId: 资产所在vpc子网的subnetid
+        :type SubnetId: str
+        :param _SubnetName: 资产所在vpc子网名
+        :type SubnetName: str
+        :param _Status: 实例状态
+        :type Status: int
+        :param _CreateTime: 创建时间。
+        :type CreateTime: str
+        :param _Manager: 管理者信息。
+        :type Manager: list of DspmUinUser
+        :param _BindIdentify: 是否绑定身份。0-未绑定 1-已绑定
+        :type BindIdentify: int
+        :param _IsManager: 是否管理员
+        :type IsManager: int
+        :param _RiskCount: 风险统计信息
+        :type RiskCount: :class:`tencentcloud.csip.v20221121.models.DspmRiskCount`
+        :param _SafetyAdvice: 安全建议。
+Resolve 立即解决
+Reinforcement 加固
+None 暂无异常
+
+        :type SafetyAdvice: str
+        :param _LogDeliveryStatus: 日志投递状态。
+0-投递关闭 1-投递打开 2-投递开通中 3-投递关闭中
+        :type LogDeliveryStatus: int
+        :param _LogDeliverySupported: 是否支持日志投递。0-不支持 1-支持
+        :type LogDeliverySupported: int
+        :param _DataScanInfo: 数据扫描信息
+        :type DataScanInfo: :class:`tencentcloud.csip.v20221121.models.DspmAssetDataScanDetail`
+        :param _AppId: 资产所属账号app id
+        :type AppId: int
+        :param _NickName: 账号昵称
+        :type NickName: str
+        :param _Uin: 资产所属账号uin
+        :type Uin: str
+        :param _SecurityAnalyseStatus: 安全分析状态（0-关闭 1-打开 2-开通中 3-关闭中）
+
+        :type SecurityAnalyseStatus: int
+        :param _TotalAuditLogs: 当前实例的总日志数
+        :type TotalAuditLogs: int
+        :param _LogDeliveryDisableReason: 日志审计禁止开通的原因，可选值：VersionNotSupportLogSubscription, InstanceIsUpgrading, CdbRuleAuditEnabled, AssetNotExists
+        :type LogDeliveryDisableReason: str
+        :param _OldestOnlineLogTimestamp: 在线日志的起始时间戳，精确到秒
+        :type OldestOnlineLogTimestamp: int
+        :param _NewestOnlineLogTimestamp: 在线日志的最新时间戳，精确到秒
+        :type NewestOnlineLogTimestamp: int
+        :param _OperationErrorMsg: 操作错误信息
+        :type OperationErrorMsg: str
+        :param _AccountOptSupported: 是否支持账号操作。0 不支持；1 支持
+        :type AccountOptSupported: int
+        :param _InstanceType: 实例类型
+        :type InstanceType: int
+        :param _IdentifyScanSupported: 是否支持敏感数据识别。0 不支持；1 支持
+        :type IdentifyScanSupported: int
+        """
+        self._AssetId = None
+        self._AssetType = None
+        self._Name = None
+        self._AccountCount = None
+        self._PublicIp = None
+        self._PrivateIp = None
+        self._WanDomain = None
+        self._Region = None
+        self._VpcId = None
+        self._VpcName = None
+        self._SubnetId = None
+        self._SubnetName = None
+        self._Status = None
+        self._CreateTime = None
+        self._Manager = None
+        self._BindIdentify = None
+        self._IsManager = None
+        self._RiskCount = None
+        self._SafetyAdvice = None
+        self._LogDeliveryStatus = None
+        self._LogDeliverySupported = None
+        self._DataScanInfo = None
+        self._AppId = None
+        self._NickName = None
+        self._Uin = None
+        self._SecurityAnalyseStatus = None
+        self._TotalAuditLogs = None
+        self._LogDeliveryDisableReason = None
+        self._OldestOnlineLogTimestamp = None
+        self._NewestOnlineLogTimestamp = None
+        self._OperationErrorMsg = None
+        self._AccountOptSupported = None
+        self._InstanceType = None
+        self._IdentifyScanSupported = None
+
+    @property
+    def AssetId(self):
+        r"""资产实例Id
+        :rtype: str
+        """
+        return self._AssetId
+
+    @AssetId.setter
+    def AssetId(self, AssetId):
+        self._AssetId = AssetId
+
+    @property
+    def AssetType(self):
+        r"""资产类型
+        :rtype: str
+        """
+        return self._AssetType
+
+    @AssetType.setter
+    def AssetType(self, AssetType):
+        self._AssetType = AssetType
+
+    @property
+    def Name(self):
+        r""" 资产名
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def AccountCount(self):
+        r"""账号数
+        :rtype: int
+        """
+        return self._AccountCount
+
+    @AccountCount.setter
+    def AccountCount(self, AccountCount):
+        self._AccountCount = AccountCount
+
+    @property
+    def PublicIp(self):
+        r"""公网访问地址，如果有多个，使用';'分割
+        :rtype: str
+        """
+        return self._PublicIp
+
+    @PublicIp.setter
+    def PublicIp(self, PublicIp):
+        self._PublicIp = PublicIp
+
+    @property
+    def PrivateIp(self):
+        r"""内网访问地址，如果有多个，使用';'分割
+        :rtype: str
+        """
+        return self._PrivateIp
+
+    @PrivateIp.setter
+    def PrivateIp(self, PrivateIp):
+        self._PrivateIp = PrivateIp
+
+    @property
+    def WanDomain(self):
+        r"""广域网域名地址，如果有多个，使用';'分割
+        :rtype: str
+        """
+        return self._WanDomain
+
+    @WanDomain.setter
+    def WanDomain(self, WanDomain):
+        self._WanDomain = WanDomain
+
+    @property
+    def Region(self):
+        r"""地域
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def VpcId(self):
+        r"""资产所在vpc的vpcid
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def VpcName(self):
+        r"""资产所在vpc的vpc名
+        :rtype: str
+        """
+        return self._VpcName
+
+    @VpcName.setter
+    def VpcName(self, VpcName):
+        self._VpcName = VpcName
+
+    @property
+    def SubnetId(self):
+        r"""资产所在vpc子网的subnetid
+        :rtype: str
+        """
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def SubnetName(self):
+        r"""资产所在vpc子网名
+        :rtype: str
+        """
+        return self._SubnetName
+
+    @SubnetName.setter
+    def SubnetName(self, SubnetName):
+        self._SubnetName = SubnetName
+
+    @property
+    def Status(self):
+        r"""实例状态
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreateTime(self):
+        r"""创建时间。
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def Manager(self):
+        r"""管理者信息。
+        :rtype: list of DspmUinUser
+        """
+        return self._Manager
+
+    @Manager.setter
+    def Manager(self, Manager):
+        self._Manager = Manager
+
+    @property
+    def BindIdentify(self):
+        r"""是否绑定身份。0-未绑定 1-已绑定
+        :rtype: int
+        """
+        return self._BindIdentify
+
+    @BindIdentify.setter
+    def BindIdentify(self, BindIdentify):
+        self._BindIdentify = BindIdentify
+
+    @property
+    def IsManager(self):
+        r"""是否管理员
+        :rtype: int
+        """
+        return self._IsManager
+
+    @IsManager.setter
+    def IsManager(self, IsManager):
+        self._IsManager = IsManager
+
+    @property
+    def RiskCount(self):
+        r"""风险统计信息
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DspmRiskCount`
+        """
+        return self._RiskCount
+
+    @RiskCount.setter
+    def RiskCount(self, RiskCount):
+        self._RiskCount = RiskCount
+
+    @property
+    def SafetyAdvice(self):
+        r"""安全建议。
+Resolve 立即解决
+Reinforcement 加固
+None 暂无异常
+
+        :rtype: str
+        """
+        return self._SafetyAdvice
+
+    @SafetyAdvice.setter
+    def SafetyAdvice(self, SafetyAdvice):
+        self._SafetyAdvice = SafetyAdvice
+
+    @property
+    def LogDeliveryStatus(self):
+        r"""日志投递状态。
+0-投递关闭 1-投递打开 2-投递开通中 3-投递关闭中
+        :rtype: int
+        """
+        return self._LogDeliveryStatus
+
+    @LogDeliveryStatus.setter
+    def LogDeliveryStatus(self, LogDeliveryStatus):
+        self._LogDeliveryStatus = LogDeliveryStatus
+
+    @property
+    def LogDeliverySupported(self):
+        r"""是否支持日志投递。0-不支持 1-支持
+        :rtype: int
+        """
+        return self._LogDeliverySupported
+
+    @LogDeliverySupported.setter
+    def LogDeliverySupported(self, LogDeliverySupported):
+        self._LogDeliverySupported = LogDeliverySupported
+
+    @property
+    def DataScanInfo(self):
+        r"""数据扫描信息
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DspmAssetDataScanDetail`
+        """
+        return self._DataScanInfo
+
+    @DataScanInfo.setter
+    def DataScanInfo(self, DataScanInfo):
+        self._DataScanInfo = DataScanInfo
+
+    @property
+    def AppId(self):
+        r"""资产所属账号app id
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def NickName(self):
+        r"""账号昵称
+        :rtype: str
+        """
+        return self._NickName
+
+    @NickName.setter
+    def NickName(self, NickName):
+        self._NickName = NickName
+
+    @property
+    def Uin(self):
+        r"""资产所属账号uin
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def SecurityAnalyseStatus(self):
+        r"""安全分析状态（0-关闭 1-打开 2-开通中 3-关闭中）
+
+        :rtype: int
+        """
+        return self._SecurityAnalyseStatus
+
+    @SecurityAnalyseStatus.setter
+    def SecurityAnalyseStatus(self, SecurityAnalyseStatus):
+        self._SecurityAnalyseStatus = SecurityAnalyseStatus
+
+    @property
+    def TotalAuditLogs(self):
+        r"""当前实例的总日志数
+        :rtype: int
+        """
+        return self._TotalAuditLogs
+
+    @TotalAuditLogs.setter
+    def TotalAuditLogs(self, TotalAuditLogs):
+        self._TotalAuditLogs = TotalAuditLogs
+
+    @property
+    def LogDeliveryDisableReason(self):
+        r"""日志审计禁止开通的原因，可选值：VersionNotSupportLogSubscription, InstanceIsUpgrading, CdbRuleAuditEnabled, AssetNotExists
+        :rtype: str
+        """
+        return self._LogDeliveryDisableReason
+
+    @LogDeliveryDisableReason.setter
+    def LogDeliveryDisableReason(self, LogDeliveryDisableReason):
+        self._LogDeliveryDisableReason = LogDeliveryDisableReason
+
+    @property
+    def OldestOnlineLogTimestamp(self):
+        r"""在线日志的起始时间戳，精确到秒
+        :rtype: int
+        """
+        return self._OldestOnlineLogTimestamp
+
+    @OldestOnlineLogTimestamp.setter
+    def OldestOnlineLogTimestamp(self, OldestOnlineLogTimestamp):
+        self._OldestOnlineLogTimestamp = OldestOnlineLogTimestamp
+
+    @property
+    def NewestOnlineLogTimestamp(self):
+        r"""在线日志的最新时间戳，精确到秒
+        :rtype: int
+        """
+        return self._NewestOnlineLogTimestamp
+
+    @NewestOnlineLogTimestamp.setter
+    def NewestOnlineLogTimestamp(self, NewestOnlineLogTimestamp):
+        self._NewestOnlineLogTimestamp = NewestOnlineLogTimestamp
+
+    @property
+    def OperationErrorMsg(self):
+        r"""操作错误信息
+        :rtype: str
+        """
+        return self._OperationErrorMsg
+
+    @OperationErrorMsg.setter
+    def OperationErrorMsg(self, OperationErrorMsg):
+        self._OperationErrorMsg = OperationErrorMsg
+
+    @property
+    def AccountOptSupported(self):
+        r"""是否支持账号操作。0 不支持；1 支持
+        :rtype: int
+        """
+        return self._AccountOptSupported
+
+    @AccountOptSupported.setter
+    def AccountOptSupported(self, AccountOptSupported):
+        self._AccountOptSupported = AccountOptSupported
+
+    @property
+    def InstanceType(self):
+        r"""实例类型
+        :rtype: int
+        """
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def IdentifyScanSupported(self):
+        r"""是否支持敏感数据识别。0 不支持；1 支持
+        :rtype: int
+        """
+        return self._IdentifyScanSupported
+
+    @IdentifyScanSupported.setter
+    def IdentifyScanSupported(self, IdentifyScanSupported):
+        self._IdentifyScanSupported = IdentifyScanSupported
+
+
+    def _deserialize(self, params):
+        self._AssetId = params.get("AssetId")
+        self._AssetType = params.get("AssetType")
+        self._Name = params.get("Name")
+        self._AccountCount = params.get("AccountCount")
+        self._PublicIp = params.get("PublicIp")
+        self._PrivateIp = params.get("PrivateIp")
+        self._WanDomain = params.get("WanDomain")
+        self._Region = params.get("Region")
+        self._VpcId = params.get("VpcId")
+        self._VpcName = params.get("VpcName")
+        self._SubnetId = params.get("SubnetId")
+        self._SubnetName = params.get("SubnetName")
+        self._Status = params.get("Status")
+        self._CreateTime = params.get("CreateTime")
+        if params.get("Manager") is not None:
+            self._Manager = []
+            for item in params.get("Manager"):
+                obj = DspmUinUser()
+                obj._deserialize(item)
+                self._Manager.append(obj)
+        self._BindIdentify = params.get("BindIdentify")
+        self._IsManager = params.get("IsManager")
+        if params.get("RiskCount") is not None:
+            self._RiskCount = DspmRiskCount()
+            self._RiskCount._deserialize(params.get("RiskCount"))
+        self._SafetyAdvice = params.get("SafetyAdvice")
+        self._LogDeliveryStatus = params.get("LogDeliveryStatus")
+        self._LogDeliverySupported = params.get("LogDeliverySupported")
+        if params.get("DataScanInfo") is not None:
+            self._DataScanInfo = DspmAssetDataScanDetail()
+            self._DataScanInfo._deserialize(params.get("DataScanInfo"))
+        self._AppId = params.get("AppId")
+        self._NickName = params.get("NickName")
+        self._Uin = params.get("Uin")
+        self._SecurityAnalyseStatus = params.get("SecurityAnalyseStatus")
+        self._TotalAuditLogs = params.get("TotalAuditLogs")
+        self._LogDeliveryDisableReason = params.get("LogDeliveryDisableReason")
+        self._OldestOnlineLogTimestamp = params.get("OldestOnlineLogTimestamp")
+        self._NewestOnlineLogTimestamp = params.get("NewestOnlineLogTimestamp")
+        self._OperationErrorMsg = params.get("OperationErrorMsg")
+        self._AccountOptSupported = params.get("AccountOptSupported")
+        self._InstanceType = params.get("InstanceType")
+        self._IdentifyScanSupported = params.get("IdentifyScanSupported")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DspmDbAssetId(AbstractModel):
+    r"""数据库资产Id信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AssetId: 资产实例Id
+        :type AssetId: str
+        :param _AssetType: 资产类型
+        :type AssetType: str
+        :param _Name:  资产名
+        :type Name: str
+        :param _Id: 资产记录id
+        :type Id: int
+        :param _AppId: 资产所属账号app id
+        :type AppId: int
+        :param _NickName: 账号昵称
+        :type NickName: str
+        :param _Uin: 资产所属账号uin
+        :type Uin: str
+        """
+        self._AssetId = None
+        self._AssetType = None
+        self._Name = None
+        self._Id = None
+        self._AppId = None
+        self._NickName = None
+        self._Uin = None
+
+    @property
+    def AssetId(self):
+        r"""资产实例Id
+        :rtype: str
+        """
+        return self._AssetId
+
+    @AssetId.setter
+    def AssetId(self, AssetId):
+        self._AssetId = AssetId
+
+    @property
+    def AssetType(self):
+        r"""资产类型
+        :rtype: str
+        """
+        return self._AssetType
+
+    @AssetType.setter
+    def AssetType(self, AssetType):
+        self._AssetType = AssetType
+
+    @property
+    def Name(self):
+        r""" 资产名
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Id(self):
+        r"""资产记录id
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def AppId(self):
+        r"""资产所属账号app id
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def NickName(self):
+        r"""账号昵称
+        :rtype: str
+        """
+        return self._NickName
+
+    @NickName.setter
+    def NickName(self, NickName):
+        self._NickName = NickName
+
+    @property
+    def Uin(self):
+        r"""资产所属账号uin
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+
+    def _deserialize(self, params):
+        self._AssetId = params.get("AssetId")
+        self._AssetType = params.get("AssetType")
+        self._Name = params.get("Name")
+        self._Id = params.get("Id")
+        self._AppId = params.get("AppId")
+        self._NickName = params.get("NickName")
+        self._Uin = params.get("Uin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DspmDictionary(AbstractModel):
+    r"""dspm字典信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DictId: 字典id
+        :type DictId: int
+        :param _DictName: 字典名称
+        :type DictName: str
+        """
+        self._DictId = None
+        self._DictName = None
+
+    @property
+    def DictId(self):
+        r"""字典id
+        :rtype: int
+        """
+        return self._DictId
+
+    @DictId.setter
+    def DictId(self, DictId):
+        self._DictId = DictId
+
+    @property
+    def DictName(self):
+        r"""字典名称
+        :rtype: str
+        """
+        return self._DictName
+
+    @DictName.setter
+    def DictName(self, DictName):
+        self._DictName = DictName
+
+
+    def _deserialize(self, params):
+        self._DictId = params.get("DictId")
+        self._DictName = params.get("DictName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DspmFrequency(AbstractModel):
+    r"""Dspm频率
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Count: 数量。
+        :type Count: int
+        :param _Unit: 单位。
+        :type Unit: str
+        """
+        self._Count = None
+        self._Unit = None
+
+    @property
+    def Count(self):
+        r"""数量。
+        :rtype: int
+        """
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+    @property
+    def Unit(self):
+        r"""单位。
+        :rtype: str
+        """
+        return self._Unit
+
+    @Unit.setter
+    def Unit(self, Unit):
+        self._Unit = Unit
+
+
+    def _deserialize(self, params):
+        self._Count = params.get("Count")
+        self._Unit = params.get("Unit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DspmIdentifyAssetStatistic(AbstractModel):
+    r"""Dspm身份关联资产统计
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ManagerCount: 关联资产管理员数。
+        :type ManagerCount: int
+        :param _MemberCount: 关联资产普通成员数。
+        :type MemberCount: int
+        """
+        self._ManagerCount = None
+        self._MemberCount = None
+
+    @property
+    def ManagerCount(self):
+        r"""关联资产管理员数。
+        :rtype: int
+        """
+        return self._ManagerCount
+
+    @ManagerCount.setter
+    def ManagerCount(self, ManagerCount):
+        self._ManagerCount = ManagerCount
+
+    @property
+    def MemberCount(self):
+        r"""关联资产普通成员数。
+        :rtype: int
+        """
+        return self._MemberCount
+
+    @MemberCount.setter
+    def MemberCount(self, MemberCount):
+        self._MemberCount = MemberCount
+
+
+    def _deserialize(self, params):
+        self._ManagerCount = params.get("ManagerCount")
+        self._MemberCount = params.get("MemberCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DspmIdentifyCategoryDetail(AbstractModel):
+    r"""dspm数据识别结果分类详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CategoryId: 分类id
+        :type CategoryId: int
+        :param _CategoryName: 分类名称
+        :type CategoryName: str
+        :param _RuleSet: 数据项集合
+        :type RuleSet: list of DspmIdentifyRuleDetail
+        """
+        self._CategoryId = None
+        self._CategoryName = None
+        self._RuleSet = None
+
+    @property
+    def CategoryId(self):
+        r"""分类id
+        :rtype: int
+        """
+        return self._CategoryId
+
+    @CategoryId.setter
+    def CategoryId(self, CategoryId):
+        self._CategoryId = CategoryId
+
+    @property
+    def CategoryName(self):
+        r"""分类名称
+        :rtype: str
+        """
+        return self._CategoryName
+
+    @CategoryName.setter
+    def CategoryName(self, CategoryName):
+        self._CategoryName = CategoryName
+
+    @property
+    def RuleSet(self):
+        r"""数据项集合
+        :rtype: list of DspmIdentifyRuleDetail
+        """
+        return self._RuleSet
+
+    @RuleSet.setter
+    def RuleSet(self, RuleSet):
+        self._RuleSet = RuleSet
+
+
+    def _deserialize(self, params):
+        self._CategoryId = params.get("CategoryId")
+        self._CategoryName = params.get("CategoryName")
+        if params.get("RuleSet") is not None:
+            self._RuleSet = []
+            for item in params.get("RuleSet"):
+                obj = DspmIdentifyRuleDetail()
+                obj._deserialize(item)
+                self._RuleSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DspmIdentifyCount(AbstractModel):
+    r"""Dspm身份统计信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IdentifyType: 身份类型。0-未定义 2-长期身份 3-临时身份
+        :type IdentifyType: int
+        :param _Count: 个数。
+        :type Count: int
+        """
+        self._IdentifyType = None
+        self._Count = None
+
+    @property
+    def IdentifyType(self):
+        r"""身份类型。0-未定义 2-长期身份 3-临时身份
+        :rtype: int
+        """
+        return self._IdentifyType
+
+    @IdentifyType.setter
+    def IdentifyType(self, IdentifyType):
+        self._IdentifyType = IdentifyType
+
+    @property
+    def Count(self):
+        r"""个数。
+        :rtype: int
+        """
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+
+    def _deserialize(self, params):
+        self._IdentifyType = params.get("IdentifyType")
+        self._Count = params.get("Count")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DspmIdentifyIdItem(AbstractModel):
+    r"""Dspm身份id信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IdentifyId: 身份id。
+        :type IdentifyId: str
+        :param _Remark: 备注。
+        :type Remark: str
+        :param _IdentifyType: 身份类型。0-未定义 2-长期身份 3-临时身份
+        :type IdentifyType: int
+        :param _OwnerUin: 所属云账号uin用户。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OwnerUin: :class:`tencentcloud.csip.v20221121.models.DspmUinUser`
+        :param _CreatorUin: 创建者账号uin用户。
+        :type CreatorUin: :class:`tencentcloud.csip.v20221121.models.DspmUinUser`
+        :param _CreateTime: 创建时间。
+        :type CreateTime: str
+        :param _Status: 状态。0-不活跃 1-活跃
+        :type Status: int
+        :param _Person: 所属个人用户信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Person: :class:`tencentcloud.csip.v20221121.models.DspmPersonUser`
+        """
+        self._IdentifyId = None
+        self._Remark = None
+        self._IdentifyType = None
+        self._OwnerUin = None
+        self._CreatorUin = None
+        self._CreateTime = None
+        self._Status = None
+        self._Person = None
+
+    @property
+    def IdentifyId(self):
+        r"""身份id。
+        :rtype: str
+        """
+        return self._IdentifyId
+
+    @IdentifyId.setter
+    def IdentifyId(self, IdentifyId):
+        self._IdentifyId = IdentifyId
+
+    @property
+    def Remark(self):
+        r"""备注。
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def IdentifyType(self):
+        r"""身份类型。0-未定义 2-长期身份 3-临时身份
+        :rtype: int
+        """
+        return self._IdentifyType
+
+    @IdentifyType.setter
+    def IdentifyType(self, IdentifyType):
+        self._IdentifyType = IdentifyType
+
+    @property
+    def OwnerUin(self):
+        r"""所属云账号uin用户。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DspmUinUser`
+        """
+        return self._OwnerUin
+
+    @OwnerUin.setter
+    def OwnerUin(self, OwnerUin):
+        self._OwnerUin = OwnerUin
+
+    @property
+    def CreatorUin(self):
+        r"""创建者账号uin用户。
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DspmUinUser`
+        """
+        return self._CreatorUin
+
+    @CreatorUin.setter
+    def CreatorUin(self, CreatorUin):
+        self._CreatorUin = CreatorUin
+
+    @property
+    def CreateTime(self):
+        r"""创建时间。
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def Status(self):
+        r"""状态。0-不活跃 1-活跃
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Person(self):
+        r"""所属个人用户信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DspmPersonUser`
+        """
+        return self._Person
+
+    @Person.setter
+    def Person(self, Person):
+        self._Person = Person
+
+
+    def _deserialize(self, params):
+        self._IdentifyId = params.get("IdentifyId")
+        self._Remark = params.get("Remark")
+        self._IdentifyType = params.get("IdentifyType")
+        if params.get("OwnerUin") is not None:
+            self._OwnerUin = DspmUinUser()
+            self._OwnerUin._deserialize(params.get("OwnerUin"))
+        if params.get("CreatorUin") is not None:
+            self._CreatorUin = DspmUinUser()
+            self._CreatorUin._deserialize(params.get("CreatorUin"))
+        self._CreateTime = params.get("CreateTime")
+        self._Status = params.get("Status")
+        if params.get("Person") is not None:
+            self._Person = DspmPersonUser()
+            self._Person._deserialize(params.get("Person"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DspmIdentifyInfoItem(AbstractModel):
+    r"""Dspm身份信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IdentifyId: 身份id。
+        :type IdentifyId: str
+        :param _Remark: 备注。
+        :type Remark: str
+        :param _IdentifyType: 身份类型。0-未定义 2-长期身份 3-临时身份
+        :type IdentifyType: int
+        :param _OwnerUin: 所属云账号uin用户。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OwnerUin: :class:`tencentcloud.csip.v20221121.models.DspmUinUser`
+        :param _CreatorUin: 创建者账号uin用户。
+        :type CreatorUin: :class:`tencentcloud.csip.v20221121.models.DspmUinUser`
+        :param _AssetCount: 关联资产。
+        :type AssetCount: int
+        :param _CreateTime: 创建时间。
+        :type CreateTime: str
+        :param _Status: 状态。0-不活跃 1-活跃
+        :type Status: int
+        :param _Person: 所属个人用户信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Person: :class:`tencentcloud.csip.v20221121.models.DspmPersonUser`
+        :param _AssetStatistic: 关联数据资产统计信息。
+        :type AssetStatistic: :class:`tencentcloud.csip.v20221121.models.DspmIdentifyAssetStatistic`
+        :param _RiskCount: 风险统计信息
+        :type RiskCount: :class:`tencentcloud.csip.v20221121.models.DspmRiskCount`
+        :param _SafetyAdvice: 安全建议。 Resolve 立即解决 Reinforcement 加固 None 暂无异常
+        :type SafetyAdvice: str
+        :param _AppId: 资产所属账号app id
+        :type AppId: int
+        :param _NickName: 账号昵称
+        :type NickName: str
+        :param _Uin: 资产所属账号uin
+        :type Uin: str
+        """
+        self._IdentifyId = None
+        self._Remark = None
+        self._IdentifyType = None
+        self._OwnerUin = None
+        self._CreatorUin = None
+        self._AssetCount = None
+        self._CreateTime = None
+        self._Status = None
+        self._Person = None
+        self._AssetStatistic = None
+        self._RiskCount = None
+        self._SafetyAdvice = None
+        self._AppId = None
+        self._NickName = None
+        self._Uin = None
+
+    @property
+    def IdentifyId(self):
+        r"""身份id。
+        :rtype: str
+        """
+        return self._IdentifyId
+
+    @IdentifyId.setter
+    def IdentifyId(self, IdentifyId):
+        self._IdentifyId = IdentifyId
+
+    @property
+    def Remark(self):
+        r"""备注。
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def IdentifyType(self):
+        r"""身份类型。0-未定义 2-长期身份 3-临时身份
+        :rtype: int
+        """
+        return self._IdentifyType
+
+    @IdentifyType.setter
+    def IdentifyType(self, IdentifyType):
+        self._IdentifyType = IdentifyType
+
+    @property
+    def OwnerUin(self):
+        r"""所属云账号uin用户。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DspmUinUser`
+        """
+        return self._OwnerUin
+
+    @OwnerUin.setter
+    def OwnerUin(self, OwnerUin):
+        self._OwnerUin = OwnerUin
+
+    @property
+    def CreatorUin(self):
+        r"""创建者账号uin用户。
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DspmUinUser`
+        """
+        return self._CreatorUin
+
+    @CreatorUin.setter
+    def CreatorUin(self, CreatorUin):
+        self._CreatorUin = CreatorUin
+
+    @property
+    def AssetCount(self):
+        r"""关联资产。
+        :rtype: int
+        """
+        return self._AssetCount
+
+    @AssetCount.setter
+    def AssetCount(self, AssetCount):
+        self._AssetCount = AssetCount
+
+    @property
+    def CreateTime(self):
+        r"""创建时间。
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def Status(self):
+        r"""状态。0-不活跃 1-活跃
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Person(self):
+        r"""所属个人用户信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DspmPersonUser`
+        """
+        return self._Person
+
+    @Person.setter
+    def Person(self, Person):
+        self._Person = Person
+
+    @property
+    def AssetStatistic(self):
+        r"""关联数据资产统计信息。
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DspmIdentifyAssetStatistic`
+        """
+        return self._AssetStatistic
+
+    @AssetStatistic.setter
+    def AssetStatistic(self, AssetStatistic):
+        self._AssetStatistic = AssetStatistic
+
+    @property
+    def RiskCount(self):
+        r"""风险统计信息
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DspmRiskCount`
+        """
+        return self._RiskCount
+
+    @RiskCount.setter
+    def RiskCount(self, RiskCount):
+        self._RiskCount = RiskCount
+
+    @property
+    def SafetyAdvice(self):
+        r"""安全建议。 Resolve 立即解决 Reinforcement 加固 None 暂无异常
+        :rtype: str
+        """
+        return self._SafetyAdvice
+
+    @SafetyAdvice.setter
+    def SafetyAdvice(self, SafetyAdvice):
+        self._SafetyAdvice = SafetyAdvice
+
+    @property
+    def AppId(self):
+        r"""资产所属账号app id
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def NickName(self):
+        r"""账号昵称
+        :rtype: str
+        """
+        return self._NickName
+
+    @NickName.setter
+    def NickName(self, NickName):
+        self._NickName = NickName
+
+    @property
+    def Uin(self):
+        r"""资产所属账号uin
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+
+    def _deserialize(self, params):
+        self._IdentifyId = params.get("IdentifyId")
+        self._Remark = params.get("Remark")
+        self._IdentifyType = params.get("IdentifyType")
+        if params.get("OwnerUin") is not None:
+            self._OwnerUin = DspmUinUser()
+            self._OwnerUin._deserialize(params.get("OwnerUin"))
+        if params.get("CreatorUin") is not None:
+            self._CreatorUin = DspmUinUser()
+            self._CreatorUin._deserialize(params.get("CreatorUin"))
+        self._AssetCount = params.get("AssetCount")
+        self._CreateTime = params.get("CreateTime")
+        self._Status = params.get("Status")
+        if params.get("Person") is not None:
+            self._Person = DspmPersonUser()
+            self._Person._deserialize(params.get("Person"))
+        if params.get("AssetStatistic") is not None:
+            self._AssetStatistic = DspmIdentifyAssetStatistic()
+            self._AssetStatistic._deserialize(params.get("AssetStatistic"))
+        if params.get("RiskCount") is not None:
+            self._RiskCount = DspmRiskCount()
+            self._RiskCount._deserialize(params.get("RiskCount"))
+        self._SafetyAdvice = params.get("SafetyAdvice")
+        self._AppId = params.get("AppId")
+        self._NickName = params.get("NickName")
+        self._Uin = params.get("Uin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DspmIdentifyRuleDetail(AbstractModel):
+    r"""dspm数据项详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleId: 数据项id
+        :type RuleId: int
+        :param _RuleName: 数据项名称
+        :type RuleName: str
+        :param _LevelId: 敏感级别id
+        :type LevelId: int
+        :param _LevelName: 敏感级别名称
+        :type LevelName: str
+        :param _LevelScore: 敏感程度
+        :type LevelScore: int
+        """
+        self._RuleId = None
+        self._RuleName = None
+        self._LevelId = None
+        self._LevelName = None
+        self._LevelScore = None
+
+    @property
+    def RuleId(self):
+        r"""数据项id
+        :rtype: int
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def RuleName(self):
+        r"""数据项名称
+        :rtype: str
+        """
+        return self._RuleName
+
+    @RuleName.setter
+    def RuleName(self, RuleName):
+        self._RuleName = RuleName
+
+    @property
+    def LevelId(self):
+        r"""敏感级别id
+        :rtype: int
+        """
+        return self._LevelId
+
+    @LevelId.setter
+    def LevelId(self, LevelId):
+        self._LevelId = LevelId
+
+    @property
+    def LevelName(self):
+        r"""敏感级别名称
+        :rtype: str
+        """
+        return self._LevelName
+
+    @LevelName.setter
+    def LevelName(self, LevelName):
+        self._LevelName = LevelName
+
+    @property
+    def LevelScore(self):
+        r"""敏感程度
+        :rtype: int
+        """
+        return self._LevelScore
+
+    @LevelScore.setter
+    def LevelScore(self, LevelScore):
+        self._LevelScore = LevelScore
+
+
+    def _deserialize(self, params):
+        self._RuleId = params.get("RuleId")
+        self._RuleName = params.get("RuleName")
+        self._LevelId = params.get("LevelId")
+        self._LevelName = params.get("LevelName")
+        self._LevelScore = params.get("LevelScore")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DspmIp(AbstractModel):
+    r"""Dspm Ip信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Ip: ip地址
+        :type Ip: str
+        :param _IpType: ip类型。public-公网 private-内网
+        :type IpType: str
+        :param _Remark: ip标记信息
+        :type Remark: str
+        :param _IsRemarked: 是否已经标记信息
+        :type IsRemarked: int
+        :param _ResourceInstanceId: ip归属实例id
+        :type ResourceInstanceId: str
+        :param _ResourceType: ip所属产品
+        :type ResourceType: str
+        :param _Area: ip所属地域
+        :type Area: :class:`tencentcloud.csip.v20221121.models.DspmArea`
+        :param _IsNewIp: 是否新ip地址
+        :type IsNewIp: int
+        """
+        self._Ip = None
+        self._IpType = None
+        self._Remark = None
+        self._IsRemarked = None
+        self._ResourceInstanceId = None
+        self._ResourceType = None
+        self._Area = None
+        self._IsNewIp = None
+
+    @property
+    def Ip(self):
+        r"""ip地址
+        :rtype: str
+        """
+        return self._Ip
+
+    @Ip.setter
+    def Ip(self, Ip):
+        self._Ip = Ip
+
+    @property
+    def IpType(self):
+        r"""ip类型。public-公网 private-内网
+        :rtype: str
+        """
+        return self._IpType
+
+    @IpType.setter
+    def IpType(self, IpType):
+        self._IpType = IpType
+
+    @property
+    def Remark(self):
+        r"""ip标记信息
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def IsRemarked(self):
+        r"""是否已经标记信息
+        :rtype: int
+        """
+        return self._IsRemarked
+
+    @IsRemarked.setter
+    def IsRemarked(self, IsRemarked):
+        self._IsRemarked = IsRemarked
+
+    @property
+    def ResourceInstanceId(self):
+        r"""ip归属实例id
+        :rtype: str
+        """
+        return self._ResourceInstanceId
+
+    @ResourceInstanceId.setter
+    def ResourceInstanceId(self, ResourceInstanceId):
+        self._ResourceInstanceId = ResourceInstanceId
+
+    @property
+    def ResourceType(self):
+        r"""ip所属产品
+        :rtype: str
+        """
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def Area(self):
+        r"""ip所属地域
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DspmArea`
+        """
+        return self._Area
+
+    @Area.setter
+    def Area(self, Area):
+        self._Area = Area
+
+    @property
+    def IsNewIp(self):
+        r"""是否新ip地址
+        :rtype: int
+        """
+        return self._IsNewIp
+
+    @IsNewIp.setter
+    def IsNewIp(self, IsNewIp):
+        self._IsNewIp = IsNewIp
+
+
+    def _deserialize(self, params):
+        self._Ip = params.get("Ip")
+        self._IpType = params.get("IpType")
+        self._Remark = params.get("Remark")
+        self._IsRemarked = params.get("IsRemarked")
+        self._ResourceInstanceId = params.get("ResourceInstanceId")
+        self._ResourceType = params.get("ResourceType")
+        if params.get("Area") is not None:
+            self._Area = DspmArea()
+            self._Area._deserialize(params.get("Area"))
+        self._IsNewIp = params.get("IsNewIp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DspmIpCount(AbstractModel):
+    r"""Dspm ip 统计数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IpCount: 访问Ip个数
+        :type IpCount: int
+        :param _UnmarkedPublicIpCount: 未打标公网Ip个数
+        :type UnmarkedPublicIpCount: int
+        :param _PrivateIpCount: 内网Ip个数
+        :type PrivateIpCount: int
+        """
+        self._IpCount = None
+        self._UnmarkedPublicIpCount = None
+        self._PrivateIpCount = None
+
+    @property
+    def IpCount(self):
+        r"""访问Ip个数
+        :rtype: int
+        """
+        return self._IpCount
+
+    @IpCount.setter
+    def IpCount(self, IpCount):
+        self._IpCount = IpCount
+
+    @property
+    def UnmarkedPublicIpCount(self):
+        r"""未打标公网Ip个数
+        :rtype: int
+        """
+        return self._UnmarkedPublicIpCount
+
+    @UnmarkedPublicIpCount.setter
+    def UnmarkedPublicIpCount(self, UnmarkedPublicIpCount):
+        self._UnmarkedPublicIpCount = UnmarkedPublicIpCount
+
+    @property
+    def PrivateIpCount(self):
+        r"""内网Ip个数
+        :rtype: int
+        """
+        return self._PrivateIpCount
+
+    @PrivateIpCount.setter
+    def PrivateIpCount(self, PrivateIpCount):
+        self._PrivateIpCount = PrivateIpCount
+
+
+    def _deserialize(self, params):
+        self._IpCount = params.get("IpCount")
+        self._UnmarkedPublicIpCount = params.get("UnmarkedPublicIpCount")
+        self._PrivateIpCount = params.get("PrivateIpCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DspmPersonApplyHistoryItem(AbstractModel):
+    r"""访客申请记录
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AssetId: 资产id
+        :type AssetId: str
+        :param _PersonName: 姓名
+        :type PersonName: str
+        :param _Phone: 手机号
+        :type Phone: str
+        :param _ValidateFrom: 访问权限生效时间。
+        :type ValidateFrom: str
+        :param _ValidateTo: 访问权限失效时间。
+        :type ValidateTo: str
+        :param _ValidatePeriod: 访问权限有效时间。单位毫秒。
+        :type ValidatePeriod: int
+        :param _Privilege: 权限信息。
+        :type Privilege: :class:`tencentcloud.csip.v20221121.models.DspmDbAccountPrivilege`
+        :param _ValidStatus: 是否有效。0-无效；1-有效。
+        :type ValidStatus: int
+        """
+        self._AssetId = None
+        self._PersonName = None
+        self._Phone = None
+        self._ValidateFrom = None
+        self._ValidateTo = None
+        self._ValidatePeriod = None
+        self._Privilege = None
+        self._ValidStatus = None
+
+    @property
+    def AssetId(self):
+        r"""资产id
+        :rtype: str
+        """
+        return self._AssetId
+
+    @AssetId.setter
+    def AssetId(self, AssetId):
+        self._AssetId = AssetId
+
+    @property
+    def PersonName(self):
+        r"""姓名
+        :rtype: str
+        """
+        return self._PersonName
+
+    @PersonName.setter
+    def PersonName(self, PersonName):
+        self._PersonName = PersonName
+
+    @property
+    def Phone(self):
+        r"""手机号
+        :rtype: str
+        """
+        return self._Phone
+
+    @Phone.setter
+    def Phone(self, Phone):
+        self._Phone = Phone
+
+    @property
+    def ValidateFrom(self):
+        r"""访问权限生效时间。
+        :rtype: str
+        """
+        return self._ValidateFrom
+
+    @ValidateFrom.setter
+    def ValidateFrom(self, ValidateFrom):
+        self._ValidateFrom = ValidateFrom
+
+    @property
+    def ValidateTo(self):
+        r"""访问权限失效时间。
+        :rtype: str
+        """
+        return self._ValidateTo
+
+    @ValidateTo.setter
+    def ValidateTo(self, ValidateTo):
+        self._ValidateTo = ValidateTo
+
+    @property
+    def ValidatePeriod(self):
+        r"""访问权限有效时间。单位毫秒。
+        :rtype: int
+        """
+        return self._ValidatePeriod
+
+    @ValidatePeriod.setter
+    def ValidatePeriod(self, ValidatePeriod):
+        self._ValidatePeriod = ValidatePeriod
+
+    @property
+    def Privilege(self):
+        r"""权限信息。
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DspmDbAccountPrivilege`
+        """
+        return self._Privilege
+
+    @Privilege.setter
+    def Privilege(self, Privilege):
+        self._Privilege = Privilege
+
+    @property
+    def ValidStatus(self):
+        r"""是否有效。0-无效；1-有效。
+        :rtype: int
+        """
+        return self._ValidStatus
+
+    @ValidStatus.setter
+    def ValidStatus(self, ValidStatus):
+        self._ValidStatus = ValidStatus
+
+
+    def _deserialize(self, params):
+        self._AssetId = params.get("AssetId")
+        self._PersonName = params.get("PersonName")
+        self._Phone = params.get("Phone")
+        self._ValidateFrom = params.get("ValidateFrom")
+        self._ValidateTo = params.get("ValidateTo")
+        self._ValidatePeriod = params.get("ValidatePeriod")
+        if params.get("Privilege") is not None:
+            self._Privilege = DspmDbAccountPrivilege()
+            self._Privilege._deserialize(params.get("Privilege"))
+        self._ValidStatus = params.get("ValidStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DspmPersonIdentifyItem(AbstractModel):
+    r"""Dspm个人身份信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PersonId: 身份id。
+        :type PersonId: str
+        :param _Name: 姓名。
+        :type Name: str
+        :param _Phone: 手机号
+        :type Phone: str
+        :param _Remark: 备注。
+        :type Remark: str
+        :param _CreateTime: 创建时间。
+        :type CreateTime: str
+        """
+        self._PersonId = None
+        self._Name = None
+        self._Phone = None
+        self._Remark = None
+        self._CreateTime = None
+
+    @property
+    def PersonId(self):
+        r"""身份id。
+        :rtype: str
+        """
+        return self._PersonId
+
+    @PersonId.setter
+    def PersonId(self, PersonId):
+        self._PersonId = PersonId
+
+    @property
+    def Name(self):
+        r"""姓名。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Phone(self):
+        r"""手机号
+        :rtype: str
+        """
+        return self._Phone
+
+    @Phone.setter
+    def Phone(self, Phone):
+        self._Phone = Phone
+
+    @property
+    def Remark(self):
+        r"""备注。
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def CreateTime(self):
+        r"""创建时间。
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+
+    def _deserialize(self, params):
+        self._PersonId = params.get("PersonId")
+        self._Name = params.get("Name")
+        self._Phone = params.get("Phone")
+        self._Remark = params.get("Remark")
+        self._CreateTime = params.get("CreateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DspmPersonUser(AbstractModel):
+    r"""个人用户信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PersonId: 个人id
+        :type PersonId: str
+        :param _PersonName: 姓名
+        :type PersonName: str
+        :param _Phone: 手机号
+        :type Phone: str
+        """
+        self._PersonId = None
+        self._PersonName = None
+        self._Phone = None
+
+    @property
+    def PersonId(self):
+        r"""个人id
+        :rtype: str
+        """
+        return self._PersonId
+
+    @PersonId.setter
+    def PersonId(self, PersonId):
+        self._PersonId = PersonId
+
+    @property
+    def PersonName(self):
+        r"""姓名
+        :rtype: str
+        """
+        return self._PersonName
+
+    @PersonName.setter
+    def PersonName(self, PersonName):
+        self._PersonName = PersonName
+
+    @property
+    def Phone(self):
+        r"""手机号
+        :rtype: str
+        """
+        return self._Phone
+
+    @Phone.setter
+    def Phone(self, Phone):
+        self._Phone = Phone
+
+
+    def _deserialize(self, params):
+        self._PersonId = params.get("PersonId")
+        self._PersonName = params.get("PersonName")
+        self._Phone = params.get("Phone")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DspmRisk(AbstractModel):
+    r"""Dspm风险
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RiskId: 风险id
+        :type RiskId: str
+        :param _RiskName: 风险名称
+        :type RiskName: str
+        :param _RiskNameEn: 风险英文名称
+        :type RiskNameEn: str
+        :param _StrategyType: 策略类型
+        :type StrategyType: str
+        :param _StrategyCategory: 策略类别
+        :type StrategyCategory: str
+        :param _RiskLevel: 风险等级
+        :type RiskLevel: str
+        :param _AssetId: 资产实例Id
+        :type AssetId: str
+        :param _AssetType: 资产类型
+        :type AssetType: str
+        :param _AssetName: 资产名
+        :type AssetName: str
+        :param _AssetRegion: 地域
+        :type AssetRegion: str
+        :param _Account: 资产账号
+        :type Account: str
+        :param _Host: 主机地址
+        :type Host: str
+        :param _AccountType: 账号类型
+        :type AccountType: int
+        :param _DetectTime: 风险检出时间
+        :type DetectTime: str
+        :param _Status: 处理状态 0-未处理 1-已处置 2-已忽略
+        :type Status: int
+        :param _IdentifyId: 身份id
+        :type IdentifyId: str
+        :param _OwnerUin: 所属云账号uin用户
+        :type OwnerUin: :class:`tencentcloud.csip.v20221121.models.DspmUinUser`
+        :param _Person: 所属个人用户信息
+        :type Person: :class:`tencentcloud.csip.v20221121.models.DspmPersonUser`
+        :param _RiskData: 风险数据。
+        :type RiskData: str
+        :param _IsAssetManager: 是否资产管理员
+        :type IsAssetManager: int
+        :param _DataBeginTime: 数据起始时间
+        :type DataBeginTime: str
+        :param _DataEndTime: 数据结束时间
+        :type DataEndTime: str
+        :param _RiskType: 风险类型。risk-风险；alarm-告警。
+        :type RiskType: str
+        :param _AppId: 资产所属账号app id
+        :type AppId: int
+        :param _NickName: 账号昵称
+        :type NickName: str
+        :param _Uin: 资产所属账号uin
+        :type Uin: str
+        """
+        self._RiskId = None
+        self._RiskName = None
+        self._RiskNameEn = None
+        self._StrategyType = None
+        self._StrategyCategory = None
+        self._RiskLevel = None
+        self._AssetId = None
+        self._AssetType = None
+        self._AssetName = None
+        self._AssetRegion = None
+        self._Account = None
+        self._Host = None
+        self._AccountType = None
+        self._DetectTime = None
+        self._Status = None
+        self._IdentifyId = None
+        self._OwnerUin = None
+        self._Person = None
+        self._RiskData = None
+        self._IsAssetManager = None
+        self._DataBeginTime = None
+        self._DataEndTime = None
+        self._RiskType = None
+        self._AppId = None
+        self._NickName = None
+        self._Uin = None
+
+    @property
+    def RiskId(self):
+        r"""风险id
+        :rtype: str
+        """
+        return self._RiskId
+
+    @RiskId.setter
+    def RiskId(self, RiskId):
+        self._RiskId = RiskId
+
+    @property
+    def RiskName(self):
+        r"""风险名称
+        :rtype: str
+        """
+        return self._RiskName
+
+    @RiskName.setter
+    def RiskName(self, RiskName):
+        self._RiskName = RiskName
+
+    @property
+    def RiskNameEn(self):
+        r"""风险英文名称
+        :rtype: str
+        """
+        return self._RiskNameEn
+
+    @RiskNameEn.setter
+    def RiskNameEn(self, RiskNameEn):
+        self._RiskNameEn = RiskNameEn
+
+    @property
+    def StrategyType(self):
+        r"""策略类型
+        :rtype: str
+        """
+        return self._StrategyType
+
+    @StrategyType.setter
+    def StrategyType(self, StrategyType):
+        self._StrategyType = StrategyType
+
+    @property
+    def StrategyCategory(self):
+        r"""策略类别
+        :rtype: str
+        """
+        return self._StrategyCategory
+
+    @StrategyCategory.setter
+    def StrategyCategory(self, StrategyCategory):
+        self._StrategyCategory = StrategyCategory
+
+    @property
+    def RiskLevel(self):
+        r"""风险等级
+        :rtype: str
+        """
+        return self._RiskLevel
+
+    @RiskLevel.setter
+    def RiskLevel(self, RiskLevel):
+        self._RiskLevel = RiskLevel
+
+    @property
+    def AssetId(self):
+        r"""资产实例Id
+        :rtype: str
+        """
+        return self._AssetId
+
+    @AssetId.setter
+    def AssetId(self, AssetId):
+        self._AssetId = AssetId
+
+    @property
+    def AssetType(self):
+        r"""资产类型
+        :rtype: str
+        """
+        return self._AssetType
+
+    @AssetType.setter
+    def AssetType(self, AssetType):
+        self._AssetType = AssetType
+
+    @property
+    def AssetName(self):
+        r"""资产名
+        :rtype: str
+        """
+        return self._AssetName
+
+    @AssetName.setter
+    def AssetName(self, AssetName):
+        self._AssetName = AssetName
+
+    @property
+    def AssetRegion(self):
+        r"""地域
+        :rtype: str
+        """
+        return self._AssetRegion
+
+    @AssetRegion.setter
+    def AssetRegion(self, AssetRegion):
+        self._AssetRegion = AssetRegion
+
+    @property
+    def Account(self):
+        r"""资产账号
+        :rtype: str
+        """
+        return self._Account
+
+    @Account.setter
+    def Account(self, Account):
+        self._Account = Account
+
+    @property
+    def Host(self):
+        r"""主机地址
+        :rtype: str
+        """
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+    @property
+    def AccountType(self):
+        r"""账号类型
+        :rtype: int
+        """
+        return self._AccountType
+
+    @AccountType.setter
+    def AccountType(self, AccountType):
+        self._AccountType = AccountType
+
+    @property
+    def DetectTime(self):
+        r"""风险检出时间
+        :rtype: str
+        """
+        return self._DetectTime
+
+    @DetectTime.setter
+    def DetectTime(self, DetectTime):
+        self._DetectTime = DetectTime
+
+    @property
+    def Status(self):
+        r"""处理状态 0-未处理 1-已处置 2-已忽略
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def IdentifyId(self):
+        r"""身份id
+        :rtype: str
+        """
+        return self._IdentifyId
+
+    @IdentifyId.setter
+    def IdentifyId(self, IdentifyId):
+        self._IdentifyId = IdentifyId
+
+    @property
+    def OwnerUin(self):
+        r"""所属云账号uin用户
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DspmUinUser`
+        """
+        return self._OwnerUin
+
+    @OwnerUin.setter
+    def OwnerUin(self, OwnerUin):
+        self._OwnerUin = OwnerUin
+
+    @property
+    def Person(self):
+        r"""所属个人用户信息
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DspmPersonUser`
+        """
+        return self._Person
+
+    @Person.setter
+    def Person(self, Person):
+        self._Person = Person
+
+    @property
+    def RiskData(self):
+        r"""风险数据。
+        :rtype: str
+        """
+        return self._RiskData
+
+    @RiskData.setter
+    def RiskData(self, RiskData):
+        self._RiskData = RiskData
+
+    @property
+    def IsAssetManager(self):
+        r"""是否资产管理员
+        :rtype: int
+        """
+        return self._IsAssetManager
+
+    @IsAssetManager.setter
+    def IsAssetManager(self, IsAssetManager):
+        self._IsAssetManager = IsAssetManager
+
+    @property
+    def DataBeginTime(self):
+        r"""数据起始时间
+        :rtype: str
+        """
+        return self._DataBeginTime
+
+    @DataBeginTime.setter
+    def DataBeginTime(self, DataBeginTime):
+        self._DataBeginTime = DataBeginTime
+
+    @property
+    def DataEndTime(self):
+        r"""数据结束时间
+        :rtype: str
+        """
+        return self._DataEndTime
+
+    @DataEndTime.setter
+    def DataEndTime(self, DataEndTime):
+        self._DataEndTime = DataEndTime
+
+    @property
+    def RiskType(self):
+        r"""风险类型。risk-风险；alarm-告警。
+        :rtype: str
+        """
+        return self._RiskType
+
+    @RiskType.setter
+    def RiskType(self, RiskType):
+        self._RiskType = RiskType
+
+    @property
+    def AppId(self):
+        r"""资产所属账号app id
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def NickName(self):
+        r"""账号昵称
+        :rtype: str
+        """
+        return self._NickName
+
+    @NickName.setter
+    def NickName(self, NickName):
+        self._NickName = NickName
+
+    @property
+    def Uin(self):
+        r"""资产所属账号uin
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+
+    def _deserialize(self, params):
+        self._RiskId = params.get("RiskId")
+        self._RiskName = params.get("RiskName")
+        self._RiskNameEn = params.get("RiskNameEn")
+        self._StrategyType = params.get("StrategyType")
+        self._StrategyCategory = params.get("StrategyCategory")
+        self._RiskLevel = params.get("RiskLevel")
+        self._AssetId = params.get("AssetId")
+        self._AssetType = params.get("AssetType")
+        self._AssetName = params.get("AssetName")
+        self._AssetRegion = params.get("AssetRegion")
+        self._Account = params.get("Account")
+        self._Host = params.get("Host")
+        self._AccountType = params.get("AccountType")
+        self._DetectTime = params.get("DetectTime")
+        self._Status = params.get("Status")
+        self._IdentifyId = params.get("IdentifyId")
+        if params.get("OwnerUin") is not None:
+            self._OwnerUin = DspmUinUser()
+            self._OwnerUin._deserialize(params.get("OwnerUin"))
+        if params.get("Person") is not None:
+            self._Person = DspmPersonUser()
+            self._Person._deserialize(params.get("Person"))
+        self._RiskData = params.get("RiskData")
+        self._IsAssetManager = params.get("IsAssetManager")
+        self._DataBeginTime = params.get("DataBeginTime")
+        self._DataEndTime = params.get("DataEndTime")
+        self._RiskType = params.get("RiskType")
+        self._AppId = params.get("AppId")
+        self._NickName = params.get("NickName")
+        self._Uin = params.get("Uin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DspmRiskCount(AbstractModel):
+    r"""Dspm 风险统计数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UnprocessedRisk: 待处理风险个数
+        :type UnprocessedRisk: int
+        :param _ConfigurationRisk: 配置风险个数
+        :type ConfigurationRisk: int
+        :param _BaselineDeviation: 基线风险个数
+        :type BaselineDeviation: int
+        :param _LeakDetection: 泄露风险个数
+        :type LeakDetection: int
+        :param _SQLBehaviorAnomaly: SQL行为异常风险个数
+        :type SQLBehaviorAnomaly: int
+        :param _PermissionAnomaly: 权限异常风险个数
+        :type PermissionAnomaly: int
+        :param _LoginBehaviorAnomaly: 登录行为异常风险个数
+        :type LoginBehaviorAnomaly: int
+        :param _AttackSurfaceRisk: 攻击面风险个数
+        :type AttackSurfaceRisk: int
+        :param _AccountSensitiveOperation: 账号敏感操作个数
+        :type AccountSensitiveOperation: int
+        :param _UnprocessedAlarm: 待处理告警个数
+        :type UnprocessedAlarm: int
+        :param _NumOfNewAlarmEvent: 新增事件告警
+        :type NumOfNewAlarmEvent: int
+        :param _NumOfNewConfigRisk: 新增配置风险
+        :type NumOfNewConfigRisk: int
+        """
+        self._UnprocessedRisk = None
+        self._ConfigurationRisk = None
+        self._BaselineDeviation = None
+        self._LeakDetection = None
+        self._SQLBehaviorAnomaly = None
+        self._PermissionAnomaly = None
+        self._LoginBehaviorAnomaly = None
+        self._AttackSurfaceRisk = None
+        self._AccountSensitiveOperation = None
+        self._UnprocessedAlarm = None
+        self._NumOfNewAlarmEvent = None
+        self._NumOfNewConfigRisk = None
+
+    @property
+    def UnprocessedRisk(self):
+        r"""待处理风险个数
+        :rtype: int
+        """
+        return self._UnprocessedRisk
+
+    @UnprocessedRisk.setter
+    def UnprocessedRisk(self, UnprocessedRisk):
+        self._UnprocessedRisk = UnprocessedRisk
+
+    @property
+    def ConfigurationRisk(self):
+        warnings.warn("parameter `ConfigurationRisk` is deprecated", DeprecationWarning) 
+
+        r"""配置风险个数
+        :rtype: int
+        """
+        return self._ConfigurationRisk
+
+    @ConfigurationRisk.setter
+    def ConfigurationRisk(self, ConfigurationRisk):
+        warnings.warn("parameter `ConfigurationRisk` is deprecated", DeprecationWarning) 
+
+        self._ConfigurationRisk = ConfigurationRisk
+
+    @property
+    def BaselineDeviation(self):
+        warnings.warn("parameter `BaselineDeviation` is deprecated", DeprecationWarning) 
+
+        r"""基线风险个数
+        :rtype: int
+        """
+        return self._BaselineDeviation
+
+    @BaselineDeviation.setter
+    def BaselineDeviation(self, BaselineDeviation):
+        warnings.warn("parameter `BaselineDeviation` is deprecated", DeprecationWarning) 
+
+        self._BaselineDeviation = BaselineDeviation
+
+    @property
+    def LeakDetection(self):
+        warnings.warn("parameter `LeakDetection` is deprecated", DeprecationWarning) 
+
+        r"""泄露风险个数
+        :rtype: int
+        """
+        return self._LeakDetection
+
+    @LeakDetection.setter
+    def LeakDetection(self, LeakDetection):
+        warnings.warn("parameter `LeakDetection` is deprecated", DeprecationWarning) 
+
+        self._LeakDetection = LeakDetection
+
+    @property
+    def SQLBehaviorAnomaly(self):
+        r"""SQL行为异常风险个数
+        :rtype: int
+        """
+        return self._SQLBehaviorAnomaly
+
+    @SQLBehaviorAnomaly.setter
+    def SQLBehaviorAnomaly(self, SQLBehaviorAnomaly):
+        self._SQLBehaviorAnomaly = SQLBehaviorAnomaly
+
+    @property
+    def PermissionAnomaly(self):
+        r"""权限异常风险个数
+        :rtype: int
+        """
+        return self._PermissionAnomaly
+
+    @PermissionAnomaly.setter
+    def PermissionAnomaly(self, PermissionAnomaly):
+        self._PermissionAnomaly = PermissionAnomaly
+
+    @property
+    def LoginBehaviorAnomaly(self):
+        r"""登录行为异常风险个数
+        :rtype: int
+        """
+        return self._LoginBehaviorAnomaly
+
+    @LoginBehaviorAnomaly.setter
+    def LoginBehaviorAnomaly(self, LoginBehaviorAnomaly):
+        self._LoginBehaviorAnomaly = LoginBehaviorAnomaly
+
+    @property
+    def AttackSurfaceRisk(self):
+        r"""攻击面风险个数
+        :rtype: int
+        """
+        return self._AttackSurfaceRisk
+
+    @AttackSurfaceRisk.setter
+    def AttackSurfaceRisk(self, AttackSurfaceRisk):
+        self._AttackSurfaceRisk = AttackSurfaceRisk
+
+    @property
+    def AccountSensitiveOperation(self):
+        r"""账号敏感操作个数
+        :rtype: int
+        """
+        return self._AccountSensitiveOperation
+
+    @AccountSensitiveOperation.setter
+    def AccountSensitiveOperation(self, AccountSensitiveOperation):
+        self._AccountSensitiveOperation = AccountSensitiveOperation
+
+    @property
+    def UnprocessedAlarm(self):
+        r"""待处理告警个数
+        :rtype: int
+        """
+        return self._UnprocessedAlarm
+
+    @UnprocessedAlarm.setter
+    def UnprocessedAlarm(self, UnprocessedAlarm):
+        self._UnprocessedAlarm = UnprocessedAlarm
+
+    @property
+    def NumOfNewAlarmEvent(self):
+        r"""新增事件告警
+        :rtype: int
+        """
+        return self._NumOfNewAlarmEvent
+
+    @NumOfNewAlarmEvent.setter
+    def NumOfNewAlarmEvent(self, NumOfNewAlarmEvent):
+        self._NumOfNewAlarmEvent = NumOfNewAlarmEvent
+
+    @property
+    def NumOfNewConfigRisk(self):
+        r"""新增配置风险
+        :rtype: int
+        """
+        return self._NumOfNewConfigRisk
+
+    @NumOfNewConfigRisk.setter
+    def NumOfNewConfigRisk(self, NumOfNewConfigRisk):
+        self._NumOfNewConfigRisk = NumOfNewConfigRisk
+
+
+    def _deserialize(self, params):
+        self._UnprocessedRisk = params.get("UnprocessedRisk")
+        self._ConfigurationRisk = params.get("ConfigurationRisk")
+        self._BaselineDeviation = params.get("BaselineDeviation")
+        self._LeakDetection = params.get("LeakDetection")
+        self._SQLBehaviorAnomaly = params.get("SQLBehaviorAnomaly")
+        self._PermissionAnomaly = params.get("PermissionAnomaly")
+        self._LoginBehaviorAnomaly = params.get("LoginBehaviorAnomaly")
+        self._AttackSurfaceRisk = params.get("AttackSurfaceRisk")
+        self._AccountSensitiveOperation = params.get("AccountSensitiveOperation")
+        self._UnprocessedAlarm = params.get("UnprocessedAlarm")
+        self._NumOfNewAlarmEvent = params.get("NumOfNewAlarmEvent")
+        self._NumOfNewConfigRisk = params.get("NumOfNewConfigRisk")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DspmRiskStrategy(AbstractModel):
+    r"""Dspm 风险策略
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StrategyType: 策略类型
+        :type StrategyType: str
+        :param _Name: 策略名
+        :type Name: str
+        :param _StrategyCategory: 策略类型
+        :type StrategyCategory: str
+        :param _IsEnabled: 是否启用。0-禁用 1-启用
+        :type IsEnabled: int
+        :param _RiskLevel: 风险等级。
+        :type RiskLevel: str
+        :param _Rule: 策略规则
+        :type Rule: str
+        :param _Remark: 备注
+        :type Remark: str
+        :param _Description: 策略内容
+        :type Description: str
+        :param _HitCount: 命中次数
+        :type HitCount: int
+        :param _RiskType: 风险类型。risk-风险；alarm-告警。
+        :type RiskType: str
+        :param _AppId: 资产所属账号app id
+        :type AppId: int
+        :param _NickName: 账号昵称
+        :type NickName: str
+        :param _Uin: 资产所属账号uin
+        :type Uin: str
+        :param _StrategyId: 策略id
+        :type StrategyId: int
+        """
+        self._StrategyType = None
+        self._Name = None
+        self._StrategyCategory = None
+        self._IsEnabled = None
+        self._RiskLevel = None
+        self._Rule = None
+        self._Remark = None
+        self._Description = None
+        self._HitCount = None
+        self._RiskType = None
+        self._AppId = None
+        self._NickName = None
+        self._Uin = None
+        self._StrategyId = None
+
+    @property
+    def StrategyType(self):
+        r"""策略类型
+        :rtype: str
+        """
+        return self._StrategyType
+
+    @StrategyType.setter
+    def StrategyType(self, StrategyType):
+        self._StrategyType = StrategyType
+
+    @property
+    def Name(self):
+        r"""策略名
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def StrategyCategory(self):
+        r"""策略类型
+        :rtype: str
+        """
+        return self._StrategyCategory
+
+    @StrategyCategory.setter
+    def StrategyCategory(self, StrategyCategory):
+        self._StrategyCategory = StrategyCategory
+
+    @property
+    def IsEnabled(self):
+        r"""是否启用。0-禁用 1-启用
+        :rtype: int
+        """
+        return self._IsEnabled
+
+    @IsEnabled.setter
+    def IsEnabled(self, IsEnabled):
+        self._IsEnabled = IsEnabled
+
+    @property
+    def RiskLevel(self):
+        r"""风险等级。
+        :rtype: str
+        """
+        return self._RiskLevel
+
+    @RiskLevel.setter
+    def RiskLevel(self, RiskLevel):
+        self._RiskLevel = RiskLevel
+
+    @property
+    def Rule(self):
+        r"""策略规则
+        :rtype: str
+        """
+        return self._Rule
+
+    @Rule.setter
+    def Rule(self, Rule):
+        self._Rule = Rule
+
+    @property
+    def Remark(self):
+        r"""备注
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def Description(self):
+        r"""策略内容
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def HitCount(self):
+        r"""命中次数
+        :rtype: int
+        """
+        return self._HitCount
+
+    @HitCount.setter
+    def HitCount(self, HitCount):
+        self._HitCount = HitCount
+
+    @property
+    def RiskType(self):
+        r"""风险类型。risk-风险；alarm-告警。
+        :rtype: str
+        """
+        return self._RiskType
+
+    @RiskType.setter
+    def RiskType(self, RiskType):
+        self._RiskType = RiskType
+
+    @property
+    def AppId(self):
+        r"""资产所属账号app id
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def NickName(self):
+        r"""账号昵称
+        :rtype: str
+        """
+        return self._NickName
+
+    @NickName.setter
+    def NickName(self, NickName):
+        self._NickName = NickName
+
+    @property
+    def Uin(self):
+        r"""资产所属账号uin
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def StrategyId(self):
+        r"""策略id
+        :rtype: int
+        """
+        return self._StrategyId
+
+    @StrategyId.setter
+    def StrategyId(self, StrategyId):
+        self._StrategyId = StrategyId
+
+
+    def _deserialize(self, params):
+        self._StrategyType = params.get("StrategyType")
+        self._Name = params.get("Name")
+        self._StrategyCategory = params.get("StrategyCategory")
+        self._IsEnabled = params.get("IsEnabled")
+        self._RiskLevel = params.get("RiskLevel")
+        self._Rule = params.get("Rule")
+        self._Remark = params.get("Remark")
+        self._Description = params.get("Description")
+        self._HitCount = params.get("HitCount")
+        self._RiskType = params.get("RiskType")
+        self._AppId = params.get("AppId")
+        self._NickName = params.get("NickName")
+        self._Uin = params.get("Uin")
+        self._StrategyId = params.get("StrategyId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DspmRiskStrategyGroup(AbstractModel):
+    r"""Dspm 风险分组策略
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StrategyType: 策略类型
+        :type StrategyType: str
+        :param _Name: 策略名
+        :type Name: str
+        :param _StrategyCategory: 策略类型
+        :type StrategyCategory: str
+        :param _IsEnabled: 是否启用。0-禁用 1-启用
+        :type IsEnabled: int
+        :param _HitCount: 命中次数
+        :type HitCount: int
+        :param _RiskType: 风险类型。risk-风险；alarm-告警。
+        :type RiskType: str
+        :param _StrategyList: 策略列表
+        :type StrategyList: list of DspmRiskStrategy
+        """
+        self._StrategyType = None
+        self._Name = None
+        self._StrategyCategory = None
+        self._IsEnabled = None
+        self._HitCount = None
+        self._RiskType = None
+        self._StrategyList = None
+
+    @property
+    def StrategyType(self):
+        r"""策略类型
+        :rtype: str
+        """
+        return self._StrategyType
+
+    @StrategyType.setter
+    def StrategyType(self, StrategyType):
+        self._StrategyType = StrategyType
+
+    @property
+    def Name(self):
+        r"""策略名
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def StrategyCategory(self):
+        r"""策略类型
+        :rtype: str
+        """
+        return self._StrategyCategory
+
+    @StrategyCategory.setter
+    def StrategyCategory(self, StrategyCategory):
+        self._StrategyCategory = StrategyCategory
+
+    @property
+    def IsEnabled(self):
+        r"""是否启用。0-禁用 1-启用
+        :rtype: int
+        """
+        return self._IsEnabled
+
+    @IsEnabled.setter
+    def IsEnabled(self, IsEnabled):
+        self._IsEnabled = IsEnabled
+
+    @property
+    def HitCount(self):
+        r"""命中次数
+        :rtype: int
+        """
+        return self._HitCount
+
+    @HitCount.setter
+    def HitCount(self, HitCount):
+        self._HitCount = HitCount
+
+    @property
+    def RiskType(self):
+        r"""风险类型。risk-风险；alarm-告警。
+        :rtype: str
+        """
+        return self._RiskType
+
+    @RiskType.setter
+    def RiskType(self, RiskType):
+        self._RiskType = RiskType
+
+    @property
+    def StrategyList(self):
+        r"""策略列表
+        :rtype: list of DspmRiskStrategy
+        """
+        return self._StrategyList
+
+    @StrategyList.setter
+    def StrategyList(self, StrategyList):
+        self._StrategyList = StrategyList
+
+
+    def _deserialize(self, params):
+        self._StrategyType = params.get("StrategyType")
+        self._Name = params.get("Name")
+        self._StrategyCategory = params.get("StrategyCategory")
+        self._IsEnabled = params.get("IsEnabled")
+        self._HitCount = params.get("HitCount")
+        self._RiskType = params.get("RiskType")
+        if params.get("StrategyList") is not None:
+            self._StrategyList = []
+            for item in params.get("StrategyList"):
+                obj = DspmRiskStrategy()
+                obj._deserialize(item)
+                self._StrategyList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DspmRiskTendency(AbstractModel):
+    r"""Dspm风险趋势
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Date: 日期
+        :type Date: str
+        :param _UncontrolledAccount: 未管控账号个数
+        :type UncontrolledAccount: int
+        :param _ConfigurationRisk: 配置风险个数
+        :type ConfigurationRisk: int
+        :param _BaselineRisk: 基线风险个数
+        :type BaselineRisk: int
+        :param _LeakDetectionRisk: 泄露风险个数
+        :type LeakDetectionRisk: int
+        :param _SQLBehaviorAnomaly: SQL行为异常风险个数
+        :type SQLBehaviorAnomaly: int
+        :param _PermissionAnomaly: 权限异常风险个数
+        :type PermissionAnomaly: int
+        :param _LoginBehaviorAnomaly: 登录行为异常风险个数
+        :type LoginBehaviorAnomaly: int
+        :param _AttackSurfaceRisk: 攻击面风险风险个数
+        :type AttackSurfaceRisk: int
+        :param _AccountSensitiveOperation: 账号敏感操作个数
+        :type AccountSensitiveOperation: int
+        """
+        self._Date = None
+        self._UncontrolledAccount = None
+        self._ConfigurationRisk = None
+        self._BaselineRisk = None
+        self._LeakDetectionRisk = None
+        self._SQLBehaviorAnomaly = None
+        self._PermissionAnomaly = None
+        self._LoginBehaviorAnomaly = None
+        self._AttackSurfaceRisk = None
+        self._AccountSensitiveOperation = None
+
+    @property
+    def Date(self):
+        r"""日期
+        :rtype: str
+        """
+        return self._Date
+
+    @Date.setter
+    def Date(self, Date):
+        self._Date = Date
+
+    @property
+    def UncontrolledAccount(self):
+        r"""未管控账号个数
+        :rtype: int
+        """
+        return self._UncontrolledAccount
+
+    @UncontrolledAccount.setter
+    def UncontrolledAccount(self, UncontrolledAccount):
+        self._UncontrolledAccount = UncontrolledAccount
+
+    @property
+    def ConfigurationRisk(self):
+        warnings.warn("parameter `ConfigurationRisk` is deprecated", DeprecationWarning) 
+
+        r"""配置风险个数
+        :rtype: int
+        """
+        return self._ConfigurationRisk
+
+    @ConfigurationRisk.setter
+    def ConfigurationRisk(self, ConfigurationRisk):
+        warnings.warn("parameter `ConfigurationRisk` is deprecated", DeprecationWarning) 
+
+        self._ConfigurationRisk = ConfigurationRisk
+
+    @property
+    def BaselineRisk(self):
+        warnings.warn("parameter `BaselineRisk` is deprecated", DeprecationWarning) 
+
+        r"""基线风险个数
+        :rtype: int
+        """
+        return self._BaselineRisk
+
+    @BaselineRisk.setter
+    def BaselineRisk(self, BaselineRisk):
+        warnings.warn("parameter `BaselineRisk` is deprecated", DeprecationWarning) 
+
+        self._BaselineRisk = BaselineRisk
+
+    @property
+    def LeakDetectionRisk(self):
+        warnings.warn("parameter `LeakDetectionRisk` is deprecated", DeprecationWarning) 
+
+        r"""泄露风险个数
+        :rtype: int
+        """
+        return self._LeakDetectionRisk
+
+    @LeakDetectionRisk.setter
+    def LeakDetectionRisk(self, LeakDetectionRisk):
+        warnings.warn("parameter `LeakDetectionRisk` is deprecated", DeprecationWarning) 
+
+        self._LeakDetectionRisk = LeakDetectionRisk
+
+    @property
+    def SQLBehaviorAnomaly(self):
+        r"""SQL行为异常风险个数
+        :rtype: int
+        """
+        return self._SQLBehaviorAnomaly
+
+    @SQLBehaviorAnomaly.setter
+    def SQLBehaviorAnomaly(self, SQLBehaviorAnomaly):
+        self._SQLBehaviorAnomaly = SQLBehaviorAnomaly
+
+    @property
+    def PermissionAnomaly(self):
+        r"""权限异常风险个数
+        :rtype: int
+        """
+        return self._PermissionAnomaly
+
+    @PermissionAnomaly.setter
+    def PermissionAnomaly(self, PermissionAnomaly):
+        self._PermissionAnomaly = PermissionAnomaly
+
+    @property
+    def LoginBehaviorAnomaly(self):
+        r"""登录行为异常风险个数
+        :rtype: int
+        """
+        return self._LoginBehaviorAnomaly
+
+    @LoginBehaviorAnomaly.setter
+    def LoginBehaviorAnomaly(self, LoginBehaviorAnomaly):
+        self._LoginBehaviorAnomaly = LoginBehaviorAnomaly
+
+    @property
+    def AttackSurfaceRisk(self):
+        r"""攻击面风险风险个数
+        :rtype: int
+        """
+        return self._AttackSurfaceRisk
+
+    @AttackSurfaceRisk.setter
+    def AttackSurfaceRisk(self, AttackSurfaceRisk):
+        self._AttackSurfaceRisk = AttackSurfaceRisk
+
+    @property
+    def AccountSensitiveOperation(self):
+        r"""账号敏感操作个数
+        :rtype: int
+        """
+        return self._AccountSensitiveOperation
+
+    @AccountSensitiveOperation.setter
+    def AccountSensitiveOperation(self, AccountSensitiveOperation):
+        self._AccountSensitiveOperation = AccountSensitiveOperation
+
+
+    def _deserialize(self, params):
+        self._Date = params.get("Date")
+        self._UncontrolledAccount = params.get("UncontrolledAccount")
+        self._ConfigurationRisk = params.get("ConfigurationRisk")
+        self._BaselineRisk = params.get("BaselineRisk")
+        self._LeakDetectionRisk = params.get("LeakDetectionRisk")
+        self._SQLBehaviorAnomaly = params.get("SQLBehaviorAnomaly")
+        self._PermissionAnomaly = params.get("PermissionAnomaly")
+        self._LoginBehaviorAnomaly = params.get("LoginBehaviorAnomaly")
+        self._AttackSurfaceRisk = params.get("AttackSurfaceRisk")
+        self._AccountSensitiveOperation = params.get("AccountSensitiveOperation")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DspmScheduleConfig(AbstractModel):
+    r"""调度任务配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ScheduleType: 调度类型: daily(按天), weekly(按周), monthly(按月)
+        :type ScheduleType: str
+        :param _Day: 按天不传，按周调度配置（星期几 (1=周一, ..., 7=周日)），按月调度配置（每月第几天 (1-31)）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Day: int
+        :param _Time: 调度时间配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Time: str
+        :param _TimeZone: 时区,默认东八区（Asia/Shanghai）
+        :type TimeZone: str
+        """
+        self._ScheduleType = None
+        self._Day = None
+        self._Time = None
+        self._TimeZone = None
+
+    @property
+    def ScheduleType(self):
+        r"""调度类型: daily(按天), weekly(按周), monthly(按月)
+        :rtype: str
+        """
+        return self._ScheduleType
+
+    @ScheduleType.setter
+    def ScheduleType(self, ScheduleType):
+        self._ScheduleType = ScheduleType
+
+    @property
+    def Day(self):
+        r"""按天不传，按周调度配置（星期几 (1=周一, ..., 7=周日)），按月调度配置（每月第几天 (1-31)）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Day
+
+    @Day.setter
+    def Day(self, Day):
+        self._Day = Day
+
+    @property
+    def Time(self):
+        r"""调度时间配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Time
+
+    @Time.setter
+    def Time(self, Time):
+        self._Time = Time
+
+    @property
+    def TimeZone(self):
+        r"""时区,默认东八区（Asia/Shanghai）
+        :rtype: str
+        """
+        return self._TimeZone
+
+    @TimeZone.setter
+    def TimeZone(self, TimeZone):
+        self._TimeZone = TimeZone
+
+
+    def _deserialize(self, params):
+        self._ScheduleType = params.get("ScheduleType")
+        self._Day = params.get("Day")
+        self._Time = params.get("Time")
+        self._TimeZone = params.get("TimeZone")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DspmSecurityAnalyseStatusCount(AbstractModel):
+    r"""Dspm 资产安全分析状态统计数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OpenCount: 资产安全分析开启数
+        :type OpenCount: int
+        :param _OpeningCount: 资产安全分析开启中数
+        :type OpeningCount: int
+        :param _ClosingCount: 资产安全分析关闭中数
+        :type ClosingCount: int
+        :param _CloseCount: 资产安全分析未开启数
+        :type CloseCount: int
+        :param _AssetTypeCountSet: 按照资产类型分组的资产安全分析状态统计数
+        :type AssetTypeCountSet: list of DspmAssetTypeCount
+        """
+        self._OpenCount = None
+        self._OpeningCount = None
+        self._ClosingCount = None
+        self._CloseCount = None
+        self._AssetTypeCountSet = None
+
+    @property
+    def OpenCount(self):
+        r"""资产安全分析开启数
+        :rtype: int
+        """
+        return self._OpenCount
+
+    @OpenCount.setter
+    def OpenCount(self, OpenCount):
+        self._OpenCount = OpenCount
+
+    @property
+    def OpeningCount(self):
+        r"""资产安全分析开启中数
+        :rtype: int
+        """
+        return self._OpeningCount
+
+    @OpeningCount.setter
+    def OpeningCount(self, OpeningCount):
+        self._OpeningCount = OpeningCount
+
+    @property
+    def ClosingCount(self):
+        r"""资产安全分析关闭中数
+        :rtype: int
+        """
+        return self._ClosingCount
+
+    @ClosingCount.setter
+    def ClosingCount(self, ClosingCount):
+        self._ClosingCount = ClosingCount
+
+    @property
+    def CloseCount(self):
+        r"""资产安全分析未开启数
+        :rtype: int
+        """
+        return self._CloseCount
+
+    @CloseCount.setter
+    def CloseCount(self, CloseCount):
+        self._CloseCount = CloseCount
+
+    @property
+    def AssetTypeCountSet(self):
+        r"""按照资产类型分组的资产安全分析状态统计数
+        :rtype: list of DspmAssetTypeCount
+        """
+        return self._AssetTypeCountSet
+
+    @AssetTypeCountSet.setter
+    def AssetTypeCountSet(self, AssetTypeCountSet):
+        self._AssetTypeCountSet = AssetTypeCountSet
+
+
+    def _deserialize(self, params):
+        self._OpenCount = params.get("OpenCount")
+        self._OpeningCount = params.get("OpeningCount")
+        self._ClosingCount = params.get("ClosingCount")
+        self._CloseCount = params.get("CloseCount")
+        if params.get("AssetTypeCountSet") is not None:
+            self._AssetTypeCountSet = []
+            for item in params.get("AssetTypeCountSet"):
+                obj = DspmAssetTypeCount()
+                obj._deserialize(item)
+                self._AssetTypeCountSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DspmSensitiveScanTaskConfig(AbstractModel):
+    r"""dspm敏感数据扫描任务配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IsScheduled: 是否定时任务
+        :type IsScheduled: bool
+        :param _ScheduleConfig: 调度周期配置
+        :type ScheduleConfig: :class:`tencentcloud.csip.v20221121.models.DspmScheduleConfig`
+        :param _IsRunAtOnce: 是否立即扫描
+        :type IsRunAtOnce: bool
+        """
+        self._IsScheduled = None
+        self._ScheduleConfig = None
+        self._IsRunAtOnce = None
+
+    @property
+    def IsScheduled(self):
+        r"""是否定时任务
+        :rtype: bool
+        """
+        return self._IsScheduled
+
+    @IsScheduled.setter
+    def IsScheduled(self, IsScheduled):
+        self._IsScheduled = IsScheduled
+
+    @property
+    def ScheduleConfig(self):
+        r"""调度周期配置
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DspmScheduleConfig`
+        """
+        return self._ScheduleConfig
+
+    @ScheduleConfig.setter
+    def ScheduleConfig(self, ScheduleConfig):
+        self._ScheduleConfig = ScheduleConfig
+
+    @property
+    def IsRunAtOnce(self):
+        r"""是否立即扫描
+        :rtype: bool
+        """
+        return self._IsRunAtOnce
+
+    @IsRunAtOnce.setter
+    def IsRunAtOnce(self, IsRunAtOnce):
+        self._IsRunAtOnce = IsRunAtOnce
+
+
+    def _deserialize(self, params):
+        self._IsScheduled = params.get("IsScheduled")
+        if params.get("ScheduleConfig") is not None:
+            self._ScheduleConfig = DspmScheduleConfig()
+            self._ScheduleConfig._deserialize(params.get("ScheduleConfig"))
+        self._IsRunAtOnce = params.get("IsRunAtOnce")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DspmSupportedAssetType(AbstractModel):
+    r"""dspm支持的产品信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Product: <p>产品名（用于查询）</p>
+        :type Product: str
+        :param _Regions: <p>地域列表</p>
+        :type Regions: list of RegionConfig
+        :param _ProductDisplayName: <p>产品名-用于展示</p>
+        :type ProductDisplayName: str
+        :param _ProductGroup: <p>产品组名</p>
+        :type ProductGroup: str
+        :param _AssetTotal: <p>给定资产类型的资产实例总数</p>
+        :type AssetTotal: int
+        """
+        self._Product = None
+        self._Regions = None
+        self._ProductDisplayName = None
+        self._ProductGroup = None
+        self._AssetTotal = None
+
+    @property
+    def Product(self):
+        r"""<p>产品名（用于查询）</p>
+        :rtype: str
+        """
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def Regions(self):
+        r"""<p>地域列表</p>
+        :rtype: list of RegionConfig
+        """
+        return self._Regions
+
+    @Regions.setter
+    def Regions(self, Regions):
+        self._Regions = Regions
+
+    @property
+    def ProductDisplayName(self):
+        r"""<p>产品名-用于展示</p>
+        :rtype: str
+        """
+        return self._ProductDisplayName
+
+    @ProductDisplayName.setter
+    def ProductDisplayName(self, ProductDisplayName):
+        self._ProductDisplayName = ProductDisplayName
+
+    @property
+    def ProductGroup(self):
+        r"""<p>产品组名</p>
+        :rtype: str
+        """
+        return self._ProductGroup
+
+    @ProductGroup.setter
+    def ProductGroup(self, ProductGroup):
+        self._ProductGroup = ProductGroup
+
+    @property
+    def AssetTotal(self):
+        r"""<p>给定资产类型的资产实例总数</p>
+        :rtype: int
+        """
+        return self._AssetTotal
+
+    @AssetTotal.setter
+    def AssetTotal(self, AssetTotal):
+        self._AssetTotal = AssetTotal
+
+
+    def _deserialize(self, params):
+        self._Product = params.get("Product")
+        if params.get("Regions") is not None:
+            self._Regions = []
+            for item in params.get("Regions"):
+                obj = RegionConfig()
+                obj._deserialize(item)
+                self._Regions.append(obj)
+        self._ProductDisplayName = params.get("ProductDisplayName")
+        self._ProductGroup = params.get("ProductGroup")
+        self._AssetTotal = params.get("AssetTotal")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DspmTablePrivilege(AbstractModel):
+    r"""表权限
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Database: 数据库名
+        :type Database: str
+        :param _Table: 数据库表名
+        :type Table: str
+        :param _Privileges: 权限信息
+        :type Privileges: list of str
+        """
+        self._Database = None
+        self._Table = None
+        self._Privileges = None
+
+    @property
+    def Database(self):
+        r"""数据库名
+        :rtype: str
+        """
+        return self._Database
+
+    @Database.setter
+    def Database(self, Database):
+        self._Database = Database
+
+    @property
+    def Table(self):
+        r"""数据库表名
+        :rtype: str
+        """
+        return self._Table
+
+    @Table.setter
+    def Table(self, Table):
+        self._Table = Table
+
+    @property
+    def Privileges(self):
+        r"""权限信息
+        :rtype: list of str
+        """
+        return self._Privileges
+
+    @Privileges.setter
+    def Privileges(self, Privileges):
+        self._Privileges = Privileges
+
+
+    def _deserialize(self, params):
+        self._Database = params.get("Database")
+        self._Table = params.get("Table")
+        self._Privileges = params.get("Privileges")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DspmUinUser(AbstractModel):
+    r"""云账号用户信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Uin: 账号uin
+        :type Uin: str
+        :param _Name: 姓名
+        :type Name: str
+        :param _UserType: 用户类型。1-主账号 2-子用户
+        :type UserType: int
+        """
+        self._Uin = None
+        self._Name = None
+        self._UserType = None
+
+    @property
+    def Uin(self):
+        r"""账号uin
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def Name(self):
+        r"""姓名
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def UserType(self):
+        r"""用户类型。1-主账号 2-子用户
+        :rtype: int
+        """
+        return self._UserType
+
+    @UserType.setter
+    def UserType(self, UserType):
+        self._UserType = UserType
+
+
+    def _deserialize(self, params):
+        self._Uin = params.get("Uin")
+        self._Name = params.get("Name")
+        self._UserType = params.get("UserType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DspmWhitelistStrategy(AbstractModel):
+    r"""Dspm 白名单策略
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WhitelistStrategyId: 白名单策略id
+        :type WhitelistStrategyId: str
+        :param _StrategyType: 策略类型
+        :type StrategyType: str
+        :param _Name: 白名单策略名
+        :type Name: str
+        :param _StrategyCategory: 策略类型
+        :type StrategyCategory: str
+        :param _Rule: 策略规则
+        :type Rule: str
+        :param _Remark: 备注
+        :type Remark: str
+        :param _ModifyTime: 修改时间
+        :type ModifyTime: str
+        :param _AssetId: 资产id
+        :type AssetId: str
+        :param _Account: 账号
+        :type Account: str
+        :param _Host: 主机
+        :type Host: str
+        :param _Description: 策略规则内容描述
+        :type Description: str
+        :param _RiskType: 白名单类型。risk-风险白名单；alarm-告警白名单。
+        :type RiskType: str
+        :param _AppId: 资产所属账号app id
+        :type AppId: int
+        :param _NickName: 账号昵称
+        :type NickName: str
+        :param _Uin: 资产所属账号uin
+        :type Uin: str
+        """
+        self._WhitelistStrategyId = None
+        self._StrategyType = None
+        self._Name = None
+        self._StrategyCategory = None
+        self._Rule = None
+        self._Remark = None
+        self._ModifyTime = None
+        self._AssetId = None
+        self._Account = None
+        self._Host = None
+        self._Description = None
+        self._RiskType = None
+        self._AppId = None
+        self._NickName = None
+        self._Uin = None
+
+    @property
+    def WhitelistStrategyId(self):
+        r"""白名单策略id
+        :rtype: str
+        """
+        return self._WhitelistStrategyId
+
+    @WhitelistStrategyId.setter
+    def WhitelistStrategyId(self, WhitelistStrategyId):
+        self._WhitelistStrategyId = WhitelistStrategyId
+
+    @property
+    def StrategyType(self):
+        r"""策略类型
+        :rtype: str
+        """
+        return self._StrategyType
+
+    @StrategyType.setter
+    def StrategyType(self, StrategyType):
+        self._StrategyType = StrategyType
+
+    @property
+    def Name(self):
+        r"""白名单策略名
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def StrategyCategory(self):
+        r"""策略类型
+        :rtype: str
+        """
+        return self._StrategyCategory
+
+    @StrategyCategory.setter
+    def StrategyCategory(self, StrategyCategory):
+        self._StrategyCategory = StrategyCategory
+
+    @property
+    def Rule(self):
+        r"""策略规则
+        :rtype: str
+        """
+        return self._Rule
+
+    @Rule.setter
+    def Rule(self, Rule):
+        self._Rule = Rule
+
+    @property
+    def Remark(self):
+        r"""备注
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def ModifyTime(self):
+        r"""修改时间
+        :rtype: str
+        """
+        return self._ModifyTime
+
+    @ModifyTime.setter
+    def ModifyTime(self, ModifyTime):
+        self._ModifyTime = ModifyTime
+
+    @property
+    def AssetId(self):
+        r"""资产id
+        :rtype: str
+        """
+        return self._AssetId
+
+    @AssetId.setter
+    def AssetId(self, AssetId):
+        self._AssetId = AssetId
+
+    @property
+    def Account(self):
+        r"""账号
+        :rtype: str
+        """
+        return self._Account
+
+    @Account.setter
+    def Account(self, Account):
+        self._Account = Account
+
+    @property
+    def Host(self):
+        r"""主机
+        :rtype: str
+        """
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+    @property
+    def Description(self):
+        r"""策略规则内容描述
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def RiskType(self):
+        r"""白名单类型。risk-风险白名单；alarm-告警白名单。
+        :rtype: str
+        """
+        return self._RiskType
+
+    @RiskType.setter
+    def RiskType(self, RiskType):
+        self._RiskType = RiskType
+
+    @property
+    def AppId(self):
+        r"""资产所属账号app id
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def NickName(self):
+        r"""账号昵称
+        :rtype: str
+        """
+        return self._NickName
+
+    @NickName.setter
+    def NickName(self, NickName):
+        self._NickName = NickName
+
+    @property
+    def Uin(self):
+        r"""资产所属账号uin
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+
+    def _deserialize(self, params):
+        self._WhitelistStrategyId = params.get("WhitelistStrategyId")
+        self._StrategyType = params.get("StrategyType")
+        self._Name = params.get("Name")
+        self._StrategyCategory = params.get("StrategyCategory")
+        self._Rule = params.get("Rule")
+        self._Remark = params.get("Remark")
+        self._ModifyTime = params.get("ModifyTime")
+        self._AssetId = params.get("AssetId")
+        self._Account = params.get("Account")
+        self._Host = params.get("Host")
+        self._Description = params.get("Description")
+        self._RiskType = params.get("RiskType")
+        self._AppId = params.get("AppId")
+        self._NickName = params.get("NickName")
+        self._Uin = params.get("Uin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Element(AbstractModel):
     r"""统计条目
 
@@ -26123,6 +43164,162 @@ class Element(AbstractModel):
     def _deserialize(self, params):
         self._Key = params.get("Key")
         self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExportTask(AbstractModel):
+    r"""导出任务列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 任务Id
+        :type Id: int
+        :param _AppId: 用户AppId
+        :type AppId: int
+        :param _Percentage: 进度百分比
+        :type Percentage: int
+        :param _TaskStatus: 任务状态：0.未开始 1.执行中 2.执行成功 3.执行超时 4.执行失败
+        :type TaskStatus: int
+        :param _CreateTime: 任务创建时间
+        :type CreateTime: int
+        :param _ModifyTime: 任务更新时间
+        :type ModifyTime: int
+        :param _FileName: 文件名
+        :type FileName: str
+        :param _FileSize: 文件大小  字节
+        :type FileSize: int
+        :param _RemainingTime: 剩余时间(单位：秒)
+        :type RemainingTime: int
+        """
+        self._Id = None
+        self._AppId = None
+        self._Percentage = None
+        self._TaskStatus = None
+        self._CreateTime = None
+        self._ModifyTime = None
+        self._FileName = None
+        self._FileSize = None
+        self._RemainingTime = None
+
+    @property
+    def Id(self):
+        r"""任务Id
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def AppId(self):
+        r"""用户AppId
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def Percentage(self):
+        r"""进度百分比
+        :rtype: int
+        """
+        return self._Percentage
+
+    @Percentage.setter
+    def Percentage(self, Percentage):
+        self._Percentage = Percentage
+
+    @property
+    def TaskStatus(self):
+        r"""任务状态：0.未开始 1.执行中 2.执行成功 3.执行超时 4.执行失败
+        :rtype: int
+        """
+        return self._TaskStatus
+
+    @TaskStatus.setter
+    def TaskStatus(self, TaskStatus):
+        self._TaskStatus = TaskStatus
+
+    @property
+    def CreateTime(self):
+        r"""任务创建时间
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ModifyTime(self):
+        r"""任务更新时间
+        :rtype: int
+        """
+        return self._ModifyTime
+
+    @ModifyTime.setter
+    def ModifyTime(self, ModifyTime):
+        self._ModifyTime = ModifyTime
+
+    @property
+    def FileName(self):
+        r"""文件名
+        :rtype: str
+        """
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def FileSize(self):
+        r"""文件大小  字节
+        :rtype: int
+        """
+        return self._FileSize
+
+    @FileSize.setter
+    def FileSize(self, FileSize):
+        self._FileSize = FileSize
+
+    @property
+    def RemainingTime(self):
+        r"""剩余时间(单位：秒)
+        :rtype: int
+        """
+        return self._RemainingTime
+
+    @RemainingTime.setter
+    def RemainingTime(self, RemainingTime):
+        self._RemainingTime = RemainingTime
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._AppId = params.get("AppId")
+        self._Percentage = params.get("Percentage")
+        self._TaskStatus = params.get("TaskStatus")
+        self._CreateTime = params.get("CreateTime")
+        self._ModifyTime = params.get("ModifyTime")
+        self._FileName = params.get("FileName")
+        self._FileSize = params.get("FileSize")
+        self._RemainingTime = params.get("RemainingTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -27760,6 +44957,108 @@ class HighBaseLineRiskItem(AbstractModel):
         
 
 
+class HitRules(AbstractModel):
+    r"""规则集合
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleId: 规则Id
+        :type RuleId: int
+        :param _RuleName: 规则
+        :type RuleName: str
+        """
+        self._RuleId = None
+        self._RuleName = None
+
+    @property
+    def RuleId(self):
+        r"""规则Id
+        :rtype: int
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def RuleName(self):
+        r"""规则
+        :rtype: str
+        """
+        return self._RuleName
+
+    @RuleName.setter
+    def RuleName(self, RuleName):
+        self._RuleName = RuleName
+
+
+    def _deserialize(self, params):
+        self._RuleId = params.get("RuleId")
+        self._RuleName = params.get("RuleName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InquireInfo(AbstractModel):
+    r"""计费项信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 计费项名称
+        :type Name: str
+        :param _Value: 购买量
+        :type Value: int
+        """
+        self._Name = None
+        self._Value = None
+
+    @property
+    def Name(self):
+        r"""计费项名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Value(self):
+        r"""购买量
+        :rtype: int
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class IpAssetListVO(AbstractModel):
     r"""ip列表
 
@@ -28483,6 +45782,1736 @@ class KeyValue(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class Location(AbstractModel):
+    r"""位置信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Country: 国家
+        :type Country: str
+        :param _Region: 地区
+        :type Region: str
+        :param _City: 城市
+        :type City: str
+        """
+        self._Country = None
+        self._Region = None
+        self._City = None
+
+    @property
+    def Country(self):
+        r"""国家
+        :rtype: str
+        """
+        return self._Country
+
+    @Country.setter
+    def Country(self, Country):
+        self._Country = Country
+
+    @property
+    def Region(self):
+        r"""地区
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def City(self):
+        r"""城市
+        :rtype: str
+        """
+        return self._City
+
+    @City.setter
+    def City(self, City):
+        self._City = City
+
+
+    def _deserialize(self, params):
+        self._Country = params.get("Country")
+        self._Region = params.get("Region")
+        self._City = params.get("City")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDspmAccessRecordRequest(AbstractModel):
+    r"""ModifyDspmAccessRecord请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        :param _Id: 来源ip
+        :type Id: list of DspmAccessRecordId
+        :param _View: 视图。ip或instance
+        :type View: str
+        :param _Noted: 阅读标记。 1-已阅
+        :type Noted: int
+        """
+        self._MemberId = None
+        self._Id = None
+        self._View = None
+        self._Noted = None
+
+    @property
+    def MemberId(self):
+        r"""集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Id(self):
+        r"""来源ip
+        :rtype: list of DspmAccessRecordId
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def View(self):
+        r"""视图。ip或instance
+        :rtype: str
+        """
+        return self._View
+
+    @View.setter
+    def View(self, View):
+        self._View = View
+
+    @property
+    def Noted(self):
+        r"""阅读标记。 1-已阅
+        :rtype: int
+        """
+        return self._Noted
+
+    @Noted.setter
+    def Noted(self, Noted):
+        self._Noted = Noted
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        if params.get("Id") is not None:
+            self._Id = []
+            for item in params.get("Id"):
+                obj = DspmAccessRecordId()
+                obj._deserialize(item)
+                self._Id.append(obj)
+        self._View = params.get("View")
+        self._Noted = params.get("Noted")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDspmAccessRecordResponse(AbstractModel):
+    r"""ModifyDspmAccessRecord返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyDspmApproveStatusRequest(AbstractModel):
+    r"""ModifyDspmApproveStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OrderId: 申请单id
+        :type OrderId: str
+        :param _Status: 状态。1-通过 2-拒绝
+        :type Status: int
+        :param _Comment: 审批信息
+        :type Comment: str
+        """
+        self._OrderId = None
+        self._Status = None
+        self._Comment = None
+
+    @property
+    def OrderId(self):
+        r"""申请单id
+        :rtype: str
+        """
+        return self._OrderId
+
+    @OrderId.setter
+    def OrderId(self, OrderId):
+        self._OrderId = OrderId
+
+    @property
+    def Status(self):
+        r"""状态。1-通过 2-拒绝
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Comment(self):
+        r"""审批信息
+        :rtype: str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+
+    def _deserialize(self, params):
+        self._OrderId = params.get("OrderId")
+        self._Status = params.get("Status")
+        self._Comment = params.get("Comment")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDspmApproveStatusResponse(AbstractModel):
+    r"""ModifyDspmApproveStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyDspmAssetAccountPrivilegesRequest(AbstractModel):
+    r"""ModifyDspmAssetAccountPrivileges请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AssetId: 实例id
+        :type AssetId: str
+        :param _Account: 账号名
+        :type Account: str
+        :param _Privilege: 权限信息
+        :type Privilege: :class:`tencentcloud.csip.v20221121.models.DspmDbAccountPrivilege`
+        :param _Host: 主机地址
+        :type Host: str
+        :param _RiskId: 风险id
+        :type RiskId: str
+        """
+        self._AssetId = None
+        self._Account = None
+        self._Privilege = None
+        self._Host = None
+        self._RiskId = None
+
+    @property
+    def AssetId(self):
+        r"""实例id
+        :rtype: str
+        """
+        return self._AssetId
+
+    @AssetId.setter
+    def AssetId(self, AssetId):
+        self._AssetId = AssetId
+
+    @property
+    def Account(self):
+        r"""账号名
+        :rtype: str
+        """
+        return self._Account
+
+    @Account.setter
+    def Account(self, Account):
+        self._Account = Account
+
+    @property
+    def Privilege(self):
+        r"""权限信息
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DspmDbAccountPrivilege`
+        """
+        return self._Privilege
+
+    @Privilege.setter
+    def Privilege(self, Privilege):
+        self._Privilege = Privilege
+
+    @property
+    def Host(self):
+        r"""主机地址
+        :rtype: str
+        """
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+    @property
+    def RiskId(self):
+        r"""风险id
+        :rtype: str
+        """
+        return self._RiskId
+
+    @RiskId.setter
+    def RiskId(self, RiskId):
+        self._RiskId = RiskId
+
+
+    def _deserialize(self, params):
+        self._AssetId = params.get("AssetId")
+        self._Account = params.get("Account")
+        if params.get("Privilege") is not None:
+            self._Privilege = DspmDbAccountPrivilege()
+            self._Privilege._deserialize(params.get("Privilege"))
+        self._Host = params.get("Host")
+        self._RiskId = params.get("RiskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDspmAssetAccountPrivilegesResponse(AbstractModel):
+    r"""ModifyDspmAssetAccountPrivileges返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyDspmAssetAccountRequest(AbstractModel):
+    r"""ModifyDspmAssetAccount请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AssetId: 实例id
+        :type AssetId: str
+        :param _Account: 账号名
+        :type Account: str
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        :param _Host: 主机地址
+        :type Host: str
+        :param _AccountType: 账号类型
+        :type AccountType: int
+        :param _Remark: 备注
+        :type Remark: str
+        :param _RiskId: 风险id
+        :type RiskId: str
+        """
+        self._AssetId = None
+        self._Account = None
+        self._MemberId = None
+        self._Host = None
+        self._AccountType = None
+        self._Remark = None
+        self._RiskId = None
+
+    @property
+    def AssetId(self):
+        r"""实例id
+        :rtype: str
+        """
+        return self._AssetId
+
+    @AssetId.setter
+    def AssetId(self, AssetId):
+        self._AssetId = AssetId
+
+    @property
+    def Account(self):
+        r"""账号名
+        :rtype: str
+        """
+        return self._Account
+
+    @Account.setter
+    def Account(self, Account):
+        self._Account = Account
+
+    @property
+    def MemberId(self):
+        r"""集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Host(self):
+        r"""主机地址
+        :rtype: str
+        """
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+    @property
+    def AccountType(self):
+        r"""账号类型
+        :rtype: int
+        """
+        return self._AccountType
+
+    @AccountType.setter
+    def AccountType(self, AccountType):
+        self._AccountType = AccountType
+
+    @property
+    def Remark(self):
+        r"""备注
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def RiskId(self):
+        r"""风险id
+        :rtype: str
+        """
+        return self._RiskId
+
+    @RiskId.setter
+    def RiskId(self, RiskId):
+        self._RiskId = RiskId
+
+
+    def _deserialize(self, params):
+        self._AssetId = params.get("AssetId")
+        self._Account = params.get("Account")
+        self._MemberId = params.get("MemberId")
+        self._Host = params.get("Host")
+        self._AccountType = params.get("AccountType")
+        self._Remark = params.get("Remark")
+        self._RiskId = params.get("RiskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDspmAssetAccountResponse(AbstractModel):
+    r"""ModifyDspmAssetAccount返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyDspmAssetDataScanTaskRequest(AbstractModel):
+    r"""ModifyDspmAssetDataScanTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AssetIds: 实例id
+        :type AssetIds: list of str
+        :param _IsScheduled: 是否定时任务
+        :type IsScheduled: bool
+        :param _IsAgreeAuth: 是否同意一键授权
+        :type IsAgreeAuth: bool
+        :param _IsRunAtOnce: 是否立即执行
+        :type IsRunAtOnce: bool
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        :param _ScheduleConfig: 调度周期配置
+        :type ScheduleConfig: :class:`tencentcloud.csip.v20221121.models.DspmScheduleConfig`
+        """
+        self._AssetIds = None
+        self._IsScheduled = None
+        self._IsAgreeAuth = None
+        self._IsRunAtOnce = None
+        self._MemberId = None
+        self._ScheduleConfig = None
+
+    @property
+    def AssetIds(self):
+        r"""实例id
+        :rtype: list of str
+        """
+        return self._AssetIds
+
+    @AssetIds.setter
+    def AssetIds(self, AssetIds):
+        self._AssetIds = AssetIds
+
+    @property
+    def IsScheduled(self):
+        r"""是否定时任务
+        :rtype: bool
+        """
+        return self._IsScheduled
+
+    @IsScheduled.setter
+    def IsScheduled(self, IsScheduled):
+        self._IsScheduled = IsScheduled
+
+    @property
+    def IsAgreeAuth(self):
+        r"""是否同意一键授权
+        :rtype: bool
+        """
+        return self._IsAgreeAuth
+
+    @IsAgreeAuth.setter
+    def IsAgreeAuth(self, IsAgreeAuth):
+        self._IsAgreeAuth = IsAgreeAuth
+
+    @property
+    def IsRunAtOnce(self):
+        r"""是否立即执行
+        :rtype: bool
+        """
+        return self._IsRunAtOnce
+
+    @IsRunAtOnce.setter
+    def IsRunAtOnce(self, IsRunAtOnce):
+        self._IsRunAtOnce = IsRunAtOnce
+
+    @property
+    def MemberId(self):
+        r"""集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def ScheduleConfig(self):
+        r"""调度周期配置
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DspmScheduleConfig`
+        """
+        return self._ScheduleConfig
+
+    @ScheduleConfig.setter
+    def ScheduleConfig(self, ScheduleConfig):
+        self._ScheduleConfig = ScheduleConfig
+
+
+    def _deserialize(self, params):
+        self._AssetIds = params.get("AssetIds")
+        self._IsScheduled = params.get("IsScheduled")
+        self._IsAgreeAuth = params.get("IsAgreeAuth")
+        self._IsRunAtOnce = params.get("IsRunAtOnce")
+        self._MemberId = params.get("MemberId")
+        if params.get("ScheduleConfig") is not None:
+            self._ScheduleConfig = DspmScheduleConfig()
+            self._ScheduleConfig._deserialize(params.get("ScheduleConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDspmAssetDataScanTaskResponse(AbstractModel):
+    r"""ModifyDspmAssetDataScanTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskIdSet: 识别任务id集合
+        :type TaskIdSet: list of int non-negative
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskIdSet = None
+        self._RequestId = None
+
+    @property
+    def TaskIdSet(self):
+        r"""识别任务id集合
+        :rtype: list of int non-negative
+        """
+        return self._TaskIdSet
+
+    @TaskIdSet.setter
+    def TaskIdSet(self, TaskIdSet):
+        self._TaskIdSet = TaskIdSet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskIdSet = params.get("TaskIdSet")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyDspmAssetLogDeliverySwitchRequest(AbstractModel):
+    r"""ModifyDspmAssetLogDeliverySwitch请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AssetId: 实例id
+        :type AssetId: str
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        :param _Enable: 开关。1-打开 0-关闭
+        :type Enable: int
+        """
+        self._AssetId = None
+        self._MemberId = None
+        self._Enable = None
+
+    @property
+    def AssetId(self):
+        r"""实例id
+        :rtype: str
+        """
+        return self._AssetId
+
+    @AssetId.setter
+    def AssetId(self, AssetId):
+        self._AssetId = AssetId
+
+    @property
+    def MemberId(self):
+        r"""集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Enable(self):
+        r"""开关。1-打开 0-关闭
+        :rtype: int
+        """
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+
+    def _deserialize(self, params):
+        self._AssetId = params.get("AssetId")
+        self._MemberId = params.get("MemberId")
+        self._Enable = params.get("Enable")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDspmAssetLogDeliverySwitchResponse(AbstractModel):
+    r"""ModifyDspmAssetLogDeliverySwitch返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyDspmAssetSecurityAnalysisSwitchRequest(AbstractModel):
+    r"""ModifyDspmAssetSecurityAnalysisSwitch请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Instances: 实例信息
+        :type Instances: list of DspmAssetInstance
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        :param _Enable: 开关。1-打开 0-关闭
+        :type Enable: int
+        """
+        self._Instances = None
+        self._MemberId = None
+        self._Enable = None
+
+    @property
+    def Instances(self):
+        r"""实例信息
+        :rtype: list of DspmAssetInstance
+        """
+        return self._Instances
+
+    @Instances.setter
+    def Instances(self, Instances):
+        self._Instances = Instances
+
+    @property
+    def MemberId(self):
+        r"""集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Enable(self):
+        r"""开关。1-打开 0-关闭
+        :rtype: int
+        """
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+
+    def _deserialize(self, params):
+        if params.get("Instances") is not None:
+            self._Instances = []
+            for item in params.get("Instances"):
+                obj = DspmAssetInstance()
+                obj._deserialize(item)
+                self._Instances.append(obj)
+        self._MemberId = params.get("MemberId")
+        self._Enable = params.get("Enable")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDspmAssetSecurityAnalysisSwitchResponse(AbstractModel):
+    r"""ModifyDspmAssetSecurityAnalysisSwitch返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyDspmBackupSettingRequest(AbstractModel):
+    r"""ModifyDspmBackupSetting请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        :param _BackupLogSaveTime: 备份日志保留时长
+        :type BackupLogSaveTime: int
+        :param _RestoreLogSaveTime: 恢复日志保留时长
+        :type RestoreLogSaveTime: int
+        :param _LogMaxSaveTime: 日志最大生命周期限制
+        :type LogMaxSaveTime: int
+        :param _OnlineLogMaxSaveTime: 在线日志最大天数限制
+        :type OnlineLogMaxSaveTime: int
+        """
+        self._MemberId = None
+        self._BackupLogSaveTime = None
+        self._RestoreLogSaveTime = None
+        self._LogMaxSaveTime = None
+        self._OnlineLogMaxSaveTime = None
+
+    @property
+    def MemberId(self):
+        r"""集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def BackupLogSaveTime(self):
+        r"""备份日志保留时长
+        :rtype: int
+        """
+        return self._BackupLogSaveTime
+
+    @BackupLogSaveTime.setter
+    def BackupLogSaveTime(self, BackupLogSaveTime):
+        self._BackupLogSaveTime = BackupLogSaveTime
+
+    @property
+    def RestoreLogSaveTime(self):
+        r"""恢复日志保留时长
+        :rtype: int
+        """
+        return self._RestoreLogSaveTime
+
+    @RestoreLogSaveTime.setter
+    def RestoreLogSaveTime(self, RestoreLogSaveTime):
+        self._RestoreLogSaveTime = RestoreLogSaveTime
+
+    @property
+    def LogMaxSaveTime(self):
+        r"""日志最大生命周期限制
+        :rtype: int
+        """
+        return self._LogMaxSaveTime
+
+    @LogMaxSaveTime.setter
+    def LogMaxSaveTime(self, LogMaxSaveTime):
+        self._LogMaxSaveTime = LogMaxSaveTime
+
+    @property
+    def OnlineLogMaxSaveTime(self):
+        r"""在线日志最大天数限制
+        :rtype: int
+        """
+        return self._OnlineLogMaxSaveTime
+
+    @OnlineLogMaxSaveTime.setter
+    def OnlineLogMaxSaveTime(self, OnlineLogMaxSaveTime):
+        self._OnlineLogMaxSaveTime = OnlineLogMaxSaveTime
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        self._BackupLogSaveTime = params.get("BackupLogSaveTime")
+        self._RestoreLogSaveTime = params.get("RestoreLogSaveTime")
+        self._LogMaxSaveTime = params.get("LogMaxSaveTime")
+        self._OnlineLogMaxSaveTime = params.get("OnlineLogMaxSaveTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDspmBackupSettingResponse(AbstractModel):
+    r"""ModifyDspmBackupSetting返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyDspmIdentifyInfoRequest(AbstractModel):
+    r"""ModifyDspmIdentifyInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Subject: 对象。uin或person id
+        :type Subject: str
+        :param _Remark: 备注
+        :type Remark: str
+        """
+        self._Subject = None
+        self._Remark = None
+
+    @property
+    def Subject(self):
+        r"""对象。uin或person id
+        :rtype: str
+        """
+        return self._Subject
+
+    @Subject.setter
+    def Subject(self, Subject):
+        self._Subject = Subject
+
+    @property
+    def Remark(self):
+        r"""备注
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+
+    def _deserialize(self, params):
+        self._Subject = params.get("Subject")
+        self._Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDspmIdentifyInfoResponse(AbstractModel):
+    r"""ModifyDspmIdentifyInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyDspmIpInfoRequest(AbstractModel):
+    r"""ModifyDspmIpInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Ip: ip地址
+        :type Ip: str
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        :param _Remark: 备注
+        :type Remark: str
+        """
+        self._Ip = None
+        self._MemberId = None
+        self._Remark = None
+
+    @property
+    def Ip(self):
+        r"""ip地址
+        :rtype: str
+        """
+        return self._Ip
+
+    @Ip.setter
+    def Ip(self, Ip):
+        self._Ip = Ip
+
+    @property
+    def MemberId(self):
+        r"""集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Remark(self):
+        r"""备注
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+
+    def _deserialize(self, params):
+        self._Ip = params.get("Ip")
+        self._MemberId = params.get("MemberId")
+        self._Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDspmIpInfoResponse(AbstractModel):
+    r"""ModifyDspmIpInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyDspmPersonalIdentifyRequest(AbstractModel):
+    r"""ModifyDspmPersonalIdentify请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PersonId: 身份id
+        :type PersonId: str
+        :param _Phone: 手机号
+        :type Phone: str
+        :param _Remark: 备注
+        :type Remark: str
+        """
+        self._PersonId = None
+        self._Phone = None
+        self._Remark = None
+
+    @property
+    def PersonId(self):
+        r"""身份id
+        :rtype: str
+        """
+        return self._PersonId
+
+    @PersonId.setter
+    def PersonId(self, PersonId):
+        self._PersonId = PersonId
+
+    @property
+    def Phone(self):
+        r"""手机号
+        :rtype: str
+        """
+        return self._Phone
+
+    @Phone.setter
+    def Phone(self, Phone):
+        self._Phone = Phone
+
+    @property
+    def Remark(self):
+        r"""备注
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+
+    def _deserialize(self, params):
+        self._PersonId = params.get("PersonId")
+        self._Phone = params.get("Phone")
+        self._Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDspmPersonalIdentifyResponse(AbstractModel):
+    r"""ModifyDspmPersonalIdentify返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyDspmRestoreLogTaskRequest(AbstractModel):
+    r"""ModifyDspmRestoreLogTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 备份日志Id
+        :type Id: int
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        """
+        self._Id = None
+        self._MemberId = None
+
+    @property
+    def Id(self):
+        r"""备份日志Id
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def MemberId(self):
+        r"""集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDspmRestoreLogTaskResponse(AbstractModel):
+    r"""ModifyDspmRestoreLogTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyDspmRiskInfoRequest(AbstractModel):
+    r"""ModifyDspmRiskInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RiskId: 风险id
+        :type RiskId: list of str
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        :param _Status: 风险状态 2-已忽略
+        :type Status: int
+        """
+        self._RiskId = None
+        self._MemberId = None
+        self._Status = None
+
+    @property
+    def RiskId(self):
+        r"""风险id
+        :rtype: list of str
+        """
+        return self._RiskId
+
+    @RiskId.setter
+    def RiskId(self, RiskId):
+        self._RiskId = RiskId
+
+    @property
+    def MemberId(self):
+        r"""集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Status(self):
+        r"""风险状态 2-已忽略
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._RiskId = params.get("RiskId")
+        self._MemberId = params.get("MemberId")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDspmRiskInfoResponse(AbstractModel):
+    r"""ModifyDspmRiskInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyDspmRiskStrategyRequest(AbstractModel):
+    r"""ModifyDspmRiskStrategy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        :param _StrategyType: 风险策略类型
+        :type StrategyType: str
+        :param _IsEnabled: 是否启用
+        :type IsEnabled: int
+        :param _Rule: 策略内容，如：{     ThresholdValue: "100" }
+        :type Rule: str
+        :param _RiskLevel: 可选值：Info/Low/Medium/High
+        :type RiskLevel: str
+        :param _StrategyId: 策略id
+        :type StrategyId: list of int non-negative
+        """
+        self._MemberId = None
+        self._StrategyType = None
+        self._IsEnabled = None
+        self._Rule = None
+        self._RiskLevel = None
+        self._StrategyId = None
+
+    @property
+    def MemberId(self):
+        r"""集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def StrategyType(self):
+        r"""风险策略类型
+        :rtype: str
+        """
+        return self._StrategyType
+
+    @StrategyType.setter
+    def StrategyType(self, StrategyType):
+        self._StrategyType = StrategyType
+
+    @property
+    def IsEnabled(self):
+        r"""是否启用
+        :rtype: int
+        """
+        return self._IsEnabled
+
+    @IsEnabled.setter
+    def IsEnabled(self, IsEnabled):
+        self._IsEnabled = IsEnabled
+
+    @property
+    def Rule(self):
+        r"""策略内容，如：{     ThresholdValue: "100" }
+        :rtype: str
+        """
+        return self._Rule
+
+    @Rule.setter
+    def Rule(self, Rule):
+        self._Rule = Rule
+
+    @property
+    def RiskLevel(self):
+        r"""可选值：Info/Low/Medium/High
+        :rtype: str
+        """
+        return self._RiskLevel
+
+    @RiskLevel.setter
+    def RiskLevel(self, RiskLevel):
+        self._RiskLevel = RiskLevel
+
+    @property
+    def StrategyId(self):
+        r"""策略id
+        :rtype: list of int non-negative
+        """
+        return self._StrategyId
+
+    @StrategyId.setter
+    def StrategyId(self, StrategyId):
+        self._StrategyId = StrategyId
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        self._StrategyType = params.get("StrategyType")
+        self._IsEnabled = params.get("IsEnabled")
+        self._Rule = params.get("Rule")
+        self._RiskLevel = params.get("RiskLevel")
+        self._StrategyId = params.get("StrategyId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDspmRiskStrategyResponse(AbstractModel):
+    r"""ModifyDspmRiskStrategy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyDspmWhitelistStrategyRequest(AbstractModel):
+    r"""ModifyDspmWhitelistStrategy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        :param _WhitelistStrategyId: 白名单id
+        :type WhitelistStrategyId: str
+        :param _Name: 白名单名
+        :type Name: str
+        :param _Rule: 规则
+        :type Rule: str
+        :param _Remark: 备注
+        :type Remark: str
+        """
+        self._MemberId = None
+        self._WhitelistStrategyId = None
+        self._Name = None
+        self._Rule = None
+        self._Remark = None
+
+    @property
+    def MemberId(self):
+        r"""集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def WhitelistStrategyId(self):
+        r"""白名单id
+        :rtype: str
+        """
+        return self._WhitelistStrategyId
+
+    @WhitelistStrategyId.setter
+    def WhitelistStrategyId(self, WhitelistStrategyId):
+        self._WhitelistStrategyId = WhitelistStrategyId
+
+    @property
+    def Name(self):
+        r"""白名单名
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Rule(self):
+        r"""规则
+        :rtype: str
+        """
+        return self._Rule
+
+    @Rule.setter
+    def Rule(self, Rule):
+        self._Rule = Rule
+
+    @property
+    def Remark(self):
+        r"""备注
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        self._WhitelistStrategyId = params.get("WhitelistStrategyId")
+        self._Name = params.get("Name")
+        self._Rule = params.get("Rule")
+        self._Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDspmWhitelistStrategyResponse(AbstractModel):
+    r"""ModifyDspmWhitelistStrategy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyOrganizationAccountStatusRequest(AbstractModel):
@@ -30945,6 +49974,161 @@ class PublicIpDomainListKey(AbstractModel):
         
 
 
+class RegionConfig(AbstractModel):
+    r"""地域配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Region: 地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: str
+        :param _RegionName: 地域中文
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegionName: str
+        :param _Foreign: 是否国外
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Foreign: int
+        :param _Code: 地域码
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Code: int
+        :param _IsAutoDriveCloud: 是否自驾云
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsAutoDriveCloud: int
+        :param _IsSupportNat: 是否支持nat
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsSupportNat: int
+        :param _RegionArea: 地区信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegionArea: str
+        :param _RegionNameEN: 地域英文
+        :type RegionNameEN: str
+        """
+        self._Region = None
+        self._RegionName = None
+        self._Foreign = None
+        self._Code = None
+        self._IsAutoDriveCloud = None
+        self._IsSupportNat = None
+        self._RegionArea = None
+        self._RegionNameEN = None
+
+    @property
+    def Region(self):
+        r"""地域
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def RegionName(self):
+        r"""地域中文
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RegionName
+
+    @RegionName.setter
+    def RegionName(self, RegionName):
+        self._RegionName = RegionName
+
+    @property
+    def Foreign(self):
+        r"""是否国外
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Foreign
+
+    @Foreign.setter
+    def Foreign(self, Foreign):
+        self._Foreign = Foreign
+
+    @property
+    def Code(self):
+        r"""地域码
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def IsAutoDriveCloud(self):
+        r"""是否自驾云
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._IsAutoDriveCloud
+
+    @IsAutoDriveCloud.setter
+    def IsAutoDriveCloud(self, IsAutoDriveCloud):
+        self._IsAutoDriveCloud = IsAutoDriveCloud
+
+    @property
+    def IsSupportNat(self):
+        r"""是否支持nat
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._IsSupportNat
+
+    @IsSupportNat.setter
+    def IsSupportNat(self, IsSupportNat):
+        self._IsSupportNat = IsSupportNat
+
+    @property
+    def RegionArea(self):
+        r"""地区信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RegionArea
+
+    @RegionArea.setter
+    def RegionArea(self, RegionArea):
+        self._RegionArea = RegionArea
+
+    @property
+    def RegionNameEN(self):
+        r"""地域英文
+        :rtype: str
+        """
+        return self._RegionNameEN
+
+    @RegionNameEN.setter
+    def RegionNameEN(self, RegionNameEN):
+        self._RegionNameEN = RegionNameEN
+
+
+    def _deserialize(self, params):
+        self._Region = params.get("Region")
+        self._RegionName = params.get("RegionName")
+        self._Foreign = params.get("Foreign")
+        self._Code = params.get("Code")
+        self._IsAutoDriveCloud = params.get("IsAutoDriveCloud")
+        self._IsSupportNat = params.get("IsSupportNat")
+        self._RegionArea = params.get("RegionArea")
+        self._RegionNameEN = params.get("RegionNameEN")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RelatedEvent(AbstractModel):
     r"""相关攻击事件结构
 
@@ -31402,6 +50586,333 @@ class RepositoryImageVO(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ResetDspmAssetAccountPasswordRequest(AbstractModel):
+    r"""ResetDspmAssetAccountPassword请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AssetId: 实例id
+        :type AssetId: str
+        :param _Account: 账号名
+        :type Account: str
+        :param _Host: 主机地址
+        :type Host: str
+        :param _RiskId: 风险id
+        :type RiskId: str
+        """
+        self._AssetId = None
+        self._Account = None
+        self._Host = None
+        self._RiskId = None
+
+    @property
+    def AssetId(self):
+        r"""实例id
+        :rtype: str
+        """
+        return self._AssetId
+
+    @AssetId.setter
+    def AssetId(self, AssetId):
+        self._AssetId = AssetId
+
+    @property
+    def Account(self):
+        r"""账号名
+        :rtype: str
+        """
+        return self._Account
+
+    @Account.setter
+    def Account(self, Account):
+        self._Account = Account
+
+    @property
+    def Host(self):
+        r"""主机地址
+        :rtype: str
+        """
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+    @property
+    def RiskId(self):
+        r"""风险id
+        :rtype: str
+        """
+        return self._RiskId
+
+    @RiskId.setter
+    def RiskId(self, RiskId):
+        self._RiskId = RiskId
+
+
+    def _deserialize(self, params):
+        self._AssetId = params.get("AssetId")
+        self._Account = params.get("Account")
+        self._Host = params.get("Host")
+        self._RiskId = params.get("RiskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResetDspmAssetAccountPasswordResponse(AbstractModel):
+    r"""ResetDspmAssetAccountPassword返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class RetryDspmExportLogRequest(AbstractModel):
+    r"""RetryDspmExportLog请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        :param _TaskId: 任务ID
+        :type TaskId: int
+        """
+        self._MemberId = None
+        self._TaskId = None
+
+    @property
+    def MemberId(self):
+        r"""集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def TaskId(self):
+        r"""任务ID
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RetryDspmExportLogResponse(AbstractModel):
+    r"""RetryDspmExportLog返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class RevertDspmAssetAccountRequest(AbstractModel):
+    r"""RevertDspmAssetAccount请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AssetId: 实例id
+        :type AssetId: str
+        :param _Account: 账号名
+        :type Account: str
+        :param _Host: 主机地址
+        :type Host: str
+        :param _PrivilegeFlag: 是否回退权限
+        :type PrivilegeFlag: int
+        :param _PasswordFlag: 是否回退密码
+        :type PasswordFlag: int
+        :param _RiskId: 风险id
+        :type RiskId: str
+        """
+        self._AssetId = None
+        self._Account = None
+        self._Host = None
+        self._PrivilegeFlag = None
+        self._PasswordFlag = None
+        self._RiskId = None
+
+    @property
+    def AssetId(self):
+        r"""实例id
+        :rtype: str
+        """
+        return self._AssetId
+
+    @AssetId.setter
+    def AssetId(self, AssetId):
+        self._AssetId = AssetId
+
+    @property
+    def Account(self):
+        r"""账号名
+        :rtype: str
+        """
+        return self._Account
+
+    @Account.setter
+    def Account(self, Account):
+        self._Account = Account
+
+    @property
+    def Host(self):
+        r"""主机地址
+        :rtype: str
+        """
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+    @property
+    def PrivilegeFlag(self):
+        r"""是否回退权限
+        :rtype: int
+        """
+        return self._PrivilegeFlag
+
+    @PrivilegeFlag.setter
+    def PrivilegeFlag(self, PrivilegeFlag):
+        self._PrivilegeFlag = PrivilegeFlag
+
+    @property
+    def PasswordFlag(self):
+        r"""是否回退密码
+        :rtype: int
+        """
+        return self._PasswordFlag
+
+    @PasswordFlag.setter
+    def PasswordFlag(self, PasswordFlag):
+        self._PasswordFlag = PasswordFlag
+
+    @property
+    def RiskId(self):
+        r"""风险id
+        :rtype: str
+        """
+        return self._RiskId
+
+    @RiskId.setter
+    def RiskId(self, RiskId):
+        self._RiskId = RiskId
+
+
+    def _deserialize(self, params):
+        self._AssetId = params.get("AssetId")
+        self._Account = params.get("Account")
+        self._Host = params.get("Host")
+        self._PrivilegeFlag = params.get("PrivilegeFlag")
+        self._PasswordFlag = params.get("PasswordFlag")
+        self._RiskId = params.get("RiskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RevertDspmAssetAccountResponse(AbstractModel):
+    r"""RevertDspmAssetAccount返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class RiskCallRecord(AbstractModel):
@@ -33392,6 +52903,168 @@ class ScanTaskInfoList(AbstractModel):
         
 
 
+class SendDspmAssetLoginSmsCodeRequest(AbstractModel):
+    r"""SendDspmAssetLoginSmsCode请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PersonId: 个人id
+        :type PersonId: str
+        :param _AssetId: 数据库资产id
+        :type AssetId: str
+        :param _Host: 主机。默认'%'
+        :type Host: str
+        """
+        self._PersonId = None
+        self._AssetId = None
+        self._Host = None
+
+    @property
+    def PersonId(self):
+        r"""个人id
+        :rtype: str
+        """
+        return self._PersonId
+
+    @PersonId.setter
+    def PersonId(self, PersonId):
+        self._PersonId = PersonId
+
+    @property
+    def AssetId(self):
+        r"""数据库资产id
+        :rtype: str
+        """
+        return self._AssetId
+
+    @AssetId.setter
+    def AssetId(self, AssetId):
+        self._AssetId = AssetId
+
+    @property
+    def Host(self):
+        r"""主机。默认'%'
+        :rtype: str
+        """
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+
+    def _deserialize(self, params):
+        self._PersonId = params.get("PersonId")
+        self._AssetId = params.get("AssetId")
+        self._Host = params.get("Host")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SendDspmAssetLoginSmsCodeResponse(AbstractModel):
+    r"""SendDspmAssetLoginSmsCode返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class SensitiveDetail(AbstractModel):
+    r"""敏感分类分级描述
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CategoryRule: 字段分类
+        :type CategoryRule: str
+        :param _LevelRisk: 字段分级
+        :type LevelRisk: str
+        :param _IsSensitive: 1:敏感信息字段
+0:非敏感字段
+        :type IsSensitive: int
+        """
+        self._CategoryRule = None
+        self._LevelRisk = None
+        self._IsSensitive = None
+
+    @property
+    def CategoryRule(self):
+        r"""字段分类
+        :rtype: str
+        """
+        return self._CategoryRule
+
+    @CategoryRule.setter
+    def CategoryRule(self, CategoryRule):
+        self._CategoryRule = CategoryRule
+
+    @property
+    def LevelRisk(self):
+        r"""字段分级
+        :rtype: str
+        """
+        return self._LevelRisk
+
+    @LevelRisk.setter
+    def LevelRisk(self, LevelRisk):
+        self._LevelRisk = LevelRisk
+
+    @property
+    def IsSensitive(self):
+        r"""1:敏感信息字段
+0:非敏感字段
+        :rtype: int
+        """
+        return self._IsSensitive
+
+    @IsSensitive.setter
+    def IsSensitive(self, IsSensitive):
+        self._IsSensitive = IsSensitive
+
+
+    def _deserialize(self, params):
+        self._CategoryRule = params.get("CategoryRule")
+        self._LevelRisk = params.get("LevelRisk")
+        self._IsSensitive = params.get("IsSensitive")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ServerRisk(AbstractModel):
     r"""服务风险
 
@@ -35312,6 +54985,202 @@ class SubnetAsset(AbstractModel):
         self._LastScanTime = params.get("LastScanTime")
         self._IsCore = params.get("IsCore")
         self._IsNewAsset = params.get("IsNewAsset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SyncDspmAssetsRequest(AbstractModel):
+    r"""SyncDspmAssets请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        """
+        self._MemberId = None
+
+    @property
+    def MemberId(self):
+        r"""集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SyncDspmAssetsResponse(AbstractModel):
+    r"""SyncDspmAssets返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class SyncDspmUsersRequest(AbstractModel):
+    r"""SyncDspmUsers请求参数结构体
+
+    """
+
+
+class SyncDspmUsersResponse(AbstractModel):
+    r"""SyncDspmUsers返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class TableField(AbstractModel):
+    r"""数据库字段描述
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DB: 数据库名
+        :type DB: str
+        :param _Schema: 数据库视图名
+        :type Schema: str
+        :param _Table: 数据库表名
+        :type Table: str
+        :param _Field: 数据库字段名
+        :type Field: str
+        :param _Sensitive: 字段敏感信息
+        :type Sensitive: :class:`tencentcloud.csip.v20221121.models.SensitiveDetail`
+        """
+        self._DB = None
+        self._Schema = None
+        self._Table = None
+        self._Field = None
+        self._Sensitive = None
+
+    @property
+    def DB(self):
+        r"""数据库名
+        :rtype: str
+        """
+        return self._DB
+
+    @DB.setter
+    def DB(self, DB):
+        self._DB = DB
+
+    @property
+    def Schema(self):
+        r"""数据库视图名
+        :rtype: str
+        """
+        return self._Schema
+
+    @Schema.setter
+    def Schema(self, Schema):
+        self._Schema = Schema
+
+    @property
+    def Table(self):
+        r"""数据库表名
+        :rtype: str
+        """
+        return self._Table
+
+    @Table.setter
+    def Table(self, Table):
+        self._Table = Table
+
+    @property
+    def Field(self):
+        r"""数据库字段名
+        :rtype: str
+        """
+        return self._Field
+
+    @Field.setter
+    def Field(self, Field):
+        self._Field = Field
+
+    @property
+    def Sensitive(self):
+        r"""字段敏感信息
+        :rtype: :class:`tencentcloud.csip.v20221121.models.SensitiveDetail`
+        """
+        return self._Sensitive
+
+    @Sensitive.setter
+    def Sensitive(self, Sensitive):
+        self._Sensitive = Sensitive
+
+
+    def _deserialize(self, params):
+        self._DB = params.get("DB")
+        self._Schema = params.get("Schema")
+        self._Table = params.get("Table")
+        self._Field = params.get("Field")
+        if params.get("Sensitive") is not None:
+            self._Sensitive = SensitiveDetail()
+            self._Sensitive._deserialize(params.get("Sensitive"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -37427,6 +57296,192 @@ class UserCallRecord(AbstractModel):
         
 
 
+class UserDspmInfo(AbstractModel):
+    r"""账号dspm信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppID: APPID
+        :type AppID: int
+        :param _Uin: UIN
+        :type Uin: str
+        :param _NickName: 账号昵称
+        :type NickName: str
+        :param _AssetNum: 账号下数据库资产数量
+        :type AssetNum: int
+        :param _UsedAssetNum: 账号下开启安全分析数据库资产数量
+        :type UsedAssetNum: int
+        :param _IsShared: 是否被共享，1-被共享，2-未被共享
+        :type IsShared: int
+        :param _IsSelfBuy: 是否单独购买，1-单独购买，2-未单独购买
+        :type IsSelfBuy: int
+        :param _ShareFromAppID: 配额来源账号
+        :type ShareFromAppID: int
+        :param _CloudType: 云类型（0：腾讯云 1:亚马逊云 2:微软云 3:谷歌云 4:阿里云 5:华为云）
+        :type CloudType: int
+        :param _IsIsolating: 账号是否隔离中
+        :type IsIsolating: bool
+        :param _IsDataCleaning: 是否正在数据清理
+        :type IsDataCleaning: bool
+        """
+        self._AppID = None
+        self._Uin = None
+        self._NickName = None
+        self._AssetNum = None
+        self._UsedAssetNum = None
+        self._IsShared = None
+        self._IsSelfBuy = None
+        self._ShareFromAppID = None
+        self._CloudType = None
+        self._IsIsolating = None
+        self._IsDataCleaning = None
+
+    @property
+    def AppID(self):
+        r"""APPID
+        :rtype: int
+        """
+        return self._AppID
+
+    @AppID.setter
+    def AppID(self, AppID):
+        self._AppID = AppID
+
+    @property
+    def Uin(self):
+        r"""UIN
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def NickName(self):
+        r"""账号昵称
+        :rtype: str
+        """
+        return self._NickName
+
+    @NickName.setter
+    def NickName(self, NickName):
+        self._NickName = NickName
+
+    @property
+    def AssetNum(self):
+        r"""账号下数据库资产数量
+        :rtype: int
+        """
+        return self._AssetNum
+
+    @AssetNum.setter
+    def AssetNum(self, AssetNum):
+        self._AssetNum = AssetNum
+
+    @property
+    def UsedAssetNum(self):
+        r"""账号下开启安全分析数据库资产数量
+        :rtype: int
+        """
+        return self._UsedAssetNum
+
+    @UsedAssetNum.setter
+    def UsedAssetNum(self, UsedAssetNum):
+        self._UsedAssetNum = UsedAssetNum
+
+    @property
+    def IsShared(self):
+        r"""是否被共享，1-被共享，2-未被共享
+        :rtype: int
+        """
+        return self._IsShared
+
+    @IsShared.setter
+    def IsShared(self, IsShared):
+        self._IsShared = IsShared
+
+    @property
+    def IsSelfBuy(self):
+        r"""是否单独购买，1-单独购买，2-未单独购买
+        :rtype: int
+        """
+        return self._IsSelfBuy
+
+    @IsSelfBuy.setter
+    def IsSelfBuy(self, IsSelfBuy):
+        self._IsSelfBuy = IsSelfBuy
+
+    @property
+    def ShareFromAppID(self):
+        r"""配额来源账号
+        :rtype: int
+        """
+        return self._ShareFromAppID
+
+    @ShareFromAppID.setter
+    def ShareFromAppID(self, ShareFromAppID):
+        self._ShareFromAppID = ShareFromAppID
+
+    @property
+    def CloudType(self):
+        r"""云类型（0：腾讯云 1:亚马逊云 2:微软云 3:谷歌云 4:阿里云 5:华为云）
+        :rtype: int
+        """
+        return self._CloudType
+
+    @CloudType.setter
+    def CloudType(self, CloudType):
+        self._CloudType = CloudType
+
+    @property
+    def IsIsolating(self):
+        r"""账号是否隔离中
+        :rtype: bool
+        """
+        return self._IsIsolating
+
+    @IsIsolating.setter
+    def IsIsolating(self, IsIsolating):
+        self._IsIsolating = IsIsolating
+
+    @property
+    def IsDataCleaning(self):
+        r"""是否正在数据清理
+        :rtype: bool
+        """
+        return self._IsDataCleaning
+
+    @IsDataCleaning.setter
+    def IsDataCleaning(self, IsDataCleaning):
+        self._IsDataCleaning = IsDataCleaning
+
+
+    def _deserialize(self, params):
+        self._AppID = params.get("AppID")
+        self._Uin = params.get("Uin")
+        self._NickName = params.get("NickName")
+        self._AssetNum = params.get("AssetNum")
+        self._UsedAssetNum = params.get("UsedAssetNum")
+        self._IsShared = params.get("IsShared")
+        self._IsSelfBuy = params.get("IsSelfBuy")
+        self._ShareFromAppID = params.get("ShareFromAppID")
+        self._CloudType = params.get("CloudType")
+        self._IsIsolating = params.get("IsIsolating")
+        self._IsDataCleaning = params.get("IsDataCleaning")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class VULBaseInfo(AbstractModel):
     r"""应急漏洞基本数据
 
@@ -39222,6 +59277,175 @@ class VULViewVULRiskData(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class VerifyDspmAssetLoginCodeRequest(AbstractModel):
+    r"""VerifyDspmAssetLoginCode请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PersonId: 个人id
+        :type PersonId: str
+        :param _AssetId: 数据库资产id
+        :type AssetId: str
+        :param _Code: 验证码
+        :type Code: str
+        :param _Host: 主机。默认'%'
+        :type Host: str
+        """
+        self._PersonId = None
+        self._AssetId = None
+        self._Code = None
+        self._Host = None
+
+    @property
+    def PersonId(self):
+        r"""个人id
+        :rtype: str
+        """
+        return self._PersonId
+
+    @PersonId.setter
+    def PersonId(self, PersonId):
+        self._PersonId = PersonId
+
+    @property
+    def AssetId(self):
+        r"""数据库资产id
+        :rtype: str
+        """
+        return self._AssetId
+
+    @AssetId.setter
+    def AssetId(self, AssetId):
+        self._AssetId = AssetId
+
+    @property
+    def Code(self):
+        r"""验证码
+        :rtype: str
+        """
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def Host(self):
+        r"""主机。默认'%'
+        :rtype: str
+        """
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+
+    def _deserialize(self, params):
+        self._PersonId = params.get("PersonId")
+        self._AssetId = params.get("AssetId")
+        self._Code = params.get("Code")
+        self._Host = params.get("Host")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VerifyDspmAssetLoginCodeResponse(AbstractModel):
+    r"""VerifyDspmAssetLoginCode返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Account: 账号
+        :type Account: str
+        :param _Password: 密码信息
+        :type Password: str
+        :param _ValidateStart: 有效期开始时间
+        :type ValidateStart: str
+        :param _ValidateEnd: 有效期结束时间
+        :type ValidateEnd: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Account = None
+        self._Password = None
+        self._ValidateStart = None
+        self._ValidateEnd = None
+        self._RequestId = None
+
+    @property
+    def Account(self):
+        r"""账号
+        :rtype: str
+        """
+        return self._Account
+
+    @Account.setter
+    def Account(self, Account):
+        self._Account = Account
+
+    @property
+    def Password(self):
+        r"""密码信息
+        :rtype: str
+        """
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def ValidateStart(self):
+        r"""有效期开始时间
+        :rtype: str
+        """
+        return self._ValidateStart
+
+    @ValidateStart.setter
+    def ValidateStart(self, ValidateStart):
+        self._ValidateStart = ValidateStart
+
+    @property
+    def ValidateEnd(self):
+        r"""有效期结束时间
+        :rtype: str
+        """
+        return self._ValidateEnd
+
+    @ValidateEnd.setter
+    def ValidateEnd(self, ValidateEnd):
+        self._ValidateEnd = ValidateEnd
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Account = params.get("Account")
+        self._Password = params.get("Password")
+        self._ValidateStart = params.get("ValidateStart")
+        self._ValidateEnd = params.get("ValidateEnd")
+        self._RequestId = params.get("RequestId")
 
 
 class Vpc(AbstractModel):

@@ -4904,6 +4904,10 @@ class Console(AbstractModel):
         :param _Menus: <p>自定义显示菜单</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Menus: list of str
+        :param _Domain: <p>公网访问域名</p>
+        :type Domain: str
+        :param _IntranetDomain: <p>内网访问域名</p>
+        :type IntranetDomain: str
         """
         self._ConsoleId = None
         self._AccessMode = None
@@ -4921,6 +4925,8 @@ class Console(AbstractModel):
         self._AccessControlRules = None
         self._Remarks = None
         self._Menus = None
+        self._Domain = None
+        self._IntranetDomain = None
 
     @property
     def ConsoleId(self):
@@ -5110,6 +5116,28 @@ class Console(AbstractModel):
     def Menus(self, Menus):
         self._Menus = Menus
 
+    @property
+    def Domain(self):
+        r"""<p>公网访问域名</p>
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def IntranetDomain(self):
+        r"""<p>内网访问域名</p>
+        :rtype: str
+        """
+        return self._IntranetDomain
+
+    @IntranetDomain.setter
+    def IntranetDomain(self, IntranetDomain):
+        self._IntranetDomain = IntranetDomain
+
 
     def _deserialize(self, params):
         self._ConsoleId = params.get("ConsoleId")
@@ -5150,6 +5178,8 @@ class Console(AbstractModel):
                 self._AccessControlRules.append(obj)
         self._Remarks = params.get("Remarks")
         self._Menus = params.get("Menus")
+        self._Domain = params.get("Domain")
+        self._IntranetDomain = params.get("IntranetDomain")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

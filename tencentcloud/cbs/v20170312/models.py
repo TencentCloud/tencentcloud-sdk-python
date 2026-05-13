@@ -3817,14 +3817,14 @@ class DescribeInstancesDiskNumRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceIds: 云服务器实例ID，通过[DescribeInstances](/document/product/213/15728)接口查询。
+        :param _InstanceIds: <p>云服务器实例ID，通过<a href="/document/product/213/15728">DescribeInstances</a>接口查询。</p>
         :type InstanceIds: list of str
         """
         self._InstanceIds = None
 
     @property
     def InstanceIds(self):
-        r"""云服务器实例ID，通过[DescribeInstances](/document/product/213/15728)接口查询。
+        r"""<p>云服务器实例ID，通过<a href="/document/product/213/15728">DescribeInstances</a>接口查询。</p>
         :rtype: list of str
         """
         return self._InstanceIds
@@ -3853,7 +3853,7 @@ class DescribeInstancesDiskNumResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AttachDetail: 各个云服务器已挂载和可挂载弹性云盘的数量。
+        :param _AttachDetail: <p>各个云服务器已挂载和可挂载弹性云盘的数量。</p>
         :type AttachDetail: list of AttachDetail
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3863,7 +3863,7 @@ class DescribeInstancesDiskNumResponse(AbstractModel):
 
     @property
     def AttachDetail(self):
-        r"""各个云服务器已挂载和可挂载弹性云盘的数量。
+        r"""<p>各个云服务器已挂载和可挂载弹性云盘的数量。</p>
         :rtype: list of AttachDetail
         """
         return self._AttachDetail

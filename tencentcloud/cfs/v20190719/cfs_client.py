@@ -1016,6 +1016,29 @@ class CfsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def OverrideCfsRules(self, request):
+        r"""本接口（OverrideCfsRules）用于批量覆盖式创建权限组规则。
+
+        :param request: Request instance for OverrideCfsRules.
+        :type request: :class:`tencentcloud.cfs.v20190719.models.OverrideCfsRulesRequest`
+        :rtype: :class:`tencentcloud.cfs.v20190719.models.OverrideCfsRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("OverrideCfsRules", params, headers=headers)
+            response = json.loads(body)
+            model = models.OverrideCfsRulesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ScaleUpFileSystem(self, request):
         r"""该接口用于对turbo 文件系统扩容使用,该接口只支持扩容不支持缩容。turbo标准型扩容步长是10240GIB，turbo性能型扩容步长是5120GIB
 

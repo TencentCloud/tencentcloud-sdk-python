@@ -22836,6 +22836,55 @@ class DescribeSubUserAccessPolicyResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeTCLakeMetaInstanceRequest(AbstractModel):
+    r"""DescribeTCLakeMetaInstance请求参数结构体
+
+    """
+
+
+class DescribeTCLakeMetaInstanceResponse(AbstractModel):
+    r"""DescribeTCLakeMetaInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: <p>开通状态</p><p>枚举值：</p><ul><li>Running： 开通成功</li></ul>
+        :type Status: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Status = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        r"""<p>开通状态</p><p>枚举值：</p><ul><li>Running： 开通成功</li></ul>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeTablePartitionsRequest(AbstractModel):
     r"""DescribeTablePartitions请求参数结构体
 
@@ -29926,6 +29975,70 @@ class IcebergTablePartition(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class InitializeTCLakeRequest(AbstractModel):
+    r"""InitializeTCLake请求参数结构体
+
+    """
+
+
+class InitializeTCLakeResponse(AbstractModel):
+    r"""InitializeTCLake返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>实例Id</p>
+        :type InstanceId: str
+        :param _IsSuccess: <p>是否成功</p>
+        :type IsSuccess: bool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._InstanceId = None
+        self._IsSuccess = None
+        self._RequestId = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例Id</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def IsSuccess(self):
+        r"""<p>是否成功</p>
+        :rtype: bool
+        """
+        return self._IsSuccess
+
+    @IsSuccess.setter
+    def IsSuccess(self, IsSuccess):
+        self._IsSuccess = IsSuccess
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._IsSuccess = params.get("IsSuccess")
+        self._RequestId = params.get("RequestId")
 
 
 class IpPortPair(AbstractModel):

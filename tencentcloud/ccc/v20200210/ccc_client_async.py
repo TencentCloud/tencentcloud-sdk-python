@@ -557,6 +557,24 @@ class CccClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeAICallInteractionRecords(
+            self,
+            request: models.DescribeAICallInteractionRecordsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAICallInteractionRecordsResponse:
+        """
+        获取AI 会话交互事件流
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAICallInteractionRecords"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAICallInteractionRecordsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeAILatency(
             self,
             request: models.DescribeAILatencyRequest,

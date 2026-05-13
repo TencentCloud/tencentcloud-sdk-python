@@ -800,6 +800,24 @@ class CfsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def OverrideCfsRules(
+            self,
+            request: models.OverrideCfsRulesRequest,
+            opts: Dict = None,
+    ) -> models.OverrideCfsRulesResponse:
+        """
+        本接口（OverrideCfsRules）用于批量覆盖式创建权限组规则。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "OverrideCfsRules"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.OverrideCfsRulesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ScaleUpFileSystem(
             self,
             request: models.ScaleUpFileSystemRequest,

@@ -703,6 +703,29 @@ class CccClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeAICallInteractionRecords(self, request):
+        r"""获取AI 会话交互事件流
+
+        :param request: Request instance for DescribeAICallInteractionRecords.
+        :type request: :class:`tencentcloud.ccc.v20200210.models.DescribeAICallInteractionRecordsRequest`
+        :rtype: :class:`tencentcloud.ccc.v20200210.models.DescribeAICallInteractionRecordsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAICallInteractionRecords", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAICallInteractionRecordsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeAILatency(self, request):
         r"""调用该接口，可以通过 Session ID 查询指定会话在特定时间段内，AI服务的处理时延明细与统计数据，时延信息包括：
         - 端到端（ETE）时延：统计从用户语音输入到 AI 返回完整响应的整体耗时。

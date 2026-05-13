@@ -170,15 +170,15 @@ class CheckSavepointRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 作业 id
+        :param _JobId: <p>作业 id</p>
         :type JobId: str
-        :param _SerialId: 快照资源 id
+        :param _SerialId: <p>快照资源 id</p>
         :type SerialId: str
-        :param _RecordType: 快照类型 1: savepoint；2: checkpoint；3: cancelWithSavepoint
+        :param _RecordType: <p>快照类型 1: savepoint；2: checkpoint；3: cancelWithSavepoint</p>
         :type RecordType: int
-        :param _SavepointPath: 快照路径，目前只支持 cos 路径
+        :param _SavepointPath: <p>快照路径，目前只支持 cos 路径</p>
         :type SavepointPath: str
-        :param _WorkSpaceId: 工作空间 id
+        :param _WorkSpaceId: <p>工作空间 id</p>
         :type WorkSpaceId: str
         """
         self._JobId = None
@@ -189,7 +189,7 @@ class CheckSavepointRequest(AbstractModel):
 
     @property
     def JobId(self):
-        r"""作业 id
+        r"""<p>作业 id</p>
         :rtype: str
         """
         return self._JobId
@@ -200,7 +200,7 @@ class CheckSavepointRequest(AbstractModel):
 
     @property
     def SerialId(self):
-        r"""快照资源 id
+        r"""<p>快照资源 id</p>
         :rtype: str
         """
         return self._SerialId
@@ -211,7 +211,7 @@ class CheckSavepointRequest(AbstractModel):
 
     @property
     def RecordType(self):
-        r"""快照类型 1: savepoint；2: checkpoint；3: cancelWithSavepoint
+        r"""<p>快照类型 1: savepoint；2: checkpoint；3: cancelWithSavepoint</p>
         :rtype: int
         """
         return self._RecordType
@@ -222,7 +222,7 @@ class CheckSavepointRequest(AbstractModel):
 
     @property
     def SavepointPath(self):
-        r"""快照路径，目前只支持 cos 路径
+        r"""<p>快照路径，目前只支持 cos 路径</p>
         :rtype: str
         """
         return self._SavepointPath
@@ -233,7 +233,7 @@ class CheckSavepointRequest(AbstractModel):
 
     @property
     def WorkSpaceId(self):
-        r"""工作空间 id
+        r"""<p>工作空间 id</p>
         :rtype: str
         """
         return self._WorkSpaceId
@@ -266,9 +266,9 @@ class CheckSavepointResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SerialId: 资源 id
+        :param _SerialId: <p>资源 id</p>
         :type SerialId: str
-        :param _SavepointStatus: 1=可用，2=不可用
+        :param _SavepointStatus: <p>1=可用，2=不可用</p>
         :type SavepointStatus: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -279,7 +279,7 @@ class CheckSavepointResponse(AbstractModel):
 
     @property
     def SerialId(self):
-        r"""资源 id
+        r"""<p>资源 id</p>
         :rtype: str
         """
         return self._SerialId
@@ -290,7 +290,7 @@ class CheckSavepointResponse(AbstractModel):
 
     @property
     def SavepointStatus(self):
-        r"""1=可用，2=不可用
+        r"""<p>1=可用，2=不可用</p>
         :rtype: int
         """
         return self._SavepointStatus
@@ -4808,11 +4808,11 @@ class DeleteResourceConfigsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ResourceId: 资源ID
+        :param _ResourceId: <p>资源ID</p>
         :type ResourceId: str
-        :param _ResourceConfigVersions: 资源版本数组
+        :param _ResourceConfigVersions: <p>资源版本数组</p>
         :type ResourceConfigVersions: list of int
-        :param _WorkSpaceId: 工作空间 SerialId
+        :param _WorkSpaceId: <p>工作空间 SerialId</p>
         :type WorkSpaceId: str
         """
         self._ResourceId = None
@@ -4821,7 +4821,7 @@ class DeleteResourceConfigsRequest(AbstractModel):
 
     @property
     def ResourceId(self):
-        r"""资源ID
+        r"""<p>资源ID</p>
         :rtype: str
         """
         return self._ResourceId
@@ -4832,7 +4832,7 @@ class DeleteResourceConfigsRequest(AbstractModel):
 
     @property
     def ResourceConfigVersions(self):
-        r"""资源版本数组
+        r"""<p>资源版本数组</p>
         :rtype: list of int
         """
         return self._ResourceConfigVersions
@@ -4843,7 +4843,7 @@ class DeleteResourceConfigsRequest(AbstractModel):
 
     @property
     def WorkSpaceId(self):
-        r"""工作空间 SerialId
+        r"""<p>工作空间 SerialId</p>
         :rtype: str
         """
         return self._WorkSpaceId
@@ -8264,6 +8264,105 @@ class DescribeVariablesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeWorkSpaceUsersRequest(AbstractModel):
+    r"""DescribeWorkSpaceUsers请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WorkSpaceId: 工作空间 SerialId
+        :type WorkSpaceId: str
+        :param _AuthSubAccountUin: 子用户
+        :type AuthSubAccountUin: str
+        """
+        self._WorkSpaceId = None
+        self._AuthSubAccountUin = None
+
+    @property
+    def WorkSpaceId(self):
+        r"""工作空间 SerialId
+        :rtype: str
+        """
+        return self._WorkSpaceId
+
+    @WorkSpaceId.setter
+    def WorkSpaceId(self, WorkSpaceId):
+        self._WorkSpaceId = WorkSpaceId
+
+    @property
+    def AuthSubAccountUin(self):
+        r"""子用户
+        :rtype: str
+        """
+        return self._AuthSubAccountUin
+
+    @AuthSubAccountUin.setter
+    def AuthSubAccountUin(self, AuthSubAccountUin):
+        self._AuthSubAccountUin = AuthSubAccountUin
+
+
+    def _deserialize(self, params):
+        self._WorkSpaceId = params.get("WorkSpaceId")
+        self._AuthSubAccountUin = params.get("AuthSubAccountUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeWorkSpaceUsersResponse(AbstractModel):
+    r"""DescribeWorkSpaceUsers返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RoleAuths: 空间用户列表
+        :type RoleAuths: list of RoleAuth
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RoleAuths = None
+        self._RequestId = None
+
+    @property
+    def RoleAuths(self):
+        r"""空间用户列表
+        :rtype: list of RoleAuth
+        """
+        return self._RoleAuths
+
+    @RoleAuths.setter
+    def RoleAuths(self, RoleAuths):
+        self._RoleAuths = RoleAuths
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("RoleAuths") is not None:
+            self._RoleAuths = []
+            for item in params.get("RoleAuths"):
+                obj = RoleAuth()
+                obj._deserialize(item)
+                self._RoleAuths.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeWorkSpacesRequest(AbstractModel):
     r"""DescribeWorkSpaces请求参数结构体
 
@@ -11359,13 +11458,13 @@ class LogicalType(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: 类型
+        :param _Type: <p>类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
-        :param _NullAble: 是否允许为空
+        :param _NullAble: <p>是否允许为空</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type NullAble: bool
-        :param _Length: 长度
+        :param _Length: <p>长度</p><p>单位：字符数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Length: int
         """
@@ -11375,7 +11474,7 @@ class LogicalType(AbstractModel):
 
     @property
     def Type(self):
-        r"""类型
+        r"""<p>类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11387,7 +11486,7 @@ class LogicalType(AbstractModel):
 
     @property
     def NullAble(self):
-        r"""是否允许为空
+        r"""<p>是否允许为空</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -11399,7 +11498,7 @@ class LogicalType(AbstractModel):
 
     @property
     def Length(self):
-        r"""长度
+        r"""<p>长度</p><p>单位：字符数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -15011,14 +15110,10 @@ class SetatsDisk(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DiskType: 磁盘类型
-CLOUD_BSSD
-CLOUD_SSD
-CLOUD_HSSD
-CLOUD_PREMIUM
+        :param _DiskType: <p>磁盘类型<br>CLOUD_BSSD<br>CLOUD_SSD<br>CLOUD_HSSD<br>CLOUD_PREMIUM</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DiskType: str
-        :param _DiskSize: 磁盘大小
+        :param _DiskSize: <p>磁盘大小</p><p>单位：GB</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DiskSize: int
         """
@@ -15027,11 +15122,7 @@ CLOUD_PREMIUM
 
     @property
     def DiskType(self):
-        r"""磁盘类型
-CLOUD_BSSD
-CLOUD_SSD
-CLOUD_HSSD
-CLOUD_PREMIUM
+        r"""<p>磁盘类型<br>CLOUD_BSSD<br>CLOUD_SSD<br>CLOUD_HSSD<br>CLOUD_PREMIUM</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -15043,7 +15134,7 @@ CLOUD_PREMIUM
 
     @property
     def DiskSize(self):
-        r"""磁盘大小
+        r"""<p>磁盘大小</p><p>单位：GB</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """

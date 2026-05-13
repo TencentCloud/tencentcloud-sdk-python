@@ -712,6 +712,10 @@ cross-region：跨地域
         :type IdcPointType: str
         :param _BIapLinkProtected: 运营商链路是否有保护
         :type BIapLinkProtected: bool
+        :param _ServiceType: 服务类型：SHARE-共享型，EXCLUSIVE-独占型
+        :type ServiceType: str
+        :param _VlanRange: VLAN范围
+        :type VlanRange: str
         """
         self._InstanceId = None
         self._Name = None
@@ -736,6 +740,8 @@ cross-region：跨地域
         self._IapCode = None
         self._IdcPointType = None
         self._BIapLinkProtected = None
+        self._ServiceType = None
+        self._VlanRange = None
 
     @property
     def InstanceId(self):
@@ -999,6 +1005,28 @@ cross-region：跨地域
     def BIapLinkProtected(self, BIapLinkProtected):
         self._BIapLinkProtected = BIapLinkProtected
 
+    @property
+    def ServiceType(self):
+        r"""服务类型：SHARE-共享型，EXCLUSIVE-独占型
+        :rtype: str
+        """
+        return self._ServiceType
+
+    @ServiceType.setter
+    def ServiceType(self, ServiceType):
+        self._ServiceType = ServiceType
+
+    @property
+    def VlanRange(self):
+        r"""VLAN范围
+        :rtype: str
+        """
+        return self._VlanRange
+
+    @VlanRange.setter
+    def VlanRange(self, VlanRange):
+        self._VlanRange = VlanRange
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -1024,6 +1052,8 @@ cross-region：跨地域
         self._IapCode = params.get("IapCode")
         self._IdcPointType = params.get("IdcPointType")
         self._BIapLinkProtected = params.get("BIapLinkProtected")
+        self._ServiceType = params.get("ServiceType")
+        self._VlanRange = params.get("VlanRange")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1263,14 +1293,17 @@ class CreateCloudAttachServiceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 创建敏捷上云入参
+        :param _Data: <p>创建敏捷上云入参</p>
         :type Data: :class:`tencentcloud.dc.v20180410.models.CreateCasInput`
+        :param _Tags: <p>标签</p>
+        :type Tags: list of Tag
         """
         self._Data = None
+        self._Tags = None
 
     @property
     def Data(self):
-        r"""创建敏捷上云入参
+        r"""<p>创建敏捷上云入参</p>
         :rtype: :class:`tencentcloud.dc.v20180410.models.CreateCasInput`
         """
         return self._Data
@@ -1279,11 +1312,28 @@ class CreateCloudAttachServiceRequest(AbstractModel):
     def Data(self, Data):
         self._Data = Data
 
+    @property
+    def Tags(self):
+        r"""<p>标签</p>
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         if params.get("Data") is not None:
             self._Data = CreateCasInput()
             self._Data._deserialize(params.get("Data"))
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1301,7 +1351,7 @@ class CreateCloudAttachServiceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CloudAttach: 敏捷上云服务详情
+        :param _CloudAttach: <p>敏捷上云服务详情</p>
         :type CloudAttach: :class:`tencentcloud.dc.v20180410.models.CloudAttachInfo`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1311,7 +1361,7 @@ class CreateCloudAttachServiceResponse(AbstractModel):
 
     @property
     def CloudAttach(self):
-        r"""敏捷上云服务详情
+        r"""<p>敏捷上云服务详情</p>
         :rtype: :class:`tencentcloud.dc.v20180410.models.CloudAttachInfo`
         """
         return self._CloudAttach

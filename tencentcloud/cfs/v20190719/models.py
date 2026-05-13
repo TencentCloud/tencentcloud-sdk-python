@@ -7361,6 +7361,87 @@ class Filter(AbstractModel):
         
 
 
+class InputPermissionGroupRules(AbstractModel):
+    r"""入参权限组规则列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AuthClientIp: 允许访问的客户端IP
+        :type AuthClientIp: str
+        :param _RWPermission: 读写权限, ro为只读，rw为读写
+        :type RWPermission: str
+        :param _UserPermission: 用户权限。其中all_squash为所有访问用户都会被映射为匿名用户或用户组；no_all_squash为访问用户会先与本机用户匹配，匹配失败后再映射为匿名用户或用户组；root_squash为将来访的root用户映射为匿名用户或用户组；no_root_squash为来访的root用户保持root帐号权限。
+        :type UserPermission: str
+        :param _Priority: 规则优先级，1-100。 其中 1 为最高，100为最低
+        :type Priority: int
+        """
+        self._AuthClientIp = None
+        self._RWPermission = None
+        self._UserPermission = None
+        self._Priority = None
+
+    @property
+    def AuthClientIp(self):
+        r"""允许访问的客户端IP
+        :rtype: str
+        """
+        return self._AuthClientIp
+
+    @AuthClientIp.setter
+    def AuthClientIp(self, AuthClientIp):
+        self._AuthClientIp = AuthClientIp
+
+    @property
+    def RWPermission(self):
+        r"""读写权限, ro为只读，rw为读写
+        :rtype: str
+        """
+        return self._RWPermission
+
+    @RWPermission.setter
+    def RWPermission(self, RWPermission):
+        self._RWPermission = RWPermission
+
+    @property
+    def UserPermission(self):
+        r"""用户权限。其中all_squash为所有访问用户都会被映射为匿名用户或用户组；no_all_squash为访问用户会先与本机用户匹配，匹配失败后再映射为匿名用户或用户组；root_squash为将来访的root用户映射为匿名用户或用户组；no_root_squash为来访的root用户保持root帐号权限。
+        :rtype: str
+        """
+        return self._UserPermission
+
+    @UserPermission.setter
+    def UserPermission(self, UserPermission):
+        self._UserPermission = UserPermission
+
+    @property
+    def Priority(self):
+        r"""规则优先级，1-100。 其中 1 为最高，100为最低
+        :rtype: int
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+
+    def _deserialize(self, params):
+        self._AuthClientIp = params.get("AuthClientIp")
+        self._RWPermission = params.get("RWPermission")
+        self._UserPermission = params.get("UserPermission")
+        self._Priority = params.get("Priority")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class LifecycleDataTaskInfo(AbstractModel):
     r"""生命周期任务
 
@@ -9107,6 +9188,110 @@ create_failed： 创建失败
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class OverrideCfsRulesRequest(AbstractModel):
+    r"""OverrideCfsRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PermissionGroupId: 权限组 ID
+        :type PermissionGroupId: str
+        :param _RuleList: 权限组规则列表
+        :type RuleList: list of InputPermissionGroupRules
+        """
+        self._PermissionGroupId = None
+        self._RuleList = None
+
+    @property
+    def PermissionGroupId(self):
+        r"""权限组 ID
+        :rtype: str
+        """
+        return self._PermissionGroupId
+
+    @PermissionGroupId.setter
+    def PermissionGroupId(self, PermissionGroupId):
+        self._PermissionGroupId = PermissionGroupId
+
+    @property
+    def RuleList(self):
+        r"""权限组规则列表
+        :rtype: list of InputPermissionGroupRules
+        """
+        return self._RuleList
+
+    @RuleList.setter
+    def RuleList(self, RuleList):
+        self._RuleList = RuleList
+
+
+    def _deserialize(self, params):
+        self._PermissionGroupId = params.get("PermissionGroupId")
+        if params.get("RuleList") is not None:
+            self._RuleList = []
+            for item in params.get("RuleList"):
+                obj = InputPermissionGroupRules()
+                obj._deserialize(item)
+                self._RuleList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OverrideCfsRulesResponse(AbstractModel):
+    r"""OverrideCfsRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleList: 权限组规则列表
+        :type RuleList: list of PGroupRuleInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RuleList = None
+        self._RequestId = None
+
+    @property
+    def RuleList(self):
+        r"""权限组规则列表
+        :rtype: list of PGroupRuleInfo
+        """
+        return self._RuleList
+
+    @RuleList.setter
+    def RuleList(self, RuleList):
+        self._RuleList = RuleList
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("RuleList") is not None:
+            self._RuleList = []
+            for item in params.get("RuleList"):
+                obj = PGroupRuleInfo()
+                obj._deserialize(item)
+                self._RuleList.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class PGroup(AbstractModel):

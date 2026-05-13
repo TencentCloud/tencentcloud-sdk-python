@@ -2581,6 +2581,29 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeTCLakeMetaInstance(self, request):
+        r"""是否成功开通TCLake
+
+        :param request: Request instance for DescribeTCLakeMetaInstance.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeTCLakeMetaInstanceRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeTCLakeMetaInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTCLakeMetaInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTCLakeMetaInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeTable(self, request):
         r"""本接口（DescribeTable），用于查询单个表的详细信息。
 
@@ -3354,6 +3377,29 @@ class DlcClient(AbstractClient):
             body = self.call("GrantDLCCatalogAccess", params, headers=headers)
             response = json.loads(body)
             model = models.GrantDLCCatalogAccessResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def InitializeTCLake(self, request):
+        r"""开通TCLake
+
+        :param request: Request instance for InitializeTCLake.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.InitializeTCLakeRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.InitializeTCLakeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("InitializeTCLake", params, headers=headers)
+            response = json.loads(body)
+            model = models.InitializeTCLakeResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -24410,20 +24410,17 @@ class DescribeRecordingRulesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: Prometheus 实例 ID
+        :param _InstanceId: <p>Prometheus 实例 ID</p>
         :type InstanceId: str
-        :param _Limit: 返回数量，默认为 20，最大值为 100
+        :param _Limit: <p>返回数量，默认为 20，最大值为 100</p>
         :type Limit: int
-        :param _Offset: 偏移量，默认为 0
+        :param _Offset: <p>偏移量，默认为 0</p>
         :type Offset: int
-        :param _RuleId: 规则 ID
+        :param _RuleId: <p>规则 ID</p>
         :type RuleId: str
-        :param _RuleState: 规则状态码，取值如下：
-<li>1=RuleDeleted</li>
-<li>2=RuleEnabled</li>
-<li>3=RuleDisabled</li>
+        :param _RuleState: <p>规则状态码，取值如下：</p><li>1=RuleDeleted</li><li>2=RuleEnabled</li><li>3=RuleDisabled</li>
         :type RuleState: int
-        :param _Name: 规则名称
+        :param _Name: <p>规则名称</p>
         :type Name: str
         """
         self._InstanceId = None
@@ -24435,7 +24432,7 @@ class DescribeRecordingRulesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""Prometheus 实例 ID
+        r"""<p>Prometheus 实例 ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -24446,7 +24443,7 @@ class DescribeRecordingRulesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""返回数量，默认为 20，最大值为 100
+        r"""<p>返回数量，默认为 20，最大值为 100</p>
         :rtype: int
         """
         return self._Limit
@@ -24457,7 +24454,7 @@ class DescribeRecordingRulesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""偏移量，默认为 0
+        r"""<p>偏移量，默认为 0</p>
         :rtype: int
         """
         return self._Offset
@@ -24468,7 +24465,7 @@ class DescribeRecordingRulesRequest(AbstractModel):
 
     @property
     def RuleId(self):
-        r"""规则 ID
+        r"""<p>规则 ID</p>
         :rtype: str
         """
         return self._RuleId
@@ -24479,10 +24476,7 @@ class DescribeRecordingRulesRequest(AbstractModel):
 
     @property
     def RuleState(self):
-        r"""规则状态码，取值如下：
-<li>1=RuleDeleted</li>
-<li>2=RuleEnabled</li>
-<li>3=RuleDisabled</li>
+        r"""<p>规则状态码，取值如下：</p><li>1=RuleDeleted</li><li>2=RuleEnabled</li><li>3=RuleDisabled</li>
         :rtype: int
         """
         return self._RuleState
@@ -24493,7 +24487,7 @@ class DescribeRecordingRulesRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""规则名称
+        r"""<p>规则名称</p>
         :rtype: str
         """
         return self._Name
@@ -24527,21 +24521,24 @@ class DescribeRecordingRulesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 规则组数量
+        :param _TotalCount: <p>规则组数量</p>
         :type TotalCount: int
-        :param _RecordingRuleSet: 规则组详情
+        :param _RecordingRuleSet: <p>规则组详情</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RecordingRuleSet: list of RecordingRuleSet
+        :param _TotalRuleCount: <p>预聚合规则数</p>
+        :type TotalRuleCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TotalCount = None
         self._RecordingRuleSet = None
+        self._TotalRuleCount = None
         self._RequestId = None
 
     @property
     def TotalCount(self):
-        r"""规则组数量
+        r"""<p>规则组数量</p>
         :rtype: int
         """
         return self._TotalCount
@@ -24552,7 +24549,7 @@ class DescribeRecordingRulesResponse(AbstractModel):
 
     @property
     def RecordingRuleSet(self):
-        r"""规则组详情
+        r"""<p>规则组详情</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of RecordingRuleSet
         """
@@ -24561,6 +24558,17 @@ class DescribeRecordingRulesResponse(AbstractModel):
     @RecordingRuleSet.setter
     def RecordingRuleSet(self, RecordingRuleSet):
         self._RecordingRuleSet = RecordingRuleSet
+
+    @property
+    def TotalRuleCount(self):
+        r"""<p>预聚合规则数</p>
+        :rtype: int
+        """
+        return self._TotalRuleCount
+
+    @TotalRuleCount.setter
+    def TotalRuleCount(self, TotalRuleCount):
+        self._TotalRuleCount = TotalRuleCount
 
     @property
     def RequestId(self):
@@ -24582,6 +24590,7 @@ class DescribeRecordingRulesResponse(AbstractModel):
                 obj = RecordingRuleSet()
                 obj._deserialize(item)
                 self._RecordingRuleSet.append(obj)
+        self._TotalRuleCount = params.get("TotalRuleCount")
         self._RequestId = params.get("RequestId")
 
 

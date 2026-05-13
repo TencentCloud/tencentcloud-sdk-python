@@ -785,6 +785,29 @@ class OceanusClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeWorkSpaceUsers(self, request):
+        r"""工作空间用户列表
+
+        :param request: Request instance for DescribeWorkSpaceUsers.
+        :type request: :class:`tencentcloud.oceanus.v20190422.models.DescribeWorkSpaceUsersRequest`
+        :rtype: :class:`tencentcloud.oceanus.v20190422.models.DescribeWorkSpaceUsersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeWorkSpaceUsers", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeWorkSpaceUsersResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeWorkSpaces(self, request):
         r"""授权工作空间列表
 

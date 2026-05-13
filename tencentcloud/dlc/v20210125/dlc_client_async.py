@@ -2025,6 +2025,24 @@ class DlcClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeTCLakeMetaInstance(
+            self,
+            request: models.DescribeTCLakeMetaInstanceRequest,
+            opts: Dict = None,
+    ) -> models.DescribeTCLakeMetaInstanceResponse:
+        """
+        是否成功开通TCLake
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeTCLakeMetaInstance"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeTCLakeMetaInstanceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeTable(
             self,
             request: models.DescribeTableRequest,
@@ -2632,6 +2650,24 @@ class DlcClient(AbstractClient):
         kwargs["action"] = "GrantDLCCatalogAccess"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.GrantDLCCatalogAccessResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def InitializeTCLake(
+            self,
+            request: models.InitializeTCLakeRequest,
+            opts: Dict = None,
+    ) -> models.InitializeTCLakeResponse:
+        """
+        开通TCLake
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "InitializeTCLake"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.InitializeTCLakeResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
