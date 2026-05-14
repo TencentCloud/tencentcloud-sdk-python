@@ -2187,14 +2187,28 @@ class AddOnImageInput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Image: 图片路径。
+        :param _Type: <p>图片类型。</p>
+        :type Type: str
+        :param _Image: <p>图片路径。</p>
         :type Image: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
         """
+        self._Type = None
         self._Image = None
 
     @property
+    def Type(self):
+        r"""<p>图片类型。</p>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
     def Image(self):
-        r"""图片路径。
+        r"""<p>图片路径。</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
         """
         return self._Image
@@ -2205,6 +2219,7 @@ class AddOnImageInput(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._Type = params.get("Type")
         if params.get("Image") is not None:
             self._Image = MediaInputInfo()
             self._Image._deserialize(params.get("Image"))
@@ -31871,6 +31886,8 @@ class DescribeDesignTaskResponse(AbstractModel):
         :param _VoiceId: <p>音色id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type VoiceId: str
+        :param _AudioUrl: <p>试听音频Url</p>
+        :type AudioUrl: str
         :param _ExtInfo: <p>扩展信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExtInfo: str
@@ -31881,6 +31898,7 @@ class DescribeDesignTaskResponse(AbstractModel):
         self._Msg = None
         self._Status = None
         self._VoiceId = None
+        self._AudioUrl = None
         self._ExtInfo = None
         self._RequestId = None
 
@@ -31930,6 +31948,17 @@ class DescribeDesignTaskResponse(AbstractModel):
         self._VoiceId = VoiceId
 
     @property
+    def AudioUrl(self):
+        r"""<p>试听音频Url</p>
+        :rtype: str
+        """
+        return self._AudioUrl
+
+    @AudioUrl.setter
+    def AudioUrl(self, AudioUrl):
+        self._AudioUrl = AudioUrl
+
+    @property
     def ExtInfo(self):
         r"""<p>扩展信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
@@ -31958,6 +31987,7 @@ class DescribeDesignTaskResponse(AbstractModel):
         self._Msg = params.get("Msg")
         self._Status = params.get("Status")
         self._VoiceId = params.get("VoiceId")
+        self._AudioUrl = params.get("AudioUrl")
         self._ExtInfo = params.get("ExtInfo")
         self._RequestId = params.get("RequestId")
 
@@ -42701,11 +42731,14 @@ class DesignVoiceAsyncRequest(AbstractModel):
         :type Prompt: str
         :param _VoiceProfile: <p>音色属性</p>
         :type VoiceProfile: :class:`tencentcloud.mps.v20190612.models.VoiceProfile`
+        :param _Text: <p>试听音频文本。长度不超过500</p>
+        :type Text: str
         :param _ExtParam: <p>扩展参数，json字符串</p>
         :type ExtParam: str
         """
         self._Prompt = None
         self._VoiceProfile = None
+        self._Text = None
         self._ExtParam = None
 
     @property
@@ -42731,6 +42764,17 @@ class DesignVoiceAsyncRequest(AbstractModel):
         self._VoiceProfile = VoiceProfile
 
     @property
+    def Text(self):
+        r"""<p>试听音频文本。长度不超过500</p>
+        :rtype: str
+        """
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
     def ExtParam(self):
         r"""<p>扩展参数，json字符串</p>
         :rtype: str
@@ -42747,6 +42791,7 @@ class DesignVoiceAsyncRequest(AbstractModel):
         if params.get("VoiceProfile") is not None:
             self._VoiceProfile = VoiceProfile()
             self._VoiceProfile._deserialize(params.get("VoiceProfile"))
+        self._Text = params.get("Text")
         self._ExtParam = params.get("ExtParam")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

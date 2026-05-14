@@ -30733,20 +30733,22 @@ class SubmitExtractDocAgentJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ImageBase64: 图片/PDF的 Base64 值。要求Base64不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :param _ImageBase64: <p>图片/PDF的 Base64 值。要求Base64不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。</p>
         :type ImageBase64: str
-        :param _ImageUrl: 图片/PDF的 Url 地址。要求图片经Base64编码后不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        :param _ImageUrl: <p>图片/PDF的 Url 地址。要求图片经Base64编码后不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。</p>
         :type ImageUrl: str
-        :param _PdfPageNumber: 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为前5页。
+        :param _PdfPageNumber: <p>需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为前5页。</p>
         :type PdfPageNumber: int
-        :param _ItemNames: 自定义抽取需要的字段名称、字段类型、字段提示词。
+        :param _ItemNames: <p>自定义抽取需要的字段名称、字段类型、字段提示词。</p>
         :type ItemNames: list of ItemNames
-        :param _EnableCoord: 是否需要返回坐标，默认false。
+        :param _EnableCoord: <p>是否需要返回坐标，默认false。</p>
         :type EnableCoord: bool
-        :param _FileStartPageNumber: 起始页
+        :param _FileStartPageNumber: <p>起始页</p>
         :type FileStartPageNumber: int
-        :param _FileEndPageNumber: 结束页
+        :param _FileEndPageNumber: <p>结束页</p>
         :type FileEndPageNumber: int
+        :param _ModelConfig: <p>model_hunyuan:选择混元底座视觉大模型精调抽取任务  model_youtu：选择优图底座多模态大模型精调抽取任务</p>
+        :type ModelConfig: str
         """
         self._ImageBase64 = None
         self._ImageUrl = None
@@ -30755,10 +30757,11 @@ class SubmitExtractDocAgentJobRequest(AbstractModel):
         self._EnableCoord = None
         self._FileStartPageNumber = None
         self._FileEndPageNumber = None
+        self._ModelConfig = None
 
     @property
     def ImageBase64(self):
-        r"""图片/PDF的 Base64 值。要求Base64不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        r"""<p>图片/PDF的 Base64 值。要求Base64不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。</p>
         :rtype: str
         """
         return self._ImageBase64
@@ -30769,7 +30772,7 @@ class SubmitExtractDocAgentJobRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        r"""图片/PDF的 Url 地址。要求图片经Base64编码后不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        r"""<p>图片/PDF的 Url 地址。要求图片经Base64编码后不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。</p>
         :rtype: str
         """
         return self._ImageUrl
@@ -30782,7 +30785,7 @@ class SubmitExtractDocAgentJobRequest(AbstractModel):
     def PdfPageNumber(self):
         warnings.warn("parameter `PdfPageNumber` is deprecated", DeprecationWarning) 
 
-        r"""需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为前5页。
+        r"""<p>需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为前5页。</p>
         :rtype: int
         """
         return self._PdfPageNumber
@@ -30795,7 +30798,7 @@ class SubmitExtractDocAgentJobRequest(AbstractModel):
 
     @property
     def ItemNames(self):
-        r"""自定义抽取需要的字段名称、字段类型、字段提示词。
+        r"""<p>自定义抽取需要的字段名称、字段类型、字段提示词。</p>
         :rtype: list of ItemNames
         """
         return self._ItemNames
@@ -30806,7 +30809,7 @@ class SubmitExtractDocAgentJobRequest(AbstractModel):
 
     @property
     def EnableCoord(self):
-        r"""是否需要返回坐标，默认false。
+        r"""<p>是否需要返回坐标，默认false。</p>
         :rtype: bool
         """
         return self._EnableCoord
@@ -30817,7 +30820,7 @@ class SubmitExtractDocAgentJobRequest(AbstractModel):
 
     @property
     def FileStartPageNumber(self):
-        r"""起始页
+        r"""<p>起始页</p>
         :rtype: int
         """
         return self._FileStartPageNumber
@@ -30828,7 +30831,7 @@ class SubmitExtractDocAgentJobRequest(AbstractModel):
 
     @property
     def FileEndPageNumber(self):
-        r"""结束页
+        r"""<p>结束页</p>
         :rtype: int
         """
         return self._FileEndPageNumber
@@ -30836,6 +30839,17 @@ class SubmitExtractDocAgentJobRequest(AbstractModel):
     @FileEndPageNumber.setter
     def FileEndPageNumber(self, FileEndPageNumber):
         self._FileEndPageNumber = FileEndPageNumber
+
+    @property
+    def ModelConfig(self):
+        r"""<p>model_hunyuan:选择混元底座视觉大模型精调抽取任务  model_youtu：选择优图底座多模态大模型精调抽取任务</p>
+        :rtype: str
+        """
+        return self._ModelConfig
+
+    @ModelConfig.setter
+    def ModelConfig(self, ModelConfig):
+        self._ModelConfig = ModelConfig
 
 
     def _deserialize(self, params):
@@ -30851,6 +30865,7 @@ class SubmitExtractDocAgentJobRequest(AbstractModel):
         self._EnableCoord = params.get("EnableCoord")
         self._FileStartPageNumber = params.get("FileStartPageNumber")
         self._FileEndPageNumber = params.get("FileEndPageNumber")
+        self._ModelConfig = params.get("ModelConfig")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -30868,7 +30883,7 @@ class SubmitExtractDocAgentJobResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 任务唯一ID。由服务端生成。
+        :param _JobId: <p>任务唯一ID。由服务端生成。</p>
         :type JobId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -30878,7 +30893,7 @@ class SubmitExtractDocAgentJobResponse(AbstractModel):
 
     @property
     def JobId(self):
-        r"""任务唯一ID。由服务端生成。
+        r"""<p>任务唯一ID。由服务端生成。</p>
         :rtype: str
         """
         return self._JobId

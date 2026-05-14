@@ -5729,40 +5729,42 @@ class AssetRiskItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AppId: 租户ID
+        :param _AppId: <p>租户ID</p>
         :type AppId: int
-        :param _Provider: 云厂商
+        :param _Provider: <p>云厂商</p>
         :type Provider: str
-        :param _ProviderName: 云厂商名称
+        :param _ProviderName: <p>云厂商名称</p>
         :type ProviderName: str
-        :param _CloudAccountName: 云账号名称
+        :param _CloudAccountName: <p>云账号名称</p>
         :type CloudAccountName: str
-        :param _CloudAccountId: 云账号ID
+        :param _CloudAccountId: <p>云账号ID</p>
         :type CloudAccountId: str
-        :param _InstanceName: 实例名称
+        :param _InstanceName: <p>实例名称</p>
         :type InstanceName: str
-        :param _InstanceId: 实例ID
+        :param _InstanceId: <p>实例ID</p>
         :type InstanceId: str
-        :param _CreateTime: 首次发现时间
+        :param _CreateTime: <p>首次发现时间</p>
         :type CreateTime: str
-        :param _UpdateTime: 更新时间
+        :param _UpdateTime: <p>更新时间</p>
         :type UpdateTime: str
-        :param _RiskStatus: 风险状态
+        :param _RiskStatus: <p>风险状态</p>
         :type RiskStatus: int
-        :param _RiskTitle: 风险名称
+        :param _RiskTitle: <p>风险名称</p>
         :type RiskTitle: str
-        :param _CheckType: 检查类型
+        :param _CheckType: <p>检查类型</p>
         :type CheckType: str
-        :param _Severity: 风险等级
+        :param _Severity: <p>风险等级</p>
         :type Severity: str
-        :param _RiskRuleId: 风险规则ID
+        :param _RiskRuleId: <p>风险规则ID</p>
         :type RiskRuleId: str
-        :param _Classify: 处置分类
+        :param _Classify: <p>处置分类</p>
         :type Classify: str
-        :param _StandardTerms: 等保合规
+        :param _StandardTerms: <p>等保合规</p>
         :type StandardTerms: list of StandardTerm
-        :param _AssetType: 资产类型
+        :param _AssetType: <p>资产类型</p>
         :type AssetType: str
+        :param _AssetTypeIconURL: <p>资产类型图标</p>
+        :type AssetTypeIconURL: str
         """
         self._AppId = None
         self._Provider = None
@@ -5781,10 +5783,11 @@ class AssetRiskItem(AbstractModel):
         self._Classify = None
         self._StandardTerms = None
         self._AssetType = None
+        self._AssetTypeIconURL = None
 
     @property
     def AppId(self):
-        r"""租户ID
+        r"""<p>租户ID</p>
         :rtype: int
         """
         return self._AppId
@@ -5795,7 +5798,7 @@ class AssetRiskItem(AbstractModel):
 
     @property
     def Provider(self):
-        r"""云厂商
+        r"""<p>云厂商</p>
         :rtype: str
         """
         return self._Provider
@@ -5806,7 +5809,7 @@ class AssetRiskItem(AbstractModel):
 
     @property
     def ProviderName(self):
-        r"""云厂商名称
+        r"""<p>云厂商名称</p>
         :rtype: str
         """
         return self._ProviderName
@@ -5817,7 +5820,7 @@ class AssetRiskItem(AbstractModel):
 
     @property
     def CloudAccountName(self):
-        r"""云账号名称
+        r"""<p>云账号名称</p>
         :rtype: str
         """
         return self._CloudAccountName
@@ -5828,7 +5831,7 @@ class AssetRiskItem(AbstractModel):
 
     @property
     def CloudAccountId(self):
-        r"""云账号ID
+        r"""<p>云账号ID</p>
         :rtype: str
         """
         return self._CloudAccountId
@@ -5839,7 +5842,7 @@ class AssetRiskItem(AbstractModel):
 
     @property
     def InstanceName(self):
-        r"""实例名称
+        r"""<p>实例名称</p>
         :rtype: str
         """
         return self._InstanceName
@@ -5850,7 +5853,7 @@ class AssetRiskItem(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例ID
+        r"""<p>实例ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -5861,7 +5864,7 @@ class AssetRiskItem(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""首次发现时间
+        r"""<p>首次发现时间</p>
         :rtype: str
         """
         return self._CreateTime
@@ -5872,7 +5875,7 @@ class AssetRiskItem(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""更新时间
+        r"""<p>更新时间</p>
         :rtype: str
         """
         return self._UpdateTime
@@ -5883,7 +5886,7 @@ class AssetRiskItem(AbstractModel):
 
     @property
     def RiskStatus(self):
-        r"""风险状态
+        r"""<p>风险状态</p>
         :rtype: int
         """
         return self._RiskStatus
@@ -5894,7 +5897,7 @@ class AssetRiskItem(AbstractModel):
 
     @property
     def RiskTitle(self):
-        r"""风险名称
+        r"""<p>风险名称</p>
         :rtype: str
         """
         return self._RiskTitle
@@ -5905,7 +5908,7 @@ class AssetRiskItem(AbstractModel):
 
     @property
     def CheckType(self):
-        r"""检查类型
+        r"""<p>检查类型</p>
         :rtype: str
         """
         return self._CheckType
@@ -5916,7 +5919,7 @@ class AssetRiskItem(AbstractModel):
 
     @property
     def Severity(self):
-        r"""风险等级
+        r"""<p>风险等级</p>
         :rtype: str
         """
         return self._Severity
@@ -5927,7 +5930,7 @@ class AssetRiskItem(AbstractModel):
 
     @property
     def RiskRuleId(self):
-        r"""风险规则ID
+        r"""<p>风险规则ID</p>
         :rtype: str
         """
         return self._RiskRuleId
@@ -5938,7 +5941,7 @@ class AssetRiskItem(AbstractModel):
 
     @property
     def Classify(self):
-        r"""处置分类
+        r"""<p>处置分类</p>
         :rtype: str
         """
         return self._Classify
@@ -5949,7 +5952,7 @@ class AssetRiskItem(AbstractModel):
 
     @property
     def StandardTerms(self):
-        r"""等保合规
+        r"""<p>等保合规</p>
         :rtype: list of StandardTerm
         """
         return self._StandardTerms
@@ -5960,7 +5963,7 @@ class AssetRiskItem(AbstractModel):
 
     @property
     def AssetType(self):
-        r"""资产类型
+        r"""<p>资产类型</p>
         :rtype: str
         """
         return self._AssetType
@@ -5968,6 +5971,17 @@ class AssetRiskItem(AbstractModel):
     @AssetType.setter
     def AssetType(self, AssetType):
         self._AssetType = AssetType
+
+    @property
+    def AssetTypeIconURL(self):
+        r"""<p>资产类型图标</p>
+        :rtype: str
+        """
+        return self._AssetTypeIconURL
+
+    @AssetTypeIconURL.setter
+    def AssetTypeIconURL(self, AssetTypeIconURL):
+        self._AssetTypeIconURL = AssetTypeIconURL
 
 
     def _deserialize(self, params):
@@ -5993,6 +6007,7 @@ class AssetRiskItem(AbstractModel):
                 obj._deserialize(item)
                 self._StandardTerms.append(obj)
         self._AssetType = params.get("AssetType")
+        self._AssetTypeIconURL = params.get("AssetTypeIconURL")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11254,36 +11269,38 @@ class CheckViewRiskItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RiskRuleId: 检查项规则ID
+        :param _RiskRuleId: <p>检查项规则ID</p>
         :type RiskRuleId: str
-        :param _RiskTitle: 风险名称
+        :param _RiskTitle: <p>风险名称</p>
         :type RiskTitle: str
-        :param _CheckType: 检查类型
+        :param _CheckType: <p>检查类型</p>
         :type CheckType: str
-        :param _Severity: 风险等级
+        :param _Severity: <p>风险等级</p>
         :type Severity: str
-        :param _RiskDesc: 存在1个风险项
+        :param _RiskDesc: <p>存在1个风险项</p>
         :type RiskDesc: str
-        :param _CreateTime: 首次发现时间
+        :param _CreateTime: <p>首次发现时间</p>
         :type CreateTime: str
-        :param _UpdateTime: 风险更新时间
+        :param _UpdateTime: <p>风险更新时间</p>
         :type UpdateTime: str
-        :param _Provider: 云厂商
+        :param _Provider: <p>云厂商</p>
         :type Provider: str
-        :param _RiskStatus: 风险状态
+        :param _RiskStatus: <p>风险状态</p>
         :type RiskStatus: int
-        :param _AssetCount: 受影响资产数量
+        :param _AssetCount: <p>受影响资产数量</p>
         :type AssetCount: int
-        :param _RiskCount: 风险数量
+        :param _RiskCount: <p>风险数量</p>
         :type RiskCount: int
-        :param _AssetType: 资产类型
+        :param _AssetType: <p>资产类型</p>
         :type AssetType: str
-        :param _EventType: 事件类型
+        :param _EventType: <p>事件类型</p>
         :type EventType: str
-        :param _Classify: 处置分类
+        :param _Classify: <p>处置分类</p>
         :type Classify: str
-        :param _StandardTerms: cspm规范条款
+        :param _StandardTerms: <p>cspm规范条款</p>
         :type StandardTerms: list of StandardTerm
+        :param _AssetTypeIconURL: <p>资产类型图标</p>
+        :type AssetTypeIconURL: str
         """
         self._RiskRuleId = None
         self._RiskTitle = None
@@ -11300,10 +11317,11 @@ class CheckViewRiskItem(AbstractModel):
         self._EventType = None
         self._Classify = None
         self._StandardTerms = None
+        self._AssetTypeIconURL = None
 
     @property
     def RiskRuleId(self):
-        r"""检查项规则ID
+        r"""<p>检查项规则ID</p>
         :rtype: str
         """
         return self._RiskRuleId
@@ -11314,7 +11332,7 @@ class CheckViewRiskItem(AbstractModel):
 
     @property
     def RiskTitle(self):
-        r"""风险名称
+        r"""<p>风险名称</p>
         :rtype: str
         """
         return self._RiskTitle
@@ -11325,7 +11343,7 @@ class CheckViewRiskItem(AbstractModel):
 
     @property
     def CheckType(self):
-        r"""检查类型
+        r"""<p>检查类型</p>
         :rtype: str
         """
         return self._CheckType
@@ -11336,7 +11354,7 @@ class CheckViewRiskItem(AbstractModel):
 
     @property
     def Severity(self):
-        r"""风险等级
+        r"""<p>风险等级</p>
         :rtype: str
         """
         return self._Severity
@@ -11347,7 +11365,7 @@ class CheckViewRiskItem(AbstractModel):
 
     @property
     def RiskDesc(self):
-        r"""存在1个风险项
+        r"""<p>存在1个风险项</p>
         :rtype: str
         """
         return self._RiskDesc
@@ -11358,7 +11376,7 @@ class CheckViewRiskItem(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""首次发现时间
+        r"""<p>首次发现时间</p>
         :rtype: str
         """
         return self._CreateTime
@@ -11369,7 +11387,7 @@ class CheckViewRiskItem(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""风险更新时间
+        r"""<p>风险更新时间</p>
         :rtype: str
         """
         return self._UpdateTime
@@ -11380,7 +11398,7 @@ class CheckViewRiskItem(AbstractModel):
 
     @property
     def Provider(self):
-        r"""云厂商
+        r"""<p>云厂商</p>
         :rtype: str
         """
         return self._Provider
@@ -11391,7 +11409,7 @@ class CheckViewRiskItem(AbstractModel):
 
     @property
     def RiskStatus(self):
-        r"""风险状态
+        r"""<p>风险状态</p>
         :rtype: int
         """
         return self._RiskStatus
@@ -11402,7 +11420,7 @@ class CheckViewRiskItem(AbstractModel):
 
     @property
     def AssetCount(self):
-        r"""受影响资产数量
+        r"""<p>受影响资产数量</p>
         :rtype: int
         """
         return self._AssetCount
@@ -11413,7 +11431,7 @@ class CheckViewRiskItem(AbstractModel):
 
     @property
     def RiskCount(self):
-        r"""风险数量
+        r"""<p>风险数量</p>
         :rtype: int
         """
         return self._RiskCount
@@ -11424,7 +11442,7 @@ class CheckViewRiskItem(AbstractModel):
 
     @property
     def AssetType(self):
-        r"""资产类型
+        r"""<p>资产类型</p>
         :rtype: str
         """
         return self._AssetType
@@ -11435,7 +11453,7 @@ class CheckViewRiskItem(AbstractModel):
 
     @property
     def EventType(self):
-        r"""事件类型
+        r"""<p>事件类型</p>
         :rtype: str
         """
         return self._EventType
@@ -11446,7 +11464,7 @@ class CheckViewRiskItem(AbstractModel):
 
     @property
     def Classify(self):
-        r"""处置分类
+        r"""<p>处置分类</p>
         :rtype: str
         """
         return self._Classify
@@ -11457,7 +11475,7 @@ class CheckViewRiskItem(AbstractModel):
 
     @property
     def StandardTerms(self):
-        r"""cspm规范条款
+        r"""<p>cspm规范条款</p>
         :rtype: list of StandardTerm
         """
         return self._StandardTerms
@@ -11465,6 +11483,17 @@ class CheckViewRiskItem(AbstractModel):
     @StandardTerms.setter
     def StandardTerms(self, StandardTerms):
         self._StandardTerms = StandardTerms
+
+    @property
+    def AssetTypeIconURL(self):
+        r"""<p>资产类型图标</p>
+        :rtype: str
+        """
+        return self._AssetTypeIconURL
+
+    @AssetTypeIconURL.setter
+    def AssetTypeIconURL(self, AssetTypeIconURL):
+        self._AssetTypeIconURL = AssetTypeIconURL
 
 
     def _deserialize(self, params):
@@ -11488,6 +11517,7 @@ class CheckViewRiskItem(AbstractModel):
                 obj = StandardTerm()
                 obj._deserialize(item)
                 self._StandardTerms.append(obj)
+        self._AssetTypeIconURL = params.get("AssetTypeIconURL")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17788,7 +17818,7 @@ class DescribeAssetProcessListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MemberId: 集团账号的成员id
+        :param _MemberId: <p>集团账号的成员id</p>
         :type MemberId: list of str
         :param _Filters: 过滤内容
         :type Filters: list of Filters
@@ -17813,7 +17843,7 @@ class DescribeAssetProcessListRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        r"""集团账号的成员id
+        r"""<p>集团账号的成员id</p>
         :rtype: list of str
         """
         return self._MemberId
@@ -17982,7 +18012,7 @@ class DescribeAssetRiskListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MemberId: 集团账号的成员id
+        :param _MemberId: <p>集团账号的成员id</p>
         :type MemberId: list of str
         :param _Filters: 过滤内容
         :type Filters: list of Filters
@@ -18004,7 +18034,7 @@ class DescribeAssetRiskListRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        r"""集团账号的成员id
+        r"""<p>集团账号的成员id</p>
         :rtype: list of str
         """
         return self._MemberId
@@ -18735,7 +18765,7 @@ class DescribeCSIPRiskStatisticsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MemberId: 集团账号的成员id
+        :param _MemberId: <p>集团账号的成员id</p>
         :type MemberId: list of str
         :param _Filter: 过滤内容
         :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
@@ -18745,7 +18775,7 @@ class DescribeCSIPRiskStatisticsRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        r"""集团账号的成员id
+        r"""<p>集团账号的成员id</p>
         :rtype: list of str
         """
         return self._MemberId
@@ -19446,7 +19476,7 @@ class DescribeCheckViewRisksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MemberId: 集团账号的成员id
+        :param _MemberId: <p>集团账号的成员id</p>
         :type MemberId: list of str
         :param _Filters: 过滤内容
         :type Filters: list of Filters
@@ -19468,7 +19498,7 @@ class DescribeCheckViewRisksRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        r"""集团账号的成员id
+        r"""<p>集团账号的成员id</p>
         :rtype: list of str
         """
         return self._MemberId
@@ -20117,7 +20147,7 @@ class DescribeConfigCheckRulesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MemberId: 集团账号的成员id
+        :param _MemberId: <p>集团账号的成员id</p>
         :type MemberId: list of str
         :param _Filters: 过滤内容
         :type Filters: list of Filters
@@ -20139,7 +20169,7 @@ class DescribeConfigCheckRulesRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        r"""集团账号的成员id
+        r"""<p>集团账号的成员id</p>
         :rtype: list of str
         """
         return self._MemberId
@@ -27214,14 +27244,14 @@ class DescribeExposeAssetCategoryRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MemberId: 集团账号的成员id
+        :param _MemberId: <p>集团账号的成员id</p>
         :type MemberId: list of str
         """
         self._MemberId = None
 
     @property
     def MemberId(self):
-        r"""集团账号的成员id
+        r"""<p>集团账号的成员id</p>
         :rtype: list of str
         """
         return self._MemberId
@@ -27298,7 +27328,7 @@ class DescribeExposePathRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MemberId: 集团账号的成员id
+        :param _MemberId: <p>集团账号的成员id</p>
         :type MemberId: list of str
         :param _AssetId: 资产ID
         :type AssetId: str
@@ -27317,7 +27347,7 @@ class DescribeExposePathRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        r"""集团账号的成员id
+        r"""<p>集团账号的成员id</p>
         :rtype: list of str
         """
         return self._MemberId
@@ -27437,7 +27467,7 @@ class DescribeExposuresRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MemberId: 集团账号的成员id
+        :param _MemberId: <p>集团账号的成员id</p>
         :type MemberId: list of str
         :param _Filters: 过滤内容
         :type Filters: list of Filters
@@ -27459,7 +27489,7 @@ class DescribeExposuresRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        r"""集团账号的成员id
+        r"""<p>集团账号的成员id</p>
         :rtype: list of str
         """
         return self._MemberId
@@ -27812,7 +27842,7 @@ class DescribeHighBaseLineRiskListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MemberId: 集团账号的成员id
+        :param _MemberId: <p>集团账号的成员id</p>
         :type MemberId: list of str
         :param _Filters: 过滤内容
         :type Filters: list of Filters
@@ -27840,7 +27870,7 @@ class DescribeHighBaseLineRiskListRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        r"""集团账号的成员id
+        r"""<p>集团账号的成员id</p>
         :rtype: list of str
         """
         return self._MemberId
@@ -31649,7 +31679,7 @@ class DescribeRiskDetailListRequest(AbstractModel):
         r"""
         :param _RiskRuleId: 风险规则ID
         :type RiskRuleId: str
-        :param _MemberId: 集团账号的成员id
+        :param _MemberId: <p>集团账号的成员id</p>
         :type MemberId: list of str
         :param _Filters: 过滤内容
         :type Filters: list of Filters
@@ -31686,7 +31716,7 @@ class DescribeRiskDetailListRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        r"""集团账号的成员id
+        r"""<p>集团账号的成员id</p>
         :rtype: list of str
         """
         return self._MemberId
@@ -32811,6 +32841,265 @@ class DescribeSearchBugInfoResponse(AbstractModel):
             self._Data._deserialize(params.get("Data"))
         self._ReturnCode = params.get("ReturnCode")
         self._ReturnMsg = params.get("ReturnMsg")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeSkillScanPayInfoRequest(AbstractModel):
+    r"""DescribeSkillScanPayInfo请求参数结构体
+
+    """
+
+
+class DescribeSkillScanPayInfoResponse(AbstractModel):
+    r"""DescribeSkillScanPayInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppID: <p>订单所属租户 AppID</p>
+        :type AppID: int
+        :param _OrderStatus: <p>订单状态<br>枚举值：<br>0：未购买<br>1：正常<br>2：隔离<br>6：试用中<br>7：已过期<br>8：试用到期</p>
+        :type OrderStatus: int
+        :param _TotalQuota: <p>总配额</p>
+        :type TotalQuota: int
+        :param _UsedCount: <p>已消耗配额</p>
+        :type UsedCount: int
+        :param _PayMode: <p>支付模式<br>枚举值：<br>0：后付费<br>1：预付费</p>
+        :type PayMode: int
+        :param _AutoRenew: <p>自动续费标志<br>枚举值：<br>0：未设置<br>1：自动续费<br>2：不自动续费</p>
+        :type AutoRenew: int
+        :param _ResourceId: <p>资源ID</p>
+        :type ResourceId: str
+        :param _TimeSpan: <p>购买时长</p>
+        :type TimeSpan: int
+        :param _TimeUnit: <p>时长单位</p>
+        :type TimeUnit: str
+        :param _BeginTime: <p>订单开始时间</p>
+        :type BeginTime: str
+        :param _EndTime: <p>订单到期时间</p>
+        :type EndTime: str
+        :param _BetaEndTime: <p>公测结束时间，固定为 2026-06-30 23:59:59</p>
+        :type BetaEndTime: str
+        :param _TimeNow: <p>服务器当前时间</p>
+        :type TimeNow: str
+        :param _Uin: <p>租户 Uin</p>
+        :type Uin: str
+        :param _NickName: <p>租户昵称</p>
+        :type NickName: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._AppID = None
+        self._OrderStatus = None
+        self._TotalQuota = None
+        self._UsedCount = None
+        self._PayMode = None
+        self._AutoRenew = None
+        self._ResourceId = None
+        self._TimeSpan = None
+        self._TimeUnit = None
+        self._BeginTime = None
+        self._EndTime = None
+        self._BetaEndTime = None
+        self._TimeNow = None
+        self._Uin = None
+        self._NickName = None
+        self._RequestId = None
+
+    @property
+    def AppID(self):
+        r"""<p>订单所属租户 AppID</p>
+        :rtype: int
+        """
+        return self._AppID
+
+    @AppID.setter
+    def AppID(self, AppID):
+        self._AppID = AppID
+
+    @property
+    def OrderStatus(self):
+        r"""<p>订单状态<br>枚举值：<br>0：未购买<br>1：正常<br>2：隔离<br>6：试用中<br>7：已过期<br>8：试用到期</p>
+        :rtype: int
+        """
+        return self._OrderStatus
+
+    @OrderStatus.setter
+    def OrderStatus(self, OrderStatus):
+        self._OrderStatus = OrderStatus
+
+    @property
+    def TotalQuota(self):
+        r"""<p>总配额</p>
+        :rtype: int
+        """
+        return self._TotalQuota
+
+    @TotalQuota.setter
+    def TotalQuota(self, TotalQuota):
+        self._TotalQuota = TotalQuota
+
+    @property
+    def UsedCount(self):
+        r"""<p>已消耗配额</p>
+        :rtype: int
+        """
+        return self._UsedCount
+
+    @UsedCount.setter
+    def UsedCount(self, UsedCount):
+        self._UsedCount = UsedCount
+
+    @property
+    def PayMode(self):
+        r"""<p>支付模式<br>枚举值：<br>0：后付费<br>1：预付费</p>
+        :rtype: int
+        """
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def AutoRenew(self):
+        r"""<p>自动续费标志<br>枚举值：<br>0：未设置<br>1：自动续费<br>2：不自动续费</p>
+        :rtype: int
+        """
+        return self._AutoRenew
+
+    @AutoRenew.setter
+    def AutoRenew(self, AutoRenew):
+        self._AutoRenew = AutoRenew
+
+    @property
+    def ResourceId(self):
+        r"""<p>资源ID</p>
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def TimeSpan(self):
+        r"""<p>购买时长</p>
+        :rtype: int
+        """
+        return self._TimeSpan
+
+    @TimeSpan.setter
+    def TimeSpan(self, TimeSpan):
+        self._TimeSpan = TimeSpan
+
+    @property
+    def TimeUnit(self):
+        r"""<p>时长单位</p>
+        :rtype: str
+        """
+        return self._TimeUnit
+
+    @TimeUnit.setter
+    def TimeUnit(self, TimeUnit):
+        self._TimeUnit = TimeUnit
+
+    @property
+    def BeginTime(self):
+        r"""<p>订单开始时间</p>
+        :rtype: str
+        """
+        return self._BeginTime
+
+    @BeginTime.setter
+    def BeginTime(self, BeginTime):
+        self._BeginTime = BeginTime
+
+    @property
+    def EndTime(self):
+        r"""<p>订单到期时间</p>
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def BetaEndTime(self):
+        r"""<p>公测结束时间，固定为 2026-06-30 23:59:59</p>
+        :rtype: str
+        """
+        return self._BetaEndTime
+
+    @BetaEndTime.setter
+    def BetaEndTime(self, BetaEndTime):
+        self._BetaEndTime = BetaEndTime
+
+    @property
+    def TimeNow(self):
+        r"""<p>服务器当前时间</p>
+        :rtype: str
+        """
+        return self._TimeNow
+
+    @TimeNow.setter
+    def TimeNow(self, TimeNow):
+        self._TimeNow = TimeNow
+
+    @property
+    def Uin(self):
+        r"""<p>租户 Uin</p>
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def NickName(self):
+        r"""<p>租户昵称</p>
+        :rtype: str
+        """
+        return self._NickName
+
+    @NickName.setter
+    def NickName(self, NickName):
+        self._NickName = NickName
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._AppID = params.get("AppID")
+        self._OrderStatus = params.get("OrderStatus")
+        self._TotalQuota = params.get("TotalQuota")
+        self._UsedCount = params.get("UsedCount")
+        self._PayMode = params.get("PayMode")
+        self._AutoRenew = params.get("AutoRenew")
+        self._ResourceId = params.get("ResourceId")
+        self._TimeSpan = params.get("TimeSpan")
+        self._TimeUnit = params.get("TimeUnit")
+        self._BeginTime = params.get("BeginTime")
+        self._EndTime = params.get("EndTime")
+        self._BetaEndTime = params.get("BetaEndTime")
+        self._TimeNow = params.get("TimeNow")
+        self._Uin = params.get("Uin")
+        self._NickName = params.get("NickName")
         self._RequestId = params.get("RequestId")
 
 
@@ -35096,7 +35385,7 @@ class DescribeVulRiskListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MemberId: 集团账号的成员id
+        :param _MemberId: <p>集团账号的成员id</p>
         :type MemberId: list of str
         :param _Filters: 过滤内容
         :type Filters: list of Filters
@@ -35124,7 +35413,7 @@ class DescribeVulRiskListRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        r"""集团账号的成员id
+        r"""<p>集团账号的成员id</p>
         :rtype: list of str
         """
         return self._MemberId
@@ -38679,24 +38968,28 @@ class DspmAssetFieldInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AssetId: 资产实例id
+        :param _AssetId: <p>资产实例id</p>
         :type AssetId: str
-        :param _DbName: 数据库名称
+        :param _DbName: <p>数据库名称</p>
         :type DbName: str
-        :param _SchemaName: schema名
+        :param _SchemaName: <p>schema名</p>
         :type SchemaName: str
-        :param _TableName: 表名
+        :param _TableName: <p>表名</p>
         :type TableName: str
-        :param _FieldName: 字段名
+        :param _FieldName: <p>字段名</p>
         :type FieldName: str
-        :param _RuleIds: 数据项id集合
+        :param _RuleIds: <p>数据项id集合</p>
         :type RuleIds: list of int non-negative
-        :param _RuleNames: 数据项名称集合
+        :param _RuleNames: <p>数据项名称集合</p>
         :type RuleNames: list of str
-        :param _CategoryIds: 分类id集合
+        :param _CategoryIds: <p>分类id集合</p>
         :type CategoryIds: list of int non-negative
-        :param _CategoryNames: 分类名称集合
+        :param _CategoryNames: <p>分类名称集合</p>
         :type CategoryNames: list of str
+        :param _CategoryDetails: <p>分类详情</p>
+        :type CategoryDetails: list of DspmIdentifyCategoryDetail
+        :param _FieldComment: <p>字段注释</p>
+        :type FieldComment: str
         """
         self._AssetId = None
         self._DbName = None
@@ -38707,10 +39000,12 @@ class DspmAssetFieldInfo(AbstractModel):
         self._RuleNames = None
         self._CategoryIds = None
         self._CategoryNames = None
+        self._CategoryDetails = None
+        self._FieldComment = None
 
     @property
     def AssetId(self):
-        r"""资产实例id
+        r"""<p>资产实例id</p>
         :rtype: str
         """
         return self._AssetId
@@ -38721,7 +39016,7 @@ class DspmAssetFieldInfo(AbstractModel):
 
     @property
     def DbName(self):
-        r"""数据库名称
+        r"""<p>数据库名称</p>
         :rtype: str
         """
         return self._DbName
@@ -38732,7 +39027,7 @@ class DspmAssetFieldInfo(AbstractModel):
 
     @property
     def SchemaName(self):
-        r"""schema名
+        r"""<p>schema名</p>
         :rtype: str
         """
         return self._SchemaName
@@ -38743,7 +39038,7 @@ class DspmAssetFieldInfo(AbstractModel):
 
     @property
     def TableName(self):
-        r"""表名
+        r"""<p>表名</p>
         :rtype: str
         """
         return self._TableName
@@ -38754,7 +39049,7 @@ class DspmAssetFieldInfo(AbstractModel):
 
     @property
     def FieldName(self):
-        r"""字段名
+        r"""<p>字段名</p>
         :rtype: str
         """
         return self._FieldName
@@ -38765,7 +39060,7 @@ class DspmAssetFieldInfo(AbstractModel):
 
     @property
     def RuleIds(self):
-        r"""数据项id集合
+        r"""<p>数据项id集合</p>
         :rtype: list of int non-negative
         """
         return self._RuleIds
@@ -38776,7 +39071,7 @@ class DspmAssetFieldInfo(AbstractModel):
 
     @property
     def RuleNames(self):
-        r"""数据项名称集合
+        r"""<p>数据项名称集合</p>
         :rtype: list of str
         """
         return self._RuleNames
@@ -38787,7 +39082,7 @@ class DspmAssetFieldInfo(AbstractModel):
 
     @property
     def CategoryIds(self):
-        r"""分类id集合
+        r"""<p>分类id集合</p>
         :rtype: list of int non-negative
         """
         return self._CategoryIds
@@ -38798,7 +39093,7 @@ class DspmAssetFieldInfo(AbstractModel):
 
     @property
     def CategoryNames(self):
-        r"""分类名称集合
+        r"""<p>分类名称集合</p>
         :rtype: list of str
         """
         return self._CategoryNames
@@ -38806,6 +39101,28 @@ class DspmAssetFieldInfo(AbstractModel):
     @CategoryNames.setter
     def CategoryNames(self, CategoryNames):
         self._CategoryNames = CategoryNames
+
+    @property
+    def CategoryDetails(self):
+        r"""<p>分类详情</p>
+        :rtype: list of DspmIdentifyCategoryDetail
+        """
+        return self._CategoryDetails
+
+    @CategoryDetails.setter
+    def CategoryDetails(self, CategoryDetails):
+        self._CategoryDetails = CategoryDetails
+
+    @property
+    def FieldComment(self):
+        r"""<p>字段注释</p>
+        :rtype: str
+        """
+        return self._FieldComment
+
+    @FieldComment.setter
+    def FieldComment(self, FieldComment):
+        self._FieldComment = FieldComment
 
 
     def _deserialize(self, params):
@@ -38818,6 +39135,13 @@ class DspmAssetFieldInfo(AbstractModel):
         self._RuleNames = params.get("RuleNames")
         self._CategoryIds = params.get("CategoryIds")
         self._CategoryNames = params.get("CategoryNames")
+        if params.get("CategoryDetails") is not None:
+            self._CategoryDetails = []
+            for item in params.get("CategoryDetails"):
+                obj = DspmIdentifyCategoryDetail()
+                obj._deserialize(item)
+                self._CategoryDetails.append(obj)
+        self._FieldComment = params.get("FieldComment")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -39121,26 +39445,32 @@ class DspmAssetTableInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AssetId: 资产实例id
+        :param _AssetId: <p>资产实例id</p>
         :type AssetId: str
-        :param _DbName: 数据库名称
+        :param _DbName: <p>数据库名称</p>
         :type DbName: str
-        :param _SchemaName: schema名称
+        :param _SchemaName: <p>schema名称</p>
         :type SchemaName: str
-        :param _TableName: 表名
+        :param _TableName: <p>表名</p>
         :type TableName: str
-        :param _FieldCount: 字段数
+        :param _FieldCount: <p>字段数</p>
         :type FieldCount: int
-        :param _SensitiveFieldCount: 敏感字段数
+        :param _SensitiveFieldCount: <p>敏感字段数</p>
         :type SensitiveFieldCount: int
-        :param _RuleIds: 数据项id集合
+        :param _RuleIds: <p>数据项id集合</p>
         :type RuleIds: list of int non-negative
-        :param _RuleNames: 数据项名称集合
+        :param _RuleNames: <p>数据项名称集合</p>
         :type RuleNames: list of str
-        :param _CategoryIds: 分类id集合
+        :param _CategoryIds: <p>分类id集合</p>
         :type CategoryIds: list of int non-negative
-        :param _CategoryNames: 分类名称集合
+        :param _CategoryNames: <p>分类名称集合</p>
         :type CategoryNames: list of str
+        :param _CategoryDetails: <p>分类详情</p>
+        :type CategoryDetails: list of DspmIdentifyCategoryDetail
+        :param _TableId: <p>数据表id</p>
+        :type TableId: int
+        :param _TableComment: <p>表注释</p>
+        :type TableComment: str
         """
         self._AssetId = None
         self._DbName = None
@@ -39152,10 +39482,13 @@ class DspmAssetTableInfo(AbstractModel):
         self._RuleNames = None
         self._CategoryIds = None
         self._CategoryNames = None
+        self._CategoryDetails = None
+        self._TableId = None
+        self._TableComment = None
 
     @property
     def AssetId(self):
-        r"""资产实例id
+        r"""<p>资产实例id</p>
         :rtype: str
         """
         return self._AssetId
@@ -39166,7 +39499,7 @@ class DspmAssetTableInfo(AbstractModel):
 
     @property
     def DbName(self):
-        r"""数据库名称
+        r"""<p>数据库名称</p>
         :rtype: str
         """
         return self._DbName
@@ -39177,7 +39510,7 @@ class DspmAssetTableInfo(AbstractModel):
 
     @property
     def SchemaName(self):
-        r"""schema名称
+        r"""<p>schema名称</p>
         :rtype: str
         """
         return self._SchemaName
@@ -39188,7 +39521,7 @@ class DspmAssetTableInfo(AbstractModel):
 
     @property
     def TableName(self):
-        r"""表名
+        r"""<p>表名</p>
         :rtype: str
         """
         return self._TableName
@@ -39199,7 +39532,7 @@ class DspmAssetTableInfo(AbstractModel):
 
     @property
     def FieldCount(self):
-        r"""字段数
+        r"""<p>字段数</p>
         :rtype: int
         """
         return self._FieldCount
@@ -39210,7 +39543,7 @@ class DspmAssetTableInfo(AbstractModel):
 
     @property
     def SensitiveFieldCount(self):
-        r"""敏感字段数
+        r"""<p>敏感字段数</p>
         :rtype: int
         """
         return self._SensitiveFieldCount
@@ -39221,7 +39554,7 @@ class DspmAssetTableInfo(AbstractModel):
 
     @property
     def RuleIds(self):
-        r"""数据项id集合
+        r"""<p>数据项id集合</p>
         :rtype: list of int non-negative
         """
         return self._RuleIds
@@ -39232,7 +39565,7 @@ class DspmAssetTableInfo(AbstractModel):
 
     @property
     def RuleNames(self):
-        r"""数据项名称集合
+        r"""<p>数据项名称集合</p>
         :rtype: list of str
         """
         return self._RuleNames
@@ -39243,7 +39576,7 @@ class DspmAssetTableInfo(AbstractModel):
 
     @property
     def CategoryIds(self):
-        r"""分类id集合
+        r"""<p>分类id集合</p>
         :rtype: list of int non-negative
         """
         return self._CategoryIds
@@ -39254,7 +39587,7 @@ class DspmAssetTableInfo(AbstractModel):
 
     @property
     def CategoryNames(self):
-        r"""分类名称集合
+        r"""<p>分类名称集合</p>
         :rtype: list of str
         """
         return self._CategoryNames
@@ -39262,6 +39595,39 @@ class DspmAssetTableInfo(AbstractModel):
     @CategoryNames.setter
     def CategoryNames(self, CategoryNames):
         self._CategoryNames = CategoryNames
+
+    @property
+    def CategoryDetails(self):
+        r"""<p>分类详情</p>
+        :rtype: list of DspmIdentifyCategoryDetail
+        """
+        return self._CategoryDetails
+
+    @CategoryDetails.setter
+    def CategoryDetails(self, CategoryDetails):
+        self._CategoryDetails = CategoryDetails
+
+    @property
+    def TableId(self):
+        r"""<p>数据表id</p>
+        :rtype: int
+        """
+        return self._TableId
+
+    @TableId.setter
+    def TableId(self, TableId):
+        self._TableId = TableId
+
+    @property
+    def TableComment(self):
+        r"""<p>表注释</p>
+        :rtype: str
+        """
+        return self._TableComment
+
+    @TableComment.setter
+    def TableComment(self, TableComment):
+        self._TableComment = TableComment
 
 
     def _deserialize(self, params):
@@ -39275,6 +39641,14 @@ class DspmAssetTableInfo(AbstractModel):
         self._RuleNames = params.get("RuleNames")
         self._CategoryIds = params.get("CategoryIds")
         self._CategoryNames = params.get("CategoryNames")
+        if params.get("CategoryDetails") is not None:
+            self._CategoryDetails = []
+            for item in params.get("CategoryDetails"):
+                obj = DspmIdentifyCategoryDetail()
+                obj._deserialize(item)
+                self._CategoryDetails.append(obj)
+        self._TableId = params.get("TableId")
+        self._TableComment = params.get("TableComment")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -43799,78 +44173,82 @@ class ExposesItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Provider: 云厂商
+        :param _Provider: <p>云厂商</p>
         :type Provider: str
-        :param _CloudAccountName: 云账号名称
+        :param _CloudAccountName: <p>云账号名称</p>
         :type CloudAccountName: str
-        :param _CloudAccountId: 云账号
+        :param _CloudAccountId: <p>云账号</p>
         :type CloudAccountId: str
-        :param _Domain: 域名
+        :param _Domain: <p>域名</p>
         :type Domain: str
-        :param _Ip: IP
+        :param _Ip: <p>IP</p>
         :type Ip: str
-        :param _Port: 端口或者端口范围
+        :param _Port: <p>端口或者端口范围</p>
         :type Port: str
-        :param _Status: 开放
+        :param _Status: <p>开放</p>
         :type Status: str
-        :param _RiskType: 风险类型
+        :param _RiskType: <p>风险类型</p>
         :type RiskType: str
-        :param _AclType: acl类型
+        :param _AclType: <p>acl类型</p>
         :type AclType: str
-        :param _AclList: acl列表
+        :param _AclList: <p>acl列表</p>
         :type AclList: str
-        :param _AssetId: 资产ID
+        :param _AssetId: <p>资产ID</p>
         :type AssetId: str
-        :param _InstanceName: 实例名称
+        :param _InstanceName: <p>实例名称</p>
         :type InstanceName: str
-        :param _AssetType: 资产类型
+        :param _AssetType: <p>资产类型</p>
         :type AssetType: str
-        :param _PortServiceCount: 端口服务数量
+        :param _PortServiceCount: <p>端口服务数量</p>
         :type PortServiceCount: int
-        :param _HighRiskPortServiceCount: 高危端口数量
+        :param _HighRiskPortServiceCount: <p>高危端口数量</p>
         :type HighRiskPortServiceCount: int
-        :param _WebAppCount: web应用数量
+        :param _WebAppCount: <p>web应用数量</p>
         :type WebAppCount: int
-        :param _RiskWebAppCount: 有风险web应用数量
+        :param _RiskWebAppCount: <p>有风险web应用数量</p>
         :type RiskWebAppCount: int
-        :param _WeakPasswordCount: 弱口令数量
+        :param _WeakPasswordCount: <p>弱口令数量</p>
         :type WeakPasswordCount: int
-        :param _VulCount: 漏洞数量
+        :param _VulCount: <p>漏洞数量</p>
         :type VulCount: int
-        :param _CreateTime: 首次发现时间
+        :param _CreateTime: <p>首次发现时间</p>
         :type CreateTime: str
-        :param _UpdateTime: 最近更新时间
+        :param _UpdateTime: <p>最近更新时间</p>
         :type UpdateTime: str
-        :param _AssetTypeName: 实例类型名称
+        :param _AssetTypeName: <p>实例类型名称</p>
         :type AssetTypeName: str
-        :param _DisplayStatus: 开放状态
+        :param _DisplayStatus: <p>开放状态</p>
         :type DisplayStatus: str
-        :param _DisplayRiskType: 端口状态
+        :param _DisplayRiskType: <p>端口状态</p>
         :type DisplayRiskType: str
-        :param _ScanTaskStatus: 扫描任务状态
+        :param _ScanTaskStatus: <p>扫描任务状态</p>
         :type ScanTaskStatus: str
-        :param _Uuid: uuid
+        :param _Uuid: <p>uuid</p>
         :type Uuid: str
-        :param _HasScan: 是否进行过安全体检
+        :param _HasScan: <p>是否进行过安全体检</p>
         :type HasScan: str
-        :param _AppId: 租户ID
+        :param _AppId: <p>租户ID</p>
         :type AppId: int
-        :param _AppIdStr: 租户ID字符串
+        :param _AppIdStr: <p>租户ID字符串</p>
         :type AppIdStr: str
-        :param _ExposureID: 记录ID
+        :param _ExposureID: <p>记录ID</p>
         :type ExposureID: int
-        :param _PortDetectCount: 端口开放数量
+        :param _PortDetectCount: <p>端口开放数量</p>
         :type PortDetectCount: int
-        :param _PortDetectResult: 端口开放结果
+        :param _PortDetectResult: <p>端口开放结果</p>
         :type PortDetectResult: str
-        :param _Tag: 标签
+        :param _Tag: <p>标签</p>
         :type Tag: str
-        :param _Comment: 备注
+        :param _Comment: <p>备注</p>
         :type Comment: str
-        :param _ToGovernedRiskCount: 待治理风险数量
+        :param _ToGovernedRiskCount: <p>待治理风险数量</p>
         :type ToGovernedRiskCount: int
-        :param _ToGovernedRiskContent: 待治理风险内容
+        :param _ToGovernedRiskContent: <p>待治理风险内容</p>
         :type ToGovernedRiskContent: str
+        :param _AssetTypeIconURL: <p>资产类型图标</p>
+        :type AssetTypeIconURL: str
+        :param _AssetTypeIconSolidURL: <p>资产类型3D图标</p>
+        :type AssetTypeIconSolidURL: str
         """
         self._Provider = None
         self._CloudAccountName = None
@@ -43908,10 +44286,12 @@ class ExposesItem(AbstractModel):
         self._Comment = None
         self._ToGovernedRiskCount = None
         self._ToGovernedRiskContent = None
+        self._AssetTypeIconURL = None
+        self._AssetTypeIconSolidURL = None
 
     @property
     def Provider(self):
-        r"""云厂商
+        r"""<p>云厂商</p>
         :rtype: str
         """
         return self._Provider
@@ -43922,7 +44302,7 @@ class ExposesItem(AbstractModel):
 
     @property
     def CloudAccountName(self):
-        r"""云账号名称
+        r"""<p>云账号名称</p>
         :rtype: str
         """
         return self._CloudAccountName
@@ -43933,7 +44313,7 @@ class ExposesItem(AbstractModel):
 
     @property
     def CloudAccountId(self):
-        r"""云账号
+        r"""<p>云账号</p>
         :rtype: str
         """
         return self._CloudAccountId
@@ -43944,7 +44324,7 @@ class ExposesItem(AbstractModel):
 
     @property
     def Domain(self):
-        r"""域名
+        r"""<p>域名</p>
         :rtype: str
         """
         return self._Domain
@@ -43955,7 +44335,7 @@ class ExposesItem(AbstractModel):
 
     @property
     def Ip(self):
-        r"""IP
+        r"""<p>IP</p>
         :rtype: str
         """
         return self._Ip
@@ -43966,7 +44346,7 @@ class ExposesItem(AbstractModel):
 
     @property
     def Port(self):
-        r"""端口或者端口范围
+        r"""<p>端口或者端口范围</p>
         :rtype: str
         """
         return self._Port
@@ -43977,7 +44357,7 @@ class ExposesItem(AbstractModel):
 
     @property
     def Status(self):
-        r"""开放
+        r"""<p>开放</p>
         :rtype: str
         """
         return self._Status
@@ -43988,7 +44368,7 @@ class ExposesItem(AbstractModel):
 
     @property
     def RiskType(self):
-        r"""风险类型
+        r"""<p>风险类型</p>
         :rtype: str
         """
         return self._RiskType
@@ -43999,7 +44379,7 @@ class ExposesItem(AbstractModel):
 
     @property
     def AclType(self):
-        r"""acl类型
+        r"""<p>acl类型</p>
         :rtype: str
         """
         return self._AclType
@@ -44010,7 +44390,7 @@ class ExposesItem(AbstractModel):
 
     @property
     def AclList(self):
-        r"""acl列表
+        r"""<p>acl列表</p>
         :rtype: str
         """
         return self._AclList
@@ -44021,7 +44401,7 @@ class ExposesItem(AbstractModel):
 
     @property
     def AssetId(self):
-        r"""资产ID
+        r"""<p>资产ID</p>
         :rtype: str
         """
         return self._AssetId
@@ -44032,7 +44412,7 @@ class ExposesItem(AbstractModel):
 
     @property
     def InstanceName(self):
-        r"""实例名称
+        r"""<p>实例名称</p>
         :rtype: str
         """
         return self._InstanceName
@@ -44043,7 +44423,7 @@ class ExposesItem(AbstractModel):
 
     @property
     def AssetType(self):
-        r"""资产类型
+        r"""<p>资产类型</p>
         :rtype: str
         """
         return self._AssetType
@@ -44054,7 +44434,7 @@ class ExposesItem(AbstractModel):
 
     @property
     def PortServiceCount(self):
-        r"""端口服务数量
+        r"""<p>端口服务数量</p>
         :rtype: int
         """
         return self._PortServiceCount
@@ -44065,7 +44445,7 @@ class ExposesItem(AbstractModel):
 
     @property
     def HighRiskPortServiceCount(self):
-        r"""高危端口数量
+        r"""<p>高危端口数量</p>
         :rtype: int
         """
         return self._HighRiskPortServiceCount
@@ -44076,7 +44456,7 @@ class ExposesItem(AbstractModel):
 
     @property
     def WebAppCount(self):
-        r"""web应用数量
+        r"""<p>web应用数量</p>
         :rtype: int
         """
         return self._WebAppCount
@@ -44087,7 +44467,7 @@ class ExposesItem(AbstractModel):
 
     @property
     def RiskWebAppCount(self):
-        r"""有风险web应用数量
+        r"""<p>有风险web应用数量</p>
         :rtype: int
         """
         return self._RiskWebAppCount
@@ -44098,7 +44478,7 @@ class ExposesItem(AbstractModel):
 
     @property
     def WeakPasswordCount(self):
-        r"""弱口令数量
+        r"""<p>弱口令数量</p>
         :rtype: int
         """
         return self._WeakPasswordCount
@@ -44109,7 +44489,7 @@ class ExposesItem(AbstractModel):
 
     @property
     def VulCount(self):
-        r"""漏洞数量
+        r"""<p>漏洞数量</p>
         :rtype: int
         """
         return self._VulCount
@@ -44120,7 +44500,7 @@ class ExposesItem(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""首次发现时间
+        r"""<p>首次发现时间</p>
         :rtype: str
         """
         return self._CreateTime
@@ -44131,7 +44511,7 @@ class ExposesItem(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""最近更新时间
+        r"""<p>最近更新时间</p>
         :rtype: str
         """
         return self._UpdateTime
@@ -44142,7 +44522,7 @@ class ExposesItem(AbstractModel):
 
     @property
     def AssetTypeName(self):
-        r"""实例类型名称
+        r"""<p>实例类型名称</p>
         :rtype: str
         """
         return self._AssetTypeName
@@ -44153,7 +44533,7 @@ class ExposesItem(AbstractModel):
 
     @property
     def DisplayStatus(self):
-        r"""开放状态
+        r"""<p>开放状态</p>
         :rtype: str
         """
         return self._DisplayStatus
@@ -44164,7 +44544,7 @@ class ExposesItem(AbstractModel):
 
     @property
     def DisplayRiskType(self):
-        r"""端口状态
+        r"""<p>端口状态</p>
         :rtype: str
         """
         return self._DisplayRiskType
@@ -44175,7 +44555,7 @@ class ExposesItem(AbstractModel):
 
     @property
     def ScanTaskStatus(self):
-        r"""扫描任务状态
+        r"""<p>扫描任务状态</p>
         :rtype: str
         """
         return self._ScanTaskStatus
@@ -44186,7 +44566,7 @@ class ExposesItem(AbstractModel):
 
     @property
     def Uuid(self):
-        r"""uuid
+        r"""<p>uuid</p>
         :rtype: str
         """
         return self._Uuid
@@ -44197,7 +44577,7 @@ class ExposesItem(AbstractModel):
 
     @property
     def HasScan(self):
-        r"""是否进行过安全体检
+        r"""<p>是否进行过安全体检</p>
         :rtype: str
         """
         return self._HasScan
@@ -44208,7 +44588,7 @@ class ExposesItem(AbstractModel):
 
     @property
     def AppId(self):
-        r"""租户ID
+        r"""<p>租户ID</p>
         :rtype: int
         """
         return self._AppId
@@ -44219,7 +44599,7 @@ class ExposesItem(AbstractModel):
 
     @property
     def AppIdStr(self):
-        r"""租户ID字符串
+        r"""<p>租户ID字符串</p>
         :rtype: str
         """
         return self._AppIdStr
@@ -44230,7 +44610,7 @@ class ExposesItem(AbstractModel):
 
     @property
     def ExposureID(self):
-        r"""记录ID
+        r"""<p>记录ID</p>
         :rtype: int
         """
         return self._ExposureID
@@ -44241,7 +44621,7 @@ class ExposesItem(AbstractModel):
 
     @property
     def PortDetectCount(self):
-        r"""端口开放数量
+        r"""<p>端口开放数量</p>
         :rtype: int
         """
         return self._PortDetectCount
@@ -44252,7 +44632,7 @@ class ExposesItem(AbstractModel):
 
     @property
     def PortDetectResult(self):
-        r"""端口开放结果
+        r"""<p>端口开放结果</p>
         :rtype: str
         """
         return self._PortDetectResult
@@ -44263,7 +44643,7 @@ class ExposesItem(AbstractModel):
 
     @property
     def Tag(self):
-        r"""标签
+        r"""<p>标签</p>
         :rtype: str
         """
         return self._Tag
@@ -44274,7 +44654,7 @@ class ExposesItem(AbstractModel):
 
     @property
     def Comment(self):
-        r"""备注
+        r"""<p>备注</p>
         :rtype: str
         """
         return self._Comment
@@ -44285,7 +44665,7 @@ class ExposesItem(AbstractModel):
 
     @property
     def ToGovernedRiskCount(self):
-        r"""待治理风险数量
+        r"""<p>待治理风险数量</p>
         :rtype: int
         """
         return self._ToGovernedRiskCount
@@ -44296,7 +44676,7 @@ class ExposesItem(AbstractModel):
 
     @property
     def ToGovernedRiskContent(self):
-        r"""待治理风险内容
+        r"""<p>待治理风险内容</p>
         :rtype: str
         """
         return self._ToGovernedRiskContent
@@ -44304,6 +44684,28 @@ class ExposesItem(AbstractModel):
     @ToGovernedRiskContent.setter
     def ToGovernedRiskContent(self, ToGovernedRiskContent):
         self._ToGovernedRiskContent = ToGovernedRiskContent
+
+    @property
+    def AssetTypeIconURL(self):
+        r"""<p>资产类型图标</p>
+        :rtype: str
+        """
+        return self._AssetTypeIconURL
+
+    @AssetTypeIconURL.setter
+    def AssetTypeIconURL(self, AssetTypeIconURL):
+        self._AssetTypeIconURL = AssetTypeIconURL
+
+    @property
+    def AssetTypeIconSolidURL(self):
+        r"""<p>资产类型3D图标</p>
+        :rtype: str
+        """
+        return self._AssetTypeIconSolidURL
+
+    @AssetTypeIconSolidURL.setter
+    def AssetTypeIconSolidURL(self, AssetTypeIconSolidURL):
+        self._AssetTypeIconSolidURL = AssetTypeIconSolidURL
 
 
     def _deserialize(self, params):
@@ -44343,6 +44745,8 @@ class ExposesItem(AbstractModel):
         self._Comment = params.get("Comment")
         self._ToGovernedRiskCount = params.get("ToGovernedRiskCount")
         self._ToGovernedRiskContent = params.get("ToGovernedRiskContent")
+        self._AssetTypeIconURL = params.get("AssetTypeIconURL")
+        self._AssetTypeIconSolidURL = params.get("AssetTypeIconSolidURL")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

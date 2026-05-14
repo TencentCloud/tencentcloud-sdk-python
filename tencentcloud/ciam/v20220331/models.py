@@ -449,36 +449,38 @@ class CreateUserRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _UserStoreId: 用户目录ID
+        :param _UserStoreId: <p>用户目录ID</p>
         :type UserStoreId: str
-        :param _PhoneNumber: 手机号码
+        :param _PhoneNumber: <p>手机号码</p>
         :type PhoneNumber: str
-        :param _Email: 邮箱
+        :param _Email: <p>邮箱</p>
         :type Email: str
-        :param _Password: 密码
+        :param _Password: <p>密码</p>
         :type Password: str
-        :param _UserName: 用户名
+        :param _UserName: <p>用户名</p>
         :type UserName: str
-        :param _Nickname: 昵称
+        :param _Nickname: <p>昵称</p>
         :type Nickname: str
-        :param _Address: 地址
+        :param _Address: <p>地址</p>
         :type Address: str
-        :param _UserGroup: 用户组ID
+        :param _UserGroup: <p>用户组ID</p>
         :type UserGroup: list of str
-        :param _Birthdate: 生日
+        :param _Birthdate: <p>生日</p>
         :type Birthdate: int
-        :param _CustomizationAttributes: 自定义属性
+        :param _CustomizationAttributes: <p>自定义属性</p>
         :type CustomizationAttributes: list of MemberMap
-        :param _IndexedAttribute1: 索引字段1
+        :param _IndexedAttribute1: <p>索引字段1</p>
         :type IndexedAttribute1: str
-        :param _IndexedAttribute2: 索引字段2
+        :param _IndexedAttribute2: <p>索引字段2</p>
         :type IndexedAttribute2: str
-        :param _IndexedAttribute3: 索引字段3
+        :param _IndexedAttribute3: <p>索引字段3</p>
         :type IndexedAttribute3: str
-        :param _IndexedAttribute4: 索引字段4
+        :param _IndexedAttribute4: <p>索引字段4</p>
         :type IndexedAttribute4: str
-        :param _IndexedAttribute5: 索引字段5
+        :param _IndexedAttribute5: <p>索引字段5</p>
         :type IndexedAttribute5: str
+        :param _UserOrg: <p>用户所属组织机构ID</p>
+        :type UserOrg: list of str
         """
         self._UserStoreId = None
         self._PhoneNumber = None
@@ -495,10 +497,11 @@ class CreateUserRequest(AbstractModel):
         self._IndexedAttribute3 = None
         self._IndexedAttribute4 = None
         self._IndexedAttribute5 = None
+        self._UserOrg = None
 
     @property
     def UserStoreId(self):
-        r"""用户目录ID
+        r"""<p>用户目录ID</p>
         :rtype: str
         """
         return self._UserStoreId
@@ -509,7 +512,7 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def PhoneNumber(self):
-        r"""手机号码
+        r"""<p>手机号码</p>
         :rtype: str
         """
         return self._PhoneNumber
@@ -520,7 +523,7 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def Email(self):
-        r"""邮箱
+        r"""<p>邮箱</p>
         :rtype: str
         """
         return self._Email
@@ -531,7 +534,7 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def Password(self):
-        r"""密码
+        r"""<p>密码</p>
         :rtype: str
         """
         return self._Password
@@ -542,7 +545,7 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def UserName(self):
-        r"""用户名
+        r"""<p>用户名</p>
         :rtype: str
         """
         return self._UserName
@@ -553,7 +556,7 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def Nickname(self):
-        r"""昵称
+        r"""<p>昵称</p>
         :rtype: str
         """
         return self._Nickname
@@ -564,7 +567,7 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def Address(self):
-        r"""地址
+        r"""<p>地址</p>
         :rtype: str
         """
         return self._Address
@@ -575,7 +578,7 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def UserGroup(self):
-        r"""用户组ID
+        r"""<p>用户组ID</p>
         :rtype: list of str
         """
         return self._UserGroup
@@ -586,7 +589,7 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def Birthdate(self):
-        r"""生日
+        r"""<p>生日</p>
         :rtype: int
         """
         return self._Birthdate
@@ -597,7 +600,7 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def CustomizationAttributes(self):
-        r"""自定义属性
+        r"""<p>自定义属性</p>
         :rtype: list of MemberMap
         """
         return self._CustomizationAttributes
@@ -608,7 +611,7 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def IndexedAttribute1(self):
-        r"""索引字段1
+        r"""<p>索引字段1</p>
         :rtype: str
         """
         return self._IndexedAttribute1
@@ -619,7 +622,7 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def IndexedAttribute2(self):
-        r"""索引字段2
+        r"""<p>索引字段2</p>
         :rtype: str
         """
         return self._IndexedAttribute2
@@ -630,7 +633,7 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def IndexedAttribute3(self):
-        r"""索引字段3
+        r"""<p>索引字段3</p>
         :rtype: str
         """
         return self._IndexedAttribute3
@@ -641,7 +644,7 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def IndexedAttribute4(self):
-        r"""索引字段4
+        r"""<p>索引字段4</p>
         :rtype: str
         """
         return self._IndexedAttribute4
@@ -652,7 +655,7 @@ class CreateUserRequest(AbstractModel):
 
     @property
     def IndexedAttribute5(self):
-        r"""索引字段5
+        r"""<p>索引字段5</p>
         :rtype: str
         """
         return self._IndexedAttribute5
@@ -660,6 +663,17 @@ class CreateUserRequest(AbstractModel):
     @IndexedAttribute5.setter
     def IndexedAttribute5(self, IndexedAttribute5):
         self._IndexedAttribute5 = IndexedAttribute5
+
+    @property
+    def UserOrg(self):
+        r"""<p>用户所属组织机构ID</p>
+        :rtype: list of str
+        """
+        return self._UserOrg
+
+    @UserOrg.setter
+    def UserOrg(self, UserOrg):
+        self._UserOrg = UserOrg
 
 
     def _deserialize(self, params):
@@ -683,6 +697,7 @@ class CreateUserRequest(AbstractModel):
         self._IndexedAttribute3 = params.get("IndexedAttribute3")
         self._IndexedAttribute4 = params.get("IndexedAttribute4")
         self._IndexedAttribute5 = params.get("IndexedAttribute5")
+        self._UserOrg = params.get("UserOrg")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -700,7 +715,7 @@ class CreateUserResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _User: 创建的用户信息
+        :param _User: <p>创建的用户信息</p>
         :type User: :class:`tencentcloud.ciam.v20220331.models.User`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -710,7 +725,7 @@ class CreateUserResponse(AbstractModel):
 
     @property
     def User(self):
-        r"""创建的用户信息
+        r"""<p>创建的用户信息</p>
         :rtype: :class:`tencentcloud.ciam.v20220331.models.User`
         """
         return self._User
@@ -1093,14 +1108,11 @@ class DescribeUserByIdRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _UserStoreId: 用户目录ID
+        :param _UserStoreId: <p>用户目录ID</p>
         :type UserStoreId: str
-        :param _UserId: 用户ID
+        :param _UserId: <p>用户ID</p>
         :type UserId: str
-        :param _Original: 返回信息是否为原文
-
-<li> **false** </li>	默认，返回信息为脱敏信息
-<li> **true** </li>	返回用户信息原文
+        :param _Original: <p>返回信息是否为原文</p><li> **false** </li>    默认，返回信息为脱敏信息<li> **true** </li>    返回用户信息原文
         :type Original: bool
         """
         self._UserStoreId = None
@@ -1109,7 +1121,7 @@ class DescribeUserByIdRequest(AbstractModel):
 
     @property
     def UserStoreId(self):
-        r"""用户目录ID
+        r"""<p>用户目录ID</p>
         :rtype: str
         """
         return self._UserStoreId
@@ -1120,7 +1132,7 @@ class DescribeUserByIdRequest(AbstractModel):
 
     @property
     def UserId(self):
-        r"""用户ID
+        r"""<p>用户ID</p>
         :rtype: str
         """
         return self._UserId
@@ -1131,10 +1143,7 @@ class DescribeUserByIdRequest(AbstractModel):
 
     @property
     def Original(self):
-        r"""返回信息是否为原文
-
-<li> **false** </li>	默认，返回信息为脱敏信息
-<li> **true** </li>	返回用户信息原文
+        r"""<p>返回信息是否为原文</p><li> **false** </li>    默认，返回信息为脱敏信息<li> **true** </li>    返回用户信息原文
         :rtype: bool
         """
         return self._Original
@@ -1165,7 +1174,7 @@ class DescribeUserByIdResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _User: 用户信息
+        :param _User: <p>用户信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type User: :class:`tencentcloud.ciam.v20220331.models.User`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -1176,7 +1185,7 @@ class DescribeUserByIdResponse(AbstractModel):
 
     @property
     def User(self):
-        r"""用户信息
+        r"""<p>用户信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ciam.v20220331.models.User`
         """
@@ -2989,16 +2998,13 @@ class ListUserRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _UserStoreId: 用户目录ID
+        :param _UserStoreId: <p>用户目录ID</p>
         :type UserStoreId: str
-        :param _Pageable: 分页数据
+        :param _Pageable: <p>分页数据</p>
         :type Pageable: :class:`tencentcloud.ciam.v20220331.models.Pageable`
-        :param _Filters: Key可选值为condition、userGroupId
-
-<li> **condition** </li>	Values = 查询条件，用户ID，用户名称，手机或邮箱
-<li> **userGroupId** </li>	Values = 用户组ID
+        :param _Filters: <p>Key可选值为condition、userGroup、userOrg、weComUserOrg<li> <strong>condition</strong> </li>    Values = 查询条件，用户ID，用户名称，手机或邮箱<li> <strong>userGroup</strong> </li>    Values = 用户组ID<li> <strong>userOrg</strong> </li>    Values = 用户所属机构ID<li> <strong>weComUserOrg</strong> </li>    Values = 用户所属企业微信机构ID</p>
         :type Filters: list of Filter
-        :param _Original: 返回信息是否为原文
+        :param _Original: <p>返回信息是否为原文</p>
         :type Original: bool
         """
         self._UserStoreId = None
@@ -3008,7 +3014,7 @@ class ListUserRequest(AbstractModel):
 
     @property
     def UserStoreId(self):
-        r"""用户目录ID
+        r"""<p>用户目录ID</p>
         :rtype: str
         """
         return self._UserStoreId
@@ -3019,7 +3025,7 @@ class ListUserRequest(AbstractModel):
 
     @property
     def Pageable(self):
-        r"""分页数据
+        r"""<p>分页数据</p>
         :rtype: :class:`tencentcloud.ciam.v20220331.models.Pageable`
         """
         return self._Pageable
@@ -3030,10 +3036,7 @@ class ListUserRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""Key可选值为condition、userGroupId
-
-<li> **condition** </li>	Values = 查询条件，用户ID，用户名称，手机或邮箱
-<li> **userGroupId** </li>	Values = 用户组ID
+        r"""<p>Key可选值为condition、userGroup、userOrg、weComUserOrg<li> <strong>condition</strong> </li>    Values = 查询条件，用户ID，用户名称，手机或邮箱<li> <strong>userGroup</strong> </li>    Values = 用户组ID<li> <strong>userOrg</strong> </li>    Values = 用户所属机构ID<li> <strong>weComUserOrg</strong> </li>    Values = 用户所属企业微信机构ID</p>
         :rtype: list of Filter
         """
         return self._Filters
@@ -3044,7 +3047,7 @@ class ListUserRequest(AbstractModel):
 
     @property
     def Original(self):
-        r"""返回信息是否为原文
+        r"""<p>返回信息是否为原文</p>
         :rtype: bool
         """
         return self._Original
@@ -3083,12 +3086,12 @@ class ListUserResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Total: 总条数
+        :param _Total: <p>总条数</p>
         :type Total: int
-        :param _Pageable: 分页对象
+        :param _Pageable: <p>分页对象</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Pageable: :class:`tencentcloud.ciam.v20220331.models.Pageable`
-        :param _Content: 用户列表
+        :param _Content: <p>用户列表</p>
         :type Content: list of User
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3100,7 +3103,7 @@ class ListUserResponse(AbstractModel):
 
     @property
     def Total(self):
-        r"""总条数
+        r"""<p>总条数</p>
         :rtype: int
         """
         return self._Total
@@ -3111,7 +3114,7 @@ class ListUserResponse(AbstractModel):
 
     @property
     def Pageable(self):
-        r"""分页对象
+        r"""<p>分页对象</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ciam.v20220331.models.Pageable`
         """
@@ -3123,7 +3126,7 @@ class ListUserResponse(AbstractModel):
 
     @property
     def Content(self):
-        r"""用户列表
+        r"""<p>用户列表</p>
         :rtype: list of User
         """
         return self._Content
@@ -4212,36 +4215,38 @@ class UpdateUserRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _UserId: 用户ID
+        :param _UserId: <p>用户ID</p>
         :type UserId: str
-        :param _UserStoreId: 用户目录ID
+        :param _UserStoreId: <p>用户目录ID</p>
         :type UserStoreId: str
-        :param _UserName: 用户名称
+        :param _UserName: <p>用户名称</p>
         :type UserName: str
-        :param _PhoneNumber: 手机号码
+        :param _PhoneNumber: <p>手机号码</p>
         :type PhoneNumber: str
-        :param _Email: 邮箱
+        :param _Email: <p>邮箱</p>
         :type Email: str
-        :param _Nickname: 昵称
+        :param _Nickname: <p>昵称</p>
         :type Nickname: str
-        :param _Address: 地址
+        :param _Address: <p>地址</p>
         :type Address: str
-        :param _UserGroup: 用户组
+        :param _UserGroup: <p>用户组</p>
         :type UserGroup: list of str
-        :param _Birthdate: 生日
+        :param _Birthdate: <p>生日</p>
         :type Birthdate: int
-        :param _CustomizationAttributes: 自定义属性
+        :param _CustomizationAttributes: <p>自定义属性</p>
         :type CustomizationAttributes: list of MemberMap
-        :param _IndexedAttribute1: 索引字段1
+        :param _IndexedAttribute1: <p>索引字段1</p>
         :type IndexedAttribute1: str
-        :param _IndexedAttribute2: 索引字段2
+        :param _IndexedAttribute2: <p>索引字段2</p>
         :type IndexedAttribute2: str
-        :param _IndexedAttribute3: 索引字段3
+        :param _IndexedAttribute3: <p>索引字段3</p>
         :type IndexedAttribute3: str
-        :param _IndexedAttribute4: 索引字段4
+        :param _IndexedAttribute4: <p>索引字段4</p>
         :type IndexedAttribute4: str
-        :param _IndexedAttribute5: 索引字段5
+        :param _IndexedAttribute5: <p>索引字段5</p>
         :type IndexedAttribute5: str
+        :param _UserOrg: <p>用户所属组织机构ID</p>
+        :type UserOrg: list of str
         """
         self._UserId = None
         self._UserStoreId = None
@@ -4258,10 +4263,11 @@ class UpdateUserRequest(AbstractModel):
         self._IndexedAttribute3 = None
         self._IndexedAttribute4 = None
         self._IndexedAttribute5 = None
+        self._UserOrg = None
 
     @property
     def UserId(self):
-        r"""用户ID
+        r"""<p>用户ID</p>
         :rtype: str
         """
         return self._UserId
@@ -4272,7 +4278,7 @@ class UpdateUserRequest(AbstractModel):
 
     @property
     def UserStoreId(self):
-        r"""用户目录ID
+        r"""<p>用户目录ID</p>
         :rtype: str
         """
         return self._UserStoreId
@@ -4283,7 +4289,7 @@ class UpdateUserRequest(AbstractModel):
 
     @property
     def UserName(self):
-        r"""用户名称
+        r"""<p>用户名称</p>
         :rtype: str
         """
         return self._UserName
@@ -4294,7 +4300,7 @@ class UpdateUserRequest(AbstractModel):
 
     @property
     def PhoneNumber(self):
-        r"""手机号码
+        r"""<p>手机号码</p>
         :rtype: str
         """
         return self._PhoneNumber
@@ -4305,7 +4311,7 @@ class UpdateUserRequest(AbstractModel):
 
     @property
     def Email(self):
-        r"""邮箱
+        r"""<p>邮箱</p>
         :rtype: str
         """
         return self._Email
@@ -4316,7 +4322,7 @@ class UpdateUserRequest(AbstractModel):
 
     @property
     def Nickname(self):
-        r"""昵称
+        r"""<p>昵称</p>
         :rtype: str
         """
         return self._Nickname
@@ -4327,7 +4333,7 @@ class UpdateUserRequest(AbstractModel):
 
     @property
     def Address(self):
-        r"""地址
+        r"""<p>地址</p>
         :rtype: str
         """
         return self._Address
@@ -4338,7 +4344,7 @@ class UpdateUserRequest(AbstractModel):
 
     @property
     def UserGroup(self):
-        r"""用户组
+        r"""<p>用户组</p>
         :rtype: list of str
         """
         return self._UserGroup
@@ -4349,7 +4355,7 @@ class UpdateUserRequest(AbstractModel):
 
     @property
     def Birthdate(self):
-        r"""生日
+        r"""<p>生日</p>
         :rtype: int
         """
         return self._Birthdate
@@ -4360,7 +4366,7 @@ class UpdateUserRequest(AbstractModel):
 
     @property
     def CustomizationAttributes(self):
-        r"""自定义属性
+        r"""<p>自定义属性</p>
         :rtype: list of MemberMap
         """
         return self._CustomizationAttributes
@@ -4371,7 +4377,7 @@ class UpdateUserRequest(AbstractModel):
 
     @property
     def IndexedAttribute1(self):
-        r"""索引字段1
+        r"""<p>索引字段1</p>
         :rtype: str
         """
         return self._IndexedAttribute1
@@ -4382,7 +4388,7 @@ class UpdateUserRequest(AbstractModel):
 
     @property
     def IndexedAttribute2(self):
-        r"""索引字段2
+        r"""<p>索引字段2</p>
         :rtype: str
         """
         return self._IndexedAttribute2
@@ -4393,7 +4399,7 @@ class UpdateUserRequest(AbstractModel):
 
     @property
     def IndexedAttribute3(self):
-        r"""索引字段3
+        r"""<p>索引字段3</p>
         :rtype: str
         """
         return self._IndexedAttribute3
@@ -4404,7 +4410,7 @@ class UpdateUserRequest(AbstractModel):
 
     @property
     def IndexedAttribute4(self):
-        r"""索引字段4
+        r"""<p>索引字段4</p>
         :rtype: str
         """
         return self._IndexedAttribute4
@@ -4415,7 +4421,7 @@ class UpdateUserRequest(AbstractModel):
 
     @property
     def IndexedAttribute5(self):
-        r"""索引字段5
+        r"""<p>索引字段5</p>
         :rtype: str
         """
         return self._IndexedAttribute5
@@ -4423,6 +4429,17 @@ class UpdateUserRequest(AbstractModel):
     @IndexedAttribute5.setter
     def IndexedAttribute5(self, IndexedAttribute5):
         self._IndexedAttribute5 = IndexedAttribute5
+
+    @property
+    def UserOrg(self):
+        r"""<p>用户所属组织机构ID</p>
+        :rtype: list of str
+        """
+        return self._UserOrg
+
+    @UserOrg.setter
+    def UserOrg(self, UserOrg):
+        self._UserOrg = UserOrg
 
 
     def _deserialize(self, params):
@@ -4446,6 +4463,7 @@ class UpdateUserRequest(AbstractModel):
         self._IndexedAttribute3 = params.get("IndexedAttribute3")
         self._IndexedAttribute4 = params.get("IndexedAttribute4")
         self._IndexedAttribute5 = params.get("IndexedAttribute5")
+        self._UserOrg = params.get("UserOrg")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4463,7 +4481,7 @@ class UpdateUserResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _User: 更新之后的用户信息
+        :param _User: <p>更新之后的用户信息</p>
         :type User: :class:`tencentcloud.ciam.v20220331.models.User`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4473,7 +4491,7 @@ class UpdateUserResponse(AbstractModel):
 
     @property
     def User(self):
-        r"""更新之后的用户信息
+        r"""<p>更新之后的用户信息</p>
         :rtype: :class:`tencentcloud.ciam.v20220331.models.User`
         """
         return self._User
@@ -4719,122 +4737,131 @@ class User(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _UserId: 用户ID
+        :param _UserId: <p>用户ID</p>
         :type UserId: str
-        :param _UserName: 用户名
+        :param _UserName: <p>用户名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UserName: str
-        :param _PhoneNumber: 手机号
+        :param _PhoneNumber: <p>手机号</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type PhoneNumber: str
-        :param _Email: 邮箱
+        :param _Email: <p>邮箱</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Email: str
-        :param _LastSignOn: 上次登录时间
+        :param _LastSignOn: <p>上次登录时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type LastSignOn: int
-        :param _CreatedDate: 创建时间
+        :param _CreatedDate: <p>创建时间</p>
         :type CreatedDate: int
-        :param _Status: 状态
+        :param _Status: <p>状态</p>
         :type Status: str
-        :param _UserDataSourceEnum: 用户来源
+        :param _UserDataSourceEnum: <p>用户来源</p>
         :type UserDataSourceEnum: str
-        :param _Nickname: 昵称
+        :param _Nickname: <p>昵称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Nickname: str
-        :param _Address: 地址
+        :param _Address: <p>地址</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Address: str
-        :param _Birthdate: 生日
+        :param _Birthdate: <p>生日</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Birthdate: int
-        :param _UserGroups: 用户组ID
+        :param _UserGroups: <p>用户组ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UserGroups: list of str
-        :param _LastModifiedDate: 上次修改时间
+        :param _UserGroupNames: <p>用户组名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserGroupNames: list of str
+        :param _LastModifiedDate: <p>上次修改时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type LastModifiedDate: int
-        :param _CustomAttributes: 自定义属性
+        :param _CustomAttributes: <p>自定义属性</p>
         :type CustomAttributes: list of MemberMap
-        :param _ResidentIdentityCard: 身份证号
+        :param _ResidentIdentityCard: <p>身份证号</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResidentIdentityCard: str
-        :param _QqOpenId: QQ的OpenId
+        :param _QqOpenId: <p>QQ的OpenId</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type QqOpenId: str
-        :param _QqUnionId: QQ的UnionId
+        :param _QqUnionId: <p>QQ的UnionId</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type QqUnionId: str
-        :param _WechatOpenId: 微信的WechatOpenId
+        :param _WechatOpenId: <p>微信的WechatOpenId</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WechatOpenId: str
-        :param _WechatUnionId: 微信的WechatUnionId
+        :param _WechatUnionId: <p>微信的WechatUnionId</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WechatUnionId: str
-        :param _AlipayUserId: 支付宝的AlipayUserId
+        :param _AlipayUserId: <p>支付宝的AlipayUserId</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AlipayUserId: str
-        :param _WeComUserId: 企业微信的WeComUserId
+        :param _WeComUserId: <p>企业微信的WeComUserId</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WeComUserId: str
-        :param _Description: 描述
+        :param _Description: <p>描述</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
-        :param _Name: 姓名
+        :param _Name: <p>姓名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
-        :param _Locale: 坐标
+        :param _Locale: <p>坐标</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Locale: str
-        :param _Gender: 性别
+        :param _Gender: <p>性别</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Gender: str
-        :param _IdentityVerificationMethod: 实名核验方式
+        :param _IdentityVerificationMethod: <p>实名核验方式</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IdentityVerificationMethod: str
-        :param _IdentityVerified: 是否已经实名核验
+        :param _IdentityVerified: <p>是否已经实名核验</p>
         :type IdentityVerified: bool
-        :param _Job: 工作
+        :param _Job: <p>工作</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Job: str
-        :param _Nationality: 国家
+        :param _Nationality: <p>国家</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Nationality: str
-        :param _Primary: 是否主账号（进行过账号融合后，主账号为true，从账号为false）
+        :param _Primary: <p>是否主账号（进行过账号融合后，主账号为true，从账号为false）</p>
         :type Primary: bool
-        :param _Zone: 时区
+        :param _Zone: <p>时区</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Zone: str
-        :param _AlreadyFirstLogin: 是否已经首次登录
+        :param _AlreadyFirstLogin: <p>是否已经首次登录</p>
         :type AlreadyFirstLogin: bool
-        :param _TenantId: 租户id
+        :param _TenantId: <p>租户id</p>
         :type TenantId: str
-        :param _UserStoreId: 用户目录id
+        :param _UserStoreId: <p>用户目录id</p>
         :type UserStoreId: str
-        :param _Version: 版本
+        :param _Version: <p>版本</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Version: int
-        :param _LockType: 锁定类型（分为管理员锁定，和登录策略锁定）
+        :param _LockType: <p>锁定类型（分为管理员锁定，和登录策略锁定）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type LockType: str
-        :param _LockTime: 锁定时间点
+        :param _LockTime: <p>锁定时间点</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type LockTime: int
-        :param _IndexedAttribute1: 索引字段1
+        :param _IndexedAttribute1: <p>索引字段1</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IndexedAttribute1: str
-        :param _IndexedAttribute2: 索引字段2
+        :param _IndexedAttribute2: <p>索引字段2</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IndexedAttribute2: str
-        :param _IndexedAttribute3: 索引字段3
+        :param _IndexedAttribute3: <p>索引字段3</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IndexedAttribute3: str
-        :param _IndexedAttribute4: 索引字段4
+        :param _IndexedAttribute4: <p>索引字段4</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IndexedAttribute4: str
-        :param _IndexedAttribute5: 索引字段5
+        :param _IndexedAttribute5: <p>索引字段5</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IndexedAttribute5: str
+        :param _UserOrgs: <p>用户所属组织机构ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserOrgs: list of str
+        :param _WeComUserOrgs: <p>用户所属企业微信组织机构</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WeComUserOrgs: list of int
         """
         self._UserId = None
         self._UserName = None
@@ -4848,6 +4875,7 @@ class User(AbstractModel):
         self._Address = None
         self._Birthdate = None
         self._UserGroups = None
+        self._UserGroupNames = None
         self._LastModifiedDate = None
         self._CustomAttributes = None
         self._ResidentIdentityCard = None
@@ -4878,10 +4906,12 @@ class User(AbstractModel):
         self._IndexedAttribute3 = None
         self._IndexedAttribute4 = None
         self._IndexedAttribute5 = None
+        self._UserOrgs = None
+        self._WeComUserOrgs = None
 
     @property
     def UserId(self):
-        r"""用户ID
+        r"""<p>用户ID</p>
         :rtype: str
         """
         return self._UserId
@@ -4892,7 +4922,7 @@ class User(AbstractModel):
 
     @property
     def UserName(self):
-        r"""用户名
+        r"""<p>用户名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4904,7 +4934,7 @@ class User(AbstractModel):
 
     @property
     def PhoneNumber(self):
-        r"""手机号
+        r"""<p>手机号</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4916,7 +4946,7 @@ class User(AbstractModel):
 
     @property
     def Email(self):
-        r"""邮箱
+        r"""<p>邮箱</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4928,7 +4958,7 @@ class User(AbstractModel):
 
     @property
     def LastSignOn(self):
-        r"""上次登录时间
+        r"""<p>上次登录时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -4940,7 +4970,7 @@ class User(AbstractModel):
 
     @property
     def CreatedDate(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
         :rtype: int
         """
         return self._CreatedDate
@@ -4951,7 +4981,7 @@ class User(AbstractModel):
 
     @property
     def Status(self):
-        r"""状态
+        r"""<p>状态</p>
         :rtype: str
         """
         return self._Status
@@ -4962,7 +4992,7 @@ class User(AbstractModel):
 
     @property
     def UserDataSourceEnum(self):
-        r"""用户来源
+        r"""<p>用户来源</p>
         :rtype: str
         """
         return self._UserDataSourceEnum
@@ -4973,7 +5003,7 @@ class User(AbstractModel):
 
     @property
     def Nickname(self):
-        r"""昵称
+        r"""<p>昵称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4985,7 +5015,7 @@ class User(AbstractModel):
 
     @property
     def Address(self):
-        r"""地址
+        r"""<p>地址</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4997,7 +5027,7 @@ class User(AbstractModel):
 
     @property
     def Birthdate(self):
-        r"""生日
+        r"""<p>生日</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -5009,7 +5039,7 @@ class User(AbstractModel):
 
     @property
     def UserGroups(self):
-        r"""用户组ID
+        r"""<p>用户组ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -5020,8 +5050,20 @@ class User(AbstractModel):
         self._UserGroups = UserGroups
 
     @property
+    def UserGroupNames(self):
+        r"""<p>用户组名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._UserGroupNames
+
+    @UserGroupNames.setter
+    def UserGroupNames(self, UserGroupNames):
+        self._UserGroupNames = UserGroupNames
+
+    @property
     def LastModifiedDate(self):
-        r"""上次修改时间
+        r"""<p>上次修改时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -5033,7 +5075,7 @@ class User(AbstractModel):
 
     @property
     def CustomAttributes(self):
-        r"""自定义属性
+        r"""<p>自定义属性</p>
         :rtype: list of MemberMap
         """
         return self._CustomAttributes
@@ -5044,7 +5086,7 @@ class User(AbstractModel):
 
     @property
     def ResidentIdentityCard(self):
-        r"""身份证号
+        r"""<p>身份证号</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5056,7 +5098,7 @@ class User(AbstractModel):
 
     @property
     def QqOpenId(self):
-        r"""QQ的OpenId
+        r"""<p>QQ的OpenId</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5068,7 +5110,7 @@ class User(AbstractModel):
 
     @property
     def QqUnionId(self):
-        r"""QQ的UnionId
+        r"""<p>QQ的UnionId</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5080,7 +5122,7 @@ class User(AbstractModel):
 
     @property
     def WechatOpenId(self):
-        r"""微信的WechatOpenId
+        r"""<p>微信的WechatOpenId</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5092,7 +5134,7 @@ class User(AbstractModel):
 
     @property
     def WechatUnionId(self):
-        r"""微信的WechatUnionId
+        r"""<p>微信的WechatUnionId</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5104,7 +5146,7 @@ class User(AbstractModel):
 
     @property
     def AlipayUserId(self):
-        r"""支付宝的AlipayUserId
+        r"""<p>支付宝的AlipayUserId</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5116,7 +5158,7 @@ class User(AbstractModel):
 
     @property
     def WeComUserId(self):
-        r"""企业微信的WeComUserId
+        r"""<p>企业微信的WeComUserId</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5128,7 +5170,7 @@ class User(AbstractModel):
 
     @property
     def Description(self):
-        r"""描述
+        r"""<p>描述</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5140,7 +5182,7 @@ class User(AbstractModel):
 
     @property
     def Name(self):
-        r"""姓名
+        r"""<p>姓名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5152,7 +5194,7 @@ class User(AbstractModel):
 
     @property
     def Locale(self):
-        r"""坐标
+        r"""<p>坐标</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5164,7 +5206,7 @@ class User(AbstractModel):
 
     @property
     def Gender(self):
-        r"""性别
+        r"""<p>性别</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5176,7 +5218,7 @@ class User(AbstractModel):
 
     @property
     def IdentityVerificationMethod(self):
-        r"""实名核验方式
+        r"""<p>实名核验方式</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5188,7 +5230,7 @@ class User(AbstractModel):
 
     @property
     def IdentityVerified(self):
-        r"""是否已经实名核验
+        r"""<p>是否已经实名核验</p>
         :rtype: bool
         """
         return self._IdentityVerified
@@ -5199,7 +5241,7 @@ class User(AbstractModel):
 
     @property
     def Job(self):
-        r"""工作
+        r"""<p>工作</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5211,7 +5253,7 @@ class User(AbstractModel):
 
     @property
     def Nationality(self):
-        r"""国家
+        r"""<p>国家</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5223,7 +5265,7 @@ class User(AbstractModel):
 
     @property
     def Primary(self):
-        r"""是否主账号（进行过账号融合后，主账号为true，从账号为false）
+        r"""<p>是否主账号（进行过账号融合后，主账号为true，从账号为false）</p>
         :rtype: bool
         """
         return self._Primary
@@ -5234,7 +5276,7 @@ class User(AbstractModel):
 
     @property
     def Zone(self):
-        r"""时区
+        r"""<p>时区</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5246,7 +5288,7 @@ class User(AbstractModel):
 
     @property
     def AlreadyFirstLogin(self):
-        r"""是否已经首次登录
+        r"""<p>是否已经首次登录</p>
         :rtype: bool
         """
         return self._AlreadyFirstLogin
@@ -5257,7 +5299,7 @@ class User(AbstractModel):
 
     @property
     def TenantId(self):
-        r"""租户id
+        r"""<p>租户id</p>
         :rtype: str
         """
         return self._TenantId
@@ -5268,7 +5310,7 @@ class User(AbstractModel):
 
     @property
     def UserStoreId(self):
-        r"""用户目录id
+        r"""<p>用户目录id</p>
         :rtype: str
         """
         return self._UserStoreId
@@ -5279,7 +5321,7 @@ class User(AbstractModel):
 
     @property
     def Version(self):
-        r"""版本
+        r"""<p>版本</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -5291,7 +5333,7 @@ class User(AbstractModel):
 
     @property
     def LockType(self):
-        r"""锁定类型（分为管理员锁定，和登录策略锁定）
+        r"""<p>锁定类型（分为管理员锁定，和登录策略锁定）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5303,7 +5345,7 @@ class User(AbstractModel):
 
     @property
     def LockTime(self):
-        r"""锁定时间点
+        r"""<p>锁定时间点</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -5315,7 +5357,7 @@ class User(AbstractModel):
 
     @property
     def IndexedAttribute1(self):
-        r"""索引字段1
+        r"""<p>索引字段1</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5327,7 +5369,7 @@ class User(AbstractModel):
 
     @property
     def IndexedAttribute2(self):
-        r"""索引字段2
+        r"""<p>索引字段2</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5339,7 +5381,7 @@ class User(AbstractModel):
 
     @property
     def IndexedAttribute3(self):
-        r"""索引字段3
+        r"""<p>索引字段3</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5351,7 +5393,7 @@ class User(AbstractModel):
 
     @property
     def IndexedAttribute4(self):
-        r"""索引字段4
+        r"""<p>索引字段4</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5363,7 +5405,7 @@ class User(AbstractModel):
 
     @property
     def IndexedAttribute5(self):
-        r"""索引字段5
+        r"""<p>索引字段5</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5372,6 +5414,30 @@ class User(AbstractModel):
     @IndexedAttribute5.setter
     def IndexedAttribute5(self, IndexedAttribute5):
         self._IndexedAttribute5 = IndexedAttribute5
+
+    @property
+    def UserOrgs(self):
+        r"""<p>用户所属组织机构ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._UserOrgs
+
+    @UserOrgs.setter
+    def UserOrgs(self, UserOrgs):
+        self._UserOrgs = UserOrgs
+
+    @property
+    def WeComUserOrgs(self):
+        r"""<p>用户所属企业微信组织机构</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int
+        """
+        return self._WeComUserOrgs
+
+    @WeComUserOrgs.setter
+    def WeComUserOrgs(self, WeComUserOrgs):
+        self._WeComUserOrgs = WeComUserOrgs
 
 
     def _deserialize(self, params):
@@ -5387,6 +5453,7 @@ class User(AbstractModel):
         self._Address = params.get("Address")
         self._Birthdate = params.get("Birthdate")
         self._UserGroups = params.get("UserGroups")
+        self._UserGroupNames = params.get("UserGroupNames")
         self._LastModifiedDate = params.get("LastModifiedDate")
         if params.get("CustomAttributes") is not None:
             self._CustomAttributes = []
@@ -5422,6 +5489,8 @@ class User(AbstractModel):
         self._IndexedAttribute3 = params.get("IndexedAttribute3")
         self._IndexedAttribute4 = params.get("IndexedAttribute4")
         self._IndexedAttribute5 = params.get("IndexedAttribute5")
+        self._UserOrgs = params.get("UserOrgs")
+        self._WeComUserOrgs = params.get("WeComUserOrgs")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

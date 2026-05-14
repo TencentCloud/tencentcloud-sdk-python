@@ -1399,7 +1399,7 @@ class DbbrainClient(AbstractClient):
             opts: Dict = None,
     ) -> models.KillMySqlThreadsResponse:
         """
-        根据会话ID中断当前会话，该接口分为两次提交：第一次为预提交阶段，Stage为"Prepare"，得到的返回值包含SqlExecId；第二次为确认提交， Stage为"Commit"， 将SqlExecId的值作为参数传入，最终终止会话进程。
+        根据会话ID中断当前会话，该接口分为两次提交：第一次为预提交阶段，Stage为"Prepare"，得到的返回值包含SqlExecId；第二次为确认提交， Stage为"Commit"， 将SqlExecId的值作为参数传入，最终终止会话进程。注意：Prepare请求与Commit请求的间隔不能超过10秒，否则Prepare阶段生成的执行凭证（SqlExecId）将过期失效，Commit操作不会执行任何kill动作。
         """
         
         kwargs = {}

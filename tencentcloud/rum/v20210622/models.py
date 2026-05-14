@@ -19052,6 +19052,374 @@ class DescribeRumGroupLogResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeRumGroupLogV2Request(AbstractModel):
+    r"""DescribeRumGroupLogV2请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OrderBy: 排序方式 desc asc（必填）
+        :type OrderBy: str
+        :param _StartTime: 开始时间（必填）
+        :type StartTime: int
+        :param _Limit: 单次查询返回的原始日志条数，最大值为100（必填）
+        :type Limit: int
+        :param _Filter: 过滤条件
+        :type Filter: str
+        :param _EndTime: 结束时间（必填）
+        :type EndTime: int
+        :param _ID: 项目ID（必填）
+        :type ID: int
+        :param _Label: 聚合字段
+        :type Label: str
+        :param _Last: 页数，第几页
+        :type Last: int
+        """
+        self._OrderBy = None
+        self._StartTime = None
+        self._Limit = None
+        self._Filter = None
+        self._EndTime = None
+        self._ID = None
+        self._Label = None
+        self._Last = None
+
+    @property
+    def OrderBy(self):
+        r"""排序方式 desc asc（必填）
+        :rtype: str
+        """
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
+
+    @property
+    def StartTime(self):
+        r"""开始时间（必填）
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def Limit(self):
+        r"""单次查询返回的原始日志条数，最大值为100（必填）
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filter(self):
+        r"""过滤条件
+        :rtype: str
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+    @property
+    def EndTime(self):
+        r"""结束时间（必填）
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def ID(self):
+        r"""项目ID（必填）
+        :rtype: int
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def Label(self):
+        r"""聚合字段
+        :rtype: str
+        """
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
+
+    @property
+    def Last(self):
+        r"""页数，第几页
+        :rtype: int
+        """
+        return self._Last
+
+    @Last.setter
+    def Last(self, Last):
+        self._Last = Last
+
+
+    def _deserialize(self, params):
+        self._OrderBy = params.get("OrderBy")
+        self._StartTime = params.get("StartTime")
+        self._Limit = params.get("Limit")
+        self._Filter = params.get("Filter")
+        self._EndTime = params.get("EndTime")
+        self._ID = params.get("ID")
+        self._Label = params.get("Label")
+        self._Last = params.get("Last")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRumGroupLogV2Response(AbstractModel):
+    r"""DescribeRumGroupLogV2返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: Query result in JSON string format
+        :type Result: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""Query result in JSON string format
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeRumLogDetailsV2Request(AbstractModel):
+    r"""DescribeRumLogDetailsV2请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OrderBy: 排序方式 desc asc
+        :type OrderBy: str
+        :param _StartTime: 开始时间（必填）格式为时间戳 毫秒
+        :type StartTime: int
+        :param _Limit: 单次查询返回的原始日志条数，最大值为100（必填）
+        :type Limit: int
+        :param _Filter: 查询的相关参数
+        :type Filter: str
+        :param _EndTime: 结束时间（必填）格式为时间戳 毫秒
+        :type EndTime: int
+        :param _ID: 项目ID（必填）
+        :type ID: int
+        :param _LastTime: 上次查询的最后一个日志的时间戳
+        :type LastTime: int
+        :param _LastRowId: 上次查询的最后一个日志的rowId
+        :type LastRowId: int
+        """
+        self._OrderBy = None
+        self._StartTime = None
+        self._Limit = None
+        self._Filter = None
+        self._EndTime = None
+        self._ID = None
+        self._LastTime = None
+        self._LastRowId = None
+
+    @property
+    def OrderBy(self):
+        r"""排序方式 desc asc
+        :rtype: str
+        """
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
+
+    @property
+    def StartTime(self):
+        r"""开始时间（必填）格式为时间戳 毫秒
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def Limit(self):
+        r"""单次查询返回的原始日志条数，最大值为100（必填）
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filter(self):
+        r"""查询的相关参数
+        :rtype: str
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+    @property
+    def EndTime(self):
+        r"""结束时间（必填）格式为时间戳 毫秒
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def ID(self):
+        r"""项目ID（必填）
+        :rtype: int
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def LastTime(self):
+        r"""上次查询的最后一个日志的时间戳
+        :rtype: int
+        """
+        return self._LastTime
+
+    @LastTime.setter
+    def LastTime(self, LastTime):
+        self._LastTime = LastTime
+
+    @property
+    def LastRowId(self):
+        r"""上次查询的最后一个日志的rowId
+        :rtype: int
+        """
+        return self._LastRowId
+
+    @LastRowId.setter
+    def LastRowId(self, LastRowId):
+        self._LastRowId = LastRowId
+
+
+    def _deserialize(self, params):
+        self._OrderBy = params.get("OrderBy")
+        self._StartTime = params.get("StartTime")
+        self._Limit = params.get("Limit")
+        self._Filter = params.get("Filter")
+        self._EndTime = params.get("EndTime")
+        self._ID = params.get("ID")
+        self._LastTime = params.get("LastTime")
+        self._LastRowId = params.get("LastRowId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRumLogDetailsV2Response(AbstractModel):
+    r"""DescribeRumLogDetailsV2返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 日志明细
+        :type Result: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""日志明细
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeRumLogExportRequest(AbstractModel):
     r"""DescribeRumLogExport请求参数结构体
 
@@ -19206,6 +19574,160 @@ class DescribeRumLogExportResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeRumLogExportV2Request(AbstractModel):
+    r"""DescribeRumLogExportV2请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: Export name
+        :type Name: str
+        :param _StartTime: Start time
+        :type StartTime: int
+        :param _Filter: Query statement
+        :type Filter: str
+        :param _EndTime: End time
+        :type EndTime: int
+        :param _ID: Project ID
+        :type ID: int
+        :param _Fields: c字段
+        :type Fields: list of str
+        """
+        self._Name = None
+        self._StartTime = None
+        self._Filter = None
+        self._EndTime = None
+        self._ID = None
+        self._Fields = None
+
+    @property
+    def Name(self):
+        r"""Export name
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def StartTime(self):
+        r"""Start time
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def Filter(self):
+        r"""Query statement
+        :rtype: str
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+    @property
+    def EndTime(self):
+        r"""End time
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def ID(self):
+        r"""Project ID
+        :rtype: int
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def Fields(self):
+        r"""c字段
+        :rtype: list of str
+        """
+        return self._Fields
+
+    @Fields.setter
+    def Fields(self, Fields):
+        self._Fields = Fields
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._StartTime = params.get("StartTime")
+        self._Filter = params.get("Filter")
+        self._EndTime = params.get("EndTime")
+        self._ID = params.get("ID")
+        self._Fields = params.get("Fields")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRumLogExportV2Response(AbstractModel):
+    r"""DescribeRumLogExportV2返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: Query result in JSON string format
+        :type Result: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""Query result in JSON string format
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeRumLogExportsRequest(AbstractModel):
     r"""DescribeRumLogExports请求参数结构体
 
@@ -19290,6 +19812,115 @@ class DescribeRumLogExportsResponse(AbstractModel):
     @property
     def Result(self):
         r"""返回字符串
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeRumLogExportsV2Request(AbstractModel):
+    r"""DescribeRumLogExportsV2请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PageSize: Page size
+        :type PageSize: int
+        :param _PageNum: Page number
+        :type PageNum: int
+        :param _ID: Project ID
+        :type ID: int
+        """
+        self._PageSize = None
+        self._PageNum = None
+        self._ID = None
+
+    @property
+    def PageSize(self):
+        r"""Page size
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def PageNum(self):
+        r"""Page number
+        :rtype: int
+        """
+        return self._PageNum
+
+    @PageNum.setter
+    def PageNum(self, PageNum):
+        self._PageNum = PageNum
+
+    @property
+    def ID(self):
+        r"""Project ID
+        :rtype: int
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+
+    def _deserialize(self, params):
+        self._PageSize = params.get("PageSize")
+        self._PageNum = params.get("PageNum")
+        self._ID = params.get("ID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRumLogExportsV2Response(AbstractModel):
+    r"""DescribeRumLogExportsV2返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: Query result in JSON string format
+        :type Result: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""Query result in JSON string format
         :rtype: str
         """
         return self._Result
@@ -19484,6 +20115,190 @@ class DescribeRumLogListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeRumLogTotalV2Request(AbstractModel):
+    r"""DescribeRumLogTotalV2请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OrderBy: 排序方式 desc asc
+        :type OrderBy: str
+        :param _StartTime: 开始时间（必填）格式为时间戳 毫秒
+        :type StartTime: int
+        :param _Limit: 单次查询返回的原始日志条数，最大值为100（必填）
+        :type Limit: int
+        :param _Filter: 查询的相关参数
+        :type Filter: str
+        :param _EndTime: 结束时间（必填）格式为时间戳 毫秒
+        :type EndTime: int
+        :param _ID: 项目ID（必填）
+        :type ID: int
+        :param _LastTime: 上次查询的最后一个日志的时间戳
+        :type LastTime: int
+        :param _LastRowId: 上次查询的最后一个日志的rowId
+        :type LastRowId: int
+        """
+        self._OrderBy = None
+        self._StartTime = None
+        self._Limit = None
+        self._Filter = None
+        self._EndTime = None
+        self._ID = None
+        self._LastTime = None
+        self._LastRowId = None
+
+    @property
+    def OrderBy(self):
+        r"""排序方式 desc asc
+        :rtype: str
+        """
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
+
+    @property
+    def StartTime(self):
+        r"""开始时间（必填）格式为时间戳 毫秒
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def Limit(self):
+        r"""单次查询返回的原始日志条数，最大值为100（必填）
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filter(self):
+        r"""查询的相关参数
+        :rtype: str
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+    @property
+    def EndTime(self):
+        r"""结束时间（必填）格式为时间戳 毫秒
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def ID(self):
+        r"""项目ID（必填）
+        :rtype: int
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def LastTime(self):
+        r"""上次查询的最后一个日志的时间戳
+        :rtype: int
+        """
+        return self._LastTime
+
+    @LastTime.setter
+    def LastTime(self, LastTime):
+        self._LastTime = LastTime
+
+    @property
+    def LastRowId(self):
+        r"""上次查询的最后一个日志的rowId
+        :rtype: int
+        """
+        return self._LastRowId
+
+    @LastRowId.setter
+    def LastRowId(self, LastRowId):
+        self._LastRowId = LastRowId
+
+
+    def _deserialize(self, params):
+        self._OrderBy = params.get("OrderBy")
+        self._StartTime = params.get("StartTime")
+        self._Limit = params.get("Limit")
+        self._Filter = params.get("Filter")
+        self._EndTime = params.get("EndTime")
+        self._ID = params.get("ID")
+        self._LastTime = params.get("LastTime")
+        self._LastRowId = params.get("LastRowId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRumLogTotalV2Response(AbstractModel):
+    r"""DescribeRumLogTotalV2返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 日志总量
+        :type Result: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""日志总量
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeRumStatsLogListRequest(AbstractModel):
     r"""DescribeRumStatsLogList请求参数结构体
 
@@ -19598,6 +20413,145 @@ class DescribeRumStatsLogListResponse(AbstractModel):
     @property
     def Result(self):
         r"""返回字符串
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeRumStatsLogListV2Request(AbstractModel):
+    r"""DescribeRumStatsLogListV2请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: 开始时间（必填）
+        :type StartTime: int
+        :param _Limit: 单次查询返回的原始日志条数，最大值为100（必填）
+        :type Limit: int
+        :param _Filter: 过滤条件
+        :type Filter: str
+        :param _EndTime: 结束时间（必填）
+        :type EndTime: int
+        :param _ID: 项目ID（必填）
+        :type ID: int
+        """
+        self._StartTime = None
+        self._Limit = None
+        self._Filter = None
+        self._EndTime = None
+        self._ID = None
+
+    @property
+    def StartTime(self):
+        r"""开始时间（必填）
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def Limit(self):
+        r"""单次查询返回的原始日志条数，最大值为100（必填）
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filter(self):
+        r"""过滤条件
+        :rtype: str
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+    @property
+    def EndTime(self):
+        r"""结束时间（必填）
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def ID(self):
+        r"""项目ID（必填）
+        :rtype: int
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._Limit = params.get("Limit")
+        self._Filter = params.get("Filter")
+        self._EndTime = params.get("EndTime")
+        self._ID = params.get("ID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRumStatsLogListV2Response(AbstractModel):
+    r"""DescribeRumStatsLogListV2返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: Query result in JSON string format
+        :type Result: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""Query result in JSON string format
         :rtype: str
         """
         return self._Result

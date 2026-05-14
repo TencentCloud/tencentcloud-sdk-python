@@ -1523,6 +1523,52 @@ class RumClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeRumGroupLogV2(self, request):
+        r"""根据label 聚合分析日志
+
+        :param request: Request instance for DescribeRumGroupLogV2.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeRumGroupLogV2Request`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeRumGroupLogV2Response`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRumGroupLogV2", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRumGroupLogV2Response()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeRumLogDetailsV2(self, request):
+        r"""查询日志明细
+
+        :param request: Request instance for DescribeRumLogDetailsV2.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeRumLogDetailsV2Request`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeRumLogDetailsV2Response`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRumLogDetailsV2", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRumLogDetailsV2Response()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeRumLogExport(self, request):
         r"""获取项目下的日志列表（实例创建的项目下的日志列表）
 
@@ -1537,6 +1583,29 @@ class RumClient(AbstractClient):
             body = self.call("DescribeRumLogExport", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeRumLogExportResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeRumLogExportV2(self, request):
+        r"""创建日志导出
+
+        :param request: Request instance for DescribeRumLogExportV2.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeRumLogExportV2Request`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeRumLogExportV2Response`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRumLogExportV2", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRumLogExportV2Response()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1569,6 +1638,29 @@ class RumClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeRumLogExportsV2(self, request):
+        r"""获取日志导出列表
+
+        :param request: Request instance for DescribeRumLogExportsV2.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeRumLogExportsV2Request`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeRumLogExportsV2Response`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRumLogExportsV2", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRumLogExportsV2Response()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeRumLogList(self, request):
         r"""获取项目下的日志列表（实例创建的项目下的日志列表）
 
@@ -1592,6 +1684,29 @@ class RumClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeRumLogTotalV2(self, request):
+        r"""查询原始日志总量
+
+        :param request: Request instance for DescribeRumLogTotalV2.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeRumLogTotalV2Request`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeRumLogTotalV2Response`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRumLogTotalV2", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRumLogTotalV2Response()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeRumStatsLogList(self, request):
         r"""获取项目下的日志列表，分钟级
 
@@ -1606,6 +1721,29 @@ class RumClient(AbstractClient):
             body = self.call("DescribeRumStatsLogList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeRumStatsLogListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeRumStatsLogListV2(self, request):
+        r"""查询日志时间分布
+
+        :param request: Request instance for DescribeRumStatsLogListV2.
+        :type request: :class:`tencentcloud.rum.v20210622.models.DescribeRumStatsLogListV2Request`
+        :rtype: :class:`tencentcloud.rum.v20210622.models.DescribeRumStatsLogListV2Response`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeRumStatsLogListV2", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeRumStatsLogListV2Response()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

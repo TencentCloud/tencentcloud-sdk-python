@@ -22424,27 +22424,27 @@ class DescribeInstanceSlowQueriesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: <p>实例ID</p>
         :type InstanceId: str
-        :param _StartTime: 事务开始最早时间
+        :param _StartTime: <p>事务开始最早时间</p>
         :type StartTime: str
-        :param _EndTime: 事务开始最晚时间
+        :param _EndTime: <p>事务开始最晚时间</p>
         :type EndTime: str
-        :param _Limit: 限制条数
+        :param _Limit: <p>限制条数</p><p>建议控制 limit 大小，当 limit 过大时，由于平台返回结果大小限制，可能会造成截断</p>
         :type Limit: int
-        :param _Offset: 偏移量
+        :param _Offset: <p>偏移量</p>
         :type Offset: int
-        :param _Username: 用户名
+        :param _Username: <p>用户名</p>
         :type Username: str
-        :param _Host: 客户端host
+        :param _Host: <p>客户端host</p>
         :type Host: str
-        :param _Database: 数据库名
+        :param _Database: <p>数据库名</p>
         :type Database: str
-        :param _OrderBy: 排序字段，可选值：QueryTime,LockTime,RowsExamined,RowsSent
+        :param _OrderBy: <p>排序字段</p><p>枚举值：</p><ul><li>QueryTime： 按照 SQL 语句的总执行时长排序</li><li>LockTime： 按照 SQL 语句在等待锁（如表锁、行锁）上消耗的时间排序</li><li>RowsExamined： 按照 SQL 语句在执行过程中扫描的行数排序</li><li>RowsSent： 按照 SQL 语句最终返回给客户端的结果行数排序</li><li>Timestamp： 按照慢查询语句发生的时间戳排序</li></ul>
         :type OrderBy: str
-        :param _OrderByType: 排序类型，可选值：asc,desc
+        :param _OrderByType: <p>排序类型，可选值：asc,desc</p>
         :type OrderByType: str
-        :param _SqlText: sql语句
+        :param _SqlText: <p>sql语句</p>
         :type SqlText: str
         """
         self._InstanceId = None
@@ -22461,7 +22461,7 @@ class DescribeInstanceSlowQueriesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例ID
+        r"""<p>实例ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -22472,7 +22472,7 @@ class DescribeInstanceSlowQueriesRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""事务开始最早时间
+        r"""<p>事务开始最早时间</p>
         :rtype: str
         """
         return self._StartTime
@@ -22483,7 +22483,7 @@ class DescribeInstanceSlowQueriesRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""事务开始最晚时间
+        r"""<p>事务开始最晚时间</p>
         :rtype: str
         """
         return self._EndTime
@@ -22494,7 +22494,7 @@ class DescribeInstanceSlowQueriesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""限制条数
+        r"""<p>限制条数</p><p>建议控制 limit 大小，当 limit 过大时，由于平台返回结果大小限制，可能会造成截断</p>
         :rtype: int
         """
         return self._Limit
@@ -22505,7 +22505,7 @@ class DescribeInstanceSlowQueriesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""偏移量
+        r"""<p>偏移量</p>
         :rtype: int
         """
         return self._Offset
@@ -22516,7 +22516,7 @@ class DescribeInstanceSlowQueriesRequest(AbstractModel):
 
     @property
     def Username(self):
-        r"""用户名
+        r"""<p>用户名</p>
         :rtype: str
         """
         return self._Username
@@ -22527,7 +22527,7 @@ class DescribeInstanceSlowQueriesRequest(AbstractModel):
 
     @property
     def Host(self):
-        r"""客户端host
+        r"""<p>客户端host</p>
         :rtype: str
         """
         return self._Host
@@ -22538,7 +22538,7 @@ class DescribeInstanceSlowQueriesRequest(AbstractModel):
 
     @property
     def Database(self):
-        r"""数据库名
+        r"""<p>数据库名</p>
         :rtype: str
         """
         return self._Database
@@ -22549,7 +22549,7 @@ class DescribeInstanceSlowQueriesRequest(AbstractModel):
 
     @property
     def OrderBy(self):
-        r"""排序字段，可选值：QueryTime,LockTime,RowsExamined,RowsSent
+        r"""<p>排序字段</p><p>枚举值：</p><ul><li>QueryTime： 按照 SQL 语句的总执行时长排序</li><li>LockTime： 按照 SQL 语句在等待锁（如表锁、行锁）上消耗的时间排序</li><li>RowsExamined： 按照 SQL 语句在执行过程中扫描的行数排序</li><li>RowsSent： 按照 SQL 语句最终返回给客户端的结果行数排序</li><li>Timestamp： 按照慢查询语句发生的时间戳排序</li></ul>
         :rtype: str
         """
         return self._OrderBy
@@ -22560,7 +22560,7 @@ class DescribeInstanceSlowQueriesRequest(AbstractModel):
 
     @property
     def OrderByType(self):
-        r"""排序类型，可选值：asc,desc
+        r"""<p>排序类型，可选值：asc,desc</p>
         :rtype: str
         """
         return self._OrderByType
@@ -22571,7 +22571,7 @@ class DescribeInstanceSlowQueriesRequest(AbstractModel):
 
     @property
     def SqlText(self):
-        r"""sql语句
+        r"""<p>sql语句</p>
         :rtype: str
         """
         return self._SqlText
@@ -22610,9 +22610,9 @@ class DescribeInstanceSlowQueriesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 总条数
+        :param _TotalCount: <p>总条数</p>
         :type TotalCount: int
-        :param _SlowQueries: 慢查询记录
+        :param _SlowQueries: <p>慢查询记录</p>
         :type SlowQueries: list of SlowQueriesItem
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -22623,7 +22623,7 @@ class DescribeInstanceSlowQueriesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""总条数
+        r"""<p>总条数</p>
         :rtype: int
         """
         return self._TotalCount
@@ -22634,7 +22634,7 @@ class DescribeInstanceSlowQueriesResponse(AbstractModel):
 
     @property
     def SlowQueries(self):
-        r"""慢查询记录
+        r"""<p>慢查询记录</p>
         :rtype: list of SlowQueriesItem
         """
         return self._SlowQueries

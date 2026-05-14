@@ -49,6 +49,30 @@ class Ai3dClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeAutoRiggingJob(self, request):
+        r"""3D模型绑骨蒙皮接口，基于混元大模型，根据输入的人物或动物模型进行绑骨蒙皮，输出带骨骼信息的3D模型。
+        默认提供1个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后，才能开始处理下一个任务。
+
+        :param request: Request instance for DescribeAutoRiggingJob.
+        :type request: :class:`tencentcloud.ai3d.v20250513.models.DescribeAutoRiggingJobRequest`
+        :rtype: :class:`tencentcloud.ai3d.v20250513.models.DescribeAutoRiggingJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAutoRiggingJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAutoRiggingJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeHunyuanTo3DMotionJob(self, request):
         r"""查询组件生成任务。
 
@@ -229,6 +253,30 @@ class Ai3dClient(AbstractClient):
             body = self.call("QueryHunyuanTo3DRapidJob", params, headers=headers)
             response = json.loads(body)
             model = models.QueryHunyuanTo3DRapidJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def SubmitAutoRiggingJob(self, request):
+        r"""3D模型绑骨蒙皮接口，基于混元大模型，根据输入的人物或动物模型进行绑骨蒙皮，输出带骨骼信息的3D模型。
+        默认提供1个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后，才能开始处理下一个任务。
+
+        :param request: Request instance for SubmitAutoRiggingJob.
+        :type request: :class:`tencentcloud.ai3d.v20250513.models.SubmitAutoRiggingJobRequest`
+        :rtype: :class:`tencentcloud.ai3d.v20250513.models.SubmitAutoRiggingJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SubmitAutoRiggingJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.SubmitAutoRiggingJobResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -220,6 +220,24 @@ class VodClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateAigcAudioClone(
+            self,
+            request: models.CreateAigcAudioCloneRequest,
+            opts: Dict = None,
+    ) -> models.CreateAigcAudioCloneResponse:
+        """
+        该接口用于创建 AIGC 音色复刻。注意，调用本接口会产生费用，请参考[计费文档](https://cloud.tencent.com/document/product/266/95125#96b3b59a-f9e1-49e9-966a-bedb70a4bf12)。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateAigcAudioClone"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateAigcAudioCloneResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateAigcAudioTask(
             self,
             request: models.CreateAigcAudioTaskRequest,

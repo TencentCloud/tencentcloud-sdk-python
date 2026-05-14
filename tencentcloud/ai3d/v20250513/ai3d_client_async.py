@@ -43,6 +43,25 @@ class Ai3dClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeAutoRiggingJob(
+            self,
+            request: models.DescribeAutoRiggingJobRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAutoRiggingJobResponse:
+        """
+        3D模型绑骨蒙皮接口，基于混元大模型，根据输入的人物或动物模型进行绑骨蒙皮，输出带骨骼信息的3D模型。
+        默认提供1个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后，才能开始处理下一个任务。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAutoRiggingJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAutoRiggingJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeHunyuanTo3DMotionJob(
             self,
             request: models.DescribeHunyuanTo3DMotionJobRequest,
@@ -187,6 +206,25 @@ class Ai3dClient(AbstractClient):
         kwargs["action"] = "QueryHunyuanTo3DRapidJob"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.QueryHunyuanTo3DRapidJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def SubmitAutoRiggingJob(
+            self,
+            request: models.SubmitAutoRiggingJobRequest,
+            opts: Dict = None,
+    ) -> models.SubmitAutoRiggingJobResponse:
+        """
+        3D模型绑骨蒙皮接口，基于混元大模型，根据输入的人物或动物模型进行绑骨蒙皮，输出带骨骼信息的3D模型。
+        默认提供1个并发，代表最多能同时处理1个已提交的任务，上一个任务处理完毕后，才能开始处理下一个任务。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "SubmitAutoRiggingJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.SubmitAutoRiggingJobResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

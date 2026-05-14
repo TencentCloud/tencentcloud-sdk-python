@@ -70220,177 +70220,180 @@ class IntegrationTaskInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskName: 任务名称
+        :param _TaskName: <p>任务名称</p>
         :type TaskName: str
-        :param _Description: 任务描述
+        :param _Description: <p>任务描述</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
-        :param _SyncType: 同步类型1.解决方案(整库迁移),2.单表同步
+        :param _SyncType: <p>同步类型1.解决方案(整库迁移),2.单表同步</p>
         :type SyncType: int
-        :param _TaskType: 201.实时,202.离线
+        :param _TaskType: <p>201.实时,202.离线</p>
         :type TaskType: int
-        :param _WorkflowId: 任务所属工作流id
+        :param _WorkflowId: <p>任务所属工作流id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WorkflowId: str
-        :param _TaskId: 任务id
+        :param _TaskId: <p>任务id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: str
-        :param _ScheduleTaskId: 任务调度id(oceanus or us等作业id)，非填项
+        :param _ScheduleTaskId: <p>任务调度id(oceanus or us等作业id)，非填项</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ScheduleTaskId: str
-        :param _TaskGroupId: inlong任务id
+        :param _TaskGroupId: <p>inlong任务id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskGroupId: str
-        :param _ProjectId: 项目id
+        :param _ProjectId: <p>项目id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectId: str
-        :param _CreatorUin: 创建人uin
+        :param _CreatorUin: <p>创建人uin</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreatorUin: str
-        :param _OperatorUin: 操作人uin
+        :param _OperatorUin: <p>操作人uin</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type OperatorUin: str
-        :param _OwnerUin: owner uin
+        :param _OwnerUin: <p>owner uin</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type OwnerUin: str
-        :param _AppId: 应用id
+        :param _AppId: <p>应用id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AppId: str
-        :param _Status: 0:新建(任务开发态默认状态)|1:未开始|2:操作中|3:运行中|4:暂停|5:任务停止中|6:停止|7:执行失败|20:异常|21:未知|
+        :param _Status: <p>0:新建(任务开发态默认状态)|1:未开始|2:操作中|3:运行中|4:暂停|5:任务停止中|6:停止|7:执行失败|20:异常|21:未知|</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
-        :param _Nodes: 节点列表
+        :param _Nodes: <p>节点列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Nodes: list of IntegrationNodeInfo
-        :param _ExecutorId: 执行资源id
+        :param _ExecutorId: <p>执行资源id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExecutorId: str
-        :param _Config: 任务配置信息
+        :param _Config: <p>任务配置信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Config: list of RecordField
-        :param _ExtConfig: 任务扩展配置信息
+        :param _ExtConfig: <p>任务扩展配置信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExtConfig: list of RecordField
-        :param _ExecuteContext: 任务执行context信息
+        :param _ExecuteContext: <p>任务执行context信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExecuteContext: list of RecordField
-        :param _Mappings: 节点映射
+        :param _Mappings: <p>节点映射</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Mappings: list of IntegrationNodeMapping
-        :param _TaskMode: 任务配置模式，0:画布 1:表单 3:脚本
+        :param _TaskMode: <p>任务配置模式，0:画布 1:表单 3:脚本</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskMode: str
-        :param _Incharge: 责任人
+        :param _Incharge: <p>责任人</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Incharge: str
-        :param _OfflineTaskAddEntity: 离线新增参数
+        :param _OfflineTaskAddEntity: <p>离线新增参数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type OfflineTaskAddEntity: :class:`tencentcloud.wedata.v20210820.models.OfflineTaskAddParam`
-        :param _ExecutorGroupName: group name
+        :param _ExecutorGroupName: <p>group name</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExecutorGroupName: str
-        :param _InLongManagerUrl: inlong manager url
+        :param _InLongManagerUrl: <p>inlong manager url</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type InLongManagerUrl: str
-        :param _InLongStreamId: stream id
+        :param _InLongStreamId: <p>stream id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type InLongStreamId: str
-        :param _InLongManagerVersion: version
+        :param _InLongManagerVersion: <p>version</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type InLongManagerVersion: str
-        :param _DataProxyUrl: inlong dataproxy url
+        :param _DataProxyUrl: <p>inlong dataproxy url</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DataProxyUrl: list of str
-        :param _Submit: 任务版本是否已提交运维
+        :param _Submit: <p>任务版本是否已提交运维</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Submit: bool
-        :param _InputDatasourceType: 数据源类型：MYSQL|POSTGRE|ORACLE|SQLSERVER|FTP|HIVE|HDFS|ICEBERG|KAFKA|HBASE|SPARK|VIRTUAL|TBASE|DB2|DM|GAUSSDB|GBASE|IMPALA|ES|S3_DATAINSIGHT|GREENPLUM|PHOENIX|SAP_HANA|SFTP|OCEANBASE|CLICKHOUSE|KUDU|VERTICA|REDIS|COS|DLC|DLCV1|DORIS|CKAFKA|DTS_KAFKA|S3|CDW|LOCAL|TDSQLC|TDSQL|TDSQL_MYSQL|MONGODB|INFORMIX|SYBASE|REST_API|SuperSQL|PRESTO|DR_SUM|TiDB|StarRocks|Trino|Kyuubi|GDB|TCHOUSE_X|TCHOUSE_P|TDSQL_POSTGRE
+        :param _InputDatasourceType: <p>数据源类型：MYSQL|POSTGRE|ORACLE|SQLSERVER|FTP|HIVE|HDFS|ICEBERG|KAFKA|HBASE|SPARK|VIRTUAL|TBASE|DB2|DM|GAUSSDB|GBASE|IMPALA|ES|S3_DATAINSIGHT|GREENPLUM|PHOENIX|SAP_HANA|SFTP|OCEANBASE|CLICKHOUSE|KUDU|VERTICA|REDIS|COS|DLC|DLCV1|DORIS|CKAFKA|DTS_KAFKA|S3|CDW|LOCAL|TDSQLC|TDSQL|TDSQL_MYSQL|MONGODB|INFORMIX|SYBASE|REST_API|SuperSQL|PRESTO|DR_SUM|TiDB|StarRocks|Trino|Kyuubi|GDB|TCHOUSE_X|TCHOUSE_P|TDSQL_POSTGRE</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type InputDatasourceType: str
-        :param _OutputDatasourceType: 数据源类型：MYSQL|POSTGRE|ORACLE|SQLSERVER|FTP|HIVE|HDFS|ICEBERG|KAFKA|HBASE|SPARK|VIRTUAL|TBASE|DB2|DM|GAUSSDB|GBASE|IMPALA|ES|S3_DATAINSIGHT|GREENPLUM|PHOENIX|SAP_HANA|SFTP|OCEANBASE|CLICKHOUSE|KUDU|VERTICA|REDIS|COS|DLC|DLCV1|DORIS|CKAFKA|DTS_KAFKA|S3|CDW|LOCAL|TDSQLC|TDSQL|TDSQL_MYSQL|MONGODB|INFORMIX|SYBASE|REST_API|SuperSQL|PRESTO|DR_SUM|TiDB|StarRocks|Trino|Kyuubi|GDB|TCHOUSE_X|TCHOUSE_P|TDSQL_POSTGRE
+        :param _OutputDatasourceType: <p>数据源类型：MYSQL|POSTGRE|ORACLE|SQLSERVER|FTP|HIVE|HDFS|ICEBERG|KAFKA|HBASE|SPARK|VIRTUAL|TBASE|DB2|DM|GAUSSDB|GBASE|IMPALA|ES|S3_DATAINSIGHT|GREENPLUM|PHOENIX|SAP_HANA|SFTP|OCEANBASE|CLICKHOUSE|KUDU|VERTICA|REDIS|COS|DLC|DLCV1|DORIS|CKAFKA|DTS_KAFKA|S3|CDW|LOCAL|TDSQLC|TDSQL|TDSQL_MYSQL|MONGODB|INFORMIX|SYBASE|REST_API|SuperSQL|PRESTO|DR_SUM|TiDB|StarRocks|Trino|Kyuubi|GDB|TCHOUSE_X|TCHOUSE_P|TDSQL_POSTGRE</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type OutputDatasourceType: str
-        :param _NumRecordsIn: 读取条数
+        :param _NumRecordsIn: <p>读取条数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type NumRecordsIn: int
-        :param _NumRecordsOut: 写入条数
+        :param _NumRecordsOut: <p>写入条数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type NumRecordsOut: int
-        :param _ReaderDelay: 读取延迟
+        :param _ReaderDelay: <p>读取延迟</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReaderDelay: float
-        :param _NumRestarts: 重启次数
+        :param _NumRestarts: <p>重启次数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type NumRestarts: int
-        :param _CreateTime: 任务创建时间
+        :param _CreateTime: <p>任务创建时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
-        :param _UpdateTime: 任务更新时间
+        :param _UpdateTime: <p>任务更新时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
-        :param _LastRunTime: 任务最后一次运行时间
+        :param _LastRunTime: <p>任务最后一次运行时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type LastRunTime: str
-        :param _StopTime: 任务停止时间
+        :param _StopTime: <p>任务停止时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type StopTime: str
-        :param _HasVersion: 作业是否已提交
+        :param _HasVersion: <p>作业是否已提交</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type HasVersion: bool
-        :param _Locked: 任务是否被锁定
+        :param _Locked: <p>任务是否被锁定</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Locked: bool
-        :param _Locker: 任务锁定人
+        :param _Locker: <p>任务锁定人</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Locker: str
-        :param _RunningCu: 耗费资源量
+        :param _RunningCu: <p>耗费资源量</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RunningCu: float
-        :param _TaskAlarmRegularList: 该任务关联的告警规则
+        :param _TaskAlarmRegularList: <p>该任务关联的告警规则</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskAlarmRegularList: list of str
-        :param _SwitchResource: 实时任务资源分层情况： 0：进行中,1：成功 ,2：失败
+        :param _SwitchResource: <p>实时任务资源分层情况： 0：进行中,1：成功 ,2：失败</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SwitchResource: int
-        :param _ReadPhase: 实时任务读取阶段：0：全部全量,1：部分全量,2：全部增量
+        :param _ReadPhase: <p>实时任务读取阶段：0：全部全量,1：部分全量,2：全部增量</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReadPhase: int
-        :param _InstanceVersion: 实时任务版本号
+        :param _InstanceVersion: <p>实时任务版本号</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceVersion: int
-        :param _ArrangeSpaceTaskId: 离线任务导入到编排空间的任务id
+        :param _ArrangeSpaceTaskId: <p>离线任务导入到编排空间的任务id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ArrangeSpaceTaskId: str
-        :param _OfflineTaskStatus: 离线任务状态区分1.未提交2.已提交3.已导出
+        :param _OfflineTaskStatus: <p>离线任务状态区分1.未提交2.已提交3.已导出</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type OfflineTaskStatus: int
-        :param _TaskImportInfo: 导入到编排空间配置
+        :param _TaskImportInfo: <p>导入到编排空间配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskImportInfo: :class:`tencentcloud.wedata.v20210820.models.TaskImportInfo`
-        :param _BusinessLatency: 业务延迟
+        :param _BusinessLatency: <p>业务延迟</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type BusinessLatency: int
-        :param _CurrentSyncPosition: 当前同步位点
+        :param _CurrentSyncPosition: <p>当前同步位点</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CurrentSyncPosition: int
-        :param _TagList: 标签列表
+        :param _TagList: <p>标签列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TagList: list of IntegrationTag
-        :param _ErrorMessage: 错误信息
+        :param _ErrorMessage: <p>错误信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorMessage: str
-        :param _TaskSubType: 任务子状态
+        :param _TaskSubType: <p>任务子状态</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskSubType: int
-        :param _NotExistsCheckPoint: 是否存在SavePoint, 0-存在, 1-不存在, null 为未知
+        :param _NotExistsCheckPoint: <p>是否存在SavePoint, 0-存在, 1-不存在, null 为未知</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type NotExistsCheckPoint: int
-        :param _SavePointId: savepiontPath
+        :param _SavePointId: <p>savepiontPath</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SavePointId: str
-        :param _SavePointPath: savepiontId
+        :param _SavePointPath: <p>savepiontId</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SavePointPath: str
+        :param _LastOperateInfo: <p>最近一次操作信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LastOperateInfo: :class:`tencentcloud.wedata.v20210820.models.LastOperateInfo`
         """
         self._TaskName = None
         self._Description = None
@@ -70450,10 +70453,11 @@ class IntegrationTaskInfo(AbstractModel):
         self._NotExistsCheckPoint = None
         self._SavePointId = None
         self._SavePointPath = None
+        self._LastOperateInfo = None
 
     @property
     def TaskName(self):
-        r"""任务名称
+        r"""<p>任务名称</p>
         :rtype: str
         """
         return self._TaskName
@@ -70464,7 +70468,7 @@ class IntegrationTaskInfo(AbstractModel):
 
     @property
     def Description(self):
-        r"""任务描述
+        r"""<p>任务描述</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -70476,7 +70480,7 @@ class IntegrationTaskInfo(AbstractModel):
 
     @property
     def SyncType(self):
-        r"""同步类型1.解决方案(整库迁移),2.单表同步
+        r"""<p>同步类型1.解决方案(整库迁移),2.单表同步</p>
         :rtype: int
         """
         return self._SyncType
@@ -70487,7 +70491,7 @@ class IntegrationTaskInfo(AbstractModel):
 
     @property
     def TaskType(self):
-        r"""201.实时,202.离线
+        r"""<p>201.实时,202.离线</p>
         :rtype: int
         """
         return self._TaskType
@@ -70498,7 +70502,7 @@ class IntegrationTaskInfo(AbstractModel):
 
     @property
     def WorkflowId(self):
-        r"""任务所属工作流id
+        r"""<p>任务所属工作流id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -70510,7 +70514,7 @@ class IntegrationTaskInfo(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""任务id
+        r"""<p>任务id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -70522,7 +70526,7 @@ class IntegrationTaskInfo(AbstractModel):
 
     @property
     def ScheduleTaskId(self):
-        r"""任务调度id(oceanus or us等作业id)，非填项
+        r"""<p>任务调度id(oceanus or us等作业id)，非填项</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -70534,7 +70538,7 @@ class IntegrationTaskInfo(AbstractModel):
 
     @property
     def TaskGroupId(self):
-        r"""inlong任务id
+        r"""<p>inlong任务id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -70546,7 +70550,7 @@ class IntegrationTaskInfo(AbstractModel):
 
     @property
     def ProjectId(self):
-        r"""项目id
+        r"""<p>项目id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -70558,7 +70562,7 @@ class IntegrationTaskInfo(AbstractModel):
 
     @property
     def CreatorUin(self):
-        r"""创建人uin
+        r"""<p>创建人uin</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -70570,7 +70574,7 @@ class IntegrationTaskInfo(AbstractModel):
 
     @property
     def OperatorUin(self):
-        r"""操作人uin
+        r"""<p>操作人uin</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -70582,7 +70586,7 @@ class IntegrationTaskInfo(AbstractModel):
 
     @property
     def OwnerUin(self):
-        r"""owner uin
+        r"""<p>owner uin</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -70594,7 +70598,7 @@ class IntegrationTaskInfo(AbstractModel):
 
     @property
     def AppId(self):
-        r"""应用id
+        r"""<p>应用id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -70606,7 +70610,7 @@ class IntegrationTaskInfo(AbstractModel):
 
     @property
     def Status(self):
-        r"""0:新建(任务开发态默认状态)|1:未开始|2:操作中|3:运行中|4:暂停|5:任务停止中|6:停止|7:执行失败|20:异常|21:未知|
+        r"""<p>0:新建(任务开发态默认状态)|1:未开始|2:操作中|3:运行中|4:暂停|5:任务停止中|6:停止|7:执行失败|20:异常|21:未知|</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -70618,7 +70622,7 @@ class IntegrationTaskInfo(AbstractModel):
 
     @property
     def Nodes(self):
-        r"""节点列表
+        r"""<p>节点列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of IntegrationNodeInfo
         """
@@ -70630,7 +70634,7 @@ class IntegrationTaskInfo(AbstractModel):
 
     @property
     def ExecutorId(self):
-        r"""执行资源id
+        r"""<p>执行资源id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -70642,7 +70646,7 @@ class IntegrationTaskInfo(AbstractModel):
 
     @property
     def Config(self):
-        r"""任务配置信息
+        r"""<p>任务配置信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of RecordField
         """
@@ -70654,7 +70658,7 @@ class IntegrationTaskInfo(AbstractModel):
 
     @property
     def ExtConfig(self):
-        r"""任务扩展配置信息
+        r"""<p>任务扩展配置信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of RecordField
         """
@@ -70666,7 +70670,7 @@ class IntegrationTaskInfo(AbstractModel):
 
     @property
     def ExecuteContext(self):
-        r"""任务执行context信息
+        r"""<p>任务执行context信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of RecordField
         """
@@ -70678,7 +70682,7 @@ class IntegrationTaskInfo(AbstractModel):
 
     @property
     def Mappings(self):
-        r"""节点映射
+        r"""<p>节点映射</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of IntegrationNodeMapping
         """
@@ -70690,7 +70694,7 @@ class IntegrationTaskInfo(AbstractModel):
 
     @property
     def TaskMode(self):
-        r"""任务配置模式，0:画布 1:表单 3:脚本
+        r"""<p>任务配置模式，0:画布 1:表单 3:脚本</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -70702,7 +70706,7 @@ class IntegrationTaskInfo(AbstractModel):
 
     @property
     def Incharge(self):
-        r"""责任人
+        r"""<p>责任人</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -70714,7 +70718,7 @@ class IntegrationTaskInfo(AbstractModel):
 
     @property
     def OfflineTaskAddEntity(self):
-        r"""离线新增参数
+        r"""<p>离线新增参数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.wedata.v20210820.models.OfflineTaskAddParam`
         """
@@ -70726,7 +70730,7 @@ class IntegrationTaskInfo(AbstractModel):
 
     @property
     def ExecutorGroupName(self):
-        r"""group name
+        r"""<p>group name</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -70738,7 +70742,7 @@ class IntegrationTaskInfo(AbstractModel):
 
     @property
     def InLongManagerUrl(self):
-        r"""inlong manager url
+        r"""<p>inlong manager url</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -70750,7 +70754,7 @@ class IntegrationTaskInfo(AbstractModel):
 
     @property
     def InLongStreamId(self):
-        r"""stream id
+        r"""<p>stream id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -70762,7 +70766,7 @@ class IntegrationTaskInfo(AbstractModel):
 
     @property
     def InLongManagerVersion(self):
-        r"""version
+        r"""<p>version</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -70774,7 +70778,7 @@ class IntegrationTaskInfo(AbstractModel):
 
     @property
     def DataProxyUrl(self):
-        r"""inlong dataproxy url
+        r"""<p>inlong dataproxy url</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -70786,7 +70790,7 @@ class IntegrationTaskInfo(AbstractModel):
 
     @property
     def Submit(self):
-        r"""任务版本是否已提交运维
+        r"""<p>任务版本是否已提交运维</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -70798,7 +70802,7 @@ class IntegrationTaskInfo(AbstractModel):
 
     @property
     def InputDatasourceType(self):
-        r"""数据源类型：MYSQL|POSTGRE|ORACLE|SQLSERVER|FTP|HIVE|HDFS|ICEBERG|KAFKA|HBASE|SPARK|VIRTUAL|TBASE|DB2|DM|GAUSSDB|GBASE|IMPALA|ES|S3_DATAINSIGHT|GREENPLUM|PHOENIX|SAP_HANA|SFTP|OCEANBASE|CLICKHOUSE|KUDU|VERTICA|REDIS|COS|DLC|DLCV1|DORIS|CKAFKA|DTS_KAFKA|S3|CDW|LOCAL|TDSQLC|TDSQL|TDSQL_MYSQL|MONGODB|INFORMIX|SYBASE|REST_API|SuperSQL|PRESTO|DR_SUM|TiDB|StarRocks|Trino|Kyuubi|GDB|TCHOUSE_X|TCHOUSE_P|TDSQL_POSTGRE
+        r"""<p>数据源类型：MYSQL|POSTGRE|ORACLE|SQLSERVER|FTP|HIVE|HDFS|ICEBERG|KAFKA|HBASE|SPARK|VIRTUAL|TBASE|DB2|DM|GAUSSDB|GBASE|IMPALA|ES|S3_DATAINSIGHT|GREENPLUM|PHOENIX|SAP_HANA|SFTP|OCEANBASE|CLICKHOUSE|KUDU|VERTICA|REDIS|COS|DLC|DLCV1|DORIS|CKAFKA|DTS_KAFKA|S3|CDW|LOCAL|TDSQLC|TDSQL|TDSQL_MYSQL|MONGODB|INFORMIX|SYBASE|REST_API|SuperSQL|PRESTO|DR_SUM|TiDB|StarRocks|Trino|Kyuubi|GDB|TCHOUSE_X|TCHOUSE_P|TDSQL_POSTGRE</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -70810,7 +70814,7 @@ class IntegrationTaskInfo(AbstractModel):
 
     @property
     def OutputDatasourceType(self):
-        r"""数据源类型：MYSQL|POSTGRE|ORACLE|SQLSERVER|FTP|HIVE|HDFS|ICEBERG|KAFKA|HBASE|SPARK|VIRTUAL|TBASE|DB2|DM|GAUSSDB|GBASE|IMPALA|ES|S3_DATAINSIGHT|GREENPLUM|PHOENIX|SAP_HANA|SFTP|OCEANBASE|CLICKHOUSE|KUDU|VERTICA|REDIS|COS|DLC|DLCV1|DORIS|CKAFKA|DTS_KAFKA|S3|CDW|LOCAL|TDSQLC|TDSQL|TDSQL_MYSQL|MONGODB|INFORMIX|SYBASE|REST_API|SuperSQL|PRESTO|DR_SUM|TiDB|StarRocks|Trino|Kyuubi|GDB|TCHOUSE_X|TCHOUSE_P|TDSQL_POSTGRE
+        r"""<p>数据源类型：MYSQL|POSTGRE|ORACLE|SQLSERVER|FTP|HIVE|HDFS|ICEBERG|KAFKA|HBASE|SPARK|VIRTUAL|TBASE|DB2|DM|GAUSSDB|GBASE|IMPALA|ES|S3_DATAINSIGHT|GREENPLUM|PHOENIX|SAP_HANA|SFTP|OCEANBASE|CLICKHOUSE|KUDU|VERTICA|REDIS|COS|DLC|DLCV1|DORIS|CKAFKA|DTS_KAFKA|S3|CDW|LOCAL|TDSQLC|TDSQL|TDSQL_MYSQL|MONGODB|INFORMIX|SYBASE|REST_API|SuperSQL|PRESTO|DR_SUM|TiDB|StarRocks|Trino|Kyuubi|GDB|TCHOUSE_X|TCHOUSE_P|TDSQL_POSTGRE</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -70822,7 +70826,7 @@ class IntegrationTaskInfo(AbstractModel):
 
     @property
     def NumRecordsIn(self):
-        r"""读取条数
+        r"""<p>读取条数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -70834,7 +70838,7 @@ class IntegrationTaskInfo(AbstractModel):
 
     @property
     def NumRecordsOut(self):
-        r"""写入条数
+        r"""<p>写入条数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -70846,7 +70850,7 @@ class IntegrationTaskInfo(AbstractModel):
 
     @property
     def ReaderDelay(self):
-        r"""读取延迟
+        r"""<p>读取延迟</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -70858,7 +70862,7 @@ class IntegrationTaskInfo(AbstractModel):
 
     @property
     def NumRestarts(self):
-        r"""重启次数
+        r"""<p>重启次数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -70870,7 +70874,7 @@ class IntegrationTaskInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""任务创建时间
+        r"""<p>任务创建时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -70882,7 +70886,7 @@ class IntegrationTaskInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""任务更新时间
+        r"""<p>任务更新时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -70894,7 +70898,7 @@ class IntegrationTaskInfo(AbstractModel):
 
     @property
     def LastRunTime(self):
-        r"""任务最后一次运行时间
+        r"""<p>任务最后一次运行时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -70906,7 +70910,7 @@ class IntegrationTaskInfo(AbstractModel):
 
     @property
     def StopTime(self):
-        r"""任务停止时间
+        r"""<p>任务停止时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -70918,7 +70922,7 @@ class IntegrationTaskInfo(AbstractModel):
 
     @property
     def HasVersion(self):
-        r"""作业是否已提交
+        r"""<p>作业是否已提交</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -70930,7 +70934,7 @@ class IntegrationTaskInfo(AbstractModel):
 
     @property
     def Locked(self):
-        r"""任务是否被锁定
+        r"""<p>任务是否被锁定</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -70942,7 +70946,7 @@ class IntegrationTaskInfo(AbstractModel):
 
     @property
     def Locker(self):
-        r"""任务锁定人
+        r"""<p>任务锁定人</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -70954,7 +70958,7 @@ class IntegrationTaskInfo(AbstractModel):
 
     @property
     def RunningCu(self):
-        r"""耗费资源量
+        r"""<p>耗费资源量</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -70966,7 +70970,7 @@ class IntegrationTaskInfo(AbstractModel):
 
     @property
     def TaskAlarmRegularList(self):
-        r"""该任务关联的告警规则
+        r"""<p>该任务关联的告警规则</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -70978,7 +70982,7 @@ class IntegrationTaskInfo(AbstractModel):
 
     @property
     def SwitchResource(self):
-        r"""实时任务资源分层情况： 0：进行中,1：成功 ,2：失败
+        r"""<p>实时任务资源分层情况： 0：进行中,1：成功 ,2：失败</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -70990,7 +70994,7 @@ class IntegrationTaskInfo(AbstractModel):
 
     @property
     def ReadPhase(self):
-        r"""实时任务读取阶段：0：全部全量,1：部分全量,2：全部增量
+        r"""<p>实时任务读取阶段：0：全部全量,1：部分全量,2：全部增量</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -71002,7 +71006,7 @@ class IntegrationTaskInfo(AbstractModel):
 
     @property
     def InstanceVersion(self):
-        r"""实时任务版本号
+        r"""<p>实时任务版本号</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -71014,7 +71018,7 @@ class IntegrationTaskInfo(AbstractModel):
 
     @property
     def ArrangeSpaceTaskId(self):
-        r"""离线任务导入到编排空间的任务id
+        r"""<p>离线任务导入到编排空间的任务id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -71026,7 +71030,7 @@ class IntegrationTaskInfo(AbstractModel):
 
     @property
     def OfflineTaskStatus(self):
-        r"""离线任务状态区分1.未提交2.已提交3.已导出
+        r"""<p>离线任务状态区分1.未提交2.已提交3.已导出</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -71038,7 +71042,7 @@ class IntegrationTaskInfo(AbstractModel):
 
     @property
     def TaskImportInfo(self):
-        r"""导入到编排空间配置
+        r"""<p>导入到编排空间配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.wedata.v20210820.models.TaskImportInfo`
         """
@@ -71050,7 +71054,7 @@ class IntegrationTaskInfo(AbstractModel):
 
     @property
     def BusinessLatency(self):
-        r"""业务延迟
+        r"""<p>业务延迟</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -71062,7 +71066,7 @@ class IntegrationTaskInfo(AbstractModel):
 
     @property
     def CurrentSyncPosition(self):
-        r"""当前同步位点
+        r"""<p>当前同步位点</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -71074,7 +71078,7 @@ class IntegrationTaskInfo(AbstractModel):
 
     @property
     def TagList(self):
-        r"""标签列表
+        r"""<p>标签列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of IntegrationTag
         """
@@ -71086,7 +71090,7 @@ class IntegrationTaskInfo(AbstractModel):
 
     @property
     def ErrorMessage(self):
-        r"""错误信息
+        r"""<p>错误信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -71098,7 +71102,7 @@ class IntegrationTaskInfo(AbstractModel):
 
     @property
     def TaskSubType(self):
-        r"""任务子状态
+        r"""<p>任务子状态</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -71110,7 +71114,7 @@ class IntegrationTaskInfo(AbstractModel):
 
     @property
     def NotExistsCheckPoint(self):
-        r"""是否存在SavePoint, 0-存在, 1-不存在, null 为未知
+        r"""<p>是否存在SavePoint, 0-存在, 1-不存在, null 为未知</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -71122,7 +71126,7 @@ class IntegrationTaskInfo(AbstractModel):
 
     @property
     def SavePointId(self):
-        r"""savepiontPath
+        r"""<p>savepiontPath</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -71134,7 +71138,7 @@ class IntegrationTaskInfo(AbstractModel):
 
     @property
     def SavePointPath(self):
-        r"""savepiontId
+        r"""<p>savepiontId</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -71143,6 +71147,18 @@ class IntegrationTaskInfo(AbstractModel):
     @SavePointPath.setter
     def SavePointPath(self, SavePointPath):
         self._SavePointPath = SavePointPath
+
+    @property
+    def LastOperateInfo(self):
+        r"""<p>最近一次操作信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.LastOperateInfo`
+        """
+        return self._LastOperateInfo
+
+    @LastOperateInfo.setter
+    def LastOperateInfo(self, LastOperateInfo):
+        self._LastOperateInfo = LastOperateInfo
 
 
     def _deserialize(self, params):
@@ -71238,6 +71254,9 @@ class IntegrationTaskInfo(AbstractModel):
         self._NotExistsCheckPoint = params.get("NotExistsCheckPoint")
         self._SavePointId = params.get("SavePointId")
         self._SavePointPath = params.get("SavePointPath")
+        if params.get("LastOperateInfo") is not None:
+            self._LastOperateInfo = LastOperateInfo()
+            self._LastOperateInfo._deserialize(params.get("LastOperateInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -72140,6 +72159,108 @@ class LabelValueSelection(AbstractModel):
     def _deserialize(self, params):
         self._LabelId = params.get("LabelId")
         self._LabelValue = params.get("LabelValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LastOperateInfo(AbstractModel):
+    r"""最近一次的操作信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskEvent: <p>任务事件</p>
+        :type TaskEvent: str
+        :param _OperateId: <p>操作ID</p>
+        :type OperateId: str
+        :param _ErrorMsg: <p>错误信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrorMsg: str
+        :param _CreatedTime: <p>创建时间</p><p>参数格式：YYYY-MM-DD hh:mm:ss</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatedTime: str
+        :param _UpdatedTime: <p>更新时间</p><p>参数格式：YYYY-MM-DD hh:mm:ss</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdatedTime: str
+        """
+        self._TaskEvent = None
+        self._OperateId = None
+        self._ErrorMsg = None
+        self._CreatedTime = None
+        self._UpdatedTime = None
+
+    @property
+    def TaskEvent(self):
+        r"""<p>任务事件</p>
+        :rtype: str
+        """
+        return self._TaskEvent
+
+    @TaskEvent.setter
+    def TaskEvent(self, TaskEvent):
+        self._TaskEvent = TaskEvent
+
+    @property
+    def OperateId(self):
+        r"""<p>操作ID</p>
+        :rtype: str
+        """
+        return self._OperateId
+
+    @OperateId.setter
+    def OperateId(self, OperateId):
+        self._OperateId = OperateId
+
+    @property
+    def ErrorMsg(self):
+        r"""<p>错误信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def CreatedTime(self):
+        r"""<p>创建时间</p><p>参数格式：YYYY-MM-DD hh:mm:ss</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+    @property
+    def UpdatedTime(self):
+        r"""<p>更新时间</p><p>参数格式：YYYY-MM-DD hh:mm:ss</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UpdatedTime
+
+    @UpdatedTime.setter
+    def UpdatedTime(self, UpdatedTime):
+        self._UpdatedTime = UpdatedTime
+
+
+    def _deserialize(self, params):
+        self._TaskEvent = params.get("TaskEvent")
+        self._OperateId = params.get("OperateId")
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._CreatedTime = params.get("CreatedTime")
+        self._UpdatedTime = params.get("UpdatedTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

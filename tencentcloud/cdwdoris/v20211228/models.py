@@ -800,6 +800,288 @@ class BackupCosInfo(AbstractModel):
         
 
 
+class BackupScheduleInfo(AbstractModel):
+    r"""备份、迁移任务信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BackupType: 迁移类型：
+1-远端集群迁移；2-COS迁移
+        :type BackupType: int
+        :param _ExistCount: 当前任务现存实例数
+        :type ExistCount: int
+        :param _CosSourceInfo: cos信息
+        :type CosSourceInfo: str
+        :param _DorisSourceInfo: doris信息
+        :type DorisSourceInfo: str
+        :param _RestoreType: 恢复类型
+        :type RestoreType: int
+        :param _SnapshotRemainPolicy: 快照保留策略
+        :type SnapshotRemainPolicy: :class:`tencentcloud.cdwdoris.v20211228.models.SnapshotRemainPolicy`
+        :param _DataRemoteRegion: 远程备份地域
+        :type DataRemoteRegion: str
+        :param _IsWithinGracePeriod: 是否在宽限期内
+        :type IsWithinGracePeriod: bool
+        :param _GracePeriod: 宽限期（天数）
+        :type GracePeriod: int
+        :param _GraceStartTime: 宽限开始时间
+        :type GraceStartTime: str
+        :param _BucketType: 托管桶类型：standard-标准，多可用区-MAZ
+        :type BucketType: str
+        :param _EnableSecurityLock: 是否开启安全锁：0-未开启，1-已开启
+        :type EnableSecurityLock: int
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _InstanceName: 实例名
+        :type InstanceName: str
+        :param _InstanceStatus: 实例状态
+        :type InstanceStatus: str
+        :param _InstanceStatusDesc: 实例状态描述
+        :type InstanceStatusDesc: str
+        :param _BucketEncryption: 桶加密状态信息
+        :type BucketEncryption: :class:`tencentcloud.cdwdoris.v20211228.models.BucketEncryptionInfo`
+        """
+        self._BackupType = None
+        self._ExistCount = None
+        self._CosSourceInfo = None
+        self._DorisSourceInfo = None
+        self._RestoreType = None
+        self._SnapshotRemainPolicy = None
+        self._DataRemoteRegion = None
+        self._IsWithinGracePeriod = None
+        self._GracePeriod = None
+        self._GraceStartTime = None
+        self._BucketType = None
+        self._EnableSecurityLock = None
+        self._InstanceId = None
+        self._InstanceName = None
+        self._InstanceStatus = None
+        self._InstanceStatusDesc = None
+        self._BucketEncryption = None
+
+    @property
+    def BackupType(self):
+        r"""迁移类型：
+1-远端集群迁移；2-COS迁移
+        :rtype: int
+        """
+        return self._BackupType
+
+    @BackupType.setter
+    def BackupType(self, BackupType):
+        self._BackupType = BackupType
+
+    @property
+    def ExistCount(self):
+        r"""当前任务现存实例数
+        :rtype: int
+        """
+        return self._ExistCount
+
+    @ExistCount.setter
+    def ExistCount(self, ExistCount):
+        self._ExistCount = ExistCount
+
+    @property
+    def CosSourceInfo(self):
+        r"""cos信息
+        :rtype: str
+        """
+        return self._CosSourceInfo
+
+    @CosSourceInfo.setter
+    def CosSourceInfo(self, CosSourceInfo):
+        self._CosSourceInfo = CosSourceInfo
+
+    @property
+    def DorisSourceInfo(self):
+        r"""doris信息
+        :rtype: str
+        """
+        return self._DorisSourceInfo
+
+    @DorisSourceInfo.setter
+    def DorisSourceInfo(self, DorisSourceInfo):
+        self._DorisSourceInfo = DorisSourceInfo
+
+    @property
+    def RestoreType(self):
+        r"""恢复类型
+        :rtype: int
+        """
+        return self._RestoreType
+
+    @RestoreType.setter
+    def RestoreType(self, RestoreType):
+        self._RestoreType = RestoreType
+
+    @property
+    def SnapshotRemainPolicy(self):
+        r"""快照保留策略
+        :rtype: :class:`tencentcloud.cdwdoris.v20211228.models.SnapshotRemainPolicy`
+        """
+        return self._SnapshotRemainPolicy
+
+    @SnapshotRemainPolicy.setter
+    def SnapshotRemainPolicy(self, SnapshotRemainPolicy):
+        self._SnapshotRemainPolicy = SnapshotRemainPolicy
+
+    @property
+    def DataRemoteRegion(self):
+        r"""远程备份地域
+        :rtype: str
+        """
+        return self._DataRemoteRegion
+
+    @DataRemoteRegion.setter
+    def DataRemoteRegion(self, DataRemoteRegion):
+        self._DataRemoteRegion = DataRemoteRegion
+
+    @property
+    def IsWithinGracePeriod(self):
+        r"""是否在宽限期内
+        :rtype: bool
+        """
+        return self._IsWithinGracePeriod
+
+    @IsWithinGracePeriod.setter
+    def IsWithinGracePeriod(self, IsWithinGracePeriod):
+        self._IsWithinGracePeriod = IsWithinGracePeriod
+
+    @property
+    def GracePeriod(self):
+        r"""宽限期（天数）
+        :rtype: int
+        """
+        return self._GracePeriod
+
+    @GracePeriod.setter
+    def GracePeriod(self, GracePeriod):
+        self._GracePeriod = GracePeriod
+
+    @property
+    def GraceStartTime(self):
+        r"""宽限开始时间
+        :rtype: str
+        """
+        return self._GraceStartTime
+
+    @GraceStartTime.setter
+    def GraceStartTime(self, GraceStartTime):
+        self._GraceStartTime = GraceStartTime
+
+    @property
+    def BucketType(self):
+        r"""托管桶类型：standard-标准，多可用区-MAZ
+        :rtype: str
+        """
+        return self._BucketType
+
+    @BucketType.setter
+    def BucketType(self, BucketType):
+        self._BucketType = BucketType
+
+    @property
+    def EnableSecurityLock(self):
+        r"""是否开启安全锁：0-未开启，1-已开启
+        :rtype: int
+        """
+        return self._EnableSecurityLock
+
+    @EnableSecurityLock.setter
+    def EnableSecurityLock(self, EnableSecurityLock):
+        self._EnableSecurityLock = EnableSecurityLock
+
+    @property
+    def InstanceId(self):
+        r"""实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceName(self):
+        r"""实例名
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def InstanceStatus(self):
+        r"""实例状态
+        :rtype: str
+        """
+        return self._InstanceStatus
+
+    @InstanceStatus.setter
+    def InstanceStatus(self, InstanceStatus):
+        self._InstanceStatus = InstanceStatus
+
+    @property
+    def InstanceStatusDesc(self):
+        r"""实例状态描述
+        :rtype: str
+        """
+        return self._InstanceStatusDesc
+
+    @InstanceStatusDesc.setter
+    def InstanceStatusDesc(self, InstanceStatusDesc):
+        self._InstanceStatusDesc = InstanceStatusDesc
+
+    @property
+    def BucketEncryption(self):
+        r"""桶加密状态信息
+        :rtype: :class:`tencentcloud.cdwdoris.v20211228.models.BucketEncryptionInfo`
+        """
+        return self._BucketEncryption
+
+    @BucketEncryption.setter
+    def BucketEncryption(self, BucketEncryption):
+        self._BucketEncryption = BucketEncryption
+
+
+    def _deserialize(self, params):
+        self._BackupType = params.get("BackupType")
+        self._ExistCount = params.get("ExistCount")
+        self._CosSourceInfo = params.get("CosSourceInfo")
+        self._DorisSourceInfo = params.get("DorisSourceInfo")
+        self._RestoreType = params.get("RestoreType")
+        if params.get("SnapshotRemainPolicy") is not None:
+            self._SnapshotRemainPolicy = SnapshotRemainPolicy()
+            self._SnapshotRemainPolicy._deserialize(params.get("SnapshotRemainPolicy"))
+        self._DataRemoteRegion = params.get("DataRemoteRegion")
+        self._IsWithinGracePeriod = params.get("IsWithinGracePeriod")
+        self._GracePeriod = params.get("GracePeriod")
+        self._GraceStartTime = params.get("GraceStartTime")
+        self._BucketType = params.get("BucketType")
+        self._EnableSecurityLock = params.get("EnableSecurityLock")
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceName = params.get("InstanceName")
+        self._InstanceStatus = params.get("InstanceStatus")
+        self._InstanceStatusDesc = params.get("InstanceStatusDesc")
+        if params.get("BucketEncryption") is not None:
+            self._BucketEncryption = BucketEncryptionInfo()
+            self._BucketEncryption._deserialize(params.get("BucketEncryption"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BackupStatus(AbstractModel):
     r"""备份任务的进度详情
 
@@ -4258,28 +4540,37 @@ class DescribeBackUpJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 集群id
+        :param _InstanceId: <p>集群id</p>
         :type InstanceId: str
-        :param _ApplicationType: 任务类型：
-0-不限制，或使用TypeFilters过滤；
-1-备份恢复（包括周期备份和一次性备份）；
-2-数据迁移（包括跨集群迁移和cos迁移）	
+        :param _ApplicationType: <p>任务类型：<br>0-不限制，或使用TypeFilters过滤；<br>1-备份恢复（包括周期备份和一次性备份）；<br>2-数据迁移（包括跨集群迁移和cos迁移）</p>
         :type ApplicationType: int
-        :param _PageSize: 分页大小
+        :param _TypeFilters: <p>任务类型过滤器</p>
+        :type TypeFilters: list of int
+        :param _StatusFilters: <p>实例状态过滤器</p>
+        :type StatusFilters: list of int
+        :param _ScheduleNameFilters: <p>任务名称过滤器</p>
+        :type ScheduleNameFilters: str
+        :param _OrderType: <p>按照快照生成时间排序，默认DESC：<br>ASC-升序<br>DESC-降序</p>
+        :type OrderType: str
+        :param _PageSize: <p>分页大小</p>
         :type PageSize: int
-        :param _PageNum: 页号
+        :param _PageNum: <p>页号</p>
         :type PageNum: int
-        :param _BeginTime: 开始时间
+        :param _BeginTime: <p>开始时间</p>
         :type BeginTime: str
-        :param _EndTime: 结束时间
+        :param _EndTime: <p>结束时间</p>
         :type EndTime: str
-        :param _JobIdFiltersStr: jobid的string类型
+        :param _JobIdFiltersStr: <p>jobid的string类型</p>
         :type JobIdFiltersStr: str
-        :param _EncryptionFilters: 0-未加密；1-已加密
+        :param _EncryptionFilters: <p>0-未加密；1-已加密</p>
         :type EncryptionFilters: list of int
         """
         self._InstanceId = None
         self._ApplicationType = None
+        self._TypeFilters = None
+        self._StatusFilters = None
+        self._ScheduleNameFilters = None
+        self._OrderType = None
         self._PageSize = None
         self._PageNum = None
         self._BeginTime = None
@@ -4289,7 +4580,7 @@ class DescribeBackUpJobRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""集群id
+        r"""<p>集群id</p>
         :rtype: str
         """
         return self._InstanceId
@@ -4300,10 +4591,7 @@ class DescribeBackUpJobRequest(AbstractModel):
 
     @property
     def ApplicationType(self):
-        r"""任务类型：
-0-不限制，或使用TypeFilters过滤；
-1-备份恢复（包括周期备份和一次性备份）；
-2-数据迁移（包括跨集群迁移和cos迁移）	
+        r"""<p>任务类型：<br>0-不限制，或使用TypeFilters过滤；<br>1-备份恢复（包括周期备份和一次性备份）；<br>2-数据迁移（包括跨集群迁移和cos迁移）</p>
         :rtype: int
         """
         return self._ApplicationType
@@ -4313,8 +4601,52 @@ class DescribeBackUpJobRequest(AbstractModel):
         self._ApplicationType = ApplicationType
 
     @property
+    def TypeFilters(self):
+        r"""<p>任务类型过滤器</p>
+        :rtype: list of int
+        """
+        return self._TypeFilters
+
+    @TypeFilters.setter
+    def TypeFilters(self, TypeFilters):
+        self._TypeFilters = TypeFilters
+
+    @property
+    def StatusFilters(self):
+        r"""<p>实例状态过滤器</p>
+        :rtype: list of int
+        """
+        return self._StatusFilters
+
+    @StatusFilters.setter
+    def StatusFilters(self, StatusFilters):
+        self._StatusFilters = StatusFilters
+
+    @property
+    def ScheduleNameFilters(self):
+        r"""<p>任务名称过滤器</p>
+        :rtype: str
+        """
+        return self._ScheduleNameFilters
+
+    @ScheduleNameFilters.setter
+    def ScheduleNameFilters(self, ScheduleNameFilters):
+        self._ScheduleNameFilters = ScheduleNameFilters
+
+    @property
+    def OrderType(self):
+        r"""<p>按照快照生成时间排序，默认DESC：<br>ASC-升序<br>DESC-降序</p>
+        :rtype: str
+        """
+        return self._OrderType
+
+    @OrderType.setter
+    def OrderType(self, OrderType):
+        self._OrderType = OrderType
+
+    @property
     def PageSize(self):
-        r"""分页大小
+        r"""<p>分页大小</p>
         :rtype: int
         """
         return self._PageSize
@@ -4325,7 +4657,7 @@ class DescribeBackUpJobRequest(AbstractModel):
 
     @property
     def PageNum(self):
-        r"""页号
+        r"""<p>页号</p>
         :rtype: int
         """
         return self._PageNum
@@ -4336,7 +4668,7 @@ class DescribeBackUpJobRequest(AbstractModel):
 
     @property
     def BeginTime(self):
-        r"""开始时间
+        r"""<p>开始时间</p>
         :rtype: str
         """
         return self._BeginTime
@@ -4347,7 +4679,7 @@ class DescribeBackUpJobRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""结束时间
+        r"""<p>结束时间</p>
         :rtype: str
         """
         return self._EndTime
@@ -4358,7 +4690,7 @@ class DescribeBackUpJobRequest(AbstractModel):
 
     @property
     def JobIdFiltersStr(self):
-        r"""jobid的string类型
+        r"""<p>jobid的string类型</p>
         :rtype: str
         """
         return self._JobIdFiltersStr
@@ -4369,7 +4701,7 @@ class DescribeBackUpJobRequest(AbstractModel):
 
     @property
     def EncryptionFilters(self):
-        r"""0-未加密；1-已加密
+        r"""<p>0-未加密；1-已加密</p>
         :rtype: list of int
         """
         return self._EncryptionFilters
@@ -4382,6 +4714,10 @@ class DescribeBackUpJobRequest(AbstractModel):
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._ApplicationType = params.get("ApplicationType")
+        self._TypeFilters = params.get("TypeFilters")
+        self._StatusFilters = params.get("StatusFilters")
+        self._ScheduleNameFilters = params.get("ScheduleNameFilters")
+        self._OrderType = params.get("OrderType")
         self._PageSize = params.get("PageSize")
         self._PageNum = params.get("PageNum")
         self._BeginTime = params.get("BeginTime")
@@ -4405,13 +4741,13 @@ class DescribeBackUpJobResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BackUpJobs: 任务列表
+        :param _BackUpJobs: <p>任务列表</p>
         :type BackUpJobs: list of BackUpJobDisplay
-        :param _ErrorMsg: 错误信息
+        :param _ErrorMsg: <p>错误信息</p>
         :type ErrorMsg: str
-        :param _TotalCount: 总数
+        :param _TotalCount: <p>总数</p>
         :type TotalCount: int
-        :param _CurrentTime: 当前时间
+        :param _CurrentTime: <p>当前时间</p>
         :type CurrentTime: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4424,7 +4760,7 @@ class DescribeBackUpJobResponse(AbstractModel):
 
     @property
     def BackUpJobs(self):
-        r"""任务列表
+        r"""<p>任务列表</p>
         :rtype: list of BackUpJobDisplay
         """
         return self._BackUpJobs
@@ -4435,7 +4771,7 @@ class DescribeBackUpJobResponse(AbstractModel):
 
     @property
     def ErrorMsg(self):
-        r"""错误信息
+        r"""<p>错误信息</p>
         :rtype: str
         """
         return self._ErrorMsg
@@ -4446,7 +4782,7 @@ class DescribeBackUpJobResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""总数
+        r"""<p>总数</p>
         :rtype: int
         """
         return self._TotalCount
@@ -4457,7 +4793,7 @@ class DescribeBackUpJobResponse(AbstractModel):
 
     @property
     def CurrentTime(self):
-        r"""当前时间
+        r"""<p>当前时间</p>
         :rtype: str
         """
         return self._CurrentTime
@@ -4498,26 +4834,41 @@ class DescribeBackUpSchedulesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ApplicationType: 任务类型
-0-不限制，或使用TypeFilters过滤；
-1-备份恢复（包括周期备份和一次性备份）；
-2-数据迁移（包括跨集群迁移和cos迁移）
+        :param _ApplicationType: <p>任务类型<br>0-不限制，或使用TypeFilters过滤；<br>1-备份恢复（包括周期备份和一次性备份）；<br>2-数据迁移（包括跨集群迁移和cos迁移）</p>
         :type ApplicationType: int
-        :param _EncryptionFilters: 0-未加密；1-已加密
+        :param _UsersFilters: <p>创建人过滤器</p>
+        :type UsersFilters: list of str
+        :param _TypeFilters: <p>任务类型过滤器。<br>0-周期；<br>1-一次性；<br>2-数据迁移(即3和4的合集)；<br>3-远端集群迁移；<br>4-COS迁移</p>
+        :type TypeFilters: list of int
+        :param _StatusFilters: <p>任务状态过滤器</p>
+        :type StatusFilters: list of int
+        :param _OrderType: <p>排序：<br>DESC-降序<br>ASC-升序</p>
+        :type OrderType: str
+        :param _ScheduleNameFilters: <p>任务名过滤器</p>
+        :type ScheduleNameFilters: str
+        :param _PageSize: <p>分页大小</p>
+        :type PageSize: int
+        :param _PageNum: <p>页号</p>
+        :type PageNum: int
+        :param _EncryptionFilters: <p>0-未加密；1-已加密</p>
         :type EncryptionFilters: list of int
-        :param _ScheduleId: 调度任务id过滤
+        :param _ScheduleId: <p>调度任务id过滤</p>
         :type ScheduleId: int
         """
         self._ApplicationType = None
+        self._UsersFilters = None
+        self._TypeFilters = None
+        self._StatusFilters = None
+        self._OrderType = None
+        self._ScheduleNameFilters = None
+        self._PageSize = None
+        self._PageNum = None
         self._EncryptionFilters = None
         self._ScheduleId = None
 
     @property
     def ApplicationType(self):
-        r"""任务类型
-0-不限制，或使用TypeFilters过滤；
-1-备份恢复（包括周期备份和一次性备份）；
-2-数据迁移（包括跨集群迁移和cos迁移）
+        r"""<p>任务类型<br>0-不限制，或使用TypeFilters过滤；<br>1-备份恢复（包括周期备份和一次性备份）；<br>2-数据迁移（包括跨集群迁移和cos迁移）</p>
         :rtype: int
         """
         return self._ApplicationType
@@ -4527,8 +4878,85 @@ class DescribeBackUpSchedulesRequest(AbstractModel):
         self._ApplicationType = ApplicationType
 
     @property
+    def UsersFilters(self):
+        r"""<p>创建人过滤器</p>
+        :rtype: list of str
+        """
+        return self._UsersFilters
+
+    @UsersFilters.setter
+    def UsersFilters(self, UsersFilters):
+        self._UsersFilters = UsersFilters
+
+    @property
+    def TypeFilters(self):
+        r"""<p>任务类型过滤器。<br>0-周期；<br>1-一次性；<br>2-数据迁移(即3和4的合集)；<br>3-远端集群迁移；<br>4-COS迁移</p>
+        :rtype: list of int
+        """
+        return self._TypeFilters
+
+    @TypeFilters.setter
+    def TypeFilters(self, TypeFilters):
+        self._TypeFilters = TypeFilters
+
+    @property
+    def StatusFilters(self):
+        r"""<p>任务状态过滤器</p>
+        :rtype: list of int
+        """
+        return self._StatusFilters
+
+    @StatusFilters.setter
+    def StatusFilters(self, StatusFilters):
+        self._StatusFilters = StatusFilters
+
+    @property
+    def OrderType(self):
+        r"""<p>排序：<br>DESC-降序<br>ASC-升序</p>
+        :rtype: str
+        """
+        return self._OrderType
+
+    @OrderType.setter
+    def OrderType(self, OrderType):
+        self._OrderType = OrderType
+
+    @property
+    def ScheduleNameFilters(self):
+        r"""<p>任务名过滤器</p>
+        :rtype: str
+        """
+        return self._ScheduleNameFilters
+
+    @ScheduleNameFilters.setter
+    def ScheduleNameFilters(self, ScheduleNameFilters):
+        self._ScheduleNameFilters = ScheduleNameFilters
+
+    @property
+    def PageSize(self):
+        r"""<p>分页大小</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def PageNum(self):
+        r"""<p>页号</p>
+        :rtype: int
+        """
+        return self._PageNum
+
+    @PageNum.setter
+    def PageNum(self, PageNum):
+        self._PageNum = PageNum
+
+    @property
     def EncryptionFilters(self):
-        r"""0-未加密；1-已加密
+        r"""<p>0-未加密；1-已加密</p>
         :rtype: list of int
         """
         return self._EncryptionFilters
@@ -4539,7 +4967,7 @@ class DescribeBackUpSchedulesRequest(AbstractModel):
 
     @property
     def ScheduleId(self):
-        r"""调度任务id过滤
+        r"""<p>调度任务id过滤</p>
         :rtype: int
         """
         return self._ScheduleId
@@ -4551,6 +4979,13 @@ class DescribeBackUpSchedulesRequest(AbstractModel):
 
     def _deserialize(self, params):
         self._ApplicationType = params.get("ApplicationType")
+        self._UsersFilters = params.get("UsersFilters")
+        self._TypeFilters = params.get("TypeFilters")
+        self._StatusFilters = params.get("StatusFilters")
+        self._OrderType = params.get("OrderType")
+        self._ScheduleNameFilters = params.get("ScheduleNameFilters")
+        self._PageSize = params.get("PageSize")
+        self._PageNum = params.get("PageNum")
         self._EncryptionFilters = params.get("EncryptionFilters")
         self._ScheduleId = params.get("ScheduleId")
         memeber_set = set(params.keys())
@@ -4570,20 +5005,76 @@ class DescribeBackUpSchedulesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CurrentTime: 当前系统时间
+        :param _BackUpOpened: <p>备份是否开启</p>
+        :type BackUpOpened: bool
+        :param _CosBucketName: <p>备份桶</p>
+        :type CosBucketName: str
+        :param _BackUpStatus: <p>备份的状态</p>
+        :type BackUpStatus: int
+        :param _BackupScheduleInfos: <p>备份、迁移任务信息</p>
+        :type BackupScheduleInfos: list of BackupScheduleInfo
+        :param _CurrentTime: <p>当前系统时间</p>
         :type CurrentTime: str
-        :param _BucketEncryption: 桶加密状态信息
+        :param _BucketEncryption: <p>桶加密状态信息</p>
         :type BucketEncryption: :class:`tencentcloud.cdwdoris.v20211228.models.BucketEncryptionInfo`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._BackUpOpened = None
+        self._CosBucketName = None
+        self._BackUpStatus = None
+        self._BackupScheduleInfos = None
         self._CurrentTime = None
         self._BucketEncryption = None
         self._RequestId = None
 
     @property
+    def BackUpOpened(self):
+        r"""<p>备份是否开启</p>
+        :rtype: bool
+        """
+        return self._BackUpOpened
+
+    @BackUpOpened.setter
+    def BackUpOpened(self, BackUpOpened):
+        self._BackUpOpened = BackUpOpened
+
+    @property
+    def CosBucketName(self):
+        r"""<p>备份桶</p>
+        :rtype: str
+        """
+        return self._CosBucketName
+
+    @CosBucketName.setter
+    def CosBucketName(self, CosBucketName):
+        self._CosBucketName = CosBucketName
+
+    @property
+    def BackUpStatus(self):
+        r"""<p>备份的状态</p>
+        :rtype: int
+        """
+        return self._BackUpStatus
+
+    @BackUpStatus.setter
+    def BackUpStatus(self, BackUpStatus):
+        self._BackUpStatus = BackUpStatus
+
+    @property
+    def BackupScheduleInfos(self):
+        r"""<p>备份、迁移任务信息</p>
+        :rtype: list of BackupScheduleInfo
+        """
+        return self._BackupScheduleInfos
+
+    @BackupScheduleInfos.setter
+    def BackupScheduleInfos(self, BackupScheduleInfos):
+        self._BackupScheduleInfos = BackupScheduleInfos
+
+    @property
     def CurrentTime(self):
-        r"""当前系统时间
+        r"""<p>当前系统时间</p>
         :rtype: str
         """
         return self._CurrentTime
@@ -4594,7 +5085,7 @@ class DescribeBackUpSchedulesResponse(AbstractModel):
 
     @property
     def BucketEncryption(self):
-        r"""桶加密状态信息
+        r"""<p>桶加密状态信息</p>
         :rtype: :class:`tencentcloud.cdwdoris.v20211228.models.BucketEncryptionInfo`
         """
         return self._BucketEncryption
@@ -4616,6 +5107,15 @@ class DescribeBackUpSchedulesResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._BackUpOpened = params.get("BackUpOpened")
+        self._CosBucketName = params.get("CosBucketName")
+        self._BackUpStatus = params.get("BackUpStatus")
+        if params.get("BackupScheduleInfos") is not None:
+            self._BackupScheduleInfos = []
+            for item in params.get("BackupScheduleInfos"):
+                obj = BackupScheduleInfo()
+                obj._deserialize(item)
+                self._BackupScheduleInfos.append(obj)
         self._CurrentTime = params.get("CurrentTime")
         if params.get("BucketEncryption") is not None:
             self._BucketEncryption = BucketEncryptionInfo()

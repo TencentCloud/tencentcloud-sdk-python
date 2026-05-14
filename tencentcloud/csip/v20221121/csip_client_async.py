@@ -2311,6 +2311,24 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeSkillScanPayInfo(
+            self,
+            request: models.DescribeSkillScanPayInfoRequest,
+            opts: Dict = None,
+    ) -> models.DescribeSkillScanPayInfoResponse:
+        """
+        查询 Skill 安全检测计费信息，包括订单状态、总配额、已消耗配额、到期时间、支付模式等。无订单时返回零值（仅含 TimeNow 和 BetaEndTime）。试用订单通过 ModifyTrialStatus(Module=9) 领取，正式订单通过计费系统创建。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeSkillScanPayInfo"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeSkillScanPayInfoResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeSkillScanResult(
             self,
             request: models.DescribeSkillScanResultRequest,

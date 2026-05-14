@@ -11231,8 +11231,6 @@ BYOC：一机一证
 
     @property
     def DeviceCertificateProvisionType(self):
-        warnings.warn("parameter `DeviceCertificateProvisionType` is deprecated", DeprecationWarning) 
-
         r"""客户端证书注册方式：
 JITP：自动注册
 API：手动通过API注册
@@ -11242,14 +11240,10 @@ API：手动通过API注册
 
     @DeviceCertificateProvisionType.setter
     def DeviceCertificateProvisionType(self, DeviceCertificateProvisionType):
-        warnings.warn("parameter `DeviceCertificateProvisionType` is deprecated", DeprecationWarning) 
-
         self._DeviceCertificateProvisionType = DeviceCertificateProvisionType
 
     @property
     def AutomaticActivation(self):
-        warnings.warn("parameter `AutomaticActivation` is deprecated", DeprecationWarning) 
-
         r"""自动注册证书是否自动激活
         :rtype: bool
         """
@@ -11257,8 +11251,6 @@ API：手动通过API注册
 
     @AutomaticActivation.setter
     def AutomaticActivation(self, AutomaticActivation):
-        warnings.warn("parameter `AutomaticActivation` is deprecated", DeprecationWarning) 
-
         self._AutomaticActivation = AutomaticActivation
 
     @property

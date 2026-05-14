@@ -271,6 +271,29 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateAigcAudioClone(self, request):
+        r"""该接口用于创建 AIGC 音色复刻。注意，调用本接口会产生费用，请参考[计费文档](https://cloud.tencent.com/document/product/266/95125#96b3b59a-f9e1-49e9-966a-bedb70a4bf12)。
+
+        :param request: Request instance for CreateAigcAudioClone.
+        :type request: :class:`tencentcloud.vod.v20180717.models.CreateAigcAudioCloneRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.CreateAigcAudioCloneResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAigcAudioClone", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateAigcAudioCloneResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateAigcAudioTask(self, request):
         r"""调用该接口，用于创建AI生音频任务。
 

@@ -22275,6 +22275,239 @@ class CreateAigcAudioCloneOutput(AbstractModel):
         
 
 
+class CreateAigcAudioCloneRequest(AbstractModel):
+    r"""CreateAigcAudioClone请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubAppId: <p><b>点播<a href="https://cloud.tencent.com/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
+        :type SubAppId: int
+        :param _AudioFileInfo: <p>原音频文件（需要确保可访问） 模型将以此参数中传入的音频音色为示例对音色进行复刻。  </p><p>入参限制：注1：音频仅支持格式：mp3、m4a、wav； 注2：上传的音频文件的时长最少应不低于 10 秒，最长应不超过 5 分钟； 注3：上传的音频文件大小需不超过20mb； 注4：音频内容免涉版权，否则会被下架或销毁。</p>
+        :type AudioFileInfo: :class:`tencentcloud.vod.v20180717.models.AigcAudioCloneInputFileInfo`
+        :param _VoiceId: <p>自定义的声音ID，示例：&quot;vidu01&quot;。</p><p>入参限制：</p><ul><li>自定义的 voice_id 长度范围[8,256];</li><li>首字符必须为英文字母;</li><li>允许数字、字母、横线、下划线;</li><li>末位字符不可为 -、_</li><li>voice_id 不可与已有 id 重复，否则会报错.</li></ul>
+        :type VoiceId: str
+        :param _Text: <p>复刻试听参数。</p><p>参数格式：限制 1000 字符以内，模型将使用复刻后的音色朗读本段文本内容，并返回试听音频链接。 注：试听将根据字符数正常收取语音合成费用。</p>
+        :type Text: str
+        :param _PromptAudioFileInfo: <p>音色复刻示例音频。提供本参数将有助于增强语音合成的音色相似度和稳定性，若使用本参数，需同时上传一小段示例音频。</p><p>入参限制：注1：音频仅支持格式：mp3、m4a、wav； 注2：上传的音频文件的时长最少应小于 8 秒； 注3：上传的音频文件大小需不超过20mb。</p>
+        :type PromptAudioFileInfo: :class:`tencentcloud.vod.v20180717.models.AigcAudioCloneInputFileInfo`
+        :param _PromptText: <p>示例音频对应的文本内容 需确保和音频内容一致，句末需有标点符号做结尾。</p>
+        :type PromptText: str
+        :param _Payload: <p>透传参数。  入参限制：不做任何处理，仅数据传输 注：最多 1048576个字符</p>
+        :type Payload: str
+        :param _SessionId: <p>用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。</p>
+        :type SessionId: str
+        :param _SessionContext: <p>来源上下文，用于透传用户请求信息，音画质重生完成回调将返回该字段值，最长 1000 个字符。</p>
+        :type SessionContext: str
+        :param _TasksPriority: <p>任务的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。</p>
+        :type TasksPriority: int
+        :param _ExtInfo: <p>保留字段，特殊用途时使用。</p>
+        :type ExtInfo: str
+        """
+        self._SubAppId = None
+        self._AudioFileInfo = None
+        self._VoiceId = None
+        self._Text = None
+        self._PromptAudioFileInfo = None
+        self._PromptText = None
+        self._Payload = None
+        self._SessionId = None
+        self._SessionContext = None
+        self._TasksPriority = None
+        self._ExtInfo = None
+
+    @property
+    def SubAppId(self):
+        r"""<p><b>点播<a href="https://cloud.tencent.com/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
+        :rtype: int
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def AudioFileInfo(self):
+        r"""<p>原音频文件（需要确保可访问） 模型将以此参数中传入的音频音色为示例对音色进行复刻。  </p><p>入参限制：注1：音频仅支持格式：mp3、m4a、wav； 注2：上传的音频文件的时长最少应不低于 10 秒，最长应不超过 5 分钟； 注3：上传的音频文件大小需不超过20mb； 注4：音频内容免涉版权，否则会被下架或销毁。</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.AigcAudioCloneInputFileInfo`
+        """
+        return self._AudioFileInfo
+
+    @AudioFileInfo.setter
+    def AudioFileInfo(self, AudioFileInfo):
+        self._AudioFileInfo = AudioFileInfo
+
+    @property
+    def VoiceId(self):
+        r"""<p>自定义的声音ID，示例：&quot;vidu01&quot;。</p><p>入参限制：</p><ul><li>自定义的 voice_id 长度范围[8,256];</li><li>首字符必须为英文字母;</li><li>允许数字、字母、横线、下划线;</li><li>末位字符不可为 -、_</li><li>voice_id 不可与已有 id 重复，否则会报错.</li></ul>
+        :rtype: str
+        """
+        return self._VoiceId
+
+    @VoiceId.setter
+    def VoiceId(self, VoiceId):
+        self._VoiceId = VoiceId
+
+    @property
+    def Text(self):
+        r"""<p>复刻试听参数。</p><p>参数格式：限制 1000 字符以内，模型将使用复刻后的音色朗读本段文本内容，并返回试听音频链接。 注：试听将根据字符数正常收取语音合成费用。</p>
+        :rtype: str
+        """
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def PromptAudioFileInfo(self):
+        r"""<p>音色复刻示例音频。提供本参数将有助于增强语音合成的音色相似度和稳定性，若使用本参数，需同时上传一小段示例音频。</p><p>入参限制：注1：音频仅支持格式：mp3、m4a、wav； 注2：上传的音频文件的时长最少应小于 8 秒； 注3：上传的音频文件大小需不超过20mb。</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.AigcAudioCloneInputFileInfo`
+        """
+        return self._PromptAudioFileInfo
+
+    @PromptAudioFileInfo.setter
+    def PromptAudioFileInfo(self, PromptAudioFileInfo):
+        self._PromptAudioFileInfo = PromptAudioFileInfo
+
+    @property
+    def PromptText(self):
+        r"""<p>示例音频对应的文本内容 需确保和音频内容一致，句末需有标点符号做结尾。</p>
+        :rtype: str
+        """
+        return self._PromptText
+
+    @PromptText.setter
+    def PromptText(self, PromptText):
+        self._PromptText = PromptText
+
+    @property
+    def Payload(self):
+        r"""<p>透传参数。  入参限制：不做任何处理，仅数据传输 注：最多 1048576个字符</p>
+        :rtype: str
+        """
+        return self._Payload
+
+    @Payload.setter
+    def Payload(self, Payload):
+        self._Payload = Payload
+
+    @property
+    def SessionId(self):
+        r"""<p>用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。</p>
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def SessionContext(self):
+        r"""<p>来源上下文，用于透传用户请求信息，音画质重生完成回调将返回该字段值，最长 1000 个字符。</p>
+        :rtype: str
+        """
+        return self._SessionContext
+
+    @SessionContext.setter
+    def SessionContext(self, SessionContext):
+        self._SessionContext = SessionContext
+
+    @property
+    def TasksPriority(self):
+        r"""<p>任务的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。</p>
+        :rtype: int
+        """
+        return self._TasksPriority
+
+    @TasksPriority.setter
+    def TasksPriority(self, TasksPriority):
+        self._TasksPriority = TasksPriority
+
+    @property
+    def ExtInfo(self):
+        r"""<p>保留字段，特殊用途时使用。</p>
+        :rtype: str
+        """
+        return self._ExtInfo
+
+    @ExtInfo.setter
+    def ExtInfo(self, ExtInfo):
+        self._ExtInfo = ExtInfo
+
+
+    def _deserialize(self, params):
+        self._SubAppId = params.get("SubAppId")
+        if params.get("AudioFileInfo") is not None:
+            self._AudioFileInfo = AigcAudioCloneInputFileInfo()
+            self._AudioFileInfo._deserialize(params.get("AudioFileInfo"))
+        self._VoiceId = params.get("VoiceId")
+        self._Text = params.get("Text")
+        if params.get("PromptAudioFileInfo") is not None:
+            self._PromptAudioFileInfo = AigcAudioCloneInputFileInfo()
+            self._PromptAudioFileInfo._deserialize(params.get("PromptAudioFileInfo"))
+        self._PromptText = params.get("PromptText")
+        self._Payload = params.get("Payload")
+        self._SessionId = params.get("SessionId")
+        self._SessionContext = params.get("SessionContext")
+        self._TasksPriority = params.get("TasksPriority")
+        self._ExtInfo = params.get("ExtInfo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAigcAudioCloneResponse(AbstractModel):
+    r"""CreateAigcAudioClone返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务ID。</p>
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务ID。</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateAigcAudioCloneTask(AbstractModel):
     r"""创建 AIGC 声音复刻任务信息。
 
@@ -94356,6 +94589,8 @@ class VideoTemplateInfo(AbstractModel):
         :type Bframes: int
         :param _HlsTime: <p>分片平均时长。0或不填表示自动，将根据视频的 GOP 等特征自动选择合适的分片时长。</p><p>取值范围：[0, 10]</p><p>单位：秒</p><p>只支持转码模板，暂不支持自适应码流模板。</p>
         :type HlsTime: int
+        :param _VideoProfile: <p>视频编码标准中对允许使用哪些编码工具或特性的一组预定义组合，适用于不同场景。</p><p>枚举值：</p><ul><li>baseline： 只支持I/P帧，并只支持无交错的场景，适用于视频通话、手机视频等场景。</li><li>main： 主流 Profile，提供I帧、P帧、B帧，并支持无交错模式和交错模式。主要用在主流的音视频消费产品如视频播放器、流媒体传输设备上。</li><li>high： 最高编码等级，在Main Profile上添加了8X8的预测，并支持自定义量化。广泛应用在蓝光存储、高清电视等场景。</li><li>default： 随原视频自动填充。  </li></ul><p>默认值：default</p><p>仅 Codec 为 libx264 时该配置项有效。</p>
+        :type VideoProfile: str
         """
         self._Codec = None
         self._Fps = None
@@ -94372,6 +94607,7 @@ class VideoTemplateInfo(AbstractModel):
         self._Mode = None
         self._Bframes = None
         self._HlsTime = None
+        self._VideoProfile = None
 
     @property
     def Codec(self):
@@ -94538,6 +94774,17 @@ class VideoTemplateInfo(AbstractModel):
     def HlsTime(self, HlsTime):
         self._HlsTime = HlsTime
 
+    @property
+    def VideoProfile(self):
+        r"""<p>视频编码标准中对允许使用哪些编码工具或特性的一组预定义组合，适用于不同场景。</p><p>枚举值：</p><ul><li>baseline： 只支持I/P帧，并只支持无交错的场景，适用于视频通话、手机视频等场景。</li><li>main： 主流 Profile，提供I帧、P帧、B帧，并支持无交错模式和交错模式。主要用在主流的音视频消费产品如视频播放器、流媒体传输设备上。</li><li>high： 最高编码等级，在Main Profile上添加了8X8的预测，并支持自定义量化。广泛应用在蓝光存储、高清电视等场景。</li><li>default： 随原视频自动填充。  </li></ul><p>默认值：default</p><p>仅 Codec 为 libx264 时该配置项有效。</p>
+        :rtype: str
+        """
+        return self._VideoProfile
+
+    @VideoProfile.setter
+    def VideoProfile(self, VideoProfile):
+        self._VideoProfile = VideoProfile
+
 
     def _deserialize(self, params):
         self._Codec = params.get("Codec")
@@ -94555,6 +94802,7 @@ class VideoTemplateInfo(AbstractModel):
         self._Mode = params.get("Mode")
         self._Bframes = params.get("Bframes")
         self._HlsTime = params.get("HlsTime")
+        self._VideoProfile = params.get("VideoProfile")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -94602,6 +94850,8 @@ class VideoTemplateInfoForUpdate(AbstractModel):
         :type Bframes: int
         :param _HlsTime: <p>分片平均时长。0或不填表示自动，将根据视频的 GOP 等特征自动选择合适的分片时长。</p><p>取值范围：[0, 10]</p><p>单位：秒</p><p>只支持转码模板，暂不支持自适应码流模板。</p>
         :type HlsTime: int
+        :param _VideoProfile: <p>视频编码标准中对允许使用哪些编码工具或特性的一组预定义组合，适用于不同场景。</p><p>枚举值：</p><ul><li>baseline： 只支持I/P帧，并只支持无交错的场景，适用于视频通话、手机视频等场景。</li><li>main： 主流 Profile，提供I帧、P帧、B帧，并支持无交错模式和交错模式。主要用在主流的音视频消费产品如视频播放器、流媒体传输设备上。</li><li>high： 最高编码等级，在Main Profile上添加了8X8的预测，并支持自定义量化。广泛应用在蓝光存储、高清电视等场景。</li><li>default： 随原视频自动填充。  </li></ul><p>默认值：default</p><p>仅 Codec 为 libx264 时该配置项有效。</p>
+        :type VideoProfile: str
         """
         self._Codec = None
         self._Fps = None
@@ -94618,6 +94868,7 @@ class VideoTemplateInfoForUpdate(AbstractModel):
         self._Mode = None
         self._Bframes = None
         self._HlsTime = None
+        self._VideoProfile = None
 
     @property
     def Codec(self):
@@ -94784,6 +95035,17 @@ class VideoTemplateInfoForUpdate(AbstractModel):
     def HlsTime(self, HlsTime):
         self._HlsTime = HlsTime
 
+    @property
+    def VideoProfile(self):
+        r"""<p>视频编码标准中对允许使用哪些编码工具或特性的一组预定义组合，适用于不同场景。</p><p>枚举值：</p><ul><li>baseline： 只支持I/P帧，并只支持无交错的场景，适用于视频通话、手机视频等场景。</li><li>main： 主流 Profile，提供I帧、P帧、B帧，并支持无交错模式和交错模式。主要用在主流的音视频消费产品如视频播放器、流媒体传输设备上。</li><li>high： 最高编码等级，在Main Profile上添加了8X8的预测，并支持自定义量化。广泛应用在蓝光存储、高清电视等场景。</li><li>default： 随原视频自动填充。  </li></ul><p>默认值：default</p><p>仅 Codec 为 libx264 时该配置项有效。</p>
+        :rtype: str
+        """
+        return self._VideoProfile
+
+    @VideoProfile.setter
+    def VideoProfile(self, VideoProfile):
+        self._VideoProfile = VideoProfile
+
 
     def _deserialize(self, params):
         self._Codec = params.get("Codec")
@@ -94801,6 +95063,7 @@ class VideoTemplateInfoForUpdate(AbstractModel):
         self._Mode = params.get("Mode")
         self._Bframes = params.get("Bframes")
         self._HlsTime = params.get("HlsTime")
+        self._VideoProfile = params.get("VideoProfile")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

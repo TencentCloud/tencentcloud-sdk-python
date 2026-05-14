@@ -25,24 +25,26 @@ class CreateSavingPlanOrderRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RegionId: 地域编码
+        :param _RegionId: <p>地域编码</p>
         :type RegionId: int
-        :param _ZoneId: 区域编码
+        :param _ZoneId: <p>区域编码</p>
         :type ZoneId: int
-        :param _PrePayType: 预付费类型
+        :param _PrePayType: <p>预付费类型</p><p>枚举值：</p><ul><li>1： 全预费</li><li>2： 部分预付</li><li>3： 不预付</li></ul>
         :type PrePayType: str
-        :param _TimeSpan: 时长
+        :param _TimeSpan: <p>时长</p>
         :type TimeSpan: int
-        :param _TimeUnit: 时长单位
+        :param _TimeUnit: <p>时长单位</p>
         :type TimeUnit: str
-        :param _CommodityCode: 商品唯一标识
+        :param _CommodityCode: <p>商品唯一标识</p>
         :type CommodityCode: str
-        :param _PromiseUseAmount: 承诺时长内的小额金额（单位：元）
+        :param _PromiseUseAmount: <p>承诺时长内的小额金额（单位：元）</p>
         :type PromiseUseAmount: int
-        :param _SpecifyEffectTime: 节省计划的指定生效时间，若不传则为当前下单时间。传参数格式:"2023-10-01 00:00:00"，仅支持指定日期的0点时刻
+        :param _SpecifyEffectTime: <p>节省计划的指定生效时间，若不传则为当前下单时间。传参数格式:&quot;2023-10-01 00:00:00&quot;，仅支持指定日期的0点时刻</p>
         :type SpecifyEffectTime: str
-        :param _ClientToken: 可重入ID
+        :param _ClientToken: <p>可重入ID</p>
         :type ClientToken: str
+        :param _CommitmentPeriod: <p>节省计划结算类型</p><p>枚举值：</p><ul><li>1： 小时结算包</li><li>2： 日结算包</li><li>3： 月结算包</li></ul><p>默认值：1</p><p>不填写是默认是小时结算包</p>
+        :type CommitmentPeriod: int
         """
         self._RegionId = None
         self._ZoneId = None
@@ -53,10 +55,11 @@ class CreateSavingPlanOrderRequest(AbstractModel):
         self._PromiseUseAmount = None
         self._SpecifyEffectTime = None
         self._ClientToken = None
+        self._CommitmentPeriod = None
 
     @property
     def RegionId(self):
-        r"""地域编码
+        r"""<p>地域编码</p>
         :rtype: int
         """
         return self._RegionId
@@ -67,7 +70,7 @@ class CreateSavingPlanOrderRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        r"""区域编码
+        r"""<p>区域编码</p>
         :rtype: int
         """
         return self._ZoneId
@@ -78,7 +81,7 @@ class CreateSavingPlanOrderRequest(AbstractModel):
 
     @property
     def PrePayType(self):
-        r"""预付费类型
+        r"""<p>预付费类型</p><p>枚举值：</p><ul><li>1： 全预费</li><li>2： 部分预付</li><li>3： 不预付</li></ul>
         :rtype: str
         """
         return self._PrePayType
@@ -89,7 +92,7 @@ class CreateSavingPlanOrderRequest(AbstractModel):
 
     @property
     def TimeSpan(self):
-        r"""时长
+        r"""<p>时长</p>
         :rtype: int
         """
         return self._TimeSpan
@@ -100,7 +103,7 @@ class CreateSavingPlanOrderRequest(AbstractModel):
 
     @property
     def TimeUnit(self):
-        r"""时长单位
+        r"""<p>时长单位</p>
         :rtype: str
         """
         return self._TimeUnit
@@ -111,7 +114,7 @@ class CreateSavingPlanOrderRequest(AbstractModel):
 
     @property
     def CommodityCode(self):
-        r"""商品唯一标识
+        r"""<p>商品唯一标识</p>
         :rtype: str
         """
         return self._CommodityCode
@@ -122,7 +125,7 @@ class CreateSavingPlanOrderRequest(AbstractModel):
 
     @property
     def PromiseUseAmount(self):
-        r"""承诺时长内的小额金额（单位：元）
+        r"""<p>承诺时长内的小额金额（单位：元）</p>
         :rtype: int
         """
         return self._PromiseUseAmount
@@ -133,7 +136,7 @@ class CreateSavingPlanOrderRequest(AbstractModel):
 
     @property
     def SpecifyEffectTime(self):
-        r"""节省计划的指定生效时间，若不传则为当前下单时间。传参数格式:"2023-10-01 00:00:00"，仅支持指定日期的0点时刻
+        r"""<p>节省计划的指定生效时间，若不传则为当前下单时间。传参数格式:&quot;2023-10-01 00:00:00&quot;，仅支持指定日期的0点时刻</p>
         :rtype: str
         """
         return self._SpecifyEffectTime
@@ -144,7 +147,7 @@ class CreateSavingPlanOrderRequest(AbstractModel):
 
     @property
     def ClientToken(self):
-        r"""可重入ID
+        r"""<p>可重入ID</p>
         :rtype: str
         """
         return self._ClientToken
@@ -152,6 +155,17 @@ class CreateSavingPlanOrderRequest(AbstractModel):
     @ClientToken.setter
     def ClientToken(self, ClientToken):
         self._ClientToken = ClientToken
+
+    @property
+    def CommitmentPeriod(self):
+        r"""<p>节省计划结算类型</p><p>枚举值：</p><ul><li>1： 小时结算包</li><li>2： 日结算包</li><li>3： 月结算包</li></ul><p>默认值：1</p><p>不填写是默认是小时结算包</p>
+        :rtype: int
+        """
+        return self._CommitmentPeriod
+
+    @CommitmentPeriod.setter
+    def CommitmentPeriod(self, CommitmentPeriod):
+        self._CommitmentPeriod = CommitmentPeriod
 
 
     def _deserialize(self, params):
@@ -164,6 +178,7 @@ class CreateSavingPlanOrderRequest(AbstractModel):
         self._PromiseUseAmount = params.get("PromiseUseAmount")
         self._SpecifyEffectTime = params.get("SpecifyEffectTime")
         self._ClientToken = params.get("ClientToken")
+        self._CommitmentPeriod = params.get("CommitmentPeriod")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -181,7 +196,7 @@ class CreateSavingPlanOrderResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BigDealId: 订单号
+        :param _BigDealId: <p>订单号</p>
         :type BigDealId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -191,7 +206,7 @@ class CreateSavingPlanOrderResponse(AbstractModel):
 
     @property
     def BigDealId(self):
-        r"""订单号
+        r"""<p>订单号</p>
         :rtype: str
         """
         return self._BigDealId

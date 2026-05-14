@@ -41452,17 +41452,17 @@ class VpcEndpointInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _VpcId: vpc的id
+        :param _VpcId: <p>vpc的id</p>
         :type VpcId: str
-        :param _SubnetId: 子网id
+        :param _SubnetId: <p>子网id</p>
         :type SubnetId: str
-        :param _VpcEndpoint: vpc接入点信息
+        :param _VpcEndpoint: <p>vpc接入点信息</p>
         :type VpcEndpoint: str
-        :param _VpcDataStreamEndpointStatus: vpc接入点状态 OFF/ON/CREATING/DELETING
+        :param _VpcDataStreamEndpointStatus: <p>vpc接入点状态 OFF/ON/CREATING/DELETING</p>
         :type VpcDataStreamEndpointStatus: str
-        :param _VpcTlsEndpoint: TLS加密的数据流接入点
+        :param _VpcTlsEndpoint: <p>TLS加密的数据流接入点</p>
         :type VpcTlsEndpoint: str
-        :param _VpcErrorMessage: VPC 接入点操作失败的错误信息
+        :param _VpcErrorMessage: <p>VPC 接入点操作失败的错误信息</p>
         :type VpcErrorMessage: str
         """
         self._VpcId = None
@@ -41474,7 +41474,7 @@ class VpcEndpointInfo(AbstractModel):
 
     @property
     def VpcId(self):
-        r"""vpc的id
+        r"""<p>vpc的id</p>
         :rtype: str
         """
         return self._VpcId
@@ -41485,7 +41485,7 @@ class VpcEndpointInfo(AbstractModel):
 
     @property
     def SubnetId(self):
-        r"""子网id
+        r"""<p>子网id</p>
         :rtype: str
         """
         return self._SubnetId
@@ -41496,7 +41496,7 @@ class VpcEndpointInfo(AbstractModel):
 
     @property
     def VpcEndpoint(self):
-        r"""vpc接入点信息
+        r"""<p>vpc接入点信息</p>
         :rtype: str
         """
         return self._VpcEndpoint
@@ -41507,7 +41507,7 @@ class VpcEndpointInfo(AbstractModel):
 
     @property
     def VpcDataStreamEndpointStatus(self):
-        r"""vpc接入点状态 OFF/ON/CREATING/DELETING
+        r"""<p>vpc接入点状态 OFF/ON/CREATING/DELETING</p>
         :rtype: str
         """
         return self._VpcDataStreamEndpointStatus
@@ -41518,7 +41518,7 @@ class VpcEndpointInfo(AbstractModel):
 
     @property
     def VpcTlsEndpoint(self):
-        r"""TLS加密的数据流接入点
+        r"""<p>TLS加密的数据流接入点</p>
         :rtype: str
         """
         return self._VpcTlsEndpoint
@@ -41529,7 +41529,7 @@ class VpcEndpointInfo(AbstractModel):
 
     @property
     def VpcErrorMessage(self):
-        r"""VPC 接入点操作失败的错误信息
+        r"""<p>VPC 接入点操作失败的错误信息</p>
         :rtype: str
         """
         return self._VpcErrorMessage

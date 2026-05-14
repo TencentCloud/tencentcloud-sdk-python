@@ -1589,65 +1589,51 @@ class InputManageMarketingRisk(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Account: 用户账号类型；默认开通QQOpenId、手机号MD5权限；如果需要使用微信OpenId入参，则需要"提交工单"或联系对接人进行资格审核，审核通过后方可正常使用微信开放账号。
-1：QQ开放账号
-2：微信开放账号
-10004：手机号MD5，中国大陆11位手机号进行MD5加密，取32位小写值
-10005：手机号SHA256，中国大陆11位手机号进行SHA256加密，取64位小写值
+        :param _Account: <p>用户账号类型；默认开通QQOpenId、手机号MD5权限；如果需要使用微信OpenId入参，则需要&quot;提交工单&quot;或联系对接人进行资格审核，审核通过后方可正常使用微信开放账号。<br>1：QQ开放账号<br>2：微信开放账号<br>10004：手机号MD5，中国大陆11位手机号进行MD5加密，取32位小写值<br>10005：手机号SHA256，中国大陆11位手机号进行SHA256加密，取64位小写值</p>
         :type Account: :class:`tencentcloud.rce.v20201103.models.AccountInfo`
-        :param _SceneCode: 场景码，用于识别和区分不同的业务场景，可在控制台上新建和管理
-控制台链接：https://console.cloud.tencent.com/rce/risk/strategy/scene-root
-活动防刷默认场景码：e_activity_antirush 
-登录保护默认场景码：e_login_protection
-注册保护默认场景码：e_register_protection
+        :param _SceneCode: <p>场景码，用于识别和区分不同的业务场景，可在控制台上新建和管理<br>控制台链接：https://console.cloud.tencent.com/rce/risk/strategy/scene-root<br>活动防刷默认场景码：e_activity_antirush<br>登录保护默认场景码：e_login_protection<br>注册保护默认场景码：e_register_protection</p>
         :type SceneCode: str
-        :param _UserIp: 用户外网ip（传入用户非外网ip会影响判断结果）。
+        :param _UserIp: <p>用户外网ip（传入用户非外网ip会影响判断结果）。</p>
         :type UserIp: str
-        :param _PostTime: 用户操作时间戳，精确到秒。
+        :param _PostTime: <p>用户操作时间戳，精确到秒。</p>
         :type PostTime: int
-        :param _UserId: 业务平台用户唯一标识，支持自定义。
+        :param _UserId: <p>业务平台用户唯一标识，支持自定义。</p>
         :type UserId: str
-        :param _DeviceToken: 设备指纹DeviceToken值，集成设备指纹后获取；如果集成了相应的设备指纹，该字段必填。
+        :param _DeviceToken: <p>设备指纹DeviceToken值，集成设备指纹后获取；如果集成了相应的设备指纹，该字段必填。</p>
         :type DeviceToken: str
-        :param _DeviceBusinessId: 设备指纹 BusinessId。
+        :param _DeviceBusinessId: <p>设备指纹 BusinessId。</p>
         :type DeviceBusinessId: int
-        :param _BusinessId: 业务ID。网站或应用在多个业务中使用此服务，通过此ID区分统计数据。
+        :param _BusinessId: <p>业务ID。网站或应用在多个业务中使用此服务，通过此ID区分统计数据。</p>
         :type BusinessId: int
-        :param _Nickname: 昵称，UTF-8 编码。
+        :param _Nickname: <p>昵称，UTF-8 编码。</p>
         :type Nickname: str
-        :param _EmailAddress: 用户邮箱地址。
+        :param _EmailAddress: <p>用户邮箱地址。</p>
         :type EmailAddress: str
-        :param _CheckDevice: 是否识别设备异常：
-0：不识别。
-1：识别。
+        :param _CheckDevice: <p>是否识别设备异常：<br>0：不识别。<br>1：识别。</p>
         :type CheckDevice: int
-        :param _CookieHash: 用户HTTP请求中的Cookie进行2次hash的值，只要保证相同Cookie的hash值一致即可。
+        :param _CookieHash: <p>用户HTTP请求中的Cookie进行2次hash的值，只要保证相同Cookie的hash值一致即可。</p>
         :type CookieHash: str
-        :param _Referer: 用户HTTP请求的Referer值。
+        :param _Referer: <p>用户HTTP请求的Referer值。</p>
         :type Referer: str
-        :param _UserAgent: 用户HTTP请求的User-Agent值。
+        :param _UserAgent: <p>用户HTTP请求的User-Agent值。</p>
         :type UserAgent: str
-        :param _XForwardedFor: 用户HTTP请求的X-Forwarded-For值。
+        :param _XForwardedFor: <p>用户HTTP请求的X-Forwarded-For值。</p>
         :type XForwardedFor: str
-        :param _MacAddress: MAC地址或设备唯一标识。
+        :param _MacAddress: <p>MAC地址或设备唯一标识。</p>
         :type MacAddress: str
-        :param _VendorId: 手机制造商ID，如果手机注册，请带上此信息。
+        :param _VendorId: <p>手机制造商ID，如果手机注册，请带上此信息。</p>
         :type VendorId: str
-        :param _DeviceType: 设备类型(已不推荐使用)。
+        :param _DeviceType: <p>设备类型(已不推荐使用)。</p>
         :type DeviceType: int
-        :param _Details: 扩展字段。
+        :param _Details: <p>扩展字段。</p>
         :type Details: list of InputDetails
-        :param _Sponsor: 邀请助力场景相关信息。
+        :param _Sponsor: <p>邀请助力场景相关信息。</p>
         :type Sponsor: :class:`tencentcloud.rce.v20201103.models.SponsorInfo`
-        :param _OnlineScam: 详情请跳转至OnlineScamInfo查看。
+        :param _OnlineScam: <p>详情请跳转至OnlineScamInfo查看。</p>
         :type OnlineScam: :class:`tencentcloud.rce.v20201103.models.OnlineScamInfo`
-        :param _Platform: 1：Android
-2：iOS
-3：H5
-4：小程序
+        :param _Platform: <p>1：Android<br>2：iOS<br>3：H5<br>4：小程序<br>5：鸿蒙</p>
         :type Platform: str
-        :param _DataAuthorization: 数据授权信息。
-注意：新接入通用业务欺诈保护（RCE）服务的客户该字段【必传】。
+        :param _DataAuthorization: <p>数据授权信息。<br>注意：新接入通用业务欺诈保护（RCE）服务的客户该字段【必传】。</p>
         :type DataAuthorization: :class:`tencentcloud.rce.v20201103.models.DataAuthorizationInfo`
         """
         self._Account = None
@@ -1676,11 +1662,7 @@ class InputManageMarketingRisk(AbstractModel):
 
     @property
     def Account(self):
-        r"""用户账号类型；默认开通QQOpenId、手机号MD5权限；如果需要使用微信OpenId入参，则需要"提交工单"或联系对接人进行资格审核，审核通过后方可正常使用微信开放账号。
-1：QQ开放账号
-2：微信开放账号
-10004：手机号MD5，中国大陆11位手机号进行MD5加密，取32位小写值
-10005：手机号SHA256，中国大陆11位手机号进行SHA256加密，取64位小写值
+        r"""<p>用户账号类型；默认开通QQOpenId、手机号MD5权限；如果需要使用微信OpenId入参，则需要&quot;提交工单&quot;或联系对接人进行资格审核，审核通过后方可正常使用微信开放账号。<br>1：QQ开放账号<br>2：微信开放账号<br>10004：手机号MD5，中国大陆11位手机号进行MD5加密，取32位小写值<br>10005：手机号SHA256，中国大陆11位手机号进行SHA256加密，取64位小写值</p>
         :rtype: :class:`tencentcloud.rce.v20201103.models.AccountInfo`
         """
         return self._Account
@@ -1691,11 +1673,7 @@ class InputManageMarketingRisk(AbstractModel):
 
     @property
     def SceneCode(self):
-        r"""场景码，用于识别和区分不同的业务场景，可在控制台上新建和管理
-控制台链接：https://console.cloud.tencent.com/rce/risk/strategy/scene-root
-活动防刷默认场景码：e_activity_antirush 
-登录保护默认场景码：e_login_protection
-注册保护默认场景码：e_register_protection
+        r"""<p>场景码，用于识别和区分不同的业务场景，可在控制台上新建和管理<br>控制台链接：https://console.cloud.tencent.com/rce/risk/strategy/scene-root<br>活动防刷默认场景码：e_activity_antirush<br>登录保护默认场景码：e_login_protection<br>注册保护默认场景码：e_register_protection</p>
         :rtype: str
         """
         return self._SceneCode
@@ -1706,7 +1684,7 @@ class InputManageMarketingRisk(AbstractModel):
 
     @property
     def UserIp(self):
-        r"""用户外网ip（传入用户非外网ip会影响判断结果）。
+        r"""<p>用户外网ip（传入用户非外网ip会影响判断结果）。</p>
         :rtype: str
         """
         return self._UserIp
@@ -1717,7 +1695,7 @@ class InputManageMarketingRisk(AbstractModel):
 
     @property
     def PostTime(self):
-        r"""用户操作时间戳，精确到秒。
+        r"""<p>用户操作时间戳，精确到秒。</p>
         :rtype: int
         """
         return self._PostTime
@@ -1728,7 +1706,7 @@ class InputManageMarketingRisk(AbstractModel):
 
     @property
     def UserId(self):
-        r"""业务平台用户唯一标识，支持自定义。
+        r"""<p>业务平台用户唯一标识，支持自定义。</p>
         :rtype: str
         """
         return self._UserId
@@ -1739,7 +1717,7 @@ class InputManageMarketingRisk(AbstractModel):
 
     @property
     def DeviceToken(self):
-        r"""设备指纹DeviceToken值，集成设备指纹后获取；如果集成了相应的设备指纹，该字段必填。
+        r"""<p>设备指纹DeviceToken值，集成设备指纹后获取；如果集成了相应的设备指纹，该字段必填。</p>
         :rtype: str
         """
         return self._DeviceToken
@@ -1750,7 +1728,7 @@ class InputManageMarketingRisk(AbstractModel):
 
     @property
     def DeviceBusinessId(self):
-        r"""设备指纹 BusinessId。
+        r"""<p>设备指纹 BusinessId。</p>
         :rtype: int
         """
         return self._DeviceBusinessId
@@ -1761,7 +1739,7 @@ class InputManageMarketingRisk(AbstractModel):
 
     @property
     def BusinessId(self):
-        r"""业务ID。网站或应用在多个业务中使用此服务，通过此ID区分统计数据。
+        r"""<p>业务ID。网站或应用在多个业务中使用此服务，通过此ID区分统计数据。</p>
         :rtype: int
         """
         return self._BusinessId
@@ -1772,7 +1750,7 @@ class InputManageMarketingRisk(AbstractModel):
 
     @property
     def Nickname(self):
-        r"""昵称，UTF-8 编码。
+        r"""<p>昵称，UTF-8 编码。</p>
         :rtype: str
         """
         return self._Nickname
@@ -1783,7 +1761,7 @@ class InputManageMarketingRisk(AbstractModel):
 
     @property
     def EmailAddress(self):
-        r"""用户邮箱地址。
+        r"""<p>用户邮箱地址。</p>
         :rtype: str
         """
         return self._EmailAddress
@@ -1794,9 +1772,7 @@ class InputManageMarketingRisk(AbstractModel):
 
     @property
     def CheckDevice(self):
-        r"""是否识别设备异常：
-0：不识别。
-1：识别。
+        r"""<p>是否识别设备异常：<br>0：不识别。<br>1：识别。</p>
         :rtype: int
         """
         return self._CheckDevice
@@ -1807,7 +1783,7 @@ class InputManageMarketingRisk(AbstractModel):
 
     @property
     def CookieHash(self):
-        r"""用户HTTP请求中的Cookie进行2次hash的值，只要保证相同Cookie的hash值一致即可。
+        r"""<p>用户HTTP请求中的Cookie进行2次hash的值，只要保证相同Cookie的hash值一致即可。</p>
         :rtype: str
         """
         return self._CookieHash
@@ -1818,7 +1794,7 @@ class InputManageMarketingRisk(AbstractModel):
 
     @property
     def Referer(self):
-        r"""用户HTTP请求的Referer值。
+        r"""<p>用户HTTP请求的Referer值。</p>
         :rtype: str
         """
         return self._Referer
@@ -1829,7 +1805,7 @@ class InputManageMarketingRisk(AbstractModel):
 
     @property
     def UserAgent(self):
-        r"""用户HTTP请求的User-Agent值。
+        r"""<p>用户HTTP请求的User-Agent值。</p>
         :rtype: str
         """
         return self._UserAgent
@@ -1840,7 +1816,7 @@ class InputManageMarketingRisk(AbstractModel):
 
     @property
     def XForwardedFor(self):
-        r"""用户HTTP请求的X-Forwarded-For值。
+        r"""<p>用户HTTP请求的X-Forwarded-For值。</p>
         :rtype: str
         """
         return self._XForwardedFor
@@ -1851,7 +1827,7 @@ class InputManageMarketingRisk(AbstractModel):
 
     @property
     def MacAddress(self):
-        r"""MAC地址或设备唯一标识。
+        r"""<p>MAC地址或设备唯一标识。</p>
         :rtype: str
         """
         return self._MacAddress
@@ -1862,7 +1838,7 @@ class InputManageMarketingRisk(AbstractModel):
 
     @property
     def VendorId(self):
-        r"""手机制造商ID，如果手机注册，请带上此信息。
+        r"""<p>手机制造商ID，如果手机注册，请带上此信息。</p>
         :rtype: str
         """
         return self._VendorId
@@ -1873,7 +1849,7 @@ class InputManageMarketingRisk(AbstractModel):
 
     @property
     def DeviceType(self):
-        r"""设备类型(已不推荐使用)。
+        r"""<p>设备类型(已不推荐使用)。</p>
         :rtype: int
         """
         return self._DeviceType
@@ -1884,7 +1860,7 @@ class InputManageMarketingRisk(AbstractModel):
 
     @property
     def Details(self):
-        r"""扩展字段。
+        r"""<p>扩展字段。</p>
         :rtype: list of InputDetails
         """
         return self._Details
@@ -1895,7 +1871,7 @@ class InputManageMarketingRisk(AbstractModel):
 
     @property
     def Sponsor(self):
-        r"""邀请助力场景相关信息。
+        r"""<p>邀请助力场景相关信息。</p>
         :rtype: :class:`tencentcloud.rce.v20201103.models.SponsorInfo`
         """
         return self._Sponsor
@@ -1906,7 +1882,7 @@ class InputManageMarketingRisk(AbstractModel):
 
     @property
     def OnlineScam(self):
-        r"""详情请跳转至OnlineScamInfo查看。
+        r"""<p>详情请跳转至OnlineScamInfo查看。</p>
         :rtype: :class:`tencentcloud.rce.v20201103.models.OnlineScamInfo`
         """
         return self._OnlineScam
@@ -1917,10 +1893,7 @@ class InputManageMarketingRisk(AbstractModel):
 
     @property
     def Platform(self):
-        r"""1：Android
-2：iOS
-3：H5
-4：小程序
+        r"""<p>1：Android<br>2：iOS<br>3：H5<br>4：小程序<br>5：鸿蒙</p>
         :rtype: str
         """
         return self._Platform
@@ -1931,8 +1904,7 @@ class InputManageMarketingRisk(AbstractModel):
 
     @property
     def DataAuthorization(self):
-        r"""数据授权信息。
-注意：新接入通用业务欺诈保护（RCE）服务的客户该字段【必传】。
+        r"""<p>数据授权信息。<br>注意：新接入通用业务欺诈保护（RCE）服务的客户该字段【必传】。</p>
         :rtype: :class:`tencentcloud.rce.v20201103.models.DataAuthorizationInfo`
         """
         return self._DataAuthorization
@@ -4016,19 +3988,14 @@ class OutputManageMarketingRisk(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Code: 错误码，0 表示成功，非0表示失败错误码。
-0：成功
-1：错误
-1002：参数错误
-4300：未开通服务
-4301：后端未创建对应产品
+        :param _Code: <p>错误码，0 表示成功，非0表示失败错误码。<br>0：成功<br>1002：参数错误<br>4300：未开通服务<br>4301：后端未创建对应产品<br>6000：系统内部错误</p>
         :type Code: int
-        :param _Message: UTF-8编码，出错消息。
+        :param _Message: <p>UTF-8编码，出错消息。</p>
         :type Message: str
-        :param _Value: 业务详情。
+        :param _Value: <p>业务详情。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Value: :class:`tencentcloud.rce.v20201103.models.OutputManageMarketingRiskValue`
-        :param _UUid: 控制台显示的req_id。
+        :param _UUid: <p>控制台显示的req_id。</p>
         :type UUid: str
         """
         self._Code = None
@@ -4038,12 +4005,7 @@ class OutputManageMarketingRisk(AbstractModel):
 
     @property
     def Code(self):
-        r"""错误码，0 表示成功，非0表示失败错误码。
-0：成功
-1：错误
-1002：参数错误
-4300：未开通服务
-4301：后端未创建对应产品
+        r"""<p>错误码，0 表示成功，非0表示失败错误码。<br>0：成功<br>1002：参数错误<br>4300：未开通服务<br>4301：后端未创建对应产品<br>6000：系统内部错误</p>
         :rtype: int
         """
         return self._Code
@@ -4054,7 +4016,7 @@ class OutputManageMarketingRisk(AbstractModel):
 
     @property
     def Message(self):
-        r"""UTF-8编码，出错消息。
+        r"""<p>UTF-8编码，出错消息。</p>
         :rtype: str
         """
         return self._Message
@@ -4065,7 +4027,7 @@ class OutputManageMarketingRisk(AbstractModel):
 
     @property
     def Value(self):
-        r"""业务详情。
+        r"""<p>业务详情。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.rce.v20201103.models.OutputManageMarketingRiskValue`
         """
@@ -4077,7 +4039,7 @@ class OutputManageMarketingRisk(AbstractModel):
 
     @property
     def UUid(self):
-        r"""控制台显示的req_id。
+        r"""<p>控制台显示的req_id。</p>
         :rtype: str
         """
         return self._UUid

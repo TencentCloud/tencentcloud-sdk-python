@@ -112,6 +112,135 @@ class Convert3DFormatResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeAutoRiggingJobRequest(AbstractModel):
+    r"""DescribeAutoRiggingJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: <p>任务ID。</p>
+        :type JobId: str
+        """
+        self._JobId = None
+
+    @property
+    def JobId(self):
+        r"""<p>任务ID。</p>
+        :rtype: str
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAutoRiggingJobResponse(AbstractModel):
+    r"""DescribeAutoRiggingJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: <p>任务状态。WAIT：等待中，RUN：执行中，FAIL：任务失败，DONE：任务成功 示例值：RUN。</p>
+        :type Status: str
+        :param _ErrorCode: <p>错误码。</p>
+        :type ErrorCode: str
+        :param _ErrorMessage: <p>错误信息。</p>
+        :type ErrorMessage: str
+        :param _ResultFile3Ds: <p>生成文件的URL地址，有效期1天。</p>
+        :type ResultFile3Ds: list of File3D
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Status = None
+        self._ErrorCode = None
+        self._ErrorMessage = None
+        self._ResultFile3Ds = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        r"""<p>任务状态。WAIT：等待中，RUN：执行中，FAIL：任务失败，DONE：任务成功 示例值：RUN。</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrorCode(self):
+        r"""<p>错误码。</p>
+        :rtype: str
+        """
+        return self._ErrorCode
+
+    @ErrorCode.setter
+    def ErrorCode(self, ErrorCode):
+        self._ErrorCode = ErrorCode
+
+    @property
+    def ErrorMessage(self):
+        r"""<p>错误信息。</p>
+        :rtype: str
+        """
+        return self._ErrorMessage
+
+    @ErrorMessage.setter
+    def ErrorMessage(self, ErrorMessage):
+        self._ErrorMessage = ErrorMessage
+
+    @property
+    def ResultFile3Ds(self):
+        r"""<p>生成文件的URL地址，有效期1天。</p>
+        :rtype: list of File3D
+        """
+        return self._ResultFile3Ds
+
+    @ResultFile3Ds.setter
+    def ResultFile3Ds(self, ResultFile3Ds):
+        self._ResultFile3Ds = ResultFile3Ds
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._ErrorCode = params.get("ErrorCode")
+        self._ErrorMessage = params.get("ErrorMessage")
+        if params.get("ResultFile3Ds") is not None:
+            self._ResultFile3Ds = []
+            for item in params.get("ResultFile3Ds"):
+                obj = File3D()
+                obj._deserialize(item)
+                self._ResultFile3Ds.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeHunyuanTo3DMotionJobRequest(AbstractModel):
     r"""DescribeHunyuanTo3DMotionJob请求参数结构体
 
@@ -1339,6 +1468,102 @@ class QueryHunyuanTo3DRapidJobResponse(AbstractModel):
                 obj = File3D()
                 obj._deserialize(item)
                 self._ResultFile3Ds.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class SubmitAutoRiggingJobRequest(AbstractModel):
+    r"""SubmitAutoRiggingJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _File3D: <p>3D人物模型文件，通过输入源模型生成3D人物模型动画。<br>人物模型需为标准T-Pose文件（双臂水平展开的人物站立姿态），3D模型文件必选其一，参考值：<br>FBX：3D模型文件，格式为FBX，文件大小不超过60Mb；<br>OBJ：3D模型文件，格式为OBJ，文件大小不超过60Mb；</p>
+        :type File3D: :class:`tencentcloud.ai3d.v20250513.models.InputFile3D`
+        :param _MotionType: <p>预设动作类型，参考值：</p><ol><li>回旋踢  </li><li>左勾拳  </li><li>蓄力攻击  </li><li>蓄力出拳  </li><li>二连击打  </li><li>二连击打-2  </li><li>后撤  </li><li>受击  </li><li>受击-2  </li><li>受击-3  </li><li>受击倒地-1  </li><li>受击倒地-2  </li><li>落地  </li><li>沮丧  </li><li>割喉  </li><li>刺拳  </li><li>连续击打  </li><li>踢腿  </li><li>侧踢  </li><li>打太极  </li><li>后空翻  </li><li>蹲姿转体  </li><li>走路-1  </li><li>走路-2  </li><li>走路-3  </li><li>待机-1  </li><li>待机-2  </li><li>街舞  </li><li>扭扭舞  </li><li>左转弯  </li><li>右转弯  </li><li>慢跑  </li><li>慢跑-2  </li><li>奔跑  </li><li>冲刺跑-1  </li><li>冲刺跑-2  </li><li>冲刺跑-3  </li><li>原地跳-1  </li><li>滑铲  </li><li>向前大跳  </li><li>向前大跳-2  </li><li>跨越  </li><li>恐吓  </li><li>向前跌倒  </li><li>右转  </li><li>原地跳-2  </li><li>转身  </li><li>发送冲击波</li></ol>
+        :type MotionType: int
+        """
+        self._File3D = None
+        self._MotionType = None
+
+    @property
+    def File3D(self):
+        r"""<p>3D人物模型文件，通过输入源模型生成3D人物模型动画。<br>人物模型需为标准T-Pose文件（双臂水平展开的人物站立姿态），3D模型文件必选其一，参考值：<br>FBX：3D模型文件，格式为FBX，文件大小不超过60Mb；<br>OBJ：3D模型文件，格式为OBJ，文件大小不超过60Mb；</p>
+        :rtype: :class:`tencentcloud.ai3d.v20250513.models.InputFile3D`
+        """
+        return self._File3D
+
+    @File3D.setter
+    def File3D(self, File3D):
+        self._File3D = File3D
+
+    @property
+    def MotionType(self):
+        r"""<p>预设动作类型，参考值：</p><ol><li>回旋踢  </li><li>左勾拳  </li><li>蓄力攻击  </li><li>蓄力出拳  </li><li>二连击打  </li><li>二连击打-2  </li><li>后撤  </li><li>受击  </li><li>受击-2  </li><li>受击-3  </li><li>受击倒地-1  </li><li>受击倒地-2  </li><li>落地  </li><li>沮丧  </li><li>割喉  </li><li>刺拳  </li><li>连续击打  </li><li>踢腿  </li><li>侧踢  </li><li>打太极  </li><li>后空翻  </li><li>蹲姿转体  </li><li>走路-1  </li><li>走路-2  </li><li>走路-3  </li><li>待机-1  </li><li>待机-2  </li><li>街舞  </li><li>扭扭舞  </li><li>左转弯  </li><li>右转弯  </li><li>慢跑  </li><li>慢跑-2  </li><li>奔跑  </li><li>冲刺跑-1  </li><li>冲刺跑-2  </li><li>冲刺跑-3  </li><li>原地跳-1  </li><li>滑铲  </li><li>向前大跳  </li><li>向前大跳-2  </li><li>跨越  </li><li>恐吓  </li><li>向前跌倒  </li><li>右转  </li><li>原地跳-2  </li><li>转身  </li><li>发送冲击波</li></ol>
+        :rtype: int
+        """
+        return self._MotionType
+
+    @MotionType.setter
+    def MotionType(self, MotionType):
+        self._MotionType = MotionType
+
+
+    def _deserialize(self, params):
+        if params.get("File3D") is not None:
+            self._File3D = InputFile3D()
+            self._File3D._deserialize(params.get("File3D"))
+        self._MotionType = params.get("MotionType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SubmitAutoRiggingJobResponse(AbstractModel):
+    r"""SubmitAutoRiggingJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: <p>任务ID（有效期24小时）</p>
+        :type JobId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._JobId = None
+        self._RequestId = None
+
+    @property
+    def JobId(self):
+        r"""<p>任务ID（有效期24小时）</p>
+        :rtype: str
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
         self._RequestId = params.get("RequestId")
 
 

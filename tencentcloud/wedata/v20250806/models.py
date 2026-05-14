@@ -8439,26 +8439,28 @@ class CreateTriggerWorkflowRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProjectId: 项目ID
+        :param _ProjectId: <p>项目ID</p>
         :type ProjectId: str
-        :param _WorkflowName: 工作流名称
+        :param _WorkflowName: <p>工作流名称</p>
         :type WorkflowName: str
-        :param _ParentFolderPath: 所属文件夹路径
+        :param _ParentFolderPath: <p>所属文件夹路径</p>
         :type ParentFolderPath: str
-        :param _WorkflowDesc: 工作流描述
+        :param _WorkflowDesc: <p>工作流描述</p>
         :type WorkflowDesc: str
-        :param _OwnerUin: 工作流负责人ID
+        :param _OwnerUin: <p>工作流负责人ID</p>
         :type OwnerUin: str
-        :param _WorkflowParams: 工作流参数
+        :param _WorkflowParams: <p>工作流参数</p>
         :type WorkflowParams: list of ParamInfo
-        :param _TriggerWorkflowSchedulerConfigurations: 统一调度信息
+        :param _TriggerWorkflowSchedulerConfigurations: <p>统一调度信息</p>
         :type TriggerWorkflowSchedulerConfigurations: list of WorkflowTriggerConfig
-        :param _BundleId: BundleId项
+        :param _BundleId: <p>BundleId项</p>
         :type BundleId: str
-        :param _BundleInfo: Bundle信息
+        :param _BundleInfo: <p>Bundle信息</p>
         :type BundleInfo: str
-        :param _GeneralTaskParams: 通用参数配置
+        :param _GeneralTaskParams: <p>通用参数配置</p>
         :type GeneralTaskParams: list of WorkflowGeneralTaskParam
+        :param _TriggerWorkflowRunConfiguration: <p>工作流调度运行配置</p>
+        :type TriggerWorkflowRunConfiguration: :class:`tencentcloud.wedata.v20250806.models.WorkflowRunConfig`
         """
         self._ProjectId = None
         self._WorkflowName = None
@@ -8470,10 +8472,11 @@ class CreateTriggerWorkflowRequest(AbstractModel):
         self._BundleId = None
         self._BundleInfo = None
         self._GeneralTaskParams = None
+        self._TriggerWorkflowRunConfiguration = None
 
     @property
     def ProjectId(self):
-        r"""项目ID
+        r"""<p>项目ID</p>
         :rtype: str
         """
         return self._ProjectId
@@ -8484,7 +8487,7 @@ class CreateTriggerWorkflowRequest(AbstractModel):
 
     @property
     def WorkflowName(self):
-        r"""工作流名称
+        r"""<p>工作流名称</p>
         :rtype: str
         """
         return self._WorkflowName
@@ -8495,7 +8498,7 @@ class CreateTriggerWorkflowRequest(AbstractModel):
 
     @property
     def ParentFolderPath(self):
-        r"""所属文件夹路径
+        r"""<p>所属文件夹路径</p>
         :rtype: str
         """
         return self._ParentFolderPath
@@ -8506,7 +8509,7 @@ class CreateTriggerWorkflowRequest(AbstractModel):
 
     @property
     def WorkflowDesc(self):
-        r"""工作流描述
+        r"""<p>工作流描述</p>
         :rtype: str
         """
         return self._WorkflowDesc
@@ -8517,7 +8520,7 @@ class CreateTriggerWorkflowRequest(AbstractModel):
 
     @property
     def OwnerUin(self):
-        r"""工作流负责人ID
+        r"""<p>工作流负责人ID</p>
         :rtype: str
         """
         return self._OwnerUin
@@ -8528,7 +8531,7 @@ class CreateTriggerWorkflowRequest(AbstractModel):
 
     @property
     def WorkflowParams(self):
-        r"""工作流参数
+        r"""<p>工作流参数</p>
         :rtype: list of ParamInfo
         """
         return self._WorkflowParams
@@ -8539,7 +8542,7 @@ class CreateTriggerWorkflowRequest(AbstractModel):
 
     @property
     def TriggerWorkflowSchedulerConfigurations(self):
-        r"""统一调度信息
+        r"""<p>统一调度信息</p>
         :rtype: list of WorkflowTriggerConfig
         """
         return self._TriggerWorkflowSchedulerConfigurations
@@ -8550,7 +8553,7 @@ class CreateTriggerWorkflowRequest(AbstractModel):
 
     @property
     def BundleId(self):
-        r"""BundleId项
+        r"""<p>BundleId项</p>
         :rtype: str
         """
         return self._BundleId
@@ -8561,7 +8564,7 @@ class CreateTriggerWorkflowRequest(AbstractModel):
 
     @property
     def BundleInfo(self):
-        r"""Bundle信息
+        r"""<p>Bundle信息</p>
         :rtype: str
         """
         return self._BundleInfo
@@ -8572,7 +8575,7 @@ class CreateTriggerWorkflowRequest(AbstractModel):
 
     @property
     def GeneralTaskParams(self):
-        r"""通用参数配置
+        r"""<p>通用参数配置</p>
         :rtype: list of WorkflowGeneralTaskParam
         """
         return self._GeneralTaskParams
@@ -8580,6 +8583,17 @@ class CreateTriggerWorkflowRequest(AbstractModel):
     @GeneralTaskParams.setter
     def GeneralTaskParams(self, GeneralTaskParams):
         self._GeneralTaskParams = GeneralTaskParams
+
+    @property
+    def TriggerWorkflowRunConfiguration(self):
+        r"""<p>工作流调度运行配置</p>
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.WorkflowRunConfig`
+        """
+        return self._TriggerWorkflowRunConfiguration
+
+    @TriggerWorkflowRunConfiguration.setter
+    def TriggerWorkflowRunConfiguration(self, TriggerWorkflowRunConfiguration):
+        self._TriggerWorkflowRunConfiguration = TriggerWorkflowRunConfiguration
 
 
     def _deserialize(self, params):
@@ -8608,6 +8622,9 @@ class CreateTriggerWorkflowRequest(AbstractModel):
                 obj = WorkflowGeneralTaskParam()
                 obj._deserialize(item)
                 self._GeneralTaskParams.append(obj)
+        if params.get("TriggerWorkflowRunConfiguration") is not None:
+            self._TriggerWorkflowRunConfiguration = WorkflowRunConfig()
+            self._TriggerWorkflowRunConfiguration._deserialize(params.get("TriggerWorkflowRunConfiguration"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8625,7 +8642,7 @@ class CreateTriggerWorkflowResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 返回工作流ID
+        :param _Data: <p>返回工作流ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.wedata.v20250806.models.CreateTriggerWorkflowResult`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -8636,7 +8653,7 @@ class CreateTriggerWorkflowResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""返回工作流ID
+        r"""<p>返回工作流ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.wedata.v20250806.models.CreateTriggerWorkflowResult`
         """
@@ -57467,39 +57484,42 @@ class TriggerWorkflowDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _WorkflowName: 工作流名称
+        :param _WorkflowName: <p>工作流名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WorkflowName: str
-        :param _OwnerUin: 责任人ID
+        :param _OwnerUin: <p>责任人ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type OwnerUin: str
-        :param _CreateUserUin: 创建人ID
+        :param _CreateUserUin: <p>创建人ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateUserUin: str
-        :param _WorkflowParams: 工作流参数数组
+        :param _WorkflowParams: <p>工作流参数数组</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WorkflowParams: list of ParamInfo
-        :param _TriggerWorkflowSchedulerConfigurations: 统一调度参数
+        :param _TriggerWorkflowSchedulerConfigurations: <p>统一调度参数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TriggerWorkflowSchedulerConfigurations: list of WorkflowTriggerConfig
-        :param _WorkflowDesc: 工作流描述
+        :param _WorkflowDesc: <p>工作流描述</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WorkflowDesc: str
-        :param _Path: 工作流所属路径
+        :param _Path: <p>工作流所属路径</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Path: str
-        :param _BundleId: BundleId项
+        :param _BundleId: <p>BundleId项</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type BundleId: str
-        :param _BundleInfo: BundleInfo项
+        :param _BundleInfo: <p>BundleInfo项</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type BundleInfo: str
-        :param _GeneralTaskParams: 通用参数
+        :param _GeneralTaskParams: <p>通用参数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type GeneralTaskParams: list of WorkflowGeneralTaskParam
-        :param _SchedulerStatus: Trigger 状态 启动ACTIVE，暂停PAUSED
+        :param _SchedulerStatus: <p>Trigger 状态 启动ACTIVE，暂停PAUSED</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SchedulerStatus: str
+        :param _TriggerWorkflowRunConfiguration: <p>工作流运行参数配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TriggerWorkflowRunConfiguration: :class:`tencentcloud.wedata.v20250806.models.WorkflowRunConfig`
         """
         self._WorkflowName = None
         self._OwnerUin = None
@@ -57512,10 +57532,11 @@ class TriggerWorkflowDetail(AbstractModel):
         self._BundleInfo = None
         self._GeneralTaskParams = None
         self._SchedulerStatus = None
+        self._TriggerWorkflowRunConfiguration = None
 
     @property
     def WorkflowName(self):
-        r"""工作流名称
+        r"""<p>工作流名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -57527,7 +57548,7 @@ class TriggerWorkflowDetail(AbstractModel):
 
     @property
     def OwnerUin(self):
-        r"""责任人ID
+        r"""<p>责任人ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -57539,7 +57560,7 @@ class TriggerWorkflowDetail(AbstractModel):
 
     @property
     def CreateUserUin(self):
-        r"""创建人ID
+        r"""<p>创建人ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -57551,7 +57572,7 @@ class TriggerWorkflowDetail(AbstractModel):
 
     @property
     def WorkflowParams(self):
-        r"""工作流参数数组
+        r"""<p>工作流参数数组</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ParamInfo
         """
@@ -57563,7 +57584,7 @@ class TriggerWorkflowDetail(AbstractModel):
 
     @property
     def TriggerWorkflowSchedulerConfigurations(self):
-        r"""统一调度参数
+        r"""<p>统一调度参数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of WorkflowTriggerConfig
         """
@@ -57575,7 +57596,7 @@ class TriggerWorkflowDetail(AbstractModel):
 
     @property
     def WorkflowDesc(self):
-        r"""工作流描述
+        r"""<p>工作流描述</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -57587,7 +57608,7 @@ class TriggerWorkflowDetail(AbstractModel):
 
     @property
     def Path(self):
-        r"""工作流所属路径
+        r"""<p>工作流所属路径</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -57599,7 +57620,7 @@ class TriggerWorkflowDetail(AbstractModel):
 
     @property
     def BundleId(self):
-        r"""BundleId项
+        r"""<p>BundleId项</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -57611,7 +57632,7 @@ class TriggerWorkflowDetail(AbstractModel):
 
     @property
     def BundleInfo(self):
-        r"""BundleInfo项
+        r"""<p>BundleInfo项</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -57623,7 +57644,7 @@ class TriggerWorkflowDetail(AbstractModel):
 
     @property
     def GeneralTaskParams(self):
-        r"""通用参数
+        r"""<p>通用参数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of WorkflowGeneralTaskParam
         """
@@ -57635,7 +57656,7 @@ class TriggerWorkflowDetail(AbstractModel):
 
     @property
     def SchedulerStatus(self):
-        r"""Trigger 状态 启动ACTIVE，暂停PAUSED
+        r"""<p>Trigger 状态 启动ACTIVE，暂停PAUSED</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -57644,6 +57665,18 @@ class TriggerWorkflowDetail(AbstractModel):
     @SchedulerStatus.setter
     def SchedulerStatus(self, SchedulerStatus):
         self._SchedulerStatus = SchedulerStatus
+
+    @property
+    def TriggerWorkflowRunConfiguration(self):
+        r"""<p>工作流运行参数配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.WorkflowRunConfig`
+        """
+        return self._TriggerWorkflowRunConfiguration
+
+    @TriggerWorkflowRunConfiguration.setter
+    def TriggerWorkflowRunConfiguration(self, TriggerWorkflowRunConfiguration):
+        self._TriggerWorkflowRunConfiguration = TriggerWorkflowRunConfiguration
 
 
     def _deserialize(self, params):
@@ -57673,6 +57706,9 @@ class TriggerWorkflowDetail(AbstractModel):
                 obj._deserialize(item)
                 self._GeneralTaskParams.append(obj)
         self._SchedulerStatus = params.get("SchedulerStatus")
+        if params.get("TriggerWorkflowRunConfiguration") is not None:
+            self._TriggerWorkflowRunConfiguration = WorkflowRunConfig()
+            self._TriggerWorkflowRunConfiguration._deserialize(params.get("TriggerWorkflowRunConfiguration"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -62059,22 +62095,24 @@ class UpdateTriggerWorkflowPartially(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _WorkflowName: 工作流名称
+        :param _WorkflowName: <p>工作流名称</p>
         :type WorkflowName: str
-        :param _OwnerUin: 责任人ID
+        :param _OwnerUin: <p>责任人ID</p>
         :type OwnerUin: str
-        :param _WorkflowParams: 工作流参数数组
+        :param _WorkflowParams: <p>工作流参数数组</p>
         :type WorkflowParams: list of ParamInfo
-        :param _TriggerWorkflowSchedulerConfigurations: 统一调度参数
+        :param _TriggerWorkflowSchedulerConfigurations: <p>统一调度参数</p>
         :type TriggerWorkflowSchedulerConfigurations: list of WorkflowTriggerConfig
-        :param _WorkflowDesc: 工作流描述
+        :param _WorkflowDesc: <p>工作流描述</p>
         :type WorkflowDesc: str
-        :param _BundleId: BundleId项
+        :param _BundleId: <p>BundleId项</p>
         :type BundleId: str
-        :param _BundleInfo: BundleInfo项
+        :param _BundleInfo: <p>BundleInfo项</p>
         :type BundleInfo: str
-        :param _GeneralTaskParams: 通用参数
+        :param _GeneralTaskParams: <p>通用参数</p>
         :type GeneralTaskParams: list of WorkflowGeneralTaskParam
+        :param _TriggerWorkflowRunConfiguration: <p>工作流运行参数配置</p>
+        :type TriggerWorkflowRunConfiguration: :class:`tencentcloud.wedata.v20250806.models.WorkflowRunConfig`
         """
         self._WorkflowName = None
         self._OwnerUin = None
@@ -62084,10 +62122,11 @@ class UpdateTriggerWorkflowPartially(AbstractModel):
         self._BundleId = None
         self._BundleInfo = None
         self._GeneralTaskParams = None
+        self._TriggerWorkflowRunConfiguration = None
 
     @property
     def WorkflowName(self):
-        r"""工作流名称
+        r"""<p>工作流名称</p>
         :rtype: str
         """
         return self._WorkflowName
@@ -62098,7 +62137,7 @@ class UpdateTriggerWorkflowPartially(AbstractModel):
 
     @property
     def OwnerUin(self):
-        r"""责任人ID
+        r"""<p>责任人ID</p>
         :rtype: str
         """
         return self._OwnerUin
@@ -62109,7 +62148,7 @@ class UpdateTriggerWorkflowPartially(AbstractModel):
 
     @property
     def WorkflowParams(self):
-        r"""工作流参数数组
+        r"""<p>工作流参数数组</p>
         :rtype: list of ParamInfo
         """
         return self._WorkflowParams
@@ -62120,7 +62159,7 @@ class UpdateTriggerWorkflowPartially(AbstractModel):
 
     @property
     def TriggerWorkflowSchedulerConfigurations(self):
-        r"""统一调度参数
+        r"""<p>统一调度参数</p>
         :rtype: list of WorkflowTriggerConfig
         """
         return self._TriggerWorkflowSchedulerConfigurations
@@ -62131,7 +62170,7 @@ class UpdateTriggerWorkflowPartially(AbstractModel):
 
     @property
     def WorkflowDesc(self):
-        r"""工作流描述
+        r"""<p>工作流描述</p>
         :rtype: str
         """
         return self._WorkflowDesc
@@ -62142,7 +62181,7 @@ class UpdateTriggerWorkflowPartially(AbstractModel):
 
     @property
     def BundleId(self):
-        r"""BundleId项
+        r"""<p>BundleId项</p>
         :rtype: str
         """
         return self._BundleId
@@ -62153,7 +62192,7 @@ class UpdateTriggerWorkflowPartially(AbstractModel):
 
     @property
     def BundleInfo(self):
-        r"""BundleInfo项
+        r"""<p>BundleInfo项</p>
         :rtype: str
         """
         return self._BundleInfo
@@ -62164,7 +62203,7 @@ class UpdateTriggerWorkflowPartially(AbstractModel):
 
     @property
     def GeneralTaskParams(self):
-        r"""通用参数
+        r"""<p>通用参数</p>
         :rtype: list of WorkflowGeneralTaskParam
         """
         return self._GeneralTaskParams
@@ -62172,6 +62211,17 @@ class UpdateTriggerWorkflowPartially(AbstractModel):
     @GeneralTaskParams.setter
     def GeneralTaskParams(self, GeneralTaskParams):
         self._GeneralTaskParams = GeneralTaskParams
+
+    @property
+    def TriggerWorkflowRunConfiguration(self):
+        r"""<p>工作流运行参数配置</p>
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.WorkflowRunConfig`
+        """
+        return self._TriggerWorkflowRunConfiguration
+
+    @TriggerWorkflowRunConfiguration.setter
+    def TriggerWorkflowRunConfiguration(self, TriggerWorkflowRunConfiguration):
+        self._TriggerWorkflowRunConfiguration = TriggerWorkflowRunConfiguration
 
 
     def _deserialize(self, params):
@@ -62198,6 +62248,9 @@ class UpdateTriggerWorkflowPartially(AbstractModel):
                 obj = WorkflowGeneralTaskParam()
                 obj._deserialize(item)
                 self._GeneralTaskParams.append(obj)
+        if params.get("TriggerWorkflowRunConfiguration") is not None:
+            self._TriggerWorkflowRunConfiguration = WorkflowRunConfig()
+            self._TriggerWorkflowRunConfiguration._deserialize(params.get("TriggerWorkflowRunConfiguration"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -62371,6 +62424,8 @@ class UpdateTriggerWorkflowRequest(AbstractModel):
         :type BundleInfo: str
         :param _GeneralTaskParams: 通用参数配置
         :type GeneralTaskParams: list of WorkflowGeneralTaskParam
+        :param _TriggerWorkflowRunConfiguration: 
+        :type TriggerWorkflowRunConfiguration: :class:`tencentcloud.wedata.v20250806.models.WorkflowRunConfig`
         """
         self._ProjectId = None
         self._WorkflowId = None
@@ -62382,6 +62437,7 @@ class UpdateTriggerWorkflowRequest(AbstractModel):
         self._BundleId = None
         self._BundleInfo = None
         self._GeneralTaskParams = None
+        self._TriggerWorkflowRunConfiguration = None
 
     @property
     def ProjectId(self):
@@ -62493,6 +62549,17 @@ class UpdateTriggerWorkflowRequest(AbstractModel):
     def GeneralTaskParams(self, GeneralTaskParams):
         self._GeneralTaskParams = GeneralTaskParams
 
+    @property
+    def TriggerWorkflowRunConfiguration(self):
+        r"""
+        :rtype: :class:`tencentcloud.wedata.v20250806.models.WorkflowRunConfig`
+        """
+        return self._TriggerWorkflowRunConfiguration
+
+    @TriggerWorkflowRunConfiguration.setter
+    def TriggerWorkflowRunConfiguration(self, TriggerWorkflowRunConfiguration):
+        self._TriggerWorkflowRunConfiguration = TriggerWorkflowRunConfiguration
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
@@ -62520,6 +62587,9 @@ class UpdateTriggerWorkflowRequest(AbstractModel):
                 obj = WorkflowGeneralTaskParam()
                 obj._deserialize(item)
                 self._GeneralTaskParams.append(obj)
+        if params.get("TriggerWorkflowRunConfiguration") is not None:
+            self._TriggerWorkflowRunConfiguration = WorkflowRunConfig()
+            self._TriggerWorkflowRunConfiguration._deserialize(params.get("TriggerWorkflowRunConfiguration"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -63899,6 +63969,61 @@ class WorkflowPermissionPage(AbstractModel):
                 obj = WorkflowPermission()
                 obj._deserialize(item)
                 self._Items.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WorkflowRunConfig(AbstractModel):
+    r"""工作流运行配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MaxConcurrentNum: <p>工作流运行最大并发数，取值范围：[1, 1000]</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxConcurrentNum: int
+        :param _QueuingMode: <p>1：开启  0：关闭<br>当工作流达到最大并发上限时，若开启，新工作流运行排队等待，直到其他运行释放并发，最大等待时长为48小时，超过则自动跳过不再执行；若关闭，新工作流直接跳过结束。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QueuingMode: int
+        """
+        self._MaxConcurrentNum = None
+        self._QueuingMode = None
+
+    @property
+    def MaxConcurrentNum(self):
+        r"""<p>工作流运行最大并发数，取值范围：[1, 1000]</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._MaxConcurrentNum
+
+    @MaxConcurrentNum.setter
+    def MaxConcurrentNum(self, MaxConcurrentNum):
+        self._MaxConcurrentNum = MaxConcurrentNum
+
+    @property
+    def QueuingMode(self):
+        r"""<p>1：开启  0：关闭<br>当工作流达到最大并发上限时，若开启，新工作流运行排队等待，直到其他运行释放并发，最大等待时长为48小时，超过则自动跳过不再执行；若关闭，新工作流直接跳过结束。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._QueuingMode
+
+    @QueuingMode.setter
+    def QueuingMode(self, QueuingMode):
+        self._QueuingMode = QueuingMode
+
+
+    def _deserialize(self, params):
+        self._MaxConcurrentNum = params.get("MaxConcurrentNum")
+        self._QueuingMode = params.get("QueuingMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
