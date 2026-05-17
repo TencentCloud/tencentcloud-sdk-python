@@ -3586,17 +3586,17 @@ class RestoreTask(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RestoreTaskId: 回热任务ID
+        :param _RestoreTaskId: <p>回热任务ID</p>
         :type RestoreTaskId: int
-        :param _FilePath: 回热任务文件路径
+        :param _FilePath: <p>回热任务文件路径，不支持目录和通配符</p>
         :type FilePath: str
-        :param _Type: 回热任务类型（1：标准；2：极速；3：批量，暂时仅支持标准）
+        :param _Type: <p>回热任务类型（1：标准；2：极速；3：批量，暂时仅支持标准）</p>
         :type Type: int
-        :param _Days: 指定恢复出的临时副本的有效时长（单位天）
+        :param _Days: <p>指定恢复出的临时副本的有效时长（单位天）</p>
         :type Days: int
-        :param _Status: 回热任务状态（1：绑定文件中；2：绑定文件完成；3：文件回热中；4：文件回热完成）
+        :param _Status: <p>回热任务状态（1：绑定文件中；2：绑定文件完成；3：文件回热中；4：文件回热完成）</p>
         :type Status: int
-        :param _CreateTime: 创建时间
+        :param _CreateTime: <p>创建时间</p>
         :type CreateTime: str
         """
         self._RestoreTaskId = None
@@ -3608,7 +3608,7 @@ class RestoreTask(AbstractModel):
 
     @property
     def RestoreTaskId(self):
-        r"""回热任务ID
+        r"""<p>回热任务ID</p>
         :rtype: int
         """
         return self._RestoreTaskId
@@ -3619,7 +3619,7 @@ class RestoreTask(AbstractModel):
 
     @property
     def FilePath(self):
-        r"""回热任务文件路径
+        r"""<p>回热任务文件路径，不支持目录和通配符</p>
         :rtype: str
         """
         return self._FilePath
@@ -3630,7 +3630,7 @@ class RestoreTask(AbstractModel):
 
     @property
     def Type(self):
-        r"""回热任务类型（1：标准；2：极速；3：批量，暂时仅支持标准）
+        r"""<p>回热任务类型（1：标准；2：极速；3：批量，暂时仅支持标准）</p>
         :rtype: int
         """
         return self._Type
@@ -3641,7 +3641,7 @@ class RestoreTask(AbstractModel):
 
     @property
     def Days(self):
-        r"""指定恢复出的临时副本的有效时长（单位天）
+        r"""<p>指定恢复出的临时副本的有效时长（单位天）</p>
         :rtype: int
         """
         return self._Days
@@ -3652,7 +3652,7 @@ class RestoreTask(AbstractModel):
 
     @property
     def Status(self):
-        r"""回热任务状态（1：绑定文件中；2：绑定文件完成；3：文件回热中；4：文件回热完成）
+        r"""<p>回热任务状态（1：绑定文件中；2：绑定文件完成；3：文件回热中；4：文件回热完成）</p>
         :rtype: int
         """
         return self._Status
@@ -3663,7 +3663,7 @@ class RestoreTask(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
         :rtype: str
         """
         return self._CreateTime

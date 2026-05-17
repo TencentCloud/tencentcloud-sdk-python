@@ -39817,28 +39817,29 @@ class DescribeProcedureTemplatesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        :param _SubAppId: <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
         :type SubAppId: int
-        :param _Names: 任务流模板名字过滤条件，数组长度限制：100。
+        :param _Names: <p>任务流模板名字过滤条件，数组长度限制：100。</p>
         :type Names: list of str
-        :param _Type: 任务流模板类型过滤条件，可选值：
-<li>Preset：系统预置任务流模板；</li>
-<li>Custom：用户自定义任务流模板。</li>
+        :param _Type: <p>任务流模板类型过滤条件，可选值：</p><li>Preset：系统预置任务流模板；</li><li>Custom：用户自定义任务流模板。</li>
         :type Type: str
-        :param _Offset: 分页偏移量，默认值：0。
+        :param _Offset: <p>分页偏移量，默认值：0。</p>
         :type Offset: int
-        :param _Limit: 返回记录条数，默认值：10，最大值：100。
+        :param _Limit: <p>返回记录条数，默认值：10，最大值：100。</p>
         :type Limit: int
+        :param _SortBy: <p>指定字段对返回结果进行生序或者降序Sort.Field 目前只支持 CreateTime 。Sort.Order 为 desc（降序）或者 asc（升序）</p><p>入参限制：当前仅支持排序字段为CreateTime</p>
+        :type SortBy: list of SortBy
         """
         self._SubAppId = None
         self._Names = None
         self._Type = None
         self._Offset = None
         self._Limit = None
+        self._SortBy = None
 
     @property
     def SubAppId(self):
-        r"""<b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        r"""<p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
         :rtype: int
         """
         return self._SubAppId
@@ -39849,7 +39850,7 @@ class DescribeProcedureTemplatesRequest(AbstractModel):
 
     @property
     def Names(self):
-        r"""任务流模板名字过滤条件，数组长度限制：100。
+        r"""<p>任务流模板名字过滤条件，数组长度限制：100。</p>
         :rtype: list of str
         """
         return self._Names
@@ -39860,9 +39861,7 @@ class DescribeProcedureTemplatesRequest(AbstractModel):
 
     @property
     def Type(self):
-        r"""任务流模板类型过滤条件，可选值：
-<li>Preset：系统预置任务流模板；</li>
-<li>Custom：用户自定义任务流模板。</li>
+        r"""<p>任务流模板类型过滤条件，可选值：</p><li>Preset：系统预置任务流模板；</li><li>Custom：用户自定义任务流模板。</li>
         :rtype: str
         """
         return self._Type
@@ -39873,7 +39872,7 @@ class DescribeProcedureTemplatesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""分页偏移量，默认值：0。
+        r"""<p>分页偏移量，默认值：0。</p>
         :rtype: int
         """
         return self._Offset
@@ -39884,7 +39883,7 @@ class DescribeProcedureTemplatesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""返回记录条数，默认值：10，最大值：100。
+        r"""<p>返回记录条数，默认值：10，最大值：100。</p>
         :rtype: int
         """
         return self._Limit
@@ -39893,6 +39892,17 @@ class DescribeProcedureTemplatesRequest(AbstractModel):
     def Limit(self, Limit):
         self._Limit = Limit
 
+    @property
+    def SortBy(self):
+        r"""<p>指定字段对返回结果进行生序或者降序Sort.Field 目前只支持 CreateTime 。Sort.Order 为 desc（降序）或者 asc（升序）</p><p>入参限制：当前仅支持排序字段为CreateTime</p>
+        :rtype: list of SortBy
+        """
+        return self._SortBy
+
+    @SortBy.setter
+    def SortBy(self, SortBy):
+        self._SortBy = SortBy
+
 
     def _deserialize(self, params):
         self._SubAppId = params.get("SubAppId")
@@ -39900,6 +39910,12 @@ class DescribeProcedureTemplatesRequest(AbstractModel):
         self._Type = params.get("Type")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
+        if params.get("SortBy") is not None:
+            self._SortBy = []
+            for item in params.get("SortBy"):
+                obj = SortBy()
+                obj._deserialize(item)
+                self._SortBy.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -39917,9 +39933,9 @@ class DescribeProcedureTemplatesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 符合过滤条件的记录总数。
+        :param _TotalCount: <p>符合过滤条件的记录总数。</p>
         :type TotalCount: int
-        :param _ProcedureTemplateSet: 任务流模板详情列表。
+        :param _ProcedureTemplateSet: <p>任务流模板详情列表。</p>
         :type ProcedureTemplateSet: list of ProcedureTemplate
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -39930,7 +39946,7 @@ class DescribeProcedureTemplatesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""符合过滤条件的记录总数。
+        r"""<p>符合过滤条件的记录总数。</p>
         :rtype: int
         """
         return self._TotalCount
@@ -39941,7 +39957,7 @@ class DescribeProcedureTemplatesResponse(AbstractModel):
 
     @property
     def ProcedureTemplateSet(self):
-        r"""任务流模板详情列表。
+        r"""<p>任务流模板详情列表。</p>
         :rtype: list of ProcedureTemplate
         """
         return self._ProcedureTemplateSet

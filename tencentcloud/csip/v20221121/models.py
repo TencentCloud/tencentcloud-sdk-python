@@ -11848,6 +11848,4294 @@ class CommandPluginState(AbstractModel):
         
 
 
+class CosAccessInfo(AbstractModel):
+    r"""cos访问权限信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AccessUin: 可访问账号uin
+        :type AccessUin: str
+        :param _AccessUid: 可访问账号uid
+        :type AccessUid: str
+        :param _NickName: 昵称
+        :type NickName: str
+        :param _Identity: 身份标识 
+1 主账号
+2 子账号
+        :type Identity: int
+        :param _MainNickName: 所属主账号名称
+        :type MainNickName: str
+        :param _AkList: 可访问ak列表
+        :type AkList: list of str
+        :param _CamPolicyCount: 可访问权限数
+        :type CamPolicyCount: int
+        :param _UpdateTime: 修改时间Unix时间单位毫秒
+        :type UpdateTime: int
+        """
+        self._AccessUin = None
+        self._AccessUid = None
+        self._NickName = None
+        self._Identity = None
+        self._MainNickName = None
+        self._AkList = None
+        self._CamPolicyCount = None
+        self._UpdateTime = None
+
+    @property
+    def AccessUin(self):
+        r"""可访问账号uin
+        :rtype: str
+        """
+        return self._AccessUin
+
+    @AccessUin.setter
+    def AccessUin(self, AccessUin):
+        self._AccessUin = AccessUin
+
+    @property
+    def AccessUid(self):
+        r"""可访问账号uid
+        :rtype: str
+        """
+        return self._AccessUid
+
+    @AccessUid.setter
+    def AccessUid(self, AccessUid):
+        self._AccessUid = AccessUid
+
+    @property
+    def NickName(self):
+        r"""昵称
+        :rtype: str
+        """
+        return self._NickName
+
+    @NickName.setter
+    def NickName(self, NickName):
+        self._NickName = NickName
+
+    @property
+    def Identity(self):
+        r"""身份标识 
+1 主账号
+2 子账号
+        :rtype: int
+        """
+        return self._Identity
+
+    @Identity.setter
+    def Identity(self, Identity):
+        self._Identity = Identity
+
+    @property
+    def MainNickName(self):
+        r"""所属主账号名称
+        :rtype: str
+        """
+        return self._MainNickName
+
+    @MainNickName.setter
+    def MainNickName(self, MainNickName):
+        self._MainNickName = MainNickName
+
+    @property
+    def AkList(self):
+        r"""可访问ak列表
+        :rtype: list of str
+        """
+        return self._AkList
+
+    @AkList.setter
+    def AkList(self, AkList):
+        self._AkList = AkList
+
+    @property
+    def CamPolicyCount(self):
+        r"""可访问权限数
+        :rtype: int
+        """
+        return self._CamPolicyCount
+
+    @CamPolicyCount.setter
+    def CamPolicyCount(self, CamPolicyCount):
+        self._CamPolicyCount = CamPolicyCount
+
+    @property
+    def UpdateTime(self):
+        r"""修改时间Unix时间单位毫秒
+        :rtype: int
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._AccessUin = params.get("AccessUin")
+        self._AccessUid = params.get("AccessUid")
+        self._NickName = params.get("NickName")
+        self._Identity = params.get("Identity")
+        self._MainNickName = params.get("MainNickName")
+        self._AkList = params.get("AkList")
+        self._CamPolicyCount = params.get("CamPolicyCount")
+        self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CosActionInfo(AbstractModel):
+    r"""cos命令信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ActionName: 接口名
+        :type ActionName: str
+        :param _ActionNameCn: 接口中文名
+        :type ActionNameCn: str
+        :param _ActionDescription: 接口描述
+        :type ActionDescription: str
+        """
+        self._ActionName = None
+        self._ActionNameCn = None
+        self._ActionDescription = None
+
+    @property
+    def ActionName(self):
+        r"""接口名
+        :rtype: str
+        """
+        return self._ActionName
+
+    @ActionName.setter
+    def ActionName(self, ActionName):
+        self._ActionName = ActionName
+
+    @property
+    def ActionNameCn(self):
+        r"""接口中文名
+        :rtype: str
+        """
+        return self._ActionNameCn
+
+    @ActionNameCn.setter
+    def ActionNameCn(self, ActionNameCn):
+        self._ActionNameCn = ActionNameCn
+
+    @property
+    def ActionDescription(self):
+        r"""接口描述
+        :rtype: str
+        """
+        return self._ActionDescription
+
+    @ActionDescription.setter
+    def ActionDescription(self, ActionDescription):
+        self._ActionDescription = ActionDescription
+
+
+    def _deserialize(self, params):
+        self._ActionName = params.get("ActionName")
+        self._ActionNameCn = params.get("ActionNameCn")
+        self._ActionDescription = params.get("ActionDescription")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CosAkAssetInfo(AbstractModel):
+    r"""cos关联ak资产信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: appid
+        :type AppId: int
+        :param _AkId: ak id
+        :type AkId: str
+        :param _AkName: ak名称
+        :type AkName: str
+        :param _AkRemark: ak备注
+        :type AkRemark: str
+        :param _AkOwnerUin: ak所属uin
+        :type AkOwnerUin: str
+        :param _AkOwnerType: ak类型 1 主 2 子
+        :type AkOwnerType: int
+        :param _AkOwnerName: ak所属账号名
+        :type AkOwnerName: str
+        :param _AkMainOwnerName: ak主账号名
+        :type AkMainOwnerName: str
+        :param _AkRelBucketSet: ak关联桶集合
+        :type AkRelBucketSet: list of str
+        :param _AkRelAlarmSet: ak关联告警集合
+        :type AkRelAlarmSet: list of CosRiskInfo
+        :param _AkRelIpCount: Ak关联ip数
+        :type AkRelIpCount: int
+        :param _AkStatus: ak状态 0 禁用 1 启用
+        :type AkStatus: int
+        :param _CreateTimestamp: 创建时间
+        :type CreateTimestamp: int
+        :param _LastAccessTimestamp: 最后访问时间
+        :type LastAccessTimestamp: int
+        """
+        self._AppId = None
+        self._AkId = None
+        self._AkName = None
+        self._AkRemark = None
+        self._AkOwnerUin = None
+        self._AkOwnerType = None
+        self._AkOwnerName = None
+        self._AkMainOwnerName = None
+        self._AkRelBucketSet = None
+        self._AkRelAlarmSet = None
+        self._AkRelIpCount = None
+        self._AkStatus = None
+        self._CreateTimestamp = None
+        self._LastAccessTimestamp = None
+
+    @property
+    def AppId(self):
+        r"""appid
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def AkId(self):
+        r"""ak id
+        :rtype: str
+        """
+        return self._AkId
+
+    @AkId.setter
+    def AkId(self, AkId):
+        self._AkId = AkId
+
+    @property
+    def AkName(self):
+        r"""ak名称
+        :rtype: str
+        """
+        return self._AkName
+
+    @AkName.setter
+    def AkName(self, AkName):
+        self._AkName = AkName
+
+    @property
+    def AkRemark(self):
+        r"""ak备注
+        :rtype: str
+        """
+        return self._AkRemark
+
+    @AkRemark.setter
+    def AkRemark(self, AkRemark):
+        self._AkRemark = AkRemark
+
+    @property
+    def AkOwnerUin(self):
+        r"""ak所属uin
+        :rtype: str
+        """
+        return self._AkOwnerUin
+
+    @AkOwnerUin.setter
+    def AkOwnerUin(self, AkOwnerUin):
+        self._AkOwnerUin = AkOwnerUin
+
+    @property
+    def AkOwnerType(self):
+        r"""ak类型 1 主 2 子
+        :rtype: int
+        """
+        return self._AkOwnerType
+
+    @AkOwnerType.setter
+    def AkOwnerType(self, AkOwnerType):
+        self._AkOwnerType = AkOwnerType
+
+    @property
+    def AkOwnerName(self):
+        r"""ak所属账号名
+        :rtype: str
+        """
+        return self._AkOwnerName
+
+    @AkOwnerName.setter
+    def AkOwnerName(self, AkOwnerName):
+        self._AkOwnerName = AkOwnerName
+
+    @property
+    def AkMainOwnerName(self):
+        r"""ak主账号名
+        :rtype: str
+        """
+        return self._AkMainOwnerName
+
+    @AkMainOwnerName.setter
+    def AkMainOwnerName(self, AkMainOwnerName):
+        self._AkMainOwnerName = AkMainOwnerName
+
+    @property
+    def AkRelBucketSet(self):
+        r"""ak关联桶集合
+        :rtype: list of str
+        """
+        return self._AkRelBucketSet
+
+    @AkRelBucketSet.setter
+    def AkRelBucketSet(self, AkRelBucketSet):
+        self._AkRelBucketSet = AkRelBucketSet
+
+    @property
+    def AkRelAlarmSet(self):
+        r"""ak关联告警集合
+        :rtype: list of CosRiskInfo
+        """
+        return self._AkRelAlarmSet
+
+    @AkRelAlarmSet.setter
+    def AkRelAlarmSet(self, AkRelAlarmSet):
+        self._AkRelAlarmSet = AkRelAlarmSet
+
+    @property
+    def AkRelIpCount(self):
+        r"""Ak关联ip数
+        :rtype: int
+        """
+        return self._AkRelIpCount
+
+    @AkRelIpCount.setter
+    def AkRelIpCount(self, AkRelIpCount):
+        self._AkRelIpCount = AkRelIpCount
+
+    @property
+    def AkStatus(self):
+        r"""ak状态 0 禁用 1 启用
+        :rtype: int
+        """
+        return self._AkStatus
+
+    @AkStatus.setter
+    def AkStatus(self, AkStatus):
+        self._AkStatus = AkStatus
+
+    @property
+    def CreateTimestamp(self):
+        r"""创建时间
+        :rtype: int
+        """
+        return self._CreateTimestamp
+
+    @CreateTimestamp.setter
+    def CreateTimestamp(self, CreateTimestamp):
+        self._CreateTimestamp = CreateTimestamp
+
+    @property
+    def LastAccessTimestamp(self):
+        r"""最后访问时间
+        :rtype: int
+        """
+        return self._LastAccessTimestamp
+
+    @LastAccessTimestamp.setter
+    def LastAccessTimestamp(self, LastAccessTimestamp):
+        self._LastAccessTimestamp = LastAccessTimestamp
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._AkId = params.get("AkId")
+        self._AkName = params.get("AkName")
+        self._AkRemark = params.get("AkRemark")
+        self._AkOwnerUin = params.get("AkOwnerUin")
+        self._AkOwnerType = params.get("AkOwnerType")
+        self._AkOwnerName = params.get("AkOwnerName")
+        self._AkMainOwnerName = params.get("AkMainOwnerName")
+        self._AkRelBucketSet = params.get("AkRelBucketSet")
+        if params.get("AkRelAlarmSet") is not None:
+            self._AkRelAlarmSet = []
+            for item in params.get("AkRelAlarmSet"):
+                obj = CosRiskInfo()
+                obj._deserialize(item)
+                self._AkRelAlarmSet.append(obj)
+        self._AkRelIpCount = params.get("AkRelIpCount")
+        self._AkStatus = params.get("AkStatus")
+        self._CreateTimestamp = params.get("CreateTimestamp")
+        self._LastAccessTimestamp = params.get("LastAccessTimestamp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CosAkSet(AbstractModel):
+    r"""cos ak 集合
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: ak所属appid
+        :type AppId: int
+        :param _AkNameSet: ak名称集合
+        :type AkNameSet: list of str
+        """
+        self._AppId = None
+        self._AkNameSet = None
+
+    @property
+    def AppId(self):
+        r"""ak所属appid
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def AkNameSet(self):
+        r"""ak名称集合
+        :rtype: list of str
+        """
+        return self._AkNameSet
+
+    @AkNameSet.setter
+    def AkNameSet(self, AkNameSet):
+        self._AkNameSet = AkNameSet
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._AkNameSet = params.get("AkNameSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CosAlarmInfo(AbstractModel):
+    r"""对象存储告警信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: appid
+
+        :type AppId: int
+        :param _PolicyId: 策略id
+        :type PolicyId: int
+        :param _PolicyName: 策略名称
+        :type PolicyName: str
+        :param _PolicyAbnormalType: 策略类型 0-未知规则分类(Unknown), 1-异常行为(AbnormalBehavior), 2-权限过大(ExcessivePermission), 3-资源枚举(ResourceEnumerated), 4-匿名访问(AnonymousAccess)
+
+        :type PolicyAbnormalType: int
+        :param _PolicyRiskLevel: 风险等级：0:Normal, 1:Tip, 2:Low, 3:Middle, 4:High, 5:Critical
+        :type PolicyRiskLevel: int
+        :param _PolicyDescription: 策略信息描述
+        :type PolicyDescription: str
+        :param _BucketName: 桶名
+        :type BucketName: str
+        :param _BucketRegion: 桶地域
+        :type BucketRegion: str
+        :param _BucketMarker: 桶备注
+        :type BucketMarker: str
+        :param _BucketTagInfo: 桶tag信息
+        :type BucketTagInfo: str
+        :param _BucketAccessWay: 桶可访问属性
+        :type BucketAccessWay: str
+        :param _AccountUin: 所属账号uin
+        :type AccountUin: str
+        :param _AccountNickName: 所属账号昵称
+        :type AccountNickName: str
+        :param _AccountIdentify: 所属账号社身份 1 主 2子
+        :type AccountIdentify: int
+        :param _AccountMainNickName: 子账号所属主账号昵称
+        :type AccountMainNickName: str
+        :param _AlarmTimestamp: 告警时间戳Unix时间单位毫秒
+        :type AlarmTimestamp: int
+        :param _HandleStatus: 处置状态 0 未处理 1 标记处置 2标记忽略
+        :type HandleStatus: int
+        :param _AlarmId: 告警对象id
+        :type AlarmId: int
+        :param _BucketRegionCode: 桶地域码值
+        :type BucketRegionCode: str
+        :param _CategoryDetails: 数据识别分类详情
+        :type CategoryDetails: list of CosIdentifyCategoryDetail
+        """
+        self._AppId = None
+        self._PolicyId = None
+        self._PolicyName = None
+        self._PolicyAbnormalType = None
+        self._PolicyRiskLevel = None
+        self._PolicyDescription = None
+        self._BucketName = None
+        self._BucketRegion = None
+        self._BucketMarker = None
+        self._BucketTagInfo = None
+        self._BucketAccessWay = None
+        self._AccountUin = None
+        self._AccountNickName = None
+        self._AccountIdentify = None
+        self._AccountMainNickName = None
+        self._AlarmTimestamp = None
+        self._HandleStatus = None
+        self._AlarmId = None
+        self._BucketRegionCode = None
+        self._CategoryDetails = None
+
+    @property
+    def AppId(self):
+        r"""appid
+
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def PolicyId(self):
+        r"""策略id
+        :rtype: int
+        """
+        return self._PolicyId
+
+    @PolicyId.setter
+    def PolicyId(self, PolicyId):
+        self._PolicyId = PolicyId
+
+    @property
+    def PolicyName(self):
+        r"""策略名称
+        :rtype: str
+        """
+        return self._PolicyName
+
+    @PolicyName.setter
+    def PolicyName(self, PolicyName):
+        self._PolicyName = PolicyName
+
+    @property
+    def PolicyAbnormalType(self):
+        r"""策略类型 0-未知规则分类(Unknown), 1-异常行为(AbnormalBehavior), 2-权限过大(ExcessivePermission), 3-资源枚举(ResourceEnumerated), 4-匿名访问(AnonymousAccess)
+
+        :rtype: int
+        """
+        return self._PolicyAbnormalType
+
+    @PolicyAbnormalType.setter
+    def PolicyAbnormalType(self, PolicyAbnormalType):
+        self._PolicyAbnormalType = PolicyAbnormalType
+
+    @property
+    def PolicyRiskLevel(self):
+        r"""风险等级：0:Normal, 1:Tip, 2:Low, 3:Middle, 4:High, 5:Critical
+        :rtype: int
+        """
+        return self._PolicyRiskLevel
+
+    @PolicyRiskLevel.setter
+    def PolicyRiskLevel(self, PolicyRiskLevel):
+        self._PolicyRiskLevel = PolicyRiskLevel
+
+    @property
+    def PolicyDescription(self):
+        r"""策略信息描述
+        :rtype: str
+        """
+        return self._PolicyDescription
+
+    @PolicyDescription.setter
+    def PolicyDescription(self, PolicyDescription):
+        self._PolicyDescription = PolicyDescription
+
+    @property
+    def BucketName(self):
+        r"""桶名
+        :rtype: str
+        """
+        return self._BucketName
+
+    @BucketName.setter
+    def BucketName(self, BucketName):
+        self._BucketName = BucketName
+
+    @property
+    def BucketRegion(self):
+        r"""桶地域
+        :rtype: str
+        """
+        return self._BucketRegion
+
+    @BucketRegion.setter
+    def BucketRegion(self, BucketRegion):
+        self._BucketRegion = BucketRegion
+
+    @property
+    def BucketMarker(self):
+        r"""桶备注
+        :rtype: str
+        """
+        return self._BucketMarker
+
+    @BucketMarker.setter
+    def BucketMarker(self, BucketMarker):
+        self._BucketMarker = BucketMarker
+
+    @property
+    def BucketTagInfo(self):
+        r"""桶tag信息
+        :rtype: str
+        """
+        return self._BucketTagInfo
+
+    @BucketTagInfo.setter
+    def BucketTagInfo(self, BucketTagInfo):
+        self._BucketTagInfo = BucketTagInfo
+
+    @property
+    def BucketAccessWay(self):
+        r"""桶可访问属性
+        :rtype: str
+        """
+        return self._BucketAccessWay
+
+    @BucketAccessWay.setter
+    def BucketAccessWay(self, BucketAccessWay):
+        self._BucketAccessWay = BucketAccessWay
+
+    @property
+    def AccountUin(self):
+        r"""所属账号uin
+        :rtype: str
+        """
+        return self._AccountUin
+
+    @AccountUin.setter
+    def AccountUin(self, AccountUin):
+        self._AccountUin = AccountUin
+
+    @property
+    def AccountNickName(self):
+        r"""所属账号昵称
+        :rtype: str
+        """
+        return self._AccountNickName
+
+    @AccountNickName.setter
+    def AccountNickName(self, AccountNickName):
+        self._AccountNickName = AccountNickName
+
+    @property
+    def AccountIdentify(self):
+        r"""所属账号社身份 1 主 2子
+        :rtype: int
+        """
+        return self._AccountIdentify
+
+    @AccountIdentify.setter
+    def AccountIdentify(self, AccountIdentify):
+        self._AccountIdentify = AccountIdentify
+
+    @property
+    def AccountMainNickName(self):
+        r"""子账号所属主账号昵称
+        :rtype: str
+        """
+        return self._AccountMainNickName
+
+    @AccountMainNickName.setter
+    def AccountMainNickName(self, AccountMainNickName):
+        self._AccountMainNickName = AccountMainNickName
+
+    @property
+    def AlarmTimestamp(self):
+        r"""告警时间戳Unix时间单位毫秒
+        :rtype: int
+        """
+        return self._AlarmTimestamp
+
+    @AlarmTimestamp.setter
+    def AlarmTimestamp(self, AlarmTimestamp):
+        self._AlarmTimestamp = AlarmTimestamp
+
+    @property
+    def HandleStatus(self):
+        r"""处置状态 0 未处理 1 标记处置 2标记忽略
+        :rtype: int
+        """
+        return self._HandleStatus
+
+    @HandleStatus.setter
+    def HandleStatus(self, HandleStatus):
+        self._HandleStatus = HandleStatus
+
+    @property
+    def AlarmId(self):
+        r"""告警对象id
+        :rtype: int
+        """
+        return self._AlarmId
+
+    @AlarmId.setter
+    def AlarmId(self, AlarmId):
+        self._AlarmId = AlarmId
+
+    @property
+    def BucketRegionCode(self):
+        r"""桶地域码值
+        :rtype: str
+        """
+        return self._BucketRegionCode
+
+    @BucketRegionCode.setter
+    def BucketRegionCode(self, BucketRegionCode):
+        self._BucketRegionCode = BucketRegionCode
+
+    @property
+    def CategoryDetails(self):
+        r"""数据识别分类详情
+        :rtype: list of CosIdentifyCategoryDetail
+        """
+        return self._CategoryDetails
+
+    @CategoryDetails.setter
+    def CategoryDetails(self, CategoryDetails):
+        self._CategoryDetails = CategoryDetails
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._PolicyId = params.get("PolicyId")
+        self._PolicyName = params.get("PolicyName")
+        self._PolicyAbnormalType = params.get("PolicyAbnormalType")
+        self._PolicyRiskLevel = params.get("PolicyRiskLevel")
+        self._PolicyDescription = params.get("PolicyDescription")
+        self._BucketName = params.get("BucketName")
+        self._BucketRegion = params.get("BucketRegion")
+        self._BucketMarker = params.get("BucketMarker")
+        self._BucketTagInfo = params.get("BucketTagInfo")
+        self._BucketAccessWay = params.get("BucketAccessWay")
+        self._AccountUin = params.get("AccountUin")
+        self._AccountNickName = params.get("AccountNickName")
+        self._AccountIdentify = params.get("AccountIdentify")
+        self._AccountMainNickName = params.get("AccountMainNickName")
+        self._AlarmTimestamp = params.get("AlarmTimestamp")
+        self._HandleStatus = params.get("HandleStatus")
+        self._AlarmId = params.get("AlarmId")
+        self._BucketRegionCode = params.get("BucketRegionCode")
+        if params.get("CategoryDetails") is not None:
+            self._CategoryDetails = []
+            for item in params.get("CategoryDetails"):
+                obj = CosIdentifyCategoryDetail()
+                obj._deserialize(item)
+                self._CategoryDetails.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CosAlarmRiskIdInfo(AbstractModel):
+    r"""告警或者风险id信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AlarmRiskId: 告警id
+        :type AlarmRiskId: int
+        :param _AppId: 租户id
+        :type AppId: int
+        """
+        self._AlarmRiskId = None
+        self._AppId = None
+
+    @property
+    def AlarmRiskId(self):
+        r"""告警id
+        :rtype: int
+        """
+        return self._AlarmRiskId
+
+    @AlarmRiskId.setter
+    def AlarmRiskId(self, AlarmRiskId):
+        self._AlarmRiskId = AlarmRiskId
+
+    @property
+    def AppId(self):
+        r"""租户id
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+
+    def _deserialize(self, params):
+        self._AlarmRiskId = params.get("AlarmRiskId")
+        self._AppId = params.get("AppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CosAlarmTrendInfo(AbstractModel):
+    r"""cos每日告警/风险信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CurrentDateStr: 当前日期字符串格式
+        :type CurrentDateStr: str
+        :param _CurrentDayCount: 当前日期总数
+        :type CurrentDayCount: int
+        :param _CurrentDayOverView: 当天告警分类详情
+        :type CurrentDayOverView: list of CosRiskInfo
+        """
+        self._CurrentDateStr = None
+        self._CurrentDayCount = None
+        self._CurrentDayOverView = None
+
+    @property
+    def CurrentDateStr(self):
+        r"""当前日期字符串格式
+        :rtype: str
+        """
+        return self._CurrentDateStr
+
+    @CurrentDateStr.setter
+    def CurrentDateStr(self, CurrentDateStr):
+        self._CurrentDateStr = CurrentDateStr
+
+    @property
+    def CurrentDayCount(self):
+        r"""当前日期总数
+        :rtype: int
+        """
+        return self._CurrentDayCount
+
+    @CurrentDayCount.setter
+    def CurrentDayCount(self, CurrentDayCount):
+        self._CurrentDayCount = CurrentDayCount
+
+    @property
+    def CurrentDayOverView(self):
+        r"""当天告警分类详情
+        :rtype: list of CosRiskInfo
+        """
+        return self._CurrentDayOverView
+
+    @CurrentDayOverView.setter
+    def CurrentDayOverView(self, CurrentDayOverView):
+        self._CurrentDayOverView = CurrentDayOverView
+
+
+    def _deserialize(self, params):
+        self._CurrentDateStr = params.get("CurrentDateStr")
+        self._CurrentDayCount = params.get("CurrentDayCount")
+        if params.get("CurrentDayOverView") is not None:
+            self._CurrentDayOverView = []
+            for item in params.get("CurrentDayOverView"):
+                obj = CosRiskInfo()
+                obj._deserialize(item)
+                self._CurrentDayOverView.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CosAssetDataScanDetail(AbstractModel):
+    r"""cos审计资产数据识别详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: <p>识别任务状态 0:未识别 1:识别中 2:识别终止 3:识别成功 4:识别失败</p>
+        :type Status: int
+        :param _Progress: <p>识别进度</p>
+        :type Progress: float
+        :param _LatestScanTime: <p>最近扫描时间</p>
+        :type LatestScanTime: int
+        :param _ErrorInfo: <p>识别失败信息</p>
+        :type ErrorInfo: str
+        :param _CategoryDetails: <p>识别结果分类详情</p>
+        :type CategoryDetails: list of CosIdentifyCategoryDetail
+        """
+        self._Status = None
+        self._Progress = None
+        self._LatestScanTime = None
+        self._ErrorInfo = None
+        self._CategoryDetails = None
+
+    @property
+    def Status(self):
+        r"""<p>识别任务状态 0:未识别 1:识别中 2:识别终止 3:识别成功 4:识别失败</p>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Progress(self):
+        r"""<p>识别进度</p>
+        :rtype: float
+        """
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
+    @property
+    def LatestScanTime(self):
+        r"""<p>最近扫描时间</p>
+        :rtype: int
+        """
+        return self._LatestScanTime
+
+    @LatestScanTime.setter
+    def LatestScanTime(self, LatestScanTime):
+        self._LatestScanTime = LatestScanTime
+
+    @property
+    def ErrorInfo(self):
+        r"""<p>识别失败信息</p>
+        :rtype: str
+        """
+        return self._ErrorInfo
+
+    @ErrorInfo.setter
+    def ErrorInfo(self, ErrorInfo):
+        self._ErrorInfo = ErrorInfo
+
+    @property
+    def CategoryDetails(self):
+        r"""<p>识别结果分类详情</p>
+        :rtype: list of CosIdentifyCategoryDetail
+        """
+        return self._CategoryDetails
+
+    @CategoryDetails.setter
+    def CategoryDetails(self, CategoryDetails):
+        self._CategoryDetails = CategoryDetails
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._Progress = params.get("Progress")
+        self._LatestScanTime = params.get("LatestScanTime")
+        self._ErrorInfo = params.get("ErrorInfo")
+        if params.get("CategoryDetails") is not None:
+            self._CategoryDetails = []
+            for item in params.get("CategoryDetails"):
+                obj = CosIdentifyCategoryDetail()
+                obj._deserialize(item)
+                self._CategoryDetails.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CosAssetFileIdentifyInfo(AbstractModel):
+    r"""cos审计文件数据识别信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileName: 文件名称
+        :type FileName: str
+        :param _DirName: 文件路径
+        :type DirName: str
+        :param _CategoryDetails: 分类数据项详情
+        :type CategoryDetails: list of CosIdentifyCategoryDetail
+        """
+        self._FileName = None
+        self._DirName = None
+        self._CategoryDetails = None
+
+    @property
+    def FileName(self):
+        r"""文件名称
+        :rtype: str
+        """
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def DirName(self):
+        r"""文件路径
+        :rtype: str
+        """
+        return self._DirName
+
+    @DirName.setter
+    def DirName(self, DirName):
+        self._DirName = DirName
+
+    @property
+    def CategoryDetails(self):
+        r"""分类数据项详情
+        :rtype: list of CosIdentifyCategoryDetail
+        """
+        return self._CategoryDetails
+
+    @CategoryDetails.setter
+    def CategoryDetails(self, CategoryDetails):
+        self._CategoryDetails = CategoryDetails
+
+
+    def _deserialize(self, params):
+        self._FileName = params.get("FileName")
+        self._DirName = params.get("DirName")
+        if params.get("CategoryDetails") is not None:
+            self._CategoryDetails = []
+            for item in params.get("CategoryDetails"):
+                obj = CosIdentifyCategoryDetail()
+                obj._deserialize(item)
+                self._CategoryDetails.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CosAssetInfo(AbstractModel):
+    r"""Cos资产信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: appid
+        :type AppId: int
+        :param _BucketName: cos桶名
+        :type BucketName: str
+        :param _BucketRegion: cos region名
+        :type BucketRegion: str
+        :param _BucketRegionCode: 地域码值
+        :type BucketRegionCode: str
+        :param _BucketMarker: cos桶备注
+        :type BucketMarker: str
+        :param _BucketOwnerUin: cos桶主账号所属者
+        :type BucketOwnerUin: str
+        :param _BucketOwnerNickName: cos主账号所属者昵称
+        :type BucketOwnerNickName: str
+        :param _BucketTagInfo: cos桶标签详情
+        :type BucketTagInfo: str
+        :param _BucketSecuritySuggestion: 安全建议
+1 暂无异常
+2 建议加固
+3 立即处理
+        :type BucketSecuritySuggestion: int
+        :param _BucketAlarmList: 告警列表
+        :type BucketAlarmList: list of CosRiskAlarmInfo
+        :param _BucketRiskList: 风险列表
+        :type BucketRiskList: list of CosRiskAlarmInfo
+        :param _BucketInvokeSourceIpCount: 调用源ip数
+        :type BucketInvokeSourceIpCount: int
+        :param _BucketAccessWay: 访问策略
+        :type BucketAccessWay: :class:`tencentcloud.csip.v20221121.models.CosBucketAccessWay`
+        :param _CreateTime: 创建时间Unix时间单位毫秒
+        :type CreateTime: int
+        :param _LastAccessTime: 最后访问时间Unix时间单位毫秒
+        :type LastAccessTime: int
+        :param _BucketId: 存储桶id
+        :type BucketId: int
+        :param _MonitorStatus: 0 关闭
+1 开启
+        :type MonitorStatus: int
+        :param _DataScanInfo: 数据识别扫描信息
+        :type DataScanInfo: :class:`tencentcloud.csip.v20221121.models.CosAssetDataScanDetail`
+        """
+        self._AppId = None
+        self._BucketName = None
+        self._BucketRegion = None
+        self._BucketRegionCode = None
+        self._BucketMarker = None
+        self._BucketOwnerUin = None
+        self._BucketOwnerNickName = None
+        self._BucketTagInfo = None
+        self._BucketSecuritySuggestion = None
+        self._BucketAlarmList = None
+        self._BucketRiskList = None
+        self._BucketInvokeSourceIpCount = None
+        self._BucketAccessWay = None
+        self._CreateTime = None
+        self._LastAccessTime = None
+        self._BucketId = None
+        self._MonitorStatus = None
+        self._DataScanInfo = None
+
+    @property
+    def AppId(self):
+        r"""appid
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def BucketName(self):
+        r"""cos桶名
+        :rtype: str
+        """
+        return self._BucketName
+
+    @BucketName.setter
+    def BucketName(self, BucketName):
+        self._BucketName = BucketName
+
+    @property
+    def BucketRegion(self):
+        r"""cos region名
+        :rtype: str
+        """
+        return self._BucketRegion
+
+    @BucketRegion.setter
+    def BucketRegion(self, BucketRegion):
+        self._BucketRegion = BucketRegion
+
+    @property
+    def BucketRegionCode(self):
+        r"""地域码值
+        :rtype: str
+        """
+        return self._BucketRegionCode
+
+    @BucketRegionCode.setter
+    def BucketRegionCode(self, BucketRegionCode):
+        self._BucketRegionCode = BucketRegionCode
+
+    @property
+    def BucketMarker(self):
+        r"""cos桶备注
+        :rtype: str
+        """
+        return self._BucketMarker
+
+    @BucketMarker.setter
+    def BucketMarker(self, BucketMarker):
+        self._BucketMarker = BucketMarker
+
+    @property
+    def BucketOwnerUin(self):
+        r"""cos桶主账号所属者
+        :rtype: str
+        """
+        return self._BucketOwnerUin
+
+    @BucketOwnerUin.setter
+    def BucketOwnerUin(self, BucketOwnerUin):
+        self._BucketOwnerUin = BucketOwnerUin
+
+    @property
+    def BucketOwnerNickName(self):
+        r"""cos主账号所属者昵称
+        :rtype: str
+        """
+        return self._BucketOwnerNickName
+
+    @BucketOwnerNickName.setter
+    def BucketOwnerNickName(self, BucketOwnerNickName):
+        self._BucketOwnerNickName = BucketOwnerNickName
+
+    @property
+    def BucketTagInfo(self):
+        r"""cos桶标签详情
+        :rtype: str
+        """
+        return self._BucketTagInfo
+
+    @BucketTagInfo.setter
+    def BucketTagInfo(self, BucketTagInfo):
+        self._BucketTagInfo = BucketTagInfo
+
+    @property
+    def BucketSecuritySuggestion(self):
+        r"""安全建议
+1 暂无异常
+2 建议加固
+3 立即处理
+        :rtype: int
+        """
+        return self._BucketSecuritySuggestion
+
+    @BucketSecuritySuggestion.setter
+    def BucketSecuritySuggestion(self, BucketSecuritySuggestion):
+        self._BucketSecuritySuggestion = BucketSecuritySuggestion
+
+    @property
+    def BucketAlarmList(self):
+        r"""告警列表
+        :rtype: list of CosRiskAlarmInfo
+        """
+        return self._BucketAlarmList
+
+    @BucketAlarmList.setter
+    def BucketAlarmList(self, BucketAlarmList):
+        self._BucketAlarmList = BucketAlarmList
+
+    @property
+    def BucketRiskList(self):
+        r"""风险列表
+        :rtype: list of CosRiskAlarmInfo
+        """
+        return self._BucketRiskList
+
+    @BucketRiskList.setter
+    def BucketRiskList(self, BucketRiskList):
+        self._BucketRiskList = BucketRiskList
+
+    @property
+    def BucketInvokeSourceIpCount(self):
+        r"""调用源ip数
+        :rtype: int
+        """
+        return self._BucketInvokeSourceIpCount
+
+    @BucketInvokeSourceIpCount.setter
+    def BucketInvokeSourceIpCount(self, BucketInvokeSourceIpCount):
+        self._BucketInvokeSourceIpCount = BucketInvokeSourceIpCount
+
+    @property
+    def BucketAccessWay(self):
+        r"""访问策略
+        :rtype: :class:`tencentcloud.csip.v20221121.models.CosBucketAccessWay`
+        """
+        return self._BucketAccessWay
+
+    @BucketAccessWay.setter
+    def BucketAccessWay(self, BucketAccessWay):
+        self._BucketAccessWay = BucketAccessWay
+
+    @property
+    def CreateTime(self):
+        r"""创建时间Unix时间单位毫秒
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def LastAccessTime(self):
+        r"""最后访问时间Unix时间单位毫秒
+        :rtype: int
+        """
+        return self._LastAccessTime
+
+    @LastAccessTime.setter
+    def LastAccessTime(self, LastAccessTime):
+        self._LastAccessTime = LastAccessTime
+
+    @property
+    def BucketId(self):
+        r"""存储桶id
+        :rtype: int
+        """
+        return self._BucketId
+
+    @BucketId.setter
+    def BucketId(self, BucketId):
+        self._BucketId = BucketId
+
+    @property
+    def MonitorStatus(self):
+        r"""0 关闭
+1 开启
+        :rtype: int
+        """
+        return self._MonitorStatus
+
+    @MonitorStatus.setter
+    def MonitorStatus(self, MonitorStatus):
+        self._MonitorStatus = MonitorStatus
+
+    @property
+    def DataScanInfo(self):
+        r"""数据识别扫描信息
+        :rtype: :class:`tencentcloud.csip.v20221121.models.CosAssetDataScanDetail`
+        """
+        return self._DataScanInfo
+
+    @DataScanInfo.setter
+    def DataScanInfo(self, DataScanInfo):
+        self._DataScanInfo = DataScanInfo
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._BucketName = params.get("BucketName")
+        self._BucketRegion = params.get("BucketRegion")
+        self._BucketRegionCode = params.get("BucketRegionCode")
+        self._BucketMarker = params.get("BucketMarker")
+        self._BucketOwnerUin = params.get("BucketOwnerUin")
+        self._BucketOwnerNickName = params.get("BucketOwnerNickName")
+        self._BucketTagInfo = params.get("BucketTagInfo")
+        self._BucketSecuritySuggestion = params.get("BucketSecuritySuggestion")
+        if params.get("BucketAlarmList") is not None:
+            self._BucketAlarmList = []
+            for item in params.get("BucketAlarmList"):
+                obj = CosRiskAlarmInfo()
+                obj._deserialize(item)
+                self._BucketAlarmList.append(obj)
+        if params.get("BucketRiskList") is not None:
+            self._BucketRiskList = []
+            for item in params.get("BucketRiskList"):
+                obj = CosRiskAlarmInfo()
+                obj._deserialize(item)
+                self._BucketRiskList.append(obj)
+        self._BucketInvokeSourceIpCount = params.get("BucketInvokeSourceIpCount")
+        if params.get("BucketAccessWay") is not None:
+            self._BucketAccessWay = CosBucketAccessWay()
+            self._BucketAccessWay._deserialize(params.get("BucketAccessWay"))
+        self._CreateTime = params.get("CreateTime")
+        self._LastAccessTime = params.get("LastAccessTime")
+        self._BucketId = params.get("BucketId")
+        self._MonitorStatus = params.get("MonitorStatus")
+        if params.get("DataScanInfo") is not None:
+            self._DataScanInfo = CosAssetDataScanDetail()
+            self._DataScanInfo._deserialize(params.get("DataScanInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CosAssetSyncTaskInfo(AbstractModel):
+    r"""cos资产同步任务信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: appid
+        :type AppId: int
+        :param _TaskId: 同步任务id
+        :type TaskId: str
+        :param _LastScanTime: 最后一次扫描时间
+        :type LastScanTime: int
+        """
+        self._AppId = None
+        self._TaskId = None
+        self._LastScanTime = None
+
+    @property
+    def AppId(self):
+        r"""appid
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def TaskId(self):
+        r"""同步任务id
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def LastScanTime(self):
+        r"""最后一次扫描时间
+        :rtype: int
+        """
+        return self._LastScanTime
+
+    @LastScanTime.setter
+    def LastScanTime(self, LastScanTime):
+        self._LastScanTime = LastScanTime
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._TaskId = params.get("TaskId")
+        self._LastScanTime = params.get("LastScanTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CosAuditPayInfo(AbstractModel):
+    r"""cos审计支付信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: APPID
+        :type AppId: int
+        :param _OrderStatus: 订单状态 0未购买 1正常，2隔离，3销毁，6试用中，7到期
+        :type OrderStatus: int
+        :param _BucketNum: 已购对象存储数量
+        :type BucketNum: int
+        :param _PayMode: 支付模式，0-后付费 1-预付费
+        :type PayMode: int
+        :param _IsSelfBuy: 是否单独购买，1-单独购买，2-被其它账号共享
+        :type IsSelfBuy: int
+        :param _BeginTime: 订单开始时间
+        :type BeginTime: str
+        :param _EndTime: 订单到期时间
+        :type EndTime: str
+        :param _AutoRenew: 0-用户未设置,1-用户设置自动续费,2-用户设置不自动续费
+        :type AutoRenew: int
+        :param _TimeSpan: 订单时长
+        :type TimeSpan: int
+        :param _TimeUnit: 时长单位
+        :type TimeUnit: str
+        :param _ResourceId: 资源id 
+        :type ResourceId: str
+        :param _BetaEndTime: 公测结束时间
+        :type BetaEndTime: str
+        :param _TimeNow: 系统当前时间
+        :type TimeNow: str
+        :param _IsShareToOther: 是否分享给其它账号，1-是，2-否
+        :type IsShareToOther: int
+        :param _Uin: uin
+        :type Uin: str
+        :param _NickName: 昵称
+        :type NickName: str
+        :param _BindBucket: 共享的bucketIdSet 
+        :type BindBucket: list of CosBucketId
+        :param _SharedAppIdSet: 共享的appid
+        :type SharedAppIdSet: list of int non-negative
+        :param _PostPayStatus: 是否已经开启后付费
+        :type PostPayStatus: int
+        :param _IsTestUser: 0：未做过试用期试用   1 ：做过试用期试用
+        :type IsTestUser: int
+        :param _AvailableBucketNum: 剩余可用数
+        :type AvailableBucketNum: int
+        :param _MonitorBucketNum: 已开启的监测存储桶数
+        :type MonitorBucketNum: int
+        :param _TotalBucketNum: 总的存储桶数
+        :type TotalBucketNum: int
+        """
+        self._AppId = None
+        self._OrderStatus = None
+        self._BucketNum = None
+        self._PayMode = None
+        self._IsSelfBuy = None
+        self._BeginTime = None
+        self._EndTime = None
+        self._AutoRenew = None
+        self._TimeSpan = None
+        self._TimeUnit = None
+        self._ResourceId = None
+        self._BetaEndTime = None
+        self._TimeNow = None
+        self._IsShareToOther = None
+        self._Uin = None
+        self._NickName = None
+        self._BindBucket = None
+        self._SharedAppIdSet = None
+        self._PostPayStatus = None
+        self._IsTestUser = None
+        self._AvailableBucketNum = None
+        self._MonitorBucketNum = None
+        self._TotalBucketNum = None
+
+    @property
+    def AppId(self):
+        r"""APPID
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def OrderStatus(self):
+        r"""订单状态 0未购买 1正常，2隔离，3销毁，6试用中，7到期
+        :rtype: int
+        """
+        return self._OrderStatus
+
+    @OrderStatus.setter
+    def OrderStatus(self, OrderStatus):
+        self._OrderStatus = OrderStatus
+
+    @property
+    def BucketNum(self):
+        r"""已购对象存储数量
+        :rtype: int
+        """
+        return self._BucketNum
+
+    @BucketNum.setter
+    def BucketNum(self, BucketNum):
+        self._BucketNum = BucketNum
+
+    @property
+    def PayMode(self):
+        r"""支付模式，0-后付费 1-预付费
+        :rtype: int
+        """
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def IsSelfBuy(self):
+        r"""是否单独购买，1-单独购买，2-被其它账号共享
+        :rtype: int
+        """
+        return self._IsSelfBuy
+
+    @IsSelfBuy.setter
+    def IsSelfBuy(self, IsSelfBuy):
+        self._IsSelfBuy = IsSelfBuy
+
+    @property
+    def BeginTime(self):
+        r"""订单开始时间
+        :rtype: str
+        """
+        return self._BeginTime
+
+    @BeginTime.setter
+    def BeginTime(self, BeginTime):
+        self._BeginTime = BeginTime
+
+    @property
+    def EndTime(self):
+        r"""订单到期时间
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def AutoRenew(self):
+        r"""0-用户未设置,1-用户设置自动续费,2-用户设置不自动续费
+        :rtype: int
+        """
+        return self._AutoRenew
+
+    @AutoRenew.setter
+    def AutoRenew(self, AutoRenew):
+        self._AutoRenew = AutoRenew
+
+    @property
+    def TimeSpan(self):
+        r"""订单时长
+        :rtype: int
+        """
+        return self._TimeSpan
+
+    @TimeSpan.setter
+    def TimeSpan(self, TimeSpan):
+        self._TimeSpan = TimeSpan
+
+    @property
+    def TimeUnit(self):
+        r"""时长单位
+        :rtype: str
+        """
+        return self._TimeUnit
+
+    @TimeUnit.setter
+    def TimeUnit(self, TimeUnit):
+        self._TimeUnit = TimeUnit
+
+    @property
+    def ResourceId(self):
+        r"""资源id 
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def BetaEndTime(self):
+        r"""公测结束时间
+        :rtype: str
+        """
+        return self._BetaEndTime
+
+    @BetaEndTime.setter
+    def BetaEndTime(self, BetaEndTime):
+        self._BetaEndTime = BetaEndTime
+
+    @property
+    def TimeNow(self):
+        r"""系统当前时间
+        :rtype: str
+        """
+        return self._TimeNow
+
+    @TimeNow.setter
+    def TimeNow(self, TimeNow):
+        self._TimeNow = TimeNow
+
+    @property
+    def IsShareToOther(self):
+        r"""是否分享给其它账号，1-是，2-否
+        :rtype: int
+        """
+        return self._IsShareToOther
+
+    @IsShareToOther.setter
+    def IsShareToOther(self, IsShareToOther):
+        self._IsShareToOther = IsShareToOther
+
+    @property
+    def Uin(self):
+        r"""uin
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def NickName(self):
+        r"""昵称
+        :rtype: str
+        """
+        return self._NickName
+
+    @NickName.setter
+    def NickName(self, NickName):
+        self._NickName = NickName
+
+    @property
+    def BindBucket(self):
+        r"""共享的bucketIdSet 
+        :rtype: list of CosBucketId
+        """
+        return self._BindBucket
+
+    @BindBucket.setter
+    def BindBucket(self, BindBucket):
+        self._BindBucket = BindBucket
+
+    @property
+    def SharedAppIdSet(self):
+        r"""共享的appid
+        :rtype: list of int non-negative
+        """
+        return self._SharedAppIdSet
+
+    @SharedAppIdSet.setter
+    def SharedAppIdSet(self, SharedAppIdSet):
+        self._SharedAppIdSet = SharedAppIdSet
+
+    @property
+    def PostPayStatus(self):
+        r"""是否已经开启后付费
+        :rtype: int
+        """
+        return self._PostPayStatus
+
+    @PostPayStatus.setter
+    def PostPayStatus(self, PostPayStatus):
+        self._PostPayStatus = PostPayStatus
+
+    @property
+    def IsTestUser(self):
+        r"""0：未做过试用期试用   1 ：做过试用期试用
+        :rtype: int
+        """
+        return self._IsTestUser
+
+    @IsTestUser.setter
+    def IsTestUser(self, IsTestUser):
+        self._IsTestUser = IsTestUser
+
+    @property
+    def AvailableBucketNum(self):
+        r"""剩余可用数
+        :rtype: int
+        """
+        return self._AvailableBucketNum
+
+    @AvailableBucketNum.setter
+    def AvailableBucketNum(self, AvailableBucketNum):
+        self._AvailableBucketNum = AvailableBucketNum
+
+    @property
+    def MonitorBucketNum(self):
+        r"""已开启的监测存储桶数
+        :rtype: int
+        """
+        return self._MonitorBucketNum
+
+    @MonitorBucketNum.setter
+    def MonitorBucketNum(self, MonitorBucketNum):
+        self._MonitorBucketNum = MonitorBucketNum
+
+    @property
+    def TotalBucketNum(self):
+        r"""总的存储桶数
+        :rtype: int
+        """
+        return self._TotalBucketNum
+
+    @TotalBucketNum.setter
+    def TotalBucketNum(self, TotalBucketNum):
+        self._TotalBucketNum = TotalBucketNum
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._OrderStatus = params.get("OrderStatus")
+        self._BucketNum = params.get("BucketNum")
+        self._PayMode = params.get("PayMode")
+        self._IsSelfBuy = params.get("IsSelfBuy")
+        self._BeginTime = params.get("BeginTime")
+        self._EndTime = params.get("EndTime")
+        self._AutoRenew = params.get("AutoRenew")
+        self._TimeSpan = params.get("TimeSpan")
+        self._TimeUnit = params.get("TimeUnit")
+        self._ResourceId = params.get("ResourceId")
+        self._BetaEndTime = params.get("BetaEndTime")
+        self._TimeNow = params.get("TimeNow")
+        self._IsShareToOther = params.get("IsShareToOther")
+        self._Uin = params.get("Uin")
+        self._NickName = params.get("NickName")
+        if params.get("BindBucket") is not None:
+            self._BindBucket = []
+            for item in params.get("BindBucket"):
+                obj = CosBucketId()
+                obj._deserialize(item)
+                self._BindBucket.append(obj)
+        self._SharedAppIdSet = params.get("SharedAppIdSet")
+        self._PostPayStatus = params.get("PostPayStatus")
+        self._IsTestUser = params.get("IsTestUser")
+        self._AvailableBucketNum = params.get("AvailableBucketNum")
+        self._MonitorBucketNum = params.get("MonitorBucketNum")
+        self._TotalBucketNum = params.get("TotalBucketNum")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CosBucketAccessWay(AbstractModel):
+    r"""cos风险识别桶访问规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AccessType: 可访问方式：
+specify 指定用户
+anonymous 可匿名访问
+        :type AccessType: str
+        :param _AccessUserCount: 用户数
+        :type AccessUserCount: int
+        :param _AccessAkCount: ak数
+        :type AccessAkCount: int
+        :param _AccessRoleCount: 角色数
+        :type AccessRoleCount: int
+        """
+        self._AccessType = None
+        self._AccessUserCount = None
+        self._AccessAkCount = None
+        self._AccessRoleCount = None
+
+    @property
+    def AccessType(self):
+        r"""可访问方式：
+specify 指定用户
+anonymous 可匿名访问
+        :rtype: str
+        """
+        return self._AccessType
+
+    @AccessType.setter
+    def AccessType(self, AccessType):
+        self._AccessType = AccessType
+
+    @property
+    def AccessUserCount(self):
+        r"""用户数
+        :rtype: int
+        """
+        return self._AccessUserCount
+
+    @AccessUserCount.setter
+    def AccessUserCount(self, AccessUserCount):
+        self._AccessUserCount = AccessUserCount
+
+    @property
+    def AccessAkCount(self):
+        r"""ak数
+        :rtype: int
+        """
+        return self._AccessAkCount
+
+    @AccessAkCount.setter
+    def AccessAkCount(self, AccessAkCount):
+        self._AccessAkCount = AccessAkCount
+
+    @property
+    def AccessRoleCount(self):
+        r"""角色数
+        :rtype: int
+        """
+        return self._AccessRoleCount
+
+    @AccessRoleCount.setter
+    def AccessRoleCount(self, AccessRoleCount):
+        self._AccessRoleCount = AccessRoleCount
+
+
+    def _deserialize(self, params):
+        self._AccessType = params.get("AccessType")
+        self._AccessUserCount = params.get("AccessUserCount")
+        self._AccessAkCount = params.get("AccessAkCount")
+        self._AccessRoleCount = params.get("AccessRoleCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CosBucketBillingInfo(AbstractModel):
+    r"""存储桶数量
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: appid
+        :type AppId: int
+        :param _OwnerUin: uin
+        :type OwnerUin: str
+        :param _OwnerNickName: 昵称
+        :type OwnerNickName: str
+        :param _BucketCount: 存储桶数量
+        :type BucketCount: int
+        :param _BuyStatus: 0 未购买 1  已单独购买 2 已被共享
+        :type BuyStatus: int
+        :param _ShareFromAppId: 共享账号appid
+        :type ShareFromAppId: int
+        :param _ShareFromUin: 共享账号uin
+        :type ShareFromUin: str
+        :param _ShareFromNickName: 共享账号昵称
+        :type ShareFromNickName: str
+        :param _MonitorBucketCount: 监控的存储桶数
+        :type MonitorBucketCount: int
+        :param _IsAutoMonitor: 0 关闭 1 开启
+        :type IsAutoMonitor: int
+        """
+        self._AppId = None
+        self._OwnerUin = None
+        self._OwnerNickName = None
+        self._BucketCount = None
+        self._BuyStatus = None
+        self._ShareFromAppId = None
+        self._ShareFromUin = None
+        self._ShareFromNickName = None
+        self._MonitorBucketCount = None
+        self._IsAutoMonitor = None
+
+    @property
+    def AppId(self):
+        r"""appid
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def OwnerUin(self):
+        r"""uin
+        :rtype: str
+        """
+        return self._OwnerUin
+
+    @OwnerUin.setter
+    def OwnerUin(self, OwnerUin):
+        self._OwnerUin = OwnerUin
+
+    @property
+    def OwnerNickName(self):
+        r"""昵称
+        :rtype: str
+        """
+        return self._OwnerNickName
+
+    @OwnerNickName.setter
+    def OwnerNickName(self, OwnerNickName):
+        self._OwnerNickName = OwnerNickName
+
+    @property
+    def BucketCount(self):
+        r"""存储桶数量
+        :rtype: int
+        """
+        return self._BucketCount
+
+    @BucketCount.setter
+    def BucketCount(self, BucketCount):
+        self._BucketCount = BucketCount
+
+    @property
+    def BuyStatus(self):
+        r"""0 未购买 1  已单独购买 2 已被共享
+        :rtype: int
+        """
+        return self._BuyStatus
+
+    @BuyStatus.setter
+    def BuyStatus(self, BuyStatus):
+        self._BuyStatus = BuyStatus
+
+    @property
+    def ShareFromAppId(self):
+        r"""共享账号appid
+        :rtype: int
+        """
+        return self._ShareFromAppId
+
+    @ShareFromAppId.setter
+    def ShareFromAppId(self, ShareFromAppId):
+        self._ShareFromAppId = ShareFromAppId
+
+    @property
+    def ShareFromUin(self):
+        r"""共享账号uin
+        :rtype: str
+        """
+        return self._ShareFromUin
+
+    @ShareFromUin.setter
+    def ShareFromUin(self, ShareFromUin):
+        self._ShareFromUin = ShareFromUin
+
+    @property
+    def ShareFromNickName(self):
+        r"""共享账号昵称
+        :rtype: str
+        """
+        return self._ShareFromNickName
+
+    @ShareFromNickName.setter
+    def ShareFromNickName(self, ShareFromNickName):
+        self._ShareFromNickName = ShareFromNickName
+
+    @property
+    def MonitorBucketCount(self):
+        r"""监控的存储桶数
+        :rtype: int
+        """
+        return self._MonitorBucketCount
+
+    @MonitorBucketCount.setter
+    def MonitorBucketCount(self, MonitorBucketCount):
+        self._MonitorBucketCount = MonitorBucketCount
+
+    @property
+    def IsAutoMonitor(self):
+        r"""0 关闭 1 开启
+        :rtype: int
+        """
+        return self._IsAutoMonitor
+
+    @IsAutoMonitor.setter
+    def IsAutoMonitor(self, IsAutoMonitor):
+        self._IsAutoMonitor = IsAutoMonitor
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._OwnerUin = params.get("OwnerUin")
+        self._OwnerNickName = params.get("OwnerNickName")
+        self._BucketCount = params.get("BucketCount")
+        self._BuyStatus = params.get("BuyStatus")
+        self._ShareFromAppId = params.get("ShareFromAppId")
+        self._ShareFromUin = params.get("ShareFromUin")
+        self._ShareFromNickName = params.get("ShareFromNickName")
+        self._MonitorBucketCount = params.get("MonitorBucketCount")
+        self._IsAutoMonitor = params.get("IsAutoMonitor")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CosBucketId(AbstractModel):
+    r"""存储桶id
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: appid
+        :type AppId: str
+        :param _BucketIdSet: bucket id集合
+        :type BucketIdSet: list of str
+        """
+        self._AppId = None
+        self._BucketIdSet = None
+
+    @property
+    def AppId(self):
+        r"""appid
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def BucketIdSet(self):
+        r"""bucket id集合
+        :rtype: list of str
+        """
+        return self._BucketIdSet
+
+    @BucketIdSet.setter
+    def BucketIdSet(self, BucketIdSet):
+        self._BucketIdSet = BucketIdSet
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._BucketIdSet = params.get("BucketIdSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CosBucketInfo(AbstractModel):
+    r"""cos存储桶详情信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: appid信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppId: int
+        :param _BucketName: 存储桶名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BucketName: str
+        :param _BucketRegion: 地域信息
+        :type BucketRegion: str
+        :param _BucketRegionCode: 地域码值
+        :type BucketRegionCode: str
+        :param _BucketMarker: 备注
+        :type BucketMarker: str
+        """
+        self._AppId = None
+        self._BucketName = None
+        self._BucketRegion = None
+        self._BucketRegionCode = None
+        self._BucketMarker = None
+
+    @property
+    def AppId(self):
+        r"""appid信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def BucketName(self):
+        r"""存储桶名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BucketName
+
+    @BucketName.setter
+    def BucketName(self, BucketName):
+        self._BucketName = BucketName
+
+    @property
+    def BucketRegion(self):
+        r"""地域信息
+        :rtype: str
+        """
+        return self._BucketRegion
+
+    @BucketRegion.setter
+    def BucketRegion(self, BucketRegion):
+        self._BucketRegion = BucketRegion
+
+    @property
+    def BucketRegionCode(self):
+        r"""地域码值
+        :rtype: str
+        """
+        return self._BucketRegionCode
+
+    @BucketRegionCode.setter
+    def BucketRegionCode(self, BucketRegionCode):
+        self._BucketRegionCode = BucketRegionCode
+
+    @property
+    def BucketMarker(self):
+        r"""备注
+        :rtype: str
+        """
+        return self._BucketMarker
+
+    @BucketMarker.setter
+    def BucketMarker(self, BucketMarker):
+        self._BucketMarker = BucketMarker
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._BucketName = params.get("BucketName")
+        self._BucketRegion = params.get("BucketRegion")
+        self._BucketRegionCode = params.get("BucketRegionCode")
+        self._BucketMarker = params.get("BucketMarker")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CosBucketTaskInfo(AbstractModel):
+    r"""cos存储桶任务信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: appid
+        :type AppId: int
+        :param _BucketName: 存储桶名
+        :type BucketName: str
+        :param _TaskId: 任务id
+        :type TaskId: str
+        :param _LastScanTime: 最后一次扫描时间
+        :type LastScanTime: int
+        """
+        self._AppId = None
+        self._BucketName = None
+        self._TaskId = None
+        self._LastScanTime = None
+
+    @property
+    def AppId(self):
+        r"""appid
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def BucketName(self):
+        r"""存储桶名
+        :rtype: str
+        """
+        return self._BucketName
+
+    @BucketName.setter
+    def BucketName(self, BucketName):
+        self._BucketName = BucketName
+
+    @property
+    def TaskId(self):
+        r"""任务id
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def LastScanTime(self):
+        r"""最后一次扫描时间
+        :rtype: int
+        """
+        return self._LastScanTime
+
+    @LastScanTime.setter
+    def LastScanTime(self, LastScanTime):
+        self._LastScanTime = LastScanTime
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._BucketName = params.get("BucketName")
+        self._TaskId = params.get("TaskId")
+        self._LastScanTime = params.get("LastScanTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CosDictionary(AbstractModel):
+    r"""cos字典信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DictId: <p>字典id</p>
+        :type DictId: int
+        :param _DictName: <p>字典名称</p>
+        :type DictName: str
+        """
+        self._DictId = None
+        self._DictName = None
+
+    @property
+    def DictId(self):
+        r"""<p>字典id</p>
+        :rtype: int
+        """
+        return self._DictId
+
+    @DictId.setter
+    def DictId(self, DictId):
+        self._DictId = DictId
+
+    @property
+    def DictName(self):
+        r"""<p>字典名称</p>
+        :rtype: str
+        """
+        return self._DictName
+
+    @DictName.setter
+    def DictName(self, DictName):
+        self._DictName = DictName
+
+
+    def _deserialize(self, params):
+        self._DictId = params.get("DictId")
+        self._DictName = params.get("DictName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CosIdentifyCategoryDetail(AbstractModel):
+    r"""cos数据识别结果分类详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CategoryId: <p>分类id</p>
+        :type CategoryId: int
+        :param _CategoryName: <p>分类名称</p>
+        :type CategoryName: str
+        :param _RuleSet: <p>数据项集合</p>
+        :type RuleSet: list of CosIdentifyRuleDetail
+        """
+        self._CategoryId = None
+        self._CategoryName = None
+        self._RuleSet = None
+
+    @property
+    def CategoryId(self):
+        r"""<p>分类id</p>
+        :rtype: int
+        """
+        return self._CategoryId
+
+    @CategoryId.setter
+    def CategoryId(self, CategoryId):
+        self._CategoryId = CategoryId
+
+    @property
+    def CategoryName(self):
+        r"""<p>分类名称</p>
+        :rtype: str
+        """
+        return self._CategoryName
+
+    @CategoryName.setter
+    def CategoryName(self, CategoryName):
+        self._CategoryName = CategoryName
+
+    @property
+    def RuleSet(self):
+        r"""<p>数据项集合</p>
+        :rtype: list of CosIdentifyRuleDetail
+        """
+        return self._RuleSet
+
+    @RuleSet.setter
+    def RuleSet(self, RuleSet):
+        self._RuleSet = RuleSet
+
+
+    def _deserialize(self, params):
+        self._CategoryId = params.get("CategoryId")
+        self._CategoryName = params.get("CategoryName")
+        if params.get("RuleSet") is not None:
+            self._RuleSet = []
+            for item in params.get("RuleSet"):
+                obj = CosIdentifyRuleDetail()
+                obj._deserialize(item)
+                self._RuleSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CosIdentifyRuleDetail(AbstractModel):
+    r"""cos数据项详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleId: 数据项id
+        :type RuleId: int
+        :param _RuleName: 数据项名称
+        :type RuleName: str
+        :param _LevelId: 敏感级别id
+        :type LevelId: int
+        :param _LevelName: 敏感级别名称
+        :type LevelName: str
+        :param _LevelScore: 敏感程度
+        :type LevelScore: int
+        """
+        self._RuleId = None
+        self._RuleName = None
+        self._LevelId = None
+        self._LevelName = None
+        self._LevelScore = None
+
+    @property
+    def RuleId(self):
+        r"""数据项id
+        :rtype: int
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def RuleName(self):
+        r"""数据项名称
+        :rtype: str
+        """
+        return self._RuleName
+
+    @RuleName.setter
+    def RuleName(self, RuleName):
+        self._RuleName = RuleName
+
+    @property
+    def LevelId(self):
+        r"""敏感级别id
+        :rtype: int
+        """
+        return self._LevelId
+
+    @LevelId.setter
+    def LevelId(self, LevelId):
+        self._LevelId = LevelId
+
+    @property
+    def LevelName(self):
+        r"""敏感级别名称
+        :rtype: str
+        """
+        return self._LevelName
+
+    @LevelName.setter
+    def LevelName(self, LevelName):
+        self._LevelName = LevelName
+
+    @property
+    def LevelScore(self):
+        r"""敏感程度
+        :rtype: int
+        """
+        return self._LevelScore
+
+    @LevelScore.setter
+    def LevelScore(self, LevelScore):
+        self._LevelScore = LevelScore
+
+
+    def _deserialize(self, params):
+        self._RuleId = params.get("RuleId")
+        self._RuleName = params.get("RuleName")
+        self._LevelId = params.get("LevelId")
+        self._LevelName = params.get("LevelName")
+        self._LevelScore = params.get("LevelScore")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CosInvokeDetailInfo(AbstractModel):
+    r"""cos调用详情信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InvokeTimestamp: 调用时间
+        :type InvokeTimestamp: int
+        :param _InvokeRequestId: 请求id
+        :type InvokeRequestId: str
+        :param _InvokeContent: 调用内容
+        :type InvokeContent: str
+        """
+        self._InvokeTimestamp = None
+        self._InvokeRequestId = None
+        self._InvokeContent = None
+
+    @property
+    def InvokeTimestamp(self):
+        r"""调用时间
+        :rtype: int
+        """
+        return self._InvokeTimestamp
+
+    @InvokeTimestamp.setter
+    def InvokeTimestamp(self, InvokeTimestamp):
+        self._InvokeTimestamp = InvokeTimestamp
+
+    @property
+    def InvokeRequestId(self):
+        r"""请求id
+        :rtype: str
+        """
+        return self._InvokeRequestId
+
+    @InvokeRequestId.setter
+    def InvokeRequestId(self, InvokeRequestId):
+        self._InvokeRequestId = InvokeRequestId
+
+    @property
+    def InvokeContent(self):
+        r"""调用内容
+        :rtype: str
+        """
+        return self._InvokeContent
+
+    @InvokeContent.setter
+    def InvokeContent(self, InvokeContent):
+        self._InvokeContent = InvokeContent
+
+
+    def _deserialize(self, params):
+        self._InvokeTimestamp = params.get("InvokeTimestamp")
+        self._InvokeRequestId = params.get("InvokeRequestId")
+        self._InvokeContent = params.get("InvokeContent")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CosInvokeIpVpcInfo(AbstractModel):
+    r"""cos调用源ip vpc信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Uin: vpc所属uin
+        :type Uin: str
+        :param _AppId: vpc所属appid
+        :type AppId: int
+        :param _NickName: 昵称
+        :type NickName: str
+        :param _VpcId: vpcid信息
+        :type VpcId: str
+        :param _VpcName: vpc名称
+        :type VpcName: str
+        """
+        self._Uin = None
+        self._AppId = None
+        self._NickName = None
+        self._VpcId = None
+        self._VpcName = None
+
+    @property
+    def Uin(self):
+        r"""vpc所属uin
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def AppId(self):
+        r"""vpc所属appid
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def NickName(self):
+        r"""昵称
+        :rtype: str
+        """
+        return self._NickName
+
+    @NickName.setter
+    def NickName(self, NickName):
+        self._NickName = NickName
+
+    @property
+    def VpcId(self):
+        r"""vpcid信息
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def VpcName(self):
+        r"""vpc名称
+        :rtype: str
+        """
+        return self._VpcName
+
+    @VpcName.setter
+    def VpcName(self, VpcName):
+        self._VpcName = VpcName
+
+
+    def _deserialize(self, params):
+        self._Uin = params.get("Uin")
+        self._AppId = params.get("AppId")
+        self._NickName = params.get("NickName")
+        self._VpcId = params.get("VpcId")
+        self._VpcName = params.get("VpcName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CosInvokeLog(AbstractModel):
+    r"""cos调用日志
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InvokeTimestamp: 调用时间戳
+        :type InvokeTimestamp: int
+        :param _RequestId: 请求id
+        :type RequestId: str
+        :param _RequestContent: 请求内容 base64 json 结构
+        :type RequestContent: str
+        """
+        self._InvokeTimestamp = None
+        self._RequestId = None
+        self._RequestContent = None
+
+    @property
+    def InvokeTimestamp(self):
+        r"""调用时间戳
+        :rtype: int
+        """
+        return self._InvokeTimestamp
+
+    @InvokeTimestamp.setter
+    def InvokeTimestamp(self, InvokeTimestamp):
+        self._InvokeTimestamp = InvokeTimestamp
+
+    @property
+    def RequestId(self):
+        r"""请求id
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+    @property
+    def RequestContent(self):
+        r"""请求内容 base64 json 结构
+        :rtype: str
+        """
+        return self._RequestContent
+
+    @RequestContent.setter
+    def RequestContent(self, RequestContent):
+        self._RequestContent = RequestContent
+
+
+    def _deserialize(self, params):
+        self._InvokeTimestamp = params.get("InvokeTimestamp")
+        self._RequestId = params.get("RequestId")
+        self._RequestContent = params.get("RequestContent")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CosOverview(AbstractModel):
+    r"""cos概览页面数据结构
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AssetCount: 资产总数
+        :type AssetCount: int
+        :param _AlarmAssetCount: 需要立即处理的资产数
+        :type AlarmAssetCount: int
+        :param _RiskAssetCount: 需要加固的资产数
+        :type RiskAssetCount: int
+        :param _AlarmCount: 告警总数
+        :type AlarmCount: int
+        :param _IncrementAlarmCount: 当日新增告警总数
+        :type IncrementAlarmCount: int
+        :param _RiskCount: 风险总数
+        :type RiskCount: int
+        :param _IncrementRiskCount: 当日新增告警总数
+        :type IncrementRiskCount: int
+        :param _RiskTop: 风险top详情
+        :type RiskTop: list of CosRiskInfo
+        :param _AlarmTop: 告警风险top
+        :type AlarmTop: list of CosRiskInfo
+        """
+        self._AssetCount = None
+        self._AlarmAssetCount = None
+        self._RiskAssetCount = None
+        self._AlarmCount = None
+        self._IncrementAlarmCount = None
+        self._RiskCount = None
+        self._IncrementRiskCount = None
+        self._RiskTop = None
+        self._AlarmTop = None
+
+    @property
+    def AssetCount(self):
+        r"""资产总数
+        :rtype: int
+        """
+        return self._AssetCount
+
+    @AssetCount.setter
+    def AssetCount(self, AssetCount):
+        self._AssetCount = AssetCount
+
+    @property
+    def AlarmAssetCount(self):
+        r"""需要立即处理的资产数
+        :rtype: int
+        """
+        return self._AlarmAssetCount
+
+    @AlarmAssetCount.setter
+    def AlarmAssetCount(self, AlarmAssetCount):
+        self._AlarmAssetCount = AlarmAssetCount
+
+    @property
+    def RiskAssetCount(self):
+        r"""需要加固的资产数
+        :rtype: int
+        """
+        return self._RiskAssetCount
+
+    @RiskAssetCount.setter
+    def RiskAssetCount(self, RiskAssetCount):
+        self._RiskAssetCount = RiskAssetCount
+
+    @property
+    def AlarmCount(self):
+        r"""告警总数
+        :rtype: int
+        """
+        return self._AlarmCount
+
+    @AlarmCount.setter
+    def AlarmCount(self, AlarmCount):
+        self._AlarmCount = AlarmCount
+
+    @property
+    def IncrementAlarmCount(self):
+        r"""当日新增告警总数
+        :rtype: int
+        """
+        return self._IncrementAlarmCount
+
+    @IncrementAlarmCount.setter
+    def IncrementAlarmCount(self, IncrementAlarmCount):
+        self._IncrementAlarmCount = IncrementAlarmCount
+
+    @property
+    def RiskCount(self):
+        r"""风险总数
+        :rtype: int
+        """
+        return self._RiskCount
+
+    @RiskCount.setter
+    def RiskCount(self, RiskCount):
+        self._RiskCount = RiskCount
+
+    @property
+    def IncrementRiskCount(self):
+        r"""当日新增告警总数
+        :rtype: int
+        """
+        return self._IncrementRiskCount
+
+    @IncrementRiskCount.setter
+    def IncrementRiskCount(self, IncrementRiskCount):
+        self._IncrementRiskCount = IncrementRiskCount
+
+    @property
+    def RiskTop(self):
+        r"""风险top详情
+        :rtype: list of CosRiskInfo
+        """
+        return self._RiskTop
+
+    @RiskTop.setter
+    def RiskTop(self, RiskTop):
+        self._RiskTop = RiskTop
+
+    @property
+    def AlarmTop(self):
+        r"""告警风险top
+        :rtype: list of CosRiskInfo
+        """
+        return self._AlarmTop
+
+    @AlarmTop.setter
+    def AlarmTop(self, AlarmTop):
+        self._AlarmTop = AlarmTop
+
+
+    def _deserialize(self, params):
+        self._AssetCount = params.get("AssetCount")
+        self._AlarmAssetCount = params.get("AlarmAssetCount")
+        self._RiskAssetCount = params.get("RiskAssetCount")
+        self._AlarmCount = params.get("AlarmCount")
+        self._IncrementAlarmCount = params.get("IncrementAlarmCount")
+        self._RiskCount = params.get("RiskCount")
+        self._IncrementRiskCount = params.get("IncrementRiskCount")
+        if params.get("RiskTop") is not None:
+            self._RiskTop = []
+            for item in params.get("RiskTop"):
+                obj = CosRiskInfo()
+                obj._deserialize(item)
+                self._RiskTop.append(obj)
+        if params.get("AlarmTop") is not None:
+            self._AlarmTop = []
+            for item in params.get("AlarmTop"):
+                obj = CosRiskInfo()
+                obj._deserialize(item)
+                self._AlarmTop.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CosPermissionInfo(AbstractModel):
+    r"""cos权限信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PermissionSource: 权限来源
+        :type PermissionSource: str
+        :param _PermissionContent: 权限内容
+        :type PermissionContent: str
+        :param _GrantResource: 授权资源
+        :type GrantResource: str
+        :param _GrantAction: 授权动作
+        :type GrantAction: str
+        :param _GrantCondition: 授权条件
+        :type GrantCondition: str
+        """
+        self._PermissionSource = None
+        self._PermissionContent = None
+        self._GrantResource = None
+        self._GrantAction = None
+        self._GrantCondition = None
+
+    @property
+    def PermissionSource(self):
+        r"""权限来源
+        :rtype: str
+        """
+        return self._PermissionSource
+
+    @PermissionSource.setter
+    def PermissionSource(self, PermissionSource):
+        self._PermissionSource = PermissionSource
+
+    @property
+    def PermissionContent(self):
+        r"""权限内容
+        :rtype: str
+        """
+        return self._PermissionContent
+
+    @PermissionContent.setter
+    def PermissionContent(self, PermissionContent):
+        self._PermissionContent = PermissionContent
+
+    @property
+    def GrantResource(self):
+        r"""授权资源
+        :rtype: str
+        """
+        return self._GrantResource
+
+    @GrantResource.setter
+    def GrantResource(self, GrantResource):
+        self._GrantResource = GrantResource
+
+    @property
+    def GrantAction(self):
+        r"""授权动作
+        :rtype: str
+        """
+        return self._GrantAction
+
+    @GrantAction.setter
+    def GrantAction(self, GrantAction):
+        self._GrantAction = GrantAction
+
+    @property
+    def GrantCondition(self):
+        r"""授权条件
+        :rtype: str
+        """
+        return self._GrantCondition
+
+    @GrantCondition.setter
+    def GrantCondition(self, GrantCondition):
+        self._GrantCondition = GrantCondition
+
+
+    def _deserialize(self, params):
+        self._PermissionSource = params.get("PermissionSource")
+        self._PermissionContent = params.get("PermissionContent")
+        self._GrantResource = params.get("GrantResource")
+        self._GrantAction = params.get("GrantAction")
+        self._GrantCondition = params.get("GrantCondition")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CosPolicyInfo(AbstractModel):
+    r"""cos策略信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PolicyName: 策略名称
+        :type PolicyName: str
+        :param _PolicyType: 策略类型
+PolicyType：1 告警策略 2 风险策略  3  白名单策略  4 ip隐藏策略
+        :type PolicyType: int
+        :param _PolicySource: system:系统内置 user:用户自定义
+        :type PolicySource: int
+        :param _PolicyContent: 策略内容
+        :type PolicyContent: str
+        :param _PolicyStatus: 0 关闭
+1 开启
+        :type PolicyStatus: int
+        :param _PolicyAbnormalType: 策略分类
+        :type PolicyAbnormalType: int
+        :param _RiskLevel: 风险级别
+        :type RiskLevel: int
+        :param _PolicyId: 策略id
+        :type PolicyId: int
+        :param _PolicyCreateTime: 创建时间
+        :type PolicyCreateTime: int
+        :param _PolicyUpdateTime: 更新时间
+        :type PolicyUpdateTime: int
+        :param _PolicyHitCount: 策略近七天命中次数
+        :type PolicyHitCount: int
+        :param _PolicyContentHash: 告警内容hash
+        :type PolicyContentHash: str
+        :param _RelAccountCount: 关联账户数
+        :type RelAccountCount: int
+        :param _RelAccountUin: 关联账号uin
+        :type RelAccountUin: str
+        :param _RelAccountName: 关联账号名
+        :type RelAccountName: str
+        :param _PolicyDescription: 描述信息
+        :type PolicyDescription: str
+        :param _PolicyMarker: 备注信息
+        :type PolicyMarker: str
+        :param _AppId: appid
+        :type AppId: int
+        :param _PolicyIdSet: 多账号场景下的id集合
+        :type PolicyIdSet: list of int
+        :param _PolicyHistoryHandleStatus: 是否处置历史数据状态  0 无须处置 1 需要处置 2 已处置
+        :type PolicyHistoryHandleStatus: int
+        :param _SystemPolicyEditStatus: 系统策略编辑状态
+        :type SystemPolicyEditStatus: int
+        """
+        self._PolicyName = None
+        self._PolicyType = None
+        self._PolicySource = None
+        self._PolicyContent = None
+        self._PolicyStatus = None
+        self._PolicyAbnormalType = None
+        self._RiskLevel = None
+        self._PolicyId = None
+        self._PolicyCreateTime = None
+        self._PolicyUpdateTime = None
+        self._PolicyHitCount = None
+        self._PolicyContentHash = None
+        self._RelAccountCount = None
+        self._RelAccountUin = None
+        self._RelAccountName = None
+        self._PolicyDescription = None
+        self._PolicyMarker = None
+        self._AppId = None
+        self._PolicyIdSet = None
+        self._PolicyHistoryHandleStatus = None
+        self._SystemPolicyEditStatus = None
+
+    @property
+    def PolicyName(self):
+        r"""策略名称
+        :rtype: str
+        """
+        return self._PolicyName
+
+    @PolicyName.setter
+    def PolicyName(self, PolicyName):
+        self._PolicyName = PolicyName
+
+    @property
+    def PolicyType(self):
+        r"""策略类型
+PolicyType：1 告警策略 2 风险策略  3  白名单策略  4 ip隐藏策略
+        :rtype: int
+        """
+        return self._PolicyType
+
+    @PolicyType.setter
+    def PolicyType(self, PolicyType):
+        self._PolicyType = PolicyType
+
+    @property
+    def PolicySource(self):
+        r"""system:系统内置 user:用户自定义
+        :rtype: int
+        """
+        return self._PolicySource
+
+    @PolicySource.setter
+    def PolicySource(self, PolicySource):
+        self._PolicySource = PolicySource
+
+    @property
+    def PolicyContent(self):
+        r"""策略内容
+        :rtype: str
+        """
+        return self._PolicyContent
+
+    @PolicyContent.setter
+    def PolicyContent(self, PolicyContent):
+        self._PolicyContent = PolicyContent
+
+    @property
+    def PolicyStatus(self):
+        r"""0 关闭
+1 开启
+        :rtype: int
+        """
+        return self._PolicyStatus
+
+    @PolicyStatus.setter
+    def PolicyStatus(self, PolicyStatus):
+        self._PolicyStatus = PolicyStatus
+
+    @property
+    def PolicyAbnormalType(self):
+        r"""策略分类
+        :rtype: int
+        """
+        return self._PolicyAbnormalType
+
+    @PolicyAbnormalType.setter
+    def PolicyAbnormalType(self, PolicyAbnormalType):
+        self._PolicyAbnormalType = PolicyAbnormalType
+
+    @property
+    def RiskLevel(self):
+        r"""风险级别
+        :rtype: int
+        """
+        return self._RiskLevel
+
+    @RiskLevel.setter
+    def RiskLevel(self, RiskLevel):
+        self._RiskLevel = RiskLevel
+
+    @property
+    def PolicyId(self):
+        r"""策略id
+        :rtype: int
+        """
+        return self._PolicyId
+
+    @PolicyId.setter
+    def PolicyId(self, PolicyId):
+        self._PolicyId = PolicyId
+
+    @property
+    def PolicyCreateTime(self):
+        r"""创建时间
+        :rtype: int
+        """
+        return self._PolicyCreateTime
+
+    @PolicyCreateTime.setter
+    def PolicyCreateTime(self, PolicyCreateTime):
+        self._PolicyCreateTime = PolicyCreateTime
+
+    @property
+    def PolicyUpdateTime(self):
+        r"""更新时间
+        :rtype: int
+        """
+        return self._PolicyUpdateTime
+
+    @PolicyUpdateTime.setter
+    def PolicyUpdateTime(self, PolicyUpdateTime):
+        self._PolicyUpdateTime = PolicyUpdateTime
+
+    @property
+    def PolicyHitCount(self):
+        r"""策略近七天命中次数
+        :rtype: int
+        """
+        return self._PolicyHitCount
+
+    @PolicyHitCount.setter
+    def PolicyHitCount(self, PolicyHitCount):
+        self._PolicyHitCount = PolicyHitCount
+
+    @property
+    def PolicyContentHash(self):
+        r"""告警内容hash
+        :rtype: str
+        """
+        return self._PolicyContentHash
+
+    @PolicyContentHash.setter
+    def PolicyContentHash(self, PolicyContentHash):
+        self._PolicyContentHash = PolicyContentHash
+
+    @property
+    def RelAccountCount(self):
+        r"""关联账户数
+        :rtype: int
+        """
+        return self._RelAccountCount
+
+    @RelAccountCount.setter
+    def RelAccountCount(self, RelAccountCount):
+        self._RelAccountCount = RelAccountCount
+
+    @property
+    def RelAccountUin(self):
+        r"""关联账号uin
+        :rtype: str
+        """
+        return self._RelAccountUin
+
+    @RelAccountUin.setter
+    def RelAccountUin(self, RelAccountUin):
+        self._RelAccountUin = RelAccountUin
+
+    @property
+    def RelAccountName(self):
+        r"""关联账号名
+        :rtype: str
+        """
+        return self._RelAccountName
+
+    @RelAccountName.setter
+    def RelAccountName(self, RelAccountName):
+        self._RelAccountName = RelAccountName
+
+    @property
+    def PolicyDescription(self):
+        r"""描述信息
+        :rtype: str
+        """
+        return self._PolicyDescription
+
+    @PolicyDescription.setter
+    def PolicyDescription(self, PolicyDescription):
+        self._PolicyDescription = PolicyDescription
+
+    @property
+    def PolicyMarker(self):
+        r"""备注信息
+        :rtype: str
+        """
+        return self._PolicyMarker
+
+    @PolicyMarker.setter
+    def PolicyMarker(self, PolicyMarker):
+        self._PolicyMarker = PolicyMarker
+
+    @property
+    def AppId(self):
+        r"""appid
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def PolicyIdSet(self):
+        r"""多账号场景下的id集合
+        :rtype: list of int
+        """
+        return self._PolicyIdSet
+
+    @PolicyIdSet.setter
+    def PolicyIdSet(self, PolicyIdSet):
+        self._PolicyIdSet = PolicyIdSet
+
+    @property
+    def PolicyHistoryHandleStatus(self):
+        r"""是否处置历史数据状态  0 无须处置 1 需要处置 2 已处置
+        :rtype: int
+        """
+        return self._PolicyHistoryHandleStatus
+
+    @PolicyHistoryHandleStatus.setter
+    def PolicyHistoryHandleStatus(self, PolicyHistoryHandleStatus):
+        self._PolicyHistoryHandleStatus = PolicyHistoryHandleStatus
+
+    @property
+    def SystemPolicyEditStatus(self):
+        r"""系统策略编辑状态
+        :rtype: int
+        """
+        return self._SystemPolicyEditStatus
+
+    @SystemPolicyEditStatus.setter
+    def SystemPolicyEditStatus(self, SystemPolicyEditStatus):
+        self._SystemPolicyEditStatus = SystemPolicyEditStatus
+
+
+    def _deserialize(self, params):
+        self._PolicyName = params.get("PolicyName")
+        self._PolicyType = params.get("PolicyType")
+        self._PolicySource = params.get("PolicySource")
+        self._PolicyContent = params.get("PolicyContent")
+        self._PolicyStatus = params.get("PolicyStatus")
+        self._PolicyAbnormalType = params.get("PolicyAbnormalType")
+        self._RiskLevel = params.get("RiskLevel")
+        self._PolicyId = params.get("PolicyId")
+        self._PolicyCreateTime = params.get("PolicyCreateTime")
+        self._PolicyUpdateTime = params.get("PolicyUpdateTime")
+        self._PolicyHitCount = params.get("PolicyHitCount")
+        self._PolicyContentHash = params.get("PolicyContentHash")
+        self._RelAccountCount = params.get("RelAccountCount")
+        self._RelAccountUin = params.get("RelAccountUin")
+        self._RelAccountName = params.get("RelAccountName")
+        self._PolicyDescription = params.get("PolicyDescription")
+        self._PolicyMarker = params.get("PolicyMarker")
+        self._AppId = params.get("AppId")
+        self._PolicyIdSet = params.get("PolicyIdSet")
+        self._PolicyHistoryHandleStatus = params.get("PolicyHistoryHandleStatus")
+        self._SystemPolicyEditStatus = params.get("SystemPolicyEditStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CosRiskActionInfo(AbstractModel):
+    r"""风险接口情况
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ActionName: 接口名
+        :type ActionName: str
+        :param _ActionNameCn: 接口名中文
+        :type ActionNameCn: str
+        :param _InvokeCount: 调用次数
+        :type InvokeCount: int
+        :param _ActionAccessTime: 最后访问时间Unix时间单位毫秒
+        :type ActionAccessTime: int
+        """
+        self._ActionName = None
+        self._ActionNameCn = None
+        self._InvokeCount = None
+        self._ActionAccessTime = None
+
+    @property
+    def ActionName(self):
+        r"""接口名
+        :rtype: str
+        """
+        return self._ActionName
+
+    @ActionName.setter
+    def ActionName(self, ActionName):
+        self._ActionName = ActionName
+
+    @property
+    def ActionNameCn(self):
+        r"""接口名中文
+        :rtype: str
+        """
+        return self._ActionNameCn
+
+    @ActionNameCn.setter
+    def ActionNameCn(self, ActionNameCn):
+        self._ActionNameCn = ActionNameCn
+
+    @property
+    def InvokeCount(self):
+        r"""调用次数
+        :rtype: int
+        """
+        return self._InvokeCount
+
+    @InvokeCount.setter
+    def InvokeCount(self, InvokeCount):
+        self._InvokeCount = InvokeCount
+
+    @property
+    def ActionAccessTime(self):
+        r"""最后访问时间Unix时间单位毫秒
+        :rtype: int
+        """
+        return self._ActionAccessTime
+
+    @ActionAccessTime.setter
+    def ActionAccessTime(self, ActionAccessTime):
+        self._ActionAccessTime = ActionAccessTime
+
+
+    def _deserialize(self, params):
+        self._ActionName = params.get("ActionName")
+        self._ActionNameCn = params.get("ActionNameCn")
+        self._InvokeCount = params.get("InvokeCount")
+        self._ActionAccessTime = params.get("ActionAccessTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CosRiskAlarmInfo(AbstractModel):
+    r"""cos风险告警信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PolicyType: 策略类型枚举值
+        :type PolicyType: int
+        :param _PolicyTypeName: 策略名
+        :type PolicyTypeName: str
+        :param _PolicyCount: 策略类型对应的策略数量
+        :type PolicyCount: int
+        """
+        self._PolicyType = None
+        self._PolicyTypeName = None
+        self._PolicyCount = None
+
+    @property
+    def PolicyType(self):
+        r"""策略类型枚举值
+        :rtype: int
+        """
+        return self._PolicyType
+
+    @PolicyType.setter
+    def PolicyType(self, PolicyType):
+        self._PolicyType = PolicyType
+
+    @property
+    def PolicyTypeName(self):
+        r"""策略名
+        :rtype: str
+        """
+        return self._PolicyTypeName
+
+    @PolicyTypeName.setter
+    def PolicyTypeName(self, PolicyTypeName):
+        self._PolicyTypeName = PolicyTypeName
+
+    @property
+    def PolicyCount(self):
+        r"""策略类型对应的策略数量
+        :rtype: int
+        """
+        return self._PolicyCount
+
+    @PolicyCount.setter
+    def PolicyCount(self, PolicyCount):
+        self._PolicyCount = PolicyCount
+
+
+    def _deserialize(self, params):
+        self._PolicyType = params.get("PolicyType")
+        self._PolicyTypeName = params.get("PolicyTypeName")
+        self._PolicyCount = params.get("PolicyCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CosRiskBucketInfo(AbstractModel):
+    r"""受影响的存储桶信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: appid
+        :type AppId: int
+        :param _BucketName: 桶名
+        :type BucketName: str
+        :param _BucketRegion: 桶地域
+        :type BucketRegion: str
+        :param _BucketMarker: 桶备注信息
+        :type BucketMarker: str
+        :param _BucketUin: 桶uin
+        :type BucketUin: str
+        :param _BucketNickName: uin昵称
+        :type BucketNickName: str
+        :param _BucketMainNickName: uin主账号昵称
+        :type BucketMainNickName: str
+        :param _BucketIdentify: uin身份
+        :type BucketIdentify: int
+        :param _LastScanTimestamp: 风险检出时间Unix时间单位毫秒
+        :type LastScanTimestamp: int
+        :param _HandleStatus: 状态信息
+        :type HandleStatus: int
+        :param _PolicyName: 风险名称
+        :type PolicyName: str
+        :param _PolicyType: 风险类型
+        :type PolicyType: int
+        :param _PolicyId: 策略id
+        :type PolicyId: int
+        :param _PolicyLevel: 策略级别
+        :type PolicyLevel: int
+        :param _PolicyDescription: 策略描述
+        :type PolicyDescription: str
+        :param _BucketAccessWay: 访问方式
+        :type BucketAccessWay: str
+        :param _BucketTagInfo: 标签信息
+        :type BucketTagInfo: str
+        :param _RiskId: 风险id
+        :type RiskId: int
+        :param _BucketRegionCode: cos地域码值
+        :type BucketRegionCode: str
+        :param _BucketMonitorStatus: 是否开启自动监测状态 0 关闭 1 开启
+        :type BucketMonitorStatus: int
+        """
+        self._AppId = None
+        self._BucketName = None
+        self._BucketRegion = None
+        self._BucketMarker = None
+        self._BucketUin = None
+        self._BucketNickName = None
+        self._BucketMainNickName = None
+        self._BucketIdentify = None
+        self._LastScanTimestamp = None
+        self._HandleStatus = None
+        self._PolicyName = None
+        self._PolicyType = None
+        self._PolicyId = None
+        self._PolicyLevel = None
+        self._PolicyDescription = None
+        self._BucketAccessWay = None
+        self._BucketTagInfo = None
+        self._RiskId = None
+        self._BucketRegionCode = None
+        self._BucketMonitorStatus = None
+
+    @property
+    def AppId(self):
+        r"""appid
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def BucketName(self):
+        r"""桶名
+        :rtype: str
+        """
+        return self._BucketName
+
+    @BucketName.setter
+    def BucketName(self, BucketName):
+        self._BucketName = BucketName
+
+    @property
+    def BucketRegion(self):
+        r"""桶地域
+        :rtype: str
+        """
+        return self._BucketRegion
+
+    @BucketRegion.setter
+    def BucketRegion(self, BucketRegion):
+        self._BucketRegion = BucketRegion
+
+    @property
+    def BucketMarker(self):
+        r"""桶备注信息
+        :rtype: str
+        """
+        return self._BucketMarker
+
+    @BucketMarker.setter
+    def BucketMarker(self, BucketMarker):
+        self._BucketMarker = BucketMarker
+
+    @property
+    def BucketUin(self):
+        r"""桶uin
+        :rtype: str
+        """
+        return self._BucketUin
+
+    @BucketUin.setter
+    def BucketUin(self, BucketUin):
+        self._BucketUin = BucketUin
+
+    @property
+    def BucketNickName(self):
+        r"""uin昵称
+        :rtype: str
+        """
+        return self._BucketNickName
+
+    @BucketNickName.setter
+    def BucketNickName(self, BucketNickName):
+        self._BucketNickName = BucketNickName
+
+    @property
+    def BucketMainNickName(self):
+        r"""uin主账号昵称
+        :rtype: str
+        """
+        return self._BucketMainNickName
+
+    @BucketMainNickName.setter
+    def BucketMainNickName(self, BucketMainNickName):
+        self._BucketMainNickName = BucketMainNickName
+
+    @property
+    def BucketIdentify(self):
+        r"""uin身份
+        :rtype: int
+        """
+        return self._BucketIdentify
+
+    @BucketIdentify.setter
+    def BucketIdentify(self, BucketIdentify):
+        self._BucketIdentify = BucketIdentify
+
+    @property
+    def LastScanTimestamp(self):
+        r"""风险检出时间Unix时间单位毫秒
+        :rtype: int
+        """
+        return self._LastScanTimestamp
+
+    @LastScanTimestamp.setter
+    def LastScanTimestamp(self, LastScanTimestamp):
+        self._LastScanTimestamp = LastScanTimestamp
+
+    @property
+    def HandleStatus(self):
+        r"""状态信息
+        :rtype: int
+        """
+        return self._HandleStatus
+
+    @HandleStatus.setter
+    def HandleStatus(self, HandleStatus):
+        self._HandleStatus = HandleStatus
+
+    @property
+    def PolicyName(self):
+        r"""风险名称
+        :rtype: str
+        """
+        return self._PolicyName
+
+    @PolicyName.setter
+    def PolicyName(self, PolicyName):
+        self._PolicyName = PolicyName
+
+    @property
+    def PolicyType(self):
+        r"""风险类型
+        :rtype: int
+        """
+        return self._PolicyType
+
+    @PolicyType.setter
+    def PolicyType(self, PolicyType):
+        self._PolicyType = PolicyType
+
+    @property
+    def PolicyId(self):
+        r"""策略id
+        :rtype: int
+        """
+        return self._PolicyId
+
+    @PolicyId.setter
+    def PolicyId(self, PolicyId):
+        self._PolicyId = PolicyId
+
+    @property
+    def PolicyLevel(self):
+        r"""策略级别
+        :rtype: int
+        """
+        return self._PolicyLevel
+
+    @PolicyLevel.setter
+    def PolicyLevel(self, PolicyLevel):
+        self._PolicyLevel = PolicyLevel
+
+    @property
+    def PolicyDescription(self):
+        r"""策略描述
+        :rtype: str
+        """
+        return self._PolicyDescription
+
+    @PolicyDescription.setter
+    def PolicyDescription(self, PolicyDescription):
+        self._PolicyDescription = PolicyDescription
+
+    @property
+    def BucketAccessWay(self):
+        r"""访问方式
+        :rtype: str
+        """
+        return self._BucketAccessWay
+
+    @BucketAccessWay.setter
+    def BucketAccessWay(self, BucketAccessWay):
+        self._BucketAccessWay = BucketAccessWay
+
+    @property
+    def BucketTagInfo(self):
+        r"""标签信息
+        :rtype: str
+        """
+        return self._BucketTagInfo
+
+    @BucketTagInfo.setter
+    def BucketTagInfo(self, BucketTagInfo):
+        self._BucketTagInfo = BucketTagInfo
+
+    @property
+    def RiskId(self):
+        r"""风险id
+        :rtype: int
+        """
+        return self._RiskId
+
+    @RiskId.setter
+    def RiskId(self, RiskId):
+        self._RiskId = RiskId
+
+    @property
+    def BucketRegionCode(self):
+        r"""cos地域码值
+        :rtype: str
+        """
+        return self._BucketRegionCode
+
+    @BucketRegionCode.setter
+    def BucketRegionCode(self, BucketRegionCode):
+        self._BucketRegionCode = BucketRegionCode
+
+    @property
+    def BucketMonitorStatus(self):
+        r"""是否开启自动监测状态 0 关闭 1 开启
+        :rtype: int
+        """
+        return self._BucketMonitorStatus
+
+    @BucketMonitorStatus.setter
+    def BucketMonitorStatus(self, BucketMonitorStatus):
+        self._BucketMonitorStatus = BucketMonitorStatus
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._BucketName = params.get("BucketName")
+        self._BucketRegion = params.get("BucketRegion")
+        self._BucketMarker = params.get("BucketMarker")
+        self._BucketUin = params.get("BucketUin")
+        self._BucketNickName = params.get("BucketNickName")
+        self._BucketMainNickName = params.get("BucketMainNickName")
+        self._BucketIdentify = params.get("BucketIdentify")
+        self._LastScanTimestamp = params.get("LastScanTimestamp")
+        self._HandleStatus = params.get("HandleStatus")
+        self._PolicyName = params.get("PolicyName")
+        self._PolicyType = params.get("PolicyType")
+        self._PolicyId = params.get("PolicyId")
+        self._PolicyLevel = params.get("PolicyLevel")
+        self._PolicyDescription = params.get("PolicyDescription")
+        self._BucketAccessWay = params.get("BucketAccessWay")
+        self._BucketTagInfo = params.get("BucketTagInfo")
+        self._RiskId = params.get("RiskId")
+        self._BucketRegionCode = params.get("BucketRegionCode")
+        self._BucketMonitorStatus = params.get("BucketMonitorStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CosRiskInfo(AbstractModel):
+    r"""cos风险详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PolicyType: 策略类型码值
+        :type PolicyType: int
+        :param _PolicyTypeName: 策略分类名
+        :type PolicyTypeName: str
+        :param _PolicyCount: 命中策略总数
+        :type PolicyCount: int
+        """
+        self._PolicyType = None
+        self._PolicyTypeName = None
+        self._PolicyCount = None
+
+    @property
+    def PolicyType(self):
+        r"""策略类型码值
+        :rtype: int
+        """
+        return self._PolicyType
+
+    @PolicyType.setter
+    def PolicyType(self, PolicyType):
+        self._PolicyType = PolicyType
+
+    @property
+    def PolicyTypeName(self):
+        r"""策略分类名
+        :rtype: str
+        """
+        return self._PolicyTypeName
+
+    @PolicyTypeName.setter
+    def PolicyTypeName(self, PolicyTypeName):
+        self._PolicyTypeName = PolicyTypeName
+
+    @property
+    def PolicyCount(self):
+        r"""命中策略总数
+        :rtype: int
+        """
+        return self._PolicyCount
+
+    @PolicyCount.setter
+    def PolicyCount(self, PolicyCount):
+        self._PolicyCount = PolicyCount
+
+
+    def _deserialize(self, params):
+        self._PolicyType = params.get("PolicyType")
+        self._PolicyTypeName = params.get("PolicyTypeName")
+        self._PolicyCount = params.get("PolicyCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CosRiskTrendInfo(AbstractModel):
+    r"""对象存储风险趋势图
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CurrentDateStr: 当前日期
+        :type CurrentDateStr: str
+        :param _RiskDataSet: 风险数据信息
+        :type RiskDataSet: list of CosRiskInfo
+        """
+        self._CurrentDateStr = None
+        self._RiskDataSet = None
+
+    @property
+    def CurrentDateStr(self):
+        r"""当前日期
+        :rtype: str
+        """
+        return self._CurrentDateStr
+
+    @CurrentDateStr.setter
+    def CurrentDateStr(self, CurrentDateStr):
+        self._CurrentDateStr = CurrentDateStr
+
+    @property
+    def RiskDataSet(self):
+        r"""风险数据信息
+        :rtype: list of CosRiskInfo
+        """
+        return self._RiskDataSet
+
+    @RiskDataSet.setter
+    def RiskDataSet(self, RiskDataSet):
+        self._RiskDataSet = RiskDataSet
+
+
+    def _deserialize(self, params):
+        self._CurrentDateStr = params.get("CurrentDateStr")
+        if params.get("RiskDataSet") is not None:
+            self._RiskDataSet = []
+            for item in params.get("RiskDataSet"):
+                obj = CosRiskInfo()
+                obj._deserialize(item)
+                self._RiskDataSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CosRiskViewInfo(AbstractModel):
+    r"""风险视角风险列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: appid
+        :type AppId: int
+        :param _PolicyName: 策略名称
+        :type PolicyName: str
+        :param _PolicyId: 策略id
+        :type PolicyId: str
+        :param _PolicyType: 策略分类
+        :type PolicyType: int
+        :param _PolicyRiskLevel: 策略风险等级
+        :type PolicyRiskLevel: int
+        :param _PolicyDescription: 策略描述
+        :type PolicyDescription: str
+        :param _HandleBucketCount: 待处理的桶数
+        :type HandleBucketCount: int
+        :param _LastScanTimestamp: 最近风险检出时间Unix时间单位毫秒
+        :type LastScanTimestamp: int
+        """
+        self._AppId = None
+        self._PolicyName = None
+        self._PolicyId = None
+        self._PolicyType = None
+        self._PolicyRiskLevel = None
+        self._PolicyDescription = None
+        self._HandleBucketCount = None
+        self._LastScanTimestamp = None
+
+    @property
+    def AppId(self):
+        r"""appid
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def PolicyName(self):
+        r"""策略名称
+        :rtype: str
+        """
+        return self._PolicyName
+
+    @PolicyName.setter
+    def PolicyName(self, PolicyName):
+        self._PolicyName = PolicyName
+
+    @property
+    def PolicyId(self):
+        r"""策略id
+        :rtype: str
+        """
+        return self._PolicyId
+
+    @PolicyId.setter
+    def PolicyId(self, PolicyId):
+        self._PolicyId = PolicyId
+
+    @property
+    def PolicyType(self):
+        r"""策略分类
+        :rtype: int
+        """
+        return self._PolicyType
+
+    @PolicyType.setter
+    def PolicyType(self, PolicyType):
+        self._PolicyType = PolicyType
+
+    @property
+    def PolicyRiskLevel(self):
+        r"""策略风险等级
+        :rtype: int
+        """
+        return self._PolicyRiskLevel
+
+    @PolicyRiskLevel.setter
+    def PolicyRiskLevel(self, PolicyRiskLevel):
+        self._PolicyRiskLevel = PolicyRiskLevel
+
+    @property
+    def PolicyDescription(self):
+        r"""策略描述
+        :rtype: str
+        """
+        return self._PolicyDescription
+
+    @PolicyDescription.setter
+    def PolicyDescription(self, PolicyDescription):
+        self._PolicyDescription = PolicyDescription
+
+    @property
+    def HandleBucketCount(self):
+        r"""待处理的桶数
+        :rtype: int
+        """
+        return self._HandleBucketCount
+
+    @HandleBucketCount.setter
+    def HandleBucketCount(self, HandleBucketCount):
+        self._HandleBucketCount = HandleBucketCount
+
+    @property
+    def LastScanTimestamp(self):
+        r"""最近风险检出时间Unix时间单位毫秒
+        :rtype: int
+        """
+        return self._LastScanTimestamp
+
+    @LastScanTimestamp.setter
+    def LastScanTimestamp(self, LastScanTimestamp):
+        self._LastScanTimestamp = LastScanTimestamp
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._PolicyName = params.get("PolicyName")
+        self._PolicyId = params.get("PolicyId")
+        self._PolicyType = params.get("PolicyType")
+        self._PolicyRiskLevel = params.get("PolicyRiskLevel")
+        self._PolicyDescription = params.get("PolicyDescription")
+        self._HandleBucketCount = params.get("HandleBucketCount")
+        self._LastScanTimestamp = params.get("LastScanTimestamp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CosRoleAccessInfo(AbstractModel):
+    r"""Cos桶关联角色列表信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RoleId: 角色ID
+        :type RoleId: str
+        :param _RoleName: 角色名称
+        :type RoleName: str
+        :param _RoleDescription: 角色描述
+        :type RoleDescription: str
+        :param _PermissionCount: 可访问权限数
+        :type PermissionCount: int
+        :param _CreateTime: 策略创建时间
+        :type CreateTime: int
+        """
+        self._RoleId = None
+        self._RoleName = None
+        self._RoleDescription = None
+        self._PermissionCount = None
+        self._CreateTime = None
+
+    @property
+    def RoleId(self):
+        r"""角色ID
+        :rtype: str
+        """
+        return self._RoleId
+
+    @RoleId.setter
+    def RoleId(self, RoleId):
+        self._RoleId = RoleId
+
+    @property
+    def RoleName(self):
+        r"""角色名称
+        :rtype: str
+        """
+        return self._RoleName
+
+    @RoleName.setter
+    def RoleName(self, RoleName):
+        self._RoleName = RoleName
+
+    @property
+    def RoleDescription(self):
+        r"""角色描述
+        :rtype: str
+        """
+        return self._RoleDescription
+
+    @RoleDescription.setter
+    def RoleDescription(self, RoleDescription):
+        self._RoleDescription = RoleDescription
+
+    @property
+    def PermissionCount(self):
+        r"""可访问权限数
+        :rtype: int
+        """
+        return self._PermissionCount
+
+    @PermissionCount.setter
+    def PermissionCount(self, PermissionCount):
+        self._PermissionCount = PermissionCount
+
+    @property
+    def CreateTime(self):
+        r"""策略创建时间
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+
+    def _deserialize(self, params):
+        self._RoleId = params.get("RoleId")
+        self._RoleName = params.get("RoleName")
+        self._RoleDescription = params.get("RoleDescription")
+        self._PermissionCount = params.get("PermissionCount")
+        self._CreateTime = params.get("CreateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CosSourceIpInfo(AbstractModel):
+    r"""对象存储调用源ip信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UA: 调用UA
+        :type UA: list of str
+        :param _VpcInfo: 调用vpc信息
+        :type VpcInfo: :class:`tencentcloud.csip.v20221121.models.CosInvokeIpVpcInfo`
+        """
+        self._UA = None
+        self._VpcInfo = None
+
+    @property
+    def UA(self):
+        r"""调用UA
+        :rtype: list of str
+        """
+        return self._UA
+
+    @UA.setter
+    def UA(self, UA):
+        self._UA = UA
+
+    @property
+    def VpcInfo(self):
+        r"""调用vpc信息
+        :rtype: :class:`tencentcloud.csip.v20221121.models.CosInvokeIpVpcInfo`
+        """
+        return self._VpcInfo
+
+    @VpcInfo.setter
+    def VpcInfo(self, VpcInfo):
+        self._VpcInfo = VpcInfo
+
+
+    def _deserialize(self, params):
+        self._UA = params.get("UA")
+        if params.get("VpcInfo") is not None:
+            self._VpcInfo = CosInvokeIpVpcInfo()
+            self._VpcInfo._deserialize(params.get("VpcInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateAccessKeyCheckTaskRequest(AbstractModel):
     r"""CreateAccessKeyCheckTask请求参数结构体
 
@@ -12108,6 +16396,374 @@ class CreateAccessKeySyncTaskResponse(AbstractModel):
         self._TaskID = params.get("TaskID")
         self._Code = params.get("Code")
         self._Msg = params.get("Msg")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateCosAssetSyncTaskRequest(AbstractModel):
+    r"""CreateCosAssetSyncTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        :param _SyncType: 1 同步所有 2 仅同步资产数
+        :type SyncType: int
+        """
+        self._MemberId = None
+        self._SyncType = None
+
+    @property
+    def MemberId(self):
+        r"""集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def SyncType(self):
+        r"""1 同步所有 2 仅同步资产数
+        :rtype: int
+        """
+        return self._SyncType
+
+    @SyncType.setter
+    def SyncType(self, SyncType):
+        self._SyncType = SyncType
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        self._SyncType = params.get("SyncType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCosAssetSyncTaskResponse(AbstractModel):
+    r"""CreateCosAssetSyncTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 同步任务id
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""同步任务id
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateCosObjectScanTaskRequest(AbstractModel):
+    r"""CreateCosObjectScanTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskType: <p>1: 敏感数据识别 2:恶意文件扫描</p>
+        :type TaskType: int
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        :param _BucketSet: <p>存储桶列表</p>
+        :type BucketSet: list of str
+        """
+        self._TaskType = None
+        self._MemberId = None
+        self._BucketSet = None
+
+    @property
+    def TaskType(self):
+        r"""<p>1: 敏感数据识别 2:恶意文件扫描</p>
+        :rtype: int
+        """
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def MemberId(self):
+        r"""集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def BucketSet(self):
+        r"""<p>存储桶列表</p>
+        :rtype: list of str
+        """
+        return self._BucketSet
+
+    @BucketSet.setter
+    def BucketSet(self, BucketSet):
+        self._BucketSet = BucketSet
+
+
+    def _deserialize(self, params):
+        self._TaskType = params.get("TaskType")
+        self._MemberId = params.get("MemberId")
+        self._BucketSet = params.get("BucketSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCosObjectScanTaskResponse(AbstractModel):
+    r"""CreateCosObjectScanTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class CreateCosPolicyRequest(AbstractModel):
+    r"""CreateCosPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CosPolicyInfo: 策略信息
+        :type CosPolicyInfo: :class:`tencentcloud.csip.v20221121.models.CosPolicyInfo`
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        """
+        self._CosPolicyInfo = None
+        self._MemberId = None
+
+    @property
+    def CosPolicyInfo(self):
+        r"""策略信息
+        :rtype: :class:`tencentcloud.csip.v20221121.models.CosPolicyInfo`
+        """
+        return self._CosPolicyInfo
+
+    @CosPolicyInfo.setter
+    def CosPolicyInfo(self, CosPolicyInfo):
+        self._CosPolicyInfo = CosPolicyInfo
+
+    @property
+    def MemberId(self):
+        r"""集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        if params.get("CosPolicyInfo") is not None:
+            self._CosPolicyInfo = CosPolicyInfo()
+            self._CosPolicyInfo._deserialize(params.get("CosPolicyInfo"))
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCosPolicyResponse(AbstractModel):
+    r"""CreateCosPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class CreateCosRiskScanTaskRequest(AbstractModel):
+    r"""CreateCosRiskScanTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        :param _BucketNameSet: 需要扫描的桶列表
+        :type BucketNameSet: list of CosBucketInfo
+        :param _IsScanAllBucket: 是否扫描全部的桶
+        :type IsScanAllBucket: bool
+        """
+        self._MemberId = None
+        self._BucketNameSet = None
+        self._IsScanAllBucket = None
+
+    @property
+    def MemberId(self):
+        r"""集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def BucketNameSet(self):
+        r"""需要扫描的桶列表
+        :rtype: list of CosBucketInfo
+        """
+        return self._BucketNameSet
+
+    @BucketNameSet.setter
+    def BucketNameSet(self, BucketNameSet):
+        self._BucketNameSet = BucketNameSet
+
+    @property
+    def IsScanAllBucket(self):
+        r"""是否扫描全部的桶
+        :rtype: bool
+        """
+        return self._IsScanAllBucket
+
+    @IsScanAllBucket.setter
+    def IsScanAllBucket(self, IsScanAllBucket):
+        self._IsScanAllBucket = IsScanAllBucket
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        if params.get("BucketNameSet") is not None:
+            self._BucketNameSet = []
+            for item in params.get("BucketNameSet"):
+                obj = CosBucketInfo()
+                obj._deserialize(item)
+                self._BucketNameSet.append(obj)
+        self._IsScanAllBucket = params.get("IsScanAllBucket")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCosRiskScanTaskResponse(AbstractModel):
+    r"""CreateCosRiskScanTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -15401,6 +20057,154 @@ class DbAssetInfo(AbstractModel):
         
 
 
+class DeleteCosAkAssetRequest(AbstractModel):
+    r"""DeleteCosAkAsset请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CosAkSet: 要删除的cos ak集合
+        :type CosAkSet: list of CosAkSet
+        """
+        self._CosAkSet = None
+
+    @property
+    def CosAkSet(self):
+        r"""要删除的cos ak集合
+        :rtype: list of CosAkSet
+        """
+        return self._CosAkSet
+
+    @CosAkSet.setter
+    def CosAkSet(self, CosAkSet):
+        self._CosAkSet = CosAkSet
+
+
+    def _deserialize(self, params):
+        if params.get("CosAkSet") is not None:
+            self._CosAkSet = []
+            for item in params.get("CosAkSet"):
+                obj = CosAkSet()
+                obj._deserialize(item)
+                self._CosAkSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteCosAkAssetResponse(AbstractModel):
+    r"""DeleteCosAkAsset返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteCosPolicyRequest(AbstractModel):
+    r"""DeleteCosPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PolicyIdSet: 要删除的策略集合
+        :type PolicyIdSet: list of int
+        :param _IsDeleteAll: 是否删除所有
+        :type IsDeleteAll: int
+        """
+        self._PolicyIdSet = None
+        self._IsDeleteAll = None
+
+    @property
+    def PolicyIdSet(self):
+        r"""要删除的策略集合
+        :rtype: list of int
+        """
+        return self._PolicyIdSet
+
+    @PolicyIdSet.setter
+    def PolicyIdSet(self, PolicyIdSet):
+        self._PolicyIdSet = PolicyIdSet
+
+    @property
+    def IsDeleteAll(self):
+        r"""是否删除所有
+        :rtype: int
+        """
+        return self._IsDeleteAll
+
+    @IsDeleteAll.setter
+    def IsDeleteAll(self, IsDeleteAll):
+        self._IsDeleteAll = IsDeleteAll
+
+
+    def _deserialize(self, params):
+        self._PolicyIdSet = params.get("PolicyIdSet")
+        self._IsDeleteAll = params.get("IsDeleteAll")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteCosPolicyResponse(AbstractModel):
+    r"""DeleteCosPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteDomainAndIpRequest(AbstractModel):
     r"""DeleteDomainAndIp请求参数结构体
 
@@ -18559,6 +23363,137 @@ class DescribeAssumeRoleResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeBucketInvokeIpListRequest(AbstractModel):
+    r"""DescribeBucketInvokeIpList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RelAppId: appid
+        :type RelAppId: int
+        :param _BucketName: 桶名
+        :type BucketName: str
+        :param _Filter: 过滤条件
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._RelAppId = None
+        self._BucketName = None
+        self._Filter = None
+
+    @property
+    def RelAppId(self):
+        r"""appid
+        :rtype: int
+        """
+        return self._RelAppId
+
+    @RelAppId.setter
+    def RelAppId(self, RelAppId):
+        self._RelAppId = RelAppId
+
+    @property
+    def BucketName(self):
+        r"""桶名
+        :rtype: str
+        """
+        return self._BucketName
+
+    @BucketName.setter
+    def BucketName(self, BucketName):
+        self._BucketName = BucketName
+
+    @property
+    def Filter(self):
+        r"""过滤条件
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._RelAppId = params.get("RelAppId")
+        self._BucketName = params.get("BucketName")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBucketInvokeIpListResponse(AbstractModel):
+    r"""DescribeBucketInvokeIpList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: ip信息
+        :type Data: list of CosSourceIpInfo
+        :param _Total: 总数
+        :type Total: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""ip信息
+        :rtype: list of CosSourceIpInfo
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Total(self):
+        r"""总数
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = CosSourceIpInfo()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._Total = params.get("Total")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeCFWAssetStatisticsRequest(AbstractModel):
     r"""DescribeCFWAssetStatistics请求参数结构体
 
@@ -20396,6 +25331,3062 @@ class DescribeConfigCheckRulesResponse(AbstractModel):
                 obj = AttributeOptionSet()
                 obj._deserialize(item)
                 self._CheckTypeList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCosAccessPermissionRequest(AbstractModel):
+    r"""DescribeCosAccessPermission请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RelAppId: 关联的appid
+        :type RelAppId: int
+        :param _BucketName: 桶名
+        :type BucketName: str
+        :param _RelUin: 需要查看的uin
+        :type RelUin: str
+        :param _Filter: 过滤器
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._RelAppId = None
+        self._BucketName = None
+        self._RelUin = None
+        self._Filter = None
+
+    @property
+    def RelAppId(self):
+        r"""关联的appid
+        :rtype: int
+        """
+        return self._RelAppId
+
+    @RelAppId.setter
+    def RelAppId(self, RelAppId):
+        self._RelAppId = RelAppId
+
+    @property
+    def BucketName(self):
+        r"""桶名
+        :rtype: str
+        """
+        return self._BucketName
+
+    @BucketName.setter
+    def BucketName(self, BucketName):
+        self._BucketName = BucketName
+
+    @property
+    def RelUin(self):
+        r"""需要查看的uin
+        :rtype: str
+        """
+        return self._RelUin
+
+    @RelUin.setter
+    def RelUin(self, RelUin):
+        self._RelUin = RelUin
+
+    @property
+    def Filter(self):
+        r"""过滤器
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._RelAppId = params.get("RelAppId")
+        self._BucketName = params.get("BucketName")
+        self._RelUin = params.get("RelUin")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCosAccessPermissionResponse(AbstractModel):
+    r"""DescribeCosAccessPermission返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: cos权限信息
+        :type Data: list of CosPermissionInfo
+        :param _Total: 总数
+        :type Total: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""cos权限信息
+        :rtype: list of CosPermissionInfo
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Total(self):
+        r"""总数
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = CosPermissionInfo()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._Total = params.get("Total")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCosAccessPermissionsRequest(AbstractModel):
+    r"""DescribeCosAccessPermissions请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RelAppId: appid
+        :type RelAppId: int
+        :param _BucketName: 桶名
+        :type BucketName: str
+        :param _Filter: 过滤条件
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._RelAppId = None
+        self._BucketName = None
+        self._Filter = None
+
+    @property
+    def RelAppId(self):
+        r"""appid
+        :rtype: int
+        """
+        return self._RelAppId
+
+    @RelAppId.setter
+    def RelAppId(self, RelAppId):
+        self._RelAppId = RelAppId
+
+    @property
+    def BucketName(self):
+        r"""桶名
+        :rtype: str
+        """
+        return self._BucketName
+
+    @BucketName.setter
+    def BucketName(self, BucketName):
+        self._BucketName = BucketName
+
+    @property
+    def Filter(self):
+        r"""过滤条件
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._RelAppId = params.get("RelAppId")
+        self._BucketName = params.get("BucketName")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCosAccessPermissionsResponse(AbstractModel):
+    r"""DescribeCosAccessPermissions返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 返回数据列表
+        :type Data: list of CosAccessInfo
+        :param _Total: 总数
+        :type Total: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""返回数据列表
+        :rtype: list of CosAccessInfo
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Total(self):
+        r"""总数
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = CosAccessInfo()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._Total = params.get("Total")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCosActionListRequest(AbstractModel):
+    r"""DescribeCosActionList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filter: 过滤器
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._Filter = None
+
+    @property
+    def Filter(self):
+        r"""过滤器
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCosActionListResponse(AbstractModel):
+    r"""DescribeCosActionList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 列表
+        :type Data: list of CosActionInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""列表
+        :rtype: list of CosActionInfo
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = CosActionInfo()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCosAkAssetRequest(AbstractModel):
+    r"""DescribeCosAkAsset请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        :param _Filter: 查询过滤器
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._MemberId = None
+        self._Filter = None
+
+    @property
+    def MemberId(self):
+        r"""集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filter(self):
+        r"""查询过滤器
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCosAkAssetResponse(AbstractModel):
+    r"""DescribeCosAkAsset返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: 总数
+        :type Total: int
+        :param _Data: ak资产列表
+        :type Data: list of CosAkAssetInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        r"""总数
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Data(self):
+        r"""ak资产列表
+        :rtype: list of CosAkAssetInfo
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = CosAkAssetInfo()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCosAkInvokeIpListRequest(AbstractModel):
+    r"""DescribeCosAkInvokeIpList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RelAppId: appid
+        :type RelAppId: int
+        :param _Ak: ak
+        :type Ak: str
+        :param _Filter: 过滤条件
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._RelAppId = None
+        self._Ak = None
+        self._Filter = None
+
+    @property
+    def RelAppId(self):
+        r"""appid
+        :rtype: int
+        """
+        return self._RelAppId
+
+    @RelAppId.setter
+    def RelAppId(self, RelAppId):
+        self._RelAppId = RelAppId
+
+    @property
+    def Ak(self):
+        r"""ak
+        :rtype: str
+        """
+        return self._Ak
+
+    @Ak.setter
+    def Ak(self, Ak):
+        self._Ak = Ak
+
+    @property
+    def Filter(self):
+        r"""过滤条件
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._RelAppId = params.get("RelAppId")
+        self._Ak = params.get("Ak")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCosAkInvokeIpListResponse(AbstractModel):
+    r"""DescribeCosAkInvokeIpList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: ip信息
+        :type Data: list of CosSourceIpInfo
+        :param _Total: 总数
+        :type Total: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""ip信息
+        :rtype: list of CosSourceIpInfo
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Total(self):
+        r"""总数
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = CosSourceIpInfo()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._Total = params.get("Total")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCosAlarmListRequest(AbstractModel):
+    r"""DescribeCosAlarmList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        :param _Filter: 过滤器
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._MemberId = None
+        self._Filter = None
+
+    @property
+    def MemberId(self):
+        r"""集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filter(self):
+        r"""过滤器
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCosAlarmListResponse(AbstractModel):
+    r"""DescribeCosAlarmList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: 总数
+        :type Total: int
+        :param _Data: 告警列表
+        :type Data: list of CosAlarmInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        r"""总数
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Data(self):
+        r"""告警列表
+        :rtype: list of CosAlarmInfo
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = CosAlarmInfo()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCosAlarmTrendDataRequest(AbstractModel):
+    r"""DescribeCosAlarmTrendData请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        :param _LastDays: 需要查看多久的时间
+        :type LastDays: int
+        """
+        self._MemberId = None
+        self._LastDays = None
+
+    @property
+    def MemberId(self):
+        r"""集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def LastDays(self):
+        r"""需要查看多久的时间
+        :rtype: int
+        """
+        return self._LastDays
+
+    @LastDays.setter
+    def LastDays(self, LastDays):
+        self._LastDays = LastDays
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        self._LastDays = params.get("LastDays")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCosAlarmTrendDataResponse(AbstractModel):
+    r"""DescribeCosAlarmTrendData返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CosAlarmTrendInfo: 告警趋势信息
+        :type CosAlarmTrendInfo: list of CosAlarmTrendInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._CosAlarmTrendInfo = None
+        self._RequestId = None
+
+    @property
+    def CosAlarmTrendInfo(self):
+        r"""告警趋势信息
+        :rtype: list of CosAlarmTrendInfo
+        """
+        return self._CosAlarmTrendInfo
+
+    @CosAlarmTrendInfo.setter
+    def CosAlarmTrendInfo(self, CosAlarmTrendInfo):
+        self._CosAlarmTrendInfo = CosAlarmTrendInfo
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("CosAlarmTrendInfo") is not None:
+            self._CosAlarmTrendInfo = []
+            for item in params.get("CosAlarmTrendInfo"):
+                obj = CosAlarmTrendInfo()
+                obj._deserialize(item)
+                self._CosAlarmTrendInfo.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCosAssetRequest(AbstractModel):
+    r"""DescribeCosAsset请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filter: 请求过滤器
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        """
+        self._Filter = None
+        self._MemberId = None
+
+    @property
+    def Filter(self):
+        r"""请求过滤器
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+    @property
+    def MemberId(self):
+        r"""集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCosAssetResponse(AbstractModel):
+    r"""DescribeCosAsset返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: 总数
+        :type Total: int
+        :param _Data: 桶信息
+        :type Data: list of CosAssetInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        r"""总数
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Data(self):
+        r"""桶信息
+        :rtype: list of CosAssetInfo
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = CosAssetInfo()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCosAssetSyncTaskRequest(AbstractModel):
+    r"""DescribeCosAssetSyncTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        """
+        self._MemberId = None
+
+    @property
+    def MemberId(self):
+        r"""集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCosAssetSyncTaskResponse(AbstractModel):
+    r"""DescribeCosAssetSyncTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 数据信息
+        :type Data: list of CosAssetSyncTaskInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""数据信息
+        :rtype: list of CosAssetSyncTaskInfo
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = CosAssetSyncTaskInfo()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCosAuditAppIdListRequest(AbstractModel):
+    r"""DescribeCosAuditAppIdList请求参数结构体
+
+    """
+
+
+class DescribeCosAuditAppIdListResponse(AbstractModel):
+    r"""DescribeCosAuditAppIdList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 已购买appid集合
+        :type Data: list of int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""已购买appid集合
+        :rtype: list of int
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Data = params.get("Data")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCosAuditDictionaryListRequest(AbstractModel):
+    r"""DescribeCosAuditDictionaryList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DictType: <p>字典类型（RootCategory：一级分类，IdentifyRule:敏感识别数据项）</p>
+        :type DictType: str
+        :param _Filters: <p>筛选条件</p>
+        :type Filters: list of WhereFilter
+        """
+        self._DictType = None
+        self._Filters = None
+
+    @property
+    def DictType(self):
+        r"""<p>字典类型（RootCategory：一级分类，IdentifyRule:敏感识别数据项）</p>
+        :rtype: str
+        """
+        return self._DictType
+
+    @DictType.setter
+    def DictType(self, DictType):
+        self._DictType = DictType
+
+    @property
+    def Filters(self):
+        r"""<p>筛选条件</p>
+        :rtype: list of WhereFilter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._DictType = params.get("DictType")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = WhereFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCosAuditDictionaryListResponse(AbstractModel):
+    r"""DescribeCosAuditDictionaryList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataSet: <p>结果集</p>
+        :type DataSet: list of CosDictionary
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DataSet = None
+        self._RequestId = None
+
+    @property
+    def DataSet(self):
+        r"""<p>结果集</p>
+        :rtype: list of CosDictionary
+        """
+        return self._DataSet
+
+    @DataSet.setter
+    def DataSet(self, DataSet):
+        self._DataSet = DataSet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("DataSet") is not None:
+            self._DataSet = []
+            for item in params.get("DataSet"):
+                obj = CosDictionary()
+                obj._deserialize(item)
+                self._DataSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCosAuditPayInfoRequest(AbstractModel):
+    r"""DescribeCosAuditPayInfo请求参数结构体
+
+    """
+
+
+class DescribeCosAuditPayInfoResponse(AbstractModel):
+    r"""DescribeCosAuditPayInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CosAuditPayInfo: cos审计支付信息
+        :type CosAuditPayInfo: :class:`tencentcloud.csip.v20221121.models.CosAuditPayInfo`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._CosAuditPayInfo = None
+        self._RequestId = None
+
+    @property
+    def CosAuditPayInfo(self):
+        r"""cos审计支付信息
+        :rtype: :class:`tencentcloud.csip.v20221121.models.CosAuditPayInfo`
+        """
+        return self._CosAuditPayInfo
+
+    @CosAuditPayInfo.setter
+    def CosAuditPayInfo(self, CosAuditPayInfo):
+        self._CosAuditPayInfo = CosAuditPayInfo
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("CosAuditPayInfo") is not None:
+            self._CosAuditPayInfo = CosAuditPayInfo()
+            self._CosAuditPayInfo._deserialize(params.get("CosAuditPayInfo"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCosBucketBillingInfoRequest(AbstractModel):
+    r"""DescribeCosBucketBillingInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        """
+        self._MemberId = None
+
+    @property
+    def MemberId(self):
+        r"""集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCosBucketBillingInfoResponse(AbstractModel):
+    r"""DescribeCosBucketBillingInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CosBucketBillingInfoSet: 存储桶计费信息
+        :type CosBucketBillingInfoSet: list of CosBucketBillingInfo
+        :param _Total: 总数
+        :type Total: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._CosBucketBillingInfoSet = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def CosBucketBillingInfoSet(self):
+        r"""存储桶计费信息
+        :rtype: list of CosBucketBillingInfo
+        """
+        return self._CosBucketBillingInfoSet
+
+    @CosBucketBillingInfoSet.setter
+    def CosBucketBillingInfoSet(self, CosBucketBillingInfoSet):
+        self._CosBucketBillingInfoSet = CosBucketBillingInfoSet
+
+    @property
+    def Total(self):
+        r"""总数
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("CosBucketBillingInfoSet") is not None:
+            self._CosBucketBillingInfoSet = []
+            for item in params.get("CosBucketBillingInfoSet"):
+                obj = CosBucketBillingInfo()
+                obj._deserialize(item)
+                self._CosBucketBillingInfoSet.append(obj)
+        self._Total = params.get("Total")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCosBucketListRequest(AbstractModel):
+    r"""DescribeCosBucketList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        :param _Filter: 过滤条件
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._MemberId = None
+        self._Filter = None
+
+    @property
+    def MemberId(self):
+        r"""集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filter(self):
+        r"""过滤条件
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCosBucketListResponse(AbstractModel):
+    r"""DescribeCosBucketList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: 总数
+        :type Total: int
+        :param _Data: 资产信息
+        :type Data: list of CosAssetInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        r"""总数
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Data(self):
+        r"""资产信息
+        :rtype: list of CosAssetInfo
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = CosAssetInfo()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCosBucketRiskRequest(AbstractModel):
+    r"""DescribeCosBucketRisk请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        :param _Filter: 过滤器
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._MemberId = None
+        self._Filter = None
+
+    @property
+    def MemberId(self):
+        r"""集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filter(self):
+        r"""过滤器
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCosBucketRiskResponse(AbstractModel):
+    r"""DescribeCosBucketRisk返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: 总数
+        :type Total: int
+        :param _Data: 列表
+        :type Data: list of CosRiskBucketInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        r"""总数
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Data(self):
+        r"""列表
+        :rtype: list of CosRiskBucketInfo
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = CosRiskBucketInfo()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCosIdentifyFileListRequest(AbstractModel):
+    r"""DescribeCosIdentifyFileList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BucketName: <p>存储桶名</p>
+        :type BucketName: str
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        :param _Filter: <p>筛选项</p>
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        :param _ResultStatus: <p>0：没有识别结果 1：有识别结果</p>
+        :type ResultStatus: int
+        """
+        self._BucketName = None
+        self._MemberId = None
+        self._Filter = None
+        self._ResultStatus = None
+
+    @property
+    def BucketName(self):
+        r"""<p>存储桶名</p>
+        :rtype: str
+        """
+        return self._BucketName
+
+    @BucketName.setter
+    def BucketName(self, BucketName):
+        self._BucketName = BucketName
+
+    @property
+    def MemberId(self):
+        r"""集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filter(self):
+        r"""<p>筛选项</p>
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+    @property
+    def ResultStatus(self):
+        r"""<p>0：没有识别结果 1：有识别结果</p>
+        :rtype: int
+        """
+        return self._ResultStatus
+
+    @ResultStatus.setter
+    def ResultStatus(self, ResultStatus):
+        self._ResultStatus = ResultStatus
+
+
+    def _deserialize(self, params):
+        self._BucketName = params.get("BucketName")
+        self._MemberId = params.get("MemberId")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        self._ResultStatus = params.get("ResultStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCosIdentifyFileListResponse(AbstractModel):
+    r"""DescribeCosIdentifyFileList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>总数</p>
+        :type TotalCount: int
+        :param _DataSet: <p>结果集</p>
+        :type DataSet: list of CosAssetFileIdentifyInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._DataSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>总数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def DataSet(self):
+        r"""<p>结果集</p>
+        :rtype: list of CosAssetFileIdentifyInfo
+        """
+        return self._DataSet
+
+    @DataSet.setter
+    def DataSet(self, DataSet):
+        self._DataSet = DataSet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("DataSet") is not None:
+            self._DataSet = []
+            for item in params.get("DataSet"):
+                obj = CosAssetFileIdentifyInfo()
+                obj._deserialize(item)
+                self._DataSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCosInvokeUaRequest(AbstractModel):
+    r"""DescribeCosInvokeUa请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RelAppId: appid
+        :type RelAppId: int
+        :param _Filter: 过滤器
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._RelAppId = None
+        self._Filter = None
+
+    @property
+    def RelAppId(self):
+        r"""appid
+        :rtype: int
+        """
+        return self._RelAppId
+
+    @RelAppId.setter
+    def RelAppId(self, RelAppId):
+        self._RelAppId = RelAppId
+
+    @property
+    def Filter(self):
+        r"""过滤器
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._RelAppId = params.get("RelAppId")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCosInvokeUaResponse(AbstractModel):
+    r"""DescribeCosInvokeUa返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: 总数
+        :type Total: int
+        :param _Data: 文件列表
+        :type Data: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        r"""总数
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Data(self):
+        r"""文件列表
+        :rtype: list of str
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        self._Data = params.get("Data")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCosIpInvokeLogRequest(AbstractModel):
+    r"""DescribeCosIpInvokeLog请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RelAppId: appid
+        :type RelAppId: int
+        :param _Filter: 过滤器
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._RelAppId = None
+        self._Filter = None
+
+    @property
+    def RelAppId(self):
+        r"""appid
+        :rtype: int
+        """
+        return self._RelAppId
+
+    @RelAppId.setter
+    def RelAppId(self, RelAppId):
+        self._RelAppId = RelAppId
+
+    @property
+    def Filter(self):
+        r"""过滤器
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._RelAppId = params.get("RelAppId")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCosIpInvokeLogResponse(AbstractModel):
+    r"""DescribeCosIpInvokeLog返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: 总数
+        :type Total: int
+        :param _Data: 请求日志数据
+        :type Data: list of CosInvokeLog
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        r"""总数
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Data(self):
+        r"""请求日志数据
+        :rtype: list of CosInvokeLog
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = CosInvokeLog()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCosIpInvokeRecordFileRequest(AbstractModel):
+    r"""DescribeCosIpInvokeRecordFile请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RelAppId: appid
+        :type RelAppId: int
+        :param _Filter: 过滤器
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._RelAppId = None
+        self._Filter = None
+
+    @property
+    def RelAppId(self):
+        r"""appid
+        :rtype: int
+        """
+        return self._RelAppId
+
+    @RelAppId.setter
+    def RelAppId(self, RelAppId):
+        self._RelAppId = RelAppId
+
+    @property
+    def Filter(self):
+        r"""过滤器
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._RelAppId = params.get("RelAppId")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCosIpInvokeRecordFileResponse(AbstractModel):
+    r"""DescribeCosIpInvokeRecordFile返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: 总数
+        :type Total: int
+        :param _Data: 文件列表
+        :type Data: list of str
+        :param _DataSet: 文件列表详情
+        :type DataSet: list of CosAssetFileIdentifyInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._Data = None
+        self._DataSet = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        r"""总数
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Data(self):
+        warnings.warn("parameter `Data` is deprecated", DeprecationWarning) 
+
+        r"""文件列表
+        :rtype: list of str
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        warnings.warn("parameter `Data` is deprecated", DeprecationWarning) 
+
+        self._Data = Data
+
+    @property
+    def DataSet(self):
+        r"""文件列表详情
+        :rtype: list of CosAssetFileIdentifyInfo
+        """
+        return self._DataSet
+
+    @DataSet.setter
+    def DataSet(self, DataSet):
+        self._DataSet = DataSet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        self._Data = params.get("Data")
+        if params.get("DataSet") is not None:
+            self._DataSet = []
+            for item in params.get("DataSet"):
+                obj = CosAssetFileIdentifyInfo()
+                obj._deserialize(item)
+                self._DataSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCosOverviewRequest(AbstractModel):
+    r"""DescribeCosOverview请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        :param _Filter: 过滤信息
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._MemberId = None
+        self._Filter = None
+
+    @property
+    def MemberId(self):
+        r"""集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filter(self):
+        r"""过滤信息
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCosOverviewResponse(AbstractModel):
+    r"""DescribeCosOverview返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CosOverview: cos概览
+        :type CosOverview: :class:`tencentcloud.csip.v20221121.models.CosOverview`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._CosOverview = None
+        self._RequestId = None
+
+    @property
+    def CosOverview(self):
+        r"""cos概览
+        :rtype: :class:`tencentcloud.csip.v20221121.models.CosOverview`
+        """
+        return self._CosOverview
+
+    @CosOverview.setter
+    def CosOverview(self, CosOverview):
+        self._CosOverview = CosOverview
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("CosOverview") is not None:
+            self._CosOverview = CosOverview()
+            self._CosOverview._deserialize(params.get("CosOverview"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCosPolicyRequest(AbstractModel):
+    r"""DescribeCosPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        :param _Filter: 过滤条件
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._MemberId = None
+        self._Filter = None
+
+    @property
+    def MemberId(self):
+        r"""集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filter(self):
+        r"""过滤条件
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCosPolicyResponse(AbstractModel):
+    r"""DescribeCosPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: 策略总数
+        :type Total: int
+        :param _Data: 策略信息
+        :type Data: list of CosPolicyInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        r"""策略总数
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Data(self):
+        r"""策略信息
+        :rtype: list of CosPolicyInfo
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = CosPolicyInfo()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCosRiskActionListRequest(AbstractModel):
+    r"""DescribeCosRiskActionList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RelAppId: appid
+        :type RelAppId: int
+        :param _PolicyId: 策略id
+        :type PolicyId: int
+        :param _BucketName: 桶名
+        :type BucketName: str
+        :param _Filter: 过滤器
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._RelAppId = None
+        self._PolicyId = None
+        self._BucketName = None
+        self._Filter = None
+
+    @property
+    def RelAppId(self):
+        r"""appid
+        :rtype: int
+        """
+        return self._RelAppId
+
+    @RelAppId.setter
+    def RelAppId(self, RelAppId):
+        self._RelAppId = RelAppId
+
+    @property
+    def PolicyId(self):
+        r"""策略id
+        :rtype: int
+        """
+        return self._PolicyId
+
+    @PolicyId.setter
+    def PolicyId(self, PolicyId):
+        self._PolicyId = PolicyId
+
+    @property
+    def BucketName(self):
+        r"""桶名
+        :rtype: str
+        """
+        return self._BucketName
+
+    @BucketName.setter
+    def BucketName(self, BucketName):
+        self._BucketName = BucketName
+
+    @property
+    def Filter(self):
+        r"""过滤器
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._RelAppId = params.get("RelAppId")
+        self._PolicyId = params.get("PolicyId")
+        self._BucketName = params.get("BucketName")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCosRiskActionListResponse(AbstractModel):
+    r"""DescribeCosRiskActionList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: 总数
+        :type Total: int
+        :param _Data: 列表
+        :type Data: list of CosRiskActionInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        r"""总数
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Data(self):
+        r"""列表
+        :rtype: list of CosRiskActionInfo
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = CosRiskActionInfo()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCosRiskEvidenceRequest(AbstractModel):
+    r"""DescribeCosRiskEvidence请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RelAppId: appid
+        :type RelAppId: int
+        :param _PolicyId: 策略id
+        :type PolicyId: int
+        :param _BucketName: 存储桶名
+        :type BucketName: str
+        :param _Filter: 过滤器
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._RelAppId = None
+        self._PolicyId = None
+        self._BucketName = None
+        self._Filter = None
+
+    @property
+    def RelAppId(self):
+        r"""appid
+        :rtype: int
+        """
+        return self._RelAppId
+
+    @RelAppId.setter
+    def RelAppId(self, RelAppId):
+        self._RelAppId = RelAppId
+
+    @property
+    def PolicyId(self):
+        r"""策略id
+        :rtype: int
+        """
+        return self._PolicyId
+
+    @PolicyId.setter
+    def PolicyId(self, PolicyId):
+        self._PolicyId = PolicyId
+
+    @property
+    def BucketName(self):
+        r"""存储桶名
+        :rtype: str
+        """
+        return self._BucketName
+
+    @BucketName.setter
+    def BucketName(self, BucketName):
+        self._BucketName = BucketName
+
+    @property
+    def Filter(self):
+        r"""过滤器
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._RelAppId = params.get("RelAppId")
+        self._PolicyId = params.get("PolicyId")
+        self._BucketName = params.get("BucketName")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCosRiskEvidenceResponse(AbstractModel):
+    r"""DescribeCosRiskEvidence返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Evidences: 证据信息
+        :type Evidences: list of CosPermissionInfo
+        :param _Total: 总数
+        :type Total: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Evidences = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def Evidences(self):
+        r"""证据信息
+        :rtype: list of CosPermissionInfo
+        """
+        return self._Evidences
+
+    @Evidences.setter
+    def Evidences(self, Evidences):
+        self._Evidences = Evidences
+
+    @property
+    def Total(self):
+        r"""总数
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Evidences") is not None:
+            self._Evidences = []
+            for item in params.get("Evidences"):
+                obj = CosPermissionInfo()
+                obj._deserialize(item)
+                self._Evidences.append(obj)
+        self._Total = params.get("Total")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCosRiskScanTaskRequest(AbstractModel):
+    r"""DescribeCosRiskScanTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BucketInfoSet: 需要查看的存储桶详情
+        :type BucketInfoSet: list of CosBucketInfo
+        """
+        self._BucketInfoSet = None
+
+    @property
+    def BucketInfoSet(self):
+        r"""需要查看的存储桶详情
+        :rtype: list of CosBucketInfo
+        """
+        return self._BucketInfoSet
+
+    @BucketInfoSet.setter
+    def BucketInfoSet(self, BucketInfoSet):
+        self._BucketInfoSet = BucketInfoSet
+
+
+    def _deserialize(self, params):
+        if params.get("BucketInfoSet") is not None:
+            self._BucketInfoSet = []
+            for item in params.get("BucketInfoSet"):
+                obj = CosBucketInfo()
+                obj._deserialize(item)
+                self._BucketInfoSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCosRiskScanTaskResponse(AbstractModel):
+    r"""DescribeCosRiskScanTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BucketTaskInfoSet: cos桶任务详情
+        :type BucketTaskInfoSet: list of CosBucketTaskInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._BucketTaskInfoSet = None
+        self._RequestId = None
+
+    @property
+    def BucketTaskInfoSet(self):
+        r"""cos桶任务详情
+        :rtype: list of CosBucketTaskInfo
+        """
+        return self._BucketTaskInfoSet
+
+    @BucketTaskInfoSet.setter
+    def BucketTaskInfoSet(self, BucketTaskInfoSet):
+        self._BucketTaskInfoSet = BucketTaskInfoSet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("BucketTaskInfoSet") is not None:
+            self._BucketTaskInfoSet = []
+            for item in params.get("BucketTaskInfoSet"):
+                obj = CosBucketTaskInfo()
+                obj._deserialize(item)
+                self._BucketTaskInfoSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCosRoleAccessPermissionRequest(AbstractModel):
+    r"""DescribeCosRoleAccessPermission请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RelAppId: 关联的appid
+        :type RelAppId: int
+        :param _RelRoleId: 需要查看的角色id
+        :type RelRoleId: str
+        :param _BucketName: 桶名
+        :type BucketName: str
+        :param _Filter: 过滤器
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._RelAppId = None
+        self._RelRoleId = None
+        self._BucketName = None
+        self._Filter = None
+
+    @property
+    def RelAppId(self):
+        r"""关联的appid
+        :rtype: int
+        """
+        return self._RelAppId
+
+    @RelAppId.setter
+    def RelAppId(self, RelAppId):
+        self._RelAppId = RelAppId
+
+    @property
+    def RelRoleId(self):
+        r"""需要查看的角色id
+        :rtype: str
+        """
+        return self._RelRoleId
+
+    @RelRoleId.setter
+    def RelRoleId(self, RelRoleId):
+        self._RelRoleId = RelRoleId
+
+    @property
+    def BucketName(self):
+        r"""桶名
+        :rtype: str
+        """
+        return self._BucketName
+
+    @BucketName.setter
+    def BucketName(self, BucketName):
+        self._BucketName = BucketName
+
+    @property
+    def Filter(self):
+        r"""过滤器
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._RelAppId = params.get("RelAppId")
+        self._RelRoleId = params.get("RelRoleId")
+        self._BucketName = params.get("BucketName")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCosRoleAccessPermissionResponse(AbstractModel):
+    r"""DescribeCosRoleAccessPermission返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: cos权限信息
+        :type Data: list of CosPermissionInfo
+        :param _Total: 总数
+        :type Total: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""cos权限信息
+        :rtype: list of CosPermissionInfo
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Total(self):
+        r"""总数
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = CosPermissionInfo()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._Total = params.get("Total")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCosRoleAccessPermissionsRequest(AbstractModel):
+    r"""DescribeCosRoleAccessPermissions请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RelAppId: 存储桶所属appid
+        :type RelAppId: int
+        :param _BucketName: 存储桶名
+        :type BucketName: str
+        :param _Filter: 过滤条件
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._RelAppId = None
+        self._BucketName = None
+        self._Filter = None
+
+    @property
+    def RelAppId(self):
+        r"""存储桶所属appid
+        :rtype: int
+        """
+        return self._RelAppId
+
+    @RelAppId.setter
+    def RelAppId(self, RelAppId):
+        self._RelAppId = RelAppId
+
+    @property
+    def BucketName(self):
+        r"""存储桶名
+        :rtype: str
+        """
+        return self._BucketName
+
+    @BucketName.setter
+    def BucketName(self, BucketName):
+        self._BucketName = BucketName
+
+    @property
+    def Filter(self):
+        r"""过滤条件
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._RelAppId = params.get("RelAppId")
+        self._BucketName = params.get("BucketName")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCosRoleAccessPermissionsResponse(AbstractModel):
+    r"""DescribeCosRoleAccessPermissions返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: 总数
+        :type Total: int
+        :param _Data: 角色详情
+        :type Data: list of CosRoleAccessInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        r"""总数
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Data(self):
+        r"""角色详情
+        :rtype: list of CosRoleAccessInfo
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = CosRoleAccessInfo()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCosSourceIpRequest(AbstractModel):
+    r"""DescribeCosSourceIp请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        :param _Filter: 过滤条件
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._MemberId = None
+        self._Filter = None
+
+    @property
+    def MemberId(self):
+        r"""集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filter(self):
+        r"""过滤条件
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCosSourceIpResponse(AbstractModel):
+    r"""DescribeCosSourceIp返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 列表信息
+        :type Data: list of CosSourceIpInfo
+        :param _Total: 总数
+        :type Total: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""列表信息
+        :rtype: list of CosSourceIpInfo
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Total(self):
+        r"""总数
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = CosSourceIpInfo()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._Total = params.get("Total")
         self._RequestId = params.get("RequestId")
 
 
@@ -28044,6 +36035,178 @@ class DescribeHighBaseLineRiskListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeIpInvokeRecordDetailRequest(AbstractModel):
+    r"""DescribeIpInvokeRecordDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filter: 过滤器
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._Filter = None
+
+    @property
+    def Filter(self):
+        r"""过滤器
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeIpInvokeRecordDetailResponse(AbstractModel):
+    r"""DescribeIpInvokeRecordDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InvokeDetailInfo: 调用详情信息
+        :type InvokeDetailInfo: list of CosInvokeDetailInfo
+        :param _InvokePermission: 调用权限相关
+        :type InvokePermission: list of CosPermissionInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._InvokeDetailInfo = None
+        self._InvokePermission = None
+        self._RequestId = None
+
+    @property
+    def InvokeDetailInfo(self):
+        r"""调用详情信息
+        :rtype: list of CosInvokeDetailInfo
+        """
+        return self._InvokeDetailInfo
+
+    @InvokeDetailInfo.setter
+    def InvokeDetailInfo(self, InvokeDetailInfo):
+        self._InvokeDetailInfo = InvokeDetailInfo
+
+    @property
+    def InvokePermission(self):
+        r"""调用权限相关
+        :rtype: list of CosPermissionInfo
+        """
+        return self._InvokePermission
+
+    @InvokePermission.setter
+    def InvokePermission(self, InvokePermission):
+        self._InvokePermission = InvokePermission
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("InvokeDetailInfo") is not None:
+            self._InvokeDetailInfo = []
+            for item in params.get("InvokeDetailInfo"):
+                obj = CosInvokeDetailInfo()
+                obj._deserialize(item)
+                self._InvokeDetailInfo.append(obj)
+        if params.get("InvokePermission") is not None:
+            self._InvokePermission = []
+            for item in params.get("InvokePermission"):
+                obj = CosPermissionInfo()
+                obj._deserialize(item)
+                self._InvokePermission.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeIpInvokeRecordRequest(AbstractModel):
+    r"""DescribeIpInvokeRecord请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filter: 过滤条件
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._Filter = None
+
+    @property
+    def Filter(self):
+        r"""过滤条件
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeIpInvokeRecordResponse(AbstractModel):
+    r"""DescribeIpInvokeRecord返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeKeySandboxCredentialListRequest(AbstractModel):
     r"""DescribeKeySandboxCredentialList请求参数结构体
 
@@ -29183,6 +37346,105 @@ class DescribeOtherCloudAssetsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribePolicyHitDataRequest(AbstractModel):
+    r"""DescribePolicyHitData请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IndexTimestamp: 查看的日期时间戳
+        :type IndexTimestamp: int
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        """
+        self._IndexTimestamp = None
+        self._MemberId = None
+
+    @property
+    def IndexTimestamp(self):
+        r"""查看的日期时间戳
+        :rtype: int
+        """
+        return self._IndexTimestamp
+
+    @IndexTimestamp.setter
+    def IndexTimestamp(self, IndexTimestamp):
+        self._IndexTimestamp = IndexTimestamp
+
+    @property
+    def MemberId(self):
+        r"""集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        self._IndexTimestamp = params.get("IndexTimestamp")
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePolicyHitDataResponse(AbstractModel):
+    r"""DescribePolicyHitData返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PolicyHitDetail: 策略命中详情信息
+        :type PolicyHitDetail: list of CosRiskInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._PolicyHitDetail = None
+        self._RequestId = None
+
+    @property
+    def PolicyHitDetail(self):
+        r"""策略命中详情信息
+        :rtype: list of CosRiskInfo
+        """
+        return self._PolicyHitDetail
+
+    @PolicyHitDetail.setter
+    def PolicyHitDetail(self, PolicyHitDetail):
+        self._PolicyHitDetail = PolicyHitDetail
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("PolicyHitDetail") is not None:
+            self._PolicyHitDetail = []
+            for item in params.get("PolicyHitDetail"):
+                obj = CosRiskInfo()
+                obj._deserialize(item)
+                self._PolicyHitDetail.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribePublicIpAssetsRequest(AbstractModel):
     r"""DescribePublicIpAssets请求参数结构体
 
@@ -29572,6 +37834,137 @@ class DescribeRepositoryImageAssetsResponse(AbstractModel):
                 obj = FilterDataObject()
                 obj._deserialize(item)
                 self._RegionList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeRiskBucketListRequest(AbstractModel):
+    r"""DescribeRiskBucketList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RelAppId: 关联的appid
+        :type RelAppId: int
+        :param _PolicyId: 规则id
+        :type PolicyId: str
+        :param _Filter: 过滤器
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._RelAppId = None
+        self._PolicyId = None
+        self._Filter = None
+
+    @property
+    def RelAppId(self):
+        r"""关联的appid
+        :rtype: int
+        """
+        return self._RelAppId
+
+    @RelAppId.setter
+    def RelAppId(self, RelAppId):
+        self._RelAppId = RelAppId
+
+    @property
+    def PolicyId(self):
+        r"""规则id
+        :rtype: str
+        """
+        return self._PolicyId
+
+    @PolicyId.setter
+    def PolicyId(self, PolicyId):
+        self._PolicyId = PolicyId
+
+    @property
+    def Filter(self):
+        r"""过滤器
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._RelAppId = params.get("RelAppId")
+        self._PolicyId = params.get("PolicyId")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRiskBucketListResponse(AbstractModel):
+    r"""DescribeRiskBucketList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: 总数
+        :type Total: int
+        :param _Data: 受影响的存储桶
+        :type Data: list of CosRiskBucketInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        r"""总数
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Data(self):
+        r"""受影响的存储桶
+        :rtype: list of CosRiskBucketInfo
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = CosRiskBucketInfo()
+                obj._deserialize(item)
+                self._Data.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -31879,6 +40272,122 @@ class DescribeRiskDetailListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeRiskItemListRequest(AbstractModel):
+    r"""DescribeRiskItemList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        :param _Filter: 过滤器
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._MemberId = None
+        self._Filter = None
+
+    @property
+    def MemberId(self):
+        r"""集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filter(self):
+        r"""过滤器
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRiskItemListResponse(AbstractModel):
+    r"""DescribeRiskItemList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: 列表信息
+        :type Data: list of CosRiskViewInfo
+        :param _Total: 总数
+        :type Total: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""列表信息
+        :rtype: list of CosRiskViewInfo
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def Total(self):
+        r"""总数
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = CosRiskViewInfo()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._Total = params.get("Total")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeRiskRuleDetailRequest(AbstractModel):
     r"""DescribeRiskRuleDetail请求参数结构体
 
@@ -32214,6 +40723,105 @@ class DescribeRiskRulesResponse(AbstractModel):
                 obj = AttributeOptionSet()
                 obj._deserialize(item)
                 self._InstanceTypeList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeRiskTrendDataRequest(AbstractModel):
+    r"""DescribeRiskTrendData请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        :param _LastDays: 指定的日期
+        :type LastDays: int
+        """
+        self._MemberId = None
+        self._LastDays = None
+
+    @property
+    def MemberId(self):
+        r"""集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def LastDays(self):
+        r"""指定的日期
+        :rtype: int
+        """
+        return self._LastDays
+
+    @LastDays.setter
+    def LastDays(self, LastDays):
+        self._LastDays = LastDays
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        self._LastDays = params.get("LastDays")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRiskTrendDataResponse(AbstractModel):
+    r"""DescribeRiskTrendData返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CosRiskTrendData: 风险趋势数据
+        :type CosRiskTrendData: list of CosRiskTrendInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._CosRiskTrendData = None
+        self._RequestId = None
+
+    @property
+    def CosRiskTrendData(self):
+        r"""风险趋势数据
+        :rtype: list of CosRiskTrendInfo
+        """
+        return self._CosRiskTrendData
+
+    @CosRiskTrendData.setter
+    def CosRiskTrendData(self, CosRiskTrendData):
+        self._CosRiskTrendData = CosRiskTrendData
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("CosRiskTrendData") is not None:
+            self._CosRiskTrendData = []
+            for item in params.get("CosRiskTrendData"):
+                obj = CosRiskTrendInfo()
+                obj._deserialize(item)
+                self._CosRiskTrendData.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -46635,6 +55243,288 @@ class Location(AbstractModel):
         
 
 
+class ModifyAlarmRiskStatusRequest(AbstractModel):
+    r"""ModifyAlarmRiskStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AlarmRiskIdSet: 告警或者风险id
+        :type AlarmRiskIdSet: list of CosAlarmRiskIdInfo
+        :param _AlarmRiskType: 风险或告警状态  1 告警 2风险
+        :type AlarmRiskType: int
+        :param _HandleStatus: 处置状态
+        :type HandleStatus: int
+        """
+        self._AlarmRiskIdSet = None
+        self._AlarmRiskType = None
+        self._HandleStatus = None
+
+    @property
+    def AlarmRiskIdSet(self):
+        r"""告警或者风险id
+        :rtype: list of CosAlarmRiskIdInfo
+        """
+        return self._AlarmRiskIdSet
+
+    @AlarmRiskIdSet.setter
+    def AlarmRiskIdSet(self, AlarmRiskIdSet):
+        self._AlarmRiskIdSet = AlarmRiskIdSet
+
+    @property
+    def AlarmRiskType(self):
+        r"""风险或告警状态  1 告警 2风险
+        :rtype: int
+        """
+        return self._AlarmRiskType
+
+    @AlarmRiskType.setter
+    def AlarmRiskType(self, AlarmRiskType):
+        self._AlarmRiskType = AlarmRiskType
+
+    @property
+    def HandleStatus(self):
+        r"""处置状态
+        :rtype: int
+        """
+        return self._HandleStatus
+
+    @HandleStatus.setter
+    def HandleStatus(self, HandleStatus):
+        self._HandleStatus = HandleStatus
+
+
+    def _deserialize(self, params):
+        if params.get("AlarmRiskIdSet") is not None:
+            self._AlarmRiskIdSet = []
+            for item in params.get("AlarmRiskIdSet"):
+                obj = CosAlarmRiskIdInfo()
+                obj._deserialize(item)
+                self._AlarmRiskIdSet.append(obj)
+        self._AlarmRiskType = params.get("AlarmRiskType")
+        self._HandleStatus = params.get("HandleStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyAlarmRiskStatusResponse(AbstractModel):
+    r"""ModifyAlarmRiskStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyCosAuditMonitorAccountRequest(AbstractModel):
+    r"""ModifyCosAuditMonitorAccount请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceId: 资源id
+        :type ResourceId: str
+        :param _MonitorAppIdSet: 需要监测的appid信息
+        :type MonitorAppIdSet: list of int non-negative
+        :param _BindBucket: 选择存储桶映射关系
+        :type BindBucket: list of CosBucketId
+        """
+        self._ResourceId = None
+        self._MonitorAppIdSet = None
+        self._BindBucket = None
+
+    @property
+    def ResourceId(self):
+        r"""资源id
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def MonitorAppIdSet(self):
+        r"""需要监测的appid信息
+        :rtype: list of int non-negative
+        """
+        return self._MonitorAppIdSet
+
+    @MonitorAppIdSet.setter
+    def MonitorAppIdSet(self, MonitorAppIdSet):
+        self._MonitorAppIdSet = MonitorAppIdSet
+
+    @property
+    def BindBucket(self):
+        r"""选择存储桶映射关系
+        :rtype: list of CosBucketId
+        """
+        return self._BindBucket
+
+    @BindBucket.setter
+    def BindBucket(self, BindBucket):
+        self._BindBucket = BindBucket
+
+
+    def _deserialize(self, params):
+        self._ResourceId = params.get("ResourceId")
+        self._MonitorAppIdSet = params.get("MonitorAppIdSet")
+        if params.get("BindBucket") is not None:
+            self._BindBucket = []
+            for item in params.get("BindBucket"):
+                obj = CosBucketId()
+                obj._deserialize(item)
+                self._BindBucket.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyCosAuditMonitorAccountResponse(AbstractModel):
+    r"""ModifyCosAuditMonitorAccount返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyCosMarkInfoRequest(AbstractModel):
+    r"""ModifyCosMarkInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BucketNameSet: 需要修改的存储桶列表
+        :type BucketNameSet: list of CosBucketInfo
+        :param _MarkInfo: 备注信息
+        :type MarkInfo: str
+        """
+        self._BucketNameSet = None
+        self._MarkInfo = None
+
+    @property
+    def BucketNameSet(self):
+        r"""需要修改的存储桶列表
+        :rtype: list of CosBucketInfo
+        """
+        return self._BucketNameSet
+
+    @BucketNameSet.setter
+    def BucketNameSet(self, BucketNameSet):
+        self._BucketNameSet = BucketNameSet
+
+    @property
+    def MarkInfo(self):
+        r"""备注信息
+        :rtype: str
+        """
+        return self._MarkInfo
+
+    @MarkInfo.setter
+    def MarkInfo(self, MarkInfo):
+        self._MarkInfo = MarkInfo
+
+
+    def _deserialize(self, params):
+        if params.get("BucketNameSet") is not None:
+            self._BucketNameSet = []
+            for item in params.get("BucketNameSet"):
+                obj = CosBucketInfo()
+                obj._deserialize(item)
+                self._BucketNameSet.append(obj)
+        self._MarkInfo = params.get("MarkInfo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyCosMarkInfoResponse(AbstractModel):
+    r"""ModifyCosMarkInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyDspmAccessRecordRequest(AbstractModel):
     r"""ModifyDspmAccessRecord请求参数结构体
 
@@ -48390,6 +57280,85 @@ class ModifyOrganizationAccountStatusResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._Status = params.get("Status")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyPolicyStatusRequest(AbstractModel):
+    r"""ModifyPolicyStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PolicyIdSet: 策略id集合
+        :type PolicyIdSet: list of int
+        :param _Status: 状态值
+        :type Status: int
+        """
+        self._PolicyIdSet = None
+        self._Status = None
+
+    @property
+    def PolicyIdSet(self):
+        r"""策略id集合
+        :rtype: list of int
+        """
+        return self._PolicyIdSet
+
+    @PolicyIdSet.setter
+    def PolicyIdSet(self, PolicyIdSet):
+        self._PolicyIdSet = PolicyIdSet
+
+    @property
+    def Status(self):
+        r"""状态值
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._PolicyIdSet = params.get("PolicyIdSet")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyPolicyStatusResponse(AbstractModel):
+    r"""ModifyPolicyStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -50766,28 +59735,28 @@ class RegionConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Region: 地域
+        :param _Region: <p>地域</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Region: str
-        :param _RegionName: 地域中文
+        :param _RegionName: <p>地域中文</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RegionName: str
-        :param _Foreign: 是否国外
+        :param _Foreign: <p>是否境外</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Foreign: int
-        :param _Code: 地域码
+        :param _Code: <p>地域码</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Code: int
-        :param _IsAutoDriveCloud: 是否自驾云
+        :param _IsAutoDriveCloud: <p>是否自驾云</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsAutoDriveCloud: int
-        :param _IsSupportNat: 是否支持nat
+        :param _IsSupportNat: <p>是否支持nat</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsSupportNat: int
-        :param _RegionArea: 地区信息
+        :param _RegionArea: <p>地区信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RegionArea: str
-        :param _RegionNameEN: 地域英文
+        :param _RegionNameEN: <p>地域英文</p>
         :type RegionNameEN: str
         """
         self._Region = None
@@ -50801,7 +59770,7 @@ class RegionConfig(AbstractModel):
 
     @property
     def Region(self):
-        r"""地域
+        r"""<p>地域</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -50813,7 +59782,7 @@ class RegionConfig(AbstractModel):
 
     @property
     def RegionName(self):
-        r"""地域中文
+        r"""<p>地域中文</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -50825,7 +59794,7 @@ class RegionConfig(AbstractModel):
 
     @property
     def Foreign(self):
-        r"""是否国外
+        r"""<p>是否境外</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -50837,7 +59806,7 @@ class RegionConfig(AbstractModel):
 
     @property
     def Code(self):
-        r"""地域码
+        r"""<p>地域码</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -50849,7 +59818,7 @@ class RegionConfig(AbstractModel):
 
     @property
     def IsAutoDriveCloud(self):
-        r"""是否自驾云
+        r"""<p>是否自驾云</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -50861,7 +59830,7 @@ class RegionConfig(AbstractModel):
 
     @property
     def IsSupportNat(self):
-        r"""是否支持nat
+        r"""<p>是否支持nat</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -50873,7 +59842,7 @@ class RegionConfig(AbstractModel):
 
     @property
     def RegionArea(self):
-        r"""地区信息
+        r"""<p>地区信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -50885,7 +59854,7 @@ class RegionConfig(AbstractModel):
 
     @property
     def RegionNameEN(self):
-        r"""地域英文
+        r"""<p>地域英文</p>
         :rtype: str
         """
         return self._RegionNameEN

@@ -4302,6 +4302,29 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyOwaspDomainUpdateStatus(self, request):
+        r"""修改域名新规则状态
+
+        :param request: Request instance for ModifyOwaspDomainUpdateStatus.
+        :type request: :class:`tencentcloud.waf.v20180125.models.ModifyOwaspDomainUpdateStatusRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.ModifyOwaspDomainUpdateStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyOwaspDomainUpdateStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyOwaspDomainUpdateStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyOwaspRuleStatus(self, request):
         r"""更新规则的开关
 

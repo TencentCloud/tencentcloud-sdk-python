@@ -1807,6 +1807,24 @@ class IotexplorerClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeLicenseOverview(
+            self,
+            request: models.DescribeLicenseOverviewRequest,
+            opts: Dict = None,
+    ) -> models.DescribeLicenseOverviewResponse:
+        """
+        查询实例概览详情。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeLicenseOverview"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeLicenseOverviewResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeLoRaFrequency(
             self,
             request: models.DescribeLoRaFrequencyRequest,

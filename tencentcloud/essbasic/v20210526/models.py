@@ -17469,58 +17469,29 @@ class CreateSealByImageRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Agent: 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
-
-此接口下面信息必填。
-<ul>
-<li>渠道应用标识:  Agent.AppId</li>
-<li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
-<li>第三方平台子客企业中的员工标识: Agent.ProxyOperator.OpenId</li>
-</ul>
-第三方平台子客企业和员工必须已经经过实名认证
+        :param _Agent: <p>关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。</p><p>此接口下面信息必填。</p><ul><li>渠道应用标识:  Agent.AppId</li><li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li><li>第三方平台子客企业中的员工标识: Agent.ProxyOperator.OpenId</li></ul>第三方平台子客企业和员工必须已经经过实名认证
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
-        :param _SealName: 电子印章名字，1-50个中文字符
-注:`同一企业下电子印章名字不能相同`
+        :param _SealName: <p>电子印章名字，1-50个中文字符<br>注:<code>同一企业下电子印章名字不能相同</code></p>
         :type SealName: str
-        :param _SealImage: 电子印章图片base64编码，大小不超过10M（原始图片不超过5M），只支持PNG或JPG图片格式
-
-注: `通过图片创建的电子印章，需电子签平台人工审核`
-
-
+        :param _SealImage: <p>电子印章图片base64编码，大小不超过10M（原始图片不超过5M），只支持PNG或JPG图片格式</p><p>注: <code>通过图片创建的电子印章，需电子签平台人工审核</code></p>
         :type SealImage: str
-        :param _Operator: 操作者的信息
+        :param _Operator: <p>操作者的信息</p>
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
-        :param _GenerateSource: 电子印章生成方式
-<ul>
-<li><strong>空值</strong>:(默认)使用上传的图片生成印章, 此时需要上传SealImage图片</li>
-<li><strong>SealGenerateSourceSystem</strong>: 系统生成印章, 无需上传SealImage图片</li>
-</ul>
+        :param _GenerateSource: <p>电子印章生成方式</p><ul><li><strong>空值</strong>:(默认)使用上传的图片生成印章, 此时需要上传SealImage图片</li><li><strong>SealGenerateSourceSystem</strong>: 系统生成印章, 无需上传SealImage图片</li></ul>
         :type GenerateSource: str
-        :param _SealType: 电子印章类型 , 可选类型如下: <ul><li>**OFFICIAL**: (默认)公章</li><li>**CONTRACT**: 合同专用章;</li><li>**FINANCE**: 财务专用章;</li><li>**PERSONNEL**: 人事专用章</li><li>**INVOICE**: 发票专用章</li><li>**OTHER**: 其他</li></ul>注: 同企业下只能有<font color="red">一个</font>公章, 重复创建会报错
+        :param _SealType: <p>电子印章类型 , 可选类型如下: <ul><li><strong>OFFICIAL</strong>: (默认)公章</li><li><strong>CONTRACT</strong>: 合同专用章;</li><li><strong>FINANCE</strong>: 财务专用章;</li><li><strong>PERSONNEL</strong>: 人事专用章</li><li><strong>INVOICE</strong>: 发票专用章</li><li><strong>OTHER</strong>: 其他</li></ul>注: 同企业下只能有<font color="red">一个</font>公章, 重复创建会报错</p>
         :type SealType: str
-        :param _SealHorizontalText: 企业印章横向文字，最多可填15个汉字  (若超过印章最大宽度，优先压缩字间距，其次缩小字号)
-横向文字的位置如下图中的"印章横向文字在这里"
-
-![image](https://dyn.ess.tencent.cn/guide/capi/CreateSealByImage2.png)
-
+        :param _SealHorizontalText: <p>企业印章横向文字，最多可填15个汉字  (若超过印章最大宽度，优先压缩字间距，其次缩小字号)<br>横向文字的位置如下图中的&quot;印章横向文字在这里&quot;</p><p><img src="https://dyn.ess.tencent.cn/guide/capi/CreateSealByImage2.png" alt="image"></p>
         :type SealHorizontalText: str
-        :param _SealStyle: 印章样式, 可以选择的样式如下: 
-<ul><li>**circle**:(默认)圆形印章</li>
-<li>**ellipse**:椭圆印章</li></ul>
+        :param _SealStyle: <p>印章样式, 可以选择的样式如下: </p><ul><li>**circle**:(默认)圆形印章</li><li>**ellipse**:椭圆印章</li></ul>
         :type SealStyle: str
-        :param _SealSize: 印章尺寸取值描述, 可以选择的尺寸如下: <ul><li> **38_38**: 圆形企业公章直径38mm, 当SealStyle是圆形的时候才有效</li> <li> **40_40**: 圆形企业公章直径40mm, 当SealStyle是圆形的时候才有效</li> <li> **42_42**（默认）: 圆形企业公章直径42mm, 当SealStyle是圆形的时候才有效</li> <li> **45_45**: 圆形企业印章直径45mm, 当SealStyle是圆形的时候才有效</li> <li> **50_50**: 圆形企业印章直径50mm, 当SealStyle是圆形的时候才有效</li> <li> **58_58**: 圆形企业印章直径58mm, 当SealStyle是圆形的时候才有效</li>  <li> **40_30**: 椭圆形印章40mm x 30mm, 当SealStyle是椭圆的时候才有效</li> <li> **45_30**: 椭圆形印章45mm x 30mm, 当SealStyle是椭圆的时候才有效</li> </ul>
+        :param _SealSize: <p>印章尺寸取值描述, 可以选择的尺寸如下: <ul><li> <strong>38_38</strong>: 圆形企业公章直径38mm, 当SealStyle是圆形的时候才有效</li> <li> <strong>40_40</strong>: 圆形企业公章直径40mm, 当SealStyle是圆形的时候才有效</li> <li> <strong>42_42</strong>（默认）: 圆形企业公章直径42mm, 当SealStyle是圆形的时候才有效</li> <li> <strong>45_45</strong>: 圆形企业印章直径45mm, 当SealStyle是圆形的时候才有效</li> <li> <strong>50_50</strong>: 圆形企业印章直径50mm, 当SealStyle是圆形的时候才有效</li> <li> <strong>58_58</strong>: 圆形企业印章直径58mm, 当SealStyle是圆形的时候才有效</li>  <li> <strong>40_30</strong>: 椭圆形印章40mm x 30mm, 当SealStyle是椭圆的时候才有效</li> <li> <strong>45_30</strong>: 椭圆形印章45mm x 30mm, 当SealStyle是椭圆的时候才有效</li> </ul></p>
         :type SealSize: str
-        :param _TaxIdentifyCode: 企业税号
-
-注:
-<ul>
-<li>1.印章类型SealType是INVOICE类型时，此参数才会生效</li>
-<li>2.印章类型SealType是INVOICE类型，且该字段没有传入值或传入空时，会取该企业对应的统一社会信用代码作为默认的企业税号（<font color="red">如果是通过授权书授权方式认证的企业，此参数必传不能为空</font>）</li>
-</ul>
+        :param _TaxIdentifyCode: <p>企业税号</p><p>注:</p><ul><li>1.印章类型SealType是INVOICE类型时，此参数才会生效</li><li>2.印章类型SealType是INVOICE类型，且该字段没有传入值或传入空时，会取该企业对应的统一社会信用代码作为默认的企业税号（<font color="red">如果是通过授权书授权方式认证的企业，此参数必传不能为空</font>）</li></ul>
         :type TaxIdentifyCode: str
-        :param _SealDescription: 印章描述内容
+        :param _SealDescription: <p>印章描述内容</p>
         :type SealDescription: str
-        :param _Options: 个性化配置字段，默认不传。
+        :param _Options: <p>个性化配置字段，默认不传。</p>
         :type Options: list of Option
         """
         self._Agent = None
@@ -17538,15 +17509,7 @@ class CreateSealByImageRequest(AbstractModel):
 
     @property
     def Agent(self):
-        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
-
-此接口下面信息必填。
-<ul>
-<li>渠道应用标识:  Agent.AppId</li>
-<li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
-<li>第三方平台子客企业中的员工标识: Agent.ProxyOperator.OpenId</li>
-</ul>
-第三方平台子客企业和员工必须已经经过实名认证
+        r"""<p>关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。</p><p>此接口下面信息必填。</p><ul><li>渠道应用标识:  Agent.AppId</li><li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li><li>第三方平台子客企业中的员工标识: Agent.ProxyOperator.OpenId</li></ul>第三方平台子客企业和员工必须已经经过实名认证
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         """
         return self._Agent
@@ -17557,8 +17520,7 @@ class CreateSealByImageRequest(AbstractModel):
 
     @property
     def SealName(self):
-        r"""电子印章名字，1-50个中文字符
-注:`同一企业下电子印章名字不能相同`
+        r"""<p>电子印章名字，1-50个中文字符<br>注:<code>同一企业下电子印章名字不能相同</code></p>
         :rtype: str
         """
         return self._SealName
@@ -17569,11 +17531,7 @@ class CreateSealByImageRequest(AbstractModel):
 
     @property
     def SealImage(self):
-        r"""电子印章图片base64编码，大小不超过10M（原始图片不超过5M），只支持PNG或JPG图片格式
-
-注: `通过图片创建的电子印章，需电子签平台人工审核`
-
-
+        r"""<p>电子印章图片base64编码，大小不超过10M（原始图片不超过5M），只支持PNG或JPG图片格式</p><p>注: <code>通过图片创建的电子印章，需电子签平台人工审核</code></p>
         :rtype: str
         """
         return self._SealImage
@@ -17586,7 +17544,7 @@ class CreateSealByImageRequest(AbstractModel):
     def Operator(self):
         warnings.warn("parameter `Operator` is deprecated", DeprecationWarning) 
 
-        r"""操作者的信息
+        r"""<p>操作者的信息</p>
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         """
         return self._Operator
@@ -17599,11 +17557,7 @@ class CreateSealByImageRequest(AbstractModel):
 
     @property
     def GenerateSource(self):
-        r"""电子印章生成方式
-<ul>
-<li><strong>空值</strong>:(默认)使用上传的图片生成印章, 此时需要上传SealImage图片</li>
-<li><strong>SealGenerateSourceSystem</strong>: 系统生成印章, 无需上传SealImage图片</li>
-</ul>
+        r"""<p>电子印章生成方式</p><ul><li><strong>空值</strong>:(默认)使用上传的图片生成印章, 此时需要上传SealImage图片</li><li><strong>SealGenerateSourceSystem</strong>: 系统生成印章, 无需上传SealImage图片</li></ul>
         :rtype: str
         """
         return self._GenerateSource
@@ -17614,7 +17568,7 @@ class CreateSealByImageRequest(AbstractModel):
 
     @property
     def SealType(self):
-        r"""电子印章类型 , 可选类型如下: <ul><li>**OFFICIAL**: (默认)公章</li><li>**CONTRACT**: 合同专用章;</li><li>**FINANCE**: 财务专用章;</li><li>**PERSONNEL**: 人事专用章</li><li>**INVOICE**: 发票专用章</li><li>**OTHER**: 其他</li></ul>注: 同企业下只能有<font color="red">一个</font>公章, 重复创建会报错
+        r"""<p>电子印章类型 , 可选类型如下: <ul><li><strong>OFFICIAL</strong>: (默认)公章</li><li><strong>CONTRACT</strong>: 合同专用章;</li><li><strong>FINANCE</strong>: 财务专用章;</li><li><strong>PERSONNEL</strong>: 人事专用章</li><li><strong>INVOICE</strong>: 发票专用章</li><li><strong>OTHER</strong>: 其他</li></ul>注: 同企业下只能有<font color="red">一个</font>公章, 重复创建会报错</p>
         :rtype: str
         """
         return self._SealType
@@ -17625,11 +17579,7 @@ class CreateSealByImageRequest(AbstractModel):
 
     @property
     def SealHorizontalText(self):
-        r"""企业印章横向文字，最多可填15个汉字  (若超过印章最大宽度，优先压缩字间距，其次缩小字号)
-横向文字的位置如下图中的"印章横向文字在这里"
-
-![image](https://dyn.ess.tencent.cn/guide/capi/CreateSealByImage2.png)
-
+        r"""<p>企业印章横向文字，最多可填15个汉字  (若超过印章最大宽度，优先压缩字间距，其次缩小字号)<br>横向文字的位置如下图中的&quot;印章横向文字在这里&quot;</p><p><img src="https://dyn.ess.tencent.cn/guide/capi/CreateSealByImage2.png" alt="image"></p>
         :rtype: str
         """
         return self._SealHorizontalText
@@ -17640,9 +17590,7 @@ class CreateSealByImageRequest(AbstractModel):
 
     @property
     def SealStyle(self):
-        r"""印章样式, 可以选择的样式如下: 
-<ul><li>**circle**:(默认)圆形印章</li>
-<li>**ellipse**:椭圆印章</li></ul>
+        r"""<p>印章样式, 可以选择的样式如下: </p><ul><li>**circle**:(默认)圆形印章</li><li>**ellipse**:椭圆印章</li></ul>
         :rtype: str
         """
         return self._SealStyle
@@ -17653,7 +17601,7 @@ class CreateSealByImageRequest(AbstractModel):
 
     @property
     def SealSize(self):
-        r"""印章尺寸取值描述, 可以选择的尺寸如下: <ul><li> **38_38**: 圆形企业公章直径38mm, 当SealStyle是圆形的时候才有效</li> <li> **40_40**: 圆形企业公章直径40mm, 当SealStyle是圆形的时候才有效</li> <li> **42_42**（默认）: 圆形企业公章直径42mm, 当SealStyle是圆形的时候才有效</li> <li> **45_45**: 圆形企业印章直径45mm, 当SealStyle是圆形的时候才有效</li> <li> **50_50**: 圆形企业印章直径50mm, 当SealStyle是圆形的时候才有效</li> <li> **58_58**: 圆形企业印章直径58mm, 当SealStyle是圆形的时候才有效</li>  <li> **40_30**: 椭圆形印章40mm x 30mm, 当SealStyle是椭圆的时候才有效</li> <li> **45_30**: 椭圆形印章45mm x 30mm, 当SealStyle是椭圆的时候才有效</li> </ul>
+        r"""<p>印章尺寸取值描述, 可以选择的尺寸如下: <ul><li> <strong>38_38</strong>: 圆形企业公章直径38mm, 当SealStyle是圆形的时候才有效</li> <li> <strong>40_40</strong>: 圆形企业公章直径40mm, 当SealStyle是圆形的时候才有效</li> <li> <strong>42_42</strong>（默认）: 圆形企业公章直径42mm, 当SealStyle是圆形的时候才有效</li> <li> <strong>45_45</strong>: 圆形企业印章直径45mm, 当SealStyle是圆形的时候才有效</li> <li> <strong>50_50</strong>: 圆形企业印章直径50mm, 当SealStyle是圆形的时候才有效</li> <li> <strong>58_58</strong>: 圆形企业印章直径58mm, 当SealStyle是圆形的时候才有效</li>  <li> <strong>40_30</strong>: 椭圆形印章40mm x 30mm, 当SealStyle是椭圆的时候才有效</li> <li> <strong>45_30</strong>: 椭圆形印章45mm x 30mm, 当SealStyle是椭圆的时候才有效</li> </ul></p>
         :rtype: str
         """
         return self._SealSize
@@ -17664,13 +17612,7 @@ class CreateSealByImageRequest(AbstractModel):
 
     @property
     def TaxIdentifyCode(self):
-        r"""企业税号
-
-注:
-<ul>
-<li>1.印章类型SealType是INVOICE类型时，此参数才会生效</li>
-<li>2.印章类型SealType是INVOICE类型，且该字段没有传入值或传入空时，会取该企业对应的统一社会信用代码作为默认的企业税号（<font color="red">如果是通过授权书授权方式认证的企业，此参数必传不能为空</font>）</li>
-</ul>
+        r"""<p>企业税号</p><p>注:</p><ul><li>1.印章类型SealType是INVOICE类型时，此参数才会生效</li><li>2.印章类型SealType是INVOICE类型，且该字段没有传入值或传入空时，会取该企业对应的统一社会信用代码作为默认的企业税号（<font color="red">如果是通过授权书授权方式认证的企业，此参数必传不能为空</font>）</li></ul>
         :rtype: str
         """
         return self._TaxIdentifyCode
@@ -17681,7 +17623,7 @@ class CreateSealByImageRequest(AbstractModel):
 
     @property
     def SealDescription(self):
-        r"""印章描述内容
+        r"""<p>印章描述内容</p>
         :rtype: str
         """
         return self._SealDescription
@@ -17692,7 +17634,7 @@ class CreateSealByImageRequest(AbstractModel):
 
     @property
     def Options(self):
-        r"""个性化配置字段，默认不传。
+        r"""<p>个性化配置字段，默认不传。</p>
         :rtype: list of Option
         """
         return self._Options
@@ -17741,17 +17683,18 @@ class CreateSealByImageResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SealId: 电子印章ID，为32位字符串。
-建议开发者保留此印章ID，后续指定签署区印章或者操作印章需此印章ID。
+        :param _SealId: <p>电子印章ID，为32位字符串。<br>建议开发者保留此印章ID，后续指定签署区印章或者操作印章需此印章ID。</p>
         :type SealId: str
-        :param _ImageUrl: 电子印章预览链接地址，地址默认失效时间为24小时。
-
-注:`图片上传生成的电子印章无预览链接地址`
+        :param _ImageUrl: <p>电子印章预览链接地址，地址默认失效时间为24小时。</p><p>注:<code>图片上传生成的电子印章无预览链接地址</code></p>
         :type ImageUrl: str
-        :param _SealOperatorVerifyPath: 人脸验证操作人链接，用法可以参考"[跳转电子签小程序配置](https://qian.tencent.com/developers/company/openwxminiprogram/)"，默认为空。
+        :param _SealOperatorVerifyPath: <p>人脸验证操作人链接，用法可以参考&quot;<a href="https://qian.tencent.com/developers/company/openwxminiprogram/">跳转电子签小程序配置</a>&quot;，默认为空。</p>
         :type SealOperatorVerifyPath: str
-        :param _SealOperatorVerifyQrcodeUrl: 人脸验证操作人二维码链接，扫码后会跳转到腾讯电子签小程序进行人脸验证，默认为空。
+        :param _SealOperatorVerifyQrcodeUrl: <p>人脸验证操作人二维码链接，扫码后会跳转到腾讯电子签小程序进行人脸验证，默认为空。</p>
         :type SealOperatorVerifyQrcodeUrl: str
+        :param _PreviewFileUrl: <p>创建印章预览逻辑，返回的是印章加盖在示例文件上的效果图片链接。链接有效期为90天。</p>
+        :type PreviewFileUrl: str
+        :param _PreviewPdfUrl: <p>创建印章预览逻辑，返回的是印章加盖在示例文件上的效果PDF文件链接。链接有效期为90天。</p>
+        :type PreviewPdfUrl: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -17759,12 +17702,13 @@ class CreateSealByImageResponse(AbstractModel):
         self._ImageUrl = None
         self._SealOperatorVerifyPath = None
         self._SealOperatorVerifyQrcodeUrl = None
+        self._PreviewFileUrl = None
+        self._PreviewPdfUrl = None
         self._RequestId = None
 
     @property
     def SealId(self):
-        r"""电子印章ID，为32位字符串。
-建议开发者保留此印章ID，后续指定签署区印章或者操作印章需此印章ID。
+        r"""<p>电子印章ID，为32位字符串。<br>建议开发者保留此印章ID，后续指定签署区印章或者操作印章需此印章ID。</p>
         :rtype: str
         """
         return self._SealId
@@ -17775,9 +17719,7 @@ class CreateSealByImageResponse(AbstractModel):
 
     @property
     def ImageUrl(self):
-        r"""电子印章预览链接地址，地址默认失效时间为24小时。
-
-注:`图片上传生成的电子印章无预览链接地址`
+        r"""<p>电子印章预览链接地址，地址默认失效时间为24小时。</p><p>注:<code>图片上传生成的电子印章无预览链接地址</code></p>
         :rtype: str
         """
         return self._ImageUrl
@@ -17788,7 +17730,7 @@ class CreateSealByImageResponse(AbstractModel):
 
     @property
     def SealOperatorVerifyPath(self):
-        r"""人脸验证操作人链接，用法可以参考"[跳转电子签小程序配置](https://qian.tencent.com/developers/company/openwxminiprogram/)"，默认为空。
+        r"""<p>人脸验证操作人链接，用法可以参考&quot;<a href="https://qian.tencent.com/developers/company/openwxminiprogram/">跳转电子签小程序配置</a>&quot;，默认为空。</p>
         :rtype: str
         """
         return self._SealOperatorVerifyPath
@@ -17799,7 +17741,7 @@ class CreateSealByImageResponse(AbstractModel):
 
     @property
     def SealOperatorVerifyQrcodeUrl(self):
-        r"""人脸验证操作人二维码链接，扫码后会跳转到腾讯电子签小程序进行人脸验证，默认为空。
+        r"""<p>人脸验证操作人二维码链接，扫码后会跳转到腾讯电子签小程序进行人脸验证，默认为空。</p>
         :rtype: str
         """
         return self._SealOperatorVerifyQrcodeUrl
@@ -17807,6 +17749,28 @@ class CreateSealByImageResponse(AbstractModel):
     @SealOperatorVerifyQrcodeUrl.setter
     def SealOperatorVerifyQrcodeUrl(self, SealOperatorVerifyQrcodeUrl):
         self._SealOperatorVerifyQrcodeUrl = SealOperatorVerifyQrcodeUrl
+
+    @property
+    def PreviewFileUrl(self):
+        r"""<p>创建印章预览逻辑，返回的是印章加盖在示例文件上的效果图片链接。链接有效期为90天。</p>
+        :rtype: str
+        """
+        return self._PreviewFileUrl
+
+    @PreviewFileUrl.setter
+    def PreviewFileUrl(self, PreviewFileUrl):
+        self._PreviewFileUrl = PreviewFileUrl
+
+    @property
+    def PreviewPdfUrl(self):
+        r"""<p>创建印章预览逻辑，返回的是印章加盖在示例文件上的效果PDF文件链接。链接有效期为90天。</p>
+        :rtype: str
+        """
+        return self._PreviewPdfUrl
+
+    @PreviewPdfUrl.setter
+    def PreviewPdfUrl(self, PreviewPdfUrl):
+        self._PreviewPdfUrl = PreviewPdfUrl
 
     @property
     def RequestId(self):
@@ -17825,6 +17789,8 @@ class CreateSealByImageResponse(AbstractModel):
         self._ImageUrl = params.get("ImageUrl")
         self._SealOperatorVerifyPath = params.get("SealOperatorVerifyPath")
         self._SealOperatorVerifyQrcodeUrl = params.get("SealOperatorVerifyQrcodeUrl")
+        self._PreviewFileUrl = params.get("PreviewFileUrl")
+        self._PreviewPdfUrl = params.get("PreviewPdfUrl")
         self._RequestId = params.get("RequestId")
 
 

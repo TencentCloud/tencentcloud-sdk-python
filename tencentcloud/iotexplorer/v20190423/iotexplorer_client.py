@@ -2303,6 +2303,29 @@ class IotexplorerClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeLicenseOverview(self, request):
+        r"""查询实例概览详情。
+
+        :param request: Request instance for DescribeLicenseOverview.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeLicenseOverviewRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeLicenseOverviewResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLicenseOverview", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLicenseOverviewResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeLoRaFrequency(self, request):
         r"""提供查询LoRa自定义频点详情的能力
 

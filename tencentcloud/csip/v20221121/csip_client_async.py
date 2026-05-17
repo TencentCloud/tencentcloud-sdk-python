@@ -97,6 +97,78 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateCosAssetSyncTask(
+            self,
+            request: models.CreateCosAssetSyncTaskRequest,
+            opts: Dict = None,
+    ) -> models.CreateCosAssetSyncTaskResponse:
+        """
+        创建资产同步任务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateCosAssetSyncTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateCosAssetSyncTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateCosObjectScanTask(
+            self,
+            request: models.CreateCosObjectScanTaskRequest,
+            opts: Dict = None,
+    ) -> models.CreateCosObjectScanTaskResponse:
+        """
+        创建cos病毒扫描、敏感数据识别任务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateCosObjectScanTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateCosObjectScanTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateCosPolicy(
+            self,
+            request: models.CreateCosPolicyRequest,
+            opts: Dict = None,
+    ) -> models.CreateCosPolicyResponse:
+        """
+        添加cos告警策略
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateCosPolicy"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateCosPolicyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateCosRiskScanTask(
+            self,
+            request: models.CreateCosRiskScanTaskRequest,
+            opts: Dict = None,
+    ) -> models.CreateCosRiskScanTaskResponse:
+        """
+        创建风险监测任务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateCosRiskScanTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateCosRiskScanTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateDomainAndIp(
             self,
             request: models.CreateDomainAndIpRequest,
@@ -326,6 +398,42 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "CreateSkillScan"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreateSkillScanResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteCosAkAsset(
+            self,
+            request: models.DeleteCosAkAssetRequest,
+            opts: Dict = None,
+    ) -> models.DeleteCosAkAssetResponse:
+        """
+        删除已删除的cos ak资产
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteCosAkAsset"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteCosAkAssetResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteCosPolicy(
+            self,
+            request: models.DeleteCosPolicyRequest,
+            opts: Dict = None,
+    ) -> models.DeleteCosPolicyResponse:
+        """
+        删除策略
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteCosPolicy"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteCosPolicyResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -763,6 +871,24 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeBucketInvokeIpList(
+            self,
+            request: models.DescribeBucketInvokeIpListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeBucketInvokeIpListResponse:
+        """
+        查看存储桶调用源ip列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeBucketInvokeIpList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeBucketInvokeIpListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeCFWAssetStatistics(
             self,
             request: models.DescribeCFWAssetStatisticsRequest,
@@ -920,6 +1046,492 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "DescribeConfigCheckRules"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeConfigCheckRulesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCosAccessPermission(
+            self,
+            request: models.DescribeCosAccessPermissionRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCosAccessPermissionResponse:
+        """
+        查看cos桶访问权限信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCosAccessPermission"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCosAccessPermissionResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCosAccessPermissions(
+            self,
+            request: models.DescribeCosAccessPermissionsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCosAccessPermissionsResponse:
+        """
+        查看对象存储访问权限列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCosAccessPermissions"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCosAccessPermissionsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCosActionList(
+            self,
+            request: models.DescribeCosActionListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCosActionListResponse:
+        """
+        查看COS接口列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCosActionList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCosActionListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCosAkAsset(
+            self,
+            request: models.DescribeCosAkAssetRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCosAkAssetResponse:
+        """
+        查看ak资产列表信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCosAkAsset"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCosAkAssetResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCosAkInvokeIpList(
+            self,
+            request: models.DescribeCosAkInvokeIpListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCosAkInvokeIpListResponse:
+        """
+        查看存储桶调用源ip列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCosAkInvokeIpList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCosAkInvokeIpListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCosAlarmList(
+            self,
+            request: models.DescribeCosAlarmListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCosAlarmListResponse:
+        """
+        查看告警列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCosAlarmList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCosAlarmListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCosAlarmTrendData(
+            self,
+            request: models.DescribeCosAlarmTrendDataRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCosAlarmTrendDataResponse:
+        """
+        每日告警新增数据
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCosAlarmTrendData"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCosAlarmTrendDataResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCosAsset(
+            self,
+            request: models.DescribeCosAssetRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCosAssetResponse:
+        """
+        查看cos资产列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCosAsset"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCosAssetResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCosAssetSyncTask(
+            self,
+            request: models.DescribeCosAssetSyncTaskRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCosAssetSyncTaskResponse:
+        """
+        获取对应appid对应的当前正在扫描的taskid
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCosAssetSyncTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCosAssetSyncTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCosAuditAppIdList(
+            self,
+            request: models.DescribeCosAuditAppIdListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCosAuditAppIdListResponse:
+        """
+        查看该appid下已购买的appid集合
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCosAuditAppIdList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCosAuditAppIdListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCosAuditDictionaryList(
+            self,
+            request: models.DescribeCosAuditDictionaryListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCosAuditDictionaryListResponse:
+        """
+        查询cos审计字典信息列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCosAuditDictionaryList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCosAuditDictionaryListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCosAuditPayInfo(
+            self,
+            request: models.DescribeCosAuditPayInfoRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCosAuditPayInfoResponse:
+        """
+        获取审计支付信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCosAuditPayInfo"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCosAuditPayInfoResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCosBucketBillingInfo(
+            self,
+            request: models.DescribeCosBucketBillingInfoRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCosBucketBillingInfoResponse:
+        """
+        获取存储桶计费信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCosBucketBillingInfo"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCosBucketBillingInfoResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCosBucketList(
+            self,
+            request: models.DescribeCosBucketListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCosBucketListResponse:
+        """
+        获取存储桶信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCosBucketList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCosBucketListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCosBucketRisk(
+            self,
+            request: models.DescribeCosBucketRiskRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCosBucketRiskResponse:
+        """
+        查看风险资产视角
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCosBucketRisk"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCosBucketRiskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCosIdentifyFileList(
+            self,
+            request: models.DescribeCosIdentifyFileListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCosIdentifyFileListResponse:
+        """
+        查询cos文件数据识别结果列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCosIdentifyFileList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCosIdentifyFileListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCosInvokeUa(
+            self,
+            request: models.DescribeCosInvokeUaRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCosInvokeUaResponse:
+        """
+        查看调用记录关联的文件信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCosInvokeUa"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCosInvokeUaResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCosIpInvokeLog(
+            self,
+            request: models.DescribeCosIpInvokeLogRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCosIpInvokeLogResponse:
+        """
+        查看cos调用日志
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCosIpInvokeLog"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCosIpInvokeLogResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCosIpInvokeRecordFile(
+            self,
+            request: models.DescribeCosIpInvokeRecordFileRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCosIpInvokeRecordFileResponse:
+        """
+        查看调用记录关联的文件信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCosIpInvokeRecordFile"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCosIpInvokeRecordFileResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCosOverview(
+            self,
+            request: models.DescribeCosOverviewRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCosOverviewResponse:
+        """
+        cos概览信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCosOverview"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCosOverviewResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCosPolicy(
+            self,
+            request: models.DescribeCosPolicyRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCosPolicyResponse:
+        """
+        获取策略列表信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCosPolicy"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCosPolicyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCosRiskActionList(
+            self,
+            request: models.DescribeCosRiskActionListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCosRiskActionListResponse:
+        """
+        风险接口列表信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCosRiskActionList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCosRiskActionListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCosRiskEvidence(
+            self,
+            request: models.DescribeCosRiskEvidenceRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCosRiskEvidenceResponse:
+        """
+        查看风险证据以及描述
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCosRiskEvidence"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCosRiskEvidenceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCosRiskScanTask(
+            self,
+            request: models.DescribeCosRiskScanTaskRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCosRiskScanTaskResponse:
+        """
+        查看存储桶扫描任务详情
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCosRiskScanTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCosRiskScanTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCosRoleAccessPermission(
+            self,
+            request: models.DescribeCosRoleAccessPermissionRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCosRoleAccessPermissionResponse:
+        """
+        查看cos桶访问权限信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCosRoleAccessPermission"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCosRoleAccessPermissionResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCosRoleAccessPermissions(
+            self,
+            request: models.DescribeCosRoleAccessPermissionsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCosRoleAccessPermissionsResponse:
+        """
+        获取存储桶角色权限列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCosRoleAccessPermissions"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCosRoleAccessPermissionsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCosSourceIp(
+            self,
+            request: models.DescribeCosSourceIpRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCosSourceIpResponse:
+        """
+        调用源ip列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCosSourceIp"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCosSourceIpResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1843,6 +2455,42 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeIpInvokeRecord(
+            self,
+            request: models.DescribeIpInvokeRecordRequest,
+            opts: Dict = None,
+    ) -> models.DescribeIpInvokeRecordResponse:
+        """
+        对象存储异常检测调用记录信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeIpInvokeRecord"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeIpInvokeRecordResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeIpInvokeRecordDetail(
+            self,
+            request: models.DescribeIpInvokeRecordDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribeIpInvokeRecordDetailResponse:
+        """
+        ip访问列表详情信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeIpInvokeRecordDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeIpInvokeRecordDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeKeySandboxCredential(
             self,
             request: models.DescribeKeySandboxCredentialRequest,
@@ -1969,6 +2617,24 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribePolicyHitData(
+            self,
+            request: models.DescribePolicyHitDataRequest,
+            opts: Dict = None,
+    ) -> models.DescribePolicyHitDataResponse:
+        """
+        按日期查看策略命中详情
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribePolicyHitData"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribePolicyHitDataResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribePublicIpAssets(
             self,
             request: models.DescribePublicIpAssetsRequest,
@@ -2000,6 +2666,24 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "DescribeRepositoryImageAssets"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeRepositoryImageAssetsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeRiskBucketList(
+            self,
+            request: models.DescribeRiskBucketListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeRiskBucketListResponse:
+        """
+        查看风险关联的存储桶信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeRiskBucketList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeRiskBucketListResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2203,6 +2887,24 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeRiskItemList(
+            self,
+            request: models.DescribeRiskItemListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeRiskItemListResponse:
+        """
+        获取风险项视角列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeRiskItemList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeRiskItemListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeRiskRuleDetail(
             self,
             request: models.DescribeRiskRuleDetailRequest,
@@ -2234,6 +2936,24 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "DescribeRiskRules"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeRiskRulesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeRiskTrendData(
+            self,
+            request: models.DescribeRiskTrendDataRequest,
+            opts: Dict = None,
+    ) -> models.DescribeRiskTrendDataResponse:
+        """
+        查看风险趋势图
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeRiskTrendData"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeRiskTrendDataResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2635,6 +3355,60 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyAlarmRiskStatus(
+            self,
+            request: models.ModifyAlarmRiskStatusRequest,
+            opts: Dict = None,
+    ) -> models.ModifyAlarmRiskStatusResponse:
+        """
+        修改或者更改处置状态
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyAlarmRiskStatus"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyAlarmRiskStatusResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyCosAuditMonitorAccount(
+            self,
+            request: models.ModifyCosAuditMonitorAccountRequest,
+            opts: Dict = None,
+    ) -> models.ModifyCosAuditMonitorAccountResponse:
+        """
+        修改cos审计监测账号
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyCosAuditMonitorAccount"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyCosAuditMonitorAccountResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyCosMarkInfo(
+            self,
+            request: models.ModifyCosMarkInfoRequest,
+            opts: Dict = None,
+    ) -> models.ModifyCosMarkInfoResponse:
+        """
+        修改对象存储备注
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyCosMarkInfo"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyCosMarkInfoResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyDspmAccessRecord(
             self,
             request: models.ModifyDspmAccessRecordRequest,
@@ -2918,6 +3692,24 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "ModifyOrganizationAccountStatus"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyOrganizationAccountStatusResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyPolicyStatus(
+            self,
+            request: models.ModifyPolicyStatusRequest,
+            opts: Dict = None,
+    ) -> models.ModifyPolicyStatusResponse:
+        """
+        修改策略状态
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyPolicyStatus"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyPolicyStatusResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

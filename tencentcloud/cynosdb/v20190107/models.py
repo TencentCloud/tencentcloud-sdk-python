@@ -12815,7 +12815,7 @@ class CynosdbInstance(AbstractModel):
         :type Memory: int
         :param _Storage: <p>存储量，单位：GB</p>
         :type Storage: int
-        :param _InstanceType: <p>实例类型</p>
+        :param _InstanceType: <p>实例类型</p><p>枚举值：</p><ul><li>rw： 读写实例</li><li>ro： 只读实例</li></ul>
         :type InstanceType: str
         :param _InstanceRole: <p>实例当前角色</p>
         :type InstanceRole: str
@@ -13152,7 +13152,7 @@ class CynosdbInstance(AbstractModel):
 
     @property
     def InstanceType(self):
-        r"""<p>实例类型</p>
+        r"""<p>实例类型</p><p>枚举值：</p><ul><li>rw： 读写实例</li><li>ro： 只读实例</li></ul>
         :rtype: str
         """
         return self._InstanceType
@@ -52047,72 +52047,63 @@ class RollbackToNewClusterRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Zone: 可用区
+        :param _Zone: <p>可用区</p>
         :type Zone: str
-        :param _OriginalClusterId: 回档时，传入源集群ID，用于查找源poolId
+        :param _OriginalClusterId: <p>回档时，传入源集群ID，用于查找源poolId</p>
         :type OriginalClusterId: str
-        :param _UniqVpcId: 所属VPC网络ID
+        :param _UniqVpcId: <p>所属VPC网络ID</p>
         :type UniqVpcId: str
-        :param _UniqSubnetId: 所属子网ID
+        :param _UniqSubnetId: <p>所属子网ID</p>
         :type UniqSubnetId: str
-        :param _ClusterName: 集群名称，长度小于64个字符，每个字符取值范围：大/小写字母，数字，特殊符号（'-','_','.'）
+        :param _ClusterName: <p>集群名称，长度小于64个字符，每个字符取值范围：大/小写字母，数字，特殊符号（&#39;-&#39;,&#39;_&#39;,&#39;.&#39;）</p>
         :type ClusterName: str
-        :param _RollbackId: 快照回档，表示snapshotId；时间点回档，表示queryId，为0，表示需要判断时间点是否有效
+        :param _RollbackId: <p>快照回档，表示snapshotId；时间点回档，表示queryId，为0，表示需要判断时间点是否有效</p>
         :type RollbackId: int
-        :param _ExpectTime: 时间点回档，指定时间；快照回档，快照时间
+        :param _ExpectTime: <p>时间点回档，指定时间；快照回档，快照时间</p>
         :type ExpectTime: str
-        :param _AutoVoucher: 是否自动选择代金券 1是 0否 默认为0
+        :param _AutoVoucher: <p>是否自动选择代金券 1是 0否 默认为0</p>
         :type AutoVoucher: int
-        :param _ResourceTags: 集群创建需要绑定的tag数组信息
+        :param _ResourceTags: <p>集群创建需要绑定的tag数组信息</p>
         :type ResourceTags: list of Tag
-        :param _DbMode: Db类型
-当DbType为MYSQL时可选(默认NORMAL)：
-<li>NORMAL</li>
-<li>SERVERLESS</li>
+        :param _DbMode: <p>Db类型<br>当DbType为MYSQL时可选(默认NORMAL)：</p><li>NORMAL</li><li>SERVERLESS</li>
         :type DbMode: str
-        :param _MinCpu: 当DbMode为SEVERLESS时必填
-cpu最小值，可选范围参考DescribeServerlessInstanceSpecs接口返回
+        :param _MinCpu: <p>当DbMode为SEVERLESS时必填<br>cpu最小值，可选范围参考DescribeServerlessInstanceSpecs接口返回</p>
         :type MinCpu: float
-        :param _MaxCpu: 当DbMode为SEVERLESS时必填：
-cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
+        :param _MaxCpu: <p>当DbMode为SEVERLESS时必填：<br>cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回</p>
         :type MaxCpu: float
-        :param _AutoPause: 当DbMode为SEVERLESS时，指定集群是否自动暂停，可选范围
-<li>yes</li>
-<li>no</li>
-默认值:yes
+        :param _AutoPause: <p>当DbMode为SEVERLESS时，指定集群是否自动暂停，可选范围</p><li>yes</li><li>no</li>默认值:yes
         :type AutoPause: str
-        :param _AutoPauseDelay: 当DbMode为SEVERLESS时，指定集群自动暂停的延迟，单位秒，可选范围[600,691200]
-默认值:600
+        :param _AutoPauseDelay: <p>当DbMode为SEVERLESS时，指定集群自动暂停的延迟，单位秒，可选范围[600,691200]<br>默认值:600</p>
         :type AutoPauseDelay: int
-        :param _SecurityGroupIds: 安全组id数组
+        :param _SecurityGroupIds: <p>安全组id数组</p>
         :type SecurityGroupIds: list of str
-        :param _AlarmPolicyIds: 告警策略Id数组
+        :param _AlarmPolicyIds: <p>告警策略Id数组</p>
         :type AlarmPolicyIds: list of str
-        :param _ClusterParams: 参数数组，暂时支持character_set_server （utf8｜latin1｜gbk｜utf8mb4） ，lower_case_table_names，1-大小写不敏感，0-大小写敏感
+        :param _ClusterParams: <p>参数数组，暂时支持character_set_server （utf8｜latin1｜gbk｜utf8mb4） ，lower_case_table_names，1-大小写不敏感，0-大小写敏感</p>
         :type ClusterParams: list of ParamItem
-        :param _ParamTemplateId: 参数模板ID，可以通过查询参数模板信息DescribeParamTemplates获得参数模板ID
+        :param _ParamTemplateId: <p>参数模板ID，可以通过查询参数模板信息DescribeParamTemplates获得参数模板ID</p>
         :type ParamTemplateId: int
-        :param _InstanceInitInfos: 实例初始化配置信息，主要用于购买集群时选不同规格实例
+        :param _InstanceInitInfos: <p>实例初始化配置信息，主要用于购买集群时选不同规格实例</p>
         :type InstanceInitInfos: list of InstanceInitInfo
-        :param _DealMode: 0-下单并支付 1-下单
+        :param _DealMode: <p>0-下单并支付 1-下单</p>
         :type DealMode: int
-        :param _PayMode: 计算节点付费模式：0-按量计费，1-预付费
+        :param _PayMode: <p>计算节点付费模式：0-按量计费，1-预付费</p>
         :type PayMode: int
-        :param _TimeSpan: 时间
+        :param _TimeSpan: <p>时间</p>
         :type TimeSpan: int
-        :param _TimeUnit: 单位
+        :param _TimeUnit: <p>单位</p>
         :type TimeUnit: str
-        :param _RollbackDatabases: 回档库信息
+        :param _RollbackDatabases: <p>回档库信息</p>
         :type RollbackDatabases: list of RollbackDatabase
-        :param _RollbackTables: 回档表信息
+        :param _RollbackTables: <p>回档表信息</p>
         :type RollbackTables: list of RollbackTable
-        :param _OriginalROInstanceList: 原ro实例信息
+        :param _OriginalROInstanceList: <p>原ro实例信息</p>
         :type OriginalROInstanceList: list of str
-        :param _ProjectId: 项目id
+        :param _ProjectId: <p>项目id</p>
         :type ProjectId: int
-        :param _AutoArchive: 是否开启归档，可选范围<li>yes</li><li>no</li>默认值:yes
+        :param _AutoArchive: <p>是否开启归档，可选范围<li>yes</li><li>no</li>默认值:yes</p>
         :type AutoArchive: str
-        :param _FromSaveBackup: 是否从保存备份中恢复
+        :param _FromSaveBackup: <p>是否从保存备份中恢复</p>
         :type FromSaveBackup: bool
         """
         self._Zone = None
@@ -52147,7 +52138,7 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
 
     @property
     def Zone(self):
-        r"""可用区
+        r"""<p>可用区</p>
         :rtype: str
         """
         return self._Zone
@@ -52158,7 +52149,7 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
 
     @property
     def OriginalClusterId(self):
-        r"""回档时，传入源集群ID，用于查找源poolId
+        r"""<p>回档时，传入源集群ID，用于查找源poolId</p>
         :rtype: str
         """
         return self._OriginalClusterId
@@ -52169,7 +52160,7 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
 
     @property
     def UniqVpcId(self):
-        r"""所属VPC网络ID
+        r"""<p>所属VPC网络ID</p>
         :rtype: str
         """
         return self._UniqVpcId
@@ -52180,7 +52171,7 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
 
     @property
     def UniqSubnetId(self):
-        r"""所属子网ID
+        r"""<p>所属子网ID</p>
         :rtype: str
         """
         return self._UniqSubnetId
@@ -52191,7 +52182,7 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
 
     @property
     def ClusterName(self):
-        r"""集群名称，长度小于64个字符，每个字符取值范围：大/小写字母，数字，特殊符号（'-','_','.'）
+        r"""<p>集群名称，长度小于64个字符，每个字符取值范围：大/小写字母，数字，特殊符号（&#39;-&#39;,&#39;_&#39;,&#39;.&#39;）</p>
         :rtype: str
         """
         return self._ClusterName
@@ -52202,7 +52193,7 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
 
     @property
     def RollbackId(self):
-        r"""快照回档，表示snapshotId；时间点回档，表示queryId，为0，表示需要判断时间点是否有效
+        r"""<p>快照回档，表示snapshotId；时间点回档，表示queryId，为0，表示需要判断时间点是否有效</p>
         :rtype: int
         """
         return self._RollbackId
@@ -52213,7 +52204,7 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
 
     @property
     def ExpectTime(self):
-        r"""时间点回档，指定时间；快照回档，快照时间
+        r"""<p>时间点回档，指定时间；快照回档，快照时间</p>
         :rtype: str
         """
         return self._ExpectTime
@@ -52224,7 +52215,7 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
 
     @property
     def AutoVoucher(self):
-        r"""是否自动选择代金券 1是 0否 默认为0
+        r"""<p>是否自动选择代金券 1是 0否 默认为0</p>
         :rtype: int
         """
         return self._AutoVoucher
@@ -52235,7 +52226,7 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
 
     @property
     def ResourceTags(self):
-        r"""集群创建需要绑定的tag数组信息
+        r"""<p>集群创建需要绑定的tag数组信息</p>
         :rtype: list of Tag
         """
         return self._ResourceTags
@@ -52246,10 +52237,7 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
 
     @property
     def DbMode(self):
-        r"""Db类型
-当DbType为MYSQL时可选(默认NORMAL)：
-<li>NORMAL</li>
-<li>SERVERLESS</li>
+        r"""<p>Db类型<br>当DbType为MYSQL时可选(默认NORMAL)：</p><li>NORMAL</li><li>SERVERLESS</li>
         :rtype: str
         """
         return self._DbMode
@@ -52260,8 +52248,7 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
 
     @property
     def MinCpu(self):
-        r"""当DbMode为SEVERLESS时必填
-cpu最小值，可选范围参考DescribeServerlessInstanceSpecs接口返回
+        r"""<p>当DbMode为SEVERLESS时必填<br>cpu最小值，可选范围参考DescribeServerlessInstanceSpecs接口返回</p>
         :rtype: float
         """
         return self._MinCpu
@@ -52272,8 +52259,7 @@ cpu最小值，可选范围参考DescribeServerlessInstanceSpecs接口返回
 
     @property
     def MaxCpu(self):
-        r"""当DbMode为SEVERLESS时必填：
-cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
+        r"""<p>当DbMode为SEVERLESS时必填：<br>cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回</p>
         :rtype: float
         """
         return self._MaxCpu
@@ -52284,10 +52270,7 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
 
     @property
     def AutoPause(self):
-        r"""当DbMode为SEVERLESS时，指定集群是否自动暂停，可选范围
-<li>yes</li>
-<li>no</li>
-默认值:yes
+        r"""<p>当DbMode为SEVERLESS时，指定集群是否自动暂停，可选范围</p><li>yes</li><li>no</li>默认值:yes
         :rtype: str
         """
         return self._AutoPause
@@ -52298,8 +52281,7 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
 
     @property
     def AutoPauseDelay(self):
-        r"""当DbMode为SEVERLESS时，指定集群自动暂停的延迟，单位秒，可选范围[600,691200]
-默认值:600
+        r"""<p>当DbMode为SEVERLESS时，指定集群自动暂停的延迟，单位秒，可选范围[600,691200]<br>默认值:600</p>
         :rtype: int
         """
         return self._AutoPauseDelay
@@ -52310,7 +52292,7 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
 
     @property
     def SecurityGroupIds(self):
-        r"""安全组id数组
+        r"""<p>安全组id数组</p>
         :rtype: list of str
         """
         return self._SecurityGroupIds
@@ -52321,7 +52303,7 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
 
     @property
     def AlarmPolicyIds(self):
-        r"""告警策略Id数组
+        r"""<p>告警策略Id数组</p>
         :rtype: list of str
         """
         return self._AlarmPolicyIds
@@ -52332,7 +52314,7 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
 
     @property
     def ClusterParams(self):
-        r"""参数数组，暂时支持character_set_server （utf8｜latin1｜gbk｜utf8mb4） ，lower_case_table_names，1-大小写不敏感，0-大小写敏感
+        r"""<p>参数数组，暂时支持character_set_server （utf8｜latin1｜gbk｜utf8mb4） ，lower_case_table_names，1-大小写不敏感，0-大小写敏感</p>
         :rtype: list of ParamItem
         """
         return self._ClusterParams
@@ -52343,7 +52325,7 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
 
     @property
     def ParamTemplateId(self):
-        r"""参数模板ID，可以通过查询参数模板信息DescribeParamTemplates获得参数模板ID
+        r"""<p>参数模板ID，可以通过查询参数模板信息DescribeParamTemplates获得参数模板ID</p>
         :rtype: int
         """
         return self._ParamTemplateId
@@ -52354,7 +52336,7 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
 
     @property
     def InstanceInitInfos(self):
-        r"""实例初始化配置信息，主要用于购买集群时选不同规格实例
+        r"""<p>实例初始化配置信息，主要用于购买集群时选不同规格实例</p>
         :rtype: list of InstanceInitInfo
         """
         return self._InstanceInitInfos
@@ -52365,7 +52347,7 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
 
     @property
     def DealMode(self):
-        r"""0-下单并支付 1-下单
+        r"""<p>0-下单并支付 1-下单</p>
         :rtype: int
         """
         return self._DealMode
@@ -52376,7 +52358,7 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
 
     @property
     def PayMode(self):
-        r"""计算节点付费模式：0-按量计费，1-预付费
+        r"""<p>计算节点付费模式：0-按量计费，1-预付费</p>
         :rtype: int
         """
         return self._PayMode
@@ -52387,7 +52369,7 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
 
     @property
     def TimeSpan(self):
-        r"""时间
+        r"""<p>时间</p>
         :rtype: int
         """
         return self._TimeSpan
@@ -52398,7 +52380,7 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
 
     @property
     def TimeUnit(self):
-        r"""单位
+        r"""<p>单位</p>
         :rtype: str
         """
         return self._TimeUnit
@@ -52409,7 +52391,7 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
 
     @property
     def RollbackDatabases(self):
-        r"""回档库信息
+        r"""<p>回档库信息</p>
         :rtype: list of RollbackDatabase
         """
         return self._RollbackDatabases
@@ -52420,7 +52402,7 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
 
     @property
     def RollbackTables(self):
-        r"""回档表信息
+        r"""<p>回档表信息</p>
         :rtype: list of RollbackTable
         """
         return self._RollbackTables
@@ -52431,7 +52413,7 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
 
     @property
     def OriginalROInstanceList(self):
-        r"""原ro实例信息
+        r"""<p>原ro实例信息</p>
         :rtype: list of str
         """
         return self._OriginalROInstanceList
@@ -52442,7 +52424,7 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
 
     @property
     def ProjectId(self):
-        r"""项目id
+        r"""<p>项目id</p>
         :rtype: int
         """
         return self._ProjectId
@@ -52453,7 +52435,7 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
 
     @property
     def AutoArchive(self):
-        r"""是否开启归档，可选范围<li>yes</li><li>no</li>默认值:yes
+        r"""<p>是否开启归档，可选范围<li>yes</li><li>no</li>默认值:yes</p>
         :rtype: str
         """
         return self._AutoArchive
@@ -52464,7 +52446,7 @@ cpu最大值，可选范围参考DescribeServerlessInstanceSpecs接口返回
 
     @property
     def FromSaveBackup(self):
-        r"""是否从保存备份中恢复
+        r"""<p>是否从保存备份中恢复</p>
         :rtype: bool
         """
         return self._FromSaveBackup
@@ -52546,15 +52528,15 @@ class RollbackToNewClusterResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TranId: 冻结流水ID
+        :param _TranId: <p>冻结流水ID</p>
         :type TranId: str
-        :param _DealNames: 订单号
+        :param _DealNames: <p>订单号</p>
         :type DealNames: list of str
-        :param _ResourceIds: 资源ID列表（该字段已不再维护，请使用dealNames字段查询接口DescribeResourcesByDealName获取资源ID）
+        :param _ResourceIds: <p>资源ID列表（该字段已不再维护，请使用dealNames字段查询接口DescribeResourcesByDealName获取资源ID）</p>
         :type ResourceIds: list of str
-        :param _ClusterIds: 集群ID列表（该字段已不再维护，请使用dealNames字段查询接口DescribeResourcesByDealName获取集群ID）
+        :param _ClusterIds: <p>集群ID列表（该字段已不再维护，请使用dealNames字段查询接口DescribeResourcesByDealName获取集群ID）</p>
         :type ClusterIds: list of str
-        :param _BigDealIds: 大订单号
+        :param _BigDealIds: <p>大订单号</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type BigDealIds: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -52569,7 +52551,7 @@ class RollbackToNewClusterResponse(AbstractModel):
 
     @property
     def TranId(self):
-        r"""冻结流水ID
+        r"""<p>冻结流水ID</p>
         :rtype: str
         """
         return self._TranId
@@ -52580,7 +52562,7 @@ class RollbackToNewClusterResponse(AbstractModel):
 
     @property
     def DealNames(self):
-        r"""订单号
+        r"""<p>订单号</p>
         :rtype: list of str
         """
         return self._DealNames
@@ -52591,7 +52573,7 @@ class RollbackToNewClusterResponse(AbstractModel):
 
     @property
     def ResourceIds(self):
-        r"""资源ID列表（该字段已不再维护，请使用dealNames字段查询接口DescribeResourcesByDealName获取资源ID）
+        r"""<p>资源ID列表（该字段已不再维护，请使用dealNames字段查询接口DescribeResourcesByDealName获取资源ID）</p>
         :rtype: list of str
         """
         return self._ResourceIds
@@ -52602,7 +52584,7 @@ class RollbackToNewClusterResponse(AbstractModel):
 
     @property
     def ClusterIds(self):
-        r"""集群ID列表（该字段已不再维护，请使用dealNames字段查询接口DescribeResourcesByDealName获取集群ID）
+        r"""<p>集群ID列表（该字段已不再维护，请使用dealNames字段查询接口DescribeResourcesByDealName获取集群ID）</p>
         :rtype: list of str
         """
         return self._ClusterIds
@@ -52613,7 +52595,7 @@ class RollbackToNewClusterResponse(AbstractModel):
 
     @property
     def BigDealIds(self):
-        r"""大订单号
+        r"""<p>大订单号</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """

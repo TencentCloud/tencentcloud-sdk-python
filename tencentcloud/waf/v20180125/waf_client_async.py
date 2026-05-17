@@ -3376,6 +3376,24 @@ class WafClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyOwaspDomainUpdateStatus(
+            self,
+            request: models.ModifyOwaspDomainUpdateStatusRequest,
+            opts: Dict = None,
+    ) -> models.ModifyOwaspDomainUpdateStatusResponse:
+        """
+        修改域名新规则状态
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyOwaspDomainUpdateStatus"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyOwaspDomainUpdateStatusResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyOwaspRuleStatus(
             self,
             request: models.ModifyOwaspRuleStatusRequest,

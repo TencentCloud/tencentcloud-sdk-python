@@ -1747,22 +1747,26 @@ class CreateModelRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceID: 实例
+        :param _InstanceID: <p>实例</p>
         :type InstanceID: str
-        :param _Name: 模型名称
+        :param _Name: <p>模型名称</p>
         :type Name: str
-        :param _HttpProtocolType: 协议类型：http/https
+        :param _HttpProtocolType: <p>协议类型：http/https</p>
         :type HttpProtocolType: str
-        :param _TargetPath: 目标路径
+        :param _TargetPath: <p>目标路径</p>
         :type TargetPath: str
-        :param _TargetHosts: 目标服务器
+        :param _TargetHosts: <p>目标服务器</p>
         :type TargetHosts: list of TargetHostDTO
-        :param _CredentialID: 凭据ID
+        :param _CredentialID: <p>凭据ID</p>
         :type CredentialID: str
-        :param _CheckTargetCertsError: https时，是否检查证书合法
+        :param _CheckTargetCertsError: <p>https时，是否检查证书合法</p>
         :type CheckTargetCertsError: bool
-        :param _HttpProtocolVersion: http协议版本：1.1/2.0
+        :param _HttpProtocolVersion: <p>http协议版本：1.1/2.0</p>
         :type HttpProtocolVersion: str
+        :param _ModelID: <p>model ID</p>
+        :type ModelID: str
+        :param _Description: <p>描述</p>
+        :type Description: str
         """
         self._InstanceID = None
         self._Name = None
@@ -1772,10 +1776,12 @@ class CreateModelRequest(AbstractModel):
         self._CredentialID = None
         self._CheckTargetCertsError = None
         self._HttpProtocolVersion = None
+        self._ModelID = None
+        self._Description = None
 
     @property
     def InstanceID(self):
-        r"""实例
+        r"""<p>实例</p>
         :rtype: str
         """
         return self._InstanceID
@@ -1786,7 +1792,7 @@ class CreateModelRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""模型名称
+        r"""<p>模型名称</p>
         :rtype: str
         """
         return self._Name
@@ -1797,7 +1803,7 @@ class CreateModelRequest(AbstractModel):
 
     @property
     def HttpProtocolType(self):
-        r"""协议类型：http/https
+        r"""<p>协议类型：http/https</p>
         :rtype: str
         """
         return self._HttpProtocolType
@@ -1808,7 +1814,7 @@ class CreateModelRequest(AbstractModel):
 
     @property
     def TargetPath(self):
-        r"""目标路径
+        r"""<p>目标路径</p>
         :rtype: str
         """
         return self._TargetPath
@@ -1819,7 +1825,7 @@ class CreateModelRequest(AbstractModel):
 
     @property
     def TargetHosts(self):
-        r"""目标服务器
+        r"""<p>目标服务器</p>
         :rtype: list of TargetHostDTO
         """
         return self._TargetHosts
@@ -1830,7 +1836,7 @@ class CreateModelRequest(AbstractModel):
 
     @property
     def CredentialID(self):
-        r"""凭据ID
+        r"""<p>凭据ID</p>
         :rtype: str
         """
         return self._CredentialID
@@ -1841,7 +1847,7 @@ class CreateModelRequest(AbstractModel):
 
     @property
     def CheckTargetCertsError(self):
-        r"""https时，是否检查证书合法
+        r"""<p>https时，是否检查证书合法</p>
         :rtype: bool
         """
         return self._CheckTargetCertsError
@@ -1852,7 +1858,7 @@ class CreateModelRequest(AbstractModel):
 
     @property
     def HttpProtocolVersion(self):
-        r"""http协议版本：1.1/2.0
+        r"""<p>http协议版本：1.1/2.0</p>
         :rtype: str
         """
         return self._HttpProtocolVersion
@@ -1860,6 +1866,28 @@ class CreateModelRequest(AbstractModel):
     @HttpProtocolVersion.setter
     def HttpProtocolVersion(self, HttpProtocolVersion):
         self._HttpProtocolVersion = HttpProtocolVersion
+
+    @property
+    def ModelID(self):
+        r"""<p>model ID</p>
+        :rtype: str
+        """
+        return self._ModelID
+
+    @ModelID.setter
+    def ModelID(self, ModelID):
+        self._ModelID = ModelID
+
+    @property
+    def Description(self):
+        r"""<p>描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
 
 
     def _deserialize(self, params):
@@ -1876,6 +1904,8 @@ class CreateModelRequest(AbstractModel):
         self._CredentialID = params.get("CredentialID")
         self._CheckTargetCertsError = params.get("CheckTargetCertsError")
         self._HttpProtocolVersion = params.get("HttpProtocolVersion")
+        self._ModelID = params.get("ModelID")
+        self._Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1893,7 +1923,7 @@ class CreateModelResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 结果集
+        :param _Data: <p>结果集</p>
         :type Data: :class:`tencentcloud.apis.v20240801.models.ResultIDVO`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1903,7 +1933,7 @@ class CreateModelResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""结果集
+        r"""<p>结果集</p>
         :rtype: :class:`tencentcloud.apis.v20240801.models.ResultIDVO`
         """
         return self._Data
@@ -1990,6 +2020,8 @@ class CreateModelServiceRequest(AbstractModel):
         :type FallbackStatus: bool
         :param _FallbackModels: <p>Fallback模型配置</p>
         :type FallbackModels: list of TargetModelDTO
+        :param _ModelProtocol: <p>模型协议</p>
+        :type ModelProtocol: str
         """
         self._InstanceID = None
         self._Name = None
@@ -2017,6 +2049,7 @@ class CreateModelServiceRequest(AbstractModel):
         self._HostKeyHeaderName = None
         self._FallbackStatus = None
         self._FallbackModels = None
+        self._ModelProtocol = None
 
     @property
     def InstanceID(self):
@@ -2304,6 +2337,17 @@ class CreateModelServiceRequest(AbstractModel):
     def FallbackModels(self, FallbackModels):
         self._FallbackModels = FallbackModels
 
+    @property
+    def ModelProtocol(self):
+        r"""<p>模型协议</p>
+        :rtype: str
+        """
+        return self._ModelProtocol
+
+    @ModelProtocol.setter
+    def ModelProtocol(self, ModelProtocol):
+        self._ModelProtocol = ModelProtocol
+
 
     def _deserialize(self, params):
         self._InstanceID = params.get("InstanceID")
@@ -2357,6 +2401,7 @@ class CreateModelServiceRequest(AbstractModel):
                 obj = TargetModelDTO()
                 obj._deserialize(item)
                 self._FallbackModels.append(obj)
+        self._ModelProtocol = params.get("ModelProtocol")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5527,36 +5572,40 @@ class DescribeModelResponseVO(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AppID: 腾讯云AppID
+        :param _AppID: <p>腾讯云AppID</p>
         :type AppID: int
-        :param _Uin: 腾讯云Uin
+        :param _Uin: <p>腾讯云Uin</p>
         :type Uin: str
-        :param _InstanceID: 实例ID
+        :param _InstanceID: <p>实例ID</p>
         :type InstanceID: str
-        :param _ID: 模型ID
+        :param _ID: <p>模型ID</p>
         :type ID: str
-        :param _Name: 模型名称
+        :param _Name: <p>模型名称</p>
         :type Name: str
-        :param _CredentialID: 凭据ID
+        :param _CredentialID: <p>凭据ID</p>
         :type CredentialID: str
-        :param _CredentialName: 凭据名称
+        :param _CredentialName: <p>凭据名称</p>
         :type CredentialName: str
-        :param _HttpProtocolType: http协议类型
+        :param _HttpProtocolType: <p>http协议类型</p>
         :type HttpProtocolType: str
-        :param _CheckTargetCertsError: https时，是否校验目标证书
+        :param _CheckTargetCertsError: <p>https时，是否校验目标证书</p>
         :type CheckTargetCertsError: bool
-        :param _HttpProtocolVersion: http协议版本：1.1/2.0
+        :param _HttpProtocolVersion: <p>http协议版本：1.1/2.0</p>
         :type HttpProtocolVersion: str
-        :param _TargetPath: 目标路径
+        :param _TargetPath: <p>目标路径</p>
         :type TargetPath: str
-        :param _TargetHosts: 目标器列表
+        :param _TargetHosts: <p>目标器列表</p>
         :type TargetHosts: list of TargetHostDTO
-        :param _ModelServiceCount: 被模型服务使用的个数
+        :param _ModelServiceCount: <p>被模型服务使用的个数</p>
         :type ModelServiceCount: int
-        :param _CreateTime: 创建时间
+        :param _CreateTime: <p>创建时间</p>
         :type CreateTime: str
-        :param _LastUpdateTime: 最后修改时间
+        :param _LastUpdateTime: <p>最后修改时间</p>
         :type LastUpdateTime: str
+        :param _ModelID: <p>model ID</p>
+        :type ModelID: str
+        :param _Description: <p>描述</p>
+        :type Description: str
         """
         self._AppID = None
         self._Uin = None
@@ -5573,10 +5622,12 @@ class DescribeModelResponseVO(AbstractModel):
         self._ModelServiceCount = None
         self._CreateTime = None
         self._LastUpdateTime = None
+        self._ModelID = None
+        self._Description = None
 
     @property
     def AppID(self):
-        r"""腾讯云AppID
+        r"""<p>腾讯云AppID</p>
         :rtype: int
         """
         return self._AppID
@@ -5587,7 +5638,7 @@ class DescribeModelResponseVO(AbstractModel):
 
     @property
     def Uin(self):
-        r"""腾讯云Uin
+        r"""<p>腾讯云Uin</p>
         :rtype: str
         """
         return self._Uin
@@ -5598,7 +5649,7 @@ class DescribeModelResponseVO(AbstractModel):
 
     @property
     def InstanceID(self):
-        r"""实例ID
+        r"""<p>实例ID</p>
         :rtype: str
         """
         return self._InstanceID
@@ -5609,7 +5660,7 @@ class DescribeModelResponseVO(AbstractModel):
 
     @property
     def ID(self):
-        r"""模型ID
+        r"""<p>模型ID</p>
         :rtype: str
         """
         return self._ID
@@ -5620,7 +5671,7 @@ class DescribeModelResponseVO(AbstractModel):
 
     @property
     def Name(self):
-        r"""模型名称
+        r"""<p>模型名称</p>
         :rtype: str
         """
         return self._Name
@@ -5631,7 +5682,7 @@ class DescribeModelResponseVO(AbstractModel):
 
     @property
     def CredentialID(self):
-        r"""凭据ID
+        r"""<p>凭据ID</p>
         :rtype: str
         """
         return self._CredentialID
@@ -5642,7 +5693,7 @@ class DescribeModelResponseVO(AbstractModel):
 
     @property
     def CredentialName(self):
-        r"""凭据名称
+        r"""<p>凭据名称</p>
         :rtype: str
         """
         return self._CredentialName
@@ -5653,7 +5704,7 @@ class DescribeModelResponseVO(AbstractModel):
 
     @property
     def HttpProtocolType(self):
-        r"""http协议类型
+        r"""<p>http协议类型</p>
         :rtype: str
         """
         return self._HttpProtocolType
@@ -5664,7 +5715,7 @@ class DescribeModelResponseVO(AbstractModel):
 
     @property
     def CheckTargetCertsError(self):
-        r"""https时，是否校验目标证书
+        r"""<p>https时，是否校验目标证书</p>
         :rtype: bool
         """
         return self._CheckTargetCertsError
@@ -5675,7 +5726,7 @@ class DescribeModelResponseVO(AbstractModel):
 
     @property
     def HttpProtocolVersion(self):
-        r"""http协议版本：1.1/2.0
+        r"""<p>http协议版本：1.1/2.0</p>
         :rtype: str
         """
         return self._HttpProtocolVersion
@@ -5686,7 +5737,7 @@ class DescribeModelResponseVO(AbstractModel):
 
     @property
     def TargetPath(self):
-        r"""目标路径
+        r"""<p>目标路径</p>
         :rtype: str
         """
         return self._TargetPath
@@ -5697,7 +5748,7 @@ class DescribeModelResponseVO(AbstractModel):
 
     @property
     def TargetHosts(self):
-        r"""目标器列表
+        r"""<p>目标器列表</p>
         :rtype: list of TargetHostDTO
         """
         return self._TargetHosts
@@ -5708,7 +5759,7 @@ class DescribeModelResponseVO(AbstractModel):
 
     @property
     def ModelServiceCount(self):
-        r"""被模型服务使用的个数
+        r"""<p>被模型服务使用的个数</p>
         :rtype: int
         """
         return self._ModelServiceCount
@@ -5719,7 +5770,7 @@ class DescribeModelResponseVO(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
         :rtype: str
         """
         return self._CreateTime
@@ -5730,7 +5781,7 @@ class DescribeModelResponseVO(AbstractModel):
 
     @property
     def LastUpdateTime(self):
-        r"""最后修改时间
+        r"""<p>最后修改时间</p>
         :rtype: str
         """
         return self._LastUpdateTime
@@ -5738,6 +5789,28 @@ class DescribeModelResponseVO(AbstractModel):
     @LastUpdateTime.setter
     def LastUpdateTime(self, LastUpdateTime):
         self._LastUpdateTime = LastUpdateTime
+
+    @property
+    def ModelID(self):
+        r"""<p>model ID</p>
+        :rtype: str
+        """
+        return self._ModelID
+
+    @ModelID.setter
+    def ModelID(self, ModelID):
+        self._ModelID = ModelID
+
+    @property
+    def Description(self):
+        r"""<p>描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
 
 
     def _deserialize(self, params):
@@ -5761,6 +5834,8 @@ class DescribeModelResponseVO(AbstractModel):
         self._ModelServiceCount = params.get("ModelServiceCount")
         self._CreateTime = params.get("CreateTime")
         self._LastUpdateTime = params.get("LastUpdateTime")
+        self._ModelID = params.get("ModelID")
+        self._Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5960,6 +6035,9 @@ class DescribeModelServiceResponseVO(AbstractModel):
         :param _FallbackModels: <p>备份模型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FallbackModels: list of TargetModelDTO
+        :param _ModelProtocol: <p>模型类型</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModelProtocol: str
         """
         self._AppID = None
         self._Uin = None
@@ -5997,6 +6075,7 @@ class DescribeModelServiceResponseVO(AbstractModel):
         self._HostKeyHeaderName = None
         self._FallbackStatus = None
         self._FallbackModels = None
+        self._ModelProtocol = None
 
     @property
     def AppID(self):
@@ -6408,6 +6487,18 @@ class DescribeModelServiceResponseVO(AbstractModel):
     def FallbackModels(self, FallbackModels):
         self._FallbackModels = FallbackModels
 
+    @property
+    def ModelProtocol(self):
+        r"""<p>模型类型</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ModelProtocol
+
+    @ModelProtocol.setter
+    def ModelProtocol(self, ModelProtocol):
+        self._ModelProtocol = ModelProtocol
+
 
     def _deserialize(self, params):
         self._AppID = params.get("AppID")
@@ -6471,6 +6562,7 @@ class DescribeModelServiceResponseVO(AbstractModel):
                 obj = TargetModelDTO()
                 obj._deserialize(item)
                 self._FallbackModels.append(obj)
+        self._ModelProtocol = params.get("ModelProtocol")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6488,24 +6580,26 @@ class DescribeModelServicesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceID: 实例
+        :param _InstanceID: <p>实例</p>
         :type InstanceID: str
-        :param _Offset: 分页参数
+        :param _Offset: <p>分页参数</p>
         :type Offset: int
-        :param _Limit: 分页限制
+        :param _Limit: <p>分页限制</p>
         :type Limit: int
-        :param _IDs: ID列表
+        :param _IDs: <p>ID列表</p>
         :type IDs: list of str
-        :param _NotIDs: 排除的ID列表
+        :param _NotIDs: <p>排除的ID列表</p>
         :type NotIDs: list of str
-        :param _Status: 状态：normal，disabled
+        :param _Status: <p>状态：normal，disabled</p>
         :type Status: str
-        :param _Keyword: 关键词
+        :param _Keyword: <p>关键词</p>
         :type Keyword: str
-        :param _ModelID: 模型ID
+        :param _ModelID: <p>模型ID</p>
         :type ModelID: str
-        :param _Sort: 排序
+        :param _Sort: <p>排序</p>
         :type Sort: :class:`tencentcloud.apis.v20240801.models.DescribeModelServicesSort`
+        :param _ModelProtocol: <p>模型类型，OpenAI或Anthropic</p>
+        :type ModelProtocol: str
         """
         self._InstanceID = None
         self._Offset = None
@@ -6516,10 +6610,11 @@ class DescribeModelServicesRequest(AbstractModel):
         self._Keyword = None
         self._ModelID = None
         self._Sort = None
+        self._ModelProtocol = None
 
     @property
     def InstanceID(self):
-        r"""实例
+        r"""<p>实例</p>
         :rtype: str
         """
         return self._InstanceID
@@ -6530,7 +6625,7 @@ class DescribeModelServicesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""分页参数
+        r"""<p>分页参数</p>
         :rtype: int
         """
         return self._Offset
@@ -6541,7 +6636,7 @@ class DescribeModelServicesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""分页限制
+        r"""<p>分页限制</p>
         :rtype: int
         """
         return self._Limit
@@ -6552,7 +6647,7 @@ class DescribeModelServicesRequest(AbstractModel):
 
     @property
     def IDs(self):
-        r"""ID列表
+        r"""<p>ID列表</p>
         :rtype: list of str
         """
         return self._IDs
@@ -6563,7 +6658,7 @@ class DescribeModelServicesRequest(AbstractModel):
 
     @property
     def NotIDs(self):
-        r"""排除的ID列表
+        r"""<p>排除的ID列表</p>
         :rtype: list of str
         """
         return self._NotIDs
@@ -6574,7 +6669,7 @@ class DescribeModelServicesRequest(AbstractModel):
 
     @property
     def Status(self):
-        r"""状态：normal，disabled
+        r"""<p>状态：normal，disabled</p>
         :rtype: str
         """
         return self._Status
@@ -6585,7 +6680,7 @@ class DescribeModelServicesRequest(AbstractModel):
 
     @property
     def Keyword(self):
-        r"""关键词
+        r"""<p>关键词</p>
         :rtype: str
         """
         return self._Keyword
@@ -6596,7 +6691,7 @@ class DescribeModelServicesRequest(AbstractModel):
 
     @property
     def ModelID(self):
-        r"""模型ID
+        r"""<p>模型ID</p>
         :rtype: str
         """
         return self._ModelID
@@ -6607,7 +6702,7 @@ class DescribeModelServicesRequest(AbstractModel):
 
     @property
     def Sort(self):
-        r"""排序
+        r"""<p>排序</p>
         :rtype: :class:`tencentcloud.apis.v20240801.models.DescribeModelServicesSort`
         """
         return self._Sort
@@ -6615,6 +6710,17 @@ class DescribeModelServicesRequest(AbstractModel):
     @Sort.setter
     def Sort(self, Sort):
         self._Sort = Sort
+
+    @property
+    def ModelProtocol(self):
+        r"""<p>模型类型，OpenAI或Anthropic</p>
+        :rtype: str
+        """
+        return self._ModelProtocol
+
+    @ModelProtocol.setter
+    def ModelProtocol(self, ModelProtocol):
+        self._ModelProtocol = ModelProtocol
 
 
     def _deserialize(self, params):
@@ -6629,6 +6735,7 @@ class DescribeModelServicesRequest(AbstractModel):
         if params.get("Sort") is not None:
             self._Sort = DescribeModelServicesSort()
             self._Sort._deserialize(params.get("Sort"))
+        self._ModelProtocol = params.get("ModelProtocol")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6646,7 +6753,7 @@ class DescribeModelServicesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 结果集
+        :param _Data: <p>结果集</p>
         :type Data: :class:`tencentcloud.apis.v20240801.models.DescribeModelServicesResponseVO`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6656,7 +6763,7 @@ class DescribeModelServicesResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""结果集
+        r"""<p>结果集</p>
         :rtype: :class:`tencentcloud.apis.v20240801.models.DescribeModelServicesResponseVO`
         """
         return self._Data
@@ -8918,24 +9025,28 @@ class ModifyModelRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceID: 实例
+        :param _InstanceID: <p>实例</p>
         :type InstanceID: str
-        :param _ID: 模型ID
+        :param _ID: <p>模型ID</p>
         :type ID: str
-        :param _Name: 模型名称
+        :param _Name: <p>模型名称</p>
         :type Name: str
-        :param _HttpProtocolType: 协议类型：http/https
+        :param _HttpProtocolType: <p>协议类型：http/https</p>
         :type HttpProtocolType: str
-        :param _TargetPath: 目标路径
+        :param _TargetPath: <p>目标路径</p>
         :type TargetPath: str
-        :param _TargetHosts: 目标服务器
+        :param _TargetHosts: <p>目标服务器</p>
         :type TargetHosts: list of TargetHostDTO
-        :param _CredentialID: 凭据ID
+        :param _CredentialID: <p>凭据ID</p>
         :type CredentialID: str
-        :param _CheckTargetCertsError: https时，是否检查证书合法
+        :param _CheckTargetCertsError: <p>https时，是否检查证书合法</p>
         :type CheckTargetCertsError: bool
-        :param _HttpProtocolVersion: http协议版本：1.1/2.0
+        :param _HttpProtocolVersion: <p>http协议版本：1.1/2.0</p>
         :type HttpProtocolVersion: str
+        :param _ModelID: <p>model ID</p>
+        :type ModelID: str
+        :param _Description: <p>描述</p>
+        :type Description: str
         """
         self._InstanceID = None
         self._ID = None
@@ -8946,10 +9057,12 @@ class ModifyModelRequest(AbstractModel):
         self._CredentialID = None
         self._CheckTargetCertsError = None
         self._HttpProtocolVersion = None
+        self._ModelID = None
+        self._Description = None
 
     @property
     def InstanceID(self):
-        r"""实例
+        r"""<p>实例</p>
         :rtype: str
         """
         return self._InstanceID
@@ -8960,7 +9073,7 @@ class ModifyModelRequest(AbstractModel):
 
     @property
     def ID(self):
-        r"""模型ID
+        r"""<p>模型ID</p>
         :rtype: str
         """
         return self._ID
@@ -8971,7 +9084,7 @@ class ModifyModelRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""模型名称
+        r"""<p>模型名称</p>
         :rtype: str
         """
         return self._Name
@@ -8982,7 +9095,7 @@ class ModifyModelRequest(AbstractModel):
 
     @property
     def HttpProtocolType(self):
-        r"""协议类型：http/https
+        r"""<p>协议类型：http/https</p>
         :rtype: str
         """
         return self._HttpProtocolType
@@ -8993,7 +9106,7 @@ class ModifyModelRequest(AbstractModel):
 
     @property
     def TargetPath(self):
-        r"""目标路径
+        r"""<p>目标路径</p>
         :rtype: str
         """
         return self._TargetPath
@@ -9004,7 +9117,7 @@ class ModifyModelRequest(AbstractModel):
 
     @property
     def TargetHosts(self):
-        r"""目标服务器
+        r"""<p>目标服务器</p>
         :rtype: list of TargetHostDTO
         """
         return self._TargetHosts
@@ -9015,7 +9128,7 @@ class ModifyModelRequest(AbstractModel):
 
     @property
     def CredentialID(self):
-        r"""凭据ID
+        r"""<p>凭据ID</p>
         :rtype: str
         """
         return self._CredentialID
@@ -9026,7 +9139,7 @@ class ModifyModelRequest(AbstractModel):
 
     @property
     def CheckTargetCertsError(self):
-        r"""https时，是否检查证书合法
+        r"""<p>https时，是否检查证书合法</p>
         :rtype: bool
         """
         return self._CheckTargetCertsError
@@ -9037,7 +9150,7 @@ class ModifyModelRequest(AbstractModel):
 
     @property
     def HttpProtocolVersion(self):
-        r"""http协议版本：1.1/2.0
+        r"""<p>http协议版本：1.1/2.0</p>
         :rtype: str
         """
         return self._HttpProtocolVersion
@@ -9045,6 +9158,28 @@ class ModifyModelRequest(AbstractModel):
     @HttpProtocolVersion.setter
     def HttpProtocolVersion(self, HttpProtocolVersion):
         self._HttpProtocolVersion = HttpProtocolVersion
+
+    @property
+    def ModelID(self):
+        r"""<p>model ID</p>
+        :rtype: str
+        """
+        return self._ModelID
+
+    @ModelID.setter
+    def ModelID(self, ModelID):
+        self._ModelID = ModelID
+
+    @property
+    def Description(self):
+        r"""<p>描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
 
 
     def _deserialize(self, params):
@@ -9062,6 +9197,8 @@ class ModifyModelRequest(AbstractModel):
         self._CredentialID = params.get("CredentialID")
         self._CheckTargetCertsError = params.get("CheckTargetCertsError")
         self._HttpProtocolVersion = params.get("HttpProtocolVersion")
+        self._ModelID = params.get("ModelID")
+        self._Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9079,7 +9216,7 @@ class ModifyModelResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 结果集
+        :param _Data: <p>结果集</p>
         :type Data: :class:`tencentcloud.apis.v20240801.models.ResultIDVO`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -9089,7 +9226,7 @@ class ModifyModelResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""结果集
+        r"""<p>结果集</p>
         :rtype: :class:`tencentcloud.apis.v20240801.models.ResultIDVO`
         """
         return self._Data
@@ -9176,6 +9313,8 @@ class ModifyModelServiceRequest(AbstractModel):
         :type FallbackStatus: bool
         :param _FallbackModels: <p>备份模型</p>
         :type FallbackModels: list of TargetModelDTO
+        :param _ModelProtocol: <p>模型类型</p>
+        :type ModelProtocol: str
         """
         self._InstanceID = None
         self._ID = None
@@ -9203,6 +9342,7 @@ class ModifyModelServiceRequest(AbstractModel):
         self._HostKeyHeaderName = None
         self._FallbackStatus = None
         self._FallbackModels = None
+        self._ModelProtocol = None
 
     @property
     def InstanceID(self):
@@ -9490,6 +9630,17 @@ class ModifyModelServiceRequest(AbstractModel):
     def FallbackModels(self, FallbackModels):
         self._FallbackModels = FallbackModels
 
+    @property
+    def ModelProtocol(self):
+        r"""<p>模型类型</p>
+        :rtype: str
+        """
+        return self._ModelProtocol
+
+    @ModelProtocol.setter
+    def ModelProtocol(self, ModelProtocol):
+        self._ModelProtocol = ModelProtocol
+
 
     def _deserialize(self, params):
         self._InstanceID = params.get("InstanceID")
@@ -9543,6 +9694,7 @@ class ModifyModelServiceRequest(AbstractModel):
                 obj = TargetModelDTO()
                 obj._deserialize(item)
                 self._FallbackModels.append(obj)
+        self._ModelProtocol = params.get("ModelProtocol")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9788,19 +9940,23 @@ class PromptModerateConfigDTO(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Action: 执行动作
+        :param _Action: <p>执行动作</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Action: str
-        :param _InterceptMessage: 响应拦截内容
+        :param _InterceptMessage: <p>响应拦截内容</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type InterceptMessage: str
+        :param _ContextScope: <p>检测上下文</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ContextScope: str
         """
         self._Action = None
         self._InterceptMessage = None
+        self._ContextScope = None
 
     @property
     def Action(self):
-        r"""执行动作
+        r"""<p>执行动作</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9812,7 +9968,7 @@ class PromptModerateConfigDTO(AbstractModel):
 
     @property
     def InterceptMessage(self):
-        r"""响应拦截内容
+        r"""<p>响应拦截内容</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9822,10 +9978,23 @@ class PromptModerateConfigDTO(AbstractModel):
     def InterceptMessage(self, InterceptMessage):
         self._InterceptMessage = InterceptMessage
 
+    @property
+    def ContextScope(self):
+        r"""<p>检测上下文</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ContextScope
+
+    @ContextScope.setter
+    def ContextScope(self, ContextScope):
+        self._ContextScope = ContextScope
+
 
     def _deserialize(self, params):
         self._Action = params.get("Action")
         self._InterceptMessage = params.get("InterceptMessage")
+        self._ContextScope = params.get("ContextScope")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9928,10 +10097,14 @@ class SensitiveDataCheckConfigDTO(AbstractModel):
         :param _CheckItems: <p>检测项</p><p>枚举值：</p><ul><li>birthday： 生日</li><li>email： 邮箱</li><li>identity_number： 身份证</li><li>phone_number： 电话号码</li><li>secret： 秘钥</li><li>password： 密码</li><li>private_key： 私钥</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CheckItems: list of str
+        :param _ContextScope: <p>检测上下文</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ContextScope: str
         """
         self._Action = None
         self._InterceptMessage = None
         self._CheckItems = None
+        self._ContextScope = None
 
     @property
     def Action(self):
@@ -9969,11 +10142,24 @@ class SensitiveDataCheckConfigDTO(AbstractModel):
     def CheckItems(self, CheckItems):
         self._CheckItems = CheckItems
 
+    @property
+    def ContextScope(self):
+        r"""<p>检测上下文</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ContextScope
+
+    @ContextScope.setter
+    def ContextScope(self, ContextScope):
+        self._ContextScope = ContextScope
+
 
     def _deserialize(self, params):
         self._Action = params.get("Action")
         self._InterceptMessage = params.get("InterceptMessage")
         self._CheckItems = params.get("CheckItems")
+        self._ContextScope = params.get("ContextScope")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10167,24 +10353,27 @@ class TmsConfigDTO(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Scope: 检测范围,请求/响应
+        :param _Scope: <p>检测范围,请求/响应</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Scope: list of str
-        :param _Mode: 检测形式
+        :param _Mode: <p>检测形式</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Mode: str
-        :param _Action: 执行动作
+        :param _Action: <p>执行动作</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Action: str
-        :param _MergeCount: 合并请求检测event数，联动Mode字段sync
+        :param _MergeCount: <p>合并请求检测event数，联动Mode字段sync</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type MergeCount: int
-        :param _BizType: 风控策略
+        :param _BizType: <p>风控策略</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type BizType: str
-        :param _InterceptMessage: 响应拦截内容
+        :param _InterceptMessage: <p>响应拦截内容</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type InterceptMessage: str
+        :param _ContextScope: <p>检测上下文</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ContextScope: str
         """
         self._Scope = None
         self._Mode = None
@@ -10192,10 +10381,11 @@ class TmsConfigDTO(AbstractModel):
         self._MergeCount = None
         self._BizType = None
         self._InterceptMessage = None
+        self._ContextScope = None
 
     @property
     def Scope(self):
-        r"""检测范围,请求/响应
+        r"""<p>检测范围,请求/响应</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -10207,7 +10397,7 @@ class TmsConfigDTO(AbstractModel):
 
     @property
     def Mode(self):
-        r"""检测形式
+        r"""<p>检测形式</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -10219,7 +10409,7 @@ class TmsConfigDTO(AbstractModel):
 
     @property
     def Action(self):
-        r"""执行动作
+        r"""<p>执行动作</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -10231,7 +10421,7 @@ class TmsConfigDTO(AbstractModel):
 
     @property
     def MergeCount(self):
-        r"""合并请求检测event数，联动Mode字段sync
+        r"""<p>合并请求检测event数，联动Mode字段sync</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -10243,7 +10433,7 @@ class TmsConfigDTO(AbstractModel):
 
     @property
     def BizType(self):
-        r"""风控策略
+        r"""<p>风控策略</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -10255,7 +10445,7 @@ class TmsConfigDTO(AbstractModel):
 
     @property
     def InterceptMessage(self):
-        r"""响应拦截内容
+        r"""<p>响应拦截内容</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -10265,6 +10455,18 @@ class TmsConfigDTO(AbstractModel):
     def InterceptMessage(self, InterceptMessage):
         self._InterceptMessage = InterceptMessage
 
+    @property
+    def ContextScope(self):
+        r"""<p>检测上下文</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ContextScope
+
+    @ContextScope.setter
+    def ContextScope(self, ContextScope):
+        self._ContextScope = ContextScope
+
 
     def _deserialize(self, params):
         self._Scope = params.get("Scope")
@@ -10273,6 +10475,7 @@ class TmsConfigDTO(AbstractModel):
         self._MergeCount = params.get("MergeCount")
         self._BizType = params.get("BizType")
         self._InterceptMessage = params.get("InterceptMessage")
+        self._ContextScope = params.get("ContextScope")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -19900,18 +19900,21 @@ class CreateSealResponse(AbstractModel):
         r"""
         :param _SealId: <p>电子印章ID，为32位字符串。<br>建议开发者保留此印章ID，后续指定签署区印章或者操作印章需此印章ID。<br>可登录腾讯电子签控制台，在 &quot;印章&quot;-&gt;&quot;印章中心&quot;选择查看的印章，在&quot;印章详情&quot; 中查看某个印章的SealId(在页面中展示为印章ID)。</p>
         :type SealId: str
+        :param _ImageUrl: <p>电子印章预览链接地址，地址默认失效时间为24小时。</p>
+        :type ImageUrl: str
         :param _SealOperatorVerifyPath: <p>人脸验证操作人链接，用法可以参考&quot;<a href="https://qian.tencent.com/developers/company/openwxminiprogram/">跳转电子签小程序配置</a>&quot;，默认为空。</p>
         :type SealOperatorVerifyPath: str
         :param _SealOperatorVerifyQrcodeUrl: <p>人脸验证操作人二维码链接，扫码后会跳转到腾讯电子签小程序进行人脸验证，默认为空。</p>
         :type SealOperatorVerifyQrcodeUrl: str
-        :param _PreviewFileUrl: <p>创建印章预览逻辑，返回的是印章加盖在示例文件上的效果图片链接。</p>
+        :param _PreviewFileUrl: <p>创建印章预览逻辑，返回的是印章加盖在示例文件上的效果图片链接。链接有效期为90天。</p>
         :type PreviewFileUrl: str
-        :param _PreviewPdfUrl: <p>创建印章预览逻辑，返回的是印章加盖在示例文件上的效果PDF文件链接。</p>
+        :param _PreviewPdfUrl: <p>创建印章预览逻辑，返回的是印章加盖在示例文件上的效果PDF文件链接。链接有效期为90天。</p>
         :type PreviewPdfUrl: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._SealId = None
+        self._ImageUrl = None
         self._SealOperatorVerifyPath = None
         self._SealOperatorVerifyQrcodeUrl = None
         self._PreviewFileUrl = None
@@ -19928,6 +19931,17 @@ class CreateSealResponse(AbstractModel):
     @SealId.setter
     def SealId(self, SealId):
         self._SealId = SealId
+
+    @property
+    def ImageUrl(self):
+        r"""<p>电子印章预览链接地址，地址默认失效时间为24小时。</p>
+        :rtype: str
+        """
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
 
     @property
     def SealOperatorVerifyPath(self):
@@ -19953,7 +19967,7 @@ class CreateSealResponse(AbstractModel):
 
     @property
     def PreviewFileUrl(self):
-        r"""<p>创建印章预览逻辑，返回的是印章加盖在示例文件上的效果图片链接。</p>
+        r"""<p>创建印章预览逻辑，返回的是印章加盖在示例文件上的效果图片链接。链接有效期为90天。</p>
         :rtype: str
         """
         return self._PreviewFileUrl
@@ -19964,7 +19978,7 @@ class CreateSealResponse(AbstractModel):
 
     @property
     def PreviewPdfUrl(self):
-        r"""<p>创建印章预览逻辑，返回的是印章加盖在示例文件上的效果PDF文件链接。</p>
+        r"""<p>创建印章预览逻辑，返回的是印章加盖在示例文件上的效果PDF文件链接。链接有效期为90天。</p>
         :rtype: str
         """
         return self._PreviewPdfUrl
@@ -19987,6 +20001,7 @@ class CreateSealResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._SealId = params.get("SealId")
+        self._ImageUrl = params.get("ImageUrl")
         self._SealOperatorVerifyPath = params.get("SealOperatorVerifyPath")
         self._SealOperatorVerifyQrcodeUrl = params.get("SealOperatorVerifyQrcodeUrl")
         self._PreviewFileUrl = params.get("PreviewFileUrl")
